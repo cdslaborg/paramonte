@@ -59,24 +59,24 @@ module pm_blas
     !>  \AmirShahmoradi, Friday 1:54 AM, April 21, 2017, Institute for Computational Engineering and Sciences (ICES), The University of Texas, Austin, TX
     interface blasSWAP
         pure subroutine zswap(n, x, incx, y, incy)
-            use pm_kind , only: IK, TKC => RKD
+            use pm_kind , only: IK, TKG => RKD
             integer(IK) , intent(in) :: n, incx, incy
-            complex(TKC), intent(inout) :: x(*), y(*)
+            complex(TKG), intent(inout) :: x(*), y(*)
         end subroutine zswap
         pure subroutine cswap(n, x, incx, y, incy)
-            use pm_kind , only: IK, TKC => RKS
+            use pm_kind , only: IK, TKG => RKS
             integer(IK) , intent(in) :: n, incx, incy
-            complex(TKC), intent(inout) :: x(*), y(*)
+            complex(TKG), intent(inout) :: x(*), y(*)
         end subroutine cswap
         pure subroutine dswap(n, x, incx, y, incy)
-            use pm_kind , only: IK, TKC => RKD
+            use pm_kind , only: IK, TKG => RKD
             integer(IK) , intent(in) :: n, incx, incy
-            real(TKC)   , intent(inout) :: x(*), y(*)
+            real(TKG)   , intent(inout) :: x(*), y(*)
         end subroutine dswap
         pure subroutine sswap(n, x, incx, y, incy)
-            use pm_kind , only: IK, TKC => RKS
+            use pm_kind , only: IK, TKG => RKS
             integer(IK) , intent(in) :: n, incx, incy
-            real(TKC)   , intent(inout) :: x(*), y(*)
+            real(TKG)   , intent(inout) :: x(*), y(*)
         end subroutine sswap
     end interface
 
@@ -101,34 +101,34 @@ module pm_blas
     !>  \AmirShahmoradi, Friday 1:54 AM, April 21, 2017, Institute for Computational Engineering and Sciences (ICES), The University of Texas, Austin, TX
     interface blasGEMV
         pure subroutine zgemv(trans, m, n, alpha, a, lda, x, incx, beta, y, incy)
-            use pm_kind , only: IK, TKC => RKD
+            use pm_kind , only: IK, TKG => RKD
             implicit none
-            complex(TKC), intent(inout) :: y
-            complex(TKC), intent(in)    :: alpha, beta, a, x
+            complex(TKG), intent(inout) :: y
+            complex(TKG), intent(in)    :: alpha, beta, a, x
             integer(IK) , intent(in)    :: m, n, lda, incx, incy
             character   , intent(in)    :: trans
         end subroutine
         pure subroutine cgemv(trans, m, n, alpha, a, lda, x, incx, beta, y, incy)
-            use pm_kind , only: IK, TKC => RKS
+            use pm_kind , only: IK, TKG => RKS
             implicit none
-            complex(TKC), intent(inout) :: y
-            complex(TKC), intent(in)    :: alpha, beta, a, x
+            complex(TKG), intent(inout) :: y
+            complex(TKG), intent(in)    :: alpha, beta, a, x
             integer(IK) , intent(in)    :: m, n, lda, incx, incy
             character   , intent(in)    :: trans
         end subroutine
         pure subroutine dgemv(trans, m, n, alpha, a, lda, x, incx, beta, y, incy)
-            use pm_kind , only: IK, TKC => RKD
+            use pm_kind , only: IK, TKG => RKD
             implicit none
-            real(TKC)   , intent(inout) :: y
-            real(TKC)   , intent(in)    :: alpha, beta, a, x
+            real(TKG)   , intent(inout) :: y
+            real(TKG)   , intent(in)    :: alpha, beta, a, x
             integer(IK) , intent(in)    :: m, n, lda, incx, incy
             character   , intent(in)    :: trans
         end subroutine
         pure subroutine sgemv(trans, m, n, alpha, a, lda, x, incx, beta, y, incy)
-            use pm_kind , only: IK, TKC => RKS
+            use pm_kind , only: IK, TKG => RKS
             implicit none
-            real(TKC)   , intent(inout) :: y
-            real(TKC)   , intent(in)    :: alpha, beta, a, x
+            real(TKG)   , intent(inout) :: y
+            real(TKG)   , intent(in)    :: alpha, beta, a, x
             integer(IK) , intent(in)    :: m, n, lda, incx, incy
             character   , intent(in)    :: trans
         end subroutine
@@ -155,18 +155,18 @@ module pm_blas
     !>  \AmirShahmoradi, Friday 1:54 AM, April 21, 2017, Institute for Computational Engineering and Sciences (ICES), The University of Texas, Austin, TX
     interface blasHPMV
         pure subroutine zhpmv(uplo, n, alpha, ap, x, incx, beta, y, incy)
-            use pm_kind , only: IK, TKC => RKD
+            use pm_kind , only: IK, TKG => RKD
             implicit none
-            complex(TKC), intent(inout) :: y
-            complex(TKC), intent(in)    :: alpha, beta, ap, x
+            complex(TKG), intent(inout) :: y
+            complex(TKG), intent(in)    :: alpha, beta, ap, x
             integer(IK) , intent(in)    :: n, incx, incy
             character   , intent(in)    :: uplo
         end subroutine
         pure subroutine chpmv(uplo, n, alpha, ap, x, incx, beta, y, incy)
-            use pm_kind , only: IK, TKC => RKS
+            use pm_kind , only: IK, TKG => RKS
             implicit none
-            complex(TKC), intent(inout) :: y
-            complex(TKC), intent(in)    :: alpha, beta, ap, x
+            complex(TKG), intent(inout) :: y
+            complex(TKG), intent(in)    :: alpha, beta, ap, x
             integer(IK) , intent(in)    :: n, incx, incy
             character   , intent(in)    :: uplo
         end subroutine
@@ -193,18 +193,18 @@ module pm_blas
     !>  \AmirShahmoradi, Friday 1:54 AM, April 21, 2017, Institute for Computational Engineering and Sciences (ICES), The University of Texas, Austin, TX
     interface blasSPMV
         pure subroutine dspmv(uplo, n, alpha, ap, x, incx, beta, y, incy)
-            use pm_kind , only: IK, TKC => RKD
+            use pm_kind , only: IK, TKG => RKD
             implicit none
-            real(TKC)   , intent(inout) :: y
-            real(TKC)   , intent(in)    :: alpha, beta, ap, x
+            real(TKG)   , intent(inout) :: y
+            real(TKG)   , intent(in)    :: alpha, beta, ap, x
             integer(IK) , intent(in)    :: n, incx, incy
             character   , intent(in)    :: uplo
         end subroutine
         pure subroutine sspmv(uplo, n, alpha, ap, x, incx, beta, y, incy)
-            use pm_kind , only: IK, TKC => RKS
+            use pm_kind , only: IK, TKG => RKS
             implicit none
-            real(TKC)   , intent(inout) :: y
-            real(TKC)   , intent(in)    :: alpha, beta, ap, x
+            real(TKG)   , intent(inout) :: y
+            real(TKG)   , intent(in)    :: alpha, beta, ap, x
             integer(IK) , intent(in)    :: n, incx, incy
             character   , intent(in)    :: uplo
         end subroutine
@@ -231,18 +231,18 @@ module pm_blas
     !>  \AmirShahmoradi, Friday 1:54 AM, April 21, 2017, Institute for Computational Engineering and Sciences (ICES), The University of Texas, Austin, TX
     interface blasHEMV
         pure subroutine zhemv(uplo, n, alpha, a, lda, x, incx, beta, y, incy)
-            use pm_kind , only: IK, TKC => RKD
+            use pm_kind , only: IK, TKG => RKD
             implicit none
-            complex(TKC), intent(inout) :: y
-            complex(TKC), intent(in)    :: alpha, beta, a, x
+            complex(TKG), intent(inout) :: y
+            complex(TKG), intent(in)    :: alpha, beta, a, x
             integer(IK) , intent(in)    :: n, lda, incx, incy
             character   , intent(in)    :: uplo
         end subroutine
         pure subroutine chemv(uplo, n, alpha, a, lda, x, incx, beta, y, incy)
-            use pm_kind , only: IK, TKC => RKS
+            use pm_kind , only: IK, TKG => RKS
             implicit none
-            complex(TKC), intent(inout) :: y
-            complex(TKC), intent(in)    :: alpha, beta, a, x
+            complex(TKG), intent(inout) :: y
+            complex(TKG), intent(in)    :: alpha, beta, a, x
             integer(IK) , intent(in)    :: n, lda, incx, incy
             character   , intent(in)    :: uplo
         end subroutine
@@ -269,18 +269,18 @@ module pm_blas
     !>  \AmirShahmoradi, Friday 1:54 AM, April 21, 2017, Institute for Computational Engineering and Sciences (ICES), The University of Texas, Austin, TX
     interface blasSYMV
         pure subroutine dsymv(uplo, n, alpha, a, lda, x, incx, beta, y, incy)
-            use pm_kind , only: IK, TKC => RKD
+            use pm_kind , only: IK, TKG => RKD
             implicit none
-            real(TKC)   , intent(inout) :: y
-            real(TKC)   , intent(in)    :: alpha, beta, a, x
+            real(TKG)   , intent(inout) :: y
+            real(TKG)   , intent(in)    :: alpha, beta, a, x
             integer(IK) , intent(in)    :: n, lda, incx, incy
             character   , intent(in)    :: uplo
         end subroutine
         pure subroutine ssymv(uplo, n, alpha, a, lda, x, incx, beta, y, incy)
-            use pm_kind , only: IK, TKC => RKS
+            use pm_kind , only: IK, TKG => RKS
             implicit none
-            real(TKC)   , intent(inout) :: y
-            real(TKC)   , intent(in)    :: alpha, beta, a, x
+            real(TKG)   , intent(inout) :: y
+            real(TKG)   , intent(in)    :: alpha, beta, a, x
             integer(IK) , intent(in)    :: n, lda, incx, incy
             character   , intent(in)    :: uplo
         end subroutine
@@ -306,34 +306,34 @@ module pm_blas
     !>  \AmirShahmoradi, Friday 1:54 AM, April 21, 2017, Institute for Computational Engineering and Sciences (ICES), The University of Texas, Austin, TX
     interface blasSYMM
         pure subroutine zsymm(side, uplo, m, n, alpha, a, lda, b, ldb, beta, c, ldc)
-            use pm_kind , only: IK, TKC => RKD
+            use pm_kind , only: IK, TKG => RKD
             implicit none
-            complex(TKC), intent(inout) :: c
-            complex(TKC), intent(in)    :: alpha, beta, a, b
+            complex(TKG), intent(inout) :: c
+            complex(TKG), intent(in)    :: alpha, beta, a, b
             integer(IK) , intent(in)    :: m, n, lda, ldb, ldc
             character   , intent(in)    :: side, uplo
         end subroutine
         pure subroutine csymm(side, uplo, m, n, alpha, a, lda, b, ldb, beta, c, ldc)
-            use pm_kind , only: IK, TKC => RKS
+            use pm_kind , only: IK, TKG => RKS
             implicit none
-            complex(TKC), intent(inout) :: c
-            complex(TKC), intent(in)    :: alpha, beta, a, b
+            complex(TKG), intent(inout) :: c
+            complex(TKG), intent(in)    :: alpha, beta, a, b
             integer(IK) , intent(in)    :: m, n, lda, ldb, ldc
             character   , intent(in)    :: side, uplo
         end subroutine
         pure subroutine dsymm(side, uplo, m, n, alpha, a, lda, b, ldb, beta, c, ldc)
-            use pm_kind , only: IK, TKC => RKD
+            use pm_kind , only: IK, TKG => RKD
             implicit none
-            real(TKC)   , intent(inout) :: c
-            real(TKC)   , intent(in)    :: alpha, beta, a, b
+            real(TKG)   , intent(inout) :: c
+            real(TKG)   , intent(in)    :: alpha, beta, a, b
             integer(IK) , intent(in)    :: m, n, lda, ldb, ldc
             character   , intent(in)    :: side, uplo
         end subroutine
         pure subroutine ssymm(side, uplo, m, n, alpha, a, lda, b, ldb, beta, c, ldc)
-            use pm_kind , only: IK, TKC => RKS
+            use pm_kind , only: IK, TKG => RKS
             implicit none
-            real(TKC)   , intent(inout) :: c
-            real(TKC)   , intent(in)    :: alpha, beta, a, b
+            real(TKG)   , intent(inout) :: c
+            real(TKG)   , intent(in)    :: alpha, beta, a, b
             integer(IK) , intent(in)    :: m, n, lda, ldb, ldc
             character   , intent(in)    :: side, uplo
         end subroutine
@@ -359,18 +359,18 @@ module pm_blas
     !>  \AmirShahmoradi, Friday 1:54 AM, April 21, 2017, Institute for Computational Engineering and Sciences (ICES), The University of Texas, Austin, TX
     interface blasHEMM
         pure subroutine zhemm(side, uplo, m, n, alpha, a, lda, b, ldb, beta, c, ldc)
-            use pm_kind , only: IK, TKC => RKD
+            use pm_kind , only: IK, TKG => RKD
             implicit none
-            complex(TKC), intent(inout) :: c
-            complex(TKC), intent(in)    :: alpha, beta, a, b
+            complex(TKG), intent(inout) :: c
+            complex(TKG), intent(in)    :: alpha, beta, a, b
             integer(IK) , intent(in)    :: m, n, lda, ldb, ldc
             character   , intent(in)    :: side, uplo
         end subroutine zhemm
         pure subroutine chemm(side, uplo, m, n, alpha, a, lda, b, ldb, beta, c, ldc)
-            use pm_kind , only: IK, TKC => RKS
+            use pm_kind , only: IK, TKG => RKS
             implicit none
-            complex(TKC), intent(inout) :: c
-            complex(TKC), intent(in)    :: alpha, beta, a, b
+            complex(TKG), intent(inout) :: c
+            complex(TKG), intent(in)    :: alpha, beta, a, b
             integer(IK) , intent(in)    :: m, n, lda, ldb, ldc
             character   , intent(in)    :: side, uplo
         end subroutine chemm
@@ -395,34 +395,34 @@ module pm_blas
     !>  \AmirShahmoradi, Friday 1:54 AM, April 21, 2017, Institute for Computational Engineering and Sciences (ICES), The University of Texas, Austin, TX
     interface blasGEMM
     pure subroutine zgemm(transa, transb, l, m, n, alpha, a, lda, b, ldb, beta, c, ldc)
-        use pm_kind , only: IK, TKC => RKD
+        use pm_kind , only: IK, TKG => RKD
         implicit none
-        complex(TKC), intent(inout) :: c
-        complex(TKC), intent(in)    :: alpha, beta, a, b
+        complex(TKG), intent(inout) :: c
+        complex(TKG), intent(in)    :: alpha, beta, a, b
         integer(IK) , intent(in)    :: l, m, n, lda, ldb, ldc
         character   , intent(in)    :: transa, transb
     end subroutine
     pure subroutine cgemm(transa, transb, l, m, n, alpha, a, lda, b, ldb, beta, c, ldc)
-        use pm_kind , only: IK, TKC => RKS
+        use pm_kind , only: IK, TKG => RKS
         implicit none
-        complex(TKC), intent(inout) :: c
-        complex(TKC), intent(in)    :: alpha, beta, a, b
+        complex(TKG), intent(inout) :: c
+        complex(TKG), intent(in)    :: alpha, beta, a, b
         integer(IK) , intent(in)    :: l, m, n, lda, ldb, ldc
         character   , intent(in)    :: transa, transb
     end subroutine
     pure subroutine dgemm(transa, transb, l, m, n, alpha, a, lda, b, ldb, beta, c, ldc)
-        use pm_kind , only: IK, TKC => RKD
+        use pm_kind , only: IK, TKG => RKD
         implicit none
-        real(TKC)   , intent(inout) :: c
-        real(TKC)   , intent(in)    :: alpha, beta, a, b
+        real(TKG)   , intent(inout) :: c
+        real(TKG)   , intent(in)    :: alpha, beta, a, b
         integer(IK) , intent(in)    :: l, m, n, lda, ldb, ldc
         character   , intent(in)    :: transa, transb
     end subroutine
     pure subroutine sgemm(transa, transb, l, m, n, alpha, a, lda, b, ldb, beta, c, ldc)
-        use pm_kind , only: IK, TKC => RKS
+        use pm_kind , only: IK, TKG => RKS
         implicit none
-        real(TKC)   , intent(inout) :: c
-        real(TKC)   , intent(in)    :: alpha, beta, a, b
+        real(TKG)   , intent(inout) :: c
+        real(TKG)   , intent(in)    :: alpha, beta, a, b
         integer(IK) , intent(in)    :: l, m, n, lda, ldb, ldc
         character   , intent(in)    :: transa, transb
     end subroutine
@@ -452,36 +452,36 @@ module pm_blas
     !>  \AmirShahmoradi, Friday 1:54 AM, April 21, 2017, Institute for Computational Engineering and Sciences (ICES), The University of Texas, Austin, TX
     interface blasTRMV
         pure subroutine ztrmv(uplo, trans, diag, n, a, lda, x, incx)
-            use pm_kind , only: IK, TKC => RKD
+            use pm_kind , only: IK, TKG => RKD
             implicit none
             character   , intent(in)    :: uplo, trans, diag
             integer(IK) , intent(in)    :: n, lda, incx
-            complex(TKC), intent(inout) :: x
-            complex(TKC), intent(in)    :: a
+            complex(TKG), intent(inout) :: x
+            complex(TKG), intent(in)    :: a
         end subroutine
         pure subroutine ctrmv(uplo, trans, diag, n, a, lda, x, incx)
-            use pm_kind , only: IK, TKC => RKS
+            use pm_kind , only: IK, TKG => RKS
             implicit none
             character   , intent(in)    :: uplo, trans, diag
             integer(IK) , intent(in)    :: n, lda, incx
-            complex(TKC), intent(inout) :: x
-            complex(TKC), intent(in)    :: a
+            complex(TKG), intent(inout) :: x
+            complex(TKG), intent(in)    :: a
         end subroutine
         pure subroutine dtrmv(uplo, trans, diag, n, a, lda, x, incx)
-            use pm_kind , only: IK, TKC => RKD
+            use pm_kind , only: IK, TKG => RKD
             implicit none
             character   , intent(in)    :: uplo, trans, diag
             integer(IK) , intent(in)    :: n, lda, incx
-            real(TKC)   , intent(inout) :: x
-            real(TKC)   , intent(in)    :: a
+            real(TKG)   , intent(inout) :: x
+            real(TKG)   , intent(in)    :: a
         end subroutine
         pure subroutine strmv(uplo, trans, diag, n, a, lda, x, incx)
-            use pm_kind , only: IK, TKC => RKS
+            use pm_kind , only: IK, TKG => RKS
             implicit none
             character   , intent(in)    :: uplo, trans, diag
             integer(IK) , intent(in)    :: n, lda, incx
-            real(TKC)   , intent(inout) :: x
-            real(TKC)   , intent(in)    :: a
+            real(TKG)   , intent(inout) :: x
+            real(TKG)   , intent(in)    :: a
         end subroutine
     end interface
 
@@ -509,36 +509,36 @@ module pm_blas
     !>  \AmirShahmoradi, Friday 1:54 AM, April 21, 2017, Institute for Computational Engineering and Sciences (ICES), The University of Texas, Austin, TX
     interface blasTRSV
         pure subroutine ztrsv(uplo, trans, diag, n, a, lda, x, incx)
-            use pm_kind , only: IK, TKC => RKD
+            use pm_kind , only: IK, TKG => RKD
             implicit none
             character   , intent(in)    :: uplo, trans, diag
             integer(IK) , intent(in)    :: n, lda, incx
-            complex(TKC), intent(inout) :: x
-            complex(TKC), intent(in)    :: a
+            complex(TKG), intent(inout) :: x
+            complex(TKG), intent(in)    :: a
         end subroutine
         pure subroutine ctrsv(uplo, trans, diag, n, a, lda, x, incx)
-            use pm_kind , only: IK, TKC => RKS
+            use pm_kind , only: IK, TKG => RKS
             implicit none
             character   , intent(in)    :: uplo, trans, diag
             integer(IK) , intent(in)    :: n, lda, incx
-            complex(TKC), intent(inout) :: x
-            complex(TKC), intent(in)    :: a
+            complex(TKG), intent(inout) :: x
+            complex(TKG), intent(in)    :: a
         end subroutine
         pure subroutine dtrsv(uplo, trans, diag, n, a, lda, x, incx)
-            use pm_kind , only: IK, TKC => RKD
+            use pm_kind , only: IK, TKG => RKD
             implicit none
             character   , intent(in)    :: uplo, trans, diag
             integer(IK) , intent(in)    :: n, lda, incx
-            real(TKC)   , intent(inout) :: x
-            real(TKC)   , intent(in)    :: a
+            real(TKG)   , intent(inout) :: x
+            real(TKG)   , intent(in)    :: a
         end subroutine
         pure subroutine strsv(uplo, trans, diag, n, a, lda, x, incx)
-            use pm_kind , only: IK, TKC => RKS
+            use pm_kind , only: IK, TKG => RKS
             implicit none
             character   , intent(in)    :: uplo, trans, diag
             integer(IK) , intent(in)    :: n, lda, incx
-            real(TKC)   , intent(inout) :: x
-            real(TKC)   , intent(in)    :: a
+            real(TKG)   , intent(inout) :: x
+            real(TKG)   , intent(in)    :: a
         end subroutine
     end interface
 
@@ -562,35 +562,35 @@ module pm_blas
     !>  \AmirShahmoradi, Friday 1:54 AM, April 21, 2017, Institute for Computational Engineering and Sciences (ICES), The University of Texas, Austin, TX
     interface blasTRMM
         pure subroutine ztrmm(side, uplo, transa, diag, m, n, alpha, a, lda, b, ldb)
-            use pm_kind , only: IK, TKC => RKD
+            use pm_kind , only: IK, TKG => RKD
             implicit none
             integer(IK) , intent(in)    :: m, n, lda, ldb
-            complex(TKC), intent(inout) :: b
-            complex(TKC), intent(in)    :: alpha, a
+            complex(TKG), intent(inout) :: b
+            complex(TKG), intent(in)    :: alpha, a
             character   , intent(in)    :: side, uplo, transa, diag
         end subroutine
         pure subroutine ctrmm(side, uplo, transa, diag, m, n, alpha, a, lda, b, ldb)
-            use pm_kind , only: IK, TKC => RKS
+            use pm_kind , only: IK, TKG => RKS
             implicit none
             integer(IK) , intent(in)    :: m, n, lda, ldb
-            complex(TKC), intent(inout) :: b
-            complex(TKC), intent(in)    :: alpha, a
+            complex(TKG), intent(inout) :: b
+            complex(TKG), intent(in)    :: alpha, a
             character   , intent(in)    :: side, uplo, transa, diag
         end subroutine
         pure subroutine dtrmm(side, uplo, transa, diag, m, n, alpha, a, lda, b, ldb)
-            use pm_kind , only: IK, TKC => RKD
+            use pm_kind , only: IK, TKG => RKD
             implicit none
             integer(IK) , intent(in)    :: m, n, lda, ldb
-            real(TKC)   , intent(inout) :: b
-            real(TKC)   , intent(in)    :: alpha, a
+            real(TKG)   , intent(inout) :: b
+            real(TKG)   , intent(in)    :: alpha, a
             character   , intent(in)    :: side, uplo, transa, diag
         end subroutine
         pure subroutine strmm(side, uplo, transa, diag, m, n, alpha, a, lda, b, ldb)
-            use pm_kind , only: IK, TKC => RKS
+            use pm_kind , only: IK, TKG => RKS
             implicit none
             integer(IK) , intent(in)    :: m, n, lda, ldb
-            real(TKC)   , intent(inout) :: b
-            real(TKC)   , intent(in)    :: alpha, a
+            real(TKG)   , intent(inout) :: b
+            real(TKG)   , intent(in)    :: alpha, a
             character   , intent(in)    :: side, uplo, transa, diag
         end subroutine
     end interface
@@ -615,35 +615,35 @@ module pm_blas
     !>  \AmirShahmoradi, Friday 1:54 AM, April 21, 2017, Institute for Computational Engineering and Sciences (ICES), The University of Texas, Austin, TX
     interface blasTRSM
         pure subroutine ztrsm(side, uplo, transa, diag, m, n, alpha, a, lda, b, ldb)
-            use pm_kind , only: IK, TKC => RKD
+            use pm_kind , only: IK, TKG => RKD
             implicit none
             integer(IK) , intent(in)    :: m, n, lda, ldb
-            complex(TKC), intent(inout) :: b
-            complex(TKC), intent(in)    :: alpha, a
+            complex(TKG), intent(inout) :: b
+            complex(TKG), intent(in)    :: alpha, a
             character   , intent(in)    :: side, uplo, transa, diag
         end subroutine
         pure subroutine ctrsm(side, uplo, transa, diag, m, n, alpha, a, lda, b, ldb)
-            use pm_kind , only: IK, TKC => RKS
+            use pm_kind , only: IK, TKG => RKS
             implicit none
             integer(IK) , intent(in)    :: m, n, lda, ldb
-            complex(TKC), intent(inout) :: b
-            complex(TKC), intent(in)    :: alpha, a
+            complex(TKG), intent(inout) :: b
+            complex(TKG), intent(in)    :: alpha, a
             character   , intent(in)    :: side, uplo, transa, diag
         end subroutine
         pure subroutine dtrsm(side, uplo, transa, diag, m, n, alpha, a, lda, b, ldb)
-            use pm_kind , only: IK, TKC => RKD
+            use pm_kind , only: IK, TKG => RKD
             implicit none
             integer(IK) , intent(in)    :: m, n, lda, ldb
-            real(TKC)   , intent(inout) :: b
-            real(TKC)   , intent(in)    :: alpha, a
+            real(TKG)   , intent(inout) :: b
+            real(TKG)   , intent(in)    :: alpha, a
             character   , intent(in)    :: side, uplo, transa, diag
         end subroutine
         pure subroutine strsm(side, uplo, transa, diag, m, n, alpha, a, lda, b, ldb)
-            use pm_kind , only: IK, TKC => RKS
+            use pm_kind , only: IK, TKG => RKS
             implicit none
             integer(IK) , intent(in)    :: m, n, lda, ldb
-            real(TKC)   , intent(inout) :: b
-            real(TKC)   , intent(in)    :: alpha, a
+            real(TKG)   , intent(inout) :: b
+            real(TKG)   , intent(in)    :: alpha, a
             character   , intent(in)    :: side, uplo, transa, diag
         end subroutine
     end interface
@@ -671,36 +671,36 @@ module pm_blas
     !>  \AmirShahmoradi, Friday 1:54 AM, April 21, 2017, Institute for Computational Engineering and Sciences (ICES), The University of Texas, Austin, TX
     interface blasSYRK
         pure subroutine zsyrk(uplo, trans, n, k, alpha, a, lda, beta, c, ldc)
-            use pm_kind , only: IK, TKC => RKD
+            use pm_kind , only: IK, TKG => RKD
             implicit none
             character   , intent(in)    :: uplo, trans
             integer(IK) , intent(in)    :: n, k, lda, ldc
-            complex(TKC), intent(in)    :: a, alpha, beta
-            complex(TKC), intent(inout) :: c
+            complex(TKG), intent(in)    :: a, alpha, beta
+            complex(TKG), intent(inout) :: c
         end subroutine
         pure subroutine csyrk(uplo, trans, n, k, alpha, a, lda, beta, c, ldc)
-            use pm_kind , only: IK, TKC => RKS
+            use pm_kind , only: IK, TKG => RKS
             implicit none
             character   , intent(in)    :: uplo, trans
             integer(IK) , intent(in)    :: n, k, lda, ldc
-            complex(TKC), intent(in)    :: a, alpha, beta
-            complex(TKC), intent(inout) :: c
+            complex(TKG), intent(in)    :: a, alpha, beta
+            complex(TKG), intent(inout) :: c
         end subroutine
         pure subroutine dsyrk(uplo, trans, n, k, alpha, a, lda, beta, c, ldc)
-            use pm_kind , only: IK, TKC => RKD
+            use pm_kind , only: IK, TKG => RKD
             implicit none
             character   , intent(in)    :: uplo, trans
             integer(IK) , intent(in)    :: n, k, lda, ldc
-            real(TKC)   , intent(in)    :: a, alpha, beta
-            real(TKC)   , intent(inout) :: c
+            real(TKG)   , intent(in)    :: a, alpha, beta
+            real(TKG)   , intent(inout) :: c
         end subroutine
         pure subroutine ssyrk(uplo, trans, n, k, alpha, a, lda, beta, c, ldc)
-            use pm_kind , only: IK, TKC => RKS
+            use pm_kind , only: IK, TKG => RKS
             implicit none
             character   , intent(in)    :: uplo, trans
             integer(IK) , intent(in)    :: n, k, lda, ldc
-            real(TKC)   , intent(in)    :: a, alpha, beta
-            real(TKC)   , intent(inout) :: c
+            real(TKG)   , intent(in)    :: a, alpha, beta
+            real(TKG)   , intent(inout) :: c
         end subroutine
     end interface
 
@@ -727,22 +727,22 @@ module pm_blas
     !>  \AmirShahmoradi, Friday 1:54 AM, April 21, 2017, Institute for Computational Engineering and Sciences (ICES), The University of Texas, Austin, TX
     interface blasHERK
         pure subroutine zherk(uplo, trans, n, k, alpha, a, lda, beta, c, ldc)
-            use pm_kind , only: IK, TKC => RKD
+            use pm_kind , only: IK, TKG => RKD
             implicit none
             character   , intent(in)    :: uplo, trans
             integer(IK) , intent(in)    :: n, k, lda, ldc
-            real(TKC)   , intent(in)    :: alpha, beta
-            complex(TKC), intent(in)    :: a
-            complex(TKC), intent(inout) :: c
+            real(TKG)   , intent(in)    :: alpha, beta
+            complex(TKG), intent(in)    :: a
+            complex(TKG), intent(inout) :: c
         end subroutine
         pure subroutine cherk(uplo, trans, n, k, alpha, a, lda, beta, c, ldc)
-            use pm_kind , only: IK, TKC => RKS
+            use pm_kind , only: IK, TKG => RKS
             implicit none
             character   , intent(in)    :: uplo, trans
             integer(IK) , intent(in)    :: n, k, lda, ldc
-            real(TKC)   , intent(in)    :: alpha, beta
-            complex(TKC), intent(in)    :: a
-            complex(TKC), intent(inout) :: c
+            real(TKG)   , intent(in)    :: alpha, beta
+            complex(TKG), intent(in)    :: a
+            complex(TKG), intent(inout) :: c
         end subroutine
     end interface
 

@@ -135,11 +135,11 @@ module pm_mathCumSum
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCumSum_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)            , intent(in), contiguous    :: array(:)
+        use pm_kind, only: IKG => IK5
+        integer(IKG)            , intent(in), contiguous    :: array(:)
         class(direction_type)   , intent(in), optional      :: direction
         class(action_type)      , intent(in), optional      :: action
-        integer(IKC)                                        :: cumsum(size(array, kind = IK))
+        integer(IKG)                                        :: cumsum(size(array, kind = IK))
     end function
 #endif
 
@@ -148,11 +148,11 @@ module pm_mathCumSum
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCumSum_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)            , intent(in), contiguous    :: array(:)
+        use pm_kind, only: IKG => IK4
+        integer(IKG)            , intent(in), contiguous    :: array(:)
         class(direction_type)   , intent(in), optional      :: direction
         class(action_type)      , intent(in), optional      :: action
-        integer(IKC)                                        :: cumsum(size(array, kind = IK))
+        integer(IKG)                                        :: cumsum(size(array, kind = IK))
     end function
 #endif
 
@@ -161,11 +161,11 @@ module pm_mathCumSum
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCumSum_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)            , intent(in), contiguous    :: array(:)
+        use pm_kind, only: IKG => IK3
+        integer(IKG)            , intent(in), contiguous    :: array(:)
         class(direction_type)   , intent(in), optional      :: direction
         class(action_type)      , intent(in), optional      :: action
-        integer(IKC)                                        :: cumsum(size(array, kind = IK))
+        integer(IKG)                                        :: cumsum(size(array, kind = IK))
     end function
 #endif
 
@@ -174,11 +174,11 @@ module pm_mathCumSum
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCumSum_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)            , intent(in), contiguous    :: array(:)
+        use pm_kind, only: IKG => IK2
+        integer(IKG)            , intent(in), contiguous    :: array(:)
         class(direction_type)   , intent(in), optional      :: direction
         class(action_type)      , intent(in), optional      :: action
-        integer(IKC)                                        :: cumsum(size(array, kind = IK))
+        integer(IKG)                                        :: cumsum(size(array, kind = IK))
     end function
 #endif
 
@@ -187,11 +187,11 @@ module pm_mathCumSum
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCumSum_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)            , intent(in), contiguous    :: array(:)
+        use pm_kind, only: IKG => IK1
+        integer(IKG)            , intent(in), contiguous    :: array(:)
         class(direction_type)   , intent(in), optional      :: direction
         class(action_type)      , intent(in), optional      :: action
-        integer(IKC)                                        :: cumsum(size(array, kind = IK))
+        integer(IKG)                                        :: cumsum(size(array, kind = IK))
     end function
 #endif
 
@@ -202,11 +202,11 @@ module pm_mathCumSum
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCumSum_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)            , intent(in), contiguous    :: array(:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG)            , intent(in), contiguous    :: array(:)
         class(direction_type)   , intent(in), optional      :: direction
         class(action_type)      , intent(in), optional      :: action
-        complex(CKC)                                        :: cumsum(size(array, kind = IK))
+        complex(CKG)                                        :: cumsum(size(array, kind = IK))
     end function
 #endif
 
@@ -215,11 +215,11 @@ module pm_mathCumSum
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCumSum_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)            , intent(in), contiguous    :: array(:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG)            , intent(in), contiguous    :: array(:)
         class(direction_type)   , intent(in), optional      :: direction
         class(action_type)      , intent(in), optional      :: action
-        complex(CKC)                                        :: cumsum(size(array, kind = IK))
+        complex(CKG)                                        :: cumsum(size(array, kind = IK))
     end function
 #endif
 
@@ -228,11 +228,11 @@ module pm_mathCumSum
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCumSum_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)            , intent(in), contiguous    :: array(:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG)            , intent(in), contiguous    :: array(:)
         class(direction_type)   , intent(in), optional      :: direction
         class(action_type)      , intent(in), optional      :: action
-        complex(CKC)                                        :: cumsum(size(array, kind = IK))
+        complex(CKG)                                        :: cumsum(size(array, kind = IK))
     end function
 #endif
 
@@ -241,11 +241,11 @@ module pm_mathCumSum
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCumSum_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)            , intent(in), contiguous    :: array(:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG)            , intent(in), contiguous    :: array(:)
         class(direction_type)   , intent(in), optional      :: direction
         class(action_type)      , intent(in), optional      :: action
-        complex(CKC)                                        :: cumsum(size(array, kind = IK))
+        complex(CKG)                                        :: cumsum(size(array, kind = IK))
     end function
 #endif
 
@@ -254,11 +254,11 @@ module pm_mathCumSum
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCumSum_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)            , intent(in), contiguous    :: array(:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG)            , intent(in), contiguous    :: array(:)
         class(direction_type)   , intent(in), optional      :: direction
         class(action_type)      , intent(in), optional      :: action
-        complex(CKC)                                        :: cumsum(size(array, kind = IK))
+        complex(CKG)                                        :: cumsum(size(array, kind = IK))
     end function
 #endif
 
@@ -269,11 +269,11 @@ module pm_mathCumSum
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCumSum_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)               , intent(in), contiguous    :: array(:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)               , intent(in), contiguous    :: array(:)
         class(direction_type)   , intent(in), optional      :: direction
         class(action_type)      , intent(in), optional      :: action
-        real(RKC)                                           :: cumsum(size(array, kind = IK))
+        real(RKG)                                           :: cumsum(size(array, kind = IK))
     end function
 #endif
 
@@ -282,11 +282,11 @@ module pm_mathCumSum
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCumSum_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)               , intent(in), contiguous    :: array(:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)               , intent(in), contiguous    :: array(:)
         class(direction_type)   , intent(in), optional      :: direction
         class(action_type)      , intent(in), optional      :: action
-        real(RKC)                                           :: cumsum(size(array, kind = IK))
+        real(RKG)                                           :: cumsum(size(array, kind = IK))
     end function
 #endif
 
@@ -295,11 +295,11 @@ module pm_mathCumSum
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCumSum_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)               , intent(in), contiguous    :: array(:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)               , intent(in), contiguous    :: array(:)
         class(direction_type)   , intent(in), optional      :: direction
         class(action_type)      , intent(in), optional      :: action
-        real(RKC)                                           :: cumsum(size(array, kind = IK))
+        real(RKG)                                           :: cumsum(size(array, kind = IK))
     end function
 #endif
 
@@ -308,11 +308,11 @@ module pm_mathCumSum
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCumSum_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)               , intent(in), contiguous    :: array(:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)               , intent(in), contiguous    :: array(:)
         class(direction_type)   , intent(in), optional      :: direction
         class(action_type)      , intent(in), optional      :: action
-        real(RKC)                                           :: cumsum(size(array, kind = IK))
+        real(RKG)                                           :: cumsum(size(array, kind = IK))
     end function
 #endif
 
@@ -321,11 +321,11 @@ module pm_mathCumSum
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCumSum_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)               , intent(in), contiguous    :: array(:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)               , intent(in), contiguous    :: array(:)
         class(direction_type)   , intent(in), optional      :: direction
         class(action_type)      , intent(in), optional      :: action
-        real(RKC)                                           :: cumsum(size(array, kind = IK))
+        real(RKG)                                           :: cumsum(size(array, kind = IK))
     end function
 #endif
 
@@ -433,8 +433,8 @@ module pm_mathCumSum
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumOldDefDef_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)        , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK5
+        integer(IKG)        , intent(inout) , contiguous    :: array(:)
     end subroutine
 #endif
 
@@ -443,8 +443,8 @@ module pm_mathCumSum
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumOldDefDef_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)        , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK4
+        integer(IKG)        , intent(inout) , contiguous    :: array(:)
     end subroutine
 #endif
 
@@ -453,8 +453,8 @@ module pm_mathCumSum
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumOldDefDef_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)        , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK3
+        integer(IKG)        , intent(inout) , contiguous    :: array(:)
     end subroutine
 #endif
 
@@ -463,8 +463,8 @@ module pm_mathCumSum
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumOldDefDef_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)        , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK2
+        integer(IKG)        , intent(inout) , contiguous    :: array(:)
     end subroutine
 #endif
 
@@ -473,8 +473,8 @@ module pm_mathCumSum
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumOldDefDef_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)        , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK1
+        integer(IKG)        , intent(inout) , contiguous    :: array(:)
     end subroutine
 #endif
 
@@ -485,8 +485,8 @@ module pm_mathCumSum
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumOldDefDef_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)        , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG)        , intent(inout) , contiguous    :: array(:)
     end subroutine
 #endif
 
@@ -495,8 +495,8 @@ module pm_mathCumSum
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumOldDefDef_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)        , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG)        , intent(inout) , contiguous    :: array(:)
     end subroutine
 #endif
 
@@ -505,8 +505,8 @@ module pm_mathCumSum
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumOldDefDef_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)        , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG)        , intent(inout) , contiguous    :: array(:)
     end subroutine
 #endif
 
@@ -515,8 +515,8 @@ module pm_mathCumSum
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumOldDefDef_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)        , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG)        , intent(inout) , contiguous    :: array(:)
     end subroutine
 #endif
 
@@ -525,8 +525,8 @@ module pm_mathCumSum
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumOldDefDef_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)        , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG)        , intent(inout) , contiguous    :: array(:)
     end subroutine
 #endif
 
@@ -537,8 +537,8 @@ module pm_mathCumSum
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumOldDefDef_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)           , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)           , intent(inout) , contiguous    :: array(:)
     end subroutine
 #endif
 
@@ -547,8 +547,8 @@ module pm_mathCumSum
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumOldDefDef_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)           , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)           , intent(inout) , contiguous    :: array(:)
     end subroutine
 #endif
 
@@ -557,8 +557,8 @@ module pm_mathCumSum
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumOldDefDef_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)           , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)           , intent(inout) , contiguous    :: array(:)
     end subroutine
 #endif
 
@@ -567,8 +567,8 @@ module pm_mathCumSum
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumOldDefDef_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)           , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)           , intent(inout) , contiguous    :: array(:)
     end subroutine
 #endif
 
@@ -577,8 +577,8 @@ module pm_mathCumSum
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumOldDefDef_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)           , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)           , intent(inout) , contiguous    :: array(:)
     end subroutine
 #endif
 
@@ -595,9 +595,9 @@ module pm_mathCumSum
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumNewDefDef_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)        , intent(in)    , contiguous    :: array(:)
-        integer(IKC)        , intent(out)   , contiguous    :: cumsum(:)
+        use pm_kind, only: IKG => IK5
+        integer(IKG)        , intent(in)    , contiguous    :: array(:)
+        integer(IKG)        , intent(out)   , contiguous    :: cumsum(:)
     end subroutine
 #endif
 
@@ -606,9 +606,9 @@ module pm_mathCumSum
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumNewDefDef_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)        , intent(in)    , contiguous    :: array(:)
-        integer(IKC)        , intent(out)   , contiguous    :: cumsum(:)
+        use pm_kind, only: IKG => IK4
+        integer(IKG)        , intent(in)    , contiguous    :: array(:)
+        integer(IKG)        , intent(out)   , contiguous    :: cumsum(:)
     end subroutine
 #endif
 
@@ -617,9 +617,9 @@ module pm_mathCumSum
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumNewDefDef_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)        , intent(in)    , contiguous    :: array(:)
-        integer(IKC)        , intent(out)   , contiguous    :: cumsum(:)
+        use pm_kind, only: IKG => IK3
+        integer(IKG)        , intent(in)    , contiguous    :: array(:)
+        integer(IKG)        , intent(out)   , contiguous    :: cumsum(:)
     end subroutine
 #endif
 
@@ -628,9 +628,9 @@ module pm_mathCumSum
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumNewDefDef_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)        , intent(in)    , contiguous    :: array(:)
-        integer(IKC)        , intent(out)   , contiguous    :: cumsum(:)
+        use pm_kind, only: IKG => IK2
+        integer(IKG)        , intent(in)    , contiguous    :: array(:)
+        integer(IKG)        , intent(out)   , contiguous    :: cumsum(:)
     end subroutine
 #endif
 
@@ -639,9 +639,9 @@ module pm_mathCumSum
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumNewDefDef_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)        , intent(in)    , contiguous    :: array(:)
-        integer(IKC)        , intent(out)   , contiguous    :: cumsum(:)
+        use pm_kind, only: IKG => IK1
+        integer(IKG)        , intent(in)    , contiguous    :: array(:)
+        integer(IKG)        , intent(out)   , contiguous    :: cumsum(:)
     end subroutine
 #endif
 
@@ -652,9 +652,9 @@ module pm_mathCumSum
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumNewDefDef_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)        , intent(in)    , contiguous    :: array(:)
-        complex(CKC)        , intent(out)   , contiguous    :: cumsum(:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG)        , intent(in)    , contiguous    :: array(:)
+        complex(CKG)        , intent(out)   , contiguous    :: cumsum(:)
     end subroutine
 #endif
 
@@ -663,9 +663,9 @@ module pm_mathCumSum
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumNewDefDef_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)        , intent(in)    , contiguous    :: array(:)
-        complex(CKC)        , intent(out)   , contiguous    :: cumsum(:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG)        , intent(in)    , contiguous    :: array(:)
+        complex(CKG)        , intent(out)   , contiguous    :: cumsum(:)
     end subroutine
 #endif
 
@@ -674,9 +674,9 @@ module pm_mathCumSum
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumNewDefDef_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)        , intent(in)    , contiguous    :: array(:)
-        complex(CKC)        , intent(out)   , contiguous    :: cumsum(:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG)        , intent(in)    , contiguous    :: array(:)
+        complex(CKG)        , intent(out)   , contiguous    :: cumsum(:)
     end subroutine
 #endif
 
@@ -685,9 +685,9 @@ module pm_mathCumSum
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumNewDefDef_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)        , intent(in)    , contiguous    :: array(:)
-        complex(CKC)        , intent(out)   , contiguous    :: cumsum(:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG)        , intent(in)    , contiguous    :: array(:)
+        complex(CKG)        , intent(out)   , contiguous    :: cumsum(:)
     end subroutine
 #endif
 
@@ -696,9 +696,9 @@ module pm_mathCumSum
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumNewDefDef_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)        , intent(in)    , contiguous    :: array(:)
-        complex(CKC)        , intent(out)   , contiguous    :: cumsum(:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG)        , intent(in)    , contiguous    :: array(:)
+        complex(CKG)        , intent(out)   , contiguous    :: cumsum(:)
     end subroutine
 #endif
 
@@ -709,9 +709,9 @@ module pm_mathCumSum
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumNewDefDef_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)           , intent(in)    , contiguous    :: array(:)
-        real(RKC)           , intent(out)   , contiguous    :: cumsum(:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)           , intent(in)    , contiguous    :: array(:)
+        real(RKG)           , intent(out)   , contiguous    :: cumsum(:)
     end subroutine
 #endif
 
@@ -720,9 +720,9 @@ module pm_mathCumSum
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumNewDefDef_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)           , intent(in)    , contiguous    :: array(:)
-        real(RKC)           , intent(out)   , contiguous    :: cumsum(:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)           , intent(in)    , contiguous    :: array(:)
+        real(RKG)           , intent(out)   , contiguous    :: cumsum(:)
     end subroutine
 #endif
 
@@ -731,9 +731,9 @@ module pm_mathCumSum
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumNewDefDef_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)           , intent(in)    , contiguous    :: array(:)
-        real(RKC)           , intent(out)   , contiguous    :: cumsum(:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)           , intent(in)    , contiguous    :: array(:)
+        real(RKG)           , intent(out)   , contiguous    :: cumsum(:)
     end subroutine
 #endif
 
@@ -742,9 +742,9 @@ module pm_mathCumSum
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumNewDefDef_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)           , intent(in)    , contiguous    :: array(:)
-        real(RKC)           , intent(out)   , contiguous    :: cumsum(:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)           , intent(in)    , contiguous    :: array(:)
+        real(RKG)           , intent(out)   , contiguous    :: cumsum(:)
     end subroutine
 #endif
 
@@ -753,9 +753,9 @@ module pm_mathCumSum
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumNewDefDef_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)           , intent(in)    , contiguous    :: array(:)
-        real(RKC)           , intent(out)   , contiguous    :: cumsum(:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)           , intent(in)    , contiguous    :: array(:)
+        real(RKG)           , intent(out)   , contiguous    :: cumsum(:)
     end subroutine
 #endif
 
@@ -782,8 +782,8 @@ module pm_mathCumSum
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumOldForNon_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)        , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK5
+        integer(IKG)        , intent(inout) , contiguous    :: array(:)
         type(forward_type)  , intent(in)                    :: direction
         type(nothing_type)  , intent(in)                    :: action
     end subroutine
@@ -794,8 +794,8 @@ module pm_mathCumSum
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumOldForNon_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)        , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK4
+        integer(IKG)        , intent(inout) , contiguous    :: array(:)
         type(forward_type)  , intent(in)                    :: direction
         type(nothing_type)  , intent(in)                    :: action
     end subroutine
@@ -806,8 +806,8 @@ module pm_mathCumSum
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumOldForNon_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)        , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK3
+        integer(IKG)        , intent(inout) , contiguous    :: array(:)
         type(forward_type)  , intent(in)                    :: direction
         type(nothing_type)  , intent(in)                    :: action
     end subroutine
@@ -818,8 +818,8 @@ module pm_mathCumSum
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumOldForNon_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)        , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK2
+        integer(IKG)        , intent(inout) , contiguous    :: array(:)
         type(forward_type)  , intent(in)                    :: direction
         type(nothing_type)  , intent(in)                    :: action
     end subroutine
@@ -830,8 +830,8 @@ module pm_mathCumSum
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumOldForNon_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)        , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK1
+        integer(IKG)        , intent(inout) , contiguous    :: array(:)
         type(forward_type)  , intent(in)                    :: direction
         type(nothing_type)  , intent(in)                    :: action
     end subroutine
@@ -844,8 +844,8 @@ module pm_mathCumSum
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumOldForNon_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)        , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG)        , intent(inout) , contiguous    :: array(:)
         type(forward_type)  , intent(in)                    :: direction
         type(nothing_type)  , intent(in)                    :: action
     end subroutine
@@ -856,8 +856,8 @@ module pm_mathCumSum
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumOldForNon_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)        , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG)        , intent(inout) , contiguous    :: array(:)
         type(forward_type)  , intent(in)                    :: direction
         type(nothing_type)  , intent(in)                    :: action
     end subroutine
@@ -868,8 +868,8 @@ module pm_mathCumSum
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumOldForNon_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)        , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG)        , intent(inout) , contiguous    :: array(:)
         type(forward_type)  , intent(in)                    :: direction
         type(nothing_type)  , intent(in)                    :: action
     end subroutine
@@ -880,8 +880,8 @@ module pm_mathCumSum
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumOldForNon_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)        , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG)        , intent(inout) , contiguous    :: array(:)
         type(forward_type)  , intent(in)                    :: direction
         type(nothing_type)  , intent(in)                    :: action
     end subroutine
@@ -892,8 +892,8 @@ module pm_mathCumSum
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumOldForNon_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)        , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG)        , intent(inout) , contiguous    :: array(:)
         type(forward_type)  , intent(in)                    :: direction
         type(nothing_type)  , intent(in)                    :: action
     end subroutine
@@ -906,8 +906,8 @@ module pm_mathCumSum
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumOldForNon_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)           , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)           , intent(inout) , contiguous    :: array(:)
         type(forward_type)  , intent(in)                    :: direction
         type(nothing_type)  , intent(in)                    :: action
     end subroutine
@@ -918,8 +918,8 @@ module pm_mathCumSum
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumOldForNon_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)           , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)           , intent(inout) , contiguous    :: array(:)
         type(forward_type)  , intent(in)                    :: direction
         type(nothing_type)  , intent(in)                    :: action
     end subroutine
@@ -930,8 +930,8 @@ module pm_mathCumSum
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumOldForNon_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)           , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)           , intent(inout) , contiguous    :: array(:)
         type(forward_type)  , intent(in)                    :: direction
         type(nothing_type)  , intent(in)                    :: action
     end subroutine
@@ -942,8 +942,8 @@ module pm_mathCumSum
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumOldForNon_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)           , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)           , intent(inout) , contiguous    :: array(:)
         type(forward_type)  , intent(in)                    :: direction
         type(nothing_type)  , intent(in)                    :: action
     end subroutine
@@ -954,8 +954,8 @@ module pm_mathCumSum
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumOldForNon_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)           , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)           , intent(inout) , contiguous    :: array(:)
         type(forward_type)  , intent(in)                    :: direction
         type(nothing_type)  , intent(in)                    :: action
     end subroutine
@@ -974,8 +974,8 @@ module pm_mathCumSum
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumOldForRev_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)        , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK5
+        integer(IKG)        , intent(inout) , contiguous    :: array(:)
         type(forward_type)  , intent(in)                    :: direction
         type(reverse_type)  , intent(in)                    :: action
     end subroutine
@@ -986,8 +986,8 @@ module pm_mathCumSum
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumOldForRev_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)        , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK4
+        integer(IKG)        , intent(inout) , contiguous    :: array(:)
         type(forward_type)  , intent(in)                    :: direction
         type(reverse_type)  , intent(in)                    :: action
     end subroutine
@@ -998,8 +998,8 @@ module pm_mathCumSum
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumOldForRev_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)        , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK3
+        integer(IKG)        , intent(inout) , contiguous    :: array(:)
         type(forward_type)  , intent(in)                    :: direction
         type(reverse_type)  , intent(in)                    :: action
     end subroutine
@@ -1010,8 +1010,8 @@ module pm_mathCumSum
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumOldForRev_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)        , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK2
+        integer(IKG)        , intent(inout) , contiguous    :: array(:)
         type(forward_type)  , intent(in)                    :: direction
         type(reverse_type)  , intent(in)                    :: action
     end subroutine
@@ -1022,8 +1022,8 @@ module pm_mathCumSum
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumOldForRev_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)        , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK1
+        integer(IKG)        , intent(inout) , contiguous    :: array(:)
         type(forward_type)  , intent(in)                    :: direction
         type(reverse_type)  , intent(in)                    :: action
     end subroutine
@@ -1036,8 +1036,8 @@ module pm_mathCumSum
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumOldForRev_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)        , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG)        , intent(inout) , contiguous    :: array(:)
         type(forward_type)  , intent(in)                    :: direction
         type(reverse_type)  , intent(in)                    :: action
     end subroutine
@@ -1048,8 +1048,8 @@ module pm_mathCumSum
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumOldForRev_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)        , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG)        , intent(inout) , contiguous    :: array(:)
         type(forward_type)  , intent(in)                    :: direction
         type(reverse_type)  , intent(in)                    :: action
     end subroutine
@@ -1060,8 +1060,8 @@ module pm_mathCumSum
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumOldForRev_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)        , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG)        , intent(inout) , contiguous    :: array(:)
         type(forward_type)  , intent(in)                    :: direction
         type(reverse_type)  , intent(in)                    :: action
     end subroutine
@@ -1072,8 +1072,8 @@ module pm_mathCumSum
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumOldForRev_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)        , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG)        , intent(inout) , contiguous    :: array(:)
         type(forward_type)  , intent(in)                    :: direction
         type(reverse_type)  , intent(in)                    :: action
     end subroutine
@@ -1084,8 +1084,8 @@ module pm_mathCumSum
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumOldForRev_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)        , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG)        , intent(inout) , contiguous    :: array(:)
         type(forward_type)  , intent(in)                    :: direction
         type(reverse_type)  , intent(in)                    :: action
     end subroutine
@@ -1098,8 +1098,8 @@ module pm_mathCumSum
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumOldForRev_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)           , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)           , intent(inout) , contiguous    :: array(:)
         type(forward_type)  , intent(in)                    :: direction
         type(reverse_type)  , intent(in)                    :: action
     end subroutine
@@ -1110,8 +1110,8 @@ module pm_mathCumSum
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumOldForRev_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)           , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)           , intent(inout) , contiguous    :: array(:)
         type(forward_type)  , intent(in)                    :: direction
         type(reverse_type)  , intent(in)                    :: action
     end subroutine
@@ -1122,8 +1122,8 @@ module pm_mathCumSum
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumOldForRev_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)           , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)           , intent(inout) , contiguous    :: array(:)
         type(forward_type)  , intent(in)                    :: direction
         type(reverse_type)  , intent(in)                    :: action
     end subroutine
@@ -1134,8 +1134,8 @@ module pm_mathCumSum
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumOldForRev_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)           , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)           , intent(inout) , contiguous    :: array(:)
         type(forward_type)  , intent(in)                    :: direction
         type(reverse_type)  , intent(in)                    :: action
     end subroutine
@@ -1146,8 +1146,8 @@ module pm_mathCumSum
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumOldForRev_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)           , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)           , intent(inout) , contiguous    :: array(:)
         type(forward_type)  , intent(in)                    :: direction
         type(reverse_type)  , intent(in)                    :: action
     end subroutine
@@ -1176,8 +1176,8 @@ module pm_mathCumSum
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumOldBacNon_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)        , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK5
+        integer(IKG)        , intent(inout) , contiguous    :: array(:)
         type(backward_type) , intent(in)                    :: direction
         type(nothing_type)  , intent(in)                    :: action
     end subroutine
@@ -1188,8 +1188,8 @@ module pm_mathCumSum
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumOldBacNon_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)        , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK4
+        integer(IKG)        , intent(inout) , contiguous    :: array(:)
         type(backward_type) , intent(in)                    :: direction
         type(nothing_type)  , intent(in)                    :: action
     end subroutine
@@ -1200,8 +1200,8 @@ module pm_mathCumSum
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumOldBacNon_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)        , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK3
+        integer(IKG)        , intent(inout) , contiguous    :: array(:)
         type(backward_type) , intent(in)                    :: direction
         type(nothing_type)  , intent(in)                    :: action
     end subroutine
@@ -1212,8 +1212,8 @@ module pm_mathCumSum
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumOldBacNon_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)        , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK2
+        integer(IKG)        , intent(inout) , contiguous    :: array(:)
         type(backward_type) , intent(in)                    :: direction
         type(nothing_type)  , intent(in)                    :: action
     end subroutine
@@ -1224,8 +1224,8 @@ module pm_mathCumSum
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumOldBacNon_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)        , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK1
+        integer(IKG)        , intent(inout) , contiguous    :: array(:)
         type(backward_type) , intent(in)                    :: direction
         type(nothing_type)  , intent(in)                    :: action
     end subroutine
@@ -1238,8 +1238,8 @@ module pm_mathCumSum
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumOldBacNon_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)        , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG)        , intent(inout) , contiguous    :: array(:)
         type(backward_type) , intent(in)                    :: direction
         type(nothing_type)  , intent(in)                    :: action
     end subroutine
@@ -1250,8 +1250,8 @@ module pm_mathCumSum
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumOldBacNon_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)        , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG)        , intent(inout) , contiguous    :: array(:)
         type(backward_type) , intent(in)                    :: direction
         type(nothing_type)  , intent(in)                    :: action
     end subroutine
@@ -1262,8 +1262,8 @@ module pm_mathCumSum
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumOldBacNon_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)        , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG)        , intent(inout) , contiguous    :: array(:)
         type(backward_type) , intent(in)                    :: direction
         type(nothing_type)  , intent(in)                    :: action
     end subroutine
@@ -1274,8 +1274,8 @@ module pm_mathCumSum
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumOldBacNon_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)        , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG)        , intent(inout) , contiguous    :: array(:)
         type(backward_type) , intent(in)                    :: direction
         type(nothing_type)  , intent(in)                    :: action
     end subroutine
@@ -1286,8 +1286,8 @@ module pm_mathCumSum
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumOldBacNon_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)        , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG)        , intent(inout) , contiguous    :: array(:)
         type(backward_type) , intent(in)                    :: direction
         type(nothing_type)  , intent(in)                    :: action
     end subroutine
@@ -1300,8 +1300,8 @@ module pm_mathCumSum
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumOldBacNon_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)           , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)           , intent(inout) , contiguous    :: array(:)
         type(backward_type) , intent(in)                    :: direction
         type(nothing_type)  , intent(in)                    :: action
     end subroutine
@@ -1312,8 +1312,8 @@ module pm_mathCumSum
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumOldBacNon_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)           , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)           , intent(inout) , contiguous    :: array(:)
         type(backward_type) , intent(in)                    :: direction
         type(nothing_type)  , intent(in)                    :: action
     end subroutine
@@ -1324,8 +1324,8 @@ module pm_mathCumSum
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumOldBacNon_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)           , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)           , intent(inout) , contiguous    :: array(:)
         type(backward_type) , intent(in)                    :: direction
         type(nothing_type)  , intent(in)                    :: action
     end subroutine
@@ -1336,8 +1336,8 @@ module pm_mathCumSum
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumOldBacNon_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)           , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)           , intent(inout) , contiguous    :: array(:)
         type(backward_type) , intent(in)                    :: direction
         type(nothing_type)  , intent(in)                    :: action
     end subroutine
@@ -1348,8 +1348,8 @@ module pm_mathCumSum
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumOldBacNon_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)           , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)           , intent(inout) , contiguous    :: array(:)
         type(backward_type) , intent(in)                    :: direction
         type(nothing_type)  , intent(in)                    :: action
     end subroutine
@@ -1368,8 +1368,8 @@ module pm_mathCumSum
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumOldBacRev_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)        , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK5
+        integer(IKG)        , intent(inout) , contiguous    :: array(:)
         type(backward_type) , intent(in)                    :: direction
         type(reverse_type)  , intent(in)                    :: action
     end subroutine
@@ -1380,8 +1380,8 @@ module pm_mathCumSum
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumOldBacRev_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)        , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK4
+        integer(IKG)        , intent(inout) , contiguous    :: array(:)
         type(backward_type) , intent(in)                    :: direction
         type(reverse_type)  , intent(in)                    :: action
     end subroutine
@@ -1392,8 +1392,8 @@ module pm_mathCumSum
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumOldBacRev_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)        , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK3
+        integer(IKG)        , intent(inout) , contiguous    :: array(:)
         type(backward_type) , intent(in)                    :: direction
         type(reverse_type)  , intent(in)                    :: action
     end subroutine
@@ -1404,8 +1404,8 @@ module pm_mathCumSum
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumOldBacRev_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)        , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK2
+        integer(IKG)        , intent(inout) , contiguous    :: array(:)
         type(backward_type) , intent(in)                    :: direction
         type(reverse_type)  , intent(in)                    :: action
     end subroutine
@@ -1416,8 +1416,8 @@ module pm_mathCumSum
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumOldBacRev_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)        , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK1
+        integer(IKG)        , intent(inout) , contiguous    :: array(:)
         type(backward_type) , intent(in)                    :: direction
         type(reverse_type)  , intent(in)                    :: action
     end subroutine
@@ -1430,8 +1430,8 @@ module pm_mathCumSum
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumOldBacRev_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)        , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG)        , intent(inout) , contiguous    :: array(:)
         type(backward_type) , intent(in)                    :: direction
         type(reverse_type)  , intent(in)                    :: action
     end subroutine
@@ -1442,8 +1442,8 @@ module pm_mathCumSum
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumOldBacRev_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)        , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG)        , intent(inout) , contiguous    :: array(:)
         type(backward_type) , intent(in)                    :: direction
         type(reverse_type)  , intent(in)                    :: action
     end subroutine
@@ -1454,8 +1454,8 @@ module pm_mathCumSum
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumOldBacRev_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)        , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG)        , intent(inout) , contiguous    :: array(:)
         type(backward_type) , intent(in)                    :: direction
         type(reverse_type)  , intent(in)                    :: action
     end subroutine
@@ -1466,8 +1466,8 @@ module pm_mathCumSum
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumOldBacRev_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)        , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG)        , intent(inout) , contiguous    :: array(:)
         type(backward_type) , intent(in)                    :: direction
         type(reverse_type)  , intent(in)                    :: action
     end subroutine
@@ -1478,8 +1478,8 @@ module pm_mathCumSum
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumOldBacRev_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)        , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG)        , intent(inout) , contiguous    :: array(:)
         type(backward_type) , intent(in)                    :: direction
         type(reverse_type)  , intent(in)                    :: action
     end subroutine
@@ -1492,8 +1492,8 @@ module pm_mathCumSum
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumOldBacRev_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)           , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)           , intent(inout) , contiguous    :: array(:)
         type(backward_type) , intent(in)                    :: direction
         type(reverse_type)  , intent(in)                    :: action
     end subroutine
@@ -1504,8 +1504,8 @@ module pm_mathCumSum
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumOldBacRev_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)           , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)           , intent(inout) , contiguous    :: array(:)
         type(backward_type) , intent(in)                    :: direction
         type(reverse_type)  , intent(in)                    :: action
     end subroutine
@@ -1516,8 +1516,8 @@ module pm_mathCumSum
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumOldBacRev_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)           , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)           , intent(inout) , contiguous    :: array(:)
         type(backward_type) , intent(in)                    :: direction
         type(reverse_type)  , intent(in)                    :: action
     end subroutine
@@ -1528,8 +1528,8 @@ module pm_mathCumSum
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumOldBacRev_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)           , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)           , intent(inout) , contiguous    :: array(:)
         type(backward_type) , intent(in)                    :: direction
         type(reverse_type)  , intent(in)                    :: action
     end subroutine
@@ -1540,8 +1540,8 @@ module pm_mathCumSum
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumOldBacRev_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)           , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)           , intent(inout) , contiguous    :: array(:)
         type(backward_type) , intent(in)                    :: direction
         type(reverse_type)  , intent(in)                    :: action
     end subroutine
@@ -1570,9 +1570,9 @@ module pm_mathCumSum
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumNewForNon_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)        , intent(in)    , contiguous    :: array(:)
-        integer(IKC)        , intent(out)   , contiguous    :: cumsum(:)
+        use pm_kind, only: IKG => IK5
+        integer(IKG)        , intent(in)    , contiguous    :: array(:)
+        integer(IKG)        , intent(out)   , contiguous    :: cumsum(:)
         type(forward_type)  , intent(in)                    :: direction
         type(nothing_type)  , intent(in)                    :: action
     end subroutine
@@ -1583,9 +1583,9 @@ module pm_mathCumSum
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumNewForNon_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)        , intent(in)    , contiguous    :: array(:)
-        integer(IKC)        , intent(out)   , contiguous    :: cumsum(:)
+        use pm_kind, only: IKG => IK4
+        integer(IKG)        , intent(in)    , contiguous    :: array(:)
+        integer(IKG)        , intent(out)   , contiguous    :: cumsum(:)
         type(forward_type)  , intent(in)                    :: direction
         type(nothing_type)  , intent(in)                    :: action
     end subroutine
@@ -1596,9 +1596,9 @@ module pm_mathCumSum
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumNewForNon_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)        , intent(in)    , contiguous    :: array(:)
-        integer(IKC)        , intent(out)   , contiguous    :: cumsum(:)
+        use pm_kind, only: IKG => IK3
+        integer(IKG)        , intent(in)    , contiguous    :: array(:)
+        integer(IKG)        , intent(out)   , contiguous    :: cumsum(:)
         type(forward_type)  , intent(in)                    :: direction
         type(nothing_type)  , intent(in)                    :: action
     end subroutine
@@ -1609,9 +1609,9 @@ module pm_mathCumSum
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumNewForNon_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)        , intent(in)    , contiguous    :: array(:)
-        integer(IKC)        , intent(out)   , contiguous    :: cumsum(:)
+        use pm_kind, only: IKG => IK2
+        integer(IKG)        , intent(in)    , contiguous    :: array(:)
+        integer(IKG)        , intent(out)   , contiguous    :: cumsum(:)
         type(forward_type)  , intent(in)                    :: direction
         type(nothing_type)  , intent(in)                    :: action
     end subroutine
@@ -1622,9 +1622,9 @@ module pm_mathCumSum
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumNewForNon_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)        , intent(in)    , contiguous    :: array(:)
-        integer(IKC)        , intent(out)   , contiguous    :: cumsum(:)
+        use pm_kind, only: IKG => IK1
+        integer(IKG)        , intent(in)    , contiguous    :: array(:)
+        integer(IKG)        , intent(out)   , contiguous    :: cumsum(:)
         type(forward_type)  , intent(in)                    :: direction
         type(nothing_type)  , intent(in)                    :: action
     end subroutine
@@ -1637,9 +1637,9 @@ module pm_mathCumSum
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumNewForNon_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)        , intent(in)    , contiguous    :: array(:)
-        complex(CKC)        , intent(out)   , contiguous    :: cumsum(:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG)        , intent(in)    , contiguous    :: array(:)
+        complex(CKG)        , intent(out)   , contiguous    :: cumsum(:)
         type(forward_type)  , intent(in)                    :: direction
         type(nothing_type)  , intent(in)                    :: action
     end subroutine
@@ -1650,9 +1650,9 @@ module pm_mathCumSum
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumNewForNon_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)        , intent(in)    , contiguous    :: array(:)
-        complex(CKC)        , intent(out)   , contiguous    :: cumsum(:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG)        , intent(in)    , contiguous    :: array(:)
+        complex(CKG)        , intent(out)   , contiguous    :: cumsum(:)
         type(forward_type)  , intent(in)                    :: direction
         type(nothing_type)  , intent(in)                    :: action
     end subroutine
@@ -1663,9 +1663,9 @@ module pm_mathCumSum
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumNewForNon_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)        , intent(in)    , contiguous    :: array(:)
-        complex(CKC)        , intent(out)   , contiguous    :: cumsum(:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG)        , intent(in)    , contiguous    :: array(:)
+        complex(CKG)        , intent(out)   , contiguous    :: cumsum(:)
         type(forward_type)  , intent(in)                    :: direction
         type(nothing_type)  , intent(in)                    :: action
     end subroutine
@@ -1676,9 +1676,9 @@ module pm_mathCumSum
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumNewForNon_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)        , intent(in)    , contiguous    :: array(:)
-        complex(CKC)        , intent(out)   , contiguous    :: cumsum(:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG)        , intent(in)    , contiguous    :: array(:)
+        complex(CKG)        , intent(out)   , contiguous    :: cumsum(:)
         type(forward_type)  , intent(in)                    :: direction
         type(nothing_type)  , intent(in)                    :: action
     end subroutine
@@ -1689,9 +1689,9 @@ module pm_mathCumSum
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumNewForNon_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)        , intent(in)    , contiguous    :: array(:)
-        complex(CKC)        , intent(out)   , contiguous    :: cumsum(:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG)        , intent(in)    , contiguous    :: array(:)
+        complex(CKG)        , intent(out)   , contiguous    :: cumsum(:)
         type(forward_type)  , intent(in)                    :: direction
         type(nothing_type)  , intent(in)                    :: action
     end subroutine
@@ -1704,9 +1704,9 @@ module pm_mathCumSum
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumNewForNon_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)           , intent(in)    , contiguous    :: array(:)
-        real(RKC)           , intent(out)   , contiguous    :: cumsum(:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)           , intent(in)    , contiguous    :: array(:)
+        real(RKG)           , intent(out)   , contiguous    :: cumsum(:)
         type(forward_type)  , intent(in)                    :: direction
         type(nothing_type)  , intent(in)                    :: action
     end subroutine
@@ -1717,9 +1717,9 @@ module pm_mathCumSum
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumNewForNon_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)           , intent(in)    , contiguous    :: array(:)
-        real(RKC)           , intent(out)   , contiguous    :: cumsum(:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)           , intent(in)    , contiguous    :: array(:)
+        real(RKG)           , intent(out)   , contiguous    :: cumsum(:)
         type(forward_type)  , intent(in)                    :: direction
         type(nothing_type)  , intent(in)                    :: action
     end subroutine
@@ -1730,9 +1730,9 @@ module pm_mathCumSum
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumNewForNon_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)           , intent(in)    , contiguous    :: array(:)
-        real(RKC)           , intent(out)   , contiguous    :: cumsum(:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)           , intent(in)    , contiguous    :: array(:)
+        real(RKG)           , intent(out)   , contiguous    :: cumsum(:)
         type(forward_type)  , intent(in)                    :: direction
         type(nothing_type)  , intent(in)                    :: action
     end subroutine
@@ -1743,9 +1743,9 @@ module pm_mathCumSum
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumNewForNon_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)           , intent(in)    , contiguous    :: array(:)
-        real(RKC)           , intent(out)   , contiguous    :: cumsum(:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)           , intent(in)    , contiguous    :: array(:)
+        real(RKG)           , intent(out)   , contiguous    :: cumsum(:)
         type(forward_type)  , intent(in)                    :: direction
         type(nothing_type)  , intent(in)                    :: action
     end subroutine
@@ -1756,9 +1756,9 @@ module pm_mathCumSum
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumNewForNon_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)           , intent(in)    , contiguous    :: array(:)
-        real(RKC)           , intent(out)   , contiguous    :: cumsum(:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)           , intent(in)    , contiguous    :: array(:)
+        real(RKG)           , intent(out)   , contiguous    :: cumsum(:)
         type(forward_type)  , intent(in)                    :: direction
         type(nothing_type)  , intent(in)                    :: action
     end subroutine
@@ -1777,9 +1777,9 @@ module pm_mathCumSum
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumNewForRev_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)        , intent(in)    , contiguous    :: array(:)
-        integer(IKC)        , intent(out)   , contiguous    :: cumsum(:)
+        use pm_kind, only: IKG => IK5
+        integer(IKG)        , intent(in)    , contiguous    :: array(:)
+        integer(IKG)        , intent(out)   , contiguous    :: cumsum(:)
         type(forward_type)  , intent(in)                    :: direction
         type(reverse_type)  , intent(in)                    :: action
     end subroutine
@@ -1790,9 +1790,9 @@ module pm_mathCumSum
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumNewForRev_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)        , intent(in)    , contiguous    :: array(:)
-        integer(IKC)        , intent(out)   , contiguous    :: cumsum(:)
+        use pm_kind, only: IKG => IK4
+        integer(IKG)        , intent(in)    , contiguous    :: array(:)
+        integer(IKG)        , intent(out)   , contiguous    :: cumsum(:)
         type(forward_type)  , intent(in)                    :: direction
         type(reverse_type)  , intent(in)                    :: action
     end subroutine
@@ -1803,9 +1803,9 @@ module pm_mathCumSum
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumNewForRev_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)        , intent(in)    , contiguous    :: array(:)
-        integer(IKC)        , intent(out)   , contiguous    :: cumsum(:)
+        use pm_kind, only: IKG => IK3
+        integer(IKG)        , intent(in)    , contiguous    :: array(:)
+        integer(IKG)        , intent(out)   , contiguous    :: cumsum(:)
         type(forward_type)  , intent(in)                    :: direction
         type(reverse_type)  , intent(in)                    :: action
     end subroutine
@@ -1816,9 +1816,9 @@ module pm_mathCumSum
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumNewForRev_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)        , intent(in)    , contiguous    :: array(:)
-        integer(IKC)        , intent(out)   , contiguous    :: cumsum(:)
+        use pm_kind, only: IKG => IK2
+        integer(IKG)        , intent(in)    , contiguous    :: array(:)
+        integer(IKG)        , intent(out)   , contiguous    :: cumsum(:)
         type(forward_type)  , intent(in)                    :: direction
         type(reverse_type)  , intent(in)                    :: action
     end subroutine
@@ -1829,9 +1829,9 @@ module pm_mathCumSum
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumNewForRev_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)        , intent(in)    , contiguous    :: array(:)
-        integer(IKC)        , intent(out)   , contiguous    :: cumsum(:)
+        use pm_kind, only: IKG => IK1
+        integer(IKG)        , intent(in)    , contiguous    :: array(:)
+        integer(IKG)        , intent(out)   , contiguous    :: cumsum(:)
         type(forward_type)  , intent(in)                    :: direction
         type(reverse_type)  , intent(in)                    :: action
     end subroutine
@@ -1844,9 +1844,9 @@ module pm_mathCumSum
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumNewForRev_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)        , intent(in)    , contiguous    :: array(:)
-        complex(CKC)        , intent(out)   , contiguous    :: cumsum(:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG)        , intent(in)    , contiguous    :: array(:)
+        complex(CKG)        , intent(out)   , contiguous    :: cumsum(:)
         type(forward_type)  , intent(in)                    :: direction
         type(reverse_type)  , intent(in)                    :: action
     end subroutine
@@ -1857,9 +1857,9 @@ module pm_mathCumSum
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumNewForRev_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)        , intent(in)    , contiguous    :: array(:)
-        complex(CKC)        , intent(out)   , contiguous    :: cumsum(:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG)        , intent(in)    , contiguous    :: array(:)
+        complex(CKG)        , intent(out)   , contiguous    :: cumsum(:)
         type(forward_type)  , intent(in)                    :: direction
         type(reverse_type)  , intent(in)                    :: action
     end subroutine
@@ -1870,9 +1870,9 @@ module pm_mathCumSum
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumNewForRev_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)        , intent(in)    , contiguous    :: array(:)
-        complex(CKC)        , intent(out)   , contiguous    :: cumsum(:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG)        , intent(in)    , contiguous    :: array(:)
+        complex(CKG)        , intent(out)   , contiguous    :: cumsum(:)
         type(forward_type)  , intent(in)                    :: direction
         type(reverse_type)  , intent(in)                    :: action
     end subroutine
@@ -1883,9 +1883,9 @@ module pm_mathCumSum
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumNewForRev_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)        , intent(in)    , contiguous    :: array(:)
-        complex(CKC)        , intent(out)   , contiguous    :: cumsum(:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG)        , intent(in)    , contiguous    :: array(:)
+        complex(CKG)        , intent(out)   , contiguous    :: cumsum(:)
         type(forward_type)  , intent(in)                    :: direction
         type(reverse_type)  , intent(in)                    :: action
     end subroutine
@@ -1896,9 +1896,9 @@ module pm_mathCumSum
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumNewForRev_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)        , intent(in)    , contiguous    :: array(:)
-        complex(CKC)        , intent(out)   , contiguous    :: cumsum(:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG)        , intent(in)    , contiguous    :: array(:)
+        complex(CKG)        , intent(out)   , contiguous    :: cumsum(:)
         type(forward_type)  , intent(in)                    :: direction
         type(reverse_type)  , intent(in)                    :: action
     end subroutine
@@ -1911,9 +1911,9 @@ module pm_mathCumSum
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumNewForRev_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)           , intent(in)    , contiguous    :: array(:)
-        real(RKC)           , intent(out)   , contiguous    :: cumsum(:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)           , intent(in)    , contiguous    :: array(:)
+        real(RKG)           , intent(out)   , contiguous    :: cumsum(:)
         type(forward_type)  , intent(in)                    :: direction
         type(reverse_type)  , intent(in)                    :: action
     end subroutine
@@ -1924,9 +1924,9 @@ module pm_mathCumSum
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumNewForRev_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)           , intent(in)    , contiguous    :: array(:)
-        real(RKC)           , intent(out)   , contiguous    :: cumsum(:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)           , intent(in)    , contiguous    :: array(:)
+        real(RKG)           , intent(out)   , contiguous    :: cumsum(:)
         type(forward_type)  , intent(in)                    :: direction
         type(reverse_type)  , intent(in)                    :: action
     end subroutine
@@ -1937,9 +1937,9 @@ module pm_mathCumSum
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumNewForRev_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)           , intent(in)    , contiguous    :: array(:)
-        real(RKC)           , intent(out)   , contiguous    :: cumsum(:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)           , intent(in)    , contiguous    :: array(:)
+        real(RKG)           , intent(out)   , contiguous    :: cumsum(:)
         type(forward_type)  , intent(in)                    :: direction
         type(reverse_type)  , intent(in)                    :: action
     end subroutine
@@ -1950,9 +1950,9 @@ module pm_mathCumSum
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumNewForRev_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)           , intent(in)    , contiguous    :: array(:)
-        real(RKC)           , intent(out)   , contiguous    :: cumsum(:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)           , intent(in)    , contiguous    :: array(:)
+        real(RKG)           , intent(out)   , contiguous    :: cumsum(:)
         type(forward_type)  , intent(in)                    :: direction
         type(reverse_type)  , intent(in)                    :: action
     end subroutine
@@ -1963,9 +1963,9 @@ module pm_mathCumSum
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumNewForRev_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)           , intent(in)    , contiguous    :: array(:)
-        real(RKC)           , intent(out)   , contiguous    :: cumsum(:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)           , intent(in)    , contiguous    :: array(:)
+        real(RKG)           , intent(out)   , contiguous    :: cumsum(:)
         type(forward_type)  , intent(in)                    :: direction
         type(reverse_type)  , intent(in)                    :: action
     end subroutine
@@ -1994,9 +1994,9 @@ module pm_mathCumSum
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumNewBacNon_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)        , intent(in)    , contiguous    :: array(:)
-        integer(IKC)        , intent(out)   , contiguous    :: cumsum(:)
+        use pm_kind, only: IKG => IK5
+        integer(IKG)        , intent(in)    , contiguous    :: array(:)
+        integer(IKG)        , intent(out)   , contiguous    :: cumsum(:)
         type(backward_type) , intent(in)                    :: direction
         type(nothing_type)  , intent(in)                    :: action
     end subroutine
@@ -2007,9 +2007,9 @@ module pm_mathCumSum
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumNewBacNon_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)        , intent(in)    , contiguous    :: array(:)
-        integer(IKC)        , intent(out)   , contiguous    :: cumsum(:)
+        use pm_kind, only: IKG => IK4
+        integer(IKG)        , intent(in)    , contiguous    :: array(:)
+        integer(IKG)        , intent(out)   , contiguous    :: cumsum(:)
         type(backward_type) , intent(in)                    :: direction
         type(nothing_type)  , intent(in)                    :: action
     end subroutine
@@ -2020,9 +2020,9 @@ module pm_mathCumSum
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumNewBacNon_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)        , intent(in)    , contiguous    :: array(:)
-        integer(IKC)        , intent(out)   , contiguous    :: cumsum(:)
+        use pm_kind, only: IKG => IK3
+        integer(IKG)        , intent(in)    , contiguous    :: array(:)
+        integer(IKG)        , intent(out)   , contiguous    :: cumsum(:)
         type(backward_type) , intent(in)                    :: direction
         type(nothing_type)  , intent(in)                    :: action
     end subroutine
@@ -2033,9 +2033,9 @@ module pm_mathCumSum
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumNewBacNon_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)        , intent(in)    , contiguous    :: array(:)
-        integer(IKC)        , intent(out)   , contiguous    :: cumsum(:)
+        use pm_kind, only: IKG => IK2
+        integer(IKG)        , intent(in)    , contiguous    :: array(:)
+        integer(IKG)        , intent(out)   , contiguous    :: cumsum(:)
         type(backward_type) , intent(in)                    :: direction
         type(nothing_type)  , intent(in)                    :: action
     end subroutine
@@ -2046,9 +2046,9 @@ module pm_mathCumSum
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumNewBacNon_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)        , intent(in)    , contiguous    :: array(:)
-        integer(IKC)        , intent(out)   , contiguous    :: cumsum(:)
+        use pm_kind, only: IKG => IK1
+        integer(IKG)        , intent(in)    , contiguous    :: array(:)
+        integer(IKG)        , intent(out)   , contiguous    :: cumsum(:)
         type(backward_type) , intent(in)                    :: direction
         type(nothing_type)  , intent(in)                    :: action
     end subroutine
@@ -2061,9 +2061,9 @@ module pm_mathCumSum
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumNewBacNon_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)        , intent(in)    , contiguous    :: array(:)
-        complex(CKC)        , intent(out)   , contiguous    :: cumsum(:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG)        , intent(in)    , contiguous    :: array(:)
+        complex(CKG)        , intent(out)   , contiguous    :: cumsum(:)
         type(backward_type) , intent(in)                    :: direction
         type(nothing_type)  , intent(in)                    :: action
     end subroutine
@@ -2074,9 +2074,9 @@ module pm_mathCumSum
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumNewBacNon_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)        , intent(in)    , contiguous    :: array(:)
-        complex(CKC)        , intent(out)   , contiguous    :: cumsum(:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG)        , intent(in)    , contiguous    :: array(:)
+        complex(CKG)        , intent(out)   , contiguous    :: cumsum(:)
         type(backward_type) , intent(in)                    :: direction
         type(nothing_type)  , intent(in)                    :: action
     end subroutine
@@ -2087,9 +2087,9 @@ module pm_mathCumSum
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumNewBacNon_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)        , intent(in)    , contiguous    :: array(:)
-        complex(CKC)        , intent(out)   , contiguous    :: cumsum(:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG)        , intent(in)    , contiguous    :: array(:)
+        complex(CKG)        , intent(out)   , contiguous    :: cumsum(:)
         type(backward_type) , intent(in)                    :: direction
         type(nothing_type)  , intent(in)                    :: action
     end subroutine
@@ -2100,9 +2100,9 @@ module pm_mathCumSum
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumNewBacNon_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)        , intent(in)    , contiguous    :: array(:)
-        complex(CKC)        , intent(out)   , contiguous    :: cumsum(:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG)        , intent(in)    , contiguous    :: array(:)
+        complex(CKG)        , intent(out)   , contiguous    :: cumsum(:)
         type(backward_type) , intent(in)                    :: direction
         type(nothing_type)  , intent(in)                    :: action
     end subroutine
@@ -2113,9 +2113,9 @@ module pm_mathCumSum
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumNewBacNon_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)        , intent(in)    , contiguous    :: array(:)
-        complex(CKC)        , intent(out)   , contiguous    :: cumsum(:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG)        , intent(in)    , contiguous    :: array(:)
+        complex(CKG)        , intent(out)   , contiguous    :: cumsum(:)
         type(backward_type) , intent(in)                    :: direction
         type(nothing_type)  , intent(in)                    :: action
     end subroutine
@@ -2128,9 +2128,9 @@ module pm_mathCumSum
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumNewBacNon_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)           , intent(in)    , contiguous    :: array(:)
-        real(RKC)           , intent(out)   , contiguous    :: cumsum(:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)           , intent(in)    , contiguous    :: array(:)
+        real(RKG)           , intent(out)   , contiguous    :: cumsum(:)
         type(backward_type) , intent(in)                    :: direction
         type(nothing_type)  , intent(in)                    :: action
     end subroutine
@@ -2141,9 +2141,9 @@ module pm_mathCumSum
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumNewBacNon_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)           , intent(in)    , contiguous    :: array(:)
-        real(RKC)           , intent(out)   , contiguous    :: cumsum(:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)           , intent(in)    , contiguous    :: array(:)
+        real(RKG)           , intent(out)   , contiguous    :: cumsum(:)
         type(backward_type) , intent(in)                    :: direction
         type(nothing_type)  , intent(in)                    :: action
     end subroutine
@@ -2154,9 +2154,9 @@ module pm_mathCumSum
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumNewBacNon_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)           , intent(in)    , contiguous    :: array(:)
-        real(RKC)           , intent(out)   , contiguous    :: cumsum(:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)           , intent(in)    , contiguous    :: array(:)
+        real(RKG)           , intent(out)   , contiguous    :: cumsum(:)
         type(backward_type) , intent(in)                    :: direction
         type(nothing_type)  , intent(in)                    :: action
     end subroutine
@@ -2167,9 +2167,9 @@ module pm_mathCumSum
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumNewBacNon_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)           , intent(in)    , contiguous    :: array(:)
-        real(RKC)           , intent(out)   , contiguous    :: cumsum(:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)           , intent(in)    , contiguous    :: array(:)
+        real(RKG)           , intent(out)   , contiguous    :: cumsum(:)
         type(backward_type) , intent(in)                    :: direction
         type(nothing_type)  , intent(in)                    :: action
     end subroutine
@@ -2180,9 +2180,9 @@ module pm_mathCumSum
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumNewBacNon_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)           , intent(in)    , contiguous    :: array(:)
-        real(RKC)           , intent(out)   , contiguous    :: cumsum(:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)           , intent(in)    , contiguous    :: array(:)
+        real(RKG)           , intent(out)   , contiguous    :: cumsum(:)
         type(backward_type) , intent(in)                    :: direction
         type(nothing_type)  , intent(in)                    :: action
     end subroutine
@@ -2201,9 +2201,9 @@ module pm_mathCumSum
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumNewBacRev_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)        , intent(in)    , contiguous    :: array(:)
-        integer(IKC)        , intent(out)   , contiguous    :: cumsum(:)
+        use pm_kind, only: IKG => IK5
+        integer(IKG)        , intent(in)    , contiguous    :: array(:)
+        integer(IKG)        , intent(out)   , contiguous    :: cumsum(:)
         type(backward_type) , intent(in)                    :: direction
         type(reverse_type)  , intent(in)                    :: action
     end subroutine
@@ -2214,9 +2214,9 @@ module pm_mathCumSum
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumNewBacRev_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)        , intent(in)    , contiguous    :: array(:)
-        integer(IKC)        , intent(out)   , contiguous    :: cumsum(:)
+        use pm_kind, only: IKG => IK4
+        integer(IKG)        , intent(in)    , contiguous    :: array(:)
+        integer(IKG)        , intent(out)   , contiguous    :: cumsum(:)
         type(backward_type) , intent(in)                    :: direction
         type(reverse_type)  , intent(in)                    :: action
     end subroutine
@@ -2227,9 +2227,9 @@ module pm_mathCumSum
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumNewBacRev_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)        , intent(in)    , contiguous    :: array(:)
-        integer(IKC)        , intent(out)   , contiguous    :: cumsum(:)
+        use pm_kind, only: IKG => IK3
+        integer(IKG)        , intent(in)    , contiguous    :: array(:)
+        integer(IKG)        , intent(out)   , contiguous    :: cumsum(:)
         type(backward_type) , intent(in)                    :: direction
         type(reverse_type)  , intent(in)                    :: action
     end subroutine
@@ -2240,9 +2240,9 @@ module pm_mathCumSum
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumNewBacRev_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)        , intent(in)    , contiguous    :: array(:)
-        integer(IKC)        , intent(out)   , contiguous    :: cumsum(:)
+        use pm_kind, only: IKG => IK2
+        integer(IKG)        , intent(in)    , contiguous    :: array(:)
+        integer(IKG)        , intent(out)   , contiguous    :: cumsum(:)
         type(backward_type) , intent(in)                    :: direction
         type(reverse_type)  , intent(in)                    :: action
     end subroutine
@@ -2253,9 +2253,9 @@ module pm_mathCumSum
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumNewBacRev_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)        , intent(in)    , contiguous    :: array(:)
-        integer(IKC)        , intent(out)   , contiguous    :: cumsum(:)
+        use pm_kind, only: IKG => IK1
+        integer(IKG)        , intent(in)    , contiguous    :: array(:)
+        integer(IKG)        , intent(out)   , contiguous    :: cumsum(:)
         type(backward_type) , intent(in)                    :: direction
         type(reverse_type)  , intent(in)                    :: action
     end subroutine
@@ -2268,9 +2268,9 @@ module pm_mathCumSum
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumNewBacRev_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)        , intent(in)    , contiguous    :: array(:)
-        complex(CKC)        , intent(out)   , contiguous    :: cumsum(:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG)        , intent(in)    , contiguous    :: array(:)
+        complex(CKG)        , intent(out)   , contiguous    :: cumsum(:)
         type(backward_type) , intent(in)                    :: direction
         type(reverse_type)  , intent(in)                    :: action
     end subroutine
@@ -2281,9 +2281,9 @@ module pm_mathCumSum
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumNewBacRev_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)        , intent(in)    , contiguous    :: array(:)
-        complex(CKC)        , intent(out)   , contiguous    :: cumsum(:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG)        , intent(in)    , contiguous    :: array(:)
+        complex(CKG)        , intent(out)   , contiguous    :: cumsum(:)
         type(backward_type) , intent(in)                    :: direction
         type(reverse_type)  , intent(in)                    :: action
     end subroutine
@@ -2294,9 +2294,9 @@ module pm_mathCumSum
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumNewBacRev_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)        , intent(in)    , contiguous    :: array(:)
-        complex(CKC)        , intent(out)   , contiguous    :: cumsum(:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG)        , intent(in)    , contiguous    :: array(:)
+        complex(CKG)        , intent(out)   , contiguous    :: cumsum(:)
         type(backward_type) , intent(in)                    :: direction
         type(reverse_type)  , intent(in)                    :: action
     end subroutine
@@ -2307,9 +2307,9 @@ module pm_mathCumSum
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumNewBacRev_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)        , intent(in)    , contiguous    :: array(:)
-        complex(CKC)        , intent(out)   , contiguous    :: cumsum(:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG)        , intent(in)    , contiguous    :: array(:)
+        complex(CKG)        , intent(out)   , contiguous    :: cumsum(:)
         type(backward_type) , intent(in)                    :: direction
         type(reverse_type)  , intent(in)                    :: action
     end subroutine
@@ -2320,9 +2320,9 @@ module pm_mathCumSum
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumNewBacRev_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)        , intent(in)    , contiguous    :: array(:)
-        complex(CKC)        , intent(out)   , contiguous    :: cumsum(:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG)        , intent(in)    , contiguous    :: array(:)
+        complex(CKG)        , intent(out)   , contiguous    :: cumsum(:)
         type(backward_type) , intent(in)                    :: direction
         type(reverse_type)  , intent(in)                    :: action
     end subroutine
@@ -2335,9 +2335,9 @@ module pm_mathCumSum
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumNewBacRev_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)           , intent(in)    , contiguous    :: array(:)
-        real(RKC)           , intent(out)   , contiguous    :: cumsum(:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)           , intent(in)    , contiguous    :: array(:)
+        real(RKG)           , intent(out)   , contiguous    :: cumsum(:)
         type(backward_type) , intent(in)                    :: direction
         type(reverse_type)  , intent(in)                    :: action
     end subroutine
@@ -2348,9 +2348,9 @@ module pm_mathCumSum
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumNewBacRev_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)           , intent(in)    , contiguous    :: array(:)
-        real(RKC)           , intent(out)   , contiguous    :: cumsum(:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)           , intent(in)    , contiguous    :: array(:)
+        real(RKG)           , intent(out)   , contiguous    :: cumsum(:)
         type(backward_type) , intent(in)                    :: direction
         type(reverse_type)  , intent(in)                    :: action
     end subroutine
@@ -2361,9 +2361,9 @@ module pm_mathCumSum
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumNewBacRev_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)           , intent(in)    , contiguous    :: array(:)
-        real(RKC)           , intent(out)   , contiguous    :: cumsum(:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)           , intent(in)    , contiguous    :: array(:)
+        real(RKG)           , intent(out)   , contiguous    :: cumsum(:)
         type(backward_type) , intent(in)                    :: direction
         type(reverse_type)  , intent(in)                    :: action
     end subroutine
@@ -2374,9 +2374,9 @@ module pm_mathCumSum
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumNewBacRev_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)           , intent(in)    , contiguous    :: array(:)
-        real(RKC)           , intent(out)   , contiguous    :: cumsum(:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)           , intent(in)    , contiguous    :: array(:)
+        real(RKG)           , intent(out)   , contiguous    :: cumsum(:)
         type(backward_type) , intent(in)                    :: direction
         type(reverse_type)  , intent(in)                    :: action
     end subroutine
@@ -2387,9 +2387,9 @@ module pm_mathCumSum
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumSumNewBacRev_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)           , intent(in)    , contiguous    :: array(:)
-        real(RKC)           , intent(out)   , contiguous    :: cumsum(:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)           , intent(in)    , contiguous    :: array(:)
+        real(RKG)           , intent(out)   , contiguous    :: cumsum(:)
         type(backward_type) , intent(in)                    :: direction
         type(reverse_type)  , intent(in)                    :: action
     end subroutine

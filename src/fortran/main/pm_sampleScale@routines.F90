@@ -70,35 +70,35 @@ contains
 
 #if CK5_ENABLED
     module procedure getScaled_ARK_ONO_D1_CK5
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
 #include "pm_sampleScale@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure getScaled_ARK_ONO_D1_CK4
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
 #include "pm_sampleScale@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure getScaled_ARK_ONO_D1_CK3
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
 #include "pm_sampleScale@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure getScaled_ARK_ONO_D1_CK2
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
 #include "pm_sampleScale@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure getScaled_ARK_ONO_D1_CK1
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
 #include "pm_sampleScale@routines.inc.F90"
     end procedure
 #endif
@@ -111,35 +111,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getScaled_ARK_ONO_D1_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_sampleScale@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getScaled_ARK_ONO_D1_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_sampleScale@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getScaled_ARK_ONO_D1_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_sampleScale@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getScaled_ARK_ONO_D1_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_sampleScale@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getScaled_ARK_ONO_D1_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_sampleScale@routines.inc.F90"
     end procedure
 #endif
@@ -174,35 +174,35 @@ contains
 
 #if CK5_ENABLED
     module procedure getScaled_ARK_ONO_D2_CK5
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
 #include "pm_sampleScale@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure getScaled_ARK_ONO_D2_CK4
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
 #include "pm_sampleScale@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure getScaled_ARK_ONO_D2_CK3
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
 #include "pm_sampleScale@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure getScaled_ARK_ONO_D2_CK2
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
 #include "pm_sampleScale@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure getScaled_ARK_ONO_D2_CK1
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
 #include "pm_sampleScale@routines.inc.F90"
     end procedure
 #endif
@@ -215,35 +215,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getScaled_ARK_ONO_D2_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_sampleScale@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getScaled_ARK_ONO_D2_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_sampleScale@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getScaled_ARK_ONO_D2_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_sampleScale@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getScaled_ARK_ONO_D2_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_sampleScale@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getScaled_ARK_ONO_D2_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_sampleScale@routines.inc.F90"
     end procedure
 #endif
@@ -266,35 +266,35 @@ contains
 
 #if CK5_ENABLED
     module procedure getScaled_ARK_OTH_D2_CK5
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
 #include "pm_sampleScale@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure getScaled_ARK_OTH_D2_CK4
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
 #include "pm_sampleScale@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure getScaled_ARK_OTH_D2_CK3
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
 #include "pm_sampleScale@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure getScaled_ARK_OTH_D2_CK2
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
 #include "pm_sampleScale@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure getScaled_ARK_OTH_D2_CK1
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
 #include "pm_sampleScale@routines.inc.F90"
     end procedure
 #endif
@@ -307,35 +307,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getScaled_ARK_OTH_D2_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_sampleScale@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getScaled_ARK_OTH_D2_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_sampleScale@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getScaled_ARK_OTH_D2_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_sampleScale@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getScaled_ARK_OTH_D2_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_sampleScale@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getScaled_ARK_OTH_D2_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_sampleScale@routines.inc.F90"
     end procedure
 #endif
@@ -392,35 +392,35 @@ contains
 
 #if CK5_ENABLED
     module procedure getScaled_ACK_ONO_D1_CK5
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
 #include "pm_sampleScale@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure getScaled_ACK_ONO_D1_CK4
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
 #include "pm_sampleScale@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure getScaled_ACK_ONO_D1_CK3
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
 #include "pm_sampleScale@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure getScaled_ACK_ONO_D1_CK2
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
 #include "pm_sampleScale@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure getScaled_ACK_ONO_D1_CK1
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
 #include "pm_sampleScale@routines.inc.F90"
     end procedure
 #endif
@@ -455,35 +455,35 @@ contains
 
 #if CK5_ENABLED
     module procedure getScaled_ACK_ONO_D2_CK5
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
 #include "pm_sampleScale@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure getScaled_ACK_ONO_D2_CK4
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
 #include "pm_sampleScale@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure getScaled_ACK_ONO_D2_CK3
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
 #include "pm_sampleScale@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure getScaled_ACK_ONO_D2_CK2
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
 #include "pm_sampleScale@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure getScaled_ACK_ONO_D2_CK1
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
 #include "pm_sampleScale@routines.inc.F90"
     end procedure
 #endif
@@ -506,35 +506,35 @@ contains
 
 #if CK5_ENABLED
     module procedure getScaled_ACK_OTH_D2_CK5
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
 #include "pm_sampleScale@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure getScaled_ACK_OTH_D2_CK4
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
 #include "pm_sampleScale@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure getScaled_ACK_OTH_D2_CK3
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
 #include "pm_sampleScale@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure getScaled_ACK_OTH_D2_CK2
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
 #include "pm_sampleScale@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure getScaled_ACK_OTH_D2_CK1
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
 #include "pm_sampleScale@routines.inc.F90"
     end procedure
 #endif
@@ -585,35 +585,35 @@ contains
 
 #if CK5_ENABLED
     module procedure setScaled_ARK_D1_CK5
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
 #include "pm_sampleScale@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure setScaled_ARK_D1_CK4
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
 #include "pm_sampleScale@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure setScaled_ARK_D1_CK3
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
 #include "pm_sampleScale@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure setScaled_ARK_D1_CK2
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
 #include "pm_sampleScale@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure setScaled_ARK_D1_CK1
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
 #include "pm_sampleScale@routines.inc.F90"
     end procedure
 #endif
@@ -626,35 +626,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setScaled_ARK_D1_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_sampleScale@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setScaled_ARK_D1_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_sampleScale@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setScaled_ARK_D1_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_sampleScale@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setScaled_ARK_D1_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_sampleScale@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setScaled_ARK_D1_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_sampleScale@routines.inc.F90"
     end procedure
 #endif
@@ -677,35 +677,35 @@ contains
 
 #if CK5_ENABLED
     module procedure setScaled_ARK_D2_CK5
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
 #include "pm_sampleScale@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure setScaled_ARK_D2_CK4
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
 #include "pm_sampleScale@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure setScaled_ARK_D2_CK3
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
 #include "pm_sampleScale@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure setScaled_ARK_D2_CK2
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
 #include "pm_sampleScale@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure setScaled_ARK_D2_CK1
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
 #include "pm_sampleScale@routines.inc.F90"
     end procedure
 #endif
@@ -718,35 +718,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setScaled_ARK_D2_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_sampleScale@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setScaled_ARK_D2_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_sampleScale@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setScaled_ARK_D2_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_sampleScale@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setScaled_ARK_D2_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_sampleScale@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setScaled_ARK_D2_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_sampleScale@routines.inc.F90"
     end procedure
 #endif
@@ -791,35 +791,35 @@ contains
 
 #if CK5_ENABLED
     module procedure setScaled_ACK_D1_CK5
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
 #include "pm_sampleScale@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure setScaled_ACK_D1_CK4
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
 #include "pm_sampleScale@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure setScaled_ACK_D1_CK3
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
 #include "pm_sampleScale@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure setScaled_ACK_D1_CK2
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
 #include "pm_sampleScale@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure setScaled_ACK_D1_CK1
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
 #include "pm_sampleScale@routines.inc.F90"
     end procedure
 #endif
@@ -842,35 +842,35 @@ contains
 
 #if CK5_ENABLED
     module procedure setScaled_ACK_D2_CK5
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
 #include "pm_sampleScale@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure setScaled_ACK_D2_CK4
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
 #include "pm_sampleScale@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure setScaled_ACK_D2_CK3
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
 #include "pm_sampleScale@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure setScaled_ACK_D2_CK2
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
 #include "pm_sampleScale@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure setScaled_ACK_D2_CK1
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
 #include "pm_sampleScale@routines.inc.F90"
     end procedure
 #endif

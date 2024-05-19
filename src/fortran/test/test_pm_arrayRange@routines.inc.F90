@@ -26,19 +26,19 @@
 
 #if     SK_ENABLED
 #define ALL
-#define TYPE_KIND character(1,SKC)
+#define TYPE_KIND character(1,SKG)
         integer(IK)                     :: step
-        character(1,SKC)                :: start, finit
-        character(:,SKC), allocatable   :: range, range_ref
+        character(1,SKG)                :: start, finit
+        character(:,SKG), allocatable   :: range, range_ref
 #elif   IK_ENABLED
-#define TYPE_KIND integer(IKC)
-        integer(IKC)                    :: start, finit, step
-        integer(IKC)    , allocatable   :: range(:), range_ref(:)
+#define TYPE_KIND integer(IKG)
+        integer(IKG)                    :: start, finit, step
+        integer(IKG)    , allocatable   :: range(:), range_ref(:)
 #elif   RK_ENABLED
-#define TYPE_KIND real(RKC)
-        real(RKC)                       :: start, finit, step
-        real(RKC)       , allocatable   :: range(:), range_ref(:)
-        real(RKC)       , parameter     :: TOL = 10 * epsilon(0._RKC)
+#define TYPE_KIND real(RKG)
+        real(RKG)                       :: start, finit, step
+        real(RKG)       , allocatable   :: range(:), range_ref(:)
+        real(RKG)       , parameter     :: TOL = 10 * epsilon(0._RKG)
 #else
 #error  "Unrecognized interface."
 #endif
@@ -53,16 +53,16 @@
         step = 1
         start = "z"
         finit = "a"
-        allocate(character(0,SKC) :: range_ref)
+        allocate(character(0,SKG) :: range_ref)
 #elif   IK_ENABLED
-        step = 1_IKC
-        start = +0_IKC
-        finit = -5_IKC
+        step = 1_IKG
+        start = +0_IKG
+        finit = -5_IKG
         allocate(range_ref(0))
 #elif   RK_ENABLED
-        step = 1._RKC
-        start = +0._RKC
-        finit = -5._RKC
+        step = 1._RKG
+        start = +0._RKG
+        finit = -5._RKG
         allocate(range_ref(0))
 #endif
         call report(start, finit, step = step)
@@ -80,14 +80,14 @@
         finit = "a"
         range_ref = start
 #elif   IK_ENABLED
-        step = 1_IKC
-        start = +1_IKC
-        finit = +1_IKC
+        step = 1_IKG
+        start = +1_IKG
+        finit = +1_IKG
         range_ref = [start]
 #elif   RK_ENABLED
-        step = 1._RKC
-        start = +1._RKC
-        finit = +1._RKC
+        step = 1._RKG
+        start = +1._RKG
+        finit = +1._RKG
         range_ref = [start]
 #endif
 
@@ -109,14 +109,14 @@
         finit = "b"
         range_ref = start
 #elif   IK_ENABLED
-        step = 2_IKC
-        start = +1_IKC
-        finit = +2_IKC
+        step = 2_IKG
+        start = +1_IKG
+        finit = +2_IKG
         range_ref = [start]
 #elif   RK_ENABLED
-        step = 2._RKC
-        start = +1._RKC
-        finit = +2._RKC
+        step = 2._RKG
+        start = +1._RKG
+        finit = +2._RKG
         range_ref = [start]
 #endif
 
@@ -134,17 +134,17 @@
         step = 2
         start = "a"
         finit = "h"
-        range_ref = SKC_"aceg"
+        range_ref = SKG_"aceg"
 #elif   IK_ENABLED
-        step = 2_IKC
-        start = -1_IKC
-        finit = +5_IKC
-        range_ref = [-1_IKC, +1_IKC, +3_IKC, +5_IKC]
+        step = 2_IKG
+        start = -1_IKG
+        finit = +5_IKG
+        range_ref = [-1_IKG, +1_IKG, +3_IKG, +5_IKG]
 #elif   RK_ENABLED
-        step = 2._RKC
-        start = -1._RKC
-        finit = +6._RKC
-        range_ref = [real(RKC) :: -1, +1, +3, +5]
+        step = 2._RKG
+        start = -1._RKG
+        finit = +6._RKG
+        range_ref = [real(RKG) :: -1, +1, +3, +5]
 #endif
         call report(start, finit, step = step)
         call test%assert(assertion, SK_"getRange() must yield a proper `range` with start, finit, step = "//getStr([start, finit])//SK_", "//getStr(step))
@@ -156,17 +156,17 @@
         step = -3
         start = "h"
         finit = "a"
-        range_ref = SKC_"heb"
+        range_ref = SKG_"heb"
 #elif   IK_ENABLED
-        step = -3_IKC
-        start = +6_IKC
-        finit = -1_IKC
-        range_ref = [6_IKC, +3_IKC, 0_IKC]
+        step = -3_IKG
+        start = +6_IKG
+        finit = -1_IKG
+        range_ref = [6_IKG, +3_IKG, 0_IKG]
 #elif   RK_ENABLED
-        step = -3._RKC
-        start = +6._RKC
-        finit = -1._RKC
-        range_ref = [real(RKC) :: 6, +3, 0]
+        step = -3._RKG
+        start = +6._RKG
+        finit = -1._RKG
+        range_ref = [real(RKG) :: 6, +3, 0]
 #endif
         call report(start, finit, step = step)
         call test%assert(assertion, SK_"getRange() must yield a proper `range` with start, finit, step = "//getStr([start, finit])//SK_", "//getStr(step))
@@ -177,15 +177,15 @@
 #if     SK_ENABLED
         start = "c"
         finit = "a"
-        range_ref = SKC_"cba"
+        range_ref = SKG_"cba"
 #elif   IK_ENABLED
-        start = +3_IKC
-        finit = -1_IKC
-        range_ref = [integer(IKC) :: 3, 2, 1, 0, -1]
+        start = +3_IKG
+        finit = -1_IKG
+        range_ref = [integer(IKG) :: 3, 2, 1, 0, -1]
 #elif   RK_ENABLED
-        start = 1._RKC
-        finit = nearest(nearest(1._RKC, -1._RKC), -1._RKC)
-        range_ref = [real(RKC) :: start, nearest(1._RKC, -1._RKC), finit]
+        start = 1._RKG
+        finit = nearest(nearest(1._RKG, -1._RKG), -1._RKG)
+        range_ref = [real(RKG) :: start, nearest(1._RKG, -1._RKG), finit]
 #endif
         call report(start, finit)
         call test%assert(assertion, SK_"getRange() must yield a proper `range` with start, finit = "//getStr([start, finit]))
@@ -197,11 +197,11 @@
         start = "A"
         finit = "z"
 #elif   IK_ENABLED
-        start = 1_IKC
-        finit = 10_IKC  
+        start = 1_IKG
+        finit = 10_IKG  
 #elif   RK_ENABLED
-        start = 1._RKC
-        finit = 1._RKC + 1000 * epsilon(0._RKC)
+        start = 1._RKG
+        finit = 1._RKG + 1000 * epsilon(0._RKG)
 #endif
         range = getRange(start, finit)
         call test%assert(assertion, SK_"getRange() must yield a proper `range` with start, finit = "//getStr([start, finit]))
@@ -262,17 +262,17 @@
         step = 1_IK
         start = "a"
         finit = "c"
-        range_ref = SKC_"abc"
+        range_ref = SKG_"abc"
 #elif   IK_ENABLED
-        step = 1_IKC
-        start = +1_IKC
-        finit = +3_IKC
-        range_ref = [integer(IKC) :: 1, 2, 3]
+        step = 1_IKG
+        start = +1_IKG
+        finit = +3_IKG
+        range_ref = [integer(IKG) :: 1, 2, 3]
 #elif   RK_ENABLED
-        step = 1._RKC
-        start = 1._RKC
-        finit = 4._RKC
-        range_ref = [real(RKC) :: 1, 2, 3]
+        step = 1._RKG
+        start = 1._RKG
+        finit = 4._RKG
+        range_ref = [real(RKG) :: 1, 2, 3]
 #endif
         allocate(range, mold = range_ref)
         call report(start, step)
@@ -285,17 +285,17 @@
         step = -2_IK
         start = "f"
         finit = "a"
-        range_ref = SKC_"fdb"
+        range_ref = SKG_"fdb"
 #elif   IK_ENABLED
-        step = -2_IKC
-        start = +6_IKC
-        finit = +1_IKC
-        range_ref = [integer(IKC) :: 6, 4, 2]
+        step = -2_IKG
+        start = +6_IKG
+        finit = +1_IKG
+        range_ref = [integer(IKG) :: 6, 4, 2]
 #elif   RK_ENABLED
-        step = -2._RKC
-        start = 6._RKC
-        finit = 1._RKC
-        range_ref = [real(RKC) :: 6, 4, 2]
+        step = -2._RKG
+        start = 6._RKG
+        finit = 1._RKG
+        range_ref = [real(RKG) :: 6, 4, 2]
 #endif
         allocate(range, mold = range_ref)
         call report(start, step)
@@ -306,18 +306,18 @@
         call reset()
 #if     SK_ENABLED
         start = "a"
-        range_ref = SKC_"abc"
+        range_ref = SKG_"abc"
 #elif   IK_ENABLED
-        start = +1_IKC
-        range_ref = [integer(IKC) :: 1, 2, 3]
+        start = +1_IKG
+        range_ref = [integer(IKG) :: 1, 2, 3]
 #elif   RK_ENABLED
-        start = 1._RKC
+        start = 1._RKG
         allocate(range_ref(3))
         block
             integer(IK) :: i
-            range_ref(1) = nearest(1._RKC, 1._RKC)
+            range_ref(1) = nearest(1._RKG, 1._RKG)
             do i = 2, size(range_ref)
-                range_ref(i) = nearest(range_ref(i - 1), 1._RKC)
+                range_ref(i) = nearest(range_ref(i - 1), 1._RKG)
             end do
         end block
 #endif

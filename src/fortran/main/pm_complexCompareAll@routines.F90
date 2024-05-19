@@ -38,35 +38,35 @@ contains
 
 #if CK5_ENABLED
     module procedure isallless_CK5
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
 #include "pm_complexCompareAll@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure isallless_CK4
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
 #include "pm_complexCompareAll@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure isallless_CK3
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
 #include "pm_complexCompareAll@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure isallless_CK2
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
 #include "pm_complexCompareAll@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure isallless_CK1
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
 #include "pm_complexCompareAll@routines.inc.F90"
     end procedure
 #endif
@@ -79,35 +79,35 @@ contains
 
 #if CK5_ENABLED
     module procedure isallleq_CK5
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
 #include "pm_complexCompareAll@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure isallleq_CK4
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
 #include "pm_complexCompareAll@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure isallleq_CK3
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
 #include "pm_complexCompareAll@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure isallleq_CK2
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
 #include "pm_complexCompareAll@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure isallleq_CK1
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
 #include "pm_complexCompareAll@routines.inc.F90"
     end procedure
 #endif
@@ -120,35 +120,35 @@ contains
 
 #if CK5_ENABLED
     module procedure isallneq_CK5
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
 #include "pm_complexCompareAll@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure isallneq_CK4
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
 #include "pm_complexCompareAll@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure isallneq_CK3
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
 #include "pm_complexCompareAll@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure isallneq_CK2
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
 #include "pm_complexCompareAll@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure isallneq_CK1
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
 #include "pm_complexCompareAll@routines.inc.F90"
     end procedure
 #endif
@@ -161,21 +161,21 @@ contains
 !
 !#if CK3_ENABLED
 !    module procedure isalleq_CK3
-!        use pm_kind, only: CKC => CK3
+!        use pm_kind, only: CKG => CK3
 !#include "pm_complexCompareAll@routines.inc.F90"
 !    end procedure
 !#endif
 !
 !#if CK2_ENABLED
 !    module procedure isalleq_CK2
-!        use pm_kind, only: CKC => CK2
+!        use pm_kind, only: CKG => CK2
 !#include "pm_complexCompareAll@routines.inc.F90"
 !    end procedure
 !#endif
 !
 !#if CK1_ENABLED
 !    module procedure isalleq_CK1
-!        use pm_kind, only: CKC => CK1
+!        use pm_kind, only: CKG => CK1
 !#include "pm_complexCompareAll@routines.inc.F90"
 !    end procedure
 !#endif
@@ -188,35 +188,35 @@ contains
 
 #if CK5_ENABLED
     module procedure isallmeq_CK5
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
 #include "pm_complexCompareAll@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure isallmeq_CK4
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
 #include "pm_complexCompareAll@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure isallmeq_CK3
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
 #include "pm_complexCompareAll@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure isallmeq_CK2
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
 #include "pm_complexCompareAll@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure isallmeq_CK1
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
 #include "pm_complexCompareAll@routines.inc.F90"
     end procedure
 #endif
@@ -229,35 +229,35 @@ contains
 
 #if CK5_ENABLED
     module procedure isallmore_CK5
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
 #include "pm_complexCompareAll@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure isallmore_CK4
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
 #include "pm_complexCompareAll@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure isallmore_CK3
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
 #include "pm_complexCompareAll@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure isallmore_CK2
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
 #include "pm_complexCompareAll@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure isallmore_CK1
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
 #include "pm_complexCompareAll@routines.inc.F90"
     end procedure
 #endif

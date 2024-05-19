@@ -35,17 +35,17 @@
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
         integer(IK) :: i
-        real(RKC)   , parameter     :: HUGE_RKC = huge(0._RKC)
-        real(RKC)   , parameter     :: LOG_HUGE = log(HUGE_RKC)
-        real(RKC)   , parameter     :: TOL = sqrt(epsilon(0._RKC))
-        real(RKC)                   :: logx, alpha, logPDFNF, logMinX, logMaxX
-        real(RKC)                   :: output, output_ref, diff
+        real(RKG)   , parameter     :: HUGE_RKG = huge(0._RKG)
+        real(RKG)   , parameter     :: LOG_HUGE = log(HUGE_RKG)
+        real(RKG)   , parameter     :: TOL = sqrt(epsilon(0._RKG))
+        real(RKG)                   :: logx, alpha, logPDFNF, logMinX, logMaxX
+        real(RKG)                   :: output, output_ref, diff
 
         assertion = .true._LK
 
         do i = 1_IK, 20_IK
-            logMinX = getUnifRand(-5._RKC, +4._RKC)
-            logMaxX = getUnifRand(logMinX + 1._RKC, logMinX + 4._RKC)
+            logMinX = getUnifRand(-5._RKG, +4._RKG)
+            logMaxX = getUnifRand(logMinX + 1._RKG, logMinX + 4._RKG)
             call runTestsWith(logMaxX)
             call runTestsWith()
         end do
@@ -53,9 +53,9 @@
     contains
 
         subroutine runTestsWith(logMaxX)
-            real(RKC), parameter :: SQRT_LOG_HUGE = sqrt(log(huge(0._RKC)))
-            real(RKC), intent(in), optional :: logMaxX
-            alpha = -getUnifRand(0.5_RKC, +3._RKC)
+            real(RKG), parameter :: SQRT_LOG_HUGE = sqrt(log(huge(0._RKG)))
+            real(RKG), intent(in), optional :: logMaxX
+            alpha = -getUnifRand(0.5_RKG, +3._RKG)
             if (present(logMaxX)) then
                 logPDFNF = getParetoLogPDFNF(alpha, logMinX, logMaxX)
             else
@@ -71,11 +71,11 @@
             end if
             call compare(__LINE__, logMaxX, logx)
 #elif       setParetoLogPDF_ENABLED
-            output_ref = 1._RKC
+            output_ref = 1._RKG
             block
                 character(255, SK) :: msg
                 msg = SK_" "
-                logx = huge(0._RKC)
+                logx = huge(0._RKG)
                 if (present(logMaxX)) logx = exp(logMaxX)
                 assertion = assertion .and. .not. isFailedQuad(getParetoPDF, exp(logMinX), logx, output, reltol = TOL, msg = msg)
                 if (.not. present(logMaxX)) logx = LOG_HUGE
@@ -95,7 +95,7 @@
 #if     getParetoLogPDF_ENABLED
         subroutine compare(line, logMaxX, logx)
             integer, intent(in) :: line
-            real(RKC), intent(in), optional :: logMaxX, logx
+            real(RKG), intent(in), optional :: logMaxX, logx
             diff = abs(output - output_ref)
             assertion = assertion .and. diff <= max(abs(output_ref) * TOL, TOL)
             call report(logMaxX, logx)
@@ -107,8 +107,8 @@
             assertion = assertion .and. diff <= max(abs(output_ref) * TOL, TOL)
         end subroutine
         function getParetoPDF(x) result(pdf)
-            real(RKC), intent(in) :: x
-            real(RKC) :: pdf
+            real(RKG), intent(in) :: x
+            real(RKG) :: pdf
             call setParetoLogPDF(pdf, log(x), alpha, logPDFNF)
             pdf = exp(pdf)
         end function
@@ -119,14 +119,14 @@
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
         subroutine report(logMaxX, logx)
-            real(RKC), intent(in), optional :: logMaxX, logx
+            real(RKG), intent(in), optional :: logMaxX, logx
             if (test%traceable .and. .not. assertion) then
                 ! LCOV_EXCL_START
                 write(test%disp%unit,"(*(g0,:,', '))")
                 write(test%disp%unit,"(*(g0,:,', '))") "present(logx)", present(logx)
                 write(test%disp%unit,"(*(g0,:,', '))") "present(logMaxX)", present(logMaxX)
-                write(test%disp%unit,"(*(g0,:,', '))") "getOption(HUGE_RKC, logx)", getOption(HUGE_RKC, logx)
-                write(test%disp%unit,"(*(g0,:,', '))") "getOption(-HUGE_RKC, logMaxX)", getOption(-HUGE_RKC, logMaxX)
+                write(test%disp%unit,"(*(g0,:,', '))") "getOption(HUGE_RKG, logx)", getOption(HUGE_RKG, logx)
+                write(test%disp%unit,"(*(g0,:,', '))") "getOption(-HUGE_RKG, logMaxX)", getOption(-HUGE_RKG, logMaxX)
                 write(test%disp%unit,"(*(g0,:,', '))") "logPDFNF", logPDFNF
                 write(test%disp%unit,"(*(g0,:,', '))") "logMinX", logMinX
                 write(test%disp%unit,"(*(g0,:,', '))") "alpha", alpha
@@ -147,18 +147,18 @@
 
         integer(IK) :: i
 
-        real(RKC)   , parameter     :: HUGE_RKC = huge(0._RKC)
-        real(RKC)   , parameter     :: LOG_HUGE = log(HUGE_RKC)
-        real(RKC)   , parameter     :: TOL = epsilon(0._RKC) * 10000
-        real(RKC)                   :: alpha, logCDFNF, logMinX, logMaxX
-        real(RKC)                   :: output, output_ref, diff
+        real(RKG)   , parameter     :: HUGE_RKG = huge(0._RKG)
+        real(RKG)   , parameter     :: LOG_HUGE = log(HUGE_RKG)
+        real(RKG)   , parameter     :: TOL = epsilon(0._RKG) * 10000
+        real(RKG)                   :: alpha, logCDFNF, logMinX, logMaxX
+        real(RKG)                   :: output, output_ref, diff
         logical(LK)                 :: logMaxXPresent
 
         assertion = .true._LK
 
         do i = 1_IK, 300_IK
-            logMinX = getUnifRand(-5._RKC, +4._RKC)
-            logMaxX = getUnifRand(logMinX + 1._RKC, logMinX + 4._RKC)
+            logMinX = getUnifRand(-5._RKG, +4._RKG)
+            logMaxX = getUnifRand(logMinX + 1._RKG, logMinX + 4._RKG)
             call runTestsWith(logMaxX = logMaxX)
             call runTestsWith()
         end do
@@ -168,20 +168,20 @@
         subroutine runTestsWith(logMaxX)
 
             use pm_val2str, only: getStr
-            real(RKC), parameter :: SQRT_LOG_HUGE = sqrt(LOG_HUGE)
-            real(RKC), intent(in), optional :: logMaxX
-            real(RKC) :: logx
+            real(RKG), parameter :: SQRT_LOG_HUGE = sqrt(LOG_HUGE)
+            real(RKG), intent(in), optional :: logMaxX
+            real(RKG) :: logx
             logMaxXPresent = present(logMaxX)
-            alpha = -getUnifRand(sqrt(epsilon(0._RKC)), +3._RKC)
+            alpha = -getUnifRand(sqrt(epsilon(0._RKG)), +3._RKG)
             if (logMaxXPresent) then
                 logCDFNF = getParetoLogCDFNF(alpha, logMinX, logMaxX)
             else
-                logCDFNF = 0._RKC
+                logCDFNF = 0._RKG
             end if
 
 #if         getParetoLogCDF_ENABLED
 
-            logx = getUnifRand(logMinX, getOption(logMinX + 4._RKC, logMaxX))
+            logx = getUnifRand(logMinX, getOption(logMinX + 4._RKG, logMaxX))
             if (logMaxXPresent) then
                 call setParetoLogCDF(output_ref, logx, alpha, logMinX, logCDFNF)
                 output = getParetoLogCDF(logx, alpha, logMinX, logMaxX)
@@ -203,7 +203,7 @@
             call report(logMaxX, logx)
             call test%assert(assertion, SK_"@setParetoLogCDF(): The CDF of the Pareto distribution at the lower limit of the support must be zero.", int(__LINE__, IK))
 
-            output_ref = 0._RKC
+            output_ref = 0._RKG
             logx = getOption(+LOG_HUGE, logMaxX)
             if (logMaxXPresent) then
                 call setParetoLogCDF(output, logx, alpha, logMinX, logCDFNF)
@@ -218,7 +218,7 @@
             block
                 character(255, SK) :: msg
                 msg = SK_" "
-                logx = getUnifRand(logMinX, getOption(logMinX + 4._RKC, logMaxX))
+                logx = getUnifRand(logMinX, getOption(logMinX + 4._RKG, logMaxX))
                 assertion = assertion .and. .not. isFailedQuad(getParetoPDF, exp(logMinX), exp(logx), output_ref, reltol = TOL, msg = msg)
                 call report(logMaxX, logx)
                 call test%assert(assertion, SK_"@setParetoLogCDF(): The integral of the Pareto distribution must be computed without failure. msg: "//trim(msg), int(__LINE__, IK))
@@ -243,7 +243,7 @@
 #if     getParetoLogCDF_ENABLED
         subroutine compare(line, logMaxX, logx)
             integer :: line
-            real(RKC), intent(in), optional :: logMaxX, logx
+            real(RKG), intent(in), optional :: logMaxX, logx
             diff = abs(output - output_ref)
             assertion = assertion .and. diff <= max(abs(output_ref) * TOL, TOL) * 10
             call report(logMaxX, logx)
@@ -256,8 +256,8 @@
         end subroutine
         function getParetoPDF(x) result(pdf)
             use pm_distPareto, only: getParetoLogPDF
-            real(RKC), intent(in) :: x
-            real(RKC) :: pdf
+            real(RKG), intent(in) :: x
+            real(RKG) :: pdf
             if (logMaxXPresent) then
                 pdf = exp(getParetoLogPDF(log(x), alpha, logMinX, logMaxX))
             else
@@ -268,14 +268,14 @@
 #error  "Unrecognized interface."
 #endif
         subroutine report(logMaxX, logx)
-            real(RKC), intent(in), optional :: logMaxX, logx
+            real(RKG), intent(in), optional :: logMaxX, logx
             if (test%traceable .and. .not. assertion) then
                 ! LCOV_EXCL_START
                 write(test%disp%unit,"(*(g0,:,', '))")
                 write(test%disp%unit,"(*(g0,:,', '))") "present(logx)", present(logx)
                 write(test%disp%unit,"(*(g0,:,', '))") "present(logMaxX)", present(logMaxX)
-                write(test%disp%unit,"(*(g0,:,', '))") "getOption(HUGE_RKC, logx)", getOption(HUGE_RKC, logx)
-                write(test%disp%unit,"(*(g0,:,', '))") "getOption(-HUGE_RKC, logMaxX)", getOption(-HUGE_RKC, logMaxX)
+                write(test%disp%unit,"(*(g0,:,', '))") "getOption(HUGE_RKG, logx)", getOption(HUGE_RKG, logx)
+                write(test%disp%unit,"(*(g0,:,', '))") "getOption(-HUGE_RKG, logMaxX)", getOption(-HUGE_RKG, logMaxX)
                 write(test%disp%unit,"(*(g0,:,', '))") "logCDFNF", logCDFNF
                 write(test%disp%unit,"(*(g0,:,', '))") "logMinX", logMinX
                 write(test%disp%unit,"(*(g0,:,', '))") "alpha", alpha
@@ -293,18 +293,18 @@
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
         integer(IK) :: i
-        real(RKC)   , parameter     :: HUGE_RKC = huge(0._RKC)
-        real(RKC)   , parameter     :: LOG_HUGE = log(HUGE_RKC)
-        real(RKC)   , parameter     :: TOL = sqrt(epsilon(0._RKC)) * 1000
-        real(RKC)                   :: alpha, logCDFNF, logMinX, logMaxX
-        real(RKC)                   :: logx, output, output_ref, diff
+        real(RKG)   , parameter     :: HUGE_RKG = huge(0._RKG)
+        real(RKG)   , parameter     :: LOG_HUGE = log(HUGE_RKG)
+        real(RKG)   , parameter     :: TOL = sqrt(epsilon(0._RKG)) * 1000
+        real(RKG)                   :: alpha, logCDFNF, logMinX, logMaxX
+        real(RKG)                   :: logx, output, output_ref, diff
         logical(LK)                 :: logMaxXPresent
 
         assertion = .true._LK
 
         do i = 1_IK, 500_IK
             logMinX = getUnifRand(-LOG_HUGE, LOG_HUGE)
-            logMaxX = getUnifRand(logMinX + 1._RKC, logMinX + 4._RKC)
+            logMaxX = getUnifRand(logMinX + 1._RKG, logMinX + 4._RKG)
             call runTestsWith(logMaxX = logMaxX)
             call runTestsWith()
         end do
@@ -318,22 +318,22 @@
         subroutine runTestsWith(logMaxX)
 
             use pm_val2str, only: getStr
-            real(RKC), parameter :: SQRT_LOG_HUGE = sqrt(LOG_HUGE)
-            real(RKC), intent(in), optional :: logMaxX
+            real(RKG), parameter :: SQRT_LOG_HUGE = sqrt(LOG_HUGE)
+            real(RKG), intent(in), optional :: logMaxX
 
             logMaxXPresent = present(logMaxX)
-            alpha = -getUnifRand(0.5_RKC, +3._RKC)
+            alpha = -getUnifRand(0.5_RKG, +3._RKG)
             if (logMaxXPresent) then
                 logCDFNF = getParetoLogCDFNF(alpha, logMinX, logMaxX)
             else
-                logCDFNF = 0._RKC ! getParetoLogCDFNF(alpha, logMinX)
+                logCDFNF = 0._RKG ! getParetoLogCDFNF(alpha, logMinX)
             end if
 
 
-            logx = getUnifRand(logMinX, getOption(logMinX + 4._RKC, logMaxX))
+            logx = getUnifRand(logMinX, getOption(logMinX + 4._RKG, logMaxX))
             if (logMaxXPresent) then
                 call setParetoLogCDF(output_ref, logx, alpha, logMinX, logCDFNF)
-                if (output_ref > 0._RKC) output_ref = 0._RKC ! ensure cdf cannot be larger than 1 due to roundoff error, otherwise algorithm checks will catch it.
+                if (output_ref > 0._RKG) output_ref = 0._RKG ! ensure cdf cannot be larger than 1 due to roundoff error, otherwise algorithm checks will catch it.
                 !write(*,*) output_ref, logx, alpha, logMinX
 #if             getParetoLogQuan_ENABLED
                 output = getParetoLogQuan(output_ref, alpha, logMinX, logMaxX)
@@ -360,7 +360,7 @@
 
         subroutine report(line, logMaxX, logx)
             integer, intent(in) :: line
-            real(RKC), intent(in), optional :: logMaxX, logx
+            real(RKG), intent(in), optional :: logMaxX, logx
             diff = abs(output - output_ref)
             assertion = assertion .and. diff <= max(abs(output_ref) * TOL, TOL)
             if (test%traceable .and. .not. assertion) then
@@ -368,8 +368,8 @@
                 write(test%disp%unit,"(*(g0,:,', '))")
                 write(test%disp%unit,"(*(g0,:,', '))") "present(logx)", present(logx)
                 write(test%disp%unit,"(*(g0,:,', '))") "present(logMaxX)", present(logMaxX)
-                write(test%disp%unit,"(*(g0,:,', '))") "getOption(HUGE_RKC, logx)", getOption(HUGE_RKC, logx)
-                write(test%disp%unit,"(*(g0,:,', '))") "getOption(-HUGE_RKC, logMaxX)", getOption(-HUGE_RKC, logMaxX)
+                write(test%disp%unit,"(*(g0,:,', '))") "getOption(HUGE_RKG, logx)", getOption(HUGE_RKG, logx)
+                write(test%disp%unit,"(*(g0,:,', '))") "getOption(-HUGE_RKG, logMaxX)", getOption(-HUGE_RKG, logMaxX)
                 write(test%disp%unit,"(*(g0,:,', '))") "logCDFNF", logCDFNF
                 write(test%disp%unit,"(*(g0,:,', '))") "logMinX", logMinX
                 write(test%disp%unit,"(*(g0,:,', '))") "alpha", alpha
@@ -391,19 +391,19 @@
 
         integer(IK) :: i
         integer(IK) , parameter     :: NSIM = 1000_IK
-        real(RKC)   , parameter     :: MEAN_REF = 0.5_RKC
-        real(RKC)   , parameter     :: HUGE_RKC = huge(0._RKC)
-        real(RKC)   , parameter     :: LOG_HUGE = log(HUGE_RKC)
-        real(RKC)   , parameter     :: TOL = 0.1_RKC
-        real(RKC)                   :: alpha, logCDFNF, logMinX, logMaxX
-        real(RKC)                   :: LogRand(NSIM), CDF(NSIM), mean, diff
+        real(RKG)   , parameter     :: MEAN_REF = 0.5_RKG
+        real(RKG)   , parameter     :: HUGE_RKG = huge(0._RKG)
+        real(RKG)   , parameter     :: LOG_HUGE = log(HUGE_RKG)
+        real(RKG)   , parameter     :: TOL = 0.1_RKG
+        real(RKG)                   :: alpha, logCDFNF, logMinX, logMaxX
+        real(RKG)                   :: LogRand(NSIM), CDF(NSIM), mean, diff
         logical(LK)                 :: logMaxXPresent
 
         assertion = .true._LK
 
         do i = 1_IK, 2_IK
             logMinX = getUnifRand(-LOG_HUGE, LOG_HUGE)
-            logMaxX = getUnifRand(logMinX + 1._RKC, logMinX + 4._RKC)
+            logMaxX = getUnifRand(logMinX + 1._RKG, logMinX + 4._RKG)
             call runTestsWith(logMaxX = logMaxX)
             call runTestsWith()
         end do
@@ -419,25 +419,25 @@
             use pm_val2str, only: getStr
             use pm_sampleMean, only: getMean
             use pm_distNegExp, only: getNegExpRand
-            real(RKC), parameter :: SQRT_LOG_HUGE = sqrt(LOG_HUGE)
-            real(RKC), intent(in), optional :: logMaxX
+            real(RKG), parameter :: SQRT_LOG_HUGE = sqrt(LOG_HUGE)
+            real(RKG), intent(in), optional :: logMaxX
             integer(IK) :: j
 
             logMaxXPresent = present(logMaxX)
-            alpha = -getUnifRand(0.5_RKC, +3._RKC)
+            alpha = -getUnifRand(0.5_RKG, +3._RKG)
             if (logMaxXPresent) then
                 logCDFNF = getParetoLogCDFNF(alpha, logMinX, logMaxX)
             else
-                logCDFNF = 0._RKC ! getParetoLogCDFNF(alpha, logMinX)
+                logCDFNF = 0._RKG ! getParetoLogCDFNF(alpha, logMinX)
             end if
 
-            LogRand = getUnifRand(logMinX, getOption(logMinX + 4._RKC, logMaxX), s1 = size(LogRand, kind = IK))
+            LogRand = getUnifRand(logMinX, getOption(logMinX + 4._RKG, logMaxX), s1 = size(LogRand, kind = IK))
             if (logMaxXPresent) then
                 do j = 1_IK, size(LogRand, kind = IK)
 #if                 getParetoLogRand_ENABLED
                     LogRand(j) = getParetoLogRand(alpha, logMinX, logMaxX) ! Truncated Pareto distribution.
 #elif               setParetoLogRand_ENABLED
-                    call setParetoLogRand(LogRand(j), getNegExpRand(1._RKC), alpha, logMinX, logCDFNF)
+                    call setParetoLogRand(LogRand(j), getNegExpRand(1._RKG), alpha, logMinX, logCDFNF)
 #else
 #error              "Unrecognized interface."
 #endif
@@ -449,7 +449,7 @@
 #if                 getParetoLogRand_ENABLED
                     LogRand(j) = getParetoLogRand(alpha, logMinX) ! Truncated Pareto distribution.
 #elif               setParetoLogRand_ENABLED
-                    call setParetoLogRand(LogRand(j), getNegExpRand(1._RKC), alpha, logMinX)
+                    call setParetoLogRand(LogRand(j), getNegExpRand(1._RKG), alpha, logMinX)
 #else
 #error              "Unrecognized interface."
 #endif
@@ -466,7 +466,7 @@
 
         subroutine report(line, logMaxX, logRand, mean)
             integer, intent(in) :: line
-            real(RKC), intent(in), optional :: logMaxX, logRand, mean
+            real(RKG), intent(in), optional :: logMaxX, logRand, mean
             if (present(mean) .and. present(logRand)) then
                 error stop "Internal error occurred. Both `logRand` and `mean` input arguments cannot be present simultaneously." ! LCOV_EXCL_LINE
             elseif (present(mean)) then
@@ -482,8 +482,8 @@
                 write(test%disp%unit,"(*(g0,:,', '))")
                 write(test%disp%unit,"(*(g0,:,', '))") "present(LogRand)", present(LogRand)
                 write(test%disp%unit,"(*(g0,:,', '))") "present(logMaxX)", present(logMaxX)
-                write(test%disp%unit,"(*(g0,:,', '))") "getOption(HUGE_RKC, LogRand)", getOption(HUGE_RKC, LogRand)
-                write(test%disp%unit,"(*(g0,:,', '))") "getOption(-HUGE_RKC, logMaxX)", getOption(-HUGE_RKC, logMaxX)
+                write(test%disp%unit,"(*(g0,:,', '))") "getOption(HUGE_RKG, LogRand)", getOption(HUGE_RKG, LogRand)
+                write(test%disp%unit,"(*(g0,:,', '))") "getOption(-HUGE_RKG, logMaxX)", getOption(-HUGE_RKG, logMaxX)
                 write(test%disp%unit,"(*(g0,:,', '))") "logCDFNF", logCDFNF
                 write(test%disp%unit,"(*(g0,:,', '))") "logMinX", logMinX
                 write(test%disp%unit,"(*(g0,:,', '))") "alpha", alpha

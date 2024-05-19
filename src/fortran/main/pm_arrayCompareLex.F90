@@ -153,9 +153,9 @@ module pm_arrayCompareLex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isllt_D0_D0_SK5
 #endif
-        use pm_kind, only: LK, SKC => SK5
-        character(*,SKC), intent(in)                :: array1
-        character(*,SKC), intent(in)                :: array2
+        use pm_kind, only: LK, SKG => SK5
+        character(*,SKG), intent(in)                :: array1
+        character(*,SKG), intent(in)                :: array2
         logical(LK)                                 :: compares
     end function
 #endif
@@ -165,9 +165,9 @@ module pm_arrayCompareLex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isllt_D0_D0_SK4
 #endif
-        use pm_kind, only: LK, SKC => SK4
-        character(*,SKC), intent(in)                :: array1
-        character(*,SKC), intent(in)                :: array2
+        use pm_kind, only: LK, SKG => SK4
+        character(*,SKG), intent(in)                :: array1
+        character(*,SKG), intent(in)                :: array2
         logical(LK)                                 :: compares
     end function
 #endif
@@ -177,9 +177,9 @@ module pm_arrayCompareLex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isllt_D0_D0_SK3
 #endif
-        use pm_kind, only: LK, SKC => SK3
-        character(*,SKC), intent(in)                :: array1
-        character(*,SKC), intent(in)                :: array2
+        use pm_kind, only: LK, SKG => SK3
+        character(*,SKG), intent(in)                :: array1
+        character(*,SKG), intent(in)                :: array2
         logical(LK)                                 :: compares
     end function
 #endif
@@ -189,9 +189,9 @@ module pm_arrayCompareLex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isllt_D0_D0_SK2
 #endif
-        use pm_kind, only: LK, SKC => SK2
-        character(*,SKC), intent(in)                :: array1
-        character(*,SKC), intent(in)                :: array2
+        use pm_kind, only: LK, SKG => SK2
+        character(*,SKG), intent(in)                :: array1
+        character(*,SKG), intent(in)                :: array2
         logical(LK)                                 :: compares
     end function
 #endif
@@ -201,9 +201,9 @@ module pm_arrayCompareLex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isllt_D0_D0_SK1
 #endif
-        use pm_kind, only: LK, SKC => SK1
-        character(*,SKC), intent(in)                :: array1
-        character(*,SKC), intent(in)                :: array2
+        use pm_kind, only: LK, SKG => SK1
+        character(*,SKG), intent(in)                :: array1
+        character(*,SKG), intent(in)                :: array2
         logical(LK)                                 :: compares
     end function
 #endif
@@ -215,9 +215,9 @@ module pm_arrayCompareLex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isllt_D1_D1_SK5
 #endif
-        use pm_kind, only: LK, SKC => SK5
-        character(*,SKC), intent(in), contiguous    :: array1(:)
-        character(*,SKC), intent(in), contiguous    :: array2(:)
+        use pm_kind, only: LK, SKG => SK5
+        character(*,SKG), intent(in), contiguous    :: array1(:)
+        character(*,SKG), intent(in), contiguous    :: array2(:)
         logical(LK)                                 :: compares
     end function
 #endif
@@ -227,9 +227,9 @@ module pm_arrayCompareLex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isllt_D1_D1_SK4
 #endif
-        use pm_kind, only: LK, SKC => SK4
-        character(*,SKC), intent(in), contiguous    :: array1(:)
-        character(*,SKC), intent(in), contiguous    :: array2(:)
+        use pm_kind, only: LK, SKG => SK4
+        character(*,SKG), intent(in), contiguous    :: array1(:)
+        character(*,SKG), intent(in), contiguous    :: array2(:)
         logical(LK)                                 :: compares
     end function
 #endif
@@ -239,9 +239,9 @@ module pm_arrayCompareLex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isllt_D1_D1_SK3
 #endif
-        use pm_kind, only: LK, SKC => SK3
-        character(*,SKC), intent(in), contiguous    :: array1(:)
-        character(*,SKC), intent(in), contiguous    :: array2(:)
+        use pm_kind, only: LK, SKG => SK3
+        character(*,SKG), intent(in), contiguous    :: array1(:)
+        character(*,SKG), intent(in), contiguous    :: array2(:)
         logical(LK)                                 :: compares
     end function
 #endif
@@ -251,9 +251,9 @@ module pm_arrayCompareLex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isllt_D1_D1_SK2
 #endif
-        use pm_kind, only: LK, SKC => SK2
-        character(*,SKC), intent(in), contiguous    :: array1(:)
-        character(*,SKC), intent(in), contiguous    :: array2(:)
+        use pm_kind, only: LK, SKG => SK2
+        character(*,SKG), intent(in), contiguous    :: array1(:)
+        character(*,SKG), intent(in), contiguous    :: array2(:)
         logical(LK)                                 :: compares
     end function
 #endif
@@ -263,9 +263,9 @@ module pm_arrayCompareLex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isllt_D1_D1_SK1
 #endif
-        use pm_kind, only: LK, SKC => SK1
-        character(*,SKC), intent(in), contiguous    :: array1(:)
-        character(*,SKC), intent(in), contiguous    :: array2(:)
+        use pm_kind, only: LK, SKG => SK1
+        character(*,SKG), intent(in), contiguous    :: array1(:)
+        character(*,SKG), intent(in), contiguous    :: array2(:)
         logical(LK)                                 :: compares
     end function
 #endif
@@ -277,9 +277,9 @@ module pm_arrayCompareLex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isllt_D1_D1_IK5
 #endif
-        use pm_kind, only: LK, IKC => IK5
-        integer(IKC)    , intent(in), contiguous    :: array1(:)
-        integer(IKC)    , intent(in), contiguous    :: array2(:)
+        use pm_kind, only: LK, IKG => IK5
+        integer(IKG)    , intent(in), contiguous    :: array1(:)
+        integer(IKG)    , intent(in), contiguous    :: array2(:)
         logical(LK)                                 :: compares
     end function
 #endif
@@ -289,9 +289,9 @@ module pm_arrayCompareLex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isllt_D1_D1_IK4
 #endif
-        use pm_kind, only: LK, IKC => IK4
-        integer(IKC)    , intent(in), contiguous    :: array1(:)
-        integer(IKC)    , intent(in), contiguous    :: array2(:)
+        use pm_kind, only: LK, IKG => IK4
+        integer(IKG)    , intent(in), contiguous    :: array1(:)
+        integer(IKG)    , intent(in), contiguous    :: array2(:)
         logical(LK)                                 :: compares
     end function
 #endif
@@ -301,9 +301,9 @@ module pm_arrayCompareLex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isllt_D1_D1_IK3
 #endif
-        use pm_kind, only: LK, IKC => IK3
-        integer(IKC)    , intent(in), contiguous    :: array1(:)
-        integer(IKC)    , intent(in), contiguous    :: array2(:)
+        use pm_kind, only: LK, IKG => IK3
+        integer(IKG)    , intent(in), contiguous    :: array1(:)
+        integer(IKG)    , intent(in), contiguous    :: array2(:)
         logical(LK)                                 :: compares
     end function
 #endif
@@ -313,9 +313,9 @@ module pm_arrayCompareLex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isllt_D1_D1_IK2
 #endif
-        use pm_kind, only: LK, IKC => IK2
-        integer(IKC)    , intent(in), contiguous    :: array1(:)
-        integer(IKC)    , intent(in), contiguous    :: array2(:)
+        use pm_kind, only: LK, IKG => IK2
+        integer(IKG)    , intent(in), contiguous    :: array1(:)
+        integer(IKG)    , intent(in), contiguous    :: array2(:)
         logical(LK)                                 :: compares
     end function
 #endif
@@ -325,9 +325,9 @@ module pm_arrayCompareLex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isllt_D1_D1_IK1
 #endif
-        use pm_kind, only: LK, IKC => IK1
-        integer(IKC)    , intent(in), contiguous    :: array1(:)
-        integer(IKC)    , intent(in), contiguous    :: array2(:)
+        use pm_kind, only: LK, IKG => IK1
+        integer(IKG)    , intent(in), contiguous    :: array1(:)
+        integer(IKG)    , intent(in), contiguous    :: array2(:)
         logical(LK)                                 :: compares
     end function
 #endif
@@ -339,9 +339,9 @@ module pm_arrayCompareLex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isllt_D1_D1_LK5
 #endif
-        use pm_kind, only: LK, LKC => LK5
-        logical(LKC)    , intent(in), contiguous    :: array1(:)
-        logical(LKC)    , intent(in), contiguous    :: array2(:)
+        use pm_kind, only: LK, LKG => LK5
+        logical(LKG)    , intent(in), contiguous    :: array1(:)
+        logical(LKG)    , intent(in), contiguous    :: array2(:)
         logical(LK)                                 :: compares
     end function
 #endif
@@ -351,9 +351,9 @@ module pm_arrayCompareLex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isllt_D1_D1_LK4
 #endif
-        use pm_kind, only: LK, LKC => LK4
-        logical(LKC)    , intent(in), contiguous    :: array1(:)
-        logical(LKC)    , intent(in), contiguous    :: array2(:)
+        use pm_kind, only: LK, LKG => LK4
+        logical(LKG)    , intent(in), contiguous    :: array1(:)
+        logical(LKG)    , intent(in), contiguous    :: array2(:)
         logical(LK)                                 :: compares
     end function
 #endif
@@ -363,9 +363,9 @@ module pm_arrayCompareLex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isllt_D1_D1_LK3
 #endif
-        use pm_kind, only: LK, LKC => LK3
-        logical(LKC)    , intent(in), contiguous    :: array1(:)
-        logical(LKC)    , intent(in), contiguous    :: array2(:)
+        use pm_kind, only: LK, LKG => LK3
+        logical(LKG)    , intent(in), contiguous    :: array1(:)
+        logical(LKG)    , intent(in), contiguous    :: array2(:)
         logical(LK)                                 :: compares
     end function
 #endif
@@ -375,9 +375,9 @@ module pm_arrayCompareLex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isllt_D1_D1_LK2
 #endif
-        use pm_kind, only: LK, LKC => LK2
-        logical(LKC)    , intent(in), contiguous    :: array1(:)
-        logical(LKC)    , intent(in), contiguous    :: array2(:)
+        use pm_kind, only: LK, LKG => LK2
+        logical(LKG)    , intent(in), contiguous    :: array1(:)
+        logical(LKG)    , intent(in), contiguous    :: array2(:)
         logical(LK)                                 :: compares
     end function
 #endif
@@ -387,9 +387,9 @@ module pm_arrayCompareLex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isllt_D1_D1_LK1
 #endif
-        use pm_kind, only: LK, LKC => LK1
-        logical(LKC)    , intent(in), contiguous    :: array1(:)
-        logical(LKC)    , intent(in), contiguous    :: array2(:)
+        use pm_kind, only: LK, LKG => LK1
+        logical(LKG)    , intent(in), contiguous    :: array1(:)
+        logical(LKG)    , intent(in), contiguous    :: array2(:)
         logical(LK)                                 :: compares
     end function
 #endif
@@ -401,9 +401,9 @@ module pm_arrayCompareLex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isllt_D1_D1_CK5
 #endif
-        use pm_kind, only: LK, CKC => CK5
-        complex(CKC)    , intent(in), contiguous    :: array1(:)
-        complex(CKC)    , intent(in), contiguous    :: array2(:)
+        use pm_kind, only: LK, CKG => CK5
+        complex(CKG)    , intent(in), contiguous    :: array1(:)
+        complex(CKG)    , intent(in), contiguous    :: array2(:)
         logical(LK)                                 :: compares
     end function
 #endif
@@ -413,9 +413,9 @@ module pm_arrayCompareLex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isllt_D1_D1_CK4
 #endif
-        use pm_kind, only: LK, CKC => CK4
-        complex(CKC)    , intent(in), contiguous    :: array1(:)
-        complex(CKC)    , intent(in), contiguous    :: array2(:)
+        use pm_kind, only: LK, CKG => CK4
+        complex(CKG)    , intent(in), contiguous    :: array1(:)
+        complex(CKG)    , intent(in), contiguous    :: array2(:)
         logical(LK)                                 :: compares
     end function
 #endif
@@ -425,9 +425,9 @@ module pm_arrayCompareLex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isllt_D1_D1_CK3
 #endif
-        use pm_kind, only: LK, CKC => CK3
-        complex(CKC)    , intent(in), contiguous    :: array1(:)
-        complex(CKC)    , intent(in), contiguous    :: array2(:)
+        use pm_kind, only: LK, CKG => CK3
+        complex(CKG)    , intent(in), contiguous    :: array1(:)
+        complex(CKG)    , intent(in), contiguous    :: array2(:)
         logical(LK)                                 :: compares
     end function
 #endif
@@ -437,9 +437,9 @@ module pm_arrayCompareLex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isllt_D1_D1_CK2
 #endif
-        use pm_kind, only: LK, CKC => CK2
-        complex(CKC)    , intent(in), contiguous    :: array1(:)
-        complex(CKC)    , intent(in), contiguous    :: array2(:)
+        use pm_kind, only: LK, CKG => CK2
+        complex(CKG)    , intent(in), contiguous    :: array1(:)
+        complex(CKG)    , intent(in), contiguous    :: array2(:)
         logical(LK)                                 :: compares
     end function
 #endif
@@ -449,9 +449,9 @@ module pm_arrayCompareLex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isllt_D1_D1_CK1
 #endif
-        use pm_kind, only: LK, CKC => CK1
-        complex(CKC)    , intent(in), contiguous    :: array1(:)
-        complex(CKC)    , intent(in), contiguous    :: array2(:)
+        use pm_kind, only: LK, CKG => CK1
+        complex(CKG)    , intent(in), contiguous    :: array1(:)
+        complex(CKG)    , intent(in), contiguous    :: array2(:)
         logical(LK)                                 :: compares
     end function
 #endif
@@ -463,9 +463,9 @@ module pm_arrayCompareLex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isllt_D1_D1_RK5
 #endif
-        use pm_kind, only: LK, RKC => RK5
-        real(RKC)       , intent(in), contiguous    :: array1(:)
-        real(RKC)       , intent(in), contiguous    :: array2(:)
+        use pm_kind, only: LK, RKG => RK5
+        real(RKG)       , intent(in), contiguous    :: array1(:)
+        real(RKG)       , intent(in), contiguous    :: array2(:)
         logical(LK)                                 :: compares
     end function
 #endif
@@ -475,9 +475,9 @@ module pm_arrayCompareLex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isllt_D1_D1_RK4
 #endif
-        use pm_kind, only: LK, RKC => RK4
-        real(RKC)       , intent(in), contiguous    :: array1(:)
-        real(RKC)       , intent(in), contiguous    :: array2(:)
+        use pm_kind, only: LK, RKG => RK4
+        real(RKG)       , intent(in), contiguous    :: array1(:)
+        real(RKG)       , intent(in), contiguous    :: array2(:)
         logical(LK)                                 :: compares
     end function
 #endif
@@ -487,9 +487,9 @@ module pm_arrayCompareLex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isllt_D1_D1_RK3
 #endif
-        use pm_kind, only: LK, RKC => RK3
-        real(RKC)       , intent(in), contiguous    :: array1(:)
-        real(RKC)       , intent(in), contiguous    :: array2(:)
+        use pm_kind, only: LK, RKG => RK3
+        real(RKG)       , intent(in), contiguous    :: array1(:)
+        real(RKG)       , intent(in), contiguous    :: array2(:)
         logical(LK)                                 :: compares
     end function
 #endif
@@ -499,9 +499,9 @@ module pm_arrayCompareLex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isllt_D1_D1_RK2
 #endif
-        use pm_kind, only: LK, RKC => RK2
-        real(RKC)       , intent(in), contiguous    :: array1(:)
-        real(RKC)       , intent(in), contiguous    :: array2(:)
+        use pm_kind, only: LK, RKG => RK2
+        real(RKG)       , intent(in), contiguous    :: array1(:)
+        real(RKG)       , intent(in), contiguous    :: array2(:)
         logical(LK)                                 :: compares
     end function
 #endif
@@ -511,9 +511,9 @@ module pm_arrayCompareLex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isllt_D1_D1_RK1
 #endif
-        use pm_kind, only: LK, RKC => RK1
-        real(RKC)       , intent(in), contiguous    :: array1(:)
-        real(RKC)       , intent(in), contiguous    :: array2(:)
+        use pm_kind, only: LK, RKG => RK1
+        real(RKG)       , intent(in), contiguous    :: array1(:)
+        real(RKG)       , intent(in), contiguous    :: array2(:)
         logical(LK)                                 :: compares
     end function
 #endif
@@ -599,9 +599,9 @@ module pm_arrayCompareLex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: islle_D0_D0_SK5
 #endif
-        use pm_kind, only: LK, SKC => SK5
-        character(*,SKC), intent(in)                :: array1
-        character(*,SKC), intent(in)                :: array2
+        use pm_kind, only: LK, SKG => SK5
+        character(*,SKG), intent(in)                :: array1
+        character(*,SKG), intent(in)                :: array2
         logical(LK)                                 :: compares
     end function
 #endif
@@ -611,9 +611,9 @@ module pm_arrayCompareLex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: islle_D0_D0_SK4
 #endif
-        use pm_kind, only: LK, SKC => SK4
-        character(*,SKC), intent(in)                :: array1
-        character(*,SKC), intent(in)                :: array2
+        use pm_kind, only: LK, SKG => SK4
+        character(*,SKG), intent(in)                :: array1
+        character(*,SKG), intent(in)                :: array2
         logical(LK)                                 :: compares
     end function
 #endif
@@ -623,9 +623,9 @@ module pm_arrayCompareLex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: islle_D0_D0_SK3
 #endif
-        use pm_kind, only: LK, SKC => SK3
-        character(*,SKC), intent(in)                :: array1
-        character(*,SKC), intent(in)                :: array2
+        use pm_kind, only: LK, SKG => SK3
+        character(*,SKG), intent(in)                :: array1
+        character(*,SKG), intent(in)                :: array2
         logical(LK)                                 :: compares
     end function
 #endif
@@ -635,9 +635,9 @@ module pm_arrayCompareLex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: islle_D0_D0_SK2
 #endif
-        use pm_kind, only: LK, SKC => SK2
-        character(*,SKC), intent(in)                :: array1
-        character(*,SKC), intent(in)                :: array2
+        use pm_kind, only: LK, SKG => SK2
+        character(*,SKG), intent(in)                :: array1
+        character(*,SKG), intent(in)                :: array2
         logical(LK)                                 :: compares
     end function
 #endif
@@ -647,9 +647,9 @@ module pm_arrayCompareLex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: islle_D0_D0_SK1
 #endif
-        use pm_kind, only: LK, SKC => SK1
-        character(*,SKC), intent(in)                :: array1
-        character(*,SKC), intent(in)                :: array2
+        use pm_kind, only: LK, SKG => SK1
+        character(*,SKG), intent(in)                :: array1
+        character(*,SKG), intent(in)                :: array2
         logical(LK)                                 :: compares
     end function
 #endif
@@ -661,9 +661,9 @@ module pm_arrayCompareLex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: islle_D1_D1_SK5
 #endif
-        use pm_kind, only: LK, SKC => SK5
-        character(*,SKC), intent(in), contiguous    :: array1(:)
-        character(*,SKC), intent(in), contiguous    :: array2(:)
+        use pm_kind, only: LK, SKG => SK5
+        character(*,SKG), intent(in), contiguous    :: array1(:)
+        character(*,SKG), intent(in), contiguous    :: array2(:)
         logical(LK)                                 :: compares
     end function
 #endif
@@ -673,9 +673,9 @@ module pm_arrayCompareLex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: islle_D1_D1_SK4
 #endif
-        use pm_kind, only: LK, SKC => SK4
-        character(*,SKC), intent(in), contiguous    :: array1(:)
-        character(*,SKC), intent(in), contiguous    :: array2(:)
+        use pm_kind, only: LK, SKG => SK4
+        character(*,SKG), intent(in), contiguous    :: array1(:)
+        character(*,SKG), intent(in), contiguous    :: array2(:)
         logical(LK)                                 :: compares
     end function
 #endif
@@ -685,9 +685,9 @@ module pm_arrayCompareLex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: islle_D1_D1_SK3
 #endif
-        use pm_kind, only: LK, SKC => SK3
-        character(*,SKC), intent(in), contiguous    :: array1(:)
-        character(*,SKC), intent(in), contiguous    :: array2(:)
+        use pm_kind, only: LK, SKG => SK3
+        character(*,SKG), intent(in), contiguous    :: array1(:)
+        character(*,SKG), intent(in), contiguous    :: array2(:)
         logical(LK)                                 :: compares
     end function
 #endif
@@ -697,9 +697,9 @@ module pm_arrayCompareLex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: islle_D1_D1_SK2
 #endif
-        use pm_kind, only: LK, SKC => SK2
-        character(*,SKC), intent(in), contiguous    :: array1(:)
-        character(*,SKC), intent(in), contiguous    :: array2(:)
+        use pm_kind, only: LK, SKG => SK2
+        character(*,SKG), intent(in), contiguous    :: array1(:)
+        character(*,SKG), intent(in), contiguous    :: array2(:)
         logical(LK)                                 :: compares
     end function
 #endif
@@ -709,9 +709,9 @@ module pm_arrayCompareLex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: islle_D1_D1_SK1
 #endif
-        use pm_kind, only: LK, SKC => SK1
-        character(*,SKC), intent(in), contiguous    :: array1(:)
-        character(*,SKC), intent(in), contiguous    :: array2(:)
+        use pm_kind, only: LK, SKG => SK1
+        character(*,SKG), intent(in), contiguous    :: array1(:)
+        character(*,SKG), intent(in), contiguous    :: array2(:)
         logical(LK)                                 :: compares
     end function
 #endif
@@ -723,9 +723,9 @@ module pm_arrayCompareLex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: islle_D1_D1_IK5
 #endif
-        use pm_kind, only: LK, IKC => IK5
-        integer(IKC)    , intent(in), contiguous    :: array1(:)
-        integer(IKC)    , intent(in), contiguous    :: array2(:)
+        use pm_kind, only: LK, IKG => IK5
+        integer(IKG)    , intent(in), contiguous    :: array1(:)
+        integer(IKG)    , intent(in), contiguous    :: array2(:)
         logical(LK)                                 :: compares
     end function
 #endif
@@ -735,9 +735,9 @@ module pm_arrayCompareLex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: islle_D1_D1_IK4
 #endif
-        use pm_kind, only: LK, IKC => IK4
-        integer(IKC)    , intent(in), contiguous    :: array1(:)
-        integer(IKC)    , intent(in), contiguous    :: array2(:)
+        use pm_kind, only: LK, IKG => IK4
+        integer(IKG)    , intent(in), contiguous    :: array1(:)
+        integer(IKG)    , intent(in), contiguous    :: array2(:)
         logical(LK)                                 :: compares
     end function
 #endif
@@ -747,9 +747,9 @@ module pm_arrayCompareLex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: islle_D1_D1_IK3
 #endif
-        use pm_kind, only: LK, IKC => IK3
-        integer(IKC)    , intent(in), contiguous    :: array1(:)
-        integer(IKC)    , intent(in), contiguous    :: array2(:)
+        use pm_kind, only: LK, IKG => IK3
+        integer(IKG)    , intent(in), contiguous    :: array1(:)
+        integer(IKG)    , intent(in), contiguous    :: array2(:)
         logical(LK)                                 :: compares
     end function
 #endif
@@ -759,9 +759,9 @@ module pm_arrayCompareLex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: islle_D1_D1_IK2
 #endif
-        use pm_kind, only: LK, IKC => IK2
-        integer(IKC)    , intent(in), contiguous    :: array1(:)
-        integer(IKC)    , intent(in), contiguous    :: array2(:)
+        use pm_kind, only: LK, IKG => IK2
+        integer(IKG)    , intent(in), contiguous    :: array1(:)
+        integer(IKG)    , intent(in), contiguous    :: array2(:)
         logical(LK)                                 :: compares
     end function
 #endif
@@ -771,9 +771,9 @@ module pm_arrayCompareLex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: islle_D1_D1_IK1
 #endif
-        use pm_kind, only: LK, IKC => IK1
-        integer(IKC)    , intent(in), contiguous    :: array1(:)
-        integer(IKC)    , intent(in), contiguous    :: array2(:)
+        use pm_kind, only: LK, IKG => IK1
+        integer(IKG)    , intent(in), contiguous    :: array1(:)
+        integer(IKG)    , intent(in), contiguous    :: array2(:)
         logical(LK)                                 :: compares
     end function
 #endif
@@ -785,9 +785,9 @@ module pm_arrayCompareLex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: islle_D1_D1_LK5
 #endif
-        use pm_kind, only: LK, LKC => LK5
-        logical(LKC)    , intent(in), contiguous    :: array1(:)
-        logical(LKC)    , intent(in), contiguous    :: array2(:)
+        use pm_kind, only: LK, LKG => LK5
+        logical(LKG)    , intent(in), contiguous    :: array1(:)
+        logical(LKG)    , intent(in), contiguous    :: array2(:)
         logical(LK)                                 :: compares
     end function
 #endif
@@ -797,9 +797,9 @@ module pm_arrayCompareLex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: islle_D1_D1_LK4
 #endif
-        use pm_kind, only: LK, LKC => LK4
-        logical(LKC)    , intent(in), contiguous    :: array1(:)
-        logical(LKC)    , intent(in), contiguous    :: array2(:)
+        use pm_kind, only: LK, LKG => LK4
+        logical(LKG)    , intent(in), contiguous    :: array1(:)
+        logical(LKG)    , intent(in), contiguous    :: array2(:)
         logical(LK)                                 :: compares
     end function
 #endif
@@ -809,9 +809,9 @@ module pm_arrayCompareLex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: islle_D1_D1_LK3
 #endif
-        use pm_kind, only: LK, LKC => LK3
-        logical(LKC)    , intent(in), contiguous    :: array1(:)
-        logical(LKC)    , intent(in), contiguous    :: array2(:)
+        use pm_kind, only: LK, LKG => LK3
+        logical(LKG)    , intent(in), contiguous    :: array1(:)
+        logical(LKG)    , intent(in), contiguous    :: array2(:)
         logical(LK)                                 :: compares
     end function
 #endif
@@ -821,9 +821,9 @@ module pm_arrayCompareLex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: islle_D1_D1_LK2
 #endif
-        use pm_kind, only: LK, LKC => LK2
-        logical(LKC)    , intent(in), contiguous    :: array1(:)
-        logical(LKC)    , intent(in), contiguous    :: array2(:)
+        use pm_kind, only: LK, LKG => LK2
+        logical(LKG)    , intent(in), contiguous    :: array1(:)
+        logical(LKG)    , intent(in), contiguous    :: array2(:)
         logical(LK)                                 :: compares
     end function
 #endif
@@ -833,9 +833,9 @@ module pm_arrayCompareLex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: islle_D1_D1_LK1
 #endif
-        use pm_kind, only: LK, LKC => LK1
-        logical(LKC)    , intent(in), contiguous    :: array1(:)
-        logical(LKC)    , intent(in), contiguous    :: array2(:)
+        use pm_kind, only: LK, LKG => LK1
+        logical(LKG)    , intent(in), contiguous    :: array1(:)
+        logical(LKG)    , intent(in), contiguous    :: array2(:)
         logical(LK)                                 :: compares
     end function
 #endif
@@ -847,9 +847,9 @@ module pm_arrayCompareLex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: islle_D1_D1_CK5
 #endif
-        use pm_kind, only: LK, CKC => CK5
-        complex(CKC)    , intent(in), contiguous    :: array1(:)
-        complex(CKC)    , intent(in), contiguous    :: array2(:)
+        use pm_kind, only: LK, CKG => CK5
+        complex(CKG)    , intent(in), contiguous    :: array1(:)
+        complex(CKG)    , intent(in), contiguous    :: array2(:)
         logical(LK)                                 :: compares
     end function
 #endif
@@ -859,9 +859,9 @@ module pm_arrayCompareLex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: islle_D1_D1_CK4
 #endif
-        use pm_kind, only: LK, CKC => CK4
-        complex(CKC)    , intent(in), contiguous    :: array1(:)
-        complex(CKC)    , intent(in), contiguous    :: array2(:)
+        use pm_kind, only: LK, CKG => CK4
+        complex(CKG)    , intent(in), contiguous    :: array1(:)
+        complex(CKG)    , intent(in), contiguous    :: array2(:)
         logical(LK)                                 :: compares
     end function
 #endif
@@ -871,9 +871,9 @@ module pm_arrayCompareLex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: islle_D1_D1_CK3
 #endif
-        use pm_kind, only: LK, CKC => CK3
-        complex(CKC)    , intent(in), contiguous    :: array1(:)
-        complex(CKC)    , intent(in), contiguous    :: array2(:)
+        use pm_kind, only: LK, CKG => CK3
+        complex(CKG)    , intent(in), contiguous    :: array1(:)
+        complex(CKG)    , intent(in), contiguous    :: array2(:)
         logical(LK)                                 :: compares
     end function
 #endif
@@ -883,9 +883,9 @@ module pm_arrayCompareLex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: islle_D1_D1_CK2
 #endif
-        use pm_kind, only: LK, CKC => CK2
-        complex(CKC)    , intent(in), contiguous    :: array1(:)
-        complex(CKC)    , intent(in), contiguous    :: array2(:)
+        use pm_kind, only: LK, CKG => CK2
+        complex(CKG)    , intent(in), contiguous    :: array1(:)
+        complex(CKG)    , intent(in), contiguous    :: array2(:)
         logical(LK)                                 :: compares
     end function
 #endif
@@ -895,9 +895,9 @@ module pm_arrayCompareLex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: islle_D1_D1_CK1
 #endif
-        use pm_kind, only: LK, CKC => CK1
-        complex(CKC)    , intent(in), contiguous    :: array1(:)
-        complex(CKC)    , intent(in), contiguous    :: array2(:)
+        use pm_kind, only: LK, CKG => CK1
+        complex(CKG)    , intent(in), contiguous    :: array1(:)
+        complex(CKG)    , intent(in), contiguous    :: array2(:)
         logical(LK)                                 :: compares
     end function
 #endif
@@ -909,9 +909,9 @@ module pm_arrayCompareLex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: islle_D1_D1_RK5
 #endif
-        use pm_kind, only: LK, RKC => RK5
-        real(RKC)       , intent(in), contiguous    :: array1(:)
-        real(RKC)       , intent(in), contiguous    :: array2(:)
+        use pm_kind, only: LK, RKG => RK5
+        real(RKG)       , intent(in), contiguous    :: array1(:)
+        real(RKG)       , intent(in), contiguous    :: array2(:)
         logical(LK)                                 :: compares
     end function
 #endif
@@ -921,9 +921,9 @@ module pm_arrayCompareLex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: islle_D1_D1_RK4
 #endif
-        use pm_kind, only: LK, RKC => RK4
-        real(RKC)       , intent(in), contiguous    :: array1(:)
-        real(RKC)       , intent(in), contiguous    :: array2(:)
+        use pm_kind, only: LK, RKG => RK4
+        real(RKG)       , intent(in), contiguous    :: array1(:)
+        real(RKG)       , intent(in), contiguous    :: array2(:)
         logical(LK)                                 :: compares
     end function
 #endif
@@ -933,9 +933,9 @@ module pm_arrayCompareLex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: islle_D1_D1_RK3
 #endif
-        use pm_kind, only: LK, RKC => RK3
-        real(RKC)       , intent(in), contiguous    :: array1(:)
-        real(RKC)       , intent(in), contiguous    :: array2(:)
+        use pm_kind, only: LK, RKG => RK3
+        real(RKG)       , intent(in), contiguous    :: array1(:)
+        real(RKG)       , intent(in), contiguous    :: array2(:)
         logical(LK)                                 :: compares
     end function
 #endif
@@ -945,9 +945,9 @@ module pm_arrayCompareLex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: islle_D1_D1_RK2
 #endif
-        use pm_kind, only: LK, RKC => RK2
-        real(RKC)       , intent(in), contiguous    :: array1(:)
-        real(RKC)       , intent(in), contiguous    :: array2(:)
+        use pm_kind, only: LK, RKG => RK2
+        real(RKG)       , intent(in), contiguous    :: array1(:)
+        real(RKG)       , intent(in), contiguous    :: array2(:)
         logical(LK)                                 :: compares
     end function
 #endif
@@ -957,9 +957,9 @@ module pm_arrayCompareLex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: islle_D1_D1_RK1
 #endif
-        use pm_kind, only: LK, RKC => RK1
-        real(RKC)       , intent(in), contiguous    :: array1(:)
-        real(RKC)       , intent(in), contiguous    :: array2(:)
+        use pm_kind, only: LK, RKG => RK1
+        real(RKG)       , intent(in), contiguous    :: array1(:)
+        real(RKG)       , intent(in), contiguous    :: array2(:)
         logical(LK)                                 :: compares
     end function
 #endif
@@ -1045,9 +1045,9 @@ module pm_arrayCompareLex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: islge_D0_D0_SK5
 #endif
-        use pm_kind, only: LK, SKC => SK5
-        character(*,SKC), intent(in)                :: array1
-        character(*,SKC), intent(in)                :: array2
+        use pm_kind, only: LK, SKG => SK5
+        character(*,SKG), intent(in)                :: array1
+        character(*,SKG), intent(in)                :: array2
         logical(LK)                                 :: compares
     end function
 #endif
@@ -1057,9 +1057,9 @@ module pm_arrayCompareLex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: islge_D0_D0_SK4
 #endif
-        use pm_kind, only: LK, SKC => SK4
-        character(*,SKC), intent(in)                :: array1
-        character(*,SKC), intent(in)                :: array2
+        use pm_kind, only: LK, SKG => SK4
+        character(*,SKG), intent(in)                :: array1
+        character(*,SKG), intent(in)                :: array2
         logical(LK)                                 :: compares
     end function
 #endif
@@ -1069,9 +1069,9 @@ module pm_arrayCompareLex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: islge_D0_D0_SK3
 #endif
-        use pm_kind, only: LK, SKC => SK3
-        character(*,SKC), intent(in)                :: array1
-        character(*,SKC), intent(in)                :: array2
+        use pm_kind, only: LK, SKG => SK3
+        character(*,SKG), intent(in)                :: array1
+        character(*,SKG), intent(in)                :: array2
         logical(LK)                                 :: compares
     end function
 #endif
@@ -1081,9 +1081,9 @@ module pm_arrayCompareLex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: islge_D0_D0_SK2
 #endif
-        use pm_kind, only: LK, SKC => SK2
-        character(*,SKC), intent(in)                :: array1
-        character(*,SKC), intent(in)                :: array2
+        use pm_kind, only: LK, SKG => SK2
+        character(*,SKG), intent(in)                :: array1
+        character(*,SKG), intent(in)                :: array2
         logical(LK)                                 :: compares
     end function
 #endif
@@ -1093,9 +1093,9 @@ module pm_arrayCompareLex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: islge_D0_D0_SK1
 #endif
-        use pm_kind, only: LK, SKC => SK1
-        character(*,SKC), intent(in)                :: array1
-        character(*,SKC), intent(in)                :: array2
+        use pm_kind, only: LK, SKG => SK1
+        character(*,SKG), intent(in)                :: array1
+        character(*,SKG), intent(in)                :: array2
         logical(LK)                                 :: compares
     end function
 #endif
@@ -1107,9 +1107,9 @@ module pm_arrayCompareLex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: islge_D1_D1_SK5
 #endif
-        use pm_kind, only: LK, SKC => SK5
-        character(*,SKC), intent(in), contiguous    :: array1(:)
-        character(*,SKC), intent(in), contiguous    :: array2(:)
+        use pm_kind, only: LK, SKG => SK5
+        character(*,SKG), intent(in), contiguous    :: array1(:)
+        character(*,SKG), intent(in), contiguous    :: array2(:)
         logical(LK)                                 :: compares
     end function
 #endif
@@ -1119,9 +1119,9 @@ module pm_arrayCompareLex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: islge_D1_D1_SK4
 #endif
-        use pm_kind, only: LK, SKC => SK4
-        character(*,SKC), intent(in), contiguous    :: array1(:)
-        character(*,SKC), intent(in), contiguous    :: array2(:)
+        use pm_kind, only: LK, SKG => SK4
+        character(*,SKG), intent(in), contiguous    :: array1(:)
+        character(*,SKG), intent(in), contiguous    :: array2(:)
         logical(LK)                                 :: compares
     end function
 #endif
@@ -1131,9 +1131,9 @@ module pm_arrayCompareLex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: islge_D1_D1_SK3
 #endif
-        use pm_kind, only: LK, SKC => SK3
-        character(*,SKC), intent(in), contiguous    :: array1(:)
-        character(*,SKC), intent(in), contiguous    :: array2(:)
+        use pm_kind, only: LK, SKG => SK3
+        character(*,SKG), intent(in), contiguous    :: array1(:)
+        character(*,SKG), intent(in), contiguous    :: array2(:)
         logical(LK)                                 :: compares
     end function
 #endif
@@ -1143,9 +1143,9 @@ module pm_arrayCompareLex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: islge_D1_D1_SK2
 #endif
-        use pm_kind, only: LK, SKC => SK2
-        character(*,SKC), intent(in), contiguous    :: array1(:)
-        character(*,SKC), intent(in), contiguous    :: array2(:)
+        use pm_kind, only: LK, SKG => SK2
+        character(*,SKG), intent(in), contiguous    :: array1(:)
+        character(*,SKG), intent(in), contiguous    :: array2(:)
         logical(LK)                                 :: compares
     end function
 #endif
@@ -1155,9 +1155,9 @@ module pm_arrayCompareLex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: islge_D1_D1_SK1
 #endif
-        use pm_kind, only: LK, SKC => SK1
-        character(*,SKC), intent(in), contiguous    :: array1(:)
-        character(*,SKC), intent(in), contiguous    :: array2(:)
+        use pm_kind, only: LK, SKG => SK1
+        character(*,SKG), intent(in), contiguous    :: array1(:)
+        character(*,SKG), intent(in), contiguous    :: array2(:)
         logical(LK)                                 :: compares
     end function
 #endif
@@ -1169,9 +1169,9 @@ module pm_arrayCompareLex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: islge_D1_D1_IK5
 #endif
-        use pm_kind, only: LK, IKC => IK5
-        integer(IKC)    , intent(in), contiguous    :: array1(:)
-        integer(IKC)    , intent(in), contiguous    :: array2(:)
+        use pm_kind, only: LK, IKG => IK5
+        integer(IKG)    , intent(in), contiguous    :: array1(:)
+        integer(IKG)    , intent(in), contiguous    :: array2(:)
         logical(LK)                                 :: compares
     end function
 #endif
@@ -1181,9 +1181,9 @@ module pm_arrayCompareLex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: islge_D1_D1_IK4
 #endif
-        use pm_kind, only: LK, IKC => IK4
-        integer(IKC)    , intent(in), contiguous    :: array1(:)
-        integer(IKC)    , intent(in), contiguous    :: array2(:)
+        use pm_kind, only: LK, IKG => IK4
+        integer(IKG)    , intent(in), contiguous    :: array1(:)
+        integer(IKG)    , intent(in), contiguous    :: array2(:)
         logical(LK)                                 :: compares
     end function
 #endif
@@ -1193,9 +1193,9 @@ module pm_arrayCompareLex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: islge_D1_D1_IK3
 #endif
-        use pm_kind, only: LK, IKC => IK3
-        integer(IKC)    , intent(in), contiguous    :: array1(:)
-        integer(IKC)    , intent(in), contiguous    :: array2(:)
+        use pm_kind, only: LK, IKG => IK3
+        integer(IKG)    , intent(in), contiguous    :: array1(:)
+        integer(IKG)    , intent(in), contiguous    :: array2(:)
         logical(LK)                                 :: compares
     end function
 #endif
@@ -1205,9 +1205,9 @@ module pm_arrayCompareLex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: islge_D1_D1_IK2
 #endif
-        use pm_kind, only: LK, IKC => IK2
-        integer(IKC)    , intent(in), contiguous    :: array1(:)
-        integer(IKC)    , intent(in), contiguous    :: array2(:)
+        use pm_kind, only: LK, IKG => IK2
+        integer(IKG)    , intent(in), contiguous    :: array1(:)
+        integer(IKG)    , intent(in), contiguous    :: array2(:)
         logical(LK)                                 :: compares
     end function
 #endif
@@ -1217,9 +1217,9 @@ module pm_arrayCompareLex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: islge_D1_D1_IK1
 #endif
-        use pm_kind, only: LK, IKC => IK1
-        integer(IKC)    , intent(in), contiguous    :: array1(:)
-        integer(IKC)    , intent(in), contiguous    :: array2(:)
+        use pm_kind, only: LK, IKG => IK1
+        integer(IKG)    , intent(in), contiguous    :: array1(:)
+        integer(IKG)    , intent(in), contiguous    :: array2(:)
         logical(LK)                                 :: compares
     end function
 #endif
@@ -1231,9 +1231,9 @@ module pm_arrayCompareLex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: islge_D1_D1_LK5
 #endif
-        use pm_kind, only: LK, LKC => LK5
-        logical(LKC)    , intent(in), contiguous    :: array1(:)
-        logical(LKC)    , intent(in), contiguous    :: array2(:)
+        use pm_kind, only: LK, LKG => LK5
+        logical(LKG)    , intent(in), contiguous    :: array1(:)
+        logical(LKG)    , intent(in), contiguous    :: array2(:)
         logical(LK)                                 :: compares
     end function
 #endif
@@ -1243,9 +1243,9 @@ module pm_arrayCompareLex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: islge_D1_D1_LK4
 #endif
-        use pm_kind, only: LK, LKC => LK4
-        logical(LKC)    , intent(in), contiguous    :: array1(:)
-        logical(LKC)    , intent(in), contiguous    :: array2(:)
+        use pm_kind, only: LK, LKG => LK4
+        logical(LKG)    , intent(in), contiguous    :: array1(:)
+        logical(LKG)    , intent(in), contiguous    :: array2(:)
         logical(LK)                                 :: compares
     end function
 #endif
@@ -1255,9 +1255,9 @@ module pm_arrayCompareLex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: islge_D1_D1_LK3
 #endif
-        use pm_kind, only: LK, LKC => LK3
-        logical(LKC)    , intent(in), contiguous    :: array1(:)
-        logical(LKC)    , intent(in), contiguous    :: array2(:)
+        use pm_kind, only: LK, LKG => LK3
+        logical(LKG)    , intent(in), contiguous    :: array1(:)
+        logical(LKG)    , intent(in), contiguous    :: array2(:)
         logical(LK)                                 :: compares
     end function
 #endif
@@ -1267,9 +1267,9 @@ module pm_arrayCompareLex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: islge_D1_D1_LK2
 #endif
-        use pm_kind, only: LK, LKC => LK2
-        logical(LKC)    , intent(in), contiguous    :: array1(:)
-        logical(LKC)    , intent(in), contiguous    :: array2(:)
+        use pm_kind, only: LK, LKG => LK2
+        logical(LKG)    , intent(in), contiguous    :: array1(:)
+        logical(LKG)    , intent(in), contiguous    :: array2(:)
         logical(LK)                                 :: compares
     end function
 #endif
@@ -1279,9 +1279,9 @@ module pm_arrayCompareLex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: islge_D1_D1_LK1
 #endif
-        use pm_kind, only: LK, LKC => LK1
-        logical(LKC)    , intent(in), contiguous    :: array1(:)
-        logical(LKC)    , intent(in), contiguous    :: array2(:)
+        use pm_kind, only: LK, LKG => LK1
+        logical(LKG)    , intent(in), contiguous    :: array1(:)
+        logical(LKG)    , intent(in), contiguous    :: array2(:)
         logical(LK)                                 :: compares
     end function
 #endif
@@ -1293,9 +1293,9 @@ module pm_arrayCompareLex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: islge_D1_D1_CK5
 #endif
-        use pm_kind, only: LK, CKC => CK5
-        complex(CKC)    , intent(in), contiguous    :: array1(:)
-        complex(CKC)    , intent(in), contiguous    :: array2(:)
+        use pm_kind, only: LK, CKG => CK5
+        complex(CKG)    , intent(in), contiguous    :: array1(:)
+        complex(CKG)    , intent(in), contiguous    :: array2(:)
         logical(LK)                                 :: compares
     end function
 #endif
@@ -1305,9 +1305,9 @@ module pm_arrayCompareLex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: islge_D1_D1_CK4
 #endif
-        use pm_kind, only: LK, CKC => CK4
-        complex(CKC)    , intent(in), contiguous    :: array1(:)
-        complex(CKC)    , intent(in), contiguous    :: array2(:)
+        use pm_kind, only: LK, CKG => CK4
+        complex(CKG)    , intent(in), contiguous    :: array1(:)
+        complex(CKG)    , intent(in), contiguous    :: array2(:)
         logical(LK)                                 :: compares
     end function
 #endif
@@ -1317,9 +1317,9 @@ module pm_arrayCompareLex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: islge_D1_D1_CK3
 #endif
-        use pm_kind, only: LK, CKC => CK3
-        complex(CKC)    , intent(in), contiguous    :: array1(:)
-        complex(CKC)    , intent(in), contiguous    :: array2(:)
+        use pm_kind, only: LK, CKG => CK3
+        complex(CKG)    , intent(in), contiguous    :: array1(:)
+        complex(CKG)    , intent(in), contiguous    :: array2(:)
         logical(LK)                                 :: compares
     end function
 #endif
@@ -1329,9 +1329,9 @@ module pm_arrayCompareLex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: islge_D1_D1_CK2
 #endif
-        use pm_kind, only: LK, CKC => CK2
-        complex(CKC)    , intent(in), contiguous    :: array1(:)
-        complex(CKC)    , intent(in), contiguous    :: array2(:)
+        use pm_kind, only: LK, CKG => CK2
+        complex(CKG)    , intent(in), contiguous    :: array1(:)
+        complex(CKG)    , intent(in), contiguous    :: array2(:)
         logical(LK)                                 :: compares
     end function
 #endif
@@ -1341,9 +1341,9 @@ module pm_arrayCompareLex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: islge_D1_D1_CK1
 #endif
-        use pm_kind, only: LK, CKC => CK1
-        complex(CKC)    , intent(in), contiguous    :: array1(:)
-        complex(CKC)    , intent(in), contiguous    :: array2(:)
+        use pm_kind, only: LK, CKG => CK1
+        complex(CKG)    , intent(in), contiguous    :: array1(:)
+        complex(CKG)    , intent(in), contiguous    :: array2(:)
         logical(LK)                                 :: compares
     end function
 #endif
@@ -1355,9 +1355,9 @@ module pm_arrayCompareLex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: islge_D1_D1_RK5
 #endif
-        use pm_kind, only: LK, RKC => RK5
-        real(RKC)       , intent(in), contiguous    :: array1(:)
-        real(RKC)       , intent(in), contiguous    :: array2(:)
+        use pm_kind, only: LK, RKG => RK5
+        real(RKG)       , intent(in), contiguous    :: array1(:)
+        real(RKG)       , intent(in), contiguous    :: array2(:)
         logical(LK)                                 :: compares
     end function
 #endif
@@ -1367,9 +1367,9 @@ module pm_arrayCompareLex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: islge_D1_D1_RK4
 #endif
-        use pm_kind, only: LK, RKC => RK4
-        real(RKC)       , intent(in), contiguous    :: array1(:)
-        real(RKC)       , intent(in), contiguous    :: array2(:)
+        use pm_kind, only: LK, RKG => RK4
+        real(RKG)       , intent(in), contiguous    :: array1(:)
+        real(RKG)       , intent(in), contiguous    :: array2(:)
         logical(LK)                                 :: compares
     end function
 #endif
@@ -1379,9 +1379,9 @@ module pm_arrayCompareLex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: islge_D1_D1_RK3
 #endif
-        use pm_kind, only: LK, RKC => RK3
-        real(RKC)       , intent(in), contiguous    :: array1(:)
-        real(RKC)       , intent(in), contiguous    :: array2(:)
+        use pm_kind, only: LK, RKG => RK3
+        real(RKG)       , intent(in), contiguous    :: array1(:)
+        real(RKG)       , intent(in), contiguous    :: array2(:)
         logical(LK)                                 :: compares
     end function
 #endif
@@ -1391,9 +1391,9 @@ module pm_arrayCompareLex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: islge_D1_D1_RK2
 #endif
-        use pm_kind, only: LK, RKC => RK2
-        real(RKC)       , intent(in), contiguous    :: array1(:)
-        real(RKC)       , intent(in), contiguous    :: array2(:)
+        use pm_kind, only: LK, RKG => RK2
+        real(RKG)       , intent(in), contiguous    :: array1(:)
+        real(RKG)       , intent(in), contiguous    :: array2(:)
         logical(LK)                                 :: compares
     end function
 #endif
@@ -1403,9 +1403,9 @@ module pm_arrayCompareLex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: islge_D1_D1_RK1
 #endif
-        use pm_kind, only: LK, RKC => RK1
-        real(RKC)       , intent(in), contiguous    :: array1(:)
-        real(RKC)       , intent(in), contiguous    :: array2(:)
+        use pm_kind, only: LK, RKG => RK1
+        real(RKG)       , intent(in), contiguous    :: array1(:)
+        real(RKG)       , intent(in), contiguous    :: array2(:)
         logical(LK)                                 :: compares
     end function
 #endif
@@ -1491,9 +1491,9 @@ module pm_arrayCompareLex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: islgt_D0_D0_SK5
 #endif
-        use pm_kind, only: LK, SKC => SK5
-        character(*,SKC), intent(in)                :: array1
-        character(*,SKC), intent(in)                :: array2
+        use pm_kind, only: LK, SKG => SK5
+        character(*,SKG), intent(in)                :: array1
+        character(*,SKG), intent(in)                :: array2
         logical(LK)                                 :: compares
     end function
 #endif
@@ -1503,9 +1503,9 @@ module pm_arrayCompareLex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: islgt_D0_D0_SK4
 #endif
-        use pm_kind, only: LK, SKC => SK4
-        character(*,SKC), intent(in)                :: array1
-        character(*,SKC), intent(in)                :: array2
+        use pm_kind, only: LK, SKG => SK4
+        character(*,SKG), intent(in)                :: array1
+        character(*,SKG), intent(in)                :: array2
         logical(LK)                                 :: compares
     end function
 #endif
@@ -1515,9 +1515,9 @@ module pm_arrayCompareLex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: islgt_D0_D0_SK3
 #endif
-        use pm_kind, only: LK, SKC => SK3
-        character(*,SKC), intent(in)                :: array1
-        character(*,SKC), intent(in)                :: array2
+        use pm_kind, only: LK, SKG => SK3
+        character(*,SKG), intent(in)                :: array1
+        character(*,SKG), intent(in)                :: array2
         logical(LK)                                 :: compares
     end function
 #endif
@@ -1527,9 +1527,9 @@ module pm_arrayCompareLex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: islgt_D0_D0_SK2
 #endif
-        use pm_kind, only: LK, SKC => SK2
-        character(*,SKC), intent(in)                :: array1
-        character(*,SKC), intent(in)                :: array2
+        use pm_kind, only: LK, SKG => SK2
+        character(*,SKG), intent(in)                :: array1
+        character(*,SKG), intent(in)                :: array2
         logical(LK)                                 :: compares
     end function
 #endif
@@ -1539,9 +1539,9 @@ module pm_arrayCompareLex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: islgt_D0_D0_SK1
 #endif
-        use pm_kind, only: LK, SKC => SK1
-        character(*,SKC), intent(in)                :: array1
-        character(*,SKC), intent(in)                :: array2
+        use pm_kind, only: LK, SKG => SK1
+        character(*,SKG), intent(in)                :: array1
+        character(*,SKG), intent(in)                :: array2
         logical(LK)                                 :: compares
     end function
 #endif
@@ -1553,9 +1553,9 @@ module pm_arrayCompareLex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: islgt_D1_D1_SK5
 #endif
-        use pm_kind, only: LK, SKC => SK5
-        character(*,SKC), intent(in), contiguous    :: array1(:)
-        character(*,SKC), intent(in), contiguous    :: array2(:)
+        use pm_kind, only: LK, SKG => SK5
+        character(*,SKG), intent(in), contiguous    :: array1(:)
+        character(*,SKG), intent(in), contiguous    :: array2(:)
         logical(LK)                                 :: compares
     end function
 #endif
@@ -1565,9 +1565,9 @@ module pm_arrayCompareLex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: islgt_D1_D1_SK4
 #endif
-        use pm_kind, only: LK, SKC => SK4
-        character(*,SKC), intent(in), contiguous    :: array1(:)
-        character(*,SKC), intent(in), contiguous    :: array2(:)
+        use pm_kind, only: LK, SKG => SK4
+        character(*,SKG), intent(in), contiguous    :: array1(:)
+        character(*,SKG), intent(in), contiguous    :: array2(:)
         logical(LK)                                 :: compares
     end function
 #endif
@@ -1577,9 +1577,9 @@ module pm_arrayCompareLex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: islgt_D1_D1_SK3
 #endif
-        use pm_kind, only: LK, SKC => SK3
-        character(*,SKC), intent(in), contiguous    :: array1(:)
-        character(*,SKC), intent(in), contiguous    :: array2(:)
+        use pm_kind, only: LK, SKG => SK3
+        character(*,SKG), intent(in), contiguous    :: array1(:)
+        character(*,SKG), intent(in), contiguous    :: array2(:)
         logical(LK)                                 :: compares
     end function
 #endif
@@ -1589,9 +1589,9 @@ module pm_arrayCompareLex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: islgt_D1_D1_SK2
 #endif
-        use pm_kind, only: LK, SKC => SK2
-        character(*,SKC), intent(in), contiguous    :: array1(:)
-        character(*,SKC), intent(in), contiguous    :: array2(:)
+        use pm_kind, only: LK, SKG => SK2
+        character(*,SKG), intent(in), contiguous    :: array1(:)
+        character(*,SKG), intent(in), contiguous    :: array2(:)
         logical(LK)                                 :: compares
     end function
 #endif
@@ -1601,9 +1601,9 @@ module pm_arrayCompareLex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: islgt_D1_D1_SK1
 #endif
-        use pm_kind, only: LK, SKC => SK1
-        character(*,SKC), intent(in), contiguous    :: array1(:)
-        character(*,SKC), intent(in), contiguous    :: array2(:)
+        use pm_kind, only: LK, SKG => SK1
+        character(*,SKG), intent(in), contiguous    :: array1(:)
+        character(*,SKG), intent(in), contiguous    :: array2(:)
         logical(LK)                                 :: compares
     end function
 #endif
@@ -1615,9 +1615,9 @@ module pm_arrayCompareLex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: islgt_D1_D1_IK5
 #endif
-        use pm_kind, only: LK, IKC => IK5
-        integer(IKC)    , intent(in), contiguous    :: array1(:)
-        integer(IKC)    , intent(in), contiguous    :: array2(:)
+        use pm_kind, only: LK, IKG => IK5
+        integer(IKG)    , intent(in), contiguous    :: array1(:)
+        integer(IKG)    , intent(in), contiguous    :: array2(:)
         logical(LK)                                 :: compares
     end function
 #endif
@@ -1627,9 +1627,9 @@ module pm_arrayCompareLex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: islgt_D1_D1_IK4
 #endif
-        use pm_kind, only: LK, IKC => IK4
-        integer(IKC)    , intent(in), contiguous    :: array1(:)
-        integer(IKC)    , intent(in), contiguous    :: array2(:)
+        use pm_kind, only: LK, IKG => IK4
+        integer(IKG)    , intent(in), contiguous    :: array1(:)
+        integer(IKG)    , intent(in), contiguous    :: array2(:)
         logical(LK)                                 :: compares
     end function
 #endif
@@ -1639,9 +1639,9 @@ module pm_arrayCompareLex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: islgt_D1_D1_IK3
 #endif
-        use pm_kind, only: LK, IKC => IK3
-        integer(IKC)    , intent(in), contiguous    :: array1(:)
-        integer(IKC)    , intent(in), contiguous    :: array2(:)
+        use pm_kind, only: LK, IKG => IK3
+        integer(IKG)    , intent(in), contiguous    :: array1(:)
+        integer(IKG)    , intent(in), contiguous    :: array2(:)
         logical(LK)                                 :: compares
     end function
 #endif
@@ -1651,9 +1651,9 @@ module pm_arrayCompareLex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: islgt_D1_D1_IK2
 #endif
-        use pm_kind, only: LK, IKC => IK2
-        integer(IKC)    , intent(in), contiguous    :: array1(:)
-        integer(IKC)    , intent(in), contiguous    :: array2(:)
+        use pm_kind, only: LK, IKG => IK2
+        integer(IKG)    , intent(in), contiguous    :: array1(:)
+        integer(IKG)    , intent(in), contiguous    :: array2(:)
         logical(LK)                                 :: compares
     end function
 #endif
@@ -1663,9 +1663,9 @@ module pm_arrayCompareLex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: islgt_D1_D1_IK1
 #endif
-        use pm_kind, only: LK, IKC => IK1
-        integer(IKC)    , intent(in), contiguous    :: array1(:)
-        integer(IKC)    , intent(in), contiguous    :: array2(:)
+        use pm_kind, only: LK, IKG => IK1
+        integer(IKG)    , intent(in), contiguous    :: array1(:)
+        integer(IKG)    , intent(in), contiguous    :: array2(:)
         logical(LK)                                 :: compares
     end function
 #endif
@@ -1677,9 +1677,9 @@ module pm_arrayCompareLex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: islgt_D1_D1_LK5
 #endif
-        use pm_kind, only: LK, LKC => LK5
-        logical(LKC)    , intent(in), contiguous    :: array1(:)
-        logical(LKC)    , intent(in), contiguous    :: array2(:)
+        use pm_kind, only: LK, LKG => LK5
+        logical(LKG)    , intent(in), contiguous    :: array1(:)
+        logical(LKG)    , intent(in), contiguous    :: array2(:)
         logical(LK)                                 :: compares
     end function
 #endif
@@ -1689,9 +1689,9 @@ module pm_arrayCompareLex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: islgt_D1_D1_LK4
 #endif
-        use pm_kind, only: LK, LKC => LK4
-        logical(LKC)    , intent(in), contiguous    :: array1(:)
-        logical(LKC)    , intent(in), contiguous    :: array2(:)
+        use pm_kind, only: LK, LKG => LK4
+        logical(LKG)    , intent(in), contiguous    :: array1(:)
+        logical(LKG)    , intent(in), contiguous    :: array2(:)
         logical(LK)                                 :: compares
     end function
 #endif
@@ -1701,9 +1701,9 @@ module pm_arrayCompareLex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: islgt_D1_D1_LK3
 #endif
-        use pm_kind, only: LK, LKC => LK3
-        logical(LKC)    , intent(in), contiguous    :: array1(:)
-        logical(LKC)    , intent(in), contiguous    :: array2(:)
+        use pm_kind, only: LK, LKG => LK3
+        logical(LKG)    , intent(in), contiguous    :: array1(:)
+        logical(LKG)    , intent(in), contiguous    :: array2(:)
         logical(LK)                                 :: compares
     end function
 #endif
@@ -1713,9 +1713,9 @@ module pm_arrayCompareLex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: islgt_D1_D1_LK2
 #endif
-        use pm_kind, only: LK, LKC => LK2
-        logical(LKC)    , intent(in), contiguous    :: array1(:)
-        logical(LKC)    , intent(in), contiguous    :: array2(:)
+        use pm_kind, only: LK, LKG => LK2
+        logical(LKG)    , intent(in), contiguous    :: array1(:)
+        logical(LKG)    , intent(in), contiguous    :: array2(:)
         logical(LK)                                 :: compares
     end function
 #endif
@@ -1725,9 +1725,9 @@ module pm_arrayCompareLex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: islgt_D1_D1_LK1
 #endif
-        use pm_kind, only: LK, LKC => LK1
-        logical(LKC)    , intent(in), contiguous    :: array1(:)
-        logical(LKC)    , intent(in), contiguous    :: array2(:)
+        use pm_kind, only: LK, LKG => LK1
+        logical(LKG)    , intent(in), contiguous    :: array1(:)
+        logical(LKG)    , intent(in), contiguous    :: array2(:)
         logical(LK)                                 :: compares
     end function
 #endif
@@ -1739,9 +1739,9 @@ module pm_arrayCompareLex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: islgt_D1_D1_CK5
 #endif
-        use pm_kind, only: LK, CKC => CK5
-        complex(CKC)    , intent(in), contiguous    :: array1(:)
-        complex(CKC)    , intent(in), contiguous    :: array2(:)
+        use pm_kind, only: LK, CKG => CK5
+        complex(CKG)    , intent(in), contiguous    :: array1(:)
+        complex(CKG)    , intent(in), contiguous    :: array2(:)
         logical(LK)                                 :: compares
     end function
 #endif
@@ -1751,9 +1751,9 @@ module pm_arrayCompareLex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: islgt_D1_D1_CK4
 #endif
-        use pm_kind, only: LK, CKC => CK4
-        complex(CKC)    , intent(in), contiguous    :: array1(:)
-        complex(CKC)    , intent(in), contiguous    :: array2(:)
+        use pm_kind, only: LK, CKG => CK4
+        complex(CKG)    , intent(in), contiguous    :: array1(:)
+        complex(CKG)    , intent(in), contiguous    :: array2(:)
         logical(LK)                                 :: compares
     end function
 #endif
@@ -1763,9 +1763,9 @@ module pm_arrayCompareLex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: islgt_D1_D1_CK3
 #endif
-        use pm_kind, only: LK, CKC => CK3
-        complex(CKC)    , intent(in), contiguous    :: array1(:)
-        complex(CKC)    , intent(in), contiguous    :: array2(:)
+        use pm_kind, only: LK, CKG => CK3
+        complex(CKG)    , intent(in), contiguous    :: array1(:)
+        complex(CKG)    , intent(in), contiguous    :: array2(:)
         logical(LK)                                 :: compares
     end function
 #endif
@@ -1775,9 +1775,9 @@ module pm_arrayCompareLex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: islgt_D1_D1_CK2
 #endif
-        use pm_kind, only: LK, CKC => CK2
-        complex(CKC)    , intent(in), contiguous    :: array1(:)
-        complex(CKC)    , intent(in), contiguous    :: array2(:)
+        use pm_kind, only: LK, CKG => CK2
+        complex(CKG)    , intent(in), contiguous    :: array1(:)
+        complex(CKG)    , intent(in), contiguous    :: array2(:)
         logical(LK)                                 :: compares
     end function
 #endif
@@ -1787,9 +1787,9 @@ module pm_arrayCompareLex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: islgt_D1_D1_CK1
 #endif
-        use pm_kind, only: LK, CKC => CK1
-        complex(CKC)    , intent(in), contiguous    :: array1(:)
-        complex(CKC)    , intent(in), contiguous    :: array2(:)
+        use pm_kind, only: LK, CKG => CK1
+        complex(CKG)    , intent(in), contiguous    :: array1(:)
+        complex(CKG)    , intent(in), contiguous    :: array2(:)
         logical(LK)                                 :: compares
     end function
 #endif
@@ -1801,9 +1801,9 @@ module pm_arrayCompareLex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: islgt_D1_D1_RK5
 #endif
-        use pm_kind, only: LK, RKC => RK5
-        real(RKC)       , intent(in), contiguous    :: array1(:)
-        real(RKC)       , intent(in), contiguous    :: array2(:)
+        use pm_kind, only: LK, RKG => RK5
+        real(RKG)       , intent(in), contiguous    :: array1(:)
+        real(RKG)       , intent(in), contiguous    :: array2(:)
         logical(LK)                                 :: compares
     end function
 #endif
@@ -1813,9 +1813,9 @@ module pm_arrayCompareLex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: islgt_D1_D1_RK4
 #endif
-        use pm_kind, only: LK, RKC => RK4
-        real(RKC)       , intent(in), contiguous    :: array1(:)
-        real(RKC)       , intent(in), contiguous    :: array2(:)
+        use pm_kind, only: LK, RKG => RK4
+        real(RKG)       , intent(in), contiguous    :: array1(:)
+        real(RKG)       , intent(in), contiguous    :: array2(:)
         logical(LK)                                 :: compares
     end function
 #endif
@@ -1825,9 +1825,9 @@ module pm_arrayCompareLex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: islgt_D1_D1_RK3
 #endif
-        use pm_kind, only: LK, RKC => RK3
-        real(RKC)       , intent(in), contiguous    :: array1(:)
-        real(RKC)       , intent(in), contiguous    :: array2(:)
+        use pm_kind, only: LK, RKG => RK3
+        real(RKG)       , intent(in), contiguous    :: array1(:)
+        real(RKG)       , intent(in), contiguous    :: array2(:)
         logical(LK)                                 :: compares
     end function
 #endif
@@ -1837,9 +1837,9 @@ module pm_arrayCompareLex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: islgt_D1_D1_RK2
 #endif
-        use pm_kind, only: LK, RKC => RK2
-        real(RKC)       , intent(in), contiguous    :: array1(:)
-        real(RKC)       , intent(in), contiguous    :: array2(:)
+        use pm_kind, only: LK, RKG => RK2
+        real(RKG)       , intent(in), contiguous    :: array1(:)
+        real(RKG)       , intent(in), contiguous    :: array2(:)
         logical(LK)                                 :: compares
     end function
 #endif
@@ -1849,9 +1849,9 @@ module pm_arrayCompareLex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: islgt_D1_D1_RK1
 #endif
-        use pm_kind, only: LK, RKC => RK1
-        real(RKC)       , intent(in), contiguous    :: array1(:)
-        real(RKC)       , intent(in), contiguous    :: array2(:)
+        use pm_kind, only: LK, RKG => RK1
+        real(RKG)       , intent(in), contiguous    :: array1(:)
+        real(RKG)       , intent(in), contiguous    :: array2(:)
         logical(LK)                                 :: compares
     end function
 #endif

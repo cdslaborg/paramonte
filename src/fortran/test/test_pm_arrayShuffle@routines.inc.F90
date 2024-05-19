@@ -38,17 +38,17 @@
         character(*, SK), parameter :: PROCEDURE_NAME = "@setShuffled()"
 #if     SK_ENABLED && D0_ENABLED
 #define ANY
-        character(:,SKC), allocatable :: Array, arrayNew
+        character(:,SKG), allocatable :: Array, arrayNew
 #elif   SK_ENABLED && D1_ENABLED
-        character(2,SKC), dimension(:), allocatable :: Array, arrayNew
+        character(2,SKG), dimension(:), allocatable :: Array, arrayNew
 #elif   IK_ENABLED && D1_ENABLED
-        integer(IKC)    , dimension(:), allocatable :: Array, arrayNew
+        integer(IKG)    , dimension(:), allocatable :: Array, arrayNew
 #elif   LK_ENABLED && D1_ENABLED
-        logical(LKC)    , dimension(:), allocatable :: Array, arrayNew
+        logical(LKG)    , dimension(:), allocatable :: Array, arrayNew
 #elif   CK_ENABLED && D1_ENABLED
-        complex(CKC)    , dimension(:), allocatable :: Array, arrayNew
+        complex(CKG)    , dimension(:), allocatable :: Array, arrayNew
 #elif   RK_ENABLED && D1_ENABLED
-        real(RKC)       , dimension(:), allocatable :: Array, arrayNew
+        real(RKG)       , dimension(:), allocatable :: Array, arrayNew
 #else
 #error  "Unrecognized interface."
 #endif
@@ -76,7 +76,7 @@
 #if         SK_ENABLED && D0_ENABLED
             Array = ""
 #elif       SK_ENABLED && D1_ENABLED
-            allocate(character(2,SKC) :: Array(0))
+            allocate(character(2,SKG) :: Array(0))
 #elif       IK_ENABLED && D1_ENABLED
             allocate(Array(0))
 #elif       CK_ENABLED && D1_ENABLED
@@ -97,13 +97,13 @@
 #elif       SK_ENABLED && D1_ENABLED
             Array = [" "]
 #elif       IK_ENABLED && D1_ENABLED
-            Array = [1_IKC]
+            Array = [1_IKG]
 #elif       CK_ENABLED && D1_ENABLED
-            Array = [(+1._CKC, -1._CKC)]
+            Array = [(+1._CKG, -1._CKG)]
 #elif       RK_ENABLED && D1_ENABLED
-            Array = [1._RKC]
+            Array = [1._RKG]
 #elif       LK_ENABLED && D1_ENABLED
-            Array = [.true._LKC]
+            Array = [.true._LKG]
 #endif
             if (present(count)) call setUnifRand(count, 0_IK, GET_SIZE(Array, kind = IK))
             call report(count)
@@ -116,13 +116,13 @@
 #elif       SK_ENABLED && D1_ENABLED
             Array = ["AA", "BB", "CC", "DD", "EE", "FF", "GG", "HH", "II", "JJ", "KK", "  "]
 #elif       IK_ENABLED && D1_ENABLED
-            Array = [1_IKC, 2_IKC, 3_IKC, 4_IKC, 5_IKC, 6_IKC, 7_IKC, 8_IKC, 9_IKC]
+            Array = [1_IKG, 2_IKG, 3_IKG, 4_IKG, 5_IKG, 6_IKG, 7_IKG, 8_IKG, 9_IKG]
 #elif       CK_ENABLED && D1_ENABLED
-            Array = [(+1._CKC, -1._CKC), (+2._CKC, -2._CKC), (+3._CKC, -3._CKC), (+4._CKC, -4._CKC), (+5._CKC, -5._CKC), (+6._CKC, -6._CKC), (+7._CKC, -7._CKC), (+8._CKC, -8._CKC), (+9._CKC, -9._CKC)]
+            Array = [(+1._CKG, -1._CKG), (+2._CKG, -2._CKG), (+3._CKG, -3._CKG), (+4._CKG, -4._CKG), (+5._CKG, -5._CKG), (+6._CKG, -6._CKG), (+7._CKG, -7._CKG), (+8._CKG, -8._CKG), (+9._CKG, -9._CKG)]
 #elif       RK_ENABLED && D1_ENABLED
-            Array = [1._RKC, 2._RKC, 3._RKC, 4._RKC, 5._RKC, 6._RKC, 7._RKC, 8._RKC, 9._RKC]
+            Array = [1._RKG, 2._RKG, 3._RKG, 4._RKG, 5._RKG, 6._RKG, 7._RKG, 8._RKG, 9._RKG]
 #elif       LK_ENABLED && D1_ENABLED
-            Array = [.false._LKC, .true._LKC, .false._LKC, .true._LKC, .false._LKC, .true._LKC, .false._LKC, .true._LKC, .false._LKC, .true._LKC, .false._LKC, .true._LKC]
+            Array = [.false._LKG, .true._LKG, .false._LKG, .true._LKG, .false._LKG, .true._LKG, .false._LKG, .true._LKG, .false._LKG, .true._LKG, .false._LKG, .true._LKG]
 #endif
             if (present(count)) call setUnifRand(count, 0_IK, GET_SIZE(Array, kind = IK))
             call report(count)

@@ -1,12 +1,12 @@
 program example
 
-    use pm_kind, only: SK, IK, LK, RKC => RKH
+    use pm_kind, only: SK, IK, LK, RKG => RKH
     use pm_io, only: display_type
     use pm_ellipsoid, only: setLogVolUnitBall
 
     implicit none
 
-    real(RKC) :: logVolUnitBall(5)
+    real(RKG) :: logVolUnitBall(5)
 
     type(display_type) :: disp
     disp = display_type(file = "main.out.F90")
@@ -19,8 +19,8 @@ program example
     call disp%skip()
 
     call disp%skip()
-    call disp%show("call setLogVolUnitBall(logVolUnitBall(1), ndim = 2._RKC)")
-                    call setLogVolUnitBall(logVolUnitBall(1), ndim = 2._RKC)
+    call disp%show("call setLogVolUnitBall(logVolUnitBall(1), ndim = 2._RKG)")
+                    call setLogVolUnitBall(logVolUnitBall(1), ndim = 2._RKG)
     call disp%show("logVolUnitBall(1)")
     call disp%show( logVolUnitBall(1) )
     call disp%skip()
@@ -33,8 +33,8 @@ program example
     call disp%skip()
 
     call disp%skip()
-    call disp%show("call setLogVolUnitBall(logVolUnitBall(1:5), ndim = [real(RKC) :: 0, 1, 2, 3, 4.5])")
-                    call setLogVolUnitBall(logVolUnitBall(1:5), ndim = [real(RKC) :: 0, 1, 2, 3, 4.5])
+    call disp%show("call setLogVolUnitBall(logVolUnitBall(1:5), ndim = [real(RKG) :: 0, 1, 2, 3, 4.5])")
+                    call setLogVolUnitBall(logVolUnitBall(1:5), ndim = [real(RKG) :: 0, 1, 2, 3, 4.5])
     call disp%show("logVolUnitBall(1:5)")
     call disp%show( logVolUnitBall(1:5) )
     call disp%skip()

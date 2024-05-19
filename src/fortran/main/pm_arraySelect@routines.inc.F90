@@ -36,19 +36,19 @@
 #endif
         ! Define the auxiliary variables.
 #if     SK_ENABLED && D0_ENABLED
-        character(1,SKC) :: pivot, temp
+        character(1,SKG) :: pivot, temp
 #elif   SK_ENABLED && D1_ENABLED
-        character(len(array),SKC) :: pivot, temp
+        character(len(array),SKG) :: pivot, temp
 #elif   IK_ENABLED && D1_ENABLED
-        integer(IKC) :: pivot, temp
+        integer(IKG) :: pivot, temp
 #elif   LK_ENABLED && D1_ENABLED
-        logical(LKC) :: pivot, temp
+        logical(LKG) :: pivot, temp
 #elif   CK_ENABLED && D1_ENABLED
-        complex(CKC) :: pivot, temp
+        complex(CKG) :: pivot, temp
 #elif   RK_ENABLED && D1_ENABLED
-        real(RKC) :: pivot, temp
+        real(RKG) :: pivot, temp
 #elif   PSSK_ENABLED && D1_ENABLED
-        type(css_pdt(SKC)) :: pivot, temp
+        type(css_pdt(SKG)) :: pivot, temp
 #elif   BSSK_ENABLED && D1_ENABLED
         type(css_type) :: pivot, temp
 #else
@@ -57,19 +57,19 @@
         ! Define the auxiliary variables for the functional interface.
 #if     getSelected_ENABLED
 #if     SK_ENABLED && D0_ENABLED
-        character(len(array),SKC) :: arrayCopy
+        character(len(array),SKG) :: arrayCopy
 #elif   SK_ENABLED && D1_ENABLED
-        character(len(array),SKC) :: arrayCopy(size(array))
+        character(len(array),SKG) :: arrayCopy(size(array))
 #elif   IK_ENABLED && D1_ENABLED
-        integer(IKC) :: arrayCopy(size(array))
+        integer(IKG) :: arrayCopy(size(array))
 #elif   LK_ENABLED && D1_ENABLED
-        logical(LKC) :: arrayCopy(size(array))
+        logical(LKG) :: arrayCopy(size(array))
 #elif   CK_ENABLED && D1_ENABLED
-        complex(CKC) :: arrayCopy(size(array))
+        complex(CKG) :: arrayCopy(size(array))
 #elif   RK_ENABLED && D1_ENABLED
-        real(RKC) :: arrayCopy(size(array))
+        real(RKG) :: arrayCopy(size(array))
 #elif   PSSK_ENABLED && D1_ENABLED
-        type(css_pdt(SKC)) :: arrayCopy(size(array))
+        type(css_pdt(SKG)) :: arrayCopy(size(array))
 #elif   BSSK_ENABLED && D1_ENABLED
         type(css_type) :: arrayCopy(size(array))
 #else

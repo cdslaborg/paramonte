@@ -274,9 +274,9 @@
 !>  Here is an example:<br>
 !>  \code{.F90}
 !>
-!>      use pm_kind, only: RKC => RK, IKC => IK
-!>      integer(IKC) :: DateRand(8)
-!>      DateRand = getDateTime(julianDay = getUnifRand(-300000._RKC, +300000._RKC))
+!>      use pm_kind, only: RKG => RK, IKG => IK
+!>      integer(IKG) :: DateRand(8)
+!>      DateRand = getDateTime(julianDay = getUnifRand(-300000._RKG, +300000._RKG))
 !>      DateRand = getDateTime(julianDay = getUnifRand(getJulianDay(1_IK), getJulianDay())) ! uniform random date from the birth of Jesus until present.
 !>      !
 !>  \endcode
@@ -1261,17 +1261,17 @@ module pm_dateTime
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getZoneAbbrC
 #endif
-        use pm_kind, only: SKC => SK
-        character(:,SKC), allocatable   :: abbr
+        use pm_kind, only: SKG => SK
+        character(:,SKG), allocatable   :: abbr
     end function
 
     PURE module function getZoneAbbrZ(zone) result(abbr)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getZoneAbbrZ
 #endif
-        use pm_kind, only: IKC => IK, SKC => SK
-        integer(IKC)    , intent(in)    :: zone
-        character(:,SKC), allocatable   :: abbr
+        use pm_kind, only: IKG => IK, SKG => SK
+        integer(IKG)    , intent(in)    :: zone
+        character(:,SKG), allocatable   :: abbr
     end function
 
     end interface
@@ -1338,17 +1338,17 @@ module pm_dateTime
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getHour12C
 #endif
-        use pm_kind, only: IKC => IK
-        integer(IKC) :: hour12
+        use pm_kind, only: IKG => IK
+        integer(IKG) :: hour12
     end function
 
     PURE elemental module function getHour12H(hour) result(hour12)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getHour12H
 #endif
-        use pm_kind, only: IKC => IK
-        integer(IKC), intent(in) :: hour
-        integer(IKC)             :: hour12
+        use pm_kind, only: IKG => IK
+        integer(IKG), intent(in) :: hour
+        integer(IKG)             :: hour12
     end function
 
     end interface
@@ -3876,36 +3876,36 @@ module pm_dateTime
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isMorningCurrent
 #endif
-        use pm_kind, only: IKC => IK, LKC => LK
-        logical(LKC)                            :: morning
+        use pm_kind, only: IKG => IK, LKG => LK
+        logical(LKG)                            :: morning
     end function
 
     impure elemental module function isMorningZ(zone) result(morning)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isMorningZ
 #endif
-        use pm_kind, only: IKC => IK, LKC => LK
-        integer(IKC)    , intent(in)            :: zone
-        logical(LKC)                            :: morning
+        use pm_kind, only: IKG => IK, LKG => LK
+        integer(IKG)    , intent(in)            :: zone
+        logical(LKG)                            :: morning
     end function
 
     pure elemental module function isMorningJD(julianDay) result(morning)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isMorningJD
 #endif
-        use pm_kind, only: IKC => IK, LKC => LK, RKC => RK
-        real(RKC)       , intent(in)            :: julianDay
-        logical(LKC)                            :: morning
+        use pm_kind, only: IKG => IK, LKG => LK, RKG => RK
+        real(RKG)       , intent(in)            :: julianDay
+        logical(LKG)                            :: morning
     end function
 
     PURE elemental module function isMorningJDZ(julianDay, zone) result(morning)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isMorningJDZ
 #endif
-        use pm_kind, only: IKC => IK, LKC => LK, RKC => RK
-        real(RKC)       , intent(in)            :: julianDay
-        integer(IKC)    , intent(in)            :: zone
-        logical(LKC)                            :: morning
+        use pm_kind, only: IKG => IK, LKG => LK, RKG => RK
+        real(RKG)       , intent(in)            :: julianDay
+        integer(IKG)    , intent(in)            :: zone
+        logical(LKG)                            :: morning
     end function
 
     end interface
@@ -3977,9 +3977,9 @@ module pm_dateTime
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isValidZone_IK
 #endif
-        use pm_kind, only: LKC => LK, IKC => IK
-        integer(IKC), intent(in)    :: zone
-        logical(LKC)                :: isValid
+        use pm_kind, only: LKG => LK, IKG => IK
+        integer(IKG), intent(in)    :: zone
+        logical(LKG)                :: isValid
     end function
 
 !#if IK5_ENABLED
@@ -3987,9 +3987,9 @@ module pm_dateTime
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: isValidZone_IK5
 !#endif
-!        use pm_kind, only: LKC => LK, IKC => IK5
-!        integer(IKC), intent(in)    :: zone
-!        logical(LKC)                :: isValid
+!        use pm_kind, only: LKG => LK, IKG => IK5
+!        integer(IKG), intent(in)    :: zone
+!        logical(LKG)                :: isValid
 !    end function
 !#endif
 !
@@ -3998,9 +3998,9 @@ module pm_dateTime
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: isValidZone_IK4
 !#endif
-!        use pm_kind, only: LKC => LK, IKC => IK4
-!        integer(IKC), intent(in)    :: zone
-!        logical(LKC)                :: isValid
+!        use pm_kind, only: LKG => LK, IKG => IK4
+!        integer(IKG), intent(in)    :: zone
+!        logical(LKG)                :: isValid
 !    end function
 !#endif
 !
@@ -4009,9 +4009,9 @@ module pm_dateTime
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: isValidZone_IK3
 !#endif
-!        use pm_kind, only: LKC => LK, IKC => IK3
-!        integer(IKC), intent(in)    :: zone
-!        logical(LKC)                :: isValid
+!        use pm_kind, only: LKG => LK, IKG => IK3
+!        integer(IKG), intent(in)    :: zone
+!        logical(LKG)                :: isValid
 !    end function
 !#endif
 !
@@ -4020,9 +4020,9 @@ module pm_dateTime
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: isValidZone_IK2
 !#endif
-!        use pm_kind, only: LKC => LK, IKC => IK2
-!        integer(IKC), intent(in)    :: zone
-!        logical(LKC)                :: isValid
+!        use pm_kind, only: LKG => LK, IKG => IK2
+!        integer(IKG), intent(in)    :: zone
+!        logical(LKG)                :: isValid
 !    end function
 !#endif
 !
@@ -4031,9 +4031,9 @@ module pm_dateTime
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: isValidZone_IK1
 !#endif
-!        use pm_kind, only: LKC => LK, IKC => IK1
-!        integer(IKC), intent(in)    :: zone
-!        logical(LKC)                :: isValid
+!        use pm_kind, only: LKG => LK, IKG => IK1
+!        integer(IKG), intent(in)    :: zone
+!        logical(LKG)                :: isValid
 !    end function
 !#endif
 
@@ -4530,10 +4530,10 @@ end block;
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getHour
 #endif
-        use pm_kind, only: IKC => IK
-        integer(IKC), intent(in), optional  :: zone
-        integer(IKC)                        :: hour
-        integer(IKC)                        :: values(8)
+        use pm_kind, only: IKG => IK
+        integer(IKG), intent(in), optional  :: zone
+        integer(IKG)                        :: hour
+        integer(IKG)                        :: values(8)
         if (present(zone)) then
             CHECK_ASSERTION(__LINE__, isValidZone(zone), SK_"@getHour(): The condition `isValidZone(zone)` must hold. zone = "//getStr(zone)) ! fpp
             values = getDateTimeNewZone(zone)

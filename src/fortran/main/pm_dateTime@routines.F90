@@ -51,41 +51,41 @@ contains
 #define isValidZone_IK_ENABLED 1
 
     module procedure isValidZone_IK
-        use pm_kind, only: IKC => IK
+        use pm_kind, only: IKG => IK
 #include "pm_dateTime@routines.inc.F90"
     end procedure
 
 !#if IK5_ENABLED
 !    module procedure isValidZone_IK5
-!        use pm_kind, only: IKC => IK5
+!        use pm_kind, only: IKG => IK5
 !#include "pm_dateTime@routines.inc.F90"
 !    end procedure
 !#endif
 !
 !#if IK4_ENABLED
 !    module procedure isValidZone_IK4
-!        use pm_kind, only: IKC => IK4
+!        use pm_kind, only: IKG => IK4
 !#include "pm_dateTime@routines.inc.F90"
 !    end procedure
 !#endif
 !
 !#if IK3_ENABLED
 !    module procedure isValidZone_IK3
-!        use pm_kind, only: IKC => IK3
+!        use pm_kind, only: IKG => IK3
 !#include "pm_dateTime@routines.inc.F90"
 !    end procedure
 !#endif
 !
 !#if IK2_ENABLED
 !    module procedure isValidZone_IK2
-!        use pm_kind, only: IKC => IK2
+!        use pm_kind, only: IKG => IK2
 !#include "pm_dateTime@routines.inc.F90"
 !    end procedure
 !#endif
 !
 !#if IK1_ENABLED
 !    module procedure isValidZone_IK1
-!        use pm_kind, only: IKC => IK1
+!        use pm_kind, only: IKG => IK1
 !#include "pm_dateTime@routines.inc.F90"
 !    end procedure
 !#endif
@@ -107,7 +107,7 @@ contains
     module procedure getZoneAbbrZ
         use pm_arraySort, only: isAscending ! LCOV_EXCL_LINE
         use pm_arraySearch, only: getBin
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
         integer(IK) :: bin
         CHECK_ASSERTION(__LINE__, isAscending(timeZone%zone), SK_"@getZoneAbbr(): The condition `isAscending(timeZone%zone)` must hold. timeZone%zone = "//getStr(timeZone%zone)) ! fpp
         bin = getBin(timeZone%zone, zone) ! we cannot use `findloc()` intrinsic because the time and zone may not be in the constant timezone.
@@ -116,46 +116,46 @@ contains
         elseif (zone == int(14 * 60, kind(zone))) then
             abbr = trim(timeZone%Abbr(size(timeZone%zone, kind = IK)))
         else
-            abbr = SKC_""
+            abbr = SKG_""
         end if
     end procedure
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     module procedure getHour12C
-        use pm_kind, only: IKC => IK
+        use pm_kind, only: IKG => IK
         hour12 = getHour12(getHour())
     end procedure
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     module procedure getHour12H
-        use pm_kind, only: IKC => IK
-        CHECK_ASSERTION(__LINE__, 0_IKC <= hour .and. hour <= 24_IKC, SK_"@getHour12(): The condition `0_IKC <= hour .and. hour <= 24_IKC` must hold. hour = "//getStr(hour)) ! fpp
-        if (12_IKC < hour) then
-            hour12 = hour - 12_IKC
-        elseif (0_IKC < hour) then
+        use pm_kind, only: IKG => IK
+        CHECK_ASSERTION(__LINE__, 0_IKG <= hour .and. hour <= 24_IKG, SK_"@getHour12(): The condition `0_IKG <= hour .and. hour <= 24_IKG` must hold. hour = "//getStr(hour)) ! fpp
+        if (12_IKG < hour) then
+            hour12 = hour - 12_IKG
+        elseif (0_IKG < hour) then
             hour12 = hour
         else
-            hour12 = 12_IKC
+            hour12 = 12_IKG
         end if
     end procedure
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     module procedure getCountDaysInYear
-        use pm_kind, only: IKC => IK
+        use pm_kind, only: IKG => IK
         if (isLeapYear(year)) then
-            countDays = 366_IKC
+            countDays = 366_IKG
         else
-            countDays = 365_IKC
+            countDays = 365_IKG
         end if
     end procedure
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     module procedure getCountDaysInMonth
-        use pm_kind, only: IKC => IK
+        use pm_kind, only: IKG => IK
         CHECK_ASSERTION(__LINE__, isValidDateTime(year, month), SK_"@getCountDays(): The input `year` and `month` must be a valid Gregorian date. year, month = "//getStr([year, month])) ! fpp
         if (isLeapYear(year)) then
             countDays = DAYS_OF_MONTH_LEAP(month)
@@ -167,45 +167,45 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     module procedure getCountWeeksInYear
-        use pm_kind, only: IKC => IK
-        integer(IKC) :: weekDayDec31Current, weekDayDec31Previous
-        !weekDayDec31 = modulo(year + floor(0.25 * year, IKC) - floor(0.01 * year, IKC) + floor(0.0025 * year, IKC)), 7_IKC)
-        weekDayDec31Current = getWeekDayISO(year, 12_IKC, 31_IKC)
-        weekDayDec31Previous = getWeekDayISO(year - 1_IKC, 12_IKC, 31_IKC)
-        if (weekDayDec31Current == 4_IKC .or. weekDayDec31Previous == 3_IKC) then ! current year ends Thursday or previous year ends Wednesday.
-            countWeeks = 53_IKC
+        use pm_kind, only: IKG => IK
+        integer(IKG) :: weekDayDec31Current, weekDayDec31Previous
+        !weekDayDec31 = modulo(year + floor(0.25 * year, IKG) - floor(0.01 * year, IKG) + floor(0.0025 * year, IKG)), 7_IKG)
+        weekDayDec31Current = getWeekDayISO(year, 12_IKG, 31_IKG)
+        weekDayDec31Previous = getWeekDayISO(year - 1_IKG, 12_IKG, 31_IKG)
+        if (weekDayDec31Current == 4_IKG .or. weekDayDec31Previous == 3_IKG) then ! current year ends Thursday or previous year ends Wednesday.
+            countWeeks = 53_IKG
         else
-            countWeeks = 52_IKC
+            countWeeks = 52_IKG
         end if
     end procedure
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     module procedure getCountWeeksInMonth
-        use pm_kind, only: IKC => IK
-        integer(IKC) :: countDays, weekdayStartISO
+        use pm_kind, only: IKG => IK
+        integer(IKG) :: countDays, weekdayStartISO
         CHECK_ASSERTION(__LINE__, isValidDateTime(year, month), SK_"@getCountWeeks(): The input `year` and `month` must be a valid Gregorian date. year, month = "//getStr([year, month])) ! fpp
-        weekdayStartISO = getWeekDayISO(year, month, 1_IKC)
+        weekdayStartISO = getWeekDayISO(year, month, 1_IKG)
         countDays = getCountDays(year, month)
-        if (countDays == 31_IKC) then
-            if (weekdayStartISO < 2_IKC .or. weekdayStartISO > 4_IKC) then
-                countWeeks = 4_IKC
+        if (countDays == 31_IKG) then
+            if (weekdayStartISO < 2_IKG .or. weekdayStartISO > 4_IKG) then
+                countWeeks = 4_IKG
             else
-                countWeeks = 5_IKC
+                countWeeks = 5_IKG
             end if
-        elseif (countDays == 30_IKC) then
-            if (weekdayStartISO < 3_IKC .or. weekdayStartISO > 4_IKC) then
-                countWeeks = 4_IKC
+        elseif (countDays == 30_IKG) then
+            if (weekdayStartISO < 3_IKG .or. weekdayStartISO > 4_IKG) then
+                countWeeks = 4_IKG
             else
-                countWeeks = 5_IKC
+                countWeeks = 5_IKG
             end if
-        elseif (countDays == 28_IKC) then
-            countWeeks = 4_IKC
-        elseif (countDays == 29_IKC) then
-            if (weekdayStartISO /= 4_IKC) then
-                countWeeks = 4_IKC
+        elseif (countDays == 28_IKG) then
+            countWeeks = 4_IKG
+        elseif (countDays == 29_IKG) then
+            if (weekdayStartISO /= 4_IKG) then
+                countWeeks = 4_IKG
             else
-                countWeeks = 5_IKC
+                countWeeks = 5_IKG
             end if
         end if
     end procedure
@@ -230,12 +230,12 @@ contains
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     module procedure getWeekDayTriple
-        use pm_kind, only: RKC => RK, IKC => IK
+        use pm_kind, only: RKG => RK, IKG => IK
         !integer(IK) :: century
         !integer(IK) :: month_
         !integer(IK) :: year_
         CHECK_ASSERTION(__LINE__, isValidDateTime(year, month, day), SK_"@getWeekDay(): The input [year, month, day] must correspond to a valid Gregorian date. year, month, day = "//getStr([year, month, day]))
-        weekday = modulo(floor(getJulianDay(year, month, day) + 1.5_RKC, IKC), 7_IKC)
+        weekday = modulo(floor(getJulianDay(year, month, day) + 1.5_RKG, IKG), 7_IKG)
         !if (month > 2_IK) then
         !    month_ = month + 1_IK
         !    year_ = year
@@ -251,8 +251,8 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     module procedure getWeekYearCurrent
-        use pm_kind, only: IKC => IK
-        integer(IKC) :: WeekDate(3)
+        use pm_kind, only: IKG => IK
+        integer(IKG) :: WeekDate(3)
         WeekDate(1:3) = getWeekDate()
         weekYear = WeekDate(1)
     end procedure
@@ -260,8 +260,8 @@ contains
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     module procedure getWeekYearValues
-        use pm_kind, only: IKC => IK
-        integer(IKC) :: WeekDate(3)
+        use pm_kind, only: IKG => IK
+        integer(IKG) :: WeekDate(3)
         WeekDate(1:3) = getWeekDate(Values)
         weekYear = WeekDate(1)
     end procedure
@@ -269,8 +269,8 @@ contains
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     module procedure getWeekYearTriple
-        use pm_kind, only: IKC => IK
-        integer(IKC) :: WeekDate(3)
+        use pm_kind, only: IKG => IK
+        integer(IKG) :: WeekDate(3)
         WeekDate(1:3) = getWeekDate(year, month, day)
         weekYear = WeekDate(1)
     end procedure
@@ -295,7 +295,7 @@ contains
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     module procedure getWeekDateTriple
-        use pm_kind, only: IKC => IK
+        use pm_kind, only: IKG => IK
         CHECK_ASSERTION(__LINE__, isValidDateTime(year, month, day), SK_"@getWeekDate(): The input [year, month, day] must correspond to a valid Gregorian date. year, month, day = "//getStr([year, month, day]))
         WeekDate(1) = year
         WeekDate(3) = getWeekDayISO(year, month, day)
@@ -413,7 +413,7 @@ contains
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     module procedure getDateAfterTriple
-        use pm_kind, only: IKC => IK
+        use pm_kind, only: IKG => IK
         CHECK_ASSERTION(__LINE__, isValidDateTime(year, month, day), SK_"@getDateAfter(): The input [year, month, day] must correspond to a valid Gregorian date. year, month, day = "//getStr([year, month, day]))
         if (isLastDayInMonth(year, month, day)) then
             if (month < 12_IK) then
@@ -421,11 +421,11 @@ contains
                 DateAfter(2) = month + 1_IK
                 DateAfter(3) = 1_IK
             else
-                DateAfter(1) = year + 1_IKC
-                !if (year /= -1_IKC) then
-                !    DateAfter(1) = year + 1_IKC
+                DateAfter(1) = year + 1_IKG
+                !if (year /= -1_IKG) then
+                !    DateAfter(1) = year + 1_IKG
                 !else
-                !    DateAfter(1) = 1_IKC
+                !    DateAfter(1) = 1_IKG
                 !end if
                 DateAfter(2) = 1_IK
                 DateAfter(3) = 1_IK
@@ -454,30 +454,30 @@ contains
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     module procedure getDateBeforeTriple
-        use pm_kind, only: IKC => IK
+        use pm_kind, only: IKG => IK
         CHECK_ASSERTION(__LINE__, isValidDateTime(year, month, day), SK_"@getDateBefore(): The input [year, month, day] must correspond to a valid Gregorian date. year, month, day = "//getStr([year, month, day]))
-        if (day > 1_IKC) then
+        if (day > 1_IKG) then
             DateBefore(1) = year
             DateBefore(2) = month
-            DateBefore(3) = day - 1_IKC
+            DateBefore(3) = day - 1_IKG
         else
-            if (month > 1_IKC) then
+            if (month > 1_IKG) then
                 DateBefore(1) = year
-                DateBefore(2) = month - 1_IKC
+                DateBefore(2) = month - 1_IKG
                 if (isLeapYear(year)) then
                     DateBefore(3) = DAYS_OF_MONTH_LEAP(DateBefore(2))
                 else
                     DateBefore(3) = DAYS_OF_MONTH(DateBefore(2))
                 end if
-            else ! month == 1_IKC
-                !if (year /= 1_IKC) then
-                !    DateBefore(1) = year - 1_IKC
+            else ! month == 1_IKG
+                !if (year /= 1_IKG) then
+                !    DateBefore(1) = year - 1_IKG
                 !else
-                !    DateBefore(1) = -1_IKC ! leap year
+                !    DateBefore(1) = -1_IKG ! leap year
                 !end if
-                DateBefore(1) = year - 1_IKC
-                DateBefore(2) = 12_IKC
-                DateBefore(3) = 31_IKC ! December always has 31 days.
+                DateBefore(1) = year - 1_IKG
+                DateBefore(2) = 12_IKG
+                DateBefore(3) = 31_IKG ! December always has 31 days.
             end if
         end if
     end procedure
@@ -501,8 +501,8 @@ contains
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     module procedure getOrdinalDayTriple
-        use pm_kind, only: IKC => IK
-        integer(IKC), parameter :: CUMULATIVE_MONTH_DAYS(12) = [0_IKC, 31_IKC, 59_IKC, 90_IKC, 120_IKC, 151_IKC, 181_IKC, 212_IKC, 243_IKC, 273_IKC, 304_IKC, 334_IKC]
+        use pm_kind, only: IKG => IK
+        integer(IKG), parameter :: CUMULATIVE_MONTH_DAYS(12) = [0_IKG, 31_IKG, 59_IKG, 90_IKG, 120_IKG, 151_IKG, 181_IKG, 212_IKG, 243_IKG, 273_IKG, 304_IKG, 334_IKG]
         CHECK_ASSERTION(__LINE__, isValidDateTime(year, month, day), SK_"@getOrdinalDay(): The input [year, month, day] must correspond to a valid Gregorian date. year, month, day = "//getStr([year, month, day]))
         ordinalDay = CUMULATIVE_MONTH_DAYS(month) + day
         if (isLeapYear(year) .and. month > 2_IK) ordinalDay = ordinalDay + 1_IK
@@ -527,8 +527,8 @@ contains
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     module procedure getWeekNumberTriple
-        use pm_kind, only: IKC => IK
-        integer(IKC), parameter :: CUMULATIVE_MONTH_DAYS(12) = [0_IKC, 31_IKC, 59_IKC, 90_IKC, 120_IKC, 151_IKC, 181_IKC, 212_IKC, 243_IKC, 273_IKC, 304_IKC, 334_IKC]
+        use pm_kind, only: IKG => IK
+        integer(IKG), parameter :: CUMULATIVE_MONTH_DAYS(12) = [0_IKG, 31_IKG, 59_IKG, 90_IKG, 120_IKG, 151_IKG, 181_IKG, 212_IKG, 243_IKG, 273_IKG, 304_IKG, 334_IKG]
         CHECK_ASSERTION(__LINE__, isValidDateTime(year, month, day), SK_"@getWeekNumber(): The input [year, month, day] must correspond to a valid Gregorian date. year, month, day = "//getStr([year, month, day]))
         weekNumber = (10_IK + getOrdinalDay(year, month, day) - getWeekDayISO(year, month, day)) / 7_IK
         if (weekNumber == 0_IK) then
@@ -555,31 +555,31 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     module procedure isMorningCurrent
-        use pm_kind, only: IKC => IK
-        integer(IKC) :: Values(8)
+        use pm_kind, only: IKG => IK
+        integer(IKG) :: Values(8)
         call date_and_time(values = Values)
-        morning = Values(5) < 12_IKC
+        morning = Values(5) < 12_IKG
     end procedure
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     module procedure isMorningZ
-        use pm_kind, only: IKC => IK
-        morning = getHour(zone) < 12_IKC
+        use pm_kind, only: IKG => IK
+        morning = getHour(zone) < 12_IKG
     end procedure
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     module procedure isMorningJD
-        use pm_kind, only: RKC => RK
-        morning = logical(julianDay - real(floor(julianDay, IK), RKC) >= 0.5_RKC, LK)
+        use pm_kind, only: RKG => RK
+        morning = logical(julianDay - real(floor(julianDay, IK), RKG) >= 0.5_RKG, LK)
     end procedure
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     module procedure isMorningJDZ
-        use pm_kind, only: RKC => RK
-        real(RKC), parameter :: INV_MINUTES_PER_DAY = 1._RKC / MINUTES_PER_DAY
+        use pm_kind, only: RKG => RK
+        real(RKG), parameter :: INV_MINUTES_PER_DAY = 1._RKG / MINUTES_PER_DAY
         CHECK_ASSERTION(__LINE__, isValidZone(zone), SK_"@isMorning(): The condition `isValidZone(zone)` must hold. zone = "//getStr(zone)) ! fpp
         morning = isMorning(julianDay + zone * INV_MINUTES_PER_DAY)
     end procedure
@@ -597,7 +597,7 @@ contains
 #define getJulianDayC_ENABLED 1
 
     module procedure getJulianDayC
-        use pm_kind, only: IKC => IK, RKC => RK
+        use pm_kind, only: IKG => IK, RKG => RK
 #include "pm_dateTime@routines.inc.F90"
     end procedure
 
@@ -608,7 +608,7 @@ contains
 #define getJulianDayV_ENABLED 1
 
     module procedure getJulianDayV
-        use pm_kind, only: IKC => IK, RKC => RK
+        use pm_kind, only: IKG => IK, RKG => RK
 #include "pm_dateTime@routines.inc.F90"
     end procedure
 
@@ -619,7 +619,7 @@ contains
 #define getJulianDayY_ENABLED 1
 
     module procedure getJulianDayY
-        use pm_kind, only: IKC => IK, RKC => RK
+        use pm_kind, only: IKG => IK, RKG => RK
 #include "pm_dateTime@routines.inc.F90"
     end procedure
 
@@ -630,7 +630,7 @@ contains
 #define getJulianDayYM_ENABLED 1
 
     module procedure getJulianDayYM
-        use pm_kind, only: IKC => IK, RKC => RK
+        use pm_kind, only: IKG => IK, RKG => RK
 #include "pm_dateTime@routines.inc.F90"
     end procedure
 
@@ -641,7 +641,7 @@ contains
 #define getJulianDayYMD_ENABLED 1
 
     module procedure getJulianDayYMD
-        use pm_kind, only: IKC => IK, RKC => RK
+        use pm_kind, only: IKG => IK, RKG => RK
 #include "pm_dateTime@routines.inc.F90"
     end procedure
 
@@ -652,7 +652,7 @@ contains
 #define getJulianDayYMDZ_ENABLED 1
 
     module procedure getJulianDayYMDZ
-        use pm_kind, only: IKC => IK, RKC => RK
+        use pm_kind, only: IKG => IK, RKG => RK
 #include "pm_dateTime@routines.inc.F90"
     end procedure
 
@@ -663,7 +663,7 @@ contains
 #define getJulianDayYMDZH_ENABLED 1
 
     module procedure getJulianDayYMDZH
-        use pm_kind, only: IKC => IK, RKC => RK
+        use pm_kind, only: IKG => IK, RKG => RK
 #include "pm_dateTime@routines.inc.F90"
     end procedure
 
@@ -674,7 +674,7 @@ contains
 #define getJulianDayYMDZHM_ENABLED 1
 
     module procedure getJulianDayYMDZHM
-        use pm_kind, only: IKC => IK, RKC => RK
+        use pm_kind, only: IKG => IK, RKG => RK
 #include "pm_dateTime@routines.inc.F90"
     end procedure
 
@@ -685,7 +685,7 @@ contains
 #define getJulianDayYMDZHMS_ENABLED 1
 
     module procedure getJulianDayYMDZHMS
-        use pm_kind, only: IKC => IK, RKC => RK
+        use pm_kind, only: IKG => IK, RKG => RK
 #include "pm_dateTime@routines.inc.F90"
     end procedure
 
@@ -696,7 +696,7 @@ contains
 #define getJulianDayYMDZHMSM_ENABLED 1
 
     module procedure getJulianDayYMDZHMSM
-        use pm_kind, only: IKC => IK, RKC => RK
+        use pm_kind, only: IKG => IK, RKG => RK
 #include "pm_dateTime@routines.inc.F90"
     end procedure
 
@@ -723,7 +723,7 @@ contains
 #define getDateTimeUTCC_ENABLED 1
 
     module procedure getDateTimeUTCC
-        use pm_kind, only: IKC => IK, RKC => RK
+        use pm_kind, only: IKG => IK, RKG => RK
 #include "pm_dateTime@routines.inc.F90"
     end procedure
 
@@ -734,7 +734,7 @@ contains
 #define getDateTimeUTCV_ENABLED 1
 
     module procedure getDateTimeUTCV
-        use pm_kind, only: IKC => IK, RKC => RK
+        use pm_kind, only: IKG => IK, RKG => RK
 #include "pm_dateTime@routines.inc.F90"
     end procedure
 
@@ -745,7 +745,7 @@ contains
 #define getDateTimeUTCYMDZ_ENABLED 1
 
     module procedure getDateTimeUTCYMDZ
-        use pm_kind, only: IKC => IK, RKC => RK
+        use pm_kind, only: IKG => IK, RKG => RK
 #include "pm_dateTime@routines.inc.F90"
     end procedure
 
@@ -756,7 +756,7 @@ contains
 #define getDateTimeUTCYMDZH_ENABLED 1
 
     module procedure getDateTimeUTCYMDZH
-        use pm_kind, only: IKC => IK, RKC => RK
+        use pm_kind, only: IKG => IK, RKG => RK
 #include "pm_dateTime@routines.inc.F90"
     end procedure
 
@@ -767,7 +767,7 @@ contains
 #define getDateTimeUTCYMDZHM_ENABLED 1
 
     module procedure getDateTimeUTCYMDZHM
-        use pm_kind, only: IKC => IK, RKC => RK
+        use pm_kind, only: IKG => IK, RKG => RK
 #include "pm_dateTime@routines.inc.F90"
     end procedure
 
@@ -778,7 +778,7 @@ contains
 #define getDateTimeUTCYMDZHMS_ENABLED 1
 
     module procedure getDateTimeUTCYMDZHMS
-        use pm_kind, only: IKC => IK, RKC => RK
+        use pm_kind, only: IKG => IK, RKG => RK
 #include "pm_dateTime@routines.inc.F90"
     end procedure
 
@@ -789,7 +789,7 @@ contains
 #define getDateTimeUTCYMDZHMSM_ENABLED 1
 
     module procedure getDateTimeUTCYMDZHMSM
-        use pm_kind, only: IKC => IK, RKC => RK
+        use pm_kind, only: IKG => IK, RKG => RK
 #include "pm_dateTime@routines.inc.F90"
     end procedure
 
@@ -816,7 +816,7 @@ contains
 #define getDateTimeNewZoneC_ENABLED 1
 
     module procedure getDateTimeNewZoneC
-        use pm_kind, only: IKC => IK, RKC => RK
+        use pm_kind, only: IKG => IK, RKG => RK
 #include "pm_dateTime@routines.inc.F90"
     end procedure
 
@@ -827,7 +827,7 @@ contains
 #define getDateTimeNewZoneV_ENABLED 1
 
     module procedure getDateTimeNewZoneV
-        use pm_kind, only: IKC => IK, RKC => RK
+        use pm_kind, only: IKG => IK, RKG => RK
 #include "pm_dateTime@routines.inc.F90"
     end procedure
 
@@ -838,7 +838,7 @@ contains
 #define getDateTimeNewZoneYMDZ_ENABLED 1
 
     module procedure getDateTimeNewZoneYMDZ
-        use pm_kind, only: IKC => IK, RKC => RK
+        use pm_kind, only: IKG => IK, RKG => RK
 #include "pm_dateTime@routines.inc.F90"
     end procedure
 
@@ -849,7 +849,7 @@ contains
 #define getDateTimeNewZoneYMDZH_ENABLED 1
 
     module procedure getDateTimeNewZoneYMDZH
-        use pm_kind, only: IKC => IK, RKC => RK
+        use pm_kind, only: IKG => IK, RKG => RK
 #include "pm_dateTime@routines.inc.F90"
     end procedure
 
@@ -860,7 +860,7 @@ contains
 #define getDateTimeNewZoneYMDZHM_ENABLED 1
 
     module procedure getDateTimeNewZoneYMDZHM
-        use pm_kind, only: IKC => IK, RKC => RK
+        use pm_kind, only: IKG => IK, RKG => RK
 #include "pm_dateTime@routines.inc.F90"
     end procedure
 
@@ -871,7 +871,7 @@ contains
 #define getDateTimeNewZoneYMDZHMS_ENABLED 1
 
     module procedure getDateTimeNewZoneYMDZHMS
-        use pm_kind, only: IKC => IK, RKC => RK
+        use pm_kind, only: IKG => IK, RKG => RK
 #include "pm_dateTime@routines.inc.F90"
     end procedure
 
@@ -882,7 +882,7 @@ contains
 #define getDateTimeNewZoneYMDZHMSM_ENABLED 1
 
     module procedure getDateTimeNewZoneYMDZHMSM
-        use pm_kind, only: IKC => IK, RKC => RK
+        use pm_kind, only: IKG => IK, RKG => RK
 #include "pm_dateTime@routines.inc.F90"
     end procedure
 
@@ -909,7 +909,7 @@ contains
 #define getDateTimeShiftedC_ENABLED 1
 
     module procedure getDateTimeShiftedC
-        use pm_kind, only: IKC => IK, RKC => RK
+        use pm_kind, only: IKG => IK, RKG => RK
 #include "pm_dateTime@routines.inc.F90"
     end procedure
 
@@ -920,7 +920,7 @@ contains
 #define getDateTimeShiftedV_ENABLED 1
 
     module procedure getDateTimeShiftedV
-        use pm_kind, only: IKC => IK, RKC => RK
+        use pm_kind, only: IKG => IK, RKG => RK
 #include "pm_dateTime@routines.inc.F90"
     end procedure
 
@@ -931,7 +931,7 @@ contains
 #define getDateTimeShiftedY_ENABLED 1
 
     module procedure getDateTimeShiftedY
-        use pm_kind, only: IKC => IK, RKC => RK
+        use pm_kind, only: IKG => IK, RKG => RK
 #include "pm_dateTime@routines.inc.F90"
     end procedure
 
@@ -942,7 +942,7 @@ contains
 #define getDateTimeShiftedYM_ENABLED 1
 
     module procedure getDateTimeShiftedYM
-        use pm_kind, only: IKC => IK, RKC => RK
+        use pm_kind, only: IKG => IK, RKG => RK
 #include "pm_dateTime@routines.inc.F90"
     end procedure
 
@@ -953,7 +953,7 @@ contains
 #define getDateTimeShiftedYMD_ENABLED 1
 
     module procedure getDateTimeShiftedYMD
-        use pm_kind, only: IKC => IK, RKC => RK
+        use pm_kind, only: IKG => IK, RKG => RK
 #include "pm_dateTime@routines.inc.F90"
     end procedure
 
@@ -964,7 +964,7 @@ contains
 #define getDateTimeShiftedYMDZ_ENABLED 1
 
     module procedure getDateTimeShiftedYMDZ
-        use pm_kind, only: IKC => IK, RKC => RK
+        use pm_kind, only: IKG => IK, RKG => RK
 #include "pm_dateTime@routines.inc.F90"
     end procedure
 
@@ -975,7 +975,7 @@ contains
 #define getDateTimeShiftedYMDZH_ENABLED 1
 
     module procedure getDateTimeShiftedYMDZH
-        use pm_kind, only: IKC => IK, RKC => RK
+        use pm_kind, only: IKG => IK, RKG => RK
 #include "pm_dateTime@routines.inc.F90"
     end procedure
 
@@ -986,7 +986,7 @@ contains
 #define getDateTimeShiftedYMDZHM_ENABLED 1
 
     module procedure getDateTimeShiftedYMDZHM
-        use pm_kind, only: IKC => IK, RKC => RK
+        use pm_kind, only: IKG => IK, RKG => RK
 #include "pm_dateTime@routines.inc.F90"
     end procedure
 
@@ -997,7 +997,7 @@ contains
 #define getDateTimeShiftedYMDZHMS_ENABLED 1
 
     module procedure getDateTimeShiftedYMDZHMS
-        use pm_kind, only: IKC => IK, RKC => RK
+        use pm_kind, only: IKG => IK, RKG => RK
 #include "pm_dateTime@routines.inc.F90"
     end procedure
 
@@ -1008,7 +1008,7 @@ contains
 #define getDateTimeShiftedYMDZHMSM_ENABLED 1
 
     module procedure getDateTimeShiftedYMDZHMSM
-        use pm_kind, only: IKC => IK, RKC => RK
+        use pm_kind, only: IKG => IK, RKG => RK
 #include "pm_dateTime@routines.inc.F90"
     end procedure
 
@@ -1035,7 +1035,7 @@ contains
 #define isValidDateTimeV_ENABLED 1
 
     module procedure isValidDateTimeV
-        use pm_kind, only: IKC => IK, SKC => SK
+        use pm_kind, only: IKG => IK, SKG => SK
 #include "pm_dateTime@routines.inc.F90"
     end procedure
 
@@ -1046,7 +1046,7 @@ contains
 #define isValidDateTimeY_ENABLED 1
 
     module procedure isValidDateTimeY
-        use pm_kind, only: IKC => IK, SKC => SK
+        use pm_kind, only: IKG => IK, SKG => SK
 #include "pm_dateTime@routines.inc.F90"
     end procedure
 
@@ -1057,7 +1057,7 @@ contains
 #define isValidDateTimeYM_ENABLED 1
 
     module procedure isValidDateTimeYM
-        use pm_kind, only: IKC => IK, SKC => SK
+        use pm_kind, only: IKG => IK, SKG => SK
 #include "pm_dateTime@routines.inc.F90"
     end procedure
 
@@ -1068,7 +1068,7 @@ contains
 #define isValidDateTimeYMD_ENABLED 1
 
     module procedure isValidDateTimeYMD
-        use pm_kind, only: IKC => IK, SKC => SK
+        use pm_kind, only: IKG => IK, SKG => SK
 #include "pm_dateTime@routines.inc.F90"
     end procedure
 
@@ -1079,7 +1079,7 @@ contains
 #define isValidDateTimeYMDZ_ENABLED 1
 
     module procedure isValidDateTimeYMDZ
-        use pm_kind, only: IKC => IK, SKC => SK
+        use pm_kind, only: IKG => IK, SKG => SK
 #include "pm_dateTime@routines.inc.F90"
     end procedure
 
@@ -1090,7 +1090,7 @@ contains
 #define isValidDateTimeYMDZH_ENABLED 1
 
     module procedure isValidDateTimeYMDZH
-        use pm_kind, only: IKC => IK, SKC => SK
+        use pm_kind, only: IKG => IK, SKG => SK
 #include "pm_dateTime@routines.inc.F90"
     end procedure
 
@@ -1101,7 +1101,7 @@ contains
 #define isValidDateTimeYMDZHM_ENABLED 1
 
     module procedure isValidDateTimeYMDZHM
-        use pm_kind, only: IKC => IK, SKC => SK
+        use pm_kind, only: IKG => IK, SKG => SK
 #include "pm_dateTime@routines.inc.F90"
     end procedure
 
@@ -1112,7 +1112,7 @@ contains
 #define isValidDateTimeYMDZHMS_ENABLED 1
 
     module procedure isValidDateTimeYMDZHMS
-        use pm_kind, only: IKC => IK, SKC => SK
+        use pm_kind, only: IKG => IK, SKG => SK
 #include "pm_dateTime@routines.inc.F90"
     end procedure
 
@@ -1123,7 +1123,7 @@ contains
 #define isValidDateTimeYMDZHMSM_ENABLED 1
 
     module procedure isValidDateTimeYMDZHMSM
-        use pm_kind, only: IKC => IK, SKC => SK
+        use pm_kind, only: IKG => IK, SKG => SK
 #include "pm_dateTime@routines.inc.F90"
     end procedure
 
@@ -1152,7 +1152,7 @@ contains
 #define getDateTimeValuesJ_ENABLED 1
 
     module procedure getDateTimeValuesJ
-        use pm_kind, only: IKC => IK, RKC => RK
+        use pm_kind, only: IKG => IK, RKG => RK
 #include "pm_dateTime@routines.inc.F90"
     end procedure
 
@@ -1163,7 +1163,7 @@ contains
 #define getDateTimeValuesJZ_ENABLED 1
 
     module procedure getDateTimeValuesJZ
-        use pm_kind, only: IKC => IK, RKC => RK
+        use pm_kind, only: IKG => IK, RKG => RK
 #include "pm_dateTime@routines.inc.F90"
     end procedure
 
@@ -1174,7 +1174,7 @@ contains
 #define getDateTimeValuesC_ENABLED 1
 
     module procedure getDateTimeValuesC
-        use pm_kind, only: IKC => IK, SKC => SK
+        use pm_kind, only: IKG => IK, SKG => SK
 #include "pm_dateTime@routines.inc.F90"
     end procedure
 
@@ -1185,7 +1185,7 @@ contains
 #define getDateTimeValuesY_ENABLED 1
 
     module procedure getDateTimeValuesY
-        use pm_kind, only: IKC => IK, SKC => SK
+        use pm_kind, only: IKG => IK, SKG => SK
 #include "pm_dateTime@routines.inc.F90"
     end procedure
 
@@ -1196,7 +1196,7 @@ contains
 #define getDateTimeValuesYM_ENABLED 1
 
     module procedure getDateTimeValuesYM
-        use pm_kind, only: IKC => IK, SKC => SK
+        use pm_kind, only: IKG => IK, SKG => SK
 #include "pm_dateTime@routines.inc.F90"
     end procedure
 
@@ -1207,7 +1207,7 @@ contains
 #define getDateTimeValuesYMD_ENABLED 1
 
     module procedure getDateTimeValuesYMD
-        use pm_kind, only: IKC => IK, SKC => SK
+        use pm_kind, only: IKG => IK, SKG => SK
 #include "pm_dateTime@routines.inc.F90"
     end procedure
 
@@ -1218,7 +1218,7 @@ contains
 #define getDateTimeValuesYMDZ_ENABLED 1
 
     module procedure getDateTimeValuesYMDZ
-        use pm_kind, only: IKC => IK, SKC => SK
+        use pm_kind, only: IKG => IK, SKG => SK
 #include "pm_dateTime@routines.inc.F90"
     end procedure
 
@@ -1229,7 +1229,7 @@ contains
 #define getDateTimeValuesYMDZH_ENABLED 1
 
     module procedure getDateTimeValuesYMDZH
-        use pm_kind, only: IKC => IK, SKC => SK
+        use pm_kind, only: IKG => IK, SKG => SK
 #include "pm_dateTime@routines.inc.F90"
     end procedure
 
@@ -1240,7 +1240,7 @@ contains
 #define getDateTimeValuesYMDZHM_ENABLED 1
 
     module procedure getDateTimeValuesYMDZHM
-        use pm_kind, only: IKC => IK, SKC => SK
+        use pm_kind, only: IKG => IK, SKG => SK
 #include "pm_dateTime@routines.inc.F90"
     end procedure
 
@@ -1251,7 +1251,7 @@ contains
 #define getDateTimeValuesYMDZHMS_ENABLED 1
 
     module procedure getDateTimeValuesYMDZHMS
-        use pm_kind, only: IKC => IK, SKC => SK
+        use pm_kind, only: IKG => IK, SKG => SK
 #include "pm_dateTime@routines.inc.F90"
     end procedure
 
@@ -1262,7 +1262,7 @@ contains
 #define getDateTimeValuesYMDZHMSM_ENABLED 1
 
     module procedure getDateTimeValuesYMDZHMSM
-        use pm_kind, only: IKC => IK, SKC => SK
+        use pm_kind, only: IKG => IK, SKG => SK
 #include "pm_dateTime@routines.inc.F90"
     end procedure
 
@@ -1283,7 +1283,7 @@ contains
 !#define getDateTimeStringJ_ENABLED 1
 !
 !    module procedure getDateTimeStringJ
-!        use pm_kind, only: IKC => IK, RKC => RK
+!        use pm_kind, only: IKG => IK, RKG => RK
 !#include "pm_dateTime@routines.inc.F90"
 !    end procedure
 !
@@ -1294,7 +1294,7 @@ contains
 !#define getDateTimeStringJZ_ENABLED 1
 !
 !    module procedure getDateTimeStringJZ
-!        use pm_kind, only: IKC => IK, RKC => RK
+!        use pm_kind, only: IKG => IK, RKG => RK
 !#include "pm_dateTime@routines.inc.F90"
 !    end procedure
 !
@@ -1305,7 +1305,7 @@ contains
 #define getDateTimeStringC_ENABLED 1
 
     module procedure getDateTimeStringC
-        use pm_kind, only: IKC => IK, SKC => SK
+        use pm_kind, only: IKG => IK, SKG => SK
 #include "pm_dateTime@routines.inc.F90"
     end procedure
 
@@ -1316,7 +1316,7 @@ contains
 #define getDateTimeStringV_ENABLED 1
 
     module procedure getDateTimeStringV
-        use pm_kind, only: IKC => IK, SKC => SK
+        use pm_kind, only: IKG => IK, SKG => SK
 #include "pm_dateTime@routines.inc.F90"
     end procedure
 
@@ -1327,7 +1327,7 @@ contains
 !#define getDateTimeStringY_ENABLED 1
 !
 !    module procedure getDateTimeStringY
-!        use pm_kind, only: IKC => IK, SKC => SK
+!        use pm_kind, only: IKG => IK, SKG => SK
 !#include "pm_dateTime@routines.inc.F90"
 !    end procedure
 !
@@ -1338,7 +1338,7 @@ contains
 !#define getDateTimeStringYM_ENABLED 1
 !
 !    module procedure getDateTimeStringYM
-!        use pm_kind, only: IKC => IK, SKC => SK
+!        use pm_kind, only: IKG => IK, SKG => SK
 !#include "pm_dateTime@routines.inc.F90"
 !    end procedure
 !
@@ -1349,7 +1349,7 @@ contains
 !#define getDateTimeStringYMD_ENABLED 1
 !
 !    module procedure getDateTimeStringYMD
-!        use pm_kind, only: IKC => IK, SKC => SK
+!        use pm_kind, only: IKG => IK, SKG => SK
 !#include "pm_dateTime@routines.inc.F90"
 !    end procedure
 !
@@ -1360,7 +1360,7 @@ contains
 !#define getDateTimeStringYMDZ_ENABLED 1
 !
 !    module procedure getDateTimeStringYMDZ
-!        use pm_kind, only: IKC => IK, SKC => SK
+!        use pm_kind, only: IKG => IK, SKG => SK
 !#include "pm_dateTime@routines.inc.F90"
 !    end procedure
 !
@@ -1371,7 +1371,7 @@ contains
 !#define getDateTimeStringYMDZH_ENABLED 1
 !
 !    module procedure getDateTimeStringYMDZH
-!        use pm_kind, only: IKC => IK, SKC => SK
+!        use pm_kind, only: IKG => IK, SKG => SK
 !#include "pm_dateTime@routines.inc.F90"
 !    end procedure
 !
@@ -1382,7 +1382,7 @@ contains
 !#define getDateTimeStringYMDZHM_ENABLED 1
 !
 !    module procedure getDateTimeStringYMDZHM
-!        use pm_kind, only: IKC => IK, SKC => SK
+!        use pm_kind, only: IKG => IK, SKG => SK
 !#include "pm_dateTime@routines.inc.F90"
 !    end procedure
 !
@@ -1393,7 +1393,7 @@ contains
 !#define getDateTimeStringYMDZHMS_ENABLED 1
 !
 !    module procedure getDateTimeStringYMDZHMS
-!        use pm_kind, only: IKC => IK, SKC => SK
+!        use pm_kind, only: IKG => IK, SKG => SK
 !#include "pm_dateTime@routines.inc.F90"
 !    end procedure
 !
@@ -1404,7 +1404,7 @@ contains
 !#define getDateTimeStringYMDZHMSM_ENABLED 1
 !
 !    module procedure getDateTimeStringYMDZHMSM
-!        use pm_kind, only: IKC => IK, SKC => SK
+!        use pm_kind, only: IKG => IK, SKG => SK
 !#include "pm_dateTime@routines.inc.F90"
 !    end procedure
 !

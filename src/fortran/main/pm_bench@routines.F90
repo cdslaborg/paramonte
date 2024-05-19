@@ -65,7 +65,7 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     module procedure getTimingMethod
-        use pm_kind, only: RKC => RKD
+        use pm_kind, only: RKG => RKD
 #define getTiming_ENABLED 1
 #include "pm_bench@routines.inc.F90"
 #undef  getTiming_ENABLED
@@ -74,7 +74,7 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     module procedure setTimingMethod
-        use pm_kind, only: RKC => RKD
+        use pm_kind, only: RKG => RKD
 #define setTiming_ENABLED 1
 #include "pm_bench@routines.inc.F90"
 #undef  setTiming_ENABLED

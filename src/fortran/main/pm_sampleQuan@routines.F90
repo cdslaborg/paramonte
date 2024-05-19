@@ -79,35 +79,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getQuanPWLN_ND1_QD0_WNO_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getQuanPWLN_ND1_QD0_WNO_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getQuanPWLN_ND1_QD0_WNO_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getQuanPWLN_ND1_QD0_WNO_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getQuanPWLN_ND1_QD0_WNO_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
@@ -130,35 +130,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getQuanPWLN_ND1_QD1_WNO_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getQuanPWLN_ND1_QD1_WNO_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getQuanPWLN_ND1_QD1_WNO_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getQuanPWLN_ND1_QD1_WNO_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getQuanPWLN_ND1_QD1_WNO_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
@@ -193,35 +193,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getQuanMEAN_ND1_QD0_WNO_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getQuanMEAN_ND1_QD0_WNO_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getQuanMEAN_ND1_QD0_WNO_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getQuanMEAN_ND1_QD0_WNO_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getQuanMEAN_ND1_QD0_WNO_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
@@ -244,35 +244,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getQuanMEAN_ND1_QD1_WNO_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getQuanMEAN_ND1_QD1_WNO_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getQuanMEAN_ND1_QD1_WNO_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getQuanMEAN_ND1_QD1_WNO_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getQuanMEAN_ND1_QD1_WNO_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
@@ -307,35 +307,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getQuanNEAR_ND1_QD0_WNO_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getQuanNEAR_ND1_QD0_WNO_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getQuanNEAR_ND1_QD0_WNO_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getQuanNEAR_ND1_QD0_WNO_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getQuanNEAR_ND1_QD0_WNO_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
@@ -358,35 +358,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getQuanNEAR_ND1_QD1_WNO_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getQuanNEAR_ND1_QD1_WNO_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getQuanNEAR_ND1_QD1_WNO_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getQuanNEAR_ND1_QD1_WNO_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getQuanNEAR_ND1_QD1_WNO_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
@@ -421,35 +421,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getQuanNEXT_ND1_QD0_WNO_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getQuanNEXT_ND1_QD0_WNO_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getQuanNEXT_ND1_QD0_WNO_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getQuanNEXT_ND1_QD0_WNO_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getQuanNEXT_ND1_QD0_WNO_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
@@ -472,35 +472,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getQuanNEXT_ND1_QD1_WNO_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getQuanNEXT_ND1_QD1_WNO_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getQuanNEXT_ND1_QD1_WNO_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getQuanNEXT_ND1_QD1_WNO_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getQuanNEXT_ND1_QD1_WNO_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
@@ -535,35 +535,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getQuanPREV_ND1_QD0_WNO_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getQuanPREV_ND1_QD0_WNO_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getQuanPREV_ND1_QD0_WNO_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getQuanPREV_ND1_QD0_WNO_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getQuanPREV_ND1_QD0_WNO_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
@@ -586,35 +586,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getQuanPREV_ND1_QD1_WNO_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getQuanPREV_ND1_QD1_WNO_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getQuanPREV_ND1_QD1_WNO_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getQuanPREV_ND1_QD1_WNO_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getQuanPREV_ND1_QD1_WNO_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
@@ -661,35 +661,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getQuanPWLN_ND1_QD0_WTI_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getQuanPWLN_ND1_QD0_WTI_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getQuanPWLN_ND1_QD0_WTI_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getQuanPWLN_ND1_QD0_WTI_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getQuanPWLN_ND1_QD0_WTI_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
@@ -712,35 +712,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getQuanPWLN_ND1_QD1_WTI_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getQuanPWLN_ND1_QD1_WTI_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getQuanPWLN_ND1_QD1_WTI_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getQuanPWLN_ND1_QD1_WTI_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getQuanPWLN_ND1_QD1_WTI_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
@@ -775,35 +775,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getQuanMEAN_ND1_QD0_WTI_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getQuanMEAN_ND1_QD0_WTI_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getQuanMEAN_ND1_QD0_WTI_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getQuanMEAN_ND1_QD0_WTI_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getQuanMEAN_ND1_QD0_WTI_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
@@ -826,35 +826,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getQuanMEAN_ND1_QD1_WTI_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getQuanMEAN_ND1_QD1_WTI_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getQuanMEAN_ND1_QD1_WTI_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getQuanMEAN_ND1_QD1_WTI_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getQuanMEAN_ND1_QD1_WTI_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
@@ -889,35 +889,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getQuanNEAR_ND1_QD0_WTI_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getQuanNEAR_ND1_QD0_WTI_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getQuanNEAR_ND1_QD0_WTI_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getQuanNEAR_ND1_QD0_WTI_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getQuanNEAR_ND1_QD0_WTI_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
@@ -940,35 +940,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getQuanNEAR_ND1_QD1_WTI_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getQuanNEAR_ND1_QD1_WTI_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getQuanNEAR_ND1_QD1_WTI_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getQuanNEAR_ND1_QD1_WTI_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getQuanNEAR_ND1_QD1_WTI_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
@@ -1003,35 +1003,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getQuanNEXT_ND1_QD0_WTI_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getQuanNEXT_ND1_QD0_WTI_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getQuanNEXT_ND1_QD0_WTI_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getQuanNEXT_ND1_QD0_WTI_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getQuanNEXT_ND1_QD0_WTI_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
@@ -1054,35 +1054,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getQuanNEXT_ND1_QD1_WTI_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getQuanNEXT_ND1_QD1_WTI_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getQuanNEXT_ND1_QD1_WTI_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getQuanNEXT_ND1_QD1_WTI_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getQuanNEXT_ND1_QD1_WTI_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
@@ -1117,35 +1117,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getQuanPREV_ND1_QD0_WTI_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getQuanPREV_ND1_QD0_WTI_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getQuanPREV_ND1_QD0_WTI_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getQuanPREV_ND1_QD0_WTI_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getQuanPREV_ND1_QD0_WTI_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
@@ -1168,35 +1168,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getQuanPREV_ND1_QD1_WTI_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getQuanPREV_ND1_QD1_WTI_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getQuanPREV_ND1_QD1_WTI_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getQuanPREV_ND1_QD1_WTI_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getQuanPREV_ND1_QD1_WTI_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
@@ -1243,35 +1243,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getQuanPWLN_ND1_QD0_WTR_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getQuanPWLN_ND1_QD0_WTR_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getQuanPWLN_ND1_QD0_WTR_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getQuanPWLN_ND1_QD0_WTR_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getQuanPWLN_ND1_QD0_WTR_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
@@ -1294,35 +1294,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getQuanPWLN_ND1_QD1_WTR_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getQuanPWLN_ND1_QD1_WTR_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getQuanPWLN_ND1_QD1_WTR_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getQuanPWLN_ND1_QD1_WTR_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getQuanPWLN_ND1_QD1_WTR_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
@@ -1357,35 +1357,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getQuanMEAN_ND1_QD0_WTR_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getQuanMEAN_ND1_QD0_WTR_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getQuanMEAN_ND1_QD0_WTR_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getQuanMEAN_ND1_QD0_WTR_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getQuanMEAN_ND1_QD0_WTR_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
@@ -1408,35 +1408,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getQuanMEAN_ND1_QD1_WTR_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getQuanMEAN_ND1_QD1_WTR_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getQuanMEAN_ND1_QD1_WTR_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getQuanMEAN_ND1_QD1_WTR_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getQuanMEAN_ND1_QD1_WTR_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
@@ -1471,35 +1471,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getQuanNEAR_ND1_QD0_WTR_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getQuanNEAR_ND1_QD0_WTR_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getQuanNEAR_ND1_QD0_WTR_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getQuanNEAR_ND1_QD0_WTR_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getQuanNEAR_ND1_QD0_WTR_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
@@ -1522,35 +1522,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getQuanNEAR_ND1_QD1_WTR_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getQuanNEAR_ND1_QD1_WTR_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getQuanNEAR_ND1_QD1_WTR_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getQuanNEAR_ND1_QD1_WTR_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getQuanNEAR_ND1_QD1_WTR_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
@@ -1585,35 +1585,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getQuanNEXT_ND1_QD0_WTR_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getQuanNEXT_ND1_QD0_WTR_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getQuanNEXT_ND1_QD0_WTR_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getQuanNEXT_ND1_QD0_WTR_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getQuanNEXT_ND1_QD0_WTR_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
@@ -1636,35 +1636,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getQuanNEXT_ND1_QD1_WTR_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getQuanNEXT_ND1_QD1_WTR_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getQuanNEXT_ND1_QD1_WTR_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getQuanNEXT_ND1_QD1_WTR_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getQuanNEXT_ND1_QD1_WTR_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
@@ -1699,35 +1699,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getQuanPREV_ND1_QD0_WTR_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getQuanPREV_ND1_QD0_WTR_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getQuanPREV_ND1_QD0_WTR_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getQuanPREV_ND1_QD0_WTR_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getQuanPREV_ND1_QD0_WTR_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
@@ -1750,35 +1750,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getQuanPREV_ND1_QD1_WTR_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getQuanPREV_ND1_QD1_WTR_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getQuanPREV_ND1_QD1_WTR_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getQuanPREV_ND1_QD1_WTR_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getQuanPREV_ND1_QD1_WTR_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
@@ -1837,35 +1837,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getQuanPWLN_ND2_QD0_WNO_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getQuanPWLN_ND2_QD0_WNO_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getQuanPWLN_ND2_QD0_WNO_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getQuanPWLN_ND2_QD0_WNO_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getQuanPWLN_ND2_QD0_WNO_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
@@ -1888,35 +1888,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getQuanPWLN_ND2_QD1_WNO_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getQuanPWLN_ND2_QD1_WNO_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getQuanPWLN_ND2_QD1_WNO_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getQuanPWLN_ND2_QD1_WNO_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getQuanPWLN_ND2_QD1_WNO_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
@@ -1951,35 +1951,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getQuanMEAN_ND2_QD0_WNO_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getQuanMEAN_ND2_QD0_WNO_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getQuanMEAN_ND2_QD0_WNO_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getQuanMEAN_ND2_QD0_WNO_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getQuanMEAN_ND2_QD0_WNO_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
@@ -2002,35 +2002,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getQuanMEAN_ND2_QD1_WNO_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getQuanMEAN_ND2_QD1_WNO_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getQuanMEAN_ND2_QD1_WNO_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getQuanMEAN_ND2_QD1_WNO_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getQuanMEAN_ND2_QD1_WNO_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
@@ -2065,35 +2065,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getQuanNEAR_ND2_QD0_WNO_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getQuanNEAR_ND2_QD0_WNO_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getQuanNEAR_ND2_QD0_WNO_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getQuanNEAR_ND2_QD0_WNO_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getQuanNEAR_ND2_QD0_WNO_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
@@ -2116,35 +2116,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getQuanNEAR_ND2_QD1_WNO_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getQuanNEAR_ND2_QD1_WNO_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getQuanNEAR_ND2_QD1_WNO_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getQuanNEAR_ND2_QD1_WNO_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getQuanNEAR_ND2_QD1_WNO_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
@@ -2179,35 +2179,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getQuanNEXT_ND2_QD0_WNO_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getQuanNEXT_ND2_QD0_WNO_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getQuanNEXT_ND2_QD0_WNO_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getQuanNEXT_ND2_QD0_WNO_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getQuanNEXT_ND2_QD0_WNO_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
@@ -2230,35 +2230,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getQuanNEXT_ND2_QD1_WNO_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getQuanNEXT_ND2_QD1_WNO_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getQuanNEXT_ND2_QD1_WNO_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getQuanNEXT_ND2_QD1_WNO_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getQuanNEXT_ND2_QD1_WNO_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
@@ -2293,35 +2293,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getQuanPREV_ND2_QD0_WNO_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getQuanPREV_ND2_QD0_WNO_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getQuanPREV_ND2_QD0_WNO_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getQuanPREV_ND2_QD0_WNO_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getQuanPREV_ND2_QD0_WNO_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
@@ -2344,35 +2344,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getQuanPREV_ND2_QD1_WNO_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getQuanPREV_ND2_QD1_WNO_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getQuanPREV_ND2_QD1_WNO_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getQuanPREV_ND2_QD1_WNO_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getQuanPREV_ND2_QD1_WNO_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
@@ -2419,35 +2419,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getQuanPWLN_ND2_QD0_WTI_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getQuanPWLN_ND2_QD0_WTI_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getQuanPWLN_ND2_QD0_WTI_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getQuanPWLN_ND2_QD0_WTI_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getQuanPWLN_ND2_QD0_WTI_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
@@ -2470,35 +2470,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getQuanPWLN_ND2_QD1_WTI_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getQuanPWLN_ND2_QD1_WTI_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getQuanPWLN_ND2_QD1_WTI_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getQuanPWLN_ND2_QD1_WTI_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getQuanPWLN_ND2_QD1_WTI_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
@@ -2533,35 +2533,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getQuanMEAN_ND2_QD0_WTI_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getQuanMEAN_ND2_QD0_WTI_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getQuanMEAN_ND2_QD0_WTI_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getQuanMEAN_ND2_QD0_WTI_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getQuanMEAN_ND2_QD0_WTI_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
@@ -2584,35 +2584,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getQuanMEAN_ND2_QD1_WTI_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getQuanMEAN_ND2_QD1_WTI_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getQuanMEAN_ND2_QD1_WTI_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getQuanMEAN_ND2_QD1_WTI_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getQuanMEAN_ND2_QD1_WTI_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
@@ -2647,35 +2647,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getQuanNEAR_ND2_QD0_WTI_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getQuanNEAR_ND2_QD0_WTI_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getQuanNEAR_ND2_QD0_WTI_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getQuanNEAR_ND2_QD0_WTI_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getQuanNEAR_ND2_QD0_WTI_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
@@ -2698,35 +2698,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getQuanNEAR_ND2_QD1_WTI_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getQuanNEAR_ND2_QD1_WTI_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getQuanNEAR_ND2_QD1_WTI_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getQuanNEAR_ND2_QD1_WTI_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getQuanNEAR_ND2_QD1_WTI_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
@@ -2761,35 +2761,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getQuanNEXT_ND2_QD0_WTI_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getQuanNEXT_ND2_QD0_WTI_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getQuanNEXT_ND2_QD0_WTI_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getQuanNEXT_ND2_QD0_WTI_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getQuanNEXT_ND2_QD0_WTI_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
@@ -2812,35 +2812,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getQuanNEXT_ND2_QD1_WTI_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getQuanNEXT_ND2_QD1_WTI_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getQuanNEXT_ND2_QD1_WTI_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getQuanNEXT_ND2_QD1_WTI_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getQuanNEXT_ND2_QD1_WTI_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
@@ -2875,35 +2875,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getQuanPREV_ND2_QD0_WTI_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getQuanPREV_ND2_QD0_WTI_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getQuanPREV_ND2_QD0_WTI_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getQuanPREV_ND2_QD0_WTI_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getQuanPREV_ND2_QD0_WTI_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
@@ -2926,35 +2926,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getQuanPREV_ND2_QD1_WTI_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getQuanPREV_ND2_QD1_WTI_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getQuanPREV_ND2_QD1_WTI_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getQuanPREV_ND2_QD1_WTI_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getQuanPREV_ND2_QD1_WTI_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
@@ -3001,35 +3001,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getQuanPWLN_ND2_QD0_WTR_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getQuanPWLN_ND2_QD0_WTR_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getQuanPWLN_ND2_QD0_WTR_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getQuanPWLN_ND2_QD0_WTR_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getQuanPWLN_ND2_QD0_WTR_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
@@ -3052,35 +3052,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getQuanPWLN_ND2_QD1_WTR_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getQuanPWLN_ND2_QD1_WTR_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getQuanPWLN_ND2_QD1_WTR_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getQuanPWLN_ND2_QD1_WTR_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getQuanPWLN_ND2_QD1_WTR_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
@@ -3115,35 +3115,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getQuanMEAN_ND2_QD0_WTR_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getQuanMEAN_ND2_QD0_WTR_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getQuanMEAN_ND2_QD0_WTR_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getQuanMEAN_ND2_QD0_WTR_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getQuanMEAN_ND2_QD0_WTR_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
@@ -3166,35 +3166,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getQuanMEAN_ND2_QD1_WTR_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getQuanMEAN_ND2_QD1_WTR_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getQuanMEAN_ND2_QD1_WTR_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getQuanMEAN_ND2_QD1_WTR_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getQuanMEAN_ND2_QD1_WTR_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
@@ -3229,35 +3229,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getQuanNEAR_ND2_QD0_WTR_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getQuanNEAR_ND2_QD0_WTR_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getQuanNEAR_ND2_QD0_WTR_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getQuanNEAR_ND2_QD0_WTR_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getQuanNEAR_ND2_QD0_WTR_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
@@ -3280,35 +3280,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getQuanNEAR_ND2_QD1_WTR_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getQuanNEAR_ND2_QD1_WTR_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getQuanNEAR_ND2_QD1_WTR_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getQuanNEAR_ND2_QD1_WTR_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getQuanNEAR_ND2_QD1_WTR_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
@@ -3343,35 +3343,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getQuanNEXT_ND2_QD0_WTR_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getQuanNEXT_ND2_QD0_WTR_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getQuanNEXT_ND2_QD0_WTR_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getQuanNEXT_ND2_QD0_WTR_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getQuanNEXT_ND2_QD0_WTR_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
@@ -3394,35 +3394,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getQuanNEXT_ND2_QD1_WTR_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getQuanNEXT_ND2_QD1_WTR_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getQuanNEXT_ND2_QD1_WTR_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getQuanNEXT_ND2_QD1_WTR_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getQuanNEXT_ND2_QD1_WTR_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
@@ -3457,35 +3457,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getQuanPREV_ND2_QD0_WTR_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getQuanPREV_ND2_QD0_WTR_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getQuanPREV_ND2_QD0_WTR_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getQuanPREV_ND2_QD0_WTR_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getQuanPREV_ND2_QD0_WTR_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
@@ -3508,35 +3508,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getQuanPREV_ND2_QD1_WTR_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getQuanPREV_ND2_QD1_WTR_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getQuanPREV_ND2_QD1_WTR_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getQuanPREV_ND2_QD1_WTR_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getQuanPREV_ND2_QD1_WTR_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_sampleQuan@routines.inc.F90"
     end procedure
 #endif

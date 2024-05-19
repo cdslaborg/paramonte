@@ -45,38 +45,38 @@
         !%%%%%%%%%%%%%%%%%%
 
 #if     SK_ENABLED && D0_D0_ENABLED
-        character(:,SKC), allocatable   :: arrayStripped, arrayStripped_ref, array, pattern
-        character(1,SKC), parameter     :: lower = SKC_"a", upper = SKC_"d"
+        character(:,SKG), allocatable   :: arrayStripped, arrayStripped_ref, array, pattern
+        character(1,SKG), parameter     :: lower = SKG_"a", upper = SKG_"d"
 #elif   SK_ENABLED && D1_D0_ENABLED
-        character(2,SKC), allocatable   :: arrayStripped(:), arrayStripped_ref(:), array(:), pattern
-        character(2,SKC), parameter     :: lower = SKC_"aa", upper = SKC_"dd"
+        character(2,SKG), allocatable   :: arrayStripped(:), arrayStripped_ref(:), array(:), pattern
+        character(2,SKG), parameter     :: lower = SKG_"aa", upper = SKG_"dd"
 #elif   IK_ENABLED && D1_D0_ENABLED
-        integer(IKC)    , allocatable   :: arrayStripped(:), arrayStripped_ref(:), array(:), pattern
-        integer(IKC)    , parameter     :: lower = 0_IKC, upper = 10_IKC
+        integer(IKG)    , allocatable   :: arrayStripped(:), arrayStripped_ref(:), array(:), pattern
+        integer(IKG)    , parameter     :: lower = 0_IKG, upper = 10_IKG
 #elif   LK_ENABLED && D1_D0_ENABLED
-        logical(LKC)    , allocatable   :: arrayStripped(:), arrayStripped_ref(:), array(:), pattern
-        logical(LKC)    , parameter     :: lower = .false._LKC, upper = .true._LKC
+        logical(LKG)    , allocatable   :: arrayStripped(:), arrayStripped_ref(:), array(:), pattern
+        logical(LKG)    , parameter     :: lower = .false._LKG, upper = .true._LKG
 #elif   CK_ENABLED && D1_D0_ENABLED
-        complex(CKC)    , allocatable   :: arrayStripped(:), arrayStripped_ref(:), array(:), pattern
-        complex(CKC)    , parameter     :: lower = (-1._CKC, -1._CKC), upper = (1._CKC, 1._CKC)
+        complex(CKG)    , allocatable   :: arrayStripped(:), arrayStripped_ref(:), array(:), pattern
+        complex(CKG)    , parameter     :: lower = (-1._CKG, -1._CKG), upper = (1._CKG, 1._CKG)
 #elif   RK_ENABLED && D1_D0_ENABLED
-        real(RKC)       , allocatable   :: arrayStripped(:), arrayStripped_ref(:), array(:), pattern
-        real(RKC)       , parameter     :: lower = -1._RKC, upper = 1._RKC
+        real(RKG)       , allocatable   :: arrayStripped(:), arrayStripped_ref(:), array(:), pattern
+        real(RKG)       , parameter     :: lower = -1._RKG, upper = 1._RKG
 #elif   SK_ENABLED && D1_D1_ENABLED
-        character(2,SKC), allocatable   :: arrayStripped(:), arrayStripped_ref(:), array(:), pattern(:)
-        character(2,SKC), parameter     :: lower = SKC_"aa", upper = SKC_"dd"
+        character(2,SKG), allocatable   :: arrayStripped(:), arrayStripped_ref(:), array(:), pattern(:)
+        character(2,SKG), parameter     :: lower = SKG_"aa", upper = SKG_"dd"
 #elif   IK_ENABLED && D1_D1_ENABLED
-        integer(IKC)    , allocatable   :: arrayStripped(:), arrayStripped_ref(:), array(:), pattern(:)
-        integer(IKC)    , parameter     :: lower = 0_IKC, upper = 10_IKC
+        integer(IKG)    , allocatable   :: arrayStripped(:), arrayStripped_ref(:), array(:), pattern(:)
+        integer(IKG)    , parameter     :: lower = 0_IKG, upper = 10_IKG
 #elif   LK_ENABLED && D1_D1_ENABLED
-        logical(LKC)    , allocatable   :: arrayStripped(:), arrayStripped_ref(:), array(:), pattern(:)
-        logical(LKC)    , parameter     :: lower = .false._LKC, upper = .true._LKC
+        logical(LKG)    , allocatable   :: arrayStripped(:), arrayStripped_ref(:), array(:), pattern(:)
+        logical(LKG)    , parameter     :: lower = .false._LKG, upper = .true._LKG
 #elif   CK_ENABLED && D1_D1_ENABLED
-        complex(CKC)    , allocatable   :: arrayStripped(:), arrayStripped_ref(:), array(:), pattern(:)
-        complex(CKC)    , parameter     :: lower = (-1._CKC, -1._CKC), upper = (1._CKC, 1._CKC)
+        complex(CKG)    , allocatable   :: arrayStripped(:), arrayStripped_ref(:), array(:), pattern(:)
+        complex(CKG)    , parameter     :: lower = (-1._CKG, -1._CKG), upper = (1._CKG, 1._CKG)
 #elif   RK_ENABLED && D1_D1_ENABLED
-        real(RKC)       , allocatable   :: arrayStripped(:), arrayStripped_ref(:), array(:), pattern(:)
-        real(RKC)       , parameter     :: lower = -1._RKC, upper = 1._RKC
+        real(RKG)       , allocatable   :: arrayStripped(:), arrayStripped_ref(:), array(:), pattern(:)
+        real(RKG)       , parameter     :: lower = -1._RKG, upper = 1._RKG
 #else
 #error  "Unrecognized interface."
 #endif
@@ -212,17 +212,17 @@
 #if     D0_D0_ENABLED || D1_D0_ENABLED
         function iseq(Segment, pattern) result(equivalent)
 #if         SK_ENABLED && D0_D0_ENABLED
-            character(*,SKC), intent(in)    :: Segment, pattern
+            character(*,SKG), intent(in)    :: Segment, pattern
 #elif       SK_ENABLED && D1_D0_ENABLED
-            character(*,SKC), intent(in)    :: Segment, pattern
+            character(*,SKG), intent(in)    :: Segment, pattern
 #elif       IK_ENABLED && D1_D0_ENABLED
-            integer(IKC)    , intent(in)    :: Segment, pattern
+            integer(IKG)    , intent(in)    :: Segment, pattern
 #elif       LK_ENABLED && D1_D0_ENABLED
-            logical(LKC)    , intent(in)    :: Segment, pattern
+            logical(LKG)    , intent(in)    :: Segment, pattern
 #elif       CK_ENABLED && D1_D0_ENABLED
-            complex(CKC)    , intent(in)    :: Segment, pattern
+            complex(CKG)    , intent(in)    :: Segment, pattern
 #elif       RK_ENABLED && D1_D0_ENABLED
-            real(RKC)       , intent(in)    :: Segment, pattern
+            real(RKG)       , intent(in)    :: Segment, pattern
 #endif
             logical(LK) :: equivalent
             equivalent = Segment IS_EQUAL pattern
@@ -232,15 +232,15 @@
             logical(LK)             :: equivalent
             integer(IK), intent(in) :: lenpattern
 #if         SK_ENABLED
-            character(*,SKC), intent(in)    :: Segment(lenpattern), pattern(lenpattern)
+            character(*,SKG), intent(in)    :: Segment(lenpattern), pattern(lenpattern)
 #elif       IK_ENABLED
-            integer(IKC)    , intent(in)    :: Segment(lenpattern), pattern(lenpattern)
+            integer(IKG)    , intent(in)    :: Segment(lenpattern), pattern(lenpattern)
 #elif       LK_ENABLED
-            logical(LKC)    , intent(in)    :: Segment(lenpattern), pattern(lenpattern)
+            logical(LKG)    , intent(in)    :: Segment(lenpattern), pattern(lenpattern)
 #elif       CK_ENABLED
-            complex(CKC)    , intent(in)    :: Segment(lenpattern), pattern(lenpattern)
+            complex(CKG)    , intent(in)    :: Segment(lenpattern), pattern(lenpattern)
 #elif       RK_ENABLED
-            real(RKC)       , intent(in)    :: Segment(lenpattern), pattern(lenpattern)
+            real(RKG)       , intent(in)    :: Segment(lenpattern), pattern(lenpattern)
 #endif
             equivalent = all(Segment IS_EQUAL pattern)
         end function
@@ -262,38 +262,38 @@
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #if     SK_ENABLED && D0_D0_ENABLED
-        character(:,SKC), allocatable   :: array, pattern
-        character(1,SKC), parameter     :: lower = SKC_"a", upper = SKC_"d"
+        character(:,SKG), allocatable   :: array, pattern
+        character(1,SKG), parameter     :: lower = SKG_"a", upper = SKG_"d"
 #elif   SK_ENABLED && D1_D0_ENABLED
-        character(2,SKC), allocatable   :: array(:), pattern
-        character(2,SKC), parameter     :: lower = SKC_"aa", upper = SKC_"dd"
+        character(2,SKG), allocatable   :: array(:), pattern
+        character(2,SKG), parameter     :: lower = SKG_"aa", upper = SKG_"dd"
 #elif   IK_ENABLED && D1_D0_ENABLED
-        integer(IKC)    , allocatable   :: array(:), pattern
-        integer(IKC)    , parameter     :: lower = 0_IKC, upper = 10_IKC
+        integer(IKG)    , allocatable   :: array(:), pattern
+        integer(IKG)    , parameter     :: lower = 0_IKG, upper = 10_IKG
 #elif   LK_ENABLED && D1_D0_ENABLED
-        logical(LKC)    , allocatable   :: array(:), pattern
-        logical(LKC)    , parameter     :: lower = .false._LKC, upper = .true._LKC
+        logical(LKG)    , allocatable   :: array(:), pattern
+        logical(LKG)    , parameter     :: lower = .false._LKG, upper = .true._LKG
 #elif   CK_ENABLED && D1_D0_ENABLED
-        complex(CKC)    , allocatable   :: array(:), pattern
-        complex(CKC)    , parameter     :: lower = (-1._CKC, -1._CKC), upper = (1._CKC, 1._CKC)
+        complex(CKG)    , allocatable   :: array(:), pattern
+        complex(CKG)    , parameter     :: lower = (-1._CKG, -1._CKG), upper = (1._CKG, 1._CKG)
 #elif   RK_ENABLED && D1_D0_ENABLED
-        real(RKC)       , allocatable   :: array(:), pattern
-        real(RKC)       , parameter     :: lower = -1._RKC, upper = 1._RKC
+        real(RKG)       , allocatable   :: array(:), pattern
+        real(RKG)       , parameter     :: lower = -1._RKG, upper = 1._RKG
 #elif   SK_ENABLED && D1_D1_ENABLED
-        character(2,SKC), allocatable   :: array(:), pattern(:)
-        character(2,SKC), parameter     :: lower = SKC_"aa", upper = SKC_"dd"
+        character(2,SKG), allocatable   :: array(:), pattern(:)
+        character(2,SKG), parameter     :: lower = SKG_"aa", upper = SKG_"dd"
 #elif   IK_ENABLED && D1_D1_ENABLED
-        integer(IKC)    , allocatable   :: array(:), pattern(:)
-        integer(IKC)    , parameter     :: lower = 0_IKC, upper = 10_IKC
+        integer(IKG)    , allocatable   :: array(:), pattern(:)
+        integer(IKG)    , parameter     :: lower = 0_IKG, upper = 10_IKG
 #elif   LK_ENABLED && D1_D1_ENABLED
-        logical(LKC)    , allocatable   :: array(:), pattern(:)
-        logical(LKC)    , parameter     :: lower = .false._LKC, upper = .true._LKC
+        logical(LKG)    , allocatable   :: array(:), pattern(:)
+        logical(LKG)    , parameter     :: lower = .false._LKG, upper = .true._LKG
 #elif   CK_ENABLED && D1_D1_ENABLED
-        complex(CKC)    , allocatable   :: array(:), pattern(:)
-        complex(CKC)    , parameter     :: lower = (-1._CKC, -1._CKC), upper = (1._CKC, 1._CKC)
+        complex(CKG)    , allocatable   :: array(:), pattern(:)
+        complex(CKG)    , parameter     :: lower = (-1._CKG, -1._CKG), upper = (1._CKG, 1._CKG)
 #elif   RK_ENABLED && D1_D1_ENABLED
-        real(RKC)       , allocatable   :: array(:), pattern(:)
-        real(RKC)       , parameter     :: lower = -1._RKC, upper = 1._RKC
+        real(RKG)       , allocatable   :: array(:), pattern(:)
+        real(RKG)       , parameter     :: lower = -1._RKG, upper = 1._RKG
 #else
 #error  "Unrecognized interface."
 #endif
@@ -348,10 +348,10 @@
 
             call reset()
 #if         SK_ENABLED && D0_D0_ENABLED
-            array = SKC_""
-            pattern = SKC_""
+            array = SKG_""
+            pattern = SKG_""
 #elif       SK_ENABLED && D1_D1_ENABLED
-            allocate(character(2,SKC) :: array(0), pattern(0))
+            allocate(character(2,SKG) :: array(0), pattern(0))
 #elif       IK_ENABLED && D1_D1_ENABLED
             allocate(array(0), pattern(0))
 #elif       LK_ENABLED && D1_D1_ENABLED
@@ -374,23 +374,23 @@
             call reset()
 
 #if         SK_ENABLED && D0_D0_ENABLED
-            array = SKC_"aaabb"
-            pattern = SKC_""
+            array = SKG_"aaabb"
+            pattern = SKG_""
 #elif       SK_ENABLED && D1_D1_ENABLED
-            array = [character(2,SKC) :: "aa", "aa", "aa", "bb", "bb"]
-            pattern = [character(2,SKC) ::]
+            array = [character(2,SKG) :: "aa", "aa", "aa", "bb", "bb"]
+            pattern = [character(2,SKG) ::]
 #elif       IK_ENABLED && D1_D1_ENABLED
-            array = [integer(IKC) :: 1, 1, 1, 2, 2]
-            pattern = [integer(IKC) ::]
+            array = [integer(IKG) :: 1, 1, 1, 2, 2]
+            pattern = [integer(IKG) ::]
 #elif       LK_ENABLED && D1_D1_ENABLED
-            array = [logical(LKC) :: .false., .false., .false., .true., .true.]
-            pattern = [logical(LKC) ::]
+            array = [logical(LKG) :: .false., .false., .false., .true., .true.]
+            pattern = [logical(LKG) ::]
 #elif       CK_ENABLED && D1_D1_ENABLED
-            array = [complex(CKC) :: 1, 1, 1, 2, 2]
-            pattern = [complex(CKC) ::]
+            array = [complex(CKG) :: 1, 1, 1, 2, 2]
+            pattern = [complex(CKG) ::]
 #elif       RK_ENABLED && D1_D1_ENABLED
-            array = [real(RKC) :: 1, 1, 1, 2, 2]
-            pattern = [real(RKC) ::]
+            array = [real(RKG) :: 1, 1, 1, 2, 2]
+            pattern = [real(RKG) ::]
 #endif
 
 #if         getSIL_ENABLED
@@ -406,23 +406,23 @@
             call reset()
 
 #if         SK_ENABLED && D0_D0_ENABLED
-            array = SKC_"aaabb"
-            pattern = SKC_"a"
+            array = SKG_"aaabb"
+            pattern = SKG_"a"
 #elif       SK_ENABLED && D1_D1_ENABLED
-            array = [character(2,SKC) :: "aa", "aa", "aa", "bb", "bb"]
-            pattern = [character(2,SKC) :: "aa"]
+            array = [character(2,SKG) :: "aa", "aa", "aa", "bb", "bb"]
+            pattern = [character(2,SKG) :: "aa"]
 #elif       IK_ENABLED && D1_D1_ENABLED
-            array = [integer(IKC) :: 1, 1, 1, 2, 2]
-            pattern = [integer(IKC) :: 1]
+            array = [integer(IKG) :: 1, 1, 1, 2, 2]
+            pattern = [integer(IKG) :: 1]
 #elif       LK_ENABLED && D1_D1_ENABLED
-            array = [logical(LKC) :: .false., .false., .false., .true., .true.]
-            pattern = [logical(LKC) :: .false.]
+            array = [logical(LKG) :: .false., .false., .false., .true., .true.]
+            pattern = [logical(LKG) :: .false.]
 #elif       CK_ENABLED && D1_D1_ENABLED
-            array = [complex(CKC) :: 1, 1, 1, 2, 2]
-            pattern = [complex(CKC) :: 1]
+            array = [complex(CKG) :: 1, 1, 1, 2, 2]
+            pattern = [complex(CKG) :: 1]
 #elif       RK_ENABLED && D1_D1_ENABLED
-            array = [real(RKC) :: 1, 1, 1, 2, 2]
-            pattern = [real(RKC) :: 1]
+            array = [real(RKG) :: 1, 1, 1, 2, 2]
+            pattern = [real(RKG) :: 1]
 #endif
 
 #if         getSIL_ENABLED
@@ -438,23 +438,23 @@
             call reset()
 
 #if         SK_ENABLED && D0_D0_ENABLED
-            array = SKC_"aaabb"
-            pattern = SKC_"aa"
+            array = SKG_"aaabb"
+            pattern = SKG_"aa"
 #elif       SK_ENABLED && D1_D1_ENABLED
-            array = [character(2,SKC) :: "aa", "aa", "aa", "bb", "bb"]
-            pattern = [character(2,SKC) :: "aa", "aa"]
+            array = [character(2,SKG) :: "aa", "aa", "aa", "bb", "bb"]
+            pattern = [character(2,SKG) :: "aa", "aa"]
 #elif       IK_ENABLED && D1_D1_ENABLED
-            array = [integer(IKC) :: 1, 1, 1, 2, 2]
-            pattern = [integer(IKC) :: 1, 1]
+            array = [integer(IKG) :: 1, 1, 1, 2, 2]
+            pattern = [integer(IKG) :: 1, 1]
 #elif       LK_ENABLED && D1_D1_ENABLED
-            array = [logical(LKC) :: .false., .false., .false., .true., .true.]
-            pattern = [logical(LKC) :: .false., .false.]
+            array = [logical(LKG) :: .false., .false., .false., .true., .true.]
+            pattern = [logical(LKG) :: .false., .false.]
 #elif       CK_ENABLED && D1_D1_ENABLED
-            array = [complex(CKC) :: 1, 1, 1, 2, 2]
-            pattern = [complex(CKC) :: 1, 1]
+            array = [complex(CKG) :: 1, 1, 1, 2, 2]
+            pattern = [complex(CKG) :: 1, 1]
 #elif       RK_ENABLED && D1_D1_ENABLED
-            array = [real(RKC) :: 1, 1, 1, 2, 2]
-            pattern = [real(RKC) :: 1, 1]
+            array = [real(RKG) :: 1, 1, 1, 2, 2]
+            pattern = [real(RKG) :: 1, 1]
 #endif
 
 #if         getSIL_ENABLED
@@ -470,23 +470,23 @@
             call reset()
 
 #if         SK_ENABLED && D0_D0_ENABLED
-            array = SKC_"aaabb"
-            pattern = SKC_"b"
+            array = SKG_"aaabb"
+            pattern = SKG_"b"
 #elif       SK_ENABLED && D1_D1_ENABLED
-            array = [character(2,SKC) :: "aa", "aa", "aa", "bb", "bb"]
-            pattern = [character(2,SKC) :: "bb"]
+            array = [character(2,SKG) :: "aa", "aa", "aa", "bb", "bb"]
+            pattern = [character(2,SKG) :: "bb"]
 #elif       IK_ENABLED && D1_D1_ENABLED
-            array = [integer(IKC) :: 1, 1, 1, 2, 2]
-            pattern = [integer(IKC) :: 2]
+            array = [integer(IKG) :: 1, 1, 1, 2, 2]
+            pattern = [integer(IKG) :: 2]
 #elif       LK_ENABLED && D1_D1_ENABLED
-            array = [logical(LKC) :: .false., .false., .false., .true., .true.]
-            pattern = [logical(LKC) :: .true.]
+            array = [logical(LKG) :: .false., .false., .false., .true., .true.]
+            pattern = [logical(LKG) :: .true.]
 #elif       CK_ENABLED && D1_D1_ENABLED
-            array = [complex(CKC) :: 1, 1, 1, 2, 2]
-            pattern = [complex(CKC) :: 2]
+            array = [complex(CKG) :: 1, 1, 1, 2, 2]
+            pattern = [complex(CKG) :: 2]
 #elif       RK_ENABLED && D1_D1_ENABLED
-            array = [real(RKC) :: 1, 1, 1, 2, 2]
-            pattern = [real(RKC) :: 2]
+            array = [real(RKG) :: 1, 1, 1, 2, 2]
+            pattern = [real(RKG) :: 2]
 #endif
 
 #if         getSIL_ENABLED
@@ -502,23 +502,23 @@
             call reset()
 
 #if         SK_ENABLED && D0_D0_ENABLED
-            array = SKC_"aaabb"
-            pattern = SKC_"bb"
+            array = SKG_"aaabb"
+            pattern = SKG_"bb"
 #elif       SK_ENABLED && D1_D1_ENABLED
-            array = [character(2,SKC) :: "aa", "aa", "aa", "bb", "bb"]
-            pattern = [character(2,SKC) :: "bb", "bb"]
+            array = [character(2,SKG) :: "aa", "aa", "aa", "bb", "bb"]
+            pattern = [character(2,SKG) :: "bb", "bb"]
 #elif       IK_ENABLED && D1_D1_ENABLED
-            array = [integer(IKC) :: 1, 1, 1, 2, 2]
-            pattern = [integer(IKC) :: 2, 2]
+            array = [integer(IKG) :: 1, 1, 1, 2, 2]
+            pattern = [integer(IKG) :: 2, 2]
 #elif       LK_ENABLED && D1_D1_ENABLED
-            array = [logical(LKC) :: .false., .false., .false., .true., .true.]
-            pattern = [logical(LKC) :: .true., .true.]
+            array = [logical(LKG) :: .false., .false., .false., .true., .true.]
+            pattern = [logical(LKG) :: .true., .true.]
 #elif       CK_ENABLED && D1_D1_ENABLED
-            array = [complex(CKC) :: 1, 1, 1, 2, 2]
-            pattern = [complex(CKC) :: 2, 2]
+            array = [complex(CKG) :: 1, 1, 1, 2, 2]
+            pattern = [complex(CKG) :: 2, 2]
 #elif       RK_ENABLED && D1_D1_ENABLED
-            array = [real(RKC) :: 1, 1, 1, 2, 2]
-            pattern = [real(RKC) :: 2, 2]
+            array = [real(RKG) :: 1, 1, 1, 2, 2]
+            pattern = [real(RKG) :: 2, 2]
 #endif
 
 #if         getSIL_ENABLED
@@ -534,17 +534,17 @@
             call reset()
 
 #if         SK_ENABLED && D0_D0_ENABLED
-            array = SKC_"aaabb"
+            array = SKG_"aaabb"
 #elif       SK_ENABLED && D1_D1_ENABLED
-            array = [character(2,SKC) :: "aa", "aa", "aa", "bb", "bb"]
+            array = [character(2,SKG) :: "aa", "aa", "aa", "bb", "bb"]
 #elif       IK_ENABLED && D1_D1_ENABLED
-            array = [integer(IKC) :: 1, 1, 1, 2, 2]
+            array = [integer(IKG) :: 1, 1, 1, 2, 2]
 #elif       LK_ENABLED && D1_D1_ENABLED
-            array = [logical(LKC) :: .false., .false., .false., .true., .true.]
+            array = [logical(LKG) :: .false., .false., .false., .true., .true.]
 #elif       CK_ENABLED && D1_D1_ENABLED
-            array = [complex(CKC) :: 1, 1, 1, 2, 2]
+            array = [complex(CKG) :: 1, 1, 1, 2, 2]
 #elif       RK_ENABLED && D1_D1_ENABLED
-            array = [real(RKC) :: 1, 1, 1, 2, 2]
+            array = [real(RKG) :: 1, 1, 1, 2, 2]
 #endif
 
 #if         getSIL_ENABLED
@@ -561,22 +561,22 @@
             call reset()
 
 #if         SK_ENABLED && D0_D0_ENABLED
-            array = SKC_"aaabb"
+            array = SKG_"aaabb"
             pattern = array//array
 #elif       SK_ENABLED && D1_D1_ENABLED
-            array = [character(2,SKC) :: "aa", "aa", "aa", "bb", "bb"]
+            array = [character(2,SKG) :: "aa", "aa", "aa", "bb", "bb"]
             pattern = [array, array]
 #elif       IK_ENABLED && D1_D1_ENABLED
-            array = [integer(IKC) :: 1, 1, 1, 2, 2]
+            array = [integer(IKG) :: 1, 1, 1, 2, 2]
             pattern = [array, array]
 #elif       LK_ENABLED && D1_D1_ENABLED
-            array = [logical(LKC) :: .false., .false., .false., .true., .true.]
+            array = [logical(LKG) :: .false., .false., .false., .true., .true.]
             pattern = [array, array]
 #elif       CK_ENABLED && D1_D1_ENABLED
-            array = [complex(CKC) :: 1, 1, 1, 2, 2]
+            array = [complex(CKG) :: 1, 1, 1, 2, 2]
             pattern = [array, array]
 #elif       RK_ENABLED && D1_D1_ENABLED
-            array = [real(RKC) :: 1, 1, 1, 2, 2]
+            array = [real(RKG) :: 1, 1, 1, 2, 2]
             pattern = [array, array]
 #endif
 
@@ -638,7 +638,7 @@
 
 #if     D0_D0_ENABLED
         function iseq(Segment, pattern) result(equivalent)
-            character(*,SKC), intent(in) :: pattern, Segment
+            character(*,SKG), intent(in) :: pattern, Segment
             logical(LK) :: equivalent
             equivalent = Segment == pattern
         end function
@@ -646,15 +646,15 @@
 #if     D1_D0_ENABLED
         function iseq(Segment, pattern) result(equivalent)
 #if         SK_ENABLED
-            character(*,SKC), intent(in)    :: Segment, pattern
+            character(*,SKG), intent(in)    :: Segment, pattern
 #elif       IK_ENABLED
-            integer(IKC)    , intent(in)    :: Segment, pattern
+            integer(IKG)    , intent(in)    :: Segment, pattern
 #elif       LK_ENABLED
-            logical(LKC)    , intent(in)    :: Segment, pattern
+            logical(LKG)    , intent(in)    :: Segment, pattern
 #elif       CK_ENABLED
-            complex(CKC)    , intent(in)    :: Segment, pattern
+            complex(CKG)    , intent(in)    :: Segment, pattern
 #elif       RK_ENABLED
-            real(RKC)       , intent(in)    :: Segment, pattern
+            real(RKG)       , intent(in)    :: Segment, pattern
 #endif
             logical(LK) :: equivalent
             equivalent = Segment IS_EQUAL pattern
@@ -664,15 +664,15 @@
             logical(LK)             :: equivalent
             integer(IK), intent(in) :: lenPattern
 #if         SK_ENABLED
-            character(*,SKC), intent(in)    :: Segment(lenPattern), pattern(lenPattern)
+            character(*,SKG), intent(in)    :: Segment(lenPattern), pattern(lenPattern)
 #elif       IK_ENABLED
-            integer(IKC)    , intent(in)    :: Segment(lenPattern), pattern(lenPattern)
+            integer(IKG)    , intent(in)    :: Segment(lenPattern), pattern(lenPattern)
 #elif       LK_ENABLED
-            logical(LKC)    , intent(in)    :: Segment(lenPattern), pattern(lenPattern)
+            logical(LKG)    , intent(in)    :: Segment(lenPattern), pattern(lenPattern)
 #elif       CK_ENABLED
-            complex(CKC)    , intent(in)    :: Segment(lenPattern), pattern(lenPattern)
+            complex(CKG)    , intent(in)    :: Segment(lenPattern), pattern(lenPattern)
 #elif       RK_ENABLED
-            real(RKC)       , intent(in)    :: Segment(lenPattern), pattern(lenPattern)
+            real(RKG)       , intent(in)    :: Segment(lenPattern), pattern(lenPattern)
 #endif
             equivalent = all(Segment IS_EQUAL pattern)
         end function

@@ -3,7 +3,7 @@ program benchmark
 
     use iso_fortran_env, only: error_unit
     use pm_bench, only: bench_type
-    use pm_kind, only: IK, RKC => RK, RK, SK
+    use pm_kind, only: IK, RKG => RK, RK, SK
 
     implicit none
 
@@ -12,8 +12,8 @@ program benchmark
     integer(IK)                         :: rank, irank                  !<  The matrix rank and its counter.
     integer(IK) , parameter             :: NRANK = 11_IK                !<  The number of benchmark ranks.
     integer(IK) , parameter             :: NBENCH = 3_IK                !<  The number of benchmark procedures.
-    real(RKC)                           :: dummySum = 0._RKC            !<  The dummy computation to prevent the compiler from doing aggressive optimizations.
-    real(RKC)   , allocatable           :: MatInit(:,:)                 !<  The matrix.
+    real(RKG)                           :: dummySum = 0._RKG            !<  The dummy computation to prevent the compiler from doing aggressive optimizations.
+    real(RKG)   , allocatable           :: MatInit(:,:)                 !<  The matrix.
     type(bench_type)                    :: bench(NBENCH)                !<  The Benchmark array.
 
     bench(1) = bench_type(name = SK_"setMatInit", exec = setMatInit , overhead = setOverhead)
@@ -65,7 +65,7 @@ contains
     subroutine setMatInit()
         block
             use pm_matrixInit, only: setMatInit, dia_type
-            call setMatInit(MatInit, dia_type(), 1._RKC, rank, 0_IK, 0_IK)
+            call setMatInit(MatInit, dia_type(), 1._RKG, rank, 0_IK, 0_IK)
             call getDummy()
         end block
     end subroutine
@@ -73,7 +73,7 @@ contains
     subroutine getMatInit()
         block
             use pm_matrixInit, only: getMatInit, dia
-            MatInit = getMatInit([rank, rank], dia, 1._RKC)
+            MatInit = getMatInit([rank, rank], dia, 1._RKG)
             call getDummy()
         end block
     end subroutine
@@ -85,9 +85,9 @@ contains
 
     pure function reshape_looping(n) result(MatInit)
         integer(IK), intent(in) :: n
-        real(RKC)               :: MatInit(n,n)
+        real(RKG)               :: MatInit(n,n)
         integer(IK)             :: k, j
-        MatInit = reshape([1._RKC, ([(0._RKC, k = 1, n)], 1._RKC, j = 1, n - 1)], shape(MatInit))
+        MatInit = reshape([1._RKG, ([(0._RKG, k = 1, n)], 1._RKG, j = 1, n - 1)], shape(MatInit))
     end function
 
 end program benchmark

@@ -28,15 +28,15 @@
 #if     getLogRateDensity_ENABLED
         !%%%%%%%%%%%%%%%%%%%%%%%%
 
-        real(RKC)   , parameter :: TOL = epsilon(0._RKC)*100
-        real(RKC)               :: zplus1, logzplus1
-        real(RKC)               :: logRateDensity_ref
-        real(RKC)               :: logRateDensity
-        real(RKC)               :: diff
+        real(RKG)   , parameter :: TOL = epsilon(0._RKG)*100
+        real(RKG)               :: zplus1, logzplus1
+        real(RKG)               :: logRateDensity_ref
+        real(RKG)               :: logRateDensity
+        real(RKG)               :: diff
         integer(IK) :: i
         assertion = .true._LK
         do i = 1_IK, 500_IK
-            logzplus1 = getUnifRand(0._RKC, 10._RKC)
+            logzplus1 = getUnifRand(0._RKG, 10._RKG)
             zplus1 = exp(logzplus1)
 #if         H06_ENABLED
             logRateDensity = getLogRateDensityH06(logzplus1)
@@ -65,36 +65,36 @@
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
         pure elemental function getLogRateDensity_ref(logzplus1) result(logRateDensity)
-            real(RKC), intent(in)   :: logzplus1
-            real(RKC)               :: logRateDensity
+            real(RKG), intent(in)   :: logzplus1
+            real(RKG)               :: logRateDensity
 #if         H06_ENABLED
-            real(RKC), parameter :: G0 = +3.4_RKC
-            real(RKC), parameter :: G1 = -0.3_RKC
-            real(RKC), parameter :: G2 = -7.8_RKC
-            real(RKC), parameter :: LOGZ0PLUS1 = log(1._RKC + 0.97_RKC)
-            real(RKC), parameter :: LOGZ1PLUS1 = log(1._RKC + 4.50_RKC)
-            real(RKC), parameter :: LOG_NORM_FAC_1 = LOGZ0PLUS1 * (G0 - G1)
-            real(RKC), parameter :: LOG_NORM_FAC_2 = LOGZ1PLUS1 * (G1 - G2) + LOG_NORM_FAC_1
+            real(RKG), parameter :: G0 = +3.4_RKG
+            real(RKG), parameter :: G1 = -0.3_RKG
+            real(RKG), parameter :: G2 = -7.8_RKG
+            real(RKG), parameter :: LOGZ0PLUS1 = log(1._RKG + 0.97_RKG)
+            real(RKG), parameter :: LOGZ1PLUS1 = log(1._RKG + 4.50_RKG)
+            real(RKG), parameter :: LOG_NORM_FAC_1 = LOGZ0PLUS1 * (G0 - G1)
+            real(RKG), parameter :: LOG_NORM_FAC_2 = LOGZ1PLUS1 * (G1 - G2) + LOG_NORM_FAC_1
 #elif       L08_ENABLED
-            real(RKC), parameter :: G0 = +3.3000_RKC
-            real(RKC), parameter :: G1 = +0.0549_RKC
-            real(RKC), parameter :: G2 = -4.4600_RKC
-            real(RKC), parameter :: LOGZ0PLUS1 = log(1._RKC + 0.993_RKC)
-            real(RKC), parameter :: LOGZ1PLUS1 = log(1._RKC + 3.800_RKC)
-            real(RKC), parameter :: LOG_NORM_FAC_1 = LOGZ0PLUS1 * (G0 - G1)
-            real(RKC), parameter :: LOG_NORM_FAC_2 = LOGZ1PLUS1 * (G1 - G2) + LOG_NORM_FAC_1
+            real(RKG), parameter :: G0 = +3.3000_RKG
+            real(RKG), parameter :: G1 = +0.0549_RKG
+            real(RKG), parameter :: G2 = -4.4600_RKG
+            real(RKG), parameter :: LOGZ0PLUS1 = log(1._RKG + 0.993_RKG)
+            real(RKG), parameter :: LOGZ1PLUS1 = log(1._RKG + 3.800_RKG)
+            real(RKG), parameter :: LOG_NORM_FAC_1 = LOGZ0PLUS1 * (G0 - G1)
+            real(RKG), parameter :: LOG_NORM_FAC_2 = LOGZ1PLUS1 * (G1 - G2) + LOG_NORM_FAC_1
 #elif       B10_ENABLED
-            real(RKC), parameter :: G0 = +3.14_RKC
-            real(RKC), parameter :: G1 = +1.36_RKC
-            real(RKC), parameter :: G2 = -2.92_RKC
-            real(RKC), parameter :: LOGZ0PLUS1 = log(1._RKC + 0.97_RKC)
-            real(RKC), parameter :: LOGZ1PLUS1 = log(1._RKC + 4.00_RKC)
-            real(RKC), parameter :: LOG_NORM_FAC_1 = LOGZ0PLUS1 * (G0 - G1)
-            real(RKC), parameter :: LOG_NORM_FAC_2 = LOGZ1PLUS1 * (G1 - G2) + LOG_NORM_FAC_1
+            real(RKG), parameter :: G0 = +3.14_RKG
+            real(RKG), parameter :: G1 = +1.36_RKG
+            real(RKG), parameter :: G2 = -2.92_RKG
+            real(RKG), parameter :: LOGZ0PLUS1 = log(1._RKG + 0.97_RKG)
+            real(RKG), parameter :: LOGZ1PLUS1 = log(1._RKG + 4.00_RKG)
+            real(RKG), parameter :: LOG_NORM_FAC_1 = LOGZ0PLUS1 * (G0 - G1)
+            real(RKG), parameter :: LOG_NORM_FAC_2 = LOGZ1PLUS1 * (G1 - G2) + LOG_NORM_FAC_1
 #elif       P15_ENABLED
-            real(RKC), parameter :: EXPONENT_HIGH_Z = -7.8_RKC
-            real(RKC), parameter :: LOGZ1PLUS1 = log(1._RKC + 4.5_RKC)
-            real(RKC), parameter :: LOG_NORM_FAC_2 = -EXPONENT_HIGH_Z * LOGZ1PLUS1
+            real(RKG), parameter :: EXPONENT_HIGH_Z = -7.8_RKG
+            real(RKG), parameter :: LOGZ1PLUS1 = log(1._RKG + 4.5_RKG)
+            real(RKG), parameter :: LOG_NORM_FAC_2 = -EXPONENT_HIGH_Z * LOGZ1PLUS1
 #else
 #error      "Unrecognized interface."
 #endif
@@ -108,7 +108,7 @@
             end if
 #elif       P15_ENABLED
             if (logzplus1 < LOGZ1PLUS1) then
-                logRateDensity = 0._RKC
+                logRateDensity = 0._RKG
             else
                 logRateDensity = logzplus1 * EXPONENT_HIGH_Z + LOG_NORM_FAC_2
             end if
@@ -116,28 +116,28 @@
         end function
 #elif   M14_ENABLED || M17_ENABLED || F18_ENABLED
         pure elemental function getLogRateDensity_ref(zplus1, logzplus1) result(logRateDensity)
-            real(RKC), intent(in)   :: zplus1, logzplus1
-            real(RKC)               :: logRateDensity
+            real(RKG), intent(in)   :: zplus1, logzplus1
+            real(RKG)               :: logRateDensity
 #if         M14_ENABLED
-            real(RKC), parameter :: LOG_AMPLITUDE = log(0.015_RKC)
-            real(RKC), parameter :: EXPLONENT_LOWER = 2.7_RKC
-            real(RKC), parameter :: EXPLONENT_UPPER = 5.6_RKC
-            real(RKC), parameter :: ZPLUS1_BREAK = 2.9_RKC
-            real(RKC), parameter :: ZPLUS1_COEFF = 1._RKC / (ZPLUS1_BREAK**EXPLONENT_UPPER)
+            real(RKG), parameter :: LOG_AMPLITUDE = log(0.015_RKG)
+            real(RKG), parameter :: EXPLONENT_LOWER = 2.7_RKG
+            real(RKG), parameter :: EXPLONENT_UPPER = 5.6_RKG
+            real(RKG), parameter :: ZPLUS1_BREAK = 2.9_RKG
+            real(RKG), parameter :: ZPLUS1_COEFF = 1._RKG / (ZPLUS1_BREAK**EXPLONENT_UPPER)
 #elif       M17_ENABLED
-            real(RKC), parameter :: LOG_AMPLITUDE = log(0.01_RKC)
-            real(RKC), parameter :: EXPLONENT_LOWER = 2.6_RKC
-            real(RKC), parameter :: EXPLONENT_UPPER = 6.2_RKC
-            real(RKC), parameter :: ZPLUS1_BREAK = 3.2_RKC
-            real(RKC), parameter :: ZPLUS1_COEFF = 1._RKC / (ZPLUS1_BREAK**EXPLONENT_UPPER)
+            real(RKG), parameter :: LOG_AMPLITUDE = log(0.01_RKG)
+            real(RKG), parameter :: EXPLONENT_LOWER = 2.6_RKG
+            real(RKG), parameter :: EXPLONENT_UPPER = 6.2_RKG
+            real(RKG), parameter :: ZPLUS1_BREAK = 3.2_RKG
+            real(RKG), parameter :: ZPLUS1_COEFF = 1._RKG / (ZPLUS1_BREAK**EXPLONENT_UPPER)
 #elif       F18_ENABLED
-            real(RKC), parameter :: LOG_AMPLITUDE = log(0.013_RKC)
-            real(RKC), parameter :: EXPLONENT_LOWER = 2.99_RKC
-            real(RKC), parameter :: EXPLONENT_UPPER = 6.19_RKC
-            real(RKC), parameter :: ZPLUS1_BREAK = 2.63_RKC
-            real(RKC), parameter :: ZPLUS1_COEFF = 1._RKC / (ZPLUS1_BREAK**EXPLONENT_UPPER)
+            real(RKG), parameter :: LOG_AMPLITUDE = log(0.013_RKG)
+            real(RKG), parameter :: EXPLONENT_LOWER = 2.99_RKG
+            real(RKG), parameter :: EXPLONENT_UPPER = 6.19_RKG
+            real(RKG), parameter :: ZPLUS1_BREAK = 2.63_RKG
+            real(RKG), parameter :: ZPLUS1_COEFF = 1._RKG / (ZPLUS1_BREAK**EXPLONENT_UPPER)
 #endif
-            logRateDensity = LOG_AMPLITUDE + EXPLONENT_LOWER * logzplus1 - log(1._RKC + ZPLUS1_COEFF * zplus1**EXPLONENT_UPPER)
+            logRateDensity = LOG_AMPLITUDE + EXPLONENT_LOWER * logzplus1 - log(1._RKG + ZPLUS1_COEFF * zplus1**EXPLONENT_UPPER)
         end function
 #else
 #error  "Unrecognized interface."

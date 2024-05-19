@@ -31,12 +31,12 @@
 
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        integer(IKC), allocatable   :: PosInt(:), Factorial(:), Factorial_ref(:), diff(:)
+        integer(IKG), allocatable   :: PosInt(:), Factorial(:), Factorial_ref(:), diff(:)
 
         assertion = .true._LK
 
-        PosInt = [integer(IKC)::]
-        Factorial_ref = [integer(IKC)::]
+        PosInt = [integer(IKG)::]
+        Factorial_ref = [integer(IKG)::]
         Factorial = getFactorial(PosInt)
 
         call report()
@@ -44,8 +44,8 @@
 
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        PosInt = [0_IKC]
-        Factorial_ref = [1_IKC]
+        PosInt = [0_IKG]
+        Factorial_ref = [1_IKG]
         Factorial = [getFactorial(PosInt(1))]
 
         call report()
@@ -53,8 +53,8 @@
 
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        PosInt = [1_IKC]
-        Factorial_ref = [1_IKC]
+        PosInt = [1_IKG]
+        Factorial_ref = [1_IKG]
         Factorial = [getFactorial(PosInt(1))]
 
         call report()
@@ -62,21 +62,21 @@
 
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        PosInt = [1_IKC, 2_IKC]
-        Factorial_ref = [1_IKC, 2_IKC]
+        PosInt = [1_IKG, 2_IKG]
+        Factorial_ref = [1_IKG, 2_IKG]
         Factorial = getFactorial(PosInt)
 
         call report()
-        call test%assert(assertion, SK_"getFactorial() must yield `[1_IKC, 2_IKC]` for `n = [1_IKC, 2_IKC]`.")
+        call test%assert(assertion, SK_"getFactorial() must yield `[1_IKG, 2_IKG]` for `n = [1_IKG, 2_IKG]`.")
 
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        PosInt = [5_IKC]
-        Factorial_ref = [120_IKC]
+        PosInt = [5_IKG]
+        Factorial_ref = [120_IKG]
         Factorial = getFactorial(PosInt)
 
         call report()
-        call test%assert(assertion, SK_"getFactorial() must yield `[120_IKC]` for `n = [5_IKC]`.")
+        call test%assert(assertion, SK_"getFactorial() must yield `[120_IKG]` for `n = [5_IKG]`.")
 
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -86,7 +86,7 @@
 
         subroutine report()
             diff = abs(Factorial - Factorial_ref)
-            assertion = assertion .and. all(diff == 0_IKC)
+            assertion = assertion .and. all(diff == 0_IKG)
             if (test%traceable .and. .not. assertion) then
                 ! LCOV_EXCL_START
                 write(test%disp%unit,"(*(g0,:,', '))")

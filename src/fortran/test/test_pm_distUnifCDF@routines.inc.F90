@@ -38,18 +38,18 @@
         character(1, SK)                :: lower, upper
         character(5, SK), allocatable   :: Sample(:), cdf(:), cdf_ref(:)
 #elif   IK_ENABLED
-        real(RKC)       , parameter     :: TOL = epsilon(0._RKC) * 100._RKC
-        real(RKC)       , allocatable   :: cdf(:), cdf_ref(:), diff(:)
-        integer(IKC)    , allocatable   :: Sample(:)
-        integer(IKC)                    :: lower, upper
+        real(RKG)       , parameter     :: TOL = epsilon(0._RKG) * 100._RKG
+        real(RKG)       , allocatable   :: cdf(:), cdf_ref(:), diff(:)
+        integer(IKG)    , allocatable   :: Sample(:)
+        integer(IKG)                    :: lower, upper
 #elif   CK_ENABLED
-        complex(CKC)     , parameter    :: TOL = epsilon(0._CKC) * 100._CKC
-        complex(CKC)     , allocatable  :: Sample(:), cdf(:), cdf_ref(:), diff(:)
-        complex(CKC)                    :: lower, upper
+        complex(CKG)     , parameter    :: TOL = epsilon(0._CKG) * 100._CKG
+        complex(CKG)     , allocatable  :: Sample(:), cdf(:), cdf_ref(:), diff(:)
+        complex(CKG)                    :: lower, upper
 #elif   RK_ENABLED
-        real(RKC)       , parameter     :: TOL = epsilon(0._RKC) * 100._RKC
-        real(RKC)       , allocatable   :: Sample(:), cdf(:), cdf_ref(:), diff(:)
-        real(RKC)                       :: lower, upper
+        real(RKG)       , parameter     :: TOL = epsilon(0._RKG) * 100._RKG
+        real(RKG)       , allocatable   :: Sample(:), cdf(:), cdf_ref(:), diff(:)
+        real(RKG)                       :: lower, upper
 #else
 #error  "Unrecognized interface."
 #endif
@@ -62,20 +62,20 @@
         lower = achar(1_IK)
         upper = achar(127_IK)
 #elif   IK_ENABLED
-        lower = 0_IKC
-        upper = 1_IKC
-        Sample = [-1_IKC, 0_IKC, 1_IKC, 2_IKC]
-        cdf_ref = [0._RKC, 0.5_RK, 1._RKC, 1._RKC]
+        lower = 0_IKG
+        upper = 1_IKG
+        Sample = [-1_IKG, 0_IKG, 1_IKG, 2_IKG]
+        cdf_ref = [0._RKG, 0.5_RK, 1._RKG, 1._RKG]
 #elif   RK_ENABLED
-        lower = 0._RKC
-        upper = 1._RKC
-        Sample = [-1._RKC, 0._RKC, 1._RKC, 2._RKC]
-        cdf_ref = [0._RKC, 0._RKC, 1._RKC, 1._RKC]
+        lower = 0._RKG
+        upper = 1._RKG
+        Sample = [-1._RKG, 0._RKG, 1._RKG, 2._RKG]
+        cdf_ref = [0._RKG, 0._RKG, 1._RKG, 1._RKG]
 #elif   CK_ENABLED
-        lower = (0._CKC,0._CKC)
-        upper = (1._CKC,1._CKC)
-        Sample = [(-1._CKC,-1._CKC), (0._CKC,0._CKC), (1._CKC,1._CKC), (2._CKC,2._CKC)]
-        cdf_ref = [(0._CKC,0._CKC), (0._CKC,0._CKC), (1._CKC,1._CKC), (1._CKC,1._CKC)]
+        lower = (0._CKG,0._CKG)
+        upper = (1._CKG,1._CKG)
+        Sample = [(-1._CKG,-1._CKG), (0._CKG,0._CKG), (1._CKG,1._CKG), (2._CKG,2._CKG)]
+        cdf_ref = [(0._CKG,0._CKG), (0._CKG,0._CKG), (1._CKG,1._CKG), (1._CKG,1._CKG)]
 #else
 #error  "Unrecognized interface."
 #endif
@@ -135,22 +135,22 @@
         lower = achar(1_IK)
         upper = achar(127_IK)
 #elif   IK_ENABLED
-        lower = -2_IKC
-        upper = +3_IKC
-        Sample = [-4_IKC, -3_IKC, 2_IKC, 1_IKC, 3_IKC, 4_IKC]
+        lower = -2_IKG
+        upper = +3_IKG
+        Sample = [-4_IKG, -3_IKG, 2_IKG, 1_IKG, 3_IKG, 4_IKG]
 #elif   RK_ENABLED
-        lower = -2._RKC
-        upper = +3._RKC
-        Sample = [-1._RKC, 0._RKC, 1._RKC, 2._RKC]
+        lower = -2._RKG
+        upper = +3._RKG
+        Sample = [-1._RKG, 0._RKG, 1._RKG, 2._RKG]
 #elif   CK_ENABLED
-        lower = (-2._CKC,+7._CKC)
-        upper = (+3._CKC,+5._CKC)
-        Sample = [ (-4._CKC,-3._CKC), (-4._CKC,+3._CKC), (-4._CKC,+2._CKC), (-4._CKC,+5._CKC), (-4._CKC,+6._CKC) & ! LCOV_EXCL_LINE
-                , (-2._CKC,-3._CKC), (-2._CKC,+3._CKC), (-2._CKC,+2._CKC), (-2._CKC,+5._CKC), (-2._CKC,+6._CKC) & ! LCOV_EXCL_LINE
-                , (+0._CKC,-3._CKC), (+0._CKC,+3._CKC), (+0._CKC,+2._CKC), (+0._CKC,+5._CKC), (+0._CKC,+6._CKC) & ! LCOV_EXCL_LINE
-                , (+1._CKC,-3._CKC), (+1._CKC,+3._CKC), (+1._CKC,+2._CKC), (+1._CKC,+5._CKC), (+1._CKC,+6._CKC) & ! LCOV_EXCL_LINE
-                , (+7._CKC,-3._CKC), (+7._CKC,+3._CKC), (+7._CKC,+2._CKC), (+7._CKC,+5._CKC), (+7._CKC,+6._CKC) & ! LCOV_EXCL_LINE
-                , (+9._CKC,-3._CKC), (+9._CKC,+3._CKC), (+9._CKC,+2._CKC), (+9._CKC,+5._CKC), (+9._CKC,+6._CKC) & ! LCOV_EXCL_LINE
+        lower = (-2._CKG,+7._CKG)
+        upper = (+3._CKG,+5._CKG)
+        Sample = [ (-4._CKG,-3._CKG), (-4._CKG,+3._CKG), (-4._CKG,+2._CKG), (-4._CKG,+5._CKG), (-4._CKG,+6._CKG) & ! LCOV_EXCL_LINE
+                , (-2._CKG,-3._CKG), (-2._CKG,+3._CKG), (-2._CKG,+2._CKG), (-2._CKG,+5._CKG), (-2._CKG,+6._CKG) & ! LCOV_EXCL_LINE
+                , (+0._CKG,-3._CKG), (+0._CKG,+3._CKG), (+0._CKG,+2._CKG), (+0._CKG,+5._CKG), (+0._CKG,+6._CKG) & ! LCOV_EXCL_LINE
+                , (+1._CKG,-3._CKG), (+1._CKG,+3._CKG), (+1._CKG,+2._CKG), (+1._CKG,+5._CKG), (+1._CKG,+6._CKG) & ! LCOV_EXCL_LINE
+                , (+7._CKG,-3._CKG), (+7._CKG,+3._CKG), (+7._CKG,+2._CKG), (+7._CKG,+5._CKG), (+7._CKG,+6._CKG) & ! LCOV_EXCL_LINE
+                , (+9._CKG,-3._CKG), (+9._CKG,+3._CKG), (+9._CKG,+2._CKG), (+9._CKG,+5._CKG), (+9._CKG,+6._CKG) & ! LCOV_EXCL_LINE
                 ]
 #else
 #error  "Unrecognized interface."
@@ -188,41 +188,41 @@
 
         pure elemental function getCDF(x,lower,upper) result(cdf)
 #if     IK_ENABLED
-            integer(IKC), intent(in) :: x, lower, upper
-            real(RKC) :: cdf
+            integer(IKG), intent(in) :: x, lower, upper
+            real(RKG) :: cdf
             if (x < lower) then
-                cdf = 0._RKC
+                cdf = 0._RKG
             elseif (x < upper) then
-                cdf = real(x-lower+1_IKC,RKC)/ real(upper-lower+1_IKC,RKC)
+                cdf = real(x-lower+1_IKG,RKG)/ real(upper-lower+1_IKG,RKG)
             else
-                cdf = 1._RKC
+                cdf = 1._RKG
             end if
 #elif       RK_ENABLED
-            real(RKC), intent(in) :: x, lower, upper
-            real(RKC) :: cdf
+            real(RKG), intent(in) :: x, lower, upper
+            real(RKG) :: cdf
             if (x < lower) then
-                cdf = 0._RKC
+                cdf = 0._RKG
             elseif (x < upper) then
                 cdf = (x-lower) / (upper-lower)
             else
-                cdf = 1._RKC
+                cdf = 1._RKG
             end if
 #elif       CK_ENABLED
-            complex(CKC), intent(in) :: x, lower, upper
-            complex(CKC) :: cdf
+            complex(CKG), intent(in) :: x, lower, upper
+            complex(CKG) :: cdf
             if (x%re < lower%re) then
-                cdf%re = 0._CKC
+                cdf%re = 0._CKG
             elseif (x%re < upper%re) then
                 cdf%re = (x%re-lower%re) / (upper%re-lower%re)
             else
-                cdf%re = 1._CKC
+                cdf%re = 1._CKG
             end if
             if (x%im < lower%im) then
-                cdf%im = 0._CKC
+                cdf%im = 0._CKG
             elseif (x%im < upper%im) then
                 cdf%im = (x%im-lower%im) / (upper%im-lower%im)
             else
-                cdf%im = 1._CKC
+                cdf%im = 1._CKG
             end if
 #endif
         end function
@@ -276,9 +276,9 @@
 #elif   LK_ENABLED
         logical(LK)             :: Sample(NP)
 #elif   IK_ENABLED
-        integer(IKC), parameter :: TOL = 0_IKC
-        integer(IKC)            :: lower, upper
-        integer(IKC)            :: Sample(NP)
+        integer(IKG), parameter :: TOL = 0_IKG
+        integer(IKG)            :: lower, upper
+        integer(IKG)            :: Sample(NP)
 #elif   RK_ENABLED
         real(RK)    , parameter :: TOL = epsilon(1._RK)
         real(RK)                :: lower, upper
@@ -326,8 +326,8 @@
         lower = repeat(char(50_IK),5)
         upper = repeat(char(93_IK),5)
 #elif   IK_ENABLED
-        lower = -5_IKC
-        upper = +5_IKC
+        lower = -5_IKG
+        upper = +5_IKG
 #elif   RK_ENABLED
         lower = -10._RK
         upper = +10._RK
@@ -437,10 +437,10 @@
         logical(LK) , target    :: Sample(NP1,NP2,NP3,NP4)
         logical(LK) , pointer   :: SamplePointer(:) => null()
 #elif   IK_ENABLED
-        integer(IKC), parameter :: TOL = 0_IKC
-        integer(IKC)            :: lower, upper
-        integer(IKC), target    :: Sample(NP1,NP2,NP3,NP4)
-        integer(IKC), pointer   :: SamplePointer(:) => null()
+        integer(IKG), parameter :: TOL = 0_IKG
+        integer(IKG)            :: lower, upper
+        integer(IKG), target    :: Sample(NP1,NP2,NP3,NP4)
+        integer(IKG), pointer   :: SamplePointer(:) => null()
 #elif   RK_ENABLED
         real(RK)    , parameter :: TOL = epsilon(1._RK)
         real(RK)                :: lower, upper
@@ -463,8 +463,8 @@
         lower = repeat(char(1_IK, kind = SK), 5)
         upper = repeat(char(127_IK, kind = SK), 5)
 #elif   IK_ENABLED
-        lower = 0_IKC
-        upper = 1_IKC
+        lower = 0_IKG
+        upper = 1_IKG
 #elif   LK_ENABLED
         lower = .false._LK
         upper = .true._LK
@@ -511,8 +511,8 @@
         lower = repeat(char(50_IK),5)
         upper = repeat(char(93_IK),5)
 #elif   IK_ENABLED
-        lower = -5_IKC
-        upper = +5_IKC
+        lower = -5_IKG
+        upper = +5_IKG
 #elif   RK_ENABLED
         lower = -10._RK
         upper = +10._RK

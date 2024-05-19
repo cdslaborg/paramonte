@@ -134,9 +134,9 @@ program example
     call disp%skip()
 
     block
-        use pm_kind, only: TKC => IK ! All processor kinds are supported.
+        use pm_kind, only: TKG => IK ! All processor kinds are supported.
         integer(IK) :: nsam, cordance, concordance, discordance, tiedx, tiedy
-        integer(TKC), allocatable :: x(:), y(:)
+        integer(TKG), allocatable :: x(:), y(:)
         do itry = 1, ntry
             call disp%skip()
             call disp%show("nsam = getUnifRand(0, 20)")
@@ -172,9 +172,9 @@ program example
     call disp%skip()
 
     block
-        use pm_kind, only: TKC => IK ! All processor kinds are supported.
+        use pm_kind, only: TKG => IK ! All processor kinds are supported.
         integer(IK) :: nsam, cordance, concordance, discordance, tiedx, tiedy
-        real(TKC), allocatable :: x(:), y(:)
+        real(TKG), allocatable :: x(:), y(:)
         do itry = 1, ntry
             call disp%skip()
             call disp%show("nsam = getUnifRand(0, 20)")

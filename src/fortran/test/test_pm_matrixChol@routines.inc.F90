@@ -24,17 +24,17 @@
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        real(TKC), parameter :: RTOL = sqrt(epsilon(0._TKC))
+        real(TKG), parameter :: RTOL = sqrt(epsilon(0._TKG))
 #if     CK_ENABLED
 #define TYPE_OF cmplx
 #define GET_CONJG(X) conjg(X)
-#define TYPE_OF_MAT complex(TKC)
-        complex(TKC), parameter :: ZERO = (0._TKC, 0._TKC), ONE = (1._TKC, 0._TKC), LB = (1._TKC, -1._TKC), UB = (2._TKC, 1._TKC), TOL = (RTOL, RTOL)
+#define TYPE_OF_MAT complex(TKG)
+        complex(TKG), parameter :: ZERO = (0._TKG, 0._TKG), ONE = (1._TKG, 0._TKG), LB = (1._TKG, -1._TKG), UB = (2._TKG, 1._TKG), TOL = (RTOL, RTOL)
 #elif   RK_ENABLED
 #define TYPE_OF real
 #define GET_CONJG(X) X
-#define TYPE_OF_MAT real(TKC)
-        real(TKC), parameter :: ZERO = 0._TKC, ONE = 1._TKC, LB = 1._TKC, UB = 2._TKC, TOL = RTOL
+#define TYPE_OF_MAT real(TKG)
+        real(TKG), parameter :: ZERO = 0._TKG, ONE = 1._TKG, LB = 1._TKG, UB = 2._TKG, TOL = RTOL
 #else
 #error  "Unrecognized interface."
 #endif
@@ -241,7 +241,7 @@
             choLow_ref = getUnifRand(LB, UB, ndim, ndim)
             choLow_ref = getMatCopy(rdpack, choLow_ref, rdpack, lowDia, init = ZERO)
             ! set the diagonals to positive real values.
-            call setMatInit(choLow_ref, dia, TYPE_OF(getUnifRand(1._TKC, 2._TKC, ndim), kind = TKC))
+            call setMatInit(choLow_ref, dia, TYPE_OF(getUnifRand(1._TKG, 2._TKG, ndim), kind = TKG))
             ! Create the reference upper Cholesky matrix.
             choUpp_ref = transpose(GET_CONJG(choLow_ref))
             ! Create the positive definite matrix.
@@ -495,7 +495,7 @@
             TYPE_OF_MAT :: diff(size(ref, 1, IK), size(ref, 2, IK))
             class(subset_type), intent(in) :: subset
             integer(IK) :: idim
-            diff = 0._TKC
+            diff = 0._TKG
             do idim = 1, size(ref, 1, IK)
                 if (same_type_as(subset, uppDia)) then
                     diff(idim, idim :) = abs(mat(idim, idim :) - ref(idim, idim :))

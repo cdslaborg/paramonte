@@ -12,17 +12,17 @@ program example
     disp = display_type(file = "main.out.F90")
 
     block
-        use pm_kind, only: TKC => RKS
-        real(TKC), allocatable :: rand(:)
+        use pm_kind, only: TKG => RKS
+        real(TKG), allocatable :: rand(:)
         call disp%skip()
         call disp%show("call setResized(rand, 3_IK)")
                         call setResized(rand, 3_IK)
-        call disp%show("call setKolmRand(rand(1), getUnifRand(0._TKC, 1._TKC))")
-                        call setKolmRand(rand(1), getUnifRand(0._TKC, 1._TKC))
+        call disp%show("call setKolmRand(rand(1), getUnifRand(0._TKG, 1._TKG))")
+                        call setKolmRand(rand(1), getUnifRand(0._TKG, 1._TKG))
         call disp%show("rand(1)")
         call disp%show( rand(1) )
-        call disp%show("call setKolmRand(rand, getUnifRand(0._TKC, 1._TKC, 3_IK))")
-                        call setKolmRand(rand, getUnifRand(0._TKC, 1._TKC, 3_IK))
+        call disp%show("call setKolmRand(rand, getUnifRand(0._TKG, 1._TKG, 3_IK))")
+                        call setKolmRand(rand, getUnifRand(0._TKG, 1._TKG, 3_IK))
         call disp%show("rand")
         call disp%show( rand )
         call disp%skip()
@@ -34,9 +34,9 @@ program example
 
     block
         use pm_io, only: getErrTableWrite
-        use pm_kind, only: TKC => RKH
-        real(TKC) :: rand(1500)
-        call setKolmRand(rand, getUnifRand(0._TKC, 1._TKC, size(rand, 1, IK)))
+        use pm_kind, only: TKG => RKH
+        real(TKG) :: rand(1500)
+        call setKolmRand(rand, getUnifRand(0._TKG, 1._TKG, size(rand, 1, IK)))
         if (0 /= getErrTableWrite(SK_"setKolmRand.RK.txt", rand, header = SK_"rand")) error stop "table output failed."
     end block
 

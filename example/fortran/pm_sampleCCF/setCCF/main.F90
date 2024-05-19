@@ -35,10 +35,10 @@ program example
     call disp%skip()
 
     block
-        use pm_kind, only: TKC => RKS ! All other real types are also supported.
+        use pm_kind, only: TKG => RKS ! All other real types are also supported.
         integer(IK), allocatable :: factor(:), lag(:)
-        real(TKC), allocatable :: f(:), g(:), fcopy(:), gcopy(:), ccf(:), coef(:), range(:)
-        real(TKC), parameter :: ZERO = 0._TKC
+        real(TKG), allocatable :: f(:), g(:), fcopy(:), gcopy(:), ccf(:), coef(:), range(:)
+        real(TKG), parameter :: ZERO = 0._TKG
         call disp%skip()
         call disp%show("nsam = 41")
                         nsam = 41
@@ -46,14 +46,14 @@ program example
                         range = getLinSpace(-10., 10., nsam)
         call disp%show("f = sin(range)")
                         f = sin(range)
-        call disp%show("f = getPaddedr(getNormed(f, -getMean(f), 1._TKC / getVar(f)), nsam - 1, ZERO)")
-                        f = getPaddedr(getNormed(f, -getMean(f), 1._TKC / getVar(f)), nsam - 1, ZERO)
+        call disp%show("f = getPaddedr(getNormed(f, -getMean(f), 1._TKG / getVar(f)), nsam - 1, ZERO)")
+                        f = getPaddedr(getNormed(f, -getMean(f), 1._TKG / getVar(f)), nsam - 1, ZERO)
         call disp%show("f")
         call disp%show( f )
         call disp%show("g = cos(range)")
                         g = cos(range)
-        call disp%show("g = getPaddedr(getNormed(g, -getMean(g), 1._TKC / getVar(g)), nsam - 1, ZERO)")
-                        g = getPaddedr(getNormed(g, -getMean(g), 1._TKC / getVar(g)), nsam - 1, ZERO)
+        call disp%show("g = getPaddedr(getNormed(g, -getMean(g), 1._TKG / getVar(g)), nsam - 1, ZERO)")
+                        g = getPaddedr(getNormed(g, -getMean(g), 1._TKG / getVar(g)), nsam - 1, ZERO)
         call disp%show("g")
         call disp%show( g )
         call disp%show("fcopy = f; gcopy = g")
@@ -74,8 +74,8 @@ program example
                         lag = getRange(-nsam + 1_IK, nsam - 1_IK)
         call disp%show("if (0 /= getErrTableWrite(SK_'setCCF.crd.sin.cos.RK.txt', reshape([range, f(1:nsam), g(1:nsam)], [nsam, 3_IK]), header = SK_'crd,f,g')) error stop 'ccf outputting failed.'")
                         if (0 /= getErrTableWrite(SK_'setCCF.crd.sin.cos.RK.txt', reshape([range, f(1:nsam), g(1:nsam)], [nsam, 3_IK]), header = SK_'crd,f,g')) error stop 'ccf outputting failed.'
-        call disp%show("if (0 /= getErrTableWrite(SK_'setCCF.ccf.sin.cos.RK.txt', reshape([real(lag, TKC), ccf], [size(lag), 2]), header = SK_'lag,ccf')) error stop 'ccf outputting failed.'")
-                        if (0 /= getErrTableWrite(SK_'setCCF.ccf.sin.cos.RK.txt', reshape([real(lag, TKC), ccf], [size(lag), 2]), header = SK_'lag,ccf')) error stop 'ccf outputting failed.'
+        call disp%show("if (0 /= getErrTableWrite(SK_'setCCF.ccf.sin.cos.RK.txt', reshape([real(lag, TKG), ccf], [size(lag), 2]), header = SK_'lag,ccf')) error stop 'ccf outputting failed.'")
+                        if (0 /= getErrTableWrite(SK_'setCCF.ccf.sin.cos.RK.txt', reshape([real(lag, TKG), ccf], [size(lag), 2]), header = SK_'lag,ccf')) error stop 'ccf outputting failed.'
         call disp%skip()
     end block
 

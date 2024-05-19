@@ -72,35 +72,35 @@ contains
 
 #if RK5_ENABLED
     module procedure isHeadPD_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_distBern@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure isHeadPD_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_distBern@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure isHeadPD_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_distBern@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure isHeadPD_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_distBern@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure isHeadPD_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_distBern@routines.inc.F90"
     end procedure
 #endif
@@ -113,35 +113,35 @@ contains
 
 #if RK5_ENABLED
     module procedure isHeadPS_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_distBern@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure isHeadPS_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_distBern@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure isHeadPS_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_distBern@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure isHeadPS_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_distBern@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure isHeadPS_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_distBern@routines.inc.F90"
     end procedure
 #endif
@@ -168,35 +168,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getBernRandPD_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_distBern@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getBernRandPD_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_distBern@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getBernRandPD_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_distBern@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getBernRandPD_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_distBern@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getBernRandPD_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_distBern@routines.inc.F90"
     end procedure
 #endif
@@ -219,35 +219,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getBernRandPS_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_distBern@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getBernRandPS_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_distBern@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getBernRandPS_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_distBern@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getBernRandPS_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_distBern@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getBernRandPS_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_distBern@routines.inc.F90"
     end procedure
 #endif
@@ -284,35 +284,35 @@ contains
 
 #if IK5_ENABLED && RK5_ENABLED
     module procedure setBernRandRUP_IK5_RK5
-        use pm_kind, only: IKC => IK5, RKC => RK5
+        use pm_kind, only: IKG => IK5, RKG => RK5
 #include "pm_distBern@routines.inc.F90"
     end procedure
 #endif
 
 #if IK5_ENABLED && RK4_ENABLED
     module procedure setBernRandRUP_IK5_RK4
-        use pm_kind, only: IKC => IK5, RKC => RK4
+        use pm_kind, only: IKG => IK5, RKG => RK4
 #include "pm_distBern@routines.inc.F90"
     end procedure
 #endif
 
 #if IK5_ENABLED && RK3_ENABLED
     module procedure setBernRandRUP_IK5_RK3
-        use pm_kind, only: IKC => IK5, RKC => RK3
+        use pm_kind, only: IKG => IK5, RKG => RK3
 #include "pm_distBern@routines.inc.F90"
     end procedure
 #endif
 
 #if IK5_ENABLED && RK2_ENABLED
     module procedure setBernRandRUP_IK5_RK2
-        use pm_kind, only: IKC => IK5, RKC => RK2
+        use pm_kind, only: IKG => IK5, RKG => RK2
 #include "pm_distBern@routines.inc.F90"
     end procedure
 #endif
 
 #if IK5_ENABLED && RK1_ENABLED
     module procedure setBernRandRUP_IK5_RK1
-        use pm_kind, only: IKC => IK5, RKC => RK1
+        use pm_kind, only: IKG => IK5, RKG => RK1
 #include "pm_distBern@routines.inc.F90"
     end procedure
 #endif
@@ -321,35 +321,35 @@ contains
 
 #if IK4_ENABLED && RK5_ENABLED
     module procedure setBernRandRUP_IK4_RK5
-        use pm_kind, only: IKC => IK4, RKC => RK5
+        use pm_kind, only: IKG => IK4, RKG => RK5
 #include "pm_distBern@routines.inc.F90"
     end procedure
 #endif
 
 #if IK4_ENABLED && RK4_ENABLED
     module procedure setBernRandRUP_IK4_RK4
-        use pm_kind, only: IKC => IK4, RKC => RK4
+        use pm_kind, only: IKG => IK4, RKG => RK4
 #include "pm_distBern@routines.inc.F90"
     end procedure
 #endif
 
 #if IK4_ENABLED && RK3_ENABLED
     module procedure setBernRandRUP_IK4_RK3
-        use pm_kind, only: IKC => IK4, RKC => RK3
+        use pm_kind, only: IKG => IK4, RKG => RK3
 #include "pm_distBern@routines.inc.F90"
     end procedure
 #endif
 
 #if IK4_ENABLED && RK2_ENABLED
     module procedure setBernRandRUP_IK4_RK2
-        use pm_kind, only: IKC => IK4, RKC => RK2
+        use pm_kind, only: IKG => IK4, RKG => RK2
 #include "pm_distBern@routines.inc.F90"
     end procedure
 #endif
 
 #if IK4_ENABLED && RK1_ENABLED
     module procedure setBernRandRUP_IK4_RK1
-        use pm_kind, only: IKC => IK4, RKC => RK1
+        use pm_kind, only: IKG => IK4, RKG => RK1
 #include "pm_distBern@routines.inc.F90"
     end procedure
 #endif
@@ -358,35 +358,35 @@ contains
 
 #if IK3_ENABLED && RK5_ENABLED
     module procedure setBernRandRUP_IK3_RK5
-        use pm_kind, only: IKC => IK3, RKC => RK5
+        use pm_kind, only: IKG => IK3, RKG => RK5
 #include "pm_distBern@routines.inc.F90"
     end procedure
 #endif
 
 #if IK3_ENABLED && RK4_ENABLED
     module procedure setBernRandRUP_IK3_RK4
-        use pm_kind, only: IKC => IK3, RKC => RK4
+        use pm_kind, only: IKG => IK3, RKG => RK4
 #include "pm_distBern@routines.inc.F90"
     end procedure
 #endif
 
 #if IK3_ENABLED && RK3_ENABLED
     module procedure setBernRandRUP_IK3_RK3
-        use pm_kind, only: IKC => IK3, RKC => RK3
+        use pm_kind, only: IKG => IK3, RKG => RK3
 #include "pm_distBern@routines.inc.F90"
     end procedure
 #endif
 
 #if IK3_ENABLED && RK2_ENABLED
     module procedure setBernRandRUP_IK3_RK2
-        use pm_kind, only: IKC => IK3, RKC => RK2
+        use pm_kind, only: IKG => IK3, RKG => RK2
 #include "pm_distBern@routines.inc.F90"
     end procedure
 #endif
 
 #if IK3_ENABLED && RK1_ENABLED
     module procedure setBernRandRUP_IK3_RK1
-        use pm_kind, only: IKC => IK3, RKC => RK1
+        use pm_kind, only: IKG => IK3, RKG => RK1
 #include "pm_distBern@routines.inc.F90"
     end procedure
 #endif
@@ -395,35 +395,35 @@ contains
 
 #if IK2_ENABLED && RK5_ENABLED
     module procedure setBernRandRUP_IK2_RK5
-        use pm_kind, only: IKC => IK2, RKC => RK5
+        use pm_kind, only: IKG => IK2, RKG => RK5
 #include "pm_distBern@routines.inc.F90"
     end procedure
 #endif
 
 #if IK2_ENABLED && RK4_ENABLED
     module procedure setBernRandRUP_IK2_RK4
-        use pm_kind, only: IKC => IK2, RKC => RK4
+        use pm_kind, only: IKG => IK2, RKG => RK4
 #include "pm_distBern@routines.inc.F90"
     end procedure
 #endif
 
 #if IK2_ENABLED && RK3_ENABLED
     module procedure setBernRandRUP_IK2_RK3
-        use pm_kind, only: IKC => IK2, RKC => RK3
+        use pm_kind, only: IKG => IK2, RKG => RK3
 #include "pm_distBern@routines.inc.F90"
     end procedure
 #endif
 
 #if IK2_ENABLED && RK2_ENABLED
     module procedure setBernRandRUP_IK2_RK2
-        use pm_kind, only: IKC => IK2, RKC => RK2
+        use pm_kind, only: IKG => IK2, RKG => RK2
 #include "pm_distBern@routines.inc.F90"
     end procedure
 #endif
 
 #if IK2_ENABLED && RK1_ENABLED
     module procedure setBernRandRUP_IK2_RK1
-        use pm_kind, only: IKC => IK2, RKC => RK1
+        use pm_kind, only: IKG => IK2, RKG => RK1
 #include "pm_distBern@routines.inc.F90"
     end procedure
 #endif
@@ -432,35 +432,35 @@ contains
 
 #if IK1_ENABLED && RK5_ENABLED
     module procedure setBernRandRUP_IK1_RK5
-        use pm_kind, only: IKC => IK1, RKC => RK5
+        use pm_kind, only: IKG => IK1, RKG => RK5
 #include "pm_distBern@routines.inc.F90"
     end procedure
 #endif
 
 #if IK1_ENABLED && RK4_ENABLED
     module procedure setBernRandRUP_IK1_RK4
-        use pm_kind, only: IKC => IK1, RKC => RK4
+        use pm_kind, only: IKG => IK1, RKG => RK4
 #include "pm_distBern@routines.inc.F90"
     end procedure
 #endif
 
 #if IK1_ENABLED && RK3_ENABLED
     module procedure setBernRandRUP_IK1_RK3
-        use pm_kind, only: IKC => IK1, RKC => RK3
+        use pm_kind, only: IKG => IK1, RKG => RK3
 #include "pm_distBern@routines.inc.F90"
     end procedure
 #endif
 
 #if IK1_ENABLED && RK2_ENABLED
     module procedure setBernRandRUP_IK1_RK2
-        use pm_kind, only: IKC => IK1, RKC => RK2
+        use pm_kind, only: IKG => IK1, RKG => RK2
 #include "pm_distBern@routines.inc.F90"
     end procedure
 #endif
 
 #if IK1_ENABLED && RK1_ENABLED
     module procedure setBernRandRUP_IK1_RK1
-        use pm_kind, only: IKC => IK1, RKC => RK1
+        use pm_kind, only: IKG => IK1, RKG => RK1
 #include "pm_distBern@routines.inc.F90"
     end procedure
 #endif
@@ -479,35 +479,35 @@ contains
 
 #if LK5_ENABLED && RK5_ENABLED
     module procedure setBernRandRUP_LK5_RK5
-        use pm_kind, only: LKC => LK5, RKC => RK5
+        use pm_kind, only: LKG => LK5, RKG => RK5
 #include "pm_distBern@routines.inc.F90"
     end procedure
 #endif
 
 #if LK5_ENABLED && RK4_ENABLED
     module procedure setBernRandRUP_LK5_RK4
-        use pm_kind, only: LKC => LK5, RKC => RK4
+        use pm_kind, only: LKG => LK5, RKG => RK4
 #include "pm_distBern@routines.inc.F90"
     end procedure
 #endif
 
 #if LK5_ENABLED && RK3_ENABLED
     module procedure setBernRandRUP_LK5_RK3
-        use pm_kind, only: LKC => LK5, RKC => RK3
+        use pm_kind, only: LKG => LK5, RKG => RK3
 #include "pm_distBern@routines.inc.F90"
     end procedure
 #endif
 
 #if LK5_ENABLED && RK2_ENABLED
     module procedure setBernRandRUP_LK5_RK2
-        use pm_kind, only: LKC => LK5, RKC => RK2
+        use pm_kind, only: LKG => LK5, RKG => RK2
 #include "pm_distBern@routines.inc.F90"
     end procedure
 #endif
 
 #if LK5_ENABLED && RK1_ENABLED
     module procedure setBernRandRUP_LK5_RK1
-        use pm_kind, only: LKC => LK5, RKC => RK1
+        use pm_kind, only: LKG => LK5, RKG => RK1
 #include "pm_distBern@routines.inc.F90"
     end procedure
 #endif
@@ -516,35 +516,35 @@ contains
 
 #if LK4_ENABLED && RK5_ENABLED
     module procedure setBernRandRUP_LK4_RK5
-        use pm_kind, only: LKC => LK4, RKC => RK5
+        use pm_kind, only: LKG => LK4, RKG => RK5
 #include "pm_distBern@routines.inc.F90"
     end procedure
 #endif
 
 #if LK4_ENABLED && RK4_ENABLED
     module procedure setBernRandRUP_LK4_RK4
-        use pm_kind, only: LKC => LK4, RKC => RK4
+        use pm_kind, only: LKG => LK4, RKG => RK4
 #include "pm_distBern@routines.inc.F90"
     end procedure
 #endif
 
 #if LK4_ENABLED && RK3_ENABLED
     module procedure setBernRandRUP_LK4_RK3
-        use pm_kind, only: LKC => LK4, RKC => RK3
+        use pm_kind, only: LKG => LK4, RKG => RK3
 #include "pm_distBern@routines.inc.F90"
     end procedure
 #endif
 
 #if LK4_ENABLED && RK2_ENABLED
     module procedure setBernRandRUP_LK4_RK2
-        use pm_kind, only: LKC => LK4, RKC => RK2
+        use pm_kind, only: LKG => LK4, RKG => RK2
 #include "pm_distBern@routines.inc.F90"
     end procedure
 #endif
 
 #if LK4_ENABLED && RK1_ENABLED
     module procedure setBernRandRUP_LK4_RK1
-        use pm_kind, only: LKC => LK4, RKC => RK1
+        use pm_kind, only: LKG => LK4, RKG => RK1
 #include "pm_distBern@routines.inc.F90"
     end procedure
 #endif
@@ -553,35 +553,35 @@ contains
 
 #if LK3_ENABLED && RK5_ENABLED
     module procedure setBernRandRUP_LK3_RK5
-        use pm_kind, only: LKC => LK3, RKC => RK5
+        use pm_kind, only: LKG => LK3, RKG => RK5
 #include "pm_distBern@routines.inc.F90"
     end procedure
 #endif
 
 #if LK3_ENABLED && RK4_ENABLED
     module procedure setBernRandRUP_LK3_RK4
-        use pm_kind, only: LKC => LK3, RKC => RK4
+        use pm_kind, only: LKG => LK3, RKG => RK4
 #include "pm_distBern@routines.inc.F90"
     end procedure
 #endif
 
 #if LK3_ENABLED && RK3_ENABLED
     module procedure setBernRandRUP_LK3_RK3
-        use pm_kind, only: LKC => LK3, RKC => RK3
+        use pm_kind, only: LKG => LK3, RKG => RK3
 #include "pm_distBern@routines.inc.F90"
     end procedure
 #endif
 
 #if LK3_ENABLED && RK2_ENABLED
     module procedure setBernRandRUP_LK3_RK2
-        use pm_kind, only: LKC => LK3, RKC => RK2
+        use pm_kind, only: LKG => LK3, RKG => RK2
 #include "pm_distBern@routines.inc.F90"
     end procedure
 #endif
 
 #if LK3_ENABLED && RK1_ENABLED
     module procedure setBernRandRUP_LK3_RK1
-        use pm_kind, only: LKC => LK3, RKC => RK1
+        use pm_kind, only: LKG => LK3, RKG => RK1
 #include "pm_distBern@routines.inc.F90"
     end procedure
 #endif
@@ -590,35 +590,35 @@ contains
 
 #if LK2_ENABLED && RK5_ENABLED
     module procedure setBernRandRUP_LK2_RK5
-        use pm_kind, only: LKC => LK2, RKC => RK5
+        use pm_kind, only: LKG => LK2, RKG => RK5
 #include "pm_distBern@routines.inc.F90"
     end procedure
 #endif
 
 #if LK2_ENABLED && RK4_ENABLED
     module procedure setBernRandRUP_LK2_RK4
-        use pm_kind, only: LKC => LK2, RKC => RK4
+        use pm_kind, only: LKG => LK2, RKG => RK4
 #include "pm_distBern@routines.inc.F90"
     end procedure
 #endif
 
 #if LK2_ENABLED && RK3_ENABLED
     module procedure setBernRandRUP_LK2_RK3
-        use pm_kind, only: LKC => LK2, RKC => RK3
+        use pm_kind, only: LKG => LK2, RKG => RK3
 #include "pm_distBern@routines.inc.F90"
     end procedure
 #endif
 
 #if LK2_ENABLED && RK2_ENABLED
     module procedure setBernRandRUP_LK2_RK2
-        use pm_kind, only: LKC => LK2, RKC => RK2
+        use pm_kind, only: LKG => LK2, RKG => RK2
 #include "pm_distBern@routines.inc.F90"
     end procedure
 #endif
 
 #if LK2_ENABLED && RK1_ENABLED
     module procedure setBernRandRUP_LK2_RK1
-        use pm_kind, only: LKC => LK2, RKC => RK1
+        use pm_kind, only: LKG => LK2, RKG => RK1
 #include "pm_distBern@routines.inc.F90"
     end procedure
 #endif
@@ -627,35 +627,35 @@ contains
 
 #if LK1_ENABLED && RK5_ENABLED
     module procedure setBernRandRUP_LK1_RK5
-        use pm_kind, only: LKC => LK1, RKC => RK5
+        use pm_kind, only: LKG => LK1, RKG => RK5
 #include "pm_distBern@routines.inc.F90"
     end procedure
 #endif
 
 #if LK1_ENABLED && RK4_ENABLED
     module procedure setBernRandRUP_LK1_RK4
-        use pm_kind, only: LKC => LK1, RKC => RK4
+        use pm_kind, only: LKG => LK1, RKG => RK4
 #include "pm_distBern@routines.inc.F90"
     end procedure
 #endif
 
 #if LK1_ENABLED && RK3_ENABLED
     module procedure setBernRandRUP_LK1_RK3
-        use pm_kind, only: LKC => LK1, RKC => RK3
+        use pm_kind, only: LKG => LK1, RKG => RK3
 #include "pm_distBern@routines.inc.F90"
     end procedure
 #endif
 
 #if LK1_ENABLED && RK2_ENABLED
     module procedure setBernRandRUP_LK1_RK2
-        use pm_kind, only: LKC => LK1, RKC => RK2
+        use pm_kind, only: LKG => LK1, RKG => RK2
 #include "pm_distBern@routines.inc.F90"
     end procedure
 #endif
 
 #if LK1_ENABLED && RK1_ENABLED
     module procedure setBernRandRUP_LK1_RK1
-        use pm_kind, only: LKC => LK1, RKC => RK1
+        use pm_kind, only: LKG => LK1, RKG => RK1
 #include "pm_distBern@routines.inc.F90"
     end procedure
 #endif
@@ -674,35 +674,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setBernRandRUP_RK5_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_distBern@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setBernRandRUP_RK4_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_distBern@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setBernRandRUP_RK3_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_distBern@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setBernRandRUP_RK2_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_distBern@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setBernRandRUP_RK1_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_distBern@routines.inc.F90"
     end procedure
 #endif

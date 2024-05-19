@@ -87,9 +87,9 @@ module pm_logicalCompare
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isless_LK5
 #endif
-        use pm_kind, only: LKC => LK5 
-        logical(LKC)            , intent(in)                :: lhs, rhs
-        logical(LKC)                                        :: compares
+        use pm_kind, only: LKG => LK5 
+        logical(LKG)            , intent(in)                :: lhs, rhs
+        logical(LKG)                                        :: compares
     end function
 #endif
 
@@ -98,9 +98,9 @@ module pm_logicalCompare
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isless_LK4
 #endif
-        use pm_kind, only: LKC => LK4 
-        logical(LKC)            , intent(in)                :: lhs, rhs
-        logical(LKC)                                        :: compares
+        use pm_kind, only: LKG => LK4 
+        logical(LKG)            , intent(in)                :: lhs, rhs
+        logical(LKG)                                        :: compares
     end function
 #endif
 
@@ -109,9 +109,9 @@ module pm_logicalCompare
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isless_LK3
 #endif
-        use pm_kind, only: LKC => LK3 
-        logical(LKC)            , intent(in)                :: lhs, rhs
-        logical(LKC)                                        :: compares
+        use pm_kind, only: LKG => LK3 
+        logical(LKG)            , intent(in)                :: lhs, rhs
+        logical(LKG)                                        :: compares
     end function
 #endif
 
@@ -120,9 +120,9 @@ module pm_logicalCompare
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isless_LK2
 #endif
-        use pm_kind, only: LKC => LK2 
-        logical(LKC)            , intent(in)                :: lhs, rhs
-        logical(LKC)                                        :: compares
+        use pm_kind, only: LKG => LK2 
+        logical(LKG)            , intent(in)                :: lhs, rhs
+        logical(LKG)                                        :: compares
     end function
 #endif
 
@@ -131,9 +131,9 @@ module pm_logicalCompare
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isless_LK1
 #endif
-        use pm_kind, only: LKC => LK1 
-        logical(LKC)            , intent(in)                :: lhs, rhs
-        logical(LKC)                                        :: compares
+        use pm_kind, only: LKG => LK1 
+        logical(LKG)            , intent(in)                :: lhs, rhs
+        logical(LKG)                                        :: compares
     end function
 #endif
 
@@ -193,9 +193,9 @@ module pm_logicalCompare
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isleq_LK5
 #endif
-        use pm_kind, only: LKC => LK5 
-        logical(LKC)            , intent(in)                :: lhs, rhs
-        logical(LKC)                                        :: compares
+        use pm_kind, only: LKG => LK5 
+        logical(LKG)            , intent(in)                :: lhs, rhs
+        logical(LKG)                                        :: compares
     end function
 #endif
 
@@ -204,9 +204,9 @@ module pm_logicalCompare
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isleq_LK4
 #endif
-        use pm_kind, only: LKC => LK4 
-        logical(LKC)            , intent(in)                :: lhs, rhs
-        logical(LKC)                                        :: compares
+        use pm_kind, only: LKG => LK4 
+        logical(LKG)            , intent(in)                :: lhs, rhs
+        logical(LKG)                                        :: compares
     end function
 #endif
 
@@ -215,9 +215,9 @@ module pm_logicalCompare
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isleq_LK3
 #endif
-        use pm_kind, only: LKC => LK3 
-        logical(LKC)            , intent(in)                :: lhs, rhs
-        logical(LKC)                                        :: compares
+        use pm_kind, only: LKG => LK3 
+        logical(LKG)            , intent(in)                :: lhs, rhs
+        logical(LKG)                                        :: compares
     end function
 #endif
 
@@ -226,9 +226,9 @@ module pm_logicalCompare
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isleq_LK2
 #endif
-        use pm_kind, only: LKC => LK2 
-        logical(LKC)            , intent(in)                :: lhs, rhs
-        logical(LKC)                                        :: compares
+        use pm_kind, only: LKG => LK2 
+        logical(LKG)            , intent(in)                :: lhs, rhs
+        logical(LKG)                                        :: compares
     end function
 #endif
 
@@ -237,9 +237,9 @@ module pm_logicalCompare
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isleq_LK1
 #endif
-        use pm_kind, only: LKC => LK1 
-        logical(LKC)            , intent(in)                :: lhs, rhs
-        logical(LKC)                                        :: compares
+        use pm_kind, only: LKG => LK1 
+        logical(LKG)            , intent(in)                :: lhs, rhs
+        logical(LKG)                                        :: compares
     end function
 #endif
 
@@ -299,9 +299,9 @@ module pm_logicalCompare
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: iseq_LK5
 #endif
-        use pm_kind, only: LKC => LK5 
-        logical(LKC)            , intent(in)                :: lhs, rhs
-        logical(LKC)                                        :: compares
+        use pm_kind, only: LKG => LK5 
+        logical(LKG)            , intent(in)                :: lhs, rhs
+        logical(LKG)                                        :: compares
     end function
 #endif
 
@@ -310,9 +310,9 @@ module pm_logicalCompare
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: iseq_LK4
 #endif
-        use pm_kind, only: LKC => LK4 
-        logical(LKC)            , intent(in)                :: lhs, rhs
-        logical(LKC)                                        :: compares
+        use pm_kind, only: LKG => LK4 
+        logical(LKG)            , intent(in)                :: lhs, rhs
+        logical(LKG)                                        :: compares
     end function
 #endif
 
@@ -321,9 +321,9 @@ module pm_logicalCompare
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: iseq_LK3
 #endif
-        use pm_kind, only: LKC => LK3 
-        logical(LKC)            , intent(in)                :: lhs, rhs
-        logical(LKC)                                        :: compares
+        use pm_kind, only: LKG => LK3 
+        logical(LKG)            , intent(in)                :: lhs, rhs
+        logical(LKG)                                        :: compares
     end function
 #endif
 
@@ -332,9 +332,9 @@ module pm_logicalCompare
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: iseq_LK2
 #endif
-        use pm_kind, only: LKC => LK2 
-        logical(LKC)            , intent(in)                :: lhs, rhs
-        logical(LKC)                                        :: compares
+        use pm_kind, only: LKG => LK2 
+        logical(LKG)            , intent(in)                :: lhs, rhs
+        logical(LKG)                                        :: compares
     end function
 #endif
 
@@ -343,9 +343,9 @@ module pm_logicalCompare
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: iseq_LK1
 #endif
-        use pm_kind, only: LKC => LK1 
-        logical(LKC)            , intent(in)                :: lhs, rhs
-        logical(LKC)                                        :: compares
+        use pm_kind, only: LKG => LK1 
+        logical(LKG)            , intent(in)                :: lhs, rhs
+        logical(LKG)                                        :: compares
     end function
 #endif
 
@@ -405,9 +405,9 @@ module pm_logicalCompare
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isneq_LK5
 #endif
-        use pm_kind, only: LKC => LK5 
-        logical(LKC)            , intent(in)                :: lhs, rhs
-        logical(LKC)                                        :: compares
+        use pm_kind, only: LKG => LK5 
+        logical(LKG)            , intent(in)                :: lhs, rhs
+        logical(LKG)                                        :: compares
     end function
 #endif
 
@@ -416,9 +416,9 @@ module pm_logicalCompare
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isneq_LK4
 #endif
-        use pm_kind, only: LKC => LK4 
-        logical(LKC)            , intent(in)                :: lhs, rhs
-        logical(LKC)                                        :: compares
+        use pm_kind, only: LKG => LK4 
+        logical(LKG)            , intent(in)                :: lhs, rhs
+        logical(LKG)                                        :: compares
     end function
 #endif
 
@@ -427,9 +427,9 @@ module pm_logicalCompare
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isneq_LK3
 #endif
-        use pm_kind, only: LKC => LK3 
-        logical(LKC)            , intent(in)                :: lhs, rhs
-        logical(LKC)                                        :: compares
+        use pm_kind, only: LKG => LK3 
+        logical(LKG)            , intent(in)                :: lhs, rhs
+        logical(LKG)                                        :: compares
     end function
 #endif
 
@@ -438,9 +438,9 @@ module pm_logicalCompare
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isneq_LK2
 #endif
-        use pm_kind, only: LKC => LK2 
-        logical(LKC)            , intent(in)                :: lhs, rhs
-        logical(LKC)                                        :: compares
+        use pm_kind, only: LKG => LK2 
+        logical(LKG)            , intent(in)                :: lhs, rhs
+        logical(LKG)                                        :: compares
     end function
 #endif
 
@@ -449,9 +449,9 @@ module pm_logicalCompare
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isneq_LK1
 #endif
-        use pm_kind, only: LKC => LK1 
-        logical(LKC)            , intent(in)                :: lhs, rhs
-        logical(LKC)                                        :: compares
+        use pm_kind, only: LKG => LK1 
+        logical(LKG)            , intent(in)                :: lhs, rhs
+        logical(LKG)                                        :: compares
     end function
 #endif
 
@@ -511,9 +511,9 @@ module pm_logicalCompare
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: ismeq_LK5
 #endif
-        use pm_kind, only: LKC => LK5 
-        logical(LKC)            , intent(in)                :: lhs, rhs
-        logical(LKC)                                        :: compares
+        use pm_kind, only: LKG => LK5 
+        logical(LKG)            , intent(in)                :: lhs, rhs
+        logical(LKG)                                        :: compares
     end function
 #endif
 
@@ -522,9 +522,9 @@ module pm_logicalCompare
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: ismeq_LK4
 #endif
-        use pm_kind, only: LKC => LK4 
-        logical(LKC)            , intent(in)                :: lhs, rhs
-        logical(LKC)                                        :: compares
+        use pm_kind, only: LKG => LK4 
+        logical(LKG)            , intent(in)                :: lhs, rhs
+        logical(LKG)                                        :: compares
     end function
 #endif
 
@@ -533,9 +533,9 @@ module pm_logicalCompare
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: ismeq_LK3
 #endif
-        use pm_kind, only: LKC => LK3 
-        logical(LKC)            , intent(in)                :: lhs, rhs
-        logical(LKC)                                        :: compares
+        use pm_kind, only: LKG => LK3 
+        logical(LKG)            , intent(in)                :: lhs, rhs
+        logical(LKG)                                        :: compares
     end function
 #endif
 
@@ -544,9 +544,9 @@ module pm_logicalCompare
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: ismeq_LK2
 #endif
-        use pm_kind, only: LKC => LK2 
-        logical(LKC)            , intent(in)                :: lhs, rhs
-        logical(LKC)                                        :: compares
+        use pm_kind, only: LKG => LK2 
+        logical(LKG)            , intent(in)                :: lhs, rhs
+        logical(LKG)                                        :: compares
     end function
 #endif
 
@@ -555,9 +555,9 @@ module pm_logicalCompare
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: ismeq_LK1
 #endif
-        use pm_kind, only: LKC => LK1 
-        logical(LKC)            , intent(in)                :: lhs, rhs
-        logical(LKC)                                        :: compares
+        use pm_kind, only: LKG => LK1 
+        logical(LKG)            , intent(in)                :: lhs, rhs
+        logical(LKG)                                        :: compares
     end function
 #endif
 
@@ -617,9 +617,9 @@ module pm_logicalCompare
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: ismore_LK5
 #endif
-        use pm_kind, only: LKC => LK5 
-        logical(LKC)            , intent(in)                :: lhs, rhs
-        logical(LKC)                                        :: compares
+        use pm_kind, only: LKG => LK5 
+        logical(LKG)            , intent(in)                :: lhs, rhs
+        logical(LKG)                                        :: compares
     end function
 #endif
 
@@ -628,9 +628,9 @@ module pm_logicalCompare
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: ismore_LK4
 #endif
-        use pm_kind, only: LKC => LK4 
-        logical(LKC)            , intent(in)                :: lhs, rhs
-        logical(LKC)                                        :: compares
+        use pm_kind, only: LKG => LK4 
+        logical(LKG)            , intent(in)                :: lhs, rhs
+        logical(LKG)                                        :: compares
     end function
 #endif
 
@@ -639,9 +639,9 @@ module pm_logicalCompare
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: ismore_LK3
 #endif
-        use pm_kind, only: LKC => LK3 
-        logical(LKC)            , intent(in)                :: lhs, rhs
-        logical(LKC)                                        :: compares
+        use pm_kind, only: LKG => LK3 
+        logical(LKG)            , intent(in)                :: lhs, rhs
+        logical(LKG)                                        :: compares
     end function
 #endif
 
@@ -650,9 +650,9 @@ module pm_logicalCompare
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: ismore_LK2
 #endif
-        use pm_kind, only: LKC => LK2 
-        logical(LKC)            , intent(in)                :: lhs, rhs
-        logical(LKC)                                        :: compares
+        use pm_kind, only: LKG => LK2 
+        logical(LKG)            , intent(in)                :: lhs, rhs
+        logical(LKG)                                        :: compares
     end function
 #endif
 
@@ -661,9 +661,9 @@ module pm_logicalCompare
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: ismore_LK1
 #endif
-        use pm_kind, only: LKC => LK1 
-        logical(LKC)            , intent(in)                :: lhs, rhs
-        logical(LKC)                                        :: compares
+        use pm_kind, only: LKG => LK1 
+        logical(LKG)            , intent(in)                :: lhs, rhs
+        logical(LKG)                                        :: compares
     end function
 #endif
 

@@ -50,14 +50,14 @@
 #endif
         ! Define the constants.
 #if     IK_ENABLED
-#define TYPE_KIND integer(TKC)
-        integer(TKC), parameter :: ZERO = 0_TKC, ONE = 1_TKC
+#define TYPE_KIND integer(TKG)
+        integer(TKG), parameter :: ZERO = 0_TKG, ONE = 1_TKG
 #elif   CK_ENABLED
-#define TYPE_KIND complex(TKC)
-        complex(TKC), parameter :: ZERO = (0._TKC, 0._TKC), ONE = (1._TKC, 0._TKC)
+#define TYPE_KIND complex(TKG)
+        complex(TKG), parameter :: ZERO = (0._TKG, 0._TKG), ONE = (1._TKG, 0._TKG)
 #elif   RK_ENABLED
-#define TYPE_KIND real(TKC)
-        real(TKC)   , parameter :: ZERO = 0._TKC, ONE = 1._TKC
+#define TYPE_KIND real(TKG)
+        real(TKG)   , parameter :: ZERO = 0._TKG, ONE = 1._TKG
 #else
 #error  "Unrecognized interface."
 #endif
@@ -106,7 +106,7 @@
 #if     CHM_ENABLED && CK_ENABLED
 #define GET_CONJG(X) conjg(X)
 #define GET_RE(X) X%re
-#define GET_REAL(X)real(X, TKC)
+#define GET_REAL(X)real(X, TKG)
 #elif   CHM_ENABLED || (CSM_ENABLED && (ONO_ENABLED || OTP_ENABLED))
 #define GET_CONJG(X) X
 #define GET_REAL(X)X
@@ -348,7 +348,7 @@ end do;
 #elif   AH_ENABLED || HA_ENABLED
 #define GET_CONJG(X) conjg(X)
 #define GET_RE(X) X%re
-#define GET_REAL(X)real(X, TKC)
+#define GET_REAL(X)real(X, TKG)
 #else
 #error  "Unrecognized interface."
 #endif

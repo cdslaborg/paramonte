@@ -28,17 +28,17 @@
 #if     getBetaPDF_ENABLED
         !%%%%%%%%%%%%%%%%%
 
-        if (x == 0._RKC) then
-            if (alpha < 1._RKC) then
+        if (x == 0._RKG) then
+            if (alpha < 1._RKG) then
                 pdf = +huge(pdf)
             else
-                pdf = 0._RKC
+                pdf = 0._RKG
             end if
-        elseif (x == 1._RKC) then
-            if (beta < 1._RKC) then
+        elseif (x == 1._RKG) then
+            if (beta < 1._RKG) then
                 pdf = +huge(pdf)
             else
-                pdf = 0._RKC
+                pdf = 0._RKG
             end if
         else
             call setBetaLogPDF(pdf, x, alpha, beta)
@@ -49,15 +49,15 @@
 #elif   getBetaLogPDF_ENABLED || setBetaLogPDF_ENABLED
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        CHECK_ASSERTION(__LINE__, 0._RKC < x .and. x < 1._RKC, SK_"@setBetaLogPDF(): The condition `0. < x .and. x < 1.` must hold. x = "//getStr(x))
-        CHECK_ASSERTION(__LINE__, 0._RKC < alpha, SK_"@setBetaLogPDF(): The condition `0. < alpha` must hold. alpha = "//getStr(alpha))
-        CHECK_ASSERTION(__LINE__, 0._RKC < beta, SK_"@setBetaLogPDF(): The condition `0. < beta` must hold. alpha = "//getStr(beta))
+        CHECK_ASSERTION(__LINE__, 0._RKG < x .and. x < 1._RKG, SK_"@setBetaLogPDF(): The condition `0. < x .and. x < 1.` must hold. x = "//getStr(x))
+        CHECK_ASSERTION(__LINE__, 0._RKG < alpha, SK_"@setBetaLogPDF(): The condition `0. < alpha` must hold. alpha = "//getStr(alpha))
+        CHECK_ASSERTION(__LINE__, 0._RKG < beta, SK_"@setBetaLogPDF(): The condition `0. < beta` must hold. alpha = "//getStr(beta))
 #if     LOGBETA_ENABLED
-        CHECK_ASSERTION(__LINE__, abs(logBeta - getLogBeta(alpha, beta)) < sqrt(epsilon(0._RKC)), \
-        SK_"@setBetaLogPDF(): The condition `abs(logBeta - getLogBeta(alpha, beta)) < sqrt(epsilon(0._RKC)` must hold. logBeta, getLogBeta(alpha, beta) = "\
+        CHECK_ASSERTION(__LINE__, abs(logBeta - getLogBeta(alpha, beta)) < sqrt(epsilon(0._RKG)), \
+        SK_"@setBetaLogPDF(): The condition `abs(logBeta - getLogBeta(alpha, beta)) < sqrt(epsilon(0._RKG)` must hold. logBeta, getLogBeta(alpha, beta) = "\
         //getStr([logBeta, getLogBeta(alpha, beta)]))
 #endif
-        logPDF = (alpha - 1._RKC) * log(x) + (beta - 1._RKC) * log(1._RKC - x) - & ! LCOV_EXCL_LINE
+        logPDF = (alpha - 1._RKG) * log(x) + (beta - 1._RKG) * log(1._RKG - x) - & ! LCOV_EXCL_LINE
 #if     DEFAULT_ENABLED
         getLogBeta(alpha, beta)
 #elif   LOGBETA_ENABLED
@@ -90,19 +90,19 @@
 #else
 #error  "Unrecognized interface."
 #endif
-        CHECK_ASSERTION(__LINE__, 0._RKC < alpha, SK_"@setBetaRand(): The condition `0. < alpha` must hold. alpha = "//getStr(alpha))
-        CHECK_ASSERTION(__LINE__, 0._RKC < beta, SK_"@setBetaRand(): The condition `0. < beta` must hold. alpha = "//getStr(beta))
-        if (1._RKC < alpha .or. 1._RKC < beta) then ! Use the algorithm of Johnk.
+        CHECK_ASSERTION(__LINE__, 0._RKG < alpha, SK_"@setBetaRand(): The condition `0. < alpha` must hold. alpha = "//getStr(alpha))
+        CHECK_ASSERTION(__LINE__, 0._RKG < beta, SK_"@setBetaRand(): The condition `0. < beta` must hold. alpha = "//getStr(beta))
+        if (1._RKG < alpha .or. 1._RKG < beta) then ! Use the algorithm of Johnk.
             block
 #if             D0_ENABLED
-                real(RKC) :: temp
+                real(RKG) :: temp
 #elif           D1_ENABLED
-                real(RKC) :: temp(size(rand, 1, IK))
+                real(RKG) :: temp(size(rand, 1, IK))
 #else       
 #error          "Unrecognized interface."
 #endif
-                call setGammaRand(RNG rand, alpha, 1._RKC)
-                call setGammaRand(RNG temp, beta, 1._RKC)
+                call setGammaRand(RNG rand, alpha, 1._RKG)
+                call setGammaRand(RNG temp, beta, 1._RKG)
                 rand = rand / (rand + temp)
             end block
         else
@@ -110,9 +110,9 @@
 #if             D1_ENABLED
                 integer(IK) :: irand
 #endif
-                real(RKC)   :: temp, invShape(2), dumm
-                invShape(1) = 1._RKC / alpha
-                invShape(2) = 1._RKC / beta
+                real(RKG)   :: temp, invShape(2), dumm
+                invShape(1) = 1._RKG / alpha
+                invShape(2) = 1._RKG / beta
 #if             D1_ENABLED
 #define         GET_RAND(i) rand(i)
                 do irand = 1, size(rand, 1, IK)
@@ -122,13 +122,13 @@
                     do
                         call setUnifRand(RNG GET_RAND(irand))
                         call setUnifRand(RNG temp)
-                        GET_RAND(irand) = (1._RKC - GET_RAND(irand))**invShape(1)
-                        temp = (1._RKC - temp)**invShape(2)
+                        GET_RAND(irand) = (1._RKG - GET_RAND(irand))**invShape(1)
+                        temp = (1._RKG - temp)**invShape(2)
                         dumm = GET_RAND(irand) + temp
-                        ! Rejection and cycling happens only if any(unifrnd == 0._RKC),
+                        ! Rejection and cycling happens only if any(unifrnd == 0._RKG),
                         ! which is approximately 1 in 10^106 odds of occurrence.
-                        if (1._RKC < dumm) cycle
-                        if (0._RKC < dumm) then
+                        if (1._RKG < dumm) cycle
+                        if (0._RKG < dumm) then
                             GET_RAND(irand) = GET_RAND(irand) / dumm
                         else
                             GET_RAND(irand) = log(GET_RAND(irand))

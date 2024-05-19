@@ -400,11 +400,11 @@ module pm_distCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCovRandGRNGDS0_CK5
 #endif
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
         integer(IK)             , intent(in)                    :: ndim
-        complex(CKC)            , intent(in)                    :: mold
-        real(CKC)               , intent(in)    , optional      :: scale
-        complex(CKC)                                            :: rand(ndim, ndim)
+        complex(CKG)            , intent(in)                    :: mold
+        real(CKG)               , intent(in)    , optional      :: scale
+        complex(CKG)                                            :: rand(ndim, ndim)
     end function
 #endif
 
@@ -413,11 +413,11 @@ module pm_distCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCovRandGRNGDS0_CK4
 #endif
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
         integer(IK)             , intent(in)                    :: ndim
-        complex(CKC)            , intent(in)                    :: mold
-        real(CKC)               , intent(in)    , optional      :: scale
-        complex(CKC)                                            :: rand(ndim, ndim)
+        complex(CKG)            , intent(in)                    :: mold
+        real(CKG)               , intent(in)    , optional      :: scale
+        complex(CKG)                                            :: rand(ndim, ndim)
     end function
 #endif
 
@@ -426,11 +426,11 @@ module pm_distCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCovRandGRNGDS0_CK3
 #endif
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
         integer(IK)             , intent(in)                    :: ndim
-        complex(CKC)            , intent(in)                    :: mold
-        real(CKC)               , intent(in)    , optional      :: scale
-        complex(CKC)                                            :: rand(ndim, ndim)
+        complex(CKG)            , intent(in)                    :: mold
+        real(CKG)               , intent(in)    , optional      :: scale
+        complex(CKG)                                            :: rand(ndim, ndim)
     end function
 #endif
 
@@ -439,11 +439,11 @@ module pm_distCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCovRandGRNGDS0_CK2
 #endif
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
         integer(IK)             , intent(in)                    :: ndim
-        complex(CKC)            , intent(in)                    :: mold
-        real(CKC)               , intent(in)    , optional      :: scale
-        complex(CKC)                                            :: rand(ndim, ndim)
+        complex(CKG)            , intent(in)                    :: mold
+        real(CKG)               , intent(in)    , optional      :: scale
+        complex(CKG)                                            :: rand(ndim, ndim)
     end function
 #endif
 
@@ -452,11 +452,11 @@ module pm_distCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCovRandGRNGDS0_CK1
 #endif
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
         integer(IK)             , intent(in)                    :: ndim
-        complex(CKC)            , intent(in)                    :: mold
-        real(CKC)               , intent(in)    , optional      :: scale
-        complex(CKC)                                            :: rand(ndim, ndim)
+        complex(CKG)            , intent(in)                    :: mold
+        real(CKG)               , intent(in)    , optional      :: scale
+        complex(CKG)                                            :: rand(ndim, ndim)
     end function
 #endif
 
@@ -467,11 +467,11 @@ module pm_distCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCovRandGRNGDS0_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         integer(IK)             , intent(in)                    :: ndim
-        real(RKC)               , intent(in)                    :: mold
-        real(RKC)               , intent(in)    , optional      :: scale
-        real(RKC)                                               :: rand(ndim, ndim)
+        real(RKG)               , intent(in)                    :: mold
+        real(RKG)               , intent(in)    , optional      :: scale
+        real(RKG)                                               :: rand(ndim, ndim)
     end function
 #endif
 
@@ -480,11 +480,11 @@ module pm_distCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCovRandGRNGDS0_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         integer(IK)             , intent(in)                    :: ndim
-        real(RKC)               , intent(in)                    :: mold
-        real(RKC)               , intent(in)    , optional      :: scale
-        real(RKC)                                               :: rand(ndim, ndim)
+        real(RKG)               , intent(in)                    :: mold
+        real(RKG)               , intent(in)    , optional      :: scale
+        real(RKG)                                               :: rand(ndim, ndim)
     end function
 #endif
 
@@ -493,11 +493,11 @@ module pm_distCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCovRandGRNGDS0_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         integer(IK)             , intent(in)                    :: ndim
-        real(RKC)               , intent(in)                    :: mold
-        real(RKC)               , intent(in)    , optional      :: scale
-        real(RKC)                                               :: rand(ndim, ndim)
+        real(RKG)               , intent(in)                    :: mold
+        real(RKG)               , intent(in)    , optional      :: scale
+        real(RKG)                                               :: rand(ndim, ndim)
     end function
 #endif
 
@@ -506,11 +506,11 @@ module pm_distCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCovRandGRNGDS0_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         integer(IK)             , intent(in)                    :: ndim
-        real(RKC)               , intent(in)                    :: mold
-        real(RKC)               , intent(in)    , optional      :: scale
-        real(RKC)                                               :: rand(ndim, ndim)
+        real(RKG)               , intent(in)                    :: mold
+        real(RKG)               , intent(in)    , optional      :: scale
+        real(RKG)                                               :: rand(ndim, ndim)
     end function
 #endif
 
@@ -519,11 +519,11 @@ module pm_distCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCovRandGRNGDS0_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         integer(IK)             , intent(in)                    :: ndim
-        real(RKC)               , intent(in)                    :: mold
-        real(RKC)               , intent(in)    , optional      :: scale
-        real(RKC)                                               :: rand(ndim, ndim)
+        real(RKG)               , intent(in)                    :: mold
+        real(RKG)               , intent(in)    , optional      :: scale
+        real(RKG)                                               :: rand(ndim, ndim)
     end function
 #endif
 
@@ -540,10 +540,10 @@ module pm_distCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCovRandGRNGDS1_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)            , intent(in)                    :: mold
-        real(CKC)               , intent(in)    , contiguous    :: scale(:)
-        complex(CKC)                                            :: rand(size(scale, 1, IK), size(scale, 1, IK))
+        use pm_kind, only: CKG => CK5
+        complex(CKG)            , intent(in)                    :: mold
+        real(CKG)               , intent(in)    , contiguous    :: scale(:)
+        complex(CKG)                                            :: rand(size(scale, 1, IK), size(scale, 1, IK))
     end function
 #endif
 
@@ -552,10 +552,10 @@ module pm_distCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCovRandGRNGDS1_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)            , intent(in)                    :: mold
-        real(CKC)               , intent(in)    , contiguous    :: scale(:)
-        complex(CKC)                                            :: rand(size(scale, 1, IK), size(scale, 1, IK))
+        use pm_kind, only: CKG => CK4
+        complex(CKG)            , intent(in)                    :: mold
+        real(CKG)               , intent(in)    , contiguous    :: scale(:)
+        complex(CKG)                                            :: rand(size(scale, 1, IK), size(scale, 1, IK))
     end function
 #endif
 
@@ -564,10 +564,10 @@ module pm_distCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCovRandGRNGDS1_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)            , intent(in)                    :: mold
-        real(CKC)               , intent(in)    , contiguous    :: scale(:)
-        complex(CKC)                                            :: rand(size(scale, 1, IK), size(scale, 1, IK))
+        use pm_kind, only: CKG => CK3
+        complex(CKG)            , intent(in)                    :: mold
+        real(CKG)               , intent(in)    , contiguous    :: scale(:)
+        complex(CKG)                                            :: rand(size(scale, 1, IK), size(scale, 1, IK))
     end function
 #endif
 
@@ -576,10 +576,10 @@ module pm_distCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCovRandGRNGDS1_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)            , intent(in)                    :: mold
-        real(CKC)               , intent(in)    , contiguous    :: scale(:)
-        complex(CKC)                                            :: rand(size(scale, 1, IK), size(scale, 1, IK))
+        use pm_kind, only: CKG => CK2
+        complex(CKG)            , intent(in)                    :: mold
+        real(CKG)               , intent(in)    , contiguous    :: scale(:)
+        complex(CKG)                                            :: rand(size(scale, 1, IK), size(scale, 1, IK))
     end function
 #endif
 
@@ -588,10 +588,10 @@ module pm_distCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCovRandGRNGDS1_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)            , intent(in)                    :: mold
-        real(CKC)               , intent(in)    , contiguous    :: scale(:)
-        complex(CKC)                                            :: rand(size(scale, 1, IK), size(scale, 1, IK))
+        use pm_kind, only: CKG => CK1
+        complex(CKG)            , intent(in)                    :: mold
+        real(CKG)               , intent(in)    , contiguous    :: scale(:)
+        complex(CKG)                                            :: rand(size(scale, 1, IK), size(scale, 1, IK))
     end function
 #endif
 
@@ -602,10 +602,10 @@ module pm_distCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCovRandGRNGDS1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)               , intent(in)                    :: mold
-        real(RKC)               , intent(in)    , contiguous    :: scale(:)
-        real(RKC)                                               :: rand(size(scale, 1, IK), size(scale, 1, IK))
+        use pm_kind, only: RKG => RK5
+        real(RKG)               , intent(in)                    :: mold
+        real(RKG)               , intent(in)    , contiguous    :: scale(:)
+        real(RKG)                                               :: rand(size(scale, 1, IK), size(scale, 1, IK))
     end function
 #endif
 
@@ -614,10 +614,10 @@ module pm_distCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCovRandGRNGDS1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)               , intent(in)                    :: mold
-        real(RKC)               , intent(in)    , contiguous    :: scale(:)
-        real(RKC)                                               :: rand(size(scale, 1, IK), size(scale, 1, IK))
+        use pm_kind, only: RKG => RK4
+        real(RKG)               , intent(in)                    :: mold
+        real(RKG)               , intent(in)    , contiguous    :: scale(:)
+        real(RKG)                                               :: rand(size(scale, 1, IK), size(scale, 1, IK))
     end function
 #endif
 
@@ -626,10 +626,10 @@ module pm_distCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCovRandGRNGDS1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)               , intent(in)                    :: mold
-        real(RKC)               , intent(in)    , contiguous    :: scale(:)
-        real(RKC)                                               :: rand(size(scale, 1, IK), size(scale, 1, IK))
+        use pm_kind, only: RKG => RK3
+        real(RKG)               , intent(in)                    :: mold
+        real(RKG)               , intent(in)    , contiguous    :: scale(:)
+        real(RKG)                                               :: rand(size(scale, 1, IK), size(scale, 1, IK))
     end function
 #endif
 
@@ -638,10 +638,10 @@ module pm_distCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCovRandGRNGDS1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)               , intent(in)                    :: mold
-        real(RKC)               , intent(in)    , contiguous    :: scale(:)
-        real(RKC)                                               :: rand(size(scale, 1, IK), size(scale, 1, IK))
+        use pm_kind, only: RKG => RK2
+        real(RKG)               , intent(in)                    :: mold
+        real(RKG)               , intent(in)    , contiguous    :: scale(:)
+        real(RKG)                                               :: rand(size(scale, 1, IK), size(scale, 1, IK))
     end function
 #endif
 
@@ -650,10 +650,10 @@ module pm_distCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCovRandGRNGDS1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)               , intent(in)                    :: mold
-        real(RKC)               , intent(in)    , contiguous    :: scale(:)
-        real(RKC)                                               :: rand(size(scale, 1, IK), size(scale, 1, IK))
+        use pm_kind, only: RKG => RK1
+        real(RKG)               , intent(in)                    :: mold
+        real(RKG)               , intent(in)    , contiguous    :: scale(:)
+        real(RKG)                                               :: rand(size(scale, 1, IK), size(scale, 1, IK))
     end function
 #endif
 
@@ -787,9 +787,9 @@ module pm_distCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovRandGRNGFSD_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         type(rngf_type)         , intent(in)                    :: rng
-        real(RKC)               , intent(out)   , contiguous    :: rand(:,:)
+        real(RKG)               , intent(out)   , contiguous    :: rand(:,:)
     end subroutine
 #endif
 
@@ -798,9 +798,9 @@ module pm_distCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovRandGRNGFSD_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         type(rngf_type)         , intent(in)                    :: rng
-        real(RKC)               , intent(out)   , contiguous    :: rand(:,:)
+        real(RKG)               , intent(out)   , contiguous    :: rand(:,:)
     end subroutine
 #endif
 
@@ -809,9 +809,9 @@ module pm_distCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovRandGRNGFSD_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         type(rngf_type)         , intent(in)                    :: rng
-        real(RKC)               , intent(out)   , contiguous    :: rand(:,:)
+        real(RKG)               , intent(out)   , contiguous    :: rand(:,:)
     end subroutine
 #endif
 
@@ -820,9 +820,9 @@ module pm_distCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovRandGRNGFSD_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         type(rngf_type)         , intent(in)                    :: rng
-        real(RKC)               , intent(out)   , contiguous    :: rand(:,:)
+        real(RKG)               , intent(out)   , contiguous    :: rand(:,:)
     end subroutine
 #endif
 
@@ -831,9 +831,9 @@ module pm_distCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovRandGRNGFSD_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         type(rngf_type)         , intent(in)                    :: rng
-        real(RKC)               , intent(out)   , contiguous    :: rand(:,:)
+        real(RKG)               , intent(out)   , contiguous    :: rand(:,:)
     end subroutine
 #endif
 
@@ -844,10 +844,10 @@ module pm_distCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovRandGRNGFS0_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         type(rngf_type)         , intent(in)                    :: rng
-        real(RKC)               , intent(in)                    :: scale
-        real(RKC)               , intent(out)   , contiguous    :: rand(:,:)
+        real(RKG)               , intent(in)                    :: scale
+        real(RKG)               , intent(out)   , contiguous    :: rand(:,:)
     end subroutine
 #endif
 
@@ -856,10 +856,10 @@ module pm_distCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovRandGRNGFS0_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         type(rngf_type)         , intent(in)                    :: rng
-        real(RKC)               , intent(in)                    :: scale
-        real(RKC)               , intent(out)   , contiguous    :: rand(:,:)
+        real(RKG)               , intent(in)                    :: scale
+        real(RKG)               , intent(out)   , contiguous    :: rand(:,:)
     end subroutine
 #endif
 
@@ -868,10 +868,10 @@ module pm_distCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovRandGRNGFS0_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         type(rngf_type)         , intent(in)                    :: rng
-        real(RKC)               , intent(in)                    :: scale
-        real(RKC)               , intent(out)   , contiguous    :: rand(:,:)
+        real(RKG)               , intent(in)                    :: scale
+        real(RKG)               , intent(out)   , contiguous    :: rand(:,:)
     end subroutine
 #endif
 
@@ -880,10 +880,10 @@ module pm_distCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovRandGRNGFS0_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         type(rngf_type)         , intent(in)                    :: rng
-        real(RKC)               , intent(in)                    :: scale
-        real(RKC)               , intent(out)   , contiguous    :: rand(:,:)
+        real(RKG)               , intent(in)                    :: scale
+        real(RKG)               , intent(out)   , contiguous    :: rand(:,:)
     end subroutine
 #endif
 
@@ -892,10 +892,10 @@ module pm_distCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovRandGRNGFS0_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         type(rngf_type)         , intent(in)                    :: rng
-        real(RKC)               , intent(in)                    :: scale
-        real(RKC)               , intent(out)   , contiguous    :: rand(:,:)
+        real(RKG)               , intent(in)                    :: scale
+        real(RKG)               , intent(out)   , contiguous    :: rand(:,:)
     end subroutine
 #endif
 
@@ -906,10 +906,10 @@ module pm_distCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovRandGRNGFS1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         type(rngf_type)         , intent(in)                    :: rng
-        real(RKC)               , intent(in)    , contiguous    :: scale(:)
-        real(RKC)               , intent(out)   , contiguous    :: rand(:,:)
+        real(RKG)               , intent(in)    , contiguous    :: scale(:)
+        real(RKG)               , intent(out)   , contiguous    :: rand(:,:)
     end subroutine
 #endif
 
@@ -918,10 +918,10 @@ module pm_distCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovRandGRNGFS1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         type(rngf_type)         , intent(in)                    :: rng
-        real(RKC)               , intent(in)    , contiguous    :: scale(:)
-        real(RKC)               , intent(out)   , contiguous    :: rand(:,:)
+        real(RKG)               , intent(in)    , contiguous    :: scale(:)
+        real(RKG)               , intent(out)   , contiguous    :: rand(:,:)
     end subroutine
 #endif
 
@@ -930,10 +930,10 @@ module pm_distCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovRandGRNGFS1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         type(rngf_type)         , intent(in)                    :: rng
-        real(RKC)               , intent(in)    , contiguous    :: scale(:)
-        real(RKC)               , intent(out)   , contiguous    :: rand(:,:)
+        real(RKG)               , intent(in)    , contiguous    :: scale(:)
+        real(RKG)               , intent(out)   , contiguous    :: rand(:,:)
     end subroutine
 #endif
 
@@ -942,10 +942,10 @@ module pm_distCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovRandGRNGFS1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         type(rngf_type)         , intent(in)                    :: rng
-        real(RKC)               , intent(in)    , contiguous    :: scale(:)
-        real(RKC)               , intent(out)   , contiguous    :: rand(:,:)
+        real(RKG)               , intent(in)    , contiguous    :: scale(:)
+        real(RKG)               , intent(out)   , contiguous    :: rand(:,:)
     end subroutine
 #endif
 
@@ -954,10 +954,10 @@ module pm_distCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovRandGRNGFS1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         type(rngf_type)         , intent(in)                    :: rng
-        real(RKC)               , intent(in)    , contiguous    :: scale(:)
-        real(RKC)               , intent(out)   , contiguous    :: rand(:,:)
+        real(RKG)               , intent(in)    , contiguous    :: scale(:)
+        real(RKG)               , intent(out)   , contiguous    :: rand(:,:)
     end subroutine
 #endif
 
@@ -974,9 +974,9 @@ module pm_distCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovRandGRNGXSD_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         type(xoshiro256ssw_type), intent(inout)                 :: rng
-        real(RKC)               , intent(out)   , contiguous    :: rand(:,:)
+        real(RKG)               , intent(out)   , contiguous    :: rand(:,:)
     end subroutine
 #endif
 
@@ -985,9 +985,9 @@ module pm_distCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovRandGRNGXSD_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         type(xoshiro256ssw_type), intent(inout)                 :: rng
-        real(RKC)               , intent(out)   , contiguous    :: rand(:,:)
+        real(RKG)               , intent(out)   , contiguous    :: rand(:,:)
     end subroutine
 #endif
 
@@ -996,9 +996,9 @@ module pm_distCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovRandGRNGXSD_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         type(xoshiro256ssw_type), intent(inout)                 :: rng
-        real(RKC)               , intent(out)   , contiguous    :: rand(:,:)
+        real(RKG)               , intent(out)   , contiguous    :: rand(:,:)
     end subroutine
 #endif
 
@@ -1007,9 +1007,9 @@ module pm_distCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovRandGRNGXSD_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         type(xoshiro256ssw_type), intent(inout)                 :: rng
-        real(RKC)               , intent(out)   , contiguous    :: rand(:,:)
+        real(RKG)               , intent(out)   , contiguous    :: rand(:,:)
     end subroutine
 #endif
 
@@ -1018,9 +1018,9 @@ module pm_distCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovRandGRNGXSD_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         type(xoshiro256ssw_type), intent(inout)                 :: rng
-        real(RKC)               , intent(out)   , contiguous    :: rand(:,:)
+        real(RKG)               , intent(out)   , contiguous    :: rand(:,:)
     end subroutine
 #endif
 
@@ -1031,10 +1031,10 @@ module pm_distCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovRandGRNGXS0_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         type(xoshiro256ssw_type), intent(inout)                 :: rng
-        real(RKC)               , intent(in)                    :: scale
-        real(RKC)               , intent(out)   , contiguous    :: rand(:,:)
+        real(RKG)               , intent(in)                    :: scale
+        real(RKG)               , intent(out)   , contiguous    :: rand(:,:)
     end subroutine
 #endif
 
@@ -1043,10 +1043,10 @@ module pm_distCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovRandGRNGXS0_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         type(xoshiro256ssw_type), intent(inout)                 :: rng
-        real(RKC)               , intent(in)                    :: scale
-        real(RKC)               , intent(out)   , contiguous    :: rand(:,:)
+        real(RKG)               , intent(in)                    :: scale
+        real(RKG)               , intent(out)   , contiguous    :: rand(:,:)
     end subroutine
 #endif
 
@@ -1055,10 +1055,10 @@ module pm_distCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovRandGRNGXS0_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         type(xoshiro256ssw_type), intent(inout)                 :: rng
-        real(RKC)               , intent(in)                    :: scale
-        real(RKC)               , intent(out)   , contiguous    :: rand(:,:)
+        real(RKG)               , intent(in)                    :: scale
+        real(RKG)               , intent(out)   , contiguous    :: rand(:,:)
     end subroutine
 #endif
 
@@ -1067,10 +1067,10 @@ module pm_distCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovRandGRNGXS0_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         type(xoshiro256ssw_type), intent(inout)                 :: rng
-        real(RKC)               , intent(in)                    :: scale
-        real(RKC)               , intent(out)   , contiguous    :: rand(:,:)
+        real(RKG)               , intent(in)                    :: scale
+        real(RKG)               , intent(out)   , contiguous    :: rand(:,:)
     end subroutine
 #endif
 
@@ -1079,10 +1079,10 @@ module pm_distCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovRandGRNGXS0_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         type(xoshiro256ssw_type), intent(inout)                 :: rng
-        real(RKC)               , intent(in)                    :: scale
-        real(RKC)               , intent(out)   , contiguous    :: rand(:,:)
+        real(RKG)               , intent(in)                    :: scale
+        real(RKG)               , intent(out)   , contiguous    :: rand(:,:)
     end subroutine
 #endif
 
@@ -1093,10 +1093,10 @@ module pm_distCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovRandGRNGXS1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         type(xoshiro256ssw_type), intent(inout)                 :: rng
-        real(RKC)               , intent(in)    , contiguous    :: scale(:)
-        real(RKC)               , intent(out)   , contiguous    :: rand(:,:)
+        real(RKG)               , intent(in)    , contiguous    :: scale(:)
+        real(RKG)               , intent(out)   , contiguous    :: rand(:,:)
     end subroutine
 #endif
 
@@ -1105,10 +1105,10 @@ module pm_distCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovRandGRNGXS1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         type(xoshiro256ssw_type), intent(inout)                 :: rng
-        real(RKC)               , intent(in)    , contiguous    :: scale(:)
-        real(RKC)               , intent(out)   , contiguous    :: rand(:,:)
+        real(RKG)               , intent(in)    , contiguous    :: scale(:)
+        real(RKG)               , intent(out)   , contiguous    :: rand(:,:)
     end subroutine
 #endif
 
@@ -1117,10 +1117,10 @@ module pm_distCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovRandGRNGXS1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         type(xoshiro256ssw_type), intent(inout)                 :: rng
-        real(RKC)               , intent(in)    , contiguous    :: scale(:)
-        real(RKC)               , intent(out)   , contiguous    :: rand(:,:)
+        real(RKG)               , intent(in)    , contiguous    :: scale(:)
+        real(RKG)               , intent(out)   , contiguous    :: rand(:,:)
     end subroutine
 #endif
 
@@ -1129,10 +1129,10 @@ module pm_distCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovRandGRNGXS1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         type(xoshiro256ssw_type), intent(inout)                 :: rng
-        real(RKC)               , intent(in)    , contiguous    :: scale(:)
-        real(RKC)               , intent(out)   , contiguous    :: rand(:,:)
+        real(RKG)               , intent(in)    , contiguous    :: scale(:)
+        real(RKG)               , intent(out)   , contiguous    :: rand(:,:)
     end subroutine
 #endif
 
@@ -1141,10 +1141,10 @@ module pm_distCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovRandGRNGXS1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         type(xoshiro256ssw_type), intent(inout)                 :: rng
-        real(RKC)               , intent(in)    , contiguous    :: scale(:)
-        real(RKC)               , intent(out)   , contiguous    :: rand(:,:)
+        real(RKG)               , intent(in)    , contiguous    :: scale(:)
+        real(RKG)               , intent(out)   , contiguous    :: rand(:,:)
     end subroutine
 #endif
 
@@ -1171,9 +1171,9 @@ module pm_distCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovRandGRNGFSD_CK5
 #endif
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
         type(rngf_type)         , intent(in)                    :: rng
-        complex(CKC)            , intent(out)   , contiguous    :: rand(:,:)
+        complex(CKG)            , intent(out)   , contiguous    :: rand(:,:)
     end subroutine
 #endif
 
@@ -1182,9 +1182,9 @@ module pm_distCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovRandGRNGFSD_CK4
 #endif
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
         type(rngf_type)         , intent(in)                    :: rng
-        complex(CKC)            , intent(out)   , contiguous    :: rand(:,:)
+        complex(CKG)            , intent(out)   , contiguous    :: rand(:,:)
     end subroutine
 #endif
 
@@ -1193,9 +1193,9 @@ module pm_distCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovRandGRNGFSD_CK3
 #endif
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
         type(rngf_type)         , intent(in)                    :: rng
-        complex(CKC)            , intent(out)   , contiguous    :: rand(:,:)
+        complex(CKG)            , intent(out)   , contiguous    :: rand(:,:)
     end subroutine
 #endif
 
@@ -1204,9 +1204,9 @@ module pm_distCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovRandGRNGFSD_CK2
 #endif
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
         type(rngf_type)         , intent(in)                    :: rng
-        complex(CKC)            , intent(out)   , contiguous    :: rand(:,:)
+        complex(CKG)            , intent(out)   , contiguous    :: rand(:,:)
     end subroutine
 #endif
 
@@ -1215,9 +1215,9 @@ module pm_distCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovRandGRNGFSD_CK1
 #endif
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
         type(rngf_type)         , intent(in)                    :: rng
-        complex(CKC)            , intent(out)   , contiguous    :: rand(:,:)
+        complex(CKG)            , intent(out)   , contiguous    :: rand(:,:)
     end subroutine
 #endif
 
@@ -1228,10 +1228,10 @@ module pm_distCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovRandGRNGFS0_CK5
 #endif
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
         type(rngf_type)         , intent(in)                    :: rng
-        real(CKC)               , intent(in)                    :: scale
-        complex(CKC)            , intent(out)   , contiguous    :: rand(:,:)
+        real(CKG)               , intent(in)                    :: scale
+        complex(CKG)            , intent(out)   , contiguous    :: rand(:,:)
     end subroutine
 #endif
 
@@ -1240,10 +1240,10 @@ module pm_distCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovRandGRNGFS0_CK4
 #endif
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
         type(rngf_type)         , intent(in)                    :: rng
-        real(CKC)               , intent(in)                    :: scale
-        complex(CKC)            , intent(out)   , contiguous    :: rand(:,:)
+        real(CKG)               , intent(in)                    :: scale
+        complex(CKG)            , intent(out)   , contiguous    :: rand(:,:)
     end subroutine
 #endif
 
@@ -1252,10 +1252,10 @@ module pm_distCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovRandGRNGFS0_CK3
 #endif
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
         type(rngf_type)         , intent(in)                    :: rng
-        real(CKC)               , intent(in)                    :: scale
-        complex(CKC)            , intent(out)   , contiguous    :: rand(:,:)
+        real(CKG)               , intent(in)                    :: scale
+        complex(CKG)            , intent(out)   , contiguous    :: rand(:,:)
     end subroutine
 #endif
 
@@ -1264,10 +1264,10 @@ module pm_distCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovRandGRNGFS0_CK2
 #endif
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
         type(rngf_type)         , intent(in)                    :: rng
-        real(CKC)               , intent(in)                    :: scale
-        complex(CKC)            , intent(out)   , contiguous    :: rand(:,:)
+        real(CKG)               , intent(in)                    :: scale
+        complex(CKG)            , intent(out)   , contiguous    :: rand(:,:)
     end subroutine
 #endif
 
@@ -1276,10 +1276,10 @@ module pm_distCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovRandGRNGFS0_CK1
 #endif
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
         type(rngf_type)         , intent(in)                    :: rng
-        real(CKC)               , intent(in)                    :: scale
-        complex(CKC)            , intent(out)   , contiguous    :: rand(:,:)
+        real(CKG)               , intent(in)                    :: scale
+        complex(CKG)            , intent(out)   , contiguous    :: rand(:,:)
     end subroutine
 #endif
 
@@ -1290,10 +1290,10 @@ module pm_distCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovRandGRNGFS1_CK5
 #endif
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
         type(rngf_type)         , intent(in)                    :: rng
-        real(CKC)               , intent(in)    , contiguous    :: scale(:)
-        complex(CKC)            , intent(out)   , contiguous    :: rand(:,:)
+        real(CKG)               , intent(in)    , contiguous    :: scale(:)
+        complex(CKG)            , intent(out)   , contiguous    :: rand(:,:)
     end subroutine
 #endif
 
@@ -1302,10 +1302,10 @@ module pm_distCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovRandGRNGFS1_CK4
 #endif
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
         type(rngf_type)         , intent(in)                    :: rng
-        real(CKC)               , intent(in)    , contiguous    :: scale(:)
-        complex(CKC)            , intent(out)   , contiguous    :: rand(:,:)
+        real(CKG)               , intent(in)    , contiguous    :: scale(:)
+        complex(CKG)            , intent(out)   , contiguous    :: rand(:,:)
     end subroutine
 #endif
 
@@ -1314,10 +1314,10 @@ module pm_distCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovRandGRNGFS1_CK3
 #endif
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
         type(rngf_type)         , intent(in)                    :: rng
-        real(CKC)               , intent(in)    , contiguous    :: scale(:)
-        complex(CKC)            , intent(out)   , contiguous    :: rand(:,:)
+        real(CKG)               , intent(in)    , contiguous    :: scale(:)
+        complex(CKG)            , intent(out)   , contiguous    :: rand(:,:)
     end subroutine
 #endif
 
@@ -1326,10 +1326,10 @@ module pm_distCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovRandGRNGFS1_CK2
 #endif
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
         type(rngf_type)         , intent(in)                    :: rng
-        real(CKC)               , intent(in)    , contiguous    :: scale(:)
-        complex(CKC)            , intent(out)   , contiguous    :: rand(:,:)
+        real(CKG)               , intent(in)    , contiguous    :: scale(:)
+        complex(CKG)            , intent(out)   , contiguous    :: rand(:,:)
     end subroutine
 #endif
 
@@ -1338,10 +1338,10 @@ module pm_distCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovRandGRNGFS1_CK1
 #endif
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
         type(rngf_type)         , intent(in)                    :: rng
-        real(CKC)               , intent(in)    , contiguous    :: scale(:)
-        complex(CKC)            , intent(out)   , contiguous    :: rand(:,:)
+        real(CKG)               , intent(in)    , contiguous    :: scale(:)
+        complex(CKG)            , intent(out)   , contiguous    :: rand(:,:)
     end subroutine
 #endif
 
@@ -1358,9 +1358,9 @@ module pm_distCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovRandGRNGXSD_CK5
 #endif
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
         type(xoshiro256ssw_type), intent(inout)                 :: rng
-        complex(CKC)            , intent(out)   , contiguous    :: rand(:,:)
+        complex(CKG)            , intent(out)   , contiguous    :: rand(:,:)
     end subroutine
 #endif
 
@@ -1369,9 +1369,9 @@ module pm_distCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovRandGRNGXSD_CK4
 #endif
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
         type(xoshiro256ssw_type), intent(inout)                 :: rng
-        complex(CKC)            , intent(out)   , contiguous    :: rand(:,:)
+        complex(CKG)            , intent(out)   , contiguous    :: rand(:,:)
     end subroutine
 #endif
 
@@ -1380,9 +1380,9 @@ module pm_distCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovRandGRNGXSD_CK3
 #endif
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
         type(xoshiro256ssw_type), intent(inout)                 :: rng
-        complex(CKC)            , intent(out)   , contiguous    :: rand(:,:)
+        complex(CKG)            , intent(out)   , contiguous    :: rand(:,:)
     end subroutine
 #endif
 
@@ -1391,9 +1391,9 @@ module pm_distCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovRandGRNGXSD_CK2
 #endif
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
         type(xoshiro256ssw_type), intent(inout)                 :: rng
-        complex(CKC)            , intent(out)   , contiguous    :: rand(:,:)
+        complex(CKG)            , intent(out)   , contiguous    :: rand(:,:)
     end subroutine
 #endif
 
@@ -1402,9 +1402,9 @@ module pm_distCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovRandGRNGXSD_CK1
 #endif
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
         type(xoshiro256ssw_type), intent(inout)                 :: rng
-        complex(CKC)            , intent(out)   , contiguous    :: rand(:,:)
+        complex(CKG)            , intent(out)   , contiguous    :: rand(:,:)
     end subroutine
 #endif
 
@@ -1415,10 +1415,10 @@ module pm_distCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovRandGRNGXS0_CK5
 #endif
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
         type(xoshiro256ssw_type), intent(inout)                 :: rng
-        real(CKC)               , intent(in)                    :: scale
-        complex(CKC)            , intent(out)   , contiguous    :: rand(:,:)
+        real(CKG)               , intent(in)                    :: scale
+        complex(CKG)            , intent(out)   , contiguous    :: rand(:,:)
     end subroutine
 #endif
 
@@ -1427,10 +1427,10 @@ module pm_distCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovRandGRNGXS0_CK4
 #endif
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
         type(xoshiro256ssw_type), intent(inout)                 :: rng
-        real(CKC)               , intent(in)                    :: scale
-        complex(CKC)            , intent(out)   , contiguous    :: rand(:,:)
+        real(CKG)               , intent(in)                    :: scale
+        complex(CKG)            , intent(out)   , contiguous    :: rand(:,:)
     end subroutine
 #endif
 
@@ -1439,10 +1439,10 @@ module pm_distCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovRandGRNGXS0_CK3
 #endif
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
         type(xoshiro256ssw_type), intent(inout)                 :: rng
-        real(CKC)               , intent(in)                    :: scale
-        complex(CKC)            , intent(out)   , contiguous    :: rand(:,:)
+        real(CKG)               , intent(in)                    :: scale
+        complex(CKG)            , intent(out)   , contiguous    :: rand(:,:)
     end subroutine
 #endif
 
@@ -1451,10 +1451,10 @@ module pm_distCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovRandGRNGXS0_CK2
 #endif
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
         type(xoshiro256ssw_type), intent(inout)                 :: rng
-        real(CKC)               , intent(in)                    :: scale
-        complex(CKC)            , intent(out)   , contiguous    :: rand(:,:)
+        real(CKG)               , intent(in)                    :: scale
+        complex(CKG)            , intent(out)   , contiguous    :: rand(:,:)
     end subroutine
 #endif
 
@@ -1463,10 +1463,10 @@ module pm_distCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovRandGRNGXS0_CK1
 #endif
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
         type(xoshiro256ssw_type), intent(inout)                 :: rng
-        real(CKC)               , intent(in)                    :: scale
-        complex(CKC)            , intent(out)   , contiguous    :: rand(:,:)
+        real(CKG)               , intent(in)                    :: scale
+        complex(CKG)            , intent(out)   , contiguous    :: rand(:,:)
     end subroutine
 #endif
 
@@ -1477,10 +1477,10 @@ module pm_distCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovRandGRNGXS1_CK5
 #endif
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
         type(xoshiro256ssw_type), intent(inout)                 :: rng
-        real(CKC)               , intent(in)    , contiguous    :: scale(:)
-        complex(CKC)            , intent(out)   , contiguous    :: rand(:,:)
+        real(CKG)               , intent(in)    , contiguous    :: scale(:)
+        complex(CKG)            , intent(out)   , contiguous    :: rand(:,:)
     end subroutine
 #endif
 
@@ -1489,10 +1489,10 @@ module pm_distCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovRandGRNGXS1_CK4
 #endif
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
         type(xoshiro256ssw_type), intent(inout)                 :: rng
-        real(CKC)               , intent(in)    , contiguous    :: scale(:)
-        complex(CKC)            , intent(out)   , contiguous    :: rand(:,:)
+        real(CKG)               , intent(in)    , contiguous    :: scale(:)
+        complex(CKG)            , intent(out)   , contiguous    :: rand(:,:)
     end subroutine
 #endif
 
@@ -1501,10 +1501,10 @@ module pm_distCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovRandGRNGXS1_CK3
 #endif
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
         type(xoshiro256ssw_type), intent(inout)                 :: rng
-        real(CKC)               , intent(in)    , contiguous    :: scale(:)
-        complex(CKC)            , intent(out)   , contiguous    :: rand(:,:)
+        real(CKG)               , intent(in)    , contiguous    :: scale(:)
+        complex(CKG)            , intent(out)   , contiguous    :: rand(:,:)
     end subroutine
 #endif
 
@@ -1513,10 +1513,10 @@ module pm_distCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovRandGRNGXS1_CK2
 #endif
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
         type(xoshiro256ssw_type), intent(inout)                 :: rng
-        real(CKC)               , intent(in)    , contiguous    :: scale(:)
-        complex(CKC)            , intent(out)   , contiguous    :: rand(:,:)
+        real(CKG)               , intent(in)    , contiguous    :: scale(:)
+        complex(CKG)            , intent(out)   , contiguous    :: rand(:,:)
     end subroutine
 #endif
 
@@ -1525,10 +1525,10 @@ module pm_distCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovRandGRNGXS1_CK1
 #endif
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
         type(xoshiro256ssw_type), intent(inout)                 :: rng
-        real(CKC)               , intent(in)    , contiguous    :: scale(:)
-        complex(CKC)            , intent(out)   , contiguous    :: rand(:,:)
+        real(CKG)               , intent(in)    , contiguous    :: scale(:)
+        complex(CKG)            , intent(out)   , contiguous    :: rand(:,:)
     end subroutine
 #endif
 
@@ -1555,11 +1555,11 @@ module pm_distCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovRandDRNGFSD_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         type(dvine_type)        , intent(in)                    :: method
         type(rngf_type)         , intent(in)                    :: rng
-        real(RKC)               , intent(in)                    :: eta
-        real(RKC)               , intent(out)   , contiguous    :: rand(:,:)
+        real(RKG)               , intent(in)                    :: eta
+        real(RKG)               , intent(out)   , contiguous    :: rand(:,:)
     end subroutine
 #endif
 
@@ -1568,11 +1568,11 @@ module pm_distCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovRandDRNGFSD_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         type(dvine_type)        , intent(in)                    :: method
         type(rngf_type)         , intent(in)                    :: rng
-        real(RKC)               , intent(in)                    :: eta
-        real(RKC)               , intent(out)   , contiguous    :: rand(:,:)
+        real(RKG)               , intent(in)                    :: eta
+        real(RKG)               , intent(out)   , contiguous    :: rand(:,:)
     end subroutine
 #endif
 
@@ -1581,11 +1581,11 @@ module pm_distCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovRandDRNGFSD_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         type(dvine_type)        , intent(in)                    :: method
         type(rngf_type)         , intent(in)                    :: rng
-        real(RKC)               , intent(in)                    :: eta
-        real(RKC)               , intent(out)   , contiguous    :: rand(:,:)
+        real(RKG)               , intent(in)                    :: eta
+        real(RKG)               , intent(out)   , contiguous    :: rand(:,:)
     end subroutine
 #endif
 
@@ -1594,11 +1594,11 @@ module pm_distCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovRandDRNGFSD_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         type(dvine_type)        , intent(in)                    :: method
         type(rngf_type)         , intent(in)                    :: rng
-        real(RKC)               , intent(in)                    :: eta
-        real(RKC)               , intent(out)   , contiguous    :: rand(:,:)
+        real(RKG)               , intent(in)                    :: eta
+        real(RKG)               , intent(out)   , contiguous    :: rand(:,:)
     end subroutine
 #endif
 
@@ -1607,11 +1607,11 @@ module pm_distCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovRandDRNGFSD_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         type(dvine_type)        , intent(in)                    :: method
         type(rngf_type)         , intent(in)                    :: rng
-        real(RKC)               , intent(in)                    :: eta
-        real(RKC)               , intent(out)   , contiguous    :: rand(:,:)
+        real(RKG)               , intent(in)                    :: eta
+        real(RKG)               , intent(out)   , contiguous    :: rand(:,:)
     end subroutine
 #endif
 
@@ -1622,12 +1622,12 @@ module pm_distCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovRandDRNGFS0_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         type(dvine_type)        , intent(in)                    :: method
         type(rngf_type)         , intent(in)                    :: rng
-        real(RKC)               , intent(in)                    :: eta
-        real(RKC)               , intent(in)                    :: scale
-        real(RKC)               , intent(out)   , contiguous    :: rand(:,:)
+        real(RKG)               , intent(in)                    :: eta
+        real(RKG)               , intent(in)                    :: scale
+        real(RKG)               , intent(out)   , contiguous    :: rand(:,:)
     end subroutine
 #endif
 
@@ -1636,12 +1636,12 @@ module pm_distCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovRandDRNGFS0_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         type(dvine_type)        , intent(in)                    :: method
         type(rngf_type)         , intent(in)                    :: rng
-        real(RKC)               , intent(in)                    :: eta
-        real(RKC)               , intent(in)                    :: scale
-        real(RKC)               , intent(out)   , contiguous    :: rand(:,:)
+        real(RKG)               , intent(in)                    :: eta
+        real(RKG)               , intent(in)                    :: scale
+        real(RKG)               , intent(out)   , contiguous    :: rand(:,:)
     end subroutine
 #endif
 
@@ -1650,12 +1650,12 @@ module pm_distCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovRandDRNGFS0_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         type(dvine_type)        , intent(in)                    :: method
         type(rngf_type)         , intent(in)                    :: rng
-        real(RKC)               , intent(in)                    :: eta
-        real(RKC)               , intent(in)                    :: scale
-        real(RKC)               , intent(out)   , contiguous    :: rand(:,:)
+        real(RKG)               , intent(in)                    :: eta
+        real(RKG)               , intent(in)                    :: scale
+        real(RKG)               , intent(out)   , contiguous    :: rand(:,:)
     end subroutine
 #endif
 
@@ -1664,12 +1664,12 @@ module pm_distCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovRandDRNGFS0_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         type(dvine_type)        , intent(in)                    :: method
         type(rngf_type)         , intent(in)                    :: rng
-        real(RKC)               , intent(in)                    :: eta
-        real(RKC)               , intent(in)                    :: scale
-        real(RKC)               , intent(out)   , contiguous    :: rand(:,:)
+        real(RKG)               , intent(in)                    :: eta
+        real(RKG)               , intent(in)                    :: scale
+        real(RKG)               , intent(out)   , contiguous    :: rand(:,:)
     end subroutine
 #endif
 
@@ -1678,12 +1678,12 @@ module pm_distCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovRandDRNGFS0_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         type(dvine_type)        , intent(in)                    :: method
         type(rngf_type)         , intent(in)                    :: rng
-        real(RKC)               , intent(in)                    :: eta
-        real(RKC)               , intent(in)                    :: scale
-        real(RKC)               , intent(out)   , contiguous    :: rand(:,:)
+        real(RKG)               , intent(in)                    :: eta
+        real(RKG)               , intent(in)                    :: scale
+        real(RKG)               , intent(out)   , contiguous    :: rand(:,:)
     end subroutine
 #endif
 
@@ -1694,12 +1694,12 @@ module pm_distCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovRandDRNGFS1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         type(dvine_type)        , intent(in)                    :: method
         type(rngf_type)         , intent(in)                    :: rng
-        real(RKC)               , intent(in)                    :: eta
-        real(RKC)               , intent(in)    , contiguous    :: scale(:)
-        real(RKC)               , intent(out)   , contiguous    :: rand(:,:)
+        real(RKG)               , intent(in)                    :: eta
+        real(RKG)               , intent(in)    , contiguous    :: scale(:)
+        real(RKG)               , intent(out)   , contiguous    :: rand(:,:)
     end subroutine
 #endif
 
@@ -1708,12 +1708,12 @@ module pm_distCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovRandDRNGFS1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         type(dvine_type)        , intent(in)                    :: method
         type(rngf_type)         , intent(in)                    :: rng
-        real(RKC)               , intent(in)                    :: eta
-        real(RKC)               , intent(in)    , contiguous    :: scale(:)
-        real(RKC)               , intent(out)   , contiguous    :: rand(:,:)
+        real(RKG)               , intent(in)                    :: eta
+        real(RKG)               , intent(in)    , contiguous    :: scale(:)
+        real(RKG)               , intent(out)   , contiguous    :: rand(:,:)
     end subroutine
 #endif
 
@@ -1722,12 +1722,12 @@ module pm_distCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovRandDRNGFS1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         type(dvine_type)        , intent(in)                    :: method
         type(rngf_type)         , intent(in)                    :: rng
-        real(RKC)               , intent(in)                    :: eta
-        real(RKC)               , intent(in)    , contiguous    :: scale(:)
-        real(RKC)               , intent(out)   , contiguous    :: rand(:,:)
+        real(RKG)               , intent(in)                    :: eta
+        real(RKG)               , intent(in)    , contiguous    :: scale(:)
+        real(RKG)               , intent(out)   , contiguous    :: rand(:,:)
     end subroutine
 #endif
 
@@ -1736,12 +1736,12 @@ module pm_distCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovRandDRNGFS1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         type(dvine_type)        , intent(in)                    :: method
         type(rngf_type)         , intent(in)                    :: rng
-        real(RKC)               , intent(in)                    :: eta
-        real(RKC)               , intent(in)    , contiguous    :: scale(:)
-        real(RKC)               , intent(out)   , contiguous    :: rand(:,:)
+        real(RKG)               , intent(in)                    :: eta
+        real(RKG)               , intent(in)    , contiguous    :: scale(:)
+        real(RKG)               , intent(out)   , contiguous    :: rand(:,:)
     end subroutine
 #endif
 
@@ -1750,12 +1750,12 @@ module pm_distCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovRandDRNGFS1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         type(dvine_type)        , intent(in)                    :: method
         type(rngf_type)         , intent(in)                    :: rng
-        real(RKC)               , intent(in)                    :: eta
-        real(RKC)               , intent(in)    , contiguous    :: scale(:)
-        real(RKC)               , intent(out)   , contiguous    :: rand(:,:)
+        real(RKG)               , intent(in)                    :: eta
+        real(RKG)               , intent(in)    , contiguous    :: scale(:)
+        real(RKG)               , intent(out)   , contiguous    :: rand(:,:)
     end subroutine
 #endif
 
@@ -1772,11 +1772,11 @@ module pm_distCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovRandDRNGXSD_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         type(dvine_type)        , intent(in)                    :: method
         type(xoshiro256ssw_type), intent(inout)                 :: rng
-        real(RKC)               , intent(in)                    :: eta
-        real(RKC)               , intent(out)   , contiguous    :: rand(:,:)
+        real(RKG)               , intent(in)                    :: eta
+        real(RKG)               , intent(out)   , contiguous    :: rand(:,:)
     end subroutine
 #endif
 
@@ -1785,11 +1785,11 @@ module pm_distCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovRandDRNGXSD_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         type(dvine_type)        , intent(in)                    :: method
         type(xoshiro256ssw_type), intent(inout)                 :: rng
-        real(RKC)               , intent(in)                    :: eta
-        real(RKC)               , intent(out)   , contiguous    :: rand(:,:)
+        real(RKG)               , intent(in)                    :: eta
+        real(RKG)               , intent(out)   , contiguous    :: rand(:,:)
     end subroutine
 #endif
 
@@ -1798,11 +1798,11 @@ module pm_distCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovRandDRNGXSD_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         type(dvine_type)        , intent(in)                    :: method
         type(xoshiro256ssw_type), intent(inout)                 :: rng
-        real(RKC)               , intent(in)                    :: eta
-        real(RKC)               , intent(out)   , contiguous    :: rand(:,:)
+        real(RKG)               , intent(in)                    :: eta
+        real(RKG)               , intent(out)   , contiguous    :: rand(:,:)
     end subroutine
 #endif
 
@@ -1811,11 +1811,11 @@ module pm_distCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovRandDRNGXSD_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         type(dvine_type)        , intent(in)                    :: method
         type(xoshiro256ssw_type), intent(inout)                 :: rng
-        real(RKC)               , intent(in)                    :: eta
-        real(RKC)               , intent(out)   , contiguous    :: rand(:,:)
+        real(RKG)               , intent(in)                    :: eta
+        real(RKG)               , intent(out)   , contiguous    :: rand(:,:)
     end subroutine
 #endif
 
@@ -1824,11 +1824,11 @@ module pm_distCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovRandDRNGXSD_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         type(dvine_type)        , intent(in)                    :: method
         type(xoshiro256ssw_type), intent(inout)                 :: rng
-        real(RKC)               , intent(in)                    :: eta
-        real(RKC)               , intent(out)   , contiguous    :: rand(:,:)
+        real(RKG)               , intent(in)                    :: eta
+        real(RKG)               , intent(out)   , contiguous    :: rand(:,:)
     end subroutine
 #endif
 
@@ -1839,12 +1839,12 @@ module pm_distCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovRandDRNGXS0_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         type(dvine_type)        , intent(in)                    :: method
         type(xoshiro256ssw_type), intent(inout)                 :: rng
-        real(RKC)               , intent(in)                    :: eta
-        real(RKC)               , intent(in)                    :: scale
-        real(RKC)               , intent(out)   , contiguous    :: rand(:,:)
+        real(RKG)               , intent(in)                    :: eta
+        real(RKG)               , intent(in)                    :: scale
+        real(RKG)               , intent(out)   , contiguous    :: rand(:,:)
     end subroutine
 #endif
 
@@ -1853,12 +1853,12 @@ module pm_distCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovRandDRNGXS0_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         type(dvine_type)        , intent(in)                    :: method
         type(xoshiro256ssw_type), intent(inout)                 :: rng
-        real(RKC)               , intent(in)                    :: eta
-        real(RKC)               , intent(in)                    :: scale
-        real(RKC)               , intent(out)   , contiguous    :: rand(:,:)
+        real(RKG)               , intent(in)                    :: eta
+        real(RKG)               , intent(in)                    :: scale
+        real(RKG)               , intent(out)   , contiguous    :: rand(:,:)
     end subroutine
 #endif
 
@@ -1867,12 +1867,12 @@ module pm_distCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovRandDRNGXS0_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         type(dvine_type)        , intent(in)                    :: method
         type(xoshiro256ssw_type), intent(inout)                 :: rng
-        real(RKC)               , intent(in)                    :: eta
-        real(RKC)               , intent(in)                    :: scale
-        real(RKC)               , intent(out)   , contiguous    :: rand(:,:)
+        real(RKG)               , intent(in)                    :: eta
+        real(RKG)               , intent(in)                    :: scale
+        real(RKG)               , intent(out)   , contiguous    :: rand(:,:)
     end subroutine
 #endif
 
@@ -1881,12 +1881,12 @@ module pm_distCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovRandDRNGXS0_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         type(dvine_type)        , intent(in)                    :: method
         type(xoshiro256ssw_type), intent(inout)                 :: rng
-        real(RKC)               , intent(in)                    :: eta
-        real(RKC)               , intent(in)                    :: scale
-        real(RKC)               , intent(out)   , contiguous    :: rand(:,:)
+        real(RKG)               , intent(in)                    :: eta
+        real(RKG)               , intent(in)                    :: scale
+        real(RKG)               , intent(out)   , contiguous    :: rand(:,:)
     end subroutine
 #endif
 
@@ -1895,12 +1895,12 @@ module pm_distCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovRandDRNGXS0_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         type(dvine_type)        , intent(in)                    :: method
         type(xoshiro256ssw_type), intent(inout)                 :: rng
-        real(RKC)               , intent(in)                    :: eta
-        real(RKC)               , intent(in)                    :: scale
-        real(RKC)               , intent(out)   , contiguous    :: rand(:,:)
+        real(RKG)               , intent(in)                    :: eta
+        real(RKG)               , intent(in)                    :: scale
+        real(RKG)               , intent(out)   , contiguous    :: rand(:,:)
     end subroutine
 #endif
 
@@ -1911,12 +1911,12 @@ module pm_distCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovRandDRNGXS1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         type(dvine_type)        , intent(in)                    :: method
         type(xoshiro256ssw_type), intent(inout)                 :: rng
-        real(RKC)               , intent(in)                    :: eta
-        real(RKC)               , intent(in)    , contiguous    :: scale(:)
-        real(RKC)               , intent(out)   , contiguous    :: rand(:,:)
+        real(RKG)               , intent(in)                    :: eta
+        real(RKG)               , intent(in)    , contiguous    :: scale(:)
+        real(RKG)               , intent(out)   , contiguous    :: rand(:,:)
     end subroutine
 #endif
 
@@ -1925,12 +1925,12 @@ module pm_distCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovRandDRNGXS1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         type(dvine_type)        , intent(in)                    :: method
         type(xoshiro256ssw_type), intent(inout)                 :: rng
-        real(RKC)               , intent(in)                    :: eta
-        real(RKC)               , intent(in)    , contiguous    :: scale(:)
-        real(RKC)               , intent(out)   , contiguous    :: rand(:,:)
+        real(RKG)               , intent(in)                    :: eta
+        real(RKG)               , intent(in)    , contiguous    :: scale(:)
+        real(RKG)               , intent(out)   , contiguous    :: rand(:,:)
     end subroutine
 #endif
 
@@ -1939,12 +1939,12 @@ module pm_distCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovRandDRNGXS1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         type(dvine_type)        , intent(in)                    :: method
         type(xoshiro256ssw_type), intent(inout)                 :: rng
-        real(RKC)               , intent(in)                    :: eta
-        real(RKC)               , intent(in)    , contiguous    :: scale(:)
-        real(RKC)               , intent(out)   , contiguous    :: rand(:,:)
+        real(RKG)               , intent(in)                    :: eta
+        real(RKG)               , intent(in)    , contiguous    :: scale(:)
+        real(RKG)               , intent(out)   , contiguous    :: rand(:,:)
     end subroutine
 #endif
 
@@ -1953,12 +1953,12 @@ module pm_distCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovRandDRNGXS1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         type(dvine_type)        , intent(in)                    :: method
         type(xoshiro256ssw_type), intent(inout)                 :: rng
-        real(RKC)               , intent(in)                    :: eta
-        real(RKC)               , intent(in)    , contiguous    :: scale(:)
-        real(RKC)               , intent(out)   , contiguous    :: rand(:,:)
+        real(RKG)               , intent(in)                    :: eta
+        real(RKG)               , intent(in)    , contiguous    :: scale(:)
+        real(RKG)               , intent(out)   , contiguous    :: rand(:,:)
     end subroutine
 #endif
 
@@ -1967,12 +1967,12 @@ module pm_distCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovRandDRNGXS1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         type(dvine_type)        , intent(in)                    :: method
         type(xoshiro256ssw_type), intent(inout)                 :: rng
-        real(RKC)               , intent(in)                    :: eta
-        real(RKC)               , intent(in)    , contiguous    :: scale(:)
-        real(RKC)               , intent(out)   , contiguous    :: rand(:,:)
+        real(RKG)               , intent(in)                    :: eta
+        real(RKG)               , intent(in)    , contiguous    :: scale(:)
+        real(RKG)               , intent(out)   , contiguous    :: rand(:,:)
     end subroutine
 #endif
 
@@ -1999,11 +1999,11 @@ module pm_distCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovRandORNGFSD_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         type(onion_type)        , intent(out)                   :: method
         type(rngf_type)         , intent(in)                    :: rng
-        real(RKC)               , intent(in)                    :: eta
-        real(RKC)               , intent(out)   , contiguous    :: rand(:,:)
+        real(RKG)               , intent(in)                    :: eta
+        real(RKG)               , intent(out)   , contiguous    :: rand(:,:)
     end subroutine
 #endif
 
@@ -2012,11 +2012,11 @@ module pm_distCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovRandORNGFSD_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         type(onion_type)        , intent(out)                   :: method
         type(rngf_type)         , intent(in)                    :: rng
-        real(RKC)               , intent(in)                    :: eta
-        real(RKC)               , intent(out)   , contiguous    :: rand(:,:)
+        real(RKG)               , intent(in)                    :: eta
+        real(RKG)               , intent(out)   , contiguous    :: rand(:,:)
     end subroutine
 #endif
 
@@ -2025,11 +2025,11 @@ module pm_distCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovRandORNGFSD_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         type(onion_type)        , intent(out)                   :: method
         type(rngf_type)         , intent(in)                    :: rng
-        real(RKC)               , intent(in)                    :: eta
-        real(RKC)               , intent(out)   , contiguous    :: rand(:,:)
+        real(RKG)               , intent(in)                    :: eta
+        real(RKG)               , intent(out)   , contiguous    :: rand(:,:)
     end subroutine
 #endif
 
@@ -2038,11 +2038,11 @@ module pm_distCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovRandORNGFSD_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         type(onion_type)        , intent(out)                   :: method
         type(rngf_type)         , intent(in)                    :: rng
-        real(RKC)               , intent(in)                    :: eta
-        real(RKC)               , intent(out)   , contiguous    :: rand(:,:)
+        real(RKG)               , intent(in)                    :: eta
+        real(RKG)               , intent(out)   , contiguous    :: rand(:,:)
     end subroutine
 #endif
 
@@ -2051,11 +2051,11 @@ module pm_distCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovRandORNGFSD_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         type(onion_type)        , intent(out)                   :: method
         type(rngf_type)         , intent(in)                    :: rng
-        real(RKC)               , intent(in)                    :: eta
-        real(RKC)               , intent(out)   , contiguous    :: rand(:,:)
+        real(RKG)               , intent(in)                    :: eta
+        real(RKG)               , intent(out)   , contiguous    :: rand(:,:)
     end subroutine
 #endif
 
@@ -2066,12 +2066,12 @@ module pm_distCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovRandORNGFS0_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         type(onion_type)        , intent(out)                   :: method
         type(rngf_type)         , intent(in)                    :: rng
-        real(RKC)               , intent(in)                    :: eta
-        real(RKC)               , intent(in)                    :: scale
-        real(RKC)               , intent(out)   , contiguous    :: rand(:,:)
+        real(RKG)               , intent(in)                    :: eta
+        real(RKG)               , intent(in)                    :: scale
+        real(RKG)               , intent(out)   , contiguous    :: rand(:,:)
     end subroutine
 #endif
 
@@ -2080,12 +2080,12 @@ module pm_distCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovRandORNGFS0_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         type(onion_type)        , intent(out)                   :: method
         type(rngf_type)         , intent(in)                    :: rng
-        real(RKC)               , intent(in)                    :: eta
-        real(RKC)               , intent(in)                    :: scale
-        real(RKC)               , intent(out)   , contiguous    :: rand(:,:)
+        real(RKG)               , intent(in)                    :: eta
+        real(RKG)               , intent(in)                    :: scale
+        real(RKG)               , intent(out)   , contiguous    :: rand(:,:)
     end subroutine
 #endif
 
@@ -2094,12 +2094,12 @@ module pm_distCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovRandORNGFS0_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         type(onion_type)        , intent(out)                   :: method
         type(rngf_type)         , intent(in)                    :: rng
-        real(RKC)               , intent(in)                    :: eta
-        real(RKC)               , intent(in)                    :: scale
-        real(RKC)               , intent(out)   , contiguous    :: rand(:,:)
+        real(RKG)               , intent(in)                    :: eta
+        real(RKG)               , intent(in)                    :: scale
+        real(RKG)               , intent(out)   , contiguous    :: rand(:,:)
     end subroutine
 #endif
 
@@ -2108,12 +2108,12 @@ module pm_distCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovRandORNGFS0_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         type(onion_type)        , intent(out)                   :: method
         type(rngf_type)         , intent(in)                    :: rng
-        real(RKC)               , intent(in)                    :: eta
-        real(RKC)               , intent(in)                    :: scale
-        real(RKC)               , intent(out)   , contiguous    :: rand(:,:)
+        real(RKG)               , intent(in)                    :: eta
+        real(RKG)               , intent(in)                    :: scale
+        real(RKG)               , intent(out)   , contiguous    :: rand(:,:)
     end subroutine
 #endif
 
@@ -2122,12 +2122,12 @@ module pm_distCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovRandORNGFS0_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         type(onion_type)        , intent(out)                   :: method
         type(rngf_type)         , intent(in)                    :: rng
-        real(RKC)               , intent(in)                    :: eta
-        real(RKC)               , intent(in)                    :: scale
-        real(RKC)               , intent(out)   , contiguous    :: rand(:,:)
+        real(RKG)               , intent(in)                    :: eta
+        real(RKG)               , intent(in)                    :: scale
+        real(RKG)               , intent(out)   , contiguous    :: rand(:,:)
     end subroutine
 #endif
 
@@ -2138,12 +2138,12 @@ module pm_distCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovRandORNGFS1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         type(onion_type)        , intent(out)                   :: method
         type(rngf_type)         , intent(in)                    :: rng
-        real(RKC)               , intent(in)                    :: eta
-        real(RKC)               , intent(in)    , contiguous    :: scale(:)
-        real(RKC)               , intent(out)   , contiguous    :: rand(:,:)
+        real(RKG)               , intent(in)                    :: eta
+        real(RKG)               , intent(in)    , contiguous    :: scale(:)
+        real(RKG)               , intent(out)   , contiguous    :: rand(:,:)
     end subroutine
 #endif
 
@@ -2152,12 +2152,12 @@ module pm_distCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovRandORNGFS1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         type(onion_type)        , intent(out)                   :: method
         type(rngf_type)         , intent(in)                    :: rng
-        real(RKC)               , intent(in)                    :: eta
-        real(RKC)               , intent(in)    , contiguous    :: scale(:)
-        real(RKC)               , intent(out)   , contiguous    :: rand(:,:)
+        real(RKG)               , intent(in)                    :: eta
+        real(RKG)               , intent(in)    , contiguous    :: scale(:)
+        real(RKG)               , intent(out)   , contiguous    :: rand(:,:)
     end subroutine
 #endif
 
@@ -2166,12 +2166,12 @@ module pm_distCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovRandORNGFS1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         type(onion_type)        , intent(out)                   :: method
         type(rngf_type)         , intent(in)                    :: rng
-        real(RKC)               , intent(in)                    :: eta
-        real(RKC)               , intent(in)    , contiguous    :: scale(:)
-        real(RKC)               , intent(out)   , contiguous    :: rand(:,:)
+        real(RKG)               , intent(in)                    :: eta
+        real(RKG)               , intent(in)    , contiguous    :: scale(:)
+        real(RKG)               , intent(out)   , contiguous    :: rand(:,:)
     end subroutine
 #endif
 
@@ -2180,12 +2180,12 @@ module pm_distCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovRandORNGFS1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         type(onion_type)        , intent(out)                   :: method
         type(rngf_type)         , intent(in)                    :: rng
-        real(RKC)               , intent(in)                    :: eta
-        real(RKC)               , intent(in)    , contiguous    :: scale(:)
-        real(RKC)               , intent(out)   , contiguous    :: rand(:,:)
+        real(RKG)               , intent(in)                    :: eta
+        real(RKG)               , intent(in)    , contiguous    :: scale(:)
+        real(RKG)               , intent(out)   , contiguous    :: rand(:,:)
     end subroutine
 #endif
 
@@ -2194,12 +2194,12 @@ module pm_distCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovRandORNGFS1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         type(onion_type)        , intent(out)                   :: method
         type(rngf_type)         , intent(in)                    :: rng
-        real(RKC)               , intent(in)                    :: eta
-        real(RKC)               , intent(in)    , contiguous    :: scale(:)
-        real(RKC)               , intent(out)   , contiguous    :: rand(:,:)
+        real(RKG)               , intent(in)                    :: eta
+        real(RKG)               , intent(in)    , contiguous    :: scale(:)
+        real(RKG)               , intent(out)   , contiguous    :: rand(:,:)
     end subroutine
 #endif
 
@@ -2216,11 +2216,11 @@ module pm_distCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovRandORNGXSD_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         type(onion_type)        , intent(out)                   :: method
         type(xoshiro256ssw_type), intent(inout)                 :: rng
-        real(RKC)               , intent(in)                    :: eta
-        real(RKC)               , intent(out)   , contiguous    :: rand(:,:)
+        real(RKG)               , intent(in)                    :: eta
+        real(RKG)               , intent(out)   , contiguous    :: rand(:,:)
     end subroutine
 #endif
 
@@ -2229,11 +2229,11 @@ module pm_distCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovRandORNGXSD_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         type(onion_type)        , intent(out)                   :: method
         type(xoshiro256ssw_type), intent(inout)                 :: rng
-        real(RKC)               , intent(in)                    :: eta
-        real(RKC)               , intent(out)   , contiguous    :: rand(:,:)
+        real(RKG)               , intent(in)                    :: eta
+        real(RKG)               , intent(out)   , contiguous    :: rand(:,:)
     end subroutine
 #endif
 
@@ -2242,11 +2242,11 @@ module pm_distCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovRandORNGXSD_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         type(onion_type)        , intent(out)                   :: method
         type(xoshiro256ssw_type), intent(inout)                 :: rng
-        real(RKC)               , intent(in)                    :: eta
-        real(RKC)               , intent(out)   , contiguous    :: rand(:,:)
+        real(RKG)               , intent(in)                    :: eta
+        real(RKG)               , intent(out)   , contiguous    :: rand(:,:)
     end subroutine
 #endif
 
@@ -2255,11 +2255,11 @@ module pm_distCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovRandORNGXSD_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         type(onion_type)        , intent(out)                   :: method
         type(xoshiro256ssw_type), intent(inout)                 :: rng
-        real(RKC)               , intent(in)                    :: eta
-        real(RKC)               , intent(out)   , contiguous    :: rand(:,:)
+        real(RKG)               , intent(in)                    :: eta
+        real(RKG)               , intent(out)   , contiguous    :: rand(:,:)
     end subroutine
 #endif
 
@@ -2268,11 +2268,11 @@ module pm_distCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovRandORNGXSD_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         type(onion_type)        , intent(out)                   :: method
         type(xoshiro256ssw_type), intent(inout)                 :: rng
-        real(RKC)               , intent(in)                    :: eta
-        real(RKC)               , intent(out)   , contiguous    :: rand(:,:)
+        real(RKG)               , intent(in)                    :: eta
+        real(RKG)               , intent(out)   , contiguous    :: rand(:,:)
     end subroutine
 #endif
 
@@ -2283,12 +2283,12 @@ module pm_distCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovRandORNGXS0_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         type(onion_type)        , intent(out)                   :: method
         type(xoshiro256ssw_type), intent(inout)                 :: rng
-        real(RKC)               , intent(in)                    :: eta
-        real(RKC)               , intent(in)                    :: scale
-        real(RKC)               , intent(out)   , contiguous    :: rand(:,:)
+        real(RKG)               , intent(in)                    :: eta
+        real(RKG)               , intent(in)                    :: scale
+        real(RKG)               , intent(out)   , contiguous    :: rand(:,:)
     end subroutine
 #endif
 
@@ -2297,12 +2297,12 @@ module pm_distCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovRandORNGXS0_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         type(onion_type)        , intent(out)                   :: method
         type(xoshiro256ssw_type), intent(inout)                 :: rng
-        real(RKC)               , intent(in)                    :: eta
-        real(RKC)               , intent(in)                    :: scale
-        real(RKC)               , intent(out)   , contiguous    :: rand(:,:)
+        real(RKG)               , intent(in)                    :: eta
+        real(RKG)               , intent(in)                    :: scale
+        real(RKG)               , intent(out)   , contiguous    :: rand(:,:)
     end subroutine
 #endif
 
@@ -2311,12 +2311,12 @@ module pm_distCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovRandORNGXS0_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         type(onion_type)        , intent(out)                   :: method
         type(xoshiro256ssw_type), intent(inout)                 :: rng
-        real(RKC)               , intent(in)                    :: eta
-        real(RKC)               , intent(in)                    :: scale
-        real(RKC)               , intent(out)   , contiguous    :: rand(:,:)
+        real(RKG)               , intent(in)                    :: eta
+        real(RKG)               , intent(in)                    :: scale
+        real(RKG)               , intent(out)   , contiguous    :: rand(:,:)
     end subroutine
 #endif
 
@@ -2325,12 +2325,12 @@ module pm_distCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovRandORNGXS0_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         type(onion_type)        , intent(out)                   :: method
         type(xoshiro256ssw_type), intent(inout)                 :: rng
-        real(RKC)               , intent(in)                    :: eta
-        real(RKC)               , intent(in)                    :: scale
-        real(RKC)               , intent(out)   , contiguous    :: rand(:,:)
+        real(RKG)               , intent(in)                    :: eta
+        real(RKG)               , intent(in)                    :: scale
+        real(RKG)               , intent(out)   , contiguous    :: rand(:,:)
     end subroutine
 #endif
 
@@ -2339,12 +2339,12 @@ module pm_distCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovRandORNGXS0_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         type(onion_type)        , intent(out)                   :: method
         type(xoshiro256ssw_type), intent(inout)                 :: rng
-        real(RKC)               , intent(in)                    :: eta
-        real(RKC)               , intent(in)                    :: scale
-        real(RKC)               , intent(out)   , contiguous    :: rand(:,:)
+        real(RKG)               , intent(in)                    :: eta
+        real(RKG)               , intent(in)                    :: scale
+        real(RKG)               , intent(out)   , contiguous    :: rand(:,:)
     end subroutine
 #endif
 
@@ -2355,12 +2355,12 @@ module pm_distCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovRandORNGXS1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         type(onion_type)        , intent(out)                   :: method
         type(xoshiro256ssw_type), intent(inout)                 :: rng
-        real(RKC)               , intent(in)                    :: eta
-        real(RKC)               , intent(in)    , contiguous    :: scale(:)
-        real(RKC)               , intent(out)   , contiguous    :: rand(:,:)
+        real(RKG)               , intent(in)                    :: eta
+        real(RKG)               , intent(in)    , contiguous    :: scale(:)
+        real(RKG)               , intent(out)   , contiguous    :: rand(:,:)
     end subroutine
 #endif
 
@@ -2369,12 +2369,12 @@ module pm_distCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovRandORNGXS1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         type(onion_type)        , intent(out)                   :: method
         type(xoshiro256ssw_type), intent(inout)                 :: rng
-        real(RKC)               , intent(in)                    :: eta
-        real(RKC)               , intent(in)    , contiguous    :: scale(:)
-        real(RKC)               , intent(out)   , contiguous    :: rand(:,:)
+        real(RKG)               , intent(in)                    :: eta
+        real(RKG)               , intent(in)    , contiguous    :: scale(:)
+        real(RKG)               , intent(out)   , contiguous    :: rand(:,:)
     end subroutine
 #endif
 
@@ -2383,12 +2383,12 @@ module pm_distCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovRandORNGXS1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         type(onion_type)        , intent(out)                   :: method
         type(xoshiro256ssw_type), intent(inout)                 :: rng
-        real(RKC)               , intent(in)                    :: eta
-        real(RKC)               , intent(in)    , contiguous    :: scale(:)
-        real(RKC)               , intent(out)   , contiguous    :: rand(:,:)
+        real(RKG)               , intent(in)                    :: eta
+        real(RKG)               , intent(in)    , contiguous    :: scale(:)
+        real(RKG)               , intent(out)   , contiguous    :: rand(:,:)
     end subroutine
 #endif
 
@@ -2397,12 +2397,12 @@ module pm_distCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovRandORNGXS1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         type(onion_type)        , intent(out)                   :: method
         type(xoshiro256ssw_type), intent(inout)                 :: rng
-        real(RKC)               , intent(in)                    :: eta
-        real(RKC)               , intent(in)    , contiguous    :: scale(:)
-        real(RKC)               , intent(out)   , contiguous    :: rand(:,:)
+        real(RKG)               , intent(in)                    :: eta
+        real(RKG)               , intent(in)    , contiguous    :: scale(:)
+        real(RKG)               , intent(out)   , contiguous    :: rand(:,:)
     end subroutine
 #endif
 
@@ -2411,12 +2411,12 @@ module pm_distCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovRandORNGXS1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         type(onion_type)        , intent(out)                   :: method
         type(xoshiro256ssw_type), intent(inout)                 :: rng
-        real(RKC)               , intent(in)                    :: eta
-        real(RKC)               , intent(in)    , contiguous    :: scale(:)
-        real(RKC)               , intent(out)   , contiguous    :: rand(:,:)
+        real(RKG)               , intent(in)                    :: eta
+        real(RKG)               , intent(in)    , contiguous    :: scale(:)
+        real(RKG)               , intent(out)   , contiguous    :: rand(:,:)
     end subroutine
 #endif
 

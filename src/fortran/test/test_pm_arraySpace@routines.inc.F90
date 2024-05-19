@@ -25,9 +25,9 @@
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #if     CK_ENABLED
-#define TYPE_KIND complex(TKC)
+#define TYPE_KIND complex(TKG)
 #elif   RK_ENABLED
-#define TYPE_KIND real(TKC)
+#define TYPE_KIND real(TKG)
 #else
 #error  "Unrecognized interface."
 #endif
@@ -36,10 +36,10 @@
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
         TYPE_KIND :: x1, x2
-        real(TKC), parameter :: TOL = epsilon(0._TKC) * 10
+        real(TKG), parameter :: TOL = epsilon(0._TKG) * 10
         TYPE_KIND, allocatable :: linSpace(:)
         TYPE_KIND, allocatable :: linSpace_ref(:)
-        real(TKC), allocatable :: diff(:)
+        real(TKG), allocatable :: diff(:)
         integer(IK) :: sign
 
         assertion = .true._LK
@@ -58,11 +58,11 @@
 
             call reset()
 #if         CK_ENABLED
-            x1 = (0._TKC, 10._TKC)
-            x2 = (10._TKC, 0._TKC)
+            x1 = (0._TKG, 10._TKG)
+            x2 = (10._TKG, 0._TKG)
 #elif       RK_ENABLED
-            x1 = 0._TKC
-            x2 = 10._TKC
+            x1 = 0._TKG
+            x2 = 10._TKG
 #endif
             allocate(linSpace_ref(0))
 
@@ -91,13 +91,13 @@
 
             call reset()
 #if         CK_ENABLED
-            x1 = (0._TKC, 10._TKC)
-            x2 = (10._TKC, 0._TKC)
-            linSpace_ref = [(0._TKC, 10._TKC), (5._TKC, 5._TKC), (10._TKC, 0._TKC)]
+            x1 = (0._TKG, 10._TKG)
+            x2 = (10._TKG, 0._TKG)
+            linSpace_ref = [(0._TKG, 10._TKG), (5._TKG, 5._TKG), (10._TKG, 0._TKG)]
 #elif       RK_ENABLED
-            x1 = 0._TKC
-            x2 = 10._TKC
-            linSpace_ref = [0._TKC, 5._TKC, 10._TKC]
+            x1 = 0._TKG
+            x2 = 10._TKG
+            linSpace_ref = [0._TKG, 5._TKG, 10._TKG]
 #endif
             call report()
             call test%assert(assertion, SK_"getLinSpace() must return an increasing `linSpace` when x1, x2 = "//getStr([x1, x2]*sign))
@@ -115,14 +115,14 @@
 
             call reset()
 #if         CK_ENABLED
-            x1 = (0._TKC, 10._TKC)
-            x2 = (10._TKC, 0._TKC)
-            !linSpace_ref = [(2.5_TKC, 10_TKC), (5._TKC, 7.5_TKC), (7.5_TKC, 5._TKC), (10._TKC, 2.5_TKC)]
-            linSpace_ref = [(2.5_TKC, 7.5_TKC), (5._TKC, 5._TKC), (7.5_TKC, 2.5_TKC), (10._TKC, 0._TKC)]
+            x1 = (0._TKG, 10._TKG)
+            x2 = (10._TKG, 0._TKG)
+            !linSpace_ref = [(2.5_TKG, 10_TKG), (5._TKG, 7.5_TKG), (7.5_TKG, 5._TKG), (10._TKG, 2.5_TKG)]
+            linSpace_ref = [(2.5_TKG, 7.5_TKG), (5._TKG, 5._TKG), (7.5_TKG, 2.5_TKG), (10._TKG, 0._TKG)]
 #elif       RK_ENABLED
-            x1 = 0._TKC
-            x2 = 10._TKC
-            linSpace_ref = [2.5_TKC, 5._TKC, 7.5_TKC, 10._TKC]
+            x1 = 0._TKG
+            x2 = 10._TKG
+            linSpace_ref = [2.5_TKG, 5._TKG, 7.5_TKG, 10._TKG]
 #endif
             call report(fopen = .true._LK)
             call test%assert(assertion, SK_"getLinSpace() must return an increasing `linSpace` with `fopen = .true.` when x1, x2 = "//getStr([x1, x2]*sign))
@@ -134,13 +134,13 @@
 
             call reset()
 #if         CK_ENABLED
-            x1 = (0._TKC, 10._TKC)
-            x2 = (10._TKC, 0._TKC)
-            linSpace_ref = [(0._TKC, 10._TKC), (2.5_TKC, 7.5_TKC), (5._TKC, 5._TKC), (7.5_TKC, 2.5_TKC)]
+            x1 = (0._TKG, 10._TKG)
+            x2 = (10._TKG, 0._TKG)
+            linSpace_ref = [(0._TKG, 10._TKG), (2.5_TKG, 7.5_TKG), (5._TKG, 5._TKG), (7.5_TKG, 2.5_TKG)]
 #elif       RK_ENABLED
-            x1 = 0._TKC
-            x2 = 10._TKC
-            linSpace_ref = [0._TKC, 2.5_TKC, 5._TKC, 7.5_TKC]
+            x1 = 0._TKG
+            x2 = 10._TKG
+            linSpace_ref = [0._TKG, 2.5_TKG, 5._TKG, 7.5_TKG]
 #endif
 
             call report(lopen = .true._LK)
@@ -153,13 +153,13 @@
 
             call reset()
 #if         CK_ENABLED
-            x1 = (0._TKC, 10._TKC)
-            x2 = (10._TKC, 0._TKC)
-            linSpace_ref = [(1.25_TKC, 8.75_TKC), (3.75_TKC, 6.25_TKC), (6.25_TKC, 3.75_TKC), (8.75_TKC, 1.25_TKC)]
+            x1 = (0._TKG, 10._TKG)
+            x2 = (10._TKG, 0._TKG)
+            linSpace_ref = [(1.25_TKG, 8.75_TKG), (3.75_TKG, 6.25_TKG), (6.25_TKG, 3.75_TKG), (8.75_TKG, 1.25_TKG)]
 #elif       RK_ENABLED
-            x1 = 0._TKC
-            x2 = 10._TKC
-            linSpace_ref = [1.25_TKC, 3.75_TKC, 6.25_TKC, 8.75_TKC]
+            x1 = 0._TKG
+            x2 = 10._TKG
+            linSpace_ref = [1.25_TKG, 3.75_TKG, 6.25_TKG, 8.75_TKG]
 #endif
             call report(fopen = .true._LK, lopen = .true._LK)
             call test%assert(assertion, SK_"getLinSpace() must return an increasing `linSpace` with `fopen = .true._LK, lopen = .true.` when x1, x2 = "//getStr([x1, x2]*sign))
@@ -168,13 +168,13 @@
 
             call reset()
 #if         CK_ENABLED
-            x1 = (-10._TKC, +10._TKC)
-            x2 = (+10._TKC, -10._TKC)
-            linSpace_ref = [(-7.5_TKC, 7.5_TKC), (-2.5_TKC, 2.5_TKC), (2.5_TKC, -2.5_TKC), (7.5_TKC, -7.5_TKC)]
+            x1 = (-10._TKG, +10._TKG)
+            x2 = (+10._TKG, -10._TKG)
+            linSpace_ref = [(-7.5_TKG, 7.5_TKG), (-2.5_TKG, 2.5_TKG), (2.5_TKG, -2.5_TKG), (7.5_TKG, -7.5_TKG)]
 #elif       RK_ENABLED
-            x1 = -10._TKC
-            x2 = +10._TKC
-            linSpace_ref = [-7.5_TKC, -2.5_TKC, 2.5_TKC, 7.5_TKC]
+            x1 = -10._TKG
+            x2 = +10._TKG
+            linSpace_ref = [-7.5_TKG, -2.5_TKG, 2.5_TKG, 7.5_TKG]
 #endif
             call report(fopen = .true._LK, lopen = .true._LK)
             call test%assert(assertion, SK_"getLinSpace() must return an increasing `linSpace` with `fopen = .true._LK, lopen = .true.` when x1, x2 = "//getStr([x1, x2]*sign))
@@ -183,13 +183,13 @@
 
             call reset()
 #if         CK_ENABLED
-            x1 = (-7.5_TKC, +7.5_TKC)
-            x2 = (+7.5_TKC, -7.5_TKC)
-            linSpace_ref = [(-7.5_TKC, 7.5_TKC), (-2.5_TKC, 2.5_TKC), (2.5_TKC, -2.5_TKC), (7.5_TKC, -7.5_TKC)]
+            x1 = (-7.5_TKG, +7.5_TKG)
+            x2 = (+7.5_TKG, -7.5_TKG)
+            linSpace_ref = [(-7.5_TKG, 7.5_TKG), (-2.5_TKG, 2.5_TKG), (2.5_TKG, -2.5_TKG), (7.5_TKG, -7.5_TKG)]
 #elif       RK_ENABLED
-            x1 = -7.5_TKC
-            x2 = +7.5_TKC
-            linSpace_ref = [-7.5_TKC, -2.5_TKC, 2.5_TKC, 7.5_TKC]
+            x1 = -7.5_TKG
+            x2 = +7.5_TKG
+            linSpace_ref = [-7.5_TKG, -2.5_TKG, 2.5_TKG, 7.5_TKG]
 #endif
             call report()
             call test%assert(assertion, SK_"getLinSpace() must return an increasing `linSpace` when x1, x2 = "//getStr([x1, x2]*sign))
@@ -207,13 +207,13 @@
 
             call reset()
 #if         CK_ENABLED
-            x1 = (-7.5_TKC, +7.5_TKC)
-            x2 = (+12.5_TKC, -12.5_TKC)
-            linSpace_ref = [(-7.5_TKC, 7.5_TKC), (-2.5_TKC, 2.5_TKC), (2.5_TKC, -2.5_TKC), (7.5_TKC, -7.5_TKC)]
+            x1 = (-7.5_TKG, +7.5_TKG)
+            x2 = (+12.5_TKG, -12.5_TKG)
+            linSpace_ref = [(-7.5_TKG, 7.5_TKG), (-2.5_TKG, 2.5_TKG), (2.5_TKG, -2.5_TKG), (7.5_TKG, -7.5_TKG)]
 #elif       RK_ENABLED
-            x1 = -7.5_TKC
-            x2 = +12.5_TKC
-            linSpace_ref = [-7.5_TKC, -2.5_TKC, 2.5_TKC, 7.5_TKC]
+            x1 = -7.5_TKG
+            x2 = +12.5_TKG
+            linSpace_ref = [-7.5_TKG, -2.5_TKG, 2.5_TKG, 7.5_TKG]
 #endif
             call report(fopen = .false._LK, lopen = .true._LK)
             call test%assert(assertion, SK_"getLinSpace() must return an increasing `linSpace` with `fopen = .false._LK, lopen = .true.` when x1, x2 = "//getStr([x1, x2]*sign))
@@ -222,13 +222,13 @@
 
             call reset()
 #if         CK_ENABLED
-            x1 = (-12.5_TKC, +12.5_TKC)
-            x2 = (+7.5_TKC, -7.5_TKC)
-            linSpace_ref = [(-7.5_TKC, 7.5_TKC), (-2.5_TKC, 2.5_TKC), (2.5_TKC, -2.5_TKC), (7.5_TKC, -7.5_TKC)]
+            x1 = (-12.5_TKG, +12.5_TKG)
+            x2 = (+7.5_TKG, -7.5_TKG)
+            linSpace_ref = [(-7.5_TKG, 7.5_TKG), (-2.5_TKG, 2.5_TKG), (2.5_TKG, -2.5_TKG), (7.5_TKG, -7.5_TKG)]
 #elif       RK_ENABLED
-            x1 = -12.5_TKC
-            x2 = +7.5_TKC
-            linSpace_ref = [-7.5_TKC, -2.5_TKC, 2.5_TKC, 7.5_TKC]
+            x1 = -12.5_TKG
+            x2 = +7.5_TKG
+            linSpace_ref = [-7.5_TKG, -2.5_TKG, 2.5_TKG, 7.5_TKG]
 #endif
             call report(fopen = .true._LK, lopen = .false._LK)
             call test%assert(assertion, SK_"getLinSpace() must return an increasing `linSpace` with `fopen = .true._LK, lopen = .false.` when x1, x2 = "//getStr([x1, x2]*sign))
@@ -237,12 +237,12 @@
 
             call reset()
 #if         CK_ENABLED
-            x1 = (-12.5_TKC, +12.5_TKC)
-            x2 = (+7.5_TKC, -7.5_TKC)
+            x1 = (-12.5_TKG, +12.5_TKG)
+            x2 = (+7.5_TKG, -7.5_TKG)
             linSpace_ref = [x1]
 #elif       RK_ENABLED
-            x1 = -12.5_TKC
-            x2 = +7.5_TKC
+            x1 = -12.5_TKG
+            x2 = +7.5_TKG
             linSpace_ref = [x1]
 #endif
             call report(fopen = .false._LK, lopen = .false._LK)
@@ -255,13 +255,13 @@
 
             call reset()
 #if         CK_ENABLED
-            x1 = (-10._TKC, +10._TKC)
-            x2 = (+10._TKC, -10._TKC)
-            linSpace_ref = [(-7.5_TKC, 7.5_TKC), (-2.5_TKC, 2.5_TKC), (2.5_TKC, -2.5_TKC), (7.5_TKC, -7.5_TKC)]
+            x1 = (-10._TKG, +10._TKG)
+            x2 = (+10._TKG, -10._TKG)
+            linSpace_ref = [(-7.5_TKG, 7.5_TKG), (-2.5_TKG, 2.5_TKG), (2.5_TKG, -2.5_TKG), (7.5_TKG, -7.5_TKG)]
 #elif       RK_ENABLED
-            x1 = -10._TKC
-            x2 = +10._TKC
-            linSpace_ref = [-7.5_TKC, -2.5_TKC, 2.5_TKC, 7.5_TKC]
+            x1 = -10._TKG
+            x2 = +10._TKG
+            linSpace_ref = [-7.5_TKG, -2.5_TKG, 2.5_TKG, 7.5_TKG]
 #endif
             call report(fopen = .true._LK, lopen = .true._LK)
             call test%assert(assertion, SK_"getLinSpace() must return an increasing `linSpace` with `fopen = .true._LK, lopen = .true.` when x1, x2 = "//getStr([x1, x2]*sign))
@@ -327,7 +327,7 @@
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
         TYPE_KIND :: logx1, logx2
-        real(TKC), parameter :: TOL = epsilon(0._TKC) * 10 ! ipo requires the given eps precision.
+        real(TKG), parameter :: TOL = epsilon(0._TKG) * 10 ! ipo requires the given eps precision.
         TYPE_KIND, allocatable :: logSpace(:)
         TYPE_KIND, allocatable :: linSpace_ref(:), logSpace_ref(:)
         TYPE_KIND, allocatable :: diff(:)
@@ -342,26 +342,26 @@
         call testWith()
 
         sign = 1_IK
-        call testWith(base = 2._TKC)
+        call testWith(base = 2._TKG)
         sign = -1_IK
-        call testWith(base = 2._TKC)
+        call testWith(base = 2._TKG)
 
     contains
 
         subroutine testWith(base)
 
-            real(TKC), intent(in), optional :: base
+            real(TKG), intent(in), optional :: base
 
             !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
             call reset()
 
 #if         CK_ENABLED
-            logx1 = (0._TKC, 10._TKC)
-            logx2 = (10._TKC, 0._TKC)
+            logx1 = (0._TKG, 10._TKG)
+            logx2 = (10._TKG, 0._TKG)
 #elif       RK_ENABLED
-            logx1 = 0._TKC
-            logx2 = 10._TKC
+            logx1 = 0._TKG
+            logx2 = 10._TKG
 #endif
             allocate(linSpace_ref(0))
 
@@ -391,13 +391,13 @@
             call reset()
 
 #if         CK_ENABLED
-            logx1 = (0._TKC, 10._TKC)
-            logx2 = (10._TKC, 0._TKC)
-            linSpace_ref = [(0._TKC, 10._TKC), (5._TKC, 5._TKC), (10._TKC, 0._TKC)]
+            logx1 = (0._TKG, 10._TKG)
+            logx2 = (10._TKG, 0._TKG)
+            linSpace_ref = [(0._TKG, 10._TKG), (5._TKG, 5._TKG), (10._TKG, 0._TKG)]
 #elif       RK_ENABLED
-            logx1 = 0._TKC
-            logx2 = 10._TKC
-            linSpace_ref = [0._TKC, 5._TKC, 10._TKC]
+            logx1 = 0._TKG
+            logx2 = 10._TKG
+            linSpace_ref = [0._TKG, 5._TKG, 10._TKG]
 #endif
 
             call report(base)
@@ -417,14 +417,14 @@
             call reset()
 
 #if         CK_ENABLED
-            logx1 = (0._TKC, 10._TKC)
-            logx2 = (10._TKC, 0._TKC)
-            !linSpace_ref = [(2.5_TKC, 10_TKC), (5._TKC, 7.5_TKC), (7.5_TKC, 5._TKC), (10._TKC, 2.5_TKC)]
-            linSpace_ref = [(2.5_TKC, 7.5_TKC), (5._TKC, 5._TKC), (7.5_TKC, 2.5_TKC), (10._TKC, 0._TKC)]
+            logx1 = (0._TKG, 10._TKG)
+            logx2 = (10._TKG, 0._TKG)
+            !linSpace_ref = [(2.5_TKG, 10_TKG), (5._TKG, 7.5_TKG), (7.5_TKG, 5._TKG), (10._TKG, 2.5_TKG)]
+            linSpace_ref = [(2.5_TKG, 7.5_TKG), (5._TKG, 5._TKG), (7.5_TKG, 2.5_TKG), (10._TKG, 0._TKG)]
 #elif       RK_ENABLED
-            logx1 = 0._TKC
-            logx2 = 10._TKC
-            linSpace_ref = [2.5_TKC, 5._TKC, 7.5_TKC, 10._TKC]
+            logx1 = 0._TKG
+            logx2 = 10._TKG
+            linSpace_ref = [2.5_TKG, 5._TKG, 7.5_TKG, 10._TKG]
 #endif
 
             call report(base, fopen = .true._LK)
@@ -438,13 +438,13 @@
             call reset()
 
 #if         CK_ENABLED
-            logx1 = (0._TKC, 10._TKC)
-            logx2 = (10._TKC, 0._TKC)
-            linSpace_ref = [(0._TKC, 10._TKC), (2.5_TKC, 7.5_TKC), (5._TKC, 5._TKC), (7.5_TKC, 2.5_TKC)]
+            logx1 = (0._TKG, 10._TKG)
+            logx2 = (10._TKG, 0._TKG)
+            linSpace_ref = [(0._TKG, 10._TKG), (2.5_TKG, 7.5_TKG), (5._TKG, 5._TKG), (7.5_TKG, 2.5_TKG)]
 #elif       RK_ENABLED
-            logx1 = 0._TKC
-            logx2 = 10._TKC
-            linSpace_ref = [0._TKC, 2.5_TKC, 5._TKC, 7.5_TKC]
+            logx1 = 0._TKG
+            logx2 = 10._TKG
+            linSpace_ref = [0._TKG, 2.5_TKG, 5._TKG, 7.5_TKG]
 #endif
 
             call report(base, lopen = .true._LK)
@@ -458,13 +458,13 @@
             call reset()
 
 #if         CK_ENABLED
-            logx1 = (0._TKC, 10._TKC)
-            logx2 = (10._TKC, 0._TKC)
-            linSpace_ref = [(1.25_TKC, 8.75_TKC), (3.75_TKC, 6.25_TKC), (6.25_TKC, 3.75_TKC), (8.75_TKC, 1.25_TKC)]
+            logx1 = (0._TKG, 10._TKG)
+            logx2 = (10._TKG, 0._TKG)
+            linSpace_ref = [(1.25_TKG, 8.75_TKG), (3.75_TKG, 6.25_TKG), (6.25_TKG, 3.75_TKG), (8.75_TKG, 1.25_TKG)]
 #elif       RK_ENABLED
-            logx1 = 0._TKC
-            logx2 = 10._TKC
-            linSpace_ref = [1.25_TKC, 3.75_TKC, 6.25_TKC, 8.75_TKC]
+            logx1 = 0._TKG
+            logx2 = 10._TKG
+            linSpace_ref = [1.25_TKG, 3.75_TKG, 6.25_TKG, 8.75_TKG]
 #endif
 
             call report(base, fopen = .true._LK, lopen = .true._LK)
@@ -475,13 +475,13 @@
             call reset()
 
 #if         CK_ENABLED
-            logx1 = (-10._TKC, +10._TKC)
-            logx2 = (+10._TKC, -10._TKC)
-            linSpace_ref = [(-7.5_TKC, 7.5_TKC), (-2.5_TKC, 2.5_TKC), (2.5_TKC, -2.5_TKC), (7.5_TKC, -7.5_TKC)]
+            logx1 = (-10._TKG, +10._TKG)
+            logx2 = (+10._TKG, -10._TKG)
+            linSpace_ref = [(-7.5_TKG, 7.5_TKG), (-2.5_TKG, 2.5_TKG), (2.5_TKG, -2.5_TKG), (7.5_TKG, -7.5_TKG)]
 #elif       RK_ENABLED
-            logx1 = -10._TKC
-            logx2 = +10._TKC
-            linSpace_ref = [-7.5_TKC, -2.5_TKC, 2.5_TKC, 7.5_TKC]
+            logx1 = -10._TKG
+            logx2 = +10._TKG
+            linSpace_ref = [-7.5_TKG, -2.5_TKG, 2.5_TKG, 7.5_TKG]
 #endif
 
             call report(base, fopen = .true._LK, lopen = .true._LK)
@@ -492,13 +492,13 @@
             call reset()
 
 #if         CK_ENABLED
-            logx1 = (-7.5_TKC, +7.5_TKC)
-            logx2 = (+7.5_TKC, -7.5_TKC)
-            linSpace_ref = [(-7.5_TKC, 7.5_TKC), (-2.5_TKC, 2.5_TKC), (2.5_TKC, -2.5_TKC), (7.5_TKC, -7.5_TKC)]
+            logx1 = (-7.5_TKG, +7.5_TKG)
+            logx2 = (+7.5_TKG, -7.5_TKG)
+            linSpace_ref = [(-7.5_TKG, 7.5_TKG), (-2.5_TKG, 2.5_TKG), (2.5_TKG, -2.5_TKG), (7.5_TKG, -7.5_TKG)]
 #elif       RK_ENABLED
-            logx1 = -7.5_TKC
-            logx2 = +7.5_TKC
-            linSpace_ref = [-7.5_TKC, -2.5_TKC, 2.5_TKC, 7.5_TKC]
+            logx1 = -7.5_TKG
+            logx2 = +7.5_TKG
+            linSpace_ref = [-7.5_TKG, -2.5_TKG, 2.5_TKG, 7.5_TKG]
 #endif
 
             call report(base)
@@ -518,13 +518,13 @@
             call reset()
 
 #if         CK_ENABLED
-            logx1 = (-7.5_TKC, +7.5_TKC)
-            logx2 = (+12.5_TKC, -12.5_TKC)
-            linSpace_ref = [(-7.5_TKC, 7.5_TKC), (-2.5_TKC, 2.5_TKC), (2.5_TKC, -2.5_TKC), (7.5_TKC, -7.5_TKC)]
+            logx1 = (-7.5_TKG, +7.5_TKG)
+            logx2 = (+12.5_TKG, -12.5_TKG)
+            linSpace_ref = [(-7.5_TKG, 7.5_TKG), (-2.5_TKG, 2.5_TKG), (2.5_TKG, -2.5_TKG), (7.5_TKG, -7.5_TKG)]
 #elif       RK_ENABLED
-            logx1 = -7.5_TKC
-            logx2 = +12.5_TKC
-            linSpace_ref = [-7.5_TKC, -2.5_TKC, 2.5_TKC, 7.5_TKC]
+            logx1 = -7.5_TKG
+            logx2 = +12.5_TKG
+            linSpace_ref = [-7.5_TKG, -2.5_TKG, 2.5_TKG, 7.5_TKG]
 #endif
 
             call report(base, fopen = .false._LK, lopen = .true._LK)
@@ -535,13 +535,13 @@
             call reset()
 
 #if         CK_ENABLED
-            logx1 = (-12.5_TKC, +12.5_TKC)
-            logx2 = (+7.5_TKC, -7.5_TKC)
-            linSpace_ref = [(-7.5_TKC, 7.5_TKC), (-2.5_TKC, 2.5_TKC), (2.5_TKC, -2.5_TKC), (7.5_TKC, -7.5_TKC)]
+            logx1 = (-12.5_TKG, +12.5_TKG)
+            logx2 = (+7.5_TKG, -7.5_TKG)
+            linSpace_ref = [(-7.5_TKG, 7.5_TKG), (-2.5_TKG, 2.5_TKG), (2.5_TKG, -2.5_TKG), (7.5_TKG, -7.5_TKG)]
 #elif       RK_ENABLED
-            logx1 = -12.5_TKC
-            logx2 = +7.5_TKC
-            linSpace_ref = [-7.5_TKC, -2.5_TKC, 2.5_TKC, 7.5_TKC]
+            logx1 = -12.5_TKG
+            logx2 = +7.5_TKG
+            linSpace_ref = [-7.5_TKG, -2.5_TKG, 2.5_TKG, 7.5_TKG]
 #endif
 
             call report(base, fopen = .true._LK, lopen = .false._LK)
@@ -552,12 +552,12 @@
             call reset()
 
 #if         CK_ENABLED
-            logx1 = (-12.5_TKC, +12.5_TKC)
-            logx2 = (+7.5_TKC, -7.5_TKC)
+            logx1 = (-12.5_TKG, +12.5_TKG)
+            logx2 = (+7.5_TKG, -7.5_TKG)
             linSpace_ref = [logx1]
 #elif       RK_ENABLED
-            logx1 = -12.5_TKC
-            logx2 = +7.5_TKC
+            logx1 = -12.5_TKG
+            logx2 = +7.5_TKG
             linSpace_ref = [logx1]
 #endif
 
@@ -572,13 +572,13 @@
             call reset()
 
 #if         CK_ENABLED
-            logx1 = (-10._TKC, +10._TKC)
-            logx2 = (+10._TKC, -10._TKC)
-            linSpace_ref = [(-7.5_TKC, 7.5_TKC), (-2.5_TKC, 2.5_TKC), (2.5_TKC, -2.5_TKC), (7.5_TKC, -7.5_TKC)]
+            logx1 = (-10._TKG, +10._TKG)
+            logx2 = (+10._TKG, -10._TKG)
+            linSpace_ref = [(-7.5_TKG, 7.5_TKG), (-2.5_TKG, 2.5_TKG), (2.5_TKG, -2.5_TKG), (7.5_TKG, -7.5_TKG)]
 #elif       RK_ENABLED
-            logx1 = -10._TKC
-            logx2 = +10._TKC
-            linSpace_ref = [-7.5_TKC, -2.5_TKC, 2.5_TKC, 7.5_TKC]
+            logx1 = -10._TKG
+            logx2 = +10._TKG
+            linSpace_ref = [-7.5_TKG, -2.5_TKG, 2.5_TKG, 7.5_TKG]
 #endif
 
             call report(base, fopen = .true._LK, lopen = .true._LK)
@@ -599,7 +599,7 @@
 
         subroutine report(base, fopen, lopen)
             logical(LK), intent(in), optional :: fopen, lopen
-            real(TKC), intent(in), optional :: base
+            real(TKG), intent(in), optional :: base
 #if         getLogSpace_ENABLED
             integer(IK) :: count
             count = size(linSpace_ref, kind = IK)
@@ -619,12 +619,12 @@
             if (allocated(diff)) deallocate(diff)
             allocate(diff, mold = logSpace_ref)
 #if         CK_ENABLED
-            where (logSpace_ref%re > 0._TKC)
+            where (logSpace_ref%re > 0._TKG)
                 diff%re = abs(logSpace%re - logSpace_ref%re) / logSpace_ref%re
             elsewhere
                 diff%re = abs(logSpace%re - logSpace_ref%re)
             end where
-            where (logSpace_ref%im > 0._TKC)
+            where (logSpace_ref%im > 0._TKG)
                 diff%im = abs(logSpace%im - logSpace_ref%im) / logSpace_ref%im
             elsewhere
                 diff%im = abs(logSpace%im - logSpace_ref%im)
@@ -632,7 +632,7 @@
             assertion = assertion .and. all(diff%re < TOL)
             assertion = assertion .and. all(diff%im < TOL)
 #elif       RK_ENABLED
-            where (logSpace_ref > 0._TKC)
+            where (logSpace_ref > 0._TKG)
                 diff = abs(logSpace - logSpace_ref) / logSpace_ref
             elsewhere
                 diff = abs(logSpace - logSpace_ref)

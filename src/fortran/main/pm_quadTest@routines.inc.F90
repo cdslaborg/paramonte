@@ -29,12 +29,12 @@
         !%%%%%%%%%%%%%%%%%%%%%%%%
 
         integer(IK)                 :: numFuncEval
-        real(RKC)                   :: integral, abserr, lb, ub, truth
-        real(RKC)   , allocatable   :: break(:)
+        real(RKG)                   :: integral, abserr, lb, ub, truth
+        real(RKG)   , allocatable   :: break(:)
 
-        truth = real(integrand%integral, RKC)
-        lb = real(integrand%lb, RKC)
-        ub = real(integrand%ub, RKC)
+        truth = real(integrand%integral, RKG)
+        lb = real(integrand%lb, RKG)
+        ub = real(integrand%ub, RKG)
 
         call disp%show("integrand%desc")
         call disp%show( integrand%desc , deliml = SK_"""" )
@@ -121,18 +121,18 @@
 
         integer(IK)                 :: nintmax_def
         integer(IK)                 :: err, numFuncEval, numInterval
-        real(RKC)                   :: integral, abserr, abstol, reltol, lb, ub, truth
-        real(RKC)   , allocatable   :: nodeK(:), weightK(:), weightG(:), sinfo(:,:), break(:)
+        real(RKG)                   :: integral, abserr, abstol, reltol, lb, ub, truth
+        real(RKG)   , allocatable   :: nodeK(:), weightK(:), weightG(:), sinfo(:,:), break(:)
         integer(IK) , allocatable   :: sindex(:)
 
-        abstol = getOption(0._RKC, atol)
-        reltol = getOption(epsilon(0._RKC)**0.66, rtol)
+        abstol = getOption(0._RKG, atol)
+        reltol = getOption(epsilon(0._RKG)**0.66, rtol)
         nintmax_def = getOption(2000_IK, nintmax)
         call setResized(sindex, nintmax_def)
         call setResized(sinfo, [4_IK, nintmax_def])
-        truth = real(integrand%integral, RKC)
-        lb = real(integrand%lb, RKC)
-        ub = real(integrand%ub, RKC)
+        truth = real(integrand%integral, RKG)
+        lb = real(integrand%lb, RKG)
+        ub = real(integrand%ub, RKG)
 
         call disp%skip()
         call disp%show("!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
@@ -226,7 +226,7 @@ call disp%show("err = getQuadErr(getFuncUnweighted, "//LBS//", "//UBS//", abstol
 DISP_INTEGRAL \
 end if;
 
-        if (getInfNeg(0._RKC) < lb .and. ub < getInfPos(0._RKC)) then
+        if (getInfNeg(0._RKG) < lb .and. ub < getInfPos(0._RKG)) then
 
             call disp%show("!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
             call disp%show("! Using arbitrary Gauss-Kronrod nodes and weights (here: 35-71).")
@@ -277,7 +277,7 @@ end if;
 
             TRIPLET_GKX(lb,"lb",ub,"ub",GK15,"GK15")
 
-        elseif (getInfNeg(0._RKC) < lb .and. huge(0._RKC) <= ub) then
+        elseif (getInfNeg(0._RKG) < lb .and. huge(0._RKG) <= ub) then
 
             call disp%show("!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
             call disp%show("! Using arbitrary Gauss-Kronrod nodes and weights (here: 35-71).")
@@ -328,7 +328,7 @@ end if;
 
             TRIPLET_GKX(lb,"lb",pinf,"pinf",GK15,"GK15")
 
-        elseif (lb <= -huge(0._RKC) .and. ub < getInfPos(0._RKC)) then
+        elseif (lb <= -huge(0._RKG) .and. ub < getInfPos(0._RKG)) then
 
             call disp%show("!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
             call disp%show("! Using arbitrary Gauss-Kronrod nodes and weights (here: 35-71).")
@@ -379,7 +379,7 @@ end if;
 
             TRIPLET_GKX(ninf,"ninf",ub,"ub",GK15,"GK15")
 
-        elseif (lb <= -huge(0._RKC) .and. huge(0._RKC) <= ub) then
+        elseif (lb <= -huge(0._RKG) .and. huge(0._RKG) <= ub) then
 
             call disp%show("!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
             call disp%show("! Using arbitrary Gauss-Kronrod nodes and weights (here: 35-71).")
@@ -449,15 +449,15 @@ end if;
 
         function getFunc(x) result(func)
             use pm_kind, only: RKH
-            real(RKC)    , intent(in)    :: x
-            real(RKC)                    :: func
-            func = real(integrand%get(real(x, RKH)), RKC)
-            if (allocated(integrand%wcauchy)) func = func / (x - real(integrand%wcauchy%cs, RKC))
+            real(RKG)    , intent(in)    :: x
+            real(RKG)                    :: func
+            func = real(integrand%get(real(x, RKH)), RKG)
+            if (allocated(integrand%wcauchy)) func = func / (x - real(integrand%wcauchy%cs, RKG))
         end function
 
         function getFuncUnweighted(x) result(func)
             use pm_kind, only: RKH
-            real(RKC)    , intent(in)    :: x
-            real(RKC)                    :: func
-            func = real(integrand%get(real(x, RKH)), RKC)
+            real(RKG)    , intent(in)    :: x
+            real(RKG)                    :: func
+            func = real(integrand%get(real(x, RKH)), RKG)
         end function

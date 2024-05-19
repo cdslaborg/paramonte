@@ -59,35 +59,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getGenExpGammaLogPDFNFKD_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_distGenExpGamma@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getGenExpGammaLogPDFNFKD_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_distGenExpGamma@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getGenExpGammaLogPDFNFKD_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_distGenExpGamma@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getGenExpGammaLogPDFNFKD_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_distGenExpGamma@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getGenExpGammaLogPDFNFKD_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_distGenExpGamma@routines.inc.F90"
     end procedure
 #endif
@@ -110,35 +110,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getGenExpGammaLogPDFNFKO_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_distGenExpGamma@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getGenExpGammaLogPDFNFKO_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_distGenExpGamma@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getGenExpGammaLogPDFNFKO_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_distGenExpGamma@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getGenExpGammaLogPDFNFKO_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_distGenExpGamma@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getGenExpGammaLogPDFNFKO_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_distGenExpGamma@routines.inc.F90"
     end procedure
 #endif
@@ -165,35 +165,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getGenExpGammaLogPDF_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_distGenExpGamma@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getGenExpGammaLogPDF_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_distGenExpGamma@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getGenExpGammaLogPDF_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_distGenExpGamma@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getGenExpGammaLogPDF_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_distGenExpGamma@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getGenExpGammaLogPDF_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_distGenExpGamma@routines.inc.F90"
     end procedure
 #endif
@@ -220,35 +220,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setGenExpGammaLogPDFDDDD_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_distGenExpGamma@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setGenExpGammaLogPDFDDDD_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_distGenExpGamma@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setGenExpGammaLogPDFDDDD_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_distGenExpGamma@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setGenExpGammaLogPDFDDDD_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_distGenExpGamma@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setGenExpGammaLogPDFDDDD_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_distGenExpGamma@routines.inc.F90"
     end procedure
 #endif
@@ -271,35 +271,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setGenExpGammaLogPDFNKDD_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_distGenExpGamma@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setGenExpGammaLogPDFNKDD_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_distGenExpGamma@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setGenExpGammaLogPDFNKDD_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_distGenExpGamma@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setGenExpGammaLogPDFNKDD_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_distGenExpGamma@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setGenExpGammaLogPDFNKDD_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_distGenExpGamma@routines.inc.F90"
     end procedure
 #endif
@@ -322,35 +322,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setGenExpGammaLogPDFNKOD_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_distGenExpGamma@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setGenExpGammaLogPDFNKOD_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_distGenExpGamma@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setGenExpGammaLogPDFNKOD_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_distGenExpGamma@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setGenExpGammaLogPDFNKOD_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_distGenExpGamma@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setGenExpGammaLogPDFNKOD_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_distGenExpGamma@routines.inc.F90"
     end procedure
 #endif
@@ -373,35 +373,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setGenExpGammaLogPDFNKOS_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_distGenExpGamma@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setGenExpGammaLogPDFNKOS_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_distGenExpGamma@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setGenExpGammaLogPDFNKOS_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_distGenExpGamma@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setGenExpGammaLogPDFNKOS_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_distGenExpGamma@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setGenExpGammaLogPDFNKOS_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_distGenExpGamma@routines.inc.F90"
     end procedure
 #endif
@@ -428,35 +428,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getGenExpGammaCDF_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_distGenExpGamma@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getGenExpGammaCDF_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_distGenExpGamma@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getGenExpGammaCDF_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_distGenExpGamma@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getGenExpGammaCDF_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_distGenExpGamma@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getGenExpGammaCDF_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_distGenExpGamma@routines.inc.F90"
     end procedure
 #endif
@@ -483,35 +483,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setGenExpGammaCDFDDD_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_distGenExpGamma@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setGenExpGammaCDFDDD_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_distGenExpGamma@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setGenExpGammaCDFDDD_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_distGenExpGamma@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setGenExpGammaCDFDDD_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_distGenExpGamma@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setGenExpGammaCDFDDD_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_distGenExpGamma@routines.inc.F90"
     end procedure
 #endif
@@ -534,35 +534,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setGenExpGammaCDFXKDD_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_distGenExpGamma@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setGenExpGammaCDFXKDD_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_distGenExpGamma@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setGenExpGammaCDFXKDD_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_distGenExpGamma@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setGenExpGammaCDFXKDD_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_distGenExpGamma@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setGenExpGammaCDFXKDD_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_distGenExpGamma@routines.inc.F90"
     end procedure
 #endif
@@ -585,35 +585,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setGenExpGammaCDFKOD_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_distGenExpGamma@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setGenExpGammaCDFKOD_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_distGenExpGamma@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setGenExpGammaCDFKOD_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_distGenExpGamma@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setGenExpGammaCDFKOD_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_distGenExpGamma@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setGenExpGammaCDFKOD_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_distGenExpGamma@routines.inc.F90"
     end procedure
 #endif
@@ -636,35 +636,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setGenExpGammaCDFKOS_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_distGenExpGamma@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setGenExpGammaCDFKOS_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_distGenExpGamma@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setGenExpGammaCDFKOS_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_distGenExpGamma@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setGenExpGammaCDFKOS_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_distGenExpGamma@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setGenExpGammaCDFKOS_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_distGenExpGamma@routines.inc.F90"
     end procedure
 #endif

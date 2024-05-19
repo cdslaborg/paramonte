@@ -147,9 +147,9 @@ module pm_arrayChoice
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getChoiceRNGD_D0_D0_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)            , intent(in)                    :: array
-        character(1,SKC)                                            :: choice
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)            , intent(in)                    :: array
+        character(1,SKG)                                            :: choice
     end function
 #endif
 
@@ -158,9 +158,9 @@ module pm_arrayChoice
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getChoiceRNGD_D0_D0_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)            , intent(in)                    :: array
-        character(1,SKC)                                            :: choice
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)            , intent(in)                    :: array
+        character(1,SKG)                                            :: choice
     end function
 #endif
 
@@ -169,9 +169,9 @@ module pm_arrayChoice
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getChoiceRNGD_D0_D0_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)            , intent(in)                    :: array
-        character(1,SKC)                                            :: choice
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)            , intent(in)                    :: array
+        character(1,SKG)                                            :: choice
     end function
 #endif
 
@@ -180,9 +180,9 @@ module pm_arrayChoice
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getChoiceRNGD_D0_D0_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)            , intent(in)                    :: array
-        character(1,SKC)                                            :: choice
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)            , intent(in)                    :: array
+        character(1,SKG)                                            :: choice
     end function
 #endif
 
@@ -191,9 +191,9 @@ module pm_arrayChoice
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getChoiceRNGD_D0_D0_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)            , intent(in)                    :: array
-        character(1,SKC)                                            :: choice
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)            , intent(in)                    :: array
+        character(1,SKG)                                            :: choice
     end function
 #endif
 
@@ -210,9 +210,9 @@ module pm_arrayChoice
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getChoiceRNGD_D1_D0_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
-        character(len(array,IK),SKC)                                :: choice
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
+        character(len(array,IK),SKG)                                :: choice
     end function
 #endif
 
@@ -221,9 +221,9 @@ module pm_arrayChoice
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getChoiceRNGD_D1_D0_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
-        character(len(array,IK),SKC)                                :: choice
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
+        character(len(array,IK),SKG)                                :: choice
     end function
 #endif
 
@@ -232,9 +232,9 @@ module pm_arrayChoice
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getChoiceRNGD_D1_D0_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
-        character(len(array,IK),SKC)                                :: choice
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
+        character(len(array,IK),SKG)                                :: choice
     end function
 #endif
 
@@ -243,9 +243,9 @@ module pm_arrayChoice
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getChoiceRNGD_D1_D0_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
-        character(len(array,IK),SKC)                                :: choice
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
+        character(len(array,IK),SKG)                                :: choice
     end function
 #endif
 
@@ -254,9 +254,9 @@ module pm_arrayChoice
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getChoiceRNGD_D1_D0_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
-        character(len(array,IK),SKC)                                :: choice
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
+        character(len(array,IK),SKG)                                :: choice
     end function
 #endif
 
@@ -267,9 +267,9 @@ module pm_arrayChoice
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getChoiceRNGD_D1_D0_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
-        integer(IKC)                                                :: choice
+        use pm_kind, only: IKG => IK5
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
+        integer(IKG)                                                :: choice
     end function
 #endif
 
@@ -278,9 +278,9 @@ module pm_arrayChoice
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getChoiceRNGD_D1_D0_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
-        integer(IKC)                                                :: choice
+        use pm_kind, only: IKG => IK4
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
+        integer(IKG)                                                :: choice
     end function
 #endif
 
@@ -289,9 +289,9 @@ module pm_arrayChoice
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getChoiceRNGD_D1_D0_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
-        integer(IKC)                                                :: choice
+        use pm_kind, only: IKG => IK3
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
+        integer(IKG)                                                :: choice
     end function
 #endif
 
@@ -300,9 +300,9 @@ module pm_arrayChoice
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getChoiceRNGD_D1_D0_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
-        integer(IKC)                                                :: choice
+        use pm_kind, only: IKG => IK2
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
+        integer(IKG)                                                :: choice
     end function
 #endif
 
@@ -311,9 +311,9 @@ module pm_arrayChoice
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getChoiceRNGD_D1_D0_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
-        integer(IKC)                                                :: choice
+        use pm_kind, only: IKG => IK1
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
+        integer(IKG)                                                :: choice
     end function
 #endif
 
@@ -324,9 +324,9 @@ module pm_arrayChoice
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getChoiceRNGD_D1_D0_LK5
 #endif
-        use pm_kind, only: LKC => LK5
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
-        logical(LKC)                                                :: choice
+        use pm_kind, only: LKG => LK5
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
+        logical(LKG)                                                :: choice
     end function
 #endif
 
@@ -335,9 +335,9 @@ module pm_arrayChoice
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getChoiceRNGD_D1_D0_LK4
 #endif
-        use pm_kind, only: LKC => LK4
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
-        logical(LKC)                                                :: choice
+        use pm_kind, only: LKG => LK4
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
+        logical(LKG)                                                :: choice
     end function
 #endif
 
@@ -346,9 +346,9 @@ module pm_arrayChoice
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getChoiceRNGD_D1_D0_LK3
 #endif
-        use pm_kind, only: LKC => LK3
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
-        logical(LKC)                                                :: choice
+        use pm_kind, only: LKG => LK3
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
+        logical(LKG)                                                :: choice
     end function
 #endif
 
@@ -357,9 +357,9 @@ module pm_arrayChoice
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getChoiceRNGD_D1_D0_LK2
 #endif
-        use pm_kind, only: LKC => LK2
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
-        logical(LKC)                                                :: choice
+        use pm_kind, only: LKG => LK2
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
+        logical(LKG)                                                :: choice
     end function
 #endif
 
@@ -368,9 +368,9 @@ module pm_arrayChoice
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getChoiceRNGD_D1_D0_LK1
 #endif
-        use pm_kind, only: LKC => LK1
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
-        logical(LKC)                                                :: choice
+        use pm_kind, only: LKG => LK1
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
+        logical(LKG)                                                :: choice
     end function
 #endif
 
@@ -381,9 +381,9 @@ module pm_arrayChoice
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getChoiceRNGD_D1_D0_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
-        complex(CKC)                                                :: choice
+        use pm_kind, only: CKG => CK5
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
+        complex(CKG)                                                :: choice
     end function
 #endif
 
@@ -392,9 +392,9 @@ module pm_arrayChoice
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getChoiceRNGD_D1_D0_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
-        complex(CKC)                                                :: choice
+        use pm_kind, only: CKG => CK4
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
+        complex(CKG)                                                :: choice
     end function
 #endif
 
@@ -403,9 +403,9 @@ module pm_arrayChoice
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getChoiceRNGD_D1_D0_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
-        complex(CKC)                                                :: choice
+        use pm_kind, only: CKG => CK3
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
+        complex(CKG)                                                :: choice
     end function
 #endif
 
@@ -414,9 +414,9 @@ module pm_arrayChoice
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getChoiceRNGD_D1_D0_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
-        complex(CKC)                                                :: choice
+        use pm_kind, only: CKG => CK2
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
+        complex(CKG)                                                :: choice
     end function
 #endif
 
@@ -425,9 +425,9 @@ module pm_arrayChoice
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getChoiceRNGD_D1_D0_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
-        complex(CKC)                                                :: choice
+        use pm_kind, only: CKG => CK1
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
+        complex(CKG)                                                :: choice
     end function
 #endif
 
@@ -438,9 +438,9 @@ module pm_arrayChoice
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getChoiceRNGD_D1_D0_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
-        real(RKC)                                                   :: choice
+        use pm_kind, only: RKG => RK5
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
+        real(RKG)                                                   :: choice
     end function
 #endif
 
@@ -449,9 +449,9 @@ module pm_arrayChoice
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getChoiceRNGD_D1_D0_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
-        real(RKC)                                                   :: choice
+        use pm_kind, only: RKG => RK4
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
+        real(RKG)                                                   :: choice
     end function
 #endif
 
@@ -460,9 +460,9 @@ module pm_arrayChoice
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getChoiceRNGD_D1_D0_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
-        real(RKC)                                                   :: choice
+        use pm_kind, only: RKG => RK3
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
+        real(RKG)                                                   :: choice
     end function
 #endif
 
@@ -471,9 +471,9 @@ module pm_arrayChoice
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getChoiceRNGD_D1_D0_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
-        real(RKC)                                                   :: choice
+        use pm_kind, only: RKG => RK2
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
+        real(RKG)                                                   :: choice
     end function
 #endif
 
@@ -482,9 +482,9 @@ module pm_arrayChoice
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getChoiceRNGD_D1_D0_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
-        real(RKC)                                                   :: choice
+        use pm_kind, only: RKG => RK1
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
+        real(RKG)                                                   :: choice
     end function
 #endif
 
@@ -501,11 +501,11 @@ module pm_arrayChoice
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getChoiceRNGD_D0_S1_SK5
 #endif
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
         integer(IK)                 , intent(in)                    :: s1
         logical(LK)                 , intent(in)    , optional      :: unique
-        character(*,SKC)            , intent(in)                    :: array
-        character(s1,SKC)                                           :: choice
+        character(*,SKG)            , intent(in)                    :: array
+        character(s1,SKG)                                           :: choice
     end function
 #endif
 
@@ -514,11 +514,11 @@ module pm_arrayChoice
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getChoiceRNGD_D0_S1_SK4
 #endif
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
         integer(IK)                 , intent(in)                    :: s1
         logical(LK)                 , intent(in)    , optional      :: unique
-        character(*,SKC)            , intent(in)                    :: array
-        character(s1,SKC)                                           :: choice
+        character(*,SKG)            , intent(in)                    :: array
+        character(s1,SKG)                                           :: choice
     end function
 #endif
 
@@ -527,11 +527,11 @@ module pm_arrayChoice
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getChoiceRNGD_D0_S1_SK3
 #endif
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
         integer(IK)                 , intent(in)                    :: s1
         logical(LK)                 , intent(in)    , optional      :: unique
-        character(*,SKC)            , intent(in)                    :: array
-        character(s1,SKC)                                           :: choice
+        character(*,SKG)            , intent(in)                    :: array
+        character(s1,SKG)                                           :: choice
     end function
 #endif
 
@@ -540,11 +540,11 @@ module pm_arrayChoice
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getChoiceRNGD_D0_S1_SK2
 #endif
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
         integer(IK)                 , intent(in)                    :: s1
         logical(LK)                 , intent(in)    , optional      :: unique
-        character(*,SKC)            , intent(in)                    :: array
-        character(s1,SKC)                                           :: choice
+        character(*,SKG)            , intent(in)                    :: array
+        character(s1,SKG)                                           :: choice
     end function
 #endif
 
@@ -553,11 +553,11 @@ module pm_arrayChoice
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getChoiceRNGD_D0_S1_SK1
 #endif
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
         integer(IK)                 , intent(in)                    :: s1
         logical(LK)                 , intent(in)    , optional      :: unique
-        character(*,SKC)            , intent(in)                    :: array
-        character(s1,SKC)                                           :: choice
+        character(*,SKG)            , intent(in)                    :: array
+        character(s1,SKG)                                           :: choice
     end function
 #endif
 
@@ -574,11 +574,11 @@ module pm_arrayChoice
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getChoiceRNGD_D1_D1_SK5
 #endif
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
         integer(IK)                 , intent(in)                    :: s1
         logical(LK)                 , intent(in)    , optional      :: unique
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
-        character(len(array,IK),SKC)                                :: choice(s1)
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
+        character(len(array,IK),SKG)                                :: choice(s1)
     end function
 #endif
 
@@ -587,11 +587,11 @@ module pm_arrayChoice
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getChoiceRNGD_D1_D1_SK4
 #endif
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
         integer(IK)                 , intent(in)                    :: s1
         logical(LK)                 , intent(in)    , optional      :: unique
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
-        character(len(array,IK),SKC)                                :: choice(s1)
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
+        character(len(array,IK),SKG)                                :: choice(s1)
     end function
 #endif
 
@@ -600,11 +600,11 @@ module pm_arrayChoice
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getChoiceRNGD_D1_D1_SK3
 #endif
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
         integer(IK)                 , intent(in)                    :: s1
         logical(LK)                 , intent(in)    , optional      :: unique
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
-        character(len(array,IK),SKC)                                :: choice(s1)
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
+        character(len(array,IK),SKG)                                :: choice(s1)
     end function
 #endif
 
@@ -613,11 +613,11 @@ module pm_arrayChoice
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getChoiceRNGD_D1_D1_SK2
 #endif
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
         integer(IK)                 , intent(in)                    :: s1
         logical(LK)                 , intent(in)    , optional      :: unique
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
-        character(len(array,IK),SKC)                                :: choice(s1)
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
+        character(len(array,IK),SKG)                                :: choice(s1)
     end function
 #endif
 
@@ -626,11 +626,11 @@ module pm_arrayChoice
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getChoiceRNGD_D1_D1_SK1
 #endif
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
         integer(IK)                 , intent(in)                    :: s1
         logical(LK)                 , intent(in)    , optional      :: unique
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
-        character(len(array,IK),SKC)                                :: choice(s1)
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
+        character(len(array,IK),SKG)                                :: choice(s1)
     end function
 #endif
 
@@ -641,11 +641,11 @@ module pm_arrayChoice
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getChoiceRNGD_D1_D1_IK5
 #endif
-        use pm_kind, only: IKC => IK5
+        use pm_kind, only: IKG => IK5
         integer(IK)                 , intent(in)                    :: s1
         logical(LK)                 , intent(in)    , optional      :: unique
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
-        integer(IKC)                                                :: choice(s1)
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
+        integer(IKG)                                                :: choice(s1)
     end function
 #endif
 
@@ -654,11 +654,11 @@ module pm_arrayChoice
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getChoiceRNGD_D1_D1_IK4
 #endif
-        use pm_kind, only: IKC => IK4
+        use pm_kind, only: IKG => IK4
         integer(IK)                 , intent(in)                    :: s1
         logical(LK)                 , intent(in)    , optional      :: unique
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
-        integer(IKC)                                                :: choice(s1)
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
+        integer(IKG)                                                :: choice(s1)
     end function
 #endif
 
@@ -667,11 +667,11 @@ module pm_arrayChoice
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getChoiceRNGD_D1_D1_IK3
 #endif
-        use pm_kind, only: IKC => IK3
+        use pm_kind, only: IKG => IK3
         integer(IK)                 , intent(in)                    :: s1
         logical(LK)                 , intent(in)    , optional      :: unique
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
-        integer(IKC)                                                :: choice(s1)
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
+        integer(IKG)                                                :: choice(s1)
     end function
 #endif
 
@@ -680,11 +680,11 @@ module pm_arrayChoice
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getChoiceRNGD_D1_D1_IK2
 #endif
-        use pm_kind, only: IKC => IK2
+        use pm_kind, only: IKG => IK2
         integer(IK)                 , intent(in)                    :: s1
         logical(LK)                 , intent(in)    , optional      :: unique
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
-        integer(IKC)                                                :: choice(s1)
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
+        integer(IKG)                                                :: choice(s1)
     end function
 #endif
 
@@ -693,11 +693,11 @@ module pm_arrayChoice
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getChoiceRNGD_D1_D1_IK1
 #endif
-        use pm_kind, only: IKC => IK1
+        use pm_kind, only: IKG => IK1
         integer(IK)                 , intent(in)                    :: s1
         logical(LK)                 , intent(in)    , optional      :: unique
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
-        integer(IKC)                                                :: choice(s1)
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
+        integer(IKG)                                                :: choice(s1)
     end function
 #endif
 
@@ -708,11 +708,11 @@ module pm_arrayChoice
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getChoiceRNGD_D1_D1_LK5
 #endif
-        use pm_kind, only: LKC => LK5
+        use pm_kind, only: LKG => LK5
         integer(IK)                 , intent(in)                    :: s1
         logical(LK)                 , intent(in)    , optional      :: unique
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
-        logical(LKC)                                                :: choice(s1)
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
+        logical(LKG)                                                :: choice(s1)
     end function
 #endif
 
@@ -721,11 +721,11 @@ module pm_arrayChoice
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getChoiceRNGD_D1_D1_LK4
 #endif
-        use pm_kind, only: LKC => LK4
+        use pm_kind, only: LKG => LK4
         integer(IK)                 , intent(in)                    :: s1
         logical(LK)                 , intent(in)    , optional      :: unique
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
-        logical(LKC)                                                :: choice(s1)
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
+        logical(LKG)                                                :: choice(s1)
     end function
 #endif
 
@@ -734,11 +734,11 @@ module pm_arrayChoice
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getChoiceRNGD_D1_D1_LK3
 #endif
-        use pm_kind, only: LKC => LK3
+        use pm_kind, only: LKG => LK3
         integer(IK)                 , intent(in)                    :: s1
         logical(LK)                 , intent(in)    , optional      :: unique
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
-        logical(LKC)                                                :: choice(s1)
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
+        logical(LKG)                                                :: choice(s1)
     end function
 #endif
 
@@ -747,11 +747,11 @@ module pm_arrayChoice
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getChoiceRNGD_D1_D1_LK2
 #endif
-        use pm_kind, only: LKC => LK2
+        use pm_kind, only: LKG => LK2
         integer(IK)                 , intent(in)                    :: s1
         logical(LK)                 , intent(in)    , optional      :: unique
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
-        logical(LKC)                                                :: choice(s1)
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
+        logical(LKG)                                                :: choice(s1)
     end function
 #endif
 
@@ -760,11 +760,11 @@ module pm_arrayChoice
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getChoiceRNGD_D1_D1_LK1
 #endif
-        use pm_kind, only: LKC => LK1
+        use pm_kind, only: LKG => LK1
         integer(IK)                 , intent(in)                    :: s1
         logical(LK)                 , intent(in)    , optional      :: unique
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
-        logical(LKC)                                                :: choice(s1)
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
+        logical(LKG)                                                :: choice(s1)
     end function
 #endif
 
@@ -775,11 +775,11 @@ module pm_arrayChoice
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getChoiceRNGD_D1_D1_CK5
 #endif
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
         integer(IK)                 , intent(in)                    :: s1
         logical(LK)                 , intent(in)    , optional      :: unique
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
-        complex(CKC)                                                :: choice(s1)
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
+        complex(CKG)                                                :: choice(s1)
     end function
 #endif
 
@@ -788,11 +788,11 @@ module pm_arrayChoice
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getChoiceRNGD_D1_D1_CK4
 #endif
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
         integer(IK)                 , intent(in)                    :: s1
         logical(LK)                 , intent(in)    , optional      :: unique
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
-        complex(CKC)                                                :: choice(s1)
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
+        complex(CKG)                                                :: choice(s1)
     end function
 #endif
 
@@ -801,11 +801,11 @@ module pm_arrayChoice
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getChoiceRNGD_D1_D1_CK3
 #endif
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
         integer(IK)                 , intent(in)                    :: s1
         logical(LK)                 , intent(in)    , optional      :: unique
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
-        complex(CKC)                                                :: choice(s1)
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
+        complex(CKG)                                                :: choice(s1)
     end function
 #endif
 
@@ -814,11 +814,11 @@ module pm_arrayChoice
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getChoiceRNGD_D1_D1_CK2
 #endif
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
         integer(IK)                 , intent(in)                    :: s1
         logical(LK)                 , intent(in)    , optional      :: unique
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
-        complex(CKC)                                                :: choice(s1)
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
+        complex(CKG)                                                :: choice(s1)
     end function
 #endif
 
@@ -827,11 +827,11 @@ module pm_arrayChoice
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getChoiceRNGD_D1_D1_CK1
 #endif
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
         integer(IK)                 , intent(in)                    :: s1
         logical(LK)                 , intent(in)    , optional      :: unique
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
-        complex(CKC)                                                :: choice(s1)
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
+        complex(CKG)                                                :: choice(s1)
     end function
 #endif
 
@@ -842,11 +842,11 @@ module pm_arrayChoice
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getChoiceRNGD_D1_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         integer(IK)                 , intent(in)                    :: s1
         logical(LK)                 , intent(in)    , optional      :: unique
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
-        real(RKC)                                                   :: choice(s1)
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
+        real(RKG)                                                   :: choice(s1)
     end function
 #endif
 
@@ -855,11 +855,11 @@ module pm_arrayChoice
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getChoiceRNGD_D1_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         integer(IK)                 , intent(in)                    :: s1
         logical(LK)                 , intent(in)    , optional      :: unique
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
-        real(RKC)                                                   :: choice(s1)
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
+        real(RKG)                                                   :: choice(s1)
     end function
 #endif
 
@@ -868,11 +868,11 @@ module pm_arrayChoice
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getChoiceRNGD_D1_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         integer(IK)                 , intent(in)                    :: s1
         logical(LK)                 , intent(in)    , optional      :: unique
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
-        real(RKC)                                                   :: choice(s1)
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
+        real(RKG)                                                   :: choice(s1)
     end function
 #endif
 
@@ -881,11 +881,11 @@ module pm_arrayChoice
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getChoiceRNGD_D1_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         integer(IK)                 , intent(in)                    :: s1
         logical(LK)                 , intent(in)    , optional      :: unique
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
-        real(RKC)                                                   :: choice(s1)
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
+        real(RKG)                                                   :: choice(s1)
     end function
 #endif
 
@@ -894,11 +894,11 @@ module pm_arrayChoice
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getChoiceRNGD_D1_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         integer(IK)                 , intent(in)                    :: s1
         logical(LK)                 , intent(in)    , optional      :: unique
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
-        real(RKC)                                                   :: choice(s1)
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
+        real(RKG)                                                   :: choice(s1)
     end function
 #endif
 
@@ -1001,10 +1001,10 @@ module pm_arrayChoice
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setChoiceRNGF_D0_D0_SK5
 #endif
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
         logical(LK)                 , intent(in)    , optional      :: unique
-        character(*,SKC)            , intent(in)                    :: array
-        character(*,SKC)            , intent(out)                   :: choice
+        character(*,SKG)            , intent(in)                    :: array
+        character(*,SKG)            , intent(out)                   :: choice
         type(rngf_type)             , intent(in)                    :: rng
     end subroutine
 #endif
@@ -1014,10 +1014,10 @@ module pm_arrayChoice
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setChoiceRNGF_D0_D0_SK4
 #endif
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
         logical(LK)                 , intent(in)    , optional      :: unique
-        character(*,SKC)            , intent(in)                    :: array
-        character(*,SKC)            , intent(out)                   :: choice
+        character(*,SKG)            , intent(in)                    :: array
+        character(*,SKG)            , intent(out)                   :: choice
         type(rngf_type)             , intent(in)                    :: rng
     end subroutine
 #endif
@@ -1027,10 +1027,10 @@ module pm_arrayChoice
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setChoiceRNGF_D0_D0_SK3
 #endif
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
         logical(LK)                 , intent(in)    , optional      :: unique
-        character(*,SKC)            , intent(in)                    :: array
-        character(*,SKC)            , intent(out)                   :: choice
+        character(*,SKG)            , intent(in)                    :: array
+        character(*,SKG)            , intent(out)                   :: choice
         type(rngf_type)             , intent(in)                    :: rng
     end subroutine
 #endif
@@ -1040,10 +1040,10 @@ module pm_arrayChoice
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setChoiceRNGF_D0_D0_SK2
 #endif
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
         logical(LK)                 , intent(in)    , optional      :: unique
-        character(*,SKC)            , intent(in)                    :: array
-        character(*,SKC)            , intent(out)                   :: choice
+        character(*,SKG)            , intent(in)                    :: array
+        character(*,SKG)            , intent(out)                   :: choice
         type(rngf_type)             , intent(in)                    :: rng
     end subroutine
 #endif
@@ -1053,10 +1053,10 @@ module pm_arrayChoice
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setChoiceRNGF_D0_D0_SK1
 #endif
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
         logical(LK)                 , intent(in)    , optional      :: unique
-        character(*,SKC)            , intent(in)                    :: array
-        character(*,SKC)            , intent(out)                   :: choice
+        character(*,SKG)            , intent(in)                    :: array
+        character(*,SKG)            , intent(out)                   :: choice
         type(rngf_type)             , intent(in)                    :: rng
     end subroutine
 #endif
@@ -1074,9 +1074,9 @@ module pm_arrayChoice
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setChoiceRNGF_D1_D0_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
-        character(len(array,IK),SKC), intent(out)                   :: choice
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
+        character(len(array,IK),SKG), intent(out)                   :: choice
         type(rngf_type)             , intent(in)                    :: rng
     end subroutine
 #endif
@@ -1086,9 +1086,9 @@ module pm_arrayChoice
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setChoiceRNGF_D1_D0_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
-        character(len(array,IK),SKC), intent(out)                   :: choice
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
+        character(len(array,IK),SKG), intent(out)                   :: choice
         type(rngf_type)             , intent(in)                    :: rng
     end subroutine
 #endif
@@ -1098,9 +1098,9 @@ module pm_arrayChoice
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setChoiceRNGF_D1_D0_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
-        character(len(array,IK),SKC), intent(out)                   :: choice
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
+        character(len(array,IK),SKG), intent(out)                   :: choice
         type(rngf_type)             , intent(in)                    :: rng
     end subroutine
 #endif
@@ -1110,9 +1110,9 @@ module pm_arrayChoice
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setChoiceRNGF_D1_D0_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
-        character(len(array,IK),SKC), intent(out)                   :: choice
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
+        character(len(array,IK),SKG), intent(out)                   :: choice
         type(rngf_type)             , intent(in)                    :: rng
     end subroutine
 #endif
@@ -1122,9 +1122,9 @@ module pm_arrayChoice
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setChoiceRNGF_D1_D0_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
-        character(len(array,IK),SKC), intent(out)                   :: choice
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
+        character(len(array,IK),SKG), intent(out)                   :: choice
         type(rngf_type)             , intent(in)                    :: rng
     end subroutine
 #endif
@@ -1136,9 +1136,9 @@ module pm_arrayChoice
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setChoiceRNGF_D1_D0_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
-        integer(IKC)                , intent(out)                   :: choice
+        use pm_kind, only: IKG => IK5
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
+        integer(IKG)                , intent(out)                   :: choice
         type(rngf_type)             , intent(in)                    :: rng
     end subroutine
 #endif
@@ -1148,9 +1148,9 @@ module pm_arrayChoice
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setChoiceRNGF_D1_D0_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
-        integer(IKC)                , intent(out)                   :: choice
+        use pm_kind, only: IKG => IK4
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
+        integer(IKG)                , intent(out)                   :: choice
         type(rngf_type)             , intent(in)                    :: rng
     end subroutine
 #endif
@@ -1160,9 +1160,9 @@ module pm_arrayChoice
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setChoiceRNGF_D1_D0_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
-        integer(IKC)                , intent(out)                   :: choice
+        use pm_kind, only: IKG => IK3
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
+        integer(IKG)                , intent(out)                   :: choice
         type(rngf_type)             , intent(in)                    :: rng
     end subroutine
 #endif
@@ -1172,9 +1172,9 @@ module pm_arrayChoice
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setChoiceRNGF_D1_D0_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
-        integer(IKC)                , intent(out)                   :: choice
+        use pm_kind, only: IKG => IK2
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
+        integer(IKG)                , intent(out)                   :: choice
         type(rngf_type)             , intent(in)                    :: rng
     end subroutine
 #endif
@@ -1184,9 +1184,9 @@ module pm_arrayChoice
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setChoiceRNGF_D1_D0_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
-        integer(IKC)                , intent(out)                   :: choice
+        use pm_kind, only: IKG => IK1
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
+        integer(IKG)                , intent(out)                   :: choice
         type(rngf_type)             , intent(in)                    :: rng
     end subroutine
 #endif
@@ -1198,9 +1198,9 @@ module pm_arrayChoice
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setChoiceRNGF_D1_D0_LK5
 #endif
-        use pm_kind, only: LKC => LK5
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
-        logical(LKC)                , intent(out)                   :: choice
+        use pm_kind, only: LKG => LK5
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
+        logical(LKG)                , intent(out)                   :: choice
         type(rngf_type)             , intent(in)                    :: rng
     end subroutine
 #endif
@@ -1210,9 +1210,9 @@ module pm_arrayChoice
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setChoiceRNGF_D1_D0_LK4
 #endif
-        use pm_kind, only: LKC => LK4
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
-        logical(LKC)                , intent(out)                   :: choice
+        use pm_kind, only: LKG => LK4
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
+        logical(LKG)                , intent(out)                   :: choice
         type(rngf_type)             , intent(in)                    :: rng
     end subroutine
 #endif
@@ -1222,9 +1222,9 @@ module pm_arrayChoice
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setChoiceRNGF_D1_D0_LK3
 #endif
-        use pm_kind, only: LKC => LK3
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
-        logical(LKC)                , intent(out)                   :: choice
+        use pm_kind, only: LKG => LK3
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
+        logical(LKG)                , intent(out)                   :: choice
         type(rngf_type)             , intent(in)                    :: rng
     end subroutine
 #endif
@@ -1234,9 +1234,9 @@ module pm_arrayChoice
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setChoiceRNGF_D1_D0_LK2
 #endif
-        use pm_kind, only: LKC => LK2
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
-        logical(LKC)                , intent(out)                   :: choice
+        use pm_kind, only: LKG => LK2
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
+        logical(LKG)                , intent(out)                   :: choice
         type(rngf_type)             , intent(in)                    :: rng
     end subroutine
 #endif
@@ -1246,9 +1246,9 @@ module pm_arrayChoice
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setChoiceRNGF_D1_D0_LK1
 #endif
-        use pm_kind, only: LKC => LK1
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
-        logical(LKC)                , intent(out)                   :: choice
+        use pm_kind, only: LKG => LK1
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
+        logical(LKG)                , intent(out)                   :: choice
         type(rngf_type)             , intent(in)                    :: rng
     end subroutine
 #endif
@@ -1260,9 +1260,9 @@ module pm_arrayChoice
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setChoiceRNGF_D1_D0_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
-        complex(CKC)                , intent(out)                   :: choice
+        use pm_kind, only: CKG => CK5
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
+        complex(CKG)                , intent(out)                   :: choice
         type(rngf_type)             , intent(in)                    :: rng
     end subroutine
 #endif
@@ -1272,9 +1272,9 @@ module pm_arrayChoice
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setChoiceRNGF_D1_D0_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
-        complex(CKC)                , intent(out)                   :: choice
+        use pm_kind, only: CKG => CK4
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
+        complex(CKG)                , intent(out)                   :: choice
         type(rngf_type)             , intent(in)                    :: rng
     end subroutine
 #endif
@@ -1284,9 +1284,9 @@ module pm_arrayChoice
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setChoiceRNGF_D1_D0_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
-        complex(CKC)                , intent(out)                   :: choice
+        use pm_kind, only: CKG => CK3
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
+        complex(CKG)                , intent(out)                   :: choice
         type(rngf_type)             , intent(in)                    :: rng
     end subroutine
 #endif
@@ -1296,9 +1296,9 @@ module pm_arrayChoice
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setChoiceRNGF_D1_D0_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
-        complex(CKC)                , intent(out)                   :: choice
+        use pm_kind, only: CKG => CK2
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
+        complex(CKG)                , intent(out)                   :: choice
         type(rngf_type)             , intent(in)                    :: rng
     end subroutine
 #endif
@@ -1308,9 +1308,9 @@ module pm_arrayChoice
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setChoiceRNGF_D1_D0_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
-        complex(CKC)                , intent(out)                   :: choice
+        use pm_kind, only: CKG => CK1
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
+        complex(CKG)                , intent(out)                   :: choice
         type(rngf_type)             , intent(in)                    :: rng
     end subroutine
 #endif
@@ -1322,9 +1322,9 @@ module pm_arrayChoice
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setChoiceRNGF_D1_D0_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
-        real(RKC)                   , intent(out)                   :: choice
+        use pm_kind, only: RKG => RK5
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
+        real(RKG)                   , intent(out)                   :: choice
         type(rngf_type)             , intent(in)                    :: rng
     end subroutine
 #endif
@@ -1334,9 +1334,9 @@ module pm_arrayChoice
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setChoiceRNGF_D1_D0_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
-        real(RKC)                   , intent(out)                   :: choice
+        use pm_kind, only: RKG => RK4
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
+        real(RKG)                   , intent(out)                   :: choice
         type(rngf_type)             , intent(in)                    :: rng
     end subroutine
 #endif
@@ -1346,9 +1346,9 @@ module pm_arrayChoice
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setChoiceRNGF_D1_D0_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
-        real(RKC)                   , intent(out)                   :: choice
+        use pm_kind, only: RKG => RK3
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
+        real(RKG)                   , intent(out)                   :: choice
         type(rngf_type)             , intent(in)                    :: rng
     end subroutine
 #endif
@@ -1358,9 +1358,9 @@ module pm_arrayChoice
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setChoiceRNGF_D1_D0_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
-        real(RKC)                   , intent(out)                   :: choice
+        use pm_kind, only: RKG => RK2
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
+        real(RKG)                   , intent(out)                   :: choice
         type(rngf_type)             , intent(in)                    :: rng
     end subroutine
 #endif
@@ -1370,9 +1370,9 @@ module pm_arrayChoice
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setChoiceRNGF_D1_D0_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
-        real(RKC)                   , intent(out)                   :: choice
+        use pm_kind, only: RKG => RK1
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
+        real(RKG)                   , intent(out)                   :: choice
         type(rngf_type)             , intent(in)                    :: rng
     end subroutine
 #endif
@@ -1390,10 +1390,10 @@ module pm_arrayChoice
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setChoiceRNGF_D1_D1_SK5
 #endif
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
         logical(LK)                 , intent(in)    , optional      :: unique
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
-        character(len(array,IK),SKC), intent(out)   , contiguous    :: choice(:)
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
+        character(len(array,IK),SKG), intent(out)   , contiguous    :: choice(:)
         type(rngf_type)             , intent(in)                    :: rng
     end subroutine
 #endif
@@ -1403,10 +1403,10 @@ module pm_arrayChoice
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setChoiceRNGF_D1_D1_SK4
 #endif
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
         logical(LK)                 , intent(in)    , optional      :: unique
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
-        character(len(array,IK),SKC), intent(out)   , contiguous    :: choice(:)
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
+        character(len(array,IK),SKG), intent(out)   , contiguous    :: choice(:)
         type(rngf_type)             , intent(in)                    :: rng
     end subroutine
 #endif
@@ -1416,10 +1416,10 @@ module pm_arrayChoice
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setChoiceRNGF_D1_D1_SK3
 #endif
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
         logical(LK)                 , intent(in)    , optional      :: unique
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
-        character(len(array,IK),SKC), intent(out)   , contiguous    :: choice(:)
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
+        character(len(array,IK),SKG), intent(out)   , contiguous    :: choice(:)
         type(rngf_type)             , intent(in)                    :: rng
     end subroutine
 #endif
@@ -1429,10 +1429,10 @@ module pm_arrayChoice
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setChoiceRNGF_D1_D1_SK2
 #endif
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
         logical(LK)                 , intent(in)    , optional      :: unique
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
-        character(len(array,IK),SKC), intent(out)   , contiguous    :: choice(:)
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
+        character(len(array,IK),SKG), intent(out)   , contiguous    :: choice(:)
         type(rngf_type)             , intent(in)                    :: rng
     end subroutine
 #endif
@@ -1442,10 +1442,10 @@ module pm_arrayChoice
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setChoiceRNGF_D1_D1_SK1
 #endif
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
         logical(LK)                 , intent(in)    , optional      :: unique
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
-        character(len(array,IK),SKC), intent(out)   , contiguous    :: choice(:)
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
+        character(len(array,IK),SKG), intent(out)   , contiguous    :: choice(:)
         type(rngf_type)             , intent(in)                    :: rng
     end subroutine
 #endif
@@ -1457,10 +1457,10 @@ module pm_arrayChoice
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setChoiceRNGF_D1_D1_IK5
 #endif
-        use pm_kind, only: IKC => IK5
+        use pm_kind, only: IKG => IK5
         logical(LK)                 , intent(in)    , optional      :: unique
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
-        integer(IKC)                , intent(out)   , contiguous    :: choice(:)
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
+        integer(IKG)                , intent(out)   , contiguous    :: choice(:)
         type(rngf_type)             , intent(in)                    :: rng
     end subroutine
 #endif
@@ -1470,10 +1470,10 @@ module pm_arrayChoice
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setChoiceRNGF_D1_D1_IK4
 #endif
-        use pm_kind, only: IKC => IK4
+        use pm_kind, only: IKG => IK4
         logical(LK)                 , intent(in)    , optional      :: unique
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
-        integer(IKC)                , intent(out)   , contiguous    :: choice(:)
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
+        integer(IKG)                , intent(out)   , contiguous    :: choice(:)
         type(rngf_type)             , intent(in)                    :: rng
     end subroutine
 #endif
@@ -1483,10 +1483,10 @@ module pm_arrayChoice
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setChoiceRNGF_D1_D1_IK3
 #endif
-        use pm_kind, only: IKC => IK3
+        use pm_kind, only: IKG => IK3
         logical(LK)                 , intent(in)    , optional      :: unique
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
-        integer(IKC)                , intent(out)   , contiguous    :: choice(:)
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
+        integer(IKG)                , intent(out)   , contiguous    :: choice(:)
         type(rngf_type)             , intent(in)                    :: rng
     end subroutine
 #endif
@@ -1496,10 +1496,10 @@ module pm_arrayChoice
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setChoiceRNGF_D1_D1_IK2
 #endif
-        use pm_kind, only: IKC => IK2
+        use pm_kind, only: IKG => IK2
         logical(LK)                 , intent(in)    , optional      :: unique
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
-        integer(IKC)                , intent(out)   , contiguous    :: choice(:)
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
+        integer(IKG)                , intent(out)   , contiguous    :: choice(:)
         type(rngf_type)             , intent(in)                    :: rng
     end subroutine
 #endif
@@ -1509,10 +1509,10 @@ module pm_arrayChoice
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setChoiceRNGF_D1_D1_IK1
 #endif
-        use pm_kind, only: IKC => IK1
+        use pm_kind, only: IKG => IK1
         logical(LK)                 , intent(in)    , optional      :: unique
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
-        integer(IKC)                , intent(out)   , contiguous    :: choice(:)
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
+        integer(IKG)                , intent(out)   , contiguous    :: choice(:)
         type(rngf_type)             , intent(in)                    :: rng
     end subroutine
 #endif
@@ -1524,10 +1524,10 @@ module pm_arrayChoice
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setChoiceRNGF_D1_D1_LK5
 #endif
-        use pm_kind, only: LKC => LK5
+        use pm_kind, only: LKG => LK5
         logical(LK)                 , intent(in)    , optional      :: unique
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
-        logical(LKC)                , intent(out)   , contiguous    :: choice(:)
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
+        logical(LKG)                , intent(out)   , contiguous    :: choice(:)
         type(rngf_type)             , intent(in)                    :: rng
     end subroutine
 #endif
@@ -1537,10 +1537,10 @@ module pm_arrayChoice
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setChoiceRNGF_D1_D1_LK4
 #endif
-        use pm_kind, only: LKC => LK4
+        use pm_kind, only: LKG => LK4
         logical(LK)                 , intent(in)    , optional      :: unique
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
-        logical(LKC)                , intent(out)   , contiguous    :: choice(:)
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
+        logical(LKG)                , intent(out)   , contiguous    :: choice(:)
         type(rngf_type)             , intent(in)                    :: rng
     end subroutine
 #endif
@@ -1550,10 +1550,10 @@ module pm_arrayChoice
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setChoiceRNGF_D1_D1_LK3
 #endif
-        use pm_kind, only: LKC => LK3
+        use pm_kind, only: LKG => LK3
         logical(LK)                 , intent(in)    , optional      :: unique
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
-        logical(LKC)                , intent(out)   , contiguous    :: choice(:)
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
+        logical(LKG)                , intent(out)   , contiguous    :: choice(:)
         type(rngf_type)             , intent(in)                    :: rng
     end subroutine
 #endif
@@ -1563,10 +1563,10 @@ module pm_arrayChoice
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setChoiceRNGF_D1_D1_LK2
 #endif
-        use pm_kind, only: LKC => LK2
+        use pm_kind, only: LKG => LK2
         logical(LK)                 , intent(in)    , optional      :: unique
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
-        logical(LKC)                , intent(out)   , contiguous    :: choice(:)
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
+        logical(LKG)                , intent(out)   , contiguous    :: choice(:)
         type(rngf_type)             , intent(in)                    :: rng
     end subroutine
 #endif
@@ -1576,10 +1576,10 @@ module pm_arrayChoice
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setChoiceRNGF_D1_D1_LK1
 #endif
-        use pm_kind, only: LKC => LK1
+        use pm_kind, only: LKG => LK1
         logical(LK)                 , intent(in)    , optional      :: unique
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
-        logical(LKC)                , intent(out)   , contiguous    :: choice(:)
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
+        logical(LKG)                , intent(out)   , contiguous    :: choice(:)
         type(rngf_type)             , intent(in)                    :: rng
     end subroutine
 #endif
@@ -1591,10 +1591,10 @@ module pm_arrayChoice
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setChoiceRNGF_D1_D1_CK5
 #endif
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
         logical(LK)                 , intent(in)    , optional      :: unique
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
-        complex(CKC)                , intent(out)   , contiguous    :: choice(:)
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
+        complex(CKG)                , intent(out)   , contiguous    :: choice(:)
         type(rngf_type)             , intent(in)                    :: rng
     end subroutine
 #endif
@@ -1604,10 +1604,10 @@ module pm_arrayChoice
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setChoiceRNGF_D1_D1_CK4
 #endif
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
         logical(LK)                 , intent(in)    , optional      :: unique
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
-        complex(CKC)                , intent(out)   , contiguous    :: choice(:)
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
+        complex(CKG)                , intent(out)   , contiguous    :: choice(:)
         type(rngf_type)             , intent(in)                    :: rng
     end subroutine
 #endif
@@ -1617,10 +1617,10 @@ module pm_arrayChoice
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setChoiceRNGF_D1_D1_CK3
 #endif
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
         logical(LK)                 , intent(in)    , optional      :: unique
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
-        complex(CKC)                , intent(out)   , contiguous    :: choice(:)
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
+        complex(CKG)                , intent(out)   , contiguous    :: choice(:)
         type(rngf_type)             , intent(in)                    :: rng
     end subroutine
 #endif
@@ -1630,10 +1630,10 @@ module pm_arrayChoice
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setChoiceRNGF_D1_D1_CK2
 #endif
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
         logical(LK)                 , intent(in)    , optional      :: unique
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
-        complex(CKC)                , intent(out)   , contiguous    :: choice(:)
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
+        complex(CKG)                , intent(out)   , contiguous    :: choice(:)
         type(rngf_type)             , intent(in)                    :: rng
     end subroutine
 #endif
@@ -1643,10 +1643,10 @@ module pm_arrayChoice
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setChoiceRNGF_D1_D1_CK1
 #endif
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
         logical(LK)                 , intent(in)    , optional      :: unique
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
-        complex(CKC)                , intent(out)   , contiguous    :: choice(:)
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
+        complex(CKG)                , intent(out)   , contiguous    :: choice(:)
         type(rngf_type)             , intent(in)                    :: rng
     end subroutine
 #endif
@@ -1658,10 +1658,10 @@ module pm_arrayChoice
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setChoiceRNGF_D1_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         logical(LK)                 , intent(in)    , optional      :: unique
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
-        real(RKC)                   , intent(out)   , contiguous    :: choice(:)
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
+        real(RKG)                   , intent(out)   , contiguous    :: choice(:)
         type(rngf_type)             , intent(in)                    :: rng
     end subroutine
 #endif
@@ -1671,10 +1671,10 @@ module pm_arrayChoice
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setChoiceRNGF_D1_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         logical(LK)                 , intent(in)    , optional      :: unique
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
-        real(RKC)                   , intent(out)   , contiguous    :: choice(:)
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
+        real(RKG)                   , intent(out)   , contiguous    :: choice(:)
         type(rngf_type)             , intent(in)                    :: rng
     end subroutine
 #endif
@@ -1684,10 +1684,10 @@ module pm_arrayChoice
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setChoiceRNGF_D1_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         logical(LK)                 , intent(in)    , optional      :: unique
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
-        real(RKC)                   , intent(out)   , contiguous    :: choice(:)
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
+        real(RKG)                   , intent(out)   , contiguous    :: choice(:)
         type(rngf_type)             , intent(in)                    :: rng
     end subroutine
 #endif
@@ -1697,10 +1697,10 @@ module pm_arrayChoice
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setChoiceRNGF_D1_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         logical(LK)                 , intent(in)    , optional      :: unique
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
-        real(RKC)                   , intent(out)   , contiguous    :: choice(:)
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
+        real(RKG)                   , intent(out)   , contiguous    :: choice(:)
         type(rngf_type)             , intent(in)                    :: rng
     end subroutine
 #endif
@@ -1710,10 +1710,10 @@ module pm_arrayChoice
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setChoiceRNGF_D1_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         logical(LK)                 , intent(in)    , optional      :: unique
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
-        real(RKC)                   , intent(out)   , contiguous    :: choice(:)
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
+        real(RKG)                   , intent(out)   , contiguous    :: choice(:)
         type(rngf_type)             , intent(in)                    :: rng
     end subroutine
 #endif
@@ -1735,10 +1735,10 @@ module pm_arrayChoice
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setChoiceRNGX_D0_D0_SK5
 #endif
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
         logical(LK)                 , intent(in)    , optional      :: unique
-        character(*,SKC)            , intent(in)                    :: array
-        character(*,SKC)            , intent(out)                   :: choice
+        character(*,SKG)            , intent(in)                    :: array
+        character(*,SKG)            , intent(out)                   :: choice
         type(xoshiro256ssw_type)    , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -1748,10 +1748,10 @@ module pm_arrayChoice
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setChoiceRNGX_D0_D0_SK4
 #endif
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
         logical(LK)                 , intent(in)    , optional      :: unique
-        character(*,SKC)            , intent(in)                    :: array
-        character(*,SKC)            , intent(out)                   :: choice
+        character(*,SKG)            , intent(in)                    :: array
+        character(*,SKG)            , intent(out)                   :: choice
         type(xoshiro256ssw_type)    , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -1761,10 +1761,10 @@ module pm_arrayChoice
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setChoiceRNGX_D0_D0_SK3
 #endif
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
         logical(LK)                 , intent(in)    , optional      :: unique
-        character(*,SKC)            , intent(in)                    :: array
-        character(*,SKC)            , intent(out)                   :: choice
+        character(*,SKG)            , intent(in)                    :: array
+        character(*,SKG)            , intent(out)                   :: choice
         type(xoshiro256ssw_type)    , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -1774,10 +1774,10 @@ module pm_arrayChoice
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setChoiceRNGX_D0_D0_SK2
 #endif
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
         logical(LK)                 , intent(in)    , optional      :: unique
-        character(*,SKC)            , intent(in)                    :: array
-        character(*,SKC)            , intent(out)                   :: choice
+        character(*,SKG)            , intent(in)                    :: array
+        character(*,SKG)            , intent(out)                   :: choice
         type(xoshiro256ssw_type)    , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -1787,10 +1787,10 @@ module pm_arrayChoice
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setChoiceRNGX_D0_D0_SK1
 #endif
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
         logical(LK)                 , intent(in)    , optional      :: unique
-        character(*,SKC)            , intent(in)                    :: array
-        character(*,SKC)            , intent(out)                   :: choice
+        character(*,SKG)            , intent(in)                    :: array
+        character(*,SKG)            , intent(out)                   :: choice
         type(xoshiro256ssw_type)    , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -1808,9 +1808,9 @@ module pm_arrayChoice
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setChoiceRNGX_D1_D0_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
-        character(len(array,IK),SKC), intent(out)                   :: choice
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
+        character(len(array,IK),SKG), intent(out)                   :: choice
         type(xoshiro256ssw_type)    , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -1820,9 +1820,9 @@ module pm_arrayChoice
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setChoiceRNGX_D1_D0_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
-        character(len(array,IK),SKC), intent(out)                   :: choice
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
+        character(len(array,IK),SKG), intent(out)                   :: choice
         type(xoshiro256ssw_type)    , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -1832,9 +1832,9 @@ module pm_arrayChoice
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setChoiceRNGX_D1_D0_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
-        character(len(array,IK),SKC), intent(out)                   :: choice
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
+        character(len(array,IK),SKG), intent(out)                   :: choice
         type(xoshiro256ssw_type)    , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -1844,9 +1844,9 @@ module pm_arrayChoice
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setChoiceRNGX_D1_D0_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
-        character(len(array,IK),SKC), intent(out)                   :: choice
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
+        character(len(array,IK),SKG), intent(out)                   :: choice
         type(xoshiro256ssw_type)    , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -1856,9 +1856,9 @@ module pm_arrayChoice
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setChoiceRNGX_D1_D0_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
-        character(len(array,IK),SKC), intent(out)                   :: choice
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
+        character(len(array,IK),SKG), intent(out)                   :: choice
         type(xoshiro256ssw_type)    , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -1870,9 +1870,9 @@ module pm_arrayChoice
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setChoiceRNGX_D1_D0_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
-        integer(IKC)                , intent(out)                   :: choice
+        use pm_kind, only: IKG => IK5
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
+        integer(IKG)                , intent(out)                   :: choice
         type(xoshiro256ssw_type)    , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -1882,9 +1882,9 @@ module pm_arrayChoice
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setChoiceRNGX_D1_D0_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
-        integer(IKC)                , intent(out)                   :: choice
+        use pm_kind, only: IKG => IK4
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
+        integer(IKG)                , intent(out)                   :: choice
         type(xoshiro256ssw_type)    , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -1894,9 +1894,9 @@ module pm_arrayChoice
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setChoiceRNGX_D1_D0_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
-        integer(IKC)                , intent(out)                   :: choice
+        use pm_kind, only: IKG => IK3
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
+        integer(IKG)                , intent(out)                   :: choice
         type(xoshiro256ssw_type)    , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -1906,9 +1906,9 @@ module pm_arrayChoice
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setChoiceRNGX_D1_D0_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
-        integer(IKC)                , intent(out)                   :: choice
+        use pm_kind, only: IKG => IK2
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
+        integer(IKG)                , intent(out)                   :: choice
         type(xoshiro256ssw_type)    , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -1918,9 +1918,9 @@ module pm_arrayChoice
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setChoiceRNGX_D1_D0_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
-        integer(IKC)                , intent(out)                   :: choice
+        use pm_kind, only: IKG => IK1
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
+        integer(IKG)                , intent(out)                   :: choice
         type(xoshiro256ssw_type)    , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -1932,9 +1932,9 @@ module pm_arrayChoice
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setChoiceRNGX_D1_D0_LK5
 #endif
-        use pm_kind, only: LKC => LK5
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
-        logical(LKC)                , intent(out)                   :: choice
+        use pm_kind, only: LKG => LK5
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
+        logical(LKG)                , intent(out)                   :: choice
         type(xoshiro256ssw_type)    , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -1944,9 +1944,9 @@ module pm_arrayChoice
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setChoiceRNGX_D1_D0_LK4
 #endif
-        use pm_kind, only: LKC => LK4
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
-        logical(LKC)                , intent(out)                   :: choice
+        use pm_kind, only: LKG => LK4
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
+        logical(LKG)                , intent(out)                   :: choice
         type(xoshiro256ssw_type)    , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -1956,9 +1956,9 @@ module pm_arrayChoice
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setChoiceRNGX_D1_D0_LK3
 #endif
-        use pm_kind, only: LKC => LK3
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
-        logical(LKC)                , intent(out)                   :: choice
+        use pm_kind, only: LKG => LK3
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
+        logical(LKG)                , intent(out)                   :: choice
         type(xoshiro256ssw_type)    , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -1968,9 +1968,9 @@ module pm_arrayChoice
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setChoiceRNGX_D1_D0_LK2
 #endif
-        use pm_kind, only: LKC => LK2
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
-        logical(LKC)                , intent(out)                   :: choice
+        use pm_kind, only: LKG => LK2
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
+        logical(LKG)                , intent(out)                   :: choice
         type(xoshiro256ssw_type)    , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -1980,9 +1980,9 @@ module pm_arrayChoice
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setChoiceRNGX_D1_D0_LK1
 #endif
-        use pm_kind, only: LKC => LK1
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
-        logical(LKC)                , intent(out)                   :: choice
+        use pm_kind, only: LKG => LK1
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
+        logical(LKG)                , intent(out)                   :: choice
         type(xoshiro256ssw_type)    , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -1994,9 +1994,9 @@ module pm_arrayChoice
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setChoiceRNGX_D1_D0_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
-        complex(CKC)                , intent(out)                   :: choice
+        use pm_kind, only: CKG => CK5
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
+        complex(CKG)                , intent(out)                   :: choice
         type(xoshiro256ssw_type)    , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -2006,9 +2006,9 @@ module pm_arrayChoice
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setChoiceRNGX_D1_D0_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
-        complex(CKC)                , intent(out)                   :: choice
+        use pm_kind, only: CKG => CK4
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
+        complex(CKG)                , intent(out)                   :: choice
         type(xoshiro256ssw_type)    , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -2018,9 +2018,9 @@ module pm_arrayChoice
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setChoiceRNGX_D1_D0_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
-        complex(CKC)                , intent(out)                   :: choice
+        use pm_kind, only: CKG => CK3
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
+        complex(CKG)                , intent(out)                   :: choice
         type(xoshiro256ssw_type)    , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -2030,9 +2030,9 @@ module pm_arrayChoice
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setChoiceRNGX_D1_D0_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
-        complex(CKC)                , intent(out)                   :: choice
+        use pm_kind, only: CKG => CK2
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
+        complex(CKG)                , intent(out)                   :: choice
         type(xoshiro256ssw_type)    , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -2042,9 +2042,9 @@ module pm_arrayChoice
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setChoiceRNGX_D1_D0_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
-        complex(CKC)                , intent(out)                   :: choice
+        use pm_kind, only: CKG => CK1
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
+        complex(CKG)                , intent(out)                   :: choice
         type(xoshiro256ssw_type)    , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -2056,9 +2056,9 @@ module pm_arrayChoice
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setChoiceRNGX_D1_D0_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
-        real(RKC)                   , intent(out)                   :: choice
+        use pm_kind, only: RKG => RK5
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
+        real(RKG)                   , intent(out)                   :: choice
         type(xoshiro256ssw_type)    , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -2068,9 +2068,9 @@ module pm_arrayChoice
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setChoiceRNGX_D1_D0_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
-        real(RKC)                   , intent(out)                   :: choice
+        use pm_kind, only: RKG => RK4
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
+        real(RKG)                   , intent(out)                   :: choice
         type(xoshiro256ssw_type)    , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -2080,9 +2080,9 @@ module pm_arrayChoice
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setChoiceRNGX_D1_D0_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
-        real(RKC)                   , intent(out)                   :: choice
+        use pm_kind, only: RKG => RK3
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
+        real(RKG)                   , intent(out)                   :: choice
         type(xoshiro256ssw_type)    , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -2092,9 +2092,9 @@ module pm_arrayChoice
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setChoiceRNGX_D1_D0_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
-        real(RKC)                   , intent(out)                   :: choice
+        use pm_kind, only: RKG => RK2
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
+        real(RKG)                   , intent(out)                   :: choice
         type(xoshiro256ssw_type)    , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -2104,9 +2104,9 @@ module pm_arrayChoice
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setChoiceRNGX_D1_D0_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
-        real(RKC)                   , intent(out)                   :: choice
+        use pm_kind, only: RKG => RK1
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
+        real(RKG)                   , intent(out)                   :: choice
         type(xoshiro256ssw_type)    , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -2124,10 +2124,10 @@ module pm_arrayChoice
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setChoiceRNGX_D1_D1_SK5
 #endif
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
         logical(LK)                 , intent(in)    , optional      :: unique
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
-        character(len(array,IK),SKC), intent(out)   , contiguous    :: choice(:)
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
+        character(len(array,IK),SKG), intent(out)   , contiguous    :: choice(:)
         type(xoshiro256ssw_type)    , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -2137,10 +2137,10 @@ module pm_arrayChoice
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setChoiceRNGX_D1_D1_SK4
 #endif
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
         logical(LK)                 , intent(in)    , optional      :: unique
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
-        character(len(array,IK),SKC), intent(out)   , contiguous    :: choice(:)
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
+        character(len(array,IK),SKG), intent(out)   , contiguous    :: choice(:)
         type(xoshiro256ssw_type)    , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -2150,10 +2150,10 @@ module pm_arrayChoice
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setChoiceRNGX_D1_D1_SK3
 #endif
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
         logical(LK)                 , intent(in)    , optional      :: unique
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
-        character(len(array,IK),SKC), intent(out)   , contiguous    :: choice(:)
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
+        character(len(array,IK),SKG), intent(out)   , contiguous    :: choice(:)
         type(xoshiro256ssw_type)    , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -2163,10 +2163,10 @@ module pm_arrayChoice
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setChoiceRNGX_D1_D1_SK2
 #endif
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
         logical(LK)                 , intent(in)    , optional      :: unique
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
-        character(len(array,IK),SKC), intent(out)   , contiguous    :: choice(:)
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
+        character(len(array,IK),SKG), intent(out)   , contiguous    :: choice(:)
         type(xoshiro256ssw_type)    , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -2176,10 +2176,10 @@ module pm_arrayChoice
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setChoiceRNGX_D1_D1_SK1
 #endif
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
         logical(LK)                 , intent(in)    , optional      :: unique
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
-        character(len(array,IK),SKC), intent(out)   , contiguous    :: choice(:)
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
+        character(len(array,IK),SKG), intent(out)   , contiguous    :: choice(:)
         type(xoshiro256ssw_type)    , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -2191,10 +2191,10 @@ module pm_arrayChoice
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setChoiceRNGX_D1_D1_IK5
 #endif
-        use pm_kind, only: IKC => IK5
+        use pm_kind, only: IKG => IK5
         logical(LK)                 , intent(in)    , optional      :: unique
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
-        integer(IKC)                , intent(out)   , contiguous    :: choice(:)
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
+        integer(IKG)                , intent(out)   , contiguous    :: choice(:)
         type(xoshiro256ssw_type)    , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -2204,10 +2204,10 @@ module pm_arrayChoice
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setChoiceRNGX_D1_D1_IK4
 #endif
-        use pm_kind, only: IKC => IK4
+        use pm_kind, only: IKG => IK4
         logical(LK)                 , intent(in)    , optional      :: unique
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
-        integer(IKC)                , intent(out)   , contiguous    :: choice(:)
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
+        integer(IKG)                , intent(out)   , contiguous    :: choice(:)
         type(xoshiro256ssw_type)    , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -2217,10 +2217,10 @@ module pm_arrayChoice
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setChoiceRNGX_D1_D1_IK3
 #endif
-        use pm_kind, only: IKC => IK3
+        use pm_kind, only: IKG => IK3
         logical(LK)                 , intent(in)    , optional      :: unique
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
-        integer(IKC)                , intent(out)   , contiguous    :: choice(:)
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
+        integer(IKG)                , intent(out)   , contiguous    :: choice(:)
         type(xoshiro256ssw_type)    , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -2230,10 +2230,10 @@ module pm_arrayChoice
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setChoiceRNGX_D1_D1_IK2
 #endif
-        use pm_kind, only: IKC => IK2
+        use pm_kind, only: IKG => IK2
         logical(LK)                 , intent(in)    , optional      :: unique
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
-        integer(IKC)                , intent(out)   , contiguous    :: choice(:)
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
+        integer(IKG)                , intent(out)   , contiguous    :: choice(:)
         type(xoshiro256ssw_type)    , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -2243,10 +2243,10 @@ module pm_arrayChoice
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setChoiceRNGX_D1_D1_IK1
 #endif
-        use pm_kind, only: IKC => IK1
+        use pm_kind, only: IKG => IK1
         logical(LK)                 , intent(in)    , optional      :: unique
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
-        integer(IKC)                , intent(out)   , contiguous    :: choice(:)
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
+        integer(IKG)                , intent(out)   , contiguous    :: choice(:)
         type(xoshiro256ssw_type)    , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -2258,10 +2258,10 @@ module pm_arrayChoice
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setChoiceRNGX_D1_D1_LK5
 #endif
-        use pm_kind, only: LKC => LK5
+        use pm_kind, only: LKG => LK5
         logical(LK)                 , intent(in)    , optional      :: unique
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
-        logical(LKC)                , intent(out)   , contiguous    :: choice(:)
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
+        logical(LKG)                , intent(out)   , contiguous    :: choice(:)
         type(xoshiro256ssw_type)    , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -2271,10 +2271,10 @@ module pm_arrayChoice
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setChoiceRNGX_D1_D1_LK4
 #endif
-        use pm_kind, only: LKC => LK4
+        use pm_kind, only: LKG => LK4
         logical(LK)                 , intent(in)    , optional      :: unique
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
-        logical(LKC)                , intent(out)   , contiguous    :: choice(:)
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
+        logical(LKG)                , intent(out)   , contiguous    :: choice(:)
         type(xoshiro256ssw_type)    , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -2284,10 +2284,10 @@ module pm_arrayChoice
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setChoiceRNGX_D1_D1_LK3
 #endif
-        use pm_kind, only: LKC => LK3
+        use pm_kind, only: LKG => LK3
         logical(LK)                 , intent(in)    , optional      :: unique
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
-        logical(LKC)                , intent(out)   , contiguous    :: choice(:)
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
+        logical(LKG)                , intent(out)   , contiguous    :: choice(:)
         type(xoshiro256ssw_type)    , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -2297,10 +2297,10 @@ module pm_arrayChoice
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setChoiceRNGX_D1_D1_LK2
 #endif
-        use pm_kind, only: LKC => LK2
+        use pm_kind, only: LKG => LK2
         logical(LK)                 , intent(in)    , optional      :: unique
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
-        logical(LKC)                , intent(out)   , contiguous    :: choice(:)
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
+        logical(LKG)                , intent(out)   , contiguous    :: choice(:)
         type(xoshiro256ssw_type)    , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -2310,10 +2310,10 @@ module pm_arrayChoice
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setChoiceRNGX_D1_D1_LK1
 #endif
-        use pm_kind, only: LKC => LK1
+        use pm_kind, only: LKG => LK1
         logical(LK)                 , intent(in)    , optional      :: unique
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
-        logical(LKC)                , intent(out)   , contiguous    :: choice(:)
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
+        logical(LKG)                , intent(out)   , contiguous    :: choice(:)
         type(xoshiro256ssw_type)    , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -2325,10 +2325,10 @@ module pm_arrayChoice
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setChoiceRNGX_D1_D1_CK5
 #endif
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
         logical(LK)                 , intent(in)    , optional      :: unique
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
-        complex(CKC)                , intent(out)   , contiguous    :: choice(:)
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
+        complex(CKG)                , intent(out)   , contiguous    :: choice(:)
         type(xoshiro256ssw_type)    , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -2338,10 +2338,10 @@ module pm_arrayChoice
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setChoiceRNGX_D1_D1_CK4
 #endif
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
         logical(LK)                 , intent(in)    , optional      :: unique
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
-        complex(CKC)                , intent(out)   , contiguous    :: choice(:)
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
+        complex(CKG)                , intent(out)   , contiguous    :: choice(:)
         type(xoshiro256ssw_type)    , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -2351,10 +2351,10 @@ module pm_arrayChoice
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setChoiceRNGX_D1_D1_CK3
 #endif
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
         logical(LK)                 , intent(in)    , optional      :: unique
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
-        complex(CKC)                , intent(out)   , contiguous    :: choice(:)
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
+        complex(CKG)                , intent(out)   , contiguous    :: choice(:)
         type(xoshiro256ssw_type)    , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -2364,10 +2364,10 @@ module pm_arrayChoice
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setChoiceRNGX_D1_D1_CK2
 #endif
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
         logical(LK)                 , intent(in)    , optional      :: unique
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
-        complex(CKC)                , intent(out)   , contiguous    :: choice(:)
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
+        complex(CKG)                , intent(out)   , contiguous    :: choice(:)
         type(xoshiro256ssw_type)    , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -2377,10 +2377,10 @@ module pm_arrayChoice
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setChoiceRNGX_D1_D1_CK1
 #endif
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
         logical(LK)                 , intent(in)    , optional      :: unique
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
-        complex(CKC)                , intent(out)   , contiguous    :: choice(:)
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
+        complex(CKG)                , intent(out)   , contiguous    :: choice(:)
         type(xoshiro256ssw_type)    , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -2392,10 +2392,10 @@ module pm_arrayChoice
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setChoiceRNGX_D1_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         logical(LK)                 , intent(in)    , optional      :: unique
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
-        real(RKC)                   , intent(out)   , contiguous    :: choice(:)
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
+        real(RKG)                   , intent(out)   , contiguous    :: choice(:)
         type(xoshiro256ssw_type)    , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -2405,10 +2405,10 @@ module pm_arrayChoice
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setChoiceRNGX_D1_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         logical(LK)                 , intent(in)    , optional      :: unique
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
-        real(RKC)                   , intent(out)   , contiguous    :: choice(:)
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
+        real(RKG)                   , intent(out)   , contiguous    :: choice(:)
         type(xoshiro256ssw_type)    , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -2418,10 +2418,10 @@ module pm_arrayChoice
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setChoiceRNGX_D1_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         logical(LK)                 , intent(in)    , optional      :: unique
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
-        real(RKC)                   , intent(out)   , contiguous    :: choice(:)
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
+        real(RKG)                   , intent(out)   , contiguous    :: choice(:)
         type(xoshiro256ssw_type)    , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -2431,10 +2431,10 @@ module pm_arrayChoice
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setChoiceRNGX_D1_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         logical(LK)                 , intent(in)    , optional      :: unique
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
-        real(RKC)                   , intent(out)   , contiguous    :: choice(:)
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
+        real(RKG)                   , intent(out)   , contiguous    :: choice(:)
         type(xoshiro256ssw_type)    , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -2444,10 +2444,10 @@ module pm_arrayChoice
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setChoiceRNGX_D1_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         logical(LK)                 , intent(in)    , optional      :: unique
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
-        real(RKC)                   , intent(out)   , contiguous    :: choice(:)
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
+        real(RKG)                   , intent(out)   , contiguous    :: choice(:)
         type(xoshiro256ssw_type)    , intent(inout)                 :: rng
     end subroutine
 #endif

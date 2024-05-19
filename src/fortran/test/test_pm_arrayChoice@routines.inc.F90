@@ -40,29 +40,29 @@
 #error  "Unrecognized interface."
 #endif
 #if     SK_ENABLED && D0_ENABLED
-        character(:,SKC)    , allocatable   :: choices, set
-        character(1,SKC)    , parameter     :: lb = "A", ub = "Z"
-       !character(1,SKC)                    :: choice
+        character(:,SKG)    , allocatable   :: choices, set
+        character(1,SKG)    , parameter     :: lb = "A", ub = "Z"
+       !character(1,SKG)                    :: choice
 #elif   SK_ENABLED && D1_ENABLED
-        character(2,SKC)    , allocatable   :: choices(:), set(:)
-        character(2,SKC)    , parameter     :: lb = "AA", ub = "AZ"
-       !character(2,SKC)                    :: choice
+        character(2,SKG)    , allocatable   :: choices(:), set(:)
+        character(2,SKG)    , parameter     :: lb = "AA", ub = "AZ"
+       !character(2,SKG)                    :: choice
 #elif   IK_ENABLED && D1_ENABLED
-        integer(IKC)        , allocatable   :: choices(:), set(:)
-        integer(IKC)        , parameter     :: lb = 0, ub = 9
-       !integer(IKC)                        :: choice
+        integer(IKG)        , allocatable   :: choices(:), set(:)
+        integer(IKG)        , parameter     :: lb = 0, ub = 9
+       !integer(IKG)                        :: choice
 #elif   LK_ENABLED && D1_ENABLED
-        logical(LKC)        , allocatable   :: choices(:), set(:)
-        logical(LKC)        , parameter     :: lb = .false., ub = .true.
-       !logical(LKC)                        :: choice
+        logical(LKG)        , allocatable   :: choices(:), set(:)
+        logical(LKG)        , parameter     :: lb = .false., ub = .true.
+       !logical(LKG)                        :: choice
 #elif   CK_ENABLED && D1_ENABLED
-        complex(CKC)        , allocatable   :: choices(:), set(:)
-        complex(CKC)        , parameter     :: lb = (-9._CKC, 0._CKC), ub = (0._CKC, +9._CKC)
-       !complex(CKC)                        :: choice
+        complex(CKG)        , allocatable   :: choices(:), set(:)
+        complex(CKG)        , parameter     :: lb = (-9._CKG, 0._CKG), ub = (0._CKG, +9._CKG)
+       !complex(CKG)                        :: choice
 #elif   RK_ENABLED && D1_ENABLED
-        real(RKC)           , allocatable   :: choices(:), set(:)
-        real(RKC)           , parameter     :: lb = 0._RKC, ub = 9._RKC
-       !real(RKC)                           :: choice
+        real(RKG)           , allocatable   :: choices(:), set(:)
+        real(RKG)           , parameter     :: lb = 0._RKG, ub = 9._RKG
+       !real(RKG)                           :: choice
 #else
 #error  "Unrecognized interface."
 #endif

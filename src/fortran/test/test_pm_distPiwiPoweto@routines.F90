@@ -47,35 +47,35 @@ contains
 
 #if RK5_ENABLED
     module procedure test_getPiwiPowetoLogPDF_RK5_1
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "test_pm_distPiwiPoweto@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure test_getPiwiPowetoLogPDF_RK4_1
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "test_pm_distPiwiPoweto@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure test_getPiwiPowetoLogPDF_RK3_1
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "test_pm_distPiwiPoweto@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure test_getPiwiPowetoLogPDF_RK2_1
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "test_pm_distPiwiPoweto@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure test_getPiwiPowetoLogPDF_RK1_1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "test_pm_distPiwiPoweto@routines.inc.F90"
     end procedure
 #endif
@@ -96,35 +96,35 @@ contains
 
 #if RK5_ENABLED
     module procedure test_setPiwiPowetoLogPDF_RK5_1
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "test_pm_distPiwiPoweto@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure test_setPiwiPowetoLogPDF_RK4_1
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "test_pm_distPiwiPoweto@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure test_setPiwiPowetoLogPDF_RK3_1
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "test_pm_distPiwiPoweto@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure test_setPiwiPowetoLogPDF_RK2_1
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "test_pm_distPiwiPoweto@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure test_setPiwiPowetoLogPDF_RK1_1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "test_pm_distPiwiPoweto@routines.inc.F90"
     end procedure
 #endif
@@ -145,35 +145,35 @@ contains
 
 #if RK5_ENABLED
     module procedure test_getPiwiPowetoCDF_RK5_1
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "test_pm_distPiwiPoweto@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure test_getPiwiPowetoCDF_RK4_1
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "test_pm_distPiwiPoweto@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure test_getPiwiPowetoCDF_RK3_1
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "test_pm_distPiwiPoweto@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure test_getPiwiPowetoCDF_RK2_1
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "test_pm_distPiwiPoweto@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure test_getPiwiPowetoCDF_RK1_1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "test_pm_distPiwiPoweto@routines.inc.F90"
     end procedure
 #endif
@@ -194,35 +194,35 @@ contains
 
 #if RK5_ENABLED
     module procedure test_setPiwiPowetoCDF_RK5_1
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "test_pm_distPiwiPoweto@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure test_setPiwiPowetoCDF_RK4_1
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "test_pm_distPiwiPoweto@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure test_setPiwiPowetoCDF_RK3_1
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "test_pm_distPiwiPoweto@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure test_setPiwiPowetoCDF_RK2_1
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "test_pm_distPiwiPoweto@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure test_setPiwiPowetoCDF_RK1_1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "test_pm_distPiwiPoweto@routines.inc.F90"
     end procedure
 #endif

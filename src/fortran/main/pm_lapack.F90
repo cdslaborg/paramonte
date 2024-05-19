@@ -59,28 +59,28 @@ module pm_lapack
     !>  \AmirShahmoradi, Friday 1:54 AM, April 21, 2017, Institute for Computational Engineering and Sciences (ICES), The University of Texas, Austin, TX
     interface lapackGETRF
         pure subroutine zgetrf(m, n, a, lda, ipiv, info)
-            use pm_kind , only: IK, TKC => CKD
+            use pm_kind , only: IK, TKG => CKD
             integer(IK) , intent(in) :: m, n, lda
             integer(IK) , intent(out) :: info, ipiv(*)
-            complex(TKC), intent(inout) :: a
+            complex(TKG), intent(inout) :: a
         end subroutine
         pure subroutine cgetrf(m, n, a, lda, ipiv, info)
-            use pm_kind , only: IK, TKC => CKS
+            use pm_kind , only: IK, TKG => CKS
             integer(IK) , intent(in) :: m, n, lda
             integer(IK) , intent(out) :: info, ipiv(*)
-            complex(TKC), intent(inout) :: a
+            complex(TKG), intent(inout) :: a
         end subroutine
         pure subroutine dgetrf(m, n, a, lda, ipiv, info)
-            use pm_kind , only: IK, TKC => RKD
+            use pm_kind , only: IK, TKG => RKD
             integer(IK) , intent(in) :: m, n, lda
             integer(IK) , intent(out) :: info, ipiv(*)
-            real(TKC)   , intent(inout) :: a
+            real(TKG)   , intent(inout) :: a
         end subroutine
         pure subroutine sgetrf(m, n, a, lda, ipiv, info)
-            use pm_kind , only: IK, TKC => RKS
+            use pm_kind , only: IK, TKG => RKS
             integer(IK) , intent(in) :: m, n, lda
             integer(IK) , intent(out) :: info, ipiv(*)
-            real(TKC)   , intent(inout) :: a
+            real(TKG)   , intent(inout) :: a
         end subroutine
     end interface
 

@@ -30,11 +30,11 @@
 #if     setMember_ENABLED && D0_D1_ENABLED
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        real(RKC) :: temp
+        real(RKG) :: temp
         integer(IK) :: icls
         CHECK_ASSERTION(__LINE__, 0_IK < size(center, 1, IK), SK_"@setMember(): The condition `0 < size(center, rank(center))` must hold. shape(center) = "//getStr(shape(center, IK)))
         ! First cluster.
-        disq = 0._RKC
+        disq = 0._RKG
         disq = (sample - center(1))**2
         membership = 1
         ! All the rest of clusters.
@@ -50,7 +50,7 @@
 #elif   setMember_ENABLED && D1_D1_ENABLED
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        real(RKC) :: temp
+        real(RKG) :: temp
         integer(IK) :: icls, isam, nsam
         nsam = size(sample, 1, IK)
         CHECK_ASSERTION(__LINE__, 0_IK <  size(center, 1, IK), SK_"@setMember(): The condition `0 < size(center, 2)` must hold. size(center, 1) = "//getStr(size(center, 1, IK)))
@@ -76,14 +76,14 @@
 #elif   setMember_ENABLED && D1_D2_ENABLED
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        real(RKC) :: temp
+        real(RKG) :: temp
         integer(IK) :: icls, idim, ndim
         ndim = size(sample, 1, IK)
         CHECK_ASSERTION(__LINE__, 0_IK <  size(center, rank(center), IK), SK_"@setMember(): The condition `0 < size(center, rank(center))` must hold. shape(center) = "//getStr(shape(center, IK)))
         CHECK_ASSERTION(__LINE__, ndim == size(center, 1, IK), SK_"@setMember(): The condition `size(sample, 1) == size(center, 1)` must hold. size(sample, 1), size(center, 1) = "//getStr([size(sample, 1, IK), size(center, 1, IK)]))
         ! First cluster.
         !disq = sum((sample - center(1 : ndim, 1))**2)
-        disq = 0._RKC
+        disq = 0._RKG
         do idim = 1, ndim
             disq = disq + (sample(idim) - center(idim, 1))**2
         end do
@@ -91,7 +91,7 @@
         ! All the rest of clusters.
         do icls = 2, size(center, 2, IK)
            !temp = sum((sample  - center(1 : ndim, icls))**2)
-            temp = 0._RKC
+            temp = 0._RKG
             do idim = 1, ndim
                 temp = temp + (sample(idim) - center(idim, icls))**2
             end do
@@ -105,7 +105,7 @@
 #elif   setMember_ENABLED && D2_D2_ENABLED
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        real(RKC) :: temp
+        real(RKG) :: temp
         integer(IK) :: icls, idim, ndim, isam, nsam
         ndim = size(sample, 1, IK)
         nsam = size(sample, 2, IK)
@@ -117,7 +117,7 @@
         icls = 1
         do isam = 1, nsam
             !disq(isam) = sum((center(1 : ndim, icls) - sample(1 : ndim, isam))**2)
-            disq(isam) = 0._RKC
+            disq(isam) = 0._RKG
             do idim = 1, ndim
                 disq(isam) = disq(isam) + (sample(idim, isam) - center(idim, icls))**2
             end do
@@ -127,7 +127,7 @@
         do icls = 2, size(center, 2, IK)
             do isam = 1, nsam
                 !temp = sum((center(1 : ndim, icls) - sample(1 : ndim, isam))**2)
-                temp = 0._RKC
+                temp = 0._RKG
                 do idim = 1, ndim
                     temp = temp + (sample(idim, isam) - center(idim, icls))**2
                 end do
@@ -147,7 +147,7 @@
         nsam = ubound(sample, rank(sample), IK)
         ncls = ubound(center, rank(center), IK)
 
-        CHECK_ASSERTION(__LINE__, all(0._RKC <= disq), SK_"@setMember(): The condition `all(0 <= disq)` must hold. disq = "//getStr(disq))
+        CHECK_ASSERTION(__LINE__, all(0._RKG <= disq), SK_"@setMember(): The condition `all(0 <= disq)` must hold. disq = "//getStr(disq))
         CHECK_ASSERTION(__LINE__, nsam == ubound(disq, 1, IK), SK_"@setMember(): The condition `size(sample, rank(sample)) == size(disq)` must hold. shape(sample), size(disq) = "//getStr([shape(sample, IK), ubound(disq, 1, IK)]))
        !CHECK_ASSERTION(__LINE__, nsam >= ubound(center, rank(center), IK), SK_"@setMember(): The condition `size(sample, rank(sample)) >= size(center, rank(center))` must hold. shape(sample), shape(center) = "//getStr([shape(sample, IK), shape(center, IK)]))
         CHECK_ASSERTION(__LINE__, nsam == ubound(membership, 1, IK), SK_"@setMember(): The condition `size(sample, rank(sample)) == size(membership)` must hold. shape(sample), size(membership) = "//getStr([shape(sample, IK), ubound(membership, 1, IK)]))
@@ -159,8 +159,8 @@
         ! Initialize.
 
         do concurrent(icls = 1 : ncls)
-            potential(icls) = 0._RKC
-            center(icls) = 0._RKC
+            potential(icls) = 0._RKG
+            center(icls) = 0._RKG
             size(icls) = 0_IK
         end do
 
@@ -175,21 +175,21 @@
         ! normalize new centers.
 
         do concurrent(icls = 1 : ncls)
-            if (0_IK < size(icls)) center(icls) = center(icls) / real(size(icls), RKC)
+            if (0_IK < size(icls)) center(icls) = center(icls) / real(size(icls), RKG)
         end do
 
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 #elif   setCenter_ENABLED && D2_D2_ENABLED
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        real(RKC) :: sizeinv
+        real(RKG) :: sizeinv
         integer(IK) :: icls, ncls, ndim, isam, nsam
 
         ndim = ubound(sample, 1, IK)
         nsam = ubound(sample, 2, IK)
         ncls = ubound(center, 2, IK)
 
-        CHECK_ASSERTION(__LINE__, all(0._RKC <= disq), SK_"@setMember(): The condition `all(0 <= disq)` must hold. disq = "//getStr(disq))
+        CHECK_ASSERTION(__LINE__, all(0._RKG <= disq), SK_"@setMember(): The condition `all(0 <= disq)` must hold. disq = "//getStr(disq))
         CHECK_ASSERTION(__LINE__, nsam == ubound(disq, 1, IK), SK_"@setMember(): The condition `ubound(sample, rank(sample)) == ubound(disq, 1)` must hold. shape(sample), ubound(disq, 1) = "//getStr([shape(sample, IK), ubound(disq, 1, IK)]))
         CHECK_ASSERTION(__LINE__, ndim == ubound(center, 1, IK), SK_"@setMember(): The condition `ubound(sample, 1) == ubound(center, 1)` must hold. ubound(sample, 1), ubound(center, 1) = "//getStr([ubound(sample, 1, IK), ubound(center, 1, IK)]))
        !CHECK_ASSERTION(__LINE__, nsam >= ubound(center, rank(center), IK), SK_"@setMember(): The condition `ubound(sample, rank(sample)) >= ubound(center, rank(center))` must hold. shape(sample), shape(center) = "//getStr([shape(sample, IK), shape(center, IK)]))
@@ -202,8 +202,8 @@
         ! Initialize.
 
         do concurrent(icls = 1 : ncls)
-            center(1 : ndim, icls) = 0._RKC
-            potential(icls) = 0._RKC
+            center(1 : ndim, icls) = 0._RKG
+            potential(icls) = 0._RKG
             size(icls) = 0_IK
         end do
 
@@ -219,7 +219,7 @@
 
         do concurrent(icls = 1 : ncls)
             if (0_IK < size(icls)) then
-                sizeinv = 1._RKC / real(size(icls), RKC)
+                sizeinv = 1._RKG / real(size(icls), RKG)
                 center(1 : ndim, icls) = center(1 : ndim, icls) * sizeinv
             end if
         end do
@@ -228,8 +228,8 @@
 #elif   setKmeansPP_ENABLED
         !%%%%%%%%%%%%%%%%%%
 
-        real(RKC)   :: temp
-        real(RKC)   :: cumsumdisq(0 : ubound(sample, 2, IK)) ! Sum of distance squared of points up to the given index of the vector.
+        real(RKG)   :: temp
+        real(RKG)   :: cumsumdisq(0 : ubound(sample, 2, IK)) ! Sum of distance squared of points up to the given index of the vector.
         integer(IK) :: idim, icls, isam, ndim, nsam, cid
 #if     Optional_ENABLED
         integer(IK) :: ncls
@@ -248,7 +248,7 @@
         CHECK_ASSERTION(__LINE__, nsam == ubound(membership, 1, IK), SK_"@setKmeansPP(): The condition `ubound(sample, rank(sample)) == ubound(membership, 1)` must hold. ubound(sample, rank(sample)), ubound(membership, 1) = "//getStr([nsam, ubound(membership, 1, IK)]))
         CHECK_ASSERTION(__LINE__, ncls <= nsam, SK_"@setKmeansPP(): The condition `ncls < ubound(sample, rank(sample))` must hold. ncls, ubound(sample, rank(sample)) = "//getStr([ncls, nsam]))
 
-        cumsumdisq(0) = 0._RKC ! This element must always remain zero.
+        cumsumdisq(0) = 0._RKG ! This element must always remain zero.
 
         ! Define the first cluster center.
 
@@ -262,7 +262,7 @@
 #if         INTRINSIC_ENABLED
             disq(isam) = sum((sample(1 : ndim, isam) - sample(1 : ndim, cid))**2)
 #else
-            disq(isam) = 0._RKC; do idim = 1, ndim; disq(isam) = disq(isam) + (sample(idim, isam) - sample(idim, cid))**2; end do
+            disq(isam) = 0._RKG; do idim = 1, ndim; disq(isam) = disq(isam) + (sample(idim, isam) - sample(idim, cid))**2; end do
 #endif
             cumsumdisq(isam) = cumsumdisq(isam - 1) + disq(isam)
             membership(isam) = icls
@@ -301,7 +301,7 @@
 #if             INTRINSIC_ENABLED
                 temp = sum((sample(1 : ndim, isam) - sample(1 : ndim, cid))**2)
 #else
-                temp = 0._RKC; do idim = 1, ndim; temp = temp + (sample(idim, isam) - sample(idim, cid))**2; end do
+                temp = 0._RKG; do idim = 1, ndim; temp = temp + (sample(idim, isam) - sample(idim, cid))**2; end do
 #endif
                 if (temp < disq(isam)) then
                     disq(isam) = temp
@@ -323,8 +323,8 @@
 
 #if     Optional_ENABLED
         do concurrent(icls = 1 : ncls)
-            !center(1 : ndim, icls) = 0._RKC
-            potential(icls) = 0._RKC
+            !center(1 : ndim, icls) = 0._RKG
+            potential(icls) = 0._RKG
             size(icls) = 0_IK
         end do
         center(1 : ndim, ncls) = sample(1 : ndim, cid)
@@ -336,7 +336,7 @@
 #if         INTRINSIC_ENABLED
             temp = sum((sample(1 : ndim, isam) - sample(1 : ndim, cid))**2)
 #else
-            temp = 0._RKC; do idim = 1, ndim; temp = temp + (sample(idim, isam) - sample(idim, cid))**2; end do
+            temp = 0._RKG; do idim = 1, ndim; temp = temp + (sample(idim, isam) - sample(idim, cid))**2; end do
 #endif
             if (temp < disq(isam)) then
                 disq(isam) = temp
@@ -352,7 +352,7 @@
         ! Normalize sample. This requires the sample size to be larger than the number of clusters to have `all(size > 0)` hold.
 
         !do concurrent(icls = 1 : ncls)
-        !    temp = 1._RKC / real(size(icls), RKC)
+        !    temp = 1._RKG / real(size(icls), RKG)
         !    center(1 : ndim, icls) = center(1 : ndim, icls) * temp
         !end do
 
@@ -362,7 +362,7 @@
 
         integer(IK) :: retin, sizemin, retinxam, membersnew(ubound(membership, 1, IK))
 
-        CHECK_ASSERTION(__LINE__, all(0._RKC <= disq), SK_"@setKmeans(): The condition `all(0 <= disq)` must hold. disq = "//getStr(disq))
+        CHECK_ASSERTION(__LINE__, all(0._RKG <= disq), SK_"@setKmeans(): The condition `all(0 <= disq)` must hold. disq = "//getStr(disq))
         CHECK_ASSERTION(__LINE__, ubound(sample, 2, IK) == ubound(disq, 1, IK), SK_"@setKmeans(): The condition `size(sample, rank(sample)) == size(disq)` must hold. shape(sample), size(disq) = "//getStr([shape(sample, IK), ubound(disq, 1, IK)]))
         CHECK_ASSERTION(__LINE__, ubound(sample, 1, IK) == ubound(center, 1, IK), SK_"@setKmeans(): The condition `size(sample, 1) == size(center, 1)` must hold. size(sample, 1), size(center, 1) = "//getStr([ubound(sample, 1, IK), ubound(center, 1, IK)]))
        !CHECK_ASSERTION(__LINE__, ubound(sample, 2, IK) >= ubound(center, rank(center), IK), SK_"@setKmeans(): The condition `size(sample, rank(sample)) >= size(center, rank(center))` must hold. shape(sample), shape(center) = "//getStr([shape(sample, IK), shape(center, IK)]))

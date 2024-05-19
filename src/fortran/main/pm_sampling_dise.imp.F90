@@ -19,13 +19,13 @@
     use pm_except, only: setNAN
     use pm_val2str, only: getStr
     use pm_arrayResize, only: setResized
-    use pm_kind, only: SKC => SK, SK, IK, LK
+    use pm_kind, only: SKG => SK, SK, IK, LK
     use pm_sampling_dram, only: specdram_type, astatdram_type, NL2, NL1
     use pm_sampling_scio, only: cfcdise_type
 
     implicit none
 
-    character(*,SKC), parameter :: MODULE_NAME = SK_"@pm_sampling_dise"
+    character(*,SKG), parameter :: MODULE_NAME = SK_"@pm_sampling_dise"
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     ! simulation declarations.
@@ -59,17 +59,17 @@ contains
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    subroutine killMeAlreadyCMake1_RK5(); use pm_sampling_scio_RK5, only: RKC; end subroutine
-    subroutine killMeAlreadyCMake1_RK4(); use pm_sampling_scio_RK4, only: RKC; end subroutine
-    subroutine killMeAlreadyCMake1_RK3(); use pm_sampling_scio_RK3, only: RKC; end subroutine
-    subroutine killMeAlreadyCMake1_RK2(); use pm_sampling_scio_RK2, only: RKC; end subroutine
-    subroutine killMeAlreadyCMake1_RK1(); use pm_sampling_scio_RK1, only: RKC; end subroutine
+    subroutine killMeAlreadyCMake1_RK5(); use pm_sampling_scio_RK5, only: RKG; end subroutine
+    subroutine killMeAlreadyCMake1_RK4(); use pm_sampling_scio_RK4, only: RKG; end subroutine
+    subroutine killMeAlreadyCMake1_RK3(); use pm_sampling_scio_RK3, only: RKG; end subroutine
+    subroutine killMeAlreadyCMake1_RK2(); use pm_sampling_scio_RK2, only: RKG; end subroutine
+    subroutine killMeAlreadyCMake1_RK1(); use pm_sampling_scio_RK1, only: RKG; end subroutine
 
-    subroutine killMeAlreadyCMake2_RK5(); use pm_sampling_dram_RK5, only: RKC; end subroutine
-    subroutine killMeAlreadyCMake2_RK4(); use pm_sampling_dram_RK4, only: RKC; end subroutine
-    subroutine killMeAlreadyCMake2_RK3(); use pm_sampling_dram_RK3, only: RKC; end subroutine
-    subroutine killMeAlreadyCMake2_RK2(); use pm_sampling_dram_RK2, only: RKC; end subroutine
-    subroutine killMeAlreadyCMake2_RK1(); use pm_sampling_dram_RK1, only: RKC; end subroutine
+    subroutine killMeAlreadyCMake2_RK5(); use pm_sampling_dram_RK5, only: RKG; end subroutine
+    subroutine killMeAlreadyCMake2_RK4(); use pm_sampling_dram_RK4, only: RKG; end subroutine
+    subroutine killMeAlreadyCMake2_RK3(); use pm_sampling_dram_RK3, only: RKG; end subroutine
+    subroutine killMeAlreadyCMake2_RK2(); use pm_sampling_dram_RK2, only: RKG; end subroutine
+    subroutine killMeAlreadyCMake2_RK1(); use pm_sampling_dram_RK1, only: RKG; end subroutine
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -79,7 +79,7 @@ contains
 #endif
         use pm_kind, only: modelr_type
         type(modelr_type), intent(in) :: modelr
-        character(*,SKC), intent(in) :: method
+        character(*,SKG), intent(in) :: method
         integer(IK), intent(in) :: ndim
         type(specdise_type) :: spec
 
@@ -136,7 +136,7 @@ contains
         use pm_err, only: err_type
         type(err_type), intent(inout) :: err
         class(specdise_type), intent(inout) :: spec
-        character(*,SKC), parameter :: PROCEDURE_NAME = MODULE_NAME//SKC_"@sanitizeSpecDRAM()"
+        character(*,SKG), parameter :: PROCEDURE_NAME = MODULE_NAME//SKG_"@sanitizeSpecDRAM()"
 
     end subroutine
 

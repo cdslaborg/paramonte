@@ -1,7 +1,7 @@
 program example
 
     use pm_kind, only: SK, IK, LK
-    use pm_kind, only: IKC => IKS ! all processor kinds are supported.
+    use pm_kind, only: IKG => IKS ! all processor kinds are supported.
     use pm_sampleECDF, only: setECDF
     use pm_arrayRange, only: getRange
     use pm_arrayResize, only: setResized
@@ -17,10 +17,10 @@ program example
     disp = display_type(file = "main.out.F90")
 
     block
-        use pm_kind, only: RKC => RKS ! all processor kinds are supported.
-        real(RKC), allocatable :: ecdf(:), lcdf(:), ucdf(:)
+        use pm_kind, only: RKG => RKS ! all processor kinds are supported.
+        real(RKG), allocatable :: ecdf(:), lcdf(:), ucdf(:)
         integer(IK), allocatable :: iweight(:)
-        real(RKC), allocatable :: rweight(:)
+        real(RKG), allocatable :: rweight(:)
         do itry = 1, ntry
             call disp%show("call setResized(ecdf, getUnifRand(1_IK, 10_IK))")
                             call setResized(ecdf, getUnifRand(1_IK, 10_IK))
@@ -72,10 +72,10 @@ program example
 
     block
         use pm_val2str, only: getStr
-        use pm_kind, only: RKC => RKS
+        use pm_kind, only: RKG => RKS
         use pm_distNorm, only: setNormRand
         character(:, SK), allocatable :: fileName
-        real(RKC), allocatable :: sample(:), ecdf(:), lcdf(:), ucdf(:)
+        real(RKG), allocatable :: sample(:), ecdf(:), lcdf(:), ucdf(:)
         integer(IK) :: i, isam, nsam
         integer(IK) :: fileUnit
         do i = 1, 4
@@ -86,7 +86,7 @@ program example
             call setResized(sample, nsam)
             call setNormRand(sample)
             call setSorted(sample)
-            call setECDF(ecdf, lcdf, ucdf, alpha = 0.98_RKC)
+            call setECDF(ecdf, lcdf, ucdf, alpha = 0.98_RKG)
             fileName = "main.norm." // getStr(nsam) // ".out"
             open(newunit = fileUnit, file = fileName, status = "replace")
                 write(fileUnit, "(*(g0,:,','))") "sample,ecdf,lcdf,ucdf"

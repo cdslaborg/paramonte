@@ -16,15 +16,15 @@ program example
 
     do i = 1, 5
     block
-        use pm_kind, only: TKC => CKS
-        real(TKC) :: reltol
-        complex(TKC), allocatable :: data(:), atad(:)
+        use pm_kind, only: TKG => CKS
+        real(TKG) :: reltol
+        complex(TKG), allocatable :: data(:), atad(:)
         call disp%show("lenData = getUnifRand(5, 100)")
                         lenData = getUnifRand(5, 100)
         call disp%show("lenData")
         call disp%show( lenData )
-        call disp%show("data = 1._TKC + getUnifRand((0._TKC, 0._TKC), (1._TKC, 1._TKC), lenData)")
-                        data = 1._TKC + getUnifRand((0._TKC, 0._TKC), (1._TKC, 1._TKC), lenData)
+        call disp%show("data = 1._TKG + getUnifRand((0._TKG, 0._TKG), (1._TKG, 1._TKG), lenData)")
+                        data = 1._TKG + getUnifRand((0._TKG, 0._TKG), (1._TKG, 1._TKG), lenData)
         call disp%show("data")
         call disp%show( data )
         call disp%skip()
@@ -32,8 +32,8 @@ program example
                         atad = getFFTI(getFFTF(data))
         call disp%show("atad")
         call disp%show( atad )
-        call disp%show("reltol = sqrt(epsilon(1._TKC))")
-                        reltol = sqrt(epsilon(1._TKC))
+        call disp%show("reltol = sqrt(epsilon(1._TKG))")
+                        reltol = sqrt(epsilon(1._TKG))
         call disp%show("reltol")
         call disp%show( reltol )
         call disp%show("isClose(data, atad(1:size(data)), reltol = reltol)")
@@ -44,15 +44,15 @@ program example
     end block
 
     block
-        use pm_kind, only: TKC => CKD
-        real(TKC) :: reltol
-        complex(TKC), allocatable :: data(:), atad(:)
+        use pm_kind, only: TKG => CKD
+        real(TKG) :: reltol
+        complex(TKG), allocatable :: data(:), atad(:)
         call disp%show("lenData = getUnifRand(5, 100)")
                         lenData = getUnifRand(5, 100)
         call disp%show("lenData")
         call disp%show( lenData )
-        call disp%show("data = 1._TKC + getUnifRand((0._TKC, 0._TKC), (1._TKC, 1._TKC), lenData)")
-                        data = 1._TKC + getUnifRand((0._TKC, 0._TKC), (1._TKC, 1._TKC), lenData)
+        call disp%show("data = 1._TKG + getUnifRand((0._TKG, 0._TKG), (1._TKG, 1._TKG), lenData)")
+                        data = 1._TKG + getUnifRand((0._TKG, 0._TKG), (1._TKG, 1._TKG), lenData)
         call disp%show("data")
         call disp%show( data )
         call disp%skip()
@@ -60,8 +60,8 @@ program example
                         atad = getFFTI(getFFTF(data))
         call disp%show("atad")
         call disp%show( atad )
-        call disp%show("reltol = sqrt(epsilon(1._TKC))")
-                        reltol = sqrt(epsilon(1._TKC))
+        call disp%show("reltol = sqrt(epsilon(1._TKG))")
+                        reltol = sqrt(epsilon(1._TKG))
         call disp%show("reltol")
         call disp%show( reltol )
         call disp%show("isClose(data, atad(1:size(data)), reltol = reltol)")
@@ -72,15 +72,15 @@ program example
     end block
 
     block
-        use pm_kind, only: TKC => CKH
-        real(TKC) :: reltol
-        complex(TKC), allocatable :: data(:), atad(:)
+        use pm_kind, only: TKG => CKH
+        real(TKG) :: reltol
+        complex(TKG), allocatable :: data(:), atad(:)
         call disp%show("lenData = getUnifRand(5, 100)")
                         lenData = getUnifRand(5, 100)
         call disp%show("lenData")
         call disp%show( lenData )
-        call disp%show("data = 1._TKC + getUnifRand((0._TKC, 0._TKC), (1._TKC, 1._TKC), lenData)")
-                        data = 1._TKC + getUnifRand((0._TKC, 0._TKC), (1._TKC, 1._TKC), lenData)
+        call disp%show("data = 1._TKG + getUnifRand((0._TKG, 0._TKG), (1._TKG, 1._TKG), lenData)")
+                        data = 1._TKG + getUnifRand((0._TKG, 0._TKG), (1._TKG, 1._TKG), lenData)
         call disp%show("data")
         call disp%show( data )
         call disp%skip()
@@ -88,8 +88,8 @@ program example
                         atad = getFFTI(getFFTF(data))
         call disp%show("atad")
         call disp%show( atad )
-        call disp%show("reltol = sqrt(epsilon(1._TKC))")
-                        reltol = sqrt(epsilon(1._TKC))
+        call disp%show("reltol = sqrt(epsilon(1._TKG))")
+                        reltol = sqrt(epsilon(1._TKG))
         call disp%show("reltol")
         call disp%show( reltol )
         call disp%show("isClose(data, atad(1:size(data)), reltol = reltol)")
@@ -100,15 +100,15 @@ program example
     end block
 
     block
-        use pm_kind, only: TKC => RKS
-        real(TKC) :: reltol
-        real(TKC), allocatable :: data(:), atad(:)
+        use pm_kind, only: TKG => RKS
+        real(TKG) :: reltol
+        real(TKG), allocatable :: data(:), atad(:)
         call disp%show("lenData = getUnifRand(5, 100)")
                         lenData = getUnifRand(5, 100)
         call disp%show("lenData")
         call disp%show( lenData )
-        call disp%show("data = 1._TKC + getUnifRand(0._TKC, 1._TKC, lenData)")
-                        data = 1._TKC + getUnifRand(0._TKC, 1._TKC, lenData)
+        call disp%show("data = 1._TKG + getUnifRand(0._TKG, 1._TKG, lenData)")
+                        data = 1._TKG + getUnifRand(0._TKG, 1._TKG, lenData)
         call disp%show("data")
         call disp%show( data )
         call disp%skip()
@@ -116,8 +116,8 @@ program example
                         atad = getFFTI(getFFTF(data))
         call disp%show("atad")
         call disp%show( atad )
-        call disp%show("reltol = sqrt(epsilon(1._TKC))")
-                        reltol = sqrt(epsilon(1._TKC))
+        call disp%show("reltol = sqrt(epsilon(1._TKG))")
+                        reltol = sqrt(epsilon(1._TKG))
         call disp%show("reltol")
         call disp%show( reltol )
         call disp%show("isClose(data, atad(1:size(data)), reltol = reltol)")
@@ -128,15 +128,15 @@ program example
     end block
 
     block
-        use pm_kind, only: TKC => RKD
-        real(TKC) :: reltol
-        real(TKC), allocatable :: data(:), atad(:)
+        use pm_kind, only: TKG => RKD
+        real(TKG) :: reltol
+        real(TKG), allocatable :: data(:), atad(:)
         call disp%show("lenData = getUnifRand(5, 100)")
                         lenData = getUnifRand(5, 100)
         call disp%show("lenData")
         call disp%show( lenData )
-        call disp%show("data = 1._TKC + getUnifRand(0._TKC, 1._TKC, lenData)")
-                        data = 1._TKC + getUnifRand(0._TKC, 1._TKC, lenData)
+        call disp%show("data = 1._TKG + getUnifRand(0._TKG, 1._TKG, lenData)")
+                        data = 1._TKG + getUnifRand(0._TKG, 1._TKG, lenData)
         call disp%show("data")
         call disp%show( data )
         call disp%skip()
@@ -144,8 +144,8 @@ program example
                         atad = getFFTI(getFFTF(data))
         call disp%show("atad")
         call disp%show( atad )
-        call disp%show("reltol = sqrt(epsilon(1._TKC))")
-                        reltol = sqrt(epsilon(1._TKC))
+        call disp%show("reltol = sqrt(epsilon(1._TKG))")
+                        reltol = sqrt(epsilon(1._TKG))
         call disp%show("reltol")
         call disp%show( reltol )
         call disp%show("isClose(data, atad(1:size(data)), reltol = reltol)")
@@ -156,15 +156,15 @@ program example
     end block
 
     block
-        use pm_kind, only: TKC => RKH
-        real(TKC) :: reltol
-        real(TKC), allocatable :: data(:), atad(:)
+        use pm_kind, only: TKG => RKH
+        real(TKG) :: reltol
+        real(TKG), allocatable :: data(:), atad(:)
         call disp%show("lenData = getUnifRand(5, 100)")
                         lenData = getUnifRand(5, 100)
         call disp%show("lenData")
         call disp%show( lenData )
-        call disp%show("data = 1._TKC + getUnifRand(0._TKC, 1._TKC, lenData)")
-                        data = 1._TKC + getUnifRand(0._TKC, 1._TKC, lenData)
+        call disp%show("data = 1._TKG + getUnifRand(0._TKG, 1._TKG, lenData)")
+                        data = 1._TKG + getUnifRand(0._TKG, 1._TKG, lenData)
         call disp%show("data")
         call disp%show( data )
         call disp%skip()
@@ -172,8 +172,8 @@ program example
                         atad = getFFTI(getFFTF(data))
         call disp%show("atad")
         call disp%show( atad )
-        call disp%show("reltol = sqrt(epsilon(1._TKC))")
-                        reltol = sqrt(epsilon(1._TKC))
+        call disp%show("reltol = sqrt(epsilon(1._TKG))")
+                        reltol = sqrt(epsilon(1._TKG))
         call disp%show("reltol")
         call disp%show( reltol )
         call disp%show("isClose(data, atad(1:size(data)), reltol = reltol)")

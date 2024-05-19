@@ -5,7 +5,7 @@ program benchmark
     use pm_matrixMulAdd, only: setMatMulAdd
     use pm_distUnif, only: setUnifRand
     use iso_fortran_env, only: error_unit
-    use pm_kind, only: SK, IK, RKC => RK
+    use pm_kind, only: SK, IK, RKG => RK
     use pm_bench, only: bench_type
 
     implicit none
@@ -18,10 +18,10 @@ program benchmark
     integer(IK) , parameter                     :: NUM_RANK = 10_IK             !<  The number of benchmark ranks.
     integer(IK) , parameter                     :: MAX_RANK = 2**NUM_RANK       !<  The maximum possible ranks of matrices.
     integer(IK) , parameter                     :: MAX_ITER = 10000             !<  The maximum number of iterations.
-    real(RKC)   , parameter                     :: ALPHA = 1._RKC               !<  The alpha parameter in the multiplication.
-    real(RKC)   , parameter                     :: BETA = 1._RKC                !<  The beta  parameter in the multiplication.
-    real(RKC)                                   :: dummySum = 0._RKC            !<  The dummy variable to prevent aggressive compiler optimizations.
-    real(RKC)   , dimension(:,:), allocatable   :: matA, matB, matC             !<  The test matrices.
+    real(RKG)   , parameter                     :: ALPHA = 1._RKG               !<  The alpha parameter in the multiplication.
+    real(RKG)   , parameter                     :: BETA = 1._RKG                !<  The beta  parameter in the multiplication.
+    real(RKG)                                   :: dummySum = 0._RKG            !<  The dummy variable to prevent aggressive compiler optimizations.
+    real(RKG)   , dimension(:,:), allocatable   :: matA, matB, matC             !<  The test matrices.
     type(bench_type)            , allocatable   :: bench(:)                     !<  The Benchmark array.
 
     bench = [ bench_type(name = SK_"setMatMulAddExplicit", exec = setMatMulAddExplicit, overhead = setOverhead) &
@@ -43,9 +43,9 @@ program benchmark
             rank = 2**irank
             ntry = MAX_ITER / rank
             write(*,"(*(g0,:,' '))") "Benchmarking with rank:", rank
-            matA = getMatInit([rank, rank], uppLowDia, 0._RKC, 0._RKC, 0._RKC); !call setUnifRand(matA)
-            matB = getMatInit([rank, rank], uppLowDia, 0._RKC, 0._RKC, 0._RKC); !call setUnifRand(matB)
-            matC = getMatInit([rank, rank], uppLowDia, 0._RKC, 0._RKC, 0._RKC); !call setUnifRand(matC)
+            matA = getMatInit([rank, rank], uppLowDia, 0._RKG, 0._RKG, 0._RKG); !call setUnifRand(matA)
+            matB = getMatInit([rank, rank], uppLowDia, 0._RKG, 0._RKG, 0._RKG); !call setUnifRand(matB)
+            matC = getMatInit([rank, rank], uppLowDia, 0._RKG, 0._RKG, 0._RKG); !call setUnifRand(matC)
 
             ! warmup
             call setMatMulAddExplicit()
@@ -56,7 +56,7 @@ program benchmark
 #endif
 
             do ibench = 1, size(bench)
-                bench(ibench)%timing = bench(ibench)%getTiming(minsec = 0.07_RKC)
+                bench(ibench)%timing = bench(ibench)%getTiming(minsec = 0.07_RKG)
             end do
             write(fileUnit, "(*(g0,:,', '))") rank &
                                             , (bench(ibench)%timing%mean / ntry, ibench = 1, size(bench)) !&

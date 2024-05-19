@@ -66,7 +66,7 @@ contains
 
 #if SK5_ENABLED
     module procedure getChangeUnifRNGD_SK5
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
         use pm_distUnif, only: rng => rngf
 #include "pm_arrayChange@routines.inc.F90"
     end procedure
@@ -74,7 +74,7 @@ contains
 
 #if SK4_ENABLED
     module procedure getChangeUnifRNGD_SK4
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
         use pm_distUnif, only: rng => rngf
 #include "pm_arrayChange@routines.inc.F90"
     end procedure
@@ -82,7 +82,7 @@ contains
 
 #if SK3_ENABLED
     module procedure getChangeUnifRNGD_SK3
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
         use pm_distUnif, only: rng => rngf
 #include "pm_arrayChange@routines.inc.F90"
     end procedure
@@ -90,7 +90,7 @@ contains
 
 #if SK2_ENABLED
     module procedure getChangeUnifRNGD_SK2
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
         use pm_distUnif, only: rng => rngf
 #include "pm_arrayChange@routines.inc.F90"
     end procedure
@@ -98,7 +98,7 @@ contains
 
 #if SK1_ENABLED
     module procedure getChangeUnifRNGD_SK1
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
         use pm_distUnif, only: rng => rngf
 #include "pm_arrayChange@routines.inc.F90"
     end procedure
@@ -112,7 +112,7 @@ contains
 
 #if IK5_ENABLED
     module procedure getChangeUnifRNGD_IK5
-        use pm_kind, only: IKC => IK5
+        use pm_kind, only: IKG => IK5
         use pm_distUnif, only: rng => rngf
 #include "pm_arrayChange@routines.inc.F90"
     end procedure
@@ -120,7 +120,7 @@ contains
 
 #if IK4_ENABLED
     module procedure getChangeUnifRNGD_IK4
-        use pm_kind, only: IKC => IK4
+        use pm_kind, only: IKG => IK4
         use pm_distUnif, only: rng => rngf
 #include "pm_arrayChange@routines.inc.F90"
     end procedure
@@ -128,7 +128,7 @@ contains
 
 #if IK3_ENABLED
     module procedure getChangeUnifRNGD_IK3
-        use pm_kind, only: IKC => IK3
+        use pm_kind, only: IKG => IK3
         use pm_distUnif, only: rng => rngf
 #include "pm_arrayChange@routines.inc.F90"
     end procedure
@@ -136,7 +136,7 @@ contains
 
 #if IK2_ENABLED
     module procedure getChangeUnifRNGD_IK2
-        use pm_kind, only: IKC => IK2
+        use pm_kind, only: IKG => IK2
         use pm_distUnif, only: rng => rngf
 #include "pm_arrayChange@routines.inc.F90"
     end procedure
@@ -144,7 +144,7 @@ contains
 
 #if IK1_ENABLED
     module procedure getChangeUnifRNGD_IK1
-        use pm_kind, only: IKC => IK1
+        use pm_kind, only: IKG => IK1
         use pm_distUnif, only: rng => rngf
 #include "pm_arrayChange@routines.inc.F90"
     end procedure
@@ -158,7 +158,7 @@ contains
 
 #if RK5_ENABLED
     module procedure getChangeUnifRNGD_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         use pm_distUnif, only: rng => rngf
 #include "pm_arrayChange@routines.inc.F90"
     end procedure
@@ -166,7 +166,7 @@ contains
 
 #if RK4_ENABLED
     module procedure getChangeUnifRNGD_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         use pm_distUnif, only: rng => rngf
 #include "pm_arrayChange@routines.inc.F90"
     end procedure
@@ -174,7 +174,7 @@ contains
 
 #if RK3_ENABLED
     module procedure getChangeUnifRNGD_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         use pm_distUnif, only: rng => rngf
 #include "pm_arrayChange@routines.inc.F90"
     end procedure
@@ -182,7 +182,7 @@ contains
 
 #if RK2_ENABLED
     module procedure getChangeUnifRNGD_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         use pm_distUnif, only: rng => rngf
 #include "pm_arrayChange@routines.inc.F90"
     end procedure
@@ -190,7 +190,7 @@ contains
 
 #if RK1_ENABLED
     module procedure getChangeUnifRNGD_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         use pm_distUnif, only: rng => rngf
 #include "pm_arrayChange@routines.inc.F90"
     end procedure
@@ -236,35 +236,35 @@ contains
 
 #if SK5_ENABLED
     module procedure setChangeUnifRNGF_SK5
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
 #include "pm_arrayChange@routines.inc.F90"
     end procedure
 #endif
 
 #if SK4_ENABLED
     module procedure setChangeUnifRNGF_SK4
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
 #include "pm_arrayChange@routines.inc.F90"
     end procedure
 #endif
 
 #if SK3_ENABLED
     module procedure setChangeUnifRNGF_SK3
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
 #include "pm_arrayChange@routines.inc.F90"
     end procedure
 #endif
 
 #if SK2_ENABLED
     module procedure setChangeUnifRNGF_SK2
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
 #include "pm_arrayChange@routines.inc.F90"
     end procedure
 #endif
 
 #if SK1_ENABLED
     module procedure setChangeUnifRNGF_SK1
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
 #include "pm_arrayChange@routines.inc.F90"
     end procedure
 #endif
@@ -277,35 +277,35 @@ contains
 
 #if IK5_ENABLED
     module procedure setChangeUnifRNGF_IK5
-        use pm_kind, only: IKC => IK5
+        use pm_kind, only: IKG => IK5
 #include "pm_arrayChange@routines.inc.F90"
     end procedure
 #endif
 
 #if IK4_ENABLED
     module procedure setChangeUnifRNGF_IK4
-        use pm_kind, only: IKC => IK4
+        use pm_kind, only: IKG => IK4
 #include "pm_arrayChange@routines.inc.F90"
     end procedure
 #endif
 
 #if IK3_ENABLED
     module procedure setChangeUnifRNGF_IK3
-        use pm_kind, only: IKC => IK3
+        use pm_kind, only: IKG => IK3
 #include "pm_arrayChange@routines.inc.F90"
     end procedure
 #endif
 
 #if IK2_ENABLED
     module procedure setChangeUnifRNGF_IK2
-        use pm_kind, only: IKC => IK2
+        use pm_kind, only: IKG => IK2
 #include "pm_arrayChange@routines.inc.F90"
     end procedure
 #endif
 
 #if IK1_ENABLED
     module procedure setChangeUnifRNGF_IK1
-        use pm_kind, only: IKC => IK1
+        use pm_kind, only: IKG => IK1
 #include "pm_arrayChange@routines.inc.F90"
     end procedure
 #endif
@@ -318,35 +318,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setChangeUnifRNGF_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_arrayChange@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setChangeUnifRNGF_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_arrayChange@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setChangeUnifRNGF_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_arrayChange@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setChangeUnifRNGF_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_arrayChange@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setChangeUnifRNGF_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_arrayChange@routines.inc.F90"
     end procedure
 #endif
@@ -369,35 +369,35 @@ contains
 
 #if SK5_ENABLED
     module procedure setChangeUnifRNGX_SK5
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
 #include "pm_arrayChange@routines.inc.F90"
     end procedure
 #endif
 
 #if SK4_ENABLED
     module procedure setChangeUnifRNGX_SK4
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
 #include "pm_arrayChange@routines.inc.F90"
     end procedure
 #endif
 
 #if SK3_ENABLED
     module procedure setChangeUnifRNGX_SK3
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
 #include "pm_arrayChange@routines.inc.F90"
     end procedure
 #endif
 
 #if SK2_ENABLED
     module procedure setChangeUnifRNGX_SK2
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
 #include "pm_arrayChange@routines.inc.F90"
     end procedure
 #endif
 
 #if SK1_ENABLED
     module procedure setChangeUnifRNGX_SK1
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
 #include "pm_arrayChange@routines.inc.F90"
     end procedure
 #endif
@@ -410,35 +410,35 @@ contains
 
 #if IK5_ENABLED
     module procedure setChangeUnifRNGX_IK5
-        use pm_kind, only: IKC => IK5
+        use pm_kind, only: IKG => IK5
 #include "pm_arrayChange@routines.inc.F90"
     end procedure
 #endif
 
 #if IK4_ENABLED
     module procedure setChangeUnifRNGX_IK4
-        use pm_kind, only: IKC => IK4
+        use pm_kind, only: IKG => IK4
 #include "pm_arrayChange@routines.inc.F90"
     end procedure
 #endif
 
 #if IK3_ENABLED
     module procedure setChangeUnifRNGX_IK3
-        use pm_kind, only: IKC => IK3
+        use pm_kind, only: IKG => IK3
 #include "pm_arrayChange@routines.inc.F90"
     end procedure
 #endif
 
 #if IK2_ENABLED
     module procedure setChangeUnifRNGX_IK2
-        use pm_kind, only: IKC => IK2
+        use pm_kind, only: IKG => IK2
 #include "pm_arrayChange@routines.inc.F90"
     end procedure
 #endif
 
 #if IK1_ENABLED
     module procedure setChangeUnifRNGX_IK1
-        use pm_kind, only: IKC => IK1
+        use pm_kind, only: IKG => IK1
 #include "pm_arrayChange@routines.inc.F90"
     end procedure
 #endif
@@ -451,35 +451,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setChangeUnifRNGX_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_arrayChange@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setChangeUnifRNGX_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_arrayChange@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setChangeUnifRNGX_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_arrayChange@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setChangeUnifRNGX_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_arrayChange@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setChangeUnifRNGX_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_arrayChange@routines.inc.F90"
     end procedure
 #endif

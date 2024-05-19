@@ -1,7 +1,7 @@
 program example
 
     use pm_kind, only: SK
-    use pm_kind, only: IK, LK, RKC => RKS ! all real kinds are supported.
+    use pm_kind, only: IK, LK, RKG => RKS ! all real kinds are supported.
     use pm_io, only: display_type
     use pm_arrayResize, only: setResized
     use pm_matrixChol, only: getMatChol
@@ -9,7 +9,7 @@ program example
 
     implicit none
 
-    real(RKC), allocatable :: mean(:), cov(:,:), chol(:,:), rand(:)
+    real(RKG), allocatable :: mean(:), cov(:,:), chol(:,:), rand(:)
     integer(IK) :: info
 
     type(display_type) :: disp
@@ -110,7 +110,7 @@ program example
     block
 
         use pm_io, only: getErrTableWrite, trans
-        real(RKC) :: rand(2, 5000)
+        real(RKG) :: rand(2, 5000)
 
         call setMultiNormRand(rand)
         if (0 /= getErrTableWrite("setMultiNormRand.RK.txt", rand, trans)) error stop 'table write failed.'

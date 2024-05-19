@@ -19,9 +19,9 @@ program example
     disp = display_type(file = "main.out.F90")
 
     block
-        use pm_kind, only: RKC => RKH
-        real(RKC) :: probSuccess, probSuccessFit, normFacFit
-        real(RKC), allocatable :: x(:), y(:)
+        use pm_kind, only: RKG => RKH
+        real(RKG) :: probSuccess, probSuccessFit, normFacFit
+        real(RKG), allocatable :: x(:), y(:)
         call disp%skip()
         call disp%show("probSuccess = .1; period = 20")
                         probSuccess = .1; period = 20
@@ -39,8 +39,8 @@ program example
                         if (isFailedGeomCyclicFit(stepSuccess, freqSuccess, period, probSuccessFit, normFacFit)) error stop 'Fitting failed.'
         call disp%show("[probSuccessFit, normFacFit]")
         call disp%show( [probSuccessFit, normFacFit] )
-        call disp%show("x = getLinSpace(1._RKC, real(period, RKC), 500_IK) ! for visualization.")
-                        x = getLinSpace(1._RKC, real(period, RKC), 500_IK) ! for visualization.
+        call disp%show("x = getLinSpace(1._RKG, real(period, RKG), 500_IK) ! for visualization.")
+                        x = getLinSpace(1._RKG, real(period, RKG), 500_IK) ! for visualization.
         call disp%show("y = normFacFit * probSuccessFit * (1 - probSuccessFit)**(x - 1) / (1 - (1 - probSuccessFit)**period) ! for visualization.")
                         y = normFacFit * probSuccessFit * (1 - probSuccessFit)**(x - 1) / (1 - (1 - probSuccessFit)**period) ! for visualization.
         call disp%show("y = normFacFit * exp(getGeomCyclicLogPMF(x, probSuccessFit, period)) ! for visualization.")

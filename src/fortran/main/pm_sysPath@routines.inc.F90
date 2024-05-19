@@ -33,8 +33,8 @@
 #if     isDir_ENABLED
         !%%%%%%%%%%%%
 
-        character(*,SKC), parameter :: DSP = DIR_SEP_POSIX
-        character(*,SKC), parameter :: DSW = DIR_SEP_WINDOWS
+        character(*,SKG), parameter :: DSP = DIR_SEP_POSIX
+        character(*,SKG), parameter :: DSW = DIR_SEP_WINDOWS
 #if     INTEL_ENABLED && DD_ENABLED
         inquire(directory = path, exist = pathIsDir)
 #elif   INTEL_ENABLED && II_ENABLED
@@ -55,7 +55,7 @@
             inquire(file = path//DSP, exist = pathIsDir, iostat = iostat)
         end if
 #elif   DD_ENABLED || II_ENABLED
-        character(len(c_null_char),SKC), parameter :: NULL_CHAR = c_null_char
+        character(len(c_null_char),SKG), parameter :: NULL_CHAR = c_null_char
         character(len(path) + 1, c_char) :: pathc
         interface
             function pm_sys_isdirc(pathc) result(itis) bind(C, name = "pm_sys_isdirc")
@@ -141,7 +141,7 @@
         if (0_IK < index) then
             dirname = path(1_IK : index)
         else
-            dirname = SKC_"."
+            dirname = SKG_"."
         end if
 #elif   PM_ENABLED
         index = getIndexDirName(path, dirsep, style)
@@ -237,7 +237,7 @@
                 if (index(dirsep, path(offset : offset), kind = IK) == 0_IK) exit
             end do
             if (offset == 2_IK) then ! `$(dirname "../")` on POSIX command line yields `"."`
-                if (path(1:2) == SKC_"..") offset = 1_IK
+                if (path(1:2) == SKG_"..") offset = 1_IK
             end if
         end block
         index = offset
@@ -275,25 +275,25 @@
 #elif   getPathVerbatimCMD_ENABLED
         !%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        pathVerbatim = SKC_'"'//getRemoved(path, SKC_'"')//SKC_'"'
+        pathVerbatim = SKG_'"'//getRemoved(path, SKG_'"')//SKG_'"'
 
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 #elif   getPathVerbatimPowerShell_ENABLED
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        pathVerbatim = SKC_"'"//getReplaced(path, SKC_"'", SKC_"''")//SKC_"'"
+        pathVerbatim = SKG_"'"//getReplaced(path, SKG_"'", SKG_"''")//SKG_"'"
 
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%
 #elif   getPathVerbatimPosix_ENABLED
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        pathVerbatim = SKC_"'"//getReplaced(path, SKC_"'", SKC_"'\''")//SKC_"'"
+        pathVerbatim = SKG_"'"//getReplaced(path, SKG_"'", SKG_"'\''")//SKG_"'"
 
         !%%%%%%%%%%%%%%%%%%%%%%%%%%
 #elif   getPathVerbatimFish_ENABLED
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        pathVerbatim = SKC_"'"//getReplaced(getReplaced(path, SKC_"\", SKC_"\\"), SKC_"'", SKC_"\'")//SKC_"'"
+        pathVerbatim = SKG_"'"//getReplaced(getReplaced(path, SKG_"\", SKG_"\\"), SKG_"'", SKG_"\'")//SKG_"'"
 
         !%%%%%%%%%%%%%%%%%%%%%%%%%%
 #elif   getPathPosixEscaped_ENABLED
@@ -305,7 +305,7 @@
 #elif   setPathPosixEscaped_ENABLED
         !%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        character(1,SKC), parameter :: POSIX_RESERVED_CHR_SKC(*) = POSIX_RESERVED_CHR
+        character(1,SKG), parameter :: POSIX_RESERVED_CHR_SKG(*) = POSIX_RESERVED_CHR
         integer(IK) :: i, j, counter, lenPath, Loc(len(path, IK))
         lenPath = len(path, IK)
         if (lenPath == 0_IK) then
@@ -313,16 +313,16 @@
         else
             counter = 0_IK
             do i = 1_IK, lenPath
-                loopOverShellEscapeChars: do j = 1_IK, size(POSIX_RESERVED_CHR_SKC, 1, IK)
-                    if (path(i:i) == POSIX_RESERVED_CHR_SKC(j)) then
+                loopOverShellEscapeChars: do j = 1_IK, size(POSIX_RESERVED_CHR_SKG, 1, IK)
+                    if (path(i:i) == POSIX_RESERVED_CHR_SKG(j)) then
                         counter = counter + 1_IK
                         Loc(counter) = i
                         exit loopOverShellEscapeChars
                     end if
                 end do loopOverShellEscapeChars
             end do
-            allocate(character(lenPath + counter, SKC) :: pathEscaped)
-            call setInserted(pathEscaped, path, SKC_"\", Loc(1:counter))
+            allocate(character(lenPath + counter, SKG) :: pathEscaped)
+            call setInserted(pathEscaped, path, SKG_"\", Loc(1:counter))
         end if
 
         !%%%%%%%%%%%%%%%%%%%
@@ -343,12 +343,12 @@
 #elif   setPathPosix_ENABLED || setPathWindows_ENABLED
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        character(:,SKC), allocatable   :: pathNew
-        character(*,SKC), parameter     :: PSA = DIR_SEP_ALL ! Path Separators All
+        character(:,SKG), allocatable   :: pathNew
+        character(*,SKG), parameter     :: PSA = DIR_SEP_ALL ! Path Separators All
 #if     setPathPosix_ENABLED
-        character(1,SKC), parameter     :: PSN = DIR_SEP_POSIX ! Path Separator Native
+        character(1,SKG), parameter     :: PSN = DIR_SEP_POSIX ! Path Separator Native
 #elif   setPathWindows_ENABLED
-        character(1,SKC), parameter     :: PSN = DIR_SEP_WINDOWS ! Path Separator Native
+        character(1,SKG), parameter     :: PSN = DIR_SEP_WINDOWS ! Path Separator Native
 #endif
         integer(IK)                     :: i, j, lenPath, lenPathMin, lenIgnore, lenPathNew!, lenSeg, istart
        !logical(LK)                     :: isDot ! is pattern `PSN//"."//PSN`.
@@ -375,7 +375,7 @@
         !   If there are any such illegal characters (for example, double quotation marks) or Windows reserved words, we do not check for them here.
         !   Illegal Windows characters (particularly the double quotation mark) can be handled via `getPathVerbatimCMD()` and `getPathVerbatimPowerShell()`.
 
-        allocate(character(lenPath,SKC) :: pathNew)
+        allocate(character(lenPath,SKG) :: pathNew)
 
         ! Skip any UNC path root.
 
@@ -412,7 +412,7 @@
 !#define         INCREMENT_PATH_NEW \
 !                if (scan(PSA, path(i:i), kind = IK) == 0_IK) then; \
 !                    lenPathNew = lenPathNew + 1_IK; \
-!                    !isDot = path(i:i) == SKC_"." .and. .not. isSPS; \
+!                    !isDot = path(i:i) == SKG_"." .and. .not. isSPS; \
 !                    pathNew(lenPathNew:lenPathNew) = path(i:i); \
 !                    isSPS = .true._LK; \
 !                elseif (isSPS) then; \
@@ -511,7 +511,7 @@
         !%%%%%%%%%%%%%%%%%%%%%
 
         if (len(path,IK) > 1_IK) then
-            pathHasDriveLetter = isCharAlpha(path(1:1)) .and. path(2:2) == SKC_":"
+            pathHasDriveLetter = isCharAlpha(path(1:1)) .and. path(2:2) == SKG_":"
         else
             pathHasDriveLetter = .false._LK
         end if
@@ -520,7 +520,7 @@
 #elif   isPathAbsWindows_ENABLED
         !%%%%%%%%%%%%%%%%%%%%%%%
 
-        character(*,SKC), parameter :: DSWA = DIR_SEP_WINDOWS_ALL
+        character(*,SKG), parameter :: DSWA = DIR_SEP_WINDOWS_ALL
         ERROR_STOP_IF(len(DSWA) /= 2, MODULE_NAME//SK_"@isPathAbsWindows(): Internal library error occurred. The condition `len(DSWA) == 2` must hold.")
 
         if (len(path, IK) > 2_IK) then
@@ -541,7 +541,7 @@
 #elif   isPathAbsPosix_ENABLED
         !%%%%%%%%%%%%%%%%%%%%%
 
-        character(*,SKC), parameter :: DSPA = DIR_SEP_POSIX_ALL
+        character(*,SKG), parameter :: DSPA = DIR_SEP_POSIX_ALL
         ERROR_STOP_IF(len(DSPA) > 1, MODULE_NAME//SK_"@isPathAbsPosix(): Internal error occurred. `len(DSPA) == 1` must hold.")
         if (len(path, IK) > 0_IK) then
             pathIsAbs = logical(path(1:1) == DSPA, LK)
@@ -555,7 +555,7 @@
 
         integer(IK) :: iloc, nloc
         integer(IK), allocatable :: index(:,:)
-        character(:,SKC), allocatable :: contents
+        character(:,SKG), allocatable :: contents
         failed = isFailedGlob(pattern, contents, index, errmsg)
         nloc = size(index, 2, IK)
         allocate(list(nloc))
@@ -567,9 +567,9 @@
 #elif   isFailedGlob_ENABLED && SK_ENABLED
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        character(*, SK), parameter :: NLC = new_line(SKC_"a")
+        character(*, SK), parameter :: NLC = new_line(SKG_"a")
         character(*, SK), parameter :: PROCEDURE_NAME = MODULE_NAME//SK_"@isFailedGlob()"
-        character(:,SKC), allocatable :: command, errmsg_def
+        character(:,SKG), allocatable :: command, errmsg_def
         integer(IK) :: exitstat, iell
         type(shell_type) :: shell
 
@@ -590,18 +590,18 @@
         ! Determine sorting method.
 
         if (shell%is%powershell .or. shell%is%cmd) then
-            command = SKC_"(Resolve-Path "//getPathVerbatimPowerShell(pattern)//SKC_").path"
-            if (shell%is%cmd) command = SKC_"powershell -command """//command//SKC_""""
+            command = SKG_"(Resolve-Path "//getPathVerbatimPowerShell(pattern)//SKG_").path"
+            if (shell%is%cmd) command = SKG_"powershell -command """//command//SKG_""""
         elseif (shell%is%bash .or. shell%is%ksh .or. shell%is%zsh) then
             command = getCommandBashStyle(pattern)
         else
             ! check if bash exists on the system.
-            failed = isFailedExec(SKC_"bash --version > /dev/null 2>&1")
+            failed = isFailedExec(SKG_"bash --version > /dev/null 2>&1")
             if (failed) then
                 if (present(errmsg)) errmsg = PROCEDURE_NAME//SK_": Unsupported runtime shell: "//shell%name ! LCOV_EXCL_LINE
                 return ! LCOV_EXCL_LINE
             end if
-            command = SKC_"bash -c "//getPathVerbatimPosix(getCommandBashStyle(pattern))
+            command = SKG_"bash -c "//getPathVerbatimPosix(getCommandBashStyle(pattern))
         end if
 
         ! Fetch the list.
@@ -614,7 +614,7 @@
             return ! LCOV_EXCL_LINE
         elseif (exitstat /= 0_IK) then
             index = reshape([integer(IK) ::], [0,0])
-            list = SKC_""
+            list = SKG_""
             return
         end if
 
@@ -637,7 +637,7 @@
         do iell = 1, size(index, 2, IK)
             if (.not. isExtant(list(index(1, iell) : index(2, iell)), exitstat, errmsg)) then
                 index = reshape([integer(IK) ::], [0, 0])
-                list = SKC_""
+                list = SKG_""
                 return
             elseif (exitstat /= 0) then
                 failed = .true._LK ! LCOV_EXCL_LINE
@@ -650,10 +650,10 @@
     contains
 
         PURE function getCommandBashStyle(pattern) result(command)
-            character(*,SKC), intent(in) :: pattern
-            character(:,SKC), allocatable :: command
-            command = getReplaced(getReplaced(getPathVerbatimPosix(pattern), SKC_"*", SKC_"'*'"), SKC_"?", SKC_"'?'")
-            command = SKC_"list=("//command//SKC_"); for file in ""${list[@]}""; do echo ""$file""; done"
+            character(*,SKG), intent(in) :: pattern
+            character(:,SKG), allocatable :: command
+            command = getReplaced(getReplaced(getPathVerbatimPosix(pattern), SKG_"*", SKG_"'*'"), SKG_"?", SKG_"'?'")
+            command = SKG_"list=("//command//SKG_"); for file in ""${list[@]}""; do echo ""$file""; done"
         end function
 
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -662,7 +662,7 @@
 
         integer(IK) :: iloc, nloc
         integer(IK), allocatable :: index(:,:)
-        character(:,SKC), allocatable :: contents
+        character(:,SKG), allocatable :: contents
         failed = isFailedList(path, contents, index, sort, showdir, showfile, showhidden, reversed, errmsg)
         nloc = size(index, 2, IK)
         allocate(list(nloc))
@@ -674,9 +674,9 @@
 #elif   isFailedList_ENABLED && SK_ENABLED
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        character(*, SK), parameter :: NLC = new_line(SKC_"a")
+        character(*, SK), parameter :: NLC = new_line(SKG_"a")
         character(*, SK), parameter :: PROCEDURE_NAME = MODULE_NAME//SK_"@isFailedList()"
-        character(:,SKC), allocatable :: command, dirlist, filelist, errmsg_def
+        character(:,SKG), allocatable :: command, dirlist, filelist, errmsg_def
         integer(IK) , allocatable :: dirIndex(:,:), fileIndex(:,:)
         integer(IK) :: lenList, istart, endloc, i, exitstat
         logical(LK) :: showhidden_def
@@ -767,34 +767,34 @@
             !   \warning
             !   Grouping directories first in the command below is crucial for the proper functioning
             !   of the rest of the code below (when either `showdir` or `showfile` is `.false.`).
-            command = SKC_"ls --group-directories-first -bpG"
-            if (showhidden_def) command = command//SKC_"A"
+            command = SKG_"ls --group-directories-first -bpG"
+            if (showhidden_def) command = command//SKG_"A"
             if (present(sort)) then
                 if (sort /= SK_"name") then
-                    if (reversed_def) command = command//SKC_"r"
+                    if (reversed_def) command = command//SKG_"r"
                 elseif (sort == SK_"tmod") then
                     if (reversed_def) then
-                        command = command//SKC_"t"
+                        command = command//SKG_"t"
                     else
-                        command = command//SKC_"tr"
+                        command = command//SKG_"tr"
                     end if
                 elseif (sort == SK_"tacc") then
                     if (reversed_def) then
-                        command = command//SKC_"u"
+                        command = command//SKG_"u"
                     else
-                        command = command//SKC_"ur"
+                        command = command//SKG_"ur"
                     end if
                 elseif (sort == SK_"size") then
                     if (reversed_def) then
-                        command = command//SKC_"S"
+                        command = command//SKG_"S"
                     else
-                        command = command//SKC_"Sr"
+                        command = command//SKG_"Sr"
                     end if
                 elseif (sort == SK_"fext") then
                     if (reversed_def) then
-                        command = command//SKC_"Xr"
+                        command = command//SKG_"Xr"
                     else
-                        command = command//SKC_"X"
+                        command = command//SKG_"X"
                     end if
                 else
                     if (present(errmsg)) errmsg = PROCEDURE_NAME//SK_": Unrecognized value for the `sort` input argument: "//sort
@@ -802,17 +802,17 @@
                     return
                 end if
             else
-                if (reversed_def) command = command//SKC_" -r"
+                if (reversed_def) command = command//SKG_" -r"
             end if
 
             ! Fetch the list.
-            failed = isFailedGetOutput(command//SKC_" "//getPathVerbatimPosix(path), list, errmsg_def, exitstat = exitstat)
+            failed = isFailedGetOutput(command//SKG_" "//getPathVerbatimPosix(path), list, errmsg_def, exitstat = exitstat)
             if (failed) then
                 if (present(errmsg)) errmsg = PROCEDURE_NAME//SK_": "//trim(errmsg_def) ! LCOV_EXCL_LINE
                 return ! LCOV_EXCL_LINE
             elseif (exitstat /= 0_IK) then
                 index = reshape([integer(IK) ::], [0,0])
-                list = SKC_""
+                list = SKG_""
                 return
             end if
 #define     UNESCAPE_REINDEX_LIST call setAsciiFromEscaped(list(index(1, i) : index(2, i)), endloc); index(2, i) = index(1, i) + endloc - 1_IK;
@@ -841,7 +841,7 @@
                 index = index(:, 1 : istart)
             else
                 index = reshape([integer(IK) ::], [0,0])
-                list = SKC_""
+                list = SKG_""
                 return
             end if
 #undef      UNESCAPE_REINDEX_LIST
@@ -890,42 +890,42 @@
             !   \see
             !   https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/dir
             !
-            command = SKC_"dir /b /o:g"
+            command = SKG_"dir /b /o:g"
             if (showhidden_def) then
-                command = command//SKC_" /a:h"
+                command = command//SKG_" /a:h"
             else
-                command = command//SKC_" /a:-h"
+                command = command//SKG_" /a:-h"
             end if
             if (present(sort)) then
                 if (sort /= SK_"name") then
                     if (reversed_def) then
-                        command = command//SKC_" /o:-n"
+                        command = command//SKG_" /o:-n"
                     else
-                        command = command//SKC_" /o:n"
+                        command = command//SKG_" /o:n"
                     end if
                 elseif (sort == SK_"tmod") then
                     if (reversed_def) then
-                        command = command//SKC_" /o:-d /t:w"
+                        command = command//SKG_" /o:-d /t:w"
                     else
-                        command = command//SKC_" /o:d /t:w"
+                        command = command//SKG_" /o:d /t:w"
                     end if
                 elseif (sort == SK_"tacc") then
                     if (reversed_def) then
-                        command = command//SKC_" /o:-d /t:a"
+                        command = command//SKG_" /o:-d /t:a"
                     else
-                        command = command//SKC_" /o:d /t:a"
+                        command = command//SKG_" /o:d /t:a"
                     end if
                 elseif (sort == SK_"size") then
                     if (reversed_def) then
-                        command = command//SKC_" /o:-s"
+                        command = command//SKG_" /o:-s"
                     else
-                        command = command//SKC_" /o:s"
+                        command = command//SKG_" /o:s"
                     end if
                 elseif (sort == SK_"fext") then
                     if (reversed_def) then
-                        command = command//SKC_" /o:-e"
+                        command = command//SKG_" /o:-e"
                     else
-                        command = command//SKC_" /o:e"
+                        command = command//SKG_" /o:e"
                     end if
                 else
                     if (present(errmsg)) errmsg = PROCEDURE_NAME//SK_": Unrecognized value for the `sort` input argument: "//sort
@@ -934,20 +934,20 @@
                 end if
             else
                 if (reversed_def) then
-                    command = command//SKC_" /o:-n"
+                    command = command//SKG_" /o:-n"
                 else
-                    command = command//SKC_" /o:n"
+                    command = command//SKG_" /o:n"
                 end if
             end if
             !if (len(exclude)>0 ) command = command // " | findstr /v /i " // exclude
 
             if (showdir_def) then
-                if (isFailedGetOutput(command//SKC_" /a:d"//getPathVerbatimCMD(path), dirlist, errmsg_def, exitstat = exitstat)) then
+                if (isFailedGetOutput(command//SKG_" /a:d"//getPathVerbatimCMD(path), dirlist, errmsg_def, exitstat = exitstat)) then
                     dirIndex = reshape([integer(IK) ::], [0,0]) ! LCOV_EXCL_LINE
-                    dirlist = SKC_"" ! LCOV_EXCL_LINE
+                    dirlist = SKG_"" ! LCOV_EXCL_LINE
                 elseif (exitstat /= 0_IK) then
                     index = reshape([integer(IK) ::], [0,0])
-                    list = SKC_""
+                    list = SKG_""
                     return
                 else
                     call setSplit(dirIndex, dirlist, NLC)
@@ -961,12 +961,12 @@
             end if
 
             if (showfile_def) then
-                if (isFailedGetOutput(command//SKC_" /a:-d"//getPathVerbatimCMD(path), filelist, errmsg_def, exitstat = exitstat)) then
+                if (isFailedGetOutput(command//SKG_" /a:-d"//getPathVerbatimCMD(path), filelist, errmsg_def, exitstat = exitstat)) then
                     fileIndex = reshape([integer(IK) ::], [0,0]) ! LCOV_EXCL_LINE
-                    filelist = SKC_"" ! LCOV_EXCL_LINE
+                    filelist = SKG_"" ! LCOV_EXCL_LINE
                 elseif (exitstat /= 0_IK) then
                     index = reshape([integer(IK) ::], [0,0])
-                    list = SKC_""
+                    list = SKG_""
                     return
                 else
                     call setSplit(fileIndex, filelist, NLC)
@@ -979,7 +979,7 @@
                 lenList = len(dirlist,IK) + len(filelist,IK)
             end if
 
-            allocate(character(lenList,SKC) :: list)
+            allocate(character(lenList,SKG) :: list)
             allocate(index(2,lenList))
             do i = 1_IK, size(dirIndex,2,IK)
                 index(1, i) = dirIndex(1, i)
@@ -1013,23 +1013,23 @@
 #elif   isFailedCopy_ENABLED || isFailedMove_ENABLED
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        character(*,SKC), parameter     :: DSP = DIR_SEP_POSIX
-        character(*,SKC), parameter     :: DSW = DIR_SEP_WINDOWS
-        character(*,SKC), parameter     :: DSPA = DIR_SEP_POSIX_ALL
-        character(*,SKC), parameter     :: DSWA = DIR_SEP_WINDOWS_ALL
-        character(*,SKC), parameter     :: LF = new_line(SKC_"a")
-        character(:,SKC), allocatable   :: paths
-        character(:,SKC), allocatable   :: dirname
-        character(:,SKC), allocatable   :: command
+        character(*,SKG), parameter     :: DSP = DIR_SEP_POSIX
+        character(*,SKG), parameter     :: DSW = DIR_SEP_WINDOWS
+        character(*,SKG), parameter     :: DSPA = DIR_SEP_POSIX_ALL
+        character(*,SKG), parameter     :: DSWA = DIR_SEP_WINDOWS_ALL
+        character(*,SKG), parameter     :: LF = new_line(SKG_"a")
+        character(:,SKG), allocatable   :: paths
+        character(:,SKG), allocatable   :: dirname
+        character(:,SKG), allocatable   :: command
         logical(LK)                     :: wait_def
         logical(LK)                     :: forced_def
         integer(IK)                     :: ntry_def
         integer(IK)                     :: itry
         type(shellis_type)              :: shellis
 #if     isFailedMove_ENABLED
-        character(*,SKC), parameter     :: PROCEDURE_NAME = MODULE_NAME//SK_"@isFailedMove()"
+        character(*,SKG), parameter     :: PROCEDURE_NAME = MODULE_NAME//SK_"@isFailedMove()"
 #elif   isFailedCopy_ENABLED
-        character(*,SKC), parameter     :: PROCEDURE_NAME = MODULE_NAME//SK_"@isFailedCopy()"
+        character(*,SKG), parameter     :: PROCEDURE_NAME = MODULE_NAME//SK_"@isFailedCopy()"
         logical(LK)                     :: recursive_def
         if (present(recursive)) then
             recursive_def = recursive
@@ -1042,7 +1042,7 @@
 
         ! The input source and destination cannnot be empty.
 
-        failed = logical(from == SKC_"" .or. to == SKC_"", LK)
+        failed = logical(from == SKG_"" .or. to == SKG_"", LK)
         if (failed) then
             if (present(errmsg)) errmsg = PROCEDURE_NAME//SK_": The input path `from` is empty."
             return
@@ -1093,9 +1093,9 @@
             ! quote the paths.
 
             if (shellis%powershell) then
-                paths = getPathVerbatimPowerShell(from)//SKC_" "//getPathVerbatimPowerShell(to)
+                paths = getPathVerbatimPowerShell(from)//SKG_" "//getPathVerbatimPowerShell(to)
             else
-                paths = getPathVerbatimPosix(from)//SKC_" "//getPathVerbatimPosix(to)
+                paths = getPathVerbatimPosix(from)//SKG_" "//getPathVerbatimPosix(to)
             end if
 
             ! copy/move path to destination.
@@ -1104,9 +1104,9 @@
             !   -n, --no-clobber    : do not overwrite an existing file.
             !   -f, --force         : if an existing destination file cannot be opened, remove it and try again (this option is ignored when the -n option is also used).
             if (forced_def) then
-                command = SKC_"mv -f "//paths
+                command = SKG_"mv -f "//paths
             else
-                command = SKC_"mv -n "//paths
+                command = SKG_"mv -n "//paths
             end if
 #elif       isFailedCopy_ENABLED
             !   -a, --archive       : same as -dR --preserve=all.
@@ -1115,13 +1115,13 @@
             !   -n, --no-clobber    : do not overwrite an existing file.
             !   -R, -r, --recursive : copy directories recursively.
             if (forced_def .and. recursive_def) then
-                command = SKC_"cp -arf "//paths
+                command = SKG_"cp -arf "//paths
             elseif (recursive_def) then
-                command = SKC_"cp -arn "//paths
+                command = SKG_"cp -arn "//paths
             elseif (forced_def) then
-                command = SKC_"cp -f "//paths
+                command = SKG_"cp -f "//paths
             else
-                command = SKC_"cp "//paths
+                command = SKG_"cp "//paths
             end if
 #endif
 
@@ -1132,9 +1132,9 @@
 
                 ! To get the linux `cp` behavior on Windows when `to` is an existing directory, we should create a new directory in `to` with the basename of `from`.
                 if (isDir(to)) then
-                    paths = getPathVerbatimCMD(from)//SKC_" "//getPathVerbatimCMD(to//DSW//getBaseName(from, DSWA))
+                    paths = getPathVerbatimCMD(from)//SKG_" "//getPathVerbatimCMD(to//DSW//getBaseName(from, DSWA))
                 else
-                    paths = getPathVerbatimCMD(from)//SKC_" "//getPathVerbatimCMD(to)
+                    paths = getPathVerbatimCMD(from)//SKG_" "//getPathVerbatimCMD(to)
                 end if
 
                 !   Robocopy flags:
@@ -1149,19 +1149,19 @@
                 !   /move       :   Moves files and directories, and deletes them from the source after they are copied.
 #if             isFailedMove_ENABLED
                 if (forced_def) then
-                    command = SKC_"robocopy "//paths//SKC_" /r:1 /w:1 /move /is         /e"//SKC_" > nul"
+                    command = SKG_"robocopy "//paths//SKG_" /r:1 /w:1 /move /is         /e"//SKG_" > nul"
                 else
-                    command = SKC_"robocopy "//paths//SKC_" /r:1 /w:1 /move /xc /xn /xo /e"//SKC_" > nul"
+                    command = SKG_"robocopy "//paths//SKG_" /r:1 /w:1 /move /xc /xn /xo /e"//SKG_" > nul"
                 end if
 #elif           isFailedCopy_ENABLED
                 if (forced_def .and. recursive_def) then
-                    command = SKC_"robocopy "//paths//SKC_" /r:1 /w:1 /is         /e"//SKC_" > nul"
+                    command = SKG_"robocopy "//paths//SKG_" /r:1 /w:1 /is         /e"//SKG_" > nul"
                 elseif (recursive_def) then
-                    command = SKC_"robocopy "//paths//SKC_" /r:1 /w:1 /xc /xn /xo /e"//SKC_" > nul"
+                    command = SKG_"robocopy "//paths//SKG_" /r:1 /w:1 /xc /xn /xo /e"//SKG_" > nul"
                 elseif (forced_def) then
-                    command = SKC_"robocopy "//paths//SKC_" /r:1 /w:1 /is           "//SKC_" > nul"
+                    command = SKG_"robocopy "//paths//SKG_" /r:1 /w:1 /is           "//SKG_" > nul"
                 else
-                    command = SKC_"robocopy "//paths//SKC_" /r:1 /w:1 /xc /xn /xo   "//SKC_" > nul"
+                    command = SKG_"robocopy "//paths//SKG_" /r:1 /w:1 /xc /xn /xo   "//SKG_" > nul"
                 end if
 #endif
 
@@ -1183,7 +1183,7 @@
                 ! /q Suppresses the display of xcopy messages.
                 ! /y Suppresses prompting to confirm that you want to overwrite an existing destination file (as if `forced = .true.`).
                 ! /s Copies directories and subdirectories, unless they are empty. If one omits /s, xcopy works within a single directory.
-                ! command = SKC_"xcopy /e /q /s /Y "//getPathVerbatimCMD(from)//SKC_" "//getPathVerbatimCMD(to)//SKC_" > nul"
+                ! command = SKG_"xcopy /e /q /s /Y "//getPathVerbatimCMD(from)//SKG_" "//getPathVerbatimCMD(to)//SKG_" > nul"
 
                 itry = len(to, IK)
                 if (index(DSWA, to(itry:itry), kind = IK) > 0_IK) then ! it must be a dir.
@@ -1196,19 +1196,19 @@
                     failed = isFailedMakeDir(to, errmsg = errmsg)
                     if (failed) then; if (present(errmsg)) errmsg = PROCEDURE_NAME//SK_": "//trim(errmsg); return; end if ! LCOV_EXCL_LINE
 #elif               isFailedCopy_ENABLED
-                    command = SKC_"echo D | xcopy /q /y "//getPathVerbatimCMD(from)//SKC_" "//getPathVerbatimCMD(to(1:itry-1))//SKC_" > nul"
+                    command = SKG_"echo D | xcopy /q /y "//getPathVerbatimCMD(from)//SKG_" "//getPathVerbatimCMD(to(1:itry-1))//SKG_" > nul"
                 else
                     ! `to` must be a file. So no problemino.
                     ! `echo F` pipes the response `file` to the question of how to interpret `to` if there is ambiquity (e.g., if `to` does not end with directory separator).
-                    command = SKC_"echo F | xcopy /q /y "//getPathVerbatimCMD(from)//SKC_" "//getPathVerbatimCMD(to)//SKC_" > nul"
+                    command = SKG_"echo F | xcopy /q /y "//getPathVerbatimCMD(from)//SKG_" "//getPathVerbatimCMD(to)//SKG_" > nul"
 #endif
                 end if
 
 #if             isFailedMove_ENABLED
                 if (shellis%cmd) then
-                    command = SKC_"move /y "//getPathVerbatimCMD(from)//SKC_" "//getPathVerbatimCMD(to)//SKC_" > nul"
+                    command = SKG_"move /y "//getPathVerbatimCMD(from)//SKG_" "//getPathVerbatimCMD(to)//SKG_" > nul"
                 elseif (shellis%powershell) then
-                    command = SKC_"move "//getPathVerbatimCMD(from)//SKC_" "//getPathVerbatimCMD(to)//SKC_" -Force > nul"
+                    command = SKG_"move "//getPathVerbatimCMD(from)//SKG_" "//getPathVerbatimCMD(to)//SKG_" -Force > nul"
                 end if
 #endif
             end if
@@ -1254,9 +1254,9 @@
         !%%%%%%%%%%%%%%%%%%%%%
 
         character(*, SK), parameter :: PROCEDURE_NAME = MODULE_NAME//"@isFailedRemove()"
-        character(*,SKC), parameter :: LF = new_line(SKC_"a")
+        character(*,SKG), parameter :: LF = new_line(SKG_"a")
         logical(LK) :: forced_def, recursive_def, wait_def
-        character(:,SKC), allocatable :: command, cmdfull
+        character(:,SKG), allocatable :: command, cmdfull
         character(511, SK) :: errmsg_def
         integer(IK) :: i, itry, ntry_def
         integer(IK) :: iostat
@@ -1350,9 +1350,9 @@
                 end do
                 !   -f, --force         :   ignore nonexistent files and arguments, never prompt.
                 !   -r, -R, --recursive :   remove directories and their contents recursively.
-                command = SKC_"rm "
-                if (forced_def) command = command//SKC_"-f "
-                if (recursive_def) command = command//SKC_"-r "
+                command = SKG_"rm "
+                if (forced_def) command = command//SKG_"-f "
+                if (recursive_def) command = command//SKG_"-r "
 
             elseif (shellis%windows .and. shellis%cmd) then blockDefineCommand
 
@@ -1361,9 +1361,9 @@
                 end do
                 !   /Q  :   Quiet mode, do not ask if ok to remove a directory tree with /S.
                 !   /S  :   Removes all directories and files in the specified directory in addition to the directory itself. Used to remove a directory tree.
-                command = SKC_"rd "
-                if (forced_def) command = command//SKC_"/Q "
-                if (recursive_def) command = command//SKC_"/S "
+                command = SKG_"rd "
+                if (forced_def) command = command//SKG_"/Q "
+                if (recursive_def) command = command//SKG_"/S "
 
             elseif (shellis%windows .and. shellis%powershell) then blockDefineCommand
 
@@ -1373,9 +1373,9 @@
                 !   -Force      :   Forces the cmdlet to remove items that can't otherwise be changed, such as hidden or read-only files or read-only aliases or variables.
                 !   -Recurse    :   Indicates that this cmdlet deletes the items in the specified locations and in all child items of the locations.
                 !                   The Recurse parameter might not delete all subfolders or all child items. This is a known issue.
-                command = SKC_"Remove-Item "
-                if (forced_def) command = command//SKC_"-Force "
-                if (recursive_def) command = command//SKC_"-Recurse "
+                command = SKG_"Remove-Item "
+                if (forced_def) command = command//SKG_"-Force "
+                if (recursive_def) command = command//SKG_"-Recurse "
 
             else blockDefineCommand
 
@@ -1413,7 +1413,7 @@
         use pm_err, only: getFine
         integer(IK) :: lenList
         logical(LK) :: failed_def
-        character(:,SKC), allocatable :: key_def, inc_def, sep_def, paths
+        character(:,SKG), allocatable :: key_def, inc_def, sep_def, paths
         if (present(failed)) failed = .false._LK
         if (present(key)) then
             key_def = key
@@ -1466,14 +1466,14 @@
 
         integer(IK) :: ipath, lenkey, leninc, item, lenout, lenListInput, istart
         logical(LK) :: isall, found, failed
-        character(255,SKC) :: errmsg
-        character(1,SKC) :: pathsep
+        character(255,SKG) :: errmsg
+        character(1,SKG) :: pathsep
         !integer(IK), allocatable :: cindex(:,:)
         !integer(IK), allocatable :: kindex(:,:)
         type(css_type), allocatable :: csskey(:)
         type(css_type), allocatable :: inclist(:)
         type(css_type), allocatable :: csspath(:)
-        character(:,SKC), allocatable :: contents, lower, inclow
+        character(:,SKG), allocatable :: contents, lower, inclow
         CHECK_ASSERTION(__LINE__, 0_IK < lenList, SK_"@setPathMatch(): The condition `0 < lenList` must hold. lenList = "//getStr(lenList))
         CHECK_ASSERTION(__LINE__, 0_IK < len_trim(sep), SK_"@setPathMatch(): The condition `0 < len_trim(sep)` must hold. len_trim(sep) = "//getStr(len_trim(sep)))
         lenListInput = lenList ! Keep a copy of the input value.
@@ -1564,7 +1564,7 @@
                 !          Kind: 64-bit
                 !
                 ! We search for all instances of lines matching "Location: " and the input keys.
-                call setSplit(csspath, contents, new_line(SKC_""))
+                call setSplit(csspath, contents, new_line(SKG_""))
                 do ipath = 1, size(csspath, 1, IK)
                     istart = index(csspath(ipath)%val, SK_"Location: ", kind = IK)
                     if (0 < istart) then

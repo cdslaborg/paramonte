@@ -62,35 +62,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getPowerLogPDFNFALD_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_distPower@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getPowerLogPDFNFALD_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_distPower@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getPowerLogPDFNFALD_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_distPower@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getPowerLogPDFNFALD_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_distPower@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getPowerLogPDFNFALD_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_distPower@routines.inc.F90"
     end procedure
 #endif
@@ -113,35 +113,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getPowerLogPDFNFALL_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_distPower@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getPowerLogPDFNFALL_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_distPower@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getPowerLogPDFNFALL_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_distPower@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getPowerLogPDFNFALL_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_distPower@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getPowerLogPDFNFALL_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_distPower@routines.inc.F90"
     end procedure
 #endif
@@ -174,35 +174,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getPowerLogPDFALD_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_distPower@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getPowerLogPDFALD_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_distPower@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getPowerLogPDFALD_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_distPower@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getPowerLogPDFALD_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_distPower@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getPowerLogPDFALD_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_distPower@routines.inc.F90"
     end procedure
 #endif
@@ -225,35 +225,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getPowerLogPDFALL_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_distPower@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getPowerLogPDFALL_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_distPower@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getPowerLogPDFALL_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_distPower@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getPowerLogPDFALL_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_distPower@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getPowerLogPDFALL_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_distPower@routines.inc.F90"
     end procedure
 #endif
@@ -280,35 +280,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setPowerLogPDF_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_distPower@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setPowerLogPDF_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_distPower@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setPowerLogPDF_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_distPower@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setPowerLogPDF_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_distPower@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setPowerLogPDF_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_distPower@routines.inc.F90"
     end procedure
 #endif
@@ -335,35 +335,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getPowerLogCDFNFALD_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_distPower@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getPowerLogCDFNFALD_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_distPower@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getPowerLogCDFNFALD_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_distPower@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getPowerLogCDFNFALD_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_distPower@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getPowerLogCDFNFALD_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_distPower@routines.inc.F90"
     end procedure
 #endif
@@ -386,35 +386,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getPowerLogCDFNFALL_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_distPower@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getPowerLogCDFNFALL_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_distPower@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getPowerLogCDFNFALL_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_distPower@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getPowerLogCDFNFALL_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_distPower@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getPowerLogCDFNFALL_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_distPower@routines.inc.F90"
     end procedure
 #endif
@@ -447,35 +447,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getPowerLogCDFALD_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_distPower@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getPowerLogCDFALD_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_distPower@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getPowerLogCDFALD_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_distPower@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getPowerLogCDFALD_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_distPower@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getPowerLogCDFALD_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_distPower@routines.inc.F90"
     end procedure
 #endif
@@ -498,35 +498,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getPowerLogCDFALL_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_distPower@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getPowerLogCDFALL_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_distPower@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getPowerLogCDFALL_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_distPower@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getPowerLogCDFALL_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_distPower@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getPowerLogCDFALL_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_distPower@routines.inc.F90"
     end procedure
 #endif
@@ -559,35 +559,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setPowerLogCDFALD_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_distPower@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setPowerLogCDFALD_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_distPower@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setPowerLogCDFALD_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_distPower@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setPowerLogCDFALD_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_distPower@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setPowerLogCDFALD_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_distPower@routines.inc.F90"
     end procedure
 #endif
@@ -610,35 +610,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setPowerLogCDFALL_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_distPower@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setPowerLogCDFALL_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_distPower@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setPowerLogCDFALL_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_distPower@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setPowerLogCDFALL_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_distPower@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setPowerLogCDFALL_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_distPower@routines.inc.F90"
     end procedure
 #endif
@@ -671,35 +671,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getPowerLogQuanALD_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_distPower@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getPowerLogQuanALD_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_distPower@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getPowerLogQuanALD_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_distPower@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getPowerLogQuanALD_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_distPower@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getPowerLogQuanALD_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_distPower@routines.inc.F90"
     end procedure
 #endif
@@ -722,35 +722,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getPowerLogQuanALL_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_distPower@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getPowerLogQuanALL_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_distPower@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getPowerLogQuanALL_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_distPower@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getPowerLogQuanALL_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_distPower@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getPowerLogQuanALL_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_distPower@routines.inc.F90"
     end procedure
 #endif
@@ -783,35 +783,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setPowerLogQuanLLALD_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_distPower@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setPowerLogQuanLLALD_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_distPower@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setPowerLogQuanLLALD_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_distPower@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setPowerLogQuanLLALD_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_distPower@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setPowerLogQuanLLALD_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_distPower@routines.inc.F90"
     end procedure
 #endif
@@ -834,35 +834,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setPowerLogQuanLLALL_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_distPower@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setPowerLogQuanLLALL_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_distPower@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setPowerLogQuanLLALL_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_distPower@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setPowerLogQuanLLALL_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_distPower@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setPowerLogQuanLLALL_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_distPower@routines.inc.F90"
     end procedure
 #endif
@@ -895,35 +895,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getPowerLogRandALD_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_distPower@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getPowerLogRandALD_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_distPower@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getPowerLogRandALD_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_distPower@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getPowerLogRandALD_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_distPower@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getPowerLogRandALD_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_distPower@routines.inc.F90"
     end procedure
 #endif
@@ -946,35 +946,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getPowerLogRandALL_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_distPower@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getPowerLogRandALL_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_distPower@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getPowerLogRandALL_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_distPower@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getPowerLogRandALL_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_distPower@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getPowerLogRandALL_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_distPower@routines.inc.F90"
     end procedure
 #endif
@@ -1007,35 +1007,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setPowerLogRandLNALD_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_distPower@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setPowerLogRandLNALD_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_distPower@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setPowerLogRandLNALD_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_distPower@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setPowerLogRandLNALD_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_distPower@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setPowerLogRandLNALD_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_distPower@routines.inc.F90"
     end procedure
 #endif
@@ -1058,35 +1058,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setPowerLogRandLNALL_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_distPower@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setPowerLogRandLNALL_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_distPower@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setPowerLogRandLNALL_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_distPower@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setPowerLogRandLNALL_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_distPower@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setPowerLogRandLNALL_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_distPower@routines.inc.F90"
     end procedure
 #endif

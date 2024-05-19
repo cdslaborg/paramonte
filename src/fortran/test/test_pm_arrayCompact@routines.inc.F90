@@ -46,27 +46,27 @@
 #endif
         integer(IK)                         :: i, dim, csize, csize_ref
 #if     SK_ENABLED && D0_ENABLED
-        character(:,SKC)    , allocatable   :: ArrayVerbose, ArrayCompact, ArrayCompact_ref
+        character(:,SKG)    , allocatable   :: ArrayVerbose, ArrayCompact, ArrayCompact_ref
 #elif   SK_ENABLED && D1_ENABLED
-        character(2,SKC)    , allocatable   :: ArrayVerbose(:), ArrayCompact(:), ArrayCompact_ref(:)
+        character(2,SKG)    , allocatable   :: ArrayVerbose(:), ArrayCompact(:), ArrayCompact_ref(:)
 #elif   IK_ENABLED && D1_ENABLED
-        integer(IKC)        , allocatable   :: ArrayVerbose(:), ArrayCompact(:), ArrayCompact_ref(:)
+        integer(IKG)        , allocatable   :: ArrayVerbose(:), ArrayCompact(:), ArrayCompact_ref(:)
 #elif   LK_ENABLED && D1_ENABLED
-        logical(LKC)        , allocatable   :: ArrayVerbose(:), ArrayCompact(:), ArrayCompact_ref(:)
+        logical(LKG)        , allocatable   :: ArrayVerbose(:), ArrayCompact(:), ArrayCompact_ref(:)
 #elif   CK_ENABLED && D1_ENABLED
-        complex(CKC)        , allocatable   :: ArrayVerbose(:), ArrayCompact(:), ArrayCompact_ref(:)
+        complex(CKG)        , allocatable   :: ArrayVerbose(:), ArrayCompact(:), ArrayCompact_ref(:)
 #elif   RK_ENABLED && D1_ENABLED
-        real(RKC)           , allocatable   :: ArrayVerbose(:), ArrayCompact(:), ArrayCompact_ref(:)
+        real(RKG)           , allocatable   :: ArrayVerbose(:), ArrayCompact(:), ArrayCompact_ref(:)
 #elif   SK_ENABLED && D2_ENABLED
-        character(2,SKC)    , allocatable   :: ArrayVerbose(:,:), ArrayCompact(:,:), ArrayCompact_ref(:,:)
+        character(2,SKG)    , allocatable   :: ArrayVerbose(:,:), ArrayCompact(:,:), ArrayCompact_ref(:,:)
 #elif   IK_ENABLED && D2_ENABLED
-        integer(IKC)        , allocatable   :: ArrayVerbose(:,:), ArrayCompact(:,:), ArrayCompact_ref(:,:)
+        integer(IKG)        , allocatable   :: ArrayVerbose(:,:), ArrayCompact(:,:), ArrayCompact_ref(:,:)
 #elif   LK_ENABLED && D2_ENABLED
-        logical(LKC)        , allocatable   :: ArrayVerbose(:,:), ArrayCompact(:,:), ArrayCompact_ref(:,:)
+        logical(LKG)        , allocatable   :: ArrayVerbose(:,:), ArrayCompact(:,:), ArrayCompact_ref(:,:)
 #elif   CK_ENABLED && D2_ENABLED
-        complex(CKC)        , allocatable   :: ArrayVerbose(:,:), ArrayCompact(:,:), ArrayCompact_ref(:,:)
+        complex(CKG)        , allocatable   :: ArrayVerbose(:,:), ArrayCompact(:,:), ArrayCompact_ref(:,:)
 #elif   RK_ENABLED && D2_ENABLED
-        real(RKC)           , allocatable   :: ArrayVerbose(:,:), ArrayCompact(:,:), ArrayCompact_ref(:,:)
+        real(RKG)           , allocatable   :: ArrayVerbose(:,:), ArrayCompact(:,:), ArrayCompact_ref(:,:)
 #else
 #error  "Unrecognized interface."
 #endif
@@ -89,7 +89,7 @@
 
         call reset()
 #if     SK_ENABLED && D0_ENABLED
-        allocate(character(0,SKC) :: ArrayCompact_ref)
+        allocate(character(0,SKG) :: ArrayCompact_ref)
 #else
         allocate(ArrayCompact_ref(0))
 #endif
@@ -129,7 +129,7 @@
 
         call reset()
 #if     SK_ENABLED && D0_ENABLED
-        allocate(character(10,SKC) :: ArrayCompact_ref)
+        allocate(character(10,SKG) :: ArrayCompact_ref)
 #else
         allocate(ArrayCompact_ref(10))
 #endif
@@ -226,7 +226,7 @@
                                         , +4, +5, +6 &
                                         , +4, +5, +6 &
                                         , +7, +8, +9 &
-                                        ], shape = [6, 3], order = [2, 1]), IKC)
+                                        ], shape = [6, 3], order = [2, 1]), IKG)
 #elif       LK_ENABLED
             ArrayVerbose = logical(reshape( [ .false., .false., .true. &
                                             , .false., .false., .true. &
@@ -234,7 +234,7 @@
                                             , .true., .false., .false. &
                                             , .true., .false., .false. &
                                             , .false., .true., .false. &
-                                            ], shape = [6, 3], order = [2, 1]), LKC)
+                                            ], shape = [6, 3], order = [2, 1]), LKG)
 #elif       CK_ENABLED
             ArrayVerbose = cmplx( reshape(  [ (+1, -1), (+2, -2), (+3, -3) &
                                             , (+1, -1), (+2, -2), (+3, -3) &
@@ -242,7 +242,7 @@
                                             , (+4, -4), (+5, -5), (+6, -6) &
                                             , (+4, -4), (+5, -5), (+6, -6) &
                                             , (+7, -7), (+8, -8), (+9, -9) &
-                                            ], shape = [6, 3], order = [2, 1]), kind = CKC)
+                                            ], shape = [6, 3], order = [2, 1]), kind = CKG)
 #elif       RK_ENABLED
             ArrayVerbose = real( reshape(   [ +1, +2, +3 &
                                             , +1, +2, +3 &
@@ -250,7 +250,7 @@
                                             , +4, +5, +6 &
                                             , +4, +5, +6 &
                                             , +7, +8, +9 &
-                                            ], shape = [6, 3], order = [2, 1]), RKC)
+                                            ], shape = [6, 3], order = [2, 1]), RKG)
 #else
 #error      "Unrecognized interface."
 #endif

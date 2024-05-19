@@ -24,14 +24,14 @@
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        real(TKC), parameter :: rtol = epsilon(1._TKC) * 100
+        real(TKG), parameter :: rtol = epsilon(1._TKG) * 100
         ! Define the sample type.
 #if     CK_ENABLED
-#define TYPE_OF_SAMPLE complex(TKC)
-        complex(TKC), parameter :: ONE = (1._TKC, 1._TKC), TWO = 2 * (1._TKC, 1._TKC), ctol = (rtol, rtol)
+#define TYPE_OF_SAMPLE complex(TKG)
+        complex(TKG), parameter :: ONE = (1._TKG, 1._TKG), TWO = 2 * (1._TKG, 1._TKG), ctol = (rtol, rtol)
 #elif   RK_ENABLED
-#define TYPE_OF_SAMPLE real(TKC)
-        real(TKC), parameter :: ONE = 1._TKC, TWO = 2._TKC, ctol = rtol
+#define TYPE_OF_SAMPLE real(TKG)
+        real(TKG), parameter :: ONE = 1._TKG, TWO = 2._TKG, ctol = rtol
 #else
 #error  "Unrecognized interface."
 #endif
@@ -40,21 +40,21 @@
         !%%%%%%%%%%%%%%%%%%%%%%%
 
         integer(IK) :: itry
-        real(TKC) :: weisum, weisqs, correction, correction_ref
+        real(TKG) :: weisum, weisqs, correction, correction_ref
         do itry = 1, 10
 
             ! Test reliability weight.
 
-            weisum = getUnifRand(2._TKC, 3._TKC)
-            weisqs = getUnifRand(3._TKC, 4._TKC)
+            weisum = getUnifRand(2._TKG, 3._TKG)
+            weisqs = getUnifRand(3._TKG, 4._TKG)
             correction = getVarCorrection(weisum, weisqs)
             correction_ref = weisum**2 / (weisum**2 - weisqs)
             assertion = logical(correction == correction_ref, LK)
             call report(__LINE__, SK_"The Bessel Reliability correction must be correctly computed.")
 
-            weisum = getUnifRand(2._TKC, 3._TKC)
+            weisum = getUnifRand(2._TKG, 3._TKG)
             correction = getVarCorrection(weisum)
-            correction_ref = weisum / (weisum - 1._TKC)
+            correction_ref = weisum / (weisum - 1._TKG)
             assertion = logical(correction == correction_ref, LK)
             call report(__LINE__, SK_"The Bessel Frequency correction must be correctly computed.")
 
@@ -80,13 +80,13 @@
 #elif   getVar_ENABLED
         !%%%%%%%%%%%%%
 
-        real(TKC) :: rweisum
+        real(TKG) :: rweisum
         integer(IK) :: iweisum
         integer(IK) :: itry, nsam, ndim, dim
-        real(TKC), allocatable :: rweight(:)
+        real(TKG), allocatable :: rweight(:)
         integer(IK), allocatable :: iweight(:)
         TYPE_OF_SAMPLE, allocatable :: sample(:,:), mean(:)
-        real(TKC), allocatable :: var(:), var_ref(:), vdiff(:)
+        real(TKG), allocatable :: var(:), var_ref(:), vdiff(:)
         assertion = .true._LK
 
         do itry = 1, 50
@@ -107,7 +107,7 @@
                 else
                     sample = getUnifRand(ONE, TWO, nsam, ndim)
                 end if
-                rweight = getUnifRand(1._TKC, 9._TKC, nsam)
+                rweight = getUnifRand(1._TKG, 9._TKG, nsam)
                 iweight = getUnifRand(1_IK, 9_IK, nsam)
                 iweisum = sum(iweight)
                 rweisum = sum(rweight)
@@ -120,7 +120,7 @@
                 call setAssertedVar(__LINE__, SK_"integer-weighted")
 
                 var = getVar(sample, dim, iweight, fweight_type())
-                var_ref = var_ref * getVarCorrection(real(iweisum, TKC))
+                var_ref = var_ref * getVarCorrection(real(iweisum, TKG))
                 call report(__LINE__, SK_"The unbiased `var` must be computed correctly.")
 
                 ! real weighted
@@ -142,7 +142,7 @@
                 call setAssertedVar(__LINE__, SK_"unweighted")
 
                 var = getVar(sample, dim, fweight_type())
-                var_ref = var_ref * getVarCorrection(real(size(sample, dim), TKC))
+                var_ref = var_ref * getVarCorrection(real(size(sample, dim), TKG))
                 call report(__LINE__, SK_"The unbiased `var` must be computed correctly.")
 
             end block
@@ -161,7 +161,7 @@
                 else
                     sample = getUnifRand(ONE, TWO, nsam, ndim)
                 end if
-                rweight = getUnifRand(1._TKC, 9._TKC, nsam * ndim)
+                rweight = getUnifRand(1._TKG, 9._TKG, nsam * ndim)
                 iweight = getUnifRand(1_IK, 9_IK, nsam * ndim)
                 iweisum = sum(iweight)
                 rweisum = sum(rweight)
@@ -174,7 +174,7 @@
                 call setAssertedVar(__LINE__, SK_"integer-weighted")
 
                 var(1) = getVar(sample, iweight, fweight_type())
-                var_ref = var_ref * getVarCorrection(real(iweisum, TKC))
+                var_ref = var_ref * getVarCorrection(real(iweisum, TKG))
                 call report(__LINE__, SK_"The unbiased `var` must be computed correctly.")
 
                 ! real weighted
@@ -196,7 +196,7 @@
                 call setAssertedVar(__LINE__, SK_"unweighted")
 
                 var(1) = getVar(sample)
-                var_ref = var_ref * getVarCorrection(real(size(sample), TKC))
+                var_ref = var_ref * getVarCorrection(real(size(sample), TKG))
                 call report(__LINE__, SK_"The unbiased `var` must be computed correctly.")
 
             end block
@@ -210,7 +210,7 @@
                 call setResized(var, 1_IK)
                 call setResized(var_ref, 1_IK)
                 sample = getUnifRand(ONE, TWO, nsam, ndim)
-                rweight = getUnifRand(1._TKC, 9._TKC, nsam)
+                rweight = getUnifRand(1._TKG, 9._TKG, nsam)
                 iweight = getUnifRand(1_IK, 9_IK, nsam)
                 iweisum = sum(iweight)
                 rweisum = sum(rweight)
@@ -223,7 +223,7 @@
                 call setAssertedVar(__LINE__, SK_"integer-weighted")
 
                 var(1) = getVar(sample(:,1), dim, iweight, fweight_type())
-                var_ref = var_ref * getVarCorrection(real(iweisum, TKC))
+                var_ref = var_ref * getVarCorrection(real(iweisum, TKG))
                 call report(__LINE__, SK_"The unbiased `var` must be computed correctly.")
 
                 ! real weighted
@@ -245,7 +245,7 @@
                 call setAssertedVar(__LINE__, SK_"unweighted")
 
                 var(1) = getVar(sample(:,1), dim)
-                var_ref = var_ref * getVarCorrection(real(size(sample), TKC))
+                var_ref = var_ref * getVarCorrection(real(size(sample), TKG))
                 call report(__LINE__, SK_"The unbiased `var` must be computed correctly.")
 
             end block
@@ -259,7 +259,7 @@
                 call setResized(var, 1_IK)
                 call setResized(var_ref, 1_IK)
                 sample = getUnifRand(ONE, TWO, nsam, ndim)
-                rweight = getUnifRand(1._TKC, 9._TKC, nsam)
+                rweight = getUnifRand(1._TKG, 9._TKG, nsam)
                 iweight = getUnifRand(1_IK, 9_IK, nsam)
                 iweisum = sum(iweight)
                 rweisum = sum(rweight)
@@ -272,7 +272,7 @@
                 call setAssertedVar(__LINE__, SK_"integer-weighted")
 
                 var(1) = getVar(sample(:,1), iweight, fweight_type())
-                var_ref = var_ref * getVarCorrection(real(iweisum, TKC))
+                var_ref = var_ref * getVarCorrection(real(iweisum, TKG))
                 call report(__LINE__, SK_"The unbiased `var` must be computed correctly.")
 
                 ! real weighted
@@ -294,7 +294,7 @@
                 call setAssertedVar(__LINE__, SK_"unweighted")
 
                 var(1) = getVar(sample(:,1))
-                var_ref = var_ref * getVarCorrection(real(size(sample), TKC))
+                var_ref = var_ref * getVarCorrection(real(size(sample), TKG))
                 call report(__LINE__, SK_"The unbiased `var` must be computed correctly.")
 
             end block
@@ -341,13 +341,13 @@
 #elif   setVar_ENABLED
         !%%%%%%%%%%%%%
 
-        real(TKC) :: rweisum
+        real(TKG) :: rweisum
         integer(IK) :: iweisum
-        real(TKC), allocatable :: rweight(:)
+        real(TKG), allocatable :: rweight(:)
         integer(IK), allocatable :: iweight(:)
         integer(IK) :: itry, nsam, ndim, dim
         TYPE_OF_SAMPLE, allocatable :: sample(:,:), mean(:)
-        real(TKC), allocatable :: var(:), var_ref(:), vdiff(:)
+        real(TKG), allocatable :: var(:), var_ref(:), vdiff(:)
         assertion = .true._LK
 
         do itry = 1, 50
@@ -367,7 +367,7 @@
                 else
                     sample = getUnifRand(ONE, TWO, nsam, ndim)
                 end if
-                rweight = getUnifRand(1._TKC, 9._TKC, nsam)
+                rweight = getUnifRand(1._TKG, 9._TKG, nsam)
                 iweight = getUnifRand(1_IK, 9_IK, nsam)
                 iweisum = sum(iweight)
                 rweisum = sum(rweight)
@@ -375,7 +375,7 @@
                 ! integer weighted
 
                 mean = getMean(sample, dim, iweight)
-                var_ref = getVarD2(mean, sample, dim, real(iweight, TKC))
+                var_ref = getVarD2(mean, sample, dim, real(iweight, TKG))
 
                 call setVar(var, mean, sample, dim, iweight, iweisum)
                 call setAssertedVar(__LINE__, SK_"integer-weighted")
@@ -421,7 +421,7 @@
                 else
                     sample = getUnifRand(ONE, TWO, nsam, ndim)
                 end if
-                rweight = getUnifRand(1._TKC, 9._TKC, nsam * ndim)
+                rweight = getUnifRand(1._TKG, 9._TKG, nsam * ndim)
                 iweight = getUnifRand(1_IK, 9_IK, nsam * ndim)
                 iweisum = sum(iweight)
                 rweisum = sum(rweight)
@@ -429,7 +429,7 @@
                 ! integer weighted
 
                 mean = getMean(sample, iweight)
-                var_ref = getVarD2(mean, sample, weight = real(iweight, TKC))
+                var_ref = getVarD2(mean, sample, weight = real(iweight, TKG))
 
                 call setVar(var(1), mean(1), sample, iweight, iweisum)
                 call setAssertedVar(__LINE__, SK_"integer-weighted")
@@ -469,7 +469,7 @@
                 ndim = 1_IK
                 call setResized(var, 1_IK)
                 sample = getUnifRand(ONE, TWO, nsam, ndim)
-                rweight = getUnifRand(1._TKC, 9._TKC, nsam)
+                rweight = getUnifRand(1._TKG, 9._TKG, nsam)
                 iweight = getUnifRand(1_IK, 9_IK, nsam)
                 iweisum = sum(iweight)
                 rweisum = sum(rweight)
@@ -477,7 +477,7 @@
                 ! integer weighted
 
                 mean = getMean(sample(:,1), dim, iweight)
-                var_ref = getVarD1(mean(1), sample(:,1), real(iweight, TKC))
+                var_ref = getVarD1(mean(1), sample(:,1), real(iweight, TKG))
 
                 call setVar(var(1), mean(1), sample(:,1), dim, iweight, iweisum)
                 call setAssertedVar(__LINE__, SK_"integer-weighted")
@@ -517,7 +517,7 @@
                 ndim = 1_IK
                 call setResized(var, 1_IK)
                 sample = getUnifRand(ONE, TWO, nsam, ndim)
-                rweight = getUnifRand(1._TKC, 9._TKC, nsam)
+                rweight = getUnifRand(1._TKG, 9._TKG, nsam)
                 iweight = getUnifRand(1_IK, 9_IK, nsam)
                 iweisum = sum(iweight)
                 rweisum = sum(rweight)
@@ -525,7 +525,7 @@
                 ! integer weighted
 
                 mean = getMean(sample(:,1), iweight)
-                var_ref = getVarD1(mean(1), sample(:,1), real(iweight, TKC))
+                var_ref = getVarD1(mean(1), sample(:,1), real(iweight, TKG))
 
                 call setVar(var(1), mean(1), sample(:,1), iweight, iweisum)
                 call setAssertedVar(__LINE__, SK_"integer-weighted")
@@ -595,23 +595,23 @@
         end subroutine
 
         PURE function getVarD1(mean, sample, weight) result(var)
-            real(TKC), intent(in), optional :: weight(:)
+            real(TKG), intent(in), optional :: weight(:)
             TYPE_OF_SAMPLE, intent(in) :: sample(:), mean
             TYPE_OF_SAMPLE :: sampleShifted(size(sample, 1, IK))
-            real(TKC) :: var
+            real(TKG) :: var
             sampleShifted = getShifted(sample, -mean)
             if (present(weight)) then
-                var = real(dot_product(sampleShifted, sampleShifted * weight), TKC) / sum(weight)
+                var = real(dot_product(sampleShifted, sampleShifted * weight), TKG) / sum(weight)
             else
-                var = real(dot_product(sampleShifted, sampleShifted), TKC) / size(sample, 1, IK)
+                var = real(dot_product(sampleShifted, sampleShifted), TKG) / size(sample, 1, IK)
             end if
         end function
 
         PURE function getVarD2(mean, sample, dim, weight) result(var)
-            real(TKC), intent(in), optional :: weight(:)
+            real(TKG), intent(in), optional :: weight(:)
             TYPE_OF_SAMPLE, intent(in) :: sample(:,:), mean(:)
             integer(IK), intent(in), optional :: dim
-            real(TKC), allocatable :: var(:)
+            real(TKG), allocatable :: var(:)
             integer(IK) :: idim
             if (present(dim)) then
                 allocate(var(size(sample, 3 - dim, IK)))
@@ -627,9 +627,9 @@
                     TYPE_OF_SAMPLE :: sampleShifted(size(sample, kind = IK))
                     sampleShifted = reshape(sample, shape(sampleShifted)) - mean(1)
                     if (present(weight)) then
-                        var = [real(dot_product(sampleShifted, sampleShifted * weight), TKC) / sum(weight)]
+                        var = [real(dot_product(sampleShifted, sampleShifted * weight), TKG) / sum(weight)]
                     else
-                        var = [real(dot_product(sampleShifted, sampleShifted), TKC) / size(sampleShifted, 1, IK)]
+                        var = [real(dot_product(sampleShifted, sampleShifted), TKG) / size(sampleShifted, 1, IK)]
                     end if
                 end block
             end if
@@ -639,13 +639,13 @@
 #elif   setVarMean_ENABLED
         !%%%%%%%%%%%%%%%%%
 
-        real(TKC) :: rweisum, rweisum_ref
+        real(TKG) :: rweisum, rweisum_ref
         integer(IK) :: iweisum, iweisum_ref
-        real(TKC), allocatable :: rweight(:)
+        real(TKG), allocatable :: rweight(:)
         integer(IK), allocatable :: iweight(:)
         integer(IK) :: itry, nsam, ndim, dim
         TYPE_OF_SAMPLE, allocatable :: sample(:,:), mean(:), mean_ref(:), meang(:), mdiff(:)
-        real(TKC), allocatable :: var(:), var_ref(:), vdiff(:)
+        real(TKG), allocatable :: var(:), var_ref(:), vdiff(:)
         assertion = .true._LK
 
         do itry = 1, 50
@@ -670,7 +670,7 @@
                     sample = getUnifRand(ONE, TWO, nsam, ndim)
                     meang = sample(1,:)
                 end if
-                rweight = getUnifRand(1._TKC, 9._TKC, nsam)
+                rweight = getUnifRand(1._TKG, 9._TKG, nsam)
                 iweight = getUnifRand(1_IK, 9_IK, nsam)
                 iweisum_ref = sum(iweight)
                 rweisum_ref = sum(rweight)
@@ -682,7 +682,7 @@
                 var_ref = getVar(sample, dim, iweight)
                 mean_ref = getMean(sample, dim, iweight)
                 call setVarMean(var, mean, sample, dim, iweight, iweisum, meang)
-                call setAssertedSum(__LINE__, SK_"integer-weighted", real(iweisum, TKC), real(iweisum_ref, TKC))
+                call setAssertedSum(__LINE__, SK_"integer-weighted", real(iweisum, TKG), real(iweisum_ref, TKG))
                 call setAssertedAvg(__LINE__, SK_"integer-weighted")
                 call setAssertedVar(__LINE__, SK_"integer-weighted")
 
@@ -722,7 +722,7 @@
                     sample = getUnifRand(ONE, TWO, nsam, ndim)
                     meang = sample(1,:)
                 end if
-                rweight = getUnifRand(1._TKC, 9._TKC, nsam * ndim)
+                rweight = getUnifRand(1._TKG, 9._TKG, nsam * ndim)
                 iweight = getUnifRand(1_IK, 9_IK, nsam * ndim)
                 iweisum_ref = sum(iweight)
                 rweisum_ref = sum(rweight)
@@ -734,7 +734,7 @@
                 var_ref = getVar(sample, iweight)
                 mean_ref = getMean(sample, iweight)
                 call setVarMean(var(1), mean(1), sample, iweight, iweisum, meang(1))
-                call setAssertedSum(__LINE__, SK_"integer-weighted", real(iweisum, TKC), real(iweisum_ref, TKC))
+                call setAssertedSum(__LINE__, SK_"integer-weighted", real(iweisum, TKG), real(iweisum_ref, TKG))
                 call setAssertedAvg(__LINE__, SK_"integer-weighted")
                 call setAssertedVar(__LINE__, SK_"integer-weighted")
 
@@ -769,7 +769,7 @@
                 call setResized(mean_ref, 1_IK)
                 sample = getUnifRand(ONE, TWO, nsam, ndim)
                 meang = sample(1,:)
-                rweight = getUnifRand(1._TKC, 9._TKC, nsam)
+                rweight = getUnifRand(1._TKG, 9._TKG, nsam)
                 iweight = getUnifRand(1_IK, 9_IK, nsam)
                 iweisum_ref = sum(iweight)
                 rweisum_ref = sum(rweight)
@@ -781,7 +781,7 @@
                 var_ref = getVar(sample(:,1), dim, iweight)
                 mean_ref = getMean(sample(:,1), dim, iweight)
                 call setVarMean(var(1), mean(1), sample(:,1), dim, iweight, iweisum, meang(1))
-                call setAssertedSum(__LINE__, SK_"integer-weighted", real(iweisum, TKC), real(iweisum_ref, TKC))
+                call setAssertedSum(__LINE__, SK_"integer-weighted", real(iweisum, TKG), real(iweisum_ref, TKG))
                 call setAssertedAvg(__LINE__, SK_"integer-weighted")
                 call setAssertedVar(__LINE__, SK_"integer-weighted")
 
@@ -816,7 +816,7 @@
                 call setResized(mean_ref, 1_IK)
                 sample = getUnifRand(ONE, TWO, nsam, ndim)
                 meang = sample(1,:)
-                rweight = getUnifRand(1._TKC, 9._TKC, nsam)
+                rweight = getUnifRand(1._TKG, 9._TKG, nsam)
                 iweight = getUnifRand(1_IK, 9_IK, nsam)
                 iweisum_ref = sum(iweight)
                 rweisum_ref = sum(rweight)
@@ -828,7 +828,7 @@
                 var_ref = getVar(sample(:,1), iweight)
                 mean_ref = getMean(sample(:,1), iweight)
                 call setVarMean(var(1), mean(1), sample(:,1), iweight, iweisum, meang(1))
-                call setAssertedSum(__LINE__, SK_"integer-weighted", real(iweisum, TKC), real(iweisum_ref, TKC))
+                call setAssertedSum(__LINE__, SK_"integer-weighted", real(iweisum, TKG), real(iweisum_ref, TKG))
                 call setAssertedAvg(__LINE__, SK_"integer-weighted")
                 call setAssertedVar(__LINE__, SK_"integer-weighted")
 
@@ -856,7 +856,7 @@
     contains
 
         subroutine setAssertedSum(line, this, weisum, weisum_ref)
-            real(TKC), intent(in) :: weisum, weisum_ref
+            real(TKG), intent(in) :: weisum, weisum_ref
             character(*, SK), intent(in) :: this
             integer, intent(in) :: line
             assertion = assertion .and. abs(weisum - weisum_ref) < rtol * weisum_ref
@@ -925,11 +925,11 @@
 #elif   getVarMerged_ENABLED || setVarMerged_ENABLED
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        real(TKC) :: fracA
+        real(TKG) :: fracA
         integer(IK) :: itry, ndim, dim
         integer(IK) :: nsam, nsamA, nsamB
         TYPE_OF_SAMPLE, allocatable :: sample(:,:), meanDiff(:)
-        real(TKC), allocatable :: varA(:), varB(:), var(:), var_ref(:), vdiff(:)
+        real(TKG), allocatable :: varA(:), varB(:), var(:), var_ref(:), vdiff(:)
         assertion = .true._LK
         dim = 2_IK
 
@@ -938,7 +938,7 @@
             nsamA = getUnifRand(2_IK, 5_IK)
             nsamB = getUnifRand(2_IK, 5_IK)
             nsam = nsamA + nsamB
-            fracA = real(nsamA, TKC) / real(nsam, TKC)
+            fracA = real(nsamA, TKG) / real(nsam, TKG)
 
             ! test D2 interface.
 
@@ -1043,11 +1043,11 @@
 #elif   setVarMeanMerged_ENABLED
         !%%%%%%%%%%%%%%%%%%%%%%%
 
-        real(TKC) :: fracA
+        real(TKG) :: fracA
         integer(IK) :: itry, ndim, dim
         integer(IK) :: nsam, nsamA, nsamB
         TYPE_OF_SAMPLE, allocatable :: sample(:,:), mean(:), mean_ref(:), meanA(:), meanB(:), mdiff(:)
-        real(TKC), allocatable :: varA(:), varB(:), var(:), var_ref(:), vdiff(:)
+        real(TKG), allocatable :: varA(:), varB(:), var(:), var_ref(:), vdiff(:)
         assertion = .true._LK
         dim = 2_IK
 
@@ -1056,7 +1056,7 @@
             nsamA = getUnifRand(2_IK, 5_IK)
             nsamB = getUnifRand(2_IK, 5_IK)
             nsam = nsamA + nsamB
-            fracA = real(nsamA, TKC) / real(nsam, TKC)
+            fracA = real(nsamA, TKG) / real(nsam, TKG)
 
             ! test D2 interface.
 

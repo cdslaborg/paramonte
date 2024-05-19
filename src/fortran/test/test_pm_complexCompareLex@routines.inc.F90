@@ -45,8 +45,8 @@
         integer(IK)     , parameter :: NP = 5_IK
         integer(IK)     :: i, j
         logical(LK)     :: result(NP,NP), result_def(NP,NP)
-        complex(CKC)    :: mat1(NP,NP)
-        complex(CKC)    :: mat2(NP,NP)
+        complex(CKG)    :: mat1(NP,NP)
+        complex(CKG)    :: mat2(NP,NP)
 
         assertion = .true._LK
 
@@ -94,7 +94,7 @@
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
         pure elemental function iscomparable(val1, val2) result(comparable)
-            complex(CKC), intent(in) :: val1, val2
+            complex(CKG), intent(in) :: val1, val2
             logical(LK) :: comparable
 #if         islexless_CK_ENABLED
             comparable = (val1%re < val2%re) .or. (val1%re == val2%re .and. val1%re < val2%re)

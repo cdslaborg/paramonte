@@ -26,19 +26,19 @@
 
         character(:, SK), allocatable :: format
         ! Define the comparison precision and tolerance.
-        real(TKC), parameter :: rtol = epsilon(1._TKC) * 5000
+        real(TKG), parameter :: rtol = epsilon(1._TKG) * 5000
 #if     CK_ENABLED
-#define TYPE_OF_SEQ complex(TKC)
+#define TYPE_OF_SEQ complex(TKG)
 #define GET_CONJG(X)conjg(X)
 #define COERCE(X)X
-        complex(TKC), parameter :: ZERO = (0._TKC, 0._TKC), ONES = (1._TKC, 1._TKC), TWOS = (2._TKC, 2._TKC)
-        complex(TKC), parameter :: ctol = (rtol, rtol)
+        complex(TKG), parameter :: ZERO = (0._TKG, 0._TKG), ONES = (1._TKG, 1._TKG), TWOS = (2._TKG, 2._TKG)
+        complex(TKG), parameter :: ctol = (rtol, rtol)
 #elif   RK_ENABLED
-#define TYPE_OF_SEQ real(TKC)
+#define TYPE_OF_SEQ real(TKG)
 #define COERCE(X)real(X)
 #define GET_CONJG(X)X
-        real(TKC), parameter :: ZERO = 0._TKC, ONES = 1._TKC, TWOS = 2._TKC
-        real(TKC), parameter :: ctol = rtol
+        real(TKG), parameter :: ZERO = 0._TKG, ONES = 1._TKG, TWOS = 2._TKG
+        real(TKG), parameter :: ctol = rtol
 #else
 #error  "Unrecognized interface."
 #endif
@@ -52,7 +52,7 @@
 #if     CK_ENABLED
         format = getFormat(deliml = '', subsep = SK_'', delimr = 'i', subcount = 2_IK, signed = .true._LK)
 #elif   RK_ENABLED
-        format = getFormat(mold = [0._TKC])
+        format = getFormat(mold = [0._TKG])
 #else
 #error  "Unrecognized interface."
 #endif
@@ -140,7 +140,7 @@
             integer(IK), allocatable :: lag_def(:)
             integer(IK), allocatable :: factor(:)
             class(*), allocatable :: norm_def
-            real(TKC) :: dumf, dumg, normfac
+            real(TKG) :: dumf, dumg, normfac
             TYPE_OF_SEQ :: meanf, meang
             integer(IK) :: lagmin, lagmax
             integer(IK) :: lenccf, lenf, leng
@@ -181,10 +181,10 @@
             end if
             ff(lenf + 1 :) = ZERO
             gg(leng + 1 :) = ZERO
-            normfac = 1._TKC / lenccf
+            normfac = 1._TKG / lenccf
             if (same_type_as(norm_def, stdscale) .or. same_type_as(norm_def, zscore)) then
-                dumf = real(dot_product(ff(1 : lenf), ff(1 : lenf)), TKC)
-                dumg = real(dot_product(gg(1 : leng), gg(1 : leng)), TKC)
+                dumf = real(dot_product(ff(1 : lenf), ff(1 : lenf)), TKG)
+                dumg = real(dot_product(gg(1 : leng), gg(1 : leng)), TKG)
                 normfac = normfac / sqrt(dumf * dumg)
             end if
             factor = getFactorFFT(ff, coef)
@@ -252,7 +252,7 @@
 #if     CK_ENABLED
         format = getFormat(deliml = '', subsep = SK_'', delimr = 'i', subcount = 2_IK, signed = .true._LK)
 #elif   RK_ENABLED
-        format = getFormat(mold = [0._TKC])
+        format = getFormat(mold = [0._TKG])
 #else
 #error  "Unrecognized interface."
 #endif
@@ -290,7 +290,7 @@
 
         function getCCF_ref(f, g) result(ccf)
             TYPE_OF_SEQ, intent(in) :: f(:), g(:)
-            complex(TKC), allocatable :: ff(:), gg(:)
+            complex(TKG), allocatable :: ff(:), gg(:)
             TYPE_OF_SEQ, allocatable :: ccf(:)
             ff = f; gg = g; ccf = COERCE(getFFTI(getFFTF(ff) * conjg(getFFTF(gg))))
         end function
@@ -330,7 +330,7 @@
 #if     CK_ENABLED
         format = getFormat(deliml = '', subsep = SK_'', delimr = 'i', subcount = 2_IK, signed = .true._LK)
 #elif   RK_ENABLED
-        format = getFormat(mold = [0._TKC])
+        format = getFormat(mold = [0._TKG])
 #else
 #error  "Unrecognized interface."
 #endif
@@ -432,7 +432,7 @@
 #if     CK_ENABLED
         format = getFormat(deliml = '', subsep = SK_'', delimr = 'i', subcount = 2_IK, signed = .true._LK)
 #elif   RK_ENABLED
-        format = getFormat(mold = [0._TKC])
+        format = getFormat(mold = [0._TKG])
 #else
 #error  "Unrecognized interface."
 #endif

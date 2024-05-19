@@ -184,9 +184,9 @@ module pm_arraySearch
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getBinDefCom_D0_D0_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)        , intent(in)                :: array
-        character(*,SKC)        , intent(in)                :: value
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)        , intent(in)                :: array
+        character(*,SKG)        , intent(in)                :: value
         integer(IK)                                         :: bin
     end function
 #endif
@@ -196,9 +196,9 @@ module pm_arraySearch
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getBinDefCom_D0_D0_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)        , intent(in)                :: array
-        character(*,SKC)        , intent(in)                :: value
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)        , intent(in)                :: array
+        character(*,SKG)        , intent(in)                :: value
         integer(IK)                                         :: bin
     end function
 #endif
@@ -208,9 +208,9 @@ module pm_arraySearch
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getBinDefCom_D0_D0_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)        , intent(in)                :: array
-        character(*,SKC)        , intent(in)                :: value
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)        , intent(in)                :: array
+        character(*,SKG)        , intent(in)                :: value
         integer(IK)                                         :: bin
     end function
 #endif
@@ -220,9 +220,9 @@ module pm_arraySearch
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getBinDefCom_D0_D0_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)        , intent(in)                :: array
-        character(*,SKC)        , intent(in)                :: value
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)        , intent(in)                :: array
+        character(*,SKG)        , intent(in)                :: value
         integer(IK)                                         :: bin
     end function
 #endif
@@ -232,9 +232,9 @@ module pm_arraySearch
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getBinDefCom_D0_D0_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)        , intent(in)                :: array
-        character(*,SKC)        , intent(in)                :: value
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)        , intent(in)                :: array
+        character(*,SKG)        , intent(in)                :: value
         integer(IK)                                         :: bin
     end function
 #endif
@@ -246,9 +246,9 @@ module pm_arraySearch
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getBinDefCom_D1_D0_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)        , intent(in), contiguous    :: array(:)
-        character(*,SKC)        , intent(in)                :: value
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)        , intent(in), contiguous    :: array(:)
+        character(*,SKG)        , intent(in)                :: value
         integer(IK)                                         :: bin
     end function
 #endif
@@ -258,9 +258,9 @@ module pm_arraySearch
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getBinDefCom_D1_D0_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)        , intent(in), contiguous    :: array(:)
-        character(*,SKC)        , intent(in)                :: value
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)        , intent(in), contiguous    :: array(:)
+        character(*,SKG)        , intent(in)                :: value
         integer(IK)                                         :: bin
     end function
 #endif
@@ -270,9 +270,9 @@ module pm_arraySearch
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getBinDefCom_D1_D0_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)        , intent(in), contiguous    :: array(:)
-        character(*,SKC)        , intent(in)                :: value
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)        , intent(in), contiguous    :: array(:)
+        character(*,SKG)        , intent(in)                :: value
         integer(IK)                                         :: bin
     end function
 #endif
@@ -282,9 +282,9 @@ module pm_arraySearch
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getBinDefCom_D1_D0_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)        , intent(in), contiguous    :: array(:)
-        character(*,SKC)        , intent(in)                :: value
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)        , intent(in), contiguous    :: array(:)
+        character(*,SKG)        , intent(in)                :: value
         integer(IK)                                         :: bin
     end function
 #endif
@@ -294,9 +294,9 @@ module pm_arraySearch
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getBinDefCom_D1_D0_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)        , intent(in), contiguous    :: array(:)
-        character(*,SKC)        , intent(in)                :: value
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)        , intent(in), contiguous    :: array(:)
+        character(*,SKG)        , intent(in)                :: value
         integer(IK)                                         :: bin
     end function
 #endif
@@ -308,9 +308,9 @@ module pm_arraySearch
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getBinDefCom_D1_D0_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)            , intent(in), contiguous    :: array(:)
-        integer(IKC)            , intent(in)                :: value
+        use pm_kind, only: IKG => IK5
+        integer(IKG)            , intent(in), contiguous    :: array(:)
+        integer(IKG)            , intent(in)                :: value
         integer(IK)                                         :: bin
     end function
 #endif
@@ -320,9 +320,9 @@ module pm_arraySearch
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getBinDefCom_D1_D0_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)            , intent(in), contiguous    :: array(:)
-        integer(IKC)            , intent(in)                :: value
+        use pm_kind, only: IKG => IK4
+        integer(IKG)            , intent(in), contiguous    :: array(:)
+        integer(IKG)            , intent(in)                :: value
         integer(IK)                                         :: bin
     end function
 #endif
@@ -332,9 +332,9 @@ module pm_arraySearch
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getBinDefCom_D1_D0_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)            , intent(in), contiguous    :: array(:)
-        integer(IKC)            , intent(in)                :: value
+        use pm_kind, only: IKG => IK3
+        integer(IKG)            , intent(in), contiguous    :: array(:)
+        integer(IKG)            , intent(in)                :: value
         integer(IK)                                         :: bin
     end function
 #endif
@@ -344,9 +344,9 @@ module pm_arraySearch
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getBinDefCom_D1_D0_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)            , intent(in), contiguous    :: array(:)
-        integer(IKC)            , intent(in)                :: value
+        use pm_kind, only: IKG => IK2
+        integer(IKG)            , intent(in), contiguous    :: array(:)
+        integer(IKG)            , intent(in)                :: value
         integer(IK)                                         :: bin
     end function
 #endif
@@ -356,9 +356,9 @@ module pm_arraySearch
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getBinDefCom_D1_D0_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)            , intent(in), contiguous    :: array(:)
-        integer(IKC)            , intent(in)                :: value
+        use pm_kind, only: IKG => IK1
+        integer(IKG)            , intent(in), contiguous    :: array(:)
+        integer(IKG)            , intent(in)                :: value
         integer(IK)                                         :: bin
     end function
 #endif
@@ -370,9 +370,9 @@ module pm_arraySearch
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getBinDefCom_D1_D0_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)            , intent(in), contiguous    :: array(:)
-        complex(CKC)            , intent(in)                :: value
+        use pm_kind, only: CKG => CK5
+        complex(CKG)            , intent(in), contiguous    :: array(:)
+        complex(CKG)            , intent(in)                :: value
         integer(IK)                                         :: bin
     end function
 #endif
@@ -382,9 +382,9 @@ module pm_arraySearch
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getBinDefCom_D1_D0_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)            , intent(in), contiguous    :: array(:)
-        complex(CKC)            , intent(in)                :: value
+        use pm_kind, only: CKG => CK4
+        complex(CKG)            , intent(in), contiguous    :: array(:)
+        complex(CKG)            , intent(in)                :: value
         integer(IK)                                         :: bin
     end function
 #endif
@@ -394,9 +394,9 @@ module pm_arraySearch
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getBinDefCom_D1_D0_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)            , intent(in), contiguous    :: array(:)
-        complex(CKC)            , intent(in)                :: value
+        use pm_kind, only: CKG => CK3
+        complex(CKG)            , intent(in), contiguous    :: array(:)
+        complex(CKG)            , intent(in)                :: value
         integer(IK)                                         :: bin
     end function
 #endif
@@ -406,9 +406,9 @@ module pm_arraySearch
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getBinDefCom_D1_D0_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)            , intent(in), contiguous    :: array(:)
-        complex(CKC)            , intent(in)                :: value
+        use pm_kind, only: CKG => CK2
+        complex(CKG)            , intent(in), contiguous    :: array(:)
+        complex(CKG)            , intent(in)                :: value
         integer(IK)                                         :: bin
     end function
 #endif
@@ -418,9 +418,9 @@ module pm_arraySearch
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getBinDefCom_D1_D0_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)            , intent(in), contiguous    :: array(:)
-        complex(CKC)            , intent(in)                :: value
+        use pm_kind, only: CKG => CK1
+        complex(CKG)            , intent(in), contiguous    :: array(:)
+        complex(CKG)            , intent(in)                :: value
         integer(IK)                                         :: bin
     end function
 #endif
@@ -432,9 +432,9 @@ module pm_arraySearch
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getBinDefCom_D1_D0_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)               , intent(in), contiguous    :: array(:)
-        real(RKC)               , intent(in)                :: value
+        use pm_kind, only: RKG => RK5
+        real(RKG)               , intent(in), contiguous    :: array(:)
+        real(RKG)               , intent(in)                :: value
         integer(IK)                                         :: bin
     end function
 #endif
@@ -444,9 +444,9 @@ module pm_arraySearch
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getBinDefCom_D1_D0_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)               , intent(in), contiguous    :: array(:)
-        real(RKC)               , intent(in)                :: value
+        use pm_kind, only: RKG => RK4
+        real(RKG)               , intent(in), contiguous    :: array(:)
+        real(RKG)               , intent(in)                :: value
         integer(IK)                                         :: bin
     end function
 #endif
@@ -456,9 +456,9 @@ module pm_arraySearch
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getBinDefCom_D1_D0_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)               , intent(in), contiguous    :: array(:)
-        real(RKC)               , intent(in)                :: value
+        use pm_kind, only: RKG => RK3
+        real(RKG)               , intent(in), contiguous    :: array(:)
+        real(RKG)               , intent(in)                :: value
         integer(IK)                                         :: bin
     end function
 #endif
@@ -468,9 +468,9 @@ module pm_arraySearch
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getBinDefCom_D1_D0_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)               , intent(in), contiguous    :: array(:)
-        real(RKC)               , intent(in)                :: value
+        use pm_kind, only: RKG => RK2
+        real(RKG)               , intent(in), contiguous    :: array(:)
+        real(RKG)               , intent(in)                :: value
         integer(IK)                                         :: bin
     end function
 #endif
@@ -480,9 +480,9 @@ module pm_arraySearch
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getBinDefCom_D1_D0_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)               , intent(in), contiguous    :: array(:)
-        real(RKC)               , intent(in)                :: value
+        use pm_kind, only: RKG => RK1
+        real(RKG)               , intent(in), contiguous    :: array(:)
+        real(RKG)               , intent(in)                :: value
         integer(IK)                                         :: bin
     end function
 #endif
@@ -500,9 +500,9 @@ module pm_arraySearch
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getBinCusCom_D0_D0_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)        , intent(in)                :: array
-        character(*,SKC)        , intent(in)                :: value
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)        , intent(in)                :: array
+        character(*,SKG)        , intent(in)                :: value
         procedure(logical(LK))                              :: isLess
         integer(IK)                                         :: bin
     end function
@@ -513,9 +513,9 @@ module pm_arraySearch
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getBinCusCom_D0_D0_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)        , intent(in)                :: array
-        character(*,SKC)        , intent(in)                :: value
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)        , intent(in)                :: array
+        character(*,SKG)        , intent(in)                :: value
         procedure(logical(LK))                              :: isLess
         integer(IK)                                         :: bin
     end function
@@ -526,9 +526,9 @@ module pm_arraySearch
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getBinCusCom_D0_D0_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)        , intent(in)                :: array
-        character(*,SKC)        , intent(in)                :: value
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)        , intent(in)                :: array
+        character(*,SKG)        , intent(in)                :: value
         procedure(logical(LK))                              :: isLess
         integer(IK)                                         :: bin
     end function
@@ -539,9 +539,9 @@ module pm_arraySearch
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getBinCusCom_D0_D0_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)        , intent(in)                :: array
-        character(*,SKC)        , intent(in)                :: value
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)        , intent(in)                :: array
+        character(*,SKG)        , intent(in)                :: value
         procedure(logical(LK))                              :: isLess
         integer(IK)                                         :: bin
     end function
@@ -552,9 +552,9 @@ module pm_arraySearch
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getBinCusCom_D0_D0_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)        , intent(in)                :: array
-        character(*,SKC)        , intent(in)                :: value
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)        , intent(in)                :: array
+        character(*,SKG)        , intent(in)                :: value
         procedure(logical(LK))                              :: isLess
         integer(IK)                                         :: bin
     end function
@@ -567,9 +567,9 @@ module pm_arraySearch
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getBinCusCom_D1_D0_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)        , intent(in), contiguous    :: array(:)
-        character(*,SKC)        , intent(in)                :: value
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)        , intent(in), contiguous    :: array(:)
+        character(*,SKG)        , intent(in)                :: value
         procedure(logical(LK))                              :: isLess
         integer(IK)                                         :: bin
     end function
@@ -580,9 +580,9 @@ module pm_arraySearch
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getBinCusCom_D1_D0_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)        , intent(in), contiguous    :: array(:)
-        character(*,SKC)        , intent(in)                :: value
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)        , intent(in), contiguous    :: array(:)
+        character(*,SKG)        , intent(in)                :: value
         procedure(logical(LK))                              :: isLess
         integer(IK)                                         :: bin
     end function
@@ -593,9 +593,9 @@ module pm_arraySearch
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getBinCusCom_D1_D0_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)        , intent(in), contiguous    :: array(:)
-        character(*,SKC)        , intent(in)                :: value
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)        , intent(in), contiguous    :: array(:)
+        character(*,SKG)        , intent(in)                :: value
         procedure(logical(LK))                              :: isLess
         integer(IK)                                         :: bin
     end function
@@ -606,9 +606,9 @@ module pm_arraySearch
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getBinCusCom_D1_D0_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)        , intent(in), contiguous    :: array(:)
-        character(*,SKC)        , intent(in)                :: value
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)        , intent(in), contiguous    :: array(:)
+        character(*,SKG)        , intent(in)                :: value
         procedure(logical(LK))                              :: isLess
         integer(IK)                                         :: bin
     end function
@@ -619,9 +619,9 @@ module pm_arraySearch
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getBinCusCom_D1_D0_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)        , intent(in), contiguous    :: array(:)
-        character(*,SKC)        , intent(in)                :: value
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)        , intent(in), contiguous    :: array(:)
+        character(*,SKG)        , intent(in)                :: value
         procedure(logical(LK))                              :: isLess
         integer(IK)                                         :: bin
     end function
@@ -634,9 +634,9 @@ module pm_arraySearch
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getBinCusCom_D1_D0_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)            , intent(in), contiguous    :: array(:)
-        integer(IKC)            , intent(in)                :: value
+        use pm_kind, only: IKG => IK5
+        integer(IKG)            , intent(in), contiguous    :: array(:)
+        integer(IKG)            , intent(in)                :: value
         procedure(logical(LK))                              :: isLess
         integer(IK)                                         :: bin
     end function
@@ -647,9 +647,9 @@ module pm_arraySearch
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getBinCusCom_D1_D0_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)            , intent(in), contiguous    :: array(:)
-        integer(IKC)            , intent(in)                :: value
+        use pm_kind, only: IKG => IK4
+        integer(IKG)            , intent(in), contiguous    :: array(:)
+        integer(IKG)            , intent(in)                :: value
         procedure(logical(LK))                              :: isLess
         integer(IK)                                         :: bin
     end function
@@ -660,9 +660,9 @@ module pm_arraySearch
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getBinCusCom_D1_D0_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)            , intent(in), contiguous    :: array(:)
-        integer(IKC)            , intent(in)                :: value
+        use pm_kind, only: IKG => IK3
+        integer(IKG)            , intent(in), contiguous    :: array(:)
+        integer(IKG)            , intent(in)                :: value
         procedure(logical(LK))                              :: isLess
         integer(IK)                                         :: bin
     end function
@@ -673,9 +673,9 @@ module pm_arraySearch
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getBinCusCom_D1_D0_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)            , intent(in), contiguous    :: array(:)
-        integer(IKC)            , intent(in)                :: value
+        use pm_kind, only: IKG => IK2
+        integer(IKG)            , intent(in), contiguous    :: array(:)
+        integer(IKG)            , intent(in)                :: value
         procedure(logical(LK))                              :: isLess
         integer(IK)                                         :: bin
     end function
@@ -686,9 +686,9 @@ module pm_arraySearch
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getBinCusCom_D1_D0_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)            , intent(in), contiguous    :: array(:)
-        integer(IKC)            , intent(in)                :: value
+        use pm_kind, only: IKG => IK1
+        integer(IKG)            , intent(in), contiguous    :: array(:)
+        integer(IKG)            , intent(in)                :: value
         procedure(logical(LK))                              :: isLess
         integer(IK)                                         :: bin
     end function
@@ -701,9 +701,9 @@ module pm_arraySearch
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getBinCusCom_D1_D0_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)            , intent(in), contiguous    :: array(:)
-        complex(CKC)            , intent(in)                :: value
+        use pm_kind, only: CKG => CK5
+        complex(CKG)            , intent(in), contiguous    :: array(:)
+        complex(CKG)            , intent(in)                :: value
         procedure(logical(LK))                              :: isLess
         integer(IK)                                         :: bin
     end function
@@ -714,9 +714,9 @@ module pm_arraySearch
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getBinCusCom_D1_D0_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)            , intent(in), contiguous    :: array(:)
-        complex(CKC)            , intent(in)                :: value
+        use pm_kind, only: CKG => CK4
+        complex(CKG)            , intent(in), contiguous    :: array(:)
+        complex(CKG)            , intent(in)                :: value
         procedure(logical(LK))                              :: isLess
         integer(IK)                                         :: bin
     end function
@@ -727,9 +727,9 @@ module pm_arraySearch
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getBinCusCom_D1_D0_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)            , intent(in), contiguous    :: array(:)
-        complex(CKC)            , intent(in)                :: value
+        use pm_kind, only: CKG => CK3
+        complex(CKG)            , intent(in), contiguous    :: array(:)
+        complex(CKG)            , intent(in)                :: value
         procedure(logical(LK))                              :: isLess
         integer(IK)                                         :: bin
     end function
@@ -740,9 +740,9 @@ module pm_arraySearch
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getBinCusCom_D1_D0_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)            , intent(in), contiguous    :: array(:)
-        complex(CKC)            , intent(in)                :: value
+        use pm_kind, only: CKG => CK2
+        complex(CKG)            , intent(in), contiguous    :: array(:)
+        complex(CKG)            , intent(in)                :: value
         procedure(logical(LK))                              :: isLess
         integer(IK)                                         :: bin
     end function
@@ -753,9 +753,9 @@ module pm_arraySearch
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getBinCusCom_D1_D0_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)            , intent(in), contiguous    :: array(:)
-        complex(CKC)            , intent(in)                :: value
+        use pm_kind, only: CKG => CK1
+        complex(CKG)            , intent(in), contiguous    :: array(:)
+        complex(CKG)            , intent(in)                :: value
         procedure(logical(LK))                              :: isLess
         integer(IK)                                         :: bin
     end function
@@ -768,9 +768,9 @@ module pm_arraySearch
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getBinCusCom_D1_D0_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)               , intent(in), contiguous    :: array(:)
-        real(RKC)               , intent(in)                :: value
+        use pm_kind, only: RKG => RK5
+        real(RKG)               , intent(in), contiguous    :: array(:)
+        real(RKG)               , intent(in)                :: value
         procedure(logical(LK))                              :: isLess
         integer(IK)                                         :: bin
     end function
@@ -781,9 +781,9 @@ module pm_arraySearch
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getBinCusCom_D1_D0_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)               , intent(in), contiguous    :: array(:)
-        real(RKC)               , intent(in)                :: value
+        use pm_kind, only: RKG => RK4
+        real(RKG)               , intent(in), contiguous    :: array(:)
+        real(RKG)               , intent(in)                :: value
         procedure(logical(LK))                              :: isLess
         integer(IK)                                         :: bin
     end function
@@ -794,9 +794,9 @@ module pm_arraySearch
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getBinCusCom_D1_D0_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)               , intent(in), contiguous    :: array(:)
-        real(RKC)               , intent(in)                :: value
+        use pm_kind, only: RKG => RK3
+        real(RKG)               , intent(in), contiguous    :: array(:)
+        real(RKG)               , intent(in)                :: value
         procedure(logical(LK))                              :: isLess
         integer(IK)                                         :: bin
     end function
@@ -807,9 +807,9 @@ module pm_arraySearch
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getBinCusCom_D1_D0_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)               , intent(in), contiguous    :: array(:)
-        real(RKC)               , intent(in)                :: value
+        use pm_kind, only: RKG => RK2
+        real(RKG)               , intent(in), contiguous    :: array(:)
+        real(RKG)               , intent(in)                :: value
         procedure(logical(LK))                              :: isLess
         integer(IK)                                         :: bin
     end function
@@ -820,9 +820,9 @@ module pm_arraySearch
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getBinCusCom_D1_D0_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)               , intent(in), contiguous    :: array(:)
-        real(RKC)               , intent(in)                :: value
+        use pm_kind, only: RKG => RK1
+        real(RKG)               , intent(in), contiguous    :: array(:)
+        real(RKG)               , intent(in)                :: value
         procedure(logical(LK))                              :: isLess
         integer(IK)                                         :: bin
     end function

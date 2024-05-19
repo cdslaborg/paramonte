@@ -27,12 +27,12 @@
 
         ! Define the initial values and comparison operations.
 #if     minval_ENABLED || minloc_ENABLED
-#define INIT+huge(0._CKC)
+#define INIT+huge(0._CKG)
 #define COMPARES_WITH>
 #define GETLOC minloc
 #define GETVAL minval
 #elif   maxval_ENABLED || maxloc_ENABLED
-#define INIT-huge(0._CKC)
+#define INIT-huge(0._CKG)
 #define COMPARES_WITH<
 #define GETLOC maxloc
 #define GETVAL maxval
@@ -67,7 +67,7 @@
 #elif   (minval_ENABLED || maxval_ENABLED) && D2_ENABLED && ALL_ENABLED && CK_ENABLED
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        complex(CKC), pointer :: parray(:)
+        complex(CKG), pointer :: parray(:)
         parray(1 : size(array, kind = IK)) => array
         val = GETVAL(parray)
         nullify(parray)
@@ -94,7 +94,7 @@
 #elif   (minloc_ENABLED || maxloc_ENABLED) && D1_ENABLED && CK_ENABLED
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        complex(CKC) :: val
+        complex(CKG) :: val
         integer(IK) :: iell
         loc = 0_IK
         val%re = INIT
@@ -114,7 +114,7 @@
 #elif   (minloc_ENABLED || maxloc_ENABLED) && D2_ENABLED && ALL_ENABLED && CK_ENABLED
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        complex(CKC), pointer :: parray(:)
+        complex(CKG), pointer :: parray(:)
         parray(1 : size(array, kind = IK)) => array
         loc = GETLOC(parray)
         nullify(parray)

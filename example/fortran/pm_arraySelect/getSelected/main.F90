@@ -17,11 +17,11 @@ program example
     call disp%skip()
 
     block
-        use pm_kind, only: IKC => IKL
+        use pm_kind, only: IKG => IKL
         integer(IK) :: rank, lenArray
-        integer, parameter :: TKC = merge(IKC, IK, IKC > 0)
-        integer(TKC), allocatable :: array(:)
-        integer(TKC) :: selection
+        integer, parameter :: TKG = merge(IKG, IK, IKG > 0)
+        integer(TKG), allocatable :: array(:)
+        integer(TKG) :: selection
         call disp%skip()
         call disp%show("lenArray = getUnifRand(5_IK, 9_IK)")
                         lenArray = getUnifRand(5_IK, 9_IK)
@@ -43,11 +43,11 @@ program example
     end block
 
     block
-        use pm_kind, only: IKC => IKS
+        use pm_kind, only: IKG => IKS
         integer(IK) :: rank, lenArray
-        integer, parameter :: TKC = merge(IKC, IK, IKC > 0)
-        integer(TKC), allocatable :: array(:)
-        integer(TKC) :: selection
+        integer, parameter :: TKG = merge(IKG, IK, IKG > 0)
+        integer(TKG), allocatable :: array(:)
+        integer(TKG) :: selection
         call disp%skip()
         call disp%show("lenArray = getUnifRand(5_IK, 9_IK)")
                         lenArray = getUnifRand(5_IK, 9_IK)
@@ -69,11 +69,11 @@ program example
     end block
 
     block
-        use pm_kind, only: IKC => IKD
+        use pm_kind, only: IKG => IKD
         integer(IK) :: rank, lenArray
-        integer, parameter :: TKC = merge(IKC, IK, IKC > 0)
-        integer(TKC), allocatable :: array(:)
-        integer(TKC) :: selection
+        integer, parameter :: TKG = merge(IKG, IK, IKG > 0)
+        integer(TKG), allocatable :: array(:)
+        integer(TKG) :: selection
         call disp%skip()
         call disp%show("lenArray = getUnifRand(5_IK, 9_IK)")
                         lenArray = getUnifRand(5_IK, 9_IK)
@@ -95,11 +95,11 @@ program example
     end block
 
     block
-        use pm_kind, only: IKC => IKH
+        use pm_kind, only: IKG => IKH
         integer(IK) :: rank, lenArray
-        integer, parameter :: TKC = merge(IKC, IK, IKC > 0)
-        integer(TKC), allocatable :: array(:)
-        integer(TKC) :: selection
+        integer, parameter :: TKG = merge(IKG, IK, IKG > 0)
+        integer(TKG), allocatable :: array(:)
+        integer(TKG) :: selection
         call disp%skip()
         call disp%show("lenArray = getUnifRand(5_IK, 9_IK)")
                         lenArray = getUnifRand(5_IK, 9_IK)
@@ -127,11 +127,11 @@ program example
     call disp%skip()
 
     block
-        use pm_kind, only: RKC => RKS
+        use pm_kind, only: RKG => RKS
         integer(IK) :: rank, lenArray
-        integer, parameter :: TKC = merge(RKC, RK, RKC > 0)
-        real(TKC), allocatable :: array(:)
-        real(TKC) :: selection
+        integer, parameter :: TKG = merge(RKG, RK, RKG > 0)
+        real(TKG), allocatable :: array(:)
+        real(TKG) :: selection
         call disp%skip()
         call disp%show("lenArray = getUnifRand(5_IK, 9_IK)")
                         lenArray = getUnifRand(5_IK, 9_IK)
@@ -153,11 +153,11 @@ program example
     end block
 
     block
-        use pm_kind, only: RKC => RKD
+        use pm_kind, only: RKG => RKD
         integer(IK) :: rank, lenArray
-        integer, parameter :: TKC = merge(RKC, RK, RKC > 0)
-        real(TKC), allocatable :: array(:)
-        real(TKC) :: selection
+        integer, parameter :: TKG = merge(RKG, RK, RKG > 0)
+        real(TKG), allocatable :: array(:)
+        real(TKG) :: selection
         call disp%skip()
         call disp%show("lenArray = getUnifRand(5_IK, 9_IK)")
                         lenArray = getUnifRand(5_IK, 9_IK)
@@ -179,11 +179,11 @@ program example
     end block
 
     block
-        use pm_kind, only: RKC => RKH
+        use pm_kind, only: RKG => RKH
         integer(IK) :: rank, lenArray
-        integer, parameter :: TKC = merge(RKC, RK, RKC > 0)
-        real(TKC), allocatable :: array(:)
-        real(TKC) :: selection
+        integer, parameter :: TKG = merge(RKG, RK, RKG > 0)
+        real(TKG), allocatable :: array(:)
+        real(TKG) :: selection
         call disp%skip()
         call disp%show("lenArray = getUnifRand(5_IK, 9_IK)")
                         lenArray = getUnifRand(5_IK, 9_IK)
@@ -211,9 +211,9 @@ program example
     call disp%skip()
 
     block
-        use pm_kind, only: TKC => SK
-        character(2, TKC) :: selection
-        character(2, TKC), allocatable :: array(:)
+        use pm_kind, only: TKG => SK
+        character(2, TKG) :: selection
+        character(2, TKG), allocatable :: array(:)
         integer(IK) :: rank, lenArray
         call disp%skip()
         call disp%show("lenArray = getUnifRand(5_IK, 9_IK)")
@@ -242,9 +242,9 @@ program example
     call disp%skip()
 
     block
-        use pm_kind, only: TKC => SK
-        character(1, TKC) :: selection
-        character(:, TKC), allocatable :: array
+        use pm_kind, only: TKG => SK
+        character(1, TKG) :: selection
+        character(:, TKG), allocatable :: array
         integer(IK) :: rank, lenArray
         call disp%skip()
         call disp%show("lenArray = getUnifRand(5_IK, 9_IK)")
@@ -304,10 +304,10 @@ program example
     call disp%skip()
 
     block
-        use pm_kind, only: TKC => IK
+        use pm_kind, only: TKG => IK
         integer(IK) :: rank, lenArray, i
-        integer(TKC), allocatable :: array(:)
-        integer(TKC) :: selection
+        integer(TKG), allocatable :: array(:)
+        integer(TKG) :: selection
         call disp%skip()
         call disp%show("lenArray = getUnifRand(5_IK, 9_IK)")
                         lenArray = getUnifRand(5_IK, 9_IK)
@@ -315,8 +315,8 @@ program example
                         rank = getUnifRand(1_IK, lenArray)
         call disp%show("[lenArray, rank]")
         call disp%show( [lenArray, rank] )
-        call disp%show("array = int([((-2)**i, i = 1, lenArray)], kind = TKC)")
-                        array = int([((-2)**i, i = 1, lenArray)], kind = TKC)
+        call disp%show("array = int([((-2)**i, i = 1, lenArray)], kind = TKG)")
+                        array = int([((-2)**i, i = 1, lenArray)], kind = TKG)
         call disp%show("array")
         call disp%show( array )
         call disp%show("!Select the `rank`th largest element via an input custom-designed `isSorted()` function.")
@@ -330,10 +330,10 @@ program example
     end block
 
     block
-        use pm_kind, only: TKC => RK
+        use pm_kind, only: TKG => RK
         integer(IK) :: rank, lenArray, i
-        real(TKC), allocatable :: array(:)
-        real(TKC) :: selection
+        real(TKG), allocatable :: array(:)
+        real(TKG) :: selection
         call disp%skip()
         call disp%show("lenArray = getUnifRand(5_IK, 9_IK)")
                         lenArray = getUnifRand(5_IK, 9_IK)
@@ -341,8 +341,8 @@ program example
                         rank = getUnifRand(1_IK, lenArray)
         call disp%show("[lenArray, rank]")
         call disp%show( [lenArray, rank] )
-        call disp%show("array = int([((-2)**i, i = 1, lenArray)], kind = TKC)")
-                        array = int([((-2)**i, i = 1, lenArray)], kind = TKC)
+        call disp%show("array = int([((-2)**i, i = 1, lenArray)], kind = TKG)")
+                        array = int([((-2)**i, i = 1, lenArray)], kind = TKG)
         call disp%show("array")
         call disp%show( array )
         call disp%show("!Select the `rank`th smallest element solely based on the magnitude of numbers using a custom comparison function.")
@@ -356,10 +356,10 @@ program example
     end block
 
     block
-        use pm_kind, only: TKC => SK
+        use pm_kind, only: TKG => SK
         integer(IK) :: rank, lenArray, i
-        character(:,TKC), allocatable :: array
-        character(1,TKC) :: selection
+        character(:,TKG), allocatable :: array
+        character(1,TKG) :: selection
         call disp%skip()
         call disp%show("lenArray = getUnifRand(5_IK, 9_IK)")
                         lenArray = getUnifRand(5_IK, 9_IK)
@@ -382,10 +382,10 @@ program example
     end block
 
     block
-        use pm_kind, only: TKC => SK
+        use pm_kind, only: TKG => SK
         integer(IK) :: rank, lenArray, i
-        character(:,TKC), allocatable :: array
-        character(1,TKC) :: selection
+        character(:,TKG), allocatable :: array
+        character(1,TKG) :: selection
         call disp%skip()
         call disp%show("lenArray = getUnifRand(5_IK, 9_IK)")
                         lenArray = getUnifRand(5_IK, 9_IK)

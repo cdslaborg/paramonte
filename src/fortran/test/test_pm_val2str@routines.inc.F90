@@ -32,7 +32,7 @@
 #elif   getStr_RK_ENABLED
         real(RK)            :: val(3,3)
 #elif   getStr_IK_ENABLED
-        integer(IKC)        :: val(3,3)
+        integer(IKG)        :: val(3,3)
 #elif   getStr_CK_ENABLED
         complex(CK)         :: val(3,3)
 #elif   getStr_LK_ENABLED
@@ -73,7 +73,7 @@
 #elif       getStr_RK_ENABLED
             val = 1._RK
 #elif       getStr_IK_ENABLED
-            val = 1_IKC
+            val = 1_IKG
 #elif       getStr_CK_ENABLED
             val = 1._CK
 #elif       getStr_LK_ENABLED

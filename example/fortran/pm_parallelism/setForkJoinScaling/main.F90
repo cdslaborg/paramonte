@@ -1,6 +1,6 @@
 program example
 
-    use pm_kind, only: SK, IK, LK, RKC => RKD
+    use pm_kind, only: SK, IK, LK, RKG => RKD
     use pm_parallelism, only: setForkJoinScaling
     use pm_arraySpace, only: getLinSpace
     use pm_distUnif, only: getUnifRand
@@ -9,7 +9,7 @@ program example
     implicit none
 
     type(display_type) :: disp
-    real(RKC) :: redshift = 5.5_RKC
+    real(RKG) :: redshift = 5.5_RKG
     disp = display_type(file = "main.out.F90")
 
     call disp%skip()
@@ -19,7 +19,7 @@ program example
     call disp%skip()
 
     block
-        use pm_kind, only: RKC => RKS
+        use pm_kind, only: RKG => RKS
         integer(IK), allocatable :: numproc(:)
         real, allocatable :: scaling(:)
         integer :: maxloc

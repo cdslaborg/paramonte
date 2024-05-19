@@ -38,13 +38,13 @@
     use pm_except, only: setNAN
     use pm_val2str, only: getStr
     use pm_arrayResize, only: setResized
-    use pm_kind, only: SKC => SK, SK, IK, LK
+    use pm_kind, only: SKG => SK, SK, IK, LK
     use pm_sampling_mcmc, only: specmcmc_type, astatmcmc_type, burninLoc_type, NL2, NL1
     use pm_sampling_scio, only: cfcdram_type
 
     implicit none
 
-    character(*,SKC)        , parameter     :: MODULE_NAME = SK_"@pm_sampling_dram"
+    character(*,SKG)        , parameter     :: MODULE_NAME = SK_"@pm_sampling_dram"
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     ! simulation declarations.
@@ -64,11 +64,11 @@
     ! specification declarations.
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-   !real(RKC)                               :: proposalAdaptationBurnin ! namelist input
+   !real(RKG)                               :: proposalAdaptationBurnin ! namelist input
     type                                    :: proposalAdaptationBurnin_type
-        real(RKC)                           :: val
-        real(RKC)                           :: def
-        character(:,SKC)    , allocatable   :: desc
+        real(RKG)                           :: val
+        real(RKG)                           :: def
+        character(:,SKG)    , allocatable   :: desc
     end type
 
    !integer(IK)                             :: proposalAdaptationCount ! namelist input
@@ -76,7 +76,7 @@
         integer(IK)                         :: val
         integer(IK)                         :: def
         integer(IK)                         :: null
-        character(:,SKC)    , allocatable   :: desc
+        character(:,SKG)    , allocatable   :: desc
     end type
 
    !integer(IK)                             :: proposalAdaptationCountGreedy ! namelist input
@@ -84,7 +84,7 @@
         integer(IK)                         :: val
         integer(IK)                         :: def
         integer(IK)                         :: null
-        character(:,SKC)    , allocatable   :: desc
+        character(:,SKG)    , allocatable   :: desc
     end type
 
    !integer(IK)                             :: proposalAdaptationPeriod ! namelist input
@@ -92,7 +92,7 @@
         integer(IK)                         :: val
         integer(IK)                         :: def
         integer(IK)                         :: null
-        character(:,SKC)    , allocatable   :: desc
+        character(:,SKG)    , allocatable   :: desc
     end type
 
    !integer(IK)                             :: proposalDelayedRejectionCount ! namelist input
@@ -102,15 +102,15 @@
         integer(IK)                         :: val
         integer(IK)                         :: def
         integer(IK)                         :: null
-        character(:,SKC)    , allocatable   :: desc
+        character(:,SKG)    , allocatable   :: desc
     end type
 
-   !real(RKC)               , allocatable   :: proposalDelayedRejectionScale(:) ! namelist input
+   !real(RKG)               , allocatable   :: proposalDelayedRejectionScale(:) ! namelist input
     type                                    :: proposalDelayedRejectionScale_type
-        real(RKC)                           :: def
-        real(RKC)           , allocatable   :: val(:)
-       !real(RKC)           , allocatable   :: log(:)
-        character(:,SKC)    , allocatable   :: desc
+        real(RKG)                           :: def
+        real(RKG)           , allocatable   :: val(:)
+       !real(RKG)           , allocatable   :: log(:)
+        character(:,SKG)    , allocatable   :: desc
     end type
 
     type, extends(specmcmc_type)                    :: specdram_type
@@ -136,17 +136,17 @@ contains
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    subroutine killMeAlreadyCMake1_RK5(); use pm_sampling_scio_RK5, only: RKC; end subroutine
-    subroutine killMeAlreadyCMake1_RK4(); use pm_sampling_scio_RK4, only: RKC; end subroutine
-    subroutine killMeAlreadyCMake1_RK3(); use pm_sampling_scio_RK3, only: RKC; end subroutine
-    subroutine killMeAlreadyCMake1_RK2(); use pm_sampling_scio_RK2, only: RKC; end subroutine
-    subroutine killMeAlreadyCMake1_RK1(); use pm_sampling_scio_RK1, only: RKC; end subroutine
+    subroutine killMeAlreadyCMake1_RK5(); use pm_sampling_scio_RK5, only: RKG; end subroutine
+    subroutine killMeAlreadyCMake1_RK4(); use pm_sampling_scio_RK4, only: RKG; end subroutine
+    subroutine killMeAlreadyCMake1_RK3(); use pm_sampling_scio_RK3, only: RKG; end subroutine
+    subroutine killMeAlreadyCMake1_RK2(); use pm_sampling_scio_RK2, only: RKG; end subroutine
+    subroutine killMeAlreadyCMake1_RK1(); use pm_sampling_scio_RK1, only: RKG; end subroutine
 
-    subroutine killMeAlreadyCMake2_RK5(); use pm_sampling_mcmc_RK5, only: RKC; end subroutine
-    subroutine killMeAlreadyCMake2_RK4(); use pm_sampling_mcmc_RK4, only: RKC; end subroutine
-    subroutine killMeAlreadyCMake2_RK3(); use pm_sampling_mcmc_RK3, only: RKC; end subroutine
-    subroutine killMeAlreadyCMake2_RK2(); use pm_sampling_mcmc_RK2, only: RKC; end subroutine
-    subroutine killMeAlreadyCMake2_RK1(); use pm_sampling_mcmc_RK1, only: RKC; end subroutine
+    subroutine killMeAlreadyCMake2_RK5(); use pm_sampling_mcmc_RK5, only: RKG; end subroutine
+    subroutine killMeAlreadyCMake2_RK4(); use pm_sampling_mcmc_RK4, only: RKG; end subroutine
+    subroutine killMeAlreadyCMake2_RK3(); use pm_sampling_mcmc_RK3, only: RKG; end subroutine
+    subroutine killMeAlreadyCMake2_RK2(); use pm_sampling_mcmc_RK2, only: RKG; end subroutine
+    subroutine killMeAlreadyCMake2_RK1(); use pm_sampling_mcmc_RK1, only: RKG; end subroutine
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -156,7 +156,7 @@ contains
 #endif
         use pm_kind, only: modelr_type
         type(modelr_type), intent(in) :: modelr
-        character(*,SKC), intent(in) :: method
+        character(*,SKG), intent(in) :: method
         integer(IK), intent(in) :: ndim
         type(specdram_type) :: spec
 
@@ -164,9 +164,9 @@ contains
 
         proposalAdaptationBurnin_block: block
             use pm_sampling_scio, only: proposalAdaptationBurnin
-            spec%proposalAdaptationBurnin%def = 1._RKC
+            spec%proposalAdaptationBurnin%def = 1._RKG
             spec%proposalAdaptationBurnin%desc = &
-            SKC_"The simulation specification `proposalAdaptationBurnin` is a scalar of type `real` of the highest precision available &
+            SKG_"The simulation specification `proposalAdaptationBurnin` is a scalar of type `real` of the highest precision available &
                 &within the ParaMonte library whose value, between 0 and 1, represents the adaptation measure threshold below which &
                 &the simulated Markov chain will be used to generate the output sample. In other words, any point in the output Markov &
                 &chain sampled during significant adaptation of the proposal distribution (set by `proposalAdaptationBurnin`) &
@@ -179,7 +179,7 @@ contains
                 &In such cases, the resulting output sample may be zero size. Generally, when good mixing occurs &
                 &(e.g., when the input variable `outputChainSize` is reasonably large), then any specific &
                 &value of `proposalAdaptationBurnin` becomes practically irrelevant. &
-                &The default value for `proposalAdaptationBurnin` is `"//getStr(spec%proposalAdaptationBurnin%def)//SKC_"`, implying that the &
+                &The default value for `proposalAdaptationBurnin` is `"//getStr(spec%proposalAdaptationBurnin%def)//SKG_"`, implying that the &
                 &entire chain (excluding an initial automatically-determined burnin period) will be used to generate the final output sample."
             !$omp master
             call setNAN(proposalAdaptationBurnin)
@@ -191,7 +191,7 @@ contains
             spec%proposalAdaptationCount%null = -huge(0_IK)
             spec%proposalAdaptationCount%def  = huge(0_IK)
             spec%proposalAdaptationCount%desc = &
-            SKC_"The simulation specification `proposalAdaptationCount` is a scalar of type `integer` representing the total number of &
+            SKG_"The simulation specification `proposalAdaptationCount` is a scalar of type `integer` representing the total number of &
                 &adaptive updates that will be made to the parameters of the proposal distribution to increase the efficiency of the sampler, &
                 &thus increasing the overall sampling efficiency of the simulation. Every `proposalAdaptationPeriod` number of calls to the &
                 &objective function, the parameters of the proposal distribution will be updated until either the total number of adaptive &
@@ -199,7 +199,7 @@ contains
                 &it may be appropriate to ensure the condition `outputChainSize >> proposalAdaptationPeriod * proposalAdaptationCount` &
                 &holds to improve the ergodicity and stationarity of the MCMC sampler. If `proposalAdaptationCount` is zero, &
                 &then the proposal distribution parameters will be fixed to the initial input values &
-                &throughout the entire MCMC sampling. The default value is `"//getStr(spec%proposalAdaptationCount%def)//SKC_"`."
+                &throughout the entire MCMC sampling. The default value is `"//getStr(spec%proposalAdaptationCount%def)//SKG_"`."
             !$omp master
             proposalAdaptationCount = spec%proposalAdaptationCount%null
             !$omp end master
@@ -210,14 +210,14 @@ contains
             spec%proposalAdaptationCountGreedy%null = -huge(0_IK)
             spec%proposalAdaptationCountGreedy%def = 0_IK
             spec%proposalAdaptationCountGreedy%desc = &
-            SKC_"The simulation specification `proposalAdaptationCountGreedy` is a positive-valued scalar of type `integer` representing the &
+            SKG_"The simulation specification `proposalAdaptationCountGreedy` is a positive-valued scalar of type `integer` representing the &
                 &count of initial ""greedy"" adaptive updates the sampler will apply to the proposal distribution before starting regular adaptation. &
                 &Greedy adaptations are made using only the 'unique' accepted points in the MCMC chain. This is useful, for example, when the function &
                 &to be sampled by the sampler is high dimensional, in which case, the adaptive updates to proposal distribution will less likely lead to &
                 &numerical instabilities, such as a singular covariance matrix for the multivariate proposal sampler. &
                 &The variable `proposalAdaptationCountGreedy` must be less than the specified value for `proposalAdaptationCount`. &
                 &If larger, it will be automatically reset to `proposalAdaptationCount` for the simulation. &
-                &The default value is `"//getStr(spec%proposalAdaptationCountGreedy%def)//SKC_"`."
+                &The default value is `"//getStr(spec%proposalAdaptationCountGreedy%def)//SKG_"`."
             !$omp master
             proposalAdaptationCountGreedy = spec%proposalAdaptationCountGreedy%null
             !$omp end master
@@ -228,7 +228,7 @@ contains
             spec%proposalAdaptationPeriod%def = spec%ndim%val * 4_IK !+ 1_IK ! max(ndim+1_IK,100_IK)
             spec%proposalAdaptationPeriod%null = -huge(0_IK)
             spec%proposalAdaptationPeriod%desc = &
-            SKC_"The simulation specification `proposalAdaptationPeriod` is a positive-valued scalar of type `integer`. &
+            SKG_"The simulation specification `proposalAdaptationPeriod` is a positive-valued scalar of type `integer`. &
                 &Every `proposalAdaptationPeriod` calls to the objective function, the parameters of the proposal distribution will be updated. &
                 &The smaller the value of `proposalAdaptationPeriod`, the easier for the sampler kernel to adapt the proposal distribution &
                 &to the covariance structure of the objective function. However, this will happen at the expense of slower simulation runtime as the &
@@ -249,21 +249,21 @@ contains
             spec%proposalDelayedRejectionCount%null = -huge(0_IK)
             spec%proposalDelayedRejectionCount%def = 0_IK
             spec%proposalDelayedRejectionCount%desc = &
-            SKC_"The simulation specification `proposalAdaptationPeriod` is a non-negative-valued scalar of type `integer` representing &
+            SKG_"The simulation specification `proposalAdaptationPeriod` is a non-negative-valued scalar of type `integer` representing &
                 &the total number of stages for which rejections of new proposals will be tolerated by the MCMC sampler before going back &
                 &to the previously accepted point (state). The condition `"//&
                 getStr(spec%proposalDelayedRejectionCount%min)//" <= proposalDelayedRejectionCount <= "//getStr(spec%proposalDelayedRejectionCount%max)//&
-            SKC_"` must hold. Possible values are:"//NL2//&
-            SKC_"+   `proposalDelayedRejectionCount = 0`"//NL2//&
-            SKC_"    indicating no deployment of the delayed rejection algorithm."//NL2//&
-            SKC_"+   `proposalDelayedRejectionCount > 0`"//NL2//&
-            SKC_"    which implies a maximum proposalDelayedRejectionCount number of rejections will be tolerated."//NL2//&
-            SKC_"For example, setting `proposalDelayedRejectionCount` to `1` means that at any point during the sampling, if a proposal is rejected, &
+            SKG_"` must hold. Possible values are:"//NL2//&
+            SKG_"+   `proposalDelayedRejectionCount = 0`"//NL2//&
+            SKG_"    indicating no deployment of the delayed rejection algorithm."//NL2//&
+            SKG_"+   `proposalDelayedRejectionCount > 0`"//NL2//&
+            SKG_"    which implies a maximum proposalDelayedRejectionCount number of rejections will be tolerated."//NL2//&
+            SKG_"For example, setting `proposalDelayedRejectionCount` to `1` means that at any point during the sampling, if a proposal is rejected, &
                 &the MCMC sampler will not return to the last sampled state. Instead, it will continue to propose a new state from the last &
                 &rejected proposal. If the new state is again rejected based on the rules of the MCMC sampler, then the algorithm will not &
                 &tolerate further rejections because the maximum number of rejections to be tolerated has been set by the user to be &
                 &`proposalDelayedRejectionCount = 1`. The algorithm then returns to the original last-accepted state and will begin &
-                &proposing new states from that location. The default value is `"//getStr(spec%proposalDelayedRejectionCount%def)//SKC_"`."
+                &proposing new states from that location. The default value is `"//getStr(spec%proposalDelayedRejectionCount%def)//SKG_"`."
             !$omp master
             proposalDelayedRejectionCount = spec%proposalDelayedRejectionCount%null
             !$omp end master
@@ -271,7 +271,7 @@ contains
 
         proposalDelayedRejectionScale_block: block
             use pm_sampling_scio, only: proposalDelayedRejectionScale
-            spec%proposalDelayedRejectionScale%def  = 0.5_RKC**(1._RKC / spec%ndim%val) ! This gives a half volume to the covariance.
+            spec%proposalDelayedRejectionScale%def  = 0.5_RKG**(1._RKG / spec%ndim%val) ! This gives a half volume to the covariance.
             spec%proposalDelayedRejectionScale%desc = &
             "The simulation specification `proposalDelayedRejectionScale` is a positive-valued vector of type `real` of the &
             &highest precision available within the ParaMonte library, of length `(1 : proposalDelayedRejectionCount)`, by which &
@@ -314,7 +314,7 @@ contains
             proposalAdaptationBurnin_block: block
                 use pm_sampling_scio, only: proposalAdaptationBurnin
                 if (spec%overridable .and. allocated(sampler%proposalAdaptationBurnin)) then
-                    spec%proposalAdaptationBurnin%val = real(sampler%proposalAdaptationBurnin, RKC)
+                    spec%proposalAdaptationBurnin%val = real(sampler%proposalAdaptationBurnin, RKG)
                 else
                     spec%proposalAdaptationBurnin%val = proposalAdaptationBurnin
                 end if
@@ -366,7 +366,7 @@ contains
                 use pm_arrayFill, only: getFilled
                 integer(IK) :: idel
                 if (spec%overridable .and. allocated(sampler%proposalDelayedRejectionScale)) then
-                    spec%proposalDelayedRejectionScale%val = real(sampler%proposalDelayedRejectionScale, RKC)
+                    spec%proposalDelayedRejectionScale%val = real(sampler%proposalDelayedRejectionScale, RKG)
                 else
                     do idel = size(proposalDelayedRejectionScale, 1, IK), 1, -1
                         if (.not. isNAN(proposalDelayedRejectionScale(idel))) exit
@@ -414,7 +414,7 @@ contains
         use pm_str, only: UNDEFINED
         class(specdram_type), intent(inout) :: spec
 
-        call spec%disp%text%wrap(NL1//spec%method%val//SKC_".simulation.specifications.dram"//NL1)
+        call spec%disp%text%wrap(NL1//spec%method%val//SKG_".simulation.specifications.dram"//NL1)
 
         associate(ndim => spec%ndim%val, format => spec%reportFile%format%generic)
 
@@ -459,20 +459,20 @@ contains
         use pm_err, only: err_type, getFine
         type(err_type), intent(inout) :: err
         class(specdram_type), intent(inout) :: spec
-        character(*,SKC), parameter :: PROCEDURE_NAME = MODULE_NAME//SKC_"@sanitizeSpecDRAM()"
+        character(*,SKG), parameter :: PROCEDURE_NAME = MODULE_NAME//SKG_"@sanitizeSpecDRAM()"
 
         proposalAdaptationBurnin_block: block
-            if (spec%proposalAdaptationBurnin%val < 0._RKC) then
+            if (spec%proposalAdaptationBurnin%val < 0._RKG) then
                 err%occurred = .true._LK
-                err%msg =   err%msg//NL2//PROCEDURE_NAME//getFine(__FILE__, __LINE__)//SKC_": Error occurred. &
-                            &The input specification `proposalAdaptationBurnin` ("//getStr(spec%proposalAdaptationBurnin%val)//SKC_") cannot be less than 0. &
+                err%msg =   err%msg//NL2//PROCEDURE_NAME//getFine(__FILE__, __LINE__)//SKG_": Error occurred. &
+                            &The input specification `proposalAdaptationBurnin` ("//getStr(spec%proposalAdaptationBurnin%val)//SKG_") cannot be less than 0. &
                             &If you are unsure of the appropriate value for proposalAdaptationBurnin, drop it from the input list. &
                             &The sampler will automatically assign an appropriate value to it."
             end if
-            if (1._RKC < spec%proposalAdaptationBurnin%val) then
+            if (1._RKG < spec%proposalAdaptationBurnin%val) then
                 err%occurred = .true._LK
-                err%msg =   err%msg//NL2//PROCEDURE_NAME//getFine(__FILE__, __LINE__)//SKC_": Error occurred. &
-                            &The input specification `proposalAdaptationBurnin` ("//getStr(spec%proposalAdaptationBurnin%val)//SKC_") cannot be larger than 1. &
+                err%msg =   err%msg//NL2//PROCEDURE_NAME//getFine(__FILE__, __LINE__)//SKG_": Error occurred. &
+                            &The input specification `proposalAdaptationBurnin` ("//getStr(spec%proposalAdaptationBurnin%val)//SKG_") cannot be larger than 1. &
                             &If you are unsure of the appropriate value for proposalAdaptationBurnin, drop it from the input list. &
                             &The sampler will automatically assign an appropriate value to it."
             end if
@@ -481,8 +481,8 @@ contains
         proposalAdaptationCount_block: block
             if (spec%proposalAdaptationCount%val < 0_IK) then
                 err%occurred = .true._LK
-                err%msg =   err%msg//NL2//PROCEDURE_NAME//SKC_"@sanitize(): Error occurred. &
-                            &The input requested value for `proposalAdaptationCount` ("//getStr(spec%proposalAdaptationCount%val)//SKC_") &
+                err%msg =   err%msg//NL2//PROCEDURE_NAME//SKG_"@sanitize(): Error occurred. &
+                            &The input requested value for `proposalAdaptationCount` ("//getStr(spec%proposalAdaptationCount%val)//SKG_") &
                             &cannot be negative. If you are unsure of the appropriate value for `proposalAdaptationCount`, drop it from &
                             &the input list. The sampler will automatically assign an appropriate value to it."
             end if
@@ -491,8 +491,8 @@ contains
         proposalAdaptationCountGreedy_block: block
             if (spec%proposalAdaptationCountGreedy%val < 0_IK) then
                 err%occurred = .true._LK
-                err%msg =   err%msg//NL2//MODULE_NAME//SKC_"@sanitize(): Error occurred. &
-                            &The input requested value for `proposalAdaptationCountGreedy` ("//getStr(spec%proposalAdaptationCountGreedy%val)//SKC_") cannot be negative. &
+                err%msg =   err%msg//NL2//MODULE_NAME//SKG_"@sanitize(): Error occurred. &
+                            &The input requested value for `proposalAdaptationCountGreedy` ("//getStr(spec%proposalAdaptationCountGreedy%val)//SKG_") cannot be negative. &
                             &If you are unsure of the appropriate value for `proposalAdaptationCountGreedy`, drop it from the input list. &
                             &The sampler will automatically assign an appropriate value to it."
             end if
@@ -501,8 +501,8 @@ contains
         proposalAdaptationPeriod_block: block
             if (spec%proposalAdaptationPeriod%val < 1_IK) then
                 err%occurred = .true._LK
-                err%msg =   err%msg//NL2//MODULE_NAME//SKC_"@sanitize(): Error occurred. &
-                            &The input requested value for `proposalAdaptationPeriod` ("//getStr(spec%proposalAdaptationPeriod%val)//SKC_") cannot be less than 1. &
+                err%msg =   err%msg//NL2//MODULE_NAME//SKG_"@sanitize(): Error occurred. &
+                            &The input requested value for `proposalAdaptationPeriod` ("//getStr(spec%proposalAdaptationPeriod%val)//SKG_") cannot be less than 1. &
                             &If you are unsure of the appropriate value for proposalAdaptationPeriod, drop it from the input list. &
                             &The sampler will automatically assign an appropriate value to it."
             end if
@@ -511,15 +511,15 @@ contains
         proposalDelayedRejectionCount_block: block
             if (spec%proposalDelayedRejectionCount%val < spec%proposalDelayedRejectionCount%min) then
                 err%occurred = .true._LK
-                err%msg =   err%msg//NL2//PROCEDURE_NAME//getFine(__FILE__, __LINE__)//SKC_": Error occurred. &
-                            &The input requested value for `proposalDelayedRejectionCount` ("//getStr(spec%proposalDelayedRejectionCount%val)//"SKC_) cannot be negative. &
+                err%msg =   err%msg//NL2//PROCEDURE_NAME//getFine(__FILE__, __LINE__)//SKG_": Error occurred. &
+                            &The input requested value for `proposalDelayedRejectionCount` ("//getStr(spec%proposalDelayedRejectionCount%val)//"SKG_) cannot be negative. &
                             &If you are unsure of the appropriate value for `proposalDelayedRejectionCount`, drop it from the input list. &
                             &The MCMC sampler will automatically assign an appropriate value to it."
             elseif (spec%proposalDelayedRejectionCount%val > spec%proposalDelayedRejectionCount%max) then
                 err%occurred = .true._LK ! LCOV_EXCL_LINE
-                err%msg =   err%msg//NL2//PROCEDURE_NAME//getFine(__FILE__, __LINE__)//SKC_": Error occurred. &
-                            &The input requested value for `proposalDelayedRejectionCount` ("//getStr(spec%proposalDelayedRejectionCount%val)//SKC_") can not be > "// &
-                            getStr(spec%proposalDelayedRejectionCount%max)//SKC_". If you are unsure of the appropriate value for &
+                err%msg =   err%msg//NL2//PROCEDURE_NAME//getFine(__FILE__, __LINE__)//SKG_": Error occurred. &
+                            &The input requested value for `proposalDelayedRejectionCount` ("//getStr(spec%proposalDelayedRejectionCount%val)//SKG_") can not be > "// &
+                            getStr(spec%proposalDelayedRejectionCount%max)//SKG_". If you are unsure of the appropriate value for &
                             &`proposalDelayedRejectionCount`, drop it from the input list. The MCMC sampler will &
                             &automatically assign an appropriate value to it."
             end if
@@ -530,18 +530,18 @@ contains
             integer(IK) :: idel
             if (size(spec%proposalDelayedRejectionScale%val, 1, IK) /= spec%proposalDelayedRejectionCount%val) then
                 err%occurred = .true._LK
-                err%msg =   err%msg//NL2//PROCEDURE_NAME//getFine(__FILE__, __LINE__)//SKC_": Error occurred. The length of the vector `proposalDelayedRejectionScale` ("//&
-                            getStr(size(spec%proposalDelayedRejectionScale%val))//SKC_") is not equal to proposalDelayedRejectionCount = "//&
-                            getStr(spec%proposalDelayedRejectionCount%val)//SKC_". If you are unsure how to set the values of `proposalDelayedRejectionScale`, &
+                err%msg =   err%msg//NL2//PROCEDURE_NAME//getFine(__FILE__, __LINE__)//SKG_": Error occurred. The length of the vector `proposalDelayedRejectionScale` ("//&
+                            getStr(size(spec%proposalDelayedRejectionScale%val))//SKG_") is not equal to proposalDelayedRejectionCount = "//&
+                            getStr(spec%proposalDelayedRejectionCount%val)//SKG_". If you are unsure how to set the values of `proposalDelayedRejectionScale`, &
                             &drop it from the input. The sampler will automatically set the appropriate value for `proposalDelayedRejectionScale`."
             end if
             do idel = 1, size(spec%proposalDelayedRejectionScale%val, 1, IK)
-                if (spec%proposalDelayedRejectionScale%val(idel) <= 0._RKC) then
+                if (spec%proposalDelayedRejectionScale%val(idel) <= 0._RKG) then
                 !    spec%proposalDelayedRejectionScale%log(idel) = log(spec%proposalDelayedRejectionScale%val(idel))
                 !else
                     err%occurred = .true._LK
-                    err%msg =   err%msg//NL2//PROCEDURE_NAME//getFine(__FILE__, __LINE__)//SKC_": Error occurred. The input value for the element `"//getStr(idel)//&
-                                SKC_"` of the variable proposalDelayedRejectionScale cannot be smaller than or equal to 0."
+                    err%msg =   err%msg//NL2//PROCEDURE_NAME//getFine(__FILE__, __LINE__)//SKG_": Error occurred. The input value for the element `"//getStr(idel)//&
+                                SKG_"` of the variable proposalDelayedRejectionScale cannot be smaller than or equal to 0."
                 end if
             end do
             !$omp barrier

@@ -36,7 +36,7 @@
 #if     WTI_ENABLED
 #define TYPE_OF_WEIGHT integer(IK)
 #elif   WTR_ENABLED
-#define TYPE_OF_WEIGHT real(TKC)
+#define TYPE_OF_WEIGHT real(TKG)
 #elif   !(WNO_ENABLED || getMeanMerged_ENABLED || setMeanMerged_ENABLED)
 #error  "Unrecognized interface."
 #endif
@@ -87,16 +87,16 @@ CHECK_ASSERTION(__LINE__, size(meanMerged, 1, IK) == size(meanB, 1, IK), SK_"@se
 #error  "Unrecognized interface."
 #endif
 #if     D1_ENABLED
-        real(TKC) :: fracB
+        real(TKG) :: fracB
         integer(IK) :: idim
 #endif
-        CHECK_ASSERTION(__LINE__, 0._TKC < fracA .and. fracA < 1._TKC, SK_"@setMeanMerged(): The condition `0 < fracA .and. fracA < 1` must hold. fracA = "//getStr(fracA))
+        CHECK_ASSERTION(__LINE__, 0._TKG < fracA .and. fracA < 1._TKG, SK_"@setMeanMerged(): The condition `0 < fracA .and. fracA < 1` must hold. fracA = "//getStr(fracA))
 #if     D0_ENABLED
-        TARGET_AVG = fracA * meanA + (1._TKC - fracA) * meanB
+        TARGET_AVG = fracA * meanA + (1._TKG - fracA) * meanB
 #elif   D1_ENABLED
         CHECK_LEN_TARGET_MEAN
         CHECK_ASSERTION(__LINE__, size(meanA, 1, IK) == size(meanB, 1, IK), SK_"@setMeanMerged(): The condition `size(meanA) == size(meanB)` must hold. size(meanA), size(meanB) = "//getStr([size(meanA, 1, IK), size(meanB, 1, IK)]))
-        fracB = 1._TKC - fracA
+        fracB = 1._TKG - fracA
         do concurrent(idim = 1 : size(meanB, 1, IK))
             TARGET_AVG(idim) = fracA * meanA(idim) + fracB * meanB(idim)
         end do
@@ -142,7 +142,7 @@ CHECK_ASSERTION(__LINE__, size(meanMerged, 1, IK) == size(meanB, 1, IK), SK_"@se
 
         integer(IK) :: isam
 #if     WNO_ENABLED
-        real(TKC) :: weisum
+        real(TKG) :: weisum
         weisum = size(x, 1, IK)
 #elif   WTI_ENABLED || WTR_ENABLED
         CHECK_ASSERTION(__LINE__, size(x, 1, IK) == size(weight, 1, IK), SK_"@setMean(): The condition `size(x) == size(weight)` must hold. size(x), size(weight) = "//getStr([size(x, 1, IK), size(weight, 1, IK)]))
@@ -152,7 +152,7 @@ CHECK_ASSERTION(__LINE__, size(meanMerged, 1, IK) == size(meanB, 1, IK), SK_"@se
 #else
 #error  "Unrecognized interface."
 #endif
-        mean = 0._TKC
+        mean = 0._TKG
         CHECK_ASSERTION(__LINE__, size(x, 1, IK) == size(y, 1, IK), SK_"@setMean(): The condition `size(x) == size(y)` must hold. size(x), size(y) = "//getStr([size(x, 1, IK), size(y, 1, IK)]))
         do isam = 1_IK, size(x, 1, IK)
             INCREMENT(weisum,weight(isam))
@@ -167,7 +167,7 @@ CHECK_ASSERTION(__LINE__, size(meanMerged, 1, IK) == size(meanB, 1, IK), SK_"@se
 
         integer(IK) :: isam
 #if     WNO_ENABLED
-        real(TKC) :: weisum
+        real(TKG) :: weisum
         weisum = size(sample, 1, IK)
 #elif   WTI_ENABLED || WTR_ENABLED
         CHECK_LEN_WEI(1_IK)
@@ -177,7 +177,7 @@ CHECK_ASSERTION(__LINE__, size(meanMerged, 1, IK) == size(meanB, 1, IK), SK_"@se
 #else
 #error  "Unrecognized interface."
 #endif
-        mean = 0._TKC
+        mean = 0._TKG
         CHECK_VAL_DIM
         CHECK_SHAPE_SAMPLE
         do isam = 1_IK, size(sample)
@@ -193,7 +193,7 @@ CHECK_ASSERTION(__LINE__, size(meanMerged, 1, IK) == size(meanB, 1, IK), SK_"@se
         integer(IK) :: idim, jdim
         integer(IK) :: mdim, ndim
 #if     WNO_ENABLED
-        real(TKC) :: weisum
+        real(TKG) :: weisum
         weisum = size(sample, kind = IK)
 #elif   WTI_ENABLED || WTR_ENABLED
         integer(IK) :: iwei
@@ -207,7 +207,7 @@ CHECK_ASSERTION(__LINE__, size(meanMerged, 1, IK) == size(meanB, 1, IK), SK_"@se
 #endif
         mdim = size(sample, 1, IK)
         ndim = size(sample, 2, IK)
-        mean = 0._TKC
+        mean = 0._TKG
         do jdim = 1, ndim
             do idim = 1, mdim
                 INCREMENT(iwei,1_IK)
@@ -221,17 +221,17 @@ CHECK_ASSERTION(__LINE__, size(meanMerged, 1, IK) == size(meanB, 1, IK), SK_"@se
 #elif   setMean_ENABLED && D2_ENABLED && WNO_ENABLED && DIM_ENABLED
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        real(TKC) :: normfac
+        real(TKG) :: normfac
         integer(IK) :: ndim, nsam, idim, isam
         CHECK_VAL_DIM
         CHECK_SHAPE_SAMPLE
         CHECK_LEN_MEAN(3 - dim)
         nsam = size(sample, dim, IK)
         ndim = size(sample, 3 - dim, IK)
-        normfac = 1._TKC / nsam
+        normfac = 1._TKG / nsam
         if (dim == 2_IK) then
             ! attributes are along the columns.
-            mean = 0._TKC
+            mean = 0._TKG
             do isam = 1, nsam
                 mean = mean + sample(1 : ndim, isam)
             end do
@@ -247,7 +247,7 @@ CHECK_ASSERTION(__LINE__, size(meanMerged, 1, IK) == size(meanB, 1, IK), SK_"@se
 #elif   setMean_ENABLED && D2_ENABLED && DIM_ENABLED
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        real(TKC) :: normfac
+        real(TKG) :: normfac
         integer(IK) :: ndim, nsam, idim, isam
         ndim = size(sample, 3 - dim, IK)
         nsam = size(sample, dim, IK)
@@ -255,7 +255,7 @@ CHECK_ASSERTION(__LINE__, size(meanMerged, 1, IK) == size(meanB, 1, IK), SK_"@se
         CHECK_SHAPE_SAMPLE
         CHECK_VAL_DIM
 #if     WNO_ENABLED
-        normfac = 1._TKC / nsam
+        normfac = 1._TKG / nsam
 #elif   WTI_ENABLED || WTR_ENABLED
         CHECK_LEN_WEI(dim)
         CHECK_SUM_WEI
@@ -265,13 +265,13 @@ CHECK_ASSERTION(__LINE__, size(meanMerged, 1, IK) == size(meanB, 1, IK), SK_"@se
 #error  "Unrecognized interface."
 #endif
         if (dim == 2_IK) then ! attributes are along the columns.
-            mean = 0._TKC
+            mean = 0._TKG
             do isam = 1, nsam
                 INCREMENT(weisum,weight(isam))
                 mean = mean + GET_WEIGHTED(sample(1 : ndim, isam),weight(isam))
             end do
 #if         WTI_ENABLED || WTR_ENABLED
-            normfac = 1._TKC / weisum
+            normfac = 1._TKG / weisum
 #endif
             mean = mean * normfac
         else ! attributes are along the rows.
@@ -280,12 +280,12 @@ CHECK_ASSERTION(__LINE__, size(meanMerged, 1, IK) == size(meanB, 1, IK), SK_"@se
                 mean(idim) = sum(sample(1 : nsam, idim)) * normfac
             end do
 #elif       WTI_ENABLED || WTR_ENABLED
-            mean(1) = 0._TKC
+            mean(1) = 0._TKG
             do isam = 1, nsam
                 INCREMENT(weisum,weight(isam))
                 mean(1) = mean(1) + GET_WEIGHTED(sample(isam, 1),weight(isam))
             end do
-            normfac = 1._TKC / weisum
+            normfac = 1._TKG / weisum
             mean(1) = mean(1) * normfac
             do concurrent(idim = 2 : ndim)
                 ! warning: dot_product() complex-conjugates its first argument.

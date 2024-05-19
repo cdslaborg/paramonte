@@ -33,20 +33,20 @@
 #error  "Unrecognized interface."
 #endif
 #if     IK_ENABLED
-#define TYPE_KIND integer(TKC)
-        integer(TKC), parameter :: TOL = 0_TKC
-        integer(TKC), parameter :: LB = -1_TKC, UB = 1_TKC, ZERO = 0_TKC
-        integer(TKC), allocatable :: cumSum_ref(:), cumSum(:), array(:), diff(:)
+#define TYPE_KIND integer(TKG)
+        integer(TKG), parameter :: TOL = 0_TKG
+        integer(TKG), parameter :: LB = -1_TKG, UB = 1_TKG, ZERO = 0_TKG
+        integer(TKG), allocatable :: cumSum_ref(:), cumSum(:), array(:), diff(:)
 #elif   CK_ENABLED
-#define TYPE_KIND complex(TKC)
-        complex(TKC), parameter :: TOL = epsilon(1._TKC) * 10._TKC * (1._TKC, 1._TKC)
-        complex(TKC), parameter :: LB = (-1._TKC, -2._TKC), UB = (2._TKC, 1._TKC), ZERO = (0._TKC, 0._TKC)
-        complex(TKC), allocatable :: cumSum_ref(:), cumSum(:), array(:), diff(:)
+#define TYPE_KIND complex(TKG)
+        complex(TKG), parameter :: TOL = epsilon(1._TKG) * 10._TKG * (1._TKG, 1._TKG)
+        complex(TKG), parameter :: LB = (-1._TKG, -2._TKG), UB = (2._TKG, 1._TKG), ZERO = (0._TKG, 0._TKG)
+        complex(TKG), allocatable :: cumSum_ref(:), cumSum(:), array(:), diff(:)
 #elif   RK_ENABLED
-#define TYPE_KIND real(TKC)
-        real(TKC), parameter :: TOL = epsilon(1._TKC) * 10._TKC
-        real(TKC), parameter :: LB = -1._TKC, UB = 1._TKC, ZERO = 0._TKC
-        real(TKC), allocatable :: cumSum_ref(:), cumSum(:), array(:), diff(:)
+#define TYPE_KIND real(TKG)
+        real(TKG), parameter :: TOL = epsilon(1._TKG) * 10._TKG
+        real(TKG), parameter :: LB = -1._TKG, UB = 1._TKG, ZERO = 0._TKG
+        real(TKG), allocatable :: cumSum_ref(:), cumSum(:), array(:), diff(:)
 #else
 #error  "Unrecognized interface."
 #endif

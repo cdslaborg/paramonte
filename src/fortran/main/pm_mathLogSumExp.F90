@@ -161,9 +161,9 @@ module pm_mathLogSumExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogSumExpDefSeq_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC), intent(in), contiguous    :: array(:)
-        complex(CKC)                            :: logSumExp
+        use pm_kind, only: CKG => CK5
+        complex(CKG), intent(in), contiguous    :: array(:)
+        complex(CKG)                            :: logSumExp
     end function
 #endif
 
@@ -172,9 +172,9 @@ module pm_mathLogSumExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogSumExpDefSeq_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC), intent(in), contiguous    :: array(:)
-        complex(CKC)                            :: logSumExp
+        use pm_kind, only: CKG => CK4
+        complex(CKG), intent(in), contiguous    :: array(:)
+        complex(CKG)                            :: logSumExp
     end function
 #endif
 
@@ -183,9 +183,9 @@ module pm_mathLogSumExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogSumExpDefSeq_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC), intent(in), contiguous    :: array(:)
-        complex(CKC)                            :: logSumExp
+        use pm_kind, only: CKG => CK3
+        complex(CKG), intent(in), contiguous    :: array(:)
+        complex(CKG)                            :: logSumExp
     end function
 #endif
 
@@ -194,9 +194,9 @@ module pm_mathLogSumExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogSumExpDefSeq_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC), intent(in), contiguous    :: array(:)
-        complex(CKC)                            :: logSumExp
+        use pm_kind, only: CKG => CK2
+        complex(CKG), intent(in), contiguous    :: array(:)
+        complex(CKG)                            :: logSumExp
     end function
 #endif
 
@@ -205,9 +205,9 @@ module pm_mathLogSumExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogSumExpDefSeq_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC), intent(in), contiguous    :: array(:)
-        complex(CKC)                            :: logSumExp
+        use pm_kind, only: CKG => CK1
+        complex(CKG), intent(in), contiguous    :: array(:)
+        complex(CKG)                            :: logSumExp
     end function
 #endif
 
@@ -218,9 +218,9 @@ module pm_mathLogSumExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogSumExpDefSeq_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(in), contiguous    :: array(:)
-        real(RKC)                               :: logSumExp
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(in), contiguous    :: array(:)
+        real(RKG)                               :: logSumExp
     end function
 #endif
 
@@ -229,9 +229,9 @@ module pm_mathLogSumExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogSumExpDefSeq_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(in), contiguous    :: array(:)
-        real(RKC)                               :: logSumExp
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(in), contiguous    :: array(:)
+        real(RKG)                               :: logSumExp
     end function
 #endif
 
@@ -240,9 +240,9 @@ module pm_mathLogSumExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogSumExpDefSeq_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(in), contiguous    :: array(:)
-        real(RKC)                               :: logSumExp
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(in), contiguous    :: array(:)
+        real(RKG)                               :: logSumExp
     end function
 #endif
 
@@ -251,9 +251,9 @@ module pm_mathLogSumExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogSumExpDefSeq_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(in), contiguous    :: array(:)
-        real(RKC)                               :: logSumExp
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(in), contiguous    :: array(:)
+        real(RKG)                               :: logSumExp
     end function
 #endif
 
@@ -262,9 +262,9 @@ module pm_mathLogSumExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogSumExpDefSeq_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(in), contiguous    :: array(:)
-        real(RKC)                               :: logSumExp
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(in), contiguous    :: array(:)
+        real(RKG)                               :: logSumExp
     end function
 #endif
 
@@ -285,10 +285,10 @@ module pm_mathLogSumExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogSumExpMaxSeq_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC), intent(in), contiguous    :: array(:)
-        complex(CKC), intent(in)                :: maxArray
-        complex(CKC)                            :: logSumExp
+        use pm_kind, only: CKG => CK5
+        complex(CKG), intent(in), contiguous    :: array(:)
+        complex(CKG), intent(in)                :: maxArray
+        complex(CKG)                            :: logSumExp
     end function
 #endif
 
@@ -297,10 +297,10 @@ module pm_mathLogSumExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogSumExpMaxSeq_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC), intent(in), contiguous    :: array(:)
-        complex(CKC), intent(in)                :: maxArray
-        complex(CKC)                            :: logSumExp
+        use pm_kind, only: CKG => CK4
+        complex(CKG), intent(in), contiguous    :: array(:)
+        complex(CKG), intent(in)                :: maxArray
+        complex(CKG)                            :: logSumExp
     end function
 #endif
 
@@ -309,10 +309,10 @@ module pm_mathLogSumExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogSumExpMaxSeq_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC), intent(in), contiguous    :: array(:)
-        complex(CKC), intent(in)                :: maxArray
-        complex(CKC)                            :: logSumExp
+        use pm_kind, only: CKG => CK3
+        complex(CKG), intent(in), contiguous    :: array(:)
+        complex(CKG), intent(in)                :: maxArray
+        complex(CKG)                            :: logSumExp
     end function
 #endif
 
@@ -321,10 +321,10 @@ module pm_mathLogSumExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogSumExpMaxSeq_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC), intent(in), contiguous    :: array(:)
-        complex(CKC), intent(in)                :: maxArray
-        complex(CKC)                            :: logSumExp
+        use pm_kind, only: CKG => CK2
+        complex(CKG), intent(in), contiguous    :: array(:)
+        complex(CKG), intent(in)                :: maxArray
+        complex(CKG)                            :: logSumExp
     end function
 #endif
 
@@ -333,10 +333,10 @@ module pm_mathLogSumExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogSumExpMaxSeq_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC), intent(in), contiguous    :: array(:)
-        complex(CKC), intent(in)                :: maxArray
-        complex(CKC)                            :: logSumExp
+        use pm_kind, only: CKG => CK1
+        complex(CKG), intent(in), contiguous    :: array(:)
+        complex(CKG), intent(in)                :: maxArray
+        complex(CKG)                            :: logSumExp
     end function
 #endif
 
@@ -347,10 +347,10 @@ module pm_mathLogSumExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogSumExpMaxSeq_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(in), contiguous    :: array(:)
-        real(RKC)   , intent(in)                :: maxArray
-        real(RKC)                               :: logSumExp
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(in), contiguous    :: array(:)
+        real(RKG)   , intent(in)                :: maxArray
+        real(RKG)                               :: logSumExp
     end function
 #endif
 
@@ -359,10 +359,10 @@ module pm_mathLogSumExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogSumExpMaxSeq_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(in), contiguous    :: array(:)
-        real(RKC)   , intent(in)                :: maxArray
-        real(RKC)                               :: logSumExp
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(in), contiguous    :: array(:)
+        real(RKG)   , intent(in)                :: maxArray
+        real(RKG)                               :: logSumExp
     end function
 #endif
 
@@ -371,10 +371,10 @@ module pm_mathLogSumExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogSumExpMaxSeq_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(in), contiguous    :: array(:)
-        real(RKC)   , intent(in)                :: maxArray
-        real(RKC)                               :: logSumExp
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(in), contiguous    :: array(:)
+        real(RKG)   , intent(in)                :: maxArray
+        real(RKG)                               :: logSumExp
     end function
 #endif
 
@@ -383,10 +383,10 @@ module pm_mathLogSumExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogSumExpMaxSeq_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(in), contiguous    :: array(:)
-        real(RKC)   , intent(in)                :: maxArray
-        real(RKC)                               :: logSumExp
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(in), contiguous    :: array(:)
+        real(RKG)   , intent(in)                :: maxArray
+        real(RKG)                               :: logSumExp
     end function
 #endif
 
@@ -395,10 +395,10 @@ module pm_mathLogSumExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogSumExpMaxSeq_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(in), contiguous    :: array(:)
-        real(RKC)   , intent(in)                :: maxArray
-        real(RKC)                               :: logSumExp
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(in), contiguous    :: array(:)
+        real(RKG)   , intent(in)                :: maxArray
+        real(RKG)                               :: logSumExp
     end function
 #endif
 
@@ -415,11 +415,11 @@ module pm_mathLogSumExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogSumExpMaxSel_CK5
 #endif
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
         type(selection_type), intent(in)                :: control
-        complex(CKC)        , intent(in), contiguous    :: array(:)
-        complex(CKC)        , intent(in)                :: maxArray
-        complex(CKC)                                    :: logSumExp
+        complex(CKG)        , intent(in), contiguous    :: array(:)
+        complex(CKG)        , intent(in)                :: maxArray
+        complex(CKG)                                    :: logSumExp
     end function
 #endif
 
@@ -428,11 +428,11 @@ module pm_mathLogSumExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogSumExpMaxSel_CK4
 #endif
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
         type(selection_type), intent(in)                :: control
-        complex(CKC)        , intent(in), contiguous    :: array(:)
-        complex(CKC)        , intent(in)                :: maxArray
-        complex(CKC)                                    :: logSumExp
+        complex(CKG)        , intent(in), contiguous    :: array(:)
+        complex(CKG)        , intent(in)                :: maxArray
+        complex(CKG)                                    :: logSumExp
     end function
 #endif
 
@@ -441,11 +441,11 @@ module pm_mathLogSumExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogSumExpMaxSel_CK3
 #endif
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
         type(selection_type), intent(in)                :: control
-        complex(CKC)        , intent(in), contiguous    :: array(:)
-        complex(CKC)        , intent(in)                :: maxArray
-        complex(CKC)                                    :: logSumExp
+        complex(CKG)        , intent(in), contiguous    :: array(:)
+        complex(CKG)        , intent(in)                :: maxArray
+        complex(CKG)                                    :: logSumExp
     end function
 #endif
 
@@ -454,11 +454,11 @@ module pm_mathLogSumExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogSumExpMaxSel_CK2
 #endif
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
         type(selection_type), intent(in)                :: control
-        complex(CKC)        , intent(in), contiguous    :: array(:)
-        complex(CKC)        , intent(in)                :: maxArray
-        complex(CKC)                                    :: logSumExp
+        complex(CKG)        , intent(in), contiguous    :: array(:)
+        complex(CKG)        , intent(in)                :: maxArray
+        complex(CKG)                                    :: logSumExp
     end function
 #endif
 
@@ -467,11 +467,11 @@ module pm_mathLogSumExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogSumExpMaxSel_CK1
 #endif
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
         type(selection_type), intent(in)                :: control
-        complex(CKC)        , intent(in), contiguous    :: array(:)
-        complex(CKC)        , intent(in)                :: maxArray
-        complex(CKC)                                    :: logSumExp
+        complex(CKG)        , intent(in), contiguous    :: array(:)
+        complex(CKG)        , intent(in)                :: maxArray
+        complex(CKG)                                    :: logSumExp
     end function
 #endif
 
@@ -482,11 +482,11 @@ module pm_mathLogSumExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogSumExpMaxSel_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         type(selection_type), intent(in)                :: control
-        real(RKC)           , intent(in), contiguous    :: array(:)
-        real(RKC)           , intent(in)                :: maxArray
-        real(RKC)                                       :: logSumExp
+        real(RKG)           , intent(in), contiguous    :: array(:)
+        real(RKG)           , intent(in)                :: maxArray
+        real(RKG)                                       :: logSumExp
     end function
 #endif
 
@@ -495,11 +495,11 @@ module pm_mathLogSumExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogSumExpMaxSel_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         type(selection_type), intent(in)                :: control
-        real(RKC)           , intent(in), contiguous    :: array(:)
-        real(RKC)           , intent(in)                :: maxArray
-        real(RKC)                                       :: logSumExp
+        real(RKG)           , intent(in), contiguous    :: array(:)
+        real(RKG)           , intent(in)                :: maxArray
+        real(RKG)                                       :: logSumExp
     end function
 #endif
 
@@ -508,11 +508,11 @@ module pm_mathLogSumExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogSumExpMaxSel_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         type(selection_type), intent(in)                :: control
-        real(RKC)           , intent(in), contiguous    :: array(:)
-        real(RKC)           , intent(in)                :: maxArray
-        real(RKC)                                       :: logSumExp
+        real(RKG)           , intent(in), contiguous    :: array(:)
+        real(RKG)           , intent(in)                :: maxArray
+        real(RKG)                                       :: logSumExp
     end function
 #endif
 
@@ -521,11 +521,11 @@ module pm_mathLogSumExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogSumExpMaxSel_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         type(selection_type), intent(in)                :: control
-        real(RKC)           , intent(in), contiguous    :: array(:)
-        real(RKC)           , intent(in)                :: maxArray
-        real(RKC)                                       :: logSumExp
+        real(RKG)           , intent(in), contiguous    :: array(:)
+        real(RKG)           , intent(in)                :: maxArray
+        real(RKG)                                       :: logSumExp
     end function
 #endif
 
@@ -534,11 +534,11 @@ module pm_mathLogSumExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogSumExpMaxSel_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         type(selection_type), intent(in)                :: control
-        real(RKC)           , intent(in), contiguous    :: array(:)
-        real(RKC)           , intent(in)                :: maxArray
-        real(RKC)                                       :: logSumExp
+        real(RKG)           , intent(in), contiguous    :: array(:)
+        real(RKG)           , intent(in)                :: maxArray
+        real(RKG)                                       :: logSumExp
     end function
 #endif
 

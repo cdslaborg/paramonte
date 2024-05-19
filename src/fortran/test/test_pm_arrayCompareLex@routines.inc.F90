@@ -42,22 +42,22 @@
 
 #if     test_llt_D0_D0_SK_ENABLED || test_lle_D0_D0_SK_ENABLED || test_lge_D0_D0_SK_ENABLED || test_lgt_D0_D0_SK_ENABLED
 #define test_D0_D0_SK_ENABLED 1
-        character(:,SKC), allocatable   :: array1, array2
+        character(:,SKG), allocatable   :: array1, array2
 #elif   test_llt_D1_D1_SK_ENABLED || test_lle_D1_D1_SK_ENABLED || test_lge_D1_D1_SK_ENABLED || test_lgt_D1_D1_SK_ENABLED
 #define test_D1_D1_SK_ENABLED 1
-        character(2,SKC), allocatable   :: array1(:), array2(:)
+        character(2,SKG), allocatable   :: array1(:), array2(:)
 #elif   test_llt_D1_D1_LK_ENABLED || test_lle_D1_D1_LK_ENABLED || test_lge_D1_D1_LK_ENABLED || test_lgt_D1_D1_LK_ENABLED
 #define test_D1_D1_LK_ENABLED 1
-        logical(LKC)    , allocatable   :: array1(:), array2(:)
+        logical(LKG)    , allocatable   :: array1(:), array2(:)
 #elif   test_llt_D1_D1_IK_ENABLED || test_lle_D1_D1_IK_ENABLED || test_lge_D1_D1_IK_ENABLED || test_lgt_D1_D1_IK_ENABLED
 #define test_D1_D1_IK_ENABLED 1
-        integer(IKC)    , allocatable   :: array1(:), array2(:)
+        integer(IKG)    , allocatable   :: array1(:), array2(:)
 #elif   test_llt_D1_D1_CK_ENABLED || test_lle_D1_D1_CK_ENABLED || test_lge_D1_D1_CK_ENABLED || test_lgt_D1_D1_CK_ENABLED
 #define test_D1_D1_CK_ENABLED 1
-        complex(CKC)    , allocatable   :: array1(:), array2(:)
+        complex(CKG)    , allocatable   :: array1(:), array2(:)
 #elif   test_llt_D1_D1_RK_ENABLED || test_lle_D1_D1_RK_ENABLED || test_lge_D1_D1_RK_ENABLED || test_lgt_D1_D1_RK_ENABLED
 #define test_D1_D1_RK_ENABLED 1
-        real(RKC)       , allocatable   :: array1(:), array2(:)
+        real(RKG)       , allocatable   :: array1(:), array2(:)
 #else
 #error  "Unrecognized interface."
 #endif
@@ -67,23 +67,23 @@
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #if     test_D0_D0_SK_ENABLED
-        array1 = SKC_"A"
-        array2 = SKC_"A"
+        array1 = SKG_"A"
+        array2 = SKG_"A"
 #elif   test_D1_D1_SK_ENABLED
-        array1 = [SKC_"AA"]
-        array2 = [SKC_"AA"]
+        array1 = [SKG_"AA"]
+        array2 = [SKG_"AA"]
 #elif   test_D1_D1_LK_ENABLED
-        array1 = [.false._LKC]
-        array2 = [.false._LKC]
+        array1 = [.false._LKG]
+        array2 = [.false._LKG]
 #elif   test_D1_D1_IK_ENABLED
-        array1 = [0_IKC]
-        array2 = [0_IKC]
+        array1 = [0_IKG]
+        array2 = [0_IKG]
 #elif   test_D1_D1_RK_ENABLED
-        array1 = [0._RKC]
-        array2 = [0._RKC]
+        array1 = [0._RKG]
+        array2 = [0._RKG]
 #elif   test_D1_D1_CK_ENABLED
-        array1 = [(0._CKC, 0._CKC)]
-        array2 = [(0._CKC, 0._CKC)]
+        array1 = [(0._CKG, 0._CKG)]
+        array2 = [(0._CKG, 0._CKG)]
 #endif
 
 #if     test_llt_ENABLED
@@ -102,23 +102,23 @@
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #if     test_D0_D0_SK_ENABLED
-        array1 = SKC_"A"
-        array2 = SKC_"B"
+        array1 = SKG_"A"
+        array2 = SKG_"B"
 #elif   test_D1_D1_SK_ENABLED
-        array1 = [SKC_"AA"]
-        array2 = [SKC_"BB"]
+        array1 = [SKG_"AA"]
+        array2 = [SKG_"BB"]
 #elif   test_D1_D1_LK_ENABLED
-        array1 = [.false._LKC]
-        array2 = [.true._LKC]
+        array1 = [.false._LKG]
+        array2 = [.true._LKG]
 #elif   test_D1_D1_IK_ENABLED
-        array1 = [0_IKC]
-        array2 = [1_IKC]
+        array1 = [0_IKG]
+        array2 = [1_IKG]
 #elif   test_D1_D1_RK_ENABLED
-        array1 = [0._RKC]
-        array2 = [1._RKC]
+        array1 = [0._RKG]
+        array2 = [1._RKG]
 #elif   test_D1_D1_CK_ENABLED
-        array1 = [(0._CKC, 0._CKC)]
-        array2 = [(1._CKC, 1._CKC)]
+        array1 = [(0._CKG, 0._CKG)]
+        array2 = [(1._CKG, 1._CKG)]
 #endif
 
 #if     test_llt_ENABLED
@@ -137,23 +137,23 @@
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #if     test_D0_D0_SK_ENABLED
-        array1 = SKC_"A"
-        array2 = SKC_"A "
+        array1 = SKG_"A"
+        array2 = SKG_"A "
 #elif   test_D1_D1_SK_ENABLED
-        array1 = [SKC_"AA"]
-        array2 = [SKC_"AA", SKC_"AA"]
+        array1 = [SKG_"AA"]
+        array2 = [SKG_"AA", SKG_"AA"]
 #elif   test_D1_D1_LK_ENABLED
-        array1 = [.false._LKC]
-        array2 = [.false._LKC, .false._LKC]
+        array1 = [.false._LKG]
+        array2 = [.false._LKG, .false._LKG]
 #elif   test_D1_D1_IK_ENABLED
-        array1 = [0_IKC]
-        array2 = [0_IKC, 0_IKC]
+        array1 = [0_IKG]
+        array2 = [0_IKG, 0_IKG]
 #elif   test_D1_D1_RK_ENABLED
-        array1 = [0._RKC]
-        array2 = [0._RKC, 0._RKC]
+        array1 = [0._RKG]
+        array2 = [0._RKG, 0._RKG]
 #elif   test_D1_D1_CK_ENABLED
-        array1 = [(0._CKC, 0._CKC)]
-        array2 = [(0._CKC, 0._CKC), (0._CKC, 0._CKC)]
+        array1 = [(0._CKG, 0._CKG)]
+        array2 = [(0._CKG, 0._CKG), (0._CKG, 0._CKG)]
 #endif
 
 #if     test_llt_ENABLED
@@ -172,23 +172,23 @@
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #if     test_D0_D0_SK_ENABLED
-        array1 = SKC_"A"
-        array2 = SKC_"A "
+        array1 = SKG_"A"
+        array2 = SKG_"A "
 #elif   test_D1_D1_SK_ENABLED
-        array1 = [SKC_"AA"]
-        array2 = [SKC_"AA", SKC_"AA"]
+        array1 = [SKG_"AA"]
+        array2 = [SKG_"AA", SKG_"AA"]
 #elif   test_D1_D1_LK_ENABLED
-        array1 = [.false._LKC]
-        array2 = [.false._LKC, .false._LKC]
+        array1 = [.false._LKG]
+        array2 = [.false._LKG, .false._LKG]
 #elif   test_D1_D1_IK_ENABLED
-        array1 = [0_IKC]
-        array2 = [0_IKC, 0_IKC]
+        array1 = [0_IKG]
+        array2 = [0_IKG, 0_IKG]
 #elif   test_D1_D1_RK_ENABLED
-        array1 = [0._RKC]
-        array2 = [0._RKC, 0._RKC]
+        array1 = [0._RKG]
+        array2 = [0._RKG, 0._RKG]
 #elif   test_D1_D1_CK_ENABLED
-        array1 = [(0._CKC, 0._CKC)]
-        array2 = [(0._CKC, 0._CKC), (0._CKC, 0._CKC)]
+        array1 = [(0._CKG, 0._CKG)]
+        array2 = [(0._CKG, 0._CKG), (0._CKG, 0._CKG)]
 #endif
 
 #if     test_llt_ENABLED
@@ -207,23 +207,23 @@
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #if     test_D0_D0_SK_ENABLED
-        array1 = SKC_"A "
-        array2 = SKC_"A"
+        array1 = SKG_"A "
+        array2 = SKG_"A"
 #elif   test_D1_D1_SK_ENABLED
-        array1 = [SKC_"AA", SKC_"AA"]
-        array2 = [SKC_"AA"]
+        array1 = [SKG_"AA", SKG_"AA"]
+        array2 = [SKG_"AA"]
 #elif   test_D1_D1_LK_ENABLED
-        array1 = [.false._LKC, .false._LKC]
-        array2 = [.false._LKC]
+        array1 = [.false._LKG, .false._LKG]
+        array2 = [.false._LKG]
 #elif   test_D1_D1_IK_ENABLED
-        array1 = [0_IKC, 0_IKC]
-        array2 = [0_IKC]
+        array1 = [0_IKG, 0_IKG]
+        array2 = [0_IKG]
 #elif   test_D1_D1_RK_ENABLED
-        array1 = [0._RKC, 0._RKC]
-        array2 = [0._RKC]
+        array1 = [0._RKG, 0._RKG]
+        array2 = [0._RKG]
 #elif   test_D1_D1_CK_ENABLED
-        array1 = [(0._CKC, 0._CKC), (0._CKC, 0._CKC)]
-        array2 = [(0._CKC, 0._CKC)]
+        array1 = [(0._CKG, 0._CKG), (0._CKG, 0._CKG)]
+        array2 = [(0._CKG, 0._CKG)]
 #endif
 
 #if     test_llt_ENABLED
@@ -242,23 +242,23 @@
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #if     test_D0_D0_SK_ENABLED
-        array1 = SKC_"AA"
-        array2 = SKC_"AB"
+        array1 = SKG_"AA"
+        array2 = SKG_"AB"
 #elif   test_D1_D1_SK_ENABLED
-        array1 = [SKC_"AA"]
-        array2 = [SKC_"AA", SKC_"AB"]
+        array1 = [SKG_"AA"]
+        array2 = [SKG_"AA", SKG_"AB"]
 #elif   test_D1_D1_LK_ENABLED 
-        array1 = [.false._LKC, .false._LKC]
-        array2 = [.false._LKC, .true._LKC]
+        array1 = [.false._LKG, .false._LKG]
+        array2 = [.false._LKG, .true._LKG]
 #elif   test_D1_D1_IK_ENABLED
-        array1 = [0_IKC, 0_IKC]
-        array2 = [0_IKC, 1_IKC]
+        array1 = [0_IKG, 0_IKG]
+        array2 = [0_IKG, 1_IKG]
 #elif   test_D1_D1_RK_ENABLED
-        array1 = [0._RKC, 0._RKC]
-        array2 = [0._RKC, 1._RKC]
+        array1 = [0._RKG, 0._RKG]
+        array2 = [0._RKG, 1._RKG]
 #elif   test_D1_D1_CK_ENABLED
-        array1 = [(0._CKC, 0._CKC), (0._CKC, 0._CKC)]
-        array2 = [(0._CKC, 0._CKC), (0._CKC, 1._CKC)]
+        array1 = [(0._CKG, 0._CKG), (0._CKG, 0._CKG)]
+        array2 = [(0._CKG, 0._CKG), (0._CKG, 1._CKG)]
 #endif
 
 #if     test_llt_ENABLED
@@ -277,23 +277,23 @@
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #if     test_D0_D0_SK_ENABLED
-        array1 = SKC_"AB"
-        array2 = SKC_"AA"
+        array1 = SKG_"AB"
+        array2 = SKG_"AA"
 #elif   test_D1_D1_SK_ENABLED
-        array1 = [SKC_"AA", SKC_"AB"]
-        array2 = [SKC_"AA"]
+        array1 = [SKG_"AA", SKG_"AB"]
+        array2 = [SKG_"AA"]
 #elif   test_D1_D1_LK_ENABLED
-        array1 = [.false._LKC, .true._LKC]
-        array2 = [.false._LKC, .false._LKC]
+        array1 = [.false._LKG, .true._LKG]
+        array2 = [.false._LKG, .false._LKG]
 #elif   test_D1_D1_IK_ENABLED
-        array1 = [0_IKC, 1_IKC]
-        array2 = [0_IKC, 0_IKC]
+        array1 = [0_IKG, 1_IKG]
+        array2 = [0_IKG, 0_IKG]
 #elif   test_D1_D1_RK_ENABLED
-        array1 = [0._RKC, 1._RKC]
-        array2 = [0._RKC, 0._RKC]
+        array1 = [0._RKG, 1._RKG]
+        array2 = [0._RKG, 0._RKG]
 #elif   test_D1_D1_CK_ENABLED
-        array1 = [(0._CKC, 0._CKC), (0._CKC, 1._CKC)]
-        array2 = [(0._CKC, 0._CKC), (0._CKC, 0._CKC)]
+        array1 = [(0._CKG, 0._CKG), (0._CKG, 1._CKG)]
+        array2 = [(0._CKG, 0._CKG), (0._CKG, 0._CKG)]
 #endif
 
 #if     test_llt_ENABLED

@@ -1,7 +1,7 @@
 program example
 
     use pm_kind, only: SK, IK, RK
-    use pm_kind, only: RKC => RKS ! All other real types are also supported.
+    use pm_kind, only: RKG => RKS ! All other real types are also supported.
     use pm_sampleMean, only: getMean
     use pm_sampleMean, only: getMeanMerged
     use pm_arrayRebind, only: setRebound
@@ -26,9 +26,9 @@ program example
     call disp%skip()
 
     block
-        real(RKC) :: mean(0:nsam), meanMerged
-        real(RKC), allocatable :: sample(:)
-        real(RKC), allocatable :: rweight(:)
+        real(RKG) :: mean(0:nsam), meanMerged
+        real(RKG), allocatable :: sample(:)
+        real(RKG), allocatable :: rweight(:)
         do itry = 1, ntry
             call disp%skip()
             call disp%show("lb(1) = 1; ub(1) = getUnifRand(1, 7)")
@@ -59,8 +59,8 @@ program example
                             do isam = 1, nsam
                                 mean(isam) = getMean(sample(lb(isam):ub(isam)))
                             end do
-            call disp%show("meanMerged = getMeanMerged(mean(2), mean(1), ub(1) / real(ub(2), RKC))")
-                            meanMerged = getMeanMerged(mean(2), mean(1), ub(1) / real(ub(2), RKC))
+            call disp%show("meanMerged = getMeanMerged(mean(2), mean(1), ub(1) / real(ub(2), RKG))")
+                            meanMerged = getMeanMerged(mean(2), mean(1), ub(1) / real(ub(2), RKG))
             call disp%show("meanMerged")
             call disp%show( meanMerged )
             call disp%show("mean(0) ! reference")
@@ -76,9 +76,9 @@ program example
     call disp%skip()
 
     block
-        real(RKC) :: mean(0:nsam), meanMerged
-        real(RKC), allocatable :: sample(:)
-        real(RKC), allocatable :: rweight(:)
+        real(RKG) :: mean(0:nsam), meanMerged
+        real(RKG), allocatable :: sample(:)
+        real(RKG), allocatable :: rweight(:)
         do itry = 1, ntry
             call disp%skip()
             call disp%show("lb(1) = 1; ub(1) = getUnifRand(1, 7)")
@@ -113,8 +113,8 @@ program example
                             do isam = 1, nsam
                                 mean(isam) = getMean(sample(lb(isam):ub(isam)), iweight(lb(isam):ub(isam)))
                             end do
-            call disp%show("meanMerged = getMeanMerged(mean(2), mean(1), real(sum(iweight(:ub(1))), RKC) / real(sum(iweight), RKC))")
-                            meanMerged = getMeanMerged(mean(2), mean(1), real(sum(iweight(:ub(1))), RKC) / real(sum(iweight), RKC))
+            call disp%show("meanMerged = getMeanMerged(mean(2), mean(1), real(sum(iweight(:ub(1))), RKG) / real(sum(iweight), RKG))")
+                            meanMerged = getMeanMerged(mean(2), mean(1), real(sum(iweight(:ub(1))), RKG) / real(sum(iweight), RKG))
             call disp%show("meanMerged")
             call disp%show( meanMerged )
             call disp%show("mean(0) ! reference")
@@ -130,9 +130,9 @@ program example
     call disp%skip()
 
     block
-        real(RKC) :: mean(0:nsam), meanMerged
-        real(RKC), allocatable :: sample(:)
-        real(RKC), allocatable :: rweight(:)
+        real(RKG) :: mean(0:nsam), meanMerged
+        real(RKG), allocatable :: sample(:)
+        real(RKG), allocatable :: rweight(:)
         do itry = 1, ntry
             call disp%skip()
             call disp%show("lb(1) = 1; ub(1) = getUnifRand(1, 7)")
@@ -167,8 +167,8 @@ program example
                             do isam = 1, nsam
                                 mean(isam) = getMean(sample(lb(isam):ub(isam)), rweight(lb(isam):ub(isam)))
                             end do
-            call disp%show("meanMerged = getMeanMerged(mean(2), mean(1), real(sum(rweight(:ub(1))) / sum(rweight), RKC))")
-                            meanMerged = getMeanMerged(mean(2), mean(1), real(sum(rweight(:ub(1))) / sum(rweight), RKC))
+            call disp%show("meanMerged = getMeanMerged(mean(2), mean(1), real(sum(rweight(:ub(1))) / sum(rweight), RKG))")
+                            meanMerged = getMeanMerged(mean(2), mean(1), real(sum(rweight(:ub(1))) / sum(rweight), RKG))
             call disp%show("meanMerged")
             call disp%show( meanMerged )
             call disp%show("mean(0) ! reference")
@@ -184,9 +184,9 @@ program example
     call disp%skip()
 
     block
-        real(RKC), allocatable :: mean(:,:), meanMerged(:)
-        real(RKC), allocatable :: sample(:,:)
-        real(RKC), allocatable :: rweight(:)
+        real(RKG), allocatable :: mean(:,:), meanMerged(:)
+        real(RKG), allocatable :: sample(:,:)
+        real(RKG), allocatable :: rweight(:)
         do itry = 1, ntry
             call disp%skip()
             call disp%show("dim = 2; lb(1) = 1; ub(1) = getUnifRand(1, 7)")
@@ -223,8 +223,8 @@ program example
                             do isam = 1, nsam
                                 mean(:,isam) = getMean(sample(:,lb(isam):ub(isam)), dim)
                             end do
-            call disp%show("meanMerged = getMeanMerged(mean(:,2), mean(:,1), real(ub(1), RKC) / real(ub(2), RKC))")
-                            meanMerged = getMeanMerged(mean(:,2), mean(:,1), real(ub(1), RKC) / real(ub(2), RKC))
+            call disp%show("meanMerged = getMeanMerged(mean(:,2), mean(:,1), real(ub(1), RKG) / real(ub(2), RKG))")
+                            meanMerged = getMeanMerged(mean(:,2), mean(:,1), real(ub(1), RKG) / real(ub(2), RKG))
             call disp%show("meanMerged")
             call disp%show( meanMerged )
             call disp%show("mean(:,0) ! reference")
@@ -240,9 +240,9 @@ program example
     call disp%skip()
 
     block
-        real(RKC), allocatable :: mean(:,:), meanMerged(:)
-        real(RKC), allocatable :: sample(:,:)
-        real(RKC), allocatable :: rweight(:)
+        real(RKG), allocatable :: mean(:,:), meanMerged(:)
+        real(RKG), allocatable :: sample(:,:)
+        real(RKG), allocatable :: rweight(:)
         do itry = 1, ntry
             call disp%skip()
             call disp%show("dim = 2; lb(1) = 1; ub(1) = getUnifRand(1, 7)")
@@ -283,8 +283,8 @@ program example
                             do isam = 1, nsam
                                 mean(:,isam) = getMean(sample(:,lb(isam):ub(isam)), 2_IK, iweight(lb(isam):ub(isam)))
                             end do
-            call disp%show("meanMerged = getMeanMerged(mean(:,2), mean(:,1), real(sum(iweight(:ub(1))), RKC) / real(sum(iweight), RKC))")
-                            meanMerged = getMeanMerged(mean(:,2), mean(:,1), real(sum(iweight(:ub(1))), RKC) / real(sum(iweight), RKC))
+            call disp%show("meanMerged = getMeanMerged(mean(:,2), mean(:,1), real(sum(iweight(:ub(1))), RKG) / real(sum(iweight), RKG))")
+                            meanMerged = getMeanMerged(mean(:,2), mean(:,1), real(sum(iweight(:ub(1))), RKG) / real(sum(iweight), RKG))
             call disp%show("meanMerged")
             call disp%show( meanMerged )
             call disp%show("mean(:,0) ! reference")
@@ -300,9 +300,9 @@ program example
     call disp%skip()
 
     block
-        real(RKC), allocatable :: mean(:,:), meanMerged(:)
-        real(RKC), allocatable :: sample(:,:)
-        real(RKC), allocatable :: rweight(:)
+        real(RKG), allocatable :: mean(:,:), meanMerged(:)
+        real(RKG), allocatable :: sample(:,:)
+        real(RKG), allocatable :: rweight(:)
         do itry = 1, ntry
             call disp%skip()
             call disp%show("lb(1) = 1; ub(1) = getUnifRand(1, 7)")
@@ -343,8 +343,8 @@ program example
                             do isam = 1, nsam
                                 mean(:,isam) = getMean(sample(:,lb(isam):ub(isam)), dim, rweight(lb(isam):ub(isam)))
                             end do
-            call disp%show("meanMerged = getMeanMerged(mean(:,2), mean(:,1), real(sum(rweight(:ub(1))) / sum(rweight), RKC))")
-                            meanMerged = getMeanMerged(mean(:,2), mean(:,1), real(sum(rweight(:ub(1))) / sum(rweight), RKC))
+            call disp%show("meanMerged = getMeanMerged(mean(:,2), mean(:,1), real(sum(rweight(:ub(1))) / sum(rweight), RKG))")
+                            meanMerged = getMeanMerged(mean(:,2), mean(:,1), real(sum(rweight(:ub(1))) / sum(rweight), RKG))
             call disp%show("meanMerged")
             call disp%show( meanMerged )
             call disp%show("mean(:,0) ! reference")

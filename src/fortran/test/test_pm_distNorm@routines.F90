@@ -41,35 +41,35 @@ contains
 
 #if RK5_ENABLED
     module procedure test_getNormCDF_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "test_pm_distNorm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure test_getNormCDF_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "test_pm_distNorm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure test_getNormCDF_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "test_pm_distNorm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure test_getNormCDF_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "test_pm_distNorm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure test_getNormCDF_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "test_pm_distNorm@routines.inc.F90"
     end procedure
 #endif
@@ -90,35 +90,35 @@ contains
 
 #if RK5_ENABLED
     module procedure test_setNormCDF_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "test_pm_distNorm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure test_setNormCDF_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "test_pm_distNorm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure test_setNormCDF_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "test_pm_distNorm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure test_setNormCDF_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "test_pm_distNorm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure test_setNormCDF_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "test_pm_distNorm@routines.inc.F90"
     end procedure
 #endif
@@ -139,35 +139,35 @@ contains
 
 #if RK5_ENABLED
     module procedure test_getNormLogPDF_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "test_pm_distNorm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure test_getNormLogPDF_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "test_pm_distNorm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure test_getNormLogPDF_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "test_pm_distNorm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure test_getNormLogPDF_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "test_pm_distNorm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure test_getNormLogPDF_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "test_pm_distNorm@routines.inc.F90"
     end procedure
 #endif
@@ -188,35 +188,35 @@ contains
 
 #if RK5_ENABLED
     module procedure test_setNormLogPDF_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "test_pm_distNorm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure test_setNormLogPDF_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "test_pm_distNorm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure test_setNormLogPDF_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "test_pm_distNorm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure test_setNormLogPDF_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "test_pm_distNorm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure test_setNormLogPDF_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "test_pm_distNorm@routines.inc.F90"
     end procedure
 #endif
@@ -237,35 +237,35 @@ contains
 
 #if RK5_ENABLED
     module procedure test_getNormRand_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "test_pm_distNorm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure test_getNormRand_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "test_pm_distNorm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure test_getNormRand_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "test_pm_distNorm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure test_getNormRand_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "test_pm_distNorm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure test_getNormRand_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "test_pm_distNorm@routines.inc.F90"
     end procedure
 #endif
@@ -286,35 +286,35 @@ contains
 
 #if RK5_ENABLED
     module procedure test_setNormRand_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "test_pm_distNorm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure test_setNormRand_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "test_pm_distNorm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure test_setNormRand_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "test_pm_distNorm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure test_setNormRand_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "test_pm_distNorm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure test_setNormRand_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "test_pm_distNorm@routines.inc.F90"
     end procedure
 #endif
@@ -335,35 +335,35 @@ contains
 
 #if RK5_ENABLED
     module procedure test_getNormQuan_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "test_pm_distNorm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure test_getNormQuan_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "test_pm_distNorm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure test_getNormQuan_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "test_pm_distNorm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure test_getNormQuan_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "test_pm_distNorm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure test_getNormQuan_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "test_pm_distNorm@routines.inc.F90"
     end procedure
 #endif
@@ -384,35 +384,35 @@ contains
 
 #if RK5_ENABLED
     module procedure test_setNormQuan_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "test_pm_distNorm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure test_setNormQuan_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "test_pm_distNorm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure test_setNormQuan_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "test_pm_distNorm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure test_setNormQuan_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "test_pm_distNorm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure test_setNormQuan_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "test_pm_distNorm@routines.inc.F90"
     end procedure
 #endif
@@ -433,35 +433,35 @@ contains
 
 #if RK5_ENABLED
     module procedure test_getNormEntropy_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "test_pm_distNorm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure test_getNormEntropy_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "test_pm_distNorm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure test_getNormEntropy_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "test_pm_distNorm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure test_getNormEntropy_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "test_pm_distNorm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure test_getNormEntropy_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "test_pm_distNorm@routines.inc.F90"
     end procedure
 #endif
@@ -482,35 +482,35 @@ contains
 
 #if RK5_ENABLED
     module procedure test_getNormFisher_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "test_pm_distNorm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure test_getNormFisher_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "test_pm_distNorm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure test_getNormFisher_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "test_pm_distNorm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure test_getNormFisher_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "test_pm_distNorm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure test_getNormFisher_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "test_pm_distNorm@routines.inc.F90"
     end procedure
 #endif
@@ -531,35 +531,35 @@ contains
 
 #if RK5_ENABLED
     module procedure test_getNormKLD_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "test_pm_distNorm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure test_getNormKLD_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "test_pm_distNorm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure test_getNormKLD_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "test_pm_distNorm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure test_getNormKLD_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "test_pm_distNorm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure test_getNormKLD_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "test_pm_distNorm@routines.inc.F90"
     end procedure
 #endif

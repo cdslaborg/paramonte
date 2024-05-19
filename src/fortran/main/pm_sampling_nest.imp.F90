@@ -19,13 +19,13 @@
     use pm_except, only: setNAN
     use pm_val2str, only: getStr
     use pm_strASCII, only: getStrLower
-    use pm_kind, only: SKC => SK, SK, IK, LK
+    use pm_kind, only: SKG => SK, SK, IK, LK
     use pm_sampling_base, only: specbase_type, astatbase_type, sfcbase_type, NL2, NL1
     use pm_sampling_scio, only: cfcnest_type
 
     implicit none
 
-    character(*,SKC)    , parameter         :: MODULE_NAME = SK_"@pm_sampling_nest"
+    character(*,SKG)    , parameter         :: MODULE_NAME = SK_"@pm_sampling_nest"
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     ! simulation declarations.
@@ -51,96 +51,96 @@
         integer(IK)                     :: val
         integer(IK)                     :: def
         integer(IK)                     :: null
-        character(:,SKC), allocatable   :: desc
+        character(:,SKG), allocatable   :: desc
     end type
 
     type                                :: domainPartitionAdaptationPeriod_type
         integer(IK)                     :: val
         integer(IK)                     :: def
         integer(IK)                     :: null
-        character(:,SKC), allocatable   :: desc
+        character(:,SKG), allocatable   :: desc
     end type
 
     type                                :: domainPartitionBiasCorrectionEnabled_type
         logical(LK)                     :: val
         logical(LK)                     :: def
-        character(:,SKC), allocatable   :: desc
+        character(:,SKG), allocatable   :: desc
     end type
 
     type                                :: domainPartitionCountMax_type
         integer(IK)                     :: val
         integer(IK)                     :: def
         integer(IK)                     :: null
-        character(:,SKC), allocatable   :: desc
+        character(:,SKG), allocatable   :: desc
     end type
 
     type                                :: domainPartitionFactorExpansion_type
-        real(RKC)                       :: val
-        real(RKC)                       :: def
-       !real(RKC)                       :: null
-        character(:,SKC), allocatable   :: desc
+        real(RKG)                       :: val
+        real(RKG)                       :: def
+       !real(RKG)                       :: null
+        character(:,SKG), allocatable   :: desc
     end type
 
     type                                :: domainPartitionFactorShrinkage_type
-        real(RKC)                       :: val
-        real(RKC)                       :: def
-       !real(RKC)                       :: null
-        character(:,SKC), allocatable   :: desc
+        real(RKG)                       :: val
+        real(RKG)                       :: def
+       !real(RKG)                       :: null
+        character(:,SKG), allocatable   :: desc
     end type
 
     type                                :: domainPartitionKmeansClusterCountMax_type
         integer(IK)                     :: val
         integer(IK)                     :: def
         integer(IK)                     :: null
-        character(:,SKC), allocatable   :: desc
+        character(:,SKG), allocatable   :: desc
     end type
 
     type                                :: domainPartitionKmeansClusterSizeMin_type
         integer(IK)                     :: val
         integer(IK)                     :: def
         integer(IK)                     :: null
-        character(:,SKC), allocatable   :: desc
+        character(:,SKG), allocatable   :: desc
     end type
 
     type                                :: domainPartitionKmeansNormalizationEnabled_type
         logical(LK)                     :: val
         logical(LK)                     :: def
-        character(:,SKC), allocatable   :: desc
+        character(:,SKG), allocatable   :: desc
     end type
 
     type                                :: domainPartitionKmeansNumFailMax_type
         integer(IK)                     :: val
         integer(IK)                     :: def
         integer(IK)                     :: null
-        character(:,SKC), allocatable   :: desc
+        character(:,SKG), allocatable   :: desc
     end type
 
     type                                :: domainPartitionKmeansNumRecursionMax_type
         integer(IK)                     :: val
         integer(IK)                     :: def
         integer(IK)                     :: null
-        character(:,SKC), allocatable   :: desc
+        character(:,SKG), allocatable   :: desc
     end type
 
     type                                :: domainPartitionKmeansNumTry_type
         integer(IK)                     :: val
         integer(IK)                     :: def
         integer(IK)                     :: null
-        character(:,SKC), allocatable   :: desc
+        character(:,SKG), allocatable   :: desc
     end type
 
     type                                :: domainPartitionKvolumeNumRecursionMax_type
         integer(IK)                     :: val
         integer(IK)                     :: def
         integer(IK)                     :: null
-        character(:,SKC), allocatable   :: desc
+        character(:,SKG), allocatable   :: desc
     end type
 
     type                                :: domainPartitionKvolumeWeightExponent_type
-        real(RKC)                       :: val
-        real(RKC)                       :: def
-       !real(RKC)                       :: null
-        character(:,SKC), allocatable   :: desc
+        real(RKG)                       :: val
+        real(RKG)                       :: def
+       !real(RKG)                       :: null
+        character(:,SKG), allocatable   :: desc
     end type
 
     type                                :: domainPartitionMethod_type
@@ -148,70 +148,70 @@
         logical(LK)                     :: isDynesty = .false._LK
         logical(LK)                     :: isMinVol = .false._LK
         logical(LK)                     :: isMaxDen = .false._LK
-        character(9,SKC)                :: multinest = SKC_"multinest"
-        character(7,SKC)                :: dynesty = SKC_"dynesty"
-        character(7,SKC)                :: minvol = SKC_"minvol"
-        character(7,SKC)                :: maxden = SKC_"maxden"
-        character(:,SKC), allocatable   :: val
-        character(:,SKC), allocatable   :: def
-        character(:,SKC), allocatable   :: null
-        character(:,SKC), allocatable   :: desc
+        character(9,SKG)                :: multinest = SKG_"multinest"
+        character(7,SKG)                :: dynesty = SKG_"dynesty"
+        character(7,SKG)                :: minvol = SKG_"minvol"
+        character(7,SKG)                :: maxden = SKG_"maxden"
+        character(:,SKG), allocatable   :: val
+        character(:,SKG), allocatable   :: def
+        character(:,SKG), allocatable   :: null
+        character(:,SKG), allocatable   :: desc
     end type
 
     type                                :: domainPartitionObject_type
         logical(LK)                     :: isBall = .false._LK
-        character(:,SKC), allocatable   :: val
-        character(:,SKC), allocatable   :: def
-        character(:,SKC), allocatable   :: null
-        character(:,SKC), allocatable   :: desc
+        character(:,SKG), allocatable   :: val
+        character(:,SKG), allocatable   :: def
+        character(:,SKG), allocatable   :: null
+        character(:,SKG), allocatable   :: desc
     end type
 
     type                                :: domainPartitionOptimizationScaleEnabled_type
         logical(LK)                     :: val
         logical(LK)                     :: def
-        character(:,SKC), allocatable   :: desc
+        character(:,SKG), allocatable   :: desc
     end type
 
     type                                :: domainPartitionOptimizationShapeEnabled_type
         logical(LK)                     :: val
         logical(LK)                     :: def
-        character(:,SKC), allocatable   :: desc
+        character(:,SKG), allocatable   :: desc
     end type
 
     type                                :: domainPartitionOptimizationShapeScaleEnabled_type
         logical(LK)                     :: val
         logical(LK)                     :: def
-        character(:,SKC), allocatable   :: desc
+        character(:,SKG), allocatable   :: desc
     end type
 
     type                                :: domainPartitionScaleFactor_type
-        real(RKC)                       :: val
-        real(RKC)                       :: def
-       !real(RKC)                       :: null
-        character(:,SKC), allocatable   :: desc
+        real(RKG)                       :: val
+        real(RKG)                       :: def
+       !real(RKG)                       :: null
+        character(:,SKG), allocatable   :: desc
     end type
 
     type                                :: domainSampler_type
         logical(LK)                     :: isRejection
-        character(:,SKC), allocatable   :: val
-        character(:,SKC), allocatable   :: def
-        character(:,SKC), allocatable   :: null
-        character(:,SKC), allocatable   :: desc
+        character(:,SKG), allocatable   :: val
+        character(:,SKG), allocatable   :: def
+        character(:,SKG), allocatable   :: null
+        character(:,SKG), allocatable   :: desc
     end type
 
     type                                :: liveSampleSize_type
-        real(RKC)                       :: log
+        real(RKG)                       :: log
         integer(IK)                     :: val
         integer(IK)                     :: def
         integer(IK)                     :: null
-        character(:,SKC), allocatable   :: desc
+        character(:,SKG), allocatable   :: desc
     end type
 
     type                                :: tolerance_type
-        real(RKC)                       :: val
-        real(RKC)                       :: def
-       !real(RKC)                       :: null
-        character(:,SKC), allocatable   :: desc
+        real(RKG)                       :: val
+        real(RKG)                       :: def
+       !real(RKG)                       :: null
+        character(:,SKG), allocatable   :: desc
     end type
 
     type, extends(specbase_type)                                    :: specnest_type
@@ -254,17 +254,17 @@ contains
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    subroutine killMeAlreadyCMake1_RK5(); use pm_sampling_scio_RK5, only: RKC; end subroutine
-    subroutine killMeAlreadyCMake1_RK4(); use pm_sampling_scio_RK4, only: RKC; end subroutine
-    subroutine killMeAlreadyCMake1_RK3(); use pm_sampling_scio_RK3, only: RKC; end subroutine
-    subroutine killMeAlreadyCMake1_RK2(); use pm_sampling_scio_RK2, only: RKC; end subroutine
-    subroutine killMeAlreadyCMake1_RK1(); use pm_sampling_scio_RK1, only: RKC; end subroutine
+    subroutine killMeAlreadyCMake1_RK5(); use pm_sampling_scio_RK5, only: RKG; end subroutine
+    subroutine killMeAlreadyCMake1_RK4(); use pm_sampling_scio_RK4, only: RKG; end subroutine
+    subroutine killMeAlreadyCMake1_RK3(); use pm_sampling_scio_RK3, only: RKG; end subroutine
+    subroutine killMeAlreadyCMake1_RK2(); use pm_sampling_scio_RK2, only: RKG; end subroutine
+    subroutine killMeAlreadyCMake1_RK1(); use pm_sampling_scio_RK1, only: RKG; end subroutine
 
-    subroutine killMeAlreadyCMake2_RK5(); use pm_sampling_base_RK5, only: RKC; end subroutine
-    subroutine killMeAlreadyCMake2_RK4(); use pm_sampling_base_RK4, only: RKC; end subroutine
-    subroutine killMeAlreadyCMake2_RK3(); use pm_sampling_base_RK3, only: RKC; end subroutine
-    subroutine killMeAlreadyCMake2_RK2(); use pm_sampling_base_RK2, only: RKC; end subroutine
-    subroutine killMeAlreadyCMake2_RK1(); use pm_sampling_base_RK1, only: RKC; end subroutine
+    subroutine killMeAlreadyCMake2_RK5(); use pm_sampling_base_RK5, only: RKG; end subroutine
+    subroutine killMeAlreadyCMake2_RK4(); use pm_sampling_base_RK4, only: RKG; end subroutine
+    subroutine killMeAlreadyCMake2_RK3(); use pm_sampling_base_RK3, only: RKG; end subroutine
+    subroutine killMeAlreadyCMake2_RK2(); use pm_sampling_base_RK2, only: RKG; end subroutine
+    subroutine killMeAlreadyCMake2_RK1(); use pm_sampling_base_RK1, only: RKG; end subroutine
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -274,7 +274,7 @@ contains
 #endif
         use pm_kind, only: modelr_type
         type(modelr_type), intent(in) :: modelr
-        character(*,SKC), intent(in) :: method
+        character(*,SKG), intent(in) :: method
         integer(IK), intent(in) :: ndim
         type(specnest_type) :: spec
 
@@ -285,13 +285,13 @@ contains
             spec%domainPartitionAdaptationCount%def = huge(0_IK)
             spec%domainPartitionAdaptationCount%null = -huge(0_IK)
             spec%domainPartitionAdaptationCount%desc = &
-            SKC_"The simulation specification `domainPartitionAdaptationCount` is a positive-valued scalar of type `integer` of default kind representing the total number of adaptive &
+            SKG_"The simulation specification `domainPartitionAdaptationCount` is a positive-valued scalar of type `integer` of default kind representing the total number of adaptive &
                 &updates to make to the parameters of the domain sampler to increase the efficiency of the sampler thus increasing the overall sampling efficiency. &
                 &Every `domainPartitionAdaptationPeriod` number of calls to the objective function, the parameters of the domain sampler &
                 &will be updated until either the total number of adaptive updates reaches the value of `domainPartitionAdaptationCount`. &
                 &If the condition `domainPartitionAdaptationCount == 0`, then the domain sampler parameters will be fixed to &
                 &the initial input values throughout the entire sampling/integration. &
-                &The default value is `"//getStr(spec%domainPartitionAdaptationCount%def)//SKC_"`."
+                &The default value is `"//getStr(spec%domainPartitionAdaptationCount%def)//SKG_"`."
             !$omp master
             domainPartitionAdaptationCount = spec%domainPartitionAdaptationCount%null
             !$omp end master
@@ -302,7 +302,7 @@ contains
             spec%domainPartitionAdaptationPeriod%def = 500_IK ! + 1_IK ! max(nd+1_IK,100_IK)
             spec%domainPartitionAdaptationPeriod%null = -huge(0_IK)
             spec%domainPartitionAdaptationPeriod%desc = &
-            SKC_"The simulation specification `domainPartitionAdaptationPeriod` is a positive-valued scalar of type `integer` of default kind. &
+            SKG_"The simulation specification `domainPartitionAdaptationPeriod` is a positive-valued scalar of type `integer` of default kind. &
                 &Every `domainPartitionAdaptationPeriod` calls to the objective function, the approximated shape of the domain of the objective function will be updated. &
                 &The smaller the value of `domainPartitionAdaptationPeriod`, the easier it will be for the integrator to adapt the domain sampler to the constrained &
                 &shape of the domain of the objective function. However, this will happen at the expense of slower simulation runtime because the adaptation &
@@ -311,7 +311,7 @@ contains
                 &sampling efficiency close to the requested target acceptance rate range (specified via the `targetAcceptanceRate`). &
                 &However, too large values for `domainPartitionAdaptationPeriod` will only delay the adaptation of the domain &
                 &sampler to the global structure of the domain of the objective function that is being sampled. &
-                &The default value is `"//getStr(spec%domainPartitionAdaptationPeriod%def)//SKC_"`."
+                &The default value is `"//getStr(spec%domainPartitionAdaptationPeriod%def)//SKG_"`."
             !$omp master
             domainPartitionAdaptationPeriod = spec%domainPartitionAdaptationPeriod%null
             !$omp end master
@@ -321,11 +321,11 @@ contains
             use pm_sampling_scio, only: domainPartitionBiasCorrectionEnabled
             spec%domainPartitionBiasCorrectionEnabled%def = .true._LK
             spec%domainPartitionBiasCorrectionEnabled%desc = &
-            SKC_"The simulation specification `domainPartitionBiasCorrectionEnabled` is a scalar of type `logical` (Boolean) of default kind. &
+            SKG_"The simulation specification `domainPartitionBiasCorrectionEnabled` is a scalar of type `logical` (Boolean) of default kind. &
                 &When `domainPartitionBiasCorrectionEnabled` is set to the logical true value (equivalent to `.true.`, `.t.`, or `true`, all case-INsensitive, &
                 &in an external input file, or True from within Python environment or true from within a MATLAB session), the final scales of the partitions of &
                 &the live points of the sampler will be optimized. This will minimize the inaccuracies in the partitioning of the domain of the objective &
-                &function, although, it comes with an extra cost in terms of sampler runtime efficiency. The default value is `"//getStr(spec%domainPartitionBiasCorrectionEnabled%def)//SKC_"`."
+                &function, although, it comes with an extra cost in terms of sampler runtime efficiency. The default value is `"//getStr(spec%domainPartitionBiasCorrectionEnabled%def)//SKG_"`."
             !$omp master
             domainPartitionBiasCorrectionEnabled = spec%domainPartitionBiasCorrectionEnabled%def
             !$omp end master
@@ -336,13 +336,13 @@ contains
             spec%domainPartitionCountMax%def  = huge(0_IK)
             spec%domainPartitionCountMax%null = -huge(0_IK)
             spec%domainPartitionCountMax%desc = &
-            SKC_"The simulation specification `domainPartitionCountMax` is a positive-valued scalar of type `integer` of default kind, &
+            SKG_"The simulation specification `domainPartitionCountMax` is a positive-valued scalar of type `integer` of default kind, &
                 &representing the maximum number of partitions to be used in constraining the domain of the objective function as defined &
                 &by the live (active) points at any stage of the simulation. When the condition `domainPartitionCountMax == 1` holds, &
                 &a single partition (e.g., ellipsoid) will be used to constrain the domain of the objective function. &
                 &Note that the condition `1 =< domainPartitionCountMax =< liveSampleSize / (ndim + 1)` must hold in all simulations where `ndim` &
                 &is the number of dimensions of the domain of the density function to be sampled. Do not set this simulation specification to small &
-                &numbers unless you know the consequences. Doing so, may cause the sampler to become highly inefficient. The default value is `"//getStr(spec%domainPartitionCountMax%def)//SKC_"`."
+                &numbers unless you know the consequences. Doing so, may cause the sampler to become highly inefficient. The default value is `"//getStr(spec%domainPartitionCountMax%def)//SKG_"`."
             !$omp master
             domainPartitionCountMax = spec%domainPartitionCountMax%null
             !$omp end master
@@ -350,15 +350,15 @@ contains
 
         domainPartitionFactorExpansion_block: block
             use pm_sampling_scio, only: domainPartitionFactorExpansion
-            spec%domainPartitionFactorExpansion%def = 1._RKC !1.1_RKC
+            spec%domainPartitionFactorExpansion%def = 1._RKG !1.1_RKG
             spec%domainPartitionFactorExpansion%desc = &
-            SKC_"The simulation specification `domainPartitionFactorExpansion` is a positive-valued scalar of type `real` of the highest precision &
+            SKG_"The simulation specification `domainPartitionFactorExpansion` is a positive-valued scalar of type `real` of the highest precision &
                 &available within the ParaMonte library, representing the factor by which the volume of the bounding regions of the live (active) &
                 &points are enlarged after the partitioning of the domain of the objective function. &
                 &Setting `domainPartitionFactorExpansion << 1` may lead to biased and unreliable results. &
                 &Conversely, setting `domainPartitionFactorExpansion >> 1` will lead to conservative inefficient &
                 &partitioning of the domain and slow sampling and integration of the objective function. &
-                &The default value is `"//getStr(spec%domainPartitionFactorExpansion%def)//SKC_"`."
+                &The default value is `"//getStr(spec%domainPartitionFactorExpansion%def)//SKG_"`."
                 !&If ellipsoidalBoundingVolume < domainPartitionFactorExpansion * actualLivePointVolume, then, further partitioning of the live &
                 !&points will be performed. Conversely, if ellipsoidalBoundingVolume >= domainPartitionFactorExpansion * actualLivePointVolume, &
                 !&then, no further partitioning of the live points will be performed and the estimated ellipsoidalBoundingVolume will be enlarged &
@@ -370,9 +370,9 @@ contains
 
         domainPartitionFactorShrinkage_block: block
             use pm_sampling_scio, only: domainPartitionFactorShrinkage
-            spec%domainPartitionFactorShrinkage%def = 1._RKC !1.1_RKC
+            spec%domainPartitionFactorShrinkage%def = 1._RKG !1.1_RKG
             spec%domainPartitionFactorShrinkage%desc = &
-            SKC_"The simulation specification `domainPartitionFactorShrinkage` is a positive-valued scalar of type `real` of the highest precision &
+            SKG_"The simulation specification `domainPartitionFactorShrinkage` is a positive-valued scalar of type `real` of the highest precision &
                 &available within the ParaMonte library, representing the factor by which the volume of the bounding regions of the live (active) &
                 &points is multiplied before its usage in ellipsoidal partitioning. If the condition &
                 &`ellipsoidalBoundingVolume < domainPartitionFactorShrinkage * actualLivePointVolume` holds, then, further partitioning of the live points &
@@ -381,7 +381,7 @@ contains
                 &to match `domainPartitionFactorShrinkage * actualLivePointVolume`. This is a low-level simulation specification. &
                 &Setting `domainPartitionFactorShrinkage << 1` may lead to biased and unreliable results. &
                 &Conversely, setting `domainPartitionFactorShrinkage >> 1` will lead to conservative inefficient partitioning of &
-                &the domain and slow sampling and integration of the objective function. The default value is `"//getStr(spec%domainPartitionFactorShrinkage%def)//SKC_"`."
+                &the domain and slow sampling and integration of the objective function. The default value is `"//getStr(spec%domainPartitionFactorShrinkage%def)//SKG_"`."
             !$omp master
             call setNAN(domainPartitionFactorShrinkage)
             !$omp end master
@@ -392,10 +392,10 @@ contains
             spec%domainPartitionKmeansClusterCountMax%def  = 2_IK ! 10000_IK
             spec%domainPartitionKmeansClusterCountMax%null = -huge(0_IK)
             spec%domainPartitionKmeansClusterCountMax%desc = &
-            SKC_"The simulation specification `domainPartitionKmeansClusterCountMax` is a scalar positive `integer` of default kind that sets &
+            SKG_"The simulation specification `domainPartitionKmeansClusterCountMax` is a scalar positive `integer` of default kind that sets &
                 &the maximum number of clusters to be found by the Kmeans clustering algorithm at any level of partitioning of the live sample. &
                 &Note that the condition `1 <= domainPartitionKmeansClusterCountMax <= domainPartitionCountMax` must hold. &
-                &The default value is `min("//getStr(spec%domainPartitionKmeansClusterCountMax%def)//SKC_", domainPartitionCountMax)`."
+                &The default value is `min("//getStr(spec%domainPartitionKmeansClusterCountMax%def)//SKG_", domainPartitionCountMax)`."
             !$omp master
             domainPartitionKmeansClusterCountMax = spec%domainPartitionKmeansClusterCountMax%null
             !$omp end master
@@ -406,11 +406,11 @@ contains
             spec%domainPartitionKmeansClusterSizeMin%def  = 0_IK
             spec%domainPartitionKmeansClusterSizeMin%null = -huge(0_IK)
             spec%domainPartitionKmeansClusterSizeMin%desc = &
-            SKC_"The simulation specification `domainPartitionKmeansClusterSizeMin` in a scalar non-negative `integer` of default kind representing the minimum &
+            SKG_"The simulation specification `domainPartitionKmeansClusterSizeMin` in a scalar non-negative `integer` of default kind representing the minimum &
             &size of the clusters allowed to be identified by the Kmeans clustering algorithms when partitioning any subsets of the live sample of the sampler. &
             &Note that the condition `0 <= domainPartitionKmeansClusterSizeMin <= liveSampleSize` must hold. Do not set this simulation specification to values &
             &significantly larger than `ndim + 1` where `ndim` is the number of dimensions of the domain of the objective function. Doing so may cause the &
-            &sampler to become highly inefficient. The default value is `"//getStr(spec%domainPartitionKmeansClusterSizeMin%def)//SKC_"`."
+            &sampler to become highly inefficient. The default value is `"//getStr(spec%domainPartitionKmeansClusterSizeMin%def)//SKG_"`."
             !$omp master
             domainPartitionKmeansClusterSizeMin = spec%domainPartitionKmeansClusterSizeMin%null
             !$omp end master
@@ -420,12 +420,12 @@ contains
             use pm_sampling_scio, only: domainPartitionKmeansNormalizationEnabled
             spec%domainPartitionKmeansNormalizationEnabled%def = .true._LK
             spec%domainPartitionKmeansNormalizationEnabled%desc = &
-            SKC_"The simulation specification `domainPartitionKmeansNormalizationEnabled` is a scalar of type `logical` (Boolean) of default kind. &
+            SKG_"The simulation specification `domainPartitionKmeansNormalizationEnabled` is a scalar of type `logical` (Boolean) of default kind. &
                 &When `domainPartitionKmeansNormalizationEnabled` is set to the logical (Boolean) true value (equivalent to `.true.`, `.t.`, or `true`, all case-INsensitive, &
                 &from inside the input file or `True` from inside Python or `true` from inside MATLAB), any subset of live points will be standardized before being passed &
                 &to the Kmeans algorithm. Enabling this option will lead to better behavior of the Kmeans algorithm and potentially better &
                 &identification of the subclusters in data. This improvement, however, comes with an extra cost in terms of runtime &
-                &efficiency of the "//spec%method%val//SKC_" sampler. The default value is `"//getStr(spec%domainPartitionKmeansNormalizationEnabled%def)//SKC_"`."
+                &efficiency of the "//spec%method%val//SKG_" sampler. The default value is `"//getStr(spec%domainPartitionKmeansNormalizationEnabled%def)//SKG_"`."
             !$omp master
             domainPartitionKmeansNormalizationEnabled = spec%domainPartitionKmeansNormalizationEnabled%def
             !$omp end master
@@ -436,11 +436,11 @@ contains
             spec%domainPartitionKmeansNumFailMax%def  = 10_IK ! 10000_IK
             spec%domainPartitionKmeansNumFailMax%null = -huge(0_IK)
             spec%domainPartitionKmeansNumFailMax%desc = &
-            SKC_"The simulation specification `domainPartitionKmeansNumFailMax` is a positive-valued scalar of type `integer` of default kind &
+            SKG_"The simulation specification `domainPartitionKmeansNumFailMax` is a positive-valued scalar of type `integer` of default kind &
                 &that sets the maximum allowed number of Kmeans clustering failures at each clustering try within simulations that employ the rejection sampling method. &
                 &This is a low-level simulation specification whose value should not be changed from the default unless the consequences are well understood. &
                 &Setting this simulation property to a small value, for example, on the order of ten, may lead to highly inefficient simulations. &
-                &The default value is `"//getStr(spec%domainPartitionKmeansNumFailMax%def)//SKC_"`."
+                &The default value is `"//getStr(spec%domainPartitionKmeansNumFailMax%def)//SKG_"`."
             !$omp master
             domainPartitionKmeansNumFailMax = spec%domainPartitionKmeansNumFailMax%null
             !$omp end master
@@ -451,11 +451,11 @@ contains
             spec%domainPartitionKmeansNumRecursionMax%def  = 10_IK ! 10000_IK
             spec%domainPartitionKmeansNumRecursionMax%null = -huge(0_IK)
             spec%domainPartitionKmeansNumRecursionMax%desc = &
-            SKC_"The simulation specification `domainPartitionKmeansNumRecursionMax` is a positive scalar of type `integer` of default kind &
+            SKG_"The simulation specification `domainPartitionKmeansNumRecursionMax` is a positive scalar of type `integer` of default kind &
                 &that sets the maximum allowed number of Kmeans convergence iterations in simulations that employ the rejection sampling method. &
                 &This is a low-level simulation specification whose value should not be changed from the default unless the consequences are well understood. &
-                &Setting this simulation property to a small value, for example, on the order of ten, may lead to highly inefficient "//spec%method%val//SKC_" simulations. &
-                &The default value is `"//getStr(spec%domainPartitionKmeansNumRecursionMax%def)//SKC_"`."
+                &Setting this simulation property to a small value, for example, on the order of ten, may lead to highly inefficient "//spec%method%val//SKG_" simulations. &
+                &The default value is `"//getStr(spec%domainPartitionKmeansNumRecursionMax%def)//SKG_"`."
             !$omp master
             domainPartitionKmeansNumRecursionMax = spec%domainPartitionKmeansNumRecursionMax%null
             !$omp end master
@@ -466,10 +466,10 @@ contains
             spec%domainPartitionKmeansNumTry%def  = 10_IK ! 10000_IK
             spec%domainPartitionKmeansNumTry%null = -huge(0_IK)
             spec%domainPartitionKmeansNumTry%desc = &
-            SKC_"The simulation specification `domainPartitionKmeansNumTry` is a positive scalar of type `integer` of default kind &
+            SKG_"The simulation specification `domainPartitionKmeansNumTry` is a positive scalar of type `integer` of default kind &
                 &that sets the number of Kmeans clustering tries at each level of partitioning of the set of live points during the simulation. &
                 &This simulation specification should be not be set to very large values (e.g., >> 10) because the simulation will significantly &
-                &slow down. The default value is `"//getStr(spec%domainPartitionKmeansNumTry%def)//SKC_"`."
+                &slow down. The default value is `"//getStr(spec%domainPartitionKmeansNumTry%def)//SKG_"`."
             !$omp master
             domainPartitionKmeansNumTry = spec%domainPartitionKmeansNumTry%null
             !$omp end master
@@ -483,8 +483,8 @@ contains
             "The simulation specification `domainPartitionKvolumeNumRecursionMax` is a positive scalar of type `integer` of default kind &
             &that sets the maximum allowed number of volume minimization convergence iterations in simulations that employ the rejection sampling method. &
             &This is a low-level simulation specification whose value should not be changed from the default unless the consequences are well understood. &
-            &Setting this simulation property to a small value, for example, on the order of ten, may lead to highly inefficient "//spec%method%val//SKC_" simulations. &
-            &The default value is `"//getStr(spec%domainPartitionKvolumeNumRecursionMax%def)//SKC_"`."
+            &Setting this simulation property to a small value, for example, on the order of ten, may lead to highly inefficient "//spec%method%val//SKG_" simulations. &
+            &The default value is `"//getStr(spec%domainPartitionKvolumeNumRecursionMax%def)//SKG_"`."
             !$omp master
             domainPartitionKvolumeNumRecursionMax = spec%domainPartitionKvolumeNumRecursionMax%null
             !$omp end master
@@ -492,16 +492,16 @@ contains
 
         domainPartitionKvolumeWeightExponent_block: block
             use pm_sampling_scio, only: domainPartitionKvolumeWeightExponent
-            spec%domainPartitionKvolumeWeightExponent%def = 0._RKC
-           !spec%domainPartitionKvolumeWeightExponent%null = NULL_RKC
+            spec%domainPartitionKvolumeWeightExponent%def = 0._RKG
+           !spec%domainPartitionKvolumeWeightExponent%null = NULL_RKG
             spec%domainPartitionKvolumeWeightExponent%desc = &
-            SKC_"The simulation specification `domainPartitionKvolumeWeightExponent` is a positive scalar of type `real` of the highest precision available &
+            SKG_"The simulation specification `domainPartitionKvolumeWeightExponent` is a positive scalar of type `real` of the highest precision available &
                 &within the ParaMonte library, representing the exponent of the power-law density weights `domainPartitionKvolumeWeightExponent` weights of &
                 &the Mahalanobis distances of live (active) points from their corresponding cluster centers when the rejection sampling method is employed. &
                 &Reasonable values include `0` or `1`. This is a low-level simulation specification whose value should not be changed from the default &
                 &unless the consequences are well understood. Setting this simulation property to any values other than the default value can drastically &
                 &affect the performance or even convergence and success of the simulations when the rejection sampling method is used. &
-                &The default value for `domainPartitionKvolumeWeightExponent` is `"//getStr(spec%domainPartitionKvolumeWeightExponent%def)//SKC_"`."
+                &The default value for `domainPartitionKvolumeWeightExponent` is `"//getStr(spec%domainPartitionKvolumeWeightExponent%def)//SKG_"`."
             !$omp master
             call setNAN(domainPartitionKvolumeWeightExponent)
             !$omp end master
@@ -512,31 +512,31 @@ contains
             spec%domainPartitionMethod%def = "ParaMonte-OptDen"
             spec%domainPartitionMethod%null = repeat(SUB, len(domainPartitionMethod))
             spec%domainPartitionMethod%desc = &
-            SKC_"The simulation specification `domainPartitionMethod` is a scalar string of default kind of maximum length "//getStr(domainPartitionMethod)//SKC_" containing &
+            SKG_"The simulation specification `domainPartitionMethod` is a scalar string of default kind of maximum length "//getStr(domainPartitionMethod)//SKG_" containing &
                 &the name of the method to be used for the domain partitioning within the Nested sampler. The string value must be enclosed by either single or double &
                 &quotation marks when provided as input. Options that are currently supported include:"//NL2//&
-            SKC_"+   domainPartitionMethod = 'ParaMonte' or 'ParaMonte optimal', all case-INsensitive."//NL2//&
-            SKC_"    This is equivalent to the constrained rejection sampling via partitions &
+            SKG_"+   domainPartitionMethod = 'ParaMonte' or 'ParaMonte optimal', all case-INsensitive."//NL2//&
+            SKG_"    This is equivalent to the constrained rejection sampling via partitions &
                      &formed by bounding objects around the set of live (active) points using a complex method that optimizes the shapes &
                      &and count of bounding objects for the most-likely (optimal) density of live points within each bounding object."//NL2//&
-            SKC_"+   domainPartitionMethod = 'ParaMonte MinVol' or 'ParaMonte Minimum Volume', all case-INsensitive."//NL2//&
-            SKC_"    This is equivalent to the constrained rejection sampling via partitions &
+            SKG_"+   domainPartitionMethod = 'ParaMonte MinVol' or 'ParaMonte Minimum Volume', all case-INsensitive."//NL2//&
+            SKG_"    This is equivalent to the constrained rejection sampling via partitions &
                      &formed by bounding objects around the set of live (active) points using a complex method that optimizes the shapes &
                      &and count of the bounding objects to achieve a minimum overall domain volume."//NL2//&
-            SKC_"+   domainPartitionMethod = 'MultiNest', all case-INsensitive."//NL2//&
-            SKC_"    in which case, the method of partitioning based on volume-minimization used by the MultiNest Fortran &
+            SKG_"+   domainPartitionMethod = 'MultiNest', all case-INsensitive."//NL2//&
+            SKG_"    in which case, the method of partitioning based on volume-minimization used by the MultiNest Fortran &
                      &library will be used to find the optimal partitioning of the domain of the objective function. &
                      &The 'MultiNest' method of partitioning is similar to 'ParaMonte-MinVol' in the sense that both methods &
                      &minimize the collective volumes of the bounding objects. However, the minimization approach taken by MultiNest is much &
                      &more aggressive and often results in systematically biased results, especially in high-dimensional problems."//NL2//&
-            SKC_"+   domainPartitionMethod = 'Dynesty', all case-INsensitive."//NL2//&
-            SKC_"    in which case, the method of partitioning based on volume-minimization used by the Dynesty Python &
+            SKG_"+   domainPartitionMethod = 'Dynesty', all case-INsensitive."//NL2//&
+            SKG_"    in which case, the method of partitioning based on volume-minimization used by the Dynesty Python &
                      &library will be used to find the optimal partitioning of the domain of the objective function. &
                      &The 'often' method of partitioning is similar to 'ParaMonte-MinVol' in the sense that both methods &
                      &minimize the collective volumes of the bounding objects. However, the minimization approach taken by often is less &
                      &aggressive and often results in lower efficiencies for the Nested Sampler."//NL2//&
-            SKC_"Note that all values are case-INsensitive and all hyphens (dashes, -), white-space, or other separators are ignored.&
-                &The default value is `'"//spec%domainPartitionMethod%def//SKC_"'`. Choose the other non-default methods ONLY if you know the implications or &
+            SKG_"Note that all values are case-INsensitive and all hyphens (dashes, -), white-space, or other separators are ignored.&
+                &The default value is `'"//spec%domainPartitionMethod%def//SKG_"'`. Choose the other non-default methods ONLY if you know the implications or &
                 &if you want to perform benchmarks."
             !$omp master
             domainPartitionMethod = spec%domainPartitionMethod%null
@@ -545,16 +545,16 @@ contains
 
         domainPartitionObject_block: block
             use pm_sampling_scio, only: domainPartitionObject
-            spec%domainPartitionObject%def = SKC_"hyper-ellipsoid"
+            spec%domainPartitionObject%def = SKG_"hyper-ellipsoid"
             spec%domainPartitionObject%null = repeat(SUB, len(domainPartitionObject))
             spec%domainPartitionObject%desc = &
-            SKC_"The simulation specification `domainPartitionObject` is a scalar string of default kind of maximum length "//getStr(domainPartitionObject)//SKC_" containing &
+            SKG_"The simulation specification `domainPartitionObject` is a scalar string of default kind of maximum length "//getStr(domainPartitionObject)//SKG_" containing &
                 &the name of the ndim-dimensional geometrical object to be used for partitioning of the domain of the objective function. The string value must be enclosed &
                 &by either single or double quotation marks when specified from within an external input file. Options that are currently supported include:"//NL2//&
-            SKC_"    domainPartitionObject = 'ball'"//NL2//&
-            SKC_"            This is equivalent to using hyper-ellipsoids to partition the domain of the objective function."//NL2//&
-            SKC_"Note that all values are case-INsensitive and all hyphens (dashes, -) and white-space characters are ignored.&
-                &The default value is `'"//spec%domainPartitionObject%def//SKC_"'`."
+            SKG_"    domainPartitionObject = 'ball'"//NL2//&
+            SKG_"            This is equivalent to using hyper-ellipsoids to partition the domain of the objective function."//NL2//&
+            SKG_"Note that all values are case-INsensitive and all hyphens (dashes, -) and white-space characters are ignored.&
+                &The default value is `'"//spec%domainPartitionObject%def//SKG_"'`."
             !$omp master
             domainPartitionObject = spec%domainPartitionObject%null
             !$omp end master
@@ -564,12 +564,12 @@ contains
             use pm_sampling_scio, only: domainPartitionOptimizationScaleEnabled
             spec%domainPartitionOptimizationScaleEnabled%def = .true._LK
             spec%domainPartitionOptimizationScaleEnabled%desc = &
-            SKC_"The simulation specification `domainPartitionOptimizationScaleEnabled` is a scalar of type `logical` (Boolean). &
+            SKG_"The simulation specification `domainPartitionOptimizationScaleEnabled` is a scalar of type `logical` (Boolean). &
                 &When `domainPartitionOptimizationScaleEnabled` is set to the logical true value (equivalent to `.true.`, `.t.` or `true`, all case-INsensitive, &
                 &from within an external input file or `True` from inside Python or `true` from inside MATLAB, the final scales of the partitions of the live &
                 &points of the sampler will be optimized. This will minimize the inaccuracies in the partitioning of the domain of the objective &
-                &function, although, it comes with an extra cost in terms of runtime efficiency of the "//spec%method%val//SKC_" sampler. &
-                &The default value is `"//getStr(spec%domainPartitionOptimizationScaleEnabled%def)//SKC_"`."
+                &function, although, it comes with an extra cost in terms of runtime efficiency of the "//spec%method%val//SKG_" sampler. &
+                &The default value is `"//getStr(spec%domainPartitionOptimizationScaleEnabled%def)//SKG_"`."
             !$omp master
             domainPartitionOptimizationScaleEnabled = spec%domainPartitionOptimizationScaleEnabled%def
             !$omp end master
@@ -579,12 +579,12 @@ contains
             use pm_sampling_scio, only: domainPartitionOptimizationShapeEnabled
             spec%domainPartitionOptimizationShapeEnabled%def = .true._LK
             spec%domainPartitionOptimizationShapeEnabled%desc = &
-            SKC_"The simulation specification `domainPartitionOptimizationShapeEnabled` is a scalar of type `logical` (Boolean). &
+            SKG_"The simulation specification `domainPartitionOptimizationShapeEnabled` is a scalar of type `logical` (Boolean). &
                 &When domainPartitionOptimizationShapeEnabled = .true. (or .t. or true, all case-INsensitive, from inside the input file) &
                 &or True (from inside Python) or true (from inside MATLAB), the final centers and shapes and sizes of the partitions of the &
                 &live points of the sampler will be optimized. This will minimize the inaccuracies in the partitioning of the domain of &
-                &the objective function, although, it comes with an extra cost in terms of runtime efficiency of the "//spec%method%val//SKC_" sampler. &
-                &The default value is `"//getStr(spec%domainPartitionOptimizationShapeEnabled%def)//SKC_"`."
+                &the objective function, although, it comes with an extra cost in terms of runtime efficiency of the "//spec%method%val//SKG_" sampler. &
+                &The default value is `"//getStr(spec%domainPartitionOptimizationShapeEnabled%def)//SKG_"`."
             !$omp master
             domainPartitionOptimizationShapeEnabled = spec%domainPartitionOptimizationShapeEnabled%def
             !$omp end master
@@ -594,12 +594,12 @@ contains
             use pm_sampling_scio, only: domainPartitionOptimizationShapeScaleEnabled
             spec%domainPartitionOptimizationShapeScaleEnabled%def = .true._LK
             spec%domainPartitionOptimizationShapeScaleEnabled%desc = &
-            SKC_"The simulation specification `domainPartitionOptimizationShapeScaleEnabled` = .true. (or .t. or true, all case-INsensitive, from inside the input file) &
+            SKG_"The simulation specification `domainPartitionOptimizationShapeScaleEnabled` = .true. (or .t. or true, all case-INsensitive, from inside the input file) &
                 &When `domainPartitionOptimizationShapeScaleEnabled` is set to the logical true value (equivalent to `.true.`, `.t.` or `true`, all case-INsensitive, &
                 &from within an external input file or `True` from inside Python or `true` from inside MATLAB, the final centers and shapes and sizes of the partitions &
                 &of the live live points of the sampler will be enlarged for as much as possible. This will minimize the inaccuracies in the &
                 &partitioning of the domain of the objective function, although, it comes with an extra cost in terms of runtime efficiency &
-                &of the "//spec%method%val//SKC_" sampler. The default value is `"//getStr(spec%domainPartitionOptimizationShapeScaleEnabled%def)//SKC_"`."
+                &of the "//spec%method%val//SKG_" sampler. The default value is `"//getStr(spec%domainPartitionOptimizationShapeScaleEnabled%def)//SKG_"`."
             !$omp master
             domainPartitionOptimizationShapeScaleEnabled = spec%domainPartitionOptimizationShapeScaleEnabled%def
             !$omp end master
@@ -607,13 +607,13 @@ contains
 
         domainPartitionScaleFactor_block: block
             use pm_sampling_scio, only: domainPartitionScaleFactor
-            spec%domainPartitionScaleFactor%def = 1.5_RKC
+            spec%domainPartitionScaleFactor%def = 1.5_RKG
             spec%domainPartitionScaleFactor%desc = &
-            SKC_"The simulation specification `domainPartitionScaleFactor` is a positive-valued scalar of type `real` of the highest precision available within the &
+            SKG_"The simulation specification `domainPartitionScaleFactor` is a positive-valued scalar of type `real` of the highest precision available within the &
                 &ParaMonte library representing the factor by which the effective radius of the rejection sampling region is enlarged to ensure a minimally-biased integration. &
                 &Values smaller than 1 will lead to highly biased simulation results whereas values significantly larger than 1 will lead to highly inefficient simulations. &
                 &Relevant `domainPartitionScaleFactor` values are generally bound to the range `1 < domainPartitionScaleFactor < 2`. &
-                &The default value for `domainPartitionScaleFactor` is `"//getStr(spec%domainPartitionScaleFactor%def)//SKC_"`."
+                &The default value for `domainPartitionScaleFactor` is `"//getStr(spec%domainPartitionScaleFactor%def)//SKG_"`."
             !$omp master
             call setNAN(domainPartitionScaleFactor)
             !$omp end master
@@ -621,15 +621,15 @@ contains
 
         domainSampler_block: block
             use pm_sampling_scio, only: domainSampler
-            spec%domainSampler%def = SKC_"rejection" ! spec%%rejection//SKC_"-"//spec%%ellipsoidal
+            spec%domainSampler%def = SKG_"rejection" ! spec%%rejection//SKG_"-"//spec%%ellipsoidal
             spec%domainSampler%null = repeat(SUB, len(domainSampler))
             spec%domainSampler%desc = &
-            SKC_"The simulation specification `domainSampler` is a scalar string of default kind of maximum length "//getStr(domainSampler)//SKC_" containing the name of &
+            SKG_"The simulation specification `domainSampler` is a scalar string of default kind of maximum length "//getStr(domainSampler)//SKG_" containing the name of &
                 &the domain sampler for the Nested sampling integration. The string value must be singly or doubly quoted when specified within an external input file. &
                 &Options that are currently supported include:"//NL2//&
-            SKC_"    domainSampler = 'rejection'"//NL2//&
-            SKC_"            This is equivalent to the constrained rejection sampling via partitions formed by bounding objects around the set of live (active) points."//NL2//&
-            SKC_"Note that all values are case-INsensitive and all hyphens (dashes, -) and white-space characters are ignored. The default value for `domainSampler` is `'"//spec%domainSampler%def//SKC_"'`."
+            SKG_"    domainSampler = 'rejection'"//NL2//&
+            SKG_"            This is equivalent to the constrained rejection sampling via partitions formed by bounding objects around the set of live (active) points."//NL2//&
+            SKG_"Note that all values are case-INsensitive and all hyphens (dashes, -) and white-space characters are ignored. The default value for `domainSampler` is `'"//spec%domainSampler%def//SKG_"'`."
             !$omp master
             domainSampler = spec%domainSampler%null
             !$omp end master
@@ -640,7 +640,7 @@ contains
             spec%liveSampleSize%def  = 1000_IK ! @todo: perhaps an intelligent setting strategy here would be useful.
             spec%liveSampleSize%null = -huge(0_IK)
             spec%liveSampleSize%desc = &
-            SKC_"The simulation specification `liveSampleSize` is a positive scalar of type `integer` of default kind representing the number of live (active) &
+            SKG_"The simulation specification `liveSampleSize` is a positive scalar of type `integer` of default kind representing the number of live (active) &
                 &points that are initially sampled uniformly from the domain of the objective function. New points will be subsequently added to this sample &
                 &throughout the simulation and the lowest-value will be removed such that the size of the live (active) sample of points at any stage during &
                 &the simulation remains fixed as specified by the input simulation specification `liveSampleSize`. &
@@ -650,7 +650,7 @@ contains
                 &You can think of `liveSampleSize` (the number of live (active) points) as a random meshing of the integration domain of objective function. &
                 &Therefore, a larger `liveSampleSize` means a finer mesh for the integration, thus yielding more accurate results. &
                 &In general, higher-dimensional domains require larger the values specified for `liveSampleSize`. &
-                &The default value for `liveSampleSize` is `"//getStr(spec%liveSampleSize%def)//SKC_"`."
+                &The default value for `liveSampleSize` is `"//getStr(spec%liveSampleSize%def)//SKG_"`."
             !$omp master
             liveSampleSize = spec%liveSampleSize%null
             !$omp end master
@@ -658,13 +658,13 @@ contains
 
         tolerance_block: block
             use pm_sampling_scio, only: tolerance
-            spec%tolerance%def = 0.01_RKC
-           !spec%tolerance%null = NULL_RKC
+            spec%tolerance%def = 0.01_RKG
+           !spec%tolerance%null = NULL_RKG
             spec%tolerance%desc = &
-            SKC_"The simulation specification `tolerance` is a positive scalar of type `real` of the highest precision available within the ParaMonte library &
+            SKG_"The simulation specification `tolerance` is a positive scalar of type `real` of the highest precision available within the ParaMonte library &
                 &representing the threshold below which the integration of the objective function by the "//spec%method%val//" sampler is assumed to have converged. &
                 &Typical values are around `0.1 - 1`. Avoid setting this number to extremely tiny values on the order of `1e-6` or smaller, otherwise the integration &
-                &result is not guaranteed to converge and the simulation might never end. The default value for `tolerance` is `"//getStr(spec%tolerance%def)//SKC_"`."
+                &result is not guaranteed to converge and the simulation might never end. The default value for `tolerance` is `"//getStr(spec%tolerance%def)//SKG_"`."
             !$omp master
             call setNAN(tolerance)
             !$omp end master
@@ -733,7 +733,7 @@ contains
             domainPartitionFactorExpansion_block: block
                 use pm_sampling_scio, only: domainPartitionFactorExpansion
                 if (spec%overridable .and. allocated(sampler%domainPartitionFactorExpansion)) then
-                    spec%domainPartitionFactorExpansion%val = real(sampler%domainPartitionFactorExpansion, RKC)
+                    spec%domainPartitionFactorExpansion%val = real(sampler%domainPartitionFactorExpansion, RKG)
                 else
                     spec%domainPartitionFactorExpansion%val = domainPartitionFactorExpansion
                 end if
@@ -743,7 +743,7 @@ contains
             domainPartitionFactorShrinkage_block: block
                 use pm_sampling_scio, only: domainPartitionFactorShrinkage
                 if (spec%overridable .and. allocated(sampler%domainPartitionFactorShrinkage)) then
-                    spec%domainPartitionFactorShrinkage%val = real(sampler%domainPartitionFactorShrinkage, RKC)
+                    spec%domainPartitionFactorShrinkage%val = real(sampler%domainPartitionFactorShrinkage, RKG)
                 else
                     spec%domainPartitionFactorShrinkage%val = domainPartitionFactorShrinkage
                 end if
@@ -822,7 +822,7 @@ contains
             domainPartitionKvolumeWeightExponent_block: block
                 use pm_sampling_scio, only: domainPartitionKvolumeWeightExponent
                 if (spec%overridable .and. allocated(sampler%domainPartitionKvolumeWeightExponent)) then
-                    spec%domainPartitionKvolumeWeightExponent%val = real(sampler%domainPartitionKvolumeWeightExponent, RKC)
+                    spec%domainPartitionKvolumeWeightExponent%val = real(sampler%domainPartitionKvolumeWeightExponent, RKG)
                 else
                     spec%domainPartitionKvolumeWeightExponent%val = domainPartitionKvolumeWeightExponent
                 end if
@@ -837,10 +837,10 @@ contains
                     spec%domainPartitionMethod%val = getStrLower(trim(adjustl(domainPartitionMethod)))
                 end if
                 if (spec%domainPartitionMethod%val == spec%domainPartitionMethod%null) spec%domainPartitionMethod%val = getStrLower(spec%domainPartitionMethod%def)
-                spec%domainPartitionMethod%isMinVol = index(spec%domainPartitionMethod%val, SKC_"minvol") > 0
-                spec%domainPartitionMethod%isMaxDen = index(spec%domainPartitionMethod%val, SKC_"maxden") > 0
-                spec%domainPartitionMethod%isDynesty = index(spec%domainPartitionMethod%val, SKC_"dynesty") > 0
-                spec%domainPartitionMethod%isMultiNest = index(spec%domainPartitionMethod%val, SKC_"multinest") > 0
+                spec%domainPartitionMethod%isMinVol = index(spec%domainPartitionMethod%val, SKG_"minvol") > 0
+                spec%domainPartitionMethod%isMaxDen = index(spec%domainPartitionMethod%val, SKG_"maxden") > 0
+                spec%domainPartitionMethod%isDynesty = index(spec%domainPartitionMethod%val, SKG_"dynesty") > 0
+                spec%domainPartitionMethod%isMultiNest = index(spec%domainPartitionMethod%val, SKG_"multinest") > 0
             end block domainPartitionMethod_block
 
             domainPartitionObject_block: block
@@ -851,7 +851,7 @@ contains
                     spec%domainPartitionObject%val = getStrLower(trim(adjustl(domainPartitionObject)))
                 end if
                 if (spec%domainPartitionObject%val == spec%domainPartitionObject%null) spec%domainPartitionObject%val = spec%domainPartitionObject%def
-                spec%domainPartitionObject%isBall = index(spec%domainPartitionObject%val, SKC_"ellipsoid") > 0 .or. index(spec%domainPartitionObject%val, SKC_"ball") > 0
+                spec%domainPartitionObject%isBall = index(spec%domainPartitionObject%val, SKG_"ellipsoid") > 0 .or. index(spec%domainPartitionObject%val, SKG_"ball") > 0
             end block domainPartitionObject_block
 
             domainPartitionOptimizationScaleEnabled_block: block
@@ -884,7 +884,7 @@ contains
             domainPartitionScaleFactor_block: block
                 use pm_sampling_scio, only: domainPartitionScaleFactor
                 if (spec%overridable .and. allocated(sampler%domainPartitionScaleFactor)) then
-                    spec%domainPartitionScaleFactor%val = real(sampler%domainPartitionScaleFactor, RKC)
+                    spec%domainPartitionScaleFactor%val = real(sampler%domainPartitionScaleFactor, RKG)
                 else
                     spec%domainPartitionScaleFactor%val = domainPartitionScaleFactor
                 end if
@@ -899,7 +899,7 @@ contains
                     spec%domainSampler%val = getStrLower(trim(adjustl(domainSampler)))
                 end if
                 if (spec%domainSampler%val == spec%domainSampler%null) spec%domainSampler%val = spec%domainSampler%def
-                spec%domainSampler%isRejection = index(spec%domainSampler%val, SKC_"rejection") > 0
+                spec%domainSampler%isRejection = index(spec%domainSampler%val, SKG_"rejection") > 0
             end block domainSampler_block
 
             liveSampleSize_block: block
@@ -915,7 +915,7 @@ contains
             tolerance_block: block
                 use pm_sampling_scio, only: tolerance
                 if (spec%overridable .and. allocated(sampler%tolerance)) then
-                    spec%tolerance%val = real(sampler%tolerance, RKC)
+                    spec%tolerance%val = real(sampler%tolerance, RKG)
                 else
                     spec%tolerance%val = tolerance
                 end if
@@ -947,7 +947,7 @@ contains
 #endif
         class(specnest_type), intent(inout) :: spec
 
-        call spec%disp%text%wrap(NL1//spec%method%val//SKC_" simulation Nest specifications"//NL1)
+        call spec%disp%text%wrap(NL1//spec%method%val//SKG_" simulation Nest specifications"//NL1)
 
         associate(ndim => spec%ndim%val, format => spec%reportFile%format%generic)
 
@@ -1056,28 +1056,28 @@ contains
         use pm_err, only: err_type, getFine
         type(err_type), intent(inout) :: err
         class(specnest_type), intent(inout) :: spec
-        character(*,SKC), parameter :: PROCEDURE_NAME = MODULE_NAME//SKC_"@sanitize()"
+        character(*,SKG), parameter :: PROCEDURE_NAME = MODULE_NAME//SKG_"@sanitize()"
 
-        call spec%disp%text%wrap(NL1//spec%method%val//SKC_".simulation.specifications.nest"//NL1)
+        call spec%disp%text%wrap(NL1//spec%method%val//SKG_".simulation.specifications.nest"//NL1)
 
         domainPartitionAdaptationCount_block: block
             if (spec%domainPartitionAdaptationCount%val < 0_IK) then
                 err%occurred = .true._LK
-                err%msg =   err%msg//NL2//PROCEDURE_NAME//getFine(__FILE__, __LINE__)//SKC_": Error occurred. &
-                            &The specified value for `domainPartitionAdaptationCount` ("//getStr(spec%domainPartitionAdaptationCount%val)//SKC_") cannot be negative. &
+                err%msg =   err%msg//NL2//PROCEDURE_NAME//getFine(__FILE__, __LINE__)//SKG_": Error occurred. &
+                            &The specified value for `domainPartitionAdaptationCount` ("//getStr(spec%domainPartitionAdaptationCount%val)//SKG_") cannot be negative. &
                             &If you are unsure of the appropriate value for `domainPartitionAdaptationCount`, drop it from the input list. The "//&
-                            spec%method%val//SKC_" sampler will automatically assign an appropriate value to it."
+                            spec%method%val//SKG_" sampler will automatically assign an appropriate value to it."
             end if
         end block domainPartitionAdaptationCount_block
 
         domainPartitionAdaptationPeriod_block: block
             if (spec%domainPartitionAdaptationPeriod%val<1_IK) then
                 err%occurred = .true._LK
-                err%msg =   err%msg//NL2//PROCEDURE_NAME//getFine(__FILE__, __LINE__)//SKC_": Error occurred. &
+                err%msg =   err%msg//NL2//PROCEDURE_NAME//getFine(__FILE__, __LINE__)//SKG_": Error occurred. &
                             &Invalid requested value for `domainPartitionAdaptationPeriod`. &
-                            &The specified value for `domainPartitionAdaptationPeriod` ("//getStr(spec%domainPartitionAdaptationPeriod%val)//SKC_") cannot be less than 1. &
+                            &The specified value for `domainPartitionAdaptationPeriod` ("//getStr(spec%domainPartitionAdaptationPeriod%val)//SKG_") cannot be less than 1. &
                             &If you are unsure of the appropriate value for `domainPartitionAdaptationPeriod`, drop it from the input list. The "//&
-                            spec%method%val//SKC_" sample will automatically assign an appropriate value to it."
+                            spec%method%val//SKG_" sample will automatically assign an appropriate value to it."
             end if
         end block domainPartitionAdaptationPeriod_block
 
@@ -1087,52 +1087,52 @@ contains
         domainPartitionCountMax_block: block
             if (spec%domainPartitionCountMax%val < 1_IK) then
                 err%occurred = .true._LK
-                err%msg =   err%msg//NL2//PROCEDURE_NAME//getFine(__FILE__, __LINE__)//SKC_": Error occurred. &
-                            &The specified value for `domainPartitionCountMax` ("//getStr(spec%domainPartitionCountMax%val)//SKC_") &
+                err%msg =   err%msg//NL2//PROCEDURE_NAME//getFine(__FILE__, __LINE__)//SKG_": Error occurred. &
+                            &The specified value for `domainPartitionCountMax` ("//getStr(spec%domainPartitionCountMax%val)//SKG_") &
                             &cannot be less than `1` or larger than `liveSampleSize / (ndim + 1)`, where `ndim` is the number of dimensions of &
                             &the domain of the objective function. If you are unsure of the appropriate value for `domainPartitionCountMax`, drop it &
-                            &from the input list. The "//spec%method%val//SKC_" sampler will automatically assign an appropriate value to it."
+                            &from the input list. The "//spec%method%val//SKG_" sampler will automatically assign an appropriate value to it."
             end if
         end block domainPartitionCountMax_block
 
         domainPartitionFactorExpansion_block: block
-            if (spec%domainPartitionFactorExpansion%val <= 0._RKC) then
+            if (spec%domainPartitionFactorExpansion%val <= 0._RKG) then
                 err%occurred = .true._LK
-                err%msg =   err%msg//NL2//PROCEDURE_NAME//getFine(__FILE__, __LINE__)//SKC_": Error occurred. &
+                err%msg =   err%msg//NL2//PROCEDURE_NAME//getFine(__FILE__, __LINE__)//SKG_": Error occurred. &
                             &The input variable `domainPartitionFactorExpansion` ("//getStr(spec%domainPartitionFactorExpansion%val)//") must be positive. &
                             &If you are unsure of the appropriate value for `domainPartitionFactorExpansion`, drop it from the input list. &
-                            &The "//spec%method%val//SKC_" sampler will automatically assign an appropriate value to it."
+                            &The "//spec%method%val//SKG_" sampler will automatically assign an appropriate value to it."
             end if
         end block domainPartitionFactorExpansion_block
 
         domainPartitionFactorShrinkage_block: block
-            if (spec%domainPartitionFactorShrinkage%val <= 0._RKC) then
+            if (spec%domainPartitionFactorShrinkage%val <= 0._RKG) then
                 err%occurred = .true._LK
-                err%msg =   err%msg//NL2//PROCEDURE_NAME//getFine(__FILE__, __LINE__)//SKC_": Error occurred. &
-                            &The input variable `domainPartitionFactorShrinkage` ("//getStr(spec%domainPartitionFactorShrinkage%val)//SKC_") must be positive. &
+                err%msg =   err%msg//NL2//PROCEDURE_NAME//getFine(__FILE__, __LINE__)//SKG_": Error occurred. &
+                            &The input variable `domainPartitionFactorShrinkage` ("//getStr(spec%domainPartitionFactorShrinkage%val)//SKG_") must be positive. &
                             &If you are unsure of the appropriate value for `domainPartitionFactorExpansion`, drop it from the input list. &
-                            &The "//spec%method%val//SKC_" sampler will automatically assign an appropriate value to it."
+                            &The "//spec%method%val//SKG_" sampler will automatically assign an appropriate value to it."
             end if
         end block domainPartitionFactorShrinkage_block
 
         domainPartitionKmeansClusterCountMax_block: block
             if (spec%domainPartitionKmeansClusterCountMax%val < 1_IK .or. spec%domainPartitionCountMax%val < spec%domainPartitionKmeansClusterCountMax%val) then
                 err%occurred = .true._LK
-                err%msg =   err%msg//NL2//PROCEDURE_NAME//getFine(__FILE__, __LINE__)//SKC_": Error occurred. &
-                            &The specified value for `domainPartitionKmeansClusterCountMax` ("//getStr(spec%domainPartitionKmeansClusterCountMax%val)//SKC_") &
-                            &can not be less than `1` or larger than the value of `domainPartitionCountMax` ("//getStr(spec%domainPartitionCountMax%val)//SKC_"). &
+                err%msg =   err%msg//NL2//PROCEDURE_NAME//getFine(__FILE__, __LINE__)//SKG_": Error occurred. &
+                            &The specified value for `domainPartitionKmeansClusterCountMax` ("//getStr(spec%domainPartitionKmeansClusterCountMax%val)//SKG_") &
+                            &can not be less than `1` or larger than the value of `domainPartitionCountMax` ("//getStr(spec%domainPartitionCountMax%val)//SKG_"). &
                             &If you are unsure about the appropriate value for domainPartitionKmeansClusterCountMax, drop it from the input list. &
-                            &The "//spec%method%val//SKC_" sampler will automatically assign an appropriate value to it."
+                            &The "//spec%method%val//SKG_" sampler will automatically assign an appropriate value to it."
             end if
         end block domainPartitionKmeansClusterCountMax_block
 
         domainPartitionKmeansClusterSizeMin_block: block
             if (spec%domainPartitionKmeansClusterSizeMin%val < 0_IK) then
                 err%occurred = .true._LK
-                err%msg =   err%msg//NL2//PROCEDURE_NAME//getFine(__FILE__, __LINE__)//SKC_": Error occurred. &
-                            &The specified value for `domainPartitionKmeansClusterSizeMin` ("//getStr(spec%domainPartitionKmeansClusterSizeMin%val)//SKC_") &
+                err%msg =   err%msg//NL2//PROCEDURE_NAME//getFine(__FILE__, __LINE__)//SKG_": Error occurred. &
+                            &The specified value for `domainPartitionKmeansClusterSizeMin` ("//getStr(spec%domainPartitionKmeansClusterSizeMin%val)//SKG_") &
                             &cannot be less than 0 or larger than liveSampleSize. If you are unsure of the appropriate value for &
-                            &`domainPartitionKmeansClusterSizeMin`, drop it from the input list. The "//spec%method%val//SKC_" &
+                            &`domainPartitionKmeansClusterSizeMin`, drop it from the input list. The "//spec%method%val//SKG_" &
                             &sampler will automatically assign an appropriate value to it."
             end if
         end block domainPartitionKmeansClusterSizeMin_block
@@ -1143,51 +1143,51 @@ contains
         domainPartitionKmeansNumFailMax_block: block
             if (spec%domainPartitionKmeansNumFailMax%val < 0_IK) then
                 err%occurred = .true._LK
-                err%msg =   err%msg//NL2//PROCEDURE_NAME//getFine(__FILE__, __LINE__)//SKC_": Error occurred. &
-                            &The specified value for `domainPartitionKmeansNumFailMax` ("//getStr(spec%domainPartitionKmeansNumFailMax%val)//SKC_") &
+                err%msg =   err%msg//NL2//PROCEDURE_NAME//getFine(__FILE__, __LINE__)//SKG_": Error occurred. &
+                            &The specified value for `domainPartitionKmeansNumFailMax` ("//getStr(spec%domainPartitionKmeansNumFailMax%val)//SKG_") &
                             &cannot be negative. If you are unsure of the appropriate value for `domainPartitionKmeansNumFailMax`, drop it &
-                            &from the input list. "//spec%method%val//SKC_" will automatically assign an appropriate value to it."
+                            &from the input list. "//spec%method%val//SKG_" will automatically assign an appropriate value to it."
             end if
         end block domainPartitionKmeansNumFailMax_block
 
         domainPartitionKmeansNumRecursionMax_block: block
             if (spec%domainPartitionKmeansNumRecursionMax%val < 0_IK) then
                 err%occurred = .true._LK
-                err%msg =   err%msg//NL2//PROCEDURE_NAME//getFine(__FILE__, __LINE__)//SKC_": Error occurred. &
-                            &The specified value for `domainPartitionKmeansNumRecursionMax` ("//getStr(spec%domainPartitionKmeansNumRecursionMax%val)//SKC_") &
+                err%msg =   err%msg//NL2//PROCEDURE_NAME//getFine(__FILE__, __LINE__)//SKG_": Error occurred. &
+                            &The specified value for `domainPartitionKmeansNumRecursionMax` ("//getStr(spec%domainPartitionKmeansNumRecursionMax%val)//SKG_") &
                             &cannot be negative. If you are unsure of the appropriate value for `domainPartitionKmeansNumRecursionMax`, drop it &
-                            &from the input list. "//spec%method%val//SKC_" will automatically assign an appropriate value to it."
+                            &from the input list. "//spec%method%val//SKG_" will automatically assign an appropriate value to it."
             end if
         end block domainPartitionKmeansNumRecursionMax_block
 
         domainPartitionKmeansNumTry_block: block
             if (spec%domainPartitionKmeansNumTry%val < 1_IK) then
                 err%occurred = .true._LK
-                err%msg =   err%msg//NL2//PROCEDURE_NAME//getFine(__FILE__, __LINE__)//SKC_": Error occurred. &
-                            &The specified value for `domainPartitionKmeansNumTry` ("//getStr(spec%domainPartitionKmeansNumTry%val)//SKC_") &
+                err%msg =   err%msg//NL2//PROCEDURE_NAME//getFine(__FILE__, __LINE__)//SKG_": Error occurred. &
+                            &The specified value for `domainPartitionKmeansNumTry` ("//getStr(spec%domainPartitionKmeansNumTry%val)//SKG_") &
                             &can not be less than 1. If you are unsure about the appropriate value for `domainPartitionKmeansNumTry`, drop it &
-                            &from the input list. The "//spec%method%val//SKC_" sampler will automatically assign an appropriate value to it."
+                            &from the input list. The "//spec%method%val//SKG_" sampler will automatically assign an appropriate value to it."
             end if
         end block domainPartitionKmeansNumTry_block
 
         domainPartitionKvolumeNumRecursionMax_block: block
             if (spec%domainPartitionKvolumeNumRecursionMax%val < 0_IK) then
                 err%occurred = .true._LK
-                err%msg =   err%msg//NL2//PROCEDURE_NAME//getFine(__FILE__, __LINE__)//SKC_": Error occurred. &
-                            &The specified value for domainPartitionKvolumeNumRecursionMax ("//getStr(spec%domainPartitionKvolumeNumRecursionMax%val)//SKC_") &
+                err%msg =   err%msg//NL2//PROCEDURE_NAME//getFine(__FILE__, __LINE__)//SKG_": Error occurred. &
+                            &The specified value for domainPartitionKvolumeNumRecursionMax ("//getStr(spec%domainPartitionKvolumeNumRecursionMax%val)//SKG_") &
                             &cannot be negative. If you are unsure of the appropriate value for domainPartitionKvolumeNumRecursionMax, drop it &
-                            &from the input list. "//spec%method%val//SKC_" will automatically assign an appropriate value to it."
+                            &from the input list. "//spec%method%val//SKG_" will automatically assign an appropriate value to it."
             end if
         end block domainPartitionKvolumeNumRecursionMax_block
 
         domainPartitionKvolumeWeightExponent_block: block
-            !if (spec%domainPartitionKvolumeWeightExponent%val <= 0._RKC) then
+            !if (spec%domainPartitionKvolumeWeightExponent%val <= 0._RKG) then
             !    err%occurred = .true._LK
             !    err%msg =   err%msg//NL2//&
-            !                PROCEDURE_NAME//getFine(__FILE__, __LINE__)//SKC_": Error occurred. &
+            !                PROCEDURE_NAME//getFine(__FILE__, __LINE__)//SKG_": Error occurred. &
             !                &The input variable `domainPartitionKvolumeWeightExponent` ("//getStr(spec%domainPartitionKvolumeWeightExponent%val)//&
             !                ") cannot be less than 0. If you are unsure of the appropriate value for `domainPartitionKvolumeWeightExponent`, drop it &
-            !                &from the input list. "//spec%method%val//SKC_" will automatically assign an appropriate value to it."
+            !                &from the input list. "//spec%method%val//SKG_" will automatically assign an appropriate value to it."
             !end if
         end block domainPartitionKvolumeWeightExponent_block
 
@@ -1198,8 +1198,8 @@ contains
                         , spec%domainPartitionMethod%isMultiNest & ! LCOV_EXCL_LINE
                         ]) /= 1_IK) then
                 err%occurred = .true._LK
-                err%msg =   err%msg//NL2//PROCEDURE_NAME//getFine(__FILE__, __LINE__)//SKC_": Error occurred. &
-                            &The specified value for `domainPartitionMethod` ("//spec%domainPartitionMethod%val//SKC_") is not supported. &
+                err%msg =   err%msg//NL2//PROCEDURE_NAME//getFine(__FILE__, __LINE__)//SKG_": Error occurred. &
+                            &The specified value for `domainPartitionMethod` ("//spec%domainPartitionMethod%val//SKG_") is not supported. &
                             &The variable `domainPartitionMethod` cannot be set to anything other than the possible values described &
                             &in the description of the simulation specification `domainPartitionMethod`. &
                             &Please specify only one partitioning method."
@@ -1209,8 +1209,8 @@ contains
         domainPartitionObject_block: block
             if  (.not. spec%domainPartitionObject%isBall) then
                 err%occurred = .true._LK
-                err%msg =   err%msg//NL2//PROCEDURE_NAME//getFine(__FILE__, __LINE__)//SKC_": Error occurred. &
-                            &The specified value for the `domainPartitionObject` ("//spec%domainPartitionObject%val//SKC_") is not supported. &
+                err%msg =   err%msg//NL2//PROCEDURE_NAME//getFine(__FILE__, __LINE__)//SKG_": Error occurred. &
+                            &The specified value for the `domainPartitionObject` ("//spec%domainPartitionObject%val//SKG_") is not supported. &
                             &The variable `domainPartitionObject` cannot be set to anything other than the possible values described &
                             &in the description of the simulation specification `domainPartitionObject`. &
                             &Please specify only one partitioning object."
@@ -1227,20 +1227,20 @@ contains
         end block domainPartitionOptimizationShapeScaleEnabled_block
 
         domainPartitionScaleFactor_block: block
-            if (spec%domainPartitionScaleFactor%val <= 0._RKC) then
+            if (spec%domainPartitionScaleFactor%val <= 0._RKG) then
                 err%occurred = .true._LK
-                err%msg =   err%msg//NL2//PROCEDURE_NAME//getFine(__FILE__, __LINE__)//SKC_": Error occurred. &
-                            &The specified value for `domainPartitionScaleFactor` ("//getStr(spec%domainPartitionScaleFactor%val)//SKC_") cannot be less than 0. &
+                err%msg =   err%msg//NL2//PROCEDURE_NAME//getFine(__FILE__, __LINE__)//SKG_": Error occurred. &
+                            &The specified value for `domainPartitionScaleFactor` ("//getStr(spec%domainPartitionScaleFactor%val)//SKG_") cannot be less than 0. &
                             &If you are unsure of the appropriate value for `domainPartitionScaleFactor`, drop it from the input list. &
-                            &The "//spec%method%val//SKC_" sampler will automatically assign an appropriate value to it."
+                            &The "//spec%method%val//SKG_" sampler will automatically assign an appropriate value to it."
             end if
         end block domainPartitionScaleFactor_block
 
         domainSampler_block: block
             if (.not. spec%domainSampler%isRejection) then
                 err%occurred = .true._LK
-                err%msg =   err%msg//NL2//PROCEDURE_NAME//getFine(__FILE__, __LINE__)//SKC_": Error occurred. &
-                            &The specified value for `domainSampler` ("//spec%domainSampler%val//SKC_") is unsupported. &
+                err%msg =   err%msg//NL2//PROCEDURE_NAME//getFine(__FILE__, __LINE__)//SKG_": Error occurred. &
+                            &The specified value for `domainSampler` ("//spec%domainSampler%val//SKG_") is unsupported. &
                             &The specification `domainSampler` cannot be set to anything other than the values described &
                             &in the description of the simulation specification `domainSampler`."
             end if
@@ -1249,23 +1249,23 @@ contains
         liveSampleSize_block: block
             if (spec%liveSampleSize%val < spec%ndim%val + 1_IK) then
                 err%occurred = .true._LK
-                err%msg =   err%msg//NL2//PROCEDURE_NAME//getFine(__FILE__, __LINE__)//SKC_": Error occurred. &
-                            &The specified value for liveSampleSize ("//getStr(spec%liveSampleSize%val)//SKC_") &
+                err%msg =   err%msg//NL2//PROCEDURE_NAME//getFine(__FILE__, __LINE__)//SKG_": Error occurred. &
+                            &The specified value for liveSampleSize ("//getStr(spec%liveSampleSize%val)//SKG_") &
                             &cannot be less than or equal to the number of dimensions of the domain of the objective function. &
                             &If you are unsure of the appropriate value for liveSampleSize, drop it from the input list&. &
-                            &The "//spec%method%val//SKC_" sampler will automatically assign an appropriate value to it."
+                            &The "//spec%method%val//SKG_" sampler will automatically assign an appropriate value to it."
             else
-                spec%liveSampleSize%log = log(real(spec%liveSampleSize%val, RKC))
+                spec%liveSampleSize%log = log(real(spec%liveSampleSize%val, RKG))
             end if
         end block liveSampleSize_block
 
         tolerance_block: block
-            if (spec%tolerance%val <= 0._RKC) then
+            if (spec%tolerance%val <= 0._RKG) then
                 err%occurred = .true._LK
-                err%msg =   err%msg//NL2//PROCEDURE_NAME//getFine(__FILE__, __LINE__)//SKC_": Error occurred. &
-                            &The specified value for `tolerance` ("//getStr(spec%tolerance%val)//SKC_") must be positive. &
+                err%msg =   err%msg//NL2//PROCEDURE_NAME//getFine(__FILE__, __LINE__)//SKG_": Error occurred. &
+                            &The specified value for `tolerance` ("//getStr(spec%tolerance%val)//SKG_") must be positive. &
                             &If you are unsure of the appropriate value for tolerance, drop it from the input list. &
-                            &The "//spec%method%val//SKC_" will automatically assign an appropriate value to it."
+                            &The "//spec%method%val//SKG_" will automatically assign an appropriate value to it."
             end if
         end block tolerance_block
 

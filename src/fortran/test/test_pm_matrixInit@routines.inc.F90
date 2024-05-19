@@ -43,20 +43,20 @@
         logical(LK) :: isScalarDia
 
 #if     getMatInitULD_D2_SK_ENABLED || setMatInitULD_D2_SK_ENABLED
-        character(2,SKC), allocatable   :: Mat_ref(:,:), mat(:,:), vlow, vupp, vdia(:)
-        vlow = SKC_"aa"; vupp = SKC_"zz"
+        character(2,SKG), allocatable   :: Mat_ref(:,:), mat(:,:), vlow, vupp, vdia(:)
+        vlow = SKG_"aa"; vupp = SKG_"zz"
 #elif   getMatInitULD_D2_IK_ENABLED || setMatInitULD_D2_IK_ENABLED
-        integer(IKC)    , allocatable   :: Mat_ref(:,:), mat(:,:), vlow, vupp, vdia(:)
-        vlow = -1_IKC; vupp = +1_IKC
+        integer(IKG)    , allocatable   :: Mat_ref(:,:), mat(:,:), vlow, vupp, vdia(:)
+        vlow = -1_IKG; vupp = +1_IKG
 #elif   getMatInitULD_D2_LK_ENABLED || setMatInitULD_D2_LK_ENABLED
-        logical(LKC)    , allocatable   :: Mat_ref(:,:), mat(:,:), vlow, vupp, vdia(:)
-        vlow = .false._LKC; vupp = .true._LKC
+        logical(LKG)    , allocatable   :: Mat_ref(:,:), mat(:,:), vlow, vupp, vdia(:)
+        vlow = .false._LKG; vupp = .true._LKG
 #elif   getMatInitULD_D2_CK_ENABLED || setMatInitULD_D2_CK_ENABLED
-        complex(CKC)    , allocatable   :: Mat_ref(:,:), mat(:,:), vlow, vupp, vdia(:)
-        vlow = (-1._CKC, -1._CKC); vupp = (1._CKC, 1._CKC)
+        complex(CKG)    , allocatable   :: Mat_ref(:,:), mat(:,:), vlow, vupp, vdia(:)
+        vlow = (-1._CKG, -1._CKG); vupp = (1._CKG, 1._CKG)
 #elif   getMatInitULD_D2_RK_ENABLED || setMatInitULD_D2_RK_ENABLED
-        real(RKC)       , allocatable   :: Mat_ref(:,:), mat(:,:), vlow, vupp, vdia(:)
-        vlow = -1._RKC; vupp = 1._RKC
+        real(RKG)       , allocatable   :: Mat_ref(:,:), mat(:,:), vlow, vupp, vdia(:)
+        vlow = -1._RKG; vupp = 1._RKG
 #else
 #error  "Unrecognized Interface."
 #endif
@@ -150,15 +150,15 @@
         subroutine setMatInitULD_D2_ref(mat, vupp, vlow, vdia, nrow, ncol, roff, coff, doff)
             integer(IK), intent(in) :: nrow, ncol, roff, coff, doff
 #if         getMatInitULD_D2_SK_ENABLED || setMatInitULD_D2_SK_ENABLED
-            character(*,SKC) :: mat(:,:), vdia(:), vupp, vlow
+            character(*,SKG) :: mat(:,:), vdia(:), vupp, vlow
 #elif       getMatInitULD_D2_IK_ENABLED || setMatInitULD_D2_IK_ENABLED
-            integer(IKC)     :: mat(:,:), vdia(:), vupp, vlow
+            integer(IKG)     :: mat(:,:), vdia(:), vupp, vlow
 #elif       getMatInitULD_D2_LK_ENABLED || setMatInitULD_D2_LK_ENABLED
-            logical(LKC)     :: mat(:,:), vdia(:), vupp, vlow
+            logical(LKG)     :: mat(:,:), vdia(:), vupp, vlow
 #elif       getMatInitULD_D2_CK_ENABLED || setMatInitULD_D2_CK_ENABLED
-            complex(CKC)     :: mat(:,:), vdia(:), vupp, vlow
+            complex(CKG)     :: mat(:,:), vdia(:), vupp, vlow
 #elif       getMatInitULD_D2_RK_ENABLED || setMatInitULD_D2_RK_ENABLED
-            real(RKC)        :: mat(:,:), vdia(:), vupp, vlow
+            real(RKG)        :: mat(:,:), vdia(:), vupp, vlow
 #else
 #error      "Unrecognized Interface."
 #endif

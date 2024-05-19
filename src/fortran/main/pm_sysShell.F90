@@ -228,7 +228,7 @@ module pm_sysShell
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: shellis_typerFailed
 #endif
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
         logical(LK)     , intent(out)   :: failed
         type(shellis_type)              :: shellis
     end function
@@ -237,9 +237,9 @@ module pm_sysShell
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: shellis_typerFailedMsg
 #endif
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
         logical(LK)     , intent(out)   :: failed
-        character(*,SKC), intent(inout) :: errmsg
+        character(*,SKG), intent(inout) :: errmsg
         type(shellis_type)              :: shellis
     end function
 
@@ -342,7 +342,7 @@ module pm_sysShell
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: shell_typerFailed
 #endif
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
         logical(LK)     , intent(out)   :: failed
         type(shell_type)                :: shell
     end function
@@ -351,9 +351,9 @@ module pm_sysShell
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: shell_typerFailedMsg
 #endif
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
         logical(LK)     , intent(out)   :: failed
-        character(*,SKC), intent(inout) :: errmsg
+        character(*,SKG), intent(inout) :: errmsg
         type(shell_type)                :: shell
     end function
 
@@ -429,9 +429,9 @@ module pm_sysShell
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isFailedGetEnvVar
 #endif
-        use pm_kind, only: SKC => SK
-        character(*,SKC), intent(in)                    :: name
-        character(:,SKC), intent(out)   , allocatable   :: value
+        use pm_kind, only: SKG => SK
+        character(*,SKG), intent(in)                    :: name
+        character(:,SKG), intent(out)   , allocatable   :: value
         integer(IK)     , intent(in)    , optional      :: length
         logical(LK)                                     :: failed
     end function
@@ -440,9 +440,9 @@ module pm_sysShell
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isFailedGetEnvVarMsg
 #endif
-        use pm_kind, only: SKC => SK
-        character(*,SKC), intent(in)                    :: name
-        character(:,SKC), intent(out)   , allocatable   :: value
+        use pm_kind, only: SKG => SK
+        character(*,SKG), intent(in)                    :: name
+        character(:,SKG), intent(out)   , allocatable   :: value
         character(*, SK), intent(inout)                 :: errmsg
         integer(IK)     , intent(in)    , optional      :: length
         logical(LK)                                     :: failed
@@ -510,8 +510,8 @@ module pm_sysShell
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isFailedPutEnvVar
 #endif
-        use pm_kind, only: SKC => SK
-        character(*,SKC), intent(in)    :: name, value
+        use pm_kind, only: SKG => SK
+        character(*,SKG), intent(in)    :: name, value
         logical(LK)                     :: failed
     end function
 
@@ -589,9 +589,9 @@ module pm_sysShell
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isFailedGetOutput
 #endif
-        use pm_kind, only: SKC => SK
-        character(*,SKC), intent(in)                    :: command
-        character(:,SKC), intent(out)   , allocatable   :: output
+        use pm_kind, only: SKG => SK
+        character(*,SKG), intent(in)                    :: command
+        character(:,SKG), intent(out)   , allocatable   :: output
         integer(IK)     , intent(out)   , optional      :: exitstat
         logical(LK)                                     :: failed
     end function
@@ -600,9 +600,9 @@ module pm_sysShell
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isFailedGetOutputMsg
 #endif
-        use pm_kind, only: SKC => SK
-        character(*,SKC), intent(in)                    :: command
-        character(:,SKC), intent(out)   , allocatable   :: output
+        use pm_kind, only: SKG => SK
+        character(*,SKG), intent(in)                    :: command
+        character(:,SKG), intent(out)   , allocatable   :: output
         character(*, SK), intent(inout)                 :: errmsg
         integer(IK)     , intent(out)   , optional      :: exitstat
         logical(LK)                                     :: failed
@@ -695,8 +695,8 @@ module pm_sysShell
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isFailedGetDirTemp
 #endif
-        use pm_kind, only: SKC => SK
-        character(:,SKC), intent(out)   , allocatable   :: dirTemp
+        use pm_kind, only: SKG => SK
+        character(:,SKG), intent(out)   , allocatable   :: dirTemp
         logical(LK)                                     :: failed
     end function
 
@@ -704,8 +704,8 @@ module pm_sysShell
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isFailedGetDirTempMsg
 #endif
-        use pm_kind, only: SKC => SK
-        character(:,SKC), intent(out)   , allocatable   :: dirTemp
+        use pm_kind, only: SKG => SK
+        character(:,SKG), intent(out)   , allocatable   :: dirTemp
         character(*, SK), intent(inout)                 :: errmsg
         logical(LK)                                     :: failed
     end function
@@ -783,7 +783,7 @@ module pm_sysShell
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isShellPosixFailed
 #endif
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
         logical(LK)     , intent(out)   :: failed
         logical(LK)                     :: shellIsPosix
     end function
@@ -867,7 +867,7 @@ module pm_sysShell
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isShellWindowsFailed
 #endif
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
         logical(LK)     , intent(out)   :: failed
         logical(LK)                     :: shellIsWindows
     end function
@@ -952,7 +952,7 @@ module pm_sysShell
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isShellCMDFailed
 #endif
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
         logical(LK)     , intent(out)   :: failed
         logical(LK)                     :: shellIsCMD
     end function
@@ -1037,7 +1037,7 @@ module pm_sysShell
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isShellPowerShellFailed
 #endif
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
         logical(LK)     , intent(out)   :: failed
         logical(LK)                     :: shellIsPowerShell
     end function
@@ -1143,8 +1143,8 @@ module pm_sysShell
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isFailedExec
 #endif
-        use pm_kind, only: SKC => SK
-        character(*,SKC), intent(in)                :: command
+        use pm_kind, only: SKG => SK
+        character(*,SKG), intent(in)                :: command
         logical(LK)     , intent(in)    , optional  :: wait
         integer(IK)     , intent(inout) , optional  :: exitstat
         integer(IK)     , intent(out)   , optional  :: cmdstat
@@ -1217,7 +1217,7 @@ module pm_sysShell
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isFailedGetShellShape
 #endif
-        use pm_kind, only: IKC => IK
+        use pm_kind, only: IKG => IK
         integer(IK)     , intent(out)   :: width
         integer(IK)     , intent(out)   :: height
         logical(LK)                     :: failed
@@ -1285,7 +1285,7 @@ module pm_sysShell
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isFailedGetShellWidth
 #endif
-        use pm_kind, only: IKC => IK
+        use pm_kind, only: IKG => IK
         integer(IK)     , intent(out)   :: width
         logical(LK)                     :: failed
     end function
@@ -1352,7 +1352,7 @@ module pm_sysShell
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isFailedGetShellHeight
 #endif
-        use pm_kind, only: IKC => IK
+        use pm_kind, only: IKG => IK
         integer(IK)     , intent(out)   :: height
         logical(LK)                     :: failed
     end function

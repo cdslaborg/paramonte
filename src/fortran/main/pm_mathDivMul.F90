@@ -128,9 +128,9 @@ module pm_mathDivMul
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDivMulUnary_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC), intent(in)    :: val
-        integer(IKC)                :: binval(2)
+        use pm_kind, only: IKG => IK5
+        integer(IKG), intent(in)    :: val
+        integer(IKG)                :: binval(2)
     end function
 #endif
 
@@ -139,9 +139,9 @@ module pm_mathDivMul
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDivMulUnary_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC), intent(in)    :: val
-        integer(IKC)                :: binval(2)
+        use pm_kind, only: IKG => IK4
+        integer(IKG), intent(in)    :: val
+        integer(IKG)                :: binval(2)
     end function
 #endif
 
@@ -150,9 +150,9 @@ module pm_mathDivMul
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDivMulUnary_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC), intent(in)    :: val
-        integer(IKC)                :: binval(2)
+        use pm_kind, only: IKG => IK3
+        integer(IKG), intent(in)    :: val
+        integer(IKG)                :: binval(2)
     end function
 #endif
 
@@ -161,9 +161,9 @@ module pm_mathDivMul
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDivMulUnary_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC), intent(in)    :: val
-        integer(IKC)                :: binval(2)
+        use pm_kind, only: IKG => IK2
+        integer(IKG), intent(in)    :: val
+        integer(IKG)                :: binval(2)
     end function
 #endif
 
@@ -172,9 +172,9 @@ module pm_mathDivMul
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDivMulUnary_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC), intent(in)    :: val
-        integer(IKC)                :: binval(2)
+        use pm_kind, only: IKG => IK1
+        integer(IKG), intent(in)    :: val
+        integer(IKG)                :: binval(2)
     end function
 #endif
 
@@ -185,9 +185,9 @@ module pm_mathDivMul
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDivMulUnary_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC), intent(in)    :: val
-        complex(CKC)                :: binval(2)
+        use pm_kind, only: CKG => CK5
+        complex(CKG), intent(in)    :: val
+        complex(CKG)                :: binval(2)
     end function
 #endif
 
@@ -196,9 +196,9 @@ module pm_mathDivMul
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDivMulUnary_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC), intent(in)    :: val
-        complex(CKC)                :: binval(2)
+        use pm_kind, only: CKG => CK4
+        complex(CKG), intent(in)    :: val
+        complex(CKG)                :: binval(2)
     end function
 #endif
 
@@ -207,9 +207,9 @@ module pm_mathDivMul
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDivMulUnary_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC), intent(in)    :: val
-        complex(CKC)                :: binval(2)
+        use pm_kind, only: CKG => CK3
+        complex(CKG), intent(in)    :: val
+        complex(CKG)                :: binval(2)
     end function
 #endif
 
@@ -218,9 +218,9 @@ module pm_mathDivMul
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDivMulUnary_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC), intent(in)    :: val
-        complex(CKC)                :: binval(2)
+        use pm_kind, only: CKG => CK2
+        complex(CKG), intent(in)    :: val
+        complex(CKG)                :: binval(2)
     end function
 #endif
 
@@ -229,9 +229,9 @@ module pm_mathDivMul
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDivMulUnary_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC), intent(in)    :: val
-        complex(CKC)                :: binval(2)
+        use pm_kind, only: CKG => CK1
+        complex(CKG), intent(in)    :: val
+        complex(CKG)                :: binval(2)
     end function
 #endif
 
@@ -242,9 +242,9 @@ module pm_mathDivMul
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDivMulUnary_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(in)    :: val
-        real(RKC)                   :: binval(2)
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(in)    :: val
+        real(RKG)                   :: binval(2)
     end function
 #endif
 
@@ -253,9 +253,9 @@ module pm_mathDivMul
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDivMulUnary_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(in)    :: val
-        real(RKC)                   :: binval(2)
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(in)    :: val
+        real(RKG)                   :: binval(2)
     end function
 #endif
 
@@ -264,9 +264,9 @@ module pm_mathDivMul
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDivMulUnary_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(in)    :: val
-        real(RKC)                   :: binval(2)
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(in)    :: val
+        real(RKG)                   :: binval(2)
     end function
 #endif
 
@@ -275,9 +275,9 @@ module pm_mathDivMul
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDivMulUnary_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(in)    :: val
-        real(RKC)                   :: binval(2)
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(in)    :: val
+        real(RKG)                   :: binval(2)
     end function
 #endif
 
@@ -286,9 +286,9 @@ module pm_mathDivMul
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDivMulUnary_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(in)    :: val
-        real(RKC)                   :: binval(2)
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(in)    :: val
+        real(RKG)                   :: binval(2)
     end function
 #endif
 
@@ -305,9 +305,9 @@ module pm_mathDivMul
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDivMulBinary_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC), intent(in)    :: ref, val
-        integer(IKC)                :: binval(2)
+        use pm_kind, only: IKG => IK5
+        integer(IKG), intent(in)    :: ref, val
+        integer(IKG)                :: binval(2)
     end function
 #endif
 
@@ -316,9 +316,9 @@ module pm_mathDivMul
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDivMulBinary_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC), intent(in)    :: ref, val
-        integer(IKC)                :: binval(2)
+        use pm_kind, only: IKG => IK4
+        integer(IKG), intent(in)    :: ref, val
+        integer(IKG)                :: binval(2)
     end function
 #endif
 
@@ -327,9 +327,9 @@ module pm_mathDivMul
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDivMulBinary_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC), intent(in)    :: ref, val
-        integer(IKC)                :: binval(2)
+        use pm_kind, only: IKG => IK3
+        integer(IKG), intent(in)    :: ref, val
+        integer(IKG)                :: binval(2)
     end function
 #endif
 
@@ -338,9 +338,9 @@ module pm_mathDivMul
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDivMulBinary_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC), intent(in)    :: ref, val
-        integer(IKC)                :: binval(2)
+        use pm_kind, only: IKG => IK2
+        integer(IKG), intent(in)    :: ref, val
+        integer(IKG)                :: binval(2)
     end function
 #endif
 
@@ -349,9 +349,9 @@ module pm_mathDivMul
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDivMulBinary_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC), intent(in)    :: ref, val
-        integer(IKC)                :: binval(2)
+        use pm_kind, only: IKG => IK1
+        integer(IKG), intent(in)    :: ref, val
+        integer(IKG)                :: binval(2)
     end function
 #endif
 
@@ -362,9 +362,9 @@ module pm_mathDivMul
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDivMulBinary_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC), intent(in)    :: ref, val
-        complex(CKC)                :: binval(2)
+        use pm_kind, only: CKG => CK5
+        complex(CKG), intent(in)    :: ref, val
+        complex(CKG)                :: binval(2)
     end function
 #endif
 
@@ -373,9 +373,9 @@ module pm_mathDivMul
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDivMulBinary_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC), intent(in)    :: ref, val
-        complex(CKC)                :: binval(2)
+        use pm_kind, only: CKG => CK4
+        complex(CKG), intent(in)    :: ref, val
+        complex(CKG)                :: binval(2)
     end function
 #endif
 
@@ -384,9 +384,9 @@ module pm_mathDivMul
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDivMulBinary_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC), intent(in)    :: ref, val
-        complex(CKC)                :: binval(2)
+        use pm_kind, only: CKG => CK3
+        complex(CKG), intent(in)    :: ref, val
+        complex(CKG)                :: binval(2)
     end function
 #endif
 
@@ -395,9 +395,9 @@ module pm_mathDivMul
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDivMulBinary_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC), intent(in)    :: ref, val
-        complex(CKC)                :: binval(2)
+        use pm_kind, only: CKG => CK2
+        complex(CKG), intent(in)    :: ref, val
+        complex(CKG)                :: binval(2)
     end function
 #endif
 
@@ -406,9 +406,9 @@ module pm_mathDivMul
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDivMulBinary_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC), intent(in)    :: ref, val
-        complex(CKC)                :: binval(2)
+        use pm_kind, only: CKG => CK1
+        complex(CKG), intent(in)    :: ref, val
+        complex(CKG)                :: binval(2)
     end function
 #endif
 
@@ -419,9 +419,9 @@ module pm_mathDivMul
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDivMulBinary_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(in)    :: ref, val
-        real(RKC)                   :: binval(2)
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(in)    :: ref, val
+        real(RKG)                   :: binval(2)
     end function
 #endif
 
@@ -430,9 +430,9 @@ module pm_mathDivMul
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDivMulBinary_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(in)    :: ref, val
-        real(RKC)                   :: binval(2)
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(in)    :: ref, val
+        real(RKG)                   :: binval(2)
     end function
 #endif
 
@@ -441,9 +441,9 @@ module pm_mathDivMul
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDivMulBinary_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(in)    :: ref, val
-        real(RKC)                   :: binval(2)
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(in)    :: ref, val
+        real(RKG)                   :: binval(2)
     end function
 #endif
 
@@ -452,9 +452,9 @@ module pm_mathDivMul
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDivMulBinary_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(in)    :: ref, val
-        real(RKC)                   :: binval(2)
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(in)    :: ref, val
+        real(RKG)                   :: binval(2)
     end function
 #endif
 
@@ -463,9 +463,9 @@ module pm_mathDivMul
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDivMulBinary_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(in)    :: ref, val
-        real(RKC)                   :: binval(2)
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(in)    :: ref, val
+        real(RKG)                   :: binval(2)
     end function
 #endif
 

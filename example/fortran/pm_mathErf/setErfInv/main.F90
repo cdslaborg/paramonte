@@ -63,47 +63,47 @@ program example
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     block
-        use pm_kind, only: RKB, RKC => RKH
+        use pm_kind, only: RKB, RKG => RKH
         use pm_arraySpace, only: setLinSpace
         integer(IK) , parameter :: NP = 2000
         integer :: fileUnit, i
-        real(RKC) :: erfval(NP), erfinv(NP)
+        real(RKG) :: erfval(NP), erfinv(NP)
 
-        call setLinSpace(erfval, -1._RKC + sqrt(epsilon(0._RKC)), 1._RKC - sqrt(epsilon(0._RKC)))
+        call setLinSpace(erfval, -1._RKG + sqrt(epsilon(0._RKG)), 1._RKG - sqrt(epsilon(0._RKG)))
 
         open(newunit = fileUnit, file = "setErfInv.RK.txt")
-        call setErfInv(erfinv, erfval, abserr = 100 * epsilon(0._RKC))
+        call setErfInv(erfinv, erfval, abserr = 100 * epsilon(0._RKG))
         do i = 1, NP
-            write(fileUnit, "(*(g0,:,' '))") real(erfval(i), RKC), real(erfinv(i), RKC)
+            write(fileUnit, "(*(g0,:,' '))") real(erfval(i), RKG), real(erfinv(i), RKG)
         end do
         close(fileUnit)
 
         block
-            use pm_kind, only: RKC => RKS
+            use pm_kind, only: RKG => RKS
             open(newunit = fileUnit, file = "setErfInv.RKS.abserr.txt")
-            call setErfInv(erfinv, erfval, abserr = real(100 * epsilon(0._RKC), RKH))
+            call setErfInv(erfinv, erfval, abserr = real(100 * epsilon(0._RKG), RKH))
             do i = 1, NP
-                write(fileUnit, "(*(g0,:,' '))") real(erfval(i), RKC), real(erfval(i), RKC) - erf(real(erfinv(i), RKB))
+                write(fileUnit, "(*(g0,:,' '))") real(erfval(i), RKG), real(erfval(i), RKG) - erf(real(erfinv(i), RKB))
             end do
             close(fileUnit)
         end block
 
         block
-            use pm_kind, only: RKC => RKD
+            use pm_kind, only: RKG => RKD
             open(newunit = fileUnit, file = "setErfInv.RKD.abserr.txt")
-            call setErfInv(erfinv, erfval, abserr = real(100 * epsilon(0._RKC), RKH))
+            call setErfInv(erfinv, erfval, abserr = real(100 * epsilon(0._RKG), RKH))
             do i = 1, NP
-                write(fileUnit, "(*(g0,:,' '))") real(erfval(i), RKC), real(erfval(i), RKC) - erf(real(erfinv(i), RKB))
+                write(fileUnit, "(*(g0,:,' '))") real(erfval(i), RKG), real(erfval(i), RKG) - erf(real(erfinv(i), RKB))
             end do
             close(fileUnit)
         end block
 
         block
-            use pm_kind, only: RKC => RKH
+            use pm_kind, only: RKG => RKH
             open(newunit = fileUnit, file = "setErfInv.RKH.abserr.txt")
-            call setErfInv(erfinv, erfval, abserr = real(100 * epsilon(0._RKC), RKH))
+            call setErfInv(erfinv, erfval, abserr = real(100 * epsilon(0._RKG), RKH))
             do i = 1, NP
-                write(fileUnit, "(*(g0,:,' '))") real(erfval(i), RKC), real(erfval(i), RKC) - erf(real(erfinv(i), RKB))
+                write(fileUnit, "(*(g0,:,' '))") real(erfval(i), RKG), real(erfval(i), RKG) - erf(real(erfinv(i), RKB))
             end do
             close(fileUnit)
         end block

@@ -27,8 +27,8 @@ program example
     call disp%skip()
 
     block
-        use pm_kind, only: TKC => RKS ! all processor kinds are supported.
-        real(TKC), allocatable :: sample(:), prob(:), quan(:)
+        use pm_kind, only: TKG => RKS ! all processor kinds are supported.
+        real(TKG), allocatable :: sample(:), prob(:), quan(:)
         call disp%skip()
         call disp%show("sample = [10, 7, 4, 3, 2, 1, 0]")
                         sample = [10, 7, 4, 3, 2, 1, 0]
@@ -72,8 +72,8 @@ program example
     call disp%skip()
 
     block
-        use pm_kind, only: TKC => RKS ! all processor kinds are supported.
-        real(TKC), allocatable :: sample(:), prob(:), quan(:)
+        use pm_kind, only: TKG => RKS ! all processor kinds are supported.
+        real(TKG), allocatable :: sample(:), prob(:), quan(:)
         call disp%skip()
         call disp%show("sample = [10, 7, 4, 3, 2, 1, 0]")
                         sample = [10, 7, 4, 3, 2, 1, 0]
@@ -115,14 +115,14 @@ program example
     end block
 
     block
-        use pm_kind, only: TKC => RKS ! all processor kinds are supported.
-        real(TKC), allocatable :: sample(:), prob(:), quan(:)
-        real(TKC), allocatable :: rweight(:)
+        use pm_kind, only: TKG => RKS ! all processor kinds are supported.
+        real(TKG), allocatable :: sample(:), prob(:), quan(:)
+        real(TKG), allocatable :: rweight(:)
         call disp%skip()
         call disp%show("sample = [10, 7, 4, 3, 2, 1, 0]")
                         sample = [10, 7, 4, 3, 2, 1, 0]
-        call disp%show("rweight = exp(getNormLogPDF(getFilled(0._TKC, size(sample, 1, IK))))")
-                        rweight = exp(getNormLogPDF(getFilled(0._TKC, size(sample, 1, IK))))
+        call disp%show("rweight = exp(getNormLogPDF(getFilled(0._TKG, size(sample, 1, IK))))")
+                        rweight = exp(getNormLogPDF(getFilled(0._TKG, size(sample, 1, IK))))
         call disp%show("rweight")
         call disp%show( rweight )
         call disp%show("prob = [0., .25, .5, .75, .9, 1.]")
@@ -165,8 +165,8 @@ program example
     call disp%skip()
 
     block
-        use pm_kind, only: TKC => RKS ! all processor kinds are supported.
-        real(TKC), allocatable :: sample(:,:), prob(:), quan1(:), quan2(:,:)
+        use pm_kind, only: TKG => RKS ! all processor kinds are supported.
+        real(TKG), allocatable :: sample(:,:), prob(:), quan1(:), quan2(:,:)
         integer(IK) :: nsam, nprob, dim
         call disp%skip()
         call disp%show("dim = 2; ndim = getUnifRand(1, 3); nsam = getUnifRand(5, 10); nprob = getUnifRand(3, 9)")
@@ -225,8 +225,8 @@ program example
     end block
 
     block
-        use pm_kind, only: TKC => RKS ! all processor kinds are supported.
-        real(TKC), allocatable :: sample(:,:), prob(:), quan1(:), quan2(:,:)
+        use pm_kind, only: TKG => RKS ! all processor kinds are supported.
+        real(TKG), allocatable :: sample(:,:), prob(:), quan1(:), quan2(:,:)
         integer(IK) :: nsam, nprob, dim
         call disp%skip()
         call disp%show("dim = 1; ndim = getUnifRand(1, 3); nsam = getUnifRand(5, 10); nprob = getUnifRand(3, 9)")
@@ -291,8 +291,8 @@ program example
     call disp%skip()
 
     block
-        use pm_kind, only: TKC => RKS ! all processor kinds are supported.
-        real(TKC), allocatable :: sample(:,:), prob(:), quan1(:), quan2(:,:)
+        use pm_kind, only: TKG => RKS ! all processor kinds are supported.
+        real(TKG), allocatable :: sample(:,:), prob(:), quan1(:), quan2(:,:)
         integer(IK) :: nsam, nprob, dim
         call disp%skip()
         call disp%show("dim = 2; ndim = getUnifRand(1, 3); nsam = getUnifRand(5, 10); nprob = getUnifRand(3, 9)")
@@ -361,9 +361,9 @@ program example
     call disp%skip()
 
     block
-        use pm_kind, only: TKC => RKS ! all processor kinds are supported.
-        real(TKC), allocatable :: sample(:,:), prob(:), quan1(:), quan2(:,:)
-        real(TKC), allocatable :: rweight(:)
+        use pm_kind, only: TKG => RKS ! all processor kinds are supported.
+        real(TKG), allocatable :: sample(:,:), prob(:), quan1(:), quan2(:,:)
+        real(TKG), allocatable :: rweight(:)
         integer(IK) :: nsam, nprob, dim
         call disp%skip()
         call disp%show("dim = 2; ndim = getUnifRand(1, 3); nsam = getUnifRand(5, 10); nprob = getUnifRand(3, 9)")

@@ -147,9 +147,9 @@ module pm_mathSqrt
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getSqrtDef_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)        , value         :: posint
-        integer(IKC)                        :: intSqrt
+        use pm_kind, only: IKG => IK5
+        integer(IKG)        , value         :: posint
+        integer(IKG)                        :: intSqrt
     end function
 #endif
 
@@ -158,9 +158,9 @@ module pm_mathSqrt
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getSqrtDef_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)        , value         :: posint
-        integer(IKC)                        :: intSqrt
+        use pm_kind, only: IKG => IK4
+        integer(IKG)        , value         :: posint
+        integer(IKG)                        :: intSqrt
     end function
 #endif
 
@@ -169,9 +169,9 @@ module pm_mathSqrt
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getSqrtDef_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)        , value         :: posint
-        integer(IKC)                        :: intSqrt
+        use pm_kind, only: IKG => IK3
+        integer(IKG)        , value         :: posint
+        integer(IKG)                        :: intSqrt
     end function
 #endif
 
@@ -180,9 +180,9 @@ module pm_mathSqrt
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getSqrtDef_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)        , value         :: posint
-        integer(IKC)                        :: intSqrt
+        use pm_kind, only: IKG => IK2
+        integer(IKG)        , value         :: posint
+        integer(IKG)                        :: intSqrt
     end function
 #endif
 
@@ -191,9 +191,9 @@ module pm_mathSqrt
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getSqrtDef_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)        , value         :: posint
-        integer(IKC)                        :: intSqrt
+        use pm_kind, only: IKG => IK1
+        integer(IKG)        , value         :: posint
+        integer(IKG)                        :: intSqrt
     end function
 #endif
 
@@ -204,10 +204,10 @@ module pm_mathSqrt
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getSqrtBin_IK5
 #endif
-        use pm_kind, only: IKC => IK5
+        use pm_kind, only: IKG => IK5
         type(binary_type)   , intent(in)    :: method
-        integer(IKC)        , value         :: posint
-        integer(IKC)                        :: intSqrt
+        integer(IKG)        , value         :: posint
+        integer(IKG)                        :: intSqrt
     end function
 #endif
 
@@ -216,10 +216,10 @@ module pm_mathSqrt
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getSqrtBin_IK4
 #endif
-        use pm_kind, only: IKC => IK4
+        use pm_kind, only: IKG => IK4
         type(binary_type)   , intent(in)    :: method
-        integer(IKC)        , value         :: posint
-        integer(IKC)                        :: intSqrt
+        integer(IKG)        , value         :: posint
+        integer(IKG)                        :: intSqrt
     end function
 #endif
 
@@ -228,10 +228,10 @@ module pm_mathSqrt
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getSqrtBin_IK3
 #endif
-        use pm_kind, only: IKC => IK3
+        use pm_kind, only: IKG => IK3
         type(binary_type)   , intent(in)    :: method
-        integer(IKC)        , value         :: posint
-        integer(IKC)                        :: intSqrt
+        integer(IKG)        , value         :: posint
+        integer(IKG)                        :: intSqrt
     end function
 #endif
 
@@ -240,10 +240,10 @@ module pm_mathSqrt
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getSqrtBin_IK2
 #endif
-        use pm_kind, only: IKC => IK2
+        use pm_kind, only: IKG => IK2
         type(binary_type)   , intent(in)    :: method
-        integer(IKC)        , value         :: posint
-        integer(IKC)                        :: intSqrt
+        integer(IKG)        , value         :: posint
+        integer(IKG)                        :: intSqrt
     end function
 #endif
 
@@ -252,10 +252,10 @@ module pm_mathSqrt
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getSqrtBin_IK1
 #endif
-        use pm_kind, only: IKC => IK1
+        use pm_kind, only: IKG => IK1
         type(binary_type)   , intent(in)    :: method
-        integer(IKC)        , value         :: posint
-        integer(IKC)                        :: intSqrt
+        integer(IKG)        , value         :: posint
+        integer(IKG)                        :: intSqrt
     end function
 #endif
 
@@ -266,10 +266,10 @@ module pm_mathSqrt
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getSqrtLin_IK5
 #endif
-        use pm_kind, only: IKC => IK5
+        use pm_kind, only: IKG => IK5
         type(linear_type)   , intent(in)    :: method
-        integer(IKC)        , value         :: posint
-        integer(IKC)                        :: intSqrt
+        integer(IKG)        , value         :: posint
+        integer(IKG)                        :: intSqrt
     end function
 #endif
 
@@ -278,10 +278,10 @@ module pm_mathSqrt
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getSqrtLin_IK4
 #endif
-        use pm_kind, only: IKC => IK4
+        use pm_kind, only: IKG => IK4
         type(linear_type)   , intent(in)    :: method
-        integer(IKC)        , value         :: posint
-        integer(IKC)                        :: intSqrt
+        integer(IKG)        , value         :: posint
+        integer(IKG)                        :: intSqrt
     end function
 #endif
 
@@ -290,10 +290,10 @@ module pm_mathSqrt
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getSqrtLin_IK3
 #endif
-        use pm_kind, only: IKC => IK3
+        use pm_kind, only: IKG => IK3
         type(linear_type)   , intent(in)    :: method
-        integer(IKC)        , value         :: posint
-        integer(IKC)                        :: intSqrt
+        integer(IKG)        , value         :: posint
+        integer(IKG)                        :: intSqrt
     end function
 #endif
 
@@ -302,10 +302,10 @@ module pm_mathSqrt
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getSqrtLin_IK2
 #endif
-        use pm_kind, only: IKC => IK2
+        use pm_kind, only: IKG => IK2
         type(linear_type)   , intent(in)    :: method
-        integer(IKC)        , value         :: posint
-        integer(IKC)                        :: intSqrt
+        integer(IKG)        , value         :: posint
+        integer(IKG)                        :: intSqrt
     end function
 #endif
 
@@ -314,10 +314,10 @@ module pm_mathSqrt
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getSqrtLin_IK1
 #endif
-        use pm_kind, only: IKC => IK1
+        use pm_kind, only: IKG => IK1
         type(linear_type)   , intent(in)    :: method
-        integer(IKC)        , value         :: posint
-        integer(IKC)                        :: intSqrt
+        integer(IKG)        , value         :: posint
+        integer(IKG)                        :: intSqrt
     end function
 #endif
 

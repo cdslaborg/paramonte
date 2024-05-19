@@ -1,7 +1,7 @@
 program example
 
     use pm_kind, only: SK, IK
-    use pm_kind, only: RKC => RKS ! all real kinds are supported.
+    use pm_kind, only: RKG => RKS ! all real kinds are supported.
     use pm_distUnif, only: xoshiro256ssw_type
     use pm_distGeomCyclic, only: setGeomCyclicRand
     use pm_arraySpace, only: getLinSpace
@@ -13,12 +13,12 @@ program example
     type(xoshiro256ssw_type) :: rng
     integer(IK), parameter  :: NP = 1000_IK
     integer(IK) :: rand(NP)
-    real(RKC) :: logProbFailure(NP)
+    real(RKG) :: logProbFailure(NP)
 
     type(display_type) :: disp
     disp = display_type(file = "main.out.F90")
 
-    logProbFailure = log(1 - getLinSpace(x1 = 0.001_RKC, x2 = .999_RKC, count = NP))
+    logProbFailure = log(1 - getLinSpace(x1 = 0.001_RKG, x2 = .999_RKG, count = NP))
 
     call disp%skip()
     call disp%show("logProbFailure(1)")
@@ -68,7 +68,7 @@ program example
         integer(IK) :: rand(4)
         open(newunit = fileUnit, file = "setGeomCyclicRand.IK.txt")
         do i = 1, 5000
-            call setGeomCyclicRand(rand, log(1 - [.05_RKC, .25_RKC, .05_RKC, .25_RKC]), period = [10_IK, 10_IK, 10000_IK, 10000_IK])
+            call setGeomCyclicRand(rand, log(1 - [.05_RKG, .25_RKG, .05_RKG, .25_RKG]), period = [10_IK, 10_IK, 10000_IK, 10000_IK])
             write(fileUnit, "(*(g0,:,','))" ) rand
         end do
         close(fileUnit)

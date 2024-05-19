@@ -132,10 +132,10 @@ module pm_clustering
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMemberEuc_D0_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)               , intent(in)                    :: sample
-        real(RKC)               , intent(in)    , contiguous    :: center(:)
-        real(RKC)               , intent(out)                   :: disq
+        use pm_kind, only: RKG => RK5
+        real(RKG)               , intent(in)                    :: sample
+        real(RKG)               , intent(in)    , contiguous    :: center(:)
+        real(RKG)               , intent(out)                   :: disq
         integer(IK)             , intent(out)                   :: membership
     end subroutine
 #endif
@@ -145,10 +145,10 @@ module pm_clustering
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMemberEuc_D0_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)               , intent(in)                    :: sample
-        real(RKC)               , intent(in)    , contiguous    :: center(:)
-        real(RKC)               , intent(out)                   :: disq
+        use pm_kind, only: RKG => RK4
+        real(RKG)               , intent(in)                    :: sample
+        real(RKG)               , intent(in)    , contiguous    :: center(:)
+        real(RKG)               , intent(out)                   :: disq
         integer(IK)             , intent(out)                   :: membership
     end subroutine
 #endif
@@ -158,10 +158,10 @@ module pm_clustering
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMemberEuc_D0_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)               , intent(in)                    :: sample
-        real(RKC)               , intent(in)    , contiguous    :: center(:)
-        real(RKC)               , intent(out)                   :: disq
+        use pm_kind, only: RKG => RK3
+        real(RKG)               , intent(in)                    :: sample
+        real(RKG)               , intent(in)    , contiguous    :: center(:)
+        real(RKG)               , intent(out)                   :: disq
         integer(IK)             , intent(out)                   :: membership
     end subroutine
 #endif
@@ -171,10 +171,10 @@ module pm_clustering
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMemberEuc_D0_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)               , intent(in)                    :: sample
-        real(RKC)               , intent(in)    , contiguous    :: center(:)
-        real(RKC)               , intent(out)                   :: disq
+        use pm_kind, only: RKG => RK2
+        real(RKG)               , intent(in)                    :: sample
+        real(RKG)               , intent(in)    , contiguous    :: center(:)
+        real(RKG)               , intent(out)                   :: disq
         integer(IK)             , intent(out)                   :: membership
     end subroutine
 #endif
@@ -184,10 +184,10 @@ module pm_clustering
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMemberEuc_D0_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)               , intent(in)                    :: sample
-        real(RKC)               , intent(in)    , contiguous    :: center(:)
-        real(RKC)               , intent(out)                   :: disq
+        use pm_kind, only: RKG => RK1
+        real(RKG)               , intent(in)                    :: sample
+        real(RKG)               , intent(in)    , contiguous    :: center(:)
+        real(RKG)               , intent(out)                   :: disq
         integer(IK)             , intent(out)                   :: membership
     end subroutine
 #endif
@@ -199,10 +199,10 @@ module pm_clustering
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMemberEuc_D1_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)               , intent(in)    , contiguous    :: sample(:)
-        real(RKC)               , intent(in)    , contiguous    :: center(:)
-        real(RKC)               , intent(out)   , contiguous    :: disq(:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)               , intent(in)    , contiguous    :: sample(:)
+        real(RKG)               , intent(in)    , contiguous    :: center(:)
+        real(RKG)               , intent(out)   , contiguous    :: disq(:)
         integer(IK)             , intent(out)   , contiguous    :: membership(:)
     end subroutine
 #endif
@@ -212,10 +212,10 @@ module pm_clustering
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMemberEuc_D1_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)               , intent(in)    , contiguous    :: sample(:)
-        real(RKC)               , intent(in)    , contiguous    :: center(:)
-        real(RKC)               , intent(out)   , contiguous    :: disq(:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)               , intent(in)    , contiguous    :: sample(:)
+        real(RKG)               , intent(in)    , contiguous    :: center(:)
+        real(RKG)               , intent(out)   , contiguous    :: disq(:)
         integer(IK)             , intent(out)   , contiguous    :: membership(:)
     end subroutine
 #endif
@@ -225,10 +225,10 @@ module pm_clustering
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMemberEuc_D1_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)               , intent(in)    , contiguous    :: sample(:)
-        real(RKC)               , intent(in)    , contiguous    :: center(:)
-        real(RKC)               , intent(out)   , contiguous    :: disq(:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)               , intent(in)    , contiguous    :: sample(:)
+        real(RKG)               , intent(in)    , contiguous    :: center(:)
+        real(RKG)               , intent(out)   , contiguous    :: disq(:)
         integer(IK)             , intent(out)   , contiguous    :: membership(:)
     end subroutine
 #endif
@@ -238,10 +238,10 @@ module pm_clustering
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMemberEuc_D1_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)               , intent(in)    , contiguous    :: sample(:)
-        real(RKC)               , intent(in)    , contiguous    :: center(:)
-        real(RKC)               , intent(out)   , contiguous    :: disq(:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)               , intent(in)    , contiguous    :: sample(:)
+        real(RKG)               , intent(in)    , contiguous    :: center(:)
+        real(RKG)               , intent(out)   , contiguous    :: disq(:)
         integer(IK)             , intent(out)   , contiguous    :: membership(:)
     end subroutine
 #endif
@@ -251,10 +251,10 @@ module pm_clustering
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMemberEuc_D1_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)               , intent(in)    , contiguous    :: sample(:)
-        real(RKC)               , intent(in)    , contiguous    :: center(:)
-        real(RKC)               , intent(out)   , contiguous    :: disq(:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)               , intent(in)    , contiguous    :: sample(:)
+        real(RKG)               , intent(in)    , contiguous    :: center(:)
+        real(RKG)               , intent(out)   , contiguous    :: disq(:)
         integer(IK)             , intent(out)   , contiguous    :: membership(:)
     end subroutine
 #endif
@@ -266,10 +266,10 @@ module pm_clustering
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMemberEuc_D1_D2_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)               , intent(in)    , contiguous    :: sample(:)
-        real(RKC)               , intent(in)    , contiguous    :: center(:,:)
-        real(RKC)               , intent(out)                   :: disq
+        use pm_kind, only: RKG => RK5
+        real(RKG)               , intent(in)    , contiguous    :: sample(:)
+        real(RKG)               , intent(in)    , contiguous    :: center(:,:)
+        real(RKG)               , intent(out)                   :: disq
         integer(IK)             , intent(out)                   :: membership
     end subroutine
 #endif
@@ -279,10 +279,10 @@ module pm_clustering
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMemberEuc_D1_D2_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)               , intent(in)    , contiguous    :: sample(:)
-        real(RKC)               , intent(in)    , contiguous    :: center(:,:)
-        real(RKC)               , intent(out)                   :: disq
+        use pm_kind, only: RKG => RK4
+        real(RKG)               , intent(in)    , contiguous    :: sample(:)
+        real(RKG)               , intent(in)    , contiguous    :: center(:,:)
+        real(RKG)               , intent(out)                   :: disq
         integer(IK)             , intent(out)                   :: membership
     end subroutine
 #endif
@@ -292,10 +292,10 @@ module pm_clustering
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMemberEuc_D1_D2_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)               , intent(in)    , contiguous    :: sample(:)
-        real(RKC)               , intent(in)    , contiguous    :: center(:,:)
-        real(RKC)               , intent(out)                   :: disq
+        use pm_kind, only: RKG => RK3
+        real(RKG)               , intent(in)    , contiguous    :: sample(:)
+        real(RKG)               , intent(in)    , contiguous    :: center(:,:)
+        real(RKG)               , intent(out)                   :: disq
         integer(IK)             , intent(out)                   :: membership
     end subroutine
 #endif
@@ -305,10 +305,10 @@ module pm_clustering
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMemberEuc_D1_D2_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)               , intent(in)    , contiguous    :: sample(:)
-        real(RKC)               , intent(in)    , contiguous    :: center(:,:)
-        real(RKC)               , intent(out)                   :: disq
+        use pm_kind, only: RKG => RK2
+        real(RKG)               , intent(in)    , contiguous    :: sample(:)
+        real(RKG)               , intent(in)    , contiguous    :: center(:,:)
+        real(RKG)               , intent(out)                   :: disq
         integer(IK)             , intent(out)                   :: membership
     end subroutine
 #endif
@@ -318,10 +318,10 @@ module pm_clustering
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMemberEuc_D1_D2_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)               , intent(in)    , contiguous    :: sample(:)
-        real(RKC)               , intent(in)    , contiguous    :: center(:,:)
-        real(RKC)               , intent(out)                   :: disq
+        use pm_kind, only: RKG => RK1
+        real(RKG)               , intent(in)    , contiguous    :: sample(:)
+        real(RKG)               , intent(in)    , contiguous    :: center(:,:)
+        real(RKG)               , intent(out)                   :: disq
         integer(IK)             , intent(out)                   :: membership
     end subroutine
 #endif
@@ -333,10 +333,10 @@ module pm_clustering
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMemberEuc_D2_D2_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)               , intent(in)    , contiguous    :: sample(:,:)
-        real(RKC)               , intent(in)    , contiguous    :: center(:,:)
-        real(RKC)               , intent(out)   , contiguous    :: disq(:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)               , intent(in)    , contiguous    :: sample(:,:)
+        real(RKG)               , intent(in)    , contiguous    :: center(:,:)
+        real(RKG)               , intent(out)   , contiguous    :: disq(:)
         integer(IK)             , intent(out)   , contiguous    :: membership(:)
     end subroutine
 #endif
@@ -346,10 +346,10 @@ module pm_clustering
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMemberEuc_D2_D2_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)               , intent(in)    , contiguous    :: sample(:,:)
-        real(RKC)               , intent(in)    , contiguous    :: center(:,:)
-        real(RKC)               , intent(out)   , contiguous    :: disq(:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)               , intent(in)    , contiguous    :: sample(:,:)
+        real(RKG)               , intent(in)    , contiguous    :: center(:,:)
+        real(RKG)               , intent(out)   , contiguous    :: disq(:)
         integer(IK)             , intent(out)   , contiguous    :: membership(:)
     end subroutine
 #endif
@@ -359,10 +359,10 @@ module pm_clustering
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMemberEuc_D2_D2_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)               , intent(in)    , contiguous    :: sample(:,:)
-        real(RKC)               , intent(in)    , contiguous    :: center(:,:)
-        real(RKC)               , intent(out)   , contiguous    :: disq(:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)               , intent(in)    , contiguous    :: sample(:,:)
+        real(RKG)               , intent(in)    , contiguous    :: center(:,:)
+        real(RKG)               , intent(out)   , contiguous    :: disq(:)
         integer(IK)             , intent(out)   , contiguous    :: membership(:)
     end subroutine
 #endif
@@ -372,10 +372,10 @@ module pm_clustering
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMemberEuc_D2_D2_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)               , intent(in)    , contiguous    :: sample(:,:)
-        real(RKC)               , intent(in)    , contiguous    :: center(:,:)
-        real(RKC)               , intent(out)   , contiguous    :: disq(:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)               , intent(in)    , contiguous    :: sample(:,:)
+        real(RKG)               , intent(in)    , contiguous    :: center(:,:)
+        real(RKG)               , intent(out)   , contiguous    :: disq(:)
         integer(IK)             , intent(out)   , contiguous    :: membership(:)
     end subroutine
 #endif
@@ -385,10 +385,10 @@ module pm_clustering
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMemberEuc_D2_D2_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)               , intent(in)    , contiguous    :: sample(:,:)
-        real(RKC)               , intent(in)    , contiguous    :: center(:,:)
-        real(RKC)               , intent(out)   , contiguous    :: disq(:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)               , intent(in)    , contiguous    :: sample(:,:)
+        real(RKG)               , intent(in)    , contiguous    :: center(:,:)
+        real(RKG)               , intent(out)   , contiguous    :: disq(:)
         integer(IK)             , intent(out)   , contiguous    :: membership(:)
     end subroutine
 #endif
@@ -491,12 +491,12 @@ module pm_clustering
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCenterEuc_D1_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)               , intent(in)    , contiguous    :: sample(:)
-        real(RKC)               , intent(in)    , contiguous    :: disq(:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)               , intent(in)    , contiguous    :: sample(:)
+        real(RKG)               , intent(in)    , contiguous    :: disq(:)
         integer(IK)             , intent(in)    , contiguous    :: membership(:)
-        real(RKC)               , intent(out)   , contiguous    :: center(:)
-        real(RKC)               , intent(out)   , contiguous    :: potential(:)
+        real(RKG)               , intent(out)   , contiguous    :: center(:)
+        real(RKG)               , intent(out)   , contiguous    :: potential(:)
         integer(IK)             , intent(out)   , contiguous    :: size(:)
     end subroutine
 #endif
@@ -506,12 +506,12 @@ module pm_clustering
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCenterEuc_D1_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)               , intent(in)    , contiguous    :: sample(:)
-        real(RKC)               , intent(in)    , contiguous    :: disq(:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)               , intent(in)    , contiguous    :: sample(:)
+        real(RKG)               , intent(in)    , contiguous    :: disq(:)
         integer(IK)             , intent(in)    , contiguous    :: membership(:)
-        real(RKC)               , intent(out)   , contiguous    :: center(:)
-        real(RKC)               , intent(out)   , contiguous    :: potential(:)
+        real(RKG)               , intent(out)   , contiguous    :: center(:)
+        real(RKG)               , intent(out)   , contiguous    :: potential(:)
         integer(IK)             , intent(out)   , contiguous    :: size(:)
     end subroutine
 #endif
@@ -521,12 +521,12 @@ module pm_clustering
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCenterEuc_D1_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)               , intent(in)    , contiguous    :: sample(:)
-        real(RKC)               , intent(in)    , contiguous    :: disq(:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)               , intent(in)    , contiguous    :: sample(:)
+        real(RKG)               , intent(in)    , contiguous    :: disq(:)
         integer(IK)             , intent(in)    , contiguous    :: membership(:)
-        real(RKC)               , intent(out)   , contiguous    :: center(:)
-        real(RKC)               , intent(out)   , contiguous    :: potential(:)
+        real(RKG)               , intent(out)   , contiguous    :: center(:)
+        real(RKG)               , intent(out)   , contiguous    :: potential(:)
         integer(IK)             , intent(out)   , contiguous    :: size(:)
     end subroutine
 #endif
@@ -536,12 +536,12 @@ module pm_clustering
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCenterEuc_D1_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)               , intent(in)    , contiguous    :: sample(:)
-        real(RKC)               , intent(in)    , contiguous    :: disq(:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)               , intent(in)    , contiguous    :: sample(:)
+        real(RKG)               , intent(in)    , contiguous    :: disq(:)
         integer(IK)             , intent(in)    , contiguous    :: membership(:)
-        real(RKC)               , intent(out)   , contiguous    :: center(:)
-        real(RKC)               , intent(out)   , contiguous    :: potential(:)
+        real(RKG)               , intent(out)   , contiguous    :: center(:)
+        real(RKG)               , intent(out)   , contiguous    :: potential(:)
         integer(IK)             , intent(out)   , contiguous    :: size(:)
     end subroutine
 #endif
@@ -551,12 +551,12 @@ module pm_clustering
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCenterEuc_D1_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)               , intent(in)    , contiguous    :: sample(:)
-        real(RKC)               , intent(in)    , contiguous    :: disq(:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)               , intent(in)    , contiguous    :: sample(:)
+        real(RKG)               , intent(in)    , contiguous    :: disq(:)
         integer(IK)             , intent(in)    , contiguous    :: membership(:)
-        real(RKC)               , intent(out)   , contiguous    :: center(:)
-        real(RKC)               , intent(out)   , contiguous    :: potential(:)
+        real(RKG)               , intent(out)   , contiguous    :: center(:)
+        real(RKG)               , intent(out)   , contiguous    :: potential(:)
         integer(IK)             , intent(out)   , contiguous    :: size(:)
     end subroutine
 #endif
@@ -568,13 +568,13 @@ module pm_clustering
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCenterEuc_D2_D2_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)               , intent(in)    , contiguous    :: sample(:,:)
-        real(RKC)               , intent(in)    , contiguous    :: disq(:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)               , intent(in)    , contiguous    :: sample(:,:)
+        real(RKG)               , intent(in)    , contiguous    :: disq(:)
         integer(IK)             , intent(in)    , contiguous    :: membership(:)
-        real(RKC)               , intent(out)   , contiguous    :: center(:,:)
+        real(RKG)               , intent(out)   , contiguous    :: center(:,:)
         integer(IK)             , intent(out)   , contiguous    :: size(:)
-        real(RKC)               , intent(out)   , contiguous    :: potential(:)
+        real(RKG)               , intent(out)   , contiguous    :: potential(:)
     end subroutine
 #endif
 
@@ -583,13 +583,13 @@ module pm_clustering
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCenterEuc_D2_D2_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)               , intent(in)    , contiguous    :: sample(:,:)
-        real(RKC)               , intent(in)    , contiguous    :: disq(:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)               , intent(in)    , contiguous    :: sample(:,:)
+        real(RKG)               , intent(in)    , contiguous    :: disq(:)
         integer(IK)             , intent(in)    , contiguous    :: membership(:)
-        real(RKC)               , intent(out)   , contiguous    :: center(:,:)
+        real(RKG)               , intent(out)   , contiguous    :: center(:,:)
         integer(IK)             , intent(out)   , contiguous    :: size(:)
-        real(RKC)               , intent(out)   , contiguous    :: potential(:)
+        real(RKG)               , intent(out)   , contiguous    :: potential(:)
     end subroutine
 #endif
 
@@ -598,13 +598,13 @@ module pm_clustering
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCenterEuc_D2_D2_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)               , intent(in)    , contiguous    :: sample(:,:)
-        real(RKC)               , intent(in)    , contiguous    :: disq(:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)               , intent(in)    , contiguous    :: sample(:,:)
+        real(RKG)               , intent(in)    , contiguous    :: disq(:)
         integer(IK)             , intent(in)    , contiguous    :: membership(:)
-        real(RKC)               , intent(out)   , contiguous    :: center(:,:)
+        real(RKG)               , intent(out)   , contiguous    :: center(:,:)
         integer(IK)             , intent(out)   , contiguous    :: size(:)
-        real(RKC)               , intent(out)   , contiguous    :: potential(:)
+        real(RKG)               , intent(out)   , contiguous    :: potential(:)
     end subroutine
 #endif
 
@@ -613,13 +613,13 @@ module pm_clustering
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCenterEuc_D2_D2_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)               , intent(in)    , contiguous    :: sample(:,:)
-        real(RKC)               , intent(in)    , contiguous    :: disq(:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)               , intent(in)    , contiguous    :: sample(:,:)
+        real(RKG)               , intent(in)    , contiguous    :: disq(:)
         integer(IK)             , intent(in)    , contiguous    :: membership(:)
-        real(RKC)               , intent(out)   , contiguous    :: center(:,:)
+        real(RKG)               , intent(out)   , contiguous    :: center(:,:)
         integer(IK)             , intent(out)   , contiguous    :: size(:)
-        real(RKC)               , intent(out)   , contiguous    :: potential(:)
+        real(RKG)               , intent(out)   , contiguous    :: potential(:)
     end subroutine
 #endif
 
@@ -628,13 +628,13 @@ module pm_clustering
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCenterEuc_D2_D2_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)               , intent(in)    , contiguous    :: sample(:,:)
-        real(RKC)               , intent(in)    , contiguous    :: disq(:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)               , intent(in)    , contiguous    :: sample(:,:)
+        real(RKG)               , intent(in)    , contiguous    :: disq(:)
         integer(IK)             , intent(in)    , contiguous    :: membership(:)
-        real(RKC)               , intent(out)   , contiguous    :: center(:,:)
+        real(RKG)               , intent(out)   , contiguous    :: center(:,:)
         integer(IK)             , intent(out)   , contiguous    :: size(:)
-        real(RKC)               , intent(out)   , contiguous    :: potential(:)
+        real(RKG)               , intent(out)   , contiguous    :: potential(:)
     end subroutine
 #endif
 
@@ -797,11 +797,11 @@ module pm_clustering
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setKmeansPPDRNGF_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         type(rngf_type)         , intent(in)                    :: rng
         integer(IK)             , intent(in)                    :: ncls
-        real(RKC)               , intent(in)    , contiguous    :: sample(:,:)
-        real(RKC)               , intent(out)   , contiguous    :: disq(:)
+        real(RKG)               , intent(in)    , contiguous    :: sample(:,:)
+        real(RKG)               , intent(out)   , contiguous    :: disq(:)
         integer(IK)             , intent(out)   , contiguous    :: membership(:)
     end subroutine
 #endif
@@ -811,11 +811,11 @@ module pm_clustering
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setKmeansPPDRNGF_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         type(rngf_type)         , intent(in)                    :: rng
         integer(IK)             , intent(in)                    :: ncls
-        real(RKC)               , intent(in)    , contiguous    :: sample(:,:)
-        real(RKC)               , intent(out)   , contiguous    :: disq(:)
+        real(RKG)               , intent(in)    , contiguous    :: sample(:,:)
+        real(RKG)               , intent(out)   , contiguous    :: disq(:)
         integer(IK)             , intent(out)   , contiguous    :: membership(:)
     end subroutine
 #endif
@@ -825,11 +825,11 @@ module pm_clustering
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setKmeansPPDRNGF_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         type(rngf_type)         , intent(in)                    :: rng
         integer(IK)             , intent(in)                    :: ncls
-        real(RKC)               , intent(in)    , contiguous    :: sample(:,:)
-        real(RKC)               , intent(out)   , contiguous    :: disq(:)
+        real(RKG)               , intent(in)    , contiguous    :: sample(:,:)
+        real(RKG)               , intent(out)   , contiguous    :: disq(:)
         integer(IK)             , intent(out)   , contiguous    :: membership(:)
     end subroutine
 #endif
@@ -839,11 +839,11 @@ module pm_clustering
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setKmeansPPDRNGF_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         type(rngf_type)         , intent(in)                    :: rng
         integer(IK)             , intent(in)                    :: ncls
-        real(RKC)               , intent(in)    , contiguous    :: sample(:,:)
-        real(RKC)               , intent(out)   , contiguous    :: disq(:)
+        real(RKG)               , intent(in)    , contiguous    :: sample(:,:)
+        real(RKG)               , intent(out)   , contiguous    :: disq(:)
         integer(IK)             , intent(out)   , contiguous    :: membership(:)
     end subroutine
 #endif
@@ -853,11 +853,11 @@ module pm_clustering
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setKmeansPPDRNGF_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         type(rngf_type)         , intent(in)                    :: rng
         integer(IK)             , intent(in)                    :: ncls
-        real(RKC)               , intent(in)    , contiguous    :: sample(:,:)
-        real(RKC)               , intent(out)   , contiguous    :: disq(:)
+        real(RKG)               , intent(in)    , contiguous    :: sample(:,:)
+        real(RKG)               , intent(out)   , contiguous    :: disq(:)
         integer(IK)             , intent(out)   , contiguous    :: membership(:)
     end subroutine
 #endif
@@ -869,11 +869,11 @@ module pm_clustering
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setKmeansPPDRNGX_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         type(xoshiro256ssw_type), intent(inout)                 :: rng
         integer(IK)             , intent(in)                    :: ncls
-        real(RKC)               , intent(in)    , contiguous    :: sample(:,:)
-        real(RKC)               , intent(out)   , contiguous    :: disq(:)
+        real(RKG)               , intent(in)    , contiguous    :: sample(:,:)
+        real(RKG)               , intent(out)   , contiguous    :: disq(:)
         integer(IK)             , intent(out)   , contiguous    :: membership(:)
     end subroutine
 #endif
@@ -883,11 +883,11 @@ module pm_clustering
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setKmeansPPDRNGX_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         type(xoshiro256ssw_type), intent(inout)                 :: rng
         integer(IK)             , intent(in)                    :: ncls
-        real(RKC)               , intent(in)    , contiguous    :: sample(:,:)
-        real(RKC)               , intent(out)   , contiguous    :: disq(:)
+        real(RKG)               , intent(in)    , contiguous    :: sample(:,:)
+        real(RKG)               , intent(out)   , contiguous    :: disq(:)
         integer(IK)             , intent(out)   , contiguous    :: membership(:)
     end subroutine
 #endif
@@ -897,11 +897,11 @@ module pm_clustering
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setKmeansPPDRNGX_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         type(xoshiro256ssw_type), intent(inout)                 :: rng
         integer(IK)             , intent(in)                    :: ncls
-        real(RKC)               , intent(in)    , contiguous    :: sample(:,:)
-        real(RKC)               , intent(out)   , contiguous    :: disq(:)
+        real(RKG)               , intent(in)    , contiguous    :: sample(:,:)
+        real(RKG)               , intent(out)   , contiguous    :: disq(:)
         integer(IK)             , intent(out)   , contiguous    :: membership(:)
     end subroutine
 #endif
@@ -911,11 +911,11 @@ module pm_clustering
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setKmeansPPDRNGX_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         type(xoshiro256ssw_type), intent(inout)                 :: rng
         integer(IK)             , intent(in)                    :: ncls
-        real(RKC)               , intent(in)    , contiguous    :: sample(:,:)
-        real(RKC)               , intent(out)   , contiguous    :: disq(:)
+        real(RKG)               , intent(in)    , contiguous    :: sample(:,:)
+        real(RKG)               , intent(out)   , contiguous    :: disq(:)
         integer(IK)             , intent(out)   , contiguous    :: membership(:)
     end subroutine
 #endif
@@ -925,11 +925,11 @@ module pm_clustering
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setKmeansPPDRNGX_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         type(xoshiro256ssw_type), intent(inout)                 :: rng
         integer(IK)             , intent(in)                    :: ncls
-        real(RKC)               , intent(in)    , contiguous    :: sample(:,:)
-        real(RKC)               , intent(out)   , contiguous    :: disq(:)
+        real(RKG)               , intent(in)    , contiguous    :: sample(:,:)
+        real(RKG)               , intent(out)   , contiguous    :: disq(:)
         integer(IK)             , intent(out)   , contiguous    :: membership(:)
     end subroutine
 #endif
@@ -947,12 +947,12 @@ module pm_clustering
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setKmeansPPORNGF_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         type(rngf_type)         , intent(in)                    :: rng
-        real(RKC)               , intent(in)    , contiguous    :: sample(:,:)
-        real(RKC)               , intent(out)   , contiguous    :: disq(:)
-        real(RKC)               , intent(out)   , contiguous    :: center(:,:)
-        real(RKC)               , intent(out)   , contiguous    :: potential(:)
+        real(RKG)               , intent(in)    , contiguous    :: sample(:,:)
+        real(RKG)               , intent(out)   , contiguous    :: disq(:)
+        real(RKG)               , intent(out)   , contiguous    :: center(:,:)
+        real(RKG)               , intent(out)   , contiguous    :: potential(:)
         integer(IK)             , intent(out)   , contiguous    :: membership(:)
         integer(IK)             , intent(out)   , contiguous    :: size(:)
     end subroutine
@@ -963,12 +963,12 @@ module pm_clustering
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setKmeansPPORNGF_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         type(rngf_type)         , intent(in)                    :: rng
-        real(RKC)               , intent(in)    , contiguous    :: sample(:,:)
-        real(RKC)               , intent(out)   , contiguous    :: disq(:)
-        real(RKC)               , intent(out)   , contiguous    :: center(:,:)
-        real(RKC)               , intent(out)   , contiguous    :: potential(:)
+        real(RKG)               , intent(in)    , contiguous    :: sample(:,:)
+        real(RKG)               , intent(out)   , contiguous    :: disq(:)
+        real(RKG)               , intent(out)   , contiguous    :: center(:,:)
+        real(RKG)               , intent(out)   , contiguous    :: potential(:)
         integer(IK)             , intent(out)   , contiguous    :: membership(:)
         integer(IK)             , intent(out)   , contiguous    :: size(:)
     end subroutine
@@ -979,12 +979,12 @@ module pm_clustering
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setKmeansPPORNGF_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         type(rngf_type)         , intent(in)                    :: rng
-        real(RKC)               , intent(in)    , contiguous    :: sample(:,:)
-        real(RKC)               , intent(out)   , contiguous    :: disq(:)
-        real(RKC)               , intent(out)   , contiguous    :: center(:,:)
-        real(RKC)               , intent(out)   , contiguous    :: potential(:)
+        real(RKG)               , intent(in)    , contiguous    :: sample(:,:)
+        real(RKG)               , intent(out)   , contiguous    :: disq(:)
+        real(RKG)               , intent(out)   , contiguous    :: center(:,:)
+        real(RKG)               , intent(out)   , contiguous    :: potential(:)
         integer(IK)             , intent(out)   , contiguous    :: membership(:)
         integer(IK)             , intent(out)   , contiguous    :: size(:)
     end subroutine
@@ -995,12 +995,12 @@ module pm_clustering
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setKmeansPPORNGF_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         type(rngf_type)         , intent(in)                    :: rng
-        real(RKC)               , intent(in)    , contiguous    :: sample(:,:)
-        real(RKC)               , intent(out)   , contiguous    :: disq(:)
-        real(RKC)               , intent(out)   , contiguous    :: center(:,:)
-        real(RKC)               , intent(out)   , contiguous    :: potential(:)
+        real(RKG)               , intent(in)    , contiguous    :: sample(:,:)
+        real(RKG)               , intent(out)   , contiguous    :: disq(:)
+        real(RKG)               , intent(out)   , contiguous    :: center(:,:)
+        real(RKG)               , intent(out)   , contiguous    :: potential(:)
         integer(IK)             , intent(out)   , contiguous    :: membership(:)
         integer(IK)             , intent(out)   , contiguous    :: size(:)
     end subroutine
@@ -1011,12 +1011,12 @@ module pm_clustering
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setKmeansPPORNGF_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         type(rngf_type)         , intent(in)                    :: rng
-        real(RKC)               , intent(in)    , contiguous    :: sample(:,:)
-        real(RKC)               , intent(out)   , contiguous    :: disq(:)
-        real(RKC)               , intent(out)   , contiguous    :: center(:,:)
-        real(RKC)               , intent(out)   , contiguous    :: potential(:)
+        real(RKG)               , intent(in)    , contiguous    :: sample(:,:)
+        real(RKG)               , intent(out)   , contiguous    :: disq(:)
+        real(RKG)               , intent(out)   , contiguous    :: center(:,:)
+        real(RKG)               , intent(out)   , contiguous    :: potential(:)
         integer(IK)             , intent(out)   , contiguous    :: membership(:)
         integer(IK)             , intent(out)   , contiguous    :: size(:)
     end subroutine
@@ -1029,12 +1029,12 @@ module pm_clustering
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setKmeansPPORNGX_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         type(xoshiro256ssw_type), intent(inout)                 :: rng
-        real(RKC)               , intent(in)    , contiguous    :: sample(:,:)
-        real(RKC)               , intent(out)   , contiguous    :: disq(:)
-        real(RKC)               , intent(out)   , contiguous    :: center(:,:)
-        real(RKC)               , intent(out)   , contiguous    :: potential(:)
+        real(RKG)               , intent(in)    , contiguous    :: sample(:,:)
+        real(RKG)               , intent(out)   , contiguous    :: disq(:)
+        real(RKG)               , intent(out)   , contiguous    :: center(:,:)
+        real(RKG)               , intent(out)   , contiguous    :: potential(:)
         integer(IK)             , intent(out)   , contiguous    :: membership(:)
         integer(IK)             , intent(out)   , contiguous    :: size(:)
     end subroutine
@@ -1045,12 +1045,12 @@ module pm_clustering
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setKmeansPPORNGX_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         type(xoshiro256ssw_type), intent(inout)                 :: rng
-        real(RKC)               , intent(in)    , contiguous    :: sample(:,:)
-        real(RKC)               , intent(out)   , contiguous    :: disq(:)
-        real(RKC)               , intent(out)   , contiguous    :: center(:,:)
-        real(RKC)               , intent(out)   , contiguous    :: potential(:)
+        real(RKG)               , intent(in)    , contiguous    :: sample(:,:)
+        real(RKG)               , intent(out)   , contiguous    :: disq(:)
+        real(RKG)               , intent(out)   , contiguous    :: center(:,:)
+        real(RKG)               , intent(out)   , contiguous    :: potential(:)
         integer(IK)             , intent(out)   , contiguous    :: membership(:)
         integer(IK)             , intent(out)   , contiguous    :: size(:)
     end subroutine
@@ -1061,12 +1061,12 @@ module pm_clustering
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setKmeansPPORNGX_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         type(xoshiro256ssw_type), intent(inout)                 :: rng
-        real(RKC)               , intent(in)    , contiguous    :: sample(:,:)
-        real(RKC)               , intent(out)   , contiguous    :: disq(:)
-        real(RKC)               , intent(out)   , contiguous    :: center(:,:)
-        real(RKC)               , intent(out)   , contiguous    :: potential(:)
+        real(RKG)               , intent(in)    , contiguous    :: sample(:,:)
+        real(RKG)               , intent(out)   , contiguous    :: disq(:)
+        real(RKG)               , intent(out)   , contiguous    :: center(:,:)
+        real(RKG)               , intent(out)   , contiguous    :: potential(:)
         integer(IK)             , intent(out)   , contiguous    :: membership(:)
         integer(IK)             , intent(out)   , contiguous    :: size(:)
     end subroutine
@@ -1077,12 +1077,12 @@ module pm_clustering
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setKmeansPPORNGX_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         type(xoshiro256ssw_type), intent(inout)                 :: rng
-        real(RKC)               , intent(in)    , contiguous    :: sample(:,:)
-        real(RKC)               , intent(out)   , contiguous    :: disq(:)
-        real(RKC)               , intent(out)   , contiguous    :: center(:,:)
-        real(RKC)               , intent(out)   , contiguous    :: potential(:)
+        real(RKG)               , intent(in)    , contiguous    :: sample(:,:)
+        real(RKG)               , intent(out)   , contiguous    :: disq(:)
+        real(RKG)               , intent(out)   , contiguous    :: center(:,:)
+        real(RKG)               , intent(out)   , contiguous    :: potential(:)
         integer(IK)             , intent(out)   , contiguous    :: membership(:)
         integer(IK)             , intent(out)   , contiguous    :: size(:)
     end subroutine
@@ -1093,12 +1093,12 @@ module pm_clustering
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setKmeansPPORNGX_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         type(xoshiro256ssw_type), intent(inout)                 :: rng
-        real(RKC)               , intent(in)    , contiguous    :: sample(:,:)
-        real(RKC)               , intent(out)   , contiguous    :: disq(:)
-        real(RKC)               , intent(out)   , contiguous    :: center(:,:)
-        real(RKC)               , intent(out)   , contiguous    :: potential(:)
+        real(RKG)               , intent(in)    , contiguous    :: sample(:,:)
+        real(RKG)               , intent(out)   , contiguous    :: disq(:)
+        real(RKG)               , intent(out)   , contiguous    :: center(:,:)
+        real(RKG)               , intent(out)   , contiguous    :: potential(:)
         integer(IK)             , intent(out)   , contiguous    :: membership(:)
         integer(IK)             , intent(out)   , contiguous    :: size(:)
     end subroutine
@@ -1302,13 +1302,13 @@ module pm_clustering
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setKmeansInit_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         integer(IK)             , intent(in)    , optional      :: minsize
         integer(IK)             , intent(in)    , optional      :: maxniter
-        real(RKC)               , intent(in)    , contiguous    :: sample(:,:)
-        real(RKC)               , intent(inout) , contiguous    :: disq(:)
-        real(RKC)               , intent(inout) , contiguous    :: center(:,:)
-        real(RKC)               , intent(inout) , contiguous    :: potential(:)
+        real(RKG)               , intent(in)    , contiguous    :: sample(:,:)
+        real(RKG)               , intent(inout) , contiguous    :: disq(:)
+        real(RKG)               , intent(inout) , contiguous    :: center(:,:)
+        real(RKG)               , intent(inout) , contiguous    :: potential(:)
         integer(IK)             , intent(inout) , contiguous    :: membership(:)
         integer(IK)             , intent(inout) , contiguous    :: size(:)
         integer(IK)             , intent(out)   , optional      :: niter
@@ -1321,13 +1321,13 @@ module pm_clustering
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setKmeansInit_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         integer(IK)             , intent(in)    , optional      :: minsize
         integer(IK)             , intent(in)    , optional      :: maxniter
-        real(RKC)               , intent(in)    , contiguous    :: sample(:,:)
-        real(RKC)               , intent(inout) , contiguous    :: disq(:)
-        real(RKC)               , intent(inout) , contiguous    :: center(:,:)
-        real(RKC)               , intent(inout) , contiguous    :: potential(:)
+        real(RKG)               , intent(in)    , contiguous    :: sample(:,:)
+        real(RKG)               , intent(inout) , contiguous    :: disq(:)
+        real(RKG)               , intent(inout) , contiguous    :: center(:,:)
+        real(RKG)               , intent(inout) , contiguous    :: potential(:)
         integer(IK)             , intent(inout) , contiguous    :: membership(:)
         integer(IK)             , intent(inout) , contiguous    :: size(:)
         integer(IK)             , intent(out)   , optional      :: niter
@@ -1340,13 +1340,13 @@ module pm_clustering
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setKmeansInit_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         integer(IK)             , intent(in)    , optional      :: minsize
         integer(IK)             , intent(in)    , optional      :: maxniter
-        real(RKC)               , intent(in)    , contiguous    :: sample(:,:)
-        real(RKC)               , intent(inout) , contiguous    :: disq(:)
-        real(RKC)               , intent(inout) , contiguous    :: center(:,:)
-        real(RKC)               , intent(inout) , contiguous    :: potential(:)
+        real(RKG)               , intent(in)    , contiguous    :: sample(:,:)
+        real(RKG)               , intent(inout) , contiguous    :: disq(:)
+        real(RKG)               , intent(inout) , contiguous    :: center(:,:)
+        real(RKG)               , intent(inout) , contiguous    :: potential(:)
         integer(IK)             , intent(inout) , contiguous    :: membership(:)
         integer(IK)             , intent(inout) , contiguous    :: size(:)
         integer(IK)             , intent(out)   , optional      :: niter
@@ -1359,13 +1359,13 @@ module pm_clustering
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setKmeansInit_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         integer(IK)             , intent(in)    , optional      :: minsize
         integer(IK)             , intent(in)    , optional      :: maxniter
-        real(RKC)               , intent(in)    , contiguous    :: sample(:,:)
-        real(RKC)               , intent(inout) , contiguous    :: disq(:)
-        real(RKC)               , intent(inout) , contiguous    :: center(:,:)
-        real(RKC)               , intent(inout) , contiguous    :: potential(:)
+        real(RKG)               , intent(in)    , contiguous    :: sample(:,:)
+        real(RKG)               , intent(inout) , contiguous    :: disq(:)
+        real(RKG)               , intent(inout) , contiguous    :: center(:,:)
+        real(RKG)               , intent(inout) , contiguous    :: potential(:)
         integer(IK)             , intent(inout) , contiguous    :: membership(:)
         integer(IK)             , intent(inout) , contiguous    :: size(:)
         integer(IK)             , intent(out)   , optional      :: niter
@@ -1378,13 +1378,13 @@ module pm_clustering
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setKmeansInit_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         integer(IK)             , intent(in)    , optional      :: minsize
         integer(IK)             , intent(in)    , optional      :: maxniter
-        real(RKC)               , intent(in)    , contiguous    :: sample(:,:)
-        real(RKC)               , intent(inout) , contiguous    :: disq(:)
-        real(RKC)               , intent(inout) , contiguous    :: center(:,:)
-        real(RKC)               , intent(inout) , contiguous    :: potential(:)
+        real(RKG)               , intent(in)    , contiguous    :: sample(:,:)
+        real(RKG)               , intent(inout) , contiguous    :: disq(:)
+        real(RKG)               , intent(inout) , contiguous    :: center(:,:)
+        real(RKG)               , intent(inout) , contiguous    :: potential(:)
         integer(IK)             , intent(inout) , contiguous    :: membership(:)
         integer(IK)             , intent(inout) , contiguous    :: size(:)
         integer(IK)             , intent(out)   , optional      :: niter
@@ -1399,15 +1399,15 @@ module pm_clustering
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setKmeansRNGF_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         type(rngf_type)         , intent(in)                    :: rng
         integer(IK)             , intent(in)    , optional      :: minsize
         integer(IK)             , intent(in)    , optional      :: maxniter
         integer(IK)             , intent(in)    , optional      :: nfail
-        real(RKC)               , intent(in)    , contiguous    :: sample(:,:)
-        real(RKC)               , intent(out)   , contiguous    :: disq(:)
-        real(RKC)               , intent(out)   , contiguous    :: center(:,:)
-        real(RKC)               , intent(out)   , contiguous    :: potential(:)
+        real(RKG)               , intent(in)    , contiguous    :: sample(:,:)
+        real(RKG)               , intent(out)   , contiguous    :: disq(:)
+        real(RKG)               , intent(out)   , contiguous    :: center(:,:)
+        real(RKG)               , intent(out)   , contiguous    :: potential(:)
         integer(IK)             , intent(out)   , contiguous    :: membership(:)
         integer(IK)             , intent(out)   , contiguous    :: size(:)
         integer(IK)             , intent(out)   , optional      :: niter
@@ -1420,15 +1420,15 @@ module pm_clustering
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setKmeansRNGF_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         type(rngf_type)         , intent(in)                    :: rng
         integer(IK)             , intent(in)    , optional      :: minsize
         integer(IK)             , intent(in)    , optional      :: maxniter
         integer(IK)             , intent(in)    , optional      :: nfail
-        real(RKC)               , intent(in)    , contiguous    :: sample(:,:)
-        real(RKC)               , intent(out)   , contiguous    :: disq(:)
-        real(RKC)               , intent(out)   , contiguous    :: center(:,:)
-        real(RKC)               , intent(out)   , contiguous    :: potential(:)
+        real(RKG)               , intent(in)    , contiguous    :: sample(:,:)
+        real(RKG)               , intent(out)   , contiguous    :: disq(:)
+        real(RKG)               , intent(out)   , contiguous    :: center(:,:)
+        real(RKG)               , intent(out)   , contiguous    :: potential(:)
         integer(IK)             , intent(out)   , contiguous    :: membership(:)
         integer(IK)             , intent(out)   , contiguous    :: size(:)
         integer(IK)             , intent(out)   , optional      :: niter
@@ -1441,15 +1441,15 @@ module pm_clustering
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setKmeansRNGF_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         type(rngf_type)         , intent(in)                    :: rng
         integer(IK)             , intent(in)    , optional      :: minsize
         integer(IK)             , intent(in)    , optional      :: maxniter
         integer(IK)             , intent(in)    , optional      :: nfail
-        real(RKC)               , intent(in)    , contiguous    :: sample(:,:)
-        real(RKC)               , intent(out)   , contiguous    :: disq(:)
-        real(RKC)               , intent(out)   , contiguous    :: center(:,:)
-        real(RKC)               , intent(out)   , contiguous    :: potential(:)
+        real(RKG)               , intent(in)    , contiguous    :: sample(:,:)
+        real(RKG)               , intent(out)   , contiguous    :: disq(:)
+        real(RKG)               , intent(out)   , contiguous    :: center(:,:)
+        real(RKG)               , intent(out)   , contiguous    :: potential(:)
         integer(IK)             , intent(out)   , contiguous    :: membership(:)
         integer(IK)             , intent(out)   , contiguous    :: size(:)
         integer(IK)             , intent(out)   , optional      :: niter
@@ -1462,15 +1462,15 @@ module pm_clustering
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setKmeansRNGF_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         type(rngf_type)         , intent(in)                    :: rng
         integer(IK)             , intent(in)    , optional      :: minsize
         integer(IK)             , intent(in)    , optional      :: maxniter
         integer(IK)             , intent(in)    , optional      :: nfail
-        real(RKC)               , intent(in)    , contiguous    :: sample(:,:)
-        real(RKC)               , intent(out)   , contiguous    :: disq(:)
-        real(RKC)               , intent(out)   , contiguous    :: center(:,:)
-        real(RKC)               , intent(out)   , contiguous    :: potential(:)
+        real(RKG)               , intent(in)    , contiguous    :: sample(:,:)
+        real(RKG)               , intent(out)   , contiguous    :: disq(:)
+        real(RKG)               , intent(out)   , contiguous    :: center(:,:)
+        real(RKG)               , intent(out)   , contiguous    :: potential(:)
         integer(IK)             , intent(out)   , contiguous    :: membership(:)
         integer(IK)             , intent(out)   , contiguous    :: size(:)
         integer(IK)             , intent(out)   , optional      :: niter
@@ -1483,15 +1483,15 @@ module pm_clustering
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setKmeansRNGF_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         type(rngf_type)         , intent(in)                    :: rng
         integer(IK)             , intent(in)    , optional      :: minsize
         integer(IK)             , intent(in)    , optional      :: maxniter
         integer(IK)             , intent(in)    , optional      :: nfail
-        real(RKC)               , intent(in)    , contiguous    :: sample(:,:)
-        real(RKC)               , intent(out)   , contiguous    :: disq(:)
-        real(RKC)               , intent(out)   , contiguous    :: center(:,:)
-        real(RKC)               , intent(out)   , contiguous    :: potential(:)
+        real(RKG)               , intent(in)    , contiguous    :: sample(:,:)
+        real(RKG)               , intent(out)   , contiguous    :: disq(:)
+        real(RKG)               , intent(out)   , contiguous    :: center(:,:)
+        real(RKG)               , intent(out)   , contiguous    :: potential(:)
         integer(IK)             , intent(out)   , contiguous    :: membership(:)
         integer(IK)             , intent(out)   , contiguous    :: size(:)
         integer(IK)             , intent(out)   , optional      :: niter
@@ -1506,15 +1506,15 @@ module pm_clustering
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setKmeansRNGX_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         type(xoshiro256ssw_type), intent(inout)                 :: rng
         integer(IK)             , intent(in)    , optional      :: minsize
         integer(IK)             , intent(in)    , optional      :: maxniter
         integer(IK)             , intent(in)    , optional      :: nfail
-        real(RKC)               , intent(in)    , contiguous    :: sample(:,:)
-        real(RKC)               , intent(out)   , contiguous    :: disq(:)
-        real(RKC)               , intent(out)   , contiguous    :: center(:,:)
-        real(RKC)               , intent(out)   , contiguous    :: potential(:)
+        real(RKG)               , intent(in)    , contiguous    :: sample(:,:)
+        real(RKG)               , intent(out)   , contiguous    :: disq(:)
+        real(RKG)               , intent(out)   , contiguous    :: center(:,:)
+        real(RKG)               , intent(out)   , contiguous    :: potential(:)
         integer(IK)             , intent(out)   , contiguous    :: membership(:)
         integer(IK)             , intent(out)   , contiguous    :: size(:)
         integer(IK)             , intent(out)   , optional      :: niter
@@ -1527,15 +1527,15 @@ module pm_clustering
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setKmeansRNGX_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         type(xoshiro256ssw_type), intent(inout)                 :: rng
         integer(IK)             , intent(in)    , optional      :: minsize
         integer(IK)             , intent(in)    , optional      :: maxniter
         integer(IK)             , intent(in)    , optional      :: nfail
-        real(RKC)               , intent(in)    , contiguous    :: sample(:,:)
-        real(RKC)               , intent(out)   , contiguous    :: disq(:)
-        real(RKC)               , intent(out)   , contiguous    :: center(:,:)
-        real(RKC)               , intent(out)   , contiguous    :: potential(:)
+        real(RKG)               , intent(in)    , contiguous    :: sample(:,:)
+        real(RKG)               , intent(out)   , contiguous    :: disq(:)
+        real(RKG)               , intent(out)   , contiguous    :: center(:,:)
+        real(RKG)               , intent(out)   , contiguous    :: potential(:)
         integer(IK)             , intent(out)   , contiguous    :: membership(:)
         integer(IK)             , intent(out)   , contiguous    :: size(:)
         integer(IK)             , intent(out)   , optional      :: niter
@@ -1548,15 +1548,15 @@ module pm_clustering
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setKmeansRNGX_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         type(xoshiro256ssw_type), intent(inout)                 :: rng
         integer(IK)             , intent(in)    , optional      :: minsize
         integer(IK)             , intent(in)    , optional      :: maxniter
         integer(IK)             , intent(in)    , optional      :: nfail
-        real(RKC)               , intent(in)    , contiguous    :: sample(:,:)
-        real(RKC)               , intent(out)   , contiguous    :: disq(:)
-        real(RKC)               , intent(out)   , contiguous    :: center(:,:)
-        real(RKC)               , intent(out)   , contiguous    :: potential(:)
+        real(RKG)               , intent(in)    , contiguous    :: sample(:,:)
+        real(RKG)               , intent(out)   , contiguous    :: disq(:)
+        real(RKG)               , intent(out)   , contiguous    :: center(:,:)
+        real(RKG)               , intent(out)   , contiguous    :: potential(:)
         integer(IK)             , intent(out)   , contiguous    :: membership(:)
         integer(IK)             , intent(out)   , contiguous    :: size(:)
         integer(IK)             , intent(out)   , optional      :: niter
@@ -1569,15 +1569,15 @@ module pm_clustering
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setKmeansRNGX_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         type(xoshiro256ssw_type), intent(inout)                 :: rng
         integer(IK)             , intent(in)    , optional      :: minsize
         integer(IK)             , intent(in)    , optional      :: maxniter
         integer(IK)             , intent(in)    , optional      :: nfail
-        real(RKC)               , intent(in)    , contiguous    :: sample(:,:)
-        real(RKC)               , intent(out)   , contiguous    :: disq(:)
-        real(RKC)               , intent(out)   , contiguous    :: center(:,:)
-        real(RKC)               , intent(out)   , contiguous    :: potential(:)
+        real(RKG)               , intent(in)    , contiguous    :: sample(:,:)
+        real(RKG)               , intent(out)   , contiguous    :: disq(:)
+        real(RKG)               , intent(out)   , contiguous    :: center(:,:)
+        real(RKG)               , intent(out)   , contiguous    :: potential(:)
         integer(IK)             , intent(out)   , contiguous    :: membership(:)
         integer(IK)             , intent(out)   , contiguous    :: size(:)
         integer(IK)             , intent(out)   , optional      :: niter
@@ -1590,15 +1590,15 @@ module pm_clustering
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setKmeansRNGX_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         type(xoshiro256ssw_type), intent(inout)                 :: rng
         integer(IK)             , intent(in)    , optional      :: minsize
         integer(IK)             , intent(in)    , optional      :: maxniter
         integer(IK)             , intent(in)    , optional      :: nfail
-        real(RKC)               , intent(in)    , contiguous    :: sample(:,:)
-        real(RKC)               , intent(out)   , contiguous    :: disq(:)
-        real(RKC)               , intent(out)   , contiguous    :: center(:,:)
-        real(RKC)               , intent(out)   , contiguous    :: potential(:)
+        real(RKG)               , intent(in)    , contiguous    :: sample(:,:)
+        real(RKG)               , intent(out)   , contiguous    :: disq(:)
+        real(RKG)               , intent(out)   , contiguous    :: center(:,:)
+        real(RKG)               , intent(out)   , contiguous    :: potential(:)
         integer(IK)             , intent(out)   , contiguous    :: membership(:)
         integer(IK)             , intent(out)   , contiguous    :: size(:)
         integer(IK)             , intent(out)   , optional      :: niter

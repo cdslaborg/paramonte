@@ -47,35 +47,35 @@ contains
 
 #if RK5_ENABLED
     module procedure test_getDisEuclid_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "test_pm_distanceEuclid@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure test_getDisEuclid_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "test_pm_distanceEuclid@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure test_getDisEuclid_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "test_pm_distanceEuclid@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure test_getDisEuclid_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "test_pm_distanceEuclid@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure test_getDisEuclid_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "test_pm_distanceEuclid@routines.inc.F90"
     end procedure
 #endif
@@ -96,35 +96,35 @@ contains
 
 #if RK5_ENABLED
     module procedure test_setDisEuclid_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "test_pm_distanceEuclid@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure test_setDisEuclid_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "test_pm_distanceEuclid@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure test_setDisEuclid_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "test_pm_distanceEuclid@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure test_setDisEuclid_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "test_pm_distanceEuclid@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure test_setDisEuclid_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "test_pm_distanceEuclid@routines.inc.F90"
     end procedure
 #endif
@@ -145,35 +145,35 @@ contains
 
 #if RK5_ENABLED
     module procedure test_getDisMatEuclid_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "test_pm_distanceEuclid@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure test_getDisMatEuclid_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "test_pm_distanceEuclid@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure test_getDisMatEuclid_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "test_pm_distanceEuclid@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure test_getDisMatEuclid_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "test_pm_distanceEuclid@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure test_getDisMatEuclid_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "test_pm_distanceEuclid@routines.inc.F90"
     end procedure
 #endif
@@ -194,35 +194,35 @@ contains
 
 #if RK5_ENABLED
     module procedure test_setDisMatEuclid_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "test_pm_distanceEuclid@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure test_setDisMatEuclid_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "test_pm_distanceEuclid@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure test_setDisMatEuclid_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "test_pm_distanceEuclid@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure test_setDisMatEuclid_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "test_pm_distanceEuclid@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure test_setDisMatEuclid_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "test_pm_distanceEuclid@routines.inc.F90"
     end procedure
 #endif

@@ -518,7 +518,7 @@ module pm_arrayRank
     !>                              input scalar argument is sorted with respect to the second input argument according to the user-defined sorting condition
     !>                              within `isSorted()`, otherwise, it is `.false.`.<br>
     !>                              If `array` is a Fortran string (i.e., a scalar `character`),
-    !>                              then both input arguments to `isSorted()` are single `character(1,SKC)` where `SKC` is the kind of `array`.<br>
+    !>                              then both input arguments to `isSorted()` are single `character(1,SKG)` where `SKG` is the kind of `array`.<br>
     !>                              The following illustrates the generic interface of `isSorted()` when the rank of the input `array` is `1`,
     !>                              \code{.F90}
     !>                                  function isSorted(a,b) result (sorted)
@@ -542,11 +542,11 @@ module pm_arrayRank
     !>                              The following illustrates the generic interface of `isSorted()` when the input `array` is a scalar string,
     !>                              \code{.F90}
     !>                                  function isSorted(a,b) result (sorted)
-    !>                                      character(1,SKC), intent(in)    :: a, b
+    !>                                      character(1,SKG), intent(in)    :: a, b
     !>                                      logical(LK)                     :: sorted
     !>                                  end function
     !>                              \endcode
-    !>                              where `SKC` represents the kind of the input string argument `array`.<br>
+    !>                              where `SKG` represents the kind of the input string argument `array`.<br>
     !>                              This user-defined equivalence check is extremely useful where a user-defined sorting criterion other than simple ascending order
     !>                              is needed, for example, when the case-sensitivity of an input string or array of strings  is irrelevant or when sorting of
     !>                              the absolute values matters excluding the signs of the numbers, or when descending order is desired.<br>
@@ -634,8 +634,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankDenseDefCom_D0_SK5
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK5
-        character(*,SKC)            , intent(in)                    :: array
+        use pm_kind, only: TKR => IK, SKG => SK5
+        character(*,SKG)            , intent(in)                    :: array
         integer(TKR)                                                :: rank(len(array, IK))
     end function
 #endif
@@ -645,8 +645,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankDenseDefCom_D0_SK4
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK4
-        character(*,SKC)            , intent(in)                    :: array
+        use pm_kind, only: TKR => IK, SKG => SK4
+        character(*,SKG)            , intent(in)                    :: array
         integer(TKR)                                                :: rank(len(array, IK))
     end function
 #endif
@@ -656,8 +656,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankDenseDefCom_D0_SK3
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK3
-        character(*,SKC)            , intent(in)                    :: array
+        use pm_kind, only: TKR => IK, SKG => SK3
+        character(*,SKG)            , intent(in)                    :: array
         integer(TKR)                                                :: rank(len(array, IK))
     end function
 #endif
@@ -667,8 +667,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankDenseDefCom_D0_SK2
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK2
-        character(*,SKC)            , intent(in)                    :: array
+        use pm_kind, only: TKR => IK, SKG => SK2
+        character(*,SKG)            , intent(in)                    :: array
         integer(TKR)                                                :: rank(len(array, IK))
     end function
 #endif
@@ -678,8 +678,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankDenseDefCom_D0_SK1
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK1
-        character(*,SKC)            , intent(in)                    :: array
+        use pm_kind, only: TKR => IK, SKG => SK1
+        character(*,SKG)            , intent(in)                    :: array
         integer(TKR)                                                :: rank(len(array, IK))
     end function
 #endif
@@ -691,8 +691,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankDenseDefCom_D1_SK5
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK5
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, SKG => SK5
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
 #endif
@@ -702,8 +702,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankDenseDefCom_D1_SK4
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK4
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, SKG => SK4
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
 #endif
@@ -713,8 +713,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankDenseDefCom_D1_SK3
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK3
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, SKG => SK3
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
 #endif
@@ -724,8 +724,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankDenseDefCom_D1_SK2
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK2
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, SKG => SK2
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
 #endif
@@ -735,8 +735,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankDenseDefCom_D1_SK1
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK1
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, SKG => SK1
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
 #endif
@@ -748,8 +748,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankDenseDefCom_D1_IK5
 #endif
-        use pm_kind, only: TKR => IK, IKC => IK5
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, IKG => IK5
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
 #endif
@@ -759,8 +759,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankDenseDefCom_D1_IK4
 #endif
-        use pm_kind, only: TKR => IK, IKC => IK4
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, IKG => IK4
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
 #endif
@@ -770,8 +770,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankDenseDefCom_D1_IK3
 #endif
-        use pm_kind, only: TKR => IK, IKC => IK3
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, IKG => IK3
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
 #endif
@@ -781,8 +781,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankDenseDefCom_D1_IK2
 #endif
-        use pm_kind, only: TKR => IK, IKC => IK2
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, IKG => IK2
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
 #endif
@@ -792,8 +792,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankDenseDefCom_D1_IK1
 #endif
-        use pm_kind, only: TKR => IK, IKC => IK1
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, IKG => IK1
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
 #endif
@@ -805,8 +805,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankDenseDefCom_D1_LK5
 #endif
-        use pm_kind, only: TKR => IK, LKC => LK5
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, LKG => LK5
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
 #endif
@@ -816,8 +816,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankDenseDefCom_D1_LK4
 #endif
-        use pm_kind, only: TKR => IK, LKC => LK4
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, LKG => LK4
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
 #endif
@@ -827,8 +827,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankDenseDefCom_D1_LK3
 #endif
-        use pm_kind, only: TKR => IK, LKC => LK3
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, LKG => LK3
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
 #endif
@@ -838,8 +838,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankDenseDefCom_D1_LK2
 #endif
-        use pm_kind, only: TKR => IK, LKC => LK2
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, LKG => LK2
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
 #endif
@@ -849,8 +849,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankDenseDefCom_D1_LK1
 #endif
-        use pm_kind, only: TKR => IK, LKC => LK1
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, LKG => LK1
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
 #endif
@@ -862,8 +862,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankDenseDefCom_D1_CK5
 #endif
-        use pm_kind, only: TKR => IK, CKC => CK5
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, CKG => CK5
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
 #endif
@@ -873,8 +873,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankDenseDefCom_D1_CK4
 #endif
-        use pm_kind, only: TKR => IK, CKC => CK4
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, CKG => CK4
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
 #endif
@@ -884,8 +884,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankDenseDefCom_D1_CK3
 #endif
-        use pm_kind, only: TKR => IK, CKC => CK3
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, CKG => CK3
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
 #endif
@@ -895,8 +895,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankDenseDefCom_D1_CK2
 #endif
-        use pm_kind, only: TKR => IK, CKC => CK2
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, CKG => CK2
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
 #endif
@@ -906,8 +906,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankDenseDefCom_D1_CK1
 #endif
-        use pm_kind, only: TKR => IK, CKC => CK1
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, CKG => CK1
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
 #endif
@@ -919,8 +919,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankDenseDefCom_D1_RK5
 #endif
-        use pm_kind, only: TKR => IK, RKC => RK5
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, RKG => RK5
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
 #endif
@@ -930,8 +930,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankDenseDefCom_D1_RK4
 #endif
-        use pm_kind, only: TKR => IK, RKC => RK4
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, RKG => RK4
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
 #endif
@@ -941,8 +941,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankDenseDefCom_D1_RK3
 #endif
-        use pm_kind, only: TKR => IK, RKC => RK3
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, RKG => RK3
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
 #endif
@@ -952,8 +952,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankDenseDefCom_D1_RK2
 #endif
-        use pm_kind, only: TKR => IK, RKC => RK2
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, RKG => RK2
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
 #endif
@@ -963,8 +963,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankDenseDefCom_D1_RK1
 #endif
-        use pm_kind, only: TKR => IK, RKC => RK1
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, RKG => RK1
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
 #endif
@@ -978,9 +978,9 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankDenseDefCom_D1_PSSK5
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK5
+        use pm_kind, only: TKR => IK, SKG => SK5
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))          , intent(in)    , contiguous    :: array(:)
+        type(css_pdt(SKG))          , intent(in)    , contiguous    :: array(:)
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
 #endif
@@ -990,9 +990,9 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankDenseDefCom_D1_PSSK4
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK4
+        use pm_kind, only: TKR => IK, SKG => SK4
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))          , intent(in)    , contiguous    :: array(:)
+        type(css_pdt(SKG))          , intent(in)    , contiguous    :: array(:)
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
 #endif
@@ -1002,9 +1002,9 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankDenseDefCom_D1_PSSK3
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK3
+        use pm_kind, only: TKR => IK, SKG => SK3
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))          , intent(in)    , contiguous    :: array(:)
+        type(css_pdt(SKG))          , intent(in)    , contiguous    :: array(:)
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
 #endif
@@ -1014,9 +1014,9 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankDenseDefCom_D1_PSSK2
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK2
+        use pm_kind, only: TKR => IK, SKG => SK2
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))          , intent(in)    , contiguous    :: array(:)
+        type(css_pdt(SKG))          , intent(in)    , contiguous    :: array(:)
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
 #endif
@@ -1026,9 +1026,9 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankDenseDefCom_D1_PSSK1
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK1
+        use pm_kind, only: TKR => IK, SKG => SK1
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))          , intent(in)    , contiguous    :: array(:)
+        type(css_pdt(SKG))          , intent(in)    , contiguous    :: array(:)
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
 #endif
@@ -1042,7 +1042,7 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankDenseDefCom_D1_BSSK
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK
+        use pm_kind, only: TKR => IK, SKG => SK
         use pm_container, only: css_type
         type(css_type)              , intent(in)    , contiguous    :: array(:)
         integer(TKR)                                                :: rank(size(array, kind = IK))
@@ -1061,8 +1061,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankDenseCusCom_D0_SK5
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK5
-        character(*,SKC)            , intent(in)                    :: array
+        use pm_kind, only: TKR => IK, SKG => SK5
+        character(*,SKG)            , intent(in)                    :: array
         procedure(logical(LK))                                      :: isSorted
         integer(TKR)                                                :: rank(len(array, IK))
     end function
@@ -1073,8 +1073,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankDenseCusCom_D0_SK4
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK4
-        character(*,SKC)            , intent(in)                    :: array
+        use pm_kind, only: TKR => IK, SKG => SK4
+        character(*,SKG)            , intent(in)                    :: array
         procedure(logical(LK))                                      :: isSorted
         integer(TKR)                                                :: rank(len(array, IK))
     end function
@@ -1085,8 +1085,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankDenseCusCom_D0_SK3
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK3
-        character(*,SKC)            , intent(in)                    :: array
+        use pm_kind, only: TKR => IK, SKG => SK3
+        character(*,SKG)            , intent(in)                    :: array
         procedure(logical(LK))                                      :: isSorted
         integer(TKR)                                                :: rank(len(array, IK))
     end function
@@ -1097,8 +1097,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankDenseCusCom_D0_SK2
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK2
-        character(*,SKC)            , intent(in)                    :: array
+        use pm_kind, only: TKR => IK, SKG => SK2
+        character(*,SKG)            , intent(in)                    :: array
         procedure(logical(LK))                                      :: isSorted
         integer(TKR)                                                :: rank(len(array, IK))
     end function
@@ -1109,8 +1109,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankDenseCusCom_D0_SK1
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK1
-        character(*,SKC)            , intent(in)                    :: array
+        use pm_kind, only: TKR => IK, SKG => SK1
+        character(*,SKG)            , intent(in)                    :: array
         procedure(logical(LK))                                      :: isSorted
         integer(TKR)                                                :: rank(len(array, IK))
     end function
@@ -1123,8 +1123,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankDenseCusCom_D1_SK5
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK5
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, SKG => SK5
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
         procedure(logical(LK))                                      :: isSorted
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
@@ -1135,8 +1135,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankDenseCusCom_D1_SK4
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK4
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, SKG => SK4
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
         procedure(logical(LK))                                      :: isSorted
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
@@ -1147,8 +1147,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankDenseCusCom_D1_SK3
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK3
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, SKG => SK3
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
         procedure(logical(LK))                                      :: isSorted
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
@@ -1159,8 +1159,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankDenseCusCom_D1_SK2
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK2
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, SKG => SK2
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
         procedure(logical(LK))                                      :: isSorted
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
@@ -1171,8 +1171,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankDenseCusCom_D1_SK1
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK1
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, SKG => SK1
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
         procedure(logical(LK))                                      :: isSorted
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
@@ -1185,8 +1185,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankDenseCusCom_D1_IK5
 #endif
-        use pm_kind, only: TKR => IK, IKC => IK5
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, IKG => IK5
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
         procedure(logical(LK))                                      :: isSorted
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
@@ -1197,8 +1197,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankDenseCusCom_D1_IK4
 #endif
-        use pm_kind, only: TKR => IK, IKC => IK4
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, IKG => IK4
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
         procedure(logical(LK))                                      :: isSorted
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
@@ -1209,8 +1209,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankDenseCusCom_D1_IK3
 #endif
-        use pm_kind, only: TKR => IK, IKC => IK3
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, IKG => IK3
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
         procedure(logical(LK))                                      :: isSorted
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
@@ -1221,8 +1221,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankDenseCusCom_D1_IK2
 #endif
-        use pm_kind, only: TKR => IK, IKC => IK2
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, IKG => IK2
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
         procedure(logical(LK))                                      :: isSorted
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
@@ -1233,8 +1233,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankDenseCusCom_D1_IK1
 #endif
-        use pm_kind, only: TKR => IK, IKC => IK1
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, IKG => IK1
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
         procedure(logical(LK))                                      :: isSorted
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
@@ -1247,8 +1247,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankDenseCusCom_D1_LK5
 #endif
-        use pm_kind, only: TKR => IK, LKC => LK5
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, LKG => LK5
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
         procedure(logical(LK))                                      :: isSorted
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
@@ -1259,8 +1259,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankDenseCusCom_D1_LK4
 #endif
-        use pm_kind, only: TKR => IK, LKC => LK4
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, LKG => LK4
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
         procedure(logical(LK))                                      :: isSorted
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
@@ -1271,8 +1271,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankDenseCusCom_D1_LK3
 #endif
-        use pm_kind, only: TKR => IK, LKC => LK3
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, LKG => LK3
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
         procedure(logical(LK))                                      :: isSorted
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
@@ -1283,8 +1283,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankDenseCusCom_D1_LK2
 #endif
-        use pm_kind, only: TKR => IK, LKC => LK2
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, LKG => LK2
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
         procedure(logical(LK))                                      :: isSorted
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
@@ -1295,8 +1295,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankDenseCusCom_D1_LK1
 #endif
-        use pm_kind, only: TKR => IK, LKC => LK1
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, LKG => LK1
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
         procedure(logical(LK))                                      :: isSorted
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
@@ -1309,8 +1309,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankDenseCusCom_D1_CK5
 #endif
-        use pm_kind, only: TKR => IK, CKC => CK5
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, CKG => CK5
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
         procedure(logical(LK))                                      :: isSorted
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
@@ -1321,8 +1321,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankDenseCusCom_D1_CK4
 #endif
-        use pm_kind, only: TKR => IK, CKC => CK4
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, CKG => CK4
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
         procedure(logical(LK))                                      :: isSorted
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
@@ -1333,8 +1333,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankDenseCusCom_D1_CK3
 #endif
-        use pm_kind, only: TKR => IK, CKC => CK3
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, CKG => CK3
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
         procedure(logical(LK))                                      :: isSorted
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
@@ -1345,8 +1345,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankDenseCusCom_D1_CK2
 #endif
-        use pm_kind, only: TKR => IK, CKC => CK2
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, CKG => CK2
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
         procedure(logical(LK))                                      :: isSorted
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
@@ -1357,8 +1357,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankDenseCusCom_D1_CK1
 #endif
-        use pm_kind, only: TKR => IK, CKC => CK1
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, CKG => CK1
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
         procedure(logical(LK))                                      :: isSorted
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
@@ -1371,8 +1371,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankDenseCusCom_D1_RK5
 #endif
-        use pm_kind, only: TKR => IK, RKC => RK5
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, RKG => RK5
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
         procedure(logical(LK))                                      :: isSorted
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
@@ -1383,8 +1383,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankDenseCusCom_D1_RK4
 #endif
-        use pm_kind, only: TKR => IK, RKC => RK4
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, RKG => RK4
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
         procedure(logical(LK))                                      :: isSorted
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
@@ -1395,8 +1395,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankDenseCusCom_D1_RK3
 #endif
-        use pm_kind, only: TKR => IK, RKC => RK3
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, RKG => RK3
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
         procedure(logical(LK))                                      :: isSorted
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
@@ -1407,8 +1407,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankDenseCusCom_D1_RK2
 #endif
-        use pm_kind, only: TKR => IK, RKC => RK2
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, RKG => RK2
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
         procedure(logical(LK))                                      :: isSorted
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
@@ -1419,8 +1419,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankDenseCusCom_D1_RK1
 #endif
-        use pm_kind, only: TKR => IK, RKC => RK1
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, RKG => RK1
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
         procedure(logical(LK))                                      :: isSorted
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
@@ -1435,9 +1435,9 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankDenseCusCom_D1_PSSK5
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK5
+        use pm_kind, only: TKR => IK, SKG => SK5
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))          , intent(in)    , contiguous    :: array(:)
+        type(css_pdt(SKG))          , intent(in)    , contiguous    :: array(:)
         procedure(logical(LK))                                      :: isSorted
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
@@ -1448,9 +1448,9 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankDenseCusCom_D1_PSSK4
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK4
+        use pm_kind, only: TKR => IK, SKG => SK4
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))          , intent(in)    , contiguous    :: array(:)
+        type(css_pdt(SKG))          , intent(in)    , contiguous    :: array(:)
         procedure(logical(LK))                                      :: isSorted
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
@@ -1461,9 +1461,9 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankDenseCusCom_D1_PSSK3
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK3
+        use pm_kind, only: TKR => IK, SKG => SK3
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))          , intent(in)    , contiguous    :: array(:)
+        type(css_pdt(SKG))          , intent(in)    , contiguous    :: array(:)
         procedure(logical(LK))                                      :: isSorted
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
@@ -1474,9 +1474,9 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankDenseCusCom_D1_PSSK2
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK2
+        use pm_kind, only: TKR => IK, SKG => SK2
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))          , intent(in)    , contiguous    :: array(:)
+        type(css_pdt(SKG))          , intent(in)    , contiguous    :: array(:)
         procedure(logical(LK))                                      :: isSorted
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
@@ -1487,9 +1487,9 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankDenseCusCom_D1_PSSK1
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK1
+        use pm_kind, only: TKR => IK, SKG => SK1
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))          , intent(in)    , contiguous    :: array(:)
+        type(css_pdt(SKG))          , intent(in)    , contiguous    :: array(:)
         integer(TKR)                                                :: rank(size(array, kind = IK))
         procedure(logical(LK))                                      :: isSorted
     end function
@@ -1504,7 +1504,7 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankDenseCusCom_D1_BSSK
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK
+        use pm_kind, only: TKR => IK, SKG => SK
         use pm_container, only: css_type
         type(css_type)              , intent(in)    , contiguous    :: array(:)
         procedure(logical(LK))                                      :: isSorted
@@ -1561,7 +1561,7 @@ module pm_arrayRank
     !>                              input scalar argument is sorted with respect to the second input argument according to the user-defined sorting condition
     !>                              within `isSorted()`, otherwise, it is `.false.`.<br>
     !>                              If `array` is a Fortran string (i.e., a scalar `character`),
-    !>                              then both input arguments to `isSorted()` are single `character(1,SKC)` where `SKC` is the kind of `array`.<br>
+    !>                              then both input arguments to `isSorted()` are single `character(1,SKG)` where `SKG` is the kind of `array`.<br>
     !>                              The following illustrates the generic interface of `isSorted()` when the rank of the input `array` is `1`,
     !>                              \code{.F90}
     !>                                  function isSorted(a,b) result (sorted)
@@ -1585,11 +1585,11 @@ module pm_arrayRank
     !>                              The following illustrates the generic interface of `isSorted()` when the input `array` is a scalar string,
     !>                              \code{.F90}
     !>                                  function isSorted(a,b) result (sorted)
-    !>                                      character(1,SKC), intent(in)    :: a, b
+    !>                                      character(1,SKG), intent(in)    :: a, b
     !>                                      logical(LK)                     :: sorted
     !>                                  end function
     !>                              \endcode
-    !>                              where `SKC` represents the kind of the input string argument `array`.<br>
+    !>                              where `SKG` represents the kind of the input string argument `array`.<br>
     !>                              This user-defined equivalence check is extremely useful where a user-defined sorting criterion other than simple ascending order
     !>                              is needed, for example, when the case-sensitivity of an input string or array of strings  is irrelevant or when sorting of
     !>                              the absolute values matters excluding the signs of the numbers, or when descending order is desired.<br>
@@ -1672,8 +1672,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankDenseDefCom_D0_SK5
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK5
-        character(*,SKC)            , intent(in)                    :: array
+        use pm_kind, only: TKR => IK, SKG => SK5
+        character(*,SKG)            , intent(in)                    :: array
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
     end subroutine
 #endif
@@ -1683,8 +1683,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankDenseDefCom_D0_SK4
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK4
-        character(*,SKC)            , intent(in)                    :: array
+        use pm_kind, only: TKR => IK, SKG => SK4
+        character(*,SKG)            , intent(in)                    :: array
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
     end subroutine
 #endif
@@ -1694,8 +1694,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankDenseDefCom_D0_SK3
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK3
-        character(*,SKC)            , intent(in)                    :: array
+        use pm_kind, only: TKR => IK, SKG => SK3
+        character(*,SKG)            , intent(in)                    :: array
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
     end subroutine
 #endif
@@ -1705,8 +1705,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankDenseDefCom_D0_SK2
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK2
-        character(*,SKC)            , intent(in)                    :: array
+        use pm_kind, only: TKR => IK, SKG => SK2
+        character(*,SKG)            , intent(in)                    :: array
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
     end subroutine
 #endif
@@ -1716,8 +1716,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankDenseDefCom_D0_SK1
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK1
-        character(*,SKC)            , intent(in)                    :: array
+        use pm_kind, only: TKR => IK, SKG => SK1
+        character(*,SKG)            , intent(in)                    :: array
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
     end subroutine
 #endif
@@ -1729,8 +1729,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankDenseDefCom_D1_SK5
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK5
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, SKG => SK5
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
     end subroutine
 #endif
@@ -1740,8 +1740,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankDenseDefCom_D1_SK4
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK4
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, SKG => SK4
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
     end subroutine
 #endif
@@ -1751,8 +1751,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankDenseDefCom_D1_SK3
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK3
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, SKG => SK3
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
     end subroutine
 #endif
@@ -1762,8 +1762,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankDenseDefCom_D1_SK2
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK2
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, SKG => SK2
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
     end subroutine
 #endif
@@ -1773,8 +1773,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankDenseDefCom_D1_SK1
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK1
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, SKG => SK1
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
     end subroutine
 #endif
@@ -1786,8 +1786,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankDenseDefCom_D1_IK5
 #endif
-        use pm_kind, only: TKR => IK, IKC => IK5
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, IKG => IK5
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
     end subroutine
 #endif
@@ -1797,8 +1797,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankDenseDefCom_D1_IK4
 #endif
-        use pm_kind, only: TKR => IK, IKC => IK4
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, IKG => IK4
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
     end subroutine
 #endif
@@ -1808,8 +1808,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankDenseDefCom_D1_IK3
 #endif
-        use pm_kind, only: TKR => IK, IKC => IK3
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, IKG => IK3
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
     end subroutine
 #endif
@@ -1819,8 +1819,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankDenseDefCom_D1_IK2
 #endif
-        use pm_kind, only: TKR => IK, IKC => IK2
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, IKG => IK2
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
     end subroutine
 #endif
@@ -1830,8 +1830,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankDenseDefCom_D1_IK1
 #endif
-        use pm_kind, only: TKR => IK, IKC => IK1
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, IKG => IK1
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
     end subroutine
 #endif
@@ -1843,8 +1843,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankDenseDefCom_D1_LK5
 #endif
-        use pm_kind, only: TKR => IK, LKC => LK5
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, LKG => LK5
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
     end subroutine
 #endif
@@ -1854,8 +1854,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankDenseDefCom_D1_LK4
 #endif
-        use pm_kind, only: TKR => IK, LKC => LK4
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, LKG => LK4
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
     end subroutine
 #endif
@@ -1865,8 +1865,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankDenseDefCom_D1_LK3
 #endif
-        use pm_kind, only: TKR => IK, LKC => LK3
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, LKG => LK3
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
     end subroutine
 #endif
@@ -1876,8 +1876,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankDenseDefCom_D1_LK2
 #endif
-        use pm_kind, only: TKR => IK, LKC => LK2
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, LKG => LK2
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
     end subroutine
 #endif
@@ -1887,8 +1887,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankDenseDefCom_D1_LK1
 #endif
-        use pm_kind, only: TKR => IK, LKC => LK1
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, LKG => LK1
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
     end subroutine
 #endif
@@ -1900,8 +1900,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankDenseDefCom_D1_CK5
 #endif
-        use pm_kind, only: TKR => IK, CKC => CK5
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, CKG => CK5
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
     end subroutine
 #endif
@@ -1911,8 +1911,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankDenseDefCom_D1_CK4
 #endif
-        use pm_kind, only: TKR => IK, CKC => CK4
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, CKG => CK4
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
     end subroutine
 #endif
@@ -1922,8 +1922,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankDenseDefCom_D1_CK3
 #endif
-        use pm_kind, only: TKR => IK, CKC => CK3
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, CKG => CK3
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
     end subroutine
 #endif
@@ -1933,8 +1933,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankDenseDefCom_D1_CK2
 #endif
-        use pm_kind, only: TKR => IK, CKC => CK2
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, CKG => CK2
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
     end subroutine
 #endif
@@ -1944,8 +1944,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankDenseDefCom_D1_CK1
 #endif
-        use pm_kind, only: TKR => IK, CKC => CK1
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, CKG => CK1
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
     end subroutine
 #endif
@@ -1957,8 +1957,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankDenseDefCom_D1_RK5
 #endif
-        use pm_kind, only: TKR => IK, RKC => RK5
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, RKG => RK5
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
     end subroutine
 #endif
@@ -1968,8 +1968,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankDenseDefCom_D1_RK4
 #endif
-        use pm_kind, only: TKR => IK, RKC => RK4
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, RKG => RK4
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
     end subroutine
 #endif
@@ -1979,8 +1979,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankDenseDefCom_D1_RK3
 #endif
-        use pm_kind, only: TKR => IK, RKC => RK3
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, RKG => RK3
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
     end subroutine
 #endif
@@ -1990,8 +1990,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankDenseDefCom_D1_RK2
 #endif
-        use pm_kind, only: TKR => IK, RKC => RK2
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, RKG => RK2
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
     end subroutine
 #endif
@@ -2001,8 +2001,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankDenseDefCom_D1_RK1
 #endif
-        use pm_kind, only: TKR => IK, RKC => RK1
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, RKG => RK1
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
     end subroutine
 #endif
@@ -2016,9 +2016,9 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankDenseDefCom_D1_PSSK5
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK5
+        use pm_kind, only: TKR => IK, SKG => SK5
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))          , intent(in)    , contiguous    :: array(:)
+        type(css_pdt(SKG))          , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
     end subroutine
 #endif
@@ -2028,9 +2028,9 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankDenseDefCom_D1_PSSK4
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK4
+        use pm_kind, only: TKR => IK, SKG => SK4
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))          , intent(in)    , contiguous    :: array(:)
+        type(css_pdt(SKG))          , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
     end subroutine
 #endif
@@ -2040,9 +2040,9 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankDenseDefCom_D1_PSSK3
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK3
+        use pm_kind, only: TKR => IK, SKG => SK3
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))          , intent(in)    , contiguous    :: array(:)
+        type(css_pdt(SKG))          , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
     end subroutine
 #endif
@@ -2052,9 +2052,9 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankDenseDefCom_D1_PSSK2
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK2
+        use pm_kind, only: TKR => IK, SKG => SK2
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))          , intent(in)    , contiguous    :: array(:)
+        type(css_pdt(SKG))          , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
     end subroutine
 #endif
@@ -2064,9 +2064,9 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankDenseDefCom_D1_PSSK1
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK1
+        use pm_kind, only: TKR => IK, SKG => SK1
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))          , intent(in)    , contiguous    :: array(:)
+        type(css_pdt(SKG))          , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
     end subroutine
 #endif
@@ -2080,7 +2080,7 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankDenseDefCom_D1_BSSK
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK
+        use pm_kind, only: TKR => IK, SKG => SK
         use pm_container, only: css_type
         type(css_type)              , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
@@ -2099,8 +2099,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankDenseCusCom_D0_SK5
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK5
-        character(*,SKC)            , intent(in)                    :: array
+        use pm_kind, only: TKR => IK, SKG => SK5
+        character(*,SKG)            , intent(in)                    :: array
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
         procedure(logical(LK))                                      :: isSorted
     end subroutine
@@ -2111,8 +2111,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankDenseCusCom_D0_SK4
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK4
-        character(*,SKC)            , intent(in)                    :: array
+        use pm_kind, only: TKR => IK, SKG => SK4
+        character(*,SKG)            , intent(in)                    :: array
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
         procedure(logical(LK))                                      :: isSorted
     end subroutine
@@ -2123,8 +2123,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankDenseCusCom_D0_SK3
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK3
-        character(*,SKC)            , intent(in)                    :: array
+        use pm_kind, only: TKR => IK, SKG => SK3
+        character(*,SKG)            , intent(in)                    :: array
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
         procedure(logical(LK))                                      :: isSorted
     end subroutine
@@ -2135,8 +2135,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankDenseCusCom_D0_SK2
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK2
-        character(*,SKC)            , intent(in)                    :: array
+        use pm_kind, only: TKR => IK, SKG => SK2
+        character(*,SKG)            , intent(in)                    :: array
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
         procedure(logical(LK))                                      :: isSorted
     end subroutine
@@ -2147,8 +2147,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankDenseCusCom_D0_SK1
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK1
-        character(*,SKC)            , intent(in)                    :: array
+        use pm_kind, only: TKR => IK, SKG => SK1
+        character(*,SKG)            , intent(in)                    :: array
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
         procedure(logical(LK))                                      :: isSorted
     end subroutine
@@ -2161,8 +2161,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankDenseCusCom_D1_SK5
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK5
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, SKG => SK5
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
         procedure(logical(LK))                                      :: isSorted
     end subroutine
@@ -2173,8 +2173,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankDenseCusCom_D1_SK4
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK4
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, SKG => SK4
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
         procedure(logical(LK))                                      :: isSorted
     end subroutine
@@ -2185,8 +2185,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankDenseCusCom_D1_SK3
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK3
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, SKG => SK3
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
         procedure(logical(LK))                                      :: isSorted
     end subroutine
@@ -2197,8 +2197,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankDenseCusCom_D1_SK2
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK2
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, SKG => SK2
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
         procedure(logical(LK))                                      :: isSorted
     end subroutine
@@ -2209,8 +2209,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankDenseCusCom_D1_SK1
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK1
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, SKG => SK1
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
         procedure(logical(LK))                                      :: isSorted
     end subroutine
@@ -2223,8 +2223,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankDenseCusCom_D1_IK5
 #endif
-        use pm_kind, only: TKR => IK, IKC => IK5
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, IKG => IK5
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
         procedure(logical(LK))                                      :: isSorted
     end subroutine
@@ -2235,8 +2235,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankDenseCusCom_D1_IK4
 #endif
-        use pm_kind, only: TKR => IK, IKC => IK4
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, IKG => IK4
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
         procedure(logical(LK))                                      :: isSorted
     end subroutine
@@ -2247,8 +2247,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankDenseCusCom_D1_IK3
 #endif
-        use pm_kind, only: TKR => IK, IKC => IK3
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, IKG => IK3
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
         procedure(logical(LK))                                      :: isSorted
     end subroutine
@@ -2259,8 +2259,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankDenseCusCom_D1_IK2
 #endif
-        use pm_kind, only: TKR => IK, IKC => IK2
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, IKG => IK2
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
         procedure(logical(LK))                                      :: isSorted
     end subroutine
@@ -2271,8 +2271,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankDenseCusCom_D1_IK1
 #endif
-        use pm_kind, only: TKR => IK, IKC => IK1
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, IKG => IK1
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
         procedure(logical(LK))                                      :: isSorted
     end subroutine
@@ -2285,8 +2285,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankDenseCusCom_D1_LK5
 #endif
-        use pm_kind, only: TKR => IK, LKC => LK5
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, LKG => LK5
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
         procedure(logical(LK))                                      :: isSorted
     end subroutine
@@ -2297,8 +2297,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankDenseCusCom_D1_LK4
 #endif
-        use pm_kind, only: TKR => IK, LKC => LK4
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, LKG => LK4
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
         procedure(logical(LK))                                      :: isSorted
     end subroutine
@@ -2309,8 +2309,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankDenseCusCom_D1_LK3
 #endif
-        use pm_kind, only: TKR => IK, LKC => LK3
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, LKG => LK3
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
         procedure(logical(LK))                                      :: isSorted
     end subroutine
@@ -2321,8 +2321,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankDenseCusCom_D1_LK2
 #endif
-        use pm_kind, only: TKR => IK, LKC => LK2
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, LKG => LK2
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
         procedure(logical(LK))                                      :: isSorted
     end subroutine
@@ -2333,8 +2333,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankDenseCusCom_D1_LK1
 #endif
-        use pm_kind, only: TKR => IK, LKC => LK1
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, LKG => LK1
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
         procedure(logical(LK))                                      :: isSorted
     end subroutine
@@ -2347,8 +2347,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankDenseCusCom_D1_CK5
 #endif
-        use pm_kind, only: TKR => IK, CKC => CK5
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, CKG => CK5
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
         procedure(logical(LK))                                      :: isSorted
     end subroutine
@@ -2359,8 +2359,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankDenseCusCom_D1_CK4
 #endif
-        use pm_kind, only: TKR => IK, CKC => CK4
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, CKG => CK4
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
         procedure(logical(LK))                                      :: isSorted
     end subroutine
@@ -2371,8 +2371,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankDenseCusCom_D1_CK3
 #endif
-        use pm_kind, only: TKR => IK, CKC => CK3
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, CKG => CK3
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
         procedure(logical(LK))                                      :: isSorted
     end subroutine
@@ -2383,8 +2383,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankDenseCusCom_D1_CK2
 #endif
-        use pm_kind, only: TKR => IK, CKC => CK2
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, CKG => CK2
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
         procedure(logical(LK))                                      :: isSorted
     end subroutine
@@ -2395,8 +2395,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankDenseCusCom_D1_CK1
 #endif
-        use pm_kind, only: TKR => IK, CKC => CK1
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, CKG => CK1
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
         procedure(logical(LK))                                      :: isSorted
     end subroutine
@@ -2409,8 +2409,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankDenseCusCom_D1_RK5
 #endif
-        use pm_kind, only: TKR => IK, RKC => RK5
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, RKG => RK5
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
         procedure(logical(LK))                                      :: isSorted
     end subroutine
@@ -2421,8 +2421,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankDenseCusCom_D1_RK4
 #endif
-        use pm_kind, only: TKR => IK, RKC => RK4
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, RKG => RK4
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
         procedure(logical(LK))                                      :: isSorted
     end subroutine
@@ -2433,8 +2433,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankDenseCusCom_D1_RK3
 #endif
-        use pm_kind, only: TKR => IK, RKC => RK3
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, RKG => RK3
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
         procedure(logical(LK))                                      :: isSorted
     end subroutine
@@ -2445,8 +2445,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankDenseCusCom_D1_RK2
 #endif
-        use pm_kind, only: TKR => IK, RKC => RK2
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, RKG => RK2
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
         procedure(logical(LK))                                      :: isSorted
     end subroutine
@@ -2457,8 +2457,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankDenseCusCom_D1_RK1
 #endif
-        use pm_kind, only: TKR => IK, RKC => RK1
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, RKG => RK1
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
         procedure(logical(LK))                                      :: isSorted
     end subroutine
@@ -2473,9 +2473,9 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankDenseCusCom_D1_PSSK5
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK5
+        use pm_kind, only: TKR => IK, SKG => SK5
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))          , intent(in)    , contiguous    :: array(:)
+        type(css_pdt(SKG))          , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
         procedure(logical(LK))                                      :: isSorted
     end subroutine
@@ -2486,9 +2486,9 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankDenseCusCom_D1_PSSK4
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK4
+        use pm_kind, only: TKR => IK, SKG => SK4
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))          , intent(in)    , contiguous    :: array(:)
+        type(css_pdt(SKG))          , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
         procedure(logical(LK))                                      :: isSorted
     end subroutine
@@ -2499,9 +2499,9 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankDenseCusCom_D1_PSSK3
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK3
+        use pm_kind, only: TKR => IK, SKG => SK3
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))          , intent(in)    , contiguous    :: array(:)
+        type(css_pdt(SKG))          , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
         procedure(logical(LK))                                      :: isSorted
     end subroutine
@@ -2512,9 +2512,9 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankDenseCusCom_D1_PSSK2
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK2
+        use pm_kind, only: TKR => IK, SKG => SK2
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))          , intent(in)    , contiguous    :: array(:)
+        type(css_pdt(SKG))          , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
         procedure(logical(LK))                                      :: isSorted
     end subroutine
@@ -2525,9 +2525,9 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankDenseCusCom_D1_PSSK1
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK1
+        use pm_kind, only: TKR => IK, SKG => SK1
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))          , intent(in)    , contiguous    :: array(:)
+        type(css_pdt(SKG))          , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
         procedure(logical(LK))                                      :: isSorted
     end subroutine
@@ -2542,7 +2542,7 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankDenseCusCom_D1_BSSK
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK
+        use pm_kind, only: TKR => IK, SKG => SK
         use pm_container, only: css_type
         type(css_type)              , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
@@ -2596,7 +2596,7 @@ module pm_arrayRank
     !>                              input scalar argument is sorted with respect to the second input argument according to the user-defined sorting condition
     !>                              within `isSorted()`, otherwise, it is `.false.`.<br>
     !>                              If `array` is a Fortran string (i.e., a scalar `character`),
-    !>                              then both input arguments to `isSorted()` are single `character(1,SKC)` where `SKC` is the kind of `array`.<br>
+    !>                              then both input arguments to `isSorted()` are single `character(1,SKG)` where `SKG` is the kind of `array`.<br>
     !>                              The following illustrates the generic interface of `isSorted()` when the rank of the input `array` is `1`,
     !>                              \code{.F90}
     !>                                  function isSorted(a,b) result (sorted)
@@ -2620,11 +2620,11 @@ module pm_arrayRank
     !>                              The following illustrates the generic interface of `isSorted()` when the input `array` is a scalar string,
     !>                              \code{.F90}
     !>                                  function isSorted(a,b) result (sorted)
-    !>                                      character(1,SKC), intent(in)    :: a, b
+    !>                                      character(1,SKG), intent(in)    :: a, b
     !>                                      logical(LK)                     :: sorted
     !>                                  end function
     !>                              \endcode
-    !>                              where `SKC` represents the kind of the input string argument `array`.<br>
+    !>                              where `SKG` represents the kind of the input string argument `array`.<br>
     !>                              This user-defined equivalence check is extremely useful where a user-defined sorting criterion other than simple ascending order
     !>                              is needed, for example, when the case-sensitivity of an input string or array of strings  is irrelevant or when sorting of
     !>                              the absolute values matters excluding the signs of the numbers, or when descending order is desired.<br>
@@ -2712,8 +2712,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankFractionalDefCom_D0_SK5
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK5
-        character(*,SKC)            , intent(in)                    :: array
+        use pm_kind, only: TKR => RK, SKG => SK5
+        character(*,SKG)            , intent(in)                    :: array
         real(TKR)                                                   :: rank(len(array, IK))
     end function
 #endif
@@ -2723,8 +2723,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankFractionalDefCom_D0_SK4
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK4
-        character(*,SKC)            , intent(in)                    :: array
+        use pm_kind, only: TKR => RK, SKG => SK4
+        character(*,SKG)            , intent(in)                    :: array
         real(TKR)                                                   :: rank(len(array, IK))
     end function
 #endif
@@ -2734,8 +2734,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankFractionalDefCom_D0_SK3
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK3
-        character(*,SKC)            , intent(in)                    :: array
+        use pm_kind, only: TKR => RK, SKG => SK3
+        character(*,SKG)            , intent(in)                    :: array
         real(TKR)                                                   :: rank(len(array, IK))
     end function
 #endif
@@ -2745,8 +2745,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankFractionalDefCom_D0_SK2
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK2
-        character(*,SKC)            , intent(in)                    :: array
+        use pm_kind, only: TKR => RK, SKG => SK2
+        character(*,SKG)            , intent(in)                    :: array
         real(TKR)                                                   :: rank(len(array, IK))
     end function
 #endif
@@ -2756,8 +2756,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankFractionalDefCom_D0_SK1
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK1
-        character(*,SKC)            , intent(in)                    :: array
+        use pm_kind, only: TKR => RK, SKG => SK1
+        character(*,SKG)            , intent(in)                    :: array
         real(TKR)                                                   :: rank(len(array, IK))
     end function
 #endif
@@ -2769,8 +2769,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankFractionalDefCom_D1_SK5
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK5
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => RK, SKG => SK5
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
         real(TKR)                                                   :: rank(size(array, kind = IK))
     end function
 #endif
@@ -2780,8 +2780,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankFractionalDefCom_D1_SK4
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK4
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => RK, SKG => SK4
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
         real(TKR)                                                   :: rank(size(array, kind = IK))
     end function
 #endif
@@ -2791,8 +2791,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankFractionalDefCom_D1_SK3
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK3
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => RK, SKG => SK3
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
         real(TKR)                                                   :: rank(size(array, kind = IK))
     end function
 #endif
@@ -2802,8 +2802,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankFractionalDefCom_D1_SK2
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK2
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => RK, SKG => SK2
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
         real(TKR)                                                   :: rank(size(array, kind = IK))
     end function
 #endif
@@ -2813,8 +2813,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankFractionalDefCom_D1_SK1
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK1
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => RK, SKG => SK1
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
         real(TKR)                                                   :: rank(size(array, kind = IK))
     end function
 #endif
@@ -2826,8 +2826,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankFractionalDefCom_D1_IK5
 #endif
-        use pm_kind, only: TKR => RK, IKC => IK5
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => RK, IKG => IK5
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
         real(TKR)                                                   :: rank(size(array, kind = IK))
     end function
 #endif
@@ -2837,8 +2837,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankFractionalDefCom_D1_IK4
 #endif
-        use pm_kind, only: TKR => RK, IKC => IK4
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => RK, IKG => IK4
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
         real(TKR)                                                   :: rank(size(array, kind = IK))
     end function
 #endif
@@ -2848,8 +2848,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankFractionalDefCom_D1_IK3
 #endif
-        use pm_kind, only: TKR => RK, IKC => IK3
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => RK, IKG => IK3
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
         real(TKR)                                                   :: rank(size(array, kind = IK))
     end function
 #endif
@@ -2859,8 +2859,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankFractionalDefCom_D1_IK2
 #endif
-        use pm_kind, only: TKR => RK, IKC => IK2
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => RK, IKG => IK2
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
         real(TKR)                                                   :: rank(size(array, kind = IK))
     end function
 #endif
@@ -2870,8 +2870,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankFractionalDefCom_D1_IK1
 #endif
-        use pm_kind, only: TKR => RK, IKC => IK1
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => RK, IKG => IK1
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
         real(TKR)                                                   :: rank(size(array, kind = IK))
     end function
 #endif
@@ -2883,8 +2883,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankFractionalDefCom_D1_LK5
 #endif
-        use pm_kind, only: TKR => RK, LKC => LK5
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => RK, LKG => LK5
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
         real(TKR)                                                   :: rank(size(array, kind = IK))
     end function
 #endif
@@ -2894,8 +2894,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankFractionalDefCom_D1_LK4
 #endif
-        use pm_kind, only: TKR => RK, LKC => LK4
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => RK, LKG => LK4
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
         real(TKR)                                                   :: rank(size(array, kind = IK))
     end function
 #endif
@@ -2905,8 +2905,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankFractionalDefCom_D1_LK3
 #endif
-        use pm_kind, only: TKR => RK, LKC => LK3
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => RK, LKG => LK3
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
         real(TKR)                                                   :: rank(size(array, kind = IK))
     end function
 #endif
@@ -2916,8 +2916,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankFractionalDefCom_D1_LK2
 #endif
-        use pm_kind, only: TKR => RK, LKC => LK2
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => RK, LKG => LK2
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
         real(TKR)                                                   :: rank(size(array, kind = IK))
     end function
 #endif
@@ -2927,8 +2927,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankFractionalDefCom_D1_LK1
 #endif
-        use pm_kind, only: TKR => RK, LKC => LK1
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => RK, LKG => LK1
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
         real(TKR)                                                   :: rank(size(array, kind = IK))
     end function
 #endif
@@ -2940,8 +2940,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankFractionalDefCom_D1_CK5
 #endif
-        use pm_kind, only: TKR => RK, CKC => CK5
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => RK, CKG => CK5
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
         real(TKR)                                                   :: rank(size(array, kind = IK))
     end function
 #endif
@@ -2951,8 +2951,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankFractionalDefCom_D1_CK4
 #endif
-        use pm_kind, only: TKR => RK, CKC => CK4
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => RK, CKG => CK4
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
         real(TKR)                                                   :: rank(size(array, kind = IK))
     end function
 #endif
@@ -2962,8 +2962,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankFractionalDefCom_D1_CK3
 #endif
-        use pm_kind, only: TKR => RK, CKC => CK3
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => RK, CKG => CK3
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
         real(TKR)                                                   :: rank(size(array, kind = IK))
     end function
 #endif
@@ -2973,8 +2973,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankFractionalDefCom_D1_CK2
 #endif
-        use pm_kind, only: TKR => RK, CKC => CK2
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => RK, CKG => CK2
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
         real(TKR)                                                   :: rank(size(array, kind = IK))
     end function
 #endif
@@ -2984,8 +2984,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankFractionalDefCom_D1_CK1
 #endif
-        use pm_kind, only: TKR => RK, CKC => CK1
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => RK, CKG => CK1
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
         real(TKR)                                                   :: rank(size(array, kind = IK))
     end function
 #endif
@@ -2997,8 +2997,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankFractionalDefCom_D1_RK5
 #endif
-        use pm_kind, only: TKR => RK, RKC => RK5
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => RK, RKG => RK5
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
         real(TKR)                                                   :: rank(size(array, kind = IK))
     end function
 #endif
@@ -3008,8 +3008,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankFractionalDefCom_D1_RK4
 #endif
-        use pm_kind, only: TKR => RK, RKC => RK4
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => RK, RKG => RK4
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
         real(TKR)                                                   :: rank(size(array, kind = IK))
     end function
 #endif
@@ -3019,8 +3019,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankFractionalDefCom_D1_RK3
 #endif
-        use pm_kind, only: TKR => RK, RKC => RK3
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => RK, RKG => RK3
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
         real(TKR)                                                   :: rank(size(array, kind = IK))
     end function
 #endif
@@ -3030,8 +3030,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankFractionalDefCom_D1_RK2
 #endif
-        use pm_kind, only: TKR => RK, RKC => RK2
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => RK, RKG => RK2
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
         real(TKR)                                                   :: rank(size(array, kind = IK))
     end function
 #endif
@@ -3041,8 +3041,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankFractionalDefCom_D1_RK1
 #endif
-        use pm_kind, only: TKR => RK, RKC => RK1
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => RK, RKG => RK1
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
         real(TKR)                                                   :: rank(size(array, kind = IK))
     end function
 #endif
@@ -3056,9 +3056,9 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankFractionalDefCom_D1_PSSK5
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK5
+        use pm_kind, only: TKR => RK, SKG => SK5
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))          , intent(in)    , contiguous    :: array(:)
+        type(css_pdt(SKG))          , intent(in)    , contiguous    :: array(:)
         real(TKR)                                                   :: rank(size(array, kind = IK))
     end function
 #endif
@@ -3068,9 +3068,9 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankFractionalDefCom_D1_PSSK4
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK4
+        use pm_kind, only: TKR => RK, SKG => SK4
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))          , intent(in)    , contiguous    :: array(:)
+        type(css_pdt(SKG))          , intent(in)    , contiguous    :: array(:)
         real(TKR)                                                   :: rank(size(array, kind = IK))
     end function
 #endif
@@ -3080,9 +3080,9 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankFractionalDefCom_D1_PSSK3
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK3
+        use pm_kind, only: TKR => RK, SKG => SK3
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))          , intent(in)    , contiguous    :: array(:)
+        type(css_pdt(SKG))          , intent(in)    , contiguous    :: array(:)
         real(TKR)                                                   :: rank(size(array, kind = IK))
     end function
 #endif
@@ -3092,9 +3092,9 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankFractionalDefCom_D1_PSSK2
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK2
+        use pm_kind, only: TKR => RK, SKG => SK2
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))          , intent(in)    , contiguous    :: array(:)
+        type(css_pdt(SKG))          , intent(in)    , contiguous    :: array(:)
         real(TKR)                                                   :: rank(size(array, kind = IK))
     end function
 #endif
@@ -3104,9 +3104,9 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankFractionalDefCom_D1_PSSK1
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK1
+        use pm_kind, only: TKR => RK, SKG => SK1
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))          , intent(in)    , contiguous    :: array(:)
+        type(css_pdt(SKG))          , intent(in)    , contiguous    :: array(:)
         real(TKR)                                                   :: rank(size(array, kind = IK))
     end function
 #endif
@@ -3120,7 +3120,7 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankFractionalDefCom_D1_BSSK
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK
+        use pm_kind, only: TKR => RK, SKG => SK
         use pm_container, only: css_type
         type(css_type)              , intent(in)    , contiguous    :: array(:)
         real(TKR)                                                   :: rank(size(array, kind = IK))
@@ -3139,8 +3139,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankFractionalCusCom_D0_SK5
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK5
-        character(*,SKC)            , intent(in)                    :: array
+        use pm_kind, only: TKR => RK, SKG => SK5
+        character(*,SKG)            , intent(in)                    :: array
         procedure(logical(LK))                                      :: isSorted
         real(TKR)                                                   :: rank(len(array, IK))
     end function
@@ -3151,8 +3151,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankFractionalCusCom_D0_SK4
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK4
-        character(*,SKC)            , intent(in)                    :: array
+        use pm_kind, only: TKR => RK, SKG => SK4
+        character(*,SKG)            , intent(in)                    :: array
         procedure(logical(LK))                                      :: isSorted
         real(TKR)                                                   :: rank(len(array, IK))
     end function
@@ -3163,8 +3163,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankFractionalCusCom_D0_SK3
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK3
-        character(*,SKC)            , intent(in)                    :: array
+        use pm_kind, only: TKR => RK, SKG => SK3
+        character(*,SKG)            , intent(in)                    :: array
         procedure(logical(LK))                                      :: isSorted
         real(TKR)                                                   :: rank(len(array, IK))
     end function
@@ -3175,8 +3175,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankFractionalCusCom_D0_SK2
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK2
-        character(*,SKC)            , intent(in)                    :: array
+        use pm_kind, only: TKR => RK, SKG => SK2
+        character(*,SKG)            , intent(in)                    :: array
         procedure(logical(LK))                                      :: isSorted
         real(TKR)                                                   :: rank(len(array, IK))
     end function
@@ -3187,8 +3187,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankFractionalCusCom_D0_SK1
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK1
-        character(*,SKC)            , intent(in)                    :: array
+        use pm_kind, only: TKR => RK, SKG => SK1
+        character(*,SKG)            , intent(in)                    :: array
         procedure(logical(LK))                                      :: isSorted
         real(TKR)                                                   :: rank(len(array, IK))
     end function
@@ -3201,8 +3201,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankFractionalCusCom_D1_SK5
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK5
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => RK, SKG => SK5
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
         procedure(logical(LK))                                      :: isSorted
         real(TKR)                                                   :: rank(size(array, kind = IK))
     end function
@@ -3213,8 +3213,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankFractionalCusCom_D1_SK4
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK4
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => RK, SKG => SK4
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
         procedure(logical(LK))                                      :: isSorted
         real(TKR)                                                   :: rank(size(array, kind = IK))
     end function
@@ -3225,8 +3225,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankFractionalCusCom_D1_SK3
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK3
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => RK, SKG => SK3
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
         procedure(logical(LK))                                      :: isSorted
         real(TKR)                                                   :: rank(size(array, kind = IK))
     end function
@@ -3237,8 +3237,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankFractionalCusCom_D1_SK2
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK2
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => RK, SKG => SK2
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
         procedure(logical(LK))                                      :: isSorted
         real(TKR)                                                   :: rank(size(array, kind = IK))
     end function
@@ -3249,8 +3249,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankFractionalCusCom_D1_SK1
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK1
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => RK, SKG => SK1
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
         procedure(logical(LK))                                      :: isSorted
         real(TKR)                                                   :: rank(size(array, kind = IK))
     end function
@@ -3263,8 +3263,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankFractionalCusCom_D1_IK5
 #endif
-        use pm_kind, only: TKR => RK, IKC => IK5
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => RK, IKG => IK5
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
         procedure(logical(LK))                                      :: isSorted
         real(TKR)                                                   :: rank(size(array, kind = IK))
     end function
@@ -3275,8 +3275,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankFractionalCusCom_D1_IK4
 #endif
-        use pm_kind, only: TKR => RK, IKC => IK4
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => RK, IKG => IK4
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
         procedure(logical(LK))                                      :: isSorted
         real(TKR)                                                   :: rank(size(array, kind = IK))
     end function
@@ -3287,8 +3287,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankFractionalCusCom_D1_IK3
 #endif
-        use pm_kind, only: TKR => RK, IKC => IK3
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => RK, IKG => IK3
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
         procedure(logical(LK))                                      :: isSorted
         real(TKR)                                                   :: rank(size(array, kind = IK))
     end function
@@ -3299,8 +3299,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankFractionalCusCom_D1_IK2
 #endif
-        use pm_kind, only: TKR => RK, IKC => IK2
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => RK, IKG => IK2
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
         procedure(logical(LK))                                      :: isSorted
         real(TKR)                                                   :: rank(size(array, kind = IK))
     end function
@@ -3311,8 +3311,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankFractionalCusCom_D1_IK1
 #endif
-        use pm_kind, only: TKR => RK, IKC => IK1
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => RK, IKG => IK1
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
         procedure(logical(LK))                                      :: isSorted
         real(TKR)                                                   :: rank(size(array, kind = IK))
     end function
@@ -3325,8 +3325,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankFractionalCusCom_D1_LK5
 #endif
-        use pm_kind, only: TKR => RK, LKC => LK5
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => RK, LKG => LK5
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
         procedure(logical(LK))                                      :: isSorted
         real(TKR)                                                   :: rank(size(array, kind = IK))
     end function
@@ -3337,8 +3337,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankFractionalCusCom_D1_LK4
 #endif
-        use pm_kind, only: TKR => RK, LKC => LK4
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => RK, LKG => LK4
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
         procedure(logical(LK))                                      :: isSorted
         real(TKR)                                                   :: rank(size(array, kind = IK))
     end function
@@ -3349,8 +3349,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankFractionalCusCom_D1_LK3
 #endif
-        use pm_kind, only: TKR => RK, LKC => LK3
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => RK, LKG => LK3
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
         procedure(logical(LK))                                      :: isSorted
         real(TKR)                                                   :: rank(size(array, kind = IK))
     end function
@@ -3361,8 +3361,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankFractionalCusCom_D1_LK2
 #endif
-        use pm_kind, only: TKR => RK, LKC => LK2
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => RK, LKG => LK2
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
         procedure(logical(LK))                                      :: isSorted
         real(TKR)                                                   :: rank(size(array, kind = IK))
     end function
@@ -3373,8 +3373,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankFractionalCusCom_D1_LK1
 #endif
-        use pm_kind, only: TKR => RK, LKC => LK1
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => RK, LKG => LK1
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
         procedure(logical(LK))                                      :: isSorted
         real(TKR)                                                   :: rank(size(array, kind = IK))
     end function
@@ -3387,8 +3387,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankFractionalCusCom_D1_CK5
 #endif
-        use pm_kind, only: TKR => RK, CKC => CK5
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => RK, CKG => CK5
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
         procedure(logical(LK))                                      :: isSorted
         real(TKR)                                                   :: rank(size(array, kind = IK))
     end function
@@ -3399,8 +3399,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankFractionalCusCom_D1_CK4
 #endif
-        use pm_kind, only: TKR => RK, CKC => CK4
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => RK, CKG => CK4
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
         procedure(logical(LK))                                      :: isSorted
         real(TKR)                                                   :: rank(size(array, kind = IK))
     end function
@@ -3411,8 +3411,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankFractionalCusCom_D1_CK3
 #endif
-        use pm_kind, only: TKR => RK, CKC => CK3
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => RK, CKG => CK3
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
         procedure(logical(LK))                                      :: isSorted
         real(TKR)                                                   :: rank(size(array, kind = IK))
     end function
@@ -3423,8 +3423,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankFractionalCusCom_D1_CK2
 #endif
-        use pm_kind, only: TKR => RK, CKC => CK2
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => RK, CKG => CK2
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
         procedure(logical(LK))                                      :: isSorted
         real(TKR)                                                   :: rank(size(array, kind = IK))
     end function
@@ -3435,8 +3435,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankFractionalCusCom_D1_CK1
 #endif
-        use pm_kind, only: TKR => RK, CKC => CK1
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => RK, CKG => CK1
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
         procedure(logical(LK))                                      :: isSorted
         real(TKR)                                                   :: rank(size(array, kind = IK))
     end function
@@ -3449,8 +3449,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankFractionalCusCom_D1_RK5
 #endif
-        use pm_kind, only: TKR => RK, RKC => RK5
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => RK, RKG => RK5
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
         procedure(logical(LK))                                      :: isSorted
         real(TKR)                                                   :: rank(size(array, kind = IK))
     end function
@@ -3461,8 +3461,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankFractionalCusCom_D1_RK4
 #endif
-        use pm_kind, only: TKR => RK, RKC => RK4
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => RK, RKG => RK4
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
         procedure(logical(LK))                                      :: isSorted
         real(TKR)                                                   :: rank(size(array, kind = IK))
     end function
@@ -3473,8 +3473,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankFractionalCusCom_D1_RK3
 #endif
-        use pm_kind, only: TKR => RK, RKC => RK3
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => RK, RKG => RK3
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
         procedure(logical(LK))                                      :: isSorted
         real(TKR)                                                   :: rank(size(array, kind = IK))
     end function
@@ -3485,8 +3485,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankFractionalCusCom_D1_RK2
 #endif
-        use pm_kind, only: TKR => RK, RKC => RK2
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => RK, RKG => RK2
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
         procedure(logical(LK))                                      :: isSorted
         real(TKR)                                                   :: rank(size(array, kind = IK))
     end function
@@ -3497,8 +3497,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankFractionalCusCom_D1_RK1
 #endif
-        use pm_kind, only: TKR => RK, RKC => RK1
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => RK, RKG => RK1
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
         procedure(logical(LK))                                      :: isSorted
         real(TKR)                                                   :: rank(size(array, kind = IK))
     end function
@@ -3513,9 +3513,9 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankFractionalCusCom_D1_PSSK5
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK5
+        use pm_kind, only: TKR => RK, SKG => SK5
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))          , intent(in)    , contiguous    :: array(:)
+        type(css_pdt(SKG))          , intent(in)    , contiguous    :: array(:)
         procedure(logical(LK))                                      :: isSorted
         real(TKR)                                                   :: rank(size(array, kind = IK))
     end function
@@ -3526,9 +3526,9 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankFractionalCusCom_D1_PSSK4
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK4
+        use pm_kind, only: TKR => RK, SKG => SK4
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))          , intent(in)    , contiguous    :: array(:)
+        type(css_pdt(SKG))          , intent(in)    , contiguous    :: array(:)
         procedure(logical(LK))                                      :: isSorted
         real(TKR)                                                   :: rank(size(array, kind = IK))
     end function
@@ -3539,9 +3539,9 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankFractionalCusCom_D1_PSSK3
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK3
+        use pm_kind, only: TKR => RK, SKG => SK3
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))          , intent(in)    , contiguous    :: array(:)
+        type(css_pdt(SKG))          , intent(in)    , contiguous    :: array(:)
         procedure(logical(LK))                                      :: isSorted
         real(TKR)                                                   :: rank(size(array, kind = IK))
     end function
@@ -3552,9 +3552,9 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankFractionalCusCom_D1_PSSK2
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK2
+        use pm_kind, only: TKR => RK, SKG => SK2
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))          , intent(in)    , contiguous    :: array(:)
+        type(css_pdt(SKG))          , intent(in)    , contiguous    :: array(:)
         procedure(logical(LK))                                      :: isSorted
         real(TKR)                                                   :: rank(size(array, kind = IK))
     end function
@@ -3565,9 +3565,9 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankFractionalCusCom_D1_PSSK1
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK1
+        use pm_kind, only: TKR => RK, SKG => SK1
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))          , intent(in)    , contiguous    :: array(:)
+        type(css_pdt(SKG))          , intent(in)    , contiguous    :: array(:)
         real(TKR)                                                   :: rank(size(array, kind = IK))
         procedure(logical(LK))                                      :: isSorted
     end function
@@ -3582,7 +3582,7 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankFractionalCusCom_D1_BSSK
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK
+        use pm_kind, only: TKR => RK, SKG => SK
         use pm_container, only: css_type
         type(css_type)              , intent(in)    , contiguous    :: array(:)
         procedure(logical(LK))                                      :: isSorted
@@ -3645,7 +3645,7 @@ module pm_arrayRank
     !>                              input scalar argument is sorted with respect to the second input argument according to the user-defined sorting condition
     !>                              within `isSorted()`, otherwise, it is `.false.`.<br>
     !>                              If `array` is a Fortran string (i.e., a scalar `character`),
-    !>                              then both input arguments to `isSorted()` are single `character(1,SKC)` where `SKC` is the kind of `array`.<br>
+    !>                              then both input arguments to `isSorted()` are single `character(1,SKG)` where `SKG` is the kind of `array`.<br>
     !>                              The following illustrates the generic interface of `isSorted()` when the rank of the input `array` is `1`,
     !>                              \code{.F90}
     !>                                  function isSorted(a,b) result (sorted)
@@ -3669,11 +3669,11 @@ module pm_arrayRank
     !>                              The following illustrates the generic interface of `isSorted()` when the input `array` is a scalar string,
     !>                              \code{.F90}
     !>                                  function isSorted(a,b) result (sorted)
-    !>                                      character(1,SKC), intent(in)    :: a, b
+    !>                                      character(1,SKG), intent(in)    :: a, b
     !>                                      logical(LK)                     :: sorted
     !>                                  end function
     !>                              \endcode
-    !>                              where `SKC` represents the kind of the input string argument `array`.<br>
+    !>                              where `SKG` represents the kind of the input string argument `array`.<br>
     !>                              This user-defined equivalence check is extremely useful where a user-defined sorting criterion other than simple ascending order
     !>                              is needed, for example, when the case-sensitivity of an input string or array of strings  is irrelevant or when sorting of
     !>                              the absolute values matters excluding the signs of the numbers, or when descending order is desired. In such cases,
@@ -3756,8 +3756,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankFractionalDefCom_D0_SK5
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK5
-        character(*,SKC)            , intent(in)                    :: array
+        use pm_kind, only: TKR => RK, SKG => SK5
+        character(*,SKG)            , intent(in)                    :: array
         real(TKR)                   , intent(out)   , contiguous    :: rank(:)
     end subroutine
 #endif
@@ -3767,8 +3767,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankFractionalDefCom_D0_SK4
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK4
-        character(*,SKC)            , intent(in)                    :: array
+        use pm_kind, only: TKR => RK, SKG => SK4
+        character(*,SKG)            , intent(in)                    :: array
         real(TKR)                   , intent(out)   , contiguous    :: rank(:)
     end subroutine
 #endif
@@ -3778,8 +3778,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankFractionalDefCom_D0_SK3
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK3
-        character(*,SKC)            , intent(in)                    :: array
+        use pm_kind, only: TKR => RK, SKG => SK3
+        character(*,SKG)            , intent(in)                    :: array
         real(TKR)                   , intent(out)   , contiguous    :: rank(:)
     end subroutine
 #endif
@@ -3789,8 +3789,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankFractionalDefCom_D0_SK2
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK2
-        character(*,SKC)            , intent(in)                    :: array
+        use pm_kind, only: TKR => RK, SKG => SK2
+        character(*,SKG)            , intent(in)                    :: array
         real(TKR)                   , intent(out)   , contiguous    :: rank(:)
     end subroutine
 #endif
@@ -3800,8 +3800,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankFractionalDefCom_D0_SK1
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK1
-        character(*,SKC)            , intent(in)                    :: array
+        use pm_kind, only: TKR => RK, SKG => SK1
+        character(*,SKG)            , intent(in)                    :: array
         real(TKR)                   , intent(out)   , contiguous    :: rank(:)
     end subroutine
 #endif
@@ -3813,8 +3813,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankFractionalDefCom_D1_SK5
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK5
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => RK, SKG => SK5
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
         real(TKR)                   , intent(out)   , contiguous    :: rank(:)
     end subroutine
 #endif
@@ -3824,8 +3824,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankFractionalDefCom_D1_SK4
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK4
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => RK, SKG => SK4
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
         real(TKR)                   , intent(out)   , contiguous    :: rank(:)
     end subroutine
 #endif
@@ -3835,8 +3835,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankFractionalDefCom_D1_SK3
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK3
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => RK, SKG => SK3
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
         real(TKR)                   , intent(out)   , contiguous    :: rank(:)
     end subroutine
 #endif
@@ -3846,8 +3846,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankFractionalDefCom_D1_SK2
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK2
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => RK, SKG => SK2
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
         real(TKR)                   , intent(out)   , contiguous    :: rank(:)
     end subroutine
 #endif
@@ -3857,8 +3857,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankFractionalDefCom_D1_SK1
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK1
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => RK, SKG => SK1
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
         real(TKR)                   , intent(out)   , contiguous    :: rank(:)
     end subroutine
 #endif
@@ -3870,8 +3870,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankFractionalDefCom_D1_IK5
 #endif
-        use pm_kind, only: TKR => RK, IKC => IK5
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => RK, IKG => IK5
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
         real(TKR)                   , intent(out)   , contiguous    :: rank(:)
     end subroutine
 #endif
@@ -3881,8 +3881,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankFractionalDefCom_D1_IK4
 #endif
-        use pm_kind, only: TKR => RK, IKC => IK4
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => RK, IKG => IK4
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
         real(TKR)                   , intent(out)   , contiguous    :: rank(:)
     end subroutine
 #endif
@@ -3892,8 +3892,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankFractionalDefCom_D1_IK3
 #endif
-        use pm_kind, only: TKR => RK, IKC => IK3
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => RK, IKG => IK3
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
         real(TKR)                   , intent(out)   , contiguous    :: rank(:)
     end subroutine
 #endif
@@ -3903,8 +3903,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankFractionalDefCom_D1_IK2
 #endif
-        use pm_kind, only: TKR => RK, IKC => IK2
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => RK, IKG => IK2
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
         real(TKR)                   , intent(out)   , contiguous    :: rank(:)
     end subroutine
 #endif
@@ -3914,8 +3914,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankFractionalDefCom_D1_IK1
 #endif
-        use pm_kind, only: TKR => RK, IKC => IK1
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => RK, IKG => IK1
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
         real(TKR)                   , intent(out)   , contiguous    :: rank(:)
     end subroutine
 #endif
@@ -3927,8 +3927,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankFractionalDefCom_D1_LK5
 #endif
-        use pm_kind, only: TKR => RK, LKC => LK5
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => RK, LKG => LK5
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
         real(TKR)                   , intent(out)   , contiguous    :: rank(:)
     end subroutine
 #endif
@@ -3938,8 +3938,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankFractionalDefCom_D1_LK4
 #endif
-        use pm_kind, only: TKR => RK, LKC => LK4
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => RK, LKG => LK4
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
         real(TKR)                   , intent(out)   , contiguous    :: rank(:)
     end subroutine
 #endif
@@ -3949,8 +3949,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankFractionalDefCom_D1_LK3
 #endif
-        use pm_kind, only: TKR => RK, LKC => LK3
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => RK, LKG => LK3
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
         real(TKR)                   , intent(out)   , contiguous    :: rank(:)
     end subroutine
 #endif
@@ -3960,8 +3960,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankFractionalDefCom_D1_LK2
 #endif
-        use pm_kind, only: TKR => RK, LKC => LK2
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => RK, LKG => LK2
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
         real(TKR)                   , intent(out)   , contiguous    :: rank(:)
     end subroutine
 #endif
@@ -3971,8 +3971,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankFractionalDefCom_D1_LK1
 #endif
-        use pm_kind, only: TKR => RK, LKC => LK1
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => RK, LKG => LK1
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
         real(TKR)                   , intent(out)   , contiguous    :: rank(:)
     end subroutine
 #endif
@@ -3984,8 +3984,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankFractionalDefCom_D1_CK5
 #endif
-        use pm_kind, only: TKR => RK, CKC => CK5
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => RK, CKG => CK5
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
         real(TKR)                   , intent(out)   , contiguous    :: rank(:)
     end subroutine
 #endif
@@ -3995,8 +3995,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankFractionalDefCom_D1_CK4
 #endif
-        use pm_kind, only: TKR => RK, CKC => CK4
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => RK, CKG => CK4
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
         real(TKR)                   , intent(out)   , contiguous    :: rank(:)
     end subroutine
 #endif
@@ -4006,8 +4006,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankFractionalDefCom_D1_CK3
 #endif
-        use pm_kind, only: TKR => RK, CKC => CK3
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => RK, CKG => CK3
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
         real(TKR)                   , intent(out)   , contiguous    :: rank(:)
     end subroutine
 #endif
@@ -4017,8 +4017,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankFractionalDefCom_D1_CK2
 #endif
-        use pm_kind, only: TKR => RK, CKC => CK2
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => RK, CKG => CK2
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
         real(TKR)                   , intent(out)   , contiguous    :: rank(:)
     end subroutine
 #endif
@@ -4028,8 +4028,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankFractionalDefCom_D1_CK1
 #endif
-        use pm_kind, only: TKR => RK, CKC => CK1
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => RK, CKG => CK1
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
         real(TKR)                   , intent(out)   , contiguous    :: rank(:)
     end subroutine
 #endif
@@ -4041,8 +4041,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankFractionalDefCom_D1_RK5
 #endif
-        use pm_kind, only: TKR => RK, RKC => RK5
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => RK, RKG => RK5
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
         real(TKR)                   , intent(out)   , contiguous    :: rank(:)
     end subroutine
 #endif
@@ -4052,8 +4052,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankFractionalDefCom_D1_RK4
 #endif
-        use pm_kind, only: TKR => RK, RKC => RK4
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => RK, RKG => RK4
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
         real(TKR)                   , intent(out)   , contiguous    :: rank(:)
     end subroutine
 #endif
@@ -4063,8 +4063,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankFractionalDefCom_D1_RK3
 #endif
-        use pm_kind, only: TKR => RK, RKC => RK3
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => RK, RKG => RK3
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
         real(TKR)                   , intent(out)   , contiguous    :: rank(:)
     end subroutine
 #endif
@@ -4074,8 +4074,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankFractionalDefCom_D1_RK2
 #endif
-        use pm_kind, only: TKR => RK, RKC => RK2
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => RK, RKG => RK2
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
         real(TKR)                   , intent(out)   , contiguous    :: rank(:)
     end subroutine
 #endif
@@ -4085,8 +4085,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankFractionalDefCom_D1_RK1
 #endif
-        use pm_kind, only: TKR => RK, RKC => RK1
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => RK, RKG => RK1
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
         real(TKR)                   , intent(out)   , contiguous    :: rank(:)
     end subroutine
 #endif
@@ -4100,9 +4100,9 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankFractionalDefCom_D1_PSSK5
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK5
+        use pm_kind, only: TKR => RK, SKG => SK5
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))          , intent(in)    , contiguous    :: array(:)
+        type(css_pdt(SKG))          , intent(in)    , contiguous    :: array(:)
         real(TKR)                   , intent(out)   , contiguous    :: rank(:)
     end subroutine
 #endif
@@ -4112,9 +4112,9 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankFractionalDefCom_D1_PSSK4
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK4
+        use pm_kind, only: TKR => RK, SKG => SK4
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))          , intent(in)    , contiguous    :: array(:)
+        type(css_pdt(SKG))          , intent(in)    , contiguous    :: array(:)
         real(TKR)                   , intent(out)   , contiguous    :: rank(:)
     end subroutine
 #endif
@@ -4124,9 +4124,9 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankFractionalDefCom_D1_PSSK3
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK3
+        use pm_kind, only: TKR => RK, SKG => SK3
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))          , intent(in)    , contiguous    :: array(:)
+        type(css_pdt(SKG))          , intent(in)    , contiguous    :: array(:)
         real(TKR)                   , intent(out)   , contiguous    :: rank(:)
     end subroutine
 #endif
@@ -4136,9 +4136,9 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankFractionalDefCom_D1_PSSK2
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK2
+        use pm_kind, only: TKR => RK, SKG => SK2
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))          , intent(in)    , contiguous    :: array(:)
+        type(css_pdt(SKG))          , intent(in)    , contiguous    :: array(:)
         real(TKR)                   , intent(out)   , contiguous    :: rank(:)
     end subroutine
 #endif
@@ -4148,9 +4148,9 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankFractionalDefCom_D1_PSSK1
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK1
+        use pm_kind, only: TKR => RK, SKG => SK1
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))          , intent(in)    , contiguous    :: array(:)
+        type(css_pdt(SKG))          , intent(in)    , contiguous    :: array(:)
         real(TKR)                   , intent(out)   , contiguous    :: rank(:)
     end subroutine
 #endif
@@ -4164,7 +4164,7 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankFractionalDefCom_D1_BSSK
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK
+        use pm_kind, only: TKR => RK, SKG => SK
         use pm_container, only: css_type
         type(css_type)              , intent(in)    , contiguous    :: array(:)
         real(TKR)                   , intent(out)   , contiguous    :: rank(:)
@@ -4183,8 +4183,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankFractionalCusCom_D0_SK5
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK5
-        character(*,SKC)            , intent(in)                    :: array
+        use pm_kind, only: TKR => RK, SKG => SK5
+        character(*,SKG)            , intent(in)                    :: array
         real(TKR)                   , intent(out)   , contiguous    :: rank(:)
         procedure(logical(LK))                                      :: isSorted
     end subroutine
@@ -4195,8 +4195,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankFractionalCusCom_D0_SK4
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK4
-        character(*,SKC)            , intent(in)                    :: array
+        use pm_kind, only: TKR => RK, SKG => SK4
+        character(*,SKG)            , intent(in)                    :: array
         real(TKR)                   , intent(out)   , contiguous    :: rank(:)
         procedure(logical(LK))                                      :: isSorted
     end subroutine
@@ -4207,8 +4207,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankFractionalCusCom_D0_SK3
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK3
-        character(*,SKC)            , intent(in)                    :: array
+        use pm_kind, only: TKR => RK, SKG => SK3
+        character(*,SKG)            , intent(in)                    :: array
         real(TKR)                   , intent(out)   , contiguous    :: rank(:)
         procedure(logical(LK))                                      :: isSorted
     end subroutine
@@ -4219,8 +4219,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankFractionalCusCom_D0_SK2
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK2
-        character(*,SKC)            , intent(in)                    :: array
+        use pm_kind, only: TKR => RK, SKG => SK2
+        character(*,SKG)            , intent(in)                    :: array
         real(TKR)                   , intent(out)   , contiguous    :: rank(:)
         procedure(logical(LK))                                      :: isSorted
     end subroutine
@@ -4231,8 +4231,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankFractionalCusCom_D0_SK1
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK1
-        character(*,SKC)            , intent(in)                    :: array
+        use pm_kind, only: TKR => RK, SKG => SK1
+        character(*,SKG)            , intent(in)                    :: array
         real(TKR)                   , intent(out)   , contiguous    :: rank(:)
         procedure(logical(LK))                                      :: isSorted
     end subroutine
@@ -4245,8 +4245,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankFractionalCusCom_D1_SK5
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK5
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => RK, SKG => SK5
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
         real(TKR)                   , intent(out)   , contiguous    :: rank(:)
         procedure(logical(LK))                                      :: isSorted
     end subroutine
@@ -4257,8 +4257,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankFractionalCusCom_D1_SK4
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK4
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => RK, SKG => SK4
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
         real(TKR)                   , intent(out)   , contiguous    :: rank(:)
         procedure(logical(LK))                                      :: isSorted
     end subroutine
@@ -4269,8 +4269,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankFractionalCusCom_D1_SK3
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK3
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => RK, SKG => SK3
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
         real(TKR)                   , intent(out)   , contiguous    :: rank(:)
         procedure(logical(LK))                                      :: isSorted
     end subroutine
@@ -4281,8 +4281,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankFractionalCusCom_D1_SK2
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK2
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => RK, SKG => SK2
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
         real(TKR)                   , intent(out)   , contiguous    :: rank(:)
         procedure(logical(LK))                                      :: isSorted
     end subroutine
@@ -4293,8 +4293,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankFractionalCusCom_D1_SK1
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK1
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => RK, SKG => SK1
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
         real(TKR)                   , intent(out)   , contiguous    :: rank(:)
         procedure(logical(LK))                                      :: isSorted
     end subroutine
@@ -4307,8 +4307,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankFractionalCusCom_D1_IK5
 #endif
-        use pm_kind, only: TKR => RK, IKC => IK5
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => RK, IKG => IK5
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
         real(TKR)                   , intent(out)   , contiguous    :: rank(:)
         procedure(logical(LK))                                      :: isSorted
     end subroutine
@@ -4319,8 +4319,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankFractionalCusCom_D1_IK4
 #endif
-        use pm_kind, only: TKR => RK, IKC => IK4
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => RK, IKG => IK4
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
         real(TKR)                   , intent(out)   , contiguous    :: rank(:)
         procedure(logical(LK))                                      :: isSorted
     end subroutine
@@ -4331,8 +4331,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankFractionalCusCom_D1_IK3
 #endif
-        use pm_kind, only: TKR => RK, IKC => IK3
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => RK, IKG => IK3
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
         real(TKR)                   , intent(out)   , contiguous    :: rank(:)
         procedure(logical(LK))                                      :: isSorted
     end subroutine
@@ -4343,8 +4343,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankFractionalCusCom_D1_IK2
 #endif
-        use pm_kind, only: TKR => RK, IKC => IK2
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => RK, IKG => IK2
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
         real(TKR)                   , intent(out)   , contiguous    :: rank(:)
         procedure(logical(LK))                                      :: isSorted
     end subroutine
@@ -4355,8 +4355,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankFractionalCusCom_D1_IK1
 #endif
-        use pm_kind, only: TKR => RK, IKC => IK1
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => RK, IKG => IK1
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
         real(TKR)                   , intent(out)   , contiguous    :: rank(:)
         procedure(logical(LK))                                      :: isSorted
     end subroutine
@@ -4369,8 +4369,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankFractionalCusCom_D1_LK5
 #endif
-        use pm_kind, only: TKR => RK, LKC => LK5
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => RK, LKG => LK5
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
         real(TKR)                   , intent(out)   , contiguous    :: rank(:)
         procedure(logical(LK))                                      :: isSorted
     end subroutine
@@ -4381,8 +4381,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankFractionalCusCom_D1_LK4
 #endif
-        use pm_kind, only: TKR => RK, LKC => LK4
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => RK, LKG => LK4
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
         real(TKR)                   , intent(out)   , contiguous    :: rank(:)
         procedure(logical(LK))                                      :: isSorted
     end subroutine
@@ -4393,8 +4393,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankFractionalCusCom_D1_LK3
 #endif
-        use pm_kind, only: TKR => RK, LKC => LK3
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => RK, LKG => LK3
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
         real(TKR)                   , intent(out)   , contiguous    :: rank(:)
         procedure(logical(LK))                                      :: isSorted
     end subroutine
@@ -4405,8 +4405,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankFractionalCusCom_D1_LK2
 #endif
-        use pm_kind, only: TKR => RK, LKC => LK2
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => RK, LKG => LK2
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
         real(TKR)                   , intent(out)   , contiguous    :: rank(:)
         procedure(logical(LK))                                      :: isSorted
     end subroutine
@@ -4417,8 +4417,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankFractionalCusCom_D1_LK1
 #endif
-        use pm_kind, only: TKR => RK, LKC => LK1
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => RK, LKG => LK1
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
         real(TKR)                   , intent(out)   , contiguous    :: rank(:)
         procedure(logical(LK))                                      :: isSorted
     end subroutine
@@ -4431,8 +4431,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankFractionalCusCom_D1_CK5
 #endif
-        use pm_kind, only: TKR => RK, CKC => CK5
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => RK, CKG => CK5
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
         real(TKR)                   , intent(out)   , contiguous    :: rank(:)
         procedure(logical(LK))                                      :: isSorted
     end subroutine
@@ -4443,8 +4443,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankFractionalCusCom_D1_CK4
 #endif
-        use pm_kind, only: TKR => RK, CKC => CK4
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => RK, CKG => CK4
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
         real(TKR)                   , intent(out)   , contiguous    :: rank(:)
         procedure(logical(LK))                                      :: isSorted
     end subroutine
@@ -4455,8 +4455,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankFractionalCusCom_D1_CK3
 #endif
-        use pm_kind, only: TKR => RK, CKC => CK3
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => RK, CKG => CK3
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
         real(TKR)                   , intent(out)   , contiguous    :: rank(:)
         procedure(logical(LK))                                      :: isSorted
     end subroutine
@@ -4467,8 +4467,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankFractionalCusCom_D1_CK2
 #endif
-        use pm_kind, only: TKR => RK, CKC => CK2
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => RK, CKG => CK2
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
         real(TKR)                   , intent(out)   , contiguous    :: rank(:)
         procedure(logical(LK))                                      :: isSorted
     end subroutine
@@ -4479,8 +4479,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankFractionalCusCom_D1_CK1
 #endif
-        use pm_kind, only: TKR => RK, CKC => CK1
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => RK, CKG => CK1
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
         real(TKR)                   , intent(out)   , contiguous    :: rank(:)
         procedure(logical(LK))                                      :: isSorted
     end subroutine
@@ -4493,8 +4493,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankFractionalCusCom_D1_RK5
 #endif
-        use pm_kind, only: TKR => RK, RKC => RK5
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => RK, RKG => RK5
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
         real(TKR)                   , intent(out)   , contiguous    :: rank(:)
         procedure(logical(LK))                                      :: isSorted
     end subroutine
@@ -4505,8 +4505,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankFractionalCusCom_D1_RK4
 #endif
-        use pm_kind, only: TKR => RK, RKC => RK4
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => RK, RKG => RK4
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
         real(TKR)                   , intent(out)   , contiguous    :: rank(:)
         procedure(logical(LK))                                      :: isSorted
     end subroutine
@@ -4517,8 +4517,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankFractionalCusCom_D1_RK3
 #endif
-        use pm_kind, only: TKR => RK, RKC => RK3
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => RK, RKG => RK3
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
         real(TKR)                   , intent(out)   , contiguous    :: rank(:)
         procedure(logical(LK))                                      :: isSorted
     end subroutine
@@ -4529,8 +4529,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankFractionalCusCom_D1_RK2
 #endif
-        use pm_kind, only: TKR => RK, RKC => RK2
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => RK, RKG => RK2
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
         real(TKR)                   , intent(out)   , contiguous    :: rank(:)
         procedure(logical(LK))                                      :: isSorted
     end subroutine
@@ -4541,8 +4541,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankFractionalCusCom_D1_RK1
 #endif
-        use pm_kind, only: TKR => RK, RKC => RK1
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => RK, RKG => RK1
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
         real(TKR)                   , intent(out)   , contiguous    :: rank(:)
         procedure(logical(LK))                                      :: isSorted
     end subroutine
@@ -4557,9 +4557,9 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankFractionalCusCom_D1_PSSK5
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK5
+        use pm_kind, only: TKR => RK, SKG => SK5
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))          , intent(in)    , contiguous    :: array(:)
+        type(css_pdt(SKG))          , intent(in)    , contiguous    :: array(:)
         real(TKR)                   , intent(out)   , contiguous    :: rank(:)
         procedure(logical(LK))                                      :: isSorted
     end subroutine
@@ -4570,9 +4570,9 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankFractionalCusCom_D1_PSSK4
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK4
+        use pm_kind, only: TKR => RK, SKG => SK4
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))          , intent(in)    , contiguous    :: array(:)
+        type(css_pdt(SKG))          , intent(in)    , contiguous    :: array(:)
         real(TKR)                   , intent(out)   , contiguous    :: rank(:)
         procedure(logical(LK))                                      :: isSorted
     end subroutine
@@ -4583,9 +4583,9 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankFractionalCusCom_D1_PSSK3
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK3
+        use pm_kind, only: TKR => RK, SKG => SK3
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))          , intent(in)    , contiguous    :: array(:)
+        type(css_pdt(SKG))          , intent(in)    , contiguous    :: array(:)
         real(TKR)                   , intent(out)   , contiguous    :: rank(:)
         procedure(logical(LK))                                      :: isSorted
     end subroutine
@@ -4596,9 +4596,9 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankFractionalCusCom_D1_PSSK2
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK2
+        use pm_kind, only: TKR => RK, SKG => SK2
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))          , intent(in)    , contiguous    :: array(:)
+        type(css_pdt(SKG))          , intent(in)    , contiguous    :: array(:)
         real(TKR)                   , intent(out)   , contiguous    :: rank(:)
         procedure(logical(LK))                                      :: isSorted
     end subroutine
@@ -4609,9 +4609,9 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankFractionalCusCom_D1_PSSK1
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK1
+        use pm_kind, only: TKR => RK, SKG => SK1
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))          , intent(in)    , contiguous    :: array(:)
+        type(css_pdt(SKG))          , intent(in)    , contiguous    :: array(:)
         real(TKR)                   , intent(out)   , contiguous    :: rank(:)
         procedure(logical(LK))                                      :: isSorted
     end subroutine
@@ -4626,7 +4626,7 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankFractionalCusCom_D1_BSSK
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK
+        use pm_kind, only: TKR => RK, SKG => SK
         use pm_container, only: css_type
         type(css_type)              , intent(in)    , contiguous    :: array(:)
         real(TKR)                   , intent(out)   , contiguous    :: rank(:)
@@ -4687,7 +4687,7 @@ module pm_arrayRank
     !>                              input scalar argument is sorted with respect to the second input argument according to the user-defined sorting condition
     !>                              within `isSorted()`, otherwise, it is `.false.`.<br>
     !>                              If `array` is a Fortran string (i.e., a scalar `character`),
-    !>                              then both input arguments to `isSorted()` are single `character(1,SKC)` where `SKC` is the kind of `array`.<br>
+    !>                              then both input arguments to `isSorted()` are single `character(1,SKG)` where `SKG` is the kind of `array`.<br>
     !>                              The following illustrates the generic interface of `isSorted()` when the rank of the input `array` is `1`,
     !>                              \code{.F90}
     !>                                  function isSorted(a,b) result (sorted)
@@ -4711,11 +4711,11 @@ module pm_arrayRank
     !>                              The following illustrates the generic interface of `isSorted()` when the input `array` is a scalar string,
     !>                              \code{.F90}
     !>                                  function isSorted(a,b) result (sorted)
-    !>                                      character(1,SKC), intent(in)    :: a, b
+    !>                                      character(1,SKG), intent(in)    :: a, b
     !>                                      logical(LK)                     :: sorted
     !>                                  end function
     !>                              \endcode
-    !>                              where `SKC` represents the kind of the input string argument `array`.<br>
+    !>                              where `SKG` represents the kind of the input string argument `array`.<br>
     !>                              This user-defined equivalence check is extremely useful where a user-defined sorting criterion other than simple ascending order
     !>                              is needed, for example, when the case-sensitivity of an input string or array of strings  is irrelevant or when sorting of
     !>                              the absolute values matters excluding the signs of the numbers, or when descending order is desired.<br>
@@ -4803,8 +4803,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankModifiedDefCom_D0_SK5
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK5
-        character(*,SKC)            , intent(in)                    :: array
+        use pm_kind, only: TKR => IK, SKG => SK5
+        character(*,SKG)            , intent(in)                    :: array
         integer(TKR)                                                :: rank(len(array, IK))
     end function
 #endif
@@ -4814,8 +4814,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankModifiedDefCom_D0_SK4
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK4
-        character(*,SKC)            , intent(in)                    :: array
+        use pm_kind, only: TKR => IK, SKG => SK4
+        character(*,SKG)            , intent(in)                    :: array
         integer(TKR)                                                :: rank(len(array, IK))
     end function
 #endif
@@ -4825,8 +4825,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankModifiedDefCom_D0_SK3
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK3
-        character(*,SKC)            , intent(in)                    :: array
+        use pm_kind, only: TKR => IK, SKG => SK3
+        character(*,SKG)            , intent(in)                    :: array
         integer(TKR)                                                :: rank(len(array, IK))
     end function
 #endif
@@ -4836,8 +4836,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankModifiedDefCom_D0_SK2
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK2
-        character(*,SKC)            , intent(in)                    :: array
+        use pm_kind, only: TKR => IK, SKG => SK2
+        character(*,SKG)            , intent(in)                    :: array
         integer(TKR)                                                :: rank(len(array, IK))
     end function
 #endif
@@ -4847,8 +4847,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankModifiedDefCom_D0_SK1
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK1
-        character(*,SKC)            , intent(in)                    :: array
+        use pm_kind, only: TKR => IK, SKG => SK1
+        character(*,SKG)            , intent(in)                    :: array
         integer(TKR)                                                :: rank(len(array, IK))
     end function
 #endif
@@ -4860,8 +4860,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankModifiedDefCom_D1_SK5
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK5
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, SKG => SK5
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
 #endif
@@ -4871,8 +4871,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankModifiedDefCom_D1_SK4
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK4
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, SKG => SK4
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
 #endif
@@ -4882,8 +4882,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankModifiedDefCom_D1_SK3
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK3
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, SKG => SK3
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
 #endif
@@ -4893,8 +4893,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankModifiedDefCom_D1_SK2
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK2
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, SKG => SK2
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
 #endif
@@ -4904,8 +4904,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankModifiedDefCom_D1_SK1
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK1
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, SKG => SK1
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
 #endif
@@ -4917,8 +4917,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankModifiedDefCom_D1_IK5
 #endif
-        use pm_kind, only: TKR => IK, IKC => IK5
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, IKG => IK5
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
 #endif
@@ -4928,8 +4928,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankModifiedDefCom_D1_IK4
 #endif
-        use pm_kind, only: TKR => IK, IKC => IK4
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, IKG => IK4
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
 #endif
@@ -4939,8 +4939,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankModifiedDefCom_D1_IK3
 #endif
-        use pm_kind, only: TKR => IK, IKC => IK3
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, IKG => IK3
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
 #endif
@@ -4950,8 +4950,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankModifiedDefCom_D1_IK2
 #endif
-        use pm_kind, only: TKR => IK, IKC => IK2
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, IKG => IK2
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
 #endif
@@ -4961,8 +4961,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankModifiedDefCom_D1_IK1
 #endif
-        use pm_kind, only: TKR => IK, IKC => IK1
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, IKG => IK1
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
 #endif
@@ -4974,8 +4974,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankModifiedDefCom_D1_LK5
 #endif
-        use pm_kind, only: TKR => IK, LKC => LK5
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, LKG => LK5
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
 #endif
@@ -4985,8 +4985,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankModifiedDefCom_D1_LK4
 #endif
-        use pm_kind, only: TKR => IK, LKC => LK4
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, LKG => LK4
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
 #endif
@@ -4996,8 +4996,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankModifiedDefCom_D1_LK3
 #endif
-        use pm_kind, only: TKR => IK, LKC => LK3
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, LKG => LK3
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
 #endif
@@ -5007,8 +5007,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankModifiedDefCom_D1_LK2
 #endif
-        use pm_kind, only: TKR => IK, LKC => LK2
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, LKG => LK2
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
 #endif
@@ -5018,8 +5018,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankModifiedDefCom_D1_LK1
 #endif
-        use pm_kind, only: TKR => IK, LKC => LK1
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, LKG => LK1
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
 #endif
@@ -5031,8 +5031,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankModifiedDefCom_D1_CK5
 #endif
-        use pm_kind, only: TKR => IK, CKC => CK5
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, CKG => CK5
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
 #endif
@@ -5042,8 +5042,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankModifiedDefCom_D1_CK4
 #endif
-        use pm_kind, only: TKR => IK, CKC => CK4
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, CKG => CK4
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
 #endif
@@ -5053,8 +5053,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankModifiedDefCom_D1_CK3
 #endif
-        use pm_kind, only: TKR => IK, CKC => CK3
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, CKG => CK3
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
 #endif
@@ -5064,8 +5064,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankModifiedDefCom_D1_CK2
 #endif
-        use pm_kind, only: TKR => IK, CKC => CK2
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, CKG => CK2
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
 #endif
@@ -5075,8 +5075,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankModifiedDefCom_D1_CK1
 #endif
-        use pm_kind, only: TKR => IK, CKC => CK1
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, CKG => CK1
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
 #endif
@@ -5088,8 +5088,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankModifiedDefCom_D1_RK5
 #endif
-        use pm_kind, only: TKR => IK, RKC => RK5
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, RKG => RK5
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
 #endif
@@ -5099,8 +5099,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankModifiedDefCom_D1_RK4
 #endif
-        use pm_kind, only: TKR => IK, RKC => RK4
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, RKG => RK4
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
 #endif
@@ -5110,8 +5110,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankModifiedDefCom_D1_RK3
 #endif
-        use pm_kind, only: TKR => IK, RKC => RK3
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, RKG => RK3
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
 #endif
@@ -5121,8 +5121,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankModifiedDefCom_D1_RK2
 #endif
-        use pm_kind, only: TKR => IK, RKC => RK2
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, RKG => RK2
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
 #endif
@@ -5132,8 +5132,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankModifiedDefCom_D1_RK1
 #endif
-        use pm_kind, only: TKR => IK, RKC => RK1
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, RKG => RK1
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
 #endif
@@ -5147,9 +5147,9 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankModifiedDefCom_D1_PSSK5
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK5
+        use pm_kind, only: TKR => IK, SKG => SK5
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))          , intent(in)    , contiguous    :: array(:)
+        type(css_pdt(SKG))          , intent(in)    , contiguous    :: array(:)
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
 #endif
@@ -5159,9 +5159,9 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankModifiedDefCom_D1_PSSK4
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK4
+        use pm_kind, only: TKR => IK, SKG => SK4
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))          , intent(in)    , contiguous    :: array(:)
+        type(css_pdt(SKG))          , intent(in)    , contiguous    :: array(:)
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
 #endif
@@ -5171,9 +5171,9 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankModifiedDefCom_D1_PSSK3
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK3
+        use pm_kind, only: TKR => IK, SKG => SK3
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))          , intent(in)    , contiguous    :: array(:)
+        type(css_pdt(SKG))          , intent(in)    , contiguous    :: array(:)
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
 #endif
@@ -5183,9 +5183,9 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankModifiedDefCom_D1_PSSK2
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK2
+        use pm_kind, only: TKR => IK, SKG => SK2
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))          , intent(in)    , contiguous    :: array(:)
+        type(css_pdt(SKG))          , intent(in)    , contiguous    :: array(:)
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
 #endif
@@ -5195,9 +5195,9 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankModifiedDefCom_D1_PSSK1
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK1
+        use pm_kind, only: TKR => IK, SKG => SK1
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))          , intent(in)    , contiguous    :: array(:)
+        type(css_pdt(SKG))          , intent(in)    , contiguous    :: array(:)
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
 #endif
@@ -5211,7 +5211,7 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankModifiedDefCom_D1_BSSK
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK
+        use pm_kind, only: TKR => IK, SKG => SK
         use pm_container, only: css_type
         type(css_type)              , intent(in)    , contiguous    :: array(:)
         integer(TKR)                                                :: rank(size(array, kind = IK))
@@ -5230,8 +5230,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankModifiedCusCom_D0_SK5
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK5
-        character(*,SKC)            , intent(in)                    :: array
+        use pm_kind, only: TKR => IK, SKG => SK5
+        character(*,SKG)            , intent(in)                    :: array
         procedure(logical(LK))                                      :: isSorted
         integer(TKR)                                                :: rank(len(array, IK))
     end function
@@ -5242,8 +5242,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankModifiedCusCom_D0_SK4
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK4
-        character(*,SKC)            , intent(in)                    :: array
+        use pm_kind, only: TKR => IK, SKG => SK4
+        character(*,SKG)            , intent(in)                    :: array
         procedure(logical(LK))                                      :: isSorted
         integer(TKR)                                                :: rank(len(array, IK))
     end function
@@ -5254,8 +5254,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankModifiedCusCom_D0_SK3
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK3
-        character(*,SKC)            , intent(in)                    :: array
+        use pm_kind, only: TKR => IK, SKG => SK3
+        character(*,SKG)            , intent(in)                    :: array
         procedure(logical(LK))                                      :: isSorted
         integer(TKR)                                                :: rank(len(array, IK))
     end function
@@ -5266,8 +5266,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankModifiedCusCom_D0_SK2
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK2
-        character(*,SKC)            , intent(in)                    :: array
+        use pm_kind, only: TKR => IK, SKG => SK2
+        character(*,SKG)            , intent(in)                    :: array
         procedure(logical(LK))                                      :: isSorted
         integer(TKR)                                                :: rank(len(array, IK))
     end function
@@ -5278,8 +5278,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankModifiedCusCom_D0_SK1
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK1
-        character(*,SKC)            , intent(in)                    :: array
+        use pm_kind, only: TKR => IK, SKG => SK1
+        character(*,SKG)            , intent(in)                    :: array
         procedure(logical(LK))                                      :: isSorted
         integer(TKR)                                                :: rank(len(array, IK))
     end function
@@ -5292,8 +5292,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankModifiedCusCom_D1_SK5
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK5
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, SKG => SK5
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
         procedure(logical(LK))                                      :: isSorted
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
@@ -5304,8 +5304,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankModifiedCusCom_D1_SK4
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK4
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, SKG => SK4
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
         procedure(logical(LK))                                      :: isSorted
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
@@ -5316,8 +5316,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankModifiedCusCom_D1_SK3
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK3
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, SKG => SK3
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
         procedure(logical(LK))                                      :: isSorted
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
@@ -5328,8 +5328,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankModifiedCusCom_D1_SK2
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK2
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, SKG => SK2
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
         procedure(logical(LK))                                      :: isSorted
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
@@ -5340,8 +5340,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankModifiedCusCom_D1_SK1
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK1
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, SKG => SK1
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
         procedure(logical(LK))                                      :: isSorted
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
@@ -5354,8 +5354,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankModifiedCusCom_D1_IK5
 #endif
-        use pm_kind, only: TKR => IK, IKC => IK5
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, IKG => IK5
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
         procedure(logical(LK))                                      :: isSorted
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
@@ -5366,8 +5366,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankModifiedCusCom_D1_IK4
 #endif
-        use pm_kind, only: TKR => IK, IKC => IK4
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, IKG => IK4
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
         procedure(logical(LK))                                      :: isSorted
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
@@ -5378,8 +5378,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankModifiedCusCom_D1_IK3
 #endif
-        use pm_kind, only: TKR => IK, IKC => IK3
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, IKG => IK3
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
         procedure(logical(LK))                                      :: isSorted
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
@@ -5390,8 +5390,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankModifiedCusCom_D1_IK2
 #endif
-        use pm_kind, only: TKR => IK, IKC => IK2
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, IKG => IK2
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
         procedure(logical(LK))                                      :: isSorted
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
@@ -5402,8 +5402,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankModifiedCusCom_D1_IK1
 #endif
-        use pm_kind, only: TKR => IK, IKC => IK1
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, IKG => IK1
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
         procedure(logical(LK))                                      :: isSorted
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
@@ -5416,8 +5416,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankModifiedCusCom_D1_LK5
 #endif
-        use pm_kind, only: TKR => IK, LKC => LK5
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, LKG => LK5
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
         procedure(logical(LK))                                      :: isSorted
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
@@ -5428,8 +5428,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankModifiedCusCom_D1_LK4
 #endif
-        use pm_kind, only: TKR => IK, LKC => LK4
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, LKG => LK4
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
         procedure(logical(LK))                                      :: isSorted
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
@@ -5440,8 +5440,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankModifiedCusCom_D1_LK3
 #endif
-        use pm_kind, only: TKR => IK, LKC => LK3
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, LKG => LK3
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
         procedure(logical(LK))                                      :: isSorted
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
@@ -5452,8 +5452,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankModifiedCusCom_D1_LK2
 #endif
-        use pm_kind, only: TKR => IK, LKC => LK2
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, LKG => LK2
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
         procedure(logical(LK))                                      :: isSorted
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
@@ -5464,8 +5464,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankModifiedCusCom_D1_LK1
 #endif
-        use pm_kind, only: TKR => IK, LKC => LK1
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, LKG => LK1
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
         procedure(logical(LK))                                      :: isSorted
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
@@ -5478,8 +5478,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankModifiedCusCom_D1_CK5
 #endif
-        use pm_kind, only: TKR => IK, CKC => CK5
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, CKG => CK5
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
         procedure(logical(LK))                                      :: isSorted
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
@@ -5490,8 +5490,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankModifiedCusCom_D1_CK4
 #endif
-        use pm_kind, only: TKR => IK, CKC => CK4
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, CKG => CK4
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
         procedure(logical(LK))                                      :: isSorted
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
@@ -5502,8 +5502,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankModifiedCusCom_D1_CK3
 #endif
-        use pm_kind, only: TKR => IK, CKC => CK3
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, CKG => CK3
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
         procedure(logical(LK))                                      :: isSorted
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
@@ -5514,8 +5514,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankModifiedCusCom_D1_CK2
 #endif
-        use pm_kind, only: TKR => IK, CKC => CK2
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, CKG => CK2
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
         procedure(logical(LK))                                      :: isSorted
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
@@ -5526,8 +5526,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankModifiedCusCom_D1_CK1
 #endif
-        use pm_kind, only: TKR => IK, CKC => CK1
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, CKG => CK1
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
         procedure(logical(LK))                                      :: isSorted
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
@@ -5540,8 +5540,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankModifiedCusCom_D1_RK5
 #endif
-        use pm_kind, only: TKR => IK, RKC => RK5
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, RKG => RK5
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
         procedure(logical(LK))                                      :: isSorted
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
@@ -5552,8 +5552,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankModifiedCusCom_D1_RK4
 #endif
-        use pm_kind, only: TKR => IK, RKC => RK4
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, RKG => RK4
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
         procedure(logical(LK))                                      :: isSorted
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
@@ -5564,8 +5564,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankModifiedCusCom_D1_RK3
 #endif
-        use pm_kind, only: TKR => IK, RKC => RK3
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, RKG => RK3
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
         procedure(logical(LK))                                      :: isSorted
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
@@ -5576,8 +5576,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankModifiedCusCom_D1_RK2
 #endif
-        use pm_kind, only: TKR => IK, RKC => RK2
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, RKG => RK2
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
         procedure(logical(LK))                                      :: isSorted
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
@@ -5588,8 +5588,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankModifiedCusCom_D1_RK1
 #endif
-        use pm_kind, only: TKR => IK, RKC => RK1
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, RKG => RK1
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
         procedure(logical(LK))                                      :: isSorted
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
@@ -5604,9 +5604,9 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankModifiedCusCom_D1_PSSK5
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK5
+        use pm_kind, only: TKR => IK, SKG => SK5
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))          , intent(in)    , contiguous    :: array(:)
+        type(css_pdt(SKG))          , intent(in)    , contiguous    :: array(:)
         procedure(logical(LK))                                      :: isSorted
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
@@ -5617,9 +5617,9 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankModifiedCusCom_D1_PSSK4
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK4
+        use pm_kind, only: TKR => IK, SKG => SK4
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))          , intent(in)    , contiguous    :: array(:)
+        type(css_pdt(SKG))          , intent(in)    , contiguous    :: array(:)
         procedure(logical(LK))                                      :: isSorted
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
@@ -5630,9 +5630,9 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankModifiedCusCom_D1_PSSK3
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK3
+        use pm_kind, only: TKR => IK, SKG => SK3
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))          , intent(in)    , contiguous    :: array(:)
+        type(css_pdt(SKG))          , intent(in)    , contiguous    :: array(:)
         procedure(logical(LK))                                      :: isSorted
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
@@ -5643,9 +5643,9 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankModifiedCusCom_D1_PSSK2
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK2
+        use pm_kind, only: TKR => IK, SKG => SK2
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))          , intent(in)    , contiguous    :: array(:)
+        type(css_pdt(SKG))          , intent(in)    , contiguous    :: array(:)
         procedure(logical(LK))                                      :: isSorted
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
@@ -5656,9 +5656,9 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankModifiedCusCom_D1_PSSK1
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK1
+        use pm_kind, only: TKR => IK, SKG => SK1
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))          , intent(in)    , contiguous    :: array(:)
+        type(css_pdt(SKG))          , intent(in)    , contiguous    :: array(:)
         integer(TKR)                                                :: rank(size(array, kind = IK))
         procedure(logical(LK))                                      :: isSorted
     end function
@@ -5673,7 +5673,7 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankModifiedCusCom_D1_BSSK
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK
+        use pm_kind, only: TKR => IK, SKG => SK
         use pm_container, only: css_type
         type(css_type)              , intent(in)    , contiguous    :: array(:)
         procedure(logical(LK))                                      :: isSorted
@@ -5733,7 +5733,7 @@ module pm_arrayRank
     !>                              input scalar argument is sorted with respect to the second input argument according to the user-defined sorting condition
     !>                              within `isSorted()`, otherwise, it is `.false.`.<br>
     !>                              If `array` is a Fortran string (i.e., a scalar `character`),
-    !>                              then both input arguments to `isSorted()` are single `character(1,SKC)` where `SKC` is the kind of `array`.<br>
+    !>                              then both input arguments to `isSorted()` are single `character(1,SKG)` where `SKG` is the kind of `array`.<br>
     !>                              The following illustrates the generic interface of `isSorted()` when the rank of the input `array` is `1`,
     !>                              \code{.F90}
     !>                                  function isSorted(a,b) result (sorted)
@@ -5757,11 +5757,11 @@ module pm_arrayRank
     !>                              The following illustrates the generic interface of `isSorted()` when the input `array` is a scalar string,
     !>                              \code{.F90}
     !>                                  function isSorted(a,b) result (sorted)
-    !>                                      character(1,SKC), intent(in)    :: a, b
+    !>                                      character(1,SKG), intent(in)    :: a, b
     !>                                      logical(LK)                     :: sorted
     !>                                  end function
     !>                              \endcode
-    !>                              where `SKC` represents the kind of the input string argument `array`.<br>
+    !>                              where `SKG` represents the kind of the input string argument `array`.<br>
     !>                              This user-defined equivalence check is extremely useful where a user-defined sorting criterion other than simple ascending order
     !>                              is needed, for example, when the case-sensitivity of an input string or array of strings  is irrelevant or when sorting of
     !>                              the absolute values matters excluding the signs of the numbers, or when descending order is desired.<br>
@@ -5844,8 +5844,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankModifiedDefCom_D0_SK5
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK5
-        character(*,SKC)            , intent(in)                    :: array
+        use pm_kind, only: TKR => IK, SKG => SK5
+        character(*,SKG)            , intent(in)                    :: array
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
     end subroutine
 #endif
@@ -5855,8 +5855,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankModifiedDefCom_D0_SK4
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK4
-        character(*,SKC)            , intent(in)                    :: array
+        use pm_kind, only: TKR => IK, SKG => SK4
+        character(*,SKG)            , intent(in)                    :: array
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
     end subroutine
 #endif
@@ -5866,8 +5866,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankModifiedDefCom_D0_SK3
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK3
-        character(*,SKC)            , intent(in)                    :: array
+        use pm_kind, only: TKR => IK, SKG => SK3
+        character(*,SKG)            , intent(in)                    :: array
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
     end subroutine
 #endif
@@ -5877,8 +5877,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankModifiedDefCom_D0_SK2
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK2
-        character(*,SKC)            , intent(in)                    :: array
+        use pm_kind, only: TKR => IK, SKG => SK2
+        character(*,SKG)            , intent(in)                    :: array
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
     end subroutine
 #endif
@@ -5888,8 +5888,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankModifiedDefCom_D0_SK1
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK1
-        character(*,SKC)            , intent(in)                    :: array
+        use pm_kind, only: TKR => IK, SKG => SK1
+        character(*,SKG)            , intent(in)                    :: array
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
     end subroutine
 #endif
@@ -5901,8 +5901,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankModifiedDefCom_D1_SK5
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK5
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, SKG => SK5
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
     end subroutine
 #endif
@@ -5912,8 +5912,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankModifiedDefCom_D1_SK4
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK4
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, SKG => SK4
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
     end subroutine
 #endif
@@ -5923,8 +5923,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankModifiedDefCom_D1_SK3
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK3
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, SKG => SK3
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
     end subroutine
 #endif
@@ -5934,8 +5934,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankModifiedDefCom_D1_SK2
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK2
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, SKG => SK2
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
     end subroutine
 #endif
@@ -5945,8 +5945,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankModifiedDefCom_D1_SK1
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK1
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, SKG => SK1
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
     end subroutine
 #endif
@@ -5958,8 +5958,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankModifiedDefCom_D1_IK5
 #endif
-        use pm_kind, only: TKR => IK, IKC => IK5
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, IKG => IK5
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
     end subroutine
 #endif
@@ -5969,8 +5969,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankModifiedDefCom_D1_IK4
 #endif
-        use pm_kind, only: TKR => IK, IKC => IK4
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, IKG => IK4
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
     end subroutine
 #endif
@@ -5980,8 +5980,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankModifiedDefCom_D1_IK3
 #endif
-        use pm_kind, only: TKR => IK, IKC => IK3
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, IKG => IK3
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
     end subroutine
 #endif
@@ -5991,8 +5991,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankModifiedDefCom_D1_IK2
 #endif
-        use pm_kind, only: TKR => IK, IKC => IK2
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, IKG => IK2
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
     end subroutine
 #endif
@@ -6002,8 +6002,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankModifiedDefCom_D1_IK1
 #endif
-        use pm_kind, only: TKR => IK, IKC => IK1
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, IKG => IK1
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
     end subroutine
 #endif
@@ -6015,8 +6015,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankModifiedDefCom_D1_LK5
 #endif
-        use pm_kind, only: TKR => IK, LKC => LK5
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, LKG => LK5
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
     end subroutine
 #endif
@@ -6026,8 +6026,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankModifiedDefCom_D1_LK4
 #endif
-        use pm_kind, only: TKR => IK, LKC => LK4
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, LKG => LK4
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
     end subroutine
 #endif
@@ -6037,8 +6037,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankModifiedDefCom_D1_LK3
 #endif
-        use pm_kind, only: TKR => IK, LKC => LK3
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, LKG => LK3
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
     end subroutine
 #endif
@@ -6048,8 +6048,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankModifiedDefCom_D1_LK2
 #endif
-        use pm_kind, only: TKR => IK, LKC => LK2
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, LKG => LK2
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
     end subroutine
 #endif
@@ -6059,8 +6059,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankModifiedDefCom_D1_LK1
 #endif
-        use pm_kind, only: TKR => IK, LKC => LK1
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, LKG => LK1
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
     end subroutine
 #endif
@@ -6072,8 +6072,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankModifiedDefCom_D1_CK5
 #endif
-        use pm_kind, only: TKR => IK, CKC => CK5
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, CKG => CK5
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
     end subroutine
 #endif
@@ -6083,8 +6083,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankModifiedDefCom_D1_CK4
 #endif
-        use pm_kind, only: TKR => IK, CKC => CK4
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, CKG => CK4
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
     end subroutine
 #endif
@@ -6094,8 +6094,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankModifiedDefCom_D1_CK3
 #endif
-        use pm_kind, only: TKR => IK, CKC => CK3
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, CKG => CK3
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
     end subroutine
 #endif
@@ -6105,8 +6105,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankModifiedDefCom_D1_CK2
 #endif
-        use pm_kind, only: TKR => IK, CKC => CK2
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, CKG => CK2
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
     end subroutine
 #endif
@@ -6116,8 +6116,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankModifiedDefCom_D1_CK1
 #endif
-        use pm_kind, only: TKR => IK, CKC => CK1
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, CKG => CK1
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
     end subroutine
 #endif
@@ -6129,8 +6129,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankModifiedDefCom_D1_RK5
 #endif
-        use pm_kind, only: TKR => IK, RKC => RK5
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, RKG => RK5
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
     end subroutine
 #endif
@@ -6140,8 +6140,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankModifiedDefCom_D1_RK4
 #endif
-        use pm_kind, only: TKR => IK, RKC => RK4
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, RKG => RK4
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
     end subroutine
 #endif
@@ -6151,8 +6151,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankModifiedDefCom_D1_RK3
 #endif
-        use pm_kind, only: TKR => IK, RKC => RK3
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, RKG => RK3
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
     end subroutine
 #endif
@@ -6162,8 +6162,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankModifiedDefCom_D1_RK2
 #endif
-        use pm_kind, only: TKR => IK, RKC => RK2
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, RKG => RK2
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
     end subroutine
 #endif
@@ -6173,8 +6173,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankModifiedDefCom_D1_RK1
 #endif
-        use pm_kind, only: TKR => IK, RKC => RK1
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, RKG => RK1
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
     end subroutine
 #endif
@@ -6188,9 +6188,9 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankModifiedDefCom_D1_PSSK5
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK5
+        use pm_kind, only: TKR => IK, SKG => SK5
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))          , intent(in)    , contiguous    :: array(:)
+        type(css_pdt(SKG))          , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
     end subroutine
 #endif
@@ -6200,9 +6200,9 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankModifiedDefCom_D1_PSSK4
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK4
+        use pm_kind, only: TKR => IK, SKG => SK4
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))          , intent(in)    , contiguous    :: array(:)
+        type(css_pdt(SKG))          , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
     end subroutine
 #endif
@@ -6212,9 +6212,9 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankModifiedDefCom_D1_PSSK3
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK3
+        use pm_kind, only: TKR => IK, SKG => SK3
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))          , intent(in)    , contiguous    :: array(:)
+        type(css_pdt(SKG))          , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
     end subroutine
 #endif
@@ -6224,9 +6224,9 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankModifiedDefCom_D1_PSSK2
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK2
+        use pm_kind, only: TKR => IK, SKG => SK2
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))          , intent(in)    , contiguous    :: array(:)
+        type(css_pdt(SKG))          , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
     end subroutine
 #endif
@@ -6236,9 +6236,9 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankModifiedDefCom_D1_PSSK1
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK1
+        use pm_kind, only: TKR => IK, SKG => SK1
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))          , intent(in)    , contiguous    :: array(:)
+        type(css_pdt(SKG))          , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
     end subroutine
 #endif
@@ -6252,7 +6252,7 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankModifiedDefCom_D1_BSSK
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK
+        use pm_kind, only: TKR => IK, SKG => SK
         use pm_container, only: css_type
         type(css_type)              , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
@@ -6271,8 +6271,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankModifiedCusCom_D0_SK5
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK5
-        character(*,SKC)            , intent(in)                    :: array
+        use pm_kind, only: TKR => IK, SKG => SK5
+        character(*,SKG)            , intent(in)                    :: array
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
         procedure(logical(LK))                                      :: isSorted
     end subroutine
@@ -6283,8 +6283,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankModifiedCusCom_D0_SK4
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK4
-        character(*,SKC)            , intent(in)                    :: array
+        use pm_kind, only: TKR => IK, SKG => SK4
+        character(*,SKG)            , intent(in)                    :: array
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
         procedure(logical(LK))                                      :: isSorted
     end subroutine
@@ -6295,8 +6295,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankModifiedCusCom_D0_SK3
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK3
-        character(*,SKC)            , intent(in)                    :: array
+        use pm_kind, only: TKR => IK, SKG => SK3
+        character(*,SKG)            , intent(in)                    :: array
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
         procedure(logical(LK))                                      :: isSorted
     end subroutine
@@ -6307,8 +6307,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankModifiedCusCom_D0_SK2
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK2
-        character(*,SKC)            , intent(in)                    :: array
+        use pm_kind, only: TKR => IK, SKG => SK2
+        character(*,SKG)            , intent(in)                    :: array
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
         procedure(logical(LK))                                      :: isSorted
     end subroutine
@@ -6319,8 +6319,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankModifiedCusCom_D0_SK1
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK1
-        character(*,SKC)            , intent(in)                    :: array
+        use pm_kind, only: TKR => IK, SKG => SK1
+        character(*,SKG)            , intent(in)                    :: array
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
         procedure(logical(LK))                                      :: isSorted
     end subroutine
@@ -6333,8 +6333,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankModifiedCusCom_D1_SK5
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK5
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, SKG => SK5
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
         procedure(logical(LK))                                      :: isSorted
     end subroutine
@@ -6345,8 +6345,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankModifiedCusCom_D1_SK4
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK4
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, SKG => SK4
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
         procedure(logical(LK))                                      :: isSorted
     end subroutine
@@ -6357,8 +6357,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankModifiedCusCom_D1_SK3
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK3
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, SKG => SK3
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
         procedure(logical(LK))                                      :: isSorted
     end subroutine
@@ -6369,8 +6369,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankModifiedCusCom_D1_SK2
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK2
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, SKG => SK2
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
         procedure(logical(LK))                                      :: isSorted
     end subroutine
@@ -6381,8 +6381,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankModifiedCusCom_D1_SK1
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK1
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, SKG => SK1
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
         procedure(logical(LK))                                      :: isSorted
     end subroutine
@@ -6395,8 +6395,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankModifiedCusCom_D1_IK5
 #endif
-        use pm_kind, only: TKR => IK, IKC => IK5
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, IKG => IK5
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
         procedure(logical(LK))                                      :: isSorted
     end subroutine
@@ -6407,8 +6407,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankModifiedCusCom_D1_IK4
 #endif
-        use pm_kind, only: TKR => IK, IKC => IK4
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, IKG => IK4
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
         procedure(logical(LK))                                      :: isSorted
     end subroutine
@@ -6419,8 +6419,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankModifiedCusCom_D1_IK3
 #endif
-        use pm_kind, only: TKR => IK, IKC => IK3
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, IKG => IK3
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
         procedure(logical(LK))                                      :: isSorted
     end subroutine
@@ -6431,8 +6431,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankModifiedCusCom_D1_IK2
 #endif
-        use pm_kind, only: TKR => IK, IKC => IK2
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, IKG => IK2
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
         procedure(logical(LK))                                      :: isSorted
     end subroutine
@@ -6443,8 +6443,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankModifiedCusCom_D1_IK1
 #endif
-        use pm_kind, only: TKR => IK, IKC => IK1
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, IKG => IK1
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
         procedure(logical(LK))                                      :: isSorted
     end subroutine
@@ -6457,8 +6457,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankModifiedCusCom_D1_LK5
 #endif
-        use pm_kind, only: TKR => IK, LKC => LK5
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, LKG => LK5
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
         procedure(logical(LK))                                      :: isSorted
     end subroutine
@@ -6469,8 +6469,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankModifiedCusCom_D1_LK4
 #endif
-        use pm_kind, only: TKR => IK, LKC => LK4
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, LKG => LK4
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
         procedure(logical(LK))                                      :: isSorted
     end subroutine
@@ -6481,8 +6481,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankModifiedCusCom_D1_LK3
 #endif
-        use pm_kind, only: TKR => IK, LKC => LK3
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, LKG => LK3
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
         procedure(logical(LK))                                      :: isSorted
     end subroutine
@@ -6493,8 +6493,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankModifiedCusCom_D1_LK2
 #endif
-        use pm_kind, only: TKR => IK, LKC => LK2
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, LKG => LK2
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
         procedure(logical(LK))                                      :: isSorted
     end subroutine
@@ -6505,8 +6505,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankModifiedCusCom_D1_LK1
 #endif
-        use pm_kind, only: TKR => IK, LKC => LK1
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, LKG => LK1
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
         procedure(logical(LK))                                      :: isSorted
     end subroutine
@@ -6519,8 +6519,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankModifiedCusCom_D1_CK5
 #endif
-        use pm_kind, only: TKR => IK, CKC => CK5
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, CKG => CK5
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
         procedure(logical(LK))                                      :: isSorted
     end subroutine
@@ -6531,8 +6531,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankModifiedCusCom_D1_CK4
 #endif
-        use pm_kind, only: TKR => IK, CKC => CK4
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, CKG => CK4
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
         procedure(logical(LK))                                      :: isSorted
     end subroutine
@@ -6543,8 +6543,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankModifiedCusCom_D1_CK3
 #endif
-        use pm_kind, only: TKR => IK, CKC => CK3
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, CKG => CK3
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
         procedure(logical(LK))                                      :: isSorted
     end subroutine
@@ -6555,8 +6555,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankModifiedCusCom_D1_CK2
 #endif
-        use pm_kind, only: TKR => IK, CKC => CK2
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, CKG => CK2
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
         procedure(logical(LK))                                      :: isSorted
     end subroutine
@@ -6567,8 +6567,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankModifiedCusCom_D1_CK1
 #endif
-        use pm_kind, only: TKR => IK, CKC => CK1
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, CKG => CK1
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
         procedure(logical(LK))                                      :: isSorted
     end subroutine
@@ -6581,8 +6581,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankModifiedCusCom_D1_RK5
 #endif
-        use pm_kind, only: TKR => IK, RKC => RK5
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, RKG => RK5
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
         procedure(logical(LK))                                      :: isSorted
     end subroutine
@@ -6593,8 +6593,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankModifiedCusCom_D1_RK4
 #endif
-        use pm_kind, only: TKR => IK, RKC => RK4
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, RKG => RK4
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
         procedure(logical(LK))                                      :: isSorted
     end subroutine
@@ -6605,8 +6605,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankModifiedCusCom_D1_RK3
 #endif
-        use pm_kind, only: TKR => IK, RKC => RK3
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, RKG => RK3
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
         procedure(logical(LK))                                      :: isSorted
     end subroutine
@@ -6617,8 +6617,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankModifiedCusCom_D1_RK2
 #endif
-        use pm_kind, only: TKR => IK, RKC => RK2
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, RKG => RK2
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
         procedure(logical(LK))                                      :: isSorted
     end subroutine
@@ -6629,8 +6629,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankModifiedCusCom_D1_RK1
 #endif
-        use pm_kind, only: TKR => IK, RKC => RK1
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, RKG => RK1
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
         procedure(logical(LK))                                      :: isSorted
     end subroutine
@@ -6645,9 +6645,9 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankModifiedCusCom_D1_PSSK5
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK5
+        use pm_kind, only: TKR => IK, SKG => SK5
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))          , intent(in)    , contiguous    :: array(:)
+        type(css_pdt(SKG))          , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
         procedure(logical(LK))                                      :: isSorted
     end subroutine
@@ -6658,9 +6658,9 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankModifiedCusCom_D1_PSSK4
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK4
+        use pm_kind, only: TKR => IK, SKG => SK4
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))          , intent(in)    , contiguous    :: array(:)
+        type(css_pdt(SKG))          , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
         procedure(logical(LK))                                      :: isSorted
     end subroutine
@@ -6671,9 +6671,9 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankModifiedCusCom_D1_PSSK3
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK3
+        use pm_kind, only: TKR => IK, SKG => SK3
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))          , intent(in)    , contiguous    :: array(:)
+        type(css_pdt(SKG))          , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
         procedure(logical(LK))                                      :: isSorted
     end subroutine
@@ -6684,9 +6684,9 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankModifiedCusCom_D1_PSSK2
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK2
+        use pm_kind, only: TKR => IK, SKG => SK2
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))          , intent(in)    , contiguous    :: array(:)
+        type(css_pdt(SKG))          , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
         procedure(logical(LK))                                      :: isSorted
     end subroutine
@@ -6697,9 +6697,9 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankModifiedCusCom_D1_PSSK1
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK1
+        use pm_kind, only: TKR => IK, SKG => SK1
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))          , intent(in)    , contiguous    :: array(:)
+        type(css_pdt(SKG))          , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
         procedure(logical(LK))                                      :: isSorted
     end subroutine
@@ -6714,7 +6714,7 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankModifiedCusCom_D1_BSSK
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK
+        use pm_kind, only: TKR => IK, SKG => SK
         use pm_container, only: css_type
         type(css_type)              , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
@@ -6765,7 +6765,7 @@ module pm_arrayRank
     !>                              input scalar argument is sorted with respect to the second input argument according to the user-defined sorting condition
     !>                              within `isSorted()`, otherwise, it is `.false.`.<br>
     !>                              If `array` is a Fortran string (i.e., a scalar `character`),
-    !>                              then both input arguments to `isSorted()` are single `character(1,SKC)` where `SKC` is the kind of `array`.<br>
+    !>                              then both input arguments to `isSorted()` are single `character(1,SKG)` where `SKG` is the kind of `array`.<br>
     !>                              The following illustrates the generic interface of `isSorted()` when the rank of the input `array` is `1`,
     !>                              \code{.F90}
     !>                                  function isSorted(a,b) result (sorted)
@@ -6789,11 +6789,11 @@ module pm_arrayRank
     !>                              The following illustrates the generic interface of `isSorted()` when the input `array` is a scalar string,
     !>                              \code{.F90}
     !>                                  function isSorted(a,b) result (sorted)
-    !>                                      character(1,SKC), intent(in)    :: a, b
+    !>                                      character(1,SKG), intent(in)    :: a, b
     !>                                      logical(LK)                     :: sorted
     !>                                  end function
     !>                              \endcode
-    !>                              where `SKC` represents the kind of the input string argument `array`.<br>
+    !>                              where `SKG` represents the kind of the input string argument `array`.<br>
     !>                              This user-defined equivalence check is extremely useful where a user-defined sorting criterion other than simple ascending order
     !>                              is needed, for example, when the case-sensitivity of an input string or array of strings  is irrelevant or when sorting of
     !>                              the absolute values matters excluding the signs of the numbers, or when descending order is desired.<br>
@@ -6881,8 +6881,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankOrdinalDefCom_D0_SK5
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK5
-        character(*,SKC)            , intent(in)                    :: array
+        use pm_kind, only: TKR => IK, SKG => SK5
+        character(*,SKG)            , intent(in)                    :: array
         integer(TKR)                                                :: rank(len(array, IK))
     end function
 #endif
@@ -6892,8 +6892,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankOrdinalDefCom_D0_SK4
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK4
-        character(*,SKC)            , intent(in)                    :: array
+        use pm_kind, only: TKR => IK, SKG => SK4
+        character(*,SKG)            , intent(in)                    :: array
         integer(TKR)                                                :: rank(len(array, IK))
     end function
 #endif
@@ -6903,8 +6903,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankOrdinalDefCom_D0_SK3
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK3
-        character(*,SKC)            , intent(in)                    :: array
+        use pm_kind, only: TKR => IK, SKG => SK3
+        character(*,SKG)            , intent(in)                    :: array
         integer(TKR)                                                :: rank(len(array, IK))
     end function
 #endif
@@ -6914,8 +6914,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankOrdinalDefCom_D0_SK2
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK2
-        character(*,SKC)            , intent(in)                    :: array
+        use pm_kind, only: TKR => IK, SKG => SK2
+        character(*,SKG)            , intent(in)                    :: array
         integer(TKR)                                                :: rank(len(array, IK))
     end function
 #endif
@@ -6925,8 +6925,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankOrdinalDefCom_D0_SK1
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK1
-        character(*,SKC)            , intent(in)                    :: array
+        use pm_kind, only: TKR => IK, SKG => SK1
+        character(*,SKG)            , intent(in)                    :: array
         integer(TKR)                                                :: rank(len(array, IK))
     end function
 #endif
@@ -6938,8 +6938,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankOrdinalDefCom_D1_SK5
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK5
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, SKG => SK5
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
 #endif
@@ -6949,8 +6949,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankOrdinalDefCom_D1_SK4
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK4
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, SKG => SK4
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
 #endif
@@ -6960,8 +6960,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankOrdinalDefCom_D1_SK3
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK3
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, SKG => SK3
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
 #endif
@@ -6971,8 +6971,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankOrdinalDefCom_D1_SK2
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK2
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, SKG => SK2
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
 #endif
@@ -6982,8 +6982,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankOrdinalDefCom_D1_SK1
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK1
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, SKG => SK1
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
 #endif
@@ -6995,8 +6995,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankOrdinalDefCom_D1_IK5
 #endif
-        use pm_kind, only: TKR => IK, IKC => IK5
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, IKG => IK5
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
 #endif
@@ -7006,8 +7006,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankOrdinalDefCom_D1_IK4
 #endif
-        use pm_kind, only: TKR => IK, IKC => IK4
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, IKG => IK4
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
 #endif
@@ -7017,8 +7017,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankOrdinalDefCom_D1_IK3
 #endif
-        use pm_kind, only: TKR => IK, IKC => IK3
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, IKG => IK3
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
 #endif
@@ -7028,8 +7028,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankOrdinalDefCom_D1_IK2
 #endif
-        use pm_kind, only: TKR => IK, IKC => IK2
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, IKG => IK2
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
 #endif
@@ -7039,8 +7039,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankOrdinalDefCom_D1_IK1
 #endif
-        use pm_kind, only: TKR => IK, IKC => IK1
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, IKG => IK1
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
 #endif
@@ -7052,8 +7052,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankOrdinalDefCom_D1_LK5
 #endif
-        use pm_kind, only: TKR => IK, LKC => LK5
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, LKG => LK5
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
 #endif
@@ -7063,8 +7063,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankOrdinalDefCom_D1_LK4
 #endif
-        use pm_kind, only: TKR => IK, LKC => LK4
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, LKG => LK4
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
 #endif
@@ -7074,8 +7074,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankOrdinalDefCom_D1_LK3
 #endif
-        use pm_kind, only: TKR => IK, LKC => LK3
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, LKG => LK3
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
 #endif
@@ -7085,8 +7085,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankOrdinalDefCom_D1_LK2
 #endif
-        use pm_kind, only: TKR => IK, LKC => LK2
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, LKG => LK2
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
 #endif
@@ -7096,8 +7096,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankOrdinalDefCom_D1_LK1
 #endif
-        use pm_kind, only: TKR => IK, LKC => LK1
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, LKG => LK1
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
 #endif
@@ -7109,8 +7109,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankOrdinalDefCom_D1_CK5
 #endif
-        use pm_kind, only: TKR => IK, CKC => CK5
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, CKG => CK5
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
 #endif
@@ -7120,8 +7120,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankOrdinalDefCom_D1_CK4
 #endif
-        use pm_kind, only: TKR => IK, CKC => CK4
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, CKG => CK4
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
 #endif
@@ -7131,8 +7131,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankOrdinalDefCom_D1_CK3
 #endif
-        use pm_kind, only: TKR => IK, CKC => CK3
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, CKG => CK3
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
 #endif
@@ -7142,8 +7142,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankOrdinalDefCom_D1_CK2
 #endif
-        use pm_kind, only: TKR => IK, CKC => CK2
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, CKG => CK2
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
 #endif
@@ -7153,8 +7153,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankOrdinalDefCom_D1_CK1
 #endif
-        use pm_kind, only: TKR => IK, CKC => CK1
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, CKG => CK1
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
 #endif
@@ -7166,8 +7166,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankOrdinalDefCom_D1_RK5
 #endif
-        use pm_kind, only: TKR => IK, RKC => RK5
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, RKG => RK5
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
 #endif
@@ -7177,8 +7177,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankOrdinalDefCom_D1_RK4
 #endif
-        use pm_kind, only: TKR => IK, RKC => RK4
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, RKG => RK4
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
 #endif
@@ -7188,8 +7188,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankOrdinalDefCom_D1_RK3
 #endif
-        use pm_kind, only: TKR => IK, RKC => RK3
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, RKG => RK3
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
 #endif
@@ -7199,8 +7199,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankOrdinalDefCom_D1_RK2
 #endif
-        use pm_kind, only: TKR => IK, RKC => RK2
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, RKG => RK2
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
 #endif
@@ -7210,8 +7210,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankOrdinalDefCom_D1_RK1
 #endif
-        use pm_kind, only: TKR => IK, RKC => RK1
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, RKG => RK1
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
 #endif
@@ -7225,9 +7225,9 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankOrdinalDefCom_D1_PSSK5
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK5
+        use pm_kind, only: TKR => IK, SKG => SK5
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))          , intent(in)    , contiguous    :: array(:)
+        type(css_pdt(SKG))          , intent(in)    , contiguous    :: array(:)
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
 #endif
@@ -7237,9 +7237,9 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankOrdinalDefCom_D1_PSSK4
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK4
+        use pm_kind, only: TKR => IK, SKG => SK4
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))          , intent(in)    , contiguous    :: array(:)
+        type(css_pdt(SKG))          , intent(in)    , contiguous    :: array(:)
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
 #endif
@@ -7249,9 +7249,9 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankOrdinalDefCom_D1_PSSK3
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK3
+        use pm_kind, only: TKR => IK, SKG => SK3
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))          , intent(in)    , contiguous    :: array(:)
+        type(css_pdt(SKG))          , intent(in)    , contiguous    :: array(:)
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
 #endif
@@ -7261,9 +7261,9 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankOrdinalDefCom_D1_PSSK2
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK2
+        use pm_kind, only: TKR => IK, SKG => SK2
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))          , intent(in)    , contiguous    :: array(:)
+        type(css_pdt(SKG))          , intent(in)    , contiguous    :: array(:)
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
 #endif
@@ -7273,9 +7273,9 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankOrdinalDefCom_D1_PSSK1
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK1
+        use pm_kind, only: TKR => IK, SKG => SK1
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))          , intent(in)    , contiguous    :: array(:)
+        type(css_pdt(SKG))          , intent(in)    , contiguous    :: array(:)
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
 #endif
@@ -7289,7 +7289,7 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankOrdinalDefCom_D1_BSSK
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK
+        use pm_kind, only: TKR => IK, SKG => SK
         use pm_container, only: css_type
         type(css_type)              , intent(in)    , contiguous    :: array(:)
         integer(TKR)                                                :: rank(size(array, kind = IK))
@@ -7308,8 +7308,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankOrdinalCusCom_D0_SK5
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK5
-        character(*,SKC)            , intent(in)                    :: array
+        use pm_kind, only: TKR => IK, SKG => SK5
+        character(*,SKG)            , intent(in)                    :: array
         procedure(logical(LK))                                      :: isSorted
         integer(TKR)                                                :: rank(len(array, IK))
     end function
@@ -7320,8 +7320,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankOrdinalCusCom_D0_SK4
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK4
-        character(*,SKC)            , intent(in)                    :: array
+        use pm_kind, only: TKR => IK, SKG => SK4
+        character(*,SKG)            , intent(in)                    :: array
         procedure(logical(LK))                                      :: isSorted
         integer(TKR)                                                :: rank(len(array, IK))
     end function
@@ -7332,8 +7332,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankOrdinalCusCom_D0_SK3
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK3
-        character(*,SKC)            , intent(in)                    :: array
+        use pm_kind, only: TKR => IK, SKG => SK3
+        character(*,SKG)            , intent(in)                    :: array
         procedure(logical(LK))                                      :: isSorted
         integer(TKR)                                                :: rank(len(array, IK))
     end function
@@ -7344,8 +7344,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankOrdinalCusCom_D0_SK2
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK2
-        character(*,SKC)            , intent(in)                    :: array
+        use pm_kind, only: TKR => IK, SKG => SK2
+        character(*,SKG)            , intent(in)                    :: array
         procedure(logical(LK))                                      :: isSorted
         integer(TKR)                                                :: rank(len(array, IK))
     end function
@@ -7356,8 +7356,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankOrdinalCusCom_D0_SK1
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK1
-        character(*,SKC)            , intent(in)                    :: array
+        use pm_kind, only: TKR => IK, SKG => SK1
+        character(*,SKG)            , intent(in)                    :: array
         procedure(logical(LK))                                      :: isSorted
         integer(TKR)                                                :: rank(len(array, IK))
     end function
@@ -7370,8 +7370,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankOrdinalCusCom_D1_SK5
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK5
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, SKG => SK5
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
         procedure(logical(LK))                                      :: isSorted
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
@@ -7382,8 +7382,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankOrdinalCusCom_D1_SK4
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK4
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, SKG => SK4
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
         procedure(logical(LK))                                      :: isSorted
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
@@ -7394,8 +7394,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankOrdinalCusCom_D1_SK3
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK3
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, SKG => SK3
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
         procedure(logical(LK))                                      :: isSorted
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
@@ -7406,8 +7406,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankOrdinalCusCom_D1_SK2
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK2
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, SKG => SK2
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
         procedure(logical(LK))                                      :: isSorted
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
@@ -7418,8 +7418,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankOrdinalCusCom_D1_SK1
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK1
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, SKG => SK1
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
         procedure(logical(LK))                                      :: isSorted
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
@@ -7432,8 +7432,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankOrdinalCusCom_D1_IK5
 #endif
-        use pm_kind, only: TKR => IK, IKC => IK5
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, IKG => IK5
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
         procedure(logical(LK))                                      :: isSorted
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
@@ -7444,8 +7444,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankOrdinalCusCom_D1_IK4
 #endif
-        use pm_kind, only: TKR => IK, IKC => IK4
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, IKG => IK4
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
         procedure(logical(LK))                                      :: isSorted
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
@@ -7456,8 +7456,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankOrdinalCusCom_D1_IK3
 #endif
-        use pm_kind, only: TKR => IK, IKC => IK3
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, IKG => IK3
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
         procedure(logical(LK))                                      :: isSorted
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
@@ -7468,8 +7468,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankOrdinalCusCom_D1_IK2
 #endif
-        use pm_kind, only: TKR => IK, IKC => IK2
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, IKG => IK2
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
         procedure(logical(LK))                                      :: isSorted
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
@@ -7480,8 +7480,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankOrdinalCusCom_D1_IK1
 #endif
-        use pm_kind, only: TKR => IK, IKC => IK1
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, IKG => IK1
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
         procedure(logical(LK))                                      :: isSorted
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
@@ -7494,8 +7494,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankOrdinalCusCom_D1_LK5
 #endif
-        use pm_kind, only: TKR => IK, LKC => LK5
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, LKG => LK5
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
         procedure(logical(LK))                                      :: isSorted
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
@@ -7506,8 +7506,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankOrdinalCusCom_D1_LK4
 #endif
-        use pm_kind, only: TKR => IK, LKC => LK4
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, LKG => LK4
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
         procedure(logical(LK))                                      :: isSorted
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
@@ -7518,8 +7518,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankOrdinalCusCom_D1_LK3
 #endif
-        use pm_kind, only: TKR => IK, LKC => LK3
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, LKG => LK3
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
         procedure(logical(LK))                                      :: isSorted
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
@@ -7530,8 +7530,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankOrdinalCusCom_D1_LK2
 #endif
-        use pm_kind, only: TKR => IK, LKC => LK2
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, LKG => LK2
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
         procedure(logical(LK))                                      :: isSorted
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
@@ -7542,8 +7542,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankOrdinalCusCom_D1_LK1
 #endif
-        use pm_kind, only: TKR => IK, LKC => LK1
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, LKG => LK1
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
         procedure(logical(LK))                                      :: isSorted
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
@@ -7556,8 +7556,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankOrdinalCusCom_D1_CK5
 #endif
-        use pm_kind, only: TKR => IK, CKC => CK5
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, CKG => CK5
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
         procedure(logical(LK))                                      :: isSorted
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
@@ -7568,8 +7568,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankOrdinalCusCom_D1_CK4
 #endif
-        use pm_kind, only: TKR => IK, CKC => CK4
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, CKG => CK4
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
         procedure(logical(LK))                                      :: isSorted
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
@@ -7580,8 +7580,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankOrdinalCusCom_D1_CK3
 #endif
-        use pm_kind, only: TKR => IK, CKC => CK3
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, CKG => CK3
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
         procedure(logical(LK))                                      :: isSorted
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
@@ -7592,8 +7592,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankOrdinalCusCom_D1_CK2
 #endif
-        use pm_kind, only: TKR => IK, CKC => CK2
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, CKG => CK2
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
         procedure(logical(LK))                                      :: isSorted
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
@@ -7604,8 +7604,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankOrdinalCusCom_D1_CK1
 #endif
-        use pm_kind, only: TKR => IK, CKC => CK1
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, CKG => CK1
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
         procedure(logical(LK))                                      :: isSorted
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
@@ -7618,8 +7618,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankOrdinalCusCom_D1_RK5
 #endif
-        use pm_kind, only: TKR => IK, RKC => RK5
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, RKG => RK5
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
         procedure(logical(LK))                                      :: isSorted
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
@@ -7630,8 +7630,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankOrdinalCusCom_D1_RK4
 #endif
-        use pm_kind, only: TKR => IK, RKC => RK4
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, RKG => RK4
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
         procedure(logical(LK))                                      :: isSorted
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
@@ -7642,8 +7642,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankOrdinalCusCom_D1_RK3
 #endif
-        use pm_kind, only: TKR => IK, RKC => RK3
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, RKG => RK3
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
         procedure(logical(LK))                                      :: isSorted
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
@@ -7654,8 +7654,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankOrdinalCusCom_D1_RK2
 #endif
-        use pm_kind, only: TKR => IK, RKC => RK2
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, RKG => RK2
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
         procedure(logical(LK))                                      :: isSorted
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
@@ -7666,8 +7666,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankOrdinalCusCom_D1_RK1
 #endif
-        use pm_kind, only: TKR => IK, RKC => RK1
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, RKG => RK1
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
         procedure(logical(LK))                                      :: isSorted
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
@@ -7682,9 +7682,9 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankOrdinalCusCom_D1_PSSK5
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK5
+        use pm_kind, only: TKR => IK, SKG => SK5
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))          , intent(in)    , contiguous    :: array(:)
+        type(css_pdt(SKG))          , intent(in)    , contiguous    :: array(:)
         procedure(logical(LK))                                      :: isSorted
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
@@ -7695,9 +7695,9 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankOrdinalCusCom_D1_PSSK4
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK4
+        use pm_kind, only: TKR => IK, SKG => SK4
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))          , intent(in)    , contiguous    :: array(:)
+        type(css_pdt(SKG))          , intent(in)    , contiguous    :: array(:)
         procedure(logical(LK))                                      :: isSorted
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
@@ -7708,9 +7708,9 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankOrdinalCusCom_D1_PSSK3
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK3
+        use pm_kind, only: TKR => IK, SKG => SK3
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))          , intent(in)    , contiguous    :: array(:)
+        type(css_pdt(SKG))          , intent(in)    , contiguous    :: array(:)
         procedure(logical(LK))                                      :: isSorted
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
@@ -7721,9 +7721,9 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankOrdinalCusCom_D1_PSSK2
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK2
+        use pm_kind, only: TKR => IK, SKG => SK2
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))          , intent(in)    , contiguous    :: array(:)
+        type(css_pdt(SKG))          , intent(in)    , contiguous    :: array(:)
         procedure(logical(LK))                                      :: isSorted
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
@@ -7734,9 +7734,9 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankOrdinalCusCom_D1_PSSK1
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK1
+        use pm_kind, only: TKR => IK, SKG => SK1
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))          , intent(in)    , contiguous    :: array(:)
+        type(css_pdt(SKG))          , intent(in)    , contiguous    :: array(:)
         integer(TKR)                                                :: rank(size(array, kind = IK))
         procedure(logical(LK))                                      :: isSorted
     end function
@@ -7751,7 +7751,7 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankOrdinalCusCom_D1_BSSK
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK
+        use pm_kind, only: TKR => IK, SKG => SK
         use pm_container, only: css_type
         type(css_type)              , intent(in)    , contiguous    :: array(:)
         procedure(logical(LK))                                      :: isSorted
@@ -7806,7 +7806,7 @@ module pm_arrayRank
     !>                              input scalar argument is sorted with respect to the second input argument according to the user-defined sorting condition
     !>                              within `isSorted()`, otherwise, it is `.false.`.<br>
     !>                              If `array` is a Fortran string (i.e., a scalar `character`),
-    !>                              then both input arguments to `isSorted()` are single `character(1,SKC)` where `SKC` is the kind of `array`.<br>
+    !>                              then both input arguments to `isSorted()` are single `character(1,SKG)` where `SKG` is the kind of `array`.<br>
     !>                              The following illustrates the generic interface of `isSorted()` when the rank of the input `array` is `1`,
     !>                              \code{.F90}
     !>                                  function isSorted(a,b) result (sorted)
@@ -7830,11 +7830,11 @@ module pm_arrayRank
     !>                              The following illustrates the generic interface of `isSorted()` when the input `array` is a scalar string,
     !>                              \code{.F90}
     !>                                  function isSorted(a,b) result (sorted)
-    !>                                      character(1,SKC), intent(in)    :: a, b
+    !>                                      character(1,SKG), intent(in)    :: a, b
     !>                                      logical(LK)                     :: sorted
     !>                                  end function
     !>                              \endcode
-    !>                              where `SKC` represents the kind of the input string argument `array`.<br>
+    !>                              where `SKG` represents the kind of the input string argument `array`.<br>
     !>                              This user-defined equivalence check is extremely useful where a user-defined sorting criterion other than simple ascending order
     !>                              is needed, for example, when the case-sensitivity of an input string or array of strings  is irrelevant or when sorting of
     !>                              the absolute values matters excluding the signs of the numbers, or when descending order is desired.<br>
@@ -7917,8 +7917,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankOrdinalDefCom_D0_SK5
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK5
-        character(*,SKC)            , intent(in)                    :: array
+        use pm_kind, only: TKR => IK, SKG => SK5
+        character(*,SKG)            , intent(in)                    :: array
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
     end subroutine
 #endif
@@ -7928,8 +7928,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankOrdinalDefCom_D0_SK4
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK4
-        character(*,SKC)            , intent(in)                    :: array
+        use pm_kind, only: TKR => IK, SKG => SK4
+        character(*,SKG)            , intent(in)                    :: array
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
     end subroutine
 #endif
@@ -7939,8 +7939,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankOrdinalDefCom_D0_SK3
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK3
-        character(*,SKC)            , intent(in)                    :: array
+        use pm_kind, only: TKR => IK, SKG => SK3
+        character(*,SKG)            , intent(in)                    :: array
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
     end subroutine
 #endif
@@ -7950,8 +7950,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankOrdinalDefCom_D0_SK2
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK2
-        character(*,SKC)            , intent(in)                    :: array
+        use pm_kind, only: TKR => IK, SKG => SK2
+        character(*,SKG)            , intent(in)                    :: array
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
     end subroutine
 #endif
@@ -7961,8 +7961,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankOrdinalDefCom_D0_SK1
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK1
-        character(*,SKC)            , intent(in)                    :: array
+        use pm_kind, only: TKR => IK, SKG => SK1
+        character(*,SKG)            , intent(in)                    :: array
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
     end subroutine
 #endif
@@ -7974,8 +7974,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankOrdinalDefCom_D1_SK5
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK5
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, SKG => SK5
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
     end subroutine
 #endif
@@ -7985,8 +7985,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankOrdinalDefCom_D1_SK4
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK4
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, SKG => SK4
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
     end subroutine
 #endif
@@ -7996,8 +7996,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankOrdinalDefCom_D1_SK3
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK3
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, SKG => SK3
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
     end subroutine
 #endif
@@ -8007,8 +8007,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankOrdinalDefCom_D1_SK2
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK2
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, SKG => SK2
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
     end subroutine
 #endif
@@ -8018,8 +8018,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankOrdinalDefCom_D1_SK1
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK1
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, SKG => SK1
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
     end subroutine
 #endif
@@ -8031,8 +8031,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankOrdinalDefCom_D1_IK5
 #endif
-        use pm_kind, only: TKR => IK, IKC => IK5
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, IKG => IK5
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
     end subroutine
 #endif
@@ -8042,8 +8042,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankOrdinalDefCom_D1_IK4
 #endif
-        use pm_kind, only: TKR => IK, IKC => IK4
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, IKG => IK4
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
     end subroutine
 #endif
@@ -8053,8 +8053,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankOrdinalDefCom_D1_IK3
 #endif
-        use pm_kind, only: TKR => IK, IKC => IK3
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, IKG => IK3
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
     end subroutine
 #endif
@@ -8064,8 +8064,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankOrdinalDefCom_D1_IK2
 #endif
-        use pm_kind, only: TKR => IK, IKC => IK2
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, IKG => IK2
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
     end subroutine
 #endif
@@ -8075,8 +8075,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankOrdinalDefCom_D1_IK1
 #endif
-        use pm_kind, only: TKR => IK, IKC => IK1
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, IKG => IK1
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
     end subroutine
 #endif
@@ -8088,8 +8088,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankOrdinalDefCom_D1_LK5
 #endif
-        use pm_kind, only: TKR => IK, LKC => LK5
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, LKG => LK5
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
     end subroutine
 #endif
@@ -8099,8 +8099,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankOrdinalDefCom_D1_LK4
 #endif
-        use pm_kind, only: TKR => IK, LKC => LK4
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, LKG => LK4
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
     end subroutine
 #endif
@@ -8110,8 +8110,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankOrdinalDefCom_D1_LK3
 #endif
-        use pm_kind, only: TKR => IK, LKC => LK3
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, LKG => LK3
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
     end subroutine
 #endif
@@ -8121,8 +8121,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankOrdinalDefCom_D1_LK2
 #endif
-        use pm_kind, only: TKR => IK, LKC => LK2
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, LKG => LK2
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
     end subroutine
 #endif
@@ -8132,8 +8132,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankOrdinalDefCom_D1_LK1
 #endif
-        use pm_kind, only: TKR => IK, LKC => LK1
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, LKG => LK1
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
     end subroutine
 #endif
@@ -8145,8 +8145,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankOrdinalDefCom_D1_CK5
 #endif
-        use pm_kind, only: TKR => IK, CKC => CK5
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, CKG => CK5
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
     end subroutine
 #endif
@@ -8156,8 +8156,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankOrdinalDefCom_D1_CK4
 #endif
-        use pm_kind, only: TKR => IK, CKC => CK4
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, CKG => CK4
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
     end subroutine
 #endif
@@ -8167,8 +8167,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankOrdinalDefCom_D1_CK3
 #endif
-        use pm_kind, only: TKR => IK, CKC => CK3
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, CKG => CK3
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
     end subroutine
 #endif
@@ -8178,8 +8178,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankOrdinalDefCom_D1_CK2
 #endif
-        use pm_kind, only: TKR => IK, CKC => CK2
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, CKG => CK2
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
     end subroutine
 #endif
@@ -8189,8 +8189,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankOrdinalDefCom_D1_CK1
 #endif
-        use pm_kind, only: TKR => IK, CKC => CK1
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, CKG => CK1
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
     end subroutine
 #endif
@@ -8202,8 +8202,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankOrdinalDefCom_D1_RK5
 #endif
-        use pm_kind, only: TKR => IK, RKC => RK5
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, RKG => RK5
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
     end subroutine
 #endif
@@ -8213,8 +8213,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankOrdinalDefCom_D1_RK4
 #endif
-        use pm_kind, only: TKR => IK, RKC => RK4
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, RKG => RK4
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
     end subroutine
 #endif
@@ -8224,8 +8224,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankOrdinalDefCom_D1_RK3
 #endif
-        use pm_kind, only: TKR => IK, RKC => RK3
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, RKG => RK3
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
     end subroutine
 #endif
@@ -8235,8 +8235,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankOrdinalDefCom_D1_RK2
 #endif
-        use pm_kind, only: TKR => IK, RKC => RK2
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, RKG => RK2
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
     end subroutine
 #endif
@@ -8246,8 +8246,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankOrdinalDefCom_D1_RK1
 #endif
-        use pm_kind, only: TKR => IK, RKC => RK1
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, RKG => RK1
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
     end subroutine
 #endif
@@ -8261,9 +8261,9 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankOrdinalDefCom_D1_PSSK5
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK5
+        use pm_kind, only: TKR => IK, SKG => SK5
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))          , intent(in)    , contiguous    :: array(:)
+        type(css_pdt(SKG))          , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
     end subroutine
 #endif
@@ -8273,9 +8273,9 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankOrdinalDefCom_D1_PSSK4
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK4
+        use pm_kind, only: TKR => IK, SKG => SK4
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))          , intent(in)    , contiguous    :: array(:)
+        type(css_pdt(SKG))          , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
     end subroutine
 #endif
@@ -8285,9 +8285,9 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankOrdinalDefCom_D1_PSSK3
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK3
+        use pm_kind, only: TKR => IK, SKG => SK3
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))          , intent(in)    , contiguous    :: array(:)
+        type(css_pdt(SKG))          , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
     end subroutine
 #endif
@@ -8297,9 +8297,9 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankOrdinalDefCom_D1_PSSK2
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK2
+        use pm_kind, only: TKR => IK, SKG => SK2
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))          , intent(in)    , contiguous    :: array(:)
+        type(css_pdt(SKG))          , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
     end subroutine
 #endif
@@ -8309,9 +8309,9 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankOrdinalDefCom_D1_PSSK1
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK1
+        use pm_kind, only: TKR => IK, SKG => SK1
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))          , intent(in)    , contiguous    :: array(:)
+        type(css_pdt(SKG))          , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
     end subroutine
 #endif
@@ -8325,7 +8325,7 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankOrdinalDefCom_D1_BSSK
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK
+        use pm_kind, only: TKR => IK, SKG => SK
         use pm_container, only: css_type
         type(css_type)              , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
@@ -8344,8 +8344,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankOrdinalCusCom_D0_SK5
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK5
-        character(*,SKC)            , intent(in)                    :: array
+        use pm_kind, only: TKR => IK, SKG => SK5
+        character(*,SKG)            , intent(in)                    :: array
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
         procedure(logical(LK))                                      :: isSorted
     end subroutine
@@ -8356,8 +8356,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankOrdinalCusCom_D0_SK4
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK4
-        character(*,SKC)            , intent(in)                    :: array
+        use pm_kind, only: TKR => IK, SKG => SK4
+        character(*,SKG)            , intent(in)                    :: array
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
         procedure(logical(LK))                                      :: isSorted
     end subroutine
@@ -8368,8 +8368,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankOrdinalCusCom_D0_SK3
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK3
-        character(*,SKC)            , intent(in)                    :: array
+        use pm_kind, only: TKR => IK, SKG => SK3
+        character(*,SKG)            , intent(in)                    :: array
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
         procedure(logical(LK))                                      :: isSorted
     end subroutine
@@ -8380,8 +8380,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankOrdinalCusCom_D0_SK2
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK2
-        character(*,SKC)            , intent(in)                    :: array
+        use pm_kind, only: TKR => IK, SKG => SK2
+        character(*,SKG)            , intent(in)                    :: array
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
         procedure(logical(LK))                                      :: isSorted
     end subroutine
@@ -8392,8 +8392,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankOrdinalCusCom_D0_SK1
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK1
-        character(*,SKC)            , intent(in)                    :: array
+        use pm_kind, only: TKR => IK, SKG => SK1
+        character(*,SKG)            , intent(in)                    :: array
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
         procedure(logical(LK))                                      :: isSorted
     end subroutine
@@ -8406,8 +8406,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankOrdinalCusCom_D1_SK5
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK5
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, SKG => SK5
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
         procedure(logical(LK))                                      :: isSorted
     end subroutine
@@ -8418,8 +8418,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankOrdinalCusCom_D1_SK4
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK4
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, SKG => SK4
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
         procedure(logical(LK))                                      :: isSorted
     end subroutine
@@ -8430,8 +8430,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankOrdinalCusCom_D1_SK3
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK3
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, SKG => SK3
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
         procedure(logical(LK))                                      :: isSorted
     end subroutine
@@ -8442,8 +8442,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankOrdinalCusCom_D1_SK2
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK2
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, SKG => SK2
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
         procedure(logical(LK))                                      :: isSorted
     end subroutine
@@ -8454,8 +8454,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankOrdinalCusCom_D1_SK1
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK1
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, SKG => SK1
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
         procedure(logical(LK))                                      :: isSorted
     end subroutine
@@ -8468,8 +8468,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankOrdinalCusCom_D1_IK5
 #endif
-        use pm_kind, only: TKR => IK, IKC => IK5
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, IKG => IK5
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
         procedure(logical(LK))                                      :: isSorted
     end subroutine
@@ -8480,8 +8480,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankOrdinalCusCom_D1_IK4
 #endif
-        use pm_kind, only: TKR => IK, IKC => IK4
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, IKG => IK4
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
         procedure(logical(LK))                                      :: isSorted
     end subroutine
@@ -8492,8 +8492,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankOrdinalCusCom_D1_IK3
 #endif
-        use pm_kind, only: TKR => IK, IKC => IK3
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, IKG => IK3
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
         procedure(logical(LK))                                      :: isSorted
     end subroutine
@@ -8504,8 +8504,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankOrdinalCusCom_D1_IK2
 #endif
-        use pm_kind, only: TKR => IK, IKC => IK2
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, IKG => IK2
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
         procedure(logical(LK))                                      :: isSorted
     end subroutine
@@ -8516,8 +8516,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankOrdinalCusCom_D1_IK1
 #endif
-        use pm_kind, only: TKR => IK, IKC => IK1
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, IKG => IK1
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
         procedure(logical(LK))                                      :: isSorted
     end subroutine
@@ -8530,8 +8530,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankOrdinalCusCom_D1_LK5
 #endif
-        use pm_kind, only: TKR => IK, LKC => LK5
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, LKG => LK5
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
         procedure(logical(LK))                                      :: isSorted
     end subroutine
@@ -8542,8 +8542,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankOrdinalCusCom_D1_LK4
 #endif
-        use pm_kind, only: TKR => IK, LKC => LK4
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, LKG => LK4
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
         procedure(logical(LK))                                      :: isSorted
     end subroutine
@@ -8554,8 +8554,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankOrdinalCusCom_D1_LK3
 #endif
-        use pm_kind, only: TKR => IK, LKC => LK3
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, LKG => LK3
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
         procedure(logical(LK))                                      :: isSorted
     end subroutine
@@ -8566,8 +8566,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankOrdinalCusCom_D1_LK2
 #endif
-        use pm_kind, only: TKR => IK, LKC => LK2
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, LKG => LK2
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
         procedure(logical(LK))                                      :: isSorted
     end subroutine
@@ -8578,8 +8578,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankOrdinalCusCom_D1_LK1
 #endif
-        use pm_kind, only: TKR => IK, LKC => LK1
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, LKG => LK1
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
         procedure(logical(LK))                                      :: isSorted
     end subroutine
@@ -8592,8 +8592,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankOrdinalCusCom_D1_CK5
 #endif
-        use pm_kind, only: TKR => IK, CKC => CK5
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, CKG => CK5
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
         procedure(logical(LK))                                      :: isSorted
     end subroutine
@@ -8604,8 +8604,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankOrdinalCusCom_D1_CK4
 #endif
-        use pm_kind, only: TKR => IK, CKC => CK4
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, CKG => CK4
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
         procedure(logical(LK))                                      :: isSorted
     end subroutine
@@ -8616,8 +8616,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankOrdinalCusCom_D1_CK3
 #endif
-        use pm_kind, only: TKR => IK, CKC => CK3
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, CKG => CK3
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
         procedure(logical(LK))                                      :: isSorted
     end subroutine
@@ -8628,8 +8628,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankOrdinalCusCom_D1_CK2
 #endif
-        use pm_kind, only: TKR => IK, CKC => CK2
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, CKG => CK2
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
         procedure(logical(LK))                                      :: isSorted
     end subroutine
@@ -8640,8 +8640,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankOrdinalCusCom_D1_CK1
 #endif
-        use pm_kind, only: TKR => IK, CKC => CK1
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, CKG => CK1
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
         procedure(logical(LK))                                      :: isSorted
     end subroutine
@@ -8654,8 +8654,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankOrdinalCusCom_D1_RK5
 #endif
-        use pm_kind, only: TKR => IK, RKC => RK5
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, RKG => RK5
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
         procedure(logical(LK))                                      :: isSorted
     end subroutine
@@ -8666,8 +8666,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankOrdinalCusCom_D1_RK4
 #endif
-        use pm_kind, only: TKR => IK, RKC => RK4
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, RKG => RK4
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
         procedure(logical(LK))                                      :: isSorted
     end subroutine
@@ -8678,8 +8678,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankOrdinalCusCom_D1_RK3
 #endif
-        use pm_kind, only: TKR => IK, RKC => RK3
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, RKG => RK3
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
         procedure(logical(LK))                                      :: isSorted
     end subroutine
@@ -8690,8 +8690,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankOrdinalCusCom_D1_RK2
 #endif
-        use pm_kind, only: TKR => IK, RKC => RK2
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, RKG => RK2
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
         procedure(logical(LK))                                      :: isSorted
     end subroutine
@@ -8702,8 +8702,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankOrdinalCusCom_D1_RK1
 #endif
-        use pm_kind, only: TKR => IK, RKC => RK1
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, RKG => RK1
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
         procedure(logical(LK))                                      :: isSorted
     end subroutine
@@ -8718,9 +8718,9 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankOrdinalCusCom_D1_PSSK5
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK5
+        use pm_kind, only: TKR => IK, SKG => SK5
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))          , intent(in)    , contiguous    :: array(:)
+        type(css_pdt(SKG))          , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
         procedure(logical(LK))                                      :: isSorted
     end subroutine
@@ -8731,9 +8731,9 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankOrdinalCusCom_D1_PSSK4
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK4
+        use pm_kind, only: TKR => IK, SKG => SK4
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))          , intent(in)    , contiguous    :: array(:)
+        type(css_pdt(SKG))          , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
         procedure(logical(LK))                                      :: isSorted
     end subroutine
@@ -8744,9 +8744,9 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankOrdinalCusCom_D1_PSSK3
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK3
+        use pm_kind, only: TKR => IK, SKG => SK3
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))          , intent(in)    , contiguous    :: array(:)
+        type(css_pdt(SKG))          , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
         procedure(logical(LK))                                      :: isSorted
     end subroutine
@@ -8757,9 +8757,9 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankOrdinalCusCom_D1_PSSK2
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK2
+        use pm_kind, only: TKR => IK, SKG => SK2
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))          , intent(in)    , contiguous    :: array(:)
+        type(css_pdt(SKG))          , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
         procedure(logical(LK))                                      :: isSorted
     end subroutine
@@ -8770,9 +8770,9 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankOrdinalCusCom_D1_PSSK1
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK1
+        use pm_kind, only: TKR => IK, SKG => SK1
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))          , intent(in)    , contiguous    :: array(:)
+        type(css_pdt(SKG))          , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
         procedure(logical(LK))                                      :: isSorted
     end subroutine
@@ -8787,7 +8787,7 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankOrdinalCusCom_D1_BSSK
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK
+        use pm_kind, only: TKR => IK, SKG => SK
         use pm_container, only: css_type
         type(css_type)              , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
@@ -8848,7 +8848,7 @@ module pm_arrayRank
     !>                              input scalar argument is sorted with respect to the second input argument according to the user-defined sorting condition
     !>                              within `isSorted()`, otherwise, it is `.false.`.<br>
     !>                              If `array` is a Fortran string (i.e., a scalar `character`),
-    !>                              then both input arguments to `isSorted()` are single `character(1,SKC)` where `SKC` is the kind of `array`.<br>
+    !>                              then both input arguments to `isSorted()` are single `character(1,SKG)` where `SKG` is the kind of `array`.<br>
     !>                              The following illustrates the generic interface of `isSorted()` when the rank of the input `array` is `1`,
     !>                              \code{.F90}
     !>                                  function isSorted(a,b) result (sorted)
@@ -8872,11 +8872,11 @@ module pm_arrayRank
     !>                              The following illustrates the generic interface of `isSorted()` when the input `array` is a scalar string,
     !>                              \code{.F90}
     !>                                  function isSorted(a,b) result (sorted)
-    !>                                      character(1,SKC), intent(in)    :: a, b
+    !>                                      character(1,SKG), intent(in)    :: a, b
     !>                                      logical(LK)                     :: sorted
     !>                                  end function
     !>                              \endcode
-    !>                              where `SKC` represents the kind of the input string argument `array`.<br>
+    !>                              where `SKG` represents the kind of the input string argument `array`.<br>
     !>                              This user-defined equivalence check is extremely useful where a user-defined sorting criterion other than simple ascending order
     !>                              is needed, for example, when the case-sensitivity of an input string or array of strings  is irrelevant or when sorting of
     !>                              the absolute values matters excluding the signs of the numbers, or when descending order is desired.<br>
@@ -8964,8 +8964,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankStandardDefCom_D0_SK5
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK5
-        character(*,SKC)            , intent(in)                    :: array
+        use pm_kind, only: TKR => IK, SKG => SK5
+        character(*,SKG)            , intent(in)                    :: array
         integer(TKR)                                                :: rank(len(array, IK))
     end function
 #endif
@@ -8975,8 +8975,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankStandardDefCom_D0_SK4
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK4
-        character(*,SKC)            , intent(in)                    :: array
+        use pm_kind, only: TKR => IK, SKG => SK4
+        character(*,SKG)            , intent(in)                    :: array
         integer(TKR)                                                :: rank(len(array, IK))
     end function
 #endif
@@ -8986,8 +8986,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankStandardDefCom_D0_SK3
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK3
-        character(*,SKC)            , intent(in)                    :: array
+        use pm_kind, only: TKR => IK, SKG => SK3
+        character(*,SKG)            , intent(in)                    :: array
         integer(TKR)                                                :: rank(len(array, IK))
     end function
 #endif
@@ -8997,8 +8997,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankStandardDefCom_D0_SK2
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK2
-        character(*,SKC)            , intent(in)                    :: array
+        use pm_kind, only: TKR => IK, SKG => SK2
+        character(*,SKG)            , intent(in)                    :: array
         integer(TKR)                                                :: rank(len(array, IK))
     end function
 #endif
@@ -9008,8 +9008,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankStandardDefCom_D0_SK1
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK1
-        character(*,SKC)            , intent(in)                    :: array
+        use pm_kind, only: TKR => IK, SKG => SK1
+        character(*,SKG)            , intent(in)                    :: array
         integer(TKR)                                                :: rank(len(array, IK))
     end function
 #endif
@@ -9021,8 +9021,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankStandardDefCom_D1_SK5
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK5
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, SKG => SK5
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
 #endif
@@ -9032,8 +9032,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankStandardDefCom_D1_SK4
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK4
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, SKG => SK4
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
 #endif
@@ -9043,8 +9043,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankStandardDefCom_D1_SK3
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK3
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, SKG => SK3
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
 #endif
@@ -9054,8 +9054,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankStandardDefCom_D1_SK2
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK2
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, SKG => SK2
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
 #endif
@@ -9065,8 +9065,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankStandardDefCom_D1_SK1
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK1
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, SKG => SK1
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
 #endif
@@ -9078,8 +9078,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankStandardDefCom_D1_IK5
 #endif
-        use pm_kind, only: TKR => IK, IKC => IK5
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, IKG => IK5
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
 #endif
@@ -9089,8 +9089,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankStandardDefCom_D1_IK4
 #endif
-        use pm_kind, only: TKR => IK, IKC => IK4
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, IKG => IK4
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
 #endif
@@ -9100,8 +9100,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankStandardDefCom_D1_IK3
 #endif
-        use pm_kind, only: TKR => IK, IKC => IK3
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, IKG => IK3
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
 #endif
@@ -9111,8 +9111,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankStandardDefCom_D1_IK2
 #endif
-        use pm_kind, only: TKR => IK, IKC => IK2
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, IKG => IK2
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
 #endif
@@ -9122,8 +9122,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankStandardDefCom_D1_IK1
 #endif
-        use pm_kind, only: TKR => IK, IKC => IK1
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, IKG => IK1
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
 #endif
@@ -9135,8 +9135,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankStandardDefCom_D1_LK5
 #endif
-        use pm_kind, only: TKR => IK, LKC => LK5
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, LKG => LK5
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
 #endif
@@ -9146,8 +9146,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankStandardDefCom_D1_LK4
 #endif
-        use pm_kind, only: TKR => IK, LKC => LK4
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, LKG => LK4
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
 #endif
@@ -9157,8 +9157,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankStandardDefCom_D1_LK3
 #endif
-        use pm_kind, only: TKR => IK, LKC => LK3
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, LKG => LK3
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
 #endif
@@ -9168,8 +9168,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankStandardDefCom_D1_LK2
 #endif
-        use pm_kind, only: TKR => IK, LKC => LK2
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, LKG => LK2
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
 #endif
@@ -9179,8 +9179,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankStandardDefCom_D1_LK1
 #endif
-        use pm_kind, only: TKR => IK, LKC => LK1
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, LKG => LK1
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
 #endif
@@ -9192,8 +9192,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankStandardDefCom_D1_CK5
 #endif
-        use pm_kind, only: TKR => IK, CKC => CK5
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, CKG => CK5
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
 #endif
@@ -9203,8 +9203,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankStandardDefCom_D1_CK4
 #endif
-        use pm_kind, only: TKR => IK, CKC => CK4
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, CKG => CK4
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
 #endif
@@ -9214,8 +9214,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankStandardDefCom_D1_CK3
 #endif
-        use pm_kind, only: TKR => IK, CKC => CK3
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, CKG => CK3
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
 #endif
@@ -9225,8 +9225,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankStandardDefCom_D1_CK2
 #endif
-        use pm_kind, only: TKR => IK, CKC => CK2
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, CKG => CK2
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
 #endif
@@ -9236,8 +9236,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankStandardDefCom_D1_CK1
 #endif
-        use pm_kind, only: TKR => IK, CKC => CK1
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, CKG => CK1
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
 #endif
@@ -9249,8 +9249,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankStandardDefCom_D1_RK5
 #endif
-        use pm_kind, only: TKR => IK, RKC => RK5
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, RKG => RK5
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
 #endif
@@ -9260,8 +9260,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankStandardDefCom_D1_RK4
 #endif
-        use pm_kind, only: TKR => IK, RKC => RK4
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, RKG => RK4
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
 #endif
@@ -9271,8 +9271,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankStandardDefCom_D1_RK3
 #endif
-        use pm_kind, only: TKR => IK, RKC => RK3
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, RKG => RK3
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
 #endif
@@ -9282,8 +9282,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankStandardDefCom_D1_RK2
 #endif
-        use pm_kind, only: TKR => IK, RKC => RK2
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, RKG => RK2
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
 #endif
@@ -9293,8 +9293,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankStandardDefCom_D1_RK1
 #endif
-        use pm_kind, only: TKR => IK, RKC => RK1
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, RKG => RK1
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
 #endif
@@ -9308,9 +9308,9 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankStandardDefCom_D1_PSSK5
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK5
+        use pm_kind, only: TKR => IK, SKG => SK5
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))          , intent(in)    , contiguous    :: array(:)
+        type(css_pdt(SKG))          , intent(in)    , contiguous    :: array(:)
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
 #endif
@@ -9320,9 +9320,9 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankStandardDefCom_D1_PSSK4
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK4
+        use pm_kind, only: TKR => IK, SKG => SK4
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))          , intent(in)    , contiguous    :: array(:)
+        type(css_pdt(SKG))          , intent(in)    , contiguous    :: array(:)
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
 #endif
@@ -9332,9 +9332,9 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankStandardDefCom_D1_PSSK3
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK3
+        use pm_kind, only: TKR => IK, SKG => SK3
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))          , intent(in)    , contiguous    :: array(:)
+        type(css_pdt(SKG))          , intent(in)    , contiguous    :: array(:)
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
 #endif
@@ -9344,9 +9344,9 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankStandardDefCom_D1_PSSK2
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK2
+        use pm_kind, only: TKR => IK, SKG => SK2
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))          , intent(in)    , contiguous    :: array(:)
+        type(css_pdt(SKG))          , intent(in)    , contiguous    :: array(:)
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
 #endif
@@ -9356,9 +9356,9 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankStandardDefCom_D1_PSSK1
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK1
+        use pm_kind, only: TKR => IK, SKG => SK1
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))          , intent(in)    , contiguous    :: array(:)
+        type(css_pdt(SKG))          , intent(in)    , contiguous    :: array(:)
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
 #endif
@@ -9372,7 +9372,7 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankStandardDefCom_D1_BSSK
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK
+        use pm_kind, only: TKR => IK, SKG => SK
         use pm_container, only: css_type
         type(css_type)              , intent(in)    , contiguous    :: array(:)
         integer(TKR)                                                :: rank(size(array, kind = IK))
@@ -9391,8 +9391,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankStandardCusCom_D0_SK5
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK5
-        character(*,SKC)            , intent(in)                    :: array
+        use pm_kind, only: TKR => IK, SKG => SK5
+        character(*,SKG)            , intent(in)                    :: array
         procedure(logical(LK))                                      :: isSorted
         integer(TKR)                                                :: rank(len(array, IK))
     end function
@@ -9403,8 +9403,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankStandardCusCom_D0_SK4
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK4
-        character(*,SKC)            , intent(in)                    :: array
+        use pm_kind, only: TKR => IK, SKG => SK4
+        character(*,SKG)            , intent(in)                    :: array
         procedure(logical(LK))                                      :: isSorted
         integer(TKR)                                                :: rank(len(array, IK))
     end function
@@ -9415,8 +9415,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankStandardCusCom_D0_SK3
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK3
-        character(*,SKC)            , intent(in)                    :: array
+        use pm_kind, only: TKR => IK, SKG => SK3
+        character(*,SKG)            , intent(in)                    :: array
         procedure(logical(LK))                                      :: isSorted
         integer(TKR)                                                :: rank(len(array, IK))
     end function
@@ -9427,8 +9427,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankStandardCusCom_D0_SK2
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK2
-        character(*,SKC)            , intent(in)                    :: array
+        use pm_kind, only: TKR => IK, SKG => SK2
+        character(*,SKG)            , intent(in)                    :: array
         procedure(logical(LK))                                      :: isSorted
         integer(TKR)                                                :: rank(len(array, IK))
     end function
@@ -9439,8 +9439,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankStandardCusCom_D0_SK1
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK1
-        character(*,SKC)            , intent(in)                    :: array
+        use pm_kind, only: TKR => IK, SKG => SK1
+        character(*,SKG)            , intent(in)                    :: array
         procedure(logical(LK))                                      :: isSorted
         integer(TKR)                                                :: rank(len(array, IK))
     end function
@@ -9453,8 +9453,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankStandardCusCom_D1_SK5
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK5
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, SKG => SK5
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
         procedure(logical(LK))                                      :: isSorted
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
@@ -9465,8 +9465,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankStandardCusCom_D1_SK4
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK4
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, SKG => SK4
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
         procedure(logical(LK))                                      :: isSorted
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
@@ -9477,8 +9477,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankStandardCusCom_D1_SK3
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK3
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, SKG => SK3
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
         procedure(logical(LK))                                      :: isSorted
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
@@ -9489,8 +9489,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankStandardCusCom_D1_SK2
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK2
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, SKG => SK2
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
         procedure(logical(LK))                                      :: isSorted
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
@@ -9501,8 +9501,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankStandardCusCom_D1_SK1
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK1
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, SKG => SK1
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
         procedure(logical(LK))                                      :: isSorted
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
@@ -9515,8 +9515,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankStandardCusCom_D1_IK5
 #endif
-        use pm_kind, only: TKR => IK, IKC => IK5
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, IKG => IK5
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
         procedure(logical(LK))                                      :: isSorted
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
@@ -9527,8 +9527,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankStandardCusCom_D1_IK4
 #endif
-        use pm_kind, only: TKR => IK, IKC => IK4
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, IKG => IK4
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
         procedure(logical(LK))                                      :: isSorted
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
@@ -9539,8 +9539,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankStandardCusCom_D1_IK3
 #endif
-        use pm_kind, only: TKR => IK, IKC => IK3
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, IKG => IK3
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
         procedure(logical(LK))                                      :: isSorted
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
@@ -9551,8 +9551,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankStandardCusCom_D1_IK2
 #endif
-        use pm_kind, only: TKR => IK, IKC => IK2
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, IKG => IK2
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
         procedure(logical(LK))                                      :: isSorted
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
@@ -9563,8 +9563,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankStandardCusCom_D1_IK1
 #endif
-        use pm_kind, only: TKR => IK, IKC => IK1
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, IKG => IK1
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
         procedure(logical(LK))                                      :: isSorted
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
@@ -9577,8 +9577,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankStandardCusCom_D1_LK5
 #endif
-        use pm_kind, only: TKR => IK, LKC => LK5
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, LKG => LK5
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
         procedure(logical(LK))                                      :: isSorted
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
@@ -9589,8 +9589,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankStandardCusCom_D1_LK4
 #endif
-        use pm_kind, only: TKR => IK, LKC => LK4
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, LKG => LK4
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
         procedure(logical(LK))                                      :: isSorted
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
@@ -9601,8 +9601,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankStandardCusCom_D1_LK3
 #endif
-        use pm_kind, only: TKR => IK, LKC => LK3
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, LKG => LK3
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
         procedure(logical(LK))                                      :: isSorted
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
@@ -9613,8 +9613,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankStandardCusCom_D1_LK2
 #endif
-        use pm_kind, only: TKR => IK, LKC => LK2
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, LKG => LK2
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
         procedure(logical(LK))                                      :: isSorted
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
@@ -9625,8 +9625,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankStandardCusCom_D1_LK1
 #endif
-        use pm_kind, only: TKR => IK, LKC => LK1
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, LKG => LK1
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
         procedure(logical(LK))                                      :: isSorted
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
@@ -9639,8 +9639,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankStandardCusCom_D1_CK5
 #endif
-        use pm_kind, only: TKR => IK, CKC => CK5
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, CKG => CK5
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
         procedure(logical(LK))                                      :: isSorted
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
@@ -9651,8 +9651,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankStandardCusCom_D1_CK4
 #endif
-        use pm_kind, only: TKR => IK, CKC => CK4
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, CKG => CK4
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
         procedure(logical(LK))                                      :: isSorted
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
@@ -9663,8 +9663,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankStandardCusCom_D1_CK3
 #endif
-        use pm_kind, only: TKR => IK, CKC => CK3
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, CKG => CK3
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
         procedure(logical(LK))                                      :: isSorted
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
@@ -9675,8 +9675,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankStandardCusCom_D1_CK2
 #endif
-        use pm_kind, only: TKR => IK, CKC => CK2
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, CKG => CK2
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
         procedure(logical(LK))                                      :: isSorted
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
@@ -9687,8 +9687,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankStandardCusCom_D1_CK1
 #endif
-        use pm_kind, only: TKR => IK, CKC => CK1
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, CKG => CK1
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
         procedure(logical(LK))                                      :: isSorted
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
@@ -9701,8 +9701,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankStandardCusCom_D1_RK5
 #endif
-        use pm_kind, only: TKR => IK, RKC => RK5
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, RKG => RK5
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
         procedure(logical(LK))                                      :: isSorted
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
@@ -9713,8 +9713,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankStandardCusCom_D1_RK4
 #endif
-        use pm_kind, only: TKR => IK, RKC => RK4
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, RKG => RK4
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
         procedure(logical(LK))                                      :: isSorted
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
@@ -9725,8 +9725,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankStandardCusCom_D1_RK3
 #endif
-        use pm_kind, only: TKR => IK, RKC => RK3
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, RKG => RK3
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
         procedure(logical(LK))                                      :: isSorted
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
@@ -9737,8 +9737,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankStandardCusCom_D1_RK2
 #endif
-        use pm_kind, only: TKR => IK, RKC => RK2
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, RKG => RK2
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
         procedure(logical(LK))                                      :: isSorted
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
@@ -9749,8 +9749,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankStandardCusCom_D1_RK1
 #endif
-        use pm_kind, only: TKR => IK, RKC => RK1
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, RKG => RK1
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
         procedure(logical(LK))                                      :: isSorted
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
@@ -9765,9 +9765,9 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankStandardCusCom_D1_PSSK5
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK5
+        use pm_kind, only: TKR => IK, SKG => SK5
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))          , intent(in)    , contiguous    :: array(:)
+        type(css_pdt(SKG))          , intent(in)    , contiguous    :: array(:)
         procedure(logical(LK))                                      :: isSorted
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
@@ -9778,9 +9778,9 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankStandardCusCom_D1_PSSK4
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK4
+        use pm_kind, only: TKR => IK, SKG => SK4
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))          , intent(in)    , contiguous    :: array(:)
+        type(css_pdt(SKG))          , intent(in)    , contiguous    :: array(:)
         procedure(logical(LK))                                      :: isSorted
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
@@ -9791,9 +9791,9 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankStandardCusCom_D1_PSSK3
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK3
+        use pm_kind, only: TKR => IK, SKG => SK3
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))          , intent(in)    , contiguous    :: array(:)
+        type(css_pdt(SKG))          , intent(in)    , contiguous    :: array(:)
         procedure(logical(LK))                                      :: isSorted
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
@@ -9804,9 +9804,9 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankStandardCusCom_D1_PSSK2
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK2
+        use pm_kind, only: TKR => IK, SKG => SK2
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))          , intent(in)    , contiguous    :: array(:)
+        type(css_pdt(SKG))          , intent(in)    , contiguous    :: array(:)
         procedure(logical(LK))                                      :: isSorted
         integer(TKR)                                                :: rank(size(array, kind = IK))
     end function
@@ -9817,9 +9817,9 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankStandardCusCom_D1_PSSK1
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK1
+        use pm_kind, only: TKR => IK, SKG => SK1
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))          , intent(in)    , contiguous    :: array(:)
+        type(css_pdt(SKG))          , intent(in)    , contiguous    :: array(:)
         integer(TKR)                                                :: rank(size(array, kind = IK))
         procedure(logical(LK))                                      :: isSorted
     end function
@@ -9834,7 +9834,7 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRankStandardCusCom_D1_BSSK
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK
+        use pm_kind, only: TKR => IK, SKG => SK
         use pm_container, only: css_type
         type(css_type)              , intent(in)    , contiguous    :: array(:)
         procedure(logical(LK))                                      :: isSorted
@@ -9895,7 +9895,7 @@ module pm_arrayRank
     !>                              input scalar argument is sorted with respect to the second input argument according to the user-defined sorting condition
     !>                              within `isSorted()`, otherwise, it is `.false.`.<br>
     !>                              If `array` is a Fortran string (i.e., a scalar `character`),
-    !>                              then both input arguments to `isSorted()` are single `character(1,SKC)` where `SKC` is the kind of `array`.<br>
+    !>                              then both input arguments to `isSorted()` are single `character(1,SKG)` where `SKG` is the kind of `array`.<br>
     !>                              The following illustrates the generic interface of `isSorted()` when the rank of the input `array` is `1`,
     !>                              \code{.F90}
     !>                                  function isSorted(a,b) result (sorted)
@@ -9919,11 +9919,11 @@ module pm_arrayRank
     !>                              The following illustrates the generic interface of `isSorted()` when the input `array` is a scalar string,
     !>                              \code{.F90}
     !>                                  function isSorted(a,b) result (sorted)
-    !>                                      character(1,SKC), intent(in)    :: a, b
+    !>                                      character(1,SKG), intent(in)    :: a, b
     !>                                      logical(LK)                     :: sorted
     !>                                  end function
     !>                              \endcode
-    !>                              where `SKC` represents the kind of the input string argument `array`.<br>
+    !>                              where `SKG` represents the kind of the input string argument `array`.<br>
     !>                              This user-defined equivalence check is extremely useful where a user-defined sorting criterion other than simple ascending order
     !>                              is needed, for example, when the case-sensitivity of an input string or array of strings  is irrelevant or when sorting of
     !>                              the absolute values matters excluding the signs of the numbers, or when descending order is desired.<br>
@@ -10006,8 +10006,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankStandardDefCom_D0_SK5
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK5
-        character(*,SKC)            , intent(in)                    :: array
+        use pm_kind, only: TKR => IK, SKG => SK5
+        character(*,SKG)            , intent(in)                    :: array
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
     end subroutine
 #endif
@@ -10017,8 +10017,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankStandardDefCom_D0_SK4
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK4
-        character(*,SKC)            , intent(in)                    :: array
+        use pm_kind, only: TKR => IK, SKG => SK4
+        character(*,SKG)            , intent(in)                    :: array
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
     end subroutine
 #endif
@@ -10028,8 +10028,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankStandardDefCom_D0_SK3
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK3
-        character(*,SKC)            , intent(in)                    :: array
+        use pm_kind, only: TKR => IK, SKG => SK3
+        character(*,SKG)            , intent(in)                    :: array
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
     end subroutine
 #endif
@@ -10039,8 +10039,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankStandardDefCom_D0_SK2
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK2
-        character(*,SKC)            , intent(in)                    :: array
+        use pm_kind, only: TKR => IK, SKG => SK2
+        character(*,SKG)            , intent(in)                    :: array
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
     end subroutine
 #endif
@@ -10050,8 +10050,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankStandardDefCom_D0_SK1
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK1
-        character(*,SKC)            , intent(in)                    :: array
+        use pm_kind, only: TKR => IK, SKG => SK1
+        character(*,SKG)            , intent(in)                    :: array
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
     end subroutine
 #endif
@@ -10063,8 +10063,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankStandardDefCom_D1_SK5
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK5
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, SKG => SK5
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
     end subroutine
 #endif
@@ -10074,8 +10074,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankStandardDefCom_D1_SK4
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK4
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, SKG => SK4
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
     end subroutine
 #endif
@@ -10085,8 +10085,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankStandardDefCom_D1_SK3
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK3
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, SKG => SK3
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
     end subroutine
 #endif
@@ -10096,8 +10096,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankStandardDefCom_D1_SK2
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK2
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, SKG => SK2
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
     end subroutine
 #endif
@@ -10107,8 +10107,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankStandardDefCom_D1_SK1
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK1
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, SKG => SK1
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
     end subroutine
 #endif
@@ -10120,8 +10120,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankStandardDefCom_D1_IK5
 #endif
-        use pm_kind, only: TKR => IK, IKC => IK5
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, IKG => IK5
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
     end subroutine
 #endif
@@ -10131,8 +10131,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankStandardDefCom_D1_IK4
 #endif
-        use pm_kind, only: TKR => IK, IKC => IK4
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, IKG => IK4
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
     end subroutine
 #endif
@@ -10142,8 +10142,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankStandardDefCom_D1_IK3
 #endif
-        use pm_kind, only: TKR => IK, IKC => IK3
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, IKG => IK3
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
     end subroutine
 #endif
@@ -10153,8 +10153,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankStandardDefCom_D1_IK2
 #endif
-        use pm_kind, only: TKR => IK, IKC => IK2
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, IKG => IK2
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
     end subroutine
 #endif
@@ -10164,8 +10164,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankStandardDefCom_D1_IK1
 #endif
-        use pm_kind, only: TKR => IK, IKC => IK1
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, IKG => IK1
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
     end subroutine
 #endif
@@ -10177,8 +10177,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankStandardDefCom_D1_LK5
 #endif
-        use pm_kind, only: TKR => IK, LKC => LK5
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, LKG => LK5
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
     end subroutine
 #endif
@@ -10188,8 +10188,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankStandardDefCom_D1_LK4
 #endif
-        use pm_kind, only: TKR => IK, LKC => LK4
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, LKG => LK4
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
     end subroutine
 #endif
@@ -10199,8 +10199,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankStandardDefCom_D1_LK3
 #endif
-        use pm_kind, only: TKR => IK, LKC => LK3
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, LKG => LK3
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
     end subroutine
 #endif
@@ -10210,8 +10210,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankStandardDefCom_D1_LK2
 #endif
-        use pm_kind, only: TKR => IK, LKC => LK2
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, LKG => LK2
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
     end subroutine
 #endif
@@ -10221,8 +10221,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankStandardDefCom_D1_LK1
 #endif
-        use pm_kind, only: TKR => IK, LKC => LK1
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, LKG => LK1
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
     end subroutine
 #endif
@@ -10234,8 +10234,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankStandardDefCom_D1_CK5
 #endif
-        use pm_kind, only: TKR => IK, CKC => CK5
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, CKG => CK5
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
     end subroutine
 #endif
@@ -10245,8 +10245,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankStandardDefCom_D1_CK4
 #endif
-        use pm_kind, only: TKR => IK, CKC => CK4
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, CKG => CK4
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
     end subroutine
 #endif
@@ -10256,8 +10256,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankStandardDefCom_D1_CK3
 #endif
-        use pm_kind, only: TKR => IK, CKC => CK3
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, CKG => CK3
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
     end subroutine
 #endif
@@ -10267,8 +10267,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankStandardDefCom_D1_CK2
 #endif
-        use pm_kind, only: TKR => IK, CKC => CK2
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, CKG => CK2
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
     end subroutine
 #endif
@@ -10278,8 +10278,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankStandardDefCom_D1_CK1
 #endif
-        use pm_kind, only: TKR => IK, CKC => CK1
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, CKG => CK1
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
     end subroutine
 #endif
@@ -10291,8 +10291,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankStandardDefCom_D1_RK5
 #endif
-        use pm_kind, only: TKR => IK, RKC => RK5
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, RKG => RK5
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
     end subroutine
 #endif
@@ -10302,8 +10302,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankStandardDefCom_D1_RK4
 #endif
-        use pm_kind, only: TKR => IK, RKC => RK4
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, RKG => RK4
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
     end subroutine
 #endif
@@ -10313,8 +10313,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankStandardDefCom_D1_RK3
 #endif
-        use pm_kind, only: TKR => IK, RKC => RK3
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, RKG => RK3
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
     end subroutine
 #endif
@@ -10324,8 +10324,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankStandardDefCom_D1_RK2
 #endif
-        use pm_kind, only: TKR => IK, RKC => RK2
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, RKG => RK2
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
     end subroutine
 #endif
@@ -10335,8 +10335,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankStandardDefCom_D1_RK1
 #endif
-        use pm_kind, only: TKR => IK, RKC => RK1
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, RKG => RK1
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
     end subroutine
 #endif
@@ -10350,9 +10350,9 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankStandardDefCom_D1_PSSK5
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK5
+        use pm_kind, only: TKR => IK, SKG => SK5
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))          , intent(in)    , contiguous    :: array(:)
+        type(css_pdt(SKG))          , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
     end subroutine
 #endif
@@ -10362,9 +10362,9 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankStandardDefCom_D1_PSSK4
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK4
+        use pm_kind, only: TKR => IK, SKG => SK4
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))          , intent(in)    , contiguous    :: array(:)
+        type(css_pdt(SKG))          , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
     end subroutine
 #endif
@@ -10374,9 +10374,9 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankStandardDefCom_D1_PSSK3
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK3
+        use pm_kind, only: TKR => IK, SKG => SK3
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))          , intent(in)    , contiguous    :: array(:)
+        type(css_pdt(SKG))          , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
     end subroutine
 #endif
@@ -10386,9 +10386,9 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankStandardDefCom_D1_PSSK2
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK2
+        use pm_kind, only: TKR => IK, SKG => SK2
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))          , intent(in)    , contiguous    :: array(:)
+        type(css_pdt(SKG))          , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
     end subroutine
 #endif
@@ -10398,9 +10398,9 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankStandardDefCom_D1_PSSK1
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK1
+        use pm_kind, only: TKR => IK, SKG => SK1
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))          , intent(in)    , contiguous    :: array(:)
+        type(css_pdt(SKG))          , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
     end subroutine
 #endif
@@ -10414,7 +10414,7 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankStandardDefCom_D1_BSSK
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK
+        use pm_kind, only: TKR => IK, SKG => SK
         use pm_container, only: css_type
         type(css_type)              , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
@@ -10433,8 +10433,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankStandardCusCom_D0_SK5
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK5
-        character(*,SKC)            , intent(in)                    :: array
+        use pm_kind, only: TKR => IK, SKG => SK5
+        character(*,SKG)            , intent(in)                    :: array
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
         procedure(logical(LK))                                      :: isSorted
     end subroutine
@@ -10445,8 +10445,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankStandardCusCom_D0_SK4
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK4
-        character(*,SKC)            , intent(in)                    :: array
+        use pm_kind, only: TKR => IK, SKG => SK4
+        character(*,SKG)            , intent(in)                    :: array
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
         procedure(logical(LK))                                      :: isSorted
     end subroutine
@@ -10457,8 +10457,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankStandardCusCom_D0_SK3
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK3
-        character(*,SKC)            , intent(in)                    :: array
+        use pm_kind, only: TKR => IK, SKG => SK3
+        character(*,SKG)            , intent(in)                    :: array
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
         procedure(logical(LK))                                      :: isSorted
     end subroutine
@@ -10469,8 +10469,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankStandardCusCom_D0_SK2
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK2
-        character(*,SKC)            , intent(in)                    :: array
+        use pm_kind, only: TKR => IK, SKG => SK2
+        character(*,SKG)            , intent(in)                    :: array
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
         procedure(logical(LK))                                      :: isSorted
     end subroutine
@@ -10481,8 +10481,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankStandardCusCom_D0_SK1
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK1
-        character(*,SKC)            , intent(in)                    :: array
+        use pm_kind, only: TKR => IK, SKG => SK1
+        character(*,SKG)            , intent(in)                    :: array
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
         procedure(logical(LK))                                      :: isSorted
     end subroutine
@@ -10495,8 +10495,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankStandardCusCom_D1_SK5
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK5
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, SKG => SK5
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
         procedure(logical(LK))                                      :: isSorted
     end subroutine
@@ -10507,8 +10507,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankStandardCusCom_D1_SK4
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK4
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, SKG => SK4
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
         procedure(logical(LK))                                      :: isSorted
     end subroutine
@@ -10519,8 +10519,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankStandardCusCom_D1_SK3
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK3
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, SKG => SK3
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
         procedure(logical(LK))                                      :: isSorted
     end subroutine
@@ -10531,8 +10531,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankStandardCusCom_D1_SK2
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK2
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, SKG => SK2
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
         procedure(logical(LK))                                      :: isSorted
     end subroutine
@@ -10543,8 +10543,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankStandardCusCom_D1_SK1
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK1
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, SKG => SK1
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
         procedure(logical(LK))                                      :: isSorted
     end subroutine
@@ -10557,8 +10557,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankStandardCusCom_D1_IK5
 #endif
-        use pm_kind, only: TKR => IK, IKC => IK5
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, IKG => IK5
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
         procedure(logical(LK))                                      :: isSorted
     end subroutine
@@ -10569,8 +10569,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankStandardCusCom_D1_IK4
 #endif
-        use pm_kind, only: TKR => IK, IKC => IK4
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, IKG => IK4
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
         procedure(logical(LK))                                      :: isSorted
     end subroutine
@@ -10581,8 +10581,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankStandardCusCom_D1_IK3
 #endif
-        use pm_kind, only: TKR => IK, IKC => IK3
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, IKG => IK3
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
         procedure(logical(LK))                                      :: isSorted
     end subroutine
@@ -10593,8 +10593,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankStandardCusCom_D1_IK2
 #endif
-        use pm_kind, only: TKR => IK, IKC => IK2
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, IKG => IK2
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
         procedure(logical(LK))                                      :: isSorted
     end subroutine
@@ -10605,8 +10605,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankStandardCusCom_D1_IK1
 #endif
-        use pm_kind, only: TKR => IK, IKC => IK1
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, IKG => IK1
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
         procedure(logical(LK))                                      :: isSorted
     end subroutine
@@ -10619,8 +10619,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankStandardCusCom_D1_LK5
 #endif
-        use pm_kind, only: TKR => IK, LKC => LK5
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, LKG => LK5
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
         procedure(logical(LK))                                      :: isSorted
     end subroutine
@@ -10631,8 +10631,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankStandardCusCom_D1_LK4
 #endif
-        use pm_kind, only: TKR => IK, LKC => LK4
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, LKG => LK4
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
         procedure(logical(LK))                                      :: isSorted
     end subroutine
@@ -10643,8 +10643,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankStandardCusCom_D1_LK3
 #endif
-        use pm_kind, only: TKR => IK, LKC => LK3
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, LKG => LK3
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
         procedure(logical(LK))                                      :: isSorted
     end subroutine
@@ -10655,8 +10655,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankStandardCusCom_D1_LK2
 #endif
-        use pm_kind, only: TKR => IK, LKC => LK2
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, LKG => LK2
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
         procedure(logical(LK))                                      :: isSorted
     end subroutine
@@ -10667,8 +10667,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankStandardCusCom_D1_LK1
 #endif
-        use pm_kind, only: TKR => IK, LKC => LK1
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, LKG => LK1
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
         procedure(logical(LK))                                      :: isSorted
     end subroutine
@@ -10681,8 +10681,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankStandardCusCom_D1_CK5
 #endif
-        use pm_kind, only: TKR => IK, CKC => CK5
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, CKG => CK5
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
         procedure(logical(LK))                                      :: isSorted
     end subroutine
@@ -10693,8 +10693,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankStandardCusCom_D1_CK4
 #endif
-        use pm_kind, only: TKR => IK, CKC => CK4
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, CKG => CK4
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
         procedure(logical(LK))                                      :: isSorted
     end subroutine
@@ -10705,8 +10705,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankStandardCusCom_D1_CK3
 #endif
-        use pm_kind, only: TKR => IK, CKC => CK3
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, CKG => CK3
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
         procedure(logical(LK))                                      :: isSorted
     end subroutine
@@ -10717,8 +10717,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankStandardCusCom_D1_CK2
 #endif
-        use pm_kind, only: TKR => IK, CKC => CK2
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, CKG => CK2
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
         procedure(logical(LK))                                      :: isSorted
     end subroutine
@@ -10729,8 +10729,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankStandardCusCom_D1_CK1
 #endif
-        use pm_kind, only: TKR => IK, CKC => CK1
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, CKG => CK1
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
         procedure(logical(LK))                                      :: isSorted
     end subroutine
@@ -10743,8 +10743,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankStandardCusCom_D1_RK5
 #endif
-        use pm_kind, only: TKR => IK, RKC => RK5
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, RKG => RK5
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
         procedure(logical(LK))                                      :: isSorted
     end subroutine
@@ -10755,8 +10755,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankStandardCusCom_D1_RK4
 #endif
-        use pm_kind, only: TKR => IK, RKC => RK4
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, RKG => RK4
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
         procedure(logical(LK))                                      :: isSorted
     end subroutine
@@ -10767,8 +10767,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankStandardCusCom_D1_RK3
 #endif
-        use pm_kind, only: TKR => IK, RKC => RK3
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, RKG => RK3
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
         procedure(logical(LK))                                      :: isSorted
     end subroutine
@@ -10779,8 +10779,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankStandardCusCom_D1_RK2
 #endif
-        use pm_kind, only: TKR => IK, RKC => RK2
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, RKG => RK2
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
         procedure(logical(LK))                                      :: isSorted
     end subroutine
@@ -10791,8 +10791,8 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankStandardCusCom_D1_RK1
 #endif
-        use pm_kind, only: TKR => IK, RKC => RK1
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: TKR => IK, RKG => RK1
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
         procedure(logical(LK))                                      :: isSorted
     end subroutine
@@ -10807,9 +10807,9 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankStandardCusCom_D1_PSSK5
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK5
+        use pm_kind, only: TKR => IK, SKG => SK5
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))          , intent(in)    , contiguous    :: array(:)
+        type(css_pdt(SKG))          , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
         procedure(logical(LK))                                      :: isSorted
     end subroutine
@@ -10820,9 +10820,9 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankStandardCusCom_D1_PSSK4
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK4
+        use pm_kind, only: TKR => IK, SKG => SK4
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))          , intent(in)    , contiguous    :: array(:)
+        type(css_pdt(SKG))          , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
         procedure(logical(LK))                                      :: isSorted
     end subroutine
@@ -10833,9 +10833,9 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankStandardCusCom_D1_PSSK3
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK3
+        use pm_kind, only: TKR => IK, SKG => SK3
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))          , intent(in)    , contiguous    :: array(:)
+        type(css_pdt(SKG))          , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
         procedure(logical(LK))                                      :: isSorted
     end subroutine
@@ -10846,9 +10846,9 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankStandardCusCom_D1_PSSK2
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK2
+        use pm_kind, only: TKR => IK, SKG => SK2
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))          , intent(in)    , contiguous    :: array(:)
+        type(css_pdt(SKG))          , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
         procedure(logical(LK))                                      :: isSorted
     end subroutine
@@ -10859,9 +10859,9 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankStandardCusCom_D1_PSSK1
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK1
+        use pm_kind, only: TKR => IK, SKG => SK1
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))          , intent(in)    , contiguous    :: array(:)
+        type(css_pdt(SKG))          , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)
         procedure(logical(LK))                                      :: isSorted
     end subroutine
@@ -10876,7 +10876,7 @@ module pm_arrayRank
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRankStandardCusCom_D1_BSSK
 #endif
-        use pm_kind, only: TKR => IK, SKC => SK
+        use pm_kind, only: TKR => IK, SKG => SK
         use pm_container, only: css_type
         type(css_type)              , intent(in)    , contiguous    :: array(:)
         integer(TKR)                , intent(out)   , contiguous    :: rank(:)

@@ -98,11 +98,11 @@ module pm_distanceKolm
     !>                                  The following illustrates the generic interface of `getCDF()`,
     !>                                  \code{.F90}
     !>                                      function getCDF(x) result(cdf)
-    !>                                          real(RKC), intent(in) :: x
-    !>                                          real(RKC) :: cdf
+    !>                                          real(RKG), intent(in) :: x
+    !>                                          real(RKG) :: cdf
     !>                                      end function
     !>                                  \endcode
-    !>                                  where `RKC` refers to the kind type parameter of the output `disKolm`.<br>
+    !>                                  where `RKG` refers to the kind type parameter of the output `disKolm`.<br>
     !>                                  (**optional**, the default is the CDF of the [Uniform distribution](@ref pm_distUnif). It must be present **if and only if** the input argument `sample2` is missing.)
     !>  \param[in]      order       :   The input scalar that can be,<br>
     !>                                  <ol>
@@ -222,9 +222,9 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisKolmSSD_WDD_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)           , intent(in), contiguous    :: sample1(:), sample2(:)
-        real(RKC)                                       :: disKolm
+        use pm_kind, only: RKG => RK5
+        real(RKG)           , intent(in), contiguous    :: sample1(:), sample2(:)
+        real(RKG)                                       :: disKolm
     end function
 #endif
 
@@ -233,9 +233,9 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisKolmSSD_WDD_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)           , intent(in), contiguous    :: sample1(:), sample2(:)
-        real(RKC)                                       :: disKolm
+        use pm_kind, only: RKG => RK4
+        real(RKG)           , intent(in), contiguous    :: sample1(:), sample2(:)
+        real(RKG)                                       :: disKolm
     end function
 #endif
 
@@ -244,9 +244,9 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisKolmSSD_WDD_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)           , intent(in), contiguous    :: sample1(:), sample2(:)
-        real(RKC)                                       :: disKolm
+        use pm_kind, only: RKG => RK3
+        real(RKG)           , intent(in), contiguous    :: sample1(:), sample2(:)
+        real(RKG)                                       :: disKolm
     end function
 #endif
 
@@ -255,9 +255,9 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisKolmSSD_WDD_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)           , intent(in), contiguous    :: sample1(:), sample2(:)
-        real(RKC)                                       :: disKolm
+        use pm_kind, only: RKG => RK2
+        real(RKG)           , intent(in), contiguous    :: sample1(:), sample2(:)
+        real(RKG)                                       :: disKolm
     end function
 #endif
 
@@ -266,9 +266,9 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisKolmSSD_WDD_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)           , intent(in), contiguous    :: sample1(:), sample2(:)
-        real(RKC)                                       :: disKolm
+        use pm_kind, only: RKG => RK1
+        real(RKG)           , intent(in), contiguous    :: sample1(:), sample2(:)
+        real(RKG)                                       :: disKolm
     end function
 #endif
 
@@ -285,10 +285,10 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisKolmSSA_WDD_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         type(ascending_type), intent(in)                :: order
-        real(RKC)           , intent(in), contiguous    :: sample1(:), sample2(:)
-        real(RKC)                                       :: disKolm
+        real(RKG)           , intent(in), contiguous    :: sample1(:), sample2(:)
+        real(RKG)                                       :: disKolm
     end function
 #endif
 
@@ -297,10 +297,10 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisKolmSSA_WDD_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         type(ascending_type), intent(in)                :: order
-        real(RKC)           , intent(in), contiguous    :: sample1(:), sample2(:)
-        real(RKC)                                       :: disKolm
+        real(RKG)           , intent(in), contiguous    :: sample1(:), sample2(:)
+        real(RKG)                                       :: disKolm
     end function
 #endif
 
@@ -309,10 +309,10 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisKolmSSA_WDD_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         type(ascending_type), intent(in)                :: order
-        real(RKC)           , intent(in), contiguous    :: sample1(:), sample2(:)
-        real(RKC)                                       :: disKolm
+        real(RKG)           , intent(in), contiguous    :: sample1(:), sample2(:)
+        real(RKG)                                       :: disKolm
     end function
 #endif
 
@@ -321,10 +321,10 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisKolmSSA_WDD_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         type(ascending_type), intent(in)                :: order
-        real(RKC)           , intent(in), contiguous    :: sample1(:), sample2(:)
-        real(RKC)                                       :: disKolm
+        real(RKG)           , intent(in), contiguous    :: sample1(:), sample2(:)
+        real(RKG)                                       :: disKolm
     end function
 #endif
 
@@ -333,10 +333,10 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisKolmSSA_WDD_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         type(ascending_type), intent(in)                :: order
-        real(RKC)           , intent(in), contiguous    :: sample1(:), sample2(:)
-        real(RKC)                                       :: disKolm
+        real(RKG)           , intent(in), contiguous    :: sample1(:), sample2(:)
+        real(RKG)                                       :: disKolm
     end function
 #endif
 
@@ -363,11 +363,11 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisKolmSSD_WID_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)           , intent(in), contiguous    :: sample1(:), sample2(:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)           , intent(in), contiguous    :: sample1(:), sample2(:)
         integer(IK)         , intent(in), contiguous    :: weight1(:)
         integer(IK)         , intent(in)                :: weisum1
-        real(RKC)                                       :: disKolm
+        real(RKG)                                       :: disKolm
     end function
 #endif
 
@@ -376,11 +376,11 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisKolmSSD_WID_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)           , intent(in), contiguous    :: sample1(:), sample2(:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)           , intent(in), contiguous    :: sample1(:), sample2(:)
         integer(IK)         , intent(in), contiguous    :: weight1(:)
         integer(IK)         , intent(in)                :: weisum1
-        real(RKC)                                       :: disKolm
+        real(RKG)                                       :: disKolm
     end function
 #endif
 
@@ -389,11 +389,11 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisKolmSSD_WID_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)           , intent(in), contiguous    :: sample1(:), sample2(:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)           , intent(in), contiguous    :: sample1(:), sample2(:)
         integer(IK)         , intent(in), contiguous    :: weight1(:)
         integer(IK)         , intent(in)                :: weisum1
-        real(RKC)                                       :: disKolm
+        real(RKG)                                       :: disKolm
     end function
 #endif
 
@@ -402,11 +402,11 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisKolmSSD_WID_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)           , intent(in), contiguous    :: sample1(:), sample2(:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)           , intent(in), contiguous    :: sample1(:), sample2(:)
         integer(IK)         , intent(in), contiguous    :: weight1(:)
         integer(IK)         , intent(in)                :: weisum1
-        real(RKC)                                       :: disKolm
+        real(RKG)                                       :: disKolm
     end function
 #endif
 
@@ -415,11 +415,11 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisKolmSSD_WID_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)           , intent(in), contiguous    :: sample1(:), sample2(:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)           , intent(in), contiguous    :: sample1(:), sample2(:)
         integer(IK)         , intent(in), contiguous    :: weight1(:)
         integer(IK)         , intent(in)                :: weisum1
-        real(RKC)                                       :: disKolm
+        real(RKG)                                       :: disKolm
     end function
 #endif
 
@@ -436,12 +436,12 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisKolmSSA_WID_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         type(ascending_type), intent(in)                :: order
-        real(RKC)           , intent(in), contiguous    :: sample1(:), sample2(:)
+        real(RKG)           , intent(in), contiguous    :: sample1(:), sample2(:)
         integer(IK)         , intent(in), contiguous    :: weight1(:)
         integer(IK)         , intent(in)                :: weisum1
-        real(RKC)                                       :: disKolm
+        real(RKG)                                       :: disKolm
     end function
 #endif
 
@@ -450,12 +450,12 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisKolmSSA_WID_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         type(ascending_type), intent(in)                :: order
-        real(RKC)           , intent(in), contiguous    :: sample1(:), sample2(:)
+        real(RKG)           , intent(in), contiguous    :: sample1(:), sample2(:)
         integer(IK)         , intent(in), contiguous    :: weight1(:)
         integer(IK)         , intent(in)                :: weisum1
-        real(RKC)                                       :: disKolm
+        real(RKG)                                       :: disKolm
     end function
 #endif
 
@@ -464,12 +464,12 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisKolmSSA_WID_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         type(ascending_type), intent(in)                :: order
-        real(RKC)           , intent(in), contiguous    :: sample1(:), sample2(:)
+        real(RKG)           , intent(in), contiguous    :: sample1(:), sample2(:)
         integer(IK)         , intent(in), contiguous    :: weight1(:)
         integer(IK)         , intent(in)                :: weisum1
-        real(RKC)                                       :: disKolm
+        real(RKG)                                       :: disKolm
     end function
 #endif
 
@@ -478,12 +478,12 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisKolmSSA_WID_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         type(ascending_type), intent(in)                :: order
-        real(RKC)           , intent(in), contiguous    :: sample1(:), sample2(:)
+        real(RKG)           , intent(in), contiguous    :: sample1(:), sample2(:)
         integer(IK)         , intent(in), contiguous    :: weight1(:)
         integer(IK)         , intent(in)                :: weisum1
-        real(RKC)                                       :: disKolm
+        real(RKG)                                       :: disKolm
     end function
 #endif
 
@@ -492,12 +492,12 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisKolmSSA_WID_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         type(ascending_type), intent(in)                :: order
-        real(RKC)           , intent(in), contiguous    :: sample1(:), sample2(:)
+        real(RKG)           , intent(in), contiguous    :: sample1(:), sample2(:)
         integer(IK)         , intent(in), contiguous    :: weight1(:)
         integer(IK)         , intent(in)                :: weisum1
-        real(RKC)                                       :: disKolm
+        real(RKG)                                       :: disKolm
     end function
 #endif
 
@@ -524,11 +524,11 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisKolmSSD_WRD_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)           , intent(in), contiguous    :: sample1(:), sample2(:)
-        real(RKC)           , intent(in), contiguous    :: weight1(:)
-        real(RKC)           , intent(in)                :: weisum1
-        real(RKC)                                       :: disKolm
+        use pm_kind, only: RKG => RK5
+        real(RKG)           , intent(in), contiguous    :: sample1(:), sample2(:)
+        real(RKG)           , intent(in), contiguous    :: weight1(:)
+        real(RKG)           , intent(in)                :: weisum1
+        real(RKG)                                       :: disKolm
     end function
 #endif
 
@@ -537,11 +537,11 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisKolmSSD_WRD_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)           , intent(in), contiguous    :: sample1(:), sample2(:)
-        real(RKC)           , intent(in), contiguous    :: weight1(:)
-        real(RKC)           , intent(in)                :: weisum1
-        real(RKC)                                       :: disKolm
+        use pm_kind, only: RKG => RK4
+        real(RKG)           , intent(in), contiguous    :: sample1(:), sample2(:)
+        real(RKG)           , intent(in), contiguous    :: weight1(:)
+        real(RKG)           , intent(in)                :: weisum1
+        real(RKG)                                       :: disKolm
     end function
 #endif
 
@@ -550,11 +550,11 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisKolmSSD_WRD_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)           , intent(in), contiguous    :: sample1(:), sample2(:)
-        real(RKC)           , intent(in), contiguous    :: weight1(:)
-        real(RKC)           , intent(in)                :: weisum1
-        real(RKC)                                       :: disKolm
+        use pm_kind, only: RKG => RK3
+        real(RKG)           , intent(in), contiguous    :: sample1(:), sample2(:)
+        real(RKG)           , intent(in), contiguous    :: weight1(:)
+        real(RKG)           , intent(in)                :: weisum1
+        real(RKG)                                       :: disKolm
     end function
 #endif
 
@@ -563,11 +563,11 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisKolmSSD_WRD_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)           , intent(in), contiguous    :: sample1(:), sample2(:)
-        real(RKC)           , intent(in), contiguous    :: weight1(:)
-        real(RKC)           , intent(in)                :: weisum1
-        real(RKC)                                       :: disKolm
+        use pm_kind, only: RKG => RK2
+        real(RKG)           , intent(in), contiguous    :: sample1(:), sample2(:)
+        real(RKG)           , intent(in), contiguous    :: weight1(:)
+        real(RKG)           , intent(in)                :: weisum1
+        real(RKG)                                       :: disKolm
     end function
 #endif
 
@@ -576,11 +576,11 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisKolmSSD_WRD_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)           , intent(in), contiguous    :: sample1(:), sample2(:)
-        real(RKC)           , intent(in), contiguous    :: weight1(:)
-        real(RKC)           , intent(in)                :: weisum1
-        real(RKC)                                       :: disKolm
+        use pm_kind, only: RKG => RK1
+        real(RKG)           , intent(in), contiguous    :: sample1(:), sample2(:)
+        real(RKG)           , intent(in), contiguous    :: weight1(:)
+        real(RKG)           , intent(in)                :: weisum1
+        real(RKG)                                       :: disKolm
     end function
 #endif
 
@@ -597,12 +597,12 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisKolmSSA_WRD_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         type(ascending_type), intent(in)                :: order
-        real(RKC)           , intent(in), contiguous    :: sample1(:), sample2(:)
-        real(RKC)           , intent(in), contiguous    :: weight1(:)
-        real(RKC)           , intent(in)                :: weisum1
-        real(RKC)                                       :: disKolm
+        real(RKG)           , intent(in), contiguous    :: sample1(:), sample2(:)
+        real(RKG)           , intent(in), contiguous    :: weight1(:)
+        real(RKG)           , intent(in)                :: weisum1
+        real(RKG)                                       :: disKolm
     end function
 #endif
 
@@ -611,12 +611,12 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisKolmSSA_WRD_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         type(ascending_type), intent(in)                :: order
-        real(RKC)           , intent(in), contiguous    :: sample1(:), sample2(:)
-        real(RKC)           , intent(in), contiguous    :: weight1(:)
-        real(RKC)           , intent(in)                :: weisum1
-        real(RKC)                                       :: disKolm
+        real(RKG)           , intent(in), contiguous    :: sample1(:), sample2(:)
+        real(RKG)           , intent(in), contiguous    :: weight1(:)
+        real(RKG)           , intent(in)                :: weisum1
+        real(RKG)                                       :: disKolm
     end function
 #endif
 
@@ -625,12 +625,12 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisKolmSSA_WRD_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         type(ascending_type), intent(in)                :: order
-        real(RKC)           , intent(in), contiguous    :: sample1(:), sample2(:)
-        real(RKC)           , intent(in), contiguous    :: weight1(:)
-        real(RKC)           , intent(in)                :: weisum1
-        real(RKC)                                       :: disKolm
+        real(RKG)           , intent(in), contiguous    :: sample1(:), sample2(:)
+        real(RKG)           , intent(in), contiguous    :: weight1(:)
+        real(RKG)           , intent(in)                :: weisum1
+        real(RKG)                                       :: disKolm
     end function
 #endif
 
@@ -639,12 +639,12 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisKolmSSA_WRD_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         type(ascending_type), intent(in)                :: order
-        real(RKC)           , intent(in), contiguous    :: sample1(:), sample2(:)
-        real(RKC)           , intent(in), contiguous    :: weight1(:)
-        real(RKC)           , intent(in)                :: weisum1
-        real(RKC)                                       :: disKolm
+        real(RKG)           , intent(in), contiguous    :: sample1(:), sample2(:)
+        real(RKG)           , intent(in), contiguous    :: weight1(:)
+        real(RKG)           , intent(in)                :: weisum1
+        real(RKG)                                       :: disKolm
     end function
 #endif
 
@@ -653,12 +653,12 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisKolmSSA_WRD_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         type(ascending_type), intent(in)                :: order
-        real(RKC)           , intent(in), contiguous    :: sample1(:), sample2(:)
-        real(RKC)           , intent(in), contiguous    :: weight1(:)
-        real(RKC)           , intent(in)                :: weisum1
-        real(RKC)                                       :: disKolm
+        real(RKG)           , intent(in), contiguous    :: sample1(:), sample2(:)
+        real(RKG)           , intent(in), contiguous    :: weight1(:)
+        real(RKG)           , intent(in)                :: weisum1
+        real(RKG)                                       :: disKolm
     end function
 #endif
 
@@ -685,11 +685,11 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisKolmSSD_WII_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)           , intent(in), contiguous    :: sample1(:), sample2(:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)           , intent(in), contiguous    :: sample1(:), sample2(:)
         integer(IK)         , intent(in), contiguous    :: weight1(:), weight2(:)
         integer(IK)         , intent(in)                :: weisum1, weisum2
-        real(RKC)                                       :: disKolm
+        real(RKG)                                       :: disKolm
     end function
 #endif
 
@@ -698,11 +698,11 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisKolmSSD_WII_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)           , intent(in), contiguous    :: sample1(:), sample2(:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)           , intent(in), contiguous    :: sample1(:), sample2(:)
         integer(IK)         , intent(in), contiguous    :: weight1(:), weight2(:)
         integer(IK)         , intent(in)                :: weisum1, weisum2
-        real(RKC)                                       :: disKolm
+        real(RKG)                                       :: disKolm
     end function
 #endif
 
@@ -711,11 +711,11 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisKolmSSD_WII_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)           , intent(in), contiguous    :: sample1(:), sample2(:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)           , intent(in), contiguous    :: sample1(:), sample2(:)
         integer(IK)         , intent(in), contiguous    :: weight1(:), weight2(:)
         integer(IK)         , intent(in)                :: weisum1, weisum2
-        real(RKC)                                       :: disKolm
+        real(RKG)                                       :: disKolm
     end function
 #endif
 
@@ -724,11 +724,11 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisKolmSSD_WII_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)           , intent(in), contiguous    :: sample1(:), sample2(:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)           , intent(in), contiguous    :: sample1(:), sample2(:)
         integer(IK)         , intent(in), contiguous    :: weight1(:), weight2(:)
         integer(IK)         , intent(in)                :: weisum1, weisum2
-        real(RKC)                                       :: disKolm
+        real(RKG)                                       :: disKolm
     end function
 #endif
 
@@ -737,11 +737,11 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisKolmSSD_WII_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)           , intent(in), contiguous    :: sample1(:), sample2(:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)           , intent(in), contiguous    :: sample1(:), sample2(:)
         integer(IK)         , intent(in), contiguous    :: weight1(:), weight2(:)
         integer(IK)         , intent(in)                :: weisum1, weisum2
-        real(RKC)                                       :: disKolm
+        real(RKG)                                       :: disKolm
     end function
 #endif
 
@@ -758,12 +758,12 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisKolmSSA_WII_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)           , intent(in), contiguous    :: sample1(:), sample2(:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)           , intent(in), contiguous    :: sample1(:), sample2(:)
         integer(IK)         , intent(in), contiguous    :: weight1(:), weight2(:)
         integer(IK)         , intent(in)                :: weisum1, weisum2
         type(ascending_type), intent(in)                :: order
-        real(RKC)                                       :: disKolm
+        real(RKG)                                       :: disKolm
     end function
 #endif
 
@@ -772,12 +772,12 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisKolmSSA_WII_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)           , intent(in), contiguous    :: sample1(:), sample2(:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)           , intent(in), contiguous    :: sample1(:), sample2(:)
         integer(IK)         , intent(in), contiguous    :: weight1(:), weight2(:)
         integer(IK)         , intent(in)                :: weisum1, weisum2
         type(ascending_type), intent(in)                :: order
-        real(RKC)                                       :: disKolm
+        real(RKG)                                       :: disKolm
     end function
 #endif
 
@@ -786,12 +786,12 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisKolmSSA_WII_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)           , intent(in), contiguous    :: sample1(:), sample2(:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)           , intent(in), contiguous    :: sample1(:), sample2(:)
         integer(IK)         , intent(in), contiguous    :: weight1(:), weight2(:)
         integer(IK)         , intent(in)                :: weisum1, weisum2
         type(ascending_type), intent(in)                :: order
-        real(RKC)                                       :: disKolm
+        real(RKG)                                       :: disKolm
     end function
 #endif
 
@@ -800,12 +800,12 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisKolmSSA_WII_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)           , intent(in), contiguous    :: sample1(:), sample2(:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)           , intent(in), contiguous    :: sample1(:), sample2(:)
         integer(IK)         , intent(in), contiguous    :: weight1(:), weight2(:)
         integer(IK)         , intent(in)                :: weisum1, weisum2
         type(ascending_type), intent(in)                :: order
-        real(RKC)                                       :: disKolm
+        real(RKG)                                       :: disKolm
     end function
 #endif
 
@@ -814,12 +814,12 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisKolmSSA_WII_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)           , intent(in), contiguous    :: sample1(:), sample2(:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)           , intent(in), contiguous    :: sample1(:), sample2(:)
         integer(IK)         , intent(in), contiguous    :: weight1(:), weight2(:)
         integer(IK)         , intent(in)                :: weisum1, weisum2
         type(ascending_type), intent(in)                :: order
-        real(RKC)                                       :: disKolm
+        real(RKG)                                       :: disKolm
     end function
 #endif
 
@@ -846,11 +846,11 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisKolmSSD_WRR_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)           , intent(in), contiguous    :: sample1(:), sample2(:)
-        real(RKC)           , intent(in), contiguous    :: weight1(:), weight2(:)
-        real(RKC)           , intent(in)                :: weisum1, weisum2
-        real(RKC)                                       :: disKolm
+        use pm_kind, only: RKG => RK5
+        real(RKG)           , intent(in), contiguous    :: sample1(:), sample2(:)
+        real(RKG)           , intent(in), contiguous    :: weight1(:), weight2(:)
+        real(RKG)           , intent(in)                :: weisum1, weisum2
+        real(RKG)                                       :: disKolm
     end function
 #endif
 
@@ -859,11 +859,11 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisKolmSSD_WRR_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)           , intent(in), contiguous    :: sample1(:), sample2(:)
-        real(RKC)           , intent(in), contiguous    :: weight1(:), weight2(:)
-        real(RKC)           , intent(in)                :: weisum1, weisum2
-        real(RKC)                                       :: disKolm
+        use pm_kind, only: RKG => RK4
+        real(RKG)           , intent(in), contiguous    :: sample1(:), sample2(:)
+        real(RKG)           , intent(in), contiguous    :: weight1(:), weight2(:)
+        real(RKG)           , intent(in)                :: weisum1, weisum2
+        real(RKG)                                       :: disKolm
     end function
 #endif
 
@@ -872,11 +872,11 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisKolmSSD_WRR_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)           , intent(in), contiguous    :: sample1(:), sample2(:)
-        real(RKC)           , intent(in), contiguous    :: weight1(:), weight2(:)
-        real(RKC)           , intent(in)                :: weisum1, weisum2
-        real(RKC)                                       :: disKolm
+        use pm_kind, only: RKG => RK3
+        real(RKG)           , intent(in), contiguous    :: sample1(:), sample2(:)
+        real(RKG)           , intent(in), contiguous    :: weight1(:), weight2(:)
+        real(RKG)           , intent(in)                :: weisum1, weisum2
+        real(RKG)                                       :: disKolm
     end function
 #endif
 
@@ -885,11 +885,11 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisKolmSSD_WRR_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)           , intent(in), contiguous    :: sample1(:), sample2(:)
-        real(RKC)           , intent(in), contiguous    :: weight1(:), weight2(:)
-        real(RKC)           , intent(in)                :: weisum1, weisum2
-        real(RKC)                                       :: disKolm
+        use pm_kind, only: RKG => RK2
+        real(RKG)           , intent(in), contiguous    :: sample1(:), sample2(:)
+        real(RKG)           , intent(in), contiguous    :: weight1(:), weight2(:)
+        real(RKG)           , intent(in)                :: weisum1, weisum2
+        real(RKG)                                       :: disKolm
     end function
 #endif
 
@@ -898,11 +898,11 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisKolmSSD_WRR_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)           , intent(in), contiguous    :: sample1(:), sample2(:)
-        real(RKC)           , intent(in), contiguous    :: weight1(:), weight2(:)
-        real(RKC)           , intent(in)                :: weisum1, weisum2
-        real(RKC)                                       :: disKolm
+        use pm_kind, only: RKG => RK1
+        real(RKG)           , intent(in), contiguous    :: sample1(:), sample2(:)
+        real(RKG)           , intent(in), contiguous    :: weight1(:), weight2(:)
+        real(RKG)           , intent(in)                :: weisum1, weisum2
+        real(RKG)                                       :: disKolm
     end function
 #endif
 
@@ -919,12 +919,12 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisKolmSSA_WRR_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)           , intent(in), contiguous    :: sample1(:), sample2(:)
-        real(RKC)           , intent(in), contiguous    :: weight1(:), weight2(:)
-        real(RKC)           , intent(in)                :: weisum1, weisum2
+        use pm_kind, only: RKG => RK5
+        real(RKG)           , intent(in), contiguous    :: sample1(:), sample2(:)
+        real(RKG)           , intent(in), contiguous    :: weight1(:), weight2(:)
+        real(RKG)           , intent(in)                :: weisum1, weisum2
         type(ascending_type), intent(in)                :: order
-        real(RKC)                                       :: disKolm
+        real(RKG)                                       :: disKolm
     end function
 #endif
 
@@ -933,12 +933,12 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisKolmSSA_WRR_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)           , intent(in), contiguous    :: sample1(:), sample2(:)
-        real(RKC)           , intent(in), contiguous    :: weight1(:), weight2(:)
-        real(RKC)           , intent(in)                :: weisum1, weisum2
+        use pm_kind, only: RKG => RK4
+        real(RKG)           , intent(in), contiguous    :: sample1(:), sample2(:)
+        real(RKG)           , intent(in), contiguous    :: weight1(:), weight2(:)
+        real(RKG)           , intent(in)                :: weisum1, weisum2
         type(ascending_type), intent(in)                :: order
-        real(RKC)                                       :: disKolm
+        real(RKG)                                       :: disKolm
     end function
 #endif
 
@@ -947,12 +947,12 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisKolmSSA_WRR_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)           , intent(in), contiguous    :: sample1(:), sample2(:)
-        real(RKC)           , intent(in), contiguous    :: weight1(:), weight2(:)
-        real(RKC)           , intent(in)                :: weisum1, weisum2
+        use pm_kind, only: RKG => RK3
+        real(RKG)           , intent(in), contiguous    :: sample1(:), sample2(:)
+        real(RKG)           , intent(in), contiguous    :: weight1(:), weight2(:)
+        real(RKG)           , intent(in)                :: weisum1, weisum2
         type(ascending_type), intent(in)                :: order
-        real(RKC)                                       :: disKolm
+        real(RKG)                                       :: disKolm
     end function
 #endif
 
@@ -961,12 +961,12 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisKolmSSA_WRR_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)           , intent(in), contiguous    :: sample1(:), sample2(:)
-        real(RKC)           , intent(in), contiguous    :: weight1(:), weight2(:)
-        real(RKC)           , intent(in)                :: weisum1, weisum2
+        use pm_kind, only: RKG => RK2
+        real(RKG)           , intent(in), contiguous    :: sample1(:), sample2(:)
+        real(RKG)           , intent(in), contiguous    :: weight1(:), weight2(:)
+        real(RKG)           , intent(in)                :: weisum1, weisum2
         type(ascending_type), intent(in)                :: order
-        real(RKC)                                       :: disKolm
+        real(RKG)                                       :: disKolm
     end function
 #endif
 
@@ -975,12 +975,12 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisKolmSSA_WRR_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)           , intent(in), contiguous    :: sample1(:), sample2(:)
-        real(RKC)           , intent(in), contiguous    :: weight1(:), weight2(:)
-        real(RKC)           , intent(in)                :: weisum1, weisum2
+        use pm_kind, only: RKG => RK1
+        real(RKG)           , intent(in), contiguous    :: sample1(:), sample2(:)
+        real(RKG)           , intent(in), contiguous    :: weight1(:), weight2(:)
+        real(RKG)           , intent(in)                :: weisum1, weisum2
         type(ascending_type), intent(in)                :: order
-        real(RKC)                                       :: disKolm
+        real(RKG)                                       :: disKolm
     end function
 #endif
 
@@ -1007,9 +1007,9 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisKolmSXD_WDD_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)           , intent(in), contiguous    :: sample1(:)
-        real(RKC)                                       :: disKolm
+        use pm_kind, only: RKG => RK5
+        real(RKG)           , intent(in), contiguous    :: sample1(:)
+        real(RKG)                                       :: disKolm
     end function
 #endif
 
@@ -1018,9 +1018,9 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisKolmSXD_WDD_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)           , intent(in), contiguous    :: sample1(:)
-        real(RKC)                                       :: disKolm
+        use pm_kind, only: RKG => RK4
+        real(RKG)           , intent(in), contiguous    :: sample1(:)
+        real(RKG)                                       :: disKolm
     end function
 #endif
 
@@ -1029,9 +1029,9 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisKolmSXD_WDD_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)           , intent(in), contiguous    :: sample1(:)
-        real(RKC)                                       :: disKolm
+        use pm_kind, only: RKG => RK3
+        real(RKG)           , intent(in), contiguous    :: sample1(:)
+        real(RKG)                                       :: disKolm
     end function
 #endif
 
@@ -1040,9 +1040,9 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisKolmSXD_WDD_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)           , intent(in), contiguous    :: sample1(:)
-        real(RKC)                                       :: disKolm
+        use pm_kind, only: RKG => RK2
+        real(RKG)           , intent(in), contiguous    :: sample1(:)
+        real(RKG)                                       :: disKolm
     end function
 #endif
 
@@ -1051,9 +1051,9 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisKolmSXD_WDD_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)           , intent(in), contiguous    :: sample1(:)
-        real(RKC)                                       :: disKolm
+        use pm_kind, only: RKG => RK1
+        real(RKG)           , intent(in), contiguous    :: sample1(:)
+        real(RKG)                                       :: disKolm
     end function
 #endif
 
@@ -1070,10 +1070,10 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisKolmSXA_WDD_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         type(ascending_type), intent(in)                :: order
-        real(RKC)           , intent(in), contiguous    :: sample1(:)
-        real(RKC)                                       :: disKolm
+        real(RKG)           , intent(in), contiguous    :: sample1(:)
+        real(RKG)                                       :: disKolm
     end function
 #endif
 
@@ -1082,10 +1082,10 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisKolmSXA_WDD_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         type(ascending_type), intent(in)                :: order
-        real(RKC)           , intent(in), contiguous    :: sample1(:)
-        real(RKC)                                       :: disKolm
+        real(RKG)           , intent(in), contiguous    :: sample1(:)
+        real(RKG)                                       :: disKolm
     end function
 #endif
 
@@ -1094,10 +1094,10 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisKolmSXA_WDD_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         type(ascending_type), intent(in)                :: order
-        real(RKC)           , intent(in), contiguous    :: sample1(:)
-        real(RKC)                                       :: disKolm
+        real(RKG)           , intent(in), contiguous    :: sample1(:)
+        real(RKG)                                       :: disKolm
     end function
 #endif
 
@@ -1106,10 +1106,10 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisKolmSXA_WDD_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         type(ascending_type), intent(in)                :: order
-        real(RKC)           , intent(in), contiguous    :: sample1(:)
-        real(RKC)                                       :: disKolm
+        real(RKG)           , intent(in), contiguous    :: sample1(:)
+        real(RKG)                                       :: disKolm
     end function
 #endif
 
@@ -1118,10 +1118,10 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisKolmSXA_WDD_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         type(ascending_type), intent(in)                :: order
-        real(RKC)           , intent(in), contiguous    :: sample1(:)
-        real(RKC)                                       :: disKolm
+        real(RKG)           , intent(in), contiguous    :: sample1(:)
+        real(RKG)                                       :: disKolm
     end function
 #endif
 
@@ -1148,11 +1148,11 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisKolmSXD_WID_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)           , intent(in), contiguous    :: sample1(:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)           , intent(in), contiguous    :: sample1(:)
         integer(IK)         , intent(in), contiguous    :: weight1(:)
         integer(IK)         , intent(in)                :: weisum1
-        real(RKC)                                       :: disKolm
+        real(RKG)                                       :: disKolm
     end function
 #endif
 
@@ -1161,11 +1161,11 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisKolmSXD_WID_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)           , intent(in), contiguous    :: sample1(:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)           , intent(in), contiguous    :: sample1(:)
         integer(IK)         , intent(in), contiguous    :: weight1(:)
         integer(IK)         , intent(in)                :: weisum1
-        real(RKC)                                       :: disKolm
+        real(RKG)                                       :: disKolm
     end function
 #endif
 
@@ -1174,11 +1174,11 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisKolmSXD_WID_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)           , intent(in), contiguous    :: sample1(:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)           , intent(in), contiguous    :: sample1(:)
         integer(IK)         , intent(in), contiguous    :: weight1(:)
         integer(IK)         , intent(in)                :: weisum1
-        real(RKC)                                       :: disKolm
+        real(RKG)                                       :: disKolm
     end function
 #endif
 
@@ -1187,11 +1187,11 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisKolmSXD_WID_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)           , intent(in), contiguous    :: sample1(:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)           , intent(in), contiguous    :: sample1(:)
         integer(IK)         , intent(in), contiguous    :: weight1(:)
         integer(IK)         , intent(in)                :: weisum1
-        real(RKC)                                       :: disKolm
+        real(RKG)                                       :: disKolm
     end function
 #endif
 
@@ -1200,11 +1200,11 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisKolmSXD_WID_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)           , intent(in), contiguous    :: sample1(:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)           , intent(in), contiguous    :: sample1(:)
         integer(IK)         , intent(in), contiguous    :: weight1(:)
         integer(IK)         , intent(in)                :: weisum1
-        real(RKC)                                       :: disKolm
+        real(RKG)                                       :: disKolm
     end function
 #endif
 
@@ -1221,12 +1221,12 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisKolmSXA_WID_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         type(ascending_type), intent(in)                :: order
-        real(RKC)           , intent(in), contiguous    :: sample1(:)
+        real(RKG)           , intent(in), contiguous    :: sample1(:)
         integer(IK)         , intent(in), contiguous    :: weight1(:)
         integer(IK)         , intent(in)                :: weisum1
-        real(RKC)                                       :: disKolm
+        real(RKG)                                       :: disKolm
     end function
 #endif
 
@@ -1235,12 +1235,12 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisKolmSXA_WID_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         type(ascending_type), intent(in)                :: order
-        real(RKC)           , intent(in), contiguous    :: sample1(:)
+        real(RKG)           , intent(in), contiguous    :: sample1(:)
         integer(IK)         , intent(in), contiguous    :: weight1(:)
         integer(IK)         , intent(in)                :: weisum1
-        real(RKC)                                       :: disKolm
+        real(RKG)                                       :: disKolm
     end function
 #endif
 
@@ -1249,12 +1249,12 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisKolmSXA_WID_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         type(ascending_type), intent(in)                :: order
-        real(RKC)           , intent(in), contiguous    :: sample1(:)
+        real(RKG)           , intent(in), contiguous    :: sample1(:)
         integer(IK)         , intent(in), contiguous    :: weight1(:)
         integer(IK)         , intent(in)                :: weisum1
-        real(RKC)                                       :: disKolm
+        real(RKG)                                       :: disKolm
     end function
 #endif
 
@@ -1263,12 +1263,12 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisKolmSXA_WID_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         type(ascending_type), intent(in)                :: order
-        real(RKC)           , intent(in), contiguous    :: sample1(:)
+        real(RKG)           , intent(in), contiguous    :: sample1(:)
         integer(IK)         , intent(in), contiguous    :: weight1(:)
         integer(IK)         , intent(in)                :: weisum1
-        real(RKC)                                       :: disKolm
+        real(RKG)                                       :: disKolm
     end function
 #endif
 
@@ -1277,12 +1277,12 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisKolmSXA_WID_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         type(ascending_type), intent(in)                :: order
-        real(RKC)           , intent(in), contiguous    :: sample1(:)
+        real(RKG)           , intent(in), contiguous    :: sample1(:)
         integer(IK)         , intent(in), contiguous    :: weight1(:)
         integer(IK)         , intent(in)                :: weisum1
-        real(RKC)                                       :: disKolm
+        real(RKG)                                       :: disKolm
     end function
 #endif
 
@@ -1309,11 +1309,11 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisKolmSXD_WRD_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)           , intent(in), contiguous    :: sample1(:)
-        real(RKC)           , intent(in), contiguous    :: weight1(:)
-        real(RKC)           , intent(in)                :: weisum1
-        real(RKC)                                       :: disKolm
+        use pm_kind, only: RKG => RK5
+        real(RKG)           , intent(in), contiguous    :: sample1(:)
+        real(RKG)           , intent(in), contiguous    :: weight1(:)
+        real(RKG)           , intent(in)                :: weisum1
+        real(RKG)                                       :: disKolm
     end function
 #endif
 
@@ -1322,11 +1322,11 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisKolmSXD_WRD_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)           , intent(in), contiguous    :: sample1(:)
-        real(RKC)           , intent(in), contiguous    :: weight1(:)
-        real(RKC)           , intent(in)                :: weisum1
-        real(RKC)                                       :: disKolm
+        use pm_kind, only: RKG => RK4
+        real(RKG)           , intent(in), contiguous    :: sample1(:)
+        real(RKG)           , intent(in), contiguous    :: weight1(:)
+        real(RKG)           , intent(in)                :: weisum1
+        real(RKG)                                       :: disKolm
     end function
 #endif
 
@@ -1335,11 +1335,11 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisKolmSXD_WRD_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)           , intent(in), contiguous    :: sample1(:)
-        real(RKC)           , intent(in), contiguous    :: weight1(:)
-        real(RKC)           , intent(in)                :: weisum1
-        real(RKC)                                       :: disKolm
+        use pm_kind, only: RKG => RK3
+        real(RKG)           , intent(in), contiguous    :: sample1(:)
+        real(RKG)           , intent(in), contiguous    :: weight1(:)
+        real(RKG)           , intent(in)                :: weisum1
+        real(RKG)                                       :: disKolm
     end function
 #endif
 
@@ -1348,11 +1348,11 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisKolmSXD_WRD_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)           , intent(in), contiguous    :: sample1(:)
-        real(RKC)           , intent(in), contiguous    :: weight1(:)
-        real(RKC)           , intent(in)                :: weisum1
-        real(RKC)                                       :: disKolm
+        use pm_kind, only: RKG => RK2
+        real(RKG)           , intent(in), contiguous    :: sample1(:)
+        real(RKG)           , intent(in), contiguous    :: weight1(:)
+        real(RKG)           , intent(in)                :: weisum1
+        real(RKG)                                       :: disKolm
     end function
 #endif
 
@@ -1361,11 +1361,11 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisKolmSXD_WRD_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)           , intent(in), contiguous    :: sample1(:)
-        real(RKC)           , intent(in), contiguous    :: weight1(:)
-        real(RKC)           , intent(in)                :: weisum1
-        real(RKC)                                       :: disKolm
+        use pm_kind, only: RKG => RK1
+        real(RKG)           , intent(in), contiguous    :: sample1(:)
+        real(RKG)           , intent(in), contiguous    :: weight1(:)
+        real(RKG)           , intent(in)                :: weisum1
+        real(RKG)                                       :: disKolm
     end function
 #endif
 
@@ -1382,12 +1382,12 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisKolmSXA_WRD_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         type(ascending_type), intent(in)                :: order
-        real(RKC)           , intent(in), contiguous    :: sample1(:)
-        real(RKC)           , intent(in), contiguous    :: weight1(:)
-        real(RKC)           , intent(in)                :: weisum1
-        real(RKC)                                       :: disKolm
+        real(RKG)           , intent(in), contiguous    :: sample1(:)
+        real(RKG)           , intent(in), contiguous    :: weight1(:)
+        real(RKG)           , intent(in)                :: weisum1
+        real(RKG)                                       :: disKolm
     end function
 #endif
 
@@ -1396,12 +1396,12 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisKolmSXA_WRD_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         type(ascending_type), intent(in)                :: order
-        real(RKC)           , intent(in), contiguous    :: sample1(:)
-        real(RKC)           , intent(in), contiguous    :: weight1(:)
-        real(RKC)           , intent(in)                :: weisum1
-        real(RKC)                                       :: disKolm
+        real(RKG)           , intent(in), contiguous    :: sample1(:)
+        real(RKG)           , intent(in), contiguous    :: weight1(:)
+        real(RKG)           , intent(in)                :: weisum1
+        real(RKG)                                       :: disKolm
     end function
 #endif
 
@@ -1410,12 +1410,12 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisKolmSXA_WRD_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         type(ascending_type), intent(in)                :: order
-        real(RKC)           , intent(in), contiguous    :: sample1(:)
-        real(RKC)           , intent(in), contiguous    :: weight1(:)
-        real(RKC)           , intent(in)                :: weisum1
-        real(RKC)                                       :: disKolm
+        real(RKG)           , intent(in), contiguous    :: sample1(:)
+        real(RKG)           , intent(in), contiguous    :: weight1(:)
+        real(RKG)           , intent(in)                :: weisum1
+        real(RKG)                                       :: disKolm
     end function
 #endif
 
@@ -1424,12 +1424,12 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisKolmSXA_WRD_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         type(ascending_type), intent(in)                :: order
-        real(RKC)           , intent(in), contiguous    :: sample1(:)
-        real(RKC)           , intent(in), contiguous    :: weight1(:)
-        real(RKC)           , intent(in)                :: weisum1
-        real(RKC)                                       :: disKolm
+        real(RKG)           , intent(in), contiguous    :: sample1(:)
+        real(RKG)           , intent(in), contiguous    :: weight1(:)
+        real(RKG)           , intent(in)                :: weisum1
+        real(RKG)                                       :: disKolm
     end function
 #endif
 
@@ -1438,12 +1438,12 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisKolmSXA_WRD_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         type(ascending_type), intent(in)                :: order
-        real(RKC)           , intent(in), contiguous    :: sample1(:)
-        real(RKC)           , intent(in), contiguous    :: weight1(:)
-        real(RKC)           , intent(in)                :: weisum1
-        real(RKC)                                       :: disKolm
+        real(RKG)           , intent(in), contiguous    :: sample1(:)
+        real(RKG)           , intent(in), contiguous    :: weight1(:)
+        real(RKG)           , intent(in)                :: weisum1
+        real(RKG)                                       :: disKolm
     end function
 #endif
 
@@ -1470,10 +1470,10 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisKolmSCD_WDD_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)           , intent(in), contiguous    :: sample1(:)
-        real(RKC)                                       :: disKolm
-        procedure(real(RKC))                            :: getCDF
+        use pm_kind, only: RKG => RK5
+        real(RKG)           , intent(in), contiguous    :: sample1(:)
+        real(RKG)                                       :: disKolm
+        procedure(real(RKG))                            :: getCDF
     end function
 #endif
 
@@ -1482,10 +1482,10 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisKolmSCD_WDD_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)           , intent(in), contiguous    :: sample1(:)
-        real(RKC)                                       :: disKolm
-        procedure(real(RKC))                            :: getCDF
+        use pm_kind, only: RKG => RK4
+        real(RKG)           , intent(in), contiguous    :: sample1(:)
+        real(RKG)                                       :: disKolm
+        procedure(real(RKG))                            :: getCDF
     end function
 #endif
 
@@ -1494,10 +1494,10 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisKolmSCD_WDD_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)           , intent(in), contiguous    :: sample1(:)
-        real(RKC)                                       :: disKolm
-        procedure(real(RKC))                            :: getCDF
+        use pm_kind, only: RKG => RK3
+        real(RKG)           , intent(in), contiguous    :: sample1(:)
+        real(RKG)                                       :: disKolm
+        procedure(real(RKG))                            :: getCDF
     end function
 #endif
 
@@ -1506,10 +1506,10 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisKolmSCD_WDD_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)           , intent(in), contiguous    :: sample1(:)
-        real(RKC)                                       :: disKolm
-        procedure(real(RKC))                            :: getCDF
+        use pm_kind, only: RKG => RK2
+        real(RKG)           , intent(in), contiguous    :: sample1(:)
+        real(RKG)                                       :: disKolm
+        procedure(real(RKG))                            :: getCDF
     end function
 #endif
 
@@ -1518,10 +1518,10 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisKolmSCD_WDD_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)           , intent(in), contiguous    :: sample1(:)
-        real(RKC)                                       :: disKolm
-        procedure(real(RKC))                            :: getCDF
+        use pm_kind, only: RKG => RK1
+        real(RKG)           , intent(in), contiguous    :: sample1(:)
+        real(RKG)                                       :: disKolm
+        procedure(real(RKG))                            :: getCDF
     end function
 #endif
 
@@ -1538,11 +1538,11 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisKolmSCA_WDD_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         type(ascending_type), intent(in)                :: order
-        real(RKC)           , intent(in), contiguous    :: sample1(:)
-        real(RKC)                                       :: disKolm
-        procedure(real(RKC))                            :: getCDF
+        real(RKG)           , intent(in), contiguous    :: sample1(:)
+        real(RKG)                                       :: disKolm
+        procedure(real(RKG))                            :: getCDF
     end function
 #endif
 
@@ -1551,11 +1551,11 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisKolmSCA_WDD_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         type(ascending_type), intent(in)                :: order
-        real(RKC)           , intent(in), contiguous    :: sample1(:)
-        real(RKC)                                       :: disKolm
-        procedure(real(RKC))                            :: getCDF
+        real(RKG)           , intent(in), contiguous    :: sample1(:)
+        real(RKG)                                       :: disKolm
+        procedure(real(RKG))                            :: getCDF
     end function
 #endif
 
@@ -1564,11 +1564,11 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisKolmSCA_WDD_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         type(ascending_type), intent(in)                :: order
-        real(RKC)           , intent(in), contiguous    :: sample1(:)
-        real(RKC)                                       :: disKolm
-        procedure(real(RKC))                            :: getCDF
+        real(RKG)           , intent(in), contiguous    :: sample1(:)
+        real(RKG)                                       :: disKolm
+        procedure(real(RKG))                            :: getCDF
     end function
 #endif
 
@@ -1577,11 +1577,11 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisKolmSCA_WDD_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         type(ascending_type), intent(in)                :: order
-        real(RKC)           , intent(in), contiguous    :: sample1(:)
-        real(RKC)                                       :: disKolm
-        procedure(real(RKC))                            :: getCDF
+        real(RKG)           , intent(in), contiguous    :: sample1(:)
+        real(RKG)                                       :: disKolm
+        procedure(real(RKG))                            :: getCDF
     end function
 #endif
 
@@ -1590,11 +1590,11 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisKolmSCA_WDD_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         type(ascending_type), intent(in)                :: order
-        real(RKC)           , intent(in), contiguous    :: sample1(:)
-        real(RKC)                                       :: disKolm
-        procedure(real(RKC))                            :: getCDF
+        real(RKG)           , intent(in), contiguous    :: sample1(:)
+        real(RKG)                                       :: disKolm
+        procedure(real(RKG))                            :: getCDF
     end function
 #endif
 
@@ -1621,12 +1621,12 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisKolmSCD_WID_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)           , intent(in), contiguous    :: sample1(:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)           , intent(in), contiguous    :: sample1(:)
         integer(IK)         , intent(in), contiguous    :: weight1(:)
         integer(IK)         , intent(in)                :: weisum1
-        real(RKC)                                       :: disKolm
-        procedure(real(RKC))                            :: getCDF
+        real(RKG)                                       :: disKolm
+        procedure(real(RKG))                            :: getCDF
     end function
 #endif
 
@@ -1635,12 +1635,12 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisKolmSCD_WID_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)           , intent(in), contiguous    :: sample1(:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)           , intent(in), contiguous    :: sample1(:)
         integer(IK)         , intent(in), contiguous    :: weight1(:)
         integer(IK)         , intent(in)                :: weisum1
-        real(RKC)                                       :: disKolm
-        procedure(real(RKC))                            :: getCDF
+        real(RKG)                                       :: disKolm
+        procedure(real(RKG))                            :: getCDF
     end function
 #endif
 
@@ -1649,12 +1649,12 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisKolmSCD_WID_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)           , intent(in), contiguous    :: sample1(:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)           , intent(in), contiguous    :: sample1(:)
         integer(IK)         , intent(in), contiguous    :: weight1(:)
         integer(IK)         , intent(in)                :: weisum1
-        real(RKC)                                       :: disKolm
-        procedure(real(RKC))                            :: getCDF
+        real(RKG)                                       :: disKolm
+        procedure(real(RKG))                            :: getCDF
     end function
 #endif
 
@@ -1663,12 +1663,12 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisKolmSCD_WID_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)           , intent(in), contiguous    :: sample1(:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)           , intent(in), contiguous    :: sample1(:)
         integer(IK)         , intent(in), contiguous    :: weight1(:)
         integer(IK)         , intent(in)                :: weisum1
-        real(RKC)                                       :: disKolm
-        procedure(real(RKC))                            :: getCDF
+        real(RKG)                                       :: disKolm
+        procedure(real(RKG))                            :: getCDF
     end function
 #endif
 
@@ -1677,12 +1677,12 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisKolmSCD_WID_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)           , intent(in), contiguous    :: sample1(:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)           , intent(in), contiguous    :: sample1(:)
         integer(IK)         , intent(in), contiguous    :: weight1(:)
         integer(IK)         , intent(in)                :: weisum1
-        real(RKC)                                       :: disKolm
-        procedure(real(RKC))                            :: getCDF
+        real(RKG)                                       :: disKolm
+        procedure(real(RKG))                            :: getCDF
     end function
 #endif
 
@@ -1699,13 +1699,13 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisKolmSCA_WID_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         type(ascending_type), intent(in)                :: order
-        real(RKC)           , intent(in), contiguous    :: sample1(:)
+        real(RKG)           , intent(in), contiguous    :: sample1(:)
         integer(IK)         , intent(in), contiguous    :: weight1(:)
         integer(IK)         , intent(in)                :: weisum1
-        real(RKC)                                       :: disKolm
-        procedure(real(RKC))                            :: getCDF
+        real(RKG)                                       :: disKolm
+        procedure(real(RKG))                            :: getCDF
     end function
 #endif
 
@@ -1714,13 +1714,13 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisKolmSCA_WID_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         type(ascending_type), intent(in)                :: order
-        real(RKC)           , intent(in), contiguous    :: sample1(:)
+        real(RKG)           , intent(in), contiguous    :: sample1(:)
         integer(IK)         , intent(in), contiguous    :: weight1(:)
         integer(IK)         , intent(in)                :: weisum1
-        real(RKC)                                       :: disKolm
-        procedure(real(RKC))                            :: getCDF
+        real(RKG)                                       :: disKolm
+        procedure(real(RKG))                            :: getCDF
     end function
 #endif
 
@@ -1729,13 +1729,13 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisKolmSCA_WID_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         type(ascending_type), intent(in)                :: order
-        real(RKC)           , intent(in), contiguous    :: sample1(:)
+        real(RKG)           , intent(in), contiguous    :: sample1(:)
         integer(IK)         , intent(in), contiguous    :: weight1(:)
         integer(IK)         , intent(in)                :: weisum1
-        real(RKC)                                       :: disKolm
-        procedure(real(RKC))                            :: getCDF
+        real(RKG)                                       :: disKolm
+        procedure(real(RKG))                            :: getCDF
     end function
 #endif
 
@@ -1744,13 +1744,13 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisKolmSCA_WID_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         type(ascending_type), intent(in)                :: order
-        real(RKC)           , intent(in), contiguous    :: sample1(:)
+        real(RKG)           , intent(in), contiguous    :: sample1(:)
         integer(IK)         , intent(in), contiguous    :: weight1(:)
         integer(IK)         , intent(in)                :: weisum1
-        real(RKC)                                       :: disKolm
-        procedure(real(RKC))                            :: getCDF
+        real(RKG)                                       :: disKolm
+        procedure(real(RKG))                            :: getCDF
     end function
 #endif
 
@@ -1759,13 +1759,13 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisKolmSCA_WID_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         type(ascending_type), intent(in)                :: order
-        real(RKC)           , intent(in), contiguous    :: sample1(:)
+        real(RKG)           , intent(in), contiguous    :: sample1(:)
         integer(IK)         , intent(in), contiguous    :: weight1(:)
         integer(IK)         , intent(in)                :: weisum1
-        real(RKC)                                       :: disKolm
-        procedure(real(RKC))                            :: getCDF
+        real(RKG)                                       :: disKolm
+        procedure(real(RKG))                            :: getCDF
     end function
 #endif
 
@@ -1792,12 +1792,12 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisKolmSCD_WRD_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)           , intent(in), contiguous    :: sample1(:)
-        real(RKC)           , intent(in), contiguous    :: weight1(:)
-        real(RKC)           , intent(in)                :: weisum1
-        real(RKC)                                       :: disKolm
-        procedure(real(RKC))                            :: getCDF
+        use pm_kind, only: RKG => RK5
+        real(RKG)           , intent(in), contiguous    :: sample1(:)
+        real(RKG)           , intent(in), contiguous    :: weight1(:)
+        real(RKG)           , intent(in)                :: weisum1
+        real(RKG)                                       :: disKolm
+        procedure(real(RKG))                            :: getCDF
     end function
 #endif
 
@@ -1806,12 +1806,12 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisKolmSCD_WRD_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)           , intent(in), contiguous    :: sample1(:)
-        real(RKC)           , intent(in), contiguous    :: weight1(:)
-        real(RKC)           , intent(in)                :: weisum1
-        real(RKC)                                       :: disKolm
-        procedure(real(RKC))                            :: getCDF
+        use pm_kind, only: RKG => RK4
+        real(RKG)           , intent(in), contiguous    :: sample1(:)
+        real(RKG)           , intent(in), contiguous    :: weight1(:)
+        real(RKG)           , intent(in)                :: weisum1
+        real(RKG)                                       :: disKolm
+        procedure(real(RKG))                            :: getCDF
     end function
 #endif
 
@@ -1820,12 +1820,12 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisKolmSCD_WRD_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)           , intent(in), contiguous    :: sample1(:)
-        real(RKC)           , intent(in), contiguous    :: weight1(:)
-        real(RKC)           , intent(in)                :: weisum1
-        real(RKC)                                       :: disKolm
-        procedure(real(RKC))                            :: getCDF
+        use pm_kind, only: RKG => RK3
+        real(RKG)           , intent(in), contiguous    :: sample1(:)
+        real(RKG)           , intent(in), contiguous    :: weight1(:)
+        real(RKG)           , intent(in)                :: weisum1
+        real(RKG)                                       :: disKolm
+        procedure(real(RKG))                            :: getCDF
     end function
 #endif
 
@@ -1834,12 +1834,12 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisKolmSCD_WRD_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)           , intent(in), contiguous    :: sample1(:)
-        real(RKC)           , intent(in), contiguous    :: weight1(:)
-        real(RKC)           , intent(in)                :: weisum1
-        real(RKC)                                       :: disKolm
-        procedure(real(RKC))                            :: getCDF
+        use pm_kind, only: RKG => RK2
+        real(RKG)           , intent(in), contiguous    :: sample1(:)
+        real(RKG)           , intent(in), contiguous    :: weight1(:)
+        real(RKG)           , intent(in)                :: weisum1
+        real(RKG)                                       :: disKolm
+        procedure(real(RKG))                            :: getCDF
     end function
 #endif
 
@@ -1848,12 +1848,12 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisKolmSCD_WRD_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)           , intent(in), contiguous    :: sample1(:)
-        real(RKC)           , intent(in), contiguous    :: weight1(:)
-        real(RKC)           , intent(in)                :: weisum1
-        real(RKC)                                       :: disKolm
-        procedure(real(RKC))                            :: getCDF
+        use pm_kind, only: RKG => RK1
+        real(RKG)           , intent(in), contiguous    :: sample1(:)
+        real(RKG)           , intent(in), contiguous    :: weight1(:)
+        real(RKG)           , intent(in)                :: weisum1
+        real(RKG)                                       :: disKolm
+        procedure(real(RKG))                            :: getCDF
     end function
 #endif
 
@@ -1870,13 +1870,13 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisKolmSCA_WRD_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         type(ascending_type), intent(in)                :: order
-        real(RKC)           , intent(in), contiguous    :: sample1(:)
-        real(RKC)           , intent(in), contiguous    :: weight1(:)
-        real(RKC)           , intent(in)                :: weisum1
-        real(RKC)                                       :: disKolm
-        procedure(real(RKC))                            :: getCDF
+        real(RKG)           , intent(in), contiguous    :: sample1(:)
+        real(RKG)           , intent(in), contiguous    :: weight1(:)
+        real(RKG)           , intent(in)                :: weisum1
+        real(RKG)                                       :: disKolm
+        procedure(real(RKG))                            :: getCDF
     end function
 #endif
 
@@ -1885,13 +1885,13 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisKolmSCA_WRD_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         type(ascending_type), intent(in)                :: order
-        real(RKC)           , intent(in), contiguous    :: sample1(:)
-        real(RKC)           , intent(in), contiguous    :: weight1(:)
-        real(RKC)           , intent(in)                :: weisum1
-        real(RKC)                                       :: disKolm
-        procedure(real(RKC))                            :: getCDF
+        real(RKG)           , intent(in), contiguous    :: sample1(:)
+        real(RKG)           , intent(in), contiguous    :: weight1(:)
+        real(RKG)           , intent(in)                :: weisum1
+        real(RKG)                                       :: disKolm
+        procedure(real(RKG))                            :: getCDF
     end function
 #endif
 
@@ -1900,13 +1900,13 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisKolmSCA_WRD_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         type(ascending_type), intent(in)                :: order
-        real(RKC)           , intent(in), contiguous    :: sample1(:)
-        real(RKC)           , intent(in), contiguous    :: weight1(:)
-        real(RKC)           , intent(in)                :: weisum1
-        real(RKC)                                       :: disKolm
-        procedure(real(RKC))                            :: getCDF
+        real(RKG)           , intent(in), contiguous    :: sample1(:)
+        real(RKG)           , intent(in), contiguous    :: weight1(:)
+        real(RKG)           , intent(in)                :: weisum1
+        real(RKG)                                       :: disKolm
+        procedure(real(RKG))                            :: getCDF
     end function
 #endif
 
@@ -1915,13 +1915,13 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisKolmSCA_WRD_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         type(ascending_type), intent(in)                :: order
-        real(RKC)           , intent(in), contiguous    :: sample1(:)
-        real(RKC)           , intent(in), contiguous    :: weight1(:)
-        real(RKC)           , intent(in)                :: weisum1
-        real(RKC)                                       :: disKolm
-        procedure(real(RKC))                            :: getCDF
+        real(RKG)           , intent(in), contiguous    :: sample1(:)
+        real(RKG)           , intent(in), contiguous    :: weight1(:)
+        real(RKG)           , intent(in)                :: weisum1
+        real(RKG)                                       :: disKolm
+        procedure(real(RKG))                            :: getCDF
     end function
 #endif
 
@@ -1930,13 +1930,13 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisKolmSCA_WRD_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         type(ascending_type), intent(in)                :: order
-        real(RKC)           , intent(in), contiguous    :: sample1(:)
-        real(RKC)           , intent(in), contiguous    :: weight1(:)
-        real(RKC)           , intent(in)                :: weisum1
-        real(RKC)                                       :: disKolm
-        procedure(real(RKC))                            :: getCDF
+        real(RKG)           , intent(in), contiguous    :: sample1(:)
+        real(RKG)           , intent(in), contiguous    :: weight1(:)
+        real(RKG)           , intent(in)                :: weisum1
+        real(RKG)                                       :: disKolm
+        procedure(real(RKG))                            :: getCDF
     end function
 #endif
 
@@ -2011,11 +2011,11 @@ module pm_distanceKolm
     !>                                  The following illustrates the generic interface of `getCDF()`,
     !>                                  \code{.F90}
     !>                                      function getCDF(x) result(cdf)
-    !>                                          real(RKC), intent(in) :: x
-    !>                                          real(RKC) :: cdf
+    !>                                          real(RKG), intent(in) :: x
+    !>                                          real(RKG) :: cdf
     !>                                      end function
     !>                                  \endcode
-    !>                                  where `RKC` refers to the kind type parameter of the output `disKolm`.<br>
+    !>                                  where `RKG` refers to the kind type parameter of the output `disKolm`.<br>
     !>                                  (**optional**, the default is the CDF of the [Uniform distribution](@ref pm_distUnif). It must be present **if and only if** the input argument `sample2` is missing.)
     !>  \param[in]      order       :   The input scalar that can be,<br>
     !>                                  <ol>
@@ -2128,9 +2128,9 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setDisKolmSSD_WDD_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)           , intent(inout) , contiguous    :: sample1(:), sample2(:)
-        real(RKC)           , intent(out)                   :: disKolm
+        use pm_kind, only: RKG => RK5
+        real(RKG)           , intent(inout) , contiguous    :: sample1(:), sample2(:)
+        real(RKG)           , intent(out)                   :: disKolm
     end subroutine
 #endif
 
@@ -2139,9 +2139,9 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setDisKolmSSD_WDD_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)           , intent(inout) , contiguous    :: sample1(:), sample2(:)
-        real(RKC)           , intent(out)                   :: disKolm
+        use pm_kind, only: RKG => RK4
+        real(RKG)           , intent(inout) , contiguous    :: sample1(:), sample2(:)
+        real(RKG)           , intent(out)                   :: disKolm
     end subroutine
 #endif
 
@@ -2150,9 +2150,9 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setDisKolmSSD_WDD_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)           , intent(inout) , contiguous    :: sample1(:), sample2(:)
-        real(RKC)           , intent(out)                   :: disKolm
+        use pm_kind, only: RKG => RK3
+        real(RKG)           , intent(inout) , contiguous    :: sample1(:), sample2(:)
+        real(RKG)           , intent(out)                   :: disKolm
     end subroutine
 #endif
 
@@ -2161,9 +2161,9 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setDisKolmSSD_WDD_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)           , intent(inout) , contiguous    :: sample1(:), sample2(:)
-        real(RKC)           , intent(out)                   :: disKolm
+        use pm_kind, only: RKG => RK2
+        real(RKG)           , intent(inout) , contiguous    :: sample1(:), sample2(:)
+        real(RKG)           , intent(out)                   :: disKolm
     end subroutine
 #endif
 
@@ -2172,9 +2172,9 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setDisKolmSSD_WDD_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)           , intent(inout) , contiguous    :: sample1(:), sample2(:)
-        real(RKC)           , intent(out)                   :: disKolm
+        use pm_kind, only: RKG => RK1
+        real(RKG)           , intent(inout) , contiguous    :: sample1(:), sample2(:)
+        real(RKG)           , intent(out)                   :: disKolm
     end subroutine
 #endif
 
@@ -2191,9 +2191,9 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setDisKolmSSA_WDD_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)           , intent(in)    , contiguous    :: sample1(:), sample2(:)
-        real(RKC)           , intent(out)                   :: disKolm
+        use pm_kind, only: RKG => RK5
+        real(RKG)           , intent(in)    , contiguous    :: sample1(:), sample2(:)
+        real(RKG)           , intent(out)                   :: disKolm
         type(ascending_type), intent(in)                    :: order
     end subroutine
 #endif
@@ -2203,9 +2203,9 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setDisKolmSSA_WDD_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)           , intent(in)    , contiguous    :: sample1(:), sample2(:)
-        real(RKC)           , intent(out)                   :: disKolm
+        use pm_kind, only: RKG => RK4
+        real(RKG)           , intent(in)    , contiguous    :: sample1(:), sample2(:)
+        real(RKG)           , intent(out)                   :: disKolm
         type(ascending_type), intent(in)                    :: order
     end subroutine
 #endif
@@ -2215,9 +2215,9 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setDisKolmSSA_WDD_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)           , intent(in)    , contiguous    :: sample1(:), sample2(:)
-        real(RKC)           , intent(out)                   :: disKolm
+        use pm_kind, only: RKG => RK3
+        real(RKG)           , intent(in)    , contiguous    :: sample1(:), sample2(:)
+        real(RKG)           , intent(out)                   :: disKolm
         type(ascending_type), intent(in)                    :: order
     end subroutine
 #endif
@@ -2227,9 +2227,9 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setDisKolmSSA_WDD_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)           , intent(in)    , contiguous    :: sample1(:), sample2(:)
-        real(RKC)           , intent(out)                   :: disKolm
+        use pm_kind, only: RKG => RK2
+        real(RKG)           , intent(in)    , contiguous    :: sample1(:), sample2(:)
+        real(RKG)           , intent(out)                   :: disKolm
         type(ascending_type), intent(in)                    :: order
     end subroutine
 #endif
@@ -2239,9 +2239,9 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setDisKolmSSA_WDD_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)           , intent(in)    , contiguous    :: sample1(:), sample2(:)
-        real(RKC)           , intent(out)                   :: disKolm
+        use pm_kind, only: RKG => RK1
+        real(RKG)           , intent(in)    , contiguous    :: sample1(:), sample2(:)
+        real(RKG)           , intent(out)                   :: disKolm
         type(ascending_type), intent(in)                    :: order
     end subroutine
 #endif
@@ -2269,11 +2269,11 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setDisKolmSSD_WID_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)           , intent(inout) , contiguous    :: sample1(:), sample2(:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)           , intent(inout) , contiguous    :: sample1(:), sample2(:)
         integer(IK)         , intent(inout) , contiguous    :: weight1(:)
         integer(IK)         , intent(in)                    :: weisum1
-        real(RKC)           , intent(out)                   :: disKolm
+        real(RKG)           , intent(out)                   :: disKolm
     end subroutine
 #endif
 
@@ -2282,11 +2282,11 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setDisKolmSSD_WID_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)           , intent(inout) , contiguous    :: sample1(:), sample2(:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)           , intent(inout) , contiguous    :: sample1(:), sample2(:)
         integer(IK)         , intent(inout) , contiguous    :: weight1(:)
         integer(IK)         , intent(in)                    :: weisum1
-        real(RKC)           , intent(out)                   :: disKolm
+        real(RKG)           , intent(out)                   :: disKolm
     end subroutine
 #endif
 
@@ -2295,11 +2295,11 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setDisKolmSSD_WID_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)           , intent(inout) , contiguous    :: sample1(:), sample2(:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)           , intent(inout) , contiguous    :: sample1(:), sample2(:)
         integer(IK)         , intent(inout) , contiguous    :: weight1(:)
         integer(IK)         , intent(in)                    :: weisum1
-        real(RKC)           , intent(out)                   :: disKolm
+        real(RKG)           , intent(out)                   :: disKolm
     end subroutine
 #endif
 
@@ -2308,11 +2308,11 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setDisKolmSSD_WID_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)           , intent(inout) , contiguous    :: sample1(:), sample2(:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)           , intent(inout) , contiguous    :: sample1(:), sample2(:)
         integer(IK)         , intent(inout) , contiguous    :: weight1(:)
         integer(IK)         , intent(in)                    :: weisum1
-        real(RKC)           , intent(out)                   :: disKolm
+        real(RKG)           , intent(out)                   :: disKolm
     end subroutine
 #endif
 
@@ -2321,11 +2321,11 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setDisKolmSSD_WID_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)           , intent(inout) , contiguous    :: sample1(:), sample2(:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)           , intent(inout) , contiguous    :: sample1(:), sample2(:)
         integer(IK)         , intent(inout) , contiguous    :: weight1(:)
         integer(IK)         , intent(in)                    :: weisum1
-        real(RKC)           , intent(out)                   :: disKolm
+        real(RKG)           , intent(out)                   :: disKolm
     end subroutine
 #endif
 
@@ -2342,11 +2342,11 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setDisKolmSSA_WID_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)           , intent(in)    , contiguous    :: sample1(:), sample2(:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)           , intent(in)    , contiguous    :: sample1(:), sample2(:)
         integer(IK)         , intent(in)    , contiguous    :: weight1(:)
         integer(IK)         , intent(in)                    :: weisum1
-        real(RKC)           , intent(out)                   :: disKolm
+        real(RKG)           , intent(out)                   :: disKolm
         type(ascending_type), intent(in)                    :: order
     end subroutine
 #endif
@@ -2356,11 +2356,11 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setDisKolmSSA_WID_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)           , intent(in)    , contiguous    :: sample1(:), sample2(:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)           , intent(in)    , contiguous    :: sample1(:), sample2(:)
         integer(IK)         , intent(in)    , contiguous    :: weight1(:)
         integer(IK)         , intent(in)                    :: weisum1
-        real(RKC)           , intent(out)                   :: disKolm
+        real(RKG)           , intent(out)                   :: disKolm
         type(ascending_type), intent(in)                    :: order
     end subroutine
 #endif
@@ -2370,11 +2370,11 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setDisKolmSSA_WID_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)           , intent(in)    , contiguous    :: sample1(:), sample2(:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)           , intent(in)    , contiguous    :: sample1(:), sample2(:)
         integer(IK)         , intent(in)    , contiguous    :: weight1(:)
         integer(IK)         , intent(in)                    :: weisum1
-        real(RKC)           , intent(out)                   :: disKolm
+        real(RKG)           , intent(out)                   :: disKolm
         type(ascending_type), intent(in)                    :: order
     end subroutine
 #endif
@@ -2384,11 +2384,11 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setDisKolmSSA_WID_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)           , intent(in)    , contiguous    :: sample1(:), sample2(:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)           , intent(in)    , contiguous    :: sample1(:), sample2(:)
         integer(IK)         , intent(in)    , contiguous    :: weight1(:)
         integer(IK)         , intent(in)                    :: weisum1
-        real(RKC)           , intent(out)                   :: disKolm
+        real(RKG)           , intent(out)                   :: disKolm
         type(ascending_type), intent(in)                    :: order
     end subroutine
 #endif
@@ -2398,11 +2398,11 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setDisKolmSSA_WID_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)           , intent(in)    , contiguous    :: sample1(:), sample2(:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)           , intent(in)    , contiguous    :: sample1(:), sample2(:)
         integer(IK)         , intent(in)    , contiguous    :: weight1(:)
         integer(IK)         , intent(in)                    :: weisum1
-        real(RKC)           , intent(out)                   :: disKolm
+        real(RKG)           , intent(out)                   :: disKolm
         type(ascending_type), intent(in)                    :: order
     end subroutine
 #endif
@@ -2430,11 +2430,11 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setDisKolmSSD_WRD_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)           , intent(inout) , contiguous    :: sample1(:), sample2(:)
-        real(RKC)           , intent(inout) , contiguous    :: weight1(:)
-        real(RKC)           , intent(in)                    :: weisum1
-        real(RKC)           , intent(out)                   :: disKolm
+        use pm_kind, only: RKG => RK5
+        real(RKG)           , intent(inout) , contiguous    :: sample1(:), sample2(:)
+        real(RKG)           , intent(inout) , contiguous    :: weight1(:)
+        real(RKG)           , intent(in)                    :: weisum1
+        real(RKG)           , intent(out)                   :: disKolm
     end subroutine
 #endif
 
@@ -2443,11 +2443,11 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setDisKolmSSD_WRD_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)           , intent(inout) , contiguous    :: sample1(:), sample2(:)
-        real(RKC)           , intent(inout) , contiguous    :: weight1(:)
-        real(RKC)           , intent(in)                    :: weisum1
-        real(RKC)           , intent(out)                   :: disKolm
+        use pm_kind, only: RKG => RK4
+        real(RKG)           , intent(inout) , contiguous    :: sample1(:), sample2(:)
+        real(RKG)           , intent(inout) , contiguous    :: weight1(:)
+        real(RKG)           , intent(in)                    :: weisum1
+        real(RKG)           , intent(out)                   :: disKolm
     end subroutine
 #endif
 
@@ -2456,11 +2456,11 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setDisKolmSSD_WRD_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)           , intent(inout) , contiguous    :: sample1(:), sample2(:)
-        real(RKC)           , intent(inout) , contiguous    :: weight1(:)
-        real(RKC)           , intent(in)                    :: weisum1
-        real(RKC)           , intent(out)                   :: disKolm
+        use pm_kind, only: RKG => RK3
+        real(RKG)           , intent(inout) , contiguous    :: sample1(:), sample2(:)
+        real(RKG)           , intent(inout) , contiguous    :: weight1(:)
+        real(RKG)           , intent(in)                    :: weisum1
+        real(RKG)           , intent(out)                   :: disKolm
     end subroutine
 #endif
 
@@ -2469,11 +2469,11 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setDisKolmSSD_WRD_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)           , intent(inout) , contiguous    :: sample1(:), sample2(:)
-        real(RKC)           , intent(inout) , contiguous    :: weight1(:)
-        real(RKC)           , intent(in)                    :: weisum1
-        real(RKC)           , intent(out)                   :: disKolm
+        use pm_kind, only: RKG => RK2
+        real(RKG)           , intent(inout) , contiguous    :: sample1(:), sample2(:)
+        real(RKG)           , intent(inout) , contiguous    :: weight1(:)
+        real(RKG)           , intent(in)                    :: weisum1
+        real(RKG)           , intent(out)                   :: disKolm
     end subroutine
 #endif
 
@@ -2482,11 +2482,11 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setDisKolmSSD_WRD_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)           , intent(inout) , contiguous    :: sample1(:), sample2(:)
-        real(RKC)           , intent(inout) , contiguous    :: weight1(:)
-        real(RKC)           , intent(in)                    :: weisum1
-        real(RKC)           , intent(out)                   :: disKolm
+        use pm_kind, only: RKG => RK1
+        real(RKG)           , intent(inout) , contiguous    :: sample1(:), sample2(:)
+        real(RKG)           , intent(inout) , contiguous    :: weight1(:)
+        real(RKG)           , intent(in)                    :: weisum1
+        real(RKG)           , intent(out)                   :: disKolm
     end subroutine
 #endif
 
@@ -2503,11 +2503,11 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setDisKolmSSA_WRD_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)           , intent(in)    , contiguous    :: sample1(:), sample2(:)
-        real(RKC)           , intent(in)    , contiguous    :: weight1(:)
-        real(RKC)           , intent(in)                    :: weisum1
-        real(RKC)           , intent(out)                   :: disKolm
+        use pm_kind, only: RKG => RK5
+        real(RKG)           , intent(in)    , contiguous    :: sample1(:), sample2(:)
+        real(RKG)           , intent(in)    , contiguous    :: weight1(:)
+        real(RKG)           , intent(in)                    :: weisum1
+        real(RKG)           , intent(out)                   :: disKolm
         type(ascending_type), intent(in)                    :: order
     end subroutine
 #endif
@@ -2517,11 +2517,11 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setDisKolmSSA_WRD_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)           , intent(in)    , contiguous    :: sample1(:), sample2(:)
-        real(RKC)           , intent(in)    , contiguous    :: weight1(:)
-        real(RKC)           , intent(in)                    :: weisum1
-        real(RKC)           , intent(out)                   :: disKolm
+        use pm_kind, only: RKG => RK4
+        real(RKG)           , intent(in)    , contiguous    :: sample1(:), sample2(:)
+        real(RKG)           , intent(in)    , contiguous    :: weight1(:)
+        real(RKG)           , intent(in)                    :: weisum1
+        real(RKG)           , intent(out)                   :: disKolm
         type(ascending_type), intent(in)                    :: order
     end subroutine
 #endif
@@ -2531,11 +2531,11 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setDisKolmSSA_WRD_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)           , intent(in)    , contiguous    :: sample1(:), sample2(:)
-        real(RKC)           , intent(in)    , contiguous    :: weight1(:)
-        real(RKC)           , intent(in)                    :: weisum1
-        real(RKC)           , intent(out)                   :: disKolm
+        use pm_kind, only: RKG => RK3
+        real(RKG)           , intent(in)    , contiguous    :: sample1(:), sample2(:)
+        real(RKG)           , intent(in)    , contiguous    :: weight1(:)
+        real(RKG)           , intent(in)                    :: weisum1
+        real(RKG)           , intent(out)                   :: disKolm
         type(ascending_type), intent(in)                    :: order
     end subroutine
 #endif
@@ -2545,11 +2545,11 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setDisKolmSSA_WRD_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)           , intent(in)    , contiguous    :: sample1(:), sample2(:)
-        real(RKC)           , intent(in)    , contiguous    :: weight1(:)
-        real(RKC)           , intent(in)                    :: weisum1
-        real(RKC)           , intent(out)                   :: disKolm
+        use pm_kind, only: RKG => RK2
+        real(RKG)           , intent(in)    , contiguous    :: sample1(:), sample2(:)
+        real(RKG)           , intent(in)    , contiguous    :: weight1(:)
+        real(RKG)           , intent(in)                    :: weisum1
+        real(RKG)           , intent(out)                   :: disKolm
         type(ascending_type), intent(in)                    :: order
     end subroutine
 #endif
@@ -2559,11 +2559,11 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setDisKolmSSA_WRD_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)           , intent(in)    , contiguous    :: sample1(:), sample2(:)
-        real(RKC)           , intent(in)    , contiguous    :: weight1(:)
-        real(RKC)           , intent(in)                    :: weisum1
-        real(RKC)           , intent(out)                   :: disKolm
+        use pm_kind, only: RKG => RK1
+        real(RKG)           , intent(in)    , contiguous    :: sample1(:), sample2(:)
+        real(RKG)           , intent(in)    , contiguous    :: weight1(:)
+        real(RKG)           , intent(in)                    :: weisum1
+        real(RKG)           , intent(out)                   :: disKolm
         type(ascending_type), intent(in)                    :: order
     end subroutine
 #endif
@@ -2591,11 +2591,11 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setDisKolmSSD_WII_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)           , intent(inout) , contiguous    :: sample1(:), sample2(:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)           , intent(inout) , contiguous    :: sample1(:), sample2(:)
         integer(IK)         , intent(inout) , contiguous    :: weight1(:), weight2(:)
         integer(IK)         , intent(in)                    :: weisum1, weisum2
-        real(RKC)           , intent(out)                   :: disKolm
+        real(RKG)           , intent(out)                   :: disKolm
     end subroutine
 #endif
 
@@ -2604,11 +2604,11 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setDisKolmSSD_WII_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)           , intent(inout) , contiguous    :: sample1(:), sample2(:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)           , intent(inout) , contiguous    :: sample1(:), sample2(:)
         integer(IK)         , intent(inout) , contiguous    :: weight1(:), weight2(:)
         integer(IK)         , intent(in)                    :: weisum1, weisum2
-        real(RKC)           , intent(out)                   :: disKolm
+        real(RKG)           , intent(out)                   :: disKolm
     end subroutine
 #endif
 
@@ -2617,11 +2617,11 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setDisKolmSSD_WII_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)           , intent(inout) , contiguous    :: sample1(:), sample2(:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)           , intent(inout) , contiguous    :: sample1(:), sample2(:)
         integer(IK)         , intent(inout) , contiguous    :: weight1(:), weight2(:)
         integer(IK)         , intent(in)                    :: weisum1, weisum2
-        real(RKC)           , intent(out)                   :: disKolm
+        real(RKG)           , intent(out)                   :: disKolm
     end subroutine
 #endif
 
@@ -2630,11 +2630,11 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setDisKolmSSD_WII_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)           , intent(inout) , contiguous    :: sample1(:), sample2(:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)           , intent(inout) , contiguous    :: sample1(:), sample2(:)
         integer(IK)         , intent(inout) , contiguous    :: weight1(:), weight2(:)
         integer(IK)         , intent(in)                    :: weisum1, weisum2
-        real(RKC)           , intent(out)                   :: disKolm
+        real(RKG)           , intent(out)                   :: disKolm
     end subroutine
 #endif
 
@@ -2643,11 +2643,11 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setDisKolmSSD_WII_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)           , intent(inout) , contiguous    :: sample1(:), sample2(:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)           , intent(inout) , contiguous    :: sample1(:), sample2(:)
         integer(IK)         , intent(inout) , contiguous    :: weight1(:), weight2(:)
         integer(IK)         , intent(in)                    :: weisum1, weisum2
-        real(RKC)           , intent(out)                   :: disKolm
+        real(RKG)           , intent(out)                   :: disKolm
     end subroutine
 #endif
 
@@ -2664,11 +2664,11 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setDisKolmSSA_WII_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)           , intent(in)    , contiguous    :: sample1(:), sample2(:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)           , intent(in)    , contiguous    :: sample1(:), sample2(:)
         integer(IK)         , intent(in)    , contiguous    :: weight1(:), weight2(:)
         integer(IK)         , intent(in)                    :: weisum1, weisum2
-        real(RKC)           , intent(out)                   :: disKolm
+        real(RKG)           , intent(out)                   :: disKolm
         type(ascending_type), intent(in)                    :: order
     end subroutine
 #endif
@@ -2678,11 +2678,11 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setDisKolmSSA_WII_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)           , intent(in)    , contiguous    :: sample1(:), sample2(:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)           , intent(in)    , contiguous    :: sample1(:), sample2(:)
         integer(IK)         , intent(in)    , contiguous    :: weight1(:), weight2(:)
         integer(IK)         , intent(in)                    :: weisum1, weisum2
-        real(RKC)           , intent(out)                   :: disKolm
+        real(RKG)           , intent(out)                   :: disKolm
         type(ascending_type), intent(in)                    :: order
     end subroutine
 #endif
@@ -2692,11 +2692,11 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setDisKolmSSA_WII_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)           , intent(in)    , contiguous    :: sample1(:), sample2(:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)           , intent(in)    , contiguous    :: sample1(:), sample2(:)
         integer(IK)         , intent(in)    , contiguous    :: weight1(:), weight2(:)
         integer(IK)         , intent(in)                    :: weisum1, weisum2
-        real(RKC)           , intent(out)                   :: disKolm
+        real(RKG)           , intent(out)                   :: disKolm
         type(ascending_type), intent(in)                    :: order
     end subroutine
 #endif
@@ -2706,11 +2706,11 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setDisKolmSSA_WII_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)           , intent(in)    , contiguous    :: sample1(:), sample2(:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)           , intent(in)    , contiguous    :: sample1(:), sample2(:)
         integer(IK)         , intent(in)    , contiguous    :: weight1(:), weight2(:)
         integer(IK)         , intent(in)                    :: weisum1, weisum2
-        real(RKC)           , intent(out)                   :: disKolm
+        real(RKG)           , intent(out)                   :: disKolm
         type(ascending_type), intent(in)                    :: order
     end subroutine
 #endif
@@ -2720,11 +2720,11 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setDisKolmSSA_WII_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)           , intent(in)    , contiguous    :: sample1(:), sample2(:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)           , intent(in)    , contiguous    :: sample1(:), sample2(:)
         integer(IK)         , intent(in)    , contiguous    :: weight1(:), weight2(:)
         integer(IK)         , intent(in)                    :: weisum1, weisum2
-        real(RKC)           , intent(out)                   :: disKolm
+        real(RKG)           , intent(out)                   :: disKolm
         type(ascending_type), intent(in)                    :: order
     end subroutine
 #endif
@@ -2752,11 +2752,11 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setDisKolmSSD_WRR_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)           , intent(inout) , contiguous    :: sample1(:), sample2(:)
-        real(RKC)           , intent(inout) , contiguous    :: weight1(:), weight2(:)
-        real(RKC)           , intent(in)                    :: weisum1, weisum2
-        real(RKC)           , intent(out)                   :: disKolm
+        use pm_kind, only: RKG => RK5
+        real(RKG)           , intent(inout) , contiguous    :: sample1(:), sample2(:)
+        real(RKG)           , intent(inout) , contiguous    :: weight1(:), weight2(:)
+        real(RKG)           , intent(in)                    :: weisum1, weisum2
+        real(RKG)           , intent(out)                   :: disKolm
     end subroutine
 #endif
 
@@ -2765,11 +2765,11 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setDisKolmSSD_WRR_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)           , intent(inout) , contiguous    :: sample1(:), sample2(:)
-        real(RKC)           , intent(inout) , contiguous    :: weight1(:), weight2(:)
-        real(RKC)           , intent(in)                    :: weisum1, weisum2
-        real(RKC)           , intent(out)                   :: disKolm
+        use pm_kind, only: RKG => RK4
+        real(RKG)           , intent(inout) , contiguous    :: sample1(:), sample2(:)
+        real(RKG)           , intent(inout) , contiguous    :: weight1(:), weight2(:)
+        real(RKG)           , intent(in)                    :: weisum1, weisum2
+        real(RKG)           , intent(out)                   :: disKolm
     end subroutine
 #endif
 
@@ -2778,11 +2778,11 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setDisKolmSSD_WRR_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)           , intent(inout) , contiguous    :: sample1(:), sample2(:)
-        real(RKC)           , intent(inout) , contiguous    :: weight1(:), weight2(:)
-        real(RKC)           , intent(in)                    :: weisum1, weisum2
-        real(RKC)           , intent(out)                   :: disKolm
+        use pm_kind, only: RKG => RK3
+        real(RKG)           , intent(inout) , contiguous    :: sample1(:), sample2(:)
+        real(RKG)           , intent(inout) , contiguous    :: weight1(:), weight2(:)
+        real(RKG)           , intent(in)                    :: weisum1, weisum2
+        real(RKG)           , intent(out)                   :: disKolm
     end subroutine
 #endif
 
@@ -2791,11 +2791,11 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setDisKolmSSD_WRR_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)           , intent(inout) , contiguous    :: sample1(:), sample2(:)
-        real(RKC)           , intent(inout) , contiguous    :: weight1(:), weight2(:)
-        real(RKC)           , intent(in)                    :: weisum1, weisum2
-        real(RKC)           , intent(out)                   :: disKolm
+        use pm_kind, only: RKG => RK2
+        real(RKG)           , intent(inout) , contiguous    :: sample1(:), sample2(:)
+        real(RKG)           , intent(inout) , contiguous    :: weight1(:), weight2(:)
+        real(RKG)           , intent(in)                    :: weisum1, weisum2
+        real(RKG)           , intent(out)                   :: disKolm
     end subroutine
 #endif
 
@@ -2804,11 +2804,11 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setDisKolmSSD_WRR_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)           , intent(inout) , contiguous    :: sample1(:), sample2(:)
-        real(RKC)           , intent(inout) , contiguous    :: weight1(:), weight2(:)
-        real(RKC)           , intent(in)                    :: weisum1, weisum2
-        real(RKC)           , intent(out)                   :: disKolm
+        use pm_kind, only: RKG => RK1
+        real(RKG)           , intent(inout) , contiguous    :: sample1(:), sample2(:)
+        real(RKG)           , intent(inout) , contiguous    :: weight1(:), weight2(:)
+        real(RKG)           , intent(in)                    :: weisum1, weisum2
+        real(RKG)           , intent(out)                   :: disKolm
     end subroutine
 #endif
 
@@ -2825,12 +2825,12 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setDisKolmSSA_WRR_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         type(ascending_type), intent(in)                    :: order
-        real(RKC)           , intent(in)    , contiguous    :: sample1(:), sample2(:)
-        real(RKC)           , intent(in)    , contiguous    :: weight1(:), weight2(:)
-        real(RKC)           , intent(in)                    :: weisum1, weisum2
-        real(RKC)           , intent(out)                   :: disKolm
+        real(RKG)           , intent(in)    , contiguous    :: sample1(:), sample2(:)
+        real(RKG)           , intent(in)    , contiguous    :: weight1(:), weight2(:)
+        real(RKG)           , intent(in)                    :: weisum1, weisum2
+        real(RKG)           , intent(out)                   :: disKolm
     end subroutine
 #endif
 
@@ -2839,12 +2839,12 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setDisKolmSSA_WRR_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         type(ascending_type), intent(in)                    :: order
-        real(RKC)           , intent(in)    , contiguous    :: sample1(:), sample2(:)
-        real(RKC)           , intent(in)    , contiguous    :: weight1(:), weight2(:)
-        real(RKC)           , intent(in)                    :: weisum1, weisum2
-        real(RKC)           , intent(out)                   :: disKolm
+        real(RKG)           , intent(in)    , contiguous    :: sample1(:), sample2(:)
+        real(RKG)           , intent(in)    , contiguous    :: weight1(:), weight2(:)
+        real(RKG)           , intent(in)                    :: weisum1, weisum2
+        real(RKG)           , intent(out)                   :: disKolm
     end subroutine
 #endif
 
@@ -2853,12 +2853,12 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setDisKolmSSA_WRR_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         type(ascending_type), intent(in)                    :: order
-        real(RKC)           , intent(in)    , contiguous    :: sample1(:), sample2(:)
-        real(RKC)           , intent(in)    , contiguous    :: weight1(:), weight2(:)
-        real(RKC)           , intent(in)                    :: weisum1, weisum2
-        real(RKC)           , intent(out)                   :: disKolm
+        real(RKG)           , intent(in)    , contiguous    :: sample1(:), sample2(:)
+        real(RKG)           , intent(in)    , contiguous    :: weight1(:), weight2(:)
+        real(RKG)           , intent(in)                    :: weisum1, weisum2
+        real(RKG)           , intent(out)                   :: disKolm
     end subroutine
 #endif
 
@@ -2867,12 +2867,12 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setDisKolmSSA_WRR_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         type(ascending_type), intent(in)                    :: order
-        real(RKC)           , intent(in)    , contiguous    :: sample1(:), sample2(:)
-        real(RKC)           , intent(in)    , contiguous    :: weight1(:), weight2(:)
-        real(RKC)           , intent(in)                    :: weisum1, weisum2
-        real(RKC)           , intent(out)                   :: disKolm
+        real(RKG)           , intent(in)    , contiguous    :: sample1(:), sample2(:)
+        real(RKG)           , intent(in)    , contiguous    :: weight1(:), weight2(:)
+        real(RKG)           , intent(in)                    :: weisum1, weisum2
+        real(RKG)           , intent(out)                   :: disKolm
     end subroutine
 #endif
 
@@ -2881,12 +2881,12 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setDisKolmSSA_WRR_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         type(ascending_type), intent(in)                    :: order
-        real(RKC)           , intent(in)    , contiguous    :: sample1(:), sample2(:)
-        real(RKC)           , intent(in)    , contiguous    :: weight1(:), weight2(:)
-        real(RKC)           , intent(in)                    :: weisum1, weisum2
-        real(RKC)           , intent(out)                   :: disKolm
+        real(RKG)           , intent(in)    , contiguous    :: sample1(:), sample2(:)
+        real(RKG)           , intent(in)    , contiguous    :: weight1(:), weight2(:)
+        real(RKG)           , intent(in)                    :: weisum1, weisum2
+        real(RKG)           , intent(out)                   :: disKolm
     end subroutine
 #endif
 
@@ -2913,9 +2913,9 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setDisKolmSXD_WDD_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)           , intent(inout) , contiguous    :: sample1(:)
-        real(RKC)           , intent(out)                   :: disKolm
+        use pm_kind, only: RKG => RK5
+        real(RKG)           , intent(inout) , contiguous    :: sample1(:)
+        real(RKG)           , intent(out)                   :: disKolm
     end subroutine
 #endif
 
@@ -2924,9 +2924,9 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setDisKolmSXD_WDD_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)           , intent(inout) , contiguous    :: sample1(:)
-        real(RKC)           , intent(out)                   :: disKolm
+        use pm_kind, only: RKG => RK4
+        real(RKG)           , intent(inout) , contiguous    :: sample1(:)
+        real(RKG)           , intent(out)                   :: disKolm
     end subroutine
 #endif
 
@@ -2935,9 +2935,9 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setDisKolmSXD_WDD_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)           , intent(inout) , contiguous    :: sample1(:)
-        real(RKC)           , intent(out)                   :: disKolm
+        use pm_kind, only: RKG => RK3
+        real(RKG)           , intent(inout) , contiguous    :: sample1(:)
+        real(RKG)           , intent(out)                   :: disKolm
     end subroutine
 #endif
 
@@ -2946,9 +2946,9 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setDisKolmSXD_WDD_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)           , intent(inout) , contiguous    :: sample1(:)
-        real(RKC)           , intent(out)                   :: disKolm
+        use pm_kind, only: RKG => RK2
+        real(RKG)           , intent(inout) , contiguous    :: sample1(:)
+        real(RKG)           , intent(out)                   :: disKolm
     end subroutine
 #endif
 
@@ -2957,9 +2957,9 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setDisKolmSXD_WDD_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)           , intent(inout) , contiguous    :: sample1(:)
-        real(RKC)           , intent(out)                   :: disKolm
+        use pm_kind, only: RKG => RK1
+        real(RKG)           , intent(inout) , contiguous    :: sample1(:)
+        real(RKG)           , intent(out)                   :: disKolm
     end subroutine
 #endif
 
@@ -2976,10 +2976,10 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setDisKolmSXA_WDD_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         type(ascending_type), intent(in)                    :: order
-        real(RKC)           , intent(in)    , contiguous    :: sample1(:)
-        real(RKC)           , intent(out)                   :: disKolm
+        real(RKG)           , intent(in)    , contiguous    :: sample1(:)
+        real(RKG)           , intent(out)                   :: disKolm
     end subroutine
 #endif
 
@@ -2988,10 +2988,10 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setDisKolmSXA_WDD_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         type(ascending_type), intent(in)                    :: order
-        real(RKC)           , intent(in)    , contiguous    :: sample1(:)
-        real(RKC)           , intent(out)                   :: disKolm
+        real(RKG)           , intent(in)    , contiguous    :: sample1(:)
+        real(RKG)           , intent(out)                   :: disKolm
     end subroutine
 #endif
 
@@ -3000,10 +3000,10 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setDisKolmSXA_WDD_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         type(ascending_type), intent(in)                    :: order
-        real(RKC)           , intent(in)    , contiguous    :: sample1(:)
-        real(RKC)           , intent(out)                   :: disKolm
+        real(RKG)           , intent(in)    , contiguous    :: sample1(:)
+        real(RKG)           , intent(out)                   :: disKolm
     end subroutine
 #endif
 
@@ -3012,10 +3012,10 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setDisKolmSXA_WDD_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         type(ascending_type), intent(in)                    :: order
-        real(RKC)           , intent(in)    , contiguous    :: sample1(:)
-        real(RKC)           , intent(out)                   :: disKolm
+        real(RKG)           , intent(in)    , contiguous    :: sample1(:)
+        real(RKG)           , intent(out)                   :: disKolm
     end subroutine
 #endif
 
@@ -3024,10 +3024,10 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setDisKolmSXA_WDD_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         type(ascending_type), intent(in)                    :: order
-        real(RKC)           , intent(in)    , contiguous    :: sample1(:)
-        real(RKC)           , intent(out)                   :: disKolm
+        real(RKG)           , intent(in)    , contiguous    :: sample1(:)
+        real(RKG)           , intent(out)                   :: disKolm
     end subroutine
 #endif
 
@@ -3054,11 +3054,11 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setDisKolmSXD_WID_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)           , intent(inout) , contiguous    :: sample1(:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)           , intent(inout) , contiguous    :: sample1(:)
         integer(IK)         , intent(inout) , contiguous    :: weight1(:)
         integer(IK)         , intent(in)                    :: weisum1
-        real(RKC)           , intent(out)                   :: disKolm
+        real(RKG)           , intent(out)                   :: disKolm
     end subroutine
 #endif
 
@@ -3067,11 +3067,11 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setDisKolmSXD_WID_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)           , intent(inout) , contiguous    :: sample1(:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)           , intent(inout) , contiguous    :: sample1(:)
         integer(IK)         , intent(inout) , contiguous    :: weight1(:)
         integer(IK)         , intent(in)                    :: weisum1
-        real(RKC)           , intent(out)                   :: disKolm
+        real(RKG)           , intent(out)                   :: disKolm
     end subroutine
 #endif
 
@@ -3080,11 +3080,11 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setDisKolmSXD_WID_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)           , intent(inout) , contiguous    :: sample1(:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)           , intent(inout) , contiguous    :: sample1(:)
         integer(IK)         , intent(inout) , contiguous    :: weight1(:)
         integer(IK)         , intent(in)                    :: weisum1
-        real(RKC)           , intent(out)                   :: disKolm
+        real(RKG)           , intent(out)                   :: disKolm
     end subroutine
 #endif
 
@@ -3093,11 +3093,11 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setDisKolmSXD_WID_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)           , intent(inout) , contiguous    :: sample1(:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)           , intent(inout) , contiguous    :: sample1(:)
         integer(IK)         , intent(inout) , contiguous    :: weight1(:)
         integer(IK)         , intent(in)                    :: weisum1
-        real(RKC)           , intent(out)                   :: disKolm
+        real(RKG)           , intent(out)                   :: disKolm
     end subroutine
 #endif
 
@@ -3106,11 +3106,11 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setDisKolmSXD_WID_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)           , intent(inout) , contiguous    :: sample1(:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)           , intent(inout) , contiguous    :: sample1(:)
         integer(IK)         , intent(inout) , contiguous    :: weight1(:)
         integer(IK)         , intent(in)                    :: weisum1
-        real(RKC)           , intent(out)                   :: disKolm
+        real(RKG)           , intent(out)                   :: disKolm
     end subroutine
 #endif
 
@@ -3127,11 +3127,11 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setDisKolmSXA_WID_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)           , intent(in)    , contiguous    :: sample1(:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)           , intent(in)    , contiguous    :: sample1(:)
         integer(IK)         , intent(in)    , contiguous    :: weight1(:)
         integer(IK)         , intent(in)                    :: weisum1
-        real(RKC)           , intent(out)                   :: disKolm
+        real(RKG)           , intent(out)                   :: disKolm
         type(ascending_type), intent(in)                    :: order
     end subroutine
 #endif
@@ -3141,11 +3141,11 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setDisKolmSXA_WID_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)           , intent(in)    , contiguous    :: sample1(:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)           , intent(in)    , contiguous    :: sample1(:)
         integer(IK)         , intent(in)    , contiguous    :: weight1(:)
         integer(IK)         , intent(in)                    :: weisum1
-        real(RKC)           , intent(out)                   :: disKolm
+        real(RKG)           , intent(out)                   :: disKolm
         type(ascending_type), intent(in)                    :: order
     end subroutine
 #endif
@@ -3155,11 +3155,11 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setDisKolmSXA_WID_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)           , intent(in)    , contiguous    :: sample1(:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)           , intent(in)    , contiguous    :: sample1(:)
         integer(IK)         , intent(in)    , contiguous    :: weight1(:)
         integer(IK)         , intent(in)                    :: weisum1
-        real(RKC)           , intent(out)                   :: disKolm
+        real(RKG)           , intent(out)                   :: disKolm
         type(ascending_type), intent(in)                    :: order
     end subroutine
 #endif
@@ -3169,11 +3169,11 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setDisKolmSXA_WID_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)           , intent(in)    , contiguous    :: sample1(:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)           , intent(in)    , contiguous    :: sample1(:)
         integer(IK)         , intent(in)    , contiguous    :: weight1(:)
         integer(IK)         , intent(in)                    :: weisum1
-        real(RKC)           , intent(out)                   :: disKolm
+        real(RKG)           , intent(out)                   :: disKolm
         type(ascending_type), intent(in)                    :: order
     end subroutine
 #endif
@@ -3183,11 +3183,11 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setDisKolmSXA_WID_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)           , intent(in)    , contiguous    :: sample1(:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)           , intent(in)    , contiguous    :: sample1(:)
         integer(IK)         , intent(in)    , contiguous    :: weight1(:)
         integer(IK)         , intent(in)                    :: weisum1
-        real(RKC)           , intent(out)                   :: disKolm
+        real(RKG)           , intent(out)                   :: disKolm
         type(ascending_type), intent(in)                    :: order
     end subroutine
 #endif
@@ -3215,11 +3215,11 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setDisKolmSXD_WRD_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)           , intent(inout) , contiguous    :: sample1(:)
-        real(RKC)           , intent(inout) , contiguous    :: weight1(:)
-        real(RKC)           , intent(in)                    :: weisum1
-        real(RKC)           , intent(out)                   :: disKolm
+        use pm_kind, only: RKG => RK5
+        real(RKG)           , intent(inout) , contiguous    :: sample1(:)
+        real(RKG)           , intent(inout) , contiguous    :: weight1(:)
+        real(RKG)           , intent(in)                    :: weisum1
+        real(RKG)           , intent(out)                   :: disKolm
     end subroutine
 #endif
 
@@ -3228,11 +3228,11 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setDisKolmSXD_WRD_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)           , intent(inout) , contiguous    :: sample1(:)
-        real(RKC)           , intent(inout) , contiguous    :: weight1(:)
-        real(RKC)           , intent(in)                    :: weisum1
-        real(RKC)           , intent(out)                   :: disKolm
+        use pm_kind, only: RKG => RK4
+        real(RKG)           , intent(inout) , contiguous    :: sample1(:)
+        real(RKG)           , intent(inout) , contiguous    :: weight1(:)
+        real(RKG)           , intent(in)                    :: weisum1
+        real(RKG)           , intent(out)                   :: disKolm
     end subroutine
 #endif
 
@@ -3241,11 +3241,11 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setDisKolmSXD_WRD_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)           , intent(inout) , contiguous    :: sample1(:)
-        real(RKC)           , intent(inout) , contiguous    :: weight1(:)
-        real(RKC)           , intent(in)                    :: weisum1
-        real(RKC)           , intent(out)                   :: disKolm
+        use pm_kind, only: RKG => RK3
+        real(RKG)           , intent(inout) , contiguous    :: sample1(:)
+        real(RKG)           , intent(inout) , contiguous    :: weight1(:)
+        real(RKG)           , intent(in)                    :: weisum1
+        real(RKG)           , intent(out)                   :: disKolm
     end subroutine
 #endif
 
@@ -3254,11 +3254,11 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setDisKolmSXD_WRD_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)           , intent(inout) , contiguous    :: sample1(:)
-        real(RKC)           , intent(inout) , contiguous    :: weight1(:)
-        real(RKC)           , intent(in)                    :: weisum1
-        real(RKC)           , intent(out)                   :: disKolm
+        use pm_kind, only: RKG => RK2
+        real(RKG)           , intent(inout) , contiguous    :: sample1(:)
+        real(RKG)           , intent(inout) , contiguous    :: weight1(:)
+        real(RKG)           , intent(in)                    :: weisum1
+        real(RKG)           , intent(out)                   :: disKolm
     end subroutine
 #endif
 
@@ -3267,11 +3267,11 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setDisKolmSXD_WRD_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)           , intent(inout) , contiguous    :: sample1(:)
-        real(RKC)           , intent(inout) , contiguous    :: weight1(:)
-        real(RKC)           , intent(in)                    :: weisum1
-        real(RKC)           , intent(out)                   :: disKolm
+        use pm_kind, only: RKG => RK1
+        real(RKG)           , intent(inout) , contiguous    :: sample1(:)
+        real(RKG)           , intent(inout) , contiguous    :: weight1(:)
+        real(RKG)           , intent(in)                    :: weisum1
+        real(RKG)           , intent(out)                   :: disKolm
     end subroutine
 #endif
 
@@ -3288,11 +3288,11 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setDisKolmSXA_WRD_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)           , intent(in)    , contiguous    :: sample1(:)
-        real(RKC)           , intent(in)    , contiguous    :: weight1(:)
-        real(RKC)           , intent(in)                    :: weisum1
-        real(RKC)           , intent(out)                   :: disKolm
+        use pm_kind, only: RKG => RK5
+        real(RKG)           , intent(in)    , contiguous    :: sample1(:)
+        real(RKG)           , intent(in)    , contiguous    :: weight1(:)
+        real(RKG)           , intent(in)                    :: weisum1
+        real(RKG)           , intent(out)                   :: disKolm
         type(ascending_type), intent(in)                    :: order
     end subroutine
 #endif
@@ -3302,11 +3302,11 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setDisKolmSXA_WRD_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)           , intent(in)    , contiguous    :: sample1(:)
-        real(RKC)           , intent(in)    , contiguous    :: weight1(:)
-        real(RKC)           , intent(in)                    :: weisum1
-        real(RKC)           , intent(out)                   :: disKolm
+        use pm_kind, only: RKG => RK4
+        real(RKG)           , intent(in)    , contiguous    :: sample1(:)
+        real(RKG)           , intent(in)    , contiguous    :: weight1(:)
+        real(RKG)           , intent(in)                    :: weisum1
+        real(RKG)           , intent(out)                   :: disKolm
         type(ascending_type), intent(in)                    :: order
     end subroutine
 #endif
@@ -3316,11 +3316,11 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setDisKolmSXA_WRD_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)           , intent(in)    , contiguous    :: sample1(:)
-        real(RKC)           , intent(in)    , contiguous    :: weight1(:)
-        real(RKC)           , intent(in)                    :: weisum1
-        real(RKC)           , intent(out)                   :: disKolm
+        use pm_kind, only: RKG => RK3
+        real(RKG)           , intent(in)    , contiguous    :: sample1(:)
+        real(RKG)           , intent(in)    , contiguous    :: weight1(:)
+        real(RKG)           , intent(in)                    :: weisum1
+        real(RKG)           , intent(out)                   :: disKolm
         type(ascending_type), intent(in)                    :: order
     end subroutine
 #endif
@@ -3330,11 +3330,11 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setDisKolmSXA_WRD_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)           , intent(in)    , contiguous    :: sample1(:)
-        real(RKC)           , intent(in)    , contiguous    :: weight1(:)
-        real(RKC)           , intent(in)                    :: weisum1
-        real(RKC)           , intent(out)                   :: disKolm
+        use pm_kind, only: RKG => RK2
+        real(RKG)           , intent(in)    , contiguous    :: sample1(:)
+        real(RKG)           , intent(in)    , contiguous    :: weight1(:)
+        real(RKG)           , intent(in)                    :: weisum1
+        real(RKG)           , intent(out)                   :: disKolm
         type(ascending_type), intent(in)                    :: order
     end subroutine
 #endif
@@ -3344,11 +3344,11 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setDisKolmSXA_WRD_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)           , intent(in)    , contiguous    :: sample1(:)
-        real(RKC)           , intent(in)    , contiguous    :: weight1(:)
-        real(RKC)           , intent(in)                    :: weisum1
-        real(RKC)           , intent(out)                   :: disKolm
+        use pm_kind, only: RKG => RK1
+        real(RKG)           , intent(in)    , contiguous    :: sample1(:)
+        real(RKG)           , intent(in)    , contiguous    :: weight1(:)
+        real(RKG)           , intent(in)                    :: weisum1
+        real(RKG)           , intent(out)                   :: disKolm
         type(ascending_type), intent(in)                    :: order
     end subroutine
 #endif
@@ -3376,10 +3376,10 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setDisKolmSCD_WDD_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)           , intent(inout) , contiguous    :: sample1(:)
-        real(RKC)           , intent(out)                   :: disKolm
-        procedure(real(RKC))                                :: getCDF
+        use pm_kind, only: RKG => RK5
+        real(RKG)           , intent(inout) , contiguous    :: sample1(:)
+        real(RKG)           , intent(out)                   :: disKolm
+        procedure(real(RKG))                                :: getCDF
     end subroutine
 #endif
 
@@ -3388,10 +3388,10 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setDisKolmSCD_WDD_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)           , intent(inout) , contiguous    :: sample1(:)
-        real(RKC)           , intent(out)                   :: disKolm
-        procedure(real(RKC))                                :: getCDF
+        use pm_kind, only: RKG => RK4
+        real(RKG)           , intent(inout) , contiguous    :: sample1(:)
+        real(RKG)           , intent(out)                   :: disKolm
+        procedure(real(RKG))                                :: getCDF
     end subroutine
 #endif
 
@@ -3400,10 +3400,10 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setDisKolmSCD_WDD_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)           , intent(inout) , contiguous    :: sample1(:)
-        real(RKC)           , intent(out)                   :: disKolm
-        procedure(real(RKC))                                :: getCDF
+        use pm_kind, only: RKG => RK3
+        real(RKG)           , intent(inout) , contiguous    :: sample1(:)
+        real(RKG)           , intent(out)                   :: disKolm
+        procedure(real(RKG))                                :: getCDF
     end subroutine
 #endif
 
@@ -3412,10 +3412,10 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setDisKolmSCD_WDD_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)           , intent(inout) , contiguous    :: sample1(:)
-        real(RKC)           , intent(out)                   :: disKolm
-        procedure(real(RKC))                                :: getCDF
+        use pm_kind, only: RKG => RK2
+        real(RKG)           , intent(inout) , contiguous    :: sample1(:)
+        real(RKG)           , intent(out)                   :: disKolm
+        procedure(real(RKG))                                :: getCDF
     end subroutine
 #endif
 
@@ -3424,10 +3424,10 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setDisKolmSCD_WDD_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)           , intent(inout) , contiguous    :: sample1(:)
-        real(RKC)           , intent(out)                   :: disKolm
-        procedure(real(RKC))                                :: getCDF
+        use pm_kind, only: RKG => RK1
+        real(RKG)           , intent(inout) , contiguous    :: sample1(:)
+        real(RKG)           , intent(out)                   :: disKolm
+        procedure(real(RKG))                                :: getCDF
     end subroutine
 #endif
 
@@ -3444,11 +3444,11 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setDisKolmSCA_WDD_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)           , intent(in)    , contiguous    :: sample1(:)
-        real(RKC)           , intent(out)                   :: disKolm
+        use pm_kind, only: RKG => RK5
+        real(RKG)           , intent(in)    , contiguous    :: sample1(:)
+        real(RKG)           , intent(out)                   :: disKolm
         type(ascending_type), intent(in)                    :: order
-        procedure(real(RKC))                                :: getCDF
+        procedure(real(RKG))                                :: getCDF
     end subroutine
 #endif
 
@@ -3457,11 +3457,11 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setDisKolmSCA_WDD_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)           , intent(in)    , contiguous    :: sample1(:)
-        real(RKC)           , intent(out)                   :: disKolm
+        use pm_kind, only: RKG => RK4
+        real(RKG)           , intent(in)    , contiguous    :: sample1(:)
+        real(RKG)           , intent(out)                   :: disKolm
         type(ascending_type), intent(in)                    :: order
-        procedure(real(RKC))                                :: getCDF
+        procedure(real(RKG))                                :: getCDF
     end subroutine
 #endif
 
@@ -3470,11 +3470,11 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setDisKolmSCA_WDD_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)           , intent(in)    , contiguous    :: sample1(:)
-        real(RKC)           , intent(out)                   :: disKolm
+        use pm_kind, only: RKG => RK3
+        real(RKG)           , intent(in)    , contiguous    :: sample1(:)
+        real(RKG)           , intent(out)                   :: disKolm
         type(ascending_type), intent(in)                    :: order
-        procedure(real(RKC))                                :: getCDF
+        procedure(real(RKG))                                :: getCDF
     end subroutine
 #endif
 
@@ -3483,11 +3483,11 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setDisKolmSCA_WDD_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)           , intent(in)    , contiguous    :: sample1(:)
-        real(RKC)           , intent(out)                   :: disKolm
+        use pm_kind, only: RKG => RK2
+        real(RKG)           , intent(in)    , contiguous    :: sample1(:)
+        real(RKG)           , intent(out)                   :: disKolm
         type(ascending_type), intent(in)                    :: order
-        procedure(real(RKC))                                :: getCDF
+        procedure(real(RKG))                                :: getCDF
     end subroutine
 #endif
 
@@ -3496,11 +3496,11 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setDisKolmSCA_WDD_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)           , intent(in)    , contiguous    :: sample1(:)
-        real(RKC)           , intent(out)                   :: disKolm
+        use pm_kind, only: RKG => RK1
+        real(RKG)           , intent(in)    , contiguous    :: sample1(:)
+        real(RKG)           , intent(out)                   :: disKolm
         type(ascending_type), intent(in)                    :: order
-        procedure(real(RKC))                                :: getCDF
+        procedure(real(RKG))                                :: getCDF
     end subroutine
 #endif
 
@@ -3527,12 +3527,12 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setDisKolmSCD_WID_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)           , intent(inout) , contiguous    :: sample1(:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)           , intent(inout) , contiguous    :: sample1(:)
         integer(IK)         , intent(inout) , contiguous    :: weight1(:)
         integer(IK)         , intent(in)                    :: weisum1
-        real(RKC)           , intent(out)                   :: disKolm
-        procedure(real(RKC))                                :: getCDF
+        real(RKG)           , intent(out)                   :: disKolm
+        procedure(real(RKG))                                :: getCDF
     end subroutine
 #endif
 
@@ -3541,12 +3541,12 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setDisKolmSCD_WID_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)           , intent(inout) , contiguous    :: sample1(:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)           , intent(inout) , contiguous    :: sample1(:)
         integer(IK)         , intent(inout) , contiguous    :: weight1(:)
         integer(IK)         , intent(in)                    :: weisum1
-        real(RKC)           , intent(out)                   :: disKolm
-        procedure(real(RKC))                                :: getCDF
+        real(RKG)           , intent(out)                   :: disKolm
+        procedure(real(RKG))                                :: getCDF
     end subroutine
 #endif
 
@@ -3555,12 +3555,12 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setDisKolmSCD_WID_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)           , intent(inout) , contiguous    :: sample1(:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)           , intent(inout) , contiguous    :: sample1(:)
         integer(IK)         , intent(inout) , contiguous    :: weight1(:)
         integer(IK)         , intent(in)                    :: weisum1
-        real(RKC)           , intent(out)                   :: disKolm
-        procedure(real(RKC))                                :: getCDF
+        real(RKG)           , intent(out)                   :: disKolm
+        procedure(real(RKG))                                :: getCDF
     end subroutine
 #endif
 
@@ -3569,12 +3569,12 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setDisKolmSCD_WID_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)           , intent(inout) , contiguous    :: sample1(:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)           , intent(inout) , contiguous    :: sample1(:)
         integer(IK)         , intent(inout) , contiguous    :: weight1(:)
         integer(IK)         , intent(in)                    :: weisum1
-        real(RKC)           , intent(out)                   :: disKolm
-        procedure(real(RKC))                                :: getCDF
+        real(RKG)           , intent(out)                   :: disKolm
+        procedure(real(RKG))                                :: getCDF
     end subroutine
 #endif
 
@@ -3583,12 +3583,12 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setDisKolmSCD_WID_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)           , intent(inout) , contiguous    :: sample1(:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)           , intent(inout) , contiguous    :: sample1(:)
         integer(IK)         , intent(inout) , contiguous    :: weight1(:)
         integer(IK)         , intent(in)                    :: weisum1
-        real(RKC)           , intent(out)                   :: disKolm
-        procedure(real(RKC))                                :: getCDF
+        real(RKG)           , intent(out)                   :: disKolm
+        procedure(real(RKG))                                :: getCDF
     end subroutine
 #endif
 
@@ -3605,13 +3605,13 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setDisKolmSCA_WID_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)           , intent(in)    , contiguous    :: sample1(:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)           , intent(in)    , contiguous    :: sample1(:)
         integer(IK)         , intent(in)    , contiguous    :: weight1(:)
         integer(IK)         , intent(in)                    :: weisum1
-        real(RKC)           , intent(out)                   :: disKolm
+        real(RKG)           , intent(out)                   :: disKolm
         type(ascending_type), intent(in)                    :: order
-        procedure(real(RKC))                                :: getCDF
+        procedure(real(RKG))                                :: getCDF
     end subroutine
 #endif
 
@@ -3620,13 +3620,13 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setDisKolmSCA_WID_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)           , intent(in)    , contiguous    :: sample1(:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)           , intent(in)    , contiguous    :: sample1(:)
         integer(IK)         , intent(in)    , contiguous    :: weight1(:)
         integer(IK)         , intent(in)                    :: weisum1
-        real(RKC)           , intent(out)                   :: disKolm
+        real(RKG)           , intent(out)                   :: disKolm
         type(ascending_type), intent(in)                    :: order
-        procedure(real(RKC))                                :: getCDF
+        procedure(real(RKG))                                :: getCDF
     end subroutine
 #endif
 
@@ -3635,13 +3635,13 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setDisKolmSCA_WID_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)           , intent(in)    , contiguous    :: sample1(:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)           , intent(in)    , contiguous    :: sample1(:)
         integer(IK)         , intent(in)    , contiguous    :: weight1(:)
         integer(IK)         , intent(in)                    :: weisum1
-        real(RKC)           , intent(out)                   :: disKolm
+        real(RKG)           , intent(out)                   :: disKolm
         type(ascending_type), intent(in)                    :: order
-        procedure(real(RKC))                                :: getCDF
+        procedure(real(RKG))                                :: getCDF
     end subroutine
 #endif
 
@@ -3650,13 +3650,13 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setDisKolmSCA_WID_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)           , intent(in)    , contiguous    :: sample1(:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)           , intent(in)    , contiguous    :: sample1(:)
         integer(IK)         , intent(in)    , contiguous    :: weight1(:)
         integer(IK)         , intent(in)                    :: weisum1
-        real(RKC)           , intent(out)                   :: disKolm
+        real(RKG)           , intent(out)                   :: disKolm
         type(ascending_type), intent(in)                    :: order
-        procedure(real(RKC))                                :: getCDF
+        procedure(real(RKG))                                :: getCDF
     end subroutine
 #endif
 
@@ -3665,13 +3665,13 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setDisKolmSCA_WID_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)           , intent(in)    , contiguous    :: sample1(:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)           , intent(in)    , contiguous    :: sample1(:)
         integer(IK)         , intent(in)    , contiguous    :: weight1(:)
         integer(IK)         , intent(in)                    :: weisum1
-        real(RKC)           , intent(out)                   :: disKolm
+        real(RKG)           , intent(out)                   :: disKolm
         type(ascending_type), intent(in)                    :: order
-        procedure(real(RKC))                                :: getCDF
+        procedure(real(RKG))                                :: getCDF
     end subroutine
 #endif
 
@@ -3698,12 +3698,12 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setDisKolmSCD_WRD_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)           , intent(inout) , contiguous    :: sample1(:)
-        real(RKC)           , intent(inout) , contiguous    :: weight1(:)
-        real(RKC)           , intent(in)                    :: weisum1
-        real(RKC)           , intent(out)                   :: disKolm
-        procedure(real(RKC))                                :: getCDF
+        use pm_kind, only: RKG => RK5
+        real(RKG)           , intent(inout) , contiguous    :: sample1(:)
+        real(RKG)           , intent(inout) , contiguous    :: weight1(:)
+        real(RKG)           , intent(in)                    :: weisum1
+        real(RKG)           , intent(out)                   :: disKolm
+        procedure(real(RKG))                                :: getCDF
     end subroutine
 #endif
 
@@ -3712,12 +3712,12 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setDisKolmSCD_WRD_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)           , intent(inout) , contiguous    :: sample1(:)
-        real(RKC)           , intent(inout) , contiguous    :: weight1(:)
-        real(RKC)           , intent(in)                    :: weisum1
-        real(RKC)           , intent(out)                   :: disKolm
-        procedure(real(RKC))                                :: getCDF
+        use pm_kind, only: RKG => RK4
+        real(RKG)           , intent(inout) , contiguous    :: sample1(:)
+        real(RKG)           , intent(inout) , contiguous    :: weight1(:)
+        real(RKG)           , intent(in)                    :: weisum1
+        real(RKG)           , intent(out)                   :: disKolm
+        procedure(real(RKG))                                :: getCDF
     end subroutine
 #endif
 
@@ -3726,12 +3726,12 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setDisKolmSCD_WRD_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)           , intent(inout) , contiguous    :: sample1(:)
-        real(RKC)           , intent(inout) , contiguous    :: weight1(:)
-        real(RKC)           , intent(in)                    :: weisum1
-        real(RKC)           , intent(out)                   :: disKolm
-        procedure(real(RKC))                                :: getCDF
+        use pm_kind, only: RKG => RK3
+        real(RKG)           , intent(inout) , contiguous    :: sample1(:)
+        real(RKG)           , intent(inout) , contiguous    :: weight1(:)
+        real(RKG)           , intent(in)                    :: weisum1
+        real(RKG)           , intent(out)                   :: disKolm
+        procedure(real(RKG))                                :: getCDF
     end subroutine
 #endif
 
@@ -3740,12 +3740,12 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setDisKolmSCD_WRD_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)           , intent(inout) , contiguous    :: sample1(:)
-        real(RKC)           , intent(inout) , contiguous    :: weight1(:)
-        real(RKC)           , intent(in)                    :: weisum1
-        real(RKC)           , intent(out)                   :: disKolm
-        procedure(real(RKC))                                :: getCDF
+        use pm_kind, only: RKG => RK2
+        real(RKG)           , intent(inout) , contiguous    :: sample1(:)
+        real(RKG)           , intent(inout) , contiguous    :: weight1(:)
+        real(RKG)           , intent(in)                    :: weisum1
+        real(RKG)           , intent(out)                   :: disKolm
+        procedure(real(RKG))                                :: getCDF
     end subroutine
 #endif
 
@@ -3754,12 +3754,12 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setDisKolmSCD_WRD_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)           , intent(inout) , contiguous    :: sample1(:)
-        real(RKC)           , intent(inout) , contiguous    :: weight1(:)
-        real(RKC)           , intent(in)                    :: weisum1
-        real(RKC)           , intent(out)                   :: disKolm
-        procedure(real(RKC))                                :: getCDF
+        use pm_kind, only: RKG => RK1
+        real(RKG)           , intent(inout) , contiguous    :: sample1(:)
+        real(RKG)           , intent(inout) , contiguous    :: weight1(:)
+        real(RKG)           , intent(in)                    :: weisum1
+        real(RKG)           , intent(out)                   :: disKolm
+        procedure(real(RKG))                                :: getCDF
     end subroutine
 #endif
 
@@ -3776,13 +3776,13 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setDisKolmSCA_WRD_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)           , intent(in)    , contiguous    :: sample1(:)
-        real(RKC)           , intent(in)    , contiguous    :: weight1(:)
-        real(RKC)           , intent(in)                    :: weisum1
-        real(RKC)           , intent(out)                   :: disKolm
+        use pm_kind, only: RKG => RK5
+        real(RKG)           , intent(in)    , contiguous    :: sample1(:)
+        real(RKG)           , intent(in)    , contiguous    :: weight1(:)
+        real(RKG)           , intent(in)                    :: weisum1
+        real(RKG)           , intent(out)                   :: disKolm
         type(ascending_type), intent(in)                    :: order
-        procedure(real(RKC))                                :: getCDF
+        procedure(real(RKG))                                :: getCDF
     end subroutine
 #endif
 
@@ -3791,13 +3791,13 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setDisKolmSCA_WRD_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)           , intent(in)    , contiguous    :: sample1(:)
-        real(RKC)           , intent(in)    , contiguous    :: weight1(:)
-        real(RKC)           , intent(in)                    :: weisum1
-        real(RKC)           , intent(out)                   :: disKolm
+        use pm_kind, only: RKG => RK4
+        real(RKG)           , intent(in)    , contiguous    :: sample1(:)
+        real(RKG)           , intent(in)    , contiguous    :: weight1(:)
+        real(RKG)           , intent(in)                    :: weisum1
+        real(RKG)           , intent(out)                   :: disKolm
         type(ascending_type), intent(in)                    :: order
-        procedure(real(RKC))                                :: getCDF
+        procedure(real(RKG))                                :: getCDF
     end subroutine
 #endif
 
@@ -3806,13 +3806,13 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setDisKolmSCA_WRD_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)           , intent(in)    , contiguous    :: sample1(:)
-        real(RKC)           , intent(in)    , contiguous    :: weight1(:)
-        real(RKC)           , intent(in)                    :: weisum1
-        real(RKC)           , intent(out)                   :: disKolm
+        use pm_kind, only: RKG => RK3
+        real(RKG)           , intent(in)    , contiguous    :: sample1(:)
+        real(RKG)           , intent(in)    , contiguous    :: weight1(:)
+        real(RKG)           , intent(in)                    :: weisum1
+        real(RKG)           , intent(out)                   :: disKolm
         type(ascending_type), intent(in)                    :: order
-        procedure(real(RKC))                                :: getCDF
+        procedure(real(RKG))                                :: getCDF
     end subroutine
 #endif
 
@@ -3821,13 +3821,13 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setDisKolmSCA_WRD_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)           , intent(in)    , contiguous    :: sample1(:)
-        real(RKC)           , intent(in)    , contiguous    :: weight1(:)
-        real(RKC)           , intent(in)                    :: weisum1
-        real(RKC)           , intent(out)                   :: disKolm
+        use pm_kind, only: RKG => RK2
+        real(RKG)           , intent(in)    , contiguous    :: sample1(:)
+        real(RKG)           , intent(in)    , contiguous    :: weight1(:)
+        real(RKG)           , intent(in)                    :: weisum1
+        real(RKG)           , intent(out)                   :: disKolm
         type(ascending_type), intent(in)                    :: order
-        procedure(real(RKC))                                :: getCDF
+        procedure(real(RKG))                                :: getCDF
     end subroutine
 #endif
 
@@ -3836,13 +3836,13 @@ module pm_distanceKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setDisKolmSCA_WRD_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)           , intent(in)    , contiguous    :: sample1(:)
-        real(RKC)           , intent(in)    , contiguous    :: weight1(:)
-        real(RKC)           , intent(in)                    :: weisum1
-        real(RKC)           , intent(out)                   :: disKolm
+        use pm_kind, only: RKG => RK1
+        real(RKG)           , intent(in)    , contiguous    :: sample1(:)
+        real(RKG)           , intent(in)    , contiguous    :: weight1(:)
+        real(RKG)           , intent(in)                    :: weisum1
+        real(RKG)           , intent(out)                   :: disKolm
         type(ascending_type), intent(in)                    :: order
-        procedure(real(RKC))                                :: getCDF
+        procedure(real(RKG))                                :: getCDF
     end subroutine
 #endif
 

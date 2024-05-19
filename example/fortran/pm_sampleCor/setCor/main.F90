@@ -32,10 +32,10 @@ program example
     call disp%skip()
 
     block
-        use pm_kind, only: TKC => RKS ! All processor kinds are supported.
-        real(TKC), allocatable :: cov(:,:), cor(:,:), std(:)
+        use pm_kind, only: TKG => RKS ! All processor kinds are supported.
+        real(TKG), allocatable :: cov(:,:), cor(:,:), std(:)
         integer(IK) :: ndim
-        format = getFormat(mold = [0._TKC], ed = SK_"es", signed = .true._LK)
+        format = getFormat(mold = [0._TKG], ed = SK_"es", signed = .true._LK)
         do itry = 1, ntry
 
             call disp%skip()
@@ -47,8 +47,8 @@ program example
                             std = getUnifRand(1, ndim, ndim)
             call disp%show("std")
             call disp%show( std , format = format )
-            call disp%show("cov = getCovRand(1._TKC, std)")
-                            cov = getCovRand(1._TKC, std)
+            call disp%show("cov = getCovRand(1._TKG, std)")
+                            cov = getCovRand(1._TKG, std)
             call disp%show("cov")
             call disp%show( cov , format = format )
             call disp%skip()
@@ -183,10 +183,10 @@ program example
     call disp%skip()
 
     block
-        use pm_kind, only: TKC => RKS ! All other real types are also supported.
+        use pm_kind, only: TKG => RKS ! All other real types are also supported.
         integer(IK) :: ndim, nsam, dim
-        real(TKC), allocatable :: sample(:,:), samShifted(:,:), cor(:,:), mean(:)
-        format = getFormat(mold = [0._TKC], ed = SK_"es", signed = .true._LK)
+        real(TKG), allocatable :: sample(:,:), samShifted(:,:), cor(:,:), mean(:)
+        format = getFormat(mold = [0._TKG], ed = SK_"es", signed = .true._LK)
         call disp%show("ndim = 2; nsam = 10; dim = 2")
                         ndim = 2; nsam = 10; dim = 2
         call disp%show("sample = reshape(getUnifRand(1, 20, ndim * nsam), shape = [ndim, nsam], order = [2, 1])")
@@ -280,15 +280,15 @@ program example
 
     block
         use pm_arrayVerbose, only: getVerbose
-        use pm_kind, only: TKC => RKS ! All other real types are also supported.
+        use pm_kind, only: TKG => RKS ! All other real types are also supported.
         integer(IK), allocatable :: iweight(:)
-        real(TKC), allocatable :: rweight(:)
-        real(TKC) :: rweisum
+        real(TKG), allocatable :: rweight(:)
+        real(TKG) :: rweisum
         integer(IK) :: dim
         integer(IK) :: iweisum
         integer(IK) :: ndim, nsam
-        real(TKC), allocatable :: sample(:,:), samShifted(:,:), cor(:,:), mean(:)
-        format = getFormat(mold = [0._TKC], ed = SK_"es", signed = .true._LK)
+        real(TKG), allocatable :: sample(:,:), samShifted(:,:), cor(:,:), mean(:)
+        format = getFormat(mold = [0._TKG], ed = SK_"es", signed = .true._LK)
         call disp%show("ndim = 2; nsam = 10; dim = 2")
                         ndim = 2; nsam = 10; dim = 2
         call disp%show("sample = reshape(getUnifRand(1, 20, ndim * nsam), shape = [ndim, nsam], order = [2, 1])")

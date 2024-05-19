@@ -213,10 +213,10 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanPWLN_ND1_QD0_WNO_RK5
 #endif
-        use pm_kind, only: TKC => RK5
-        real(TKC)                                           :: quan
-        real(TKC)           , intent(in)                    :: prob
-        real(TKC)           , intent(in)    , contiguous    :: sample(:)
+        use pm_kind, only: TKG => RK5
+        real(TKG)                                           :: quan
+        real(TKG)           , intent(in)                    :: prob
+        real(TKG)           , intent(in)    , contiguous    :: sample(:)
         type(piwilin_type)  , intent(in)                    :: method
     end function
 #endif
@@ -226,10 +226,10 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanPWLN_ND1_QD0_WNO_RK4
 #endif
-        use pm_kind, only: TKC => RK4
-        real(TKC)                                           :: quan
-        real(TKC)           , intent(in)                    :: prob
-        real(TKC)           , intent(in)    , contiguous    :: sample(:)
+        use pm_kind, only: TKG => RK4
+        real(TKG)                                           :: quan
+        real(TKG)           , intent(in)                    :: prob
+        real(TKG)           , intent(in)    , contiguous    :: sample(:)
         type(piwilin_type)  , intent(in)                    :: method
     end function
 #endif
@@ -239,10 +239,10 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanPWLN_ND1_QD0_WNO_RK3
 #endif
-        use pm_kind, only: TKC => RK3
-        real(TKC)                                           :: quan
-        real(TKC)           , intent(in)                    :: prob
-        real(TKC)           , intent(in)    , contiguous    :: sample(:)
+        use pm_kind, only: TKG => RK3
+        real(TKG)                                           :: quan
+        real(TKG)           , intent(in)                    :: prob
+        real(TKG)           , intent(in)    , contiguous    :: sample(:)
         type(piwilin_type)  , intent(in)                    :: method
     end function
 #endif
@@ -252,10 +252,10 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanPWLN_ND1_QD0_WNO_RK2
 #endif
-        use pm_kind, only: TKC => RK2
-        real(TKC)                                           :: quan
-        real(TKC)           , intent(in)                    :: prob
-        real(TKC)           , intent(in)    , contiguous    :: sample(:)
+        use pm_kind, only: TKG => RK2
+        real(TKG)                                           :: quan
+        real(TKG)           , intent(in)                    :: prob
+        real(TKG)           , intent(in)    , contiguous    :: sample(:)
         type(piwilin_type)  , intent(in)                    :: method
     end function
 #endif
@@ -265,10 +265,10 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanPWLN_ND1_QD0_WNO_RK1
 #endif
-        use pm_kind, only: TKC => RK1
-        real(TKC)                                           :: quan
-        real(TKC)           , intent(in)                    :: prob
-        real(TKC)           , intent(in)    , contiguous    :: sample(:)
+        use pm_kind, only: TKG => RK1
+        real(TKG)                                           :: quan
+        real(TKG)           , intent(in)                    :: prob
+        real(TKG)           , intent(in)    , contiguous    :: sample(:)
         type(piwilin_type)  , intent(in)                    :: method
     end function
 #endif
@@ -280,10 +280,10 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanPWLN_ND1_QD1_WNO_RK5
 #endif
-        use pm_kind, only: TKC => RK5
-        real(TKC)           , intent(in)    , contiguous    :: sample(:)
-        real(TKC)           , intent(in)    , contiguous    :: prob(:)
-        real(TKC)                                           :: quan(size(prob, 1, IK))
+        use pm_kind, only: TKG => RK5
+        real(TKG)           , intent(in)    , contiguous    :: sample(:)
+        real(TKG)           , intent(in)    , contiguous    :: prob(:)
+        real(TKG)                                           :: quan(size(prob, 1, IK))
         type(piwilin_type)  , intent(in)                    :: method
     end function
 #endif
@@ -293,10 +293,10 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanPWLN_ND1_QD1_WNO_RK4
 #endif
-        use pm_kind, only: TKC => RK4
-        real(TKC)           , intent(in)    , contiguous    :: sample(:)
-        real(TKC)           , intent(in)    , contiguous    :: prob(:)
-        real(TKC)                                           :: quan(size(prob, 1, IK))
+        use pm_kind, only: TKG => RK4
+        real(TKG)           , intent(in)    , contiguous    :: sample(:)
+        real(TKG)           , intent(in)    , contiguous    :: prob(:)
+        real(TKG)                                           :: quan(size(prob, 1, IK))
         type(piwilin_type)  , intent(in)                    :: method
     end function
 #endif
@@ -306,10 +306,10 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanPWLN_ND1_QD1_WNO_RK3
 #endif
-        use pm_kind, only: TKC => RK3
-        real(TKC)           , intent(in)    , contiguous    :: sample(:)
-        real(TKC)           , intent(in)    , contiguous    :: prob(:)
-        real(TKC)                                           :: quan(size(prob, 1, IK))
+        use pm_kind, only: TKG => RK3
+        real(TKG)           , intent(in)    , contiguous    :: sample(:)
+        real(TKG)           , intent(in)    , contiguous    :: prob(:)
+        real(TKG)                                           :: quan(size(prob, 1, IK))
         type(piwilin_type)  , intent(in)                    :: method
     end function
 #endif
@@ -319,10 +319,10 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanPWLN_ND1_QD1_WNO_RK2
 #endif
-        use pm_kind, only: TKC => RK2
-        real(TKC)           , intent(in)    , contiguous    :: sample(:)
-        real(TKC)           , intent(in)    , contiguous    :: prob(:)
-        real(TKC)                                           :: quan(size(prob, 1, IK))
+        use pm_kind, only: TKG => RK2
+        real(TKG)           , intent(in)    , contiguous    :: sample(:)
+        real(TKG)           , intent(in)    , contiguous    :: prob(:)
+        real(TKG)                                           :: quan(size(prob, 1, IK))
         type(piwilin_type)  , intent(in)                    :: method
     end function
 #endif
@@ -332,10 +332,10 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanPWLN_ND1_QD1_WNO_RK1
 #endif
-        use pm_kind, only: TKC => RK1
-        real(TKC)           , intent(in)    , contiguous    :: sample(:)
-        real(TKC)           , intent(in)    , contiguous    :: prob(:)
-        real(TKC)                                           :: quan(size(prob, 1, IK))
+        use pm_kind, only: TKG => RK1
+        real(TKG)           , intent(in)    , contiguous    :: sample(:)
+        real(TKG)           , intent(in)    , contiguous    :: prob(:)
+        real(TKG)                                           :: quan(size(prob, 1, IK))
         type(piwilin_type)  , intent(in)                    :: method
     end function
 #endif
@@ -355,10 +355,10 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanMEAN_ND1_QD0_WNO_RK5
 #endif
-        use pm_kind, only: TKC => RK5
-        real(TKC)                                           :: quan
-        real(TKC)           , intent(in)                    :: prob
-        real(TKC)           , intent(in)    , contiguous    :: sample(:)
+        use pm_kind, only: TKG => RK5
+        real(TKG)                                           :: quan
+        real(TKG)           , intent(in)                    :: prob
+        real(TKG)           , intent(in)    , contiguous    :: sample(:)
         type(neimean_type)  , intent(in)                    :: method
     end function
 #endif
@@ -368,10 +368,10 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanMEAN_ND1_QD0_WNO_RK4
 #endif
-        use pm_kind, only: TKC => RK4
-        real(TKC)                                           :: quan
-        real(TKC)           , intent(in)                    :: prob
-        real(TKC)           , intent(in)    , contiguous    :: sample(:)
+        use pm_kind, only: TKG => RK4
+        real(TKG)                                           :: quan
+        real(TKG)           , intent(in)                    :: prob
+        real(TKG)           , intent(in)    , contiguous    :: sample(:)
         type(neimean_type)  , intent(in)                    :: method
     end function
 #endif
@@ -381,10 +381,10 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanMEAN_ND1_QD0_WNO_RK3
 #endif
-        use pm_kind, only: TKC => RK3
-        real(TKC)                                           :: quan
-        real(TKC)           , intent(in)                    :: prob
-        real(TKC)           , intent(in)    , contiguous    :: sample(:)
+        use pm_kind, only: TKG => RK3
+        real(TKG)                                           :: quan
+        real(TKG)           , intent(in)                    :: prob
+        real(TKG)           , intent(in)    , contiguous    :: sample(:)
         type(neimean_type)  , intent(in)                    :: method
     end function
 #endif
@@ -394,10 +394,10 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanMEAN_ND1_QD0_WNO_RK2
 #endif
-        use pm_kind, only: TKC => RK2
-        real(TKC)                                           :: quan
-        real(TKC)           , intent(in)                    :: prob
-        real(TKC)           , intent(in)    , contiguous    :: sample(:)
+        use pm_kind, only: TKG => RK2
+        real(TKG)                                           :: quan
+        real(TKG)           , intent(in)                    :: prob
+        real(TKG)           , intent(in)    , contiguous    :: sample(:)
         type(neimean_type)  , intent(in)                    :: method
     end function
 #endif
@@ -407,10 +407,10 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanMEAN_ND1_QD0_WNO_RK1
 #endif
-        use pm_kind, only: TKC => RK1
-        real(TKC)                                           :: quan
-        real(TKC)           , intent(in)                    :: prob
-        real(TKC)           , intent(in)    , contiguous    :: sample(:)
+        use pm_kind, only: TKG => RK1
+        real(TKG)                                           :: quan
+        real(TKG)           , intent(in)                    :: prob
+        real(TKG)           , intent(in)    , contiguous    :: sample(:)
         type(neimean_type)  , intent(in)                    :: method
     end function
 #endif
@@ -422,10 +422,10 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanMEAN_ND1_QD1_WNO_RK5
 #endif
-        use pm_kind, only: TKC => RK5
-        real(TKC)           , intent(in)    , contiguous    :: sample(:)
-        real(TKC)           , intent(in)    , contiguous    :: prob(:)
-        real(TKC)                                           :: quan(size(prob, 1, IK))
+        use pm_kind, only: TKG => RK5
+        real(TKG)           , intent(in)    , contiguous    :: sample(:)
+        real(TKG)           , intent(in)    , contiguous    :: prob(:)
+        real(TKG)                                           :: quan(size(prob, 1, IK))
         type(neimean_type)  , intent(in)                    :: method
     end function
 #endif
@@ -435,10 +435,10 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanMEAN_ND1_QD1_WNO_RK4
 #endif
-        use pm_kind, only: TKC => RK4
-        real(TKC)           , intent(in)    , contiguous    :: sample(:)
-        real(TKC)           , intent(in)    , contiguous    :: prob(:)
-        real(TKC)                                           :: quan(size(prob, 1, IK))
+        use pm_kind, only: TKG => RK4
+        real(TKG)           , intent(in)    , contiguous    :: sample(:)
+        real(TKG)           , intent(in)    , contiguous    :: prob(:)
+        real(TKG)                                           :: quan(size(prob, 1, IK))
         type(neimean_type)  , intent(in)                    :: method
     end function
 #endif
@@ -448,10 +448,10 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanMEAN_ND1_QD1_WNO_RK3
 #endif
-        use pm_kind, only: TKC => RK3
-        real(TKC)           , intent(in)    , contiguous    :: sample(:)
-        real(TKC)           , intent(in)    , contiguous    :: prob(:)
-        real(TKC)                                           :: quan(size(prob, 1, IK))
+        use pm_kind, only: TKG => RK3
+        real(TKG)           , intent(in)    , contiguous    :: sample(:)
+        real(TKG)           , intent(in)    , contiguous    :: prob(:)
+        real(TKG)                                           :: quan(size(prob, 1, IK))
         type(neimean_type)  , intent(in)                    :: method
     end function
 #endif
@@ -461,10 +461,10 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanMEAN_ND1_QD1_WNO_RK2
 #endif
-        use pm_kind, only: TKC => RK2
-        real(TKC)           , intent(in)    , contiguous    :: sample(:)
-        real(TKC)           , intent(in)    , contiguous    :: prob(:)
-        real(TKC)                                           :: quan(size(prob, 1, IK))
+        use pm_kind, only: TKG => RK2
+        real(TKG)           , intent(in)    , contiguous    :: sample(:)
+        real(TKG)           , intent(in)    , contiguous    :: prob(:)
+        real(TKG)                                           :: quan(size(prob, 1, IK))
         type(neimean_type)  , intent(in)                    :: method
     end function
 #endif
@@ -474,10 +474,10 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanMEAN_ND1_QD1_WNO_RK1
 #endif
-        use pm_kind, only: TKC => RK1
-        real(TKC)           , intent(in)    , contiguous    :: sample(:)
-        real(TKC)           , intent(in)    , contiguous    :: prob(:)
-        real(TKC)                                           :: quan(size(prob, 1, IK))
+        use pm_kind, only: TKG => RK1
+        real(TKG)           , intent(in)    , contiguous    :: sample(:)
+        real(TKG)           , intent(in)    , contiguous    :: prob(:)
+        real(TKG)                                           :: quan(size(prob, 1, IK))
         type(neimean_type)  , intent(in)                    :: method
     end function
 #endif
@@ -497,10 +497,10 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanNEAR_ND1_QD0_WNO_RK5
 #endif
-        use pm_kind, only: TKC => RK5
-        real(TKC)                                           :: quan
-        real(TKC)           , intent(in)                    :: prob
-        real(TKC)           , intent(in)    , contiguous    :: sample(:)
+        use pm_kind, only: TKG => RK5
+        real(TKG)                                           :: quan
+        real(TKG)           , intent(in)                    :: prob
+        real(TKG)           , intent(in)    , contiguous    :: sample(:)
         type(neinear_type)  , intent(in)                    :: method
     end function
 #endif
@@ -510,10 +510,10 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanNEAR_ND1_QD0_WNO_RK4
 #endif
-        use pm_kind, only: TKC => RK4
-        real(TKC)                                           :: quan
-        real(TKC)           , intent(in)                    :: prob
-        real(TKC)           , intent(in)    , contiguous    :: sample(:)
+        use pm_kind, only: TKG => RK4
+        real(TKG)                                           :: quan
+        real(TKG)           , intent(in)                    :: prob
+        real(TKG)           , intent(in)    , contiguous    :: sample(:)
         type(neinear_type)  , intent(in)                    :: method
     end function
 #endif
@@ -523,10 +523,10 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanNEAR_ND1_QD0_WNO_RK3
 #endif
-        use pm_kind, only: TKC => RK3
-        real(TKC)                                           :: quan
-        real(TKC)           , intent(in)                    :: prob
-        real(TKC)           , intent(in)    , contiguous    :: sample(:)
+        use pm_kind, only: TKG => RK3
+        real(TKG)                                           :: quan
+        real(TKG)           , intent(in)                    :: prob
+        real(TKG)           , intent(in)    , contiguous    :: sample(:)
         type(neinear_type)  , intent(in)                    :: method
     end function
 #endif
@@ -536,10 +536,10 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanNEAR_ND1_QD0_WNO_RK2
 #endif
-        use pm_kind, only: TKC => RK2
-        real(TKC)                                           :: quan
-        real(TKC)           , intent(in)                    :: prob
-        real(TKC)           , intent(in)    , contiguous    :: sample(:)
+        use pm_kind, only: TKG => RK2
+        real(TKG)                                           :: quan
+        real(TKG)           , intent(in)                    :: prob
+        real(TKG)           , intent(in)    , contiguous    :: sample(:)
         type(neinear_type)  , intent(in)                    :: method
     end function
 #endif
@@ -549,10 +549,10 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanNEAR_ND1_QD0_WNO_RK1
 #endif
-        use pm_kind, only: TKC => RK1
-        real(TKC)                                           :: quan
-        real(TKC)           , intent(in)                    :: prob
-        real(TKC)           , intent(in)    , contiguous    :: sample(:)
+        use pm_kind, only: TKG => RK1
+        real(TKG)                                           :: quan
+        real(TKG)           , intent(in)                    :: prob
+        real(TKG)           , intent(in)    , contiguous    :: sample(:)
         type(neinear_type)  , intent(in)                    :: method
     end function
 #endif
@@ -564,10 +564,10 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanNEAR_ND1_QD1_WNO_RK5
 #endif
-        use pm_kind, only: TKC => RK5
-        real(TKC)           , intent(in)    , contiguous    :: sample(:)
-        real(TKC)           , intent(in)    , contiguous    :: prob(:)
-        real(TKC)                                           :: quan(size(prob, 1, IK))
+        use pm_kind, only: TKG => RK5
+        real(TKG)           , intent(in)    , contiguous    :: sample(:)
+        real(TKG)           , intent(in)    , contiguous    :: prob(:)
+        real(TKG)                                           :: quan(size(prob, 1, IK))
         type(neinear_type)  , intent(in)                    :: method
     end function
 #endif
@@ -577,10 +577,10 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanNEAR_ND1_QD1_WNO_RK4
 #endif
-        use pm_kind, only: TKC => RK4
-        real(TKC)           , intent(in)    , contiguous    :: sample(:)
-        real(TKC)           , intent(in)    , contiguous    :: prob(:)
-        real(TKC)                                           :: quan(size(prob, 1, IK))
+        use pm_kind, only: TKG => RK4
+        real(TKG)           , intent(in)    , contiguous    :: sample(:)
+        real(TKG)           , intent(in)    , contiguous    :: prob(:)
+        real(TKG)                                           :: quan(size(prob, 1, IK))
         type(neinear_type)  , intent(in)                    :: method
     end function
 #endif
@@ -590,10 +590,10 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanNEAR_ND1_QD1_WNO_RK3
 #endif
-        use pm_kind, only: TKC => RK3
-        real(TKC)           , intent(in)    , contiguous    :: sample(:)
-        real(TKC)           , intent(in)    , contiguous    :: prob(:)
-        real(TKC)                                           :: quan(size(prob, 1, IK))
+        use pm_kind, only: TKG => RK3
+        real(TKG)           , intent(in)    , contiguous    :: sample(:)
+        real(TKG)           , intent(in)    , contiguous    :: prob(:)
+        real(TKG)                                           :: quan(size(prob, 1, IK))
         type(neinear_type)  , intent(in)                    :: method
     end function
 #endif
@@ -603,10 +603,10 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanNEAR_ND1_QD1_WNO_RK2
 #endif
-        use pm_kind, only: TKC => RK2
-        real(TKC)           , intent(in)    , contiguous    :: sample(:)
-        real(TKC)           , intent(in)    , contiguous    :: prob(:)
-        real(TKC)                                           :: quan(size(prob, 1, IK))
+        use pm_kind, only: TKG => RK2
+        real(TKG)           , intent(in)    , contiguous    :: sample(:)
+        real(TKG)           , intent(in)    , contiguous    :: prob(:)
+        real(TKG)                                           :: quan(size(prob, 1, IK))
         type(neinear_type)  , intent(in)                    :: method
     end function
 #endif
@@ -616,10 +616,10 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanNEAR_ND1_QD1_WNO_RK1
 #endif
-        use pm_kind, only: TKC => RK1
-        real(TKC)           , intent(in)    , contiguous    :: sample(:)
-        real(TKC)           , intent(in)    , contiguous    :: prob(:)
-        real(TKC)                                           :: quan(size(prob, 1, IK))
+        use pm_kind, only: TKG => RK1
+        real(TKG)           , intent(in)    , contiguous    :: sample(:)
+        real(TKG)           , intent(in)    , contiguous    :: prob(:)
+        real(TKG)                                           :: quan(size(prob, 1, IK))
         type(neinear_type)  , intent(in)                    :: method
     end function
 #endif
@@ -639,10 +639,10 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanNEXT_ND1_QD0_WNO_RK5
 #endif
-        use pm_kind, only: TKC => RK5
-        real(TKC)                                           :: quan
-        real(TKC)           , intent(in)                    :: prob
-        real(TKC)           , intent(in)    , contiguous    :: sample(:)
+        use pm_kind, only: TKG => RK5
+        real(TKG)                                           :: quan
+        real(TKG)           , intent(in)                    :: prob
+        real(TKG)           , intent(in)    , contiguous    :: sample(:)
         type(neinext_type)  , intent(in)                    :: method
     end function
 #endif
@@ -652,10 +652,10 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanNEXT_ND1_QD0_WNO_RK4
 #endif
-        use pm_kind, only: TKC => RK4
-        real(TKC)                                           :: quan
-        real(TKC)           , intent(in)                    :: prob
-        real(TKC)           , intent(in)    , contiguous    :: sample(:)
+        use pm_kind, only: TKG => RK4
+        real(TKG)                                           :: quan
+        real(TKG)           , intent(in)                    :: prob
+        real(TKG)           , intent(in)    , contiguous    :: sample(:)
         type(neinext_type)  , intent(in)                    :: method
     end function
 #endif
@@ -665,10 +665,10 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanNEXT_ND1_QD0_WNO_RK3
 #endif
-        use pm_kind, only: TKC => RK3
-        real(TKC)                                           :: quan
-        real(TKC)           , intent(in)                    :: prob
-        real(TKC)           , intent(in)    , contiguous    :: sample(:)
+        use pm_kind, only: TKG => RK3
+        real(TKG)                                           :: quan
+        real(TKG)           , intent(in)                    :: prob
+        real(TKG)           , intent(in)    , contiguous    :: sample(:)
         type(neinext_type)  , intent(in)                    :: method
     end function
 #endif
@@ -678,10 +678,10 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanNEXT_ND1_QD0_WNO_RK2
 #endif
-        use pm_kind, only: TKC => RK2
-        real(TKC)           , intent(in)                    :: prob
-        real(TKC)                                           :: quan
-        real(TKC)           , intent(in)    , contiguous    :: sample(:)
+        use pm_kind, only: TKG => RK2
+        real(TKG)           , intent(in)                    :: prob
+        real(TKG)                                           :: quan
+        real(TKG)           , intent(in)    , contiguous    :: sample(:)
         type(neinext_type)  , intent(in)                    :: method
     end function
 #endif
@@ -691,10 +691,10 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanNEXT_ND1_QD0_WNO_RK1
 #endif
-        use pm_kind, only: TKC => RK1
-        real(TKC)                                           :: quan
-        real(TKC)           , intent(in)                    :: prob
-        real(TKC)           , intent(in)    , contiguous    :: sample(:)
+        use pm_kind, only: TKG => RK1
+        real(TKG)                                           :: quan
+        real(TKG)           , intent(in)                    :: prob
+        real(TKG)           , intent(in)    , contiguous    :: sample(:)
         type(neinext_type)  , intent(in)                    :: method
     end function
 #endif
@@ -706,10 +706,10 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanNEXT_ND1_QD1_WNO_RK5
 #endif
-        use pm_kind, only: TKC => RK5
-        real(TKC)           , intent(in)    , contiguous    :: sample(:)
-        real(TKC)           , intent(in)    , contiguous    :: prob(:)
-        real(TKC)                                           :: quan(size(prob, 1, IK))
+        use pm_kind, only: TKG => RK5
+        real(TKG)           , intent(in)    , contiguous    :: sample(:)
+        real(TKG)           , intent(in)    , contiguous    :: prob(:)
+        real(TKG)                                           :: quan(size(prob, 1, IK))
         type(neinext_type)  , intent(in)                    :: method
     end function
 #endif
@@ -719,10 +719,10 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanNEXT_ND1_QD1_WNO_RK4
 #endif
-        use pm_kind, only: TKC => RK4
-        real(TKC)           , intent(in)    , contiguous    :: sample(:)
-        real(TKC)           , intent(in)    , contiguous    :: prob(:)
-        real(TKC)                                           :: quan(size(prob, 1, IK))
+        use pm_kind, only: TKG => RK4
+        real(TKG)           , intent(in)    , contiguous    :: sample(:)
+        real(TKG)           , intent(in)    , contiguous    :: prob(:)
+        real(TKG)                                           :: quan(size(prob, 1, IK))
         type(neinext_type)  , intent(in)                    :: method
     end function
 #endif
@@ -732,10 +732,10 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanNEXT_ND1_QD1_WNO_RK3
 #endif
-        use pm_kind, only: TKC => RK3
-        real(TKC)           , intent(in)    , contiguous    :: sample(:)
-        real(TKC)           , intent(in)    , contiguous    :: prob(:)
-        real(TKC)                                           :: quan(size(prob, 1, IK))
+        use pm_kind, only: TKG => RK3
+        real(TKG)           , intent(in)    , contiguous    :: sample(:)
+        real(TKG)           , intent(in)    , contiguous    :: prob(:)
+        real(TKG)                                           :: quan(size(prob, 1, IK))
         type(neinext_type)  , intent(in)                    :: method
     end function
 #endif
@@ -745,10 +745,10 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanNEXT_ND1_QD1_WNO_RK2
 #endif
-        use pm_kind, only: TKC => RK2
-        real(TKC)           , intent(in)    , contiguous    :: sample(:)
-        real(TKC)           , intent(in)    , contiguous    :: prob(:)
-        real(TKC)                                           :: quan(size(prob, 1, IK))
+        use pm_kind, only: TKG => RK2
+        real(TKG)           , intent(in)    , contiguous    :: sample(:)
+        real(TKG)           , intent(in)    , contiguous    :: prob(:)
+        real(TKG)                                           :: quan(size(prob, 1, IK))
         type(neinext_type)  , intent(in)                    :: method
     end function
 #endif
@@ -758,10 +758,10 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanNEXT_ND1_QD1_WNO_RK1
 #endif
-        use pm_kind, only: TKC => RK1
-        real(TKC)           , intent(in)    , contiguous    :: sample(:)
-        real(TKC)           , intent(in)    , contiguous    :: prob(:)
-        real(TKC)                                           :: quan(size(prob, 1, IK))
+        use pm_kind, only: TKG => RK1
+        real(TKG)           , intent(in)    , contiguous    :: sample(:)
+        real(TKG)           , intent(in)    , contiguous    :: prob(:)
+        real(TKG)                                           :: quan(size(prob, 1, IK))
         type(neinext_type)  , intent(in)                    :: method
     end function
 #endif
@@ -781,10 +781,10 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanPREV_ND1_QD0_WNO_RK5
 #endif
-        use pm_kind, only: TKC => RK5
-        real(TKC)                                           :: quan
-        real(TKC)           , intent(in)                    :: prob
-        real(TKC)           , intent(in)    , contiguous    :: sample(:)
+        use pm_kind, only: TKG => RK5
+        real(TKG)                                           :: quan
+        real(TKG)           , intent(in)                    :: prob
+        real(TKG)           , intent(in)    , contiguous    :: sample(:)
         type(neiprev_type)  , intent(in)                    :: method
     end function
 #endif
@@ -794,10 +794,10 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanPREV_ND1_QD0_WNO_RK4
 #endif
-        use pm_kind, only: TKC => RK4
-        real(TKC)                                           :: quan
-        real(TKC)           , intent(in)                    :: prob
-        real(TKC)           , intent(in)    , contiguous    :: sample(:)
+        use pm_kind, only: TKG => RK4
+        real(TKG)                                           :: quan
+        real(TKG)           , intent(in)                    :: prob
+        real(TKG)           , intent(in)    , contiguous    :: sample(:)
         type(neiprev_type)  , intent(in)                    :: method
     end function
 #endif
@@ -807,10 +807,10 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanPREV_ND1_QD0_WNO_RK3
 #endif
-        use pm_kind, only: TKC => RK3
-        real(TKC)                                           :: quan
-        real(TKC)           , intent(in)                    :: prob
-        real(TKC)           , intent(in)    , contiguous    :: sample(:)
+        use pm_kind, only: TKG => RK3
+        real(TKG)                                           :: quan
+        real(TKG)           , intent(in)                    :: prob
+        real(TKG)           , intent(in)    , contiguous    :: sample(:)
         type(neiprev_type)  , intent(in)                    :: method
     end function
 #endif
@@ -820,10 +820,10 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanPREV_ND1_QD0_WNO_RK2
 #endif
-        use pm_kind, only: TKC => RK2
-        real(TKC)                                           :: quan
-        real(TKC)           , intent(in)                    :: prob
-        real(TKC)           , intent(in)    , contiguous    :: sample(:)
+        use pm_kind, only: TKG => RK2
+        real(TKG)                                           :: quan
+        real(TKG)           , intent(in)                    :: prob
+        real(TKG)           , intent(in)    , contiguous    :: sample(:)
         type(neiprev_type)  , intent(in)                    :: method
     end function
 #endif
@@ -833,10 +833,10 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanPREV_ND1_QD0_WNO_RK1
 #endif
-        use pm_kind, only: TKC => RK1
-        real(TKC)                                           :: quan
-        real(TKC)           , intent(in)                    :: prob
-        real(TKC)           , intent(in)    , contiguous    :: sample(:)
+        use pm_kind, only: TKG => RK1
+        real(TKG)                                           :: quan
+        real(TKG)           , intent(in)                    :: prob
+        real(TKG)           , intent(in)    , contiguous    :: sample(:)
         type(neiprev_type)  , intent(in)                    :: method
     end function
 #endif
@@ -848,10 +848,10 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanPREV_ND1_QD1_WNO_RK5
 #endif
-        use pm_kind, only: TKC => RK5
-        real(TKC)           , intent(in)    , contiguous    :: sample(:)
-        real(TKC)           , intent(in)    , contiguous    :: prob(:)
-        real(TKC)                                           :: quan(size(prob, 1, IK))
+        use pm_kind, only: TKG => RK5
+        real(TKG)           , intent(in)    , contiguous    :: sample(:)
+        real(TKG)           , intent(in)    , contiguous    :: prob(:)
+        real(TKG)                                           :: quan(size(prob, 1, IK))
         type(neiprev_type)  , intent(in)                    :: method
     end function
 #endif
@@ -861,10 +861,10 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanPREV_ND1_QD1_WNO_RK4
 #endif
-        use pm_kind, only: TKC => RK4
-        real(TKC)           , intent(in)    , contiguous    :: sample(:)
-        real(TKC)           , intent(in)    , contiguous    :: prob(:)
-        real(TKC)                                           :: quan(size(prob, 1, IK))
+        use pm_kind, only: TKG => RK4
+        real(TKG)           , intent(in)    , contiguous    :: sample(:)
+        real(TKG)           , intent(in)    , contiguous    :: prob(:)
+        real(TKG)                                           :: quan(size(prob, 1, IK))
         type(neiprev_type)  , intent(in)                    :: method
     end function
 #endif
@@ -874,10 +874,10 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanPREV_ND1_QD1_WNO_RK3
 #endif
-        use pm_kind, only: TKC => RK3
-        real(TKC)           , intent(in)    , contiguous    :: sample(:)
-        real(TKC)           , intent(in)    , contiguous    :: prob(:)
-        real(TKC)                                           :: quan(size(prob, 1, IK))
+        use pm_kind, only: TKG => RK3
+        real(TKG)           , intent(in)    , contiguous    :: sample(:)
+        real(TKG)           , intent(in)    , contiguous    :: prob(:)
+        real(TKG)                                           :: quan(size(prob, 1, IK))
         type(neiprev_type)  , intent(in)                    :: method
     end function
 #endif
@@ -887,10 +887,10 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanPREV_ND1_QD1_WNO_RK2
 #endif
-        use pm_kind, only: TKC => RK2
-        real(TKC)           , intent(in)    , contiguous    :: sample(:)
-        real(TKC)           , intent(in)    , contiguous    :: prob(:)
-        real(TKC)                                           :: quan(size(prob, 1, IK))
+        use pm_kind, only: TKG => RK2
+        real(TKG)           , intent(in)    , contiguous    :: sample(:)
+        real(TKG)           , intent(in)    , contiguous    :: prob(:)
+        real(TKG)                                           :: quan(size(prob, 1, IK))
         type(neiprev_type)  , intent(in)                    :: method
     end function
 #endif
@@ -900,10 +900,10 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanPREV_ND1_QD1_WNO_RK1
 #endif
-        use pm_kind, only: TKC => RK1
-        real(TKC)           , intent(in)    , contiguous    :: sample(:)
-        real(TKC)           , intent(in)    , contiguous    :: prob(:)
-        real(TKC)                                           :: quan(size(prob, 1, IK))
+        use pm_kind, only: TKG => RK1
+        real(TKG)           , intent(in)    , contiguous    :: sample(:)
+        real(TKG)           , intent(in)    , contiguous    :: prob(:)
+        real(TKG)                                           :: quan(size(prob, 1, IK))
         type(neiprev_type)  , intent(in)                    :: method
     end function
 #endif
@@ -925,10 +925,10 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanPWLN_ND1_QD0_WTI_RK5
 #endif
-        use pm_kind, only: TKC => RK5
-        real(TKC)                                           :: quan
-        real(TKC)           , intent(in)                    :: prob
-        real(TKC)           , intent(in)    , contiguous    :: sample(:)
+        use pm_kind, only: TKG => RK5
+        real(TKG)                                           :: quan
+        real(TKG)           , intent(in)                    :: prob
+        real(TKG)           , intent(in)    , contiguous    :: sample(:)
         integer(IK)         , intent(in)    , contiguous    :: weight(:)
         integer(IK)         , intent(in)    , optional      :: weisum
         type(piwilin_type)  , intent(in)                    :: method
@@ -940,10 +940,10 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanPWLN_ND1_QD0_WTI_RK4
 #endif
-        use pm_kind, only: TKC => RK4
-        real(TKC)                                           :: quan
-        real(TKC)           , intent(in)                    :: prob
-        real(TKC)           , intent(in)    , contiguous    :: sample(:)
+        use pm_kind, only: TKG => RK4
+        real(TKG)                                           :: quan
+        real(TKG)           , intent(in)                    :: prob
+        real(TKG)           , intent(in)    , contiguous    :: sample(:)
         integer(IK)         , intent(in)    , contiguous    :: weight(:)
         integer(IK)         , intent(in)    , optional      :: weisum
         type(piwilin_type)  , intent(in)                    :: method
@@ -955,10 +955,10 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanPWLN_ND1_QD0_WTI_RK3
 #endif
-        use pm_kind, only: TKC => RK3
-        real(TKC)                                           :: quan
-        real(TKC)           , intent(in)                    :: prob
-        real(TKC)           , intent(in)    , contiguous    :: sample(:)
+        use pm_kind, only: TKG => RK3
+        real(TKG)                                           :: quan
+        real(TKG)           , intent(in)                    :: prob
+        real(TKG)           , intent(in)    , contiguous    :: sample(:)
         integer(IK)         , intent(in)    , contiguous    :: weight(:)
         integer(IK)         , intent(in)    , optional      :: weisum
         type(piwilin_type)  , intent(in)                    :: method
@@ -970,10 +970,10 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanPWLN_ND1_QD0_WTI_RK2
 #endif
-        use pm_kind, only: TKC => RK2
-        real(TKC)                                           :: quan
-        real(TKC)           , intent(in)                    :: prob
-        real(TKC)           , intent(in)    , contiguous    :: sample(:)
+        use pm_kind, only: TKG => RK2
+        real(TKG)                                           :: quan
+        real(TKG)           , intent(in)                    :: prob
+        real(TKG)           , intent(in)    , contiguous    :: sample(:)
         integer(IK)         , intent(in)    , contiguous    :: weight(:)
         integer(IK)         , intent(in)    , optional      :: weisum
         type(piwilin_type)  , intent(in)                    :: method
@@ -985,10 +985,10 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanPWLN_ND1_QD0_WTI_RK1
 #endif
-        use pm_kind, only: TKC => RK1
-        real(TKC)                                           :: quan
-        real(TKC)           , intent(in)                    :: prob
-        real(TKC)           , intent(in)    , contiguous    :: sample(:)
+        use pm_kind, only: TKG => RK1
+        real(TKG)                                           :: quan
+        real(TKG)           , intent(in)                    :: prob
+        real(TKG)           , intent(in)    , contiguous    :: sample(:)
         integer(IK)         , intent(in)    , contiguous    :: weight(:)
         integer(IK)         , intent(in)    , optional      :: weisum
         type(piwilin_type)  , intent(in)                    :: method
@@ -1002,10 +1002,10 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanPWLN_ND1_QD1_WTI_RK5
 #endif
-        use pm_kind, only: TKC => RK5
-        real(TKC)           , intent(in)    , contiguous    :: sample(:)
-        real(TKC)           , intent(in)    , contiguous    :: prob(:)
-        real(TKC)                                           :: quan(size(prob, 1, IK))
+        use pm_kind, only: TKG => RK5
+        real(TKG)           , intent(in)    , contiguous    :: sample(:)
+        real(TKG)           , intent(in)    , contiguous    :: prob(:)
+        real(TKG)                                           :: quan(size(prob, 1, IK))
         integer(IK)         , intent(in)    , contiguous    :: weight(:)
         integer(IK)         , intent(in)    , optional      :: weisum
         type(piwilin_type)  , intent(in)                    :: method
@@ -1017,10 +1017,10 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanPWLN_ND1_QD1_WTI_RK4
 #endif
-        use pm_kind, only: TKC => RK4
-        real(TKC)           , intent(in)    , contiguous    :: sample(:)
-        real(TKC)           , intent(in)    , contiguous    :: prob(:)
-        real(TKC)                                           :: quan(size(prob, 1, IK))
+        use pm_kind, only: TKG => RK4
+        real(TKG)           , intent(in)    , contiguous    :: sample(:)
+        real(TKG)           , intent(in)    , contiguous    :: prob(:)
+        real(TKG)                                           :: quan(size(prob, 1, IK))
         integer(IK)         , intent(in)    , contiguous    :: weight(:)
         integer(IK)         , intent(in)    , optional      :: weisum
         type(piwilin_type)  , intent(in)                    :: method
@@ -1032,10 +1032,10 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanPWLN_ND1_QD1_WTI_RK3
 #endif
-        use pm_kind, only: TKC => RK3
-        real(TKC)           , intent(in)    , contiguous    :: sample(:)
-        real(TKC)           , intent(in)    , contiguous    :: prob(:)
-        real(TKC)                                           :: quan(size(prob, 1, IK))
+        use pm_kind, only: TKG => RK3
+        real(TKG)           , intent(in)    , contiguous    :: sample(:)
+        real(TKG)           , intent(in)    , contiguous    :: prob(:)
+        real(TKG)                                           :: quan(size(prob, 1, IK))
         integer(IK)         , intent(in)    , contiguous    :: weight(:)
         integer(IK)         , intent(in)    , optional      :: weisum
         type(piwilin_type)  , intent(in)                    :: method
@@ -1047,10 +1047,10 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanPWLN_ND1_QD1_WTI_RK2
 #endif
-        use pm_kind, only: TKC => RK2
-        real(TKC)           , intent(in)    , contiguous    :: sample(:)
-        real(TKC)           , intent(in)    , contiguous    :: prob(:)
-        real(TKC)                                           :: quan(size(prob, 1, IK))
+        use pm_kind, only: TKG => RK2
+        real(TKG)           , intent(in)    , contiguous    :: sample(:)
+        real(TKG)           , intent(in)    , contiguous    :: prob(:)
+        real(TKG)                                           :: quan(size(prob, 1, IK))
         integer(IK)         , intent(in)    , contiguous    :: weight(:)
         integer(IK)         , intent(in)    , optional      :: weisum
         type(piwilin_type)  , intent(in)                    :: method
@@ -1062,10 +1062,10 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanPWLN_ND1_QD1_WTI_RK1
 #endif
-        use pm_kind, only: TKC => RK1
-        real(TKC)           , intent(in)    , contiguous    :: sample(:)
-        real(TKC)           , intent(in)    , contiguous    :: prob(:)
-        real(TKC)                                           :: quan(size(prob, 1, IK))
+        use pm_kind, only: TKG => RK1
+        real(TKG)           , intent(in)    , contiguous    :: sample(:)
+        real(TKG)           , intent(in)    , contiguous    :: prob(:)
+        real(TKG)                                           :: quan(size(prob, 1, IK))
         integer(IK)         , intent(in)    , contiguous    :: weight(:)
         integer(IK)         , intent(in)    , optional      :: weisum
         type(piwilin_type)  , intent(in)                    :: method
@@ -1087,10 +1087,10 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanMEAN_ND1_QD0_WTI_RK5
 #endif
-        use pm_kind, only: TKC => RK5
-        real(TKC)                                           :: quan
-        real(TKC)           , intent(in)                    :: prob
-        real(TKC)           , intent(in)    , contiguous    :: sample(:)
+        use pm_kind, only: TKG => RK5
+        real(TKG)                                           :: quan
+        real(TKG)           , intent(in)                    :: prob
+        real(TKG)           , intent(in)    , contiguous    :: sample(:)
         integer(IK)         , intent(in)    , contiguous    :: weight(:)
         integer(IK)         , intent(in)    , optional      :: weisum
         type(neimean_type)  , intent(in)                    :: method
@@ -1102,10 +1102,10 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanMEAN_ND1_QD0_WTI_RK4
 #endif
-        use pm_kind, only: TKC => RK4
-        real(TKC)                                           :: quan
-        real(TKC)           , intent(in)                    :: prob
-        real(TKC)           , intent(in)    , contiguous    :: sample(:)
+        use pm_kind, only: TKG => RK4
+        real(TKG)                                           :: quan
+        real(TKG)           , intent(in)                    :: prob
+        real(TKG)           , intent(in)    , contiguous    :: sample(:)
         integer(IK)         , intent(in)    , contiguous    :: weight(:)
         integer(IK)         , intent(in)    , optional      :: weisum
         type(neimean_type)  , intent(in)                    :: method
@@ -1117,10 +1117,10 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanMEAN_ND1_QD0_WTI_RK3
 #endif
-        use pm_kind, only: TKC => RK3
-        real(TKC)                                           :: quan
-        real(TKC)           , intent(in)                    :: prob
-        real(TKC)           , intent(in)    , contiguous    :: sample(:)
+        use pm_kind, only: TKG => RK3
+        real(TKG)                                           :: quan
+        real(TKG)           , intent(in)                    :: prob
+        real(TKG)           , intent(in)    , contiguous    :: sample(:)
         integer(IK)         , intent(in)    , contiguous    :: weight(:)
         integer(IK)         , intent(in)    , optional      :: weisum
         type(neimean_type)  , intent(in)                    :: method
@@ -1132,10 +1132,10 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanMEAN_ND1_QD0_WTI_RK2
 #endif
-        use pm_kind, only: TKC => RK2
-        real(TKC)                                           :: quan
-        real(TKC)           , intent(in)                    :: prob
-        real(TKC)           , intent(in)    , contiguous    :: sample(:)
+        use pm_kind, only: TKG => RK2
+        real(TKG)                                           :: quan
+        real(TKG)           , intent(in)                    :: prob
+        real(TKG)           , intent(in)    , contiguous    :: sample(:)
         integer(IK)         , intent(in)    , contiguous    :: weight(:)
         integer(IK)         , intent(in)    , optional      :: weisum
         type(neimean_type)  , intent(in)                    :: method
@@ -1147,10 +1147,10 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanMEAN_ND1_QD0_WTI_RK1
 #endif
-        use pm_kind, only: TKC => RK1
-        real(TKC)                                           :: quan
-        real(TKC)           , intent(in)                    :: prob
-        real(TKC)           , intent(in)    , contiguous    :: sample(:)
+        use pm_kind, only: TKG => RK1
+        real(TKG)                                           :: quan
+        real(TKG)           , intent(in)                    :: prob
+        real(TKG)           , intent(in)    , contiguous    :: sample(:)
         integer(IK)         , intent(in)    , contiguous    :: weight(:)
         integer(IK)         , intent(in)    , optional      :: weisum
         type(neimean_type)  , intent(in)                    :: method
@@ -1164,10 +1164,10 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanMEAN_ND1_QD1_WTI_RK5
 #endif
-        use pm_kind, only: TKC => RK5
-        real(TKC)           , intent(in)    , contiguous    :: sample(:)
-        real(TKC)           , intent(in)    , contiguous    :: prob(:)
-        real(TKC)                                           :: quan(size(prob, 1, IK))
+        use pm_kind, only: TKG => RK5
+        real(TKG)           , intent(in)    , contiguous    :: sample(:)
+        real(TKG)           , intent(in)    , contiguous    :: prob(:)
+        real(TKG)                                           :: quan(size(prob, 1, IK))
         integer(IK)         , intent(in)    , contiguous    :: weight(:)
         integer(IK)         , intent(in)    , optional      :: weisum
         type(neimean_type)  , intent(in)                    :: method
@@ -1179,10 +1179,10 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanMEAN_ND1_QD1_WTI_RK4
 #endif
-        use pm_kind, only: TKC => RK4
-        real(TKC)           , intent(in)    , contiguous    :: sample(:)
-        real(TKC)           , intent(in)    , contiguous    :: prob(:)
-        real(TKC)                                           :: quan(size(prob, 1, IK))
+        use pm_kind, only: TKG => RK4
+        real(TKG)           , intent(in)    , contiguous    :: sample(:)
+        real(TKG)           , intent(in)    , contiguous    :: prob(:)
+        real(TKG)                                           :: quan(size(prob, 1, IK))
         integer(IK)         , intent(in)    , contiguous    :: weight(:)
         integer(IK)         , intent(in)    , optional      :: weisum
         type(neimean_type)  , intent(in)                    :: method
@@ -1194,10 +1194,10 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanMEAN_ND1_QD1_WTI_RK3
 #endif
-        use pm_kind, only: TKC => RK3
-        real(TKC)           , intent(in)    , contiguous    :: sample(:)
-        real(TKC)           , intent(in)    , contiguous    :: prob(:)
-        real(TKC)                                           :: quan(size(prob, 1, IK))
+        use pm_kind, only: TKG => RK3
+        real(TKG)           , intent(in)    , contiguous    :: sample(:)
+        real(TKG)           , intent(in)    , contiguous    :: prob(:)
+        real(TKG)                                           :: quan(size(prob, 1, IK))
         integer(IK)         , intent(in)    , contiguous    :: weight(:)
         integer(IK)         , intent(in)    , optional      :: weisum
         type(neimean_type)  , intent(in)                    :: method
@@ -1209,10 +1209,10 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanMEAN_ND1_QD1_WTI_RK2
 #endif
-        use pm_kind, only: TKC => RK2
-        real(TKC)           , intent(in)    , contiguous    :: sample(:)
-        real(TKC)           , intent(in)    , contiguous    :: prob(:)
-        real(TKC)                                           :: quan(size(prob, 1, IK))
+        use pm_kind, only: TKG => RK2
+        real(TKG)           , intent(in)    , contiguous    :: sample(:)
+        real(TKG)           , intent(in)    , contiguous    :: prob(:)
+        real(TKG)                                           :: quan(size(prob, 1, IK))
         integer(IK)         , intent(in)    , contiguous    :: weight(:)
         integer(IK)         , intent(in)    , optional      :: weisum
         type(neimean_type)  , intent(in)                    :: method
@@ -1224,10 +1224,10 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanMEAN_ND1_QD1_WTI_RK1
 #endif
-        use pm_kind, only: TKC => RK1
-        real(TKC)           , intent(in)    , contiguous    :: sample(:)
-        real(TKC)           , intent(in)    , contiguous    :: prob(:)
-        real(TKC)                                           :: quan(size(prob, 1, IK))
+        use pm_kind, only: TKG => RK1
+        real(TKG)           , intent(in)    , contiguous    :: sample(:)
+        real(TKG)           , intent(in)    , contiguous    :: prob(:)
+        real(TKG)                                           :: quan(size(prob, 1, IK))
         integer(IK)         , intent(in)    , contiguous    :: weight(:)
         integer(IK)         , intent(in)    , optional      :: weisum
         type(neimean_type)  , intent(in)                    :: method
@@ -1249,10 +1249,10 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanNEAR_ND1_QD0_WTI_RK5
 #endif
-        use pm_kind, only: TKC => RK5
-        real(TKC)                                           :: quan
-        real(TKC)           , intent(in)                    :: prob
-        real(TKC)           , intent(in)    , contiguous    :: sample(:)
+        use pm_kind, only: TKG => RK5
+        real(TKG)                                           :: quan
+        real(TKG)           , intent(in)                    :: prob
+        real(TKG)           , intent(in)    , contiguous    :: sample(:)
         integer(IK)         , intent(in)    , contiguous    :: weight(:)
         integer(IK)         , intent(in)    , optional      :: weisum
         type(neinear_type)  , intent(in)                    :: method
@@ -1264,10 +1264,10 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanNEAR_ND1_QD0_WTI_RK4
 #endif
-        use pm_kind, only: TKC => RK4
-        real(TKC)                                           :: quan
-        real(TKC)           , intent(in)                    :: prob
-        real(TKC)           , intent(in)    , contiguous    :: sample(:)
+        use pm_kind, only: TKG => RK4
+        real(TKG)                                           :: quan
+        real(TKG)           , intent(in)                    :: prob
+        real(TKG)           , intent(in)    , contiguous    :: sample(:)
         integer(IK)         , intent(in)    , contiguous    :: weight(:)
         integer(IK)         , intent(in)    , optional      :: weisum
         type(neinear_type)  , intent(in)                    :: method
@@ -1279,10 +1279,10 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanNEAR_ND1_QD0_WTI_RK3
 #endif
-        use pm_kind, only: TKC => RK3
-        real(TKC)                                           :: quan
-        real(TKC)           , intent(in)                    :: prob
-        real(TKC)           , intent(in)    , contiguous    :: sample(:)
+        use pm_kind, only: TKG => RK3
+        real(TKG)                                           :: quan
+        real(TKG)           , intent(in)                    :: prob
+        real(TKG)           , intent(in)    , contiguous    :: sample(:)
         integer(IK)         , intent(in)    , contiguous    :: weight(:)
         integer(IK)         , intent(in)    , optional      :: weisum
         type(neinear_type)  , intent(in)                    :: method
@@ -1294,10 +1294,10 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanNEAR_ND1_QD0_WTI_RK2
 #endif
-        use pm_kind, only: TKC => RK2
-        real(TKC)                                           :: quan
-        real(TKC)           , intent(in)                    :: prob
-        real(TKC)           , intent(in)    , contiguous    :: sample(:)
+        use pm_kind, only: TKG => RK2
+        real(TKG)                                           :: quan
+        real(TKG)           , intent(in)                    :: prob
+        real(TKG)           , intent(in)    , contiguous    :: sample(:)
         integer(IK)         , intent(in)    , contiguous    :: weight(:)
         integer(IK)         , intent(in)    , optional      :: weisum
         type(neinear_type)  , intent(in)                    :: method
@@ -1309,10 +1309,10 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanNEAR_ND1_QD0_WTI_RK1
 #endif
-        use pm_kind, only: TKC => RK1
-        real(TKC)                                           :: quan
-        real(TKC)           , intent(in)                    :: prob
-        real(TKC)           , intent(in)    , contiguous    :: sample(:)
+        use pm_kind, only: TKG => RK1
+        real(TKG)                                           :: quan
+        real(TKG)           , intent(in)                    :: prob
+        real(TKG)           , intent(in)    , contiguous    :: sample(:)
         integer(IK)         , intent(in)    , contiguous    :: weight(:)
         integer(IK)         , intent(in)    , optional      :: weisum
         type(neinear_type)  , intent(in)                    :: method
@@ -1326,10 +1326,10 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanNEAR_ND1_QD1_WTI_RK5
 #endif
-        use pm_kind, only: TKC => RK5
-        real(TKC)           , intent(in)    , contiguous    :: sample(:)
-        real(TKC)           , intent(in)    , contiguous    :: prob(:)
-        real(TKC)                                           :: quan(size(prob, 1, IK))
+        use pm_kind, only: TKG => RK5
+        real(TKG)           , intent(in)    , contiguous    :: sample(:)
+        real(TKG)           , intent(in)    , contiguous    :: prob(:)
+        real(TKG)                                           :: quan(size(prob, 1, IK))
         integer(IK)         , intent(in)    , contiguous    :: weight(:)
         integer(IK)         , intent(in)    , optional      :: weisum
         type(neinear_type)  , intent(in)                    :: method
@@ -1341,10 +1341,10 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanNEAR_ND1_QD1_WTI_RK4
 #endif
-        use pm_kind, only: TKC => RK4
-        real(TKC)           , intent(in)    , contiguous    :: sample(:)
-        real(TKC)           , intent(in)    , contiguous    :: prob(:)
-        real(TKC)                                           :: quan(size(prob, 1, IK))
+        use pm_kind, only: TKG => RK4
+        real(TKG)           , intent(in)    , contiguous    :: sample(:)
+        real(TKG)           , intent(in)    , contiguous    :: prob(:)
+        real(TKG)                                           :: quan(size(prob, 1, IK))
         integer(IK)         , intent(in)    , contiguous    :: weight(:)
         integer(IK)         , intent(in)    , optional      :: weisum
         type(neinear_type)  , intent(in)                    :: method
@@ -1356,10 +1356,10 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanNEAR_ND1_QD1_WTI_RK3
 #endif
-        use pm_kind, only: TKC => RK3
-        real(TKC)           , intent(in)    , contiguous    :: sample(:)
-        real(TKC)           , intent(in)    , contiguous    :: prob(:)
-        real(TKC)                                           :: quan(size(prob, 1, IK))
+        use pm_kind, only: TKG => RK3
+        real(TKG)           , intent(in)    , contiguous    :: sample(:)
+        real(TKG)           , intent(in)    , contiguous    :: prob(:)
+        real(TKG)                                           :: quan(size(prob, 1, IK))
         integer(IK)         , intent(in)    , contiguous    :: weight(:)
         integer(IK)         , intent(in)    , optional      :: weisum
         type(neinear_type)  , intent(in)                    :: method
@@ -1371,10 +1371,10 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanNEAR_ND1_QD1_WTI_RK2
 #endif
-        use pm_kind, only: TKC => RK2
-        real(TKC)           , intent(in)    , contiguous    :: sample(:)
-        real(TKC)           , intent(in)    , contiguous    :: prob(:)
-        real(TKC)                                           :: quan(size(prob, 1, IK))
+        use pm_kind, only: TKG => RK2
+        real(TKG)           , intent(in)    , contiguous    :: sample(:)
+        real(TKG)           , intent(in)    , contiguous    :: prob(:)
+        real(TKG)                                           :: quan(size(prob, 1, IK))
         integer(IK)         , intent(in)    , contiguous    :: weight(:)
         integer(IK)         , intent(in)    , optional      :: weisum
         type(neinear_type)  , intent(in)                    :: method
@@ -1386,10 +1386,10 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanNEAR_ND1_QD1_WTI_RK1
 #endif
-        use pm_kind, only: TKC => RK1
-        real(TKC)           , intent(in)    , contiguous    :: sample(:)
-        real(TKC)           , intent(in)    , contiguous    :: prob(:)
-        real(TKC)                                           :: quan(size(prob, 1, IK))
+        use pm_kind, only: TKG => RK1
+        real(TKG)           , intent(in)    , contiguous    :: sample(:)
+        real(TKG)           , intent(in)    , contiguous    :: prob(:)
+        real(TKG)                                           :: quan(size(prob, 1, IK))
         integer(IK)         , intent(in)    , contiguous    :: weight(:)
         integer(IK)         , intent(in)    , optional      :: weisum
         type(neinear_type)  , intent(in)                    :: method
@@ -1411,10 +1411,10 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanNEXT_ND1_QD0_WTI_RK5
 #endif
-        use pm_kind, only: TKC => RK5
-        real(TKC)                                           :: quan
-        real(TKC)           , intent(in)                    :: prob
-        real(TKC)           , intent(in)    , contiguous    :: sample(:)
+        use pm_kind, only: TKG => RK5
+        real(TKG)                                           :: quan
+        real(TKG)           , intent(in)                    :: prob
+        real(TKG)           , intent(in)    , contiguous    :: sample(:)
         integer(IK)         , intent(in)    , contiguous    :: weight(:)
         integer(IK)         , intent(in)    , optional      :: weisum
         type(neinext_type)  , intent(in)                    :: method
@@ -1426,10 +1426,10 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanNEXT_ND1_QD0_WTI_RK4
 #endif
-        use pm_kind, only: TKC => RK4
-        real(TKC)                                           :: quan
-        real(TKC)           , intent(in)                    :: prob
-        real(TKC)           , intent(in)    , contiguous    :: sample(:)
+        use pm_kind, only: TKG => RK4
+        real(TKG)                                           :: quan
+        real(TKG)           , intent(in)                    :: prob
+        real(TKG)           , intent(in)    , contiguous    :: sample(:)
         integer(IK)         , intent(in)    , contiguous    :: weight(:)
         integer(IK)         , intent(in)    , optional      :: weisum
         type(neinext_type)  , intent(in)                    :: method
@@ -1441,10 +1441,10 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanNEXT_ND1_QD0_WTI_RK3
 #endif
-        use pm_kind, only: TKC => RK3
-        real(TKC)                                           :: quan
-        real(TKC)           , intent(in)                    :: prob
-        real(TKC)           , intent(in)    , contiguous    :: sample(:)
+        use pm_kind, only: TKG => RK3
+        real(TKG)                                           :: quan
+        real(TKG)           , intent(in)                    :: prob
+        real(TKG)           , intent(in)    , contiguous    :: sample(:)
         integer(IK)         , intent(in)    , contiguous    :: weight(:)
         integer(IK)         , intent(in)    , optional      :: weisum
         type(neinext_type)  , intent(in)                    :: method
@@ -1456,10 +1456,10 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanNEXT_ND1_QD0_WTI_RK2
 #endif
-        use pm_kind, only: TKC => RK2
-        real(TKC)           , intent(in)                    :: prob
-        real(TKC)                                           :: quan
-        real(TKC)           , intent(in)    , contiguous    :: sample(:)
+        use pm_kind, only: TKG => RK2
+        real(TKG)           , intent(in)                    :: prob
+        real(TKG)                                           :: quan
+        real(TKG)           , intent(in)    , contiguous    :: sample(:)
         integer(IK)         , intent(in)    , contiguous    :: weight(:)
         integer(IK)         , intent(in)    , optional      :: weisum
         type(neinext_type)  , intent(in)                    :: method
@@ -1471,10 +1471,10 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanNEXT_ND1_QD0_WTI_RK1
 #endif
-        use pm_kind, only: TKC => RK1
-        real(TKC)                                           :: quan
-        real(TKC)           , intent(in)                    :: prob
-        real(TKC)           , intent(in)    , contiguous    :: sample(:)
+        use pm_kind, only: TKG => RK1
+        real(TKG)                                           :: quan
+        real(TKG)           , intent(in)                    :: prob
+        real(TKG)           , intent(in)    , contiguous    :: sample(:)
         integer(IK)         , intent(in)    , contiguous    :: weight(:)
         integer(IK)         , intent(in)    , optional      :: weisum
         type(neinext_type)  , intent(in)                    :: method
@@ -1488,10 +1488,10 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanNEXT_ND1_QD1_WTI_RK5
 #endif
-        use pm_kind, only: TKC => RK5
-        real(TKC)           , intent(in)    , contiguous    :: sample(:)
-        real(TKC)           , intent(in)    , contiguous    :: prob(:)
-        real(TKC)                                           :: quan(size(prob, 1, IK))
+        use pm_kind, only: TKG => RK5
+        real(TKG)           , intent(in)    , contiguous    :: sample(:)
+        real(TKG)           , intent(in)    , contiguous    :: prob(:)
+        real(TKG)                                           :: quan(size(prob, 1, IK))
         integer(IK)         , intent(in)    , contiguous    :: weight(:)
         integer(IK)         , intent(in)    , optional      :: weisum
         type(neinext_type)  , intent(in)                    :: method
@@ -1503,10 +1503,10 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanNEXT_ND1_QD1_WTI_RK4
 #endif
-        use pm_kind, only: TKC => RK4
-        real(TKC)           , intent(in)    , contiguous    :: sample(:)
-        real(TKC)           , intent(in)    , contiguous    :: prob(:)
-        real(TKC)                                           :: quan(size(prob, 1, IK))
+        use pm_kind, only: TKG => RK4
+        real(TKG)           , intent(in)    , contiguous    :: sample(:)
+        real(TKG)           , intent(in)    , contiguous    :: prob(:)
+        real(TKG)                                           :: quan(size(prob, 1, IK))
         integer(IK)         , intent(in)    , contiguous    :: weight(:)
         integer(IK)         , intent(in)    , optional      :: weisum
         type(neinext_type)  , intent(in)                    :: method
@@ -1518,10 +1518,10 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanNEXT_ND1_QD1_WTI_RK3
 #endif
-        use pm_kind, only: TKC => RK3
-        real(TKC)           , intent(in)    , contiguous    :: sample(:)
-        real(TKC)           , intent(in)    , contiguous    :: prob(:)
-        real(TKC)                                           :: quan(size(prob, 1, IK))
+        use pm_kind, only: TKG => RK3
+        real(TKG)           , intent(in)    , contiguous    :: sample(:)
+        real(TKG)           , intent(in)    , contiguous    :: prob(:)
+        real(TKG)                                           :: quan(size(prob, 1, IK))
         integer(IK)         , intent(in)    , contiguous    :: weight(:)
         integer(IK)         , intent(in)    , optional      :: weisum
         type(neinext_type)  , intent(in)                    :: method
@@ -1533,10 +1533,10 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanNEXT_ND1_QD1_WTI_RK2
 #endif
-        use pm_kind, only: TKC => RK2
-        real(TKC)           , intent(in)    , contiguous    :: sample(:)
-        real(TKC)           , intent(in)    , contiguous    :: prob(:)
-        real(TKC)                                           :: quan(size(prob, 1, IK))
+        use pm_kind, only: TKG => RK2
+        real(TKG)           , intent(in)    , contiguous    :: sample(:)
+        real(TKG)           , intent(in)    , contiguous    :: prob(:)
+        real(TKG)                                           :: quan(size(prob, 1, IK))
         integer(IK)         , intent(in)    , contiguous    :: weight(:)
         integer(IK)         , intent(in)    , optional      :: weisum
         type(neinext_type)  , intent(in)                    :: method
@@ -1548,10 +1548,10 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanNEXT_ND1_QD1_WTI_RK1
 #endif
-        use pm_kind, only: TKC => RK1
-        real(TKC)           , intent(in)    , contiguous    :: sample(:)
-        real(TKC)           , intent(in)    , contiguous    :: prob(:)
-        real(TKC)                                           :: quan(size(prob, 1, IK))
+        use pm_kind, only: TKG => RK1
+        real(TKG)           , intent(in)    , contiguous    :: sample(:)
+        real(TKG)           , intent(in)    , contiguous    :: prob(:)
+        real(TKG)                                           :: quan(size(prob, 1, IK))
         integer(IK)         , intent(in)    , contiguous    :: weight(:)
         integer(IK)         , intent(in)    , optional      :: weisum
         type(neinext_type)  , intent(in)                    :: method
@@ -1573,10 +1573,10 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanPREV_ND1_QD0_WTI_RK5
 #endif
-        use pm_kind, only: TKC => RK5
-        real(TKC)                                           :: quan
-        real(TKC)           , intent(in)                    :: prob
-        real(TKC)           , intent(in)    , contiguous    :: sample(:)
+        use pm_kind, only: TKG => RK5
+        real(TKG)                                           :: quan
+        real(TKG)           , intent(in)                    :: prob
+        real(TKG)           , intent(in)    , contiguous    :: sample(:)
         integer(IK)         , intent(in)    , contiguous    :: weight(:)
         integer(IK)         , intent(in)    , optional      :: weisum
         type(neiprev_type)  , intent(in)                    :: method
@@ -1588,10 +1588,10 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanPREV_ND1_QD0_WTI_RK4
 #endif
-        use pm_kind, only: TKC => RK4
-        real(TKC)                                           :: quan
-        real(TKC)           , intent(in)                    :: prob
-        real(TKC)           , intent(in)    , contiguous    :: sample(:)
+        use pm_kind, only: TKG => RK4
+        real(TKG)                                           :: quan
+        real(TKG)           , intent(in)                    :: prob
+        real(TKG)           , intent(in)    , contiguous    :: sample(:)
         integer(IK)         , intent(in)    , contiguous    :: weight(:)
         integer(IK)         , intent(in)    , optional      :: weisum
         type(neiprev_type)  , intent(in)                    :: method
@@ -1603,10 +1603,10 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanPREV_ND1_QD0_WTI_RK3
 #endif
-        use pm_kind, only: TKC => RK3
-        real(TKC)                                           :: quan
-        real(TKC)           , intent(in)                    :: prob
-        real(TKC)           , intent(in)    , contiguous    :: sample(:)
+        use pm_kind, only: TKG => RK3
+        real(TKG)                                           :: quan
+        real(TKG)           , intent(in)                    :: prob
+        real(TKG)           , intent(in)    , contiguous    :: sample(:)
         integer(IK)         , intent(in)    , contiguous    :: weight(:)
         integer(IK)         , intent(in)    , optional      :: weisum
         type(neiprev_type)  , intent(in)                    :: method
@@ -1618,10 +1618,10 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanPREV_ND1_QD0_WTI_RK2
 #endif
-        use pm_kind, only: TKC => RK2
-        real(TKC)                                           :: quan
-        real(TKC)           , intent(in)                    :: prob
-        real(TKC)           , intent(in)    , contiguous    :: sample(:)
+        use pm_kind, only: TKG => RK2
+        real(TKG)                                           :: quan
+        real(TKG)           , intent(in)                    :: prob
+        real(TKG)           , intent(in)    , contiguous    :: sample(:)
         integer(IK)         , intent(in)    , contiguous    :: weight(:)
         integer(IK)         , intent(in)    , optional      :: weisum
         type(neiprev_type)  , intent(in)                    :: method
@@ -1633,10 +1633,10 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanPREV_ND1_QD0_WTI_RK1
 #endif
-        use pm_kind, only: TKC => RK1
-        real(TKC)                                           :: quan
-        real(TKC)           , intent(in)                    :: prob
-        real(TKC)           , intent(in)    , contiguous    :: sample(:)
+        use pm_kind, only: TKG => RK1
+        real(TKG)                                           :: quan
+        real(TKG)           , intent(in)                    :: prob
+        real(TKG)           , intent(in)    , contiguous    :: sample(:)
         integer(IK)         , intent(in)    , contiguous    :: weight(:)
         integer(IK)         , intent(in)    , optional      :: weisum
         type(neiprev_type)  , intent(in)                    :: method
@@ -1650,10 +1650,10 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanPREV_ND1_QD1_WTI_RK5
 #endif
-        use pm_kind, only: TKC => RK5
-        real(TKC)           , intent(in)    , contiguous    :: sample(:)
-        real(TKC)           , intent(in)    , contiguous    :: prob(:)
-        real(TKC)                                           :: quan(size(prob, 1, IK))
+        use pm_kind, only: TKG => RK5
+        real(TKG)           , intent(in)    , contiguous    :: sample(:)
+        real(TKG)           , intent(in)    , contiguous    :: prob(:)
+        real(TKG)                                           :: quan(size(prob, 1, IK))
         integer(IK)         , intent(in)    , contiguous    :: weight(:)
         integer(IK)         , intent(in)    , optional      :: weisum
         type(neiprev_type)  , intent(in)                    :: method
@@ -1665,10 +1665,10 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanPREV_ND1_QD1_WTI_RK4
 #endif
-        use pm_kind, only: TKC => RK4
-        real(TKC)           , intent(in)    , contiguous    :: sample(:)
-        real(TKC)           , intent(in)    , contiguous    :: prob(:)
-        real(TKC)                                           :: quan(size(prob, 1, IK))
+        use pm_kind, only: TKG => RK4
+        real(TKG)           , intent(in)    , contiguous    :: sample(:)
+        real(TKG)           , intent(in)    , contiguous    :: prob(:)
+        real(TKG)                                           :: quan(size(prob, 1, IK))
         integer(IK)         , intent(in)    , contiguous    :: weight(:)
         integer(IK)         , intent(in)    , optional      :: weisum
         type(neiprev_type)  , intent(in)                    :: method
@@ -1680,10 +1680,10 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanPREV_ND1_QD1_WTI_RK3
 #endif
-        use pm_kind, only: TKC => RK3
-        real(TKC)           , intent(in)    , contiguous    :: sample(:)
-        real(TKC)           , intent(in)    , contiguous    :: prob(:)
-        real(TKC)                                           :: quan(size(prob, 1, IK))
+        use pm_kind, only: TKG => RK3
+        real(TKG)           , intent(in)    , contiguous    :: sample(:)
+        real(TKG)           , intent(in)    , contiguous    :: prob(:)
+        real(TKG)                                           :: quan(size(prob, 1, IK))
         integer(IK)         , intent(in)    , contiguous    :: weight(:)
         integer(IK)         , intent(in)    , optional      :: weisum
         type(neiprev_type)  , intent(in)                    :: method
@@ -1695,10 +1695,10 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanPREV_ND1_QD1_WTI_RK2
 #endif
-        use pm_kind, only: TKC => RK2
-        real(TKC)           , intent(in)    , contiguous    :: sample(:)
-        real(TKC)           , intent(in)    , contiguous    :: prob(:)
-        real(TKC)                                           :: quan(size(prob, 1, IK))
+        use pm_kind, only: TKG => RK2
+        real(TKG)           , intent(in)    , contiguous    :: sample(:)
+        real(TKG)           , intent(in)    , contiguous    :: prob(:)
+        real(TKG)                                           :: quan(size(prob, 1, IK))
         integer(IK)         , intent(in)    , contiguous    :: weight(:)
         integer(IK)         , intent(in)    , optional      :: weisum
         type(neiprev_type)  , intent(in)                    :: method
@@ -1710,10 +1710,10 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanPREV_ND1_QD1_WTI_RK1
 #endif
-        use pm_kind, only: TKC => RK1
-        real(TKC)           , intent(in)    , contiguous    :: sample(:)
-        real(TKC)           , intent(in)    , contiguous    :: prob(:)
-        real(TKC)                                           :: quan(size(prob, 1, IK))
+        use pm_kind, only: TKG => RK1
+        real(TKG)           , intent(in)    , contiguous    :: sample(:)
+        real(TKG)           , intent(in)    , contiguous    :: prob(:)
+        real(TKG)                                           :: quan(size(prob, 1, IK))
         integer(IK)         , intent(in)    , contiguous    :: weight(:)
         integer(IK)         , intent(in)    , optional      :: weisum
         type(neiprev_type)  , intent(in)                    :: method
@@ -1737,12 +1737,12 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanPWLN_ND1_QD0_WTR_RK5
 #endif
-        use pm_kind, only: TKC => RK5
-        real(TKC)                                           :: quan
-        real(TKC)           , intent(in)                    :: prob
-        real(TKC)           , intent(in)    , contiguous    :: sample(:)
-        real(TKC)           , intent(in)    , contiguous    :: weight(:)
-        real(TKC)           , intent(in)    , optional      :: weisum
+        use pm_kind, only: TKG => RK5
+        real(TKG)                                           :: quan
+        real(TKG)           , intent(in)                    :: prob
+        real(TKG)           , intent(in)    , contiguous    :: sample(:)
+        real(TKG)           , intent(in)    , contiguous    :: weight(:)
+        real(TKG)           , intent(in)    , optional      :: weisum
         type(piwilin_type)  , intent(in)                    :: method
     end function
 #endif
@@ -1752,12 +1752,12 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanPWLN_ND1_QD0_WTR_RK4
 #endif
-        use pm_kind, only: TKC => RK4
-        real(TKC)                                           :: quan
-        real(TKC)           , intent(in)                    :: prob
-        real(TKC)           , intent(in)    , contiguous    :: sample(:)
-        real(TKC)           , intent(in)    , contiguous    :: weight(:)
-        real(TKC)           , intent(in)    , optional      :: weisum
+        use pm_kind, only: TKG => RK4
+        real(TKG)                                           :: quan
+        real(TKG)           , intent(in)                    :: prob
+        real(TKG)           , intent(in)    , contiguous    :: sample(:)
+        real(TKG)           , intent(in)    , contiguous    :: weight(:)
+        real(TKG)           , intent(in)    , optional      :: weisum
         type(piwilin_type)  , intent(in)                    :: method
     end function
 #endif
@@ -1767,12 +1767,12 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanPWLN_ND1_QD0_WTR_RK3
 #endif
-        use pm_kind, only: TKC => RK3
-        real(TKC)                                           :: quan
-        real(TKC)           , intent(in)                    :: prob
-        real(TKC)           , intent(in)    , contiguous    :: sample(:)
-        real(TKC)           , intent(in)    , contiguous    :: weight(:)
-        real(TKC)           , intent(in)    , optional      :: weisum
+        use pm_kind, only: TKG => RK3
+        real(TKG)                                           :: quan
+        real(TKG)           , intent(in)                    :: prob
+        real(TKG)           , intent(in)    , contiguous    :: sample(:)
+        real(TKG)           , intent(in)    , contiguous    :: weight(:)
+        real(TKG)           , intent(in)    , optional      :: weisum
         type(piwilin_type)  , intent(in)                    :: method
     end function
 #endif
@@ -1782,12 +1782,12 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanPWLN_ND1_QD0_WTR_RK2
 #endif
-        use pm_kind, only: TKC => RK2
-        real(TKC)                                           :: quan
-        real(TKC)           , intent(in)                    :: prob
-        real(TKC)           , intent(in)    , contiguous    :: sample(:)
-        real(TKC)           , intent(in)    , contiguous    :: weight(:)
-        real(TKC)           , intent(in)    , optional      :: weisum
+        use pm_kind, only: TKG => RK2
+        real(TKG)                                           :: quan
+        real(TKG)           , intent(in)                    :: prob
+        real(TKG)           , intent(in)    , contiguous    :: sample(:)
+        real(TKG)           , intent(in)    , contiguous    :: weight(:)
+        real(TKG)           , intent(in)    , optional      :: weisum
         type(piwilin_type)  , intent(in)                    :: method
     end function
 #endif
@@ -1797,12 +1797,12 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanPWLN_ND1_QD0_WTR_RK1
 #endif
-        use pm_kind, only: TKC => RK1
-        real(TKC)                                           :: quan
-        real(TKC)           , intent(in)                    :: prob
-        real(TKC)           , intent(in)    , contiguous    :: sample(:)
-        real(TKC)           , intent(in)    , contiguous    :: weight(:)
-        real(TKC)           , intent(in)    , optional      :: weisum
+        use pm_kind, only: TKG => RK1
+        real(TKG)                                           :: quan
+        real(TKG)           , intent(in)                    :: prob
+        real(TKG)           , intent(in)    , contiguous    :: sample(:)
+        real(TKG)           , intent(in)    , contiguous    :: weight(:)
+        real(TKG)           , intent(in)    , optional      :: weisum
         type(piwilin_type)  , intent(in)                    :: method
     end function
 #endif
@@ -1814,12 +1814,12 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanPWLN_ND1_QD1_WTR_RK5
 #endif
-        use pm_kind, only: TKC => RK5
-        real(TKC)           , intent(in)    , contiguous    :: sample(:)
-        real(TKC)           , intent(in)    , contiguous    :: prob(:)
-        real(TKC)                                           :: quan(size(prob, 1, IK))
-        real(TKC)           , intent(in)    , contiguous    :: weight(:)
-        real(TKC)           , intent(in)    , optional      :: weisum
+        use pm_kind, only: TKG => RK5
+        real(TKG)           , intent(in)    , contiguous    :: sample(:)
+        real(TKG)           , intent(in)    , contiguous    :: prob(:)
+        real(TKG)                                           :: quan(size(prob, 1, IK))
+        real(TKG)           , intent(in)    , contiguous    :: weight(:)
+        real(TKG)           , intent(in)    , optional      :: weisum
         type(piwilin_type)  , intent(in)                    :: method
     end function
 #endif
@@ -1829,12 +1829,12 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanPWLN_ND1_QD1_WTR_RK4
 #endif
-        use pm_kind, only: TKC => RK4
-        real(TKC)           , intent(in)    , contiguous    :: sample(:)
-        real(TKC)           , intent(in)    , contiguous    :: prob(:)
-        real(TKC)                                           :: quan(size(prob, 1, IK))
-        real(TKC)           , intent(in)    , contiguous    :: weight(:)
-        real(TKC)           , intent(in)    , optional      :: weisum
+        use pm_kind, only: TKG => RK4
+        real(TKG)           , intent(in)    , contiguous    :: sample(:)
+        real(TKG)           , intent(in)    , contiguous    :: prob(:)
+        real(TKG)                                           :: quan(size(prob, 1, IK))
+        real(TKG)           , intent(in)    , contiguous    :: weight(:)
+        real(TKG)           , intent(in)    , optional      :: weisum
         type(piwilin_type)  , intent(in)                    :: method
     end function
 #endif
@@ -1844,12 +1844,12 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanPWLN_ND1_QD1_WTR_RK3
 #endif
-        use pm_kind, only: TKC => RK3
-        real(TKC)           , intent(in)    , contiguous    :: sample(:)
-        real(TKC)           , intent(in)    , contiguous    :: prob(:)
-        real(TKC)                                           :: quan(size(prob, 1, IK))
-        real(TKC)           , intent(in)    , contiguous    :: weight(:)
-        real(TKC)           , intent(in)    , optional      :: weisum
+        use pm_kind, only: TKG => RK3
+        real(TKG)           , intent(in)    , contiguous    :: sample(:)
+        real(TKG)           , intent(in)    , contiguous    :: prob(:)
+        real(TKG)                                           :: quan(size(prob, 1, IK))
+        real(TKG)           , intent(in)    , contiguous    :: weight(:)
+        real(TKG)           , intent(in)    , optional      :: weisum
         type(piwilin_type)  , intent(in)                    :: method
     end function
 #endif
@@ -1859,12 +1859,12 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanPWLN_ND1_QD1_WTR_RK2
 #endif
-        use pm_kind, only: TKC => RK2
-        real(TKC)           , intent(in)    , contiguous    :: sample(:)
-        real(TKC)           , intent(in)    , contiguous    :: prob(:)
-        real(TKC)                                           :: quan(size(prob, 1, IK))
-        real(TKC)           , intent(in)    , contiguous    :: weight(:)
-        real(TKC)           , intent(in)    , optional      :: weisum
+        use pm_kind, only: TKG => RK2
+        real(TKG)           , intent(in)    , contiguous    :: sample(:)
+        real(TKG)           , intent(in)    , contiguous    :: prob(:)
+        real(TKG)                                           :: quan(size(prob, 1, IK))
+        real(TKG)           , intent(in)    , contiguous    :: weight(:)
+        real(TKG)           , intent(in)    , optional      :: weisum
         type(piwilin_type)  , intent(in)                    :: method
     end function
 #endif
@@ -1874,12 +1874,12 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanPWLN_ND1_QD1_WTR_RK1
 #endif
-        use pm_kind, only: TKC => RK1
-        real(TKC)           , intent(in)    , contiguous    :: sample(:)
-        real(TKC)           , intent(in)    , contiguous    :: prob(:)
-        real(TKC)                                           :: quan(size(prob, 1, IK))
-        real(TKC)           , intent(in)    , contiguous    :: weight(:)
-        real(TKC)           , intent(in)    , optional      :: weisum
+        use pm_kind, only: TKG => RK1
+        real(TKG)           , intent(in)    , contiguous    :: sample(:)
+        real(TKG)           , intent(in)    , contiguous    :: prob(:)
+        real(TKG)                                           :: quan(size(prob, 1, IK))
+        real(TKG)           , intent(in)    , contiguous    :: weight(:)
+        real(TKG)           , intent(in)    , optional      :: weisum
         type(piwilin_type)  , intent(in)                    :: method
     end function
 #endif
@@ -1899,12 +1899,12 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanMEAN_ND1_QD0_WTR_RK5
 #endif
-        use pm_kind, only: TKC => RK5
-        real(TKC)                                           :: quan
-        real(TKC)           , intent(in)                    :: prob
-        real(TKC)           , intent(in)    , contiguous    :: sample(:)
-        real(TKC)           , intent(in)    , contiguous    :: weight(:)
-        real(TKC)           , intent(in)    , optional      :: weisum
+        use pm_kind, only: TKG => RK5
+        real(TKG)                                           :: quan
+        real(TKG)           , intent(in)                    :: prob
+        real(TKG)           , intent(in)    , contiguous    :: sample(:)
+        real(TKG)           , intent(in)    , contiguous    :: weight(:)
+        real(TKG)           , intent(in)    , optional      :: weisum
         type(neimean_type)  , intent(in)                    :: method
     end function
 #endif
@@ -1914,12 +1914,12 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanMEAN_ND1_QD0_WTR_RK4
 #endif
-        use pm_kind, only: TKC => RK4
-        real(TKC)                                           :: quan
-        real(TKC)           , intent(in)                    :: prob
-        real(TKC)           , intent(in)    , contiguous    :: sample(:)
-        real(TKC)           , intent(in)    , contiguous    :: weight(:)
-        real(TKC)           , intent(in)    , optional      :: weisum
+        use pm_kind, only: TKG => RK4
+        real(TKG)                                           :: quan
+        real(TKG)           , intent(in)                    :: prob
+        real(TKG)           , intent(in)    , contiguous    :: sample(:)
+        real(TKG)           , intent(in)    , contiguous    :: weight(:)
+        real(TKG)           , intent(in)    , optional      :: weisum
         type(neimean_type)  , intent(in)                    :: method
     end function
 #endif
@@ -1929,12 +1929,12 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanMEAN_ND1_QD0_WTR_RK3
 #endif
-        use pm_kind, only: TKC => RK3
-        real(TKC)                                           :: quan
-        real(TKC)           , intent(in)                    :: prob
-        real(TKC)           , intent(in)    , contiguous    :: sample(:)
-        real(TKC)           , intent(in)    , contiguous    :: weight(:)
-        real(TKC)           , intent(in)    , optional      :: weisum
+        use pm_kind, only: TKG => RK3
+        real(TKG)                                           :: quan
+        real(TKG)           , intent(in)                    :: prob
+        real(TKG)           , intent(in)    , contiguous    :: sample(:)
+        real(TKG)           , intent(in)    , contiguous    :: weight(:)
+        real(TKG)           , intent(in)    , optional      :: weisum
         type(neimean_type)  , intent(in)                    :: method
     end function
 #endif
@@ -1944,12 +1944,12 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanMEAN_ND1_QD0_WTR_RK2
 #endif
-        use pm_kind, only: TKC => RK2
-        real(TKC)                                           :: quan
-        real(TKC)           , intent(in)                    :: prob
-        real(TKC)           , intent(in)    , contiguous    :: sample(:)
-        real(TKC)           , intent(in)    , contiguous    :: weight(:)
-        real(TKC)           , intent(in)    , optional      :: weisum
+        use pm_kind, only: TKG => RK2
+        real(TKG)                                           :: quan
+        real(TKG)           , intent(in)                    :: prob
+        real(TKG)           , intent(in)    , contiguous    :: sample(:)
+        real(TKG)           , intent(in)    , contiguous    :: weight(:)
+        real(TKG)           , intent(in)    , optional      :: weisum
         type(neimean_type)  , intent(in)                    :: method
     end function
 #endif
@@ -1959,12 +1959,12 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanMEAN_ND1_QD0_WTR_RK1
 #endif
-        use pm_kind, only: TKC => RK1
-        real(TKC)                                           :: quan
-        real(TKC)           , intent(in)                    :: prob
-        real(TKC)           , intent(in)    , contiguous    :: sample(:)
-        real(TKC)           , intent(in)    , contiguous    :: weight(:)
-        real(TKC)           , intent(in)    , optional      :: weisum
+        use pm_kind, only: TKG => RK1
+        real(TKG)                                           :: quan
+        real(TKG)           , intent(in)                    :: prob
+        real(TKG)           , intent(in)    , contiguous    :: sample(:)
+        real(TKG)           , intent(in)    , contiguous    :: weight(:)
+        real(TKG)           , intent(in)    , optional      :: weisum
         type(neimean_type)  , intent(in)                    :: method
     end function
 #endif
@@ -1976,12 +1976,12 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanMEAN_ND1_QD1_WTR_RK5
 #endif
-        use pm_kind, only: TKC => RK5
-        real(TKC)           , intent(in)    , contiguous    :: sample(:)
-        real(TKC)           , intent(in)    , contiguous    :: prob(:)
-        real(TKC)                                           :: quan(size(prob, 1, IK))
-        real(TKC)           , intent(in)    , contiguous    :: weight(:)
-        real(TKC)           , intent(in)    , optional      :: weisum
+        use pm_kind, only: TKG => RK5
+        real(TKG)           , intent(in)    , contiguous    :: sample(:)
+        real(TKG)           , intent(in)    , contiguous    :: prob(:)
+        real(TKG)                                           :: quan(size(prob, 1, IK))
+        real(TKG)           , intent(in)    , contiguous    :: weight(:)
+        real(TKG)           , intent(in)    , optional      :: weisum
         type(neimean_type)  , intent(in)                    :: method
     end function
 #endif
@@ -1991,12 +1991,12 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanMEAN_ND1_QD1_WTR_RK4
 #endif
-        use pm_kind, only: TKC => RK4
-        real(TKC)           , intent(in)    , contiguous    :: sample(:)
-        real(TKC)           , intent(in)    , contiguous    :: prob(:)
-        real(TKC)                                           :: quan(size(prob, 1, IK))
-        real(TKC)           , intent(in)    , contiguous    :: weight(:)
-        real(TKC)           , intent(in)    , optional      :: weisum
+        use pm_kind, only: TKG => RK4
+        real(TKG)           , intent(in)    , contiguous    :: sample(:)
+        real(TKG)           , intent(in)    , contiguous    :: prob(:)
+        real(TKG)                                           :: quan(size(prob, 1, IK))
+        real(TKG)           , intent(in)    , contiguous    :: weight(:)
+        real(TKG)           , intent(in)    , optional      :: weisum
         type(neimean_type)  , intent(in)                    :: method
     end function
 #endif
@@ -2006,12 +2006,12 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanMEAN_ND1_QD1_WTR_RK3
 #endif
-        use pm_kind, only: TKC => RK3
-        real(TKC)           , intent(in)    , contiguous    :: sample(:)
-        real(TKC)           , intent(in)    , contiguous    :: prob(:)
-        real(TKC)                                           :: quan(size(prob, 1, IK))
-        real(TKC)           , intent(in)    , contiguous    :: weight(:)
-        real(TKC)           , intent(in)    , optional      :: weisum
+        use pm_kind, only: TKG => RK3
+        real(TKG)           , intent(in)    , contiguous    :: sample(:)
+        real(TKG)           , intent(in)    , contiguous    :: prob(:)
+        real(TKG)                                           :: quan(size(prob, 1, IK))
+        real(TKG)           , intent(in)    , contiguous    :: weight(:)
+        real(TKG)           , intent(in)    , optional      :: weisum
         type(neimean_type)  , intent(in)                    :: method
     end function
 #endif
@@ -2021,12 +2021,12 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanMEAN_ND1_QD1_WTR_RK2
 #endif
-        use pm_kind, only: TKC => RK2
-        real(TKC)           , intent(in)    , contiguous    :: sample(:)
-        real(TKC)           , intent(in)    , contiguous    :: prob(:)
-        real(TKC)                                           :: quan(size(prob, 1, IK))
-        real(TKC)           , intent(in)    , contiguous    :: weight(:)
-        real(TKC)           , intent(in)    , optional      :: weisum
+        use pm_kind, only: TKG => RK2
+        real(TKG)           , intent(in)    , contiguous    :: sample(:)
+        real(TKG)           , intent(in)    , contiguous    :: prob(:)
+        real(TKG)                                           :: quan(size(prob, 1, IK))
+        real(TKG)           , intent(in)    , contiguous    :: weight(:)
+        real(TKG)           , intent(in)    , optional      :: weisum
         type(neimean_type)  , intent(in)                    :: method
     end function
 #endif
@@ -2036,12 +2036,12 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanMEAN_ND1_QD1_WTR_RK1
 #endif
-        use pm_kind, only: TKC => RK1
-        real(TKC)           , intent(in)    , contiguous    :: sample(:)
-        real(TKC)           , intent(in)    , contiguous    :: prob(:)
-        real(TKC)                                           :: quan(size(prob, 1, IK))
-        real(TKC)           , intent(in)    , contiguous    :: weight(:)
-        real(TKC)           , intent(in)    , optional      :: weisum
+        use pm_kind, only: TKG => RK1
+        real(TKG)           , intent(in)    , contiguous    :: sample(:)
+        real(TKG)           , intent(in)    , contiguous    :: prob(:)
+        real(TKG)                                           :: quan(size(prob, 1, IK))
+        real(TKG)           , intent(in)    , contiguous    :: weight(:)
+        real(TKG)           , intent(in)    , optional      :: weisum
         type(neimean_type)  , intent(in)                    :: method
     end function
 #endif
@@ -2061,12 +2061,12 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanNEAR_ND1_QD0_WTR_RK5
 #endif
-        use pm_kind, only: TKC => RK5
-        real(TKC)                                           :: quan
-        real(TKC)           , intent(in)                    :: prob
-        real(TKC)           , intent(in)    , contiguous    :: sample(:)
-        real(TKC)           , intent(in)    , contiguous    :: weight(:)
-        real(TKC)           , intent(in)    , optional      :: weisum
+        use pm_kind, only: TKG => RK5
+        real(TKG)                                           :: quan
+        real(TKG)           , intent(in)                    :: prob
+        real(TKG)           , intent(in)    , contiguous    :: sample(:)
+        real(TKG)           , intent(in)    , contiguous    :: weight(:)
+        real(TKG)           , intent(in)    , optional      :: weisum
         type(neinear_type)  , intent(in)                    :: method
     end function
 #endif
@@ -2076,12 +2076,12 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanNEAR_ND1_QD0_WTR_RK4
 #endif
-        use pm_kind, only: TKC => RK4
-        real(TKC)                                           :: quan
-        real(TKC)           , intent(in)                    :: prob
-        real(TKC)           , intent(in)    , contiguous    :: sample(:)
-        real(TKC)           , intent(in)    , contiguous    :: weight(:)
-        real(TKC)           , intent(in)    , optional      :: weisum
+        use pm_kind, only: TKG => RK4
+        real(TKG)                                           :: quan
+        real(TKG)           , intent(in)                    :: prob
+        real(TKG)           , intent(in)    , contiguous    :: sample(:)
+        real(TKG)           , intent(in)    , contiguous    :: weight(:)
+        real(TKG)           , intent(in)    , optional      :: weisum
         type(neinear_type)  , intent(in)                    :: method
     end function
 #endif
@@ -2091,12 +2091,12 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanNEAR_ND1_QD0_WTR_RK3
 #endif
-        use pm_kind, only: TKC => RK3
-        real(TKC)                                           :: quan
-        real(TKC)           , intent(in)                    :: prob
-        real(TKC)           , intent(in)    , contiguous    :: sample(:)
-        real(TKC)           , intent(in)    , contiguous    :: weight(:)
-        real(TKC)           , intent(in)    , optional      :: weisum
+        use pm_kind, only: TKG => RK3
+        real(TKG)                                           :: quan
+        real(TKG)           , intent(in)                    :: prob
+        real(TKG)           , intent(in)    , contiguous    :: sample(:)
+        real(TKG)           , intent(in)    , contiguous    :: weight(:)
+        real(TKG)           , intent(in)    , optional      :: weisum
         type(neinear_type)  , intent(in)                    :: method
     end function
 #endif
@@ -2106,12 +2106,12 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanNEAR_ND1_QD0_WTR_RK2
 #endif
-        use pm_kind, only: TKC => RK2
-        real(TKC)                                           :: quan
-        real(TKC)           , intent(in)                    :: prob
-        real(TKC)           , intent(in)    , contiguous    :: sample(:)
-        real(TKC)           , intent(in)    , contiguous    :: weight(:)
-        real(TKC)           , intent(in)    , optional      :: weisum
+        use pm_kind, only: TKG => RK2
+        real(TKG)                                           :: quan
+        real(TKG)           , intent(in)                    :: prob
+        real(TKG)           , intent(in)    , contiguous    :: sample(:)
+        real(TKG)           , intent(in)    , contiguous    :: weight(:)
+        real(TKG)           , intent(in)    , optional      :: weisum
         type(neinear_type)  , intent(in)                    :: method
     end function
 #endif
@@ -2121,12 +2121,12 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanNEAR_ND1_QD0_WTR_RK1
 #endif
-        use pm_kind, only: TKC => RK1
-        real(TKC)                                           :: quan
-        real(TKC)           , intent(in)                    :: prob
-        real(TKC)           , intent(in)    , contiguous    :: sample(:)
-        real(TKC)           , intent(in)    , contiguous    :: weight(:)
-        real(TKC)           , intent(in)    , optional      :: weisum
+        use pm_kind, only: TKG => RK1
+        real(TKG)                                           :: quan
+        real(TKG)           , intent(in)                    :: prob
+        real(TKG)           , intent(in)    , contiguous    :: sample(:)
+        real(TKG)           , intent(in)    , contiguous    :: weight(:)
+        real(TKG)           , intent(in)    , optional      :: weisum
         type(neinear_type)  , intent(in)                    :: method
     end function
 #endif
@@ -2138,12 +2138,12 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanNEAR_ND1_QD1_WTR_RK5
 #endif
-        use pm_kind, only: TKC => RK5
-        real(TKC)           , intent(in)    , contiguous    :: sample(:)
-        real(TKC)           , intent(in)    , contiguous    :: prob(:)
-        real(TKC)                                           :: quan(size(prob, 1, IK))
-        real(TKC)           , intent(in)    , contiguous    :: weight(:)
-        real(TKC)           , intent(in)    , optional      :: weisum
+        use pm_kind, only: TKG => RK5
+        real(TKG)           , intent(in)    , contiguous    :: sample(:)
+        real(TKG)           , intent(in)    , contiguous    :: prob(:)
+        real(TKG)                                           :: quan(size(prob, 1, IK))
+        real(TKG)           , intent(in)    , contiguous    :: weight(:)
+        real(TKG)           , intent(in)    , optional      :: weisum
         type(neinear_type)  , intent(in)                    :: method
     end function
 #endif
@@ -2153,12 +2153,12 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanNEAR_ND1_QD1_WTR_RK4
 #endif
-        use pm_kind, only: TKC => RK4
-        real(TKC)           , intent(in)    , contiguous    :: sample(:)
-        real(TKC)           , intent(in)    , contiguous    :: prob(:)
-        real(TKC)                                           :: quan(size(prob, 1, IK))
-        real(TKC)           , intent(in)    , contiguous    :: weight(:)
-        real(TKC)           , intent(in)    , optional      :: weisum
+        use pm_kind, only: TKG => RK4
+        real(TKG)           , intent(in)    , contiguous    :: sample(:)
+        real(TKG)           , intent(in)    , contiguous    :: prob(:)
+        real(TKG)                                           :: quan(size(prob, 1, IK))
+        real(TKG)           , intent(in)    , contiguous    :: weight(:)
+        real(TKG)           , intent(in)    , optional      :: weisum
         type(neinear_type)  , intent(in)                    :: method
     end function
 #endif
@@ -2168,12 +2168,12 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanNEAR_ND1_QD1_WTR_RK3
 #endif
-        use pm_kind, only: TKC => RK3
-        real(TKC)           , intent(in)    , contiguous    :: sample(:)
-        real(TKC)           , intent(in)    , contiguous    :: prob(:)
-        real(TKC)                                           :: quan(size(prob, 1, IK))
-        real(TKC)           , intent(in)    , contiguous    :: weight(:)
-        real(TKC)           , intent(in)    , optional      :: weisum
+        use pm_kind, only: TKG => RK3
+        real(TKG)           , intent(in)    , contiguous    :: sample(:)
+        real(TKG)           , intent(in)    , contiguous    :: prob(:)
+        real(TKG)                                           :: quan(size(prob, 1, IK))
+        real(TKG)           , intent(in)    , contiguous    :: weight(:)
+        real(TKG)           , intent(in)    , optional      :: weisum
         type(neinear_type)  , intent(in)                    :: method
     end function
 #endif
@@ -2183,12 +2183,12 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanNEAR_ND1_QD1_WTR_RK2
 #endif
-        use pm_kind, only: TKC => RK2
-        real(TKC)           , intent(in)    , contiguous    :: sample(:)
-        real(TKC)           , intent(in)    , contiguous    :: prob(:)
-        real(TKC)                                           :: quan(size(prob, 1, IK))
-        real(TKC)           , intent(in)    , contiguous    :: weight(:)
-        real(TKC)           , intent(in)    , optional      :: weisum
+        use pm_kind, only: TKG => RK2
+        real(TKG)           , intent(in)    , contiguous    :: sample(:)
+        real(TKG)           , intent(in)    , contiguous    :: prob(:)
+        real(TKG)                                           :: quan(size(prob, 1, IK))
+        real(TKG)           , intent(in)    , contiguous    :: weight(:)
+        real(TKG)           , intent(in)    , optional      :: weisum
         type(neinear_type)  , intent(in)                    :: method
     end function
 #endif
@@ -2198,12 +2198,12 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanNEAR_ND1_QD1_WTR_RK1
 #endif
-        use pm_kind, only: TKC => RK1
-        real(TKC)           , intent(in)    , contiguous    :: sample(:)
-        real(TKC)           , intent(in)    , contiguous    :: prob(:)
-        real(TKC)                                           :: quan(size(prob, 1, IK))
-        real(TKC)           , intent(in)    , contiguous    :: weight(:)
-        real(TKC)           , intent(in)    , optional      :: weisum
+        use pm_kind, only: TKG => RK1
+        real(TKG)           , intent(in)    , contiguous    :: sample(:)
+        real(TKG)           , intent(in)    , contiguous    :: prob(:)
+        real(TKG)                                           :: quan(size(prob, 1, IK))
+        real(TKG)           , intent(in)    , contiguous    :: weight(:)
+        real(TKG)           , intent(in)    , optional      :: weisum
         type(neinear_type)  , intent(in)                    :: method
     end function
 #endif
@@ -2223,12 +2223,12 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanNEXT_ND1_QD0_WTR_RK5
 #endif
-        use pm_kind, only: TKC => RK5
-        real(TKC)                                           :: quan
-        real(TKC)           , intent(in)                    :: prob
-        real(TKC)           , intent(in)    , contiguous    :: sample(:)
-        real(TKC)           , intent(in)    , contiguous    :: weight(:)
-        real(TKC)           , intent(in)    , optional      :: weisum
+        use pm_kind, only: TKG => RK5
+        real(TKG)                                           :: quan
+        real(TKG)           , intent(in)                    :: prob
+        real(TKG)           , intent(in)    , contiguous    :: sample(:)
+        real(TKG)           , intent(in)    , contiguous    :: weight(:)
+        real(TKG)           , intent(in)    , optional      :: weisum
         type(neinext_type)  , intent(in)                    :: method
     end function
 #endif
@@ -2238,12 +2238,12 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanNEXT_ND1_QD0_WTR_RK4
 #endif
-        use pm_kind, only: TKC => RK4
-        real(TKC)                                           :: quan
-        real(TKC)           , intent(in)                    :: prob
-        real(TKC)           , intent(in)    , contiguous    :: sample(:)
-        real(TKC)           , intent(in)    , contiguous    :: weight(:)
-        real(TKC)           , intent(in)    , optional      :: weisum
+        use pm_kind, only: TKG => RK4
+        real(TKG)                                           :: quan
+        real(TKG)           , intent(in)                    :: prob
+        real(TKG)           , intent(in)    , contiguous    :: sample(:)
+        real(TKG)           , intent(in)    , contiguous    :: weight(:)
+        real(TKG)           , intent(in)    , optional      :: weisum
         type(neinext_type)  , intent(in)                    :: method
     end function
 #endif
@@ -2253,12 +2253,12 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanNEXT_ND1_QD0_WTR_RK3
 #endif
-        use pm_kind, only: TKC => RK3
-        real(TKC)                                           :: quan
-        real(TKC)           , intent(in)                    :: prob
-        real(TKC)           , intent(in)    , contiguous    :: sample(:)
-        real(TKC)           , intent(in)    , contiguous    :: weight(:)
-        real(TKC)           , intent(in)    , optional      :: weisum
+        use pm_kind, only: TKG => RK3
+        real(TKG)                                           :: quan
+        real(TKG)           , intent(in)                    :: prob
+        real(TKG)           , intent(in)    , contiguous    :: sample(:)
+        real(TKG)           , intent(in)    , contiguous    :: weight(:)
+        real(TKG)           , intent(in)    , optional      :: weisum
         type(neinext_type)  , intent(in)                    :: method
     end function
 #endif
@@ -2268,12 +2268,12 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanNEXT_ND1_QD0_WTR_RK2
 #endif
-        use pm_kind, only: TKC => RK2
-        real(TKC)           , intent(in)                    :: prob
-        real(TKC)                                           :: quan
-        real(TKC)           , intent(in)    , contiguous    :: sample(:)
-        real(TKC)           , intent(in)    , contiguous    :: weight(:)
-        real(TKC)           , intent(in)    , optional      :: weisum
+        use pm_kind, only: TKG => RK2
+        real(TKG)           , intent(in)                    :: prob
+        real(TKG)                                           :: quan
+        real(TKG)           , intent(in)    , contiguous    :: sample(:)
+        real(TKG)           , intent(in)    , contiguous    :: weight(:)
+        real(TKG)           , intent(in)    , optional      :: weisum
         type(neinext_type)  , intent(in)                    :: method
     end function
 #endif
@@ -2283,12 +2283,12 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanNEXT_ND1_QD0_WTR_RK1
 #endif
-        use pm_kind, only: TKC => RK1
-        real(TKC)                                           :: quan
-        real(TKC)           , intent(in)                    :: prob
-        real(TKC)           , intent(in)    , contiguous    :: sample(:)
-        real(TKC)           , intent(in)    , contiguous    :: weight(:)
-        real(TKC)           , intent(in)    , optional      :: weisum
+        use pm_kind, only: TKG => RK1
+        real(TKG)                                           :: quan
+        real(TKG)           , intent(in)                    :: prob
+        real(TKG)           , intent(in)    , contiguous    :: sample(:)
+        real(TKG)           , intent(in)    , contiguous    :: weight(:)
+        real(TKG)           , intent(in)    , optional      :: weisum
         type(neinext_type)  , intent(in)                    :: method
     end function
 #endif
@@ -2300,12 +2300,12 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanNEXT_ND1_QD1_WTR_RK5
 #endif
-        use pm_kind, only: TKC => RK5
-        real(TKC)           , intent(in)    , contiguous    :: sample(:)
-        real(TKC)           , intent(in)    , contiguous    :: prob(:)
-        real(TKC)                                           :: quan(size(prob, 1, IK))
-        real(TKC)           , intent(in)    , contiguous    :: weight(:)
-        real(TKC)           , intent(in)    , optional      :: weisum
+        use pm_kind, only: TKG => RK5
+        real(TKG)           , intent(in)    , contiguous    :: sample(:)
+        real(TKG)           , intent(in)    , contiguous    :: prob(:)
+        real(TKG)                                           :: quan(size(prob, 1, IK))
+        real(TKG)           , intent(in)    , contiguous    :: weight(:)
+        real(TKG)           , intent(in)    , optional      :: weisum
         type(neinext_type)  , intent(in)                    :: method
     end function
 #endif
@@ -2315,12 +2315,12 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanNEXT_ND1_QD1_WTR_RK4
 #endif
-        use pm_kind, only: TKC => RK4
-        real(TKC)           , intent(in)    , contiguous    :: sample(:)
-        real(TKC)           , intent(in)    , contiguous    :: prob(:)
-        real(TKC)                                           :: quan(size(prob, 1, IK))
-        real(TKC)           , intent(in)    , contiguous    :: weight(:)
-        real(TKC)           , intent(in)    , optional      :: weisum
+        use pm_kind, only: TKG => RK4
+        real(TKG)           , intent(in)    , contiguous    :: sample(:)
+        real(TKG)           , intent(in)    , contiguous    :: prob(:)
+        real(TKG)                                           :: quan(size(prob, 1, IK))
+        real(TKG)           , intent(in)    , contiguous    :: weight(:)
+        real(TKG)           , intent(in)    , optional      :: weisum
         type(neinext_type)  , intent(in)                    :: method
     end function
 #endif
@@ -2330,12 +2330,12 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanNEXT_ND1_QD1_WTR_RK3
 #endif
-        use pm_kind, only: TKC => RK3
-        real(TKC)           , intent(in)    , contiguous    :: sample(:)
-        real(TKC)           , intent(in)    , contiguous    :: prob(:)
-        real(TKC)                                           :: quan(size(prob, 1, IK))
-        real(TKC)           , intent(in)    , contiguous    :: weight(:)
-        real(TKC)           , intent(in)    , optional      :: weisum
+        use pm_kind, only: TKG => RK3
+        real(TKG)           , intent(in)    , contiguous    :: sample(:)
+        real(TKG)           , intent(in)    , contiguous    :: prob(:)
+        real(TKG)                                           :: quan(size(prob, 1, IK))
+        real(TKG)           , intent(in)    , contiguous    :: weight(:)
+        real(TKG)           , intent(in)    , optional      :: weisum
         type(neinext_type)  , intent(in)                    :: method
     end function
 #endif
@@ -2345,12 +2345,12 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanNEXT_ND1_QD1_WTR_RK2
 #endif
-        use pm_kind, only: TKC => RK2
-        real(TKC)           , intent(in)    , contiguous    :: sample(:)
-        real(TKC)           , intent(in)    , contiguous    :: prob(:)
-        real(TKC)                                           :: quan(size(prob, 1, IK))
-        real(TKC)           , intent(in)    , contiguous    :: weight(:)
-        real(TKC)           , intent(in)    , optional      :: weisum
+        use pm_kind, only: TKG => RK2
+        real(TKG)           , intent(in)    , contiguous    :: sample(:)
+        real(TKG)           , intent(in)    , contiguous    :: prob(:)
+        real(TKG)                                           :: quan(size(prob, 1, IK))
+        real(TKG)           , intent(in)    , contiguous    :: weight(:)
+        real(TKG)           , intent(in)    , optional      :: weisum
         type(neinext_type)  , intent(in)                    :: method
     end function
 #endif
@@ -2360,12 +2360,12 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanNEXT_ND1_QD1_WTR_RK1
 #endif
-        use pm_kind, only: TKC => RK1
-        real(TKC)           , intent(in)    , contiguous    :: sample(:)
-        real(TKC)           , intent(in)    , contiguous    :: prob(:)
-        real(TKC)                                           :: quan(size(prob, 1, IK))
-        real(TKC)           , intent(in)    , contiguous    :: weight(:)
-        real(TKC)           , intent(in)    , optional      :: weisum
+        use pm_kind, only: TKG => RK1
+        real(TKG)           , intent(in)    , contiguous    :: sample(:)
+        real(TKG)           , intent(in)    , contiguous    :: prob(:)
+        real(TKG)                                           :: quan(size(prob, 1, IK))
+        real(TKG)           , intent(in)    , contiguous    :: weight(:)
+        real(TKG)           , intent(in)    , optional      :: weisum
         type(neinext_type)  , intent(in)                    :: method
     end function
 #endif
@@ -2385,12 +2385,12 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanPREV_ND1_QD0_WTR_RK5
 #endif
-        use pm_kind, only: TKC => RK5
-        real(TKC)                                           :: quan
-        real(TKC)           , intent(in)                    :: prob
-        real(TKC)           , intent(in)    , contiguous    :: sample(:)
-        real(TKC)           , intent(in)    , contiguous    :: weight(:)
-        real(TKC)           , intent(in)    , optional      :: weisum
+        use pm_kind, only: TKG => RK5
+        real(TKG)                                           :: quan
+        real(TKG)           , intent(in)                    :: prob
+        real(TKG)           , intent(in)    , contiguous    :: sample(:)
+        real(TKG)           , intent(in)    , contiguous    :: weight(:)
+        real(TKG)           , intent(in)    , optional      :: weisum
         type(neiprev_type)  , intent(in)                    :: method
     end function
 #endif
@@ -2400,12 +2400,12 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanPREV_ND1_QD0_WTR_RK4
 #endif
-        use pm_kind, only: TKC => RK4
-        real(TKC)                                           :: quan
-        real(TKC)           , intent(in)                    :: prob
-        real(TKC)           , intent(in)    , contiguous    :: sample(:)
-        real(TKC)           , intent(in)    , contiguous    :: weight(:)
-        real(TKC)           , intent(in)    , optional      :: weisum
+        use pm_kind, only: TKG => RK4
+        real(TKG)                                           :: quan
+        real(TKG)           , intent(in)                    :: prob
+        real(TKG)           , intent(in)    , contiguous    :: sample(:)
+        real(TKG)           , intent(in)    , contiguous    :: weight(:)
+        real(TKG)           , intent(in)    , optional      :: weisum
         type(neiprev_type)  , intent(in)                    :: method
     end function
 #endif
@@ -2415,12 +2415,12 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanPREV_ND1_QD0_WTR_RK3
 #endif
-        use pm_kind, only: TKC => RK3
-        real(TKC)                                           :: quan
-        real(TKC)           , intent(in)                    :: prob
-        real(TKC)           , intent(in)    , contiguous    :: sample(:)
-        real(TKC)           , intent(in)    , contiguous    :: weight(:)
-        real(TKC)           , intent(in)    , optional      :: weisum
+        use pm_kind, only: TKG => RK3
+        real(TKG)                                           :: quan
+        real(TKG)           , intent(in)                    :: prob
+        real(TKG)           , intent(in)    , contiguous    :: sample(:)
+        real(TKG)           , intent(in)    , contiguous    :: weight(:)
+        real(TKG)           , intent(in)    , optional      :: weisum
         type(neiprev_type)  , intent(in)                    :: method
     end function
 #endif
@@ -2430,12 +2430,12 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanPREV_ND1_QD0_WTR_RK2
 #endif
-        use pm_kind, only: TKC => RK2
-        real(TKC)                                           :: quan
-        real(TKC)           , intent(in)                    :: prob
-        real(TKC)           , intent(in)    , contiguous    :: sample(:)
-        real(TKC)           , intent(in)    , contiguous    :: weight(:)
-        real(TKC)           , intent(in)    , optional      :: weisum
+        use pm_kind, only: TKG => RK2
+        real(TKG)                                           :: quan
+        real(TKG)           , intent(in)                    :: prob
+        real(TKG)           , intent(in)    , contiguous    :: sample(:)
+        real(TKG)           , intent(in)    , contiguous    :: weight(:)
+        real(TKG)           , intent(in)    , optional      :: weisum
         type(neiprev_type)  , intent(in)                    :: method
     end function
 #endif
@@ -2445,12 +2445,12 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanPREV_ND1_QD0_WTR_RK1
 #endif
-        use pm_kind, only: TKC => RK1
-        real(TKC)                                           :: quan
-        real(TKC)           , intent(in)                    :: prob
-        real(TKC)           , intent(in)    , contiguous    :: sample(:)
-        real(TKC)           , intent(in)    , contiguous    :: weight(:)
-        real(TKC)           , intent(in)    , optional      :: weisum
+        use pm_kind, only: TKG => RK1
+        real(TKG)                                           :: quan
+        real(TKG)           , intent(in)                    :: prob
+        real(TKG)           , intent(in)    , contiguous    :: sample(:)
+        real(TKG)           , intent(in)    , contiguous    :: weight(:)
+        real(TKG)           , intent(in)    , optional      :: weisum
         type(neiprev_type)  , intent(in)                    :: method
     end function
 #endif
@@ -2462,12 +2462,12 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanPREV_ND1_QD1_WTR_RK5
 #endif
-        use pm_kind, only: TKC => RK5
-        real(TKC)           , intent(in)    , contiguous    :: sample(:)
-        real(TKC)           , intent(in)    , contiguous    :: prob(:)
-        real(TKC)                                           :: quan(size(prob, 1, IK))
-        real(TKC)           , intent(in)    , contiguous    :: weight(:)
-        real(TKC)           , intent(in)    , optional      :: weisum
+        use pm_kind, only: TKG => RK5
+        real(TKG)           , intent(in)    , contiguous    :: sample(:)
+        real(TKG)           , intent(in)    , contiguous    :: prob(:)
+        real(TKG)                                           :: quan(size(prob, 1, IK))
+        real(TKG)           , intent(in)    , contiguous    :: weight(:)
+        real(TKG)           , intent(in)    , optional      :: weisum
         type(neiprev_type)  , intent(in)                    :: method
     end function
 #endif
@@ -2477,12 +2477,12 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanPREV_ND1_QD1_WTR_RK4
 #endif
-        use pm_kind, only: TKC => RK4
-        real(TKC)           , intent(in)    , contiguous    :: sample(:)
-        real(TKC)           , intent(in)    , contiguous    :: prob(:)
-        real(TKC)                                           :: quan(size(prob, 1, IK))
-        real(TKC)           , intent(in)    , contiguous    :: weight(:)
-        real(TKC)           , intent(in)    , optional      :: weisum
+        use pm_kind, only: TKG => RK4
+        real(TKG)           , intent(in)    , contiguous    :: sample(:)
+        real(TKG)           , intent(in)    , contiguous    :: prob(:)
+        real(TKG)                                           :: quan(size(prob, 1, IK))
+        real(TKG)           , intent(in)    , contiguous    :: weight(:)
+        real(TKG)           , intent(in)    , optional      :: weisum
         type(neiprev_type)  , intent(in)                    :: method
     end function
 #endif
@@ -2492,12 +2492,12 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanPREV_ND1_QD1_WTR_RK3
 #endif
-        use pm_kind, only: TKC => RK3
-        real(TKC)           , intent(in)    , contiguous    :: sample(:)
-        real(TKC)           , intent(in)    , contiguous    :: prob(:)
-        real(TKC)                                           :: quan(size(prob, 1, IK))
-        real(TKC)           , intent(in)    , contiguous    :: weight(:)
-        real(TKC)           , intent(in)    , optional      :: weisum
+        use pm_kind, only: TKG => RK3
+        real(TKG)           , intent(in)    , contiguous    :: sample(:)
+        real(TKG)           , intent(in)    , contiguous    :: prob(:)
+        real(TKG)                                           :: quan(size(prob, 1, IK))
+        real(TKG)           , intent(in)    , contiguous    :: weight(:)
+        real(TKG)           , intent(in)    , optional      :: weisum
         type(neiprev_type)  , intent(in)                    :: method
     end function
 #endif
@@ -2507,12 +2507,12 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanPREV_ND1_QD1_WTR_RK2
 #endif
-        use pm_kind, only: TKC => RK2
-        real(TKC)           , intent(in)    , contiguous    :: sample(:)
-        real(TKC)           , intent(in)    , contiguous    :: prob(:)
-        real(TKC)                                           :: quan(size(prob, 1, IK))
-        real(TKC)           , intent(in)    , contiguous    :: weight(:)
-        real(TKC)           , intent(in)    , optional      :: weisum
+        use pm_kind, only: TKG => RK2
+        real(TKG)           , intent(in)    , contiguous    :: sample(:)
+        real(TKG)           , intent(in)    , contiguous    :: prob(:)
+        real(TKG)                                           :: quan(size(prob, 1, IK))
+        real(TKG)           , intent(in)    , contiguous    :: weight(:)
+        real(TKG)           , intent(in)    , optional      :: weisum
         type(neiprev_type)  , intent(in)                    :: method
     end function
 #endif
@@ -2522,12 +2522,12 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanPREV_ND1_QD1_WTR_RK1
 #endif
-        use pm_kind, only: TKC => RK1
-        real(TKC)           , intent(in)    , contiguous    :: sample(:)
-        real(TKC)           , intent(in)    , contiguous    :: prob(:)
-        real(TKC)                                           :: quan(size(prob, 1, IK))
-        real(TKC)           , intent(in)    , contiguous    :: weight(:)
-        real(TKC)           , intent(in)    , optional      :: weisum
+        use pm_kind, only: TKG => RK1
+        real(TKG)           , intent(in)    , contiguous    :: sample(:)
+        real(TKG)           , intent(in)    , contiguous    :: prob(:)
+        real(TKG)                                           :: quan(size(prob, 1, IK))
+        real(TKG)           , intent(in)    , contiguous    :: weight(:)
+        real(TKG)           , intent(in)    , optional      :: weisum
         type(neiprev_type)  , intent(in)                    :: method
     end function
 #endif
@@ -2549,11 +2549,11 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanPWLN_ND2_QD0_WNO_RK5
 #endif
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
         integer(IK)         , intent(in)                    :: dim
-        real(TKC)           , intent(in)    , contiguous    :: sample(:,:)
-        real(TKC)           , intent(in)                    :: prob
-        real(TKC)                                           :: quan(size(sample, 3 - dim, IK))
+        real(TKG)           , intent(in)    , contiguous    :: sample(:,:)
+        real(TKG)           , intent(in)                    :: prob
+        real(TKG)                                           :: quan(size(sample, 3 - dim, IK))
         type(piwilin_type)  , intent(in)                    :: method
     end function
 #endif
@@ -2563,11 +2563,11 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanPWLN_ND2_QD0_WNO_RK4
 #endif
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
         integer(IK)         , intent(in)                    :: dim
-        real(TKC)           , intent(in)    , contiguous    :: sample(:,:)
-        real(TKC)           , intent(in)                    :: prob
-        real(TKC)                                           :: quan(size(sample, 3 - dim, IK))
+        real(TKG)           , intent(in)    , contiguous    :: sample(:,:)
+        real(TKG)           , intent(in)                    :: prob
+        real(TKG)                                           :: quan(size(sample, 3 - dim, IK))
         type(piwilin_type)  , intent(in)                    :: method
     end function
 #endif
@@ -2577,11 +2577,11 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanPWLN_ND2_QD0_WNO_RK3
 #endif
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
         integer(IK)         , intent(in)                    :: dim
-        real(TKC)           , intent(in)    , contiguous    :: sample(:,:)
-        real(TKC)           , intent(in)                    :: prob
-        real(TKC)                                           :: quan(size(sample, 3 - dim, IK))
+        real(TKG)           , intent(in)    , contiguous    :: sample(:,:)
+        real(TKG)           , intent(in)                    :: prob
+        real(TKG)                                           :: quan(size(sample, 3 - dim, IK))
         type(piwilin_type)  , intent(in)                    :: method
     end function
 #endif
@@ -2591,11 +2591,11 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanPWLN_ND2_QD0_WNO_RK2
 #endif
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
         integer(IK)         , intent(in)                    :: dim
-        real(TKC)           , intent(in)    , contiguous    :: sample(:,:)
-        real(TKC)           , intent(in)                    :: prob
-        real(TKC)                                           :: quan(size(sample, 3 - dim, IK))
+        real(TKG)           , intent(in)    , contiguous    :: sample(:,:)
+        real(TKG)           , intent(in)                    :: prob
+        real(TKG)                                           :: quan(size(sample, 3 - dim, IK))
         type(piwilin_type)  , intent(in)                    :: method
     end function
 #endif
@@ -2605,11 +2605,11 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanPWLN_ND2_QD0_WNO_RK1
 #endif
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
         integer(IK)         , intent(in)                    :: dim
-        real(TKC)           , intent(in)    , contiguous    :: sample(:,:)
-        real(TKC)           , intent(in)                    :: prob
-        real(TKC)                                           :: quan(size(sample, 3 - dim, IK))
+        real(TKG)           , intent(in)    , contiguous    :: sample(:,:)
+        real(TKG)           , intent(in)                    :: prob
+        real(TKG)                                           :: quan(size(sample, 3 - dim, IK))
         type(piwilin_type)  , intent(in)                    :: method
     end function
 #endif
@@ -2621,11 +2621,11 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanPWLN_ND2_QD1_WNO_RK5
 #endif
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
         integer(IK)         , intent(in)                    :: dim
-        real(TKC)           , intent(in)    , contiguous    :: sample(:,:)
-        real(TKC)           , intent(in)    , contiguous    :: prob(:)
-        real(TKC)                                           :: quan(size(prob, 1, IK), size(sample, 3 - dim, IK))
+        real(TKG)           , intent(in)    , contiguous    :: sample(:,:)
+        real(TKG)           , intent(in)    , contiguous    :: prob(:)
+        real(TKG)                                           :: quan(size(prob, 1, IK), size(sample, 3 - dim, IK))
         type(piwilin_type)  , intent(in)                    :: method
     end function
 #endif
@@ -2635,11 +2635,11 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanPWLN_ND2_QD1_WNO_RK4
 #endif
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
         integer(IK)         , intent(in)                    :: dim
-        real(TKC)           , intent(in)    , contiguous    :: sample(:,:)
-        real(TKC)           , intent(in)    , contiguous    :: prob(:)
-        real(TKC)                                           :: quan(size(prob, 1, IK), size(sample, 3 - dim, IK))
+        real(TKG)           , intent(in)    , contiguous    :: sample(:,:)
+        real(TKG)           , intent(in)    , contiguous    :: prob(:)
+        real(TKG)                                           :: quan(size(prob, 1, IK), size(sample, 3 - dim, IK))
         type(piwilin_type)  , intent(in)                    :: method
     end function
 #endif
@@ -2649,11 +2649,11 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanPWLN_ND2_QD1_WNO_RK3
 #endif
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
         integer(IK)         , intent(in)                    :: dim
-        real(TKC)           , intent(in)    , contiguous    :: sample(:,:)
-        real(TKC)           , intent(in)    , contiguous    :: prob(:)
-        real(TKC)                                           :: quan(size(prob, 1, IK), size(sample, 3 - dim, IK))
+        real(TKG)           , intent(in)    , contiguous    :: sample(:,:)
+        real(TKG)           , intent(in)    , contiguous    :: prob(:)
+        real(TKG)                                           :: quan(size(prob, 1, IK), size(sample, 3 - dim, IK))
         type(piwilin_type)  , intent(in)                    :: method
     end function
 #endif
@@ -2663,11 +2663,11 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanPWLN_ND2_QD1_WNO_RK2
 #endif
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
         integer(IK)         , intent(in)                    :: dim
-        real(TKC)           , intent(in)    , contiguous    :: sample(:,:)
-        real(TKC)           , intent(in)    , contiguous    :: prob(:)
-        real(TKC)                                           :: quan(size(prob, 1, IK), size(sample, 3 - dim, IK))
+        real(TKG)           , intent(in)    , contiguous    :: sample(:,:)
+        real(TKG)           , intent(in)    , contiguous    :: prob(:)
+        real(TKG)                                           :: quan(size(prob, 1, IK), size(sample, 3 - dim, IK))
         type(piwilin_type)  , intent(in)                    :: method
     end function
 #endif
@@ -2677,11 +2677,11 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanPWLN_ND2_QD1_WNO_RK1
 #endif
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
         integer(IK)         , intent(in)                    :: dim
-        real(TKC)           , intent(in)    , contiguous    :: sample(:,:)
-        real(TKC)           , intent(in)    , contiguous    :: prob(:)
-        real(TKC)                                           :: quan(size(prob, 1, IK), size(sample, 3 - dim, IK))
+        real(TKG)           , intent(in)    , contiguous    :: sample(:,:)
+        real(TKG)           , intent(in)    , contiguous    :: prob(:)
+        real(TKG)                                           :: quan(size(prob, 1, IK), size(sample, 3 - dim, IK))
         type(piwilin_type)  , intent(in)                    :: method
     end function
 #endif
@@ -2701,11 +2701,11 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanMEAN_ND2_QD0_WNO_RK5
 #endif
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
         integer(IK)         , intent(in)                    :: dim
-        real(TKC)           , intent(in)    , contiguous    :: sample(:,:)
-        real(TKC)           , intent(in)                    :: prob
-        real(TKC)                                           :: quan(size(sample, 3 - dim, IK))
+        real(TKG)           , intent(in)    , contiguous    :: sample(:,:)
+        real(TKG)           , intent(in)                    :: prob
+        real(TKG)                                           :: quan(size(sample, 3 - dim, IK))
         type(neimean_type)  , intent(in)                    :: method
     end function
 #endif
@@ -2715,11 +2715,11 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanMEAN_ND2_QD0_WNO_RK4
 #endif
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
         integer(IK)         , intent(in)                    :: dim
-        real(TKC)           , intent(in)    , contiguous    :: sample(:,:)
-        real(TKC)           , intent(in)                    :: prob
-        real(TKC)                                           :: quan(size(sample, 3 - dim, IK))
+        real(TKG)           , intent(in)    , contiguous    :: sample(:,:)
+        real(TKG)           , intent(in)                    :: prob
+        real(TKG)                                           :: quan(size(sample, 3 - dim, IK))
         type(neimean_type)  , intent(in)                    :: method
     end function
 #endif
@@ -2729,11 +2729,11 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanMEAN_ND2_QD0_WNO_RK3
 #endif
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
         integer(IK)         , intent(in)                    :: dim
-        real(TKC)           , intent(in)    , contiguous    :: sample(:,:)
-        real(TKC)           , intent(in)                    :: prob
-        real(TKC)                                           :: quan(size(sample, 3 - dim, IK))
+        real(TKG)           , intent(in)    , contiguous    :: sample(:,:)
+        real(TKG)           , intent(in)                    :: prob
+        real(TKG)                                           :: quan(size(sample, 3 - dim, IK))
         type(neimean_type)  , intent(in)                    :: method
     end function
 #endif
@@ -2743,11 +2743,11 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanMEAN_ND2_QD0_WNO_RK2
 #endif
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
         integer(IK)         , intent(in)                    :: dim
-        real(TKC)           , intent(in)    , contiguous    :: sample(:,:)
-        real(TKC)           , intent(in)                    :: prob
-        real(TKC)                                           :: quan(size(sample, 3 - dim, IK))
+        real(TKG)           , intent(in)    , contiguous    :: sample(:,:)
+        real(TKG)           , intent(in)                    :: prob
+        real(TKG)                                           :: quan(size(sample, 3 - dim, IK))
         type(neimean_type)  , intent(in)                    :: method
     end function
 #endif
@@ -2757,11 +2757,11 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanMEAN_ND2_QD0_WNO_RK1
 #endif
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
         integer(IK)         , intent(in)                    :: dim
-        real(TKC)           , intent(in)    , contiguous    :: sample(:,:)
-        real(TKC)           , intent(in)                    :: prob
-        real(TKC)                                           :: quan(size(sample, 3 - dim, IK))
+        real(TKG)           , intent(in)    , contiguous    :: sample(:,:)
+        real(TKG)           , intent(in)                    :: prob
+        real(TKG)                                           :: quan(size(sample, 3 - dim, IK))
         type(neimean_type)  , intent(in)                    :: method
     end function
 #endif
@@ -2773,11 +2773,11 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanMEAN_ND2_QD1_WNO_RK5
 #endif
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
         integer(IK)         , intent(in)                    :: dim
-        real(TKC)           , intent(in)    , contiguous    :: sample(:,:)
-        real(TKC)           , intent(in)    , contiguous    :: prob(:)
-        real(TKC)                                           :: quan(size(prob, 1, IK), size(sample, 3 - dim, IK))
+        real(TKG)           , intent(in)    , contiguous    :: sample(:,:)
+        real(TKG)           , intent(in)    , contiguous    :: prob(:)
+        real(TKG)                                           :: quan(size(prob, 1, IK), size(sample, 3 - dim, IK))
         type(neimean_type)  , intent(in)                    :: method
     end function
 #endif
@@ -2787,11 +2787,11 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanMEAN_ND2_QD1_WNO_RK4
 #endif
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
         integer(IK)         , intent(in)                    :: dim
-        real(TKC)           , intent(in)    , contiguous    :: sample(:,:)
-        real(TKC)           , intent(in)    , contiguous    :: prob(:)
-        real(TKC)                                           :: quan(size(prob, 1, IK), size(sample, 3 - dim, IK))
+        real(TKG)           , intent(in)    , contiguous    :: sample(:,:)
+        real(TKG)           , intent(in)    , contiguous    :: prob(:)
+        real(TKG)                                           :: quan(size(prob, 1, IK), size(sample, 3 - dim, IK))
         type(neimean_type)  , intent(in)                    :: method
     end function
 #endif
@@ -2801,11 +2801,11 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanMEAN_ND2_QD1_WNO_RK3
 #endif
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
         integer(IK)         , intent(in)                    :: dim
-        real(TKC)           , intent(in)    , contiguous    :: sample(:,:)
-        real(TKC)           , intent(in)    , contiguous    :: prob(:)
-        real(TKC)                                           :: quan(size(prob, 1, IK), size(sample, 3 - dim, IK))
+        real(TKG)           , intent(in)    , contiguous    :: sample(:,:)
+        real(TKG)           , intent(in)    , contiguous    :: prob(:)
+        real(TKG)                                           :: quan(size(prob, 1, IK), size(sample, 3 - dim, IK))
         type(neimean_type)  , intent(in)                    :: method
     end function
 #endif
@@ -2815,11 +2815,11 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanMEAN_ND2_QD1_WNO_RK2
 #endif
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
         integer(IK)         , intent(in)                    :: dim
-        real(TKC)           , intent(in)    , contiguous    :: sample(:,:)
-        real(TKC)           , intent(in)    , contiguous    :: prob(:)
-        real(TKC)                                           :: quan(size(prob, 1, IK), size(sample, 3 - dim, IK))
+        real(TKG)           , intent(in)    , contiguous    :: sample(:,:)
+        real(TKG)           , intent(in)    , contiguous    :: prob(:)
+        real(TKG)                                           :: quan(size(prob, 1, IK), size(sample, 3 - dim, IK))
         type(neimean_type)  , intent(in)                    :: method
     end function
 #endif
@@ -2829,11 +2829,11 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanMEAN_ND2_QD1_WNO_RK1
 #endif
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
         integer(IK)         , intent(in)                    :: dim
-        real(TKC)           , intent(in)    , contiguous    :: sample(:,:)
-        real(TKC)           , intent(in)    , contiguous    :: prob(:)
-        real(TKC)                                           :: quan(size(prob, 1, IK), size(sample, 3 - dim, IK))
+        real(TKG)           , intent(in)    , contiguous    :: sample(:,:)
+        real(TKG)           , intent(in)    , contiguous    :: prob(:)
+        real(TKG)                                           :: quan(size(prob, 1, IK), size(sample, 3 - dim, IK))
         type(neimean_type)  , intent(in)                    :: method
     end function
 #endif
@@ -2853,11 +2853,11 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanNEAR_ND2_QD0_WNO_RK5
 #endif
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
         integer(IK)         , intent(in)                    :: dim
-        real(TKC)           , intent(in)    , contiguous    :: sample(:,:)
-        real(TKC)           , intent(in)                    :: prob
-        real(TKC)                                           :: quan(size(sample, 3 - dim, IK))
+        real(TKG)           , intent(in)    , contiguous    :: sample(:,:)
+        real(TKG)           , intent(in)                    :: prob
+        real(TKG)                                           :: quan(size(sample, 3 - dim, IK))
         type(neinear_type)  , intent(in)                    :: method
     end function
 #endif
@@ -2867,11 +2867,11 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanNEAR_ND2_QD0_WNO_RK4
 #endif
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
         integer(IK)         , intent(in)                    :: dim
-        real(TKC)           , intent(in)    , contiguous    :: sample(:,:)
-        real(TKC)           , intent(in)                    :: prob
-        real(TKC)                                           :: quan(size(sample, 3 - dim, IK))
+        real(TKG)           , intent(in)    , contiguous    :: sample(:,:)
+        real(TKG)           , intent(in)                    :: prob
+        real(TKG)                                           :: quan(size(sample, 3 - dim, IK))
         type(neinear_type)  , intent(in)                    :: method
     end function
 #endif
@@ -2881,11 +2881,11 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanNEAR_ND2_QD0_WNO_RK3
 #endif
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
         integer(IK)         , intent(in)                    :: dim
-        real(TKC)           , intent(in)    , contiguous    :: sample(:,:)
-        real(TKC)           , intent(in)                    :: prob
-        real(TKC)                                           :: quan(size(sample, 3 - dim, IK))
+        real(TKG)           , intent(in)    , contiguous    :: sample(:,:)
+        real(TKG)           , intent(in)                    :: prob
+        real(TKG)                                           :: quan(size(sample, 3 - dim, IK))
         type(neinear_type)  , intent(in)                    :: method
     end function
 #endif
@@ -2895,11 +2895,11 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanNEAR_ND2_QD0_WNO_RK2
 #endif
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
         integer(IK)         , intent(in)                    :: dim
-        real(TKC)           , intent(in)    , contiguous    :: sample(:,:)
-        real(TKC)           , intent(in)                    :: prob
-        real(TKC)                                           :: quan(size(sample, 3 - dim, IK))
+        real(TKG)           , intent(in)    , contiguous    :: sample(:,:)
+        real(TKG)           , intent(in)                    :: prob
+        real(TKG)                                           :: quan(size(sample, 3 - dim, IK))
         type(neinear_type)  , intent(in)                    :: method
     end function
 #endif
@@ -2909,11 +2909,11 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanNEAR_ND2_QD0_WNO_RK1
 #endif
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
         integer(IK)         , intent(in)                    :: dim
-        real(TKC)           , intent(in)    , contiguous    :: sample(:,:)
-        real(TKC)           , intent(in)                    :: prob
-        real(TKC)                                           :: quan(size(sample, 3 - dim, IK))
+        real(TKG)           , intent(in)    , contiguous    :: sample(:,:)
+        real(TKG)           , intent(in)                    :: prob
+        real(TKG)                                           :: quan(size(sample, 3 - dim, IK))
         type(neinear_type)  , intent(in)                    :: method
     end function
 #endif
@@ -2925,11 +2925,11 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanNEAR_ND2_QD1_WNO_RK5
 #endif
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
         integer(IK)         , intent(in)                    :: dim
-        real(TKC)           , intent(in)    , contiguous    :: sample(:,:)
-        real(TKC)           , intent(in)    , contiguous    :: prob(:)
-        real(TKC)                                           :: quan(size(prob, 1, IK), size(sample, 3 - dim, IK))
+        real(TKG)           , intent(in)    , contiguous    :: sample(:,:)
+        real(TKG)           , intent(in)    , contiguous    :: prob(:)
+        real(TKG)                                           :: quan(size(prob, 1, IK), size(sample, 3 - dim, IK))
         type(neinear_type)  , intent(in)                    :: method
     end function
 #endif
@@ -2939,11 +2939,11 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanNEAR_ND2_QD1_WNO_RK4
 #endif
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
         integer(IK)         , intent(in)                    :: dim
-        real(TKC)           , intent(in)    , contiguous    :: sample(:,:)
-        real(TKC)           , intent(in)    , contiguous    :: prob(:)
-        real(TKC)                                           :: quan(size(prob, 1, IK), size(sample, 3 - dim, IK))
+        real(TKG)           , intent(in)    , contiguous    :: sample(:,:)
+        real(TKG)           , intent(in)    , contiguous    :: prob(:)
+        real(TKG)                                           :: quan(size(prob, 1, IK), size(sample, 3 - dim, IK))
         type(neinear_type)  , intent(in)                    :: method
     end function
 #endif
@@ -2953,11 +2953,11 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanNEAR_ND2_QD1_WNO_RK3
 #endif
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
         integer(IK)         , intent(in)                    :: dim
-        real(TKC)           , intent(in)    , contiguous    :: sample(:,:)
-        real(TKC)           , intent(in)    , contiguous    :: prob(:)
-        real(TKC)                                           :: quan(size(prob, 1, IK), size(sample, 3 - dim, IK))
+        real(TKG)           , intent(in)    , contiguous    :: sample(:,:)
+        real(TKG)           , intent(in)    , contiguous    :: prob(:)
+        real(TKG)                                           :: quan(size(prob, 1, IK), size(sample, 3 - dim, IK))
         type(neinear_type)  , intent(in)                    :: method
     end function
 #endif
@@ -2967,11 +2967,11 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanNEAR_ND2_QD1_WNO_RK2
 #endif
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
         integer(IK)         , intent(in)                    :: dim
-        real(TKC)           , intent(in)    , contiguous    :: sample(:,:)
-        real(TKC)           , intent(in)    , contiguous    :: prob(:)
-        real(TKC)                                           :: quan(size(prob, 1, IK), size(sample, 3 - dim, IK))
+        real(TKG)           , intent(in)    , contiguous    :: sample(:,:)
+        real(TKG)           , intent(in)    , contiguous    :: prob(:)
+        real(TKG)                                           :: quan(size(prob, 1, IK), size(sample, 3 - dim, IK))
         type(neinear_type)  , intent(in)                    :: method
     end function
 #endif
@@ -2981,11 +2981,11 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanNEAR_ND2_QD1_WNO_RK1
 #endif
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
         integer(IK)         , intent(in)                    :: dim
-        real(TKC)           , intent(in)    , contiguous    :: sample(:,:)
-        real(TKC)           , intent(in)    , contiguous    :: prob(:)
-        real(TKC)                                           :: quan(size(prob, 1, IK), size(sample, 3 - dim, IK))
+        real(TKG)           , intent(in)    , contiguous    :: sample(:,:)
+        real(TKG)           , intent(in)    , contiguous    :: prob(:)
+        real(TKG)                                           :: quan(size(prob, 1, IK), size(sample, 3 - dim, IK))
         type(neinear_type)  , intent(in)                    :: method
     end function
 #endif
@@ -3005,11 +3005,11 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanNEXT_ND2_QD0_WNO_RK5
 #endif
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
         integer(IK)         , intent(in)                    :: dim
-        real(TKC)           , intent(in)    , contiguous    :: sample(:,:)
-        real(TKC)           , intent(in)                    :: prob
-        real(TKC)                                           :: quan(size(sample, 3 - dim, IK))
+        real(TKG)           , intent(in)    , contiguous    :: sample(:,:)
+        real(TKG)           , intent(in)                    :: prob
+        real(TKG)                                           :: quan(size(sample, 3 - dim, IK))
         type(neinext_type)  , intent(in)                    :: method
     end function
 #endif
@@ -3019,11 +3019,11 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanNEXT_ND2_QD0_WNO_RK4
 #endif
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
         integer(IK)         , intent(in)                    :: dim
-        real(TKC)           , intent(in)    , contiguous    :: sample(:,:)
-        real(TKC)           , intent(in)                    :: prob
-        real(TKC)                                           :: quan(size(sample, 3 - dim, IK))
+        real(TKG)           , intent(in)    , contiguous    :: sample(:,:)
+        real(TKG)           , intent(in)                    :: prob
+        real(TKG)                                           :: quan(size(sample, 3 - dim, IK))
         type(neinext_type)  , intent(in)                    :: method
     end function
 #endif
@@ -3033,11 +3033,11 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanNEXT_ND2_QD0_WNO_RK3
 #endif
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
         integer(IK)         , intent(in)                    :: dim
-        real(TKC)           , intent(in)    , contiguous    :: sample(:,:)
-        real(TKC)           , intent(in)                    :: prob
-        real(TKC)                                           :: quan(size(sample, 3 - dim, IK))
+        real(TKG)           , intent(in)    , contiguous    :: sample(:,:)
+        real(TKG)           , intent(in)                    :: prob
+        real(TKG)                                           :: quan(size(sample, 3 - dim, IK))
         type(neinext_type)  , intent(in)                    :: method
     end function
 #endif
@@ -3047,11 +3047,11 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanNEXT_ND2_QD0_WNO_RK2
 #endif
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
         integer(IK)         , intent(in)                    :: dim
-        real(TKC)           , intent(in)    , contiguous    :: sample(:,:)
-        real(TKC)           , intent(in)                    :: prob
-        real(TKC)                                           :: quan(size(sample, 3 - dim, IK))
+        real(TKG)           , intent(in)    , contiguous    :: sample(:,:)
+        real(TKG)           , intent(in)                    :: prob
+        real(TKG)                                           :: quan(size(sample, 3 - dim, IK))
         type(neinext_type)  , intent(in)                    :: method
     end function
 #endif
@@ -3061,11 +3061,11 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanNEXT_ND2_QD0_WNO_RK1
 #endif
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
         integer(IK)         , intent(in)                    :: dim
-        real(TKC)           , intent(in)    , contiguous    :: sample(:,:)
-        real(TKC)           , intent(in)                    :: prob
-        real(TKC)                                           :: quan(size(sample, 3 - dim, IK))
+        real(TKG)           , intent(in)    , contiguous    :: sample(:,:)
+        real(TKG)           , intent(in)                    :: prob
+        real(TKG)                                           :: quan(size(sample, 3 - dim, IK))
         type(neinext_type)  , intent(in)                    :: method
     end function
 #endif
@@ -3077,11 +3077,11 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanNEXT_ND2_QD1_WNO_RK5
 #endif
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
         integer(IK)         , intent(in)                    :: dim
-        real(TKC)           , intent(in)    , contiguous    :: sample(:,:)
-        real(TKC)           , intent(in)    , contiguous    :: prob(:)
-        real(TKC)                                           :: quan(size(prob, 1, IK), size(sample, 3 - dim, IK))
+        real(TKG)           , intent(in)    , contiguous    :: sample(:,:)
+        real(TKG)           , intent(in)    , contiguous    :: prob(:)
+        real(TKG)                                           :: quan(size(prob, 1, IK), size(sample, 3 - dim, IK))
         type(neinext_type)  , intent(in)                    :: method
     end function
 #endif
@@ -3091,11 +3091,11 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanNEXT_ND2_QD1_WNO_RK4
 #endif
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
         integer(IK)         , intent(in)                    :: dim
-        real(TKC)           , intent(in)    , contiguous    :: sample(:,:)
-        real(TKC)           , intent(in)    , contiguous    :: prob(:)
-        real(TKC)                                           :: quan(size(prob, 1, IK), size(sample, 3 - dim, IK))
+        real(TKG)           , intent(in)    , contiguous    :: sample(:,:)
+        real(TKG)           , intent(in)    , contiguous    :: prob(:)
+        real(TKG)                                           :: quan(size(prob, 1, IK), size(sample, 3 - dim, IK))
         type(neinext_type)  , intent(in)                    :: method
     end function
 #endif
@@ -3105,11 +3105,11 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanNEXT_ND2_QD1_WNO_RK3
 #endif
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
         integer(IK)         , intent(in)                    :: dim
-        real(TKC)           , intent(in)    , contiguous    :: sample(:,:)
-        real(TKC)           , intent(in)    , contiguous    :: prob(:)
-        real(TKC)                                           :: quan(size(prob, 1, IK), size(sample, 3 - dim, IK))
+        real(TKG)           , intent(in)    , contiguous    :: sample(:,:)
+        real(TKG)           , intent(in)    , contiguous    :: prob(:)
+        real(TKG)                                           :: quan(size(prob, 1, IK), size(sample, 3 - dim, IK))
         type(neinext_type)  , intent(in)                    :: method
     end function
 #endif
@@ -3119,11 +3119,11 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanNEXT_ND2_QD1_WNO_RK2
 #endif
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
         integer(IK)         , intent(in)                    :: dim
-        real(TKC)           , intent(in)    , contiguous    :: sample(:,:)
-        real(TKC)           , intent(in)    , contiguous    :: prob(:)
-        real(TKC)                                           :: quan(size(prob, 1, IK), size(sample, 3 - dim, IK))
+        real(TKG)           , intent(in)    , contiguous    :: sample(:,:)
+        real(TKG)           , intent(in)    , contiguous    :: prob(:)
+        real(TKG)                                           :: quan(size(prob, 1, IK), size(sample, 3 - dim, IK))
         type(neinext_type)  , intent(in)                    :: method
     end function
 #endif
@@ -3133,11 +3133,11 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanNEXT_ND2_QD1_WNO_RK1
 #endif
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
         integer(IK)         , intent(in)                    :: dim
-        real(TKC)           , intent(in)    , contiguous    :: sample(:,:)
-        real(TKC)           , intent(in)    , contiguous    :: prob(:)
-        real(TKC)                                           :: quan(size(prob, 1, IK), size(sample, 3 - dim, IK))
+        real(TKG)           , intent(in)    , contiguous    :: sample(:,:)
+        real(TKG)           , intent(in)    , contiguous    :: prob(:)
+        real(TKG)                                           :: quan(size(prob, 1, IK), size(sample, 3 - dim, IK))
         type(neinext_type)  , intent(in)                    :: method
     end function
 #endif
@@ -3157,11 +3157,11 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanPREV_ND2_QD0_WNO_RK5
 #endif
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
         integer(IK)         , intent(in)                    :: dim
-        real(TKC)           , intent(in)    , contiguous    :: sample(:,:)
-        real(TKC)           , intent(in)                    :: prob
-        real(TKC)                                           :: quan(size(sample, 3 - dim, IK))
+        real(TKG)           , intent(in)    , contiguous    :: sample(:,:)
+        real(TKG)           , intent(in)                    :: prob
+        real(TKG)                                           :: quan(size(sample, 3 - dim, IK))
         type(neiprev_type)  , intent(in)                    :: method
     end function
 #endif
@@ -3171,11 +3171,11 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanPREV_ND2_QD0_WNO_RK4
 #endif
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
         integer(IK)         , intent(in)                    :: dim
-        real(TKC)           , intent(in)    , contiguous    :: sample(:,:)
-        real(TKC)           , intent(in)                    :: prob
-        real(TKC)                                           :: quan(size(sample, 3 - dim, IK))
+        real(TKG)           , intent(in)    , contiguous    :: sample(:,:)
+        real(TKG)           , intent(in)                    :: prob
+        real(TKG)                                           :: quan(size(sample, 3 - dim, IK))
         type(neiprev_type)  , intent(in)                    :: method
     end function
 #endif
@@ -3185,11 +3185,11 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanPREV_ND2_QD0_WNO_RK3
 #endif
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
         integer(IK)         , intent(in)                    :: dim
-        real(TKC)           , intent(in)    , contiguous    :: sample(:,:)
-        real(TKC)           , intent(in)                    :: prob
-        real(TKC)                                           :: quan(size(sample, 3 - dim, IK))
+        real(TKG)           , intent(in)    , contiguous    :: sample(:,:)
+        real(TKG)           , intent(in)                    :: prob
+        real(TKG)                                           :: quan(size(sample, 3 - dim, IK))
         type(neiprev_type)  , intent(in)                    :: method
     end function
 #endif
@@ -3199,11 +3199,11 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanPREV_ND2_QD0_WNO_RK2
 #endif
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
         integer(IK)         , intent(in)                    :: dim
-        real(TKC)           , intent(in)    , contiguous    :: sample(:,:)
-        real(TKC)           , intent(in)                    :: prob
-        real(TKC)                                           :: quan(size(sample, 3 - dim, IK))
+        real(TKG)           , intent(in)    , contiguous    :: sample(:,:)
+        real(TKG)           , intent(in)                    :: prob
+        real(TKG)                                           :: quan(size(sample, 3 - dim, IK))
         type(neiprev_type)  , intent(in)                    :: method
     end function
 #endif
@@ -3213,11 +3213,11 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanPREV_ND2_QD0_WNO_RK1
 #endif
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
         integer(IK)         , intent(in)                    :: dim
-        real(TKC)           , intent(in)    , contiguous    :: sample(:,:)
-        real(TKC)           , intent(in)                    :: prob
-        real(TKC)                                           :: quan(size(sample, 3 - dim, IK))
+        real(TKG)           , intent(in)    , contiguous    :: sample(:,:)
+        real(TKG)           , intent(in)                    :: prob
+        real(TKG)                                           :: quan(size(sample, 3 - dim, IK))
         type(neiprev_type)  , intent(in)                    :: method
     end function
 #endif
@@ -3229,11 +3229,11 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanPREV_ND2_QD1_WNO_RK5
 #endif
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
         integer(IK)         , intent(in)                    :: dim
-        real(TKC)           , intent(in)    , contiguous    :: sample(:,:)
-        real(TKC)           , intent(in)    , contiguous    :: prob(:)
-        real(TKC)                                           :: quan(size(prob, 1, IK), size(sample, 3 - dim, IK))
+        real(TKG)           , intent(in)    , contiguous    :: sample(:,:)
+        real(TKG)           , intent(in)    , contiguous    :: prob(:)
+        real(TKG)                                           :: quan(size(prob, 1, IK), size(sample, 3 - dim, IK))
         type(neiprev_type)  , intent(in)                    :: method
     end function
 #endif
@@ -3243,11 +3243,11 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanPREV_ND2_QD1_WNO_RK4
 #endif
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
         integer(IK)         , intent(in)                    :: dim
-        real(TKC)           , intent(in)    , contiguous    :: sample(:,:)
-        real(TKC)           , intent(in)    , contiguous    :: prob(:)
-        real(TKC)                                           :: quan(size(prob, 1, IK), size(sample, 3 - dim, IK))
+        real(TKG)           , intent(in)    , contiguous    :: sample(:,:)
+        real(TKG)           , intent(in)    , contiguous    :: prob(:)
+        real(TKG)                                           :: quan(size(prob, 1, IK), size(sample, 3 - dim, IK))
         type(neiprev_type)  , intent(in)                    :: method
     end function
 #endif
@@ -3257,11 +3257,11 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanPREV_ND2_QD1_WNO_RK3
 #endif
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
         integer(IK)         , intent(in)                    :: dim
-        real(TKC)           , intent(in)    , contiguous    :: sample(:,:)
-        real(TKC)           , intent(in)    , contiguous    :: prob(:)
-        real(TKC)                                           :: quan(size(prob, 1, IK), size(sample, 3 - dim, IK))
+        real(TKG)           , intent(in)    , contiguous    :: sample(:,:)
+        real(TKG)           , intent(in)    , contiguous    :: prob(:)
+        real(TKG)                                           :: quan(size(prob, 1, IK), size(sample, 3 - dim, IK))
         type(neiprev_type)  , intent(in)                    :: method
     end function
 #endif
@@ -3271,11 +3271,11 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanPREV_ND2_QD1_WNO_RK2
 #endif
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
         integer(IK)         , intent(in)                    :: dim
-        real(TKC)           , intent(in)    , contiguous    :: sample(:,:)
-        real(TKC)           , intent(in)    , contiguous    :: prob(:)
-        real(TKC)                                           :: quan(size(prob, 1, IK), size(sample, 3 - dim, IK))
+        real(TKG)           , intent(in)    , contiguous    :: sample(:,:)
+        real(TKG)           , intent(in)    , contiguous    :: prob(:)
+        real(TKG)                                           :: quan(size(prob, 1, IK), size(sample, 3 - dim, IK))
         type(neiprev_type)  , intent(in)                    :: method
     end function
 #endif
@@ -3285,11 +3285,11 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanPREV_ND2_QD1_WNO_RK1
 #endif
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
         integer(IK)         , intent(in)                    :: dim
-        real(TKC)           , intent(in)    , contiguous    :: sample(:,:)
-        real(TKC)           , intent(in)    , contiguous    :: prob(:)
-        real(TKC)                                           :: quan(size(prob, 1, IK), size(sample, 3 - dim, IK))
+        real(TKG)           , intent(in)    , contiguous    :: sample(:,:)
+        real(TKG)           , intent(in)    , contiguous    :: prob(:)
+        real(TKG)                                           :: quan(size(prob, 1, IK), size(sample, 3 - dim, IK))
         type(neiprev_type)  , intent(in)                    :: method
     end function
 #endif
@@ -3311,13 +3311,13 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanPWLN_ND2_QD0_WTI_RK5
 #endif
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
         integer(IK)         , intent(in)                    :: dim
-        real(TKC)           , intent(in)    , contiguous    :: sample(:,:)
+        real(TKG)           , intent(in)    , contiguous    :: sample(:,:)
         integer(IK)         , intent(in)    , contiguous    :: weight(:)
         integer(IK)         , intent(in)    , optional      :: weisum
-        real(TKC)           , intent(in)                    :: prob
-        real(TKC)                                           :: quan(size(sample, 3 - dim, IK))
+        real(TKG)           , intent(in)                    :: prob
+        real(TKG)                                           :: quan(size(sample, 3 - dim, IK))
         type(piwilin_type)  , intent(in)                    :: method
     end function
 #endif
@@ -3327,13 +3327,13 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanPWLN_ND2_QD0_WTI_RK4
 #endif
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
         integer(IK)         , intent(in)                    :: dim
-        real(TKC)           , intent(in)    , contiguous    :: sample(:,:)
+        real(TKG)           , intent(in)    , contiguous    :: sample(:,:)
         integer(IK)         , intent(in)    , contiguous    :: weight(:)
         integer(IK)         , intent(in)    , optional      :: weisum
-        real(TKC)           , intent(in)                    :: prob
-        real(TKC)                                           :: quan(size(sample, 3 - dim, IK))
+        real(TKG)           , intent(in)                    :: prob
+        real(TKG)                                           :: quan(size(sample, 3 - dim, IK))
         type(piwilin_type)  , intent(in)                    :: method
     end function
 #endif
@@ -3343,13 +3343,13 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanPWLN_ND2_QD0_WTI_RK3
 #endif
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
         integer(IK)         , intent(in)                    :: dim
-        real(TKC)           , intent(in)    , contiguous    :: sample(:,:)
+        real(TKG)           , intent(in)    , contiguous    :: sample(:,:)
         integer(IK)         , intent(in)    , contiguous    :: weight(:)
         integer(IK)         , intent(in)    , optional      :: weisum
-        real(TKC)           , intent(in)                    :: prob
-        real(TKC)                                           :: quan(size(sample, 3 - dim, IK))
+        real(TKG)           , intent(in)                    :: prob
+        real(TKG)                                           :: quan(size(sample, 3 - dim, IK))
         type(piwilin_type)  , intent(in)                    :: method
     end function
 #endif
@@ -3359,13 +3359,13 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanPWLN_ND2_QD0_WTI_RK2
 #endif
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
         integer(IK)         , intent(in)                    :: dim
-        real(TKC)           , intent(in)    , contiguous    :: sample(:,:)
+        real(TKG)           , intent(in)    , contiguous    :: sample(:,:)
         integer(IK)         , intent(in)    , contiguous    :: weight(:)
         integer(IK)         , intent(in)    , optional      :: weisum
-        real(TKC)           , intent(in)                    :: prob
-        real(TKC)                                           :: quan(size(sample, 3 - dim, IK))
+        real(TKG)           , intent(in)                    :: prob
+        real(TKG)                                           :: quan(size(sample, 3 - dim, IK))
         type(piwilin_type)  , intent(in)                    :: method
     end function
 #endif
@@ -3375,13 +3375,13 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanPWLN_ND2_QD0_WTI_RK1
 #endif
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
         integer(IK)         , intent(in)                    :: dim
-        real(TKC)           , intent(in)    , contiguous    :: sample(:,:)
+        real(TKG)           , intent(in)    , contiguous    :: sample(:,:)
         integer(IK)         , intent(in)    , contiguous    :: weight(:)
         integer(IK)         , intent(in)    , optional      :: weisum
-        real(TKC)           , intent(in)                    :: prob
-        real(TKC)                                           :: quan(size(sample, 3 - dim, IK))
+        real(TKG)           , intent(in)                    :: prob
+        real(TKG)                                           :: quan(size(sample, 3 - dim, IK))
         type(piwilin_type)  , intent(in)                    :: method
     end function
 #endif
@@ -3393,11 +3393,11 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanPWLN_ND2_QD1_WTI_RK5
 #endif
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
         integer(IK)         , intent(in)                    :: dim
-        real(TKC)           , intent(in)    , contiguous    :: sample(:,:)
-        real(TKC)           , intent(in)    , contiguous    :: prob(:)
-        real(TKC)                                           :: quan(size(prob, 1, IK), size(sample, 3 - dim, IK))
+        real(TKG)           , intent(in)    , contiguous    :: sample(:,:)
+        real(TKG)           , intent(in)    , contiguous    :: prob(:)
+        real(TKG)                                           :: quan(size(prob, 1, IK), size(sample, 3 - dim, IK))
         integer(IK)         , intent(in)    , contiguous    :: weight(:)
         integer(IK)         , intent(in)    , optional      :: weisum
         type(piwilin_type)  , intent(in)                    :: method
@@ -3409,11 +3409,11 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanPWLN_ND2_QD1_WTI_RK4
 #endif
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
         integer(IK)         , intent(in)                    :: dim
-        real(TKC)           , intent(in)    , contiguous    :: sample(:,:)
-        real(TKC)           , intent(in)    , contiguous    :: prob(:)
-        real(TKC)                                           :: quan(size(prob, 1, IK), size(sample, 3 - dim, IK))
+        real(TKG)           , intent(in)    , contiguous    :: sample(:,:)
+        real(TKG)           , intent(in)    , contiguous    :: prob(:)
+        real(TKG)                                           :: quan(size(prob, 1, IK), size(sample, 3 - dim, IK))
         integer(IK)         , intent(in)    , contiguous    :: weight(:)
         integer(IK)         , intent(in)    , optional      :: weisum
         type(piwilin_type)  , intent(in)                    :: method
@@ -3425,11 +3425,11 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanPWLN_ND2_QD1_WTI_RK3
 #endif
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
         integer(IK)         , intent(in)                    :: dim
-        real(TKC)           , intent(in)    , contiguous    :: sample(:,:)
-        real(TKC)           , intent(in)    , contiguous    :: prob(:)
-        real(TKC)                                           :: quan(size(prob, 1, IK), size(sample, 3 - dim, IK))
+        real(TKG)           , intent(in)    , contiguous    :: sample(:,:)
+        real(TKG)           , intent(in)    , contiguous    :: prob(:)
+        real(TKG)                                           :: quan(size(prob, 1, IK), size(sample, 3 - dim, IK))
         integer(IK)         , intent(in)    , contiguous    :: weight(:)
         integer(IK)         , intent(in)    , optional      :: weisum
         type(piwilin_type)  , intent(in)                    :: method
@@ -3441,11 +3441,11 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanPWLN_ND2_QD1_WTI_RK2
 #endif
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
         integer(IK)         , intent(in)                    :: dim
-        real(TKC)           , intent(in)    , contiguous    :: sample(:,:)
-        real(TKC)           , intent(in)    , contiguous    :: prob(:)
-        real(TKC)                                           :: quan(size(prob, 1, IK), size(sample, 3 - dim, IK))
+        real(TKG)           , intent(in)    , contiguous    :: sample(:,:)
+        real(TKG)           , intent(in)    , contiguous    :: prob(:)
+        real(TKG)                                           :: quan(size(prob, 1, IK), size(sample, 3 - dim, IK))
         integer(IK)         , intent(in)    , contiguous    :: weight(:)
         integer(IK)         , intent(in)    , optional      :: weisum
         type(piwilin_type)  , intent(in)                    :: method
@@ -3457,11 +3457,11 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanPWLN_ND2_QD1_WTI_RK1
 #endif
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
         integer(IK)         , intent(in)                    :: dim
-        real(TKC)           , intent(in)    , contiguous    :: sample(:,:)
-        real(TKC)           , intent(in)    , contiguous    :: prob(:)
-        real(TKC)                                           :: quan(size(prob, 1, IK), size(sample, 3 - dim, IK))
+        real(TKG)           , intent(in)    , contiguous    :: sample(:,:)
+        real(TKG)           , intent(in)    , contiguous    :: prob(:)
+        real(TKG)                                           :: quan(size(prob, 1, IK), size(sample, 3 - dim, IK))
         integer(IK)         , intent(in)    , contiguous    :: weight(:)
         integer(IK)         , intent(in)    , optional      :: weisum
         type(piwilin_type)  , intent(in)                    :: method
@@ -3483,13 +3483,13 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanMEAN_ND2_QD0_WTI_RK5
 #endif
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
         integer(IK)         , intent(in)                    :: dim
-        real(TKC)           , intent(in)    , contiguous    :: sample(:,:)
+        real(TKG)           , intent(in)    , contiguous    :: sample(:,:)
         integer(IK)         , intent(in)    , contiguous    :: weight(:)
         integer(IK)         , intent(in)    , optional      :: weisum
-        real(TKC)           , intent(in)                    :: prob
-        real(TKC)                                           :: quan(size(sample, 3 - dim, IK))
+        real(TKG)           , intent(in)                    :: prob
+        real(TKG)                                           :: quan(size(sample, 3 - dim, IK))
         type(neimean_type)  , intent(in)                    :: method
     end function
 #endif
@@ -3499,13 +3499,13 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanMEAN_ND2_QD0_WTI_RK4
 #endif
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
         integer(IK)         , intent(in)                    :: dim
-        real(TKC)           , intent(in)    , contiguous    :: sample(:,:)
+        real(TKG)           , intent(in)    , contiguous    :: sample(:,:)
         integer(IK)         , intent(in)    , contiguous    :: weight(:)
         integer(IK)         , intent(in)    , optional      :: weisum
-        real(TKC)           , intent(in)                    :: prob
-        real(TKC)                                           :: quan(size(sample, 3 - dim, IK))
+        real(TKG)           , intent(in)                    :: prob
+        real(TKG)                                           :: quan(size(sample, 3 - dim, IK))
         type(neimean_type)  , intent(in)                    :: method
     end function
 #endif
@@ -3515,13 +3515,13 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanMEAN_ND2_QD0_WTI_RK3
 #endif
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
         integer(IK)         , intent(in)                    :: dim
-        real(TKC)           , intent(in)    , contiguous    :: sample(:,:)
+        real(TKG)           , intent(in)    , contiguous    :: sample(:,:)
         integer(IK)         , intent(in)    , contiguous    :: weight(:)
         integer(IK)         , intent(in)    , optional      :: weisum
-        real(TKC)           , intent(in)                    :: prob
-        real(TKC)                                           :: quan(size(sample, 3 - dim, IK))
+        real(TKG)           , intent(in)                    :: prob
+        real(TKG)                                           :: quan(size(sample, 3 - dim, IK))
         type(neimean_type)  , intent(in)                    :: method
     end function
 #endif
@@ -3531,13 +3531,13 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanMEAN_ND2_QD0_WTI_RK2
 #endif
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
         integer(IK)         , intent(in)                    :: dim
-        real(TKC)           , intent(in)    , contiguous    :: sample(:,:)
+        real(TKG)           , intent(in)    , contiguous    :: sample(:,:)
         integer(IK)         , intent(in)    , contiguous    :: weight(:)
         integer(IK)         , intent(in)    , optional      :: weisum
-        real(TKC)           , intent(in)                    :: prob
-        real(TKC)                                           :: quan(size(sample, 3 - dim, IK))
+        real(TKG)           , intent(in)                    :: prob
+        real(TKG)                                           :: quan(size(sample, 3 - dim, IK))
         type(neimean_type)  , intent(in)                    :: method
     end function
 #endif
@@ -3547,13 +3547,13 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanMEAN_ND2_QD0_WTI_RK1
 #endif
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
         integer(IK)         , intent(in)                    :: dim
-        real(TKC)           , intent(in)    , contiguous    :: sample(:,:)
+        real(TKG)           , intent(in)    , contiguous    :: sample(:,:)
         integer(IK)         , intent(in)    , contiguous    :: weight(:)
         integer(IK)         , intent(in)    , optional      :: weisum
-        real(TKC)           , intent(in)                    :: prob
-        real(TKC)                                           :: quan(size(sample, 3 - dim, IK))
+        real(TKG)           , intent(in)                    :: prob
+        real(TKG)                                           :: quan(size(sample, 3 - dim, IK))
         type(neimean_type)  , intent(in)                    :: method
     end function
 #endif
@@ -3565,11 +3565,11 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanMEAN_ND2_QD1_WTI_RK5
 #endif
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
         integer(IK)         , intent(in)                    :: dim
-        real(TKC)           , intent(in)    , contiguous    :: sample(:,:)
-        real(TKC)           , intent(in)    , contiguous    :: prob(:)
-        real(TKC)                                           :: quan(size(prob, 1, IK), size(sample, 3 - dim, IK))
+        real(TKG)           , intent(in)    , contiguous    :: sample(:,:)
+        real(TKG)           , intent(in)    , contiguous    :: prob(:)
+        real(TKG)                                           :: quan(size(prob, 1, IK), size(sample, 3 - dim, IK))
         integer(IK)         , intent(in)    , contiguous    :: weight(:)
         integer(IK)         , intent(in)    , optional      :: weisum
         type(neimean_type)  , intent(in)                    :: method
@@ -3581,11 +3581,11 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanMEAN_ND2_QD1_WTI_RK4
 #endif
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
         integer(IK)         , intent(in)                    :: dim
-        real(TKC)           , intent(in)    , contiguous    :: sample(:,:)
-        real(TKC)           , intent(in)    , contiguous    :: prob(:)
-        real(TKC)                                           :: quan(size(prob, 1, IK), size(sample, 3 - dim, IK))
+        real(TKG)           , intent(in)    , contiguous    :: sample(:,:)
+        real(TKG)           , intent(in)    , contiguous    :: prob(:)
+        real(TKG)                                           :: quan(size(prob, 1, IK), size(sample, 3 - dim, IK))
         integer(IK)         , intent(in)    , contiguous    :: weight(:)
         integer(IK)         , intent(in)    , optional      :: weisum
         type(neimean_type)  , intent(in)                    :: method
@@ -3597,11 +3597,11 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanMEAN_ND2_QD1_WTI_RK3
 #endif
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
         integer(IK)         , intent(in)                    :: dim
-        real(TKC)           , intent(in)    , contiguous    :: sample(:,:)
-        real(TKC)           , intent(in)    , contiguous    :: prob(:)
-        real(TKC)                                           :: quan(size(prob, 1, IK), size(sample, 3 - dim, IK))
+        real(TKG)           , intent(in)    , contiguous    :: sample(:,:)
+        real(TKG)           , intent(in)    , contiguous    :: prob(:)
+        real(TKG)                                           :: quan(size(prob, 1, IK), size(sample, 3 - dim, IK))
         integer(IK)         , intent(in)    , contiguous    :: weight(:)
         integer(IK)         , intent(in)    , optional      :: weisum
         type(neimean_type)  , intent(in)                    :: method
@@ -3613,11 +3613,11 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanMEAN_ND2_QD1_WTI_RK2
 #endif
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
         integer(IK)         , intent(in)                    :: dim
-        real(TKC)           , intent(in)    , contiguous    :: sample(:,:)
-        real(TKC)           , intent(in)    , contiguous    :: prob(:)
-        real(TKC)                                           :: quan(size(prob, 1, IK), size(sample, 3 - dim, IK))
+        real(TKG)           , intent(in)    , contiguous    :: sample(:,:)
+        real(TKG)           , intent(in)    , contiguous    :: prob(:)
+        real(TKG)                                           :: quan(size(prob, 1, IK), size(sample, 3 - dim, IK))
         integer(IK)         , intent(in)    , contiguous    :: weight(:)
         integer(IK)         , intent(in)    , optional      :: weisum
         type(neimean_type)  , intent(in)                    :: method
@@ -3629,11 +3629,11 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanMEAN_ND2_QD1_WTI_RK1
 #endif
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
         integer(IK)         , intent(in)                    :: dim
-        real(TKC)           , intent(in)    , contiguous    :: sample(:,:)
-        real(TKC)           , intent(in)    , contiguous    :: prob(:)
-        real(TKC)                                           :: quan(size(prob, 1, IK), size(sample, 3 - dim, IK))
+        real(TKG)           , intent(in)    , contiguous    :: sample(:,:)
+        real(TKG)           , intent(in)    , contiguous    :: prob(:)
+        real(TKG)                                           :: quan(size(prob, 1, IK), size(sample, 3 - dim, IK))
         integer(IK)         , intent(in)    , contiguous    :: weight(:)
         integer(IK)         , intent(in)    , optional      :: weisum
         type(neimean_type)  , intent(in)                    :: method
@@ -3655,13 +3655,13 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanNEAR_ND2_QD0_WTI_RK5
 #endif
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
         integer(IK)         , intent(in)                    :: dim
-        real(TKC)           , intent(in)    , contiguous    :: sample(:,:)
+        real(TKG)           , intent(in)    , contiguous    :: sample(:,:)
         integer(IK)         , intent(in)    , contiguous    :: weight(:)
         integer(IK)         , intent(in)    , optional      :: weisum
-        real(TKC)           , intent(in)                    :: prob
-        real(TKC)                                           :: quan(size(sample, 3 - dim, IK))
+        real(TKG)           , intent(in)                    :: prob
+        real(TKG)                                           :: quan(size(sample, 3 - dim, IK))
         type(neinear_type)  , intent(in)                    :: method
     end function
 #endif
@@ -3671,13 +3671,13 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanNEAR_ND2_QD0_WTI_RK4
 #endif
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
         integer(IK)         , intent(in)                    :: dim
-        real(TKC)           , intent(in)    , contiguous    :: sample(:,:)
+        real(TKG)           , intent(in)    , contiguous    :: sample(:,:)
         integer(IK)         , intent(in)    , contiguous    :: weight(:)
         integer(IK)         , intent(in)    , optional      :: weisum
-        real(TKC)           , intent(in)                    :: prob
-        real(TKC)                                           :: quan(size(sample, 3 - dim, IK))
+        real(TKG)           , intent(in)                    :: prob
+        real(TKG)                                           :: quan(size(sample, 3 - dim, IK))
         type(neinear_type)  , intent(in)                    :: method
     end function
 #endif
@@ -3687,13 +3687,13 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanNEAR_ND2_QD0_WTI_RK3
 #endif
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
         integer(IK)         , intent(in)                    :: dim
-        real(TKC)           , intent(in)    , contiguous    :: sample(:,:)
+        real(TKG)           , intent(in)    , contiguous    :: sample(:,:)
         integer(IK)         , intent(in)    , contiguous    :: weight(:)
         integer(IK)         , intent(in)    , optional      :: weisum
-        real(TKC)           , intent(in)                    :: prob
-        real(TKC)                                           :: quan(size(sample, 3 - dim, IK))
+        real(TKG)           , intent(in)                    :: prob
+        real(TKG)                                           :: quan(size(sample, 3 - dim, IK))
         type(neinear_type)  , intent(in)                    :: method
     end function
 #endif
@@ -3703,13 +3703,13 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanNEAR_ND2_QD0_WTI_RK2
 #endif
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
         integer(IK)         , intent(in)                    :: dim
-        real(TKC)           , intent(in)    , contiguous    :: sample(:,:)
+        real(TKG)           , intent(in)    , contiguous    :: sample(:,:)
         integer(IK)         , intent(in)    , contiguous    :: weight(:)
         integer(IK)         , intent(in)    , optional      :: weisum
-        real(TKC)           , intent(in)                    :: prob
-        real(TKC)                                           :: quan(size(sample, 3 - dim, IK))
+        real(TKG)           , intent(in)                    :: prob
+        real(TKG)                                           :: quan(size(sample, 3 - dim, IK))
         type(neinear_type)  , intent(in)                    :: method
     end function
 #endif
@@ -3719,13 +3719,13 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanNEAR_ND2_QD0_WTI_RK1
 #endif
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
         integer(IK)         , intent(in)                    :: dim
-        real(TKC)           , intent(in)    , contiguous    :: sample(:,:)
+        real(TKG)           , intent(in)    , contiguous    :: sample(:,:)
         integer(IK)         , intent(in)    , contiguous    :: weight(:)
         integer(IK)         , intent(in)    , optional      :: weisum
-        real(TKC)           , intent(in)                    :: prob
-        real(TKC)                                           :: quan(size(sample, 3 - dim, IK))
+        real(TKG)           , intent(in)                    :: prob
+        real(TKG)                                           :: quan(size(sample, 3 - dim, IK))
         type(neinear_type)  , intent(in)                    :: method
     end function
 #endif
@@ -3737,11 +3737,11 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanNEAR_ND2_QD1_WTI_RK5
 #endif
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
         integer(IK)         , intent(in)                    :: dim
-        real(TKC)           , intent(in)    , contiguous    :: sample(:,:)
-        real(TKC)           , intent(in)    , contiguous    :: prob(:)
-        real(TKC)                                           :: quan(size(prob, 1, IK), size(sample, 3 - dim, IK))
+        real(TKG)           , intent(in)    , contiguous    :: sample(:,:)
+        real(TKG)           , intent(in)    , contiguous    :: prob(:)
+        real(TKG)                                           :: quan(size(prob, 1, IK), size(sample, 3 - dim, IK))
         integer(IK)         , intent(in)    , contiguous    :: weight(:)
         integer(IK)         , intent(in)    , optional      :: weisum
         type(neinear_type)  , intent(in)                    :: method
@@ -3753,11 +3753,11 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanNEAR_ND2_QD1_WTI_RK4
 #endif
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
         integer(IK)         , intent(in)                    :: dim
-        real(TKC)           , intent(in)    , contiguous    :: sample(:,:)
-        real(TKC)           , intent(in)    , contiguous    :: prob(:)
-        real(TKC)                                           :: quan(size(prob, 1, IK), size(sample, 3 - dim, IK))
+        real(TKG)           , intent(in)    , contiguous    :: sample(:,:)
+        real(TKG)           , intent(in)    , contiguous    :: prob(:)
+        real(TKG)                                           :: quan(size(prob, 1, IK), size(sample, 3 - dim, IK))
         integer(IK)         , intent(in)    , contiguous    :: weight(:)
         integer(IK)         , intent(in)    , optional      :: weisum
         type(neinear_type)  , intent(in)                    :: method
@@ -3769,11 +3769,11 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanNEAR_ND2_QD1_WTI_RK3
 #endif
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
         integer(IK)         , intent(in)                    :: dim
-        real(TKC)           , intent(in)    , contiguous    :: sample(:,:)
-        real(TKC)           , intent(in)    , contiguous    :: prob(:)
-        real(TKC)                                           :: quan(size(prob, 1, IK), size(sample, 3 - dim, IK))
+        real(TKG)           , intent(in)    , contiguous    :: sample(:,:)
+        real(TKG)           , intent(in)    , contiguous    :: prob(:)
+        real(TKG)                                           :: quan(size(prob, 1, IK), size(sample, 3 - dim, IK))
         integer(IK)         , intent(in)    , contiguous    :: weight(:)
         integer(IK)         , intent(in)    , optional      :: weisum
         type(neinear_type)  , intent(in)                    :: method
@@ -3785,11 +3785,11 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanNEAR_ND2_QD1_WTI_RK2
 #endif
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
         integer(IK)         , intent(in)                    :: dim
-        real(TKC)           , intent(in)    , contiguous    :: sample(:,:)
-        real(TKC)           , intent(in)    , contiguous    :: prob(:)
-        real(TKC)                                           :: quan(size(prob, 1, IK), size(sample, 3 - dim, IK))
+        real(TKG)           , intent(in)    , contiguous    :: sample(:,:)
+        real(TKG)           , intent(in)    , contiguous    :: prob(:)
+        real(TKG)                                           :: quan(size(prob, 1, IK), size(sample, 3 - dim, IK))
         integer(IK)         , intent(in)    , contiguous    :: weight(:)
         integer(IK)         , intent(in)    , optional      :: weisum
         type(neinear_type)  , intent(in)                    :: method
@@ -3801,11 +3801,11 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanNEAR_ND2_QD1_WTI_RK1
 #endif
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
         integer(IK)         , intent(in)                    :: dim
-        real(TKC)           , intent(in)    , contiguous    :: sample(:,:)
-        real(TKC)           , intent(in)    , contiguous    :: prob(:)
-        real(TKC)                                           :: quan(size(prob, 1, IK), size(sample, 3 - dim, IK))
+        real(TKG)           , intent(in)    , contiguous    :: sample(:,:)
+        real(TKG)           , intent(in)    , contiguous    :: prob(:)
+        real(TKG)                                           :: quan(size(prob, 1, IK), size(sample, 3 - dim, IK))
         integer(IK)         , intent(in)    , contiguous    :: weight(:)
         integer(IK)         , intent(in)    , optional      :: weisum
         type(neinear_type)  , intent(in)                    :: method
@@ -3827,13 +3827,13 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanNEXT_ND2_QD0_WTI_RK5
 #endif
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
         integer(IK)         , intent(in)                    :: dim
-        real(TKC)           , intent(in)    , contiguous    :: sample(:,:)
+        real(TKG)           , intent(in)    , contiguous    :: sample(:,:)
         integer(IK)         , intent(in)    , contiguous    :: weight(:)
         integer(IK)         , intent(in)    , optional      :: weisum
-        real(TKC)           , intent(in)                    :: prob
-        real(TKC)                                           :: quan(size(sample, 3 - dim, IK))
+        real(TKG)           , intent(in)                    :: prob
+        real(TKG)                                           :: quan(size(sample, 3 - dim, IK))
         type(neinext_type)  , intent(in)                    :: method
     end function
 #endif
@@ -3843,13 +3843,13 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanNEXT_ND2_QD0_WTI_RK4
 #endif
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
         integer(IK)         , intent(in)                    :: dim
-        real(TKC)           , intent(in)    , contiguous    :: sample(:,:)
+        real(TKG)           , intent(in)    , contiguous    :: sample(:,:)
         integer(IK)         , intent(in)    , contiguous    :: weight(:)
         integer(IK)         , intent(in)    , optional      :: weisum
-        real(TKC)           , intent(in)                    :: prob
-        real(TKC)                                           :: quan(size(sample, 3 - dim, IK))
+        real(TKG)           , intent(in)                    :: prob
+        real(TKG)                                           :: quan(size(sample, 3 - dim, IK))
         type(neinext_type)  , intent(in)                    :: method
     end function
 #endif
@@ -3859,13 +3859,13 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanNEXT_ND2_QD0_WTI_RK3
 #endif
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
         integer(IK)         , intent(in)                    :: dim
-        real(TKC)           , intent(in)    , contiguous    :: sample(:,:)
+        real(TKG)           , intent(in)    , contiguous    :: sample(:,:)
         integer(IK)         , intent(in)    , contiguous    :: weight(:)
         integer(IK)         , intent(in)    , optional      :: weisum
-        real(TKC)           , intent(in)                    :: prob
-        real(TKC)                                           :: quan(size(sample, 3 - dim, IK))
+        real(TKG)           , intent(in)                    :: prob
+        real(TKG)                                           :: quan(size(sample, 3 - dim, IK))
         type(neinext_type)  , intent(in)                    :: method
     end function
 #endif
@@ -3875,13 +3875,13 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanNEXT_ND2_QD0_WTI_RK2
 #endif
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
         integer(IK)         , intent(in)                    :: dim
-        real(TKC)           , intent(in)    , contiguous    :: sample(:,:)
+        real(TKG)           , intent(in)    , contiguous    :: sample(:,:)
         integer(IK)         , intent(in)    , contiguous    :: weight(:)
         integer(IK)         , intent(in)    , optional      :: weisum
-        real(TKC)           , intent(in)                    :: prob
-        real(TKC)                                           :: quan(size(sample, 3 - dim, IK))
+        real(TKG)           , intent(in)                    :: prob
+        real(TKG)                                           :: quan(size(sample, 3 - dim, IK))
         type(neinext_type)  , intent(in)                    :: method
     end function
 #endif
@@ -3891,13 +3891,13 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanNEXT_ND2_QD0_WTI_RK1
 #endif
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
         integer(IK)         , intent(in)                    :: dim
-        real(TKC)           , intent(in)    , contiguous    :: sample(:,:)
+        real(TKG)           , intent(in)    , contiguous    :: sample(:,:)
         integer(IK)         , intent(in)    , contiguous    :: weight(:)
         integer(IK)         , intent(in)    , optional      :: weisum
-        real(TKC)           , intent(in)                    :: prob
-        real(TKC)                                           :: quan(size(sample, 3 - dim, IK))
+        real(TKG)           , intent(in)                    :: prob
+        real(TKG)                                           :: quan(size(sample, 3 - dim, IK))
         type(neinext_type)  , intent(in)                    :: method
     end function
 #endif
@@ -3909,11 +3909,11 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanNEXT_ND2_QD1_WTI_RK5
 #endif
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
         integer(IK)         , intent(in)                    :: dim
-        real(TKC)           , intent(in)    , contiguous    :: sample(:,:)
-        real(TKC)           , intent(in)    , contiguous    :: prob(:)
-        real(TKC)                                           :: quan(size(prob, 1, IK), size(sample, 3 - dim, IK))
+        real(TKG)           , intent(in)    , contiguous    :: sample(:,:)
+        real(TKG)           , intent(in)    , contiguous    :: prob(:)
+        real(TKG)                                           :: quan(size(prob, 1, IK), size(sample, 3 - dim, IK))
         integer(IK)         , intent(in)    , contiguous    :: weight(:)
         integer(IK)         , intent(in)    , optional      :: weisum
         type(neinext_type)  , intent(in)                    :: method
@@ -3925,11 +3925,11 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanNEXT_ND2_QD1_WTI_RK4
 #endif
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
         integer(IK)         , intent(in)                    :: dim
-        real(TKC)           , intent(in)    , contiguous    :: sample(:,:)
-        real(TKC)           , intent(in)    , contiguous    :: prob(:)
-        real(TKC)                                           :: quan(size(prob, 1, IK), size(sample, 3 - dim, IK))
+        real(TKG)           , intent(in)    , contiguous    :: sample(:,:)
+        real(TKG)           , intent(in)    , contiguous    :: prob(:)
+        real(TKG)                                           :: quan(size(prob, 1, IK), size(sample, 3 - dim, IK))
         integer(IK)         , intent(in)    , contiguous    :: weight(:)
         integer(IK)         , intent(in)    , optional      :: weisum
         type(neinext_type)  , intent(in)                    :: method
@@ -3941,11 +3941,11 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanNEXT_ND2_QD1_WTI_RK3
 #endif
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
         integer(IK)         , intent(in)                    :: dim
-        real(TKC)           , intent(in)    , contiguous    :: sample(:,:)
-        real(TKC)           , intent(in)    , contiguous    :: prob(:)
-        real(TKC)                                           :: quan(size(prob, 1, IK), size(sample, 3 - dim, IK))
+        real(TKG)           , intent(in)    , contiguous    :: sample(:,:)
+        real(TKG)           , intent(in)    , contiguous    :: prob(:)
+        real(TKG)                                           :: quan(size(prob, 1, IK), size(sample, 3 - dim, IK))
         integer(IK)         , intent(in)    , contiguous    :: weight(:)
         integer(IK)         , intent(in)    , optional      :: weisum
         type(neinext_type)  , intent(in)                    :: method
@@ -3957,11 +3957,11 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanNEXT_ND2_QD1_WTI_RK2
 #endif
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
         integer(IK)         , intent(in)                    :: dim
-        real(TKC)           , intent(in)    , contiguous    :: sample(:,:)
-        real(TKC)           , intent(in)    , contiguous    :: prob(:)
-        real(TKC)                                           :: quan(size(prob, 1, IK), size(sample, 3 - dim, IK))
+        real(TKG)           , intent(in)    , contiguous    :: sample(:,:)
+        real(TKG)           , intent(in)    , contiguous    :: prob(:)
+        real(TKG)                                           :: quan(size(prob, 1, IK), size(sample, 3 - dim, IK))
         integer(IK)         , intent(in)    , contiguous    :: weight(:)
         integer(IK)         , intent(in)    , optional      :: weisum
         type(neinext_type)  , intent(in)                    :: method
@@ -3973,11 +3973,11 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanNEXT_ND2_QD1_WTI_RK1
 #endif
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
         integer(IK)         , intent(in)                    :: dim
-        real(TKC)           , intent(in)    , contiguous    :: sample(:,:)
-        real(TKC)           , intent(in)    , contiguous    :: prob(:)
-        real(TKC)                                           :: quan(size(prob, 1, IK), size(sample, 3 - dim, IK))
+        real(TKG)           , intent(in)    , contiguous    :: sample(:,:)
+        real(TKG)           , intent(in)    , contiguous    :: prob(:)
+        real(TKG)                                           :: quan(size(prob, 1, IK), size(sample, 3 - dim, IK))
         integer(IK)         , intent(in)    , contiguous    :: weight(:)
         integer(IK)         , intent(in)    , optional      :: weisum
         type(neinext_type)  , intent(in)                    :: method
@@ -3999,13 +3999,13 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanPREV_ND2_QD0_WTI_RK5
 #endif
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
         integer(IK)         , intent(in)                    :: dim
-        real(TKC)           , intent(in)    , contiguous    :: sample(:,:)
+        real(TKG)           , intent(in)    , contiguous    :: sample(:,:)
         integer(IK)         , intent(in)    , contiguous    :: weight(:)
         integer(IK)         , intent(in)    , optional      :: weisum
-        real(TKC)           , intent(in)                    :: prob
-        real(TKC)                                           :: quan(size(sample, 3 - dim, IK))
+        real(TKG)           , intent(in)                    :: prob
+        real(TKG)                                           :: quan(size(sample, 3 - dim, IK))
         type(neiprev_type)  , intent(in)                    :: method
     end function
 #endif
@@ -4015,13 +4015,13 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanPREV_ND2_QD0_WTI_RK4
 #endif
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
         integer(IK)         , intent(in)                    :: dim
-        real(TKC)           , intent(in)    , contiguous    :: sample(:,:)
+        real(TKG)           , intent(in)    , contiguous    :: sample(:,:)
         integer(IK)         , intent(in)    , contiguous    :: weight(:)
         integer(IK)         , intent(in)    , optional      :: weisum
-        real(TKC)           , intent(in)                    :: prob
-        real(TKC)                                           :: quan(size(sample, 3 - dim, IK))
+        real(TKG)           , intent(in)                    :: prob
+        real(TKG)                                           :: quan(size(sample, 3 - dim, IK))
         type(neiprev_type)  , intent(in)                    :: method
     end function
 #endif
@@ -4031,13 +4031,13 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanPREV_ND2_QD0_WTI_RK3
 #endif
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
         integer(IK)         , intent(in)                    :: dim
-        real(TKC)           , intent(in)    , contiguous    :: sample(:,:)
+        real(TKG)           , intent(in)    , contiguous    :: sample(:,:)
         integer(IK)         , intent(in)    , contiguous    :: weight(:)
         integer(IK)         , intent(in)    , optional      :: weisum
-        real(TKC)           , intent(in)                    :: prob
-        real(TKC)                                           :: quan(size(sample, 3 - dim, IK))
+        real(TKG)           , intent(in)                    :: prob
+        real(TKG)                                           :: quan(size(sample, 3 - dim, IK))
         type(neiprev_type)  , intent(in)                    :: method
     end function
 #endif
@@ -4047,13 +4047,13 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanPREV_ND2_QD0_WTI_RK2
 #endif
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
         integer(IK)         , intent(in)                    :: dim
-        real(TKC)           , intent(in)    , contiguous    :: sample(:,:)
+        real(TKG)           , intent(in)    , contiguous    :: sample(:,:)
         integer(IK)         , intent(in)    , contiguous    :: weight(:)
         integer(IK)         , intent(in)    , optional      :: weisum
-        real(TKC)           , intent(in)                    :: prob
-        real(TKC)                                           :: quan(size(sample, 3 - dim, IK))
+        real(TKG)           , intent(in)                    :: prob
+        real(TKG)                                           :: quan(size(sample, 3 - dim, IK))
         type(neiprev_type)  , intent(in)                    :: method
     end function
 #endif
@@ -4063,13 +4063,13 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanPREV_ND2_QD0_WTI_RK1
 #endif
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
         integer(IK)         , intent(in)                    :: dim
-        real(TKC)           , intent(in)    , contiguous    :: sample(:,:)
+        real(TKG)           , intent(in)    , contiguous    :: sample(:,:)
         integer(IK)         , intent(in)    , contiguous    :: weight(:)
         integer(IK)         , intent(in)    , optional      :: weisum
-        real(TKC)           , intent(in)                    :: prob
-        real(TKC)                                           :: quan(size(sample, 3 - dim, IK))
+        real(TKG)           , intent(in)                    :: prob
+        real(TKG)                                           :: quan(size(sample, 3 - dim, IK))
         type(neiprev_type)  , intent(in)                    :: method
     end function
 #endif
@@ -4081,11 +4081,11 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanPREV_ND2_QD1_WTI_RK5
 #endif
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
         integer(IK)         , intent(in)                    :: dim
-        real(TKC)           , intent(in)    , contiguous    :: sample(:,:)
-        real(TKC)           , intent(in)    , contiguous    :: prob(:)
-        real(TKC)                                           :: quan(size(prob, 1, IK), size(sample, 3 - dim, IK))
+        real(TKG)           , intent(in)    , contiguous    :: sample(:,:)
+        real(TKG)           , intent(in)    , contiguous    :: prob(:)
+        real(TKG)                                           :: quan(size(prob, 1, IK), size(sample, 3 - dim, IK))
         integer(IK)         , intent(in)    , contiguous    :: weight(:)
         integer(IK)         , intent(in)    , optional      :: weisum
         type(neiprev_type)  , intent(in)                    :: method
@@ -4097,11 +4097,11 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanPREV_ND2_QD1_WTI_RK4
 #endif
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
         integer(IK)         , intent(in)                    :: dim
-        real(TKC)           , intent(in)    , contiguous    :: sample(:,:)
-        real(TKC)           , intent(in)    , contiguous    :: prob(:)
-        real(TKC)                                           :: quan(size(prob, 1, IK), size(sample, 3 - dim, IK))
+        real(TKG)           , intent(in)    , contiguous    :: sample(:,:)
+        real(TKG)           , intent(in)    , contiguous    :: prob(:)
+        real(TKG)                                           :: quan(size(prob, 1, IK), size(sample, 3 - dim, IK))
         integer(IK)         , intent(in)    , contiguous    :: weight(:)
         integer(IK)         , intent(in)    , optional      :: weisum
         type(neiprev_type)  , intent(in)                    :: method
@@ -4113,11 +4113,11 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanPREV_ND2_QD1_WTI_RK3
 #endif
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
         integer(IK)         , intent(in)                    :: dim
-        real(TKC)           , intent(in)    , contiguous    :: sample(:,:)
-        real(TKC)           , intent(in)    , contiguous    :: prob(:)
-        real(TKC)                                           :: quan(size(prob, 1, IK), size(sample, 3 - dim, IK))
+        real(TKG)           , intent(in)    , contiguous    :: sample(:,:)
+        real(TKG)           , intent(in)    , contiguous    :: prob(:)
+        real(TKG)                                           :: quan(size(prob, 1, IK), size(sample, 3 - dim, IK))
         integer(IK)         , intent(in)    , contiguous    :: weight(:)
         integer(IK)         , intent(in)    , optional      :: weisum
         type(neiprev_type)  , intent(in)                    :: method
@@ -4129,11 +4129,11 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanPREV_ND2_QD1_WTI_RK2
 #endif
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
         integer(IK)         , intent(in)                    :: dim
-        real(TKC)           , intent(in)    , contiguous    :: sample(:,:)
-        real(TKC)           , intent(in)    , contiguous    :: prob(:)
-        real(TKC)                                           :: quan(size(prob, 1, IK), size(sample, 3 - dim, IK))
+        real(TKG)           , intent(in)    , contiguous    :: sample(:,:)
+        real(TKG)           , intent(in)    , contiguous    :: prob(:)
+        real(TKG)                                           :: quan(size(prob, 1, IK), size(sample, 3 - dim, IK))
         integer(IK)         , intent(in)    , contiguous    :: weight(:)
         integer(IK)         , intent(in)    , optional      :: weisum
         type(neiprev_type)  , intent(in)                    :: method
@@ -4145,11 +4145,11 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanPREV_ND2_QD1_WTI_RK1
 #endif
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
         integer(IK)         , intent(in)                    :: dim
-        real(TKC)           , intent(in)    , contiguous    :: sample(:,:)
-        real(TKC)           , intent(in)    , contiguous    :: prob(:)
-        real(TKC)                                           :: quan(size(prob, 1, IK), size(sample, 3 - dim, IK))
+        real(TKG)           , intent(in)    , contiguous    :: sample(:,:)
+        real(TKG)           , intent(in)    , contiguous    :: prob(:)
+        real(TKG)                                           :: quan(size(prob, 1, IK), size(sample, 3 - dim, IK))
         integer(IK)         , intent(in)    , contiguous    :: weight(:)
         integer(IK)         , intent(in)    , optional      :: weisum
         type(neiprev_type)  , intent(in)                    :: method
@@ -4173,13 +4173,13 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanPWLN_ND2_QD0_WTR_RK5
 #endif
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
         integer(IK)         , intent(in)                    :: dim
-        real(TKC)           , intent(in)    , contiguous    :: sample(:,:)
-        real(TKC)           , intent(in)    , contiguous    :: weight(:)
-        real(TKC)           , intent(in)    , optional      :: weisum
-        real(TKC)           , intent(in)                    :: prob
-        real(TKC)                                           :: quan(size(sample, 3 - dim, IK))
+        real(TKG)           , intent(in)    , contiguous    :: sample(:,:)
+        real(TKG)           , intent(in)    , contiguous    :: weight(:)
+        real(TKG)           , intent(in)    , optional      :: weisum
+        real(TKG)           , intent(in)                    :: prob
+        real(TKG)                                           :: quan(size(sample, 3 - dim, IK))
         type(piwilin_type)  , intent(in)                    :: method
     end function
 #endif
@@ -4189,13 +4189,13 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanPWLN_ND2_QD0_WTR_RK4
 #endif
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
         integer(IK)         , intent(in)                    :: dim
-        real(TKC)           , intent(in)    , contiguous    :: sample(:,:)
-        real(TKC)           , intent(in)    , contiguous    :: weight(:)
-        real(TKC)           , intent(in)    , optional      :: weisum
-        real(TKC)           , intent(in)                    :: prob
-        real(TKC)                                           :: quan(size(sample, 3 - dim, IK))
+        real(TKG)           , intent(in)    , contiguous    :: sample(:,:)
+        real(TKG)           , intent(in)    , contiguous    :: weight(:)
+        real(TKG)           , intent(in)    , optional      :: weisum
+        real(TKG)           , intent(in)                    :: prob
+        real(TKG)                                           :: quan(size(sample, 3 - dim, IK))
         type(piwilin_type)  , intent(in)                    :: method
     end function
 #endif
@@ -4205,13 +4205,13 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanPWLN_ND2_QD0_WTR_RK3
 #endif
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
         integer(IK)         , intent(in)                    :: dim
-        real(TKC)           , intent(in)    , contiguous    :: sample(:,:)
-        real(TKC)           , intent(in)    , contiguous    :: weight(:)
-        real(TKC)           , intent(in)    , optional      :: weisum
-        real(TKC)           , intent(in)                    :: prob
-        real(TKC)                                           :: quan(size(sample, 3 - dim, IK))
+        real(TKG)           , intent(in)    , contiguous    :: sample(:,:)
+        real(TKG)           , intent(in)    , contiguous    :: weight(:)
+        real(TKG)           , intent(in)    , optional      :: weisum
+        real(TKG)           , intent(in)                    :: prob
+        real(TKG)                                           :: quan(size(sample, 3 - dim, IK))
         type(piwilin_type)  , intent(in)                    :: method
     end function
 #endif
@@ -4221,13 +4221,13 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanPWLN_ND2_QD0_WTR_RK2
 #endif
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
         integer(IK)         , intent(in)                    :: dim
-        real(TKC)           , intent(in)    , contiguous    :: sample(:,:)
-        real(TKC)           , intent(in)    , contiguous    :: weight(:)
-        real(TKC)           , intent(in)    , optional      :: weisum
-        real(TKC)           , intent(in)                    :: prob
-        real(TKC)                                           :: quan(size(sample, 3 - dim, IK))
+        real(TKG)           , intent(in)    , contiguous    :: sample(:,:)
+        real(TKG)           , intent(in)    , contiguous    :: weight(:)
+        real(TKG)           , intent(in)    , optional      :: weisum
+        real(TKG)           , intent(in)                    :: prob
+        real(TKG)                                           :: quan(size(sample, 3 - dim, IK))
         type(piwilin_type)  , intent(in)                    :: method
     end function
 #endif
@@ -4237,13 +4237,13 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanPWLN_ND2_QD0_WTR_RK1
 #endif
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
         integer(IK)         , intent(in)                    :: dim
-        real(TKC)           , intent(in)    , contiguous    :: sample(:,:)
-        real(TKC)           , intent(in)    , contiguous    :: weight(:)
-        real(TKC)           , intent(in)    , optional      :: weisum
-        real(TKC)           , intent(in)                    :: prob
-        real(TKC)                                           :: quan(size(sample, 3 - dim, IK))
+        real(TKG)           , intent(in)    , contiguous    :: sample(:,:)
+        real(TKG)           , intent(in)    , contiguous    :: weight(:)
+        real(TKG)           , intent(in)    , optional      :: weisum
+        real(TKG)           , intent(in)                    :: prob
+        real(TKG)                                           :: quan(size(sample, 3 - dim, IK))
         type(piwilin_type)  , intent(in)                    :: method
     end function
 #endif
@@ -4255,13 +4255,13 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanPWLN_ND2_QD1_WTR_RK5
 #endif
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
         integer(IK)         , intent(in)                    :: dim
-        real(TKC)           , intent(in)    , contiguous    :: sample(:,:)
-        real(TKC)           , intent(in)    , contiguous    :: prob(:)
-        real(TKC)                                           :: quan(size(prob, 1, IK), size(sample, 3 - dim, IK))
-        real(TKC)           , intent(in)    , contiguous    :: weight(:)
-        real(TKC)           , intent(in)    , optional      :: weisum
+        real(TKG)           , intent(in)    , contiguous    :: sample(:,:)
+        real(TKG)           , intent(in)    , contiguous    :: prob(:)
+        real(TKG)                                           :: quan(size(prob, 1, IK), size(sample, 3 - dim, IK))
+        real(TKG)           , intent(in)    , contiguous    :: weight(:)
+        real(TKG)           , intent(in)    , optional      :: weisum
         type(piwilin_type)  , intent(in)                    :: method
     end function
 #endif
@@ -4271,13 +4271,13 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanPWLN_ND2_QD1_WTR_RK4
 #endif
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
         integer(IK)         , intent(in)                    :: dim
-        real(TKC)           , intent(in)    , contiguous    :: sample(:,:)
-        real(TKC)           , intent(in)    , contiguous    :: prob(:)
-        real(TKC)                                           :: quan(size(prob, 1, IK), size(sample, 3 - dim, IK))
-        real(TKC)           , intent(in)    , contiguous    :: weight(:)
-        real(TKC)           , intent(in)    , optional      :: weisum
+        real(TKG)           , intent(in)    , contiguous    :: sample(:,:)
+        real(TKG)           , intent(in)    , contiguous    :: prob(:)
+        real(TKG)                                           :: quan(size(prob, 1, IK), size(sample, 3 - dim, IK))
+        real(TKG)           , intent(in)    , contiguous    :: weight(:)
+        real(TKG)           , intent(in)    , optional      :: weisum
         type(piwilin_type)  , intent(in)                    :: method
     end function
 #endif
@@ -4287,13 +4287,13 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanPWLN_ND2_QD1_WTR_RK3
 #endif
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
         integer(IK)         , intent(in)                    :: dim
-        real(TKC)           , intent(in)    , contiguous    :: sample(:,:)
-        real(TKC)           , intent(in)    , contiguous    :: prob(:)
-        real(TKC)                                           :: quan(size(prob, 1, IK), size(sample, 3 - dim, IK))
-        real(TKC)           , intent(in)    , contiguous    :: weight(:)
-        real(TKC)           , intent(in)    , optional      :: weisum
+        real(TKG)           , intent(in)    , contiguous    :: sample(:,:)
+        real(TKG)           , intent(in)    , contiguous    :: prob(:)
+        real(TKG)                                           :: quan(size(prob, 1, IK), size(sample, 3 - dim, IK))
+        real(TKG)           , intent(in)    , contiguous    :: weight(:)
+        real(TKG)           , intent(in)    , optional      :: weisum
         type(piwilin_type)  , intent(in)                    :: method
     end function
 #endif
@@ -4303,13 +4303,13 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanPWLN_ND2_QD1_WTR_RK2
 #endif
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
         integer(IK)         , intent(in)                    :: dim
-        real(TKC)           , intent(in)    , contiguous    :: sample(:,:)
-        real(TKC)           , intent(in)    , contiguous    :: prob(:)
-        real(TKC)                                           :: quan(size(prob, 1, IK), size(sample, 3 - dim, IK))
-        real(TKC)           , intent(in)    , contiguous    :: weight(:)
-        real(TKC)           , intent(in)    , optional      :: weisum
+        real(TKG)           , intent(in)    , contiguous    :: sample(:,:)
+        real(TKG)           , intent(in)    , contiguous    :: prob(:)
+        real(TKG)                                           :: quan(size(prob, 1, IK), size(sample, 3 - dim, IK))
+        real(TKG)           , intent(in)    , contiguous    :: weight(:)
+        real(TKG)           , intent(in)    , optional      :: weisum
         type(piwilin_type)  , intent(in)                    :: method
     end function
 #endif
@@ -4319,13 +4319,13 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanPWLN_ND2_QD1_WTR_RK1
 #endif
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
         integer(IK)         , intent(in)                    :: dim
-        real(TKC)           , intent(in)    , contiguous    :: sample(:,:)
-        real(TKC)           , intent(in)    , contiguous    :: prob(:)
-        real(TKC)                                           :: quan(size(prob, 1, IK), size(sample, 3 - dim, IK))
-        real(TKC)           , intent(in)    , contiguous    :: weight(:)
-        real(TKC)           , intent(in)    , optional      :: weisum
+        real(TKG)           , intent(in)    , contiguous    :: sample(:,:)
+        real(TKG)           , intent(in)    , contiguous    :: prob(:)
+        real(TKG)                                           :: quan(size(prob, 1, IK), size(sample, 3 - dim, IK))
+        real(TKG)           , intent(in)    , contiguous    :: weight(:)
+        real(TKG)           , intent(in)    , optional      :: weisum
         type(piwilin_type)  , intent(in)                    :: method
     end function
 #endif
@@ -4345,13 +4345,13 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanMEAN_ND2_QD0_WTR_RK5
 #endif
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
         integer(IK)         , intent(in)                    :: dim
-        real(TKC)           , intent(in)    , contiguous    :: sample(:,:)
-        real(TKC)           , intent(in)    , contiguous    :: weight(:)
-        real(TKC)           , intent(in)    , optional      :: weisum
-        real(TKC)           , intent(in)                    :: prob
-        real(TKC)                                           :: quan(size(sample, 3 - dim, IK))
+        real(TKG)           , intent(in)    , contiguous    :: sample(:,:)
+        real(TKG)           , intent(in)    , contiguous    :: weight(:)
+        real(TKG)           , intent(in)    , optional      :: weisum
+        real(TKG)           , intent(in)                    :: prob
+        real(TKG)                                           :: quan(size(sample, 3 - dim, IK))
         type(neimean_type)  , intent(in)                    :: method
     end function
 #endif
@@ -4361,13 +4361,13 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanMEAN_ND2_QD0_WTR_RK4
 #endif
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
         integer(IK)         , intent(in)                    :: dim
-        real(TKC)           , intent(in)    , contiguous    :: sample(:,:)
-        real(TKC)           , intent(in)    , contiguous    :: weight(:)
-        real(TKC)           , intent(in)    , optional      :: weisum
-        real(TKC)           , intent(in)                    :: prob
-        real(TKC)                                           :: quan(size(sample, 3 - dim, IK))
+        real(TKG)           , intent(in)    , contiguous    :: sample(:,:)
+        real(TKG)           , intent(in)    , contiguous    :: weight(:)
+        real(TKG)           , intent(in)    , optional      :: weisum
+        real(TKG)           , intent(in)                    :: prob
+        real(TKG)                                           :: quan(size(sample, 3 - dim, IK))
         type(neimean_type)  , intent(in)                    :: method
     end function
 #endif
@@ -4377,13 +4377,13 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanMEAN_ND2_QD0_WTR_RK3
 #endif
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
         integer(IK)         , intent(in)                    :: dim
-        real(TKC)           , intent(in)    , contiguous    :: sample(:,:)
-        real(TKC)           , intent(in)    , contiguous    :: weight(:)
-        real(TKC)           , intent(in)    , optional      :: weisum
-        real(TKC)           , intent(in)                    :: prob
-        real(TKC)                                           :: quan(size(sample, 3 - dim, IK))
+        real(TKG)           , intent(in)    , contiguous    :: sample(:,:)
+        real(TKG)           , intent(in)    , contiguous    :: weight(:)
+        real(TKG)           , intent(in)    , optional      :: weisum
+        real(TKG)           , intent(in)                    :: prob
+        real(TKG)                                           :: quan(size(sample, 3 - dim, IK))
         type(neimean_type)  , intent(in)                    :: method
     end function
 #endif
@@ -4393,13 +4393,13 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanMEAN_ND2_QD0_WTR_RK2
 #endif
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
         integer(IK)         , intent(in)                    :: dim
-        real(TKC)           , intent(in)    , contiguous    :: sample(:,:)
-        real(TKC)           , intent(in)    , contiguous    :: weight(:)
-        real(TKC)           , intent(in)    , optional      :: weisum
-        real(TKC)           , intent(in)                    :: prob
-        real(TKC)                                           :: quan(size(sample, 3 - dim, IK))
+        real(TKG)           , intent(in)    , contiguous    :: sample(:,:)
+        real(TKG)           , intent(in)    , contiguous    :: weight(:)
+        real(TKG)           , intent(in)    , optional      :: weisum
+        real(TKG)           , intent(in)                    :: prob
+        real(TKG)                                           :: quan(size(sample, 3 - dim, IK))
         type(neimean_type)  , intent(in)                    :: method
     end function
 #endif
@@ -4409,13 +4409,13 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanMEAN_ND2_QD0_WTR_RK1
 #endif
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
         integer(IK)         , intent(in)                    :: dim
-        real(TKC)           , intent(in)    , contiguous    :: sample(:,:)
-        real(TKC)           , intent(in)    , contiguous    :: weight(:)
-        real(TKC)           , intent(in)    , optional      :: weisum
-        real(TKC)           , intent(in)                    :: prob
-        real(TKC)                                           :: quan(size(sample, 3 - dim, IK))
+        real(TKG)           , intent(in)    , contiguous    :: sample(:,:)
+        real(TKG)           , intent(in)    , contiguous    :: weight(:)
+        real(TKG)           , intent(in)    , optional      :: weisum
+        real(TKG)           , intent(in)                    :: prob
+        real(TKG)                                           :: quan(size(sample, 3 - dim, IK))
         type(neimean_type)  , intent(in)                    :: method
     end function
 #endif
@@ -4427,13 +4427,13 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanMEAN_ND2_QD1_WTR_RK5
 #endif
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
         integer(IK)         , intent(in)                    :: dim
-        real(TKC)           , intent(in)    , contiguous    :: sample(:,:)
-        real(TKC)           , intent(in)    , contiguous    :: prob(:)
-        real(TKC)                                           :: quan(size(prob, 1, IK), size(sample, 3 - dim, IK))
-        real(TKC)           , intent(in)    , contiguous    :: weight(:)
-        real(TKC)           , intent(in)    , optional      :: weisum
+        real(TKG)           , intent(in)    , contiguous    :: sample(:,:)
+        real(TKG)           , intent(in)    , contiguous    :: prob(:)
+        real(TKG)                                           :: quan(size(prob, 1, IK), size(sample, 3 - dim, IK))
+        real(TKG)           , intent(in)    , contiguous    :: weight(:)
+        real(TKG)           , intent(in)    , optional      :: weisum
         type(neimean_type)  , intent(in)                    :: method
     end function
 #endif
@@ -4443,13 +4443,13 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanMEAN_ND2_QD1_WTR_RK4
 #endif
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
         integer(IK)         , intent(in)                    :: dim
-        real(TKC)           , intent(in)    , contiguous    :: sample(:,:)
-        real(TKC)           , intent(in)    , contiguous    :: prob(:)
-        real(TKC)                                           :: quan(size(prob, 1, IK), size(sample, 3 - dim, IK))
-        real(TKC)           , intent(in)    , contiguous    :: weight(:)
-        real(TKC)           , intent(in)    , optional      :: weisum
+        real(TKG)           , intent(in)    , contiguous    :: sample(:,:)
+        real(TKG)           , intent(in)    , contiguous    :: prob(:)
+        real(TKG)                                           :: quan(size(prob, 1, IK), size(sample, 3 - dim, IK))
+        real(TKG)           , intent(in)    , contiguous    :: weight(:)
+        real(TKG)           , intent(in)    , optional      :: weisum
         type(neimean_type)  , intent(in)                    :: method
     end function
 #endif
@@ -4459,13 +4459,13 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanMEAN_ND2_QD1_WTR_RK3
 #endif
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
         integer(IK)         , intent(in)                    :: dim
-        real(TKC)           , intent(in)    , contiguous    :: sample(:,:)
-        real(TKC)           , intent(in)    , contiguous    :: prob(:)
-        real(TKC)                                           :: quan(size(prob, 1, IK), size(sample, 3 - dim, IK))
-        real(TKC)           , intent(in)    , contiguous    :: weight(:)
-        real(TKC)           , intent(in)    , optional      :: weisum
+        real(TKG)           , intent(in)    , contiguous    :: sample(:,:)
+        real(TKG)           , intent(in)    , contiguous    :: prob(:)
+        real(TKG)                                           :: quan(size(prob, 1, IK), size(sample, 3 - dim, IK))
+        real(TKG)           , intent(in)    , contiguous    :: weight(:)
+        real(TKG)           , intent(in)    , optional      :: weisum
         type(neimean_type)  , intent(in)                    :: method
     end function
 #endif
@@ -4475,13 +4475,13 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanMEAN_ND2_QD1_WTR_RK2
 #endif
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
         integer(IK)         , intent(in)                    :: dim
-        real(TKC)           , intent(in)    , contiguous    :: sample(:,:)
-        real(TKC)           , intent(in)    , contiguous    :: prob(:)
-        real(TKC)                                           :: quan(size(prob, 1, IK), size(sample, 3 - dim, IK))
-        real(TKC)           , intent(in)    , contiguous    :: weight(:)
-        real(TKC)           , intent(in)    , optional      :: weisum
+        real(TKG)           , intent(in)    , contiguous    :: sample(:,:)
+        real(TKG)           , intent(in)    , contiguous    :: prob(:)
+        real(TKG)                                           :: quan(size(prob, 1, IK), size(sample, 3 - dim, IK))
+        real(TKG)           , intent(in)    , contiguous    :: weight(:)
+        real(TKG)           , intent(in)    , optional      :: weisum
         type(neimean_type)  , intent(in)                    :: method
     end function
 #endif
@@ -4491,13 +4491,13 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanMEAN_ND2_QD1_WTR_RK1
 #endif
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
         integer(IK)         , intent(in)                    :: dim
-        real(TKC)           , intent(in)    , contiguous    :: sample(:,:)
-        real(TKC)           , intent(in)    , contiguous    :: prob(:)
-        real(TKC)                                           :: quan(size(prob, 1, IK), size(sample, 3 - dim, IK))
-        real(TKC)           , intent(in)    , contiguous    :: weight(:)
-        real(TKC)           , intent(in)    , optional      :: weisum
+        real(TKG)           , intent(in)    , contiguous    :: sample(:,:)
+        real(TKG)           , intent(in)    , contiguous    :: prob(:)
+        real(TKG)                                           :: quan(size(prob, 1, IK), size(sample, 3 - dim, IK))
+        real(TKG)           , intent(in)    , contiguous    :: weight(:)
+        real(TKG)           , intent(in)    , optional      :: weisum
         type(neimean_type)  , intent(in)                    :: method
     end function
 #endif
@@ -4517,13 +4517,13 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanNEAR_ND2_QD0_WTR_RK5
 #endif
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
         integer(IK)         , intent(in)                    :: dim
-        real(TKC)           , intent(in)    , contiguous    :: sample(:,:)
-        real(TKC)           , intent(in)    , contiguous    :: weight(:)
-        real(TKC)           , intent(in)    , optional      :: weisum
-        real(TKC)           , intent(in)                    :: prob
-        real(TKC)                                           :: quan(size(sample, 3 - dim, IK))
+        real(TKG)           , intent(in)    , contiguous    :: sample(:,:)
+        real(TKG)           , intent(in)    , contiguous    :: weight(:)
+        real(TKG)           , intent(in)    , optional      :: weisum
+        real(TKG)           , intent(in)                    :: prob
+        real(TKG)                                           :: quan(size(sample, 3 - dim, IK))
         type(neinear_type)  , intent(in)                    :: method
     end function
 #endif
@@ -4533,13 +4533,13 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanNEAR_ND2_QD0_WTR_RK4
 #endif
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
         integer(IK)         , intent(in)                    :: dim
-        real(TKC)           , intent(in)    , contiguous    :: sample(:,:)
-        real(TKC)           , intent(in)    , contiguous    :: weight(:)
-        real(TKC)           , intent(in)    , optional      :: weisum
-        real(TKC)           , intent(in)                    :: prob
-        real(TKC)                                           :: quan(size(sample, 3 - dim, IK))
+        real(TKG)           , intent(in)    , contiguous    :: sample(:,:)
+        real(TKG)           , intent(in)    , contiguous    :: weight(:)
+        real(TKG)           , intent(in)    , optional      :: weisum
+        real(TKG)           , intent(in)                    :: prob
+        real(TKG)                                           :: quan(size(sample, 3 - dim, IK))
         type(neinear_type)  , intent(in)                    :: method
     end function
 #endif
@@ -4549,13 +4549,13 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanNEAR_ND2_QD0_WTR_RK3
 #endif
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
         integer(IK)         , intent(in)                    :: dim
-        real(TKC)           , intent(in)    , contiguous    :: sample(:,:)
-        real(TKC)           , intent(in)    , contiguous    :: weight(:)
-        real(TKC)           , intent(in)    , optional      :: weisum
-        real(TKC)           , intent(in)                    :: prob
-        real(TKC)                                           :: quan(size(sample, 3 - dim, IK))
+        real(TKG)           , intent(in)    , contiguous    :: sample(:,:)
+        real(TKG)           , intent(in)    , contiguous    :: weight(:)
+        real(TKG)           , intent(in)    , optional      :: weisum
+        real(TKG)           , intent(in)                    :: prob
+        real(TKG)                                           :: quan(size(sample, 3 - dim, IK))
         type(neinear_type)  , intent(in)                    :: method
     end function
 #endif
@@ -4565,13 +4565,13 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanNEAR_ND2_QD0_WTR_RK2
 #endif
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
         integer(IK)         , intent(in)                    :: dim
-        real(TKC)           , intent(in)    , contiguous    :: sample(:,:)
-        real(TKC)           , intent(in)    , contiguous    :: weight(:)
-        real(TKC)           , intent(in)    , optional      :: weisum
-        real(TKC)           , intent(in)                    :: prob
-        real(TKC)                                           :: quan(size(sample, 3 - dim, IK))
+        real(TKG)           , intent(in)    , contiguous    :: sample(:,:)
+        real(TKG)           , intent(in)    , contiguous    :: weight(:)
+        real(TKG)           , intent(in)    , optional      :: weisum
+        real(TKG)           , intent(in)                    :: prob
+        real(TKG)                                           :: quan(size(sample, 3 - dim, IK))
         type(neinear_type)  , intent(in)                    :: method
     end function
 #endif
@@ -4581,13 +4581,13 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanNEAR_ND2_QD0_WTR_RK1
 #endif
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
         integer(IK)         , intent(in)                    :: dim
-        real(TKC)           , intent(in)    , contiguous    :: sample(:,:)
-        real(TKC)           , intent(in)    , contiguous    :: weight(:)
-        real(TKC)           , intent(in)    , optional      :: weisum
-        real(TKC)           , intent(in)                    :: prob
-        real(TKC)                                           :: quan(size(sample, 3 - dim, IK))
+        real(TKG)           , intent(in)    , contiguous    :: sample(:,:)
+        real(TKG)           , intent(in)    , contiguous    :: weight(:)
+        real(TKG)           , intent(in)    , optional      :: weisum
+        real(TKG)           , intent(in)                    :: prob
+        real(TKG)                                           :: quan(size(sample, 3 - dim, IK))
         type(neinear_type)  , intent(in)                    :: method
     end function
 #endif
@@ -4599,13 +4599,13 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanNEAR_ND2_QD1_WTR_RK5
 #endif
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
         integer(IK)         , intent(in)                    :: dim
-        real(TKC)           , intent(in)    , contiguous    :: sample(:,:)
-        real(TKC)           , intent(in)    , contiguous    :: prob(:)
-        real(TKC)                                           :: quan(size(prob, 1, IK), size(sample, 3 - dim, IK))
-        real(TKC)           , intent(in)    , contiguous    :: weight(:)
-        real(TKC)           , intent(in)    , optional      :: weisum
+        real(TKG)           , intent(in)    , contiguous    :: sample(:,:)
+        real(TKG)           , intent(in)    , contiguous    :: prob(:)
+        real(TKG)                                           :: quan(size(prob, 1, IK), size(sample, 3 - dim, IK))
+        real(TKG)           , intent(in)    , contiguous    :: weight(:)
+        real(TKG)           , intent(in)    , optional      :: weisum
         type(neinear_type)  , intent(in)                    :: method
     end function
 #endif
@@ -4615,13 +4615,13 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanNEAR_ND2_QD1_WTR_RK4
 #endif
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
         integer(IK)         , intent(in)                    :: dim
-        real(TKC)           , intent(in)    , contiguous    :: sample(:,:)
-        real(TKC)           , intent(in)    , contiguous    :: prob(:)
-        real(TKC)                                           :: quan(size(prob, 1, IK), size(sample, 3 - dim, IK))
-        real(TKC)           , intent(in)    , contiguous    :: weight(:)
-        real(TKC)           , intent(in)    , optional      :: weisum
+        real(TKG)           , intent(in)    , contiguous    :: sample(:,:)
+        real(TKG)           , intent(in)    , contiguous    :: prob(:)
+        real(TKG)                                           :: quan(size(prob, 1, IK), size(sample, 3 - dim, IK))
+        real(TKG)           , intent(in)    , contiguous    :: weight(:)
+        real(TKG)           , intent(in)    , optional      :: weisum
         type(neinear_type)  , intent(in)                    :: method
     end function
 #endif
@@ -4631,13 +4631,13 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanNEAR_ND2_QD1_WTR_RK3
 #endif
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
         integer(IK)         , intent(in)                    :: dim
-        real(TKC)           , intent(in)    , contiguous    :: sample(:,:)
-        real(TKC)           , intent(in)    , contiguous    :: prob(:)
-        real(TKC)                                           :: quan(size(prob, 1, IK), size(sample, 3 - dim, IK))
-        real(TKC)           , intent(in)    , contiguous    :: weight(:)
-        real(TKC)           , intent(in)    , optional      :: weisum
+        real(TKG)           , intent(in)    , contiguous    :: sample(:,:)
+        real(TKG)           , intent(in)    , contiguous    :: prob(:)
+        real(TKG)                                           :: quan(size(prob, 1, IK), size(sample, 3 - dim, IK))
+        real(TKG)           , intent(in)    , contiguous    :: weight(:)
+        real(TKG)           , intent(in)    , optional      :: weisum
         type(neinear_type)  , intent(in)                    :: method
     end function
 #endif
@@ -4647,13 +4647,13 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanNEAR_ND2_QD1_WTR_RK2
 #endif
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
         integer(IK)         , intent(in)                    :: dim
-        real(TKC)           , intent(in)    , contiguous    :: sample(:,:)
-        real(TKC)           , intent(in)    , contiguous    :: prob(:)
-        real(TKC)                                           :: quan(size(prob, 1, IK), size(sample, 3 - dim, IK))
-        real(TKC)           , intent(in)    , contiguous    :: weight(:)
-        real(TKC)           , intent(in)    , optional      :: weisum
+        real(TKG)           , intent(in)    , contiguous    :: sample(:,:)
+        real(TKG)           , intent(in)    , contiguous    :: prob(:)
+        real(TKG)                                           :: quan(size(prob, 1, IK), size(sample, 3 - dim, IK))
+        real(TKG)           , intent(in)    , contiguous    :: weight(:)
+        real(TKG)           , intent(in)    , optional      :: weisum
         type(neinear_type)  , intent(in)                    :: method
     end function
 #endif
@@ -4663,13 +4663,13 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanNEAR_ND2_QD1_WTR_RK1
 #endif
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
         integer(IK)         , intent(in)                    :: dim
-        real(TKC)           , intent(in)    , contiguous    :: sample(:,:)
-        real(TKC)           , intent(in)    , contiguous    :: prob(:)
-        real(TKC)                                           :: quan(size(prob, 1, IK), size(sample, 3 - dim, IK))
-        real(TKC)           , intent(in)    , contiguous    :: weight(:)
-        real(TKC)           , intent(in)    , optional      :: weisum
+        real(TKG)           , intent(in)    , contiguous    :: sample(:,:)
+        real(TKG)           , intent(in)    , contiguous    :: prob(:)
+        real(TKG)                                           :: quan(size(prob, 1, IK), size(sample, 3 - dim, IK))
+        real(TKG)           , intent(in)    , contiguous    :: weight(:)
+        real(TKG)           , intent(in)    , optional      :: weisum
         type(neinear_type)  , intent(in)                    :: method
     end function
 #endif
@@ -4689,13 +4689,13 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanNEXT_ND2_QD0_WTR_RK5
 #endif
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
         integer(IK)         , intent(in)                    :: dim
-        real(TKC)           , intent(in)    , contiguous    :: sample(:,:)
-        real(TKC)           , intent(in)    , contiguous    :: weight(:)
-        real(TKC)           , intent(in)    , optional      :: weisum
-        real(TKC)           , intent(in)                    :: prob
-        real(TKC)                                           :: quan(size(sample, 3 - dim, IK))
+        real(TKG)           , intent(in)    , contiguous    :: sample(:,:)
+        real(TKG)           , intent(in)    , contiguous    :: weight(:)
+        real(TKG)           , intent(in)    , optional      :: weisum
+        real(TKG)           , intent(in)                    :: prob
+        real(TKG)                                           :: quan(size(sample, 3 - dim, IK))
         type(neinext_type)  , intent(in)                    :: method
     end function
 #endif
@@ -4705,13 +4705,13 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanNEXT_ND2_QD0_WTR_RK4
 #endif
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
         integer(IK)         , intent(in)                    :: dim
-        real(TKC)           , intent(in)    , contiguous    :: sample(:,:)
-        real(TKC)           , intent(in)    , contiguous    :: weight(:)
-        real(TKC)           , intent(in)    , optional      :: weisum
-        real(TKC)           , intent(in)                    :: prob
-        real(TKC)                                           :: quan(size(sample, 3 - dim, IK))
+        real(TKG)           , intent(in)    , contiguous    :: sample(:,:)
+        real(TKG)           , intent(in)    , contiguous    :: weight(:)
+        real(TKG)           , intent(in)    , optional      :: weisum
+        real(TKG)           , intent(in)                    :: prob
+        real(TKG)                                           :: quan(size(sample, 3 - dim, IK))
         type(neinext_type)  , intent(in)                    :: method
     end function
 #endif
@@ -4721,13 +4721,13 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanNEXT_ND2_QD0_WTR_RK3
 #endif
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
         integer(IK)         , intent(in)                    :: dim
-        real(TKC)           , intent(in)    , contiguous    :: sample(:,:)
-        real(TKC)           , intent(in)    , contiguous    :: weight(:)
-        real(TKC)           , intent(in)    , optional      :: weisum
-        real(TKC)           , intent(in)                    :: prob
-        real(TKC)                                           :: quan(size(sample, 3 - dim, IK))
+        real(TKG)           , intent(in)    , contiguous    :: sample(:,:)
+        real(TKG)           , intent(in)    , contiguous    :: weight(:)
+        real(TKG)           , intent(in)    , optional      :: weisum
+        real(TKG)           , intent(in)                    :: prob
+        real(TKG)                                           :: quan(size(sample, 3 - dim, IK))
         type(neinext_type)  , intent(in)                    :: method
     end function
 #endif
@@ -4737,13 +4737,13 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanNEXT_ND2_QD0_WTR_RK2
 #endif
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
         integer(IK)         , intent(in)                    :: dim
-        real(TKC)           , intent(in)    , contiguous    :: sample(:,:)
-        real(TKC)           , intent(in)    , contiguous    :: weight(:)
-        real(TKC)           , intent(in)    , optional      :: weisum
-        real(TKC)           , intent(in)                    :: prob
-        real(TKC)                                           :: quan(size(sample, 3 - dim, IK))
+        real(TKG)           , intent(in)    , contiguous    :: sample(:,:)
+        real(TKG)           , intent(in)    , contiguous    :: weight(:)
+        real(TKG)           , intent(in)    , optional      :: weisum
+        real(TKG)           , intent(in)                    :: prob
+        real(TKG)                                           :: quan(size(sample, 3 - dim, IK))
         type(neinext_type)  , intent(in)                    :: method
     end function
 #endif
@@ -4753,13 +4753,13 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanNEXT_ND2_QD0_WTR_RK1
 #endif
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
         integer(IK)         , intent(in)                    :: dim
-        real(TKC)           , intent(in)    , contiguous    :: sample(:,:)
-        real(TKC)           , intent(in)    , contiguous    :: weight(:)
-        real(TKC)           , intent(in)    , optional      :: weisum
-        real(TKC)           , intent(in)                    :: prob
-        real(TKC)                                           :: quan(size(sample, 3 - dim, IK))
+        real(TKG)           , intent(in)    , contiguous    :: sample(:,:)
+        real(TKG)           , intent(in)    , contiguous    :: weight(:)
+        real(TKG)           , intent(in)    , optional      :: weisum
+        real(TKG)           , intent(in)                    :: prob
+        real(TKG)                                           :: quan(size(sample, 3 - dim, IK))
         type(neinext_type)  , intent(in)                    :: method
     end function
 #endif
@@ -4771,13 +4771,13 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanNEXT_ND2_QD1_WTR_RK5
 #endif
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
         integer(IK)         , intent(in)                    :: dim
-        real(TKC)           , intent(in)    , contiguous    :: sample(:,:)
-        real(TKC)           , intent(in)    , contiguous    :: prob(:)
-        real(TKC)                                           :: quan(size(prob, 1, IK), size(sample, 3 - dim, IK))
-        real(TKC)           , intent(in)    , contiguous    :: weight(:)
-        real(TKC)           , intent(in)    , optional      :: weisum
+        real(TKG)           , intent(in)    , contiguous    :: sample(:,:)
+        real(TKG)           , intent(in)    , contiguous    :: prob(:)
+        real(TKG)                                           :: quan(size(prob, 1, IK), size(sample, 3 - dim, IK))
+        real(TKG)           , intent(in)    , contiguous    :: weight(:)
+        real(TKG)           , intent(in)    , optional      :: weisum
         type(neinext_type)  , intent(in)                    :: method
     end function
 #endif
@@ -4787,13 +4787,13 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanNEXT_ND2_QD1_WTR_RK4
 #endif
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
         integer(IK)         , intent(in)                    :: dim
-        real(TKC)           , intent(in)    , contiguous    :: sample(:,:)
-        real(TKC)           , intent(in)    , contiguous    :: prob(:)
-        real(TKC)                                           :: quan(size(prob, 1, IK), size(sample, 3 - dim, IK))
-        real(TKC)           , intent(in)    , contiguous    :: weight(:)
-        real(TKC)           , intent(in)    , optional      :: weisum
+        real(TKG)           , intent(in)    , contiguous    :: sample(:,:)
+        real(TKG)           , intent(in)    , contiguous    :: prob(:)
+        real(TKG)                                           :: quan(size(prob, 1, IK), size(sample, 3 - dim, IK))
+        real(TKG)           , intent(in)    , contiguous    :: weight(:)
+        real(TKG)           , intent(in)    , optional      :: weisum
         type(neinext_type)  , intent(in)                    :: method
     end function
 #endif
@@ -4803,13 +4803,13 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanNEXT_ND2_QD1_WTR_RK3
 #endif
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
         integer(IK)         , intent(in)                    :: dim
-        real(TKC)           , intent(in)    , contiguous    :: sample(:,:)
-        real(TKC)           , intent(in)    , contiguous    :: prob(:)
-        real(TKC)                                           :: quan(size(prob, 1, IK), size(sample, 3 - dim, IK))
-        real(TKC)           , intent(in)    , contiguous    :: weight(:)
-        real(TKC)           , intent(in)    , optional      :: weisum
+        real(TKG)           , intent(in)    , contiguous    :: sample(:,:)
+        real(TKG)           , intent(in)    , contiguous    :: prob(:)
+        real(TKG)                                           :: quan(size(prob, 1, IK), size(sample, 3 - dim, IK))
+        real(TKG)           , intent(in)    , contiguous    :: weight(:)
+        real(TKG)           , intent(in)    , optional      :: weisum
         type(neinext_type)  , intent(in)                    :: method
     end function
 #endif
@@ -4819,13 +4819,13 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanNEXT_ND2_QD1_WTR_RK2
 #endif
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
         integer(IK)         , intent(in)                    :: dim
-        real(TKC)           , intent(in)    , contiguous    :: sample(:,:)
-        real(TKC)           , intent(in)    , contiguous    :: prob(:)
-        real(TKC)                                           :: quan(size(prob, 1, IK), size(sample, 3 - dim, IK))
-        real(TKC)           , intent(in)    , contiguous    :: weight(:)
-        real(TKC)           , intent(in)    , optional      :: weisum
+        real(TKG)           , intent(in)    , contiguous    :: sample(:,:)
+        real(TKG)           , intent(in)    , contiguous    :: prob(:)
+        real(TKG)                                           :: quan(size(prob, 1, IK), size(sample, 3 - dim, IK))
+        real(TKG)           , intent(in)    , contiguous    :: weight(:)
+        real(TKG)           , intent(in)    , optional      :: weisum
         type(neinext_type)  , intent(in)                    :: method
     end function
 #endif
@@ -4835,13 +4835,13 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanNEXT_ND2_QD1_WTR_RK1
 #endif
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
         integer(IK)         , intent(in)                    :: dim
-        real(TKC)           , intent(in)    , contiguous    :: sample(:,:)
-        real(TKC)           , intent(in)    , contiguous    :: prob(:)
-        real(TKC)                                           :: quan(size(prob, 1, IK), size(sample, 3 - dim, IK))
-        real(TKC)           , intent(in)    , contiguous    :: weight(:)
-        real(TKC)           , intent(in)    , optional      :: weisum
+        real(TKG)           , intent(in)    , contiguous    :: sample(:,:)
+        real(TKG)           , intent(in)    , contiguous    :: prob(:)
+        real(TKG)                                           :: quan(size(prob, 1, IK), size(sample, 3 - dim, IK))
+        real(TKG)           , intent(in)    , contiguous    :: weight(:)
+        real(TKG)           , intent(in)    , optional      :: weisum
         type(neinext_type)  , intent(in)                    :: method
     end function
 #endif
@@ -4861,13 +4861,13 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanPREV_ND2_QD0_WTR_RK5
 #endif
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
         integer(IK)         , intent(in)                    :: dim
-        real(TKC)           , intent(in)    , contiguous    :: sample(:,:)
-        real(TKC)           , intent(in)    , contiguous    :: weight(:)
-        real(TKC)           , intent(in)    , optional      :: weisum
-        real(TKC)           , intent(in)                    :: prob
-        real(TKC)                                           :: quan(size(sample, 3 - dim, IK))
+        real(TKG)           , intent(in)    , contiguous    :: sample(:,:)
+        real(TKG)           , intent(in)    , contiguous    :: weight(:)
+        real(TKG)           , intent(in)    , optional      :: weisum
+        real(TKG)           , intent(in)                    :: prob
+        real(TKG)                                           :: quan(size(sample, 3 - dim, IK))
         type(neiprev_type)  , intent(in)                    :: method
     end function
 #endif
@@ -4877,13 +4877,13 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanPREV_ND2_QD0_WTR_RK4
 #endif
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
         integer(IK)         , intent(in)                    :: dim
-        real(TKC)           , intent(in)    , contiguous    :: sample(:,:)
-        real(TKC)           , intent(in)    , contiguous    :: weight(:)
-        real(TKC)           , intent(in)    , optional      :: weisum
-        real(TKC)           , intent(in)                    :: prob
-        real(TKC)                                           :: quan(size(sample, 3 - dim, IK))
+        real(TKG)           , intent(in)    , contiguous    :: sample(:,:)
+        real(TKG)           , intent(in)    , contiguous    :: weight(:)
+        real(TKG)           , intent(in)    , optional      :: weisum
+        real(TKG)           , intent(in)                    :: prob
+        real(TKG)                                           :: quan(size(sample, 3 - dim, IK))
         type(neiprev_type)  , intent(in)                    :: method
     end function
 #endif
@@ -4893,13 +4893,13 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanPREV_ND2_QD0_WTR_RK3
 #endif
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
         integer(IK)         , intent(in)                    :: dim
-        real(TKC)           , intent(in)    , contiguous    :: sample(:,:)
-        real(TKC)           , intent(in)    , contiguous    :: weight(:)
-        real(TKC)           , intent(in)    , optional      :: weisum
-        real(TKC)           , intent(in)                    :: prob
-        real(TKC)                                           :: quan(size(sample, 3 - dim, IK))
+        real(TKG)           , intent(in)    , contiguous    :: sample(:,:)
+        real(TKG)           , intent(in)    , contiguous    :: weight(:)
+        real(TKG)           , intent(in)    , optional      :: weisum
+        real(TKG)           , intent(in)                    :: prob
+        real(TKG)                                           :: quan(size(sample, 3 - dim, IK))
         type(neiprev_type)  , intent(in)                    :: method
     end function
 #endif
@@ -4909,13 +4909,13 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanPREV_ND2_QD0_WTR_RK2
 #endif
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
         integer(IK)         , intent(in)                    :: dim
-        real(TKC)           , intent(in)    , contiguous    :: sample(:,:)
-        real(TKC)           , intent(in)    , contiguous    :: weight(:)
-        real(TKC)           , intent(in)    , optional      :: weisum
-        real(TKC)           , intent(in)                    :: prob
-        real(TKC)                                           :: quan(size(sample, 3 - dim, IK))
+        real(TKG)           , intent(in)    , contiguous    :: sample(:,:)
+        real(TKG)           , intent(in)    , contiguous    :: weight(:)
+        real(TKG)           , intent(in)    , optional      :: weisum
+        real(TKG)           , intent(in)                    :: prob
+        real(TKG)                                           :: quan(size(sample, 3 - dim, IK))
         type(neiprev_type)  , intent(in)                    :: method
     end function
 #endif
@@ -4925,13 +4925,13 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanPREV_ND2_QD0_WTR_RK1
 #endif
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
         integer(IK)         , intent(in)                    :: dim
-        real(TKC)           , intent(in)    , contiguous    :: sample(:,:)
-        real(TKC)           , intent(in)    , contiguous    :: weight(:)
-        real(TKC)           , intent(in)    , optional      :: weisum
-        real(TKC)           , intent(in)                    :: prob
-        real(TKC)                                           :: quan(size(sample, 3 - dim, IK))
+        real(TKG)           , intent(in)    , contiguous    :: sample(:,:)
+        real(TKG)           , intent(in)    , contiguous    :: weight(:)
+        real(TKG)           , intent(in)    , optional      :: weisum
+        real(TKG)           , intent(in)                    :: prob
+        real(TKG)                                           :: quan(size(sample, 3 - dim, IK))
         type(neiprev_type)  , intent(in)                    :: method
     end function
 #endif
@@ -4943,13 +4943,13 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanPREV_ND2_QD1_WTR_RK5
 #endif
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
         integer(IK)         , intent(in)                    :: dim
-        real(TKC)           , intent(in)    , contiguous    :: sample(:,:)
-        real(TKC)           , intent(in)    , contiguous    :: prob(:)
-        real(TKC)                                           :: quan(size(prob, 1, IK), size(sample, 3 - dim, IK))
-        real(TKC)           , intent(in)    , contiguous    :: weight(:)
-        real(TKC)           , intent(in)    , optional      :: weisum
+        real(TKG)           , intent(in)    , contiguous    :: sample(:,:)
+        real(TKG)           , intent(in)    , contiguous    :: prob(:)
+        real(TKG)                                           :: quan(size(prob, 1, IK), size(sample, 3 - dim, IK))
+        real(TKG)           , intent(in)    , contiguous    :: weight(:)
+        real(TKG)           , intent(in)    , optional      :: weisum
         type(neiprev_type)  , intent(in)                    :: method
     end function
 #endif
@@ -4959,13 +4959,13 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanPREV_ND2_QD1_WTR_RK4
 #endif
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
         integer(IK)         , intent(in)                    :: dim
-        real(TKC)           , intent(in)    , contiguous    :: sample(:,:)
-        real(TKC)           , intent(in)    , contiguous    :: prob(:)
-        real(TKC)                                           :: quan(size(prob, 1, IK), size(sample, 3 - dim, IK))
-        real(TKC)           , intent(in)    , contiguous    :: weight(:)
-        real(TKC)           , intent(in)    , optional      :: weisum
+        real(TKG)           , intent(in)    , contiguous    :: sample(:,:)
+        real(TKG)           , intent(in)    , contiguous    :: prob(:)
+        real(TKG)                                           :: quan(size(prob, 1, IK), size(sample, 3 - dim, IK))
+        real(TKG)           , intent(in)    , contiguous    :: weight(:)
+        real(TKG)           , intent(in)    , optional      :: weisum
         type(neiprev_type)  , intent(in)                    :: method
     end function
 #endif
@@ -4975,13 +4975,13 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanPREV_ND2_QD1_WTR_RK3
 #endif
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
         integer(IK)         , intent(in)                    :: dim
-        real(TKC)           , intent(in)    , contiguous    :: sample(:,:)
-        real(TKC)           , intent(in)    , contiguous    :: prob(:)
-        real(TKC)                                           :: quan(size(prob, 1, IK), size(sample, 3 - dim, IK))
-        real(TKC)           , intent(in)    , contiguous    :: weight(:)
-        real(TKC)           , intent(in)    , optional      :: weisum
+        real(TKG)           , intent(in)    , contiguous    :: sample(:,:)
+        real(TKG)           , intent(in)    , contiguous    :: prob(:)
+        real(TKG)                                           :: quan(size(prob, 1, IK), size(sample, 3 - dim, IK))
+        real(TKG)           , intent(in)    , contiguous    :: weight(:)
+        real(TKG)           , intent(in)    , optional      :: weisum
         type(neiprev_type)  , intent(in)                    :: method
     end function
 #endif
@@ -4991,13 +4991,13 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanPREV_ND2_QD1_WTR_RK2
 #endif
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
         integer(IK)         , intent(in)                    :: dim
-        real(TKC)           , intent(in)    , contiguous    :: sample(:,:)
-        real(TKC)           , intent(in)    , contiguous    :: prob(:)
-        real(TKC)                                           :: quan(size(prob, 1, IK), size(sample, 3 - dim, IK))
-        real(TKC)           , intent(in)    , contiguous    :: weight(:)
-        real(TKC)           , intent(in)    , optional      :: weisum
+        real(TKG)           , intent(in)    , contiguous    :: sample(:,:)
+        real(TKG)           , intent(in)    , contiguous    :: prob(:)
+        real(TKG)                                           :: quan(size(prob, 1, IK), size(sample, 3 - dim, IK))
+        real(TKG)           , intent(in)    , contiguous    :: weight(:)
+        real(TKG)           , intent(in)    , optional      :: weisum
         type(neiprev_type)  , intent(in)                    :: method
     end function
 #endif
@@ -5007,13 +5007,13 @@ module pm_sampleQuan
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQuanPREV_ND2_QD1_WTR_RK1
 #endif
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
         integer(IK)         , intent(in)                    :: dim
-        real(TKC)           , intent(in)    , contiguous    :: sample(:,:)
-        real(TKC)           , intent(in)    , contiguous    :: prob(:)
-        real(TKC)                                           :: quan(size(prob, 1, IK), size(sample, 3 - dim, IK))
-        real(TKC)           , intent(in)    , contiguous    :: weight(:)
-        real(TKC)           , intent(in)    , optional      :: weisum
+        real(TKG)           , intent(in)    , contiguous    :: sample(:,:)
+        real(TKG)           , intent(in)    , contiguous    :: prob(:)
+        real(TKG)                                           :: quan(size(prob, 1, IK), size(sample, 3 - dim, IK))
+        real(TKG)           , intent(in)    , contiguous    :: weight(:)
+        real(TKG)           , intent(in)    , optional      :: weisum
         type(neiprev_type)  , intent(in)                    :: method
     end function
 #endif

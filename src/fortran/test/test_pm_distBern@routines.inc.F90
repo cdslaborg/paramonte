@@ -45,24 +45,24 @@
         call test%assert(assertion, SK_"The procedure `isHead(size = NSIM)` must be unbiased. There is a 5\sgima chance this test fails. Rerunning the test may resolve the failure.", int(__LINE__, IK))
 
         do i = 1_IK, NSIM
-            rand(i) = isHead(p = 1._RKC)
+            rand(i) = isHead(p = 1._RKG)
         end do
         assertion = assertion .and. logical(all(rand), LK)
-        call test%assert(assertion, SK_"The procedure `isHead(p = 1._RKC)` must always yield `.true.`.", int(__LINE__, IK))
+        call test%assert(assertion, SK_"The procedure `isHead(p = 1._RKG)` must always yield `.true.`.", int(__LINE__, IK))
 
         do i = 1_IK, NSIM
-            rand(i) = isHead(p = 0._RKC)
+            rand(i) = isHead(p = 0._RKG)
         end do
         assertion = assertion .and. logical(.not. any(rand), LK)
-        call test%assert(assertion, SK_"The procedure `isHead(p = 0._RKC)` must always yield `.false.`.", int(__LINE__, IK))
+        call test%assert(assertion, SK_"The procedure `isHead(p = 0._RKG)` must always yield `.false.`.", int(__LINE__, IK))
 
-        rand = isHead(p = 1._RKC, size = NSIM)
+        rand = isHead(p = 1._RKG, size = NSIM)
         assertion = assertion .and. logical(all(rand), LK)
-        call test%assert(assertion, SK_"The procedure `isHead(p = 1._RKC, size = NSIM)` must always yield `.true.`.", int(__LINE__, IK))
+        call test%assert(assertion, SK_"The procedure `isHead(p = 1._RKG, size = NSIM)` must always yield `.true.`.", int(__LINE__, IK))
 
-        rand = isHead(p = 0._RKC, size = NSIM)
+        rand = isHead(p = 0._RKG, size = NSIM)
         assertion = assertion .and. logical(.not. any(rand), LK)
-        call test%assert(assertion, SK_"The procedure `isHead(p = 0._RKC, size = NSIM)` must always yield `.false.`.", int(__LINE__, IK))
+        call test%assert(assertion, SK_"The procedure `isHead(p = 0._RKG, size = NSIM)` must always yield `.false.`.", int(__LINE__, IK))
 
         !%%%%%%%%%%%%%%%%%%
 #elif   getBernRand_ENABLED
@@ -75,34 +75,34 @@
         assertion = .true._LK
 
         do i = 1_IK, NSIM
-            rand(i) = getBernRand(p = .5_RKC)
+            rand(i) = getBernRand(p = .5_RKG)
         end do
         assertion = assertion .and. logical(abs(NSIM / 2_IK - count(rand == 1_IK, kind = IK)) <= 5 * sqrt(real(NSIM / 2_IK)), LK)
         call test%assert(assertion, SK_"The procedure `getBernRand(p)` must be unbiased. There is a 5\sgima chance this test fails. Rerunning the test may resolve the failure.", int(__LINE__, IK))
 
-        rand = getBernRand(p = .5_RKC, size = NSIM)
+        rand = getBernRand(p = .5_RKG, size = NSIM)
         assertion = assertion .and. logical(abs(NSIM / 2_IK - count(rand == 1_IK, kind = IK)) <= 5 * sqrt(real(NSIM / 2_IK)), LK)
         call test%assert(assertion, SK_"The procedure `getBernRand(p, size = NSIM)` must be unbiased. There is a 5\sgima chance this test fails. Rerunning the test may resolve the failure.", int(__LINE__, IK))
 
         do i = 1_IK, NSIM
-            rand(i) = getBernRand(p = 1._RKC)
+            rand(i) = getBernRand(p = 1._RKG)
         end do
         assertion = assertion .and. logical(all(rand == 1_IK), LK)
-        call test%assert(assertion, SK_"The procedure `getBernRand(p = 1._RKC)` must always yield `1`.", int(__LINE__, IK))
+        call test%assert(assertion, SK_"The procedure `getBernRand(p = 1._RKG)` must always yield `1`.", int(__LINE__, IK))
 
         do i = 1_IK, NSIM
-            rand(i) = getBernRand(p = 0._RKC)
+            rand(i) = getBernRand(p = 0._RKG)
         end do
         assertion = assertion .and. logical(.not. any(rand == 1_IK), LK)
-        call test%assert(assertion, SK_"The procedure `getBernRand(p = 0._RKC)` must always yield `0`.", int(__LINE__, IK))
+        call test%assert(assertion, SK_"The procedure `getBernRand(p = 0._RKG)` must always yield `0`.", int(__LINE__, IK))
 
-        rand = getBernRand(p = 1._RKC, size = NSIM)
+        rand = getBernRand(p = 1._RKG, size = NSIM)
         assertion = assertion .and. logical(all(rand == 1_IK), LK)
-        call test%assert(assertion, SK_"The procedure `getBernRand(p = 1._RKC, size = NSIM)` must always yield `1`.", int(__LINE__, IK))
+        call test%assert(assertion, SK_"The procedure `getBernRand(p = 1._RKG, size = NSIM)` must always yield `1`.", int(__LINE__, IK))
 
-        rand = getBernRand(p = 0._RKC, size = NSIM)
+        rand = getBernRand(p = 0._RKG, size = NSIM)
         assertion = assertion .and. logical(.not. any(rand == 1_IK), LK)
-        call test%assert(assertion, SK_"The procedure `getBernRand(p = 0._RKC, size = NSIM)` must always yield `0`.", int(__LINE__, IK))
+        call test%assert(assertion, SK_"The procedure `getBernRand(p = 0._RKG, size = NSIM)` must always yield `0`.", int(__LINE__, IK))
 
         !%%%%%%%%%%%%%%%%%%
 #elif   setBernRand_ENABLED
@@ -112,14 +112,14 @@
         integer(IK)     :: i
         integer(IK)     , parameter :: NSIM = 20000_IK
 #if     IK_ENABLED
-#define IS_TRUE(x) x == 1_IKC
-        integer(IKC)    :: rand(NSIM)
+#define IS_TRUE(x) x == 1_IKG
+        integer(IKG)    :: rand(NSIM)
 #elif   LK_ENABLED
 #define IS_TRUE(x) x
-        logical(LKC)    :: rand(NSIM)
+        logical(LKG)    :: rand(NSIM)
 #elif   RK_ENABLED
-#define IS_TRUE(x) x == 1._RKC
-        real(RKC)       :: rand(NSIM)
+#define IS_TRUE(x) x == 1._RKG
+        real(RKG)       :: rand(NSIM)
 #else
 #error  "Unrecognized interface."
 #endif
@@ -127,34 +127,34 @@
         assertion = .true._LK
 
         do i = 1_IK, NSIM
-            call setBernRand(rand(i), getUnifRand(0._RKC, 1._RKC), p = .5_RKC)
+            call setBernRand(rand(i), getUnifRand(0._RKG, 1._RKG), p = .5_RKG)
         end do
         assertion = assertion .and. logical(abs(NSIM / 2_IK - count(IS_TRUE(rand), kind = IK)) <= 5 * sqrt(real(NSIM / 2_IK)), LK)
         call test%assert(assertion, SK_"The procedure `getBernRand(p)` must be unbiased. There is a 5\sgima chance this test fails. Rerunning the test may resolve the failure.", int(__LINE__, IK))
 
-        call setBernRand(rand, getUnifRand(0._RKC, 1._RKC, size(rand, 1, IK)), p = .5_RKC)
+        call setBernRand(rand, getUnifRand(0._RKG, 1._RKG, size(rand, 1, IK)), p = .5_RKG)
         assertion = assertion .and. logical(abs(NSIM / 2_IK - count(IS_TRUE(rand), kind = IK)) <= 5 * sqrt(real(NSIM / 2_IK)), LK)
         call test%assert(assertion, SK_"The procedure `getBernRand(p, size = NSIM)` must be unbiased. There is a 5\sgima chance this test fails. Rerunning the test may resolve the failure.", int(__LINE__, IK))
 
         do i = 1_IK, NSIM
-            call setBernRand(rand(i), getUnifRand(0._RKC, 1._RKC), p = 1._RKC)
+            call setBernRand(rand(i), getUnifRand(0._RKG, 1._RKG), p = 1._RKG)
         end do
         assertion = assertion .and. logical(all(IS_TRUE(rand)), LK)
-        call test%assert(assertion, SK_"The procedure `getBernRand(p = 1._RKC)` must always yield `1`.", int(__LINE__, IK))
+        call test%assert(assertion, SK_"The procedure `getBernRand(p = 1._RKG)` must always yield `1`.", int(__LINE__, IK))
 
         do i = 1_IK, NSIM
-            call setBernRand(rand(i), getUnifRand(0._RKC, 1._RKC), p = 0._RKC)
+            call setBernRand(rand(i), getUnifRand(0._RKG, 1._RKG), p = 0._RKG)
         end do
         assertion = assertion .and. logical(.not. any(IS_TRUE(rand)), LK)
-        call test%assert(assertion, SK_"The procedure `getBernRand(p = 0._RKC)` must always yield `0`.", int(__LINE__, IK))
+        call test%assert(assertion, SK_"The procedure `getBernRand(p = 0._RKG)` must always yield `0`.", int(__LINE__, IK))
 
-        call setBernRand(rand, getUnifRand(0._RKC, 1._RKC, size(rand, 1, IK)), p = 1._RKC)
+        call setBernRand(rand, getUnifRand(0._RKG, 1._RKG, size(rand, 1, IK)), p = 1._RKG)
         assertion = assertion .and. logical(all(IS_TRUE(rand)), LK)
-        call test%assert(assertion, SK_"The procedure `getBernRand(p = 1._RKC, size = NSIM)` must always yield `1`.", int(__LINE__, IK))
+        call test%assert(assertion, SK_"The procedure `getBernRand(p = 1._RKG, size = NSIM)` must always yield `1`.", int(__LINE__, IK))
 
-        call setBernRand(rand, getUnifRand(0._RKC, 1._RKC, size(rand, 1, IK)), p = 0._RKC)
+        call setBernRand(rand, getUnifRand(0._RKG, 1._RKG, size(rand, 1, IK)), p = 0._RKG)
         assertion = assertion .and. logical(.not. any(IS_TRUE(rand)), LK)
-        call test%assert(assertion, SK_"The procedure `getBernRand(p = 0._RKC, size = NSIM)` must always yield `0`.", int(__LINE__, IK))
+        call test%assert(assertion, SK_"The procedure `getBernRand(p = 0._RKG, size = NSIM)` must always yield `0`.", int(__LINE__, IK))
 
 #else
         !%%%%%%%%%%%%%%%%%%%%%%%%

@@ -1,6 +1,6 @@
 program benchmark
 
-    use pm_kind, only: IK, LK, RKC => RK
+    use pm_kind, only: IK, LK, RKG => RK
     use pm_arrayResize, only: setResized
     use pm_distUnif, only: getUnifRand
     use pm_arraySort, only: setSorted
@@ -14,7 +14,7 @@ program benchmark
     integer(IK) , parameter             :: NARR = 12_IK             !< The number of benchmark array sizes.
     integer(IK) , parameter             :: NBENCH = 3_IK            !< The number of benchmark wrappers.
     integer(IK)                         :: arraySize(NARR)          !< The benchmarking array sizes.
-    real(RKC)   , allocatable           :: array(:)                 !< The arrays to be sorted.
+    real(RKG)   , allocatable           :: array(:)                 !< The arrays to be sorted.
     integer(IK) , allocatable           :: index(:)                 !< The arrays to be sorted.
     logical(LK)                         :: issorted
     type(bench_type)                    :: bench(2,NBENCH)
@@ -42,7 +42,7 @@ program benchmark
 
         write(*,"(*(g0,:,' '))") "Benchmarking with array size", arraySize(iarr)
 
-        array = getUnifRand(1._RKC, 2._RKC, arraySize(iarr))
+        array = getUnifRand(1._RKG, 2._RKG, arraySize(iarr))
         call setResized(index, arraySize(iarr))
 
         issorted = .false._LK
@@ -69,7 +69,7 @@ contains
     subroutine setarray()
         use pm_arraySpace, only: getLinSpace
         if (issorted) then
-            array(:) = getLinSpace(0._RKC, 1._RKC, count = size(array, kind = IK))
+            array(:) = getLinSpace(0._RKG, 1._RKG, count = size(array, kind = IK))
         else
             call random_number(array)
         end if

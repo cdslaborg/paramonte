@@ -243,9 +243,9 @@ module pm_distBand
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getBandEpeak_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(in)    :: alpha, beta, ebreak
-        real(RKC)                   :: epeak
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(in)    :: alpha, beta, ebreak
+        real(RKG)                   :: epeak
     end function
 #endif
 
@@ -254,9 +254,9 @@ module pm_distBand
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getBandEpeak_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(in)    :: alpha, beta, ebreak
-        real(RKC)                   :: epeak
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(in)    :: alpha, beta, ebreak
+        real(RKG)                   :: epeak
     end function
 #endif
 
@@ -265,9 +265,9 @@ module pm_distBand
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getBandEpeak_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(in)    :: alpha, beta, ebreak
-        real(RKC)                   :: epeak
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(in)    :: alpha, beta, ebreak
+        real(RKG)                   :: epeak
     end function
 #endif
 
@@ -276,9 +276,9 @@ module pm_distBand
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getBandEpeak_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(in)    :: alpha, beta, ebreak
-        real(RKC)                   :: epeak
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(in)    :: alpha, beta, ebreak
+        real(RKG)                   :: epeak
     end function
 #endif
 
@@ -287,9 +287,9 @@ module pm_distBand
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getBandEpeak_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(in)    :: alpha, beta, ebreak
-        real(RKC)                   :: epeak
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(in)    :: alpha, beta, ebreak
+        real(RKG)                   :: epeak
     end function
 #endif
 
@@ -370,9 +370,9 @@ module pm_distBand
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getBandEbreak_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(in)    :: alpha, beta, epeak
-        real(RKC)                   :: ebreak
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(in)    :: alpha, beta, epeak
+        real(RKG)                   :: ebreak
     end function
 #endif
 
@@ -381,9 +381,9 @@ module pm_distBand
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getBandEbreak_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(in)    :: alpha, beta, epeak
-        real(RKC)                   :: ebreak
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(in)    :: alpha, beta, epeak
+        real(RKG)                   :: ebreak
     end function
 #endif
 
@@ -392,9 +392,9 @@ module pm_distBand
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getBandEbreak_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(in)    :: alpha, beta, epeak
-        real(RKC)                   :: ebreak
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(in)    :: alpha, beta, epeak
+        real(RKG)                   :: ebreak
     end function
 #endif
 
@@ -403,9 +403,9 @@ module pm_distBand
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getBandEbreak_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(in)    :: alpha, beta, epeak
-        real(RKC)                   :: ebreak
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(in)    :: alpha, beta, epeak
+        real(RKG)                   :: ebreak
     end function
 #endif
 
@@ -414,9 +414,9 @@ module pm_distBand
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getBandEbreak_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(in)    :: alpha, beta, epeak
-        real(RKC)                   :: ebreak
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(in)    :: alpha, beta, epeak
+        real(RKG)                   :: ebreak
     end function
 #endif
 
@@ -498,9 +498,9 @@ module pm_distBand
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getBandZeta_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(in)    :: alpha, beta, ebreak
-        real(RKC)                   :: zeta
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(in)    :: alpha, beta, ebreak
+        real(RKG)                   :: zeta
     end function
 #endif
 
@@ -509,9 +509,9 @@ module pm_distBand
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getBandZeta_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(in)    :: alpha, beta, ebreak
-        real(RKC)                   :: zeta
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(in)    :: alpha, beta, ebreak
+        real(RKG)                   :: zeta
     end function
 #endif
 
@@ -520,9 +520,9 @@ module pm_distBand
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getBandZeta_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(in)    :: alpha, beta, ebreak
-        real(RKC)                   :: zeta
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(in)    :: alpha, beta, ebreak
+        real(RKG)                   :: zeta
     end function
 #endif
 
@@ -531,9 +531,9 @@ module pm_distBand
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getBandZeta_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(in)    :: alpha, beta, ebreak
-        real(RKC)                   :: zeta
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(in)    :: alpha, beta, ebreak
+        real(RKG)                   :: zeta
     end function
 #endif
 
@@ -542,9 +542,9 @@ module pm_distBand
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getBandZeta_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(in)    :: alpha, beta, ebreak
-        real(RKC)                   :: zeta
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(in)    :: alpha, beta, ebreak
+        real(RKG)                   :: zeta
     end function
 #endif
 
@@ -662,10 +662,10 @@ module pm_distBand
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getBandUDF_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(in)                :: energy, alpha, beta, ebreak
-        real(RKC)   , intent(in)    , optional  :: zeta, invEfold
-        real(RKC)                               :: udf
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(in)                :: energy, alpha, beta, ebreak
+        real(RKG)   , intent(in)    , optional  :: zeta, invEfold
+        real(RKG)                               :: udf
     end function
 #endif
 
@@ -674,10 +674,10 @@ module pm_distBand
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getBandUDF_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(in)                :: energy, alpha, beta, ebreak
-        real(RKC)   , intent(in)    , optional  :: zeta, invEfold
-        real(RKC)                               :: udf
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(in)                :: energy, alpha, beta, ebreak
+        real(RKG)   , intent(in)    , optional  :: zeta, invEfold
+        real(RKG)                               :: udf
     end function
 #endif
 
@@ -686,10 +686,10 @@ module pm_distBand
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getBandUDF_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(in)                :: energy, alpha, beta, ebreak
-        real(RKC)   , intent(in)    , optional  :: zeta, invEfold
-        real(RKC)                               :: udf
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(in)                :: energy, alpha, beta, ebreak
+        real(RKG)   , intent(in)    , optional  :: zeta, invEfold
+        real(RKG)                               :: udf
     end function
 #endif
 
@@ -698,10 +698,10 @@ module pm_distBand
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getBandUDF_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(in)                :: energy, alpha, beta, ebreak
-        real(RKC)   , intent(in)    , optional  :: zeta, invEfold
-        real(RKC)                               :: udf
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(in)                :: energy, alpha, beta, ebreak
+        real(RKG)   , intent(in)    , optional  :: zeta, invEfold
+        real(RKG)                               :: udf
     end function
 #endif
 
@@ -710,10 +710,10 @@ module pm_distBand
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getBandUDF_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(in)                :: energy, alpha, beta, ebreak
-        real(RKC)   , intent(in)    , optional  :: zeta, invEfold
-        real(RKC)                               :: udf
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(in)                :: energy, alpha, beta, ebreak
+        real(RKG)   , intent(in)    , optional  :: zeta, invEfold
+        real(RKG)                               :: udf
     end function
 #endif
 
@@ -821,9 +821,9 @@ module pm_distBand
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setBandUCDF_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(in)                :: lb, ub, alpha, beta, ebreak
-        real(RKC)   , intent(out)               :: ucdf
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(in)                :: lb, ub, alpha, beta, ebreak
+        real(RKG)   , intent(out)               :: ucdf
         integer(IK) , intent(out)               :: info
     end subroutine
 #endif
@@ -833,9 +833,9 @@ module pm_distBand
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setBandUCDF_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(in)                :: lb, ub, alpha, beta, ebreak
-        real(RKC)   , intent(out)               :: ucdf
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(in)                :: lb, ub, alpha, beta, ebreak
+        real(RKG)   , intent(out)               :: ucdf
         integer(IK) , intent(out)               :: info
     end subroutine
 #endif
@@ -845,9 +845,9 @@ module pm_distBand
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setBandUCDF_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(in)                :: lb, ub, alpha, beta, ebreak
-        real(RKC)   , intent(out)               :: ucdf
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(in)                :: lb, ub, alpha, beta, ebreak
+        real(RKG)   , intent(out)               :: ucdf
         integer(IK) , intent(out)               :: info
     end subroutine
 #endif
@@ -857,9 +857,9 @@ module pm_distBand
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setBandUCDF_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(in)                :: lb, ub, alpha, beta, ebreak
-        real(RKC)   , intent(out)               :: ucdf
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(in)                :: lb, ub, alpha, beta, ebreak
+        real(RKG)   , intent(out)               :: ucdf
         integer(IK) , intent(out)               :: info
     end subroutine
 #endif
@@ -869,9 +869,9 @@ module pm_distBand
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setBandUCDF_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(in)                :: lb, ub, alpha, beta, ebreak
-        real(RKC)   , intent(out)               :: ucdf
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(in)                :: lb, ub, alpha, beta, ebreak
+        real(RKG)   , intent(out)               :: ucdf
         integer(IK) , intent(out)               :: info
     end subroutine
 #endif
@@ -1014,9 +1014,9 @@ module pm_distBand
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setBandMeanDef_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(in)                :: lb, ub, alpha, beta, ebreak
-        real(RKC)   , intent(out)               :: mean
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(in)                :: lb, ub, alpha, beta, ebreak
+        real(RKG)   , intent(out)               :: mean
         integer(IK) , intent(out)               :: info
     end subroutine
 #endif
@@ -1026,9 +1026,9 @@ module pm_distBand
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setBandMeanDef_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(in)                :: lb, ub, alpha, beta, ebreak
-        real(RKC)   , intent(out)               :: mean
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(in)                :: lb, ub, alpha, beta, ebreak
+        real(RKG)   , intent(out)               :: mean
         integer(IK) , intent(out)               :: info
     end subroutine
 #endif
@@ -1038,9 +1038,9 @@ module pm_distBand
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setBandMeanDef_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(in)                :: lb, ub, alpha, beta, ebreak
-        real(RKC)   , intent(out)               :: mean
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(in)                :: lb, ub, alpha, beta, ebreak
+        real(RKG)   , intent(out)               :: mean
         integer(IK) , intent(out)               :: info
     end subroutine
 #endif
@@ -1050,9 +1050,9 @@ module pm_distBand
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setBandMeanDef_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(in)                :: lb, ub, alpha, beta, ebreak
-        real(RKC)   , intent(out)               :: mean
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(in)                :: lb, ub, alpha, beta, ebreak
+        real(RKG)   , intent(out)               :: mean
         integer(IK) , intent(out)               :: info
     end subroutine
 #endif
@@ -1062,9 +1062,9 @@ module pm_distBand
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setBandMeanDef_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(in)                :: lb, ub, alpha, beta, ebreak
-        real(RKC)   , intent(out)               :: mean
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(in)                :: lb, ub, alpha, beta, ebreak
+        real(RKG)   , intent(out)               :: mean
         integer(IK) , intent(out)               :: info
     end subroutine
 #endif
@@ -1076,9 +1076,9 @@ module pm_distBand
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setBandMeanNew_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(in)                :: lb, ub, alpha, beta, ebreak, lbnew, ubnew
-        real(RKC)   , intent(out)               :: mean
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(in)                :: lb, ub, alpha, beta, ebreak, lbnew, ubnew
+        real(RKG)   , intent(out)               :: mean
         integer(IK) , intent(out)               :: info
     end subroutine
 #endif
@@ -1088,9 +1088,9 @@ module pm_distBand
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setBandMeanNew_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(in)                :: lb, ub, alpha, beta, ebreak, lbnew, ubnew
-        real(RKC)   , intent(out)               :: mean
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(in)                :: lb, ub, alpha, beta, ebreak, lbnew, ubnew
+        real(RKG)   , intent(out)               :: mean
         integer(IK) , intent(out)               :: info
     end subroutine
 #endif
@@ -1100,9 +1100,9 @@ module pm_distBand
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setBandMeanNew_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(in)                :: lb, ub, alpha, beta, ebreak, lbnew, ubnew
-        real(RKC)   , intent(out)               :: mean
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(in)                :: lb, ub, alpha, beta, ebreak, lbnew, ubnew
+        real(RKG)   , intent(out)               :: mean
         integer(IK) , intent(out)               :: info
     end subroutine
 #endif
@@ -1112,9 +1112,9 @@ module pm_distBand
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setBandMeanNew_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(in)                :: lb, ub, alpha, beta, ebreak, lbnew, ubnew
-        real(RKC)   , intent(out)               :: mean
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(in)                :: lb, ub, alpha, beta, ebreak, lbnew, ubnew
+        real(RKG)   , intent(out)               :: mean
         integer(IK) , intent(out)               :: info
     end subroutine
 #endif
@@ -1124,9 +1124,9 @@ module pm_distBand
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setBandMeanNew_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(in)                :: lb, ub, alpha, beta, ebreak, lbnew, ubnew
-        real(RKC)   , intent(out)               :: mean
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(in)                :: lb, ub, alpha, beta, ebreak, lbnew, ubnew
+        real(RKG)   , intent(out)               :: mean
         integer(IK) , intent(out)               :: info
     end subroutine
 #endif
@@ -1282,9 +1282,9 @@ module pm_distBand
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setBandPhotonFromEnergyOldB_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(in)                :: energy, lb, ub, alpha, beta, ebreak
-        real(RKC)   , intent(out)               :: photon
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(in)                :: energy, lb, ub, alpha, beta, ebreak
+        real(RKG)   , intent(out)               :: photon
         integer(IK) , intent(out)               :: info
     end subroutine
 #endif
@@ -1294,9 +1294,9 @@ module pm_distBand
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setBandPhotonFromEnergyOldB_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(in)                :: energy, lb, ub, alpha, beta, ebreak
-        real(RKC)   , intent(out)               :: photon
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(in)                :: energy, lb, ub, alpha, beta, ebreak
+        real(RKG)   , intent(out)               :: photon
         integer(IK) , intent(out)               :: info
     end subroutine
 #endif
@@ -1306,9 +1306,9 @@ module pm_distBand
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setBandPhotonFromEnergyOldB_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(in)                :: energy, lb, ub, alpha, beta, ebreak
-        real(RKC)   , intent(out)               :: photon
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(in)                :: energy, lb, ub, alpha, beta, ebreak
+        real(RKG)   , intent(out)               :: photon
         integer(IK) , intent(out)               :: info
     end subroutine
 #endif
@@ -1318,9 +1318,9 @@ module pm_distBand
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setBandPhotonFromEnergyOldB_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(in)                :: energy, lb, ub, alpha, beta, ebreak
-        real(RKC)   , intent(out)               :: photon
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(in)                :: energy, lb, ub, alpha, beta, ebreak
+        real(RKG)   , intent(out)               :: photon
         integer(IK) , intent(out)               :: info
     end subroutine
 #endif
@@ -1330,9 +1330,9 @@ module pm_distBand
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setBandPhotonFromEnergyOldB_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(in)                :: energy, lb, ub, alpha, beta, ebreak
-        real(RKC)   , intent(out)               :: photon
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(in)                :: energy, lb, ub, alpha, beta, ebreak
+        real(RKG)   , intent(out)               :: photon
         integer(IK) , intent(out)               :: info
     end subroutine
 #endif
@@ -1344,9 +1344,9 @@ module pm_distBand
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setBandPhotonFromPhotonNewB_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(in)                :: lbnew, ubnew, lb, ub, alpha, beta, ebreak
-        real(RKC)   , intent(inout)             :: photon
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(in)                :: lbnew, ubnew, lb, ub, alpha, beta, ebreak
+        real(RKG)   , intent(inout)             :: photon
         integer(IK) , intent(out)               :: info
     end subroutine
 #endif
@@ -1356,9 +1356,9 @@ module pm_distBand
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setBandPhotonFromPhotonNewB_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(in)                :: lbnew, ubnew, lb, ub, alpha, beta, ebreak
-        real(RKC)   , intent(inout)             :: photon
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(in)                :: lbnew, ubnew, lb, ub, alpha, beta, ebreak
+        real(RKG)   , intent(inout)             :: photon
         integer(IK) , intent(out)               :: info
     end subroutine
 #endif
@@ -1368,9 +1368,9 @@ module pm_distBand
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setBandPhotonFromPhotonNewB_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(in)                :: lbnew, ubnew, lb, ub, alpha, beta, ebreak
-        real(RKC)   , intent(inout)             :: photon
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(in)                :: lbnew, ubnew, lb, ub, alpha, beta, ebreak
+        real(RKG)   , intent(inout)             :: photon
         integer(IK) , intent(out)               :: info
     end subroutine
 #endif
@@ -1380,9 +1380,9 @@ module pm_distBand
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setBandPhotonFromPhotonNewB_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(in)                :: lbnew, ubnew, lb, ub, alpha, beta, ebreak
-        real(RKC)   , intent(inout)             :: photon
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(in)                :: lbnew, ubnew, lb, ub, alpha, beta, ebreak
+        real(RKG)   , intent(inout)             :: photon
         integer(IK) , intent(out)               :: info
     end subroutine
 #endif
@@ -1392,9 +1392,9 @@ module pm_distBand
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setBandPhotonFromPhotonNewB_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(in)                :: lbnew, ubnew, lb, ub, alpha, beta, ebreak
-        real(RKC)   , intent(inout)             :: photon
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(in)                :: lbnew, ubnew, lb, ub, alpha, beta, ebreak
+        real(RKG)   , intent(inout)             :: photon
         integer(IK) , intent(out)               :: info
     end subroutine
 #endif
@@ -1406,9 +1406,9 @@ module pm_distBand
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setBandPhotonFromEnergyNewB_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(in)                :: lbnew, ubnew, energy, lb, ub, alpha, beta, ebreak
-        real(RKC)   , intent(out)               :: photon
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(in)                :: lbnew, ubnew, energy, lb, ub, alpha, beta, ebreak
+        real(RKG)   , intent(out)               :: photon
         integer(IK) , intent(out)               :: info
     end subroutine
 #endif
@@ -1418,9 +1418,9 @@ module pm_distBand
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setBandPhotonFromEnergyNewB_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(in)                :: lbnew, ubnew, energy, lb, ub, alpha, beta, ebreak
-        real(RKC)   , intent(out)               :: photon
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(in)                :: lbnew, ubnew, energy, lb, ub, alpha, beta, ebreak
+        real(RKG)   , intent(out)               :: photon
         integer(IK) , intent(out)               :: info
     end subroutine
 #endif
@@ -1430,9 +1430,9 @@ module pm_distBand
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setBandPhotonFromEnergyNewB_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(in)                :: lbnew, ubnew, energy, lb, ub, alpha, beta, ebreak
-        real(RKC)   , intent(out)               :: photon
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(in)                :: lbnew, ubnew, energy, lb, ub, alpha, beta, ebreak
+        real(RKG)   , intent(out)               :: photon
         integer(IK) , intent(out)               :: info
     end subroutine
 #endif
@@ -1442,9 +1442,9 @@ module pm_distBand
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setBandPhotonFromEnergyNewB_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(in)                :: lbnew, ubnew, energy, lb, ub, alpha, beta, ebreak
-        real(RKC)   , intent(out)               :: photon
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(in)                :: lbnew, ubnew, energy, lb, ub, alpha, beta, ebreak
+        real(RKG)   , intent(out)               :: photon
         integer(IK) , intent(out)               :: info
     end subroutine
 #endif
@@ -1454,9 +1454,9 @@ module pm_distBand
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setBandPhotonFromEnergyNewB_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(in)                :: lbnew, ubnew, energy, lb, ub, alpha, beta, ebreak
-        real(RKC)   , intent(out)               :: photon
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(in)                :: lbnew, ubnew, energy, lb, ub, alpha, beta, ebreak
+        real(RKG)   , intent(out)               :: photon
         integer(IK) , intent(out)               :: info
     end subroutine
 #endif
@@ -1611,9 +1611,9 @@ module pm_distBand
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setBandEnergyFromPhotonOldB_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(in)                :: photon, lb, ub, alpha, beta, ebreak
-        real(RKC)   , intent(out)               :: energy
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(in)                :: photon, lb, ub, alpha, beta, ebreak
+        real(RKG)   , intent(out)               :: energy
         integer(IK) , intent(out)               :: info
     end subroutine
 #endif
@@ -1623,9 +1623,9 @@ module pm_distBand
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setBandEnergyFromPhotonOldB_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(in)                :: photon, lb, ub, alpha, beta, ebreak
-        real(RKC)   , intent(out)               :: energy
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(in)                :: photon, lb, ub, alpha, beta, ebreak
+        real(RKG)   , intent(out)               :: energy
         integer(IK) , intent(out)               :: info
     end subroutine
 #endif
@@ -1635,9 +1635,9 @@ module pm_distBand
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setBandEnergyFromPhotonOldB_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(in)                :: photon, lb, ub, alpha, beta, ebreak
-        real(RKC)   , intent(out)               :: energy
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(in)                :: photon, lb, ub, alpha, beta, ebreak
+        real(RKG)   , intent(out)               :: energy
         integer(IK) , intent(out)               :: info
     end subroutine
 #endif
@@ -1647,9 +1647,9 @@ module pm_distBand
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setBandEnergyFromPhotonOldB_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(in)                :: photon, lb, ub, alpha, beta, ebreak
-        real(RKC)   , intent(out)               :: energy
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(in)                :: photon, lb, ub, alpha, beta, ebreak
+        real(RKG)   , intent(out)               :: energy
         integer(IK) , intent(out)               :: info
     end subroutine
 #endif
@@ -1659,9 +1659,9 @@ module pm_distBand
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setBandEnergyFromPhotonOldB_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(in)                :: photon, lb, ub, alpha, beta, ebreak
-        real(RKC)   , intent(out)               :: energy
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(in)                :: photon, lb, ub, alpha, beta, ebreak
+        real(RKG)   , intent(out)               :: energy
         integer(IK) , intent(out)               :: info
     end subroutine
 #endif
@@ -1673,9 +1673,9 @@ module pm_distBand
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setBandEnergyFromPhotonNewB_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(in)                :: lbnew, ubnew, photon, lb, ub, alpha, beta, ebreak
-        real(RKC)   , intent(out)               :: energy
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(in)                :: lbnew, ubnew, photon, lb, ub, alpha, beta, ebreak
+        real(RKG)   , intent(out)               :: energy
         integer(IK) , intent(out)               :: info
     end subroutine
 #endif
@@ -1685,9 +1685,9 @@ module pm_distBand
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setBandEnergyFromPhotonNewB_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(in)                :: lbnew, ubnew, photon, lb, ub, alpha, beta, ebreak
-        real(RKC)   , intent(out)               :: energy
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(in)                :: lbnew, ubnew, photon, lb, ub, alpha, beta, ebreak
+        real(RKG)   , intent(out)               :: energy
         integer(IK) , intent(out)               :: info
     end subroutine
 #endif
@@ -1697,9 +1697,9 @@ module pm_distBand
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setBandEnergyFromPhotonNewB_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(in)                :: lbnew, ubnew, photon, lb, ub, alpha, beta, ebreak
-        real(RKC)   , intent(out)               :: energy
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(in)                :: lbnew, ubnew, photon, lb, ub, alpha, beta, ebreak
+        real(RKG)   , intent(out)               :: energy
         integer(IK) , intent(out)               :: info
     end subroutine
 #endif
@@ -1709,9 +1709,9 @@ module pm_distBand
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setBandEnergyFromPhotonNewB_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(in)                :: lbnew, ubnew, photon, lb, ub, alpha, beta, ebreak
-        real(RKC)   , intent(out)               :: energy
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(in)                :: lbnew, ubnew, photon, lb, ub, alpha, beta, ebreak
+        real(RKG)   , intent(out)               :: energy
         integer(IK) , intent(out)               :: info
     end subroutine
 #endif
@@ -1721,9 +1721,9 @@ module pm_distBand
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setBandEnergyFromPhotonNewB_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(in)                :: lbnew, ubnew, photon, lb, ub, alpha, beta, ebreak
-        real(RKC)   , intent(out)               :: energy
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(in)                :: lbnew, ubnew, photon, lb, ub, alpha, beta, ebreak
+        real(RKG)   , intent(out)               :: energy
         integer(IK) , intent(out)               :: info
     end subroutine
 #endif
@@ -1735,9 +1735,9 @@ module pm_distBand
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setBandEnergyFromEnergyNewB_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(in)                :: lbnew, ubnew, lb, ub, alpha, beta, ebreak
-        real(RKC)   , intent(inout)             :: energy
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(in)                :: lbnew, ubnew, lb, ub, alpha, beta, ebreak
+        real(RKG)   , intent(inout)             :: energy
         integer(IK) , intent(out)               :: info
     end subroutine
 #endif
@@ -1747,9 +1747,9 @@ module pm_distBand
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setBandEnergyFromEnergyNewB_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(in)                :: lbnew, ubnew, lb, ub, alpha, beta, ebreak
-        real(RKC)   , intent(inout)             :: energy
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(in)                :: lbnew, ubnew, lb, ub, alpha, beta, ebreak
+        real(RKG)   , intent(inout)             :: energy
         integer(IK) , intent(out)               :: info
     end subroutine
 #endif
@@ -1759,9 +1759,9 @@ module pm_distBand
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setBandEnergyFromEnergyNewB_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(in)                :: lbnew, ubnew, lb, ub, alpha, beta, ebreak
-        real(RKC)   , intent(inout)             :: energy
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(in)                :: lbnew, ubnew, lb, ub, alpha, beta, ebreak
+        real(RKG)   , intent(inout)             :: energy
         integer(IK) , intent(out)               :: info
     end subroutine
 #endif
@@ -1771,9 +1771,9 @@ module pm_distBand
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setBandEnergyFromEnergyNewB_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(in)                :: lbnew, ubnew, lb, ub, alpha, beta, ebreak
-        real(RKC)   , intent(inout)             :: energy
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(in)                :: lbnew, ubnew, lb, ub, alpha, beta, ebreak
+        real(RKG)   , intent(inout)             :: energy
         integer(IK) , intent(out)               :: info
     end subroutine
 #endif
@@ -1783,9 +1783,9 @@ module pm_distBand
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setBandEnergyFromEnergyNewB_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(in)                :: lbnew, ubnew, lb, ub, alpha, beta, ebreak
-        real(RKC)   , intent(inout)             :: energy
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(in)                :: lbnew, ubnew, lb, ub, alpha, beta, ebreak
+        real(RKG)   , intent(inout)             :: energy
         integer(IK) , intent(out)               :: info
     end subroutine
 #endif

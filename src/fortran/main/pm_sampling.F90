@@ -32,7 +32,7 @@ module pm_sampling
     use pm_err, only: err_type
     use pm_str, only: getCharSeq
     use, intrinsic :: iso_c_binding, only: c_char, c_funptr, c_null_char, c_f_procpointer
-    use pm_kind, only: SK, IK, LK, RKL, RKD, RKH, RKALL, SKC => SK ! LCOV_EXCL_LINE
+    use pm_kind, only: SK, IK, LK, RKL, RKD, RKH, RKALL, SKG => SK ! LCOV_EXCL_LINE
     use pm_sysPath, only: PATHLEN => MAX_LEN_FILE_PATH
 
     implicit none
@@ -74,9 +74,9 @@ module pm_sampling
     !>  \author
     !>  \AmirShahmoradi, September 1, 2017, 12:00 AM, Institute for Computational Engineering and Sciences (ICES), The University of Texas at Austin
     type                                        :: sampler_type
-        character(:,SKC)        , allocatable   :: description                          !<  \specdram{description}
-        character(:,SKC)        , allocatable   :: domain                               !<  \specdram{domain}
-        character(:,SKC)        , allocatable   :: domainAxisName(:)                    !<  \specdram{domainaxisname}
+        character(:,SKG)        , allocatable   :: description                          !<  \specdram{description}
+        character(:,SKG)        , allocatable   :: domain                               !<  \specdram{domain}
+        character(:,SKG)        , allocatable   :: domainAxisName(:)                    !<  \specdram{domainaxisname}
         real(RKH)               , allocatable   :: domainBallAvg(:)                     !<  \specdram{domainballavg}
         real(RKH)               , allocatable   :: domainBallCor(:,:)                   !<  \specdram{domainballcor}
         real(RKH)               , allocatable   :: domainBallCov(:,:)                   !<  \specdram{domainballcov}
@@ -85,7 +85,7 @@ module pm_sampling
         real(RKH)               , allocatable   :: domainCubeLimitUpper(:)              !<  \specdram{domaincubelimitupper}
         integer(IK)             , allocatable   :: domainErrCount                       !<  \specdram{domainerrcount}
         integer(IK)             , allocatable   :: domainErrCountMax                    !<  \specdram{domainerrcountmax}
-        character(:,SKC)        , allocatable   :: inputFile                            !<  \public The input scalar `character` of default kind \SK which be either,
+        character(:,SKG)        , allocatable   :: inputFile                            !<  \public The input scalar `character` of default kind \SK which be either,
                                                                                         !!  <ol>
                                                                                         !!      <li>    The path to an external input `namelist` file containing the simulation settings.<br>
                                                                                         !!      <li>    A string containing the simulation settings in `namelist` format.<br>
@@ -149,21 +149,21 @@ module pm_sampling
                                                                                         !!  </ol>
                                                                                         !!  (**optional**. If missing, the default simulation settings will be used.)
        !logical(LK)             , allocatable   :: inputFileHasPriority                 !<
-        character(:,SKC)        , allocatable   :: outputChainFileFormat                !<  \specdram{outputchainfileformat}
+        character(:,SKG)        , allocatable   :: outputChainFileFormat                !<  \specdram{outputchainfileformat}
         integer(IK)             , allocatable   :: outputColumnWidth                    !<  \specdram{outputcolumnwidth}
-        character(:,SKC)        , allocatable   :: outputFileName                       !<  \specdram{outputfilename}
-        character(:,SKC)        , allocatable   :: outputStatus                         !<  \specdram{outputstatus}
+        character(:,SKG)        , allocatable   :: outputFileName                       !<  \specdram{outputfilename}
+        character(:,SKG)        , allocatable   :: outputStatus                         !<  \specdram{outputstatus}
         integer(IK)             , allocatable   :: outputPrecision                      !<  \specdram{outputprecision}
         integer(IK)             , allocatable   :: outputReportPeriod                   !<  \specdram{outputreportperiod}
-        character(:,SKC)        , allocatable   :: outputRestartFileFormat              !<  \specdram{outputrestartfileformat}
+        character(:,SKG)        , allocatable   :: outputRestartFileFormat              !<  \specdram{outputrestartfileformat}
         integer(IK)             , allocatable   :: outputSampleSize                     !<  \specdram{outputsamplesize}
-        character(:,SKC)        , allocatable   :: outputSeparator                      !<  \specdram{outputseparator}
-        character(:,SKC)        , allocatable   :: outputSplashMode                     !<  \specdram{outputsplashmode}
-        character(:,SKC)        , allocatable   :: parallelism                          !<  \specdram{parallelism}
+        character(:,SKG)        , allocatable   :: outputSeparator                      !<  \specdram{outputseparator}
+        character(:,SKG)        , allocatable   :: outputSplashMode                     !<  \specdram{outputsplashmode}
+        character(:,SKG)        , allocatable   :: parallelism                          !<  \specdram{parallelism}
         logical(LK)             , allocatable   :: parallelismMpiFinalizeEnabled        !<  \specdram{parallelismmpifinalizeenabled}
         integer(IK)             , allocatable   :: parallelismNumThread                 !<  \specdram{parallelismnumthread}
         integer(IK)             , allocatable   :: randomSeed                           !<  \specdram{randomseed}
-        character(:,SKC)        , allocatable   :: sysInfoFilePath                      !<  \specdram{sysinfofilepath}
+        character(:,SKG)        , allocatable   :: sysInfoFilePath                      !<  \specdram{sysinfofilepath}
         real(RKH)               , allocatable   :: targetAcceptanceRate(:)              !<  \specdram{targetacceptancerate}
     end type
 
@@ -204,11 +204,11 @@ module pm_sampling
     type, extends(sampler_type)                 :: paramcmc_type
         integer(IK)             , allocatable   :: outputChainSize                      !<  \specdram{outputchainsize}
         integer(IK)             , allocatable   :: outputSampleRefinementCount          !<  \specdram{outputsamplerefinementcount}
-        character(:,SKC)        , allocatable   :: outputSampleRefinementMethod         !<  \specdram{outputsamplerefinementmethod}
-        character(:,SKC)        , allocatable   :: proposal                             !<  \specdram{proposal}
+        character(:,SKG)        , allocatable   :: outputSampleRefinementMethod         !<  \specdram{outputsamplerefinementmethod}
+        character(:,SKG)        , allocatable   :: proposal                             !<  \specdram{proposal}
         real(RKH)               , allocatable   :: proposalCor(:,:)                     !<  \specdram{proposalcor}
         real(RKH)               , allocatable   :: proposalCov(:,:)                     !<  \specdram{proposalcov}
-        character(:,SKC)        , allocatable   :: proposalScale                        !<  \specdram{proposalscale}
+        character(:,SKG)        , allocatable   :: proposalScale                        !<  \specdram{proposalscale}
         real(RKH)               , allocatable   :: proposalStart(:)                     !<  \specdram{proposalstart}
         real(RKH)               , allocatable   :: proposalStartDomainCubeLimitLower(:) !<  \specdram{proposalstartdomaincubelimitlower}
         real(RKH)               , allocatable   :: proposalStartDomainCubeLimitUpper(:) !<  \specdram{proposalstartdomaincubelimitupper}
@@ -319,13 +319,13 @@ module pm_sampling
         integer(IK)             , allocatable   :: domainPartitionKmeansNumTry
         integer(IK)             , allocatable   :: domainPartitionKvolumeNumRecursionMax
         real(RKH)               , allocatable   :: domainPartitionKvolumeWeightExponent
-        character(:,SKC)        , allocatable   :: domainPartitionMethod
-        character(:,SKC)        , allocatable   :: domainPartitionObject
+        character(:,SKG)        , allocatable   :: domainPartitionMethod
+        character(:,SKG)        , allocatable   :: domainPartitionObject
         logical(LK)             , allocatable   :: domainPartitionOptimizationScaleEnabled
         logical(LK)             , allocatable   :: domainPartitionOptimizationShapeEnabled
         logical(LK)             , allocatable   :: domainPartitionOptimizationShapeScaleEnabled
         real(RKH)               , allocatable   :: domainPartitionScaleFactor
-        character(:,SKC)        , allocatable   :: domainSampler
+        character(:,SKG)        , allocatable   :: domainSampler
         integer(IK)             , allocatable   :: liveSampleSize
         real(RKH)               , allocatable   :: tolerance
     end type
@@ -347,10 +347,10 @@ module pm_sampling
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogFunc_proc_RK5
 #endif
-        use pm_kind, only: RKD, RKC => RK5
-        real(RKC), intent(inout), contiguous :: logFuncState(0:,:)
+        use pm_kind, only: RKD, RKG => RK5
+        real(RKG), intent(inout), contiguous :: logFuncState(0:,:)
         real(RKD), intent(inout) :: avgTimePerFunCall, avgCommPerFunCall
-        real(RKC) :: mold
+        real(RKG) :: mold
     end function
 #endif
 
@@ -359,10 +359,10 @@ module pm_sampling
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogFunc_proc_RK4
 #endif
-        use pm_kind, only: RKD, RKC => RK4
-        real(RKC), intent(inout), contiguous :: logFuncState(0:,:)
+        use pm_kind, only: RKD, RKG => RK4
+        real(RKG), intent(inout), contiguous :: logFuncState(0:,:)
         real(RKD), intent(inout) :: avgTimePerFunCall, avgCommPerFunCall
-        real(RKC) :: mold
+        real(RKG) :: mold
     end function
 #endif
 
@@ -371,10 +371,10 @@ module pm_sampling
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogFunc_proc_RK3
 #endif
-        use pm_kind, only: RKD, RKC => RK3
-        real(RKC), intent(inout), contiguous :: logFuncState(0:,:)
+        use pm_kind, only: RKD, RKG => RK3
+        real(RKG), intent(inout), contiguous :: logFuncState(0:,:)
         real(RKD), intent(inout) :: avgTimePerFunCall, avgCommPerFunCall
-        real(RKC) :: mold
+        real(RKG) :: mold
     end function
 #endif
 
@@ -383,10 +383,10 @@ module pm_sampling
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogFunc_proc_RK2
 #endif
-        use pm_kind, only: RKD, RKC => RK2
-        real(RKC), intent(inout), contiguous :: logFuncState(0:,:)
+        use pm_kind, only: RKD, RKG => RK2
+        real(RKG), intent(inout), contiguous :: logFuncState(0:,:)
         real(RKD), intent(inout) :: avgTimePerFunCall, avgCommPerFunCall
-        real(RKC) :: mold
+        real(RKG) :: mold
     end function
 #endif
 
@@ -395,10 +395,10 @@ module pm_sampling
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogFunc_proc_RK1
 #endif
-        use pm_kind, only: RKD, RKC => RK1
-        real(RKC), intent(inout), contiguous :: logFuncState(0:,:)
+        use pm_kind, only: RKD, RKG => RK1
+        real(RKG), intent(inout), contiguous :: logFuncState(0:,:)
         real(RKD), intent(inout) :: avgTimePerFunCall, avgCommPerFunCall
-        real(RKC) :: mold
+        real(RKG) :: mold
     end function
 #endif
 
@@ -413,9 +413,9 @@ module pm_sampling
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogFunc_proc_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC), intent(in), contiguous :: state(:)
-        real(RKC) :: logFunc
+        use pm_kind, only: RKG => RK5
+        real(RKG), intent(in), contiguous :: state(:)
+        real(RKG) :: logFunc
     end function
 #endif
 
@@ -424,9 +424,9 @@ module pm_sampling
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogFunc_proc_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC), intent(in), contiguous :: state(:)
-        real(RKC) :: logFunc
+        use pm_kind, only: RKG => RK4
+        real(RKG), intent(in), contiguous :: state(:)
+        real(RKG) :: logFunc
     end function
 #endif
 
@@ -435,9 +435,9 @@ module pm_sampling
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogFunc_proc_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC), intent(in), contiguous :: state(:)
-        real(RKC) :: logFunc
+        use pm_kind, only: RKG => RK3
+        real(RKG), intent(in), contiguous :: state(:)
+        real(RKG) :: logFunc
     end function
 #endif
 
@@ -446,9 +446,9 @@ module pm_sampling
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogFunc_proc_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC), intent(in), contiguous :: state(:)
-        real(RKC) :: logFunc
+        use pm_kind, only: RKG => RK2
+        real(RKG), intent(in), contiguous :: state(:)
+        real(RKG) :: logFunc
     end function
 #endif
 
@@ -457,9 +457,9 @@ module pm_sampling
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogFunc_proc_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC), intent(in), contiguous :: state(:)
-        real(RKC) :: logFunc
+        use pm_kind, only: RKG => RK1
+        real(RKG), intent(in), contiguous :: state(:)
+        real(RKG) :: logFunc
     end function
 #endif
 
@@ -499,8 +499,8 @@ module pm_sampling
     !>                              The following illustrate the generic interface of `getLogFunc(state)`,
     !>                              \code{.F90}
     !>                                  function getLogFunc(state) result(logFunc)
-    !>                                      real(RKC), intent(in), contiguous :: state(:) ! (1 : ndim)
-    !>                                      real(RKC) :: logFunc
+    !>                                      real(RKG), intent(in), contiguous :: state(:) ! (1 : ndim)
+    !>                                      real(RKG) :: logFunc
     !>                                  end function
     !>                              \endcode
     !>                              where the condition `all(shape(state) == [ndim])` holds where `ndim` is the number of dimensions of the target density function.<br>
@@ -515,9 +515,9 @@ module pm_sampling
     !>                                          \code{.F90}
     !>                                              function getLogFunc(logFuncState, ndim, njob, avgTimePerFunCall, avgCommPerFunCall) result(mold)
     !>                                                  integer(IK), value :: ndim, njob
-    !>                                                  real(RKC), intent(inout) :: logFuncState(ndim + 1, njob)
+    !>                                                  real(RKG), intent(inout) :: logFuncState(ndim + 1, njob)
     !>                                                  real(RKD), intent(inout) :: avgTimePerFunCall, avgCommPerFunCall
-    !>                                                  real(RKC) :: mold
+    !>                                                  real(RKG) :: mold
     !>                                              end function
     !>                                          \endcode
     !>                                          where,
@@ -550,15 +550,15 @@ module pm_sampling
     !>                                          \code{.F90}
     !>                                              function getLogFunc(state, ndim) result(logFunc)
     !>                                                  integer(IK), value :: ndim
-    !>                                                  real(RKC), intent(in) :: state(ndim)
-    !>                                                  real(RKC) :: logFunc
+    !>                                                  real(RKG), intent(in) :: state(ndim)
+    !>                                                  real(RKG) :: logFunc
     !>                                              end function
     !>                                          \endcode
     !>                                          where,
     !>                                          <ol>
     !>                                              <li>    the variable `ndim` is the number of dimensions of the target density function.
     !>                                              <li>    the variable `state` is an input point from within the domain of the density function.
-    !>                                              <li>    the constant `RKC` refers to the `real` kind used for computations.
+    !>                                              <li>    the constant `RKG` refers to the `real` kind used for computations.
     !>                                              <li>    the output `logFunc` is the computed value of the density function at the specified input `state`.
     !>                                          </ol>
     !>                              </ol>
@@ -658,7 +658,7 @@ module pm_sampling
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrParaDRAM_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         procedure(getLogFunc_proc_RK5) :: getLogFunc
         type(paradram_type), intent(in) :: sampler
         integer(IK), intent(in) :: ndim
@@ -671,7 +671,7 @@ module pm_sampling
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrParaDRAM_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         procedure(getLogFunc_proc_RK4) :: getLogFunc
         type(paradram_type), intent(in) :: sampler
         integer(IK), intent(in) :: ndim
@@ -684,7 +684,7 @@ module pm_sampling
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrParaDRAM_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         procedure(getLogFunc_proc_RK3) :: getLogFunc
         type(paradram_type), intent(in) :: sampler
         integer(IK), intent(in) :: ndim
@@ -697,7 +697,7 @@ module pm_sampling
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrParaDRAM_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         procedure(getLogFunc_proc_RK2) :: getLogFunc
         type(paradram_type), intent(in) :: sampler
         integer(IK), intent(in) :: ndim
@@ -710,7 +710,7 @@ module pm_sampling
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrParaDRAM_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         procedure(getLogFunc_proc_RK1) :: getLogFunc
         type(paradram_type), intent(in) :: sampler
         integer(IK), intent(in) :: ndim
@@ -725,7 +725,7 @@ module pm_sampling
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrParaDISE_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         procedure(getLogFunc_proc_RK5) :: getLogFunc
         type(paradise_type), intent(in) :: sampler
         integer(IK), intent(in) :: ndim
@@ -738,7 +738,7 @@ module pm_sampling
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrParaDISE_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         procedure(getLogFunc_proc_RK4) :: getLogFunc
         type(paradise_type), intent(in) :: sampler
         integer(IK), intent(in) :: ndim
@@ -751,7 +751,7 @@ module pm_sampling
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrParaDISE_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         procedure(getLogFunc_proc_RK3) :: getLogFunc
         type(paradise_type), intent(in) :: sampler
         integer(IK), intent(in) :: ndim
@@ -764,7 +764,7 @@ module pm_sampling
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrParaDISE_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         procedure(getLogFunc_proc_RK2) :: getLogFunc
         type(paradise_type), intent(in) :: sampler
         integer(IK), intent(in) :: ndim
@@ -777,7 +777,7 @@ module pm_sampling
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrParaDISE_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         procedure(getLogFunc_proc_RK1) :: getLogFunc
         type(paradise_type), intent(in) :: sampler
         integer(IK), intent(in) :: ndim
@@ -907,7 +907,7 @@ contains
         !DEC$ ATTRIBUTES DLLEXPORT :: runParaDRAML
 #endif
         use, intrinsic :: iso_c_binding, only: SK => c_char, IK => c_int32_t, c_long_double
-        integer, parameter :: RKC = merge(c_long_double, RKH, any(c_long_double == RKALL))
+        integer, parameter :: RKG = merge(c_long_double, RKH, any(c_long_double == RKALL))
         character(1, SK), intent(in), optional :: input(*)
         type(c_funptr), intent(in), value :: getLogFunc
         integer(IK), intent(in), value :: ndim
@@ -922,7 +922,7 @@ contains
         !DEC$ ATTRIBUTES DLLEXPORT :: runParaDRAMD
 #endif
         use, intrinsic :: iso_c_binding, only: SK => c_char, IK => c_int32_t, c_double
-        integer, parameter :: RKC = merge(c_double, RKD, any(c_double == RKALL))
+        integer, parameter :: RKG = merge(c_double, RKD, any(c_double == RKALL))
         character(1, SK), intent(in), optional :: input(*)
         type(c_funptr), intent(in), value :: getLogFunc
         integer(IK), intent(in), value :: ndim
@@ -938,7 +938,7 @@ contains
 #endif
         use pm_kind, only: RKALL
         use, intrinsic :: iso_c_binding, only: SK => c_char, IK => c_int32_t, c_float
-        integer, parameter :: RKC = merge(c_float, RKL, any(c_float == RKALL))
+        integer, parameter :: RKG = merge(c_float, RKL, any(c_float == RKALL))
         character(1, SK), intent(in), optional :: input(*)
         type(c_funptr), intent(in), value :: getLogFunc
         integer(IK), intent(in), value :: ndim

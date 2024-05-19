@@ -1,7 +1,7 @@
 program example
 
     use pm_kind, only: SK, IK, LK, RKH
-    use pm_kind, only: RKC => RKS ! all processor kinds are supported.
+    use pm_kind, only: RKG => RKS ! all processor kinds are supported.
     use pm_io, only: display_type
     use pm_distanceEuclid, only: setDisMatEuclid, rdpack, uppLow, uppLowDia, euclid, euclidu, euclidsq
     use pm_arrayResize, only: setResized
@@ -20,7 +20,7 @@ program example
     call disp%skip()
 
     block
-        real(RKC), allocatable :: distance(:,:), point(:,:)
+        real(RKG), allocatable :: distance(:,:), point(:,:)
         do itry = 1, ntry
             call disp%skip()
             call disp%show("ndim = getUnifRand(1, 3); npnt = getUnifRand(1, 7)")

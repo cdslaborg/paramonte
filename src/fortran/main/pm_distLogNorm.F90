@@ -164,10 +164,10 @@ module pm_distLogNorm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogNormLogPDF_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)              , intent(in)                    :: x
-        real(RKC)              , intent(in) , optional         :: mu, sigma
-        real(RKC)                                              :: logPDF
+        use pm_kind, only: RKG => RK5
+        real(RKG)              , intent(in)                    :: x
+        real(RKG)              , intent(in) , optional         :: mu, sigma
+        real(RKG)                                              :: logPDF
     end function
 #endif
 
@@ -176,10 +176,10 @@ module pm_distLogNorm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogNormLogPDF_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)              , intent(in)                    :: x
-        real(RKC)              , intent(in) , optional         :: mu, sigma
-        real(RKC)                                              :: logPDF
+        use pm_kind, only: RKG => RK4
+        real(RKG)              , intent(in)                    :: x
+        real(RKG)              , intent(in) , optional         :: mu, sigma
+        real(RKG)                                              :: logPDF
     end function
 #endif
 
@@ -188,10 +188,10 @@ module pm_distLogNorm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogNormLogPDF_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)              , intent(in)                    :: x
-        real(RKC)              , intent(in) , optional         :: mu, sigma
-        real(RKC)                                              :: logPDF
+        use pm_kind, only: RKG => RK3
+        real(RKG)              , intent(in)                    :: x
+        real(RKG)              , intent(in) , optional         :: mu, sigma
+        real(RKG)                                              :: logPDF
     end function
 #endif
 
@@ -200,10 +200,10 @@ module pm_distLogNorm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogNormLogPDF_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)              , intent(in)                    :: x
-        real(RKC)              , intent(in) , optional         :: mu, sigma
-        real(RKC)                                              :: logPDF
+        use pm_kind, only: RKG => RK2
+        real(RKG)              , intent(in)                    :: x
+        real(RKG)              , intent(in) , optional         :: mu, sigma
+        real(RKG)                                              :: logPDF
     end function
 #endif
 
@@ -212,10 +212,10 @@ module pm_distLogNorm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogNormLogPDF_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)              , intent(in)                    :: x
-        real(RKC)              , intent(in) , optional         :: mu, sigma
-        real(RKC)                                              :: logPDF
+        use pm_kind, only: RKG => RK1
+        real(RKG)              , intent(in)                    :: x
+        real(RKG)              , intent(in) , optional         :: mu, sigma
+        real(RKG)                                              :: logPDF
     end function
 #endif
 
@@ -298,9 +298,9 @@ module pm_distLogNorm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLogNormLogPDFDD_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)              , intent(out)                   :: logPDF
-        real(RKC)              , intent(in)                    :: logx
+        use pm_kind, only: RKG => RK5
+        real(RKG)              , intent(out)                   :: logPDF
+        real(RKG)              , intent(in)                    :: logx
     end subroutine
 #endif
 
@@ -309,9 +309,9 @@ module pm_distLogNorm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLogNormLogPDFDD_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)              , intent(out)                   :: logPDF
-        real(RKC)              , intent(in)                    :: logx
+        use pm_kind, only: RKG => RK4
+        real(RKG)              , intent(out)                   :: logPDF
+        real(RKG)              , intent(in)                    :: logx
     end subroutine
 #endif
 
@@ -320,9 +320,9 @@ module pm_distLogNorm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLogNormLogPDFDD_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)              , intent(out)                   :: logPDF
-        real(RKC)              , intent(in)                    :: logx
+        use pm_kind, only: RKG => RK3
+        real(RKG)              , intent(out)                   :: logPDF
+        real(RKG)              , intent(in)                    :: logx
     end subroutine
 #endif
 
@@ -331,9 +331,9 @@ module pm_distLogNorm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLogNormLogPDFDD_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)              , intent(out)                   :: logPDF
-        real(RKC)              , intent(in)                    :: logx
+        use pm_kind, only: RKG => RK2
+        real(RKG)              , intent(out)                   :: logPDF
+        real(RKG)              , intent(in)                    :: logx
     end subroutine
 #endif
 
@@ -342,9 +342,9 @@ module pm_distLogNorm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLogNormLogPDFDD_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)              , intent(out)                   :: logPDF
-        real(RKC)              , intent(in)                    :: logx
+        use pm_kind, only: RKG => RK1
+        real(RKG)              , intent(out)                   :: logPDF
+        real(RKG)              , intent(in)                    :: logx
     end subroutine
 #endif
 
@@ -355,10 +355,10 @@ module pm_distLogNorm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLogNormLogPDFMD_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)              , intent(out)                   :: logPDF
-        real(RKC)              , intent(in)                    :: logx
-        real(RKC)              , intent(in)                    :: mu
+        use pm_kind, only: RKG => RK5
+        real(RKG)              , intent(out)                   :: logPDF
+        real(RKG)              , intent(in)                    :: logx
+        real(RKG)              , intent(in)                    :: mu
     end subroutine
 #endif
 
@@ -367,10 +367,10 @@ module pm_distLogNorm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLogNormLogPDFMD_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)              , intent(out)                   :: logPDF
-        real(RKC)              , intent(in)                    :: logx
-        real(RKC)              , intent(in)                    :: mu
+        use pm_kind, only: RKG => RK4
+        real(RKG)              , intent(out)                   :: logPDF
+        real(RKG)              , intent(in)                    :: logx
+        real(RKG)              , intent(in)                    :: mu
     end subroutine
 #endif
 
@@ -379,10 +379,10 @@ module pm_distLogNorm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLogNormLogPDFMD_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)              , intent(out)                   :: logPDF
-        real(RKC)              , intent(in)                    :: logx
-        real(RKC)              , intent(in)                    :: mu
+        use pm_kind, only: RKG => RK3
+        real(RKG)              , intent(out)                   :: logPDF
+        real(RKG)              , intent(in)                    :: logx
+        real(RKG)              , intent(in)                    :: mu
     end subroutine
 #endif
 
@@ -391,10 +391,10 @@ module pm_distLogNorm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLogNormLogPDFMD_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)              , intent(out)                   :: logPDF
-        real(RKC)              , intent(in)                    :: logx
-        real(RKC)              , intent(in)                    :: mu
+        use pm_kind, only: RKG => RK2
+        real(RKG)              , intent(out)                   :: logPDF
+        real(RKG)              , intent(in)                    :: logx
+        real(RKG)              , intent(in)                    :: mu
     end subroutine
 #endif
 
@@ -403,10 +403,10 @@ module pm_distLogNorm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLogNormLogPDFMD_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)              , intent(out)                   :: logPDF
-        real(RKC)              , intent(in)                    :: logx
-        real(RKC)              , intent(in)                    :: mu
+        use pm_kind, only: RKG => RK1
+        real(RKG)              , intent(out)                   :: logPDF
+        real(RKG)              , intent(in)                    :: logx
+        real(RKG)              , intent(in)                    :: mu
     end subroutine
 #endif
 
@@ -417,10 +417,10 @@ module pm_distLogNorm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLogNormLogPDFDS_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)              , intent(out)                   :: logPDF
-        real(RKC)              , intent(in)                    :: logx
-        real(RKC)              , intent(in)                    :: invSigma, logInvSigma
+        use pm_kind, only: RKG => RK5
+        real(RKG)              , intent(out)                   :: logPDF
+        real(RKG)              , intent(in)                    :: logx
+        real(RKG)              , intent(in)                    :: invSigma, logInvSigma
     end subroutine
 #endif
 
@@ -429,10 +429,10 @@ module pm_distLogNorm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLogNormLogPDFDS_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)              , intent(out)                   :: logPDF
-        real(RKC)              , intent(in)                    :: logx
-        real(RKC)              , intent(in)                    :: invSigma, logInvSigma
+        use pm_kind, only: RKG => RK4
+        real(RKG)              , intent(out)                   :: logPDF
+        real(RKG)              , intent(in)                    :: logx
+        real(RKG)              , intent(in)                    :: invSigma, logInvSigma
     end subroutine
 #endif
 
@@ -441,10 +441,10 @@ module pm_distLogNorm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLogNormLogPDFDS_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)              , intent(out)                   :: logPDF
-        real(RKC)              , intent(in)                    :: logx
-        real(RKC)              , intent(in)                    :: invSigma, logInvSigma
+        use pm_kind, only: RKG => RK3
+        real(RKG)              , intent(out)                   :: logPDF
+        real(RKG)              , intent(in)                    :: logx
+        real(RKG)              , intent(in)                    :: invSigma, logInvSigma
     end subroutine
 #endif
 
@@ -453,10 +453,10 @@ module pm_distLogNorm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLogNormLogPDFDS_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)              , intent(out)                   :: logPDF
-        real(RKC)              , intent(in)                    :: logx
-        real(RKC)              , intent(in)                    :: invSigma, logInvSigma
+        use pm_kind, only: RKG => RK2
+        real(RKG)              , intent(out)                   :: logPDF
+        real(RKG)              , intent(in)                    :: logx
+        real(RKG)              , intent(in)                    :: invSigma, logInvSigma
     end subroutine
 #endif
 
@@ -465,10 +465,10 @@ module pm_distLogNorm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLogNormLogPDFDS_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)              , intent(out)                   :: logPDF
-        real(RKC)              , intent(in)                    :: logx
-        real(RKC)              , intent(in)                    :: invSigma, logInvSigma
+        use pm_kind, only: RKG => RK1
+        real(RKG)              , intent(out)                   :: logPDF
+        real(RKG)              , intent(in)                    :: logx
+        real(RKG)              , intent(in)                    :: invSigma, logInvSigma
     end subroutine
 #endif
 
@@ -479,12 +479,12 @@ module pm_distLogNorm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLogNormLogPDFMS_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)              , intent(out)                   :: logPDF
-        real(RKC)              , intent(in)                    :: logx
-        real(RKC)              , intent(in)                    :: mu
-        real(RKC)              , intent(in)                    :: invSigma
-        real(RKC)              , intent(in)                    :: logInvSigma
+        use pm_kind, only: RKG => RK5
+        real(RKG)              , intent(out)                   :: logPDF
+        real(RKG)              , intent(in)                    :: logx
+        real(RKG)              , intent(in)                    :: mu
+        real(RKG)              , intent(in)                    :: invSigma
+        real(RKG)              , intent(in)                    :: logInvSigma
     end subroutine
 #endif
 
@@ -493,12 +493,12 @@ module pm_distLogNorm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLogNormLogPDFMS_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)              , intent(out)                   :: logPDF
-        real(RKC)              , intent(in)                    :: logx
-        real(RKC)              , intent(in)                    :: mu
-        real(RKC)              , intent(in)                    :: invSigma
-        real(RKC)              , intent(in)                    :: logInvSigma
+        use pm_kind, only: RKG => RK4
+        real(RKG)              , intent(out)                   :: logPDF
+        real(RKG)              , intent(in)                    :: logx
+        real(RKG)              , intent(in)                    :: mu
+        real(RKG)              , intent(in)                    :: invSigma
+        real(RKG)              , intent(in)                    :: logInvSigma
     end subroutine
 #endif
 
@@ -507,12 +507,12 @@ module pm_distLogNorm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLogNormLogPDFMS_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)              , intent(out)                   :: logPDF
-        real(RKC)              , intent(in)                    :: logx
-        real(RKC)              , intent(in)                    :: mu
-        real(RKC)              , intent(in)                    :: invSigma
-        real(RKC)              , intent(in)                    :: logInvSigma
+        use pm_kind, only: RKG => RK3
+        real(RKG)              , intent(out)                   :: logPDF
+        real(RKG)              , intent(in)                    :: logx
+        real(RKG)              , intent(in)                    :: mu
+        real(RKG)              , intent(in)                    :: invSigma
+        real(RKG)              , intent(in)                    :: logInvSigma
     end subroutine
 #endif
 
@@ -521,12 +521,12 @@ module pm_distLogNorm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLogNormLogPDFMS_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)              , intent(out)                   :: logPDF
-        real(RKC)              , intent(in)                    :: logx
-        real(RKC)              , intent(in)                    :: mu
-        real(RKC)              , intent(in)                    :: invSigma
-        real(RKC)              , intent(in)                    :: logInvSigma
+        use pm_kind, only: RKG => RK2
+        real(RKG)              , intent(out)                   :: logPDF
+        real(RKG)              , intent(in)                    :: logx
+        real(RKG)              , intent(in)                    :: mu
+        real(RKG)              , intent(in)                    :: invSigma
+        real(RKG)              , intent(in)                    :: logInvSigma
     end subroutine
 #endif
 
@@ -535,12 +535,12 @@ module pm_distLogNorm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLogNormLogPDFMS_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)              , intent(out)                   :: logPDF
-        real(RKC)              , intent(in)                    :: logx
-        real(RKC)              , intent(in)                    :: mu
-        real(RKC)              , intent(in)                    :: invSigma
-        real(RKC)              , intent(in)                    :: logInvSigma
+        use pm_kind, only: RKG => RK1
+        real(RKG)              , intent(out)                   :: logPDF
+        real(RKG)              , intent(in)                    :: logx
+        real(RKG)              , intent(in)                    :: mu
+        real(RKG)              , intent(in)                    :: invSigma
+        real(RKG)              , intent(in)                    :: logInvSigma
     end subroutine
 #endif
 
@@ -608,11 +608,11 @@ module pm_distLogNorm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogNormCDF_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)           , intent(in)                            :: x
-        real(RKC)           , intent(in)    , optional              :: mu
-        real(RKC)           , intent(in)    , optional              :: sigma
-        real(RKC)                                                   :: cdf
+        use pm_kind, only: RKG => RK5
+        real(RKG)           , intent(in)                            :: x
+        real(RKG)           , intent(in)    , optional              :: mu
+        real(RKG)           , intent(in)    , optional              :: sigma
+        real(RKG)                                                   :: cdf
     end function
 #endif
 
@@ -621,11 +621,11 @@ module pm_distLogNorm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogNormCDF_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)           , intent(in)                            :: x
-        real(RKC)           , intent(in)    , optional              :: mu
-        real(RKC)           , intent(in)    , optional              :: sigma
-        real(RKC)                                                   :: cdf
+        use pm_kind, only: RKG => RK4
+        real(RKG)           , intent(in)                            :: x
+        real(RKG)           , intent(in)    , optional              :: mu
+        real(RKG)           , intent(in)    , optional              :: sigma
+        real(RKG)                                                   :: cdf
     end function
 #endif
 
@@ -634,11 +634,11 @@ module pm_distLogNorm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogNormCDF_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)           , intent(in)                            :: x
-        real(RKC)           , intent(in)    , optional              :: mu
-        real(RKC)           , intent(in)    , optional              :: sigma
-        real(RKC)                                                   :: cdf
+        use pm_kind, only: RKG => RK3
+        real(RKG)           , intent(in)                            :: x
+        real(RKG)           , intent(in)    , optional              :: mu
+        real(RKG)           , intent(in)    , optional              :: sigma
+        real(RKG)                                                   :: cdf
     end function
 #endif
 
@@ -647,11 +647,11 @@ module pm_distLogNorm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogNormCDF_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)           , intent(in)                            :: x
-        real(RKC)           , intent(in)    , optional              :: mu
-        real(RKC)           , intent(in)    , optional              :: sigma
-        real(RKC)                                                   :: cdf
+        use pm_kind, only: RKG => RK2
+        real(RKG)           , intent(in)                            :: x
+        real(RKG)           , intent(in)    , optional              :: mu
+        real(RKG)           , intent(in)    , optional              :: sigma
+        real(RKG)                                                   :: cdf
     end function
 #endif
 
@@ -660,11 +660,11 @@ module pm_distLogNorm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogNormCDF_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)           , intent(in)                            :: x
-        real(RKC)           , intent(in)    , optional              :: mu
-        real(RKC)           , intent(in)    , optional              :: sigma
-        real(RKC)                                                   :: cdf
+        use pm_kind, only: RKG => RK1
+        real(RKG)           , intent(in)                            :: x
+        real(RKG)           , intent(in)    , optional              :: mu
+        real(RKG)           , intent(in)    , optional              :: sigma
+        real(RKG)                                                   :: cdf
     end function
 #endif
 
@@ -734,9 +734,9 @@ module pm_distLogNorm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLogNormCDFDD_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)           , intent(out)                           :: cdf
-        real(RKC)           , intent(in)                            :: logx
+        use pm_kind, only: RKG => RK5
+        real(RKG)           , intent(out)                           :: cdf
+        real(RKG)           , intent(in)                            :: logx
     end subroutine
 #endif
 
@@ -745,9 +745,9 @@ module pm_distLogNorm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLogNormCDFDD_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)           , intent(out)                           :: cdf
-        real(RKC)           , intent(in)                            :: logx
+        use pm_kind, only: RKG => RK4
+        real(RKG)           , intent(out)                           :: cdf
+        real(RKG)           , intent(in)                            :: logx
     end subroutine
 #endif
 
@@ -756,9 +756,9 @@ module pm_distLogNorm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLogNormCDFDD_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)           , intent(out)                           :: cdf
-        real(RKC)           , intent(in)                            :: logx
+        use pm_kind, only: RKG => RK3
+        real(RKG)           , intent(out)                           :: cdf
+        real(RKG)           , intent(in)                            :: logx
     end subroutine
 #endif
 
@@ -767,9 +767,9 @@ module pm_distLogNorm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLogNormCDFDD_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)           , intent(in)                            :: logx
-        real(RKC)           , intent(out)                           :: cdf
+        use pm_kind, only: RKG => RK2
+        real(RKG)           , intent(in)                            :: logx
+        real(RKG)           , intent(out)                           :: cdf
     end subroutine
 #endif
 
@@ -778,9 +778,9 @@ module pm_distLogNorm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLogNormCDFDD_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)           , intent(out)                           :: cdf
-        real(RKC)           , intent(in)                            :: logx
+        use pm_kind, only: RKG => RK1
+        real(RKG)           , intent(out)                           :: cdf
+        real(RKG)           , intent(in)                            :: logx
     end subroutine
 #endif
 
@@ -791,10 +791,10 @@ module pm_distLogNorm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLogNormCDFMD_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)           , intent(out)                           :: cdf
-        real(RKC)           , intent(in)                            :: logx
-        real(RKC)           , intent(in)                            :: mu
+        use pm_kind, only: RKG => RK5
+        real(RKG)           , intent(out)                           :: cdf
+        real(RKG)           , intent(in)                            :: logx
+        real(RKG)           , intent(in)                            :: mu
     end subroutine
 #endif
 
@@ -803,10 +803,10 @@ module pm_distLogNorm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLogNormCDFMD_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)           , intent(out)                           :: cdf
-        real(RKC)           , intent(in)                            :: logx
-        real(RKC)           , intent(in)                            :: mu
+        use pm_kind, only: RKG => RK4
+        real(RKG)           , intent(out)                           :: cdf
+        real(RKG)           , intent(in)                            :: logx
+        real(RKG)           , intent(in)                            :: mu
     end subroutine
 #endif
 
@@ -815,10 +815,10 @@ module pm_distLogNorm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLogNormCDFMD_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)           , intent(out)                           :: cdf
-        real(RKC)           , intent(in)                            :: logx
-        real(RKC)           , intent(in)                            :: mu
+        use pm_kind, only: RKG => RK3
+        real(RKG)           , intent(out)                           :: cdf
+        real(RKG)           , intent(in)                            :: logx
+        real(RKG)           , intent(in)                            :: mu
     end subroutine
 #endif
 
@@ -827,10 +827,10 @@ module pm_distLogNorm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLogNormCDFMD_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)           , intent(out)                           :: cdf
-        real(RKC)           , intent(in)                            :: logx
-        real(RKC)           , intent(in)                            :: mu
+        use pm_kind, only: RKG => RK2
+        real(RKG)           , intent(out)                           :: cdf
+        real(RKG)           , intent(in)                            :: logx
+        real(RKG)           , intent(in)                            :: mu
     end subroutine
 #endif
 
@@ -839,10 +839,10 @@ module pm_distLogNorm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLogNormCDFMD_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)           , intent(out)                           :: cdf
-        real(RKC)           , intent(in)                            :: logx
-        real(RKC)           , intent(in)                            :: mu
+        use pm_kind, only: RKG => RK1
+        real(RKG)           , intent(out)                           :: cdf
+        real(RKG)           , intent(in)                            :: logx
+        real(RKG)           , intent(in)                            :: mu
     end subroutine
 #endif
 
@@ -853,11 +853,11 @@ module pm_distLogNorm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLogNormCDFMS_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)           , intent(out)                           :: cdf
-        real(RKC)           , intent(in)                            :: logx
-        real(RKC)           , intent(in)                            :: mu
-        real(RKC)           , intent(in)                            :: invSigma
+        use pm_kind, only: RKG => RK5
+        real(RKG)           , intent(out)                           :: cdf
+        real(RKG)           , intent(in)                            :: logx
+        real(RKG)           , intent(in)                            :: mu
+        real(RKG)           , intent(in)                            :: invSigma
     end subroutine
 #endif
 
@@ -866,11 +866,11 @@ module pm_distLogNorm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLogNormCDFMS_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)           , intent(out)                           :: cdf
-        real(RKC)           , intent(in)                            :: logx
-        real(RKC)           , intent(in)                            :: mu
-        real(RKC)           , intent(in)                            :: invSigma
+        use pm_kind, only: RKG => RK4
+        real(RKG)           , intent(out)                           :: cdf
+        real(RKG)           , intent(in)                            :: logx
+        real(RKG)           , intent(in)                            :: mu
+        real(RKG)           , intent(in)                            :: invSigma
     end subroutine
 #endif
 
@@ -879,11 +879,11 @@ module pm_distLogNorm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLogNormCDFMS_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)           , intent(out)                           :: cdf
-        real(RKC)           , intent(in)                            :: logx
-        real(RKC)           , intent(in)                            :: mu
-        real(RKC)           , intent(in)                            :: invSigma
+        use pm_kind, only: RKG => RK3
+        real(RKG)           , intent(out)                           :: cdf
+        real(RKG)           , intent(in)                            :: logx
+        real(RKG)           , intent(in)                            :: mu
+        real(RKG)           , intent(in)                            :: invSigma
     end subroutine
 #endif
 
@@ -892,11 +892,11 @@ module pm_distLogNorm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLogNormCDFMS_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)           , intent(out)                           :: cdf
-        real(RKC)           , intent(in)                            :: logx
-        real(RKC)           , intent(in)                            :: mu
-        real(RKC)           , intent(in)                            :: invSigma
+        use pm_kind, only: RKG => RK2
+        real(RKG)           , intent(out)                           :: cdf
+        real(RKG)           , intent(in)                            :: logx
+        real(RKG)           , intent(in)                            :: mu
+        real(RKG)           , intent(in)                            :: invSigma
     end subroutine
 #endif
 
@@ -905,11 +905,11 @@ module pm_distLogNorm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLogNormCDFMS_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)           , intent(out)                           :: cdf
-        real(RKC)           , intent(in)                            :: logx
-        real(RKC)           , intent(in)                            :: mu
-        real(RKC)           , intent(in)                            :: invSigma
+        use pm_kind, only: RKG => RK1
+        real(RKG)           , intent(out)                           :: cdf
+        real(RKG)           , intent(in)                            :: logx
+        real(RKG)           , intent(in)                            :: mu
+        real(RKG)           , intent(in)                            :: invSigma
     end subroutine
 #endif
 

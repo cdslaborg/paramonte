@@ -1,6 +1,6 @@
 program benchmark
 
-    use pm_kind, only: SK, IK, LK, RKC => RK, IKC => IK, LKC => LK
+    use pm_kind, only: SK, IK, LK, RKG => RK, IKG => IK, LKG => LK
     use pm_distUnif, only: xoshiro256ssg_type
     use pm_distUnif, only: xoshiro256ssw_type
     use pm_distUnif, only: setUnifRand
@@ -10,10 +10,10 @@ program benchmark
 
     integer(IK)                         :: i, j, fileUnit
     integer(IK)         , parameter     :: NSIM = 100000_IK
-    logical(LKC)                        :: dumm_LK = .false._LKC    !<  The dummy value to prevent aggressive optimization.
-    logical(LKC)                        :: rand_LK(NSIM)            !<  The Random vector.
-    integer(IKC)                        :: rand_IK(NSIM)            !<  The Random vector.
-    real(RKC)                           :: rand_RK(NSIM)            !<  The Random vector.
+    logical(LKG)                        :: dumm_LK = .false._LKG    !<  The dummy value to prevent aggressive optimization.
+    logical(LKG)                        :: rand_LK(NSIM)            !<  The Random vector.
+    integer(IKG)                        :: rand_IK(NSIM)            !<  The Random vector.
+    real(RKG)                           :: rand_RK(NSIM)            !<  The Random vector.
     type(bench_type)    , allocatable   :: bench(:)                 !<  The Benchmark array.
     type(xoshiro256ssg_type)            :: xoshiro256ssg
     type(xoshiro256ssw_type)            :: xoshiro256ssw
@@ -71,11 +71,11 @@ contains
     end subroutine
 
     subroutine getDummy_IK()
-        dumm_LK = dumm_LK .or. any(rand_IK == 0_IKC)
+        dumm_LK = dumm_LK .or. any(rand_IK == 0_IKG)
     end subroutine
 
     subroutine getDummy_RK()
-        dumm_LK = dumm_LK .or. any(rand_RK == 0._RKC)
+        dumm_LK = dumm_LK .or. any(rand_RK == 0._RKG)
     end subroutine
 
     subroutine random_number_LK()
@@ -83,7 +83,7 @@ contains
         !block
         !    real :: rand
         !    call random_number(rand)
-        !    rand_LK = logical(rand < 0.5, LKC)
+        !    rand_LK = logical(rand < 0.5, LKG)
         !    call getDummy_LK()
         !end block
     end subroutine

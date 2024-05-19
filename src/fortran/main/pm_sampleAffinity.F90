@@ -231,12 +231,12 @@ module pm_sampleAffinity
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getAffinity_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         class(*)            , intent(in)            , optional      :: class
-        real(RKC)           , intent(in), contiguous, optional      :: tlate(:)
-        real(RKC)           , intent(in), contiguous                :: sample(:)
-        real(RKC)           , intent(in), contiguous                :: tform(:,:)
-        real(RKC)                                                   :: affinity(size(sample, 1, IK))
+        real(RKG)           , intent(in), contiguous, optional      :: tlate(:)
+        real(RKG)           , intent(in), contiguous                :: sample(:)
+        real(RKG)           , intent(in), contiguous                :: tform(:,:)
+        real(RKG)                                                   :: affinity(size(sample, 1, IK))
     end function
 #endif
 
@@ -245,12 +245,12 @@ module pm_sampleAffinity
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getAffinity_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         class(*)            , intent(in)            , optional      :: class
-        real(RKC)           , intent(in), contiguous, optional      :: tlate(:)
-        real(RKC)           , intent(in), contiguous                :: sample(:)
-        real(RKC)           , intent(in), contiguous                :: tform(:,:)
-        real(RKC)                                                   :: affinity(size(sample, 1, IK))
+        real(RKG)           , intent(in), contiguous, optional      :: tlate(:)
+        real(RKG)           , intent(in), contiguous                :: sample(:)
+        real(RKG)           , intent(in), contiguous                :: tform(:,:)
+        real(RKG)                                                   :: affinity(size(sample, 1, IK))
     end function
 #endif
 
@@ -259,12 +259,12 @@ module pm_sampleAffinity
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getAffinity_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         class(*)            , intent(in)            , optional      :: class
-        real(RKC)           , intent(in), contiguous, optional      :: tlate(:)
-        real(RKC)           , intent(in), contiguous                :: sample(:)
-        real(RKC)           , intent(in), contiguous                :: tform(:,:)
-        real(RKC)                                                   :: affinity(size(sample, 1, IK))
+        real(RKG)           , intent(in), contiguous, optional      :: tlate(:)
+        real(RKG)           , intent(in), contiguous                :: sample(:)
+        real(RKG)           , intent(in), contiguous                :: tform(:,:)
+        real(RKG)                                                   :: affinity(size(sample, 1, IK))
     end function
 #endif
 
@@ -273,12 +273,12 @@ module pm_sampleAffinity
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getAffinity_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         class(*)            , intent(in)            , optional      :: class
-        real(RKC)           , intent(in), contiguous, optional      :: tlate(:)
-        real(RKC)           , intent(in), contiguous                :: sample(:)
-        real(RKC)           , intent(in), contiguous                :: tform(:,:)
-        real(RKC)                                                   :: affinity(size(sample, 1, IK))
+        real(RKG)           , intent(in), contiguous, optional      :: tlate(:)
+        real(RKG)           , intent(in), contiguous                :: sample(:)
+        real(RKG)           , intent(in), contiguous                :: tform(:,:)
+        real(RKG)                                                   :: affinity(size(sample, 1, IK))
     end function
 #endif
 
@@ -287,12 +287,12 @@ module pm_sampleAffinity
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getAffinity_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         class(*)            , intent(in)            , optional      :: class
-        real(RKC)           , intent(in), contiguous, optional      :: tlate(:)
-        real(RKC)           , intent(in), contiguous                :: sample(:)
-        real(RKC)           , intent(in), contiguous                :: tform(:,:)
-        real(RKC)                                                   :: affinity(size(sample, 1, IK))
+        real(RKG)           , intent(in), contiguous, optional      :: tlate(:)
+        real(RKG)           , intent(in), contiguous                :: sample(:)
+        real(RKG)           , intent(in), contiguous                :: tform(:,:)
+        real(RKG)                                                   :: affinity(size(sample, 1, IK))
     end function
 #endif
 
@@ -303,13 +303,13 @@ module pm_sampleAffinity
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getAffinity_D2_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         integer(IK)         , intent(in)                            :: dim
         class(*)            , intent(in)            , optional      :: class
-        real(RKC)           , intent(in), contiguous, optional      :: tlate(:)
-        real(RKC)           , intent(in), contiguous                :: tform(:,:)
-        real(RKC)           , intent(in), contiguous                :: sample(:,:)
-        real(RKC)                                                   :: affinity(size(sample, 1, IK), size(sample, 2, IK))
+        real(RKG)           , intent(in), contiguous, optional      :: tlate(:)
+        real(RKG)           , intent(in), contiguous                :: tform(:,:)
+        real(RKG)           , intent(in), contiguous                :: sample(:,:)
+        real(RKG)                                                   :: affinity(size(sample, 1, IK), size(sample, 2, IK))
     end function
 #endif
 
@@ -318,13 +318,13 @@ module pm_sampleAffinity
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getAffinity_D2_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         integer(IK)         , intent(in)                            :: dim
         class(*)            , intent(in)            , optional      :: class
-        real(RKC)           , intent(in), contiguous, optional      :: tlate(:)
-        real(RKC)           , intent(in), contiguous                :: tform(:,:)
-        real(RKC)           , intent(in), contiguous                :: sample(:,:)
-        real(RKC)                                                   :: affinity(size(sample, 1, IK), size(sample, 2, IK))
+        real(RKG)           , intent(in), contiguous, optional      :: tlate(:)
+        real(RKG)           , intent(in), contiguous                :: tform(:,:)
+        real(RKG)           , intent(in), contiguous                :: sample(:,:)
+        real(RKG)                                                   :: affinity(size(sample, 1, IK), size(sample, 2, IK))
     end function
 #endif
 
@@ -333,13 +333,13 @@ module pm_sampleAffinity
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getAffinity_D2_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         integer(IK)         , intent(in)                            :: dim
         class(*)            , intent(in)            , optional      :: class
-        real(RKC)           , intent(in), contiguous, optional      :: tlate(:)
-        real(RKC)           , intent(in), contiguous                :: tform(:,:)
-        real(RKC)           , intent(in), contiguous                :: sample(:,:)
-        real(RKC)                                                   :: affinity(size(sample, 1, IK), size(sample, 2, IK))
+        real(RKG)           , intent(in), contiguous, optional      :: tlate(:)
+        real(RKG)           , intent(in), contiguous                :: tform(:,:)
+        real(RKG)           , intent(in), contiguous                :: sample(:,:)
+        real(RKG)                                                   :: affinity(size(sample, 1, IK), size(sample, 2, IK))
     end function
 #endif
 
@@ -348,13 +348,13 @@ module pm_sampleAffinity
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getAffinity_D2_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         integer(IK)         , intent(in)                            :: dim
         class(*)            , intent(in)            , optional      :: class
-        real(RKC)           , intent(in), contiguous, optional      :: tlate(:)
-        real(RKC)           , intent(in), contiguous                :: tform(:,:)
-        real(RKC)           , intent(in), contiguous                :: sample(:,:)
-        real(RKC)                                                   :: affinity(size(sample, 1, IK), size(sample, 2, IK))
+        real(RKG)           , intent(in), contiguous, optional      :: tlate(:)
+        real(RKG)           , intent(in), contiguous                :: tform(:,:)
+        real(RKG)           , intent(in), contiguous                :: sample(:,:)
+        real(RKG)                                                   :: affinity(size(sample, 1, IK), size(sample, 2, IK))
     end function
 #endif
 
@@ -363,13 +363,13 @@ module pm_sampleAffinity
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getAffinity_D2_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         integer(IK)         , intent(in)                            :: dim
         class(*)            , intent(in)            , optional      :: class
-        real(RKC)           , intent(in), contiguous, optional      :: tlate(:)
-        real(RKC)           , intent(in), contiguous                :: tform(:,:)
-        real(RKC)           , intent(in), contiguous                :: sample(:,:)
-        real(RKC)                                                   :: affinity(size(sample, 1, IK), size(sample, 2, IK))
+        real(RKG)           , intent(in), contiguous, optional      :: tlate(:)
+        real(RKG)           , intent(in), contiguous                :: tform(:,:)
+        real(RKG)           , intent(in), contiguous                :: sample(:,:)
+        real(RKG)                                                   :: affinity(size(sample, 1, IK), size(sample, 2, IK))
     end function
 #endif
 
@@ -508,12 +508,12 @@ module pm_sampleAffinity
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setAffinity_CGR_ATL_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         type(genrecmat_type)    , intent(in)                        :: class
-        real(RKC)               , intent(out)   , contiguous        :: affinity(:)
-        real(RKC)               , intent(in)    , contiguous        :: sample(:)
-        real(RKC)               , intent(in)    , contiguous        :: tform(:,:)
-        real(RKC)               , intent(in)    , contiguous        :: tlate(:)
+        real(RKG)               , intent(out)   , contiguous        :: affinity(:)
+        real(RKG)               , intent(in)    , contiguous        :: sample(:)
+        real(RKG)               , intent(in)    , contiguous        :: tform(:,:)
+        real(RKG)               , intent(in)    , contiguous        :: tlate(:)
     end subroutine
 #endif
 
@@ -522,12 +522,12 @@ module pm_sampleAffinity
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setAffinity_CGR_ATL_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         type(genrecmat_type)    , intent(in)                        :: class
-        real(RKC)               , intent(out)   , contiguous        :: affinity(:)
-        real(RKC)               , intent(in)    , contiguous        :: sample(:)
-        real(RKC)               , intent(in)    , contiguous        :: tform(:,:)
-        real(RKC)               , intent(in)    , contiguous        :: tlate(:)
+        real(RKG)               , intent(out)   , contiguous        :: affinity(:)
+        real(RKG)               , intent(in)    , contiguous        :: sample(:)
+        real(RKG)               , intent(in)    , contiguous        :: tform(:,:)
+        real(RKG)               , intent(in)    , contiguous        :: tlate(:)
     end subroutine
 #endif
 
@@ -536,12 +536,12 @@ module pm_sampleAffinity
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setAffinity_CGR_ATL_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         type(genrecmat_type)    , intent(in)                        :: class
-        real(RKC)               , intent(out)   , contiguous        :: affinity(:)
-        real(RKC)               , intent(in)    , contiguous        :: sample(:)
-        real(RKC)               , intent(in)    , contiguous        :: tform(:,:)
-        real(RKC)               , intent(in)    , contiguous        :: tlate(:)
+        real(RKG)               , intent(out)   , contiguous        :: affinity(:)
+        real(RKG)               , intent(in)    , contiguous        :: sample(:)
+        real(RKG)               , intent(in)    , contiguous        :: tform(:,:)
+        real(RKG)               , intent(in)    , contiguous        :: tlate(:)
     end subroutine
 #endif
 
@@ -550,12 +550,12 @@ module pm_sampleAffinity
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setAffinity_CGR_ATL_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         type(genrecmat_type)    , intent(in)                        :: class
-        real(RKC)               , intent(out)   , contiguous        :: affinity(:)
-        real(RKC)               , intent(in)    , contiguous        :: sample(:)
-        real(RKC)               , intent(in)    , contiguous        :: tform(:,:)
-        real(RKC)               , intent(in)    , contiguous        :: tlate(:)
+        real(RKG)               , intent(out)   , contiguous        :: affinity(:)
+        real(RKG)               , intent(in)    , contiguous        :: sample(:)
+        real(RKG)               , intent(in)    , contiguous        :: tform(:,:)
+        real(RKG)               , intent(in)    , contiguous        :: tlate(:)
     end subroutine
 #endif
 
@@ -564,12 +564,12 @@ module pm_sampleAffinity
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setAffinity_CGR_ATL_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         type(genrecmat_type)    , intent(in)                        :: class
-        real(RKC)               , intent(out)   , contiguous        :: affinity(:)
-        real(RKC)               , intent(in)    , contiguous        :: sample(:)
-        real(RKC)               , intent(in)    , contiguous        :: tform(:,:)
-        real(RKC)               , intent(in)    , contiguous        :: tlate(:)
+        real(RKG)               , intent(out)   , contiguous        :: affinity(:)
+        real(RKG)               , intent(in)    , contiguous        :: sample(:)
+        real(RKG)               , intent(in)    , contiguous        :: tform(:,:)
+        real(RKG)               , intent(in)    , contiguous        :: tlate(:)
     end subroutine
 #endif
 
@@ -580,13 +580,13 @@ module pm_sampleAffinity
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setAffinity_CGR_ATL_D2_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         integer(IK)             , intent(in)                        :: dim
         type(genrecmat_type)    , intent(in)                        :: class
-        real(RKC)               , intent(out)   , contiguous        :: affinity(:,:)
-        real(RKC)               , intent(in)    , contiguous        :: sample(:,:)
-        real(RKC)               , intent(in)    , contiguous        :: tform(:,:)
-        real(RKC)               , intent(in)    , contiguous        :: tlate(:)
+        real(RKG)               , intent(out)   , contiguous        :: affinity(:,:)
+        real(RKG)               , intent(in)    , contiguous        :: sample(:,:)
+        real(RKG)               , intent(in)    , contiguous        :: tform(:,:)
+        real(RKG)               , intent(in)    , contiguous        :: tlate(:)
     end subroutine
 #endif
 
@@ -595,13 +595,13 @@ module pm_sampleAffinity
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setAffinity_CGR_ATL_D2_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         integer(IK)             , intent(in)                        :: dim
         type(genrecmat_type)    , intent(in)                        :: class
-        real(RKC)               , intent(out)   , contiguous        :: affinity(:,:)
-        real(RKC)               , intent(in)    , contiguous        :: sample(:,:)
-        real(RKC)               , intent(in)    , contiguous        :: tform(:,:)
-        real(RKC)               , intent(in)    , contiguous        :: tlate(:)
+        real(RKG)               , intent(out)   , contiguous        :: affinity(:,:)
+        real(RKG)               , intent(in)    , contiguous        :: sample(:,:)
+        real(RKG)               , intent(in)    , contiguous        :: tform(:,:)
+        real(RKG)               , intent(in)    , contiguous        :: tlate(:)
     end subroutine
 #endif
 
@@ -610,13 +610,13 @@ module pm_sampleAffinity
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setAffinity_CGR_ATL_D2_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         integer(IK)             , intent(in)                        :: dim
         type(genrecmat_type)    , intent(in)                        :: class
-        real(RKC)               , intent(out)   , contiguous        :: affinity(:,:)
-        real(RKC)               , intent(in)    , contiguous        :: sample(:,:)
-        real(RKC)               , intent(in)    , contiguous        :: tform(:,:)
-        real(RKC)               , intent(in)    , contiguous        :: tlate(:)
+        real(RKG)               , intent(out)   , contiguous        :: affinity(:,:)
+        real(RKG)               , intent(in)    , contiguous        :: sample(:,:)
+        real(RKG)               , intent(in)    , contiguous        :: tform(:,:)
+        real(RKG)               , intent(in)    , contiguous        :: tlate(:)
     end subroutine
 #endif
 
@@ -625,13 +625,13 @@ module pm_sampleAffinity
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setAffinity_CGR_ATL_D2_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         integer(IK)             , intent(in)                        :: dim
         type(genrecmat_type)    , intent(in)                        :: class
-        real(RKC)               , intent(out)   , contiguous        :: affinity(:,:)
-        real(RKC)               , intent(in)    , contiguous        :: sample(:,:)
-        real(RKC)               , intent(in)    , contiguous        :: tform(:,:)
-        real(RKC)               , intent(in)    , contiguous        :: tlate(:)
+        real(RKG)               , intent(out)   , contiguous        :: affinity(:,:)
+        real(RKG)               , intent(in)    , contiguous        :: sample(:,:)
+        real(RKG)               , intent(in)    , contiguous        :: tform(:,:)
+        real(RKG)               , intent(in)    , contiguous        :: tlate(:)
     end subroutine
 #endif
 
@@ -640,13 +640,13 @@ module pm_sampleAffinity
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setAffinity_CGR_ATL_D2_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         integer(IK)             , intent(in)                        :: dim
         type(genrecmat_type)    , intent(in)                        :: class
-        real(RKC)               , intent(out)   , contiguous        :: affinity(:,:)
-        real(RKC)               , intent(in)    , contiguous        :: sample(:,:)
-        real(RKC)               , intent(in)    , contiguous        :: tform(:,:)
-        real(RKC)               , intent(in)    , contiguous        :: tlate(:)
+        real(RKG)               , intent(out)   , contiguous        :: affinity(:,:)
+        real(RKG)               , intent(in)    , contiguous        :: sample(:,:)
+        real(RKG)               , intent(in)    , contiguous        :: tform(:,:)
+        real(RKG)               , intent(in)    , contiguous        :: tlate(:)
     end subroutine
 #endif
 
@@ -665,12 +665,12 @@ module pm_sampleAffinity
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setAffinity_CUD_ATL_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         type(upperDiag_type)    , intent(in)                        :: class
-        real(RKC)               , intent(out)   , contiguous        :: affinity(:)
-        real(RKC)               , intent(in)    , contiguous        :: sample(:)
-        real(RKC)               , intent(in)    , contiguous        :: tform(:,:)
-        real(RKC)               , intent(in)    , contiguous        :: tlate(:)
+        real(RKG)               , intent(out)   , contiguous        :: affinity(:)
+        real(RKG)               , intent(in)    , contiguous        :: sample(:)
+        real(RKG)               , intent(in)    , contiguous        :: tform(:,:)
+        real(RKG)               , intent(in)    , contiguous        :: tlate(:)
     end subroutine
 #endif
 
@@ -679,12 +679,12 @@ module pm_sampleAffinity
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setAffinity_CUD_ATL_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         type(upperDiag_type)    , intent(in)                        :: class
-        real(RKC)               , intent(out)   , contiguous        :: affinity(:)
-        real(RKC)               , intent(in)    , contiguous        :: sample(:)
-        real(RKC)               , intent(in)    , contiguous        :: tform(:,:)
-        real(RKC)               , intent(in)    , contiguous        :: tlate(:)
+        real(RKG)               , intent(out)   , contiguous        :: affinity(:)
+        real(RKG)               , intent(in)    , contiguous        :: sample(:)
+        real(RKG)               , intent(in)    , contiguous        :: tform(:,:)
+        real(RKG)               , intent(in)    , contiguous        :: tlate(:)
     end subroutine
 #endif
 
@@ -693,12 +693,12 @@ module pm_sampleAffinity
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setAffinity_CUD_ATL_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         type(upperDiag_type)    , intent(in)                        :: class
-        real(RKC)               , intent(out)   , contiguous        :: affinity(:)
-        real(RKC)               , intent(in)    , contiguous        :: sample(:)
-        real(RKC)               , intent(in)    , contiguous        :: tform(:,:)
-        real(RKC)               , intent(in)    , contiguous        :: tlate(:)
+        real(RKG)               , intent(out)   , contiguous        :: affinity(:)
+        real(RKG)               , intent(in)    , contiguous        :: sample(:)
+        real(RKG)               , intent(in)    , contiguous        :: tform(:,:)
+        real(RKG)               , intent(in)    , contiguous        :: tlate(:)
     end subroutine
 #endif
 
@@ -707,12 +707,12 @@ module pm_sampleAffinity
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setAffinity_CUD_ATL_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         type(upperDiag_type)    , intent(in)                        :: class
-        real(RKC)               , intent(out)   , contiguous        :: affinity(:)
-        real(RKC)               , intent(in)    , contiguous        :: sample(:)
-        real(RKC)               , intent(in)    , contiguous        :: tform(:,:)
-        real(RKC)               , intent(in)    , contiguous        :: tlate(:)
+        real(RKG)               , intent(out)   , contiguous        :: affinity(:)
+        real(RKG)               , intent(in)    , contiguous        :: sample(:)
+        real(RKG)               , intent(in)    , contiguous        :: tform(:,:)
+        real(RKG)               , intent(in)    , contiguous        :: tlate(:)
     end subroutine
 #endif
 
@@ -721,12 +721,12 @@ module pm_sampleAffinity
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setAffinity_CUD_ATL_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         type(upperDiag_type)    , intent(in)                        :: class
-        real(RKC)               , intent(out)   , contiguous        :: affinity(:)
-        real(RKC)               , intent(in)    , contiguous        :: sample(:)
-        real(RKC)               , intent(in)    , contiguous        :: tform(:,:)
-        real(RKC)               , intent(in)    , contiguous        :: tlate(:)
+        real(RKG)               , intent(out)   , contiguous        :: affinity(:)
+        real(RKG)               , intent(in)    , contiguous        :: sample(:)
+        real(RKG)               , intent(in)    , contiguous        :: tform(:,:)
+        real(RKG)               , intent(in)    , contiguous        :: tlate(:)
     end subroutine
 #endif
 
@@ -737,13 +737,13 @@ module pm_sampleAffinity
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setAffinity_CUD_ATL_D2_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         integer(IK)             , intent(in)                        :: dim
         type(upperDiag_type)    , intent(in)                        :: class
-        real(RKC)               , intent(out)   , contiguous        :: affinity(:,:)
-        real(RKC)               , intent(in)    , contiguous        :: sample(:,:)
-        real(RKC)               , intent(in)    , contiguous        :: tform(:,:)
-        real(RKC)               , intent(in)    , contiguous        :: tlate(:)
+        real(RKG)               , intent(out)   , contiguous        :: affinity(:,:)
+        real(RKG)               , intent(in)    , contiguous        :: sample(:,:)
+        real(RKG)               , intent(in)    , contiguous        :: tform(:,:)
+        real(RKG)               , intent(in)    , contiguous        :: tlate(:)
     end subroutine
 #endif
 
@@ -752,13 +752,13 @@ module pm_sampleAffinity
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setAffinity_CUD_ATL_D2_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         integer(IK)             , intent(in)                        :: dim
         type(upperDiag_type)    , intent(in)                        :: class
-        real(RKC)               , intent(out)   , contiguous        :: affinity(:,:)
-        real(RKC)               , intent(in)    , contiguous        :: sample(:,:)
-        real(RKC)               , intent(in)    , contiguous        :: tform(:,:)
-        real(RKC)               , intent(in)    , contiguous        :: tlate(:)
+        real(RKG)               , intent(out)   , contiguous        :: affinity(:,:)
+        real(RKG)               , intent(in)    , contiguous        :: sample(:,:)
+        real(RKG)               , intent(in)    , contiguous        :: tform(:,:)
+        real(RKG)               , intent(in)    , contiguous        :: tlate(:)
     end subroutine
 #endif
 
@@ -767,13 +767,13 @@ module pm_sampleAffinity
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setAffinity_CUD_ATL_D2_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         integer(IK)             , intent(in)                        :: dim
         type(upperDiag_type)    , intent(in)                        :: class
-        real(RKC)               , intent(out)   , contiguous        :: affinity(:,:)
-        real(RKC)               , intent(in)    , contiguous        :: sample(:,:)
-        real(RKC)               , intent(in)    , contiguous        :: tform(:,:)
-        real(RKC)               , intent(in)    , contiguous        :: tlate(:)
+        real(RKG)               , intent(out)   , contiguous        :: affinity(:,:)
+        real(RKG)               , intent(in)    , contiguous        :: sample(:,:)
+        real(RKG)               , intent(in)    , contiguous        :: tform(:,:)
+        real(RKG)               , intent(in)    , contiguous        :: tlate(:)
     end subroutine
 #endif
 
@@ -782,13 +782,13 @@ module pm_sampleAffinity
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setAffinity_CUD_ATL_D2_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         integer(IK)             , intent(in)                        :: dim
         type(upperDiag_type)    , intent(in)                        :: class
-        real(RKC)               , intent(out)   , contiguous        :: affinity(:,:)
-        real(RKC)               , intent(in)    , contiguous        :: sample(:,:)
-        real(RKC)               , intent(in)    , contiguous        :: tform(:,:)
-        real(RKC)               , intent(in)    , contiguous        :: tlate(:)
+        real(RKG)               , intent(out)   , contiguous        :: affinity(:,:)
+        real(RKG)               , intent(in)    , contiguous        :: sample(:,:)
+        real(RKG)               , intent(in)    , contiguous        :: tform(:,:)
+        real(RKG)               , intent(in)    , contiguous        :: tlate(:)
     end subroutine
 #endif
 
@@ -797,13 +797,13 @@ module pm_sampleAffinity
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setAffinity_CUD_ATL_D2_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         integer(IK)             , intent(in)                        :: dim
         type(upperDiag_type)    , intent(in)                        :: class
-        real(RKC)               , intent(out)   , contiguous        :: affinity(:,:)
-        real(RKC)               , intent(in)    , contiguous        :: sample(:,:)
-        real(RKC)               , intent(in)    , contiguous        :: tform(:,:)
-        real(RKC)               , intent(in)    , contiguous        :: tlate(:)
+        real(RKG)               , intent(out)   , contiguous        :: affinity(:,:)
+        real(RKG)               , intent(in)    , contiguous        :: sample(:,:)
+        real(RKG)               , intent(in)    , contiguous        :: tform(:,:)
+        real(RKG)               , intent(in)    , contiguous        :: tlate(:)
     end subroutine
 #endif
 
@@ -822,12 +822,12 @@ module pm_sampleAffinity
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setAffinity_CLD_ATL_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         type(lowerDiag_type)    , intent(in)                        :: class
-        real(RKC)               , intent(out)   , contiguous        :: affinity(:)
-        real(RKC)               , intent(in)    , contiguous        :: sample(:)
-        real(RKC)               , intent(in)    , contiguous        :: tform(:,:)
-        real(RKC)               , intent(in)    , contiguous        :: tlate(:)
+        real(RKG)               , intent(out)   , contiguous        :: affinity(:)
+        real(RKG)               , intent(in)    , contiguous        :: sample(:)
+        real(RKG)               , intent(in)    , contiguous        :: tform(:,:)
+        real(RKG)               , intent(in)    , contiguous        :: tlate(:)
     end subroutine
 #endif
 
@@ -836,12 +836,12 @@ module pm_sampleAffinity
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setAffinity_CLD_ATL_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         type(lowerDiag_type)    , intent(in)                        :: class
-        real(RKC)               , intent(out)   , contiguous        :: affinity(:)
-        real(RKC)               , intent(in)    , contiguous        :: sample(:)
-        real(RKC)               , intent(in)    , contiguous        :: tform(:,:)
-        real(RKC)               , intent(in)    , contiguous        :: tlate(:)
+        real(RKG)               , intent(out)   , contiguous        :: affinity(:)
+        real(RKG)               , intent(in)    , contiguous        :: sample(:)
+        real(RKG)               , intent(in)    , contiguous        :: tform(:,:)
+        real(RKG)               , intent(in)    , contiguous        :: tlate(:)
     end subroutine
 #endif
 
@@ -850,12 +850,12 @@ module pm_sampleAffinity
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setAffinity_CLD_ATL_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         type(lowerDiag_type)    , intent(in)                        :: class
-        real(RKC)               , intent(out)   , contiguous        :: affinity(:)
-        real(RKC)               , intent(in)    , contiguous        :: sample(:)
-        real(RKC)               , intent(in)    , contiguous        :: tform(:,:)
-        real(RKC)               , intent(in)    , contiguous        :: tlate(:)
+        real(RKG)               , intent(out)   , contiguous        :: affinity(:)
+        real(RKG)               , intent(in)    , contiguous        :: sample(:)
+        real(RKG)               , intent(in)    , contiguous        :: tform(:,:)
+        real(RKG)               , intent(in)    , contiguous        :: tlate(:)
     end subroutine
 #endif
 
@@ -864,12 +864,12 @@ module pm_sampleAffinity
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setAffinity_CLD_ATL_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         type(lowerDiag_type)    , intent(in)                        :: class
-        real(RKC)               , intent(out)   , contiguous        :: affinity(:)
-        real(RKC)               , intent(in)    , contiguous        :: sample(:)
-        real(RKC)               , intent(in)    , contiguous        :: tform(:,:)
-        real(RKC)               , intent(in)    , contiguous        :: tlate(:)
+        real(RKG)               , intent(out)   , contiguous        :: affinity(:)
+        real(RKG)               , intent(in)    , contiguous        :: sample(:)
+        real(RKG)               , intent(in)    , contiguous        :: tform(:,:)
+        real(RKG)               , intent(in)    , contiguous        :: tlate(:)
     end subroutine
 #endif
 
@@ -878,12 +878,12 @@ module pm_sampleAffinity
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setAffinity_CLD_ATL_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         type(lowerDiag_type)    , intent(in)                        :: class
-        real(RKC)               , intent(out)   , contiguous        :: affinity(:)
-        real(RKC)               , intent(in)    , contiguous        :: sample(:)
-        real(RKC)               , intent(in)    , contiguous        :: tform(:,:)
-        real(RKC)               , intent(in)    , contiguous        :: tlate(:)
+        real(RKG)               , intent(out)   , contiguous        :: affinity(:)
+        real(RKG)               , intent(in)    , contiguous        :: sample(:)
+        real(RKG)               , intent(in)    , contiguous        :: tform(:,:)
+        real(RKG)               , intent(in)    , contiguous        :: tlate(:)
     end subroutine
 #endif
 
@@ -894,13 +894,13 @@ module pm_sampleAffinity
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setAffinity_CLD_ATL_D2_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         integer(IK)             , intent(in)                        :: dim
         type(lowerDiag_type)    , intent(in)                        :: class
-        real(RKC)               , intent(out)   , contiguous        :: affinity(:,:)
-        real(RKC)               , intent(in)    , contiguous        :: sample(:,:)
-        real(RKC)               , intent(in)    , contiguous        :: tform(:,:)
-        real(RKC)               , intent(in)    , contiguous        :: tlate(:)
+        real(RKG)               , intent(out)   , contiguous        :: affinity(:,:)
+        real(RKG)               , intent(in)    , contiguous        :: sample(:,:)
+        real(RKG)               , intent(in)    , contiguous        :: tform(:,:)
+        real(RKG)               , intent(in)    , contiguous        :: tlate(:)
     end subroutine
 #endif
 
@@ -909,13 +909,13 @@ module pm_sampleAffinity
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setAffinity_CLD_ATL_D2_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         integer(IK)             , intent(in)                        :: dim
         type(lowerDiag_type)    , intent(in)                        :: class
-        real(RKC)               , intent(out)   , contiguous        :: affinity(:,:)
-        real(RKC)               , intent(in)    , contiguous        :: sample(:,:)
-        real(RKC)               , intent(in)    , contiguous        :: tform(:,:)
-        real(RKC)               , intent(in)    , contiguous        :: tlate(:)
+        real(RKG)               , intent(out)   , contiguous        :: affinity(:,:)
+        real(RKG)               , intent(in)    , contiguous        :: sample(:,:)
+        real(RKG)               , intent(in)    , contiguous        :: tform(:,:)
+        real(RKG)               , intent(in)    , contiguous        :: tlate(:)
     end subroutine
 #endif
 
@@ -924,13 +924,13 @@ module pm_sampleAffinity
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setAffinity_CLD_ATL_D2_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         integer(IK)             , intent(in)                        :: dim
         type(lowerDiag_type)    , intent(in)                        :: class
-        real(RKC)               , intent(out)   , contiguous        :: affinity(:,:)
-        real(RKC)               , intent(in)    , contiguous        :: sample(:,:)
-        real(RKC)               , intent(in)    , contiguous        :: tform(:,:)
-        real(RKC)               , intent(in)    , contiguous        :: tlate(:)
+        real(RKG)               , intent(out)   , contiguous        :: affinity(:,:)
+        real(RKG)               , intent(in)    , contiguous        :: sample(:,:)
+        real(RKG)               , intent(in)    , contiguous        :: tform(:,:)
+        real(RKG)               , intent(in)    , contiguous        :: tlate(:)
     end subroutine
 #endif
 
@@ -939,13 +939,13 @@ module pm_sampleAffinity
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setAffinity_CLD_ATL_D2_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         integer(IK)             , intent(in)                        :: dim
         type(lowerDiag_type)    , intent(in)                        :: class
-        real(RKC)               , intent(out)   , contiguous        :: affinity(:,:)
-        real(RKC)               , intent(in)    , contiguous        :: sample(:,:)
-        real(RKC)               , intent(in)    , contiguous        :: tform(:,:)
-        real(RKC)               , intent(in)    , contiguous        :: tlate(:)
+        real(RKG)               , intent(out)   , contiguous        :: affinity(:,:)
+        real(RKG)               , intent(in)    , contiguous        :: sample(:,:)
+        real(RKG)               , intent(in)    , contiguous        :: tform(:,:)
+        real(RKG)               , intent(in)    , contiguous        :: tlate(:)
     end subroutine
 #endif
 
@@ -954,13 +954,13 @@ module pm_sampleAffinity
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setAffinity_CLD_ATL_D2_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         integer(IK)             , intent(in)                        :: dim
         type(lowerDiag_type)    , intent(in)                        :: class
-        real(RKC)               , intent(out)   , contiguous        :: affinity(:,:)
-        real(RKC)               , intent(in)    , contiguous        :: sample(:,:)
-        real(RKC)               , intent(in)    , contiguous        :: tform(:,:)
-        real(RKC)               , intent(in)    , contiguous        :: tlate(:)
+        real(RKG)               , intent(out)   , contiguous        :: affinity(:,:)
+        real(RKG)               , intent(in)    , contiguous        :: sample(:,:)
+        real(RKG)               , intent(in)    , contiguous        :: tform(:,:)
+        real(RKG)               , intent(in)    , contiguous        :: tlate(:)
     end subroutine
 #endif
 
@@ -979,12 +979,12 @@ module pm_sampleAffinity
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setAffinity_CUU_ATL_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         type(upperUnit_type)    , intent(in)                        :: class
-        real(RKC)               , intent(out)   , contiguous        :: affinity(:)
-        real(RKC)               , intent(in)    , contiguous        :: sample(:)
-        real(RKC)               , intent(in)    , contiguous        :: tform(:,:)
-        real(RKC)               , intent(in)    , contiguous        :: tlate(:)
+        real(RKG)               , intent(out)   , contiguous        :: affinity(:)
+        real(RKG)               , intent(in)    , contiguous        :: sample(:)
+        real(RKG)               , intent(in)    , contiguous        :: tform(:,:)
+        real(RKG)               , intent(in)    , contiguous        :: tlate(:)
     end subroutine
 #endif
 
@@ -993,12 +993,12 @@ module pm_sampleAffinity
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setAffinity_CUU_ATL_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         type(upperUnit_type)    , intent(in)                        :: class
-        real(RKC)               , intent(out)   , contiguous        :: affinity(:)
-        real(RKC)               , intent(in)    , contiguous        :: sample(:)
-        real(RKC)               , intent(in)    , contiguous        :: tform(:,:)
-        real(RKC)               , intent(in)    , contiguous        :: tlate(:)
+        real(RKG)               , intent(out)   , contiguous        :: affinity(:)
+        real(RKG)               , intent(in)    , contiguous        :: sample(:)
+        real(RKG)               , intent(in)    , contiguous        :: tform(:,:)
+        real(RKG)               , intent(in)    , contiguous        :: tlate(:)
     end subroutine
 #endif
 
@@ -1007,12 +1007,12 @@ module pm_sampleAffinity
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setAffinity_CUU_ATL_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         type(upperUnit_type)    , intent(in)                        :: class
-        real(RKC)               , intent(out)   , contiguous        :: affinity(:)
-        real(RKC)               , intent(in)    , contiguous        :: sample(:)
-        real(RKC)               , intent(in)    , contiguous        :: tform(:,:)
-        real(RKC)               , intent(in)    , contiguous        :: tlate(:)
+        real(RKG)               , intent(out)   , contiguous        :: affinity(:)
+        real(RKG)               , intent(in)    , contiguous        :: sample(:)
+        real(RKG)               , intent(in)    , contiguous        :: tform(:,:)
+        real(RKG)               , intent(in)    , contiguous        :: tlate(:)
     end subroutine
 #endif
 
@@ -1021,12 +1021,12 @@ module pm_sampleAffinity
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setAffinity_CUU_ATL_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         type(upperUnit_type)    , intent(in)                        :: class
-        real(RKC)               , intent(out)   , contiguous        :: affinity(:)
-        real(RKC)               , intent(in)    , contiguous        :: sample(:)
-        real(RKC)               , intent(in)    , contiguous        :: tform(:,:)
-        real(RKC)               , intent(in)    , contiguous        :: tlate(:)
+        real(RKG)               , intent(out)   , contiguous        :: affinity(:)
+        real(RKG)               , intent(in)    , contiguous        :: sample(:)
+        real(RKG)               , intent(in)    , contiguous        :: tform(:,:)
+        real(RKG)               , intent(in)    , contiguous        :: tlate(:)
     end subroutine
 #endif
 
@@ -1035,12 +1035,12 @@ module pm_sampleAffinity
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setAffinity_CUU_ATL_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         type(upperUnit_type)    , intent(in)                        :: class
-        real(RKC)               , intent(out)   , contiguous        :: affinity(:)
-        real(RKC)               , intent(in)    , contiguous        :: sample(:)
-        real(RKC)               , intent(in)    , contiguous        :: tform(:,:)
-        real(RKC)               , intent(in)    , contiguous        :: tlate(:)
+        real(RKG)               , intent(out)   , contiguous        :: affinity(:)
+        real(RKG)               , intent(in)    , contiguous        :: sample(:)
+        real(RKG)               , intent(in)    , contiguous        :: tform(:,:)
+        real(RKG)               , intent(in)    , contiguous        :: tlate(:)
     end subroutine
 #endif
 
@@ -1051,13 +1051,13 @@ module pm_sampleAffinity
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setAffinity_CUU_ATL_D2_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         integer(IK)             , intent(in)                        :: dim
         type(upperUnit_type)    , intent(in)                        :: class
-        real(RKC)               , intent(out)   , contiguous        :: affinity(:,:)
-        real(RKC)               , intent(in)    , contiguous        :: sample(:,:)
-        real(RKC)               , intent(in)    , contiguous        :: tform(:,:)
-        real(RKC)               , intent(in)    , contiguous        :: tlate(:)
+        real(RKG)               , intent(out)   , contiguous        :: affinity(:,:)
+        real(RKG)               , intent(in)    , contiguous        :: sample(:,:)
+        real(RKG)               , intent(in)    , contiguous        :: tform(:,:)
+        real(RKG)               , intent(in)    , contiguous        :: tlate(:)
     end subroutine
 #endif
 
@@ -1066,13 +1066,13 @@ module pm_sampleAffinity
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setAffinity_CUU_ATL_D2_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         integer(IK)             , intent(in)                        :: dim
         type(upperUnit_type)    , intent(in)                        :: class
-        real(RKC)               , intent(out)   , contiguous        :: affinity(:,:)
-        real(RKC)               , intent(in)    , contiguous        :: sample(:,:)
-        real(RKC)               , intent(in)    , contiguous        :: tform(:,:)
-        real(RKC)               , intent(in)    , contiguous        :: tlate(:)
+        real(RKG)               , intent(out)   , contiguous        :: affinity(:,:)
+        real(RKG)               , intent(in)    , contiguous        :: sample(:,:)
+        real(RKG)               , intent(in)    , contiguous        :: tform(:,:)
+        real(RKG)               , intent(in)    , contiguous        :: tlate(:)
     end subroutine
 #endif
 
@@ -1081,13 +1081,13 @@ module pm_sampleAffinity
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setAffinity_CUU_ATL_D2_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         integer(IK)             , intent(in)                        :: dim
         type(upperUnit_type)    , intent(in)                        :: class
-        real(RKC)               , intent(out)   , contiguous        :: affinity(:,:)
-        real(RKC)               , intent(in)    , contiguous        :: sample(:,:)
-        real(RKC)               , intent(in)    , contiguous        :: tform(:,:)
-        real(RKC)               , intent(in)    , contiguous        :: tlate(:)
+        real(RKG)               , intent(out)   , contiguous        :: affinity(:,:)
+        real(RKG)               , intent(in)    , contiguous        :: sample(:,:)
+        real(RKG)               , intent(in)    , contiguous        :: tform(:,:)
+        real(RKG)               , intent(in)    , contiguous        :: tlate(:)
     end subroutine
 #endif
 
@@ -1096,13 +1096,13 @@ module pm_sampleAffinity
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setAffinity_CUU_ATL_D2_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         integer(IK)             , intent(in)                        :: dim
         type(upperUnit_type)    , intent(in)                        :: class
-        real(RKC)               , intent(out)   , contiguous        :: affinity(:,:)
-        real(RKC)               , intent(in)    , contiguous        :: sample(:,:)
-        real(RKC)               , intent(in)    , contiguous        :: tform(:,:)
-        real(RKC)               , intent(in)    , contiguous        :: tlate(:)
+        real(RKG)               , intent(out)   , contiguous        :: affinity(:,:)
+        real(RKG)               , intent(in)    , contiguous        :: sample(:,:)
+        real(RKG)               , intent(in)    , contiguous        :: tform(:,:)
+        real(RKG)               , intent(in)    , contiguous        :: tlate(:)
     end subroutine
 #endif
 
@@ -1111,13 +1111,13 @@ module pm_sampleAffinity
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setAffinity_CUU_ATL_D2_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         integer(IK)             , intent(in)                        :: dim
         type(upperUnit_type)    , intent(in)                        :: class
-        real(RKC)               , intent(out)   , contiguous        :: affinity(:,:)
-        real(RKC)               , intent(in)    , contiguous        :: sample(:,:)
-        real(RKC)               , intent(in)    , contiguous        :: tform(:,:)
-        real(RKC)               , intent(in)    , contiguous        :: tlate(:)
+        real(RKG)               , intent(out)   , contiguous        :: affinity(:,:)
+        real(RKG)               , intent(in)    , contiguous        :: sample(:,:)
+        real(RKG)               , intent(in)    , contiguous        :: tform(:,:)
+        real(RKG)               , intent(in)    , contiguous        :: tlate(:)
     end subroutine
 #endif
 
@@ -1136,12 +1136,12 @@ module pm_sampleAffinity
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setAffinity_CLU_ATL_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         type(lowerUnit_type)    , intent(in)                        :: class
-        real(RKC)               , intent(out)   , contiguous        :: affinity(:)
-        real(RKC)               , intent(in)    , contiguous        :: sample(:)
-        real(RKC)               , intent(in)    , contiguous        :: tform(:,:)
-        real(RKC)               , intent(in)    , contiguous        :: tlate(:)
+        real(RKG)               , intent(out)   , contiguous        :: affinity(:)
+        real(RKG)               , intent(in)    , contiguous        :: sample(:)
+        real(RKG)               , intent(in)    , contiguous        :: tform(:,:)
+        real(RKG)               , intent(in)    , contiguous        :: tlate(:)
     end subroutine
 #endif
 
@@ -1150,12 +1150,12 @@ module pm_sampleAffinity
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setAffinity_CLU_ATL_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         type(lowerUnit_type)    , intent(in)                        :: class
-        real(RKC)               , intent(out)   , contiguous        :: affinity(:)
-        real(RKC)               , intent(in)    , contiguous        :: sample(:)
-        real(RKC)               , intent(in)    , contiguous        :: tform(:,:)
-        real(RKC)               , intent(in)    , contiguous        :: tlate(:)
+        real(RKG)               , intent(out)   , contiguous        :: affinity(:)
+        real(RKG)               , intent(in)    , contiguous        :: sample(:)
+        real(RKG)               , intent(in)    , contiguous        :: tform(:,:)
+        real(RKG)               , intent(in)    , contiguous        :: tlate(:)
     end subroutine
 #endif
 
@@ -1164,12 +1164,12 @@ module pm_sampleAffinity
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setAffinity_CLU_ATL_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         type(lowerUnit_type)    , intent(in)                        :: class
-        real(RKC)               , intent(out)   , contiguous        :: affinity(:)
-        real(RKC)               , intent(in)    , contiguous        :: sample(:)
-        real(RKC)               , intent(in)    , contiguous        :: tform(:,:)
-        real(RKC)               , intent(in)    , contiguous        :: tlate(:)
+        real(RKG)               , intent(out)   , contiguous        :: affinity(:)
+        real(RKG)               , intent(in)    , contiguous        :: sample(:)
+        real(RKG)               , intent(in)    , contiguous        :: tform(:,:)
+        real(RKG)               , intent(in)    , contiguous        :: tlate(:)
     end subroutine
 #endif
 
@@ -1178,12 +1178,12 @@ module pm_sampleAffinity
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setAffinity_CLU_ATL_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         type(lowerUnit_type)    , intent(in)                        :: class
-        real(RKC)               , intent(out)   , contiguous        :: affinity(:)
-        real(RKC)               , intent(in)    , contiguous        :: sample(:)
-        real(RKC)               , intent(in)    , contiguous        :: tform(:,:)
-        real(RKC)               , intent(in)    , contiguous        :: tlate(:)
+        real(RKG)               , intent(out)   , contiguous        :: affinity(:)
+        real(RKG)               , intent(in)    , contiguous        :: sample(:)
+        real(RKG)               , intent(in)    , contiguous        :: tform(:,:)
+        real(RKG)               , intent(in)    , contiguous        :: tlate(:)
     end subroutine
 #endif
 
@@ -1192,12 +1192,12 @@ module pm_sampleAffinity
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setAffinity_CLU_ATL_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         type(lowerUnit_type)    , intent(in)                        :: class
-        real(RKC)               , intent(out)   , contiguous        :: affinity(:)
-        real(RKC)               , intent(in)    , contiguous        :: sample(:)
-        real(RKC)               , intent(in)    , contiguous        :: tform(:,:)
-        real(RKC)               , intent(in)    , contiguous        :: tlate(:)
+        real(RKG)               , intent(out)   , contiguous        :: affinity(:)
+        real(RKG)               , intent(in)    , contiguous        :: sample(:)
+        real(RKG)               , intent(in)    , contiguous        :: tform(:,:)
+        real(RKG)               , intent(in)    , contiguous        :: tlate(:)
     end subroutine
 #endif
 
@@ -1208,13 +1208,13 @@ module pm_sampleAffinity
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setAffinity_CLU_ATL_D2_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         integer(IK)             , intent(in)                        :: dim
         type(lowerUnit_type)    , intent(in)                        :: class
-        real(RKC)               , intent(out)   , contiguous        :: affinity(:,:)
-        real(RKC)               , intent(in)    , contiguous        :: sample(:,:)
-        real(RKC)               , intent(in)    , contiguous        :: tform(:,:)
-        real(RKC)               , intent(in)    , contiguous        :: tlate(:)
+        real(RKG)               , intent(out)   , contiguous        :: affinity(:,:)
+        real(RKG)               , intent(in)    , contiguous        :: sample(:,:)
+        real(RKG)               , intent(in)    , contiguous        :: tform(:,:)
+        real(RKG)               , intent(in)    , contiguous        :: tlate(:)
     end subroutine
 #endif
 
@@ -1223,13 +1223,13 @@ module pm_sampleAffinity
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setAffinity_CLU_ATL_D2_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         integer(IK)             , intent(in)                        :: dim
         type(lowerUnit_type)    , intent(in)                        :: class
-        real(RKC)               , intent(out)   , contiguous        :: affinity(:,:)
-        real(RKC)               , intent(in)    , contiguous        :: sample(:,:)
-        real(RKC)               , intent(in)    , contiguous        :: tform(:,:)
-        real(RKC)               , intent(in)    , contiguous        :: tlate(:)
+        real(RKG)               , intent(out)   , contiguous        :: affinity(:,:)
+        real(RKG)               , intent(in)    , contiguous        :: sample(:,:)
+        real(RKG)               , intent(in)    , contiguous        :: tform(:,:)
+        real(RKG)               , intent(in)    , contiguous        :: tlate(:)
     end subroutine
 #endif
 
@@ -1238,13 +1238,13 @@ module pm_sampleAffinity
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setAffinity_CLU_ATL_D2_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         integer(IK)             , intent(in)                        :: dim
         type(lowerUnit_type)    , intent(in)                        :: class
-        real(RKC)               , intent(out)   , contiguous        :: affinity(:,:)
-        real(RKC)               , intent(in)    , contiguous        :: sample(:,:)
-        real(RKC)               , intent(in)    , contiguous        :: tform(:,:)
-        real(RKC)               , intent(in)    , contiguous        :: tlate(:)
+        real(RKG)               , intent(out)   , contiguous        :: affinity(:,:)
+        real(RKG)               , intent(in)    , contiguous        :: sample(:,:)
+        real(RKG)               , intent(in)    , contiguous        :: tform(:,:)
+        real(RKG)               , intent(in)    , contiguous        :: tlate(:)
     end subroutine
 #endif
 
@@ -1253,13 +1253,13 @@ module pm_sampleAffinity
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setAffinity_CLU_ATL_D2_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         integer(IK)             , intent(in)                        :: dim
         type(lowerUnit_type)    , intent(in)                        :: class
-        real(RKC)               , intent(out)   , contiguous        :: affinity(:,:)
-        real(RKC)               , intent(in)    , contiguous        :: sample(:,:)
-        real(RKC)               , intent(in)    , contiguous        :: tform(:,:)
-        real(RKC)               , intent(in)    , contiguous        :: tlate(:)
+        real(RKG)               , intent(out)   , contiguous        :: affinity(:,:)
+        real(RKG)               , intent(in)    , contiguous        :: sample(:,:)
+        real(RKG)               , intent(in)    , contiguous        :: tform(:,:)
+        real(RKG)               , intent(in)    , contiguous        :: tlate(:)
     end subroutine
 #endif
 
@@ -1268,13 +1268,13 @@ module pm_sampleAffinity
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setAffinity_CLU_ATL_D2_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         integer(IK)             , intent(in)                        :: dim
         type(lowerUnit_type)    , intent(in)                        :: class
-        real(RKC)               , intent(out)   , contiguous        :: affinity(:,:)
-        real(RKC)               , intent(in)    , contiguous        :: sample(:,:)
-        real(RKC)               , intent(in)    , contiguous        :: tform(:,:)
-        real(RKC)               , intent(in)    , contiguous        :: tlate(:)
+        real(RKG)               , intent(out)   , contiguous        :: affinity(:,:)
+        real(RKG)               , intent(in)    , contiguous        :: sample(:,:)
+        real(RKG)               , intent(in)    , contiguous        :: tform(:,:)
+        real(RKG)               , intent(in)    , contiguous        :: tlate(:)
     end subroutine
 #endif
 
@@ -1293,11 +1293,11 @@ module pm_sampleAffinity
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setAffinity_CGR_DTL_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         type(genrecmat_type)    , intent(in)                        :: class
-        real(RKC)               , intent(out)   , contiguous        :: affinity(:)
-        real(RKC)               , intent(in)    , contiguous        :: sample(:)
-        real(RKC)               , intent(in)    , contiguous        :: tform(:,:)
+        real(RKG)               , intent(out)   , contiguous        :: affinity(:)
+        real(RKG)               , intent(in)    , contiguous        :: sample(:)
+        real(RKG)               , intent(in)    , contiguous        :: tform(:,:)
     end subroutine
 #endif
 
@@ -1306,11 +1306,11 @@ module pm_sampleAffinity
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setAffinity_CGR_DTL_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         type(genrecmat_type)    , intent(in)                        :: class
-        real(RKC)               , intent(out)   , contiguous        :: affinity(:)
-        real(RKC)               , intent(in)    , contiguous        :: sample(:)
-        real(RKC)               , intent(in)    , contiguous        :: tform(:,:)
+        real(RKG)               , intent(out)   , contiguous        :: affinity(:)
+        real(RKG)               , intent(in)    , contiguous        :: sample(:)
+        real(RKG)               , intent(in)    , contiguous        :: tform(:,:)
     end subroutine
 #endif
 
@@ -1319,11 +1319,11 @@ module pm_sampleAffinity
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setAffinity_CGR_DTL_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         type(genrecmat_type)    , intent(in)                        :: class
-        real(RKC)               , intent(out)   , contiguous        :: affinity(:)
-        real(RKC)               , intent(in)    , contiguous        :: sample(:)
-        real(RKC)               , intent(in)    , contiguous        :: tform(:,:)
+        real(RKG)               , intent(out)   , contiguous        :: affinity(:)
+        real(RKG)               , intent(in)    , contiguous        :: sample(:)
+        real(RKG)               , intent(in)    , contiguous        :: tform(:,:)
     end subroutine
 #endif
 
@@ -1332,11 +1332,11 @@ module pm_sampleAffinity
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setAffinity_CGR_DTL_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         type(genrecmat_type)    , intent(in)                        :: class
-        real(RKC)               , intent(out)   , contiguous        :: affinity(:)
-        real(RKC)               , intent(in)    , contiguous        :: sample(:)
-        real(RKC)               , intent(in)    , contiguous        :: tform(:,:)
+        real(RKG)               , intent(out)   , contiguous        :: affinity(:)
+        real(RKG)               , intent(in)    , contiguous        :: sample(:)
+        real(RKG)               , intent(in)    , contiguous        :: tform(:,:)
     end subroutine
 #endif
 
@@ -1345,11 +1345,11 @@ module pm_sampleAffinity
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setAffinity_CGR_DTL_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         type(genrecmat_type)    , intent(in)                        :: class
-        real(RKC)               , intent(out)   , contiguous        :: affinity(:)
-        real(RKC)               , intent(in)    , contiguous        :: sample(:)
-        real(RKC)               , intent(in)    , contiguous        :: tform(:,:)
+        real(RKG)               , intent(out)   , contiguous        :: affinity(:)
+        real(RKG)               , intent(in)    , contiguous        :: sample(:)
+        real(RKG)               , intent(in)    , contiguous        :: tform(:,:)
     end subroutine
 #endif
 
@@ -1360,12 +1360,12 @@ module pm_sampleAffinity
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setAffinity_CGR_DTL_D2_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         integer(IK)             , intent(in)                        :: dim
         type(genrecmat_type)    , intent(in)                        :: class
-        real(RKC)               , intent(out)   , contiguous        :: affinity(:,:)
-        real(RKC)               , intent(in)    , contiguous        :: sample(:,:)
-        real(RKC)               , intent(in)    , contiguous        :: tform(:,:)
+        real(RKG)               , intent(out)   , contiguous        :: affinity(:,:)
+        real(RKG)               , intent(in)    , contiguous        :: sample(:,:)
+        real(RKG)               , intent(in)    , contiguous        :: tform(:,:)
     end subroutine
 #endif
 
@@ -1374,12 +1374,12 @@ module pm_sampleAffinity
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setAffinity_CGR_DTL_D2_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         integer(IK)             , intent(in)                        :: dim
         type(genrecmat_type)    , intent(in)                        :: class
-        real(RKC)               , intent(out)   , contiguous        :: affinity(:,:)
-        real(RKC)               , intent(in)    , contiguous        :: sample(:,:)
-        real(RKC)               , intent(in)    , contiguous        :: tform(:,:)
+        real(RKG)               , intent(out)   , contiguous        :: affinity(:,:)
+        real(RKG)               , intent(in)    , contiguous        :: sample(:,:)
+        real(RKG)               , intent(in)    , contiguous        :: tform(:,:)
     end subroutine
 #endif
 
@@ -1388,12 +1388,12 @@ module pm_sampleAffinity
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setAffinity_CGR_DTL_D2_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         integer(IK)             , intent(in)                        :: dim
         type(genrecmat_type)    , intent(in)                        :: class
-        real(RKC)               , intent(out)   , contiguous        :: affinity(:,:)
-        real(RKC)               , intent(in)    , contiguous        :: sample(:,:)
-        real(RKC)               , intent(in)    , contiguous        :: tform(:,:)
+        real(RKG)               , intent(out)   , contiguous        :: affinity(:,:)
+        real(RKG)               , intent(in)    , contiguous        :: sample(:,:)
+        real(RKG)               , intent(in)    , contiguous        :: tform(:,:)
     end subroutine
 #endif
 
@@ -1402,12 +1402,12 @@ module pm_sampleAffinity
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setAffinity_CGR_DTL_D2_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         integer(IK)             , intent(in)                        :: dim
         type(genrecmat_type)    , intent(in)                        :: class
-        real(RKC)               , intent(out)   , contiguous        :: affinity(:,:)
-        real(RKC)               , intent(in)    , contiguous        :: sample(:,:)
-        real(RKC)               , intent(in)    , contiguous        :: tform(:,:)
+        real(RKG)               , intent(out)   , contiguous        :: affinity(:,:)
+        real(RKG)               , intent(in)    , contiguous        :: sample(:,:)
+        real(RKG)               , intent(in)    , contiguous        :: tform(:,:)
     end subroutine
 #endif
 
@@ -1416,12 +1416,12 @@ module pm_sampleAffinity
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setAffinity_CGR_DTL_D2_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         integer(IK)             , intent(in)                        :: dim
         type(genrecmat_type)    , intent(in)                        :: class
-        real(RKC)               , intent(out)   , contiguous        :: affinity(:,:)
-        real(RKC)               , intent(in)    , contiguous        :: sample(:,:)
-        real(RKC)               , intent(in)    , contiguous        :: tform(:,:)
+        real(RKG)               , intent(out)   , contiguous        :: affinity(:,:)
+        real(RKG)               , intent(in)    , contiguous        :: sample(:,:)
+        real(RKG)               , intent(in)    , contiguous        :: tform(:,:)
     end subroutine
 #endif
 
@@ -1440,11 +1440,11 @@ module pm_sampleAffinity
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setAffinity_CUD_DTL_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         type(upperDiag_type)    , intent(in)                        :: class
-        real(RKC)               , intent(out)   , contiguous        :: affinity(:)
-        real(RKC)               , intent(in)    , contiguous        :: sample(:)
-        real(RKC)               , intent(in)    , contiguous        :: tform(:,:)
+        real(RKG)               , intent(out)   , contiguous        :: affinity(:)
+        real(RKG)               , intent(in)    , contiguous        :: sample(:)
+        real(RKG)               , intent(in)    , contiguous        :: tform(:,:)
     end subroutine
 #endif
 
@@ -1453,11 +1453,11 @@ module pm_sampleAffinity
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setAffinity_CUD_DTL_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         type(upperDiag_type)    , intent(in)                        :: class
-        real(RKC)               , intent(out)   , contiguous        :: affinity(:)
-        real(RKC)               , intent(in)    , contiguous        :: sample(:)
-        real(RKC)               , intent(in)    , contiguous        :: tform(:,:)
+        real(RKG)               , intent(out)   , contiguous        :: affinity(:)
+        real(RKG)               , intent(in)    , contiguous        :: sample(:)
+        real(RKG)               , intent(in)    , contiguous        :: tform(:,:)
     end subroutine
 #endif
 
@@ -1466,11 +1466,11 @@ module pm_sampleAffinity
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setAffinity_CUD_DTL_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         type(upperDiag_type)    , intent(in)                        :: class
-        real(RKC)               , intent(out)   , contiguous        :: affinity(:)
-        real(RKC)               , intent(in)    , contiguous        :: sample(:)
-        real(RKC)               , intent(in)    , contiguous        :: tform(:,:)
+        real(RKG)               , intent(out)   , contiguous        :: affinity(:)
+        real(RKG)               , intent(in)    , contiguous        :: sample(:)
+        real(RKG)               , intent(in)    , contiguous        :: tform(:,:)
     end subroutine
 #endif
 
@@ -1479,11 +1479,11 @@ module pm_sampleAffinity
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setAffinity_CUD_DTL_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         type(upperDiag_type)    , intent(in)                        :: class
-        real(RKC)               , intent(out)   , contiguous        :: affinity(:)
-        real(RKC)               , intent(in)    , contiguous        :: sample(:)
-        real(RKC)               , intent(in)    , contiguous        :: tform(:,:)
+        real(RKG)               , intent(out)   , contiguous        :: affinity(:)
+        real(RKG)               , intent(in)    , contiguous        :: sample(:)
+        real(RKG)               , intent(in)    , contiguous        :: tform(:,:)
     end subroutine
 #endif
 
@@ -1492,11 +1492,11 @@ module pm_sampleAffinity
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setAffinity_CUD_DTL_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         type(upperDiag_type)    , intent(in)                        :: class
-        real(RKC)               , intent(out)   , contiguous        :: affinity(:)
-        real(RKC)               , intent(in)    , contiguous        :: sample(:)
-        real(RKC)               , intent(in)    , contiguous        :: tform(:,:)
+        real(RKG)               , intent(out)   , contiguous        :: affinity(:)
+        real(RKG)               , intent(in)    , contiguous        :: sample(:)
+        real(RKG)               , intent(in)    , contiguous        :: tform(:,:)
     end subroutine
 #endif
 
@@ -1507,12 +1507,12 @@ module pm_sampleAffinity
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setAffinity_CUD_DTL_D2_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         integer(IK)             , intent(in)                        :: dim
         type(upperDiag_type)    , intent(in)                        :: class
-        real(RKC)               , intent(out)   , contiguous        :: affinity(:,:)
-        real(RKC)               , intent(in)    , contiguous        :: sample(:,:)
-        real(RKC)               , intent(in)    , contiguous        :: tform(:,:)
+        real(RKG)               , intent(out)   , contiguous        :: affinity(:,:)
+        real(RKG)               , intent(in)    , contiguous        :: sample(:,:)
+        real(RKG)               , intent(in)    , contiguous        :: tform(:,:)
     end subroutine
 #endif
 
@@ -1521,12 +1521,12 @@ module pm_sampleAffinity
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setAffinity_CUD_DTL_D2_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         integer(IK)             , intent(in)                        :: dim
         type(upperDiag_type)    , intent(in)                        :: class
-        real(RKC)               , intent(out)   , contiguous        :: affinity(:,:)
-        real(RKC)               , intent(in)    , contiguous        :: sample(:,:)
-        real(RKC)               , intent(in)    , contiguous        :: tform(:,:)
+        real(RKG)               , intent(out)   , contiguous        :: affinity(:,:)
+        real(RKG)               , intent(in)    , contiguous        :: sample(:,:)
+        real(RKG)               , intent(in)    , contiguous        :: tform(:,:)
     end subroutine
 #endif
 
@@ -1535,12 +1535,12 @@ module pm_sampleAffinity
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setAffinity_CUD_DTL_D2_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         integer(IK)             , intent(in)                        :: dim
         type(upperDiag_type)    , intent(in)                        :: class
-        real(RKC)               , intent(out)   , contiguous        :: affinity(:,:)
-        real(RKC)               , intent(in)    , contiguous        :: sample(:,:)
-        real(RKC)               , intent(in)    , contiguous        :: tform(:,:)
+        real(RKG)               , intent(out)   , contiguous        :: affinity(:,:)
+        real(RKG)               , intent(in)    , contiguous        :: sample(:,:)
+        real(RKG)               , intent(in)    , contiguous        :: tform(:,:)
     end subroutine
 #endif
 
@@ -1549,12 +1549,12 @@ module pm_sampleAffinity
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setAffinity_CUD_DTL_D2_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         integer(IK)             , intent(in)                        :: dim
         type(upperDiag_type)    , intent(in)                        :: class
-        real(RKC)               , intent(out)   , contiguous        :: affinity(:,:)
-        real(RKC)               , intent(in)    , contiguous        :: sample(:,:)
-        real(RKC)               , intent(in)    , contiguous        :: tform(:,:)
+        real(RKG)               , intent(out)   , contiguous        :: affinity(:,:)
+        real(RKG)               , intent(in)    , contiguous        :: sample(:,:)
+        real(RKG)               , intent(in)    , contiguous        :: tform(:,:)
     end subroutine
 #endif
 
@@ -1563,12 +1563,12 @@ module pm_sampleAffinity
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setAffinity_CUD_DTL_D2_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         integer(IK)             , intent(in)                        :: dim
         type(upperDiag_type)    , intent(in)                        :: class
-        real(RKC)               , intent(out)   , contiguous        :: affinity(:,:)
-        real(RKC)               , intent(in)    , contiguous        :: sample(:,:)
-        real(RKC)               , intent(in)    , contiguous        :: tform(:,:)
+        real(RKG)               , intent(out)   , contiguous        :: affinity(:,:)
+        real(RKG)               , intent(in)    , contiguous        :: sample(:,:)
+        real(RKG)               , intent(in)    , contiguous        :: tform(:,:)
     end subroutine
 #endif
 
@@ -1587,11 +1587,11 @@ module pm_sampleAffinity
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setAffinity_CLD_DTL_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         type(lowerDiag_type)    , intent(in)                        :: class
-        real(RKC)               , intent(out)   , contiguous        :: affinity(:)
-        real(RKC)               , intent(in)    , contiguous        :: sample(:)
-        real(RKC)               , intent(in)    , contiguous        :: tform(:,:)
+        real(RKG)               , intent(out)   , contiguous        :: affinity(:)
+        real(RKG)               , intent(in)    , contiguous        :: sample(:)
+        real(RKG)               , intent(in)    , contiguous        :: tform(:,:)
     end subroutine
 #endif
 
@@ -1600,11 +1600,11 @@ module pm_sampleAffinity
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setAffinity_CLD_DTL_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         type(lowerDiag_type)    , intent(in)                        :: class
-        real(RKC)               , intent(out)   , contiguous        :: affinity(:)
-        real(RKC)               , intent(in)    , contiguous        :: sample(:)
-        real(RKC)               , intent(in)    , contiguous        :: tform(:,:)
+        real(RKG)               , intent(out)   , contiguous        :: affinity(:)
+        real(RKG)               , intent(in)    , contiguous        :: sample(:)
+        real(RKG)               , intent(in)    , contiguous        :: tform(:,:)
     end subroutine
 #endif
 
@@ -1613,11 +1613,11 @@ module pm_sampleAffinity
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setAffinity_CLD_DTL_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         type(lowerDiag_type)    , intent(in)                        :: class
-        real(RKC)               , intent(out)   , contiguous        :: affinity(:)
-        real(RKC)               , intent(in)    , contiguous        :: sample(:)
-        real(RKC)               , intent(in)    , contiguous        :: tform(:,:)
+        real(RKG)               , intent(out)   , contiguous        :: affinity(:)
+        real(RKG)               , intent(in)    , contiguous        :: sample(:)
+        real(RKG)               , intent(in)    , contiguous        :: tform(:,:)
     end subroutine
 #endif
 
@@ -1626,11 +1626,11 @@ module pm_sampleAffinity
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setAffinity_CLD_DTL_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         type(lowerDiag_type)    , intent(in)                        :: class
-        real(RKC)               , intent(out)   , contiguous        :: affinity(:)
-        real(RKC)               , intent(in)    , contiguous        :: sample(:)
-        real(RKC)               , intent(in)    , contiguous        :: tform(:,:)
+        real(RKG)               , intent(out)   , contiguous        :: affinity(:)
+        real(RKG)               , intent(in)    , contiguous        :: sample(:)
+        real(RKG)               , intent(in)    , contiguous        :: tform(:,:)
     end subroutine
 #endif
 
@@ -1639,11 +1639,11 @@ module pm_sampleAffinity
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setAffinity_CLD_DTL_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         type(lowerDiag_type)    , intent(in)                        :: class
-        real(RKC)               , intent(out)   , contiguous        :: affinity(:)
-        real(RKC)               , intent(in)    , contiguous        :: sample(:)
-        real(RKC)               , intent(in)    , contiguous        :: tform(:,:)
+        real(RKG)               , intent(out)   , contiguous        :: affinity(:)
+        real(RKG)               , intent(in)    , contiguous        :: sample(:)
+        real(RKG)               , intent(in)    , contiguous        :: tform(:,:)
     end subroutine
 #endif
 
@@ -1654,12 +1654,12 @@ module pm_sampleAffinity
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setAffinity_CLD_DTL_D2_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         integer(IK)             , intent(in)                        :: dim
         type(lowerDiag_type)    , intent(in)                        :: class
-        real(RKC)               , intent(out)   , contiguous        :: affinity(:,:)
-        real(RKC)               , intent(in)    , contiguous        :: sample(:,:)
-        real(RKC)               , intent(in)    , contiguous        :: tform(:,:)
+        real(RKG)               , intent(out)   , contiguous        :: affinity(:,:)
+        real(RKG)               , intent(in)    , contiguous        :: sample(:,:)
+        real(RKG)               , intent(in)    , contiguous        :: tform(:,:)
     end subroutine
 #endif
 
@@ -1668,12 +1668,12 @@ module pm_sampleAffinity
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setAffinity_CLD_DTL_D2_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         integer(IK)             , intent(in)                        :: dim
         type(lowerDiag_type)    , intent(in)                        :: class
-        real(RKC)               , intent(out)   , contiguous        :: affinity(:,:)
-        real(RKC)               , intent(in)    , contiguous        :: sample(:,:)
-        real(RKC)               , intent(in)    , contiguous        :: tform(:,:)
+        real(RKG)               , intent(out)   , contiguous        :: affinity(:,:)
+        real(RKG)               , intent(in)    , contiguous        :: sample(:,:)
+        real(RKG)               , intent(in)    , contiguous        :: tform(:,:)
     end subroutine
 #endif
 
@@ -1682,12 +1682,12 @@ module pm_sampleAffinity
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setAffinity_CLD_DTL_D2_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         integer(IK)             , intent(in)                        :: dim
         type(lowerDiag_type)    , intent(in)                        :: class
-        real(RKC)               , intent(out)   , contiguous        :: affinity(:,:)
-        real(RKC)               , intent(in)    , contiguous        :: sample(:,:)
-        real(RKC)               , intent(in)    , contiguous        :: tform(:,:)
+        real(RKG)               , intent(out)   , contiguous        :: affinity(:,:)
+        real(RKG)               , intent(in)    , contiguous        :: sample(:,:)
+        real(RKG)               , intent(in)    , contiguous        :: tform(:,:)
     end subroutine
 #endif
 
@@ -1696,12 +1696,12 @@ module pm_sampleAffinity
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setAffinity_CLD_DTL_D2_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         integer(IK)             , intent(in)                        :: dim
         type(lowerDiag_type)    , intent(in)                        :: class
-        real(RKC)               , intent(out)   , contiguous        :: affinity(:,:)
-        real(RKC)               , intent(in)    , contiguous        :: sample(:,:)
-        real(RKC)               , intent(in)    , contiguous        :: tform(:,:)
+        real(RKG)               , intent(out)   , contiguous        :: affinity(:,:)
+        real(RKG)               , intent(in)    , contiguous        :: sample(:,:)
+        real(RKG)               , intent(in)    , contiguous        :: tform(:,:)
     end subroutine
 #endif
 
@@ -1710,12 +1710,12 @@ module pm_sampleAffinity
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setAffinity_CLD_DTL_D2_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         integer(IK)             , intent(in)                        :: dim
         type(lowerDiag_type)    , intent(in)                        :: class
-        real(RKC)               , intent(out)   , contiguous        :: affinity(:,:)
-        real(RKC)               , intent(in)    , contiguous        :: sample(:,:)
-        real(RKC)               , intent(in)    , contiguous        :: tform(:,:)
+        real(RKG)               , intent(out)   , contiguous        :: affinity(:,:)
+        real(RKG)               , intent(in)    , contiguous        :: sample(:,:)
+        real(RKG)               , intent(in)    , contiguous        :: tform(:,:)
     end subroutine
 #endif
 
@@ -1734,11 +1734,11 @@ module pm_sampleAffinity
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setAffinity_CUU_DTL_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         type(upperUnit_type)    , intent(in)                        :: class
-        real(RKC)               , intent(out)   , contiguous        :: affinity(:)
-        real(RKC)               , intent(in)    , contiguous        :: sample(:)
-        real(RKC)               , intent(in)    , contiguous        :: tform(:,:)
+        real(RKG)               , intent(out)   , contiguous        :: affinity(:)
+        real(RKG)               , intent(in)    , contiguous        :: sample(:)
+        real(RKG)               , intent(in)    , contiguous        :: tform(:,:)
     end subroutine
 #endif
 
@@ -1747,11 +1747,11 @@ module pm_sampleAffinity
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setAffinity_CUU_DTL_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         type(upperUnit_type)    , intent(in)                        :: class
-        real(RKC)               , intent(out)   , contiguous        :: affinity(:)
-        real(RKC)               , intent(in)    , contiguous        :: sample(:)
-        real(RKC)               , intent(in)    , contiguous        :: tform(:,:)
+        real(RKG)               , intent(out)   , contiguous        :: affinity(:)
+        real(RKG)               , intent(in)    , contiguous        :: sample(:)
+        real(RKG)               , intent(in)    , contiguous        :: tform(:,:)
     end subroutine
 #endif
 
@@ -1760,11 +1760,11 @@ module pm_sampleAffinity
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setAffinity_CUU_DTL_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         type(upperUnit_type)    , intent(in)                        :: class
-        real(RKC)               , intent(out)   , contiguous        :: affinity(:)
-        real(RKC)               , intent(in)    , contiguous        :: sample(:)
-        real(RKC)               , intent(in)    , contiguous        :: tform(:,:)
+        real(RKG)               , intent(out)   , contiguous        :: affinity(:)
+        real(RKG)               , intent(in)    , contiguous        :: sample(:)
+        real(RKG)               , intent(in)    , contiguous        :: tform(:,:)
     end subroutine
 #endif
 
@@ -1773,11 +1773,11 @@ module pm_sampleAffinity
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setAffinity_CUU_DTL_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         type(upperUnit_type)    , intent(in)                        :: class
-        real(RKC)               , intent(out)   , contiguous        :: affinity(:)
-        real(RKC)               , intent(in)    , contiguous        :: sample(:)
-        real(RKC)               , intent(in)    , contiguous        :: tform(:,:)
+        real(RKG)               , intent(out)   , contiguous        :: affinity(:)
+        real(RKG)               , intent(in)    , contiguous        :: sample(:)
+        real(RKG)               , intent(in)    , contiguous        :: tform(:,:)
     end subroutine
 #endif
 
@@ -1786,11 +1786,11 @@ module pm_sampleAffinity
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setAffinity_CUU_DTL_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         type(upperUnit_type)    , intent(in)                        :: class
-        real(RKC)               , intent(out)   , contiguous        :: affinity(:)
-        real(RKC)               , intent(in)    , contiguous        :: sample(:)
-        real(RKC)               , intent(in)    , contiguous        :: tform(:,:)
+        real(RKG)               , intent(out)   , contiguous        :: affinity(:)
+        real(RKG)               , intent(in)    , contiguous        :: sample(:)
+        real(RKG)               , intent(in)    , contiguous        :: tform(:,:)
     end subroutine
 #endif
 
@@ -1801,12 +1801,12 @@ module pm_sampleAffinity
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setAffinity_CUU_DTL_D2_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         integer(IK)             , intent(in)                        :: dim
         type(upperUnit_type)    , intent(in)                        :: class
-        real(RKC)               , intent(out)   , contiguous        :: affinity(:,:)
-        real(RKC)               , intent(in)    , contiguous        :: sample(:,:)
-        real(RKC)               , intent(in)    , contiguous        :: tform(:,:)
+        real(RKG)               , intent(out)   , contiguous        :: affinity(:,:)
+        real(RKG)               , intent(in)    , contiguous        :: sample(:,:)
+        real(RKG)               , intent(in)    , contiguous        :: tform(:,:)
     end subroutine
 #endif
 
@@ -1815,12 +1815,12 @@ module pm_sampleAffinity
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setAffinity_CUU_DTL_D2_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         integer(IK)             , intent(in)                        :: dim
         type(upperUnit_type)    , intent(in)                        :: class
-        real(RKC)               , intent(out)   , contiguous        :: affinity(:,:)
-        real(RKC)               , intent(in)    , contiguous        :: sample(:,:)
-        real(RKC)               , intent(in)    , contiguous        :: tform(:,:)
+        real(RKG)               , intent(out)   , contiguous        :: affinity(:,:)
+        real(RKG)               , intent(in)    , contiguous        :: sample(:,:)
+        real(RKG)               , intent(in)    , contiguous        :: tform(:,:)
     end subroutine
 #endif
 
@@ -1829,12 +1829,12 @@ module pm_sampleAffinity
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setAffinity_CUU_DTL_D2_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         integer(IK)             , intent(in)                        :: dim
         type(upperUnit_type)    , intent(in)                        :: class
-        real(RKC)               , intent(out)   , contiguous        :: affinity(:,:)
-        real(RKC)               , intent(in)    , contiguous        :: sample(:,:)
-        real(RKC)               , intent(in)    , contiguous        :: tform(:,:)
+        real(RKG)               , intent(out)   , contiguous        :: affinity(:,:)
+        real(RKG)               , intent(in)    , contiguous        :: sample(:,:)
+        real(RKG)               , intent(in)    , contiguous        :: tform(:,:)
     end subroutine
 #endif
 
@@ -1843,12 +1843,12 @@ module pm_sampleAffinity
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setAffinity_CUU_DTL_D2_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         integer(IK)             , intent(in)                        :: dim
         type(upperUnit_type)    , intent(in)                        :: class
-        real(RKC)               , intent(out)   , contiguous        :: affinity(:,:)
-        real(RKC)               , intent(in)    , contiguous        :: sample(:,:)
-        real(RKC)               , intent(in)    , contiguous        :: tform(:,:)
+        real(RKG)               , intent(out)   , contiguous        :: affinity(:,:)
+        real(RKG)               , intent(in)    , contiguous        :: sample(:,:)
+        real(RKG)               , intent(in)    , contiguous        :: tform(:,:)
     end subroutine
 #endif
 
@@ -1857,12 +1857,12 @@ module pm_sampleAffinity
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setAffinity_CUU_DTL_D2_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         integer(IK)             , intent(in)                        :: dim
         type(upperUnit_type)    , intent(in)                        :: class
-        real(RKC)               , intent(out)   , contiguous        :: affinity(:,:)
-        real(RKC)               , intent(in)    , contiguous        :: sample(:,:)
-        real(RKC)               , intent(in)    , contiguous        :: tform(:,:)
+        real(RKG)               , intent(out)   , contiguous        :: affinity(:,:)
+        real(RKG)               , intent(in)    , contiguous        :: sample(:,:)
+        real(RKG)               , intent(in)    , contiguous        :: tform(:,:)
     end subroutine
 #endif
 
@@ -1881,11 +1881,11 @@ module pm_sampleAffinity
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setAffinity_CLU_DTL_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         type(lowerUnit_type)    , intent(in)                        :: class
-        real(RKC)               , intent(out)   , contiguous        :: affinity(:)
-        real(RKC)               , intent(in)    , contiguous        :: sample(:)
-        real(RKC)               , intent(in)    , contiguous        :: tform(:,:)
+        real(RKG)               , intent(out)   , contiguous        :: affinity(:)
+        real(RKG)               , intent(in)    , contiguous        :: sample(:)
+        real(RKG)               , intent(in)    , contiguous        :: tform(:,:)
     end subroutine
 #endif
 
@@ -1894,11 +1894,11 @@ module pm_sampleAffinity
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setAffinity_CLU_DTL_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         type(lowerUnit_type)    , intent(in)                        :: class
-        real(RKC)               , intent(out)   , contiguous        :: affinity(:)
-        real(RKC)               , intent(in)    , contiguous        :: sample(:)
-        real(RKC)               , intent(in)    , contiguous        :: tform(:,:)
+        real(RKG)               , intent(out)   , contiguous        :: affinity(:)
+        real(RKG)               , intent(in)    , contiguous        :: sample(:)
+        real(RKG)               , intent(in)    , contiguous        :: tform(:,:)
     end subroutine
 #endif
 
@@ -1907,11 +1907,11 @@ module pm_sampleAffinity
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setAffinity_CLU_DTL_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         type(lowerUnit_type)    , intent(in)                        :: class
-        real(RKC)               , intent(out)   , contiguous        :: affinity(:)
-        real(RKC)               , intent(in)    , contiguous        :: sample(:)
-        real(RKC)               , intent(in)    , contiguous        :: tform(:,:)
+        real(RKG)               , intent(out)   , contiguous        :: affinity(:)
+        real(RKG)               , intent(in)    , contiguous        :: sample(:)
+        real(RKG)               , intent(in)    , contiguous        :: tform(:,:)
     end subroutine
 #endif
 
@@ -1920,11 +1920,11 @@ module pm_sampleAffinity
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setAffinity_CLU_DTL_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         type(lowerUnit_type)    , intent(in)                        :: class
-        real(RKC)               , intent(out)   , contiguous        :: affinity(:)
-        real(RKC)               , intent(in)    , contiguous        :: sample(:)
-        real(RKC)               , intent(in)    , contiguous        :: tform(:,:)
+        real(RKG)               , intent(out)   , contiguous        :: affinity(:)
+        real(RKG)               , intent(in)    , contiguous        :: sample(:)
+        real(RKG)               , intent(in)    , contiguous        :: tform(:,:)
     end subroutine
 #endif
 
@@ -1933,11 +1933,11 @@ module pm_sampleAffinity
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setAffinity_CLU_DTL_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         type(lowerUnit_type)    , intent(in)                        :: class
-        real(RKC)               , intent(out)   , contiguous        :: affinity(:)
-        real(RKC)               , intent(in)    , contiguous        :: sample(:)
-        real(RKC)               , intent(in)    , contiguous        :: tform(:,:)
+        real(RKG)               , intent(out)   , contiguous        :: affinity(:)
+        real(RKG)               , intent(in)    , contiguous        :: sample(:)
+        real(RKG)               , intent(in)    , contiguous        :: tform(:,:)
     end subroutine
 #endif
 
@@ -1948,12 +1948,12 @@ module pm_sampleAffinity
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setAffinity_CLU_DTL_D2_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         integer(IK)             , intent(in)                        :: dim
         type(lowerUnit_type)    , intent(in)                        :: class
-        real(RKC)               , intent(out)   , contiguous        :: affinity(:,:)
-        real(RKC)               , intent(in)    , contiguous        :: sample(:,:)
-        real(RKC)               , intent(in)    , contiguous        :: tform(:,:)
+        real(RKG)               , intent(out)   , contiguous        :: affinity(:,:)
+        real(RKG)               , intent(in)    , contiguous        :: sample(:,:)
+        real(RKG)               , intent(in)    , contiguous        :: tform(:,:)
     end subroutine
 #endif
 
@@ -1962,12 +1962,12 @@ module pm_sampleAffinity
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setAffinity_CLU_DTL_D2_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         integer(IK)             , intent(in)                        :: dim
         type(lowerUnit_type)    , intent(in)                        :: class
-        real(RKC)               , intent(out)   , contiguous        :: affinity(:,:)
-        real(RKC)               , intent(in)    , contiguous        :: sample(:,:)
-        real(RKC)               , intent(in)    , contiguous        :: tform(:,:)
+        real(RKG)               , intent(out)   , contiguous        :: affinity(:,:)
+        real(RKG)               , intent(in)    , contiguous        :: sample(:,:)
+        real(RKG)               , intent(in)    , contiguous        :: tform(:,:)
     end subroutine
 #endif
 
@@ -1976,12 +1976,12 @@ module pm_sampleAffinity
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setAffinity_CLU_DTL_D2_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         integer(IK)             , intent(in)                        :: dim
         type(lowerUnit_type)    , intent(in)                        :: class
-        real(RKC)               , intent(out)   , contiguous        :: affinity(:,:)
-        real(RKC)               , intent(in)    , contiguous        :: sample(:,:)
-        real(RKC)               , intent(in)    , contiguous        :: tform(:,:)
+        real(RKG)               , intent(out)   , contiguous        :: affinity(:,:)
+        real(RKG)               , intent(in)    , contiguous        :: sample(:,:)
+        real(RKG)               , intent(in)    , contiguous        :: tform(:,:)
     end subroutine
 #endif
 
@@ -1990,12 +1990,12 @@ module pm_sampleAffinity
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setAffinity_CLU_DTL_D2_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         integer(IK)             , intent(in)                        :: dim
         type(lowerUnit_type)    , intent(in)                        :: class
-        real(RKC)               , intent(out)   , contiguous        :: affinity(:,:)
-        real(RKC)               , intent(in)    , contiguous        :: sample(:,:)
-        real(RKC)               , intent(in)    , contiguous        :: tform(:,:)
+        real(RKG)               , intent(out)   , contiguous        :: affinity(:,:)
+        real(RKG)               , intent(in)    , contiguous        :: sample(:,:)
+        real(RKG)               , intent(in)    , contiguous        :: tform(:,:)
     end subroutine
 #endif
 
@@ -2004,12 +2004,12 @@ module pm_sampleAffinity
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setAffinity_CLU_DTL_D2_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         integer(IK)             , intent(in)                        :: dim
         type(lowerUnit_type)    , intent(in)                        :: class
-        real(RKC)               , intent(out)   , contiguous        :: affinity(:,:)
-        real(RKC)               , intent(in)    , contiguous        :: sample(:,:)
-        real(RKC)               , intent(in)    , contiguous        :: tform(:,:)
+        real(RKG)               , intent(out)   , contiguous        :: affinity(:,:)
+        real(RKG)               , intent(in)    , contiguous        :: sample(:,:)
+        real(RKG)               , intent(in)    , contiguous        :: tform(:,:)
     end subroutine
 #endif
 

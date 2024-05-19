@@ -1,7 +1,7 @@
 program example
 
     use pm_kind, only: SK, IK, LK
-    use pm_kind, only: RKC => RKH ! all processor kinds are supported.
+    use pm_kind, only: RKG => RKH ! all processor kinds are supported.
     use pm_io, only: display_type
     use pm_optimization, only: setBracketMin, isBracketMin
     use pm_err, only: setAsserted
@@ -10,7 +10,7 @@ program example
     implicit none
 
     integer(IK) :: niter, maxniter = 1000
-    real(RKC) :: xlow, xmin, xupp, flow, fmin, fupp
+    real(RKG) :: xlow, xmin, xupp, flow, fmin, fupp
     type(display_type) :: disp
     disp = display_type(file = "main.out.F90")
 
@@ -81,8 +81,8 @@ program example
 contains
 
     function getSqPos(x) result(func)
-        real(RKC), intent(in) :: x
-        real(RKC) :: func
+        real(RKG), intent(in) :: x
+        real(RKG) :: func
         func = (x - 1)**2
     end function
 

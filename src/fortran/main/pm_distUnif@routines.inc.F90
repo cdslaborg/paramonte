@@ -58,11 +58,11 @@
 
         ! Set default bounds.
 #if     IK_ENABLED && DD_ENABLED
-        integer(IKC), parameter :: lower = 0_IKC, upper = 1_IKC
+        integer(IKG), parameter :: lower = 0_IKG, upper = 1_IKG
 #elif   CK_ENABLED && DD_ENABLED
-        complex(CKC), parameter :: lower = 0._CKC, upper = 1._CKC
+        complex(CKG), parameter :: lower = 0._CKG, upper = 1._CKG
 #elif   RK_ENABLED && DD_ENABLED
-        real(RKC), parameter :: lower = 0._RKC, upper = 1._RKC
+        real(RKG), parameter :: lower = 0._RKG, upper = 1._RKG
 #elif   !LU_ENABLED
 #error  "Unrecognized interface."
 #endif
@@ -70,15 +70,15 @@
 #if     D1_ENABLED
         integer(IK) :: i
 #if     IK_ENABLED && LU_ENABLED
-        real(RKC) :: inverseUpperMinusLowerPlusOne
-        inverseUpperMinusLowerPlusOne = 1._RKC / real(upper - lower + 1_IKC, RKC)
+        real(RKG) :: inverseUpperMinusLowerPlusOne
+        inverseUpperMinusLowerPlusOne = 1._RKG / real(upper - lower + 1_IKG, RKG)
 #elif   CK_ENABLED && LU_ENABLED
-        complex(CKC) :: inverseUpperMinusLowerPlusOne
-        inverseUpperMinusLowerPlusOne%re = 1._CKC / (upper%re - lower%re)
-        inverseUpperMinusLowerPlusOne%im = 1._CKC / (upper%im - lower%im)
+        complex(CKG) :: inverseUpperMinusLowerPlusOne
+        inverseUpperMinusLowerPlusOne%re = 1._CKG / (upper%re - lower%re)
+        inverseUpperMinusLowerPlusOne%im = 1._CKG / (upper%im - lower%im)
 #elif   RK_ENABLED && LU_ENABLED
-        real(RKC) :: inverseUpperMinusLowerPlusOne
-        inverseUpperMinusLowerPlusOne = 1._RKC / (upper - lower)
+        real(RKG) :: inverseUpperMinusLowerPlusOne
+        inverseUpperMinusLowerPlusOne = 1._RKG / (upper - lower)
 #elif   !DD_ENABLED
 #error  "Unrecognized interface."
 #endif
@@ -100,24 +100,24 @@
             ! integer.
 #if         IK_ENABLED
             if (GET_ELEMENT(X) < lower) then
-                GET_ELEMENT(cdf) = 0._RKC
+                GET_ELEMENT(cdf) = 0._RKG
             elseif (GET_ELEMENT(X) < upper) then
 #if             DD_ENABLED
-                GET_ELEMENT(cdf) = real(GET_ELEMENT(X) + 1_IKC, RKC) * 0.5_RKC
+                GET_ELEMENT(cdf) = real(GET_ELEMENT(X) + 1_IKG, RKG) * 0.5_RKG
 #elif           LU_ENABLED && D0_ENABLED
-                GET_ELEMENT(cdf) = real(GET_ELEMENT(X) + 1_IKC - lower, RKC) / real(upper - lower + 1_IKC, RKC)
+                GET_ELEMENT(cdf) = real(GET_ELEMENT(X) + 1_IKG - lower, RKG) / real(upper - lower + 1_IKG, RKG)
 #elif           LU_ENABLED && D1_ENABLED
-                GET_ELEMENT(cdf) = real(GET_ELEMENT(X) + 1_IKC - lower, RKC) * inverseUpperMinusLowerPlusOne
+                GET_ELEMENT(cdf) = real(GET_ELEMENT(X) + 1_IKG - lower, RKG) * inverseUpperMinusLowerPlusOne
 #else
 #error          "Unrecognized interface."
 #endif
             else
-                GET_ELEMENT(cdf) = 1._RKC
+                GET_ELEMENT(cdf) = 1._RKG
             end if
             ! real.
 #elif       RK_ENABLED
             if (GET_ELEMENT(X) < lower) then
-                GET_ELEMENT(cdf) = 0._RKC
+                GET_ELEMENT(cdf) = 0._RKG
             elseif (GET_ELEMENT(X) < upper) then
 #if             DD_ENABLED
                 GET_ELEMENT(cdf) = GET_ELEMENT(X)
@@ -129,29 +129,29 @@
 #error          "Unrecognized interface."
 #endif
             else
-                GET_ELEMENT(cdf) = 1._RKC
+                GET_ELEMENT(cdf) = 1._RKG
             end if
             ! complex.
 #elif       CK_ENABLED
             ! real part.
-            if (GET_ELEMENT(X)%re < real(lower,CKC)) then
-                GET_ELEMENT(cdf)%re = 0._CKC ! fpp
-            elseif (GET_ELEMENT(X)%re < real(upper,CKC)) then
+            if (GET_ELEMENT(X)%re < real(lower,CKG)) then
+                GET_ELEMENT(cdf)%re = 0._CKG ! fpp
+            elseif (GET_ELEMENT(X)%re < real(upper,CKG)) then
 #if             DD_ENABLED
                 GET_ELEMENT(cdf)%re = GET_ELEMENT(X)%re
 #elif           LU_ENABLED && D0_ENABLED
-                GET_ELEMENT(cdf)%re = (GET_ELEMENT(X)%re - real(lower,CKC)) / (real(upper,CKC) - real(lower,CKC))
+                GET_ELEMENT(cdf)%re = (GET_ELEMENT(X)%re - real(lower,CKG)) / (real(upper,CKG) - real(lower,CKG))
 #elif           LU_ENABLED && D1_ENABLED
-                GET_ELEMENT(cdf)%re = (GET_ELEMENT(X)%re - real(lower,CKC)) * inverseUpperMinusLowerPlusOne%re
+                GET_ELEMENT(cdf)%re = (GET_ELEMENT(X)%re - real(lower,CKG)) * inverseUpperMinusLowerPlusOne%re
 #else
 #error          "Unrecognized interface."
 #endif
             else
-                GET_ELEMENT(cdf)%re = 1._CKC ! fpp
+                GET_ELEMENT(cdf)%re = 1._CKG ! fpp
             end if
             ! imaginary part.
             if (GET_ELEMENT(X)%im < aimag(lower)) then
-                GET_ELEMENT(cdf)%im = 0._CKC ! fpp
+                GET_ELEMENT(cdf)%im = 0._CKG ! fpp
             elseif (GET_ELEMENT(X)%im < aimag(upper)) then
 #if             DD_ENABLED
                 GET_ELEMENT(cdf)%im = GET_ELEMENT(X)%im
@@ -163,7 +163,7 @@
 #error          "Unrecognized interface."
 #endif
             else
-                GET_ELEMENT(cdf)%im = 1._CKC ! fpp
+                GET_ELEMENT(cdf)%im = 1._CKG ! fpp
             end if
 #else
 #error  "Unrecognized interface."
@@ -222,15 +222,15 @@
 #elif   xoshiro256ssg_typer_ENABLED || xoshiro256ssw_typer_ENABLED
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        use pm_kind, only: IKC => IK64, RKC => RK64
-        integer(IKC) :: ijump
+        use pm_kind, only: IKG => IK64, RKG => RK64
+        integer(IKG) :: ijump
         type(splitmix64_type) :: rngsm
         rngsm = splitmix64_type(seed = seed)
         call setUnifRand(rngsm, rng%state)
         call setStateJump(rng)
         if (present(imageID)) then
             CHECK_ASSERTION(__LINE__, 0_IK < imageID, SK_"@xoshiro256ssw_typer(): The condition `0 < imageID` must hold. imageID = "//getStr(imageID))
-            do ijump = 2_IKC, imageID
+            do ijump = 2_IKG, imageID
                 call setStateJump(rng)
             end do
         end if
@@ -284,20 +284,20 @@
 
         real :: dummy
         call random_number(dummy)
-        rand = logical(dummy < .5, LKC)
+        rand = logical(dummy < .5, LKG)
 
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 #elif   getUnifRand_ENABLED && D0_ENABLED && LK_ENABLED && (SM64_ENABLED || X256SSW_ENABLED) && DD_ENABLED
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        rand = logical(int(0, kind(rng%stream)) < rng%stream, LKC)
+        rand = logical(int(0, kind(rng%stream)) < rng%stream, LKG)
         call setStateNext(rng)
 
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 #elif   getUnifRand_ENABLED && D0_ENABLED && LK_ENABLED && X256SSG_ENABLED && DD_ENABLED
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        rand = logical(btest(rng%stream, rng%pos), LKC)
+        rand = logical(btest(rng%stream, rng%pos), LKG)
         rng%pos = rng%pos + 1_IK
         if (rng%pos == xoshiro256ssStreamBitSize) call setStateNext(rng)
 
@@ -367,30 +367,30 @@
         ! RKT: target real kind with at least `digits(rand)` bits.
         ! This is to ensure full coverage of the range of the specific-kind integer.
         integer, parameter :: RKT = selected_real_kind(floor(digits(rand) * log10(2._RKB)))
-        integer, parameter :: RKC = merge(RKB, RKT, -6 < RKT .and. RKT < 0)
-        real(RKC) :: temp
+        integer, parameter :: RKG = merge(RKB, RKT, -6 < RKT .and. RKT < 0)
+        real(RKG) :: temp
 #if     DD_ENABLED
         !real(RKD) :: temp
         !call random_number(temp)
         ! \bug GNU Fortran compiler 10.3
-        ! The following comment is a bug with `IKC = integer_kinds(5)`.
-        !rand = floor(.5_RKD + temp, kind = IKC) ! rand = nint(temp, kind = IKC)
-        integer(IKC), parameter :: lb = -huge(0_IKC), ub = +huge(0_IKC)
+        ! The following comment is a bug with `IKG = integer_kinds(5)`.
+        !rand = floor(.5_RKD + temp, kind = IKG) ! rand = nint(temp, kind = IKG)
+        integer(IKG), parameter :: lb = -huge(0_IKG), ub = +huge(0_IKG)
 #elif   LU_ENABLED
         CHECK_ASSERTION(__LINE__, lb <= ub, SK_"@setUnifRand(): The condition `lb <= ub` must hold. lb, ub = "//getStr([lb, ub]))
 #else
 #error  "Unrecognized interface."
 #endif
-        if (lb + 1_IKC < ub) then
+        if (lb + 1_IKG < ub) then
             call random_number(temp)
             ! early conversion to `real` avoids possible overflow with `huge` limits.
-            ! rand = lb + int(temp * real(ub - lb + 1_IKC, kind(temp)), kind = IKC)
-            rand = floor((1._RKC - temp) * real(lb, RKC) + temp * real(ub, RKC) + temp, kind = IKC)
+            ! rand = lb + int(temp * real(ub - lb + 1_IKG, kind(temp)), kind = IKG)
+            rand = floor((1._RKG - temp) * real(lb, RKG) + temp * real(ub, RKG) + temp, kind = IKG)
         elseif (lb == ub) then
             rand = lb
         else
             call random_number(temp)
-            if (temp < 0.5_RKC) then
+            if (temp < 0.5_RKG) then
                 rand = lb
             else
                 rand = ub
@@ -406,17 +406,17 @@
 #if     DD_ENABLED
         integer(IK) , parameter :: randBitSize = bit_size(rand)
         integer(IK) , parameter :: streamBitExcess = streamBitSize - randBitSize
-        integer(IK) , parameter :: randStreamBitSizeRatio = int(real(randBitSize) / real(streamBitSize), IKC) + 1_IK
+        integer(IK) , parameter :: randStreamBitSizeRatio = int(real(randBitSize) / real(streamBitSize), IKG) + 1_IK
         integer(IKS)            :: buffer(randStreamBitSizeRatio)
         integer(IK)             :: ibuf
 #if     X256SSG_ENABLED
         ibuf = rng%pos + randBitSize
         if (ibuf < streamBitSize) then
-            rand = int(ibits(rng%stream, rng%pos, randBitSize), IKC)
+            rand = int(ibits(rng%stream, rng%pos, randBitSize), IKG)
             rng%pos = ibuf
             return
         elseif (ibuf == streamBitSize) then
-            rand = int(ibits(rng%stream, rng%pos, randBitSize), IKC)
+            rand = int(ibits(rng%stream, rng%pos, randBitSize), IKG)
             call setStateNext(rng)
             return
         end if
@@ -428,12 +428,12 @@
         if (0_IK < streamBitExcess) then
             ! Both shifting and transfer below are possible solutions.
             ! The `abs` below, though redundant, bypasses the standard constraint.
-            !rand = int(shiftr(rng%stream, abs(streamBitExcess)), IKC)
+            !rand = int(shiftr(rng%stream, abs(streamBitExcess)), IKG)
             rand = transfer(source = rng%stream, mold = rand)
             call setStateNext(rng)
             return
         elseif (0_IK == streamBitExcess) then
-            rand = int(rng%stream, IKC)
+            rand = int(rng%stream, IKG)
             call setStateNext(rng)
             return
         end if
@@ -444,11 +444,11 @@
         end do
         rand = transfer(source = buffer, mold = rand)
 #elif   LU_ENABLED
-        integer(IKC), parameter :: HUGE_IKC = huge(0_IKC)
-        integer(IKC) :: scale, lbb, ubb, nzeros, nsignif, imask, temp, diff
+        integer(IKG), parameter :: HUGE_IKG = huge(0_IKG)
+        integer(IKG) :: scale, lbb, ubb, nzeros, nsignif, imask, temp, diff
         CHECK_ASSERTION(__LINE__, lb <= ub, SK_"@setUnifRand(): The condition `lb <= ub` must hold. lb, ub = "//getStr([lb, ub]))
         if (lb /= ub) then
-            if (lb + 1_IKC == ub) then ! impossible range overflow.
+            if (lb + 1_IKG == ub) then ! impossible range overflow.
 #if             X256SSG_ENABLED
                 if (btest(rng%stream, rng%pos)) then
                     rand = lb
@@ -467,23 +467,23 @@
 #endif
                 return
             end if
-            if (lb < 0_IKC .and. 0_IKC < ub) then ! possible range overflow.
-                if (HUGE_IKC + lb < ub) then ! overflowed.
-                    lbb = -lb - HUGE_IKC - 1_IKC
-                    ubb = +ub - HUGE_IKC - 1_IKC
+            if (lb < 0_IKG .and. 0_IKG < ub) then ! possible range overflow.
+                if (HUGE_IKG + lb < ub) then ! overflowed.
+                    lbb = -lb - HUGE_IKG - 1_IKG
+                    ubb = +ub - HUGE_IKG - 1_IKG
                     scale = ubb + lbb
-                    nzeros = 0_IKC
+                    nzeros = 0_IKG
                 else
                     scale = ub - lb
-                    nzeros = int(leadz(scale), IKC)
+                    nzeros = int(leadz(scale), IKG)
                 end if
                 !scale = ub .uadd. -lb
             else ! impossible range overflow (assuming `lb < ub`).
                 scale = ub - lb
-                nzeros = int(leadz(scale), IKC)
+                nzeros = int(leadz(scale), IKG)
             end if
             nsignif = bit_size(scale) - nzeros
-            imask = shiftr(not(0_IKC), nzeros)
+            imask = shiftr(not(0_IKG), nzeros)
             loopTry: do
                 call setUnifRand(rng, temp)
                 rand = iand(temp, imask)
@@ -512,12 +512,12 @@
 #if     DD_ENABLED
         real :: dummy
         call random_number(dummy)
-        rand = logical(dummy < .5, kind = LKC)
+        rand = logical(dummy < .5, kind = LKG)
 #elif   LU_ENABLED
         real :: dummy
         if (lb .neqv. ub) then
             call random_number(dummy)
-            rand = logical(dummy < .5, kind = LKC)
+            rand = logical(dummy < .5, kind = LKG)
         else
             rand = lb
         end if
@@ -531,11 +531,11 @@
 
 #if     DD_ENABLED && X256SSG_ENABLED
         integer(IK) , parameter :: streamBitSize = bit_size(rng%stream)
-        rand = logical(btest(rng%stream, rng%pos), LKC)
+        rand = logical(btest(rng%stream, rng%pos), LKG)
         rng%pos = rng%pos + 1_IK
         if (rng%pos == streamBitSize) call setStateNext(rng)
 #elif   DD_ENABLED && (SM64_ENABLED || X256SSW_ENABLED)
-        rand = logical(int(0, kind(rng%stream)) < rng%stream, kind = LKC)
+        rand = logical(int(0, kind(rng%stream)) < rng%stream, kind = LKG)
         call setStateNext(rng)
 #elif   LU_ENABLED
         if (lb .neqv. ub) then
@@ -553,7 +553,7 @@
 
         ! Curse you Intel.
 #if     __INTEL_COMPILER
-        real(CKC) :: temp(2)
+        real(CKG) :: temp(2)
 #if     DD_ENABLED
         call setUnifRand(RNG temp)
 #elif   LU_ENABLED
@@ -566,7 +566,7 @@
 #else
 #error  "Unrecognized interface."
 #endif
-        rand = cmplx(temp(1), temp(2), CKC)
+        rand = cmplx(temp(1), temp(2), CKG)
 #else
 #if     DD_ENABLED
         call setUnifRand(RNG rand%re)
@@ -598,7 +598,7 @@
                 call random_number(rand)
                 !rand = lb + rand * (ub - lb)
                 ! The product expansion, although more expensive, avoids possible overflow with `huge` limits.
-                rand = (1._RKC - rand) * lb + rand * ub
+                rand = (1._RKG - rand) * lb + rand * ub
                 ! The equality (instead of <) ensures NAN cases are handled gracefully without infinite loop.
                 ! Hard lesson learned.
                 !if (rand < ub) return
@@ -618,31 +618,31 @@
 
 #if     DD_ENABLED
         integer     , parameter :: IKS = kind(rng%stream)
-        integer     , parameter :: DIGITS_RKC = digits(rand)
+        integer     , parameter :: DIGITS_RKG = digits(rand)
         integer     , parameter :: DIGITS_RNG = digits(rng%stream)
 !#if     X256SSG_ENABLED
         ! The following original approach is too costly.
         ! We will instead use the wasteful approach for the greedy.
-        !real(RKC)   , parameter :: INVPDIGRKC = 1._RKC / 2._RKC**DIGITS_RKC
+        !real(RKG)   , parameter :: INVPDIG_RKG = 1._RKG / 2._RKG**DIGITS_RKG
         !integer                 :: remaining, remainders
-        !remainders = DIGITS_RNG - DIGITS_RKC - rng%pos
+        !remainders = DIGITS_RNG - DIGITS_RKG - rng%pos
         !if (0 < remainders) then
-        !    rand = real(ibits(rng%stream, rng%pos, DIGITS_RKC), RKC) * INVPDIGRKC
-        !    rng%pos = rng%pos + DIGITS_RKC
+        !    rand = real(ibits(rng%stream, rng%pos, DIGITS_RKG), RKG) * INVPDIG_RKG
+        !    rng%pos = rng%pos + DIGITS_RKG
         !else
         !    remainders = DIGITS_RNG - rng%pos
-        !    rand = real(ibits(rng%stream, rng%pos, remainders), RKC) * 0.5_RKC**remainders
+        !    rand = real(ibits(rng%stream, rng%pos, remainders), RKG) * 0.5_RKG**remainders
         !    call setStateNext(rng)
-        !    remaining = DIGITS_RKC - remainders
+        !    remaining = DIGITS_RKG - remainders
         !    do
         !        remainders = remaining - DIGITS_RNG
         !        if (0 < remainders) then ! use full stream and cycle
-        !            rand = (rand + real(abs(rng%stream), RKC)) * 0.5_RKC**DIGITS_RNG
+        !            rand = (rand + real(abs(rng%stream), RKG)) * 0.5_RKG**DIGITS_RNG
         !            remaining = remainders
         !            call setStateNext(rng)
         !        else ! use part of stream and exit.
         !            rng%pos = -remainders
-        !            rand = (rand + real(ibits(rng%stream, 0_IK, rng%pos), RKC)) * 0.5_RKC**rng%pos
+        !            rand = (rand + real(ibits(rng%stream, 0_IK, rng%pos), RKG)) * 0.5_RKG**rng%pos
         !            return
         !        end if
         !    end do
@@ -650,20 +650,20 @@
 !#else
         integer                 :: i
         integer     , parameter :: NUMBIT_RNG = bit_size(rng%stream) ! DIGITS_RNG + 1 ! The `1` makes up for the missing sign bit in the counting.
-        integer     , parameter :: REPEAT_RNG = int(real(DIGITS_RKC) / real(DIGITS_RNG))
-        integer     , parameter :: REMAINDERS = DIGITS_RKC - DIGITS_RNG * REPEAT_RNG
+        integer     , parameter :: REPEAT_RNG = int(real(DIGITS_RKG) / real(DIGITS_RNG))
+        integer     , parameter :: REMAINDERS = DIGITS_RKG - DIGITS_RNG * REPEAT_RNG
         ! bit-shifting or integer exponentiation overflows for exponent 63. Use real exponentation.
-        real(RKC)   , parameter :: INV_POWREM = 1._RKC / 2._RKC**REMAINDERS ! real(shiftl(1_IKS, REMAINDERS), RKC) ! 1. / 2_IKS**REMAINDERS
-        real(RKC)   , parameter :: INV_POWDIG = 1._RKC / 2._RKC**DIGITS_RNG ! real(shiftl(1_IKS, DIGITS_RNG), RKC) ! 1. / 2_IKS**DIGITS_RNG
+        real(RKG)   , parameter :: INV_POWREM = 1._RKG / 2._RKG**REMAINDERS ! real(shiftl(1_IKS, REMAINDERS), RKG) ! 1. / 2_IKS**REMAINDERS
+        real(RKG)   , parameter :: INV_POWDIG = 1._RKG / 2._RKG**DIGITS_RNG ! real(shiftl(1_IKS, DIGITS_RNG), RKG) ! 1. / 2_IKS**DIGITS_RNG
 #if     X256SSG_ENABLED
         if (DIGITS_RNG < REMAINDERS + rng%pos) call setStateNext(rng)
-        rand = real(shiftr(rng%stream, NUMBIT_RNG - REMAINDERS + rng%pos), RKC) * INV_POWREM
+        rand = real(shiftr(rng%stream, NUMBIT_RNG - REMAINDERS + rng%pos), RKG) * INV_POWREM
 #else
-        rand = real(shiftr(rng%stream, NUMBIT_RNG - REMAINDERS), RKC) * INV_POWREM
+        rand = real(shiftr(rng%stream, NUMBIT_RNG - REMAINDERS), RKG) * INV_POWREM
 #endif
         call setStateNext(rng)
         do i = 1, REPEAT_RNG ! exists only for higher-than-double precision real kinds.
-            rand = (rand + real(shiftr(rng%stream, NUMBIT_RNG - DIGITS_RNG), RKC)) * INV_POWDIG
+            rand = (rand + real(shiftr(rng%stream, NUMBIT_RNG - DIGITS_RNG), RKG)) * INV_POWDIG
             call setStateNext(rng)
         end do
 !#endif
@@ -675,7 +675,7 @@
             do
                 call setUnifRand(rng, rand)
                 ! The product expansion, although more expensive, avoids possible overflow with `huge` limits.
-                rand = (1._RKC - rand) * lb + rand * ub
+                rand = (1._RKG - rand) * lb + rand * ub
                 !rand = lb + rand * (ub - lb)
                 if (ub <= rand) cycle
                 exit

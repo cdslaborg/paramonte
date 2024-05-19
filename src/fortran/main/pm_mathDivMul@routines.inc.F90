@@ -29,11 +29,11 @@
         !%%%%%%%%%%%%%%%%
 
 #if     Unary_ENABLED && IK_ENABLED
-        integer(IKC), parameter :: ref = 1_IKC
+        integer(IKG), parameter :: ref = 1_IKG
 #elif   Unary_ENABLED && CK_ENABLED
-        complex(CKC), parameter :: ref = (1._CKC, 0._CKC)
+        complex(CKG), parameter :: ref = (1._CKG, 0._CKG)
 #elif   Unary_ENABLED && RK_ENABLED
-        real(RKC)   , parameter :: ref = 1._RKC
+        real(RKG)   , parameter :: ref = 1._RKG
 #elif   !Binary_ENABLED
 #error  "Unrecognized interface."
 #endif

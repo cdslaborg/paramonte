@@ -63,7 +63,7 @@ module pm_complexDiv
     !>  \endcode
     !>
     !>  \warning
-    !>  The condition `divisor /= (0._CKC, 0._CKC)` must hold for the corresponding input arguments.<br>
+    !>  The condition `divisor /= (0._CKG, 0._CKG)` must hold for the corresponding input arguments.<br>
     !>  \vericon
     !>
     !>  \warnpure
@@ -97,9 +97,9 @@ module pm_complexDiv
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDiv_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC), intent(in)                :: dividend, divisor
-        complex(CKC)                            :: quotient
+        use pm_kind, only: CKG => CK5
+        complex(CKG), intent(in)                :: dividend, divisor
+        complex(CKG)                            :: quotient
     end function
 #endif
 
@@ -108,9 +108,9 @@ module pm_complexDiv
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDiv_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC), intent(in)                :: dividend, divisor
-        complex(CKC)                            :: quotient
+        use pm_kind, only: CKG => CK4
+        complex(CKG), intent(in)                :: dividend, divisor
+        complex(CKG)                            :: quotient
     end function
 #endif
 
@@ -119,9 +119,9 @@ module pm_complexDiv
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDiv_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC), intent(in)                :: dividend, divisor
-        complex(CKC)                            :: quotient
+        use pm_kind, only: CKG => CK3
+        complex(CKG), intent(in)                :: dividend, divisor
+        complex(CKG)                            :: quotient
     end function
 #endif
 
@@ -130,9 +130,9 @@ module pm_complexDiv
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDiv_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC), intent(in)                :: dividend, divisor
-        complex(CKC)                            :: quotient
+        use pm_kind, only: CKG => CK2
+        complex(CKG), intent(in)                :: dividend, divisor
+        complex(CKG)                            :: quotient
     end function
 #endif
 
@@ -141,9 +141,9 @@ module pm_complexDiv
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDiv_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC), intent(in)                :: dividend, divisor
-        complex(CKC)                            :: quotient
+        use pm_kind, only: CKG => CK1
+        complex(CKG), intent(in)                :: dividend, divisor
+        complex(CKG)                            :: quotient
     end function
 #endif
 

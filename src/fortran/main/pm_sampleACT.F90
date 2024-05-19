@@ -230,9 +230,9 @@ module pm_sampleACT
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getACT_DEF_ONE_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)               , intent(in)    , contiguous            :: seq(:)
-        real(RKC)                                                       :: act
+        use pm_kind, only: RKG => RK5
+        real(RKG)               , intent(in)    , contiguous            :: seq(:)
+        real(RKG)                                                       :: act
     end function
 #endif
 
@@ -241,9 +241,9 @@ module pm_sampleACT
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getACT_DEF_ONE_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)               , intent(in)    , contiguous            :: seq(:)
-        real(RKC)                                                       :: act
+        use pm_kind, only: RKG => RK4
+        real(RKG)               , intent(in)    , contiguous            :: seq(:)
+        real(RKG)                                                       :: act
     end function
 #endif
 
@@ -252,9 +252,9 @@ module pm_sampleACT
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getACT_DEF_ONE_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)               , intent(in)    , contiguous            :: seq(:)
-        real(RKC)                                                       :: act
+        use pm_kind, only: RKG => RK3
+        real(RKG)               , intent(in)    , contiguous            :: seq(:)
+        real(RKG)                                                       :: act
     end function
 #endif
 
@@ -263,9 +263,9 @@ module pm_sampleACT
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getACT_DEF_ONE_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)               , intent(in)    , contiguous            :: seq(:)
-        real(RKC)                                                       :: act
+        use pm_kind, only: RKG => RK2
+        real(RKG)               , intent(in)    , contiguous            :: seq(:)
+        real(RKG)                                                       :: act
     end function
 #endif
 
@@ -274,9 +274,9 @@ module pm_sampleACT
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getACT_DEF_ONE_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)               , intent(in)    , contiguous            :: seq(:)
-        real(RKC)                                                       :: act
+        use pm_kind, only: RKG => RK1
+        real(RKG)               , intent(in)    , contiguous            :: seq(:)
+        real(RKG)                                                       :: act
     end function
 #endif
 
@@ -287,10 +287,10 @@ module pm_sampleACT
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getACT_DEF_WTI_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         integer(IK)             , intent(in)    , contiguous            :: weight(:)
-        real(RKC)               , intent(in)    , contiguous            :: seq(:)
-        real(RKC)                                                       :: act
+        real(RKG)               , intent(in)    , contiguous            :: seq(:)
+        real(RKG)                                                       :: act
     end function
 #endif
 
@@ -299,10 +299,10 @@ module pm_sampleACT
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getACT_DEF_WTI_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         integer(IK)             , intent(in)    , contiguous            :: weight(:)
-        real(RKC)               , intent(in)    , contiguous            :: seq(:)
-        real(RKC)                                                       :: act
+        real(RKG)               , intent(in)    , contiguous            :: seq(:)
+        real(RKG)                                                       :: act
     end function
 #endif
 
@@ -311,10 +311,10 @@ module pm_sampleACT
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getACT_DEF_WTI_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         integer(IK)             , intent(in)    , contiguous            :: weight(:)
-        real(RKC)               , intent(in)    , contiguous            :: seq(:)
-        real(RKC)                                                       :: act
+        real(RKG)               , intent(in)    , contiguous            :: seq(:)
+        real(RKG)                                                       :: act
     end function
 #endif
 
@@ -323,10 +323,10 @@ module pm_sampleACT
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getACT_DEF_WTI_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         integer(IK)             , intent(in)    , contiguous            :: weight(:)
-        real(RKC)               , intent(in)    , contiguous            :: seq(:)
-        real(RKC)                                                       :: act
+        real(RKG)               , intent(in)    , contiguous            :: seq(:)
+        real(RKG)                                                       :: act
     end function
 #endif
 
@@ -335,10 +335,10 @@ module pm_sampleACT
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getACT_DEF_WTI_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         integer(IK)             , intent(in)    , contiguous            :: weight(:)
-        real(RKC)               , intent(in)    , contiguous            :: seq(:)
-        real(RKC)                                                       :: act
+        real(RKG)               , intent(in)    , contiguous            :: seq(:)
+        real(RKG)                                                       :: act
     end function
 #endif
 
@@ -355,10 +355,10 @@ module pm_sampleACT
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getACT_CSD_ONE_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         type(cumSum_type)       , intent(in)                            :: method
-        real(RKC)               , intent(in)    , contiguous            :: seq(:)
-        real(RKC)                                                       :: act
+        real(RKG)               , intent(in)    , contiguous            :: seq(:)
+        real(RKG)                                                       :: act
     end function
 #endif
 
@@ -367,10 +367,10 @@ module pm_sampleACT
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getACT_CSD_ONE_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         type(cumSum_type)       , intent(in)                            :: method
-        real(RKC)               , intent(in)    , contiguous            :: seq(:)
-        real(RKC)                                                       :: act
+        real(RKG)               , intent(in)    , contiguous            :: seq(:)
+        real(RKG)                                                       :: act
     end function
 #endif
 
@@ -379,10 +379,10 @@ module pm_sampleACT
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getACT_CSD_ONE_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         type(cumSum_type)       , intent(in)                            :: method
-        real(RKC)               , intent(in)    , contiguous            :: seq(:)
-        real(RKC)                                                       :: act
+        real(RKG)               , intent(in)    , contiguous            :: seq(:)
+        real(RKG)                                                       :: act
     end function
 #endif
 
@@ -391,10 +391,10 @@ module pm_sampleACT
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getACT_CSD_ONE_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         type(cumSum_type)       , intent(in)                            :: method
-        real(RKC)               , intent(in)    , contiguous            :: seq(:)
-        real(RKC)                                                       :: act
+        real(RKG)               , intent(in)    , contiguous            :: seq(:)
+        real(RKG)                                                       :: act
     end function
 #endif
 
@@ -403,10 +403,10 @@ module pm_sampleACT
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getACT_CSD_ONE_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         type(cumSum_type)       , intent(in)                            :: method
-        real(RKC)               , intent(in)    , contiguous            :: seq(:)
-        real(RKC)                                                       :: act
+        real(RKG)               , intent(in)    , contiguous            :: seq(:)
+        real(RKG)                                                       :: act
     end function
 #endif
 
@@ -417,11 +417,11 @@ module pm_sampleACT
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getACT_CSD_WTI_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         type(cumSum_type)       , intent(in)                            :: method
         integer(IK)             , intent(in)    , contiguous            :: weight(:)
-        real(RKC)               , intent(in)    , contiguous            :: seq(:)
-        real(RKC)                                                       :: act
+        real(RKG)               , intent(in)    , contiguous            :: seq(:)
+        real(RKG)                                                       :: act
     end function
 #endif
 
@@ -430,11 +430,11 @@ module pm_sampleACT
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getACT_CSD_WTI_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         type(cumSum_type)       , intent(in)                            :: method
         integer(IK)             , intent(in)    , contiguous            :: weight(:)
-        real(RKC)               , intent(in)    , contiguous            :: seq(:)
-        real(RKC)                                                       :: act
+        real(RKG)               , intent(in)    , contiguous            :: seq(:)
+        real(RKG)                                                       :: act
     end function
 #endif
 
@@ -443,11 +443,11 @@ module pm_sampleACT
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getACT_CSD_WTI_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         type(cumSum_type)       , intent(in)                            :: method
         integer(IK)             , intent(in)    , contiguous            :: weight(:)
-        real(RKC)               , intent(in)    , contiguous            :: seq(:)
-        real(RKC)                                                       :: act
+        real(RKG)               , intent(in)    , contiguous            :: seq(:)
+        real(RKG)                                                       :: act
     end function
 #endif
 
@@ -456,11 +456,11 @@ module pm_sampleACT
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getACT_CSD_WTI_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         type(cumSum_type)       , intent(in)                            :: method
         integer(IK)             , intent(in)    , contiguous            :: weight(:)
-        real(RKC)               , intent(in)    , contiguous            :: seq(:)
-        real(RKC)                                                       :: act
+        real(RKG)               , intent(in)    , contiguous            :: seq(:)
+        real(RKG)                                                       :: act
     end function
 #endif
 
@@ -469,11 +469,11 @@ module pm_sampleACT
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getACT_CSD_WTI_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         type(cumSum_type)       , intent(in)                            :: method
         integer(IK)             , intent(in)    , contiguous            :: weight(:)
-        real(RKC)               , intent(in)    , contiguous            :: seq(:)
-        real(RKC)                                                       :: act
+        real(RKG)               , intent(in)    , contiguous            :: seq(:)
+        real(RKG)                                                       :: act
     end function
 #endif
 
@@ -490,10 +490,10 @@ module pm_sampleACT
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getACT_CSM_ONE_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         type(cumSumMax_type)    , intent(in)                            :: method
-        real(RKC)               , intent(in)    , contiguous            :: seq(:)
-        real(RKC)                                                       :: act
+        real(RKG)               , intent(in)    , contiguous            :: seq(:)
+        real(RKG)                                                       :: act
     end function
 #endif
 
@@ -502,10 +502,10 @@ module pm_sampleACT
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getACT_CSM_ONE_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         type(cumSumMax_type)    , intent(in)                            :: method
-        real(RKC)               , intent(in)    , contiguous            :: seq(:)
-        real(RKC)                                                       :: act
+        real(RKG)               , intent(in)    , contiguous            :: seq(:)
+        real(RKG)                                                       :: act
     end function
 #endif
 
@@ -514,10 +514,10 @@ module pm_sampleACT
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getACT_CSM_ONE_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         type(cumSumMax_type)    , intent(in)                            :: method
-        real(RKC)               , intent(in)    , contiguous            :: seq(:)
-        real(RKC)                                                       :: act
+        real(RKG)               , intent(in)    , contiguous            :: seq(:)
+        real(RKG)                                                       :: act
     end function
 #endif
 
@@ -526,10 +526,10 @@ module pm_sampleACT
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getACT_CSM_ONE_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         type(cumSumMax_type)    , intent(in)                            :: method
-        real(RKC)               , intent(in)    , contiguous            :: seq(:)
-        real(RKC)                                                       :: act
+        real(RKG)               , intent(in)    , contiguous            :: seq(:)
+        real(RKG)                                                       :: act
     end function
 #endif
 
@@ -538,10 +538,10 @@ module pm_sampleACT
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getACT_CSM_ONE_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         type(cumSumMax_type)    , intent(in)                            :: method
-        real(RKC)               , intent(in)    , contiguous            :: seq(:)
-        real(RKC)                                                       :: act
+        real(RKG)               , intent(in)    , contiguous            :: seq(:)
+        real(RKG)                                                       :: act
     end function
 #endif
 
@@ -552,11 +552,11 @@ module pm_sampleACT
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getACT_CSM_WTI_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         type(cumSumMax_type)    , intent(in)                            :: method
         integer(IK)             , intent(in)    , contiguous            :: weight(:)
-        real(RKC)               , intent(in)    , contiguous            :: seq(:)
-        real(RKC)                                                       :: act
+        real(RKG)               , intent(in)    , contiguous            :: seq(:)
+        real(RKG)                                                       :: act
     end function
 #endif
 
@@ -565,11 +565,11 @@ module pm_sampleACT
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getACT_CSM_WTI_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         type(cumSumMax_type)    , intent(in)                            :: method
         integer(IK)             , intent(in)    , contiguous            :: weight(:)
-        real(RKC)               , intent(in)    , contiguous            :: seq(:)
-        real(RKC)                                                       :: act
+        real(RKG)               , intent(in)    , contiguous            :: seq(:)
+        real(RKG)                                                       :: act
     end function
 #endif
 
@@ -578,11 +578,11 @@ module pm_sampleACT
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getACT_CSM_WTI_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         type(cumSumMax_type)    , intent(in)                            :: method
         integer(IK)             , intent(in)    , contiguous            :: weight(:)
-        real(RKC)               , intent(in)    , contiguous            :: seq(:)
-        real(RKC)                                                       :: act
+        real(RKG)               , intent(in)    , contiguous            :: seq(:)
+        real(RKG)                                                       :: act
     end function
 #endif
 
@@ -591,11 +591,11 @@ module pm_sampleACT
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getACT_CSM_WTI_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         type(cumSumMax_type)    , intent(in)                            :: method
         integer(IK)             , intent(in)    , contiguous            :: weight(:)
-        real(RKC)               , intent(in)    , contiguous            :: seq(:)
-        real(RKC)                                                       :: act
+        real(RKG)               , intent(in)    , contiguous            :: seq(:)
+        real(RKG)                                                       :: act
     end function
 #endif
 
@@ -604,11 +604,11 @@ module pm_sampleACT
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getACT_CSM_WTI_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         type(cumSumMax_type)    , intent(in)                            :: method
         integer(IK)             , intent(in)    , contiguous            :: weight(:)
-        real(RKC)               , intent(in)    , contiguous            :: seq(:)
-        real(RKC)                                                       :: act
+        real(RKG)               , intent(in)    , contiguous            :: seq(:)
+        real(RKG)                                                       :: act
     end function
 #endif
 
@@ -625,10 +625,10 @@ module pm_sampleACT
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getACT_BMD_ONE_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         type(batchMeans_type)   , intent(in)                            :: method
-        real(RKC)               , intent(in)    , contiguous            :: seq(:)
-        real(RKC)                                                       :: act
+        real(RKG)               , intent(in)    , contiguous            :: seq(:)
+        real(RKG)                                                       :: act
     end function
 #endif
 
@@ -637,10 +637,10 @@ module pm_sampleACT
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getACT_BMD_ONE_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         type(batchMeans_type)   , intent(in)                            :: method
-        real(RKC)               , intent(in)    , contiguous            :: seq(:)
-        real(RKC)                                                       :: act
+        real(RKG)               , intent(in)    , contiguous            :: seq(:)
+        real(RKG)                                                       :: act
     end function
 #endif
 
@@ -649,10 +649,10 @@ module pm_sampleACT
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getACT_BMD_ONE_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         type(batchMeans_type)   , intent(in)                            :: method
-        real(RKC)               , intent(in)    , contiguous            :: seq(:)
-        real(RKC)                                                       :: act
+        real(RKG)               , intent(in)    , contiguous            :: seq(:)
+        real(RKG)                                                       :: act
     end function
 #endif
 
@@ -661,10 +661,10 @@ module pm_sampleACT
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getACT_BMD_ONE_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         type(batchMeans_type)   , intent(in)                            :: method
-        real(RKC)               , intent(in)    , contiguous            :: seq(:)
-        real(RKC)                                                       :: act
+        real(RKG)               , intent(in)    , contiguous            :: seq(:)
+        real(RKG)                                                       :: act
     end function
 #endif
 
@@ -673,10 +673,10 @@ module pm_sampleACT
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getACT_BMD_ONE_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         type(batchMeans_type)   , intent(in)                            :: method
-        real(RKC)               , intent(in)    , contiguous            :: seq(:)
-        real(RKC)                                                       :: act
+        real(RKG)               , intent(in)    , contiguous            :: seq(:)
+        real(RKG)                                                       :: act
     end function
 #endif
 
@@ -687,11 +687,11 @@ module pm_sampleACT
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getACT_BMD_WTI_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         type(batchMeans_type)   , intent(in)                            :: method
         integer(IK)             , intent(in)    , contiguous            :: weight(:)
-        real(RKC)               , intent(in)    , contiguous            :: seq(:)
-        real(RKC)                                                       :: act
+        real(RKG)               , intent(in)    , contiguous            :: seq(:)
+        real(RKG)                                                       :: act
     end function
 #endif
 
@@ -700,11 +700,11 @@ module pm_sampleACT
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getACT_BMD_WTI_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         type(batchMeans_type)   , intent(in)                            :: method
         integer(IK)             , intent(in)    , contiguous            :: weight(:)
-        real(RKC)               , intent(in)    , contiguous            :: seq(:)
-        real(RKC)                                                       :: act
+        real(RKG)               , intent(in)    , contiguous            :: seq(:)
+        real(RKG)                                                       :: act
     end function
 #endif
 
@@ -713,11 +713,11 @@ module pm_sampleACT
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getACT_BMD_WTI_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         type(batchMeans_type)   , intent(in)                            :: method
         integer(IK)             , intent(in)    , contiguous            :: weight(:)
-        real(RKC)               , intent(in)    , contiguous            :: seq(:)
-        real(RKC)                                                       :: act
+        real(RKG)               , intent(in)    , contiguous            :: seq(:)
+        real(RKG)                                                       :: act
     end function
 #endif
 
@@ -726,11 +726,11 @@ module pm_sampleACT
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getACT_BMD_WTI_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         type(batchMeans_type)   , intent(in)                            :: method
         integer(IK)             , intent(in)    , contiguous            :: weight(:)
-        real(RKC)               , intent(in)    , contiguous            :: seq(:)
-        real(RKC)                                                       :: act
+        real(RKG)               , intent(in)    , contiguous            :: seq(:)
+        real(RKG)                                                       :: act
     end function
 #endif
 
@@ -739,11 +739,11 @@ module pm_sampleACT
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getACT_BMD_WTI_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         type(batchMeans_type)   , intent(in)                            :: method
         integer(IK)             , intent(in)    , contiguous            :: weight(:)
-        real(RKC)               , intent(in)    , contiguous            :: seq(:)
-        real(RKC)                                                       :: act
+        real(RKG)               , intent(in)    , contiguous            :: seq(:)
+        real(RKG)                                                       :: act
     end function
 #endif
 
@@ -760,10 +760,10 @@ module pm_sampleACT
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getACT_BMM_ONE_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         type(batchMeansMax_type), intent(in)                            :: method
-        real(RKC)               , intent(in)    , contiguous            :: seq(:)
-        real(RKC)                                                       :: act
+        real(RKG)               , intent(in)    , contiguous            :: seq(:)
+        real(RKG)                                                       :: act
     end function
 #endif
 
@@ -772,10 +772,10 @@ module pm_sampleACT
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getACT_BMM_ONE_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         type(batchMeansMax_type), intent(in)                            :: method
-        real(RKC)               , intent(in)    , contiguous            :: seq(:)
-        real(RKC)                                                       :: act
+        real(RKG)               , intent(in)    , contiguous            :: seq(:)
+        real(RKG)                                                       :: act
     end function
 #endif
 
@@ -784,10 +784,10 @@ module pm_sampleACT
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getACT_BMM_ONE_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         type(batchMeansMax_type), intent(in)                            :: method
-        real(RKC)               , intent(in)    , contiguous            :: seq(:)
-        real(RKC)                                                       :: act
+        real(RKG)               , intent(in)    , contiguous            :: seq(:)
+        real(RKG)                                                       :: act
     end function
 #endif
 
@@ -796,10 +796,10 @@ module pm_sampleACT
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getACT_BMM_ONE_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         type(batchMeansMax_type), intent(in)                            :: method
-        real(RKC)               , intent(in)    , contiguous            :: seq(:)
-        real(RKC)                                                       :: act
+        real(RKG)               , intent(in)    , contiguous            :: seq(:)
+        real(RKG)                                                       :: act
     end function
 #endif
 
@@ -808,10 +808,10 @@ module pm_sampleACT
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getACT_BMM_ONE_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         type(batchMeansMax_type), intent(in)                            :: method
-        real(RKC)               , intent(in)    , contiguous            :: seq(:)
-        real(RKC)                                                       :: act
+        real(RKG)               , intent(in)    , contiguous            :: seq(:)
+        real(RKG)                                                       :: act
     end function
 #endif
 
@@ -822,11 +822,11 @@ module pm_sampleACT
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getACT_BMM_WTI_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         type(batchMeansMax_type), intent(in)                            :: method
         integer(IK)             , intent(in)    , contiguous            :: weight(:)
-        real(RKC)               , intent(in)    , contiguous            :: seq(:)
-        real(RKC)                                                       :: act
+        real(RKG)               , intent(in)    , contiguous            :: seq(:)
+        real(RKG)                                                       :: act
     end function
 #endif
 
@@ -835,11 +835,11 @@ module pm_sampleACT
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getACT_BMM_WTI_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         type(batchMeansMax_type), intent(in)                            :: method
         integer(IK)             , intent(in)    , contiguous            :: weight(:)
-        real(RKC)               , intent(in)    , contiguous            :: seq(:)
-        real(RKC)                                                       :: act
+        real(RKG)               , intent(in)    , contiguous            :: seq(:)
+        real(RKG)                                                       :: act
     end function
 #endif
 
@@ -848,11 +848,11 @@ module pm_sampleACT
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getACT_BMM_WTI_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         type(batchMeansMax_type), intent(in)                            :: method
         integer(IK)             , intent(in)    , contiguous            :: weight(:)
-        real(RKC)               , intent(in)    , contiguous            :: seq(:)
-        real(RKC)                                                       :: act
+        real(RKG)               , intent(in)    , contiguous            :: seq(:)
+        real(RKG)                                                       :: act
     end function
 #endif
 
@@ -861,11 +861,11 @@ module pm_sampleACT
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getACT_BMM_WTI_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         type(batchMeansMax_type), intent(in)                            :: method
         integer(IK)             , intent(in)    , contiguous            :: weight(:)
-        real(RKC)               , intent(in)    , contiguous            :: seq(:)
-        real(RKC)                                                       :: act
+        real(RKG)               , intent(in)    , contiguous            :: seq(:)
+        real(RKG)                                                       :: act
     end function
 #endif
 
@@ -874,11 +874,11 @@ module pm_sampleACT
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getACT_BMM_WTI_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         type(batchMeansMax_type), intent(in)                            :: method
         integer(IK)             , intent(in)    , contiguous            :: weight(:)
-        real(RKC)               , intent(in)    , contiguous            :: seq(:)
-        real(RKC)                                                       :: act
+        real(RKG)               , intent(in)    , contiguous            :: seq(:)
+        real(RKG)                                                       :: act
     end function
 #endif
 

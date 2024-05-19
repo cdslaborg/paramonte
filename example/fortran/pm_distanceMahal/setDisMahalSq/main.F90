@@ -28,8 +28,8 @@ program example
 
     block
 
-        use pm_kind, only: RKC => RKS ! all other real kinds are also supported.
-        real(RKC), allocatable :: point(:,:), mahalSq(:,:), mean(:,:), invCov(:,:,:)
+        use pm_kind, only: RKG => RKS ! all other real kinds are also supported.
+        real(RKG), allocatable :: point(:,:), mahalSq(:,:), mean(:,:), invCov(:,:,:)
 
         call disp%show("ndim = 3; npnt = 5; nsam = 2")
                         ndim = 3; npnt = 5; nsam = 2
@@ -125,8 +125,8 @@ program example
 
     block
 
-        use pm_kind, only: CKC => CKS ! all other complex kinds are also supported.
-        complex(CKC), allocatable :: point(:,:), mahalSq(:,:), mean(:,:), invCov(:,:,:)
+        use pm_kind, only: CKG => CKS ! all other complex kinds are also supported.
+        complex(CKG), allocatable :: point(:,:), mahalSq(:,:), mean(:,:), invCov(:,:,:)
 
         call disp%show("ndim = 3; npnt = 5; nsam = 2")
                         ndim = 3; npnt = 5; nsam = 2

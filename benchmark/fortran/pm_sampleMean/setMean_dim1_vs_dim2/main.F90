@@ -1,7 +1,7 @@
 ! Test the performance of Cholesky factorization computation using an assumed-shape interface vs. explicit-shape interface.
 program benchmark
 
-    use pm_kind, only: IK, LK, RKC => RKD, SK
+    use pm_kind, only: IK, LK, RKG => RKD, SK
     use pm_bench, only: bench_type
 
     implicit none
@@ -11,14 +11,14 @@ program benchmark
     integer(IK)                         :: iarr                         !<  The array size counter.
     integer(IK)                         :: fileUnit                     !<  The output file unit for benchmark results.
     integer(IK)     , parameter         :: NARR = 18_IK                 !<  The number of benchmark array sizes.
-    real(RKC)       , allocatable       :: samdim1(:,:)                 !<  The positive-definite matrix.
-    real(RKC)       , allocatable       :: samdim2(:,:)                 !<  The positive-definite matrix.
+    real(RKG)       , allocatable       :: samdim1(:,:)                 !<  The positive-definite matrix.
+    real(RKG)       , allocatable       :: samdim2(:,:)                 !<  The positive-definite matrix.
     type(bench_type), allocatable       :: bench(:)                     !<  The Benchmark array.
     integer(IK)     , parameter         :: nsammax = 2**NARR            !<  The maximum number of calculation repeats.
     integer(IK)     , parameter         :: ndim = 5_IK                  !<  The number of data attributes.
-    real(RKC)                           :: mean(ndim)                   !<  The sample mean.
+    real(RKG)                           :: mean(ndim)                   !<  The sample mean.
     integer(IK)                         :: isam, nsam                   !<  The benchmarking array size.
-    real(RKC)                           :: dumm
+    real(RKG)                           :: dumm
 
     bench = [ bench_type(name = SK_"intrinsicDIM1", exec = intrinsicDIM1, overhead = setOverhead) &
             , bench_type(name = SK_"intrinsicDIM2", exec = intrinsicDIM2, overhead = setOverhead) &
@@ -34,7 +34,7 @@ program benchmark
 
         write(fileUnit, "(*(g0,:,','))") "nsam", (bench(i)%name, i = 1, size(bench))
 
-        dumm = 0._RKC
+        dumm = 0._RKG
         loopOverMatrixSize: do iarr = 1, NARR - 1
 
             nsam = 2**iarr

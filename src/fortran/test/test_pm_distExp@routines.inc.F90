@@ -29,20 +29,20 @@
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #if     RK_ENABLED
-        real(RKC)   , parameter :: TOL = epsilon(0._RKC) * 10
-        real(RKC)   , parameter :: ZERO = 0._RKC, ONE = 1._RKC
-        real(RKC)               :: x, mu, invSigma, logInvSigma
-        real(RKC)               :: logPDF, logPDF_ref
+        real(RKG)   , parameter :: TOL = epsilon(0._RKG) * 10
+        real(RKG)   , parameter :: ZERO = 0._RKG, ONE = 1._RKG
+        real(RKG)               :: x, mu, invSigma, logInvSigma
+        real(RKG)               :: logPDF, logPDF_ref
 #else
 #error  "Unrecognized interface."
 #endif
         integer(IK) :: itry
         assertion = .true._LK
         do itry = 1, 100
-            mu = getChoice([ZERO, getUnifRand(-10._RKC, 10._RKC)])
-            invSigma = getChoice([ONE, getUnifRand(0.1_RKC, 10._RKC)])
+            mu = getChoice([ZERO, getUnifRand(-10._RKG, 10._RKG)])
+            invSigma = getChoice([ONE, getUnifRand(0.1_RKG, 10._RKG)])
             logInvSigma = log(invSigma)
-            x = getUnifRand(mu, mu + 10._RKC)
+            x = getUnifRand(mu, mu + 10._RKG)
             logPDF_ref = getLogPDF_ref(x, mu, invSigma)
 #if         getExpLogPDF_ENABLED
             logPDF = getExpLogPDF(x, mu, invSigma)
@@ -78,14 +78,14 @@
     contains
 
         pure elemental function getLogPDF_ref(x, mu, invSigma) result(logPDF)
-            real(RKC), intent(in) :: x, mu, invSigma
-            real(RKC) :: logPDF
+            real(RKG), intent(in) :: x, mu, invSigma
+            real(RKG) :: logPDF
             logPDF = logInvSigma - (x - mu) * invSigma
         end function
 
         subroutine report(line, mu, invSigma)
             integer(IK) , intent(in)            :: line
-            real(RKC)   , intent(in), optional  :: mu, invSigma
+            real(RKG)   , intent(in), optional  :: mu, invSigma
             assertion = assertion .and. isClose(logPDF, logPDF_ref, abstol = TOL)
             call test%assert(assertion, SK_"The PDF must be computed correctly.", int(line, IK))
             if (test%traceable .and. .not. assertion) then
@@ -121,19 +121,19 @@
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #if     RK_ENABLED
-        real(RKC)   , parameter :: TOL = epsilon(0._RKC) * 10
-        real(RKC)   , parameter :: ZERO = 0._RKC, ONE = 1._RKC
-        real(RKC)               :: invSigma, mu, x
-        real(RKC)               :: cdf, cdf_ref
+        real(RKG)   , parameter :: TOL = epsilon(0._RKG) * 10
+        real(RKG)   , parameter :: ZERO = 0._RKG, ONE = 1._RKG
+        real(RKG)               :: invSigma, mu, x
+        real(RKG)               :: cdf, cdf_ref
 #else
 #error  "Unrecognized interface."
 #endif
         integer(IK) :: itry
         assertion = .true._LK
         do itry = 1, 100
-            mu = getChoice([ZERO, getUnifRand(-10._RKC, 10._RKC)])
-            invSigma = getChoice([ONE, getUnifRand(1._RKC, 10._RKC)])
-            x = getUnifRand(mu, mu + 10._RKC)
+            mu = getChoice([ZERO, getUnifRand(-10._RKG, 10._RKG)])
+            invSigma = getChoice([ONE, getUnifRand(1._RKG, 10._RKG)])
+            x = getUnifRand(mu, mu + 10._RKG)
             cdf_ref = getCDF_ref(x, mu, invSigma)
 #if         getExpCDF_ENABLED
             cdf = getExpCDF(x, mu, invSigma)
@@ -169,14 +169,14 @@
     contains
 
         pure elemental function getCDF_ref(x, mu, invSigma) result(cdf)
-            real(RKC), intent(in) :: x, mu, invSigma
-            real(RKC) :: cdf
-            cdf = 1._RKC - exp(-(x - mu) * invSigma)
+            real(RKG), intent(in) :: x, mu, invSigma
+            real(RKG) :: cdf
+            cdf = 1._RKG - exp(-(x - mu) * invSigma)
         end function
 
         subroutine report(line, mu, invSigma)
             integer(IK) , intent(in)            :: line
-            real(RKC)   , intent(in), optional  :: mu, invSigma
+            real(RKG)   , intent(in), optional  :: mu, invSigma
             assertion = assertion .and. isClose(cdf, cdf_ref, abstol = TOL)
             call test%assert(assertion, SK_"The CDF must be computed correctly.", int(line, IK))
             if (test%traceable .and. .not. assertion) then
@@ -218,20 +218,20 @@
 
         integer(IK) :: i
         integer(IK) , parameter :: NP = 10000_IK
-        real(RKC)   , parameter :: TOL = 0.1_RKC
-        real(RKC)   , parameter :: SIGMA_DEF = 1._RKC, MU_DEF = 0._RKC
-        real(RKC)               :: rand(NP), diff, reltol
+        real(RKG)   , parameter :: TOL = 0.1_RKG
+        real(RKG)   , parameter :: SIGMA_DEF = 1._RKG, MU_DEF = 0._RKG
+        real(RKG)               :: rand(NP), diff, reltol
 
-        diff = huge(0._RKC)
-        reltol = -huge(0._RKC)
+        diff = huge(0._RKG)
+        reltol = -huge(0._RKG)
         assertion = .true._LK
 
 #if     setExpRand_ENABLED
         call runTestsWith()
 #endif
         do i = 1, 5
-            call runTestsWith(sigma = getUnifRand(.5_RKC, 5._RKC))
-            call runTestsWith(sigma = getUnifRand(.5_RKC, 5._RKC), mu = getUnifRand(-.5_RKC, 5._RKC))
+            call runTestsWith(sigma = getUnifRand(.5_RKG, 5._RKG))
+            call runTestsWith(sigma = getUnifRand(.5_RKG, 5._RKG), mu = getUnifRand(-.5_RKG, 5._RKG))
         end do
 
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -241,8 +241,8 @@
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
         subroutine runTestsWith(sigma, mu)
-            real(RKC), intent(in), optional :: sigma, mu
-            real(RKC) :: sigmac
+            real(RKG), intent(in), optional :: sigma, mu
+            real(RKG) :: sigmac
 
             !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -288,7 +288,7 @@
 
         subroutine report(sigma, mu, sigmac)
             integer :: i
-            real(RKC), intent(in), optional :: sigma, mu, sigmac
+            real(RKG), intent(in), optional :: sigma, mu, sigmac
             if (test%traceable .and. .not. assertion) then
                 ! LCOV_EXCL_START
                 call test%disp%skip()
@@ -316,8 +316,8 @@
                 call test%disp%show( diff )
                 do i = 1, NP
                     if (rand(i) < getOption(MU_DEF, mu)) then
-                        call test%disp%show("[real(i, RKC), getOption(MU_DEF, mu), rand(i)]")
-                        call test%disp%show( [real(i, RKC), getOption(MU_DEF, mu), rand(i)] )
+                        call test%disp%show("[real(i, RKG), getOption(MU_DEF, mu), rand(i)]")
+                        call test%disp%show( [real(i, RKG), getOption(MU_DEF, mu), rand(i)] )
                         exit
                     end if
                 end do

@@ -1,13 +1,13 @@
 module logfunc
-    use pm_kind, only: IK, RKC => RKD ! all processor kinds are supported.
+    use pm_kind, only: IK, RKG => RKD ! all processor kinds are supported.
     integer(IK), parameter :: NDIM = 2
 contains
     recursive function getLogFunc(state) result(logFunc)
         ! Return the negative natural logarithm of Himmelblau function evaluated at the input vector state.
-        real(RKC), intent(in), contiguous :: state(:)
-        real(RKC) :: logFunc
+        real(RKG), intent(in), contiguous :: state(:)
+        real(RKG) :: logFunc
         if (size(state) /= 2) error stop "The input state vector size must be 2."
-        logFunc = -log((state(1)**2 + state(2) - 11)**2 + (state(1) + state(2)**2 - 7)**2 + 0.1_RKC)
+        logFunc = -log((state(1)**2 + state(2) - 11)**2 + (state(1) + state(2)**2 - 7)**2 + 0.1_RKG)
     end function
 end module logfunc
 

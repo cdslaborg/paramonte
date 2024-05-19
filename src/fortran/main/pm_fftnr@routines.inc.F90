@@ -25,9 +25,9 @@
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #if     setFFTF_ENABLED
-        real(TKC), parameter :: trifac = +2 * acos(-1._TKC)
+        real(TKG), parameter :: trifac = +2 * acos(-1._TKG)
 #elif   setFFTR_ENABLED
-        real(TKC), parameter :: trifac = -2 * acos(-1._TKC)
+        real(TKG), parameter :: trifac = -2 * acos(-1._TKG)
 #endif
         !%%%%%%%%%%%%%%
 #if     setFFTI_ENABLED
@@ -37,7 +37,7 @@
 #if     CK_ENABLED
         data = data / size(data, 1, IK)
 #elif   RK_ENABLED
-        data = data * (2._TKC / size(data, 1, IK))
+        data = data * (2._TKG / size(data, 1, IK))
 #else
 #error  "Unrecognized interface."
 #endif
@@ -47,7 +47,7 @@
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
         fft(1 : size(data, 1, IK)) = data
-        fft(size(data, 1, IK) + 1 :) = 0._TKC
+        fft(size(data, 1, IK) + 1 :) = 0._TKG
 #if     getFFTF_ENABLED
         call setFFTF(fft)
 #elif   getFFTI_ENABLED
@@ -63,8 +63,8 @@
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
         integer(IK) :: lendata, lenDataHalf, i, j, m, step, maxm
-        complex(TKC) :: temp, w, wp
-        real(TKC) :: theta, wtmp
+        complex(TKG) :: temp, w, wp
+        real(TKG) :: theta, wtmp
         lendata = size(data, 1, IK)
         CHECK_ASSERTION(__LINE__, isIntPow(lenData) .and. 1 < lenData, SK_"@setFFTF/setFFTR(): The condition `isIntPow(size(data)) .and. 1 < size(data)` must hold. size(data) = "//getStr(lendata))
         lenDataHalf = lenData / 2_IK
@@ -90,9 +90,9 @@
             if (lendata <= maxm) exit
             step = 2_IK * maxm
             theta = trifac / step
-            wp%re = -2._TKC * sin(0.5_TKC * theta)**2
+            wp%re = -2._TKG * sin(0.5_TKG * theta)**2
             wp%im = sin(theta)
-            w = (1._TKC, 0._TKC)
+            w = (1._TKG, 0._TKG)
             do m = 1, maxm
                 do i = m, lendata, step
                     j = i + maxm
@@ -112,22 +112,22 @@
 #elif   (setFFTF_ENABLED || setFFTR_ENABLED) && RK_ENABLED
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        complex(TKC) :: h1, h2, w, wp
-        real(TKC) :: c1, c2, theta, wtmp
+        complex(TKG) :: h1, h2, w, wp
+        real(TKG) :: c1, c2, theta, wtmp
         integer(IK) :: i, i1, i2, i3, i4, lenData, lenDataPlus3
         lenData = size(data, 1, IK)
         CHECK_ASSERTION(__LINE__, isIntPow(lenData) .and. 1 < lenData, SK_"@setFFTF/setFFTR(): The condition `isIntPow(size(data)) .and. 1 < size(data)` must hold. size(data) = "//getStr(lendata))
-        theta = trifac / real(lenData, TKC)
-        c1 = 0.5_TKC
-        c2 = 0.5_TKC
+        theta = trifac / real(lenData, TKG)
+        c1 = 0.5_TKG
+        c2 = 0.5_TKG
 #if     setFFTF_ENABLED
         call setFFTC(data)
         c2 = -c2
 #endif
-        wp%re = -2._TKC * sin(0.5_TKC * theta)**2
+        wp%re = -2._TKG * sin(0.5_TKG * theta)**2
         wp%im = sin(theta)
         w%im = wp%im
-        w%re = 1._TKC + wp%re
+        w%re = 1._TKG + wp%re
         lenDataPlus3 = lenData + 3_IK
         do i = 2_IK, lenData / 4_IK
             i1 = 2_IK * i - 1_IK
@@ -160,9 +160,9 @@
 #endif
     contains
         pure subroutine setFFTC(data)
-            real(TKC), intent(inout), contiguous :: data(:)
+            real(TKG), intent(inout), contiguous :: data(:)
             integer(IK) :: i, j, step, m, maxm, lenData, lenDataHalf
-            real(TKC) :: tempi, tempr, theta, wi, wpi, wpr, wr, wtemp
+            real(TKG) :: tempi, tempr, theta, wi, wpi, wpr, wr, wtemp
             lenData = size(data, 1, IK)
             lenDataHalf = lenData / 2_IK
             j = 1_IK
@@ -188,10 +188,10 @@
                 if (lenData <= maxm) exit
                 step = 2_IK * maxm
                 theta = trifac / maxm
-                wpr = -2._TKC * sin(0.5_TKC * theta)**2
+                wpr = -2._TKG * sin(0.5_TKG * theta)**2
                 wpi = sin(theta)
-                wr = 1._TKC
-                wi = 0._TKC
+                wr = 1._TKG
+                wi = 0._TKG
                 do m = 1_IK, maxm, 2_IK
                     do i = m, lenData, step
                         j = i + maxm

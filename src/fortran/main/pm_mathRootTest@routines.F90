@@ -49,7 +49,7 @@ contains
 #define func1_typer_ENABLED 1
 
     module procedure func1_typer
-        use pm_kind, only: RKC => RKH
+        use pm_kind, only: RKG => RKH
 #include "pm_mathRootTest@routines.inc.F90"
     end procedure
 
@@ -60,7 +60,7 @@ contains
 #define getFunc1_ENABLED 1
 
     module procedure getFunc1
-        use pm_kind, only: RKC => RKH
+        use pm_kind, only: RKG => RKH
 #include "pm_mathRootTest@routines.inc.F90"
     end procedure
 

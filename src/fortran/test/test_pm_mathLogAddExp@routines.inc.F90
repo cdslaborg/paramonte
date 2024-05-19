@@ -26,19 +26,19 @@
 
 #if     CK_ENABLED
 #define TYPEC complex
-        integer, parameter :: TKC = CKC
+        integer, parameter :: TKG = CKG
 #elif   RK_ENABLED
 #define TYPEC real
-        integer, parameter :: TKC = RKC
+        integer, parameter :: TKG = RKG
 #else
 #error  "Unrecognized interface."
 #endif
-        TYPEC(TKC)  , parameter :: TOL = epsilon(1._TKC) * 10_IK
-        TYPEC(TKC)              :: logAddExp_ref
-        TYPEC(TKC)              :: logAddExp
-        TYPEC(TKC)              :: smaller
-        TYPEC(TKC)              :: larger
-        TYPEC(TKC)              :: diff
+        TYPEC(TKG)  , parameter :: TOL = epsilon(1._TKG) * 10_IK
+        TYPEC(TKG)              :: logAddExp_ref
+        TYPEC(TKG)              :: logAddExp
+        TYPEC(TKG)              :: smaller
+        TYPEC(TKG)              :: larger
+        TYPEC(TKG)              :: diff
 
         assertion = .true._LK
         call runTest(cenabled = .true._LK)
@@ -58,7 +58,7 @@
             call setUnifRand(smaller, -huge(smaller) / 10, huge(smaller) / 10)
             call setMinMax(smaller, larger)
 
-            logAddExp_ref = larger + log(1._TKC + exp(smaller - larger))
+            logAddExp_ref = larger + log(1._TKG + exp(smaller - larger))
 
             if (present(cenabled)) then
                 logAddExp = getLogAddExp(smaller, larger, cenabled)
@@ -67,7 +67,7 @@
             end if
 
             diff = logAddExp - logAddExp_ref
-            assertion = real(diff, TKC) < real(TOL, TKC)
+            assertion = real(diff, TKG) < real(TOL, TKG)
 
             call report()
             call test%assert(assertion, desc = "The logAddExp must be computed correctly for two non-overflowing numbers.")

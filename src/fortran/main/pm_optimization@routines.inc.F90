@@ -51,9 +51,9 @@
 #else
 #error  "Unrecognized interface."
 #endif
-        real(RKC)               :: lowf, uppf, fnew, xnew, ulim, q, r
-        real(RKC)   , parameter :: GLIMIT = 100._RKC, GOLDEN = real(GOLDEN_RATIO, RKC)
-        real(RKC)   , parameter :: SMALL = sqrt(epsilon(1._RKC))**3 ! Protects against trying to achieve fractional accuracy for a minimum whose value is exactly zero.
+        real(RKG)               :: lowf, uppf, fnew, xnew, ulim, q, r
+        real(RKG)   , parameter :: GLIMIT = 100._RKG, GOLDEN = real(GOLDEN_RATIO, RKG)
+        real(RKG)   , parameter :: SMALL = sqrt(epsilon(1._RKG))**3 ! Protects against trying to achieve fractional accuracy for a minimum whose value is exactly zero.
         CHECK_ASSERTION(__LINE__, xlow <= xupp, SK_"@setBracketMin(): The condition `xlow < xupp` must hold. xlow, xupp = "//getStr([xlow, xupp]))
         ! Swap `xlow` and `xupp` if needed, to ensure downhill direction from `xlow` to xupp`.
         lowf = getFunc(xlow)
@@ -74,7 +74,7 @@
             q = (xupp - xmin) * (uppf - lowf)
             xnew = xupp - ((xupp - xmin) * q - (xupp - xlow) * r) / (2 * sign(max(abs(q - r), SMALL), q - r))
             ulim = xupp + GLIMIT * (xmin - xupp)
-            if (0._RKC < (xupp - xnew) * (xnew - xmin)) then
+            if (0._RKG < (xupp - xnew) * (xnew - xmin)) then
                 fnew = getFunc(xnew)
                 if (fnew COMPARES_WITH fmin) then
                     xlow = xupp
@@ -89,7 +89,7 @@
                 end if
                 xnew = xmin + GOLDEN * (xmin - xupp)
                 fnew = getFunc(xnew)
-            else if (0._RKC < (xmin - xnew) * (xnew - ulim)) then
+            else if (0._RKG < (xmin - xnew) * (xnew - ulim)) then
                 fnew = getFunc(xnew)
                 if (fnew COMPARES_WITH fmin) then
                     xupp = xmin
@@ -100,7 +100,7 @@
                     fmin = fnew
                     fnew = getFunc(xnew)
                 end if
-            else if ((xnew - ulim) * (ulim - xmin) < 0._RKC) then
+            else if ((xnew - ulim) * (ulim - xmin) < 0._RKG) then
                 xnew = xmin + GOLDEN * (xmin - xupp)
                 fnew = getFunc(xnew)
             else
@@ -132,17 +132,17 @@
         !%%%%%%%%%%%%%%%%%%
 
         integer(IK) :: retin, niter_init
-        real(RKC) :: lowx, uppx, minf, lot
-        integer(IK), parameter :: MAXITER = int(100 * precision(xmin) / 53._RKC, IK)
+        real(RKG) :: lowx, uppx, minf, lot
+        integer(IK), parameter :: MAXITER = int(100 * precision(xmin) / 53._RKG, IK)
         if (present(xlow)) then
             lowx = xlow
         else
-            lowx = 0.1_RKC
+            lowx = 0.1_RKG
         end if
         if (present(xupp)) then
             uppx = xupp
         else
-            uppx = 0.9_RKC
+            uppx = 0.9_RKG
         end if
         if (present(tol)) then
             lot = tol
@@ -155,7 +155,7 @@
             niter_init = MAXITER
         end if
         if (present(xlow) .and. present(xupp)) then
-            xmin = .5_RKC * (xupp - xlow)
+            xmin = .5_RKG * (xupp - xlow)
             minf = getFunc(xmin)
         else
             retin = niter_init
@@ -185,9 +185,9 @@
 #elif   setMinBrent_ENABLED
         !%%%%%%%%%%%%%%%%%%
 
-        real(RKC)   , parameter :: SMALL = sqrt(epsilon(1._RKC))**3 ! Protects against trying to achieve fractional accuracy for a minimum whose value is exactly zero.
-        real(RKC)   , parameter :: GOLEN_MEAN = .5_RKC * (3._RKC - sqrt(5._RKC)) ! Golden Section switch criterion
-        real(RKC)               :: xz, xw, xold, fold, fv, fw, p, q, r, d, etemp, relerr, abstol, tolby2, center
+        real(RKG)   , parameter :: SMALL = sqrt(epsilon(1._RKG))**3 ! Protects against trying to achieve fractional accuracy for a minimum whose value is exactly zero.
+        real(RKG)   , parameter :: GOLEN_MEAN = .5_RKG * (3._RKG - sqrt(5._RKG)) ! Golden Section switch criterion
+        real(RKG)               :: xz, xw, xold, fold, fv, fw, p, q, r, d, etemp, relerr, abstol, tolby2, center
 
         CHECK_ASSERTION(__LINE__, 0 < tol, SK_"@setMinBrent(): The condition `0 < tol` must hold. tol = "//getStr(tol))
         CHECK_ASSERTION(__LINE__, 0 < niter, SK_"@setMinBrent(): The condition `0 < niter` must hold. niter = "//getStr(niter))
@@ -197,25 +197,25 @@
         xw = xmin
         xmin = xmin
         xold = xmin
-        relerr = 0._RKC
+        relerr = 0._RKG
         !fmin = getFunc(xmin)
         fv = fmin
         fw = fmin
         do niter = 1, niter
-            center = .5_RKC * (xlow + xupp)
+            center = .5_RKG * (xlow + xupp)
             abstol = tol * abs(xmin) + SMALL
-            tolby2 = 2._RKC * abstol
-            if (abs(xmin - center) <= (tolby2 - 0.5_RKC * (xupp - xlow))) return
+            tolby2 = 2._RKG * abstol
+            if (abs(xmin - center) <= (tolby2 - 0.5_RKG * (xupp - xlow))) return
             if (abstol < abs(relerr)) then
                 r = (xmin - xw) * (fmin - fv)
                 q = (xmin - xold) * (fmin - fw)
                 p = (xmin - xold) * q - (xmin - xw) * r
-                q = 2.0_RKC * (q - r)
-                if (0._RKC < q) p =  - p
+                q = 2.0_RKG * (q - r)
+                if (0._RKG < q) p =  - p
                 q = abs(q)
                 etemp = relerr
                 relerr = d
-                if (abs(0.5_RKC * q * etemp) <= abs(p) .or. p <= q * (xlow - xmin) .or. q * (xupp - xmin) <= p) then
+                if (abs(0.5_RKG * q * etemp) <= abs(p) .or. p <= q * (xlow - xmin) .or. q * (xupp - xmin) <= p) then
                     if (xmin < center) then
                         relerr = xupp - xmin
                     else
@@ -278,9 +278,9 @@
         !%%%%%%%%%%%%%%%%%%%%%%%%
 
         integer(IK) :: retin
-        real(RKC) :: dirset(size(xmin, 1, IK), size(xmin, 1, IK)), lot, minf
-        integer(IK) , parameter :: MAXITER = int(100 * precision(xmin) / 53._RKC, IK)
-        call setMatInit(dirset, uppLowDia, vupp = 0._RKC, vlow = 0._RKC, vdia = 1._RKC, nrow = size(xmin, 1, IK), ncol = size(xmin, 1, IK), roff = 0_IK, coff = 0_IK)
+        real(RKG) :: dirset(size(xmin, 1, IK), size(xmin, 1, IK)), lot, minf
+        integer(IK) , parameter :: MAXITER = int(100 * precision(xmin) / 53._RKG, IK)
+        call setMatInit(dirset, uppLowDia, vupp = 0._RKG, vlow = 0._RKG, vdia = 1._RKG, nrow = size(xmin, 1, IK), ncol = size(xmin, 1, IK), roff = 0_IK, coff = 0_IK)
         if (present(tol)) then
             lot = tol
         else
@@ -305,19 +305,19 @@
         !%%%%%%%%%%%%%%%%%%%
 
         integer(IK)             :: ndim, idim, ibig, retin
-        real(RKC)               :: diff, fold, fnew, t, xold(size(xmin, 1, IK)), xnew(size(xmin, 1, IK)), xdir(size(xmin, 1, IK)), xtmp(size(xmin, 1, IK))
-        real(RKC)   , parameter :: SMALL = sqrt(epsilon(1._RKC))**3 ! Protects against trying to achieve fractional accuracy for a minimum whose value is exactly zero.
+        real(RKG)               :: diff, fold, fnew, t, xold(size(xmin, 1, IK)), xnew(size(xmin, 1, IK)), xdir(size(xmin, 1, IK)), xtmp(size(xmin, 1, IK))
+        real(RKG)   , parameter :: SMALL = sqrt(epsilon(1._RKG))**3 ! Protects against trying to achieve fractional accuracy for a minimum whose value is exactly zero.
         ndim = size(xmin, 1, IK)
         CHECK_ASSERTION(__LINE__, 0 < tol, SK_"@setMinPowell(): The condition `0 < tol` must hold. tol = "//getStr(tol))
         CHECK_ASSERTION(__LINE__, 0 < niter, SK_"@setMinPowell(): The condition `0 < niter` must hold. niter = "//getStr(niter))
         CHECK_ASSERTION(__LINE__, all(ndim == shape(dirset, IK)), SK_"@setMinPowell(): The condition `all(size(xmin) == shape(dirset))` must hold. size(xmin), shape(dirset) = "//getStr([size(xmin, 1, IK), shape(dirset, IK)]))
-        CHECK_ASSERTION(__LINE__, abs(fmin - getFunc(xmin)) < 100 * epsilon(0._RKC), SK_"@setMinPowell(): The condition `fmin - getFunc(xmin)` must hold. fmin, getFunc(xmin) = "//getStr([fmin, getFunc(xmin)]))
+        CHECK_ASSERTION(__LINE__, abs(fmin - getFunc(xmin)) < 100 * epsilon(0._RKG), SK_"@setMinPowell(): The condition `fmin - getFunc(xmin)` must hold. fmin, getFunc(xmin) = "//getStr([fmin, getFunc(xmin)]))
         retin = niter
         xold = xmin
         do
             fold = fmin
             ibig = 0_IK
-            diff = 0._RKC
+            diff = 0._RKG
             do idim = 1, ndim
                 xdir = dirset(1 : ndim, idim)
                 fnew = fmin
@@ -337,7 +337,7 @@
             CHECK_ASSERTION(__LINE__, ibig /= 0_IK, SK_"@setMinPowell(): Internal error occurred: ibig = 0")
             if (fold < fnew) then
                 t = 2 * (fold - 2 * fmin + fnew) * (fold - fmin - diff)**2 - diff * (fold - fnew)**2
-                if (t < 0._RKC) then
+                if (t < 0._RKG) then
                     call setMinDir() ! minimize along the specified direction.
                     if (retin < niter) return ! error occurred.
                     dirset(1 : ndim, ibig) = dirset(1 : ndim, ndim)
@@ -349,18 +349,18 @@
     contains
 
         function getFuncDir(x) result(func)
-            real(RKC), intent(in)    :: x
-            real(RKC)                :: func
+            real(RKG), intent(in)    :: x
+            real(RKG)                :: func
             xtmp = xmin + x * xdir
             func = getFunc(xtmp)
         end function
 
         subroutine setMinDir()
             integer(IK) :: jdim
-            real(RKC) :: minx, xlow, xupp
+            real(RKG) :: minx, xlow, xupp
             ! \todo: There must be a better initial bracketing guess at each iteration.
-            xlow = 0._RKC
-            xupp = 1._RKC
+            xlow = 0._RKG
+            xupp = 1._RKG
             niter = 1000
             call setBracketMin(getFuncDir, niter, minx, xlow, xupp, fmin)
             if (1000 < niter) then

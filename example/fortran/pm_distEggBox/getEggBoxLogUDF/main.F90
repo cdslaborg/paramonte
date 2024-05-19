@@ -1,7 +1,7 @@
 program example
 
     use pm_kind, only: SK, IK
-    use pm_kind, only: RKC => RK ! all real kinds are supported.
+    use pm_kind, only: RKG => RK ! all real kinds are supported.
     use pm_distEggBox, only: getEggBoxLogUDF
     use pm_arraySpace, only: getLinSpace
     use pm_arraySpace, only: setLinSpace
@@ -16,18 +16,18 @@ program example
     disp = display_type(file = "main.out.F90")
 
     call disp%skip()
-    call disp%show("getEggBoxLogUDF([0._RKC]) ! 1D eggbox")
-    call disp%show( getEggBoxLogUDF([0._RKC]) )
+    call disp%show("getEggBoxLogUDF([0._RKG]) ! 1D eggbox")
+    call disp%show( getEggBoxLogUDF([0._RKG]) )
     call disp%skip()
 
     call disp%skip()
-    call disp%show("getEggBoxLogUDF([0._RKC], [0._RKC], [1._RKC], 5._RKC, 2._RKC) ! 1D eggbox")
-    call disp%show( getEggBoxLogUDF([0._RKC], [0._RKC], [1._RKC], 5._RKC, 2._RKC) )
+    call disp%show("getEggBoxLogUDF([0._RKG], [0._RKG], [1._RKG], 5._RKG, 2._RKG) ! 1D eggbox")
+    call disp%show( getEggBoxLogUDF([0._RKG], [0._RKG], [1._RKG], 5._RKG, 2._RKG) )
     call disp%skip()
 
     call disp%skip()
-    call disp%show("getEggBoxLogUDF([real(RKC) :: 0, 1], mu = [-1._RKC, 1._RKC], sigma = [2._RKC, .5_RKC]) ! 2D EggBox")
-    call disp%show( getEggBoxLogUDF([real(RKC) :: 0, 1], mu = [-1._RKC, 1._RKC], sigma = [2._RKC, .5_RKC]) )
+    call disp%show("getEggBoxLogUDF([real(RKG) :: 0, 1], mu = [-1._RKG, 1._RKG], sigma = [2._RKG, .5_RKG]) ! 2D EggBox")
+    call disp%show( getEggBoxLogUDF([real(RKG) :: 0, 1], mu = [-1._RKG, 1._RKG], sigma = [2._RKG, .5_RKG]) )
     call disp%skip()
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -38,10 +38,10 @@ program example
         use pm_mathSubAdd, only: operator(.subadd.)
         use pm_arrayMembership, only: operator(.inrange.)
         integer(IK) :: fileUnit, i, j
-        real(RKC) , parameter :: signif = 2
-        real(RKC) :: point(1000), density(4), mu(4), sigma(4)
-        mu = [+0._RKC, +0._RKC, +0._RKC, -2._RKC]
-        sigma = [+3._RKC, +1._RKC, +.3_RKC, 1._RKC]
+        real(RKG) , parameter :: signif = 2
+        real(RKG) :: point(1000), density(4), mu(4), sigma(4)
+        mu = [+0._RKG, +0._RKG, +0._RKG, -2._RKG]
+        sigma = [+3._RKG, +1._RKG, +.3_RKG, 1._RKG]
         call setLinSpace( point &
                         , x1 = minval(mu) - signif * sigma(minloc(mu, 1)) &
                         , x2 = maxval(mu) + signif * sigma(maxloc(mu, 1)) &
@@ -60,11 +60,11 @@ program example
         use pm_mathSubAdd, only: operator(.subadd.)
         use pm_arrayMembership, only: operator(.inrange.)
         integer(IK) :: fileUnit, i, j
-        real(RKC)   , parameter :: signif = 2
+        real(RKG)   , parameter :: signif = 2
         integer(IK) , parameter :: ndim = 2, npnt = 500
-        real(RKC) :: grid(ndim, npnt, npnt), mu(ndim), sigma(ndim)
-        mu = [+0._RKC, -2._RKC]
-        sigma = [+3._RKC, +1._RKC]
+        real(RKG) :: grid(ndim, npnt, npnt), mu(ndim), sigma(ndim)
+        mu = [+0._RKG, -2._RKG]
+        sigma = [+3._RKG, +1._RKG]
         do i = 1, ndim
             grid(i, :, :) = spread  ( getLinSpace   ( x1 = mu(i) - signif * sigma(i) &
                                                     , x2 = mu(i) + signif * sigma(i) &

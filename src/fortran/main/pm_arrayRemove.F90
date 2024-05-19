@@ -353,10 +353,10 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedDefComDefIns_D0_D0_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)        , intent(in)                    :: array
-        character(*,SKC)        , intent(in)                    :: pattern
-        character(:,SKC)                        , allocatable   :: ArrayRemoved
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)        , intent(in)                    :: array
+        character(*,SKG)        , intent(in)                    :: pattern
+        character(:,SKG)                        , allocatable   :: ArrayRemoved
     end function
 #endif
 
@@ -365,10 +365,10 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedDefComDefIns_D0_D0_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)        , intent(in)                    :: array
-        character(*,SKC)        , intent(in)                    :: pattern
-        character(:,SKC)                        , allocatable   :: ArrayRemoved
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)        , intent(in)                    :: array
+        character(*,SKG)        , intent(in)                    :: pattern
+        character(:,SKG)                        , allocatable   :: ArrayRemoved
     end function
 #endif
 
@@ -377,10 +377,10 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedDefComDefIns_D0_D0_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)        , intent(in)                    :: array
-        character(*,SKC)        , intent(in)                    :: pattern
-        character(:,SKC)                        , allocatable   :: ArrayRemoved
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)        , intent(in)                    :: array
+        character(*,SKG)        , intent(in)                    :: pattern
+        character(:,SKG)                        , allocatable   :: ArrayRemoved
     end function
 #endif
 
@@ -389,10 +389,10 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedDefComDefIns_D0_D0_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)        , intent(in)                    :: array
-        character(*,SKC)        , intent(in)                    :: pattern
-        character(:,SKC)                        , allocatable   :: ArrayRemoved
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)        , intent(in)                    :: array
+        character(*,SKG)        , intent(in)                    :: pattern
+        character(:,SKG)                        , allocatable   :: ArrayRemoved
     end function
 #endif
 
@@ -401,10 +401,10 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedDefComDefIns_D0_D0_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)        , intent(in)                    :: array
-        character(*,SKC)        , intent(in)                    :: pattern
-        character(:,SKC)                        , allocatable   :: ArrayRemoved
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)        , intent(in)                    :: array
+        character(*,SKG)        , intent(in)                    :: pattern
+        character(:,SKG)                        , allocatable   :: ArrayRemoved
     end function
 #endif
 
@@ -421,11 +421,11 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedCusComDefIns_D0_D0_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)        , intent(in)                    :: array
-        character(*,SKC)        , intent(in)                    :: pattern
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)        , intent(in)                    :: array
+        character(*,SKG)        , intent(in)                    :: pattern
         procedure(logical(LK))                                  :: iseq
-        character(:,SKC)                        , allocatable   :: ArrayRemoved
+        character(:,SKG)                        , allocatable   :: ArrayRemoved
     end function
 #endif
 
@@ -434,11 +434,11 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedCusComDefIns_D0_D0_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)        , intent(in)                    :: array
-        character(*,SKC)        , intent(in)                    :: pattern
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)        , intent(in)                    :: array
+        character(*,SKG)        , intent(in)                    :: pattern
         procedure(logical(LK))                                  :: iseq
-        character(:,SKC)                        , allocatable   :: ArrayRemoved
+        character(:,SKG)                        , allocatable   :: ArrayRemoved
     end function
 #endif
 
@@ -447,11 +447,11 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedCusComDefIns_D0_D0_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)        , intent(in)                    :: array
-        character(*,SKC)        , intent(in)                    :: pattern
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)        , intent(in)                    :: array
+        character(*,SKG)        , intent(in)                    :: pattern
         procedure(logical(LK))                                  :: iseq
-        character(:,SKC)                        , allocatable   :: ArrayRemoved
+        character(:,SKG)                        , allocatable   :: ArrayRemoved
     end function
 #endif
 
@@ -460,11 +460,11 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedCusComDefIns_D0_D0_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)        , intent(in)                    :: array
-        character(*,SKC)        , intent(in)                    :: pattern
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)        , intent(in)                    :: array
+        character(*,SKG)        , intent(in)                    :: pattern
         procedure(logical(LK))                                  :: iseq
-        character(:,SKC)                        , allocatable   :: ArrayRemoved
+        character(:,SKG)                        , allocatable   :: ArrayRemoved
     end function
 #endif
 
@@ -473,11 +473,11 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedCusComDefIns_D0_D0_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)        , intent(in)                    :: array
-        character(*,SKC)        , intent(in)                    :: pattern
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)        , intent(in)                    :: array
+        character(*,SKG)        , intent(in)                    :: pattern
         procedure(logical(LK))                                  :: iseq
-        character(:,SKC)                        , allocatable   :: ArrayRemoved
+        character(:,SKG)                        , allocatable   :: ArrayRemoved
     end function
 #endif
 
@@ -494,13 +494,13 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedDefComCusIns_D0_D0_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)        , intent(in)                    :: array
-        character(*,SKC)        , intent(in)                    :: pattern
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)        , intent(in)                    :: array
+        character(*,SKG)        , intent(in)                    :: pattern
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
         logical(LK)             , intent(in)    , optional      :: unique
-        character(:,SKC)                        , allocatable   :: ArrayRemoved
+        character(:,SKG)                        , allocatable   :: ArrayRemoved
     end function
 #endif
 
@@ -509,13 +509,13 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedDefComCusIns_D0_D0_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)        , intent(in)                    :: array
-        character(*,SKC)        , intent(in)                    :: pattern
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)        , intent(in)                    :: array
+        character(*,SKG)        , intent(in)                    :: pattern
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
         logical(LK)             , intent(in)    , optional      :: unique
-        character(:,SKC)                        , allocatable   :: ArrayRemoved
+        character(:,SKG)                        , allocatable   :: ArrayRemoved
     end function
 #endif
 
@@ -524,13 +524,13 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedDefComCusIns_D0_D0_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)        , intent(in)                    :: array
-        character(*,SKC)        , intent(in)                    :: pattern
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)        , intent(in)                    :: array
+        character(*,SKG)        , intent(in)                    :: pattern
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
         logical(LK)             , intent(in)    , optional      :: unique
-        character(:,SKC)                        , allocatable   :: ArrayRemoved
+        character(:,SKG)                        , allocatable   :: ArrayRemoved
     end function
 #endif
 
@@ -539,13 +539,13 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedDefComCusIns_D0_D0_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)        , intent(in)                    :: array
-        character(*,SKC)        , intent(in)                    :: pattern
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)        , intent(in)                    :: array
+        character(*,SKG)        , intent(in)                    :: pattern
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
         logical(LK)             , intent(in)    , optional      :: unique
-        character(:,SKC)                        , allocatable   :: ArrayRemoved
+        character(:,SKG)                        , allocatable   :: ArrayRemoved
     end function
 #endif
 
@@ -554,13 +554,13 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedDefComCusIns_D0_D0_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)        , intent(in)                    :: array
-        character(*,SKC)        , intent(in)                    :: pattern
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)        , intent(in)                    :: array
+        character(*,SKG)        , intent(in)                    :: pattern
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
         logical(LK)             , intent(in)    , optional      :: unique
-        character(:,SKC)                        , allocatable   :: ArrayRemoved
+        character(:,SKG)                        , allocatable   :: ArrayRemoved
     end function
 #endif
 
@@ -577,14 +577,14 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedCusComCusIns_D0_D0_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)        , intent(in)                    :: array
-        character(*,SKC)        , intent(in)                    :: pattern
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)        , intent(in)                    :: array
+        character(*,SKG)        , intent(in)                    :: pattern
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
         logical(LK)             , intent(in)    , optional      :: unique
-        character(:,SKC)                        , allocatable   :: ArrayRemoved
+        character(:,SKG)                        , allocatable   :: ArrayRemoved
     end function
 #endif
 
@@ -593,14 +593,14 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedCusComCusIns_D0_D0_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)        , intent(in)                    :: array
-        character(*,SKC)        , intent(in)                    :: pattern
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)        , intent(in)                    :: array
+        character(*,SKG)        , intent(in)                    :: pattern
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
         logical(LK)             , intent(in)    , optional      :: unique
-        character(:,SKC)                        , allocatable   :: ArrayRemoved
+        character(:,SKG)                        , allocatable   :: ArrayRemoved
     end function
 #endif
 
@@ -609,14 +609,14 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedCusComCusIns_D0_D0_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)        , intent(in)                    :: array
-        character(*,SKC)        , intent(in)                    :: pattern
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)        , intent(in)                    :: array
+        character(*,SKG)        , intent(in)                    :: pattern
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
         logical(LK)             , intent(in)    , optional      :: unique
-        character(:,SKC)                        , allocatable   :: ArrayRemoved
+        character(:,SKG)                        , allocatable   :: ArrayRemoved
     end function
 #endif
 
@@ -625,14 +625,14 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedCusComCusIns_D0_D0_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)        , intent(in)                    :: array
-        character(*,SKC)        , intent(in)                    :: pattern
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)        , intent(in)                    :: array
+        character(*,SKG)        , intent(in)                    :: pattern
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
         logical(LK)             , intent(in)    , optional      :: unique
-        character(:,SKC)                        , allocatable   :: ArrayRemoved
+        character(:,SKG)                        , allocatable   :: ArrayRemoved
     end function
 #endif
 
@@ -641,14 +641,14 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedCusComCusIns_D0_D0_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)        , intent(in)                    :: array
-        character(*,SKC)        , intent(in)                    :: pattern
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)        , intent(in)                    :: array
+        character(*,SKG)        , intent(in)                    :: pattern
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
         logical(LK)             , intent(in)    , optional      :: unique
-        character(:,SKC)                        , allocatable   :: ArrayRemoved
+        character(:,SKG)                        , allocatable   :: ArrayRemoved
     end function
 #endif
 
@@ -671,10 +671,10 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedDefComDefIns_D1_D0_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)        , intent(in)    , contiguous    :: array(:)
-        character(*,SKC)        , intent(in)                    :: pattern
-        character(LEN_ARRAY, SKC)               , allocatable   :: ArrayRemoved(:)
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)        , intent(in)    , contiguous    :: array(:)
+        character(*,SKG)        , intent(in)                    :: pattern
+        character(LEN_ARRAY, SKG)               , allocatable   :: ArrayRemoved(:)
     end function
 #endif
 
@@ -683,10 +683,10 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedDefComDefIns_D1_D0_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)        , intent(in)    , contiguous    :: array(:)
-        character(*,SKC)        , intent(in)                    :: pattern
-        character(LEN_ARRAY, SKC)               , allocatable   :: ArrayRemoved(:)
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)        , intent(in)    , contiguous    :: array(:)
+        character(*,SKG)        , intent(in)                    :: pattern
+        character(LEN_ARRAY, SKG)               , allocatable   :: ArrayRemoved(:)
     end function
 #endif
 
@@ -695,10 +695,10 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedDefComDefIns_D1_D0_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)        , intent(in)    , contiguous    :: array(:)
-        character(*,SKC)        , intent(in)                    :: pattern
-        character(LEN_ARRAY, SKC)               , allocatable   :: ArrayRemoved(:)
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)        , intent(in)    , contiguous    :: array(:)
+        character(*,SKG)        , intent(in)                    :: pattern
+        character(LEN_ARRAY, SKG)               , allocatable   :: ArrayRemoved(:)
     end function
 #endif
 
@@ -707,10 +707,10 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedDefComDefIns_D1_D0_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)        , intent(in)    , contiguous    :: array(:)
-        character(*,SKC)        , intent(in)                    :: pattern
-        character(LEN_ARRAY, SKC)               , allocatable   :: ArrayRemoved(:)
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)        , intent(in)    , contiguous    :: array(:)
+        character(*,SKG)        , intent(in)                    :: pattern
+        character(LEN_ARRAY, SKG)               , allocatable   :: ArrayRemoved(:)
     end function
 #endif
 
@@ -719,10 +719,10 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedDefComDefIns_D1_D0_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)        , intent(in)    , contiguous    :: array(:)
-        character(*,SKC)        , intent(in)                    :: pattern
-        character(LEN_ARRAY, SKC)               , allocatable   :: ArrayRemoved(:)
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)        , intent(in)    , contiguous    :: array(:)
+        character(*,SKG)        , intent(in)                    :: pattern
+        character(LEN_ARRAY, SKG)               , allocatable   :: ArrayRemoved(:)
     end function
 #endif
 
@@ -733,10 +733,10 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedDefComDefIns_D1_D0_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)            , intent(in)    , contiguous    :: array(:)
-        integer(IKC)            , intent(in)                    :: pattern
-        integer(IKC)                            , allocatable   :: ArrayRemoved(:)
+        use pm_kind, only: IKG => IK5
+        integer(IKG)            , intent(in)    , contiguous    :: array(:)
+        integer(IKG)            , intent(in)                    :: pattern
+        integer(IKG)                            , allocatable   :: ArrayRemoved(:)
     end function
 #endif
 
@@ -745,10 +745,10 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedDefComDefIns_D1_D0_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)            , intent(in)    , contiguous    :: array(:)
-        integer(IKC)            , intent(in)                    :: pattern
-        integer(IKC)                            , allocatable   :: ArrayRemoved(:)
+        use pm_kind, only: IKG => IK4
+        integer(IKG)            , intent(in)    , contiguous    :: array(:)
+        integer(IKG)            , intent(in)                    :: pattern
+        integer(IKG)                            , allocatable   :: ArrayRemoved(:)
     end function
 #endif
 
@@ -757,10 +757,10 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedDefComDefIns_D1_D0_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)            , intent(in)    , contiguous    :: array(:)
-        integer(IKC)            , intent(in)                    :: pattern
-        integer(IKC)                            , allocatable   :: ArrayRemoved(:)
+        use pm_kind, only: IKG => IK3
+        integer(IKG)            , intent(in)    , contiguous    :: array(:)
+        integer(IKG)            , intent(in)                    :: pattern
+        integer(IKG)                            , allocatable   :: ArrayRemoved(:)
     end function
 #endif
 
@@ -769,10 +769,10 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedDefComDefIns_D1_D0_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)            , intent(in)    , contiguous    :: array(:)
-        integer(IKC)            , intent(in)                    :: pattern
-        integer(IKC)                            , allocatable   :: ArrayRemoved(:)
+        use pm_kind, only: IKG => IK2
+        integer(IKG)            , intent(in)    , contiguous    :: array(:)
+        integer(IKG)            , intent(in)                    :: pattern
+        integer(IKG)                            , allocatable   :: ArrayRemoved(:)
     end function
 #endif
 
@@ -781,10 +781,10 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedDefComDefIns_D1_D0_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)            , intent(in)    , contiguous    :: array(:)
-        integer(IKC)            , intent(in)                    :: pattern
-        integer(IKC)                            , allocatable   :: ArrayRemoved(:)
+        use pm_kind, only: IKG => IK1
+        integer(IKG)            , intent(in)    , contiguous    :: array(:)
+        integer(IKG)            , intent(in)                    :: pattern
+        integer(IKG)                            , allocatable   :: ArrayRemoved(:)
     end function
 #endif
 
@@ -795,10 +795,10 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedDefComDefIns_D1_D0_LK5
 #endif
-        use pm_kind, only: LKC => LK5
-        logical(LKC)            , intent(in)    , contiguous    :: array(:)
-        logical(LKC)            , intent(in)                    :: pattern
-        logical(LKC)                            , allocatable   :: ArrayRemoved(:)
+        use pm_kind, only: LKG => LK5
+        logical(LKG)            , intent(in)    , contiguous    :: array(:)
+        logical(LKG)            , intent(in)                    :: pattern
+        logical(LKG)                            , allocatable   :: ArrayRemoved(:)
     end function
 #endif
 
@@ -807,10 +807,10 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedDefComDefIns_D1_D0_LK4
 #endif
-        use pm_kind, only: LKC => LK4
-        logical(LKC)            , intent(in)    , contiguous    :: array(:)
-        logical(LKC)            , intent(in)                    :: pattern
-        logical(LKC)                            , allocatable   :: ArrayRemoved(:)
+        use pm_kind, only: LKG => LK4
+        logical(LKG)            , intent(in)    , contiguous    :: array(:)
+        logical(LKG)            , intent(in)                    :: pattern
+        logical(LKG)                            , allocatable   :: ArrayRemoved(:)
     end function
 #endif
 
@@ -819,10 +819,10 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedDefComDefIns_D1_D0_LK3
 #endif
-        use pm_kind, only: LKC => LK3
-        logical(LKC)            , intent(in)    , contiguous    :: array(:)
-        logical(LKC)            , intent(in)                    :: pattern
-        logical(LKC)                            , allocatable   :: ArrayRemoved(:)
+        use pm_kind, only: LKG => LK3
+        logical(LKG)            , intent(in)    , contiguous    :: array(:)
+        logical(LKG)            , intent(in)                    :: pattern
+        logical(LKG)                            , allocatable   :: ArrayRemoved(:)
     end function
 #endif
 
@@ -831,10 +831,10 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedDefComDefIns_D1_D0_LK2
 #endif
-        use pm_kind, only: LKC => LK2
-        logical(LKC)            , intent(in)    , contiguous    :: array(:)
-        logical(LKC)            , intent(in)                    :: pattern
-        logical(LKC)                            , allocatable   :: ArrayRemoved(:)
+        use pm_kind, only: LKG => LK2
+        logical(LKG)            , intent(in)    , contiguous    :: array(:)
+        logical(LKG)            , intent(in)                    :: pattern
+        logical(LKG)                            , allocatable   :: ArrayRemoved(:)
     end function
 #endif
 
@@ -843,10 +843,10 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedDefComDefIns_D1_D0_LK1
 #endif
-        use pm_kind, only: LKC => LK1
-        logical(LKC)            , intent(in)    , contiguous    :: array(:)
-        logical(LKC)            , intent(in)                    :: pattern
-        logical(LKC)                            , allocatable   :: ArrayRemoved(:)
+        use pm_kind, only: LKG => LK1
+        logical(LKG)            , intent(in)    , contiguous    :: array(:)
+        logical(LKG)            , intent(in)                    :: pattern
+        logical(LKG)                            , allocatable   :: ArrayRemoved(:)
     end function
 #endif
 
@@ -857,10 +857,10 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedDefComDefIns_D1_D0_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)            , intent(in)    , contiguous    :: array(:)
-        complex(CKC)            , intent(in)                    :: pattern
-        complex(CKC)                            , allocatable   :: ArrayRemoved(:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG)            , intent(in)    , contiguous    :: array(:)
+        complex(CKG)            , intent(in)                    :: pattern
+        complex(CKG)                            , allocatable   :: ArrayRemoved(:)
     end function
 #endif
 
@@ -869,10 +869,10 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedDefComDefIns_D1_D0_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)            , intent(in)    , contiguous    :: array(:)
-        complex(CKC)            , intent(in)                    :: pattern
-        complex(CKC)                            , allocatable   :: ArrayRemoved(:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG)            , intent(in)    , contiguous    :: array(:)
+        complex(CKG)            , intent(in)                    :: pattern
+        complex(CKG)                            , allocatable   :: ArrayRemoved(:)
     end function
 #endif
 
@@ -881,10 +881,10 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedDefComDefIns_D1_D0_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)            , intent(in)    , contiguous    :: array(:)
-        complex(CKC)            , intent(in)                    :: pattern
-        complex(CKC)                            , allocatable   :: ArrayRemoved(:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG)            , intent(in)    , contiguous    :: array(:)
+        complex(CKG)            , intent(in)                    :: pattern
+        complex(CKG)                            , allocatable   :: ArrayRemoved(:)
     end function
 #endif
 
@@ -893,10 +893,10 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedDefComDefIns_D1_D0_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)            , intent(in)    , contiguous    :: array(:)
-        complex(CKC)            , intent(in)                    :: pattern
-        complex(CKC)                            , allocatable   :: ArrayRemoved(:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG)            , intent(in)    , contiguous    :: array(:)
+        complex(CKG)            , intent(in)                    :: pattern
+        complex(CKG)                            , allocatable   :: ArrayRemoved(:)
     end function
 #endif
 
@@ -905,10 +905,10 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedDefComDefIns_D1_D0_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)            , intent(in)    , contiguous    :: array(:)
-        complex(CKC)            , intent(in)                    :: pattern
-        complex(CKC)                            , allocatable   :: ArrayRemoved(:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG)            , intent(in)    , contiguous    :: array(:)
+        complex(CKG)            , intent(in)                    :: pattern
+        complex(CKG)                            , allocatable   :: ArrayRemoved(:)
     end function
 #endif
 
@@ -919,10 +919,10 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedDefComDefIns_D1_D0_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)               , intent(in)    , contiguous    :: array(:)
-        real(RKC)               , intent(in)                    :: pattern
-        real(RKC)                               , allocatable   :: ArrayRemoved(:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)               , intent(in)    , contiguous    :: array(:)
+        real(RKG)               , intent(in)                    :: pattern
+        real(RKG)                               , allocatable   :: ArrayRemoved(:)
     end function
 #endif
 
@@ -931,10 +931,10 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedDefComDefIns_D1_D0_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)               , intent(in)    , contiguous    :: array(:)
-        real(RKC)               , intent(in)                    :: pattern
-        real(RKC)                               , allocatable   :: ArrayRemoved(:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)               , intent(in)    , contiguous    :: array(:)
+        real(RKG)               , intent(in)                    :: pattern
+        real(RKG)                               , allocatable   :: ArrayRemoved(:)
     end function
 #endif
 
@@ -943,10 +943,10 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedDefComDefIns_D1_D0_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)               , intent(in)    , contiguous    :: array(:)
-        real(RKC)               , intent(in)                    :: pattern
-        real(RKC)                               , allocatable   :: ArrayRemoved(:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)               , intent(in)    , contiguous    :: array(:)
+        real(RKG)               , intent(in)                    :: pattern
+        real(RKG)                               , allocatable   :: ArrayRemoved(:)
     end function
 #endif
 
@@ -955,10 +955,10 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedDefComDefIns_D1_D0_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)               , intent(in)    , contiguous    :: array(:)
-        real(RKC)               , intent(in)                    :: pattern
-        real(RKC)                               , allocatable   :: ArrayRemoved(:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)               , intent(in)    , contiguous    :: array(:)
+        real(RKG)               , intent(in)                    :: pattern
+        real(RKG)                               , allocatable   :: ArrayRemoved(:)
     end function
 #endif
 
@@ -967,10 +967,10 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedDefComDefIns_D1_D0_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)               , intent(in)    , contiguous    :: array(:)
-        real(RKC)               , intent(in)                    :: pattern
-        real(RKC)                               , allocatable   :: ArrayRemoved(:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)               , intent(in)    , contiguous    :: array(:)
+        real(RKG)               , intent(in)                    :: pattern
+        real(RKG)                               , allocatable   :: ArrayRemoved(:)
     end function
 #endif
 
@@ -987,11 +987,11 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedCusComDefIns_D1_D0_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)        , intent(in)    , contiguous    :: array(:)
-        character(*,SKC)        , intent(in)                    :: pattern
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)        , intent(in)    , contiguous    :: array(:)
+        character(*,SKG)        , intent(in)                    :: pattern
         procedure(logical(LK))                                  :: iseq
-        character(LEN_ARRAY, SKC)               , allocatable   :: ArrayRemoved(:)
+        character(LEN_ARRAY, SKG)               , allocatable   :: ArrayRemoved(:)
     end function
 #endif
 
@@ -1000,11 +1000,11 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedCusComDefIns_D1_D0_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)        , intent(in)    , contiguous    :: array(:)
-        character(*,SKC)        , intent(in)                    :: pattern
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)        , intent(in)    , contiguous    :: array(:)
+        character(*,SKG)        , intent(in)                    :: pattern
         procedure(logical(LK))                                  :: iseq
-        character(LEN_ARRAY, SKC)               , allocatable   :: ArrayRemoved(:)
+        character(LEN_ARRAY, SKG)               , allocatable   :: ArrayRemoved(:)
     end function
 #endif
 
@@ -1013,11 +1013,11 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedCusComDefIns_D1_D0_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)        , intent(in)    , contiguous    :: array(:)
-        character(*,SKC)        , intent(in)                    :: pattern
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)        , intent(in)    , contiguous    :: array(:)
+        character(*,SKG)        , intent(in)                    :: pattern
         procedure(logical(LK))                                  :: iseq
-        character(LEN_ARRAY, SKC)               , allocatable   :: ArrayRemoved(:)
+        character(LEN_ARRAY, SKG)               , allocatable   :: ArrayRemoved(:)
     end function
 #endif
 
@@ -1026,11 +1026,11 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedCusComDefIns_D1_D0_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)        , intent(in)    , contiguous    :: array(:)
-        character(*,SKC)        , intent(in)                    :: pattern
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)        , intent(in)    , contiguous    :: array(:)
+        character(*,SKG)        , intent(in)                    :: pattern
         procedure(logical(LK))                                  :: iseq
-        character(LEN_ARRAY, SKC)               , allocatable   :: ArrayRemoved(:)
+        character(LEN_ARRAY, SKG)               , allocatable   :: ArrayRemoved(:)
     end function
 #endif
 
@@ -1039,11 +1039,11 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedCusComDefIns_D1_D0_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)        , intent(in)    , contiguous    :: array(:)
-        character(*,SKC)        , intent(in)                    :: pattern
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)        , intent(in)    , contiguous    :: array(:)
+        character(*,SKG)        , intent(in)                    :: pattern
         procedure(logical(LK))                                  :: iseq
-        character(LEN_ARRAY, SKC)               , allocatable   :: ArrayRemoved(:)
+        character(LEN_ARRAY, SKG)               , allocatable   :: ArrayRemoved(:)
     end function
 #endif
 
@@ -1054,11 +1054,11 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedCusComDefIns_D1_D0_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)            , intent(in)    , contiguous    :: array(:)
-        integer(IKC)            , intent(in)                    :: pattern
+        use pm_kind, only: IKG => IK5
+        integer(IKG)            , intent(in)    , contiguous    :: array(:)
+        integer(IKG)            , intent(in)                    :: pattern
         procedure(logical(LK))                                  :: iseq
-        integer(IKC)                            , allocatable   :: ArrayRemoved(:)
+        integer(IKG)                            , allocatable   :: ArrayRemoved(:)
     end function
 #endif
 
@@ -1067,11 +1067,11 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedCusComDefIns_D1_D0_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)            , intent(in)    , contiguous    :: array(:)
-        integer(IKC)            , intent(in)                    :: pattern
+        use pm_kind, only: IKG => IK4
+        integer(IKG)            , intent(in)    , contiguous    :: array(:)
+        integer(IKG)            , intent(in)                    :: pattern
         procedure(logical(LK))                                  :: iseq
-        integer(IKC)                            , allocatable   :: ArrayRemoved(:)
+        integer(IKG)                            , allocatable   :: ArrayRemoved(:)
     end function
 #endif
 
@@ -1080,11 +1080,11 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedCusComDefIns_D1_D0_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)            , intent(in)    , contiguous    :: array(:)
-        integer(IKC)            , intent(in)                    :: pattern
+        use pm_kind, only: IKG => IK3
+        integer(IKG)            , intent(in)    , contiguous    :: array(:)
+        integer(IKG)            , intent(in)                    :: pattern
         procedure(logical(LK))                                  :: iseq
-        integer(IKC)                            , allocatable   :: ArrayRemoved(:)
+        integer(IKG)                            , allocatable   :: ArrayRemoved(:)
     end function
 #endif
 
@@ -1093,11 +1093,11 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedCusComDefIns_D1_D0_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)            , intent(in)    , contiguous    :: array(:)
-        integer(IKC)            , intent(in)                    :: pattern
+        use pm_kind, only: IKG => IK2
+        integer(IKG)            , intent(in)    , contiguous    :: array(:)
+        integer(IKG)            , intent(in)                    :: pattern
         procedure(logical(LK))                                  :: iseq
-        integer(IKC)                            , allocatable   :: ArrayRemoved(:)
+        integer(IKG)                            , allocatable   :: ArrayRemoved(:)
     end function
 #endif
 
@@ -1106,11 +1106,11 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedCusComDefIns_D1_D0_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)            , intent(in)    , contiguous    :: array(:)
-        integer(IKC)            , intent(in)                    :: pattern
+        use pm_kind, only: IKG => IK1
+        integer(IKG)            , intent(in)    , contiguous    :: array(:)
+        integer(IKG)            , intent(in)                    :: pattern
         procedure(logical(LK))                                  :: iseq
-        integer(IKC)                            , allocatable   :: ArrayRemoved(:)
+        integer(IKG)                            , allocatable   :: ArrayRemoved(:)
     end function
 #endif
 
@@ -1121,11 +1121,11 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedCusComDefIns_D1_D0_LK5
 #endif
-        use pm_kind, only: LKC => LK5
-        logical(LKC)            , intent(in)    , contiguous    :: array(:)
-        logical(LKC)            , intent(in)                    :: pattern
+        use pm_kind, only: LKG => LK5
+        logical(LKG)            , intent(in)    , contiguous    :: array(:)
+        logical(LKG)            , intent(in)                    :: pattern
         procedure(logical(LK))                                  :: iseq
-        logical(LKC)                            , allocatable   :: ArrayRemoved(:)
+        logical(LKG)                            , allocatable   :: ArrayRemoved(:)
     end function
 #endif
 
@@ -1134,11 +1134,11 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedCusComDefIns_D1_D0_LK4
 #endif
-        use pm_kind, only: LKC => LK4
-        logical(LKC)            , intent(in)    , contiguous    :: array(:)
-        logical(LKC)            , intent(in)                    :: pattern
+        use pm_kind, only: LKG => LK4
+        logical(LKG)            , intent(in)    , contiguous    :: array(:)
+        logical(LKG)            , intent(in)                    :: pattern
         procedure(logical(LK))                                  :: iseq
-        logical(LKC)                            , allocatable   :: ArrayRemoved(:)
+        logical(LKG)                            , allocatable   :: ArrayRemoved(:)
     end function
 #endif
 
@@ -1147,11 +1147,11 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedCusComDefIns_D1_D0_LK3
 #endif
-        use pm_kind, only: LKC => LK3
-        logical(LKC)            , intent(in)    , contiguous    :: array(:)
-        logical(LKC)            , intent(in)                    :: pattern
+        use pm_kind, only: LKG => LK3
+        logical(LKG)            , intent(in)    , contiguous    :: array(:)
+        logical(LKG)            , intent(in)                    :: pattern
         procedure(logical(LK))                                  :: iseq
-        logical(LKC)                            , allocatable   :: ArrayRemoved(:)
+        logical(LKG)                            , allocatable   :: ArrayRemoved(:)
     end function
 #endif
 
@@ -1160,11 +1160,11 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedCusComDefIns_D1_D0_LK2
 #endif
-        use pm_kind, only: LKC => LK2
-        logical(LKC)            , intent(in)    , contiguous    :: array(:)
-        logical(LKC)            , intent(in)                    :: pattern
+        use pm_kind, only: LKG => LK2
+        logical(LKG)            , intent(in)    , contiguous    :: array(:)
+        logical(LKG)            , intent(in)                    :: pattern
         procedure(logical(LK))                                  :: iseq
-        logical(LKC)                            , allocatable   :: ArrayRemoved(:)
+        logical(LKG)                            , allocatable   :: ArrayRemoved(:)
     end function
 #endif
 
@@ -1173,11 +1173,11 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedCusComDefIns_D1_D0_LK1
 #endif
-        use pm_kind, only: LKC => LK1
-        logical(LKC)            , intent(in)    , contiguous    :: array(:)
-        logical(LKC)            , intent(in)                    :: pattern
+        use pm_kind, only: LKG => LK1
+        logical(LKG)            , intent(in)    , contiguous    :: array(:)
+        logical(LKG)            , intent(in)                    :: pattern
         procedure(logical(LK))                                  :: iseq
-        logical(LKC)                            , allocatable   :: ArrayRemoved(:)
+        logical(LKG)                            , allocatable   :: ArrayRemoved(:)
     end function
 #endif
 
@@ -1188,11 +1188,11 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedCusComDefIns_D1_D0_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)            , intent(in)    , contiguous    :: array(:)
-        complex(CKC)            , intent(in)                    :: pattern
+        use pm_kind, only: CKG => CK5
+        complex(CKG)            , intent(in)    , contiguous    :: array(:)
+        complex(CKG)            , intent(in)                    :: pattern
         procedure(logical(LK))                                  :: iseq
-        complex(CKC)                            , allocatable   :: ArrayRemoved(:)
+        complex(CKG)                            , allocatable   :: ArrayRemoved(:)
     end function
 #endif
 
@@ -1201,11 +1201,11 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedCusComDefIns_D1_D0_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)            , intent(in)    , contiguous    :: array(:)
-        complex(CKC)            , intent(in)                    :: pattern
+        use pm_kind, only: CKG => CK4
+        complex(CKG)            , intent(in)    , contiguous    :: array(:)
+        complex(CKG)            , intent(in)                    :: pattern
         procedure(logical(LK))                                  :: iseq
-        complex(CKC)                            , allocatable   :: ArrayRemoved(:)
+        complex(CKG)                            , allocatable   :: ArrayRemoved(:)
     end function
 #endif
 
@@ -1214,11 +1214,11 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedCusComDefIns_D1_D0_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)            , intent(in)    , contiguous    :: array(:)
-        complex(CKC)            , intent(in)                    :: pattern
+        use pm_kind, only: CKG => CK3
+        complex(CKG)            , intent(in)    , contiguous    :: array(:)
+        complex(CKG)            , intent(in)                    :: pattern
         procedure(logical(LK))                                  :: iseq
-        complex(CKC)                            , allocatable   :: ArrayRemoved(:)
+        complex(CKG)                            , allocatable   :: ArrayRemoved(:)
     end function
 #endif
 
@@ -1227,11 +1227,11 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedCusComDefIns_D1_D0_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)            , intent(in)    , contiguous    :: array(:)
-        complex(CKC)            , intent(in)                    :: pattern
+        use pm_kind, only: CKG => CK2
+        complex(CKG)            , intent(in)    , contiguous    :: array(:)
+        complex(CKG)            , intent(in)                    :: pattern
         procedure(logical(LK))                                  :: iseq
-        complex(CKC)                            , allocatable   :: ArrayRemoved(:)
+        complex(CKG)                            , allocatable   :: ArrayRemoved(:)
     end function
 #endif
 
@@ -1240,11 +1240,11 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedCusComDefIns_D1_D0_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)            , intent(in)    , contiguous    :: array(:)
-        complex(CKC)            , intent(in)                    :: pattern
+        use pm_kind, only: CKG => CK1
+        complex(CKG)            , intent(in)    , contiguous    :: array(:)
+        complex(CKG)            , intent(in)                    :: pattern
         procedure(logical(LK))                                  :: iseq
-        complex(CKC)                            , allocatable   :: ArrayRemoved(:)
+        complex(CKG)                            , allocatable   :: ArrayRemoved(:)
     end function
 #endif
 
@@ -1255,11 +1255,11 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedCusComDefIns_D1_D0_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)               , intent(in)    , contiguous    :: array(:)
-        real(RKC)               , intent(in)                    :: pattern
+        use pm_kind, only: RKG => RK5
+        real(RKG)               , intent(in)    , contiguous    :: array(:)
+        real(RKG)               , intent(in)                    :: pattern
         procedure(logical(LK))                                  :: iseq
-        real(RKC)                               , allocatable   :: ArrayRemoved(:)
+        real(RKG)                               , allocatable   :: ArrayRemoved(:)
     end function
 #endif
 
@@ -1268,11 +1268,11 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedCusComDefIns_D1_D0_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)               , intent(in)    , contiguous    :: array(:)
-        real(RKC)               , intent(in)                    :: pattern
+        use pm_kind, only: RKG => RK4
+        real(RKG)               , intent(in)    , contiguous    :: array(:)
+        real(RKG)               , intent(in)                    :: pattern
         procedure(logical(LK))                                  :: iseq
-        real(RKC)                               , allocatable   :: ArrayRemoved(:)
+        real(RKG)                               , allocatable   :: ArrayRemoved(:)
     end function
 #endif
 
@@ -1281,11 +1281,11 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedCusComDefIns_D1_D0_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)               , intent(in)    , contiguous    :: array(:)
-        real(RKC)               , intent(in)                    :: pattern
+        use pm_kind, only: RKG => RK3
+        real(RKG)               , intent(in)    , contiguous    :: array(:)
+        real(RKG)               , intent(in)                    :: pattern
         procedure(logical(LK))                                  :: iseq
-        real(RKC)                               , allocatable   :: ArrayRemoved(:)
+        real(RKG)                               , allocatable   :: ArrayRemoved(:)
     end function
 #endif
 
@@ -1294,11 +1294,11 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedCusComDefIns_D1_D0_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)               , intent(in)    , contiguous    :: array(:)
-        real(RKC)               , intent(in)                    :: pattern
+        use pm_kind, only: RKG => RK2
+        real(RKG)               , intent(in)    , contiguous    :: array(:)
+        real(RKG)               , intent(in)                    :: pattern
         procedure(logical(LK))                                  :: iseq
-        real(RKC)                               , allocatable   :: ArrayRemoved(:)
+        real(RKG)                               , allocatable   :: ArrayRemoved(:)
     end function
 #endif
 
@@ -1307,11 +1307,11 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedCusComDefIns_D1_D0_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)               , intent(in)    , contiguous    :: array(:)
-        real(RKC)               , intent(in)                    :: pattern
+        use pm_kind, only: RKG => RK1
+        real(RKG)               , intent(in)    , contiguous    :: array(:)
+        real(RKG)               , intent(in)                    :: pattern
         procedure(logical(LK))                                  :: iseq
-        real(RKC)                               , allocatable   :: ArrayRemoved(:)
+        real(RKG)                               , allocatable   :: ArrayRemoved(:)
     end function
 #endif
 
@@ -1328,13 +1328,13 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedDefComCusIns_D1_D0_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)        , intent(in)    , contiguous    :: array(:)
-        character(*,SKC)        , intent(in)                    :: pattern
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)        , intent(in)    , contiguous    :: array(:)
+        character(*,SKG)        , intent(in)                    :: pattern
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
         logical(LK)             , intent(in)    , optional      :: unique
-        character(LEN_ARRAY, SKC)               , allocatable   :: ArrayRemoved(:)
+        character(LEN_ARRAY, SKG)               , allocatable   :: ArrayRemoved(:)
     end function
 #endif
 
@@ -1343,13 +1343,13 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedDefComCusIns_D1_D0_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)        , intent(in)    , contiguous    :: array(:)
-        character(*,SKC)        , intent(in)                    :: pattern
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)        , intent(in)    , contiguous    :: array(:)
+        character(*,SKG)        , intent(in)                    :: pattern
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
         logical(LK)             , intent(in)    , optional      :: unique
-        character(LEN_ARRAY, SKC)               , allocatable   :: ArrayRemoved(:)
+        character(LEN_ARRAY, SKG)               , allocatable   :: ArrayRemoved(:)
     end function
 #endif
 
@@ -1358,13 +1358,13 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedDefComCusIns_D1_D0_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)        , intent(in)    , contiguous    :: array(:)
-        character(*,SKC)        , intent(in)                    :: pattern
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)        , intent(in)    , contiguous    :: array(:)
+        character(*,SKG)        , intent(in)                    :: pattern
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
         logical(LK)             , intent(in)    , optional      :: unique
-        character(LEN_ARRAY, SKC)               , allocatable   :: ArrayRemoved(:)
+        character(LEN_ARRAY, SKG)               , allocatable   :: ArrayRemoved(:)
     end function
 #endif
 
@@ -1373,13 +1373,13 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedDefComCusIns_D1_D0_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)        , intent(in)    , contiguous    :: array(:)
-        character(*,SKC)        , intent(in)                    :: pattern
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)        , intent(in)    , contiguous    :: array(:)
+        character(*,SKG)        , intent(in)                    :: pattern
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
         logical(LK)             , intent(in)    , optional      :: unique
-        character(LEN_ARRAY, SKC)               , allocatable   :: ArrayRemoved(:)
+        character(LEN_ARRAY, SKG)               , allocatable   :: ArrayRemoved(:)
     end function
 #endif
 
@@ -1388,13 +1388,13 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedDefComCusIns_D1_D0_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)        , intent(in)    , contiguous    :: array(:)
-        character(*,SKC)        , intent(in)                    :: pattern
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)        , intent(in)    , contiguous    :: array(:)
+        character(*,SKG)        , intent(in)                    :: pattern
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
         logical(LK)             , intent(in)    , optional      :: unique
-        character(LEN_ARRAY, SKC)               , allocatable   :: ArrayRemoved(:)
+        character(LEN_ARRAY, SKG)               , allocatable   :: ArrayRemoved(:)
     end function
 #endif
 
@@ -1405,13 +1405,13 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedDefComCusIns_D1_D0_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)            , intent(in)    , contiguous    :: array(:)
-        integer(IKC)            , intent(in)                    :: pattern
+        use pm_kind, only: IKG => IK5
+        integer(IKG)            , intent(in)    , contiguous    :: array(:)
+        integer(IKG)            , intent(in)                    :: pattern
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
         logical(LK)             , intent(in)    , optional      :: unique
-        integer(IKC)                            , allocatable   :: ArrayRemoved(:)
+        integer(IKG)                            , allocatable   :: ArrayRemoved(:)
     end function
 #endif
 
@@ -1420,13 +1420,13 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedDefComCusIns_D1_D0_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)            , intent(in)    , contiguous    :: array(:)
-        integer(IKC)            , intent(in)                    :: pattern
+        use pm_kind, only: IKG => IK4
+        integer(IKG)            , intent(in)    , contiguous    :: array(:)
+        integer(IKG)            , intent(in)                    :: pattern
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
         logical(LK)             , intent(in)    , optional      :: unique
-        integer(IKC)                            , allocatable   :: ArrayRemoved(:)
+        integer(IKG)                            , allocatable   :: ArrayRemoved(:)
     end function
 #endif
 
@@ -1435,13 +1435,13 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedDefComCusIns_D1_D0_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)            , intent(in)    , contiguous    :: array(:)
-        integer(IKC)            , intent(in)                    :: pattern
+        use pm_kind, only: IKG => IK3
+        integer(IKG)            , intent(in)    , contiguous    :: array(:)
+        integer(IKG)            , intent(in)                    :: pattern
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
         logical(LK)             , intent(in)    , optional      :: unique
-        integer(IKC)                            , allocatable   :: ArrayRemoved(:)
+        integer(IKG)                            , allocatable   :: ArrayRemoved(:)
     end function
 #endif
 
@@ -1450,13 +1450,13 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedDefComCusIns_D1_D0_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)            , intent(in)    , contiguous    :: array(:)
-        integer(IKC)            , intent(in)                    :: pattern
+        use pm_kind, only: IKG => IK2
+        integer(IKG)            , intent(in)    , contiguous    :: array(:)
+        integer(IKG)            , intent(in)                    :: pattern
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
         logical(LK)             , intent(in)    , optional      :: unique
-        integer(IKC)                            , allocatable   :: ArrayRemoved(:)
+        integer(IKG)                            , allocatable   :: ArrayRemoved(:)
     end function
 #endif
 
@@ -1465,13 +1465,13 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedDefComCusIns_D1_D0_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)            , intent(in)    , contiguous    :: array(:)
-        integer(IKC)            , intent(in)                    :: pattern
+        use pm_kind, only: IKG => IK1
+        integer(IKG)            , intent(in)    , contiguous    :: array(:)
+        integer(IKG)            , intent(in)                    :: pattern
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
         logical(LK)             , intent(in)    , optional      :: unique
-        integer(IKC)                            , allocatable   :: ArrayRemoved(:)
+        integer(IKG)                            , allocatable   :: ArrayRemoved(:)
     end function
 #endif
 
@@ -1482,13 +1482,13 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedDefComCusIns_D1_D0_LK5
 #endif
-        use pm_kind, only: LKC => LK5
-        logical(LKC)            , intent(in)    , contiguous    :: array(:)
-        logical(LKC)            , intent(in)                    :: pattern
+        use pm_kind, only: LKG => LK5
+        logical(LKG)            , intent(in)    , contiguous    :: array(:)
+        logical(LKG)            , intent(in)                    :: pattern
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
         logical(LK)             , intent(in)    , optional      :: unique
-        logical(LKC)                            , allocatable   :: ArrayRemoved(:)
+        logical(LKG)                            , allocatable   :: ArrayRemoved(:)
     end function
 #endif
 
@@ -1497,13 +1497,13 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedDefComCusIns_D1_D0_LK4
 #endif
-        use pm_kind, only: LKC => LK4
-        logical(LKC)            , intent(in)    , contiguous    :: array(:)
-        logical(LKC)            , intent(in)                    :: pattern
+        use pm_kind, only: LKG => LK4
+        logical(LKG)            , intent(in)    , contiguous    :: array(:)
+        logical(LKG)            , intent(in)                    :: pattern
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
         logical(LK)             , intent(in)    , optional      :: unique
-        logical(LKC)                            , allocatable   :: ArrayRemoved(:)
+        logical(LKG)                            , allocatable   :: ArrayRemoved(:)
     end function
 #endif
 
@@ -1512,13 +1512,13 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedDefComCusIns_D1_D0_LK3
 #endif
-        use pm_kind, only: LKC => LK3
-        logical(LKC)            , intent(in)    , contiguous    :: array(:)
-        logical(LKC)            , intent(in)                    :: pattern
+        use pm_kind, only: LKG => LK3
+        logical(LKG)            , intent(in)    , contiguous    :: array(:)
+        logical(LKG)            , intent(in)                    :: pattern
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
         logical(LK)             , intent(in)    , optional      :: unique
-        logical(LKC)                            , allocatable   :: ArrayRemoved(:)
+        logical(LKG)                            , allocatable   :: ArrayRemoved(:)
     end function
 #endif
 
@@ -1527,13 +1527,13 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedDefComCusIns_D1_D0_LK2
 #endif
-        use pm_kind, only: LKC => LK2
-        logical(LKC)            , intent(in)    , contiguous    :: array(:)
-        logical(LKC)            , intent(in)                    :: pattern
+        use pm_kind, only: LKG => LK2
+        logical(LKG)            , intent(in)    , contiguous    :: array(:)
+        logical(LKG)            , intent(in)                    :: pattern
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
         logical(LK)             , intent(in)    , optional      :: unique
-        logical(LKC)                            , allocatable   :: ArrayRemoved(:)
+        logical(LKG)                            , allocatable   :: ArrayRemoved(:)
     end function
 #endif
 
@@ -1542,13 +1542,13 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedDefComCusIns_D1_D0_LK1
 #endif
-        use pm_kind, only: LKC => LK1
-        logical(LKC)            , intent(in)    , contiguous    :: array(:)
-        logical(LKC)            , intent(in)                    :: pattern
+        use pm_kind, only: LKG => LK1
+        logical(LKG)            , intent(in)    , contiguous    :: array(:)
+        logical(LKG)            , intent(in)                    :: pattern
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
         logical(LK)             , intent(in)    , optional      :: unique
-        logical(LKC)                            , allocatable   :: ArrayRemoved(:)
+        logical(LKG)                            , allocatable   :: ArrayRemoved(:)
     end function
 #endif
 
@@ -1559,13 +1559,13 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedDefComCusIns_D1_D0_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)            , intent(in)    , contiguous    :: array(:)
-        complex(CKC)            , intent(in)                    :: pattern
+        use pm_kind, only: CKG => CK5
+        complex(CKG)            , intent(in)    , contiguous    :: array(:)
+        complex(CKG)            , intent(in)                    :: pattern
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
         logical(LK)             , intent(in)    , optional      :: unique
-        complex(CKC)                            , allocatable   :: ArrayRemoved(:)
+        complex(CKG)                            , allocatable   :: ArrayRemoved(:)
     end function
 #endif
 
@@ -1574,13 +1574,13 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedDefComCusIns_D1_D0_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)            , intent(in)    , contiguous    :: array(:)
-        complex(CKC)            , intent(in)                    :: pattern
+        use pm_kind, only: CKG => CK4
+        complex(CKG)            , intent(in)    , contiguous    :: array(:)
+        complex(CKG)            , intent(in)                    :: pattern
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
         logical(LK)             , intent(in)    , optional      :: unique
-        complex(CKC)                            , allocatable   :: ArrayRemoved(:)
+        complex(CKG)                            , allocatable   :: ArrayRemoved(:)
     end function
 #endif
 
@@ -1589,13 +1589,13 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedDefComCusIns_D1_D0_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)            , intent(in)    , contiguous    :: array(:)
-        complex(CKC)            , intent(in)                    :: pattern
+        use pm_kind, only: CKG => CK3
+        complex(CKG)            , intent(in)    , contiguous    :: array(:)
+        complex(CKG)            , intent(in)                    :: pattern
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
         logical(LK)             , intent(in)    , optional      :: unique
-        complex(CKC)                            , allocatable   :: ArrayRemoved(:)
+        complex(CKG)                            , allocatable   :: ArrayRemoved(:)
     end function
 #endif
 
@@ -1604,13 +1604,13 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedDefComCusIns_D1_D0_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)            , intent(in)    , contiguous    :: array(:)
-        complex(CKC)            , intent(in)                    :: pattern
+        use pm_kind, only: CKG => CK2
+        complex(CKG)            , intent(in)    , contiguous    :: array(:)
+        complex(CKG)            , intent(in)                    :: pattern
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
         logical(LK)             , intent(in)    , optional      :: unique
-        complex(CKC)                            , allocatable   :: ArrayRemoved(:)
+        complex(CKG)                            , allocatable   :: ArrayRemoved(:)
     end function
 #endif
 
@@ -1619,13 +1619,13 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedDefComCusIns_D1_D0_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)            , intent(in)    , contiguous    :: array(:)
-        complex(CKC)            , intent(in)                    :: pattern
+        use pm_kind, only: CKG => CK1
+        complex(CKG)            , intent(in)    , contiguous    :: array(:)
+        complex(CKG)            , intent(in)                    :: pattern
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
         logical(LK)             , intent(in)    , optional      :: unique
-        complex(CKC)                            , allocatable   :: ArrayRemoved(:)
+        complex(CKG)                            , allocatable   :: ArrayRemoved(:)
     end function
 #endif
 
@@ -1636,13 +1636,13 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedDefComCusIns_D1_D0_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)               , intent(in)    , contiguous    :: array(:)
-        real(RKC)               , intent(in)                    :: pattern
+        use pm_kind, only: RKG => RK5
+        real(RKG)               , intent(in)    , contiguous    :: array(:)
+        real(RKG)               , intent(in)                    :: pattern
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
         logical(LK)             , intent(in)    , optional      :: unique
-        real(RKC)                               , allocatable   :: ArrayRemoved(:)
+        real(RKG)                               , allocatable   :: ArrayRemoved(:)
     end function
 #endif
 
@@ -1651,13 +1651,13 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedDefComCusIns_D1_D0_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)               , intent(in)    , contiguous    :: array(:)
-        real(RKC)               , intent(in)                    :: pattern
+        use pm_kind, only: RKG => RK4
+        real(RKG)               , intent(in)    , contiguous    :: array(:)
+        real(RKG)               , intent(in)                    :: pattern
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
         logical(LK)             , intent(in)    , optional      :: unique
-        real(RKC)                               , allocatable   :: ArrayRemoved(:)
+        real(RKG)                               , allocatable   :: ArrayRemoved(:)
     end function
 #endif
 
@@ -1666,13 +1666,13 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedDefComCusIns_D1_D0_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)               , intent(in)    , contiguous    :: array(:)
-        real(RKC)               , intent(in)                    :: pattern
+        use pm_kind, only: RKG => RK3
+        real(RKG)               , intent(in)    , contiguous    :: array(:)
+        real(RKG)               , intent(in)                    :: pattern
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
         logical(LK)             , intent(in)    , optional      :: unique
-        real(RKC)                               , allocatable   :: ArrayRemoved(:)
+        real(RKG)                               , allocatable   :: ArrayRemoved(:)
     end function
 #endif
 
@@ -1681,13 +1681,13 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedDefComCusIns_D1_D0_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)               , intent(in)    , contiguous    :: array(:)
-        real(RKC)               , intent(in)                    :: pattern
+        use pm_kind, only: RKG => RK2
+        real(RKG)               , intent(in)    , contiguous    :: array(:)
+        real(RKG)               , intent(in)                    :: pattern
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
         logical(LK)             , intent(in)    , optional      :: unique
-        real(RKC)                               , allocatable   :: ArrayRemoved(:)
+        real(RKG)                               , allocatable   :: ArrayRemoved(:)
     end function
 #endif
 
@@ -1696,13 +1696,13 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedDefComCusIns_D1_D0_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)               , intent(in)    , contiguous    :: array(:)
-        real(RKC)               , intent(in)                    :: pattern
+        use pm_kind, only: RKG => RK1
+        real(RKG)               , intent(in)    , contiguous    :: array(:)
+        real(RKG)               , intent(in)                    :: pattern
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
         logical(LK)             , intent(in)    , optional      :: unique
-        real(RKC)                               , allocatable   :: ArrayRemoved(:)
+        real(RKG)                               , allocatable   :: ArrayRemoved(:)
     end function
 #endif
 
@@ -1719,14 +1719,14 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedCusComCusIns_D1_D0_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)        , intent(in)    , contiguous    :: array(:)
-        character(*,SKC)        , intent(in)                    :: pattern
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)        , intent(in)    , contiguous    :: array(:)
+        character(*,SKG)        , intent(in)                    :: pattern
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
         logical(LK)             , intent(in)    , optional      :: unique
-        character(LEN_ARRAY, SKC)               , allocatable   :: ArrayRemoved(:)
+        character(LEN_ARRAY, SKG)               , allocatable   :: ArrayRemoved(:)
     end function
 #endif
 
@@ -1735,14 +1735,14 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedCusComCusIns_D1_D0_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)        , intent(in)    , contiguous    :: array(:)
-        character(*,SKC)        , intent(in)                    :: pattern
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)        , intent(in)    , contiguous    :: array(:)
+        character(*,SKG)        , intent(in)                    :: pattern
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
         logical(LK)             , intent(in)    , optional      :: unique
-        character(LEN_ARRAY, SKC)               , allocatable   :: ArrayRemoved(:)
+        character(LEN_ARRAY, SKG)               , allocatable   :: ArrayRemoved(:)
     end function
 #endif
 
@@ -1751,14 +1751,14 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedCusComCusIns_D1_D0_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)        , intent(in)    , contiguous    :: array(:)
-        character(*,SKC)        , intent(in)                    :: pattern
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)        , intent(in)    , contiguous    :: array(:)
+        character(*,SKG)        , intent(in)                    :: pattern
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
         logical(LK)             , intent(in)    , optional      :: unique
-        character(LEN_ARRAY, SKC)               , allocatable   :: ArrayRemoved(:)
+        character(LEN_ARRAY, SKG)               , allocatable   :: ArrayRemoved(:)
     end function
 #endif
 
@@ -1767,14 +1767,14 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedCusComCusIns_D1_D0_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)        , intent(in)    , contiguous    :: array(:)
-        character(*,SKC)        , intent(in)                    :: pattern
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)        , intent(in)    , contiguous    :: array(:)
+        character(*,SKG)        , intent(in)                    :: pattern
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
         logical(LK)             , intent(in)    , optional      :: unique
-        character(LEN_ARRAY, SKC)               , allocatable   :: ArrayRemoved(:)
+        character(LEN_ARRAY, SKG)               , allocatable   :: ArrayRemoved(:)
     end function
 #endif
 
@@ -1783,14 +1783,14 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedCusComCusIns_D1_D0_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)        , intent(in)    , contiguous    :: array(:)
-        character(*,SKC)        , intent(in)                    :: pattern
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)        , intent(in)    , contiguous    :: array(:)
+        character(*,SKG)        , intent(in)                    :: pattern
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
         logical(LK)             , intent(in)    , optional      :: unique
-        character(LEN_ARRAY, SKC)               , allocatable   :: ArrayRemoved(:)
+        character(LEN_ARRAY, SKG)               , allocatable   :: ArrayRemoved(:)
     end function
 #endif
 
@@ -1801,14 +1801,14 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedCusComCusIns_D1_D0_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)            , intent(in)    , contiguous    :: array(:)
-        integer(IKC)            , intent(in)                    :: pattern
+        use pm_kind, only: IKG => IK5
+        integer(IKG)            , intent(in)    , contiguous    :: array(:)
+        integer(IKG)            , intent(in)                    :: pattern
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
         logical(LK)             , intent(in)    , optional      :: unique
-        integer(IKC)                            , allocatable   :: ArrayRemoved(:)
+        integer(IKG)                            , allocatable   :: ArrayRemoved(:)
     end function
 #endif
 
@@ -1817,14 +1817,14 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedCusComCusIns_D1_D0_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)            , intent(in)    , contiguous    :: array(:)
-        integer(IKC)            , intent(in)                    :: pattern
+        use pm_kind, only: IKG => IK4
+        integer(IKG)            , intent(in)    , contiguous    :: array(:)
+        integer(IKG)            , intent(in)                    :: pattern
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
         logical(LK)             , intent(in)    , optional      :: unique
-        integer(IKC)                            , allocatable   :: ArrayRemoved(:)
+        integer(IKG)                            , allocatable   :: ArrayRemoved(:)
     end function
 #endif
 
@@ -1833,14 +1833,14 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedCusComCusIns_D1_D0_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)            , intent(in)    , contiguous    :: array(:)
-        integer(IKC)            , intent(in)                    :: pattern
+        use pm_kind, only: IKG => IK3
+        integer(IKG)            , intent(in)    , contiguous    :: array(:)
+        integer(IKG)            , intent(in)                    :: pattern
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
         logical(LK)             , intent(in)    , optional      :: unique
-        integer(IKC)                            , allocatable   :: ArrayRemoved(:)
+        integer(IKG)                            , allocatable   :: ArrayRemoved(:)
     end function
 #endif
 
@@ -1849,14 +1849,14 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedCusComCusIns_D1_D0_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)            , intent(in)    , contiguous    :: array(:)
-        integer(IKC)            , intent(in)                    :: pattern
+        use pm_kind, only: IKG => IK2
+        integer(IKG)            , intent(in)    , contiguous    :: array(:)
+        integer(IKG)            , intent(in)                    :: pattern
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
         logical(LK)             , intent(in)    , optional      :: unique
-        integer(IKC)                            , allocatable   :: ArrayRemoved(:)
+        integer(IKG)                            , allocatable   :: ArrayRemoved(:)
     end function
 #endif
 
@@ -1865,14 +1865,14 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedCusComCusIns_D1_D0_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)            , intent(in)    , contiguous    :: array(:)
-        integer(IKC)            , intent(in)                    :: pattern
+        use pm_kind, only: IKG => IK1
+        integer(IKG)            , intent(in)    , contiguous    :: array(:)
+        integer(IKG)            , intent(in)                    :: pattern
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
         logical(LK)             , intent(in)    , optional      :: unique
-        integer(IKC)                            , allocatable   :: ArrayRemoved(:)
+        integer(IKG)                            , allocatable   :: ArrayRemoved(:)
     end function
 #endif
 
@@ -1883,14 +1883,14 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedCusComCusIns_D1_D0_LK5
 #endif
-        use pm_kind, only: LKC => LK5
-        logical(LKC)            , intent(in)    , contiguous    :: array(:)
-        logical(LKC)            , intent(in)                    :: pattern
+        use pm_kind, only: LKG => LK5
+        logical(LKG)            , intent(in)    , contiguous    :: array(:)
+        logical(LKG)            , intent(in)                    :: pattern
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
         logical(LK)             , intent(in)    , optional      :: unique
-        logical(LKC)                            , allocatable   :: ArrayRemoved(:)
+        logical(LKG)                            , allocatable   :: ArrayRemoved(:)
     end function
 #endif
 
@@ -1899,14 +1899,14 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedCusComCusIns_D1_D0_LK4
 #endif
-        use pm_kind, only: LKC => LK4
-        logical(LKC)            , intent(in)    , contiguous    :: array(:)
-        logical(LKC)            , intent(in)                    :: pattern
+        use pm_kind, only: LKG => LK4
+        logical(LKG)            , intent(in)    , contiguous    :: array(:)
+        logical(LKG)            , intent(in)                    :: pattern
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
         logical(LK)             , intent(in)    , optional      :: unique
-        logical(LKC)                            , allocatable   :: ArrayRemoved(:)
+        logical(LKG)                            , allocatable   :: ArrayRemoved(:)
     end function
 #endif
 
@@ -1915,14 +1915,14 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedCusComCusIns_D1_D0_LK3
 #endif
-        use pm_kind, only: LKC => LK3
-        logical(LKC)            , intent(in)    , contiguous    :: array(:)
-        logical(LKC)            , intent(in)                    :: pattern
+        use pm_kind, only: LKG => LK3
+        logical(LKG)            , intent(in)    , contiguous    :: array(:)
+        logical(LKG)            , intent(in)                    :: pattern
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
         logical(LK)             , intent(in)    , optional      :: unique
-        logical(LKC)                            , allocatable   :: ArrayRemoved(:)
+        logical(LKG)                            , allocatable   :: ArrayRemoved(:)
     end function
 #endif
 
@@ -1931,14 +1931,14 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedCusComCusIns_D1_D0_LK2
 #endif
-        use pm_kind, only: LKC => LK2
-        logical(LKC)            , intent(in)    , contiguous    :: array(:)
-        logical(LKC)            , intent(in)                    :: pattern
+        use pm_kind, only: LKG => LK2
+        logical(LKG)            , intent(in)    , contiguous    :: array(:)
+        logical(LKG)            , intent(in)                    :: pattern
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
         logical(LK)             , intent(in)    , optional      :: unique
-        logical(LKC)                            , allocatable   :: ArrayRemoved(:)
+        logical(LKG)                            , allocatable   :: ArrayRemoved(:)
     end function
 #endif
 
@@ -1947,14 +1947,14 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedCusComCusIns_D1_D0_LK1
 #endif
-        use pm_kind, only: LKC => LK1
-        logical(LKC)            , intent(in)    , contiguous    :: array(:)
-        logical(LKC)            , intent(in)                    :: pattern
+        use pm_kind, only: LKG => LK1
+        logical(LKG)            , intent(in)    , contiguous    :: array(:)
+        logical(LKG)            , intent(in)                    :: pattern
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
         logical(LK)             , intent(in)    , optional      :: unique
-        logical(LKC)                            , allocatable   :: ArrayRemoved(:)
+        logical(LKG)                            , allocatable   :: ArrayRemoved(:)
     end function
 #endif
 
@@ -1965,14 +1965,14 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedCusComCusIns_D1_D0_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)            , intent(in)    , contiguous    :: array(:)
-        complex(CKC)            , intent(in)                    :: pattern
+        use pm_kind, only: CKG => CK5
+        complex(CKG)            , intent(in)    , contiguous    :: array(:)
+        complex(CKG)            , intent(in)                    :: pattern
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
         logical(LK)             , intent(in)    , optional      :: unique
-        complex(CKC)                            , allocatable   :: ArrayRemoved(:)
+        complex(CKG)                            , allocatable   :: ArrayRemoved(:)
     end function
 #endif
 
@@ -1981,14 +1981,14 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedCusComCusIns_D1_D0_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)            , intent(in)    , contiguous    :: array(:)
-        complex(CKC)            , intent(in)                    :: pattern
+        use pm_kind, only: CKG => CK4
+        complex(CKG)            , intent(in)    , contiguous    :: array(:)
+        complex(CKG)            , intent(in)                    :: pattern
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
         logical(LK)             , intent(in)    , optional      :: unique
-        complex(CKC)                            , allocatable   :: ArrayRemoved(:)
+        complex(CKG)                            , allocatable   :: ArrayRemoved(:)
     end function
 #endif
 
@@ -1997,14 +1997,14 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedCusComCusIns_D1_D0_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)            , intent(in)    , contiguous    :: array(:)
-        complex(CKC)            , intent(in)                    :: pattern
+        use pm_kind, only: CKG => CK3
+        complex(CKG)            , intent(in)    , contiguous    :: array(:)
+        complex(CKG)            , intent(in)                    :: pattern
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
         logical(LK)             , intent(in)    , optional      :: unique
-        complex(CKC)                            , allocatable   :: ArrayRemoved(:)
+        complex(CKG)                            , allocatable   :: ArrayRemoved(:)
     end function
 #endif
 
@@ -2013,14 +2013,14 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedCusComCusIns_D1_D0_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)            , intent(in)    , contiguous    :: array(:)
-        complex(CKC)            , intent(in)                    :: pattern
+        use pm_kind, only: CKG => CK2
+        complex(CKG)            , intent(in)    , contiguous    :: array(:)
+        complex(CKG)            , intent(in)                    :: pattern
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
         logical(LK)             , intent(in)    , optional      :: unique
-        complex(CKC)                            , allocatable   :: ArrayRemoved(:)
+        complex(CKG)                            , allocatable   :: ArrayRemoved(:)
     end function
 #endif
 
@@ -2029,14 +2029,14 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedCusComCusIns_D1_D0_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)            , intent(in)    , contiguous    :: array(:)
-        complex(CKC)            , intent(in)                    :: pattern
+        use pm_kind, only: CKG => CK1
+        complex(CKG)            , intent(in)    , contiguous    :: array(:)
+        complex(CKG)            , intent(in)                    :: pattern
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
         logical(LK)             , intent(in)    , optional      :: unique
-        complex(CKC)                            , allocatable   :: ArrayRemoved(:)
+        complex(CKG)                            , allocatable   :: ArrayRemoved(:)
     end function
 #endif
 
@@ -2047,14 +2047,14 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedCusComCusIns_D1_D0_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)               , intent(in)    , contiguous    :: array(:)
-        real(RKC)               , intent(in)                    :: pattern
+        use pm_kind, only: RKG => RK5
+        real(RKG)               , intent(in)    , contiguous    :: array(:)
+        real(RKG)               , intent(in)                    :: pattern
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
         logical(LK)             , intent(in)    , optional      :: unique
-        real(RKC)                               , allocatable   :: ArrayRemoved(:)
+        real(RKG)                               , allocatable   :: ArrayRemoved(:)
     end function
 #endif
 
@@ -2063,14 +2063,14 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedCusComCusIns_D1_D0_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)               , intent(in)    , contiguous    :: array(:)
-        real(RKC)               , intent(in)                    :: pattern
+        use pm_kind, only: RKG => RK4
+        real(RKG)               , intent(in)    , contiguous    :: array(:)
+        real(RKG)               , intent(in)                    :: pattern
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
         logical(LK)             , intent(in)    , optional      :: unique
-        real(RKC)                               , allocatable   :: ArrayRemoved(:)
+        real(RKG)                               , allocatable   :: ArrayRemoved(:)
     end function
 #endif
 
@@ -2079,14 +2079,14 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedCusComCusIns_D1_D0_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)               , intent(in)    , contiguous    :: array(:)
-        real(RKC)               , intent(in)                    :: pattern
+        use pm_kind, only: RKG => RK3
+        real(RKG)               , intent(in)    , contiguous    :: array(:)
+        real(RKG)               , intent(in)                    :: pattern
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
         logical(LK)             , intent(in)    , optional      :: unique
-        real(RKC)                               , allocatable   :: ArrayRemoved(:)
+        real(RKG)                               , allocatable   :: ArrayRemoved(:)
     end function
 #endif
 
@@ -2095,14 +2095,14 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedCusComCusIns_D1_D0_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)               , intent(in)    , contiguous    :: array(:)
-        real(RKC)               , intent(in)                    :: pattern
+        use pm_kind, only: RKG => RK2
+        real(RKG)               , intent(in)    , contiguous    :: array(:)
+        real(RKG)               , intent(in)                    :: pattern
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
         logical(LK)             , intent(in)    , optional      :: unique
-        real(RKC)                               , allocatable   :: ArrayRemoved(:)
+        real(RKG)                               , allocatable   :: ArrayRemoved(:)
     end function
 #endif
 
@@ -2111,14 +2111,14 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedCusComCusIns_D1_D0_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)               , intent(in)    , contiguous    :: array(:)
-        real(RKC)               , intent(in)                    :: pattern
+        use pm_kind, only: RKG => RK1
+        real(RKG)               , intent(in)    , contiguous    :: array(:)
+        real(RKG)               , intent(in)                    :: pattern
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
         logical(LK)             , intent(in)    , optional      :: unique
-        real(RKC)                               , allocatable   :: ArrayRemoved(:)
+        real(RKG)                               , allocatable   :: ArrayRemoved(:)
     end function
 #endif
 
@@ -2141,10 +2141,10 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedDefComDefIns_D1_D1_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)        , intent(in)    , contiguous    :: array(:)
-        character(*,SKC)        , intent(in)    , contiguous    :: pattern(:)
-        character(LEN_ARRAY, SKC)               , allocatable   :: ArrayRemoved(:)
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)        , intent(in)    , contiguous    :: array(:)
+        character(*,SKG)        , intent(in)    , contiguous    :: pattern(:)
+        character(LEN_ARRAY, SKG)               , allocatable   :: ArrayRemoved(:)
     end function
 #endif
 
@@ -2153,10 +2153,10 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedDefComDefIns_D1_D1_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)        , intent(in)    , contiguous    :: array(:)
-        character(*,SKC)        , intent(in)    , contiguous    :: pattern(:)
-        character(LEN_ARRAY, SKC)               , allocatable   :: ArrayRemoved(:)
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)        , intent(in)    , contiguous    :: array(:)
+        character(*,SKG)        , intent(in)    , contiguous    :: pattern(:)
+        character(LEN_ARRAY, SKG)               , allocatable   :: ArrayRemoved(:)
     end function
 #endif
 
@@ -2165,10 +2165,10 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedDefComDefIns_D1_D1_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)        , intent(in)    , contiguous    :: array(:)
-        character(*,SKC)        , intent(in)    , contiguous    :: pattern(:)
-        character(LEN_ARRAY, SKC)               , allocatable   :: ArrayRemoved(:)
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)        , intent(in)    , contiguous    :: array(:)
+        character(*,SKG)        , intent(in)    , contiguous    :: pattern(:)
+        character(LEN_ARRAY, SKG)               , allocatable   :: ArrayRemoved(:)
     end function
 #endif
 
@@ -2177,10 +2177,10 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedDefComDefIns_D1_D1_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)        , intent(in)    , contiguous    :: array(:)
-        character(*,SKC)        , intent(in)    , contiguous    :: pattern(:)
-        character(LEN_ARRAY, SKC)               , allocatable   :: ArrayRemoved(:)
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)        , intent(in)    , contiguous    :: array(:)
+        character(*,SKG)        , intent(in)    , contiguous    :: pattern(:)
+        character(LEN_ARRAY, SKG)               , allocatable   :: ArrayRemoved(:)
     end function
 #endif
 
@@ -2189,10 +2189,10 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedDefComDefIns_D1_D1_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)        , intent(in)    , contiguous    :: array(:)
-        character(*,SKC)        , intent(in)    , contiguous    :: pattern(:)
-        character(LEN_ARRAY, SKC)               , allocatable   :: ArrayRemoved(:)
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)        , intent(in)    , contiguous    :: array(:)
+        character(*,SKG)        , intent(in)    , contiguous    :: pattern(:)
+        character(LEN_ARRAY, SKG)               , allocatable   :: ArrayRemoved(:)
     end function
 #endif
 
@@ -2203,10 +2203,10 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedDefComDefIns_D1_D1_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)            , intent(in)    , contiguous    :: array(:)
-        integer(IKC)            , intent(in)    , contiguous    :: pattern(:)
-        integer(IKC)                            , allocatable   :: ArrayRemoved(:)
+        use pm_kind, only: IKG => IK5
+        integer(IKG)            , intent(in)    , contiguous    :: array(:)
+        integer(IKG)            , intent(in)    , contiguous    :: pattern(:)
+        integer(IKG)                            , allocatable   :: ArrayRemoved(:)
     end function
 #endif
 
@@ -2215,10 +2215,10 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedDefComDefIns_D1_D1_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)            , intent(in)    , contiguous    :: array(:)
-        integer(IKC)            , intent(in)    , contiguous    :: pattern(:)
-        integer(IKC)                            , allocatable   :: ArrayRemoved(:)
+        use pm_kind, only: IKG => IK4
+        integer(IKG)            , intent(in)    , contiguous    :: array(:)
+        integer(IKG)            , intent(in)    , contiguous    :: pattern(:)
+        integer(IKG)                            , allocatable   :: ArrayRemoved(:)
     end function
 #endif
 
@@ -2227,10 +2227,10 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedDefComDefIns_D1_D1_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)            , intent(in)    , contiguous    :: array(:)
-        integer(IKC)            , intent(in)    , contiguous    :: pattern(:)
-        integer(IKC)                            , allocatable   :: ArrayRemoved(:)
+        use pm_kind, only: IKG => IK3
+        integer(IKG)            , intent(in)    , contiguous    :: array(:)
+        integer(IKG)            , intent(in)    , contiguous    :: pattern(:)
+        integer(IKG)                            , allocatable   :: ArrayRemoved(:)
     end function
 #endif
 
@@ -2239,10 +2239,10 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedDefComDefIns_D1_D1_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)            , intent(in)    , contiguous    :: array(:)
-        integer(IKC)            , intent(in)    , contiguous    :: pattern(:)
-        integer(IKC)                            , allocatable   :: ArrayRemoved(:)
+        use pm_kind, only: IKG => IK2
+        integer(IKG)            , intent(in)    , contiguous    :: array(:)
+        integer(IKG)            , intent(in)    , contiguous    :: pattern(:)
+        integer(IKG)                            , allocatable   :: ArrayRemoved(:)
     end function
 #endif
 
@@ -2251,10 +2251,10 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedDefComDefIns_D1_D1_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)            , intent(in)    , contiguous    :: array(:)
-        integer(IKC)            , intent(in)    , contiguous    :: pattern(:)
-        integer(IKC)                            , allocatable   :: ArrayRemoved(:)
+        use pm_kind, only: IKG => IK1
+        integer(IKG)            , intent(in)    , contiguous    :: array(:)
+        integer(IKG)            , intent(in)    , contiguous    :: pattern(:)
+        integer(IKG)                            , allocatable   :: ArrayRemoved(:)
     end function
 #endif
 
@@ -2265,10 +2265,10 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedDefComDefIns_D1_D1_LK5
 #endif
-        use pm_kind, only: LKC => LK5
-        logical(LKC)            , intent(in)    , contiguous    :: array(:)
-        logical(LKC)            , intent(in)    , contiguous    :: pattern(:)
-        logical(LKC)                            , allocatable   :: ArrayRemoved(:)
+        use pm_kind, only: LKG => LK5
+        logical(LKG)            , intent(in)    , contiguous    :: array(:)
+        logical(LKG)            , intent(in)    , contiguous    :: pattern(:)
+        logical(LKG)                            , allocatable   :: ArrayRemoved(:)
     end function
 #endif
 
@@ -2277,10 +2277,10 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedDefComDefIns_D1_D1_LK4
 #endif
-        use pm_kind, only: LKC => LK4
-        logical(LKC)            , intent(in)    , contiguous    :: array(:)
-        logical(LKC)            , intent(in)    , contiguous    :: pattern(:)
-        logical(LKC)                            , allocatable   :: ArrayRemoved(:)
+        use pm_kind, only: LKG => LK4
+        logical(LKG)            , intent(in)    , contiguous    :: array(:)
+        logical(LKG)            , intent(in)    , contiguous    :: pattern(:)
+        logical(LKG)                            , allocatable   :: ArrayRemoved(:)
     end function
 #endif
 
@@ -2289,10 +2289,10 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedDefComDefIns_D1_D1_LK3
 #endif
-        use pm_kind, only: LKC => LK3
-        logical(LKC)            , intent(in)    , contiguous    :: array(:)
-        logical(LKC)            , intent(in)    , contiguous    :: pattern(:)
-        logical(LKC)                            , allocatable   :: ArrayRemoved(:)
+        use pm_kind, only: LKG => LK3
+        logical(LKG)            , intent(in)    , contiguous    :: array(:)
+        logical(LKG)            , intent(in)    , contiguous    :: pattern(:)
+        logical(LKG)                            , allocatable   :: ArrayRemoved(:)
     end function
 #endif
 
@@ -2301,10 +2301,10 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedDefComDefIns_D1_D1_LK2
 #endif
-        use pm_kind, only: LKC => LK2
-        logical(LKC)            , intent(in)    , contiguous    :: array(:)
-        logical(LKC)            , intent(in)    , contiguous    :: pattern(:)
-        logical(LKC)                            , allocatable   :: ArrayRemoved(:)
+        use pm_kind, only: LKG => LK2
+        logical(LKG)            , intent(in)    , contiguous    :: array(:)
+        logical(LKG)            , intent(in)    , contiguous    :: pattern(:)
+        logical(LKG)                            , allocatable   :: ArrayRemoved(:)
     end function
 #endif
 
@@ -2313,10 +2313,10 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedDefComDefIns_D1_D1_LK1
 #endif
-        use pm_kind, only: LKC => LK1
-        logical(LKC)            , intent(in)    , contiguous    :: array(:)
-        logical(LKC)            , intent(in)    , contiguous    :: pattern(:)
-        logical(LKC)                            , allocatable   :: ArrayRemoved(:)
+        use pm_kind, only: LKG => LK1
+        logical(LKG)            , intent(in)    , contiguous    :: array(:)
+        logical(LKG)            , intent(in)    , contiguous    :: pattern(:)
+        logical(LKG)                            , allocatable   :: ArrayRemoved(:)
     end function
 #endif
 
@@ -2327,10 +2327,10 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedDefComDefIns_D1_D1_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)            , intent(in)    , contiguous    :: array(:)
-        complex(CKC)            , intent(in)    , contiguous    :: pattern(:)
-        complex(CKC)                            , allocatable   :: ArrayRemoved(:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG)            , intent(in)    , contiguous    :: array(:)
+        complex(CKG)            , intent(in)    , contiguous    :: pattern(:)
+        complex(CKG)                            , allocatable   :: ArrayRemoved(:)
     end function
 #endif
 
@@ -2339,10 +2339,10 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedDefComDefIns_D1_D1_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)            , intent(in)    , contiguous    :: array(:)
-        complex(CKC)            , intent(in)    , contiguous    :: pattern(:)
-        complex(CKC)                            , allocatable   :: ArrayRemoved(:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG)            , intent(in)    , contiguous    :: array(:)
+        complex(CKG)            , intent(in)    , contiguous    :: pattern(:)
+        complex(CKG)                            , allocatable   :: ArrayRemoved(:)
     end function
 #endif
 
@@ -2351,10 +2351,10 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedDefComDefIns_D1_D1_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)            , intent(in)    , contiguous    :: array(:)
-        complex(CKC)            , intent(in)    , contiguous    :: pattern(:)
-        complex(CKC)                            , allocatable   :: ArrayRemoved(:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG)            , intent(in)    , contiguous    :: array(:)
+        complex(CKG)            , intent(in)    , contiguous    :: pattern(:)
+        complex(CKG)                            , allocatable   :: ArrayRemoved(:)
     end function
 #endif
 
@@ -2363,10 +2363,10 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedDefComDefIns_D1_D1_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)            , intent(in)    , contiguous    :: array(:)
-        complex(CKC)            , intent(in)    , contiguous    :: pattern(:)
-        complex(CKC)                            , allocatable   :: ArrayRemoved(:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG)            , intent(in)    , contiguous    :: array(:)
+        complex(CKG)            , intent(in)    , contiguous    :: pattern(:)
+        complex(CKG)                            , allocatable   :: ArrayRemoved(:)
     end function
 #endif
 
@@ -2375,10 +2375,10 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedDefComDefIns_D1_D1_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)            , intent(in)    , contiguous    :: array(:)
-        complex(CKC)            , intent(in)    , contiguous    :: pattern(:)
-        complex(CKC)                            , allocatable   :: ArrayRemoved(:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG)            , intent(in)    , contiguous    :: array(:)
+        complex(CKG)            , intent(in)    , contiguous    :: pattern(:)
+        complex(CKG)                            , allocatable   :: ArrayRemoved(:)
     end function
 #endif
 
@@ -2389,10 +2389,10 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedDefComDefIns_D1_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)               , intent(in)    , contiguous    :: array(:)
-        real(RKC)               , intent(in)    , contiguous    :: pattern(:)
-        real(RKC)                               , allocatable   :: ArrayRemoved(:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)               , intent(in)    , contiguous    :: array(:)
+        real(RKG)               , intent(in)    , contiguous    :: pattern(:)
+        real(RKG)                               , allocatable   :: ArrayRemoved(:)
     end function
 #endif
 
@@ -2401,10 +2401,10 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedDefComDefIns_D1_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)               , intent(in)    , contiguous    :: array(:)
-        real(RKC)               , intent(in)    , contiguous    :: pattern(:)
-        real(RKC)                               , allocatable   :: ArrayRemoved(:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)               , intent(in)    , contiguous    :: array(:)
+        real(RKG)               , intent(in)    , contiguous    :: pattern(:)
+        real(RKG)                               , allocatable   :: ArrayRemoved(:)
     end function
 #endif
 
@@ -2413,10 +2413,10 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedDefComDefIns_D1_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)               , intent(in)    , contiguous    :: array(:)
-        real(RKC)               , intent(in)    , contiguous    :: pattern(:)
-        real(RKC)                               , allocatable   :: ArrayRemoved(:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)               , intent(in)    , contiguous    :: array(:)
+        real(RKG)               , intent(in)    , contiguous    :: pattern(:)
+        real(RKG)                               , allocatable   :: ArrayRemoved(:)
     end function
 #endif
 
@@ -2425,10 +2425,10 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedDefComDefIns_D1_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)               , intent(in)    , contiguous    :: array(:)
-        real(RKC)               , intent(in)    , contiguous    :: pattern(:)
-        real(RKC)                               , allocatable   :: ArrayRemoved(:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)               , intent(in)    , contiguous    :: array(:)
+        real(RKG)               , intent(in)    , contiguous    :: pattern(:)
+        real(RKG)                               , allocatable   :: ArrayRemoved(:)
     end function
 #endif
 
@@ -2437,10 +2437,10 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedDefComDefIns_D1_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)               , intent(in)    , contiguous    :: array(:)
-        real(RKC)               , intent(in)    , contiguous    :: pattern(:)
-        real(RKC)                               , allocatable   :: ArrayRemoved(:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)               , intent(in)    , contiguous    :: array(:)
+        real(RKG)               , intent(in)    , contiguous    :: pattern(:)
+        real(RKG)                               , allocatable   :: ArrayRemoved(:)
     end function
 #endif
 
@@ -2457,11 +2457,11 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedCusComDefIns_D1_D1_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)        , intent(in)    , contiguous    :: array(:)
-        character(*,SKC)        , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)        , intent(in)    , contiguous    :: array(:)
+        character(*,SKG)        , intent(in)    , contiguous    :: pattern(:)
         procedure(logical(LK))                                  :: iseq
-        character(LEN_ARRAY, SKC)               , allocatable   :: ArrayRemoved(:)
+        character(LEN_ARRAY, SKG)               , allocatable   :: ArrayRemoved(:)
     end function
 #endif
 
@@ -2470,11 +2470,11 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedCusComDefIns_D1_D1_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)        , intent(in)    , contiguous    :: array(:)
-        character(*,SKC)        , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)        , intent(in)    , contiguous    :: array(:)
+        character(*,SKG)        , intent(in)    , contiguous    :: pattern(:)
         procedure(logical(LK))                                  :: iseq
-        character(LEN_ARRAY, SKC)               , allocatable   :: ArrayRemoved(:)
+        character(LEN_ARRAY, SKG)               , allocatable   :: ArrayRemoved(:)
     end function
 #endif
 
@@ -2483,11 +2483,11 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedCusComDefIns_D1_D1_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)        , intent(in)    , contiguous    :: array(:)
-        character(*,SKC)        , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)        , intent(in)    , contiguous    :: array(:)
+        character(*,SKG)        , intent(in)    , contiguous    :: pattern(:)
         procedure(logical(LK))                                  :: iseq
-        character(LEN_ARRAY, SKC)               , allocatable   :: ArrayRemoved(:)
+        character(LEN_ARRAY, SKG)               , allocatable   :: ArrayRemoved(:)
     end function
 #endif
 
@@ -2496,11 +2496,11 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedCusComDefIns_D1_D1_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)        , intent(in)    , contiguous    :: array(:)
-        character(*,SKC)        , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)        , intent(in)    , contiguous    :: array(:)
+        character(*,SKG)        , intent(in)    , contiguous    :: pattern(:)
         procedure(logical(LK))                                  :: iseq
-        character(LEN_ARRAY, SKC)               , allocatable   :: ArrayRemoved(:)
+        character(LEN_ARRAY, SKG)               , allocatable   :: ArrayRemoved(:)
     end function
 #endif
 
@@ -2509,11 +2509,11 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedCusComDefIns_D1_D1_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)        , intent(in)    , contiguous    :: array(:)
-        character(*,SKC)        , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)        , intent(in)    , contiguous    :: array(:)
+        character(*,SKG)        , intent(in)    , contiguous    :: pattern(:)
         procedure(logical(LK))                                  :: iseq
-        character(LEN_ARRAY, SKC)               , allocatable   :: ArrayRemoved(:)
+        character(LEN_ARRAY, SKG)               , allocatable   :: ArrayRemoved(:)
     end function
 #endif
 
@@ -2524,11 +2524,11 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedCusComDefIns_D1_D1_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)            , intent(in)    , contiguous    :: array(:)
-        integer(IKC)            , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: IKG => IK5
+        integer(IKG)            , intent(in)    , contiguous    :: array(:)
+        integer(IKG)            , intent(in)    , contiguous    :: pattern(:)
         procedure(logical(LK))                                  :: iseq
-        integer(IKC)                            , allocatable   :: ArrayRemoved(:)
+        integer(IKG)                            , allocatable   :: ArrayRemoved(:)
     end function
 #endif
 
@@ -2537,11 +2537,11 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedCusComDefIns_D1_D1_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)            , intent(in)    , contiguous    :: array(:)
-        integer(IKC)            , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: IKG => IK4
+        integer(IKG)            , intent(in)    , contiguous    :: array(:)
+        integer(IKG)            , intent(in)    , contiguous    :: pattern(:)
         procedure(logical(LK))                                  :: iseq
-        integer(IKC)                            , allocatable   :: ArrayRemoved(:)
+        integer(IKG)                            , allocatable   :: ArrayRemoved(:)
     end function
 #endif
 
@@ -2550,11 +2550,11 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedCusComDefIns_D1_D1_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)            , intent(in)    , contiguous    :: array(:)
-        integer(IKC)            , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: IKG => IK3
+        integer(IKG)            , intent(in)    , contiguous    :: array(:)
+        integer(IKG)            , intent(in)    , contiguous    :: pattern(:)
         procedure(logical(LK))                                  :: iseq
-        integer(IKC)                            , allocatable   :: ArrayRemoved(:)
+        integer(IKG)                            , allocatable   :: ArrayRemoved(:)
     end function
 #endif
 
@@ -2563,11 +2563,11 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedCusComDefIns_D1_D1_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)            , intent(in)    , contiguous    :: array(:)
-        integer(IKC)            , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: IKG => IK2
+        integer(IKG)            , intent(in)    , contiguous    :: array(:)
+        integer(IKG)            , intent(in)    , contiguous    :: pattern(:)
         procedure(logical(LK))                                  :: iseq
-        integer(IKC)                            , allocatable   :: ArrayRemoved(:)
+        integer(IKG)                            , allocatable   :: ArrayRemoved(:)
     end function
 #endif
 
@@ -2576,11 +2576,11 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedCusComDefIns_D1_D1_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)            , intent(in)    , contiguous    :: array(:)
-        integer(IKC)            , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: IKG => IK1
+        integer(IKG)            , intent(in)    , contiguous    :: array(:)
+        integer(IKG)            , intent(in)    , contiguous    :: pattern(:)
         procedure(logical(LK))                                  :: iseq
-        integer(IKC)                            , allocatable   :: ArrayRemoved(:)
+        integer(IKG)                            , allocatable   :: ArrayRemoved(:)
     end function
 #endif
 
@@ -2591,11 +2591,11 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedCusComDefIns_D1_D1_LK5
 #endif
-        use pm_kind, only: LKC => LK5
-        logical(LKC)            , intent(in)    , contiguous    :: array(:)
-        logical(LKC)            , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: LKG => LK5
+        logical(LKG)            , intent(in)    , contiguous    :: array(:)
+        logical(LKG)            , intent(in)    , contiguous    :: pattern(:)
         procedure(logical(LK))                                  :: iseq
-        logical(LKC)                            , allocatable   :: ArrayRemoved(:)
+        logical(LKG)                            , allocatable   :: ArrayRemoved(:)
     end function
 #endif
 
@@ -2604,11 +2604,11 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedCusComDefIns_D1_D1_LK4
 #endif
-        use pm_kind, only: LKC => LK4
-        logical(LKC)            , intent(in)    , contiguous    :: array(:)
-        logical(LKC)            , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: LKG => LK4
+        logical(LKG)            , intent(in)    , contiguous    :: array(:)
+        logical(LKG)            , intent(in)    , contiguous    :: pattern(:)
         procedure(logical(LK))                                  :: iseq
-        logical(LKC)                            , allocatable   :: ArrayRemoved(:)
+        logical(LKG)                            , allocatable   :: ArrayRemoved(:)
     end function
 #endif
 
@@ -2617,11 +2617,11 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedCusComDefIns_D1_D1_LK3
 #endif
-        use pm_kind, only: LKC => LK3
-        logical(LKC)            , intent(in)    , contiguous    :: array(:)
-        logical(LKC)            , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: LKG => LK3
+        logical(LKG)            , intent(in)    , contiguous    :: array(:)
+        logical(LKG)            , intent(in)    , contiguous    :: pattern(:)
         procedure(logical(LK))                                  :: iseq
-        logical(LKC)                            , allocatable   :: ArrayRemoved(:)
+        logical(LKG)                            , allocatable   :: ArrayRemoved(:)
     end function
 #endif
 
@@ -2630,11 +2630,11 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedCusComDefIns_D1_D1_LK2
 #endif
-        use pm_kind, only: LKC => LK2
-        logical(LKC)            , intent(in)    , contiguous    :: array(:)
-        logical(LKC)            , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: LKG => LK2
+        logical(LKG)            , intent(in)    , contiguous    :: array(:)
+        logical(LKG)            , intent(in)    , contiguous    :: pattern(:)
         procedure(logical(LK))                                  :: iseq
-        logical(LKC)                            , allocatable   :: ArrayRemoved(:)
+        logical(LKG)                            , allocatable   :: ArrayRemoved(:)
     end function
 #endif
 
@@ -2643,11 +2643,11 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedCusComDefIns_D1_D1_LK1
 #endif
-        use pm_kind, only: LKC => LK1
-        logical(LKC)            , intent(in)    , contiguous    :: array(:)
-        logical(LKC)            , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: LKG => LK1
+        logical(LKG)            , intent(in)    , contiguous    :: array(:)
+        logical(LKG)            , intent(in)    , contiguous    :: pattern(:)
         procedure(logical(LK))                                  :: iseq
-        logical(LKC)                            , allocatable   :: ArrayRemoved(:)
+        logical(LKG)                            , allocatable   :: ArrayRemoved(:)
     end function
 #endif
 
@@ -2658,11 +2658,11 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedCusComDefIns_D1_D1_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)            , intent(in)    , contiguous    :: array(:)
-        complex(CKC)            , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG)            , intent(in)    , contiguous    :: array(:)
+        complex(CKG)            , intent(in)    , contiguous    :: pattern(:)
         procedure(logical(LK))                                  :: iseq
-        complex(CKC)                            , allocatable   :: ArrayRemoved(:)
+        complex(CKG)                            , allocatable   :: ArrayRemoved(:)
     end function
 #endif
 
@@ -2671,11 +2671,11 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedCusComDefIns_D1_D1_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)            , intent(in)    , contiguous    :: array(:)
-        complex(CKC)            , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG)            , intent(in)    , contiguous    :: array(:)
+        complex(CKG)            , intent(in)    , contiguous    :: pattern(:)
         procedure(logical(LK))                                  :: iseq
-        complex(CKC)                            , allocatable   :: ArrayRemoved(:)
+        complex(CKG)                            , allocatable   :: ArrayRemoved(:)
     end function
 #endif
 
@@ -2684,11 +2684,11 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedCusComDefIns_D1_D1_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)            , intent(in)    , contiguous    :: array(:)
-        complex(CKC)            , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG)            , intent(in)    , contiguous    :: array(:)
+        complex(CKG)            , intent(in)    , contiguous    :: pattern(:)
         procedure(logical(LK))                                  :: iseq
-        complex(CKC)                            , allocatable   :: ArrayRemoved(:)
+        complex(CKG)                            , allocatable   :: ArrayRemoved(:)
     end function
 #endif
 
@@ -2697,11 +2697,11 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedCusComDefIns_D1_D1_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)            , intent(in)    , contiguous    :: array(:)
-        complex(CKC)            , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG)            , intent(in)    , contiguous    :: array(:)
+        complex(CKG)            , intent(in)    , contiguous    :: pattern(:)
         procedure(logical(LK))                                  :: iseq
-        complex(CKC)                            , allocatable   :: ArrayRemoved(:)
+        complex(CKG)                            , allocatable   :: ArrayRemoved(:)
     end function
 #endif
 
@@ -2710,11 +2710,11 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedCusComDefIns_D1_D1_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)            , intent(in)    , contiguous    :: array(:)
-        complex(CKC)            , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG)            , intent(in)    , contiguous    :: array(:)
+        complex(CKG)            , intent(in)    , contiguous    :: pattern(:)
         procedure(logical(LK))                                  :: iseq
-        complex(CKC)                            , allocatable   :: ArrayRemoved(:)
+        complex(CKG)                            , allocatable   :: ArrayRemoved(:)
     end function
 #endif
 
@@ -2725,11 +2725,11 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedCusComDefIns_D1_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)               , intent(in)    , contiguous    :: array(:)
-        real(RKC)               , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)               , intent(in)    , contiguous    :: array(:)
+        real(RKG)               , intent(in)    , contiguous    :: pattern(:)
         procedure(logical(LK))                                  :: iseq
-        real(RKC)                               , allocatable   :: ArrayRemoved(:)
+        real(RKG)                               , allocatable   :: ArrayRemoved(:)
     end function
 #endif
 
@@ -2738,11 +2738,11 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedCusComDefIns_D1_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)               , intent(in)    , contiguous    :: array(:)
-        real(RKC)               , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)               , intent(in)    , contiguous    :: array(:)
+        real(RKG)               , intent(in)    , contiguous    :: pattern(:)
         procedure(logical(LK))                                  :: iseq
-        real(RKC)                               , allocatable   :: ArrayRemoved(:)
+        real(RKG)                               , allocatable   :: ArrayRemoved(:)
     end function
 #endif
 
@@ -2751,11 +2751,11 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedCusComDefIns_D1_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)               , intent(in)    , contiguous    :: array(:)
-        real(RKC)               , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)               , intent(in)    , contiguous    :: array(:)
+        real(RKG)               , intent(in)    , contiguous    :: pattern(:)
         procedure(logical(LK))                                  :: iseq
-        real(RKC)                               , allocatable   :: ArrayRemoved(:)
+        real(RKG)                               , allocatable   :: ArrayRemoved(:)
     end function
 #endif
 
@@ -2764,11 +2764,11 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedCusComDefIns_D1_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)               , intent(in)    , contiguous    :: array(:)
-        real(RKC)               , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)               , intent(in)    , contiguous    :: array(:)
+        real(RKG)               , intent(in)    , contiguous    :: pattern(:)
         procedure(logical(LK))                                  :: iseq
-        real(RKC)                               , allocatable   :: ArrayRemoved(:)
+        real(RKG)                               , allocatable   :: ArrayRemoved(:)
     end function
 #endif
 
@@ -2777,11 +2777,11 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedCusComDefIns_D1_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)               , intent(in)    , contiguous    :: array(:)
-        real(RKC)               , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)               , intent(in)    , contiguous    :: array(:)
+        real(RKG)               , intent(in)    , contiguous    :: pattern(:)
         procedure(logical(LK))                                  :: iseq
-        real(RKC)                               , allocatable   :: ArrayRemoved(:)
+        real(RKG)                               , allocatable   :: ArrayRemoved(:)
     end function
 #endif
 
@@ -2798,13 +2798,13 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedDefComCusIns_D1_D1_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)        , intent(in)    , contiguous    :: array(:)
-        character(*,SKC)        , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)        , intent(in)    , contiguous    :: array(:)
+        character(*,SKG)        , intent(in)    , contiguous    :: pattern(:)
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
         logical(LK)             , intent(in)    , optional      :: unique
-        character(LEN_ARRAY, SKC)               , allocatable   :: ArrayRemoved(:)
+        character(LEN_ARRAY, SKG)               , allocatable   :: ArrayRemoved(:)
     end function
 #endif
 
@@ -2813,13 +2813,13 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedDefComCusIns_D1_D1_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)        , intent(in)    , contiguous    :: array(:)
-        character(*,SKC)        , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)        , intent(in)    , contiguous    :: array(:)
+        character(*,SKG)        , intent(in)    , contiguous    :: pattern(:)
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
         logical(LK)             , intent(in)    , optional      :: unique
-        character(LEN_ARRAY, SKC)               , allocatable   :: ArrayRemoved(:)
+        character(LEN_ARRAY, SKG)               , allocatable   :: ArrayRemoved(:)
     end function
 #endif
 
@@ -2828,13 +2828,13 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedDefComCusIns_D1_D1_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)        , intent(in)    , contiguous    :: array(:)
-        character(*,SKC)        , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)        , intent(in)    , contiguous    :: array(:)
+        character(*,SKG)        , intent(in)    , contiguous    :: pattern(:)
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
         logical(LK)             , intent(in)    , optional      :: unique
-        character(LEN_ARRAY, SKC)               , allocatable   :: ArrayRemoved(:)
+        character(LEN_ARRAY, SKG)               , allocatable   :: ArrayRemoved(:)
     end function
 #endif
 
@@ -2843,13 +2843,13 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedDefComCusIns_D1_D1_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)        , intent(in)    , contiguous    :: array(:)
-        character(*,SKC)        , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)        , intent(in)    , contiguous    :: array(:)
+        character(*,SKG)        , intent(in)    , contiguous    :: pattern(:)
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
         logical(LK)             , intent(in)    , optional      :: unique
-        character(LEN_ARRAY, SKC)               , allocatable   :: ArrayRemoved(:)
+        character(LEN_ARRAY, SKG)               , allocatable   :: ArrayRemoved(:)
     end function
 #endif
 
@@ -2858,13 +2858,13 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedDefComCusIns_D1_D1_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)        , intent(in)    , contiguous    :: array(:)
-        character(*,SKC)        , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)        , intent(in)    , contiguous    :: array(:)
+        character(*,SKG)        , intent(in)    , contiguous    :: pattern(:)
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
         logical(LK)             , intent(in)    , optional      :: unique
-        character(LEN_ARRAY, SKC)               , allocatable   :: ArrayRemoved(:)
+        character(LEN_ARRAY, SKG)               , allocatable   :: ArrayRemoved(:)
     end function
 #endif
 
@@ -2875,13 +2875,13 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedDefComCusIns_D1_D1_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)            , intent(in)    , contiguous    :: array(:)
-        integer(IKC)            , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: IKG => IK5
+        integer(IKG)            , intent(in)    , contiguous    :: array(:)
+        integer(IKG)            , intent(in)    , contiguous    :: pattern(:)
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
         logical(LK)             , intent(in)    , optional      :: unique
-        integer(IKC)                            , allocatable   :: ArrayRemoved(:)
+        integer(IKG)                            , allocatable   :: ArrayRemoved(:)
     end function
 #endif
 
@@ -2890,13 +2890,13 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedDefComCusIns_D1_D1_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)            , intent(in)    , contiguous    :: array(:)
-        integer(IKC)            , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: IKG => IK4
+        integer(IKG)            , intent(in)    , contiguous    :: array(:)
+        integer(IKG)            , intent(in)    , contiguous    :: pattern(:)
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
         logical(LK)             , intent(in)    , optional      :: unique
-        integer(IKC)                            , allocatable   :: ArrayRemoved(:)
+        integer(IKG)                            , allocatable   :: ArrayRemoved(:)
     end function
 #endif
 
@@ -2905,13 +2905,13 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedDefComCusIns_D1_D1_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)            , intent(in)    , contiguous    :: array(:)
-        integer(IKC)            , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: IKG => IK3
+        integer(IKG)            , intent(in)    , contiguous    :: array(:)
+        integer(IKG)            , intent(in)    , contiguous    :: pattern(:)
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
         logical(LK)             , intent(in)    , optional      :: unique
-        integer(IKC)                            , allocatable   :: ArrayRemoved(:)
+        integer(IKG)                            , allocatable   :: ArrayRemoved(:)
     end function
 #endif
 
@@ -2920,13 +2920,13 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedDefComCusIns_D1_D1_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)            , intent(in)    , contiguous    :: array(:)
-        integer(IKC)            , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: IKG => IK2
+        integer(IKG)            , intent(in)    , contiguous    :: array(:)
+        integer(IKG)            , intent(in)    , contiguous    :: pattern(:)
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
         logical(LK)             , intent(in)    , optional      :: unique
-        integer(IKC)                            , allocatable   :: ArrayRemoved(:)
+        integer(IKG)                            , allocatable   :: ArrayRemoved(:)
     end function
 #endif
 
@@ -2935,13 +2935,13 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedDefComCusIns_D1_D1_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)            , intent(in)    , contiguous    :: array(:)
-        integer(IKC)            , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: IKG => IK1
+        integer(IKG)            , intent(in)    , contiguous    :: array(:)
+        integer(IKG)            , intent(in)    , contiguous    :: pattern(:)
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
         logical(LK)             , intent(in)    , optional      :: unique
-        integer(IKC)                            , allocatable   :: ArrayRemoved(:)
+        integer(IKG)                            , allocatable   :: ArrayRemoved(:)
     end function
 #endif
 
@@ -2952,13 +2952,13 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedDefComCusIns_D1_D1_LK5
 #endif
-        use pm_kind, only: LKC => LK5
-        logical(LKC)            , intent(in)    , contiguous    :: array(:)
-        logical(LKC)            , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: LKG => LK5
+        logical(LKG)            , intent(in)    , contiguous    :: array(:)
+        logical(LKG)            , intent(in)    , contiguous    :: pattern(:)
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
         logical(LK)             , intent(in)    , optional      :: unique
-        logical(LKC)                            , allocatable   :: ArrayRemoved(:)
+        logical(LKG)                            , allocatable   :: ArrayRemoved(:)
     end function
 #endif
 
@@ -2967,13 +2967,13 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedDefComCusIns_D1_D1_LK4
 #endif
-        use pm_kind, only: LKC => LK4
-        logical(LKC)            , intent(in)    , contiguous    :: array(:)
-        logical(LKC)            , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: LKG => LK4
+        logical(LKG)            , intent(in)    , contiguous    :: array(:)
+        logical(LKG)            , intent(in)    , contiguous    :: pattern(:)
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
         logical(LK)             , intent(in)    , optional      :: unique
-        logical(LKC)                            , allocatable   :: ArrayRemoved(:)
+        logical(LKG)                            , allocatable   :: ArrayRemoved(:)
     end function
 #endif
 
@@ -2982,13 +2982,13 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedDefComCusIns_D1_D1_LK3
 #endif
-        use pm_kind, only: LKC => LK3
-        logical(LKC)            , intent(in)    , contiguous    :: array(:)
-        logical(LKC)            , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: LKG => LK3
+        logical(LKG)            , intent(in)    , contiguous    :: array(:)
+        logical(LKG)            , intent(in)    , contiguous    :: pattern(:)
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
         logical(LK)             , intent(in)    , optional      :: unique
-        logical(LKC)                            , allocatable   :: ArrayRemoved(:)
+        logical(LKG)                            , allocatable   :: ArrayRemoved(:)
     end function
 #endif
 
@@ -2997,13 +2997,13 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedDefComCusIns_D1_D1_LK2
 #endif
-        use pm_kind, only: LKC => LK2
-        logical(LKC)            , intent(in)    , contiguous    :: array(:)
-        logical(LKC)            , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: LKG => LK2
+        logical(LKG)            , intent(in)    , contiguous    :: array(:)
+        logical(LKG)            , intent(in)    , contiguous    :: pattern(:)
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
         logical(LK)             , intent(in)    , optional      :: unique
-        logical(LKC)                            , allocatable   :: ArrayRemoved(:)
+        logical(LKG)                            , allocatable   :: ArrayRemoved(:)
     end function
 #endif
 
@@ -3012,13 +3012,13 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedDefComCusIns_D1_D1_LK1
 #endif
-        use pm_kind, only: LKC => LK1
-        logical(LKC)            , intent(in)    , contiguous    :: array(:)
-        logical(LKC)            , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: LKG => LK1
+        logical(LKG)            , intent(in)    , contiguous    :: array(:)
+        logical(LKG)            , intent(in)    , contiguous    :: pattern(:)
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
         logical(LK)             , intent(in)    , optional      :: unique
-        logical(LKC)                            , allocatable   :: ArrayRemoved(:)
+        logical(LKG)                            , allocatable   :: ArrayRemoved(:)
     end function
 #endif
 
@@ -3029,13 +3029,13 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedDefComCusIns_D1_D1_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)            , intent(in)    , contiguous    :: array(:)
-        complex(CKC)            , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG)            , intent(in)    , contiguous    :: array(:)
+        complex(CKG)            , intent(in)    , contiguous    :: pattern(:)
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
         logical(LK)             , intent(in)    , optional      :: unique
-        complex(CKC)                            , allocatable   :: ArrayRemoved(:)
+        complex(CKG)                            , allocatable   :: ArrayRemoved(:)
     end function
 #endif
 
@@ -3044,13 +3044,13 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedDefComCusIns_D1_D1_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)            , intent(in)    , contiguous    :: array(:)
-        complex(CKC)            , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG)            , intent(in)    , contiguous    :: array(:)
+        complex(CKG)            , intent(in)    , contiguous    :: pattern(:)
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
         logical(LK)             , intent(in)    , optional      :: unique
-        complex(CKC)                            , allocatable   :: ArrayRemoved(:)
+        complex(CKG)                            , allocatable   :: ArrayRemoved(:)
     end function
 #endif
 
@@ -3059,13 +3059,13 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedDefComCusIns_D1_D1_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)            , intent(in)    , contiguous    :: array(:)
-        complex(CKC)            , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG)            , intent(in)    , contiguous    :: array(:)
+        complex(CKG)            , intent(in)    , contiguous    :: pattern(:)
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
         logical(LK)             , intent(in)    , optional      :: unique
-        complex(CKC)                            , allocatable   :: ArrayRemoved(:)
+        complex(CKG)                            , allocatable   :: ArrayRemoved(:)
     end function
 #endif
 
@@ -3074,13 +3074,13 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedDefComCusIns_D1_D1_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)            , intent(in)    , contiguous    :: array(:)
-        complex(CKC)            , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG)            , intent(in)    , contiguous    :: array(:)
+        complex(CKG)            , intent(in)    , contiguous    :: pattern(:)
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
         logical(LK)             , intent(in)    , optional      :: unique
-        complex(CKC)                            , allocatable   :: ArrayRemoved(:)
+        complex(CKG)                            , allocatable   :: ArrayRemoved(:)
     end function
 #endif
 
@@ -3089,13 +3089,13 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedDefComCusIns_D1_D1_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)            , intent(in)    , contiguous    :: array(:)
-        complex(CKC)            , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG)            , intent(in)    , contiguous    :: array(:)
+        complex(CKG)            , intent(in)    , contiguous    :: pattern(:)
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
         logical(LK)             , intent(in)    , optional      :: unique
-        complex(CKC)                            , allocatable   :: ArrayRemoved(:)
+        complex(CKG)                            , allocatable   :: ArrayRemoved(:)
     end function
 #endif
 
@@ -3106,13 +3106,13 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedDefComCusIns_D1_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)               , intent(in)    , contiguous    :: array(:)
-        real(RKC)               , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)               , intent(in)    , contiguous    :: array(:)
+        real(RKG)               , intent(in)    , contiguous    :: pattern(:)
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
         logical(LK)             , intent(in)    , optional      :: unique
-        real(RKC)                               , allocatable   :: ArrayRemoved(:)
+        real(RKG)                               , allocatable   :: ArrayRemoved(:)
     end function
 #endif
 
@@ -3121,13 +3121,13 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedDefComCusIns_D1_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)               , intent(in)    , contiguous    :: array(:)
-        real(RKC)               , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)               , intent(in)    , contiguous    :: array(:)
+        real(RKG)               , intent(in)    , contiguous    :: pattern(:)
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
         logical(LK)             , intent(in)    , optional      :: unique
-        real(RKC)                               , allocatable   :: ArrayRemoved(:)
+        real(RKG)                               , allocatable   :: ArrayRemoved(:)
     end function
 #endif
 
@@ -3136,13 +3136,13 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedDefComCusIns_D1_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)               , intent(in)    , contiguous    :: array(:)
-        real(RKC)               , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)               , intent(in)    , contiguous    :: array(:)
+        real(RKG)               , intent(in)    , contiguous    :: pattern(:)
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
         logical(LK)             , intent(in)    , optional      :: unique
-        real(RKC)                               , allocatable   :: ArrayRemoved(:)
+        real(RKG)                               , allocatable   :: ArrayRemoved(:)
     end function
 #endif
 
@@ -3151,13 +3151,13 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedDefComCusIns_D1_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)               , intent(in)    , contiguous    :: array(:)
-        real(RKC)               , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)               , intent(in)    , contiguous    :: array(:)
+        real(RKG)               , intent(in)    , contiguous    :: pattern(:)
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
         logical(LK)             , intent(in)    , optional      :: unique
-        real(RKC)                               , allocatable   :: ArrayRemoved(:)
+        real(RKG)                               , allocatable   :: ArrayRemoved(:)
     end function
 #endif
 
@@ -3166,13 +3166,13 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedDefComCusIns_D1_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)               , intent(in)    , contiguous    :: array(:)
-        real(RKC)               , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)               , intent(in)    , contiguous    :: array(:)
+        real(RKG)               , intent(in)    , contiguous    :: pattern(:)
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
         logical(LK)             , intent(in)    , optional      :: unique
-        real(RKC)                               , allocatable   :: ArrayRemoved(:)
+        real(RKG)                               , allocatable   :: ArrayRemoved(:)
     end function
 #endif
 
@@ -3189,14 +3189,14 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedCusComCusIns_D1_D1_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)        , intent(in)    , contiguous    :: array(:)
-        character(*,SKC)        , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)        , intent(in)    , contiguous    :: array(:)
+        character(*,SKG)        , intent(in)    , contiguous    :: pattern(:)
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
         logical(LK)             , intent(in)    , optional      :: unique
-        character(LEN_ARRAY, SKC)               , allocatable   :: ArrayRemoved(:)
+        character(LEN_ARRAY, SKG)               , allocatable   :: ArrayRemoved(:)
     end function
 #endif
 
@@ -3205,14 +3205,14 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedCusComCusIns_D1_D1_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)        , intent(in)    , contiguous    :: array(:)
-        character(*,SKC)        , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)        , intent(in)    , contiguous    :: array(:)
+        character(*,SKG)        , intent(in)    , contiguous    :: pattern(:)
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
         logical(LK)             , intent(in)    , optional      :: unique
-        character(LEN_ARRAY, SKC)               , allocatable   :: ArrayRemoved(:)
+        character(LEN_ARRAY, SKG)               , allocatable   :: ArrayRemoved(:)
     end function
 #endif
 
@@ -3221,14 +3221,14 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedCusComCusIns_D1_D1_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)        , intent(in)    , contiguous    :: array(:)
-        character(*,SKC)        , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)        , intent(in)    , contiguous    :: array(:)
+        character(*,SKG)        , intent(in)    , contiguous    :: pattern(:)
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
         logical(LK)             , intent(in)    , optional      :: unique
-        character(LEN_ARRAY, SKC)               , allocatable   :: ArrayRemoved(:)
+        character(LEN_ARRAY, SKG)               , allocatable   :: ArrayRemoved(:)
     end function
 #endif
 
@@ -3237,14 +3237,14 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedCusComCusIns_D1_D1_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)        , intent(in)    , contiguous    :: array(:)
-        character(*,SKC)        , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)        , intent(in)    , contiguous    :: array(:)
+        character(*,SKG)        , intent(in)    , contiguous    :: pattern(:)
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
         logical(LK)             , intent(in)    , optional      :: unique
-        character(LEN_ARRAY, SKC)               , allocatable   :: ArrayRemoved(:)
+        character(LEN_ARRAY, SKG)               , allocatable   :: ArrayRemoved(:)
     end function
 #endif
 
@@ -3253,14 +3253,14 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedCusComCusIns_D1_D1_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)        , intent(in)    , contiguous    :: array(:)
-        character(*,SKC)        , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)        , intent(in)    , contiguous    :: array(:)
+        character(*,SKG)        , intent(in)    , contiguous    :: pattern(:)
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
         logical(LK)             , intent(in)    , optional      :: unique
-        character(LEN_ARRAY, SKC)               , allocatable   :: ArrayRemoved(:)
+        character(LEN_ARRAY, SKG)               , allocatable   :: ArrayRemoved(:)
     end function
 #endif
 
@@ -3271,14 +3271,14 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedCusComCusIns_D1_D1_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)            , intent(in)    , contiguous    :: array(:)
-        integer(IKC)            , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: IKG => IK5
+        integer(IKG)            , intent(in)    , contiguous    :: array(:)
+        integer(IKG)            , intent(in)    , contiguous    :: pattern(:)
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
         logical(LK)             , intent(in)    , optional      :: unique
-        integer(IKC)                            , allocatable   :: ArrayRemoved(:)
+        integer(IKG)                            , allocatable   :: ArrayRemoved(:)
     end function
 #endif
 
@@ -3287,14 +3287,14 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedCusComCusIns_D1_D1_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)            , intent(in)    , contiguous    :: array(:)
-        integer(IKC)            , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: IKG => IK4
+        integer(IKG)            , intent(in)    , contiguous    :: array(:)
+        integer(IKG)            , intent(in)    , contiguous    :: pattern(:)
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
         logical(LK)             , intent(in)    , optional      :: unique
-        integer(IKC)                            , allocatable   :: ArrayRemoved(:)
+        integer(IKG)                            , allocatable   :: ArrayRemoved(:)
     end function
 #endif
 
@@ -3303,14 +3303,14 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedCusComCusIns_D1_D1_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)            , intent(in)    , contiguous    :: array(:)
-        integer(IKC)            , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: IKG => IK3
+        integer(IKG)            , intent(in)    , contiguous    :: array(:)
+        integer(IKG)            , intent(in)    , contiguous    :: pattern(:)
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
         logical(LK)             , intent(in)    , optional      :: unique
-        integer(IKC)                            , allocatable   :: ArrayRemoved(:)
+        integer(IKG)                            , allocatable   :: ArrayRemoved(:)
     end function
 #endif
 
@@ -3319,14 +3319,14 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedCusComCusIns_D1_D1_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)            , intent(in)    , contiguous    :: array(:)
-        integer(IKC)            , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: IKG => IK2
+        integer(IKG)            , intent(in)    , contiguous    :: array(:)
+        integer(IKG)            , intent(in)    , contiguous    :: pattern(:)
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
         logical(LK)             , intent(in)    , optional      :: unique
-        integer(IKC)                            , allocatable   :: ArrayRemoved(:)
+        integer(IKG)                            , allocatable   :: ArrayRemoved(:)
     end function
 #endif
 
@@ -3335,14 +3335,14 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedCusComCusIns_D1_D1_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)            , intent(in)    , contiguous    :: array(:)
-        integer(IKC)            , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: IKG => IK1
+        integer(IKG)            , intent(in)    , contiguous    :: array(:)
+        integer(IKG)            , intent(in)    , contiguous    :: pattern(:)
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
         logical(LK)             , intent(in)    , optional      :: unique
-        integer(IKC)                            , allocatable   :: ArrayRemoved(:)
+        integer(IKG)                            , allocatable   :: ArrayRemoved(:)
     end function
 #endif
 
@@ -3353,14 +3353,14 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedCusComCusIns_D1_D1_LK5
 #endif
-        use pm_kind, only: LKC => LK5
-        logical(LKC)            , intent(in)    , contiguous    :: array(:)
-        logical(LKC)            , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: LKG => LK5
+        logical(LKG)            , intent(in)    , contiguous    :: array(:)
+        logical(LKG)            , intent(in)    , contiguous    :: pattern(:)
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
         logical(LK)             , intent(in)    , optional      :: unique
-        logical(LKC)                            , allocatable   :: ArrayRemoved(:)
+        logical(LKG)                            , allocatable   :: ArrayRemoved(:)
     end function
 #endif
 
@@ -3369,14 +3369,14 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedCusComCusIns_D1_D1_LK4
 #endif
-        use pm_kind, only: LKC => LK4
-        logical(LKC)            , intent(in)    , contiguous    :: array(:)
-        logical(LKC)            , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: LKG => LK4
+        logical(LKG)            , intent(in)    , contiguous    :: array(:)
+        logical(LKG)            , intent(in)    , contiguous    :: pattern(:)
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
         logical(LK)             , intent(in)    , optional      :: unique
-        logical(LKC)                            , allocatable   :: ArrayRemoved(:)
+        logical(LKG)                            , allocatable   :: ArrayRemoved(:)
     end function
 #endif
 
@@ -3385,14 +3385,14 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedCusComCusIns_D1_D1_LK3
 #endif
-        use pm_kind, only: LKC => LK3
-        logical(LKC)            , intent(in)    , contiguous    :: array(:)
-        logical(LKC)            , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: LKG => LK3
+        logical(LKG)            , intent(in)    , contiguous    :: array(:)
+        logical(LKG)            , intent(in)    , contiguous    :: pattern(:)
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
         logical(LK)             , intent(in)    , optional      :: unique
-        logical(LKC)                            , allocatable   :: ArrayRemoved(:)
+        logical(LKG)                            , allocatable   :: ArrayRemoved(:)
     end function
 #endif
 
@@ -3401,14 +3401,14 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedCusComCusIns_D1_D1_LK2
 #endif
-        use pm_kind, only: LKC => LK2
-        logical(LKC)            , intent(in)    , contiguous    :: array(:)
-        logical(LKC)            , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: LKG => LK2
+        logical(LKG)            , intent(in)    , contiguous    :: array(:)
+        logical(LKG)            , intent(in)    , contiguous    :: pattern(:)
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
         logical(LK)             , intent(in)    , optional      :: unique
-        logical(LKC)                            , allocatable   :: ArrayRemoved(:)
+        logical(LKG)                            , allocatable   :: ArrayRemoved(:)
     end function
 #endif
 
@@ -3417,14 +3417,14 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedCusComCusIns_D1_D1_LK1
 #endif
-        use pm_kind, only: LKC => LK1
-        logical(LKC)            , intent(in)    , contiguous    :: array(:)
-        logical(LKC)            , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: LKG => LK1
+        logical(LKG)            , intent(in)    , contiguous    :: array(:)
+        logical(LKG)            , intent(in)    , contiguous    :: pattern(:)
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
         logical(LK)             , intent(in)    , optional      :: unique
-        logical(LKC)                            , allocatable   :: ArrayRemoved(:)
+        logical(LKG)                            , allocatable   :: ArrayRemoved(:)
     end function
 #endif
 
@@ -3435,14 +3435,14 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedCusComCusIns_D1_D1_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)            , intent(in)    , contiguous    :: array(:)
-        complex(CKC)            , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG)            , intent(in)    , contiguous    :: array(:)
+        complex(CKG)            , intent(in)    , contiguous    :: pattern(:)
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
         logical(LK)             , intent(in)    , optional      :: unique
-        complex(CKC)                            , allocatable   :: ArrayRemoved(:)
+        complex(CKG)                            , allocatable   :: ArrayRemoved(:)
     end function
 #endif
 
@@ -3451,14 +3451,14 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedCusComCusIns_D1_D1_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)            , intent(in)    , contiguous    :: array(:)
-        complex(CKC)            , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG)            , intent(in)    , contiguous    :: array(:)
+        complex(CKG)            , intent(in)    , contiguous    :: pattern(:)
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
         logical(LK)             , intent(in)    , optional      :: unique
-        complex(CKC)                            , allocatable   :: ArrayRemoved(:)
+        complex(CKG)                            , allocatable   :: ArrayRemoved(:)
     end function
 #endif
 
@@ -3467,14 +3467,14 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedCusComCusIns_D1_D1_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)            , intent(in)    , contiguous    :: array(:)
-        complex(CKC)            , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG)            , intent(in)    , contiguous    :: array(:)
+        complex(CKG)            , intent(in)    , contiguous    :: pattern(:)
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
         logical(LK)             , intent(in)    , optional      :: unique
-        complex(CKC)                            , allocatable   :: ArrayRemoved(:)
+        complex(CKG)                            , allocatable   :: ArrayRemoved(:)
     end function
 #endif
 
@@ -3483,14 +3483,14 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedCusComCusIns_D1_D1_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)            , intent(in)    , contiguous    :: array(:)
-        complex(CKC)            , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG)            , intent(in)    , contiguous    :: array(:)
+        complex(CKG)            , intent(in)    , contiguous    :: pattern(:)
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
         logical(LK)             , intent(in)    , optional      :: unique
-        complex(CKC)                            , allocatable   :: ArrayRemoved(:)
+        complex(CKG)                            , allocatable   :: ArrayRemoved(:)
     end function
 #endif
 
@@ -3499,14 +3499,14 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedCusComCusIns_D1_D1_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)            , intent(in)    , contiguous    :: array(:)
-        complex(CKC)            , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG)            , intent(in)    , contiguous    :: array(:)
+        complex(CKG)            , intent(in)    , contiguous    :: pattern(:)
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
         logical(LK)             , intent(in)    , optional      :: unique
-        complex(CKC)                            , allocatable   :: ArrayRemoved(:)
+        complex(CKG)                            , allocatable   :: ArrayRemoved(:)
     end function
 #endif
 
@@ -3517,14 +3517,14 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedCusComCusIns_D1_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)               , intent(in)    , contiguous    :: array(:)
-        real(RKC)               , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)               , intent(in)    , contiguous    :: array(:)
+        real(RKG)               , intent(in)    , contiguous    :: pattern(:)
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
         logical(LK)             , intent(in)    , optional      :: unique
-        real(RKC)                               , allocatable   :: ArrayRemoved(:)
+        real(RKG)                               , allocatable   :: ArrayRemoved(:)
     end function
 #endif
 
@@ -3533,14 +3533,14 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedCusComCusIns_D1_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)               , intent(in)    , contiguous    :: array(:)
-        real(RKC)               , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)               , intent(in)    , contiguous    :: array(:)
+        real(RKG)               , intent(in)    , contiguous    :: pattern(:)
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
         logical(LK)             , intent(in)    , optional      :: unique
-        real(RKC)                               , allocatable   :: ArrayRemoved(:)
+        real(RKG)                               , allocatable   :: ArrayRemoved(:)
     end function
 #endif
 
@@ -3549,14 +3549,14 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedCusComCusIns_D1_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)               , intent(in)    , contiguous    :: array(:)
-        real(RKC)               , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)               , intent(in)    , contiguous    :: array(:)
+        real(RKG)               , intent(in)    , contiguous    :: pattern(:)
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
         logical(LK)             , intent(in)    , optional      :: unique
-        real(RKC)                               , allocatable   :: ArrayRemoved(:)
+        real(RKG)                               , allocatable   :: ArrayRemoved(:)
     end function
 #endif
 
@@ -3565,14 +3565,14 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedCusComCusIns_D1_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)               , intent(in)    , contiguous    :: array(:)
-        real(RKC)               , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)               , intent(in)    , contiguous    :: array(:)
+        real(RKG)               , intent(in)    , contiguous    :: pattern(:)
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
         logical(LK)             , intent(in)    , optional      :: unique
-        real(RKC)                               , allocatable   :: ArrayRemoved(:)
+        real(RKG)                               , allocatable   :: ArrayRemoved(:)
     end function
 #endif
 
@@ -3581,14 +3581,14 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemovedCusComCusIns_D1_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)               , intent(in)    , contiguous    :: array(:)
-        real(RKC)               , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)               , intent(in)    , contiguous    :: array(:)
+        real(RKG)               , intent(in)    , contiguous    :: pattern(:)
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
         logical(LK)             , intent(in)    , optional      :: unique
-        real(RKC)                               , allocatable   :: ArrayRemoved(:)
+        real(RKG)                               , allocatable   :: ArrayRemoved(:)
     end function
 #endif
 
@@ -3772,9 +3772,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComDefIns_D0_D0_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(:,SKC)        , intent(inout) , allocatable   :: array
-        character(*,SKC)        , intent(in)                    :: pattern
+        use pm_kind, only: SKG => SK5
+        character(:,SKG)        , intent(inout) , allocatable   :: array
+        character(*,SKG)        , intent(in)                    :: pattern
     end subroutine
 #endif
 
@@ -3783,9 +3783,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComDefIns_D0_D0_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(:,SKC)        , intent(inout) , allocatable   :: array
-        character(*,SKC)        , intent(in)                    :: pattern
+        use pm_kind, only: SKG => SK4
+        character(:,SKG)        , intent(inout) , allocatable   :: array
+        character(*,SKG)        , intent(in)                    :: pattern
     end subroutine
 #endif
 
@@ -3794,9 +3794,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComDefIns_D0_D0_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(:,SKC)        , intent(inout) , allocatable   :: array
-        character(*,SKC)        , intent(in)                    :: pattern
+        use pm_kind, only: SKG => SK3
+        character(:,SKG)        , intent(inout) , allocatable   :: array
+        character(*,SKG)        , intent(in)                    :: pattern
     end subroutine
 #endif
 
@@ -3805,9 +3805,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComDefIns_D0_D0_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(:,SKC)        , intent(inout) , allocatable   :: array
-        character(*,SKC)        , intent(in)                    :: pattern
+        use pm_kind, only: SKG => SK2
+        character(:,SKG)        , intent(inout) , allocatable   :: array
+        character(*,SKG)        , intent(in)                    :: pattern
     end subroutine
 #endif
 
@@ -3816,9 +3816,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComDefIns_D0_D0_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(:,SKC)        , intent(inout) , allocatable   :: array
-        character(*,SKC)        , intent(in)                    :: pattern
+        use pm_kind, only: SKG => SK1
+        character(:,SKG)        , intent(inout) , allocatable   :: array
+        character(*,SKG)        , intent(in)                    :: pattern
     end subroutine
 #endif
 
@@ -3835,9 +3835,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComDefIns_D0_D0_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(:,SKC)        , intent(inout) , allocatable   :: array
-        character(*,SKC)        , intent(in)                    :: pattern
+        use pm_kind, only: SKG => SK5
+        character(:,SKG)        , intent(inout) , allocatable   :: array
+        character(*,SKG)        , intent(in)                    :: pattern
         procedure(logical(LK))                                  :: iseq
     end subroutine
 #endif
@@ -3847,9 +3847,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComDefIns_D0_D0_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(:,SKC)        , intent(inout) , allocatable   :: array
-        character(*,SKC)        , intent(in)                    :: pattern
+        use pm_kind, only: SKG => SK4
+        character(:,SKG)        , intent(inout) , allocatable   :: array
+        character(*,SKG)        , intent(in)                    :: pattern
         procedure(logical(LK))                                  :: iseq
     end subroutine
 #endif
@@ -3859,9 +3859,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComDefIns_D0_D0_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(:,SKC)        , intent(inout) , allocatable   :: array
-        character(*,SKC)        , intent(in)                    :: pattern
+        use pm_kind, only: SKG => SK3
+        character(:,SKG)        , intent(inout) , allocatable   :: array
+        character(*,SKG)        , intent(in)                    :: pattern
         procedure(logical(LK))                                  :: iseq
     end subroutine
 #endif
@@ -3871,9 +3871,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComDefIns_D0_D0_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(:,SKC)        , intent(inout) , allocatable   :: array
-        character(*,SKC)        , intent(in)                    :: pattern
+        use pm_kind, only: SKG => SK2
+        character(:,SKG)        , intent(inout) , allocatable   :: array
+        character(*,SKG)        , intent(in)                    :: pattern
         procedure(logical(LK))                                  :: iseq
     end subroutine
 #endif
@@ -3883,9 +3883,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComDefIns_D0_D0_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(:,SKC)        , intent(inout) , allocatable   :: array
-        character(*,SKC)        , intent(in)                    :: pattern
+        use pm_kind, only: SKG => SK1
+        character(:,SKG)        , intent(inout) , allocatable   :: array
+        character(*,SKG)        , intent(in)                    :: pattern
         procedure(logical(LK))                                  :: iseq
     end subroutine
 #endif
@@ -3903,9 +3903,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComCusIns_D0_D0_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(:,SKC)        , intent(inout) , allocatable   :: array
-        character(*,SKC)        , intent(in)                    :: pattern
+        use pm_kind, only: SKG => SK5
+        character(:,SKG)        , intent(inout) , allocatable   :: array
+        character(*,SKG)        , intent(in)                    :: pattern
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
         logical(LK)             , intent(in)    , optional      :: unique
@@ -3917,9 +3917,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComCusIns_D0_D0_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(:,SKC)        , intent(inout) , allocatable   :: array
-        character(*,SKC)        , intent(in)                    :: pattern
+        use pm_kind, only: SKG => SK4
+        character(:,SKG)        , intent(inout) , allocatable   :: array
+        character(*,SKG)        , intent(in)                    :: pattern
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
         logical(LK)             , intent(in)    , optional      :: unique
@@ -3931,9 +3931,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComCusIns_D0_D0_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(:,SKC)        , intent(inout) , allocatable   :: array
-        character(*,SKC)        , intent(in)                    :: pattern
+        use pm_kind, only: SKG => SK3
+        character(:,SKG)        , intent(inout) , allocatable   :: array
+        character(*,SKG)        , intent(in)                    :: pattern
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
         logical(LK)             , intent(in)    , optional      :: unique
@@ -3945,9 +3945,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComCusIns_D0_D0_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(:,SKC)        , intent(inout) , allocatable   :: array
-        character(*,SKC)        , intent(in)                    :: pattern
+        use pm_kind, only: SKG => SK2
+        character(:,SKG)        , intent(inout) , allocatable   :: array
+        character(*,SKG)        , intent(in)                    :: pattern
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
         logical(LK)             , intent(in)    , optional      :: unique
@@ -3959,9 +3959,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComCusIns_D0_D0_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(:,SKC)        , intent(inout) , allocatable   :: array
-        character(*,SKC)        , intent(in)                    :: pattern
+        use pm_kind, only: SKG => SK1
+        character(:,SKG)        , intent(inout) , allocatable   :: array
+        character(*,SKG)        , intent(in)                    :: pattern
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
         logical(LK)             , intent(in)    , optional      :: unique
@@ -3981,9 +3981,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComCusIns_D0_D0_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(:,SKC)        , intent(inout) , allocatable   :: array
-        character(*,SKC)        , intent(in)                    :: pattern
+        use pm_kind, only: SKG => SK5
+        character(:,SKG)        , intent(inout) , allocatable   :: array
+        character(*,SKG)        , intent(in)                    :: pattern
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
@@ -3996,9 +3996,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComCusIns_D0_D0_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(:,SKC)        , intent(inout) , allocatable   :: array
-        character(*,SKC)        , intent(in)                    :: pattern
+        use pm_kind, only: SKG => SK4
+        character(:,SKG)        , intent(inout) , allocatable   :: array
+        character(*,SKG)        , intent(in)                    :: pattern
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
@@ -4011,9 +4011,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComCusIns_D0_D0_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(:,SKC)        , intent(inout) , allocatable   :: array
-        character(*,SKC)        , intent(in)                    :: pattern
+        use pm_kind, only: SKG => SK3
+        character(:,SKG)        , intent(inout) , allocatable   :: array
+        character(*,SKG)        , intent(in)                    :: pattern
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
@@ -4026,9 +4026,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComCusIns_D0_D0_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(:,SKC)        , intent(inout) , allocatable   :: array
-        character(*,SKC)        , intent(in)                    :: pattern
+        use pm_kind, only: SKG => SK2
+        character(:,SKG)        , intent(inout) , allocatable   :: array
+        character(*,SKG)        , intent(in)                    :: pattern
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
@@ -4041,9 +4041,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComCusIns_D0_D0_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(:,SKC)        , intent(inout) , allocatable   :: array
-        character(*,SKC)        , intent(in)                    :: pattern
+        use pm_kind, only: SKG => SK1
+        character(:,SKG)        , intent(inout) , allocatable   :: array
+        character(*,SKG)        , intent(in)                    :: pattern
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
@@ -4070,9 +4070,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComDefIns_D1_D0_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)        , intent(inout) , allocatable   :: array(:)
-        character(*,SKC)        , intent(in)                    :: pattern
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)        , intent(inout) , allocatable   :: array(:)
+        character(*,SKG)        , intent(in)                    :: pattern
     end subroutine
 #endif
 
@@ -4081,9 +4081,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComDefIns_D1_D0_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)        , intent(inout) , allocatable   :: array(:)
-        character(*,SKC)        , intent(in)                    :: pattern
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)        , intent(inout) , allocatable   :: array(:)
+        character(*,SKG)        , intent(in)                    :: pattern
     end subroutine
 #endif
 
@@ -4092,9 +4092,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComDefIns_D1_D0_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)        , intent(inout) , allocatable   :: array(:)
-        character(*,SKC)        , intent(in)                    :: pattern
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)        , intent(inout) , allocatable   :: array(:)
+        character(*,SKG)        , intent(in)                    :: pattern
     end subroutine
 #endif
 
@@ -4103,9 +4103,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComDefIns_D1_D0_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)        , intent(inout) , allocatable   :: array(:)
-        character(*,SKC)        , intent(in)                    :: pattern
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)        , intent(inout) , allocatable   :: array(:)
+        character(*,SKG)        , intent(in)                    :: pattern
     end subroutine
 #endif
 
@@ -4114,9 +4114,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComDefIns_D1_D0_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)        , intent(inout) , allocatable   :: array(:)
-        character(*,SKC)        , intent(in)                    :: pattern
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)        , intent(inout) , allocatable   :: array(:)
+        character(*,SKG)        , intent(in)                    :: pattern
     end subroutine
 #endif
 
@@ -4127,9 +4127,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComDefIns_D1_D0_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)            , intent(inout) , allocatable   :: array(:)
-        integer(IKC)            , intent(in)                    :: pattern
+        use pm_kind, only: IKG => IK5
+        integer(IKG)            , intent(inout) , allocatable   :: array(:)
+        integer(IKG)            , intent(in)                    :: pattern
     end subroutine
 #endif
 
@@ -4138,9 +4138,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComDefIns_D1_D0_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)            , intent(inout) , allocatable   :: array(:)
-        integer(IKC)            , intent(in)                    :: pattern
+        use pm_kind, only: IKG => IK4
+        integer(IKG)            , intent(inout) , allocatable   :: array(:)
+        integer(IKG)            , intent(in)                    :: pattern
     end subroutine
 #endif
 
@@ -4149,9 +4149,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComDefIns_D1_D0_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)            , intent(inout) , allocatable   :: array(:)
-        integer(IKC)            , intent(in)                    :: pattern
+        use pm_kind, only: IKG => IK3
+        integer(IKG)            , intent(inout) , allocatable   :: array(:)
+        integer(IKG)            , intent(in)                    :: pattern
     end subroutine
 #endif
 
@@ -4160,9 +4160,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComDefIns_D1_D0_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)            , intent(inout) , allocatable   :: array(:)
-        integer(IKC)            , intent(in)                    :: pattern
+        use pm_kind, only: IKG => IK2
+        integer(IKG)            , intent(inout) , allocatable   :: array(:)
+        integer(IKG)            , intent(in)                    :: pattern
     end subroutine
 #endif
 
@@ -4171,9 +4171,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComDefIns_D1_D0_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)            , intent(inout) , allocatable   :: array(:)
-        integer(IKC)            , intent(in)                    :: pattern
+        use pm_kind, only: IKG => IK1
+        integer(IKG)            , intent(inout) , allocatable   :: array(:)
+        integer(IKG)            , intent(in)                    :: pattern
     end subroutine
 #endif
 
@@ -4184,9 +4184,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComDefIns_D1_D0_LK5
 #endif
-        use pm_kind, only: LKC => LK5
-        logical(LKC)            , intent(inout) , allocatable   :: array(:)
-        logical(LKC)            , intent(in)                    :: pattern
+        use pm_kind, only: LKG => LK5
+        logical(LKG)            , intent(inout) , allocatable   :: array(:)
+        logical(LKG)            , intent(in)                    :: pattern
     end subroutine
 #endif
 
@@ -4195,9 +4195,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComDefIns_D1_D0_LK4
 #endif
-        use pm_kind, only: LKC => LK4
-        logical(LKC)            , intent(inout) , allocatable   :: array(:)
-        logical(LKC)            , intent(in)                    :: pattern
+        use pm_kind, only: LKG => LK4
+        logical(LKG)            , intent(inout) , allocatable   :: array(:)
+        logical(LKG)            , intent(in)                    :: pattern
     end subroutine
 #endif
 
@@ -4206,9 +4206,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComDefIns_D1_D0_LK3
 #endif
-        use pm_kind, only: LKC => LK3
-        logical(LKC)            , intent(inout) , allocatable   :: array(:)
-        logical(LKC)            , intent(in)                    :: pattern
+        use pm_kind, only: LKG => LK3
+        logical(LKG)            , intent(inout) , allocatable   :: array(:)
+        logical(LKG)            , intent(in)                    :: pattern
     end subroutine
 #endif
 
@@ -4217,9 +4217,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComDefIns_D1_D0_LK2
 #endif
-        use pm_kind, only: LKC => LK2
-        logical(LKC)            , intent(inout) , allocatable   :: array(:)
-        logical(LKC)            , intent(in)                    :: pattern
+        use pm_kind, only: LKG => LK2
+        logical(LKG)            , intent(inout) , allocatable   :: array(:)
+        logical(LKG)            , intent(in)                    :: pattern
     end subroutine
 #endif
 
@@ -4228,9 +4228,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComDefIns_D1_D0_LK1
 #endif
-        use pm_kind, only: LKC => LK1
-        logical(LKC)            , intent(inout) , allocatable   :: array(:)
-        logical(LKC)            , intent(in)                    :: pattern
+        use pm_kind, only: LKG => LK1
+        logical(LKG)            , intent(inout) , allocatable   :: array(:)
+        logical(LKG)            , intent(in)                    :: pattern
     end subroutine
 #endif
 
@@ -4241,9 +4241,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComDefIns_D1_D0_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)            , intent(inout) , allocatable   :: array(:)
-        complex(CKC)            , intent(in)                    :: pattern
+        use pm_kind, only: CKG => CK5
+        complex(CKG)            , intent(inout) , allocatable   :: array(:)
+        complex(CKG)            , intent(in)                    :: pattern
     end subroutine
 #endif
 
@@ -4252,9 +4252,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComDefIns_D1_D0_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)            , intent(inout) , allocatable   :: array(:)
-        complex(CKC)            , intent(in)                    :: pattern
+        use pm_kind, only: CKG => CK4
+        complex(CKG)            , intent(inout) , allocatable   :: array(:)
+        complex(CKG)            , intent(in)                    :: pattern
     end subroutine
 #endif
 
@@ -4263,9 +4263,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComDefIns_D1_D0_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)            , intent(inout) , allocatable   :: array(:)
-        complex(CKC)            , intent(in)                    :: pattern
+        use pm_kind, only: CKG => CK3
+        complex(CKG)            , intent(inout) , allocatable   :: array(:)
+        complex(CKG)            , intent(in)                    :: pattern
     end subroutine
 #endif
 
@@ -4274,9 +4274,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComDefIns_D1_D0_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)            , intent(inout) , allocatable   :: array(:)
-        complex(CKC)            , intent(in)                    :: pattern
+        use pm_kind, only: CKG => CK2
+        complex(CKG)            , intent(inout) , allocatable   :: array(:)
+        complex(CKG)            , intent(in)                    :: pattern
     end subroutine
 #endif
 
@@ -4285,9 +4285,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComDefIns_D1_D0_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)            , intent(inout) , allocatable   :: array(:)
-        complex(CKC)            , intent(in)                    :: pattern
+        use pm_kind, only: CKG => CK1
+        complex(CKG)            , intent(inout) , allocatable   :: array(:)
+        complex(CKG)            , intent(in)                    :: pattern
     end subroutine
 #endif
 
@@ -4298,9 +4298,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComDefIns_D1_D0_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)               , intent(inout) , allocatable   :: array(:)
-        real(RKC)               , intent(in)                    :: pattern
+        use pm_kind, only: RKG => RK5
+        real(RKG)               , intent(inout) , allocatable   :: array(:)
+        real(RKG)               , intent(in)                    :: pattern
     end subroutine
 #endif
 
@@ -4309,9 +4309,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComDefIns_D1_D0_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)               , intent(inout) , allocatable   :: array(:)
-        real(RKC)               , intent(in)                    :: pattern
+        use pm_kind, only: RKG => RK4
+        real(RKG)               , intent(inout) , allocatable   :: array(:)
+        real(RKG)               , intent(in)                    :: pattern
     end subroutine
 #endif
 
@@ -4320,9 +4320,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComDefIns_D1_D0_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)               , intent(inout) , allocatable   :: array(:)
-        real(RKC)               , intent(in)                    :: pattern
+        use pm_kind, only: RKG => RK3
+        real(RKG)               , intent(inout) , allocatable   :: array(:)
+        real(RKG)               , intent(in)                    :: pattern
     end subroutine
 #endif
 
@@ -4331,9 +4331,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComDefIns_D1_D0_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)               , intent(inout) , allocatable   :: array(:)
-        real(RKC)               , intent(in)                    :: pattern
+        use pm_kind, only: RKG => RK2
+        real(RKG)               , intent(inout) , allocatable   :: array(:)
+        real(RKG)               , intent(in)                    :: pattern
     end subroutine
 #endif
 
@@ -4342,9 +4342,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComDefIns_D1_D0_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)               , intent(inout) , allocatable   :: array(:)
-        real(RKC)               , intent(in)                    :: pattern
+        use pm_kind, only: RKG => RK1
+        real(RKG)               , intent(inout) , allocatable   :: array(:)
+        real(RKG)               , intent(in)                    :: pattern
     end subroutine
 #endif
 
@@ -4361,9 +4361,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComDefIns_D1_D0_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)        , intent(inout) , allocatable   :: array(:)
-        character(*,SKC)        , intent(in)                    :: pattern
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)        , intent(inout) , allocatable   :: array(:)
+        character(*,SKG)        , intent(in)                    :: pattern
         procedure(logical(LK))                                  :: iseq
     end subroutine
 #endif
@@ -4373,9 +4373,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComDefIns_D1_D0_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)        , intent(inout) , allocatable   :: array(:)
-        character(*,SKC)        , intent(in)                    :: pattern
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)        , intent(inout) , allocatable   :: array(:)
+        character(*,SKG)        , intent(in)                    :: pattern
         procedure(logical(LK))                                  :: iseq
     end subroutine
 #endif
@@ -4385,9 +4385,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComDefIns_D1_D0_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)        , intent(inout) , allocatable   :: array(:)
-        character(*,SKC)        , intent(in)                    :: pattern
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)        , intent(inout) , allocatable   :: array(:)
+        character(*,SKG)        , intent(in)                    :: pattern
         procedure(logical(LK))                                  :: iseq
     end subroutine
 #endif
@@ -4397,9 +4397,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComDefIns_D1_D0_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)        , intent(inout) , allocatable   :: array(:)
-        character(*,SKC)        , intent(in)                    :: pattern
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)        , intent(inout) , allocatable   :: array(:)
+        character(*,SKG)        , intent(in)                    :: pattern
         procedure(logical(LK))                                  :: iseq
     end subroutine
 #endif
@@ -4409,9 +4409,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComDefIns_D1_D0_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)        , intent(inout) , allocatable   :: array(:)
-        character(*,SKC)        , intent(in)                    :: pattern
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)        , intent(inout) , allocatable   :: array(:)
+        character(*,SKG)        , intent(in)                    :: pattern
         procedure(logical(LK))                                  :: iseq
     end subroutine
 #endif
@@ -4423,9 +4423,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComDefIns_D1_D0_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)            , intent(inout) , allocatable   :: array(:)
-        integer(IKC)            , intent(in)                    :: pattern
+        use pm_kind, only: IKG => IK5
+        integer(IKG)            , intent(inout) , allocatable   :: array(:)
+        integer(IKG)            , intent(in)                    :: pattern
         procedure(logical(LK))                                  :: iseq
     end subroutine
 #endif
@@ -4435,9 +4435,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComDefIns_D1_D0_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)            , intent(inout) , allocatable   :: array(:)
-        integer(IKC)            , intent(in)                    :: pattern
+        use pm_kind, only: IKG => IK4
+        integer(IKG)            , intent(inout) , allocatable   :: array(:)
+        integer(IKG)            , intent(in)                    :: pattern
         procedure(logical(LK))                                  :: iseq
     end subroutine
 #endif
@@ -4447,9 +4447,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComDefIns_D1_D0_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)            , intent(inout) , allocatable   :: array(:)
-        integer(IKC)            , intent(in)                    :: pattern
+        use pm_kind, only: IKG => IK3
+        integer(IKG)            , intent(inout) , allocatable   :: array(:)
+        integer(IKG)            , intent(in)                    :: pattern
         procedure(logical(LK))                                  :: iseq
     end subroutine
 #endif
@@ -4459,9 +4459,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComDefIns_D1_D0_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)            , intent(inout) , allocatable   :: array(:)
-        integer(IKC)            , intent(in)                    :: pattern
+        use pm_kind, only: IKG => IK2
+        integer(IKG)            , intent(inout) , allocatable   :: array(:)
+        integer(IKG)            , intent(in)                    :: pattern
         procedure(logical(LK))                                  :: iseq
     end subroutine
 #endif
@@ -4471,9 +4471,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComDefIns_D1_D0_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)            , intent(inout) , allocatable   :: array(:)
-        integer(IKC)            , intent(in)                    :: pattern
+        use pm_kind, only: IKG => IK1
+        integer(IKG)            , intent(inout) , allocatable   :: array(:)
+        integer(IKG)            , intent(in)                    :: pattern
         procedure(logical(LK))                                  :: iseq
     end subroutine
 #endif
@@ -4485,9 +4485,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComDefIns_D1_D0_LK5
 #endif
-        use pm_kind, only: LKC => LK5
-        logical(LKC)            , intent(inout) , allocatable   :: array(:)
-        logical(LKC)            , intent(in)                    :: pattern
+        use pm_kind, only: LKG => LK5
+        logical(LKG)            , intent(inout) , allocatable   :: array(:)
+        logical(LKG)            , intent(in)                    :: pattern
         procedure(logical(LK))                                  :: iseq
     end subroutine
 #endif
@@ -4497,9 +4497,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComDefIns_D1_D0_LK4
 #endif
-        use pm_kind, only: LKC => LK4
-        logical(LKC)            , intent(inout) , allocatable   :: array(:)
-        logical(LKC)            , intent(in)                    :: pattern
+        use pm_kind, only: LKG => LK4
+        logical(LKG)            , intent(inout) , allocatable   :: array(:)
+        logical(LKG)            , intent(in)                    :: pattern
         procedure(logical(LK))                                  :: iseq
     end subroutine
 #endif
@@ -4509,9 +4509,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComDefIns_D1_D0_LK3
 #endif
-        use pm_kind, only: LKC => LK3
-        logical(LKC)            , intent(inout) , allocatable   :: array(:)
-        logical(LKC)            , intent(in)                    :: pattern
+        use pm_kind, only: LKG => LK3
+        logical(LKG)            , intent(inout) , allocatable   :: array(:)
+        logical(LKG)            , intent(in)                    :: pattern
         procedure(logical(LK))                                  :: iseq
     end subroutine
 #endif
@@ -4521,9 +4521,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComDefIns_D1_D0_LK2
 #endif
-        use pm_kind, only: LKC => LK2
-        logical(LKC)            , intent(inout) , allocatable   :: array(:)
-        logical(LKC)            , intent(in)                    :: pattern
+        use pm_kind, only: LKG => LK2
+        logical(LKG)            , intent(inout) , allocatable   :: array(:)
+        logical(LKG)            , intent(in)                    :: pattern
         procedure(logical(LK))                                  :: iseq
     end subroutine
 #endif
@@ -4533,9 +4533,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComDefIns_D1_D0_LK1
 #endif
-        use pm_kind, only: LKC => LK1
-        logical(LKC)            , intent(inout) , allocatable   :: array(:)
-        logical(LKC)            , intent(in)                    :: pattern
+        use pm_kind, only: LKG => LK1
+        logical(LKG)            , intent(inout) , allocatable   :: array(:)
+        logical(LKG)            , intent(in)                    :: pattern
         procedure(logical(LK))                                  :: iseq
     end subroutine
 #endif
@@ -4547,9 +4547,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComDefIns_D1_D0_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)            , intent(inout) , allocatable   :: array(:)
-        complex(CKC)            , intent(in)                    :: pattern
+        use pm_kind, only: CKG => CK5
+        complex(CKG)            , intent(inout) , allocatable   :: array(:)
+        complex(CKG)            , intent(in)                    :: pattern
         procedure(logical(LK))                                  :: iseq
     end subroutine
 #endif
@@ -4559,9 +4559,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComDefIns_D1_D0_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)            , intent(inout) , allocatable   :: array(:)
-        complex(CKC)            , intent(in)                    :: pattern
+        use pm_kind, only: CKG => CK4
+        complex(CKG)            , intent(inout) , allocatable   :: array(:)
+        complex(CKG)            , intent(in)                    :: pattern
         procedure(logical(LK))                                  :: iseq
     end subroutine
 #endif
@@ -4571,9 +4571,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComDefIns_D1_D0_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)            , intent(inout) , allocatable   :: array(:)
-        complex(CKC)            , intent(in)                    :: pattern
+        use pm_kind, only: CKG => CK3
+        complex(CKG)            , intent(inout) , allocatable   :: array(:)
+        complex(CKG)            , intent(in)                    :: pattern
         procedure(logical(LK))                                  :: iseq
     end subroutine
 #endif
@@ -4583,9 +4583,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComDefIns_D1_D0_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)            , intent(inout) , allocatable   :: array(:)
-        complex(CKC)            , intent(in)                    :: pattern
+        use pm_kind, only: CKG => CK2
+        complex(CKG)            , intent(inout) , allocatable   :: array(:)
+        complex(CKG)            , intent(in)                    :: pattern
         procedure(logical(LK))                                  :: iseq
     end subroutine
 #endif
@@ -4595,9 +4595,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComDefIns_D1_D0_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)            , intent(inout) , allocatable   :: array(:)
-        complex(CKC)            , intent(in)                    :: pattern
+        use pm_kind, only: CKG => CK1
+        complex(CKG)            , intent(inout) , allocatable   :: array(:)
+        complex(CKG)            , intent(in)                    :: pattern
         procedure(logical(LK))                                  :: iseq
     end subroutine
 #endif
@@ -4609,9 +4609,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComDefIns_D1_D0_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)               , intent(inout) , allocatable   :: array(:)
-        real(RKC)               , intent(in)                    :: pattern
+        use pm_kind, only: RKG => RK5
+        real(RKG)               , intent(inout) , allocatable   :: array(:)
+        real(RKG)               , intent(in)                    :: pattern
         procedure(logical(LK))                                  :: iseq
     end subroutine
 #endif
@@ -4621,9 +4621,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComDefIns_D1_D0_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)               , intent(inout) , allocatable   :: array(:)
-        real(RKC)               , intent(in)                    :: pattern
+        use pm_kind, only: RKG => RK4
+        real(RKG)               , intent(inout) , allocatable   :: array(:)
+        real(RKG)               , intent(in)                    :: pattern
         procedure(logical(LK))                                  :: iseq
     end subroutine
 #endif
@@ -4633,9 +4633,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComDefIns_D1_D0_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)               , intent(inout) , allocatable   :: array(:)
-        real(RKC)               , intent(in)                    :: pattern
+        use pm_kind, only: RKG => RK3
+        real(RKG)               , intent(inout) , allocatable   :: array(:)
+        real(RKG)               , intent(in)                    :: pattern
         procedure(logical(LK))                                  :: iseq
     end subroutine
 #endif
@@ -4645,9 +4645,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComDefIns_D1_D0_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)               , intent(inout) , allocatable   :: array(:)
-        real(RKC)               , intent(in)                    :: pattern
+        use pm_kind, only: RKG => RK2
+        real(RKG)               , intent(inout) , allocatable   :: array(:)
+        real(RKG)               , intent(in)                    :: pattern
         procedure(logical(LK))                                  :: iseq
     end subroutine
 #endif
@@ -4657,9 +4657,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComDefIns_D1_D0_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)               , intent(inout) , allocatable   :: array(:)
-        real(RKC)               , intent(in)                    :: pattern
+        use pm_kind, only: RKG => RK1
+        real(RKG)               , intent(inout) , allocatable   :: array(:)
+        real(RKG)               , intent(in)                    :: pattern
         procedure(logical(LK))                                  :: iseq
     end subroutine
 #endif
@@ -4677,9 +4677,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComCusIns_D1_D0_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)        , intent(inout) , allocatable   :: array(:)
-        character(*,SKC)        , intent(in)                    :: pattern
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)        , intent(inout) , allocatable   :: array(:)
+        character(*,SKG)        , intent(in)                    :: pattern
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
         logical(LK)             , intent(in)    , optional      :: unique
@@ -4691,9 +4691,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComCusIns_D1_D0_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)        , intent(inout) , allocatable   :: array(:)
-        character(*,SKC)        , intent(in)                    :: pattern
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)        , intent(inout) , allocatable   :: array(:)
+        character(*,SKG)        , intent(in)                    :: pattern
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
         logical(LK)             , intent(in)    , optional      :: unique
@@ -4705,9 +4705,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComCusIns_D1_D0_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)        , intent(inout) , allocatable   :: array(:)
-        character(*,SKC)        , intent(in)                    :: pattern
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)        , intent(inout) , allocatable   :: array(:)
+        character(*,SKG)        , intent(in)                    :: pattern
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
         logical(LK)             , intent(in)    , optional      :: unique
@@ -4719,9 +4719,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComCusIns_D1_D0_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)        , intent(inout) , allocatable   :: array(:)
-        character(*,SKC)        , intent(in)                    :: pattern
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)        , intent(inout) , allocatable   :: array(:)
+        character(*,SKG)        , intent(in)                    :: pattern
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
         logical(LK)             , intent(in)    , optional      :: unique
@@ -4733,9 +4733,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComCusIns_D1_D0_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)        , intent(inout) , allocatable   :: array(:)
-        character(*,SKC)        , intent(in)                    :: pattern
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)        , intent(inout) , allocatable   :: array(:)
+        character(*,SKG)        , intent(in)                    :: pattern
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
         logical(LK)             , intent(in)    , optional      :: unique
@@ -4749,9 +4749,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComCusIns_D1_D0_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)            , intent(inout) , allocatable   :: array(:)
-        integer(IKC)            , intent(in)                    :: pattern
+        use pm_kind, only: IKG => IK5
+        integer(IKG)            , intent(inout) , allocatable   :: array(:)
+        integer(IKG)            , intent(in)                    :: pattern
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
         logical(LK)             , intent(in)    , optional      :: unique
@@ -4763,9 +4763,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComCusIns_D1_D0_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)            , intent(inout) , allocatable   :: array(:)
-        integer(IKC)            , intent(in)                    :: pattern
+        use pm_kind, only: IKG => IK4
+        integer(IKG)            , intent(inout) , allocatable   :: array(:)
+        integer(IKG)            , intent(in)                    :: pattern
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
         logical(LK)             , intent(in)    , optional      :: unique
@@ -4777,9 +4777,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComCusIns_D1_D0_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)            , intent(inout) , allocatable   :: array(:)
-        integer(IKC)            , intent(in)                    :: pattern
+        use pm_kind, only: IKG => IK3
+        integer(IKG)            , intent(inout) , allocatable   :: array(:)
+        integer(IKG)            , intent(in)                    :: pattern
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
         logical(LK)             , intent(in)    , optional      :: unique
@@ -4791,9 +4791,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComCusIns_D1_D0_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)            , intent(inout) , allocatable   :: array(:)
-        integer(IKC)            , intent(in)                    :: pattern
+        use pm_kind, only: IKG => IK2
+        integer(IKG)            , intent(inout) , allocatable   :: array(:)
+        integer(IKG)            , intent(in)                    :: pattern
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
         logical(LK)             , intent(in)    , optional      :: unique
@@ -4805,9 +4805,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComCusIns_D1_D0_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)            , intent(inout) , allocatable   :: array(:)
-        integer(IKC)            , intent(in)                    :: pattern
+        use pm_kind, only: IKG => IK1
+        integer(IKG)            , intent(inout) , allocatable   :: array(:)
+        integer(IKG)            , intent(in)                    :: pattern
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
         logical(LK)             , intent(in)    , optional      :: unique
@@ -4821,9 +4821,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComCusIns_D1_D0_LK5
 #endif
-        use pm_kind, only: LKC => LK5
-        logical(LKC)            , intent(inout) , allocatable   :: array(:)
-        logical(LKC)            , intent(in)                    :: pattern
+        use pm_kind, only: LKG => LK5
+        logical(LKG)            , intent(inout) , allocatable   :: array(:)
+        logical(LKG)            , intent(in)                    :: pattern
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
         logical(LK)             , intent(in)    , optional      :: unique
@@ -4835,9 +4835,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComCusIns_D1_D0_LK4
 #endif
-        use pm_kind, only: LKC => LK4
-        logical(LKC)            , intent(inout) , allocatable   :: array(:)
-        logical(LKC)            , intent(in)                    :: pattern
+        use pm_kind, only: LKG => LK4
+        logical(LKG)            , intent(inout) , allocatable   :: array(:)
+        logical(LKG)            , intent(in)                    :: pattern
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
         logical(LK)             , intent(in)    , optional      :: unique
@@ -4849,9 +4849,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComCusIns_D1_D0_LK3
 #endif
-        use pm_kind, only: LKC => LK3
-        logical(LKC)            , intent(inout) , allocatable   :: array(:)
-        logical(LKC)            , intent(in)                    :: pattern
+        use pm_kind, only: LKG => LK3
+        logical(LKG)            , intent(inout) , allocatable   :: array(:)
+        logical(LKG)            , intent(in)                    :: pattern
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
         logical(LK)             , intent(in)    , optional      :: unique
@@ -4863,9 +4863,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComCusIns_D1_D0_LK2
 #endif
-        use pm_kind, only: LKC => LK2
-        logical(LKC)            , intent(inout) , allocatable   :: array(:)
-        logical(LKC)            , intent(in)                    :: pattern
+        use pm_kind, only: LKG => LK2
+        logical(LKG)            , intent(inout) , allocatable   :: array(:)
+        logical(LKG)            , intent(in)                    :: pattern
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
         logical(LK)             , intent(in)    , optional      :: unique
@@ -4877,9 +4877,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComCusIns_D1_D0_LK1
 #endif
-        use pm_kind, only: LKC => LK1
-        logical(LKC)            , intent(inout) , allocatable   :: array(:)
-        logical(LKC)            , intent(in)                    :: pattern
+        use pm_kind, only: LKG => LK1
+        logical(LKG)            , intent(inout) , allocatable   :: array(:)
+        logical(LKG)            , intent(in)                    :: pattern
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
         logical(LK)             , intent(in)    , optional      :: unique
@@ -4893,9 +4893,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComCusIns_D1_D0_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)            , intent(inout) , allocatable   :: array(:)
-        complex(CKC)            , intent(in)                    :: pattern
+        use pm_kind, only: CKG => CK5
+        complex(CKG)            , intent(inout) , allocatable   :: array(:)
+        complex(CKG)            , intent(in)                    :: pattern
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
         logical(LK)             , intent(in)    , optional      :: unique
@@ -4907,9 +4907,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComCusIns_D1_D0_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)            , intent(inout) , allocatable   :: array(:)
-        complex(CKC)            , intent(in)                    :: pattern
+        use pm_kind, only: CKG => CK4
+        complex(CKG)            , intent(inout) , allocatable   :: array(:)
+        complex(CKG)            , intent(in)                    :: pattern
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
         logical(LK)             , intent(in)    , optional      :: unique
@@ -4921,9 +4921,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComCusIns_D1_D0_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)            , intent(inout) , allocatable   :: array(:)
-        complex(CKC)            , intent(in)                    :: pattern
+        use pm_kind, only: CKG => CK3
+        complex(CKG)            , intent(inout) , allocatable   :: array(:)
+        complex(CKG)            , intent(in)                    :: pattern
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
         logical(LK)             , intent(in)    , optional      :: unique
@@ -4935,9 +4935,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComCusIns_D1_D0_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)            , intent(inout) , allocatable   :: array(:)
-        complex(CKC)            , intent(in)                    :: pattern
+        use pm_kind, only: CKG => CK2
+        complex(CKG)            , intent(inout) , allocatable   :: array(:)
+        complex(CKG)            , intent(in)                    :: pattern
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
         logical(LK)             , intent(in)    , optional      :: unique
@@ -4949,9 +4949,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComCusIns_D1_D0_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)            , intent(inout) , allocatable   :: array(:)
-        complex(CKC)            , intent(in)                    :: pattern
+        use pm_kind, only: CKG => CK1
+        complex(CKG)            , intent(inout) , allocatable   :: array(:)
+        complex(CKG)            , intent(in)                    :: pattern
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
         logical(LK)             , intent(in)    , optional      :: unique
@@ -4965,9 +4965,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComCusIns_D1_D0_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)               , intent(inout) , allocatable   :: array(:)
-        real(RKC)               , intent(in)                    :: pattern
+        use pm_kind, only: RKG => RK5
+        real(RKG)               , intent(inout) , allocatable   :: array(:)
+        real(RKG)               , intent(in)                    :: pattern
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
         logical(LK)             , intent(in)    , optional      :: unique
@@ -4979,9 +4979,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComCusIns_D1_D0_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)               , intent(inout) , allocatable   :: array(:)
-        real(RKC)               , intent(in)                    :: pattern
+        use pm_kind, only: RKG => RK4
+        real(RKG)               , intent(inout) , allocatable   :: array(:)
+        real(RKG)               , intent(in)                    :: pattern
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
         logical(LK)             , intent(in)    , optional      :: unique
@@ -4993,9 +4993,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComCusIns_D1_D0_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)               , intent(inout) , allocatable   :: array(:)
-        real(RKC)               , intent(in)                    :: pattern
+        use pm_kind, only: RKG => RK3
+        real(RKG)               , intent(inout) , allocatable   :: array(:)
+        real(RKG)               , intent(in)                    :: pattern
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
         logical(LK)             , intent(in)    , optional      :: unique
@@ -5007,9 +5007,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComCusIns_D1_D0_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)               , intent(inout) , allocatable   :: array(:)
-        real(RKC)               , intent(in)                    :: pattern
+        use pm_kind, only: RKG => RK2
+        real(RKG)               , intent(inout) , allocatable   :: array(:)
+        real(RKG)               , intent(in)                    :: pattern
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
         logical(LK)             , intent(in)    , optional      :: unique
@@ -5021,9 +5021,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComCusIns_D1_D0_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)               , intent(inout) , allocatable   :: array(:)
-        real(RKC)               , intent(in)                    :: pattern
+        use pm_kind, only: RKG => RK1
+        real(RKG)               , intent(inout) , allocatable   :: array(:)
+        real(RKG)               , intent(in)                    :: pattern
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
         logical(LK)             , intent(in)    , optional      :: unique
@@ -5043,9 +5043,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComCusIns_D1_D0_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)        , intent(inout) , allocatable   :: array(:)
-        character(*,SKC)        , intent(in)                    :: pattern
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)        , intent(inout) , allocatable   :: array(:)
+        character(*,SKG)        , intent(in)                    :: pattern
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
@@ -5058,9 +5058,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComCusIns_D1_D0_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)        , intent(inout) , allocatable   :: array(:)
-        character(*,SKC)        , intent(in)                    :: pattern
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)        , intent(inout) , allocatable   :: array(:)
+        character(*,SKG)        , intent(in)                    :: pattern
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
@@ -5073,9 +5073,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComCusIns_D1_D0_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)        , intent(inout) , allocatable   :: array(:)
-        character(*,SKC)        , intent(in)                    :: pattern
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)        , intent(inout) , allocatable   :: array(:)
+        character(*,SKG)        , intent(in)                    :: pattern
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
@@ -5088,9 +5088,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComCusIns_D1_D0_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)        , intent(inout) , allocatable   :: array(:)
-        character(*,SKC)        , intent(in)                    :: pattern
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)        , intent(inout) , allocatable   :: array(:)
+        character(*,SKG)        , intent(in)                    :: pattern
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
@@ -5103,9 +5103,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComCusIns_D1_D0_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)        , intent(inout) , allocatable   :: array(:)
-        character(*,SKC)        , intent(in)                    :: pattern
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)        , intent(inout) , allocatable   :: array(:)
+        character(*,SKG)        , intent(in)                    :: pattern
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
@@ -5120,9 +5120,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComCusIns_D1_D0_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)            , intent(inout) , allocatable   :: array(:)
-        integer(IKC)            , intent(in)                    :: pattern
+        use pm_kind, only: IKG => IK5
+        integer(IKG)            , intent(inout) , allocatable   :: array(:)
+        integer(IKG)            , intent(in)                    :: pattern
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
@@ -5135,9 +5135,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComCusIns_D1_D0_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)            , intent(inout) , allocatable   :: array(:)
-        integer(IKC)            , intent(in)                    :: pattern
+        use pm_kind, only: IKG => IK4
+        integer(IKG)            , intent(inout) , allocatable   :: array(:)
+        integer(IKG)            , intent(in)                    :: pattern
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
@@ -5150,9 +5150,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComCusIns_D1_D0_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)            , intent(inout) , allocatable   :: array(:)
-        integer(IKC)            , intent(in)                    :: pattern
+        use pm_kind, only: IKG => IK3
+        integer(IKG)            , intent(inout) , allocatable   :: array(:)
+        integer(IKG)            , intent(in)                    :: pattern
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
@@ -5165,9 +5165,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComCusIns_D1_D0_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)            , intent(inout) , allocatable   :: array(:)
-        integer(IKC)            , intent(in)                    :: pattern
+        use pm_kind, only: IKG => IK2
+        integer(IKG)            , intent(inout) , allocatable   :: array(:)
+        integer(IKG)            , intent(in)                    :: pattern
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
@@ -5180,9 +5180,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComCusIns_D1_D0_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)            , intent(inout) , allocatable   :: array(:)
-        integer(IKC)            , intent(in)                    :: pattern
+        use pm_kind, only: IKG => IK1
+        integer(IKG)            , intent(inout) , allocatable   :: array(:)
+        integer(IKG)            , intent(in)                    :: pattern
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
@@ -5197,9 +5197,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComCusIns_D1_D0_LK5
 #endif
-        use pm_kind, only: LKC => LK5
-        logical(LKC)            , intent(inout) , allocatable   :: array(:)
-        logical(LKC)            , intent(in)                    :: pattern
+        use pm_kind, only: LKG => LK5
+        logical(LKG)            , intent(inout) , allocatable   :: array(:)
+        logical(LKG)            , intent(in)                    :: pattern
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
@@ -5212,9 +5212,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComCusIns_D1_D0_LK4
 #endif
-        use pm_kind, only: LKC => LK4
-        logical(LKC)            , intent(inout) , allocatable   :: array(:)
-        logical(LKC)            , intent(in)                    :: pattern
+        use pm_kind, only: LKG => LK4
+        logical(LKG)            , intent(inout) , allocatable   :: array(:)
+        logical(LKG)            , intent(in)                    :: pattern
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
@@ -5227,9 +5227,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComCusIns_D1_D0_LK3
 #endif
-        use pm_kind, only: LKC => LK3
-        logical(LKC)            , intent(inout) , allocatable   :: array(:)
-        logical(LKC)            , intent(in)                    :: pattern
+        use pm_kind, only: LKG => LK3
+        logical(LKG)            , intent(inout) , allocatable   :: array(:)
+        logical(LKG)            , intent(in)                    :: pattern
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
@@ -5242,9 +5242,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComCusIns_D1_D0_LK2
 #endif
-        use pm_kind, only: LKC => LK2
-        logical(LKC)            , intent(inout) , allocatable   :: array(:)
-        logical(LKC)            , intent(in)                    :: pattern
+        use pm_kind, only: LKG => LK2
+        logical(LKG)            , intent(inout) , allocatable   :: array(:)
+        logical(LKG)            , intent(in)                    :: pattern
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
@@ -5257,9 +5257,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComCusIns_D1_D0_LK1
 #endif
-        use pm_kind, only: LKC => LK1
-        logical(LKC)            , intent(inout) , allocatable   :: array(:)
-        logical(LKC)            , intent(in)                    :: pattern
+        use pm_kind, only: LKG => LK1
+        logical(LKG)            , intent(inout) , allocatable   :: array(:)
+        logical(LKG)            , intent(in)                    :: pattern
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
@@ -5274,9 +5274,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComCusIns_D1_D0_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)            , intent(inout) , allocatable   :: array(:)
-        complex(CKC)            , intent(in)                    :: pattern
+        use pm_kind, only: CKG => CK5
+        complex(CKG)            , intent(inout) , allocatable   :: array(:)
+        complex(CKG)            , intent(in)                    :: pattern
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
@@ -5289,9 +5289,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComCusIns_D1_D0_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)            , intent(inout) , allocatable   :: array(:)
-        complex(CKC)            , intent(in)                    :: pattern
+        use pm_kind, only: CKG => CK4
+        complex(CKG)            , intent(inout) , allocatable   :: array(:)
+        complex(CKG)            , intent(in)                    :: pattern
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
@@ -5304,9 +5304,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComCusIns_D1_D0_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)            , intent(inout) , allocatable   :: array(:)
-        complex(CKC)            , intent(in)                    :: pattern
+        use pm_kind, only: CKG => CK3
+        complex(CKG)            , intent(inout) , allocatable   :: array(:)
+        complex(CKG)            , intent(in)                    :: pattern
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
@@ -5319,9 +5319,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComCusIns_D1_D0_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)            , intent(inout) , allocatable   :: array(:)
-        complex(CKC)            , intent(in)                    :: pattern
+        use pm_kind, only: CKG => CK2
+        complex(CKG)            , intent(inout) , allocatable   :: array(:)
+        complex(CKG)            , intent(in)                    :: pattern
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
@@ -5334,9 +5334,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComCusIns_D1_D0_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)            , intent(inout) , allocatable   :: array(:)
-        complex(CKC)            , intent(in)                    :: pattern
+        use pm_kind, only: CKG => CK1
+        complex(CKG)            , intent(inout) , allocatable   :: array(:)
+        complex(CKG)            , intent(in)                    :: pattern
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
@@ -5351,9 +5351,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComCusIns_D1_D0_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)               , intent(inout) , allocatable   :: array(:)
-        real(RKC)               , intent(in)                    :: pattern
+        use pm_kind, only: RKG => RK5
+        real(RKG)               , intent(inout) , allocatable   :: array(:)
+        real(RKG)               , intent(in)                    :: pattern
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
@@ -5366,9 +5366,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComCusIns_D1_D0_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)               , intent(inout) , allocatable   :: array(:)
-        real(RKC)               , intent(in)                    :: pattern
+        use pm_kind, only: RKG => RK4
+        real(RKG)               , intent(inout) , allocatable   :: array(:)
+        real(RKG)               , intent(in)                    :: pattern
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
@@ -5381,9 +5381,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComCusIns_D1_D0_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)               , intent(inout) , allocatable   :: array(:)
-        real(RKC)               , intent(in)                    :: pattern
+        use pm_kind, only: RKG => RK3
+        real(RKG)               , intent(inout) , allocatable   :: array(:)
+        real(RKG)               , intent(in)                    :: pattern
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
@@ -5396,9 +5396,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComCusIns_D1_D0_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)               , intent(inout) , allocatable   :: array(:)
-        real(RKC)               , intent(in)                    :: pattern
+        use pm_kind, only: RKG => RK2
+        real(RKG)               , intent(inout) , allocatable   :: array(:)
+        real(RKG)               , intent(in)                    :: pattern
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
@@ -5411,9 +5411,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComCusIns_D1_D0_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)               , intent(inout) , allocatable   :: array(:)
-        real(RKC)               , intent(in)                    :: pattern
+        use pm_kind, only: RKG => RK1
+        real(RKG)               , intent(inout) , allocatable   :: array(:)
+        real(RKG)               , intent(in)                    :: pattern
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
@@ -5440,9 +5440,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComDefIns_D1_D1_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)        , intent(inout) , allocatable   :: array(:)
-        character(*,SKC)        , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)        , intent(inout) , allocatable   :: array(:)
+        character(*,SKG)        , intent(in)    , contiguous    :: pattern(:)
     end subroutine
 #endif
 
@@ -5451,9 +5451,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComDefIns_D1_D1_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)        , intent(inout) , allocatable   :: array(:)
-        character(*,SKC)        , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)        , intent(inout) , allocatable   :: array(:)
+        character(*,SKG)        , intent(in)    , contiguous    :: pattern(:)
     end subroutine
 #endif
 
@@ -5462,9 +5462,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComDefIns_D1_D1_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)        , intent(inout) , allocatable   :: array(:)
-        character(*,SKC)        , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)        , intent(inout) , allocatable   :: array(:)
+        character(*,SKG)        , intent(in)    , contiguous    :: pattern(:)
     end subroutine
 #endif
 
@@ -5473,9 +5473,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComDefIns_D1_D1_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)        , intent(inout) , allocatable   :: array(:)
-        character(*,SKC)        , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)        , intent(inout) , allocatable   :: array(:)
+        character(*,SKG)        , intent(in)    , contiguous    :: pattern(:)
     end subroutine
 #endif
 
@@ -5484,9 +5484,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComDefIns_D1_D1_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)        , intent(inout) , allocatable   :: array(:)
-        character(*,SKC)        , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)        , intent(inout) , allocatable   :: array(:)
+        character(*,SKG)        , intent(in)    , contiguous    :: pattern(:)
     end subroutine
 #endif
 
@@ -5497,9 +5497,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComDefIns_D1_D1_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)            , intent(inout) , allocatable   :: array(:)
-        integer(IKC)            , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: IKG => IK5
+        integer(IKG)            , intent(inout) , allocatable   :: array(:)
+        integer(IKG)            , intent(in)    , contiguous    :: pattern(:)
     end subroutine
 #endif
 
@@ -5508,9 +5508,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComDefIns_D1_D1_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)            , intent(inout) , allocatable   :: array(:)
-        integer(IKC)            , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: IKG => IK4
+        integer(IKG)            , intent(inout) , allocatable   :: array(:)
+        integer(IKG)            , intent(in)    , contiguous    :: pattern(:)
     end subroutine
 #endif
 
@@ -5519,9 +5519,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComDefIns_D1_D1_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)            , intent(inout) , allocatable   :: array(:)
-        integer(IKC)            , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: IKG => IK3
+        integer(IKG)            , intent(inout) , allocatable   :: array(:)
+        integer(IKG)            , intent(in)    , contiguous    :: pattern(:)
     end subroutine
 #endif
 
@@ -5530,9 +5530,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComDefIns_D1_D1_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)            , intent(inout) , allocatable   :: array(:)
-        integer(IKC)            , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: IKG => IK2
+        integer(IKG)            , intent(inout) , allocatable   :: array(:)
+        integer(IKG)            , intent(in)    , contiguous    :: pattern(:)
     end subroutine
 #endif
 
@@ -5541,9 +5541,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComDefIns_D1_D1_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)            , intent(inout) , allocatable   :: array(:)
-        integer(IKC)            , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: IKG => IK1
+        integer(IKG)            , intent(inout) , allocatable   :: array(:)
+        integer(IKG)            , intent(in)    , contiguous    :: pattern(:)
     end subroutine
 #endif
 
@@ -5554,9 +5554,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComDefIns_D1_D1_LK5
 #endif
-        use pm_kind, only: LKC => LK5
-        logical(LKC)            , intent(inout) , allocatable   :: array(:)
-        logical(LKC)            , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: LKG => LK5
+        logical(LKG)            , intent(inout) , allocatable   :: array(:)
+        logical(LKG)            , intent(in)    , contiguous    :: pattern(:)
     end subroutine
 #endif
 
@@ -5565,9 +5565,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComDefIns_D1_D1_LK4
 #endif
-        use pm_kind, only: LKC => LK4
-        logical(LKC)            , intent(inout) , allocatable   :: array(:)
-        logical(LKC)            , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: LKG => LK4
+        logical(LKG)            , intent(inout) , allocatable   :: array(:)
+        logical(LKG)            , intent(in)    , contiguous    :: pattern(:)
     end subroutine
 #endif
 
@@ -5576,9 +5576,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComDefIns_D1_D1_LK3
 #endif
-        use pm_kind, only: LKC => LK3
-        logical(LKC)            , intent(inout) , allocatable   :: array(:)
-        logical(LKC)            , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: LKG => LK3
+        logical(LKG)            , intent(inout) , allocatable   :: array(:)
+        logical(LKG)            , intent(in)    , contiguous    :: pattern(:)
     end subroutine
 #endif
 
@@ -5587,9 +5587,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComDefIns_D1_D1_LK2
 #endif
-        use pm_kind, only: LKC => LK2
-        logical(LKC)            , intent(inout) , allocatable   :: array(:)
-        logical(LKC)            , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: LKG => LK2
+        logical(LKG)            , intent(inout) , allocatable   :: array(:)
+        logical(LKG)            , intent(in)    , contiguous    :: pattern(:)
     end subroutine
 #endif
 
@@ -5598,9 +5598,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComDefIns_D1_D1_LK1
 #endif
-        use pm_kind, only: LKC => LK1
-        logical(LKC)            , intent(inout) , allocatable   :: array(:)
-        logical(LKC)            , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: LKG => LK1
+        logical(LKG)            , intent(inout) , allocatable   :: array(:)
+        logical(LKG)            , intent(in)    , contiguous    :: pattern(:)
     end subroutine
 #endif
 
@@ -5611,9 +5611,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComDefIns_D1_D1_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)            , intent(inout) , allocatable   :: array(:)
-        complex(CKC)            , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG)            , intent(inout) , allocatable   :: array(:)
+        complex(CKG)            , intent(in)    , contiguous    :: pattern(:)
     end subroutine
 #endif
 
@@ -5622,9 +5622,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComDefIns_D1_D1_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)            , intent(inout) , allocatable   :: array(:)
-        complex(CKC)            , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG)            , intent(inout) , allocatable   :: array(:)
+        complex(CKG)            , intent(in)    , contiguous    :: pattern(:)
     end subroutine
 #endif
 
@@ -5633,9 +5633,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComDefIns_D1_D1_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)            , intent(inout) , allocatable   :: array(:)
-        complex(CKC)            , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG)            , intent(inout) , allocatable   :: array(:)
+        complex(CKG)            , intent(in)    , contiguous    :: pattern(:)
     end subroutine
 #endif
 
@@ -5644,9 +5644,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComDefIns_D1_D1_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)            , intent(inout) , allocatable   :: array(:)
-        complex(CKC)            , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG)            , intent(inout) , allocatable   :: array(:)
+        complex(CKG)            , intent(in)    , contiguous    :: pattern(:)
     end subroutine
 #endif
 
@@ -5655,9 +5655,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComDefIns_D1_D1_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)            , intent(inout) , allocatable   :: array(:)
-        complex(CKC)            , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG)            , intent(inout) , allocatable   :: array(:)
+        complex(CKG)            , intent(in)    , contiguous    :: pattern(:)
     end subroutine
 #endif
 
@@ -5668,9 +5668,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComDefIns_D1_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)               , intent(inout) , allocatable   :: array(:)
-        real(RKC)               , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)               , intent(inout) , allocatable   :: array(:)
+        real(RKG)               , intent(in)    , contiguous    :: pattern(:)
     end subroutine
 #endif
 
@@ -5679,9 +5679,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComDefIns_D1_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)               , intent(inout) , allocatable   :: array(:)
-        real(RKC)               , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)               , intent(inout) , allocatable   :: array(:)
+        real(RKG)               , intent(in)    , contiguous    :: pattern(:)
     end subroutine
 #endif
 
@@ -5690,9 +5690,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComDefIns_D1_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)               , intent(inout) , allocatable   :: array(:)
-        real(RKC)               , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)               , intent(inout) , allocatable   :: array(:)
+        real(RKG)               , intent(in)    , contiguous    :: pattern(:)
     end subroutine
 #endif
 
@@ -5701,9 +5701,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComDefIns_D1_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)               , intent(inout) , allocatable   :: array(:)
-        real(RKC)               , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)               , intent(inout) , allocatable   :: array(:)
+        real(RKG)               , intent(in)    , contiguous    :: pattern(:)
     end subroutine
 #endif
 
@@ -5712,9 +5712,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComDefIns_D1_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)               , intent(inout) , allocatable   :: array(:)
-        real(RKC)               , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)               , intent(inout) , allocatable   :: array(:)
+        real(RKG)               , intent(in)    , contiguous    :: pattern(:)
     end subroutine
 #endif
 
@@ -5731,9 +5731,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComDefIns_D1_D1_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)        , intent(inout) , allocatable   :: array(:)
-        character(*,SKC)        , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)        , intent(inout) , allocatable   :: array(:)
+        character(*,SKG)        , intent(in)    , contiguous    :: pattern(:)
         procedure(logical(LK))                                  :: iseq
     end subroutine
 #endif
@@ -5743,9 +5743,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComDefIns_D1_D1_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)        , intent(inout) , allocatable   :: array(:)
-        character(*,SKC)        , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)        , intent(inout) , allocatable   :: array(:)
+        character(*,SKG)        , intent(in)    , contiguous    :: pattern(:)
         procedure(logical(LK))                                  :: iseq
     end subroutine
 #endif
@@ -5755,9 +5755,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComDefIns_D1_D1_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)        , intent(inout) , allocatable   :: array(:)
-        character(*,SKC)        , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)        , intent(inout) , allocatable   :: array(:)
+        character(*,SKG)        , intent(in)    , contiguous    :: pattern(:)
         procedure(logical(LK))                                  :: iseq
     end subroutine
 #endif
@@ -5767,9 +5767,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComDefIns_D1_D1_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)        , intent(inout) , allocatable   :: array(:)
-        character(*,SKC)        , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)        , intent(inout) , allocatable   :: array(:)
+        character(*,SKG)        , intent(in)    , contiguous    :: pattern(:)
         procedure(logical(LK))                                  :: iseq
     end subroutine
 #endif
@@ -5779,9 +5779,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComDefIns_D1_D1_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)        , intent(inout) , allocatable   :: array(:)
-        character(*,SKC)        , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)        , intent(inout) , allocatable   :: array(:)
+        character(*,SKG)        , intent(in)    , contiguous    :: pattern(:)
         procedure(logical(LK))                                  :: iseq
     end subroutine
 #endif
@@ -5793,9 +5793,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComDefIns_D1_D1_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)            , intent(inout) , allocatable   :: array(:)
-        integer(IKC)            , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: IKG => IK5
+        integer(IKG)            , intent(inout) , allocatable   :: array(:)
+        integer(IKG)            , intent(in)    , contiguous    :: pattern(:)
         procedure(logical(LK))                                  :: iseq
     end subroutine
 #endif
@@ -5805,9 +5805,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComDefIns_D1_D1_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)            , intent(inout) , allocatable   :: array(:)
-        integer(IKC)            , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: IKG => IK4
+        integer(IKG)            , intent(inout) , allocatable   :: array(:)
+        integer(IKG)            , intent(in)    , contiguous    :: pattern(:)
         procedure(logical(LK))                                  :: iseq
     end subroutine
 #endif
@@ -5817,9 +5817,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComDefIns_D1_D1_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)            , intent(inout) , allocatable   :: array(:)
-        integer(IKC)            , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: IKG => IK3
+        integer(IKG)            , intent(inout) , allocatable   :: array(:)
+        integer(IKG)            , intent(in)    , contiguous    :: pattern(:)
         procedure(logical(LK))                                  :: iseq
     end subroutine
 #endif
@@ -5829,9 +5829,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComDefIns_D1_D1_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)            , intent(inout) , allocatable   :: array(:)
-        integer(IKC)            , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: IKG => IK2
+        integer(IKG)            , intent(inout) , allocatable   :: array(:)
+        integer(IKG)            , intent(in)    , contiguous    :: pattern(:)
         procedure(logical(LK))                                  :: iseq
     end subroutine
 #endif
@@ -5841,9 +5841,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComDefIns_D1_D1_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)            , intent(inout) , allocatable   :: array(:)
-        integer(IKC)            , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: IKG => IK1
+        integer(IKG)            , intent(inout) , allocatable   :: array(:)
+        integer(IKG)            , intent(in)    , contiguous    :: pattern(:)
         procedure(logical(LK))                                  :: iseq
     end subroutine
 #endif
@@ -5855,9 +5855,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComDefIns_D1_D1_LK5
 #endif
-        use pm_kind, only: LKC => LK5
-        logical(LKC)            , intent(inout) , allocatable   :: array(:)
-        logical(LKC)            , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: LKG => LK5
+        logical(LKG)            , intent(inout) , allocatable   :: array(:)
+        logical(LKG)            , intent(in)    , contiguous    :: pattern(:)
         procedure(logical(LK))                                  :: iseq
     end subroutine
 #endif
@@ -5867,9 +5867,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComDefIns_D1_D1_LK4
 #endif
-        use pm_kind, only: LKC => LK4
-        logical(LKC)            , intent(inout) , allocatable   :: array(:)
-        logical(LKC)            , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: LKG => LK4
+        logical(LKG)            , intent(inout) , allocatable   :: array(:)
+        logical(LKG)            , intent(in)    , contiguous    :: pattern(:)
         procedure(logical(LK))                                  :: iseq
     end subroutine
 #endif
@@ -5879,9 +5879,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComDefIns_D1_D1_LK3
 #endif
-        use pm_kind, only: LKC => LK3
-        logical(LKC)            , intent(inout) , allocatable   :: array(:)
-        logical(LKC)            , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: LKG => LK3
+        logical(LKG)            , intent(inout) , allocatable   :: array(:)
+        logical(LKG)            , intent(in)    , contiguous    :: pattern(:)
         procedure(logical(LK))                                  :: iseq
     end subroutine
 #endif
@@ -5891,9 +5891,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComDefIns_D1_D1_LK2
 #endif
-        use pm_kind, only: LKC => LK2
-        logical(LKC)            , intent(inout) , allocatable   :: array(:)
-        logical(LKC)            , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: LKG => LK2
+        logical(LKG)            , intent(inout) , allocatable   :: array(:)
+        logical(LKG)            , intent(in)    , contiguous    :: pattern(:)
         procedure(logical(LK))                                  :: iseq
     end subroutine
 #endif
@@ -5903,9 +5903,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComDefIns_D1_D1_LK1
 #endif
-        use pm_kind, only: LKC => LK1
-        logical(LKC)            , intent(inout) , allocatable   :: array(:)
-        logical(LKC)            , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: LKG => LK1
+        logical(LKG)            , intent(inout) , allocatable   :: array(:)
+        logical(LKG)            , intent(in)    , contiguous    :: pattern(:)
         procedure(logical(LK))                                  :: iseq
     end subroutine
 #endif
@@ -5917,9 +5917,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComDefIns_D1_D1_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)            , intent(inout) , allocatable   :: array(:)
-        complex(CKC)            , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG)            , intent(inout) , allocatable   :: array(:)
+        complex(CKG)            , intent(in)    , contiguous    :: pattern(:)
         procedure(logical(LK))                                  :: iseq
     end subroutine
 #endif
@@ -5929,9 +5929,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComDefIns_D1_D1_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)            , intent(inout) , allocatable   :: array(:)
-        complex(CKC)            , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG)            , intent(inout) , allocatable   :: array(:)
+        complex(CKG)            , intent(in)    , contiguous    :: pattern(:)
         procedure(logical(LK))                                  :: iseq
     end subroutine
 #endif
@@ -5941,9 +5941,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComDefIns_D1_D1_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)            , intent(inout) , allocatable   :: array(:)
-        complex(CKC)            , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG)            , intent(inout) , allocatable   :: array(:)
+        complex(CKG)            , intent(in)    , contiguous    :: pattern(:)
         procedure(logical(LK))                                  :: iseq
     end subroutine
 #endif
@@ -5953,9 +5953,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComDefIns_D1_D1_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)            , intent(inout) , allocatable   :: array(:)
-        complex(CKC)            , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG)            , intent(inout) , allocatable   :: array(:)
+        complex(CKG)            , intent(in)    , contiguous    :: pattern(:)
         procedure(logical(LK))                                  :: iseq
     end subroutine
 #endif
@@ -5965,9 +5965,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComDefIns_D1_D1_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)            , intent(inout) , allocatable   :: array(:)
-        complex(CKC)            , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG)            , intent(inout) , allocatable   :: array(:)
+        complex(CKG)            , intent(in)    , contiguous    :: pattern(:)
         procedure(logical(LK))                                  :: iseq
     end subroutine
 #endif
@@ -5979,9 +5979,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComDefIns_D1_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)               , intent(inout) , allocatable   :: array(:)
-        real(RKC)               , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)               , intent(inout) , allocatable   :: array(:)
+        real(RKG)               , intent(in)    , contiguous    :: pattern(:)
         procedure(logical(LK))                                  :: iseq
     end subroutine
 #endif
@@ -5991,9 +5991,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComDefIns_D1_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)               , intent(inout) , allocatable   :: array(:)
-        real(RKC)               , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)               , intent(inout) , allocatable   :: array(:)
+        real(RKG)               , intent(in)    , contiguous    :: pattern(:)
         procedure(logical(LK))                                  :: iseq
     end subroutine
 #endif
@@ -6003,9 +6003,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComDefIns_D1_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)               , intent(inout) , allocatable   :: array(:)
-        real(RKC)               , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)               , intent(inout) , allocatable   :: array(:)
+        real(RKG)               , intent(in)    , contiguous    :: pattern(:)
         procedure(logical(LK))                                  :: iseq
     end subroutine
 #endif
@@ -6015,9 +6015,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComDefIns_D1_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)               , intent(inout) , allocatable   :: array(:)
-        real(RKC)               , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)               , intent(inout) , allocatable   :: array(:)
+        real(RKG)               , intent(in)    , contiguous    :: pattern(:)
         procedure(logical(LK))                                  :: iseq
     end subroutine
 #endif
@@ -6027,9 +6027,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComDefIns_D1_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)               , intent(inout) , allocatable   :: array(:)
-        real(RKC)               , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)               , intent(inout) , allocatable   :: array(:)
+        real(RKG)               , intent(in)    , contiguous    :: pattern(:)
         procedure(logical(LK))                                  :: iseq
     end subroutine
 #endif
@@ -6047,9 +6047,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComCusIns_D1_D1_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)        , intent(inout) , allocatable   :: array(:)
-        character(*,SKC)        , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)        , intent(inout) , allocatable   :: array(:)
+        character(*,SKG)        , intent(in)    , contiguous    :: pattern(:)
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
         logical(LK)             , intent(in)    , optional      :: unique
@@ -6061,9 +6061,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComCusIns_D1_D1_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)        , intent(inout) , allocatable   :: array(:)
-        character(*,SKC)        , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)        , intent(inout) , allocatable   :: array(:)
+        character(*,SKG)        , intent(in)    , contiguous    :: pattern(:)
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
         logical(LK)             , intent(in)    , optional      :: unique
@@ -6075,9 +6075,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComCusIns_D1_D1_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)        , intent(inout) , allocatable   :: array(:)
-        character(*,SKC)        , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)        , intent(inout) , allocatable   :: array(:)
+        character(*,SKG)        , intent(in)    , contiguous    :: pattern(:)
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
         logical(LK)             , intent(in)    , optional      :: unique
@@ -6089,9 +6089,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComCusIns_D1_D1_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)        , intent(inout) , allocatable   :: array(:)
-        character(*,SKC)        , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)        , intent(inout) , allocatable   :: array(:)
+        character(*,SKG)        , intent(in)    , contiguous    :: pattern(:)
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
         logical(LK)             , intent(in)    , optional      :: unique
@@ -6103,9 +6103,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComCusIns_D1_D1_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)        , intent(inout) , allocatable   :: array(:)
-        character(*,SKC)        , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)        , intent(inout) , allocatable   :: array(:)
+        character(*,SKG)        , intent(in)    , contiguous    :: pattern(:)
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
         logical(LK)             , intent(in)    , optional      :: unique
@@ -6119,9 +6119,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComCusIns_D1_D1_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)            , intent(inout) , allocatable   :: array(:)
-        integer(IKC)            , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: IKG => IK5
+        integer(IKG)            , intent(inout) , allocatable   :: array(:)
+        integer(IKG)            , intent(in)    , contiguous    :: pattern(:)
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
         logical(LK)             , intent(in)    , optional      :: unique
@@ -6133,9 +6133,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComCusIns_D1_D1_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)            , intent(inout) , allocatable   :: array(:)
-        integer(IKC)            , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: IKG => IK4
+        integer(IKG)            , intent(inout) , allocatable   :: array(:)
+        integer(IKG)            , intent(in)    , contiguous    :: pattern(:)
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
         logical(LK)             , intent(in)    , optional      :: unique
@@ -6147,9 +6147,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComCusIns_D1_D1_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)            , intent(inout) , allocatable   :: array(:)
-        integer(IKC)            , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: IKG => IK3
+        integer(IKG)            , intent(inout) , allocatable   :: array(:)
+        integer(IKG)            , intent(in)    , contiguous    :: pattern(:)
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
         logical(LK)             , intent(in)    , optional      :: unique
@@ -6161,9 +6161,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComCusIns_D1_D1_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)            , intent(inout) , allocatable   :: array(:)
-        integer(IKC)            , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: IKG => IK2
+        integer(IKG)            , intent(inout) , allocatable   :: array(:)
+        integer(IKG)            , intent(in)    , contiguous    :: pattern(:)
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
         logical(LK)             , intent(in)    , optional      :: unique
@@ -6175,9 +6175,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComCusIns_D1_D1_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)            , intent(inout) , allocatable   :: array(:)
-        integer(IKC)            , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: IKG => IK1
+        integer(IKG)            , intent(inout) , allocatable   :: array(:)
+        integer(IKG)            , intent(in)    , contiguous    :: pattern(:)
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
         logical(LK)             , intent(in)    , optional      :: unique
@@ -6191,9 +6191,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComCusIns_D1_D1_LK5
 #endif
-        use pm_kind, only: LKC => LK5
-        logical(LKC)            , intent(inout) , allocatable   :: array(:)
-        logical(LKC)            , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: LKG => LK5
+        logical(LKG)            , intent(inout) , allocatable   :: array(:)
+        logical(LKG)            , intent(in)    , contiguous    :: pattern(:)
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
         logical(LK)             , intent(in)    , optional      :: unique
@@ -6205,9 +6205,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComCusIns_D1_D1_LK4
 #endif
-        use pm_kind, only: LKC => LK4
-        logical(LKC)            , intent(inout) , allocatable   :: array(:)
-        logical(LKC)            , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: LKG => LK4
+        logical(LKG)            , intent(inout) , allocatable   :: array(:)
+        logical(LKG)            , intent(in)    , contiguous    :: pattern(:)
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
         logical(LK)             , intent(in)    , optional      :: unique
@@ -6219,9 +6219,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComCusIns_D1_D1_LK3
 #endif
-        use pm_kind, only: LKC => LK3
-        logical(LKC)            , intent(inout) , allocatable   :: array(:)
-        logical(LKC)            , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: LKG => LK3
+        logical(LKG)            , intent(inout) , allocatable   :: array(:)
+        logical(LKG)            , intent(in)    , contiguous    :: pattern(:)
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
         logical(LK)             , intent(in)    , optional      :: unique
@@ -6233,9 +6233,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComCusIns_D1_D1_LK2
 #endif
-        use pm_kind, only: LKC => LK2
-        logical(LKC)            , intent(inout) , allocatable   :: array(:)
-        logical(LKC)            , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: LKG => LK2
+        logical(LKG)            , intent(inout) , allocatable   :: array(:)
+        logical(LKG)            , intent(in)    , contiguous    :: pattern(:)
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
         logical(LK)             , intent(in)    , optional      :: unique
@@ -6247,9 +6247,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComCusIns_D1_D1_LK1
 #endif
-        use pm_kind, only: LKC => LK1
-        logical(LKC)            , intent(inout) , allocatable   :: array(:)
-        logical(LKC)            , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: LKG => LK1
+        logical(LKG)            , intent(inout) , allocatable   :: array(:)
+        logical(LKG)            , intent(in)    , contiguous    :: pattern(:)
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
         logical(LK)             , intent(in)    , optional      :: unique
@@ -6263,9 +6263,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComCusIns_D1_D1_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)            , intent(inout) , allocatable   :: array(:)
-        complex(CKC)            , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG)            , intent(inout) , allocatable   :: array(:)
+        complex(CKG)            , intent(in)    , contiguous    :: pattern(:)
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
         logical(LK)             , intent(in)    , optional      :: unique
@@ -6277,9 +6277,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComCusIns_D1_D1_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)            , intent(inout) , allocatable   :: array(:)
-        complex(CKC)            , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG)            , intent(inout) , allocatable   :: array(:)
+        complex(CKG)            , intent(in)    , contiguous    :: pattern(:)
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
         logical(LK)             , intent(in)    , optional      :: unique
@@ -6291,9 +6291,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComCusIns_D1_D1_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)            , intent(inout) , allocatable   :: array(:)
-        complex(CKC)            , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG)            , intent(inout) , allocatable   :: array(:)
+        complex(CKG)            , intent(in)    , contiguous    :: pattern(:)
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
         logical(LK)             , intent(in)    , optional      :: unique
@@ -6305,9 +6305,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComCusIns_D1_D1_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)            , intent(inout) , allocatable   :: array(:)
-        complex(CKC)            , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG)            , intent(inout) , allocatable   :: array(:)
+        complex(CKG)            , intent(in)    , contiguous    :: pattern(:)
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
         logical(LK)             , intent(in)    , optional      :: unique
@@ -6319,9 +6319,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComCusIns_D1_D1_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)            , intent(inout) , allocatable   :: array(:)
-        complex(CKC)            , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG)            , intent(inout) , allocatable   :: array(:)
+        complex(CKG)            , intent(in)    , contiguous    :: pattern(:)
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
         logical(LK)             , intent(in)    , optional      :: unique
@@ -6335,9 +6335,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComCusIns_D1_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)               , intent(inout) , allocatable   :: array(:)
-        real(RKC)               , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)               , intent(inout) , allocatable   :: array(:)
+        real(RKG)               , intent(in)    , contiguous    :: pattern(:)
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
         logical(LK)             , intent(in)    , optional      :: unique
@@ -6349,9 +6349,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComCusIns_D1_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)               , intent(inout) , allocatable   :: array(:)
-        real(RKC)               , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)               , intent(inout) , allocatable   :: array(:)
+        real(RKG)               , intent(in)    , contiguous    :: pattern(:)
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
         logical(LK)             , intent(in)    , optional      :: unique
@@ -6363,9 +6363,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComCusIns_D1_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)               , intent(inout) , allocatable   :: array(:)
-        real(RKC)               , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)               , intent(inout) , allocatable   :: array(:)
+        real(RKG)               , intent(in)    , contiguous    :: pattern(:)
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
         logical(LK)             , intent(in)    , optional      :: unique
@@ -6377,9 +6377,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComCusIns_D1_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)               , intent(inout) , allocatable   :: array(:)
-        real(RKC)               , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)               , intent(inout) , allocatable   :: array(:)
+        real(RKG)               , intent(in)    , contiguous    :: pattern(:)
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
         logical(LK)             , intent(in)    , optional      :: unique
@@ -6391,9 +6391,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComCusIns_D1_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)               , intent(inout) , allocatable   :: array(:)
-        real(RKC)               , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)               , intent(inout) , allocatable   :: array(:)
+        real(RKG)               , intent(in)    , contiguous    :: pattern(:)
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
         logical(LK)             , intent(in)    , optional      :: unique
@@ -6413,9 +6413,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComCusIns_D1_D1_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)        , intent(inout) , allocatable   :: array(:)
-        character(*,SKC)        , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)        , intent(inout) , allocatable   :: array(:)
+        character(*,SKG)        , intent(in)    , contiguous    :: pattern(:)
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
@@ -6428,9 +6428,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComCusIns_D1_D1_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)        , intent(inout) , allocatable   :: array(:)
-        character(*,SKC)        , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)        , intent(inout) , allocatable   :: array(:)
+        character(*,SKG)        , intent(in)    , contiguous    :: pattern(:)
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
@@ -6443,9 +6443,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComCusIns_D1_D1_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)        , intent(inout) , allocatable   :: array(:)
-        character(*,SKC)        , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)        , intent(inout) , allocatable   :: array(:)
+        character(*,SKG)        , intent(in)    , contiguous    :: pattern(:)
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
@@ -6458,9 +6458,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComCusIns_D1_D1_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)        , intent(inout) , allocatable   :: array(:)
-        character(*,SKC)        , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)        , intent(inout) , allocatable   :: array(:)
+        character(*,SKG)        , intent(in)    , contiguous    :: pattern(:)
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
@@ -6473,9 +6473,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComCusIns_D1_D1_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)        , intent(inout) , allocatable   :: array(:)
-        character(*,SKC)        , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)        , intent(inout) , allocatable   :: array(:)
+        character(*,SKG)        , intent(in)    , contiguous    :: pattern(:)
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
@@ -6490,9 +6490,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComCusIns_D1_D1_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)            , intent(inout) , allocatable   :: array(:)
-        integer(IKC)            , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: IKG => IK5
+        integer(IKG)            , intent(inout) , allocatable   :: array(:)
+        integer(IKG)            , intent(in)    , contiguous    :: pattern(:)
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
@@ -6505,9 +6505,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComCusIns_D1_D1_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)            , intent(inout) , allocatable   :: array(:)
-        integer(IKC)            , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: IKG => IK4
+        integer(IKG)            , intent(inout) , allocatable   :: array(:)
+        integer(IKG)            , intent(in)    , contiguous    :: pattern(:)
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
@@ -6520,9 +6520,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComCusIns_D1_D1_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)            , intent(inout) , allocatable   :: array(:)
-        integer(IKC)            , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: IKG => IK3
+        integer(IKG)            , intent(inout) , allocatable   :: array(:)
+        integer(IKG)            , intent(in)    , contiguous    :: pattern(:)
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
@@ -6535,9 +6535,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComCusIns_D1_D1_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)            , intent(inout) , allocatable   :: array(:)
-        integer(IKC)            , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: IKG => IK2
+        integer(IKG)            , intent(inout) , allocatable   :: array(:)
+        integer(IKG)            , intent(in)    , contiguous    :: pattern(:)
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
@@ -6550,9 +6550,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComCusIns_D1_D1_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)            , intent(inout) , allocatable   :: array(:)
-        integer(IKC)            , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: IKG => IK1
+        integer(IKG)            , intent(inout) , allocatable   :: array(:)
+        integer(IKG)            , intent(in)    , contiguous    :: pattern(:)
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
@@ -6567,9 +6567,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComCusIns_D1_D1_LK5
 #endif
-        use pm_kind, only: LKC => LK5
-        logical(LKC)            , intent(inout) , allocatable   :: array(:)
-        logical(LKC)            , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: LKG => LK5
+        logical(LKG)            , intent(inout) , allocatable   :: array(:)
+        logical(LKG)            , intent(in)    , contiguous    :: pattern(:)
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
@@ -6582,9 +6582,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComCusIns_D1_D1_LK4
 #endif
-        use pm_kind, only: LKC => LK4
-        logical(LKC)            , intent(inout) , allocatable   :: array(:)
-        logical(LKC)            , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: LKG => LK4
+        logical(LKG)            , intent(inout) , allocatable   :: array(:)
+        logical(LKG)            , intent(in)    , contiguous    :: pattern(:)
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
@@ -6597,9 +6597,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComCusIns_D1_D1_LK3
 #endif
-        use pm_kind, only: LKC => LK3
-        logical(LKC)            , intent(inout) , allocatable   :: array(:)
-        logical(LKC)            , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: LKG => LK3
+        logical(LKG)            , intent(inout) , allocatable   :: array(:)
+        logical(LKG)            , intent(in)    , contiguous    :: pattern(:)
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
@@ -6612,9 +6612,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComCusIns_D1_D1_LK2
 #endif
-        use pm_kind, only: LKC => LK2
-        logical(LKC)            , intent(inout) , allocatable   :: array(:)
-        logical(LKC)            , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: LKG => LK2
+        logical(LKG)            , intent(inout) , allocatable   :: array(:)
+        logical(LKG)            , intent(in)    , contiguous    :: pattern(:)
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
@@ -6627,9 +6627,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComCusIns_D1_D1_LK1
 #endif
-        use pm_kind, only: LKC => LK1
-        logical(LKC)            , intent(inout) , allocatable   :: array(:)
-        logical(LKC)            , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: LKG => LK1
+        logical(LKG)            , intent(inout) , allocatable   :: array(:)
+        logical(LKG)            , intent(in)    , contiguous    :: pattern(:)
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
@@ -6644,9 +6644,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComCusIns_D1_D1_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)            , intent(inout) , allocatable   :: array(:)
-        complex(CKC)            , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG)            , intent(inout) , allocatable   :: array(:)
+        complex(CKG)            , intent(in)    , contiguous    :: pattern(:)
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
@@ -6659,9 +6659,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComCusIns_D1_D1_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)            , intent(inout) , allocatable   :: array(:)
-        complex(CKC)            , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG)            , intent(inout) , allocatable   :: array(:)
+        complex(CKG)            , intent(in)    , contiguous    :: pattern(:)
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
@@ -6674,9 +6674,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComCusIns_D1_D1_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)            , intent(inout) , allocatable   :: array(:)
-        complex(CKC)            , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG)            , intent(inout) , allocatable   :: array(:)
+        complex(CKG)            , intent(in)    , contiguous    :: pattern(:)
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
@@ -6689,9 +6689,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComCusIns_D1_D1_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)            , intent(inout) , allocatable   :: array(:)
-        complex(CKC)            , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG)            , intent(inout) , allocatable   :: array(:)
+        complex(CKG)            , intent(in)    , contiguous    :: pattern(:)
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
@@ -6704,9 +6704,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComCusIns_D1_D1_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)            , intent(inout) , allocatable   :: array(:)
-        complex(CKC)            , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG)            , intent(inout) , allocatable   :: array(:)
+        complex(CKG)            , intent(in)    , contiguous    :: pattern(:)
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
@@ -6721,9 +6721,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComCusIns_D1_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)               , intent(inout) , allocatable   :: array(:)
-        real(RKC)               , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)               , intent(inout) , allocatable   :: array(:)
+        real(RKG)               , intent(in)    , contiguous    :: pattern(:)
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
@@ -6736,9 +6736,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComCusIns_D1_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)               , intent(inout) , allocatable   :: array(:)
-        real(RKC)               , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)               , intent(inout) , allocatable   :: array(:)
+        real(RKG)               , intent(in)    , contiguous    :: pattern(:)
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
@@ -6751,9 +6751,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComCusIns_D1_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)               , intent(inout) , allocatable   :: array(:)
-        real(RKC)               , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)               , intent(inout) , allocatable   :: array(:)
+        real(RKG)               , intent(in)    , contiguous    :: pattern(:)
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
@@ -6766,9 +6766,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComCusIns_D1_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)               , intent(inout) , allocatable   :: array(:)
-        real(RKC)               , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)               , intent(inout) , allocatable   :: array(:)
+        real(RKG)               , intent(in)    , contiguous    :: pattern(:)
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
@@ -6781,9 +6781,9 @@ module pm_arrayRemove
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComCusIns_D1_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)               , intent(inout) , allocatable   :: array(:)
-        real(RKC)               , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)               , intent(inout) , allocatable   :: array(:)
+        real(RKG)               , intent(in)    , contiguous    :: pattern(:)
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)    , optional      :: sorted
@@ -6822,10 +6822,10 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComDefIns_D0_D0_SK5
 !#endif
-!        use pm_kind, only: SKC => SK5
-!        character(:,SKC)        , intent(inout) , allocatable   :: array
-!        character(*,SKC)        , intent(in)                    :: pattern
-!        character(:,SKC)        , intent(out)   , allocatable   :: ArrayRemoved
+!        use pm_kind, only: SKG => SK5
+!        character(:,SKG)        , intent(inout) , allocatable   :: array
+!        character(*,SKG)        , intent(in)                    :: pattern
+!        character(:,SKG)        , intent(out)   , allocatable   :: ArrayRemoved
 !    end subroutine
 !#endif
 !
@@ -6834,10 +6834,10 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComDefIns_D0_D0_SK4
 !#endif
-!        use pm_kind, only: SKC => SK4
-!        character(:,SKC)        , intent(inout) , allocatable   :: array
-!        character(*,SKC)        , intent(in)                    :: pattern
-!        character(:,SKC)        , intent(out)   , allocatable   :: ArrayRemoved
+!        use pm_kind, only: SKG => SK4
+!        character(:,SKG)        , intent(inout) , allocatable   :: array
+!        character(*,SKG)        , intent(in)                    :: pattern
+!        character(:,SKG)        , intent(out)   , allocatable   :: ArrayRemoved
 !    end subroutine
 !#endif
 !
@@ -6846,10 +6846,10 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComDefIns_D0_D0_SK3
 !#endif
-!        use pm_kind, only: SKC => SK3
-!        character(:,SKC)        , intent(inout) , allocatable   :: array
-!        character(*,SKC)        , intent(in)                    :: pattern
-!        character(:,SKC)        , intent(out)   , allocatable   :: ArrayRemoved
+!        use pm_kind, only: SKG => SK3
+!        character(:,SKG)        , intent(inout) , allocatable   :: array
+!        character(*,SKG)        , intent(in)                    :: pattern
+!        character(:,SKG)        , intent(out)   , allocatable   :: ArrayRemoved
 !    end subroutine
 !#endif
 !
@@ -6858,10 +6858,10 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComDefIns_D0_D0_SK2
 !#endif
-!        use pm_kind, only: SKC => SK2
-!        character(:,SKC)        , intent(inout) , allocatable   :: array
-!        character(*,SKC)        , intent(in)                    :: pattern
-!        character(:,SKC)        , intent(out)   , allocatable   :: ArrayRemoved
+!        use pm_kind, only: SKG => SK2
+!        character(:,SKG)        , intent(inout) , allocatable   :: array
+!        character(*,SKG)        , intent(in)                    :: pattern
+!        character(:,SKG)        , intent(out)   , allocatable   :: ArrayRemoved
 !    end subroutine
 !#endif
 !
@@ -6870,10 +6870,10 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComDefIns_D0_D0_SK1
 !#endif
-!        use pm_kind, only: SKC => SK1
-!        character(:,SKC)        , intent(inout) , allocatable   :: array
-!        character(*,SKC)        , intent(in)                    :: pattern
-!        character(:,SKC)        , intent(out)   , allocatable   :: ArrayRemoved
+!        use pm_kind, only: SKG => SK1
+!        character(:,SKG)        , intent(inout) , allocatable   :: array
+!        character(*,SKG)        , intent(in)                    :: pattern
+!        character(:,SKG)        , intent(out)   , allocatable   :: ArrayRemoved
 !    end subroutine
 !#endif
 !
@@ -6890,11 +6890,11 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComDefIns_D0_D0_SK5
 !#endif
-!        use pm_kind, only: SKC => SK5
-!        character(:,SKC)        , intent(inout) , allocatable   :: array
-!        character(*,SKC)        , intent(in)                    :: pattern
+!        use pm_kind, only: SKG => SK5
+!        character(:,SKG)        , intent(inout) , allocatable   :: array
+!        character(*,SKG)        , intent(in)                    :: pattern
 !        procedure(logical(LK))                                  :: iseq
-!        character(:,SKC)        , intent(out)   , allocatable   :: ArrayRemoved
+!        character(:,SKG)        , intent(out)   , allocatable   :: ArrayRemoved
 !    end subroutine
 !#endif
 !
@@ -6903,11 +6903,11 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComDefIns_D0_D0_SK4
 !#endif
-!        use pm_kind, only: SKC => SK4
-!        character(:,SKC)        , intent(inout) , allocatable   :: array
-!        character(*,SKC)        , intent(in)                    :: pattern
+!        use pm_kind, only: SKG => SK4
+!        character(:,SKG)        , intent(inout) , allocatable   :: array
+!        character(*,SKG)        , intent(in)                    :: pattern
 !        procedure(logical(LK))                                  :: iseq
-!        character(:,SKC)        , intent(out)   , allocatable   :: ArrayRemoved
+!        character(:,SKG)        , intent(out)   , allocatable   :: ArrayRemoved
 !    end subroutine
 !#endif
 !
@@ -6916,11 +6916,11 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComDefIns_D0_D0_SK3
 !#endif
-!        use pm_kind, only: SKC => SK3
-!        character(:,SKC)        , intent(inout) , allocatable   :: array
-!        character(*,SKC)        , intent(in)                    :: pattern
+!        use pm_kind, only: SKG => SK3
+!        character(:,SKG)        , intent(inout) , allocatable   :: array
+!        character(*,SKG)        , intent(in)                    :: pattern
 !        procedure(logical(LK))                                  :: iseq
-!        character(:,SKC)        , intent(out)   , allocatable   :: ArrayRemoved
+!        character(:,SKG)        , intent(out)   , allocatable   :: ArrayRemoved
 !    end subroutine
 !#endif
 !
@@ -6929,11 +6929,11 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComDefIns_D0_D0_SK2
 !#endif
-!        use pm_kind, only: SKC => SK2
-!        character(:,SKC)        , intent(inout) , allocatable   :: array
-!        character(*,SKC)        , intent(in)                    :: pattern
+!        use pm_kind, only: SKG => SK2
+!        character(:,SKG)        , intent(inout) , allocatable   :: array
+!        character(*,SKG)        , intent(in)                    :: pattern
 !        procedure(logical(LK))                                  :: iseq
-!        character(:,SKC)        , intent(out)   , allocatable   :: ArrayRemoved
+!        character(:,SKG)        , intent(out)   , allocatable   :: ArrayRemoved
 !    end subroutine
 !#endif
 !
@@ -6942,11 +6942,11 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComDefIns_D0_D0_SK1
 !#endif
-!        use pm_kind, only: SKC => SK1
-!        character(:,SKC)        , intent(inout) , allocatable   :: array
-!        character(*,SKC)        , intent(in)                    :: pattern
+!        use pm_kind, only: SKG => SK1
+!        character(:,SKG)        , intent(inout) , allocatable   :: array
+!        character(*,SKG)        , intent(in)                    :: pattern
 !        procedure(logical(LK))                                  :: iseq
-!        character(:,SKC)        , intent(out)   , allocatable   :: ArrayRemoved
+!        character(:,SKG)        , intent(out)   , allocatable   :: ArrayRemoved
 !    end subroutine
 !#endif
 !
@@ -6963,13 +6963,13 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComCusIns_D0_D0_SK5
 !#endif
-!        use pm_kind, only: SKC => SK5
-!        character(:,SKC)        , intent(inout) , allocatable   :: array
-!        character(*,SKC)        , intent(in)                    :: pattern
+!        use pm_kind, only: SKG => SK5
+!        character(:,SKG)        , intent(inout) , allocatable   :: array
+!        character(*,SKG)        , intent(in)                    :: pattern
 !        integer(IK)             , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)             , intent(in)    , optional      :: sorted
 !        logical(LK)             , intent(in)    , optional      :: unique
-!        character(:,SKC)        , intent(out)   , allocatable   :: ArrayRemoved
+!        character(:,SKG)        , intent(out)   , allocatable   :: ArrayRemoved
 !    end subroutine
 !#endif
 !
@@ -6978,13 +6978,13 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComCusIns_D0_D0_SK4
 !#endif
-!        use pm_kind, only: SKC => SK4
-!        character(:,SKC)        , intent(inout) , allocatable   :: array
-!        character(*,SKC)        , intent(in)                    :: pattern
+!        use pm_kind, only: SKG => SK4
+!        character(:,SKG)        , intent(inout) , allocatable   :: array
+!        character(*,SKG)        , intent(in)                    :: pattern
 !        integer(IK)             , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)             , intent(in)    , optional      :: sorted
 !        logical(LK)             , intent(in)    , optional      :: unique
-!        character(:,SKC)        , intent(out)   , allocatable   :: ArrayRemoved
+!        character(:,SKG)        , intent(out)   , allocatable   :: ArrayRemoved
 !    end subroutine
 !#endif
 !
@@ -6993,13 +6993,13 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComCusIns_D0_D0_SK3
 !#endif
-!        use pm_kind, only: SKC => SK3
-!        character(:,SKC)        , intent(inout) , allocatable   :: array
-!        character(*,SKC)        , intent(in)                    :: pattern
+!        use pm_kind, only: SKG => SK3
+!        character(:,SKG)        , intent(inout) , allocatable   :: array
+!        character(*,SKG)        , intent(in)                    :: pattern
 !        integer(IK)             , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)             , intent(in)    , optional      :: sorted
 !        logical(LK)             , intent(in)    , optional      :: unique
-!        character(:,SKC)        , intent(out)   , allocatable   :: ArrayRemoved
+!        character(:,SKG)        , intent(out)   , allocatable   :: ArrayRemoved
 !    end subroutine
 !#endif
 !
@@ -7008,13 +7008,13 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComCusIns_D0_D0_SK2
 !#endif
-!        use pm_kind, only: SKC => SK2
-!        character(:,SKC)        , intent(inout) , allocatable   :: array
-!        character(*,SKC)        , intent(in)                    :: pattern
+!        use pm_kind, only: SKG => SK2
+!        character(:,SKG)        , intent(inout) , allocatable   :: array
+!        character(*,SKG)        , intent(in)                    :: pattern
 !        integer(IK)             , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)             , intent(in)    , optional      :: sorted
 !        logical(LK)             , intent(in)    , optional      :: unique
-!        character(:,SKC)        , intent(out)   , allocatable   :: ArrayRemoved
+!        character(:,SKG)        , intent(out)   , allocatable   :: ArrayRemoved
 !    end subroutine
 !#endif
 !
@@ -7023,13 +7023,13 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComCusIns_D0_D0_SK1
 !#endif
-!        use pm_kind, only: SKC => SK1
-!        character(:,SKC)        , intent(inout) , allocatable   :: array
-!        character(*,SKC)        , intent(in)                    :: pattern
+!        use pm_kind, only: SKG => SK1
+!        character(:,SKG)        , intent(inout) , allocatable   :: array
+!        character(*,SKG)        , intent(in)                    :: pattern
 !        integer(IK)             , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)             , intent(in)    , optional      :: sorted
 !        logical(LK)             , intent(in)    , optional      :: unique
-!        character(:,SKC)        , intent(out)   , allocatable   :: ArrayRemoved
+!        character(:,SKG)        , intent(out)   , allocatable   :: ArrayRemoved
 !    end subroutine
 !#endif
 !
@@ -7046,14 +7046,14 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComCusIns_D0_D0_SK5
 !#endif
-!        use pm_kind, only: SKC => SK5
-!        character(:,SKC)        , intent(inout) , allocatable   :: array
-!        character(*,SKC)        , intent(in)                    :: pattern
+!        use pm_kind, only: SKG => SK5
+!        character(:,SKG)        , intent(inout) , allocatable   :: array
+!        character(*,SKG)        , intent(in)                    :: pattern
 !        procedure(logical(LK))                                  :: iseq
 !        integer(IK)             , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)             , intent(in)    , optional      :: sorted
 !        logical(LK)             , intent(in)    , optional      :: unique
-!        character(:,SKC)        , intent(out)   , allocatable   :: ArrayRemoved
+!        character(:,SKG)        , intent(out)   , allocatable   :: ArrayRemoved
 !    end subroutine
 !#endif
 !
@@ -7062,14 +7062,14 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComCusIns_D0_D0_SK4
 !#endif
-!        use pm_kind, only: SKC => SK4
-!        character(:,SKC)        , intent(inout) , allocatable   :: array
-!        character(*,SKC)        , intent(in)                    :: pattern
+!        use pm_kind, only: SKG => SK4
+!        character(:,SKG)        , intent(inout) , allocatable   :: array
+!        character(*,SKG)        , intent(in)                    :: pattern
 !        procedure(logical(LK))                                  :: iseq
 !        integer(IK)             , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)             , intent(in)    , optional      :: sorted
 !        logical(LK)             , intent(in)    , optional      :: unique
-!        character(:,SKC)        , intent(out)   , allocatable   :: ArrayRemoved
+!        character(:,SKG)        , intent(out)   , allocatable   :: ArrayRemoved
 !    end subroutine
 !#endif
 !
@@ -7078,14 +7078,14 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComCusIns_D0_D0_SK3
 !#endif
-!        use pm_kind, only: SKC => SK3
-!        character(:,SKC)        , intent(inout) , allocatable   :: array
-!        character(*,SKC)        , intent(in)                    :: pattern
+!        use pm_kind, only: SKG => SK3
+!        character(:,SKG)        , intent(inout) , allocatable   :: array
+!        character(*,SKG)        , intent(in)                    :: pattern
 !        procedure(logical(LK))                                  :: iseq
 !        integer(IK)             , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)             , intent(in)    , optional      :: sorted
 !        logical(LK)             , intent(in)    , optional      :: unique
-!        character(:,SKC)        , intent(out)   , allocatable   :: ArrayRemoved
+!        character(:,SKG)        , intent(out)   , allocatable   :: ArrayRemoved
 !    end subroutine
 !#endif
 !
@@ -7094,14 +7094,14 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComCusIns_D0_D0_SK2
 !#endif
-!        use pm_kind, only: SKC => SK2
-!        character(:,SKC)        , intent(inout) , allocatable   :: array
-!        character(*,SKC)        , intent(in)                    :: pattern
+!        use pm_kind, only: SKG => SK2
+!        character(:,SKG)        , intent(inout) , allocatable   :: array
+!        character(*,SKG)        , intent(in)                    :: pattern
 !        procedure(logical(LK))                                  :: iseq
 !        integer(IK)             , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)             , intent(in)    , optional      :: sorted
 !        logical(LK)             , intent(in)    , optional      :: unique
-!        character(:,SKC)        , intent(out)   , allocatable   :: ArrayRemoved
+!        character(:,SKG)        , intent(out)   , allocatable   :: ArrayRemoved
 !    end subroutine
 !#endif
 !
@@ -7110,14 +7110,14 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComCusIns_D0_D0_SK1
 !#endif
-!        use pm_kind, only: SKC => SK1
-!        character(:,SKC)        , intent(inout) , allocatable   :: array
-!        character(*,SKC)        , intent(in)                    :: pattern
+!        use pm_kind, only: SKG => SK1
+!        character(:,SKG)        , intent(inout) , allocatable   :: array
+!        character(*,SKG)        , intent(in)                    :: pattern
 !        procedure(logical(LK))                                  :: iseq
 !        integer(IK)             , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)             , intent(in)    , optional      :: sorted
 !        logical(LK)             , intent(in)    , optional      :: unique
-!        character(:,SKC)        , intent(out)   , allocatable   :: ArrayRemoved
+!        character(:,SKG)        , intent(out)   , allocatable   :: ArrayRemoved
 !    end subroutine
 !#endif
 !
@@ -7140,10 +7140,10 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComDefIns_D1_D0_SK5
 !#endif
-!        use pm_kind, only: SKC => SK5
-!        character(:,SKC)        , intent(inout) , allocatable   :: array(:)
-!        character(*,SKC)        , intent(in)                    :: pattern
-!        character(*,SKC)                        , allocatable   :: ArrayRemoved(:)
+!        use pm_kind, only: SKG => SK5
+!        character(:,SKG)        , intent(inout) , allocatable   :: array(:)
+!        character(*,SKG)        , intent(in)                    :: pattern
+!        character(*,SKG)                        , allocatable   :: ArrayRemoved(:)
 !    end subroutine
 !#endif
 !
@@ -7152,10 +7152,10 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComDefIns_D1_D0_SK4
 !#endif
-!        use pm_kind, only: SKC => SK4
-!        character(:,SKC)        , intent(inout) , allocatable   :: array(:)
-!        character(*,SKC)        , intent(in)                    :: pattern
-!        character(*,SKC)                        , allocatable   :: ArrayRemoved(:)
+!        use pm_kind, only: SKG => SK4
+!        character(:,SKG)        , intent(inout) , allocatable   :: array(:)
+!        character(*,SKG)        , intent(in)                    :: pattern
+!        character(*,SKG)                        , allocatable   :: ArrayRemoved(:)
 !    end subroutine
 !#endif
 !
@@ -7164,10 +7164,10 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComDefIns_D1_D0_SK3
 !#endif
-!        use pm_kind, only: SKC => SK3
-!        character(:,SKC)        , intent(inout) , allocatable   :: array(:)
-!        character(*,SKC)        , intent(in)                    :: pattern
-!        character(*,SKC)                        , allocatable   :: ArrayRemoved(:)
+!        use pm_kind, only: SKG => SK3
+!        character(:,SKG)        , intent(inout) , allocatable   :: array(:)
+!        character(*,SKG)        , intent(in)                    :: pattern
+!        character(*,SKG)                        , allocatable   :: ArrayRemoved(:)
 !    end subroutine
 !#endif
 !
@@ -7176,10 +7176,10 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComDefIns_D1_D0_SK2
 !#endif
-!        use pm_kind, only: SKC => SK2
-!        character(:,SKC)        , intent(inout) , allocatable   :: array(:)
-!        character(*,SKC)        , intent(in)                    :: pattern
-!        character(*,SKC)                        , allocatable   :: ArrayRemoved(:)
+!        use pm_kind, only: SKG => SK2
+!        character(:,SKG)        , intent(inout) , allocatable   :: array(:)
+!        character(*,SKG)        , intent(in)                    :: pattern
+!        character(*,SKG)                        , allocatable   :: ArrayRemoved(:)
 !    end subroutine
 !#endif
 !
@@ -7188,10 +7188,10 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComDefIns_D1_D0_SK1
 !#endif
-!        use pm_kind, only: SKC => SK1
-!        character(:,SKC)        , intent(inout) , allocatable   :: array(:)
-!        character(*,SKC)        , intent(in)                    :: pattern
-!        character(*,SKC)                        , allocatable   :: ArrayRemoved(:)
+!        use pm_kind, only: SKG => SK1
+!        character(:,SKG)        , intent(inout) , allocatable   :: array(:)
+!        character(*,SKG)        , intent(in)                    :: pattern
+!        character(*,SKG)                        , allocatable   :: ArrayRemoved(:)
 !    end subroutine
 !#endif
 !
@@ -7202,10 +7202,10 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComDefIns_D1_D0_IK5
 !#endif
-!        use pm_kind, only: IKC => IK5
-!        integer(IKC)            , intent(inout) , allocatable   :: array(:)
-!        integer(IKC)            , intent(in)                    :: pattern
-!        integer(IKC)            , intent(out)   , allocatable   :: ArrayRemoved(:)
+!        use pm_kind, only: IKG => IK5
+!        integer(IKG)            , intent(inout) , allocatable   :: array(:)
+!        integer(IKG)            , intent(in)                    :: pattern
+!        integer(IKG)            , intent(out)   , allocatable   :: ArrayRemoved(:)
 !    end subroutine
 !#endif
 !
@@ -7214,10 +7214,10 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComDefIns_D1_D0_IK4
 !#endif
-!        use pm_kind, only: IKC => IK4
-!        integer(IKC)            , intent(inout) , allocatable   :: array(:)
-!        integer(IKC)            , intent(in)                    :: pattern
-!        integer(IKC)            , intent(out)   , allocatable   :: ArrayRemoved(:)
+!        use pm_kind, only: IKG => IK4
+!        integer(IKG)            , intent(inout) , allocatable   :: array(:)
+!        integer(IKG)            , intent(in)                    :: pattern
+!        integer(IKG)            , intent(out)   , allocatable   :: ArrayRemoved(:)
 !    end subroutine
 !#endif
 !
@@ -7226,10 +7226,10 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComDefIns_D1_D0_IK3
 !#endif
-!        use pm_kind, only: IKC => IK3
-!        integer(IKC)            , intent(inout) , allocatable   :: array(:)
-!        integer(IKC)            , intent(in)                    :: pattern
-!        integer(IKC)            , intent(out)   , allocatable   :: ArrayRemoved(:)
+!        use pm_kind, only: IKG => IK3
+!        integer(IKG)            , intent(inout) , allocatable   :: array(:)
+!        integer(IKG)            , intent(in)                    :: pattern
+!        integer(IKG)            , intent(out)   , allocatable   :: ArrayRemoved(:)
 !    end subroutine
 !#endif
 !
@@ -7238,10 +7238,10 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComDefIns_D1_D0_IK2
 !#endif
-!        use pm_kind, only: IKC => IK2
-!        integer(IKC)            , intent(inout) , allocatable   :: array(:)
-!        integer(IKC)            , intent(in)                    :: pattern
-!        integer(IKC)            , intent(out)   , allocatable   :: ArrayRemoved(:)
+!        use pm_kind, only: IKG => IK2
+!        integer(IKG)            , intent(inout) , allocatable   :: array(:)
+!        integer(IKG)            , intent(in)                    :: pattern
+!        integer(IKG)            , intent(out)   , allocatable   :: ArrayRemoved(:)
 !    end subroutine
 !#endif
 !
@@ -7250,10 +7250,10 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComDefIns_D1_D0_IK1
 !#endif
-!        use pm_kind, only: IKC => IK1
-!        integer(IKC)            , intent(inout) , allocatable   :: array(:)
-!        integer(IKC)            , intent(in)                    :: pattern
-!        integer(IKC)            , intent(out)   , allocatable   :: ArrayRemoved(:)
+!        use pm_kind, only: IKG => IK1
+!        integer(IKG)            , intent(inout) , allocatable   :: array(:)
+!        integer(IKG)            , intent(in)                    :: pattern
+!        integer(IKG)            , intent(out)   , allocatable   :: ArrayRemoved(:)
 !    end subroutine
 !#endif
 !
@@ -7264,10 +7264,10 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComDefIns_D1_D0_LK5
 !#endif
-!        use pm_kind, only: LKC => LK5
-!        logical(LKC)            , intent(inout) , allocatable   :: array(:)
-!        logical(LKC)            , intent(in)                    :: pattern
-!        logical(LKC)            , intent(out)   , allocatable   :: ArrayRemoved(:)
+!        use pm_kind, only: LKG => LK5
+!        logical(LKG)            , intent(inout) , allocatable   :: array(:)
+!        logical(LKG)            , intent(in)                    :: pattern
+!        logical(LKG)            , intent(out)   , allocatable   :: ArrayRemoved(:)
 !    end subroutine
 !#endif
 !
@@ -7276,10 +7276,10 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComDefIns_D1_D0_LK4
 !#endif
-!        use pm_kind, only: LKC => LK4
-!        logical(LKC)            , intent(inout) , allocatable   :: array(:)
-!        logical(LKC)            , intent(in)                    :: pattern
-!        logical(LKC)            , intent(out)   , allocatable   :: ArrayRemoved(:)
+!        use pm_kind, only: LKG => LK4
+!        logical(LKG)            , intent(inout) , allocatable   :: array(:)
+!        logical(LKG)            , intent(in)                    :: pattern
+!        logical(LKG)            , intent(out)   , allocatable   :: ArrayRemoved(:)
 !    end subroutine
 !#endif
 !
@@ -7288,10 +7288,10 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComDefIns_D1_D0_LK3
 !#endif
-!        use pm_kind, only: LKC => LK3
-!        logical(LKC)            , intent(inout) , allocatable   :: array(:)
-!        logical(LKC)            , intent(in)                    :: pattern
-!        logical(LKC)            , intent(out)   , allocatable   :: ArrayRemoved(:)
+!        use pm_kind, only: LKG => LK3
+!        logical(LKG)            , intent(inout) , allocatable   :: array(:)
+!        logical(LKG)            , intent(in)                    :: pattern
+!        logical(LKG)            , intent(out)   , allocatable   :: ArrayRemoved(:)
 !    end subroutine
 !#endif
 !
@@ -7300,10 +7300,10 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComDefIns_D1_D0_LK2
 !#endif
-!        use pm_kind, only: LKC => LK2
-!        logical(LKC)            , intent(inout) , allocatable   :: array(:)
-!        logical(LKC)            , intent(in)                    :: pattern
-!        logical(LKC)            , intent(out)   , allocatable   :: ArrayRemoved(:)
+!        use pm_kind, only: LKG => LK2
+!        logical(LKG)            , intent(inout) , allocatable   :: array(:)
+!        logical(LKG)            , intent(in)                    :: pattern
+!        logical(LKG)            , intent(out)   , allocatable   :: ArrayRemoved(:)
 !    end subroutine
 !#endif
 !
@@ -7312,10 +7312,10 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComDefIns_D1_D0_LK1
 !#endif
-!        use pm_kind, only: LKC => LK1
-!        logical(LKC)            , intent(inout) , allocatable   :: array(:)
-!        logical(LKC)            , intent(in)                    :: pattern
-!        logical(LKC)            , intent(out)   , allocatable   :: ArrayRemoved(:)
+!        use pm_kind, only: LKG => LK1
+!        logical(LKG)            , intent(inout) , allocatable   :: array(:)
+!        logical(LKG)            , intent(in)                    :: pattern
+!        logical(LKG)            , intent(out)   , allocatable   :: ArrayRemoved(:)
 !    end subroutine
 !#endif
 !
@@ -7326,10 +7326,10 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComDefIns_D1_D0_CK5
 !#endif
-!        use pm_kind, only: CKC => CK5
-!        complex(CKC)            , intent(inout) , allocatable   :: array(:)
-!        complex(CKC)            , intent(in)                    :: pattern
-!        complex(CKC)            , intent(out)   , allocatable   :: ArrayRemoved(:)
+!        use pm_kind, only: CKG => CK5
+!        complex(CKG)            , intent(inout) , allocatable   :: array(:)
+!        complex(CKG)            , intent(in)                    :: pattern
+!        complex(CKG)            , intent(out)   , allocatable   :: ArrayRemoved(:)
 !    end subroutine
 !#endif
 !
@@ -7338,10 +7338,10 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComDefIns_D1_D0_CK4
 !#endif
-!        use pm_kind, only: CKC => CK4
-!        complex(CKC)            , intent(inout) , allocatable   :: array(:)
-!        complex(CKC)            , intent(in)                    :: pattern
-!        complex(CKC)            , intent(out)   , allocatable   :: ArrayRemoved(:)
+!        use pm_kind, only: CKG => CK4
+!        complex(CKG)            , intent(inout) , allocatable   :: array(:)
+!        complex(CKG)            , intent(in)                    :: pattern
+!        complex(CKG)            , intent(out)   , allocatable   :: ArrayRemoved(:)
 !    end subroutine
 !#endif
 !
@@ -7350,10 +7350,10 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComDefIns_D1_D0_CK3
 !#endif
-!        use pm_kind, only: CKC => CK3
-!        complex(CKC)            , intent(inout) , allocatable   :: array(:)
-!        complex(CKC)            , intent(in)                    :: pattern
-!        complex(CKC)            , intent(out)   , allocatable   :: ArrayRemoved(:)
+!        use pm_kind, only: CKG => CK3
+!        complex(CKG)            , intent(inout) , allocatable   :: array(:)
+!        complex(CKG)            , intent(in)                    :: pattern
+!        complex(CKG)            , intent(out)   , allocatable   :: ArrayRemoved(:)
 !    end subroutine
 !#endif
 !
@@ -7362,10 +7362,10 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComDefIns_D1_D0_CK2
 !#endif
-!        use pm_kind, only: CKC => CK2
-!        complex(CKC)            , intent(inout) , allocatable   :: array(:)
-!        complex(CKC)            , intent(in)                    :: pattern
-!        complex(CKC)            , intent(out)   , allocatable   :: ArrayRemoved(:)
+!        use pm_kind, only: CKG => CK2
+!        complex(CKG)            , intent(inout) , allocatable   :: array(:)
+!        complex(CKG)            , intent(in)                    :: pattern
+!        complex(CKG)            , intent(out)   , allocatable   :: ArrayRemoved(:)
 !    end subroutine
 !#endif
 !
@@ -7374,10 +7374,10 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComDefIns_D1_D0_CK1
 !#endif
-!        use pm_kind, only: CKC => CK1
-!        complex(CKC)            , intent(inout) , allocatable   :: array(:)
-!        complex(CKC)            , intent(in)                    :: pattern
-!        complex(CKC)            , intent(out)   , allocatable   :: ArrayRemoved(:)
+!        use pm_kind, only: CKG => CK1
+!        complex(CKG)            , intent(inout) , allocatable   :: array(:)
+!        complex(CKG)            , intent(in)                    :: pattern
+!        complex(CKG)            , intent(out)   , allocatable   :: ArrayRemoved(:)
 !    end subroutine
 !#endif
 !
@@ -7388,10 +7388,10 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComDefIns_D1_D0_RK5
 !#endif
-!        use pm_kind, only: RKC => RK5
-!        real(RKC)               , intent(inout) , allocatable   :: array(:)
-!        real(RKC)               , intent(in)                    :: pattern
-!        real(RKC)               , intent(out)   , allocatable   :: ArrayRemoved(:)
+!        use pm_kind, only: RKG => RK5
+!        real(RKG)               , intent(inout) , allocatable   :: array(:)
+!        real(RKG)               , intent(in)                    :: pattern
+!        real(RKG)               , intent(out)   , allocatable   :: ArrayRemoved(:)
 !    end subroutine
 !#endif
 !
@@ -7400,10 +7400,10 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComDefIns_D1_D0_RK4
 !#endif
-!        use pm_kind, only: RKC => RK4
-!        real(RKC)               , intent(inout) , allocatable   :: array(:)
-!        real(RKC)               , intent(in)                    :: pattern
-!        real(RKC)               , intent(out)   , allocatable   :: ArrayRemoved(:)
+!        use pm_kind, only: RKG => RK4
+!        real(RKG)               , intent(inout) , allocatable   :: array(:)
+!        real(RKG)               , intent(in)                    :: pattern
+!        real(RKG)               , intent(out)   , allocatable   :: ArrayRemoved(:)
 !    end subroutine
 !#endif
 !
@@ -7412,10 +7412,10 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComDefIns_D1_D0_RK3
 !#endif
-!        use pm_kind, only: RKC => RK3
-!        real(RKC)               , intent(inout) , allocatable   :: array(:)
-!        real(RKC)               , intent(in)                    :: pattern
-!        real(RKC)               , intent(out)   , allocatable   :: ArrayRemoved(:)
+!        use pm_kind, only: RKG => RK3
+!        real(RKG)               , intent(inout) , allocatable   :: array(:)
+!        real(RKG)               , intent(in)                    :: pattern
+!        real(RKG)               , intent(out)   , allocatable   :: ArrayRemoved(:)
 !    end subroutine
 !#endif
 !
@@ -7424,10 +7424,10 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComDefIns_D1_D0_RK2
 !#endif
-!        use pm_kind, only: RKC => RK2
-!        real(RKC)               , intent(inout) , allocatable   :: array(:)
-!        real(RKC)               , intent(in)                    :: pattern
-!        real(RKC)               , intent(out)   , allocatable   :: ArrayRemoved(:)
+!        use pm_kind, only: RKG => RK2
+!        real(RKG)               , intent(inout) , allocatable   :: array(:)
+!        real(RKG)               , intent(in)                    :: pattern
+!        real(RKG)               , intent(out)   , allocatable   :: ArrayRemoved(:)
 !    end subroutine
 !#endif
 !
@@ -7436,10 +7436,10 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComDefIns_D1_D0_RK1
 !#endif
-!        use pm_kind, only: RKC => RK1
-!        real(RKC)               , intent(inout) , allocatable   :: array(:)
-!        real(RKC)               , intent(in)                    :: pattern
-!        real(RKC)               , intent(out)   , allocatable   :: ArrayRemoved(:)
+!        use pm_kind, only: RKG => RK1
+!        real(RKG)               , intent(inout) , allocatable   :: array(:)
+!        real(RKG)               , intent(in)                    :: pattern
+!        real(RKG)               , intent(out)   , allocatable   :: ArrayRemoved(:)
 !    end subroutine
 !#endif
 !
@@ -7456,11 +7456,11 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComDefIns_D1_D0_SK5
 !#endif
-!        use pm_kind, only: SKC => SK5
-!        character(:,SKC)        , intent(inout) , allocatable   :: array(:)
-!        character(*,SKC)        , intent(in)                    :: pattern
+!        use pm_kind, only: SKG => SK5
+!        character(:,SKG)        , intent(inout) , allocatable   :: array(:)
+!        character(*,SKG)        , intent(in)                    :: pattern
 !        procedure(logical(LK))                                  :: iseq
-!        character(*,SKC)                        , allocatable   :: ArrayRemoved(:)
+!        character(*,SKG)                        , allocatable   :: ArrayRemoved(:)
 !    end subroutine
 !#endif
 !
@@ -7469,11 +7469,11 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComDefIns_D1_D0_SK4
 !#endif
-!        use pm_kind, only: SKC => SK4
-!        character(:,SKC)        , intent(inout) , allocatable   :: array(:)
-!        character(*,SKC)        , intent(in)                    :: pattern
+!        use pm_kind, only: SKG => SK4
+!        character(:,SKG)        , intent(inout) , allocatable   :: array(:)
+!        character(*,SKG)        , intent(in)                    :: pattern
 !        procedure(logical(LK))                                  :: iseq
-!        character(*,SKC)                        , allocatable   :: ArrayRemoved(:)
+!        character(*,SKG)                        , allocatable   :: ArrayRemoved(:)
 !    end subroutine
 !#endif
 !
@@ -7482,11 +7482,11 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComDefIns_D1_D0_SK3
 !#endif
-!        use pm_kind, only: SKC => SK3
-!        character(:,SKC)        , intent(inout) , allocatable   :: array(:)
-!        character(*,SKC)        , intent(in)                    :: pattern
+!        use pm_kind, only: SKG => SK3
+!        character(:,SKG)        , intent(inout) , allocatable   :: array(:)
+!        character(*,SKG)        , intent(in)                    :: pattern
 !        procedure(logical(LK))                                  :: iseq
-!        character(*,SKC)                        , allocatable   :: ArrayRemoved(:)
+!        character(*,SKG)                        , allocatable   :: ArrayRemoved(:)
 !    end subroutine
 !#endif
 !
@@ -7495,11 +7495,11 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComDefIns_D1_D0_SK2
 !#endif
-!        use pm_kind, only: SKC => SK2
-!        character(:,SKC)        , intent(inout) , allocatable   :: array(:)
-!        character(*,SKC)        , intent(in)                    :: pattern
+!        use pm_kind, only: SKG => SK2
+!        character(:,SKG)        , intent(inout) , allocatable   :: array(:)
+!        character(*,SKG)        , intent(in)                    :: pattern
 !        procedure(logical(LK))                                  :: iseq
-!        character(*,SKC)                        , allocatable   :: ArrayRemoved(:)
+!        character(*,SKG)                        , allocatable   :: ArrayRemoved(:)
 !    end subroutine
 !#endif
 !
@@ -7508,11 +7508,11 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComDefIns_D1_D0_SK1
 !#endif
-!        use pm_kind, only: SKC => SK1
-!        character(:,SKC)        , intent(inout) , allocatable   :: array(:)
-!        character(*,SKC)        , intent(in)                    :: pattern
+!        use pm_kind, only: SKG => SK1
+!        character(:,SKG)        , intent(inout) , allocatable   :: array(:)
+!        character(*,SKG)        , intent(in)                    :: pattern
 !        procedure(logical(LK))                                  :: iseq
-!        character(*,SKC)                        , allocatable   :: ArrayRemoved(:)
+!        character(*,SKG)                        , allocatable   :: ArrayRemoved(:)
 !    end subroutine
 !#endif
 !
@@ -7523,11 +7523,11 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComDefIns_D1_D0_IK5
 !#endif
-!        use pm_kind, only: IKC => IK5
-!        integer(IKC)            , intent(inout) , allocatable   :: array(:)
-!        integer(IKC)            , intent(in)                    :: pattern
+!        use pm_kind, only: IKG => IK5
+!        integer(IKG)            , intent(inout) , allocatable   :: array(:)
+!        integer(IKG)            , intent(in)                    :: pattern
 !        procedure(logical(LK))                                  :: iseq
-!        integer(IKC)            , intent(out)   , allocatable   :: ArrayRemoved(:)
+!        integer(IKG)            , intent(out)   , allocatable   :: ArrayRemoved(:)
 !    end subroutine
 !#endif
 !
@@ -7536,11 +7536,11 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComDefIns_D1_D0_IK4
 !#endif
-!        use pm_kind, only: IKC => IK4
-!        integer(IKC)            , intent(inout) , allocatable   :: array(:)
-!        integer(IKC)            , intent(in)                    :: pattern
+!        use pm_kind, only: IKG => IK4
+!        integer(IKG)            , intent(inout) , allocatable   :: array(:)
+!        integer(IKG)            , intent(in)                    :: pattern
 !        procedure(logical(LK))                                  :: iseq
-!        integer(IKC)            , intent(out)   , allocatable   :: ArrayRemoved(:)
+!        integer(IKG)            , intent(out)   , allocatable   :: ArrayRemoved(:)
 !    end subroutine
 !#endif
 !
@@ -7549,11 +7549,11 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComDefIns_D1_D0_IK3
 !#endif
-!        use pm_kind, only: IKC => IK3
-!        integer(IKC)            , intent(inout) , allocatable   :: array(:)
-!        integer(IKC)            , intent(in)                    :: pattern
+!        use pm_kind, only: IKG => IK3
+!        integer(IKG)            , intent(inout) , allocatable   :: array(:)
+!        integer(IKG)            , intent(in)                    :: pattern
 !        procedure(logical(LK))                                  :: iseq
-!        integer(IKC)            , intent(out)   , allocatable   :: ArrayRemoved(:)
+!        integer(IKG)            , intent(out)   , allocatable   :: ArrayRemoved(:)
 !    end subroutine
 !#endif
 !
@@ -7562,11 +7562,11 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComDefIns_D1_D0_IK2
 !#endif
-!        use pm_kind, only: IKC => IK2
-!        integer(IKC)            , intent(inout) , allocatable   :: array(:)
-!        integer(IKC)            , intent(in)                    :: pattern
+!        use pm_kind, only: IKG => IK2
+!        integer(IKG)            , intent(inout) , allocatable   :: array(:)
+!        integer(IKG)            , intent(in)                    :: pattern
 !        procedure(logical(LK))                                  :: iseq
-!        integer(IKC)            , intent(out)   , allocatable   :: ArrayRemoved(:)
+!        integer(IKG)            , intent(out)   , allocatable   :: ArrayRemoved(:)
 !    end subroutine
 !#endif
 !
@@ -7575,11 +7575,11 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComDefIns_D1_D0_IK1
 !#endif
-!        use pm_kind, only: IKC => IK1
-!        integer(IKC)            , intent(inout) , allocatable   :: array(:)
-!        integer(IKC)            , intent(in)                    :: pattern
+!        use pm_kind, only: IKG => IK1
+!        integer(IKG)            , intent(inout) , allocatable   :: array(:)
+!        integer(IKG)            , intent(in)                    :: pattern
 !        procedure(logical(LK))                                  :: iseq
-!        integer(IKC)            , intent(out)   , allocatable   :: ArrayRemoved(:)
+!        integer(IKG)            , intent(out)   , allocatable   :: ArrayRemoved(:)
 !    end subroutine
 !#endif
 !
@@ -7590,11 +7590,11 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComDefIns_D1_D0_LK5
 !#endif
-!        use pm_kind, only: LKC => LK5
-!        logical(LKC)            , intent(inout) , allocatable   :: array(:)
-!        logical(LKC)            , intent(in)                    :: pattern
+!        use pm_kind, only: LKG => LK5
+!        logical(LKG)            , intent(inout) , allocatable   :: array(:)
+!        logical(LKG)            , intent(in)                    :: pattern
 !        procedure(logical(LK))                                  :: iseq
-!        logical(LKC)            , intent(out)   , allocatable   :: ArrayRemoved(:)
+!        logical(LKG)            , intent(out)   , allocatable   :: ArrayRemoved(:)
 !    end subroutine
 !#endif
 !
@@ -7603,11 +7603,11 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComDefIns_D1_D0_LK4
 !#endif
-!        use pm_kind, only: LKC => LK4
-!        logical(LKC)            , intent(inout) , allocatable   :: array(:)
-!        logical(LKC)            , intent(in)                    :: pattern
+!        use pm_kind, only: LKG => LK4
+!        logical(LKG)            , intent(inout) , allocatable   :: array(:)
+!        logical(LKG)            , intent(in)                    :: pattern
 !        procedure(logical(LK))                                  :: iseq
-!        logical(LKC)            , intent(out)   , allocatable   :: ArrayRemoved(:)
+!        logical(LKG)            , intent(out)   , allocatable   :: ArrayRemoved(:)
 !    end subroutine
 !#endif
 !
@@ -7616,11 +7616,11 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComDefIns_D1_D0_LK3
 !#endif
-!        use pm_kind, only: LKC => LK3
-!        logical(LKC)            , intent(inout) , allocatable   :: array(:)
-!        logical(LKC)            , intent(in)                    :: pattern
+!        use pm_kind, only: LKG => LK3
+!        logical(LKG)            , intent(inout) , allocatable   :: array(:)
+!        logical(LKG)            , intent(in)                    :: pattern
 !        procedure(logical(LK))                                  :: iseq
-!        logical(LKC)            , intent(out)   , allocatable   :: ArrayRemoved(:)
+!        logical(LKG)            , intent(out)   , allocatable   :: ArrayRemoved(:)
 !    end subroutine
 !#endif
 !
@@ -7629,11 +7629,11 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComDefIns_D1_D0_LK2
 !#endif
-!        use pm_kind, only: LKC => LK2
-!        logical(LKC)            , intent(inout) , allocatable   :: array(:)
-!        logical(LKC)            , intent(in)                    :: pattern
+!        use pm_kind, only: LKG => LK2
+!        logical(LKG)            , intent(inout) , allocatable   :: array(:)
+!        logical(LKG)            , intent(in)                    :: pattern
 !        procedure(logical(LK))                                  :: iseq
-!        logical(LKC)            , intent(out)   , allocatable   :: ArrayRemoved(:)
+!        logical(LKG)            , intent(out)   , allocatable   :: ArrayRemoved(:)
 !    end subroutine
 !#endif
 !
@@ -7642,11 +7642,11 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComDefIns_D1_D0_LK1
 !#endif
-!        use pm_kind, only: LKC => LK1
-!        logical(LKC)            , intent(inout) , allocatable   :: array(:)
-!        logical(LKC)            , intent(in)                    :: pattern
+!        use pm_kind, only: LKG => LK1
+!        logical(LKG)            , intent(inout) , allocatable   :: array(:)
+!        logical(LKG)            , intent(in)                    :: pattern
 !        procedure(logical(LK))                                  :: iseq
-!        logical(LKC)            , intent(out)   , allocatable   :: ArrayRemoved(:)
+!        logical(LKG)            , intent(out)   , allocatable   :: ArrayRemoved(:)
 !    end subroutine
 !#endif
 !
@@ -7657,11 +7657,11 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComDefIns_D1_D0_CK5
 !#endif
-!        use pm_kind, only: CKC => CK5
-!        complex(CKC)            , intent(inout) , allocatable   :: array(:)
-!        complex(CKC)            , intent(in)                    :: pattern
+!        use pm_kind, only: CKG => CK5
+!        complex(CKG)            , intent(inout) , allocatable   :: array(:)
+!        complex(CKG)            , intent(in)                    :: pattern
 !        procedure(logical(LK))                                  :: iseq
-!        complex(CKC)            , intent(out)   , allocatable   :: ArrayRemoved(:)
+!        complex(CKG)            , intent(out)   , allocatable   :: ArrayRemoved(:)
 !    end subroutine
 !#endif
 !
@@ -7670,11 +7670,11 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComDefIns_D1_D0_CK4
 !#endif
-!        use pm_kind, only: CKC => CK4
-!        complex(CKC)            , intent(inout) , allocatable   :: array(:)
-!        complex(CKC)            , intent(in)                    :: pattern
+!        use pm_kind, only: CKG => CK4
+!        complex(CKG)            , intent(inout) , allocatable   :: array(:)
+!        complex(CKG)            , intent(in)                    :: pattern
 !        procedure(logical(LK))                                  :: iseq
-!        complex(CKC)            , intent(out)   , allocatable   :: ArrayRemoved(:)
+!        complex(CKG)            , intent(out)   , allocatable   :: ArrayRemoved(:)
 !    end subroutine
 !#endif
 !
@@ -7683,11 +7683,11 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComDefIns_D1_D0_CK3
 !#endif
-!        use pm_kind, only: CKC => CK3
-!        complex(CKC)            , intent(inout) , allocatable   :: array(:)
-!        complex(CKC)            , intent(in)                    :: pattern
+!        use pm_kind, only: CKG => CK3
+!        complex(CKG)            , intent(inout) , allocatable   :: array(:)
+!        complex(CKG)            , intent(in)                    :: pattern
 !        procedure(logical(LK))                                  :: iseq
-!        complex(CKC)            , intent(out)   , allocatable   :: ArrayRemoved(:)
+!        complex(CKG)            , intent(out)   , allocatable   :: ArrayRemoved(:)
 !    end subroutine
 !#endif
 !
@@ -7696,11 +7696,11 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComDefIns_D1_D0_CK2
 !#endif
-!        use pm_kind, only: CKC => CK2
-!        complex(CKC)            , intent(inout) , allocatable   :: array(:)
-!        complex(CKC)            , intent(in)                    :: pattern
+!        use pm_kind, only: CKG => CK2
+!        complex(CKG)            , intent(inout) , allocatable   :: array(:)
+!        complex(CKG)            , intent(in)                    :: pattern
 !        procedure(logical(LK))                                  :: iseq
-!        complex(CKC)            , intent(out)   , allocatable   :: ArrayRemoved(:)
+!        complex(CKG)            , intent(out)   , allocatable   :: ArrayRemoved(:)
 !    end subroutine
 !#endif
 !
@@ -7709,11 +7709,11 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComDefIns_D1_D0_CK1
 !#endif
-!        use pm_kind, only: CKC => CK1
-!        complex(CKC)            , intent(inout) , allocatable   :: array(:)
-!        complex(CKC)            , intent(in)                    :: pattern
+!        use pm_kind, only: CKG => CK1
+!        complex(CKG)            , intent(inout) , allocatable   :: array(:)
+!        complex(CKG)            , intent(in)                    :: pattern
 !        procedure(logical(LK))                                  :: iseq
-!        complex(CKC)            , intent(out)   , allocatable   :: ArrayRemoved(:)
+!        complex(CKG)            , intent(out)   , allocatable   :: ArrayRemoved(:)
 !    end subroutine
 !#endif
 !
@@ -7724,11 +7724,11 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComDefIns_D1_D0_RK5
 !#endif
-!        use pm_kind, only: RKC => RK5
-!        real(RKC)               , intent(inout) , allocatable   :: array(:)
-!        real(RKC)               , intent(in)                    :: pattern
+!        use pm_kind, only: RKG => RK5
+!        real(RKG)               , intent(inout) , allocatable   :: array(:)
+!        real(RKG)               , intent(in)                    :: pattern
 !        procedure(logical(LK))                                  :: iseq
-!        real(RKC)               , intent(out)   , allocatable   :: ArrayRemoved(:)
+!        real(RKG)               , intent(out)   , allocatable   :: ArrayRemoved(:)
 !    end subroutine
 !#endif
 !
@@ -7737,11 +7737,11 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComDefIns_D1_D0_RK4
 !#endif
-!        use pm_kind, only: RKC => RK4
-!        real(RKC)               , intent(inout) , allocatable   :: array(:)
-!        real(RKC)               , intent(in)                    :: pattern
+!        use pm_kind, only: RKG => RK4
+!        real(RKG)               , intent(inout) , allocatable   :: array(:)
+!        real(RKG)               , intent(in)                    :: pattern
 !        procedure(logical(LK))                                  :: iseq
-!        real(RKC)               , intent(out)   , allocatable   :: ArrayRemoved(:)
+!        real(RKG)               , intent(out)   , allocatable   :: ArrayRemoved(:)
 !    end subroutine
 !#endif
 !
@@ -7750,11 +7750,11 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComDefIns_D1_D0_RK3
 !#endif
-!        use pm_kind, only: RKC => RK3
-!        real(RKC)               , intent(inout) , allocatable   :: array(:)
-!        real(RKC)               , intent(in)                    :: pattern
+!        use pm_kind, only: RKG => RK3
+!        real(RKG)               , intent(inout) , allocatable   :: array(:)
+!        real(RKG)               , intent(in)                    :: pattern
 !        procedure(logical(LK))                                  :: iseq
-!        real(RKC)               , intent(out)   , allocatable   :: ArrayRemoved(:)
+!        real(RKG)               , intent(out)   , allocatable   :: ArrayRemoved(:)
 !    end subroutine
 !#endif
 !
@@ -7763,11 +7763,11 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComDefIns_D1_D0_RK2
 !#endif
-!        use pm_kind, only: RKC => RK2
-!        real(RKC)               , intent(inout) , allocatable   :: array(:)
-!        real(RKC)               , intent(in)                    :: pattern
+!        use pm_kind, only: RKG => RK2
+!        real(RKG)               , intent(inout) , allocatable   :: array(:)
+!        real(RKG)               , intent(in)                    :: pattern
 !        procedure(logical(LK))                                  :: iseq
-!        real(RKC)               , intent(out)   , allocatable   :: ArrayRemoved(:)
+!        real(RKG)               , intent(out)   , allocatable   :: ArrayRemoved(:)
 !    end subroutine
 !#endif
 !
@@ -7776,11 +7776,11 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComDefIns_D1_D0_RK1
 !#endif
-!        use pm_kind, only: RKC => RK1
-!        real(RKC)               , intent(inout) , allocatable   :: array(:)
-!        real(RKC)               , intent(in)                    :: pattern
+!        use pm_kind, only: RKG => RK1
+!        real(RKG)               , intent(inout) , allocatable   :: array(:)
+!        real(RKG)               , intent(in)                    :: pattern
 !        procedure(logical(LK))                                  :: iseq
-!        real(RKC)               , intent(out)   , allocatable   :: ArrayRemoved(:)
+!        real(RKG)               , intent(out)   , allocatable   :: ArrayRemoved(:)
 !    end subroutine
 !#endif
 !
@@ -7797,13 +7797,13 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComCusIns_D1_D0_SK5
 !#endif
-!        use pm_kind, only: SKC => SK5
-!        character(:,SKC)        , intent(inout) , allocatable   :: array(:)
-!        character(*,SKC)        , intent(in)                    :: pattern
+!        use pm_kind, only: SKG => SK5
+!        character(:,SKG)        , intent(inout) , allocatable   :: array(:)
+!        character(*,SKG)        , intent(in)                    :: pattern
 !        integer(IK)             , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)             , intent(in)    , optional      :: sorted
 !        logical(LK)             , intent(in)    , optional      :: unique
-!        character(*,SKC)                        , allocatable   :: ArrayRemoved(:)
+!        character(*,SKG)                        , allocatable   :: ArrayRemoved(:)
 !    end subroutine
 !#endif
 !
@@ -7812,13 +7812,13 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComCusIns_D1_D0_SK4
 !#endif
-!        use pm_kind, only: SKC => SK4
-!        character(:,SKC)        , intent(inout) , allocatable   :: array(:)
-!        character(*,SKC)        , intent(in)                    :: pattern
+!        use pm_kind, only: SKG => SK4
+!        character(:,SKG)        , intent(inout) , allocatable   :: array(:)
+!        character(*,SKG)        , intent(in)                    :: pattern
 !        integer(IK)             , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)             , intent(in)    , optional      :: sorted
 !        logical(LK)             , intent(in)    , optional      :: unique
-!        character(*,SKC)                        , allocatable   :: ArrayRemoved(:)
+!        character(*,SKG)                        , allocatable   :: ArrayRemoved(:)
 !    end subroutine
 !#endif
 !
@@ -7827,13 +7827,13 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComCusIns_D1_D0_SK3
 !#endif
-!        use pm_kind, only: SKC => SK3
-!        character(:,SKC)        , intent(inout) , allocatable   :: array(:)
-!        character(*,SKC)        , intent(in)                    :: pattern
+!        use pm_kind, only: SKG => SK3
+!        character(:,SKG)        , intent(inout) , allocatable   :: array(:)
+!        character(*,SKG)        , intent(in)                    :: pattern
 !        integer(IK)             , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)             , intent(in)    , optional      :: sorted
 !        logical(LK)             , intent(in)    , optional      :: unique
-!        character(*,SKC)                        , allocatable   :: ArrayRemoved(:)
+!        character(*,SKG)                        , allocatable   :: ArrayRemoved(:)
 !    end subroutine
 !#endif
 !
@@ -7842,13 +7842,13 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComCusIns_D1_D0_SK2
 !#endif
-!        use pm_kind, only: SKC => SK2
-!        character(:,SKC)        , intent(inout) , allocatable   :: array(:)
-!        character(*,SKC)        , intent(in)                    :: pattern
+!        use pm_kind, only: SKG => SK2
+!        character(:,SKG)        , intent(inout) , allocatable   :: array(:)
+!        character(*,SKG)        , intent(in)                    :: pattern
 !        integer(IK)             , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)             , intent(in)    , optional      :: sorted
 !        logical(LK)             , intent(in)    , optional      :: unique
-!        character(*,SKC)                        , allocatable   :: ArrayRemoved(:)
+!        character(*,SKG)                        , allocatable   :: ArrayRemoved(:)
 !    end subroutine
 !#endif
 !
@@ -7857,13 +7857,13 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComCusIns_D1_D0_SK1
 !#endif
-!        use pm_kind, only: SKC => SK1
-!        character(:,SKC)        , intent(inout) , allocatable   :: array(:)
-!        character(*,SKC)        , intent(in)                    :: pattern
+!        use pm_kind, only: SKG => SK1
+!        character(:,SKG)        , intent(inout) , allocatable   :: array(:)
+!        character(*,SKG)        , intent(in)                    :: pattern
 !        integer(IK)             , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)             , intent(in)    , optional      :: sorted
 !        logical(LK)             , intent(in)    , optional      :: unique
-!        character(*,SKC)                        , allocatable   :: ArrayRemoved(:)
+!        character(*,SKG)                        , allocatable   :: ArrayRemoved(:)
 !    end subroutine
 !#endif
 !
@@ -7874,13 +7874,13 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComCusIns_D1_D0_IK5
 !#endif
-!        use pm_kind, only: IKC => IK5
-!        integer(IKC)            , intent(inout) , allocatable   :: array(:)
-!        integer(IKC)            , intent(in)                    :: pattern
+!        use pm_kind, only: IKG => IK5
+!        integer(IKG)            , intent(inout) , allocatable   :: array(:)
+!        integer(IKG)            , intent(in)                    :: pattern
 !        integer(IK)             , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)             , intent(in)    , optional      :: sorted
 !        logical(LK)             , intent(in)    , optional      :: unique
-!        integer(IKC)            , intent(out)   , allocatable   :: ArrayRemoved(:)
+!        integer(IKG)            , intent(out)   , allocatable   :: ArrayRemoved(:)
 !    end subroutine
 !#endif
 !
@@ -7889,13 +7889,13 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComCusIns_D1_D0_IK4
 !#endif
-!        use pm_kind, only: IKC => IK4
-!        integer(IKC)            , intent(inout) , allocatable   :: array(:)
-!        integer(IKC)            , intent(in)                    :: pattern
+!        use pm_kind, only: IKG => IK4
+!        integer(IKG)            , intent(inout) , allocatable   :: array(:)
+!        integer(IKG)            , intent(in)                    :: pattern
 !        integer(IK)             , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)             , intent(in)    , optional      :: sorted
 !        logical(LK)             , intent(in)    , optional      :: unique
-!        integer(IKC)            , intent(out)   , allocatable   :: ArrayRemoved(:)
+!        integer(IKG)            , intent(out)   , allocatable   :: ArrayRemoved(:)
 !    end subroutine
 !#endif
 !
@@ -7904,13 +7904,13 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComCusIns_D1_D0_IK3
 !#endif
-!        use pm_kind, only: IKC => IK3
-!        integer(IKC)            , intent(inout) , allocatable   :: array(:)
-!        integer(IKC)            , intent(in)                    :: pattern
+!        use pm_kind, only: IKG => IK3
+!        integer(IKG)            , intent(inout) , allocatable   :: array(:)
+!        integer(IKG)            , intent(in)                    :: pattern
 !        integer(IK)             , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)             , intent(in)    , optional      :: sorted
 !        logical(LK)             , intent(in)    , optional      :: unique
-!        integer(IKC)            , intent(out)   , allocatable   :: ArrayRemoved(:)
+!        integer(IKG)            , intent(out)   , allocatable   :: ArrayRemoved(:)
 !    end subroutine
 !#endif
 !
@@ -7919,13 +7919,13 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComCusIns_D1_D0_IK2
 !#endif
-!        use pm_kind, only: IKC => IK2
-!        integer(IKC)            , intent(inout) , allocatable   :: array(:)
-!        integer(IKC)            , intent(in)                    :: pattern
+!        use pm_kind, only: IKG => IK2
+!        integer(IKG)            , intent(inout) , allocatable   :: array(:)
+!        integer(IKG)            , intent(in)                    :: pattern
 !        integer(IK)             , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)             , intent(in)    , optional      :: sorted
 !        logical(LK)             , intent(in)    , optional      :: unique
-!        integer(IKC)            , intent(out)   , allocatable   :: ArrayRemoved(:)
+!        integer(IKG)            , intent(out)   , allocatable   :: ArrayRemoved(:)
 !    end subroutine
 !#endif
 !
@@ -7934,13 +7934,13 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComCusIns_D1_D0_IK1
 !#endif
-!        use pm_kind, only: IKC => IK1
-!        integer(IKC)            , intent(inout) , allocatable   :: array(:)
-!        integer(IKC)            , intent(in)                    :: pattern
+!        use pm_kind, only: IKG => IK1
+!        integer(IKG)            , intent(inout) , allocatable   :: array(:)
+!        integer(IKG)            , intent(in)                    :: pattern
 !        integer(IK)             , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)             , intent(in)    , optional      :: sorted
 !        logical(LK)             , intent(in)    , optional      :: unique
-!        integer(IKC)            , intent(out)   , allocatable   :: ArrayRemoved(:)
+!        integer(IKG)            , intent(out)   , allocatable   :: ArrayRemoved(:)
 !    end subroutine
 !#endif
 !
@@ -7951,13 +7951,13 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComCusIns_D1_D0_LK5
 !#endif
-!        use pm_kind, only: LKC => LK5
-!        logical(LKC)            , intent(inout) , allocatable   :: array(:)
-!        logical(LKC)            , intent(in)                    :: pattern
+!        use pm_kind, only: LKG => LK5
+!        logical(LKG)            , intent(inout) , allocatable   :: array(:)
+!        logical(LKG)            , intent(in)                    :: pattern
 !        integer(IK)             , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)             , intent(in)    , optional      :: sorted
 !        logical(LK)             , intent(in)    , optional      :: unique
-!        logical(LKC)            , intent(out)   , allocatable   :: ArrayRemoved(:)
+!        logical(LKG)            , intent(out)   , allocatable   :: ArrayRemoved(:)
 !    end subroutine
 !#endif
 !
@@ -7966,13 +7966,13 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComCusIns_D1_D0_LK4
 !#endif
-!        use pm_kind, only: LKC => LK4
-!        logical(LKC)            , intent(inout) , allocatable   :: array(:)
-!        logical(LKC)            , intent(in)                    :: pattern
+!        use pm_kind, only: LKG => LK4
+!        logical(LKG)            , intent(inout) , allocatable   :: array(:)
+!        logical(LKG)            , intent(in)                    :: pattern
 !        integer(IK)             , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)             , intent(in)    , optional      :: sorted
 !        logical(LK)             , intent(in)    , optional      :: unique
-!        logical(LKC)            , intent(out)   , allocatable   :: ArrayRemoved(:)
+!        logical(LKG)            , intent(out)   , allocatable   :: ArrayRemoved(:)
 !    end subroutine
 !#endif
 !
@@ -7981,13 +7981,13 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComCusIns_D1_D0_LK3
 !#endif
-!        use pm_kind, only: LKC => LK3
-!        logical(LKC)            , intent(inout) , allocatable   :: array(:)
-!        logical(LKC)            , intent(in)                    :: pattern
+!        use pm_kind, only: LKG => LK3
+!        logical(LKG)            , intent(inout) , allocatable   :: array(:)
+!        logical(LKG)            , intent(in)                    :: pattern
 !        integer(IK)             , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)             , intent(in)    , optional      :: sorted
 !        logical(LK)             , intent(in)    , optional      :: unique
-!        logical(LKC)            , intent(out)   , allocatable   :: ArrayRemoved(:)
+!        logical(LKG)            , intent(out)   , allocatable   :: ArrayRemoved(:)
 !    end subroutine
 !#endif
 !
@@ -7996,13 +7996,13 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComCusIns_D1_D0_LK2
 !#endif
-!        use pm_kind, only: LKC => LK2
-!        logical(LKC)            , intent(inout) , allocatable   :: array(:)
-!        logical(LKC)            , intent(in)                    :: pattern
+!        use pm_kind, only: LKG => LK2
+!        logical(LKG)            , intent(inout) , allocatable   :: array(:)
+!        logical(LKG)            , intent(in)                    :: pattern
 !        integer(IK)             , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)             , intent(in)    , optional      :: sorted
 !        logical(LK)             , intent(in)    , optional      :: unique
-!        logical(LKC)            , intent(out)   , allocatable   :: ArrayRemoved(:)
+!        logical(LKG)            , intent(out)   , allocatable   :: ArrayRemoved(:)
 !    end subroutine
 !#endif
 !
@@ -8011,13 +8011,13 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComCusIns_D1_D0_LK1
 !#endif
-!        use pm_kind, only: LKC => LK1
-!        logical(LKC)            , intent(inout) , allocatable   :: array(:)
-!        logical(LKC)            , intent(in)                    :: pattern
+!        use pm_kind, only: LKG => LK1
+!        logical(LKG)            , intent(inout) , allocatable   :: array(:)
+!        logical(LKG)            , intent(in)                    :: pattern
 !        integer(IK)             , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)             , intent(in)    , optional      :: sorted
 !        logical(LK)             , intent(in)    , optional      :: unique
-!        logical(LKC)            , intent(out)   , allocatable   :: ArrayRemoved(:)
+!        logical(LKG)            , intent(out)   , allocatable   :: ArrayRemoved(:)
 !    end subroutine
 !#endif
 !
@@ -8028,13 +8028,13 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComCusIns_D1_D0_CK5
 !#endif
-!        use pm_kind, only: CKC => CK5
-!        complex(CKC)            , intent(inout) , allocatable   :: array(:)
-!        complex(CKC)            , intent(in)                    :: pattern
+!        use pm_kind, only: CKG => CK5
+!        complex(CKG)            , intent(inout) , allocatable   :: array(:)
+!        complex(CKG)            , intent(in)                    :: pattern
 !        integer(IK)             , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)             , intent(in)    , optional      :: sorted
 !        logical(LK)             , intent(in)    , optional      :: unique
-!        complex(CKC)            , intent(out)   , allocatable   :: ArrayRemoved(:)
+!        complex(CKG)            , intent(out)   , allocatable   :: ArrayRemoved(:)
 !    end subroutine
 !#endif
 !
@@ -8043,13 +8043,13 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComCusIns_D1_D0_CK4
 !#endif
-!        use pm_kind, only: CKC => CK4
-!        complex(CKC)            , intent(inout) , allocatable   :: array(:)
-!        complex(CKC)            , intent(in)                    :: pattern
+!        use pm_kind, only: CKG => CK4
+!        complex(CKG)            , intent(inout) , allocatable   :: array(:)
+!        complex(CKG)            , intent(in)                    :: pattern
 !        integer(IK)             , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)             , intent(in)    , optional      :: sorted
 !        logical(LK)             , intent(in)    , optional      :: unique
-!        complex(CKC)            , intent(out)   , allocatable   :: ArrayRemoved(:)
+!        complex(CKG)            , intent(out)   , allocatable   :: ArrayRemoved(:)
 !    end subroutine
 !#endif
 !
@@ -8058,13 +8058,13 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComCusIns_D1_D0_CK3
 !#endif
-!        use pm_kind, only: CKC => CK3
-!        complex(CKC)            , intent(inout) , allocatable   :: array(:)
-!        complex(CKC)            , intent(in)                    :: pattern
+!        use pm_kind, only: CKG => CK3
+!        complex(CKG)            , intent(inout) , allocatable   :: array(:)
+!        complex(CKG)            , intent(in)                    :: pattern
 !        integer(IK)             , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)             , intent(in)    , optional      :: sorted
 !        logical(LK)             , intent(in)    , optional      :: unique
-!        complex(CKC)            , intent(out)   , allocatable   :: ArrayRemoved(:)
+!        complex(CKG)            , intent(out)   , allocatable   :: ArrayRemoved(:)
 !    end subroutine
 !#endif
 !
@@ -8073,13 +8073,13 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComCusIns_D1_D0_CK2
 !#endif
-!        use pm_kind, only: CKC => CK2
-!        complex(CKC)            , intent(inout) , allocatable   :: array(:)
-!        complex(CKC)            , intent(in)                    :: pattern
+!        use pm_kind, only: CKG => CK2
+!        complex(CKG)            , intent(inout) , allocatable   :: array(:)
+!        complex(CKG)            , intent(in)                    :: pattern
 !        integer(IK)             , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)             , intent(in)    , optional      :: sorted
 !        logical(LK)             , intent(in)    , optional      :: unique
-!        complex(CKC)            , intent(out)   , allocatable   :: ArrayRemoved(:)
+!        complex(CKG)            , intent(out)   , allocatable   :: ArrayRemoved(:)
 !    end subroutine
 !#endif
 !
@@ -8088,13 +8088,13 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComCusIns_D1_D0_CK1
 !#endif
-!        use pm_kind, only: CKC => CK1
-!        complex(CKC)            , intent(inout) , allocatable   :: array(:)
-!        complex(CKC)            , intent(in)                    :: pattern
+!        use pm_kind, only: CKG => CK1
+!        complex(CKG)            , intent(inout) , allocatable   :: array(:)
+!        complex(CKG)            , intent(in)                    :: pattern
 !        integer(IK)             , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)             , intent(in)    , optional      :: sorted
 !        logical(LK)             , intent(in)    , optional      :: unique
-!        complex(CKC)            , intent(out)   , allocatable   :: ArrayRemoved(:)
+!        complex(CKG)            , intent(out)   , allocatable   :: ArrayRemoved(:)
 !    end subroutine
 !#endif
 !
@@ -8105,13 +8105,13 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComCusIns_D1_D0_RK5
 !#endif
-!        use pm_kind, only: RKC => RK5
-!        real(RKC)               , intent(inout) , allocatable   :: array(:)
-!        real(RKC)               , intent(in)                    :: pattern
+!        use pm_kind, only: RKG => RK5
+!        real(RKG)               , intent(inout) , allocatable   :: array(:)
+!        real(RKG)               , intent(in)                    :: pattern
 !        integer(IK)             , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)             , intent(in)    , optional      :: sorted
 !        logical(LK)             , intent(in)    , optional      :: unique
-!        real(RKC)               , intent(out)   , allocatable   :: ArrayRemoved(:)
+!        real(RKG)               , intent(out)   , allocatable   :: ArrayRemoved(:)
 !    end subroutine
 !#endif
 !
@@ -8120,13 +8120,13 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComCusIns_D1_D0_RK4
 !#endif
-!        use pm_kind, only: RKC => RK4
-!        real(RKC)               , intent(inout) , allocatable   :: array(:)
-!        real(RKC)               , intent(in)                    :: pattern
+!        use pm_kind, only: RKG => RK4
+!        real(RKG)               , intent(inout) , allocatable   :: array(:)
+!        real(RKG)               , intent(in)                    :: pattern
 !        integer(IK)             , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)             , intent(in)    , optional      :: sorted
 !        logical(LK)             , intent(in)    , optional      :: unique
-!        real(RKC)               , intent(out)   , allocatable   :: ArrayRemoved(:)
+!        real(RKG)               , intent(out)   , allocatable   :: ArrayRemoved(:)
 !    end subroutine
 !#endif
 !
@@ -8135,13 +8135,13 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComCusIns_D1_D0_RK3
 !#endif
-!        use pm_kind, only: RKC => RK3
-!        real(RKC)               , intent(inout) , allocatable   :: array(:)
-!        real(RKC)               , intent(in)                    :: pattern
+!        use pm_kind, only: RKG => RK3
+!        real(RKG)               , intent(inout) , allocatable   :: array(:)
+!        real(RKG)               , intent(in)                    :: pattern
 !        integer(IK)             , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)             , intent(in)    , optional      :: sorted
 !        logical(LK)             , intent(in)    , optional      :: unique
-!        real(RKC)               , intent(out)   , allocatable   :: ArrayRemoved(:)
+!        real(RKG)               , intent(out)   , allocatable   :: ArrayRemoved(:)
 !    end subroutine
 !#endif
 !
@@ -8150,13 +8150,13 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComCusIns_D1_D0_RK2
 !#endif
-!        use pm_kind, only: RKC => RK2
-!        real(RKC)               , intent(inout) , allocatable   :: array(:)
-!        real(RKC)               , intent(in)                    :: pattern
+!        use pm_kind, only: RKG => RK2
+!        real(RKG)               , intent(inout) , allocatable   :: array(:)
+!        real(RKG)               , intent(in)                    :: pattern
 !        integer(IK)             , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)             , intent(in)    , optional      :: sorted
 !        logical(LK)             , intent(in)    , optional      :: unique
-!        real(RKC)               , intent(out)   , allocatable   :: ArrayRemoved(:)
+!        real(RKG)               , intent(out)   , allocatable   :: ArrayRemoved(:)
 !    end subroutine
 !#endif
 !
@@ -8165,13 +8165,13 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComCusIns_D1_D0_RK1
 !#endif
-!        use pm_kind, only: RKC => RK1
-!        real(RKC)               , intent(inout) , allocatable   :: array(:)
-!        real(RKC)               , intent(in)                    :: pattern
+!        use pm_kind, only: RKG => RK1
+!        real(RKG)               , intent(inout) , allocatable   :: array(:)
+!        real(RKG)               , intent(in)                    :: pattern
 !        integer(IK)             , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)             , intent(in)    , optional      :: sorted
 !        logical(LK)             , intent(in)    , optional      :: unique
-!        real(RKC)               , intent(out)   , allocatable   :: ArrayRemoved(:)
+!        real(RKG)               , intent(out)   , allocatable   :: ArrayRemoved(:)
 !    end subroutine
 !#endif
 !
@@ -8188,14 +8188,14 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComCusIns_D1_D0_SK5
 !#endif
-!        use pm_kind, only: SKC => SK5
-!        character(:,SKC)        , intent(inout) , allocatable   :: array(:)
-!        character(*,SKC)        , intent(in)                    :: pattern
+!        use pm_kind, only: SKG => SK5
+!        character(:,SKG)        , intent(inout) , allocatable   :: array(:)
+!        character(*,SKG)        , intent(in)                    :: pattern
 !        procedure(logical(LK))                                  :: iseq
 !        integer(IK)             , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)             , intent(in)    , optional      :: sorted
 !        logical(LK)             , intent(in)    , optional      :: unique
-!        character(*,SKC)                        , allocatable   :: ArrayRemoved(:)
+!        character(*,SKG)                        , allocatable   :: ArrayRemoved(:)
 !    end subroutine
 !#endif
 !
@@ -8204,14 +8204,14 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComCusIns_D1_D0_SK4
 !#endif
-!        use pm_kind, only: SKC => SK4
-!        character(:,SKC)        , intent(inout) , allocatable   :: array(:)
-!        character(*,SKC)        , intent(in)                    :: pattern
+!        use pm_kind, only: SKG => SK4
+!        character(:,SKG)        , intent(inout) , allocatable   :: array(:)
+!        character(*,SKG)        , intent(in)                    :: pattern
 !        procedure(logical(LK))                                  :: iseq
 !        integer(IK)             , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)             , intent(in)    , optional      :: sorted
 !        logical(LK)             , intent(in)    , optional      :: unique
-!        character(*,SKC)                        , allocatable   :: ArrayRemoved(:)
+!        character(*,SKG)                        , allocatable   :: ArrayRemoved(:)
 !    end subroutine
 !#endif
 !
@@ -8220,14 +8220,14 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComCusIns_D1_D0_SK3
 !#endif
-!        use pm_kind, only: SKC => SK3
-!        character(:,SKC)        , intent(inout) , allocatable   :: array(:)
-!        character(*,SKC)        , intent(in)                    :: pattern
+!        use pm_kind, only: SKG => SK3
+!        character(:,SKG)        , intent(inout) , allocatable   :: array(:)
+!        character(*,SKG)        , intent(in)                    :: pattern
 !        procedure(logical(LK))                                  :: iseq
 !        integer(IK)             , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)             , intent(in)    , optional      :: sorted
 !        logical(LK)             , intent(in)    , optional      :: unique
-!        character(*,SKC)                        , allocatable   :: ArrayRemoved(:)
+!        character(*,SKG)                        , allocatable   :: ArrayRemoved(:)
 !    end subroutine
 !#endif
 !
@@ -8236,14 +8236,14 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComCusIns_D1_D0_SK2
 !#endif
-!        use pm_kind, only: SKC => SK2
-!        character(:,SKC)        , intent(inout) , allocatable   :: array(:)
-!        character(*,SKC)        , intent(in)                    :: pattern
+!        use pm_kind, only: SKG => SK2
+!        character(:,SKG)        , intent(inout) , allocatable   :: array(:)
+!        character(*,SKG)        , intent(in)                    :: pattern
 !        procedure(logical(LK))                                  :: iseq
 !        integer(IK)             , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)             , intent(in)    , optional      :: sorted
 !        logical(LK)             , intent(in)    , optional      :: unique
-!        character(*,SKC)                        , allocatable   :: ArrayRemoved(:)
+!        character(*,SKG)                        , allocatable   :: ArrayRemoved(:)
 !    end subroutine
 !#endif
 !
@@ -8252,14 +8252,14 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComCusIns_D1_D0_SK1
 !#endif
-!        use pm_kind, only: SKC => SK1
-!        character(:,SKC)        , intent(inout) , allocatable   :: array(:)
-!        character(*,SKC)        , intent(in)                    :: pattern
+!        use pm_kind, only: SKG => SK1
+!        character(:,SKG)        , intent(inout) , allocatable   :: array(:)
+!        character(*,SKG)        , intent(in)                    :: pattern
 !        procedure(logical(LK))                                  :: iseq
 !        integer(IK)             , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)             , intent(in)    , optional      :: sorted
 !        logical(LK)             , intent(in)    , optional      :: unique
-!        character(*,SKC)                        , allocatable   :: ArrayRemoved(:)
+!        character(*,SKG)                        , allocatable   :: ArrayRemoved(:)
 !    end subroutine
 !#endif
 !
@@ -8270,14 +8270,14 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComCusIns_D1_D0_IK5
 !#endif
-!        use pm_kind, only: IKC => IK5
-!        integer(IKC)            , intent(inout) , allocatable   :: array(:)
-!        integer(IKC)            , intent(in)                    :: pattern
+!        use pm_kind, only: IKG => IK5
+!        integer(IKG)            , intent(inout) , allocatable   :: array(:)
+!        integer(IKG)            , intent(in)                    :: pattern
 !        procedure(logical(LK))                                  :: iseq
 !        integer(IK)             , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)             , intent(in)    , optional      :: sorted
 !        logical(LK)             , intent(in)    , optional      :: unique
-!        integer(IKC)            , intent(out)   , allocatable   :: ArrayRemoved(:)
+!        integer(IKG)            , intent(out)   , allocatable   :: ArrayRemoved(:)
 !    end subroutine
 !#endif
 !
@@ -8286,14 +8286,14 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComCusIns_D1_D0_IK4
 !#endif
-!        use pm_kind, only: IKC => IK4
-!        integer(IKC)            , intent(inout) , allocatable   :: array(:)
-!        integer(IKC)            , intent(in)                    :: pattern
+!        use pm_kind, only: IKG => IK4
+!        integer(IKG)            , intent(inout) , allocatable   :: array(:)
+!        integer(IKG)            , intent(in)                    :: pattern
 !        procedure(logical(LK))                                  :: iseq
 !        integer(IK)             , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)             , intent(in)    , optional      :: sorted
 !        logical(LK)             , intent(in)    , optional      :: unique
-!        integer(IKC)            , intent(out)   , allocatable   :: ArrayRemoved(:)
+!        integer(IKG)            , intent(out)   , allocatable   :: ArrayRemoved(:)
 !    end subroutine
 !#endif
 !
@@ -8302,14 +8302,14 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComCusIns_D1_D0_IK3
 !#endif
-!        use pm_kind, only: IKC => IK3
-!        integer(IKC)            , intent(inout) , allocatable   :: array(:)
-!        integer(IKC)            , intent(in)                    :: pattern
+!        use pm_kind, only: IKG => IK3
+!        integer(IKG)            , intent(inout) , allocatable   :: array(:)
+!        integer(IKG)            , intent(in)                    :: pattern
 !        procedure(logical(LK))                                  :: iseq
 !        integer(IK)             , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)             , intent(in)    , optional      :: sorted
 !        logical(LK)             , intent(in)    , optional      :: unique
-!        integer(IKC)            , intent(out)   , allocatable   :: ArrayRemoved(:)
+!        integer(IKG)            , intent(out)   , allocatable   :: ArrayRemoved(:)
 !    end subroutine
 !#endif
 !
@@ -8318,14 +8318,14 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComCusIns_D1_D0_IK2
 !#endif
-!        use pm_kind, only: IKC => IK2
-!        integer(IKC)            , intent(inout) , allocatable   :: array(:)
-!        integer(IKC)            , intent(in)                    :: pattern
+!        use pm_kind, only: IKG => IK2
+!        integer(IKG)            , intent(inout) , allocatable   :: array(:)
+!        integer(IKG)            , intent(in)                    :: pattern
 !        procedure(logical(LK))                                  :: iseq
 !        integer(IK)             , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)             , intent(in)    , optional      :: sorted
 !        logical(LK)             , intent(in)    , optional      :: unique
-!        integer(IKC)            , intent(out)   , allocatable   :: ArrayRemoved(:)
+!        integer(IKG)            , intent(out)   , allocatable   :: ArrayRemoved(:)
 !    end subroutine
 !#endif
 !
@@ -8334,14 +8334,14 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComCusIns_D1_D0_IK1
 !#endif
-!        use pm_kind, only: IKC => IK1
-!        integer(IKC)            , intent(inout) , allocatable   :: array(:)
-!        integer(IKC)            , intent(in)                    :: pattern
+!        use pm_kind, only: IKG => IK1
+!        integer(IKG)            , intent(inout) , allocatable   :: array(:)
+!        integer(IKG)            , intent(in)                    :: pattern
 !        procedure(logical(LK))                                  :: iseq
 !        integer(IK)             , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)             , intent(in)    , optional      :: sorted
 !        logical(LK)             , intent(in)    , optional      :: unique
-!        integer(IKC)            , intent(out)   , allocatable   :: ArrayRemoved(:)
+!        integer(IKG)            , intent(out)   , allocatable   :: ArrayRemoved(:)
 !    end subroutine
 !#endif
 !
@@ -8352,14 +8352,14 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComCusIns_D1_D0_LK5
 !#endif
-!        use pm_kind, only: LKC => LK5
-!        logical(LKC)            , intent(inout) , allocatable   :: array(:)
-!        logical(LKC)            , intent(in)                    :: pattern
+!        use pm_kind, only: LKG => LK5
+!        logical(LKG)            , intent(inout) , allocatable   :: array(:)
+!        logical(LKG)            , intent(in)                    :: pattern
 !        procedure(logical(LK))                                  :: iseq
 !        integer(IK)             , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)             , intent(in)    , optional      :: sorted
 !        logical(LK)             , intent(in)    , optional      :: unique
-!        logical(LKC)            , intent(out)   , allocatable   :: ArrayRemoved(:)
+!        logical(LKG)            , intent(out)   , allocatable   :: ArrayRemoved(:)
 !    end subroutine
 !#endif
 !
@@ -8368,14 +8368,14 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComCusIns_D1_D0_LK4
 !#endif
-!        use pm_kind, only: LKC => LK4
-!        logical(LKC)            , intent(inout) , allocatable   :: array(:)
-!        logical(LKC)            , intent(in)                    :: pattern
+!        use pm_kind, only: LKG => LK4
+!        logical(LKG)            , intent(inout) , allocatable   :: array(:)
+!        logical(LKG)            , intent(in)                    :: pattern
 !        procedure(logical(LK))                                  :: iseq
 !        integer(IK)             , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)             , intent(in)    , optional      :: sorted
 !        logical(LK)             , intent(in)    , optional      :: unique
-!        logical(LKC)            , intent(out)   , allocatable   :: ArrayRemoved(:)
+!        logical(LKG)            , intent(out)   , allocatable   :: ArrayRemoved(:)
 !    end subroutine
 !#endif
 !
@@ -8384,14 +8384,14 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComCusIns_D1_D0_LK3
 !#endif
-!        use pm_kind, only: LKC => LK3
-!        logical(LKC)            , intent(inout) , allocatable   :: array(:)
-!        logical(LKC)            , intent(in)                    :: pattern
+!        use pm_kind, only: LKG => LK3
+!        logical(LKG)            , intent(inout) , allocatable   :: array(:)
+!        logical(LKG)            , intent(in)                    :: pattern
 !        procedure(logical(LK))                                  :: iseq
 !        integer(IK)             , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)             , intent(in)    , optional      :: sorted
 !        logical(LK)             , intent(in)    , optional      :: unique
-!        logical(LKC)            , intent(out)   , allocatable   :: ArrayRemoved(:)
+!        logical(LKG)            , intent(out)   , allocatable   :: ArrayRemoved(:)
 !    end subroutine
 !#endif
 !
@@ -8400,14 +8400,14 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComCusIns_D1_D0_LK2
 !#endif
-!        use pm_kind, only: LKC => LK2
-!        logical(LKC)            , intent(inout) , allocatable   :: array(:)
-!        logical(LKC)            , intent(in)                    :: pattern
+!        use pm_kind, only: LKG => LK2
+!        logical(LKG)            , intent(inout) , allocatable   :: array(:)
+!        logical(LKG)            , intent(in)                    :: pattern
 !        procedure(logical(LK))                                  :: iseq
 !        integer(IK)             , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)             , intent(in)    , optional      :: sorted
 !        logical(LK)             , intent(in)    , optional      :: unique
-!        logical(LKC)            , intent(out)   , allocatable   :: ArrayRemoved(:)
+!        logical(LKG)            , intent(out)   , allocatable   :: ArrayRemoved(:)
 !    end subroutine
 !#endif
 !
@@ -8416,14 +8416,14 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComCusIns_D1_D0_LK1
 !#endif
-!        use pm_kind, only: LKC => LK1
-!        logical(LKC)            , intent(inout) , allocatable   :: array(:)
-!        logical(LKC)            , intent(in)                    :: pattern
+!        use pm_kind, only: LKG => LK1
+!        logical(LKG)            , intent(inout) , allocatable   :: array(:)
+!        logical(LKG)            , intent(in)                    :: pattern
 !        procedure(logical(LK))                                  :: iseq
 !        integer(IK)             , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)             , intent(in)    , optional      :: sorted
 !        logical(LK)             , intent(in)    , optional      :: unique
-!        logical(LKC)            , intent(out)   , allocatable   :: ArrayRemoved(:)
+!        logical(LKG)            , intent(out)   , allocatable   :: ArrayRemoved(:)
 !    end subroutine
 !#endif
 !
@@ -8434,14 +8434,14 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComCusIns_D1_D0_CK5
 !#endif
-!        use pm_kind, only: CKC => CK5
-!        complex(CKC)            , intent(inout) , allocatable   :: array(:)
-!        complex(CKC)            , intent(in)                    :: pattern
+!        use pm_kind, only: CKG => CK5
+!        complex(CKG)            , intent(inout) , allocatable   :: array(:)
+!        complex(CKG)            , intent(in)                    :: pattern
 !        procedure(logical(LK))                                  :: iseq
 !        integer(IK)             , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)             , intent(in)    , optional      :: sorted
 !        logical(LK)             , intent(in)    , optional      :: unique
-!        complex(CKC)            , intent(out)   , allocatable   :: ArrayRemoved(:)
+!        complex(CKG)            , intent(out)   , allocatable   :: ArrayRemoved(:)
 !    end subroutine
 !#endif
 !
@@ -8450,14 +8450,14 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComCusIns_D1_D0_CK4
 !#endif
-!        use pm_kind, only: CKC => CK4
-!        complex(CKC)            , intent(inout) , allocatable   :: array(:)
-!        complex(CKC)            , intent(in)                    :: pattern
+!        use pm_kind, only: CKG => CK4
+!        complex(CKG)            , intent(inout) , allocatable   :: array(:)
+!        complex(CKG)            , intent(in)                    :: pattern
 !        procedure(logical(LK))                                  :: iseq
 !        integer(IK)             , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)             , intent(in)    , optional      :: sorted
 !        logical(LK)             , intent(in)    , optional      :: unique
-!        complex(CKC)            , intent(out)   , allocatable   :: ArrayRemoved(:)
+!        complex(CKG)            , intent(out)   , allocatable   :: ArrayRemoved(:)
 !    end subroutine
 !#endif
 !
@@ -8466,14 +8466,14 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComCusIns_D1_D0_CK3
 !#endif
-!        use pm_kind, only: CKC => CK3
-!        complex(CKC)            , intent(inout) , allocatable   :: array(:)
-!        complex(CKC)            , intent(in)                    :: pattern
+!        use pm_kind, only: CKG => CK3
+!        complex(CKG)            , intent(inout) , allocatable   :: array(:)
+!        complex(CKG)            , intent(in)                    :: pattern
 !        procedure(logical(LK))                                  :: iseq
 !        integer(IK)             , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)             , intent(in)    , optional      :: sorted
 !        logical(LK)             , intent(in)    , optional      :: unique
-!        complex(CKC)            , intent(out)   , allocatable   :: ArrayRemoved(:)
+!        complex(CKG)            , intent(out)   , allocatable   :: ArrayRemoved(:)
 !    end subroutine
 !#endif
 !
@@ -8482,14 +8482,14 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComCusIns_D1_D0_CK2
 !#endif
-!        use pm_kind, only: CKC => CK2
-!        complex(CKC)            , intent(inout) , allocatable   :: array(:)
-!        complex(CKC)            , intent(in)                    :: pattern
+!        use pm_kind, only: CKG => CK2
+!        complex(CKG)            , intent(inout) , allocatable   :: array(:)
+!        complex(CKG)            , intent(in)                    :: pattern
 !        procedure(logical(LK))                                  :: iseq
 !        integer(IK)             , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)             , intent(in)    , optional      :: sorted
 !        logical(LK)             , intent(in)    , optional      :: unique
-!        complex(CKC)            , intent(out)   , allocatable   :: ArrayRemoved(:)
+!        complex(CKG)            , intent(out)   , allocatable   :: ArrayRemoved(:)
 !    end subroutine
 !#endif
 !
@@ -8498,14 +8498,14 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComCusIns_D1_D0_CK1
 !#endif
-!        use pm_kind, only: CKC => CK1
-!        complex(CKC)            , intent(inout) , allocatable   :: array(:)
-!        complex(CKC)            , intent(in)                    :: pattern
+!        use pm_kind, only: CKG => CK1
+!        complex(CKG)            , intent(inout) , allocatable   :: array(:)
+!        complex(CKG)            , intent(in)                    :: pattern
 !        procedure(logical(LK))                                  :: iseq
 !        integer(IK)             , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)             , intent(in)    , optional      :: sorted
 !        logical(LK)             , intent(in)    , optional      :: unique
-!        complex(CKC)            , intent(out)   , allocatable   :: ArrayRemoved(:)
+!        complex(CKG)            , intent(out)   , allocatable   :: ArrayRemoved(:)
 !    end subroutine
 !#endif
 !
@@ -8516,14 +8516,14 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComCusIns_D1_D0_RK5
 !#endif
-!        use pm_kind, only: RKC => RK5
-!        real(RKC)               , intent(inout) , allocatable   :: array(:)
-!        real(RKC)               , intent(in)                    :: pattern
+!        use pm_kind, only: RKG => RK5
+!        real(RKG)               , intent(inout) , allocatable   :: array(:)
+!        real(RKG)               , intent(in)                    :: pattern
 !        procedure(logical(LK))                                  :: iseq
 !        integer(IK)             , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)             , intent(in)    , optional      :: sorted
 !        logical(LK)             , intent(in)    , optional      :: unique
-!        real(RKC)               , intent(out)   , allocatable   :: ArrayRemoved(:)
+!        real(RKG)               , intent(out)   , allocatable   :: ArrayRemoved(:)
 !    end subroutine
 !#endif
 !
@@ -8532,14 +8532,14 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComCusIns_D1_D0_RK4
 !#endif
-!        use pm_kind, only: RKC => RK4
-!        real(RKC)               , intent(inout) , allocatable   :: array(:)
-!        real(RKC)               , intent(in)                    :: pattern
+!        use pm_kind, only: RKG => RK4
+!        real(RKG)               , intent(inout) , allocatable   :: array(:)
+!        real(RKG)               , intent(in)                    :: pattern
 !        procedure(logical(LK))                                  :: iseq
 !        integer(IK)             , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)             , intent(in)    , optional      :: sorted
 !        logical(LK)             , intent(in)    , optional      :: unique
-!        real(RKC)               , intent(out)   , allocatable   :: ArrayRemoved(:)
+!        real(RKG)               , intent(out)   , allocatable   :: ArrayRemoved(:)
 !    end subroutine
 !#endif
 !
@@ -8548,14 +8548,14 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComCusIns_D1_D0_RK3
 !#endif
-!        use pm_kind, only: RKC => RK3
-!        real(RKC)               , intent(inout) , allocatable   :: array(:)
-!        real(RKC)               , intent(in)                    :: pattern
+!        use pm_kind, only: RKG => RK3
+!        real(RKG)               , intent(inout) , allocatable   :: array(:)
+!        real(RKG)               , intent(in)                    :: pattern
 !        procedure(logical(LK))                                  :: iseq
 !        integer(IK)             , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)             , intent(in)    , optional      :: sorted
 !        logical(LK)             , intent(in)    , optional      :: unique
-!        real(RKC)               , intent(out)   , allocatable   :: ArrayRemoved(:)
+!        real(RKG)               , intent(out)   , allocatable   :: ArrayRemoved(:)
 !    end subroutine
 !#endif
 !
@@ -8564,14 +8564,14 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComCusIns_D1_D0_RK2
 !#endif
-!        use pm_kind, only: RKC => RK2
-!        real(RKC)               , intent(inout) , allocatable   :: array(:)
-!        real(RKC)               , intent(in)                    :: pattern
+!        use pm_kind, only: RKG => RK2
+!        real(RKG)               , intent(inout) , allocatable   :: array(:)
+!        real(RKG)               , intent(in)                    :: pattern
 !        procedure(logical(LK))                                  :: iseq
 !        integer(IK)             , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)             , intent(in)    , optional      :: sorted
 !        logical(LK)             , intent(in)    , optional      :: unique
-!        real(RKC)               , intent(out)   , allocatable   :: ArrayRemoved(:)
+!        real(RKG)               , intent(out)   , allocatable   :: ArrayRemoved(:)
 !    end subroutine
 !#endif
 !
@@ -8580,14 +8580,14 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComCusIns_D1_D0_RK1
 !#endif
-!        use pm_kind, only: RKC => RK1
-!        real(RKC)               , intent(inout) , allocatable   :: array(:)
-!        real(RKC)               , intent(in)                    :: pattern
+!        use pm_kind, only: RKG => RK1
+!        real(RKG)               , intent(inout) , allocatable   :: array(:)
+!        real(RKG)               , intent(in)                    :: pattern
 !        procedure(logical(LK))                                  :: iseq
 !        integer(IK)             , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)             , intent(in)    , optional      :: sorted
 !        logical(LK)             , intent(in)    , optional      :: unique
-!        real(RKC)               , intent(out)   , allocatable   :: ArrayRemoved(:)
+!        real(RKG)               , intent(out)   , allocatable   :: ArrayRemoved(:)
 !    end subroutine
 !#endif
 !
@@ -8610,10 +8610,10 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComDefIns_D1_D1_SK5
 !#endif
-!        use pm_kind, only: SKC => SK5
-!        character(:,SKC)        , intent(inout) , allocatable   :: array(:)
-!        character(*,SKC)        , intent(in)    , contiguous    :: pattern(:)
-!        character(*,SKC)                        , allocatable   :: ArrayRemoved(:)
+!        use pm_kind, only: SKG => SK5
+!        character(:,SKG)        , intent(inout) , allocatable   :: array(:)
+!        character(*,SKG)        , intent(in)    , contiguous    :: pattern(:)
+!        character(*,SKG)                        , allocatable   :: ArrayRemoved(:)
 !    end subroutine
 !#endif
 !
@@ -8622,10 +8622,10 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComDefIns_D1_D1_SK4
 !#endif
-!        use pm_kind, only: SKC => SK4
-!        character(:,SKC)        , intent(inout) , allocatable   :: array(:)
-!        character(*,SKC)        , intent(in)    , contiguous    :: pattern(:)
-!        character(*,SKC)                        , allocatable   :: ArrayRemoved(:)
+!        use pm_kind, only: SKG => SK4
+!        character(:,SKG)        , intent(inout) , allocatable   :: array(:)
+!        character(*,SKG)        , intent(in)    , contiguous    :: pattern(:)
+!        character(*,SKG)                        , allocatable   :: ArrayRemoved(:)
 !    end subroutine
 !#endif
 !
@@ -8634,10 +8634,10 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComDefIns_D1_D1_SK3
 !#endif
-!        use pm_kind, only: SKC => SK3
-!        character(:,SKC)        , intent(inout) , allocatable   :: array(:)
-!        character(*,SKC)        , intent(in)    , contiguous    :: pattern(:)
-!        character(*,SKC)                        , allocatable   :: ArrayRemoved(:)
+!        use pm_kind, only: SKG => SK3
+!        character(:,SKG)        , intent(inout) , allocatable   :: array(:)
+!        character(*,SKG)        , intent(in)    , contiguous    :: pattern(:)
+!        character(*,SKG)                        , allocatable   :: ArrayRemoved(:)
 !    end subroutine
 !#endif
 !
@@ -8646,10 +8646,10 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComDefIns_D1_D1_SK2
 !#endif
-!        use pm_kind, only: SKC => SK2
-!        character(:,SKC)        , intent(inout) , allocatable   :: array(:)
-!        character(*,SKC)        , intent(in)    , contiguous    :: pattern(:)
-!        character(*,SKC)                        , allocatable   :: ArrayRemoved(:)
+!        use pm_kind, only: SKG => SK2
+!        character(:,SKG)        , intent(inout) , allocatable   :: array(:)
+!        character(*,SKG)        , intent(in)    , contiguous    :: pattern(:)
+!        character(*,SKG)                        , allocatable   :: ArrayRemoved(:)
 !    end subroutine
 !#endif
 !
@@ -8658,10 +8658,10 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComDefIns_D1_D1_SK1
 !#endif
-!        use pm_kind, only: SKC => SK1
-!        character(:,SKC)        , intent(inout) , allocatable   :: array(:)
-!        character(*,SKC)        , intent(in)    , contiguous    :: pattern(:)
-!        character(*,SKC)                        , allocatable   :: ArrayRemoved(:)
+!        use pm_kind, only: SKG => SK1
+!        character(:,SKG)        , intent(inout) , allocatable   :: array(:)
+!        character(*,SKG)        , intent(in)    , contiguous    :: pattern(:)
+!        character(*,SKG)                        , allocatable   :: ArrayRemoved(:)
 !    end subroutine
 !#endif
 !
@@ -8672,10 +8672,10 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComDefIns_D1_D1_IK5
 !#endif
-!        use pm_kind, only: IKC => IK5
-!        integer(IKC)            , intent(inout) , allocatable   :: array(:)
-!        integer(IKC)            , intent(in)    , contiguous    :: pattern(:)
-!        integer(IKC)            , intent(out)   , allocatable   :: ArrayRemoved(:)
+!        use pm_kind, only: IKG => IK5
+!        integer(IKG)            , intent(inout) , allocatable   :: array(:)
+!        integer(IKG)            , intent(in)    , contiguous    :: pattern(:)
+!        integer(IKG)            , intent(out)   , allocatable   :: ArrayRemoved(:)
 !    end subroutine
 !#endif
 !
@@ -8684,10 +8684,10 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComDefIns_D1_D1_IK4
 !#endif
-!        use pm_kind, only: IKC => IK4
-!        integer(IKC)            , intent(inout) , allocatable   :: array(:)
-!        integer(IKC)            , intent(in)    , contiguous    :: pattern(:)
-!        integer(IKC)            , intent(out)   , allocatable   :: ArrayRemoved(:)
+!        use pm_kind, only: IKG => IK4
+!        integer(IKG)            , intent(inout) , allocatable   :: array(:)
+!        integer(IKG)            , intent(in)    , contiguous    :: pattern(:)
+!        integer(IKG)            , intent(out)   , allocatable   :: ArrayRemoved(:)
 !    end subroutine
 !#endif
 !
@@ -8696,10 +8696,10 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComDefIns_D1_D1_IK3
 !#endif
-!        use pm_kind, only: IKC => IK3
-!        integer(IKC)            , intent(inout) , allocatable   :: array(:)
-!        integer(IKC)            , intent(in)    , contiguous    :: pattern(:)
-!        integer(IKC)            , intent(out)   , allocatable   :: ArrayRemoved(:)
+!        use pm_kind, only: IKG => IK3
+!        integer(IKG)            , intent(inout) , allocatable   :: array(:)
+!        integer(IKG)            , intent(in)    , contiguous    :: pattern(:)
+!        integer(IKG)            , intent(out)   , allocatable   :: ArrayRemoved(:)
 !    end subroutine
 !#endif
 !
@@ -8708,10 +8708,10 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComDefIns_D1_D1_IK2
 !#endif
-!        use pm_kind, only: IKC => IK2
-!        integer(IKC)            , intent(inout) , allocatable   :: array(:)
-!        integer(IKC)            , intent(in)    , contiguous    :: pattern(:)
-!        integer(IKC)            , intent(out)   , allocatable   :: ArrayRemoved(:)
+!        use pm_kind, only: IKG => IK2
+!        integer(IKG)            , intent(inout) , allocatable   :: array(:)
+!        integer(IKG)            , intent(in)    , contiguous    :: pattern(:)
+!        integer(IKG)            , intent(out)   , allocatable   :: ArrayRemoved(:)
 !    end subroutine
 !#endif
 !
@@ -8720,10 +8720,10 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComDefIns_D1_D1_IK1
 !#endif
-!        use pm_kind, only: IKC => IK1
-!        integer(IKC)            , intent(inout) , allocatable   :: array(:)
-!        integer(IKC)            , intent(in)    , contiguous    :: pattern(:)
-!        integer(IKC)            , intent(out)   , allocatable   :: ArrayRemoved(:)
+!        use pm_kind, only: IKG => IK1
+!        integer(IKG)            , intent(inout) , allocatable   :: array(:)
+!        integer(IKG)            , intent(in)    , contiguous    :: pattern(:)
+!        integer(IKG)            , intent(out)   , allocatable   :: ArrayRemoved(:)
 !    end subroutine
 !#endif
 !
@@ -8734,10 +8734,10 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComDefIns_D1_D1_LK5
 !#endif
-!        use pm_kind, only: LKC => LK5
-!        logical(LKC)            , intent(inout) , allocatable   :: array(:)
-!        logical(LKC)            , intent(in)    , contiguous    :: pattern(:)
-!        logical(LKC)            , intent(out)   , allocatable   :: ArrayRemoved(:)
+!        use pm_kind, only: LKG => LK5
+!        logical(LKG)            , intent(inout) , allocatable   :: array(:)
+!        logical(LKG)            , intent(in)    , contiguous    :: pattern(:)
+!        logical(LKG)            , intent(out)   , allocatable   :: ArrayRemoved(:)
 !    end subroutine
 !#endif
 !
@@ -8746,10 +8746,10 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComDefIns_D1_D1_LK4
 !#endif
-!        use pm_kind, only: LKC => LK4
-!        logical(LKC)            , intent(inout) , allocatable   :: array(:)
-!        logical(LKC)            , intent(in)    , contiguous    :: pattern(:)
-!        logical(LKC)            , intent(out)   , allocatable   :: ArrayRemoved(:)
+!        use pm_kind, only: LKG => LK4
+!        logical(LKG)            , intent(inout) , allocatable   :: array(:)
+!        logical(LKG)            , intent(in)    , contiguous    :: pattern(:)
+!        logical(LKG)            , intent(out)   , allocatable   :: ArrayRemoved(:)
 !    end subroutine
 !#endif
 !
@@ -8758,10 +8758,10 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComDefIns_D1_D1_LK3
 !#endif
-!        use pm_kind, only: LKC => LK3
-!        logical(LKC)            , intent(inout) , allocatable   :: array(:)
-!        logical(LKC)            , intent(in)    , contiguous    :: pattern(:)
-!        logical(LKC)            , intent(out)   , allocatable   :: ArrayRemoved(:)
+!        use pm_kind, only: LKG => LK3
+!        logical(LKG)            , intent(inout) , allocatable   :: array(:)
+!        logical(LKG)            , intent(in)    , contiguous    :: pattern(:)
+!        logical(LKG)            , intent(out)   , allocatable   :: ArrayRemoved(:)
 !    end subroutine
 !#endif
 !
@@ -8770,10 +8770,10 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComDefIns_D1_D1_LK2
 !#endif
-!        use pm_kind, only: LKC => LK2
-!        logical(LKC)            , intent(inout) , allocatable   :: array(:)
-!        logical(LKC)            , intent(in)    , contiguous    :: pattern(:)
-!        logical(LKC)            , intent(out)   , allocatable   :: ArrayRemoved(:)
+!        use pm_kind, only: LKG => LK2
+!        logical(LKG)            , intent(inout) , allocatable   :: array(:)
+!        logical(LKG)            , intent(in)    , contiguous    :: pattern(:)
+!        logical(LKG)            , intent(out)   , allocatable   :: ArrayRemoved(:)
 !    end subroutine
 !#endif
 !
@@ -8782,10 +8782,10 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComDefIns_D1_D1_LK1
 !#endif
-!        use pm_kind, only: LKC => LK1
-!        logical(LKC)            , intent(inout) , allocatable   :: array(:)
-!        logical(LKC)            , intent(in)    , contiguous    :: pattern(:)
-!        logical(LKC)            , intent(out)   , allocatable   :: ArrayRemoved(:)
+!        use pm_kind, only: LKG => LK1
+!        logical(LKG)            , intent(inout) , allocatable   :: array(:)
+!        logical(LKG)            , intent(in)    , contiguous    :: pattern(:)
+!        logical(LKG)            , intent(out)   , allocatable   :: ArrayRemoved(:)
 !    end subroutine
 !#endif
 !
@@ -8796,10 +8796,10 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComDefIns_D1_D1_CK5
 !#endif
-!        use pm_kind, only: CKC => CK5
-!        complex(CKC)            , intent(inout) , allocatable   :: array(:)
-!        complex(CKC)            , intent(in)    , contiguous    :: pattern(:)
-!        complex(CKC)            , intent(out)   , allocatable   :: ArrayRemoved(:)
+!        use pm_kind, only: CKG => CK5
+!        complex(CKG)            , intent(inout) , allocatable   :: array(:)
+!        complex(CKG)            , intent(in)    , contiguous    :: pattern(:)
+!        complex(CKG)            , intent(out)   , allocatable   :: ArrayRemoved(:)
 !    end subroutine
 !#endif
 !
@@ -8808,10 +8808,10 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComDefIns_D1_D1_CK4
 !#endif
-!        use pm_kind, only: CKC => CK4
-!        complex(CKC)            , intent(inout) , allocatable   :: array(:)
-!        complex(CKC)            , intent(in)    , contiguous    :: pattern(:)
-!        complex(CKC)            , intent(out)   , allocatable   :: ArrayRemoved(:)
+!        use pm_kind, only: CKG => CK4
+!        complex(CKG)            , intent(inout) , allocatable   :: array(:)
+!        complex(CKG)            , intent(in)    , contiguous    :: pattern(:)
+!        complex(CKG)            , intent(out)   , allocatable   :: ArrayRemoved(:)
 !    end subroutine
 !#endif
 !
@@ -8820,10 +8820,10 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComDefIns_D1_D1_CK3
 !#endif
-!        use pm_kind, only: CKC => CK3
-!        complex(CKC)            , intent(inout) , allocatable   :: array(:)
-!        complex(CKC)            , intent(in)    , contiguous    :: pattern(:)
-!        complex(CKC)            , intent(out)   , allocatable   :: ArrayRemoved(:)
+!        use pm_kind, only: CKG => CK3
+!        complex(CKG)            , intent(inout) , allocatable   :: array(:)
+!        complex(CKG)            , intent(in)    , contiguous    :: pattern(:)
+!        complex(CKG)            , intent(out)   , allocatable   :: ArrayRemoved(:)
 !    end subroutine
 !#endif
 !
@@ -8832,10 +8832,10 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComDefIns_D1_D1_CK2
 !#endif
-!        use pm_kind, only: CKC => CK2
-!        complex(CKC)            , intent(inout) , allocatable   :: array(:)
-!        complex(CKC)            , intent(in)    , contiguous    :: pattern(:)
-!        complex(CKC)            , intent(out)   , allocatable   :: ArrayRemoved(:)
+!        use pm_kind, only: CKG => CK2
+!        complex(CKG)            , intent(inout) , allocatable   :: array(:)
+!        complex(CKG)            , intent(in)    , contiguous    :: pattern(:)
+!        complex(CKG)            , intent(out)   , allocatable   :: ArrayRemoved(:)
 !    end subroutine
 !#endif
 !
@@ -8844,10 +8844,10 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComDefIns_D1_D1_CK1
 !#endif
-!        use pm_kind, only: CKC => CK1
-!        complex(CKC)            , intent(inout) , allocatable   :: array(:)
-!        complex(CKC)            , intent(in)    , contiguous    :: pattern(:)
-!        complex(CKC)            , intent(out)   , allocatable   :: ArrayRemoved(:)
+!        use pm_kind, only: CKG => CK1
+!        complex(CKG)            , intent(inout) , allocatable   :: array(:)
+!        complex(CKG)            , intent(in)    , contiguous    :: pattern(:)
+!        complex(CKG)            , intent(out)   , allocatable   :: ArrayRemoved(:)
 !    end subroutine
 !#endif
 !
@@ -8858,10 +8858,10 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComDefIns_D1_D1_RK5
 !#endif
-!        use pm_kind, only: RKC => RK5
-!        real(RKC)               , intent(inout) , allocatable   :: array(:)
-!        real(RKC)               , intent(in)    , contiguous    :: pattern(:)
-!        real(RKC)               , intent(out)   , allocatable   :: ArrayRemoved(:)
+!        use pm_kind, only: RKG => RK5
+!        real(RKG)               , intent(inout) , allocatable   :: array(:)
+!        real(RKG)               , intent(in)    , contiguous    :: pattern(:)
+!        real(RKG)               , intent(out)   , allocatable   :: ArrayRemoved(:)
 !    end subroutine
 !#endif
 !
@@ -8870,10 +8870,10 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComDefIns_D1_D1_RK4
 !#endif
-!        use pm_kind, only: RKC => RK4
-!        real(RKC)               , intent(inout) , allocatable   :: array(:)
-!        real(RKC)               , intent(in)    , contiguous    :: pattern(:)
-!        real(RKC)               , intent(out)   , allocatable   :: ArrayRemoved(:)
+!        use pm_kind, only: RKG => RK4
+!        real(RKG)               , intent(inout) , allocatable   :: array(:)
+!        real(RKG)               , intent(in)    , contiguous    :: pattern(:)
+!        real(RKG)               , intent(out)   , allocatable   :: ArrayRemoved(:)
 !    end subroutine
 !#endif
 !
@@ -8882,10 +8882,10 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComDefIns_D1_D1_RK3
 !#endif
-!        use pm_kind, only: RKC => RK3
-!        real(RKC)               , intent(inout) , allocatable   :: array(:)
-!        real(RKC)               , intent(in)    , contiguous    :: pattern(:)
-!        real(RKC)               , intent(out)   , allocatable   :: ArrayRemoved(:)
+!        use pm_kind, only: RKG => RK3
+!        real(RKG)               , intent(inout) , allocatable   :: array(:)
+!        real(RKG)               , intent(in)    , contiguous    :: pattern(:)
+!        real(RKG)               , intent(out)   , allocatable   :: ArrayRemoved(:)
 !    end subroutine
 !#endif
 !
@@ -8894,10 +8894,10 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComDefIns_D1_D1_RK2
 !#endif
-!        use pm_kind, only: RKC => RK2
-!        real(RKC)               , intent(inout) , allocatable   :: array(:)
-!        real(RKC)               , intent(in)    , contiguous    :: pattern(:)
-!        real(RKC)               , intent(out)   , allocatable   :: ArrayRemoved(:)
+!        use pm_kind, only: RKG => RK2
+!        real(RKG)               , intent(inout) , allocatable   :: array(:)
+!        real(RKG)               , intent(in)    , contiguous    :: pattern(:)
+!        real(RKG)               , intent(out)   , allocatable   :: ArrayRemoved(:)
 !    end subroutine
 !#endif
 !
@@ -8906,10 +8906,10 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComDefIns_D1_D1_RK1
 !#endif
-!        use pm_kind, only: RKC => RK1
-!        real(RKC)               , intent(inout) , allocatable   :: array(:)
-!        real(RKC)               , intent(in)    , contiguous    :: pattern(:)
-!        real(RKC)               , intent(out)   , allocatable   :: ArrayRemoved(:)
+!        use pm_kind, only: RKG => RK1
+!        real(RKG)               , intent(inout) , allocatable   :: array(:)
+!        real(RKG)               , intent(in)    , contiguous    :: pattern(:)
+!        real(RKG)               , intent(out)   , allocatable   :: ArrayRemoved(:)
 !    end subroutine
 !#endif
 !
@@ -8926,11 +8926,11 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComDefIns_D1_D1_SK5
 !#endif
-!        use pm_kind, only: SKC => SK5
-!        character(:,SKC)        , intent(inout) , allocatable   :: array(:)
-!        character(*,SKC)        , intent(in)    , contiguous    :: pattern(:)
+!        use pm_kind, only: SKG => SK5
+!        character(:,SKG)        , intent(inout) , allocatable   :: array(:)
+!        character(*,SKG)        , intent(in)    , contiguous    :: pattern(:)
 !        procedure(logical(LK))                                  :: iseq
-!        character(*,SKC)                        , allocatable   :: ArrayRemoved(:)
+!        character(*,SKG)                        , allocatable   :: ArrayRemoved(:)
 !    end subroutine
 !#endif
 !
@@ -8939,11 +8939,11 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComDefIns_D1_D1_SK4
 !#endif
-!        use pm_kind, only: SKC => SK4
-!        character(:,SKC)        , intent(inout) , allocatable   :: array(:)
-!        character(*,SKC)        , intent(in)    , contiguous    :: pattern(:)
+!        use pm_kind, only: SKG => SK4
+!        character(:,SKG)        , intent(inout) , allocatable   :: array(:)
+!        character(*,SKG)        , intent(in)    , contiguous    :: pattern(:)
 !        procedure(logical(LK))                                  :: iseq
-!        character(*,SKC)                        , allocatable   :: ArrayRemoved(:)
+!        character(*,SKG)                        , allocatable   :: ArrayRemoved(:)
 !    end subroutine
 !#endif
 !
@@ -8952,11 +8952,11 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComDefIns_D1_D1_SK3
 !#endif
-!        use pm_kind, only: SKC => SK3
-!        character(:,SKC)        , intent(inout) , allocatable   :: array(:)
-!        character(*,SKC)        , intent(in)    , contiguous    :: pattern(:)
+!        use pm_kind, only: SKG => SK3
+!        character(:,SKG)        , intent(inout) , allocatable   :: array(:)
+!        character(*,SKG)        , intent(in)    , contiguous    :: pattern(:)
 !        procedure(logical(LK))                                  :: iseq
-!        character(*,SKC)                        , allocatable   :: ArrayRemoved(:)
+!        character(*,SKG)                        , allocatable   :: ArrayRemoved(:)
 !    end subroutine
 !#endif
 !
@@ -8965,11 +8965,11 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComDefIns_D1_D1_SK2
 !#endif
-!        use pm_kind, only: SKC => SK2
-!        character(:,SKC)        , intent(inout) , allocatable   :: array(:)
-!        character(*,SKC)        , intent(in)    , contiguous    :: pattern(:)
+!        use pm_kind, only: SKG => SK2
+!        character(:,SKG)        , intent(inout) , allocatable   :: array(:)
+!        character(*,SKG)        , intent(in)    , contiguous    :: pattern(:)
 !        procedure(logical(LK))                                  :: iseq
-!        character(*,SKC)                        , allocatable   :: ArrayRemoved(:)
+!        character(*,SKG)                        , allocatable   :: ArrayRemoved(:)
 !    end subroutine
 !#endif
 !
@@ -8978,11 +8978,11 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComDefIns_D1_D1_SK1
 !#endif
-!        use pm_kind, only: SKC => SK1
-!        character(:,SKC)        , intent(inout) , allocatable   :: array(:)
-!        character(*,SKC)        , intent(in)    , contiguous    :: pattern(:)
+!        use pm_kind, only: SKG => SK1
+!        character(:,SKG)        , intent(inout) , allocatable   :: array(:)
+!        character(*,SKG)        , intent(in)    , contiguous    :: pattern(:)
 !        procedure(logical(LK))                                  :: iseq
-!        character(*,SKC)                        , allocatable   :: ArrayRemoved(:)
+!        character(*,SKG)                        , allocatable   :: ArrayRemoved(:)
 !    end subroutine
 !#endif
 !
@@ -8993,11 +8993,11 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComDefIns_D1_D1_IK5
 !#endif
-!        use pm_kind, only: IKC => IK5
-!        integer(IKC)            , intent(inout) , allocatable   :: array(:)
-!        integer(IKC)            , intent(in)    , contiguous    :: pattern(:)
+!        use pm_kind, only: IKG => IK5
+!        integer(IKG)            , intent(inout) , allocatable   :: array(:)
+!        integer(IKG)            , intent(in)    , contiguous    :: pattern(:)
 !        procedure(logical(LK))                                  :: iseq
-!        integer(IKC)            , intent(out)   , allocatable   :: ArrayRemoved(:)
+!        integer(IKG)            , intent(out)   , allocatable   :: ArrayRemoved(:)
 !    end subroutine
 !#endif
 !
@@ -9006,11 +9006,11 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComDefIns_D1_D1_IK4
 !#endif
-!        use pm_kind, only: IKC => IK4
-!        integer(IKC)            , intent(inout) , allocatable   :: array(:)
-!        integer(IKC)            , intent(in)    , contiguous    :: pattern(:)
+!        use pm_kind, only: IKG => IK4
+!        integer(IKG)            , intent(inout) , allocatable   :: array(:)
+!        integer(IKG)            , intent(in)    , contiguous    :: pattern(:)
 !        procedure(logical(LK))                                  :: iseq
-!        integer(IKC)            , intent(out)   , allocatable   :: ArrayRemoved(:)
+!        integer(IKG)            , intent(out)   , allocatable   :: ArrayRemoved(:)
 !    end subroutine
 !#endif
 !
@@ -9019,11 +9019,11 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComDefIns_D1_D1_IK3
 !#endif
-!        use pm_kind, only: IKC => IK3
-!        integer(IKC)            , intent(inout) , allocatable   :: array(:)
-!        integer(IKC)            , intent(in)    , contiguous    :: pattern(:)
+!        use pm_kind, only: IKG => IK3
+!        integer(IKG)            , intent(inout) , allocatable   :: array(:)
+!        integer(IKG)            , intent(in)    , contiguous    :: pattern(:)
 !        procedure(logical(LK))                                  :: iseq
-!        integer(IKC)            , intent(out)   , allocatable   :: ArrayRemoved(:)
+!        integer(IKG)            , intent(out)   , allocatable   :: ArrayRemoved(:)
 !    end subroutine
 !#endif
 !
@@ -9032,11 +9032,11 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComDefIns_D1_D1_IK2
 !#endif
-!        use pm_kind, only: IKC => IK2
-!        integer(IKC)            , intent(inout) , allocatable   :: array(:)
-!        integer(IKC)            , intent(in)    , contiguous    :: pattern(:)
+!        use pm_kind, only: IKG => IK2
+!        integer(IKG)            , intent(inout) , allocatable   :: array(:)
+!        integer(IKG)            , intent(in)    , contiguous    :: pattern(:)
 !        procedure(logical(LK))                                  :: iseq
-!        integer(IKC)            , intent(out)   , allocatable   :: ArrayRemoved(:)
+!        integer(IKG)            , intent(out)   , allocatable   :: ArrayRemoved(:)
 !    end subroutine
 !#endif
 !
@@ -9045,11 +9045,11 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComDefIns_D1_D1_IK1
 !#endif
-!        use pm_kind, only: IKC => IK1
-!        integer(IKC)            , intent(inout) , allocatable   :: array(:)
-!        integer(IKC)            , intent(in)    , contiguous    :: pattern(:)
+!        use pm_kind, only: IKG => IK1
+!        integer(IKG)            , intent(inout) , allocatable   :: array(:)
+!        integer(IKG)            , intent(in)    , contiguous    :: pattern(:)
 !        procedure(logical(LK))                                  :: iseq
-!        integer(IKC)            , intent(out)   , allocatable   :: ArrayRemoved(:)
+!        integer(IKG)            , intent(out)   , allocatable   :: ArrayRemoved(:)
 !    end subroutine
 !#endif
 !
@@ -9060,11 +9060,11 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComDefIns_D1_D1_LK5
 !#endif
-!        use pm_kind, only: LKC => LK5
-!        logical(LKC)            , intent(inout) , allocatable   :: array(:)
-!        logical(LKC)            , intent(in)    , contiguous    :: pattern(:)
+!        use pm_kind, only: LKG => LK5
+!        logical(LKG)            , intent(inout) , allocatable   :: array(:)
+!        logical(LKG)            , intent(in)    , contiguous    :: pattern(:)
 !        procedure(logical(LK))                                  :: iseq
-!        logical(LKC)            , intent(out)   , allocatable   :: ArrayRemoved(:)
+!        logical(LKG)            , intent(out)   , allocatable   :: ArrayRemoved(:)
 !    end subroutine
 !#endif
 !
@@ -9073,11 +9073,11 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComDefIns_D1_D1_LK4
 !#endif
-!        use pm_kind, only: LKC => LK4
-!        logical(LKC)            , intent(inout) , allocatable   :: array(:)
-!        logical(LKC)            , intent(in)    , contiguous    :: pattern(:)
+!        use pm_kind, only: LKG => LK4
+!        logical(LKG)            , intent(inout) , allocatable   :: array(:)
+!        logical(LKG)            , intent(in)    , contiguous    :: pattern(:)
 !        procedure(logical(LK))                                  :: iseq
-!        logical(LKC)            , intent(out)   , allocatable   :: ArrayRemoved(:)
+!        logical(LKG)            , intent(out)   , allocatable   :: ArrayRemoved(:)
 !    end subroutine
 !#endif
 !
@@ -9086,11 +9086,11 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComDefIns_D1_D1_LK3
 !#endif
-!        use pm_kind, only: LKC => LK3
-!        logical(LKC)            , intent(inout) , allocatable   :: array(:)
-!        logical(LKC)            , intent(in)    , contiguous    :: pattern(:)
+!        use pm_kind, only: LKG => LK3
+!        logical(LKG)            , intent(inout) , allocatable   :: array(:)
+!        logical(LKG)            , intent(in)    , contiguous    :: pattern(:)
 !        procedure(logical(LK))                                  :: iseq
-!        logical(LKC)            , intent(out)   , allocatable   :: ArrayRemoved(:)
+!        logical(LKG)            , intent(out)   , allocatable   :: ArrayRemoved(:)
 !    end subroutine
 !#endif
 !
@@ -9099,11 +9099,11 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComDefIns_D1_D1_LK2
 !#endif
-!        use pm_kind, only: LKC => LK2
-!        logical(LKC)            , intent(inout) , allocatable   :: array(:)
-!        logical(LKC)            , intent(in)    , contiguous    :: pattern(:)
+!        use pm_kind, only: LKG => LK2
+!        logical(LKG)            , intent(inout) , allocatable   :: array(:)
+!        logical(LKG)            , intent(in)    , contiguous    :: pattern(:)
 !        procedure(logical(LK))                                  :: iseq
-!        logical(LKC)            , intent(out)   , allocatable   :: ArrayRemoved(:)
+!        logical(LKG)            , intent(out)   , allocatable   :: ArrayRemoved(:)
 !    end subroutine
 !#endif
 !
@@ -9112,11 +9112,11 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComDefIns_D1_D1_LK1
 !#endif
-!        use pm_kind, only: LKC => LK1
-!        logical(LKC)            , intent(inout) , allocatable   :: array(:)
-!        logical(LKC)            , intent(in)    , contiguous    :: pattern(:)
+!        use pm_kind, only: LKG => LK1
+!        logical(LKG)            , intent(inout) , allocatable   :: array(:)
+!        logical(LKG)            , intent(in)    , contiguous    :: pattern(:)
 !        procedure(logical(LK))                                  :: iseq
-!        logical(LKC)            , intent(out)   , allocatable   :: ArrayRemoved(:)
+!        logical(LKG)            , intent(out)   , allocatable   :: ArrayRemoved(:)
 !    end subroutine
 !#endif
 !
@@ -9127,11 +9127,11 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComDefIns_D1_D1_CK5
 !#endif
-!        use pm_kind, only: CKC => CK5
-!        complex(CKC)            , intent(inout) , allocatable   :: array(:)
-!        complex(CKC)            , intent(in)    , contiguous    :: pattern(:)
+!        use pm_kind, only: CKG => CK5
+!        complex(CKG)            , intent(inout) , allocatable   :: array(:)
+!        complex(CKG)            , intent(in)    , contiguous    :: pattern(:)
 !        procedure(logical(LK))                                  :: iseq
-!        complex(CKC)            , intent(out)   , allocatable   :: ArrayRemoved(:)
+!        complex(CKG)            , intent(out)   , allocatable   :: ArrayRemoved(:)
 !    end subroutine
 !#endif
 !
@@ -9140,11 +9140,11 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComDefIns_D1_D1_CK4
 !#endif
-!        use pm_kind, only: CKC => CK4
-!        complex(CKC)            , intent(inout) , allocatable   :: array(:)
-!        complex(CKC)            , intent(in)    , contiguous    :: pattern(:)
+!        use pm_kind, only: CKG => CK4
+!        complex(CKG)            , intent(inout) , allocatable   :: array(:)
+!        complex(CKG)            , intent(in)    , contiguous    :: pattern(:)
 !        procedure(logical(LK))                                  :: iseq
-!        complex(CKC)            , intent(out)   , allocatable   :: ArrayRemoved(:)
+!        complex(CKG)            , intent(out)   , allocatable   :: ArrayRemoved(:)
 !    end subroutine
 !#endif
 !
@@ -9153,11 +9153,11 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComDefIns_D1_D1_CK3
 !#endif
-!        use pm_kind, only: CKC => CK3
-!        complex(CKC)            , intent(inout) , allocatable   :: array(:)
-!        complex(CKC)            , intent(in)    , contiguous    :: pattern(:)
+!        use pm_kind, only: CKG => CK3
+!        complex(CKG)            , intent(inout) , allocatable   :: array(:)
+!        complex(CKG)            , intent(in)    , contiguous    :: pattern(:)
 !        procedure(logical(LK))                                  :: iseq
-!        complex(CKC)            , intent(out)   , allocatable   :: ArrayRemoved(:)
+!        complex(CKG)            , intent(out)   , allocatable   :: ArrayRemoved(:)
 !    end subroutine
 !#endif
 !
@@ -9166,11 +9166,11 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComDefIns_D1_D1_CK2
 !#endif
-!        use pm_kind, only: CKC => CK2
-!        complex(CKC)            , intent(inout) , allocatable   :: array(:)
-!        complex(CKC)            , intent(in)    , contiguous    :: pattern(:)
+!        use pm_kind, only: CKG => CK2
+!        complex(CKG)            , intent(inout) , allocatable   :: array(:)
+!        complex(CKG)            , intent(in)    , contiguous    :: pattern(:)
 !        procedure(logical(LK))                                  :: iseq
-!        complex(CKC)            , intent(out)   , allocatable   :: ArrayRemoved(:)
+!        complex(CKG)            , intent(out)   , allocatable   :: ArrayRemoved(:)
 !    end subroutine
 !#endif
 !
@@ -9179,11 +9179,11 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComDefIns_D1_D1_CK1
 !#endif
-!        use pm_kind, only: CKC => CK1
-!        complex(CKC)            , intent(inout) , allocatable   :: array(:)
-!        complex(CKC)            , intent(in)    , contiguous    :: pattern(:)
+!        use pm_kind, only: CKG => CK1
+!        complex(CKG)            , intent(inout) , allocatable   :: array(:)
+!        complex(CKG)            , intent(in)    , contiguous    :: pattern(:)
 !        procedure(logical(LK))                                  :: iseq
-!        complex(CKC)            , intent(out)   , allocatable   :: ArrayRemoved(:)
+!        complex(CKG)            , intent(out)   , allocatable   :: ArrayRemoved(:)
 !    end subroutine
 !#endif
 !
@@ -9194,11 +9194,11 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComDefIns_D1_D1_RK5
 !#endif
-!        use pm_kind, only: RKC => RK5
-!        real(RKC)               , intent(inout) , allocatable   :: array(:)
-!        real(RKC)               , intent(in)    , contiguous    :: pattern(:)
+!        use pm_kind, only: RKG => RK5
+!        real(RKG)               , intent(inout) , allocatable   :: array(:)
+!        real(RKG)               , intent(in)    , contiguous    :: pattern(:)
 !        procedure(logical(LK))                                  :: iseq
-!        real(RKC)               , intent(out)   , allocatable   :: ArrayRemoved(:)
+!        real(RKG)               , intent(out)   , allocatable   :: ArrayRemoved(:)
 !    end subroutine
 !#endif
 !
@@ -9207,11 +9207,11 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComDefIns_D1_D1_RK4
 !#endif
-!        use pm_kind, only: RKC => RK4
-!        real(RKC)               , intent(inout) , allocatable   :: array(:)
-!        real(RKC)               , intent(in)    , contiguous    :: pattern(:)
+!        use pm_kind, only: RKG => RK4
+!        real(RKG)               , intent(inout) , allocatable   :: array(:)
+!        real(RKG)               , intent(in)    , contiguous    :: pattern(:)
 !        procedure(logical(LK))                                  :: iseq
-!        real(RKC)               , intent(out)   , allocatable   :: ArrayRemoved(:)
+!        real(RKG)               , intent(out)   , allocatable   :: ArrayRemoved(:)
 !    end subroutine
 !#endif
 !
@@ -9220,11 +9220,11 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComDefIns_D1_D1_RK3
 !#endif
-!        use pm_kind, only: RKC => RK3
-!        real(RKC)               , intent(inout) , allocatable   :: array(:)
-!        real(RKC)               , intent(in)    , contiguous    :: pattern(:)
+!        use pm_kind, only: RKG => RK3
+!        real(RKG)               , intent(inout) , allocatable   :: array(:)
+!        real(RKG)               , intent(in)    , contiguous    :: pattern(:)
 !        procedure(logical(LK))                                  :: iseq
-!        real(RKC)               , intent(out)   , allocatable   :: ArrayRemoved(:)
+!        real(RKG)               , intent(out)   , allocatable   :: ArrayRemoved(:)
 !    end subroutine
 !#endif
 !
@@ -9233,11 +9233,11 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComDefIns_D1_D1_RK2
 !#endif
-!        use pm_kind, only: RKC => RK2
-!        real(RKC)               , intent(inout) , allocatable   :: array(:)
-!        real(RKC)               , intent(in)    , contiguous    :: pattern(:)
+!        use pm_kind, only: RKG => RK2
+!        real(RKG)               , intent(inout) , allocatable   :: array(:)
+!        real(RKG)               , intent(in)    , contiguous    :: pattern(:)
 !        procedure(logical(LK))                                  :: iseq
-!        real(RKC)               , intent(out)   , allocatable   :: ArrayRemoved(:)
+!        real(RKG)               , intent(out)   , allocatable   :: ArrayRemoved(:)
 !    end subroutine
 !#endif
 !
@@ -9246,11 +9246,11 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComDefIns_D1_D1_RK1
 !#endif
-!        use pm_kind, only: RKC => RK1
-!        real(RKC)               , intent(inout) , allocatable   :: array(:)
-!        real(RKC)               , intent(in)    , contiguous    :: pattern(:)
+!        use pm_kind, only: RKG => RK1
+!        real(RKG)               , intent(inout) , allocatable   :: array(:)
+!        real(RKG)               , intent(in)    , contiguous    :: pattern(:)
 !        procedure(logical(LK))                                  :: iseq
-!        real(RKC)               , intent(out)   , allocatable   :: ArrayRemoved(:)
+!        real(RKG)               , intent(out)   , allocatable   :: ArrayRemoved(:)
 !    end subroutine
 !#endif
 !
@@ -9267,13 +9267,13 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComCusIns_D1_D1_SK5
 !#endif
-!        use pm_kind, only: SKC => SK5
-!        character(:,SKC)        , intent(inout) , allocatable   :: array(:)
-!        character(*,SKC)        , intent(in)    , contiguous    :: pattern(:)
+!        use pm_kind, only: SKG => SK5
+!        character(:,SKG)        , intent(inout) , allocatable   :: array(:)
+!        character(*,SKG)        , intent(in)    , contiguous    :: pattern(:)
 !        integer(IK)             , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)             , intent(in)    , optional      :: sorted
 !        logical(LK)             , intent(in)    , optional      :: unique
-!        character(*,SKC)                        , allocatable   :: ArrayRemoved(:)
+!        character(*,SKG)                        , allocatable   :: ArrayRemoved(:)
 !    end subroutine
 !#endif
 !
@@ -9282,13 +9282,13 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComCusIns_D1_D1_SK4
 !#endif
-!        use pm_kind, only: SKC => SK4
-!        character(:,SKC)        , intent(inout) , allocatable   :: array(:)
-!        character(*,SKC)        , intent(in)    , contiguous    :: pattern(:)
+!        use pm_kind, only: SKG => SK4
+!        character(:,SKG)        , intent(inout) , allocatable   :: array(:)
+!        character(*,SKG)        , intent(in)    , contiguous    :: pattern(:)
 !        integer(IK)             , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)             , intent(in)    , optional      :: sorted
 !        logical(LK)             , intent(in)    , optional      :: unique
-!        character(*,SKC)                        , allocatable   :: ArrayRemoved(:)
+!        character(*,SKG)                        , allocatable   :: ArrayRemoved(:)
 !    end subroutine
 !#endif
 !
@@ -9297,13 +9297,13 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComCusIns_D1_D1_SK3
 !#endif
-!        use pm_kind, only: SKC => SK3
-!        character(:,SKC)        , intent(inout) , allocatable   :: array(:)
-!        character(*,SKC)        , intent(in)    , contiguous    :: pattern(:)
+!        use pm_kind, only: SKG => SK3
+!        character(:,SKG)        , intent(inout) , allocatable   :: array(:)
+!        character(*,SKG)        , intent(in)    , contiguous    :: pattern(:)
 !        integer(IK)             , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)             , intent(in)    , optional      :: sorted
 !        logical(LK)             , intent(in)    , optional      :: unique
-!        character(*,SKC)                        , allocatable   :: ArrayRemoved(:)
+!        character(*,SKG)                        , allocatable   :: ArrayRemoved(:)
 !    end subroutine
 !#endif
 !
@@ -9312,13 +9312,13 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComCusIns_D1_D1_SK2
 !#endif
-!        use pm_kind, only: SKC => SK2
-!        character(:,SKC)        , intent(inout) , allocatable   :: array(:)
-!        character(*,SKC)        , intent(in)    , contiguous    :: pattern(:)
+!        use pm_kind, only: SKG => SK2
+!        character(:,SKG)        , intent(inout) , allocatable   :: array(:)
+!        character(*,SKG)        , intent(in)    , contiguous    :: pattern(:)
 !        integer(IK)             , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)             , intent(in)    , optional      :: sorted
 !        logical(LK)             , intent(in)    , optional      :: unique
-!        character(*,SKC)                        , allocatable   :: ArrayRemoved(:)
+!        character(*,SKG)                        , allocatable   :: ArrayRemoved(:)
 !    end subroutine
 !#endif
 !
@@ -9327,13 +9327,13 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComCusIns_D1_D1_SK1
 !#endif
-!        use pm_kind, only: SKC => SK1
-!        character(:,SKC)        , intent(inout) , allocatable   :: array(:)
-!        character(*,SKC)        , intent(in)    , contiguous    :: pattern(:)
+!        use pm_kind, only: SKG => SK1
+!        character(:,SKG)        , intent(inout) , allocatable   :: array(:)
+!        character(*,SKG)        , intent(in)    , contiguous    :: pattern(:)
 !        integer(IK)             , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)             , intent(in)    , optional      :: sorted
 !        logical(LK)             , intent(in)    , optional      :: unique
-!        character(*,SKC)                        , allocatable   :: ArrayRemoved(:)
+!        character(*,SKG)                        , allocatable   :: ArrayRemoved(:)
 !    end subroutine
 !#endif
 !
@@ -9344,13 +9344,13 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComCusIns_D1_D1_IK5
 !#endif
-!        use pm_kind, only: IKC => IK5
-!        integer(IKC)            , intent(inout) , allocatable   :: array(:)
-!        integer(IKC)            , intent(in)    , contiguous    :: pattern(:)
+!        use pm_kind, only: IKG => IK5
+!        integer(IKG)            , intent(inout) , allocatable   :: array(:)
+!        integer(IKG)            , intent(in)    , contiguous    :: pattern(:)
 !        integer(IK)             , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)             , intent(in)    , optional      :: sorted
 !        logical(LK)             , intent(in)    , optional      :: unique
-!        integer(IKC)            , intent(out)   , allocatable   :: ArrayRemoved(:)
+!        integer(IKG)            , intent(out)   , allocatable   :: ArrayRemoved(:)
 !    end subroutine
 !#endif
 !
@@ -9359,13 +9359,13 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComCusIns_D1_D1_IK4
 !#endif
-!        use pm_kind, only: IKC => IK4
-!        integer(IKC)            , intent(inout) , allocatable   :: array(:)
-!        integer(IKC)            , intent(in)    , contiguous    :: pattern(:)
+!        use pm_kind, only: IKG => IK4
+!        integer(IKG)            , intent(inout) , allocatable   :: array(:)
+!        integer(IKG)            , intent(in)    , contiguous    :: pattern(:)
 !        integer(IK)             , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)             , intent(in)    , optional      :: sorted
 !        logical(LK)             , intent(in)    , optional      :: unique
-!        integer(IKC)            , intent(out)   , allocatable   :: ArrayRemoved(:)
+!        integer(IKG)            , intent(out)   , allocatable   :: ArrayRemoved(:)
 !    end subroutine
 !#endif
 !
@@ -9374,13 +9374,13 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComCusIns_D1_D1_IK3
 !#endif
-!        use pm_kind, only: IKC => IK3
-!        integer(IKC)            , intent(inout) , allocatable   :: array(:)
-!        integer(IKC)            , intent(in)    , contiguous    :: pattern(:)
+!        use pm_kind, only: IKG => IK3
+!        integer(IKG)            , intent(inout) , allocatable   :: array(:)
+!        integer(IKG)            , intent(in)    , contiguous    :: pattern(:)
 !        integer(IK)             , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)             , intent(in)    , optional      :: sorted
 !        logical(LK)             , intent(in)    , optional      :: unique
-!        integer(IKC)            , intent(out)   , allocatable   :: ArrayRemoved(:)
+!        integer(IKG)            , intent(out)   , allocatable   :: ArrayRemoved(:)
 !    end subroutine
 !#endif
 !
@@ -9389,13 +9389,13 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComCusIns_D1_D1_IK2
 !#endif
-!        use pm_kind, only: IKC => IK2
-!        integer(IKC)            , intent(inout) , allocatable   :: array(:)
-!        integer(IKC)            , intent(in)    , contiguous    :: pattern(:)
+!        use pm_kind, only: IKG => IK2
+!        integer(IKG)            , intent(inout) , allocatable   :: array(:)
+!        integer(IKG)            , intent(in)    , contiguous    :: pattern(:)
 !        integer(IK)             , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)             , intent(in)    , optional      :: sorted
 !        logical(LK)             , intent(in)    , optional      :: unique
-!        integer(IKC)            , intent(out)   , allocatable   :: ArrayRemoved(:)
+!        integer(IKG)            , intent(out)   , allocatable   :: ArrayRemoved(:)
 !    end subroutine
 !#endif
 !
@@ -9404,13 +9404,13 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComCusIns_D1_D1_IK1
 !#endif
-!        use pm_kind, only: IKC => IK1
-!        integer(IKC)            , intent(inout) , allocatable   :: array(:)
-!        integer(IKC)            , intent(in)    , contiguous    :: pattern(:)
+!        use pm_kind, only: IKG => IK1
+!        integer(IKG)            , intent(inout) , allocatable   :: array(:)
+!        integer(IKG)            , intent(in)    , contiguous    :: pattern(:)
 !        integer(IK)             , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)             , intent(in)    , optional      :: sorted
 !        logical(LK)             , intent(in)    , optional      :: unique
-!        integer(IKC)            , intent(out)   , allocatable   :: ArrayRemoved(:)
+!        integer(IKG)            , intent(out)   , allocatable   :: ArrayRemoved(:)
 !    end subroutine
 !#endif
 !
@@ -9421,13 +9421,13 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComCusIns_D1_D1_LK5
 !#endif
-!        use pm_kind, only: LKC => LK5
-!        logical(LKC)            , intent(inout) , allocatable   :: array(:)
-!        logical(LKC)            , intent(in)    , contiguous    :: pattern(:)
+!        use pm_kind, only: LKG => LK5
+!        logical(LKG)            , intent(inout) , allocatable   :: array(:)
+!        logical(LKG)            , intent(in)    , contiguous    :: pattern(:)
 !        integer(IK)             , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)             , intent(in)    , optional      :: sorted
 !        logical(LK)             , intent(in)    , optional      :: unique
-!        logical(LKC)            , intent(out)   , allocatable   :: ArrayRemoved(:)
+!        logical(LKG)            , intent(out)   , allocatable   :: ArrayRemoved(:)
 !    end subroutine
 !#endif
 !
@@ -9436,13 +9436,13 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComCusIns_D1_D1_LK4
 !#endif
-!        use pm_kind, only: LKC => LK4
-!        logical(LKC)            , intent(inout) , allocatable   :: array(:)
-!        logical(LKC)            , intent(in)    , contiguous    :: pattern(:)
+!        use pm_kind, only: LKG => LK4
+!        logical(LKG)            , intent(inout) , allocatable   :: array(:)
+!        logical(LKG)            , intent(in)    , contiguous    :: pattern(:)
 !        integer(IK)             , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)             , intent(in)    , optional      :: sorted
 !        logical(LK)             , intent(in)    , optional      :: unique
-!        logical(LKC)            , intent(out)   , allocatable   :: ArrayRemoved(:)
+!        logical(LKG)            , intent(out)   , allocatable   :: ArrayRemoved(:)
 !    end subroutine
 !#endif
 !
@@ -9451,13 +9451,13 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComCusIns_D1_D1_LK3
 !#endif
-!        use pm_kind, only: LKC => LK3
-!        logical(LKC)            , intent(inout) , allocatable   :: array(:)
-!        logical(LKC)            , intent(in)    , contiguous    :: pattern(:)
+!        use pm_kind, only: LKG => LK3
+!        logical(LKG)            , intent(inout) , allocatable   :: array(:)
+!        logical(LKG)            , intent(in)    , contiguous    :: pattern(:)
 !        integer(IK)             , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)             , intent(in)    , optional      :: sorted
 !        logical(LK)             , intent(in)    , optional      :: unique
-!        logical(LKC)            , intent(out)   , allocatable   :: ArrayRemoved(:)
+!        logical(LKG)            , intent(out)   , allocatable   :: ArrayRemoved(:)
 !    end subroutine
 !#endif
 !
@@ -9466,13 +9466,13 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComCusIns_D1_D1_LK2
 !#endif
-!        use pm_kind, only: LKC => LK2
-!        logical(LKC)            , intent(inout) , allocatable   :: array(:)
-!        logical(LKC)            , intent(in)    , contiguous    :: pattern(:)
+!        use pm_kind, only: LKG => LK2
+!        logical(LKG)            , intent(inout) , allocatable   :: array(:)
+!        logical(LKG)            , intent(in)    , contiguous    :: pattern(:)
 !        integer(IK)             , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)             , intent(in)    , optional      :: sorted
 !        logical(LK)             , intent(in)    , optional      :: unique
-!        logical(LKC)            , intent(out)   , allocatable   :: ArrayRemoved(:)
+!        logical(LKG)            , intent(out)   , allocatable   :: ArrayRemoved(:)
 !    end subroutine
 !#endif
 !
@@ -9481,13 +9481,13 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComCusIns_D1_D1_LK1
 !#endif
-!        use pm_kind, only: LKC => LK1
-!        logical(LKC)            , intent(inout) , allocatable   :: array(:)
-!        logical(LKC)            , intent(in)    , contiguous    :: pattern(:)
+!        use pm_kind, only: LKG => LK1
+!        logical(LKG)            , intent(inout) , allocatable   :: array(:)
+!        logical(LKG)            , intent(in)    , contiguous    :: pattern(:)
 !        integer(IK)             , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)             , intent(in)    , optional      :: sorted
 !        logical(LK)             , intent(in)    , optional      :: unique
-!        logical(LKC)            , intent(out)   , allocatable   :: ArrayRemoved(:)
+!        logical(LKG)            , intent(out)   , allocatable   :: ArrayRemoved(:)
 !    end subroutine
 !#endif
 !
@@ -9498,13 +9498,13 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComCusIns_D1_D1_CK5
 !#endif
-!        use pm_kind, only: CKC => CK5
-!        complex(CKC)            , intent(inout) , allocatable   :: array(:)
-!        complex(CKC)            , intent(in)    , contiguous    :: pattern(:)
+!        use pm_kind, only: CKG => CK5
+!        complex(CKG)            , intent(inout) , allocatable   :: array(:)
+!        complex(CKG)            , intent(in)    , contiguous    :: pattern(:)
 !        integer(IK)             , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)             , intent(in)    , optional      :: sorted
 !        logical(LK)             , intent(in)    , optional      :: unique
-!        complex(CKC)            , intent(out)   , allocatable   :: ArrayRemoved(:)
+!        complex(CKG)            , intent(out)   , allocatable   :: ArrayRemoved(:)
 !    end subroutine
 !#endif
 !
@@ -9513,13 +9513,13 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComCusIns_D1_D1_CK4
 !#endif
-!        use pm_kind, only: CKC => CK4
-!        complex(CKC)            , intent(inout) , allocatable   :: array(:)
-!        complex(CKC)            , intent(in)    , contiguous    :: pattern(:)
+!        use pm_kind, only: CKG => CK4
+!        complex(CKG)            , intent(inout) , allocatable   :: array(:)
+!        complex(CKG)            , intent(in)    , contiguous    :: pattern(:)
 !        integer(IK)             , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)             , intent(in)    , optional      :: sorted
 !        logical(LK)             , intent(in)    , optional      :: unique
-!        complex(CKC)            , intent(out)   , allocatable   :: ArrayRemoved(:)
+!        complex(CKG)            , intent(out)   , allocatable   :: ArrayRemoved(:)
 !    end subroutine
 !#endif
 !
@@ -9528,13 +9528,13 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComCusIns_D1_D1_CK3
 !#endif
-!        use pm_kind, only: CKC => CK3
-!        complex(CKC)            , intent(inout) , allocatable   :: array(:)
-!        complex(CKC)            , intent(in)    , contiguous    :: pattern(:)
+!        use pm_kind, only: CKG => CK3
+!        complex(CKG)            , intent(inout) , allocatable   :: array(:)
+!        complex(CKG)            , intent(in)    , contiguous    :: pattern(:)
 !        integer(IK)             , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)             , intent(in)    , optional      :: sorted
 !        logical(LK)             , intent(in)    , optional      :: unique
-!        complex(CKC)            , intent(out)   , allocatable   :: ArrayRemoved(:)
+!        complex(CKG)            , intent(out)   , allocatable   :: ArrayRemoved(:)
 !    end subroutine
 !#endif
 !
@@ -9543,13 +9543,13 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComCusIns_D1_D1_CK2
 !#endif
-!        use pm_kind, only: CKC => CK2
-!        complex(CKC)            , intent(inout) , allocatable   :: array(:)
-!        complex(CKC)            , intent(in)    , contiguous    :: pattern(:)
+!        use pm_kind, only: CKG => CK2
+!        complex(CKG)            , intent(inout) , allocatable   :: array(:)
+!        complex(CKG)            , intent(in)    , contiguous    :: pattern(:)
 !        integer(IK)             , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)             , intent(in)    , optional      :: sorted
 !        logical(LK)             , intent(in)    , optional      :: unique
-!        complex(CKC)            , intent(out)   , allocatable   :: ArrayRemoved(:)
+!        complex(CKG)            , intent(out)   , allocatable   :: ArrayRemoved(:)
 !    end subroutine
 !#endif
 !
@@ -9558,13 +9558,13 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComCusIns_D1_D1_CK1
 !#endif
-!        use pm_kind, only: CKC => CK1
-!        complex(CKC)            , intent(inout) , allocatable   :: array(:)
-!        complex(CKC)            , intent(in)    , contiguous    :: pattern(:)
+!        use pm_kind, only: CKG => CK1
+!        complex(CKG)            , intent(inout) , allocatable   :: array(:)
+!        complex(CKG)            , intent(in)    , contiguous    :: pattern(:)
 !        integer(IK)             , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)             , intent(in)    , optional      :: sorted
 !        logical(LK)             , intent(in)    , optional      :: unique
-!        complex(CKC)            , intent(out)   , allocatable   :: ArrayRemoved(:)
+!        complex(CKG)            , intent(out)   , allocatable   :: ArrayRemoved(:)
 !    end subroutine
 !#endif
 !
@@ -9575,13 +9575,13 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComCusIns_D1_D1_RK5
 !#endif
-!        use pm_kind, only: RKC => RK5
-!        real(RKC)               , intent(inout) , allocatable   :: array(:)
-!        real(RKC)               , intent(in)    , contiguous    :: pattern(:)
+!        use pm_kind, only: RKG => RK5
+!        real(RKG)               , intent(inout) , allocatable   :: array(:)
+!        real(RKG)               , intent(in)    , contiguous    :: pattern(:)
 !        integer(IK)             , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)             , intent(in)    , optional      :: sorted
 !        logical(LK)             , intent(in)    , optional      :: unique
-!        real(RKC)               , intent(out)   , allocatable   :: ArrayRemoved(:)
+!        real(RKG)               , intent(out)   , allocatable   :: ArrayRemoved(:)
 !    end subroutine
 !#endif
 !
@@ -9590,13 +9590,13 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComCusIns_D1_D1_RK4
 !#endif
-!        use pm_kind, only: RKC => RK4
-!        real(RKC)               , intent(inout) , allocatable   :: array(:)
-!        real(RKC)               , intent(in)    , contiguous    :: pattern(:)
+!        use pm_kind, only: RKG => RK4
+!        real(RKG)               , intent(inout) , allocatable   :: array(:)
+!        real(RKG)               , intent(in)    , contiguous    :: pattern(:)
 !        integer(IK)             , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)             , intent(in)    , optional      :: sorted
 !        logical(LK)             , intent(in)    , optional      :: unique
-!        real(RKC)               , intent(out)   , allocatable   :: ArrayRemoved(:)
+!        real(RKG)               , intent(out)   , allocatable   :: ArrayRemoved(:)
 !    end subroutine
 !#endif
 !
@@ -9605,13 +9605,13 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComCusIns_D1_D1_RK3
 !#endif
-!        use pm_kind, only: RKC => RK3
-!        real(RKC)               , intent(inout) , allocatable   :: array(:)
-!        real(RKC)               , intent(in)    , contiguous    :: pattern(:)
+!        use pm_kind, only: RKG => RK3
+!        real(RKG)               , intent(inout) , allocatable   :: array(:)
+!        real(RKG)               , intent(in)    , contiguous    :: pattern(:)
 !        integer(IK)             , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)             , intent(in)    , optional      :: sorted
 !        logical(LK)             , intent(in)    , optional      :: unique
-!        real(RKC)               , intent(out)   , allocatable   :: ArrayRemoved(:)
+!        real(RKG)               , intent(out)   , allocatable   :: ArrayRemoved(:)
 !    end subroutine
 !#endif
 !
@@ -9620,13 +9620,13 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComCusIns_D1_D1_RK2
 !#endif
-!        use pm_kind, only: RKC => RK2
-!        real(RKC)               , intent(inout) , allocatable   :: array(:)
-!        real(RKC)               , intent(in)    , contiguous    :: pattern(:)
+!        use pm_kind, only: RKG => RK2
+!        real(RKG)               , intent(inout) , allocatable   :: array(:)
+!        real(RKG)               , intent(in)    , contiguous    :: pattern(:)
 !        integer(IK)             , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)             , intent(in)    , optional      :: sorted
 !        logical(LK)             , intent(in)    , optional      :: unique
-!        real(RKC)               , intent(out)   , allocatable   :: ArrayRemoved(:)
+!        real(RKG)               , intent(out)   , allocatable   :: ArrayRemoved(:)
 !    end subroutine
 !#endif
 !
@@ -9635,13 +9635,13 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedDefComCusIns_D1_D1_RK1
 !#endif
-!        use pm_kind, only: RKC => RK1
-!        real(RKC)               , intent(inout) , allocatable   :: array(:)
-!        real(RKC)               , intent(in)    , contiguous    :: pattern(:)
+!        use pm_kind, only: RKG => RK1
+!        real(RKG)               , intent(inout) , allocatable   :: array(:)
+!        real(RKG)               , intent(in)    , contiguous    :: pattern(:)
 !        integer(IK)             , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)             , intent(in)    , optional      :: sorted
 !        logical(LK)             , intent(in)    , optional      :: unique
-!        real(RKC)               , intent(out)   , allocatable   :: ArrayRemoved(:)
+!        real(RKG)               , intent(out)   , allocatable   :: ArrayRemoved(:)
 !    end subroutine
 !#endif
 !
@@ -9658,14 +9658,14 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComCusIns_D1_D1_SK5
 !#endif
-!        use pm_kind, only: SKC => SK5
-!        character(:,SKC)        , intent(inout) , allocatable   :: array(:)
-!        character(*,SKC)        , intent(in)    , contiguous    :: pattern(:)
+!        use pm_kind, only: SKG => SK5
+!        character(:,SKG)        , intent(inout) , allocatable   :: array(:)
+!        character(*,SKG)        , intent(in)    , contiguous    :: pattern(:)
 !        procedure(logical(LK))                                  :: iseq
 !        integer(IK)             , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)             , intent(in)    , optional      :: sorted
 !        logical(LK)             , intent(in)    , optional      :: unique
-!        character(*,SKC)                        , allocatable   :: ArrayRemoved(:)
+!        character(*,SKG)                        , allocatable   :: ArrayRemoved(:)
 !    end subroutine
 !#endif
 !
@@ -9674,14 +9674,14 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComCusIns_D1_D1_SK4
 !#endif
-!        use pm_kind, only: SKC => SK4
-!        character(:,SKC)        , intent(inout) , allocatable   :: array(:)
-!        character(*,SKC)        , intent(in)    , contiguous    :: pattern(:)
+!        use pm_kind, only: SKG => SK4
+!        character(:,SKG)        , intent(inout) , allocatable   :: array(:)
+!        character(*,SKG)        , intent(in)    , contiguous    :: pattern(:)
 !        procedure(logical(LK))                                  :: iseq
 !        integer(IK)             , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)             , intent(in)    , optional      :: sorted
 !        logical(LK)             , intent(in)    , optional      :: unique
-!        character(*,SKC)                        , allocatable   :: ArrayRemoved(:)
+!        character(*,SKG)                        , allocatable   :: ArrayRemoved(:)
 !    end subroutine
 !#endif
 !
@@ -9690,14 +9690,14 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComCusIns_D1_D1_SK3
 !#endif
-!        use pm_kind, only: SKC => SK3
-!        character(:,SKC)        , intent(inout) , allocatable   :: array(:)
-!        character(*,SKC)        , intent(in)    , contiguous    :: pattern(:)
+!        use pm_kind, only: SKG => SK3
+!        character(:,SKG)        , intent(inout) , allocatable   :: array(:)
+!        character(*,SKG)        , intent(in)    , contiguous    :: pattern(:)
 !        procedure(logical(LK))                                  :: iseq
 !        integer(IK)             , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)             , intent(in)    , optional      :: sorted
 !        logical(LK)             , intent(in)    , optional      :: unique
-!        character(*,SKC)                        , allocatable   :: ArrayRemoved(:)
+!        character(*,SKG)                        , allocatable   :: ArrayRemoved(:)
 !    end subroutine
 !#endif
 !
@@ -9706,14 +9706,14 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComCusIns_D1_D1_SK2
 !#endif
-!        use pm_kind, only: SKC => SK2
-!        character(:,SKC)        , intent(inout) , allocatable   :: array(:)
-!        character(*,SKC)        , intent(in)    , contiguous    :: pattern(:)
+!        use pm_kind, only: SKG => SK2
+!        character(:,SKG)        , intent(inout) , allocatable   :: array(:)
+!        character(*,SKG)        , intent(in)    , contiguous    :: pattern(:)
 !        procedure(logical(LK))                                  :: iseq
 !        integer(IK)             , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)             , intent(in)    , optional      :: sorted
 !        logical(LK)             , intent(in)    , optional      :: unique
-!        character(*,SKC)                        , allocatable   :: ArrayRemoved(:)
+!        character(*,SKG)                        , allocatable   :: ArrayRemoved(:)
 !    end subroutine
 !#endif
 !
@@ -9722,14 +9722,14 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComCusIns_D1_D1_SK1
 !#endif
-!        use pm_kind, only: SKC => SK1
-!        character(:,SKC)        , intent(inout) , allocatable   :: array(:)
-!        character(*,SKC)        , intent(in)    , contiguous    :: pattern(:)
+!        use pm_kind, only: SKG => SK1
+!        character(:,SKG)        , intent(inout) , allocatable   :: array(:)
+!        character(*,SKG)        , intent(in)    , contiguous    :: pattern(:)
 !        procedure(logical(LK))                                  :: iseq
 !        integer(IK)             , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)             , intent(in)    , optional      :: sorted
 !        logical(LK)             , intent(in)    , optional      :: unique
-!        character(*,SKC)                        , allocatable   :: ArrayRemoved(:)
+!        character(*,SKG)                        , allocatable   :: ArrayRemoved(:)
 !    end subroutine
 !#endif
 !
@@ -9740,14 +9740,14 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComCusIns_D1_D1_IK5
 !#endif
-!        use pm_kind, only: IKC => IK5
-!        integer(IKC)            , intent(inout) , allocatable   :: array(:)
-!        integer(IKC)            , intent(in)    , contiguous    :: pattern(:)
+!        use pm_kind, only: IKG => IK5
+!        integer(IKG)            , intent(inout) , allocatable   :: array(:)
+!        integer(IKG)            , intent(in)    , contiguous    :: pattern(:)
 !        procedure(logical(LK))                                  :: iseq
 !        integer(IK)             , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)             , intent(in)    , optional      :: sorted
 !        logical(LK)             , intent(in)    , optional      :: unique
-!        integer(IKC)            , intent(out)   , allocatable   :: ArrayRemoved(:)
+!        integer(IKG)            , intent(out)   , allocatable   :: ArrayRemoved(:)
 !    end subroutine
 !#endif
 !
@@ -9756,14 +9756,14 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComCusIns_D1_D1_IK4
 !#endif
-!        use pm_kind, only: IKC => IK4
-!        integer(IKC)            , intent(inout) , allocatable   :: array(:)
-!        integer(IKC)            , intent(in)    , contiguous    :: pattern(:)
+!        use pm_kind, only: IKG => IK4
+!        integer(IKG)            , intent(inout) , allocatable   :: array(:)
+!        integer(IKG)            , intent(in)    , contiguous    :: pattern(:)
 !        procedure(logical(LK))                                  :: iseq
 !        integer(IK)             , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)             , intent(in)    , optional      :: sorted
 !        logical(LK)             , intent(in)    , optional      :: unique
-!        integer(IKC)            , intent(out)   , allocatable   :: ArrayRemoved(:)
+!        integer(IKG)            , intent(out)   , allocatable   :: ArrayRemoved(:)
 !    end subroutine
 !#endif
 !
@@ -9772,14 +9772,14 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComCusIns_D1_D1_IK3
 !#endif
-!        use pm_kind, only: IKC => IK3
-!        integer(IKC)            , intent(inout) , allocatable   :: array(:)
-!        integer(IKC)            , intent(in)    , contiguous    :: pattern(:)
+!        use pm_kind, only: IKG => IK3
+!        integer(IKG)            , intent(inout) , allocatable   :: array(:)
+!        integer(IKG)            , intent(in)    , contiguous    :: pattern(:)
 !        procedure(logical(LK))                                  :: iseq
 !        integer(IK)             , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)             , intent(in)    , optional      :: sorted
 !        logical(LK)             , intent(in)    , optional      :: unique
-!        integer(IKC)            , intent(out)   , allocatable   :: ArrayRemoved(:)
+!        integer(IKG)            , intent(out)   , allocatable   :: ArrayRemoved(:)
 !    end subroutine
 !#endif
 !
@@ -9788,14 +9788,14 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComCusIns_D1_D1_IK2
 !#endif
-!        use pm_kind, only: IKC => IK2
-!        integer(IKC)            , intent(inout) , allocatable   :: array(:)
-!        integer(IKC)            , intent(in)    , contiguous    :: pattern(:)
+!        use pm_kind, only: IKG => IK2
+!        integer(IKG)            , intent(inout) , allocatable   :: array(:)
+!        integer(IKG)            , intent(in)    , contiguous    :: pattern(:)
 !        procedure(logical(LK))                                  :: iseq
 !        integer(IK)             , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)             , intent(in)    , optional      :: sorted
 !        logical(LK)             , intent(in)    , optional      :: unique
-!        integer(IKC)            , intent(out)   , allocatable   :: ArrayRemoved(:)
+!        integer(IKG)            , intent(out)   , allocatable   :: ArrayRemoved(:)
 !    end subroutine
 !#endif
 !
@@ -9804,14 +9804,14 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComCusIns_D1_D1_IK1
 !#endif
-!        use pm_kind, only: IKC => IK1
-!        integer(IKC)            , intent(inout) , allocatable   :: array(:)
-!        integer(IKC)            , intent(in)    , contiguous    :: pattern(:)
+!        use pm_kind, only: IKG => IK1
+!        integer(IKG)            , intent(inout) , allocatable   :: array(:)
+!        integer(IKG)            , intent(in)    , contiguous    :: pattern(:)
 !        procedure(logical(LK))                                  :: iseq
 !        integer(IK)             , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)             , intent(in)    , optional      :: sorted
 !        logical(LK)             , intent(in)    , optional      :: unique
-!        integer(IKC)            , intent(out)   , allocatable   :: ArrayRemoved(:)
+!        integer(IKG)            , intent(out)   , allocatable   :: ArrayRemoved(:)
 !    end subroutine
 !#endif
 !
@@ -9822,14 +9822,14 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComCusIns_D1_D1_LK5
 !#endif
-!        use pm_kind, only: LKC => LK5
-!        logical(LKC)            , intent(inout) , allocatable   :: array(:)
-!        logical(LKC)            , intent(in)    , contiguous    :: pattern(:)
+!        use pm_kind, only: LKG => LK5
+!        logical(LKG)            , intent(inout) , allocatable   :: array(:)
+!        logical(LKG)            , intent(in)    , contiguous    :: pattern(:)
 !        procedure(logical(LK))                                  :: iseq
 !        integer(IK)             , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)             , intent(in)    , optional      :: sorted
 !        logical(LK)             , intent(in)    , optional      :: unique
-!        logical(LKC)            , intent(out)   , allocatable   :: ArrayRemoved(:)
+!        logical(LKG)            , intent(out)   , allocatable   :: ArrayRemoved(:)
 !    end subroutine
 !#endif
 !
@@ -9838,14 +9838,14 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComCusIns_D1_D1_LK4
 !#endif
-!        use pm_kind, only: LKC => LK4
-!        logical(LKC)            , intent(inout) , allocatable   :: array(:)
-!        logical(LKC)            , intent(in)    , contiguous    :: pattern(:)
+!        use pm_kind, only: LKG => LK4
+!        logical(LKG)            , intent(inout) , allocatable   :: array(:)
+!        logical(LKG)            , intent(in)    , contiguous    :: pattern(:)
 !        procedure(logical(LK))                                  :: iseq
 !        integer(IK)             , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)             , intent(in)    , optional      :: sorted
 !        logical(LK)             , intent(in)    , optional      :: unique
-!        logical(LKC)            , intent(out)   , allocatable   :: ArrayRemoved(:)
+!        logical(LKG)            , intent(out)   , allocatable   :: ArrayRemoved(:)
 !    end subroutine
 !#endif
 !
@@ -9854,14 +9854,14 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComCusIns_D1_D1_LK3
 !#endif
-!        use pm_kind, only: LKC => LK3
-!        logical(LKC)            , intent(inout) , allocatable   :: array(:)
-!        logical(LKC)            , intent(in)    , contiguous    :: pattern(:)
+!        use pm_kind, only: LKG => LK3
+!        logical(LKG)            , intent(inout) , allocatable   :: array(:)
+!        logical(LKG)            , intent(in)    , contiguous    :: pattern(:)
 !        procedure(logical(LK))                                  :: iseq
 !        integer(IK)             , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)             , intent(in)    , optional      :: sorted
 !        logical(LK)             , intent(in)    , optional      :: unique
-!        logical(LKC)            , intent(out)   , allocatable   :: ArrayRemoved(:)
+!        logical(LKG)            , intent(out)   , allocatable   :: ArrayRemoved(:)
 !    end subroutine
 !#endif
 !
@@ -9870,14 +9870,14 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComCusIns_D1_D1_LK2
 !#endif
-!        use pm_kind, only: LKC => LK2
-!        logical(LKC)            , intent(inout) , allocatable   :: array(:)
-!        logical(LKC)            , intent(in)    , contiguous    :: pattern(:)
+!        use pm_kind, only: LKG => LK2
+!        logical(LKG)            , intent(inout) , allocatable   :: array(:)
+!        logical(LKG)            , intent(in)    , contiguous    :: pattern(:)
 !        procedure(logical(LK))                                  :: iseq
 !        integer(IK)             , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)             , intent(in)    , optional      :: sorted
 !        logical(LK)             , intent(in)    , optional      :: unique
-!        logical(LKC)            , intent(out)   , allocatable   :: ArrayRemoved(:)
+!        logical(LKG)            , intent(out)   , allocatable   :: ArrayRemoved(:)
 !    end subroutine
 !#endif
 !
@@ -9886,14 +9886,14 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComCusIns_D1_D1_LK1
 !#endif
-!        use pm_kind, only: LKC => LK1
-!        logical(LKC)            , intent(inout) , allocatable   :: array(:)
-!        logical(LKC)            , intent(in)    , contiguous    :: pattern(:)
+!        use pm_kind, only: LKG => LK1
+!        logical(LKG)            , intent(inout) , allocatable   :: array(:)
+!        logical(LKG)            , intent(in)    , contiguous    :: pattern(:)
 !        procedure(logical(LK))                                  :: iseq
 !        integer(IK)             , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)             , intent(in)    , optional      :: sorted
 !        logical(LK)             , intent(in)    , optional      :: unique
-!        logical(LKC)            , intent(out)   , allocatable   :: ArrayRemoved(:)
+!        logical(LKG)            , intent(out)   , allocatable   :: ArrayRemoved(:)
 !    end subroutine
 !#endif
 !
@@ -9904,14 +9904,14 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComCusIns_D1_D1_CK5
 !#endif
-!        use pm_kind, only: CKC => CK5
-!        complex(CKC)            , intent(inout) , allocatable   :: array(:)
-!        complex(CKC)            , intent(in)    , contiguous    :: pattern(:)
+!        use pm_kind, only: CKG => CK5
+!        complex(CKG)            , intent(inout) , allocatable   :: array(:)
+!        complex(CKG)            , intent(in)    , contiguous    :: pattern(:)
 !        procedure(logical(LK))                                  :: iseq
 !        integer(IK)             , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)             , intent(in)    , optional      :: sorted
 !        logical(LK)             , intent(in)    , optional      :: unique
-!        complex(CKC)            , intent(out)   , allocatable   :: ArrayRemoved(:)
+!        complex(CKG)            , intent(out)   , allocatable   :: ArrayRemoved(:)
 !    end subroutine
 !#endif
 !
@@ -9920,14 +9920,14 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComCusIns_D1_D1_CK4
 !#endif
-!        use pm_kind, only: CKC => CK4
-!        complex(CKC)            , intent(inout) , allocatable   :: array(:)
-!        complex(CKC)            , intent(in)    , contiguous    :: pattern(:)
+!        use pm_kind, only: CKG => CK4
+!        complex(CKG)            , intent(inout) , allocatable   :: array(:)
+!        complex(CKG)            , intent(in)    , contiguous    :: pattern(:)
 !        procedure(logical(LK))                                  :: iseq
 !        integer(IK)             , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)             , intent(in)    , optional      :: sorted
 !        logical(LK)             , intent(in)    , optional      :: unique
-!        complex(CKC)            , intent(out)   , allocatable   :: ArrayRemoved(:)
+!        complex(CKG)            , intent(out)   , allocatable   :: ArrayRemoved(:)
 !    end subroutine
 !#endif
 !
@@ -9936,14 +9936,14 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComCusIns_D1_D1_CK3
 !#endif
-!        use pm_kind, only: CKC => CK3
-!        complex(CKC)            , intent(inout) , allocatable   :: array(:)
-!        complex(CKC)            , intent(in)    , contiguous    :: pattern(:)
+!        use pm_kind, only: CKG => CK3
+!        complex(CKG)            , intent(inout) , allocatable   :: array(:)
+!        complex(CKG)            , intent(in)    , contiguous    :: pattern(:)
 !        procedure(logical(LK))                                  :: iseq
 !        integer(IK)             , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)             , intent(in)    , optional      :: sorted
 !        logical(LK)             , intent(in)    , optional      :: unique
-!        complex(CKC)            , intent(out)   , allocatable   :: ArrayRemoved(:)
+!        complex(CKG)            , intent(out)   , allocatable   :: ArrayRemoved(:)
 !    end subroutine
 !#endif
 !
@@ -9952,14 +9952,14 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComCusIns_D1_D1_CK2
 !#endif
-!        use pm_kind, only: CKC => CK2
-!        complex(CKC)            , intent(inout) , allocatable   :: array(:)
-!        complex(CKC)            , intent(in)    , contiguous    :: pattern(:)
+!        use pm_kind, only: CKG => CK2
+!        complex(CKG)            , intent(inout) , allocatable   :: array(:)
+!        complex(CKG)            , intent(in)    , contiguous    :: pattern(:)
 !        procedure(logical(LK))                                  :: iseq
 !        integer(IK)             , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)             , intent(in)    , optional      :: sorted
 !        logical(LK)             , intent(in)    , optional      :: unique
-!        complex(CKC)            , intent(out)   , allocatable   :: ArrayRemoved(:)
+!        complex(CKG)            , intent(out)   , allocatable   :: ArrayRemoved(:)
 !    end subroutine
 !#endif
 !
@@ -9968,14 +9968,14 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComCusIns_D1_D1_CK1
 !#endif
-!        use pm_kind, only: CKC => CK1
-!        complex(CKC)            , intent(inout) , allocatable   :: array(:)
-!        complex(CKC)            , intent(in)    , contiguous    :: pattern(:)
+!        use pm_kind, only: CKG => CK1
+!        complex(CKG)            , intent(inout) , allocatable   :: array(:)
+!        complex(CKG)            , intent(in)    , contiguous    :: pattern(:)
 !        procedure(logical(LK))                                  :: iseq
 !        integer(IK)             , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)             , intent(in)    , optional      :: sorted
 !        logical(LK)             , intent(in)    , optional      :: unique
-!        complex(CKC)            , intent(out)   , allocatable   :: ArrayRemoved(:)
+!        complex(CKG)            , intent(out)   , allocatable   :: ArrayRemoved(:)
 !    end subroutine
 !#endif
 !
@@ -9986,14 +9986,14 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComCusIns_D1_D1_RK5
 !#endif
-!        use pm_kind, only: RKC => RK5
-!        real(RKC)               , intent(inout) , allocatable   :: array(:)
-!        real(RKC)               , intent(in)    , contiguous    :: pattern(:)
+!        use pm_kind, only: RKG => RK5
+!        real(RKG)               , intent(inout) , allocatable   :: array(:)
+!        real(RKG)               , intent(in)    , contiguous    :: pattern(:)
 !        procedure(logical(LK))                                  :: iseq
 !        integer(IK)             , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)             , intent(in)    , optional      :: sorted
 !        logical(LK)             , intent(in)    , optional      :: unique
-!        real(RKC)               , intent(out)   , allocatable   :: ArrayRemoved(:)
+!        real(RKG)               , intent(out)   , allocatable   :: ArrayRemoved(:)
 !    end subroutine
 !#endif
 !
@@ -10002,14 +10002,14 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComCusIns_D1_D1_RK4
 !#endif
-!        use pm_kind, only: RKC => RK4
-!        real(RKC)               , intent(inout) , allocatable   :: array(:)
-!        real(RKC)               , intent(in)    , contiguous    :: pattern(:)
+!        use pm_kind, only: RKG => RK4
+!        real(RKG)               , intent(inout) , allocatable   :: array(:)
+!        real(RKG)               , intent(in)    , contiguous    :: pattern(:)
 !        procedure(logical(LK))                                  :: iseq
 !        integer(IK)             , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)             , intent(in)    , optional      :: sorted
 !        logical(LK)             , intent(in)    , optional      :: unique
-!        real(RKC)               , intent(out)   , allocatable   :: ArrayRemoved(:)
+!        real(RKG)               , intent(out)   , allocatable   :: ArrayRemoved(:)
 !    end subroutine
 !#endif
 !
@@ -10018,14 +10018,14 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComCusIns_D1_D1_RK3
 !#endif
-!        use pm_kind, only: RKC => RK3
-!        real(RKC)               , intent(inout) , allocatable   :: array(:)
-!        real(RKC)               , intent(in)    , contiguous    :: pattern(:)
+!        use pm_kind, only: RKG => RK3
+!        real(RKG)               , intent(inout) , allocatable   :: array(:)
+!        real(RKG)               , intent(in)    , contiguous    :: pattern(:)
 !        procedure(logical(LK))                                  :: iseq
 !        integer(IK)             , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)             , intent(in)    , optional      :: sorted
 !        logical(LK)             , intent(in)    , optional      :: unique
-!        real(RKC)               , intent(out)   , allocatable   :: ArrayRemoved(:)
+!        real(RKG)               , intent(out)   , allocatable   :: ArrayRemoved(:)
 !    end subroutine
 !#endif
 !
@@ -10034,14 +10034,14 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComCusIns_D1_D1_RK2
 !#endif
-!        use pm_kind, only: RKC => RK2
-!        real(RKC)               , intent(inout) , allocatable   :: array(:)
-!        real(RKC)               , intent(in)    , contiguous    :: pattern(:)
+!        use pm_kind, only: RKG => RK2
+!        real(RKG)               , intent(inout) , allocatable   :: array(:)
+!        real(RKG)               , intent(in)    , contiguous    :: pattern(:)
 !        procedure(logical(LK))                                  :: iseq
 !        integer(IK)             , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)             , intent(in)    , optional      :: sorted
 !        logical(LK)             , intent(in)    , optional      :: unique
-!        real(RKC)               , intent(out)   , allocatable   :: ArrayRemoved(:)
+!        real(RKG)               , intent(out)   , allocatable   :: ArrayRemoved(:)
 !    end subroutine
 !#endif
 !
@@ -10050,14 +10050,14 @@ module pm_arrayRemove
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setRemovedCusComCusIns_D1_D1_RK1
 !#endif
-!        use pm_kind, only: RKC => RK1
-!        real(RKC)               , intent(inout) , allocatable   :: array(:)
-!        real(RKC)               , intent(in)    , contiguous    :: pattern(:)
+!        use pm_kind, only: RKG => RK1
+!        real(RKG)               , intent(inout) , allocatable   :: array(:)
+!        real(RKG)               , intent(in)    , contiguous    :: pattern(:)
 !        procedure(logical(LK))                                  :: iseq
 !        integer(IK)             , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)             , intent(in)    , optional      :: sorted
 !        logical(LK)             , intent(in)    , optional      :: unique
-!        real(RKC)               , intent(out)   , allocatable   :: ArrayRemoved(:)
+!        real(RKG)               , intent(out)   , allocatable   :: ArrayRemoved(:)
 !    end subroutine
 !#endif
 !

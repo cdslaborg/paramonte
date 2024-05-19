@@ -29,8 +29,8 @@
 #endif
         ! Set the sizing function.
 #if     D0_ENABLED && SK_ENABLED
-        use pm_kind, only: IKC => IK
-        integer(IKC) :: index
+        use pm_kind, only: IKG => IK
+        integer(IKG) :: index
 #define GET_INDEX(i) i:i
 #define GET_SIZE len
 #elif   D1_ENABLED && (IK_ENABLED || RK_ENABLED)
@@ -43,33 +43,33 @@
 #if     (SK_ENABLED || IK_ENABLED) && (D0_ENABLED || D1_ENABLED)
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        integer(IKC) :: lenRange, irange
+        integer(IKG) :: lenRange, irange
 #if     Unit_ENABLED && getRange_ENABLED
-        integer(IKC) :: step
+        integer(IKG) :: step
         if (start < stop) then
-            step = 1_IKC
+            step = 1_IKG
         else
-            step = -1_IKC
+            step = -1_IKG
         end if
 #elif   Unit_ENABLED
-        integer(IKC), parameter :: step = 1_IKC
+        integer(IKG), parameter :: step = 1_IKG
 #elif   Step_ENABLED
-        CHECK_ASSERTION(__LINE__, step /= 0_IKC, SK_"@setRange(): The condition `step /= 0` must hold. step = "//getStr(step))
+        CHECK_ASSERTION(__LINE__, step /= 0_IKG, SK_"@setRange(): The condition `step /= 0` must hold. step = "//getStr(step))
 #else
 #error  "Unrecognized interface."
 #endif
-        lenRange = GET_SIZE(range, kind = IKC)
+        lenRange = GET_SIZE(range, kind = IKG)
 #if     SK_ENABLED && D0_ENABLED
-        index = ichar(start, IKC)
+        index = ichar(start, IKG)
 #endif
-        if (0_IKC < lenRange) then
-            range(GET_INDEX(1_IKC)) = start
-            do irange = 2_IKC, lenRange
+        if (0_IKG < lenRange) then
+            range(GET_INDEX(1_IKG)) = start
+            do irange = 2_IKG, lenRange
 #if             SK_ENABLED
                 index = index + step
-                range(GET_INDEX(irange)) = char(index, SKC)
+                range(GET_INDEX(irange)) = char(index, SKG)
 #elif           IK_ENABLED
-                range(GET_INDEX(irange)) = range(GET_INDEX(irange - 1_IKC)) + step
+                range(GET_INDEX(irange)) = range(GET_INDEX(irange - 1_IKG)) + step
 #else
 #error          "Unrecognized interface."
 #endif
@@ -80,10 +80,10 @@
 #elif   D1_ENABLED && RK_ENABLED && Unit_ENABLED && getRange_ENABLED
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        real(RKC) :: direction, next
+        real(RKG) :: direction, next
         integer(IK) :: iell, nell
         direction = stop - start
-        if (0._RKC < direction) then
+        if (0._RKG < direction) then
             iell = 1; nell = 127
             call setResized(range, nell)
             range(iell) = start
@@ -99,7 +99,7 @@
                 end if
             end do
             range = range(1:iell)
-        elseif (direction < 0._RKC) then
+        elseif (direction < 0._RKG) then
             iell = 1; nell = 127
             call setResized(range, nell)
             range(iell) = start
@@ -115,7 +115,7 @@
                 end if
             end do
             range = range(1:iell)
-        elseif (0._RKC == direction) then
+        elseif (0._RKG == direction) then
             range = [start]
         end if
 
@@ -123,10 +123,10 @@
 #elif   D1_ENABLED && RK_ENABLED
         !%%%%%%%%%%%%%%%%%%%%%%%
 
-        real(RKC), parameter :: direction = 1._RKC
+        real(RKG), parameter :: direction = 1._RKG
         integer(IK) :: iell, nell
 #if     Step_ENABLED
-        CHECK_ASSERTION(__LINE__, step /= 0._RKC, SK_"@setRange(): The condition `step /= 0` must hold. step = "//getStr(step))
+        CHECK_ASSERTION(__LINE__, step /= 0._RKG, SK_"@setRange(): The condition `step /= 0` must hold. step = "//getStr(step))
 #endif
         nell = size(range, 1, IK)
         if (nell == 0_IK) return

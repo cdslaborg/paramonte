@@ -203,9 +203,9 @@ module pm_distanceMahal
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisMahalSqEleInvDef_D0_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC), intent(in)                :: point, invCov
-        complex(CKC)                            :: mahalSq
+        use pm_kind, only: CKG => CK5
+        complex(CKG), intent(in)                :: point, invCov
+        complex(CKG)                            :: mahalSq
     end function
 #endif
 
@@ -214,9 +214,9 @@ module pm_distanceMahal
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisMahalSqEleInvDef_D0_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC), intent(in)                :: point, invCov
-        complex(CKC)                            :: mahalSq
+        use pm_kind, only: CKG => CK4
+        complex(CKG), intent(in)                :: point, invCov
+        complex(CKG)                            :: mahalSq
     end function
 #endif
 
@@ -225,9 +225,9 @@ module pm_distanceMahal
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisMahalSqEleInvDef_D0_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC), intent(in)                :: point, invCov
-        complex(CKC)                            :: mahalSq
+        use pm_kind, only: CKG => CK3
+        complex(CKG), intent(in)                :: point, invCov
+        complex(CKG)                            :: mahalSq
     end function
 #endif
 
@@ -236,9 +236,9 @@ module pm_distanceMahal
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisMahalSqEleInvDef_D0_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC), intent(in)                :: point, invCov
-        complex(CKC)                            :: mahalSq
+        use pm_kind, only: CKG => CK2
+        complex(CKG), intent(in)                :: point, invCov
+        complex(CKG)                            :: mahalSq
     end function
 #endif
 
@@ -247,9 +247,9 @@ module pm_distanceMahal
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisMahalSqEleInvDef_D0_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC), intent(in)                :: point, invCov
-        complex(CKC)                            :: mahalSq
+        use pm_kind, only: CKG => CK1
+        complex(CKG), intent(in)                :: point, invCov
+        complex(CKG)                            :: mahalSq
     end function
 #endif
 
@@ -260,9 +260,9 @@ module pm_distanceMahal
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisMahalSqEleInvDef_D0_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(in)                :: point, invCov
-        real(RKC)                               :: mahalSq
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(in)                :: point, invCov
+        real(RKG)                               :: mahalSq
     end function
 #endif
 
@@ -271,9 +271,9 @@ module pm_distanceMahal
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisMahalSqEleInvDef_D0_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(in)                :: point, invCov
-        real(RKC)                               :: mahalSq
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(in)                :: point, invCov
+        real(RKG)                               :: mahalSq
     end function
 #endif
 
@@ -282,9 +282,9 @@ module pm_distanceMahal
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisMahalSqEleInvDef_D0_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(in)                :: point, invCov
-        real(RKC)                               :: mahalSq
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(in)                :: point, invCov
+        real(RKG)                               :: mahalSq
     end function
 #endif
 
@@ -293,9 +293,9 @@ module pm_distanceMahal
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisMahalSqEleInvDef_D0_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(in)                :: point, invCov
-        real(RKC)                               :: mahalSq
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(in)                :: point, invCov
+        real(RKG)                               :: mahalSq
     end function
 #endif
 
@@ -304,9 +304,9 @@ module pm_distanceMahal
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisMahalSqEleInvDef_D0_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(in)                :: point, invCov
-        real(RKC)                               :: mahalSq
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(in)                :: point, invCov
+        real(RKG)                               :: mahalSq
     end function
 #endif
 
@@ -323,9 +323,9 @@ module pm_distanceMahal
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisMahalSqEleInvCen_D0_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC), intent(in)                :: point, invCov, center
-        complex(CKC)                            :: mahalSq
+        use pm_kind, only: CKG => CK5
+        complex(CKG), intent(in)                :: point, invCov, center
+        complex(CKG)                            :: mahalSq
     end function
 #endif
 
@@ -334,9 +334,9 @@ module pm_distanceMahal
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisMahalSqEleInvCen_D0_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC), intent(in)                :: point, invCov, center
-        complex(CKC)                            :: mahalSq
+        use pm_kind, only: CKG => CK4
+        complex(CKG), intent(in)                :: point, invCov, center
+        complex(CKG)                            :: mahalSq
     end function
 #endif
 
@@ -345,9 +345,9 @@ module pm_distanceMahal
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisMahalSqEleInvCen_D0_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC), intent(in)                :: point, invCov, center
-        complex(CKC)                            :: mahalSq
+        use pm_kind, only: CKG => CK3
+        complex(CKG), intent(in)                :: point, invCov, center
+        complex(CKG)                            :: mahalSq
     end function
 #endif
 
@@ -356,9 +356,9 @@ module pm_distanceMahal
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisMahalSqEleInvCen_D0_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC), intent(in)                :: point, invCov, center
-        complex(CKC)                            :: mahalSq
+        use pm_kind, only: CKG => CK2
+        complex(CKG), intent(in)                :: point, invCov, center
+        complex(CKG)                            :: mahalSq
     end function
 #endif
 
@@ -367,9 +367,9 @@ module pm_distanceMahal
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisMahalSqEleInvCen_D0_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC), intent(in)                :: point, invCov, center
-        complex(CKC)                            :: mahalSq
+        use pm_kind, only: CKG => CK1
+        complex(CKG), intent(in)                :: point, invCov, center
+        complex(CKG)                            :: mahalSq
     end function
 #endif
 
@@ -380,9 +380,9 @@ module pm_distanceMahal
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisMahalSqEleInvCen_D0_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(in)                :: point, invCov, center
-        real(RKC)                               :: mahalSq
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(in)                :: point, invCov, center
+        real(RKG)                               :: mahalSq
     end function
 #endif
 
@@ -391,9 +391,9 @@ module pm_distanceMahal
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisMahalSqEleInvCen_D0_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(in)                :: point, invCov, center
-        real(RKC)                               :: mahalSq
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(in)                :: point, invCov, center
+        real(RKG)                               :: mahalSq
     end function
 #endif
 
@@ -402,9 +402,9 @@ module pm_distanceMahal
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisMahalSqEleInvCen_D0_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(in)                :: point, invCov, center
-        real(RKC)                               :: mahalSq
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(in)                :: point, invCov, center
+        real(RKG)                               :: mahalSq
     end function
 #endif
 
@@ -413,9 +413,9 @@ module pm_distanceMahal
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisMahalSqEleInvCen_D0_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(in)                :: point, invCov, center
-        real(RKC)                               :: mahalSq
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(in)                :: point, invCov, center
+        real(RKG)                               :: mahalSq
     end function
 #endif
 
@@ -424,9 +424,9 @@ module pm_distanceMahal
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisMahalSqEleInvCen_D0_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(in)                :: point, invCov, center
-        real(RKC)                               :: mahalSq
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(in)                :: point, invCov, center
+        real(RKG)                               :: mahalSq
     end function
 #endif
 
@@ -451,9 +451,9 @@ module pm_distanceMahal
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisMahalSqOneInvDef_D1_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC), intent(in), contiguous    :: point(:), invCov(:,:)
-        complex(CKC)                            :: mahalSq
+        use pm_kind, only: CKG => CK5
+        complex(CKG), intent(in), contiguous    :: point(:), invCov(:,:)
+        complex(CKG)                            :: mahalSq
     end function
 #endif
 
@@ -462,9 +462,9 @@ module pm_distanceMahal
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisMahalSqOneInvDef_D1_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC), intent(in), contiguous    :: point(:), invCov(:,:)
-        complex(CKC)                            :: mahalSq
+        use pm_kind, only: CKG => CK4
+        complex(CKG), intent(in), contiguous    :: point(:), invCov(:,:)
+        complex(CKG)                            :: mahalSq
     end function
 #endif
 
@@ -473,9 +473,9 @@ module pm_distanceMahal
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisMahalSqOneInvDef_D1_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC), intent(in), contiguous    :: point(:), invCov(:,:)
-        complex(CKC)                            :: mahalSq
+        use pm_kind, only: CKG => CK3
+        complex(CKG), intent(in), contiguous    :: point(:), invCov(:,:)
+        complex(CKG)                            :: mahalSq
     end function
 #endif
 
@@ -484,9 +484,9 @@ module pm_distanceMahal
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisMahalSqOneInvDef_D1_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC), intent(in), contiguous    :: point(:), invCov(:,:)
-        complex(CKC)                            :: mahalSq
+        use pm_kind, only: CKG => CK2
+        complex(CKG), intent(in), contiguous    :: point(:), invCov(:,:)
+        complex(CKG)                            :: mahalSq
     end function
 #endif
 
@@ -495,9 +495,9 @@ module pm_distanceMahal
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisMahalSqOneInvDef_D1_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC), intent(in), contiguous    :: point(:), invCov(:,:)
-        complex(CKC)                            :: mahalSq
+        use pm_kind, only: CKG => CK1
+        complex(CKG), intent(in), contiguous    :: point(:), invCov(:,:)
+        complex(CKG)                            :: mahalSq
     end function
 #endif
 
@@ -508,9 +508,9 @@ module pm_distanceMahal
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisMahalSqOneInvDef_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(in), contiguous    :: point(:), invCov(:,:)
-        real(RKC)                               :: mahalSq
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(in), contiguous    :: point(:), invCov(:,:)
+        real(RKG)                               :: mahalSq
     end function
 #endif
 
@@ -519,9 +519,9 @@ module pm_distanceMahal
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisMahalSqOneInvDef_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(in), contiguous    :: point(:), invCov(:,:)
-        real(RKC)                               :: mahalSq
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(in), contiguous    :: point(:), invCov(:,:)
+        real(RKG)                               :: mahalSq
     end function
 #endif
 
@@ -530,9 +530,9 @@ module pm_distanceMahal
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisMahalSqOneInvDef_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(in), contiguous    :: point(:), invCov(:,:)
-        real(RKC)                               :: mahalSq
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(in), contiguous    :: point(:), invCov(:,:)
+        real(RKG)                               :: mahalSq
     end function
 #endif
 
@@ -541,9 +541,9 @@ module pm_distanceMahal
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisMahalSqOneInvDef_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(in), contiguous    :: point(:), invCov(:,:)
-        real(RKC)                               :: mahalSq
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(in), contiguous    :: point(:), invCov(:,:)
+        real(RKG)                               :: mahalSq
     end function
 #endif
 
@@ -552,9 +552,9 @@ module pm_distanceMahal
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisMahalSqOneInvDef_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(in), contiguous    :: point(:), invCov(:,:)
-        real(RKC)                               :: mahalSq
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(in), contiguous    :: point(:), invCov(:,:)
+        real(RKG)                               :: mahalSq
     end function
 #endif
 
@@ -571,9 +571,9 @@ module pm_distanceMahal
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisMahalSqOneInvCen_D1_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC), intent(in), contiguous    :: point(:), invCov(:,:), center(:)
-        complex(CKC)                            :: mahalSq
+        use pm_kind, only: CKG => CK5
+        complex(CKG), intent(in), contiguous    :: point(:), invCov(:,:), center(:)
+        complex(CKG)                            :: mahalSq
     end function
 #endif
 
@@ -582,9 +582,9 @@ module pm_distanceMahal
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisMahalSqOneInvCen_D1_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC), intent(in), contiguous    :: point(:), invCov(:,:), center(:)
-        complex(CKC)                            :: mahalSq
+        use pm_kind, only: CKG => CK4
+        complex(CKG), intent(in), contiguous    :: point(:), invCov(:,:), center(:)
+        complex(CKG)                            :: mahalSq
     end function
 #endif
 
@@ -593,9 +593,9 @@ module pm_distanceMahal
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisMahalSqOneInvCen_D1_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC), intent(in), contiguous    :: point(:), invCov(:,:), center(:)
-        complex(CKC)                            :: mahalSq
+        use pm_kind, only: CKG => CK3
+        complex(CKG), intent(in), contiguous    :: point(:), invCov(:,:), center(:)
+        complex(CKG)                            :: mahalSq
     end function
 #endif
 
@@ -604,9 +604,9 @@ module pm_distanceMahal
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisMahalSqOneInvCen_D1_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC), intent(in), contiguous    :: point(:), invCov(:,:), center(:)
-        complex(CKC)                            :: mahalSq
+        use pm_kind, only: CKG => CK2
+        complex(CKG), intent(in), contiguous    :: point(:), invCov(:,:), center(:)
+        complex(CKG)                            :: mahalSq
     end function
 #endif
 
@@ -615,9 +615,9 @@ module pm_distanceMahal
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisMahalSqOneInvCen_D1_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC), intent(in), contiguous    :: point(:), invCov(:,:), center(:)
-        complex(CKC)                            :: mahalSq
+        use pm_kind, only: CKG => CK1
+        complex(CKG), intent(in), contiguous    :: point(:), invCov(:,:), center(:)
+        complex(CKG)                            :: mahalSq
     end function
 #endif
 
@@ -628,9 +628,9 @@ module pm_distanceMahal
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisMahalSqOneInvCen_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(in), contiguous    :: point(:), invCov(:,:), center(:)
-        real(RKC)                               :: mahalSq
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(in), contiguous    :: point(:), invCov(:,:), center(:)
+        real(RKG)                               :: mahalSq
     end function
 #endif
 
@@ -639,9 +639,9 @@ module pm_distanceMahal
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisMahalSqOneInvCen_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(in), contiguous    :: point(:), invCov(:,:), center(:)
-        real(RKC)                               :: mahalSq
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(in), contiguous    :: point(:), invCov(:,:), center(:)
+        real(RKG)                               :: mahalSq
     end function
 #endif
 
@@ -650,9 +650,9 @@ module pm_distanceMahal
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisMahalSqOneInvCen_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(in), contiguous    :: point(:), invCov(:,:), center(:)
-        real(RKC)                               :: mahalSq
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(in), contiguous    :: point(:), invCov(:,:), center(:)
+        real(RKG)                               :: mahalSq
     end function
 #endif
 
@@ -661,9 +661,9 @@ module pm_distanceMahal
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisMahalSqOneInvCen_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(in), contiguous    :: point(:), invCov(:,:), center(:)
-        real(RKC)                               :: mahalSq
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(in), contiguous    :: point(:), invCov(:,:), center(:)
+        real(RKG)                               :: mahalSq
     end function
 #endif
 
@@ -672,9 +672,9 @@ module pm_distanceMahal
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisMahalSqOneInvCen_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(in), contiguous    :: point(:), invCov(:,:), center(:)
-        real(RKC)                               :: mahalSq
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(in), contiguous    :: point(:), invCov(:,:), center(:)
+        real(RKG)                               :: mahalSq
     end function
 #endif
 
@@ -695,9 +695,9 @@ module pm_distanceMahal
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisMahalSqOneInvDef_D2_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC), intent(in), contiguous    :: point(:,:), invCov(:,:)
-        complex(CKC)                            :: mahalSq(size(point, 2, IK))
+        use pm_kind, only: CKG => CK5
+        complex(CKG), intent(in), contiguous    :: point(:,:), invCov(:,:)
+        complex(CKG)                            :: mahalSq(size(point, 2, IK))
     end function
 #endif
 
@@ -706,9 +706,9 @@ module pm_distanceMahal
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisMahalSqOneInvDef_D2_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC), intent(in), contiguous    :: point(:,:), invCov(:,:)
-        complex(CKC)                            :: mahalSq(size(point, 2, IK))
+        use pm_kind, only: CKG => CK4
+        complex(CKG), intent(in), contiguous    :: point(:,:), invCov(:,:)
+        complex(CKG)                            :: mahalSq(size(point, 2, IK))
     end function
 #endif
 
@@ -717,9 +717,9 @@ module pm_distanceMahal
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisMahalSqOneInvDef_D2_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC), intent(in), contiguous    :: point(:,:), invCov(:,:)
-        complex(CKC)                            :: mahalSq(size(point, 2, IK))
+        use pm_kind, only: CKG => CK3
+        complex(CKG), intent(in), contiguous    :: point(:,:), invCov(:,:)
+        complex(CKG)                            :: mahalSq(size(point, 2, IK))
     end function
 #endif
 
@@ -728,9 +728,9 @@ module pm_distanceMahal
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisMahalSqOneInvDef_D2_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC), intent(in), contiguous    :: point(:,:), invCov(:,:)
-        complex(CKC)                            :: mahalSq(size(point, 2, IK))
+        use pm_kind, only: CKG => CK2
+        complex(CKG), intent(in), contiguous    :: point(:,:), invCov(:,:)
+        complex(CKG)                            :: mahalSq(size(point, 2, IK))
     end function
 #endif
 
@@ -739,9 +739,9 @@ module pm_distanceMahal
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisMahalSqOneInvDef_D2_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC), intent(in), contiguous    :: point(:,:), invCov(:,:)
-        complex(CKC)                            :: mahalSq(size(point, 2, IK))
+        use pm_kind, only: CKG => CK1
+        complex(CKG), intent(in), contiguous    :: point(:,:), invCov(:,:)
+        complex(CKG)                            :: mahalSq(size(point, 2, IK))
     end function
 #endif
 
@@ -752,9 +752,9 @@ module pm_distanceMahal
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisMahalSqOneInvDef_D2_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(in), contiguous    :: point(:,:), invCov(:,:)
-        real(RKC)                               :: mahalSq(size(point, 2, IK))
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(in), contiguous    :: point(:,:), invCov(:,:)
+        real(RKG)                               :: mahalSq(size(point, 2, IK))
     end function
 #endif
 
@@ -763,9 +763,9 @@ module pm_distanceMahal
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisMahalSqOneInvDef_D2_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(in), contiguous    :: point(:,:), invCov(:,:)
-        real(RKC)                               :: mahalSq(size(point, 2, IK))
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(in), contiguous    :: point(:,:), invCov(:,:)
+        real(RKG)                               :: mahalSq(size(point, 2, IK))
     end function
 #endif
 
@@ -774,9 +774,9 @@ module pm_distanceMahal
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisMahalSqOneInvDef_D2_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(in), contiguous    :: point(:,:), invCov(:,:)
-        real(RKC)                               :: mahalSq(size(point, 2, IK))
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(in), contiguous    :: point(:,:), invCov(:,:)
+        real(RKG)                               :: mahalSq(size(point, 2, IK))
     end function
 #endif
 
@@ -785,9 +785,9 @@ module pm_distanceMahal
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisMahalSqOneInvDef_D2_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(in), contiguous    :: point(:,:), invCov(:,:)
-        real(RKC)                               :: mahalSq(size(point, 2, IK))
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(in), contiguous    :: point(:,:), invCov(:,:)
+        real(RKG)                               :: mahalSq(size(point, 2, IK))
     end function
 #endif
 
@@ -796,9 +796,9 @@ module pm_distanceMahal
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisMahalSqOneInvDef_D2_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(in), contiguous    :: point(:,:), invCov(:,:)
-        real(RKC)                               :: mahalSq(size(point, 2, IK))
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(in), contiguous    :: point(:,:), invCov(:,:)
+        real(RKG)                               :: mahalSq(size(point, 2, IK))
     end function
 #endif
 
@@ -815,9 +815,9 @@ module pm_distanceMahal
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisMahalSqOneInvCen_D2_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC), intent(in), contiguous    :: point(:,:), invCov(:,:), center(:)
-        complex(CKC)                            :: mahalSq(size(point, 2, IK))
+        use pm_kind, only: CKG => CK5
+        complex(CKG), intent(in), contiguous    :: point(:,:), invCov(:,:), center(:)
+        complex(CKG)                            :: mahalSq(size(point, 2, IK))
     end function
 #endif
 
@@ -826,9 +826,9 @@ module pm_distanceMahal
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisMahalSqOneInvCen_D2_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC), intent(in), contiguous    :: point(:,:), invCov(:,:), center(:)
-        complex(CKC)                            :: mahalSq(size(point, 2, IK))
+        use pm_kind, only: CKG => CK4
+        complex(CKG), intent(in), contiguous    :: point(:,:), invCov(:,:), center(:)
+        complex(CKG)                            :: mahalSq(size(point, 2, IK))
     end function
 #endif
 
@@ -837,9 +837,9 @@ module pm_distanceMahal
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisMahalSqOneInvCen_D2_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC), intent(in), contiguous    :: point(:,:), invCov(:,:), center(:)
-        complex(CKC)                            :: mahalSq(size(point, 2, IK))
+        use pm_kind, only: CKG => CK3
+        complex(CKG), intent(in), contiguous    :: point(:,:), invCov(:,:), center(:)
+        complex(CKG)                            :: mahalSq(size(point, 2, IK))
     end function
 #endif
 
@@ -848,9 +848,9 @@ module pm_distanceMahal
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisMahalSqOneInvCen_D2_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC), intent(in), contiguous    :: point(:,:), invCov(:,:), center(:)
-        complex(CKC)                            :: mahalSq(size(point, 2, IK))
+        use pm_kind, only: CKG => CK2
+        complex(CKG), intent(in), contiguous    :: point(:,:), invCov(:,:), center(:)
+        complex(CKG)                            :: mahalSq(size(point, 2, IK))
     end function
 #endif
 
@@ -859,9 +859,9 @@ module pm_distanceMahal
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisMahalSqOneInvCen_D2_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC), intent(in), contiguous    :: point(:,:), invCov(:,:), center(:)
-        complex(CKC)                            :: mahalSq(size(point, 2, IK))
+        use pm_kind, only: CKG => CK1
+        complex(CKG), intent(in), contiguous    :: point(:,:), invCov(:,:), center(:)
+        complex(CKG)                            :: mahalSq(size(point, 2, IK))
     end function
 #endif
 
@@ -872,9 +872,9 @@ module pm_distanceMahal
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisMahalSqOneInvCen_D2_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(in), contiguous    :: point(:,:), invCov(:,:), center(:)
-        real(RKC)                               :: mahalSq(size(point, 2, IK))
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(in), contiguous    :: point(:,:), invCov(:,:), center(:)
+        real(RKG)                               :: mahalSq(size(point, 2, IK))
     end function
 #endif
 
@@ -883,9 +883,9 @@ module pm_distanceMahal
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisMahalSqOneInvCen_D2_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(in), contiguous    :: point(:,:), invCov(:,:), center(:)
-        real(RKC)                               :: mahalSq(size(point, 2, IK))
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(in), contiguous    :: point(:,:), invCov(:,:), center(:)
+        real(RKG)                               :: mahalSq(size(point, 2, IK))
     end function
 #endif
 
@@ -894,9 +894,9 @@ module pm_distanceMahal
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisMahalSqOneInvCen_D2_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(in), contiguous    :: point(:,:), invCov(:,:), center(:)
-        real(RKC)                               :: mahalSq(size(point, 2, IK))
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(in), contiguous    :: point(:,:), invCov(:,:), center(:)
+        real(RKG)                               :: mahalSq(size(point, 2, IK))
     end function
 #endif
 
@@ -905,9 +905,9 @@ module pm_distanceMahal
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisMahalSqOneInvCen_D2_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(in), contiguous    :: point(:,:), invCov(:,:), center(:)
-        real(RKC)                               :: mahalSq(size(point, 2, IK))
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(in), contiguous    :: point(:,:), invCov(:,:), center(:)
+        real(RKG)                               :: mahalSq(size(point, 2, IK))
     end function
 #endif
 
@@ -916,9 +916,9 @@ module pm_distanceMahal
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisMahalSqOneInvCen_D2_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(in), contiguous    :: point(:,:), invCov(:,:), center(:)
-        real(RKC)                               :: mahalSq(size(point, 2, IK))
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(in), contiguous    :: point(:,:), invCov(:,:), center(:)
+        real(RKG)                               :: mahalSq(size(point, 2, IK))
     end function
 #endif
 
@@ -943,9 +943,9 @@ module pm_distanceMahal
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisMahalSqMixInvDef_D1_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC), intent(in), contiguous    :: point(:), invCov(:,:,:)
-        complex(CKC)                            :: mahalSq(size(invCov, 3, IK))
+        use pm_kind, only: CKG => CK5
+        complex(CKG), intent(in), contiguous    :: point(:), invCov(:,:,:)
+        complex(CKG)                            :: mahalSq(size(invCov, 3, IK))
     end function
 #endif
 
@@ -954,9 +954,9 @@ module pm_distanceMahal
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisMahalSqMixInvDef_D1_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC), intent(in), contiguous    :: point(:), invCov(:,:,:)
-        complex(CKC)                            :: mahalSq(size(invCov, 3, IK))
+        use pm_kind, only: CKG => CK4
+        complex(CKG), intent(in), contiguous    :: point(:), invCov(:,:,:)
+        complex(CKG)                            :: mahalSq(size(invCov, 3, IK))
     end function
 #endif
 
@@ -965,9 +965,9 @@ module pm_distanceMahal
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisMahalSqMixInvDef_D1_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC), intent(in), contiguous    :: point(:), invCov(:,:,:)
-        complex(CKC)                            :: mahalSq(size(invCov, 3, IK))
+        use pm_kind, only: CKG => CK3
+        complex(CKG), intent(in), contiguous    :: point(:), invCov(:,:,:)
+        complex(CKG)                            :: mahalSq(size(invCov, 3, IK))
     end function
 #endif
 
@@ -976,9 +976,9 @@ module pm_distanceMahal
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisMahalSqMixInvDef_D1_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC), intent(in), contiguous    :: point(:), invCov(:,:,:)
-        complex(CKC)                            :: mahalSq(size(invCov, 3, IK))
+        use pm_kind, only: CKG => CK2
+        complex(CKG), intent(in), contiguous    :: point(:), invCov(:,:,:)
+        complex(CKG)                            :: mahalSq(size(invCov, 3, IK))
     end function
 #endif
 
@@ -987,9 +987,9 @@ module pm_distanceMahal
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisMahalSqMixInvDef_D1_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC), intent(in), contiguous    :: point(:), invCov(:,:,:)
-        complex(CKC)                            :: mahalSq(size(invCov, 3, IK))
+        use pm_kind, only: CKG => CK1
+        complex(CKG), intent(in), contiguous    :: point(:), invCov(:,:,:)
+        complex(CKG)                            :: mahalSq(size(invCov, 3, IK))
     end function
 #endif
 
@@ -1000,9 +1000,9 @@ module pm_distanceMahal
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisMahalSqMixInvDef_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(in), contiguous    :: point(:), invCov(:,:,:)
-        real(RKC)                               :: mahalSq(size(invCov, 3, IK))
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(in), contiguous    :: point(:), invCov(:,:,:)
+        real(RKG)                               :: mahalSq(size(invCov, 3, IK))
     end function
 #endif
 
@@ -1011,9 +1011,9 @@ module pm_distanceMahal
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisMahalSqMixInvDef_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(in), contiguous    :: point(:), invCov(:,:,:)
-        real(RKC)                               :: mahalSq(size(invCov, 3, IK))
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(in), contiguous    :: point(:), invCov(:,:,:)
+        real(RKG)                               :: mahalSq(size(invCov, 3, IK))
     end function
 #endif
 
@@ -1022,9 +1022,9 @@ module pm_distanceMahal
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisMahalSqMixInvDef_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(in), contiguous    :: point(:), invCov(:,:,:)
-        real(RKC)                               :: mahalSq(size(invCov, 3, IK))
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(in), contiguous    :: point(:), invCov(:,:,:)
+        real(RKG)                               :: mahalSq(size(invCov, 3, IK))
     end function
 #endif
 
@@ -1033,9 +1033,9 @@ module pm_distanceMahal
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisMahalSqMixInvDef_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(in), contiguous    :: point(:), invCov(:,:,:)
-        real(RKC)                               :: mahalSq(size(invCov, 3, IK))
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(in), contiguous    :: point(:), invCov(:,:,:)
+        real(RKG)                               :: mahalSq(size(invCov, 3, IK))
     end function
 #endif
 
@@ -1044,9 +1044,9 @@ module pm_distanceMahal
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisMahalSqMixInvDef_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(in), contiguous    :: point(:), invCov(:,:,:)
-        real(RKC)                               :: mahalSq(size(invCov, 3, IK))
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(in), contiguous    :: point(:), invCov(:,:,:)
+        real(RKG)                               :: mahalSq(size(invCov, 3, IK))
     end function
 #endif
 
@@ -1063,9 +1063,9 @@ module pm_distanceMahal
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisMahalSqMixInvCen_D1_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC), intent(in), contiguous    :: point(:), invCov(:,:,:), center(:,:)
-        complex(CKC)                            :: mahalSq(size(invCov, 3, IK))
+        use pm_kind, only: CKG => CK5
+        complex(CKG), intent(in), contiguous    :: point(:), invCov(:,:,:), center(:,:)
+        complex(CKG)                            :: mahalSq(size(invCov, 3, IK))
     end function
 #endif
 
@@ -1074,9 +1074,9 @@ module pm_distanceMahal
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisMahalSqMixInvCen_D1_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC), intent(in), contiguous    :: point(:), invCov(:,:,:), center(:,:)
-        complex(CKC)                            :: mahalSq(size(invCov, 3, IK))
+        use pm_kind, only: CKG => CK4
+        complex(CKG), intent(in), contiguous    :: point(:), invCov(:,:,:), center(:,:)
+        complex(CKG)                            :: mahalSq(size(invCov, 3, IK))
     end function
 #endif
 
@@ -1085,9 +1085,9 @@ module pm_distanceMahal
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisMahalSqMixInvCen_D1_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC), intent(in), contiguous    :: point(:), invCov(:,:,:), center(:,:)
-        complex(CKC)                            :: mahalSq(size(invCov, 3, IK))
+        use pm_kind, only: CKG => CK3
+        complex(CKG), intent(in), contiguous    :: point(:), invCov(:,:,:), center(:,:)
+        complex(CKG)                            :: mahalSq(size(invCov, 3, IK))
     end function
 #endif
 
@@ -1096,9 +1096,9 @@ module pm_distanceMahal
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisMahalSqMixInvCen_D1_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC), intent(in), contiguous    :: point(:), invCov(:,:,:), center(:,:)
-        complex(CKC)                            :: mahalSq(size(invCov, 3, IK))
+        use pm_kind, only: CKG => CK2
+        complex(CKG), intent(in), contiguous    :: point(:), invCov(:,:,:), center(:,:)
+        complex(CKG)                            :: mahalSq(size(invCov, 3, IK))
     end function
 #endif
 
@@ -1107,9 +1107,9 @@ module pm_distanceMahal
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisMahalSqMixInvCen_D1_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC), intent(in), contiguous    :: point(:), invCov(:,:,:), center(:,:)
-        complex(CKC)                            :: mahalSq(size(invCov, 3, IK))
+        use pm_kind, only: CKG => CK1
+        complex(CKG), intent(in), contiguous    :: point(:), invCov(:,:,:), center(:,:)
+        complex(CKG)                            :: mahalSq(size(invCov, 3, IK))
     end function
 #endif
 
@@ -1120,9 +1120,9 @@ module pm_distanceMahal
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisMahalSqMixInvCen_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(in), contiguous    :: point(:), invCov(:,:,:), center(:,:)
-        real(RKC)                               :: mahalSq(size(invCov, 3, IK))
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(in), contiguous    :: point(:), invCov(:,:,:), center(:,:)
+        real(RKG)                               :: mahalSq(size(invCov, 3, IK))
     end function
 #endif
 
@@ -1131,9 +1131,9 @@ module pm_distanceMahal
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisMahalSqMixInvCen_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(in), contiguous    :: point(:), invCov(:,:,:), center(:,:)
-        real(RKC)                               :: mahalSq(size(invCov, 3, IK))
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(in), contiguous    :: point(:), invCov(:,:,:), center(:,:)
+        real(RKG)                               :: mahalSq(size(invCov, 3, IK))
     end function
 #endif
 
@@ -1142,9 +1142,9 @@ module pm_distanceMahal
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisMahalSqMixInvCen_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(in), contiguous    :: point(:), invCov(:,:,:), center(:,:)
-        real(RKC)                               :: mahalSq(size(invCov, 3, IK))
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(in), contiguous    :: point(:), invCov(:,:,:), center(:,:)
+        real(RKG)                               :: mahalSq(size(invCov, 3, IK))
     end function
 #endif
 
@@ -1153,9 +1153,9 @@ module pm_distanceMahal
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisMahalSqMixInvCen_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(in), contiguous    :: point(:), invCov(:,:,:), center(:,:)
-        real(RKC)                               :: mahalSq(size(invCov, 3, IK))
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(in), contiguous    :: point(:), invCov(:,:,:), center(:,:)
+        real(RKG)                               :: mahalSq(size(invCov, 3, IK))
     end function
 #endif
 
@@ -1164,9 +1164,9 @@ module pm_distanceMahal
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisMahalSqMixInvCen_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(in), contiguous    :: point(:), invCov(:,:,:), center(:,:)
-        real(RKC)                               :: mahalSq(size(invCov, 3, IK))
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(in), contiguous    :: point(:), invCov(:,:,:), center(:,:)
+        real(RKG)                               :: mahalSq(size(invCov, 3, IK))
     end function
 #endif
 
@@ -1187,9 +1187,9 @@ module pm_distanceMahal
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisMahalSqMixInvDef_D2_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC), intent(in), contiguous    :: point(:,:), invCov(:,:,:)
-        complex(CKC)                            :: mahalSq(size(invCov, 3, IK), size(point, 2, IK))
+        use pm_kind, only: CKG => CK5
+        complex(CKG), intent(in), contiguous    :: point(:,:), invCov(:,:,:)
+        complex(CKG)                            :: mahalSq(size(invCov, 3, IK), size(point, 2, IK))
     end function
 #endif
 
@@ -1198,9 +1198,9 @@ module pm_distanceMahal
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisMahalSqMixInvDef_D2_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC), intent(in), contiguous    :: point(:,:), invCov(:,:,:)
-        complex(CKC)                            :: mahalSq(size(invCov, 3, IK), size(point, 2, IK))
+        use pm_kind, only: CKG => CK4
+        complex(CKG), intent(in), contiguous    :: point(:,:), invCov(:,:,:)
+        complex(CKG)                            :: mahalSq(size(invCov, 3, IK), size(point, 2, IK))
     end function
 #endif
 
@@ -1209,9 +1209,9 @@ module pm_distanceMahal
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisMahalSqMixInvDef_D2_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC), intent(in), contiguous    :: point(:,:), invCov(:,:,:)
-        complex(CKC)                            :: mahalSq(size(invCov, 3, IK), size(point, 2, IK))
+        use pm_kind, only: CKG => CK3
+        complex(CKG), intent(in), contiguous    :: point(:,:), invCov(:,:,:)
+        complex(CKG)                            :: mahalSq(size(invCov, 3, IK), size(point, 2, IK))
     end function
 #endif
 
@@ -1220,9 +1220,9 @@ module pm_distanceMahal
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisMahalSqMixInvDef_D2_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC), intent(in), contiguous    :: point(:,:), invCov(:,:,:)
-        complex(CKC)                            :: mahalSq(size(invCov, 3, IK), size(point, 2, IK))
+        use pm_kind, only: CKG => CK2
+        complex(CKG), intent(in), contiguous    :: point(:,:), invCov(:,:,:)
+        complex(CKG)                            :: mahalSq(size(invCov, 3, IK), size(point, 2, IK))
     end function
 #endif
 
@@ -1231,9 +1231,9 @@ module pm_distanceMahal
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisMahalSqMixInvDef_D2_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC), intent(in), contiguous    :: point(:,:), invCov(:,:,:)
-        complex(CKC)                            :: mahalSq(size(invCov, 3, IK), size(point, 2, IK))
+        use pm_kind, only: CKG => CK1
+        complex(CKG), intent(in), contiguous    :: point(:,:), invCov(:,:,:)
+        complex(CKG)                            :: mahalSq(size(invCov, 3, IK), size(point, 2, IK))
     end function
 #endif
 
@@ -1244,9 +1244,9 @@ module pm_distanceMahal
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisMahalSqMixInvDef_D2_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(in), contiguous    :: point(:,:), invCov(:,:,:)
-        real(RKC)                               :: mahalSq(size(invCov, 3, IK), size(point, 2, IK))
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(in), contiguous    :: point(:,:), invCov(:,:,:)
+        real(RKG)                               :: mahalSq(size(invCov, 3, IK), size(point, 2, IK))
     end function
 #endif
 
@@ -1255,9 +1255,9 @@ module pm_distanceMahal
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisMahalSqMixInvDef_D2_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(in), contiguous    :: point(:,:), invCov(:,:,:)
-        real(RKC)                               :: mahalSq(size(invCov, 3, IK), size(point, 2, IK))
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(in), contiguous    :: point(:,:), invCov(:,:,:)
+        real(RKG)                               :: mahalSq(size(invCov, 3, IK), size(point, 2, IK))
     end function
 #endif
 
@@ -1266,9 +1266,9 @@ module pm_distanceMahal
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisMahalSqMixInvDef_D2_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(in), contiguous    :: point(:,:), invCov(:,:,:)
-        real(RKC)                               :: mahalSq(size(invCov, 3, IK), size(point, 2, IK))
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(in), contiguous    :: point(:,:), invCov(:,:,:)
+        real(RKG)                               :: mahalSq(size(invCov, 3, IK), size(point, 2, IK))
     end function
 #endif
 
@@ -1277,9 +1277,9 @@ module pm_distanceMahal
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisMahalSqMixInvDef_D2_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(in), contiguous    :: point(:,:), invCov(:,:,:)
-        real(RKC)                               :: mahalSq(size(invCov, 3, IK), size(point, 2, IK))
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(in), contiguous    :: point(:,:), invCov(:,:,:)
+        real(RKG)                               :: mahalSq(size(invCov, 3, IK), size(point, 2, IK))
     end function
 #endif
 
@@ -1288,9 +1288,9 @@ module pm_distanceMahal
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisMahalSqMixInvDef_D2_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(in), contiguous    :: point(:,:), invCov(:,:,:)
-        real(RKC)                               :: mahalSq(size(invCov, 3, IK), size(point, 2, IK))
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(in), contiguous    :: point(:,:), invCov(:,:,:)
+        real(RKG)                               :: mahalSq(size(invCov, 3, IK), size(point, 2, IK))
     end function
 #endif
 
@@ -1307,9 +1307,9 @@ module pm_distanceMahal
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisMahalSqMixInvCen_D2_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC), intent(in), contiguous    :: point(:,:), invCov(:,:,:), center(:,:)
-        complex(CKC)                            :: mahalSq(size(invCov, 3, IK), size(point, 2, IK))
+        use pm_kind, only: CKG => CK5
+        complex(CKG), intent(in), contiguous    :: point(:,:), invCov(:,:,:), center(:,:)
+        complex(CKG)                            :: mahalSq(size(invCov, 3, IK), size(point, 2, IK))
     end function
 #endif
 
@@ -1318,9 +1318,9 @@ module pm_distanceMahal
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisMahalSqMixInvCen_D2_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC), intent(in), contiguous    :: point(:,:), invCov(:,:,:), center(:,:)
-        complex(CKC)                            :: mahalSq(size(invCov, 3, IK), size(point, 2, IK))
+        use pm_kind, only: CKG => CK4
+        complex(CKG), intent(in), contiguous    :: point(:,:), invCov(:,:,:), center(:,:)
+        complex(CKG)                            :: mahalSq(size(invCov, 3, IK), size(point, 2, IK))
     end function
 #endif
 
@@ -1329,9 +1329,9 @@ module pm_distanceMahal
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisMahalSqMixInvCen_D2_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC), intent(in), contiguous    :: point(:,:), invCov(:,:,:), center(:,:)
-        complex(CKC)                            :: mahalSq(size(invCov, 3, IK), size(point, 2, IK))
+        use pm_kind, only: CKG => CK3
+        complex(CKG), intent(in), contiguous    :: point(:,:), invCov(:,:,:), center(:,:)
+        complex(CKG)                            :: mahalSq(size(invCov, 3, IK), size(point, 2, IK))
     end function
 #endif
 
@@ -1340,9 +1340,9 @@ module pm_distanceMahal
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisMahalSqMixInvCen_D2_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC), intent(in), contiguous    :: point(:,:), invCov(:,:,:), center(:,:)
-        complex(CKC)                            :: mahalSq(size(invCov, 3, IK), size(point, 2, IK))
+        use pm_kind, only: CKG => CK2
+        complex(CKG), intent(in), contiguous    :: point(:,:), invCov(:,:,:), center(:,:)
+        complex(CKG)                            :: mahalSq(size(invCov, 3, IK), size(point, 2, IK))
     end function
 #endif
 
@@ -1351,9 +1351,9 @@ module pm_distanceMahal
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisMahalSqMixInvCen_D2_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC), intent(in), contiguous    :: point(:,:), invCov(:,:,:), center(:,:)
-        complex(CKC)                            :: mahalSq(size(invCov, 3, IK), size(point, 2, IK))
+        use pm_kind, only: CKG => CK1
+        complex(CKG), intent(in), contiguous    :: point(:,:), invCov(:,:,:), center(:,:)
+        complex(CKG)                            :: mahalSq(size(invCov, 3, IK), size(point, 2, IK))
     end function
 #endif
 
@@ -1364,9 +1364,9 @@ module pm_distanceMahal
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisMahalSqMixInvCen_D2_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(in), contiguous    :: point(:,:), invCov(:,:,:), center(:,:)
-        real(RKC)                               :: mahalSq(size(invCov, 3, IK), size(point, 2, IK))
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(in), contiguous    :: point(:,:), invCov(:,:,:), center(:,:)
+        real(RKG)                               :: mahalSq(size(invCov, 3, IK), size(point, 2, IK))
     end function
 #endif
 
@@ -1375,9 +1375,9 @@ module pm_distanceMahal
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisMahalSqMixInvCen_D2_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(in), contiguous    :: point(:,:), invCov(:,:,:), center(:,:)
-        real(RKC)                               :: mahalSq(size(invCov, 3, IK), size(point, 2, IK))
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(in), contiguous    :: point(:,:), invCov(:,:,:), center(:,:)
+        real(RKG)                               :: mahalSq(size(invCov, 3, IK), size(point, 2, IK))
     end function
 #endif
 
@@ -1386,9 +1386,9 @@ module pm_distanceMahal
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisMahalSqMixInvCen_D2_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(in), contiguous    :: point(:,:), invCov(:,:,:), center(:,:)
-        real(RKC)                               :: mahalSq(size(invCov, 3, IK), size(point, 2, IK))
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(in), contiguous    :: point(:,:), invCov(:,:,:), center(:,:)
+        real(RKG)                               :: mahalSq(size(invCov, 3, IK), size(point, 2, IK))
     end function
 #endif
 
@@ -1397,9 +1397,9 @@ module pm_distanceMahal
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisMahalSqMixInvCen_D2_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(in), contiguous    :: point(:,:), invCov(:,:,:), center(:,:)
-        real(RKC)                               :: mahalSq(size(invCov, 3, IK), size(point, 2, IK))
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(in), contiguous    :: point(:,:), invCov(:,:,:), center(:,:)
+        real(RKG)                               :: mahalSq(size(invCov, 3, IK), size(point, 2, IK))
     end function
 #endif
 
@@ -1408,9 +1408,9 @@ module pm_distanceMahal
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisMahalSqMixInvCen_D2_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(in), contiguous    :: point(:,:), invCov(:,:,:), center(:,:)
-        real(RKC)                               :: mahalSq(size(invCov, 3, IK), size(point, 2, IK))
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(in), contiguous    :: point(:,:), invCov(:,:,:), center(:,:)
+        real(RKG)                               :: mahalSq(size(invCov, 3, IK), size(point, 2, IK))
     end function
 #endif
 
@@ -1551,9 +1551,9 @@ module pm_distanceMahal
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setDisMahalSqEleInvDef_D0_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC), intent(in)                    :: point, invCov
-        complex(CKC), intent(out)                   :: mahalSq
+        use pm_kind, only: CKG => CK5
+        complex(CKG), intent(in)                    :: point, invCov
+        complex(CKG), intent(out)                   :: mahalSq
     end subroutine
 #endif
 
@@ -1562,9 +1562,9 @@ module pm_distanceMahal
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setDisMahalSqEleInvDef_D0_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC), intent(in)                    :: point, invCov
-        complex(CKC), intent(out)                   :: mahalSq
+        use pm_kind, only: CKG => CK4
+        complex(CKG), intent(in)                    :: point, invCov
+        complex(CKG), intent(out)                   :: mahalSq
     end subroutine
 #endif
 
@@ -1573,9 +1573,9 @@ module pm_distanceMahal
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setDisMahalSqEleInvDef_D0_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC), intent(in)                    :: point, invCov
-        complex(CKC), intent(out)                   :: mahalSq
+        use pm_kind, only: CKG => CK3
+        complex(CKG), intent(in)                    :: point, invCov
+        complex(CKG), intent(out)                   :: mahalSq
     end subroutine
 #endif
 
@@ -1584,9 +1584,9 @@ module pm_distanceMahal
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setDisMahalSqEleInvDef_D0_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC), intent(in)                    :: point, invCov
-        complex(CKC), intent(out)                   :: mahalSq
+        use pm_kind, only: CKG => CK2
+        complex(CKG), intent(in)                    :: point, invCov
+        complex(CKG), intent(out)                   :: mahalSq
     end subroutine
 #endif
 
@@ -1595,9 +1595,9 @@ module pm_distanceMahal
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setDisMahalSqEleInvDef_D0_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC), intent(in)                    :: point, invCov
-        complex(CKC), intent(out)                   :: mahalSq
+        use pm_kind, only: CKG => CK1
+        complex(CKG), intent(in)                    :: point, invCov
+        complex(CKG), intent(out)                   :: mahalSq
     end subroutine
 #endif
 
@@ -1608,9 +1608,9 @@ module pm_distanceMahal
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setDisMahalSqEleInvDef_D0_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(in)                    :: point, invCov
-        real(RKC)   , intent(out)                   :: mahalSq
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(in)                    :: point, invCov
+        real(RKG)   , intent(out)                   :: mahalSq
     end subroutine
 #endif
 
@@ -1619,9 +1619,9 @@ module pm_distanceMahal
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setDisMahalSqEleInvDef_D0_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(in)                    :: point, invCov
-        real(RKC)   , intent(out)                   :: mahalSq
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(in)                    :: point, invCov
+        real(RKG)   , intent(out)                   :: mahalSq
     end subroutine
 #endif
 
@@ -1630,9 +1630,9 @@ module pm_distanceMahal
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setDisMahalSqEleInvDef_D0_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(in)                    :: point, invCov
-        real(RKC)   , intent(out)                   :: mahalSq
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(in)                    :: point, invCov
+        real(RKG)   , intent(out)                   :: mahalSq
     end subroutine
 #endif
 
@@ -1641,9 +1641,9 @@ module pm_distanceMahal
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setDisMahalSqEleInvDef_D0_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(in)                    :: point, invCov
-        real(RKC)   , intent(out)                   :: mahalSq
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(in)                    :: point, invCov
+        real(RKG)   , intent(out)                   :: mahalSq
     end subroutine
 #endif
 
@@ -1652,9 +1652,9 @@ module pm_distanceMahal
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setDisMahalSqEleInvDef_D0_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(in)                    :: point, invCov
-        real(RKC)   , intent(out)                   :: mahalSq
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(in)                    :: point, invCov
+        real(RKG)   , intent(out)                   :: mahalSq
     end subroutine
 #endif
 
@@ -1671,9 +1671,9 @@ module pm_distanceMahal
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setDisMahalSqEleInvCen_D0_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC), intent(in)                    :: point, invCov, center
-        complex(CKC), intent(out)                   :: mahalSq
+        use pm_kind, only: CKG => CK5
+        complex(CKG), intent(in)                    :: point, invCov, center
+        complex(CKG), intent(out)                   :: mahalSq
     end subroutine
 #endif
 
@@ -1682,9 +1682,9 @@ module pm_distanceMahal
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setDisMahalSqEleInvCen_D0_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC), intent(in)                    :: point, invCov, center
-        complex(CKC), intent(out)                   :: mahalSq
+        use pm_kind, only: CKG => CK4
+        complex(CKG), intent(in)                    :: point, invCov, center
+        complex(CKG), intent(out)                   :: mahalSq
     end subroutine
 #endif
 
@@ -1693,9 +1693,9 @@ module pm_distanceMahal
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setDisMahalSqEleInvCen_D0_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC), intent(in)                    :: point, invCov, center
-        complex(CKC), intent(out)                   :: mahalSq
+        use pm_kind, only: CKG => CK3
+        complex(CKG), intent(in)                    :: point, invCov, center
+        complex(CKG), intent(out)                   :: mahalSq
     end subroutine
 #endif
 
@@ -1704,9 +1704,9 @@ module pm_distanceMahal
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setDisMahalSqEleInvCen_D0_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC), intent(in)                    :: point, invCov, center
-        complex(CKC), intent(out)                   :: mahalSq
+        use pm_kind, only: CKG => CK2
+        complex(CKG), intent(in)                    :: point, invCov, center
+        complex(CKG), intent(out)                   :: mahalSq
     end subroutine
 #endif
 
@@ -1715,9 +1715,9 @@ module pm_distanceMahal
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setDisMahalSqEleInvCen_D0_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC), intent(in)                    :: point, invCov, center
-        complex(CKC), intent(out)                   :: mahalSq
+        use pm_kind, only: CKG => CK1
+        complex(CKG), intent(in)                    :: point, invCov, center
+        complex(CKG), intent(out)                   :: mahalSq
     end subroutine
 #endif
 
@@ -1728,9 +1728,9 @@ module pm_distanceMahal
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setDisMahalSqEleInvCen_D0_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(in)                    :: point, invCov, center
-        real(RKC)   , intent(out)                   :: mahalSq
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(in)                    :: point, invCov, center
+        real(RKG)   , intent(out)                   :: mahalSq
     end subroutine
 #endif
 
@@ -1739,9 +1739,9 @@ module pm_distanceMahal
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setDisMahalSqEleInvCen_D0_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(in)                    :: point, invCov, center
-        real(RKC)   , intent(out)                   :: mahalSq
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(in)                    :: point, invCov, center
+        real(RKG)   , intent(out)                   :: mahalSq
     end subroutine
 #endif
 
@@ -1750,9 +1750,9 @@ module pm_distanceMahal
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setDisMahalSqEleInvCen_D0_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(in)                    :: point, invCov, center
-        real(RKC)   , intent(out)                   :: mahalSq
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(in)                    :: point, invCov, center
+        real(RKG)   , intent(out)                   :: mahalSq
     end subroutine
 #endif
 
@@ -1761,9 +1761,9 @@ module pm_distanceMahal
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setDisMahalSqEleInvCen_D0_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(in)                    :: point, invCov, center
-        real(RKC)   , intent(out)                   :: mahalSq
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(in)                    :: point, invCov, center
+        real(RKG)   , intent(out)                   :: mahalSq
     end subroutine
 #endif
 
@@ -1772,9 +1772,9 @@ module pm_distanceMahal
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setDisMahalSqEleInvCen_D0_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(in)                    :: point, invCov, center
-        real(RKC)   , intent(out)                   :: mahalSq
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(in)                    :: point, invCov, center
+        real(RKG)   , intent(out)                   :: mahalSq
     end subroutine
 #endif
 
@@ -1799,9 +1799,9 @@ module pm_distanceMahal
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setDisMahalSqOneInvDef_D1_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC), intent(in)    , contiguous    :: point(:), invCov(:,:)
-        complex(CKC), intent(out)                   :: mahalSq
+        use pm_kind, only: CKG => CK5
+        complex(CKG), intent(in)    , contiguous    :: point(:), invCov(:,:)
+        complex(CKG), intent(out)                   :: mahalSq
     end subroutine
 #endif
 
@@ -1810,9 +1810,9 @@ module pm_distanceMahal
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setDisMahalSqOneInvDef_D1_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC), intent(in)    , contiguous    :: point(:), invCov(:,:)
-        complex(CKC), intent(out)                   :: mahalSq
+        use pm_kind, only: CKG => CK4
+        complex(CKG), intent(in)    , contiguous    :: point(:), invCov(:,:)
+        complex(CKG), intent(out)                   :: mahalSq
     end subroutine
 #endif
 
@@ -1821,9 +1821,9 @@ module pm_distanceMahal
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setDisMahalSqOneInvDef_D1_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC), intent(in)    , contiguous    :: point(:), invCov(:,:)
-        complex(CKC), intent(out)                   :: mahalSq
+        use pm_kind, only: CKG => CK3
+        complex(CKG), intent(in)    , contiguous    :: point(:), invCov(:,:)
+        complex(CKG), intent(out)                   :: mahalSq
     end subroutine
 #endif
 
@@ -1832,9 +1832,9 @@ module pm_distanceMahal
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setDisMahalSqOneInvDef_D1_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC), intent(in)    , contiguous    :: point(:), invCov(:,:)
-        complex(CKC), intent(out)                   :: mahalSq
+        use pm_kind, only: CKG => CK2
+        complex(CKG), intent(in)    , contiguous    :: point(:), invCov(:,:)
+        complex(CKG), intent(out)                   :: mahalSq
     end subroutine
 #endif
 
@@ -1843,9 +1843,9 @@ module pm_distanceMahal
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setDisMahalSqOneInvDef_D1_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC), intent(in)    , contiguous    :: point(:), invCov(:,:)
-        complex(CKC), intent(out)                   :: mahalSq
+        use pm_kind, only: CKG => CK1
+        complex(CKG), intent(in)    , contiguous    :: point(:), invCov(:,:)
+        complex(CKG), intent(out)                   :: mahalSq
     end subroutine
 #endif
 
@@ -1856,9 +1856,9 @@ module pm_distanceMahal
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setDisMahalSqOneInvDef_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(in)    , contiguous    :: point(:), invCov(:,:)
-        real(RKC)   , intent(out)                   :: mahalSq
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(in)    , contiguous    :: point(:), invCov(:,:)
+        real(RKG)   , intent(out)                   :: mahalSq
     end subroutine
 #endif
 
@@ -1867,9 +1867,9 @@ module pm_distanceMahal
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setDisMahalSqOneInvDef_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(in)    , contiguous    :: point(:), invCov(:,:)
-        real(RKC)   , intent(out)                   :: mahalSq
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(in)    , contiguous    :: point(:), invCov(:,:)
+        real(RKG)   , intent(out)                   :: mahalSq
     end subroutine
 #endif
 
@@ -1878,9 +1878,9 @@ module pm_distanceMahal
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setDisMahalSqOneInvDef_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(in)    , contiguous    :: point(:), invCov(:,:)
-        real(RKC)   , intent(out)                   :: mahalSq
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(in)    , contiguous    :: point(:), invCov(:,:)
+        real(RKG)   , intent(out)                   :: mahalSq
     end subroutine
 #endif
 
@@ -1889,9 +1889,9 @@ module pm_distanceMahal
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setDisMahalSqOneInvDef_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(in)    , contiguous    :: point(:), invCov(:,:)
-        real(RKC)   , intent(out)                   :: mahalSq
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(in)    , contiguous    :: point(:), invCov(:,:)
+        real(RKG)   , intent(out)                   :: mahalSq
     end subroutine
 #endif
 
@@ -1900,9 +1900,9 @@ module pm_distanceMahal
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setDisMahalSqOneInvDef_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(in)    , contiguous    :: point(:), invCov(:,:)
-        real(RKC)   , intent(out)                   :: mahalSq
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(in)    , contiguous    :: point(:), invCov(:,:)
+        real(RKG)   , intent(out)                   :: mahalSq
     end subroutine
 #endif
 
@@ -1919,9 +1919,9 @@ module pm_distanceMahal
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setDisMahalSqOneInvCen_D1_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC), intent(in)    , contiguous    :: point(:), invCov(:,:), center(:)
-        complex(CKC), intent(out)                   :: mahalSq
+        use pm_kind, only: CKG => CK5
+        complex(CKG), intent(in)    , contiguous    :: point(:), invCov(:,:), center(:)
+        complex(CKG), intent(out)                   :: mahalSq
     end subroutine
 #endif
 
@@ -1930,9 +1930,9 @@ module pm_distanceMahal
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setDisMahalSqOneInvCen_D1_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC), intent(in)    , contiguous    :: point(:), invCov(:,:), center(:)
-        complex(CKC), intent(out)                   :: mahalSq
+        use pm_kind, only: CKG => CK4
+        complex(CKG), intent(in)    , contiguous    :: point(:), invCov(:,:), center(:)
+        complex(CKG), intent(out)                   :: mahalSq
     end subroutine
 #endif
 
@@ -1941,9 +1941,9 @@ module pm_distanceMahal
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setDisMahalSqOneInvCen_D1_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC), intent(in)    , contiguous    :: point(:), invCov(:,:), center(:)
-        complex(CKC), intent(out)                   :: mahalSq
+        use pm_kind, only: CKG => CK3
+        complex(CKG), intent(in)    , contiguous    :: point(:), invCov(:,:), center(:)
+        complex(CKG), intent(out)                   :: mahalSq
     end subroutine
 #endif
 
@@ -1952,9 +1952,9 @@ module pm_distanceMahal
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setDisMahalSqOneInvCen_D1_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC), intent(in)    , contiguous    :: point(:), invCov(:,:), center(:)
-        complex(CKC), intent(out)                   :: mahalSq
+        use pm_kind, only: CKG => CK2
+        complex(CKG), intent(in)    , contiguous    :: point(:), invCov(:,:), center(:)
+        complex(CKG), intent(out)                   :: mahalSq
     end subroutine
 #endif
 
@@ -1963,9 +1963,9 @@ module pm_distanceMahal
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setDisMahalSqOneInvCen_D1_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC), intent(in)    , contiguous    :: point(:), invCov(:,:), center(:)
-        complex(CKC), intent(out)                   :: mahalSq
+        use pm_kind, only: CKG => CK1
+        complex(CKG), intent(in)    , contiguous    :: point(:), invCov(:,:), center(:)
+        complex(CKG), intent(out)                   :: mahalSq
     end subroutine
 #endif
 
@@ -1976,9 +1976,9 @@ module pm_distanceMahal
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setDisMahalSqOneInvCen_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(in)    , contiguous    :: point(:), invCov(:,:), center(:)
-        real(RKC)   , intent(out)                   :: mahalSq
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(in)    , contiguous    :: point(:), invCov(:,:), center(:)
+        real(RKG)   , intent(out)                   :: mahalSq
     end subroutine
 #endif
 
@@ -1987,9 +1987,9 @@ module pm_distanceMahal
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setDisMahalSqOneInvCen_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(in)    , contiguous    :: point(:), invCov(:,:), center(:)
-        real(RKC)   , intent(out)                   :: mahalSq
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(in)    , contiguous    :: point(:), invCov(:,:), center(:)
+        real(RKG)   , intent(out)                   :: mahalSq
     end subroutine
 #endif
 
@@ -1998,9 +1998,9 @@ module pm_distanceMahal
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setDisMahalSqOneInvCen_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(in)    , contiguous    :: point(:), invCov(:,:), center(:)
-        real(RKC)   , intent(out)                   :: mahalSq
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(in)    , contiguous    :: point(:), invCov(:,:), center(:)
+        real(RKG)   , intent(out)                   :: mahalSq
     end subroutine
 #endif
 
@@ -2009,9 +2009,9 @@ module pm_distanceMahal
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setDisMahalSqOneInvCen_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(in)    , contiguous    :: point(:), invCov(:,:), center(:)
-        real(RKC)   , intent(out)                   :: mahalSq
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(in)    , contiguous    :: point(:), invCov(:,:), center(:)
+        real(RKG)   , intent(out)                   :: mahalSq
     end subroutine
 #endif
 
@@ -2020,9 +2020,9 @@ module pm_distanceMahal
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setDisMahalSqOneInvCen_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(in)    , contiguous    :: point(:), invCov(:,:), center(:)
-        real(RKC)   , intent(out)                   :: mahalSq
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(in)    , contiguous    :: point(:), invCov(:,:), center(:)
+        real(RKG)   , intent(out)                   :: mahalSq
     end subroutine
 #endif
 
@@ -2043,9 +2043,9 @@ module pm_distanceMahal
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setDisMahalSqOneInvDef_D2_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC), intent(in)    , contiguous    :: point(:,:), invCov(:,:)
-        complex(CKC), intent(out)   , contiguous    :: mahalSq(:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG), intent(in)    , contiguous    :: point(:,:), invCov(:,:)
+        complex(CKG), intent(out)   , contiguous    :: mahalSq(:)
     end subroutine
 #endif
 
@@ -2054,9 +2054,9 @@ module pm_distanceMahal
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setDisMahalSqOneInvDef_D2_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC), intent(in)    , contiguous    :: point(:,:), invCov(:,:)
-        complex(CKC), intent(out)   , contiguous    :: mahalSq(:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG), intent(in)    , contiguous    :: point(:,:), invCov(:,:)
+        complex(CKG), intent(out)   , contiguous    :: mahalSq(:)
     end subroutine
 #endif
 
@@ -2065,9 +2065,9 @@ module pm_distanceMahal
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setDisMahalSqOneInvDef_D2_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC), intent(in)    , contiguous    :: point(:,:), invCov(:,:)
-        complex(CKC), intent(out)   , contiguous    :: mahalSq(:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG), intent(in)    , contiguous    :: point(:,:), invCov(:,:)
+        complex(CKG), intent(out)   , contiguous    :: mahalSq(:)
     end subroutine
 #endif
 
@@ -2076,9 +2076,9 @@ module pm_distanceMahal
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setDisMahalSqOneInvDef_D2_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC), intent(in)    , contiguous    :: point(:,:), invCov(:,:)
-        complex(CKC), intent(out)   , contiguous    :: mahalSq(:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG), intent(in)    , contiguous    :: point(:,:), invCov(:,:)
+        complex(CKG), intent(out)   , contiguous    :: mahalSq(:)
     end subroutine
 #endif
 
@@ -2087,9 +2087,9 @@ module pm_distanceMahal
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setDisMahalSqOneInvDef_D2_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC), intent(in)    , contiguous    :: point(:,:), invCov(:,:)
-        complex(CKC), intent(out)   , contiguous    :: mahalSq(:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG), intent(in)    , contiguous    :: point(:,:), invCov(:,:)
+        complex(CKG), intent(out)   , contiguous    :: mahalSq(:)
     end subroutine
 #endif
 
@@ -2100,9 +2100,9 @@ module pm_distanceMahal
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setDisMahalSqOneInvDef_D2_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(in)    , contiguous    :: point(:,:), invCov(:,:)
-        real(RKC)   , intent(out)   , contiguous    :: mahalSq(:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(in)    , contiguous    :: point(:,:), invCov(:,:)
+        real(RKG)   , intent(out)   , contiguous    :: mahalSq(:)
     end subroutine
 #endif
 
@@ -2111,9 +2111,9 @@ module pm_distanceMahal
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setDisMahalSqOneInvDef_D2_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(in)    , contiguous    :: point(:,:), invCov(:,:)
-        real(RKC)   , intent(out)   , contiguous    :: mahalSq(:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(in)    , contiguous    :: point(:,:), invCov(:,:)
+        real(RKG)   , intent(out)   , contiguous    :: mahalSq(:)
     end subroutine
 #endif
 
@@ -2122,9 +2122,9 @@ module pm_distanceMahal
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setDisMahalSqOneInvDef_D2_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(in)    , contiguous    :: point(:,:), invCov(:,:)
-        real(RKC)   , intent(out)   , contiguous    :: mahalSq(:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(in)    , contiguous    :: point(:,:), invCov(:,:)
+        real(RKG)   , intent(out)   , contiguous    :: mahalSq(:)
     end subroutine
 #endif
 
@@ -2133,9 +2133,9 @@ module pm_distanceMahal
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setDisMahalSqOneInvDef_D2_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(in)    , contiguous    :: point(:,:), invCov(:,:)
-        real(RKC)   , intent(out)   , contiguous    :: mahalSq(:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(in)    , contiguous    :: point(:,:), invCov(:,:)
+        real(RKG)   , intent(out)   , contiguous    :: mahalSq(:)
     end subroutine
 #endif
 
@@ -2144,9 +2144,9 @@ module pm_distanceMahal
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setDisMahalSqOneInvDef_D2_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(in)    , contiguous    :: point(:,:), invCov(:,:)
-        real(RKC)   , intent(out)   , contiguous    :: mahalSq(:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(in)    , contiguous    :: point(:,:), invCov(:,:)
+        real(RKG)   , intent(out)   , contiguous    :: mahalSq(:)
     end subroutine
 #endif
 
@@ -2163,9 +2163,9 @@ module pm_distanceMahal
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setDisMahalSqOneInvCen_D2_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC), intent(in)    , contiguous    :: point(:,:), invCov(:,:), center(:)
-        complex(CKC), intent(out)   , contiguous    :: mahalSq(:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG), intent(in)    , contiguous    :: point(:,:), invCov(:,:), center(:)
+        complex(CKG), intent(out)   , contiguous    :: mahalSq(:)
     end subroutine
 #endif
 
@@ -2174,9 +2174,9 @@ module pm_distanceMahal
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setDisMahalSqOneInvCen_D2_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC), intent(in)    , contiguous    :: point(:,:), invCov(:,:), center(:)
-        complex(CKC), intent(out)   , contiguous    :: mahalSq(:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG), intent(in)    , contiguous    :: point(:,:), invCov(:,:), center(:)
+        complex(CKG), intent(out)   , contiguous    :: mahalSq(:)
     end subroutine
 #endif
 
@@ -2185,9 +2185,9 @@ module pm_distanceMahal
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setDisMahalSqOneInvCen_D2_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC), intent(in)    , contiguous    :: point(:,:), invCov(:,:), center(:)
-        complex(CKC), intent(out)   , contiguous    :: mahalSq(:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG), intent(in)    , contiguous    :: point(:,:), invCov(:,:), center(:)
+        complex(CKG), intent(out)   , contiguous    :: mahalSq(:)
     end subroutine
 #endif
 
@@ -2196,9 +2196,9 @@ module pm_distanceMahal
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setDisMahalSqOneInvCen_D2_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC), intent(in)    , contiguous    :: point(:,:), invCov(:,:), center(:)
-        complex(CKC), intent(out)   , contiguous    :: mahalSq(:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG), intent(in)    , contiguous    :: point(:,:), invCov(:,:), center(:)
+        complex(CKG), intent(out)   , contiguous    :: mahalSq(:)
     end subroutine
 #endif
 
@@ -2207,9 +2207,9 @@ module pm_distanceMahal
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setDisMahalSqOneInvCen_D2_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC), intent(in)    , contiguous    :: point(:,:), invCov(:,:), center(:)
-        complex(CKC), intent(out)   , contiguous    :: mahalSq(:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG), intent(in)    , contiguous    :: point(:,:), invCov(:,:), center(:)
+        complex(CKG), intent(out)   , contiguous    :: mahalSq(:)
     end subroutine
 #endif
 
@@ -2220,9 +2220,9 @@ module pm_distanceMahal
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setDisMahalSqOneInvCen_D2_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(in)    , contiguous    :: point(:,:), invCov(:,:), center(:)
-        real(RKC)   , intent(out)   , contiguous    :: mahalSq(:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(in)    , contiguous    :: point(:,:), invCov(:,:), center(:)
+        real(RKG)   , intent(out)   , contiguous    :: mahalSq(:)
     end subroutine
 #endif
 
@@ -2231,9 +2231,9 @@ module pm_distanceMahal
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setDisMahalSqOneInvCen_D2_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(in)    , contiguous    :: point(:,:), invCov(:,:), center(:)
-        real(RKC)   , intent(out)   , contiguous    :: mahalSq(:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(in)    , contiguous    :: point(:,:), invCov(:,:), center(:)
+        real(RKG)   , intent(out)   , contiguous    :: mahalSq(:)
     end subroutine
 #endif
 
@@ -2242,9 +2242,9 @@ module pm_distanceMahal
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setDisMahalSqOneInvCen_D2_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(in)    , contiguous    :: point(:,:), invCov(:,:), center(:)
-        real(RKC)   , intent(out)   , contiguous    :: mahalSq(:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(in)    , contiguous    :: point(:,:), invCov(:,:), center(:)
+        real(RKG)   , intent(out)   , contiguous    :: mahalSq(:)
     end subroutine
 #endif
 
@@ -2253,9 +2253,9 @@ module pm_distanceMahal
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setDisMahalSqOneInvCen_D2_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(in)    , contiguous    :: point(:,:), invCov(:,:), center(:)
-        real(RKC)   , intent(out)   , contiguous    :: mahalSq(:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(in)    , contiguous    :: point(:,:), invCov(:,:), center(:)
+        real(RKG)   , intent(out)   , contiguous    :: mahalSq(:)
     end subroutine
 #endif
 
@@ -2264,9 +2264,9 @@ module pm_distanceMahal
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setDisMahalSqOneInvCen_D2_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(in)    , contiguous    :: point(:,:), invCov(:,:), center(:)
-        real(RKC)   , intent(out)   , contiguous    :: mahalSq(:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(in)    , contiguous    :: point(:,:), invCov(:,:), center(:)
+        real(RKG)   , intent(out)   , contiguous    :: mahalSq(:)
     end subroutine
 #endif
 
@@ -2291,9 +2291,9 @@ module pm_distanceMahal
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setDisMahalSqMixInvDef_D1_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC), intent(in)    , contiguous    :: point(:), invCov(:,:,:)
-        complex(CKC), intent(out)   , contiguous    :: mahalSq(:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG), intent(in)    , contiguous    :: point(:), invCov(:,:,:)
+        complex(CKG), intent(out)   , contiguous    :: mahalSq(:)
     end subroutine
 #endif
 
@@ -2302,9 +2302,9 @@ module pm_distanceMahal
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setDisMahalSqMixInvDef_D1_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC), intent(in)    , contiguous    :: point(:), invCov(:,:,:)
-        complex(CKC), intent(out)   , contiguous    :: mahalSq(:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG), intent(in)    , contiguous    :: point(:), invCov(:,:,:)
+        complex(CKG), intent(out)   , contiguous    :: mahalSq(:)
     end subroutine
 #endif
 
@@ -2313,9 +2313,9 @@ module pm_distanceMahal
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setDisMahalSqMixInvDef_D1_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC), intent(in)    , contiguous    :: point(:), invCov(:,:,:)
-        complex(CKC), intent(out)   , contiguous    :: mahalSq(:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG), intent(in)    , contiguous    :: point(:), invCov(:,:,:)
+        complex(CKG), intent(out)   , contiguous    :: mahalSq(:)
     end subroutine
 #endif
 
@@ -2324,9 +2324,9 @@ module pm_distanceMahal
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setDisMahalSqMixInvDef_D1_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC), intent(in)    , contiguous    :: point(:), invCov(:,:,:)
-        complex(CKC), intent(out)   , contiguous    :: mahalSq(:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG), intent(in)    , contiguous    :: point(:), invCov(:,:,:)
+        complex(CKG), intent(out)   , contiguous    :: mahalSq(:)
     end subroutine
 #endif
 
@@ -2335,9 +2335,9 @@ module pm_distanceMahal
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setDisMahalSqMixInvDef_D1_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC), intent(in)    , contiguous    :: point(:), invCov(:,:,:)
-        complex(CKC), intent(out)   , contiguous    :: mahalSq(:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG), intent(in)    , contiguous    :: point(:), invCov(:,:,:)
+        complex(CKG), intent(out)   , contiguous    :: mahalSq(:)
     end subroutine
 #endif
 
@@ -2348,9 +2348,9 @@ module pm_distanceMahal
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setDisMahalSqMixInvDef_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(in)    , contiguous    :: point(:), invCov(:,:,:)
-        real(RKC)   , intent(out)   , contiguous    :: mahalSq(:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(in)    , contiguous    :: point(:), invCov(:,:,:)
+        real(RKG)   , intent(out)   , contiguous    :: mahalSq(:)
     end subroutine
 #endif
 
@@ -2359,9 +2359,9 @@ module pm_distanceMahal
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setDisMahalSqMixInvDef_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(in)    , contiguous    :: point(:), invCov(:,:,:)
-        real(RKC)   , intent(out)   , contiguous    :: mahalSq(:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(in)    , contiguous    :: point(:), invCov(:,:,:)
+        real(RKG)   , intent(out)   , contiguous    :: mahalSq(:)
     end subroutine
 #endif
 
@@ -2370,9 +2370,9 @@ module pm_distanceMahal
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setDisMahalSqMixInvDef_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(in)    , contiguous    :: point(:), invCov(:,:,:)
-        real(RKC)   , intent(out)   , contiguous    :: mahalSq(:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(in)    , contiguous    :: point(:), invCov(:,:,:)
+        real(RKG)   , intent(out)   , contiguous    :: mahalSq(:)
     end subroutine
 #endif
 
@@ -2381,9 +2381,9 @@ module pm_distanceMahal
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setDisMahalSqMixInvDef_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(in)    , contiguous    :: point(:), invCov(:,:,:)
-        real(RKC)   , intent(out)   , contiguous    :: mahalSq(:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(in)    , contiguous    :: point(:), invCov(:,:,:)
+        real(RKG)   , intent(out)   , contiguous    :: mahalSq(:)
     end subroutine
 #endif
 
@@ -2392,9 +2392,9 @@ module pm_distanceMahal
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setDisMahalSqMixInvDef_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(in)    , contiguous    :: point(:), invCov(:,:,:)
-        real(RKC)   , intent(out)   , contiguous    :: mahalSq(:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(in)    , contiguous    :: point(:), invCov(:,:,:)
+        real(RKG)   , intent(out)   , contiguous    :: mahalSq(:)
     end subroutine
 #endif
 
@@ -2411,9 +2411,9 @@ module pm_distanceMahal
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setDisMahalSqMixInvCen_D1_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC), intent(in)    , contiguous    :: point(:), invCov(:,:,:), center(:,:)
-        complex(CKC), intent(out)   , contiguous    :: mahalSq(:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG), intent(in)    , contiguous    :: point(:), invCov(:,:,:), center(:,:)
+        complex(CKG), intent(out)   , contiguous    :: mahalSq(:)
     end subroutine
 #endif
 
@@ -2422,9 +2422,9 @@ module pm_distanceMahal
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setDisMahalSqMixInvCen_D1_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC), intent(in)    , contiguous    :: point(:), invCov(:,:,:), center(:,:)
-        complex(CKC), intent(out)   , contiguous    :: mahalSq(:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG), intent(in)    , contiguous    :: point(:), invCov(:,:,:), center(:,:)
+        complex(CKG), intent(out)   , contiguous    :: mahalSq(:)
     end subroutine
 #endif
 
@@ -2433,9 +2433,9 @@ module pm_distanceMahal
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setDisMahalSqMixInvCen_D1_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC), intent(in)    , contiguous    :: point(:), invCov(:,:,:), center(:,:)
-        complex(CKC), intent(out)   , contiguous    :: mahalSq(:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG), intent(in)    , contiguous    :: point(:), invCov(:,:,:), center(:,:)
+        complex(CKG), intent(out)   , contiguous    :: mahalSq(:)
     end subroutine
 #endif
 
@@ -2444,9 +2444,9 @@ module pm_distanceMahal
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setDisMahalSqMixInvCen_D1_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC), intent(in)    , contiguous    :: point(:), invCov(:,:,:), center(:,:)
-        complex(CKC), intent(out)   , contiguous    :: mahalSq(:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG), intent(in)    , contiguous    :: point(:), invCov(:,:,:), center(:,:)
+        complex(CKG), intent(out)   , contiguous    :: mahalSq(:)
     end subroutine
 #endif
 
@@ -2455,9 +2455,9 @@ module pm_distanceMahal
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setDisMahalSqMixInvCen_D1_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC), intent(in)    , contiguous    :: point(:), invCov(:,:,:), center(:,:)
-        complex(CKC), intent(out)   , contiguous    :: mahalSq(:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG), intent(in)    , contiguous    :: point(:), invCov(:,:,:), center(:,:)
+        complex(CKG), intent(out)   , contiguous    :: mahalSq(:)
     end subroutine
 #endif
 
@@ -2468,9 +2468,9 @@ module pm_distanceMahal
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setDisMahalSqMixInvCen_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(in)    , contiguous    :: point(:), invCov(:,:,:), center(:,:)
-        real(RKC)   , intent(out)   , contiguous    :: mahalSq(:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(in)    , contiguous    :: point(:), invCov(:,:,:), center(:,:)
+        real(RKG)   , intent(out)   , contiguous    :: mahalSq(:)
     end subroutine
 #endif
 
@@ -2479,9 +2479,9 @@ module pm_distanceMahal
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setDisMahalSqMixInvCen_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(in)    , contiguous    :: point(:), invCov(:,:,:), center(:,:)
-        real(RKC)   , intent(out)   , contiguous    :: mahalSq(:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(in)    , contiguous    :: point(:), invCov(:,:,:), center(:,:)
+        real(RKG)   , intent(out)   , contiguous    :: mahalSq(:)
     end subroutine
 #endif
 
@@ -2490,9 +2490,9 @@ module pm_distanceMahal
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setDisMahalSqMixInvCen_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(in)    , contiguous    :: point(:), invCov(:,:,:), center(:,:)
-        real(RKC)   , intent(out)   , contiguous    :: mahalSq(:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(in)    , contiguous    :: point(:), invCov(:,:,:), center(:,:)
+        real(RKG)   , intent(out)   , contiguous    :: mahalSq(:)
     end subroutine
 #endif
 
@@ -2501,9 +2501,9 @@ module pm_distanceMahal
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setDisMahalSqMixInvCen_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(in)    , contiguous    :: point(:), invCov(:,:,:), center(:,:)
-        real(RKC)   , intent(out)   , contiguous    :: mahalSq(:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(in)    , contiguous    :: point(:), invCov(:,:,:), center(:,:)
+        real(RKG)   , intent(out)   , contiguous    :: mahalSq(:)
     end subroutine
 #endif
 
@@ -2512,9 +2512,9 @@ module pm_distanceMahal
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setDisMahalSqMixInvCen_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(in)    , contiguous    :: point(:), invCov(:,:,:), center(:,:)
-        real(RKC)   , intent(out)   , contiguous    :: mahalSq(:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(in)    , contiguous    :: point(:), invCov(:,:,:), center(:,:)
+        real(RKG)   , intent(out)   , contiguous    :: mahalSq(:)
     end subroutine
 #endif
 
@@ -2535,9 +2535,9 @@ module pm_distanceMahal
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setDisMahalSqMixInvDef_D2_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC), intent(in)    , contiguous    :: point(:,:), invCov(:,:,:)
-        complex(CKC), intent(out)   , contiguous    :: mahalSq(:,:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG), intent(in)    , contiguous    :: point(:,:), invCov(:,:,:)
+        complex(CKG), intent(out)   , contiguous    :: mahalSq(:,:)
     end subroutine
 #endif
 
@@ -2546,9 +2546,9 @@ module pm_distanceMahal
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setDisMahalSqMixInvDef_D2_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC), intent(in)    , contiguous    :: point(:,:), invCov(:,:,:)
-        complex(CKC), intent(out)   , contiguous    :: mahalSq(:,:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG), intent(in)    , contiguous    :: point(:,:), invCov(:,:,:)
+        complex(CKG), intent(out)   , contiguous    :: mahalSq(:,:)
     end subroutine
 #endif
 
@@ -2557,9 +2557,9 @@ module pm_distanceMahal
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setDisMahalSqMixInvDef_D2_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC), intent(in)    , contiguous    :: point(:,:), invCov(:,:,:)
-        complex(CKC), intent(out)   , contiguous    :: mahalSq(:,:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG), intent(in)    , contiguous    :: point(:,:), invCov(:,:,:)
+        complex(CKG), intent(out)   , contiguous    :: mahalSq(:,:)
     end subroutine
 #endif
 
@@ -2568,9 +2568,9 @@ module pm_distanceMahal
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setDisMahalSqMixInvDef_D2_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC), intent(in)    , contiguous    :: point(:,:), invCov(:,:,:)
-        complex(CKC), intent(out)   , contiguous    :: mahalSq(:,:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG), intent(in)    , contiguous    :: point(:,:), invCov(:,:,:)
+        complex(CKG), intent(out)   , contiguous    :: mahalSq(:,:)
     end subroutine
 #endif
 
@@ -2579,9 +2579,9 @@ module pm_distanceMahal
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setDisMahalSqMixInvDef_D2_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC), intent(in)    , contiguous    :: point(:,:), invCov(:,:,:)
-        complex(CKC), intent(out)   , contiguous    :: mahalSq(:,:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG), intent(in)    , contiguous    :: point(:,:), invCov(:,:,:)
+        complex(CKG), intent(out)   , contiguous    :: mahalSq(:,:)
     end subroutine
 #endif
 
@@ -2592,9 +2592,9 @@ module pm_distanceMahal
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setDisMahalSqMixInvDef_D2_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(in)    , contiguous    :: point(:,:), invCov(:,:,:)
-        real(RKC)   , intent(out)   , contiguous    :: mahalSq(:,:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(in)    , contiguous    :: point(:,:), invCov(:,:,:)
+        real(RKG)   , intent(out)   , contiguous    :: mahalSq(:,:)
     end subroutine
 #endif
 
@@ -2603,9 +2603,9 @@ module pm_distanceMahal
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setDisMahalSqMixInvDef_D2_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(in)    , contiguous    :: point(:,:), invCov(:,:,:)
-        real(RKC)   , intent(out)   , contiguous    :: mahalSq(:,:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(in)    , contiguous    :: point(:,:), invCov(:,:,:)
+        real(RKG)   , intent(out)   , contiguous    :: mahalSq(:,:)
     end subroutine
 #endif
 
@@ -2614,9 +2614,9 @@ module pm_distanceMahal
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setDisMahalSqMixInvDef_D2_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(in)    , contiguous    :: point(:,:), invCov(:,:,:)
-        real(RKC)   , intent(out)   , contiguous    :: mahalSq(:,:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(in)    , contiguous    :: point(:,:), invCov(:,:,:)
+        real(RKG)   , intent(out)   , contiguous    :: mahalSq(:,:)
     end subroutine
 #endif
 
@@ -2625,9 +2625,9 @@ module pm_distanceMahal
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setDisMahalSqMixInvDef_D2_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(in)    , contiguous    :: point(:,:), invCov(:,:,:)
-        real(RKC)   , intent(out)   , contiguous    :: mahalSq(:,:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(in)    , contiguous    :: point(:,:), invCov(:,:,:)
+        real(RKG)   , intent(out)   , contiguous    :: mahalSq(:,:)
     end subroutine
 #endif
 
@@ -2636,9 +2636,9 @@ module pm_distanceMahal
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setDisMahalSqMixInvDef_D2_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(in)    , contiguous    :: point(:,:), invCov(:,:,:)
-        real(RKC)   , intent(out)   , contiguous    :: mahalSq(:,:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(in)    , contiguous    :: point(:,:), invCov(:,:,:)
+        real(RKG)   , intent(out)   , contiguous    :: mahalSq(:,:)
     end subroutine
 #endif
 
@@ -2655,9 +2655,9 @@ module pm_distanceMahal
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setDisMahalSqMixInvCen_D2_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC), intent(in)    , contiguous    :: point(:,:), invCov(:,:,:), center(:,:)
-        complex(CKC), intent(out)   , contiguous    :: mahalSq(:,:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG), intent(in)    , contiguous    :: point(:,:), invCov(:,:,:), center(:,:)
+        complex(CKG), intent(out)   , contiguous    :: mahalSq(:,:)
     end subroutine
 #endif
 
@@ -2666,9 +2666,9 @@ module pm_distanceMahal
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setDisMahalSqMixInvCen_D2_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC), intent(in)    , contiguous    :: point(:,:), invCov(:,:,:), center(:,:)
-        complex(CKC), intent(out)   , contiguous    :: mahalSq(:,:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG), intent(in)    , contiguous    :: point(:,:), invCov(:,:,:), center(:,:)
+        complex(CKG), intent(out)   , contiguous    :: mahalSq(:,:)
     end subroutine
 #endif
 
@@ -2677,9 +2677,9 @@ module pm_distanceMahal
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setDisMahalSqMixInvCen_D2_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC), intent(in)    , contiguous    :: point(:,:), invCov(:,:,:), center(:,:)
-        complex(CKC), intent(out)   , contiguous    :: mahalSq(:,:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG), intent(in)    , contiguous    :: point(:,:), invCov(:,:,:), center(:,:)
+        complex(CKG), intent(out)   , contiguous    :: mahalSq(:,:)
     end subroutine
 #endif
 
@@ -2688,9 +2688,9 @@ module pm_distanceMahal
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setDisMahalSqMixInvCen_D2_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC), intent(in)    , contiguous    :: point(:,:), invCov(:,:,:), center(:,:)
-        complex(CKC), intent(out)   , contiguous    :: mahalSq(:,:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG), intent(in)    , contiguous    :: point(:,:), invCov(:,:,:), center(:,:)
+        complex(CKG), intent(out)   , contiguous    :: mahalSq(:,:)
     end subroutine
 #endif
 
@@ -2699,9 +2699,9 @@ module pm_distanceMahal
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setDisMahalSqMixInvCen_D2_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC), intent(in)    , contiguous    :: point(:,:), invCov(:,:,:), center(:,:)
-        complex(CKC), intent(out)   , contiguous    :: mahalSq(:,:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG), intent(in)    , contiguous    :: point(:,:), invCov(:,:,:), center(:,:)
+        complex(CKG), intent(out)   , contiguous    :: mahalSq(:,:)
     end subroutine
 #endif
 
@@ -2712,9 +2712,9 @@ module pm_distanceMahal
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setDisMahalSqMixInvCen_D2_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(in)    , contiguous    :: point(:,:), invCov(:,:,:), center(:,:)
-        real(RKC)   , intent(out)   , contiguous    :: mahalSq(:,:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(in)    , contiguous    :: point(:,:), invCov(:,:,:), center(:,:)
+        real(RKG)   , intent(out)   , contiguous    :: mahalSq(:,:)
     end subroutine
 #endif
 
@@ -2723,9 +2723,9 @@ module pm_distanceMahal
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setDisMahalSqMixInvCen_D2_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(in)    , contiguous    :: point(:,:), invCov(:,:,:), center(:,:)
-        real(RKC)   , intent(out)   , contiguous    :: mahalSq(:,:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(in)    , contiguous    :: point(:,:), invCov(:,:,:), center(:,:)
+        real(RKG)   , intent(out)   , contiguous    :: mahalSq(:,:)
     end subroutine
 #endif
 
@@ -2734,9 +2734,9 @@ module pm_distanceMahal
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setDisMahalSqMixInvCen_D2_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(in)    , contiguous    :: point(:,:), invCov(:,:,:), center(:,:)
-        real(RKC)   , intent(out)   , contiguous    :: mahalSq(:,:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(in)    , contiguous    :: point(:,:), invCov(:,:,:), center(:,:)
+        real(RKG)   , intent(out)   , contiguous    :: mahalSq(:,:)
     end subroutine
 #endif
 
@@ -2745,9 +2745,9 @@ module pm_distanceMahal
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setDisMahalSqMixInvCen_D2_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(in)    , contiguous    :: point(:,:), invCov(:,:,:), center(:,:)
-        real(RKC)   , intent(out)   , contiguous    :: mahalSq(:,:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(in)    , contiguous    :: point(:,:), invCov(:,:,:), center(:,:)
+        real(RKG)   , intent(out)   , contiguous    :: mahalSq(:,:)
     end subroutine
 #endif
 
@@ -2756,9 +2756,9 @@ module pm_distanceMahal
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setDisMahalSqMixInvCen_D2_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(in)    , contiguous    :: point(:,:), invCov(:,:,:), center(:,:)
-        real(RKC)   , intent(out)   , contiguous    :: mahalSq(:,:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(in)    , contiguous    :: point(:,:), invCov(:,:,:), center(:,:)
+        real(RKG)   , intent(out)   , contiguous    :: mahalSq(:,:)
     end subroutine
 #endif
 

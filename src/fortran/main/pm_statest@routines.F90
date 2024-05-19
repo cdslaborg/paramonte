@@ -66,35 +66,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getProbKS_WIX_D0_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_statest@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getProbKS_WIX_D0_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_statest@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getProbKS_WIX_D0_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_statest@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getProbKS_WIX_D0_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_statest@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getProbKS_WIX_D0_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_statest@routines.inc.F90"
     end procedure
 #endif
@@ -117,35 +117,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getProbKS_WRX_D0_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_statest@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getProbKS_WRX_D0_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_statest@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getProbKS_WRX_D0_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_statest@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getProbKS_WRX_D0_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_statest@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getProbKS_WRX_D0_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_statest@routines.inc.F90"
     end procedure
 #endif
@@ -168,35 +168,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getProbKS_WII_D0_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_statest@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getProbKS_WII_D0_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_statest@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getProbKS_WII_D0_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_statest@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getProbKS_WII_D0_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_statest@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getProbKS_WII_D0_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_statest@routines.inc.F90"
     end procedure
 #endif
@@ -219,35 +219,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getProbKS_WRI_D0_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_statest@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getProbKS_WRI_D0_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_statest@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getProbKS_WRI_D0_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_statest@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getProbKS_WRI_D0_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_statest@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getProbKS_WRI_D0_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_statest@routines.inc.F90"
     end procedure
 #endif
@@ -270,35 +270,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getProbKS_WRR_D0_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_statest@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getProbKS_WRR_D0_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_statest@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getProbKS_WRR_D0_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_statest@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getProbKS_WRR_D0_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_statest@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getProbKS_WRR_D0_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_statest@routines.inc.F90"
     end procedure
 #endif
@@ -343,35 +343,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setProbKS_WIX_D0_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_statest@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setProbKS_WIX_D0_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_statest@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setProbKS_WIX_D0_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_statest@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setProbKS_WIX_D0_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_statest@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setProbKS_WIX_D0_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_statest@routines.inc.F90"
     end procedure
 #endif
@@ -394,35 +394,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setProbKS_WRX_D0_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_statest@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setProbKS_WRX_D0_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_statest@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setProbKS_WRX_D0_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_statest@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setProbKS_WRX_D0_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_statest@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setProbKS_WRX_D0_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_statest@routines.inc.F90"
     end procedure
 #endif
@@ -445,35 +445,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setProbKS_WII_D0_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_statest@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setProbKS_WII_D0_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_statest@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setProbKS_WII_D0_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_statest@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setProbKS_WII_D0_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_statest@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setProbKS_WII_D0_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_statest@routines.inc.F90"
     end procedure
 #endif
@@ -496,35 +496,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setProbKS_WRI_D0_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_statest@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setProbKS_WRI_D0_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_statest@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setProbKS_WRI_D0_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_statest@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setProbKS_WRI_D0_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_statest@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setProbKS_WRI_D0_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_statest@routines.inc.F90"
     end procedure
 #endif
@@ -547,35 +547,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setProbKS_WRR_D0_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_statest@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setProbKS_WRR_D0_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_statest@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setProbKS_WRR_D0_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_statest@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setProbKS_WRR_D0_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_statest@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setProbKS_WRR_D0_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_statest@routines.inc.F90"
     end procedure
 #endif

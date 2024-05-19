@@ -20,7 +20,7 @@
 !>  \note
 !>  The constants of this module are saved with the highest available `real` precision kind.<br>
 !>  To use the constants at expressions involving lower-precision `real` kinds, simply convert the numbers to the desired kind
-!>  via the Fortran intrinsic `real(x, kind = RKC)` where `RKC` refers to the target kind parameter used in the expression.
+!>  via the Fortran intrinsic `real(x, kind = RKG)` where `RKG` refers to the target kind parameter used in the expression.
 !>
 !>  \final
 !>

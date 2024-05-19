@@ -26,8 +26,8 @@
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #if     getDiv_CK_ENABLED
-        real(CKC) :: r, d
-        CHECK_ASSERTION(__LINE__, divisor /= (0._CKC, 0._CKC), SK_"@getDiv(): The condition `divisor /= (0._CKC, 0._CKC)` must hold. divisor = "//getStr(divisor))
+        real(CKG) :: r, d
+        CHECK_ASSERTION(__LINE__, divisor /= (0._CKG, 0._CKG), SK_"@getDiv(): The condition `divisor /= (0._CKG, 0._CKG)` must hold. divisor = "//getStr(divisor))
         if (abs(divisor%re) < abs(divisor%im)) then
             r = divisor%re / divisor%im
             d = divisor%im + r * divisor%re

@@ -26,19 +26,19 @@
 
 #if     IK_ENABLED
 #define GET_CONJG(X) X
-#define TYPE_KIND integer(IKC)
+#define TYPE_KIND integer(IKG)
         TYPE_KIND   , parameter     :: lb = -10, ub = 10
         TYPE_KIND   , parameter     :: TOL = 0
 #elif   CK_ENABLED
 #define GET_CONJG(X) conjg(X)
-#define TYPE_KIND complex(CKC)
-        real(CKC)   , parameter     :: TOL = epsilon(0._CKC)**.66
-        TYPE_KIND   , parameter     :: lb = (-1._CKC, -1._CKC), ub = (1._CKC, 1._CKC)
+#define TYPE_KIND complex(CKG)
+        real(CKG)   , parameter     :: TOL = epsilon(0._CKG)**.66
+        TYPE_KIND   , parameter     :: lb = (-1._CKG, -1._CKG), ub = (1._CKG, 1._CKG)
 #elif   RK_ENABLED
 #define GET_CONJG(X) X
-#define TYPE_KIND real(RKC)
-        real(RKC)   , parameter     :: TOL = epsilon(0._RKC)**.66
-        TYPE_KIND   , parameter     :: lb = -1._RKC, ub = 1._RKC
+#define TYPE_KIND real(RKG)
+        real(RKG)   , parameter     :: TOL = epsilon(0._RKG)**.66
+        TYPE_KIND   , parameter     :: lb = -1._RKG, ub = 1._RKG
 #else
 #error  "Unrecognized interface."
 #endif

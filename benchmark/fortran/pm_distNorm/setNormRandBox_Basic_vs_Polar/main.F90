@@ -1,19 +1,19 @@
 module internal
-    use pm_kind, only: RKC => RK
+    use pm_kind, only: RKG => RK
     implicit none
 contains
     impure subroutine setNormRandBox(rand1, rand2)
-        real(RKC)   , intent(out)   :: rand1, rand2
-        real(RKC)                   :: factor, rsq
+        real(RKG)   , intent(out)   :: rand1, rand2
+        real(RKG)                   :: factor, rsq
         do
             call random_number(rand1)
             call random_number(rand2)
-            rand1 = 2._RKC * rand1 - 1._RKC
-            rand2 = 2._RKC * rand2 - 1._RKC
+            rand1 = 2._RKG * rand1 - 1._RKG
+            rand2 = 2._RKG * rand2 - 1._RKG
             rsq = rand1**2 + rand2**2
-            if (0._RKC < rsq .and. rsq < 1._RKC) exit
+            if (0._RKG < rsq .and. rsq < 1._RKG) exit
         end do
-        factor = sqrt(-2._RKC * log(rsq) / rsq)
+        factor = sqrt(-2._RKG * log(rsq) / rsq)
         rand1 = rand1 * factor
         rand2 = rand2 * factor
     end subroutine
@@ -27,14 +27,14 @@ program benchmark
     use pm_bench, only: bench_type, benchMulti_type
     use pm_io, only: display_type
     use pm_kind, only: SK, IK, LK, RK
-    use internal, only: RKC
+    use internal, only: RKG
 
     implicit none
 
     integer(IK)                         :: itime
     integer(IK)                         :: ibench
-    real(RKC)                           :: rand1 = 0._RKC, rand2 = 0._RKC
-    real(RKC)                           :: dummy = 0._RKC
+    real(RKG)                           :: rand1 = 0._RKG, rand2 = 0._RKG
+    real(RKG)                           :: dummy = 0._RKG
     type(benchMulti_type)               :: bench
     type(display_type)                  :: disp
     integer(IK)                         :: miniter = 10000_IK
@@ -100,8 +100,8 @@ contains
     !subroutine getNormRandBox()
     !    block
     !        use pm_distNorm, only: getNormRandBox
-    !        rand1 = getNormRandBox(mean = 0._RKC)
-    !        rand2 = getNormRandBox(mean = 0._RKC)
+    !        rand1 = getNormRandBox(mean = 0._RKG)
+    !        rand2 = getNormRandBox(mean = 0._RKG)
     !        call finalize()
     !    end block
     !end subroutine

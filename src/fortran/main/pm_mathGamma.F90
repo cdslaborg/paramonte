@@ -166,10 +166,10 @@ module pm_mathGamma
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getGammaIncLow_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(in)                :: x, kappa
-        real(RKC)   , intent(in)    , optional  :: tol
-        real(RKC)                               :: gammaIncLow
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(in)                :: x, kappa
+        real(RKG)   , intent(in)    , optional  :: tol
+        real(RKG)                               :: gammaIncLow
     end function
 #endif
 
@@ -178,10 +178,10 @@ module pm_mathGamma
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getGammaIncLow_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(in)                :: x, kappa
-        real(RKC)   , intent(in)    , optional  :: tol
-        real(RKC)                               :: gammaIncLow
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(in)                :: x, kappa
+        real(RKG)   , intent(in)    , optional  :: tol
+        real(RKG)                               :: gammaIncLow
     end function
 #endif
 
@@ -190,10 +190,10 @@ module pm_mathGamma
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getGammaIncLow_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(in)                :: x, kappa
-        real(RKC)   , intent(in)    , optional  :: tol
-        real(RKC)                               :: gammaIncLow
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(in)                :: x, kappa
+        real(RKG)   , intent(in)    , optional  :: tol
+        real(RKG)                               :: gammaIncLow
     end function
 #endif
 
@@ -202,10 +202,10 @@ module pm_mathGamma
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getGammaIncLow_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(in)                :: x, kappa
-        real(RKC)   , intent(in)    , optional  :: tol
-        real(RKC)                               :: gammaIncLow
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(in)                :: x, kappa
+        real(RKG)   , intent(in)    , optional  :: tol
+        real(RKG)                               :: gammaIncLow
     end function
 #endif
 
@@ -214,10 +214,10 @@ module pm_mathGamma
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getGammaIncLow_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(in)                :: x, kappa
-        real(RKC)   , intent(in)    , optional  :: tol
-        real(RKC)                               :: gammaIncLow
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(in)                :: x, kappa
+        real(RKG)   , intent(in)    , optional  :: tol
+        real(RKG)                               :: gammaIncLow
     end function
 #endif
 
@@ -317,10 +317,10 @@ module pm_mathGamma
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getGammaIncUpp_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(in)                :: x, kappa
-        real(RKC)   , intent(in)    , optional  :: tol
-        real(RKC)                               :: gammaIncUpp
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(in)                :: x, kappa
+        real(RKG)   , intent(in)    , optional  :: tol
+        real(RKG)                               :: gammaIncUpp
     end function
 #endif
 
@@ -329,10 +329,10 @@ module pm_mathGamma
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getGammaIncUpp_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(in)                :: x, kappa
-        real(RKC)   , intent(in)    , optional  :: tol
-        real(RKC)                               :: gammaIncUpp
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(in)                :: x, kappa
+        real(RKG)   , intent(in)    , optional  :: tol
+        real(RKG)                               :: gammaIncUpp
     end function
 #endif
 
@@ -341,10 +341,10 @@ module pm_mathGamma
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getGammaIncUpp_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(in)                :: x, kappa
-        real(RKC)   , intent(in)    , optional  :: tol
-        real(RKC)                               :: gammaIncUpp
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(in)                :: x, kappa
+        real(RKG)   , intent(in)    , optional  :: tol
+        real(RKG)                               :: gammaIncUpp
     end function
 #endif
 
@@ -353,10 +353,10 @@ module pm_mathGamma
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getGammaIncUpp_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(in)                :: x, kappa
-        real(RKC)   , intent(in)    , optional  :: tol
-        real(RKC)                               :: gammaIncUpp
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(in)                :: x, kappa
+        real(RKG)   , intent(in)    , optional  :: tol
+        real(RKG)                               :: gammaIncUpp
     end function
 #endif
 
@@ -365,10 +365,10 @@ module pm_mathGamma
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getGammaIncUpp_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(in)                :: x, kappa
-        real(RKC)   , intent(in)    , optional  :: tol
-        real(RKC)                               :: gammaIncUpp
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(in)                :: x, kappa
+        real(RKG)   , intent(in)    , optional  :: tol
+        real(RKG)                               :: gammaIncUpp
     end function
 #endif
 
@@ -476,11 +476,11 @@ module pm_mathGamma
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setGammaIncLowDef_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(out)               :: gammaIncLow
-        real(RKC)   , intent(in)                :: x, logGammaKappa, kappa
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(out)               :: gammaIncLow
+        real(RKG)   , intent(in)                :: x, logGammaKappa, kappa
         integer(IK) , intent(out)               :: info
-        real(RKC)   , intent(in)    , optional  :: tol
+        real(RKG)   , intent(in)    , optional  :: tol
     end subroutine
 #endif
 
@@ -489,11 +489,11 @@ module pm_mathGamma
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setGammaIncLowDef_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(out)               :: gammaIncLow
-        real(RKC)   , intent(in)                :: x, logGammaKappa, kappa
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(out)               :: gammaIncLow
+        real(RKG)   , intent(in)                :: x, logGammaKappa, kappa
         integer(IK) , intent(out)               :: info
-        real(RKC)   , intent(in)    , optional  :: tol
+        real(RKG)   , intent(in)    , optional  :: tol
     end subroutine
 #endif
 
@@ -502,11 +502,11 @@ module pm_mathGamma
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setGammaIncLowDef_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(out)               :: gammaIncLow
-        real(RKC)   , intent(in)                :: x, logGammaKappa, kappa
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(out)               :: gammaIncLow
+        real(RKG)   , intent(in)                :: x, logGammaKappa, kappa
         integer(IK) , intent(out)               :: info
-        real(RKC)   , intent(in)    , optional  :: tol
+        real(RKG)   , intent(in)    , optional  :: tol
     end subroutine
 #endif
 
@@ -515,11 +515,11 @@ module pm_mathGamma
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setGammaIncLowDef_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(out)               :: gammaIncLow
-        real(RKC)   , intent(in)                :: x, logGammaKappa, kappa
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(out)               :: gammaIncLow
+        real(RKG)   , intent(in)                :: x, logGammaKappa, kappa
         integer(IK) , intent(out)               :: info
-        real(RKC)   , intent(in)    , optional  :: tol
+        real(RKG)   , intent(in)    , optional  :: tol
     end subroutine
 #endif
 
@@ -528,11 +528,11 @@ module pm_mathGamma
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setGammaIncLowDef_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(out)               :: gammaIncLow
-        real(RKC)   , intent(in)                :: x, logGammaKappa, kappa
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(out)               :: gammaIncLow
+        real(RKG)   , intent(in)                :: x, logGammaKappa, kappa
         integer(IK) , intent(out)               :: info
-        real(RKC)   , intent(in)    , optional  :: tol
+        real(RKG)   , intent(in)    , optional  :: tol
     end subroutine
 #endif
 
@@ -643,11 +643,11 @@ module pm_mathGamma
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setGammaIncUppDef_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(out)               :: gammaIncUpp
-        real(RKC)   , intent(in)                :: x, logGammaKappa, kappa
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(out)               :: gammaIncUpp
+        real(RKG)   , intent(in)                :: x, logGammaKappa, kappa
         integer(IK) , intent(out)               :: info
-        real(RKC)   , intent(in)    , optional  :: tol
+        real(RKG)   , intent(in)    , optional  :: tol
     end subroutine
 #endif
 
@@ -656,11 +656,11 @@ module pm_mathGamma
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setGammaIncUppDef_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(out)               :: gammaIncUpp
-        real(RKC)   , intent(in)                :: x, logGammaKappa, kappa
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(out)               :: gammaIncUpp
+        real(RKG)   , intent(in)                :: x, logGammaKappa, kappa
         integer(IK) , intent(out)               :: info
-        real(RKC)   , intent(in)    , optional  :: tol
+        real(RKG)   , intent(in)    , optional  :: tol
     end subroutine
 #endif
 
@@ -669,11 +669,11 @@ module pm_mathGamma
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setGammaIncUppDef_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(out)               :: gammaIncUpp
-        real(RKC)   , intent(in)                :: x, logGammaKappa, kappa
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(out)               :: gammaIncUpp
+        real(RKG)   , intent(in)                :: x, logGammaKappa, kappa
         integer(IK) , intent(out)               :: info
-        real(RKC)   , intent(in)    , optional  :: tol
+        real(RKG)   , intent(in)    , optional  :: tol
     end subroutine
 #endif
 
@@ -682,11 +682,11 @@ module pm_mathGamma
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setGammaIncUppDef_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(out)               :: gammaIncUpp
-        real(RKC)   , intent(in)                :: x, logGammaKappa, kappa
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(out)               :: gammaIncUpp
+        real(RKG)   , intent(in)                :: x, logGammaKappa, kappa
         integer(IK) , intent(out)               :: info
-        real(RKC)   , intent(in)    , optional  :: tol
+        real(RKG)   , intent(in)    , optional  :: tol
     end subroutine
 #endif
 
@@ -695,11 +695,11 @@ module pm_mathGamma
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setGammaIncUppDef_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(out)               :: gammaIncUpp
-        real(RKC)   , intent(in)                :: x, logGammaKappa, kappa
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(out)               :: gammaIncUpp
+        real(RKG)   , intent(in)                :: x, logGammaKappa, kappa
         integer(IK) , intent(out)               :: info
-        real(RKC)   , intent(in)    , optional  :: tol
+        real(RKG)   , intent(in)    , optional  :: tol
     end subroutine
 #endif
 
@@ -799,11 +799,11 @@ module pm_mathGamma
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setGammaIncLowSeries_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(out)               :: gammaIncLow
-        real(RKC)   , intent(in)                :: x, logGammaKappa, kappa
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(out)               :: gammaIncLow
+        real(RKG)   , intent(in)                :: x, logGammaKappa, kappa
         integer(IK) , intent(out)               :: info
-        real(RKC)   , intent(in)    , optional  :: tol
+        real(RKG)   , intent(in)    , optional  :: tol
     end subroutine
 #endif
 
@@ -812,11 +812,11 @@ module pm_mathGamma
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setGammaIncLowSeries_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(out)               :: gammaIncLow
-        real(RKC)   , intent(in)                :: x, logGammaKappa, kappa
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(out)               :: gammaIncLow
+        real(RKG)   , intent(in)                :: x, logGammaKappa, kappa
         integer(IK) , intent(out)               :: info
-        real(RKC)   , intent(in)    , optional  :: tol
+        real(RKG)   , intent(in)    , optional  :: tol
     end subroutine
 #endif
 
@@ -825,11 +825,11 @@ module pm_mathGamma
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setGammaIncLowSeries_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(out)               :: gammaIncLow
-        real(RKC)   , intent(in)                :: x, logGammaKappa, kappa
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(out)               :: gammaIncLow
+        real(RKG)   , intent(in)                :: x, logGammaKappa, kappa
         integer(IK) , intent(out)               :: info
-        real(RKC)   , intent(in)    , optional  :: tol
+        real(RKG)   , intent(in)    , optional  :: tol
     end subroutine
 #endif
 
@@ -838,11 +838,11 @@ module pm_mathGamma
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setGammaIncLowSeries_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(out)               :: gammaIncLow
-        real(RKC)   , intent(in)                :: x, logGammaKappa, kappa
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(out)               :: gammaIncLow
+        real(RKG)   , intent(in)                :: x, logGammaKappa, kappa
         integer(IK) , intent(out)               :: info
-        real(RKC)   , intent(in)    , optional  :: tol
+        real(RKG)   , intent(in)    , optional  :: tol
     end subroutine
 #endif
 
@@ -851,11 +851,11 @@ module pm_mathGamma
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setGammaIncLowSeries_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(out)               :: gammaIncLow
-        real(RKC)   , intent(in)                :: x, logGammaKappa, kappa
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(out)               :: gammaIncLow
+        real(RKG)   , intent(in)                :: x, logGammaKappa, kappa
         integer(IK) , intent(out)               :: info
-        real(RKC)   , intent(in)    , optional  :: tol
+        real(RKG)   , intent(in)    , optional  :: tol
     end subroutine
 #endif
 
@@ -955,11 +955,11 @@ module pm_mathGamma
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setGammaIncUppContFrac_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(out)               :: gammaIncUpp
-        real(RKC)   , intent(in)                :: x, logGammaKappa, kappa
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(out)               :: gammaIncUpp
+        real(RKG)   , intent(in)                :: x, logGammaKappa, kappa
         integer(IK) , intent(out)               :: info
-        real(RKC)   , intent(in)    , optional  :: tol
+        real(RKG)   , intent(in)    , optional  :: tol
     end subroutine
 #endif
 
@@ -968,11 +968,11 @@ module pm_mathGamma
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setGammaIncUppContFrac_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(out)               :: gammaIncUpp
-        real(RKC)   , intent(in)                :: x, logGammaKappa, kappa
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(out)               :: gammaIncUpp
+        real(RKG)   , intent(in)                :: x, logGammaKappa, kappa
         integer(IK) , intent(out)               :: info
-        real(RKC)   , intent(in)    , optional  :: tol
+        real(RKG)   , intent(in)    , optional  :: tol
     end subroutine
 #endif
 
@@ -981,11 +981,11 @@ module pm_mathGamma
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setGammaIncUppContFrac_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(out)               :: gammaIncUpp
-        real(RKC)   , intent(in)                :: x, logGammaKappa, kappa
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(out)               :: gammaIncUpp
+        real(RKG)   , intent(in)                :: x, logGammaKappa, kappa
         integer(IK) , intent(out)               :: info
-        real(RKC)   , intent(in)    , optional  :: tol
+        real(RKG)   , intent(in)    , optional  :: tol
     end subroutine
 #endif
 
@@ -994,11 +994,11 @@ module pm_mathGamma
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setGammaIncUppContFrac_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(out)               :: gammaIncUpp
-        real(RKC)   , intent(in)                :: x, logGammaKappa, kappa
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(out)               :: gammaIncUpp
+        real(RKG)   , intent(in)                :: x, logGammaKappa, kappa
         integer(IK) , intent(out)               :: info
-        real(RKC)   , intent(in)    , optional  :: tol
+        real(RKG)   , intent(in)    , optional  :: tol
     end subroutine
 #endif
 
@@ -1007,11 +1007,11 @@ module pm_mathGamma
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setGammaIncUppContFrac_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(out)               :: gammaIncUpp
-        real(RKC)   , intent(in)                :: x, logGammaKappa, kappa
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(out)               :: gammaIncUpp
+        real(RKG)   , intent(in)                :: x, logGammaKappa, kappa
         integer(IK) , intent(out)               :: info
-        real(RKC)   , intent(in)    , optional  :: tol
+        real(RKG)   , intent(in)    , optional  :: tol
     end subroutine
 #endif
 
@@ -1043,7 +1043,7 @@ module pm_mathGamma
 !        use pm_kind, only: IK, RK, SQRT_PI
 !        implicit none
 !        real(RK), intent(in) :: positiveHalfInteger
-!        real(RKC)            :: gammaHalfInt
+!        real(RKG)            :: gammaHalfInt
 !        integer(IK)          :: i,k
 !        gammaHalfInt = SQRT_PI
 !        k = nint(positiveHalfInteger-0.5_RK,kind=IK) ! positiveHalfInteger = k + 1/2
@@ -1076,7 +1076,7 @@ module pm_mathGamma
 !        real(RK), intent(in)    :: positiveHalfInteger
 !        real(RK), parameter     :: COEF = log(0.25_RK)
 !        real(RK), parameter     :: LOG_SQRTPI = log(SQRT_PI)
-!        real(RKC)               :: logGammaHalfInt
+!        real(RKG)               :: logGammaHalfInt
 !        integer(IK)             :: i, k
 !        k = nint(positiveHalfInteger-0.5_RK,kind=IK) ! positiveHalfInteger = k + 1/2
 !        logGammaHalfInt = LOG_SQRTPI

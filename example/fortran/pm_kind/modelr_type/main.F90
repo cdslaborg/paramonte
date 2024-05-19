@@ -10,9 +10,9 @@ program example
     disp = display_type(file = "main.out.F90")
 
     block
-        use pm_kind, only: TKC => RKS
+        use pm_kind, only: TKG => RKS
         type(modelr_type) :: model
-        real(TKC) :: mold
+        real(TKG) :: mold
         call disp%skip()
         call disp%show("kind(mold)")
         call disp%show( kind(mold) )
@@ -26,9 +26,9 @@ program example
     end block
 
     block
-        use pm_kind, only: TKC => RKD
+        use pm_kind, only: TKG => RKD
         type(modelr_type) :: model
-        real(TKC) :: mold
+        real(TKG) :: mold
         call disp%skip()
         call disp%show("kind(mold)")
         call disp%show( kind(mold) )
@@ -42,9 +42,9 @@ program example
     end block
 
     block
-        use pm_kind, only: TKC => RKH
+        use pm_kind, only: TKG => RKH
         type(modelr_type) :: model
-        real(TKC) :: mold
+        real(TKG) :: mold
         call disp%skip()
         call disp%show("kind(mold)")
         call disp%show( kind(mold) )

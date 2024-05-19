@@ -45,20 +45,20 @@
 #elif   setGammaInc_ENABLED && Def_ENABLED && Low_ENABLED
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        if (x < kappa + 1._RKC) then
+        if (x < kappa + 1._RKG) then
             call setGammaIncLowSeries(gammaIncLow, x, logGammaKappa, kappa, info, tol)
         else
             call setGammaIncUppContFrac(gammaIncLow, x, logGammaKappa, kappa, info, tol)
-            gammaIncLow = 1._RKC - gammaIncLow
+            gammaIncLow = 1._RKG - gammaIncLow
         end if
 
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 #elif   setGammaInc_ENABLED && Def_ENABLED && Upp_ENABLED
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        if (x < kappa + 1._RKC) then
+        if (x < kappa + 1._RKG) then
             call setGammaIncLowSeries(gammaIncUpp, x, logGammaKappa, kappa, info, tol)
-            gammaIncUpp = 1._RKC - gammaIncUpp
+            gammaIncUpp = 1._RKG - gammaIncUpp
         else
             call setGammaIncUppContFrac(gammaIncUpp, x, logGammaKappa, kappa, info, tol)
         end if
@@ -68,38 +68,38 @@
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
         integer(IK)     , parameter :: ITMAX = 300_IK               !< The maximum allowed number of iterations.
-        real(RKC)       , parameter :: EPS = 10 * epsilon(x)        !< The default relative accuracy.
-        real(RKC)                   :: tol_def, delta
+        real(RKG)       , parameter :: EPS = 10 * epsilon(x)        !< The default relative accuracy.
+        real(RKG)                   :: tol_def, delta
 #if     Series_ENABLED && Low_ENABLED
         character(*, SK), parameter :: PROCEDURE_NAME = SK_"@setGammaIncLowSeries()"
-        real(RKC)                   :: kappaIncremented, summ
+        real(RKG)                   :: kappaIncremented, summ
 #elif   ContFrac_ENABLED && Upp_ENABLED
         character(*, SK), parameter :: PROCEDURE_NAME = SK_"@setGammaIncUppContFrac()"
-        real(RKC)       , parameter :: FPMIN_DEF = tiny(x) / EPS    !< A number near the smallest representable floating-point number.
-        real(RKC)                   :: an, b, c, d, h
-        real(RKC)                   :: fpmin
+        real(RKG)       , parameter :: FPMIN_DEF = tiny(x) / EPS    !< A number near the smallest representable floating-point number.
+        real(RKG)                   :: an, b, c, d, h
+        real(RKG)                   :: fpmin
 #else
 #error  "Unrecognized interface."
 #endif
         ! Compute the Gamma function using the fastest method decided at runtime.
-        CHECK_ASSERTION(__LINE__, 0._RKC <= x, PROCEDURE_NAME//SK_": The input `x` must be positive. x = "//getStr(x)) ! fpp
-        CHECK_ASSERTION(__LINE__, 0._RKC < getOption(EPS, tol), PROCEDURE_NAME//SK_": The condition `0. < tol` must hold. tol = "//getStr(getOption(EPS, tol))) ! fpp
-        CHECK_ASSERTION(__LINE__, kappa > 0._RKC, PROCEDURE_NAME//SK_": The input `kappa` must be positive. kappa = "//getStr(kappa)) ! fpp
+        CHECK_ASSERTION(__LINE__, 0._RKG <= x, PROCEDURE_NAME//SK_": The input `x` must be positive. x = "//getStr(x)) ! fpp
+        CHECK_ASSERTION(__LINE__, 0._RKG < getOption(EPS, tol), PROCEDURE_NAME//SK_": The condition `0. < tol` must hold. tol = "//getStr(getOption(EPS, tol))) ! fpp
+        CHECK_ASSERTION(__LINE__, kappa > 0._RKG, PROCEDURE_NAME//SK_": The input `kappa` must be positive. kappa = "//getStr(kappa)) ! fpp
         CHECK_ASSERTION(__LINE__, abs(log_gamma(kappa) - logGammaKappa) <= 100 * epsilon(kappa), \
         PROCEDURE_NAME//SK_": The input `logGammaKappa` must equal `log_gamma(kappa)`. kappa, log_gamma(kappa), logGammaKappa = "//\
         getStr([kappa, log_gamma(kappa), logGammaKappa])) ! fpp
 #if     Series_ENABLED && Low_ENABLED
-        if (x > 0._RKC) then
+        if (x > 0._RKG) then
             if (present(tol)) then
                 tol_def = tol
             else
                 tol_def = EPS
             end if
             kappaIncremented = kappa
-            summ = 1._RKC / kappa
+            summ = 1._RKG / kappa
             delta = summ
             do info = 1, ITMAX
-                kappaIncremented = kappaIncremented + 1._RKC
+                kappaIncremented = kappaIncremented + 1._RKG
                 delta = delta * x / kappaIncremented
                 summ = summ + delta
                 if (abs(summ) * tol_def < abs(delta)) cycle
@@ -109,10 +109,10 @@
             info = -info ! LCOV_EXCL_LINE
         else
             info = 0_IK
-            gammaIncLow = 0._RKC
+            gammaIncLow = 0._RKG
         end if
 #elif   ContFrac_ENABLED && Upp_ENABLED
-        if (x > 0._RKC) then
+        if (x > 0._RKG) then
             if (present(tol)) then
                 tol_def = tol
                 fpmin = tiny(x) / tol_def
@@ -120,28 +120,28 @@
                 tol_def = EPS
                 fpmin = FPMIN_DEF
             end if
-            b = x + 1._RKC - kappa
-            c = 1._RKC / fpmin
-            d = 1._RKC / b
+            b = x + 1._RKG - kappa
+            c = 1._RKG / fpmin
+            d = 1._RKG / b
             h = d
             do info = 1, ITMAX
                 an = -info * (info - kappa)
-                b = b + 2._RKC
+                b = b + 2._RKG
                 d = an * d + b
                 if (abs(d) < fpmin) d = fpmin
                 c = b + an / c
                 if (abs(c) < fpmin) c = fpmin
-                d = 1._RKC / d
+                d = 1._RKG / d
                 delta = d * c
                 h = h * delta
-                if (tol_def < abs(delta - 1._RKC)) cycle
+                if (tol_def < abs(delta - 1._RKG)) cycle
                 gammaIncUpp = exp(kappa * log(x) - x - logGammaKappa) * h
                 return
             end do
             info = -info ! LCOV_EXCL_LINE
         else
             info = 0_IK
-            gammaIncUpp = 1._RKC
+            gammaIncUpp = 1._RKG
         end if
 #endif
 #else

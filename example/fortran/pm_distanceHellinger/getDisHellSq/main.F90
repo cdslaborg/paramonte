@@ -26,10 +26,10 @@ program example
 
     block
 
-        use pm_kind, only: RKC => RKS ! all other real kinds are also supported.
-        real(RKC), allocatable :: p(:), q(:), stepSuccess(:)
+        use pm_kind, only: RKG => RKS ! all other real kinds are also supported.
+        real(RKG), allocatable :: p(:), q(:), stepSuccess(:)
         integer(IK) :: period
-        real(RKC) :: hellsq
+        real(RKG) :: hellsq
 
         call disp%skip()
         call disp%show("period = 10;")
@@ -38,8 +38,8 @@ program example
                         stepSuccess = getRange(1, period)
         call disp%show("stepSuccess")
         call disp%show( stepSuccess )
-        call disp%show("p = exp(getGeomCyclicLogPMF(stepSuccess, probSuccess = .1_RKC, period = period))")
-                        p = exp(getGeomCyclicLogPMF(stepSuccess, probSuccess = .1_RKC, period = period))
+        call disp%show("p = exp(getGeomCyclicLogPMF(stepSuccess, probSuccess = .1_RKG, period = period))")
+                        p = exp(getGeomCyclicLogPMF(stepSuccess, probSuccess = .1_RKG, period = period))
         call disp%show("p")
         call disp%show( p )
         call disp%show("q = p")
@@ -59,12 +59,12 @@ program example
                         stepSuccess = getRange(1, period)
         call disp%show("stepSuccess")
         call disp%show( stepSuccess )
-        call disp%show("p = exp(getGeomCyclicLogPMF(stepSuccess, probSuccess = .1_RKC, period = period))")
-                        p = exp(getGeomCyclicLogPMF(stepSuccess, probSuccess = .1_RKC, period = period))
+        call disp%show("p = exp(getGeomCyclicLogPMF(stepSuccess, probSuccess = .1_RKG, period = period))")
+                        p = exp(getGeomCyclicLogPMF(stepSuccess, probSuccess = .1_RKG, period = period))
         call disp%show("p")
         call disp%show( p )
-        call disp%show("q = exp(getGeomCyclicLogPMF(stepSuccess, probSuccess = .9_RKC, period = period))")
-                        q = exp(getGeomCyclicLogPMF(stepSuccess, probSuccess = .9_RKC, period = period))
+        call disp%show("q = exp(getGeomCyclicLogPMF(stepSuccess, probSuccess = .9_RKG, period = period))")
+                        q = exp(getGeomCyclicLogPMF(stepSuccess, probSuccess = .9_RKG, period = period))
         call disp%show("q")
         call disp%show( q )
         call disp%show("hellsq = getDisHellSq(p, q)")
@@ -85,8 +85,8 @@ program example
 
     block
 
-        use pm_kind, only: RKC => RKD ! all other real kinds are also supported.
-        real(RKC) :: hellsq
+        use pm_kind, only: RKG => RKD ! all other real kinds are also supported.
+        real(RKG) :: hellsq
 
         call disp%skip()
         call disp%show("hellsq = getDisHellSq(getp, getq)")
@@ -94,8 +94,8 @@ program example
         call disp%show("hellsq")
         call disp%show( hellsq )
         call disp%skip()
-        call disp%show("hellsq = getDisHellSq(getp, getq, lb = -huge(0._RKC), ub = +huge(0._RKC))")
-                        hellsq = getDisHellSq(getp, getq, lb = -huge(0._RKC), ub = +huge(0._RKC))
+        call disp%show("hellsq = getDisHellSq(getp, getq, lb = -huge(0._RKG), ub = +huge(0._RKG))")
+                        hellsq = getDisHellSq(getp, getq, lb = -huge(0._RKG), ub = +huge(0._RKG))
         call disp%show("hellsq")
         call disp%show( hellsq )
         call disp%skip()
@@ -105,17 +105,17 @@ program example
 contains
 
     function getp(x) result(pdf)
-        use pm_kind, only: RKC => RKD ! all other real kinds are also supported.
-        real(RKC), intent(in) :: x
-        real(RKC) :: pdf
+        use pm_kind, only: RKG => RKD ! all other real kinds are also supported.
+        real(RKG), intent(in) :: x
+        real(RKG) :: pdf
         pdf = exp(getNormLogPDF(x))
     end function
 
     function getq(x) result(pdf)
-        use pm_kind, only: RKC => RKD ! all other real kinds are also supported.
-        real(RKC), intent(in) :: x
-        real(RKC) :: pdf
-        pdf = exp(getNormLogPDF(x, mu = 1._RKC))
+        use pm_kind, only: RKG => RKD ! all other real kinds are also supported.
+        real(RKG), intent(in) :: x
+        real(RKG) :: pdf
+        pdf = exp(getNormLogPDF(x, mu = 1._RKG))
     end function
 
 end program example

@@ -28,8 +28,8 @@ program example
     call disp%skip()
 
     block
-        use pm_kind, only: TKC => RKS ! All other real types are also supported.
-        real(TKC), allocatable :: sample(:,:), cov(:,:), mean(:), meang(:)
+        use pm_kind, only: TKG => RKS ! All other real types are also supported.
+        real(TKG), allocatable :: sample(:,:), cov(:,:), mean(:), meang(:)
         integer(IK) :: ndim, nsam, dim
         call disp%show("ndim = 2; nsam = 10; dim = 2")
                         ndim = 2; nsam = 10; dim = 2
@@ -111,12 +111,12 @@ program example
     call disp%skip()
 
     block
-        use pm_kind, only: TKC => RKS ! All other real types are also supported.
-        real(TKC) :: rweisum
+        use pm_kind, only: TKG => RKS ! All other real types are also supported.
+        real(TKG) :: rweisum
         integer(IK) :: iweisum
-        real(TKC), allocatable :: rweight(:)
+        real(TKG), allocatable :: rweight(:)
         integer(IK), allocatable :: iweight(:)
-        real(TKC), allocatable :: sample(:,:), cov(:,:), mean(:), meang(:)
+        real(TKG), allocatable :: sample(:,:), cov(:,:), mean(:), meang(:)
         integer(IK) :: ndim, nsam, dim
         call disp%show("ndim = 2; nsam = 10; dim = 2")
                         ndim = 2; nsam = 10; dim = 2

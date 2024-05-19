@@ -146,9 +146,9 @@ module pm_mathLog1p
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLog1pSeq_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)        , intent(in)    :: x
-        complex(CKC)                        :: log1p
+        use pm_kind, only: CKG => CK5
+        complex(CKG)        , intent(in)    :: x
+        complex(CKG)                        :: log1p
     end function
 #endif
 
@@ -157,9 +157,9 @@ module pm_mathLog1p
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLog1pSeq_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC), intent(in)    :: x
-        complex(CKC)                :: log1p
+        use pm_kind, only: CKG => CK4
+        complex(CKG), intent(in)    :: x
+        complex(CKG)                :: log1p
     end function
 #endif
 
@@ -168,9 +168,9 @@ module pm_mathLog1p
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLog1pSeq_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC), intent(in)    :: x
-        complex(CKC)                :: log1p
+        use pm_kind, only: CKG => CK3
+        complex(CKG), intent(in)    :: x
+        complex(CKG)                :: log1p
     end function
 #endif
 
@@ -179,9 +179,9 @@ module pm_mathLog1p
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLog1pSeq_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC), intent(in)    :: x
-        complex(CKC)                :: log1p
+        use pm_kind, only: CKG => CK2
+        complex(CKG), intent(in)    :: x
+        complex(CKG)                :: log1p
     end function
 #endif
 
@@ -190,9 +190,9 @@ module pm_mathLog1p
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLog1pSeq_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC), intent(in)    :: x
-        complex(CKC)                :: log1p
+        use pm_kind, only: CKG => CK1
+        complex(CKG), intent(in)    :: x
+        complex(CKG)                :: log1p
     end function
 #endif
 
@@ -203,9 +203,9 @@ module pm_mathLog1p
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLog1pSeq_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(in)    :: x
-        real(RKC)                   :: log1p
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(in)    :: x
+        real(RKG)                   :: log1p
     end function
 #endif
 
@@ -214,9 +214,9 @@ module pm_mathLog1p
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLog1pSeq_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(in)    :: x
-        real(RKC)                   :: log1p
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(in)    :: x
+        real(RKG)                   :: log1p
     end function
 #endif
 
@@ -225,9 +225,9 @@ module pm_mathLog1p
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLog1pSeq_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(in)    :: x
-        real(RKC)                   :: log1p
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(in)    :: x
+        real(RKG)                   :: log1p
     end function
 #endif
 
@@ -236,9 +236,9 @@ module pm_mathLog1p
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLog1pSeq_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(in)    :: x
-        real(RKC)                   :: log1p
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(in)    :: x
+        real(RKG)                   :: log1p
     end function
 #endif
 
@@ -247,9 +247,9 @@ module pm_mathLog1p
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLog1pSeq_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(in)    :: x
-        real(RKC)                   :: log1p
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(in)    :: x
+        real(RKG)                   :: log1p
     end function
 #endif
 
@@ -266,10 +266,10 @@ module pm_mathLog1p
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getLog1pSel_CK5
 !#endif
-!        use pm_kind, only: CKC => CK5
+!        use pm_kind, only: CKG => CK5
 !        type(selection_type), intent(in)    :: control
-!        complex(CKC)        , intent(in)    :: x
-!        complex(CKC)                        :: log1p
+!        complex(CKG)        , intent(in)    :: x
+!        complex(CKG)                        :: log1p
 !    end function
 !#endif
 !
@@ -278,10 +278,10 @@ module pm_mathLog1p
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getLog1pSel_CK4
 !#endif
-!        use pm_kind, only: CKC => CK4
+!        use pm_kind, only: CKG => CK4
 !        type(selection_type), intent(in)    :: control
-!        complex(CKC)        , intent(in)    :: x
-!        complex(CKC)                        :: log1p
+!        complex(CKG)        , intent(in)    :: x
+!        complex(CKG)                        :: log1p
 !    end function
 !#endif
 !
@@ -290,10 +290,10 @@ module pm_mathLog1p
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getLog1pSel_CK3
 !#endif
-!        use pm_kind, only: CKC => CK3
+!        use pm_kind, only: CKG => CK3
 !        type(selection_type), intent(in)    :: control
-!        complex(CKC)        , intent(in)    :: x
-!        complex(CKC)                        :: log1p
+!        complex(CKG)        , intent(in)    :: x
+!        complex(CKG)                        :: log1p
 !    end function
 !#endif
 !
@@ -302,10 +302,10 @@ module pm_mathLog1p
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getLog1pSel_CK2
 !#endif
-!        use pm_kind, only: CKC => CK2
+!        use pm_kind, only: CKG => CK2
 !        type(selection_type), intent(in)    :: control
-!        complex(CKC)        , intent(in)    :: x
-!        complex(CKC)                        :: log1p
+!        complex(CKG)        , intent(in)    :: x
+!        complex(CKG)                        :: log1p
 !    end function
 !#endif
 !
@@ -314,10 +314,10 @@ module pm_mathLog1p
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getLog1pSel_CK1
 !#endif
-!        use pm_kind, only: CKC => CK1
+!        use pm_kind, only: CKG => CK1
 !        type(selection_type), intent(in)    :: control
-!        complex(CKC)        , intent(in)    :: x
-!        complex(CKC)                        :: log1p
+!        complex(CKG)        , intent(in)    :: x
+!        complex(CKG)                        :: log1p
 !    end function
 !#endif
 !
@@ -328,10 +328,10 @@ module pm_mathLog1p
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getLog1pSel_RK5
 !#endif
-!        use pm_kind, only: RKC => RK5
+!        use pm_kind, only: RKG => RK5
 !        type(selection_type), intent(in)    :: control
-!        real(RKC)           , intent(in)    :: x
-!        real(RKC)                           :: log1p
+!        real(RKG)           , intent(in)    :: x
+!        real(RKG)                           :: log1p
 !    end function
 !#endif
 !
@@ -340,10 +340,10 @@ module pm_mathLog1p
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getLog1pSel_RK4
 !#endif
-!        use pm_kind, only: RKC => RK4
+!        use pm_kind, only: RKG => RK4
 !        type(selection_type), intent(in)    :: control
-!        real(RKC)           , intent(in)    :: x
-!        real(RKC)                           :: log1p
+!        real(RKG)           , intent(in)    :: x
+!        real(RKG)                           :: log1p
 !    end function
 !#endif
 !
@@ -352,10 +352,10 @@ module pm_mathLog1p
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getLog1pSel_RK3
 !#endif
-!        use pm_kind, only: RKC => RK3
+!        use pm_kind, only: RKG => RK3
 !        type(selection_type), intent(in)    :: control
-!        real(RKC)           , intent(in)    :: x
-!        real(RKC)                           :: log1p
+!        real(RKG)           , intent(in)    :: x
+!        real(RKG)                           :: log1p
 !    end function
 !#endif
 !
@@ -364,10 +364,10 @@ module pm_mathLog1p
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getLog1pSel_RK2
 !#endif
-!        use pm_kind, only: RKC => RK2
+!        use pm_kind, only: RKG => RK2
 !        type(selection_type), intent(in)    :: control
-!        real(RKC)           , intent(in)    :: x
-!        real(RKC)                           :: log1p
+!        real(RKG)           , intent(in)    :: x
+!        real(RKG)                           :: log1p
 !    end function
 !#endif
 !
@@ -376,10 +376,10 @@ module pm_mathLog1p
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getLog1pSel_RK1
 !#endif
-!        use pm_kind, only: RKC => RK1
+!        use pm_kind, only: RKG => RK1
 !        type(selection_type), intent(in)    :: control
-!        real(RKC)           , intent(in)    :: x
-!        real(RKC)                           :: log1p
+!        real(RKG)           , intent(in)    :: x
+!        real(RKG)                           :: log1p
 !    end function
 !#endif
 

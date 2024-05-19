@@ -24,14 +24,14 @@
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #if     CK_ENABLED
-#define TYPE_KIND complex(TKC)
+#define TYPE_KIND complex(TKG)
 #elif   RK_ENABLED
-#define TYPE_KIND real(TKC)
+#define TYPE_KIND real(TKG)
 #else
 #error  "Unrecognized interface."
 #endif
         integer(IK) :: i
-        real(TKC), parameter :: LOGTINY = log(tiny(0._TKC))
+        real(TKG), parameter :: LOGTINY = log(tiny(0._TKG))
 #if     Sel_ENABLED
         TYPE_KIND :: logRatio
 #elif   !Seq_ENABLED
@@ -39,13 +39,13 @@
 #endif
 #if     Def_ENABLED
         TYPE_KIND :: maxArray
-        maxArray = maxval(real(array, TKC))
+        maxArray = maxval(real(array, TKG))
 #elif   Max_ENABLED
-        CHECK_ASSERTION(__LINE__, real(maxArray, TKC) == maxval(real(array, TKC)), SK_"@getLogSumExp(): The condition `real(maxArray) == maxval(real(array))` must hold. real(maxArray), maxval(real(array)) = "//getStr([real(maxArray, TKC), maxval(real(array, TKC))]))
+        CHECK_ASSERTION(__LINE__, real(maxArray, TKG) == maxval(real(array, TKG)), SK_"@getLogSumExp(): The condition `real(maxArray) == maxval(real(array))` must hold. real(maxArray), maxval(real(array)) = "//getStr([real(maxArray, TKG), maxval(real(array, TKG))]))
 #else
 #error  "Unrecognized interface."
 #endif
-        logSumExp = 0._TKC
+        logSumExp = 0._TKG
 #if     Seq_ENABLED
         do i = 1_IK, size(array, kind = IK)
             logSumExp = logSumExp + exp(array(i) - maxArray)

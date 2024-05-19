@@ -68,35 +68,35 @@ contains
 
 #if IK5_ENABLED
     module procedure getMatTrace_DEF_XXX_IK5
-        use pm_kind, only: IKC => IK5
+        use pm_kind, only: IKG => IK5
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
 
 #if IK4_ENABLED
     module procedure getMatTrace_DEF_XXX_IK4
-        use pm_kind, only: IKC => IK4
+        use pm_kind, only: IKG => IK4
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
 
 #if IK3_ENABLED
     module procedure getMatTrace_DEF_XXX_IK3
-        use pm_kind, only: IKC => IK3
+        use pm_kind, only: IKG => IK3
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
 
 #if IK2_ENABLED
     module procedure getMatTrace_DEF_XXX_IK2
-        use pm_kind, only: IKC => IK2
+        use pm_kind, only: IKG => IK2
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
 
 #if IK1_ENABLED
     module procedure getMatTrace_DEF_XXX_IK1
-        use pm_kind, only: IKC => IK1
+        use pm_kind, only: IKG => IK1
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
@@ -109,35 +109,35 @@ contains
 
 #if CK5_ENABLED
     module procedure getMatTrace_DEF_XXX_CK5
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure getMatTrace_DEF_XXX_CK4
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure getMatTrace_DEF_XXX_CK3
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure getMatTrace_DEF_XXX_CK2
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure getMatTrace_DEF_XXX_CK1
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
@@ -150,35 +150,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getMatTrace_DEF_XXX_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getMatTrace_DEF_XXX_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getMatTrace_DEF_XXX_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getMatTrace_DEF_XXX_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getMatTrace_DEF_XXX_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
@@ -215,35 +215,35 @@ contains
 
 #if IK5_ENABLED
     module procedure getMatTrace_RDP_XXX_IK5
-        use pm_kind, only: IKC => IK5
+        use pm_kind, only: IKG => IK5
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
 
 #if IK4_ENABLED
     module procedure getMatTrace_RDP_XXX_IK4
-        use pm_kind, only: IKC => IK4
+        use pm_kind, only: IKG => IK4
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
 
 #if IK3_ENABLED
     module procedure getMatTrace_RDP_XXX_IK3
-        use pm_kind, only: IKC => IK3
+        use pm_kind, only: IKG => IK3
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
 
 #if IK2_ENABLED
     module procedure getMatTrace_RDP_XXX_IK2
-        use pm_kind, only: IKC => IK2
+        use pm_kind, only: IKG => IK2
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
 
 #if IK1_ENABLED
     module procedure getMatTrace_RDP_XXX_IK1
-        use pm_kind, only: IKC => IK1
+        use pm_kind, only: IKG => IK1
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
@@ -256,35 +256,35 @@ contains
 
 #if CK5_ENABLED
     module procedure getMatTrace_RDP_XXX_CK5
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure getMatTrace_RDP_XXX_CK4
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure getMatTrace_RDP_XXX_CK3
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure getMatTrace_RDP_XXX_CK2
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure getMatTrace_RDP_XXX_CK1
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
@@ -297,35 +297,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getMatTrace_RDP_XXX_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getMatTrace_RDP_XXX_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getMatTrace_RDP_XXX_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getMatTrace_RDP_XXX_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getMatTrace_RDP_XXX_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
@@ -362,35 +362,35 @@ contains
 
 #if IK5_ENABLED
     module procedure getMatTrace_RFP_UXD_IK5
-        use pm_kind, only: IKC => IK5
+        use pm_kind, only: IKG => IK5
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
 
 #if IK4_ENABLED
     module procedure getMatTrace_RFP_UXD_IK4
-        use pm_kind, only: IKC => IK4
+        use pm_kind, only: IKG => IK4
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
 
 #if IK3_ENABLED
     module procedure getMatTrace_RFP_UXD_IK3
-        use pm_kind, only: IKC => IK3
+        use pm_kind, only: IKG => IK3
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
 
 #if IK2_ENABLED
     module procedure getMatTrace_RFP_UXD_IK2
-        use pm_kind, only: IKC => IK2
+        use pm_kind, only: IKG => IK2
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
 
 #if IK1_ENABLED
     module procedure getMatTrace_RFP_UXD_IK1
-        use pm_kind, only: IKC => IK1
+        use pm_kind, only: IKG => IK1
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
@@ -403,35 +403,35 @@ contains
 
 #if CK5_ENABLED
     module procedure getMatTrace_RFP_UXD_CK5
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure getMatTrace_RFP_UXD_CK4
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure getMatTrace_RFP_UXD_CK3
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure getMatTrace_RFP_UXD_CK2
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure getMatTrace_RFP_UXD_CK1
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
@@ -444,35 +444,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getMatTrace_RFP_UXD_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getMatTrace_RFP_UXD_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getMatTrace_RFP_UXD_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getMatTrace_RFP_UXD_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getMatTrace_RFP_UXD_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
@@ -497,35 +497,35 @@ contains
 
 #if IK5_ENABLED
     module procedure getMatTrace_RFP_XLD_IK5
-        use pm_kind, only: IKC => IK5
+        use pm_kind, only: IKG => IK5
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
 
 #if IK4_ENABLED
     module procedure getMatTrace_RFP_XLD_IK4
-        use pm_kind, only: IKC => IK4
+        use pm_kind, only: IKG => IK4
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
 
 #if IK3_ENABLED
     module procedure getMatTrace_RFP_XLD_IK3
-        use pm_kind, only: IKC => IK3
+        use pm_kind, only: IKG => IK3
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
 
 #if IK2_ENABLED
     module procedure getMatTrace_RFP_XLD_IK2
-        use pm_kind, only: IKC => IK2
+        use pm_kind, only: IKG => IK2
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
 
 #if IK1_ENABLED
     module procedure getMatTrace_RFP_XLD_IK1
-        use pm_kind, only: IKC => IK1
+        use pm_kind, only: IKG => IK1
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
@@ -538,35 +538,35 @@ contains
 
 #if CK5_ENABLED
     module procedure getMatTrace_RFP_XLD_CK5
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure getMatTrace_RFP_XLD_CK4
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure getMatTrace_RFP_XLD_CK3
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure getMatTrace_RFP_XLD_CK2
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure getMatTrace_RFP_XLD_CK1
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
@@ -579,35 +579,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getMatTrace_RFP_XLD_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getMatTrace_RFP_XLD_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getMatTrace_RFP_XLD_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getMatTrace_RFP_XLD_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getMatTrace_RFP_XLD_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
@@ -644,35 +644,35 @@ contains
 
 #if IK5_ENABLED
     module procedure getMatTrace_LFP_UXD_IK5
-        use pm_kind, only: IKC => IK5
+        use pm_kind, only: IKG => IK5
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
 
 #if IK4_ENABLED
     module procedure getMatTrace_LFP_UXD_IK4
-        use pm_kind, only: IKC => IK4
+        use pm_kind, only: IKG => IK4
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
 
 #if IK3_ENABLED
     module procedure getMatTrace_LFP_UXD_IK3
-        use pm_kind, only: IKC => IK3
+        use pm_kind, only: IKG => IK3
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
 
 #if IK2_ENABLED
     module procedure getMatTrace_LFP_UXD_IK2
-        use pm_kind, only: IKC => IK2
+        use pm_kind, only: IKG => IK2
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
 
 #if IK1_ENABLED
     module procedure getMatTrace_LFP_UXD_IK1
-        use pm_kind, only: IKC => IK1
+        use pm_kind, only: IKG => IK1
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
@@ -685,35 +685,35 @@ contains
 
 #if CK5_ENABLED
     module procedure getMatTrace_LFP_UXD_CK5
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure getMatTrace_LFP_UXD_CK4
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure getMatTrace_LFP_UXD_CK3
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure getMatTrace_LFP_UXD_CK2
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure getMatTrace_LFP_UXD_CK1
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
@@ -726,35 +726,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getMatTrace_LFP_UXD_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getMatTrace_LFP_UXD_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getMatTrace_LFP_UXD_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getMatTrace_LFP_UXD_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getMatTrace_LFP_UXD_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
@@ -779,35 +779,35 @@ contains
 
 #if IK5_ENABLED
     module procedure getMatTrace_LFP_XLD_IK5
-        use pm_kind, only: IKC => IK5
+        use pm_kind, only: IKG => IK5
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
 
 #if IK4_ENABLED
     module procedure getMatTrace_LFP_XLD_IK4
-        use pm_kind, only: IKC => IK4
+        use pm_kind, only: IKG => IK4
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
 
 #if IK3_ENABLED
     module procedure getMatTrace_LFP_XLD_IK3
-        use pm_kind, only: IKC => IK3
+        use pm_kind, only: IKG => IK3
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
 
 #if IK2_ENABLED
     module procedure getMatTrace_LFP_XLD_IK2
-        use pm_kind, only: IKC => IK2
+        use pm_kind, only: IKG => IK2
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
 
 #if IK1_ENABLED
     module procedure getMatTrace_LFP_XLD_IK1
-        use pm_kind, only: IKC => IK1
+        use pm_kind, only: IKG => IK1
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
@@ -820,35 +820,35 @@ contains
 
 #if CK5_ENABLED
     module procedure getMatTrace_LFP_XLD_CK5
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure getMatTrace_LFP_XLD_CK4
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure getMatTrace_LFP_XLD_CK3
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure getMatTrace_LFP_XLD_CK2
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure getMatTrace_LFP_XLD_CK1
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
@@ -861,35 +861,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getMatTrace_LFP_XLD_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getMatTrace_LFP_XLD_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getMatTrace_LFP_XLD_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getMatTrace_LFP_XLD_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getMatTrace_LFP_XLD_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
@@ -936,35 +936,35 @@ contains
 
 #if IK5_ENABLED
     module procedure getMatMulTrace_DEF_XXX_IK5
-        use pm_kind, only: IKC => IK5
+        use pm_kind, only: IKG => IK5
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
 
 #if IK4_ENABLED
     module procedure getMatMulTrace_DEF_XXX_IK4
-        use pm_kind, only: IKC => IK4
+        use pm_kind, only: IKG => IK4
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
 
 #if IK3_ENABLED
     module procedure getMatMulTrace_DEF_XXX_IK3
-        use pm_kind, only: IKC => IK3
+        use pm_kind, only: IKG => IK3
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
 
 #if IK2_ENABLED
     module procedure getMatMulTrace_DEF_XXX_IK2
-        use pm_kind, only: IKC => IK2
+        use pm_kind, only: IKG => IK2
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
 
 #if IK1_ENABLED
     module procedure getMatMulTrace_DEF_XXX_IK1
-        use pm_kind, only: IKC => IK1
+        use pm_kind, only: IKG => IK1
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
@@ -977,35 +977,35 @@ contains
 
 #if CK5_ENABLED
     module procedure getMatMulTrace_DEF_XXX_CK5
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure getMatMulTrace_DEF_XXX_CK4
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure getMatMulTrace_DEF_XXX_CK3
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure getMatMulTrace_DEF_XXX_CK2
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure getMatMulTrace_DEF_XXX_CK1
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
@@ -1018,35 +1018,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getMatMulTrace_DEF_XXX_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getMatMulTrace_DEF_XXX_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getMatMulTrace_DEF_XXX_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getMatMulTrace_DEF_XXX_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getMatMulTrace_DEF_XXX_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
@@ -1083,35 +1083,35 @@ contains
 
 #if IK5_ENABLED
     module procedure getMatMulTrace_RDP_XXX_IK5
-        use pm_kind, only: IKC => IK5
+        use pm_kind, only: IKG => IK5
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
 
 #if IK4_ENABLED
     module procedure getMatMulTrace_RDP_XXX_IK4
-        use pm_kind, only: IKC => IK4
+        use pm_kind, only: IKG => IK4
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
 
 #if IK3_ENABLED
     module procedure getMatMulTrace_RDP_XXX_IK3
-        use pm_kind, only: IKC => IK3
+        use pm_kind, only: IKG => IK3
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
 
 #if IK2_ENABLED
     module procedure getMatMulTrace_RDP_XXX_IK2
-        use pm_kind, only: IKC => IK2
+        use pm_kind, only: IKG => IK2
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
 
 #if IK1_ENABLED
     module procedure getMatMulTrace_RDP_XXX_IK1
-        use pm_kind, only: IKC => IK1
+        use pm_kind, only: IKG => IK1
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
@@ -1124,35 +1124,35 @@ contains
 
 #if CK5_ENABLED
     module procedure getMatMulTrace_RDP_XXX_CK5
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure getMatMulTrace_RDP_XXX_CK4
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure getMatMulTrace_RDP_XXX_CK3
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure getMatMulTrace_RDP_XXX_CK2
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure getMatMulTrace_RDP_XXX_CK1
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
@@ -1165,35 +1165,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getMatMulTrace_RDP_XXX_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getMatMulTrace_RDP_XXX_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getMatMulTrace_RDP_XXX_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getMatMulTrace_RDP_XXX_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getMatMulTrace_RDP_XXX_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
@@ -1230,35 +1230,35 @@ contains
 
 #if IK5_ENABLED
     module procedure getMatMulTrace_RFP_UXD_IK5
-        use pm_kind, only: IKC => IK5
+        use pm_kind, only: IKG => IK5
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
 
 #if IK4_ENABLED
     module procedure getMatMulTrace_RFP_UXD_IK4
-        use pm_kind, only: IKC => IK4
+        use pm_kind, only: IKG => IK4
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
 
 #if IK3_ENABLED
     module procedure getMatMulTrace_RFP_UXD_IK3
-        use pm_kind, only: IKC => IK3
+        use pm_kind, only: IKG => IK3
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
 
 #if IK2_ENABLED
     module procedure getMatMulTrace_RFP_UXD_IK2
-        use pm_kind, only: IKC => IK2
+        use pm_kind, only: IKG => IK2
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
 
 #if IK1_ENABLED
     module procedure getMatMulTrace_RFP_UXD_IK1
-        use pm_kind, only: IKC => IK1
+        use pm_kind, only: IKG => IK1
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
@@ -1271,35 +1271,35 @@ contains
 
 #if CK5_ENABLED
     module procedure getMatMulTrace_RFP_UXD_CK5
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure getMatMulTrace_RFP_UXD_CK4
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure getMatMulTrace_RFP_UXD_CK3
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure getMatMulTrace_RFP_UXD_CK2
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure getMatMulTrace_RFP_UXD_CK1
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
@@ -1312,35 +1312,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getMatMulTrace_RFP_UXD_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getMatMulTrace_RFP_UXD_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getMatMulTrace_RFP_UXD_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getMatMulTrace_RFP_UXD_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getMatMulTrace_RFP_UXD_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
@@ -1365,35 +1365,35 @@ contains
 
 #if IK5_ENABLED
     module procedure getMatMulTrace_RFP_XLD_IK5
-        use pm_kind, only: IKC => IK5
+        use pm_kind, only: IKG => IK5
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
 
 #if IK4_ENABLED
     module procedure getMatMulTrace_RFP_XLD_IK4
-        use pm_kind, only: IKC => IK4
+        use pm_kind, only: IKG => IK4
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
 
 #if IK3_ENABLED
     module procedure getMatMulTrace_RFP_XLD_IK3
-        use pm_kind, only: IKC => IK3
+        use pm_kind, only: IKG => IK3
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
 
 #if IK2_ENABLED
     module procedure getMatMulTrace_RFP_XLD_IK2
-        use pm_kind, only: IKC => IK2
+        use pm_kind, only: IKG => IK2
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
 
 #if IK1_ENABLED
     module procedure getMatMulTrace_RFP_XLD_IK1
-        use pm_kind, only: IKC => IK1
+        use pm_kind, only: IKG => IK1
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
@@ -1406,35 +1406,35 @@ contains
 
 #if CK5_ENABLED
     module procedure getMatMulTrace_RFP_XLD_CK5
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure getMatMulTrace_RFP_XLD_CK4
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure getMatMulTrace_RFP_XLD_CK3
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure getMatMulTrace_RFP_XLD_CK2
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure getMatMulTrace_RFP_XLD_CK1
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
@@ -1447,35 +1447,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getMatMulTrace_RFP_XLD_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getMatMulTrace_RFP_XLD_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getMatMulTrace_RFP_XLD_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getMatMulTrace_RFP_XLD_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getMatMulTrace_RFP_XLD_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
@@ -1512,35 +1512,35 @@ contains
 
 #if IK5_ENABLED
     module procedure getMatMulTrace_LFP_UXD_IK5
-        use pm_kind, only: IKC => IK5
+        use pm_kind, only: IKG => IK5
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
 
 #if IK4_ENABLED
     module procedure getMatMulTrace_LFP_UXD_IK4
-        use pm_kind, only: IKC => IK4
+        use pm_kind, only: IKG => IK4
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
 
 #if IK3_ENABLED
     module procedure getMatMulTrace_LFP_UXD_IK3
-        use pm_kind, only: IKC => IK3
+        use pm_kind, only: IKG => IK3
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
 
 #if IK2_ENABLED
     module procedure getMatMulTrace_LFP_UXD_IK2
-        use pm_kind, only: IKC => IK2
+        use pm_kind, only: IKG => IK2
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
 
 #if IK1_ENABLED
     module procedure getMatMulTrace_LFP_UXD_IK1
-        use pm_kind, only: IKC => IK1
+        use pm_kind, only: IKG => IK1
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
@@ -1553,35 +1553,35 @@ contains
 
 #if CK5_ENABLED
     module procedure getMatMulTrace_LFP_UXD_CK5
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure getMatMulTrace_LFP_UXD_CK4
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure getMatMulTrace_LFP_UXD_CK3
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure getMatMulTrace_LFP_UXD_CK2
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure getMatMulTrace_LFP_UXD_CK1
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
@@ -1594,35 +1594,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getMatMulTrace_LFP_UXD_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getMatMulTrace_LFP_UXD_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getMatMulTrace_LFP_UXD_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getMatMulTrace_LFP_UXD_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getMatMulTrace_LFP_UXD_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
@@ -1647,35 +1647,35 @@ contains
 
 #if IK5_ENABLED
     module procedure getMatMulTrace_LFP_XLD_IK5
-        use pm_kind, only: IKC => IK5
+        use pm_kind, only: IKG => IK5
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
 
 #if IK4_ENABLED
     module procedure getMatMulTrace_LFP_XLD_IK4
-        use pm_kind, only: IKC => IK4
+        use pm_kind, only: IKG => IK4
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
 
 #if IK3_ENABLED
     module procedure getMatMulTrace_LFP_XLD_IK3
-        use pm_kind, only: IKC => IK3
+        use pm_kind, only: IKG => IK3
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
 
 #if IK2_ENABLED
     module procedure getMatMulTrace_LFP_XLD_IK2
-        use pm_kind, only: IKC => IK2
+        use pm_kind, only: IKG => IK2
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
 
 #if IK1_ENABLED
     module procedure getMatMulTrace_LFP_XLD_IK1
-        use pm_kind, only: IKC => IK1
+        use pm_kind, only: IKG => IK1
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
@@ -1688,35 +1688,35 @@ contains
 
 #if CK5_ENABLED
     module procedure getMatMulTrace_LFP_XLD_CK5
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure getMatMulTrace_LFP_XLD_CK4
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure getMatMulTrace_LFP_XLD_CK3
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure getMatMulTrace_LFP_XLD_CK2
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure getMatMulTrace_LFP_XLD_CK1
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
@@ -1729,35 +1729,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getMatMulTrace_LFP_XLD_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getMatMulTrace_LFP_XLD_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getMatMulTrace_LFP_XLD_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getMatMulTrace_LFP_XLD_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getMatMulTrace_LFP_XLD_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
@@ -1804,35 +1804,35 @@ contains
 
 #if IK5_ENABLED
     module procedure getMatMulTraceLog_DEF_XXX_IK5
-        use pm_kind, only: IKC => IK5
+        use pm_kind, only: IKG => IK5
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
 
 #if IK4_ENABLED
     module procedure getMatMulTraceLog_DEF_XXX_IK4
-        use pm_kind, only: IKC => IK4
+        use pm_kind, only: IKG => IK4
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
 
 #if IK3_ENABLED
     module procedure getMatMulTraceLog_DEF_XXX_IK3
-        use pm_kind, only: IKC => IK3
+        use pm_kind, only: IKG => IK3
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
 
 #if IK2_ENABLED
     module procedure getMatMulTraceLog_DEF_XXX_IK2
-        use pm_kind, only: IKC => IK2
+        use pm_kind, only: IKG => IK2
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
 
 #if IK1_ENABLED
     module procedure getMatMulTraceLog_DEF_XXX_IK1
-        use pm_kind, only: IKC => IK1
+        use pm_kind, only: IKG => IK1
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
@@ -1845,35 +1845,35 @@ contains
 
 #if CK5_ENABLED
     module procedure getMatMulTraceLog_DEF_XXX_CK5
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure getMatMulTraceLog_DEF_XXX_CK4
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure getMatMulTraceLog_DEF_XXX_CK3
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure getMatMulTraceLog_DEF_XXX_CK2
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure getMatMulTraceLog_DEF_XXX_CK1
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
@@ -1886,35 +1886,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getMatMulTraceLog_DEF_XXX_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getMatMulTraceLog_DEF_XXX_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getMatMulTraceLog_DEF_XXX_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getMatMulTraceLog_DEF_XXX_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getMatMulTraceLog_DEF_XXX_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
@@ -1951,35 +1951,35 @@ contains
 
 #if IK5_ENABLED
     module procedure getMatMulTraceLog_RDP_XXX_IK5
-        use pm_kind, only: IKC => IK5
+        use pm_kind, only: IKG => IK5
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
 
 #if IK4_ENABLED
     module procedure getMatMulTraceLog_RDP_XXX_IK4
-        use pm_kind, only: IKC => IK4
+        use pm_kind, only: IKG => IK4
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
 
 #if IK3_ENABLED
     module procedure getMatMulTraceLog_RDP_XXX_IK3
-        use pm_kind, only: IKC => IK3
+        use pm_kind, only: IKG => IK3
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
 
 #if IK2_ENABLED
     module procedure getMatMulTraceLog_RDP_XXX_IK2
-        use pm_kind, only: IKC => IK2
+        use pm_kind, only: IKG => IK2
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
 
 #if IK1_ENABLED
     module procedure getMatMulTraceLog_RDP_XXX_IK1
-        use pm_kind, only: IKC => IK1
+        use pm_kind, only: IKG => IK1
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
@@ -1992,35 +1992,35 @@ contains
 
 #if CK5_ENABLED
     module procedure getMatMulTraceLog_RDP_XXX_CK5
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure getMatMulTraceLog_RDP_XXX_CK4
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure getMatMulTraceLog_RDP_XXX_CK3
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure getMatMulTraceLog_RDP_XXX_CK2
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure getMatMulTraceLog_RDP_XXX_CK1
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
@@ -2033,35 +2033,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getMatMulTraceLog_RDP_XXX_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getMatMulTraceLog_RDP_XXX_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getMatMulTraceLog_RDP_XXX_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getMatMulTraceLog_RDP_XXX_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getMatMulTraceLog_RDP_XXX_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
@@ -2098,35 +2098,35 @@ contains
 
 #if IK5_ENABLED
     module procedure getMatMulTraceLog_RFP_UXD_IK5
-        use pm_kind, only: IKC => IK5
+        use pm_kind, only: IKG => IK5
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
 
 #if IK4_ENABLED
     module procedure getMatMulTraceLog_RFP_UXD_IK4
-        use pm_kind, only: IKC => IK4
+        use pm_kind, only: IKG => IK4
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
 
 #if IK3_ENABLED
     module procedure getMatMulTraceLog_RFP_UXD_IK3
-        use pm_kind, only: IKC => IK3
+        use pm_kind, only: IKG => IK3
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
 
 #if IK2_ENABLED
     module procedure getMatMulTraceLog_RFP_UXD_IK2
-        use pm_kind, only: IKC => IK2
+        use pm_kind, only: IKG => IK2
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
 
 #if IK1_ENABLED
     module procedure getMatMulTraceLog_RFP_UXD_IK1
-        use pm_kind, only: IKC => IK1
+        use pm_kind, only: IKG => IK1
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
@@ -2139,35 +2139,35 @@ contains
 
 #if CK5_ENABLED
     module procedure getMatMulTraceLog_RFP_UXD_CK5
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure getMatMulTraceLog_RFP_UXD_CK4
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure getMatMulTraceLog_RFP_UXD_CK3
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure getMatMulTraceLog_RFP_UXD_CK2
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure getMatMulTraceLog_RFP_UXD_CK1
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
@@ -2180,35 +2180,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getMatMulTraceLog_RFP_UXD_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getMatMulTraceLog_RFP_UXD_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getMatMulTraceLog_RFP_UXD_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getMatMulTraceLog_RFP_UXD_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getMatMulTraceLog_RFP_UXD_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
@@ -2233,35 +2233,35 @@ contains
 
 #if IK5_ENABLED
     module procedure getMatMulTraceLog_RFP_XLD_IK5
-        use pm_kind, only: IKC => IK5
+        use pm_kind, only: IKG => IK5
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
 
 #if IK4_ENABLED
     module procedure getMatMulTraceLog_RFP_XLD_IK4
-        use pm_kind, only: IKC => IK4
+        use pm_kind, only: IKG => IK4
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
 
 #if IK3_ENABLED
     module procedure getMatMulTraceLog_RFP_XLD_IK3
-        use pm_kind, only: IKC => IK3
+        use pm_kind, only: IKG => IK3
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
 
 #if IK2_ENABLED
     module procedure getMatMulTraceLog_RFP_XLD_IK2
-        use pm_kind, only: IKC => IK2
+        use pm_kind, only: IKG => IK2
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
 
 #if IK1_ENABLED
     module procedure getMatMulTraceLog_RFP_XLD_IK1
-        use pm_kind, only: IKC => IK1
+        use pm_kind, only: IKG => IK1
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
@@ -2274,35 +2274,35 @@ contains
 
 #if CK5_ENABLED
     module procedure getMatMulTraceLog_RFP_XLD_CK5
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure getMatMulTraceLog_RFP_XLD_CK4
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure getMatMulTraceLog_RFP_XLD_CK3
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure getMatMulTraceLog_RFP_XLD_CK2
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure getMatMulTraceLog_RFP_XLD_CK1
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
@@ -2315,35 +2315,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getMatMulTraceLog_RFP_XLD_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getMatMulTraceLog_RFP_XLD_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getMatMulTraceLog_RFP_XLD_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getMatMulTraceLog_RFP_XLD_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getMatMulTraceLog_RFP_XLD_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
@@ -2380,35 +2380,35 @@ contains
 
 #if IK5_ENABLED
     module procedure getMatMulTraceLog_LFP_UXD_IK5
-        use pm_kind, only: IKC => IK5
+        use pm_kind, only: IKG => IK5
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
 
 #if IK4_ENABLED
     module procedure getMatMulTraceLog_LFP_UXD_IK4
-        use pm_kind, only: IKC => IK4
+        use pm_kind, only: IKG => IK4
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
 
 #if IK3_ENABLED
     module procedure getMatMulTraceLog_LFP_UXD_IK3
-        use pm_kind, only: IKC => IK3
+        use pm_kind, only: IKG => IK3
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
 
 #if IK2_ENABLED
     module procedure getMatMulTraceLog_LFP_UXD_IK2
-        use pm_kind, only: IKC => IK2
+        use pm_kind, only: IKG => IK2
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
 
 #if IK1_ENABLED
     module procedure getMatMulTraceLog_LFP_UXD_IK1
-        use pm_kind, only: IKC => IK1
+        use pm_kind, only: IKG => IK1
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
@@ -2421,35 +2421,35 @@ contains
 
 #if CK5_ENABLED
     module procedure getMatMulTraceLog_LFP_UXD_CK5
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure getMatMulTraceLog_LFP_UXD_CK4
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure getMatMulTraceLog_LFP_UXD_CK3
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure getMatMulTraceLog_LFP_UXD_CK2
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure getMatMulTraceLog_LFP_UXD_CK1
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
@@ -2462,35 +2462,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getMatMulTraceLog_LFP_UXD_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getMatMulTraceLog_LFP_UXD_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getMatMulTraceLog_LFP_UXD_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getMatMulTraceLog_LFP_UXD_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getMatMulTraceLog_LFP_UXD_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
@@ -2515,35 +2515,35 @@ contains
 
 #if IK5_ENABLED
     module procedure getMatMulTraceLog_LFP_XLD_IK5
-        use pm_kind, only: IKC => IK5
+        use pm_kind, only: IKG => IK5
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
 
 #if IK4_ENABLED
     module procedure getMatMulTraceLog_LFP_XLD_IK4
-        use pm_kind, only: IKC => IK4
+        use pm_kind, only: IKG => IK4
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
 
 #if IK3_ENABLED
     module procedure getMatMulTraceLog_LFP_XLD_IK3
-        use pm_kind, only: IKC => IK3
+        use pm_kind, only: IKG => IK3
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
 
 #if IK2_ENABLED
     module procedure getMatMulTraceLog_LFP_XLD_IK2
-        use pm_kind, only: IKC => IK2
+        use pm_kind, only: IKG => IK2
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
 
 #if IK1_ENABLED
     module procedure getMatMulTraceLog_LFP_XLD_IK1
-        use pm_kind, only: IKC => IK1
+        use pm_kind, only: IKG => IK1
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
@@ -2556,35 +2556,35 @@ contains
 
 #if CK5_ENABLED
     module procedure getMatMulTraceLog_LFP_XLD_CK5
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure getMatMulTraceLog_LFP_XLD_CK4
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure getMatMulTraceLog_LFP_XLD_CK3
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure getMatMulTraceLog_LFP_XLD_CK2
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure getMatMulTraceLog_LFP_XLD_CK1
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
@@ -2597,35 +2597,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getMatMulTraceLog_LFP_XLD_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getMatMulTraceLog_LFP_XLD_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getMatMulTraceLog_LFP_XLD_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getMatMulTraceLog_LFP_XLD_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getMatMulTraceLog_LFP_XLD_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_matrixTrace@routines.inc.F90"
     end procedure
 #endif

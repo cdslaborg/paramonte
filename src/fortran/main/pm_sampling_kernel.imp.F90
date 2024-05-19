@@ -64,7 +64,7 @@
 #define RETURN_IF_FAILED(LINE,FAILED,MSG) \
 if (FAILED) then; \
 err%occurred = .true._LK; \
-err%msg = PROCEDURE_NAME//getFine(__FILE__, LINE)//SKC_": "//trim(MSG); \
+err%msg = PROCEDURE_NAME//getFine(__FILE__, LINE)//SKG_": "//trim(MSG); \
 call spec%disp%stop%show(err%msg); \
 return; \
 end if;
@@ -76,7 +76,7 @@ end if;
         use pm_err, only: err_type
         use pm_val2str, only: getStr
         use pm_timer, only: timer_type
-        use pm_kind, only: SKC => SK, SK, IK, LK
+        use pm_kind, only: SKG => SK, SK, IK, LK
         use pm_paramonte, only: PARAMONTE_WEB_ISSUES
         use pm_parallelism, only: isFailedImage
         use pm_sampling_proposal, only: NL1, NL2
@@ -101,9 +101,9 @@ end if;
 
         implicit none
 #if     ParaDISE_ENABLED
-        character(*,SKC), parameter :: MODULE_NAME = SK_"@pm_sampling_kernel_dise"
+        character(*,SKG), parameter :: MODULE_NAME = SK_"@pm_sampling_kernel_dise"
 #elif   ParaDRAM_ENABLED
-        character(*,SKC), parameter :: MODULE_NAME = SK_"@pm_sampling_kernel_dram"
+        character(*,SKG), parameter :: MODULE_NAME = SK_"@pm_sampling_kernel_dram"
 #else
 #error  "Unrecognized interface."
 #endif
@@ -112,16 +112,16 @@ end if;
         abstract interface
 #if         OMP_ENABLED && (MATLAB_ENABLED || PYTHON_ENABLED || R_ENABLED)
             function getLogFunc_proc(logFuncState, avgTimePerFunCall, avgCommPerFunCall) result(mold)
-                import :: RKC, RKD
-                real(RKC), intent(inout), contiguous :: logFuncState(0:, :)
+                import :: RKG, RKD
+                real(RKG), intent(inout), contiguous :: logFuncState(0:, :)
                 real(RKD), intent(inout) :: avgTimePerFunCall, avgCommPerFunCall
-                real(RKC) :: mold
+                real(RKG) :: mold
             end function
 #else
             function getLogFunc_proc(state) result(logFunc)
-                import :: RKC
-                real(RKC), intent(in), contiguous :: state(:)
-                real(RKC) :: logFunc
+                import :: RKG
+                real(RKG), intent(in), contiguous :: state(:)
+                real(RKG) :: logFunc
             end function
 #endif
         end interface
@@ -133,23 +133,23 @@ contains
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #if     ParaDISE_ENABLED
-        subroutine killMeAlreadyCMake_RK5(); use pm_sampling_proposal_dise_RK5, only: RKC; end subroutine
-        subroutine killMeAlreadyCMake_RK4(); use pm_sampling_proposal_dise_RK4, only: RKC; end subroutine
-        subroutine killMeAlreadyCMake_RK3(); use pm_sampling_proposal_dise_RK3, only: RKC; end subroutine
-        subroutine killMeAlreadyCMake_RK2(); use pm_sampling_proposal_dise_RK2, only: RKC; end subroutine
-        subroutine killMeAlreadyCMake_RK1(); use pm_sampling_proposal_dise_RK1, only: RKC; end subroutine
+        subroutine killMeAlreadyCMake_RK5(); use pm_sampling_proposal_dise_RK5, only: RKG; end subroutine
+        subroutine killMeAlreadyCMake_RK4(); use pm_sampling_proposal_dise_RK4, only: RKG; end subroutine
+        subroutine killMeAlreadyCMake_RK3(); use pm_sampling_proposal_dise_RK3, only: RKG; end subroutine
+        subroutine killMeAlreadyCMake_RK2(); use pm_sampling_proposal_dise_RK2, only: RKG; end subroutine
+        subroutine killMeAlreadyCMake_RK1(); use pm_sampling_proposal_dise_RK1, only: RKG; end subroutine
 #elif   ParaDRAM_ENABLED
-        subroutine killMeAlreadyCMake_RK5(); use pm_sampling_proposal_dram_RK5, only: RKC; end subroutine
-        subroutine killMeAlreadyCMake_RK4(); use pm_sampling_proposal_dram_RK4, only: RKC; end subroutine
-        subroutine killMeAlreadyCMake_RK3(); use pm_sampling_proposal_dram_RK3, only: RKC; end subroutine
-        subroutine killMeAlreadyCMake_RK2(); use pm_sampling_proposal_dram_RK2, only: RKC; end subroutine
-        subroutine killMeAlreadyCMake_RK1(); use pm_sampling_proposal_dram_RK1, only: RKC; end subroutine
+        subroutine killMeAlreadyCMake_RK5(); use pm_sampling_proposal_dram_RK5, only: RKG; end subroutine
+        subroutine killMeAlreadyCMake_RK4(); use pm_sampling_proposal_dram_RK4, only: RKG; end subroutine
+        subroutine killMeAlreadyCMake_RK3(); use pm_sampling_proposal_dram_RK3, only: RKG; end subroutine
+        subroutine killMeAlreadyCMake_RK2(); use pm_sampling_proposal_dram_RK2, only: RKG; end subroutine
+        subroutine killMeAlreadyCMake_RK1(); use pm_sampling_proposal_dram_RK1, only: RKG; end subroutine
 #elif   ParaNest_ENABLED
-        subroutine killMeAlreadyCMake_RK5(); use pm_sampling_proposal_nest_RK5, only: RKC; end subroutine
-        subroutine killMeAlreadyCMake_RK4(); use pm_sampling_proposal_nest_RK4, only: RKC; end subroutine
-        subroutine killMeAlreadyCMake_RK3(); use pm_sampling_proposal_nest_RK3, only: RKC; end subroutine
-        subroutine killMeAlreadyCMake_RK2(); use pm_sampling_proposal_nest_RK2, only: RKC; end subroutine
-        subroutine killMeAlreadyCMake_RK1(); use pm_sampling_proposal_nest_RK1, only: RKC; end subroutine
+        subroutine killMeAlreadyCMake_RK5(); use pm_sampling_proposal_nest_RK5, only: RKG; end subroutine
+        subroutine killMeAlreadyCMake_RK4(); use pm_sampling_proposal_nest_RK4, only: RKG; end subroutine
+        subroutine killMeAlreadyCMake_RK3(); use pm_sampling_proposal_nest_RK3, only: RKG; end subroutine
+        subroutine killMeAlreadyCMake_RK2(); use pm_sampling_proposal_nest_RK2, only: RKG; end subroutine
+        subroutine killMeAlreadyCMake_RK1(); use pm_sampling_proposal_nest_RK1, only: RKG; end subroutine
 #else
 #error  "Unrecognized interface."
 #endif
@@ -182,7 +182,7 @@ contains
 #endif
             type(spec_type), intent(in) :: spec
             type(stat_type), intent(in) :: stat
-            real(RKC), intent(in), contiguous :: proposalAdaptation(:)
+            real(RKG), intent(in), contiguous :: proposalAdaptation(:)
             integer(IK) :: j
             ! if new point has been sampled, write the previous sampled point to output file.
             blockOutputWrite: if (0_IK < stat%numFunCallAccepted) then
@@ -239,12 +239,12 @@ contains
             real(RKD), intent(in), optional :: timeLeft
             real(RKD) :: timeElapsedSinceLastReportInSeconds
             real(RKD) :: timeRemainedToFinishInSeconds
-            real(RKC) :: meanAccRateSinceLastReport
-            real(RKC) :: meanAccRateSinceStart
+            real(RKG) :: meanAccRateSinceLastReport
+            real(RKG) :: meanAccRateSinceStart
             character(1 + len(spec%reportFile%indent) + 3 * (25 + 3), SK) :: status
             if (spec%run%is%new) then
                 stat%timer%clock = stat%timer%time()
-                if (stat%progress%clock < 0._RKC) stat%progress%clock = stat%timer%start
+                if (stat%progress%clock < 0._RKG) stat%progress%clock = stat%timer%start
                 timeElapsedSinceLastReportInSeconds = stat%timer%clock - stat%progress%clock
                 stat%progress%timeElapsedSinceStartInSeconds = stat%progress%timeElapsedSinceStartInSeconds + timeElapsedSinceLastReportInSeconds
                 stat%progress%clock = stat%timer%clock
@@ -253,10 +253,10 @@ contains
                 else
                     timeRemainedToFinishInSeconds = stat%progress%timeElapsedSinceStartInSeconds * real(spec%outputChainSize%val - stat%numFunCallAccepted, RKD) / stat%numFunCallAccepted
                 end if
-                CHECK_ASSERTION(__LINE__, stat%progress%counterPRP == spec%outputReportPeriod%val .or. spec%outputReportPeriod%val == 0_IK .or. timeRemainedToFinishInSeconds == 0._RKC, \
+                CHECK_ASSERTION(__LINE__, stat%progress%counterPRP == spec%outputReportPeriod%val .or. spec%outputReportPeriod%val == 0_IK .or. timeRemainedToFinishInSeconds == 0._RKG, \
                 SK_"The condition `counterPRP == outputReportPeriod .or. outputReportPeriod == 0 .or. timeLeft == 0` must hold. counterPRP, outputReportPeriod, timeLeft = "//\
                 getStr([stat%progress%counterPRP, spec%outputReportPeriod%val])//SK_", "//getStr(timeRemainedToFinishInSeconds))
-                meanAccRateSinceStart = real(stat%numFunCallAccepted, RKC) / real(stat%numFunCallAcceptedRejected, RKC)
+                meanAccRateSinceStart = real(stat%numFunCallAccepted, RKG) / real(stat%numFunCallAcceptedRejected, RKG)
                 meanAccRateSinceLastReport = (stat%numFunCallAccepted - stat%numFunCallAcceptedLastReport) * spec%outputReportPeriod%inv
                 stat%numFunCallAcceptedLastReport = stat%numFunCallAccepted
                 write(spec%progressFile%unit, spec%progressFile%format%rows ) stat%numFunCallAcceptedRejected &
@@ -293,7 +293,7 @@ contains
                 getStr(trim(adjustl(getStr(meanAccRateSinceLastReport, SK_"(1F11.4)")))//SK_" / "//trim(adjustl(getStr(stat%numFunCallAccepted / real(stat%numFunCallAcceptedRejected), SK_"(1F11.4)"))), SK_"(125A)"), & ! LCOV_EXCL_LINE
                 getStr(trim(adjustl(getStr(stat%progress%timeElapsedSinceStartInSeconds, SK_"(1F11.4)")))//SK_" / "//trim(adjustl(getStr(min(999999._RKD, timeRemainedToFinishInSeconds), SK_"(1F11.4)"))), SK_"(125A)")
                 call spec%disp%show(status, unit = output_unit, advance = SK_"NO", tmsize = 0_IK, bmsize = 0_IK)
-                if (timeRemainedToFinishInSeconds == 0._RKC) call spec%disp%skip(unit = output_unit)
+                if (timeRemainedToFinishInSeconds == 0._RKG) call spec%disp%skip(unit = output_unit)
                 !call execute_command_line(" ")
                 flush(output_unit)
                 ! LCOV_EXCL_STOP
@@ -343,10 +343,10 @@ contains
             !DEC$ ATTRIBUTES DLLEXPORT :: getBurninLoc
 #endif
             integer(IK), intent(in) :: lenLogFunc
-            real(RKC), intent(in) :: refLogFunc, logFunc(lenLogFunc)
-            real(RKC) :: negLogIncidenceProb
+            real(RKG), intent(in) :: refLogFunc, logFunc(lenLogFunc)
+            real(RKG) :: negLogIncidenceProb
             integer(IK) :: burninLoc
-            negLogIncidenceProb = log(real(lenLogFunc, RKC))
+            negLogIncidenceProb = log(real(lenLogFunc, RKG))
             burninLoc = 0_IK
             do
                 burninLoc = burninLoc + 1_IK

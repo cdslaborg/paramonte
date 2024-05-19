@@ -28,12 +28,12 @@
 #if     getDisEuclid_ENABLED && XYZ_ENABLED
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        real(TKC) :: absx, absy, absz, maximum
+        real(TKG) :: absx, absy, absz, maximum
         absx = abs(x)
         absy = abs(y)
         absz = abs(z)
         maximum = max(absx, absy, absz)
-        if(maximum == 0._TKC .or. maximum > huge(maximum)) then
+        if(maximum == 0._TKG .or. maximum > huge(maximum)) then
             ! maximum can be zero for max(0,nan,0) adding all three entries together will make sure nan will not disappear.
             distance = absx + absy + absz
         else
@@ -82,18 +82,18 @@
 #endif
 #if     MED_ENABLED
         block
-            real(TKC) :: invmax, maximum
+            real(TKG) :: invmax, maximum
             ! First find the maximum.
             maximum = -huge(maximum)
             do idim = 1_IK, size(point, 1, IK)
                 invmax = abs(GET_DIFF(point(idim),ref(idim))) ! placeholder.
                 if (maximum < invmax) maximum = invmax
             end do
-            if(maximum == 0._TKC .or. huge(maximum) < maximum) then
+            if(maximum == 0._TKG .or. huge(maximum) < maximum) then
                 distance = sum(GET_DIFF(point,ref)) ! Ensure propagation of potential nan in the vector.
             else
-                distance = 0._TKC
-                invmax = 1._TKC / maximum
+                distance = 0._TKG
+                invmax = 1._TKG / maximum
                 do idim = 1_IK, size(point, 1, IK)
                     distance = distance + (GET_DIFF(point(idim),ref(idim)) * invmax)**2
                 end do
@@ -101,7 +101,7 @@
             end if
         end block
 #elif   MEU_ENABLED || MEQ_ENABLED
-        distance = 0._TKC
+        distance = 0._TKG
         do idim = 1_IK, size(point, 1, IK)
             distance = distance + GET_DIFF(point(idim),ref(idim))**2
         end do
@@ -188,7 +188,7 @@
         CHECK_ASSERTION(__LINE__, all(shape(distance, IK) == [npnt, npnt]), \
         SK_"@setDisMatEuclid(): The condition `all(shape(distance) == shape(point))` must hold. shape(distance), shape(point) = "//getStr([shape(distance, IK), shape(point, IK)]))
         do jpnt = 1_IK, npnt
-            distance(jpnt, jpnt) = 0._TKC
+            distance(jpnt, jpnt) = 0._TKG
             do ipnt = jpnt + 1, npnt
                 ! construct the lower triangle element and transpose to upper triangle.
                 call setDisEuclid(distance(ipnt, jpnt), point(1 : ndim, ipnt), point(1 : ndim, jpnt), method)
@@ -226,10 +226,10 @@
 !        !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 !
 !        integer(IK) :: i
-!        real(TKC)   :: invmax
-!        real(TKC)   :: maximum
+!        real(TKG)   :: invmax
+!        real(TKG)   :: maximum
 !#if     REF_ENABLED
-!        real(TKC)   :: diff(size(point, 1, IK))
+!        real(TKG)   :: diff(size(point, 1, IK))
 !        CHECK_ASSERTION(__LINE__, size(point, 1, IK) == size(ref, 1, IK), SK_"@getDisEuclid(): The condition `size(point) == size(ref)` must hold. size(point), size(ref) = "//getStr([size(point, 1, IK) == size(ref, 1, IK)]))
 !#else
 !#define DIFF point
@@ -246,11 +246,11 @@
 !#error      "Unrecognized interface."
 !#endif
 !        end do
-!        if(maximum == 0._TKC .or. maximum > huge(maximum)) then
+!        if(maximum == 0._TKG .or. maximum > huge(maximum)) then
 !            distance = sum(point) ! Ensure propagation of potential nan in the vector.
 !        else
-!            distance = 0._TKC
-!            invmax = 1._TKC / maximum
+!            distance = 0._TKG
+!            invmax = 1._TKG / maximum
 !            do i = 1_IK, size(point, 1, IK)
 !                distance = distance + (DIFF(i) * invmax)**2
 !            end do
@@ -332,7 +332,7 @@
 !#define         INDEX ipnt, jref
 !#endif
 !#if             MUF_ENABLED || MEQ_ENABLED
-!                distance(INDEX) = 0._TKC
+!                distance(INDEX) = 0._TKG
 !                do idim = 1_IK, ndim
 !                    distance(INDEX) = distance(INDEX) + (point(idim, ipnt) - REFERENCE(idim, jref))**2
 !                end do

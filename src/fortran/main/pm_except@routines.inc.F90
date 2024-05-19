@@ -26,12 +26,12 @@
 
         ! Define zero.
 #if     IK_ENABLED
-        integer(IKC), parameter :: ZERO = 0_IKC, MINMAX = huge(0_IKC)
+        integer(IKG), parameter :: ZERO = 0_IKG, MINMAX = huge(0_IKG)
 #elif   CK_ENABLED
         use pm_complexCompareAny, only: operator(<)
-        complex(CKC), parameter :: ZERO = (0._CKC, 0._CKC), MINMAX = huge(0._CKC)
+        complex(CKG), parameter :: ZERO = (0._CKG, 0._CKG), MINMAX = huge(0._CKG)
 #elif   RK_ENABLED
-        real(RKC)   , parameter :: ZERO = 0._RKC, MINMAX = huge(0._RKC)
+        real(RKG)   , parameter :: ZERO = 0._RKG, MINMAX = huge(0._RKG)
 #else
 #error  "Unrecognized interface."
 #endif

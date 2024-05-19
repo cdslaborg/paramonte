@@ -24,11 +24,11 @@ program example
     call disp%skip()
 
     block
-        use pm_kind, only: TKC => RKS ! all other real kinds are also supported.
+        use pm_kind, only: TKG => RKS ! all other real kinds are also supported.
         integer(IK), allocatable :: iweight1(:), iweight2(:)
-        real(TKC), allocatable :: rweight1(:), rweight2(:)
-        real(TKC), allocatable :: sample1(:), sample2(:)
-        real(TKC) :: disKolm
+        real(TKG), allocatable :: rweight1(:), rweight2(:)
+        real(TKG), allocatable :: sample1(:), sample2(:)
+        real(TKG) :: disKolm
         do itry = 1, ntry
             call disp%show("nsam1 = getUnifRand(0, 10); nsam2 = getUnifRand(0, 10)")
                             nsam1 = getUnifRand(0, 10); nsam2 = getUnifRand(0, 10)

@@ -752,13 +752,13 @@ module pm_sysPath
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: pathList_typer
 !#endif
-!        use pm_kind, only: SKC => SK
-!        character(*,SKC)    , intent(in)    , optional  :: path
-!        character(*,SKC)    , intent(in)    , optional  :: sort
+!        use pm_kind, only: SKG => SK
+!        character(*,SKG)    , intent(in)    , optional  :: path
+!        character(*,SKG)    , intent(in)    , optional  :: sort
 !        logical(LK)         , intent(in)    , optional  :: showdir, showfile, showhidden
 !        logical(LK)         , intent(out)   , optional  :: failed
 !        character(*, SK)    , intent(inout) , optional  :: errmsg
-!        character(:,SKC)    , allocatable               :: PathList
+!        character(:,SKG)    , allocatable               :: PathList
 !    end function
 !    end interface
 !    !>  \endcond excluded
@@ -770,9 +770,9 @@ module pm_sysPath
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: isFailedGetNextPathList
 !#endif
-!        use pm_kind, only: SKC => SK
+!        use pm_kind, only: SKG => SK
 !        class(pathList_type), intent(inout)                 :: PathList
-!        character(*,SKC)    , intent(out)   , allocatable   :: path
+!        character(*,SKG)    , intent(out)   , allocatable   :: path
 !        character(*, SK)    , intent(inout) , optional      :: errmsg
 !        logical(LK)                                         :: failed
 !    end function
@@ -781,9 +781,9 @@ module pm_sysPath
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: isFailedGetNextPathListLen
 !#endif
-!        use pm_kind, only: SKC => SK
+!        use pm_kind, only: SKG => SK
 !        class(pathList_type), intent(inout)                 :: PathList
-!        character(*,SKC)    , intent(out)                   :: path
+!        character(*,SKG)    , intent(out)                   :: path
 !        integer(IK)         , intent(out)                   :: pathlen
 !        character(*, SK)    , intent(inout) , optional      :: errmsg
 !        logical(LK)                                         :: failed
@@ -799,7 +799,7 @@ module pm_sysPath
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: isFailedGetNextPathListLen
 !#endif
-!        use pm_kind, only: SKC => SK
+!        use pm_kind, only: SKG => SK
 !        type(pathList_type) , intent(inout)                 :: PathList
 !    end subroutine
 !    end interface
@@ -885,8 +885,8 @@ module pm_sysPath
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: ls_BSSK
 #endif
-        use pm_kind, only: SKC => SK
-        character(*,SKC)    , intent(in)                    :: path
+        use pm_kind, only: SKG => SK
+        character(*,SKG)    , intent(in)                    :: path
         character(*, SK)    , intent(in)    , optional      :: sort
         logical(LK)         , intent(in)    , optional      :: showdir, showfile, showhidden, reversed
         type(css_type)      , allocatable                   :: list(:)
@@ -957,8 +957,8 @@ module pm_sysPath
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: glob_BSSK
 #endif
-        use pm_kind, only: SKC => SK
-        character(*,SKC)    , intent(in)                    :: pattern
+        use pm_kind, only: SKG => SK
+        character(*,SKG)    , intent(in)                    :: pattern
         type(css_type)      , allocatable                   :: list(:)
     end function
 
@@ -1107,9 +1107,9 @@ module pm_sysPath
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isFailedGlob_SK
 #endif
-        use pm_kind, only: SKC => SK
-        character(*,SKC)    , intent(in)                    :: pattern
-        character(:,SKC)    , intent(out)   , allocatable   :: list
+        use pm_kind, only: SKG => SK
+        character(*,SKG)    , intent(in)                    :: pattern
+        character(:,SKG)    , intent(out)   , allocatable   :: list
         integer(IK)         , intent(out)   , allocatable   :: index(:,:)
         character(*, SK)    , intent(inout) , optional      :: errmsg
         logical(LK)                                         :: failed
@@ -1119,9 +1119,9 @@ module pm_sysPath
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isFailedGlob_BSSK
 #endif
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
         use pm_container, only: css_type
-        character(*,SKC)    , intent(in)                    :: pattern
+        character(*,SKG)    , intent(in)                    :: pattern
         type(css_type)      , intent(out)   , allocatable   :: list(:)
         character(*, SK)    , intent(inout) , optional      :: errmsg
         logical(LK)                                         :: failed
@@ -1260,9 +1260,9 @@ module pm_sysPath
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isFailedList_SK
 #endif
-        use pm_kind, only: SKC => SK
-        character(*,SKC)    , intent(in)                    :: path
-        character(:,SKC)    , intent(out)   , allocatable   :: list
+        use pm_kind, only: SKG => SK
+        character(*,SKG)    , intent(in)                    :: path
+        character(:,SKG)    , intent(out)   , allocatable   :: list
         integer(IK)         , intent(out)   , allocatable   :: index(:,:)
         character(*, SK)    , intent(inout) , optional      :: errmsg
         character(*, SK)    , intent(in)    , optional      :: sort
@@ -1274,9 +1274,9 @@ module pm_sysPath
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isFailedList_BSSK
 #endif
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
         use pm_container, only: css_type
-        character(*,SKC)    , intent(in)                    :: path
+        character(*,SKG)    , intent(in)                    :: path
         type(css_type)      , intent(out)   , allocatable   :: list(:)
         character(*, SK)    , intent(inout) , optional      :: errmsg
         character(*, SK)    , intent(in)    , optional      :: sort
@@ -1346,9 +1346,9 @@ module pm_sysPath
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPathPosixEscaped_D0_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)            , intent(in)                :: path
-        character(:,SKC)            , allocatable               :: pathEscaped
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)            , intent(in)                :: path
+        character(:,SKG)            , allocatable               :: pathEscaped
     end function
 #endif
 
@@ -1357,9 +1357,9 @@ module pm_sysPath
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPathPosixEscaped_D0_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)            , intent(in)                :: path
-        character(:,SKC)            , allocatable               :: pathEscaped
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)            , intent(in)                :: path
+        character(:,SKG)            , allocatable               :: pathEscaped
     end function
 #endif
 
@@ -1368,9 +1368,9 @@ module pm_sysPath
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPathPosixEscaped_D0_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)            , intent(in)                :: path
-        character(:,SKC)            , allocatable               :: pathEscaped
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)            , intent(in)                :: path
+        character(:,SKG)            , allocatable               :: pathEscaped
     end function
 #endif
 
@@ -1379,9 +1379,9 @@ module pm_sysPath
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPathPosixEscaped_D0_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)            , intent(in)                :: path
-        character(:,SKC)            , allocatable               :: pathEscaped
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)            , intent(in)                :: path
+        character(:,SKG)            , allocatable               :: pathEscaped
     end function
 #endif
 
@@ -1390,9 +1390,9 @@ module pm_sysPath
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPathPosixEscaped_D0_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)            , intent(in)                :: path
-        character(:,SKC)            , allocatable               :: pathEscaped
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)            , intent(in)                :: path
+        character(:,SKG)            , allocatable               :: pathEscaped
     end function
 #endif
 
@@ -1460,9 +1460,9 @@ module pm_sysPath
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPathPosixEscaped_D0_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(:,SKC)            , intent(out)   , allocatable   :: pathEscaped
-        character(*,SKC)            , intent(in)                    :: path
+        use pm_kind, only: SKG => SK5
+        character(:,SKG)            , intent(out)   , allocatable   :: pathEscaped
+        character(*,SKG)            , intent(in)                    :: path
     end subroutine
 #endif
 
@@ -1471,9 +1471,9 @@ module pm_sysPath
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPathPosixEscaped_D0_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(:,SKC)            , intent(out)   , allocatable   :: pathEscaped
-        character(*,SKC)            , intent(in)                    :: path
+        use pm_kind, only: SKG => SK4
+        character(:,SKG)            , intent(out)   , allocatable   :: pathEscaped
+        character(*,SKG)            , intent(in)                    :: path
     end subroutine
 #endif
 
@@ -1482,9 +1482,9 @@ module pm_sysPath
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPathPosixEscaped_D0_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(:,SKC)            , intent(out)   , allocatable   :: pathEscaped
-        character(*,SKC)            , intent(in)                    :: path
+        use pm_kind, only: SKG => SK3
+        character(:,SKG)            , intent(out)   , allocatable   :: pathEscaped
+        character(*,SKG)            , intent(in)                    :: path
     end subroutine
 #endif
 
@@ -1493,9 +1493,9 @@ module pm_sysPath
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPathPosixEscaped_D0_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(:,SKC)            , intent(out)   , allocatable   :: pathEscaped
-        character(*,SKC)            , intent(in)                    :: path
+        use pm_kind, only: SKG => SK2
+        character(:,SKG)            , intent(out)   , allocatable   :: pathEscaped
+        character(*,SKG)            , intent(in)                    :: path
     end subroutine
 #endif
 
@@ -1504,9 +1504,9 @@ module pm_sysPath
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPathPosixEscaped_D0_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(:,SKC)            , intent(out)   , allocatable   :: pathEscaped
-        character(*,SKC)            , intent(in)                    :: path
+        use pm_kind, only: SKG => SK1
+        character(:,SKG)            , intent(out)   , allocatable   :: pathEscaped
+        character(*,SKG)            , intent(in)                    :: path
     end subroutine
 #endif
 
@@ -1583,10 +1583,10 @@ module pm_sysPath
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPathPosix_D0_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)            , intent(in)                :: path
-        character(*,SKC)            , intent(in)    , optional  :: ignore
-        character(:,SKC)            , allocatable               :: pathPosix
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)            , intent(in)                :: path
+        character(*,SKG)            , intent(in)    , optional  :: ignore
+        character(:,SKG)            , allocatable               :: pathPosix
     end function
 #endif
 
@@ -1595,10 +1595,10 @@ module pm_sysPath
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPathPosix_D0_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)            , intent(in)                :: path
-        character(*,SKC)            , intent(in)    , optional  :: ignore
-        character(:,SKC)            , allocatable               :: pathPosix
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)            , intent(in)                :: path
+        character(*,SKG)            , intent(in)    , optional  :: ignore
+        character(:,SKG)            , allocatable               :: pathPosix
     end function
 #endif
 
@@ -1607,10 +1607,10 @@ module pm_sysPath
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPathPosix_D0_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)            , intent(in)                :: path
-        character(*,SKC)            , intent(in)    , optional  :: ignore
-        character(:,SKC)            , allocatable               :: pathPosix
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)            , intent(in)                :: path
+        character(*,SKG)            , intent(in)    , optional  :: ignore
+        character(:,SKG)            , allocatable               :: pathPosix
     end function
 #endif
 
@@ -1619,10 +1619,10 @@ module pm_sysPath
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPathPosix_D0_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)            , intent(in)                :: path
-        character(*,SKC)            , intent(in)    , optional  :: ignore
-        character(:,SKC)            , allocatable               :: pathPosix
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)            , intent(in)                :: path
+        character(*,SKG)            , intent(in)    , optional  :: ignore
+        character(:,SKG)            , allocatable               :: pathPosix
     end function
 #endif
 
@@ -1631,10 +1631,10 @@ module pm_sysPath
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPathPosix_D0_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)            , intent(in)                :: path
-        character(*,SKC)            , intent(in)    , optional  :: ignore
-        character(:,SKC)            , allocatable               :: pathPosix
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)            , intent(in)                :: path
+        character(*,SKG)            , intent(in)    , optional  :: ignore
+        character(:,SKG)            , allocatable               :: pathPosix
     end function
 #endif
 
@@ -1732,9 +1732,9 @@ module pm_sysPath
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPathPosix_D0_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(:,SKC)            , intent(inout) , allocatable   :: path
-        character(*,SKC)            , intent(in)    , optional      :: ignore
+        use pm_kind, only: SKG => SK5
+        character(:,SKG)            , intent(inout) , allocatable   :: path
+        character(*,SKG)            , intent(in)    , optional      :: ignore
     end subroutine
 #endif
 
@@ -1743,9 +1743,9 @@ module pm_sysPath
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPathPosix_D0_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(:,SKC)            , intent(inout) , allocatable   :: path
-        character(*,SKC)            , intent(in)    , optional      :: ignore
+        use pm_kind, only: SKG => SK4
+        character(:,SKG)            , intent(inout) , allocatable   :: path
+        character(*,SKG)            , intent(in)    , optional      :: ignore
     end subroutine
 #endif
 
@@ -1754,9 +1754,9 @@ module pm_sysPath
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPathPosix_D0_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(:,SKC)            , intent(inout) , allocatable   :: path
-        character(*,SKC)            , intent(in)    , optional      :: ignore
+        use pm_kind, only: SKG => SK3
+        character(:,SKG)            , intent(inout) , allocatable   :: path
+        character(*,SKG)            , intent(in)    , optional      :: ignore
     end subroutine
 #endif
 
@@ -1765,9 +1765,9 @@ module pm_sysPath
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPathPosix_D0_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(:,SKC)            , intent(inout) , allocatable   :: path
-        character(*,SKC)            , intent(in)    , optional      :: ignore
+        use pm_kind, only: SKG => SK2
+        character(:,SKG)            , intent(inout) , allocatable   :: path
+        character(*,SKG)            , intent(in)    , optional      :: ignore
     end subroutine
 #endif
 
@@ -1776,9 +1776,9 @@ module pm_sysPath
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPathPosix_D0_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(:,SKC)            , intent(inout) , allocatable   :: path
-        character(*,SKC)            , intent(in)    , optional      :: ignore
+        use pm_kind, only: SKG => SK1
+        character(:,SKG)            , intent(inout) , allocatable   :: path
+        character(*,SKG)            , intent(in)    , optional      :: ignore
     end subroutine
 #endif
 
@@ -1863,10 +1863,10 @@ module pm_sysPath
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPathWindows_D0_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)            , intent(in)                :: path
-        character(*,SKC)            , intent(in)    , optional  :: ignore
-        character(:,SKC)            , allocatable               :: pathWindows
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)            , intent(in)                :: path
+        character(*,SKG)            , intent(in)    , optional  :: ignore
+        character(:,SKG)            , allocatable               :: pathWindows
     end function
 #endif
 
@@ -1875,10 +1875,10 @@ module pm_sysPath
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPathWindows_D0_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)            , intent(in)                :: path
-        character(*,SKC)            , intent(in)    , optional  :: ignore
-        character(:,SKC)            , allocatable               :: pathWindows
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)            , intent(in)                :: path
+        character(*,SKG)            , intent(in)    , optional  :: ignore
+        character(:,SKG)            , allocatable               :: pathWindows
     end function
 #endif
 
@@ -1887,10 +1887,10 @@ module pm_sysPath
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPathWindows_D0_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)            , intent(in)                :: path
-        character(*,SKC)            , intent(in)    , optional  :: ignore
-        character(:,SKC)            , allocatable               :: pathWindows
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)            , intent(in)                :: path
+        character(*,SKG)            , intent(in)    , optional  :: ignore
+        character(:,SKG)            , allocatable               :: pathWindows
     end function
 #endif
 
@@ -1899,10 +1899,10 @@ module pm_sysPath
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPathWindows_D0_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)            , intent(in)                :: path
-        character(*,SKC)            , intent(in)    , optional  :: ignore
-        character(:,SKC)            , allocatable               :: pathWindows
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)            , intent(in)                :: path
+        character(*,SKG)            , intent(in)    , optional  :: ignore
+        character(:,SKG)            , allocatable               :: pathWindows
     end function
 #endif
 
@@ -1911,10 +1911,10 @@ module pm_sysPath
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPathWindows_D0_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)            , intent(in)                :: path
-        character(*,SKC)            , intent(in)    , optional  :: ignore
-        character(:,SKC)            , allocatable               :: pathWindows
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)            , intent(in)                :: path
+        character(*,SKG)            , intent(in)    , optional  :: ignore
+        character(:,SKG)            , allocatable               :: pathWindows
     end function
 #endif
 
@@ -2005,9 +2005,9 @@ module pm_sysPath
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPathWindows_D0_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(:,SKC)            , intent(inout) , allocatable   :: path
-        character(*,SKC)            , intent(in)    , optional      :: ignore
+        use pm_kind, only: SKG => SK5
+        character(:,SKG)            , intent(inout) , allocatable   :: path
+        character(*,SKG)            , intent(in)    , optional      :: ignore
     end subroutine
 #endif
 
@@ -2016,9 +2016,9 @@ module pm_sysPath
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPathWindows_D0_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(:,SKC)            , intent(inout) , allocatable   :: path
-        character(*,SKC)            , intent(in)    , optional      :: ignore
+        use pm_kind, only: SKG => SK4
+        character(:,SKG)            , intent(inout) , allocatable   :: path
+        character(*,SKG)            , intent(in)    , optional      :: ignore
     end subroutine
 #endif
 
@@ -2027,9 +2027,9 @@ module pm_sysPath
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPathWindows_D0_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(:,SKC)            , intent(inout) , allocatable   :: path
-        character(*,SKC)            , intent(in)    , optional      :: ignore
+        use pm_kind, only: SKG => SK3
+        character(:,SKG)            , intent(inout) , allocatable   :: path
+        character(*,SKG)            , intent(in)    , optional      :: ignore
     end subroutine
 #endif
 
@@ -2038,9 +2038,9 @@ module pm_sysPath
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPathWindows_D0_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(:,SKC)            , intent(inout) , allocatable   :: path
-        character(*,SKC)            , intent(in)    , optional      :: ignore
+        use pm_kind, only: SKG => SK2
+        character(:,SKG)            , intent(inout) , allocatable   :: path
+        character(*,SKG)            , intent(in)    , optional      :: ignore
     end subroutine
 #endif
 
@@ -2049,9 +2049,9 @@ module pm_sysPath
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPathWindows_D0_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(:,SKC)            , intent(inout) , allocatable   :: path
-        character(*,SKC)            , intent(in)    , optional      :: ignore
+        use pm_kind, only: SKG => SK1
+        character(:,SKG)            , intent(inout) , allocatable   :: path
+        character(*,SKG)            , intent(in)    , optional      :: ignore
     end subroutine
 #endif
 
@@ -2141,8 +2141,8 @@ module pm_sysPath
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPathHostNameIndex_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)            , intent(in)                :: path, dirsep
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)            , intent(in)                :: path, dirsep
         integer(IK)                                             :: index
     end function
 #endif
@@ -2152,8 +2152,8 @@ module pm_sysPath
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPathHostNameIndex_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)            , intent(in)                :: path, dirsep
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)            , intent(in)                :: path, dirsep
         integer(IK)                                             :: index
     end function
 #endif
@@ -2163,8 +2163,8 @@ module pm_sysPath
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPathHostNameIndex_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)            , intent(in)                :: path, dirsep
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)            , intent(in)                :: path, dirsep
         integer(IK)                                             :: index
     end function
 #endif
@@ -2174,8 +2174,8 @@ module pm_sysPath
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPathHostNameIndex_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)            , intent(in)                :: path, dirsep
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)            , intent(in)                :: path, dirsep
         integer(IK)                                             :: index
     end function
 #endif
@@ -2185,8 +2185,8 @@ module pm_sysPath
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPathHostNameIndex_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)            , intent(in)                :: path, dirsep
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)            , intent(in)                :: path, dirsep
         integer(IK)                                             :: index
     end function
 #endif
@@ -2253,8 +2253,8 @@ module pm_sysPath
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hasDriveLetter_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)    , intent(in)                :: path
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)    , intent(in)                :: path
         logical(LK)                                     :: pathHasDriveLetter
     end function
 #endif
@@ -2264,8 +2264,8 @@ module pm_sysPath
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hasDriveLetter_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)    , intent(in)                :: path
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)    , intent(in)                :: path
         logical(LK)                                     :: pathHasDriveLetter
     end function
 #endif
@@ -2275,8 +2275,8 @@ module pm_sysPath
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hasDriveLetter_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)    , intent(in)                :: path
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)    , intent(in)                :: path
         logical(LK)                                     :: pathHasDriveLetter
     end function
 #endif
@@ -2286,8 +2286,8 @@ module pm_sysPath
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hasDriveLetter_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)    , intent(in)                :: path
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)    , intent(in)                :: path
         logical(LK)                                     :: pathHasDriveLetter
     end function
 #endif
@@ -2297,8 +2297,8 @@ module pm_sysPath
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hasDriveLetter_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)    , intent(in)                :: path
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)    , intent(in)                :: path
         logical(LK)                                     :: pathHasDriveLetter
     end function
 #endif
@@ -2378,8 +2378,8 @@ module pm_sysPath
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isPathAbsWindows_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)    , intent(in)                :: path
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)    , intent(in)                :: path
         logical(LK)                                     :: pathIsAbs
     end function
 #endif
@@ -2389,8 +2389,8 @@ module pm_sysPath
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isPathAbsWindows_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)    , intent(in)                :: path
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)    , intent(in)                :: path
         logical(LK)                                     :: pathIsAbs
     end function
 #endif
@@ -2400,8 +2400,8 @@ module pm_sysPath
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isPathAbsWindows_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)    , intent(in)                :: path
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)    , intent(in)                :: path
         logical(LK)                                     :: pathIsAbs
     end function
 #endif
@@ -2411,8 +2411,8 @@ module pm_sysPath
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isPathAbsWindows_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)    , intent(in)                :: path
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)    , intent(in)                :: path
         logical(LK)                                     :: pathIsAbs
     end function
 #endif
@@ -2422,8 +2422,8 @@ module pm_sysPath
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isPathAbsWindows_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)    , intent(in)                :: path
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)    , intent(in)                :: path
         logical(LK)                                     :: pathIsAbs
     end function
 #endif
@@ -2490,8 +2490,8 @@ module pm_sysPath
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isPathAbsPosix_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)    , intent(in)                :: path
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)    , intent(in)                :: path
         logical(LK)                                     :: pathIsAbs
     end function
 #endif
@@ -2501,8 +2501,8 @@ module pm_sysPath
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isPathAbsPosix_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)    , intent(in)                :: path
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)    , intent(in)                :: path
         logical(LK)                                     :: pathIsAbs
     end function
 #endif
@@ -2512,8 +2512,8 @@ module pm_sysPath
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isPathAbsPosix_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)    , intent(in)                :: path
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)    , intent(in)                :: path
         logical(LK)                                     :: pathIsAbs
     end function
 #endif
@@ -2523,8 +2523,8 @@ module pm_sysPath
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isPathAbsPosix_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)    , intent(in)                :: path
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)    , intent(in)                :: path
         logical(LK)                                     :: pathIsAbs
     end function
 #endif
@@ -2534,8 +2534,8 @@ module pm_sysPath
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isPathAbsPosix_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)    , intent(in)                :: path
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)    , intent(in)                :: path
         logical(LK)                                     :: pathIsAbs
     end function
 #endif
@@ -2646,9 +2646,9 @@ module pm_sysPath
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPathAbs
 #endif
-        use pm_kind, only: SKC => SK
-        character(*,SKC), intent(in)    :: path
-        character(:,SKC), allocatable   :: pathAbs
+        use pm_kind, only: SKG => SK
+        character(*,SKG), intent(in)    :: path
+        character(:,SKG), allocatable   :: pathAbs
     end function
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -2657,10 +2657,10 @@ module pm_sysPath
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPathAbsFailed
 #endif
-        use pm_kind, only: SKC => SK
-        character(*,SKC), intent(in)    :: path
+        use pm_kind, only: SKG => SK
+        character(*,SKG), intent(in)    :: path
         logical(LK)     , intent(out)   :: failed
-        character(:,SKC), allocatable   :: pathAbs
+        character(:,SKG), allocatable   :: pathAbs
     end function
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -2669,11 +2669,11 @@ module pm_sysPath
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPathAbsFailedMsg
 #endif
-        use pm_kind, only: SKC => SK
-        character(*,SKC), intent(in)    :: path
+        use pm_kind, only: SKG => SK
+        character(*,SKG), intent(in)    :: path
         logical(LK)     , intent(out)   :: failed
         character(*, SK), intent(inout) :: errmsg
-        character(:,SKC), allocatable   :: pathAbs
+        character(:,SKG), allocatable   :: pathAbs
     end function
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -2764,8 +2764,8 @@ module pm_sysPath
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDirCurrent
 #endif
-        use pm_kind, only: SKC => SK
-        character(:,SKC), allocatable   :: dirCurrent
+        use pm_kind, only: SKG => SK
+        character(:,SKG), allocatable   :: dirCurrent
     end function
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -2774,9 +2774,9 @@ module pm_sysPath
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDirCurrentFailed
 #endif
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
         logical(LK)     , intent(out)   :: failed
-        character(:,SKC), allocatable   :: dirCurrent
+        character(:,SKG), allocatable   :: dirCurrent
     end function
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -2785,10 +2785,10 @@ module pm_sysPath
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDirCurrentFailedMsg
 #endif
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
         logical(LK)     , intent(out)   :: failed
         character(*, SK), intent(inout) :: errmsg
-        character(:,SKC), allocatable   :: dirCurrent
+        character(:,SKG), allocatable   :: dirCurrent
     end function
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -2884,11 +2884,11 @@ module pm_sysPath
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDirHome
 #endif
-        use pm_kind, only: SKC => SK
-        character(*,SKC), intent(in)    , optional      :: user
+        use pm_kind, only: SKG => SK
+        character(*,SKG), intent(in)    , optional      :: user
         logical(LK)     , intent(out)   , optional      :: failed
         character(*, SK), intent(inout) , optional      :: errmsg
-        character(:,SKC)                , allocatable   :: dirHome
+        character(:,SKG)                , allocatable   :: dirHome
     end function
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -2992,9 +2992,9 @@ module pm_sysPath
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPathExpandedUser
 #endif
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
         character(*, SK), intent(in)    :: path
-        character(:,SKC), allocatable   :: pathExpandedUser
+        character(:,SKG), allocatable   :: pathExpandedUser
     end function
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -3003,10 +3003,10 @@ module pm_sysPath
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPathExpandedUserFailed
 #endif
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
         character(*, SK), intent(in)    :: path
         logical(LK)     , intent(out)   :: failed
-        character(:,SKC), allocatable   :: pathExpandedUser
+        character(:,SKG), allocatable   :: pathExpandedUser
     end function
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -3015,11 +3015,11 @@ module pm_sysPath
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPathExpandedUserFailedMsg
 #endif
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
         character(*, SK), intent(in)    :: path
         logical(LK)     , intent(out)   :: failed
         character(*, SK), intent(inout) :: errmsg
-        character(:,SKC), allocatable   :: pathExpandedUser
+        character(:,SKG), allocatable   :: pathExpandedUser
     end function
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -3090,8 +3090,8 @@ module pm_sysPath
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isFailedChangeDir
 #endif
-        use pm_kind, only: SKC => SK
-        character(*,SKC), intent(in)    :: dir
+        use pm_kind, only: SKG => SK
+        character(*,SKG), intent(in)    :: dir
         logical(LK)                     :: failed
     end function
 
@@ -3230,8 +3230,8 @@ module pm_sysPath
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isFailedMakeDir
 #endif
-        use pm_kind, only: SKC => SK
-        character(*,SKC)            , intent(in)                    :: path
+        use pm_kind, only: SKG => SK
+        character(*,SKG)            , intent(in)                    :: path
         logical(LK)                 , intent(in)    , optional      :: wait
         integer(IK)                 , intent(in)    , optional      :: ntry
         character(*, SK)            , intent(inout) , optional      :: errmsg
@@ -3313,9 +3313,9 @@ module pm_sysPath
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isFailedMakeDirTemp
 #endif
-        use pm_kind, only: SKC => SK
-        character(:,SKC)            , intent(out)   , allocatable   :: path
-        character(*,SKC)            , intent(in)    , optional      :: parent
+        use pm_kind, only: SKG => SK
+        character(:,SKG)            , intent(out)   , allocatable   :: path
+        character(*,SKG)            , intent(in)    , optional      :: parent
         character(*, SK)            , intent(inout) , optional      :: errmsg
         logical(LK)                                                 :: failed
     end function
@@ -3486,8 +3486,8 @@ module pm_sysPath
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isFailedCopy
 #endif
-        use pm_kind, only: SKC => SK
-        character(*,SKC), intent(in)                :: from, to
+        use pm_kind, only: SKG => SK
+        character(*,SKG), intent(in)                :: from, to
         logical(LK)     , intent(in)    , optional  :: recursive
         logical(LK)     , intent(in)    , optional  :: forced
         logical(LK)     , intent(in)    , optional  :: wait
@@ -3628,8 +3628,8 @@ module pm_sysPath
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isFailedMove
 #endif
-        use pm_kind, only: SKC => SK
-        character(*,SKC), intent(in)                :: from, to
+        use pm_kind, only: SKG => SK
+        character(*,SKG), intent(in)                :: from, to
         logical(LK)     , intent(in)    , optional  :: forced
         logical(LK)     , intent(in)    , optional  :: wait
         integer(IK)     , intent(in)    , optional  :: ntry
@@ -3751,8 +3751,8 @@ module pm_sysPath
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isFailedRemove
 #endif
-        use pm_kind, only: SKC => SK
-        character(*,SKC), intent(in)                :: path
+        use pm_kind, only: SKG => SK
+        character(*,SKG), intent(in)                :: path
         logical(LK)     , intent(in)    , optional  :: recursive
         logical(LK)     , intent(in)    , optional  :: forced
         logical(LK)     , intent(in)    , optional  :: wait
@@ -3848,10 +3848,10 @@ module pm_sysPath
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDirSep_SK
 #endif
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
         logical(LK)     , intent(out)   , optional  :: failed
         character(*, SK), intent(inout) , optional  :: errmsg
-        character(1,SKC)                            :: dirsep
+        character(1,SKG)                            :: dirsep
     end function
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -3861,11 +3861,11 @@ module pm_sysPath
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDirSep_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(1,SKC), intent(in)                :: mold
+        use pm_kind, only: SKG => SK5
+        character(1,SKG), intent(in)                :: mold
         logical(LK)     , intent(out)   , optional  :: failed
         character(*, SK), intent(inout) , optional  :: errmsg
-        character(1,SKC)                            :: dirsep
+        character(1,SKG)                            :: dirsep
     end function
 #endif
 
@@ -3874,11 +3874,11 @@ module pm_sysPath
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDirSep_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(1,SKC), intent(in)                :: mold
+        use pm_kind, only: SKG => SK4
+        character(1,SKG), intent(in)                :: mold
         logical(LK)     , intent(out)   , optional  :: failed
         character(*, SK), intent(inout) , optional  :: errmsg
-        character(1,SKC)                            :: dirsep
+        character(1,SKG)                            :: dirsep
     end function
 #endif
 
@@ -3887,11 +3887,11 @@ module pm_sysPath
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDirSep_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(1,SKC), intent(in)                :: mold
+        use pm_kind, only: SKG => SK3
+        character(1,SKG), intent(in)                :: mold
         logical(LK)     , intent(out)   , optional  :: failed
         character(*, SK), intent(inout) , optional  :: errmsg
-        character(1,SKC)                            :: dirsep
+        character(1,SKG)                            :: dirsep
     end function
 #endif
 
@@ -3900,11 +3900,11 @@ module pm_sysPath
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDirSep_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(1,SKC), intent(in)                :: mold
+        use pm_kind, only: SKG => SK2
+        character(1,SKG), intent(in)                :: mold
         logical(LK)     , intent(out)   , optional  :: failed
         character(*, SK), intent(inout) , optional  :: errmsg
-        character(1,SKC)                            :: dirsep
+        character(1,SKG)                            :: dirsep
     end function
 #endif
 
@@ -3913,11 +3913,11 @@ module pm_sysPath
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDirSep_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(1,SKC), intent(in)                :: mold
+        use pm_kind, only: SKG => SK1
+        character(1,SKG), intent(in)                :: mold
         logical(LK)     , intent(out)   , optional  :: failed
         character(*, SK), intent(inout) , optional  :: errmsg
-        character(1,SKC)                            :: dirsep
+        character(1,SKG)                            :: dirsep
     end function
 #endif
 
@@ -4014,10 +4014,10 @@ module pm_sysPath
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDirSeps_SK
 #endif
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
         logical(LK)     , intent(out)   , optional  :: failed
         character(*, SK), intent(inout) , optional  :: errmsg
-        character(:,SKC), allocatable               :: dirseps
+        character(:,SKG), allocatable               :: dirseps
     end function
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -4027,11 +4027,11 @@ module pm_sysPath
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDirSeps_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(1,SKC), intent(in)                :: mold
+        use pm_kind, only: SKG => SK5
+        character(1,SKG), intent(in)                :: mold
         logical(LK)     , intent(out)   , optional  :: failed
         character(*, SK), intent(inout) , optional  :: errmsg
-        character(:,SKC), allocatable               :: dirseps
+        character(:,SKG), allocatable               :: dirseps
     end function
 #endif
 
@@ -4040,11 +4040,11 @@ module pm_sysPath
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDirSeps_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(1,SKC), intent(in)                :: mold
+        use pm_kind, only: SKG => SK4
+        character(1,SKG), intent(in)                :: mold
         logical(LK)     , intent(out)   , optional  :: failed
         character(*, SK), intent(inout) , optional  :: errmsg
-        character(:,SKC), allocatable               :: dirseps
+        character(:,SKG), allocatable               :: dirseps
     end function
 #endif
 
@@ -4053,11 +4053,11 @@ module pm_sysPath
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDirSeps_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(1,SKC), intent(in)                :: mold
+        use pm_kind, only: SKG => SK3
+        character(1,SKG), intent(in)                :: mold
         logical(LK)     , intent(out)   , optional  :: failed
         character(*, SK), intent(inout) , optional  :: errmsg
-        character(:,SKC), allocatable               :: dirseps
+        character(:,SKG), allocatable               :: dirseps
     end function
 #endif
 
@@ -4066,11 +4066,11 @@ module pm_sysPath
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDirSeps_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(1,SKC), intent(in)                :: mold
+        use pm_kind, only: SKG => SK2
+        character(1,SKG), intent(in)                :: mold
         logical(LK)     , intent(out)   , optional  :: failed
         character(*, SK), intent(inout) , optional  :: errmsg
-        character(:,SKC), allocatable               :: dirseps
+        character(:,SKG), allocatable               :: dirseps
     end function
 #endif
 
@@ -4079,11 +4079,11 @@ module pm_sysPath
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDirSeps_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(1,SKC), intent(in)                :: mold
+        use pm_kind, only: SKG => SK1
+        character(1,SKG), intent(in)                :: mold
         logical(LK)     , intent(out)   , optional  :: failed
         character(*, SK), intent(inout) , optional  :: errmsg
-        character(:,SKC), allocatable               :: dirseps
+        character(:,SKG), allocatable               :: dirseps
     end function
 #endif
 
@@ -4168,10 +4168,10 @@ module pm_sysPath
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPathSep_SK
 #endif
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
         logical(LK)     , intent(out)   , optional  :: failed
         character(*, SK), intent(inout) , optional  :: errmsg
-        character(1,SKC)                            :: pathsep
+        character(1,SKG)                            :: pathsep
     end function
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -4181,11 +4181,11 @@ module pm_sysPath
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPathSep_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(1,SKC), intent(in)                :: mold
+        use pm_kind, only: SKG => SK5
+        character(1,SKG), intent(in)                :: mold
         logical(LK)     , intent(out)   , optional  :: failed
         character(*, SK), intent(inout) , optional  :: errmsg
-        character(1,SKC)                            :: pathsep
+        character(1,SKG)                            :: pathsep
     end function
 #endif
 
@@ -4194,11 +4194,11 @@ module pm_sysPath
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPathSep_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(1,SKC), intent(in)                :: mold
+        use pm_kind, only: SKG => SK4
+        character(1,SKG), intent(in)                :: mold
         logical(LK)     , intent(out)   , optional  :: failed
         character(*, SK), intent(inout) , optional  :: errmsg
-        character(1,SKC)                            :: pathsep
+        character(1,SKG)                            :: pathsep
     end function
 #endif
 
@@ -4207,11 +4207,11 @@ module pm_sysPath
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPathSep_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(1,SKC), intent(in)                :: mold
+        use pm_kind, only: SKG => SK3
+        character(1,SKG), intent(in)                :: mold
         logical(LK)     , intent(out)   , optional  :: failed
         character(*, SK), intent(inout) , optional  :: errmsg
-        character(1,SKC)                            :: pathsep
+        character(1,SKG)                            :: pathsep
     end function
 #endif
 
@@ -4220,11 +4220,11 @@ module pm_sysPath
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPathSep_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(1,SKC), intent(in)                :: mold
+        use pm_kind, only: SKG => SK2
+        character(1,SKG), intent(in)                :: mold
         logical(LK)     , intent(out)   , optional  :: failed
         character(*, SK), intent(inout) , optional  :: errmsg
-        character(1,SKC)                            :: pathsep
+        character(1,SKG)                            :: pathsep
     end function
 #endif
 
@@ -4233,11 +4233,11 @@ module pm_sysPath
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPathSep_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(1,SKC), intent(in)                :: mold
+        use pm_kind, only: SKG => SK1
+        character(1,SKG), intent(in)                :: mold
         logical(LK)     , intent(out)   , optional  :: failed
         character(*, SK), intent(inout) , optional  :: errmsg
-        character(1,SKC)                            :: pathsep
+        character(1,SKG)                            :: pathsep
     end function
 #endif
 
@@ -4369,11 +4369,11 @@ module pm_sysPath
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPathNew
 #endif
-        use pm_kind, only: SKC => SK
-        character(*,SKC)            , intent(in)    , optional  :: dir, prefix, sep, ext
+        use pm_kind, only: SKG => SK
+        character(*,SKG)            , intent(in)    , optional  :: dir, prefix, sep, ext
         integer(IK)                 , intent(in)    , optional  :: pid
         logical(LK)                 , intent(out)   , optional  :: failed
-        character(:,SKC)            , allocatable               :: pathNew
+        character(:,SKG)            , allocatable               :: pathNew
     end function
     end interface
 
@@ -4500,11 +4500,11 @@ module pm_sysPath
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPathTemp
 #endif
-        use pm_kind, only: SKC => SK
-        character(*,SKC)            , intent(in)    , optional  :: prefix, sep, ext
+        use pm_kind, only: SKG => SK
+        character(*,SKG)            , intent(in)    , optional  :: prefix, sep, ext
         integer(IK)                 , intent(in)    , optional  :: pid
         logical(LK)                 , intent(out)   , optional  :: failed
-        character(:,SKC)            , allocatable               :: pathTemp
+        character(:,SKG)            , allocatable               :: pathTemp
     end function
     end interface
 
@@ -4577,20 +4577,20 @@ module pm_sysPath
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPathJoined
 #endif
-        use pm_kind, only: SKC => SK
-        character(*,SKC)            , intent(in)                :: p1, p2
-        character(:,SKC)            , allocatable               :: pathJoined
+        use pm_kind, only: SKG => SK
+        character(*,SKG)            , intent(in)                :: p1, p2
+        character(:,SKG)            , allocatable               :: pathJoined
     end function
 
     impure module function getPathJoinedFailed(p1, p2, failed, errmsg) result(pathJoined)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPathJoinedFailed
 #endif
-        use pm_kind, only: SKC => SK
-        character(*,SKC)            , intent(in)                :: p1, p2
+        use pm_kind, only: SKG => SK
+        character(*,SKG)            , intent(in)                :: p1, p2
         logical(LK)                 , intent(out)               :: failed
         character(*, SK)            , intent(inout) , optional  :: errmsg
-        character(:,SKC)            , allocatable               :: pathJoined
+        character(:,SKG)            , allocatable               :: pathJoined
     end function
 
     end interface
@@ -4675,8 +4675,8 @@ module pm_sysPath
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isFileDD
 #endif
-        use pm_kind, only: SKC => SK
-        character(*,SKC), intent(in)    :: path
+        use pm_kind, only: SKG => SK
+        character(*,SKG), intent(in)    :: path
         logical(LK)                     :: pathIsFile
     end function
 
@@ -4684,8 +4684,8 @@ module pm_sysPath
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isFileII
 #endif
-        use pm_kind, only: SKC => SK
-        character(*,SKC), intent(in)                :: path
+        use pm_kind, only: SKG => SK
+        character(*,SKG), intent(in)                :: path
         logical(LK)                                 :: pathIsFile
         integer(IK)     , intent(out)               :: iostat
         character(*, SK), intent(inout) , optional  :: iomsg
@@ -4774,8 +4774,8 @@ module pm_sysPath
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isDirDD
 #endif
-        use pm_kind, only: SKC => SK
-        character(*,SKC), intent(in)                :: path
+        use pm_kind, only: SKG => SK
+        character(*,SKG), intent(in)                :: path
         logical(LK)                                 :: pathIsDir
     end function
 
@@ -4783,8 +4783,8 @@ module pm_sysPath
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isDirII
 #endif
-        use pm_kind, only: SKC => SK
-        character(*,SKC), intent(in)                :: path
+        use pm_kind, only: SKG => SK
+        character(*,SKG), intent(in)                :: path
         integer(IK)     , intent(out)               :: iostat
         character(*, SK), intent(inout) , optional  :: iomsg
         logical(LK)                                 :: pathIsDir
@@ -4862,8 +4862,8 @@ module pm_sysPath
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isExtantDD
 #endif
-        use pm_kind, only: SKC => SK
-        character(*,SKC), intent(in)                :: path
+        use pm_kind, only: SKG => SK
+        character(*,SKG), intent(in)                :: path
         logical(LK)                                 :: extant
     end function
 
@@ -4871,8 +4871,8 @@ module pm_sysPath
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isExtantII
 #endif
-        use pm_kind, only: SKC => SK
-        character(*,SKC), intent(in)                :: path
+        use pm_kind, only: SKG => SK
+        character(*,SKG), intent(in)                :: path
         integer(IK)     , intent(out)               :: iostat
         character(*, SK), intent(inout) , optional  :: iomsg
         logical(LK)                                 :: extant
@@ -4961,9 +4961,9 @@ module pm_sysPath
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPathVerbatimCMD_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)    , intent(in)                :: path
-        character(:,SKC)    , allocatable               :: pathVerbatim
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)    , intent(in)                :: path
+        character(:,SKG)    , allocatable               :: pathVerbatim
     end function
 #endif
 
@@ -4972,9 +4972,9 @@ module pm_sysPath
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPathVerbatimCMD_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)    , intent(in)                :: path
-        character(:,SKC)    , allocatable               :: pathVerbatim
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)    , intent(in)                :: path
+        character(:,SKG)    , allocatable               :: pathVerbatim
     end function
 #endif
 
@@ -4983,9 +4983,9 @@ module pm_sysPath
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPathVerbatimCMD_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)    , intent(in)                :: path
-        character(:,SKC)    , allocatable               :: pathVerbatim
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)    , intent(in)                :: path
+        character(:,SKG)    , allocatable               :: pathVerbatim
     end function
 #endif
 
@@ -4994,9 +4994,9 @@ module pm_sysPath
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPathVerbatimCMD_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)    , intent(in)                :: path
-        character(:,SKC)    , allocatable               :: pathVerbatim
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)    , intent(in)                :: path
+        character(:,SKG)    , allocatable               :: pathVerbatim
     end function
 #endif
 
@@ -5005,9 +5005,9 @@ module pm_sysPath
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPathVerbatimCMD_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)    , intent(in)                :: path
-        character(:,SKC)    , allocatable               :: pathVerbatim
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)    , intent(in)                :: path
+        character(:,SKG)    , allocatable               :: pathVerbatim
     end function
 #endif
 
@@ -5083,9 +5083,9 @@ module pm_sysPath
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPathVerbatimPowerShell_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)    , intent(in)                :: path
-        character(:,SKC)    , allocatable               :: pathVerbatim
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)    , intent(in)                :: path
+        character(:,SKG)    , allocatable               :: pathVerbatim
     end function
 #endif
 
@@ -5094,9 +5094,9 @@ module pm_sysPath
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPathVerbatimPowerShell_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)    , intent(in)                :: path
-        character(:,SKC)    , allocatable               :: pathVerbatim
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)    , intent(in)                :: path
+        character(:,SKG)    , allocatable               :: pathVerbatim
     end function
 #endif
 
@@ -5105,9 +5105,9 @@ module pm_sysPath
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPathVerbatimPowerShell_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)    , intent(in)                :: path
-        character(:,SKC)    , allocatable               :: pathVerbatim
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)    , intent(in)                :: path
+        character(:,SKG)    , allocatable               :: pathVerbatim
     end function
 #endif
 
@@ -5116,9 +5116,9 @@ module pm_sysPath
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPathVerbatimPowerShell_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)    , intent(in)                :: path
-        character(:,SKC)    , allocatable               :: pathVerbatim
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)    , intent(in)                :: path
+        character(:,SKG)    , allocatable               :: pathVerbatim
     end function
 #endif
 
@@ -5127,9 +5127,9 @@ module pm_sysPath
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPathVerbatimPowerShell_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)    , intent(in)                :: path
-        character(:,SKC)    , allocatable               :: pathVerbatim
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)    , intent(in)                :: path
+        character(:,SKG)    , allocatable               :: pathVerbatim
     end function
 #endif
 
@@ -5205,9 +5205,9 @@ module pm_sysPath
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPathVerbatimPosix_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)    , intent(in)                :: path
-        character(:,SKC)    , allocatable               :: pathVerbatim
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)    , intent(in)                :: path
+        character(:,SKG)    , allocatable               :: pathVerbatim
     end function
 #endif
 
@@ -5216,9 +5216,9 @@ module pm_sysPath
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPathVerbatimPosix_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)    , intent(in)                :: path
-        character(:,SKC)    , allocatable               :: pathVerbatim
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)    , intent(in)                :: path
+        character(:,SKG)    , allocatable               :: pathVerbatim
     end function
 #endif
 
@@ -5227,9 +5227,9 @@ module pm_sysPath
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPathVerbatimPosix_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)    , intent(in)                :: path
-        character(:,SKC)    , allocatable               :: pathVerbatim
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)    , intent(in)                :: path
+        character(:,SKG)    , allocatable               :: pathVerbatim
     end function
 #endif
 
@@ -5238,9 +5238,9 @@ module pm_sysPath
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPathVerbatimPosix_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)    , intent(in)                :: path
-        character(:,SKC)    , allocatable               :: pathVerbatim
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)    , intent(in)                :: path
+        character(:,SKG)    , allocatable               :: pathVerbatim
     end function
 #endif
 
@@ -5249,9 +5249,9 @@ module pm_sysPath
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPathVerbatimPosix_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)    , intent(in)                :: path
-        character(:,SKC)    , allocatable               :: pathVerbatim
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)    , intent(in)                :: path
+        character(:,SKG)    , allocatable               :: pathVerbatim
     end function
 #endif
 
@@ -5328,9 +5328,9 @@ module pm_sysPath
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPathVerbatimFish_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)    , intent(in)                :: path
-        character(:,SKC)    , allocatable               :: pathVerbatim
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)    , intent(in)                :: path
+        character(:,SKG)    , allocatable               :: pathVerbatim
     end function
 #endif
 
@@ -5339,9 +5339,9 @@ module pm_sysPath
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPathVerbatimFish_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)    , intent(in)                :: path
-        character(:,SKC)    , allocatable               :: pathVerbatim
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)    , intent(in)                :: path
+        character(:,SKG)    , allocatable               :: pathVerbatim
     end function
 #endif
 
@@ -5350,9 +5350,9 @@ module pm_sysPath
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPathVerbatimFish_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)    , intent(in)                :: path
-        character(:,SKC)    , allocatable               :: pathVerbatim
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)    , intent(in)                :: path
+        character(:,SKG)    , allocatable               :: pathVerbatim
     end function
 #endif
 
@@ -5361,9 +5361,9 @@ module pm_sysPath
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPathVerbatimFish_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)    , intent(in)                :: path
-        character(:,SKC)    , allocatable               :: pathVerbatim
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)    , intent(in)                :: path
+        character(:,SKG)    , allocatable               :: pathVerbatim
     end function
 #endif
 
@@ -5372,9 +5372,9 @@ module pm_sysPath
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPathVerbatimFish_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)    , intent(in)                :: path
-        character(:,SKC)    , allocatable               :: pathVerbatim
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)    , intent(in)                :: path
+        character(:,SKG)    , allocatable               :: pathVerbatim
     end function
 #endif
 
@@ -5457,11 +5457,11 @@ module pm_sysPath
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPathVerbatim
 #endif
-        use pm_kind, only: SKC => SK
-        character(*,SKC)    , intent(in)                :: path
+        use pm_kind, only: SKG => SK
+        character(*,SKG)    , intent(in)                :: path
         logical(LK)         , intent(out)   , optional  :: failed
         character(*, SK)    , intent(inout) , optional  :: errmsg
-        character(:,SKC)    , allocatable               :: pathVerbatim
+        character(:,SKG)    , allocatable               :: pathVerbatim
     end function
 
     end interface
@@ -5564,9 +5564,9 @@ module pm_sysPath
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getIndexDirNameDef
 #endif
-        use pm_kind, only: SKC => SK
-        character(*,SKC)    , intent(in)    :: path
-        character(*,SKC)    , intent(in)    :: dirsep
+        use pm_kind, only: SKG => SK
+        character(*,SKG)    , intent(in)    :: path
+        character(*,SKG)    , intent(in)    :: dirsep
         integer(IK)                         :: index
     end function
 
@@ -5574,9 +5574,9 @@ module pm_sysPath
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getIndexDirNamePM
 #endif
-        use pm_kind, only: SKC => SK
-        character(*,SKC)    , intent(in)    :: path
-        character(*,SKC)    , intent(in)    :: dirsep
+        use pm_kind, only: SKG => SK
+        character(*,SKG)    , intent(in)    :: path
+        character(*,SKG)    , intent(in)    :: dirsep
         type(verbatim_type) , intent(in)    :: style
         integer(IK)                         :: index
     end function
@@ -5669,9 +5669,9 @@ module pm_sysPath
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getIndexBaseNameDef
 #endif
-        use pm_kind, only: SKC => SK
-        character(*,SKC)    , intent(in)    :: path
-        character(*,SKC)    , intent(in)    :: dirsep
+        use pm_kind, only: SKG => SK
+        character(*,SKG)    , intent(in)    :: path
+        character(*,SKG)    , intent(in)    :: dirsep
         integer(IK)                         :: index
     end function
 
@@ -5679,9 +5679,9 @@ module pm_sysPath
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getIndexBaseNamePM
 #endif
-        use pm_kind, only: SKC => SK
-        character(*,SKC)    , intent(in)    :: path
-        character(*,SKC)    , intent(in)    :: dirsep
+        use pm_kind, only: SKG => SK
+        character(*,SKG)    , intent(in)    :: path
+        character(*,SKG)    , intent(in)    :: dirsep
         type(verbatim_type) , intent(in)    :: style
         integer(IK)                         :: index
     end function
@@ -5760,9 +5760,9 @@ module pm_sysPath
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getIndexExtName
 #endif
-        use pm_kind, only: SKC => SK
-        character(*,SKC), intent(in)    :: path
-        character(*,SKC), intent(in)    :: dirsep
+        use pm_kind, only: SKG => SK
+        character(*,SKG), intent(in)    :: path
+        character(*,SKG), intent(in)    :: dirsep
         integer(IK)                     :: indexExtName
     end function
     end interface
@@ -5963,10 +5963,10 @@ module pm_sysPath
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getExtName
 #endif
-        use pm_kind, only: SKC => SK
-        character(*,SKC), intent(in)    :: path
-        character(*,SKC), intent(in)    :: dirsep
-        character(:,SKC), allocatable   :: extname
+        use pm_kind, only: SKG => SK
+        character(*,SKG), intent(in)    :: path
+        character(*,SKG), intent(in)    :: dirsep
+        character(:,SKG), allocatable   :: extname
     end function
     end interface
 
@@ -6053,21 +6053,21 @@ module pm_sysPath
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getBaseNameDef
 #endif
-        use pm_kind, only: SKC => SK
-        character(*,SKC)    , intent(in)    :: path
-        character(*,SKC)    , intent(in)    :: dirsep
-        character(:,SKC)    , allocatable   :: basename
+        use pm_kind, only: SKG => SK
+        character(*,SKG)    , intent(in)    :: path
+        character(*,SKG)    , intent(in)    :: dirsep
+        character(:,SKG)    , allocatable   :: basename
     end function
 
     PURE module function getBaseNamePM(path, dirsep, style) result(basename)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getBaseNamePM
 #endif
-        use pm_kind, only: SKC => SK
-        character(*,SKC)    , intent(in)    :: path
-        character(*,SKC)    , intent(in)    :: dirsep
+        use pm_kind, only: SKG => SK
+        character(*,SKG)    , intent(in)    :: path
+        character(*,SKG)    , intent(in)    :: dirsep
         type(verbatim_type) , intent(in)    :: style
-        character(:,SKC)    , allocatable   :: basename
+        character(:,SKG)    , allocatable   :: basename
     end function
 
     end interface
@@ -6142,10 +6142,10 @@ module pm_sysPath
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getFileName
 #endif
-        use pm_kind, only: SKC => SK
-        character(*,SKC), intent(in)    :: path
-        character(*,SKC), intent(in)    :: dirsep
-        character(:,SKC), allocatable   :: filename
+        use pm_kind, only: SKG => SK
+        character(*,SKG), intent(in)    :: path
+        character(*,SKG), intent(in)    :: dirsep
+        character(:,SKG), allocatable   :: filename
     end function
     end interface
 
@@ -6229,13 +6229,13 @@ module pm_sysPath
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPathMatch
 #endif
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
         use pm_container, only: css_type
-        character(*,SKC), intent(in)    , optional  :: key
-        character(*,SKC), intent(in)    , optional  :: inc
-        character(1,SKC), intent(in)    , optional  :: sep
+        character(*,SKG), intent(in)    , optional  :: key
+        character(*,SKG), intent(in)    , optional  :: inc
+        character(1,SKG), intent(in)    , optional  :: sep
         logical(LK)     , intent(out)   , optional  :: failed
-        character(*,SKC), intent(inout) , optional  :: errmsg
+        character(*,SKG), intent(inout) , optional  :: errmsg
         type(css_type)  , allocatable               :: list(:)
     end function
     end interface
@@ -6340,11 +6340,11 @@ module pm_sysPath
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPathMatch
 #endif
-        use pm_kind, only: SKC => SK
-        character(*,SKC), intent(in)    :: key
-        character(*,SKC), intent(in)    :: inc
-        character(1,SKC), intent(in)    :: sep
-        character(*,SKC), intent(out)   :: list
+        use pm_kind, only: SKG => SK
+        character(*,SKG), intent(in)    :: key
+        character(*,SKG), intent(in)    :: inc
+        character(1,SKG), intent(in)    :: sep
+        character(*,SKG), intent(out)   :: list
         integer(IK)     , intent(inout) :: lenList
     end subroutine
     end interface

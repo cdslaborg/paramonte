@@ -26,12 +26,12 @@
 
         ! Define the comparison precision and tolerance.
 #if     CK_ENABLED && (getCor_ENABLED || setCor_ENABLED)
-        real(TKC), parameter :: rtol = epsilon(1._TKC) * 100
-        complex(TKC), parameter :: ctol = (rtol, rtol)
+        real(TKG), parameter :: rtol = epsilon(1._TKG) * 100
+        complex(TKG), parameter :: ctol = (rtol, rtol)
 #define GET_CONJG(X)conjg(X)
 #elif   RK_ENABLED && (getCor_ENABLED || setCor_ENABLED)
-        real(TKC), parameter :: rtol = epsilon(1._TKC) * 100
-        real(TKC), parameter :: ctol = rtol
+        real(TKG), parameter :: rtol = epsilon(1._TKG) * 100
+        real(TKG), parameter :: ctol = rtol
 #define GET_CONJG(X)X
 #elif   getCor_ENABLED || setCor_ENABLED
 #error  "Unrecognized interface."
@@ -41,28 +41,28 @@
         ! Define the sample type.
 #if     SK_ENABLED && D0_ENABLED
 #define GET_SHAPE len
-#define TYPE_OF_SAMPLE character(:,TKC)
-        character(1,TKC), parameter :: lb = TKC_"a", ub = TKC_"z"
+#define TYPE_OF_SAMPLE character(:,TKG)
+        character(1,TKG), parameter :: lb = TKG_"a", ub = TKG_"z"
 #else
 #define GET_SHAPE shape
 #if     SK_ENABLED
-#define TYPE_OF_SAMPLE character(2,TKC)
-        TYPE_OF_SAMPLE, parameter :: lb = TKC_"aa", ub = TKC_"zz"
+#define TYPE_OF_SAMPLE character(2,TKG)
+        TYPE_OF_SAMPLE, parameter :: lb = TKG_"aa", ub = TKG_"zz"
 #elif   IK_ENABLED
-#define TYPE_OF_SAMPLE integer(TKC)
-        TYPE_OF_SAMPLE, parameter :: lb = -9_TKC, ub = +9_TKC
+#define TYPE_OF_SAMPLE integer(TKG)
+        TYPE_OF_SAMPLE, parameter :: lb = -9_TKG, ub = +9_TKG
 #elif   CK_ENABLED
-#define TYPE_OF_SAMPLE complex(TKC)
-        TYPE_OF_SAMPLE, parameter :: lb = (2._TKC, -3._TKC), ub = (3._TKC, -2._TKC), ZERO = (0._TKC, 0._TKC), ONE = (1._TKC, 0._TKC), ONES = (1._TKC, 1._TKC), TWOS = ONES + ONES
+#define TYPE_OF_SAMPLE complex(TKG)
+        TYPE_OF_SAMPLE, parameter :: lb = (2._TKG, -3._TKG), ub = (3._TKG, -2._TKG), ZERO = (0._TKG, 0._TKG), ONE = (1._TKG, 0._TKG), ONES = (1._TKG, 1._TKG), TWOS = ONES + ONES
 #elif   RK_ENABLED
-#define TYPE_OF_SAMPLE real(TKC)
-        TYPE_OF_SAMPLE, parameter :: lb = 2._TKC, ub = 3._TKC, ZERO = 0._TKC, ONE = 1._TKC, ONES = 1._TKC, TWOS = ONES + ONES
+#define TYPE_OF_SAMPLE real(TKG)
+        TYPE_OF_SAMPLE, parameter :: lb = 2._TKG, ub = 3._TKG, ZERO = 0._TKG, ONE = 1._TKG, ONES = 1._TKG, TWOS = ONES + ONES
 #elif   PSSK_ENABLED
-#define TYPE_OF_SAMPLE type(css_pdt(TKC))
-        character(1,TKC), parameter :: lb = TKC_"a", ub = TKC_"z"
+#define TYPE_OF_SAMPLE type(css_pdt(TKG))
+        character(1,TKG), parameter :: lb = TKG_"a", ub = TKG_"z"
 #elif   BSSK_ENABLED
 #define TYPE_OF_SAMPLE type(css_type)
-        character(1,TKC), parameter :: lb = TKC_"a", ub = TKC_"z"
+        character(1,TKG), parameter :: lb = TKG_"a", ub = TKG_"z"
 #elif   !setCordance_ENABLED
 #error  "Unrecognized interface."
 #endif
@@ -71,14 +71,14 @@
 #if     getCor_ENABLED
         !%%%%%%%%%%%%%
 
-        real(TKC) :: rweisum
+        real(TKG) :: rweisum
         integer(IK) :: iweisum
-        real(TKC), allocatable :: rweight(:)
+        real(TKG), allocatable :: rweight(:)
         integer(IK), allocatable :: iweight(:)
         integer(IK) :: itry, nsam, ndim, dim
         TYPE_OF_SAMPLE, allocatable :: sample(:,:), mean(:)
         TYPE_OF_SAMPLE, allocatable :: cor(:,:), cov(:,:), covupp(:,:), covlow(:,:), cor_ref(:,:), cdiff(:,:)
-        real(TKC), allocatable :: std(:), stdinv(:)
+        real(TKG), allocatable :: std(:), stdinv(:)
         assertion = .true._LK
 
         do itry = 1, 50
@@ -91,8 +91,8 @@
                 cor_ref = getUnifRand(-ONES, ONES, ndim, ndim)
                 call setMatCopy(cor_ref, rdpack, cor_ref, rdpack, upp, transHerm)
                 call setMatInit(cor_ref, dia, ONE)
-                std = getUnifRand(1._TKC, 2._TKC, ndim)
-                stdinv = 1._TKC / std
+                std = getUnifRand(1._TKG, 2._TKG, ndim)
+                stdinv = 1._TKG / std
                 cov = getCov(cor_ref, uppDia, std)
                 covupp = cov; call setMatInit(covupp, low, ZERO)
                 covlow = cov; call setMatInit(covlow, upp, ZERO)
@@ -130,7 +130,7 @@
                 else
                     sample = getUnifRand(ONES, TWOS, nsam, ndim)
                 end if
-                rweight = getUnifRand(1._TKC, 9._TKC, nsam)
+                rweight = getUnifRand(1._TKG, 9._TKG, nsam)
                 iweight = getUnifRand(1_IK, 9_IK, nsam)
                 iweisum = sum(iweight)
                 rweisum = sum(rweight)
@@ -174,7 +174,7 @@
                 dim = 1
                 ndim = 2
                 sample = getUnifRand(ONES, TWOS, nsam, ndim)
-                rweight = getUnifRand(1._TKC, 9._TKC, nsam)
+                rweight = getUnifRand(1._TKG, 9._TKG, nsam)
                 iweight = getUnifRand(1_IK, 9_IK, nsam)
                 iweisum = sum(iweight)
                 rweisum = sum(rweight)
@@ -213,7 +213,7 @@
     contains
 
         subroutine reportCFC(line, stdinv)
-            real(TKC), intent(in), optional :: stdinv(:)
+            real(TKG), intent(in), optional :: stdinv(:)
             integer, intent(in) :: line
             cdiff = abs(cor - cor_ref)
             assertion = assertion .and. all(cdiff < ctol)
@@ -274,14 +274,14 @@
 #elif   setCor_ENABLED
         !%%%%%%%%%%%%%
 
-        real(TKC) :: rweisum
+        real(TKG) :: rweisum
         integer(IK) :: iweisum
-        real(TKC), allocatable :: rweight(:)
+        real(TKG), allocatable :: rweight(:)
         integer(IK), allocatable :: iweight(:)
         integer(IK) :: itry, nsam, ndim, dim
         TYPE_OF_SAMPLE, allocatable :: sample(:,:), mean(:)
         TYPE_OF_SAMPLE, allocatable :: cor(:,:), cov(:,:), cor_ref(:,:), cdiff(:,:)
-        real(TKC), allocatable :: std(:), stdinv(:)
+        real(TKG), allocatable :: std(:), stdinv(:)
         assertion = .true._LK
 
         do itry = 1, 50
@@ -297,8 +297,8 @@
                     ndim = getUnifRand(1_IK, 5_IK)
                     cor_ref = getUnifRand(-ONES, ONES, ndim, ndim)
                     call setMatInit(cor_ref, getSubComp(subsetr), ZERO, ZERO)
-                    std = getUnifRand(1._TKC, 2._TKC, ndim)
-                    stdinv = 1._TKC / std
+                    std = getUnifRand(1._TKG, 2._TKG, ndim)
+                    stdinv = 1._TKG / std
                     cov = getFilled(ZERO, ndim, ndim)
                     call setCov(cov, getSubUnion(subsetv, dia), cor_ref, getSubUnion(subsetr, dia), std)
 
@@ -320,8 +320,8 @@
                     ndim = getUnifRand(1_IK, 5_IK)
                     cor_ref = getUnifRand(-ONES, ONES, ndim, ndim)
                     call setMatInit(cor_ref, getSubComp(subsetr), ZERO, ZERO)
-                    std = getUnifRand(1._TKC, 2._TKC, ndim)
-                    stdinv = 1._TKC / std
+                    std = getUnifRand(1._TKG, 2._TKG, ndim)
+                    stdinv = 1._TKG / std
                     cov = getFilled(ZERO, ndim, ndim)
                     call setCov(cov, getSubUnion(subsetv, dia), cor_ref, getSubUnion(subsetr, dia), std)
 
@@ -343,8 +343,8 @@
                     ndim = getUnifRand(1_IK, 5_IK)
                     cor_ref = getUnifRand(-ONES, ONES, ndim, ndim)
                     call setMatInit(cor_ref, getSubComp(subsetr), ZERO, ZERO)
-                    std = getUnifRand(1._TKC, 2._TKC, ndim)
-                    stdinv = 1._TKC / std
+                    std = getUnifRand(1._TKG, 2._TKG, ndim)
+                    stdinv = 1._TKG / std
                     cov = getFilled(ZERO, ndim, ndim)
                     call setCov(cov, getSubUnion(subsetv, dia), cor_ref, getSubUnion(subsetr, dia), std)
 
@@ -366,8 +366,8 @@
                     ndim = getUnifRand(1_IK, 5_IK)
                     cor_ref = getUnifRand(-ONES, ONES, ndim, ndim)
                     call setMatInit(cor_ref, getSubComp(subsetr), ZERO, ZERO)
-                    std = getUnifRand(1._TKC, 2._TKC, ndim)
-                    stdinv = 1._TKC / std
+                    std = getUnifRand(1._TKG, 2._TKG, ndim)
+                    stdinv = 1._TKG / std
                     cov = getFilled(ZERO, ndim, ndim)
                     call setCov(cov, getSubUnion(subsetv, dia), cor_ref, getSubUnion(subsetr, dia), std)
 
@@ -389,8 +389,8 @@
                     ndim = getUnifRand(1_IK, 5_IK)
                     cor_ref = getUnifRand(-ONES, ONES, ndim, ndim)
                     call setMatInit(cor_ref, getSubSymm(subsetr), ZERO, ONE)
-                    std = getUnifRand(1._TKC, 2._TKC, ndim)
-                    stdinv = 1._TKC / std
+                    std = getUnifRand(1._TKG, 2._TKG, ndim)
+                    stdinv = 1._TKG / std
                     cov = getFilled(ZERO, ndim, ndim)
                     call setCov(cov, getSubUnion(subsetv, dia), cor_ref, getSubUnion(subsetr, dia), std)
 
@@ -412,8 +412,8 @@
                     ndim = getUnifRand(1_IK, 5_IK)
                     cor_ref = getUnifRand(-ONES, ONES, ndim, ndim)
                     call setMatInit(cor_ref, getSubSymm(subsetr), ZERO, ONE)
-                    std = getUnifRand(1._TKC, 2._TKC, ndim)
-                    stdinv = 1._TKC / std
+                    std = getUnifRand(1._TKG, 2._TKG, ndim)
+                    stdinv = 1._TKG / std
                     cov = getFilled(ZERO, ndim, ndim)
                     call setCov(cov, getSubUnion(subsetv, dia), cor_ref, getSubUnion(subsetr, dia), std)
 
@@ -435,8 +435,8 @@
                     ndim = getUnifRand(1_IK, 5_IK)
                     cor_ref = getUnifRand(-ONES, ONES, ndim, ndim)
                     call setMatInit(cor_ref, getSubSymm(subsetr), ZERO, ONE)
-                    std = getUnifRand(1._TKC, 2._TKC, ndim)
-                    stdinv = 1._TKC / std
+                    std = getUnifRand(1._TKG, 2._TKG, ndim)
+                    stdinv = 1._TKG / std
                     cov = getFilled(ZERO, ndim, ndim)
                     call setCov(cov, getSubUnion(subsetv, dia), cor_ref, getSubUnion(subsetr, dia), std)
 
@@ -458,8 +458,8 @@
                     ndim = getUnifRand(1_IK, 5_IK)
                     cor_ref = getUnifRand(-ONES, ONES, ndim, ndim)
                     call setMatInit(cor_ref, getSubSymm(subsetr), ZERO, ONE)
-                    std = getUnifRand(1._TKC, 2._TKC, ndim)
-                    stdinv = 1._TKC / std
+                    std = getUnifRand(1._TKG, 2._TKG, ndim)
+                    stdinv = 1._TKG / std
                     cov = getFilled(ZERO, ndim, ndim)
                     call setCov(cov, getSubUnion(subsetv, dia), cor_ref, getSubUnion(subsetr, dia), std)
 
@@ -491,7 +491,7 @@
                 else
                     sample = getUnifRand(ONES, TWOS, nsam, ndim)
                 end if
-                rweight = getUnifRand(1._TKC, 9._TKC, nsam)
+                rweight = getUnifRand(1._TKG, 9._TKG, nsam)
                 iweight = getUnifRand(1_IK, 9_IK, nsam)
                 iweisum = sum(iweight)
                 rweisum = sum(rweight)
@@ -499,7 +499,7 @@
                 ! integer weighted
 
                 mean = getMean(sample, dim, iweight)
-                cor_ref = getCorRef(mean, sample, dim, real(iweight, TKC))
+                cor_ref = getCorRef(mean, sample, dim, real(iweight, TKG))
 
                 cor = getFilled(ZERO, ndim, ndim)
                 call setCor(cor, subsetr, mean, sample, dim, iweight, iweisum)
@@ -549,7 +549,7 @@
                 else
                     sample = getUnifRand(ONES, TWOS, nsam, ndim)
                 end if
-                rweight = getUnifRand(1._TKC, 9._TKC, nsam)
+                rweight = getUnifRand(1._TKG, 9._TKG, nsam)
                 iweight = getUnifRand(1_IK, 9_IK, nsam)
                 iweisum = sum(iweight)
                 rweisum = sum(rweight)
@@ -557,7 +557,7 @@
                 ! integer weighted
 
                 mean = getMean(sample, dim, iweight)
-                cor_ref = getCorRef(mean, sample, dim, real(iweight, TKC))
+                cor_ref = getCorRef(mean, sample, dim, real(iweight, TKG))
 
                 cor = getFilled(ZERO, ndim, ndim)
                 call setCor(cor, subsetr, mean, sample, dim, iweight, iweisum)
@@ -605,7 +605,7 @@
                 mean = getFilled(ZERO, ndim)
                 cor_ref = getFilled(ZERO, ndim, ndim)
                 sample = getUnifRand(ONES, TWOS, nsam, ndim)
-                rweight = getUnifRand(1._TKC, 9._TKC, nsam)
+                rweight = getUnifRand(1._TKG, 9._TKG, nsam)
                 iweight = getUnifRand(1_IK, 9_IK, nsam)
                 iweisum = sum(iweight)
                 rweisum = sum(rweight)
@@ -613,7 +613,7 @@
                 ! integer weighted
 
                 mean = getMean(sample, dim, iweight)
-                cor_ref = getCorRef(mean, sample, dim, real(iweight, TKC))
+                cor_ref = getCorRef(mean, sample, dim, real(iweight, TKG))
 
                 cor = getMatInit([ndim, ndim], uppLowDia, ZERO, ZERO, ONE)
                 call setCor(cor(1,2), mean, sample(:,1), sample(:,2), iweight, iweisum)
@@ -656,7 +656,7 @@
     contains
 
         subroutine reportCFC(line, stdinv)
-            real(TKC), intent(in), optional :: stdinv(:)
+            real(TKG), intent(in), optional :: stdinv(:)
             integer, intent(in) :: line
             cdiff = abs(cor - cor_ref)
             assertion = assertion .and. all(cdiff < ctol)
@@ -688,12 +688,12 @@
         PURE function getCorRef(mean, sample, dim, weight) result(cor)
             ! returns the full correlation matrix of the sample.
             integer(IK), intent(in) :: dim
-            real(TKC), intent(in), optional :: weight(:)
+            real(TKG), intent(in), optional :: weight(:)
             TYPE_OF_SAMPLE, intent(in), contiguous :: sample(:,:), mean(:)
             TYPE_OF_SAMPLE :: cor(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
             TYPE_OF_SAMPLE :: sampleShifted(size(sample, 1, IK), size(sample, 2, IK))
             integer(IK) :: idim, jdim, ndim
-            real(TKC) :: stdinv(size(sample, 3 - dim, IK))
+            real(TKG) :: stdinv(size(sample, 3 - dim, IK))
             ndim = size(sample, 3 - dim, IK)
             sampleShifted = getShifted(sample, dim, -mean)
             if (present(weight)) then
@@ -702,8 +702,8 @@
                 call setCov(cor, uppDia, sampleShifted, dim)
             end if
             do jdim = 1, ndim
-                stdinv(jdim) = 1._TKC / sqrt(real(cor(jdim, jdim), TKC))
-                cor(jdim, jdim) = 1._TKC
+                stdinv(jdim) = 1._TKG / sqrt(real(cor(jdim, jdim), TKG))
+                cor(jdim, jdim) = 1._TKG
                 do idim = jdim - 1, 1, -1
                     cor(idim, jdim) = cor(idim, jdim) * stdinv(idim) * stdinv(jdim)
                     cor(jdim, idim) = GET_CONJG(cor(idim, jdim))

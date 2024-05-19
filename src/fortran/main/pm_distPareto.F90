@@ -278,9 +278,9 @@ module pm_distPareto
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getParetoLogPDFNFALD_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(in)                :: alpha, logMinX
-        real(RKC)                               :: logPDFNF
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(in)                :: alpha, logMinX
+        real(RKG)                               :: logPDFNF
     end function
 #endif
 
@@ -289,9 +289,9 @@ module pm_distPareto
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getParetoLogPDFNFALD_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(in)                :: alpha, logMinX
-        real(RKC)                               :: logPDFNF
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(in)                :: alpha, logMinX
+        real(RKG)                               :: logPDFNF
     end function
 #endif
 
@@ -300,9 +300,9 @@ module pm_distPareto
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getParetoLogPDFNFALD_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(in)                :: alpha, logMinX
-        real(RKC)                               :: logPDFNF
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(in)                :: alpha, logMinX
+        real(RKG)                               :: logPDFNF
     end function
 #endif
 
@@ -311,9 +311,9 @@ module pm_distPareto
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getParetoLogPDFNFALD_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(in)                :: alpha, logMinX
-        real(RKC)                               :: logPDFNF
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(in)                :: alpha, logMinX
+        real(RKG)                               :: logPDFNF
     end function
 #endif
 
@@ -322,9 +322,9 @@ module pm_distPareto
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getParetoLogPDFNFALD_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(in)                :: alpha, logMinX
-        real(RKC)                               :: logPDFNF
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(in)                :: alpha, logMinX
+        real(RKG)                               :: logPDFNF
     end function
 #endif
 
@@ -335,9 +335,9 @@ module pm_distPareto
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getParetoLogPDFNFALL_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(in)                :: alpha, logMinX, logMaxX
-        real(RKC)                               :: logPDFNF
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(in)                :: alpha, logMinX, logMaxX
+        real(RKG)                               :: logPDFNF
     end function
 #endif
 
@@ -346,9 +346,9 @@ module pm_distPareto
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getParetoLogPDFNFALL_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(in)                :: alpha, logMinX, logMaxX
-        real(RKC)                               :: logPDFNF
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(in)                :: alpha, logMinX, logMaxX
+        real(RKG)                               :: logPDFNF
     end function
 #endif
 
@@ -357,9 +357,9 @@ module pm_distPareto
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getParetoLogPDFNFALL_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(in)                :: alpha, logMinX, logMaxX
-        real(RKC)                               :: logPDFNF
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(in)                :: alpha, logMinX, logMaxX
+        real(RKG)                               :: logPDFNF
     end function
 #endif
 
@@ -368,9 +368,9 @@ module pm_distPareto
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getParetoLogPDFNFALL_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(in)                :: alpha, logMinX, logMaxX
-        real(RKC)                               :: logPDFNF
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(in)                :: alpha, logMinX, logMaxX
+        real(RKG)                               :: logPDFNF
     end function
 #endif
 
@@ -379,9 +379,9 @@ module pm_distPareto
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getParetoLogPDFNFALL_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(in)                :: alpha, logMinX, logMaxX
-        real(RKC)                               :: logPDFNF
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(in)                :: alpha, logMinX, logMaxX
+        real(RKG)                               :: logPDFNF
     end function
 #endif
 
@@ -464,9 +464,9 @@ module pm_distPareto
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getParetoLogPDFALD_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(in)                :: logx, alpha, logMinX
-        real(RKC)                               :: logPDF
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(in)                :: logx, alpha, logMinX
+        real(RKG)                               :: logPDF
     end function
 #endif
 
@@ -475,9 +475,9 @@ module pm_distPareto
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getParetoLogPDFALD_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(in)                :: logx, alpha, logMinX
-        real(RKC)                               :: logPDF
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(in)                :: logx, alpha, logMinX
+        real(RKG)                               :: logPDF
     end function
 #endif
 
@@ -486,9 +486,9 @@ module pm_distPareto
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getParetoLogPDFALD_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(in)                :: logx, alpha, logMinX
-        real(RKC)                               :: logPDF
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(in)                :: logx, alpha, logMinX
+        real(RKG)                               :: logPDF
     end function
 #endif
 
@@ -497,9 +497,9 @@ module pm_distPareto
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getParetoLogPDFALD_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(in)                :: logx, alpha, logMinX
-        real(RKC)                               :: logPDF
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(in)                :: logx, alpha, logMinX
+        real(RKG)                               :: logPDF
     end function
 #endif
 
@@ -508,9 +508,9 @@ module pm_distPareto
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getParetoLogPDFALD_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(in)                :: logx, alpha, logMinX
-        real(RKC)                               :: logPDF
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(in)                :: logx, alpha, logMinX
+        real(RKG)                               :: logPDF
     end function
 #endif
 
@@ -521,9 +521,9 @@ module pm_distPareto
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getParetoLogPDFALL_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(in)                :: logx, alpha, logMinX, logMaxX
-        real(RKC)                               :: logPDF
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(in)                :: logx, alpha, logMinX, logMaxX
+        real(RKG)                               :: logPDF
     end function
 #endif
 
@@ -532,9 +532,9 @@ module pm_distPareto
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getParetoLogPDFALL_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(in)                :: logx, alpha, logMinX, logMaxX
-        real(RKC)                               :: logPDF
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(in)                :: logx, alpha, logMinX, logMaxX
+        real(RKG)                               :: logPDF
     end function
 #endif
 
@@ -543,9 +543,9 @@ module pm_distPareto
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getParetoLogPDFALL_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(in)                :: logx, alpha, logMinX, logMaxX
-        real(RKC)                               :: logPDF
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(in)                :: logx, alpha, logMinX, logMaxX
+        real(RKG)                               :: logPDF
     end function
 #endif
 
@@ -554,9 +554,9 @@ module pm_distPareto
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getParetoLogPDFALL_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(in)                :: logx, alpha, logMinX, logMaxX
-        real(RKC)                               :: logPDF
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(in)                :: logx, alpha, logMinX, logMaxX
+        real(RKG)                               :: logPDF
     end function
 #endif
 
@@ -565,9 +565,9 @@ module pm_distPareto
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getParetoLogPDFALL_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(in)                :: logx, alpha, logMinX, logMaxX
-        real(RKC)                               :: logPDF
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(in)                :: logx, alpha, logMinX, logMaxX
+        real(RKG)                               :: logPDF
     end function
 #endif
 
@@ -648,9 +648,9 @@ module pm_distPareto
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setParetoLogPDF_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(out)                   :: logPDF
-        real(RKC)   , intent(in)                    :: logx, alpha, logPDFNF
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(out)                   :: logPDF
+        real(RKG)   , intent(in)                    :: logx, alpha, logPDFNF
     end subroutine
 #endif
 
@@ -659,9 +659,9 @@ module pm_distPareto
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setParetoLogPDF_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(out)                   :: logPDF
-        real(RKC)   , intent(in)                    :: logx, alpha, logPDFNF
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(out)                   :: logPDF
+        real(RKG)   , intent(in)                    :: logx, alpha, logPDFNF
     end subroutine
 #endif
 
@@ -670,9 +670,9 @@ module pm_distPareto
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setParetoLogPDF_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(out)                   :: logPDF
-        real(RKC)   , intent(in)                    :: logx, alpha, logPDFNF
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(out)                   :: logPDF
+        real(RKG)   , intent(in)                    :: logx, alpha, logPDFNF
     end subroutine
 #endif
 
@@ -681,9 +681,9 @@ module pm_distPareto
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setParetoLogPDF_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(out)                   :: logPDF
-        real(RKC)   , intent(in)                    :: logx, alpha, logPDFNF
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(out)                   :: logPDF
+        real(RKG)   , intent(in)                    :: logx, alpha, logPDFNF
     end subroutine
 #endif
 
@@ -692,9 +692,9 @@ module pm_distPareto
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setParetoLogPDF_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(out)                   :: logPDF
-        real(RKC)   , intent(in)                    :: logx, alpha, logPDFNF
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(out)                   :: logPDF
+        real(RKG)   , intent(in)                    :: logx, alpha, logPDFNF
     end subroutine
 #endif
 
@@ -799,9 +799,9 @@ module pm_distPareto
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getParetoLogCDFNFALD_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(in)                :: alpha, logMinX
-        real(RKC)                               :: logCDFNF
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(in)                :: alpha, logMinX
+        real(RKG)                               :: logCDFNF
     end function
 #endif
 
@@ -810,9 +810,9 @@ module pm_distPareto
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getParetoLogCDFNFALD_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(in)                :: alpha, logMinX
-        real(RKC)                               :: logCDFNF
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(in)                :: alpha, logMinX
+        real(RKG)                               :: logCDFNF
     end function
 #endif
 
@@ -821,9 +821,9 @@ module pm_distPareto
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getParetoLogCDFNFALD_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(in)                :: alpha, logMinX
-        real(RKC)                               :: logCDFNF
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(in)                :: alpha, logMinX
+        real(RKG)                               :: logCDFNF
     end function
 #endif
 
@@ -832,9 +832,9 @@ module pm_distPareto
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getParetoLogCDFNFALD_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(in)                :: alpha, logMinX
-        real(RKC)                               :: logCDFNF
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(in)                :: alpha, logMinX
+        real(RKG)                               :: logCDFNF
     end function
 #endif
 
@@ -843,9 +843,9 @@ module pm_distPareto
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getParetoLogCDFNFALD_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(in)                :: alpha, logMinX
-        real(RKC)                               :: logCDFNF
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(in)                :: alpha, logMinX
+        real(RKG)                               :: logCDFNF
     end function
 #endif
 
@@ -856,9 +856,9 @@ module pm_distPareto
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getParetoLogCDFNFALL_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(in)                :: alpha, logMinX, logMaxX
-        real(RKC)                               :: logCDFNF
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(in)                :: alpha, logMinX, logMaxX
+        real(RKG)                               :: logCDFNF
     end function
 #endif
 
@@ -867,9 +867,9 @@ module pm_distPareto
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getParetoLogCDFNFALL_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(in)                :: alpha, logMinX, logMaxX
-        real(RKC)                               :: logCDFNF
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(in)                :: alpha, logMinX, logMaxX
+        real(RKG)                               :: logCDFNF
     end function
 #endif
 
@@ -878,9 +878,9 @@ module pm_distPareto
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getParetoLogCDFNFALL_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(in)                :: alpha, logMinX, logMaxX
-        real(RKC)                               :: logCDFNF
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(in)                :: alpha, logMinX, logMaxX
+        real(RKG)                               :: logCDFNF
     end function
 #endif
 
@@ -889,9 +889,9 @@ module pm_distPareto
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getParetoLogCDFNFALL_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(in)                :: alpha, logMinX, logMaxX
-        real(RKC)                               :: logCDFNF
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(in)                :: alpha, logMinX, logMaxX
+        real(RKG)                               :: logCDFNF
     end function
 #endif
 
@@ -900,9 +900,9 @@ module pm_distPareto
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getParetoLogCDFNFALL_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(in)                :: alpha, logMinX, logMaxX
-        real(RKC)                               :: logCDFNF
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(in)                :: alpha, logMinX, logMaxX
+        real(RKG)                               :: logCDFNF
     end function
 #endif
 
@@ -985,9 +985,9 @@ module pm_distPareto
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getParetoLogCDFALD_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(in)                :: logx, alpha, logMinX
-        real(RKC)                               :: logCDF
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(in)                :: logx, alpha, logMinX
+        real(RKG)                               :: logCDF
     end function
 #endif
 
@@ -996,9 +996,9 @@ module pm_distPareto
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getParetoLogCDFALD_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(in)                :: logx, alpha, logMinX
-        real(RKC)                               :: logCDF
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(in)                :: logx, alpha, logMinX
+        real(RKG)                               :: logCDF
     end function
 #endif
 
@@ -1007,9 +1007,9 @@ module pm_distPareto
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getParetoLogCDFALD_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(in)                :: logx, alpha, logMinX
-        real(RKC)                               :: logCDF
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(in)                :: logx, alpha, logMinX
+        real(RKG)                               :: logCDF
     end function
 #endif
 
@@ -1018,9 +1018,9 @@ module pm_distPareto
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getParetoLogCDFALD_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(in)                :: logx, alpha, logMinX
-        real(RKC)                               :: logCDF
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(in)                :: logx, alpha, logMinX
+        real(RKG)                               :: logCDF
     end function
 #endif
 
@@ -1029,9 +1029,9 @@ module pm_distPareto
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getParetoLogCDFALD_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(in)                :: logx, alpha, logMinX
-        real(RKC)                               :: logCDF
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(in)                :: logx, alpha, logMinX
+        real(RKG)                               :: logCDF
     end function
 #endif
 
@@ -1042,9 +1042,9 @@ module pm_distPareto
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getParetoLogCDFALL_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(in)                :: logx, alpha, logMinX, logMaxX
-        real(RKC)                               :: logCDF
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(in)                :: logx, alpha, logMinX, logMaxX
+        real(RKG)                               :: logCDF
     end function
 #endif
 
@@ -1053,9 +1053,9 @@ module pm_distPareto
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getParetoLogCDFALL_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(in)                :: logx, alpha, logMinX, logMaxX
-        real(RKC)                               :: logCDF
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(in)                :: logx, alpha, logMinX, logMaxX
+        real(RKG)                               :: logCDF
     end function
 #endif
 
@@ -1064,9 +1064,9 @@ module pm_distPareto
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getParetoLogCDFALL_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(in)                :: logx, alpha, logMinX, logMaxX
-        real(RKC)                               :: logCDF
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(in)                :: logx, alpha, logMinX, logMaxX
+        real(RKG)                               :: logCDF
     end function
 #endif
 
@@ -1075,9 +1075,9 @@ module pm_distPareto
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getParetoLogCDFALL_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(in)                :: logx, alpha, logMinX, logMaxX
-        real(RKC)                               :: logCDF
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(in)                :: logx, alpha, logMinX, logMaxX
+        real(RKG)                               :: logCDF
     end function
 #endif
 
@@ -1086,9 +1086,9 @@ module pm_distPareto
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getParetoLogCDFALL_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(in)                :: logx, alpha, logMinX, logMaxX
-        real(RKC)                               :: logCDF
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(in)                :: logx, alpha, logMinX, logMaxX
+        real(RKG)                               :: logCDF
     end function
 #endif
 
@@ -1174,9 +1174,9 @@ module pm_distPareto
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setParetoLogCDFALD_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(out)                   :: logCDF
-        real(RKC)   , intent(in)                    :: logx, alpha, logMinX
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(out)                   :: logCDF
+        real(RKG)   , intent(in)                    :: logx, alpha, logMinX
     end subroutine
 #endif
 
@@ -1185,9 +1185,9 @@ module pm_distPareto
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setParetoLogCDFALD_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(out)                   :: logCDF
-        real(RKC)   , intent(in)                    :: logx, alpha, logMinX
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(out)                   :: logCDF
+        real(RKG)   , intent(in)                    :: logx, alpha, logMinX
     end subroutine
 #endif
 
@@ -1196,9 +1196,9 @@ module pm_distPareto
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setParetoLogCDFALD_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(out)                   :: logCDF
-        real(RKC)   , intent(in)                    :: logx, alpha, logMinX
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(out)                   :: logCDF
+        real(RKG)   , intent(in)                    :: logx, alpha, logMinX
     end subroutine
 #endif
 
@@ -1207,9 +1207,9 @@ module pm_distPareto
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setParetoLogCDFALD_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(out)                   :: logCDF
-        real(RKC)   , intent(in)                    :: logx, alpha, logMinX
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(out)                   :: logCDF
+        real(RKG)   , intent(in)                    :: logx, alpha, logMinX
     end subroutine
 #endif
 
@@ -1218,9 +1218,9 @@ module pm_distPareto
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setParetoLogCDFALD_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(out)                   :: logCDF
-        real(RKC)   , intent(in)                    :: logx, alpha, logMinX
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(out)                   :: logCDF
+        real(RKG)   , intent(in)                    :: logx, alpha, logMinX
     end subroutine
 #endif
 
@@ -1231,9 +1231,9 @@ module pm_distPareto
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setParetoLogCDFALL_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(out)                   :: logCDF
-        real(RKC)   , intent(in)                    :: logx, alpha, logMinX, logCDFNF
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(out)                   :: logCDF
+        real(RKG)   , intent(in)                    :: logx, alpha, logMinX, logCDFNF
     end subroutine
 #endif
 
@@ -1242,9 +1242,9 @@ module pm_distPareto
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setParetoLogCDFALL_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(out)                   :: logCDF
-        real(RKC)   , intent(in)                    :: logx, alpha, logMinX, logCDFNF
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(out)                   :: logCDF
+        real(RKG)   , intent(in)                    :: logx, alpha, logMinX, logCDFNF
     end subroutine
 #endif
 
@@ -1253,9 +1253,9 @@ module pm_distPareto
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setParetoLogCDFALL_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(out)                   :: logCDF
-        real(RKC)   , intent(in)                    :: logx, alpha, logMinX, logCDFNF
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(out)                   :: logCDF
+        real(RKG)   , intent(in)                    :: logx, alpha, logMinX, logCDFNF
     end subroutine
 #endif
 
@@ -1264,9 +1264,9 @@ module pm_distPareto
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setParetoLogCDFALL_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(out)                   :: logCDF
-        real(RKC)   , intent(in)                    :: logx, alpha, logMinX, logCDFNF
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(out)                   :: logCDF
+        real(RKG)   , intent(in)                    :: logx, alpha, logMinX, logCDFNF
     end subroutine
 #endif
 
@@ -1275,9 +1275,9 @@ module pm_distPareto
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setParetoLogCDFALL_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(out)                   :: logCDF
-        real(RKC)   , intent(in)                    :: logx, alpha, logMinX, logCDFNF
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(out)                   :: logCDF
+        real(RKG)   , intent(in)                    :: logx, alpha, logMinX, logCDFNF
     end subroutine
 #endif
 
@@ -1364,9 +1364,9 @@ module pm_distPareto
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getParetoLogQuanALD_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(in)                :: logCDF, alpha, logMinX
-        real(RKC)                               :: logx
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(in)                :: logCDF, alpha, logMinX
+        real(RKG)                               :: logx
     end function
 #endif
 
@@ -1375,9 +1375,9 @@ module pm_distPareto
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getParetoLogQuanALD_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(in)                :: logCDF, alpha, logMinX
-        real(RKC)                               :: logx
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(in)                :: logCDF, alpha, logMinX
+        real(RKG)                               :: logx
     end function
 #endif
 
@@ -1386,9 +1386,9 @@ module pm_distPareto
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getParetoLogQuanALD_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(in)                :: logCDF, alpha, logMinX
-        real(RKC)                               :: logx
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(in)                :: logCDF, alpha, logMinX
+        real(RKG)                               :: logx
     end function
 #endif
 
@@ -1397,9 +1397,9 @@ module pm_distPareto
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getParetoLogQuanALD_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(in)                :: logCDF, alpha, logMinX
-        real(RKC)                               :: logx
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(in)                :: logCDF, alpha, logMinX
+        real(RKG)                               :: logx
     end function
 #endif
 
@@ -1408,9 +1408,9 @@ module pm_distPareto
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getParetoLogQuanALD_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(in)                :: logCDF, alpha, logMinX
-        real(RKC)                               :: logx
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(in)                :: logCDF, alpha, logMinX
+        real(RKG)                               :: logx
     end function
 #endif
 
@@ -1421,9 +1421,9 @@ module pm_distPareto
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getParetoLogQuanALL_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(in)                :: logCDF, alpha, logMinX, logMaxX
-        real(RKC)                               :: logx
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(in)                :: logCDF, alpha, logMinX, logMaxX
+        real(RKG)                               :: logx
     end function
 #endif
 
@@ -1432,9 +1432,9 @@ module pm_distPareto
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getParetoLogQuanALL_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(in)                :: logCDF, alpha, logMinX, logMaxX
-        real(RKC)                               :: logx
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(in)                :: logCDF, alpha, logMinX, logMaxX
+        real(RKG)                               :: logx
     end function
 #endif
 
@@ -1443,9 +1443,9 @@ module pm_distPareto
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getParetoLogQuanALL_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(in)                :: logCDF, alpha, logMinX, logMaxX
-        real(RKC)                               :: logx
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(in)                :: logCDF, alpha, logMinX, logMaxX
+        real(RKG)                               :: logx
     end function
 #endif
 
@@ -1454,9 +1454,9 @@ module pm_distPareto
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getParetoLogQuanALL_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(in)                :: logCDF, alpha, logMinX, logMaxX
-        real(RKC)                               :: logx
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(in)                :: logCDF, alpha, logMinX, logMaxX
+        real(RKG)                               :: logx
     end function
 #endif
 
@@ -1465,9 +1465,9 @@ module pm_distPareto
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getParetoLogQuanALL_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(in)                :: logCDF, alpha, logMinX, logMaxX
-        real(RKC)                               :: logx
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(in)                :: logCDF, alpha, logMinX, logMaxX
+        real(RKG)                               :: logx
     end function
 #endif
 
@@ -1552,9 +1552,9 @@ module pm_distPareto
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setParetoLogQuanLLALD_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(out)                   :: logx
-        real(RKC)   , intent(in)                    :: logCDF, alpha, logMinX
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(out)                   :: logx
+        real(RKG)   , intent(in)                    :: logCDF, alpha, logMinX
     end subroutine
 #endif
 
@@ -1563,9 +1563,9 @@ module pm_distPareto
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setParetoLogQuanLLALD_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(out)                   :: logx
-        real(RKC)   , intent(in)                    :: logCDF, alpha, logMinX
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(out)                   :: logx
+        real(RKG)   , intent(in)                    :: logCDF, alpha, logMinX
     end subroutine
 #endif
 
@@ -1574,9 +1574,9 @@ module pm_distPareto
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setParetoLogQuanLLALD_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(out)                   :: logx
-        real(RKC)   , intent(in)                    :: logCDF, alpha, logMinX
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(out)                   :: logx
+        real(RKG)   , intent(in)                    :: logCDF, alpha, logMinX
     end subroutine
 #endif
 
@@ -1585,9 +1585,9 @@ module pm_distPareto
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setParetoLogQuanLLALD_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(out)                   :: logx
-        real(RKC)   , intent(in)                    :: logCDF, alpha, logMinX
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(out)                   :: logx
+        real(RKG)   , intent(in)                    :: logCDF, alpha, logMinX
     end subroutine
 #endif
 
@@ -1596,9 +1596,9 @@ module pm_distPareto
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setParetoLogQuanLLALD_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(out)                   :: logx
-        real(RKC)   , intent(in)                    :: logCDF, alpha, logMinX
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(out)                   :: logx
+        real(RKG)   , intent(in)                    :: logCDF, alpha, logMinX
     end subroutine
 #endif
 
@@ -1609,9 +1609,9 @@ module pm_distPareto
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setParetoLogQuanLLALL_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(out)                   :: logx
-        real(RKC)   , intent(in)                    :: logCDF, alpha, logMinX, logCDFNF
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(out)                   :: logx
+        real(RKG)   , intent(in)                    :: logCDF, alpha, logMinX, logCDFNF
     end subroutine
 #endif
 
@@ -1620,9 +1620,9 @@ module pm_distPareto
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setParetoLogQuanLLALL_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(out)                   :: logx
-        real(RKC)   , intent(in)                    :: logCDF, alpha, logMinX, logCDFNF
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(out)                   :: logx
+        real(RKG)   , intent(in)                    :: logCDF, alpha, logMinX, logCDFNF
     end subroutine
 #endif
 
@@ -1631,9 +1631,9 @@ module pm_distPareto
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setParetoLogQuanLLALL_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(out)                   :: logx
-        real(RKC)   , intent(in)                    :: logCDF, alpha, logMinX, logCDFNF
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(out)                   :: logx
+        real(RKG)   , intent(in)                    :: logCDF, alpha, logMinX, logCDFNF
     end subroutine
 #endif
 
@@ -1642,9 +1642,9 @@ module pm_distPareto
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setParetoLogQuanLLALL_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(out)                   :: logx
-        real(RKC)   , intent(in)                    :: logCDF, alpha, logMinX, logCDFNF
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(out)                   :: logx
+        real(RKG)   , intent(in)                    :: logCDF, alpha, logMinX, logCDFNF
     end subroutine
 #endif
 
@@ -1653,9 +1653,9 @@ module pm_distPareto
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setParetoLogQuanLLALL_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(out)                   :: logx
-        real(RKC)   , intent(in)                    :: logCDF, alpha, logMinX, logCDFNF
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(out)                   :: logx
+        real(RKG)   , intent(in)                    :: logCDF, alpha, logMinX, logCDFNF
     end subroutine
 #endif
 
@@ -1738,9 +1738,9 @@ module pm_distPareto
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getParetoLogRandALD_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(in)                :: alpha, logMinX
-        real(RKC)                               :: logRand
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(in)                :: alpha, logMinX
+        real(RKG)                               :: logRand
     end function
 #endif
 
@@ -1749,9 +1749,9 @@ module pm_distPareto
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getParetoLogRandALD_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(in)                :: alpha, logMinX
-        real(RKC)                               :: logRand
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(in)                :: alpha, logMinX
+        real(RKG)                               :: logRand
     end function
 #endif
 
@@ -1760,9 +1760,9 @@ module pm_distPareto
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getParetoLogRandALD_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(in)                :: alpha, logMinX
-        real(RKC)                               :: logRand
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(in)                :: alpha, logMinX
+        real(RKG)                               :: logRand
     end function
 #endif
 
@@ -1771,9 +1771,9 @@ module pm_distPareto
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getParetoLogRandALD_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(in)                :: alpha, logMinX
-        real(RKC)                               :: logRand
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(in)                :: alpha, logMinX
+        real(RKG)                               :: logRand
     end function
 #endif
 
@@ -1782,9 +1782,9 @@ module pm_distPareto
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getParetoLogRandALD_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(in)                :: alpha, logMinX
-        real(RKC)                               :: logRand
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(in)                :: alpha, logMinX
+        real(RKG)                               :: logRand
     end function
 #endif
 
@@ -1795,9 +1795,9 @@ module pm_distPareto
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getParetoLogRandALL_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(in)                :: alpha, logMinX, logMaxX
-        real(RKC)                               :: logRand
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(in)                :: alpha, logMinX, logMaxX
+        real(RKG)                               :: logRand
     end function
 #endif
 
@@ -1806,9 +1806,9 @@ module pm_distPareto
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getParetoLogRandALL_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(in)                :: alpha, logMinX, logMaxX
-        real(RKC)                               :: logRand
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(in)                :: alpha, logMinX, logMaxX
+        real(RKG)                               :: logRand
     end function
 #endif
 
@@ -1817,9 +1817,9 @@ module pm_distPareto
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getParetoLogRandALL_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(in)                :: alpha, logMinX, logMaxX
-        real(RKC)                               :: logRand
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(in)                :: alpha, logMinX, logMaxX
+        real(RKG)                               :: logRand
     end function
 #endif
 
@@ -1828,9 +1828,9 @@ module pm_distPareto
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getParetoLogRandALL_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(in)                :: alpha, logMinX, logMaxX
-        real(RKC)                               :: logRand
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(in)                :: alpha, logMinX, logMaxX
+        real(RKG)                               :: logRand
     end function
 #endif
 
@@ -1839,9 +1839,9 @@ module pm_distPareto
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getParetoLogRandALL_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(in)                :: alpha, logMinX, logMaxX
-        real(RKC)                               :: logRand
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(in)                :: alpha, logMinX, logMaxX
+        real(RKG)                               :: logRand
     end function
 #endif
 
@@ -1931,9 +1931,9 @@ module pm_distPareto
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setParetoLogRandLNALD_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(out)                   :: logRand
-        real(RKC)   , intent(in)                    :: negExpRand, alpha, logMinX
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(out)                   :: logRand
+        real(RKG)   , intent(in)                    :: negExpRand, alpha, logMinX
     end subroutine
 #endif
 
@@ -1942,9 +1942,9 @@ module pm_distPareto
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setParetoLogRandLNALD_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(out)                   :: logRand
-        real(RKC)   , intent(in)                    :: negExpRand, alpha, logMinX
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(out)                   :: logRand
+        real(RKG)   , intent(in)                    :: negExpRand, alpha, logMinX
     end subroutine
 #endif
 
@@ -1953,9 +1953,9 @@ module pm_distPareto
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setParetoLogRandLNALD_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(out)                   :: logRand
-        real(RKC)   , intent(in)                    :: negExpRand, alpha, logMinX
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(out)                   :: logRand
+        real(RKG)   , intent(in)                    :: negExpRand, alpha, logMinX
     end subroutine
 #endif
 
@@ -1964,9 +1964,9 @@ module pm_distPareto
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setParetoLogRandLNALD_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(out)                   :: logRand
-        real(RKC)   , intent(in)                    :: negExpRand, alpha, logMinX
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(out)                   :: logRand
+        real(RKG)   , intent(in)                    :: negExpRand, alpha, logMinX
     end subroutine
 #endif
 
@@ -1975,9 +1975,9 @@ module pm_distPareto
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setParetoLogRandLNALD_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(out)                   :: logRand
-        real(RKC)   , intent(in)                    :: negExpRand, alpha, logMinX
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(out)                   :: logRand
+        real(RKG)   , intent(in)                    :: negExpRand, alpha, logMinX
     end subroutine
 #endif
 
@@ -1988,9 +1988,9 @@ module pm_distPareto
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setParetoLogRandLNALL_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(out)                   :: logRand
-        real(RKC)   , intent(in)                    :: negExpRand, alpha, logMinX, logCDFNF
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(out)                   :: logRand
+        real(RKG)   , intent(in)                    :: negExpRand, alpha, logMinX, logCDFNF
     end subroutine
 #endif
 
@@ -1999,9 +1999,9 @@ module pm_distPareto
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setParetoLogRandLNALL_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(out)                   :: logRand
-        real(RKC)   , intent(in)                    :: negExpRand, alpha, logMinX, logCDFNF
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(out)                   :: logRand
+        real(RKG)   , intent(in)                    :: negExpRand, alpha, logMinX, logCDFNF
     end subroutine
 #endif
 
@@ -2010,9 +2010,9 @@ module pm_distPareto
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setParetoLogRandLNALL_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(out)                   :: logRand
-        real(RKC)   , intent(in)                    :: negExpRand, alpha, logMinX, logCDFNF
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(out)                   :: logRand
+        real(RKG)   , intent(in)                    :: negExpRand, alpha, logMinX, logCDFNF
     end subroutine
 #endif
 
@@ -2021,9 +2021,9 @@ module pm_distPareto
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setParetoLogRandLNALL_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(out)                   :: logRand
-        real(RKC)   , intent(in)                    :: negExpRand, alpha, logMinX, logCDFNF
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(out)                   :: logRand
+        real(RKG)   , intent(in)                    :: negExpRand, alpha, logMinX, logCDFNF
     end subroutine
 #endif
 
@@ -2032,9 +2032,9 @@ module pm_distPareto
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setParetoLogRandLNALL_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(out)                   :: logRand
-        real(RKC)   , intent(in)                    :: negExpRand, alpha, logMinX, logCDFNF
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(out)                   :: logRand
+        real(RKG)   , intent(in)                    :: negExpRand, alpha, logMinX, logCDFNF
     end subroutine
 #endif
 

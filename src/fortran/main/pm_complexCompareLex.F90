@@ -106,8 +106,8 @@ module pm_complexCompareLex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: islexless_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC), intent(in)                :: val1, val2
+        use pm_kind, only: CKG => CK5
+        complex(CKG), intent(in)                :: val1, val2
         logical(LK)                             :: compares
     end function
 #endif
@@ -117,8 +117,8 @@ module pm_complexCompareLex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: islexless_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC), intent(in)                :: val1, val2
+        use pm_kind, only: CKG => CK4
+        complex(CKG), intent(in)                :: val1, val2
         logical(LK)                             :: compares
     end function
 #endif
@@ -128,8 +128,8 @@ module pm_complexCompareLex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: islexless_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC), intent(in)                :: val1, val2
+        use pm_kind, only: CKG => CK3
+        complex(CKG), intent(in)                :: val1, val2
         logical(LK)                             :: compares
     end function
 #endif
@@ -139,8 +139,8 @@ module pm_complexCompareLex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: islexless_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC), intent(in)                :: val1, val2
+        use pm_kind, only: CKG => CK2
+        complex(CKG), intent(in)                :: val1, val2
         logical(LK)                             :: compares
     end function
 #endif
@@ -150,8 +150,8 @@ module pm_complexCompareLex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: islexless_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC), intent(in)                :: val1, val2
+        use pm_kind, only: CKG => CK1
+        complex(CKG), intent(in)                :: val1, val2
         logical(LK)                             :: compares
     end function
 #endif
@@ -217,8 +217,8 @@ module pm_complexCompareLex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: islexleq_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC), intent(in)                :: val1, val2
+        use pm_kind, only: CKG => CK5
+        complex(CKG), intent(in)                :: val1, val2
         logical(LK)                             :: compares
     end function
 #endif
@@ -228,8 +228,8 @@ module pm_complexCompareLex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: islexleq_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC), intent(in)                :: val1, val2
+        use pm_kind, only: CKG => CK4
+        complex(CKG), intent(in)                :: val1, val2
         logical(LK)                             :: compares
     end function
 #endif
@@ -239,8 +239,8 @@ module pm_complexCompareLex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: islexleq_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC), intent(in)                :: val1, val2
+        use pm_kind, only: CKG => CK3
+        complex(CKG), intent(in)                :: val1, val2
         logical(LK)                             :: compares
     end function
 #endif
@@ -250,8 +250,8 @@ module pm_complexCompareLex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: islexleq_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC), intent(in)                :: val1, val2
+        use pm_kind, only: CKG => CK2
+        complex(CKG), intent(in)                :: val1, val2
         logical(LK)                             :: compares
     end function
 #endif
@@ -261,8 +261,8 @@ module pm_complexCompareLex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: islexleq_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC), intent(in)                :: val1, val2
+        use pm_kind, only: CKG => CK1
+        complex(CKG), intent(in)                :: val1, val2
         logical(LK)                             :: compares
     end function
 #endif
@@ -330,8 +330,8 @@ module pm_complexCompareLex
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: isanyeq_CK3
 !#endif
-!        use pm_kind, only: CKC => CK3
-!        complex(CKC), intent(in)                :: val1, val2
+!        use pm_kind, only: CKG => CK3
+!        complex(CKG), intent(in)                :: val1, val2
 !        logical(LK)                             :: compares
 !    end function
 !#endif
@@ -341,8 +341,8 @@ module pm_complexCompareLex
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: isanyeq_CK2
 !#endif
-!        use pm_kind, only: CKC => CK2
-!        complex(CKC), intent(in)                :: val1, val2
+!        use pm_kind, only: CKG => CK2
+!        complex(CKG), intent(in)                :: val1, val2
 !        logical(LK)                             :: compares
 !    end function
 !#endif
@@ -352,8 +352,8 @@ module pm_complexCompareLex
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: isanyeq_CK1
 !#endif
-!        use pm_kind, only: CKC => CK1
-!        complex(CKC), intent(in)                :: val1, val2
+!        use pm_kind, only: CKG => CK1
+!        complex(CKG), intent(in)                :: val1, val2
 !        logical(LK)                             :: compares
 !    end function
 !#endif
@@ -425,8 +425,8 @@ module pm_complexCompareLex
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: islexneq_CK3
 !#endif
-!        use pm_kind, only: CKC => CK3
-!        complex(CKC), intent(in)                :: val1, val2
+!        use pm_kind, only: CKG => CK3
+!        complex(CKG), intent(in)                :: val1, val2
 !        logical(LK)                             :: compares
 !    end function
 !#endif
@@ -436,8 +436,8 @@ module pm_complexCompareLex
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: islexneq_CK2
 !#endif
-!        use pm_kind, only: CKC => CK2
-!        complex(CKC), intent(in)                :: val1, val2
+!        use pm_kind, only: CKG => CK2
+!        complex(CKG), intent(in)                :: val1, val2
 !        logical(LK)                             :: compares
 !    end function
 !#endif
@@ -447,8 +447,8 @@ module pm_complexCompareLex
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: islexneq_CK1
 !#endif
-!        use pm_kind, only: CKC => CK1
-!        complex(CKC), intent(in)                :: val1, val2
+!        use pm_kind, only: CKG => CK1
+!        complex(CKG), intent(in)                :: val1, val2
 !        logical(LK)                             :: compares
 !    end function
 !#endif
@@ -514,8 +514,8 @@ module pm_complexCompareLex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: islexmeq_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC), intent(in)                :: val1, val2
+        use pm_kind, only: CKG => CK5
+        complex(CKG), intent(in)                :: val1, val2
         logical(LK)                             :: compares
     end function
 #endif
@@ -525,8 +525,8 @@ module pm_complexCompareLex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: islexmeq_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC), intent(in)                :: val1, val2
+        use pm_kind, only: CKG => CK4
+        complex(CKG), intent(in)                :: val1, val2
         logical(LK)                             :: compares
     end function
 #endif
@@ -536,8 +536,8 @@ module pm_complexCompareLex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: islexmeq_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC), intent(in)                :: val1, val2
+        use pm_kind, only: CKG => CK3
+        complex(CKG), intent(in)                :: val1, val2
         logical(LK)                             :: compares
     end function
 #endif
@@ -547,8 +547,8 @@ module pm_complexCompareLex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: islexmeq_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC), intent(in)                :: val1, val2
+        use pm_kind, only: CKG => CK2
+        complex(CKG), intent(in)                :: val1, val2
         logical(LK)                             :: compares
     end function
 #endif
@@ -558,8 +558,8 @@ module pm_complexCompareLex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: islexmeq_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC), intent(in)                :: val1, val2
+        use pm_kind, only: CKG => CK1
+        complex(CKG), intent(in)                :: val1, val2
         logical(LK)                             :: compares
     end function
 #endif
@@ -625,8 +625,8 @@ module pm_complexCompareLex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: islexmore_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC), intent(in)                :: val1, val2
+        use pm_kind, only: CKG => CK5
+        complex(CKG), intent(in)                :: val1, val2
         logical(LK)                             :: compares
     end function
 #endif
@@ -636,8 +636,8 @@ module pm_complexCompareLex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: islexmore_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC), intent(in)                :: val1, val2
+        use pm_kind, only: CKG => CK4
+        complex(CKG), intent(in)                :: val1, val2
         logical(LK)                             :: compares
     end function
 #endif
@@ -647,8 +647,8 @@ module pm_complexCompareLex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: islexmore_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC), intent(in)                :: val1, val2
+        use pm_kind, only: CKG => CK3
+        complex(CKG), intent(in)                :: val1, val2
         logical(LK)                             :: compares
     end function
 #endif
@@ -658,8 +658,8 @@ module pm_complexCompareLex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: islexmore_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC), intent(in)                :: val1, val2
+        use pm_kind, only: CKG => CK2
+        complex(CKG), intent(in)                :: val1, val2
         logical(LK)                             :: compares
     end function
 #endif
@@ -669,8 +669,8 @@ module pm_complexCompareLex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: islexmore_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC), intent(in)                :: val1, val2
+        use pm_kind, only: CKG => CK1
+        complex(CKG), intent(in)                :: val1, val2
         logical(LK)                             :: compares
     end function
 #endif

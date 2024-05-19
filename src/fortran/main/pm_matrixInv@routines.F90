@@ -68,28 +68,28 @@ contains
 
 #if CK5_ENABLED
     module procedure getMatInvDef_IMP_CK5
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
 #include "pm_matrixInv@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure getMatInvDef_IMP_CK4
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
 #include "pm_matrixInv@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure getMatInvDef_IMP_CK3
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
 #include "pm_matrixInv@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure getMatInvDef_IMP_CK2
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
 #define DISPATCH_ENABLED 1
 #include "pm_matrixInv@routines.inc.F90"
 #undef  DISPATCH_ENABLED
@@ -98,7 +98,7 @@ contains
 
 #if CK1_ENABLED
     module procedure getMatInvDef_IMP_CK1
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
 #define DISPATCH_ENABLED 1
 #include "pm_matrixInv@routines.inc.F90"
 #undef  DISPATCH_ENABLED
@@ -113,28 +113,28 @@ contains
 
 #if RK5_ENABLED
     module procedure getMatInvDef_IMP_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_matrixInv@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getMatInvDef_IMP_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_matrixInv@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getMatInvDef_IMP_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_matrixInv@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getMatInvDef_IMP_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #define DISPATCH_ENABLED 1
 #include "pm_matrixInv@routines.inc.F90"
 #undef  DISPATCH_ENABLED
@@ -143,7 +143,7 @@ contains
 
 #if RK1_ENABLED
     module procedure getMatInvDef_IMP_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #define DISPATCH_ENABLED 1
 #include "pm_matrixInv@routines.inc.F90"
 #undef  DISPATCH_ENABLED
@@ -168,28 +168,28 @@ contains
 
 #if CK5_ENABLED
     module procedure getMatInvDet_IMP_CK5
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
 #include "pm_matrixInv@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure getMatInvDet_IMP_CK4
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
 #include "pm_matrixInv@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure getMatInvDet_IMP_CK3
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
 #include "pm_matrixInv@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure getMatInvDet_IMP_CK2
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
 #define DISPATCH_ENABLED 1
 #include "pm_matrixInv@routines.inc.F90"
 #undef  DISPATCH_ENABLED
@@ -198,7 +198,7 @@ contains
 
 #if CK1_ENABLED
     module procedure getMatInvDet_IMP_CK1
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
 #define DISPATCH_ENABLED 1
 #include "pm_matrixInv@routines.inc.F90"
 #undef  DISPATCH_ENABLED
@@ -213,28 +213,28 @@ contains
 
 #if RK5_ENABLED
     module procedure getMatInvDet_IMP_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_matrixInv@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getMatInvDet_IMP_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_matrixInv@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getMatInvDet_IMP_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_matrixInv@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getMatInvDet_IMP_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #define DISPATCH_ENABLED 1
 #include "pm_matrixInv@routines.inc.F90"
 #undef  DISPATCH_ENABLED
@@ -243,7 +243,7 @@ contains
 
 #if RK1_ENABLED
     module procedure getMatInvDet_IMP_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #define DISPATCH_ENABLED 1
 #include "pm_matrixInv@routines.inc.F90"
 #undef  DISPATCH_ENABLED
@@ -268,28 +268,28 @@ contains
 
 #if CK5_ENABLED
     module procedure getMatInvInf_IMP_CK5
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
 #include "pm_matrixInv@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure getMatInvInf_IMP_CK4
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
 #include "pm_matrixInv@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure getMatInvInf_IMP_CK3
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
 #include "pm_matrixInv@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure getMatInvInf_IMP_CK2
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
 #define DISPATCH_ENABLED 1
 #include "pm_matrixInv@routines.inc.F90"
 #undef  DISPATCH_ENABLED
@@ -298,7 +298,7 @@ contains
 
 #if CK1_ENABLED
     module procedure getMatInvInf_IMP_CK1
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
 #define DISPATCH_ENABLED 1
 #include "pm_matrixInv@routines.inc.F90"
 #undef  DISPATCH_ENABLED
@@ -313,28 +313,28 @@ contains
 
 #if RK5_ENABLED
     module procedure getMatInvInf_IMP_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_matrixInv@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getMatInvInf_IMP_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_matrixInv@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getMatInvInf_IMP_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_matrixInv@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getMatInvInf_IMP_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #define DISPATCH_ENABLED 1
 #include "pm_matrixInv@routines.inc.F90"
 #undef  DISPATCH_ENABLED
@@ -343,7 +343,7 @@ contains
 
 #if RK1_ENABLED
     module procedure getMatInvInf_IMP_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #define DISPATCH_ENABLED 1
 #include "pm_matrixInv@routines.inc.F90"
 #undef  DISPATCH_ENABLED
@@ -368,28 +368,28 @@ contains
 
 #if CK5_ENABLED
     module procedure getMatInvCUD_IMP_CK5
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
 #include "pm_matrixInv@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure getMatInvCUD_IMP_CK4
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
 #include "pm_matrixInv@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure getMatInvCUD_IMP_CK3
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
 #include "pm_matrixInv@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure getMatInvCUD_IMP_CK2
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
 #define DISPATCH_ENABLED 1
 #include "pm_matrixInv@routines.inc.F90"
 #undef  DISPATCH_ENABLED
@@ -398,7 +398,7 @@ contains
 
 #if CK1_ENABLED
     module procedure getMatInvCUD_IMP_CK1
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
 #define DISPATCH_ENABLED 1
 #include "pm_matrixInv@routines.inc.F90"
 #undef  DISPATCH_ENABLED
@@ -413,28 +413,28 @@ contains
 
 #if RK5_ENABLED
     module procedure getMatInvCUD_IMP_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_matrixInv@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getMatInvCUD_IMP_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_matrixInv@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getMatInvCUD_IMP_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_matrixInv@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getMatInvCUD_IMP_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #define DISPATCH_ENABLED 1
 #include "pm_matrixInv@routines.inc.F90"
 #undef  DISPATCH_ENABLED
@@ -443,7 +443,7 @@ contains
 
 #if RK1_ENABLED
     module procedure getMatInvCUD_IMP_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #define DISPATCH_ENABLED 1
 #include "pm_matrixInv@routines.inc.F90"
 #undef  DISPATCH_ENABLED
@@ -468,28 +468,28 @@ contains
 
 #if CK5_ENABLED
     module procedure getMatInvCLD_IMP_CK5
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
 #include "pm_matrixInv@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure getMatInvCLD_IMP_CK4
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
 #include "pm_matrixInv@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure getMatInvCLD_IMP_CK3
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
 #include "pm_matrixInv@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure getMatInvCLD_IMP_CK2
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
 #define DISPATCH_ENABLED 1
 #include "pm_matrixInv@routines.inc.F90"
 #undef  DISPATCH_ENABLED
@@ -498,7 +498,7 @@ contains
 
 #if CK1_ENABLED
     module procedure getMatInvCLD_IMP_CK1
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
 #define DISPATCH_ENABLED 1
 #include "pm_matrixInv@routines.inc.F90"
 #undef  DISPATCH_ENABLED
@@ -513,28 +513,28 @@ contains
 
 #if RK5_ENABLED
     module procedure getMatInvCLD_IMP_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_matrixInv@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getMatInvCLD_IMP_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_matrixInv@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getMatInvCLD_IMP_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_matrixInv@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getMatInvCLD_IMP_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #define DISPATCH_ENABLED 1
 #include "pm_matrixInv@routines.inc.F90"
 #undef  DISPATCH_ENABLED
@@ -543,7 +543,7 @@ contains
 
 #if RK1_ENABLED
     module procedure getMatInvCLD_IMP_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #define DISPATCH_ENABLED 1
 #include "pm_matrixInv@routines.inc.F90"
 #undef  DISPATCH_ENABLED
@@ -568,28 +568,28 @@ contains
 
 #if CK5_ENABLED
     module procedure getMatInvCUU_IMP_CK5
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
 #include "pm_matrixInv@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure getMatInvCUU_IMP_CK4
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
 #include "pm_matrixInv@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure getMatInvCUU_IMP_CK3
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
 #include "pm_matrixInv@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure getMatInvCUU_IMP_CK2
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
 #define DISPATCH_ENABLED 1
 #include "pm_matrixInv@routines.inc.F90"
 #undef  DISPATCH_ENABLED
@@ -598,7 +598,7 @@ contains
 
 #if CK1_ENABLED
     module procedure getMatInvCUU_IMP_CK1
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
 #define DISPATCH_ENABLED 1
 #include "pm_matrixInv@routines.inc.F90"
 #undef  DISPATCH_ENABLED
@@ -613,28 +613,28 @@ contains
 
 #if RK5_ENABLED
     module procedure getMatInvCUU_IMP_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_matrixInv@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getMatInvCUU_IMP_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_matrixInv@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getMatInvCUU_IMP_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_matrixInv@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getMatInvCUU_IMP_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #define DISPATCH_ENABLED 1
 #include "pm_matrixInv@routines.inc.F90"
 #undef  DISPATCH_ENABLED
@@ -643,7 +643,7 @@ contains
 
 #if RK1_ENABLED
     module procedure getMatInvCUU_IMP_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #define DISPATCH_ENABLED 1
 #include "pm_matrixInv@routines.inc.F90"
 #undef  DISPATCH_ENABLED
@@ -668,28 +668,28 @@ contains
 
 #if CK5_ENABLED
     module procedure getMatInvCLU_IMP_CK5
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
 #include "pm_matrixInv@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure getMatInvCLU_IMP_CK4
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
 #include "pm_matrixInv@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure getMatInvCLU_IMP_CK3
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
 #include "pm_matrixInv@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure getMatInvCLU_IMP_CK2
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
 #define DISPATCH_ENABLED 1
 #include "pm_matrixInv@routines.inc.F90"
 #undef  DISPATCH_ENABLED
@@ -698,7 +698,7 @@ contains
 
 #if CK1_ENABLED
     module procedure getMatInvCLU_IMP_CK1
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
 #define DISPATCH_ENABLED 1
 #include "pm_matrixInv@routines.inc.F90"
 #undef  DISPATCH_ENABLED
@@ -713,28 +713,28 @@ contains
 
 #if RK5_ENABLED
     module procedure getMatInvCLU_IMP_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_matrixInv@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getMatInvCLU_IMP_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_matrixInv@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getMatInvCLU_IMP_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_matrixInv@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getMatInvCLU_IMP_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #define DISPATCH_ENABLED 1
 #include "pm_matrixInv@routines.inc.F90"
 #undef  DISPATCH_ENABLED
@@ -743,7 +743,7 @@ contains
 
 #if RK1_ENABLED
     module procedure getMatInvCLU_IMP_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #define DISPATCH_ENABLED 1
 #include "pm_matrixInv@routines.inc.F90"
 #undef  DISPATCH_ENABLED
@@ -768,28 +768,28 @@ contains
 
 #if CK5_ENABLED
     module procedure getMatInvLUP_IMP_CK5
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
 #include "pm_matrixInv@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure getMatInvLUP_IMP_CK4
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
 #include "pm_matrixInv@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure getMatInvLUP_IMP_CK3
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
 #include "pm_matrixInv@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure getMatInvLUP_IMP_CK2
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
 #define DISPATCH_ENABLED 1
 #include "pm_matrixInv@routines.inc.F90"
 #undef  DISPATCH_ENABLED
@@ -798,7 +798,7 @@ contains
 
 #if CK1_ENABLED
     module procedure getMatInvLUP_IMP_CK1
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
 #define DISPATCH_ENABLED 1
 #include "pm_matrixInv@routines.inc.F90"
 #undef  DISPATCH_ENABLED
@@ -813,28 +813,28 @@ contains
 
 #if RK5_ENABLED
     module procedure getMatInvLUP_IMP_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_matrixInv@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getMatInvLUP_IMP_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_matrixInv@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getMatInvLUP_IMP_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_matrixInv@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getMatInvLUP_IMP_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #define DISPATCH_ENABLED 1
 #include "pm_matrixInv@routines.inc.F90"
 #undef  DISPATCH_ENABLED
@@ -843,7 +843,7 @@ contains
 
 #if RK1_ENABLED
     module procedure getMatInvLUP_IMP_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #define DISPATCH_ENABLED 1
 #include "pm_matrixInv@routines.inc.F90"
 #undef  DISPATCH_ENABLED
@@ -868,28 +868,28 @@ contains
 
 #if CK5_ENABLED
     module procedure getMatInvCCU_IMP_CK5
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
 #include "pm_matrixInv@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure getMatInvCCU_IMP_CK4
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
 #include "pm_matrixInv@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure getMatInvCCU_IMP_CK3
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
 #include "pm_matrixInv@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure getMatInvCCU_IMP_CK2
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
 #define DISPATCH_ENABLED 1
 #include "pm_matrixInv@routines.inc.F90"
 #undef  DISPATCH_ENABLED
@@ -898,7 +898,7 @@ contains
 
 #if CK1_ENABLED
     module procedure getMatInvCCU_IMP_CK1
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
 #define DISPATCH_ENABLED 1
 #include "pm_matrixInv@routines.inc.F90"
 #undef  DISPATCH_ENABLED
@@ -913,28 +913,28 @@ contains
 
 #if RK5_ENABLED
     module procedure getMatInvCCU_IMP_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_matrixInv@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getMatInvCCU_IMP_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_matrixInv@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getMatInvCCU_IMP_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_matrixInv@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getMatInvCCU_IMP_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #define DISPATCH_ENABLED 1
 #include "pm_matrixInv@routines.inc.F90"
 #undef  DISPATCH_ENABLED
@@ -943,7 +943,7 @@ contains
 
 #if RK1_ENABLED
     module procedure getMatInvCCU_IMP_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #define DISPATCH_ENABLED 1
 #include "pm_matrixInv@routines.inc.F90"
 #undef  DISPATCH_ENABLED
@@ -968,28 +968,28 @@ contains
 
 #if CK5_ENABLED
     module procedure getMatInvCCL_IMP_CK5
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
 #include "pm_matrixInv@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure getMatInvCCL_IMP_CK4
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
 #include "pm_matrixInv@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure getMatInvCCL_IMP_CK3
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
 #include "pm_matrixInv@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure getMatInvCCL_IMP_CK2
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
 #define DISPATCH_ENABLED 1
 #include "pm_matrixInv@routines.inc.F90"
 #undef  DISPATCH_ENABLED
@@ -998,7 +998,7 @@ contains
 
 #if CK1_ENABLED
     module procedure getMatInvCCL_IMP_CK1
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
 #define DISPATCH_ENABLED 1
 #include "pm_matrixInv@routines.inc.F90"
 #undef  DISPATCH_ENABLED
@@ -1013,28 +1013,28 @@ contains
 
 #if RK5_ENABLED
     module procedure getMatInvCCL_IMP_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_matrixInv@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getMatInvCCL_IMP_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_matrixInv@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getMatInvCCL_IMP_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_matrixInv@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getMatInvCCL_IMP_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #define DISPATCH_ENABLED 1
 #include "pm_matrixInv@routines.inc.F90"
 #undef  DISPATCH_ENABLED
@@ -1043,7 +1043,7 @@ contains
 
 #if RK1_ENABLED
     module procedure getMatInvCCL_IMP_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #define DISPATCH_ENABLED 1
 #include "pm_matrixInv@routines.inc.F90"
 #undef  DISPATCH_ENABLED
@@ -1096,28 +1096,28 @@ contains
 
 #if CK5_ENABLED
     module procedure setMatInvCUD_IMP_CK5
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
 #include "pm_matrixInv@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure setMatInvCUD_IMP_CK4
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
 #include "pm_matrixInv@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure setMatInvCUD_IMP_CK3
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
 #include "pm_matrixInv@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure setMatInvCUD_IMP_CK2
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
 #define DISPATCH_ENABLED 1
 #include "pm_matrixInv@routines.inc.F90"
 #undef  DISPATCH_ENABLED
@@ -1126,7 +1126,7 @@ contains
 
 #if CK1_ENABLED
     module procedure setMatInvCUD_IMP_CK1
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
 #define DISPATCH_ENABLED 1
 #include "pm_matrixInv@routines.inc.F90"
 #undef  DISPATCH_ENABLED
@@ -1141,28 +1141,28 @@ contains
 
 #if RK5_ENABLED
     module procedure setMatInvCUD_IMP_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_matrixInv@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setMatInvCUD_IMP_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_matrixInv@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setMatInvCUD_IMP_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_matrixInv@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setMatInvCUD_IMP_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #define DISPATCH_ENABLED 1
 #include "pm_matrixInv@routines.inc.F90"
 #undef  DISPATCH_ENABLED
@@ -1171,7 +1171,7 @@ contains
 
 #if RK1_ENABLED
     module procedure setMatInvCUD_IMP_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #define DISPATCH_ENABLED 1
 #include "pm_matrixInv@routines.inc.F90"
 #undef  DISPATCH_ENABLED
@@ -1196,28 +1196,28 @@ contains
 
 #if CK5_ENABLED
     module procedure setMatInvCLD_IMP_CK5
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
 #include "pm_matrixInv@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure setMatInvCLD_IMP_CK4
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
 #include "pm_matrixInv@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure setMatInvCLD_IMP_CK3
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
 #include "pm_matrixInv@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure setMatInvCLD_IMP_CK2
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
 #define DISPATCH_ENABLED 1
 #include "pm_matrixInv@routines.inc.F90"
 #undef  DISPATCH_ENABLED
@@ -1226,7 +1226,7 @@ contains
 
 #if CK1_ENABLED
     module procedure setMatInvCLD_IMP_CK1
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
 #define DISPATCH_ENABLED 1
 #include "pm_matrixInv@routines.inc.F90"
 #undef  DISPATCH_ENABLED
@@ -1241,28 +1241,28 @@ contains
 
 #if RK5_ENABLED
     module procedure setMatInvCLD_IMP_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_matrixInv@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setMatInvCLD_IMP_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_matrixInv@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setMatInvCLD_IMP_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_matrixInv@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setMatInvCLD_IMP_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #define DISPATCH_ENABLED 1
 #include "pm_matrixInv@routines.inc.F90"
 #undef  DISPATCH_ENABLED
@@ -1271,7 +1271,7 @@ contains
 
 #if RK1_ENABLED
     module procedure setMatInvCLD_IMP_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #define DISPATCH_ENABLED 1
 #include "pm_matrixInv@routines.inc.F90"
 #undef  DISPATCH_ENABLED
@@ -1296,28 +1296,28 @@ contains
 
 #if CK5_ENABLED
     module procedure setMatInvCUU_IMP_CK5
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
 #include "pm_matrixInv@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure setMatInvCUU_IMP_CK4
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
 #include "pm_matrixInv@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure setMatInvCUU_IMP_CK3
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
 #include "pm_matrixInv@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure setMatInvCUU_IMP_CK2
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
 #define DISPATCH_ENABLED 1
 #include "pm_matrixInv@routines.inc.F90"
 #undef  DISPATCH_ENABLED
@@ -1326,7 +1326,7 @@ contains
 
 #if CK1_ENABLED
     module procedure setMatInvCUU_IMP_CK1
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
 #define DISPATCH_ENABLED 1
 #include "pm_matrixInv@routines.inc.F90"
 #undef  DISPATCH_ENABLED
@@ -1341,28 +1341,28 @@ contains
 
 #if RK5_ENABLED
     module procedure setMatInvCUU_IMP_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_matrixInv@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setMatInvCUU_IMP_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_matrixInv@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setMatInvCUU_IMP_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_matrixInv@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setMatInvCUU_IMP_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #define DISPATCH_ENABLED 1
 #include "pm_matrixInv@routines.inc.F90"
 #undef  DISPATCH_ENABLED
@@ -1371,7 +1371,7 @@ contains
 
 #if RK1_ENABLED
     module procedure setMatInvCUU_IMP_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #define DISPATCH_ENABLED 1
 #include "pm_matrixInv@routines.inc.F90"
 #undef  DISPATCH_ENABLED
@@ -1396,28 +1396,28 @@ contains
 
 #if CK5_ENABLED
     module procedure setMatInvCLU_IMP_CK5
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
 #include "pm_matrixInv@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure setMatInvCLU_IMP_CK4
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
 #include "pm_matrixInv@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure setMatInvCLU_IMP_CK3
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
 #include "pm_matrixInv@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure setMatInvCLU_IMP_CK2
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
 #define DISPATCH_ENABLED 1
 #include "pm_matrixInv@routines.inc.F90"
 #undef  DISPATCH_ENABLED
@@ -1426,7 +1426,7 @@ contains
 
 #if CK1_ENABLED
     module procedure setMatInvCLU_IMP_CK1
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
 #define DISPATCH_ENABLED 1
 #include "pm_matrixInv@routines.inc.F90"
 #undef  DISPATCH_ENABLED
@@ -1441,28 +1441,28 @@ contains
 
 #if RK5_ENABLED
     module procedure setMatInvCLU_IMP_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_matrixInv@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setMatInvCLU_IMP_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_matrixInv@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setMatInvCLU_IMP_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_matrixInv@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setMatInvCLU_IMP_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #define DISPATCH_ENABLED 1
 #include "pm_matrixInv@routines.inc.F90"
 #undef  DISPATCH_ENABLED
@@ -1471,7 +1471,7 @@ contains
 
 #if RK1_ENABLED
     module procedure setMatInvCLU_IMP_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #define DISPATCH_ENABLED 1
 #include "pm_matrixInv@routines.inc.F90"
 #undef  DISPATCH_ENABLED
@@ -1496,28 +1496,28 @@ contains
 
 #if CK5_ENABLED
     module procedure setMatInvLUP_IMP_CK5
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
 #include "pm_matrixInv@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure setMatInvLUP_IMP_CK4
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
 #include "pm_matrixInv@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure setMatInvLUP_IMP_CK3
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
 #include "pm_matrixInv@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure setMatInvLUP_IMP_CK2
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
 #define DISPATCH_ENABLED 1
 #include "pm_matrixInv@routines.inc.F90"
 #undef  DISPATCH_ENABLED
@@ -1526,7 +1526,7 @@ contains
 
 #if CK1_ENABLED
     module procedure setMatInvLUP_IMP_CK1
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
 #define DISPATCH_ENABLED 1
 #include "pm_matrixInv@routines.inc.F90"
 #undef  DISPATCH_ENABLED
@@ -1541,28 +1541,28 @@ contains
 
 #if RK5_ENABLED
     module procedure setMatInvLUP_IMP_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_matrixInv@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setMatInvLUP_IMP_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_matrixInv@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setMatInvLUP_IMP_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_matrixInv@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setMatInvLUP_IMP_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #define DISPATCH_ENABLED 1
 #include "pm_matrixInv@routines.inc.F90"
 #undef  DISPATCH_ENABLED
@@ -1571,7 +1571,7 @@ contains
 
 #if RK1_ENABLED
     module procedure setMatInvLUP_IMP_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #define DISPATCH_ENABLED 1
 #include "pm_matrixInv@routines.inc.F90"
 #undef  DISPATCH_ENABLED
@@ -1596,28 +1596,28 @@ contains
 
 #if CK5_ENABLED
     module procedure setMatInvCCU_FUL_IMP_CK5
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
 #include "pm_matrixInv@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure setMatInvCCU_FUL_IMP_CK4
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
 #include "pm_matrixInv@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure setMatInvCCU_FUL_IMP_CK3
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
 #include "pm_matrixInv@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure setMatInvCCU_FUL_IMP_CK2
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
 #define DISPATCH_ENABLED 1
 #include "pm_matrixInv@routines.inc.F90"
 #undef  DISPATCH_ENABLED
@@ -1626,7 +1626,7 @@ contains
 
 #if CK1_ENABLED
     module procedure setMatInvCCU_FUL_IMP_CK1
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
 #define DISPATCH_ENABLED 1
 #include "pm_matrixInv@routines.inc.F90"
 #undef  DISPATCH_ENABLED
@@ -1641,28 +1641,28 @@ contains
 
 #if RK5_ENABLED
     module procedure setMatInvCCU_FUL_IMP_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_matrixInv@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setMatInvCCU_FUL_IMP_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_matrixInv@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setMatInvCCU_FUL_IMP_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_matrixInv@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setMatInvCCU_FUL_IMP_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #define DISPATCH_ENABLED 1
 #include "pm_matrixInv@routines.inc.F90"
 #undef  DISPATCH_ENABLED
@@ -1671,7 +1671,7 @@ contains
 
 #if RK1_ENABLED
     module procedure setMatInvCCU_FUL_IMP_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #define DISPATCH_ENABLED 1
 #include "pm_matrixInv@routines.inc.F90"
 #undef  DISPATCH_ENABLED
@@ -1696,28 +1696,28 @@ contains
 
 #if CK5_ENABLED
     module procedure setMatInvCCL_FUL_IMP_CK5
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
 #include "pm_matrixInv@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure setMatInvCCL_FUL_IMP_CK4
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
 #include "pm_matrixInv@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure setMatInvCCL_FUL_IMP_CK3
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
 #include "pm_matrixInv@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure setMatInvCCL_FUL_IMP_CK2
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
 #define DISPATCH_ENABLED 1
 #include "pm_matrixInv@routines.inc.F90"
 #undef  DISPATCH_ENABLED
@@ -1726,7 +1726,7 @@ contains
 
 #if CK1_ENABLED
     module procedure setMatInvCCL_FUL_IMP_CK1
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
 #define DISPATCH_ENABLED 1
 #include "pm_matrixInv@routines.inc.F90"
 #undef  DISPATCH_ENABLED
@@ -1741,28 +1741,28 @@ contains
 
 #if RK5_ENABLED
     module procedure setMatInvCCL_FUL_IMP_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_matrixInv@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setMatInvCCL_FUL_IMP_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_matrixInv@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setMatInvCCL_FUL_IMP_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_matrixInv@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setMatInvCCL_FUL_IMP_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #define DISPATCH_ENABLED 1
 #include "pm_matrixInv@routines.inc.F90"
 #undef  DISPATCH_ENABLED
@@ -1771,7 +1771,7 @@ contains
 
 #if RK1_ENABLED
     module procedure setMatInvCCL_FUL_IMP_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #define DISPATCH_ENABLED 1
 #include "pm_matrixInv@routines.inc.F90"
 #undef  DISPATCH_ENABLED
@@ -1830,28 +1830,28 @@ contains
 
 #if CK5_ENABLED
     module procedure setMatInvCCU_UXD_IMP_CK5
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
 #include "pm_matrixInv@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure setMatInvCCU_UXD_IMP_CK4
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
 #include "pm_matrixInv@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure setMatInvCCU_UXD_IMP_CK3
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
 #include "pm_matrixInv@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure setMatInvCCU_UXD_IMP_CK2
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
 #define DISPATCH_ENABLED 1
 #include "pm_matrixInv@routines.inc.F90"
 #undef  DISPATCH_ENABLED
@@ -1860,7 +1860,7 @@ contains
 
 #if CK1_ENABLED
     module procedure setMatInvCCU_UXD_IMP_CK1
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
 #define DISPATCH_ENABLED 1
 #include "pm_matrixInv@routines.inc.F90"
 #undef  DISPATCH_ENABLED
@@ -1875,28 +1875,28 @@ contains
 
 #if RK5_ENABLED
     module procedure setMatInvCCU_UXD_IMP_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_matrixInv@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setMatInvCCU_UXD_IMP_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_matrixInv@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setMatInvCCU_UXD_IMP_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_matrixInv@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setMatInvCCU_UXD_IMP_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #define DISPATCH_ENABLED 1
 #include "pm_matrixInv@routines.inc.F90"
 #undef  DISPATCH_ENABLED
@@ -1905,7 +1905,7 @@ contains
 
 #if RK1_ENABLED
     module procedure setMatInvCCU_UXD_IMP_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #define DISPATCH_ENABLED 1
 #include "pm_matrixInv@routines.inc.F90"
 #undef  DISPATCH_ENABLED
@@ -1930,28 +1930,28 @@ contains
 
 #if CK5_ENABLED
     module procedure setMatInvCCL_UXD_IMP_CK5
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
 #include "pm_matrixInv@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure setMatInvCCL_UXD_IMP_CK4
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
 #include "pm_matrixInv@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure setMatInvCCL_UXD_IMP_CK3
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
 #include "pm_matrixInv@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure setMatInvCCL_UXD_IMP_CK2
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
 #define DISPATCH_ENABLED 1
 #include "pm_matrixInv@routines.inc.F90"
 #undef  DISPATCH_ENABLED
@@ -1960,7 +1960,7 @@ contains
 
 #if CK1_ENABLED
     module procedure setMatInvCCL_UXD_IMP_CK1
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
 #define DISPATCH_ENABLED 1
 #include "pm_matrixInv@routines.inc.F90"
 #undef  DISPATCH_ENABLED
@@ -1975,28 +1975,28 @@ contains
 
 #if RK5_ENABLED
     module procedure setMatInvCCL_UXD_IMP_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_matrixInv@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setMatInvCCL_UXD_IMP_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_matrixInv@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setMatInvCCL_UXD_IMP_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_matrixInv@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setMatInvCCL_UXD_IMP_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #define DISPATCH_ENABLED 1
 #include "pm_matrixInv@routines.inc.F90"
 #undef  DISPATCH_ENABLED
@@ -2005,7 +2005,7 @@ contains
 
 #if RK1_ENABLED
     module procedure setMatInvCCL_UXD_IMP_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #define DISPATCH_ENABLED 1
 #include "pm_matrixInv@routines.inc.F90"
 #undef  DISPATCH_ENABLED
@@ -2064,28 +2064,28 @@ contains
 
 #if CK5_ENABLED
     module procedure setMatInvCCU_XLD_IMP_CK5
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
 #include "pm_matrixInv@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure setMatInvCCU_XLD_IMP_CK4
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
 #include "pm_matrixInv@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure setMatInvCCU_XLD_IMP_CK3
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
 #include "pm_matrixInv@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure setMatInvCCU_XLD_IMP_CK2
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
 #define DISPATCH_ENABLED 1
 #include "pm_matrixInv@routines.inc.F90"
 #undef  DISPATCH_ENABLED
@@ -2094,7 +2094,7 @@ contains
 
 #if CK1_ENABLED
     module procedure setMatInvCCU_XLD_IMP_CK1
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
 #define DISPATCH_ENABLED 1
 #include "pm_matrixInv@routines.inc.F90"
 #undef  DISPATCH_ENABLED
@@ -2109,28 +2109,28 @@ contains
 
 #if RK5_ENABLED
     module procedure setMatInvCCU_XLD_IMP_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_matrixInv@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setMatInvCCU_XLD_IMP_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_matrixInv@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setMatInvCCU_XLD_IMP_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_matrixInv@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setMatInvCCU_XLD_IMP_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #define DISPATCH_ENABLED 1
 #include "pm_matrixInv@routines.inc.F90"
 #undef  DISPATCH_ENABLED
@@ -2139,7 +2139,7 @@ contains
 
 #if RK1_ENABLED
     module procedure setMatInvCCU_XLD_IMP_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #define DISPATCH_ENABLED 1
 #include "pm_matrixInv@routines.inc.F90"
 #undef  DISPATCH_ENABLED
@@ -2164,28 +2164,28 @@ contains
 
 #if CK5_ENABLED
     module procedure setMatInvCCL_XLD_IMP_CK5
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
 #include "pm_matrixInv@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure setMatInvCCL_XLD_IMP_CK4
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
 #include "pm_matrixInv@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure setMatInvCCL_XLD_IMP_CK3
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
 #include "pm_matrixInv@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure setMatInvCCL_XLD_IMP_CK2
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
 #define DISPATCH_ENABLED 1
 #include "pm_matrixInv@routines.inc.F90"
 #undef  DISPATCH_ENABLED
@@ -2194,7 +2194,7 @@ contains
 
 #if CK1_ENABLED
     module procedure setMatInvCCL_XLD_IMP_CK1
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
 #define DISPATCH_ENABLED 1
 #include "pm_matrixInv@routines.inc.F90"
 #undef  DISPATCH_ENABLED
@@ -2209,28 +2209,28 @@ contains
 
 #if RK5_ENABLED
     module procedure setMatInvCCL_XLD_IMP_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_matrixInv@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setMatInvCCL_XLD_IMP_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_matrixInv@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setMatInvCCL_XLD_IMP_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_matrixInv@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setMatInvCCL_XLD_IMP_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #define DISPATCH_ENABLED 1
 #include "pm_matrixInv@routines.inc.F90"
 #undef  DISPATCH_ENABLED
@@ -2239,7 +2239,7 @@ contains
 
 #if RK1_ENABLED
     module procedure setMatInvCCL_XLD_IMP_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #define DISPATCH_ENABLED 1
 #include "pm_matrixInv@routines.inc.F90"
 #undef  DISPATCH_ENABLED

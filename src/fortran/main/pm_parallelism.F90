@@ -235,13 +235,13 @@ module pm_parallelism
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setForkJoinScaling_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         integer(IK)         , intent(out)                   :: scalingMaxLoc
         integer(IK)         , intent(in)    , optional      :: scalingMinLen
         integer(IK)         , intent(out)   , allocatable   :: numproc(:)
-        real(RKC)           , intent(out)   , allocatable   :: scaling(:)
-        real(RKC)           , intent(in)                    :: conProb, seqSecTime, parSecTime, comSecTime
-        real(RKC)           , intent(out)                   :: scalingMaxVal
+        real(RKG)           , intent(out)   , allocatable   :: scaling(:)
+        real(RKG)           , intent(in)                    :: conProb, seqSecTime, parSecTime, comSecTime
+        real(RKG)           , intent(out)                   :: scalingMaxVal
     end subroutine
 #endif
 
@@ -250,13 +250,13 @@ module pm_parallelism
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setForkJoinScaling_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         integer(IK)         , intent(out)                   :: scalingMaxLoc
         integer(IK)         , intent(in)    , optional      :: scalingMinLen
         integer(IK)         , intent(out)   , allocatable   :: numproc(:)
-        real(RKC)           , intent(out)   , allocatable   :: scaling(:)
-        real(RKC)           , intent(in)                    :: conProb, seqSecTime, parSecTime, comSecTime
-        real(RKC)           , intent(out)                   :: scalingMaxVal
+        real(RKG)           , intent(out)   , allocatable   :: scaling(:)
+        real(RKG)           , intent(in)                    :: conProb, seqSecTime, parSecTime, comSecTime
+        real(RKG)           , intent(out)                   :: scalingMaxVal
     end subroutine
 #endif
 
@@ -265,13 +265,13 @@ module pm_parallelism
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setForkJoinScaling_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         integer(IK)         , intent(out)                   :: scalingMaxLoc
         integer(IK)         , intent(in)    , optional      :: scalingMinLen
         integer(IK)         , intent(out)   , allocatable   :: numproc(:)
-        real(RKC)           , intent(out)   , allocatable   :: scaling(:)
-        real(RKC)           , intent(in)                    :: conProb, seqSecTime, parSecTime, comSecTime
-        real(RKC)           , intent(out)                   :: scalingMaxVal
+        real(RKG)           , intent(out)   , allocatable   :: scaling(:)
+        real(RKG)           , intent(in)                    :: conProb, seqSecTime, parSecTime, comSecTime
+        real(RKG)           , intent(out)                   :: scalingMaxVal
     end subroutine
 #endif
 
@@ -280,13 +280,13 @@ module pm_parallelism
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setForkJoinScaling_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         integer(IK)         , intent(out)                   :: scalingMaxLoc
         integer(IK)         , intent(in)    , optional      :: scalingMinLen
         integer(IK)         , intent(out)   , allocatable   :: numproc(:)
-        real(RKC)           , intent(out)   , allocatable   :: scaling(:)
-        real(RKC)           , intent(in)                    :: conProb, seqSecTime, parSecTime, comSecTime
-        real(RKC)           , intent(out)                   :: scalingMaxVal
+        real(RKG)           , intent(out)   , allocatable   :: scaling(:)
+        real(RKG)           , intent(in)                    :: conProb, seqSecTime, parSecTime, comSecTime
+        real(RKG)           , intent(out)                   :: scalingMaxVal
     end subroutine
 #endif
 
@@ -295,13 +295,13 @@ module pm_parallelism
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setForkJoinScaling_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         integer(IK)         , intent(out)                   :: scalingMaxLoc
         integer(IK)         , intent(in)    , optional      :: scalingMinLen
         integer(IK)         , intent(out)   , allocatable   :: numproc(:)
-        real(RKC)           , intent(out)   , allocatable   :: scaling(:)
-        real(RKC)           , intent(in)                    :: conProb, seqSecTime, parSecTime, comSecTime
-        real(RKC)           , intent(out)                   :: scalingMaxVal
+        real(RKG)           , intent(out)   , allocatable   :: scaling(:)
+        real(RKG)           , intent(in)                    :: conProb, seqSecTime, parSecTime, comSecTime
+        real(RKG)           , intent(out)                   :: scalingMaxVal
     end subroutine
 #endif
 

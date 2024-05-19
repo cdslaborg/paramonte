@@ -27,12 +27,12 @@
         ! Set the type and kind.
 #if     CK_ENABLED
 #define GET_CONJG(X) conjg(X)
-        complex(TKC), parameter :: ZERO = (0._TKC, 0._TKC), ONE = (1._TKC, 0._TKC)
-#define TYPE_KIND complex(TKC)
+        complex(TKG), parameter :: ZERO = (0._TKG, 0._TKG), ONE = (1._TKG, 0._TKG)
+#define TYPE_KIND complex(TKG)
 #elif   RK_ENABLED
 #define GET_CONJG(X) X
-        real(TKC), parameter :: ZERO = 0._TKC, ONE = 1._TKC
-#define TYPE_KIND real(TKC)
+        real(TKG), parameter :: ZERO = 0._TKG, ONE = 1._TKG
+#define TYPE_KIND real(TKG)
 #else
 #error  "Unrecognized interface."
 #endif
@@ -158,7 +158,7 @@ CHECK_ASSERTION(__LINE__, all(shape(inv, IK) == shape(mat, IK)), SK_"@setMatInv(
         CHECK_SHAPE_MAT
         CHECK_SHAPE_INV
         if (1_IK < ndim) then
-            CHECK_ASSERTION(__LINE__, all(real(getMatCopy(lfpack, mat, rdpack, dia), TKC) /= 0._TKC), \
+            CHECK_ASSERTION(__LINE__, all(real(getMatCopy(lfpack, mat, rdpack, dia), TKG) /= 0._TKG), \
             SK_"@setMatInv(): The The diagonal elements of the Cholesky factorization must be non-zero. getMatCopy(lfpack, mat, rdpack, dia) = "//getStr(getMatCopy(lfpack, mat, rdpack, dia)))
             do irow = 1_IK, ndim - 1_IK
                 inv(irow, irow) = ONE / mat(irow, irow)

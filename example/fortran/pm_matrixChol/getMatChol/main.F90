@@ -1,7 +1,7 @@
 program example
 
     use pm_kind, only: SK, IK, LK
-    use pm_kind, only: TKC => RKS ! all processor type kinds are supported.
+    use pm_kind, only: TKG => RKS ! all processor type kinds are supported.
     use pm_matrixChol, only: getMatChol, lowDia, uppDia
     use pm_io, only: display_type
     use pm_io, only: getFormat
@@ -11,8 +11,8 @@ program example
     type(display_type) :: disp
 
     character(:, SK), allocatable   :: cform, gform
-    real(TKC)       , parameter     :: DUM = -huge(0._TKC)
-    complex(TKC)    , parameter     :: CMPLX_DUMM = cmplx(-huge(0._TKC), -huge(0._TKC), TKC)
+    real(TKG)       , parameter     :: DUM = -huge(0._TKG)
+    complex(TKG)    , parameter     :: CMPLX_DUMM = cmplx(-huge(0._TKG), -huge(0._TKG), TKG)
     cform = getFormat([CMPLX_DUMM], ed = SK_'f', signed = .true.)
     gform = getFormat([DUM], ed = SK_'f', signed = .true.)
 
@@ -25,9 +25,9 @@ program example
     call disp%skip
 
     block
-        real(TKC), allocatable :: cholref(:,:), cholmat(:,:)
+        real(TKG), allocatable :: cholref(:,:), cholmat(:,:)
 
-        cholmat = reshape([real(TKC)   :: 1.0, DUM, DUM, DUM, DUM, DUM, DUM, DUM, DUM &
+        cholmat = reshape([real(TKG)   :: 1.0, DUM, DUM, DUM, DUM, DUM, DUM, DUM, DUM &
                                         , 1.0, 2.0, DUM, DUM, DUM, DUM, DUM, DUM, DUM &
                                         , 1.0, 2.0, 3.0, DUM, DUM, DUM, DUM, DUM, DUM &
                                         , 1.0, 2.0, 3.0, 4.0, DUM, DUM, DUM, DUM, DUM &
@@ -37,7 +37,7 @@ program example
                                         , 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, DUM &
                                         , 1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0 &
                                         ], shape = [9, 9], order = [2, 1])
-        cholref = reshape([real(TKC)       :: 1.0, DUM, DUM, DUM, DUM, DUM, DUM, DUM, DUM &
+        cholref = reshape([real(TKG)       :: 1.0, DUM, DUM, DUM, DUM, DUM, DUM, DUM, DUM &
                                             , 1.0, 1.0, DUM, DUM, DUM, DUM, DUM, DUM, DUM &
                                             , 1.0, 1.0, 1.0, DUM, DUM, DUM, DUM, DUM, DUM &
                                             , 1.0, 1.0, 1.0, 1.0, DUM, DUM, DUM, DUM, DUM &
@@ -59,7 +59,7 @@ program example
         call disp%skip()
 
 
-        cholmat = reshape([real(TKC)   :: DUM, DUM, DUM, DUM, DUM, DUM, DUM, DUM, DUM, DUM &
+        cholmat = reshape([real(TKG)   :: DUM, DUM, DUM, DUM, DUM, DUM, DUM, DUM, DUM, DUM &
                                         , DUM, DUM, DUM, DUM, DUM, DUM, DUM, DUM, DUM, DUM &
                                         , DUM, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0 &
                                         , DUM, DUM, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0 &
@@ -71,7 +71,7 @@ program example
                                         , DUM, DUM, DUM, DUM, DUM, DUM, DUM, DUM, 8.0, 8.0 &
                                         , DUM, DUM, DUM, DUM, DUM, DUM, DUM, DUM, DUM, 9.0 &
                                         ], shape = [11, 10], order = [2, 1])
-        cholref = reshape([real(TKC)       :: DUM, DUM, DUM, DUM, DUM, DUM, DUM, DUM, DUM, DUM &
+        cholref = reshape([real(TKG)       :: DUM, DUM, DUM, DUM, DUM, DUM, DUM, DUM, DUM, DUM &
                                             , DUM, DUM, DUM, DUM, DUM, DUM, DUM, DUM, DUM, DUM &
                                             , DUM, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0 &
                                             , DUM, DUM, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0 &
@@ -104,14 +104,14 @@ program example
 
     block
 
-        complex(TKC), allocatable :: cholref(:,:), cholmat(:,:)
+        complex(TKG), allocatable :: cholref(:,:), cholmat(:,:)
 
-        cholmat = reshape( [complex(TKC)   :: CMPLX_DUMM, CMPLX_DUMM,   CMPLX_DUMM,  CMPLX_DUMM,  CMPLX_DUMM &
+        cholmat = reshape( [complex(TKG)   :: CMPLX_DUMM, CMPLX_DUMM,   CMPLX_DUMM,  CMPLX_DUMM,  CMPLX_DUMM &
                                             , CMPLX_DUMM, CMPLX_DUMM, (25.0,  DUM),  CMPLX_DUMM,  CMPLX_DUMM &
                                             , CMPLX_DUMM, CMPLX_DUMM, (-5.0,  5.0), (51.0, DUM),  CMPLX_DUMM &
                                             , CMPLX_DUMM, CMPLX_DUMM, (10.0, -5.0), ( 4.0, 6.0), (71.0, DUM) &
                                             ], shape = [4, 5], order = [2, 1])
-        cholref = reshape( [complex(TKC)       :: CMPLX_DUMM, CMPLX_DUMM,   CMPLX_DUMM, CMPLX_DUMM,  CMPLX_DUMM &
+        cholref = reshape( [complex(TKG)       :: CMPLX_DUMM, CMPLX_DUMM,   CMPLX_DUMM, CMPLX_DUMM,  CMPLX_DUMM &
                                                 , CMPLX_DUMM, CMPLX_DUMM, ( 5.0,  0.0), CMPLX_DUMM,  CMPLX_DUMM &
                                                 , CMPLX_DUMM, CMPLX_DUMM, (-1.0,  1.0), (7.0, 0.0),  CMPLX_DUMM &
                                                 , CMPLX_DUMM, CMPLX_DUMM, ( 2.0, -1.0), (1.0, 1.0),  (8.0, 0.0) &
@@ -127,12 +127,12 @@ program example
         call disp%show( cholref , format = cform )
         call disp%skip()
 
-        cholmat = reshape( [complex(TKC)   :: CMPLX_DUMM, CMPLX_DUMM,   CMPLX_DUMM, CMPLX_DUMM &
+        cholmat = reshape( [complex(TKG)   :: CMPLX_DUMM, CMPLX_DUMM,   CMPLX_DUMM, CMPLX_DUMM &
                                             , (9.0, DUM),  ( 3.0,3.0), ( 3.0,-3.0), CMPLX_DUMM &
                                             , CMPLX_DUMM,  (18.0,DUM), ( 8.0,-6.0), CMPLX_DUMM &
                                             , CMPLX_DUMM,  CMPLX_DUMM, (43.0, DUM), CMPLX_DUMM &
                                             ], shape = [4, 4], order = [2, 1])
-        cholref = reshape( [complex(TKC)   :: CMPLX_DUMM, CMPLX_DUMM,  CMPLX_DUMM, CMPLX_DUMM &
+        cholref = reshape( [complex(TKG)   :: CMPLX_DUMM, CMPLX_DUMM,  CMPLX_DUMM, CMPLX_DUMM &
                                             , (3.0, 0.0), (1.0, 1.0), (1.0, -1.0), CMPLX_DUMM &
                                             , CMPLX_DUMM, (4.0, 0.0), (2.0, -1.0), CMPLX_DUMM &
                                             , CMPLX_DUMM, CMPLX_DUMM, (6.0,  0.0), CMPLX_DUMM &

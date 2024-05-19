@@ -58,35 +58,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getNegExpLogPDFXMI_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_distNegExp@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getNegExpLogPDFXMI_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_distNegExp@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getNegExpLogPDFXMI_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_distNegExp@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getNegExpLogPDFXMI_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_distNegExp@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getNegExpLogPDFXMI_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_distNegExp@routines.inc.F90"
     end procedure
 #endif
@@ -119,35 +119,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setNegExpLogPDFDDD_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_distNegExp@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setNegExpLogPDFDDD_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_distNegExp@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setNegExpLogPDFDDD_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_distNegExp@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setNegExpLogPDFDDD_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_distNegExp@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setNegExpLogPDFDDD_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_distNegExp@routines.inc.F90"
     end procedure
 #endif
@@ -170,35 +170,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setNegExpLogPDFXMDD_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_distNegExp@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setNegExpLogPDFXMDD_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_distNegExp@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setNegExpLogPDFXMDD_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_distNegExp@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setNegExpLogPDFXMDD_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_distNegExp@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setNegExpLogPDFXMDD_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_distNegExp@routines.inc.F90"
     end procedure
 #endif
@@ -221,35 +221,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setNegExpLogPDFDIL_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_distNegExp@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setNegExpLogPDFDIL_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_distNegExp@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setNegExpLogPDFDIL_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_distNegExp@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setNegExpLogPDFDIL_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_distNegExp@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setNegExpLogPDFDIL_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_distNegExp@routines.inc.F90"
     end procedure
 #endif
@@ -272,35 +272,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setNegExpLogPDFMIL_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_distNegExp@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setNegExpLogPDFMIL_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_distNegExp@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setNegExpLogPDFMIL_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_distNegExp@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setNegExpLogPDFMIL_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_distNegExp@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setNegExpLogPDFMIL_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_distNegExp@routines.inc.F90"
     end procedure
 #endif
@@ -333,35 +333,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getNegExpCDFXMI_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_distNegExp@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getNegExpCDFXMI_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_distNegExp@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getNegExpCDFXMI_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_distNegExp@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getNegExpCDFXMI_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_distNegExp@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getNegExpCDFXMI_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_distNegExp@routines.inc.F90"
     end procedure
 #endif
@@ -394,35 +394,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setNegExpCDFXDD_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_distNegExp@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setNegExpCDFXDD_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_distNegExp@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setNegExpCDFXDD_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_distNegExp@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setNegExpCDFXDD_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_distNegExp@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setNegExpCDFXDD_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_distNegExp@routines.inc.F90"
     end procedure
 #endif
@@ -445,35 +445,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setNegExpCDFXDI_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_distNegExp@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setNegExpCDFXDI_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_distNegExp@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setNegExpCDFXDI_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_distNegExp@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setNegExpCDFXDI_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_distNegExp@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setNegExpCDFXDI_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_distNegExp@routines.inc.F90"
     end procedure
 #endif
@@ -496,35 +496,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setNegExpCDFXMI_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_distNegExp@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setNegExpCDFXMI_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_distNegExp@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setNegExpCDFXMI_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_distNegExp@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setNegExpCDFXMI_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_distNegExp@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setNegExpCDFXMI_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_distNegExp@routines.inc.F90"
     end procedure
 #endif
@@ -557,35 +557,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getNegExpRandSM_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_distNegExp@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getNegExpRandSM_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_distNegExp@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getNegExpRandSM_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_distNegExp@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getNegExpRandSM_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_distNegExp@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getNegExpRandSM_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_distNegExp@routines.inc.F90"
     end procedure
 #endif
@@ -618,35 +618,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setNegExpRandUDD_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_distNegExp@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setNegExpRandUDD_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_distNegExp@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setNegExpRandUDD_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_distNegExp@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setNegExpRandUDD_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_distNegExp@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setNegExpRandUDD_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_distNegExp@routines.inc.F90"
     end procedure
 #endif
@@ -669,35 +669,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setNegExpRandUSD_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_distNegExp@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setNegExpRandUSD_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_distNegExp@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setNegExpRandUSD_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_distNegExp@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setNegExpRandUSD_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_distNegExp@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setNegExpRandUSD_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_distNegExp@routines.inc.F90"
     end procedure
 #endif
@@ -720,35 +720,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setNegExpRandUSM_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_distNegExp@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setNegExpRandUSM_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_distNegExp@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setNegExpRandUSM_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_distNegExp@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setNegExpRandUSM_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_distNegExp@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setNegExpRandUSM_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_distNegExp@routines.inc.F90"
     end procedure
 #endif

@@ -12,17 +12,17 @@ program example
     disp = display_type(file = "main.out.F90")
 
     block
-        use pm_kind, only: RKC => RKH
-        real(RKC), allocatable :: zig(:,:)
+        use pm_kind, only: RKG => RKH
+        real(RKG), allocatable :: zig(:,:)
         integer(IK) :: nlayer
-        real(RKC) :: abserr
+        real(RKG) :: abserr
         call disp%skip()
         call disp%show("nlayer = 256")
                         nlayer = 256
         call disp%show("call setRebound(zig, [1_IK, 0_IK], [2_IK, nlayer])")
                         call setRebound(zig, [1_IK, 0_IK], [2_IK, nlayer])
-        call disp%show("zig(:,:) = getZigNorm(nlayer, abserr, abstol = epsilon(0._RKC)) ! rectangle rightmost corners and the corresponding function values.")
-                        zig(:,:) = getZigNorm(nlayer, abserr, abstol = epsilon(0._RKC))
+        call disp%show("zig(:,:) = getZigNorm(nlayer, abserr, abstol = epsilon(0._RKG)) ! rectangle rightmost corners and the corresponding function values.")
+                        zig(:,:) = getZigNorm(nlayer, abserr, abstol = epsilon(0._RKG))
         call disp%show("[nlayer, shape(zig, IK)]")
         call disp%show( [nlayer, shape(zig, IK)] )
         call disp%show("abserr")
@@ -42,8 +42,8 @@ program example
 
     block
         use pm_io, only: getErrTableWrite, trans
-        use pm_kind, only: RKC => RKH
-        real(RKC) :: abserr
+        use pm_kind, only: RKG => RKH
+        real(RKG) :: abserr
         if (0 /= getErrTableWrite(SK_"getZigNorm.RK.txt", getZigNorm(64_IK, abserr), trans)) error stop "Failed to write the table to the file."
     end block
 

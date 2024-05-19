@@ -65,28 +65,28 @@ contains
 
 #if CK5_ENABLED
     module procedure setMatLUP_IMP_SQM_CK5
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
 #include "pm_matrixLUP@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure setMatLUP_IMP_SQM_CK4
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
 #include "pm_matrixLUP@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure setMatLUP_IMP_SQM_CK3
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
 #include "pm_matrixLUP@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure setMatLUP_IMP_SQM_CK2
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
 #define DISPATCH_ENABLED 1
 #include "pm_matrixLUP@routines.inc.F90"
 #undef  DISPATCH_ENABLED
@@ -95,7 +95,7 @@ contains
 
 #if CK1_ENABLED
     module procedure setMatLUP_IMP_SQM_CK1
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
 #define DISPATCH_ENABLED 1
 #include "pm_matrixLUP@routines.inc.F90"
 #undef  DISPATCH_ENABLED
@@ -110,28 +110,28 @@ contains
 
 #if RK5_ENABLED
     module procedure setMatLUP_IMP_SQM_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_matrixLUP@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setMatLUP_IMP_SQM_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_matrixLUP@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setMatLUP_IMP_SQM_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_matrixLUP@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setMatLUP_IMP_SQM_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #define DISPATCH_ENABLED 1
 #include "pm_matrixLUP@routines.inc.F90"
 #undef  DISPATCH_ENABLED
@@ -140,7 +140,7 @@ contains
 
 #if RK1_ENABLED
     module procedure setMatLUP_IMP_SQM_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #define DISPATCH_ENABLED 1
 #include "pm_matrixLUP@routines.inc.F90"
 #undef  DISPATCH_ENABLED
@@ -165,35 +165,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setMatLUP_IMP_ITE_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_matrixLUP@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setMatLUP_IMP_ITE_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_matrixLUP@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setMatLUP_IMP_ITE_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_matrixLUP@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setMatLUP_IMP_ITE_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_matrixLUP@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setMatLUP_IMP_ITE_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_matrixLUP@routines.inc.F90"
     end procedure
 #endif
@@ -216,35 +216,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setMatLUP_IMP_REC_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_matrixLUP@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setMatLUP_IMP_REC_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_matrixLUP@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setMatLUP_IMP_REC_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_matrixLUP@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setMatLUP_IMP_REC_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_matrixLUP@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setMatLUP_IMP_REC_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_matrixLUP@routines.inc.F90"
     end procedure
 #endif
@@ -279,35 +279,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setMatLUP_EXP_SQM_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_matrixLUP@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setMatLUP_EXP_SQM_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_matrixLUP@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setMatLUP_EXP_SQM_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_matrixLUP@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setMatLUP_EXP_SQM_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_matrixLUP@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setMatLUP_EXP_SQM_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_matrixLUP@routines.inc.F90"
     end procedure
 #endif
@@ -330,35 +330,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setMatLUP_EXP_ITE_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_matrixLUP@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setMatLUP_EXP_ITE_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_matrixLUP@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setMatLUP_EXP_ITE_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_matrixLUP@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setMatLUP_EXP_ITE_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_matrixLUP@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setMatLUP_EXP_ITE_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_matrixLUP@routines.inc.F90"
     end procedure
 #endif
@@ -381,35 +381,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setMatLUP_EXP_REC_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_matrixLUP@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setMatLUP_EXP_REC_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_matrixLUP@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setMatLUP_EXP_REC_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_matrixLUP@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setMatLUP_EXP_REC_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_matrixLUP@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setMatLUP_EXP_REC_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_matrixLUP@routines.inc.F90"
     end procedure
 #endif

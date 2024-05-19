@@ -304,11 +304,11 @@ module pm_strANSI
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: style_D0_SK5
 !#endif
-!        use pm_kind, only: IK, LK, SKC => SK5
-!        character(1,SKC)            , intent(in)    , optional      :: attr
-!        character(2,SKC)            , intent(in)    , optional      :: fg
-!        character(*,SKC)            , intent(in)    , optional      :: bg
-!        character(*,SKC)            , intent(in)    , optional      :: str
+!        use pm_kind, only: IK, LK, SKG => SK5
+!        character(1,SKG)            , intent(in)    , optional      :: attr
+!        character(2,SKG)            , intent(in)    , optional      :: fg
+!        character(*,SKG)            , intent(in)    , optional      :: bg
+!        character(*,SKG)            , intent(in)    , optional      :: str
 !    end function
 !#endif
 !
@@ -317,11 +317,11 @@ module pm_strANSI
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: style_D0_SK4
 !#endif
-!        use pm_kind, only: IK, LK, SKC => SK4
-!        character(1,SKC)            , intent(in)    , optional      :: attr
-!        character(2,SKC)            , intent(in)    , optional      :: fg
-!        character(*,SKC)            , intent(in)    , optional      :: bg
-!        character(*,SKC)            , intent(in)    , optional      :: str
+!        use pm_kind, only: IK, LK, SKG => SK4
+!        character(1,SKG)            , intent(in)    , optional      :: attr
+!        character(2,SKG)            , intent(in)    , optional      :: fg
+!        character(*,SKG)            , intent(in)    , optional      :: bg
+!        character(*,SKG)            , intent(in)    , optional      :: str
 !    end function
 !#endif
 !
@@ -330,11 +330,11 @@ module pm_strANSI
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: style_D0_SK3
 !#endif
-!        use pm_kind, only: IK, LK, SKC => SK3
-!        character(1,SKC)            , intent(in)    , optional      :: attr
-!        character(2,SKC)            , intent(in)    , optional      :: fg
-!        character(*,SKC)            , intent(in)    , optional      :: bg
-!        character(*,SKC)            , intent(in)    , optional      :: str
+!        use pm_kind, only: IK, LK, SKG => SK3
+!        character(1,SKG)            , intent(in)    , optional      :: attr
+!        character(2,SKG)            , intent(in)    , optional      :: fg
+!        character(*,SKG)            , intent(in)    , optional      :: bg
+!        character(*,SKG)            , intent(in)    , optional      :: str
 !    end function
 !#endif
 !
@@ -343,11 +343,11 @@ module pm_strANSI
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: style_D0_SK2
 !#endif
-!        use pm_kind, only: IK, LK, SKC => SK2
-!        character(1,SKC)            , intent(in)    , optional      :: attr
-!        character(2,SKC)            , intent(in)    , optional      :: fg
-!        character(*,SKC)            , intent(in)    , optional      :: bg
-!        character(*,SKC)            , intent(in)    , optional      :: str
+!        use pm_kind, only: IK, LK, SKG => SK2
+!        character(1,SKG)            , intent(in)    , optional      :: attr
+!        character(2,SKG)            , intent(in)    , optional      :: fg
+!        character(*,SKG)            , intent(in)    , optional      :: bg
+!        character(*,SKG)            , intent(in)    , optional      :: str
 !    end function
 !#endif
 !
@@ -356,11 +356,11 @@ module pm_strANSI
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: style_D0_SK1
 !#endif
-!        use pm_kind, only: IK, LK, SKC => SK1
-!        character(1,SKC)            , intent(in)    , optional      :: attr
-!        character(2,SKC)            , intent(in)    , optional      :: fg
-!        character(*,SKC)            , intent(in)    , optional      :: bg
-!        character(*,SKC)            , intent(in)    , optional      :: str
+!        use pm_kind, only: IK, LK, SKG => SK1
+!        character(1,SKG)            , intent(in)    , optional      :: attr
+!        character(2,SKG)            , intent(in)    , optional      :: fg
+!        character(*,SKG)            , intent(in)    , optional      :: bg
+!        character(*,SKG)            , intent(in)    , optional      :: str
 !    end function
 !#endif
 !

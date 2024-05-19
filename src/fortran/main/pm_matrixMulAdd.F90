@@ -499,11 +499,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemv_ASS_SFA_SFB_TNA_TNB_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)            , intent(in)    , optional      :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(:,:)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(:)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(:)
+        use pm_kind, only: IKG => IK5
+        integer(IKG)            , intent(in)    , optional      :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(:,:)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(:)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(:)
     end subroutine
 #endif
 
@@ -512,11 +512,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemv_ASS_SFA_SFB_TNA_TNB_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)            , intent(in)    , optional      :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(:,:)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(:)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(:)
+        use pm_kind, only: IKG => IK4
+        integer(IKG)            , intent(in)    , optional      :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(:,:)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(:)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(:)
     end subroutine
 #endif
 
@@ -525,11 +525,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemv_ASS_SFA_SFB_TNA_TNB_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)            , intent(in)    , optional      :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(:,:)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(:)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(:)
+        use pm_kind, only: IKG => IK3
+        integer(IKG)            , intent(in)    , optional      :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(:,:)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(:)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(:)
     end subroutine
 #endif
 
@@ -538,11 +538,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemv_ASS_SFA_SFB_TNA_TNB_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)            , intent(in)    , optional      :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(:,:)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(:)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(:)
+        use pm_kind, only: IKG => IK2
+        integer(IKG)            , intent(in)    , optional      :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(:,:)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(:)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(:)
     end subroutine
 #endif
 
@@ -551,11 +551,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemv_ASS_SFA_SFB_TNA_TNB_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)            , intent(in)    , optional      :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(:,:)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(:)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(:)
+        use pm_kind, only: IKG => IK1
+        integer(IKG)            , intent(in)    , optional      :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(:,:)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(:)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(:)
     end subroutine
 #endif
 
@@ -566,11 +566,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemv_ASS_SFA_SFB_TNA_TNB_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)            , intent(in)    , optional      :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(:,:)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(:)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG)            , intent(in)    , optional      :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(:,:)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(:)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(:)
     end subroutine
 #endif
 
@@ -579,11 +579,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemv_ASS_SFA_SFB_TNA_TNB_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)            , intent(in)    , optional      :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(:,:)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(:)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG)            , intent(in)    , optional      :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(:,:)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(:)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(:)
     end subroutine
 #endif
 
@@ -592,11 +592,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemv_ASS_SFA_SFB_TNA_TNB_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)            , intent(in)    , optional      :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(:,:)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(:)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG)            , intent(in)    , optional      :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(:,:)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(:)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(:)
     end subroutine
 #endif
 
@@ -605,11 +605,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemv_ASS_SFA_SFB_TNA_TNB_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)            , intent(in)    , optional      :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(:,:)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(:)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG)            , intent(in)    , optional      :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(:,:)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(:)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(:)
     end subroutine
 #endif
 
@@ -618,11 +618,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemv_ASS_SFA_SFB_TNA_TNB_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)            , intent(in)    , optional      :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(:,:)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(:)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG)            , intent(in)    , optional      :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(:,:)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(:)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(:)
     end subroutine
 #endif
 
@@ -633,11 +633,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemv_ASS_SFA_SFB_TNA_TNB_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)               , intent(in)    , optional      :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(:,:)
-        real(RKC)               , intent(in)    , contiguous    :: matB(:)
-        real(RKC)               , intent(inout) , contiguous    :: matC(:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)               , intent(in)    , optional      :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(:,:)
+        real(RKG)               , intent(in)    , contiguous    :: matB(:)
+        real(RKG)               , intent(inout) , contiguous    :: matC(:)
     end subroutine
 #endif
 
@@ -646,11 +646,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemv_ASS_SFA_SFB_TNA_TNB_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)               , intent(in)    , optional      :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(:,:)
-        real(RKC)               , intent(in)    , contiguous    :: matB(:)
-        real(RKC)               , intent(inout) , contiguous    :: matC(:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)               , intent(in)    , optional      :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(:,:)
+        real(RKG)               , intent(in)    , contiguous    :: matB(:)
+        real(RKG)               , intent(inout) , contiguous    :: matC(:)
     end subroutine
 #endif
 
@@ -659,11 +659,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemv_ASS_SFA_SFB_TNA_TNB_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)               , intent(in)    , optional      :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(:,:)
-        real(RKC)               , intent(in)    , contiguous    :: matB(:)
-        real(RKC)               , intent(inout) , contiguous    :: matC(:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)               , intent(in)    , optional      :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(:,:)
+        real(RKG)               , intent(in)    , contiguous    :: matB(:)
+        real(RKG)               , intent(inout) , contiguous    :: matC(:)
     end subroutine
 #endif
 
@@ -672,11 +672,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemv_ASS_SFA_SFB_TNA_TNB_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)               , intent(in)    , optional      :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(:,:)
-        real(RKC)               , intent(in)    , contiguous    :: matB(:)
-        real(RKC)               , intent(inout) , contiguous    :: matC(:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)               , intent(in)    , optional      :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(:,:)
+        real(RKG)               , intent(in)    , contiguous    :: matB(:)
+        real(RKG)               , intent(inout) , contiguous    :: matC(:)
     end subroutine
 #endif
 
@@ -685,11 +685,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemv_ASS_SFA_SFB_TNA_TNB_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)               , intent(in)    , optional      :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(:,:)
-        real(RKC)               , intent(in)    , contiguous    :: matB(:)
-        real(RKC)               , intent(inout) , contiguous    :: matC(:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)               , intent(in)    , optional      :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(:,:)
+        real(RKG)               , intent(in)    , contiguous    :: matB(:)
+        real(RKG)               , intent(inout) , contiguous    :: matC(:)
     end subroutine
 #endif
 
@@ -706,11 +706,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemv_ASS_SFA_SFB_TSA_TNB_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)            , intent(in)    , optional      :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(:,:)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(:)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(:)
+        use pm_kind, only: IKG => IK5
+        integer(IKG)            , intent(in)    , optional      :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(:,:)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(:)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(:)
         type(transSymm_type)    , intent(in)                    :: operationA
     end subroutine
 #endif
@@ -720,11 +720,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemv_ASS_SFA_SFB_TSA_TNB_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)            , intent(in)    , optional      :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(:,:)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(:)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(:)
+        use pm_kind, only: IKG => IK4
+        integer(IKG)            , intent(in)    , optional      :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(:,:)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(:)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(:)
         type(transSymm_type)    , intent(in)                    :: operationA
     end subroutine
 #endif
@@ -734,11 +734,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemv_ASS_SFA_SFB_TSA_TNB_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)            , intent(in)    , optional      :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(:,:)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(:)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(:)
+        use pm_kind, only: IKG => IK3
+        integer(IKG)            , intent(in)    , optional      :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(:,:)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(:)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(:)
         type(transSymm_type)    , intent(in)                    :: operationA
     end subroutine
 #endif
@@ -748,11 +748,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemv_ASS_SFA_SFB_TSA_TNB_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)            , intent(in)    , optional      :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(:,:)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(:)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(:)
+        use pm_kind, only: IKG => IK2
+        integer(IKG)            , intent(in)    , optional      :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(:,:)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(:)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(:)
         type(transSymm_type)    , intent(in)                    :: operationA
     end subroutine
 #endif
@@ -762,11 +762,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemv_ASS_SFA_SFB_TSA_TNB_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)            , intent(in)    , optional      :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(:,:)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(:)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(:)
+        use pm_kind, only: IKG => IK1
+        integer(IKG)            , intent(in)    , optional      :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(:,:)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(:)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(:)
         type(transSymm_type)    , intent(in)                    :: operationA
     end subroutine
 #endif
@@ -778,11 +778,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemv_ASS_SFA_SFB_TSA_TNB_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)            , intent(in)    , optional      :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(:,:)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(:)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG)            , intent(in)    , optional      :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(:,:)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(:)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(:)
         type(transSymm_type)    , intent(in)                    :: operationA
     end subroutine
 #endif
@@ -792,11 +792,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemv_ASS_SFA_SFB_TSA_TNB_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)            , intent(in)    , optional      :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(:,:)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(:)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG)            , intent(in)    , optional      :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(:,:)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(:)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(:)
         type(transSymm_type)    , intent(in)                    :: operationA
     end subroutine
 #endif
@@ -806,11 +806,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemv_ASS_SFA_SFB_TSA_TNB_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)            , intent(in)    , optional      :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(:,:)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(:)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG)            , intent(in)    , optional      :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(:,:)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(:)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(:)
         type(transSymm_type)    , intent(in)                    :: operationA
     end subroutine
 #endif
@@ -820,11 +820,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemv_ASS_SFA_SFB_TSA_TNB_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)            , intent(in)    , optional      :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(:,:)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(:)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG)            , intent(in)    , optional      :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(:,:)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(:)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(:)
         type(transSymm_type)    , intent(in)                    :: operationA
     end subroutine
 #endif
@@ -834,11 +834,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemv_ASS_SFA_SFB_TSA_TNB_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)            , intent(in)    , optional      :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(:,:)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(:)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG)            , intent(in)    , optional      :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(:,:)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(:)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(:)
         type(transSymm_type)    , intent(in)                    :: operationA
     end subroutine
 #endif
@@ -850,11 +850,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemv_ASS_SFA_SFB_TSA_TNB_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)               , intent(in)    , optional      :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(:,:)
-        real(RKC)               , intent(in)    , contiguous    :: matB(:)
-        real(RKC)               , intent(inout) , contiguous    :: matC(:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)               , intent(in)    , optional      :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(:,:)
+        real(RKG)               , intent(in)    , contiguous    :: matB(:)
+        real(RKG)               , intent(inout) , contiguous    :: matC(:)
         type(transSymm_type)    , intent(in)                    :: operationA
     end subroutine
 #endif
@@ -864,11 +864,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemv_ASS_SFA_SFB_TSA_TNB_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)               , intent(in)    , optional      :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(:,:)
-        real(RKC)               , intent(in)    , contiguous    :: matB(:)
-        real(RKC)               , intent(inout) , contiguous    :: matC(:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)               , intent(in)    , optional      :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(:,:)
+        real(RKG)               , intent(in)    , contiguous    :: matB(:)
+        real(RKG)               , intent(inout) , contiguous    :: matC(:)
         type(transSymm_type)    , intent(in)                    :: operationA
     end subroutine
 #endif
@@ -878,11 +878,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemv_ASS_SFA_SFB_TSA_TNB_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)               , intent(in)    , optional      :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(:,:)
-        real(RKC)               , intent(in)    , contiguous    :: matB(:)
-        real(RKC)               , intent(inout) , contiguous    :: matC(:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)               , intent(in)    , optional      :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(:,:)
+        real(RKG)               , intent(in)    , contiguous    :: matB(:)
+        real(RKG)               , intent(inout) , contiguous    :: matC(:)
         type(transSymm_type)    , intent(in)                    :: operationA
     end subroutine
 #endif
@@ -892,11 +892,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemv_ASS_SFA_SFB_TSA_TNB_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)               , intent(in)    , optional      :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(:,:)
-        real(RKC)               , intent(in)    , contiguous    :: matB(:)
-        real(RKC)               , intent(inout) , contiguous    :: matC(:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)               , intent(in)    , optional      :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(:,:)
+        real(RKG)               , intent(in)    , contiguous    :: matB(:)
+        real(RKG)               , intent(inout) , contiguous    :: matC(:)
         type(transSymm_type)    , intent(in)                    :: operationA
     end subroutine
 #endif
@@ -906,11 +906,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemv_ASS_SFA_SFB_TSA_TNB_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)               , intent(in)    , optional      :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(:,:)
-        real(RKC)               , intent(in)    , contiguous    :: matB(:)
-        real(RKC)               , intent(inout) , contiguous    :: matC(:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)               , intent(in)    , optional      :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(:,:)
+        real(RKG)               , intent(in)    , contiguous    :: matB(:)
+        real(RKG)               , intent(inout) , contiguous    :: matC(:)
         type(transSymm_type)    , intent(in)                    :: operationA
     end subroutine
 #endif
@@ -928,11 +928,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemv_ASS_SFA_SFB_THA_TNB_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)            , intent(in)    , optional      :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(:,:)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(:)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(:)
+        use pm_kind, only: IKG => IK5
+        integer(IKG)            , intent(in)    , optional      :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(:,:)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(:)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(:)
         type(transHerm_type)    , intent(in)                    :: operationA
     end subroutine
 #endif
@@ -942,11 +942,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemv_ASS_SFA_SFB_THA_TNB_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)            , intent(in)    , optional      :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(:,:)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(:)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(:)
+        use pm_kind, only: IKG => IK4
+        integer(IKG)            , intent(in)    , optional      :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(:,:)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(:)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(:)
         type(transHerm_type)    , intent(in)                    :: operationA
     end subroutine
 #endif
@@ -956,11 +956,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemv_ASS_SFA_SFB_THA_TNB_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)            , intent(in)    , optional      :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(:,:)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(:)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(:)
+        use pm_kind, only: IKG => IK3
+        integer(IKG)            , intent(in)    , optional      :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(:,:)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(:)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(:)
         type(transHerm_type)    , intent(in)                    :: operationA
     end subroutine
 #endif
@@ -970,11 +970,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemv_ASS_SFA_SFB_THA_TNB_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)            , intent(in)    , optional      :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(:,:)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(:)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(:)
+        use pm_kind, only: IKG => IK2
+        integer(IKG)            , intent(in)    , optional      :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(:,:)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(:)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(:)
         type(transHerm_type)    , intent(in)                    :: operationA
     end subroutine
 #endif
@@ -984,11 +984,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemv_ASS_SFA_SFB_THA_TNB_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)            , intent(in)    , optional      :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(:,:)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(:)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(:)
+        use pm_kind, only: IKG => IK1
+        integer(IKG)            , intent(in)    , optional      :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(:,:)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(:)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(:)
         type(transHerm_type)    , intent(in)                    :: operationA
     end subroutine
 #endif
@@ -1000,11 +1000,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemv_ASS_SFA_SFB_THA_TNB_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)            , intent(in)    , optional      :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(:,:)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(:)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG)            , intent(in)    , optional      :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(:,:)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(:)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(:)
         type(transHerm_type)    , intent(in)                    :: operationA
     end subroutine
 #endif
@@ -1014,11 +1014,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemv_ASS_SFA_SFB_THA_TNB_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)            , intent(in)    , optional      :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(:,:)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(:)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG)            , intent(in)    , optional      :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(:,:)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(:)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(:)
         type(transHerm_type)    , intent(in)                    :: operationA
     end subroutine
 #endif
@@ -1028,11 +1028,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemv_ASS_SFA_SFB_THA_TNB_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)            , intent(in)    , optional      :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(:,:)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(:)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG)            , intent(in)    , optional      :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(:,:)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(:)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(:)
         type(transHerm_type)    , intent(in)                    :: operationA
     end subroutine
 #endif
@@ -1042,11 +1042,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemv_ASS_SFA_SFB_THA_TNB_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)            , intent(in)    , optional      :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(:,:)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(:)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG)            , intent(in)    , optional      :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(:,:)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(:)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(:)
         type(transHerm_type)    , intent(in)                    :: operationA
     end subroutine
 #endif
@@ -1056,11 +1056,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemv_ASS_SFA_SFB_THA_TNB_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)            , intent(in)    , optional      :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(:,:)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(:)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG)            , intent(in)    , optional      :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(:,:)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(:)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(:)
         type(transHerm_type)    , intent(in)                    :: operationA
     end subroutine
 #endif
@@ -1072,11 +1072,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemv_ASS_SFA_SFB_THA_TNB_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)               , intent(in)    , optional      :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(:,:)
-        real(RKC)               , intent(in)    , contiguous    :: matB(:)
-        real(RKC)               , intent(inout) , contiguous    :: matC(:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)               , intent(in)    , optional      :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(:,:)
+        real(RKG)               , intent(in)    , contiguous    :: matB(:)
+        real(RKG)               , intent(inout) , contiguous    :: matC(:)
         type(transHerm_type)    , intent(in)                    :: operationA
     end subroutine
 #endif
@@ -1086,11 +1086,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemv_ASS_SFA_SFB_THA_TNB_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)               , intent(in)    , optional      :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(:,:)
-        real(RKC)               , intent(in)    , contiguous    :: matB(:)
-        real(RKC)               , intent(inout) , contiguous    :: matC(:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)               , intent(in)    , optional      :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(:,:)
+        real(RKG)               , intent(in)    , contiguous    :: matB(:)
+        real(RKG)               , intent(inout) , contiguous    :: matC(:)
         type(transHerm_type)    , intent(in)                    :: operationA
     end subroutine
 #endif
@@ -1100,11 +1100,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemv_ASS_SFA_SFB_THA_TNB_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)               , intent(in)    , optional      :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(:,:)
-        real(RKC)               , intent(in)    , contiguous    :: matB(:)
-        real(RKC)               , intent(inout) , contiguous    :: matC(:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)               , intent(in)    , optional      :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(:,:)
+        real(RKG)               , intent(in)    , contiguous    :: matB(:)
+        real(RKG)               , intent(inout) , contiguous    :: matC(:)
         type(transHerm_type)    , intent(in)                    :: operationA
     end subroutine
 #endif
@@ -1114,11 +1114,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemv_ASS_SFA_SFB_THA_TNB_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)               , intent(in)    , optional      :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(:,:)
-        real(RKC)               , intent(in)    , contiguous    :: matB(:)
-        real(RKC)               , intent(inout) , contiguous    :: matC(:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)               , intent(in)    , optional      :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(:,:)
+        real(RKG)               , intent(in)    , contiguous    :: matB(:)
+        real(RKG)               , intent(inout) , contiguous    :: matC(:)
         type(transHerm_type)    , intent(in)                    :: operationA
     end subroutine
 #endif
@@ -1128,11 +1128,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemv_ASS_SFA_SFB_THA_TNB_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)               , intent(in)    , optional      :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(:,:)
-        real(RKC)               , intent(in)    , contiguous    :: matB(:)
-        real(RKC)               , intent(inout) , contiguous    :: matC(:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)               , intent(in)    , optional      :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(:,:)
+        real(RKG)               , intent(in)    , contiguous    :: matB(:)
+        real(RKG)               , intent(inout) , contiguous    :: matC(:)
         type(transHerm_type)    , intent(in)                    :: operationA
     end subroutine
 #endif
@@ -1154,12 +1154,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemv_EXP_SFA_SFB_TNA_TNB_IK5
 #endif
-        use pm_kind, only: IKC => IK5
+        use pm_kind, only: IKG => IK5
         integer(IK)             , intent(in)                    :: nrow, ncol, roffA, coffA, incB, incC
-        integer(IKC)            , intent(in)                    :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(:)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(:)
+        integer(IKG)            , intent(in)                    :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(:)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(:)
     end subroutine
 #endif
 
@@ -1168,12 +1168,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemv_EXP_SFA_SFB_TNA_TNB_IK4
 #endif
-        use pm_kind, only: IKC => IK4
+        use pm_kind, only: IKG => IK4
         integer(IK)             , intent(in)                    :: nrow, ncol, roffA, coffA, incB, incC
-        integer(IKC)            , intent(in)                    :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(:)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(:)
+        integer(IKG)            , intent(in)                    :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(:)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(:)
     end subroutine
 #endif
 
@@ -1182,12 +1182,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemv_EXP_SFA_SFB_TNA_TNB_IK3
 #endif
-        use pm_kind, only: IKC => IK3
+        use pm_kind, only: IKG => IK3
         integer(IK)             , intent(in)                    :: nrow, ncol, roffA, coffA, incB, incC
-        integer(IKC)            , intent(in)                    :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(:)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(:)
+        integer(IKG)            , intent(in)                    :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(:)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(:)
     end subroutine
 #endif
 
@@ -1196,12 +1196,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemv_EXP_SFA_SFB_TNA_TNB_IK2
 #endif
-        use pm_kind, only: IKC => IK2
+        use pm_kind, only: IKG => IK2
         integer(IK)             , intent(in)                    :: nrow, ncol, roffA, coffA, incB, incC
-        integer(IKC)            , intent(in)                    :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(:)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(:)
+        integer(IKG)            , intent(in)                    :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(:)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(:)
     end subroutine
 #endif
 
@@ -1210,12 +1210,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemv_EXP_SFA_SFB_TNA_TNB_IK1
 #endif
-        use pm_kind, only: IKC => IK1
+        use pm_kind, only: IKG => IK1
         integer(IK)             , intent(in)                    :: nrow, ncol, roffA, coffA, incB, incC
-        integer(IKC)            , intent(in)                    :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(:)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(:)
+        integer(IKG)            , intent(in)                    :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(:)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(:)
     end subroutine
 #endif
 
@@ -1226,12 +1226,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemv_EXP_SFA_SFB_TNA_TNB_CK5
 #endif
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
         integer(IK)             , intent(in)                    :: nrow, ncol, roffA, coffA, incB, incC
-        complex(CKC)            , intent(in)                    :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(:)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(:)
+        complex(CKG)            , intent(in)                    :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(:)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(:)
     end subroutine
 #endif
 
@@ -1240,12 +1240,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemv_EXP_SFA_SFB_TNA_TNB_CK4
 #endif
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
         integer(IK)             , intent(in)                    :: nrow, ncol, roffA, coffA, incB, incC
-        complex(CKC)            , intent(in)                    :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(:)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(:)
+        complex(CKG)            , intent(in)                    :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(:)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(:)
     end subroutine
 #endif
 
@@ -1254,12 +1254,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemv_EXP_SFA_SFB_TNA_TNB_CK3
 #endif
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
         integer(IK)             , intent(in)                    :: nrow, ncol, roffA, coffA, incB, incC
-        complex(CKC)            , intent(in)                    :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(:)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(:)
+        complex(CKG)            , intent(in)                    :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(:)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(:)
     end subroutine
 #endif
 
@@ -1268,12 +1268,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemv_EXP_SFA_SFB_TNA_TNB_CK2
 #endif
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
         integer(IK)             , intent(in)                    :: nrow, ncol, roffA, coffA, incB, incC
-        complex(CKC)            , intent(in)                    :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(:)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(:)
+        complex(CKG)            , intent(in)                    :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(:)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(:)
     end subroutine
 #endif
 
@@ -1282,12 +1282,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemv_EXP_SFA_SFB_TNA_TNB_CK1
 #endif
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
         integer(IK)             , intent(in)                    :: nrow, ncol, roffA, coffA, incB, incC
-        complex(CKC)            , intent(in)                    :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(:)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(:)
+        complex(CKG)            , intent(in)                    :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(:)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(:)
     end subroutine
 #endif
 
@@ -1298,12 +1298,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemv_EXP_SFA_SFB_TNA_TNB_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         integer(IK)             , intent(in)                    :: nrow, ncol, roffA, coffA, incB, incC
-        real(RKC)               , intent(in)                    :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        real(RKC)               , intent(in)    , contiguous    :: matB(:)
-        real(RKC)               , intent(inout) , contiguous    :: matC(:)
+        real(RKG)               , intent(in)                    :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        real(RKG)               , intent(in)    , contiguous    :: matB(:)
+        real(RKG)               , intent(inout) , contiguous    :: matC(:)
     end subroutine
 #endif
 
@@ -1312,12 +1312,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemv_EXP_SFA_SFB_TNA_TNB_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         integer(IK)             , intent(in)                    :: nrow, ncol, roffA, coffA, incB, incC
-        real(RKC)               , intent(in)                    :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        real(RKC)               , intent(in)    , contiguous    :: matB(:)
-        real(RKC)               , intent(inout) , contiguous    :: matC(:)
+        real(RKG)               , intent(in)                    :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        real(RKG)               , intent(in)    , contiguous    :: matB(:)
+        real(RKG)               , intent(inout) , contiguous    :: matC(:)
     end subroutine
 #endif
 
@@ -1326,12 +1326,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemv_EXP_SFA_SFB_TNA_TNB_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         integer(IK)             , intent(in)                    :: nrow, ncol, roffA, coffA, incB, incC
-        real(RKC)               , intent(in)                    :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        real(RKC)               , intent(in)    , contiguous    :: matB(:)
-        real(RKC)               , intent(inout) , contiguous    :: matC(:)
+        real(RKG)               , intent(in)                    :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        real(RKG)               , intent(in)    , contiguous    :: matB(:)
+        real(RKG)               , intent(inout) , contiguous    :: matC(:)
     end subroutine
 #endif
 
@@ -1340,12 +1340,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemv_EXP_SFA_SFB_TNA_TNB_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         integer(IK)             , intent(in)                    :: nrow, ncol, roffA, coffA, incB, incC
-        real(RKC)               , intent(in)                    :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        real(RKC)               , intent(in)    , contiguous    :: matB(:)
-        real(RKC)               , intent(inout) , contiguous    :: matC(:)
+        real(RKG)               , intent(in)                    :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        real(RKG)               , intent(in)    , contiguous    :: matB(:)
+        real(RKG)               , intent(inout) , contiguous    :: matC(:)
     end subroutine
 #endif
 
@@ -1354,12 +1354,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemv_EXP_SFA_SFB_TNA_TNB_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         integer(IK)             , intent(in)                    :: nrow, ncol, roffA, coffA, incB, incC
-        real(RKC)               , intent(in)                    :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        real(RKC)               , intent(in)    , contiguous    :: matB(:)
-        real(RKC)               , intent(inout) , contiguous    :: matC(:)
+        real(RKG)               , intent(in)                    :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        real(RKG)               , intent(in)    , contiguous    :: matB(:)
+        real(RKG)               , intent(inout) , contiguous    :: matC(:)
     end subroutine
 #endif
 
@@ -1376,12 +1376,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemv_EXP_SFA_SFB_TSA_TNB_IK5
 #endif
-        use pm_kind, only: IKC => IK5
+        use pm_kind, only: IKG => IK5
         integer(IK)             , intent(in)                    :: nrow, ncol, roffA, coffA, incB, incC
-        integer(IKC)            , intent(in)                    :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(:)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(:)
+        integer(IKG)            , intent(in)                    :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(:)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(:)
         type(transSymm_type)    , intent(in)                    :: operationA
     end subroutine
 #endif
@@ -1391,12 +1391,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemv_EXP_SFA_SFB_TSA_TNB_IK4
 #endif
-        use pm_kind, only: IKC => IK4
+        use pm_kind, only: IKG => IK4
         integer(IK)             , intent(in)                    :: nrow, ncol, roffA, coffA, incB, incC
-        integer(IKC)            , intent(in)                    :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(:)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(:)
+        integer(IKG)            , intent(in)                    :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(:)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(:)
         type(transSymm_type)    , intent(in)                    :: operationA
     end subroutine
 #endif
@@ -1406,12 +1406,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemv_EXP_SFA_SFB_TSA_TNB_IK3
 #endif
-        use pm_kind, only: IKC => IK3
+        use pm_kind, only: IKG => IK3
         integer(IK)             , intent(in)                    :: nrow, ncol, roffA, coffA, incB, incC
-        integer(IKC)            , intent(in)                    :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(:)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(:)
+        integer(IKG)            , intent(in)                    :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(:)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(:)
         type(transSymm_type)    , intent(in)                    :: operationA
     end subroutine
 #endif
@@ -1421,12 +1421,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemv_EXP_SFA_SFB_TSA_TNB_IK2
 #endif
-        use pm_kind, only: IKC => IK2
+        use pm_kind, only: IKG => IK2
         integer(IK)             , intent(in)                    :: nrow, ncol, roffA, coffA, incB, incC
-        integer(IKC)            , intent(in)                    :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(:)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(:)
+        integer(IKG)            , intent(in)                    :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(:)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(:)
         type(transSymm_type)    , intent(in)                    :: operationA
     end subroutine
 #endif
@@ -1436,12 +1436,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemv_EXP_SFA_SFB_TSA_TNB_IK1
 #endif
-        use pm_kind, only: IKC => IK1
+        use pm_kind, only: IKG => IK1
         integer(IK)             , intent(in)                    :: nrow, ncol, roffA, coffA, incB, incC
-        integer(IKC)            , intent(in)                    :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(:)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(:)
+        integer(IKG)            , intent(in)                    :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(:)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(:)
         type(transSymm_type)    , intent(in)                    :: operationA
     end subroutine
 #endif
@@ -1453,12 +1453,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemv_EXP_SFA_SFB_TSA_TNB_CK5
 #endif
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
         integer(IK)             , intent(in)                    :: nrow, ncol, roffA, coffA, incB, incC
-        complex(CKC)            , intent(in)                    :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(:)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(:)
+        complex(CKG)            , intent(in)                    :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(:)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(:)
         type(transSymm_type)    , intent(in)                    :: operationA
     end subroutine
 #endif
@@ -1468,12 +1468,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemv_EXP_SFA_SFB_TSA_TNB_CK4
 #endif
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
         integer(IK)             , intent(in)                    :: nrow, ncol, roffA, coffA, incB, incC
-        complex(CKC)            , intent(in)                    :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(:)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(:)
+        complex(CKG)            , intent(in)                    :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(:)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(:)
         type(transSymm_type)    , intent(in)                    :: operationA
     end subroutine
 #endif
@@ -1483,12 +1483,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemv_EXP_SFA_SFB_TSA_TNB_CK3
 #endif
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
         integer(IK)             , intent(in)                    :: nrow, ncol, roffA, coffA, incB, incC
-        complex(CKC)            , intent(in)                    :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(:)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(:)
+        complex(CKG)            , intent(in)                    :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(:)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(:)
         type(transSymm_type)    , intent(in)                    :: operationA
     end subroutine
 #endif
@@ -1498,12 +1498,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemv_EXP_SFA_SFB_TSA_TNB_CK2
 #endif
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
         integer(IK)             , intent(in)                    :: nrow, ncol, roffA, coffA, incB, incC
-        complex(CKC)            , intent(in)                    :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(:)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(:)
+        complex(CKG)            , intent(in)                    :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(:)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(:)
         type(transSymm_type)    , intent(in)                    :: operationA
     end subroutine
 #endif
@@ -1513,12 +1513,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemv_EXP_SFA_SFB_TSA_TNB_CK1
 #endif
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
         integer(IK)             , intent(in)                    :: nrow, ncol, roffA, coffA, incB, incC
-        complex(CKC)            , intent(in)                    :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(:)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(:)
+        complex(CKG)            , intent(in)                    :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(:)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(:)
         type(transSymm_type)    , intent(in)                    :: operationA
     end subroutine
 #endif
@@ -1530,12 +1530,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemv_EXP_SFA_SFB_TSA_TNB_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         integer(IK)             , intent(in)                    :: nrow, ncol, roffA, coffA, incB, incC
-        real(RKC)               , intent(in)                    :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        real(RKC)               , intent(in)    , contiguous    :: matB(:)
-        real(RKC)               , intent(inout) , contiguous    :: matC(:)
+        real(RKG)               , intent(in)                    :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        real(RKG)               , intent(in)    , contiguous    :: matB(:)
+        real(RKG)               , intent(inout) , contiguous    :: matC(:)
         type(transSymm_type)    , intent(in)                    :: operationA
     end subroutine
 #endif
@@ -1545,12 +1545,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemv_EXP_SFA_SFB_TSA_TNB_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         integer(IK)             , intent(in)                    :: nrow, ncol, roffA, coffA, incB, incC
-        real(RKC)               , intent(in)                    :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        real(RKC)               , intent(in)    , contiguous    :: matB(:)
-        real(RKC)               , intent(inout) , contiguous    :: matC(:)
+        real(RKG)               , intent(in)                    :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        real(RKG)               , intent(in)    , contiguous    :: matB(:)
+        real(RKG)               , intent(inout) , contiguous    :: matC(:)
         type(transSymm_type)    , intent(in)                    :: operationA
     end subroutine
 #endif
@@ -1560,12 +1560,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemv_EXP_SFA_SFB_TSA_TNB_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         integer(IK)             , intent(in)                    :: nrow, ncol, roffA, coffA, incB, incC
-        real(RKC)               , intent(in)                    :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        real(RKC)               , intent(in)    , contiguous    :: matB(:)
-        real(RKC)               , intent(inout) , contiguous    :: matC(:)
+        real(RKG)               , intent(in)                    :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        real(RKG)               , intent(in)    , contiguous    :: matB(:)
+        real(RKG)               , intent(inout) , contiguous    :: matC(:)
         type(transSymm_type)    , intent(in)                    :: operationA
     end subroutine
 #endif
@@ -1575,12 +1575,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemv_EXP_SFA_SFB_TSA_TNB_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         integer(IK)             , intent(in)                    :: nrow, ncol, roffA, coffA, incB, incC
-        real(RKC)               , intent(in)                    :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        real(RKC)               , intent(in)    , contiguous    :: matB(:)
-        real(RKC)               , intent(inout) , contiguous    :: matC(:)
+        real(RKG)               , intent(in)                    :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        real(RKG)               , intent(in)    , contiguous    :: matB(:)
+        real(RKG)               , intent(inout) , contiguous    :: matC(:)
         type(transSymm_type)    , intent(in)                    :: operationA
     end subroutine
 #endif
@@ -1590,12 +1590,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemv_EXP_SFA_SFB_TSA_TNB_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         integer(IK)             , intent(in)                    :: nrow, ncol, roffA, coffA, incB, incC
-        real(RKC)               , intent(in)                    :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        real(RKC)               , intent(in)    , contiguous    :: matB(:)
-        real(RKC)               , intent(inout) , contiguous    :: matC(:)
+        real(RKG)               , intent(in)                    :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        real(RKG)               , intent(in)    , contiguous    :: matB(:)
+        real(RKG)               , intent(inout) , contiguous    :: matC(:)
         type(transSymm_type)    , intent(in)                    :: operationA
     end subroutine
 #endif
@@ -1613,12 +1613,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemv_EXP_SFA_SFB_THA_TNB_IK5
 #endif
-        use pm_kind, only: IKC => IK5
+        use pm_kind, only: IKG => IK5
         integer(IK)             , intent(in)                    :: nrow, ncol, roffA, coffA, incB, incC
-        integer(IKC)            , intent(in)                    :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(:)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(:)
+        integer(IKG)            , intent(in)                    :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(:)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(:)
         type(transHerm_type)    , intent(in)                    :: operationA
     end subroutine
 #endif
@@ -1628,12 +1628,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemv_EXP_SFA_SFB_THA_TNB_IK4
 #endif
-        use pm_kind, only: IKC => IK4
+        use pm_kind, only: IKG => IK4
         integer(IK)             , intent(in)                    :: nrow, ncol, roffA, coffA, incB, incC
-        integer(IKC)            , intent(in)                    :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(:)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(:)
+        integer(IKG)            , intent(in)                    :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(:)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(:)
         type(transHerm_type)    , intent(in)                    :: operationA
     end subroutine
 #endif
@@ -1643,12 +1643,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemv_EXP_SFA_SFB_THA_TNB_IK3
 #endif
-        use pm_kind, only: IKC => IK3
+        use pm_kind, only: IKG => IK3
         integer(IK)             , intent(in)                    :: nrow, ncol, roffA, coffA, incB, incC
-        integer(IKC)            , intent(in)                    :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(:)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(:)
+        integer(IKG)            , intent(in)                    :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(:)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(:)
         type(transHerm_type)    , intent(in)                    :: operationA
     end subroutine
 #endif
@@ -1658,12 +1658,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemv_EXP_SFA_SFB_THA_TNB_IK2
 #endif
-        use pm_kind, only: IKC => IK2
+        use pm_kind, only: IKG => IK2
         integer(IK)             , intent(in)                    :: nrow, ncol, roffA, coffA, incB, incC
-        integer(IKC)            , intent(in)                    :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(:)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(:)
+        integer(IKG)            , intent(in)                    :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(:)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(:)
         type(transHerm_type)    , intent(in)                    :: operationA
     end subroutine
 #endif
@@ -1673,12 +1673,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemv_EXP_SFA_SFB_THA_TNB_IK1
 #endif
-        use pm_kind, only: IKC => IK1
+        use pm_kind, only: IKG => IK1
         integer(IK)             , intent(in)                    :: nrow, ncol, roffA, coffA, incB, incC
-        integer(IKC)            , intent(in)                    :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(:)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(:)
+        integer(IKG)            , intent(in)                    :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(:)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(:)
         type(transHerm_type)    , intent(in)                    :: operationA
     end subroutine
 #endif
@@ -1690,12 +1690,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemv_EXP_SFA_SFB_THA_TNB_CK5
 #endif
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
         integer(IK)             , intent(in)                    :: nrow, ncol, roffA, coffA, incB, incC
-        complex(CKC)            , intent(in)                    :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(:)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(:)
+        complex(CKG)            , intent(in)                    :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(:)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(:)
         type(transHerm_type)    , intent(in)                    :: operationA
     end subroutine
 #endif
@@ -1705,12 +1705,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemv_EXP_SFA_SFB_THA_TNB_CK4
 #endif
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
         integer(IK)             , intent(in)                    :: nrow, ncol, roffA, coffA, incB, incC
-        complex(CKC)            , intent(in)                    :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(:)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(:)
+        complex(CKG)            , intent(in)                    :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(:)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(:)
         type(transHerm_type)    , intent(in)                    :: operationA
     end subroutine
 #endif
@@ -1720,12 +1720,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemv_EXP_SFA_SFB_THA_TNB_CK3
 #endif
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
         integer(IK)             , intent(in)                    :: nrow, ncol, roffA, coffA, incB, incC
-        complex(CKC)            , intent(in)                    :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(:)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(:)
+        complex(CKG)            , intent(in)                    :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(:)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(:)
         type(transHerm_type)    , intent(in)                    :: operationA
     end subroutine
 #endif
@@ -1735,12 +1735,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemv_EXP_SFA_SFB_THA_TNB_CK2
 #endif
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
         integer(IK)             , intent(in)                    :: nrow, ncol, roffA, coffA, incB, incC
-        complex(CKC)            , intent(in)                    :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(:)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(:)
+        complex(CKG)            , intent(in)                    :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(:)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(:)
         type(transHerm_type)    , intent(in)                    :: operationA
     end subroutine
 #endif
@@ -1750,12 +1750,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemv_EXP_SFA_SFB_THA_TNB_CK1
 #endif
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
         integer(IK)             , intent(in)                    :: nrow, ncol, roffA, coffA, incB, incC
-        complex(CKC)            , intent(in)                    :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(:)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(:)
+        complex(CKG)            , intent(in)                    :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(:)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(:)
         type(transHerm_type)    , intent(in)                    :: operationA
     end subroutine
 #endif
@@ -1767,12 +1767,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemv_EXP_SFA_SFB_THA_TNB_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         integer(IK)             , intent(in)                    :: nrow, ncol, roffA, coffA, incB, incC
-        real(RKC)               , intent(in)                    :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        real(RKC)               , intent(in)    , contiguous    :: matB(:)
-        real(RKC)               , intent(inout) , contiguous    :: matC(:)
+        real(RKG)               , intent(in)                    :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        real(RKG)               , intent(in)    , contiguous    :: matB(:)
+        real(RKG)               , intent(inout) , contiguous    :: matC(:)
         type(transHerm_type)    , intent(in)                    :: operationA
     end subroutine
 #endif
@@ -1782,12 +1782,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemv_EXP_SFA_SFB_THA_TNB_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         integer(IK)             , intent(in)                    :: nrow, ncol, roffA, coffA, incB, incC
-        real(RKC)               , intent(in)                    :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        real(RKC)               , intent(in)    , contiguous    :: matB(:)
-        real(RKC)               , intent(inout) , contiguous    :: matC(:)
+        real(RKG)               , intent(in)                    :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        real(RKG)               , intent(in)    , contiguous    :: matB(:)
+        real(RKG)               , intent(inout) , contiguous    :: matC(:)
         type(transHerm_type)    , intent(in)                    :: operationA
     end subroutine
 #endif
@@ -1797,12 +1797,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemv_EXP_SFA_SFB_THA_TNB_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         integer(IK)             , intent(in)                    :: nrow, ncol, roffA, coffA, incB, incC
-        real(RKC)               , intent(in)                    :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        real(RKC)               , intent(in)    , contiguous    :: matB(:)
-        real(RKC)               , intent(inout) , contiguous    :: matC(:)
+        real(RKG)               , intent(in)                    :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        real(RKG)               , intent(in)    , contiguous    :: matB(:)
+        real(RKG)               , intent(inout) , contiguous    :: matC(:)
         type(transHerm_type)    , intent(in)                    :: operationA
     end subroutine
 #endif
@@ -1812,12 +1812,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemv_EXP_SFA_SFB_THA_TNB_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         integer(IK)             , intent(in)                    :: nrow, ncol, roffA, coffA, incB, incC
-        real(RKC)               , intent(in)                    :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        real(RKC)               , intent(in)    , contiguous    :: matB(:)
-        real(RKC)               , intent(inout) , contiguous    :: matC(:)
+        real(RKG)               , intent(in)                    :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        real(RKG)               , intent(in)    , contiguous    :: matB(:)
+        real(RKG)               , intent(inout) , contiguous    :: matC(:)
         type(transHerm_type)    , intent(in)                    :: operationA
     end subroutine
 #endif
@@ -1827,12 +1827,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemv_EXP_SFA_SFB_THA_TNB_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         integer(IK)             , intent(in)                    :: nrow, ncol, roffA, coffA, incB, incC
-        real(RKC)               , intent(in)                    :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        real(RKC)               , intent(in)    , contiguous    :: matB(:)
-        real(RKC)               , intent(inout) , contiguous    :: matC(:)
+        real(RKG)               , intent(in)                    :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        real(RKG)               , intent(in)    , contiguous    :: matB(:)
+        real(RKG)               , intent(inout) , contiguous    :: matC(:)
         type(transHerm_type)    , intent(in)                    :: operationA
     end subroutine
 #endif
@@ -1868,11 +1868,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: spmv_ASS_CSA_SUA_CNB_SFB_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)            , intent(in)    , optional      :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(:)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(:)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(:)
+        use pm_kind, only: IKG => IK5
+        integer(IKG)            , intent(in)    , optional      :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(:)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(:)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(:)
         type(uppDia_type)       , intent(in)                    :: subsetA
         type(symmetric_type)    , intent(in)                    :: classA
         type(lfpack_type)       , intent(in)                    :: packA
@@ -1884,11 +1884,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: spmv_ASS_CSA_SUA_CNB_SFB_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)            , intent(in)    , optional      :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(:)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(:)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(:)
+        use pm_kind, only: IKG => IK4
+        integer(IKG)            , intent(in)    , optional      :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(:)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(:)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(:)
         type(uppDia_type)       , intent(in)                    :: subsetA
         type(symmetric_type)    , intent(in)                    :: classA
         type(lfpack_type)       , intent(in)                    :: packA
@@ -1900,11 +1900,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: spmv_ASS_CSA_SUA_CNB_SFB_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)            , intent(in)    , optional      :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(:)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(:)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(:)
+        use pm_kind, only: IKG => IK3
+        integer(IKG)            , intent(in)    , optional      :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(:)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(:)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(:)
         type(uppDia_type)       , intent(in)                    :: subsetA
         type(symmetric_type)    , intent(in)                    :: classA
         type(lfpack_type)       , intent(in)                    :: packA
@@ -1916,11 +1916,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: spmv_ASS_CSA_SUA_CNB_SFB_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)            , intent(in)    , optional      :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(:)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(:)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(:)
+        use pm_kind, only: IKG => IK2
+        integer(IKG)            , intent(in)    , optional      :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(:)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(:)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(:)
         type(uppDia_type)       , intent(in)                    :: subsetA
         type(symmetric_type)    , intent(in)                    :: classA
         type(lfpack_type)       , intent(in)                    :: packA
@@ -1932,11 +1932,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: spmv_ASS_CSA_SUA_CNB_SFB_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)            , intent(in)    , optional      :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(:)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(:)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(:)
+        use pm_kind, only: IKG => IK1
+        integer(IKG)            , intent(in)    , optional      :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(:)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(:)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(:)
         type(uppDia_type)       , intent(in)                    :: subsetA
         type(symmetric_type)    , intent(in)                    :: classA
         type(lfpack_type)       , intent(in)                    :: packA
@@ -1950,11 +1950,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: spmv_ASS_CSA_SUA_CNB_SFB_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)            , intent(in)    , optional      :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(:)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(:)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG)            , intent(in)    , optional      :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(:)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(:)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(:)
         type(uppDia_type)       , intent(in)                    :: subsetA
         type(symmetric_type)    , intent(in)                    :: classA
         type(lfpack_type)       , intent(in)                    :: packA
@@ -1966,11 +1966,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: spmv_ASS_CSA_SUA_CNB_SFB_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)            , intent(in)    , optional      :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(:)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(:)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG)            , intent(in)    , optional      :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(:)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(:)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(:)
         type(uppDia_type)       , intent(in)                    :: subsetA
         type(symmetric_type)    , intent(in)                    :: classA
         type(lfpack_type)       , intent(in)                    :: packA
@@ -1982,11 +1982,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: spmv_ASS_CSA_SUA_CNB_SFB_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)            , intent(in)    , optional      :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(:)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(:)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG)            , intent(in)    , optional      :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(:)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(:)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(:)
         type(uppDia_type)       , intent(in)                    :: subsetA
         type(symmetric_type)    , intent(in)                    :: classA
         type(lfpack_type)       , intent(in)                    :: packA
@@ -1998,11 +1998,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: spmv_ASS_CSA_SUA_CNB_SFB_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)            , intent(in)    , optional      :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(:)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(:)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG)            , intent(in)    , optional      :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(:)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(:)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(:)
         type(uppDia_type)       , intent(in)                    :: subsetA
         type(symmetric_type)    , intent(in)                    :: classA
         type(lfpack_type)       , intent(in)                    :: packA
@@ -2014,11 +2014,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: spmv_ASS_CSA_SUA_CNB_SFB_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)            , intent(in)    , optional      :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(:)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(:)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG)            , intent(in)    , optional      :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(:)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(:)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(:)
         type(uppDia_type)       , intent(in)                    :: subsetA
         type(symmetric_type)    , intent(in)                    :: classA
         type(lfpack_type)       , intent(in)                    :: packA
@@ -2032,11 +2032,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: spmv_ASS_CSA_SUA_CNB_SFB_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)               , intent(in)    , optional      :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(:)
-        real(RKC)               , intent(in)    , contiguous    :: matB(:)
-        real(RKC)               , intent(inout) , contiguous    :: matC(:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)               , intent(in)    , optional      :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(:)
+        real(RKG)               , intent(in)    , contiguous    :: matB(:)
+        real(RKG)               , intent(inout) , contiguous    :: matC(:)
         type(uppDia_type)       , intent(in)                    :: subsetA
         type(symmetric_type)    , intent(in)                    :: classA
         type(lfpack_type)       , intent(in)                    :: packA
@@ -2048,11 +2048,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: spmv_ASS_CSA_SUA_CNB_SFB_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)               , intent(in)    , optional      :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(:)
-        real(RKC)               , intent(in)    , contiguous    :: matB(:)
-        real(RKC)               , intent(inout) , contiguous    :: matC(:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)               , intent(in)    , optional      :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(:)
+        real(RKG)               , intent(in)    , contiguous    :: matB(:)
+        real(RKG)               , intent(inout) , contiguous    :: matC(:)
         type(uppDia_type)       , intent(in)                    :: subsetA
         type(symmetric_type)    , intent(in)                    :: classA
         type(lfpack_type)       , intent(in)                    :: packA
@@ -2064,11 +2064,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: spmv_ASS_CSA_SUA_CNB_SFB_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)               , intent(in)    , optional      :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(:)
-        real(RKC)               , intent(in)    , contiguous    :: matB(:)
-        real(RKC)               , intent(inout) , contiguous    :: matC(:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)               , intent(in)    , optional      :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(:)
+        real(RKG)               , intent(in)    , contiguous    :: matB(:)
+        real(RKG)               , intent(inout) , contiguous    :: matC(:)
         type(uppDia_type)       , intent(in)                    :: subsetA
         type(symmetric_type)    , intent(in)                    :: classA
         type(lfpack_type)       , intent(in)                    :: packA
@@ -2080,11 +2080,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: spmv_ASS_CSA_SUA_CNB_SFB_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)               , intent(in)    , optional      :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(:)
-        real(RKC)               , intent(in)    , contiguous    :: matB(:)
-        real(RKC)               , intent(inout) , contiguous    :: matC(:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)               , intent(in)    , optional      :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(:)
+        real(RKG)               , intent(in)    , contiguous    :: matB(:)
+        real(RKG)               , intent(inout) , contiguous    :: matC(:)
         type(uppDia_type)       , intent(in)                    :: subsetA
         type(symmetric_type)    , intent(in)                    :: classA
         type(lfpack_type)       , intent(in)                    :: packA
@@ -2096,11 +2096,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: spmv_ASS_CSA_SUA_CNB_SFB_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)               , intent(in)    , optional      :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(:)
-        real(RKC)               , intent(in)    , contiguous    :: matB(:)
-        real(RKC)               , intent(inout) , contiguous    :: matC(:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)               , intent(in)    , optional      :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(:)
+        real(RKG)               , intent(in)    , contiguous    :: matB(:)
+        real(RKG)               , intent(inout) , contiguous    :: matC(:)
         type(uppDia_type)       , intent(in)                    :: subsetA
         type(symmetric_type)    , intent(in)                    :: classA
         type(lfpack_type)       , intent(in)                    :: packA
@@ -2120,11 +2120,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: spmv_ASS_CSA_SLA_CNB_SFB_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)            , intent(in)    , optional      :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(:)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(:)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(:)
+        use pm_kind, only: IKG => IK5
+        integer(IKG)            , intent(in)    , optional      :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(:)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(:)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(:)
         type(lowDia_type)       , intent(in)                    :: subsetA
         type(symmetric_type)    , intent(in)                    :: classA
         type(lfpack_type)       , intent(in)                    :: packA
@@ -2136,11 +2136,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: spmv_ASS_CSA_SLA_CNB_SFB_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)            , intent(in)    , optional      :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(:)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(:)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(:)
+        use pm_kind, only: IKG => IK4
+        integer(IKG)            , intent(in)    , optional      :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(:)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(:)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(:)
         type(lowDia_type)       , intent(in)                    :: subsetA
         type(symmetric_type)    , intent(in)                    :: classA
         type(lfpack_type)       , intent(in)                    :: packA
@@ -2152,11 +2152,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: spmv_ASS_CSA_SLA_CNB_SFB_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)            , intent(in)    , optional      :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(:)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(:)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(:)
+        use pm_kind, only: IKG => IK3
+        integer(IKG)            , intent(in)    , optional      :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(:)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(:)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(:)
         type(lowDia_type)       , intent(in)                    :: subsetA
         type(symmetric_type)    , intent(in)                    :: classA
         type(lfpack_type)       , intent(in)                    :: packA
@@ -2168,11 +2168,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: spmv_ASS_CSA_SLA_CNB_SFB_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)            , intent(in)    , optional      :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(:)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(:)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(:)
+        use pm_kind, only: IKG => IK2
+        integer(IKG)            , intent(in)    , optional      :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(:)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(:)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(:)
         type(lowDia_type)       , intent(in)                    :: subsetA
         type(symmetric_type)    , intent(in)                    :: classA
         type(lfpack_type)       , intent(in)                    :: packA
@@ -2184,11 +2184,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: spmv_ASS_CSA_SLA_CNB_SFB_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)            , intent(in)    , optional      :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(:)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(:)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(:)
+        use pm_kind, only: IKG => IK1
+        integer(IKG)            , intent(in)    , optional      :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(:)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(:)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(:)
         type(lowDia_type)       , intent(in)                    :: subsetA
         type(symmetric_type)    , intent(in)                    :: classA
         type(lfpack_type)       , intent(in)                    :: packA
@@ -2202,11 +2202,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: spmv_ASS_CSA_SLA_CNB_SFB_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)            , intent(in)    , optional      :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(:)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(:)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG)            , intent(in)    , optional      :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(:)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(:)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(:)
         type(lowDia_type)       , intent(in)                    :: subsetA
         type(symmetric_type)    , intent(in)                    :: classA
         type(lfpack_type)       , intent(in)                    :: packA
@@ -2218,11 +2218,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: spmv_ASS_CSA_SLA_CNB_SFB_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)            , intent(in)    , optional      :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(:)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(:)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG)            , intent(in)    , optional      :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(:)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(:)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(:)
         type(lowDia_type)       , intent(in)                    :: subsetA
         type(symmetric_type)    , intent(in)                    :: classA
         type(lfpack_type)       , intent(in)                    :: packA
@@ -2234,11 +2234,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: spmv_ASS_CSA_SLA_CNB_SFB_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)            , intent(in)    , optional      :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(:)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(:)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG)            , intent(in)    , optional      :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(:)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(:)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(:)
         type(lowDia_type)       , intent(in)                    :: subsetA
         type(symmetric_type)    , intent(in)                    :: classA
         type(lfpack_type)       , intent(in)                    :: packA
@@ -2250,11 +2250,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: spmv_ASS_CSA_SLA_CNB_SFB_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)            , intent(in)    , optional      :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(:)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(:)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG)            , intent(in)    , optional      :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(:)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(:)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(:)
         type(lowDia_type)       , intent(in)                    :: subsetA
         type(symmetric_type)    , intent(in)                    :: classA
         type(lfpack_type)       , intent(in)                    :: packA
@@ -2266,11 +2266,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: spmv_ASS_CSA_SLA_CNB_SFB_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)            , intent(in)    , optional      :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(:)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(:)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG)            , intent(in)    , optional      :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(:)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(:)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(:)
         type(lowDia_type)       , intent(in)                    :: subsetA
         type(symmetric_type)    , intent(in)                    :: classA
         type(lfpack_type)       , intent(in)                    :: packA
@@ -2284,11 +2284,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: spmv_ASS_CSA_SLA_CNB_SFB_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)               , intent(in)    , optional      :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(:)
-        real(RKC)               , intent(in)    , contiguous    :: matB(:)
-        real(RKC)               , intent(inout) , contiguous    :: matC(:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)               , intent(in)    , optional      :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(:)
+        real(RKG)               , intent(in)    , contiguous    :: matB(:)
+        real(RKG)               , intent(inout) , contiguous    :: matC(:)
         type(lowDia_type)       , intent(in)                    :: subsetA
         type(symmetric_type)    , intent(in)                    :: classA
         type(lfpack_type)       , intent(in)                    :: packA
@@ -2300,11 +2300,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: spmv_ASS_CSA_SLA_CNB_SFB_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)               , intent(in)    , optional      :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(:)
-        real(RKC)               , intent(in)    , contiguous    :: matB(:)
-        real(RKC)               , intent(inout) , contiguous    :: matC(:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)               , intent(in)    , optional      :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(:)
+        real(RKG)               , intent(in)    , contiguous    :: matB(:)
+        real(RKG)               , intent(inout) , contiguous    :: matC(:)
         type(lowDia_type)       , intent(in)                    :: subsetA
         type(symmetric_type)    , intent(in)                    :: classA
         type(lfpack_type)       , intent(in)                    :: packA
@@ -2316,11 +2316,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: spmv_ASS_CSA_SLA_CNB_SFB_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)               , intent(in)    , optional      :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(:)
-        real(RKC)               , intent(in)    , contiguous    :: matB(:)
-        real(RKC)               , intent(inout) , contiguous    :: matC(:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)               , intent(in)    , optional      :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(:)
+        real(RKG)               , intent(in)    , contiguous    :: matB(:)
+        real(RKG)               , intent(inout) , contiguous    :: matC(:)
         type(lowDia_type)       , intent(in)                    :: subsetA
         type(symmetric_type)    , intent(in)                    :: classA
         type(lfpack_type)       , intent(in)                    :: packA
@@ -2332,11 +2332,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: spmv_ASS_CSA_SLA_CNB_SFB_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)               , intent(in)    , optional      :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(:)
-        real(RKC)               , intent(in)    , contiguous    :: matB(:)
-        real(RKC)               , intent(inout) , contiguous    :: matC(:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)               , intent(in)    , optional      :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(:)
+        real(RKG)               , intent(in)    , contiguous    :: matB(:)
+        real(RKG)               , intent(inout) , contiguous    :: matC(:)
         type(lowDia_type)       , intent(in)                    :: subsetA
         type(symmetric_type)    , intent(in)                    :: classA
         type(lfpack_type)       , intent(in)                    :: packA
@@ -2348,11 +2348,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: spmv_ASS_CSA_SLA_CNB_SFB_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)               , intent(in)    , optional      :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(:)
-        real(RKC)               , intent(in)    , contiguous    :: matB(:)
-        real(RKC)               , intent(inout) , contiguous    :: matC(:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)               , intent(in)    , optional      :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(:)
+        real(RKG)               , intent(in)    , contiguous    :: matB(:)
+        real(RKG)               , intent(inout) , contiguous    :: matC(:)
         type(lowDia_type)       , intent(in)                    :: subsetA
         type(symmetric_type)    , intent(in)                    :: classA
         type(lfpack_type)       , intent(in)                    :: packA
@@ -2376,12 +2376,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: spmv_EXP_CSA_SUA_CNB_SFB_IK5
 #endif
-        use pm_kind, only: IKC => IK5
+        use pm_kind, only: IKG => IK5
         integer(IK)             , intent(in)                    :: ndim, incB, incC
-        integer(IKC)            , intent(in)                    :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(:)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(:)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(:)
+        integer(IKG)            , intent(in)                    :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(:)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(:)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(:)
         type(uppDia_type)       , intent(in)                    :: subsetA
         type(symmetric_type)    , intent(in)                    :: classA
         type(lfpack_type)       , intent(in)                    :: packA
@@ -2393,12 +2393,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: spmv_EXP_CSA_SUA_CNB_SFB_IK4
 #endif
-        use pm_kind, only: IKC => IK4
+        use pm_kind, only: IKG => IK4
         integer(IK)             , intent(in)                    :: ndim, incB, incC
-        integer(IKC)            , intent(in)                    :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(:)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(:)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(:)
+        integer(IKG)            , intent(in)                    :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(:)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(:)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(:)
         type(uppDia_type)       , intent(in)                    :: subsetA
         type(symmetric_type)    , intent(in)                    :: classA
         type(lfpack_type)       , intent(in)                    :: packA
@@ -2410,12 +2410,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: spmv_EXP_CSA_SUA_CNB_SFB_IK3
 #endif
-        use pm_kind, only: IKC => IK3
+        use pm_kind, only: IKG => IK3
         integer(IK)             , intent(in)                    :: ndim, incB, incC
-        integer(IKC)            , intent(in)                    :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(:)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(:)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(:)
+        integer(IKG)            , intent(in)                    :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(:)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(:)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(:)
         type(uppDia_type)       , intent(in)                    :: subsetA
         type(symmetric_type)    , intent(in)                    :: classA
         type(lfpack_type)       , intent(in)                    :: packA
@@ -2427,12 +2427,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: spmv_EXP_CSA_SUA_CNB_SFB_IK2
 #endif
-        use pm_kind, only: IKC => IK2
+        use pm_kind, only: IKG => IK2
         integer(IK)             , intent(in)                    :: ndim, incB, incC
-        integer(IKC)            , intent(in)                    :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(:)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(:)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(:)
+        integer(IKG)            , intent(in)                    :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(:)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(:)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(:)
         type(uppDia_type)       , intent(in)                    :: subsetA
         type(symmetric_type)    , intent(in)                    :: classA
         type(lfpack_type)       , intent(in)                    :: packA
@@ -2444,12 +2444,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: spmv_EXP_CSA_SUA_CNB_SFB_IK1
 #endif
-        use pm_kind, only: IKC => IK1
+        use pm_kind, only: IKG => IK1
         integer(IK)             , intent(in)                    :: ndim, incB, incC
-        integer(IKC)            , intent(in)                    :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(:)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(:)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(:)
+        integer(IKG)            , intent(in)                    :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(:)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(:)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(:)
         type(uppDia_type)       , intent(in)                    :: subsetA
         type(symmetric_type)    , intent(in)                    :: classA
         type(lfpack_type)       , intent(in)                    :: packA
@@ -2463,12 +2463,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: spmv_EXP_CSA_SUA_CNB_SFB_CK5
 #endif
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
         integer(IK)             , intent(in)                    :: ndim, incB, incC
-        complex(CKC)            , intent(in)                    :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(:)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(:)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(:)
+        complex(CKG)            , intent(in)                    :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(:)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(:)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(:)
         type(uppDia_type)       , intent(in)                    :: subsetA
         type(symmetric_type)    , intent(in)                    :: classA
         type(lfpack_type)       , intent(in)                    :: packA
@@ -2480,12 +2480,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: spmv_EXP_CSA_SUA_CNB_SFB_CK4
 #endif
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
         integer(IK)             , intent(in)                    :: ndim, incB, incC
-        complex(CKC)            , intent(in)                    :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(:)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(:)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(:)
+        complex(CKG)            , intent(in)                    :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(:)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(:)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(:)
         type(uppDia_type)       , intent(in)                    :: subsetA
         type(symmetric_type)    , intent(in)                    :: classA
         type(lfpack_type)       , intent(in)                    :: packA
@@ -2497,12 +2497,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: spmv_EXP_CSA_SUA_CNB_SFB_CK3
 #endif
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
         integer(IK)             , intent(in)                    :: ndim, incB, incC
-        complex(CKC)            , intent(in)                    :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(:)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(:)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(:)
+        complex(CKG)            , intent(in)                    :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(:)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(:)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(:)
         type(uppDia_type)       , intent(in)                    :: subsetA
         type(symmetric_type)    , intent(in)                    :: classA
         type(lfpack_type)       , intent(in)                    :: packA
@@ -2514,12 +2514,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: spmv_EXP_CSA_SUA_CNB_SFB_CK2
 #endif
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
         integer(IK)             , intent(in)                    :: ndim, incB, incC
-        complex(CKC)            , intent(in)                    :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(:)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(:)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(:)
+        complex(CKG)            , intent(in)                    :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(:)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(:)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(:)
         type(uppDia_type)       , intent(in)                    :: subsetA
         type(symmetric_type)    , intent(in)                    :: classA
         type(lfpack_type)       , intent(in)                    :: packA
@@ -2531,12 +2531,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: spmv_EXP_CSA_SUA_CNB_SFB_CK1
 #endif
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
         integer(IK)             , intent(in)                    :: ndim, incB, incC
-        complex(CKC)            , intent(in)                    :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(:)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(:)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(:)
+        complex(CKG)            , intent(in)                    :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(:)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(:)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(:)
         type(uppDia_type)       , intent(in)                    :: subsetA
         type(symmetric_type)    , intent(in)                    :: classA
         type(lfpack_type)       , intent(in)                    :: packA
@@ -2550,12 +2550,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: spmv_EXP_CSA_SUA_CNB_SFB_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         integer(IK)             , intent(in)                    :: ndim, incB, incC
-        real(RKC)               , intent(in)                    :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(:)
-        real(RKC)               , intent(in)    , contiguous    :: matB(:)
-        real(RKC)               , intent(inout) , contiguous    :: matC(:)
+        real(RKG)               , intent(in)                    :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(:)
+        real(RKG)               , intent(in)    , contiguous    :: matB(:)
+        real(RKG)               , intent(inout) , contiguous    :: matC(:)
         type(uppDia_type)       , intent(in)                    :: subsetA
         type(symmetric_type)    , intent(in)                    :: classA
         type(lfpack_type)       , intent(in)                    :: packA
@@ -2567,12 +2567,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: spmv_EXP_CSA_SUA_CNB_SFB_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         integer(IK)             , intent(in)                    :: ndim, incB, incC
-        real(RKC)               , intent(in)                    :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(:)
-        real(RKC)               , intent(in)    , contiguous    :: matB(:)
-        real(RKC)               , intent(inout) , contiguous    :: matC(:)
+        real(RKG)               , intent(in)                    :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(:)
+        real(RKG)               , intent(in)    , contiguous    :: matB(:)
+        real(RKG)               , intent(inout) , contiguous    :: matC(:)
         type(uppDia_type)       , intent(in)                    :: subsetA
         type(symmetric_type)    , intent(in)                    :: classA
         type(lfpack_type)       , intent(in)                    :: packA
@@ -2584,12 +2584,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: spmv_EXP_CSA_SUA_CNB_SFB_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         integer(IK)             , intent(in)                    :: ndim, incB, incC
-        real(RKC)               , intent(in)                    :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(:)
-        real(RKC)               , intent(in)    , contiguous    :: matB(:)
-        real(RKC)               , intent(inout) , contiguous    :: matC(:)
+        real(RKG)               , intent(in)                    :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(:)
+        real(RKG)               , intent(in)    , contiguous    :: matB(:)
+        real(RKG)               , intent(inout) , contiguous    :: matC(:)
         type(uppDia_type)       , intent(in)                    :: subsetA
         type(symmetric_type)    , intent(in)                    :: classA
         type(lfpack_type)       , intent(in)                    :: packA
@@ -2601,12 +2601,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: spmv_EXP_CSA_SUA_CNB_SFB_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         integer(IK)             , intent(in)                    :: ndim, incB, incC
-        real(RKC)               , intent(in)                    :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(:)
-        real(RKC)               , intent(in)    , contiguous    :: matB(:)
-        real(RKC)               , intent(inout) , contiguous    :: matC(:)
+        real(RKG)               , intent(in)                    :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(:)
+        real(RKG)               , intent(in)    , contiguous    :: matB(:)
+        real(RKG)               , intent(inout) , contiguous    :: matC(:)
         type(uppDia_type)       , intent(in)                    :: subsetA
         type(symmetric_type)    , intent(in)                    :: classA
         type(lfpack_type)       , intent(in)                    :: packA
@@ -2618,12 +2618,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: spmv_EXP_CSA_SUA_CNB_SFB_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         integer(IK)             , intent(in)                    :: ndim, incB, incC
-        real(RKC)               , intent(in)                    :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(:)
-        real(RKC)               , intent(in)    , contiguous    :: matB(:)
-        real(RKC)               , intent(inout) , contiguous    :: matC(:)
+        real(RKG)               , intent(in)                    :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(:)
+        real(RKG)               , intent(in)    , contiguous    :: matB(:)
+        real(RKG)               , intent(inout) , contiguous    :: matC(:)
         type(uppDia_type)       , intent(in)                    :: subsetA
         type(symmetric_type)    , intent(in)                    :: classA
         type(lfpack_type)       , intent(in)                    :: packA
@@ -2643,12 +2643,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: spmv_EXP_CSA_SLA_CNB_SFB_IK5
 #endif
-        use pm_kind, only: IKC => IK5
+        use pm_kind, only: IKG => IK5
         integer(IK)             , intent(in)                    :: ndim, incB, incC
-        integer(IKC)            , intent(in)                    :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(:)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(:)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(:)
+        integer(IKG)            , intent(in)                    :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(:)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(:)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(:)
         type(lowDia_type)       , intent(in)                    :: subsetA
         type(symmetric_type)    , intent(in)                    :: classA
         type(lfpack_type)       , intent(in)                    :: packA
@@ -2660,12 +2660,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: spmv_EXP_CSA_SLA_CNB_SFB_IK4
 #endif
-        use pm_kind, only: IKC => IK4
+        use pm_kind, only: IKG => IK4
         integer(IK)             , intent(in)                    :: ndim, incB, incC
-        integer(IKC)            , intent(in)                    :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(:)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(:)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(:)
+        integer(IKG)            , intent(in)                    :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(:)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(:)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(:)
         type(lowDia_type)       , intent(in)                    :: subsetA
         type(symmetric_type)    , intent(in)                    :: classA
         type(lfpack_type)       , intent(in)                    :: packA
@@ -2677,12 +2677,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: spmv_EXP_CSA_SLA_CNB_SFB_IK3
 #endif
-        use pm_kind, only: IKC => IK3
+        use pm_kind, only: IKG => IK3
         integer(IK)             , intent(in)                    :: ndim, incB, incC
-        integer(IKC)            , intent(in)                    :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(:)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(:)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(:)
+        integer(IKG)            , intent(in)                    :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(:)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(:)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(:)
         type(lowDia_type)       , intent(in)                    :: subsetA
         type(symmetric_type)    , intent(in)                    :: classA
         type(lfpack_type)       , intent(in)                    :: packA
@@ -2694,12 +2694,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: spmv_EXP_CSA_SLA_CNB_SFB_IK2
 #endif
-        use pm_kind, only: IKC => IK2
+        use pm_kind, only: IKG => IK2
         integer(IK)             , intent(in)                    :: ndim, incB, incC
-        integer(IKC)            , intent(in)                    :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(:)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(:)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(:)
+        integer(IKG)            , intent(in)                    :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(:)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(:)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(:)
         type(lowDia_type)       , intent(in)                    :: subsetA
         type(symmetric_type)    , intent(in)                    :: classA
         type(lfpack_type)       , intent(in)                    :: packA
@@ -2711,12 +2711,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: spmv_EXP_CSA_SLA_CNB_SFB_IK1
 #endif
-        use pm_kind, only: IKC => IK1
+        use pm_kind, only: IKG => IK1
         integer(IK)             , intent(in)                    :: ndim, incB, incC
-        integer(IKC)            , intent(in)                    :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(:)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(:)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(:)
+        integer(IKG)            , intent(in)                    :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(:)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(:)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(:)
         type(lowDia_type)       , intent(in)                    :: subsetA
         type(symmetric_type)    , intent(in)                    :: classA
         type(lfpack_type)       , intent(in)                    :: packA
@@ -2730,12 +2730,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: spmv_EXP_CSA_SLA_CNB_SFB_CK5
 #endif
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
         integer(IK)             , intent(in)                    :: ndim, incB, incC
-        complex(CKC)            , intent(in)                    :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(:)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(:)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(:)
+        complex(CKG)            , intent(in)                    :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(:)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(:)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(:)
         type(lowDia_type)       , intent(in)                    :: subsetA
         type(symmetric_type)    , intent(in)                    :: classA
         type(lfpack_type)       , intent(in)                    :: packA
@@ -2747,12 +2747,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: spmv_EXP_CSA_SLA_CNB_SFB_CK4
 #endif
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
         integer(IK)             , intent(in)                    :: ndim, incB, incC
-        complex(CKC)            , intent(in)                    :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(:)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(:)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(:)
+        complex(CKG)            , intent(in)                    :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(:)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(:)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(:)
         type(lowDia_type)       , intent(in)                    :: subsetA
         type(symmetric_type)    , intent(in)                    :: classA
         type(lfpack_type)       , intent(in)                    :: packA
@@ -2764,12 +2764,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: spmv_EXP_CSA_SLA_CNB_SFB_CK3
 #endif
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
         integer(IK)             , intent(in)                    :: ndim, incB, incC
-        complex(CKC)            , intent(in)                    :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(:)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(:)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(:)
+        complex(CKG)            , intent(in)                    :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(:)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(:)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(:)
         type(lowDia_type)       , intent(in)                    :: subsetA
         type(symmetric_type)    , intent(in)                    :: classA
         type(lfpack_type)       , intent(in)                    :: packA
@@ -2781,12 +2781,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: spmv_EXP_CSA_SLA_CNB_SFB_CK2
 #endif
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
         integer(IK)             , intent(in)                    :: ndim, incB, incC
-        complex(CKC)            , intent(in)                    :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(:)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(:)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(:)
+        complex(CKG)            , intent(in)                    :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(:)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(:)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(:)
         type(lowDia_type)       , intent(in)                    :: subsetA
         type(symmetric_type)    , intent(in)                    :: classA
         type(lfpack_type)       , intent(in)                    :: packA
@@ -2798,12 +2798,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: spmv_EXP_CSA_SLA_CNB_SFB_CK1
 #endif
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
         integer(IK)             , intent(in)                    :: ndim, incB, incC
-        complex(CKC)            , intent(in)                    :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(:)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(:)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(:)
+        complex(CKG)            , intent(in)                    :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(:)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(:)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(:)
         type(lowDia_type)       , intent(in)                    :: subsetA
         type(symmetric_type)    , intent(in)                    :: classA
         type(lfpack_type)       , intent(in)                    :: packA
@@ -2817,12 +2817,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: spmv_EXP_CSA_SLA_CNB_SFB_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         integer(IK)             , intent(in)                    :: ndim, incB, incC
-        real(RKC)               , intent(in)                    :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(:)
-        real(RKC)               , intent(in)    , contiguous    :: matB(:)
-        real(RKC)               , intent(inout) , contiguous    :: matC(:)
+        real(RKG)               , intent(in)                    :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(:)
+        real(RKG)               , intent(in)    , contiguous    :: matB(:)
+        real(RKG)               , intent(inout) , contiguous    :: matC(:)
         type(lowDia_type)       , intent(in)                    :: subsetA
         type(symmetric_type)    , intent(in)                    :: classA
         type(lfpack_type)       , intent(in)                    :: packA
@@ -2834,12 +2834,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: spmv_EXP_CSA_SLA_CNB_SFB_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         integer(IK)             , intent(in)                    :: ndim, incB, incC
-        real(RKC)               , intent(in)                    :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(:)
-        real(RKC)               , intent(in)    , contiguous    :: matB(:)
-        real(RKC)               , intent(inout) , contiguous    :: matC(:)
+        real(RKG)               , intent(in)                    :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(:)
+        real(RKG)               , intent(in)    , contiguous    :: matB(:)
+        real(RKG)               , intent(inout) , contiguous    :: matC(:)
         type(lowDia_type)       , intent(in)                    :: subsetA
         type(symmetric_type)    , intent(in)                    :: classA
         type(lfpack_type)       , intent(in)                    :: packA
@@ -2851,12 +2851,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: spmv_EXP_CSA_SLA_CNB_SFB_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         integer(IK)             , intent(in)                    :: ndim, incB, incC
-        real(RKC)               , intent(in)                    :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(:)
-        real(RKC)               , intent(in)    , contiguous    :: matB(:)
-        real(RKC)               , intent(inout) , contiguous    :: matC(:)
+        real(RKG)               , intent(in)                    :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(:)
+        real(RKG)               , intent(in)    , contiguous    :: matB(:)
+        real(RKG)               , intent(inout) , contiguous    :: matC(:)
         type(lowDia_type)       , intent(in)                    :: subsetA
         type(symmetric_type)    , intent(in)                    :: classA
         type(lfpack_type)       , intent(in)                    :: packA
@@ -2868,12 +2868,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: spmv_EXP_CSA_SLA_CNB_SFB_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         integer(IK)             , intent(in)                    :: ndim, incB, incC
-        real(RKC)               , intent(in)                    :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(:)
-        real(RKC)               , intent(in)    , contiguous    :: matB(:)
-        real(RKC)               , intent(inout) , contiguous    :: matC(:)
+        real(RKG)               , intent(in)                    :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(:)
+        real(RKG)               , intent(in)    , contiguous    :: matB(:)
+        real(RKG)               , intent(inout) , contiguous    :: matC(:)
         type(lowDia_type)       , intent(in)                    :: subsetA
         type(symmetric_type)    , intent(in)                    :: classA
         type(lfpack_type)       , intent(in)                    :: packA
@@ -2885,12 +2885,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: spmv_EXP_CSA_SLA_CNB_SFB_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         integer(IK)             , intent(in)                    :: ndim, incB, incC
-        real(RKC)               , intent(in)                    :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(:)
-        real(RKC)               , intent(in)    , contiguous    :: matB(:)
-        real(RKC)               , intent(inout) , contiguous    :: matC(:)
+        real(RKG)               , intent(in)                    :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(:)
+        real(RKG)               , intent(in)    , contiguous    :: matB(:)
+        real(RKG)               , intent(inout) , contiguous    :: matC(:)
         type(lowDia_type)       , intent(in)                    :: subsetA
         type(symmetric_type)    , intent(in)                    :: classA
         type(lfpack_type)       , intent(in)                    :: packA
@@ -2924,11 +2924,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hpmv_ASS_CHA_SUA_CNB_SFB_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)            , intent(in)    , optional      :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(:)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(:)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(:)
+        use pm_kind, only: IKG => IK5
+        integer(IKG)            , intent(in)    , optional      :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(:)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(:)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(:)
         type(uppDia_type)       , intent(in)                    :: subsetA
         type(hermitian_type)    , intent(in)                    :: classA
         type(lfpack_type)       , intent(in)                    :: packA
@@ -2940,11 +2940,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hpmv_ASS_CHA_SUA_CNB_SFB_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)            , intent(in)    , optional      :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(:)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(:)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(:)
+        use pm_kind, only: IKG => IK4
+        integer(IKG)            , intent(in)    , optional      :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(:)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(:)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(:)
         type(uppDia_type)       , intent(in)                    :: subsetA
         type(hermitian_type)    , intent(in)                    :: classA
         type(lfpack_type)       , intent(in)                    :: packA
@@ -2956,11 +2956,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hpmv_ASS_CHA_SUA_CNB_SFB_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)            , intent(in)    , optional      :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(:)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(:)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(:)
+        use pm_kind, only: IKG => IK3
+        integer(IKG)            , intent(in)    , optional      :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(:)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(:)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(:)
         type(uppDia_type)       , intent(in)                    :: subsetA
         type(hermitian_type)    , intent(in)                    :: classA
         type(lfpack_type)       , intent(in)                    :: packA
@@ -2972,11 +2972,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hpmv_ASS_CHA_SUA_CNB_SFB_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)            , intent(in)    , optional      :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(:)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(:)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(:)
+        use pm_kind, only: IKG => IK2
+        integer(IKG)            , intent(in)    , optional      :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(:)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(:)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(:)
         type(uppDia_type)       , intent(in)                    :: subsetA
         type(hermitian_type)    , intent(in)                    :: classA
         type(lfpack_type)       , intent(in)                    :: packA
@@ -2988,11 +2988,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hpmv_ASS_CHA_SUA_CNB_SFB_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)            , intent(in)    , optional      :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(:)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(:)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(:)
+        use pm_kind, only: IKG => IK1
+        integer(IKG)            , intent(in)    , optional      :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(:)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(:)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(:)
         type(uppDia_type)       , intent(in)                    :: subsetA
         type(hermitian_type)    , intent(in)                    :: classA
         type(lfpack_type)       , intent(in)                    :: packA
@@ -3006,11 +3006,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hpmv_ASS_CHA_SUA_CNB_SFB_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)            , intent(in)    , optional      :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(:)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(:)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG)            , intent(in)    , optional      :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(:)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(:)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(:)
         type(uppDia_type)       , intent(in)                    :: subsetA
         type(hermitian_type)    , intent(in)                    :: classA
         type(lfpack_type)       , intent(in)                    :: packA
@@ -3022,11 +3022,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hpmv_ASS_CHA_SUA_CNB_SFB_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)            , intent(in)    , optional      :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(:)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(:)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG)            , intent(in)    , optional      :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(:)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(:)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(:)
         type(uppDia_type)       , intent(in)                    :: subsetA
         type(hermitian_type)    , intent(in)                    :: classA
         type(lfpack_type)       , intent(in)                    :: packA
@@ -3038,11 +3038,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hpmv_ASS_CHA_SUA_CNB_SFB_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)            , intent(in)    , optional      :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(:)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(:)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG)            , intent(in)    , optional      :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(:)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(:)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(:)
         type(uppDia_type)       , intent(in)                    :: subsetA
         type(hermitian_type)    , intent(in)                    :: classA
         type(lfpack_type)       , intent(in)                    :: packA
@@ -3054,11 +3054,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hpmv_ASS_CHA_SUA_CNB_SFB_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)            , intent(in)    , optional      :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(:)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(:)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG)            , intent(in)    , optional      :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(:)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(:)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(:)
         type(uppDia_type)       , intent(in)                    :: subsetA
         type(hermitian_type)    , intent(in)                    :: classA
         type(lfpack_type)       , intent(in)                    :: packA
@@ -3070,11 +3070,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hpmv_ASS_CHA_SUA_CNB_SFB_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)            , intent(in)    , optional      :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(:)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(:)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG)            , intent(in)    , optional      :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(:)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(:)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(:)
         type(uppDia_type)       , intent(in)                    :: subsetA
         type(hermitian_type)    , intent(in)                    :: classA
         type(lfpack_type)       , intent(in)                    :: packA
@@ -3088,11 +3088,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hpmv_ASS_CHA_SUA_CNB_SFB_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)               , intent(in)    , optional      :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(:)
-        real(RKC)               , intent(in)    , contiguous    :: matB(:)
-        real(RKC)               , intent(inout) , contiguous    :: matC(:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)               , intent(in)    , optional      :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(:)
+        real(RKG)               , intent(in)    , contiguous    :: matB(:)
+        real(RKG)               , intent(inout) , contiguous    :: matC(:)
         type(uppDia_type)       , intent(in)                    :: subsetA
         type(hermitian_type)    , intent(in)                    :: classA
         type(lfpack_type)       , intent(in)                    :: packA
@@ -3104,11 +3104,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hpmv_ASS_CHA_SUA_CNB_SFB_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)               , intent(in)    , optional      :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(:)
-        real(RKC)               , intent(in)    , contiguous    :: matB(:)
-        real(RKC)               , intent(inout) , contiguous    :: matC(:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)               , intent(in)    , optional      :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(:)
+        real(RKG)               , intent(in)    , contiguous    :: matB(:)
+        real(RKG)               , intent(inout) , contiguous    :: matC(:)
         type(uppDia_type)       , intent(in)                    :: subsetA
         type(hermitian_type)    , intent(in)                    :: classA
         type(lfpack_type)       , intent(in)                    :: packA
@@ -3120,11 +3120,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hpmv_ASS_CHA_SUA_CNB_SFB_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)               , intent(in)    , optional      :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(:)
-        real(RKC)               , intent(in)    , contiguous    :: matB(:)
-        real(RKC)               , intent(inout) , contiguous    :: matC(:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)               , intent(in)    , optional      :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(:)
+        real(RKG)               , intent(in)    , contiguous    :: matB(:)
+        real(RKG)               , intent(inout) , contiguous    :: matC(:)
         type(uppDia_type)       , intent(in)                    :: subsetA
         type(hermitian_type)    , intent(in)                    :: classA
         type(lfpack_type)       , intent(in)                    :: packA
@@ -3136,11 +3136,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hpmv_ASS_CHA_SUA_CNB_SFB_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)               , intent(in)    , optional      :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(:)
-        real(RKC)               , intent(in)    , contiguous    :: matB(:)
-        real(RKC)               , intent(inout) , contiguous    :: matC(:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)               , intent(in)    , optional      :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(:)
+        real(RKG)               , intent(in)    , contiguous    :: matB(:)
+        real(RKG)               , intent(inout) , contiguous    :: matC(:)
         type(uppDia_type)       , intent(in)                    :: subsetA
         type(hermitian_type)    , intent(in)                    :: classA
         type(lfpack_type)       , intent(in)                    :: packA
@@ -3152,11 +3152,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hpmv_ASS_CHA_SUA_CNB_SFB_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)               , intent(in)    , optional      :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(:)
-        real(RKC)               , intent(in)    , contiguous    :: matB(:)
-        real(RKC)               , intent(inout) , contiguous    :: matC(:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)               , intent(in)    , optional      :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(:)
+        real(RKG)               , intent(in)    , contiguous    :: matB(:)
+        real(RKG)               , intent(inout) , contiguous    :: matC(:)
         type(uppDia_type)       , intent(in)                    :: subsetA
         type(hermitian_type)    , intent(in)                    :: classA
         type(lfpack_type)       , intent(in)                    :: packA
@@ -3176,11 +3176,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hpmv_ASS_CHA_SLA_CNB_SFB_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)            , intent(in)    , optional      :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(:)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(:)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(:)
+        use pm_kind, only: IKG => IK5
+        integer(IKG)            , intent(in)    , optional      :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(:)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(:)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(:)
         type(lowDia_type)       , intent(in)                    :: subsetA
         type(hermitian_type)    , intent(in)                    :: classA
         type(lfpack_type)       , intent(in)                    :: packA
@@ -3192,11 +3192,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hpmv_ASS_CHA_SLA_CNB_SFB_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)            , intent(in)    , optional      :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(:)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(:)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(:)
+        use pm_kind, only: IKG => IK4
+        integer(IKG)            , intent(in)    , optional      :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(:)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(:)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(:)
         type(lowDia_type)       , intent(in)                    :: subsetA
         type(hermitian_type)    , intent(in)                    :: classA
         type(lfpack_type)       , intent(in)                    :: packA
@@ -3208,11 +3208,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hpmv_ASS_CHA_SLA_CNB_SFB_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)            , intent(in)    , optional      :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(:)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(:)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(:)
+        use pm_kind, only: IKG => IK3
+        integer(IKG)            , intent(in)    , optional      :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(:)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(:)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(:)
         type(lowDia_type)       , intent(in)                    :: subsetA
         type(hermitian_type)    , intent(in)                    :: classA
         type(lfpack_type)       , intent(in)                    :: packA
@@ -3224,11 +3224,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hpmv_ASS_CHA_SLA_CNB_SFB_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)            , intent(in)    , optional      :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(:)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(:)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(:)
+        use pm_kind, only: IKG => IK2
+        integer(IKG)            , intent(in)    , optional      :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(:)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(:)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(:)
         type(lowDia_type)       , intent(in)                    :: subsetA
         type(hermitian_type)    , intent(in)                    :: classA
         type(lfpack_type)       , intent(in)                    :: packA
@@ -3240,11 +3240,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hpmv_ASS_CHA_SLA_CNB_SFB_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)            , intent(in)    , optional      :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(:)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(:)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(:)
+        use pm_kind, only: IKG => IK1
+        integer(IKG)            , intent(in)    , optional      :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(:)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(:)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(:)
         type(lowDia_type)       , intent(in)                    :: subsetA
         type(hermitian_type)    , intent(in)                    :: classA
         type(lfpack_type)       , intent(in)                    :: packA
@@ -3258,11 +3258,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hpmv_ASS_CHA_SLA_CNB_SFB_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)            , intent(in)    , optional      :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(:)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(:)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG)            , intent(in)    , optional      :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(:)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(:)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(:)
         type(lowDia_type)       , intent(in)                    :: subsetA
         type(hermitian_type)    , intent(in)                    :: classA
         type(lfpack_type)       , intent(in)                    :: packA
@@ -3274,11 +3274,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hpmv_ASS_CHA_SLA_CNB_SFB_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)            , intent(in)    , optional      :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(:)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(:)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG)            , intent(in)    , optional      :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(:)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(:)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(:)
         type(lowDia_type)       , intent(in)                    :: subsetA
         type(hermitian_type)    , intent(in)                    :: classA
         type(lfpack_type)       , intent(in)                    :: packA
@@ -3290,11 +3290,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hpmv_ASS_CHA_SLA_CNB_SFB_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)            , intent(in)    , optional      :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(:)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(:)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG)            , intent(in)    , optional      :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(:)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(:)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(:)
         type(lowDia_type)       , intent(in)                    :: subsetA
         type(hermitian_type)    , intent(in)                    :: classA
         type(lfpack_type)       , intent(in)                    :: packA
@@ -3306,11 +3306,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hpmv_ASS_CHA_SLA_CNB_SFB_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)            , intent(in)    , optional      :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(:)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(:)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG)            , intent(in)    , optional      :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(:)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(:)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(:)
         type(lowDia_type)       , intent(in)                    :: subsetA
         type(hermitian_type)    , intent(in)                    :: classA
         type(lfpack_type)       , intent(in)                    :: packA
@@ -3322,11 +3322,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hpmv_ASS_CHA_SLA_CNB_SFB_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)            , intent(in)    , optional      :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(:)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(:)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG)            , intent(in)    , optional      :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(:)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(:)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(:)
         type(lowDia_type)       , intent(in)                    :: subsetA
         type(hermitian_type)    , intent(in)                    :: classA
         type(lfpack_type)       , intent(in)                    :: packA
@@ -3340,11 +3340,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hpmv_ASS_CHA_SLA_CNB_SFB_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)               , intent(in)    , optional      :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(:)
-        real(RKC)               , intent(in)    , contiguous    :: matB(:)
-        real(RKC)               , intent(inout) , contiguous    :: matC(:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)               , intent(in)    , optional      :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(:)
+        real(RKG)               , intent(in)    , contiguous    :: matB(:)
+        real(RKG)               , intent(inout) , contiguous    :: matC(:)
         type(lowDia_type)       , intent(in)                    :: subsetA
         type(hermitian_type)    , intent(in)                    :: classA
         type(lfpack_type)       , intent(in)                    :: packA
@@ -3356,11 +3356,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hpmv_ASS_CHA_SLA_CNB_SFB_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)               , intent(in)    , optional      :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(:)
-        real(RKC)               , intent(in)    , contiguous    :: matB(:)
-        real(RKC)               , intent(inout) , contiguous    :: matC(:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)               , intent(in)    , optional      :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(:)
+        real(RKG)               , intent(in)    , contiguous    :: matB(:)
+        real(RKG)               , intent(inout) , contiguous    :: matC(:)
         type(lowDia_type)       , intent(in)                    :: subsetA
         type(hermitian_type)    , intent(in)                    :: classA
         type(lfpack_type)       , intent(in)                    :: packA
@@ -3372,11 +3372,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hpmv_ASS_CHA_SLA_CNB_SFB_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)               , intent(in)    , optional      :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(:)
-        real(RKC)               , intent(in)    , contiguous    :: matB(:)
-        real(RKC)               , intent(inout) , contiguous    :: matC(:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)               , intent(in)    , optional      :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(:)
+        real(RKG)               , intent(in)    , contiguous    :: matB(:)
+        real(RKG)               , intent(inout) , contiguous    :: matC(:)
         type(lowDia_type)       , intent(in)                    :: subsetA
         type(hermitian_type)    , intent(in)                    :: classA
         type(lfpack_type)       , intent(in)                    :: packA
@@ -3388,11 +3388,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hpmv_ASS_CHA_SLA_CNB_SFB_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)               , intent(in)    , optional      :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(:)
-        real(RKC)               , intent(in)    , contiguous    :: matB(:)
-        real(RKC)               , intent(inout) , contiguous    :: matC(:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)               , intent(in)    , optional      :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(:)
+        real(RKG)               , intent(in)    , contiguous    :: matB(:)
+        real(RKG)               , intent(inout) , contiguous    :: matC(:)
         type(lowDia_type)       , intent(in)                    :: subsetA
         type(hermitian_type)    , intent(in)                    :: classA
         type(lfpack_type)       , intent(in)                    :: packA
@@ -3404,11 +3404,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hpmv_ASS_CHA_SLA_CNB_SFB_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)               , intent(in)    , optional      :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(:)
-        real(RKC)               , intent(in)    , contiguous    :: matB(:)
-        real(RKC)               , intent(inout) , contiguous    :: matC(:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)               , intent(in)    , optional      :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(:)
+        real(RKG)               , intent(in)    , contiguous    :: matB(:)
+        real(RKG)               , intent(inout) , contiguous    :: matC(:)
         type(lowDia_type)       , intent(in)                    :: subsetA
         type(hermitian_type)    , intent(in)                    :: classA
         type(lfpack_type)       , intent(in)                    :: packA
@@ -3432,12 +3432,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hpmv_EXP_CHA_SUA_CNB_SFB_IK5
 #endif
-        use pm_kind, only: IKC => IK5
+        use pm_kind, only: IKG => IK5
         integer(IK)             , intent(in)                    :: ndim, incB, incC
-        integer(IKC)            , intent(in)                    :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(:)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(:)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(:)
+        integer(IKG)            , intent(in)                    :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(:)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(:)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(:)
         type(uppDia_type)       , intent(in)                    :: subsetA
         type(hermitian_type)    , intent(in)                    :: classA
         type(lfpack_type)       , intent(in)                    :: packA
@@ -3449,12 +3449,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hpmv_EXP_CHA_SUA_CNB_SFB_IK4
 #endif
-        use pm_kind, only: IKC => IK4
+        use pm_kind, only: IKG => IK4
         integer(IK)             , intent(in)                    :: ndim, incB, incC
-        integer(IKC)            , intent(in)                    :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(:)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(:)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(:)
+        integer(IKG)            , intent(in)                    :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(:)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(:)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(:)
         type(uppDia_type)       , intent(in)                    :: subsetA
         type(hermitian_type)    , intent(in)                    :: classA
         type(lfpack_type)       , intent(in)                    :: packA
@@ -3466,12 +3466,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hpmv_EXP_CHA_SUA_CNB_SFB_IK3
 #endif
-        use pm_kind, only: IKC => IK3
+        use pm_kind, only: IKG => IK3
         integer(IK)             , intent(in)                    :: ndim, incB, incC
-        integer(IKC)            , intent(in)                    :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(:)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(:)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(:)
+        integer(IKG)            , intent(in)                    :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(:)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(:)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(:)
         type(uppDia_type)       , intent(in)                    :: subsetA
         type(hermitian_type)    , intent(in)                    :: classA
         type(lfpack_type)       , intent(in)                    :: packA
@@ -3483,12 +3483,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hpmv_EXP_CHA_SUA_CNB_SFB_IK2
 #endif
-        use pm_kind, only: IKC => IK2
+        use pm_kind, only: IKG => IK2
         integer(IK)             , intent(in)                    :: ndim, incB, incC
-        integer(IKC)            , intent(in)                    :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(:)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(:)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(:)
+        integer(IKG)            , intent(in)                    :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(:)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(:)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(:)
         type(uppDia_type)       , intent(in)                    :: subsetA
         type(hermitian_type)    , intent(in)                    :: classA
         type(lfpack_type)       , intent(in)                    :: packA
@@ -3500,12 +3500,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hpmv_EXP_CHA_SUA_CNB_SFB_IK1
 #endif
-        use pm_kind, only: IKC => IK1
+        use pm_kind, only: IKG => IK1
         integer(IK)             , intent(in)                    :: ndim, incB, incC
-        integer(IKC)            , intent(in)                    :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(:)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(:)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(:)
+        integer(IKG)            , intent(in)                    :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(:)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(:)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(:)
         type(uppDia_type)       , intent(in)                    :: subsetA
         type(hermitian_type)    , intent(in)                    :: classA
         type(lfpack_type)       , intent(in)                    :: packA
@@ -3519,12 +3519,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hpmv_EXP_CHA_SUA_CNB_SFB_CK5
 #endif
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
         integer(IK)             , intent(in)                    :: ndim, incB, incC
-        complex(CKC)            , intent(in)                    :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(:)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(:)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(:)
+        complex(CKG)            , intent(in)                    :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(:)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(:)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(:)
         type(uppDia_type)       , intent(in)                    :: subsetA
         type(hermitian_type)    , intent(in)                    :: classA
         type(lfpack_type)       , intent(in)                    :: packA
@@ -3536,12 +3536,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hpmv_EXP_CHA_SUA_CNB_SFB_CK4
 #endif
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
         integer(IK)             , intent(in)                    :: ndim, incB, incC
-        complex(CKC)            , intent(in)                    :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(:)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(:)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(:)
+        complex(CKG)            , intent(in)                    :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(:)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(:)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(:)
         type(uppDia_type)       , intent(in)                    :: subsetA
         type(hermitian_type)    , intent(in)                    :: classA
         type(lfpack_type)       , intent(in)                    :: packA
@@ -3553,12 +3553,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hpmv_EXP_CHA_SUA_CNB_SFB_CK3
 #endif
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
         integer(IK)             , intent(in)                    :: ndim, incB, incC
-        complex(CKC)            , intent(in)                    :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(:)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(:)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(:)
+        complex(CKG)            , intent(in)                    :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(:)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(:)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(:)
         type(uppDia_type)       , intent(in)                    :: subsetA
         type(hermitian_type)    , intent(in)                    :: classA
         type(lfpack_type)       , intent(in)                    :: packA
@@ -3570,12 +3570,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hpmv_EXP_CHA_SUA_CNB_SFB_CK2
 #endif
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
         integer(IK)             , intent(in)                    :: ndim, incB, incC
-        complex(CKC)            , intent(in)                    :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(:)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(:)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(:)
+        complex(CKG)            , intent(in)                    :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(:)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(:)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(:)
         type(uppDia_type)       , intent(in)                    :: subsetA
         type(hermitian_type)    , intent(in)                    :: classA
         type(lfpack_type)       , intent(in)                    :: packA
@@ -3587,12 +3587,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hpmv_EXP_CHA_SUA_CNB_SFB_CK1
 #endif
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
         integer(IK)             , intent(in)                    :: ndim, incB, incC
-        complex(CKC)            , intent(in)                    :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(:)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(:)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(:)
+        complex(CKG)            , intent(in)                    :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(:)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(:)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(:)
         type(uppDia_type)       , intent(in)                    :: subsetA
         type(hermitian_type)    , intent(in)                    :: classA
         type(lfpack_type)       , intent(in)                    :: packA
@@ -3606,12 +3606,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hpmv_EXP_CHA_SUA_CNB_SFB_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         integer(IK)             , intent(in)                    :: ndim, incB, incC
-        real(RKC)               , intent(in)                    :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(:)
-        real(RKC)               , intent(in)    , contiguous    :: matB(:)
-        real(RKC)               , intent(inout) , contiguous    :: matC(:)
+        real(RKG)               , intent(in)                    :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(:)
+        real(RKG)               , intent(in)    , contiguous    :: matB(:)
+        real(RKG)               , intent(inout) , contiguous    :: matC(:)
         type(uppDia_type)       , intent(in)                    :: subsetA
         type(hermitian_type)    , intent(in)                    :: classA
         type(lfpack_type)       , intent(in)                    :: packA
@@ -3623,12 +3623,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hpmv_EXP_CHA_SUA_CNB_SFB_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         integer(IK)             , intent(in)                    :: ndim, incB, incC
-        real(RKC)               , intent(in)                    :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(:)
-        real(RKC)               , intent(in)    , contiguous    :: matB(:)
-        real(RKC)               , intent(inout) , contiguous    :: matC(:)
+        real(RKG)               , intent(in)                    :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(:)
+        real(RKG)               , intent(in)    , contiguous    :: matB(:)
+        real(RKG)               , intent(inout) , contiguous    :: matC(:)
         type(uppDia_type)       , intent(in)                    :: subsetA
         type(hermitian_type)    , intent(in)                    :: classA
         type(lfpack_type)       , intent(in)                    :: packA
@@ -3640,12 +3640,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hpmv_EXP_CHA_SUA_CNB_SFB_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         integer(IK)             , intent(in)                    :: ndim, incB, incC
-        real(RKC)               , intent(in)                    :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(:)
-        real(RKC)               , intent(in)    , contiguous    :: matB(:)
-        real(RKC)               , intent(inout) , contiguous    :: matC(:)
+        real(RKG)               , intent(in)                    :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(:)
+        real(RKG)               , intent(in)    , contiguous    :: matB(:)
+        real(RKG)               , intent(inout) , contiguous    :: matC(:)
         type(uppDia_type)       , intent(in)                    :: subsetA
         type(hermitian_type)    , intent(in)                    :: classA
         type(lfpack_type)       , intent(in)                    :: packA
@@ -3657,12 +3657,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hpmv_EXP_CHA_SUA_CNB_SFB_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         integer(IK)             , intent(in)                    :: ndim, incB, incC
-        real(RKC)               , intent(in)                    :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(:)
-        real(RKC)               , intent(in)    , contiguous    :: matB(:)
-        real(RKC)               , intent(inout) , contiguous    :: matC(:)
+        real(RKG)               , intent(in)                    :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(:)
+        real(RKG)               , intent(in)    , contiguous    :: matB(:)
+        real(RKG)               , intent(inout) , contiguous    :: matC(:)
         type(uppDia_type)       , intent(in)                    :: subsetA
         type(hermitian_type)    , intent(in)                    :: classA
         type(lfpack_type)       , intent(in)                    :: packA
@@ -3674,12 +3674,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hpmv_EXP_CHA_SUA_CNB_SFB_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         integer(IK)             , intent(in)                    :: ndim, incB, incC
-        real(RKC)               , intent(in)                    :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(:)
-        real(RKC)               , intent(in)    , contiguous    :: matB(:)
-        real(RKC)               , intent(inout) , contiguous    :: matC(:)
+        real(RKG)               , intent(in)                    :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(:)
+        real(RKG)               , intent(in)    , contiguous    :: matB(:)
+        real(RKG)               , intent(inout) , contiguous    :: matC(:)
         type(uppDia_type)       , intent(in)                    :: subsetA
         type(hermitian_type)    , intent(in)                    :: classA
         type(lfpack_type)       , intent(in)                    :: packA
@@ -3699,12 +3699,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hpmv_EXP_CHA_SLA_CNB_SFB_IK5
 #endif
-        use pm_kind, only: IKC => IK5
+        use pm_kind, only: IKG => IK5
         integer(IK)             , intent(in)                    :: ndim, incB, incC
-        integer(IKC)            , intent(in)                    :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(:)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(:)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(:)
+        integer(IKG)            , intent(in)                    :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(:)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(:)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(:)
         type(lowDia_type)       , intent(in)                    :: subsetA
         type(hermitian_type)    , intent(in)                    :: classA
         type(lfpack_type)       , intent(in)                    :: packA
@@ -3716,12 +3716,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hpmv_EXP_CHA_SLA_CNB_SFB_IK4
 #endif
-        use pm_kind, only: IKC => IK4
+        use pm_kind, only: IKG => IK4
         integer(IK)             , intent(in)                    :: ndim, incB, incC
-        integer(IKC)            , intent(in)                    :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(:)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(:)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(:)
+        integer(IKG)            , intent(in)                    :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(:)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(:)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(:)
         type(lowDia_type)       , intent(in)                    :: subsetA
         type(hermitian_type)    , intent(in)                    :: classA
         type(lfpack_type)       , intent(in)                    :: packA
@@ -3733,12 +3733,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hpmv_EXP_CHA_SLA_CNB_SFB_IK3
 #endif
-        use pm_kind, only: IKC => IK3
+        use pm_kind, only: IKG => IK3
         integer(IK)             , intent(in)                    :: ndim, incB, incC
-        integer(IKC)            , intent(in)                    :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(:)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(:)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(:)
+        integer(IKG)            , intent(in)                    :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(:)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(:)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(:)
         type(lowDia_type)       , intent(in)                    :: subsetA
         type(hermitian_type)    , intent(in)                    :: classA
         type(lfpack_type)       , intent(in)                    :: packA
@@ -3750,12 +3750,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hpmv_EXP_CHA_SLA_CNB_SFB_IK2
 #endif
-        use pm_kind, only: IKC => IK2
+        use pm_kind, only: IKG => IK2
         integer(IK)             , intent(in)                    :: ndim, incB, incC
-        integer(IKC)            , intent(in)                    :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(:)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(:)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(:)
+        integer(IKG)            , intent(in)                    :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(:)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(:)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(:)
         type(lowDia_type)       , intent(in)                    :: subsetA
         type(hermitian_type)    , intent(in)                    :: classA
         type(lfpack_type)       , intent(in)                    :: packA
@@ -3767,12 +3767,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hpmv_EXP_CHA_SLA_CNB_SFB_IK1
 #endif
-        use pm_kind, only: IKC => IK1
+        use pm_kind, only: IKG => IK1
         integer(IK)             , intent(in)                    :: ndim, incB, incC
-        integer(IKC)            , intent(in)                    :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(:)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(:)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(:)
+        integer(IKG)            , intent(in)                    :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(:)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(:)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(:)
         type(lowDia_type)       , intent(in)                    :: subsetA
         type(hermitian_type)    , intent(in)                    :: classA
         type(lfpack_type)       , intent(in)                    :: packA
@@ -3786,12 +3786,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hpmv_EXP_CHA_SLA_CNB_SFB_CK5
 #endif
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
         integer(IK)             , intent(in)                    :: ndim, incB, incC
-        complex(CKC)            , intent(in)                    :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(:)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(:)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(:)
+        complex(CKG)            , intent(in)                    :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(:)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(:)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(:)
         type(lowDia_type)       , intent(in)                    :: subsetA
         type(hermitian_type)    , intent(in)                    :: classA
         type(lfpack_type)       , intent(in)                    :: packA
@@ -3803,12 +3803,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hpmv_EXP_CHA_SLA_CNB_SFB_CK4
 #endif
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
         integer(IK)             , intent(in)                    :: ndim, incB, incC
-        complex(CKC)            , intent(in)                    :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(:)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(:)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(:)
+        complex(CKG)            , intent(in)                    :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(:)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(:)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(:)
         type(lowDia_type)       , intent(in)                    :: subsetA
         type(hermitian_type)    , intent(in)                    :: classA
         type(lfpack_type)       , intent(in)                    :: packA
@@ -3820,12 +3820,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hpmv_EXP_CHA_SLA_CNB_SFB_CK3
 #endif
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
         integer(IK)             , intent(in)                    :: ndim, incB, incC
-        complex(CKC)            , intent(in)                    :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(:)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(:)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(:)
+        complex(CKG)            , intent(in)                    :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(:)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(:)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(:)
         type(lowDia_type)       , intent(in)                    :: subsetA
         type(hermitian_type)    , intent(in)                    :: classA
         type(lfpack_type)       , intent(in)                    :: packA
@@ -3837,12 +3837,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hpmv_EXP_CHA_SLA_CNB_SFB_CK2
 #endif
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
         integer(IK)             , intent(in)                    :: ndim, incB, incC
-        complex(CKC)            , intent(in)                    :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(:)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(:)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(:)
+        complex(CKG)            , intent(in)                    :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(:)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(:)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(:)
         type(lowDia_type)       , intent(in)                    :: subsetA
         type(hermitian_type)    , intent(in)                    :: classA
         type(lfpack_type)       , intent(in)                    :: packA
@@ -3854,12 +3854,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hpmv_EXP_CHA_SLA_CNB_SFB_CK1
 #endif
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
         integer(IK)             , intent(in)                    :: ndim, incB, incC
-        complex(CKC)            , intent(in)                    :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(:)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(:)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(:)
+        complex(CKG)            , intent(in)                    :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(:)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(:)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(:)
         type(lowDia_type)       , intent(in)                    :: subsetA
         type(hermitian_type)    , intent(in)                    :: classA
         type(lfpack_type)       , intent(in)                    :: packA
@@ -3873,12 +3873,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hpmv_EXP_CHA_SLA_CNB_SFB_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         integer(IK)             , intent(in)                    :: ndim, incB, incC
-        real(RKC)               , intent(in)                    :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(:)
-        real(RKC)               , intent(in)    , contiguous    :: matB(:)
-        real(RKC)               , intent(inout) , contiguous    :: matC(:)
+        real(RKG)               , intent(in)                    :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(:)
+        real(RKG)               , intent(in)    , contiguous    :: matB(:)
+        real(RKG)               , intent(inout) , contiguous    :: matC(:)
         type(lowDia_type)       , intent(in)                    :: subsetA
         type(hermitian_type)    , intent(in)                    :: classA
         type(lfpack_type)       , intent(in)                    :: packA
@@ -3890,12 +3890,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hpmv_EXP_CHA_SLA_CNB_SFB_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         integer(IK)             , intent(in)                    :: ndim, incB, incC
-        real(RKC)               , intent(in)                    :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(:)
-        real(RKC)               , intent(in)    , contiguous    :: matB(:)
-        real(RKC)               , intent(inout) , contiguous    :: matC(:)
+        real(RKG)               , intent(in)                    :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(:)
+        real(RKG)               , intent(in)    , contiguous    :: matB(:)
+        real(RKG)               , intent(inout) , contiguous    :: matC(:)
         type(lowDia_type)       , intent(in)                    :: subsetA
         type(hermitian_type)    , intent(in)                    :: classA
         type(lfpack_type)       , intent(in)                    :: packA
@@ -3907,12 +3907,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hpmv_EXP_CHA_SLA_CNB_SFB_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         integer(IK)             , intent(in)                    :: ndim, incB, incC
-        real(RKC)               , intent(in)                    :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(:)
-        real(RKC)               , intent(in)    , contiguous    :: matB(:)
-        real(RKC)               , intent(inout) , contiguous    :: matC(:)
+        real(RKG)               , intent(in)                    :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(:)
+        real(RKG)               , intent(in)    , contiguous    :: matB(:)
+        real(RKG)               , intent(inout) , contiguous    :: matC(:)
         type(lowDia_type)       , intent(in)                    :: subsetA
         type(hermitian_type)    , intent(in)                    :: classA
         type(lfpack_type)       , intent(in)                    :: packA
@@ -3924,12 +3924,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hpmv_EXP_CHA_SLA_CNB_SFB_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         integer(IK)             , intent(in)                    :: ndim, incB, incC
-        real(RKC)               , intent(in)                    :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(:)
-        real(RKC)               , intent(in)    , contiguous    :: matB(:)
-        real(RKC)               , intent(inout) , contiguous    :: matC(:)
+        real(RKG)               , intent(in)                    :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(:)
+        real(RKG)               , intent(in)    , contiguous    :: matB(:)
+        real(RKG)               , intent(inout) , contiguous    :: matC(:)
         type(lowDia_type)       , intent(in)                    :: subsetA
         type(hermitian_type)    , intent(in)                    :: classA
         type(lfpack_type)       , intent(in)                    :: packA
@@ -3941,12 +3941,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hpmv_EXP_CHA_SLA_CNB_SFB_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         integer(IK)             , intent(in)                    :: ndim, incB, incC
-        real(RKC)               , intent(in)                    :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(:)
-        real(RKC)               , intent(in)    , contiguous    :: matB(:)
-        real(RKC)               , intent(inout) , contiguous    :: matC(:)
+        real(RKG)               , intent(in)                    :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(:)
+        real(RKG)               , intent(in)    , contiguous    :: matB(:)
+        real(RKG)               , intent(inout) , contiguous    :: matC(:)
         type(lowDia_type)       , intent(in)                    :: subsetA
         type(hermitian_type)    , intent(in)                    :: classA
         type(lfpack_type)       , intent(in)                    :: packA
@@ -3980,11 +3980,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: symv_ASS_CSA_SUA_CNB_SFB_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)            , intent(in)    , optional      :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(:,:)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(:)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(:)
+        use pm_kind, only: IKG => IK5
+        integer(IKG)            , intent(in)    , optional      :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(:,:)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(:)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(:)
         type(uppDia_type)       , intent(in)                    :: subsetA
         type(symmetric_type)    , intent(in)                    :: classA
     end subroutine
@@ -3995,11 +3995,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: symv_ASS_CSA_SUA_CNB_SFB_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)            , intent(in)    , optional      :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(:,:)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(:)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(:)
+        use pm_kind, only: IKG => IK4
+        integer(IKG)            , intent(in)    , optional      :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(:,:)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(:)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(:)
         type(uppDia_type)       , intent(in)                    :: subsetA
         type(symmetric_type)    , intent(in)                    :: classA
     end subroutine
@@ -4010,11 +4010,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: symv_ASS_CSA_SUA_CNB_SFB_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)            , intent(in)    , optional      :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(:,:)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(:)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(:)
+        use pm_kind, only: IKG => IK3
+        integer(IKG)            , intent(in)    , optional      :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(:,:)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(:)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(:)
         type(uppDia_type)       , intent(in)                    :: subsetA
         type(symmetric_type)    , intent(in)                    :: classA
     end subroutine
@@ -4025,11 +4025,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: symv_ASS_CSA_SUA_CNB_SFB_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)            , intent(in)    , optional      :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(:,:)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(:)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(:)
+        use pm_kind, only: IKG => IK2
+        integer(IKG)            , intent(in)    , optional      :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(:,:)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(:)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(:)
         type(uppDia_type)       , intent(in)                    :: subsetA
         type(symmetric_type)    , intent(in)                    :: classA
     end subroutine
@@ -4040,11 +4040,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: symv_ASS_CSA_SUA_CNB_SFB_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)            , intent(in)    , optional      :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(:,:)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(:)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(:)
+        use pm_kind, only: IKG => IK1
+        integer(IKG)            , intent(in)    , optional      :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(:,:)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(:)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(:)
         type(uppDia_type)       , intent(in)                    :: subsetA
         type(symmetric_type)    , intent(in)                    :: classA
     end subroutine
@@ -4057,11 +4057,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: symv_ASS_CSA_SUA_CNB_SFB_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)            , intent(in)    , optional      :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(:,:)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(:)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG)            , intent(in)    , optional      :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(:,:)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(:)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(:)
         type(uppDia_type)       , intent(in)                    :: subsetA
         type(symmetric_type)    , intent(in)                    :: classA
     end subroutine
@@ -4072,11 +4072,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: symv_ASS_CSA_SUA_CNB_SFB_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)            , intent(in)    , optional      :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(:,:)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(:)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG)            , intent(in)    , optional      :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(:,:)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(:)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(:)
         type(uppDia_type)       , intent(in)                    :: subsetA
         type(symmetric_type)    , intent(in)                    :: classA
     end subroutine
@@ -4087,11 +4087,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: symv_ASS_CSA_SUA_CNB_SFB_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)            , intent(in)    , optional      :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(:,:)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(:)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG)            , intent(in)    , optional      :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(:,:)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(:)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(:)
         type(uppDia_type)       , intent(in)                    :: subsetA
         type(symmetric_type)    , intent(in)                    :: classA
     end subroutine
@@ -4102,11 +4102,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: symv_ASS_CSA_SUA_CNB_SFB_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)            , intent(in)    , optional      :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(:,:)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(:)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG)            , intent(in)    , optional      :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(:,:)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(:)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(:)
         type(uppDia_type)       , intent(in)                    :: subsetA
         type(symmetric_type)    , intent(in)                    :: classA
     end subroutine
@@ -4117,11 +4117,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: symv_ASS_CSA_SUA_CNB_SFB_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)            , intent(in)    , optional      :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(:,:)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(:)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG)            , intent(in)    , optional      :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(:,:)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(:)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(:)
         type(uppDia_type)       , intent(in)                    :: subsetA
         type(symmetric_type)    , intent(in)                    :: classA
     end subroutine
@@ -4134,11 +4134,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: symv_ASS_CSA_SUA_CNB_SFB_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)               , intent(in)    , optional      :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(:,:)
-        real(RKC)               , intent(in)    , contiguous    :: matB(:)
-        real(RKC)               , intent(inout) , contiguous    :: matC(:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)               , intent(in)    , optional      :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(:,:)
+        real(RKG)               , intent(in)    , contiguous    :: matB(:)
+        real(RKG)               , intent(inout) , contiguous    :: matC(:)
         type(uppDia_type)       , intent(in)                    :: subsetA
         type(symmetric_type)    , intent(in)                    :: classA
     end subroutine
@@ -4149,11 +4149,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: symv_ASS_CSA_SUA_CNB_SFB_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)               , intent(in)    , optional      :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(:,:)
-        real(RKC)               , intent(in)    , contiguous    :: matB(:)
-        real(RKC)               , intent(inout) , contiguous    :: matC(:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)               , intent(in)    , optional      :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(:,:)
+        real(RKG)               , intent(in)    , contiguous    :: matB(:)
+        real(RKG)               , intent(inout) , contiguous    :: matC(:)
         type(uppDia_type)       , intent(in)                    :: subsetA
         type(symmetric_type)    , intent(in)                    :: classA
     end subroutine
@@ -4164,11 +4164,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: symv_ASS_CSA_SUA_CNB_SFB_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)               , intent(in)    , optional      :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(:,:)
-        real(RKC)               , intent(in)    , contiguous    :: matB(:)
-        real(RKC)               , intent(inout) , contiguous    :: matC(:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)               , intent(in)    , optional      :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(:,:)
+        real(RKG)               , intent(in)    , contiguous    :: matB(:)
+        real(RKG)               , intent(inout) , contiguous    :: matC(:)
         type(uppDia_type)       , intent(in)                    :: subsetA
         type(symmetric_type)    , intent(in)                    :: classA
     end subroutine
@@ -4179,11 +4179,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: symv_ASS_CSA_SUA_CNB_SFB_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)               , intent(in)    , optional      :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(:,:)
-        real(RKC)               , intent(in)    , contiguous    :: matB(:)
-        real(RKC)               , intent(inout) , contiguous    :: matC(:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)               , intent(in)    , optional      :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(:,:)
+        real(RKG)               , intent(in)    , contiguous    :: matB(:)
+        real(RKG)               , intent(inout) , contiguous    :: matC(:)
         type(uppDia_type)       , intent(in)                    :: subsetA
         type(symmetric_type)    , intent(in)                    :: classA
     end subroutine
@@ -4194,11 +4194,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: symv_ASS_CSA_SUA_CNB_SFB_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)               , intent(in)    , optional      :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(:,:)
-        real(RKC)               , intent(in)    , contiguous    :: matB(:)
-        real(RKC)               , intent(inout) , contiguous    :: matC(:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)               , intent(in)    , optional      :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(:,:)
+        real(RKG)               , intent(in)    , contiguous    :: matB(:)
+        real(RKG)               , intent(inout) , contiguous    :: matC(:)
         type(uppDia_type)       , intent(in)                    :: subsetA
         type(symmetric_type)    , intent(in)                    :: classA
     end subroutine
@@ -4217,11 +4217,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: symv_ASS_CSA_SLA_CNB_SFB_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)            , intent(in)    , optional      :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(:,:)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(:)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(:)
+        use pm_kind, only: IKG => IK5
+        integer(IKG)            , intent(in)    , optional      :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(:,:)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(:)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(:)
         type(lowDia_type)       , intent(in)                    :: subsetA
         type(symmetric_type)    , intent(in)                    :: classA
     end subroutine
@@ -4232,11 +4232,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: symv_ASS_CSA_SLA_CNB_SFB_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)            , intent(in)    , optional      :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(:,:)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(:)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(:)
+        use pm_kind, only: IKG => IK4
+        integer(IKG)            , intent(in)    , optional      :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(:,:)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(:)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(:)
         type(lowDia_type)       , intent(in)                    :: subsetA
         type(symmetric_type)    , intent(in)                    :: classA
     end subroutine
@@ -4247,11 +4247,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: symv_ASS_CSA_SLA_CNB_SFB_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)            , intent(in)    , optional      :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(:,:)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(:)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(:)
+        use pm_kind, only: IKG => IK3
+        integer(IKG)            , intent(in)    , optional      :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(:,:)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(:)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(:)
         type(lowDia_type)       , intent(in)                    :: subsetA
         type(symmetric_type)    , intent(in)                    :: classA
     end subroutine
@@ -4262,11 +4262,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: symv_ASS_CSA_SLA_CNB_SFB_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)            , intent(in)    , optional      :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(:,:)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(:)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(:)
+        use pm_kind, only: IKG => IK2
+        integer(IKG)            , intent(in)    , optional      :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(:,:)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(:)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(:)
         type(lowDia_type)       , intent(in)                    :: subsetA
         type(symmetric_type)    , intent(in)                    :: classA
     end subroutine
@@ -4277,11 +4277,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: symv_ASS_CSA_SLA_CNB_SFB_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)            , intent(in)    , optional      :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(:,:)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(:)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(:)
+        use pm_kind, only: IKG => IK1
+        integer(IKG)            , intent(in)    , optional      :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(:,:)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(:)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(:)
         type(lowDia_type)       , intent(in)                    :: subsetA
         type(symmetric_type)    , intent(in)                    :: classA
     end subroutine
@@ -4294,11 +4294,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: symv_ASS_CSA_SLA_CNB_SFB_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)            , intent(in)    , optional      :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(:,:)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(:)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG)            , intent(in)    , optional      :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(:,:)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(:)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(:)
         type(lowDia_type)       , intent(in)                    :: subsetA
         type(symmetric_type)    , intent(in)                    :: classA
     end subroutine
@@ -4309,11 +4309,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: symv_ASS_CSA_SLA_CNB_SFB_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)            , intent(in)    , optional      :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(:,:)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(:)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG)            , intent(in)    , optional      :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(:,:)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(:)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(:)
         type(lowDia_type)       , intent(in)                    :: subsetA
         type(symmetric_type)    , intent(in)                    :: classA
     end subroutine
@@ -4324,11 +4324,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: symv_ASS_CSA_SLA_CNB_SFB_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)            , intent(in)    , optional      :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(:,:)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(:)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG)            , intent(in)    , optional      :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(:,:)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(:)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(:)
         type(lowDia_type)       , intent(in)                    :: subsetA
         type(symmetric_type)    , intent(in)                    :: classA
     end subroutine
@@ -4339,11 +4339,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: symv_ASS_CSA_SLA_CNB_SFB_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)            , intent(in)    , optional      :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(:,:)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(:)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG)            , intent(in)    , optional      :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(:,:)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(:)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(:)
         type(lowDia_type)       , intent(in)                    :: subsetA
         type(symmetric_type)    , intent(in)                    :: classA
     end subroutine
@@ -4354,11 +4354,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: symv_ASS_CSA_SLA_CNB_SFB_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)            , intent(in)    , optional      :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(:,:)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(:)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG)            , intent(in)    , optional      :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(:,:)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(:)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(:)
         type(lowDia_type)       , intent(in)                    :: subsetA
         type(symmetric_type)    , intent(in)                    :: classA
     end subroutine
@@ -4371,11 +4371,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: symv_ASS_CSA_SLA_CNB_SFB_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)               , intent(in)    , optional      :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(:,:)
-        real(RKC)               , intent(in)    , contiguous    :: matB(:)
-        real(RKC)               , intent(inout) , contiguous    :: matC(:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)               , intent(in)    , optional      :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(:,:)
+        real(RKG)               , intent(in)    , contiguous    :: matB(:)
+        real(RKG)               , intent(inout) , contiguous    :: matC(:)
         type(lowDia_type)       , intent(in)                    :: subsetA
         type(symmetric_type)    , intent(in)                    :: classA
     end subroutine
@@ -4386,11 +4386,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: symv_ASS_CSA_SLA_CNB_SFB_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)               , intent(in)    , optional      :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(:,:)
-        real(RKC)               , intent(in)    , contiguous    :: matB(:)
-        real(RKC)               , intent(inout) , contiguous    :: matC(:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)               , intent(in)    , optional      :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(:,:)
+        real(RKG)               , intent(in)    , contiguous    :: matB(:)
+        real(RKG)               , intent(inout) , contiguous    :: matC(:)
         type(lowDia_type)       , intent(in)                    :: subsetA
         type(symmetric_type)    , intent(in)                    :: classA
     end subroutine
@@ -4401,11 +4401,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: symv_ASS_CSA_SLA_CNB_SFB_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)               , intent(in)    , optional      :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(:,:)
-        real(RKC)               , intent(in)    , contiguous    :: matB(:)
-        real(RKC)               , intent(inout) , contiguous    :: matC(:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)               , intent(in)    , optional      :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(:,:)
+        real(RKG)               , intent(in)    , contiguous    :: matB(:)
+        real(RKG)               , intent(inout) , contiguous    :: matC(:)
         type(lowDia_type)       , intent(in)                    :: subsetA
         type(symmetric_type)    , intent(in)                    :: classA
     end subroutine
@@ -4416,11 +4416,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: symv_ASS_CSA_SLA_CNB_SFB_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)               , intent(in)    , optional      :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(:,:)
-        real(RKC)               , intent(in)    , contiguous    :: matB(:)
-        real(RKC)               , intent(inout) , contiguous    :: matC(:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)               , intent(in)    , optional      :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(:,:)
+        real(RKG)               , intent(in)    , contiguous    :: matB(:)
+        real(RKG)               , intent(inout) , contiguous    :: matC(:)
         type(lowDia_type)       , intent(in)                    :: subsetA
         type(symmetric_type)    , intent(in)                    :: classA
     end subroutine
@@ -4431,11 +4431,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: symv_ASS_CSA_SLA_CNB_SFB_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)               , intent(in)    , optional      :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(:,:)
-        real(RKC)               , intent(in)    , contiguous    :: matB(:)
-        real(RKC)               , intent(inout) , contiguous    :: matC(:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)               , intent(in)    , optional      :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(:,:)
+        real(RKG)               , intent(in)    , contiguous    :: matB(:)
+        real(RKG)               , intent(inout) , contiguous    :: matC(:)
         type(lowDia_type)       , intent(in)                    :: subsetA
         type(symmetric_type)    , intent(in)                    :: classA
     end subroutine
@@ -4458,12 +4458,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: symv_EXP_CSA_SUA_CNB_SFB_IK5
 #endif
-        use pm_kind, only: IKC => IK5
+        use pm_kind, only: IKG => IK5
         integer(IK)             , intent(in)                    :: ndim, roffA, coffA, incB, incC
-        integer(IKC)            , intent(in)                    :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(:)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(:)
+        integer(IKG)            , intent(in)                    :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(:)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(:)
         type(uppDia_type)       , intent(in)                    :: subsetA
         type(symmetric_type)    , intent(in)                    :: classA
     end subroutine
@@ -4474,12 +4474,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: symv_EXP_CSA_SUA_CNB_SFB_IK4
 #endif
-        use pm_kind, only: IKC => IK4
+        use pm_kind, only: IKG => IK4
         integer(IK)             , intent(in)                    :: ndim, roffA, coffA, incB, incC
-        integer(IKC)            , intent(in)                    :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(:)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(:)
+        integer(IKG)            , intent(in)                    :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(:)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(:)
         type(uppDia_type)       , intent(in)                    :: subsetA
         type(symmetric_type)    , intent(in)                    :: classA
     end subroutine
@@ -4490,12 +4490,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: symv_EXP_CSA_SUA_CNB_SFB_IK3
 #endif
-        use pm_kind, only: IKC => IK3
+        use pm_kind, only: IKG => IK3
         integer(IK)             , intent(in)                    :: ndim, roffA, coffA, incB, incC
-        integer(IKC)            , intent(in)                    :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(:)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(:)
+        integer(IKG)            , intent(in)                    :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(:)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(:)
         type(uppDia_type)       , intent(in)                    :: subsetA
         type(symmetric_type)    , intent(in)                    :: classA
     end subroutine
@@ -4506,12 +4506,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: symv_EXP_CSA_SUA_CNB_SFB_IK2
 #endif
-        use pm_kind, only: IKC => IK2
+        use pm_kind, only: IKG => IK2
         integer(IK)             , intent(in)                    :: ndim, roffA, coffA, incB, incC
-        integer(IKC)            , intent(in)                    :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(:)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(:)
+        integer(IKG)            , intent(in)                    :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(:)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(:)
         type(uppDia_type)       , intent(in)                    :: subsetA
         type(symmetric_type)    , intent(in)                    :: classA
     end subroutine
@@ -4522,12 +4522,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: symv_EXP_CSA_SUA_CNB_SFB_IK1
 #endif
-        use pm_kind, only: IKC => IK1
+        use pm_kind, only: IKG => IK1
         integer(IK)             , intent(in)                    :: ndim, roffA, coffA, incB, incC
-        integer(IKC)            , intent(in)                    :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(:)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(:)
+        integer(IKG)            , intent(in)                    :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(:)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(:)
         type(uppDia_type)       , intent(in)                    :: subsetA
         type(symmetric_type)    , intent(in)                    :: classA
     end subroutine
@@ -4540,12 +4540,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: symv_EXP_CSA_SUA_CNB_SFB_CK5
 #endif
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
         integer(IK)             , intent(in)                    :: ndim, roffA, coffA, incB, incC
-        complex(CKC)            , intent(in)                    :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(:)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(:)
+        complex(CKG)            , intent(in)                    :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(:)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(:)
         type(uppDia_type)       , intent(in)                    :: subsetA
         type(symmetric_type)    , intent(in)                    :: classA
     end subroutine
@@ -4556,12 +4556,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: symv_EXP_CSA_SUA_CNB_SFB_CK4
 #endif
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
         integer(IK)             , intent(in)                    :: ndim, roffA, coffA, incB, incC
-        complex(CKC)            , intent(in)                    :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(:)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(:)
+        complex(CKG)            , intent(in)                    :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(:)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(:)
         type(uppDia_type)       , intent(in)                    :: subsetA
         type(symmetric_type)    , intent(in)                    :: classA
     end subroutine
@@ -4572,12 +4572,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: symv_EXP_CSA_SUA_CNB_SFB_CK3
 #endif
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
         integer(IK)             , intent(in)                    :: ndim, roffA, coffA, incB, incC
-        complex(CKC)            , intent(in)                    :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(:)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(:)
+        complex(CKG)            , intent(in)                    :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(:)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(:)
         type(uppDia_type)       , intent(in)                    :: subsetA
         type(symmetric_type)    , intent(in)                    :: classA
     end subroutine
@@ -4588,12 +4588,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: symv_EXP_CSA_SUA_CNB_SFB_CK2
 #endif
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
         integer(IK)             , intent(in)                    :: ndim, roffA, coffA, incB, incC
-        complex(CKC)            , intent(in)                    :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(:)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(:)
+        complex(CKG)            , intent(in)                    :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(:)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(:)
         type(uppDia_type)       , intent(in)                    :: subsetA
         type(symmetric_type)    , intent(in)                    :: classA
     end subroutine
@@ -4604,12 +4604,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: symv_EXP_CSA_SUA_CNB_SFB_CK1
 #endif
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
         integer(IK)             , intent(in)                    :: ndim, roffA, coffA, incB, incC
-        complex(CKC)            , intent(in)                    :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(:)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(:)
+        complex(CKG)            , intent(in)                    :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(:)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(:)
         type(uppDia_type)       , intent(in)                    :: subsetA
         type(symmetric_type)    , intent(in)                    :: classA
     end subroutine
@@ -4622,12 +4622,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: symv_EXP_CSA_SUA_CNB_SFB_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         integer(IK)             , intent(in)                    :: ndim, roffA, coffA, incB, incC
-        real(RKC)               , intent(in)                    :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        real(RKC)               , intent(in)    , contiguous    :: matB(:)
-        real(RKC)               , intent(inout) , contiguous    :: matC(:)
+        real(RKG)               , intent(in)                    :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        real(RKG)               , intent(in)    , contiguous    :: matB(:)
+        real(RKG)               , intent(inout) , contiguous    :: matC(:)
         type(uppDia_type)       , intent(in)                    :: subsetA
         type(symmetric_type)    , intent(in)                    :: classA
     end subroutine
@@ -4638,12 +4638,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: symv_EXP_CSA_SUA_CNB_SFB_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         integer(IK)             , intent(in)                    :: ndim, roffA, coffA, incB, incC
-        real(RKC)               , intent(in)                    :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        real(RKC)               , intent(in)    , contiguous    :: matB(:)
-        real(RKC)               , intent(inout) , contiguous    :: matC(:)
+        real(RKG)               , intent(in)                    :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        real(RKG)               , intent(in)    , contiguous    :: matB(:)
+        real(RKG)               , intent(inout) , contiguous    :: matC(:)
         type(uppDia_type)       , intent(in)                    :: subsetA
         type(symmetric_type)    , intent(in)                    :: classA
     end subroutine
@@ -4654,12 +4654,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: symv_EXP_CSA_SUA_CNB_SFB_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         integer(IK)             , intent(in)                    :: ndim, roffA, coffA, incB, incC
-        real(RKC)               , intent(in)                    :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        real(RKC)               , intent(in)    , contiguous    :: matB(:)
-        real(RKC)               , intent(inout) , contiguous    :: matC(:)
+        real(RKG)               , intent(in)                    :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        real(RKG)               , intent(in)    , contiguous    :: matB(:)
+        real(RKG)               , intent(inout) , contiguous    :: matC(:)
         type(uppDia_type)       , intent(in)                    :: subsetA
         type(symmetric_type)    , intent(in)                    :: classA
     end subroutine
@@ -4670,12 +4670,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: symv_EXP_CSA_SUA_CNB_SFB_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         integer(IK)             , intent(in)                    :: ndim, roffA, coffA, incB, incC
-        real(RKC)               , intent(in)                    :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        real(RKC)               , intent(in)    , contiguous    :: matB(:)
-        real(RKC)               , intent(inout) , contiguous    :: matC(:)
+        real(RKG)               , intent(in)                    :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        real(RKG)               , intent(in)    , contiguous    :: matB(:)
+        real(RKG)               , intent(inout) , contiguous    :: matC(:)
         type(uppDia_type)       , intent(in)                    :: subsetA
         type(symmetric_type)    , intent(in)                    :: classA
     end subroutine
@@ -4686,12 +4686,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: symv_EXP_CSA_SUA_CNB_SFB_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         integer(IK)             , intent(in)                    :: ndim, roffA, coffA, incB, incC
-        real(RKC)               , intent(in)                    :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        real(RKC)               , intent(in)    , contiguous    :: matB(:)
-        real(RKC)               , intent(inout) , contiguous    :: matC(:)
+        real(RKG)               , intent(in)                    :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        real(RKG)               , intent(in)    , contiguous    :: matB(:)
+        real(RKG)               , intent(inout) , contiguous    :: matC(:)
         type(uppDia_type)       , intent(in)                    :: subsetA
         type(symmetric_type)    , intent(in)                    :: classA
     end subroutine
@@ -4710,12 +4710,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: symv_EXP_CSA_SLA_CNB_SFB_IK5
 #endif
-        use pm_kind, only: IKC => IK5
+        use pm_kind, only: IKG => IK5
         integer(IK)             , intent(in)                    :: ndim, roffA, coffA, incB, incC
-        integer(IKC)            , intent(in)                    :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(:)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(:)
+        integer(IKG)            , intent(in)                    :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(:)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(:)
         type(lowDia_type)       , intent(in)                    :: subsetA
         type(symmetric_type)    , intent(in)                    :: classA
     end subroutine
@@ -4726,12 +4726,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: symv_EXP_CSA_SLA_CNB_SFB_IK4
 #endif
-        use pm_kind, only: IKC => IK4
+        use pm_kind, only: IKG => IK4
         integer(IK)             , intent(in)                    :: ndim, roffA, coffA, incB, incC
-        integer(IKC)            , intent(in)                    :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(:)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(:)
+        integer(IKG)            , intent(in)                    :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(:)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(:)
         type(lowDia_type)       , intent(in)                    :: subsetA
         type(symmetric_type)    , intent(in)                    :: classA
     end subroutine
@@ -4742,12 +4742,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: symv_EXP_CSA_SLA_CNB_SFB_IK3
 #endif
-        use pm_kind, only: IKC => IK3
+        use pm_kind, only: IKG => IK3
         integer(IK)             , intent(in)                    :: ndim, roffA, coffA, incB, incC
-        integer(IKC)            , intent(in)                    :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(:)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(:)
+        integer(IKG)            , intent(in)                    :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(:)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(:)
         type(lowDia_type)       , intent(in)                    :: subsetA
         type(symmetric_type)    , intent(in)                    :: classA
     end subroutine
@@ -4758,12 +4758,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: symv_EXP_CSA_SLA_CNB_SFB_IK2
 #endif
-        use pm_kind, only: IKC => IK2
+        use pm_kind, only: IKG => IK2
         integer(IK)             , intent(in)                    :: ndim, roffA, coffA, incB, incC
-        integer(IKC)            , intent(in)                    :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(:)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(:)
+        integer(IKG)            , intent(in)                    :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(:)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(:)
         type(lowDia_type)       , intent(in)                    :: subsetA
         type(symmetric_type)    , intent(in)                    :: classA
     end subroutine
@@ -4774,12 +4774,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: symv_EXP_CSA_SLA_CNB_SFB_IK1
 #endif
-        use pm_kind, only: IKC => IK1
+        use pm_kind, only: IKG => IK1
         integer(IK)             , intent(in)                    :: ndim, roffA, coffA, incB, incC
-        integer(IKC)            , intent(in)                    :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(:)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(:)
+        integer(IKG)            , intent(in)                    :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(:)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(:)
         type(lowDia_type)       , intent(in)                    :: subsetA
         type(symmetric_type)    , intent(in)                    :: classA
     end subroutine
@@ -4792,12 +4792,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: symv_EXP_CSA_SLA_CNB_SFB_CK5
 #endif
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
         integer(IK)             , intent(in)                    :: ndim, roffA, coffA, incB, incC
-        complex(CKC)            , intent(in)                    :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(:)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(:)
+        complex(CKG)            , intent(in)                    :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(:)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(:)
         type(lowDia_type)       , intent(in)                    :: subsetA
         type(symmetric_type)    , intent(in)                    :: classA
     end subroutine
@@ -4808,12 +4808,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: symv_EXP_CSA_SLA_CNB_SFB_CK4
 #endif
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
         integer(IK)             , intent(in)                    :: ndim, roffA, coffA, incB, incC
-        complex(CKC)            , intent(in)                    :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(:)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(:)
+        complex(CKG)            , intent(in)                    :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(:)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(:)
         type(lowDia_type)       , intent(in)                    :: subsetA
         type(symmetric_type)    , intent(in)                    :: classA
     end subroutine
@@ -4824,12 +4824,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: symv_EXP_CSA_SLA_CNB_SFB_CK3
 #endif
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
         integer(IK)             , intent(in)                    :: ndim, roffA, coffA, incB, incC
-        complex(CKC)            , intent(in)                    :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(:)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(:)
+        complex(CKG)            , intent(in)                    :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(:)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(:)
         type(lowDia_type)       , intent(in)                    :: subsetA
         type(symmetric_type)    , intent(in)                    :: classA
     end subroutine
@@ -4840,12 +4840,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: symv_EXP_CSA_SLA_CNB_SFB_CK2
 #endif
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
         integer(IK)             , intent(in)                    :: ndim, roffA, coffA, incB, incC
-        complex(CKC)            , intent(in)                    :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(:)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(:)
+        complex(CKG)            , intent(in)                    :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(:)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(:)
         type(lowDia_type)       , intent(in)                    :: subsetA
         type(symmetric_type)    , intent(in)                    :: classA
     end subroutine
@@ -4856,12 +4856,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: symv_EXP_CSA_SLA_CNB_SFB_CK1
 #endif
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
         integer(IK)             , intent(in)                    :: ndim, roffA, coffA, incB, incC
-        complex(CKC)            , intent(in)                    :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(:)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(:)
+        complex(CKG)            , intent(in)                    :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(:)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(:)
         type(lowDia_type)       , intent(in)                    :: subsetA
         type(symmetric_type)    , intent(in)                    :: classA
     end subroutine
@@ -4874,12 +4874,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: symv_EXP_CSA_SLA_CNB_SFB_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         integer(IK)             , intent(in)                    :: ndim, roffA, coffA, incB, incC
-        real(RKC)               , intent(in)                    :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        real(RKC)               , intent(in)    , contiguous    :: matB(:)
-        real(RKC)               , intent(inout) , contiguous    :: matC(:)
+        real(RKG)               , intent(in)                    :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        real(RKG)               , intent(in)    , contiguous    :: matB(:)
+        real(RKG)               , intent(inout) , contiguous    :: matC(:)
         type(lowDia_type)       , intent(in)                    :: subsetA
         type(symmetric_type)    , intent(in)                    :: classA
     end subroutine
@@ -4890,12 +4890,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: symv_EXP_CSA_SLA_CNB_SFB_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         integer(IK)             , intent(in)                    :: ndim, roffA, coffA, incB, incC
-        real(RKC)               , intent(in)                    :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        real(RKC)               , intent(in)    , contiguous    :: matB(:)
-        real(RKC)               , intent(inout) , contiguous    :: matC(:)
+        real(RKG)               , intent(in)                    :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        real(RKG)               , intent(in)    , contiguous    :: matB(:)
+        real(RKG)               , intent(inout) , contiguous    :: matC(:)
         type(lowDia_type)       , intent(in)                    :: subsetA
         type(symmetric_type)    , intent(in)                    :: classA
     end subroutine
@@ -4906,12 +4906,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: symv_EXP_CSA_SLA_CNB_SFB_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         integer(IK)             , intent(in)                    :: ndim, roffA, coffA, incB, incC
-        real(RKC)               , intent(in)                    :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        real(RKC)               , intent(in)    , contiguous    :: matB(:)
-        real(RKC)               , intent(inout) , contiguous    :: matC(:)
+        real(RKG)               , intent(in)                    :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        real(RKG)               , intent(in)    , contiguous    :: matB(:)
+        real(RKG)               , intent(inout) , contiguous    :: matC(:)
         type(lowDia_type)       , intent(in)                    :: subsetA
         type(symmetric_type)    , intent(in)                    :: classA
     end subroutine
@@ -4922,12 +4922,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: symv_EXP_CSA_SLA_CNB_SFB_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         integer(IK)             , intent(in)                    :: ndim, roffA, coffA, incB, incC
-        real(RKC)               , intent(in)                    :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        real(RKC)               , intent(in)    , contiguous    :: matB(:)
-        real(RKC)               , intent(inout) , contiguous    :: matC(:)
+        real(RKG)               , intent(in)                    :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        real(RKG)               , intent(in)    , contiguous    :: matB(:)
+        real(RKG)               , intent(inout) , contiguous    :: matC(:)
         type(lowDia_type)       , intent(in)                    :: subsetA
         type(symmetric_type)    , intent(in)                    :: classA
     end subroutine
@@ -4938,12 +4938,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: symv_EXP_CSA_SLA_CNB_SFB_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         integer(IK)             , intent(in)                    :: ndim, roffA, coffA, incB, incC
-        real(RKC)               , intent(in)                    :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        real(RKC)               , intent(in)    , contiguous    :: matB(:)
-        real(RKC)               , intent(inout) , contiguous    :: matC(:)
+        real(RKG)               , intent(in)                    :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        real(RKG)               , intent(in)    , contiguous    :: matB(:)
+        real(RKG)               , intent(inout) , contiguous    :: matC(:)
         type(lowDia_type)       , intent(in)                    :: subsetA
         type(symmetric_type)    , intent(in)                    :: classA
     end subroutine
@@ -4976,11 +4976,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hemv_ASS_CHA_SUA_CNB_SFB_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)            , intent(in)    , optional      :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(:,:)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(:)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(:)
+        use pm_kind, only: IKG => IK5
+        integer(IKG)            , intent(in)    , optional      :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(:,:)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(:)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(:)
         type(uppDia_type)       , intent(in)                    :: subsetA
         type(hermitian_type)    , intent(in)                    :: classA
     end subroutine
@@ -4991,11 +4991,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hemv_ASS_CHA_SUA_CNB_SFB_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)            , intent(in)    , optional      :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(:,:)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(:)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(:)
+        use pm_kind, only: IKG => IK4
+        integer(IKG)            , intent(in)    , optional      :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(:,:)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(:)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(:)
         type(uppDia_type)       , intent(in)                    :: subsetA
         type(hermitian_type)    , intent(in)                    :: classA
     end subroutine
@@ -5006,11 +5006,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hemv_ASS_CHA_SUA_CNB_SFB_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)            , intent(in)    , optional      :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(:,:)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(:)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(:)
+        use pm_kind, only: IKG => IK3
+        integer(IKG)            , intent(in)    , optional      :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(:,:)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(:)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(:)
         type(uppDia_type)       , intent(in)                    :: subsetA
         type(hermitian_type)    , intent(in)                    :: classA
     end subroutine
@@ -5021,11 +5021,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hemv_ASS_CHA_SUA_CNB_SFB_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)            , intent(in)    , optional      :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(:,:)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(:)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(:)
+        use pm_kind, only: IKG => IK2
+        integer(IKG)            , intent(in)    , optional      :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(:,:)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(:)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(:)
         type(uppDia_type)       , intent(in)                    :: subsetA
         type(hermitian_type)    , intent(in)                    :: classA
     end subroutine
@@ -5036,11 +5036,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hemv_ASS_CHA_SUA_CNB_SFB_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)            , intent(in)    , optional      :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(:,:)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(:)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(:)
+        use pm_kind, only: IKG => IK1
+        integer(IKG)            , intent(in)    , optional      :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(:,:)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(:)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(:)
         type(uppDia_type)       , intent(in)                    :: subsetA
         type(hermitian_type)    , intent(in)                    :: classA
     end subroutine
@@ -5053,11 +5053,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hemv_ASS_CHA_SUA_CNB_SFB_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)            , intent(in)    , optional      :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(:,:)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(:)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG)            , intent(in)    , optional      :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(:,:)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(:)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(:)
         type(uppDia_type)       , intent(in)                    :: subsetA
         type(hermitian_type)    , intent(in)                    :: classA
     end subroutine
@@ -5068,11 +5068,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hemv_ASS_CHA_SUA_CNB_SFB_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)            , intent(in)    , optional      :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(:,:)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(:)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG)            , intent(in)    , optional      :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(:,:)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(:)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(:)
         type(uppDia_type)       , intent(in)                    :: subsetA
         type(hermitian_type)    , intent(in)                    :: classA
     end subroutine
@@ -5083,11 +5083,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hemv_ASS_CHA_SUA_CNB_SFB_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)            , intent(in)    , optional      :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(:,:)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(:)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG)            , intent(in)    , optional      :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(:,:)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(:)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(:)
         type(uppDia_type)       , intent(in)                    :: subsetA
         type(hermitian_type)    , intent(in)                    :: classA
     end subroutine
@@ -5098,11 +5098,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hemv_ASS_CHA_SUA_CNB_SFB_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)            , intent(in)    , optional      :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(:,:)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(:)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG)            , intent(in)    , optional      :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(:,:)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(:)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(:)
         type(uppDia_type)       , intent(in)                    :: subsetA
         type(hermitian_type)    , intent(in)                    :: classA
     end subroutine
@@ -5113,11 +5113,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hemv_ASS_CHA_SUA_CNB_SFB_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)            , intent(in)    , optional      :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(:,:)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(:)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG)            , intent(in)    , optional      :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(:,:)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(:)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(:)
         type(uppDia_type)       , intent(in)                    :: subsetA
         type(hermitian_type)    , intent(in)                    :: classA
     end subroutine
@@ -5130,11 +5130,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hemv_ASS_CHA_SUA_CNB_SFB_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)               , intent(in)    , optional      :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(:,:)
-        real(RKC)               , intent(in)    , contiguous    :: matB(:)
-        real(RKC)               , intent(inout) , contiguous    :: matC(:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)               , intent(in)    , optional      :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(:,:)
+        real(RKG)               , intent(in)    , contiguous    :: matB(:)
+        real(RKG)               , intent(inout) , contiguous    :: matC(:)
         type(uppDia_type)       , intent(in)                    :: subsetA
         type(hermitian_type)    , intent(in)                    :: classA
     end subroutine
@@ -5145,11 +5145,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hemv_ASS_CHA_SUA_CNB_SFB_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)               , intent(in)    , optional      :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(:,:)
-        real(RKC)               , intent(in)    , contiguous    :: matB(:)
-        real(RKC)               , intent(inout) , contiguous    :: matC(:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)               , intent(in)    , optional      :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(:,:)
+        real(RKG)               , intent(in)    , contiguous    :: matB(:)
+        real(RKG)               , intent(inout) , contiguous    :: matC(:)
         type(uppDia_type)       , intent(in)                    :: subsetA
         type(hermitian_type)    , intent(in)                    :: classA
     end subroutine
@@ -5160,11 +5160,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hemv_ASS_CHA_SUA_CNB_SFB_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)               , intent(in)    , optional      :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(:,:)
-        real(RKC)               , intent(in)    , contiguous    :: matB(:)
-        real(RKC)               , intent(inout) , contiguous    :: matC(:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)               , intent(in)    , optional      :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(:,:)
+        real(RKG)               , intent(in)    , contiguous    :: matB(:)
+        real(RKG)               , intent(inout) , contiguous    :: matC(:)
         type(uppDia_type)       , intent(in)                    :: subsetA
         type(hermitian_type)    , intent(in)                    :: classA
     end subroutine
@@ -5175,11 +5175,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hemv_ASS_CHA_SUA_CNB_SFB_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)               , intent(in)    , optional      :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(:,:)
-        real(RKC)               , intent(in)    , contiguous    :: matB(:)
-        real(RKC)               , intent(inout) , contiguous    :: matC(:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)               , intent(in)    , optional      :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(:,:)
+        real(RKG)               , intent(in)    , contiguous    :: matB(:)
+        real(RKG)               , intent(inout) , contiguous    :: matC(:)
         type(uppDia_type)       , intent(in)                    :: subsetA
         type(hermitian_type)    , intent(in)                    :: classA
     end subroutine
@@ -5190,11 +5190,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hemv_ASS_CHA_SUA_CNB_SFB_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)               , intent(in)    , optional      :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(:,:)
-        real(RKC)               , intent(in)    , contiguous    :: matB(:)
-        real(RKC)               , intent(inout) , contiguous    :: matC(:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)               , intent(in)    , optional      :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(:,:)
+        real(RKG)               , intent(in)    , contiguous    :: matB(:)
+        real(RKG)               , intent(inout) , contiguous    :: matC(:)
         type(uppDia_type)       , intent(in)                    :: subsetA
         type(hermitian_type)    , intent(in)                    :: classA
     end subroutine
@@ -5213,11 +5213,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hemv_ASS_CHA_SLA_CNB_SFB_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)            , intent(in)    , optional      :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(:,:)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(:)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(:)
+        use pm_kind, only: IKG => IK5
+        integer(IKG)            , intent(in)    , optional      :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(:,:)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(:)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(:)
         type(lowDia_type)       , intent(in)                    :: subsetA
         type(hermitian_type)    , intent(in)                    :: classA
     end subroutine
@@ -5228,11 +5228,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hemv_ASS_CHA_SLA_CNB_SFB_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)            , intent(in)    , optional      :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(:,:)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(:)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(:)
+        use pm_kind, only: IKG => IK4
+        integer(IKG)            , intent(in)    , optional      :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(:,:)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(:)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(:)
         type(lowDia_type)       , intent(in)                    :: subsetA
         type(hermitian_type)    , intent(in)                    :: classA
     end subroutine
@@ -5243,11 +5243,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hemv_ASS_CHA_SLA_CNB_SFB_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)            , intent(in)    , optional      :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(:,:)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(:)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(:)
+        use pm_kind, only: IKG => IK3
+        integer(IKG)            , intent(in)    , optional      :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(:,:)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(:)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(:)
         type(lowDia_type)       , intent(in)                    :: subsetA
         type(hermitian_type)    , intent(in)                    :: classA
     end subroutine
@@ -5258,11 +5258,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hemv_ASS_CHA_SLA_CNB_SFB_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)            , intent(in)    , optional      :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(:,:)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(:)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(:)
+        use pm_kind, only: IKG => IK2
+        integer(IKG)            , intent(in)    , optional      :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(:,:)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(:)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(:)
         type(lowDia_type)       , intent(in)                    :: subsetA
         type(hermitian_type)    , intent(in)                    :: classA
     end subroutine
@@ -5273,11 +5273,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hemv_ASS_CHA_SLA_CNB_SFB_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)            , intent(in)    , optional      :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(:,:)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(:)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(:)
+        use pm_kind, only: IKG => IK1
+        integer(IKG)            , intent(in)    , optional      :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(:,:)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(:)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(:)
         type(lowDia_type)       , intent(in)                    :: subsetA
         type(hermitian_type)    , intent(in)                    :: classA
     end subroutine
@@ -5290,11 +5290,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hemv_ASS_CHA_SLA_CNB_SFB_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)            , intent(in)    , optional      :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(:,:)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(:)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG)            , intent(in)    , optional      :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(:,:)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(:)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(:)
         type(lowDia_type)       , intent(in)                    :: subsetA
         type(hermitian_type)    , intent(in)                    :: classA
     end subroutine
@@ -5305,11 +5305,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hemv_ASS_CHA_SLA_CNB_SFB_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)            , intent(in)    , optional      :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(:,:)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(:)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG)            , intent(in)    , optional      :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(:,:)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(:)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(:)
         type(lowDia_type)       , intent(in)                    :: subsetA
         type(hermitian_type)    , intent(in)                    :: classA
     end subroutine
@@ -5320,11 +5320,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hemv_ASS_CHA_SLA_CNB_SFB_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)            , intent(in)    , optional      :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(:,:)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(:)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG)            , intent(in)    , optional      :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(:,:)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(:)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(:)
         type(lowDia_type)       , intent(in)                    :: subsetA
         type(hermitian_type)    , intent(in)                    :: classA
     end subroutine
@@ -5335,11 +5335,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hemv_ASS_CHA_SLA_CNB_SFB_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)            , intent(in)    , optional      :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(:,:)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(:)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG)            , intent(in)    , optional      :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(:,:)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(:)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(:)
         type(lowDia_type)       , intent(in)                    :: subsetA
         type(hermitian_type)    , intent(in)                    :: classA
     end subroutine
@@ -5350,11 +5350,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hemv_ASS_CHA_SLA_CNB_SFB_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)            , intent(in)    , optional      :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(:,:)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(:)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG)            , intent(in)    , optional      :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(:,:)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(:)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(:)
         type(lowDia_type)       , intent(in)                    :: subsetA
         type(hermitian_type)    , intent(in)                    :: classA
     end subroutine
@@ -5367,11 +5367,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hemv_ASS_CHA_SLA_CNB_SFB_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)               , intent(in)    , optional      :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(:,:)
-        real(RKC)               , intent(in)    , contiguous    :: matB(:)
-        real(RKC)               , intent(inout) , contiguous    :: matC(:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)               , intent(in)    , optional      :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(:,:)
+        real(RKG)               , intent(in)    , contiguous    :: matB(:)
+        real(RKG)               , intent(inout) , contiguous    :: matC(:)
         type(lowDia_type)       , intent(in)                    :: subsetA
         type(hermitian_type)    , intent(in)                    :: classA
     end subroutine
@@ -5382,11 +5382,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hemv_ASS_CHA_SLA_CNB_SFB_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)               , intent(in)    , optional      :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(:,:)
-        real(RKC)               , intent(in)    , contiguous    :: matB(:)
-        real(RKC)               , intent(inout) , contiguous    :: matC(:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)               , intent(in)    , optional      :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(:,:)
+        real(RKG)               , intent(in)    , contiguous    :: matB(:)
+        real(RKG)               , intent(inout) , contiguous    :: matC(:)
         type(lowDia_type)       , intent(in)                    :: subsetA
         type(hermitian_type)    , intent(in)                    :: classA
     end subroutine
@@ -5397,11 +5397,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hemv_ASS_CHA_SLA_CNB_SFB_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)               , intent(in)    , optional      :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(:,:)
-        real(RKC)               , intent(in)    , contiguous    :: matB(:)
-        real(RKC)               , intent(inout) , contiguous    :: matC(:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)               , intent(in)    , optional      :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(:,:)
+        real(RKG)               , intent(in)    , contiguous    :: matB(:)
+        real(RKG)               , intent(inout) , contiguous    :: matC(:)
         type(lowDia_type)       , intent(in)                    :: subsetA
         type(hermitian_type)    , intent(in)                    :: classA
     end subroutine
@@ -5412,11 +5412,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hemv_ASS_CHA_SLA_CNB_SFB_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)               , intent(in)    , optional      :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(:,:)
-        real(RKC)               , intent(in)    , contiguous    :: matB(:)
-        real(RKC)               , intent(inout) , contiguous    :: matC(:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)               , intent(in)    , optional      :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(:,:)
+        real(RKG)               , intent(in)    , contiguous    :: matB(:)
+        real(RKG)               , intent(inout) , contiguous    :: matC(:)
         type(lowDia_type)       , intent(in)                    :: subsetA
         type(hermitian_type)    , intent(in)                    :: classA
     end subroutine
@@ -5427,11 +5427,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hemv_ASS_CHA_SLA_CNB_SFB_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)               , intent(in)    , optional      :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(:,:)
-        real(RKC)               , intent(in)    , contiguous    :: matB(:)
-        real(RKC)               , intent(inout) , contiguous    :: matC(:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)               , intent(in)    , optional      :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(:,:)
+        real(RKG)               , intent(in)    , contiguous    :: matB(:)
+        real(RKG)               , intent(inout) , contiguous    :: matC(:)
         type(lowDia_type)       , intent(in)                    :: subsetA
         type(hermitian_type)    , intent(in)                    :: classA
     end subroutine
@@ -5454,12 +5454,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hemv_EXP_CHA_SUA_CNB_SFB_IK5
 #endif
-        use pm_kind, only: IKC => IK5
+        use pm_kind, only: IKG => IK5
         integer(IK)             , intent(in)                    :: ndim, roffA, coffA, incB, incC
-        integer(IKC)            , intent(in)                    :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(:)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(:)
+        integer(IKG)            , intent(in)                    :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(:)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(:)
         type(uppDia_type)       , intent(in)                    :: subsetA
         type(hermitian_type)    , intent(in)                    :: classA
     end subroutine
@@ -5470,12 +5470,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hemv_EXP_CHA_SUA_CNB_SFB_IK4
 #endif
-        use pm_kind, only: IKC => IK4
+        use pm_kind, only: IKG => IK4
         integer(IK)             , intent(in)                    :: ndim, roffA, coffA, incB, incC
-        integer(IKC)            , intent(in)                    :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(:)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(:)
+        integer(IKG)            , intent(in)                    :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(:)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(:)
         type(uppDia_type)       , intent(in)                    :: subsetA
         type(hermitian_type)    , intent(in)                    :: classA
     end subroutine
@@ -5486,12 +5486,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hemv_EXP_CHA_SUA_CNB_SFB_IK3
 #endif
-        use pm_kind, only: IKC => IK3
+        use pm_kind, only: IKG => IK3
         integer(IK)             , intent(in)                    :: ndim, roffA, coffA, incB, incC
-        integer(IKC)            , intent(in)                    :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(:)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(:)
+        integer(IKG)            , intent(in)                    :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(:)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(:)
         type(uppDia_type)       , intent(in)                    :: subsetA
         type(hermitian_type)    , intent(in)                    :: classA
     end subroutine
@@ -5502,12 +5502,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hemv_EXP_CHA_SUA_CNB_SFB_IK2
 #endif
-        use pm_kind, only: IKC => IK2
+        use pm_kind, only: IKG => IK2
         integer(IK)             , intent(in)                    :: ndim, roffA, coffA, incB, incC
-        integer(IKC)            , intent(in)                    :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(:)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(:)
+        integer(IKG)            , intent(in)                    :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(:)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(:)
         type(uppDia_type)       , intent(in)                    :: subsetA
         type(hermitian_type)    , intent(in)                    :: classA
     end subroutine
@@ -5518,12 +5518,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hemv_EXP_CHA_SUA_CNB_SFB_IK1
 #endif
-        use pm_kind, only: IKC => IK1
+        use pm_kind, only: IKG => IK1
         integer(IK)             , intent(in)                    :: ndim, roffA, coffA, incB, incC
-        integer(IKC)            , intent(in)                    :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(:)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(:)
+        integer(IKG)            , intent(in)                    :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(:)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(:)
         type(uppDia_type)       , intent(in)                    :: subsetA
         type(hermitian_type)    , intent(in)                    :: classA
     end subroutine
@@ -5536,12 +5536,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hemv_EXP_CHA_SUA_CNB_SFB_CK5
 #endif
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
         integer(IK)             , intent(in)                    :: ndim, roffA, coffA, incB, incC
-        complex(CKC)            , intent(in)                    :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(:)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(:)
+        complex(CKG)            , intent(in)                    :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(:)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(:)
         type(uppDia_type)       , intent(in)                    :: subsetA
         type(hermitian_type)    , intent(in)                    :: classA
     end subroutine
@@ -5552,12 +5552,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hemv_EXP_CHA_SUA_CNB_SFB_CK4
 #endif
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
         integer(IK)             , intent(in)                    :: ndim, roffA, coffA, incB, incC
-        complex(CKC)            , intent(in)                    :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(:)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(:)
+        complex(CKG)            , intent(in)                    :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(:)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(:)
         type(uppDia_type)       , intent(in)                    :: subsetA
         type(hermitian_type)    , intent(in)                    :: classA
     end subroutine
@@ -5568,12 +5568,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hemv_EXP_CHA_SUA_CNB_SFB_CK3
 #endif
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
         integer(IK)             , intent(in)                    :: ndim, roffA, coffA, incB, incC
-        complex(CKC)            , intent(in)                    :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(:)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(:)
+        complex(CKG)            , intent(in)                    :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(:)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(:)
         type(uppDia_type)       , intent(in)                    :: subsetA
         type(hermitian_type)    , intent(in)                    :: classA
     end subroutine
@@ -5584,12 +5584,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hemv_EXP_CHA_SUA_CNB_SFB_CK2
 #endif
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
         integer(IK)             , intent(in)                    :: ndim, roffA, coffA, incB, incC
-        complex(CKC)            , intent(in)                    :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(:)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(:)
+        complex(CKG)            , intent(in)                    :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(:)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(:)
         type(uppDia_type)       , intent(in)                    :: subsetA
         type(hermitian_type)    , intent(in)                    :: classA
     end subroutine
@@ -5600,12 +5600,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hemv_EXP_CHA_SUA_CNB_SFB_CK1
 #endif
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
         integer(IK)             , intent(in)                    :: ndim, roffA, coffA, incB, incC
-        complex(CKC)            , intent(in)                    :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(:)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(:)
+        complex(CKG)            , intent(in)                    :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(:)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(:)
         type(uppDia_type)       , intent(in)                    :: subsetA
         type(hermitian_type)    , intent(in)                    :: classA
     end subroutine
@@ -5618,12 +5618,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hemv_EXP_CHA_SUA_CNB_SFB_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         integer(IK)             , intent(in)                    :: ndim, roffA, coffA, incB, incC
-        real(RKC)               , intent(in)                    :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        real(RKC)               , intent(in)    , contiguous    :: matB(:)
-        real(RKC)               , intent(inout) , contiguous    :: matC(:)
+        real(RKG)               , intent(in)                    :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        real(RKG)               , intent(in)    , contiguous    :: matB(:)
+        real(RKG)               , intent(inout) , contiguous    :: matC(:)
         type(uppDia_type)       , intent(in)                    :: subsetA
         type(hermitian_type)    , intent(in)                    :: classA
     end subroutine
@@ -5634,12 +5634,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hemv_EXP_CHA_SUA_CNB_SFB_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         integer(IK)             , intent(in)                    :: ndim, roffA, coffA, incB, incC
-        real(RKC)               , intent(in)                    :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        real(RKC)               , intent(in)    , contiguous    :: matB(:)
-        real(RKC)               , intent(inout) , contiguous    :: matC(:)
+        real(RKG)               , intent(in)                    :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        real(RKG)               , intent(in)    , contiguous    :: matB(:)
+        real(RKG)               , intent(inout) , contiguous    :: matC(:)
         type(uppDia_type)       , intent(in)                    :: subsetA
         type(hermitian_type)    , intent(in)                    :: classA
     end subroutine
@@ -5650,12 +5650,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hemv_EXP_CHA_SUA_CNB_SFB_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         integer(IK)             , intent(in)                    :: ndim, roffA, coffA, incB, incC
-        real(RKC)               , intent(in)                    :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        real(RKC)               , intent(in)    , contiguous    :: matB(:)
-        real(RKC)               , intent(inout) , contiguous    :: matC(:)
+        real(RKG)               , intent(in)                    :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        real(RKG)               , intent(in)    , contiguous    :: matB(:)
+        real(RKG)               , intent(inout) , contiguous    :: matC(:)
         type(uppDia_type)       , intent(in)                    :: subsetA
         type(hermitian_type)    , intent(in)                    :: classA
     end subroutine
@@ -5666,12 +5666,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hemv_EXP_CHA_SUA_CNB_SFB_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         integer(IK)             , intent(in)                    :: ndim, roffA, coffA, incB, incC
-        real(RKC)               , intent(in)                    :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        real(RKC)               , intent(in)    , contiguous    :: matB(:)
-        real(RKC)               , intent(inout) , contiguous    :: matC(:)
+        real(RKG)               , intent(in)                    :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        real(RKG)               , intent(in)    , contiguous    :: matB(:)
+        real(RKG)               , intent(inout) , contiguous    :: matC(:)
         type(uppDia_type)       , intent(in)                    :: subsetA
         type(hermitian_type)    , intent(in)                    :: classA
     end subroutine
@@ -5682,12 +5682,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hemv_EXP_CHA_SUA_CNB_SFB_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         integer(IK)             , intent(in)                    :: ndim, roffA, coffA, incB, incC
-        real(RKC)               , intent(in)                    :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        real(RKC)               , intent(in)    , contiguous    :: matB(:)
-        real(RKC)               , intent(inout) , contiguous    :: matC(:)
+        real(RKG)               , intent(in)                    :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        real(RKG)               , intent(in)    , contiguous    :: matB(:)
+        real(RKG)               , intent(inout) , contiguous    :: matC(:)
         type(uppDia_type)       , intent(in)                    :: subsetA
         type(hermitian_type)    , intent(in)                    :: classA
     end subroutine
@@ -5706,12 +5706,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hemv_EXP_CHA_SLA_CNB_SFB_IK5
 #endif
-        use pm_kind, only: IKC => IK5
+        use pm_kind, only: IKG => IK5
         integer(IK)             , intent(in)                    :: ndim, roffA, coffA, incB, incC
-        integer(IKC)            , intent(in)                    :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(:)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(:)
+        integer(IKG)            , intent(in)                    :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(:)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(:)
         type(lowDia_type)       , intent(in)                    :: subsetA
         type(hermitian_type)    , intent(in)                    :: classA
     end subroutine
@@ -5722,12 +5722,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hemv_EXP_CHA_SLA_CNB_SFB_IK4
 #endif
-        use pm_kind, only: IKC => IK4
+        use pm_kind, only: IKG => IK4
         integer(IK)             , intent(in)                    :: ndim, roffA, coffA, incB, incC
-        integer(IKC)            , intent(in)                    :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(:)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(:)
+        integer(IKG)            , intent(in)                    :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(:)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(:)
         type(lowDia_type)       , intent(in)                    :: subsetA
         type(hermitian_type)    , intent(in)                    :: classA
     end subroutine
@@ -5738,12 +5738,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hemv_EXP_CHA_SLA_CNB_SFB_IK3
 #endif
-        use pm_kind, only: IKC => IK3
+        use pm_kind, only: IKG => IK3
         integer(IK)             , intent(in)                    :: ndim, roffA, coffA, incB, incC
-        integer(IKC)            , intent(in)                    :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(:)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(:)
+        integer(IKG)            , intent(in)                    :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(:)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(:)
         type(lowDia_type)       , intent(in)                    :: subsetA
         type(hermitian_type)    , intent(in)                    :: classA
     end subroutine
@@ -5754,12 +5754,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hemv_EXP_CHA_SLA_CNB_SFB_IK2
 #endif
-        use pm_kind, only: IKC => IK2
+        use pm_kind, only: IKG => IK2
         integer(IK)             , intent(in)                    :: ndim, roffA, coffA, incB, incC
-        integer(IKC)            , intent(in)                    :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(:)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(:)
+        integer(IKG)            , intent(in)                    :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(:)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(:)
         type(lowDia_type)       , intent(in)                    :: subsetA
         type(hermitian_type)    , intent(in)                    :: classA
     end subroutine
@@ -5770,12 +5770,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hemv_EXP_CHA_SLA_CNB_SFB_IK1
 #endif
-        use pm_kind, only: IKC => IK1
+        use pm_kind, only: IKG => IK1
         integer(IK)             , intent(in)                    :: ndim, roffA, coffA, incB, incC
-        integer(IKC)            , intent(in)                    :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(:)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(:)
+        integer(IKG)            , intent(in)                    :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(:)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(:)
         type(lowDia_type)       , intent(in)                    :: subsetA
         type(hermitian_type)    , intent(in)                    :: classA
     end subroutine
@@ -5788,12 +5788,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hemv_EXP_CHA_SLA_CNB_SFB_CK5
 #endif
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
         integer(IK)             , intent(in)                    :: ndim, roffA, coffA, incB, incC
-        complex(CKC)            , intent(in)                    :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(:)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(:)
+        complex(CKG)            , intent(in)                    :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(:)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(:)
         type(lowDia_type)       , intent(in)                    :: subsetA
         type(hermitian_type)    , intent(in)                    :: classA
     end subroutine
@@ -5804,12 +5804,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hemv_EXP_CHA_SLA_CNB_SFB_CK4
 #endif
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
         integer(IK)             , intent(in)                    :: ndim, roffA, coffA, incB, incC
-        complex(CKC)            , intent(in)                    :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(:)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(:)
+        complex(CKG)            , intent(in)                    :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(:)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(:)
         type(lowDia_type)       , intent(in)                    :: subsetA
         type(hermitian_type)    , intent(in)                    :: classA
     end subroutine
@@ -5820,12 +5820,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hemv_EXP_CHA_SLA_CNB_SFB_CK3
 #endif
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
         integer(IK)             , intent(in)                    :: ndim, roffA, coffA, incB, incC
-        complex(CKC)            , intent(in)                    :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(:)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(:)
+        complex(CKG)            , intent(in)                    :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(:)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(:)
         type(lowDia_type)       , intent(in)                    :: subsetA
         type(hermitian_type)    , intent(in)                    :: classA
     end subroutine
@@ -5836,12 +5836,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hemv_EXP_CHA_SLA_CNB_SFB_CK2
 #endif
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
         integer(IK)             , intent(in)                    :: ndim, roffA, coffA, incB, incC
-        complex(CKC)            , intent(in)                    :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(:)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(:)
+        complex(CKG)            , intent(in)                    :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(:)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(:)
         type(lowDia_type)       , intent(in)                    :: subsetA
         type(hermitian_type)    , intent(in)                    :: classA
     end subroutine
@@ -5852,12 +5852,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hemv_EXP_CHA_SLA_CNB_SFB_CK1
 #endif
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
         integer(IK)             , intent(in)                    :: ndim, roffA, coffA, incB, incC
-        complex(CKC)            , intent(in)                    :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(:)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(:)
+        complex(CKG)            , intent(in)                    :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(:)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(:)
         type(lowDia_type)       , intent(in)                    :: subsetA
         type(hermitian_type)    , intent(in)                    :: classA
     end subroutine
@@ -5870,12 +5870,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hemv_EXP_CHA_SLA_CNB_SFB_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         integer(IK)             , intent(in)                    :: ndim, roffA, coffA, incB, incC
-        real(RKC)               , intent(in)                    :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        real(RKC)               , intent(in)    , contiguous    :: matB(:)
-        real(RKC)               , intent(inout) , contiguous    :: matC(:)
+        real(RKG)               , intent(in)                    :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        real(RKG)               , intent(in)    , contiguous    :: matB(:)
+        real(RKG)               , intent(inout) , contiguous    :: matC(:)
         type(lowDia_type)       , intent(in)                    :: subsetA
         type(hermitian_type)    , intent(in)                    :: classA
     end subroutine
@@ -5886,12 +5886,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hemv_EXP_CHA_SLA_CNB_SFB_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         integer(IK)             , intent(in)                    :: ndim, roffA, coffA, incB, incC
-        real(RKC)               , intent(in)                    :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        real(RKC)               , intent(in)    , contiguous    :: matB(:)
-        real(RKC)               , intent(inout) , contiguous    :: matC(:)
+        real(RKG)               , intent(in)                    :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        real(RKG)               , intent(in)    , contiguous    :: matB(:)
+        real(RKG)               , intent(inout) , contiguous    :: matC(:)
         type(lowDia_type)       , intent(in)                    :: subsetA
         type(hermitian_type)    , intent(in)                    :: classA
     end subroutine
@@ -5902,12 +5902,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hemv_EXP_CHA_SLA_CNB_SFB_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         integer(IK)             , intent(in)                    :: ndim, roffA, coffA, incB, incC
-        real(RKC)               , intent(in)                    :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        real(RKC)               , intent(in)    , contiguous    :: matB(:)
-        real(RKC)               , intent(inout) , contiguous    :: matC(:)
+        real(RKG)               , intent(in)                    :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        real(RKG)               , intent(in)    , contiguous    :: matB(:)
+        real(RKG)               , intent(inout) , contiguous    :: matC(:)
         type(lowDia_type)       , intent(in)                    :: subsetA
         type(hermitian_type)    , intent(in)                    :: classA
     end subroutine
@@ -5918,12 +5918,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hemv_EXP_CHA_SLA_CNB_SFB_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         integer(IK)             , intent(in)                    :: ndim, roffA, coffA, incB, incC
-        real(RKC)               , intent(in)                    :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        real(RKC)               , intent(in)    , contiguous    :: matB(:)
-        real(RKC)               , intent(inout) , contiguous    :: matC(:)
+        real(RKG)               , intent(in)                    :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        real(RKG)               , intent(in)    , contiguous    :: matB(:)
+        real(RKG)               , intent(inout) , contiguous    :: matC(:)
         type(lowDia_type)       , intent(in)                    :: subsetA
         type(hermitian_type)    , intent(in)                    :: classA
     end subroutine
@@ -5934,12 +5934,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hemv_EXP_CHA_SLA_CNB_SFB_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         integer(IK)             , intent(in)                    :: ndim, roffA, coffA, incB, incC
-        real(RKC)               , intent(in)                    :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        real(RKC)               , intent(in)    , contiguous    :: matB(:)
-        real(RKC)               , intent(inout) , contiguous    :: matC(:)
+        real(RKG)               , intent(in)                    :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        real(RKG)               , intent(in)    , contiguous    :: matB(:)
+        real(RKG)               , intent(inout) , contiguous    :: matC(:)
         type(lowDia_type)       , intent(in)                    :: subsetA
         type(hermitian_type)    , intent(in)                    :: classA
     end subroutine
@@ -5972,11 +5972,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: symm_ASS_CSA_SUA_CNB_SFB_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)            , intent(in)    , optional      :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(:,:)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(:,:)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: IKG => IK5
+        integer(IKG)            , intent(in)    , optional      :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(:,:)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(:,:)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(:,:)
         type(uppDia_type)       , intent(in)                    :: subsetA
         type(symmetric_type)    , intent(in)                    :: classA
     end subroutine
@@ -5987,11 +5987,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: symm_ASS_CSA_SUA_CNB_SFB_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)            , intent(in)    , optional      :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(:,:)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(:,:)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: IKG => IK4
+        integer(IKG)            , intent(in)    , optional      :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(:,:)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(:,:)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(:,:)
         type(uppDia_type)       , intent(in)                    :: subsetA
         type(symmetric_type)    , intent(in)                    :: classA
     end subroutine
@@ -6002,11 +6002,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: symm_ASS_CSA_SUA_CNB_SFB_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)            , intent(in)    , optional      :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(:,:)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(:,:)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: IKG => IK3
+        integer(IKG)            , intent(in)    , optional      :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(:,:)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(:,:)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(:,:)
         type(uppDia_type)       , intent(in)                    :: subsetA
         type(symmetric_type)    , intent(in)                    :: classA
     end subroutine
@@ -6017,11 +6017,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: symm_ASS_CSA_SUA_CNB_SFB_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)            , intent(in)    , optional      :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(:,:)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(:,:)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: IKG => IK2
+        integer(IKG)            , intent(in)    , optional      :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(:,:)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(:,:)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(:,:)
         type(uppDia_type)       , intent(in)                    :: subsetA
         type(symmetric_type)    , intent(in)                    :: classA
     end subroutine
@@ -6032,11 +6032,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: symm_ASS_CSA_SUA_CNB_SFB_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)            , intent(in)    , optional      :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(:,:)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(:,:)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: IKG => IK1
+        integer(IKG)            , intent(in)    , optional      :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(:,:)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(:,:)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(:,:)
         type(uppDia_type)       , intent(in)                    :: subsetA
         type(symmetric_type)    , intent(in)                    :: classA
     end subroutine
@@ -6049,11 +6049,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: symm_ASS_CSA_SUA_CNB_SFB_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)            , intent(in)    , optional      :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(:,:)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(:,:)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG)            , intent(in)    , optional      :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(:,:)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(:,:)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(:,:)
         type(uppDia_type)       , intent(in)                    :: subsetA
         type(symmetric_type)    , intent(in)                    :: classA
     end subroutine
@@ -6064,11 +6064,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: symm_ASS_CSA_SUA_CNB_SFB_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)            , intent(in)    , optional      :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(:,:)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(:,:)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG)            , intent(in)    , optional      :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(:,:)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(:,:)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(:,:)
         type(uppDia_type)       , intent(in)                    :: subsetA
         type(symmetric_type)    , intent(in)                    :: classA
     end subroutine
@@ -6079,11 +6079,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: symm_ASS_CSA_SUA_CNB_SFB_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)            , intent(in)    , optional      :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(:,:)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(:,:)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG)            , intent(in)    , optional      :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(:,:)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(:,:)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(:,:)
         type(uppDia_type)       , intent(in)                    :: subsetA
         type(symmetric_type)    , intent(in)                    :: classA
     end subroutine
@@ -6094,11 +6094,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: symm_ASS_CSA_SUA_CNB_SFB_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)            , intent(in)    , optional      :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(:,:)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(:,:)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG)            , intent(in)    , optional      :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(:,:)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(:,:)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(:,:)
         type(uppDia_type)       , intent(in)                    :: subsetA
         type(symmetric_type)    , intent(in)                    :: classA
     end subroutine
@@ -6109,11 +6109,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: symm_ASS_CSA_SUA_CNB_SFB_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)            , intent(in)    , optional      :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(:,:)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(:,:)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG)            , intent(in)    , optional      :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(:,:)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(:,:)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(:,:)
         type(uppDia_type)       , intent(in)                    :: subsetA
         type(symmetric_type)    , intent(in)                    :: classA
     end subroutine
@@ -6126,11 +6126,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: symm_ASS_CSA_SUA_CNB_SFB_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)               , intent(in)    , optional      :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(:,:)
-        real(RKC)               , intent(in)    , contiguous    :: matB(:,:)
-        real(RKC)               , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)               , intent(in)    , optional      :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(:,:)
+        real(RKG)               , intent(in)    , contiguous    :: matB(:,:)
+        real(RKG)               , intent(inout) , contiguous    :: matC(:,:)
         type(uppDia_type)       , intent(in)                    :: subsetA
         type(symmetric_type)    , intent(in)                    :: classA
     end subroutine
@@ -6141,11 +6141,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: symm_ASS_CSA_SUA_CNB_SFB_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)               , intent(in)    , optional      :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(:,:)
-        real(RKC)               , intent(in)    , contiguous    :: matB(:,:)
-        real(RKC)               , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)               , intent(in)    , optional      :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(:,:)
+        real(RKG)               , intent(in)    , contiguous    :: matB(:,:)
+        real(RKG)               , intent(inout) , contiguous    :: matC(:,:)
         type(uppDia_type)       , intent(in)                    :: subsetA
         type(symmetric_type)    , intent(in)                    :: classA
     end subroutine
@@ -6156,11 +6156,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: symm_ASS_CSA_SUA_CNB_SFB_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)               , intent(in)    , optional      :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(:,:)
-        real(RKC)               , intent(in)    , contiguous    :: matB(:,:)
-        real(RKC)               , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)               , intent(in)    , optional      :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(:,:)
+        real(RKG)               , intent(in)    , contiguous    :: matB(:,:)
+        real(RKG)               , intent(inout) , contiguous    :: matC(:,:)
         type(uppDia_type)       , intent(in)                    :: subsetA
         type(symmetric_type)    , intent(in)                    :: classA
     end subroutine
@@ -6171,11 +6171,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: symm_ASS_CSA_SUA_CNB_SFB_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)               , intent(in)    , optional      :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(:,:)
-        real(RKC)               , intent(in)    , contiguous    :: matB(:,:)
-        real(RKC)               , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)               , intent(in)    , optional      :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(:,:)
+        real(RKG)               , intent(in)    , contiguous    :: matB(:,:)
+        real(RKG)               , intent(inout) , contiguous    :: matC(:,:)
         type(uppDia_type)       , intent(in)                    :: subsetA
         type(symmetric_type)    , intent(in)                    :: classA
     end subroutine
@@ -6186,11 +6186,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: symm_ASS_CSA_SUA_CNB_SFB_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)               , intent(in)    , optional      :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(:,:)
-        real(RKC)               , intent(in)    , contiguous    :: matB(:,:)
-        real(RKC)               , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)               , intent(in)    , optional      :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(:,:)
+        real(RKG)               , intent(in)    , contiguous    :: matB(:,:)
+        real(RKG)               , intent(inout) , contiguous    :: matC(:,:)
         type(uppDia_type)       , intent(in)                    :: subsetA
         type(symmetric_type)    , intent(in)                    :: classA
     end subroutine
@@ -6209,11 +6209,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: symm_ASS_CSA_SLA_CNB_SFB_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)            , intent(in)    , optional      :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(:,:)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(:,:)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: IKG => IK5
+        integer(IKG)            , intent(in)    , optional      :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(:,:)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(:,:)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(:,:)
         type(lowDia_type)       , intent(in)                    :: subsetA
         type(symmetric_type)    , intent(in)                    :: classA
     end subroutine
@@ -6224,11 +6224,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: symm_ASS_CSA_SLA_CNB_SFB_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)            , intent(in)    , optional      :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(:,:)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(:,:)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: IKG => IK4
+        integer(IKG)            , intent(in)    , optional      :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(:,:)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(:,:)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(:,:)
         type(lowDia_type)       , intent(in)                    :: subsetA
         type(symmetric_type)    , intent(in)                    :: classA
     end subroutine
@@ -6239,11 +6239,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: symm_ASS_CSA_SLA_CNB_SFB_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)            , intent(in)    , optional      :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(:,:)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(:,:)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: IKG => IK3
+        integer(IKG)            , intent(in)    , optional      :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(:,:)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(:,:)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(:,:)
         type(lowDia_type)       , intent(in)                    :: subsetA
         type(symmetric_type)    , intent(in)                    :: classA
     end subroutine
@@ -6254,11 +6254,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: symm_ASS_CSA_SLA_CNB_SFB_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)            , intent(in)    , optional      :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(:,:)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(:,:)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: IKG => IK2
+        integer(IKG)            , intent(in)    , optional      :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(:,:)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(:,:)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(:,:)
         type(lowDia_type)       , intent(in)                    :: subsetA
         type(symmetric_type)    , intent(in)                    :: classA
     end subroutine
@@ -6269,11 +6269,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: symm_ASS_CSA_SLA_CNB_SFB_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)            , intent(in)    , optional      :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(:,:)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(:,:)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: IKG => IK1
+        integer(IKG)            , intent(in)    , optional      :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(:,:)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(:,:)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(:,:)
         type(lowDia_type)       , intent(in)                    :: subsetA
         type(symmetric_type)    , intent(in)                    :: classA
     end subroutine
@@ -6286,11 +6286,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: symm_ASS_CSA_SLA_CNB_SFB_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)            , intent(in)    , optional      :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(:,:)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(:,:)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG)            , intent(in)    , optional      :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(:,:)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(:,:)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(:,:)
         type(lowDia_type)       , intent(in)                    :: subsetA
         type(symmetric_type)    , intent(in)                    :: classA
     end subroutine
@@ -6301,11 +6301,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: symm_ASS_CSA_SLA_CNB_SFB_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)            , intent(in)    , optional      :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(:,:)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(:,:)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG)            , intent(in)    , optional      :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(:,:)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(:,:)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(:,:)
         type(lowDia_type)       , intent(in)                    :: subsetA
         type(symmetric_type)    , intent(in)                    :: classA
     end subroutine
@@ -6316,11 +6316,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: symm_ASS_CSA_SLA_CNB_SFB_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)            , intent(in)    , optional      :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(:,:)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(:,:)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG)            , intent(in)    , optional      :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(:,:)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(:,:)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(:,:)
         type(lowDia_type)       , intent(in)                    :: subsetA
         type(symmetric_type)    , intent(in)                    :: classA
     end subroutine
@@ -6331,11 +6331,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: symm_ASS_CSA_SLA_CNB_SFB_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)            , intent(in)    , optional      :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(:,:)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(:,:)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG)            , intent(in)    , optional      :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(:,:)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(:,:)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(:,:)
         type(lowDia_type)       , intent(in)                    :: subsetA
         type(symmetric_type)    , intent(in)                    :: classA
     end subroutine
@@ -6346,11 +6346,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: symm_ASS_CSA_SLA_CNB_SFB_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)            , intent(in)    , optional      :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(:,:)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(:,:)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG)            , intent(in)    , optional      :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(:,:)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(:,:)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(:,:)
         type(lowDia_type)       , intent(in)                    :: subsetA
         type(symmetric_type)    , intent(in)                    :: classA
     end subroutine
@@ -6363,11 +6363,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: symm_ASS_CSA_SLA_CNB_SFB_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)               , intent(in)    , optional      :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(:,:)
-        real(RKC)               , intent(in)    , contiguous    :: matB(:,:)
-        real(RKC)               , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)               , intent(in)    , optional      :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(:,:)
+        real(RKG)               , intent(in)    , contiguous    :: matB(:,:)
+        real(RKG)               , intent(inout) , contiguous    :: matC(:,:)
         type(lowDia_type)       , intent(in)                    :: subsetA
         type(symmetric_type)    , intent(in)                    :: classA
     end subroutine
@@ -6378,11 +6378,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: symm_ASS_CSA_SLA_CNB_SFB_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)               , intent(in)    , optional      :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(:,:)
-        real(RKC)               , intent(in)    , contiguous    :: matB(:,:)
-        real(RKC)               , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)               , intent(in)    , optional      :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(:,:)
+        real(RKG)               , intent(in)    , contiguous    :: matB(:,:)
+        real(RKG)               , intent(inout) , contiguous    :: matC(:,:)
         type(lowDia_type)       , intent(in)                    :: subsetA
         type(symmetric_type)    , intent(in)                    :: classA
     end subroutine
@@ -6393,11 +6393,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: symm_ASS_CSA_SLA_CNB_SFB_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)               , intent(in)    , optional      :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(:,:)
-        real(RKC)               , intent(in)    , contiguous    :: matB(:,:)
-        real(RKC)               , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)               , intent(in)    , optional      :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(:,:)
+        real(RKG)               , intent(in)    , contiguous    :: matB(:,:)
+        real(RKG)               , intent(inout) , contiguous    :: matC(:,:)
         type(lowDia_type)       , intent(in)                    :: subsetA
         type(symmetric_type)    , intent(in)                    :: classA
     end subroutine
@@ -6408,11 +6408,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: symm_ASS_CSA_SLA_CNB_SFB_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)               , intent(in)    , optional      :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(:,:)
-        real(RKC)               , intent(in)    , contiguous    :: matB(:,:)
-        real(RKC)               , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)               , intent(in)    , optional      :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(:,:)
+        real(RKG)               , intent(in)    , contiguous    :: matB(:,:)
+        real(RKG)               , intent(inout) , contiguous    :: matC(:,:)
         type(lowDia_type)       , intent(in)                    :: subsetA
         type(symmetric_type)    , intent(in)                    :: classA
     end subroutine
@@ -6423,11 +6423,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: symm_ASS_CSA_SLA_CNB_SFB_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)               , intent(in)    , optional      :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(:,:)
-        real(RKC)               , intent(in)    , contiguous    :: matB(:,:)
-        real(RKC)               , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)               , intent(in)    , optional      :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(:,:)
+        real(RKG)               , intent(in)    , contiguous    :: matB(:,:)
+        real(RKG)               , intent(inout) , contiguous    :: matC(:,:)
         type(lowDia_type)       , intent(in)                    :: subsetA
         type(symmetric_type)    , intent(in)                    :: classA
     end subroutine
@@ -6446,11 +6446,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: symm_ASS_CNA_SFA_CSB_SUB_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)            , intent(in)    , optional      :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(:,:)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(:,:)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: IKG => IK5
+        integer(IKG)            , intent(in)    , optional      :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(:,:)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(:,:)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(:,:)
         type(uppDia_type)       , intent(in)                    :: subsetB
         type(symmetric_type)    , intent(in)                    :: classB
     end subroutine
@@ -6461,11 +6461,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: symm_ASS_CNA_SFA_CSB_SUB_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)            , intent(in)    , optional      :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(:,:)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(:,:)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: IKG => IK4
+        integer(IKG)            , intent(in)    , optional      :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(:,:)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(:,:)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(:,:)
         type(uppDia_type)       , intent(in)                    :: subsetB
         type(symmetric_type)    , intent(in)                    :: classB
     end subroutine
@@ -6476,11 +6476,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: symm_ASS_CNA_SFA_CSB_SUB_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)            , intent(in)    , optional      :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(:,:)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(:,:)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: IKG => IK3
+        integer(IKG)            , intent(in)    , optional      :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(:,:)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(:,:)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(:,:)
         type(uppDia_type)       , intent(in)                    :: subsetB
         type(symmetric_type)    , intent(in)                    :: classB
     end subroutine
@@ -6491,11 +6491,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: symm_ASS_CNA_SFA_CSB_SUB_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)            , intent(in)    , optional      :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(:,:)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(:,:)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: IKG => IK2
+        integer(IKG)            , intent(in)    , optional      :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(:,:)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(:,:)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(:,:)
         type(uppDia_type)       , intent(in)                    :: subsetB
         type(symmetric_type)    , intent(in)                    :: classB
     end subroutine
@@ -6506,11 +6506,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: symm_ASS_CNA_SFA_CSB_SUB_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)            , intent(in)    , optional      :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(:,:)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(:,:)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: IKG => IK1
+        integer(IKG)            , intent(in)    , optional      :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(:,:)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(:,:)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(:,:)
         type(uppDia_type)       , intent(in)                    :: subsetB
         type(symmetric_type)    , intent(in)                    :: classB
     end subroutine
@@ -6523,11 +6523,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: symm_ASS_CNA_SFA_CSB_SUB_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)            , intent(in)    , optional      :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(:,:)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(:,:)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG)            , intent(in)    , optional      :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(:,:)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(:,:)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(:,:)
         type(uppDia_type)       , intent(in)                    :: subsetB
         type(symmetric_type)    , intent(in)                    :: classB
     end subroutine
@@ -6538,11 +6538,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: symm_ASS_CNA_SFA_CSB_SUB_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)            , intent(in)    , optional      :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(:,:)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(:,:)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG)            , intent(in)    , optional      :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(:,:)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(:,:)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(:,:)
         type(uppDia_type)       , intent(in)                    :: subsetB
         type(symmetric_type)    , intent(in)                    :: classB
     end subroutine
@@ -6553,11 +6553,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: symm_ASS_CNA_SFA_CSB_SUB_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)            , intent(in)    , optional      :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(:,:)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(:,:)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG)            , intent(in)    , optional      :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(:,:)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(:,:)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(:,:)
         type(uppDia_type)       , intent(in)                    :: subsetB
         type(symmetric_type)    , intent(in)                    :: classB
     end subroutine
@@ -6568,11 +6568,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: symm_ASS_CNA_SFA_CSB_SUB_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)            , intent(in)    , optional      :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(:,:)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(:,:)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG)            , intent(in)    , optional      :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(:,:)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(:,:)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(:,:)
         type(uppDia_type)       , intent(in)                    :: subsetB
         type(symmetric_type)    , intent(in)                    :: classB
     end subroutine
@@ -6583,11 +6583,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: symm_ASS_CNA_SFA_CSB_SUB_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)            , intent(in)    , optional      :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(:,:)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(:,:)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG)            , intent(in)    , optional      :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(:,:)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(:,:)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(:,:)
         type(uppDia_type)       , intent(in)                    :: subsetB
         type(symmetric_type)    , intent(in)                    :: classB
     end subroutine
@@ -6600,11 +6600,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: symm_ASS_CNA_SFA_CSB_SUB_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)               , intent(in)    , optional      :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(:,:)
-        real(RKC)               , intent(in)    , contiguous    :: matB(:,:)
-        real(RKC)               , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)               , intent(in)    , optional      :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(:,:)
+        real(RKG)               , intent(in)    , contiguous    :: matB(:,:)
+        real(RKG)               , intent(inout) , contiguous    :: matC(:,:)
         type(uppDia_type)       , intent(in)                    :: subsetB
         type(symmetric_type)    , intent(in)                    :: classB
     end subroutine
@@ -6615,11 +6615,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: symm_ASS_CNA_SFA_CSB_SUB_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)               , intent(in)    , optional      :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(:,:)
-        real(RKC)               , intent(in)    , contiguous    :: matB(:,:)
-        real(RKC)               , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)               , intent(in)    , optional      :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(:,:)
+        real(RKG)               , intent(in)    , contiguous    :: matB(:,:)
+        real(RKG)               , intent(inout) , contiguous    :: matC(:,:)
         type(uppDia_type)       , intent(in)                    :: subsetB
         type(symmetric_type)    , intent(in)                    :: classB
     end subroutine
@@ -6630,11 +6630,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: symm_ASS_CNA_SFA_CSB_SUB_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)               , intent(in)    , optional      :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(:,:)
-        real(RKC)               , intent(in)    , contiguous    :: matB(:,:)
-        real(RKC)               , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)               , intent(in)    , optional      :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(:,:)
+        real(RKG)               , intent(in)    , contiguous    :: matB(:,:)
+        real(RKG)               , intent(inout) , contiguous    :: matC(:,:)
         type(uppDia_type)       , intent(in)                    :: subsetB
         type(symmetric_type)    , intent(in)                    :: classB
     end subroutine
@@ -6645,11 +6645,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: symm_ASS_CNA_SFA_CSB_SUB_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)               , intent(in)    , optional      :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(:,:)
-        real(RKC)               , intent(in)    , contiguous    :: matB(:,:)
-        real(RKC)               , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)               , intent(in)    , optional      :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(:,:)
+        real(RKG)               , intent(in)    , contiguous    :: matB(:,:)
+        real(RKG)               , intent(inout) , contiguous    :: matC(:,:)
         type(uppDia_type)       , intent(in)                    :: subsetB
         type(symmetric_type)    , intent(in)                    :: classB
     end subroutine
@@ -6660,11 +6660,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: symm_ASS_CNA_SFA_CSB_SUB_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)               , intent(in)    , optional      :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(:,:)
-        real(RKC)               , intent(in)    , contiguous    :: matB(:,:)
-        real(RKC)               , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)               , intent(in)    , optional      :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(:,:)
+        real(RKG)               , intent(in)    , contiguous    :: matB(:,:)
+        real(RKG)               , intent(inout) , contiguous    :: matC(:,:)
         type(uppDia_type)       , intent(in)                    :: subsetB
         type(symmetric_type)    , intent(in)                    :: classB
     end subroutine
@@ -6683,11 +6683,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: symm_ASS_CNA_SFA_CSB_SLB_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)            , intent(in)    , optional      :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(:,:)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(:,:)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: IKG => IK5
+        integer(IKG)            , intent(in)    , optional      :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(:,:)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(:,:)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(:,:)
         type(lowDia_type)       , intent(in)                    :: subsetB
         type(symmetric_type)    , intent(in)                    :: classB
     end subroutine
@@ -6698,11 +6698,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: symm_ASS_CNA_SFA_CSB_SLB_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)            , intent(in)    , optional      :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(:,:)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(:,:)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: IKG => IK4
+        integer(IKG)            , intent(in)    , optional      :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(:,:)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(:,:)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(:,:)
         type(lowDia_type)       , intent(in)                    :: subsetB
         type(symmetric_type)    , intent(in)                    :: classB
     end subroutine
@@ -6713,11 +6713,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: symm_ASS_CNA_SFA_CSB_SLB_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)            , intent(in)    , optional      :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(:,:)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(:,:)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: IKG => IK3
+        integer(IKG)            , intent(in)    , optional      :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(:,:)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(:,:)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(:,:)
         type(lowDia_type)       , intent(in)                    :: subsetB
         type(symmetric_type)    , intent(in)                    :: classB
     end subroutine
@@ -6728,11 +6728,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: symm_ASS_CNA_SFA_CSB_SLB_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)            , intent(in)    , optional      :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(:,:)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(:,:)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: IKG => IK2
+        integer(IKG)            , intent(in)    , optional      :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(:,:)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(:,:)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(:,:)
         type(lowDia_type)       , intent(in)                    :: subsetB
         type(symmetric_type)    , intent(in)                    :: classB
     end subroutine
@@ -6743,11 +6743,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: symm_ASS_CNA_SFA_CSB_SLB_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)            , intent(in)    , optional      :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(:,:)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(:,:)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: IKG => IK1
+        integer(IKG)            , intent(in)    , optional      :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(:,:)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(:,:)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(:,:)
         type(lowDia_type)       , intent(in)                    :: subsetB
         type(symmetric_type)    , intent(in)                    :: classB
     end subroutine
@@ -6760,11 +6760,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: symm_ASS_CNA_SFA_CSB_SLB_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)            , intent(in)    , optional      :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(:,:)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(:,:)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG)            , intent(in)    , optional      :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(:,:)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(:,:)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(:,:)
         type(lowDia_type)       , intent(in)                    :: subsetB
         type(symmetric_type)    , intent(in)                    :: classB
     end subroutine
@@ -6775,11 +6775,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: symm_ASS_CNA_SFA_CSB_SLB_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)            , intent(in)    , optional      :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(:,:)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(:,:)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG)            , intent(in)    , optional      :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(:,:)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(:,:)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(:,:)
         type(lowDia_type)       , intent(in)                    :: subsetB
         type(symmetric_type)    , intent(in)                    :: classB
     end subroutine
@@ -6790,11 +6790,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: symm_ASS_CNA_SFA_CSB_SLB_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)            , intent(in)    , optional      :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(:,:)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(:,:)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG)            , intent(in)    , optional      :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(:,:)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(:,:)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(:,:)
         type(lowDia_type)       , intent(in)                    :: subsetB
         type(symmetric_type)    , intent(in)                    :: classB
     end subroutine
@@ -6805,11 +6805,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: symm_ASS_CNA_SFA_CSB_SLB_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)            , intent(in)    , optional      :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(:,:)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(:,:)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG)            , intent(in)    , optional      :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(:,:)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(:,:)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(:,:)
         type(lowDia_type)       , intent(in)                    :: subsetB
         type(symmetric_type)    , intent(in)                    :: classB
     end subroutine
@@ -6820,11 +6820,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: symm_ASS_CNA_SFA_CSB_SLB_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)            , intent(in)    , optional      :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(:,:)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(:,:)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG)            , intent(in)    , optional      :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(:,:)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(:,:)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(:,:)
         type(lowDia_type)       , intent(in)                    :: subsetB
         type(symmetric_type)    , intent(in)                    :: classB
     end subroutine
@@ -6837,11 +6837,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: symm_ASS_CNA_SFA_CSB_SLB_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)               , intent(in)    , optional      :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(:,:)
-        real(RKC)               , intent(in)    , contiguous    :: matB(:,:)
-        real(RKC)               , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)               , intent(in)    , optional      :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(:,:)
+        real(RKG)               , intent(in)    , contiguous    :: matB(:,:)
+        real(RKG)               , intent(inout) , contiguous    :: matC(:,:)
         type(lowDia_type)       , intent(in)                    :: subsetB
         type(symmetric_type)    , intent(in)                    :: classB
     end subroutine
@@ -6852,11 +6852,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: symm_ASS_CNA_SFA_CSB_SLB_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)               , intent(in)    , optional      :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(:,:)
-        real(RKC)               , intent(in)    , contiguous    :: matB(:,:)
-        real(RKC)               , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)               , intent(in)    , optional      :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(:,:)
+        real(RKG)               , intent(in)    , contiguous    :: matB(:,:)
+        real(RKG)               , intent(inout) , contiguous    :: matC(:,:)
         type(lowDia_type)       , intent(in)                    :: subsetB
         type(symmetric_type)    , intent(in)                    :: classB
     end subroutine
@@ -6867,11 +6867,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: symm_ASS_CNA_SFA_CSB_SLB_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)               , intent(in)    , optional      :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(:,:)
-        real(RKC)               , intent(in)    , contiguous    :: matB(:,:)
-        real(RKC)               , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)               , intent(in)    , optional      :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(:,:)
+        real(RKG)               , intent(in)    , contiguous    :: matB(:,:)
+        real(RKG)               , intent(inout) , contiguous    :: matC(:,:)
         type(lowDia_type)       , intent(in)                    :: subsetB
         type(symmetric_type)    , intent(in)                    :: classB
     end subroutine
@@ -6882,11 +6882,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: symm_ASS_CNA_SFA_CSB_SLB_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)               , intent(in)    , optional      :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(:,:)
-        real(RKC)               , intent(in)    , contiguous    :: matB(:,:)
-        real(RKC)               , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)               , intent(in)    , optional      :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(:,:)
+        real(RKG)               , intent(in)    , contiguous    :: matB(:,:)
+        real(RKG)               , intent(inout) , contiguous    :: matC(:,:)
         type(lowDia_type)       , intent(in)                    :: subsetB
         type(symmetric_type)    , intent(in)                    :: classB
     end subroutine
@@ -6897,11 +6897,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: symm_ASS_CNA_SFA_CSB_SLB_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)               , intent(in)    , optional      :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(:,:)
-        real(RKC)               , intent(in)    , contiguous    :: matB(:,:)
-        real(RKC)               , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)               , intent(in)    , optional      :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(:,:)
+        real(RKG)               , intent(in)    , contiguous    :: matB(:,:)
+        real(RKG)               , intent(inout) , contiguous    :: matC(:,:)
         type(lowDia_type)       , intent(in)                    :: subsetB
         type(symmetric_type)    , intent(in)                    :: classB
     end subroutine
@@ -6924,12 +6924,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: symm_EXP_CSA_SUA_CNB_SFB_IK5
 #endif
-        use pm_kind, only: IKC => IK5
+        use pm_kind, only: IKG => IK5
         integer(IK)             , intent(in)                    :: nrow, ncol, roffA, coffA, roffB, coffB, roffC, coffC
-        integer(IKC)            , intent(in)                    :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        integer(IKG)            , intent(in)                    :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(uppDia_type)       , intent(in)                    :: subsetA
         type(symmetric_type)    , intent(in)                    :: classA
     end subroutine
@@ -6940,12 +6940,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: symm_EXP_CSA_SUA_CNB_SFB_IK4
 #endif
-        use pm_kind, only: IKC => IK4
+        use pm_kind, only: IKG => IK4
         integer(IK)             , intent(in)                    :: nrow, ncol, roffA, coffA, roffB, coffB, roffC, coffC
-        integer(IKC)            , intent(in)                    :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        integer(IKG)            , intent(in)                    :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(uppDia_type)       , intent(in)                    :: subsetA
         type(symmetric_type)    , intent(in)                    :: classA
     end subroutine
@@ -6956,12 +6956,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: symm_EXP_CSA_SUA_CNB_SFB_IK3
 #endif
-        use pm_kind, only: IKC => IK3
+        use pm_kind, only: IKG => IK3
         integer(IK)             , intent(in)                    :: nrow, ncol, roffA, coffA, roffB, coffB, roffC, coffC
-        integer(IKC)            , intent(in)                    :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        integer(IKG)            , intent(in)                    :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(uppDia_type)       , intent(in)                    :: subsetA
         type(symmetric_type)    , intent(in)                    :: classA
     end subroutine
@@ -6972,12 +6972,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: symm_EXP_CSA_SUA_CNB_SFB_IK2
 #endif
-        use pm_kind, only: IKC => IK2
+        use pm_kind, only: IKG => IK2
         integer(IK)             , intent(in)                    :: nrow, ncol, roffA, coffA, roffB, coffB, roffC, coffC
-        integer(IKC)            , intent(in)                    :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        integer(IKG)            , intent(in)                    :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(uppDia_type)       , intent(in)                    :: subsetA
         type(symmetric_type)    , intent(in)                    :: classA
     end subroutine
@@ -6988,12 +6988,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: symm_EXP_CSA_SUA_CNB_SFB_IK1
 #endif
-        use pm_kind, only: IKC => IK1
+        use pm_kind, only: IKG => IK1
         integer(IK)             , intent(in)                    :: nrow, ncol, roffA, coffA, roffB, coffB, roffC, coffC
-        integer(IKC)            , intent(in)                    :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        integer(IKG)            , intent(in)                    :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(uppDia_type)       , intent(in)                    :: subsetA
         type(symmetric_type)    , intent(in)                    :: classA
     end subroutine
@@ -7006,12 +7006,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: symm_EXP_CSA_SUA_CNB_SFB_CK5
 #endif
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
         integer(IK)             , intent(in)                    :: nrow, ncol, roffA, coffA, roffB, coffB, roffC, coffC
-        complex(CKC)            , intent(in)                    :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        complex(CKG)            , intent(in)                    :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(uppDia_type)       , intent(in)                    :: subsetA
         type(symmetric_type)    , intent(in)                    :: classA
     end subroutine
@@ -7022,12 +7022,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: symm_EXP_CSA_SUA_CNB_SFB_CK4
 #endif
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
         integer(IK)             , intent(in)                    :: nrow, ncol, roffA, coffA, roffB, coffB, roffC, coffC
-        complex(CKC)            , intent(in)                    :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        complex(CKG)            , intent(in)                    :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(uppDia_type)       , intent(in)                    :: subsetA
         type(symmetric_type)    , intent(in)                    :: classA
     end subroutine
@@ -7038,12 +7038,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: symm_EXP_CSA_SUA_CNB_SFB_CK3
 #endif
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
         integer(IK)             , intent(in)                    :: nrow, ncol, roffA, coffA, roffB, coffB, roffC, coffC
-        complex(CKC)            , intent(in)                    :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        complex(CKG)            , intent(in)                    :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(uppDia_type)       , intent(in)                    :: subsetA
         type(symmetric_type)    , intent(in)                    :: classA
     end subroutine
@@ -7054,12 +7054,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: symm_EXP_CSA_SUA_CNB_SFB_CK2
 #endif
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
         integer(IK)             , intent(in)                    :: nrow, ncol, roffA, coffA, roffB, coffB, roffC, coffC
-        complex(CKC)            , intent(in)                    :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        complex(CKG)            , intent(in)                    :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(uppDia_type)       , intent(in)                    :: subsetA
         type(symmetric_type)    , intent(in)                    :: classA
     end subroutine
@@ -7070,12 +7070,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: symm_EXP_CSA_SUA_CNB_SFB_CK1
 #endif
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
         integer(IK)             , intent(in)                    :: nrow, ncol, roffA, coffA, roffB, coffB, roffC, coffC
-        complex(CKC)            , intent(in)                    :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        complex(CKG)            , intent(in)                    :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(uppDia_type)       , intent(in)                    :: subsetA
         type(symmetric_type)    , intent(in)                    :: classA
     end subroutine
@@ -7088,12 +7088,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: symm_EXP_CSA_SUA_CNB_SFB_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         integer(IK)             , intent(in)                    :: nrow, ncol, roffA, coffA, roffB, coffB, roffC, coffC
-        real(RKC)               , intent(in)                    :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        real(RKC)               , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        real(RKC)               , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        real(RKG)               , intent(in)                    :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        real(RKG)               , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        real(RKG)               , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(uppDia_type)       , intent(in)                    :: subsetA
         type(symmetric_type)    , intent(in)                    :: classA
     end subroutine
@@ -7104,12 +7104,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: symm_EXP_CSA_SUA_CNB_SFB_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         integer(IK)             , intent(in)                    :: nrow, ncol, roffA, coffA, roffB, coffB, roffC, coffC
-        real(RKC)               , intent(in)                    :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        real(RKC)               , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        real(RKC)               , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        real(RKG)               , intent(in)                    :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        real(RKG)               , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        real(RKG)               , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(uppDia_type)       , intent(in)                    :: subsetA
         type(symmetric_type)    , intent(in)                    :: classA
     end subroutine
@@ -7120,12 +7120,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: symm_EXP_CSA_SUA_CNB_SFB_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         integer(IK)             , intent(in)                    :: nrow, ncol, roffA, coffA, roffB, coffB, roffC, coffC
-        real(RKC)               , intent(in)                    :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        real(RKC)               , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        real(RKC)               , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        real(RKG)               , intent(in)                    :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        real(RKG)               , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        real(RKG)               , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(uppDia_type)       , intent(in)                    :: subsetA
         type(symmetric_type)    , intent(in)                    :: classA
     end subroutine
@@ -7136,12 +7136,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: symm_EXP_CSA_SUA_CNB_SFB_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         integer(IK)             , intent(in)                    :: nrow, ncol, roffA, coffA, roffB, coffB, roffC, coffC
-        real(RKC)               , intent(in)                    :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        real(RKC)               , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        real(RKC)               , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        real(RKG)               , intent(in)                    :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        real(RKG)               , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        real(RKG)               , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(uppDia_type)       , intent(in)                    :: subsetA
         type(symmetric_type)    , intent(in)                    :: classA
     end subroutine
@@ -7152,12 +7152,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: symm_EXP_CSA_SUA_CNB_SFB_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         integer(IK)             , intent(in)                    :: nrow, ncol, roffA, coffA, roffB, coffB, roffC, coffC
-        real(RKC)               , intent(in)                    :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        real(RKC)               , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        real(RKC)               , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        real(RKG)               , intent(in)                    :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        real(RKG)               , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        real(RKG)               , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(uppDia_type)       , intent(in)                    :: subsetA
         type(symmetric_type)    , intent(in)                    :: classA
     end subroutine
@@ -7176,12 +7176,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: symm_EXP_CSA_SLA_CNB_SFB_IK5
 #endif
-        use pm_kind, only: IKC => IK5
+        use pm_kind, only: IKG => IK5
         integer(IK)             , intent(in)                    :: nrow, ncol, roffA, coffA, roffB, coffB, roffC, coffC
-        integer(IKC)            , intent(in)                    :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        integer(IKG)            , intent(in)                    :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(lowDia_type)       , intent(in)                    :: subsetA
         type(symmetric_type)    , intent(in)                    :: classA
     end subroutine
@@ -7192,12 +7192,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: symm_EXP_CSA_SLA_CNB_SFB_IK4
 #endif
-        use pm_kind, only: IKC => IK4
+        use pm_kind, only: IKG => IK4
         integer(IK)             , intent(in)                    :: nrow, ncol, roffA, coffA, roffB, coffB, roffC, coffC
-        integer(IKC)            , intent(in)                    :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        integer(IKG)            , intent(in)                    :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(lowDia_type)       , intent(in)                    :: subsetA
         type(symmetric_type)    , intent(in)                    :: classA
     end subroutine
@@ -7208,12 +7208,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: symm_EXP_CSA_SLA_CNB_SFB_IK3
 #endif
-        use pm_kind, only: IKC => IK3
+        use pm_kind, only: IKG => IK3
         integer(IK)             , intent(in)                    :: nrow, ncol, roffA, coffA, roffB, coffB, roffC, coffC
-        integer(IKC)            , intent(in)                    :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        integer(IKG)            , intent(in)                    :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(lowDia_type)       , intent(in)                    :: subsetA
         type(symmetric_type)    , intent(in)                    :: classA
     end subroutine
@@ -7224,12 +7224,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: symm_EXP_CSA_SLA_CNB_SFB_IK2
 #endif
-        use pm_kind, only: IKC => IK2
+        use pm_kind, only: IKG => IK2
         integer(IK)             , intent(in)                    :: nrow, ncol, roffA, coffA, roffB, coffB, roffC, coffC
-        integer(IKC)            , intent(in)                    :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        integer(IKG)            , intent(in)                    :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(lowDia_type)       , intent(in)                    :: subsetA
         type(symmetric_type)    , intent(in)                    :: classA
     end subroutine
@@ -7240,12 +7240,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: symm_EXP_CSA_SLA_CNB_SFB_IK1
 #endif
-        use pm_kind, only: IKC => IK1
+        use pm_kind, only: IKG => IK1
         integer(IK)             , intent(in)                    :: nrow, ncol, roffA, coffA, roffB, coffB, roffC, coffC
-        integer(IKC)            , intent(in)                    :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        integer(IKG)            , intent(in)                    :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(lowDia_type)       , intent(in)                    :: subsetA
         type(symmetric_type)    , intent(in)                    :: classA
     end subroutine
@@ -7258,12 +7258,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: symm_EXP_CSA_SLA_CNB_SFB_CK5
 #endif
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
         integer(IK)             , intent(in)                    :: nrow, ncol, roffA, coffA, roffB, coffB, roffC, coffC
-        complex(CKC)            , intent(in)                    :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        complex(CKG)            , intent(in)                    :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(lowDia_type)       , intent(in)                    :: subsetA
         type(symmetric_type)    , intent(in)                    :: classA
     end subroutine
@@ -7274,12 +7274,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: symm_EXP_CSA_SLA_CNB_SFB_CK4
 #endif
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
         integer(IK)             , intent(in)                    :: nrow, ncol, roffA, coffA, roffB, coffB, roffC, coffC
-        complex(CKC)            , intent(in)                    :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        complex(CKG)            , intent(in)                    :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(lowDia_type)       , intent(in)                    :: subsetA
         type(symmetric_type)    , intent(in)                    :: classA
     end subroutine
@@ -7290,12 +7290,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: symm_EXP_CSA_SLA_CNB_SFB_CK3
 #endif
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
         integer(IK)             , intent(in)                    :: nrow, ncol, roffA, coffA, roffB, coffB, roffC, coffC
-        complex(CKC)            , intent(in)                    :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        complex(CKG)            , intent(in)                    :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(lowDia_type)       , intent(in)                    :: subsetA
         type(symmetric_type)    , intent(in)                    :: classA
     end subroutine
@@ -7306,12 +7306,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: symm_EXP_CSA_SLA_CNB_SFB_CK2
 #endif
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
         integer(IK)             , intent(in)                    :: nrow, ncol, roffA, coffA, roffB, coffB, roffC, coffC
-        complex(CKC)            , intent(in)                    :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        complex(CKG)            , intent(in)                    :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(lowDia_type)       , intent(in)                    :: subsetA
         type(symmetric_type)    , intent(in)                    :: classA
     end subroutine
@@ -7322,12 +7322,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: symm_EXP_CSA_SLA_CNB_SFB_CK1
 #endif
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
         integer(IK)             , intent(in)                    :: nrow, ncol, roffA, coffA, roffB, coffB, roffC, coffC
-        complex(CKC)            , intent(in)                    :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        complex(CKG)            , intent(in)                    :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(lowDia_type)       , intent(in)                    :: subsetA
         type(symmetric_type)    , intent(in)                    :: classA
     end subroutine
@@ -7340,12 +7340,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: symm_EXP_CSA_SLA_CNB_SFB_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         integer(IK)             , intent(in)                    :: nrow, ncol, roffA, coffA, roffB, coffB, roffC, coffC
-        real(RKC)               , intent(in)                    :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        real(RKC)               , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        real(RKC)               , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        real(RKG)               , intent(in)                    :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        real(RKG)               , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        real(RKG)               , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(lowDia_type)       , intent(in)                    :: subsetA
         type(symmetric_type)    , intent(in)                    :: classA
     end subroutine
@@ -7356,12 +7356,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: symm_EXP_CSA_SLA_CNB_SFB_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         integer(IK)             , intent(in)                    :: nrow, ncol, roffA, coffA, roffB, coffB, roffC, coffC
-        real(RKC)               , intent(in)                    :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        real(RKC)               , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        real(RKC)               , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        real(RKG)               , intent(in)                    :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        real(RKG)               , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        real(RKG)               , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(lowDia_type)       , intent(in)                    :: subsetA
         type(symmetric_type)    , intent(in)                    :: classA
     end subroutine
@@ -7372,12 +7372,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: symm_EXP_CSA_SLA_CNB_SFB_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         integer(IK)             , intent(in)                    :: nrow, ncol, roffA, coffA, roffB, coffB, roffC, coffC
-        real(RKC)               , intent(in)                    :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        real(RKC)               , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        real(RKC)               , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        real(RKG)               , intent(in)                    :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        real(RKG)               , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        real(RKG)               , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(lowDia_type)       , intent(in)                    :: subsetA
         type(symmetric_type)    , intent(in)                    :: classA
     end subroutine
@@ -7388,12 +7388,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: symm_EXP_CSA_SLA_CNB_SFB_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         integer(IK)             , intent(in)                    :: nrow, ncol, roffA, coffA, roffB, coffB, roffC, coffC
-        real(RKC)               , intent(in)                    :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        real(RKC)               , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        real(RKC)               , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        real(RKG)               , intent(in)                    :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        real(RKG)               , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        real(RKG)               , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(lowDia_type)       , intent(in)                    :: subsetA
         type(symmetric_type)    , intent(in)                    :: classA
     end subroutine
@@ -7404,12 +7404,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: symm_EXP_CSA_SLA_CNB_SFB_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         integer(IK)             , intent(in)                    :: nrow, ncol, roffA, coffA, roffB, coffB, roffC, coffC
-        real(RKC)               , intent(in)                    :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        real(RKC)               , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        real(RKC)               , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        real(RKG)               , intent(in)                    :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        real(RKG)               , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        real(RKG)               , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(lowDia_type)       , intent(in)                    :: subsetA
         type(symmetric_type)    , intent(in)                    :: classA
     end subroutine
@@ -7428,12 +7428,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: symm_EXP_CNA_SFA_CSB_SUB_IK5
 #endif
-        use pm_kind, only: IKC => IK5
+        use pm_kind, only: IKG => IK5
         integer(IK)             , intent(in)                    :: nrow, ncol, roffA, coffA, roffB, coffB, roffC, coffC
-        integer(IKC)            , intent(in)                    :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        integer(IKG)            , intent(in)                    :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(uppDia_type)       , intent(in)                    :: subsetB
         type(symmetric_type)    , intent(in)                    :: classB
     end subroutine
@@ -7444,12 +7444,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: symm_EXP_CNA_SFA_CSB_SUB_IK4
 #endif
-        use pm_kind, only: IKC => IK4
+        use pm_kind, only: IKG => IK4
         integer(IK)             , intent(in)                    :: nrow, ncol, roffA, coffA, roffB, coffB, roffC, coffC
-        integer(IKC)            , intent(in)                    :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        integer(IKG)            , intent(in)                    :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(uppDia_type)       , intent(in)                    :: subsetB
         type(symmetric_type)    , intent(in)                    :: classB
     end subroutine
@@ -7460,12 +7460,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: symm_EXP_CNA_SFA_CSB_SUB_IK3
 #endif
-        use pm_kind, only: IKC => IK3
+        use pm_kind, only: IKG => IK3
         integer(IK)             , intent(in)                    :: nrow, ncol, roffA, coffA, roffB, coffB, roffC, coffC
-        integer(IKC)            , intent(in)                    :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        integer(IKG)            , intent(in)                    :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(uppDia_type)       , intent(in)                    :: subsetB
         type(symmetric_type)    , intent(in)                    :: classB
     end subroutine
@@ -7476,12 +7476,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: symm_EXP_CNA_SFA_CSB_SUB_IK2
 #endif
-        use pm_kind, only: IKC => IK2
+        use pm_kind, only: IKG => IK2
         integer(IK)             , intent(in)                    :: nrow, ncol, roffA, coffA, roffB, coffB, roffC, coffC
-        integer(IKC)            , intent(in)                    :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        integer(IKG)            , intent(in)                    :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(uppDia_type)       , intent(in)                    :: subsetB
         type(symmetric_type)    , intent(in)                    :: classB
     end subroutine
@@ -7492,12 +7492,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: symm_EXP_CNA_SFA_CSB_SUB_IK1
 #endif
-        use pm_kind, only: IKC => IK1
+        use pm_kind, only: IKG => IK1
         integer(IK)             , intent(in)                    :: nrow, ncol, roffA, coffA, roffB, coffB, roffC, coffC
-        integer(IKC)            , intent(in)                    :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        integer(IKG)            , intent(in)                    :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(uppDia_type)       , intent(in)                    :: subsetB
         type(symmetric_type)    , intent(in)                    :: classB
     end subroutine
@@ -7510,12 +7510,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: symm_EXP_CNA_SFA_CSB_SUB_CK5
 #endif
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
         integer(IK)             , intent(in)                    :: nrow, ncol, roffA, coffA, roffB, coffB, roffC, coffC
-        complex(CKC)            , intent(in)                    :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        complex(CKG)            , intent(in)                    :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(uppDia_type)       , intent(in)                    :: subsetB
         type(symmetric_type)    , intent(in)                    :: classB
     end subroutine
@@ -7526,12 +7526,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: symm_EXP_CNA_SFA_CSB_SUB_CK4
 #endif
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
         integer(IK)             , intent(in)                    :: nrow, ncol, roffA, coffA, roffB, coffB, roffC, coffC
-        complex(CKC)            , intent(in)                    :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        complex(CKG)            , intent(in)                    :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(uppDia_type)       , intent(in)                    :: subsetB
         type(symmetric_type)    , intent(in)                    :: classB
     end subroutine
@@ -7542,12 +7542,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: symm_EXP_CNA_SFA_CSB_SUB_CK3
 #endif
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
         integer(IK)             , intent(in)                    :: nrow, ncol, roffA, coffA, roffB, coffB, roffC, coffC
-        complex(CKC)            , intent(in)                    :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        complex(CKG)            , intent(in)                    :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(uppDia_type)       , intent(in)                    :: subsetB
         type(symmetric_type)    , intent(in)                    :: classB
     end subroutine
@@ -7558,12 +7558,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: symm_EXP_CNA_SFA_CSB_SUB_CK2
 #endif
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
         integer(IK)             , intent(in)                    :: nrow, ncol, roffA, coffA, roffB, coffB, roffC, coffC
-        complex(CKC)            , intent(in)                    :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        complex(CKG)            , intent(in)                    :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(uppDia_type)       , intent(in)                    :: subsetB
         type(symmetric_type)    , intent(in)                    :: classB
     end subroutine
@@ -7574,12 +7574,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: symm_EXP_CNA_SFA_CSB_SUB_CK1
 #endif
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
         integer(IK)             , intent(in)                    :: nrow, ncol, roffA, coffA, roffB, coffB, roffC, coffC
-        complex(CKC)            , intent(in)                    :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        complex(CKG)            , intent(in)                    :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(uppDia_type)       , intent(in)                    :: subsetB
         type(symmetric_type)    , intent(in)                    :: classB
     end subroutine
@@ -7592,12 +7592,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: symm_EXP_CNA_SFA_CSB_SUB_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         integer(IK)             , intent(in)                    :: nrow, ncol, roffA, coffA, roffB, coffB, roffC, coffC
-        real(RKC)               , intent(in)                    :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        real(RKC)               , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        real(RKC)               , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        real(RKG)               , intent(in)                    :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        real(RKG)               , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        real(RKG)               , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(uppDia_type)       , intent(in)                    :: subsetB
         type(symmetric_type)    , intent(in)                    :: classB
     end subroutine
@@ -7608,12 +7608,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: symm_EXP_CNA_SFA_CSB_SUB_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         integer(IK)             , intent(in)                    :: nrow, ncol, roffA, coffA, roffB, coffB, roffC, coffC
-        real(RKC)               , intent(in)                    :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        real(RKC)               , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        real(RKC)               , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        real(RKG)               , intent(in)                    :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        real(RKG)               , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        real(RKG)               , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(uppDia_type)       , intent(in)                    :: subsetB
         type(symmetric_type)    , intent(in)                    :: classB
     end subroutine
@@ -7624,12 +7624,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: symm_EXP_CNA_SFA_CSB_SUB_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         integer(IK)             , intent(in)                    :: nrow, ncol, roffA, coffA, roffB, coffB, roffC, coffC
-        real(RKC)               , intent(in)                    :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        real(RKC)               , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        real(RKC)               , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        real(RKG)               , intent(in)                    :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        real(RKG)               , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        real(RKG)               , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(uppDia_type)       , intent(in)                    :: subsetB
         type(symmetric_type)    , intent(in)                    :: classB
     end subroutine
@@ -7640,12 +7640,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: symm_EXP_CNA_SFA_CSB_SUB_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         integer(IK)             , intent(in)                    :: nrow, ncol, roffA, coffA, roffB, coffB, roffC, coffC
-        real(RKC)               , intent(in)                    :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        real(RKC)               , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        real(RKC)               , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        real(RKG)               , intent(in)                    :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        real(RKG)               , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        real(RKG)               , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(uppDia_type)       , intent(in)                    :: subsetB
         type(symmetric_type)    , intent(in)                    :: classB
     end subroutine
@@ -7656,12 +7656,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: symm_EXP_CNA_SFA_CSB_SUB_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         integer(IK)             , intent(in)                    :: nrow, ncol, roffA, coffA, roffB, coffB, roffC, coffC
-        real(RKC)               , intent(in)                    :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        real(RKC)               , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        real(RKC)               , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        real(RKG)               , intent(in)                    :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        real(RKG)               , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        real(RKG)               , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(uppDia_type)       , intent(in)                    :: subsetB
         type(symmetric_type)    , intent(in)                    :: classB
     end subroutine
@@ -7680,12 +7680,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: symm_EXP_CNA_SFA_CSB_SLB_IK5
 #endif
-        use pm_kind, only: IKC => IK5
+        use pm_kind, only: IKG => IK5
         integer(IK)             , intent(in)                    :: nrow, ncol, roffA, coffA, roffB, coffB, roffC, coffC
-        integer(IKC)            , intent(in)                    :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        integer(IKG)            , intent(in)                    :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(lowDia_type)       , intent(in)                    :: subsetB
         type(symmetric_type)    , intent(in)                    :: classB
     end subroutine
@@ -7696,12 +7696,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: symm_EXP_CNA_SFA_CSB_SLB_IK4
 #endif
-        use pm_kind, only: IKC => IK4
+        use pm_kind, only: IKG => IK4
         integer(IK)             , intent(in)                    :: nrow, ncol, roffA, coffA, roffB, coffB, roffC, coffC
-        integer(IKC)            , intent(in)                    :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        integer(IKG)            , intent(in)                    :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(lowDia_type)       , intent(in)                    :: subsetB
         type(symmetric_type)    , intent(in)                    :: classB
     end subroutine
@@ -7712,12 +7712,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: symm_EXP_CNA_SFA_CSB_SLB_IK3
 #endif
-        use pm_kind, only: IKC => IK3
+        use pm_kind, only: IKG => IK3
         integer(IK)             , intent(in)                    :: nrow, ncol, roffA, coffA, roffB, coffB, roffC, coffC
-        integer(IKC)            , intent(in)                    :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        integer(IKG)            , intent(in)                    :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(lowDia_type)       , intent(in)                    :: subsetB
         type(symmetric_type)    , intent(in)                    :: classB
     end subroutine
@@ -7728,12 +7728,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: symm_EXP_CNA_SFA_CSB_SLB_IK2
 #endif
-        use pm_kind, only: IKC => IK2
+        use pm_kind, only: IKG => IK2
         integer(IK)             , intent(in)                    :: nrow, ncol, roffA, coffA, roffB, coffB, roffC, coffC
-        integer(IKC)            , intent(in)                    :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        integer(IKG)            , intent(in)                    :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(lowDia_type)       , intent(in)                    :: subsetB
         type(symmetric_type)    , intent(in)                    :: classB
     end subroutine
@@ -7744,12 +7744,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: symm_EXP_CNA_SFA_CSB_SLB_IK1
 #endif
-        use pm_kind, only: IKC => IK1
+        use pm_kind, only: IKG => IK1
         integer(IK)             , intent(in)                    :: nrow, ncol, roffA, coffA, roffB, coffB, roffC, coffC
-        integer(IKC)            , intent(in)                    :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        integer(IKG)            , intent(in)                    :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(lowDia_type)       , intent(in)                    :: subsetB
         type(symmetric_type)    , intent(in)                    :: classB
     end subroutine
@@ -7762,12 +7762,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: symm_EXP_CNA_SFA_CSB_SLB_CK5
 #endif
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
         integer(IK)             , intent(in)                    :: nrow, ncol, roffA, coffA, roffB, coffB, roffC, coffC
-        complex(CKC)            , intent(in)                    :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        complex(CKG)            , intent(in)                    :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(lowDia_type)       , intent(in)                    :: subsetB
         type(symmetric_type)    , intent(in)                    :: classB
     end subroutine
@@ -7778,12 +7778,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: symm_EXP_CNA_SFA_CSB_SLB_CK4
 #endif
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
         integer(IK)             , intent(in)                    :: nrow, ncol, roffA, coffA, roffB, coffB, roffC, coffC
-        complex(CKC)            , intent(in)                    :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        complex(CKG)            , intent(in)                    :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(lowDia_type)       , intent(in)                    :: subsetB
         type(symmetric_type)    , intent(in)                    :: classB
     end subroutine
@@ -7794,12 +7794,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: symm_EXP_CNA_SFA_CSB_SLB_CK3
 #endif
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
         integer(IK)             , intent(in)                    :: nrow, ncol, roffA, coffA, roffB, coffB, roffC, coffC
-        complex(CKC)            , intent(in)                    :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        complex(CKG)            , intent(in)                    :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(lowDia_type)       , intent(in)                    :: subsetB
         type(symmetric_type)    , intent(in)                    :: classB
     end subroutine
@@ -7810,12 +7810,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: symm_EXP_CNA_SFA_CSB_SLB_CK2
 #endif
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
         integer(IK)             , intent(in)                    :: nrow, ncol, roffA, coffA, roffB, coffB, roffC, coffC
-        complex(CKC)            , intent(in)                    :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        complex(CKG)            , intent(in)                    :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(lowDia_type)       , intent(in)                    :: subsetB
         type(symmetric_type)    , intent(in)                    :: classB
     end subroutine
@@ -7826,12 +7826,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: symm_EXP_CNA_SFA_CSB_SLB_CK1
 #endif
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
         integer(IK)             , intent(in)                    :: nrow, ncol, roffA, coffA, roffB, coffB, roffC, coffC
-        complex(CKC)            , intent(in)                    :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        complex(CKG)            , intent(in)                    :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(lowDia_type)       , intent(in)                    :: subsetB
         type(symmetric_type)    , intent(in)                    :: classB
     end subroutine
@@ -7844,12 +7844,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: symm_EXP_CNA_SFA_CSB_SLB_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         integer(IK)             , intent(in)                    :: nrow, ncol, roffA, coffA, roffB, coffB, roffC, coffC
-        real(RKC)               , intent(in)                    :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        real(RKC)               , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        real(RKC)               , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        real(RKG)               , intent(in)                    :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        real(RKG)               , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        real(RKG)               , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(lowDia_type)       , intent(in)                    :: subsetB
         type(symmetric_type)    , intent(in)                    :: classB
     end subroutine
@@ -7860,12 +7860,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: symm_EXP_CNA_SFA_CSB_SLB_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         integer(IK)             , intent(in)                    :: nrow, ncol, roffA, coffA, roffB, coffB, roffC, coffC
-        real(RKC)               , intent(in)                    :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        real(RKC)               , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        real(RKC)               , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        real(RKG)               , intent(in)                    :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        real(RKG)               , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        real(RKG)               , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(lowDia_type)       , intent(in)                    :: subsetB
         type(symmetric_type)    , intent(in)                    :: classB
     end subroutine
@@ -7876,12 +7876,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: symm_EXP_CNA_SFA_CSB_SLB_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         integer(IK)             , intent(in)                    :: nrow, ncol, roffA, coffA, roffB, coffB, roffC, coffC
-        real(RKC)               , intent(in)                    :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        real(RKC)               , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        real(RKC)               , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        real(RKG)               , intent(in)                    :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        real(RKG)               , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        real(RKG)               , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(lowDia_type)       , intent(in)                    :: subsetB
         type(symmetric_type)    , intent(in)                    :: classB
     end subroutine
@@ -7892,12 +7892,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: symm_EXP_CNA_SFA_CSB_SLB_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         integer(IK)             , intent(in)                    :: nrow, ncol, roffA, coffA, roffB, coffB, roffC, coffC
-        real(RKC)               , intent(in)                    :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        real(RKC)               , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        real(RKC)               , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        real(RKG)               , intent(in)                    :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        real(RKG)               , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        real(RKG)               , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(lowDia_type)       , intent(in)                    :: subsetB
         type(symmetric_type)    , intent(in)                    :: classB
     end subroutine
@@ -7908,12 +7908,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: symm_EXP_CNA_SFA_CSB_SLB_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         integer(IK)             , intent(in)                    :: nrow, ncol, roffA, coffA, roffB, coffB, roffC, coffC
-        real(RKC)               , intent(in)                    :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        real(RKC)               , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        real(RKC)               , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        real(RKG)               , intent(in)                    :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        real(RKG)               , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        real(RKG)               , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(lowDia_type)       , intent(in)                    :: subsetB
         type(symmetric_type)    , intent(in)                    :: classB
     end subroutine
@@ -7946,11 +7946,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hemm_ASS_CHA_SUA_CNB_SFB_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)            , intent(in)    , optional      :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(:,:)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(:,:)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: IKG => IK5
+        integer(IKG)            , intent(in)    , optional      :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(:,:)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(:,:)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(:,:)
         type(uppDia_type)       , intent(in)                    :: subsetA
         type(hermitian_type)    , intent(in)                    :: classA
     end subroutine
@@ -7961,11 +7961,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hemm_ASS_CHA_SUA_CNB_SFB_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)            , intent(in)    , optional      :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(:,:)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(:,:)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: IKG => IK4
+        integer(IKG)            , intent(in)    , optional      :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(:,:)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(:,:)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(:,:)
         type(uppDia_type)       , intent(in)                    :: subsetA
         type(hermitian_type)    , intent(in)                    :: classA
     end subroutine
@@ -7976,11 +7976,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hemm_ASS_CHA_SUA_CNB_SFB_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)            , intent(in)    , optional      :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(:,:)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(:,:)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: IKG => IK3
+        integer(IKG)            , intent(in)    , optional      :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(:,:)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(:,:)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(:,:)
         type(uppDia_type)       , intent(in)                    :: subsetA
         type(hermitian_type)    , intent(in)                    :: classA
     end subroutine
@@ -7991,11 +7991,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hemm_ASS_CHA_SUA_CNB_SFB_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)            , intent(in)    , optional      :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(:,:)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(:,:)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: IKG => IK2
+        integer(IKG)            , intent(in)    , optional      :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(:,:)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(:,:)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(:,:)
         type(uppDia_type)       , intent(in)                    :: subsetA
         type(hermitian_type)    , intent(in)                    :: classA
     end subroutine
@@ -8006,11 +8006,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hemm_ASS_CHA_SUA_CNB_SFB_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)            , intent(in)    , optional      :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(:,:)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(:,:)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: IKG => IK1
+        integer(IKG)            , intent(in)    , optional      :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(:,:)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(:,:)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(:,:)
         type(uppDia_type)       , intent(in)                    :: subsetA
         type(hermitian_type)    , intent(in)                    :: classA
     end subroutine
@@ -8023,11 +8023,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hemm_ASS_CHA_SUA_CNB_SFB_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)            , intent(in)    , optional      :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(:,:)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(:,:)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG)            , intent(in)    , optional      :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(:,:)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(:,:)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(:,:)
         type(uppDia_type)       , intent(in)                    :: subsetA
         type(hermitian_type)    , intent(in)                    :: classA
     end subroutine
@@ -8038,11 +8038,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hemm_ASS_CHA_SUA_CNB_SFB_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)            , intent(in)    , optional      :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(:,:)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(:,:)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG)            , intent(in)    , optional      :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(:,:)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(:,:)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(:,:)
         type(uppDia_type)       , intent(in)                    :: subsetA
         type(hermitian_type)    , intent(in)                    :: classA
     end subroutine
@@ -8053,11 +8053,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hemm_ASS_CHA_SUA_CNB_SFB_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)            , intent(in)    , optional      :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(:,:)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(:,:)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG)            , intent(in)    , optional      :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(:,:)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(:,:)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(:,:)
         type(uppDia_type)       , intent(in)                    :: subsetA
         type(hermitian_type)    , intent(in)                    :: classA
     end subroutine
@@ -8068,11 +8068,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hemm_ASS_CHA_SUA_CNB_SFB_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)            , intent(in)    , optional      :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(:,:)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(:,:)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG)            , intent(in)    , optional      :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(:,:)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(:,:)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(:,:)
         type(uppDia_type)       , intent(in)                    :: subsetA
         type(hermitian_type)    , intent(in)                    :: classA
     end subroutine
@@ -8083,11 +8083,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hemm_ASS_CHA_SUA_CNB_SFB_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)            , intent(in)    , optional      :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(:,:)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(:,:)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG)            , intent(in)    , optional      :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(:,:)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(:,:)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(:,:)
         type(uppDia_type)       , intent(in)                    :: subsetA
         type(hermitian_type)    , intent(in)                    :: classA
     end subroutine
@@ -8100,11 +8100,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hemm_ASS_CHA_SUA_CNB_SFB_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)               , intent(in)    , optional      :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(:,:)
-        real(RKC)               , intent(in)    , contiguous    :: matB(:,:)
-        real(RKC)               , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)               , intent(in)    , optional      :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(:,:)
+        real(RKG)               , intent(in)    , contiguous    :: matB(:,:)
+        real(RKG)               , intent(inout) , contiguous    :: matC(:,:)
         type(uppDia_type)       , intent(in)                    :: subsetA
         type(hermitian_type)    , intent(in)                    :: classA
     end subroutine
@@ -8115,11 +8115,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hemm_ASS_CHA_SUA_CNB_SFB_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)               , intent(in)    , optional      :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(:,:)
-        real(RKC)               , intent(in)    , contiguous    :: matB(:,:)
-        real(RKC)               , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)               , intent(in)    , optional      :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(:,:)
+        real(RKG)               , intent(in)    , contiguous    :: matB(:,:)
+        real(RKG)               , intent(inout) , contiguous    :: matC(:,:)
         type(uppDia_type)       , intent(in)                    :: subsetA
         type(hermitian_type)    , intent(in)                    :: classA
     end subroutine
@@ -8130,11 +8130,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hemm_ASS_CHA_SUA_CNB_SFB_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)               , intent(in)    , optional      :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(:,:)
-        real(RKC)               , intent(in)    , contiguous    :: matB(:,:)
-        real(RKC)               , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)               , intent(in)    , optional      :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(:,:)
+        real(RKG)               , intent(in)    , contiguous    :: matB(:,:)
+        real(RKG)               , intent(inout) , contiguous    :: matC(:,:)
         type(uppDia_type)       , intent(in)                    :: subsetA
         type(hermitian_type)    , intent(in)                    :: classA
     end subroutine
@@ -8145,11 +8145,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hemm_ASS_CHA_SUA_CNB_SFB_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)               , intent(in)    , optional      :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(:,:)
-        real(RKC)               , intent(in)    , contiguous    :: matB(:,:)
-        real(RKC)               , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)               , intent(in)    , optional      :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(:,:)
+        real(RKG)               , intent(in)    , contiguous    :: matB(:,:)
+        real(RKG)               , intent(inout) , contiguous    :: matC(:,:)
         type(uppDia_type)       , intent(in)                    :: subsetA
         type(hermitian_type)    , intent(in)                    :: classA
     end subroutine
@@ -8160,11 +8160,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hemm_ASS_CHA_SUA_CNB_SFB_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)               , intent(in)    , optional      :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(:,:)
-        real(RKC)               , intent(in)    , contiguous    :: matB(:,:)
-        real(RKC)               , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)               , intent(in)    , optional      :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(:,:)
+        real(RKG)               , intent(in)    , contiguous    :: matB(:,:)
+        real(RKG)               , intent(inout) , contiguous    :: matC(:,:)
         type(uppDia_type)       , intent(in)                    :: subsetA
         type(hermitian_type)    , intent(in)                    :: classA
     end subroutine
@@ -8183,11 +8183,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hemm_ASS_CHA_SLA_CNB_SFB_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)            , intent(in)    , optional      :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(:,:)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(:,:)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: IKG => IK5
+        integer(IKG)            , intent(in)    , optional      :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(:,:)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(:,:)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(:,:)
         type(lowDia_type)       , intent(in)                    :: subsetA
         type(hermitian_type)    , intent(in)                    :: classA
     end subroutine
@@ -8198,11 +8198,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hemm_ASS_CHA_SLA_CNB_SFB_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)            , intent(in)    , optional      :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(:,:)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(:,:)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: IKG => IK4
+        integer(IKG)            , intent(in)    , optional      :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(:,:)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(:,:)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(:,:)
         type(lowDia_type)       , intent(in)                    :: subsetA
         type(hermitian_type)    , intent(in)                    :: classA
     end subroutine
@@ -8213,11 +8213,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hemm_ASS_CHA_SLA_CNB_SFB_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)            , intent(in)    , optional      :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(:,:)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(:,:)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: IKG => IK3
+        integer(IKG)            , intent(in)    , optional      :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(:,:)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(:,:)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(:,:)
         type(lowDia_type)       , intent(in)                    :: subsetA
         type(hermitian_type)    , intent(in)                    :: classA
     end subroutine
@@ -8228,11 +8228,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hemm_ASS_CHA_SLA_CNB_SFB_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)            , intent(in)    , optional      :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(:,:)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(:,:)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: IKG => IK2
+        integer(IKG)            , intent(in)    , optional      :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(:,:)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(:,:)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(:,:)
         type(lowDia_type)       , intent(in)                    :: subsetA
         type(hermitian_type)    , intent(in)                    :: classA
     end subroutine
@@ -8243,11 +8243,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hemm_ASS_CHA_SLA_CNB_SFB_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)            , intent(in)    , optional      :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(:,:)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(:,:)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: IKG => IK1
+        integer(IKG)            , intent(in)    , optional      :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(:,:)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(:,:)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(:,:)
         type(lowDia_type)       , intent(in)                    :: subsetA
         type(hermitian_type)    , intent(in)                    :: classA
     end subroutine
@@ -8260,11 +8260,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hemm_ASS_CHA_SLA_CNB_SFB_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)            , intent(in)    , optional      :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(:,:)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(:,:)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG)            , intent(in)    , optional      :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(:,:)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(:,:)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(:,:)
         type(lowDia_type)       , intent(in)                    :: subsetA
         type(hermitian_type)    , intent(in)                    :: classA
     end subroutine
@@ -8275,11 +8275,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hemm_ASS_CHA_SLA_CNB_SFB_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)            , intent(in)    , optional      :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(:,:)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(:,:)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG)            , intent(in)    , optional      :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(:,:)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(:,:)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(:,:)
         type(lowDia_type)       , intent(in)                    :: subsetA
         type(hermitian_type)    , intent(in)                    :: classA
     end subroutine
@@ -8290,11 +8290,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hemm_ASS_CHA_SLA_CNB_SFB_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)            , intent(in)    , optional      :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(:,:)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(:,:)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG)            , intent(in)    , optional      :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(:,:)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(:,:)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(:,:)
         type(lowDia_type)       , intent(in)                    :: subsetA
         type(hermitian_type)    , intent(in)                    :: classA
     end subroutine
@@ -8305,11 +8305,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hemm_ASS_CHA_SLA_CNB_SFB_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)            , intent(in)    , optional      :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(:,:)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(:,:)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG)            , intent(in)    , optional      :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(:,:)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(:,:)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(:,:)
         type(lowDia_type)       , intent(in)                    :: subsetA
         type(hermitian_type)    , intent(in)                    :: classA
     end subroutine
@@ -8320,11 +8320,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hemm_ASS_CHA_SLA_CNB_SFB_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)            , intent(in)    , optional      :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(:,:)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(:,:)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG)            , intent(in)    , optional      :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(:,:)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(:,:)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(:,:)
         type(lowDia_type)       , intent(in)                    :: subsetA
         type(hermitian_type)    , intent(in)                    :: classA
     end subroutine
@@ -8337,11 +8337,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hemm_ASS_CHA_SLA_CNB_SFB_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)               , intent(in)    , optional      :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(:,:)
-        real(RKC)               , intent(in)    , contiguous    :: matB(:,:)
-        real(RKC)               , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)               , intent(in)    , optional      :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(:,:)
+        real(RKG)               , intent(in)    , contiguous    :: matB(:,:)
+        real(RKG)               , intent(inout) , contiguous    :: matC(:,:)
         type(lowDia_type)       , intent(in)                    :: subsetA
         type(hermitian_type)    , intent(in)                    :: classA
     end subroutine
@@ -8352,11 +8352,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hemm_ASS_CHA_SLA_CNB_SFB_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)               , intent(in)    , optional      :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(:,:)
-        real(RKC)               , intent(in)    , contiguous    :: matB(:,:)
-        real(RKC)               , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)               , intent(in)    , optional      :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(:,:)
+        real(RKG)               , intent(in)    , contiguous    :: matB(:,:)
+        real(RKG)               , intent(inout) , contiguous    :: matC(:,:)
         type(lowDia_type)       , intent(in)                    :: subsetA
         type(hermitian_type)    , intent(in)                    :: classA
     end subroutine
@@ -8367,11 +8367,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hemm_ASS_CHA_SLA_CNB_SFB_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)               , intent(in)    , optional      :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(:,:)
-        real(RKC)               , intent(in)    , contiguous    :: matB(:,:)
-        real(RKC)               , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)               , intent(in)    , optional      :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(:,:)
+        real(RKG)               , intent(in)    , contiguous    :: matB(:,:)
+        real(RKG)               , intent(inout) , contiguous    :: matC(:,:)
         type(lowDia_type)       , intent(in)                    :: subsetA
         type(hermitian_type)    , intent(in)                    :: classA
     end subroutine
@@ -8382,11 +8382,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hemm_ASS_CHA_SLA_CNB_SFB_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)               , intent(in)    , optional      :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(:,:)
-        real(RKC)               , intent(in)    , contiguous    :: matB(:,:)
-        real(RKC)               , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)               , intent(in)    , optional      :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(:,:)
+        real(RKG)               , intent(in)    , contiguous    :: matB(:,:)
+        real(RKG)               , intent(inout) , contiguous    :: matC(:,:)
         type(lowDia_type)       , intent(in)                    :: subsetA
         type(hermitian_type)    , intent(in)                    :: classA
     end subroutine
@@ -8397,11 +8397,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hemm_ASS_CHA_SLA_CNB_SFB_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)               , intent(in)    , optional      :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(:,:)
-        real(RKC)               , intent(in)    , contiguous    :: matB(:,:)
-        real(RKC)               , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)               , intent(in)    , optional      :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(:,:)
+        real(RKG)               , intent(in)    , contiguous    :: matB(:,:)
+        real(RKG)               , intent(inout) , contiguous    :: matC(:,:)
         type(lowDia_type)       , intent(in)                    :: subsetA
         type(hermitian_type)    , intent(in)                    :: classA
     end subroutine
@@ -8420,11 +8420,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hemm_ASS_CNA_SFA_CHB_SUB_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)            , intent(in)    , optional      :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(:,:)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(:,:)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: IKG => IK5
+        integer(IKG)            , intent(in)    , optional      :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(:,:)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(:,:)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(:,:)
         type(uppDia_type)       , intent(in)                    :: subsetB
         type(hermitian_type)    , intent(in)                    :: classB
     end subroutine
@@ -8435,11 +8435,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hemm_ASS_CNA_SFA_CHB_SUB_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)            , intent(in)    , optional      :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(:,:)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(:,:)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: IKG => IK4
+        integer(IKG)            , intent(in)    , optional      :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(:,:)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(:,:)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(:,:)
         type(uppDia_type)       , intent(in)                    :: subsetB
         type(hermitian_type)    , intent(in)                    :: classB
     end subroutine
@@ -8450,11 +8450,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hemm_ASS_CNA_SFA_CHB_SUB_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)            , intent(in)    , optional      :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(:,:)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(:,:)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: IKG => IK3
+        integer(IKG)            , intent(in)    , optional      :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(:,:)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(:,:)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(:,:)
         type(uppDia_type)       , intent(in)                    :: subsetB
         type(hermitian_type)    , intent(in)                    :: classB
     end subroutine
@@ -8465,11 +8465,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hemm_ASS_CNA_SFA_CHB_SUB_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)            , intent(in)    , optional      :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(:,:)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(:,:)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: IKG => IK2
+        integer(IKG)            , intent(in)    , optional      :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(:,:)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(:,:)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(:,:)
         type(uppDia_type)       , intent(in)                    :: subsetB
         type(hermitian_type)    , intent(in)                    :: classB
     end subroutine
@@ -8480,11 +8480,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hemm_ASS_CNA_SFA_CHB_SUB_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)            , intent(in)    , optional      :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(:,:)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(:,:)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: IKG => IK1
+        integer(IKG)            , intent(in)    , optional      :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(:,:)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(:,:)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(:,:)
         type(uppDia_type)       , intent(in)                    :: subsetB
         type(hermitian_type)    , intent(in)                    :: classB
     end subroutine
@@ -8497,11 +8497,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hemm_ASS_CNA_SFA_CHB_SUB_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)            , intent(in)    , optional      :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(:,:)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(:,:)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG)            , intent(in)    , optional      :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(:,:)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(:,:)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(:,:)
         type(uppDia_type)       , intent(in)                    :: subsetB
         type(hermitian_type)    , intent(in)                    :: classB
     end subroutine
@@ -8512,11 +8512,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hemm_ASS_CNA_SFA_CHB_SUB_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)            , intent(in)    , optional      :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(:,:)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(:,:)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG)            , intent(in)    , optional      :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(:,:)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(:,:)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(:,:)
         type(uppDia_type)       , intent(in)                    :: subsetB
         type(hermitian_type)    , intent(in)                    :: classB
     end subroutine
@@ -8527,11 +8527,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hemm_ASS_CNA_SFA_CHB_SUB_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)            , intent(in)    , optional      :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(:,:)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(:,:)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG)            , intent(in)    , optional      :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(:,:)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(:,:)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(:,:)
         type(uppDia_type)       , intent(in)                    :: subsetB
         type(hermitian_type)    , intent(in)                    :: classB
     end subroutine
@@ -8542,11 +8542,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hemm_ASS_CNA_SFA_CHB_SUB_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)            , intent(in)    , optional      :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(:,:)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(:,:)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG)            , intent(in)    , optional      :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(:,:)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(:,:)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(:,:)
         type(uppDia_type)       , intent(in)                    :: subsetB
         type(hermitian_type)    , intent(in)                    :: classB
     end subroutine
@@ -8557,11 +8557,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hemm_ASS_CNA_SFA_CHB_SUB_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)            , intent(in)    , optional      :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(:,:)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(:,:)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG)            , intent(in)    , optional      :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(:,:)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(:,:)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(:,:)
         type(uppDia_type)       , intent(in)                    :: subsetB
         type(hermitian_type)    , intent(in)                    :: classB
     end subroutine
@@ -8574,11 +8574,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hemm_ASS_CNA_SFA_CHB_SUB_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)               , intent(in)    , optional      :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(:,:)
-        real(RKC)               , intent(in)    , contiguous    :: matB(:,:)
-        real(RKC)               , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)               , intent(in)    , optional      :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(:,:)
+        real(RKG)               , intent(in)    , contiguous    :: matB(:,:)
+        real(RKG)               , intent(inout) , contiguous    :: matC(:,:)
         type(uppDia_type)       , intent(in)                    :: subsetB
         type(hermitian_type)    , intent(in)                    :: classB
     end subroutine
@@ -8589,11 +8589,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hemm_ASS_CNA_SFA_CHB_SUB_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)               , intent(in)    , optional      :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(:,:)
-        real(RKC)               , intent(in)    , contiguous    :: matB(:,:)
-        real(RKC)               , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)               , intent(in)    , optional      :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(:,:)
+        real(RKG)               , intent(in)    , contiguous    :: matB(:,:)
+        real(RKG)               , intent(inout) , contiguous    :: matC(:,:)
         type(uppDia_type)       , intent(in)                    :: subsetB
         type(hermitian_type)    , intent(in)                    :: classB
     end subroutine
@@ -8604,11 +8604,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hemm_ASS_CNA_SFA_CHB_SUB_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)               , intent(in)    , optional      :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(:,:)
-        real(RKC)               , intent(in)    , contiguous    :: matB(:,:)
-        real(RKC)               , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)               , intent(in)    , optional      :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(:,:)
+        real(RKG)               , intent(in)    , contiguous    :: matB(:,:)
+        real(RKG)               , intent(inout) , contiguous    :: matC(:,:)
         type(uppDia_type)       , intent(in)                    :: subsetB
         type(hermitian_type)    , intent(in)                    :: classB
     end subroutine
@@ -8619,11 +8619,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hemm_ASS_CNA_SFA_CHB_SUB_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)               , intent(in)    , optional      :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(:,:)
-        real(RKC)               , intent(in)    , contiguous    :: matB(:,:)
-        real(RKC)               , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)               , intent(in)    , optional      :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(:,:)
+        real(RKG)               , intent(in)    , contiguous    :: matB(:,:)
+        real(RKG)               , intent(inout) , contiguous    :: matC(:,:)
         type(uppDia_type)       , intent(in)                    :: subsetB
         type(hermitian_type)    , intent(in)                    :: classB
     end subroutine
@@ -8634,11 +8634,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hemm_ASS_CNA_SFA_CHB_SUB_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)               , intent(in)    , optional      :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(:,:)
-        real(RKC)               , intent(in)    , contiguous    :: matB(:,:)
-        real(RKC)               , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)               , intent(in)    , optional      :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(:,:)
+        real(RKG)               , intent(in)    , contiguous    :: matB(:,:)
+        real(RKG)               , intent(inout) , contiguous    :: matC(:,:)
         type(uppDia_type)       , intent(in)                    :: subsetB
         type(hermitian_type)    , intent(in)                    :: classB
     end subroutine
@@ -8657,11 +8657,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hemm_ASS_CNA_SFA_CHB_SLB_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)            , intent(in)    , optional      :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(:,:)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(:,:)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: IKG => IK5
+        integer(IKG)            , intent(in)    , optional      :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(:,:)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(:,:)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(:,:)
         type(lowDia_type)       , intent(in)                    :: subsetB
         type(hermitian_type)    , intent(in)                    :: classB
     end subroutine
@@ -8672,11 +8672,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hemm_ASS_CNA_SFA_CHB_SLB_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)            , intent(in)    , optional      :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(:,:)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(:,:)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: IKG => IK4
+        integer(IKG)            , intent(in)    , optional      :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(:,:)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(:,:)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(:,:)
         type(lowDia_type)       , intent(in)                    :: subsetB
         type(hermitian_type)    , intent(in)                    :: classB
     end subroutine
@@ -8687,11 +8687,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hemm_ASS_CNA_SFA_CHB_SLB_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)            , intent(in)    , optional      :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(:,:)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(:,:)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: IKG => IK3
+        integer(IKG)            , intent(in)    , optional      :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(:,:)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(:,:)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(:,:)
         type(lowDia_type)       , intent(in)                    :: subsetB
         type(hermitian_type)    , intent(in)                    :: classB
     end subroutine
@@ -8702,11 +8702,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hemm_ASS_CNA_SFA_CHB_SLB_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)            , intent(in)    , optional      :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(:,:)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(:,:)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: IKG => IK2
+        integer(IKG)            , intent(in)    , optional      :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(:,:)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(:,:)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(:,:)
         type(lowDia_type)       , intent(in)                    :: subsetB
         type(hermitian_type)    , intent(in)                    :: classB
     end subroutine
@@ -8717,11 +8717,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hemm_ASS_CNA_SFA_CHB_SLB_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)            , intent(in)    , optional      :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(:,:)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(:,:)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: IKG => IK1
+        integer(IKG)            , intent(in)    , optional      :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(:,:)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(:,:)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(:,:)
         type(lowDia_type)       , intent(in)                    :: subsetB
         type(hermitian_type)    , intent(in)                    :: classB
     end subroutine
@@ -8734,11 +8734,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hemm_ASS_CNA_SFA_CHB_SLB_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)            , intent(in)    , optional      :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(:,:)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(:,:)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG)            , intent(in)    , optional      :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(:,:)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(:,:)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(:,:)
         type(lowDia_type)       , intent(in)                    :: subsetB
         type(hermitian_type)    , intent(in)                    :: classB
     end subroutine
@@ -8749,11 +8749,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hemm_ASS_CNA_SFA_CHB_SLB_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)            , intent(in)    , optional      :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(:,:)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(:,:)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG)            , intent(in)    , optional      :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(:,:)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(:,:)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(:,:)
         type(lowDia_type)       , intent(in)                    :: subsetB
         type(hermitian_type)    , intent(in)                    :: classB
     end subroutine
@@ -8764,11 +8764,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hemm_ASS_CNA_SFA_CHB_SLB_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)            , intent(in)    , optional      :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(:,:)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(:,:)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG)            , intent(in)    , optional      :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(:,:)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(:,:)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(:,:)
         type(lowDia_type)       , intent(in)                    :: subsetB
         type(hermitian_type)    , intent(in)                    :: classB
     end subroutine
@@ -8779,11 +8779,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hemm_ASS_CNA_SFA_CHB_SLB_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)            , intent(in)    , optional      :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(:,:)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(:,:)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG)            , intent(in)    , optional      :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(:,:)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(:,:)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(:,:)
         type(lowDia_type)       , intent(in)                    :: subsetB
         type(hermitian_type)    , intent(in)                    :: classB
     end subroutine
@@ -8794,11 +8794,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hemm_ASS_CNA_SFA_CHB_SLB_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)            , intent(in)    , optional      :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(:,:)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(:,:)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG)            , intent(in)    , optional      :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(:,:)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(:,:)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(:,:)
         type(lowDia_type)       , intent(in)                    :: subsetB
         type(hermitian_type)    , intent(in)                    :: classB
     end subroutine
@@ -8811,11 +8811,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hemm_ASS_CNA_SFA_CHB_SLB_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)               , intent(in)    , optional      :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(:,:)
-        real(RKC)               , intent(in)    , contiguous    :: matB(:,:)
-        real(RKC)               , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)               , intent(in)    , optional      :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(:,:)
+        real(RKG)               , intent(in)    , contiguous    :: matB(:,:)
+        real(RKG)               , intent(inout) , contiguous    :: matC(:,:)
         type(lowDia_type)       , intent(in)                    :: subsetB
         type(hermitian_type)    , intent(in)                    :: classB
     end subroutine
@@ -8826,11 +8826,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hemm_ASS_CNA_SFA_CHB_SLB_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)               , intent(in)    , optional      :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(:,:)
-        real(RKC)               , intent(in)    , contiguous    :: matB(:,:)
-        real(RKC)               , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)               , intent(in)    , optional      :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(:,:)
+        real(RKG)               , intent(in)    , contiguous    :: matB(:,:)
+        real(RKG)               , intent(inout) , contiguous    :: matC(:,:)
         type(lowDia_type)       , intent(in)                    :: subsetB
         type(hermitian_type)    , intent(in)                    :: classB
     end subroutine
@@ -8841,11 +8841,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hemm_ASS_CNA_SFA_CHB_SLB_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)               , intent(in)    , optional      :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(:,:)
-        real(RKC)               , intent(in)    , contiguous    :: matB(:,:)
-        real(RKC)               , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)               , intent(in)    , optional      :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(:,:)
+        real(RKG)               , intent(in)    , contiguous    :: matB(:,:)
+        real(RKG)               , intent(inout) , contiguous    :: matC(:,:)
         type(lowDia_type)       , intent(in)                    :: subsetB
         type(hermitian_type)    , intent(in)                    :: classB
     end subroutine
@@ -8856,11 +8856,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hemm_ASS_CNA_SFA_CHB_SLB_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)               , intent(in)    , optional      :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(:,:)
-        real(RKC)               , intent(in)    , contiguous    :: matB(:,:)
-        real(RKC)               , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)               , intent(in)    , optional      :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(:,:)
+        real(RKG)               , intent(in)    , contiguous    :: matB(:,:)
+        real(RKG)               , intent(inout) , contiguous    :: matC(:,:)
         type(lowDia_type)       , intent(in)                    :: subsetB
         type(hermitian_type)    , intent(in)                    :: classB
     end subroutine
@@ -8871,11 +8871,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hemm_ASS_CNA_SFA_CHB_SLB_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)               , intent(in)    , optional      :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(:,:)
-        real(RKC)               , intent(in)    , contiguous    :: matB(:,:)
-        real(RKC)               , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)               , intent(in)    , optional      :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(:,:)
+        real(RKG)               , intent(in)    , contiguous    :: matB(:,:)
+        real(RKG)               , intent(inout) , contiguous    :: matC(:,:)
         type(lowDia_type)       , intent(in)                    :: subsetB
         type(hermitian_type)    , intent(in)                    :: classB
     end subroutine
@@ -8898,12 +8898,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hemm_EXP_CHA_SUA_CNB_SFB_IK5
 #endif
-        use pm_kind, only: IKC => IK5
+        use pm_kind, only: IKG => IK5
         integer(IK)             , intent(in)                    :: nrow, ncol, roffA, coffA, roffB, coffB, roffC, coffC
-        integer(IKC)            , intent(in)                    :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        integer(IKG)            , intent(in)                    :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(uppDia_type)       , intent(in)                    :: subsetA
         type(hermitian_type)    , intent(in)                    :: classA
     end subroutine
@@ -8914,12 +8914,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hemm_EXP_CHA_SUA_CNB_SFB_IK4
 #endif
-        use pm_kind, only: IKC => IK4
+        use pm_kind, only: IKG => IK4
         integer(IK)             , intent(in)                    :: nrow, ncol, roffA, coffA, roffB, coffB, roffC, coffC
-        integer(IKC)            , intent(in)                    :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        integer(IKG)            , intent(in)                    :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(uppDia_type)       , intent(in)                    :: subsetA
         type(hermitian_type)    , intent(in)                    :: classA
     end subroutine
@@ -8930,12 +8930,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hemm_EXP_CHA_SUA_CNB_SFB_IK3
 #endif
-        use pm_kind, only: IKC => IK3
+        use pm_kind, only: IKG => IK3
         integer(IK)             , intent(in)                    :: nrow, ncol, roffA, coffA, roffB, coffB, roffC, coffC
-        integer(IKC)            , intent(in)                    :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        integer(IKG)            , intent(in)                    :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(uppDia_type)       , intent(in)                    :: subsetA
         type(hermitian_type)    , intent(in)                    :: classA
     end subroutine
@@ -8946,12 +8946,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hemm_EXP_CHA_SUA_CNB_SFB_IK2
 #endif
-        use pm_kind, only: IKC => IK2
+        use pm_kind, only: IKG => IK2
         integer(IK)             , intent(in)                    :: nrow, ncol, roffA, coffA, roffB, coffB, roffC, coffC
-        integer(IKC)            , intent(in)                    :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        integer(IKG)            , intent(in)                    :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(uppDia_type)       , intent(in)                    :: subsetA
         type(hermitian_type)    , intent(in)                    :: classA
     end subroutine
@@ -8962,12 +8962,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hemm_EXP_CHA_SUA_CNB_SFB_IK1
 #endif
-        use pm_kind, only: IKC => IK1
+        use pm_kind, only: IKG => IK1
         integer(IK)             , intent(in)                    :: nrow, ncol, roffA, coffA, roffB, coffB, roffC, coffC
-        integer(IKC)            , intent(in)                    :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        integer(IKG)            , intent(in)                    :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(uppDia_type)       , intent(in)                    :: subsetA
         type(hermitian_type)    , intent(in)                    :: classA
     end subroutine
@@ -8980,12 +8980,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hemm_EXP_CHA_SUA_CNB_SFB_CK5
 #endif
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
         integer(IK)             , intent(in)                    :: nrow, ncol, roffA, coffA, roffB, coffB, roffC, coffC
-        complex(CKC)            , intent(in)                    :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        complex(CKG)            , intent(in)                    :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(uppDia_type)       , intent(in)                    :: subsetA
         type(hermitian_type)    , intent(in)                    :: classA
     end subroutine
@@ -8996,12 +8996,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hemm_EXP_CHA_SUA_CNB_SFB_CK4
 #endif
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
         integer(IK)             , intent(in)                    :: nrow, ncol, roffA, coffA, roffB, coffB, roffC, coffC
-        complex(CKC)            , intent(in)                    :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        complex(CKG)            , intent(in)                    :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(uppDia_type)       , intent(in)                    :: subsetA
         type(hermitian_type)    , intent(in)                    :: classA
     end subroutine
@@ -9012,12 +9012,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hemm_EXP_CHA_SUA_CNB_SFB_CK3
 #endif
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
         integer(IK)             , intent(in)                    :: nrow, ncol, roffA, coffA, roffB, coffB, roffC, coffC
-        complex(CKC)            , intent(in)                    :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        complex(CKG)            , intent(in)                    :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(uppDia_type)       , intent(in)                    :: subsetA
         type(hermitian_type)    , intent(in)                    :: classA
     end subroutine
@@ -9028,12 +9028,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hemm_EXP_CHA_SUA_CNB_SFB_CK2
 #endif
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
         integer(IK)             , intent(in)                    :: nrow, ncol, roffA, coffA, roffB, coffB, roffC, coffC
-        complex(CKC)            , intent(in)                    :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        complex(CKG)            , intent(in)                    :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(uppDia_type)       , intent(in)                    :: subsetA
         type(hermitian_type)    , intent(in)                    :: classA
     end subroutine
@@ -9044,12 +9044,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hemm_EXP_CHA_SUA_CNB_SFB_CK1
 #endif
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
         integer(IK)             , intent(in)                    :: nrow, ncol, roffA, coffA, roffB, coffB, roffC, coffC
-        complex(CKC)            , intent(in)                    :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        complex(CKG)            , intent(in)                    :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(uppDia_type)       , intent(in)                    :: subsetA
         type(hermitian_type)    , intent(in)                    :: classA
     end subroutine
@@ -9062,12 +9062,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hemm_EXP_CHA_SUA_CNB_SFB_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         integer(IK)             , intent(in)                    :: nrow, ncol, roffA, coffA, roffB, coffB, roffC, coffC
-        real(RKC)               , intent(in)                    :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        real(RKC)               , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        real(RKC)               , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        real(RKG)               , intent(in)                    :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        real(RKG)               , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        real(RKG)               , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(uppDia_type)       , intent(in)                    :: subsetA
         type(hermitian_type)    , intent(in)                    :: classA
     end subroutine
@@ -9078,12 +9078,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hemm_EXP_CHA_SUA_CNB_SFB_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         integer(IK)             , intent(in)                    :: nrow, ncol, roffA, coffA, roffB, coffB, roffC, coffC
-        real(RKC)               , intent(in)                    :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        real(RKC)               , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        real(RKC)               , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        real(RKG)               , intent(in)                    :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        real(RKG)               , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        real(RKG)               , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(uppDia_type)       , intent(in)                    :: subsetA
         type(hermitian_type)    , intent(in)                    :: classA
     end subroutine
@@ -9094,12 +9094,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hemm_EXP_CHA_SUA_CNB_SFB_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         integer(IK)             , intent(in)                    :: nrow, ncol, roffA, coffA, roffB, coffB, roffC, coffC
-        real(RKC)               , intent(in)                    :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        real(RKC)               , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        real(RKC)               , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        real(RKG)               , intent(in)                    :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        real(RKG)               , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        real(RKG)               , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(uppDia_type)       , intent(in)                    :: subsetA
         type(hermitian_type)    , intent(in)                    :: classA
     end subroutine
@@ -9110,12 +9110,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hemm_EXP_CHA_SUA_CNB_SFB_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         integer(IK)             , intent(in)                    :: nrow, ncol, roffA, coffA, roffB, coffB, roffC, coffC
-        real(RKC)               , intent(in)                    :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        real(RKC)               , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        real(RKC)               , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        real(RKG)               , intent(in)                    :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        real(RKG)               , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        real(RKG)               , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(uppDia_type)       , intent(in)                    :: subsetA
         type(hermitian_type)    , intent(in)                    :: classA
     end subroutine
@@ -9126,12 +9126,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hemm_EXP_CHA_SUA_CNB_SFB_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         integer(IK)             , intent(in)                    :: nrow, ncol, roffA, coffA, roffB, coffB, roffC, coffC
-        real(RKC)               , intent(in)                    :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        real(RKC)               , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        real(RKC)               , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        real(RKG)               , intent(in)                    :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        real(RKG)               , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        real(RKG)               , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(uppDia_type)       , intent(in)                    :: subsetA
         type(hermitian_type)    , intent(in)                    :: classA
     end subroutine
@@ -9150,12 +9150,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hemm_EXP_CHA_SLA_CNB_SFB_IK5
 #endif
-        use pm_kind, only: IKC => IK5
+        use pm_kind, only: IKG => IK5
         integer(IK)             , intent(in)                    :: nrow, ncol, roffA, coffA, roffB, coffB, roffC, coffC
-        integer(IKC)            , intent(in)                    :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        integer(IKG)            , intent(in)                    :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(lowDia_type)       , intent(in)                    :: subsetA
         type(hermitian_type)    , intent(in)                    :: classA
     end subroutine
@@ -9166,12 +9166,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hemm_EXP_CHA_SLA_CNB_SFB_IK4
 #endif
-        use pm_kind, only: IKC => IK4
+        use pm_kind, only: IKG => IK4
         integer(IK)             , intent(in)                    :: nrow, ncol, roffA, coffA, roffB, coffB, roffC, coffC
-        integer(IKC)            , intent(in)                    :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        integer(IKG)            , intent(in)                    :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(lowDia_type)       , intent(in)                    :: subsetA
         type(hermitian_type)    , intent(in)                    :: classA
     end subroutine
@@ -9182,12 +9182,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hemm_EXP_CHA_SLA_CNB_SFB_IK3
 #endif
-        use pm_kind, only: IKC => IK3
+        use pm_kind, only: IKG => IK3
         integer(IK)             , intent(in)                    :: nrow, ncol, roffA, coffA, roffB, coffB, roffC, coffC
-        integer(IKC)            , intent(in)                    :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        integer(IKG)            , intent(in)                    :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(lowDia_type)       , intent(in)                    :: subsetA
         type(hermitian_type)    , intent(in)                    :: classA
     end subroutine
@@ -9198,12 +9198,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hemm_EXP_CHA_SLA_CNB_SFB_IK2
 #endif
-        use pm_kind, only: IKC => IK2
+        use pm_kind, only: IKG => IK2
         integer(IK)             , intent(in)                    :: nrow, ncol, roffA, coffA, roffB, coffB, roffC, coffC
-        integer(IKC)            , intent(in)                    :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        integer(IKG)            , intent(in)                    :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(lowDia_type)       , intent(in)                    :: subsetA
         type(hermitian_type)    , intent(in)                    :: classA
     end subroutine
@@ -9214,12 +9214,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hemm_EXP_CHA_SLA_CNB_SFB_IK1
 #endif
-        use pm_kind, only: IKC => IK1
+        use pm_kind, only: IKG => IK1
         integer(IK)             , intent(in)                    :: nrow, ncol, roffA, coffA, roffB, coffB, roffC, coffC
-        integer(IKC)            , intent(in)                    :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        integer(IKG)            , intent(in)                    :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(lowDia_type)       , intent(in)                    :: subsetA
         type(hermitian_type)    , intent(in)                    :: classA
     end subroutine
@@ -9232,12 +9232,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hemm_EXP_CHA_SLA_CNB_SFB_CK5
 #endif
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
         integer(IK)             , intent(in)                    :: nrow, ncol, roffA, coffA, roffB, coffB, roffC, coffC
-        complex(CKC)            , intent(in)                    :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        complex(CKG)            , intent(in)                    :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(lowDia_type)       , intent(in)                    :: subsetA
         type(hermitian_type)    , intent(in)                    :: classA
     end subroutine
@@ -9248,12 +9248,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hemm_EXP_CHA_SLA_CNB_SFB_CK4
 #endif
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
         integer(IK)             , intent(in)                    :: nrow, ncol, roffA, coffA, roffB, coffB, roffC, coffC
-        complex(CKC)            , intent(in)                    :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        complex(CKG)            , intent(in)                    :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(lowDia_type)       , intent(in)                    :: subsetA
         type(hermitian_type)    , intent(in)                    :: classA
     end subroutine
@@ -9264,12 +9264,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hemm_EXP_CHA_SLA_CNB_SFB_CK3
 #endif
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
         integer(IK)             , intent(in)                    :: nrow, ncol, roffA, coffA, roffB, coffB, roffC, coffC
-        complex(CKC)            , intent(in)                    :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        complex(CKG)            , intent(in)                    :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(lowDia_type)       , intent(in)                    :: subsetA
         type(hermitian_type)    , intent(in)                    :: classA
     end subroutine
@@ -9280,12 +9280,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hemm_EXP_CHA_SLA_CNB_SFB_CK2
 #endif
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
         integer(IK)             , intent(in)                    :: nrow, ncol, roffA, coffA, roffB, coffB, roffC, coffC
-        complex(CKC)            , intent(in)                    :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        complex(CKG)            , intent(in)                    :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(lowDia_type)       , intent(in)                    :: subsetA
         type(hermitian_type)    , intent(in)                    :: classA
     end subroutine
@@ -9296,12 +9296,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hemm_EXP_CHA_SLA_CNB_SFB_CK1
 #endif
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
         integer(IK)             , intent(in)                    :: nrow, ncol, roffA, coffA, roffB, coffB, roffC, coffC
-        complex(CKC)            , intent(in)                    :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        complex(CKG)            , intent(in)                    :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(lowDia_type)       , intent(in)                    :: subsetA
         type(hermitian_type)    , intent(in)                    :: classA
     end subroutine
@@ -9314,12 +9314,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hemm_EXP_CHA_SLA_CNB_SFB_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         integer(IK)             , intent(in)                    :: nrow, ncol, roffA, coffA, roffB, coffB, roffC, coffC
-        real(RKC)               , intent(in)                    :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        real(RKC)               , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        real(RKC)               , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        real(RKG)               , intent(in)                    :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        real(RKG)               , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        real(RKG)               , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(lowDia_type)       , intent(in)                    :: subsetA
         type(hermitian_type)    , intent(in)                    :: classA
     end subroutine
@@ -9330,12 +9330,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hemm_EXP_CHA_SLA_CNB_SFB_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         integer(IK)             , intent(in)                    :: nrow, ncol, roffA, coffA, roffB, coffB, roffC, coffC
-        real(RKC)               , intent(in)                    :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        real(RKC)               , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        real(RKC)               , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        real(RKG)               , intent(in)                    :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        real(RKG)               , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        real(RKG)               , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(lowDia_type)       , intent(in)                    :: subsetA
         type(hermitian_type)    , intent(in)                    :: classA
     end subroutine
@@ -9346,12 +9346,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hemm_EXP_CHA_SLA_CNB_SFB_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         integer(IK)             , intent(in)                    :: nrow, ncol, roffA, coffA, roffB, coffB, roffC, coffC
-        real(RKC)               , intent(in)                    :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        real(RKC)               , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        real(RKC)               , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        real(RKG)               , intent(in)                    :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        real(RKG)               , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        real(RKG)               , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(lowDia_type)       , intent(in)                    :: subsetA
         type(hermitian_type)    , intent(in)                    :: classA
     end subroutine
@@ -9362,12 +9362,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hemm_EXP_CHA_SLA_CNB_SFB_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         integer(IK)             , intent(in)                    :: nrow, ncol, roffA, coffA, roffB, coffB, roffC, coffC
-        real(RKC)               , intent(in)                    :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        real(RKC)               , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        real(RKC)               , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        real(RKG)               , intent(in)                    :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        real(RKG)               , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        real(RKG)               , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(lowDia_type)       , intent(in)                    :: subsetA
         type(hermitian_type)    , intent(in)                    :: classA
     end subroutine
@@ -9378,12 +9378,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hemm_EXP_CHA_SLA_CNB_SFB_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         integer(IK)             , intent(in)                    :: nrow, ncol, roffA, coffA, roffB, coffB, roffC, coffC
-        real(RKC)               , intent(in)                    :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        real(RKC)               , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        real(RKC)               , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        real(RKG)               , intent(in)                    :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        real(RKG)               , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        real(RKG)               , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(lowDia_type)       , intent(in)                    :: subsetA
         type(hermitian_type)    , intent(in)                    :: classA
     end subroutine
@@ -9402,12 +9402,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hemm_EXP_CNA_SFA_CHB_SUB_IK5
 #endif
-        use pm_kind, only: IKC => IK5
+        use pm_kind, only: IKG => IK5
         integer(IK)             , intent(in)                    :: nrow, ncol, roffA, coffA, roffB, coffB, roffC, coffC
-        integer(IKC)            , intent(in)                    :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        integer(IKG)            , intent(in)                    :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(uppDia_type)       , intent(in)                    :: subsetB
         type(hermitian_type)    , intent(in)                    :: classB
     end subroutine
@@ -9418,12 +9418,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hemm_EXP_CNA_SFA_CHB_SUB_IK4
 #endif
-        use pm_kind, only: IKC => IK4
+        use pm_kind, only: IKG => IK4
         integer(IK)             , intent(in)                    :: nrow, ncol, roffA, coffA, roffB, coffB, roffC, coffC
-        integer(IKC)            , intent(in)                    :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        integer(IKG)            , intent(in)                    :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(uppDia_type)       , intent(in)                    :: subsetB
         type(hermitian_type)    , intent(in)                    :: classB
     end subroutine
@@ -9434,12 +9434,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hemm_EXP_CNA_SFA_CHB_SUB_IK3
 #endif
-        use pm_kind, only: IKC => IK3
+        use pm_kind, only: IKG => IK3
         integer(IK)             , intent(in)                    :: nrow, ncol, roffA, coffA, roffB, coffB, roffC, coffC
-        integer(IKC)            , intent(in)                    :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        integer(IKG)            , intent(in)                    :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(uppDia_type)       , intent(in)                    :: subsetB
         type(hermitian_type)    , intent(in)                    :: classB
     end subroutine
@@ -9450,12 +9450,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hemm_EXP_CNA_SFA_CHB_SUB_IK2
 #endif
-        use pm_kind, only: IKC => IK2
+        use pm_kind, only: IKG => IK2
         integer(IK)             , intent(in)                    :: nrow, ncol, roffA, coffA, roffB, coffB, roffC, coffC
-        integer(IKC)            , intent(in)                    :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        integer(IKG)            , intent(in)                    :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(uppDia_type)       , intent(in)                    :: subsetB
         type(hermitian_type)    , intent(in)                    :: classB
     end subroutine
@@ -9466,12 +9466,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hemm_EXP_CNA_SFA_CHB_SUB_IK1
 #endif
-        use pm_kind, only: IKC => IK1
+        use pm_kind, only: IKG => IK1
         integer(IK)             , intent(in)                    :: nrow, ncol, roffA, coffA, roffB, coffB, roffC, coffC
-        integer(IKC)            , intent(in)                    :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        integer(IKG)            , intent(in)                    :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(uppDia_type)       , intent(in)                    :: subsetB
         type(hermitian_type)    , intent(in)                    :: classB
     end subroutine
@@ -9484,12 +9484,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hemm_EXP_CNA_SFA_CHB_SUB_CK5
 #endif
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
         integer(IK)             , intent(in)                    :: nrow, ncol, roffA, coffA, roffB, coffB, roffC, coffC
-        complex(CKC)            , intent(in)                    :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        complex(CKG)            , intent(in)                    :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(uppDia_type)       , intent(in)                    :: subsetB
         type(hermitian_type)    , intent(in)                    :: classB
     end subroutine
@@ -9500,12 +9500,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hemm_EXP_CNA_SFA_CHB_SUB_CK4
 #endif
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
         integer(IK)             , intent(in)                    :: nrow, ncol, roffA, coffA, roffB, coffB, roffC, coffC
-        complex(CKC)            , intent(in)                    :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        complex(CKG)            , intent(in)                    :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(uppDia_type)       , intent(in)                    :: subsetB
         type(hermitian_type)    , intent(in)                    :: classB
     end subroutine
@@ -9516,12 +9516,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hemm_EXP_CNA_SFA_CHB_SUB_CK3
 #endif
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
         integer(IK)             , intent(in)                    :: nrow, ncol, roffA, coffA, roffB, coffB, roffC, coffC
-        complex(CKC)            , intent(in)                    :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        complex(CKG)            , intent(in)                    :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(uppDia_type)       , intent(in)                    :: subsetB
         type(hermitian_type)    , intent(in)                    :: classB
     end subroutine
@@ -9532,12 +9532,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hemm_EXP_CNA_SFA_CHB_SUB_CK2
 #endif
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
         integer(IK)             , intent(in)                    :: nrow, ncol, roffA, coffA, roffB, coffB, roffC, coffC
-        complex(CKC)            , intent(in)                    :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        complex(CKG)            , intent(in)                    :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(uppDia_type)       , intent(in)                    :: subsetB
         type(hermitian_type)    , intent(in)                    :: classB
     end subroutine
@@ -9548,12 +9548,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hemm_EXP_CNA_SFA_CHB_SUB_CK1
 #endif
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
         integer(IK)             , intent(in)                    :: nrow, ncol, roffA, coffA, roffB, coffB, roffC, coffC
-        complex(CKC)            , intent(in)                    :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        complex(CKG)            , intent(in)                    :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(uppDia_type)       , intent(in)                    :: subsetB
         type(hermitian_type)    , intent(in)                    :: classB
     end subroutine
@@ -9566,12 +9566,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hemm_EXP_CNA_SFA_CHB_SUB_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         integer(IK)             , intent(in)                    :: nrow, ncol, roffA, coffA, roffB, coffB, roffC, coffC
-        real(RKC)               , intent(in)                    :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        real(RKC)               , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        real(RKC)               , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        real(RKG)               , intent(in)                    :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        real(RKG)               , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        real(RKG)               , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(uppDia_type)       , intent(in)                    :: subsetB
         type(hermitian_type)    , intent(in)                    :: classB
     end subroutine
@@ -9582,12 +9582,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hemm_EXP_CNA_SFA_CHB_SUB_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         integer(IK)             , intent(in)                    :: nrow, ncol, roffA, coffA, roffB, coffB, roffC, coffC
-        real(RKC)               , intent(in)                    :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        real(RKC)               , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        real(RKC)               , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        real(RKG)               , intent(in)                    :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        real(RKG)               , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        real(RKG)               , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(uppDia_type)       , intent(in)                    :: subsetB
         type(hermitian_type)    , intent(in)                    :: classB
     end subroutine
@@ -9598,12 +9598,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hemm_EXP_CNA_SFA_CHB_SUB_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         integer(IK)             , intent(in)                    :: nrow, ncol, roffA, coffA, roffB, coffB, roffC, coffC
-        real(RKC)               , intent(in)                    :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        real(RKC)               , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        real(RKC)               , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        real(RKG)               , intent(in)                    :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        real(RKG)               , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        real(RKG)               , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(uppDia_type)       , intent(in)                    :: subsetB
         type(hermitian_type)    , intent(in)                    :: classB
     end subroutine
@@ -9614,12 +9614,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hemm_EXP_CNA_SFA_CHB_SUB_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         integer(IK)             , intent(in)                    :: nrow, ncol, roffA, coffA, roffB, coffB, roffC, coffC
-        real(RKC)               , intent(in)                    :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        real(RKC)               , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        real(RKC)               , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        real(RKG)               , intent(in)                    :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        real(RKG)               , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        real(RKG)               , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(uppDia_type)       , intent(in)                    :: subsetB
         type(hermitian_type)    , intent(in)                    :: classB
     end subroutine
@@ -9630,12 +9630,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hemm_EXP_CNA_SFA_CHB_SUB_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         integer(IK)             , intent(in)                    :: nrow, ncol, roffA, coffA, roffB, coffB, roffC, coffC
-        real(RKC)               , intent(in)                    :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        real(RKC)               , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        real(RKC)               , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        real(RKG)               , intent(in)                    :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        real(RKG)               , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        real(RKG)               , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(uppDia_type)       , intent(in)                    :: subsetB
         type(hermitian_type)    , intent(in)                    :: classB
     end subroutine
@@ -9654,12 +9654,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hemm_EXP_CNA_SFA_CHB_SLB_IK5
 #endif
-        use pm_kind, only: IKC => IK5
+        use pm_kind, only: IKG => IK5
         integer(IK)             , intent(in)                    :: nrow, ncol, roffA, coffA, roffB, coffB, roffC, coffC
-        integer(IKC)            , intent(in)                    :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        integer(IKG)            , intent(in)                    :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(lowDia_type)       , intent(in)                    :: subsetB
         type(hermitian_type)    , intent(in)                    :: classB
     end subroutine
@@ -9670,12 +9670,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hemm_EXP_CNA_SFA_CHB_SLB_IK4
 #endif
-        use pm_kind, only: IKC => IK4
+        use pm_kind, only: IKG => IK4
         integer(IK)             , intent(in)                    :: nrow, ncol, roffA, coffA, roffB, coffB, roffC, coffC
-        integer(IKC)            , intent(in)                    :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        integer(IKG)            , intent(in)                    :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(lowDia_type)       , intent(in)                    :: subsetB
         type(hermitian_type)    , intent(in)                    :: classB
     end subroutine
@@ -9686,12 +9686,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hemm_EXP_CNA_SFA_CHB_SLB_IK3
 #endif
-        use pm_kind, only: IKC => IK3
+        use pm_kind, only: IKG => IK3
         integer(IK)             , intent(in)                    :: nrow, ncol, roffA, coffA, roffB, coffB, roffC, coffC
-        integer(IKC)            , intent(in)                    :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        integer(IKG)            , intent(in)                    :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(lowDia_type)       , intent(in)                    :: subsetB
         type(hermitian_type)    , intent(in)                    :: classB
     end subroutine
@@ -9702,12 +9702,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hemm_EXP_CNA_SFA_CHB_SLB_IK2
 #endif
-        use pm_kind, only: IKC => IK2
+        use pm_kind, only: IKG => IK2
         integer(IK)             , intent(in)                    :: nrow, ncol, roffA, coffA, roffB, coffB, roffC, coffC
-        integer(IKC)            , intent(in)                    :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        integer(IKG)            , intent(in)                    :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(lowDia_type)       , intent(in)                    :: subsetB
         type(hermitian_type)    , intent(in)                    :: classB
     end subroutine
@@ -9718,12 +9718,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hemm_EXP_CNA_SFA_CHB_SLB_IK1
 #endif
-        use pm_kind, only: IKC => IK1
+        use pm_kind, only: IKG => IK1
         integer(IK)             , intent(in)                    :: nrow, ncol, roffA, coffA, roffB, coffB, roffC, coffC
-        integer(IKC)            , intent(in)                    :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        integer(IKG)            , intent(in)                    :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(lowDia_type)       , intent(in)                    :: subsetB
         type(hermitian_type)    , intent(in)                    :: classB
     end subroutine
@@ -9736,12 +9736,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hemm_EXP_CNA_SFA_CHB_SLB_CK5
 #endif
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
         integer(IK)             , intent(in)                    :: nrow, ncol, roffA, coffA, roffB, coffB, roffC, coffC
-        complex(CKC)            , intent(in)                    :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        complex(CKG)            , intent(in)                    :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(lowDia_type)       , intent(in)                    :: subsetB
         type(hermitian_type)    , intent(in)                    :: classB
     end subroutine
@@ -9752,12 +9752,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hemm_EXP_CNA_SFA_CHB_SLB_CK4
 #endif
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
         integer(IK)             , intent(in)                    :: nrow, ncol, roffA, coffA, roffB, coffB, roffC, coffC
-        complex(CKC)            , intent(in)                    :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        complex(CKG)            , intent(in)                    :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(lowDia_type)       , intent(in)                    :: subsetB
         type(hermitian_type)    , intent(in)                    :: classB
     end subroutine
@@ -9768,12 +9768,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hemm_EXP_CNA_SFA_CHB_SLB_CK3
 #endif
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
         integer(IK)             , intent(in)                    :: nrow, ncol, roffA, coffA, roffB, coffB, roffC, coffC
-        complex(CKC)            , intent(in)                    :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        complex(CKG)            , intent(in)                    :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(lowDia_type)       , intent(in)                    :: subsetB
         type(hermitian_type)    , intent(in)                    :: classB
     end subroutine
@@ -9784,12 +9784,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hemm_EXP_CNA_SFA_CHB_SLB_CK2
 #endif
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
         integer(IK)             , intent(in)                    :: nrow, ncol, roffA, coffA, roffB, coffB, roffC, coffC
-        complex(CKC)            , intent(in)                    :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        complex(CKG)            , intent(in)                    :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(lowDia_type)       , intent(in)                    :: subsetB
         type(hermitian_type)    , intent(in)                    :: classB
     end subroutine
@@ -9800,12 +9800,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hemm_EXP_CNA_SFA_CHB_SLB_CK1
 #endif
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
         integer(IK)             , intent(in)                    :: nrow, ncol, roffA, coffA, roffB, coffB, roffC, coffC
-        complex(CKC)            , intent(in)                    :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        complex(CKG)            , intent(in)                    :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(lowDia_type)       , intent(in)                    :: subsetB
         type(hermitian_type)    , intent(in)                    :: classB
     end subroutine
@@ -9818,12 +9818,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hemm_EXP_CNA_SFA_CHB_SLB_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         integer(IK)             , intent(in)                    :: nrow, ncol, roffA, coffA, roffB, coffB, roffC, coffC
-        real(RKC)               , intent(in)                    :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        real(RKC)               , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        real(RKC)               , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        real(RKG)               , intent(in)                    :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        real(RKG)               , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        real(RKG)               , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(lowDia_type)       , intent(in)                    :: subsetB
         type(hermitian_type)    , intent(in)                    :: classB
     end subroutine
@@ -9834,12 +9834,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hemm_EXP_CNA_SFA_CHB_SLB_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         integer(IK)             , intent(in)                    :: nrow, ncol, roffA, coffA, roffB, coffB, roffC, coffC
-        real(RKC)               , intent(in)                    :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        real(RKC)               , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        real(RKC)               , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        real(RKG)               , intent(in)                    :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        real(RKG)               , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        real(RKG)               , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(lowDia_type)       , intent(in)                    :: subsetB
         type(hermitian_type)    , intent(in)                    :: classB
     end subroutine
@@ -9850,12 +9850,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hemm_EXP_CNA_SFA_CHB_SLB_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         integer(IK)             , intent(in)                    :: nrow, ncol, roffA, coffA, roffB, coffB, roffC, coffC
-        real(RKC)               , intent(in)                    :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        real(RKC)               , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        real(RKC)               , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        real(RKG)               , intent(in)                    :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        real(RKG)               , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        real(RKG)               , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(lowDia_type)       , intent(in)                    :: subsetB
         type(hermitian_type)    , intent(in)                    :: classB
     end subroutine
@@ -9866,12 +9866,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hemm_EXP_CNA_SFA_CHB_SLB_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         integer(IK)             , intent(in)                    :: nrow, ncol, roffA, coffA, roffB, coffB, roffC, coffC
-        real(RKC)               , intent(in)                    :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        real(RKC)               , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        real(RKC)               , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        real(RKG)               , intent(in)                    :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        real(RKG)               , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        real(RKG)               , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(lowDia_type)       , intent(in)                    :: subsetB
         type(hermitian_type)    , intent(in)                    :: classB
     end subroutine
@@ -9882,12 +9882,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: hemm_EXP_CNA_SFA_CHB_SLB_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         integer(IK)             , intent(in)                    :: nrow, ncol, roffA, coffA, roffB, coffB, roffC, coffC
-        real(RKC)               , intent(in)                    :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        real(RKC)               , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        real(RKC)               , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        real(RKG)               , intent(in)                    :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        real(RKG)               , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        real(RKG)               , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(lowDia_type)       , intent(in)                    :: subsetB
         type(hermitian_type)    , intent(in)                    :: classB
     end subroutine
@@ -9924,11 +9924,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_ASS_SFA_SFB_TNA_TNB_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)            , intent(in)    , optional      :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(:,:)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(:,:)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: IKG => IK5
+        integer(IKG)            , intent(in)    , optional      :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(:,:)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(:,:)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(:,:)
     end subroutine
 #endif
 
@@ -9937,11 +9937,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_ASS_SFA_SFB_TNA_TNB_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)            , intent(in)    , optional      :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(:,:)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(:,:)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: IKG => IK4
+        integer(IKG)            , intent(in)    , optional      :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(:,:)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(:,:)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(:,:)
     end subroutine
 #endif
 
@@ -9950,11 +9950,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_ASS_SFA_SFB_TNA_TNB_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)            , intent(in)    , optional      :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(:,:)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(:,:)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: IKG => IK3
+        integer(IKG)            , intent(in)    , optional      :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(:,:)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(:,:)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(:,:)
     end subroutine
 #endif
 
@@ -9963,11 +9963,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_ASS_SFA_SFB_TNA_TNB_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)            , intent(in)    , optional      :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(:,:)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(:,:)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: IKG => IK2
+        integer(IKG)            , intent(in)    , optional      :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(:,:)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(:,:)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(:,:)
     end subroutine
 #endif
 
@@ -9976,11 +9976,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_ASS_SFA_SFB_TNA_TNB_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)            , intent(in)    , optional      :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(:,:)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(:,:)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: IKG => IK1
+        integer(IKG)            , intent(in)    , optional      :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(:,:)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(:,:)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(:,:)
     end subroutine
 #endif
 
@@ -9991,11 +9991,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_ASS_SFA_SFB_TNA_TNB_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)            , intent(in)    , optional      :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(:,:)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(:,:)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG)            , intent(in)    , optional      :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(:,:)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(:,:)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(:,:)
     end subroutine
 #endif
 
@@ -10004,11 +10004,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_ASS_SFA_SFB_TNA_TNB_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)            , intent(in)    , optional      :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(:,:)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(:,:)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG)            , intent(in)    , optional      :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(:,:)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(:,:)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(:,:)
     end subroutine
 #endif
 
@@ -10017,11 +10017,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_ASS_SFA_SFB_TNA_TNB_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)            , intent(in)    , optional      :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(:,:)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(:,:)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG)            , intent(in)    , optional      :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(:,:)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(:,:)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(:,:)
     end subroutine
 #endif
 
@@ -10030,11 +10030,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_ASS_SFA_SFB_TNA_TNB_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)            , intent(in)    , optional      :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(:,:)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(:,:)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG)            , intent(in)    , optional      :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(:,:)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(:,:)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(:,:)
     end subroutine
 #endif
 
@@ -10043,11 +10043,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_ASS_SFA_SFB_TNA_TNB_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)            , intent(in)    , optional      :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(:,:)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(:,:)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG)            , intent(in)    , optional      :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(:,:)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(:,:)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(:,:)
     end subroutine
 #endif
 
@@ -10058,11 +10058,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_ASS_SFA_SFB_TNA_TNB_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)               , intent(in)    , optional      :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(:,:)
-        real(RKC)               , intent(in)    , contiguous    :: matB(:,:)
-        real(RKC)               , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)               , intent(in)    , optional      :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(:,:)
+        real(RKG)               , intent(in)    , contiguous    :: matB(:,:)
+        real(RKG)               , intent(inout) , contiguous    :: matC(:,:)
     end subroutine
 #endif
 
@@ -10071,11 +10071,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_ASS_SFA_SFB_TNA_TNB_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)               , intent(in)    , optional      :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(:,:)
-        real(RKC)               , intent(in)    , contiguous    :: matB(:,:)
-        real(RKC)               , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)               , intent(in)    , optional      :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(:,:)
+        real(RKG)               , intent(in)    , contiguous    :: matB(:,:)
+        real(RKG)               , intent(inout) , contiguous    :: matC(:,:)
     end subroutine
 #endif
 
@@ -10084,11 +10084,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_ASS_SFA_SFB_TNA_TNB_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)               , intent(in)    , optional      :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(:,:)
-        real(RKC)               , intent(in)    , contiguous    :: matB(:,:)
-        real(RKC)               , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)               , intent(in)    , optional      :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(:,:)
+        real(RKG)               , intent(in)    , contiguous    :: matB(:,:)
+        real(RKG)               , intent(inout) , contiguous    :: matC(:,:)
     end subroutine
 #endif
 
@@ -10097,11 +10097,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_ASS_SFA_SFB_TNA_TNB_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)               , intent(in)    , optional      :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(:,:)
-        real(RKC)               , intent(in)    , contiguous    :: matB(:,:)
-        real(RKC)               , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)               , intent(in)    , optional      :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(:,:)
+        real(RKG)               , intent(in)    , contiguous    :: matB(:,:)
+        real(RKG)               , intent(inout) , contiguous    :: matC(:,:)
     end subroutine
 #endif
 
@@ -10110,11 +10110,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_ASS_SFA_SFB_TNA_TNB_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)               , intent(in)    , optional      :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(:,:)
-        real(RKC)               , intent(in)    , contiguous    :: matB(:,:)
-        real(RKC)               , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)               , intent(in)    , optional      :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(:,:)
+        real(RKG)               , intent(in)    , contiguous    :: matB(:,:)
+        real(RKG)               , intent(inout) , contiguous    :: matC(:,:)
     end subroutine
 #endif
 
@@ -10131,11 +10131,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_ASS_SFA_SFB_TSA_TNB_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)            , intent(in)    , optional      :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(:,:)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(:,:)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: IKG => IK5
+        integer(IKG)            , intent(in)    , optional      :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(:,:)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(:,:)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(:,:)
         type(transSymm_type)    , intent(in)                    :: operationA
     end subroutine
 #endif
@@ -10145,11 +10145,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_ASS_SFA_SFB_TSA_TNB_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)            , intent(in)    , optional      :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(:,:)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(:,:)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: IKG => IK4
+        integer(IKG)            , intent(in)    , optional      :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(:,:)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(:,:)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(:,:)
         type(transSymm_type)    , intent(in)                    :: operationA
     end subroutine
 #endif
@@ -10159,11 +10159,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_ASS_SFA_SFB_TSA_TNB_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)            , intent(in)    , optional      :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(:,:)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(:,:)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: IKG => IK3
+        integer(IKG)            , intent(in)    , optional      :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(:,:)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(:,:)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(:,:)
         type(transSymm_type)    , intent(in)                    :: operationA
     end subroutine
 #endif
@@ -10173,11 +10173,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_ASS_SFA_SFB_TSA_TNB_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)            , intent(in)    , optional      :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(:,:)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(:,:)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: IKG => IK2
+        integer(IKG)            , intent(in)    , optional      :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(:,:)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(:,:)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(:,:)
         type(transSymm_type)    , intent(in)                    :: operationA
     end subroutine
 #endif
@@ -10187,11 +10187,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_ASS_SFA_SFB_TSA_TNB_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)            , intent(in)    , optional      :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(:,:)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(:,:)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: IKG => IK1
+        integer(IKG)            , intent(in)    , optional      :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(:,:)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(:,:)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(:,:)
         type(transSymm_type)    , intent(in)                    :: operationA
     end subroutine
 #endif
@@ -10203,11 +10203,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_ASS_SFA_SFB_TSA_TNB_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)            , intent(in)    , optional      :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(:,:)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(:,:)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG)            , intent(in)    , optional      :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(:,:)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(:,:)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(:,:)
         type(transSymm_type)    , intent(in)                    :: operationA
     end subroutine
 #endif
@@ -10217,11 +10217,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_ASS_SFA_SFB_TSA_TNB_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)            , intent(in)    , optional      :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(:,:)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(:,:)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG)            , intent(in)    , optional      :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(:,:)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(:,:)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(:,:)
         type(transSymm_type)    , intent(in)                    :: operationA
     end subroutine
 #endif
@@ -10231,11 +10231,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_ASS_SFA_SFB_TSA_TNB_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)            , intent(in)    , optional      :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(:,:)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(:,:)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG)            , intent(in)    , optional      :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(:,:)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(:,:)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(:,:)
         type(transSymm_type)    , intent(in)                    :: operationA
     end subroutine
 #endif
@@ -10245,11 +10245,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_ASS_SFA_SFB_TSA_TNB_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)            , intent(in)    , optional      :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(:,:)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(:,:)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG)            , intent(in)    , optional      :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(:,:)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(:,:)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(:,:)
         type(transSymm_type)    , intent(in)                    :: operationA
     end subroutine
 #endif
@@ -10259,11 +10259,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_ASS_SFA_SFB_TSA_TNB_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)            , intent(in)    , optional      :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(:,:)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(:,:)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG)            , intent(in)    , optional      :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(:,:)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(:,:)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(:,:)
         type(transSymm_type)    , intent(in)                    :: operationA
     end subroutine
 #endif
@@ -10275,11 +10275,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_ASS_SFA_SFB_TSA_TNB_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)               , intent(in)    , optional      :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(:,:)
-        real(RKC)               , intent(in)    , contiguous    :: matB(:,:)
-        real(RKC)               , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)               , intent(in)    , optional      :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(:,:)
+        real(RKG)               , intent(in)    , contiguous    :: matB(:,:)
+        real(RKG)               , intent(inout) , contiguous    :: matC(:,:)
         type(transSymm_type)    , intent(in)                    :: operationA
     end subroutine
 #endif
@@ -10289,11 +10289,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_ASS_SFA_SFB_TSA_TNB_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)               , intent(in)    , optional      :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(:,:)
-        real(RKC)               , intent(in)    , contiguous    :: matB(:,:)
-        real(RKC)               , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)               , intent(in)    , optional      :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(:,:)
+        real(RKG)               , intent(in)    , contiguous    :: matB(:,:)
+        real(RKG)               , intent(inout) , contiguous    :: matC(:,:)
         type(transSymm_type)    , intent(in)                    :: operationA
     end subroutine
 #endif
@@ -10303,11 +10303,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_ASS_SFA_SFB_TSA_TNB_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)               , intent(in)    , optional      :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(:,:)
-        real(RKC)               , intent(in)    , contiguous    :: matB(:,:)
-        real(RKC)               , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)               , intent(in)    , optional      :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(:,:)
+        real(RKG)               , intent(in)    , contiguous    :: matB(:,:)
+        real(RKG)               , intent(inout) , contiguous    :: matC(:,:)
         type(transSymm_type)    , intent(in)                    :: operationA
     end subroutine
 #endif
@@ -10317,11 +10317,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_ASS_SFA_SFB_TSA_TNB_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)               , intent(in)    , optional      :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(:,:)
-        real(RKC)               , intent(in)    , contiguous    :: matB(:,:)
-        real(RKC)               , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)               , intent(in)    , optional      :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(:,:)
+        real(RKG)               , intent(in)    , contiguous    :: matB(:,:)
+        real(RKG)               , intent(inout) , contiguous    :: matC(:,:)
         type(transSymm_type)    , intent(in)                    :: operationA
     end subroutine
 #endif
@@ -10331,11 +10331,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_ASS_SFA_SFB_TSA_TNB_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)               , intent(in)    , optional      :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(:,:)
-        real(RKC)               , intent(in)    , contiguous    :: matB(:,:)
-        real(RKC)               , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)               , intent(in)    , optional      :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(:,:)
+        real(RKG)               , intent(in)    , contiguous    :: matB(:,:)
+        real(RKG)               , intent(inout) , contiguous    :: matC(:,:)
         type(transSymm_type)    , intent(in)                    :: operationA
     end subroutine
 #endif
@@ -10353,11 +10353,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_ASS_SFA_SFB_THA_TNB_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)            , intent(in)    , optional      :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(:,:)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(:,:)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: IKG => IK5
+        integer(IKG)            , intent(in)    , optional      :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(:,:)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(:,:)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(:,:)
         type(transHerm_type)    , intent(in)                    :: operationA
     end subroutine
 #endif
@@ -10367,11 +10367,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_ASS_SFA_SFB_THA_TNB_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)            , intent(in)    , optional      :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(:,:)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(:,:)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: IKG => IK4
+        integer(IKG)            , intent(in)    , optional      :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(:,:)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(:,:)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(:,:)
         type(transHerm_type)    , intent(in)                    :: operationA
     end subroutine
 #endif
@@ -10381,11 +10381,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_ASS_SFA_SFB_THA_TNB_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)            , intent(in)    , optional      :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(:,:)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(:,:)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: IKG => IK3
+        integer(IKG)            , intent(in)    , optional      :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(:,:)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(:,:)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(:,:)
         type(transHerm_type)    , intent(in)                    :: operationA
     end subroutine
 #endif
@@ -10395,11 +10395,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_ASS_SFA_SFB_THA_TNB_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)            , intent(in)    , optional      :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(:,:)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(:,:)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: IKG => IK2
+        integer(IKG)            , intent(in)    , optional      :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(:,:)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(:,:)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(:,:)
         type(transHerm_type)    , intent(in)                    :: operationA
     end subroutine
 #endif
@@ -10409,11 +10409,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_ASS_SFA_SFB_THA_TNB_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)            , intent(in)    , optional      :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(:,:)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(:,:)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: IKG => IK1
+        integer(IKG)            , intent(in)    , optional      :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(:,:)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(:,:)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(:,:)
         type(transHerm_type)    , intent(in)                    :: operationA
     end subroutine
 #endif
@@ -10425,11 +10425,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_ASS_SFA_SFB_THA_TNB_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)            , intent(in)    , optional      :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(:,:)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(:,:)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG)            , intent(in)    , optional      :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(:,:)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(:,:)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(:,:)
         type(transHerm_type)    , intent(in)                    :: operationA
     end subroutine
 #endif
@@ -10439,11 +10439,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_ASS_SFA_SFB_THA_TNB_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)            , intent(in)    , optional      :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(:,:)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(:,:)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG)            , intent(in)    , optional      :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(:,:)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(:,:)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(:,:)
         type(transHerm_type)    , intent(in)                    :: operationA
     end subroutine
 #endif
@@ -10453,11 +10453,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_ASS_SFA_SFB_THA_TNB_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)            , intent(in)    , optional      :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(:,:)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(:,:)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG)            , intent(in)    , optional      :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(:,:)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(:,:)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(:,:)
         type(transHerm_type)    , intent(in)                    :: operationA
     end subroutine
 #endif
@@ -10467,11 +10467,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_ASS_SFA_SFB_THA_TNB_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)            , intent(in)    , optional      :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(:,:)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(:,:)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG)            , intent(in)    , optional      :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(:,:)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(:,:)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(:,:)
         type(transHerm_type)    , intent(in)                    :: operationA
     end subroutine
 #endif
@@ -10481,11 +10481,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_ASS_SFA_SFB_THA_TNB_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)            , intent(in)    , optional      :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(:,:)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(:,:)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG)            , intent(in)    , optional      :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(:,:)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(:,:)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(:,:)
         type(transHerm_type)    , intent(in)                    :: operationA
     end subroutine
 #endif
@@ -10497,11 +10497,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_ASS_SFA_SFB_THA_TNB_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)               , intent(in)    , optional      :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(:,:)
-        real(RKC)               , intent(in)    , contiguous    :: matB(:,:)
-        real(RKC)               , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)               , intent(in)    , optional      :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(:,:)
+        real(RKG)               , intent(in)    , contiguous    :: matB(:,:)
+        real(RKG)               , intent(inout) , contiguous    :: matC(:,:)
         type(transHerm_type)    , intent(in)                    :: operationA
     end subroutine
 #endif
@@ -10511,11 +10511,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_ASS_SFA_SFB_THA_TNB_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)               , intent(in)    , optional      :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(:,:)
-        real(RKC)               , intent(in)    , contiguous    :: matB(:,:)
-        real(RKC)               , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)               , intent(in)    , optional      :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(:,:)
+        real(RKG)               , intent(in)    , contiguous    :: matB(:,:)
+        real(RKG)               , intent(inout) , contiguous    :: matC(:,:)
         type(transHerm_type)    , intent(in)                    :: operationA
     end subroutine
 #endif
@@ -10525,11 +10525,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_ASS_SFA_SFB_THA_TNB_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)               , intent(in)    , optional      :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(:,:)
-        real(RKC)               , intent(in)    , contiguous    :: matB(:,:)
-        real(RKC)               , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)               , intent(in)    , optional      :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(:,:)
+        real(RKG)               , intent(in)    , contiguous    :: matB(:,:)
+        real(RKG)               , intent(inout) , contiguous    :: matC(:,:)
         type(transHerm_type)    , intent(in)                    :: operationA
     end subroutine
 #endif
@@ -10539,11 +10539,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_ASS_SFA_SFB_THA_TNB_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)               , intent(in)    , optional      :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(:,:)
-        real(RKC)               , intent(in)    , contiguous    :: matB(:,:)
-        real(RKC)               , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)               , intent(in)    , optional      :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(:,:)
+        real(RKG)               , intent(in)    , contiguous    :: matB(:,:)
+        real(RKG)               , intent(inout) , contiguous    :: matC(:,:)
         type(transHerm_type)    , intent(in)                    :: operationA
     end subroutine
 #endif
@@ -10553,11 +10553,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_ASS_SFA_SFB_THA_TNB_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)               , intent(in)    , optional      :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(:,:)
-        real(RKC)               , intent(in)    , contiguous    :: matB(:,:)
-        real(RKC)               , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)               , intent(in)    , optional      :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(:,:)
+        real(RKG)               , intent(in)    , contiguous    :: matB(:,:)
+        real(RKG)               , intent(inout) , contiguous    :: matC(:,:)
         type(transHerm_type)    , intent(in)                    :: operationA
     end subroutine
 #endif
@@ -10575,11 +10575,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_ASS_SFA_SFB_TNA_TSB_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)            , intent(in)    , optional      :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(:,:)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(:,:)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: IKG => IK5
+        integer(IKG)            , intent(in)    , optional      :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(:,:)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(:,:)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(:,:)
         type(transSymm_type)    , intent(in)                    :: operationB
     end subroutine
 #endif
@@ -10589,11 +10589,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_ASS_SFA_SFB_TNA_TSB_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)            , intent(in)    , optional      :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(:,:)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(:,:)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: IKG => IK4
+        integer(IKG)            , intent(in)    , optional      :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(:,:)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(:,:)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(:,:)
         type(transSymm_type)    , intent(in)                    :: operationB
     end subroutine
 #endif
@@ -10603,11 +10603,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_ASS_SFA_SFB_TNA_TSB_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)            , intent(in)    , optional      :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(:,:)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(:,:)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: IKG => IK3
+        integer(IKG)            , intent(in)    , optional      :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(:,:)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(:,:)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(:,:)
         type(transSymm_type)    , intent(in)                    :: operationB
     end subroutine
 #endif
@@ -10617,11 +10617,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_ASS_SFA_SFB_TNA_TSB_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)            , intent(in)    , optional      :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(:,:)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(:,:)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: IKG => IK2
+        integer(IKG)            , intent(in)    , optional      :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(:,:)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(:,:)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(:,:)
         type(transSymm_type)    , intent(in)                    :: operationB
     end subroutine
 #endif
@@ -10631,11 +10631,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_ASS_SFA_SFB_TNA_TSB_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)            , intent(in)    , optional      :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(:,:)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(:,:)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: IKG => IK1
+        integer(IKG)            , intent(in)    , optional      :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(:,:)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(:,:)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(:,:)
         type(transSymm_type)    , intent(in)                    :: operationB
     end subroutine
 #endif
@@ -10647,11 +10647,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_ASS_SFA_SFB_TNA_TSB_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)            , intent(in)    , optional      :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(:,:)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(:,:)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG)            , intent(in)    , optional      :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(:,:)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(:,:)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(:,:)
         type(transSymm_type)    , intent(in)                    :: operationB
     end subroutine
 #endif
@@ -10661,11 +10661,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_ASS_SFA_SFB_TNA_TSB_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)            , intent(in)    , optional      :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(:,:)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(:,:)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG)            , intent(in)    , optional      :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(:,:)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(:,:)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(:,:)
         type(transSymm_type)    , intent(in)                    :: operationB
     end subroutine
 #endif
@@ -10675,11 +10675,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_ASS_SFA_SFB_TNA_TSB_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)            , intent(in)    , optional      :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(:,:)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(:,:)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG)            , intent(in)    , optional      :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(:,:)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(:,:)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(:,:)
         type(transSymm_type)    , intent(in)                    :: operationB
     end subroutine
 #endif
@@ -10689,11 +10689,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_ASS_SFA_SFB_TNA_TSB_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)            , intent(in)    , optional      :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(:,:)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(:,:)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG)            , intent(in)    , optional      :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(:,:)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(:,:)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(:,:)
         type(transSymm_type)    , intent(in)                    :: operationB
     end subroutine
 #endif
@@ -10703,11 +10703,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_ASS_SFA_SFB_TNA_TSB_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)            , intent(in)    , optional      :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(:,:)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(:,:)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG)            , intent(in)    , optional      :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(:,:)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(:,:)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(:,:)
         type(transSymm_type)    , intent(in)                    :: operationB
     end subroutine
 #endif
@@ -10719,11 +10719,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_ASS_SFA_SFB_TNA_TSB_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)               , intent(in)    , optional      :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(:,:)
-        real(RKC)               , intent(in)    , contiguous    :: matB(:,:)
-        real(RKC)               , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)               , intent(in)    , optional      :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(:,:)
+        real(RKG)               , intent(in)    , contiguous    :: matB(:,:)
+        real(RKG)               , intent(inout) , contiguous    :: matC(:,:)
         type(transSymm_type)    , intent(in)                    :: operationB
     end subroutine
 #endif
@@ -10733,11 +10733,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_ASS_SFA_SFB_TNA_TSB_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)               , intent(in)    , optional      :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(:,:)
-        real(RKC)               , intent(in)    , contiguous    :: matB(:,:)
-        real(RKC)               , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)               , intent(in)    , optional      :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(:,:)
+        real(RKG)               , intent(in)    , contiguous    :: matB(:,:)
+        real(RKG)               , intent(inout) , contiguous    :: matC(:,:)
         type(transSymm_type)    , intent(in)                    :: operationB
     end subroutine
 #endif
@@ -10747,11 +10747,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_ASS_SFA_SFB_TNA_TSB_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)               , intent(in)    , optional      :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(:,:)
-        real(RKC)               , intent(in)    , contiguous    :: matB(:,:)
-        real(RKC)               , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)               , intent(in)    , optional      :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(:,:)
+        real(RKG)               , intent(in)    , contiguous    :: matB(:,:)
+        real(RKG)               , intent(inout) , contiguous    :: matC(:,:)
         type(transSymm_type)    , intent(in)                    :: operationB
     end subroutine
 #endif
@@ -10761,11 +10761,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_ASS_SFA_SFB_TNA_TSB_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)               , intent(in)    , optional      :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(:,:)
-        real(RKC)               , intent(in)    , contiguous    :: matB(:,:)
-        real(RKC)               , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)               , intent(in)    , optional      :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(:,:)
+        real(RKG)               , intent(in)    , contiguous    :: matB(:,:)
+        real(RKG)               , intent(inout) , contiguous    :: matC(:,:)
         type(transSymm_type)    , intent(in)                    :: operationB
     end subroutine
 #endif
@@ -10775,11 +10775,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_ASS_SFA_SFB_TNA_TSB_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)               , intent(in)    , optional      :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(:,:)
-        real(RKC)               , intent(in)    , contiguous    :: matB(:,:)
-        real(RKC)               , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)               , intent(in)    , optional      :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(:,:)
+        real(RKG)               , intent(in)    , contiguous    :: matB(:,:)
+        real(RKG)               , intent(inout) , contiguous    :: matC(:,:)
         type(transSymm_type)    , intent(in)                    :: operationB
     end subroutine
 #endif
@@ -10797,11 +10797,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_ASS_SFA_SFB_TSA_TSB_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)            , intent(in)    , optional      :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(:,:)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(:,:)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: IKG => IK5
+        integer(IKG)            , intent(in)    , optional      :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(:,:)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(:,:)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(:,:)
         type(transSymm_type)    , intent(in)                    :: operationA
         type(transSymm_type)    , intent(in)                    :: operationB
     end subroutine
@@ -10812,11 +10812,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_ASS_SFA_SFB_TSA_TSB_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)            , intent(in)    , optional      :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(:,:)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(:,:)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: IKG => IK4
+        integer(IKG)            , intent(in)    , optional      :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(:,:)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(:,:)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(:,:)
         type(transSymm_type)    , intent(in)                    :: operationA
         type(transSymm_type)    , intent(in)                    :: operationB
     end subroutine
@@ -10827,11 +10827,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_ASS_SFA_SFB_TSA_TSB_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)            , intent(in)    , optional      :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(:,:)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(:,:)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: IKG => IK3
+        integer(IKG)            , intent(in)    , optional      :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(:,:)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(:,:)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(:,:)
         type(transSymm_type)    , intent(in)                    :: operationA
         type(transSymm_type)    , intent(in)                    :: operationB
     end subroutine
@@ -10842,11 +10842,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_ASS_SFA_SFB_TSA_TSB_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)            , intent(in)    , optional      :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(:,:)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(:,:)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: IKG => IK2
+        integer(IKG)            , intent(in)    , optional      :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(:,:)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(:,:)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(:,:)
         type(transSymm_type)    , intent(in)                    :: operationA
         type(transSymm_type)    , intent(in)                    :: operationB
     end subroutine
@@ -10857,11 +10857,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_ASS_SFA_SFB_TSA_TSB_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)            , intent(in)    , optional      :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(:,:)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(:,:)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: IKG => IK1
+        integer(IKG)            , intent(in)    , optional      :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(:,:)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(:,:)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(:,:)
         type(transSymm_type)    , intent(in)                    :: operationA
         type(transSymm_type)    , intent(in)                    :: operationB
     end subroutine
@@ -10874,11 +10874,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_ASS_SFA_SFB_TSA_TSB_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)            , intent(in)    , optional      :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(:,:)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(:,:)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG)            , intent(in)    , optional      :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(:,:)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(:,:)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(:,:)
         type(transSymm_type)    , intent(in)                    :: operationA
         type(transSymm_type)    , intent(in)                    :: operationB
     end subroutine
@@ -10889,11 +10889,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_ASS_SFA_SFB_TSA_TSB_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)            , intent(in)    , optional      :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(:,:)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(:,:)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG)            , intent(in)    , optional      :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(:,:)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(:,:)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(:,:)
         type(transSymm_type)    , intent(in)                    :: operationA
         type(transSymm_type)    , intent(in)                    :: operationB
     end subroutine
@@ -10904,11 +10904,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_ASS_SFA_SFB_TSA_TSB_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)            , intent(in)    , optional      :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(:,:)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(:,:)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG)            , intent(in)    , optional      :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(:,:)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(:,:)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(:,:)
         type(transSymm_type)    , intent(in)                    :: operationA
         type(transSymm_type)    , intent(in)                    :: operationB
     end subroutine
@@ -10919,11 +10919,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_ASS_SFA_SFB_TSA_TSB_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)            , intent(in)    , optional      :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(:,:)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(:,:)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG)            , intent(in)    , optional      :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(:,:)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(:,:)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(:,:)
         type(transSymm_type)    , intent(in)                    :: operationA
         type(transSymm_type)    , intent(in)                    :: operationB
     end subroutine
@@ -10934,11 +10934,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_ASS_SFA_SFB_TSA_TSB_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)            , intent(in)    , optional      :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(:,:)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(:,:)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG)            , intent(in)    , optional      :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(:,:)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(:,:)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(:,:)
         type(transSymm_type)    , intent(in)                    :: operationA
         type(transSymm_type)    , intent(in)                    :: operationB
     end subroutine
@@ -10951,11 +10951,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_ASS_SFA_SFB_TSA_TSB_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)               , intent(in)    , optional      :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(:,:)
-        real(RKC)               , intent(in)    , contiguous    :: matB(:,:)
-        real(RKC)               , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)               , intent(in)    , optional      :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(:,:)
+        real(RKG)               , intent(in)    , contiguous    :: matB(:,:)
+        real(RKG)               , intent(inout) , contiguous    :: matC(:,:)
         type(transSymm_type)    , intent(in)                    :: operationA
         type(transSymm_type)    , intent(in)                    :: operationB
     end subroutine
@@ -10966,11 +10966,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_ASS_SFA_SFB_TSA_TSB_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)               , intent(in)    , optional      :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(:,:)
-        real(RKC)               , intent(in)    , contiguous    :: matB(:,:)
-        real(RKC)               , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)               , intent(in)    , optional      :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(:,:)
+        real(RKG)               , intent(in)    , contiguous    :: matB(:,:)
+        real(RKG)               , intent(inout) , contiguous    :: matC(:,:)
         type(transSymm_type)    , intent(in)                    :: operationA
         type(transSymm_type)    , intent(in)                    :: operationB
     end subroutine
@@ -10981,11 +10981,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_ASS_SFA_SFB_TSA_TSB_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)               , intent(in)    , optional      :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(:,:)
-        real(RKC)               , intent(in)    , contiguous    :: matB(:,:)
-        real(RKC)               , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)               , intent(in)    , optional      :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(:,:)
+        real(RKG)               , intent(in)    , contiguous    :: matB(:,:)
+        real(RKG)               , intent(inout) , contiguous    :: matC(:,:)
         type(transSymm_type)    , intent(in)                    :: operationA
         type(transSymm_type)    , intent(in)                    :: operationB
     end subroutine
@@ -10996,11 +10996,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_ASS_SFA_SFB_TSA_TSB_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)               , intent(in)    , optional      :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(:,:)
-        real(RKC)               , intent(in)    , contiguous    :: matB(:,:)
-        real(RKC)               , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)               , intent(in)    , optional      :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(:,:)
+        real(RKG)               , intent(in)    , contiguous    :: matB(:,:)
+        real(RKG)               , intent(inout) , contiguous    :: matC(:,:)
         type(transSymm_type)    , intent(in)                    :: operationA
         type(transSymm_type)    , intent(in)                    :: operationB
     end subroutine
@@ -11011,11 +11011,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_ASS_SFA_SFB_TSA_TSB_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)               , intent(in)    , optional      :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(:,:)
-        real(RKC)               , intent(in)    , contiguous    :: matB(:,:)
-        real(RKC)               , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)               , intent(in)    , optional      :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(:,:)
+        real(RKG)               , intent(in)    , contiguous    :: matB(:,:)
+        real(RKG)               , intent(inout) , contiguous    :: matC(:,:)
         type(transSymm_type)    , intent(in)                    :: operationA
         type(transSymm_type)    , intent(in)                    :: operationB
     end subroutine
@@ -11034,11 +11034,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_ASS_SFA_SFB_THA_TSB_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)            , intent(in)    , optional      :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(:,:)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(:,:)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: IKG => IK5
+        integer(IKG)            , intent(in)    , optional      :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(:,:)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(:,:)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(:,:)
         type(transHerm_type)    , intent(in)                    :: operationA
         type(transSymm_type)    , intent(in)                    :: operationB
     end subroutine
@@ -11049,11 +11049,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_ASS_SFA_SFB_THA_TSB_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)            , intent(in)    , optional      :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(:,:)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(:,:)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: IKG => IK4
+        integer(IKG)            , intent(in)    , optional      :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(:,:)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(:,:)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(:,:)
         type(transHerm_type)    , intent(in)                    :: operationA
         type(transSymm_type)    , intent(in)                    :: operationB
     end subroutine
@@ -11064,11 +11064,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_ASS_SFA_SFB_THA_TSB_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)            , intent(in)    , optional      :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(:,:)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(:,:)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: IKG => IK3
+        integer(IKG)            , intent(in)    , optional      :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(:,:)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(:,:)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(:,:)
         type(transHerm_type)    , intent(in)                    :: operationA
         type(transSymm_type)    , intent(in)                    :: operationB
     end subroutine
@@ -11079,11 +11079,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_ASS_SFA_SFB_THA_TSB_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)            , intent(in)    , optional      :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(:,:)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(:,:)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: IKG => IK2
+        integer(IKG)            , intent(in)    , optional      :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(:,:)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(:,:)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(:,:)
         type(transHerm_type)    , intent(in)                    :: operationA
         type(transSymm_type)    , intent(in)                    :: operationB
     end subroutine
@@ -11094,11 +11094,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_ASS_SFA_SFB_THA_TSB_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)            , intent(in)    , optional      :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(:,:)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(:,:)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: IKG => IK1
+        integer(IKG)            , intent(in)    , optional      :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(:,:)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(:,:)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(:,:)
         type(transHerm_type)    , intent(in)                    :: operationA
         type(transSymm_type)    , intent(in)                    :: operationB
     end subroutine
@@ -11111,11 +11111,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_ASS_SFA_SFB_THA_TSB_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)            , intent(in)    , optional      :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(:,:)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(:,:)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG)            , intent(in)    , optional      :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(:,:)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(:,:)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(:,:)
         type(transHerm_type)    , intent(in)                    :: operationA
         type(transSymm_type)    , intent(in)                    :: operationB
     end subroutine
@@ -11126,11 +11126,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_ASS_SFA_SFB_THA_TSB_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)            , intent(in)    , optional      :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(:,:)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(:,:)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG)            , intent(in)    , optional      :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(:,:)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(:,:)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(:,:)
         type(transHerm_type)    , intent(in)                    :: operationA
         type(transSymm_type)    , intent(in)                    :: operationB
     end subroutine
@@ -11141,11 +11141,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_ASS_SFA_SFB_THA_TSB_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)            , intent(in)    , optional      :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(:,:)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(:,:)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG)            , intent(in)    , optional      :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(:,:)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(:,:)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(:,:)
         type(transHerm_type)    , intent(in)                    :: operationA
         type(transSymm_type)    , intent(in)                    :: operationB
     end subroutine
@@ -11156,11 +11156,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_ASS_SFA_SFB_THA_TSB_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)            , intent(in)    , optional      :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(:,:)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(:,:)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG)            , intent(in)    , optional      :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(:,:)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(:,:)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(:,:)
         type(transHerm_type)    , intent(in)                    :: operationA
         type(transSymm_type)    , intent(in)                    :: operationB
     end subroutine
@@ -11171,11 +11171,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_ASS_SFA_SFB_THA_TSB_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)            , intent(in)    , optional      :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(:,:)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(:,:)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG)            , intent(in)    , optional      :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(:,:)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(:,:)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(:,:)
         type(transHerm_type)    , intent(in)                    :: operationA
         type(transSymm_type)    , intent(in)                    :: operationB
     end subroutine
@@ -11188,11 +11188,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_ASS_SFA_SFB_THA_TSB_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)               , intent(in)    , optional      :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(:,:)
-        real(RKC)               , intent(in)    , contiguous    :: matB(:,:)
-        real(RKC)               , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)               , intent(in)    , optional      :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(:,:)
+        real(RKG)               , intent(in)    , contiguous    :: matB(:,:)
+        real(RKG)               , intent(inout) , contiguous    :: matC(:,:)
         type(transHerm_type)    , intent(in)                    :: operationA
         type(transSymm_type)    , intent(in)                    :: operationB
     end subroutine
@@ -11203,11 +11203,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_ASS_SFA_SFB_THA_TSB_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)               , intent(in)    , optional      :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(:,:)
-        real(RKC)               , intent(in)    , contiguous    :: matB(:,:)
-        real(RKC)               , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)               , intent(in)    , optional      :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(:,:)
+        real(RKG)               , intent(in)    , contiguous    :: matB(:,:)
+        real(RKG)               , intent(inout) , contiguous    :: matC(:,:)
         type(transHerm_type)    , intent(in)                    :: operationA
         type(transSymm_type)    , intent(in)                    :: operationB
     end subroutine
@@ -11218,11 +11218,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_ASS_SFA_SFB_THA_TSB_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)               , intent(in)    , optional      :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(:,:)
-        real(RKC)               , intent(in)    , contiguous    :: matB(:,:)
-        real(RKC)               , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)               , intent(in)    , optional      :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(:,:)
+        real(RKG)               , intent(in)    , contiguous    :: matB(:,:)
+        real(RKG)               , intent(inout) , contiguous    :: matC(:,:)
         type(transHerm_type)    , intent(in)                    :: operationA
         type(transSymm_type)    , intent(in)                    :: operationB
     end subroutine
@@ -11233,11 +11233,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_ASS_SFA_SFB_THA_TSB_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)               , intent(in)    , optional      :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(:,:)
-        real(RKC)               , intent(in)    , contiguous    :: matB(:,:)
-        real(RKC)               , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)               , intent(in)    , optional      :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(:,:)
+        real(RKG)               , intent(in)    , contiguous    :: matB(:,:)
+        real(RKG)               , intent(inout) , contiguous    :: matC(:,:)
         type(transHerm_type)    , intent(in)                    :: operationA
         type(transSymm_type)    , intent(in)                    :: operationB
     end subroutine
@@ -11248,11 +11248,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_ASS_SFA_SFB_THA_TSB_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)               , intent(in)    , optional      :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(:,:)
-        real(RKC)               , intent(in)    , contiguous    :: matB(:,:)
-        real(RKC)               , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)               , intent(in)    , optional      :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(:,:)
+        real(RKG)               , intent(in)    , contiguous    :: matB(:,:)
+        real(RKG)               , intent(inout) , contiguous    :: matC(:,:)
         type(transHerm_type)    , intent(in)                    :: operationA
         type(transSymm_type)    , intent(in)                    :: operationB
     end subroutine
@@ -11271,11 +11271,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_ASS_SFA_SFB_TNA_THB_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)            , intent(in)    , optional      :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(:,:)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(:,:)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: IKG => IK5
+        integer(IKG)            , intent(in)    , optional      :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(:,:)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(:,:)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(:,:)
         type(transHerm_type)    , intent(in)                    :: operationB
     end subroutine
 #endif
@@ -11285,11 +11285,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_ASS_SFA_SFB_TNA_THB_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)            , intent(in)    , optional      :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(:,:)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(:,:)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: IKG => IK4
+        integer(IKG)            , intent(in)    , optional      :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(:,:)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(:,:)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(:,:)
         type(transHerm_type)    , intent(in)                    :: operationB
     end subroutine
 #endif
@@ -11299,11 +11299,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_ASS_SFA_SFB_TNA_THB_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)            , intent(in)    , optional      :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(:,:)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(:,:)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: IKG => IK3
+        integer(IKG)            , intent(in)    , optional      :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(:,:)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(:,:)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(:,:)
         type(transHerm_type)    , intent(in)                    :: operationB
     end subroutine
 #endif
@@ -11313,11 +11313,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_ASS_SFA_SFB_TNA_THB_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)            , intent(in)    , optional      :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(:,:)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(:,:)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: IKG => IK2
+        integer(IKG)            , intent(in)    , optional      :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(:,:)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(:,:)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(:,:)
         type(transHerm_type)    , intent(in)                    :: operationB
     end subroutine
 #endif
@@ -11327,11 +11327,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_ASS_SFA_SFB_TNA_THB_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)            , intent(in)    , optional      :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(:,:)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(:,:)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: IKG => IK1
+        integer(IKG)            , intent(in)    , optional      :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(:,:)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(:,:)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(:,:)
         type(transHerm_type)    , intent(in)                    :: operationB
     end subroutine
 #endif
@@ -11343,11 +11343,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_ASS_SFA_SFB_TNA_THB_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)            , intent(in)    , optional      :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(:,:)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(:,:)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG)            , intent(in)    , optional      :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(:,:)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(:,:)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(:,:)
         type(transHerm_type)    , intent(in)                    :: operationB
     end subroutine
 #endif
@@ -11357,11 +11357,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_ASS_SFA_SFB_TNA_THB_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)            , intent(in)    , optional      :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(:,:)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(:,:)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG)            , intent(in)    , optional      :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(:,:)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(:,:)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(:,:)
         type(transHerm_type)    , intent(in)                    :: operationB
     end subroutine
 #endif
@@ -11371,11 +11371,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_ASS_SFA_SFB_TNA_THB_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)            , intent(in)    , optional      :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(:,:)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(:,:)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG)            , intent(in)    , optional      :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(:,:)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(:,:)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(:,:)
         type(transHerm_type)    , intent(in)                    :: operationB
     end subroutine
 #endif
@@ -11385,11 +11385,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_ASS_SFA_SFB_TNA_THB_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)            , intent(in)    , optional      :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(:,:)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(:,:)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG)            , intent(in)    , optional      :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(:,:)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(:,:)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(:,:)
         type(transHerm_type)    , intent(in)                    :: operationB
     end subroutine
 #endif
@@ -11399,11 +11399,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_ASS_SFA_SFB_TNA_THB_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)            , intent(in)    , optional      :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(:,:)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(:,:)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG)            , intent(in)    , optional      :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(:,:)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(:,:)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(:,:)
         type(transHerm_type)    , intent(in)                    :: operationB
     end subroutine
 #endif
@@ -11415,11 +11415,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_ASS_SFA_SFB_TNA_THB_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)               , intent(in)    , optional      :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(:,:)
-        real(RKC)               , intent(in)    , contiguous    :: matB(:,:)
-        real(RKC)               , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)               , intent(in)    , optional      :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(:,:)
+        real(RKG)               , intent(in)    , contiguous    :: matB(:,:)
+        real(RKG)               , intent(inout) , contiguous    :: matC(:,:)
         type(transHerm_type)    , intent(in)                    :: operationB
     end subroutine
 #endif
@@ -11429,11 +11429,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_ASS_SFA_SFB_TNA_THB_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)               , intent(in)    , optional      :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(:,:)
-        real(RKC)               , intent(in)    , contiguous    :: matB(:,:)
-        real(RKC)               , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)               , intent(in)    , optional      :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(:,:)
+        real(RKG)               , intent(in)    , contiguous    :: matB(:,:)
+        real(RKG)               , intent(inout) , contiguous    :: matC(:,:)
         type(transHerm_type)    , intent(in)                    :: operationB
     end subroutine
 #endif
@@ -11443,11 +11443,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_ASS_SFA_SFB_TNA_THB_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)               , intent(in)    , optional      :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(:,:)
-        real(RKC)               , intent(in)    , contiguous    :: matB(:,:)
-        real(RKC)               , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)               , intent(in)    , optional      :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(:,:)
+        real(RKG)               , intent(in)    , contiguous    :: matB(:,:)
+        real(RKG)               , intent(inout) , contiguous    :: matC(:,:)
         type(transHerm_type)    , intent(in)                    :: operationB
     end subroutine
 #endif
@@ -11457,11 +11457,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_ASS_SFA_SFB_TNA_THB_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)               , intent(in)    , optional      :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(:,:)
-        real(RKC)               , intent(in)    , contiguous    :: matB(:,:)
-        real(RKC)               , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)               , intent(in)    , optional      :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(:,:)
+        real(RKG)               , intent(in)    , contiguous    :: matB(:,:)
+        real(RKG)               , intent(inout) , contiguous    :: matC(:,:)
         type(transHerm_type)    , intent(in)                    :: operationB
     end subroutine
 #endif
@@ -11471,11 +11471,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_ASS_SFA_SFB_TNA_THB_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)               , intent(in)    , optional      :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(:,:)
-        real(RKC)               , intent(in)    , contiguous    :: matB(:,:)
-        real(RKC)               , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)               , intent(in)    , optional      :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(:,:)
+        real(RKG)               , intent(in)    , contiguous    :: matB(:,:)
+        real(RKG)               , intent(inout) , contiguous    :: matC(:,:)
         type(transHerm_type)    , intent(in)                    :: operationB
     end subroutine
 #endif
@@ -11493,11 +11493,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_ASS_SFA_SFB_TSA_THB_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)            , intent(in)    , optional      :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(:,:)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(:,:)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: IKG => IK5
+        integer(IKG)            , intent(in)    , optional      :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(:,:)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(:,:)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(:,:)
         type(transSymm_type)    , intent(in)                    :: operationA
         type(transHerm_type)    , intent(in)                    :: operationB
     end subroutine
@@ -11508,11 +11508,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_ASS_SFA_SFB_TSA_THB_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)            , intent(in)    , optional      :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(:,:)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(:,:)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: IKG => IK4
+        integer(IKG)            , intent(in)    , optional      :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(:,:)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(:,:)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(:,:)
         type(transSymm_type)    , intent(in)                    :: operationA
         type(transHerm_type)    , intent(in)                    :: operationB
     end subroutine
@@ -11523,11 +11523,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_ASS_SFA_SFB_TSA_THB_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)            , intent(in)    , optional      :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(:,:)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(:,:)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: IKG => IK3
+        integer(IKG)            , intent(in)    , optional      :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(:,:)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(:,:)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(:,:)
         type(transSymm_type)    , intent(in)                    :: operationA
         type(transHerm_type)    , intent(in)                    :: operationB
     end subroutine
@@ -11538,11 +11538,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_ASS_SFA_SFB_TSA_THB_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)            , intent(in)    , optional      :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(:,:)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(:,:)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: IKG => IK2
+        integer(IKG)            , intent(in)    , optional      :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(:,:)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(:,:)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(:,:)
         type(transSymm_type)    , intent(in)                    :: operationA
         type(transHerm_type)    , intent(in)                    :: operationB
     end subroutine
@@ -11553,11 +11553,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_ASS_SFA_SFB_TSA_THB_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)            , intent(in)    , optional      :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(:,:)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(:,:)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: IKG => IK1
+        integer(IKG)            , intent(in)    , optional      :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(:,:)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(:,:)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(:,:)
         type(transSymm_type)    , intent(in)                    :: operationA
         type(transHerm_type)    , intent(in)                    :: operationB
     end subroutine
@@ -11570,11 +11570,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_ASS_SFA_SFB_TSA_THB_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)            , intent(in)    , optional      :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(:,:)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(:,:)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG)            , intent(in)    , optional      :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(:,:)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(:,:)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(:,:)
         type(transSymm_type)    , intent(in)                    :: operationA
         type(transHerm_type)    , intent(in)                    :: operationB
     end subroutine
@@ -11585,11 +11585,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_ASS_SFA_SFB_TSA_THB_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)            , intent(in)    , optional      :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(:,:)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(:,:)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG)            , intent(in)    , optional      :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(:,:)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(:,:)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(:,:)
         type(transSymm_type)    , intent(in)                    :: operationA
         type(transHerm_type)    , intent(in)                    :: operationB
     end subroutine
@@ -11600,11 +11600,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_ASS_SFA_SFB_TSA_THB_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)            , intent(in)    , optional      :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(:,:)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(:,:)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG)            , intent(in)    , optional      :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(:,:)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(:,:)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(:,:)
         type(transSymm_type)    , intent(in)                    :: operationA
         type(transHerm_type)    , intent(in)                    :: operationB
     end subroutine
@@ -11615,11 +11615,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_ASS_SFA_SFB_TSA_THB_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)            , intent(in)    , optional      :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(:,:)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(:,:)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG)            , intent(in)    , optional      :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(:,:)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(:,:)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(:,:)
         type(transSymm_type)    , intent(in)                    :: operationA
         type(transHerm_type)    , intent(in)                    :: operationB
     end subroutine
@@ -11630,11 +11630,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_ASS_SFA_SFB_TSA_THB_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)            , intent(in)    , optional      :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(:,:)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(:,:)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG)            , intent(in)    , optional      :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(:,:)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(:,:)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(:,:)
         type(transSymm_type)    , intent(in)                    :: operationA
         type(transHerm_type)    , intent(in)                    :: operationB
     end subroutine
@@ -11647,11 +11647,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_ASS_SFA_SFB_TSA_THB_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)               , intent(in)    , optional      :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(:,:)
-        real(RKC)               , intent(in)    , contiguous    :: matB(:,:)
-        real(RKC)               , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)               , intent(in)    , optional      :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(:,:)
+        real(RKG)               , intent(in)    , contiguous    :: matB(:,:)
+        real(RKG)               , intent(inout) , contiguous    :: matC(:,:)
         type(transSymm_type)    , intent(in)                    :: operationA
         type(transHerm_type)    , intent(in)                    :: operationB
     end subroutine
@@ -11662,11 +11662,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_ASS_SFA_SFB_TSA_THB_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)               , intent(in)    , optional      :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(:,:)
-        real(RKC)               , intent(in)    , contiguous    :: matB(:,:)
-        real(RKC)               , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)               , intent(in)    , optional      :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(:,:)
+        real(RKG)               , intent(in)    , contiguous    :: matB(:,:)
+        real(RKG)               , intent(inout) , contiguous    :: matC(:,:)
         type(transSymm_type)    , intent(in)                    :: operationA
         type(transHerm_type)    , intent(in)                    :: operationB
     end subroutine
@@ -11677,11 +11677,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_ASS_SFA_SFB_TSA_THB_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)               , intent(in)    , optional      :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(:,:)
-        real(RKC)               , intent(in)    , contiguous    :: matB(:,:)
-        real(RKC)               , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)               , intent(in)    , optional      :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(:,:)
+        real(RKG)               , intent(in)    , contiguous    :: matB(:,:)
+        real(RKG)               , intent(inout) , contiguous    :: matC(:,:)
         type(transSymm_type)    , intent(in)                    :: operationA
         type(transHerm_type)    , intent(in)                    :: operationB
     end subroutine
@@ -11692,11 +11692,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_ASS_SFA_SFB_TSA_THB_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)               , intent(in)    , optional      :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(:,:)
-        real(RKC)               , intent(in)    , contiguous    :: matB(:,:)
-        real(RKC)               , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)               , intent(in)    , optional      :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(:,:)
+        real(RKG)               , intent(in)    , contiguous    :: matB(:,:)
+        real(RKG)               , intent(inout) , contiguous    :: matC(:,:)
         type(transSymm_type)    , intent(in)                    :: operationA
         type(transHerm_type)    , intent(in)                    :: operationB
     end subroutine
@@ -11707,11 +11707,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_ASS_SFA_SFB_TSA_THB_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)               , intent(in)    , optional      :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(:,:)
-        real(RKC)               , intent(in)    , contiguous    :: matB(:,:)
-        real(RKC)               , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)               , intent(in)    , optional      :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(:,:)
+        real(RKG)               , intent(in)    , contiguous    :: matB(:,:)
+        real(RKG)               , intent(inout) , contiguous    :: matC(:,:)
         type(transSymm_type)    , intent(in)                    :: operationA
         type(transHerm_type)    , intent(in)                    :: operationB
     end subroutine
@@ -11730,11 +11730,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_ASS_SFA_SFB_THA_THB_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)            , intent(in)    , optional      :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(:,:)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(:,:)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: IKG => IK5
+        integer(IKG)            , intent(in)    , optional      :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(:,:)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(:,:)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(:,:)
         type(transHerm_type)    , intent(in)                    :: operationA
         type(transHerm_type)    , intent(in)                    :: operationB
     end subroutine
@@ -11745,11 +11745,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_ASS_SFA_SFB_THA_THB_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)            , intent(in)    , optional      :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(:,:)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(:,:)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: IKG => IK4
+        integer(IKG)            , intent(in)    , optional      :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(:,:)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(:,:)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(:,:)
         type(transHerm_type)    , intent(in)                    :: operationA
         type(transHerm_type)    , intent(in)                    :: operationB
     end subroutine
@@ -11760,11 +11760,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_ASS_SFA_SFB_THA_THB_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)            , intent(in)    , optional      :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(:,:)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(:,:)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: IKG => IK3
+        integer(IKG)            , intent(in)    , optional      :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(:,:)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(:,:)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(:,:)
         type(transHerm_type)    , intent(in)                    :: operationA
         type(transHerm_type)    , intent(in)                    :: operationB
     end subroutine
@@ -11775,11 +11775,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_ASS_SFA_SFB_THA_THB_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)            , intent(in)    , optional      :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(:,:)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(:,:)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: IKG => IK2
+        integer(IKG)            , intent(in)    , optional      :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(:,:)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(:,:)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(:,:)
         type(transHerm_type)    , intent(in)                    :: operationA
         type(transHerm_type)    , intent(in)                    :: operationB
     end subroutine
@@ -11790,11 +11790,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_ASS_SFA_SFB_THA_THB_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)            , intent(in)    , optional      :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(:,:)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(:,:)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: IKG => IK1
+        integer(IKG)            , intent(in)    , optional      :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(:,:)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(:,:)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(:,:)
         type(transHerm_type)    , intent(in)                    :: operationA
         type(transHerm_type)    , intent(in)                    :: operationB
     end subroutine
@@ -11807,11 +11807,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_ASS_SFA_SFB_THA_THB_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)            , intent(in)    , optional      :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(:,:)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(:,:)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG)            , intent(in)    , optional      :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(:,:)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(:,:)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(:,:)
         type(transHerm_type)    , intent(in)                    :: operationA
         type(transHerm_type)    , intent(in)                    :: operationB
     end subroutine
@@ -11822,11 +11822,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_ASS_SFA_SFB_THA_THB_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)            , intent(in)    , optional      :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(:,:)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(:,:)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG)            , intent(in)    , optional      :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(:,:)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(:,:)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(:,:)
         type(transHerm_type)    , intent(in)                    :: operationA
         type(transHerm_type)    , intent(in)                    :: operationB
     end subroutine
@@ -11837,11 +11837,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_ASS_SFA_SFB_THA_THB_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)            , intent(in)    , optional      :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(:,:)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(:,:)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG)            , intent(in)    , optional      :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(:,:)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(:,:)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(:,:)
         type(transHerm_type)    , intent(in)                    :: operationA
         type(transHerm_type)    , intent(in)                    :: operationB
     end subroutine
@@ -11852,11 +11852,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_ASS_SFA_SFB_THA_THB_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)            , intent(in)    , optional      :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(:,:)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(:,:)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG)            , intent(in)    , optional      :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(:,:)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(:,:)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(:,:)
         type(transHerm_type)    , intent(in)                    :: operationA
         type(transHerm_type)    , intent(in)                    :: operationB
     end subroutine
@@ -11867,11 +11867,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_ASS_SFA_SFB_THA_THB_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)            , intent(in)    , optional      :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(:,:)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(:,:)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG)            , intent(in)    , optional      :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(:,:)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(:,:)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(:,:)
         type(transHerm_type)    , intent(in)                    :: operationA
         type(transHerm_type)    , intent(in)                    :: operationB
     end subroutine
@@ -11884,11 +11884,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_ASS_SFA_SFB_THA_THB_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)               , intent(in)    , optional      :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(:,:)
-        real(RKC)               , intent(in)    , contiguous    :: matB(:,:)
-        real(RKC)               , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)               , intent(in)    , optional      :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(:,:)
+        real(RKG)               , intent(in)    , contiguous    :: matB(:,:)
+        real(RKG)               , intent(inout) , contiguous    :: matC(:,:)
         type(transHerm_type)    , intent(in)                    :: operationA
         type(transHerm_type)    , intent(in)                    :: operationB
     end subroutine
@@ -11899,11 +11899,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_ASS_SFA_SFB_THA_THB_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)               , intent(in)    , optional      :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(:,:)
-        real(RKC)               , intent(in)    , contiguous    :: matB(:,:)
-        real(RKC)               , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)               , intent(in)    , optional      :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(:,:)
+        real(RKG)               , intent(in)    , contiguous    :: matB(:,:)
+        real(RKG)               , intent(inout) , contiguous    :: matC(:,:)
         type(transHerm_type)    , intent(in)                    :: operationA
         type(transHerm_type)    , intent(in)                    :: operationB
     end subroutine
@@ -11914,11 +11914,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_ASS_SFA_SFB_THA_THB_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)               , intent(in)    , optional      :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(:,:)
-        real(RKC)               , intent(in)    , contiguous    :: matB(:,:)
-        real(RKC)               , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)               , intent(in)    , optional      :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(:,:)
+        real(RKG)               , intent(in)    , contiguous    :: matB(:,:)
+        real(RKG)               , intent(inout) , contiguous    :: matC(:,:)
         type(transHerm_type)    , intent(in)                    :: operationA
         type(transHerm_type)    , intent(in)                    :: operationB
     end subroutine
@@ -11929,11 +11929,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_ASS_SFA_SFB_THA_THB_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)               , intent(in)    , optional      :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(:,:)
-        real(RKC)               , intent(in)    , contiguous    :: matB(:,:)
-        real(RKC)               , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)               , intent(in)    , optional      :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(:,:)
+        real(RKG)               , intent(in)    , contiguous    :: matB(:,:)
+        real(RKG)               , intent(inout) , contiguous    :: matC(:,:)
         type(transHerm_type)    , intent(in)                    :: operationA
         type(transHerm_type)    , intent(in)                    :: operationB
     end subroutine
@@ -11944,11 +11944,11 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_ASS_SFA_SFB_THA_THB_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)               , intent(in)    , optional      :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(:,:)
-        real(RKC)               , intent(in)    , contiguous    :: matB(:,:)
-        real(RKC)               , intent(inout) , contiguous    :: matC(:,:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)               , intent(in)    , optional      :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(:,:)
+        real(RKG)               , intent(in)    , contiguous    :: matB(:,:)
+        real(RKG)               , intent(inout) , contiguous    :: matC(:,:)
         type(transHerm_type)    , intent(in)                    :: operationA
         type(transHerm_type)    , intent(in)                    :: operationB
     end subroutine
@@ -11971,12 +11971,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_EXP_SFA_SFB_TNA_TNB_IK5
 #endif
-        use pm_kind, only: IKC => IK5
+        use pm_kind, only: IKG => IK5
         integer(IK)             , intent(in)                    :: nrow, ncol, ndum, roffA, coffA, roffB, coffB, roffC, coffC
-        integer(IKC)            , intent(in)                    :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        integer(IKG)            , intent(in)                    :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
     end subroutine
 #endif
 
@@ -11985,12 +11985,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_EXP_SFA_SFB_TNA_TNB_IK4
 #endif
-        use pm_kind, only: IKC => IK4
+        use pm_kind, only: IKG => IK4
         integer(IK)             , intent(in)                    :: nrow, ncol, ndum, roffA, coffA, roffB, coffB, roffC, coffC
-        integer(IKC)            , intent(in)                    :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        integer(IKG)            , intent(in)                    :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
     end subroutine
 #endif
 
@@ -11999,12 +11999,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_EXP_SFA_SFB_TNA_TNB_IK3
 #endif
-        use pm_kind, only: IKC => IK3
+        use pm_kind, only: IKG => IK3
         integer(IK)             , intent(in)                    :: nrow, ncol, ndum, roffA, coffA, roffB, coffB, roffC, coffC
-        integer(IKC)            , intent(in)                    :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        integer(IKG)            , intent(in)                    :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
     end subroutine
 #endif
 
@@ -12013,12 +12013,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_EXP_SFA_SFB_TNA_TNB_IK2
 #endif
-        use pm_kind, only: IKC => IK2
+        use pm_kind, only: IKG => IK2
         integer(IK)             , intent(in)                    :: nrow, ncol, ndum, roffA, coffA, roffB, coffB, roffC, coffC
-        integer(IKC)            , intent(in)                    :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        integer(IKG)            , intent(in)                    :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
     end subroutine
 #endif
 
@@ -12027,12 +12027,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_EXP_SFA_SFB_TNA_TNB_IK1
 #endif
-        use pm_kind, only: IKC => IK1
+        use pm_kind, only: IKG => IK1
         integer(IK)             , intent(in)                    :: nrow, ncol, ndum, roffA, coffA, roffB, coffB, roffC, coffC
-        integer(IKC)            , intent(in)                    :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        integer(IKG)            , intent(in)                    :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
     end subroutine
 #endif
 
@@ -12043,12 +12043,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_EXP_SFA_SFB_TNA_TNB_CK5
 #endif
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
         integer(IK)             , intent(in)                    :: nrow, ncol, ndum, roffA, coffA, roffB, coffB, roffC, coffC
-        complex(CKC)            , intent(in)                    :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        complex(CKG)            , intent(in)                    :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
     end subroutine
 #endif
 
@@ -12057,12 +12057,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_EXP_SFA_SFB_TNA_TNB_CK4
 #endif
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
         integer(IK)             , intent(in)                    :: nrow, ncol, ndum, roffA, coffA, roffB, coffB, roffC, coffC
-        complex(CKC)            , intent(in)                    :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        complex(CKG)            , intent(in)                    :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
     end subroutine
 #endif
 
@@ -12071,12 +12071,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_EXP_SFA_SFB_TNA_TNB_CK3
 #endif
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
         integer(IK)             , intent(in)                    :: nrow, ncol, ndum, roffA, coffA, roffB, coffB, roffC, coffC
-        complex(CKC)            , intent(in)                    :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        complex(CKG)            , intent(in)                    :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
     end subroutine
 #endif
 
@@ -12085,12 +12085,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_EXP_SFA_SFB_TNA_TNB_CK2
 #endif
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
         integer(IK)             , intent(in)                    :: nrow, ncol, ndum, roffA, coffA, roffB, coffB, roffC, coffC
-        complex(CKC)            , intent(in)                    :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        complex(CKG)            , intent(in)                    :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
     end subroutine
 #endif
 
@@ -12099,12 +12099,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_EXP_SFA_SFB_TNA_TNB_CK1
 #endif
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
         integer(IK)             , intent(in)                    :: nrow, ncol, ndum, roffA, coffA, roffB, coffB, roffC, coffC
-        complex(CKC)            , intent(in)                    :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        complex(CKG)            , intent(in)                    :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
     end subroutine
 #endif
 
@@ -12115,12 +12115,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_EXP_SFA_SFB_TNA_TNB_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         integer(IK)             , intent(in)                    :: nrow, ncol, ndum, roffA, coffA, roffB, coffB, roffC, coffC
-        real(RKC)               , intent(in)                    :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        real(RKC)               , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        real(RKC)               , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        real(RKG)               , intent(in)                    :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        real(RKG)               , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        real(RKG)               , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
     end subroutine
 #endif
 
@@ -12129,12 +12129,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_EXP_SFA_SFB_TNA_TNB_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         integer(IK)             , intent(in)                    :: nrow, ncol, ndum, roffA, coffA, roffB, coffB, roffC, coffC
-        real(RKC)               , intent(in)                    :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        real(RKC)               , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        real(RKC)               , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        real(RKG)               , intent(in)                    :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        real(RKG)               , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        real(RKG)               , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
     end subroutine
 #endif
 
@@ -12143,12 +12143,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_EXP_SFA_SFB_TNA_TNB_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         integer(IK)             , intent(in)                    :: nrow, ncol, ndum, roffA, coffA, roffB, coffB, roffC, coffC
-        real(RKC)               , intent(in)                    :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        real(RKC)               , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        real(RKC)               , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        real(RKG)               , intent(in)                    :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        real(RKG)               , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        real(RKG)               , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
     end subroutine
 #endif
 
@@ -12157,12 +12157,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_EXP_SFA_SFB_TNA_TNB_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         integer(IK)             , intent(in)                    :: nrow, ncol, ndum, roffA, coffA, roffB, coffB, roffC, coffC
-        real(RKC)               , intent(in)                    :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        real(RKC)               , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        real(RKC)               , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        real(RKG)               , intent(in)                    :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        real(RKG)               , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        real(RKG)               , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
     end subroutine
 #endif
 
@@ -12171,12 +12171,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_EXP_SFA_SFB_TNA_TNB_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         integer(IK)             , intent(in)                    :: nrow, ncol, ndum, roffA, coffA, roffB, coffB, roffC, coffC
-        real(RKC)               , intent(in)                    :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        real(RKC)               , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        real(RKC)               , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        real(RKG)               , intent(in)                    :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        real(RKG)               , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        real(RKG)               , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
     end subroutine
 #endif
 
@@ -12193,12 +12193,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_EXP_SFA_SFB_TSA_TNB_IK5
 #endif
-        use pm_kind, only: IKC => IK5
+        use pm_kind, only: IKG => IK5
         integer(IK)             , intent(in)                    :: nrow, ncol, ndum, roffA, coffA, roffB, coffB, roffC, coffC
-        integer(IKC)            , intent(in)                    :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        integer(IKG)            , intent(in)                    :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(transSymm_type)    , intent(in)                    :: operationA
     end subroutine
 #endif
@@ -12208,12 +12208,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_EXP_SFA_SFB_TSA_TNB_IK4
 #endif
-        use pm_kind, only: IKC => IK4
+        use pm_kind, only: IKG => IK4
         integer(IK)             , intent(in)                    :: nrow, ncol, ndum, roffA, coffA, roffB, coffB, roffC, coffC
-        integer(IKC)            , intent(in)                    :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        integer(IKG)            , intent(in)                    :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(transSymm_type)    , intent(in)                    :: operationA
     end subroutine
 #endif
@@ -12223,12 +12223,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_EXP_SFA_SFB_TSA_TNB_IK3
 #endif
-        use pm_kind, only: IKC => IK3
+        use pm_kind, only: IKG => IK3
         integer(IK)             , intent(in)                    :: nrow, ncol, ndum, roffA, coffA, roffB, coffB, roffC, coffC
-        integer(IKC)            , intent(in)                    :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        integer(IKG)            , intent(in)                    :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(transSymm_type)    , intent(in)                    :: operationA
     end subroutine
 #endif
@@ -12238,12 +12238,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_EXP_SFA_SFB_TSA_TNB_IK2
 #endif
-        use pm_kind, only: IKC => IK2
+        use pm_kind, only: IKG => IK2
         integer(IK)             , intent(in)                    :: nrow, ncol, ndum, roffA, coffA, roffB, coffB, roffC, coffC
-        integer(IKC)            , intent(in)                    :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        integer(IKG)            , intent(in)                    :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(transSymm_type)    , intent(in)                    :: operationA
     end subroutine
 #endif
@@ -12253,12 +12253,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_EXP_SFA_SFB_TSA_TNB_IK1
 #endif
-        use pm_kind, only: IKC => IK1
+        use pm_kind, only: IKG => IK1
         integer(IK)             , intent(in)                    :: nrow, ncol, ndum, roffA, coffA, roffB, coffB, roffC, coffC
-        integer(IKC)            , intent(in)                    :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        integer(IKG)            , intent(in)                    :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(transSymm_type)    , intent(in)                    :: operationA
     end subroutine
 #endif
@@ -12270,12 +12270,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_EXP_SFA_SFB_TSA_TNB_CK5
 #endif
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
         integer(IK)             , intent(in)                    :: nrow, ncol, ndum, roffA, coffA, roffB, coffB, roffC, coffC
-        complex(CKC)            , intent(in)                    :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        complex(CKG)            , intent(in)                    :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(transSymm_type)    , intent(in)                    :: operationA
     end subroutine
 #endif
@@ -12285,12 +12285,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_EXP_SFA_SFB_TSA_TNB_CK4
 #endif
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
         integer(IK)             , intent(in)                    :: nrow, ncol, ndum, roffA, coffA, roffB, coffB, roffC, coffC
-        complex(CKC)            , intent(in)                    :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        complex(CKG)            , intent(in)                    :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(transSymm_type)    , intent(in)                    :: operationA
     end subroutine
 #endif
@@ -12300,12 +12300,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_EXP_SFA_SFB_TSA_TNB_CK3
 #endif
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
         integer(IK)             , intent(in)                    :: nrow, ncol, ndum, roffA, coffA, roffB, coffB, roffC, coffC
-        complex(CKC)            , intent(in)                    :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        complex(CKG)            , intent(in)                    :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(transSymm_type)    , intent(in)                    :: operationA
     end subroutine
 #endif
@@ -12315,12 +12315,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_EXP_SFA_SFB_TSA_TNB_CK2
 #endif
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
         integer(IK)             , intent(in)                    :: nrow, ncol, ndum, roffA, coffA, roffB, coffB, roffC, coffC
-        complex(CKC)            , intent(in)                    :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        complex(CKG)            , intent(in)                    :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(transSymm_type)    , intent(in)                    :: operationA
     end subroutine
 #endif
@@ -12330,12 +12330,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_EXP_SFA_SFB_TSA_TNB_CK1
 #endif
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
         integer(IK)             , intent(in)                    :: nrow, ncol, ndum, roffA, coffA, roffB, coffB, roffC, coffC
-        complex(CKC)            , intent(in)                    :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        complex(CKG)            , intent(in)                    :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(transSymm_type)    , intent(in)                    :: operationA
     end subroutine
 #endif
@@ -12347,12 +12347,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_EXP_SFA_SFB_TSA_TNB_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         integer(IK)             , intent(in)                    :: nrow, ncol, ndum, roffA, coffA, roffB, coffB, roffC, coffC
-        real(RKC)               , intent(in)                    :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        real(RKC)               , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        real(RKC)               , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        real(RKG)               , intent(in)                    :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        real(RKG)               , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        real(RKG)               , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(transSymm_type)    , intent(in)                    :: operationA
     end subroutine
 #endif
@@ -12362,12 +12362,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_EXP_SFA_SFB_TSA_TNB_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         integer(IK)             , intent(in)                    :: nrow, ncol, ndum, roffA, coffA, roffB, coffB, roffC, coffC
-        real(RKC)               , intent(in)                    :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        real(RKC)               , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        real(RKC)               , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        real(RKG)               , intent(in)                    :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        real(RKG)               , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        real(RKG)               , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(transSymm_type)    , intent(in)                    :: operationA
     end subroutine
 #endif
@@ -12377,12 +12377,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_EXP_SFA_SFB_TSA_TNB_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         integer(IK)             , intent(in)                    :: nrow, ncol, ndum, roffA, coffA, roffB, coffB, roffC, coffC
-        real(RKC)               , intent(in)                    :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        real(RKC)               , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        real(RKC)               , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        real(RKG)               , intent(in)                    :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        real(RKG)               , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        real(RKG)               , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(transSymm_type)    , intent(in)                    :: operationA
     end subroutine
 #endif
@@ -12392,12 +12392,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_EXP_SFA_SFB_TSA_TNB_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         integer(IK)             , intent(in)                    :: nrow, ncol, ndum, roffA, coffA, roffB, coffB, roffC, coffC
-        real(RKC)               , intent(in)                    :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        real(RKC)               , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        real(RKC)               , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        real(RKG)               , intent(in)                    :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        real(RKG)               , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        real(RKG)               , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(transSymm_type)    , intent(in)                    :: operationA
     end subroutine
 #endif
@@ -12407,12 +12407,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_EXP_SFA_SFB_TSA_TNB_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         integer(IK)             , intent(in)                    :: nrow, ncol, ndum, roffA, coffA, roffB, coffB, roffC, coffC
-        real(RKC)               , intent(in)                    :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        real(RKC)               , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        real(RKC)               , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        real(RKG)               , intent(in)                    :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        real(RKG)               , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        real(RKG)               , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(transSymm_type)    , intent(in)                    :: operationA
     end subroutine
 #endif
@@ -12430,12 +12430,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_EXP_SFA_SFB_THA_TNB_IK5
 #endif
-        use pm_kind, only: IKC => IK5
+        use pm_kind, only: IKG => IK5
         integer(IK)             , intent(in)                    :: nrow, ncol, ndum, roffA, coffA, roffB, coffB, roffC, coffC
-        integer(IKC)            , intent(in)                    :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        integer(IKG)            , intent(in)                    :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(transHerm_type)    , intent(in)                    :: operationA
     end subroutine
 #endif
@@ -12445,12 +12445,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_EXP_SFA_SFB_THA_TNB_IK4
 #endif
-        use pm_kind, only: IKC => IK4
+        use pm_kind, only: IKG => IK4
         integer(IK)             , intent(in)                    :: nrow, ncol, ndum, roffA, coffA, roffB, coffB, roffC, coffC
-        integer(IKC)            , intent(in)                    :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        integer(IKG)            , intent(in)                    :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(transHerm_type)    , intent(in)                    :: operationA
     end subroutine
 #endif
@@ -12460,12 +12460,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_EXP_SFA_SFB_THA_TNB_IK3
 #endif
-        use pm_kind, only: IKC => IK3
+        use pm_kind, only: IKG => IK3
         integer(IK)             , intent(in)                    :: nrow, ncol, ndum, roffA, coffA, roffB, coffB, roffC, coffC
-        integer(IKC)            , intent(in)                    :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        integer(IKG)            , intent(in)                    :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(transHerm_type)    , intent(in)                    :: operationA
     end subroutine
 #endif
@@ -12475,12 +12475,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_EXP_SFA_SFB_THA_TNB_IK2
 #endif
-        use pm_kind, only: IKC => IK2
+        use pm_kind, only: IKG => IK2
         integer(IK)             , intent(in)                    :: nrow, ncol, ndum, roffA, coffA, roffB, coffB, roffC, coffC
-        integer(IKC)            , intent(in)                    :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        integer(IKG)            , intent(in)                    :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(transHerm_type)    , intent(in)                    :: operationA
     end subroutine
 #endif
@@ -12490,12 +12490,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_EXP_SFA_SFB_THA_TNB_IK1
 #endif
-        use pm_kind, only: IKC => IK1
+        use pm_kind, only: IKG => IK1
         integer(IK)             , intent(in)                    :: nrow, ncol, ndum, roffA, coffA, roffB, coffB, roffC, coffC
-        integer(IKC)            , intent(in)                    :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        integer(IKG)            , intent(in)                    :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(transHerm_type)    , intent(in)                    :: operationA
     end subroutine
 #endif
@@ -12507,12 +12507,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_EXP_SFA_SFB_THA_TNB_CK5
 #endif
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
         integer(IK)             , intent(in)                    :: nrow, ncol, ndum, roffA, coffA, roffB, coffB, roffC, coffC
-        complex(CKC)            , intent(in)                    :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        complex(CKG)            , intent(in)                    :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(transHerm_type)    , intent(in)                    :: operationA
     end subroutine
 #endif
@@ -12522,12 +12522,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_EXP_SFA_SFB_THA_TNB_CK4
 #endif
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
         integer(IK)             , intent(in)                    :: nrow, ncol, ndum, roffA, coffA, roffB, coffB, roffC, coffC
-        complex(CKC)            , intent(in)                    :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        complex(CKG)            , intent(in)                    :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(transHerm_type)    , intent(in)                    :: operationA
     end subroutine
 #endif
@@ -12537,12 +12537,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_EXP_SFA_SFB_THA_TNB_CK3
 #endif
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
         integer(IK)             , intent(in)                    :: nrow, ncol, ndum, roffA, coffA, roffB, coffB, roffC, coffC
-        complex(CKC)            , intent(in)                    :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        complex(CKG)            , intent(in)                    :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(transHerm_type)    , intent(in)                    :: operationA
     end subroutine
 #endif
@@ -12552,12 +12552,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_EXP_SFA_SFB_THA_TNB_CK2
 #endif
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
         integer(IK)             , intent(in)                    :: nrow, ncol, ndum, roffA, coffA, roffB, coffB, roffC, coffC
-        complex(CKC)            , intent(in)                    :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        complex(CKG)            , intent(in)                    :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(transHerm_type)    , intent(in)                    :: operationA
     end subroutine
 #endif
@@ -12567,12 +12567,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_EXP_SFA_SFB_THA_TNB_CK1
 #endif
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
         integer(IK)             , intent(in)                    :: nrow, ncol, ndum, roffA, coffA, roffB, coffB, roffC, coffC
-        complex(CKC)            , intent(in)                    :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        complex(CKG)            , intent(in)                    :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(transHerm_type)    , intent(in)                    :: operationA
     end subroutine
 #endif
@@ -12584,12 +12584,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_EXP_SFA_SFB_THA_TNB_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         integer(IK)             , intent(in)                    :: nrow, ncol, ndum, roffA, coffA, roffB, coffB, roffC, coffC
-        real(RKC)               , intent(in)                    :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        real(RKC)               , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        real(RKC)               , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        real(RKG)               , intent(in)                    :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        real(RKG)               , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        real(RKG)               , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(transHerm_type)    , intent(in)                    :: operationA
     end subroutine
 #endif
@@ -12599,12 +12599,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_EXP_SFA_SFB_THA_TNB_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         integer(IK)             , intent(in)                    :: nrow, ncol, ndum, roffA, coffA, roffB, coffB, roffC, coffC
-        real(RKC)               , intent(in)                    :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        real(RKC)               , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        real(RKC)               , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        real(RKG)               , intent(in)                    :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        real(RKG)               , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        real(RKG)               , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(transHerm_type)    , intent(in)                    :: operationA
     end subroutine
 #endif
@@ -12614,12 +12614,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_EXP_SFA_SFB_THA_TNB_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         integer(IK)             , intent(in)                    :: nrow, ncol, ndum, roffA, coffA, roffB, coffB, roffC, coffC
-        real(RKC)               , intent(in)                    :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        real(RKC)               , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        real(RKC)               , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        real(RKG)               , intent(in)                    :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        real(RKG)               , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        real(RKG)               , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(transHerm_type)    , intent(in)                    :: operationA
     end subroutine
 #endif
@@ -12629,12 +12629,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_EXP_SFA_SFB_THA_TNB_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         integer(IK)             , intent(in)                    :: nrow, ncol, ndum, roffA, coffA, roffB, coffB, roffC, coffC
-        real(RKC)               , intent(in)                    :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        real(RKC)               , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        real(RKC)               , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        real(RKG)               , intent(in)                    :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        real(RKG)               , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        real(RKG)               , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(transHerm_type)    , intent(in)                    :: operationA
     end subroutine
 #endif
@@ -12644,12 +12644,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_EXP_SFA_SFB_THA_TNB_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         integer(IK)             , intent(in)                    :: nrow, ncol, ndum, roffA, coffA, roffB, coffB, roffC, coffC
-        real(RKC)               , intent(in)                    :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        real(RKC)               , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        real(RKC)               , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        real(RKG)               , intent(in)                    :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        real(RKG)               , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        real(RKG)               , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(transHerm_type)    , intent(in)                    :: operationA
     end subroutine
 #endif
@@ -12667,12 +12667,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_EXP_SFA_SFB_TNA_TSB_IK5
 #endif
-        use pm_kind, only: IKC => IK5
+        use pm_kind, only: IKG => IK5
         integer(IK)             , intent(in)                    :: nrow, ncol, ndum, roffA, coffA, roffB, coffB, roffC, coffC
-        integer(IKC)            , intent(in)                    :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        integer(IKG)            , intent(in)                    :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(transSymm_type)    , intent(in)                    :: operationB
     end subroutine
 #endif
@@ -12682,12 +12682,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_EXP_SFA_SFB_TNA_TSB_IK4
 #endif
-        use pm_kind, only: IKC => IK4
+        use pm_kind, only: IKG => IK4
         integer(IK)             , intent(in)                    :: nrow, ncol, ndum, roffA, coffA, roffB, coffB, roffC, coffC
-        integer(IKC)            , intent(in)                    :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        integer(IKG)            , intent(in)                    :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(transSymm_type)    , intent(in)                    :: operationB
     end subroutine
 #endif
@@ -12697,12 +12697,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_EXP_SFA_SFB_TNA_TSB_IK3
 #endif
-        use pm_kind, only: IKC => IK3
+        use pm_kind, only: IKG => IK3
         integer(IK)             , intent(in)                    :: nrow, ncol, ndum, roffA, coffA, roffB, coffB, roffC, coffC
-        integer(IKC)            , intent(in)                    :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        integer(IKG)            , intent(in)                    :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(transSymm_type)    , intent(in)                    :: operationB
     end subroutine
 #endif
@@ -12712,12 +12712,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_EXP_SFA_SFB_TNA_TSB_IK2
 #endif
-        use pm_kind, only: IKC => IK2
+        use pm_kind, only: IKG => IK2
         integer(IK)             , intent(in)                    :: nrow, ncol, ndum, roffA, coffA, roffB, coffB, roffC, coffC
-        integer(IKC)            , intent(in)                    :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        integer(IKG)            , intent(in)                    :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(transSymm_type)    , intent(in)                    :: operationB
     end subroutine
 #endif
@@ -12727,12 +12727,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_EXP_SFA_SFB_TNA_TSB_IK1
 #endif
-        use pm_kind, only: IKC => IK1
+        use pm_kind, only: IKG => IK1
         integer(IK)             , intent(in)                    :: nrow, ncol, ndum, roffA, coffA, roffB, coffB, roffC, coffC
-        integer(IKC)            , intent(in)                    :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        integer(IKG)            , intent(in)                    :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(transSymm_type)    , intent(in)                    :: operationB
     end subroutine
 #endif
@@ -12744,12 +12744,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_EXP_SFA_SFB_TNA_TSB_CK5
 #endif
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
         integer(IK)             , intent(in)                    :: nrow, ncol, ndum, roffA, coffA, roffB, coffB, roffC, coffC
-        complex(CKC)            , intent(in)                    :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        complex(CKG)            , intent(in)                    :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(transSymm_type)    , intent(in)                    :: operationB
     end subroutine
 #endif
@@ -12759,12 +12759,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_EXP_SFA_SFB_TNA_TSB_CK4
 #endif
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
         integer(IK)             , intent(in)                    :: nrow, ncol, ndum, roffA, coffA, roffB, coffB, roffC, coffC
-        complex(CKC)            , intent(in)                    :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        complex(CKG)            , intent(in)                    :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(transSymm_type)    , intent(in)                    :: operationB
     end subroutine
 #endif
@@ -12774,12 +12774,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_EXP_SFA_SFB_TNA_TSB_CK3
 #endif
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
         integer(IK)             , intent(in)                    :: nrow, ncol, ndum, roffA, coffA, roffB, coffB, roffC, coffC
-        complex(CKC)            , intent(in)                    :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        complex(CKG)            , intent(in)                    :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(transSymm_type)    , intent(in)                    :: operationB
     end subroutine
 #endif
@@ -12789,12 +12789,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_EXP_SFA_SFB_TNA_TSB_CK2
 #endif
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
         integer(IK)             , intent(in)                    :: nrow, ncol, ndum, roffA, coffA, roffB, coffB, roffC, coffC
-        complex(CKC)            , intent(in)                    :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        complex(CKG)            , intent(in)                    :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(transSymm_type)    , intent(in)                    :: operationB
     end subroutine
 #endif
@@ -12804,12 +12804,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_EXP_SFA_SFB_TNA_TSB_CK1
 #endif
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
         integer(IK)             , intent(in)                    :: nrow, ncol, ndum, roffA, coffA, roffB, coffB, roffC, coffC
-        complex(CKC)            , intent(in)                    :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        complex(CKG)            , intent(in)                    :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(transSymm_type)    , intent(in)                    :: operationB
     end subroutine
 #endif
@@ -12821,12 +12821,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_EXP_SFA_SFB_TNA_TSB_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         integer(IK)             , intent(in)                    :: nrow, ncol, ndum, roffA, coffA, roffB, coffB, roffC, coffC
-        real(RKC)               , intent(in)                    :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        real(RKC)               , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        real(RKC)               , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        real(RKG)               , intent(in)                    :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        real(RKG)               , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        real(RKG)               , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(transSymm_type)    , intent(in)                    :: operationB
     end subroutine
 #endif
@@ -12836,12 +12836,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_EXP_SFA_SFB_TNA_TSB_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         integer(IK)             , intent(in)                    :: nrow, ncol, ndum, roffA, coffA, roffB, coffB, roffC, coffC
-        real(RKC)               , intent(in)                    :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        real(RKC)               , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        real(RKC)               , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        real(RKG)               , intent(in)                    :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        real(RKG)               , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        real(RKG)               , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(transSymm_type)    , intent(in)                    :: operationB
     end subroutine
 #endif
@@ -12851,12 +12851,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_EXP_SFA_SFB_TNA_TSB_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         integer(IK)             , intent(in)                    :: nrow, ncol, ndum, roffA, coffA, roffB, coffB, roffC, coffC
-        real(RKC)               , intent(in)                    :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        real(RKC)               , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        real(RKC)               , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        real(RKG)               , intent(in)                    :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        real(RKG)               , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        real(RKG)               , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(transSymm_type)    , intent(in)                    :: operationB
     end subroutine
 #endif
@@ -12866,12 +12866,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_EXP_SFA_SFB_TNA_TSB_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         integer(IK)             , intent(in)                    :: nrow, ncol, ndum, roffA, coffA, roffB, coffB, roffC, coffC
-        real(RKC)               , intent(in)                    :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        real(RKC)               , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        real(RKC)               , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        real(RKG)               , intent(in)                    :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        real(RKG)               , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        real(RKG)               , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(transSymm_type)    , intent(in)                    :: operationB
     end subroutine
 #endif
@@ -12881,12 +12881,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_EXP_SFA_SFB_TNA_TSB_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         integer(IK)             , intent(in)                    :: nrow, ncol, ndum, roffA, coffA, roffB, coffB, roffC, coffC
-        real(RKC)               , intent(in)                    :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        real(RKC)               , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        real(RKC)               , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        real(RKG)               , intent(in)                    :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        real(RKG)               , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        real(RKG)               , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(transSymm_type)    , intent(in)                    :: operationB
     end subroutine
 #endif
@@ -12904,12 +12904,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_EXP_SFA_SFB_TSA_TSB_IK5
 #endif
-        use pm_kind, only: IKC => IK5
+        use pm_kind, only: IKG => IK5
         integer(IK)             , intent(in)                    :: nrow, ncol, ndum, roffA, coffA, roffB, coffB, roffC, coffC
-        integer(IKC)            , intent(in)                    :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        integer(IKG)            , intent(in)                    :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(transSymm_type)    , intent(in)                    :: operationA
         type(transSymm_type)    , intent(in)                    :: operationB
     end subroutine
@@ -12920,12 +12920,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_EXP_SFA_SFB_TSA_TSB_IK4
 #endif
-        use pm_kind, only: IKC => IK4
+        use pm_kind, only: IKG => IK4
         integer(IK)             , intent(in)                    :: nrow, ncol, ndum, roffA, coffA, roffB, coffB, roffC, coffC
-        integer(IKC)            , intent(in)                    :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        integer(IKG)            , intent(in)                    :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(transSymm_type)    , intent(in)                    :: operationA
         type(transSymm_type)    , intent(in)                    :: operationB
     end subroutine
@@ -12936,12 +12936,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_EXP_SFA_SFB_TSA_TSB_IK3
 #endif
-        use pm_kind, only: IKC => IK3
+        use pm_kind, only: IKG => IK3
         integer(IK)             , intent(in)                    :: nrow, ncol, ndum, roffA, coffA, roffB, coffB, roffC, coffC
-        integer(IKC)            , intent(in)                    :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        integer(IKG)            , intent(in)                    :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(transSymm_type)    , intent(in)                    :: operationA
         type(transSymm_type)    , intent(in)                    :: operationB
     end subroutine
@@ -12952,12 +12952,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_EXP_SFA_SFB_TSA_TSB_IK2
 #endif
-        use pm_kind, only: IKC => IK2
+        use pm_kind, only: IKG => IK2
         integer(IK)             , intent(in)                    :: nrow, ncol, ndum, roffA, coffA, roffB, coffB, roffC, coffC
-        integer(IKC)            , intent(in)                    :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        integer(IKG)            , intent(in)                    :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(transSymm_type)    , intent(in)                    :: operationA
         type(transSymm_type)    , intent(in)                    :: operationB
     end subroutine
@@ -12968,12 +12968,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_EXP_SFA_SFB_TSA_TSB_IK1
 #endif
-        use pm_kind, only: IKC => IK1
+        use pm_kind, only: IKG => IK1
         integer(IK)             , intent(in)                    :: nrow, ncol, ndum, roffA, coffA, roffB, coffB, roffC, coffC
-        integer(IKC)            , intent(in)                    :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        integer(IKG)            , intent(in)                    :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(transSymm_type)    , intent(in)                    :: operationA
         type(transSymm_type)    , intent(in)                    :: operationB
     end subroutine
@@ -12986,12 +12986,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_EXP_SFA_SFB_TSA_TSB_CK5
 #endif
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
         integer(IK)             , intent(in)                    :: nrow, ncol, ndum, roffA, coffA, roffB, coffB, roffC, coffC
-        complex(CKC)            , intent(in)                    :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        complex(CKG)            , intent(in)                    :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(transSymm_type)    , intent(in)                    :: operationA
         type(transSymm_type)    , intent(in)                    :: operationB
     end subroutine
@@ -13002,12 +13002,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_EXP_SFA_SFB_TSA_TSB_CK4
 #endif
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
         integer(IK)             , intent(in)                    :: nrow, ncol, ndum, roffA, coffA, roffB, coffB, roffC, coffC
-        complex(CKC)            , intent(in)                    :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        complex(CKG)            , intent(in)                    :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(transSymm_type)    , intent(in)                    :: operationA
         type(transSymm_type)    , intent(in)                    :: operationB
     end subroutine
@@ -13018,12 +13018,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_EXP_SFA_SFB_TSA_TSB_CK3
 #endif
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
         integer(IK)             , intent(in)                    :: nrow, ncol, ndum, roffA, coffA, roffB, coffB, roffC, coffC
-        complex(CKC)            , intent(in)                    :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        complex(CKG)            , intent(in)                    :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(transSymm_type)    , intent(in)                    :: operationA
         type(transSymm_type)    , intent(in)                    :: operationB
     end subroutine
@@ -13034,12 +13034,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_EXP_SFA_SFB_TSA_TSB_CK2
 #endif
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
         integer(IK)             , intent(in)                    :: nrow, ncol, ndum, roffA, coffA, roffB, coffB, roffC, coffC
-        complex(CKC)            , intent(in)                    :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        complex(CKG)            , intent(in)                    :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(transSymm_type)    , intent(in)                    :: operationA
         type(transSymm_type)    , intent(in)                    :: operationB
     end subroutine
@@ -13050,12 +13050,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_EXP_SFA_SFB_TSA_TSB_CK1
 #endif
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
         integer(IK)             , intent(in)                    :: nrow, ncol, ndum, roffA, coffA, roffB, coffB, roffC, coffC
-        complex(CKC)            , intent(in)                    :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        complex(CKG)            , intent(in)                    :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(transSymm_type)    , intent(in)                    :: operationA
         type(transSymm_type)    , intent(in)                    :: operationB
     end subroutine
@@ -13068,12 +13068,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_EXP_SFA_SFB_TSA_TSB_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         integer(IK)             , intent(in)                    :: nrow, ncol, ndum, roffA, coffA, roffB, coffB, roffC, coffC
-        real(RKC)               , intent(in)                    :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        real(RKC)               , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        real(RKC)               , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        real(RKG)               , intent(in)                    :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        real(RKG)               , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        real(RKG)               , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(transSymm_type)    , intent(in)                    :: operationA
         type(transSymm_type)    , intent(in)                    :: operationB
     end subroutine
@@ -13084,12 +13084,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_EXP_SFA_SFB_TSA_TSB_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         integer(IK)             , intent(in)                    :: nrow, ncol, ndum, roffA, coffA, roffB, coffB, roffC, coffC
-        real(RKC)               , intent(in)                    :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        real(RKC)               , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        real(RKC)               , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        real(RKG)               , intent(in)                    :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        real(RKG)               , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        real(RKG)               , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(transSymm_type)    , intent(in)                    :: operationA
         type(transSymm_type)    , intent(in)                    :: operationB
     end subroutine
@@ -13100,12 +13100,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_EXP_SFA_SFB_TSA_TSB_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         integer(IK)             , intent(in)                    :: nrow, ncol, ndum, roffA, coffA, roffB, coffB, roffC, coffC
-        real(RKC)               , intent(in)                    :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        real(RKC)               , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        real(RKC)               , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        real(RKG)               , intent(in)                    :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        real(RKG)               , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        real(RKG)               , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(transSymm_type)    , intent(in)                    :: operationA
         type(transSymm_type)    , intent(in)                    :: operationB
     end subroutine
@@ -13116,12 +13116,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_EXP_SFA_SFB_TSA_TSB_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         integer(IK)             , intent(in)                    :: nrow, ncol, ndum, roffA, coffA, roffB, coffB, roffC, coffC
-        real(RKC)               , intent(in)                    :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        real(RKC)               , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        real(RKC)               , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        real(RKG)               , intent(in)                    :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        real(RKG)               , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        real(RKG)               , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(transSymm_type)    , intent(in)                    :: operationA
         type(transSymm_type)    , intent(in)                    :: operationB
     end subroutine
@@ -13132,12 +13132,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_EXP_SFA_SFB_TSA_TSB_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         integer(IK)             , intent(in)                    :: nrow, ncol, ndum, roffA, coffA, roffB, coffB, roffC, coffC
-        real(RKC)               , intent(in)                    :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        real(RKC)               , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        real(RKC)               , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        real(RKG)               , intent(in)                    :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        real(RKG)               , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        real(RKG)               , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(transSymm_type)    , intent(in)                    :: operationA
         type(transSymm_type)    , intent(in)                    :: operationB
     end subroutine
@@ -13156,12 +13156,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_EXP_SFA_SFB_THA_TSB_IK5
 #endif
-        use pm_kind, only: IKC => IK5
+        use pm_kind, only: IKG => IK5
         integer(IK)             , intent(in)                    :: nrow, ncol, ndum, roffA, coffA, roffB, coffB, roffC, coffC
-        integer(IKC)            , intent(in)                    :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        integer(IKG)            , intent(in)                    :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(transHerm_type)    , intent(in)                    :: operationA
         type(transSymm_type)    , intent(in)                    :: operationB
     end subroutine
@@ -13172,12 +13172,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_EXP_SFA_SFB_THA_TSB_IK4
 #endif
-        use pm_kind, only: IKC => IK4
+        use pm_kind, only: IKG => IK4
         integer(IK)             , intent(in)                    :: nrow, ncol, ndum, roffA, coffA, roffB, coffB, roffC, coffC
-        integer(IKC)            , intent(in)                    :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        integer(IKG)            , intent(in)                    :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(transHerm_type)    , intent(in)                    :: operationA
         type(transSymm_type)    , intent(in)                    :: operationB
     end subroutine
@@ -13188,12 +13188,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_EXP_SFA_SFB_THA_TSB_IK3
 #endif
-        use pm_kind, only: IKC => IK3
+        use pm_kind, only: IKG => IK3
         integer(IK)             , intent(in)                    :: nrow, ncol, ndum, roffA, coffA, roffB, coffB, roffC, coffC
-        integer(IKC)            , intent(in)                    :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        integer(IKG)            , intent(in)                    :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(transHerm_type)    , intent(in)                    :: operationA
         type(transSymm_type)    , intent(in)                    :: operationB
     end subroutine
@@ -13204,12 +13204,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_EXP_SFA_SFB_THA_TSB_IK2
 #endif
-        use pm_kind, only: IKC => IK2
+        use pm_kind, only: IKG => IK2
         integer(IK)             , intent(in)                    :: nrow, ncol, ndum, roffA, coffA, roffB, coffB, roffC, coffC
-        integer(IKC)            , intent(in)                    :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        integer(IKG)            , intent(in)                    :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(transHerm_type)    , intent(in)                    :: operationA
         type(transSymm_type)    , intent(in)                    :: operationB
     end subroutine
@@ -13220,12 +13220,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_EXP_SFA_SFB_THA_TSB_IK1
 #endif
-        use pm_kind, only: IKC => IK1
+        use pm_kind, only: IKG => IK1
         integer(IK)             , intent(in)                    :: nrow, ncol, ndum, roffA, coffA, roffB, coffB, roffC, coffC
-        integer(IKC)            , intent(in)                    :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        integer(IKG)            , intent(in)                    :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(transHerm_type)    , intent(in)                    :: operationA
         type(transSymm_type)    , intent(in)                    :: operationB
     end subroutine
@@ -13238,12 +13238,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_EXP_SFA_SFB_THA_TSB_CK5
 #endif
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
         integer(IK)             , intent(in)                    :: nrow, ncol, ndum, roffA, coffA, roffB, coffB, roffC, coffC
-        complex(CKC)            , intent(in)                    :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        complex(CKG)            , intent(in)                    :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(transHerm_type)    , intent(in)                    :: operationA
         type(transSymm_type)    , intent(in)                    :: operationB
     end subroutine
@@ -13254,12 +13254,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_EXP_SFA_SFB_THA_TSB_CK4
 #endif
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
         integer(IK)             , intent(in)                    :: nrow, ncol, ndum, roffA, coffA, roffB, coffB, roffC, coffC
-        complex(CKC)            , intent(in)                    :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        complex(CKG)            , intent(in)                    :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(transHerm_type)    , intent(in)                    :: operationA
         type(transSymm_type)    , intent(in)                    :: operationB
     end subroutine
@@ -13270,12 +13270,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_EXP_SFA_SFB_THA_TSB_CK3
 #endif
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
         integer(IK)             , intent(in)                    :: nrow, ncol, ndum, roffA, coffA, roffB, coffB, roffC, coffC
-        complex(CKC)            , intent(in)                    :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        complex(CKG)            , intent(in)                    :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(transHerm_type)    , intent(in)                    :: operationA
         type(transSymm_type)    , intent(in)                    :: operationB
     end subroutine
@@ -13286,12 +13286,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_EXP_SFA_SFB_THA_TSB_CK2
 #endif
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
         integer(IK)             , intent(in)                    :: nrow, ncol, ndum, roffA, coffA, roffB, coffB, roffC, coffC
-        complex(CKC)            , intent(in)                    :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        complex(CKG)            , intent(in)                    :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(transHerm_type)    , intent(in)                    :: operationA
         type(transSymm_type)    , intent(in)                    :: operationB
     end subroutine
@@ -13302,12 +13302,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_EXP_SFA_SFB_THA_TSB_CK1
 #endif
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
         integer(IK)             , intent(in)                    :: nrow, ncol, ndum, roffA, coffA, roffB, coffB, roffC, coffC
-        complex(CKC)            , intent(in)                    :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        complex(CKG)            , intent(in)                    :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(transHerm_type)    , intent(in)                    :: operationA
         type(transSymm_type)    , intent(in)                    :: operationB
     end subroutine
@@ -13320,12 +13320,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_EXP_SFA_SFB_THA_TSB_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         integer(IK)             , intent(in)                    :: nrow, ncol, ndum, roffA, coffA, roffB, coffB, roffC, coffC
-        real(RKC)               , intent(in)                    :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        real(RKC)               , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        real(RKC)               , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        real(RKG)               , intent(in)                    :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        real(RKG)               , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        real(RKG)               , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(transHerm_type)    , intent(in)                    :: operationA
         type(transSymm_type)    , intent(in)                    :: operationB
     end subroutine
@@ -13336,12 +13336,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_EXP_SFA_SFB_THA_TSB_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         integer(IK)             , intent(in)                    :: nrow, ncol, ndum, roffA, coffA, roffB, coffB, roffC, coffC
-        real(RKC)               , intent(in)                    :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        real(RKC)               , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        real(RKC)               , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        real(RKG)               , intent(in)                    :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        real(RKG)               , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        real(RKG)               , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(transHerm_type)    , intent(in)                    :: operationA
         type(transSymm_type)    , intent(in)                    :: operationB
     end subroutine
@@ -13352,12 +13352,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_EXP_SFA_SFB_THA_TSB_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         integer(IK)             , intent(in)                    :: nrow, ncol, ndum, roffA, coffA, roffB, coffB, roffC, coffC
-        real(RKC)               , intent(in)                    :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        real(RKC)               , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        real(RKC)               , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        real(RKG)               , intent(in)                    :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        real(RKG)               , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        real(RKG)               , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(transHerm_type)    , intent(in)                    :: operationA
         type(transSymm_type)    , intent(in)                    :: operationB
     end subroutine
@@ -13368,12 +13368,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_EXP_SFA_SFB_THA_TSB_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         integer(IK)             , intent(in)                    :: nrow, ncol, ndum, roffA, coffA, roffB, coffB, roffC, coffC
-        real(RKC)               , intent(in)                    :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        real(RKC)               , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        real(RKC)               , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        real(RKG)               , intent(in)                    :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        real(RKG)               , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        real(RKG)               , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(transHerm_type)    , intent(in)                    :: operationA
         type(transSymm_type)    , intent(in)                    :: operationB
     end subroutine
@@ -13384,12 +13384,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_EXP_SFA_SFB_THA_TSB_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         integer(IK)             , intent(in)                    :: nrow, ncol, ndum, roffA, coffA, roffB, coffB, roffC, coffC
-        real(RKC)               , intent(in)                    :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        real(RKC)               , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        real(RKC)               , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        real(RKG)               , intent(in)                    :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        real(RKG)               , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        real(RKG)               , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(transHerm_type)    , intent(in)                    :: operationA
         type(transSymm_type)    , intent(in)                    :: operationB
     end subroutine
@@ -13408,12 +13408,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_EXP_SFA_SFB_TNA_THB_IK5
 #endif
-        use pm_kind, only: IKC => IK5
+        use pm_kind, only: IKG => IK5
         integer(IK)             , intent(in)                    :: nrow, ncol, ndum, roffA, coffA, roffB, coffB, roffC, coffC
-        integer(IKC)            , intent(in)                    :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        integer(IKG)            , intent(in)                    :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(transHerm_type)    , intent(in)                    :: operationB
     end subroutine
 #endif
@@ -13423,12 +13423,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_EXP_SFA_SFB_TNA_THB_IK4
 #endif
-        use pm_kind, only: IKC => IK4
+        use pm_kind, only: IKG => IK4
         integer(IK)             , intent(in)                    :: nrow, ncol, ndum, roffA, coffA, roffB, coffB, roffC, coffC
-        integer(IKC)            , intent(in)                    :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        integer(IKG)            , intent(in)                    :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(transHerm_type)    , intent(in)                    :: operationB
     end subroutine
 #endif
@@ -13438,12 +13438,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_EXP_SFA_SFB_TNA_THB_IK3
 #endif
-        use pm_kind, only: IKC => IK3
+        use pm_kind, only: IKG => IK3
         integer(IK)             , intent(in)                    :: nrow, ncol, ndum, roffA, coffA, roffB, coffB, roffC, coffC
-        integer(IKC)            , intent(in)                    :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        integer(IKG)            , intent(in)                    :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(transHerm_type)    , intent(in)                    :: operationB
     end subroutine
 #endif
@@ -13453,12 +13453,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_EXP_SFA_SFB_TNA_THB_IK2
 #endif
-        use pm_kind, only: IKC => IK2
+        use pm_kind, only: IKG => IK2
         integer(IK)             , intent(in)                    :: nrow, ncol, ndum, roffA, coffA, roffB, coffB, roffC, coffC
-        integer(IKC)            , intent(in)                    :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        integer(IKG)            , intent(in)                    :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(transHerm_type)    , intent(in)                    :: operationB
     end subroutine
 #endif
@@ -13468,12 +13468,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_EXP_SFA_SFB_TNA_THB_IK1
 #endif
-        use pm_kind, only: IKC => IK1
+        use pm_kind, only: IKG => IK1
         integer(IK)             , intent(in)                    :: nrow, ncol, ndum, roffA, coffA, roffB, coffB, roffC, coffC
-        integer(IKC)            , intent(in)                    :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        integer(IKG)            , intent(in)                    :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(transHerm_type)    , intent(in)                    :: operationB
     end subroutine
 #endif
@@ -13485,12 +13485,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_EXP_SFA_SFB_TNA_THB_CK5
 #endif
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
         integer(IK)             , intent(in)                    :: nrow, ncol, ndum, roffA, coffA, roffB, coffB, roffC, coffC
-        complex(CKC)            , intent(in)                    :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        complex(CKG)            , intent(in)                    :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(transHerm_type)    , intent(in)                    :: operationB
     end subroutine
 #endif
@@ -13500,12 +13500,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_EXP_SFA_SFB_TNA_THB_CK4
 #endif
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
         integer(IK)             , intent(in)                    :: nrow, ncol, ndum, roffA, coffA, roffB, coffB, roffC, coffC
-        complex(CKC)            , intent(in)                    :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        complex(CKG)            , intent(in)                    :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(transHerm_type)    , intent(in)                    :: operationB
     end subroutine
 #endif
@@ -13515,12 +13515,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_EXP_SFA_SFB_TNA_THB_CK3
 #endif
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
         integer(IK)             , intent(in)                    :: nrow, ncol, ndum, roffA, coffA, roffB, coffB, roffC, coffC
-        complex(CKC)            , intent(in)                    :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        complex(CKG)            , intent(in)                    :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(transHerm_type)    , intent(in)                    :: operationB
     end subroutine
 #endif
@@ -13530,12 +13530,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_EXP_SFA_SFB_TNA_THB_CK2
 #endif
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
         integer(IK)             , intent(in)                    :: nrow, ncol, ndum, roffA, coffA, roffB, coffB, roffC, coffC
-        complex(CKC)            , intent(in)                    :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        complex(CKG)            , intent(in)                    :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(transHerm_type)    , intent(in)                    :: operationB
     end subroutine
 #endif
@@ -13545,12 +13545,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_EXP_SFA_SFB_TNA_THB_CK1
 #endif
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
         integer(IK)             , intent(in)                    :: nrow, ncol, ndum, roffA, coffA, roffB, coffB, roffC, coffC
-        complex(CKC)            , intent(in)                    :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        complex(CKG)            , intent(in)                    :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(transHerm_type)    , intent(in)                    :: operationB
     end subroutine
 #endif
@@ -13562,12 +13562,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_EXP_SFA_SFB_TNA_THB_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         integer(IK)             , intent(in)                    :: nrow, ncol, ndum, roffA, coffA, roffB, coffB, roffC, coffC
-        real(RKC)               , intent(in)                    :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        real(RKC)               , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        real(RKC)               , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        real(RKG)               , intent(in)                    :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        real(RKG)               , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        real(RKG)               , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(transHerm_type)    , intent(in)                    :: operationB
     end subroutine
 #endif
@@ -13577,12 +13577,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_EXP_SFA_SFB_TNA_THB_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         integer(IK)             , intent(in)                    :: nrow, ncol, ndum, roffA, coffA, roffB, coffB, roffC, coffC
-        real(RKC)               , intent(in)                    :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        real(RKC)               , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        real(RKC)               , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        real(RKG)               , intent(in)                    :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        real(RKG)               , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        real(RKG)               , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(transHerm_type)    , intent(in)                    :: operationB
     end subroutine
 #endif
@@ -13592,12 +13592,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_EXP_SFA_SFB_TNA_THB_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         integer(IK)             , intent(in)                    :: nrow, ncol, ndum, roffA, coffA, roffB, coffB, roffC, coffC
-        real(RKC)               , intent(in)                    :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        real(RKC)               , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        real(RKC)               , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        real(RKG)               , intent(in)                    :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        real(RKG)               , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        real(RKG)               , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(transHerm_type)    , intent(in)                    :: operationB
     end subroutine
 #endif
@@ -13607,12 +13607,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_EXP_SFA_SFB_TNA_THB_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         integer(IK)             , intent(in)                    :: nrow, ncol, ndum, roffA, coffA, roffB, coffB, roffC, coffC
-        real(RKC)               , intent(in)                    :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        real(RKC)               , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        real(RKC)               , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        real(RKG)               , intent(in)                    :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        real(RKG)               , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        real(RKG)               , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(transHerm_type)    , intent(in)                    :: operationB
     end subroutine
 #endif
@@ -13622,12 +13622,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_EXP_SFA_SFB_TNA_THB_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         integer(IK)             , intent(in)                    :: nrow, ncol, ndum, roffA, coffA, roffB, coffB, roffC, coffC
-        real(RKC)               , intent(in)                    :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        real(RKC)               , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        real(RKC)               , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        real(RKG)               , intent(in)                    :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        real(RKG)               , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        real(RKG)               , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(transHerm_type)    , intent(in)                    :: operationB
     end subroutine
 #endif
@@ -13645,12 +13645,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_EXP_SFA_SFB_TSA_THB_IK5
 #endif
-        use pm_kind, only: IKC => IK5
+        use pm_kind, only: IKG => IK5
         integer(IK)             , intent(in)                    :: nrow, ncol, ndum, roffA, coffA, roffB, coffB, roffC, coffC
-        integer(IKC)            , intent(in)                    :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        integer(IKG)            , intent(in)                    :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(transSymm_type)    , intent(in)                    :: operationA
         type(transHerm_type)    , intent(in)                    :: operationB
     end subroutine
@@ -13661,12 +13661,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_EXP_SFA_SFB_TSA_THB_IK4
 #endif
-        use pm_kind, only: IKC => IK4
+        use pm_kind, only: IKG => IK4
         integer(IK)             , intent(in)                    :: nrow, ncol, ndum, roffA, coffA, roffB, coffB, roffC, coffC
-        integer(IKC)            , intent(in)                    :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        integer(IKG)            , intent(in)                    :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(transSymm_type)    , intent(in)                    :: operationA
         type(transHerm_type)    , intent(in)                    :: operationB
     end subroutine
@@ -13677,12 +13677,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_EXP_SFA_SFB_TSA_THB_IK3
 #endif
-        use pm_kind, only: IKC => IK3
+        use pm_kind, only: IKG => IK3
         integer(IK)             , intent(in)                    :: nrow, ncol, ndum, roffA, coffA, roffB, coffB, roffC, coffC
-        integer(IKC)            , intent(in)                    :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        integer(IKG)            , intent(in)                    :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(transSymm_type)    , intent(in)                    :: operationA
         type(transHerm_type)    , intent(in)                    :: operationB
     end subroutine
@@ -13693,12 +13693,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_EXP_SFA_SFB_TSA_THB_IK2
 #endif
-        use pm_kind, only: IKC => IK2
+        use pm_kind, only: IKG => IK2
         integer(IK)             , intent(in)                    :: nrow, ncol, ndum, roffA, coffA, roffB, coffB, roffC, coffC
-        integer(IKC)            , intent(in)                    :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        integer(IKG)            , intent(in)                    :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(transSymm_type)    , intent(in)                    :: operationA
         type(transHerm_type)    , intent(in)                    :: operationB
     end subroutine
@@ -13709,12 +13709,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_EXP_SFA_SFB_TSA_THB_IK1
 #endif
-        use pm_kind, only: IKC => IK1
+        use pm_kind, only: IKG => IK1
         integer(IK)             , intent(in)                    :: nrow, ncol, ndum, roffA, coffA, roffB, coffB, roffC, coffC
-        integer(IKC)            , intent(in)                    :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        integer(IKG)            , intent(in)                    :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(transSymm_type)    , intent(in)                    :: operationA
         type(transHerm_type)    , intent(in)                    :: operationB
     end subroutine
@@ -13727,12 +13727,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_EXP_SFA_SFB_TSA_THB_CK5
 #endif
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
         integer(IK)             , intent(in)                    :: nrow, ncol, ndum, roffA, coffA, roffB, coffB, roffC, coffC
-        complex(CKC)            , intent(in)                    :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        complex(CKG)            , intent(in)                    :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(transSymm_type)    , intent(in)                    :: operationA
         type(transHerm_type)    , intent(in)                    :: operationB
     end subroutine
@@ -13743,12 +13743,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_EXP_SFA_SFB_TSA_THB_CK4
 #endif
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
         integer(IK)             , intent(in)                    :: nrow, ncol, ndum, roffA, coffA, roffB, coffB, roffC, coffC
-        complex(CKC)            , intent(in)                    :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        complex(CKG)            , intent(in)                    :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(transSymm_type)    , intent(in)                    :: operationA
         type(transHerm_type)    , intent(in)                    :: operationB
     end subroutine
@@ -13759,12 +13759,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_EXP_SFA_SFB_TSA_THB_CK3
 #endif
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
         integer(IK)             , intent(in)                    :: nrow, ncol, ndum, roffA, coffA, roffB, coffB, roffC, coffC
-        complex(CKC)            , intent(in)                    :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        complex(CKG)            , intent(in)                    :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(transSymm_type)    , intent(in)                    :: operationA
         type(transHerm_type)    , intent(in)                    :: operationB
     end subroutine
@@ -13775,12 +13775,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_EXP_SFA_SFB_TSA_THB_CK2
 #endif
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
         integer(IK)             , intent(in)                    :: nrow, ncol, ndum, roffA, coffA, roffB, coffB, roffC, coffC
-        complex(CKC)            , intent(in)                    :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        complex(CKG)            , intent(in)                    :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(transSymm_type)    , intent(in)                    :: operationA
         type(transHerm_type)    , intent(in)                    :: operationB
     end subroutine
@@ -13791,12 +13791,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_EXP_SFA_SFB_TSA_THB_CK1
 #endif
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
         integer(IK)             , intent(in)                    :: nrow, ncol, ndum, roffA, coffA, roffB, coffB, roffC, coffC
-        complex(CKC)            , intent(in)                    :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        complex(CKG)            , intent(in)                    :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(transSymm_type)    , intent(in)                    :: operationA
         type(transHerm_type)    , intent(in)                    :: operationB
     end subroutine
@@ -13809,12 +13809,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_EXP_SFA_SFB_TSA_THB_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         integer(IK)             , intent(in)                    :: nrow, ncol, ndum, roffA, coffA, roffB, coffB, roffC, coffC
-        real(RKC)               , intent(in)                    :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        real(RKC)               , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        real(RKC)               , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        real(RKG)               , intent(in)                    :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        real(RKG)               , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        real(RKG)               , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(transSymm_type)    , intent(in)                    :: operationA
         type(transHerm_type)    , intent(in)                    :: operationB
     end subroutine
@@ -13825,12 +13825,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_EXP_SFA_SFB_TSA_THB_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         integer(IK)             , intent(in)                    :: nrow, ncol, ndum, roffA, coffA, roffB, coffB, roffC, coffC
-        real(RKC)               , intent(in)                    :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        real(RKC)               , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        real(RKC)               , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        real(RKG)               , intent(in)                    :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        real(RKG)               , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        real(RKG)               , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(transSymm_type)    , intent(in)                    :: operationA
         type(transHerm_type)    , intent(in)                    :: operationB
     end subroutine
@@ -13841,12 +13841,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_EXP_SFA_SFB_TSA_THB_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         integer(IK)             , intent(in)                    :: nrow, ncol, ndum, roffA, coffA, roffB, coffB, roffC, coffC
-        real(RKC)               , intent(in)                    :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        real(RKC)               , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        real(RKC)               , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        real(RKG)               , intent(in)                    :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        real(RKG)               , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        real(RKG)               , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(transSymm_type)    , intent(in)                    :: operationA
         type(transHerm_type)    , intent(in)                    :: operationB
     end subroutine
@@ -13857,12 +13857,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_EXP_SFA_SFB_TSA_THB_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         integer(IK)             , intent(in)                    :: nrow, ncol, ndum, roffA, coffA, roffB, coffB, roffC, coffC
-        real(RKC)               , intent(in)                    :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        real(RKC)               , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        real(RKC)               , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        real(RKG)               , intent(in)                    :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        real(RKG)               , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        real(RKG)               , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(transSymm_type)    , intent(in)                    :: operationA
         type(transHerm_type)    , intent(in)                    :: operationB
     end subroutine
@@ -13873,12 +13873,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_EXP_SFA_SFB_TSA_THB_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         integer(IK)             , intent(in)                    :: nrow, ncol, ndum, roffA, coffA, roffB, coffB, roffC, coffC
-        real(RKC)               , intent(in)                    :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        real(RKC)               , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        real(RKC)               , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        real(RKG)               , intent(in)                    :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        real(RKG)               , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        real(RKG)               , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(transSymm_type)    , intent(in)                    :: operationA
         type(transHerm_type)    , intent(in)                    :: operationB
     end subroutine
@@ -13897,12 +13897,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_EXP_SFA_SFB_THA_THB_IK5
 #endif
-        use pm_kind, only: IKC => IK5
+        use pm_kind, only: IKG => IK5
         integer(IK)             , intent(in)                    :: nrow, ncol, ndum, roffA, coffA, roffB, coffB, roffC, coffC
-        integer(IKC)            , intent(in)                    :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        integer(IKG)            , intent(in)                    :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(transHerm_type)    , intent(in)                    :: operationA
         type(transHerm_type)    , intent(in)                    :: operationB
     end subroutine
@@ -13913,12 +13913,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_EXP_SFA_SFB_THA_THB_IK4
 #endif
-        use pm_kind, only: IKC => IK4
+        use pm_kind, only: IKG => IK4
         integer(IK)             , intent(in)                    :: nrow, ncol, ndum, roffA, coffA, roffB, coffB, roffC, coffC
-        integer(IKC)            , intent(in)                    :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        integer(IKG)            , intent(in)                    :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(transHerm_type)    , intent(in)                    :: operationA
         type(transHerm_type)    , intent(in)                    :: operationB
     end subroutine
@@ -13929,12 +13929,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_EXP_SFA_SFB_THA_THB_IK3
 #endif
-        use pm_kind, only: IKC => IK3
+        use pm_kind, only: IKG => IK3
         integer(IK)             , intent(in)                    :: nrow, ncol, ndum, roffA, coffA, roffB, coffB, roffC, coffC
-        integer(IKC)            , intent(in)                    :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        integer(IKG)            , intent(in)                    :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(transHerm_type)    , intent(in)                    :: operationA
         type(transHerm_type)    , intent(in)                    :: operationB
     end subroutine
@@ -13945,12 +13945,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_EXP_SFA_SFB_THA_THB_IK2
 #endif
-        use pm_kind, only: IKC => IK2
+        use pm_kind, only: IKG => IK2
         integer(IK)             , intent(in)                    :: nrow, ncol, ndum, roffA, coffA, roffB, coffB, roffC, coffC
-        integer(IKC)            , intent(in)                    :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        integer(IKG)            , intent(in)                    :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(transHerm_type)    , intent(in)                    :: operationA
         type(transHerm_type)    , intent(in)                    :: operationB
     end subroutine
@@ -13961,12 +13961,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_EXP_SFA_SFB_THA_THB_IK1
 #endif
-        use pm_kind, only: IKC => IK1
+        use pm_kind, only: IKG => IK1
         integer(IK)             , intent(in)                    :: nrow, ncol, ndum, roffA, coffA, roffB, coffB, roffC, coffC
-        integer(IKC)            , intent(in)                    :: alpha, beta
-        integer(IKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        integer(IKC)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        integer(IKC)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        integer(IKG)            , intent(in)                    :: alpha, beta
+        integer(IKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        integer(IKG)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        integer(IKG)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(transHerm_type)    , intent(in)                    :: operationA
         type(transHerm_type)    , intent(in)                    :: operationB
     end subroutine
@@ -13979,12 +13979,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_EXP_SFA_SFB_THA_THB_CK5
 #endif
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
         integer(IK)             , intent(in)                    :: nrow, ncol, ndum, roffA, coffA, roffB, coffB, roffC, coffC
-        complex(CKC)            , intent(in)                    :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        complex(CKG)            , intent(in)                    :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(transHerm_type)    , intent(in)                    :: operationA
         type(transHerm_type)    , intent(in)                    :: operationB
     end subroutine
@@ -13995,12 +13995,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_EXP_SFA_SFB_THA_THB_CK4
 #endif
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
         integer(IK)             , intent(in)                    :: nrow, ncol, ndum, roffA, coffA, roffB, coffB, roffC, coffC
-        complex(CKC)            , intent(in)                    :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        complex(CKG)            , intent(in)                    :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(transHerm_type)    , intent(in)                    :: operationA
         type(transHerm_type)    , intent(in)                    :: operationB
     end subroutine
@@ -14011,12 +14011,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_EXP_SFA_SFB_THA_THB_CK3
 #endif
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
         integer(IK)             , intent(in)                    :: nrow, ncol, ndum, roffA, coffA, roffB, coffB, roffC, coffC
-        complex(CKC)            , intent(in)                    :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        complex(CKG)            , intent(in)                    :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(transHerm_type)    , intent(in)                    :: operationA
         type(transHerm_type)    , intent(in)                    :: operationB
     end subroutine
@@ -14027,12 +14027,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_EXP_SFA_SFB_THA_THB_CK2
 #endif
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
         integer(IK)             , intent(in)                    :: nrow, ncol, ndum, roffA, coffA, roffB, coffB, roffC, coffC
-        complex(CKC)            , intent(in)                    :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        complex(CKG)            , intent(in)                    :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(transHerm_type)    , intent(in)                    :: operationA
         type(transHerm_type)    , intent(in)                    :: operationB
     end subroutine
@@ -14043,12 +14043,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_EXP_SFA_SFB_THA_THB_CK1
 #endif
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
         integer(IK)             , intent(in)                    :: nrow, ncol, ndum, roffA, coffA, roffB, coffB, roffC, coffC
-        complex(CKC)            , intent(in)                    :: alpha, beta
-        complex(CKC)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        complex(CKC)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        complex(CKC)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        complex(CKG)            , intent(in)                    :: alpha, beta
+        complex(CKG)            , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        complex(CKG)            , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        complex(CKG)            , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(transHerm_type)    , intent(in)                    :: operationA
         type(transHerm_type)    , intent(in)                    :: operationB
     end subroutine
@@ -14061,12 +14061,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_EXP_SFA_SFB_THA_THB_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         integer(IK)             , intent(in)                    :: nrow, ncol, ndum, roffA, coffA, roffB, coffB, roffC, coffC
-        real(RKC)               , intent(in)                    :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        real(RKC)               , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        real(RKC)               , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        real(RKG)               , intent(in)                    :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        real(RKG)               , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        real(RKG)               , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(transHerm_type)    , intent(in)                    :: operationA
         type(transHerm_type)    , intent(in)                    :: operationB
     end subroutine
@@ -14077,12 +14077,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_EXP_SFA_SFB_THA_THB_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         integer(IK)             , intent(in)                    :: nrow, ncol, ndum, roffA, coffA, roffB, coffB, roffC, coffC
-        real(RKC)               , intent(in)                    :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        real(RKC)               , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        real(RKC)               , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        real(RKG)               , intent(in)                    :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        real(RKG)               , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        real(RKG)               , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(transHerm_type)    , intent(in)                    :: operationA
         type(transHerm_type)    , intent(in)                    :: operationB
     end subroutine
@@ -14093,12 +14093,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_EXP_SFA_SFB_THA_THB_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         integer(IK)             , intent(in)                    :: nrow, ncol, ndum, roffA, coffA, roffB, coffB, roffC, coffC
-        real(RKC)               , intent(in)                    :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        real(RKC)               , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        real(RKC)               , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        real(RKG)               , intent(in)                    :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        real(RKG)               , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        real(RKG)               , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(transHerm_type)    , intent(in)                    :: operationA
         type(transHerm_type)    , intent(in)                    :: operationB
     end subroutine
@@ -14109,12 +14109,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_EXP_SFA_SFB_THA_THB_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         integer(IK)             , intent(in)                    :: nrow, ncol, ndum, roffA, coffA, roffB, coffB, roffC, coffC
-        real(RKC)               , intent(in)                    :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        real(RKC)               , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        real(RKC)               , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        real(RKG)               , intent(in)                    :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        real(RKG)               , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        real(RKG)               , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(transHerm_type)    , intent(in)                    :: operationA
         type(transHerm_type)    , intent(in)                    :: operationB
     end subroutine
@@ -14125,12 +14125,12 @@ module pm_matrixMulAdd
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: gemm_EXP_SFA_SFB_THA_THB_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         integer(IK)             , intent(in)                    :: nrow, ncol, ndum, roffA, coffA, roffB, coffB, roffC, coffC
-        real(RKC)               , intent(in)                    :: alpha, beta
-        real(RKC)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
-        real(RKC)               , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
-        real(RKC)               , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
+        real(RKG)               , intent(in)                    :: alpha, beta
+        real(RKG)               , intent(in)    , contiguous    :: matA(1 - roffA :, 1 - coffA :)
+        real(RKG)               , intent(in)    , contiguous    :: matB(1 - roffB :, 1 - coffB :)
+        real(RKG)               , intent(inout) , contiguous    :: matC(1 - roffC :, 1 - coffC :)
         type(transHerm_type)    , intent(in)                    :: operationA
         type(transHerm_type)    , intent(in)                    :: operationB
     end subroutine

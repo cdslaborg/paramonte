@@ -33,7 +33,7 @@
         fisherz = atanh(val)
 #elif   FLU_ENABLED
         CHECK_ASSERTION(__LINE__, lb < val .and. val < ub, SK_"@getFisher(): The condition `lb < val .and. val < ub` must hold. val, lb, ub = "//getStr([val, lb, ub]))
-        fisherz = atanh(2 * (val - lb) / (ub - lb) - 1._RKC)
+        fisherz = atanh(2 * (val - lb) / (ub - lb) - 1._RKG)
 #else
 #error  "Unrecognized interface."
 #endif
@@ -46,7 +46,7 @@
         val = tanh(fisherz)
 #elif   FLU_ENABLED
         CHECK_ASSERTION(__LINE__, lb < ub, SK_"@getFisherInv(): The condition `lb < ub` must hold. lb, ub = "//getStr([lb, ub]))
-        val = (.5_RKC * tanh(fisherz) + .5_RKC) * (ub - lb) + lb
+        val = (.5_RKG * tanh(fisherz) + .5_RKG) * (ub - lb) + lb
 #else
 #error  "Unrecognized interface."
 #endif

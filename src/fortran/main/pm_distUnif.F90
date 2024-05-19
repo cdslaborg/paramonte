@@ -401,10 +401,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifCDF_LU_IK5
 #endif
-        use pm_kind, only: IKC => IK5, RKC => RK
-        integer(IKC), intent(in)                    :: x
-        integer(IKC), intent(in)                    :: lower, upper
-        real(RKC)                                   :: cdf
+        use pm_kind, only: IKG => IK5, RKG => RK
+        integer(IKG), intent(in)                    :: x
+        integer(IKG), intent(in)                    :: lower, upper
+        real(RKG)                                   :: cdf
     end function
 #endif
 
@@ -413,10 +413,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifCDF_LU_IK4
 #endif
-        use pm_kind, only: IKC => IK4, RKC => RK
-        integer(IKC), intent(in)                    :: x
-        integer(IKC), intent(in)                    :: lower, upper
-        real(RKC)                                   :: cdf
+        use pm_kind, only: IKG => IK4, RKG => RK
+        integer(IKG), intent(in)                    :: x
+        integer(IKG), intent(in)                    :: lower, upper
+        real(RKG)                                   :: cdf
     end function
 #endif
 
@@ -425,10 +425,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifCDF_LU_IK3
 #endif
-        use pm_kind, only: IKC => IK3, RKC => RK
-        integer(IKC), intent(in)                    :: x
-        integer(IKC), intent(in)                    :: lower, upper
-        real(RKC)                                   :: cdf
+        use pm_kind, only: IKG => IK3, RKG => RK
+        integer(IKG), intent(in)                    :: x
+        integer(IKG), intent(in)                    :: lower, upper
+        real(RKG)                                   :: cdf
     end function
 #endif
 
@@ -437,10 +437,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifCDF_LU_IK2
 #endif
-        use pm_kind, only: IKC => IK2, RKC => RK
-        integer(IKC), intent(in)                    :: x
-        integer(IKC), intent(in)                    :: lower, upper
-        real(RKC)                                   :: cdf
+        use pm_kind, only: IKG => IK2, RKG => RK
+        integer(IKG), intent(in)                    :: x
+        integer(IKG), intent(in)                    :: lower, upper
+        real(RKG)                                   :: cdf
     end function
 #endif
 
@@ -449,10 +449,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifCDF_LU_IK1
 #endif
-        use pm_kind, only: IKC => IK1, RKC => RK
-        integer(IKC), intent(in)                    :: x
-        integer(IKC), intent(in)                    :: lower, upper
-        real(RKC)                                   :: cdf
+        use pm_kind, only: IKG => IK1, RKG => RK
+        integer(IKG), intent(in)                    :: x
+        integer(IKG), intent(in)                    :: lower, upper
+        real(RKG)                                   :: cdf
     end function
 #endif
 
@@ -463,10 +463,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifCDF_LU_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC), intent(in)                    :: x
-        complex(CKC), intent(in)                    :: lower, upper
-        complex(CKC)                                :: cdf
+        use pm_kind, only: CKG => CK5
+        complex(CKG), intent(in)                    :: x
+        complex(CKG), intent(in)                    :: lower, upper
+        complex(CKG)                                :: cdf
     end function
 #endif
 
@@ -475,10 +475,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifCDF_LU_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC), intent(in)                    :: x
-        complex(CKC), intent(in)                    :: lower, upper
-        complex(CKC)                                :: cdf
+        use pm_kind, only: CKG => CK4
+        complex(CKG), intent(in)                    :: x
+        complex(CKG), intent(in)                    :: lower, upper
+        complex(CKG)                                :: cdf
     end function
 #endif
 
@@ -487,10 +487,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifCDF_LU_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC), intent(in)                    :: x
-        complex(CKC), intent(in)                    :: lower, upper
-        complex(CKC)                                :: cdf
+        use pm_kind, only: CKG => CK3
+        complex(CKG), intent(in)                    :: x
+        complex(CKG), intent(in)                    :: lower, upper
+        complex(CKG)                                :: cdf
     end function
 #endif
 
@@ -499,10 +499,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifCDF_LU_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC), intent(in)                    :: x
-        complex(CKC), intent(in)                    :: lower, upper
-        complex(CKC)                                :: cdf
+        use pm_kind, only: CKG => CK2
+        complex(CKG), intent(in)                    :: x
+        complex(CKG), intent(in)                    :: lower, upper
+        complex(CKG)                                :: cdf
     end function
 #endif
 
@@ -511,10 +511,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifCDF_LU_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC), intent(in)                    :: x
-        complex(CKC), intent(in)                    :: lower, upper
-        complex(CKC)                                :: cdf
+        use pm_kind, only: CKG => CK1
+        complex(CKG), intent(in)                    :: x
+        complex(CKG), intent(in)                    :: lower, upper
+        complex(CKG)                                :: cdf
     end function
 #endif
 
@@ -525,10 +525,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifCDF_LU_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(in)                    :: x
-        real(RKC)   , intent(in)                    :: lower, upper
-        real(RKC)                                   :: cdf
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(in)                    :: x
+        real(RKG)   , intent(in)                    :: lower, upper
+        real(RKG)                                   :: cdf
     end function
 #endif
 
@@ -537,10 +537,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifCDF_LU_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(in)                    :: x
-        real(RKC)   , intent(in)                    :: lower, upper
-        real(RKC)                                   :: cdf
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(in)                    :: x
+        real(RKG)   , intent(in)                    :: lower, upper
+        real(RKG)                                   :: cdf
     end function
 #endif
 
@@ -549,10 +549,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifCDF_LU_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(in)                    :: x
-        real(RKC)   , intent(in)                    :: lower, upper
-        real(RKC)                                   :: cdf
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(in)                    :: x
+        real(RKG)   , intent(in)                    :: lower, upper
+        real(RKG)                                   :: cdf
     end function
 #endif
 
@@ -561,10 +561,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifCDF_LU_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(in)                    :: x
-        real(RKC)   , intent(in)                    :: lower, upper
-        real(RKC)                                   :: cdf
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(in)                    :: x
+        real(RKG)   , intent(in)                    :: lower, upper
+        real(RKG)                                   :: cdf
     end function
 #endif
 
@@ -573,10 +573,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifCDF_LU_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(in)                    :: x
-        real(RKC)   , intent(in)                    :: lower, upper
-        real(RKC)                                   :: cdf
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(in)                    :: x
+        real(RKG)   , intent(in)                    :: lower, upper
+        real(RKG)                                   :: cdf
     end function
 #endif
 
@@ -595,9 +595,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifCDF_DD_IK5
 #endif
-        use pm_kind, only: IKC => IK5, RKC => RK
-        integer(IKC), intent(in)                    :: x
-        real(RKC)                                   :: cdf
+        use pm_kind, only: IKG => IK5, RKG => RK
+        integer(IKG), intent(in)                    :: x
+        real(RKG)                                   :: cdf
     end function
 #endif
 
@@ -606,9 +606,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifCDF_DD_IK4
 #endif
-        use pm_kind, only: IKC => IK4, RKC => RK
-        integer(IKC), intent(in)                    :: x
-        real(RKC)                                   :: cdf
+        use pm_kind, only: IKG => IK4, RKG => RK
+        integer(IKG), intent(in)                    :: x
+        real(RKG)                                   :: cdf
     end function
 #endif
 
@@ -617,9 +617,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifCDF_DD_IK3
 #endif
-        use pm_kind, only: IKC => IK3, RKC => RK
-        integer(IKC), intent(in)                    :: x
-        real(RKC)                                   :: cdf
+        use pm_kind, only: IKG => IK3, RKG => RK
+        integer(IKG), intent(in)                    :: x
+        real(RKG)                                   :: cdf
     end function
 #endif
 
@@ -628,9 +628,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifCDF_DD_IK2
 #endif
-        use pm_kind, only: IKC => IK2, RKC => RK
-        integer(IKC), intent(in)                    :: x
-        real(RKC)                                   :: cdf
+        use pm_kind, only: IKG => IK2, RKG => RK
+        integer(IKG), intent(in)                    :: x
+        real(RKG)                                   :: cdf
     end function
 #endif
 
@@ -639,9 +639,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifCDF_DD_IK1
 #endif
-        use pm_kind, only: IKC => IK1, RKC => RK
-        integer(IKC), intent(in)                    :: x
-        real(RKC)                                   :: cdf
+        use pm_kind, only: IKG => IK1, RKG => RK
+        integer(IKG), intent(in)                    :: x
+        real(RKG)                                   :: cdf
     end function
 #endif
 
@@ -652,9 +652,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifCDF_DD_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC), intent(in)                    :: x
-        complex(CKC)                                :: cdf
+        use pm_kind, only: CKG => CK5
+        complex(CKG), intent(in)                    :: x
+        complex(CKG)                                :: cdf
     end function
 #endif
 
@@ -663,9 +663,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifCDF_DD_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC), intent(in)                    :: x
-        complex(CKC)                                :: cdf
+        use pm_kind, only: CKG => CK4
+        complex(CKG), intent(in)                    :: x
+        complex(CKG)                                :: cdf
     end function
 #endif
 
@@ -674,9 +674,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifCDF_DD_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC), intent(in)                    :: x
-        complex(CKC)                                :: cdf
+        use pm_kind, only: CKG => CK3
+        complex(CKG), intent(in)                    :: x
+        complex(CKG)                                :: cdf
     end function
 #endif
 
@@ -685,9 +685,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifCDF_DD_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC), intent(in)                    :: x
-        complex(CKC)                                :: cdf
+        use pm_kind, only: CKG => CK2
+        complex(CKG), intent(in)                    :: x
+        complex(CKG)                                :: cdf
     end function
 #endif
 
@@ -696,9 +696,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifCDF_DD_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC), intent(in)                    :: x
-        complex(CKC)                                :: cdf
+        use pm_kind, only: CKG => CK1
+        complex(CKG), intent(in)                    :: x
+        complex(CKG)                                :: cdf
     end function
 #endif
 
@@ -709,9 +709,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifCDF_DD_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(in)                    :: x
-        real(RKC)                                   :: cdf
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(in)                    :: x
+        real(RKG)                                   :: cdf
     end function
 #endif
 
@@ -720,9 +720,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifCDF_DD_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(in)                    :: x
-        real(RKC)                                   :: cdf
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(in)                    :: x
+        real(RKG)                                   :: cdf
     end function
 #endif
 
@@ -731,9 +731,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifCDF_DD_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(in)                    :: x
-        real(RKC)                                   :: cdf
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(in)                    :: x
+        real(RKG)                                   :: cdf
     end function
 #endif
 
@@ -742,9 +742,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifCDF_DD_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(in)                    :: x
-        real(RKC)                                   :: cdf
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(in)                    :: x
+        real(RKG)                                   :: cdf
     end function
 #endif
 
@@ -753,9 +753,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifCDF_DD_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(in)                    :: x
-        real(RKC)                                   :: cdf
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(in)                    :: x
+        real(RKG)                                   :: cdf
     end function
 #endif
 
@@ -845,9 +845,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCDF_DD_D0_RK5_IK5
 #endif
-        use pm_kind, only: IKC => IK5, RKC => RK5
-        real(RKC)   , intent(out)                   :: cdf
-        integer(IKC), intent(in)                    :: x
+        use pm_kind, only: IKG => IK5, RKG => RK5
+        real(RKG)   , intent(out)                   :: cdf
+        integer(IKG), intent(in)                    :: x
     end subroutine
 #endif
 
@@ -856,9 +856,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCDF_DD_D0_RK4_IK5
 #endif
-        use pm_kind, only: IKC => IK5, RKC => RK4
-        real(RKC)   , intent(out)                   :: cdf
-        integer(IKC), intent(in)                    :: x
+        use pm_kind, only: IKG => IK5, RKG => RK4
+        real(RKG)   , intent(out)                   :: cdf
+        integer(IKG), intent(in)                    :: x
     end subroutine
 #endif
 
@@ -867,9 +867,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCDF_DD_D0_RK3_IK5
 #endif
-        use pm_kind, only: IKC => IK5, RKC => RK3
-        real(RKC)   , intent(out)                   :: cdf
-        integer(IKC), intent(in)                    :: x
+        use pm_kind, only: IKG => IK5, RKG => RK3
+        real(RKG)   , intent(out)                   :: cdf
+        integer(IKG), intent(in)                    :: x
     end subroutine
 #endif
 
@@ -878,9 +878,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCDF_DD_D0_RK2_IK5
 #endif
-        use pm_kind, only: IKC => IK5, RKC => RK2
-        real(RKC)   , intent(out)                   :: cdf
-        integer(IKC), intent(in)                    :: x
+        use pm_kind, only: IKG => IK5, RKG => RK2
+        real(RKG)   , intent(out)                   :: cdf
+        integer(IKG), intent(in)                    :: x
     end subroutine
 #endif
 
@@ -889,9 +889,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCDF_DD_D0_RK1_IK5
 #endif
-        use pm_kind, only: IKC => IK5, RKC => RK1
-        real(RKC)   , intent(out)                   :: cdf
-        integer(IKC), intent(in)                    :: x
+        use pm_kind, only: IKG => IK5, RKG => RK1
+        real(RKG)   , intent(out)                   :: cdf
+        integer(IKG), intent(in)                    :: x
     end subroutine
 #endif
 
@@ -902,9 +902,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCDF_DD_D0_RK5_IK4
 #endif
-        use pm_kind, only: IKC => IK4, RKC => RK5
-        real(RKC)   , intent(out)                   :: cdf
-        integer(IKC), intent(in)                    :: x
+        use pm_kind, only: IKG => IK4, RKG => RK5
+        real(RKG)   , intent(out)                   :: cdf
+        integer(IKG), intent(in)                    :: x
     end subroutine
 #endif
 
@@ -913,9 +913,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCDF_DD_D0_RK4_IK4
 #endif
-        use pm_kind, only: IKC => IK4, RKC => RK4
-        real(RKC)   , intent(out)                   :: cdf
-        integer(IKC), intent(in)                    :: x
+        use pm_kind, only: IKG => IK4, RKG => RK4
+        real(RKG)   , intent(out)                   :: cdf
+        integer(IKG), intent(in)                    :: x
     end subroutine
 #endif
 
@@ -924,9 +924,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCDF_DD_D0_RK3_IK4
 #endif
-        use pm_kind, only: IKC => IK4, RKC => RK3
-        real(RKC)   , intent(out)                   :: cdf
-        integer(IKC), intent(in)                    :: x
+        use pm_kind, only: IKG => IK4, RKG => RK3
+        real(RKG)   , intent(out)                   :: cdf
+        integer(IKG), intent(in)                    :: x
     end subroutine
 #endif
 
@@ -935,9 +935,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCDF_DD_D0_RK2_IK4
 #endif
-        use pm_kind, only: IKC => IK4, RKC => RK2
-        real(RKC)   , intent(out)                   :: cdf
-        integer(IKC), intent(in)                    :: x
+        use pm_kind, only: IKG => IK4, RKG => RK2
+        real(RKG)   , intent(out)                   :: cdf
+        integer(IKG), intent(in)                    :: x
     end subroutine
 #endif
 
@@ -946,9 +946,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCDF_DD_D0_RK1_IK4
 #endif
-        use pm_kind, only: IKC => IK4, RKC => RK1
-        real(RKC)   , intent(out)                   :: cdf
-        integer(IKC), intent(in)                    :: x
+        use pm_kind, only: IKG => IK4, RKG => RK1
+        real(RKG)   , intent(out)                   :: cdf
+        integer(IKG), intent(in)                    :: x
     end subroutine
 #endif
 
@@ -959,9 +959,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCDF_DD_D0_RK5_IK3
 #endif
-        use pm_kind, only: IKC => IK3, RKC => RK5
-        real(RKC)   , intent(out)                   :: cdf
-        integer(IKC), intent(in)                    :: x
+        use pm_kind, only: IKG => IK3, RKG => RK5
+        real(RKG)   , intent(out)                   :: cdf
+        integer(IKG), intent(in)                    :: x
     end subroutine
 #endif
 
@@ -970,9 +970,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCDF_DD_D0_RK4_IK3
 #endif
-        use pm_kind, only: IKC => IK3, RKC => RK4
-        real(RKC)   , intent(out)                   :: cdf
-        integer(IKC), intent(in)                    :: x
+        use pm_kind, only: IKG => IK3, RKG => RK4
+        real(RKG)   , intent(out)                   :: cdf
+        integer(IKG), intent(in)                    :: x
     end subroutine
 #endif
 
@@ -981,9 +981,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCDF_DD_D0_RK3_IK3
 #endif
-        use pm_kind, only: IKC => IK3, RKC => RK3
-        real(RKC)   , intent(out)                   :: cdf
-        integer(IKC), intent(in)                    :: x
+        use pm_kind, only: IKG => IK3, RKG => RK3
+        real(RKG)   , intent(out)                   :: cdf
+        integer(IKG), intent(in)                    :: x
     end subroutine
 #endif
 
@@ -992,9 +992,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCDF_DD_D0_RK2_IK3
 #endif
-        use pm_kind, only: IKC => IK3, RKC => RK2
-        real(RKC)   , intent(out)                   :: cdf
-        integer(IKC), intent(in)                    :: x
+        use pm_kind, only: IKG => IK3, RKG => RK2
+        real(RKG)   , intent(out)                   :: cdf
+        integer(IKG), intent(in)                    :: x
     end subroutine
 #endif
 
@@ -1003,9 +1003,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCDF_DD_D0_RK1_IK3
 #endif
-        use pm_kind, only: IKC => IK3, RKC => RK1
-        real(RKC)   , intent(out)                   :: cdf
-        integer(IKC), intent(in)                    :: x
+        use pm_kind, only: IKG => IK3, RKG => RK1
+        real(RKG)   , intent(out)                   :: cdf
+        integer(IKG), intent(in)                    :: x
     end subroutine
 #endif
 
@@ -1016,9 +1016,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCDF_DD_D0_RK5_IK2
 #endif
-        use pm_kind, only: IKC => IK2, RKC => RK5
-        real(RKC)   , intent(out)                   :: cdf
-        integer(IKC), intent(in)                    :: x
+        use pm_kind, only: IKG => IK2, RKG => RK5
+        real(RKG)   , intent(out)                   :: cdf
+        integer(IKG), intent(in)                    :: x
     end subroutine
 #endif
 
@@ -1027,9 +1027,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCDF_DD_D0_RK4_IK2
 #endif
-        use pm_kind, only: IKC => IK2, RKC => RK4
-        real(RKC)   , intent(out)                   :: cdf
-        integer(IKC), intent(in)                    :: x
+        use pm_kind, only: IKG => IK2, RKG => RK4
+        real(RKG)   , intent(out)                   :: cdf
+        integer(IKG), intent(in)                    :: x
     end subroutine
 #endif
 
@@ -1038,9 +1038,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCDF_DD_D0_RK3_IK2
 #endif
-        use pm_kind, only: IKC => IK2, RKC => RK3
-        real(RKC)   , intent(out)                   :: cdf
-        integer(IKC), intent(in)                    :: x
+        use pm_kind, only: IKG => IK2, RKG => RK3
+        real(RKG)   , intent(out)                   :: cdf
+        integer(IKG), intent(in)                    :: x
     end subroutine
 #endif
 
@@ -1049,9 +1049,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCDF_DD_D0_RK2_IK2
 #endif
-        use pm_kind, only: IKC => IK2, RKC => RK2
-        real(RKC)   , intent(out)                   :: cdf
-        integer(IKC), intent(in)                    :: x
+        use pm_kind, only: IKG => IK2, RKG => RK2
+        real(RKG)   , intent(out)                   :: cdf
+        integer(IKG), intent(in)                    :: x
     end subroutine
 #endif
 
@@ -1060,9 +1060,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCDF_DD_D0_RK1_IK2
 #endif
-        use pm_kind, only: IKC => IK2, RKC => RK1
-        real(RKC)   , intent(out)                   :: cdf
-        integer(IKC), intent(in)                    :: x
+        use pm_kind, only: IKG => IK2, RKG => RK1
+        real(RKG)   , intent(out)                   :: cdf
+        integer(IKG), intent(in)                    :: x
     end subroutine
 #endif
 
@@ -1073,9 +1073,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCDF_DD_D0_RK5_IK1
 #endif
-        use pm_kind, only: IKC => IK1, RKC => RK5
-        real(RKC)   , intent(out)                   :: cdf
-        integer(IKC), intent(in)                    :: x
+        use pm_kind, only: IKG => IK1, RKG => RK5
+        real(RKG)   , intent(out)                   :: cdf
+        integer(IKG), intent(in)                    :: x
     end subroutine
 #endif
 
@@ -1084,9 +1084,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCDF_DD_D0_RK4_IK1
 #endif
-        use pm_kind, only: IKC => IK1, RKC => RK4
-        real(RKC)   , intent(out)                   :: cdf
-        integer(IKC), intent(in)                    :: x
+        use pm_kind, only: IKG => IK1, RKG => RK4
+        real(RKG)   , intent(out)                   :: cdf
+        integer(IKG), intent(in)                    :: x
     end subroutine
 #endif
 
@@ -1095,9 +1095,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCDF_DD_D0_RK3_IK1
 #endif
-        use pm_kind, only: IKC => IK1, RKC => RK3
-        real(RKC)   , intent(out)                   :: cdf
-        integer(IKC), intent(in)                    :: x
+        use pm_kind, only: IKG => IK1, RKG => RK3
+        real(RKG)   , intent(out)                   :: cdf
+        integer(IKG), intent(in)                    :: x
     end subroutine
 #endif
 
@@ -1106,9 +1106,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCDF_DD_D0_RK2_IK1
 #endif
-        use pm_kind, only: IKC => IK1, RKC => RK2
-        real(RKC)   , intent(out)                   :: cdf
-        integer(IKC), intent(in)                    :: x
+        use pm_kind, only: IKG => IK1, RKG => RK2
+        real(RKG)   , intent(out)                   :: cdf
+        integer(IKG), intent(in)                    :: x
     end subroutine
 #endif
 
@@ -1117,9 +1117,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCDF_DD_D0_RK1_IK1
 #endif
-        use pm_kind, only: IKC => IK1, RKC => RK1
-        real(RKC)   , intent(out)                   :: cdf
-        integer(IKC), intent(in)                    :: x
+        use pm_kind, only: IKG => IK1, RKG => RK1
+        real(RKG)   , intent(out)                   :: cdf
+        integer(IKG), intent(in)                    :: x
     end subroutine
 #endif
 
@@ -1136,9 +1136,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCDF_DD_D0_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC), intent(out)                   :: cdf
-        complex(CKC), intent(in)                    :: x
+        use pm_kind, only: CKG => CK5
+        complex(CKG), intent(out)                   :: cdf
+        complex(CKG), intent(in)                    :: x
     end subroutine
 #endif
 
@@ -1147,9 +1147,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCDF_DD_D0_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC), intent(out)                   :: cdf
-        complex(CKC), intent(in)                    :: x
+        use pm_kind, only: CKG => CK4
+        complex(CKG), intent(out)                   :: cdf
+        complex(CKG), intent(in)                    :: x
     end subroutine
 #endif
 
@@ -1158,9 +1158,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCDF_DD_D0_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC), intent(out)                   :: cdf
-        complex(CKC), intent(in)                    :: x
+        use pm_kind, only: CKG => CK3
+        complex(CKG), intent(out)                   :: cdf
+        complex(CKG), intent(in)                    :: x
     end subroutine
 #endif
 
@@ -1169,9 +1169,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCDF_DD_D0_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC), intent(out)                   :: cdf
-        complex(CKC), intent(in)                    :: x
+        use pm_kind, only: CKG => CK2
+        complex(CKG), intent(out)                   :: cdf
+        complex(CKG), intent(in)                    :: x
     end subroutine
 #endif
 
@@ -1180,9 +1180,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCDF_DD_D0_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC), intent(out)                   :: cdf
-        complex(CKC), intent(in)                    :: x
+        use pm_kind, only: CKG => CK1
+        complex(CKG), intent(out)                   :: cdf
+        complex(CKG), intent(in)                    :: x
     end subroutine
 #endif
 
@@ -1199,9 +1199,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCDF_DD_D0_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(out)                   :: cdf
-        real(RKC)   , intent(in)                    :: x
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(out)                   :: cdf
+        real(RKG)   , intent(in)                    :: x
     end subroutine
 #endif
 
@@ -1210,9 +1210,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCDF_DD_D0_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(out)                   :: cdf
-        real(RKC)   , intent(in)                    :: x
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(out)                   :: cdf
+        real(RKG)   , intent(in)                    :: x
     end subroutine
 #endif
 
@@ -1221,9 +1221,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCDF_DD_D0_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(out)                   :: cdf
-        real(RKC)   , intent(in)                    :: x
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(out)                   :: cdf
+        real(RKG)   , intent(in)                    :: x
     end subroutine
 #endif
 
@@ -1232,9 +1232,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCDF_DD_D0_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(out)                   :: cdf
-        real(RKC)   , intent(in)                    :: x
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(out)                   :: cdf
+        real(RKG)   , intent(in)                    :: x
     end subroutine
 #endif
 
@@ -1243,9 +1243,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCDF_DD_D0_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(out)                   :: cdf
-        real(RKC)   , intent(in)                    :: x
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(out)                   :: cdf
+        real(RKG)   , intent(in)                    :: x
     end subroutine
 #endif
 
@@ -1266,9 +1266,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCDF_DD_D1_RK5_IK5
 #endif
-        use pm_kind, only: IKC => IK5, RKC => RK5
-        real(RKC)   , intent(out)   , contiguous    :: cdf(:)
-        integer(IKC), intent(in)    , contiguous    :: X(:)
+        use pm_kind, only: IKG => IK5, RKG => RK5
+        real(RKG)   , intent(out)   , contiguous    :: cdf(:)
+        integer(IKG), intent(in)    , contiguous    :: X(:)
     end subroutine
 #endif
 
@@ -1277,9 +1277,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCDF_DD_D1_RK4_IK5
 #endif
-        use pm_kind, only: IKC => IK5, RKC => RK4
-        real(RKC)   , intent(out)   , contiguous    :: cdf(:)
-        integer(IKC), intent(in)    , contiguous    :: X(:)
+        use pm_kind, only: IKG => IK5, RKG => RK4
+        real(RKG)   , intent(out)   , contiguous    :: cdf(:)
+        integer(IKG), intent(in)    , contiguous    :: X(:)
     end subroutine
 #endif
 
@@ -1288,9 +1288,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCDF_DD_D1_RK3_IK5
 #endif
-        use pm_kind, only: IKC => IK5, RKC => RK3
-        real(RKC)   , intent(out)   , contiguous    :: cdf(:)
-        integer(IKC), intent(in)    , contiguous    :: X(:)
+        use pm_kind, only: IKG => IK5, RKG => RK3
+        real(RKG)   , intent(out)   , contiguous    :: cdf(:)
+        integer(IKG), intent(in)    , contiguous    :: X(:)
     end subroutine
 #endif
 
@@ -1299,9 +1299,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCDF_DD_D1_RK2_IK5
 #endif
-        use pm_kind, only: IKC => IK5, RKC => RK2
-        real(RKC)   , intent(out)   , contiguous    :: cdf(:)
-        integer(IKC), intent(in)    , contiguous    :: X(:)
+        use pm_kind, only: IKG => IK5, RKG => RK2
+        real(RKG)   , intent(out)   , contiguous    :: cdf(:)
+        integer(IKG), intent(in)    , contiguous    :: X(:)
     end subroutine
 #endif
 
@@ -1310,9 +1310,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCDF_DD_D1_RK1_IK5
 #endif
-        use pm_kind, only: IKC => IK5, RKC => RK1
-        real(RKC)   , intent(out)   , contiguous    :: cdf(:)
-        integer(IKC), intent(in)    , contiguous    :: X(:)
+        use pm_kind, only: IKG => IK5, RKG => RK1
+        real(RKG)   , intent(out)   , contiguous    :: cdf(:)
+        integer(IKG), intent(in)    , contiguous    :: X(:)
     end subroutine
 #endif
 
@@ -1323,9 +1323,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCDF_DD_D1_RK5_IK4
 #endif
-        use pm_kind, only: IKC => IK4, RKC => RK5
-        real(RKC)   , intent(out)   , contiguous    :: cdf(:)
-        integer(IKC), intent(in)    , contiguous    :: X(:)
+        use pm_kind, only: IKG => IK4, RKG => RK5
+        real(RKG)   , intent(out)   , contiguous    :: cdf(:)
+        integer(IKG), intent(in)    , contiguous    :: X(:)
     end subroutine
 #endif
 
@@ -1334,9 +1334,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCDF_DD_D1_RK4_IK4
 #endif
-        use pm_kind, only: IKC => IK4, RKC => RK4
-        real(RKC)   , intent(out)   , contiguous    :: cdf(:)
-        integer(IKC), intent(in)    , contiguous    :: X(:)
+        use pm_kind, only: IKG => IK4, RKG => RK4
+        real(RKG)   , intent(out)   , contiguous    :: cdf(:)
+        integer(IKG), intent(in)    , contiguous    :: X(:)
     end subroutine
 #endif
 
@@ -1345,9 +1345,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCDF_DD_D1_RK3_IK4
 #endif
-        use pm_kind, only: IKC => IK4, RKC => RK3
-        real(RKC)   , intent(out)   , contiguous    :: cdf(:)
-        integer(IKC), intent(in)    , contiguous    :: X(:)
+        use pm_kind, only: IKG => IK4, RKG => RK3
+        real(RKG)   , intent(out)   , contiguous    :: cdf(:)
+        integer(IKG), intent(in)    , contiguous    :: X(:)
     end subroutine
 #endif
 
@@ -1356,9 +1356,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCDF_DD_D1_RK2_IK4
 #endif
-        use pm_kind, only: IKC => IK4, RKC => RK2
-        real(RKC)   , intent(out)   , contiguous    :: cdf(:)
-        integer(IKC), intent(in)    , contiguous    :: X(:)
+        use pm_kind, only: IKG => IK4, RKG => RK2
+        real(RKG)   , intent(out)   , contiguous    :: cdf(:)
+        integer(IKG), intent(in)    , contiguous    :: X(:)
     end subroutine
 #endif
 
@@ -1367,9 +1367,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCDF_DD_D1_RK1_IK4
 #endif
-        use pm_kind, only: IKC => IK4, RKC => RK1
-        real(RKC)   , intent(out)   , contiguous    :: cdf(:)
-        integer(IKC), intent(in)    , contiguous    :: X(:)
+        use pm_kind, only: IKG => IK4, RKG => RK1
+        real(RKG)   , intent(out)   , contiguous    :: cdf(:)
+        integer(IKG), intent(in)    , contiguous    :: X(:)
     end subroutine
 #endif
 
@@ -1380,9 +1380,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCDF_DD_D1_RK5_IK3
 #endif
-        use pm_kind, only: IKC => IK3, RKC => RK5
-        real(RKC)   , intent(out)   , contiguous    :: cdf(:)
-        integer(IKC), intent(in)    , contiguous    :: X(:)
+        use pm_kind, only: IKG => IK3, RKG => RK5
+        real(RKG)   , intent(out)   , contiguous    :: cdf(:)
+        integer(IKG), intent(in)    , contiguous    :: X(:)
     end subroutine
 #endif
 
@@ -1391,9 +1391,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCDF_DD_D1_RK4_IK3
 #endif
-        use pm_kind, only: IKC => IK3, RKC => RK4
-        real(RKC)   , intent(out)   , contiguous    :: cdf(:)
-        integer(IKC), intent(in)    , contiguous    :: X(:)
+        use pm_kind, only: IKG => IK3, RKG => RK4
+        real(RKG)   , intent(out)   , contiguous    :: cdf(:)
+        integer(IKG), intent(in)    , contiguous    :: X(:)
     end subroutine
 #endif
 
@@ -1402,9 +1402,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCDF_DD_D1_RK3_IK3
 #endif
-        use pm_kind, only: IKC => IK3, RKC => RK3
-        real(RKC)   , intent(out)   , contiguous    :: cdf(:)
-        integer(IKC), intent(in)    , contiguous    :: X(:)
+        use pm_kind, only: IKG => IK3, RKG => RK3
+        real(RKG)   , intent(out)   , contiguous    :: cdf(:)
+        integer(IKG), intent(in)    , contiguous    :: X(:)
     end subroutine
 #endif
 
@@ -1413,9 +1413,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCDF_DD_D1_RK2_IK3
 #endif
-        use pm_kind, only: IKC => IK3, RKC => RK2
-        real(RKC)   , intent(out)   , contiguous    :: cdf(:)
-        integer(IKC), intent(in)    , contiguous    :: X(:)
+        use pm_kind, only: IKG => IK3, RKG => RK2
+        real(RKG)   , intent(out)   , contiguous    :: cdf(:)
+        integer(IKG), intent(in)    , contiguous    :: X(:)
     end subroutine
 #endif
 
@@ -1424,9 +1424,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCDF_DD_D1_RK1_IK3
 #endif
-        use pm_kind, only: IKC => IK3, RKC => RK1
-        real(RKC)   , intent(out)   , contiguous    :: cdf(:)
-        integer(IKC), intent(in)    , contiguous    :: X(:)
+        use pm_kind, only: IKG => IK3, RKG => RK1
+        real(RKG)   , intent(out)   , contiguous    :: cdf(:)
+        integer(IKG), intent(in)    , contiguous    :: X(:)
     end subroutine
 #endif
 
@@ -1437,9 +1437,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCDF_DD_D1_RK5_IK2
 #endif
-        use pm_kind, only: IKC => IK2, RKC => RK5
-        real(RKC)   , intent(out)   , contiguous    :: cdf(:)
-        integer(IKC), intent(in)    , contiguous    :: X(:)
+        use pm_kind, only: IKG => IK2, RKG => RK5
+        real(RKG)   , intent(out)   , contiguous    :: cdf(:)
+        integer(IKG), intent(in)    , contiguous    :: X(:)
     end subroutine
 #endif
 
@@ -1448,9 +1448,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCDF_DD_D1_RK4_IK2
 #endif
-        use pm_kind, only: IKC => IK2, RKC => RK4
-        real(RKC)   , intent(out)   , contiguous    :: cdf(:)
-        integer(IKC), intent(in)    , contiguous    :: X(:)
+        use pm_kind, only: IKG => IK2, RKG => RK4
+        real(RKG)   , intent(out)   , contiguous    :: cdf(:)
+        integer(IKG), intent(in)    , contiguous    :: X(:)
     end subroutine
 #endif
 
@@ -1459,9 +1459,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCDF_DD_D1_RK3_IK2
 #endif
-        use pm_kind, only: IKC => IK2, RKC => RK3
-        real(RKC)   , intent(out)   , contiguous    :: cdf(:)
-        integer(IKC), intent(in)    , contiguous    :: X(:)
+        use pm_kind, only: IKG => IK2, RKG => RK3
+        real(RKG)   , intent(out)   , contiguous    :: cdf(:)
+        integer(IKG), intent(in)    , contiguous    :: X(:)
     end subroutine
 #endif
 
@@ -1470,9 +1470,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCDF_DD_D1_RK2_IK2
 #endif
-        use pm_kind, only: IKC => IK2, RKC => RK2
-        real(RKC)   , intent(out)   , contiguous    :: cdf(:)
-        integer(IKC), intent(in)    , contiguous    :: X(:)
+        use pm_kind, only: IKG => IK2, RKG => RK2
+        real(RKG)   , intent(out)   , contiguous    :: cdf(:)
+        integer(IKG), intent(in)    , contiguous    :: X(:)
     end subroutine
 #endif
 
@@ -1481,9 +1481,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCDF_DD_D1_RK1_IK2
 #endif
-        use pm_kind, only: IKC => IK2, RKC => RK1
-        real(RKC)   , intent(out)   , contiguous    :: cdf(:)
-        integer(IKC), intent(in)    , contiguous    :: X(:)
+        use pm_kind, only: IKG => IK2, RKG => RK1
+        real(RKG)   , intent(out)   , contiguous    :: cdf(:)
+        integer(IKG), intent(in)    , contiguous    :: X(:)
     end subroutine
 #endif
 
@@ -1494,9 +1494,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCDF_DD_D1_RK5_IK1
 #endif
-        use pm_kind, only: IKC => IK1, RKC => RK5
-        real(RKC)   , intent(out)   , contiguous    :: cdf(:)
-        integer(IKC), intent(in)    , contiguous    :: X(:)
+        use pm_kind, only: IKG => IK1, RKG => RK5
+        real(RKG)   , intent(out)   , contiguous    :: cdf(:)
+        integer(IKG), intent(in)    , contiguous    :: X(:)
     end subroutine
 #endif
 
@@ -1505,9 +1505,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCDF_DD_D1_RK4_IK1
 #endif
-        use pm_kind, only: IKC => IK1, RKC => RK4
-        real(RKC)   , intent(out)   , contiguous    :: cdf(:)
-        integer(IKC), intent(in)    , contiguous    :: X(:)
+        use pm_kind, only: IKG => IK1, RKG => RK4
+        real(RKG)   , intent(out)   , contiguous    :: cdf(:)
+        integer(IKG), intent(in)    , contiguous    :: X(:)
     end subroutine
 #endif
 
@@ -1516,9 +1516,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCDF_DD_D1_RK3_IK1
 #endif
-        use pm_kind, only: IKC => IK1, RKC => RK3
-        real(RKC)   , intent(out)   , contiguous    :: cdf(:)
-        integer(IKC), intent(in)    , contiguous    :: X(:)
+        use pm_kind, only: IKG => IK1, RKG => RK3
+        real(RKG)   , intent(out)   , contiguous    :: cdf(:)
+        integer(IKG), intent(in)    , contiguous    :: X(:)
     end subroutine
 #endif
 
@@ -1527,9 +1527,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCDF_DD_D1_RK2_IK1
 #endif
-        use pm_kind, only: IKC => IK1, RKC => RK2
-        real(RKC)   , intent(out)   , contiguous    :: cdf(:)
-        integer(IKC), intent(in)    , contiguous    :: X(:)
+        use pm_kind, only: IKG => IK1, RKG => RK2
+        real(RKG)   , intent(out)   , contiguous    :: cdf(:)
+        integer(IKG), intent(in)    , contiguous    :: X(:)
     end subroutine
 #endif
 
@@ -1538,9 +1538,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCDF_DD_D1_RK1_IK1
 #endif
-        use pm_kind, only: IKC => IK1, RKC => RK1
-        real(RKC)   , intent(out)   , contiguous    :: cdf(:)
-        integer(IKC), intent(in)    , contiguous    :: X(:)
+        use pm_kind, only: IKG => IK1, RKG => RK1
+        real(RKG)   , intent(out)   , contiguous    :: cdf(:)
+        integer(IKG), intent(in)    , contiguous    :: X(:)
     end subroutine
 #endif
 
@@ -1557,9 +1557,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCDF_DD_D1_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC), intent(out)   , contiguous    :: cdf(:)
-        complex(CKC), intent(in)    , contiguous    :: X(:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG), intent(out)   , contiguous    :: cdf(:)
+        complex(CKG), intent(in)    , contiguous    :: X(:)
     end subroutine
 #endif
 
@@ -1568,9 +1568,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCDF_DD_D1_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC), intent(out)   , contiguous    :: cdf(:)
-        complex(CKC), intent(in)    , contiguous    :: X(:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG), intent(out)   , contiguous    :: cdf(:)
+        complex(CKG), intent(in)    , contiguous    :: X(:)
     end subroutine
 #endif
 
@@ -1579,9 +1579,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCDF_DD_D1_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC), intent(out)   , contiguous    :: cdf(:)
-        complex(CKC), intent(in)    , contiguous    :: X(:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG), intent(out)   , contiguous    :: cdf(:)
+        complex(CKG), intent(in)    , contiguous    :: X(:)
     end subroutine
 #endif
 
@@ -1590,9 +1590,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCDF_DD_D1_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC), intent(out)   , contiguous    :: cdf(:)
-        complex(CKC), intent(in)    , contiguous    :: X(:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG), intent(out)   , contiguous    :: cdf(:)
+        complex(CKG), intent(in)    , contiguous    :: X(:)
     end subroutine
 #endif
 
@@ -1601,9 +1601,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCDF_DD_D1_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC), intent(out)   , contiguous    :: cdf(:)
-        complex(CKC), intent(in)    , contiguous    :: X(:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG), intent(out)   , contiguous    :: cdf(:)
+        complex(CKG), intent(in)    , contiguous    :: X(:)
     end subroutine
 #endif
 
@@ -1620,9 +1620,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCDF_DD_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(out)   , contiguous    :: cdf(:)
-        real(RKC)   , intent(in)    , contiguous    :: X(:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(out)   , contiguous    :: cdf(:)
+        real(RKG)   , intent(in)    , contiguous    :: X(:)
     end subroutine
 #endif
 
@@ -1631,9 +1631,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCDF_DD_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(out)   , contiguous    :: cdf(:)
-        real(RKC)   , intent(in)    , contiguous    :: X(:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(out)   , contiguous    :: cdf(:)
+        real(RKG)   , intent(in)    , contiguous    :: X(:)
     end subroutine
 #endif
 
@@ -1642,9 +1642,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCDF_DD_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(out)   , contiguous    :: cdf(:)
-        real(RKC)   , intent(in)    , contiguous    :: X(:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(out)   , contiguous    :: cdf(:)
+        real(RKG)   , intent(in)    , contiguous    :: X(:)
     end subroutine
 #endif
 
@@ -1653,9 +1653,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCDF_DD_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(out)   , contiguous    :: cdf(:)
-        real(RKC)   , intent(in)    , contiguous    :: X(:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(out)   , contiguous    :: cdf(:)
+        real(RKG)   , intent(in)    , contiguous    :: X(:)
     end subroutine
 #endif
 
@@ -1664,9 +1664,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCDF_DD_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(out)   , contiguous    :: cdf(:)
-        real(RKC)   , intent(in)    , contiguous    :: X(:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(out)   , contiguous    :: cdf(:)
+        real(RKG)   , intent(in)    , contiguous    :: X(:)
     end subroutine
 #endif
 
@@ -1693,10 +1693,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCDF_LU_D0_RK5_IK5
 #endif
-        use pm_kind, only: IKC => IK5, RKC => RK5
-        real(RKC)   , intent(out)                   :: cdf
-        integer(IKC), intent(in)                    :: x
-        integer(IKC), intent(in)                    :: lower, upper
+        use pm_kind, only: IKG => IK5, RKG => RK5
+        real(RKG)   , intent(out)                   :: cdf
+        integer(IKG), intent(in)                    :: x
+        integer(IKG), intent(in)                    :: lower, upper
     end subroutine
 #endif
 
@@ -1705,10 +1705,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCDF_LU_D0_RK4_IK5
 #endif
-        use pm_kind, only: IKC => IK5, RKC => RK4
-        real(RKC)   , intent(out)                   :: cdf
-        integer(IKC), intent(in)                    :: x
-        integer(IKC), intent(in)                    :: lower, upper
+        use pm_kind, only: IKG => IK5, RKG => RK4
+        real(RKG)   , intent(out)                   :: cdf
+        integer(IKG), intent(in)                    :: x
+        integer(IKG), intent(in)                    :: lower, upper
     end subroutine
 #endif
 
@@ -1717,10 +1717,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCDF_LU_D0_RK3_IK5
 #endif
-        use pm_kind, only: IKC => IK5, RKC => RK3
-        real(RKC)   , intent(out)                   :: cdf
-        integer(IKC), intent(in)                    :: x
-        integer(IKC), intent(in)                    :: lower, upper
+        use pm_kind, only: IKG => IK5, RKG => RK3
+        real(RKG)   , intent(out)                   :: cdf
+        integer(IKG), intent(in)                    :: x
+        integer(IKG), intent(in)                    :: lower, upper
     end subroutine
 #endif
 
@@ -1729,10 +1729,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCDF_LU_D0_RK2_IK5
 #endif
-        use pm_kind, only: IKC => IK5, RKC => RK2
-        real(RKC)   , intent(out)                   :: cdf
-        integer(IKC), intent(in)                    :: x
-        integer(IKC), intent(in)                    :: lower, upper
+        use pm_kind, only: IKG => IK5, RKG => RK2
+        real(RKG)   , intent(out)                   :: cdf
+        integer(IKG), intent(in)                    :: x
+        integer(IKG), intent(in)                    :: lower, upper
     end subroutine
 #endif
 
@@ -1741,10 +1741,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCDF_LU_D0_RK1_IK5
 #endif
-        use pm_kind, only: IKC => IK5, RKC => RK1
-        real(RKC)   , intent(out)                   :: cdf
-        integer(IKC), intent(in)                    :: x
-        integer(IKC), intent(in)                    :: lower, upper
+        use pm_kind, only: IKG => IK5, RKG => RK1
+        real(RKG)   , intent(out)                   :: cdf
+        integer(IKG), intent(in)                    :: x
+        integer(IKG), intent(in)                    :: lower, upper
     end subroutine
 #endif
 
@@ -1755,10 +1755,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCDF_LU_D0_RK5_IK4
 #endif
-        use pm_kind, only: IKC => IK4, RKC => RK5
-        real(RKC)   , intent(out)                   :: cdf
-        integer(IKC), intent(in)                    :: x
-        integer(IKC), intent(in)                    :: lower, upper
+        use pm_kind, only: IKG => IK4, RKG => RK5
+        real(RKG)   , intent(out)                   :: cdf
+        integer(IKG), intent(in)                    :: x
+        integer(IKG), intent(in)                    :: lower, upper
     end subroutine
 #endif
 
@@ -1767,10 +1767,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCDF_LU_D0_RK4_IK4
 #endif
-        use pm_kind, only: IKC => IK4, RKC => RK4
-        real(RKC)   , intent(out)                   :: cdf
-        integer(IKC), intent(in)                    :: x
-        integer(IKC), intent(in)                    :: lower, upper
+        use pm_kind, only: IKG => IK4, RKG => RK4
+        real(RKG)   , intent(out)                   :: cdf
+        integer(IKG), intent(in)                    :: x
+        integer(IKG), intent(in)                    :: lower, upper
     end subroutine
 #endif
 
@@ -1779,10 +1779,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCDF_LU_D0_RK3_IK4
 #endif
-        use pm_kind, only: IKC => IK4, RKC => RK3
-        real(RKC)   , intent(out)                   :: cdf
-        integer(IKC), intent(in)                    :: x
-        integer(IKC), intent(in)                    :: lower, upper
+        use pm_kind, only: IKG => IK4, RKG => RK3
+        real(RKG)   , intent(out)                   :: cdf
+        integer(IKG), intent(in)                    :: x
+        integer(IKG), intent(in)                    :: lower, upper
     end subroutine
 #endif
 
@@ -1791,10 +1791,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCDF_LU_D0_RK2_IK4
 #endif
-        use pm_kind, only: IKC => IK4, RKC => RK2
-        real(RKC)   , intent(out)                   :: cdf
-        integer(IKC), intent(in)                    :: x
-        integer(IKC), intent(in)                    :: lower, upper
+        use pm_kind, only: IKG => IK4, RKG => RK2
+        real(RKG)   , intent(out)                   :: cdf
+        integer(IKG), intent(in)                    :: x
+        integer(IKG), intent(in)                    :: lower, upper
     end subroutine
 #endif
 
@@ -1803,10 +1803,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCDF_LU_D0_RK1_IK4
 #endif
-        use pm_kind, only: IKC => IK4, RKC => RK1
-        real(RKC)   , intent(out)                   :: cdf
-        integer(IKC), intent(in)                    :: x
-        integer(IKC), intent(in)                    :: lower, upper
+        use pm_kind, only: IKG => IK4, RKG => RK1
+        real(RKG)   , intent(out)                   :: cdf
+        integer(IKG), intent(in)                    :: x
+        integer(IKG), intent(in)                    :: lower, upper
     end subroutine
 #endif
 
@@ -1817,10 +1817,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCDF_LU_D0_RK5_IK3
 #endif
-        use pm_kind, only: IKC => IK3, RKC => RK5
-        real(RKC)   , intent(out)                   :: cdf
-        integer(IKC), intent(in)                    :: x
-        integer(IKC), intent(in)                    :: lower, upper
+        use pm_kind, only: IKG => IK3, RKG => RK5
+        real(RKG)   , intent(out)                   :: cdf
+        integer(IKG), intent(in)                    :: x
+        integer(IKG), intent(in)                    :: lower, upper
     end subroutine
 #endif
 
@@ -1829,10 +1829,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCDF_LU_D0_RK4_IK3
 #endif
-        use pm_kind, only: IKC => IK3, RKC => RK4
-        real(RKC)   , intent(out)                   :: cdf
-        integer(IKC), intent(in)                    :: x
-        integer(IKC), intent(in)                    :: lower, upper
+        use pm_kind, only: IKG => IK3, RKG => RK4
+        real(RKG)   , intent(out)                   :: cdf
+        integer(IKG), intent(in)                    :: x
+        integer(IKG), intent(in)                    :: lower, upper
     end subroutine
 #endif
 
@@ -1841,10 +1841,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCDF_LU_D0_RK3_IK3
 #endif
-        use pm_kind, only: IKC => IK3, RKC => RK3
-        real(RKC)   , intent(out)                   :: cdf
-        integer(IKC), intent(in)                    :: x
-        integer(IKC), intent(in)                    :: lower, upper
+        use pm_kind, only: IKG => IK3, RKG => RK3
+        real(RKG)   , intent(out)                   :: cdf
+        integer(IKG), intent(in)                    :: x
+        integer(IKG), intent(in)                    :: lower, upper
     end subroutine
 #endif
 
@@ -1853,10 +1853,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCDF_LU_D0_RK2_IK3
 #endif
-        use pm_kind, only: IKC => IK3, RKC => RK2
-        real(RKC)   , intent(out)                   :: cdf
-        integer(IKC), intent(in)                    :: x
-        integer(IKC), intent(in)                    :: lower, upper
+        use pm_kind, only: IKG => IK3, RKG => RK2
+        real(RKG)   , intent(out)                   :: cdf
+        integer(IKG), intent(in)                    :: x
+        integer(IKG), intent(in)                    :: lower, upper
     end subroutine
 #endif
 
@@ -1865,10 +1865,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCDF_LU_D0_RK1_IK3
 #endif
-        use pm_kind, only: IKC => IK3, RKC => RK1
-        real(RKC)   , intent(out)                   :: cdf
-        integer(IKC), intent(in)                    :: x
-        integer(IKC), intent(in)                    :: lower, upper
+        use pm_kind, only: IKG => IK3, RKG => RK1
+        real(RKG)   , intent(out)                   :: cdf
+        integer(IKG), intent(in)                    :: x
+        integer(IKG), intent(in)                    :: lower, upper
     end subroutine
 #endif
 
@@ -1879,10 +1879,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCDF_LU_D0_RK5_IK2
 #endif
-        use pm_kind, only: IKC => IK2, RKC => RK5
-        real(RKC)   , intent(out)                   :: cdf
-        integer(IKC), intent(in)                    :: x
-        integer(IKC), intent(in)                    :: lower, upper
+        use pm_kind, only: IKG => IK2, RKG => RK5
+        real(RKG)   , intent(out)                   :: cdf
+        integer(IKG), intent(in)                    :: x
+        integer(IKG), intent(in)                    :: lower, upper
     end subroutine
 #endif
 
@@ -1891,10 +1891,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCDF_LU_D0_RK4_IK2
 #endif
-        use pm_kind, only: IKC => IK2, RKC => RK4
-        real(RKC)   , intent(out)                   :: cdf
-        integer(IKC), intent(in)                    :: x
-        integer(IKC), intent(in)                    :: lower, upper
+        use pm_kind, only: IKG => IK2, RKG => RK4
+        real(RKG)   , intent(out)                   :: cdf
+        integer(IKG), intent(in)                    :: x
+        integer(IKG), intent(in)                    :: lower, upper
     end subroutine
 #endif
 
@@ -1903,10 +1903,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCDF_LU_D0_RK3_IK2
 #endif
-        use pm_kind, only: IKC => IK2, RKC => RK3
-        real(RKC)   , intent(out)                   :: cdf
-        integer(IKC), intent(in)                    :: x
-        integer(IKC), intent(in)                    :: lower, upper
+        use pm_kind, only: IKG => IK2, RKG => RK3
+        real(RKG)   , intent(out)                   :: cdf
+        integer(IKG), intent(in)                    :: x
+        integer(IKG), intent(in)                    :: lower, upper
     end subroutine
 #endif
 
@@ -1915,10 +1915,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCDF_LU_D0_RK2_IK2
 #endif
-        use pm_kind, only: IKC => IK2, RKC => RK2
-        real(RKC)   , intent(out)                   :: cdf
-        integer(IKC), intent(in)                    :: x
-        integer(IKC), intent(in)                    :: lower, upper
+        use pm_kind, only: IKG => IK2, RKG => RK2
+        real(RKG)   , intent(out)                   :: cdf
+        integer(IKG), intent(in)                    :: x
+        integer(IKG), intent(in)                    :: lower, upper
     end subroutine
 #endif
 
@@ -1927,10 +1927,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCDF_LU_D0_RK1_IK2
 #endif
-        use pm_kind, only: IKC => IK2, RKC => RK1
-        real(RKC)   , intent(out)                   :: cdf
-        integer(IKC), intent(in)                    :: x
-        integer(IKC), intent(in)                    :: lower, upper
+        use pm_kind, only: IKG => IK2, RKG => RK1
+        real(RKG)   , intent(out)                   :: cdf
+        integer(IKG), intent(in)                    :: x
+        integer(IKG), intent(in)                    :: lower, upper
     end subroutine
 #endif
 
@@ -1941,10 +1941,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCDF_LU_D0_RK5_IK1
 #endif
-        use pm_kind, only: IKC => IK1, RKC => RK5
-        real(RKC)   , intent(out)                   :: cdf
-        integer(IKC), intent(in)                    :: x
-        integer(IKC), intent(in)                    :: lower, upper
+        use pm_kind, only: IKG => IK1, RKG => RK5
+        real(RKG)   , intent(out)                   :: cdf
+        integer(IKG), intent(in)                    :: x
+        integer(IKG), intent(in)                    :: lower, upper
     end subroutine
 #endif
 
@@ -1953,10 +1953,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCDF_LU_D0_RK4_IK1
 #endif
-        use pm_kind, only: IKC => IK1, RKC => RK4
-        real(RKC)   , intent(out)                   :: cdf
-        integer(IKC), intent(in)                    :: x
-        integer(IKC), intent(in)                    :: lower, upper
+        use pm_kind, only: IKG => IK1, RKG => RK4
+        real(RKG)   , intent(out)                   :: cdf
+        integer(IKG), intent(in)                    :: x
+        integer(IKG), intent(in)                    :: lower, upper
     end subroutine
 #endif
 
@@ -1965,10 +1965,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCDF_LU_D0_RK3_IK1
 #endif
-        use pm_kind, only: IKC => IK1, RKC => RK3
-        real(RKC)   , intent(out)                   :: cdf
-        integer(IKC), intent(in)                    :: x
-        integer(IKC), intent(in)                    :: lower, upper
+        use pm_kind, only: IKG => IK1, RKG => RK3
+        real(RKG)   , intent(out)                   :: cdf
+        integer(IKG), intent(in)                    :: x
+        integer(IKG), intent(in)                    :: lower, upper
     end subroutine
 #endif
 
@@ -1977,10 +1977,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCDF_LU_D0_RK2_IK1
 #endif
-        use pm_kind, only: IKC => IK1, RKC => RK2
-        real(RKC)   , intent(out)                   :: cdf
-        integer(IKC), intent(in)                    :: x
-        integer(IKC), intent(in)                    :: lower, upper
+        use pm_kind, only: IKG => IK1, RKG => RK2
+        real(RKG)   , intent(out)                   :: cdf
+        integer(IKG), intent(in)                    :: x
+        integer(IKG), intent(in)                    :: lower, upper
     end subroutine
 #endif
 
@@ -1989,10 +1989,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCDF_LU_D0_RK1_IK1
 #endif
-        use pm_kind, only: IKC => IK1, RKC => RK1
-        real(RKC)   , intent(out)                   :: cdf
-        integer(IKC), intent(in)                    :: x
-        integer(IKC), intent(in)                    :: lower, upper
+        use pm_kind, only: IKG => IK1, RKG => RK1
+        real(RKG)   , intent(out)                   :: cdf
+        integer(IKG), intent(in)                    :: x
+        integer(IKG), intent(in)                    :: lower, upper
     end subroutine
 #endif
 
@@ -2009,10 +2009,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCDF_LU_D0_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC), intent(out)                   :: cdf
-        complex(CKC), intent(in)                    :: x
-        complex(CKC), intent(in)                    :: lower, upper
+        use pm_kind, only: CKG => CK5
+        complex(CKG), intent(out)                   :: cdf
+        complex(CKG), intent(in)                    :: x
+        complex(CKG), intent(in)                    :: lower, upper
     end subroutine
 #endif
 
@@ -2021,10 +2021,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCDF_LU_D0_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC), intent(out)                   :: cdf
-        complex(CKC), intent(in)                    :: x
-        complex(CKC), intent(in)                    :: lower, upper
+        use pm_kind, only: CKG => CK4
+        complex(CKG), intent(out)                   :: cdf
+        complex(CKG), intent(in)                    :: x
+        complex(CKG), intent(in)                    :: lower, upper
     end subroutine
 #endif
 
@@ -2033,10 +2033,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCDF_LU_D0_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC), intent(out)                   :: cdf
-        complex(CKC), intent(in)                    :: x
-        complex(CKC), intent(in)                    :: lower, upper
+        use pm_kind, only: CKG => CK3
+        complex(CKG), intent(out)                   :: cdf
+        complex(CKG), intent(in)                    :: x
+        complex(CKG), intent(in)                    :: lower, upper
     end subroutine
 #endif
 
@@ -2045,10 +2045,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCDF_LU_D0_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC), intent(out)                   :: cdf
-        complex(CKC), intent(in)                    :: x
-        complex(CKC), intent(in)                    :: lower, upper
+        use pm_kind, only: CKG => CK2
+        complex(CKG), intent(out)                   :: cdf
+        complex(CKG), intent(in)                    :: x
+        complex(CKG), intent(in)                    :: lower, upper
     end subroutine
 #endif
 
@@ -2057,10 +2057,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCDF_LU_D0_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC), intent(out)                   :: cdf
-        complex(CKC), intent(in)                    :: x
-        complex(CKC), intent(in)                    :: lower, upper
+        use pm_kind, only: CKG => CK1
+        complex(CKG), intent(out)                   :: cdf
+        complex(CKG), intent(in)                    :: x
+        complex(CKG), intent(in)                    :: lower, upper
     end subroutine
 #endif
 
@@ -2077,10 +2077,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCDF_LU_D0_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(out)                   :: cdf
-        real(RKC)   , intent(in)                    :: x
-        real(RKC)   , intent(in)                    :: lower, upper
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(out)                   :: cdf
+        real(RKG)   , intent(in)                    :: x
+        real(RKG)   , intent(in)                    :: lower, upper
     end subroutine
 #endif
 
@@ -2089,10 +2089,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCDF_LU_D0_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(out)                   :: cdf
-        real(RKC)   , intent(in)                    :: x
-        real(RKC)   , intent(in)                    :: lower, upper
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(out)                   :: cdf
+        real(RKG)   , intent(in)                    :: x
+        real(RKG)   , intent(in)                    :: lower, upper
     end subroutine
 #endif
 
@@ -2101,10 +2101,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCDF_LU_D0_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(out)                   :: cdf
-        real(RKC)   , intent(in)                    :: x
-        real(RKC)   , intent(in)                    :: lower, upper
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(out)                   :: cdf
+        real(RKG)   , intent(in)                    :: x
+        real(RKG)   , intent(in)                    :: lower, upper
     end subroutine
 #endif
 
@@ -2113,10 +2113,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCDF_LU_D0_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(out)                   :: cdf
-        real(RKC)   , intent(in)                    :: x
-        real(RKC)   , intent(in)                    :: lower, upper
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(out)                   :: cdf
+        real(RKG)   , intent(in)                    :: x
+        real(RKG)   , intent(in)                    :: lower, upper
     end subroutine
 #endif
 
@@ -2125,10 +2125,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCDF_LU_D0_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(out)                   :: cdf
-        real(RKC)   , intent(in)                    :: x
-        real(RKC)   , intent(in)                    :: lower, upper
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(out)                   :: cdf
+        real(RKG)   , intent(in)                    :: x
+        real(RKG)   , intent(in)                    :: lower, upper
     end subroutine
 #endif
 
@@ -2149,10 +2149,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCDF_LU_D1_RK5_IK5
 #endif
-        use pm_kind, only: IKC => IK5, RKC => RK5
-        real(RKC)   , intent(out)   , contiguous    :: cdf(:)
-        integer(IKC), intent(in)    , contiguous    :: X(:)
-        integer(IKC), intent(in)                    :: lower, upper
+        use pm_kind, only: IKG => IK5, RKG => RK5
+        real(RKG)   , intent(out)   , contiguous    :: cdf(:)
+        integer(IKG), intent(in)    , contiguous    :: X(:)
+        integer(IKG), intent(in)                    :: lower, upper
     end subroutine
 #endif
 
@@ -2161,10 +2161,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCDF_LU_D1_RK4_IK5
 #endif
-        use pm_kind, only: IKC => IK5, RKC => RK4
-        real(RKC)   , intent(out)   , contiguous    :: cdf(:)
-        integer(IKC), intent(in)    , contiguous    :: X(:)
-        integer(IKC), intent(in)                    :: lower, upper
+        use pm_kind, only: IKG => IK5, RKG => RK4
+        real(RKG)   , intent(out)   , contiguous    :: cdf(:)
+        integer(IKG), intent(in)    , contiguous    :: X(:)
+        integer(IKG), intent(in)                    :: lower, upper
     end subroutine
 #endif
 
@@ -2173,10 +2173,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCDF_LU_D1_RK3_IK5
 #endif
-        use pm_kind, only: IKC => IK5, RKC => RK3
-        real(RKC)   , intent(out)   , contiguous    :: cdf(:)
-        integer(IKC), intent(in)    , contiguous    :: X(:)
-        integer(IKC), intent(in)                    :: lower, upper
+        use pm_kind, only: IKG => IK5, RKG => RK3
+        real(RKG)   , intent(out)   , contiguous    :: cdf(:)
+        integer(IKG), intent(in)    , contiguous    :: X(:)
+        integer(IKG), intent(in)                    :: lower, upper
     end subroutine
 #endif
 
@@ -2185,10 +2185,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCDF_LU_D1_RK2_IK5
 #endif
-        use pm_kind, only: IKC => IK5, RKC => RK2
-        real(RKC)   , intent(out)   , contiguous    :: cdf(:)
-        integer(IKC), intent(in)    , contiguous    :: X(:)
-        integer(IKC), intent(in)                    :: lower, upper
+        use pm_kind, only: IKG => IK5, RKG => RK2
+        real(RKG)   , intent(out)   , contiguous    :: cdf(:)
+        integer(IKG), intent(in)    , contiguous    :: X(:)
+        integer(IKG), intent(in)                    :: lower, upper
     end subroutine
 #endif
 
@@ -2197,10 +2197,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCDF_LU_D1_RK1_IK5
 #endif
-        use pm_kind, only: IKC => IK5, RKC => RK1
-        real(RKC)   , intent(out)   , contiguous    :: cdf(:)
-        integer(IKC), intent(in)    , contiguous    :: X(:)
-        integer(IKC), intent(in)                    :: lower, upper
+        use pm_kind, only: IKG => IK5, RKG => RK1
+        real(RKG)   , intent(out)   , contiguous    :: cdf(:)
+        integer(IKG), intent(in)    , contiguous    :: X(:)
+        integer(IKG), intent(in)                    :: lower, upper
     end subroutine
 #endif
 
@@ -2211,10 +2211,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCDF_LU_D1_RK5_IK4
 #endif
-        use pm_kind, only: IKC => IK4, RKC => RK5
-        real(RKC)   , intent(out)   , contiguous    :: cdf(:)
-        integer(IKC), intent(in)    , contiguous    :: X(:)
-        integer(IKC), intent(in)                    :: lower, upper
+        use pm_kind, only: IKG => IK4, RKG => RK5
+        real(RKG)   , intent(out)   , contiguous    :: cdf(:)
+        integer(IKG), intent(in)    , contiguous    :: X(:)
+        integer(IKG), intent(in)                    :: lower, upper
     end subroutine
 #endif
 
@@ -2223,10 +2223,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCDF_LU_D1_RK4_IK4
 #endif
-        use pm_kind, only: IKC => IK4, RKC => RK4
-        real(RKC)   , intent(out)   , contiguous    :: cdf(:)
-        integer(IKC), intent(in)    , contiguous    :: X(:)
-        integer(IKC), intent(in)                    :: lower, upper
+        use pm_kind, only: IKG => IK4, RKG => RK4
+        real(RKG)   , intent(out)   , contiguous    :: cdf(:)
+        integer(IKG), intent(in)    , contiguous    :: X(:)
+        integer(IKG), intent(in)                    :: lower, upper
     end subroutine
 #endif
 
@@ -2235,10 +2235,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCDF_LU_D1_RK3_IK4
 #endif
-        use pm_kind, only: IKC => IK4, RKC => RK3
-        real(RKC)   , intent(out)   , contiguous    :: cdf(:)
-        integer(IKC), intent(in)    , contiguous    :: X(:)
-        integer(IKC), intent(in)                    :: lower, upper
+        use pm_kind, only: IKG => IK4, RKG => RK3
+        real(RKG)   , intent(out)   , contiguous    :: cdf(:)
+        integer(IKG), intent(in)    , contiguous    :: X(:)
+        integer(IKG), intent(in)                    :: lower, upper
     end subroutine
 #endif
 
@@ -2247,10 +2247,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCDF_LU_D1_RK2_IK4
 #endif
-        use pm_kind, only: IKC => IK4, RKC => RK2
-        real(RKC)   , intent(out)   , contiguous    :: cdf(:)
-        integer(IKC), intent(in)    , contiguous    :: X(:)
-        integer(IKC), intent(in)                    :: lower, upper
+        use pm_kind, only: IKG => IK4, RKG => RK2
+        real(RKG)   , intent(out)   , contiguous    :: cdf(:)
+        integer(IKG), intent(in)    , contiguous    :: X(:)
+        integer(IKG), intent(in)                    :: lower, upper
     end subroutine
 #endif
 
@@ -2259,10 +2259,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCDF_LU_D1_RK1_IK4
 #endif
-        use pm_kind, only: IKC => IK4, RKC => RK1
-        real(RKC)   , intent(out)   , contiguous    :: cdf(:)
-        integer(IKC), intent(in)    , contiguous    :: X(:)
-        integer(IKC), intent(in)                    :: lower, upper
+        use pm_kind, only: IKG => IK4, RKG => RK1
+        real(RKG)   , intent(out)   , contiguous    :: cdf(:)
+        integer(IKG), intent(in)    , contiguous    :: X(:)
+        integer(IKG), intent(in)                    :: lower, upper
     end subroutine
 #endif
 
@@ -2273,10 +2273,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCDF_LU_D1_RK5_IK3
 #endif
-        use pm_kind, only: IKC => IK3, RKC => RK5
-        real(RKC)   , intent(out)   , contiguous    :: cdf(:)
-        integer(IKC), intent(in)    , contiguous    :: X(:)
-        integer(IKC), intent(in)                    :: lower, upper
+        use pm_kind, only: IKG => IK3, RKG => RK5
+        real(RKG)   , intent(out)   , contiguous    :: cdf(:)
+        integer(IKG), intent(in)    , contiguous    :: X(:)
+        integer(IKG), intent(in)                    :: lower, upper
     end subroutine
 #endif
 
@@ -2285,10 +2285,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCDF_LU_D1_RK4_IK3
 #endif
-        use pm_kind, only: IKC => IK3, RKC => RK4
-        real(RKC)   , intent(out)   , contiguous    :: cdf(:)
-        integer(IKC), intent(in)    , contiguous    :: X(:)
-        integer(IKC), intent(in)                    :: lower, upper
+        use pm_kind, only: IKG => IK3, RKG => RK4
+        real(RKG)   , intent(out)   , contiguous    :: cdf(:)
+        integer(IKG), intent(in)    , contiguous    :: X(:)
+        integer(IKG), intent(in)                    :: lower, upper
     end subroutine
 #endif
 
@@ -2297,10 +2297,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCDF_LU_D1_RK3_IK3
 #endif
-        use pm_kind, only: IKC => IK3, RKC => RK3
-        real(RKC)   , intent(out)   , contiguous    :: cdf(:)
-        integer(IKC), intent(in)    , contiguous    :: X(:)
-        integer(IKC), intent(in)                    :: lower, upper
+        use pm_kind, only: IKG => IK3, RKG => RK3
+        real(RKG)   , intent(out)   , contiguous    :: cdf(:)
+        integer(IKG), intent(in)    , contiguous    :: X(:)
+        integer(IKG), intent(in)                    :: lower, upper
     end subroutine
 #endif
 
@@ -2309,10 +2309,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCDF_LU_D1_RK2_IK3
 #endif
-        use pm_kind, only: IKC => IK3, RKC => RK2
-        real(RKC)   , intent(out)   , contiguous    :: cdf(:)
-        integer(IKC), intent(in)    , contiguous    :: X(:)
-        integer(IKC), intent(in)                    :: lower, upper
+        use pm_kind, only: IKG => IK3, RKG => RK2
+        real(RKG)   , intent(out)   , contiguous    :: cdf(:)
+        integer(IKG), intent(in)    , contiguous    :: X(:)
+        integer(IKG), intent(in)                    :: lower, upper
     end subroutine
 #endif
 
@@ -2321,10 +2321,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCDF_LU_D1_RK1_IK3
 #endif
-        use pm_kind, only: IKC => IK3, RKC => RK1
-        real(RKC)   , intent(out)   , contiguous    :: cdf(:)
-        integer(IKC), intent(in)    , contiguous    :: X(:)
-        integer(IKC), intent(in)                    :: lower, upper
+        use pm_kind, only: IKG => IK3, RKG => RK1
+        real(RKG)   , intent(out)   , contiguous    :: cdf(:)
+        integer(IKG), intent(in)    , contiguous    :: X(:)
+        integer(IKG), intent(in)                    :: lower, upper
     end subroutine
 #endif
 
@@ -2335,10 +2335,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCDF_LU_D1_RK5_IK2
 #endif
-        use pm_kind, only: IKC => IK2, RKC => RK5
-        real(RKC)   , intent(out)   , contiguous    :: cdf(:)
-        integer(IKC), intent(in)    , contiguous    :: X(:)
-        integer(IKC), intent(in)                    :: lower, upper
+        use pm_kind, only: IKG => IK2, RKG => RK5
+        real(RKG)   , intent(out)   , contiguous    :: cdf(:)
+        integer(IKG), intent(in)    , contiguous    :: X(:)
+        integer(IKG), intent(in)                    :: lower, upper
     end subroutine
 #endif
 
@@ -2347,10 +2347,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCDF_LU_D1_RK4_IK2
 #endif
-        use pm_kind, only: IKC => IK2, RKC => RK4
-        real(RKC)   , intent(out)   , contiguous    :: cdf(:)
-        integer(IKC), intent(in)    , contiguous    :: X(:)
-        integer(IKC), intent(in)                    :: lower, upper
+        use pm_kind, only: IKG => IK2, RKG => RK4
+        real(RKG)   , intent(out)   , contiguous    :: cdf(:)
+        integer(IKG), intent(in)    , contiguous    :: X(:)
+        integer(IKG), intent(in)                    :: lower, upper
     end subroutine
 #endif
 
@@ -2359,10 +2359,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCDF_LU_D1_RK3_IK2
 #endif
-        use pm_kind, only: IKC => IK2, RKC => RK3
-        real(RKC)   , intent(out)   , contiguous    :: cdf(:)
-        integer(IKC), intent(in)    , contiguous    :: X(:)
-        integer(IKC), intent(in)                    :: lower, upper
+        use pm_kind, only: IKG => IK2, RKG => RK3
+        real(RKG)   , intent(out)   , contiguous    :: cdf(:)
+        integer(IKG), intent(in)    , contiguous    :: X(:)
+        integer(IKG), intent(in)                    :: lower, upper
     end subroutine
 #endif
 
@@ -2371,10 +2371,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCDF_LU_D1_RK2_IK2
 #endif
-        use pm_kind, only: IKC => IK2, RKC => RK2
-        real(RKC)   , intent(out)   , contiguous    :: cdf(:)
-        integer(IKC), intent(in)    , contiguous    :: X(:)
-        integer(IKC), intent(in)                    :: lower, upper
+        use pm_kind, only: IKG => IK2, RKG => RK2
+        real(RKG)   , intent(out)   , contiguous    :: cdf(:)
+        integer(IKG), intent(in)    , contiguous    :: X(:)
+        integer(IKG), intent(in)                    :: lower, upper
     end subroutine
 #endif
 
@@ -2383,10 +2383,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCDF_LU_D1_RK1_IK2
 #endif
-        use pm_kind, only: IKC => IK2, RKC => RK1
-        real(RKC)   , intent(out)   , contiguous    :: cdf(:)
-        integer(IKC), intent(in)    , contiguous    :: X(:)
-        integer(IKC), intent(in)                    :: lower, upper
+        use pm_kind, only: IKG => IK2, RKG => RK1
+        real(RKG)   , intent(out)   , contiguous    :: cdf(:)
+        integer(IKG), intent(in)    , contiguous    :: X(:)
+        integer(IKG), intent(in)                    :: lower, upper
     end subroutine
 #endif
 
@@ -2397,10 +2397,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCDF_LU_D1_RK5_IK1
 #endif
-        use pm_kind, only: IKC => IK1, RKC => RK5
-        real(RKC)   , intent(out)   , contiguous    :: cdf(:)
-        integer(IKC), intent(in)    , contiguous    :: X(:)
-        integer(IKC), intent(in)                    :: lower, upper
+        use pm_kind, only: IKG => IK1, RKG => RK5
+        real(RKG)   , intent(out)   , contiguous    :: cdf(:)
+        integer(IKG), intent(in)    , contiguous    :: X(:)
+        integer(IKG), intent(in)                    :: lower, upper
     end subroutine
 #endif
 
@@ -2409,10 +2409,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCDF_LU_D1_RK4_IK1
 #endif
-        use pm_kind, only: IKC => IK1, RKC => RK4
-        real(RKC)   , intent(out)   , contiguous    :: cdf(:)
-        integer(IKC), intent(in)    , contiguous    :: X(:)
-        integer(IKC), intent(in)                    :: lower, upper
+        use pm_kind, only: IKG => IK1, RKG => RK4
+        real(RKG)   , intent(out)   , contiguous    :: cdf(:)
+        integer(IKG), intent(in)    , contiguous    :: X(:)
+        integer(IKG), intent(in)                    :: lower, upper
     end subroutine
 #endif
 
@@ -2421,10 +2421,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCDF_LU_D1_RK3_IK1
 #endif
-        use pm_kind, only: IKC => IK1, RKC => RK3
-        real(RKC)   , intent(out)   , contiguous    :: cdf(:)
-        integer(IKC), intent(in)    , contiguous    :: X(:)
-        integer(IKC), intent(in)                    :: lower, upper
+        use pm_kind, only: IKG => IK1, RKG => RK3
+        real(RKG)   , intent(out)   , contiguous    :: cdf(:)
+        integer(IKG), intent(in)    , contiguous    :: X(:)
+        integer(IKG), intent(in)                    :: lower, upper
     end subroutine
 #endif
 
@@ -2433,10 +2433,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCDF_LU_D1_RK2_IK1
 #endif
-        use pm_kind, only: IKC => IK1, RKC => RK2
-        real(RKC)   , intent(out)   , contiguous    :: cdf(:)
-        integer(IKC), intent(in)    , contiguous    :: X(:)
-        integer(IKC), intent(in)                    :: lower, upper
+        use pm_kind, only: IKG => IK1, RKG => RK2
+        real(RKG)   , intent(out)   , contiguous    :: cdf(:)
+        integer(IKG), intent(in)    , contiguous    :: X(:)
+        integer(IKG), intent(in)                    :: lower, upper
     end subroutine
 #endif
 
@@ -2445,10 +2445,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCDF_LU_D1_RK1_IK1
 #endif
-        use pm_kind, only: IKC => IK1, RKC => RK1
-        real(RKC)   , intent(out)   , contiguous    :: cdf(:)
-        integer(IKC), intent(in)    , contiguous    :: X(:)
-        integer(IKC), intent(in)                    :: lower, upper
+        use pm_kind, only: IKG => IK1, RKG => RK1
+        real(RKG)   , intent(out)   , contiguous    :: cdf(:)
+        integer(IKG), intent(in)    , contiguous    :: X(:)
+        integer(IKG), intent(in)                    :: lower, upper
     end subroutine
 #endif
 
@@ -2465,10 +2465,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCDF_LU_D1_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC), intent(out)   , contiguous    :: cdf(:)
-        complex(CKC), intent(in)    , contiguous    :: X(:)
-        complex(CKC), intent(in)                    :: lower, upper
+        use pm_kind, only: CKG => CK5
+        complex(CKG), intent(out)   , contiguous    :: cdf(:)
+        complex(CKG), intent(in)    , contiguous    :: X(:)
+        complex(CKG), intent(in)                    :: lower, upper
     end subroutine
 #endif
 
@@ -2477,10 +2477,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCDF_LU_D1_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC), intent(out)   , contiguous    :: cdf(:)
-        complex(CKC), intent(in)    , contiguous    :: X(:)
-        complex(CKC), intent(in)                    :: lower, upper
+        use pm_kind, only: CKG => CK4
+        complex(CKG), intent(out)   , contiguous    :: cdf(:)
+        complex(CKG), intent(in)    , contiguous    :: X(:)
+        complex(CKG), intent(in)                    :: lower, upper
     end subroutine
 #endif
 
@@ -2489,10 +2489,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCDF_LU_D1_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC), intent(out)   , contiguous    :: cdf(:)
-        complex(CKC), intent(in)    , contiguous    :: X(:)
-        complex(CKC), intent(in)                    :: lower, upper
+        use pm_kind, only: CKG => CK3
+        complex(CKG), intent(out)   , contiguous    :: cdf(:)
+        complex(CKG), intent(in)    , contiguous    :: X(:)
+        complex(CKG), intent(in)                    :: lower, upper
     end subroutine
 #endif
 
@@ -2501,10 +2501,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCDF_LU_D1_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC), intent(out)   , contiguous    :: cdf(:)
-        complex(CKC), intent(in)    , contiguous    :: X(:)
-        complex(CKC), intent(in)                    :: lower, upper
+        use pm_kind, only: CKG => CK2
+        complex(CKG), intent(out)   , contiguous    :: cdf(:)
+        complex(CKG), intent(in)    , contiguous    :: X(:)
+        complex(CKG), intent(in)                    :: lower, upper
     end subroutine
 #endif
 
@@ -2513,10 +2513,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCDF_LU_D1_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC), intent(out)   , contiguous    :: cdf(:)
-        complex(CKC), intent(in)    , contiguous    :: X(:)
-        complex(CKC), intent(in)                    :: lower, upper
+        use pm_kind, only: CKG => CK1
+        complex(CKG), intent(out)   , contiguous    :: cdf(:)
+        complex(CKG), intent(in)    , contiguous    :: X(:)
+        complex(CKG), intent(in)                    :: lower, upper
     end subroutine
 #endif
 
@@ -2533,10 +2533,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCDF_LU_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(out)   , contiguous    :: cdf(:)
-        real(RKC)   , intent(in)    , contiguous    :: X(:)
-        real(RKC)   , intent(in)                    :: lower, upper
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(out)   , contiguous    :: cdf(:)
+        real(RKG)   , intent(in)    , contiguous    :: X(:)
+        real(RKG)   , intent(in)                    :: lower, upper
     end subroutine
 #endif
 
@@ -2545,10 +2545,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCDF_LU_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(out)   , contiguous    :: cdf(:)
-        real(RKC)   , intent(in)    , contiguous    :: X(:)
-        real(RKC)   , intent(in)                    :: lower, upper
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(out)   , contiguous    :: cdf(:)
+        real(RKG)   , intent(in)    , contiguous    :: X(:)
+        real(RKG)   , intent(in)                    :: lower, upper
     end subroutine
 #endif
 
@@ -2557,10 +2557,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCDF_LU_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(out)   , contiguous    :: cdf(:)
-        real(RKC)   , intent(in)    , contiguous    :: X(:)
-        real(RKC)   , intent(in)                    :: lower, upper
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(out)   , contiguous    :: cdf(:)
+        real(RKG)   , intent(in)    , contiguous    :: X(:)
+        real(RKG)   , intent(in)                    :: lower, upper
     end subroutine
 #endif
 
@@ -2569,10 +2569,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCDF_LU_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(out)   , contiguous    :: cdf(:)
-        real(RKC)   , intent(in)    , contiguous    :: X(:)
-        real(RKC)   , intent(in)                    :: lower, upper
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(out)   , contiguous    :: cdf(:)
+        real(RKG)   , intent(in)    , contiguous    :: X(:)
+        real(RKG)   , intent(in)                    :: lower, upper
     end subroutine
 #endif
 
@@ -2581,10 +2581,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCDF_LU_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(out)   , contiguous    :: cdf(:)
-        real(RKC)   , intent(in)    , contiguous    :: X(:)
-        real(RKC)   , intent(in)                    :: lower, upper
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(out)   , contiguous    :: cdf(:)
+        real(RKG)   , intent(in)    , contiguous    :: X(:)
+        real(RKG)   , intent(in)                    :: lower, upper
     end subroutine
 #endif
 
@@ -3245,8 +3245,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: xoshiro256ssw_typer
 #endif
-        use pm_kind, only: IKC => IK64
-        integer(IKC)            , intent(in), optional  :: seed, jump(:)
+        use pm_kind, only: IKG => IK64
+        integer(IKG)            , intent(in), optional  :: seed, jump(:)
         integer(IK)             , intent(in), optional  :: imageID
         type(xoshiro256ssw_type)                        :: rng
     end function
@@ -3456,8 +3456,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: xoshiro256ssg_typer
 #endif
-        use pm_kind, only: IKC => IK64
-        integer(IKC)            , intent(in), optional  :: seed, jump(:)
+        use pm_kind, only: IKG => IK64
+        integer(IKG)            , intent(in), optional  :: seed, jump(:)
         integer(IK)             , intent(in), optional  :: imageID
         type(xoshiro256ssg_type)                        :: rng
     end function
@@ -3684,8 +3684,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: splitmix64_typer
 #endif
-        use pm_kind, only: IKC => IK64
-        integer(IKC)            , intent(in), optional  :: seed
+        use pm_kind, only: IKG => IK64
+        integer(IKG)            , intent(in), optional  :: seed
         integer(IK)             , intent(in), optional  :: imageID
         type(splitmix64_type)                           :: rng
     end function
@@ -4159,8 +4159,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGDDD_D0_LK
 #endif
-        use pm_kind, only: LKC => LK
-        logical(LKC)                                            :: rand
+        use pm_kind, only: LKG => LK
+        logical(LKG)                                            :: rand
     end function
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -4176,9 +4176,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGDLU_D0_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)        , intent(in)                    :: lb, ub
-        character(max(len(lb,IK),len(ub,IK)),SKC)               :: rand
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)        , intent(in)                    :: lb, ub
+        character(max(len(lb,IK),len(ub,IK)),SKG)               :: rand
     end function
 #endif
 
@@ -4187,9 +4187,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGDLU_D0_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)        , intent(in)                    :: lb, ub
-        character(max(len(lb,IK),len(ub,IK)),SKC)               :: rand
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)        , intent(in)                    :: lb, ub
+        character(max(len(lb,IK),len(ub,IK)),SKG)               :: rand
     end function
 #endif
 
@@ -4198,9 +4198,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGDLU_D0_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)        , intent(in)                    :: lb, ub
-        character(max(len(lb,IK),len(ub,IK)),SKC)               :: rand
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)        , intent(in)                    :: lb, ub
+        character(max(len(lb,IK),len(ub,IK)),SKG)               :: rand
     end function
 #endif
 
@@ -4209,9 +4209,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGDLU_D0_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)        , intent(in)                    :: lb, ub
-        character(max(len(lb,IK),len(ub,IK)),SKC)               :: rand
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)        , intent(in)                    :: lb, ub
+        character(max(len(lb,IK),len(ub,IK)),SKG)               :: rand
     end function
 #endif
 
@@ -4220,9 +4220,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGDLU_D0_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)        , intent(in)                    :: lb, ub
-        character(max(len(lb,IK),len(ub,IK)),SKC)               :: rand
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)        , intent(in)                    :: lb, ub
+        character(max(len(lb,IK),len(ub,IK)),SKG)               :: rand
     end function
 #endif
 
@@ -4233,9 +4233,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGDLU_D0_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)            , intent(in)                    :: lb, ub
-        integer(IKC)                                            :: rand
+        use pm_kind, only: IKG => IK5
+        integer(IKG)            , intent(in)                    :: lb, ub
+        integer(IKG)                                            :: rand
     end function
 #endif
 
@@ -4244,9 +4244,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGDLU_D0_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)            , intent(in)                    :: lb, ub
-        integer(IKC)                                            :: rand
+        use pm_kind, only: IKG => IK4
+        integer(IKG)            , intent(in)                    :: lb, ub
+        integer(IKG)                                            :: rand
     end function
 #endif
 
@@ -4255,9 +4255,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGDLU_D0_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)            , intent(in)                    :: lb, ub
-        integer(IKC)                                            :: rand
+        use pm_kind, only: IKG => IK3
+        integer(IKG)            , intent(in)                    :: lb, ub
+        integer(IKG)                                            :: rand
     end function
 #endif
 
@@ -4266,9 +4266,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGDLU_D0_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)            , intent(in)                    :: lb, ub
-        integer(IKC)                                            :: rand
+        use pm_kind, only: IKG => IK2
+        integer(IKG)            , intent(in)                    :: lb, ub
+        integer(IKG)                                            :: rand
     end function
 #endif
 
@@ -4277,9 +4277,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGDLU_D0_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)            , intent(in)                    :: lb, ub
-        integer(IKC)                                            :: rand
+        use pm_kind, only: IKG => IK1
+        integer(IKG)            , intent(in)                    :: lb, ub
+        integer(IKG)                                            :: rand
     end function
 #endif
 
@@ -4290,9 +4290,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGDLU_D0_LK5
 #endif
-        use pm_kind, only: LKC => LK5
-        logical(LKC)            , intent(in)                    :: lb, ub
-        logical(LKC)                                            :: rand
+        use pm_kind, only: LKG => LK5
+        logical(LKG)            , intent(in)                    :: lb, ub
+        logical(LKG)                                            :: rand
     end function
 #endif
 
@@ -4301,9 +4301,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGDLU_D0_LK4
 #endif
-        use pm_kind, only: LKC => LK4
-        logical(LKC)            , intent(in)                    :: lb, ub
-        logical(LKC)                                            :: rand
+        use pm_kind, only: LKG => LK4
+        logical(LKG)            , intent(in)                    :: lb, ub
+        logical(LKG)                                            :: rand
     end function
 #endif
 
@@ -4312,9 +4312,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGDLU_D0_LK3
 #endif
-        use pm_kind, only: LKC => LK3
-        logical(LKC)            , intent(in)                    :: lb, ub
-        logical(LKC)                                            :: rand
+        use pm_kind, only: LKG => LK3
+        logical(LKG)            , intent(in)                    :: lb, ub
+        logical(LKG)                                            :: rand
     end function
 #endif
 
@@ -4323,9 +4323,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGDLU_D0_LK2
 #endif
-        use pm_kind, only: LKC => LK2
-        logical(LKC)            , intent(in)                    :: lb, ub
-        logical(LKC)                                            :: rand
+        use pm_kind, only: LKG => LK2
+        logical(LKG)            , intent(in)                    :: lb, ub
+        logical(LKG)                                            :: rand
     end function
 #endif
 
@@ -4334,9 +4334,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGDLU_D0_LK1
 #endif
-        use pm_kind, only: LKC => LK1
-        logical(LKC)            , intent(in)                    :: lb, ub
-        logical(LKC)                                            :: rand
+        use pm_kind, only: LKG => LK1
+        logical(LKG)            , intent(in)                    :: lb, ub
+        logical(LKG)                                            :: rand
     end function
 #endif
 
@@ -4347,9 +4347,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGDLU_D0_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)            , intent(in)                    :: lb, ub
-        complex(CKC)                                            :: rand
+        use pm_kind, only: CKG => CK5
+        complex(CKG)            , intent(in)                    :: lb, ub
+        complex(CKG)                                            :: rand
     end function
 #endif
 
@@ -4358,9 +4358,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGDLU_D0_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)            , intent(in)                    :: lb, ub
-        complex(CKC)                                            :: rand
+        use pm_kind, only: CKG => CK4
+        complex(CKG)            , intent(in)                    :: lb, ub
+        complex(CKG)                                            :: rand
     end function
 #endif
 
@@ -4369,9 +4369,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGDLU_D0_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)            , intent(in)                    :: lb, ub
-        complex(CKC)                                            :: rand
+        use pm_kind, only: CKG => CK3
+        complex(CKG)            , intent(in)                    :: lb, ub
+        complex(CKG)                                            :: rand
     end function
 #endif
 
@@ -4380,9 +4380,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGDLU_D0_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)            , intent(in)                    :: lb, ub
-        complex(CKC)                                            :: rand
+        use pm_kind, only: CKG => CK2
+        complex(CKG)            , intent(in)                    :: lb, ub
+        complex(CKG)                                            :: rand
     end function
 #endif
 
@@ -4391,9 +4391,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGDLU_D0_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)            , intent(in)                    :: lb, ub
-        complex(CKC)                                            :: rand
+        use pm_kind, only: CKG => CK1
+        complex(CKG)            , intent(in)                    :: lb, ub
+        complex(CKG)                                            :: rand
     end function
 #endif
 
@@ -4404,9 +4404,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGDLU_D0_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)               , intent(in)                    :: lb, ub
-        real(RKC)                                               :: rand
+        use pm_kind, only: RKG => RK5
+        real(RKG)               , intent(in)                    :: lb, ub
+        real(RKG)                                               :: rand
     end function
 #endif
 
@@ -4415,9 +4415,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGDLU_D0_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)               , intent(in)                    :: lb, ub
-        real(RKC)                                               :: rand
+        use pm_kind, only: RKG => RK4
+        real(RKG)               , intent(in)                    :: lb, ub
+        real(RKG)                                               :: rand
     end function
 #endif
 
@@ -4426,9 +4426,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGDLU_D0_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)               , intent(in)                    :: lb, ub
-        real(RKC)                                               :: rand
+        use pm_kind, only: RKG => RK3
+        real(RKG)               , intent(in)                    :: lb, ub
+        real(RKG)                                               :: rand
     end function
 #endif
 
@@ -4437,9 +4437,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGDLU_D0_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)               , intent(in)                    :: lb, ub
-        real(RKC)                                               :: rand
+        use pm_kind, only: RKG => RK2
+        real(RKG)               , intent(in)                    :: lb, ub
+        real(RKG)                                               :: rand
     end function
 #endif
 
@@ -4448,9 +4448,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGDLU_D0_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)               , intent(in)                    :: lb, ub
-        real(RKC)                                               :: rand
+        use pm_kind, only: RKG => RK1
+        real(RKG)               , intent(in)                    :: lb, ub
+        real(RKG)                                               :: rand
     end function
 #endif
 
@@ -4467,10 +4467,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGDLU_D1_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)        , intent(in)                    :: lb, ub
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)        , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1
-        character(len(lb,IK),SKC)                               :: rand(s1)
+        character(len(lb,IK),SKG)                               :: rand(s1)
     end function
 #endif
 
@@ -4479,10 +4479,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGDLU_D1_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)        , intent(in)                    :: lb, ub
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)        , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1
-        character(len(lb,IK),SKC)                               :: rand(s1)
+        character(len(lb,IK),SKG)                               :: rand(s1)
     end function
 #endif
 
@@ -4491,10 +4491,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGDLU_D1_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)        , intent(in)                    :: lb, ub
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)        , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1
-        character(len(lb,IK),SKC)                               :: rand(s1)
+        character(len(lb,IK),SKG)                               :: rand(s1)
     end function
 #endif
 
@@ -4503,10 +4503,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGDLU_D1_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)        , intent(in)                    :: lb, ub
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)        , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1
-        character(len(lb,IK),SKC)                               :: rand(s1)
+        character(len(lb,IK),SKG)                               :: rand(s1)
     end function
 #endif
 
@@ -4515,10 +4515,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGDLU_D1_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)        , intent(in)                    :: lb, ub
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)        , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1
-        character(len(lb,IK),SKC)                               :: rand(s1)
+        character(len(lb,IK),SKG)                               :: rand(s1)
     end function
 #endif
 
@@ -4529,10 +4529,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGDLU_D1_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: IKG => IK5
+        integer(IKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1
-        integer(IKC)                                            :: rand(s1)
+        integer(IKG)                                            :: rand(s1)
     end function
 #endif
 
@@ -4541,10 +4541,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGDLU_D1_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: IKG => IK4
+        integer(IKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1
-        integer(IKC)                                            :: rand(s1)
+        integer(IKG)                                            :: rand(s1)
     end function
 #endif
 
@@ -4553,10 +4553,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGDLU_D1_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: IKG => IK3
+        integer(IKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1
-        integer(IKC)                                            :: rand(s1)
+        integer(IKG)                                            :: rand(s1)
     end function
 #endif
 
@@ -4565,10 +4565,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGDLU_D1_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: IKG => IK2
+        integer(IKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1
-        integer(IKC)                                            :: rand(s1)
+        integer(IKG)                                            :: rand(s1)
     end function
 #endif
 
@@ -4577,10 +4577,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGDLU_D1_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: IKG => IK1
+        integer(IKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1
-        integer(IKC)                                            :: rand(s1)
+        integer(IKG)                                            :: rand(s1)
     end function
 #endif
 
@@ -4591,10 +4591,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGDLU_D1_LK5
 #endif
-        use pm_kind, only: LKC => LK5
-        logical(LKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: LKG => LK5
+        logical(LKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1
-        logical(LKC)                                            :: rand(s1)
+        logical(LKG)                                            :: rand(s1)
     end function
 #endif
 
@@ -4603,10 +4603,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGDLU_D1_LK4
 #endif
-        use pm_kind, only: LKC => LK4
-        logical(LKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: LKG => LK4
+        logical(LKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1
-        logical(LKC)                                            :: rand(s1)
+        logical(LKG)                                            :: rand(s1)
     end function
 #endif
 
@@ -4615,10 +4615,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGDLU_D1_LK3
 #endif
-        use pm_kind, only: LKC => LK3
-        logical(LKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: LKG => LK3
+        logical(LKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1
-        logical(LKC)                                            :: rand(s1)
+        logical(LKG)                                            :: rand(s1)
     end function
 #endif
 
@@ -4627,10 +4627,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGDLU_D1_LK2
 #endif
-        use pm_kind, only: LKC => LK2
-        logical(LKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: LKG => LK2
+        logical(LKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1
-        logical(LKC)                                            :: rand(s1)
+        logical(LKG)                                            :: rand(s1)
     end function
 #endif
 
@@ -4639,10 +4639,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGDLU_D1_LK1
 #endif
-        use pm_kind, only: LKC => LK1
-        logical(LKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: LKG => LK1
+        logical(LKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1
-        logical(LKC)                                            :: rand(s1)
+        logical(LKG)                                            :: rand(s1)
     end function
 #endif
 
@@ -4653,10 +4653,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGDLU_D1_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: CKG => CK5
+        complex(CKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1
-        complex(CKC)                                            :: rand(s1)
+        complex(CKG)                                            :: rand(s1)
     end function
 #endif
 
@@ -4665,10 +4665,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGDLU_D1_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: CKG => CK4
+        complex(CKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1
-        complex(CKC)                                            :: rand(s1)
+        complex(CKG)                                            :: rand(s1)
     end function
 #endif
 
@@ -4677,10 +4677,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGDLU_D1_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: CKG => CK3
+        complex(CKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1
-        complex(CKC)                                            :: rand(s1)
+        complex(CKG)                                            :: rand(s1)
     end function
 #endif
 
@@ -4689,10 +4689,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGDLU_D1_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: CKG => CK2
+        complex(CKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1
-        complex(CKC)                                            :: rand(s1)
+        complex(CKG)                                            :: rand(s1)
     end function
 #endif
 
@@ -4701,10 +4701,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGDLU_D1_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: CKG => CK1
+        complex(CKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1
-        complex(CKC)                                            :: rand(s1)
+        complex(CKG)                                            :: rand(s1)
     end function
 #endif
 
@@ -4715,10 +4715,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGDLU_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)               , intent(in)                    :: lb, ub
+        use pm_kind, only: RKG => RK5
+        real(RKG)               , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1
-        real(RKC)                                               :: rand(s1)
+        real(RKG)                                               :: rand(s1)
     end function
 
 #endif
@@ -4728,10 +4728,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGDLU_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)               , intent(in)                    :: lb, ub
+        use pm_kind, only: RKG => RK4
+        real(RKG)               , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1
-        real(RKC)                                               :: rand(s1)
+        real(RKG)                                               :: rand(s1)
     end function
 
 #endif
@@ -4741,10 +4741,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGDLU_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)               , intent(in)                    :: lb, ub
+        use pm_kind, only: RKG => RK3
+        real(RKG)               , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1
-        real(RKC)                                               :: rand(s1)
+        real(RKG)                                               :: rand(s1)
     end function
 
 #endif
@@ -4754,10 +4754,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGDLU_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)               , intent(in)                    :: lb, ub
+        use pm_kind, only: RKG => RK2
+        real(RKG)               , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1
-        real(RKC)                                               :: rand(s1)
+        real(RKG)                                               :: rand(s1)
     end function
 #endif
 
@@ -4766,10 +4766,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGDLU_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)               , intent(in)                    :: lb, ub
+        use pm_kind, only: RKG => RK1
+        real(RKG)               , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1
-        real(RKC)                                               :: rand(s1)
+        real(RKG)                                               :: rand(s1)
     end function
 #endif
 
@@ -4786,10 +4786,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGDLU_D2_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)        , intent(in)                    :: lb, ub
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)        , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2
-        character(len(lb,IK),SKC)                               :: rand(s1, s2)
+        character(len(lb,IK),SKG)                               :: rand(s1, s2)
     end function
 #endif
 
@@ -4798,10 +4798,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGDLU_D2_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)        , intent(in)                    :: lb, ub
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)        , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2
-        character(len(lb,IK),SKC)                               :: rand(s1, s2)
+        character(len(lb,IK),SKG)                               :: rand(s1, s2)
     end function
 #endif
 
@@ -4810,10 +4810,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGDLU_D2_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)        , intent(in)                    :: lb, ub
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)        , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2
-        character(len(lb,IK),SKC)                               :: rand(s1, s2)
+        character(len(lb,IK),SKG)                               :: rand(s1, s2)
     end function
 #endif
 
@@ -4822,10 +4822,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGDLU_D2_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)        , intent(in)                    :: lb, ub
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)        , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2
-        character(len(lb,IK),SKC)                               :: rand(s1, s2)
+        character(len(lb,IK),SKG)                               :: rand(s1, s2)
     end function
 #endif
 
@@ -4834,10 +4834,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGDLU_D2_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)        , intent(in)                    :: lb, ub
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)        , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2
-        character(len(lb,IK),SKC)                               :: rand(s1, s2)
+        character(len(lb,IK),SKG)                               :: rand(s1, s2)
     end function
 #endif
 
@@ -4848,10 +4848,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGDLU_D2_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: IKG => IK5
+        integer(IKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2
-        integer(IKC)                                            :: rand(s1, s2)
+        integer(IKG)                                            :: rand(s1, s2)
     end function
 #endif
 
@@ -4860,10 +4860,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGDLU_D2_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: IKG => IK4
+        integer(IKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2
-        integer(IKC)                                            :: rand(s1, s2)
+        integer(IKG)                                            :: rand(s1, s2)
     end function
 #endif
 
@@ -4872,10 +4872,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGDLU_D2_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: IKG => IK3
+        integer(IKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2
-        integer(IKC)                                            :: rand(s1, s2)
+        integer(IKG)                                            :: rand(s1, s2)
     end function
 #endif
 
@@ -4884,10 +4884,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGDLU_D2_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: IKG => IK2
+        integer(IKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2
-        integer(IKC)                                            :: rand(s1, s2)
+        integer(IKG)                                            :: rand(s1, s2)
     end function
 #endif
 
@@ -4896,10 +4896,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGDLU_D2_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: IKG => IK1
+        integer(IKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2
-        integer(IKC)                                            :: rand(s1, s2)
+        integer(IKG)                                            :: rand(s1, s2)
     end function
 #endif
 
@@ -4910,10 +4910,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGDLU_D2_LK5
 #endif
-        use pm_kind, only: LKC => LK5
-        logical(LKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: LKG => LK5
+        logical(LKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2
-        logical(LKC)                                            :: rand(s1, s2)
+        logical(LKG)                                            :: rand(s1, s2)
     end function
 #endif
 
@@ -4922,10 +4922,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGDLU_D2_LK4
 #endif
-        use pm_kind, only: LKC => LK4
-        logical(LKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: LKG => LK4
+        logical(LKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2
-        logical(LKC)                                            :: rand(s1, s2)
+        logical(LKG)                                            :: rand(s1, s2)
     end function
 #endif
 
@@ -4934,10 +4934,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGDLU_D2_LK3
 #endif
-        use pm_kind, only: LKC => LK3
-        logical(LKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: LKG => LK3
+        logical(LKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2
-        logical(LKC)                                            :: rand(s1, s2)
+        logical(LKG)                                            :: rand(s1, s2)
     end function
 #endif
 
@@ -4946,10 +4946,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGDLU_D2_LK2
 #endif
-        use pm_kind, only: LKC => LK2
-        logical(LKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: LKG => LK2
+        logical(LKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2
-        logical(LKC)                                            :: rand(s1, s2)
+        logical(LKG)                                            :: rand(s1, s2)
     end function
 #endif
 
@@ -4958,10 +4958,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGDLU_D2_LK1
 #endif
-        use pm_kind, only: LKC => LK1
-        logical(LKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: LKG => LK1
+        logical(LKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2
-        logical(LKC)                                            :: rand(s1, s2)
+        logical(LKG)                                            :: rand(s1, s2)
     end function
 #endif
 
@@ -4972,10 +4972,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGDLU_D2_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: CKG => CK5
+        complex(CKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2
-        complex(CKC)                                            :: rand(s1, s2)
+        complex(CKG)                                            :: rand(s1, s2)
     end function
 #endif
 
@@ -4984,10 +4984,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGDLU_D2_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: CKG => CK4
+        complex(CKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2
-        complex(CKC)                                            :: rand(s1, s2)
+        complex(CKG)                                            :: rand(s1, s2)
     end function
 #endif
 
@@ -4996,10 +4996,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGDLU_D2_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: CKG => CK3
+        complex(CKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2
-        complex(CKC)                                            :: rand(s1, s2)
+        complex(CKG)                                            :: rand(s1, s2)
     end function
 #endif
 
@@ -5008,10 +5008,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGDLU_D2_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: CKG => CK2
+        complex(CKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2
-        complex(CKC)                                            :: rand(s1, s2)
+        complex(CKG)                                            :: rand(s1, s2)
     end function
 #endif
 
@@ -5020,10 +5020,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGDLU_D2_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: CKG => CK1
+        complex(CKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2
-        complex(CKC)                                            :: rand(s1, s2)
+        complex(CKG)                                            :: rand(s1, s2)
     end function
 #endif
 
@@ -5034,10 +5034,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGDLU_D2_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)               , intent(in)                    :: lb, ub
+        use pm_kind, only: RKG => RK5
+        real(RKG)               , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2
-        real(RKC)                                               :: rand(s1, s2)
+        real(RKG)                                               :: rand(s1, s2)
     end function
 
 #endif
@@ -5047,10 +5047,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGDLU_D2_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)               , intent(in)                    :: lb, ub
+        use pm_kind, only: RKG => RK4
+        real(RKG)               , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2
-        real(RKC)                                               :: rand(s1, s2)
+        real(RKG)                                               :: rand(s1, s2)
     end function
 
 #endif
@@ -5060,10 +5060,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGDLU_D2_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)               , intent(in)                    :: lb, ub
+        use pm_kind, only: RKG => RK3
+        real(RKG)               , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2
-        real(RKC)                                               :: rand(s1, s2)
+        real(RKG)                                               :: rand(s1, s2)
     end function
 
 #endif
@@ -5073,10 +5073,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGDLU_D2_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)               , intent(in)                    :: lb, ub
+        use pm_kind, only: RKG => RK2
+        real(RKG)               , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2
-        real(RKC)                                               :: rand(s1, s2)
+        real(RKG)                                               :: rand(s1, s2)
     end function
 #endif
 
@@ -5085,10 +5085,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGDLU_D2_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)               , intent(in)                    :: lb, ub
+        use pm_kind, only: RKG => RK1
+        real(RKG)               , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2
-        real(RKC)                                               :: rand(s1, s2)
+        real(RKG)                                               :: rand(s1, s2)
     end function
 #endif
 
@@ -5105,10 +5105,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGDLU_D3_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)        , intent(in)                    :: lb, ub
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)        , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2, s3
-        character(len(lb,IK),SKC)                               :: rand(s1, s2, s3)
+        character(len(lb,IK),SKG)                               :: rand(s1, s2, s3)
     end function
 #endif
 
@@ -5117,10 +5117,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGDLU_D3_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)        , intent(in)                    :: lb, ub
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)        , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2, s3
-        character(len(lb,IK),SKC)                               :: rand(s1, s2, s3)
+        character(len(lb,IK),SKG)                               :: rand(s1, s2, s3)
     end function
 #endif
 
@@ -5129,10 +5129,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGDLU_D3_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)        , intent(in)                    :: lb, ub
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)        , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2, s3
-        character(len(lb,IK),SKC)                               :: rand(s1, s2, s3)
+        character(len(lb,IK),SKG)                               :: rand(s1, s2, s3)
     end function
 #endif
 
@@ -5141,10 +5141,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGDLU_D3_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)        , intent(in)                    :: lb, ub
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)        , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2, s3
-        character(len(lb,IK),SKC)                               :: rand(s1, s2, s3)
+        character(len(lb,IK),SKG)                               :: rand(s1, s2, s3)
     end function
 #endif
 
@@ -5153,10 +5153,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGDLU_D3_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)        , intent(in)                    :: lb, ub
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)        , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2, s3
-        character(len(lb,IK),SKC)                               :: rand(s1, s2, s3)
+        character(len(lb,IK),SKG)                               :: rand(s1, s2, s3)
     end function
 #endif
 
@@ -5167,10 +5167,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGDLU_D3_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: IKG => IK5
+        integer(IKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2, s3
-        integer(IKC)                                            :: rand(s1, s2, s3)
+        integer(IKG)                                            :: rand(s1, s2, s3)
     end function
 #endif
 
@@ -5179,10 +5179,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGDLU_D3_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: IKG => IK4
+        integer(IKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2, s3
-        integer(IKC)                                            :: rand(s1, s2, s3)
+        integer(IKG)                                            :: rand(s1, s2, s3)
     end function
 #endif
 
@@ -5191,10 +5191,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGDLU_D3_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: IKG => IK3
+        integer(IKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2, s3
-        integer(IKC)                                            :: rand(s1, s2, s3)
+        integer(IKG)                                            :: rand(s1, s2, s3)
     end function
 #endif
 
@@ -5203,10 +5203,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGDLU_D3_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: IKG => IK2
+        integer(IKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2, s3
-        integer(IKC)                                            :: rand(s1, s2, s3)
+        integer(IKG)                                            :: rand(s1, s2, s3)
     end function
 #endif
 
@@ -5215,10 +5215,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGDLU_D3_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: IKG => IK1
+        integer(IKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2, s3
-        integer(IKC)                                            :: rand(s1, s2, s3)
+        integer(IKG)                                            :: rand(s1, s2, s3)
     end function
 #endif
 
@@ -5229,10 +5229,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGDLU_D3_LK5
 #endif
-        use pm_kind, only: LKC => LK5
-        logical(LKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: LKG => LK5
+        logical(LKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2, s3
-        logical(LKC)                                            :: rand(s1, s2, s3)
+        logical(LKG)                                            :: rand(s1, s2, s3)
     end function
 #endif
 
@@ -5241,10 +5241,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGDLU_D3_LK4
 #endif
-        use pm_kind, only: LKC => LK4
-        logical(LKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: LKG => LK4
+        logical(LKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2, s3
-        logical(LKC)                                            :: rand(s1, s2, s3)
+        logical(LKG)                                            :: rand(s1, s2, s3)
     end function
 #endif
 
@@ -5253,10 +5253,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGDLU_D3_LK3
 #endif
-        use pm_kind, only: LKC => LK3
-        logical(LKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: LKG => LK3
+        logical(LKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2, s3
-        logical(LKC)                                            :: rand(s1, s2, s3)
+        logical(LKG)                                            :: rand(s1, s2, s3)
     end function
 #endif
 
@@ -5265,10 +5265,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGDLU_D3_LK2
 #endif
-        use pm_kind, only: LKC => LK2
-        logical(LKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: LKG => LK2
+        logical(LKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2, s3
-        logical(LKC)                                            :: rand(s1, s2, s3)
+        logical(LKG)                                            :: rand(s1, s2, s3)
     end function
 #endif
 
@@ -5277,10 +5277,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGDLU_D3_LK1
 #endif
-        use pm_kind, only: LKC => LK1
-        logical(LKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: LKG => LK1
+        logical(LKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2, s3
-        logical(LKC)                                            :: rand(s1, s2, s3)
+        logical(LKG)                                            :: rand(s1, s2, s3)
     end function
 #endif
 
@@ -5291,10 +5291,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGDLU_D3_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: CKG => CK5
+        complex(CKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2, s3
-        complex(CKC)                                            :: rand(s1, s2, s3)
+        complex(CKG)                                            :: rand(s1, s2, s3)
     end function
 #endif
 
@@ -5303,10 +5303,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGDLU_D3_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: CKG => CK4
+        complex(CKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2, s3
-        complex(CKC)                                            :: rand(s1, s2, s3)
+        complex(CKG)                                            :: rand(s1, s2, s3)
     end function
 #endif
 
@@ -5315,10 +5315,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGDLU_D3_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: CKG => CK3
+        complex(CKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2, s3
-        complex(CKC)                                            :: rand(s1, s2, s3)
+        complex(CKG)                                            :: rand(s1, s2, s3)
     end function
 #endif
 
@@ -5327,10 +5327,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGDLU_D3_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: CKG => CK2
+        complex(CKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2, s3
-        complex(CKC)                                            :: rand(s1, s2, s3)
+        complex(CKG)                                            :: rand(s1, s2, s3)
     end function
 #endif
 
@@ -5339,10 +5339,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGDLU_D3_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: CKG => CK1
+        complex(CKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2, s3
-        complex(CKC)                                            :: rand(s1, s2, s3)
+        complex(CKG)                                            :: rand(s1, s2, s3)
     end function
 #endif
 
@@ -5353,10 +5353,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGDLU_D3_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)               , intent(in)                    :: lb, ub
+        use pm_kind, only: RKG => RK5
+        real(RKG)               , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2, s3
-        real(RKC)                                               :: rand(s1, s2, s3)
+        real(RKG)                                               :: rand(s1, s2, s3)
     end function
 
 #endif
@@ -5366,10 +5366,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGDLU_D3_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)               , intent(in)                    :: lb, ub
+        use pm_kind, only: RKG => RK4
+        real(RKG)               , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2, s3
-        real(RKC)                                               :: rand(s1, s2, s3)
+        real(RKG)                                               :: rand(s1, s2, s3)
     end function
 
 #endif
@@ -5379,10 +5379,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGDLU_D3_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)               , intent(in)                    :: lb, ub
+        use pm_kind, only: RKG => RK3
+        real(RKG)               , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2, s3
-        real(RKC)                                               :: rand(s1, s2, s3)
+        real(RKG)                                               :: rand(s1, s2, s3)
     end function
 
 #endif
@@ -5392,10 +5392,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGDLU_D3_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)               , intent(in)                    :: lb, ub
+        use pm_kind, only: RKG => RK2
+        real(RKG)               , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2, s3
-        real(RKC)                                               :: rand(s1, s2, s3)
+        real(RKG)                                               :: rand(s1, s2, s3)
     end function
 #endif
 
@@ -5404,10 +5404,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGDLU_D3_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)               , intent(in)                    :: lb, ub
+        use pm_kind, only: RKG => RK1
+        real(RKG)               , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2, s3
-        real(RKC)                                               :: rand(s1, s2, s3)
+        real(RKG)                                               :: rand(s1, s2, s3)
     end function
 #endif
 
@@ -5433,8 +5433,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGFDD_D0_LK
 #endif
-        use pm_kind, only: LKC => LK
-        logical(LKC)                                            :: rand
+        use pm_kind, only: LKG => LK
+        logical(LKG)                                            :: rand
         type(rngf_type)         , intent(inout)                 :: rng
     end function
 
@@ -5451,9 +5451,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGFLU_D0_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)        , intent(in)                    :: lb, ub
-        character(max(len(lb,IK),len(ub,IK)),SKC)               :: rand
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)        , intent(in)                    :: lb, ub
+        character(max(len(lb,IK),len(ub,IK)),SKG)               :: rand
         type(rngf_type)         , intent(inout)                 :: rng
     end function
 #endif
@@ -5463,9 +5463,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGFLU_D0_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)        , intent(in)                    :: lb, ub
-        character(max(len(lb,IK),len(ub,IK)),SKC)               :: rand
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)        , intent(in)                    :: lb, ub
+        character(max(len(lb,IK),len(ub,IK)),SKG)               :: rand
         type(rngf_type)         , intent(inout)                 :: rng
     end function
 #endif
@@ -5475,9 +5475,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGFLU_D0_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)        , intent(in)                    :: lb, ub
-        character(max(len(lb,IK),len(ub,IK)),SKC)               :: rand
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)        , intent(in)                    :: lb, ub
+        character(max(len(lb,IK),len(ub,IK)),SKG)               :: rand
         type(rngf_type)         , intent(inout)                 :: rng
     end function
 #endif
@@ -5487,9 +5487,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGFLU_D0_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)        , intent(in)                    :: lb, ub
-        character(max(len(lb,IK),len(ub,IK)),SKC)               :: rand
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)        , intent(in)                    :: lb, ub
+        character(max(len(lb,IK),len(ub,IK)),SKG)               :: rand
         type(rngf_type)         , intent(inout)                 :: rng
     end function
 #endif
@@ -5499,9 +5499,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGFLU_D0_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)        , intent(in)                    :: lb, ub
-        character(max(len(lb,IK),len(ub,IK)),SKC)               :: rand
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)        , intent(in)                    :: lb, ub
+        character(max(len(lb,IK),len(ub,IK)),SKG)               :: rand
         type(rngf_type)         , intent(inout)                 :: rng
     end function
 #endif
@@ -5513,9 +5513,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGFLU_D0_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)            , intent(in)                    :: lb, ub
-        integer(IKC)                                            :: rand
+        use pm_kind, only: IKG => IK5
+        integer(IKG)            , intent(in)                    :: lb, ub
+        integer(IKG)                                            :: rand
         type(rngf_type)         , intent(inout)                 :: rng
     end function
 #endif
@@ -5525,9 +5525,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGFLU_D0_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)            , intent(in)                    :: lb, ub
-        integer(IKC)                                            :: rand
+        use pm_kind, only: IKG => IK4
+        integer(IKG)            , intent(in)                    :: lb, ub
+        integer(IKG)                                            :: rand
         type(rngf_type)         , intent(inout)                 :: rng
     end function
 #endif
@@ -5537,9 +5537,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGFLU_D0_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)            , intent(in)                    :: lb, ub
-        integer(IKC)                                            :: rand
+        use pm_kind, only: IKG => IK3
+        integer(IKG)            , intent(in)                    :: lb, ub
+        integer(IKG)                                            :: rand
         type(rngf_type)         , intent(inout)                 :: rng
     end function
 #endif
@@ -5549,9 +5549,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGFLU_D0_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)            , intent(in)                    :: lb, ub
-        integer(IKC)                                            :: rand
+        use pm_kind, only: IKG => IK2
+        integer(IKG)            , intent(in)                    :: lb, ub
+        integer(IKG)                                            :: rand
         type(rngf_type)         , intent(inout)                 :: rng
     end function
 #endif
@@ -5561,9 +5561,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGFLU_D0_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)            , intent(in)                    :: lb, ub
-        integer(IKC)                                            :: rand
+        use pm_kind, only: IKG => IK1
+        integer(IKG)            , intent(in)                    :: lb, ub
+        integer(IKG)                                            :: rand
         type(rngf_type)         , intent(inout)                 :: rng
     end function
 #endif
@@ -5575,9 +5575,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGFLU_D0_LK5
 #endif
-        use pm_kind, only: LKC => LK5
-        logical(LKC)            , intent(in)                    :: lb, ub
-        logical(LKC)                                            :: rand
+        use pm_kind, only: LKG => LK5
+        logical(LKG)            , intent(in)                    :: lb, ub
+        logical(LKG)                                            :: rand
         type(rngf_type)         , intent(inout)                 :: rng
     end function
 #endif
@@ -5587,9 +5587,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGFLU_D0_LK4
 #endif
-        use pm_kind, only: LKC => LK4
-        logical(LKC)            , intent(in)                    :: lb, ub
-        logical(LKC)                                            :: rand
+        use pm_kind, only: LKG => LK4
+        logical(LKG)            , intent(in)                    :: lb, ub
+        logical(LKG)                                            :: rand
         type(rngf_type)         , intent(inout)                 :: rng
     end function
 #endif
@@ -5599,9 +5599,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGFLU_D0_LK3
 #endif
-        use pm_kind, only: LKC => LK3
-        logical(LKC)            , intent(in)                    :: lb, ub
-        logical(LKC)                                            :: rand
+        use pm_kind, only: LKG => LK3
+        logical(LKG)            , intent(in)                    :: lb, ub
+        logical(LKG)                                            :: rand
         type(rngf_type)         , intent(inout)                 :: rng
     end function
 #endif
@@ -5611,9 +5611,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGFLU_D0_LK2
 #endif
-        use pm_kind, only: LKC => LK2
-        logical(LKC)            , intent(in)                    :: lb, ub
-        logical(LKC)                                            :: rand
+        use pm_kind, only: LKG => LK2
+        logical(LKG)            , intent(in)                    :: lb, ub
+        logical(LKG)                                            :: rand
         type(rngf_type)         , intent(inout)                 :: rng
     end function
 #endif
@@ -5623,9 +5623,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGFLU_D0_LK1
 #endif
-        use pm_kind, only: LKC => LK1
-        logical(LKC)            , intent(in)                    :: lb, ub
-        logical(LKC)                                            :: rand
+        use pm_kind, only: LKG => LK1
+        logical(LKG)            , intent(in)                    :: lb, ub
+        logical(LKG)                                            :: rand
         type(rngf_type)         , intent(inout)                 :: rng
     end function
 #endif
@@ -5637,9 +5637,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGFLU_D0_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)            , intent(in)                    :: lb, ub
-        complex(CKC)                                            :: rand
+        use pm_kind, only: CKG => CK5
+        complex(CKG)            , intent(in)                    :: lb, ub
+        complex(CKG)                                            :: rand
         type(rngf_type)         , intent(inout)                 :: rng
     end function
 #endif
@@ -5649,9 +5649,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGFLU_D0_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)            , intent(in)                    :: lb, ub
-        complex(CKC)                                            :: rand
+        use pm_kind, only: CKG => CK4
+        complex(CKG)            , intent(in)                    :: lb, ub
+        complex(CKG)                                            :: rand
         type(rngf_type)         , intent(inout)                 :: rng
     end function
 #endif
@@ -5661,9 +5661,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGFLU_D0_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)            , intent(in)                    :: lb, ub
-        complex(CKC)                                            :: rand
+        use pm_kind, only: CKG => CK3
+        complex(CKG)            , intent(in)                    :: lb, ub
+        complex(CKG)                                            :: rand
         type(rngf_type)         , intent(inout)                 :: rng
     end function
 #endif
@@ -5673,9 +5673,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGFLU_D0_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)            , intent(in)                    :: lb, ub
-        complex(CKC)                                            :: rand
+        use pm_kind, only: CKG => CK2
+        complex(CKG)            , intent(in)                    :: lb, ub
+        complex(CKG)                                            :: rand
         type(rngf_type)         , intent(inout)                 :: rng
     end function
 #endif
@@ -5685,9 +5685,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGFLU_D0_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)            , intent(in)                    :: lb, ub
-        complex(CKC)                                            :: rand
+        use pm_kind, only: CKG => CK1
+        complex(CKG)            , intent(in)                    :: lb, ub
+        complex(CKG)                                            :: rand
         type(rngf_type)         , intent(inout)                 :: rng
     end function
 #endif
@@ -5699,9 +5699,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGFLU_D0_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)               , intent(in)                    :: lb, ub
-        real(RKC)                                               :: rand
+        use pm_kind, only: RKG => RK5
+        real(RKG)               , intent(in)                    :: lb, ub
+        real(RKG)                                               :: rand
         type(rngf_type)         , intent(inout)                 :: rng
     end function
 #endif
@@ -5711,9 +5711,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGFLU_D0_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)               , intent(in)                    :: lb, ub
-        real(RKC)                                               :: rand
+        use pm_kind, only: RKG => RK4
+        real(RKG)               , intent(in)                    :: lb, ub
+        real(RKG)                                               :: rand
         type(rngf_type)         , intent(inout)                 :: rng
     end function
 #endif
@@ -5723,9 +5723,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGFLU_D0_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)               , intent(in)                    :: lb, ub
-        real(RKC)                                               :: rand
+        use pm_kind, only: RKG => RK3
+        real(RKG)               , intent(in)                    :: lb, ub
+        real(RKG)                                               :: rand
         type(rngf_type)         , intent(inout)                 :: rng
     end function
 #endif
@@ -5735,9 +5735,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGFLU_D0_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)               , intent(in)                    :: lb, ub
-        real(RKC)                                               :: rand
+        use pm_kind, only: RKG => RK2
+        real(RKG)               , intent(in)                    :: lb, ub
+        real(RKG)                                               :: rand
         type(rngf_type)         , intent(inout)                 :: rng
     end function
 #endif
@@ -5747,9 +5747,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGFLU_D0_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)               , intent(in)                    :: lb, ub
-        real(RKC)                                               :: rand
+        use pm_kind, only: RKG => RK1
+        real(RKG)               , intent(in)                    :: lb, ub
+        real(RKG)                                               :: rand
         type(rngf_type)         , intent(inout)                 :: rng
     end function
 #endif
@@ -5767,10 +5767,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGFLU_D1_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)        , intent(in)                    :: lb, ub
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)        , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1
-        character(len(lb,IK),SKC)                               :: rand(s1)
+        character(len(lb,IK),SKG)                               :: rand(s1)
         type(rngf_type)         , intent(inout)                 :: rng
     end function
 #endif
@@ -5780,10 +5780,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGFLU_D1_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)        , intent(in)                    :: lb, ub
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)        , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1
-        character(len(lb,IK),SKC)                               :: rand(s1)
+        character(len(lb,IK),SKG)                               :: rand(s1)
         type(rngf_type)         , intent(inout)                 :: rng
     end function
 #endif
@@ -5793,10 +5793,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGFLU_D1_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)        , intent(in)                    :: lb, ub
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)        , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1
-        character(len(lb,IK),SKC)                               :: rand(s1)
+        character(len(lb,IK),SKG)                               :: rand(s1)
         type(rngf_type)         , intent(inout)                 :: rng
     end function
 #endif
@@ -5806,10 +5806,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGFLU_D1_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)        , intent(in)                    :: lb, ub
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)        , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1
-        character(len(lb,IK),SKC)                               :: rand(s1)
+        character(len(lb,IK),SKG)                               :: rand(s1)
         type(rngf_type)         , intent(inout)                 :: rng
     end function
 #endif
@@ -5819,10 +5819,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGFLU_D1_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)        , intent(in)                    :: lb, ub
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)        , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1
-        character(len(lb,IK),SKC)                               :: rand(s1)
+        character(len(lb,IK),SKG)                               :: rand(s1)
         type(rngf_type)         , intent(inout)                 :: rng
     end function
 #endif
@@ -5834,10 +5834,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGFLU_D1_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: IKG => IK5
+        integer(IKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1
-        integer(IKC)                                            :: rand(s1)
+        integer(IKG)                                            :: rand(s1)
         type(rngf_type)         , intent(inout)                 :: rng
     end function
 #endif
@@ -5847,10 +5847,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGFLU_D1_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: IKG => IK4
+        integer(IKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1
-        integer(IKC)                                            :: rand(s1)
+        integer(IKG)                                            :: rand(s1)
         type(rngf_type)         , intent(inout)                 :: rng
     end function
 #endif
@@ -5860,10 +5860,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGFLU_D1_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: IKG => IK3
+        integer(IKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1
-        integer(IKC)                                            :: rand(s1)
+        integer(IKG)                                            :: rand(s1)
         type(rngf_type)         , intent(inout)                 :: rng
     end function
 #endif
@@ -5873,10 +5873,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGFLU_D1_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: IKG => IK2
+        integer(IKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1
-        integer(IKC)                                            :: rand(s1)
+        integer(IKG)                                            :: rand(s1)
         type(rngf_type)         , intent(inout)                 :: rng
     end function
 #endif
@@ -5886,10 +5886,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGFLU_D1_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: IKG => IK1
+        integer(IKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1
-        integer(IKC)                                            :: rand(s1)
+        integer(IKG)                                            :: rand(s1)
         type(rngf_type)         , intent(inout)                 :: rng
     end function
 #endif
@@ -5901,10 +5901,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGFLU_D1_LK5
 #endif
-        use pm_kind, only: LKC => LK5
-        logical(LKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: LKG => LK5
+        logical(LKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1
-        logical(LKC)                                            :: rand(s1)
+        logical(LKG)                                            :: rand(s1)
         type(rngf_type)         , intent(inout)                 :: rng
     end function
 #endif
@@ -5914,10 +5914,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGFLU_D1_LK4
 #endif
-        use pm_kind, only: LKC => LK4
-        logical(LKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: LKG => LK4
+        logical(LKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1
-        logical(LKC)                                            :: rand(s1)
+        logical(LKG)                                            :: rand(s1)
         type(rngf_type)         , intent(inout)                 :: rng
     end function
 #endif
@@ -5927,10 +5927,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGFLU_D1_LK3
 #endif
-        use pm_kind, only: LKC => LK3
-        logical(LKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: LKG => LK3
+        logical(LKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1
-        logical(LKC)                                            :: rand(s1)
+        logical(LKG)                                            :: rand(s1)
         type(rngf_type)         , intent(inout)                 :: rng
     end function
 #endif
@@ -5940,10 +5940,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGFLU_D1_LK2
 #endif
-        use pm_kind, only: LKC => LK2
-        logical(LKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: LKG => LK2
+        logical(LKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1
-        logical(LKC)                                            :: rand(s1)
+        logical(LKG)                                            :: rand(s1)
         type(rngf_type)         , intent(inout)                 :: rng
     end function
 #endif
@@ -5953,10 +5953,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGFLU_D1_LK1
 #endif
-        use pm_kind, only: LKC => LK1
-        logical(LKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: LKG => LK1
+        logical(LKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1
-        logical(LKC)                                            :: rand(s1)
+        logical(LKG)                                            :: rand(s1)
         type(rngf_type)         , intent(inout)                 :: rng
     end function
 #endif
@@ -5968,10 +5968,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGFLU_D1_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: CKG => CK5
+        complex(CKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1
-        complex(CKC)                                            :: rand(s1)
+        complex(CKG)                                            :: rand(s1)
         type(rngf_type)         , intent(inout)                 :: rng
     end function
 #endif
@@ -5981,10 +5981,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGFLU_D1_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: CKG => CK4
+        complex(CKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1
-        complex(CKC)                                            :: rand(s1)
+        complex(CKG)                                            :: rand(s1)
         type(rngf_type)         , intent(inout)                 :: rng
     end function
 #endif
@@ -5994,10 +5994,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGFLU_D1_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: CKG => CK3
+        complex(CKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1
-        complex(CKC)                                            :: rand(s1)
+        complex(CKG)                                            :: rand(s1)
         type(rngf_type)         , intent(inout)                 :: rng
     end function
 #endif
@@ -6007,10 +6007,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGFLU_D1_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: CKG => CK2
+        complex(CKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1
-        complex(CKC)                                            :: rand(s1)
+        complex(CKG)                                            :: rand(s1)
         type(rngf_type)         , intent(inout)                 :: rng
     end function
 #endif
@@ -6020,10 +6020,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGFLU_D1_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: CKG => CK1
+        complex(CKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1
-        complex(CKC)                                            :: rand(s1)
+        complex(CKG)                                            :: rand(s1)
         type(rngf_type)         , intent(inout)                 :: rng
     end function
 #endif
@@ -6035,10 +6035,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGFLU_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)               , intent(in)                    :: lb, ub
+        use pm_kind, only: RKG => RK5
+        real(RKG)               , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1
-        real(RKC)                                               :: rand(s1)
+        real(RKG)                                               :: rand(s1)
         type(rngf_type)         , intent(inout)                 :: rng
     end function
 
@@ -6049,10 +6049,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGFLU_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)               , intent(in)                    :: lb, ub
+        use pm_kind, only: RKG => RK4
+        real(RKG)               , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1
-        real(RKC)                                               :: rand(s1)
+        real(RKG)                                               :: rand(s1)
         type(rngf_type)         , intent(inout)                 :: rng
     end function
 
@@ -6063,10 +6063,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGFLU_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)               , intent(in)                    :: lb, ub
+        use pm_kind, only: RKG => RK3
+        real(RKG)               , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1
-        real(RKC)                                               :: rand(s1)
+        real(RKG)                                               :: rand(s1)
         type(rngf_type)         , intent(inout)                 :: rng
     end function
 
@@ -6077,10 +6077,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGFLU_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)               , intent(in)                    :: lb, ub
+        use pm_kind, only: RKG => RK2
+        real(RKG)               , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1
-        real(RKC)                                               :: rand(s1)
+        real(RKG)                                               :: rand(s1)
         type(rngf_type)         , intent(inout)                 :: rng
     end function
 #endif
@@ -6090,10 +6090,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGFLU_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)               , intent(in)                    :: lb, ub
+        use pm_kind, only: RKG => RK1
+        real(RKG)               , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1
-        real(RKC)                                               :: rand(s1)
+        real(RKG)                                               :: rand(s1)
         type(rngf_type)         , intent(inout)                 :: rng
     end function
 #endif
@@ -6111,10 +6111,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGFLU_D2_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)        , intent(in)                    :: lb, ub
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)        , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2
-        character(len(lb,IK),SKC)                               :: rand(s1, s2)
+        character(len(lb,IK),SKG)                               :: rand(s1, s2)
         type(rngf_type)         , intent(inout)                 :: rng
     end function
 #endif
@@ -6124,10 +6124,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGFLU_D2_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)        , intent(in)                    :: lb, ub
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)        , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2
-        character(len(lb,IK),SKC)                               :: rand(s1, s2)
+        character(len(lb,IK),SKG)                               :: rand(s1, s2)
         type(rngf_type)         , intent(inout)                 :: rng
     end function
 #endif
@@ -6137,10 +6137,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGFLU_D2_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)        , intent(in)                    :: lb, ub
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)        , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2
-        character(len(lb,IK),SKC)                               :: rand(s1, s2)
+        character(len(lb,IK),SKG)                               :: rand(s1, s2)
         type(rngf_type)         , intent(inout)                 :: rng
     end function
 #endif
@@ -6150,10 +6150,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGFLU_D2_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)        , intent(in)                    :: lb, ub
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)        , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2
-        character(len(lb,IK),SKC)                               :: rand(s1, s2)
+        character(len(lb,IK),SKG)                               :: rand(s1, s2)
         type(rngf_type)         , intent(inout)                 :: rng
     end function
 #endif
@@ -6163,10 +6163,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGFLU_D2_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)        , intent(in)                    :: lb, ub
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)        , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2
-        character(len(lb,IK),SKC)                               :: rand(s1, s2)
+        character(len(lb,IK),SKG)                               :: rand(s1, s2)
         type(rngf_type)         , intent(inout)                 :: rng
     end function
 #endif
@@ -6178,10 +6178,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGFLU_D2_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: IKG => IK5
+        integer(IKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2
-        integer(IKC)                                            :: rand(s1, s2)
+        integer(IKG)                                            :: rand(s1, s2)
         type(rngf_type)         , intent(inout)                 :: rng
     end function
 #endif
@@ -6191,10 +6191,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGFLU_D2_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: IKG => IK4
+        integer(IKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2
-        integer(IKC)                                            :: rand(s1, s2)
+        integer(IKG)                                            :: rand(s1, s2)
         type(rngf_type)         , intent(inout)                 :: rng
     end function
 #endif
@@ -6204,10 +6204,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGFLU_D2_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: IKG => IK3
+        integer(IKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2
-        integer(IKC)                                            :: rand(s1, s2)
+        integer(IKG)                                            :: rand(s1, s2)
         type(rngf_type)         , intent(inout)                 :: rng
     end function
 #endif
@@ -6217,10 +6217,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGFLU_D2_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: IKG => IK2
+        integer(IKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2
-        integer(IKC)                                            :: rand(s1, s2)
+        integer(IKG)                                            :: rand(s1, s2)
         type(rngf_type)         , intent(inout)                 :: rng
     end function
 #endif
@@ -6230,10 +6230,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGFLU_D2_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: IKG => IK1
+        integer(IKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2
-        integer(IKC)                                            :: rand(s1, s2)
+        integer(IKG)                                            :: rand(s1, s2)
         type(rngf_type)         , intent(inout)                 :: rng
     end function
 #endif
@@ -6245,10 +6245,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGFLU_D2_LK5
 #endif
-        use pm_kind, only: LKC => LK5
-        logical(LKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: LKG => LK5
+        logical(LKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2
-        logical(LKC)                                            :: rand(s1, s2)
+        logical(LKG)                                            :: rand(s1, s2)
         type(rngf_type)         , intent(inout)                 :: rng
     end function
 #endif
@@ -6258,10 +6258,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGFLU_D2_LK4
 #endif
-        use pm_kind, only: LKC => LK4
-        logical(LKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: LKG => LK4
+        logical(LKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2
-        logical(LKC)                                            :: rand(s1, s2)
+        logical(LKG)                                            :: rand(s1, s2)
         type(rngf_type)         , intent(inout)                 :: rng
     end function
 #endif
@@ -6271,10 +6271,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGFLU_D2_LK3
 #endif
-        use pm_kind, only: LKC => LK3
-        logical(LKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: LKG => LK3
+        logical(LKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2
-        logical(LKC)                                            :: rand(s1, s2)
+        logical(LKG)                                            :: rand(s1, s2)
         type(rngf_type)         , intent(inout)                 :: rng
     end function
 #endif
@@ -6284,10 +6284,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGFLU_D2_LK2
 #endif
-        use pm_kind, only: LKC => LK2
-        logical(LKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: LKG => LK2
+        logical(LKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2
-        logical(LKC)                                            :: rand(s1, s2)
+        logical(LKG)                                            :: rand(s1, s2)
         type(rngf_type)         , intent(inout)                 :: rng
     end function
 #endif
@@ -6297,10 +6297,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGFLU_D2_LK1
 #endif
-        use pm_kind, only: LKC => LK1
-        logical(LKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: LKG => LK1
+        logical(LKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2
-        logical(LKC)                                            :: rand(s1, s2)
+        logical(LKG)                                            :: rand(s1, s2)
         type(rngf_type)         , intent(inout)                 :: rng
     end function
 #endif
@@ -6312,10 +6312,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGFLU_D2_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: CKG => CK5
+        complex(CKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2
-        complex(CKC)                                            :: rand(s1, s2)
+        complex(CKG)                                            :: rand(s1, s2)
         type(rngf_type)         , intent(inout)                 :: rng
     end function
 #endif
@@ -6325,10 +6325,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGFLU_D2_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: CKG => CK4
+        complex(CKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2
-        complex(CKC)                                            :: rand(s1, s2)
+        complex(CKG)                                            :: rand(s1, s2)
         type(rngf_type)         , intent(inout)                 :: rng
     end function
 #endif
@@ -6338,10 +6338,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGFLU_D2_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: CKG => CK3
+        complex(CKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2
-        complex(CKC)                                            :: rand(s1, s2)
+        complex(CKG)                                            :: rand(s1, s2)
         type(rngf_type)         , intent(inout)                 :: rng
     end function
 #endif
@@ -6351,10 +6351,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGFLU_D2_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: CKG => CK2
+        complex(CKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2
-        complex(CKC)                                            :: rand(s1, s2)
+        complex(CKG)                                            :: rand(s1, s2)
         type(rngf_type)         , intent(inout)                 :: rng
     end function
 #endif
@@ -6364,10 +6364,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGFLU_D2_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: CKG => CK1
+        complex(CKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2
-        complex(CKC)                                            :: rand(s1, s2)
+        complex(CKG)                                            :: rand(s1, s2)
         type(rngf_type)         , intent(inout)                 :: rng
     end function
 #endif
@@ -6379,10 +6379,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGFLU_D2_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)               , intent(in)                    :: lb, ub
+        use pm_kind, only: RKG => RK5
+        real(RKG)               , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2
-        real(RKC)                                               :: rand(s1, s2)
+        real(RKG)                                               :: rand(s1, s2)
         type(rngf_type)         , intent(inout)                 :: rng
     end function
 
@@ -6393,10 +6393,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGFLU_D2_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)               , intent(in)                    :: lb, ub
+        use pm_kind, only: RKG => RK4
+        real(RKG)               , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2
-        real(RKC)                                               :: rand(s1, s2)
+        real(RKG)                                               :: rand(s1, s2)
         type(rngf_type)         , intent(inout)                 :: rng
     end function
 
@@ -6407,10 +6407,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGFLU_D2_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)               , intent(in)                    :: lb, ub
+        use pm_kind, only: RKG => RK3
+        real(RKG)               , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2
-        real(RKC)                                               :: rand(s1, s2)
+        real(RKG)                                               :: rand(s1, s2)
         type(rngf_type)         , intent(inout)                 :: rng
     end function
 
@@ -6421,10 +6421,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGFLU_D2_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)               , intent(in)                    :: lb, ub
+        use pm_kind, only: RKG => RK2
+        real(RKG)               , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2
-        real(RKC)                                               :: rand(s1, s2)
+        real(RKG)                                               :: rand(s1, s2)
         type(rngf_type)         , intent(inout)                 :: rng
     end function
 #endif
@@ -6434,10 +6434,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGFLU_D2_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)               , intent(in)                    :: lb, ub
+        use pm_kind, only: RKG => RK1
+        real(RKG)               , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2
-        real(RKC)                                               :: rand(s1, s2)
+        real(RKG)                                               :: rand(s1, s2)
         type(rngf_type)         , intent(inout)                 :: rng
     end function
 #endif
@@ -6455,10 +6455,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGFLU_D3_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)        , intent(in)                    :: lb, ub
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)        , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2, s3
-        character(len(lb,IK),SKC)                               :: rand(s1, s2, s3)
+        character(len(lb,IK),SKG)                               :: rand(s1, s2, s3)
         type(rngf_type)         , intent(inout)                 :: rng
     end function
 #endif
@@ -6468,10 +6468,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGFLU_D3_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)        , intent(in)                    :: lb, ub
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)        , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2, s3
-        character(len(lb,IK),SKC)                               :: rand(s1, s2, s3)
+        character(len(lb,IK),SKG)                               :: rand(s1, s2, s3)
         type(rngf_type)         , intent(inout)                 :: rng
     end function
 #endif
@@ -6481,10 +6481,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGFLU_D3_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)        , intent(in)                    :: lb, ub
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)        , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2, s3
-        character(len(lb,IK),SKC)                               :: rand(s1, s2, s3)
+        character(len(lb,IK),SKG)                               :: rand(s1, s2, s3)
         type(rngf_type)         , intent(inout)                 :: rng
     end function
 #endif
@@ -6494,10 +6494,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGFLU_D3_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)        , intent(in)                    :: lb, ub
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)        , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2, s3
-        character(len(lb,IK),SKC)                               :: rand(s1, s2, s3)
+        character(len(lb,IK),SKG)                               :: rand(s1, s2, s3)
         type(rngf_type)         , intent(inout)                 :: rng
     end function
 #endif
@@ -6507,10 +6507,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGFLU_D3_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)        , intent(in)                    :: lb, ub
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)        , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2, s3
-        character(len(lb,IK),SKC)                               :: rand(s1, s2, s3)
+        character(len(lb,IK),SKG)                               :: rand(s1, s2, s3)
         type(rngf_type)         , intent(inout)                 :: rng
     end function
 #endif
@@ -6522,10 +6522,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGFLU_D3_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: IKG => IK5
+        integer(IKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2, s3
-        integer(IKC)                                            :: rand(s1, s2, s3)
+        integer(IKG)                                            :: rand(s1, s2, s3)
         type(rngf_type)         , intent(inout)                 :: rng
     end function
 #endif
@@ -6535,10 +6535,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGFLU_D3_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: IKG => IK4
+        integer(IKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2, s3
-        integer(IKC)                                            :: rand(s1, s2, s3)
+        integer(IKG)                                            :: rand(s1, s2, s3)
         type(rngf_type)         , intent(inout)                 :: rng
     end function
 #endif
@@ -6548,10 +6548,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGFLU_D3_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: IKG => IK3
+        integer(IKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2, s3
-        integer(IKC)                                            :: rand(s1, s2, s3)
+        integer(IKG)                                            :: rand(s1, s2, s3)
         type(rngf_type)         , intent(inout)                 :: rng
     end function
 #endif
@@ -6561,10 +6561,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGFLU_D3_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: IKG => IK2
+        integer(IKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2, s3
-        integer(IKC)                                            :: rand(s1, s2, s3)
+        integer(IKG)                                            :: rand(s1, s2, s3)
         type(rngf_type)         , intent(inout)                 :: rng
     end function
 #endif
@@ -6574,10 +6574,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGFLU_D3_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: IKG => IK1
+        integer(IKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2, s3
-        integer(IKC)                                            :: rand(s1, s2, s3)
+        integer(IKG)                                            :: rand(s1, s2, s3)
         type(rngf_type)         , intent(inout)                 :: rng
     end function
 #endif
@@ -6589,10 +6589,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGFLU_D3_LK5
 #endif
-        use pm_kind, only: LKC => LK5
-        logical(LKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: LKG => LK5
+        logical(LKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2, s3
-        logical(LKC)                                            :: rand(s1, s2, s3)
+        logical(LKG)                                            :: rand(s1, s2, s3)
         type(rngf_type)         , intent(inout)                 :: rng
     end function
 #endif
@@ -6602,10 +6602,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGFLU_D3_LK4
 #endif
-        use pm_kind, only: LKC => LK4
-        logical(LKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: LKG => LK4
+        logical(LKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2, s3
-        logical(LKC)                                            :: rand(s1, s2, s3)
+        logical(LKG)                                            :: rand(s1, s2, s3)
         type(rngf_type)         , intent(inout)                 :: rng
     end function
 #endif
@@ -6615,10 +6615,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGFLU_D3_LK3
 #endif
-        use pm_kind, only: LKC => LK3
-        logical(LKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: LKG => LK3
+        logical(LKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2, s3
-        logical(LKC)                                            :: rand(s1, s2, s3)
+        logical(LKG)                                            :: rand(s1, s2, s3)
         type(rngf_type)         , intent(inout)                 :: rng
     end function
 #endif
@@ -6628,10 +6628,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGFLU_D3_LK2
 #endif
-        use pm_kind, only: LKC => LK2
-        logical(LKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: LKG => LK2
+        logical(LKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2, s3
-        logical(LKC)                                            :: rand(s1, s2, s3)
+        logical(LKG)                                            :: rand(s1, s2, s3)
         type(rngf_type)         , intent(inout)                 :: rng
     end function
 #endif
@@ -6641,10 +6641,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGFLU_D3_LK1
 #endif
-        use pm_kind, only: LKC => LK1
-        logical(LKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: LKG => LK1
+        logical(LKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2, s3
-        logical(LKC)                                            :: rand(s1, s2, s3)
+        logical(LKG)                                            :: rand(s1, s2, s3)
         type(rngf_type)         , intent(inout)                 :: rng
     end function
 #endif
@@ -6656,10 +6656,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGFLU_D3_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: CKG => CK5
+        complex(CKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2, s3
-        complex(CKC)                                            :: rand(s1, s2, s3)
+        complex(CKG)                                            :: rand(s1, s2, s3)
         type(rngf_type)         , intent(inout)                 :: rng
     end function
 #endif
@@ -6669,10 +6669,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGFLU_D3_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: CKG => CK4
+        complex(CKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2, s3
-        complex(CKC)                                            :: rand(s1, s2, s3)
+        complex(CKG)                                            :: rand(s1, s2, s3)
         type(rngf_type)         , intent(inout)                 :: rng
     end function
 #endif
@@ -6682,10 +6682,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGFLU_D3_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: CKG => CK3
+        complex(CKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2, s3
-        complex(CKC)                                            :: rand(s1, s2, s3)
+        complex(CKG)                                            :: rand(s1, s2, s3)
         type(rngf_type)         , intent(inout)                 :: rng
     end function
 #endif
@@ -6695,10 +6695,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGFLU_D3_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: CKG => CK2
+        complex(CKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2, s3
-        complex(CKC)                                            :: rand(s1, s2, s3)
+        complex(CKG)                                            :: rand(s1, s2, s3)
         type(rngf_type)         , intent(inout)                 :: rng
     end function
 #endif
@@ -6708,10 +6708,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGFLU_D3_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: CKG => CK1
+        complex(CKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2, s3
-        complex(CKC)                                            :: rand(s1, s2, s3)
+        complex(CKG)                                            :: rand(s1, s2, s3)
         type(rngf_type)         , intent(inout)                 :: rng
     end function
 #endif
@@ -6723,10 +6723,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGFLU_D3_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)               , intent(in)                    :: lb, ub
+        use pm_kind, only: RKG => RK5
+        real(RKG)               , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2, s3
-        real(RKC)                                               :: rand(s1, s2, s3)
+        real(RKG)                                               :: rand(s1, s2, s3)
         type(rngf_type)         , intent(inout)                 :: rng
     end function
 
@@ -6737,10 +6737,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGFLU_D3_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)               , intent(in)                    :: lb, ub
+        use pm_kind, only: RKG => RK4
+        real(RKG)               , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2, s3
-        real(RKC)                                               :: rand(s1, s2, s3)
+        real(RKG)                                               :: rand(s1, s2, s3)
         type(rngf_type)         , intent(inout)                 :: rng
     end function
 
@@ -6751,10 +6751,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGFLU_D3_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)               , intent(in)                    :: lb, ub
+        use pm_kind, only: RKG => RK3
+        real(RKG)               , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2, s3
-        real(RKC)                                               :: rand(s1, s2, s3)
+        real(RKG)                                               :: rand(s1, s2, s3)
         type(rngf_type)         , intent(inout)                 :: rng
     end function
 
@@ -6765,10 +6765,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGFLU_D3_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)               , intent(in)                    :: lb, ub
+        use pm_kind, only: RKG => RK2
+        real(RKG)               , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2, s3
-        real(RKC)                                               :: rand(s1, s2, s3)
+        real(RKG)                                               :: rand(s1, s2, s3)
         type(rngf_type)         , intent(inout)                 :: rng
     end function
 #endif
@@ -6778,10 +6778,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGFLU_D3_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)               , intent(in)                    :: lb, ub
+        use pm_kind, only: RKG => RK1
+        real(RKG)               , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2, s3
-        real(RKC)                                               :: rand(s1, s2, s3)
+        real(RKG)                                               :: rand(s1, s2, s3)
         type(rngf_type)         , intent(inout)                 :: rng
     end function
 #endif
@@ -6808,8 +6808,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGSDD_D0_LK
 #endif
-        use pm_kind, only: LKC => LK
-        logical(LKC)                                            :: rand
+        use pm_kind, only: LKG => LK
+        logical(LKG)                                            :: rand
         type(splitmix64_type)   , intent(inout)                 :: rng
     end function
 
@@ -6826,9 +6826,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGSLU_D0_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)        , intent(in)                    :: lb, ub
-        character(max(len(lb,IK),len(ub,IK)),SKC)               :: rand
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)        , intent(in)                    :: lb, ub
+        character(max(len(lb,IK),len(ub,IK)),SKG)               :: rand
         type(splitmix64_type)   , intent(inout)                 :: rng
     end function
 #endif
@@ -6838,9 +6838,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGSLU_D0_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)        , intent(in)                    :: lb, ub
-        character(max(len(lb,IK),len(ub,IK)),SKC)               :: rand
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)        , intent(in)                    :: lb, ub
+        character(max(len(lb,IK),len(ub,IK)),SKG)               :: rand
         type(splitmix64_type)   , intent(inout)                 :: rng
     end function
 #endif
@@ -6850,9 +6850,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGSLU_D0_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)        , intent(in)                    :: lb, ub
-        character(max(len(lb,IK),len(ub,IK)),SKC)               :: rand
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)        , intent(in)                    :: lb, ub
+        character(max(len(lb,IK),len(ub,IK)),SKG)               :: rand
         type(splitmix64_type)   , intent(inout)                 :: rng
     end function
 #endif
@@ -6862,9 +6862,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGSLU_D0_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)        , intent(in)                    :: lb, ub
-        character(max(len(lb,IK),len(ub,IK)),SKC)               :: rand
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)        , intent(in)                    :: lb, ub
+        character(max(len(lb,IK),len(ub,IK)),SKG)               :: rand
         type(splitmix64_type)   , intent(inout)                 :: rng
     end function
 #endif
@@ -6874,9 +6874,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGSLU_D0_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)        , intent(in)                    :: lb, ub
-        character(max(len(lb,IK),len(ub,IK)),SKC)               :: rand
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)        , intent(in)                    :: lb, ub
+        character(max(len(lb,IK),len(ub,IK)),SKG)               :: rand
         type(splitmix64_type)   , intent(inout)                 :: rng
     end function
 #endif
@@ -6888,9 +6888,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGSLU_D0_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)            , intent(in)                    :: lb, ub
-        integer(IKC)                                            :: rand
+        use pm_kind, only: IKG => IK5
+        integer(IKG)            , intent(in)                    :: lb, ub
+        integer(IKG)                                            :: rand
         type(splitmix64_type)   , intent(inout)                 :: rng
     end function
 #endif
@@ -6900,9 +6900,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGSLU_D0_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)            , intent(in)                    :: lb, ub
-        integer(IKC)                                            :: rand
+        use pm_kind, only: IKG => IK4
+        integer(IKG)            , intent(in)                    :: lb, ub
+        integer(IKG)                                            :: rand
         type(splitmix64_type)   , intent(inout)                 :: rng
     end function
 #endif
@@ -6912,9 +6912,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGSLU_D0_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)            , intent(in)                    :: lb, ub
-        integer(IKC)                                            :: rand
+        use pm_kind, only: IKG => IK3
+        integer(IKG)            , intent(in)                    :: lb, ub
+        integer(IKG)                                            :: rand
         type(splitmix64_type)   , intent(inout)                 :: rng
     end function
 #endif
@@ -6924,9 +6924,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGSLU_D0_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)            , intent(in)                    :: lb, ub
-        integer(IKC)                                            :: rand
+        use pm_kind, only: IKG => IK2
+        integer(IKG)            , intent(in)                    :: lb, ub
+        integer(IKG)                                            :: rand
         type(splitmix64_type)   , intent(inout)                 :: rng
     end function
 #endif
@@ -6936,9 +6936,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGSLU_D0_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)            , intent(in)                    :: lb, ub
-        integer(IKC)                                            :: rand
+        use pm_kind, only: IKG => IK1
+        integer(IKG)            , intent(in)                    :: lb, ub
+        integer(IKG)                                            :: rand
         type(splitmix64_type)   , intent(inout)                 :: rng
     end function
 #endif
@@ -6950,9 +6950,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGSLU_D0_LK5
 #endif
-        use pm_kind, only: LKC => LK5
-        logical(LKC)            , intent(in)                    :: lb, ub
-        logical(LKC)                                            :: rand
+        use pm_kind, only: LKG => LK5
+        logical(LKG)            , intent(in)                    :: lb, ub
+        logical(LKG)                                            :: rand
         type(splitmix64_type)   , intent(inout)                 :: rng
     end function
 #endif
@@ -6962,9 +6962,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGSLU_D0_LK4
 #endif
-        use pm_kind, only: LKC => LK4
-        logical(LKC)            , intent(in)                    :: lb, ub
-        logical(LKC)                                            :: rand
+        use pm_kind, only: LKG => LK4
+        logical(LKG)            , intent(in)                    :: lb, ub
+        logical(LKG)                                            :: rand
         type(splitmix64_type)   , intent(inout)                 :: rng
     end function
 #endif
@@ -6974,9 +6974,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGSLU_D0_LK3
 #endif
-        use pm_kind, only: LKC => LK3
-        logical(LKC)            , intent(in)                    :: lb, ub
-        logical(LKC)                                            :: rand
+        use pm_kind, only: LKG => LK3
+        logical(LKG)            , intent(in)                    :: lb, ub
+        logical(LKG)                                            :: rand
         type(splitmix64_type)   , intent(inout)                 :: rng
     end function
 #endif
@@ -6986,9 +6986,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGSLU_D0_LK2
 #endif
-        use pm_kind, only: LKC => LK2
-        logical(LKC)            , intent(in)                    :: lb, ub
-        logical(LKC)                                            :: rand
+        use pm_kind, only: LKG => LK2
+        logical(LKG)            , intent(in)                    :: lb, ub
+        logical(LKG)                                            :: rand
         type(splitmix64_type)   , intent(inout)                 :: rng
     end function
 #endif
@@ -6998,9 +6998,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGSLU_D0_LK1
 #endif
-        use pm_kind, only: LKC => LK1
-        logical(LKC)            , intent(in)                    :: lb, ub
-        logical(LKC)                                            :: rand
+        use pm_kind, only: LKG => LK1
+        logical(LKG)            , intent(in)                    :: lb, ub
+        logical(LKG)                                            :: rand
         type(splitmix64_type)   , intent(inout)                 :: rng
     end function
 #endif
@@ -7012,9 +7012,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGSLU_D0_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)            , intent(in)                    :: lb, ub
-        complex(CKC)                                            :: rand
+        use pm_kind, only: CKG => CK5
+        complex(CKG)            , intent(in)                    :: lb, ub
+        complex(CKG)                                            :: rand
         type(splitmix64_type)   , intent(inout)                 :: rng
     end function
 #endif
@@ -7024,9 +7024,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGSLU_D0_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)            , intent(in)                    :: lb, ub
-        complex(CKC)                                            :: rand
+        use pm_kind, only: CKG => CK4
+        complex(CKG)            , intent(in)                    :: lb, ub
+        complex(CKG)                                            :: rand
         type(splitmix64_type)   , intent(inout)                 :: rng
     end function
 #endif
@@ -7036,9 +7036,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGSLU_D0_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)            , intent(in)                    :: lb, ub
-        complex(CKC)                                            :: rand
+        use pm_kind, only: CKG => CK3
+        complex(CKG)            , intent(in)                    :: lb, ub
+        complex(CKG)                                            :: rand
         type(splitmix64_type)   , intent(inout)                 :: rng
     end function
 #endif
@@ -7048,9 +7048,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGSLU_D0_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)            , intent(in)                    :: lb, ub
-        complex(CKC)                                            :: rand
+        use pm_kind, only: CKG => CK2
+        complex(CKG)            , intent(in)                    :: lb, ub
+        complex(CKG)                                            :: rand
         type(splitmix64_type)   , intent(inout)                 :: rng
     end function
 #endif
@@ -7060,9 +7060,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGSLU_D0_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)            , intent(in)                    :: lb, ub
-        complex(CKC)                                            :: rand
+        use pm_kind, only: CKG => CK1
+        complex(CKG)            , intent(in)                    :: lb, ub
+        complex(CKG)                                            :: rand
         type(splitmix64_type)   , intent(inout)                 :: rng
     end function
 #endif
@@ -7074,9 +7074,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGSLU_D0_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)               , intent(in)                    :: lb, ub
-        real(RKC)                                               :: rand
+        use pm_kind, only: RKG => RK5
+        real(RKG)               , intent(in)                    :: lb, ub
+        real(RKG)                                               :: rand
         type(splitmix64_type)   , intent(inout)                 :: rng
     end function
 #endif
@@ -7086,9 +7086,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGSLU_D0_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)               , intent(in)                    :: lb, ub
-        real(RKC)                                               :: rand
+        use pm_kind, only: RKG => RK4
+        real(RKG)               , intent(in)                    :: lb, ub
+        real(RKG)                                               :: rand
         type(splitmix64_type)   , intent(inout)                 :: rng
     end function
 #endif
@@ -7098,9 +7098,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGSLU_D0_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)               , intent(in)                    :: lb, ub
-        real(RKC)                                               :: rand
+        use pm_kind, only: RKG => RK3
+        real(RKG)               , intent(in)                    :: lb, ub
+        real(RKG)                                               :: rand
         type(splitmix64_type)   , intent(inout)                 :: rng
     end function
 #endif
@@ -7110,9 +7110,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGSLU_D0_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)               , intent(in)                    :: lb, ub
-        real(RKC)                                               :: rand
+        use pm_kind, only: RKG => RK2
+        real(RKG)               , intent(in)                    :: lb, ub
+        real(RKG)                                               :: rand
         type(splitmix64_type)   , intent(inout)                 :: rng
     end function
 #endif
@@ -7122,9 +7122,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGSLU_D0_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)               , intent(in)                    :: lb, ub
-        real(RKC)                                               :: rand
+        use pm_kind, only: RKG => RK1
+        real(RKG)               , intent(in)                    :: lb, ub
+        real(RKG)                                               :: rand
         type(splitmix64_type)   , intent(inout)                 :: rng
     end function
 #endif
@@ -7142,10 +7142,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGSLU_D1_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)        , intent(in)                    :: lb, ub
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)        , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1
-        character(len(lb,IK),SKC)                               :: rand(s1)
+        character(len(lb,IK),SKG)                               :: rand(s1)
         type(splitmix64_type)   , intent(inout)                 :: rng
     end function
 #endif
@@ -7155,10 +7155,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGSLU_D1_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)        , intent(in)                    :: lb, ub
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)        , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1
-        character(len(lb,IK),SKC)                               :: rand(s1)
+        character(len(lb,IK),SKG)                               :: rand(s1)
         type(splitmix64_type)   , intent(inout)                 :: rng
     end function
 #endif
@@ -7168,10 +7168,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGSLU_D1_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)        , intent(in)                    :: lb, ub
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)        , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1
-        character(len(lb,IK),SKC)                               :: rand(s1)
+        character(len(lb,IK),SKG)                               :: rand(s1)
         type(splitmix64_type)   , intent(inout)                 :: rng
     end function
 #endif
@@ -7181,10 +7181,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGSLU_D1_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)        , intent(in)                    :: lb, ub
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)        , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1
-        character(len(lb,IK),SKC)                               :: rand(s1)
+        character(len(lb,IK),SKG)                               :: rand(s1)
         type(splitmix64_type)   , intent(inout)                 :: rng
     end function
 #endif
@@ -7194,10 +7194,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGSLU_D1_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)        , intent(in)                    :: lb, ub
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)        , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1
-        character(len(lb,IK),SKC)                               :: rand(s1)
+        character(len(lb,IK),SKG)                               :: rand(s1)
         type(splitmix64_type)   , intent(inout)                 :: rng
     end function
 #endif
@@ -7209,10 +7209,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGSLU_D1_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: IKG => IK5
+        integer(IKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1
-        integer(IKC)                                            :: rand(s1)
+        integer(IKG)                                            :: rand(s1)
         type(splitmix64_type)   , intent(inout)                 :: rng
     end function
 #endif
@@ -7222,10 +7222,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGSLU_D1_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: IKG => IK4
+        integer(IKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1
-        integer(IKC)                                            :: rand(s1)
+        integer(IKG)                                            :: rand(s1)
         type(splitmix64_type)   , intent(inout)                 :: rng
     end function
 #endif
@@ -7235,10 +7235,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGSLU_D1_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: IKG => IK3
+        integer(IKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1
-        integer(IKC)                                            :: rand(s1)
+        integer(IKG)                                            :: rand(s1)
         type(splitmix64_type)   , intent(inout)                 :: rng
     end function
 #endif
@@ -7248,10 +7248,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGSLU_D1_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: IKG => IK2
+        integer(IKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1
-        integer(IKC)                                            :: rand(s1)
+        integer(IKG)                                            :: rand(s1)
         type(splitmix64_type)   , intent(inout)                 :: rng
     end function
 #endif
@@ -7261,10 +7261,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGSLU_D1_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: IKG => IK1
+        integer(IKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1
-        integer(IKC)                                            :: rand(s1)
+        integer(IKG)                                            :: rand(s1)
         type(splitmix64_type)   , intent(inout)                 :: rng
     end function
 #endif
@@ -7276,10 +7276,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGSLU_D1_LK5
 #endif
-        use pm_kind, only: LKC => LK5
-        logical(LKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: LKG => LK5
+        logical(LKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1
-        logical(LKC)                                            :: rand(s1)
+        logical(LKG)                                            :: rand(s1)
         type(splitmix64_type)   , intent(inout)                 :: rng
     end function
 #endif
@@ -7289,10 +7289,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGSLU_D1_LK4
 #endif
-        use pm_kind, only: LKC => LK4
-        logical(LKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: LKG => LK4
+        logical(LKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1
-        logical(LKC)                                            :: rand(s1)
+        logical(LKG)                                            :: rand(s1)
         type(splitmix64_type)   , intent(inout)                 :: rng
     end function
 #endif
@@ -7302,10 +7302,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGSLU_D1_LK3
 #endif
-        use pm_kind, only: LKC => LK3
-        logical(LKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: LKG => LK3
+        logical(LKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1
-        logical(LKC)                                            :: rand(s1)
+        logical(LKG)                                            :: rand(s1)
         type(splitmix64_type)   , intent(inout)                 :: rng
     end function
 #endif
@@ -7315,10 +7315,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGSLU_D1_LK2
 #endif
-        use pm_kind, only: LKC => LK2
-        logical(LKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: LKG => LK2
+        logical(LKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1
-        logical(LKC)                                            :: rand(s1)
+        logical(LKG)                                            :: rand(s1)
         type(splitmix64_type)   , intent(inout)                 :: rng
     end function
 #endif
@@ -7328,10 +7328,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGSLU_D1_LK1
 #endif
-        use pm_kind, only: LKC => LK1
-        logical(LKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: LKG => LK1
+        logical(LKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1
-        logical(LKC)                                            :: rand(s1)
+        logical(LKG)                                            :: rand(s1)
         type(splitmix64_type)   , intent(inout)                 :: rng
     end function
 #endif
@@ -7343,10 +7343,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGSLU_D1_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: CKG => CK5
+        complex(CKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1
-        complex(CKC)                                            :: rand(s1)
+        complex(CKG)                                            :: rand(s1)
         type(splitmix64_type)   , intent(inout)                 :: rng
     end function
 #endif
@@ -7356,10 +7356,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGSLU_D1_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: CKG => CK4
+        complex(CKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1
-        complex(CKC)                                            :: rand(s1)
+        complex(CKG)                                            :: rand(s1)
         type(splitmix64_type)   , intent(inout)                 :: rng
     end function
 #endif
@@ -7369,10 +7369,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGSLU_D1_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: CKG => CK3
+        complex(CKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1
-        complex(CKC)                                            :: rand(s1)
+        complex(CKG)                                            :: rand(s1)
         type(splitmix64_type)   , intent(inout)                 :: rng
     end function
 #endif
@@ -7382,10 +7382,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGSLU_D1_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: CKG => CK2
+        complex(CKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1
-        complex(CKC)                                            :: rand(s1)
+        complex(CKG)                                            :: rand(s1)
         type(splitmix64_type)   , intent(inout)                 :: rng
     end function
 #endif
@@ -7395,10 +7395,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGSLU_D1_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: CKG => CK1
+        complex(CKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1
-        complex(CKC)                                            :: rand(s1)
+        complex(CKG)                                            :: rand(s1)
         type(splitmix64_type)   , intent(inout)                 :: rng
     end function
 #endif
@@ -7410,10 +7410,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGSLU_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)               , intent(in)                    :: lb, ub
+        use pm_kind, only: RKG => RK5
+        real(RKG)               , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1
-        real(RKC)                                               :: rand(s1)
+        real(RKG)                                               :: rand(s1)
         type(splitmix64_type)   , intent(inout)                 :: rng
     end function
 
@@ -7424,10 +7424,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGSLU_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)               , intent(in)                    :: lb, ub
+        use pm_kind, only: RKG => RK4
+        real(RKG)               , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1
-        real(RKC)                                               :: rand(s1)
+        real(RKG)                                               :: rand(s1)
         type(splitmix64_type)   , intent(inout)                 :: rng
     end function
 
@@ -7438,10 +7438,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGSLU_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)               , intent(in)                    :: lb, ub
+        use pm_kind, only: RKG => RK3
+        real(RKG)               , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1
-        real(RKC)                                               :: rand(s1)
+        real(RKG)                                               :: rand(s1)
         type(splitmix64_type)   , intent(inout)                 :: rng
     end function
 
@@ -7452,10 +7452,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGSLU_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)               , intent(in)                    :: lb, ub
+        use pm_kind, only: RKG => RK2
+        real(RKG)               , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1
-        real(RKC)                                               :: rand(s1)
+        real(RKG)                                               :: rand(s1)
         type(splitmix64_type)   , intent(inout)                 :: rng
     end function
 #endif
@@ -7465,10 +7465,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGSLU_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)               , intent(in)                    :: lb, ub
+        use pm_kind, only: RKG => RK1
+        real(RKG)               , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1
-        real(RKC)                                               :: rand(s1)
+        real(RKG)                                               :: rand(s1)
         type(splitmix64_type)   , intent(inout)                 :: rng
     end function
 #endif
@@ -7486,10 +7486,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGSLU_D2_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)        , intent(in)                    :: lb, ub
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)        , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2
-        character(len(lb,IK),SKC)                               :: rand(s1, s2)
+        character(len(lb,IK),SKG)                               :: rand(s1, s2)
         type(splitmix64_type)   , intent(inout)                 :: rng
     end function
 #endif
@@ -7499,10 +7499,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGSLU_D2_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)        , intent(in)                    :: lb, ub
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)        , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2
-        character(len(lb,IK),SKC)                               :: rand(s1, s2)
+        character(len(lb,IK),SKG)                               :: rand(s1, s2)
         type(splitmix64_type)   , intent(inout)                 :: rng
     end function
 #endif
@@ -7512,10 +7512,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGSLU_D2_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)        , intent(in)                    :: lb, ub
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)        , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2
-        character(len(lb,IK),SKC)                               :: rand(s1, s2)
+        character(len(lb,IK),SKG)                               :: rand(s1, s2)
         type(splitmix64_type)   , intent(inout)                 :: rng
     end function
 #endif
@@ -7525,10 +7525,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGSLU_D2_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)        , intent(in)                    :: lb, ub
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)        , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2
-        character(len(lb,IK),SKC)                               :: rand(s1, s2)
+        character(len(lb,IK),SKG)                               :: rand(s1, s2)
         type(splitmix64_type)   , intent(inout)                 :: rng
     end function
 #endif
@@ -7538,10 +7538,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGSLU_D2_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)        , intent(in)                    :: lb, ub
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)        , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2
-        character(len(lb,IK),SKC)                               :: rand(s1, s2)
+        character(len(lb,IK),SKG)                               :: rand(s1, s2)
         type(splitmix64_type)   , intent(inout)                 :: rng
     end function
 #endif
@@ -7553,10 +7553,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGSLU_D2_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: IKG => IK5
+        integer(IKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2
-        integer(IKC)                                            :: rand(s1, s2)
+        integer(IKG)                                            :: rand(s1, s2)
         type(splitmix64_type)   , intent(inout)                 :: rng
     end function
 #endif
@@ -7566,10 +7566,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGSLU_D2_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: IKG => IK4
+        integer(IKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2
-        integer(IKC)                                            :: rand(s1, s2)
+        integer(IKG)                                            :: rand(s1, s2)
         type(splitmix64_type)   , intent(inout)                 :: rng
     end function
 #endif
@@ -7579,10 +7579,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGSLU_D2_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: IKG => IK3
+        integer(IKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2
-        integer(IKC)                                            :: rand(s1, s2)
+        integer(IKG)                                            :: rand(s1, s2)
         type(splitmix64_type)   , intent(inout)                 :: rng
     end function
 #endif
@@ -7592,10 +7592,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGSLU_D2_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: IKG => IK2
+        integer(IKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2
-        integer(IKC)                                            :: rand(s1, s2)
+        integer(IKG)                                            :: rand(s1, s2)
         type(splitmix64_type)   , intent(inout)                 :: rng
     end function
 #endif
@@ -7605,10 +7605,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGSLU_D2_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: IKG => IK1
+        integer(IKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2
-        integer(IKC)                                            :: rand(s1, s2)
+        integer(IKG)                                            :: rand(s1, s2)
         type(splitmix64_type)   , intent(inout)                 :: rng
     end function
 #endif
@@ -7620,10 +7620,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGSLU_D2_LK5
 #endif
-        use pm_kind, only: LKC => LK5
-        logical(LKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: LKG => LK5
+        logical(LKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2
-        logical(LKC)                                            :: rand(s1, s2)
+        logical(LKG)                                            :: rand(s1, s2)
         type(splitmix64_type)   , intent(inout)                 :: rng
     end function
 #endif
@@ -7633,10 +7633,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGSLU_D2_LK4
 #endif
-        use pm_kind, only: LKC => LK4
-        logical(LKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: LKG => LK4
+        logical(LKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2
-        logical(LKC)                                            :: rand(s1, s2)
+        logical(LKG)                                            :: rand(s1, s2)
         type(splitmix64_type)   , intent(inout)                 :: rng
     end function
 #endif
@@ -7646,10 +7646,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGSLU_D2_LK3
 #endif
-        use pm_kind, only: LKC => LK3
-        logical(LKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: LKG => LK3
+        logical(LKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2
-        logical(LKC)                                            :: rand(s1, s2)
+        logical(LKG)                                            :: rand(s1, s2)
         type(splitmix64_type)   , intent(inout)                 :: rng
     end function
 #endif
@@ -7659,10 +7659,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGSLU_D2_LK2
 #endif
-        use pm_kind, only: LKC => LK2
-        logical(LKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: LKG => LK2
+        logical(LKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2
-        logical(LKC)                                            :: rand(s1, s2)
+        logical(LKG)                                            :: rand(s1, s2)
         type(splitmix64_type)   , intent(inout)                 :: rng
     end function
 #endif
@@ -7672,10 +7672,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGSLU_D2_LK1
 #endif
-        use pm_kind, only: LKC => LK1
-        logical(LKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: LKG => LK1
+        logical(LKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2
-        logical(LKC)                                            :: rand(s1, s2)
+        logical(LKG)                                            :: rand(s1, s2)
         type(splitmix64_type)   , intent(inout)                 :: rng
     end function
 #endif
@@ -7687,10 +7687,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGSLU_D2_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: CKG => CK5
+        complex(CKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2
-        complex(CKC)                                            :: rand(s1, s2)
+        complex(CKG)                                            :: rand(s1, s2)
         type(splitmix64_type)   , intent(inout)                 :: rng
     end function
 #endif
@@ -7700,10 +7700,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGSLU_D2_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: CKG => CK4
+        complex(CKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2
-        complex(CKC)                                            :: rand(s1, s2)
+        complex(CKG)                                            :: rand(s1, s2)
         type(splitmix64_type)   , intent(inout)                 :: rng
     end function
 #endif
@@ -7713,10 +7713,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGSLU_D2_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: CKG => CK3
+        complex(CKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2
-        complex(CKC)                                            :: rand(s1, s2)
+        complex(CKG)                                            :: rand(s1, s2)
         type(splitmix64_type)   , intent(inout)                 :: rng
     end function
 #endif
@@ -7726,10 +7726,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGSLU_D2_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: CKG => CK2
+        complex(CKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2
-        complex(CKC)                                            :: rand(s1, s2)
+        complex(CKG)                                            :: rand(s1, s2)
         type(splitmix64_type)   , intent(inout)                 :: rng
     end function
 #endif
@@ -7739,10 +7739,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGSLU_D2_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: CKG => CK1
+        complex(CKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2
-        complex(CKC)                                            :: rand(s1, s2)
+        complex(CKG)                                            :: rand(s1, s2)
         type(splitmix64_type)   , intent(inout)                 :: rng
     end function
 #endif
@@ -7754,10 +7754,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGSLU_D2_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)               , intent(in)                    :: lb, ub
+        use pm_kind, only: RKG => RK5
+        real(RKG)               , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2
-        real(RKC)                                               :: rand(s1, s2)
+        real(RKG)                                               :: rand(s1, s2)
         type(splitmix64_type)   , intent(inout)                 :: rng
     end function
 
@@ -7768,10 +7768,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGSLU_D2_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)               , intent(in)                    :: lb, ub
+        use pm_kind, only: RKG => RK4
+        real(RKG)               , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2
-        real(RKC)                                               :: rand(s1, s2)
+        real(RKG)                                               :: rand(s1, s2)
         type(splitmix64_type)   , intent(inout)                 :: rng
     end function
 
@@ -7782,10 +7782,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGSLU_D2_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)               , intent(in)                    :: lb, ub
+        use pm_kind, only: RKG => RK3
+        real(RKG)               , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2
-        real(RKC)                                               :: rand(s1, s2)
+        real(RKG)                                               :: rand(s1, s2)
         type(splitmix64_type)   , intent(inout)                 :: rng
     end function
 
@@ -7796,10 +7796,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGSLU_D2_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)               , intent(in)                    :: lb, ub
+        use pm_kind, only: RKG => RK2
+        real(RKG)               , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2
-        real(RKC)                                               :: rand(s1, s2)
+        real(RKG)                                               :: rand(s1, s2)
         type(splitmix64_type)   , intent(inout)                 :: rng
     end function
 #endif
@@ -7809,10 +7809,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGSLU_D2_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)               , intent(in)                    :: lb, ub
+        use pm_kind, only: RKG => RK1
+        real(RKG)               , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2
-        real(RKC)                                               :: rand(s1, s2)
+        real(RKG)                                               :: rand(s1, s2)
         type(splitmix64_type)   , intent(inout)                 :: rng
     end function
 #endif
@@ -7830,10 +7830,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGSLU_D3_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)        , intent(in)                    :: lb, ub
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)        , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2, s3
-        character(len(lb,IK),SKC)                               :: rand(s1, s2, s3)
+        character(len(lb,IK),SKG)                               :: rand(s1, s2, s3)
         type(splitmix64_type)   , intent(inout)                 :: rng
     end function
 #endif
@@ -7843,10 +7843,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGSLU_D3_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)        , intent(in)                    :: lb, ub
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)        , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2, s3
-        character(len(lb,IK),SKC)                               :: rand(s1, s2, s3)
+        character(len(lb,IK),SKG)                               :: rand(s1, s2, s3)
         type(splitmix64_type)   , intent(inout)                 :: rng
     end function
 #endif
@@ -7856,10 +7856,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGSLU_D3_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)        , intent(in)                    :: lb, ub
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)        , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2, s3
-        character(len(lb,IK),SKC)                               :: rand(s1, s2, s3)
+        character(len(lb,IK),SKG)                               :: rand(s1, s2, s3)
         type(splitmix64_type)   , intent(inout)                 :: rng
     end function
 #endif
@@ -7869,10 +7869,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGSLU_D3_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)        , intent(in)                    :: lb, ub
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)        , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2, s3
-        character(len(lb,IK),SKC)                               :: rand(s1, s2, s3)
+        character(len(lb,IK),SKG)                               :: rand(s1, s2, s3)
         type(splitmix64_type)   , intent(inout)                 :: rng
     end function
 #endif
@@ -7882,10 +7882,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGSLU_D3_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)        , intent(in)                    :: lb, ub
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)        , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2, s3
-        character(len(lb,IK),SKC)                               :: rand(s1, s2, s3)
+        character(len(lb,IK),SKG)                               :: rand(s1, s2, s3)
         type(splitmix64_type)   , intent(inout)                 :: rng
     end function
 #endif
@@ -7897,10 +7897,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGSLU_D3_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: IKG => IK5
+        integer(IKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2, s3
-        integer(IKC)                                            :: rand(s1, s2, s3)
+        integer(IKG)                                            :: rand(s1, s2, s3)
         type(splitmix64_type)   , intent(inout)                 :: rng
     end function
 #endif
@@ -7910,10 +7910,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGSLU_D3_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: IKG => IK4
+        integer(IKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2, s3
-        integer(IKC)                                            :: rand(s1, s2, s3)
+        integer(IKG)                                            :: rand(s1, s2, s3)
         type(splitmix64_type)   , intent(inout)                 :: rng
     end function
 #endif
@@ -7923,10 +7923,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGSLU_D3_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: IKG => IK3
+        integer(IKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2, s3
-        integer(IKC)                                            :: rand(s1, s2, s3)
+        integer(IKG)                                            :: rand(s1, s2, s3)
         type(splitmix64_type)   , intent(inout)                 :: rng
     end function
 #endif
@@ -7936,10 +7936,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGSLU_D3_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: IKG => IK2
+        integer(IKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2, s3
-        integer(IKC)                                            :: rand(s1, s2, s3)
+        integer(IKG)                                            :: rand(s1, s2, s3)
         type(splitmix64_type)   , intent(inout)                 :: rng
     end function
 #endif
@@ -7949,10 +7949,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGSLU_D3_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: IKG => IK1
+        integer(IKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2, s3
-        integer(IKC)                                            :: rand(s1, s2, s3)
+        integer(IKG)                                            :: rand(s1, s2, s3)
         type(splitmix64_type)   , intent(inout)                 :: rng
     end function
 #endif
@@ -7964,10 +7964,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGSLU_D3_LK5
 #endif
-        use pm_kind, only: LKC => LK5
-        logical(LKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: LKG => LK5
+        logical(LKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2, s3
-        logical(LKC)                                            :: rand(s1, s2, s3)
+        logical(LKG)                                            :: rand(s1, s2, s3)
         type(splitmix64_type)   , intent(inout)                 :: rng
     end function
 #endif
@@ -7977,10 +7977,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGSLU_D3_LK4
 #endif
-        use pm_kind, only: LKC => LK4
-        logical(LKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: LKG => LK4
+        logical(LKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2, s3
-        logical(LKC)                                            :: rand(s1, s2, s3)
+        logical(LKG)                                            :: rand(s1, s2, s3)
         type(splitmix64_type)   , intent(inout)                 :: rng
     end function
 #endif
@@ -7990,10 +7990,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGSLU_D3_LK3
 #endif
-        use pm_kind, only: LKC => LK3
-        logical(LKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: LKG => LK3
+        logical(LKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2, s3
-        logical(LKC)                                            :: rand(s1, s2, s3)
+        logical(LKG)                                            :: rand(s1, s2, s3)
         type(splitmix64_type)   , intent(inout)                 :: rng
     end function
 #endif
@@ -8003,10 +8003,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGSLU_D3_LK2
 #endif
-        use pm_kind, only: LKC => LK2
-        logical(LKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: LKG => LK2
+        logical(LKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2, s3
-        logical(LKC)                                            :: rand(s1, s2, s3)
+        logical(LKG)                                            :: rand(s1, s2, s3)
         type(splitmix64_type)   , intent(inout)                 :: rng
     end function
 #endif
@@ -8016,10 +8016,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGSLU_D3_LK1
 #endif
-        use pm_kind, only: LKC => LK1
-        logical(LKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: LKG => LK1
+        logical(LKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2, s3
-        logical(LKC)                                            :: rand(s1, s2, s3)
+        logical(LKG)                                            :: rand(s1, s2, s3)
         type(splitmix64_type)   , intent(inout)                 :: rng
     end function
 #endif
@@ -8031,10 +8031,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGSLU_D3_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: CKG => CK5
+        complex(CKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2, s3
-        complex(CKC)                                            :: rand(s1, s2, s3)
+        complex(CKG)                                            :: rand(s1, s2, s3)
         type(splitmix64_type)   , intent(inout)                 :: rng
     end function
 #endif
@@ -8044,10 +8044,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGSLU_D3_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: CKG => CK4
+        complex(CKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2, s3
-        complex(CKC)                                            :: rand(s1, s2, s3)
+        complex(CKG)                                            :: rand(s1, s2, s3)
         type(splitmix64_type)   , intent(inout)                 :: rng
     end function
 #endif
@@ -8057,10 +8057,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGSLU_D3_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: CKG => CK3
+        complex(CKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2, s3
-        complex(CKC)                                            :: rand(s1, s2, s3)
+        complex(CKG)                                            :: rand(s1, s2, s3)
         type(splitmix64_type)   , intent(inout)                 :: rng
     end function
 #endif
@@ -8070,10 +8070,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGSLU_D3_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: CKG => CK2
+        complex(CKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2, s3
-        complex(CKC)                                            :: rand(s1, s2, s3)
+        complex(CKG)                                            :: rand(s1, s2, s3)
         type(splitmix64_type)   , intent(inout)                 :: rng
     end function
 #endif
@@ -8083,10 +8083,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGSLU_D3_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: CKG => CK1
+        complex(CKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2, s3
-        complex(CKC)                                            :: rand(s1, s2, s3)
+        complex(CKG)                                            :: rand(s1, s2, s3)
         type(splitmix64_type)   , intent(inout)                 :: rng
     end function
 #endif
@@ -8098,10 +8098,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGSLU_D3_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)               , intent(in)                    :: lb, ub
+        use pm_kind, only: RKG => RK5
+        real(RKG)               , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2, s3
-        real(RKC)                                               :: rand(s1, s2, s3)
+        real(RKG)                                               :: rand(s1, s2, s3)
         type(splitmix64_type)   , intent(inout)                 :: rng
     end function
 
@@ -8112,10 +8112,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGSLU_D3_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)               , intent(in)                    :: lb, ub
+        use pm_kind, only: RKG => RK4
+        real(RKG)               , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2, s3
-        real(RKC)                                               :: rand(s1, s2, s3)
+        real(RKG)                                               :: rand(s1, s2, s3)
         type(splitmix64_type)   , intent(inout)                 :: rng
     end function
 
@@ -8126,10 +8126,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGSLU_D3_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)               , intent(in)                    :: lb, ub
+        use pm_kind, only: RKG => RK3
+        real(RKG)               , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2, s3
-        real(RKC)                                               :: rand(s1, s2, s3)
+        real(RKG)                                               :: rand(s1, s2, s3)
         type(splitmix64_type)   , intent(inout)                 :: rng
     end function
 
@@ -8140,10 +8140,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGSLU_D3_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)               , intent(in)                    :: lb, ub
+        use pm_kind, only: RKG => RK2
+        real(RKG)               , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2, s3
-        real(RKC)                                               :: rand(s1, s2, s3)
+        real(RKG)                                               :: rand(s1, s2, s3)
         type(splitmix64_type)   , intent(inout)                 :: rng
     end function
 #endif
@@ -8153,10 +8153,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGSLU_D3_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)               , intent(in)                    :: lb, ub
+        use pm_kind, only: RKG => RK1
+        real(RKG)               , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2, s3
-        real(RKC)                                               :: rand(s1, s2, s3)
+        real(RKG)                                               :: rand(s1, s2, s3)
         type(splitmix64_type)   , intent(inout)                 :: rng
     end function
 #endif
@@ -8183,8 +8183,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGXDD_D0_LK
 #endif
-        use pm_kind, only: LKC => LK
-        logical(LKC)                                            :: rand
+        use pm_kind, only: LKG => LK
+        logical(LKG)                                            :: rand
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end function
 
@@ -8201,9 +8201,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGXLU_D0_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)        , intent(in)                    :: lb, ub
-        character(max(len(lb,IK),len(ub,IK)),SKC)               :: rand
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)        , intent(in)                    :: lb, ub
+        character(max(len(lb,IK),len(ub,IK)),SKG)               :: rand
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end function
 #endif
@@ -8213,9 +8213,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGXLU_D0_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)        , intent(in)                    :: lb, ub
-        character(max(len(lb,IK),len(ub,IK)),SKC)               :: rand
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)        , intent(in)                    :: lb, ub
+        character(max(len(lb,IK),len(ub,IK)),SKG)               :: rand
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end function
 #endif
@@ -8225,9 +8225,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGXLU_D0_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)        , intent(in)                    :: lb, ub
-        character(max(len(lb,IK),len(ub,IK)),SKC)               :: rand
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)        , intent(in)                    :: lb, ub
+        character(max(len(lb,IK),len(ub,IK)),SKG)               :: rand
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end function
 #endif
@@ -8237,9 +8237,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGXLU_D0_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)        , intent(in)                    :: lb, ub
-        character(max(len(lb,IK),len(ub,IK)),SKC)               :: rand
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)        , intent(in)                    :: lb, ub
+        character(max(len(lb,IK),len(ub,IK)),SKG)               :: rand
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end function
 #endif
@@ -8249,9 +8249,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGXLU_D0_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)        , intent(in)                    :: lb, ub
-        character(max(len(lb,IK),len(ub,IK)),SKC)               :: rand
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)        , intent(in)                    :: lb, ub
+        character(max(len(lb,IK),len(ub,IK)),SKG)               :: rand
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end function
 #endif
@@ -8263,9 +8263,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGXLU_D0_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)            , intent(in)                    :: lb, ub
-        integer(IKC)                                            :: rand
+        use pm_kind, only: IKG => IK5
+        integer(IKG)            , intent(in)                    :: lb, ub
+        integer(IKG)                                            :: rand
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end function
 #endif
@@ -8275,9 +8275,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGXLU_D0_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)            , intent(in)                    :: lb, ub
-        integer(IKC)                                            :: rand
+        use pm_kind, only: IKG => IK4
+        integer(IKG)            , intent(in)                    :: lb, ub
+        integer(IKG)                                            :: rand
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end function
 #endif
@@ -8287,9 +8287,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGXLU_D0_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)            , intent(in)                    :: lb, ub
-        integer(IKC)                                            :: rand
+        use pm_kind, only: IKG => IK3
+        integer(IKG)            , intent(in)                    :: lb, ub
+        integer(IKG)                                            :: rand
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end function
 #endif
@@ -8299,9 +8299,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGXLU_D0_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)            , intent(in)                    :: lb, ub
-        integer(IKC)                                            :: rand
+        use pm_kind, only: IKG => IK2
+        integer(IKG)            , intent(in)                    :: lb, ub
+        integer(IKG)                                            :: rand
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end function
 #endif
@@ -8311,9 +8311,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGXLU_D0_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)            , intent(in)                    :: lb, ub
-        integer(IKC)                                            :: rand
+        use pm_kind, only: IKG => IK1
+        integer(IKG)            , intent(in)                    :: lb, ub
+        integer(IKG)                                            :: rand
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end function
 #endif
@@ -8325,9 +8325,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGXLU_D0_LK5
 #endif
-        use pm_kind, only: LKC => LK5
-        logical(LKC)            , intent(in)                    :: lb, ub
-        logical(LKC)                                            :: rand
+        use pm_kind, only: LKG => LK5
+        logical(LKG)            , intent(in)                    :: lb, ub
+        logical(LKG)                                            :: rand
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end function
 #endif
@@ -8337,9 +8337,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGXLU_D0_LK4
 #endif
-        use pm_kind, only: LKC => LK4
-        logical(LKC)            , intent(in)                    :: lb, ub
-        logical(LKC)                                            :: rand
+        use pm_kind, only: LKG => LK4
+        logical(LKG)            , intent(in)                    :: lb, ub
+        logical(LKG)                                            :: rand
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end function
 #endif
@@ -8349,9 +8349,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGXLU_D0_LK3
 #endif
-        use pm_kind, only: LKC => LK3
-        logical(LKC)            , intent(in)                    :: lb, ub
-        logical(LKC)                                            :: rand
+        use pm_kind, only: LKG => LK3
+        logical(LKG)            , intent(in)                    :: lb, ub
+        logical(LKG)                                            :: rand
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end function
 #endif
@@ -8361,9 +8361,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGXLU_D0_LK2
 #endif
-        use pm_kind, only: LKC => LK2
-        logical(LKC)            , intent(in)                    :: lb, ub
-        logical(LKC)                                            :: rand
+        use pm_kind, only: LKG => LK2
+        logical(LKG)            , intent(in)                    :: lb, ub
+        logical(LKG)                                            :: rand
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end function
 #endif
@@ -8373,9 +8373,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGXLU_D0_LK1
 #endif
-        use pm_kind, only: LKC => LK1
-        logical(LKC)            , intent(in)                    :: lb, ub
-        logical(LKC)                                            :: rand
+        use pm_kind, only: LKG => LK1
+        logical(LKG)            , intent(in)                    :: lb, ub
+        logical(LKG)                                            :: rand
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end function
 #endif
@@ -8387,9 +8387,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGXLU_D0_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)            , intent(in)                    :: lb, ub
-        complex(CKC)                                            :: rand
+        use pm_kind, only: CKG => CK5
+        complex(CKG)            , intent(in)                    :: lb, ub
+        complex(CKG)                                            :: rand
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end function
 #endif
@@ -8399,9 +8399,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGXLU_D0_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)            , intent(in)                    :: lb, ub
-        complex(CKC)                                            :: rand
+        use pm_kind, only: CKG => CK4
+        complex(CKG)            , intent(in)                    :: lb, ub
+        complex(CKG)                                            :: rand
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end function
 #endif
@@ -8411,9 +8411,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGXLU_D0_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)            , intent(in)                    :: lb, ub
-        complex(CKC)                                            :: rand
+        use pm_kind, only: CKG => CK3
+        complex(CKG)            , intent(in)                    :: lb, ub
+        complex(CKG)                                            :: rand
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end function
 #endif
@@ -8423,9 +8423,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGXLU_D0_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)            , intent(in)                    :: lb, ub
-        complex(CKC)                                            :: rand
+        use pm_kind, only: CKG => CK2
+        complex(CKG)            , intent(in)                    :: lb, ub
+        complex(CKG)                                            :: rand
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end function
 #endif
@@ -8435,9 +8435,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGXLU_D0_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)            , intent(in)                    :: lb, ub
-        complex(CKC)                                            :: rand
+        use pm_kind, only: CKG => CK1
+        complex(CKG)            , intent(in)                    :: lb, ub
+        complex(CKG)                                            :: rand
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end function
 #endif
@@ -8449,9 +8449,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGXLU_D0_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)               , intent(in)                    :: lb, ub
-        real(RKC)                                               :: rand
+        use pm_kind, only: RKG => RK5
+        real(RKG)               , intent(in)                    :: lb, ub
+        real(RKG)                                               :: rand
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end function
 #endif
@@ -8461,9 +8461,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGXLU_D0_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)               , intent(in)                    :: lb, ub
-        real(RKC)                                               :: rand
+        use pm_kind, only: RKG => RK4
+        real(RKG)               , intent(in)                    :: lb, ub
+        real(RKG)                                               :: rand
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end function
 #endif
@@ -8473,9 +8473,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGXLU_D0_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)               , intent(in)                    :: lb, ub
-        real(RKC)                                               :: rand
+        use pm_kind, only: RKG => RK3
+        real(RKG)               , intent(in)                    :: lb, ub
+        real(RKG)                                               :: rand
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end function
 #endif
@@ -8485,9 +8485,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGXLU_D0_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)               , intent(in)                    :: lb, ub
-        real(RKC)                                               :: rand
+        use pm_kind, only: RKG => RK2
+        real(RKG)               , intent(in)                    :: lb, ub
+        real(RKG)                                               :: rand
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end function
 #endif
@@ -8497,9 +8497,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGXLU_D0_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)               , intent(in)                    :: lb, ub
-        real(RKC)                                               :: rand
+        use pm_kind, only: RKG => RK1
+        real(RKG)               , intent(in)                    :: lb, ub
+        real(RKG)                                               :: rand
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end function
 #endif
@@ -8517,10 +8517,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGXLU_D1_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)        , intent(in)                    :: lb, ub
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)        , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1
-        character(len(lb,IK),SKC)                               :: rand(s1)
+        character(len(lb,IK),SKG)                               :: rand(s1)
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end function
 #endif
@@ -8530,10 +8530,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGXLU_D1_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)        , intent(in)                    :: lb, ub
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)        , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1
-        character(len(lb,IK),SKC)                               :: rand(s1)
+        character(len(lb,IK),SKG)                               :: rand(s1)
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end function
 #endif
@@ -8543,10 +8543,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGXLU_D1_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)        , intent(in)                    :: lb, ub
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)        , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1
-        character(len(lb,IK),SKC)                               :: rand(s1)
+        character(len(lb,IK),SKG)                               :: rand(s1)
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end function
 #endif
@@ -8556,10 +8556,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGXLU_D1_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)        , intent(in)                    :: lb, ub
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)        , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1
-        character(len(lb,IK),SKC)                               :: rand(s1)
+        character(len(lb,IK),SKG)                               :: rand(s1)
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end function
 #endif
@@ -8569,10 +8569,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGXLU_D1_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)        , intent(in)                    :: lb, ub
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)        , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1
-        character(len(lb,IK),SKC)                               :: rand(s1)
+        character(len(lb,IK),SKG)                               :: rand(s1)
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end function
 #endif
@@ -8584,10 +8584,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGXLU_D1_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: IKG => IK5
+        integer(IKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1
-        integer(IKC)                                            :: rand(s1)
+        integer(IKG)                                            :: rand(s1)
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end function
 #endif
@@ -8597,10 +8597,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGXLU_D1_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: IKG => IK4
+        integer(IKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1
-        integer(IKC)                                            :: rand(s1)
+        integer(IKG)                                            :: rand(s1)
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end function
 #endif
@@ -8610,10 +8610,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGXLU_D1_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: IKG => IK3
+        integer(IKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1
-        integer(IKC)                                            :: rand(s1)
+        integer(IKG)                                            :: rand(s1)
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end function
 #endif
@@ -8623,10 +8623,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGXLU_D1_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: IKG => IK2
+        integer(IKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1
-        integer(IKC)                                            :: rand(s1)
+        integer(IKG)                                            :: rand(s1)
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end function
 #endif
@@ -8636,10 +8636,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGXLU_D1_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: IKG => IK1
+        integer(IKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1
-        integer(IKC)                                            :: rand(s1)
+        integer(IKG)                                            :: rand(s1)
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end function
 #endif
@@ -8651,10 +8651,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGXLU_D1_LK5
 #endif
-        use pm_kind, only: LKC => LK5
-        logical(LKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: LKG => LK5
+        logical(LKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1
-        logical(LKC)                                            :: rand(s1)
+        logical(LKG)                                            :: rand(s1)
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end function
 #endif
@@ -8664,10 +8664,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGXLU_D1_LK4
 #endif
-        use pm_kind, only: LKC => LK4
-        logical(LKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: LKG => LK4
+        logical(LKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1
-        logical(LKC)                                            :: rand(s1)
+        logical(LKG)                                            :: rand(s1)
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end function
 #endif
@@ -8677,10 +8677,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGXLU_D1_LK3
 #endif
-        use pm_kind, only: LKC => LK3
-        logical(LKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: LKG => LK3
+        logical(LKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1
-        logical(LKC)                                            :: rand(s1)
+        logical(LKG)                                            :: rand(s1)
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end function
 #endif
@@ -8690,10 +8690,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGXLU_D1_LK2
 #endif
-        use pm_kind, only: LKC => LK2
-        logical(LKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: LKG => LK2
+        logical(LKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1
-        logical(LKC)                                            :: rand(s1)
+        logical(LKG)                                            :: rand(s1)
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end function
 #endif
@@ -8703,10 +8703,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGXLU_D1_LK1
 #endif
-        use pm_kind, only: LKC => LK1
-        logical(LKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: LKG => LK1
+        logical(LKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1
-        logical(LKC)                                            :: rand(s1)
+        logical(LKG)                                            :: rand(s1)
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end function
 #endif
@@ -8718,10 +8718,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGXLU_D1_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: CKG => CK5
+        complex(CKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1
-        complex(CKC)                                            :: rand(s1)
+        complex(CKG)                                            :: rand(s1)
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end function
 #endif
@@ -8731,10 +8731,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGXLU_D1_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: CKG => CK4
+        complex(CKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1
-        complex(CKC)                                            :: rand(s1)
+        complex(CKG)                                            :: rand(s1)
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end function
 #endif
@@ -8744,10 +8744,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGXLU_D1_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: CKG => CK3
+        complex(CKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1
-        complex(CKC)                                            :: rand(s1)
+        complex(CKG)                                            :: rand(s1)
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end function
 #endif
@@ -8757,10 +8757,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGXLU_D1_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: CKG => CK2
+        complex(CKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1
-        complex(CKC)                                            :: rand(s1)
+        complex(CKG)                                            :: rand(s1)
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end function
 #endif
@@ -8770,10 +8770,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGXLU_D1_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: CKG => CK1
+        complex(CKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1
-        complex(CKC)                                            :: rand(s1)
+        complex(CKG)                                            :: rand(s1)
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end function
 #endif
@@ -8785,10 +8785,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGXLU_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)               , intent(in)                    :: lb, ub
+        use pm_kind, only: RKG => RK5
+        real(RKG)               , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1
-        real(RKC)                                               :: rand(s1)
+        real(RKG)                                               :: rand(s1)
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end function
 
@@ -8799,10 +8799,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGXLU_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)               , intent(in)                    :: lb, ub
+        use pm_kind, only: RKG => RK4
+        real(RKG)               , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1
-        real(RKC)                                               :: rand(s1)
+        real(RKG)                                               :: rand(s1)
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end function
 
@@ -8813,10 +8813,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGXLU_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)               , intent(in)                    :: lb, ub
+        use pm_kind, only: RKG => RK3
+        real(RKG)               , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1
-        real(RKC)                                               :: rand(s1)
+        real(RKG)                                               :: rand(s1)
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end function
 
@@ -8827,10 +8827,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGXLU_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)               , intent(in)                    :: lb, ub
+        use pm_kind, only: RKG => RK2
+        real(RKG)               , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1
-        real(RKC)                                               :: rand(s1)
+        real(RKG)                                               :: rand(s1)
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end function
 #endif
@@ -8840,10 +8840,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGXLU_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)               , intent(in)                    :: lb, ub
+        use pm_kind, only: RKG => RK1
+        real(RKG)               , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1
-        real(RKC)                                               :: rand(s1)
+        real(RKG)                                               :: rand(s1)
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end function
 #endif
@@ -8861,10 +8861,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGXLU_D2_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)        , intent(in)                    :: lb, ub
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)        , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2
-        character(len(lb,IK),SKC)                               :: rand(s1, s2)
+        character(len(lb,IK),SKG)                               :: rand(s1, s2)
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end function
 #endif
@@ -8874,10 +8874,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGXLU_D2_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)        , intent(in)                    :: lb, ub
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)        , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2
-        character(len(lb,IK),SKC)                               :: rand(s1, s2)
+        character(len(lb,IK),SKG)                               :: rand(s1, s2)
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end function
 #endif
@@ -8887,10 +8887,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGXLU_D2_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)        , intent(in)                    :: lb, ub
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)        , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2
-        character(len(lb,IK),SKC)                               :: rand(s1, s2)
+        character(len(lb,IK),SKG)                               :: rand(s1, s2)
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end function
 #endif
@@ -8900,10 +8900,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGXLU_D2_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)        , intent(in)                    :: lb, ub
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)        , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2
-        character(len(lb,IK),SKC)                               :: rand(s1, s2)
+        character(len(lb,IK),SKG)                               :: rand(s1, s2)
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end function
 #endif
@@ -8913,10 +8913,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGXLU_D2_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)        , intent(in)                    :: lb, ub
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)        , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2
-        character(len(lb,IK),SKC)                               :: rand(s1, s2)
+        character(len(lb,IK),SKG)                               :: rand(s1, s2)
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end function
 #endif
@@ -8928,10 +8928,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGXLU_D2_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: IKG => IK5
+        integer(IKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2
-        integer(IKC)                                            :: rand(s1, s2)
+        integer(IKG)                                            :: rand(s1, s2)
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end function
 #endif
@@ -8941,10 +8941,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGXLU_D2_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: IKG => IK4
+        integer(IKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2
-        integer(IKC)                                            :: rand(s1, s2)
+        integer(IKG)                                            :: rand(s1, s2)
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end function
 #endif
@@ -8954,10 +8954,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGXLU_D2_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: IKG => IK3
+        integer(IKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2
-        integer(IKC)                                            :: rand(s1, s2)
+        integer(IKG)                                            :: rand(s1, s2)
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end function
 #endif
@@ -8967,10 +8967,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGXLU_D2_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: IKG => IK2
+        integer(IKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2
-        integer(IKC)                                            :: rand(s1, s2)
+        integer(IKG)                                            :: rand(s1, s2)
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end function
 #endif
@@ -8980,10 +8980,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGXLU_D2_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: IKG => IK1
+        integer(IKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2
-        integer(IKC)                                            :: rand(s1, s2)
+        integer(IKG)                                            :: rand(s1, s2)
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end function
 #endif
@@ -8995,10 +8995,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGXLU_D2_LK5
 #endif
-        use pm_kind, only: LKC => LK5
-        logical(LKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: LKG => LK5
+        logical(LKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2
-        logical(LKC)                                            :: rand(s1, s2)
+        logical(LKG)                                            :: rand(s1, s2)
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end function
 #endif
@@ -9008,10 +9008,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGXLU_D2_LK4
 #endif
-        use pm_kind, only: LKC => LK4
-        logical(LKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: LKG => LK4
+        logical(LKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2
-        logical(LKC)                                            :: rand(s1, s2)
+        logical(LKG)                                            :: rand(s1, s2)
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end function
 #endif
@@ -9021,10 +9021,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGXLU_D2_LK3
 #endif
-        use pm_kind, only: LKC => LK3
-        logical(LKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: LKG => LK3
+        logical(LKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2
-        logical(LKC)                                            :: rand(s1, s2)
+        logical(LKG)                                            :: rand(s1, s2)
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end function
 #endif
@@ -9034,10 +9034,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGXLU_D2_LK2
 #endif
-        use pm_kind, only: LKC => LK2
-        logical(LKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: LKG => LK2
+        logical(LKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2
-        logical(LKC)                                            :: rand(s1, s2)
+        logical(LKG)                                            :: rand(s1, s2)
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end function
 #endif
@@ -9047,10 +9047,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGXLU_D2_LK1
 #endif
-        use pm_kind, only: LKC => LK1
-        logical(LKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: LKG => LK1
+        logical(LKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2
-        logical(LKC)                                            :: rand(s1, s2)
+        logical(LKG)                                            :: rand(s1, s2)
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end function
 #endif
@@ -9062,10 +9062,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGXLU_D2_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: CKG => CK5
+        complex(CKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2
-        complex(CKC)                                            :: rand(s1, s2)
+        complex(CKG)                                            :: rand(s1, s2)
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end function
 #endif
@@ -9075,10 +9075,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGXLU_D2_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: CKG => CK4
+        complex(CKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2
-        complex(CKC)                                            :: rand(s1, s2)
+        complex(CKG)                                            :: rand(s1, s2)
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end function
 #endif
@@ -9088,10 +9088,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGXLU_D2_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: CKG => CK3
+        complex(CKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2
-        complex(CKC)                                            :: rand(s1, s2)
+        complex(CKG)                                            :: rand(s1, s2)
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end function
 #endif
@@ -9101,10 +9101,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGXLU_D2_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: CKG => CK2
+        complex(CKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2
-        complex(CKC)                                            :: rand(s1, s2)
+        complex(CKG)                                            :: rand(s1, s2)
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end function
 #endif
@@ -9114,10 +9114,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGXLU_D2_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: CKG => CK1
+        complex(CKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2
-        complex(CKC)                                            :: rand(s1, s2)
+        complex(CKG)                                            :: rand(s1, s2)
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end function
 #endif
@@ -9129,10 +9129,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGXLU_D2_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)               , intent(in)                    :: lb, ub
+        use pm_kind, only: RKG => RK5
+        real(RKG)               , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2
-        real(RKC)                                               :: rand(s1, s2)
+        real(RKG)                                               :: rand(s1, s2)
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end function
 
@@ -9143,10 +9143,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGXLU_D2_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)               , intent(in)                    :: lb, ub
+        use pm_kind, only: RKG => RK4
+        real(RKG)               , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2
-        real(RKC)                                               :: rand(s1, s2)
+        real(RKG)                                               :: rand(s1, s2)
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end function
 
@@ -9157,10 +9157,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGXLU_D2_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)               , intent(in)                    :: lb, ub
+        use pm_kind, only: RKG => RK3
+        real(RKG)               , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2
-        real(RKC)                                               :: rand(s1, s2)
+        real(RKG)                                               :: rand(s1, s2)
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end function
 
@@ -9171,10 +9171,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGXLU_D2_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)               , intent(in)                    :: lb, ub
+        use pm_kind, only: RKG => RK2
+        real(RKG)               , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2
-        real(RKC)                                               :: rand(s1, s2)
+        real(RKG)                                               :: rand(s1, s2)
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end function
 #endif
@@ -9184,10 +9184,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGXLU_D2_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)               , intent(in)                    :: lb, ub
+        use pm_kind, only: RKG => RK1
+        real(RKG)               , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2
-        real(RKC)                                               :: rand(s1, s2)
+        real(RKG)                                               :: rand(s1, s2)
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end function
 #endif
@@ -9205,10 +9205,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGXLU_D3_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)        , intent(in)                    :: lb, ub
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)        , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2, s3
-        character(len(lb,IK),SKC)                               :: rand(s1, s2, s3)
+        character(len(lb,IK),SKG)                               :: rand(s1, s2, s3)
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end function
 #endif
@@ -9218,10 +9218,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGXLU_D3_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)        , intent(in)                    :: lb, ub
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)        , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2, s3
-        character(len(lb,IK),SKC)                               :: rand(s1, s2, s3)
+        character(len(lb,IK),SKG)                               :: rand(s1, s2, s3)
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end function
 #endif
@@ -9231,10 +9231,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGXLU_D3_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)        , intent(in)                    :: lb, ub
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)        , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2, s3
-        character(len(lb,IK),SKC)                               :: rand(s1, s2, s3)
+        character(len(lb,IK),SKG)                               :: rand(s1, s2, s3)
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end function
 #endif
@@ -9244,10 +9244,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGXLU_D3_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)        , intent(in)                    :: lb, ub
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)        , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2, s3
-        character(len(lb,IK),SKC)                               :: rand(s1, s2, s3)
+        character(len(lb,IK),SKG)                               :: rand(s1, s2, s3)
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end function
 #endif
@@ -9257,10 +9257,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGXLU_D3_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)        , intent(in)                    :: lb, ub
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)        , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2, s3
-        character(len(lb,IK),SKC)                               :: rand(s1, s2, s3)
+        character(len(lb,IK),SKG)                               :: rand(s1, s2, s3)
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end function
 #endif
@@ -9272,10 +9272,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGXLU_D3_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: IKG => IK5
+        integer(IKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2, s3
-        integer(IKC)                                            :: rand(s1, s2, s3)
+        integer(IKG)                                            :: rand(s1, s2, s3)
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end function
 #endif
@@ -9285,10 +9285,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGXLU_D3_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: IKG => IK4
+        integer(IKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2, s3
-        integer(IKC)                                            :: rand(s1, s2, s3)
+        integer(IKG)                                            :: rand(s1, s2, s3)
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end function
 #endif
@@ -9298,10 +9298,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGXLU_D3_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: IKG => IK3
+        integer(IKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2, s3
-        integer(IKC)                                            :: rand(s1, s2, s3)
+        integer(IKG)                                            :: rand(s1, s2, s3)
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end function
 #endif
@@ -9311,10 +9311,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGXLU_D3_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: IKG => IK2
+        integer(IKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2, s3
-        integer(IKC)                                            :: rand(s1, s2, s3)
+        integer(IKG)                                            :: rand(s1, s2, s3)
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end function
 #endif
@@ -9324,10 +9324,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGXLU_D3_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: IKG => IK1
+        integer(IKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2, s3
-        integer(IKC)                                            :: rand(s1, s2, s3)
+        integer(IKG)                                            :: rand(s1, s2, s3)
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end function
 #endif
@@ -9339,10 +9339,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGXLU_D3_LK5
 #endif
-        use pm_kind, only: LKC => LK5
-        logical(LKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: LKG => LK5
+        logical(LKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2, s3
-        logical(LKC)                                            :: rand(s1, s2, s3)
+        logical(LKG)                                            :: rand(s1, s2, s3)
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end function
 #endif
@@ -9352,10 +9352,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGXLU_D3_LK4
 #endif
-        use pm_kind, only: LKC => LK4
-        logical(LKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: LKG => LK4
+        logical(LKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2, s3
-        logical(LKC)                                            :: rand(s1, s2, s3)
+        logical(LKG)                                            :: rand(s1, s2, s3)
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end function
 #endif
@@ -9365,10 +9365,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGXLU_D3_LK3
 #endif
-        use pm_kind, only: LKC => LK3
-        logical(LKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: LKG => LK3
+        logical(LKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2, s3
-        logical(LKC)                                            :: rand(s1, s2, s3)
+        logical(LKG)                                            :: rand(s1, s2, s3)
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end function
 #endif
@@ -9378,10 +9378,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGXLU_D3_LK2
 #endif
-        use pm_kind, only: LKC => LK2
-        logical(LKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: LKG => LK2
+        logical(LKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2, s3
-        logical(LKC)                                            :: rand(s1, s2, s3)
+        logical(LKG)                                            :: rand(s1, s2, s3)
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end function
 #endif
@@ -9391,10 +9391,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGXLU_D3_LK1
 #endif
-        use pm_kind, only: LKC => LK1
-        logical(LKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: LKG => LK1
+        logical(LKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2, s3
-        logical(LKC)                                            :: rand(s1, s2, s3)
+        logical(LKG)                                            :: rand(s1, s2, s3)
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end function
 #endif
@@ -9406,10 +9406,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGXLU_D3_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: CKG => CK5
+        complex(CKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2, s3
-        complex(CKC)                                            :: rand(s1, s2, s3)
+        complex(CKG)                                            :: rand(s1, s2, s3)
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end function
 #endif
@@ -9419,10 +9419,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGXLU_D3_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: CKG => CK4
+        complex(CKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2, s3
-        complex(CKC)                                            :: rand(s1, s2, s3)
+        complex(CKG)                                            :: rand(s1, s2, s3)
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end function
 #endif
@@ -9432,10 +9432,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGXLU_D3_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: CKG => CK3
+        complex(CKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2, s3
-        complex(CKC)                                            :: rand(s1, s2, s3)
+        complex(CKG)                                            :: rand(s1, s2, s3)
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end function
 #endif
@@ -9445,10 +9445,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGXLU_D3_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: CKG => CK2
+        complex(CKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2, s3
-        complex(CKC)                                            :: rand(s1, s2, s3)
+        complex(CKG)                                            :: rand(s1, s2, s3)
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end function
 #endif
@@ -9458,10 +9458,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGXLU_D3_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: CKG => CK1
+        complex(CKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2, s3
-        complex(CKC)                                            :: rand(s1, s2, s3)
+        complex(CKG)                                            :: rand(s1, s2, s3)
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end function
 #endif
@@ -9473,10 +9473,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGXLU_D3_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)               , intent(in)                    :: lb, ub
+        use pm_kind, only: RKG => RK5
+        real(RKG)               , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2, s3
-        real(RKC)                                               :: rand(s1, s2, s3)
+        real(RKG)                                               :: rand(s1, s2, s3)
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end function
 
@@ -9487,10 +9487,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGXLU_D3_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)               , intent(in)                    :: lb, ub
+        use pm_kind, only: RKG => RK4
+        real(RKG)               , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2, s3
-        real(RKC)                                               :: rand(s1, s2, s3)
+        real(RKG)                                               :: rand(s1, s2, s3)
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end function
 
@@ -9501,10 +9501,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGXLU_D3_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)               , intent(in)                    :: lb, ub
+        use pm_kind, only: RKG => RK3
+        real(RKG)               , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2, s3
-        real(RKC)                                               :: rand(s1, s2, s3)
+        real(RKG)                                               :: rand(s1, s2, s3)
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end function
 
@@ -9515,10 +9515,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGXLU_D3_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)               , intent(in)                    :: lb, ub
+        use pm_kind, only: RKG => RK2
+        real(RKG)               , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2, s3
-        real(RKC)                                               :: rand(s1, s2, s3)
+        real(RKG)                                               :: rand(s1, s2, s3)
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end function
 #endif
@@ -9528,10 +9528,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGXLU_D3_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)               , intent(in)                    :: lb, ub
+        use pm_kind, only: RKG => RK1
+        real(RKG)               , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2, s3
-        real(RKC)                                               :: rand(s1, s2, s3)
+        real(RKG)                                               :: rand(s1, s2, s3)
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end function
 #endif
@@ -9558,8 +9558,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGGDD_D0_LK
 #endif
-        use pm_kind, only: LKC => LK
-        logical(LKC)                                            :: rand
+        use pm_kind, only: LKG => LK
+        logical(LKG)                                            :: rand
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end function
 
@@ -9576,9 +9576,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGGLU_D0_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)        , intent(in)                    :: lb, ub
-        character(max(len(lb,IK),len(ub,IK)),SKC)               :: rand
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)        , intent(in)                    :: lb, ub
+        character(max(len(lb,IK),len(ub,IK)),SKG)               :: rand
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end function
 #endif
@@ -9588,9 +9588,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGGLU_D0_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)        , intent(in)                    :: lb, ub
-        character(max(len(lb,IK),len(ub,IK)),SKC)               :: rand
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)        , intent(in)                    :: lb, ub
+        character(max(len(lb,IK),len(ub,IK)),SKG)               :: rand
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end function
 #endif
@@ -9600,9 +9600,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGGLU_D0_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)        , intent(in)                    :: lb, ub
-        character(max(len(lb,IK),len(ub,IK)),SKC)               :: rand
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)        , intent(in)                    :: lb, ub
+        character(max(len(lb,IK),len(ub,IK)),SKG)               :: rand
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end function
 #endif
@@ -9612,9 +9612,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGGLU_D0_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)        , intent(in)                    :: lb, ub
-        character(max(len(lb,IK),len(ub,IK)),SKC)               :: rand
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)        , intent(in)                    :: lb, ub
+        character(max(len(lb,IK),len(ub,IK)),SKG)               :: rand
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end function
 #endif
@@ -9624,9 +9624,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGGLU_D0_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)        , intent(in)                    :: lb, ub
-        character(max(len(lb,IK),len(ub,IK)),SKC)               :: rand
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)        , intent(in)                    :: lb, ub
+        character(max(len(lb,IK),len(ub,IK)),SKG)               :: rand
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end function
 #endif
@@ -9638,9 +9638,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGGLU_D0_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)            , intent(in)                    :: lb, ub
-        integer(IKC)                                            :: rand
+        use pm_kind, only: IKG => IK5
+        integer(IKG)            , intent(in)                    :: lb, ub
+        integer(IKG)                                            :: rand
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end function
 #endif
@@ -9650,9 +9650,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGGLU_D0_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)            , intent(in)                    :: lb, ub
-        integer(IKC)                                            :: rand
+        use pm_kind, only: IKG => IK4
+        integer(IKG)            , intent(in)                    :: lb, ub
+        integer(IKG)                                            :: rand
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end function
 #endif
@@ -9662,9 +9662,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGGLU_D0_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)            , intent(in)                    :: lb, ub
-        integer(IKC)                                            :: rand
+        use pm_kind, only: IKG => IK3
+        integer(IKG)            , intent(in)                    :: lb, ub
+        integer(IKG)                                            :: rand
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end function
 #endif
@@ -9674,9 +9674,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGGLU_D0_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)            , intent(in)                    :: lb, ub
-        integer(IKC)                                            :: rand
+        use pm_kind, only: IKG => IK2
+        integer(IKG)            , intent(in)                    :: lb, ub
+        integer(IKG)                                            :: rand
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end function
 #endif
@@ -9686,9 +9686,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGGLU_D0_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)            , intent(in)                    :: lb, ub
-        integer(IKC)                                            :: rand
+        use pm_kind, only: IKG => IK1
+        integer(IKG)            , intent(in)                    :: lb, ub
+        integer(IKG)                                            :: rand
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end function
 #endif
@@ -9700,9 +9700,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGGLU_D0_LK5
 #endif
-        use pm_kind, only: LKC => LK5
-        logical(LKC)            , intent(in)                    :: lb, ub
-        logical(LKC)                                            :: rand
+        use pm_kind, only: LKG => LK5
+        logical(LKG)            , intent(in)                    :: lb, ub
+        logical(LKG)                                            :: rand
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end function
 #endif
@@ -9712,9 +9712,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGGLU_D0_LK4
 #endif
-        use pm_kind, only: LKC => LK4
-        logical(LKC)            , intent(in)                    :: lb, ub
-        logical(LKC)                                            :: rand
+        use pm_kind, only: LKG => LK4
+        logical(LKG)            , intent(in)                    :: lb, ub
+        logical(LKG)                                            :: rand
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end function
 #endif
@@ -9724,9 +9724,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGGLU_D0_LK3
 #endif
-        use pm_kind, only: LKC => LK3
-        logical(LKC)            , intent(in)                    :: lb, ub
-        logical(LKC)                                            :: rand
+        use pm_kind, only: LKG => LK3
+        logical(LKG)            , intent(in)                    :: lb, ub
+        logical(LKG)                                            :: rand
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end function
 #endif
@@ -9736,9 +9736,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGGLU_D0_LK2
 #endif
-        use pm_kind, only: LKC => LK2
-        logical(LKC)            , intent(in)                    :: lb, ub
-        logical(LKC)                                            :: rand
+        use pm_kind, only: LKG => LK2
+        logical(LKG)            , intent(in)                    :: lb, ub
+        logical(LKG)                                            :: rand
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end function
 #endif
@@ -9748,9 +9748,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGGLU_D0_LK1
 #endif
-        use pm_kind, only: LKC => LK1
-        logical(LKC)            , intent(in)                    :: lb, ub
-        logical(LKC)                                            :: rand
+        use pm_kind, only: LKG => LK1
+        logical(LKG)            , intent(in)                    :: lb, ub
+        logical(LKG)                                            :: rand
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end function
 #endif
@@ -9762,9 +9762,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGGLU_D0_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)            , intent(in)                    :: lb, ub
-        complex(CKC)                                            :: rand
+        use pm_kind, only: CKG => CK5
+        complex(CKG)            , intent(in)                    :: lb, ub
+        complex(CKG)                                            :: rand
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end function
 #endif
@@ -9774,9 +9774,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGGLU_D0_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)            , intent(in)                    :: lb, ub
-        complex(CKC)                                            :: rand
+        use pm_kind, only: CKG => CK4
+        complex(CKG)            , intent(in)                    :: lb, ub
+        complex(CKG)                                            :: rand
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end function
 #endif
@@ -9786,9 +9786,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGGLU_D0_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)            , intent(in)                    :: lb, ub
-        complex(CKC)                                            :: rand
+        use pm_kind, only: CKG => CK3
+        complex(CKG)            , intent(in)                    :: lb, ub
+        complex(CKG)                                            :: rand
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end function
 #endif
@@ -9798,9 +9798,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGGLU_D0_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)            , intent(in)                    :: lb, ub
-        complex(CKC)                                            :: rand
+        use pm_kind, only: CKG => CK2
+        complex(CKG)            , intent(in)                    :: lb, ub
+        complex(CKG)                                            :: rand
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end function
 #endif
@@ -9810,9 +9810,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGGLU_D0_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)            , intent(in)                    :: lb, ub
-        complex(CKC)                                            :: rand
+        use pm_kind, only: CKG => CK1
+        complex(CKG)            , intent(in)                    :: lb, ub
+        complex(CKG)                                            :: rand
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end function
 #endif
@@ -9824,9 +9824,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGGLU_D0_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)               , intent(in)                    :: lb, ub
-        real(RKC)                                               :: rand
+        use pm_kind, only: RKG => RK5
+        real(RKG)               , intent(in)                    :: lb, ub
+        real(RKG)                                               :: rand
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end function
 #endif
@@ -9836,9 +9836,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGGLU_D0_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)               , intent(in)                    :: lb, ub
-        real(RKC)                                               :: rand
+        use pm_kind, only: RKG => RK4
+        real(RKG)               , intent(in)                    :: lb, ub
+        real(RKG)                                               :: rand
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end function
 #endif
@@ -9848,9 +9848,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGGLU_D0_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)               , intent(in)                    :: lb, ub
-        real(RKC)                                               :: rand
+        use pm_kind, only: RKG => RK3
+        real(RKG)               , intent(in)                    :: lb, ub
+        real(RKG)                                               :: rand
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end function
 #endif
@@ -9860,9 +9860,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGGLU_D0_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)               , intent(in)                    :: lb, ub
-        real(RKC)                                               :: rand
+        use pm_kind, only: RKG => RK2
+        real(RKG)               , intent(in)                    :: lb, ub
+        real(RKG)                                               :: rand
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end function
 #endif
@@ -9872,9 +9872,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGGLU_D0_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)               , intent(in)                    :: lb, ub
-        real(RKC)                                               :: rand
+        use pm_kind, only: RKG => RK1
+        real(RKG)               , intent(in)                    :: lb, ub
+        real(RKG)                                               :: rand
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end function
 #endif
@@ -9892,10 +9892,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGGLU_D1_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)        , intent(in)                    :: lb, ub
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)        , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1
-        character(len(lb,IK),SKC)                               :: rand(s1)
+        character(len(lb,IK),SKG)                               :: rand(s1)
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end function
 #endif
@@ -9905,10 +9905,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGGLU_D1_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)        , intent(in)                    :: lb, ub
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)        , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1
-        character(len(lb,IK),SKC)                               :: rand(s1)
+        character(len(lb,IK),SKG)                               :: rand(s1)
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end function
 #endif
@@ -9918,10 +9918,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGGLU_D1_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)        , intent(in)                    :: lb, ub
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)        , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1
-        character(len(lb,IK),SKC)                               :: rand(s1)
+        character(len(lb,IK),SKG)                               :: rand(s1)
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end function
 #endif
@@ -9931,10 +9931,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGGLU_D1_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)        , intent(in)                    :: lb, ub
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)        , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1
-        character(len(lb,IK),SKC)                               :: rand(s1)
+        character(len(lb,IK),SKG)                               :: rand(s1)
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end function
 #endif
@@ -9944,10 +9944,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGGLU_D1_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)        , intent(in)                    :: lb, ub
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)        , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1
-        character(len(lb,IK),SKC)                               :: rand(s1)
+        character(len(lb,IK),SKG)                               :: rand(s1)
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end function
 #endif
@@ -9959,10 +9959,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGGLU_D1_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: IKG => IK5
+        integer(IKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1
-        integer(IKC)                                            :: rand(s1)
+        integer(IKG)                                            :: rand(s1)
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end function
 #endif
@@ -9972,10 +9972,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGGLU_D1_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: IKG => IK4
+        integer(IKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1
-        integer(IKC)                                            :: rand(s1)
+        integer(IKG)                                            :: rand(s1)
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end function
 #endif
@@ -9985,10 +9985,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGGLU_D1_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: IKG => IK3
+        integer(IKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1
-        integer(IKC)                                            :: rand(s1)
+        integer(IKG)                                            :: rand(s1)
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end function
 #endif
@@ -9998,10 +9998,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGGLU_D1_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: IKG => IK2
+        integer(IKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1
-        integer(IKC)                                            :: rand(s1)
+        integer(IKG)                                            :: rand(s1)
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end function
 #endif
@@ -10011,10 +10011,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGGLU_D1_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: IKG => IK1
+        integer(IKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1
-        integer(IKC)                                            :: rand(s1)
+        integer(IKG)                                            :: rand(s1)
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end function
 #endif
@@ -10026,10 +10026,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGGLU_D1_LK5
 #endif
-        use pm_kind, only: LKC => LK5
-        logical(LKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: LKG => LK5
+        logical(LKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1
-        logical(LKC)                                            :: rand(s1)
+        logical(LKG)                                            :: rand(s1)
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end function
 #endif
@@ -10039,10 +10039,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGGLU_D1_LK4
 #endif
-        use pm_kind, only: LKC => LK4
-        logical(LKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: LKG => LK4
+        logical(LKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1
-        logical(LKC)                                            :: rand(s1)
+        logical(LKG)                                            :: rand(s1)
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end function
 #endif
@@ -10052,10 +10052,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGGLU_D1_LK3
 #endif
-        use pm_kind, only: LKC => LK3
-        logical(LKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: LKG => LK3
+        logical(LKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1
-        logical(LKC)                                            :: rand(s1)
+        logical(LKG)                                            :: rand(s1)
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end function
 #endif
@@ -10065,10 +10065,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGGLU_D1_LK2
 #endif
-        use pm_kind, only: LKC => LK2
-        logical(LKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: LKG => LK2
+        logical(LKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1
-        logical(LKC)                                            :: rand(s1)
+        logical(LKG)                                            :: rand(s1)
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end function
 #endif
@@ -10078,10 +10078,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGGLU_D1_LK1
 #endif
-        use pm_kind, only: LKC => LK1
-        logical(LKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: LKG => LK1
+        logical(LKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1
-        logical(LKC)                                            :: rand(s1)
+        logical(LKG)                                            :: rand(s1)
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end function
 #endif
@@ -10093,10 +10093,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGGLU_D1_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: CKG => CK5
+        complex(CKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1
-        complex(CKC)                                            :: rand(s1)
+        complex(CKG)                                            :: rand(s1)
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end function
 #endif
@@ -10106,10 +10106,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGGLU_D1_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: CKG => CK4
+        complex(CKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1
-        complex(CKC)                                            :: rand(s1)
+        complex(CKG)                                            :: rand(s1)
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end function
 #endif
@@ -10119,10 +10119,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGGLU_D1_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: CKG => CK3
+        complex(CKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1
-        complex(CKC)                                            :: rand(s1)
+        complex(CKG)                                            :: rand(s1)
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end function
 #endif
@@ -10132,10 +10132,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGGLU_D1_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: CKG => CK2
+        complex(CKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1
-        complex(CKC)                                            :: rand(s1)
+        complex(CKG)                                            :: rand(s1)
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end function
 #endif
@@ -10145,10 +10145,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGGLU_D1_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: CKG => CK1
+        complex(CKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1
-        complex(CKC)                                            :: rand(s1)
+        complex(CKG)                                            :: rand(s1)
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end function
 #endif
@@ -10160,10 +10160,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGGLU_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)               , intent(in)                    :: lb, ub
+        use pm_kind, only: RKG => RK5
+        real(RKG)               , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1
-        real(RKC)                                               :: rand(s1)
+        real(RKG)                                               :: rand(s1)
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end function
 
@@ -10174,10 +10174,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGGLU_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)               , intent(in)                    :: lb, ub
+        use pm_kind, only: RKG => RK4
+        real(RKG)               , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1
-        real(RKC)                                               :: rand(s1)
+        real(RKG)                                               :: rand(s1)
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end function
 
@@ -10188,10 +10188,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGGLU_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)               , intent(in)                    :: lb, ub
+        use pm_kind, only: RKG => RK3
+        real(RKG)               , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1
-        real(RKC)                                               :: rand(s1)
+        real(RKG)                                               :: rand(s1)
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end function
 
@@ -10202,10 +10202,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGGLU_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)               , intent(in)                    :: lb, ub
+        use pm_kind, only: RKG => RK2
+        real(RKG)               , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1
-        real(RKC)                                               :: rand(s1)
+        real(RKG)                                               :: rand(s1)
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end function
 #endif
@@ -10215,10 +10215,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGGLU_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)               , intent(in)                    :: lb, ub
+        use pm_kind, only: RKG => RK1
+        real(RKG)               , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1
-        real(RKC)                                               :: rand(s1)
+        real(RKG)                                               :: rand(s1)
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end function
 #endif
@@ -10236,10 +10236,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGGLU_D2_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)        , intent(in)                    :: lb, ub
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)        , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2
-        character(len(lb,IK),SKC)                               :: rand(s1, s2)
+        character(len(lb,IK),SKG)                               :: rand(s1, s2)
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end function
 #endif
@@ -10249,10 +10249,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGGLU_D2_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)        , intent(in)                    :: lb, ub
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)        , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2
-        character(len(lb,IK),SKC)                               :: rand(s1, s2)
+        character(len(lb,IK),SKG)                               :: rand(s1, s2)
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end function
 #endif
@@ -10262,10 +10262,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGGLU_D2_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)        , intent(in)                    :: lb, ub
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)        , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2
-        character(len(lb,IK),SKC)                               :: rand(s1, s2)
+        character(len(lb,IK),SKG)                               :: rand(s1, s2)
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end function
 #endif
@@ -10275,10 +10275,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGGLU_D2_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)        , intent(in)                    :: lb, ub
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)        , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2
-        character(len(lb,IK),SKC)                               :: rand(s1, s2)
+        character(len(lb,IK),SKG)                               :: rand(s1, s2)
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end function
 #endif
@@ -10288,10 +10288,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGGLU_D2_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)        , intent(in)                    :: lb, ub
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)        , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2
-        character(len(lb,IK),SKC)                               :: rand(s1, s2)
+        character(len(lb,IK),SKG)                               :: rand(s1, s2)
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end function
 #endif
@@ -10303,10 +10303,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGGLU_D2_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: IKG => IK5
+        integer(IKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2
-        integer(IKC)                                            :: rand(s1, s2)
+        integer(IKG)                                            :: rand(s1, s2)
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end function
 #endif
@@ -10316,10 +10316,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGGLU_D2_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: IKG => IK4
+        integer(IKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2
-        integer(IKC)                                            :: rand(s1, s2)
+        integer(IKG)                                            :: rand(s1, s2)
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end function
 #endif
@@ -10329,10 +10329,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGGLU_D2_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: IKG => IK3
+        integer(IKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2
-        integer(IKC)                                            :: rand(s1, s2)
+        integer(IKG)                                            :: rand(s1, s2)
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end function
 #endif
@@ -10342,10 +10342,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGGLU_D2_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: IKG => IK2
+        integer(IKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2
-        integer(IKC)                                            :: rand(s1, s2)
+        integer(IKG)                                            :: rand(s1, s2)
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end function
 #endif
@@ -10355,10 +10355,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGGLU_D2_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: IKG => IK1
+        integer(IKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2
-        integer(IKC)                                            :: rand(s1, s2)
+        integer(IKG)                                            :: rand(s1, s2)
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end function
 #endif
@@ -10370,10 +10370,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGGLU_D2_LK5
 #endif
-        use pm_kind, only: LKC => LK5
-        logical(LKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: LKG => LK5
+        logical(LKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2
-        logical(LKC)                                            :: rand(s1, s2)
+        logical(LKG)                                            :: rand(s1, s2)
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end function
 #endif
@@ -10383,10 +10383,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGGLU_D2_LK4
 #endif
-        use pm_kind, only: LKC => LK4
-        logical(LKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: LKG => LK4
+        logical(LKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2
-        logical(LKC)                                            :: rand(s1, s2)
+        logical(LKG)                                            :: rand(s1, s2)
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end function
 #endif
@@ -10396,10 +10396,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGGLU_D2_LK3
 #endif
-        use pm_kind, only: LKC => LK3
-        logical(LKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: LKG => LK3
+        logical(LKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2
-        logical(LKC)                                            :: rand(s1, s2)
+        logical(LKG)                                            :: rand(s1, s2)
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end function
 #endif
@@ -10409,10 +10409,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGGLU_D2_LK2
 #endif
-        use pm_kind, only: LKC => LK2
-        logical(LKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: LKG => LK2
+        logical(LKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2
-        logical(LKC)                                            :: rand(s1, s2)
+        logical(LKG)                                            :: rand(s1, s2)
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end function
 #endif
@@ -10422,10 +10422,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGGLU_D2_LK1
 #endif
-        use pm_kind, only: LKC => LK1
-        logical(LKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: LKG => LK1
+        logical(LKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2
-        logical(LKC)                                            :: rand(s1, s2)
+        logical(LKG)                                            :: rand(s1, s2)
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end function
 #endif
@@ -10437,10 +10437,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGGLU_D2_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: CKG => CK5
+        complex(CKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2
-        complex(CKC)                                            :: rand(s1, s2)
+        complex(CKG)                                            :: rand(s1, s2)
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end function
 #endif
@@ -10450,10 +10450,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGGLU_D2_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: CKG => CK4
+        complex(CKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2
-        complex(CKC)                                            :: rand(s1, s2)
+        complex(CKG)                                            :: rand(s1, s2)
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end function
 #endif
@@ -10463,10 +10463,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGGLU_D2_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: CKG => CK3
+        complex(CKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2
-        complex(CKC)                                            :: rand(s1, s2)
+        complex(CKG)                                            :: rand(s1, s2)
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end function
 #endif
@@ -10476,10 +10476,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGGLU_D2_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: CKG => CK2
+        complex(CKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2
-        complex(CKC)                                            :: rand(s1, s2)
+        complex(CKG)                                            :: rand(s1, s2)
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end function
 #endif
@@ -10489,10 +10489,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGGLU_D2_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: CKG => CK1
+        complex(CKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2
-        complex(CKC)                                            :: rand(s1, s2)
+        complex(CKG)                                            :: rand(s1, s2)
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end function
 #endif
@@ -10504,10 +10504,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGGLU_D2_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)               , intent(in)                    :: lb, ub
+        use pm_kind, only: RKG => RK5
+        real(RKG)               , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2
-        real(RKC)                                               :: rand(s1, s2)
+        real(RKG)                                               :: rand(s1, s2)
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end function
 
@@ -10518,10 +10518,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGGLU_D2_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)               , intent(in)                    :: lb, ub
+        use pm_kind, only: RKG => RK4
+        real(RKG)               , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2
-        real(RKC)                                               :: rand(s1, s2)
+        real(RKG)                                               :: rand(s1, s2)
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end function
 
@@ -10532,10 +10532,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGGLU_D2_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)               , intent(in)                    :: lb, ub
+        use pm_kind, only: RKG => RK3
+        real(RKG)               , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2
-        real(RKC)                                               :: rand(s1, s2)
+        real(RKG)                                               :: rand(s1, s2)
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end function
 
@@ -10546,10 +10546,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGGLU_D2_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)               , intent(in)                    :: lb, ub
+        use pm_kind, only: RKG => RK2
+        real(RKG)               , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2
-        real(RKC)                                               :: rand(s1, s2)
+        real(RKG)                                               :: rand(s1, s2)
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end function
 #endif
@@ -10559,10 +10559,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGGLU_D2_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)               , intent(in)                    :: lb, ub
+        use pm_kind, only: RKG => RK1
+        real(RKG)               , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2
-        real(RKC)                                               :: rand(s1, s2)
+        real(RKG)                                               :: rand(s1, s2)
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end function
 #endif
@@ -10580,10 +10580,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGGLU_D3_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)        , intent(in)                    :: lb, ub
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)        , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2, s3
-        character(len(lb,IK),SKC)                               :: rand(s1, s2, s3)
+        character(len(lb,IK),SKG)                               :: rand(s1, s2, s3)
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end function
 #endif
@@ -10593,10 +10593,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGGLU_D3_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)        , intent(in)                    :: lb, ub
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)        , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2, s3
-        character(len(lb,IK),SKC)                               :: rand(s1, s2, s3)
+        character(len(lb,IK),SKG)                               :: rand(s1, s2, s3)
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end function
 #endif
@@ -10606,10 +10606,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGGLU_D3_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)        , intent(in)                    :: lb, ub
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)        , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2, s3
-        character(len(lb,IK),SKC)                               :: rand(s1, s2, s3)
+        character(len(lb,IK),SKG)                               :: rand(s1, s2, s3)
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end function
 #endif
@@ -10619,10 +10619,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGGLU_D3_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)        , intent(in)                    :: lb, ub
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)        , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2, s3
-        character(len(lb,IK),SKC)                               :: rand(s1, s2, s3)
+        character(len(lb,IK),SKG)                               :: rand(s1, s2, s3)
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end function
 #endif
@@ -10632,10 +10632,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGGLU_D3_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)        , intent(in)                    :: lb, ub
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)        , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2, s3
-        character(len(lb,IK),SKC)                               :: rand(s1, s2, s3)
+        character(len(lb,IK),SKG)                               :: rand(s1, s2, s3)
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end function
 #endif
@@ -10647,10 +10647,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGGLU_D3_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: IKG => IK5
+        integer(IKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2, s3
-        integer(IKC)                                            :: rand(s1, s2, s3)
+        integer(IKG)                                            :: rand(s1, s2, s3)
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end function
 #endif
@@ -10660,10 +10660,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGGLU_D3_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: IKG => IK4
+        integer(IKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2, s3
-        integer(IKC)                                            :: rand(s1, s2, s3)
+        integer(IKG)                                            :: rand(s1, s2, s3)
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end function
 #endif
@@ -10673,10 +10673,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGGLU_D3_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: IKG => IK3
+        integer(IKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2, s3
-        integer(IKC)                                            :: rand(s1, s2, s3)
+        integer(IKG)                                            :: rand(s1, s2, s3)
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end function
 #endif
@@ -10686,10 +10686,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGGLU_D3_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: IKG => IK2
+        integer(IKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2, s3
-        integer(IKC)                                            :: rand(s1, s2, s3)
+        integer(IKG)                                            :: rand(s1, s2, s3)
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end function
 #endif
@@ -10699,10 +10699,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGGLU_D3_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: IKG => IK1
+        integer(IKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2, s3
-        integer(IKC)                                            :: rand(s1, s2, s3)
+        integer(IKG)                                            :: rand(s1, s2, s3)
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end function
 #endif
@@ -10714,10 +10714,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGGLU_D3_LK5
 #endif
-        use pm_kind, only: LKC => LK5
-        logical(LKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: LKG => LK5
+        logical(LKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2, s3
-        logical(LKC)                                            :: rand(s1, s2, s3)
+        logical(LKG)                                            :: rand(s1, s2, s3)
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end function
 #endif
@@ -10727,10 +10727,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGGLU_D3_LK4
 #endif
-        use pm_kind, only: LKC => LK4
-        logical(LKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: LKG => LK4
+        logical(LKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2, s3
-        logical(LKC)                                            :: rand(s1, s2, s3)
+        logical(LKG)                                            :: rand(s1, s2, s3)
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end function
 #endif
@@ -10740,10 +10740,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGGLU_D3_LK3
 #endif
-        use pm_kind, only: LKC => LK3
-        logical(LKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: LKG => LK3
+        logical(LKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2, s3
-        logical(LKC)                                            :: rand(s1, s2, s3)
+        logical(LKG)                                            :: rand(s1, s2, s3)
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end function
 #endif
@@ -10753,10 +10753,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGGLU_D3_LK2
 #endif
-        use pm_kind, only: LKC => LK2
-        logical(LKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: LKG => LK2
+        logical(LKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2, s3
-        logical(LKC)                                            :: rand(s1, s2, s3)
+        logical(LKG)                                            :: rand(s1, s2, s3)
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end function
 #endif
@@ -10766,10 +10766,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGGLU_D3_LK1
 #endif
-        use pm_kind, only: LKC => LK1
-        logical(LKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: LKG => LK1
+        logical(LKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2, s3
-        logical(LKC)                                            :: rand(s1, s2, s3)
+        logical(LKG)                                            :: rand(s1, s2, s3)
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end function
 #endif
@@ -10781,10 +10781,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGGLU_D3_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: CKG => CK5
+        complex(CKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2, s3
-        complex(CKC)                                            :: rand(s1, s2, s3)
+        complex(CKG)                                            :: rand(s1, s2, s3)
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end function
 #endif
@@ -10794,10 +10794,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGGLU_D3_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: CKG => CK4
+        complex(CKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2, s3
-        complex(CKC)                                            :: rand(s1, s2, s3)
+        complex(CKG)                                            :: rand(s1, s2, s3)
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end function
 #endif
@@ -10807,10 +10807,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGGLU_D3_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: CKG => CK3
+        complex(CKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2, s3
-        complex(CKC)                                            :: rand(s1, s2, s3)
+        complex(CKG)                                            :: rand(s1, s2, s3)
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end function
 #endif
@@ -10820,10 +10820,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGGLU_D3_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: CKG => CK2
+        complex(CKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2, s3
-        complex(CKC)                                            :: rand(s1, s2, s3)
+        complex(CKG)                                            :: rand(s1, s2, s3)
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end function
 #endif
@@ -10833,10 +10833,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGGLU_D3_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: CKG => CK1
+        complex(CKG)            , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2, s3
-        complex(CKC)                                            :: rand(s1, s2, s3)
+        complex(CKG)                                            :: rand(s1, s2, s3)
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end function
 #endif
@@ -10848,10 +10848,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGGLU_D3_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)               , intent(in)                    :: lb, ub
+        use pm_kind, only: RKG => RK5
+        real(RKG)               , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2, s3
-        real(RKC)                                               :: rand(s1, s2, s3)
+        real(RKG)                                               :: rand(s1, s2, s3)
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end function
 
@@ -10862,10 +10862,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGGLU_D3_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)               , intent(in)                    :: lb, ub
+        use pm_kind, only: RKG => RK4
+        real(RKG)               , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2, s3
-        real(RKC)                                               :: rand(s1, s2, s3)
+        real(RKG)                                               :: rand(s1, s2, s3)
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end function
 
@@ -10876,10 +10876,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGGLU_D3_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)               , intent(in)                    :: lb, ub
+        use pm_kind, only: RKG => RK3
+        real(RKG)               , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2, s3
-        real(RKC)                                               :: rand(s1, s2, s3)
+        real(RKG)                                               :: rand(s1, s2, s3)
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end function
 
@@ -10890,10 +10890,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGGLU_D3_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)               , intent(in)                    :: lb, ub
+        use pm_kind, only: RKG => RK2
+        real(RKG)               , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2, s3
-        real(RKC)                                               :: rand(s1, s2, s3)
+        real(RKG)                                               :: rand(s1, s2, s3)
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end function
 #endif
@@ -10903,10 +10903,10 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRandRNGGLU_D3_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)               , intent(in)                    :: lb, ub
+        use pm_kind, only: RKG => RK1
+        real(RKG)               , intent(in)                    :: lb, ub
         integer(IK)             , intent(in)                    :: s1, s2, s3
-        real(RKC)                                               :: rand(s1, s2, s3)
+        real(RKG)                                               :: rand(s1, s2, s3)
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end function
 #endif
@@ -11046,10 +11046,10 @@ module pm_distUnif
     !>  \status \unresolved
     !>  \source \gfortran{10.3}
     !>  \desc
-    !>  \gfortran yields an internal compiler error with the expression `rand = nint(temp, kind = IKC)`
-    !>  in `pm_distUnif@routines@IK.inc.F90` file when `IKC => integer_kinds(5)` on WSL OS.<br>
+    !>  \gfortran yields an internal compiler error with the expression `rand = nint(temp, kind = IKG)`
+    !>  in `pm_distUnif@routines@IK.inc.F90` file when `IKG => integer_kinds(5)` on WSL OS.<br>
     !>  \remedy
-    !>  For now, the expression is replaced with `rand = int(0.5d0 + temp, kind = IKC)`.<br>
+    !>  For now, the expression is replaced with `rand = int(0.5d0 + temp, kind = IKG)`.<br>
     !>
     !>  \final{setUnifRand}
     !>
@@ -11071,8 +11071,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGDDD_D0_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)        , intent(out)                   :: rand
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)        , intent(out)                   :: rand
     end subroutine
 #endif
 
@@ -11081,8 +11081,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGDDD_D0_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)        , intent(out)                   :: rand
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)        , intent(out)                   :: rand
     end subroutine
 #endif
 
@@ -11091,8 +11091,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGDDD_D0_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)        , intent(out)                   :: rand
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)        , intent(out)                   :: rand
     end subroutine
 #endif
 
@@ -11101,8 +11101,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGDDD_D0_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)        , intent(out)                   :: rand
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)        , intent(out)                   :: rand
     end subroutine
 #endif
 
@@ -11111,8 +11111,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGDDD_D0_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)        , intent(out)                   :: rand
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)        , intent(out)                   :: rand
     end subroutine
 #endif
 
@@ -11123,8 +11123,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGDDD_D0_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)            , intent(out)                   :: rand
+        use pm_kind, only: IKG => IK5
+        integer(IKG)            , intent(out)                   :: rand
     end subroutine
 #endif
 
@@ -11133,8 +11133,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGDDD_D0_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)            , intent(out)                   :: rand
+        use pm_kind, only: IKG => IK4
+        integer(IKG)            , intent(out)                   :: rand
     end subroutine
 #endif
 
@@ -11143,8 +11143,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGDDD_D0_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)            , intent(out)                   :: rand
+        use pm_kind, only: IKG => IK3
+        integer(IKG)            , intent(out)                   :: rand
     end subroutine
 #endif
 
@@ -11153,8 +11153,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGDDD_D0_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)            , intent(out)                   :: rand
+        use pm_kind, only: IKG => IK2
+        integer(IKG)            , intent(out)                   :: rand
     end subroutine
 #endif
 
@@ -11163,8 +11163,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGDDD_D0_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)            , intent(out)                   :: rand
+        use pm_kind, only: IKG => IK1
+        integer(IKG)            , intent(out)                   :: rand
     end subroutine
 #endif
 
@@ -11175,8 +11175,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGDDD_D0_LK5
 #endif
-        use pm_kind, only: LKC => LK5
-        logical(LKC)            , intent(out)                   :: rand
+        use pm_kind, only: LKG => LK5
+        logical(LKG)            , intent(out)                   :: rand
     end subroutine
 #endif
 
@@ -11185,8 +11185,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGDDD_D0_LK4
 #endif
-        use pm_kind, only: LKC => LK4
-        logical(LKC)            , intent(out)                   :: rand
+        use pm_kind, only: LKG => LK4
+        logical(LKG)            , intent(out)                   :: rand
     end subroutine
 #endif
 
@@ -11195,8 +11195,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGDDD_D0_LK3
 #endif
-        use pm_kind, only: LKC => LK3
-        logical(LKC)            , intent(out)                   :: rand
+        use pm_kind, only: LKG => LK3
+        logical(LKG)            , intent(out)                   :: rand
     end subroutine
 #endif
 
@@ -11205,8 +11205,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGDDD_D0_LK2
 #endif
-        use pm_kind, only: LKC => LK2
-        logical(LKC)            , intent(out)                   :: rand
+        use pm_kind, only: LKG => LK2
+        logical(LKG)            , intent(out)                   :: rand
     end subroutine
 #endif
 
@@ -11215,8 +11215,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGDDD_D0_LK1
 #endif
-        use pm_kind, only: LKC => LK1
-        logical(LKC)            , intent(out)                   :: rand
+        use pm_kind, only: LKG => LK1
+        logical(LKG)            , intent(out)                   :: rand
     end subroutine
 #endif
 
@@ -11227,8 +11227,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGDDD_D0_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)            , intent(out)                   :: rand
+        use pm_kind, only: CKG => CK5
+        complex(CKG)            , intent(out)                   :: rand
     end subroutine
 #endif
 
@@ -11237,8 +11237,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGDDD_D0_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)            , intent(out)                   :: rand
+        use pm_kind, only: CKG => CK4
+        complex(CKG)            , intent(out)                   :: rand
     end subroutine
 #endif
 
@@ -11247,8 +11247,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGDDD_D0_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)            , intent(out)                   :: rand
+        use pm_kind, only: CKG => CK3
+        complex(CKG)            , intent(out)                   :: rand
     end subroutine
 #endif
 
@@ -11257,8 +11257,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGDDD_D0_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)            , intent(out)                   :: rand
+        use pm_kind, only: CKG => CK2
+        complex(CKG)            , intent(out)                   :: rand
     end subroutine
 #endif
 
@@ -11267,8 +11267,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGDDD_D0_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)            , intent(out)                   :: rand
+        use pm_kind, only: CKG => CK1
+        complex(CKG)            , intent(out)                   :: rand
     end subroutine
 #endif
 
@@ -11279,8 +11279,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGDDD_D0_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)               , intent(out)                   :: rand
+        use pm_kind, only: RKG => RK5
+        real(RKG)               , intent(out)                   :: rand
     end subroutine
 #endif
 
@@ -11289,8 +11289,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGDDD_D0_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)               , intent(out)                   :: rand
+        use pm_kind, only: RKG => RK4
+        real(RKG)               , intent(out)                   :: rand
     end subroutine
 #endif
 
@@ -11299,8 +11299,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGDDD_D0_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)               , intent(out)                   :: rand
+        use pm_kind, only: RKG => RK3
+        real(RKG)               , intent(out)                   :: rand
     end subroutine
 #endif
 
@@ -11309,8 +11309,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGDDD_D0_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)               , intent(out)                   :: rand
+        use pm_kind, only: RKG => RK2
+        real(RKG)               , intent(out)                   :: rand
     end subroutine
 #endif
 
@@ -11319,8 +11319,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGDDD_D0_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)               , intent(out)                   :: rand
+        use pm_kind, only: RKG => RK1
+        real(RKG)               , intent(out)                   :: rand
     end subroutine
 #endif
 
@@ -11337,9 +11337,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGDLU_D0_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)        , intent(out)                   :: rand
-        character(*,SKC)        , intent(in)                    :: lb, ub
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)        , intent(out)                   :: rand
+        character(*,SKG)        , intent(in)                    :: lb, ub
     end subroutine
 #endif
 
@@ -11348,9 +11348,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGDLU_D0_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)        , intent(out)                   :: rand
-        character(*,SKC)        , intent(in)                    :: lb, ub
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)        , intent(out)                   :: rand
+        character(*,SKG)        , intent(in)                    :: lb, ub
     end subroutine
 #endif
 
@@ -11359,9 +11359,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGDLU_D0_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)        , intent(out)                   :: rand
-        character(*,SKC)        , intent(in)                    :: lb, ub
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)        , intent(out)                   :: rand
+        character(*,SKG)        , intent(in)                    :: lb, ub
     end subroutine
 #endif
 
@@ -11370,9 +11370,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGDLU_D0_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)        , intent(out)                   :: rand
-        character(*,SKC)        , intent(in)                    :: lb, ub
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)        , intent(out)                   :: rand
+        character(*,SKG)        , intent(in)                    :: lb, ub
     end subroutine
 #endif
 
@@ -11381,9 +11381,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGDLU_D0_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)        , intent(out)                   :: rand
-        character(*,SKC)        , intent(in)                    :: lb, ub
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)        , intent(out)                   :: rand
+        character(*,SKG)        , intent(in)                    :: lb, ub
     end subroutine
 #endif
 
@@ -11394,9 +11394,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGDLU_D0_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)            , intent(out)                   :: rand
-        integer(IKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: IKG => IK5
+        integer(IKG)            , intent(out)                   :: rand
+        integer(IKG)            , intent(in)                    :: lb, ub
     end subroutine
 #endif
 
@@ -11405,9 +11405,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGDLU_D0_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)            , intent(out)                   :: rand
-        integer(IKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: IKG => IK4
+        integer(IKG)            , intent(out)                   :: rand
+        integer(IKG)            , intent(in)                    :: lb, ub
     end subroutine
 #endif
 
@@ -11416,9 +11416,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGDLU_D0_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)            , intent(out)                   :: rand
-        integer(IKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: IKG => IK3
+        integer(IKG)            , intent(out)                   :: rand
+        integer(IKG)            , intent(in)                    :: lb, ub
     end subroutine
 #endif
 
@@ -11427,9 +11427,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGDLU_D0_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)            , intent(out)                   :: rand
-        integer(IKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: IKG => IK2
+        integer(IKG)            , intent(out)                   :: rand
+        integer(IKG)            , intent(in)                    :: lb, ub
     end subroutine
 #endif
 
@@ -11438,9 +11438,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGDLU_D0_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)            , intent(out)                   :: rand
-        integer(IKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: IKG => IK1
+        integer(IKG)            , intent(out)                   :: rand
+        integer(IKG)            , intent(in)                    :: lb, ub
     end subroutine
 #endif
 
@@ -11451,9 +11451,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGDLU_D0_LK5
 #endif
-        use pm_kind, only: LKC => LK5
-        logical(LKC)            , intent(out)                   :: rand
-        logical(LKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: LKG => LK5
+        logical(LKG)            , intent(out)                   :: rand
+        logical(LKG)            , intent(in)                    :: lb, ub
     end subroutine
 #endif
 
@@ -11462,9 +11462,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGDLU_D0_LK4
 #endif
-        use pm_kind, only: LKC => LK4
-        logical(LKC)            , intent(out)                   :: rand
-        logical(LKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: LKG => LK4
+        logical(LKG)            , intent(out)                   :: rand
+        logical(LKG)            , intent(in)                    :: lb, ub
     end subroutine
 #endif
 
@@ -11473,9 +11473,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGDLU_D0_LK3
 #endif
-        use pm_kind, only: LKC => LK3
-        logical(LKC)            , intent(out)                   :: rand
-        logical(LKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: LKG => LK3
+        logical(LKG)            , intent(out)                   :: rand
+        logical(LKG)            , intent(in)                    :: lb, ub
     end subroutine
 #endif
 
@@ -11484,9 +11484,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGDLU_D0_LK2
 #endif
-        use pm_kind, only: LKC => LK2
-        logical(LKC)            , intent(out)                   :: rand
-        logical(LKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: LKG => LK2
+        logical(LKG)            , intent(out)                   :: rand
+        logical(LKG)            , intent(in)                    :: lb, ub
     end subroutine
 #endif
 
@@ -11495,9 +11495,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGDLU_D0_LK1
 #endif
-        use pm_kind, only: LKC => LK1
-        logical(LKC)            , intent(out)                   :: rand
-        logical(LKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: LKG => LK1
+        logical(LKG)            , intent(out)                   :: rand
+        logical(LKG)            , intent(in)                    :: lb, ub
     end subroutine
 #endif
 
@@ -11508,9 +11508,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGDLU_D0_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)            , intent(out)                   :: rand
-        complex(CKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: CKG => CK5
+        complex(CKG)            , intent(out)                   :: rand
+        complex(CKG)            , intent(in)                    :: lb, ub
     end subroutine
 #endif
 
@@ -11519,9 +11519,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGDLU_D0_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)            , intent(out)                   :: rand
-        complex(CKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: CKG => CK4
+        complex(CKG)            , intent(out)                   :: rand
+        complex(CKG)            , intent(in)                    :: lb, ub
     end subroutine
 #endif
 
@@ -11530,9 +11530,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGDLU_D0_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)            , intent(out)                   :: rand
-        complex(CKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: CKG => CK3
+        complex(CKG)            , intent(out)                   :: rand
+        complex(CKG)            , intent(in)                    :: lb, ub
     end subroutine
 #endif
 
@@ -11541,9 +11541,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGDLU_D0_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)            , intent(out)                   :: rand
-        complex(CKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: CKG => CK2
+        complex(CKG)            , intent(out)                   :: rand
+        complex(CKG)            , intent(in)                    :: lb, ub
     end subroutine
 #endif
 
@@ -11552,9 +11552,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGDLU_D0_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)            , intent(out)                   :: rand
-        complex(CKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: CKG => CK1
+        complex(CKG)            , intent(out)                   :: rand
+        complex(CKG)            , intent(in)                    :: lb, ub
     end subroutine
 #endif
 
@@ -11565,9 +11565,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGDLU_D0_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)               , intent(out)                   :: rand
-        real(RKC)               , intent(in)                    :: lb, ub
+        use pm_kind, only: RKG => RK5
+        real(RKG)               , intent(out)                   :: rand
+        real(RKG)               , intent(in)                    :: lb, ub
     end subroutine
 #endif
 
@@ -11576,9 +11576,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGDLU_D0_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)               , intent(out)                   :: rand
-        real(RKC)               , intent(in)                    :: lb, ub
+        use pm_kind, only: RKG => RK4
+        real(RKG)               , intent(out)                   :: rand
+        real(RKG)               , intent(in)                    :: lb, ub
     end subroutine
 #endif
 
@@ -11587,9 +11587,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGDLU_D0_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)               , intent(out)                   :: rand
-        real(RKC)               , intent(in)                    :: lb, ub
+        use pm_kind, only: RKG => RK3
+        real(RKG)               , intent(out)                   :: rand
+        real(RKG)               , intent(in)                    :: lb, ub
     end subroutine
 #endif
 
@@ -11598,9 +11598,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGDLU_D0_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)               , intent(out)                   :: rand
-        real(RKC)               , intent(in)                    :: lb, ub
+        use pm_kind, only: RKG => RK2
+        real(RKG)               , intent(out)                   :: rand
+        real(RKG)               , intent(in)                    :: lb, ub
     end subroutine
 #endif
 
@@ -11609,9 +11609,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGDLU_D0_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)               , intent(out)                   :: rand
-        real(RKC)               , intent(in)                    :: lb, ub
+        use pm_kind, only: RKG => RK1
+        real(RKG)               , intent(out)                   :: rand
+        real(RKG)               , intent(in)                    :: lb, ub
     end subroutine
 #endif
 
@@ -11638,8 +11638,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGFDD_D0_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)        , intent(out)                   :: rand
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)        , intent(out)                   :: rand
         type(rngf_type)         , intent(in)                    :: rng
     end subroutine
 #endif
@@ -11649,8 +11649,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGFDD_D0_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)        , intent(out)                   :: rand
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)        , intent(out)                   :: rand
         type(rngf_type)         , intent(in)                    :: rng
     end subroutine
 #endif
@@ -11660,8 +11660,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGFDD_D0_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)        , intent(out)                   :: rand
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)        , intent(out)                   :: rand
         type(rngf_type)         , intent(in)                    :: rng
     end subroutine
 #endif
@@ -11671,8 +11671,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGFDD_D0_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)        , intent(out)                   :: rand
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)        , intent(out)                   :: rand
         type(rngf_type)         , intent(in)                    :: rng
     end subroutine
 #endif
@@ -11682,8 +11682,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGFDD_D0_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)        , intent(out)                   :: rand
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)        , intent(out)                   :: rand
         type(rngf_type)         , intent(in)                    :: rng
     end subroutine
 #endif
@@ -11695,8 +11695,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGFDD_D0_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)            , intent(out)                   :: rand
+        use pm_kind, only: IKG => IK5
+        integer(IKG)            , intent(out)                   :: rand
         type(rngf_type)         , intent(in)                    :: rng
     end subroutine
 #endif
@@ -11706,8 +11706,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGFDD_D0_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)            , intent(out)                   :: rand
+        use pm_kind, only: IKG => IK4
+        integer(IKG)            , intent(out)                   :: rand
         type(rngf_type)         , intent(in)                    :: rng
     end subroutine
 #endif
@@ -11717,8 +11717,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGFDD_D0_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)            , intent(out)                   :: rand
+        use pm_kind, only: IKG => IK3
+        integer(IKG)            , intent(out)                   :: rand
         type(rngf_type)         , intent(in)                    :: rng
     end subroutine
 #endif
@@ -11728,8 +11728,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGFDD_D0_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)            , intent(out)                   :: rand
+        use pm_kind, only: IKG => IK2
+        integer(IKG)            , intent(out)                   :: rand
         type(rngf_type)         , intent(in)                    :: rng
     end subroutine
 #endif
@@ -11739,8 +11739,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGFDD_D0_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)            , intent(out)                   :: rand
+        use pm_kind, only: IKG => IK1
+        integer(IKG)            , intent(out)                   :: rand
         type(rngf_type)         , intent(in)                    :: rng
     end subroutine
 #endif
@@ -11752,8 +11752,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGFDD_D0_LK5
 #endif
-        use pm_kind, only: LKC => LK5
-        logical(LKC)            , intent(out)                   :: rand
+        use pm_kind, only: LKG => LK5
+        logical(LKG)            , intent(out)                   :: rand
         type(rngf_type)         , intent(in)                    :: rng
     end subroutine
 #endif
@@ -11763,8 +11763,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGFDD_D0_LK4
 #endif
-        use pm_kind, only: LKC => LK4
-        logical(LKC)            , intent(out)                   :: rand
+        use pm_kind, only: LKG => LK4
+        logical(LKG)            , intent(out)                   :: rand
         type(rngf_type)         , intent(in)                    :: rng
     end subroutine
 #endif
@@ -11774,8 +11774,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGFDD_D0_LK3
 #endif
-        use pm_kind, only: LKC => LK3
-        logical(LKC)            , intent(out)                   :: rand
+        use pm_kind, only: LKG => LK3
+        logical(LKG)            , intent(out)                   :: rand
         type(rngf_type)         , intent(in)                    :: rng
     end subroutine
 #endif
@@ -11785,8 +11785,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGFDD_D0_LK2
 #endif
-        use pm_kind, only: LKC => LK2
-        logical(LKC)            , intent(out)                   :: rand
+        use pm_kind, only: LKG => LK2
+        logical(LKG)            , intent(out)                   :: rand
         type(rngf_type)         , intent(in)                    :: rng
     end subroutine
 #endif
@@ -11796,8 +11796,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGFDD_D0_LK1
 #endif
-        use pm_kind, only: LKC => LK1
-        logical(LKC)            , intent(out)                   :: rand
+        use pm_kind, only: LKG => LK1
+        logical(LKG)            , intent(out)                   :: rand
         type(rngf_type)         , intent(in)                    :: rng
     end subroutine
 #endif
@@ -11809,8 +11809,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGFDD_D0_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)            , intent(out)                   :: rand
+        use pm_kind, only: CKG => CK5
+        complex(CKG)            , intent(out)                   :: rand
         type(rngf_type)         , intent(in)                    :: rng
     end subroutine
 #endif
@@ -11820,8 +11820,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGFDD_D0_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)            , intent(out)                   :: rand
+        use pm_kind, only: CKG => CK4
+        complex(CKG)            , intent(out)                   :: rand
         type(rngf_type)         , intent(in)                    :: rng
     end subroutine
 #endif
@@ -11831,8 +11831,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGFDD_D0_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)            , intent(out)                   :: rand
+        use pm_kind, only: CKG => CK3
+        complex(CKG)            , intent(out)                   :: rand
         type(rngf_type)         , intent(in)                    :: rng
     end subroutine
 #endif
@@ -11842,8 +11842,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGFDD_D0_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)            , intent(out)                   :: rand
+        use pm_kind, only: CKG => CK2
+        complex(CKG)            , intent(out)                   :: rand
         type(rngf_type)         , intent(in)                    :: rng
     end subroutine
 #endif
@@ -11853,8 +11853,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGFDD_D0_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)            , intent(out)                   :: rand
+        use pm_kind, only: CKG => CK1
+        complex(CKG)            , intent(out)                   :: rand
         type(rngf_type)         , intent(in)                    :: rng
     end subroutine
 #endif
@@ -11866,8 +11866,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGFDD_D0_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)               , intent(out)                   :: rand
+        use pm_kind, only: RKG => RK5
+        real(RKG)               , intent(out)                   :: rand
         type(rngf_type)         , intent(in)                    :: rng
     end subroutine
 #endif
@@ -11877,8 +11877,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGFDD_D0_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)               , intent(out)                   :: rand
+        use pm_kind, only: RKG => RK4
+        real(RKG)               , intent(out)                   :: rand
         type(rngf_type)         , intent(in)                    :: rng
     end subroutine
 #endif
@@ -11888,8 +11888,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGFDD_D0_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)               , intent(out)                   :: rand
+        use pm_kind, only: RKG => RK3
+        real(RKG)               , intent(out)                   :: rand
         type(rngf_type)         , intent(in)                    :: rng
     end subroutine
 #endif
@@ -11899,8 +11899,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGFDD_D0_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)               , intent(out)                   :: rand
+        use pm_kind, only: RKG => RK2
+        real(RKG)               , intent(out)                   :: rand
         type(rngf_type)         , intent(in)                    :: rng
     end subroutine
 #endif
@@ -11910,8 +11910,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGFDD_D0_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)               , intent(out)                   :: rand
+        use pm_kind, only: RKG => RK1
+        real(RKG)               , intent(out)                   :: rand
         type(rngf_type)         , intent(in)                    :: rng
     end subroutine
 #endif
@@ -11929,9 +11929,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGFLU_D0_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)        , intent(out)                   :: rand
-        character(*,SKC)        , intent(in)                    :: lb, ub
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)        , intent(out)                   :: rand
+        character(*,SKG)        , intent(in)                    :: lb, ub
         type(rngf_type)         , intent(in)                    :: rng
     end subroutine
 #endif
@@ -11941,9 +11941,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGFLU_D0_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)        , intent(out)                   :: rand
-        character(*,SKC)        , intent(in)                    :: lb, ub
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)        , intent(out)                   :: rand
+        character(*,SKG)        , intent(in)                    :: lb, ub
         type(rngf_type)         , intent(in)                    :: rng
     end subroutine
 #endif
@@ -11953,9 +11953,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGFLU_D0_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)        , intent(out)                   :: rand
-        character(*,SKC)        , intent(in)                    :: lb, ub
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)        , intent(out)                   :: rand
+        character(*,SKG)        , intent(in)                    :: lb, ub
         type(rngf_type)         , intent(in)                    :: rng
     end subroutine
 #endif
@@ -11965,9 +11965,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGFLU_D0_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)        , intent(out)                   :: rand
-        character(*,SKC)        , intent(in)                    :: lb, ub
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)        , intent(out)                   :: rand
+        character(*,SKG)        , intent(in)                    :: lb, ub
         type(rngf_type)         , intent(in)                    :: rng
     end subroutine
 #endif
@@ -11977,9 +11977,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGFLU_D0_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)        , intent(out)                   :: rand
-        character(*,SKC)        , intent(in)                    :: lb, ub
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)        , intent(out)                   :: rand
+        character(*,SKG)        , intent(in)                    :: lb, ub
         type(rngf_type)         , intent(in)                    :: rng
     end subroutine
 #endif
@@ -11991,9 +11991,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGFLU_D0_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)            , intent(out)                   :: rand
-        integer(IKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: IKG => IK5
+        integer(IKG)            , intent(out)                   :: rand
+        integer(IKG)            , intent(in)                    :: lb, ub
         type(rngf_type)         , intent(in)                    :: rng
     end subroutine
 #endif
@@ -12003,9 +12003,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGFLU_D0_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)            , intent(out)                   :: rand
-        integer(IKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: IKG => IK4
+        integer(IKG)            , intent(out)                   :: rand
+        integer(IKG)            , intent(in)                    :: lb, ub
         type(rngf_type)         , intent(in)                    :: rng
     end subroutine
 #endif
@@ -12015,9 +12015,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGFLU_D0_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)            , intent(out)                   :: rand
-        integer(IKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: IKG => IK3
+        integer(IKG)            , intent(out)                   :: rand
+        integer(IKG)            , intent(in)                    :: lb, ub
         type(rngf_type)         , intent(in)                    :: rng
     end subroutine
 #endif
@@ -12027,9 +12027,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGFLU_D0_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)            , intent(out)                   :: rand
-        integer(IKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: IKG => IK2
+        integer(IKG)            , intent(out)                   :: rand
+        integer(IKG)            , intent(in)                    :: lb, ub
         type(rngf_type)         , intent(in)                    :: rng
     end subroutine
 #endif
@@ -12039,9 +12039,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGFLU_D0_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)            , intent(out)                   :: rand
-        integer(IKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: IKG => IK1
+        integer(IKG)            , intent(out)                   :: rand
+        integer(IKG)            , intent(in)                    :: lb, ub
         type(rngf_type)         , intent(in)                    :: rng
     end subroutine
 #endif
@@ -12053,9 +12053,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGFLU_D0_LK5
 #endif
-        use pm_kind, only: LKC => LK5
-        logical(LKC)            , intent(out)                   :: rand
-        logical(LKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: LKG => LK5
+        logical(LKG)            , intent(out)                   :: rand
+        logical(LKG)            , intent(in)                    :: lb, ub
         type(rngf_type)         , intent(in)                    :: rng
     end subroutine
 #endif
@@ -12065,9 +12065,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGFLU_D0_LK4
 #endif
-        use pm_kind, only: LKC => LK4
-        logical(LKC)            , intent(out)                   :: rand
-        logical(LKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: LKG => LK4
+        logical(LKG)            , intent(out)                   :: rand
+        logical(LKG)            , intent(in)                    :: lb, ub
         type(rngf_type)         , intent(in)                    :: rng
     end subroutine
 #endif
@@ -12077,9 +12077,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGFLU_D0_LK3
 #endif
-        use pm_kind, only: LKC => LK3
-        logical(LKC)            , intent(out)                   :: rand
-        logical(LKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: LKG => LK3
+        logical(LKG)            , intent(out)                   :: rand
+        logical(LKG)            , intent(in)                    :: lb, ub
         type(rngf_type)         , intent(in)                    :: rng
     end subroutine
 #endif
@@ -12089,9 +12089,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGFLU_D0_LK2
 #endif
-        use pm_kind, only: LKC => LK2
-        logical(LKC)            , intent(out)                   :: rand
-        logical(LKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: LKG => LK2
+        logical(LKG)            , intent(out)                   :: rand
+        logical(LKG)            , intent(in)                    :: lb, ub
         type(rngf_type)         , intent(in)                    :: rng
     end subroutine
 #endif
@@ -12101,9 +12101,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGFLU_D0_LK1
 #endif
-        use pm_kind, only: LKC => LK1
-        logical(LKC)            , intent(out)                   :: rand
-        logical(LKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: LKG => LK1
+        logical(LKG)            , intent(out)                   :: rand
+        logical(LKG)            , intent(in)                    :: lb, ub
         type(rngf_type)         , intent(in)                    :: rng
     end subroutine
 #endif
@@ -12115,9 +12115,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGFLU_D0_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)            , intent(out)                   :: rand
-        complex(CKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: CKG => CK5
+        complex(CKG)            , intent(out)                   :: rand
+        complex(CKG)            , intent(in)                    :: lb, ub
         type(rngf_type)         , intent(in)                    :: rng
     end subroutine
 #endif
@@ -12127,9 +12127,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGFLU_D0_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)            , intent(out)                   :: rand
-        complex(CKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: CKG => CK4
+        complex(CKG)            , intent(out)                   :: rand
+        complex(CKG)            , intent(in)                    :: lb, ub
         type(rngf_type)         , intent(in)                    :: rng
     end subroutine
 #endif
@@ -12139,9 +12139,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGFLU_D0_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)            , intent(out)                   :: rand
-        complex(CKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: CKG => CK3
+        complex(CKG)            , intent(out)                   :: rand
+        complex(CKG)            , intent(in)                    :: lb, ub
         type(rngf_type)         , intent(in)                    :: rng
     end subroutine
 #endif
@@ -12151,9 +12151,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGFLU_D0_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)            , intent(out)                   :: rand
-        complex(CKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: CKG => CK2
+        complex(CKG)            , intent(out)                   :: rand
+        complex(CKG)            , intent(in)                    :: lb, ub
         type(rngf_type)         , intent(in)                    :: rng
     end subroutine
 #endif
@@ -12163,9 +12163,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGFLU_D0_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)            , intent(out)                   :: rand
-        complex(CKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: CKG => CK1
+        complex(CKG)            , intent(out)                   :: rand
+        complex(CKG)            , intent(in)                    :: lb, ub
         type(rngf_type)         , intent(in)                    :: rng
     end subroutine
 #endif
@@ -12177,9 +12177,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGFLU_D0_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)               , intent(out)                   :: rand
-        real(RKC)               , intent(in)                    :: lb, ub
+        use pm_kind, only: RKG => RK5
+        real(RKG)               , intent(out)                   :: rand
+        real(RKG)               , intent(in)                    :: lb, ub
         type(rngf_type)         , intent(in)                    :: rng
     end subroutine
 #endif
@@ -12189,9 +12189,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGFLU_D0_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)               , intent(out)                   :: rand
-        real(RKC)               , intent(in)                    :: lb, ub
+        use pm_kind, only: RKG => RK4
+        real(RKG)               , intent(out)                   :: rand
+        real(RKG)               , intent(in)                    :: lb, ub
         type(rngf_type)         , intent(in)                    :: rng
     end subroutine
 #endif
@@ -12201,9 +12201,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGFLU_D0_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)               , intent(out)                   :: rand
-        real(RKC)               , intent(in)                    :: lb, ub
+        use pm_kind, only: RKG => RK3
+        real(RKG)               , intent(out)                   :: rand
+        real(RKG)               , intent(in)                    :: lb, ub
         type(rngf_type)         , intent(in)                    :: rng
     end subroutine
 #endif
@@ -12213,9 +12213,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGFLU_D0_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)               , intent(out)                   :: rand
-        real(RKC)               , intent(in)                    :: lb, ub
+        use pm_kind, only: RKG => RK2
+        real(RKG)               , intent(out)                   :: rand
+        real(RKG)               , intent(in)                    :: lb, ub
         type(rngf_type)         , intent(in)                    :: rng
     end subroutine
 #endif
@@ -12225,9 +12225,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGFLU_D0_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)               , intent(out)                   :: rand
-        real(RKC)               , intent(in)                    :: lb, ub
+        use pm_kind, only: RKG => RK1
+        real(RKG)               , intent(out)                   :: rand
+        real(RKG)               , intent(in)                    :: lb, ub
         type(rngf_type)         , intent(in)                    :: rng
     end subroutine
 #endif
@@ -12255,8 +12255,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGSDD_D0_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)        , intent(out)                   :: rand
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)        , intent(out)                   :: rand
         type(splitmix64_type)   , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -12266,8 +12266,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGSDD_D0_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)        , intent(out)                   :: rand
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)        , intent(out)                   :: rand
         type(splitmix64_type)   , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -12277,8 +12277,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGSDD_D0_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)        , intent(out)                   :: rand
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)        , intent(out)                   :: rand
         type(splitmix64_type)   , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -12288,8 +12288,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGSDD_D0_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)        , intent(out)                   :: rand
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)        , intent(out)                   :: rand
         type(splitmix64_type)   , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -12299,8 +12299,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGSDD_D0_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)        , intent(out)                   :: rand
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)        , intent(out)                   :: rand
         type(splitmix64_type)   , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -12312,8 +12312,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGSDD_D0_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)            , intent(out)                   :: rand
+        use pm_kind, only: IKG => IK5
+        integer(IKG)            , intent(out)                   :: rand
         type(splitmix64_type)   , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -12323,8 +12323,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGSDD_D0_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)            , intent(out)                   :: rand
+        use pm_kind, only: IKG => IK4
+        integer(IKG)            , intent(out)                   :: rand
         type(splitmix64_type)   , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -12334,8 +12334,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGSDD_D0_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)            , intent(out)                   :: rand
+        use pm_kind, only: IKG => IK3
+        integer(IKG)            , intent(out)                   :: rand
         type(splitmix64_type)   , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -12345,8 +12345,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGSDD_D0_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)            , intent(out)                   :: rand
+        use pm_kind, only: IKG => IK2
+        integer(IKG)            , intent(out)                   :: rand
         type(splitmix64_type)   , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -12356,8 +12356,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGSDD_D0_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)            , intent(out)                   :: rand
+        use pm_kind, only: IKG => IK1
+        integer(IKG)            , intent(out)                   :: rand
         type(splitmix64_type)   , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -12369,8 +12369,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGSDD_D0_LK5
 #endif
-        use pm_kind, only: LKC => LK5
-        logical(LKC)            , intent(out)                   :: rand
+        use pm_kind, only: LKG => LK5
+        logical(LKG)            , intent(out)                   :: rand
         type(splitmix64_type)   , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -12380,8 +12380,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGSDD_D0_LK4
 #endif
-        use pm_kind, only: LKC => LK4
-        logical(LKC)            , intent(out)                   :: rand
+        use pm_kind, only: LKG => LK4
+        logical(LKG)            , intent(out)                   :: rand
         type(splitmix64_type)   , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -12391,8 +12391,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGSDD_D0_LK3
 #endif
-        use pm_kind, only: LKC => LK3
-        logical(LKC)            , intent(out)                   :: rand
+        use pm_kind, only: LKG => LK3
+        logical(LKG)            , intent(out)                   :: rand
         type(splitmix64_type)   , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -12402,8 +12402,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGSDD_D0_LK2
 #endif
-        use pm_kind, only: LKC => LK2
-        logical(LKC)            , intent(out)                   :: rand
+        use pm_kind, only: LKG => LK2
+        logical(LKG)            , intent(out)                   :: rand
         type(splitmix64_type)   , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -12413,8 +12413,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGSDD_D0_LK1
 #endif
-        use pm_kind, only: LKC => LK1
-        logical(LKC)            , intent(out)                   :: rand
+        use pm_kind, only: LKG => LK1
+        logical(LKG)            , intent(out)                   :: rand
         type(splitmix64_type)   , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -12426,8 +12426,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGSDD_D0_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)            , intent(out)                   :: rand
+        use pm_kind, only: CKG => CK5
+        complex(CKG)            , intent(out)                   :: rand
         type(splitmix64_type)   , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -12437,8 +12437,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGSDD_D0_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)            , intent(out)                   :: rand
+        use pm_kind, only: CKG => CK4
+        complex(CKG)            , intent(out)                   :: rand
         type(splitmix64_type)   , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -12448,8 +12448,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGSDD_D0_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)            , intent(out)                   :: rand
+        use pm_kind, only: CKG => CK3
+        complex(CKG)            , intent(out)                   :: rand
         type(splitmix64_type)   , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -12459,8 +12459,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGSDD_D0_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)            , intent(out)                   :: rand
+        use pm_kind, only: CKG => CK2
+        complex(CKG)            , intent(out)                   :: rand
         type(splitmix64_type)   , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -12470,8 +12470,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGSDD_D0_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)            , intent(out)                   :: rand
+        use pm_kind, only: CKG => CK1
+        complex(CKG)            , intent(out)                   :: rand
         type(splitmix64_type)   , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -12483,8 +12483,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGSDD_D0_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)               , intent(out)                   :: rand
+        use pm_kind, only: RKG => RK5
+        real(RKG)               , intent(out)                   :: rand
         type(splitmix64_type)   , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -12494,8 +12494,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGSDD_D0_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)               , intent(out)                   :: rand
+        use pm_kind, only: RKG => RK4
+        real(RKG)               , intent(out)                   :: rand
         type(splitmix64_type)   , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -12505,8 +12505,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGSDD_D0_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)               , intent(out)                   :: rand
+        use pm_kind, only: RKG => RK3
+        real(RKG)               , intent(out)                   :: rand
         type(splitmix64_type)   , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -12516,8 +12516,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGSDD_D0_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)               , intent(out)                   :: rand
+        use pm_kind, only: RKG => RK2
+        real(RKG)               , intent(out)                   :: rand
         type(splitmix64_type)   , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -12527,8 +12527,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGSDD_D0_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)               , intent(out)                   :: rand
+        use pm_kind, only: RKG => RK1
+        real(RKG)               , intent(out)                   :: rand
         type(splitmix64_type)   , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -12546,9 +12546,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGSLU_D0_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)        , intent(out)                   :: rand
-        character(*,SKC)        , intent(in)                    :: lb, ub
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)        , intent(out)                   :: rand
+        character(*,SKG)        , intent(in)                    :: lb, ub
         type(splitmix64_type)   , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -12558,9 +12558,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGSLU_D0_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)        , intent(out)                   :: rand
-        character(*,SKC)        , intent(in)                    :: lb, ub
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)        , intent(out)                   :: rand
+        character(*,SKG)        , intent(in)                    :: lb, ub
         type(splitmix64_type)   , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -12570,9 +12570,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGSLU_D0_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)        , intent(out)                   :: rand
-        character(*,SKC)        , intent(in)                    :: lb, ub
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)        , intent(out)                   :: rand
+        character(*,SKG)        , intent(in)                    :: lb, ub
         type(splitmix64_type)   , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -12582,9 +12582,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGSLU_D0_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)        , intent(out)                   :: rand
-        character(*,SKC)        , intent(in)                    :: lb, ub
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)        , intent(out)                   :: rand
+        character(*,SKG)        , intent(in)                    :: lb, ub
         type(splitmix64_type)   , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -12594,9 +12594,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGSLU_D0_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)        , intent(out)                   :: rand
-        character(*,SKC)        , intent(in)                    :: lb, ub
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)        , intent(out)                   :: rand
+        character(*,SKG)        , intent(in)                    :: lb, ub
         type(splitmix64_type)   , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -12608,9 +12608,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGSLU_D0_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)            , intent(out)                   :: rand
-        integer(IKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: IKG => IK5
+        integer(IKG)            , intent(out)                   :: rand
+        integer(IKG)            , intent(in)                    :: lb, ub
         type(splitmix64_type)   , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -12620,9 +12620,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGSLU_D0_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)            , intent(out)                   :: rand
-        integer(IKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: IKG => IK4
+        integer(IKG)            , intent(out)                   :: rand
+        integer(IKG)            , intent(in)                    :: lb, ub
         type(splitmix64_type)   , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -12632,9 +12632,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGSLU_D0_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)            , intent(out)                   :: rand
-        integer(IKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: IKG => IK3
+        integer(IKG)            , intent(out)                   :: rand
+        integer(IKG)            , intent(in)                    :: lb, ub
         type(splitmix64_type)   , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -12644,9 +12644,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGSLU_D0_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)            , intent(out)                   :: rand
-        integer(IKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: IKG => IK2
+        integer(IKG)            , intent(out)                   :: rand
+        integer(IKG)            , intent(in)                    :: lb, ub
         type(splitmix64_type)   , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -12656,9 +12656,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGSLU_D0_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)            , intent(out)                   :: rand
-        integer(IKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: IKG => IK1
+        integer(IKG)            , intent(out)                   :: rand
+        integer(IKG)            , intent(in)                    :: lb, ub
         type(splitmix64_type)   , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -12670,9 +12670,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGSLU_D0_LK5
 #endif
-        use pm_kind, only: LKC => LK5
-        logical(LKC)            , intent(out)                   :: rand
-        logical(LKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: LKG => LK5
+        logical(LKG)            , intent(out)                   :: rand
+        logical(LKG)            , intent(in)                    :: lb, ub
         type(splitmix64_type)   , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -12682,9 +12682,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGSLU_D0_LK4
 #endif
-        use pm_kind, only: LKC => LK4
-        logical(LKC)            , intent(out)                   :: rand
-        logical(LKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: LKG => LK4
+        logical(LKG)            , intent(out)                   :: rand
+        logical(LKG)            , intent(in)                    :: lb, ub
         type(splitmix64_type)   , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -12694,9 +12694,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGSLU_D0_LK3
 #endif
-        use pm_kind, only: LKC => LK3
-        logical(LKC)            , intent(out)                   :: rand
-        logical(LKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: LKG => LK3
+        logical(LKG)            , intent(out)                   :: rand
+        logical(LKG)            , intent(in)                    :: lb, ub
         type(splitmix64_type)   , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -12706,9 +12706,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGSLU_D0_LK2
 #endif
-        use pm_kind, only: LKC => LK2
-        logical(LKC)            , intent(out)                   :: rand
-        logical(LKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: LKG => LK2
+        logical(LKG)            , intent(out)                   :: rand
+        logical(LKG)            , intent(in)                    :: lb, ub
         type(splitmix64_type)   , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -12718,9 +12718,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGSLU_D0_LK1
 #endif
-        use pm_kind, only: LKC => LK1
-        logical(LKC)            , intent(out)                   :: rand
-        logical(LKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: LKG => LK1
+        logical(LKG)            , intent(out)                   :: rand
+        logical(LKG)            , intent(in)                    :: lb, ub
         type(splitmix64_type)   , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -12732,9 +12732,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGSLU_D0_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)            , intent(out)                   :: rand
-        complex(CKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: CKG => CK5
+        complex(CKG)            , intent(out)                   :: rand
+        complex(CKG)            , intent(in)                    :: lb, ub
         type(splitmix64_type)   , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -12744,9 +12744,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGSLU_D0_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)            , intent(out)                   :: rand
-        complex(CKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: CKG => CK4
+        complex(CKG)            , intent(out)                   :: rand
+        complex(CKG)            , intent(in)                    :: lb, ub
         type(splitmix64_type)   , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -12756,9 +12756,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGSLU_D0_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)            , intent(out)                   :: rand
-        complex(CKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: CKG => CK3
+        complex(CKG)            , intent(out)                   :: rand
+        complex(CKG)            , intent(in)                    :: lb, ub
         type(splitmix64_type)   , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -12768,9 +12768,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGSLU_D0_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)            , intent(out)                   :: rand
-        complex(CKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: CKG => CK2
+        complex(CKG)            , intent(out)                   :: rand
+        complex(CKG)            , intent(in)                    :: lb, ub
         type(splitmix64_type)   , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -12780,9 +12780,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGSLU_D0_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)            , intent(out)                   :: rand
-        complex(CKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: CKG => CK1
+        complex(CKG)            , intent(out)                   :: rand
+        complex(CKG)            , intent(in)                    :: lb, ub
         type(splitmix64_type)   , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -12794,9 +12794,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGSLU_D0_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)               , intent(out)                   :: rand
-        real(RKC)               , intent(in)                    :: lb, ub
+        use pm_kind, only: RKG => RK5
+        real(RKG)               , intent(out)                   :: rand
+        real(RKG)               , intent(in)                    :: lb, ub
         type(splitmix64_type)   , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -12806,9 +12806,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGSLU_D0_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)               , intent(out)                   :: rand
-        real(RKC)               , intent(in)                    :: lb, ub
+        use pm_kind, only: RKG => RK4
+        real(RKG)               , intent(out)                   :: rand
+        real(RKG)               , intent(in)                    :: lb, ub
         type(splitmix64_type)   , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -12818,9 +12818,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGSLU_D0_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)               , intent(out)                   :: rand
-        real(RKC)               , intent(in)                    :: lb, ub
+        use pm_kind, only: RKG => RK3
+        real(RKG)               , intent(out)                   :: rand
+        real(RKG)               , intent(in)                    :: lb, ub
         type(splitmix64_type)   , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -12830,9 +12830,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGSLU_D0_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)               , intent(out)                   :: rand
-        real(RKC)               , intent(in)                    :: lb, ub
+        use pm_kind, only: RKG => RK2
+        real(RKG)               , intent(out)                   :: rand
+        real(RKG)               , intent(in)                    :: lb, ub
         type(splitmix64_type)   , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -12842,9 +12842,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGSLU_D0_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)               , intent(out)                   :: rand
-        real(RKC)               , intent(in)                    :: lb, ub
+        use pm_kind, only: RKG => RK1
+        real(RKG)               , intent(out)                   :: rand
+        real(RKG)               , intent(in)                    :: lb, ub
         type(splitmix64_type)   , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -12866,8 +12866,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGSDD_D1_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)        , intent(out)                   :: rand(:)
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)        , intent(out)                   :: rand(:)
         type(splitmix64_type)   , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -12877,8 +12877,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGSDD_D1_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)        , intent(out)                   :: rand(:)
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)        , intent(out)                   :: rand(:)
         type(splitmix64_type)   , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -12888,8 +12888,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGSDD_D1_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)        , intent(out)                   :: rand(:)
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)        , intent(out)                   :: rand(:)
         type(splitmix64_type)   , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -12899,8 +12899,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGSDD_D1_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)        , intent(out)                   :: rand(:)
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)        , intent(out)                   :: rand(:)
         type(splitmix64_type)   , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -12910,8 +12910,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGSDD_D1_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)        , intent(out)                   :: rand(:)
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)        , intent(out)                   :: rand(:)
         type(splitmix64_type)   , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -12923,8 +12923,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGSDD_D1_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)            , intent(out)                   :: rand(:)
+        use pm_kind, only: IKG => IK5
+        integer(IKG)            , intent(out)                   :: rand(:)
         type(splitmix64_type)   , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -12934,8 +12934,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGSDD_D1_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)            , intent(out)                   :: rand(:)
+        use pm_kind, only: IKG => IK4
+        integer(IKG)            , intent(out)                   :: rand(:)
         type(splitmix64_type)   , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -12945,8 +12945,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGSDD_D1_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)            , intent(out)                   :: rand(:)
+        use pm_kind, only: IKG => IK3
+        integer(IKG)            , intent(out)                   :: rand(:)
         type(splitmix64_type)   , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -12956,8 +12956,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGSDD_D1_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)            , intent(out)                   :: rand(:)
+        use pm_kind, only: IKG => IK2
+        integer(IKG)            , intent(out)                   :: rand(:)
         type(splitmix64_type)   , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -12967,8 +12967,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGSDD_D1_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)            , intent(out)                   :: rand(:)
+        use pm_kind, only: IKG => IK1
+        integer(IKG)            , intent(out)                   :: rand(:)
         type(splitmix64_type)   , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -12980,8 +12980,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGSDD_D1_LK5
 #endif
-        use pm_kind, only: LKC => LK5
-        logical(LKC)            , intent(out)                   :: rand(:)
+        use pm_kind, only: LKG => LK5
+        logical(LKG)            , intent(out)                   :: rand(:)
         type(splitmix64_type)   , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -12991,8 +12991,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGSDD_D1_LK4
 #endif
-        use pm_kind, only: LKC => LK4
-        logical(LKC)            , intent(out)                   :: rand(:)
+        use pm_kind, only: LKG => LK4
+        logical(LKG)            , intent(out)                   :: rand(:)
         type(splitmix64_type)   , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -13002,8 +13002,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGSDD_D1_LK3
 #endif
-        use pm_kind, only: LKC => LK3
-        logical(LKC)            , intent(out)                   :: rand(:)
+        use pm_kind, only: LKG => LK3
+        logical(LKG)            , intent(out)                   :: rand(:)
         type(splitmix64_type)   , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -13013,8 +13013,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGSDD_D1_LK2
 #endif
-        use pm_kind, only: LKC => LK2
-        logical(LKC)            , intent(out)                   :: rand(:)
+        use pm_kind, only: LKG => LK2
+        logical(LKG)            , intent(out)                   :: rand(:)
         type(splitmix64_type)   , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -13024,8 +13024,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGSDD_D1_LK1
 #endif
-        use pm_kind, only: LKC => LK1
-        logical(LKC)            , intent(out)                   :: rand(:)
+        use pm_kind, only: LKG => LK1
+        logical(LKG)            , intent(out)                   :: rand(:)
         type(splitmix64_type)   , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -13037,8 +13037,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGSDD_D1_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)            , intent(out)                   :: rand(:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG)            , intent(out)                   :: rand(:)
         type(splitmix64_type)   , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -13048,8 +13048,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGSDD_D1_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)            , intent(out)                   :: rand(:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG)            , intent(out)                   :: rand(:)
         type(splitmix64_type)   , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -13059,8 +13059,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGSDD_D1_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)            , intent(out)                   :: rand(:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG)            , intent(out)                   :: rand(:)
         type(splitmix64_type)   , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -13070,8 +13070,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGSDD_D1_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)            , intent(out)                   :: rand(:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG)            , intent(out)                   :: rand(:)
         type(splitmix64_type)   , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -13081,8 +13081,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGSDD_D1_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)            , intent(out)                   :: rand(:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG)            , intent(out)                   :: rand(:)
         type(splitmix64_type)   , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -13094,8 +13094,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGSDD_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)               , intent(out)                   :: rand(:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)               , intent(out)                   :: rand(:)
         type(splitmix64_type)   , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -13105,8 +13105,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGSDD_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)               , intent(out)                   :: rand(:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)               , intent(out)                   :: rand(:)
         type(splitmix64_type)   , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -13116,8 +13116,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGSDD_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)               , intent(out)                   :: rand(:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)               , intent(out)                   :: rand(:)
         type(splitmix64_type)   , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -13127,8 +13127,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGSDD_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)               , intent(out)                   :: rand(:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)               , intent(out)                   :: rand(:)
         type(splitmix64_type)   , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -13138,8 +13138,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGSDD_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)               , intent(out)                   :: rand(:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)               , intent(out)                   :: rand(:)
         type(splitmix64_type)   , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -13157,9 +13157,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGSLU_D1_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)        , intent(out)                   :: rand(:)
-        character(*,SKC)        , intent(in)                    :: lb, ub
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)        , intent(out)                   :: rand(:)
+        character(*,SKG)        , intent(in)                    :: lb, ub
         type(splitmix64_type)   , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -13169,9 +13169,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGSLU_D1_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)        , intent(out)                   :: rand(:)
-        character(*,SKC)        , intent(in)                    :: lb, ub
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)        , intent(out)                   :: rand(:)
+        character(*,SKG)        , intent(in)                    :: lb, ub
         type(splitmix64_type)   , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -13181,9 +13181,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGSLU_D1_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)        , intent(out)                   :: rand(:)
-        character(*,SKC)        , intent(in)                    :: lb, ub
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)        , intent(out)                   :: rand(:)
+        character(*,SKG)        , intent(in)                    :: lb, ub
         type(splitmix64_type)   , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -13193,9 +13193,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGSLU_D1_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)        , intent(out)                   :: rand(:)
-        character(*,SKC)        , intent(in)                    :: lb, ub
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)        , intent(out)                   :: rand(:)
+        character(*,SKG)        , intent(in)                    :: lb, ub
         type(splitmix64_type)   , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -13205,9 +13205,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGSLU_D1_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)        , intent(out)                   :: rand(:)
-        character(*,SKC)        , intent(in)                    :: lb, ub
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)        , intent(out)                   :: rand(:)
+        character(*,SKG)        , intent(in)                    :: lb, ub
         type(splitmix64_type)   , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -13219,9 +13219,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGSLU_D1_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)            , intent(out)                   :: rand(:)
-        integer(IKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: IKG => IK5
+        integer(IKG)            , intent(out)                   :: rand(:)
+        integer(IKG)            , intent(in)                    :: lb, ub
         type(splitmix64_type)   , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -13231,9 +13231,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGSLU_D1_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)            , intent(out)                   :: rand(:)
-        integer(IKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: IKG => IK4
+        integer(IKG)            , intent(out)                   :: rand(:)
+        integer(IKG)            , intent(in)                    :: lb, ub
         type(splitmix64_type)   , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -13243,9 +13243,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGSLU_D1_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)            , intent(out)                   :: rand(:)
-        integer(IKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: IKG => IK3
+        integer(IKG)            , intent(out)                   :: rand(:)
+        integer(IKG)            , intent(in)                    :: lb, ub
         type(splitmix64_type)   , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -13255,9 +13255,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGSLU_D1_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)            , intent(out)                   :: rand(:)
-        integer(IKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: IKG => IK2
+        integer(IKG)            , intent(out)                   :: rand(:)
+        integer(IKG)            , intent(in)                    :: lb, ub
         type(splitmix64_type)   , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -13267,9 +13267,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGSLU_D1_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)            , intent(out)                   :: rand(:)
-        integer(IKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: IKG => IK1
+        integer(IKG)            , intent(out)                   :: rand(:)
+        integer(IKG)            , intent(in)                    :: lb, ub
         type(splitmix64_type)   , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -13281,9 +13281,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGSLU_D1_LK5
 #endif
-        use pm_kind, only: LKC => LK5
-        logical(LKC)            , intent(out)                   :: rand(:)
-        logical(LKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: LKG => LK5
+        logical(LKG)            , intent(out)                   :: rand(:)
+        logical(LKG)            , intent(in)                    :: lb, ub
         type(splitmix64_type)   , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -13293,9 +13293,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGSLU_D1_LK4
 #endif
-        use pm_kind, only: LKC => LK4
-        logical(LKC)            , intent(out)                   :: rand(:)
-        logical(LKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: LKG => LK4
+        logical(LKG)            , intent(out)                   :: rand(:)
+        logical(LKG)            , intent(in)                    :: lb, ub
         type(splitmix64_type)   , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -13305,9 +13305,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGSLU_D1_LK3
 #endif
-        use pm_kind, only: LKC => LK3
-        logical(LKC)            , intent(out)                   :: rand(:)
-        logical(LKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: LKG => LK3
+        logical(LKG)            , intent(out)                   :: rand(:)
+        logical(LKG)            , intent(in)                    :: lb, ub
         type(splitmix64_type)   , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -13317,9 +13317,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGSLU_D1_LK2
 #endif
-        use pm_kind, only: LKC => LK2
-        logical(LKC)            , intent(out)                   :: rand(:)
-        logical(LKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: LKG => LK2
+        logical(LKG)            , intent(out)                   :: rand(:)
+        logical(LKG)            , intent(in)                    :: lb, ub
         type(splitmix64_type)   , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -13329,9 +13329,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGSLU_D1_LK1
 #endif
-        use pm_kind, only: LKC => LK1
-        logical(LKC)            , intent(out)                   :: rand(:)
-        logical(LKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: LKG => LK1
+        logical(LKG)            , intent(out)                   :: rand(:)
+        logical(LKG)            , intent(in)                    :: lb, ub
         type(splitmix64_type)   , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -13343,9 +13343,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGSLU_D1_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)            , intent(out)                   :: rand(:)
-        complex(CKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: CKG => CK5
+        complex(CKG)            , intent(out)                   :: rand(:)
+        complex(CKG)            , intent(in)                    :: lb, ub
         type(splitmix64_type)   , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -13355,9 +13355,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGSLU_D1_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)            , intent(out)                   :: rand(:)
-        complex(CKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: CKG => CK4
+        complex(CKG)            , intent(out)                   :: rand(:)
+        complex(CKG)            , intent(in)                    :: lb, ub
         type(splitmix64_type)   , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -13367,9 +13367,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGSLU_D1_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)            , intent(out)                   :: rand(:)
-        complex(CKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: CKG => CK3
+        complex(CKG)            , intent(out)                   :: rand(:)
+        complex(CKG)            , intent(in)                    :: lb, ub
         type(splitmix64_type)   , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -13379,9 +13379,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGSLU_D1_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)            , intent(out)                   :: rand(:)
-        complex(CKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: CKG => CK2
+        complex(CKG)            , intent(out)                   :: rand(:)
+        complex(CKG)            , intent(in)                    :: lb, ub
         type(splitmix64_type)   , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -13391,9 +13391,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGSLU_D1_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)            , intent(out)                   :: rand(:)
-        complex(CKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: CKG => CK1
+        complex(CKG)            , intent(out)                   :: rand(:)
+        complex(CKG)            , intent(in)                    :: lb, ub
         type(splitmix64_type)   , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -13405,9 +13405,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGSLU_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)               , intent(out)                   :: rand(:)
-        real(RKC)               , intent(in)                    :: lb, ub
+        use pm_kind, only: RKG => RK5
+        real(RKG)               , intent(out)                   :: rand(:)
+        real(RKG)               , intent(in)                    :: lb, ub
         type(splitmix64_type)   , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -13417,9 +13417,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGSLU_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)               , intent(out)                   :: rand(:)
-        real(RKC)               , intent(in)                    :: lb, ub
+        use pm_kind, only: RKG => RK4
+        real(RKG)               , intent(out)                   :: rand(:)
+        real(RKG)               , intent(in)                    :: lb, ub
         type(splitmix64_type)   , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -13429,9 +13429,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGSLU_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)               , intent(out)                   :: rand(:)
-        real(RKC)               , intent(in)                    :: lb, ub
+        use pm_kind, only: RKG => RK3
+        real(RKG)               , intent(out)                   :: rand(:)
+        real(RKG)               , intent(in)                    :: lb, ub
         type(splitmix64_type)   , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -13441,9 +13441,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGSLU_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)               , intent(out)                   :: rand(:)
-        real(RKC)               , intent(in)                    :: lb, ub
+        use pm_kind, only: RKG => RK2
+        real(RKG)               , intent(out)                   :: rand(:)
+        real(RKG)               , intent(in)                    :: lb, ub
         type(splitmix64_type)   , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -13453,9 +13453,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGSLU_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)               , intent(out)                   :: rand(:)
-        real(RKC)               , intent(in)                    :: lb, ub
+        use pm_kind, only: RKG => RK1
+        real(RKG)               , intent(out)                   :: rand(:)
+        real(RKG)               , intent(in)                    :: lb, ub
         type(splitmix64_type)   , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -13477,8 +13477,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGSDD_D2_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)        , intent(out)                   :: rand(:,:)
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)        , intent(out)                   :: rand(:,:)
         type(splitmix64_type)   , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -13488,8 +13488,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGSDD_D2_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)        , intent(out)                   :: rand(:,:)
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)        , intent(out)                   :: rand(:,:)
         type(splitmix64_type)   , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -13499,8 +13499,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGSDD_D2_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)        , intent(out)                   :: rand(:,:)
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)        , intent(out)                   :: rand(:,:)
         type(splitmix64_type)   , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -13510,8 +13510,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGSDD_D2_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)        , intent(out)                   :: rand(:,:)
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)        , intent(out)                   :: rand(:,:)
         type(splitmix64_type)   , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -13521,8 +13521,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGSDD_D2_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)        , intent(out)                   :: rand(:,:)
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)        , intent(out)                   :: rand(:,:)
         type(splitmix64_type)   , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -13534,8 +13534,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGSDD_D2_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)            , intent(out)                   :: rand(:,:)
+        use pm_kind, only: IKG => IK5
+        integer(IKG)            , intent(out)                   :: rand(:,:)
         type(splitmix64_type)   , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -13545,8 +13545,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGSDD_D2_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)            , intent(out)                   :: rand(:,:)
+        use pm_kind, only: IKG => IK4
+        integer(IKG)            , intent(out)                   :: rand(:,:)
         type(splitmix64_type)   , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -13556,8 +13556,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGSDD_D2_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)            , intent(out)                   :: rand(:,:)
+        use pm_kind, only: IKG => IK3
+        integer(IKG)            , intent(out)                   :: rand(:,:)
         type(splitmix64_type)   , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -13567,8 +13567,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGSDD_D2_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)            , intent(out)                   :: rand(:,:)
+        use pm_kind, only: IKG => IK2
+        integer(IKG)            , intent(out)                   :: rand(:,:)
         type(splitmix64_type)   , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -13578,8 +13578,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGSDD_D2_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)            , intent(out)                   :: rand(:,:)
+        use pm_kind, only: IKG => IK1
+        integer(IKG)            , intent(out)                   :: rand(:,:)
         type(splitmix64_type)   , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -13591,8 +13591,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGSDD_D2_LK5
 #endif
-        use pm_kind, only: LKC => LK5
-        logical(LKC)            , intent(out)                   :: rand(:,:)
+        use pm_kind, only: LKG => LK5
+        logical(LKG)            , intent(out)                   :: rand(:,:)
         type(splitmix64_type)   , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -13602,8 +13602,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGSDD_D2_LK4
 #endif
-        use pm_kind, only: LKC => LK4
-        logical(LKC)            , intent(out)                   :: rand(:,:)
+        use pm_kind, only: LKG => LK4
+        logical(LKG)            , intent(out)                   :: rand(:,:)
         type(splitmix64_type)   , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -13613,8 +13613,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGSDD_D2_LK3
 #endif
-        use pm_kind, only: LKC => LK3
-        logical(LKC)            , intent(out)                   :: rand(:,:)
+        use pm_kind, only: LKG => LK3
+        logical(LKG)            , intent(out)                   :: rand(:,:)
         type(splitmix64_type)   , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -13624,8 +13624,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGSDD_D2_LK2
 #endif
-        use pm_kind, only: LKC => LK2
-        logical(LKC)            , intent(out)                   :: rand(:,:)
+        use pm_kind, only: LKG => LK2
+        logical(LKG)            , intent(out)                   :: rand(:,:)
         type(splitmix64_type)   , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -13635,8 +13635,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGSDD_D2_LK1
 #endif
-        use pm_kind, only: LKC => LK1
-        logical(LKC)            , intent(out)                   :: rand(:,:)
+        use pm_kind, only: LKG => LK1
+        logical(LKG)            , intent(out)                   :: rand(:,:)
         type(splitmix64_type)   , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -13648,8 +13648,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGSDD_D2_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)            , intent(out)                   :: rand(:,:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG)            , intent(out)                   :: rand(:,:)
         type(splitmix64_type)   , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -13659,8 +13659,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGSDD_D2_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)            , intent(out)                   :: rand(:,:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG)            , intent(out)                   :: rand(:,:)
         type(splitmix64_type)   , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -13670,8 +13670,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGSDD_D2_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)            , intent(out)                   :: rand(:,:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG)            , intent(out)                   :: rand(:,:)
         type(splitmix64_type)   , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -13681,8 +13681,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGSDD_D2_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)            , intent(out)                   :: rand(:,:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG)            , intent(out)                   :: rand(:,:)
         type(splitmix64_type)   , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -13692,8 +13692,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGSDD_D2_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)            , intent(out)                   :: rand(:,:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG)            , intent(out)                   :: rand(:,:)
         type(splitmix64_type)   , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -13705,8 +13705,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGSDD_D2_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)               , intent(out)                   :: rand(:,:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)               , intent(out)                   :: rand(:,:)
         type(splitmix64_type)   , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -13716,8 +13716,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGSDD_D2_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)               , intent(out)                   :: rand(:,:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)               , intent(out)                   :: rand(:,:)
         type(splitmix64_type)   , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -13727,8 +13727,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGSDD_D2_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)               , intent(out)                   :: rand(:,:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)               , intent(out)                   :: rand(:,:)
         type(splitmix64_type)   , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -13738,8 +13738,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGSDD_D2_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)               , intent(out)                   :: rand(:,:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)               , intent(out)                   :: rand(:,:)
         type(splitmix64_type)   , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -13749,8 +13749,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGSDD_D2_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)               , intent(out)                   :: rand(:,:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)               , intent(out)                   :: rand(:,:)
         type(splitmix64_type)   , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -13768,9 +13768,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGSLU_D2_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)        , intent(out)                   :: rand(:,:)
-        character(*,SKC)        , intent(in)                    :: lb, ub
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)        , intent(out)                   :: rand(:,:)
+        character(*,SKG)        , intent(in)                    :: lb, ub
         type(splitmix64_type)   , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -13780,9 +13780,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGSLU_D2_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)        , intent(out)                   :: rand(:,:)
-        character(*,SKC)        , intent(in)                    :: lb, ub
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)        , intent(out)                   :: rand(:,:)
+        character(*,SKG)        , intent(in)                    :: lb, ub
         type(splitmix64_type)   , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -13792,9 +13792,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGSLU_D2_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)        , intent(out)                   :: rand(:,:)
-        character(*,SKC)        , intent(in)                    :: lb, ub
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)        , intent(out)                   :: rand(:,:)
+        character(*,SKG)        , intent(in)                    :: lb, ub
         type(splitmix64_type)   , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -13804,9 +13804,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGSLU_D2_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)        , intent(out)                   :: rand(:,:)
-        character(*,SKC)        , intent(in)                    :: lb, ub
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)        , intent(out)                   :: rand(:,:)
+        character(*,SKG)        , intent(in)                    :: lb, ub
         type(splitmix64_type)   , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -13816,9 +13816,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGSLU_D2_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)        , intent(out)                   :: rand(:,:)
-        character(*,SKC)        , intent(in)                    :: lb, ub
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)        , intent(out)                   :: rand(:,:)
+        character(*,SKG)        , intent(in)                    :: lb, ub
         type(splitmix64_type)   , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -13830,9 +13830,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGSLU_D2_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)            , intent(out)                   :: rand(:,:)
-        integer(IKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: IKG => IK5
+        integer(IKG)            , intent(out)                   :: rand(:,:)
+        integer(IKG)            , intent(in)                    :: lb, ub
         type(splitmix64_type)   , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -13842,9 +13842,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGSLU_D2_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)            , intent(out)                   :: rand(:,:)
-        integer(IKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: IKG => IK4
+        integer(IKG)            , intent(out)                   :: rand(:,:)
+        integer(IKG)            , intent(in)                    :: lb, ub
         type(splitmix64_type)   , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -13854,9 +13854,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGSLU_D2_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)            , intent(out)                   :: rand(:,:)
-        integer(IKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: IKG => IK3
+        integer(IKG)            , intent(out)                   :: rand(:,:)
+        integer(IKG)            , intent(in)                    :: lb, ub
         type(splitmix64_type)   , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -13866,9 +13866,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGSLU_D2_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)            , intent(out)                   :: rand(:,:)
-        integer(IKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: IKG => IK2
+        integer(IKG)            , intent(out)                   :: rand(:,:)
+        integer(IKG)            , intent(in)                    :: lb, ub
         type(splitmix64_type)   , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -13878,9 +13878,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGSLU_D2_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)            , intent(out)                   :: rand(:,:)
-        integer(IKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: IKG => IK1
+        integer(IKG)            , intent(out)                   :: rand(:,:)
+        integer(IKG)            , intent(in)                    :: lb, ub
         type(splitmix64_type)   , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -13892,9 +13892,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGSLU_D2_LK5
 #endif
-        use pm_kind, only: LKC => LK5
-        logical(LKC)            , intent(out)                   :: rand(:,:)
-        logical(LKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: LKG => LK5
+        logical(LKG)            , intent(out)                   :: rand(:,:)
+        logical(LKG)            , intent(in)                    :: lb, ub
         type(splitmix64_type)   , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -13904,9 +13904,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGSLU_D2_LK4
 #endif
-        use pm_kind, only: LKC => LK4
-        logical(LKC)            , intent(out)                   :: rand(:,:)
-        logical(LKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: LKG => LK4
+        logical(LKG)            , intent(out)                   :: rand(:,:)
+        logical(LKG)            , intent(in)                    :: lb, ub
         type(splitmix64_type)   , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -13916,9 +13916,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGSLU_D2_LK3
 #endif
-        use pm_kind, only: LKC => LK3
-        logical(LKC)            , intent(out)                   :: rand(:,:)
-        logical(LKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: LKG => LK3
+        logical(LKG)            , intent(out)                   :: rand(:,:)
+        logical(LKG)            , intent(in)                    :: lb, ub
         type(splitmix64_type)   , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -13928,9 +13928,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGSLU_D2_LK2
 #endif
-        use pm_kind, only: LKC => LK2
-        logical(LKC)            , intent(out)                   :: rand(:,:)
-        logical(LKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: LKG => LK2
+        logical(LKG)            , intent(out)                   :: rand(:,:)
+        logical(LKG)            , intent(in)                    :: lb, ub
         type(splitmix64_type)   , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -13940,9 +13940,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGSLU_D2_LK1
 #endif
-        use pm_kind, only: LKC => LK1
-        logical(LKC)            , intent(out)                   :: rand(:,:)
-        logical(LKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: LKG => LK1
+        logical(LKG)            , intent(out)                   :: rand(:,:)
+        logical(LKG)            , intent(in)                    :: lb, ub
         type(splitmix64_type)   , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -13954,9 +13954,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGSLU_D2_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)            , intent(out)                   :: rand(:,:)
-        complex(CKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: CKG => CK5
+        complex(CKG)            , intent(out)                   :: rand(:,:)
+        complex(CKG)            , intent(in)                    :: lb, ub
         type(splitmix64_type)   , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -13966,9 +13966,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGSLU_D2_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)            , intent(out)                   :: rand(:,:)
-        complex(CKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: CKG => CK4
+        complex(CKG)            , intent(out)                   :: rand(:,:)
+        complex(CKG)            , intent(in)                    :: lb, ub
         type(splitmix64_type)   , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -13978,9 +13978,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGSLU_D2_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)            , intent(out)                   :: rand(:,:)
-        complex(CKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: CKG => CK3
+        complex(CKG)            , intent(out)                   :: rand(:,:)
+        complex(CKG)            , intent(in)                    :: lb, ub
         type(splitmix64_type)   , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -13990,9 +13990,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGSLU_D2_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)            , intent(out)                   :: rand(:,:)
-        complex(CKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: CKG => CK2
+        complex(CKG)            , intent(out)                   :: rand(:,:)
+        complex(CKG)            , intent(in)                    :: lb, ub
         type(splitmix64_type)   , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -14002,9 +14002,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGSLU_D2_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)            , intent(out)                   :: rand(:,:)
-        complex(CKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: CKG => CK1
+        complex(CKG)            , intent(out)                   :: rand(:,:)
+        complex(CKG)            , intent(in)                    :: lb, ub
         type(splitmix64_type)   , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -14016,9 +14016,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGSLU_D2_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)               , intent(out)                   :: rand(:,:)
-        real(RKC)               , intent(in)                    :: lb, ub
+        use pm_kind, only: RKG => RK5
+        real(RKG)               , intent(out)                   :: rand(:,:)
+        real(RKG)               , intent(in)                    :: lb, ub
         type(splitmix64_type)   , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -14028,9 +14028,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGSLU_D2_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)               , intent(out)                   :: rand(:,:)
-        real(RKC)               , intent(in)                    :: lb, ub
+        use pm_kind, only: RKG => RK4
+        real(RKG)               , intent(out)                   :: rand(:,:)
+        real(RKG)               , intent(in)                    :: lb, ub
         type(splitmix64_type)   , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -14040,9 +14040,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGSLU_D2_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)               , intent(out)                   :: rand(:,:)
-        real(RKC)               , intent(in)                    :: lb, ub
+        use pm_kind, only: RKG => RK3
+        real(RKG)               , intent(out)                   :: rand(:,:)
+        real(RKG)               , intent(in)                    :: lb, ub
         type(splitmix64_type)   , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -14052,9 +14052,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGSLU_D2_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)               , intent(out)                   :: rand(:,:)
-        real(RKC)               , intent(in)                    :: lb, ub
+        use pm_kind, only: RKG => RK2
+        real(RKG)               , intent(out)                   :: rand(:,:)
+        real(RKG)               , intent(in)                    :: lb, ub
         type(splitmix64_type)   , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -14064,9 +14064,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGSLU_D2_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)               , intent(out)                   :: rand(:,:)
-        real(RKC)               , intent(in)                    :: lb, ub
+        use pm_kind, only: RKG => RK1
+        real(RKG)               , intent(out)                   :: rand(:,:)
+        real(RKG)               , intent(in)                    :: lb, ub
         type(splitmix64_type)   , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -14088,8 +14088,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGSDD_D3_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)        , intent(out)                   :: rand(:,:,:)
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)        , intent(out)                   :: rand(:,:,:)
         type(splitmix64_type)   , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -14099,8 +14099,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGSDD_D3_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)        , intent(out)                   :: rand(:,:,:)
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)        , intent(out)                   :: rand(:,:,:)
         type(splitmix64_type)   , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -14110,8 +14110,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGSDD_D3_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)        , intent(out)                   :: rand(:,:,:)
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)        , intent(out)                   :: rand(:,:,:)
         type(splitmix64_type)   , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -14121,8 +14121,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGSDD_D3_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)        , intent(out)                   :: rand(:,:,:)
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)        , intent(out)                   :: rand(:,:,:)
         type(splitmix64_type)   , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -14132,8 +14132,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGSDD_D3_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)        , intent(out)                   :: rand(:,:,:)
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)        , intent(out)                   :: rand(:,:,:)
         type(splitmix64_type)   , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -14145,8 +14145,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGSDD_D3_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)            , intent(out)                   :: rand(:,:,:)
+        use pm_kind, only: IKG => IK5
+        integer(IKG)            , intent(out)                   :: rand(:,:,:)
         type(splitmix64_type)   , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -14156,8 +14156,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGSDD_D3_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)            , intent(out)                   :: rand(:,:,:)
+        use pm_kind, only: IKG => IK4
+        integer(IKG)            , intent(out)                   :: rand(:,:,:)
         type(splitmix64_type)   , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -14167,8 +14167,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGSDD_D3_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)            , intent(out)                   :: rand(:,:,:)
+        use pm_kind, only: IKG => IK3
+        integer(IKG)            , intent(out)                   :: rand(:,:,:)
         type(splitmix64_type)   , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -14178,8 +14178,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGSDD_D3_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)            , intent(out)                   :: rand(:,:,:)
+        use pm_kind, only: IKG => IK2
+        integer(IKG)            , intent(out)                   :: rand(:,:,:)
         type(splitmix64_type)   , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -14189,8 +14189,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGSDD_D3_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)            , intent(out)                   :: rand(:,:,:)
+        use pm_kind, only: IKG => IK1
+        integer(IKG)            , intent(out)                   :: rand(:,:,:)
         type(splitmix64_type)   , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -14202,8 +14202,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGSDD_D3_LK5
 #endif
-        use pm_kind, only: LKC => LK5
-        logical(LKC)            , intent(out)                   :: rand(:,:,:)
+        use pm_kind, only: LKG => LK5
+        logical(LKG)            , intent(out)                   :: rand(:,:,:)
         type(splitmix64_type)   , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -14213,8 +14213,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGSDD_D3_LK4
 #endif
-        use pm_kind, only: LKC => LK4
-        logical(LKC)            , intent(out)                   :: rand(:,:,:)
+        use pm_kind, only: LKG => LK4
+        logical(LKG)            , intent(out)                   :: rand(:,:,:)
         type(splitmix64_type)   , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -14224,8 +14224,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGSDD_D3_LK3
 #endif
-        use pm_kind, only: LKC => LK3
-        logical(LKC)            , intent(out)                   :: rand(:,:,:)
+        use pm_kind, only: LKG => LK3
+        logical(LKG)            , intent(out)                   :: rand(:,:,:)
         type(splitmix64_type)   , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -14235,8 +14235,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGSDD_D3_LK2
 #endif
-        use pm_kind, only: LKC => LK2
-        logical(LKC)            , intent(out)                   :: rand(:,:,:)
+        use pm_kind, only: LKG => LK2
+        logical(LKG)            , intent(out)                   :: rand(:,:,:)
         type(splitmix64_type)   , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -14246,8 +14246,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGSDD_D3_LK1
 #endif
-        use pm_kind, only: LKC => LK1
-        logical(LKC)            , intent(out)                   :: rand(:,:,:)
+        use pm_kind, only: LKG => LK1
+        logical(LKG)            , intent(out)                   :: rand(:,:,:)
         type(splitmix64_type)   , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -14259,8 +14259,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGSDD_D3_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)            , intent(out)                   :: rand(:,:,:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG)            , intent(out)                   :: rand(:,:,:)
         type(splitmix64_type)   , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -14270,8 +14270,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGSDD_D3_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)            , intent(out)                   :: rand(:,:,:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG)            , intent(out)                   :: rand(:,:,:)
         type(splitmix64_type)   , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -14281,8 +14281,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGSDD_D3_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)            , intent(out)                   :: rand(:,:,:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG)            , intent(out)                   :: rand(:,:,:)
         type(splitmix64_type)   , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -14292,8 +14292,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGSDD_D3_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)            , intent(out)                   :: rand(:,:,:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG)            , intent(out)                   :: rand(:,:,:)
         type(splitmix64_type)   , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -14303,8 +14303,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGSDD_D3_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)            , intent(out)                   :: rand(:,:,:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG)            , intent(out)                   :: rand(:,:,:)
         type(splitmix64_type)   , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -14316,8 +14316,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGSDD_D3_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)               , intent(out)                   :: rand(:,:,:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)               , intent(out)                   :: rand(:,:,:)
         type(splitmix64_type)   , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -14327,8 +14327,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGSDD_D3_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)               , intent(out)                   :: rand(:,:,:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)               , intent(out)                   :: rand(:,:,:)
         type(splitmix64_type)   , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -14338,8 +14338,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGSDD_D3_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)               , intent(out)                   :: rand(:,:,:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)               , intent(out)                   :: rand(:,:,:)
         type(splitmix64_type)   , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -14349,8 +14349,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGSDD_D3_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)               , intent(out)                   :: rand(:,:,:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)               , intent(out)                   :: rand(:,:,:)
         type(splitmix64_type)   , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -14360,8 +14360,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGSDD_D3_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)               , intent(out)                   :: rand(:,:,:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)               , intent(out)                   :: rand(:,:,:)
         type(splitmix64_type)   , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -14379,9 +14379,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGSLU_D3_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)        , intent(out)                   :: rand(:,:,:)
-        character(*,SKC)        , intent(in)                    :: lb, ub
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)        , intent(out)                   :: rand(:,:,:)
+        character(*,SKG)        , intent(in)                    :: lb, ub
         type(splitmix64_type)   , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -14391,9 +14391,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGSLU_D3_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)        , intent(out)                   :: rand(:,:,:)
-        character(*,SKC)        , intent(in)                    :: lb, ub
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)        , intent(out)                   :: rand(:,:,:)
+        character(*,SKG)        , intent(in)                    :: lb, ub
         type(splitmix64_type)   , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -14403,9 +14403,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGSLU_D3_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)        , intent(out)                   :: rand(:,:,:)
-        character(*,SKC)        , intent(in)                    :: lb, ub
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)        , intent(out)                   :: rand(:,:,:)
+        character(*,SKG)        , intent(in)                    :: lb, ub
         type(splitmix64_type)   , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -14415,9 +14415,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGSLU_D3_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)        , intent(out)                   :: rand(:,:,:)
-        character(*,SKC)        , intent(in)                    :: lb, ub
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)        , intent(out)                   :: rand(:,:,:)
+        character(*,SKG)        , intent(in)                    :: lb, ub
         type(splitmix64_type)   , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -14427,9 +14427,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGSLU_D3_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)        , intent(out)                   :: rand(:,:,:)
-        character(*,SKC)        , intent(in)                    :: lb, ub
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)        , intent(out)                   :: rand(:,:,:)
+        character(*,SKG)        , intent(in)                    :: lb, ub
         type(splitmix64_type)   , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -14441,9 +14441,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGSLU_D3_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)            , intent(out)                   :: rand(:,:,:)
-        integer(IKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: IKG => IK5
+        integer(IKG)            , intent(out)                   :: rand(:,:,:)
+        integer(IKG)            , intent(in)                    :: lb, ub
         type(splitmix64_type)   , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -14453,9 +14453,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGSLU_D3_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)            , intent(out)                   :: rand(:,:,:)
-        integer(IKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: IKG => IK4
+        integer(IKG)            , intent(out)                   :: rand(:,:,:)
+        integer(IKG)            , intent(in)                    :: lb, ub
         type(splitmix64_type)   , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -14465,9 +14465,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGSLU_D3_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)            , intent(out)                   :: rand(:,:,:)
-        integer(IKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: IKG => IK3
+        integer(IKG)            , intent(out)                   :: rand(:,:,:)
+        integer(IKG)            , intent(in)                    :: lb, ub
         type(splitmix64_type)   , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -14477,9 +14477,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGSLU_D3_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)            , intent(out)                   :: rand(:,:,:)
-        integer(IKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: IKG => IK2
+        integer(IKG)            , intent(out)                   :: rand(:,:,:)
+        integer(IKG)            , intent(in)                    :: lb, ub
         type(splitmix64_type)   , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -14489,9 +14489,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGSLU_D3_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)            , intent(out)                   :: rand(:,:,:)
-        integer(IKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: IKG => IK1
+        integer(IKG)            , intent(out)                   :: rand(:,:,:)
+        integer(IKG)            , intent(in)                    :: lb, ub
         type(splitmix64_type)   , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -14503,9 +14503,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGSLU_D3_LK5
 #endif
-        use pm_kind, only: LKC => LK5
-        logical(LKC)            , intent(out)                   :: rand(:,:,:)
-        logical(LKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: LKG => LK5
+        logical(LKG)            , intent(out)                   :: rand(:,:,:)
+        logical(LKG)            , intent(in)                    :: lb, ub
         type(splitmix64_type)   , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -14515,9 +14515,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGSLU_D3_LK4
 #endif
-        use pm_kind, only: LKC => LK4
-        logical(LKC)            , intent(out)                   :: rand(:,:,:)
-        logical(LKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: LKG => LK4
+        logical(LKG)            , intent(out)                   :: rand(:,:,:)
+        logical(LKG)            , intent(in)                    :: lb, ub
         type(splitmix64_type)   , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -14527,9 +14527,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGSLU_D3_LK3
 #endif
-        use pm_kind, only: LKC => LK3
-        logical(LKC)            , intent(out)                   :: rand(:,:,:)
-        logical(LKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: LKG => LK3
+        logical(LKG)            , intent(out)                   :: rand(:,:,:)
+        logical(LKG)            , intent(in)                    :: lb, ub
         type(splitmix64_type)   , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -14539,9 +14539,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGSLU_D3_LK2
 #endif
-        use pm_kind, only: LKC => LK2
-        logical(LKC)            , intent(out)                   :: rand(:,:,:)
-        logical(LKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: LKG => LK2
+        logical(LKG)            , intent(out)                   :: rand(:,:,:)
+        logical(LKG)            , intent(in)                    :: lb, ub
         type(splitmix64_type)   , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -14551,9 +14551,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGSLU_D3_LK1
 #endif
-        use pm_kind, only: LKC => LK1
-        logical(LKC)            , intent(out)                   :: rand(:,:,:)
-        logical(LKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: LKG => LK1
+        logical(LKG)            , intent(out)                   :: rand(:,:,:)
+        logical(LKG)            , intent(in)                    :: lb, ub
         type(splitmix64_type)   , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -14565,9 +14565,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGSLU_D3_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)            , intent(out)                   :: rand(:,:,:)
-        complex(CKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: CKG => CK5
+        complex(CKG)            , intent(out)                   :: rand(:,:,:)
+        complex(CKG)            , intent(in)                    :: lb, ub
         type(splitmix64_type)   , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -14577,9 +14577,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGSLU_D3_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)            , intent(out)                   :: rand(:,:,:)
-        complex(CKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: CKG => CK4
+        complex(CKG)            , intent(out)                   :: rand(:,:,:)
+        complex(CKG)            , intent(in)                    :: lb, ub
         type(splitmix64_type)   , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -14589,9 +14589,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGSLU_D3_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)            , intent(out)                   :: rand(:,:,:)
-        complex(CKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: CKG => CK3
+        complex(CKG)            , intent(out)                   :: rand(:,:,:)
+        complex(CKG)            , intent(in)                    :: lb, ub
         type(splitmix64_type)   , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -14601,9 +14601,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGSLU_D3_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)            , intent(out)                   :: rand(:,:,:)
-        complex(CKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: CKG => CK2
+        complex(CKG)            , intent(out)                   :: rand(:,:,:)
+        complex(CKG)            , intent(in)                    :: lb, ub
         type(splitmix64_type)   , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -14613,9 +14613,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGSLU_D3_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)            , intent(out)                   :: rand(:,:,:)
-        complex(CKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: CKG => CK1
+        complex(CKG)            , intent(out)                   :: rand(:,:,:)
+        complex(CKG)            , intent(in)                    :: lb, ub
         type(splitmix64_type)   , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -14627,9 +14627,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGSLU_D3_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)               , intent(out)                   :: rand(:,:,:)
-        real(RKC)               , intent(in)                    :: lb, ub
+        use pm_kind, only: RKG => RK5
+        real(RKG)               , intent(out)                   :: rand(:,:,:)
+        real(RKG)               , intent(in)                    :: lb, ub
         type(splitmix64_type)   , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -14639,9 +14639,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGSLU_D3_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)               , intent(out)                   :: rand(:,:,:)
-        real(RKC)               , intent(in)                    :: lb, ub
+        use pm_kind, only: RKG => RK4
+        real(RKG)               , intent(out)                   :: rand(:,:,:)
+        real(RKG)               , intent(in)                    :: lb, ub
         type(splitmix64_type)   , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -14651,9 +14651,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGSLU_D3_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)               , intent(out)                   :: rand(:,:,:)
-        real(RKC)               , intent(in)                    :: lb, ub
+        use pm_kind, only: RKG => RK3
+        real(RKG)               , intent(out)                   :: rand(:,:,:)
+        real(RKG)               , intent(in)                    :: lb, ub
         type(splitmix64_type)   , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -14663,9 +14663,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGSLU_D3_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)               , intent(out)                   :: rand(:,:,:)
-        real(RKC)               , intent(in)                    :: lb, ub
+        use pm_kind, only: RKG => RK2
+        real(RKG)               , intent(out)                   :: rand(:,:,:)
+        real(RKG)               , intent(in)                    :: lb, ub
         type(splitmix64_type)   , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -14675,9 +14675,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGSLU_D3_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)               , intent(out)                   :: rand(:,:,:)
-        real(RKC)               , intent(in)                    :: lb, ub
+        use pm_kind, only: RKG => RK1
+        real(RKG)               , intent(out)                   :: rand(:,:,:)
+        real(RKG)               , intent(in)                    :: lb, ub
         type(splitmix64_type)   , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -14705,8 +14705,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGGDD_D0_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)        , intent(out)                   :: rand
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)        , intent(out)                   :: rand
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -14716,8 +14716,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGGDD_D0_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)        , intent(out)                   :: rand
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)        , intent(out)                   :: rand
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -14727,8 +14727,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGGDD_D0_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)        , intent(out)                   :: rand
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)        , intent(out)                   :: rand
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -14738,8 +14738,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGGDD_D0_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)        , intent(out)                   :: rand
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)        , intent(out)                   :: rand
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -14749,8 +14749,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGGDD_D0_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)        , intent(out)                   :: rand
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)        , intent(out)                   :: rand
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -14762,8 +14762,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGGDD_D0_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)            , intent(out)                   :: rand
+        use pm_kind, only: IKG => IK5
+        integer(IKG)            , intent(out)                   :: rand
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -14773,8 +14773,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGGDD_D0_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)            , intent(out)                   :: rand
+        use pm_kind, only: IKG => IK4
+        integer(IKG)            , intent(out)                   :: rand
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -14784,8 +14784,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGGDD_D0_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)            , intent(out)                   :: rand
+        use pm_kind, only: IKG => IK3
+        integer(IKG)            , intent(out)                   :: rand
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -14795,8 +14795,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGGDD_D0_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)            , intent(out)                   :: rand
+        use pm_kind, only: IKG => IK2
+        integer(IKG)            , intent(out)                   :: rand
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -14806,8 +14806,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGGDD_D0_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)            , intent(out)                   :: rand
+        use pm_kind, only: IKG => IK1
+        integer(IKG)            , intent(out)                   :: rand
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -14819,8 +14819,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGGDD_D0_LK5
 #endif
-        use pm_kind, only: LKC => LK5
-        logical(LKC)            , intent(out)                   :: rand
+        use pm_kind, only: LKG => LK5
+        logical(LKG)            , intent(out)                   :: rand
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -14830,8 +14830,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGGDD_D0_LK4
 #endif
-        use pm_kind, only: LKC => LK4
-        logical(LKC)            , intent(out)                   :: rand
+        use pm_kind, only: LKG => LK4
+        logical(LKG)            , intent(out)                   :: rand
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -14841,8 +14841,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGGDD_D0_LK3
 #endif
-        use pm_kind, only: LKC => LK3
-        logical(LKC)            , intent(out)                   :: rand
+        use pm_kind, only: LKG => LK3
+        logical(LKG)            , intent(out)                   :: rand
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -14852,8 +14852,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGGDD_D0_LK2
 #endif
-        use pm_kind, only: LKC => LK2
-        logical(LKC)            , intent(out)                   :: rand
+        use pm_kind, only: LKG => LK2
+        logical(LKG)            , intent(out)                   :: rand
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -14863,8 +14863,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGGDD_D0_LK1
 #endif
-        use pm_kind, only: LKC => LK1
-        logical(LKC)            , intent(out)                   :: rand
+        use pm_kind, only: LKG => LK1
+        logical(LKG)            , intent(out)                   :: rand
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -14876,8 +14876,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGGDD_D0_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)            , intent(out)                   :: rand
+        use pm_kind, only: CKG => CK5
+        complex(CKG)            , intent(out)                   :: rand
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -14887,8 +14887,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGGDD_D0_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)            , intent(out)                   :: rand
+        use pm_kind, only: CKG => CK4
+        complex(CKG)            , intent(out)                   :: rand
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -14898,8 +14898,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGGDD_D0_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)            , intent(out)                   :: rand
+        use pm_kind, only: CKG => CK3
+        complex(CKG)            , intent(out)                   :: rand
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -14909,8 +14909,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGGDD_D0_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)            , intent(out)                   :: rand
+        use pm_kind, only: CKG => CK2
+        complex(CKG)            , intent(out)                   :: rand
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -14920,8 +14920,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGGDD_D0_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)            , intent(out)                   :: rand
+        use pm_kind, only: CKG => CK1
+        complex(CKG)            , intent(out)                   :: rand
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -14933,8 +14933,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGGDD_D0_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)               , intent(out)                   :: rand
+        use pm_kind, only: RKG => RK5
+        real(RKG)               , intent(out)                   :: rand
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -14944,8 +14944,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGGDD_D0_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)               , intent(out)                   :: rand
+        use pm_kind, only: RKG => RK4
+        real(RKG)               , intent(out)                   :: rand
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -14955,8 +14955,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGGDD_D0_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)               , intent(out)                   :: rand
+        use pm_kind, only: RKG => RK3
+        real(RKG)               , intent(out)                   :: rand
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -14966,8 +14966,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGGDD_D0_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)               , intent(out)                   :: rand
+        use pm_kind, only: RKG => RK2
+        real(RKG)               , intent(out)                   :: rand
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -14977,8 +14977,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGGDD_D0_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)               , intent(out)                   :: rand
+        use pm_kind, only: RKG => RK1
+        real(RKG)               , intent(out)                   :: rand
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -14996,9 +14996,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGGLU_D0_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)        , intent(out)                   :: rand
-        character(*,SKC)        , intent(in)                    :: lb, ub
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)        , intent(out)                   :: rand
+        character(*,SKG)        , intent(in)                    :: lb, ub
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -15008,9 +15008,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGGLU_D0_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)        , intent(out)                   :: rand
-        character(*,SKC)        , intent(in)                    :: lb, ub
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)        , intent(out)                   :: rand
+        character(*,SKG)        , intent(in)                    :: lb, ub
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -15020,9 +15020,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGGLU_D0_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)        , intent(out)                   :: rand
-        character(*,SKC)        , intent(in)                    :: lb, ub
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)        , intent(out)                   :: rand
+        character(*,SKG)        , intent(in)                    :: lb, ub
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -15032,9 +15032,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGGLU_D0_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)        , intent(out)                   :: rand
-        character(*,SKC)        , intent(in)                    :: lb, ub
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)        , intent(out)                   :: rand
+        character(*,SKG)        , intent(in)                    :: lb, ub
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -15044,9 +15044,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGGLU_D0_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)        , intent(out)                   :: rand
-        character(*,SKC)        , intent(in)                    :: lb, ub
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)        , intent(out)                   :: rand
+        character(*,SKG)        , intent(in)                    :: lb, ub
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -15058,9 +15058,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGGLU_D0_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)            , intent(out)                   :: rand
-        integer(IKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: IKG => IK5
+        integer(IKG)            , intent(out)                   :: rand
+        integer(IKG)            , intent(in)                    :: lb, ub
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -15070,9 +15070,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGGLU_D0_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)            , intent(out)                   :: rand
-        integer(IKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: IKG => IK4
+        integer(IKG)            , intent(out)                   :: rand
+        integer(IKG)            , intent(in)                    :: lb, ub
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -15082,9 +15082,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGGLU_D0_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)            , intent(out)                   :: rand
-        integer(IKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: IKG => IK3
+        integer(IKG)            , intent(out)                   :: rand
+        integer(IKG)            , intent(in)                    :: lb, ub
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -15094,9 +15094,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGGLU_D0_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)            , intent(out)                   :: rand
-        integer(IKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: IKG => IK2
+        integer(IKG)            , intent(out)                   :: rand
+        integer(IKG)            , intent(in)                    :: lb, ub
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -15106,9 +15106,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGGLU_D0_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)            , intent(out)                   :: rand
-        integer(IKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: IKG => IK1
+        integer(IKG)            , intent(out)                   :: rand
+        integer(IKG)            , intent(in)                    :: lb, ub
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -15120,9 +15120,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGGLU_D0_LK5
 #endif
-        use pm_kind, only: LKC => LK5
-        logical(LKC)            , intent(out)                   :: rand
-        logical(LKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: LKG => LK5
+        logical(LKG)            , intent(out)                   :: rand
+        logical(LKG)            , intent(in)                    :: lb, ub
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -15132,9 +15132,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGGLU_D0_LK4
 #endif
-        use pm_kind, only: LKC => LK4
-        logical(LKC)            , intent(out)                   :: rand
-        logical(LKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: LKG => LK4
+        logical(LKG)            , intent(out)                   :: rand
+        logical(LKG)            , intent(in)                    :: lb, ub
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -15144,9 +15144,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGGLU_D0_LK3
 #endif
-        use pm_kind, only: LKC => LK3
-        logical(LKC)            , intent(out)                   :: rand
-        logical(LKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: LKG => LK3
+        logical(LKG)            , intent(out)                   :: rand
+        logical(LKG)            , intent(in)                    :: lb, ub
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -15156,9 +15156,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGGLU_D0_LK2
 #endif
-        use pm_kind, only: LKC => LK2
-        logical(LKC)            , intent(out)                   :: rand
-        logical(LKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: LKG => LK2
+        logical(LKG)            , intent(out)                   :: rand
+        logical(LKG)            , intent(in)                    :: lb, ub
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -15168,9 +15168,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGGLU_D0_LK1
 #endif
-        use pm_kind, only: LKC => LK1
-        logical(LKC)            , intent(out)                   :: rand
-        logical(LKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: LKG => LK1
+        logical(LKG)            , intent(out)                   :: rand
+        logical(LKG)            , intent(in)                    :: lb, ub
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -15182,9 +15182,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGGLU_D0_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)            , intent(out)                   :: rand
-        complex(CKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: CKG => CK5
+        complex(CKG)            , intent(out)                   :: rand
+        complex(CKG)            , intent(in)                    :: lb, ub
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -15194,9 +15194,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGGLU_D0_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)            , intent(out)                   :: rand
-        complex(CKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: CKG => CK4
+        complex(CKG)            , intent(out)                   :: rand
+        complex(CKG)            , intent(in)                    :: lb, ub
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -15206,9 +15206,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGGLU_D0_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)            , intent(out)                   :: rand
-        complex(CKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: CKG => CK3
+        complex(CKG)            , intent(out)                   :: rand
+        complex(CKG)            , intent(in)                    :: lb, ub
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -15218,9 +15218,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGGLU_D0_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)            , intent(out)                   :: rand
-        complex(CKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: CKG => CK2
+        complex(CKG)            , intent(out)                   :: rand
+        complex(CKG)            , intent(in)                    :: lb, ub
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -15230,9 +15230,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGGLU_D0_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)            , intent(out)                   :: rand
-        complex(CKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: CKG => CK1
+        complex(CKG)            , intent(out)                   :: rand
+        complex(CKG)            , intent(in)                    :: lb, ub
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -15244,9 +15244,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGGLU_D0_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)               , intent(out)                   :: rand
-        real(RKC)               , intent(in)                    :: lb, ub
+        use pm_kind, only: RKG => RK5
+        real(RKG)               , intent(out)                   :: rand
+        real(RKG)               , intent(in)                    :: lb, ub
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -15256,9 +15256,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGGLU_D0_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)               , intent(out)                   :: rand
-        real(RKC)               , intent(in)                    :: lb, ub
+        use pm_kind, only: RKG => RK4
+        real(RKG)               , intent(out)                   :: rand
+        real(RKG)               , intent(in)                    :: lb, ub
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -15268,9 +15268,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGGLU_D0_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)               , intent(out)                   :: rand
-        real(RKC)               , intent(in)                    :: lb, ub
+        use pm_kind, only: RKG => RK3
+        real(RKG)               , intent(out)                   :: rand
+        real(RKG)               , intent(in)                    :: lb, ub
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -15280,9 +15280,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGGLU_D0_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)               , intent(out)                   :: rand
-        real(RKC)               , intent(in)                    :: lb, ub
+        use pm_kind, only: RKG => RK2
+        real(RKG)               , intent(out)                   :: rand
+        real(RKG)               , intent(in)                    :: lb, ub
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -15292,9 +15292,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGGLU_D0_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)               , intent(out)                   :: rand
-        real(RKC)               , intent(in)                    :: lb, ub
+        use pm_kind, only: RKG => RK1
+        real(RKG)               , intent(out)                   :: rand
+        real(RKG)               , intent(in)                    :: lb, ub
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -15316,8 +15316,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGGDD_D1_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)        , intent(out)                   :: rand(:)
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)        , intent(out)                   :: rand(:)
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -15327,8 +15327,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGGDD_D1_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)        , intent(out)                   :: rand(:)
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)        , intent(out)                   :: rand(:)
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -15338,8 +15338,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGGDD_D1_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)        , intent(out)                   :: rand(:)
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)        , intent(out)                   :: rand(:)
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -15349,8 +15349,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGGDD_D1_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)        , intent(out)                   :: rand(:)
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)        , intent(out)                   :: rand(:)
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -15360,8 +15360,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGGDD_D1_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)        , intent(out)                   :: rand(:)
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)        , intent(out)                   :: rand(:)
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -15373,8 +15373,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGGDD_D1_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)            , intent(out)                   :: rand(:)
+        use pm_kind, only: IKG => IK5
+        integer(IKG)            , intent(out)                   :: rand(:)
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -15384,8 +15384,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGGDD_D1_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)            , intent(out)                   :: rand(:)
+        use pm_kind, only: IKG => IK4
+        integer(IKG)            , intent(out)                   :: rand(:)
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -15395,8 +15395,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGGDD_D1_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)            , intent(out)                   :: rand(:)
+        use pm_kind, only: IKG => IK3
+        integer(IKG)            , intent(out)                   :: rand(:)
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -15406,8 +15406,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGGDD_D1_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)            , intent(out)                   :: rand(:)
+        use pm_kind, only: IKG => IK2
+        integer(IKG)            , intent(out)                   :: rand(:)
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -15417,8 +15417,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGGDD_D1_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)            , intent(out)                   :: rand(:)
+        use pm_kind, only: IKG => IK1
+        integer(IKG)            , intent(out)                   :: rand(:)
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -15430,8 +15430,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGGDD_D1_LK5
 #endif
-        use pm_kind, only: LKC => LK5
-        logical(LKC)            , intent(out)                   :: rand(:)
+        use pm_kind, only: LKG => LK5
+        logical(LKG)            , intent(out)                   :: rand(:)
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -15441,8 +15441,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGGDD_D1_LK4
 #endif
-        use pm_kind, only: LKC => LK4
-        logical(LKC)            , intent(out)                   :: rand(:)
+        use pm_kind, only: LKG => LK4
+        logical(LKG)            , intent(out)                   :: rand(:)
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -15452,8 +15452,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGGDD_D1_LK3
 #endif
-        use pm_kind, only: LKC => LK3
-        logical(LKC)            , intent(out)                   :: rand(:)
+        use pm_kind, only: LKG => LK3
+        logical(LKG)            , intent(out)                   :: rand(:)
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -15463,8 +15463,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGGDD_D1_LK2
 #endif
-        use pm_kind, only: LKC => LK2
-        logical(LKC)            , intent(out)                   :: rand(:)
+        use pm_kind, only: LKG => LK2
+        logical(LKG)            , intent(out)                   :: rand(:)
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -15474,8 +15474,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGGDD_D1_LK1
 #endif
-        use pm_kind, only: LKC => LK1
-        logical(LKC)            , intent(out)                   :: rand(:)
+        use pm_kind, only: LKG => LK1
+        logical(LKG)            , intent(out)                   :: rand(:)
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -15487,8 +15487,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGGDD_D1_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)            , intent(out)                   :: rand(:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG)            , intent(out)                   :: rand(:)
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -15498,8 +15498,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGGDD_D1_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)            , intent(out)                   :: rand(:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG)            , intent(out)                   :: rand(:)
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -15509,8 +15509,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGGDD_D1_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)            , intent(out)                   :: rand(:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG)            , intent(out)                   :: rand(:)
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -15520,8 +15520,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGGDD_D1_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)            , intent(out)                   :: rand(:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG)            , intent(out)                   :: rand(:)
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -15531,8 +15531,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGGDD_D1_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)            , intent(out)                   :: rand(:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG)            , intent(out)                   :: rand(:)
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -15544,8 +15544,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGGDD_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)               , intent(out)                   :: rand(:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)               , intent(out)                   :: rand(:)
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -15555,8 +15555,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGGDD_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)               , intent(out)                   :: rand(:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)               , intent(out)                   :: rand(:)
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -15566,8 +15566,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGGDD_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)               , intent(out)                   :: rand(:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)               , intent(out)                   :: rand(:)
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -15577,8 +15577,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGGDD_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)               , intent(out)                   :: rand(:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)               , intent(out)                   :: rand(:)
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -15588,8 +15588,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGGDD_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)               , intent(out)                   :: rand(:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)               , intent(out)                   :: rand(:)
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -15607,9 +15607,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGGLU_D1_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)        , intent(out)                   :: rand(:)
-        character(*,SKC)        , intent(in)                    :: lb, ub
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)        , intent(out)                   :: rand(:)
+        character(*,SKG)        , intent(in)                    :: lb, ub
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -15619,9 +15619,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGGLU_D1_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)        , intent(out)                   :: rand(:)
-        character(*,SKC)        , intent(in)                    :: lb, ub
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)        , intent(out)                   :: rand(:)
+        character(*,SKG)        , intent(in)                    :: lb, ub
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -15631,9 +15631,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGGLU_D1_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)        , intent(out)                   :: rand(:)
-        character(*,SKC)        , intent(in)                    :: lb, ub
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)        , intent(out)                   :: rand(:)
+        character(*,SKG)        , intent(in)                    :: lb, ub
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -15643,9 +15643,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGGLU_D1_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)        , intent(out)                   :: rand(:)
-        character(*,SKC)        , intent(in)                    :: lb, ub
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)        , intent(out)                   :: rand(:)
+        character(*,SKG)        , intent(in)                    :: lb, ub
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -15655,9 +15655,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGGLU_D1_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)        , intent(out)                   :: rand(:)
-        character(*,SKC)        , intent(in)                    :: lb, ub
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)        , intent(out)                   :: rand(:)
+        character(*,SKG)        , intent(in)                    :: lb, ub
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -15669,9 +15669,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGGLU_D1_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)            , intent(out)                   :: rand(:)
-        integer(IKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: IKG => IK5
+        integer(IKG)            , intent(out)                   :: rand(:)
+        integer(IKG)            , intent(in)                    :: lb, ub
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -15681,9 +15681,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGGLU_D1_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)            , intent(out)                   :: rand(:)
-        integer(IKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: IKG => IK4
+        integer(IKG)            , intent(out)                   :: rand(:)
+        integer(IKG)            , intent(in)                    :: lb, ub
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -15693,9 +15693,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGGLU_D1_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)            , intent(out)                   :: rand(:)
-        integer(IKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: IKG => IK3
+        integer(IKG)            , intent(out)                   :: rand(:)
+        integer(IKG)            , intent(in)                    :: lb, ub
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -15705,9 +15705,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGGLU_D1_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)            , intent(out)                   :: rand(:)
-        integer(IKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: IKG => IK2
+        integer(IKG)            , intent(out)                   :: rand(:)
+        integer(IKG)            , intent(in)                    :: lb, ub
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -15717,9 +15717,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGGLU_D1_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)            , intent(out)                   :: rand(:)
-        integer(IKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: IKG => IK1
+        integer(IKG)            , intent(out)                   :: rand(:)
+        integer(IKG)            , intent(in)                    :: lb, ub
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -15731,9 +15731,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGGLU_D1_LK5
 #endif
-        use pm_kind, only: LKC => LK5
-        logical(LKC)            , intent(out)                   :: rand(:)
-        logical(LKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: LKG => LK5
+        logical(LKG)            , intent(out)                   :: rand(:)
+        logical(LKG)            , intent(in)                    :: lb, ub
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -15743,9 +15743,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGGLU_D1_LK4
 #endif
-        use pm_kind, only: LKC => LK4
-        logical(LKC)            , intent(out)                   :: rand(:)
-        logical(LKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: LKG => LK4
+        logical(LKG)            , intent(out)                   :: rand(:)
+        logical(LKG)            , intent(in)                    :: lb, ub
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -15755,9 +15755,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGGLU_D1_LK3
 #endif
-        use pm_kind, only: LKC => LK3
-        logical(LKC)            , intent(out)                   :: rand(:)
-        logical(LKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: LKG => LK3
+        logical(LKG)            , intent(out)                   :: rand(:)
+        logical(LKG)            , intent(in)                    :: lb, ub
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -15767,9 +15767,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGGLU_D1_LK2
 #endif
-        use pm_kind, only: LKC => LK2
-        logical(LKC)            , intent(out)                   :: rand(:)
-        logical(LKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: LKG => LK2
+        logical(LKG)            , intent(out)                   :: rand(:)
+        logical(LKG)            , intent(in)                    :: lb, ub
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -15779,9 +15779,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGGLU_D1_LK1
 #endif
-        use pm_kind, only: LKC => LK1
-        logical(LKC)            , intent(out)                   :: rand(:)
-        logical(LKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: LKG => LK1
+        logical(LKG)            , intent(out)                   :: rand(:)
+        logical(LKG)            , intent(in)                    :: lb, ub
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -15793,9 +15793,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGGLU_D1_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)            , intent(out)                   :: rand(:)
-        complex(CKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: CKG => CK5
+        complex(CKG)            , intent(out)                   :: rand(:)
+        complex(CKG)            , intent(in)                    :: lb, ub
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -15805,9 +15805,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGGLU_D1_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)            , intent(out)                   :: rand(:)
-        complex(CKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: CKG => CK4
+        complex(CKG)            , intent(out)                   :: rand(:)
+        complex(CKG)            , intent(in)                    :: lb, ub
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -15817,9 +15817,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGGLU_D1_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)            , intent(out)                   :: rand(:)
-        complex(CKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: CKG => CK3
+        complex(CKG)            , intent(out)                   :: rand(:)
+        complex(CKG)            , intent(in)                    :: lb, ub
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -15829,9 +15829,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGGLU_D1_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)            , intent(out)                   :: rand(:)
-        complex(CKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: CKG => CK2
+        complex(CKG)            , intent(out)                   :: rand(:)
+        complex(CKG)            , intent(in)                    :: lb, ub
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -15841,9 +15841,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGGLU_D1_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)            , intent(out)                   :: rand(:)
-        complex(CKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: CKG => CK1
+        complex(CKG)            , intent(out)                   :: rand(:)
+        complex(CKG)            , intent(in)                    :: lb, ub
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -15855,9 +15855,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGGLU_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)               , intent(out)                   :: rand(:)
-        real(RKC)               , intent(in)                    :: lb, ub
+        use pm_kind, only: RKG => RK5
+        real(RKG)               , intent(out)                   :: rand(:)
+        real(RKG)               , intent(in)                    :: lb, ub
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -15867,9 +15867,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGGLU_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)               , intent(out)                   :: rand(:)
-        real(RKC)               , intent(in)                    :: lb, ub
+        use pm_kind, only: RKG => RK4
+        real(RKG)               , intent(out)                   :: rand(:)
+        real(RKG)               , intent(in)                    :: lb, ub
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -15879,9 +15879,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGGLU_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)               , intent(out)                   :: rand(:)
-        real(RKC)               , intent(in)                    :: lb, ub
+        use pm_kind, only: RKG => RK3
+        real(RKG)               , intent(out)                   :: rand(:)
+        real(RKG)               , intent(in)                    :: lb, ub
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -15891,9 +15891,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGGLU_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)               , intent(out)                   :: rand(:)
-        real(RKC)               , intent(in)                    :: lb, ub
+        use pm_kind, only: RKG => RK2
+        real(RKG)               , intent(out)                   :: rand(:)
+        real(RKG)               , intent(in)                    :: lb, ub
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -15903,9 +15903,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGGLU_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)               , intent(out)                   :: rand(:)
-        real(RKC)               , intent(in)                    :: lb, ub
+        use pm_kind, only: RKG => RK1
+        real(RKG)               , intent(out)                   :: rand(:)
+        real(RKG)               , intent(in)                    :: lb, ub
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -15927,8 +15927,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGGDD_D2_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)        , intent(out)                   :: rand(:,:)
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)        , intent(out)                   :: rand(:,:)
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -15938,8 +15938,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGGDD_D2_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)        , intent(out)                   :: rand(:,:)
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)        , intent(out)                   :: rand(:,:)
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -15949,8 +15949,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGGDD_D2_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)        , intent(out)                   :: rand(:,:)
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)        , intent(out)                   :: rand(:,:)
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -15960,8 +15960,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGGDD_D2_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)        , intent(out)                   :: rand(:,:)
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)        , intent(out)                   :: rand(:,:)
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -15971,8 +15971,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGGDD_D2_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)        , intent(out)                   :: rand(:,:)
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)        , intent(out)                   :: rand(:,:)
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -15984,8 +15984,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGGDD_D2_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)            , intent(out)                   :: rand(:,:)
+        use pm_kind, only: IKG => IK5
+        integer(IKG)            , intent(out)                   :: rand(:,:)
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -15995,8 +15995,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGGDD_D2_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)            , intent(out)                   :: rand(:,:)
+        use pm_kind, only: IKG => IK4
+        integer(IKG)            , intent(out)                   :: rand(:,:)
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -16006,8 +16006,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGGDD_D2_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)            , intent(out)                   :: rand(:,:)
+        use pm_kind, only: IKG => IK3
+        integer(IKG)            , intent(out)                   :: rand(:,:)
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -16017,8 +16017,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGGDD_D2_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)            , intent(out)                   :: rand(:,:)
+        use pm_kind, only: IKG => IK2
+        integer(IKG)            , intent(out)                   :: rand(:,:)
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -16028,8 +16028,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGGDD_D2_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)            , intent(out)                   :: rand(:,:)
+        use pm_kind, only: IKG => IK1
+        integer(IKG)            , intent(out)                   :: rand(:,:)
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -16041,8 +16041,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGGDD_D2_LK5
 #endif
-        use pm_kind, only: LKC => LK5
-        logical(LKC)            , intent(out)                   :: rand(:,:)
+        use pm_kind, only: LKG => LK5
+        logical(LKG)            , intent(out)                   :: rand(:,:)
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -16052,8 +16052,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGGDD_D2_LK4
 #endif
-        use pm_kind, only: LKC => LK4
-        logical(LKC)            , intent(out)                   :: rand(:,:)
+        use pm_kind, only: LKG => LK4
+        logical(LKG)            , intent(out)                   :: rand(:,:)
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -16063,8 +16063,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGGDD_D2_LK3
 #endif
-        use pm_kind, only: LKC => LK3
-        logical(LKC)            , intent(out)                   :: rand(:,:)
+        use pm_kind, only: LKG => LK3
+        logical(LKG)            , intent(out)                   :: rand(:,:)
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -16074,8 +16074,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGGDD_D2_LK2
 #endif
-        use pm_kind, only: LKC => LK2
-        logical(LKC)            , intent(out)                   :: rand(:,:)
+        use pm_kind, only: LKG => LK2
+        logical(LKG)            , intent(out)                   :: rand(:,:)
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -16085,8 +16085,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGGDD_D2_LK1
 #endif
-        use pm_kind, only: LKC => LK1
-        logical(LKC)            , intent(out)                   :: rand(:,:)
+        use pm_kind, only: LKG => LK1
+        logical(LKG)            , intent(out)                   :: rand(:,:)
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -16098,8 +16098,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGGDD_D2_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)            , intent(out)                   :: rand(:,:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG)            , intent(out)                   :: rand(:,:)
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -16109,8 +16109,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGGDD_D2_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)            , intent(out)                   :: rand(:,:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG)            , intent(out)                   :: rand(:,:)
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -16120,8 +16120,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGGDD_D2_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)            , intent(out)                   :: rand(:,:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG)            , intent(out)                   :: rand(:,:)
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -16131,8 +16131,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGGDD_D2_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)            , intent(out)                   :: rand(:,:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG)            , intent(out)                   :: rand(:,:)
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -16142,8 +16142,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGGDD_D2_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)            , intent(out)                   :: rand(:,:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG)            , intent(out)                   :: rand(:,:)
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -16155,8 +16155,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGGDD_D2_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)               , intent(out)                   :: rand(:,:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)               , intent(out)                   :: rand(:,:)
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -16166,8 +16166,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGGDD_D2_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)               , intent(out)                   :: rand(:,:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)               , intent(out)                   :: rand(:,:)
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -16177,8 +16177,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGGDD_D2_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)               , intent(out)                   :: rand(:,:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)               , intent(out)                   :: rand(:,:)
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -16188,8 +16188,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGGDD_D2_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)               , intent(out)                   :: rand(:,:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)               , intent(out)                   :: rand(:,:)
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -16199,8 +16199,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGGDD_D2_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)               , intent(out)                   :: rand(:,:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)               , intent(out)                   :: rand(:,:)
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -16218,9 +16218,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGGLU_D2_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)        , intent(out)                   :: rand(:,:)
-        character(*,SKC)        , intent(in)                    :: lb, ub
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)        , intent(out)                   :: rand(:,:)
+        character(*,SKG)        , intent(in)                    :: lb, ub
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -16230,9 +16230,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGGLU_D2_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)        , intent(out)                   :: rand(:,:)
-        character(*,SKC)        , intent(in)                    :: lb, ub
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)        , intent(out)                   :: rand(:,:)
+        character(*,SKG)        , intent(in)                    :: lb, ub
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -16242,9 +16242,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGGLU_D2_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)        , intent(out)                   :: rand(:,:)
-        character(*,SKC)        , intent(in)                    :: lb, ub
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)        , intent(out)                   :: rand(:,:)
+        character(*,SKG)        , intent(in)                    :: lb, ub
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -16254,9 +16254,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGGLU_D2_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)        , intent(out)                   :: rand(:,:)
-        character(*,SKC)        , intent(in)                    :: lb, ub
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)        , intent(out)                   :: rand(:,:)
+        character(*,SKG)        , intent(in)                    :: lb, ub
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -16266,9 +16266,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGGLU_D2_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)        , intent(out)                   :: rand(:,:)
-        character(*,SKC)        , intent(in)                    :: lb, ub
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)        , intent(out)                   :: rand(:,:)
+        character(*,SKG)        , intent(in)                    :: lb, ub
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -16280,9 +16280,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGGLU_D2_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)            , intent(out)                   :: rand(:,:)
-        integer(IKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: IKG => IK5
+        integer(IKG)            , intent(out)                   :: rand(:,:)
+        integer(IKG)            , intent(in)                    :: lb, ub
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -16292,9 +16292,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGGLU_D2_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)            , intent(out)                   :: rand(:,:)
-        integer(IKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: IKG => IK4
+        integer(IKG)            , intent(out)                   :: rand(:,:)
+        integer(IKG)            , intent(in)                    :: lb, ub
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -16304,9 +16304,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGGLU_D2_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)            , intent(out)                   :: rand(:,:)
-        integer(IKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: IKG => IK3
+        integer(IKG)            , intent(out)                   :: rand(:,:)
+        integer(IKG)            , intent(in)                    :: lb, ub
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -16316,9 +16316,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGGLU_D2_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)            , intent(out)                   :: rand(:,:)
-        integer(IKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: IKG => IK2
+        integer(IKG)            , intent(out)                   :: rand(:,:)
+        integer(IKG)            , intent(in)                    :: lb, ub
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -16328,9 +16328,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGGLU_D2_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)            , intent(out)                   :: rand(:,:)
-        integer(IKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: IKG => IK1
+        integer(IKG)            , intent(out)                   :: rand(:,:)
+        integer(IKG)            , intent(in)                    :: lb, ub
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -16342,9 +16342,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGGLU_D2_LK5
 #endif
-        use pm_kind, only: LKC => LK5
-        logical(LKC)            , intent(out)                   :: rand(:,:)
-        logical(LKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: LKG => LK5
+        logical(LKG)            , intent(out)                   :: rand(:,:)
+        logical(LKG)            , intent(in)                    :: lb, ub
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -16354,9 +16354,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGGLU_D2_LK4
 #endif
-        use pm_kind, only: LKC => LK4
-        logical(LKC)            , intent(out)                   :: rand(:,:)
-        logical(LKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: LKG => LK4
+        logical(LKG)            , intent(out)                   :: rand(:,:)
+        logical(LKG)            , intent(in)                    :: lb, ub
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -16366,9 +16366,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGGLU_D2_LK3
 #endif
-        use pm_kind, only: LKC => LK3
-        logical(LKC)            , intent(out)                   :: rand(:,:)
-        logical(LKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: LKG => LK3
+        logical(LKG)            , intent(out)                   :: rand(:,:)
+        logical(LKG)            , intent(in)                    :: lb, ub
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -16378,9 +16378,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGGLU_D2_LK2
 #endif
-        use pm_kind, only: LKC => LK2
-        logical(LKC)            , intent(out)                   :: rand(:,:)
-        logical(LKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: LKG => LK2
+        logical(LKG)            , intent(out)                   :: rand(:,:)
+        logical(LKG)            , intent(in)                    :: lb, ub
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -16390,9 +16390,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGGLU_D2_LK1
 #endif
-        use pm_kind, only: LKC => LK1
-        logical(LKC)            , intent(out)                   :: rand(:,:)
-        logical(LKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: LKG => LK1
+        logical(LKG)            , intent(out)                   :: rand(:,:)
+        logical(LKG)            , intent(in)                    :: lb, ub
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -16404,9 +16404,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGGLU_D2_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)            , intent(out)                   :: rand(:,:)
-        complex(CKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: CKG => CK5
+        complex(CKG)            , intent(out)                   :: rand(:,:)
+        complex(CKG)            , intent(in)                    :: lb, ub
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -16416,9 +16416,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGGLU_D2_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)            , intent(out)                   :: rand(:,:)
-        complex(CKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: CKG => CK4
+        complex(CKG)            , intent(out)                   :: rand(:,:)
+        complex(CKG)            , intent(in)                    :: lb, ub
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -16428,9 +16428,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGGLU_D2_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)            , intent(out)                   :: rand(:,:)
-        complex(CKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: CKG => CK3
+        complex(CKG)            , intent(out)                   :: rand(:,:)
+        complex(CKG)            , intent(in)                    :: lb, ub
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -16440,9 +16440,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGGLU_D2_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)            , intent(out)                   :: rand(:,:)
-        complex(CKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: CKG => CK2
+        complex(CKG)            , intent(out)                   :: rand(:,:)
+        complex(CKG)            , intent(in)                    :: lb, ub
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -16452,9 +16452,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGGLU_D2_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)            , intent(out)                   :: rand(:,:)
-        complex(CKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: CKG => CK1
+        complex(CKG)            , intent(out)                   :: rand(:,:)
+        complex(CKG)            , intent(in)                    :: lb, ub
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -16466,9 +16466,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGGLU_D2_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)               , intent(out)                   :: rand(:,:)
-        real(RKC)               , intent(in)                    :: lb, ub
+        use pm_kind, only: RKG => RK5
+        real(RKG)               , intent(out)                   :: rand(:,:)
+        real(RKG)               , intent(in)                    :: lb, ub
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -16478,9 +16478,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGGLU_D2_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)               , intent(out)                   :: rand(:,:)
-        real(RKC)               , intent(in)                    :: lb, ub
+        use pm_kind, only: RKG => RK4
+        real(RKG)               , intent(out)                   :: rand(:,:)
+        real(RKG)               , intent(in)                    :: lb, ub
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -16490,9 +16490,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGGLU_D2_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)               , intent(out)                   :: rand(:,:)
-        real(RKC)               , intent(in)                    :: lb, ub
+        use pm_kind, only: RKG => RK3
+        real(RKG)               , intent(out)                   :: rand(:,:)
+        real(RKG)               , intent(in)                    :: lb, ub
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -16502,9 +16502,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGGLU_D2_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)               , intent(out)                   :: rand(:,:)
-        real(RKC)               , intent(in)                    :: lb, ub
+        use pm_kind, only: RKG => RK2
+        real(RKG)               , intent(out)                   :: rand(:,:)
+        real(RKG)               , intent(in)                    :: lb, ub
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -16514,9 +16514,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGGLU_D2_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)               , intent(out)                   :: rand(:,:)
-        real(RKC)               , intent(in)                    :: lb, ub
+        use pm_kind, only: RKG => RK1
+        real(RKG)               , intent(out)                   :: rand(:,:)
+        real(RKG)               , intent(in)                    :: lb, ub
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -16538,8 +16538,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGGDD_D3_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)        , intent(out)                   :: rand(:,:,:)
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)        , intent(out)                   :: rand(:,:,:)
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -16549,8 +16549,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGGDD_D3_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)        , intent(out)                   :: rand(:,:,:)
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)        , intent(out)                   :: rand(:,:,:)
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -16560,8 +16560,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGGDD_D3_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)        , intent(out)                   :: rand(:,:,:)
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)        , intent(out)                   :: rand(:,:,:)
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -16571,8 +16571,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGGDD_D3_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)        , intent(out)                   :: rand(:,:,:)
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)        , intent(out)                   :: rand(:,:,:)
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -16582,8 +16582,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGGDD_D3_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)        , intent(out)                   :: rand(:,:,:)
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)        , intent(out)                   :: rand(:,:,:)
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -16595,8 +16595,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGGDD_D3_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)            , intent(out)                   :: rand(:,:,:)
+        use pm_kind, only: IKG => IK5
+        integer(IKG)            , intent(out)                   :: rand(:,:,:)
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -16606,8 +16606,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGGDD_D3_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)            , intent(out)                   :: rand(:,:,:)
+        use pm_kind, only: IKG => IK4
+        integer(IKG)            , intent(out)                   :: rand(:,:,:)
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -16617,8 +16617,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGGDD_D3_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)            , intent(out)                   :: rand(:,:,:)
+        use pm_kind, only: IKG => IK3
+        integer(IKG)            , intent(out)                   :: rand(:,:,:)
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -16628,8 +16628,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGGDD_D3_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)            , intent(out)                   :: rand(:,:,:)
+        use pm_kind, only: IKG => IK2
+        integer(IKG)            , intent(out)                   :: rand(:,:,:)
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -16639,8 +16639,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGGDD_D3_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)            , intent(out)                   :: rand(:,:,:)
+        use pm_kind, only: IKG => IK1
+        integer(IKG)            , intent(out)                   :: rand(:,:,:)
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -16652,8 +16652,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGGDD_D3_LK5
 #endif
-        use pm_kind, only: LKC => LK5
-        logical(LKC)            , intent(out)                   :: rand(:,:,:)
+        use pm_kind, only: LKG => LK5
+        logical(LKG)            , intent(out)                   :: rand(:,:,:)
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -16663,8 +16663,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGGDD_D3_LK4
 #endif
-        use pm_kind, only: LKC => LK4
-        logical(LKC)            , intent(out)                   :: rand(:,:,:)
+        use pm_kind, only: LKG => LK4
+        logical(LKG)            , intent(out)                   :: rand(:,:,:)
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -16674,8 +16674,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGGDD_D3_LK3
 #endif
-        use pm_kind, only: LKC => LK3
-        logical(LKC)            , intent(out)                   :: rand(:,:,:)
+        use pm_kind, only: LKG => LK3
+        logical(LKG)            , intent(out)                   :: rand(:,:,:)
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -16685,8 +16685,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGGDD_D3_LK2
 #endif
-        use pm_kind, only: LKC => LK2
-        logical(LKC)            , intent(out)                   :: rand(:,:,:)
+        use pm_kind, only: LKG => LK2
+        logical(LKG)            , intent(out)                   :: rand(:,:,:)
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -16696,8 +16696,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGGDD_D3_LK1
 #endif
-        use pm_kind, only: LKC => LK1
-        logical(LKC)            , intent(out)                   :: rand(:,:,:)
+        use pm_kind, only: LKG => LK1
+        logical(LKG)            , intent(out)                   :: rand(:,:,:)
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -16709,8 +16709,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGGDD_D3_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)            , intent(out)                   :: rand(:,:,:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG)            , intent(out)                   :: rand(:,:,:)
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -16720,8 +16720,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGGDD_D3_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)            , intent(out)                   :: rand(:,:,:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG)            , intent(out)                   :: rand(:,:,:)
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -16731,8 +16731,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGGDD_D3_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)            , intent(out)                   :: rand(:,:,:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG)            , intent(out)                   :: rand(:,:,:)
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -16742,8 +16742,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGGDD_D3_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)            , intent(out)                   :: rand(:,:,:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG)            , intent(out)                   :: rand(:,:,:)
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -16753,8 +16753,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGGDD_D3_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)            , intent(out)                   :: rand(:,:,:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG)            , intent(out)                   :: rand(:,:,:)
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -16766,8 +16766,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGGDD_D3_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)               , intent(out)                   :: rand(:,:,:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)               , intent(out)                   :: rand(:,:,:)
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -16777,8 +16777,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGGDD_D3_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)               , intent(out)                   :: rand(:,:,:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)               , intent(out)                   :: rand(:,:,:)
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -16788,8 +16788,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGGDD_D3_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)               , intent(out)                   :: rand(:,:,:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)               , intent(out)                   :: rand(:,:,:)
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -16799,8 +16799,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGGDD_D3_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)               , intent(out)                   :: rand(:,:,:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)               , intent(out)                   :: rand(:,:,:)
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -16810,8 +16810,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGGDD_D3_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)               , intent(out)                   :: rand(:,:,:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)               , intent(out)                   :: rand(:,:,:)
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -16829,9 +16829,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGGLU_D3_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)        , intent(out)                   :: rand(:,:,:)
-        character(*,SKC)        , intent(in)                    :: lb, ub
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)        , intent(out)                   :: rand(:,:,:)
+        character(*,SKG)        , intent(in)                    :: lb, ub
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -16841,9 +16841,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGGLU_D3_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)        , intent(out)                   :: rand(:,:,:)
-        character(*,SKC)        , intent(in)                    :: lb, ub
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)        , intent(out)                   :: rand(:,:,:)
+        character(*,SKG)        , intent(in)                    :: lb, ub
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -16853,9 +16853,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGGLU_D3_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)        , intent(out)                   :: rand(:,:,:)
-        character(*,SKC)        , intent(in)                    :: lb, ub
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)        , intent(out)                   :: rand(:,:,:)
+        character(*,SKG)        , intent(in)                    :: lb, ub
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -16865,9 +16865,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGGLU_D3_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)        , intent(out)                   :: rand(:,:,:)
-        character(*,SKC)        , intent(in)                    :: lb, ub
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)        , intent(out)                   :: rand(:,:,:)
+        character(*,SKG)        , intent(in)                    :: lb, ub
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -16877,9 +16877,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGGLU_D3_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)        , intent(out)                   :: rand(:,:,:)
-        character(*,SKC)        , intent(in)                    :: lb, ub
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)        , intent(out)                   :: rand(:,:,:)
+        character(*,SKG)        , intent(in)                    :: lb, ub
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -16891,9 +16891,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGGLU_D3_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)            , intent(out)                   :: rand(:,:,:)
-        integer(IKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: IKG => IK5
+        integer(IKG)            , intent(out)                   :: rand(:,:,:)
+        integer(IKG)            , intent(in)                    :: lb, ub
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -16903,9 +16903,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGGLU_D3_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)            , intent(out)                   :: rand(:,:,:)
-        integer(IKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: IKG => IK4
+        integer(IKG)            , intent(out)                   :: rand(:,:,:)
+        integer(IKG)            , intent(in)                    :: lb, ub
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -16915,9 +16915,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGGLU_D3_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)            , intent(out)                   :: rand(:,:,:)
-        integer(IKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: IKG => IK3
+        integer(IKG)            , intent(out)                   :: rand(:,:,:)
+        integer(IKG)            , intent(in)                    :: lb, ub
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -16927,9 +16927,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGGLU_D3_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)            , intent(out)                   :: rand(:,:,:)
-        integer(IKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: IKG => IK2
+        integer(IKG)            , intent(out)                   :: rand(:,:,:)
+        integer(IKG)            , intent(in)                    :: lb, ub
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -16939,9 +16939,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGGLU_D3_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)            , intent(out)                   :: rand(:,:,:)
-        integer(IKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: IKG => IK1
+        integer(IKG)            , intent(out)                   :: rand(:,:,:)
+        integer(IKG)            , intent(in)                    :: lb, ub
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -16953,9 +16953,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGGLU_D3_LK5
 #endif
-        use pm_kind, only: LKC => LK5
-        logical(LKC)            , intent(out)                   :: rand(:,:,:)
-        logical(LKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: LKG => LK5
+        logical(LKG)            , intent(out)                   :: rand(:,:,:)
+        logical(LKG)            , intent(in)                    :: lb, ub
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -16965,9 +16965,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGGLU_D3_LK4
 #endif
-        use pm_kind, only: LKC => LK4
-        logical(LKC)            , intent(out)                   :: rand(:,:,:)
-        logical(LKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: LKG => LK4
+        logical(LKG)            , intent(out)                   :: rand(:,:,:)
+        logical(LKG)            , intent(in)                    :: lb, ub
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -16977,9 +16977,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGGLU_D3_LK3
 #endif
-        use pm_kind, only: LKC => LK3
-        logical(LKC)            , intent(out)                   :: rand(:,:,:)
-        logical(LKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: LKG => LK3
+        logical(LKG)            , intent(out)                   :: rand(:,:,:)
+        logical(LKG)            , intent(in)                    :: lb, ub
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -16989,9 +16989,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGGLU_D3_LK2
 #endif
-        use pm_kind, only: LKC => LK2
-        logical(LKC)            , intent(out)                   :: rand(:,:,:)
-        logical(LKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: LKG => LK2
+        logical(LKG)            , intent(out)                   :: rand(:,:,:)
+        logical(LKG)            , intent(in)                    :: lb, ub
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -17001,9 +17001,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGGLU_D3_LK1
 #endif
-        use pm_kind, only: LKC => LK1
-        logical(LKC)            , intent(out)                   :: rand(:,:,:)
-        logical(LKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: LKG => LK1
+        logical(LKG)            , intent(out)                   :: rand(:,:,:)
+        logical(LKG)            , intent(in)                    :: lb, ub
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -17015,9 +17015,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGGLU_D3_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)            , intent(out)                   :: rand(:,:,:)
-        complex(CKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: CKG => CK5
+        complex(CKG)            , intent(out)                   :: rand(:,:,:)
+        complex(CKG)            , intent(in)                    :: lb, ub
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -17027,9 +17027,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGGLU_D3_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)            , intent(out)                   :: rand(:,:,:)
-        complex(CKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: CKG => CK4
+        complex(CKG)            , intent(out)                   :: rand(:,:,:)
+        complex(CKG)            , intent(in)                    :: lb, ub
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -17039,9 +17039,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGGLU_D3_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)            , intent(out)                   :: rand(:,:,:)
-        complex(CKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: CKG => CK3
+        complex(CKG)            , intent(out)                   :: rand(:,:,:)
+        complex(CKG)            , intent(in)                    :: lb, ub
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -17051,9 +17051,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGGLU_D3_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)            , intent(out)                   :: rand(:,:,:)
-        complex(CKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: CKG => CK2
+        complex(CKG)            , intent(out)                   :: rand(:,:,:)
+        complex(CKG)            , intent(in)                    :: lb, ub
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -17063,9 +17063,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGGLU_D3_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)            , intent(out)                   :: rand(:,:,:)
-        complex(CKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: CKG => CK1
+        complex(CKG)            , intent(out)                   :: rand(:,:,:)
+        complex(CKG)            , intent(in)                    :: lb, ub
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -17077,9 +17077,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGGLU_D3_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)               , intent(out)                   :: rand(:,:,:)
-        real(RKC)               , intent(in)                    :: lb, ub
+        use pm_kind, only: RKG => RK5
+        real(RKG)               , intent(out)                   :: rand(:,:,:)
+        real(RKG)               , intent(in)                    :: lb, ub
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -17089,9 +17089,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGGLU_D3_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)               , intent(out)                   :: rand(:,:,:)
-        real(RKC)               , intent(in)                    :: lb, ub
+        use pm_kind, only: RKG => RK4
+        real(RKG)               , intent(out)                   :: rand(:,:,:)
+        real(RKG)               , intent(in)                    :: lb, ub
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -17101,9 +17101,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGGLU_D3_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)               , intent(out)                   :: rand(:,:,:)
-        real(RKC)               , intent(in)                    :: lb, ub
+        use pm_kind, only: RKG => RK3
+        real(RKG)               , intent(out)                   :: rand(:,:,:)
+        real(RKG)               , intent(in)                    :: lb, ub
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -17113,9 +17113,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGGLU_D3_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)               , intent(out)                   :: rand(:,:,:)
-        real(RKC)               , intent(in)                    :: lb, ub
+        use pm_kind, only: RKG => RK2
+        real(RKG)               , intent(out)                   :: rand(:,:,:)
+        real(RKG)               , intent(in)                    :: lb, ub
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -17125,9 +17125,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGGLU_D3_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)               , intent(out)                   :: rand(:,:,:)
-        real(RKC)               , intent(in)                    :: lb, ub
+        use pm_kind, only: RKG => RK1
+        real(RKG)               , intent(out)                   :: rand(:,:,:)
+        real(RKG)               , intent(in)                    :: lb, ub
         type(xoshiro256ssg_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -17155,8 +17155,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGXDD_D0_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)        , intent(out)                   :: rand
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)        , intent(out)                   :: rand
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -17166,8 +17166,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGXDD_D0_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)        , intent(out)                   :: rand
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)        , intent(out)                   :: rand
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -17177,8 +17177,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGXDD_D0_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)        , intent(out)                   :: rand
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)        , intent(out)                   :: rand
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -17188,8 +17188,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGXDD_D0_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)        , intent(out)                   :: rand
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)        , intent(out)                   :: rand
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -17199,8 +17199,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGXDD_D0_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)        , intent(out)                   :: rand
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)        , intent(out)                   :: rand
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -17212,8 +17212,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGXDD_D0_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)            , intent(out)                   :: rand
+        use pm_kind, only: IKG => IK5
+        integer(IKG)            , intent(out)                   :: rand
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -17223,8 +17223,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGXDD_D0_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)            , intent(out)                   :: rand
+        use pm_kind, only: IKG => IK4
+        integer(IKG)            , intent(out)                   :: rand
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -17234,8 +17234,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGXDD_D0_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)            , intent(out)                   :: rand
+        use pm_kind, only: IKG => IK3
+        integer(IKG)            , intent(out)                   :: rand
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -17245,8 +17245,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGXDD_D0_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)            , intent(out)                   :: rand
+        use pm_kind, only: IKG => IK2
+        integer(IKG)            , intent(out)                   :: rand
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -17256,8 +17256,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGXDD_D0_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)            , intent(out)                   :: rand
+        use pm_kind, only: IKG => IK1
+        integer(IKG)            , intent(out)                   :: rand
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -17269,8 +17269,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGXDD_D0_LK5
 #endif
-        use pm_kind, only: LKC => LK5
-        logical(LKC)            , intent(out)                   :: rand
+        use pm_kind, only: LKG => LK5
+        logical(LKG)            , intent(out)                   :: rand
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -17280,8 +17280,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGXDD_D0_LK4
 #endif
-        use pm_kind, only: LKC => LK4
-        logical(LKC)            , intent(out)                   :: rand
+        use pm_kind, only: LKG => LK4
+        logical(LKG)            , intent(out)                   :: rand
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -17291,8 +17291,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGXDD_D0_LK3
 #endif
-        use pm_kind, only: LKC => LK3
-        logical(LKC)            , intent(out)                   :: rand
+        use pm_kind, only: LKG => LK3
+        logical(LKG)            , intent(out)                   :: rand
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -17302,8 +17302,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGXDD_D0_LK2
 #endif
-        use pm_kind, only: LKC => LK2
-        logical(LKC)            , intent(out)                   :: rand
+        use pm_kind, only: LKG => LK2
+        logical(LKG)            , intent(out)                   :: rand
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -17313,8 +17313,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGXDD_D0_LK1
 #endif
-        use pm_kind, only: LKC => LK1
-        logical(LKC)            , intent(out)                   :: rand
+        use pm_kind, only: LKG => LK1
+        logical(LKG)            , intent(out)                   :: rand
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -17326,8 +17326,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGXDD_D0_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)            , intent(out)                   :: rand
+        use pm_kind, only: CKG => CK5
+        complex(CKG)            , intent(out)                   :: rand
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -17337,8 +17337,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGXDD_D0_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)            , intent(out)                   :: rand
+        use pm_kind, only: CKG => CK4
+        complex(CKG)            , intent(out)                   :: rand
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -17348,8 +17348,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGXDD_D0_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)            , intent(out)                   :: rand
+        use pm_kind, only: CKG => CK3
+        complex(CKG)            , intent(out)                   :: rand
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -17359,8 +17359,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGXDD_D0_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)            , intent(out)                   :: rand
+        use pm_kind, only: CKG => CK2
+        complex(CKG)            , intent(out)                   :: rand
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -17370,8 +17370,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGXDD_D0_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)            , intent(out)                   :: rand
+        use pm_kind, only: CKG => CK1
+        complex(CKG)            , intent(out)                   :: rand
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -17383,8 +17383,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGXDD_D0_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)               , intent(out)                   :: rand
+        use pm_kind, only: RKG => RK5
+        real(RKG)               , intent(out)                   :: rand
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -17394,8 +17394,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGXDD_D0_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)               , intent(out)                   :: rand
+        use pm_kind, only: RKG => RK4
+        real(RKG)               , intent(out)                   :: rand
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -17405,8 +17405,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGXDD_D0_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)               , intent(out)                   :: rand
+        use pm_kind, only: RKG => RK3
+        real(RKG)               , intent(out)                   :: rand
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -17416,8 +17416,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGXDD_D0_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)               , intent(out)                   :: rand
+        use pm_kind, only: RKG => RK2
+        real(RKG)               , intent(out)                   :: rand
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -17427,8 +17427,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGXDD_D0_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)               , intent(out)                   :: rand
+        use pm_kind, only: RKG => RK1
+        real(RKG)               , intent(out)                   :: rand
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -17446,9 +17446,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGXLU_D0_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)        , intent(out)                   :: rand
-        character(*,SKC)        , intent(in)                    :: lb, ub
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)        , intent(out)                   :: rand
+        character(*,SKG)        , intent(in)                    :: lb, ub
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -17458,9 +17458,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGXLU_D0_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)        , intent(out)                   :: rand
-        character(*,SKC)        , intent(in)                    :: lb, ub
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)        , intent(out)                   :: rand
+        character(*,SKG)        , intent(in)                    :: lb, ub
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -17470,9 +17470,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGXLU_D0_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)        , intent(out)                   :: rand
-        character(*,SKC)        , intent(in)                    :: lb, ub
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)        , intent(out)                   :: rand
+        character(*,SKG)        , intent(in)                    :: lb, ub
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -17482,9 +17482,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGXLU_D0_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)        , intent(out)                   :: rand
-        character(*,SKC)        , intent(in)                    :: lb, ub
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)        , intent(out)                   :: rand
+        character(*,SKG)        , intent(in)                    :: lb, ub
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -17494,9 +17494,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGXLU_D0_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)        , intent(out)                   :: rand
-        character(*,SKC)        , intent(in)                    :: lb, ub
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)        , intent(out)                   :: rand
+        character(*,SKG)        , intent(in)                    :: lb, ub
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -17508,9 +17508,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGXLU_D0_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)            , intent(out)                   :: rand
-        integer(IKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: IKG => IK5
+        integer(IKG)            , intent(out)                   :: rand
+        integer(IKG)            , intent(in)                    :: lb, ub
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -17520,9 +17520,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGXLU_D0_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)            , intent(out)                   :: rand
-        integer(IKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: IKG => IK4
+        integer(IKG)            , intent(out)                   :: rand
+        integer(IKG)            , intent(in)                    :: lb, ub
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -17532,9 +17532,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGXLU_D0_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)            , intent(out)                   :: rand
-        integer(IKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: IKG => IK3
+        integer(IKG)            , intent(out)                   :: rand
+        integer(IKG)            , intent(in)                    :: lb, ub
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -17544,9 +17544,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGXLU_D0_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)            , intent(out)                   :: rand
-        integer(IKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: IKG => IK2
+        integer(IKG)            , intent(out)                   :: rand
+        integer(IKG)            , intent(in)                    :: lb, ub
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -17556,9 +17556,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGXLU_D0_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)            , intent(out)                   :: rand
-        integer(IKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: IKG => IK1
+        integer(IKG)            , intent(out)                   :: rand
+        integer(IKG)            , intent(in)                    :: lb, ub
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -17570,9 +17570,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGXLU_D0_LK5
 #endif
-        use pm_kind, only: LKC => LK5
-        logical(LKC)            , intent(out)                   :: rand
-        logical(LKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: LKG => LK5
+        logical(LKG)            , intent(out)                   :: rand
+        logical(LKG)            , intent(in)                    :: lb, ub
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -17582,9 +17582,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGXLU_D0_LK4
 #endif
-        use pm_kind, only: LKC => LK4
-        logical(LKC)            , intent(out)                   :: rand
-        logical(LKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: LKG => LK4
+        logical(LKG)            , intent(out)                   :: rand
+        logical(LKG)            , intent(in)                    :: lb, ub
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -17594,9 +17594,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGXLU_D0_LK3
 #endif
-        use pm_kind, only: LKC => LK3
-        logical(LKC)            , intent(out)                   :: rand
-        logical(LKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: LKG => LK3
+        logical(LKG)            , intent(out)                   :: rand
+        logical(LKG)            , intent(in)                    :: lb, ub
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -17606,9 +17606,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGXLU_D0_LK2
 #endif
-        use pm_kind, only: LKC => LK2
-        logical(LKC)            , intent(out)                   :: rand
-        logical(LKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: LKG => LK2
+        logical(LKG)            , intent(out)                   :: rand
+        logical(LKG)            , intent(in)                    :: lb, ub
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -17618,9 +17618,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGXLU_D0_LK1
 #endif
-        use pm_kind, only: LKC => LK1
-        logical(LKC)            , intent(out)                   :: rand
-        logical(LKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: LKG => LK1
+        logical(LKG)            , intent(out)                   :: rand
+        logical(LKG)            , intent(in)                    :: lb, ub
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -17632,9 +17632,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGXLU_D0_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)            , intent(out)                   :: rand
-        complex(CKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: CKG => CK5
+        complex(CKG)            , intent(out)                   :: rand
+        complex(CKG)            , intent(in)                    :: lb, ub
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -17644,9 +17644,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGXLU_D0_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)            , intent(out)                   :: rand
-        complex(CKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: CKG => CK4
+        complex(CKG)            , intent(out)                   :: rand
+        complex(CKG)            , intent(in)                    :: lb, ub
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -17656,9 +17656,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGXLU_D0_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)            , intent(out)                   :: rand
-        complex(CKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: CKG => CK3
+        complex(CKG)            , intent(out)                   :: rand
+        complex(CKG)            , intent(in)                    :: lb, ub
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -17668,9 +17668,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGXLU_D0_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)            , intent(out)                   :: rand
-        complex(CKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: CKG => CK2
+        complex(CKG)            , intent(out)                   :: rand
+        complex(CKG)            , intent(in)                    :: lb, ub
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -17680,9 +17680,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGXLU_D0_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)            , intent(out)                   :: rand
-        complex(CKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: CKG => CK1
+        complex(CKG)            , intent(out)                   :: rand
+        complex(CKG)            , intent(in)                    :: lb, ub
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -17694,9 +17694,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGXLU_D0_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)               , intent(out)                   :: rand
-        real(RKC)               , intent(in)                    :: lb, ub
+        use pm_kind, only: RKG => RK5
+        real(RKG)               , intent(out)                   :: rand
+        real(RKG)               , intent(in)                    :: lb, ub
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -17706,9 +17706,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGXLU_D0_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)               , intent(out)                   :: rand
-        real(RKC)               , intent(in)                    :: lb, ub
+        use pm_kind, only: RKG => RK4
+        real(RKG)               , intent(out)                   :: rand
+        real(RKG)               , intent(in)                    :: lb, ub
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -17718,9 +17718,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGXLU_D0_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)               , intent(out)                   :: rand
-        real(RKC)               , intent(in)                    :: lb, ub
+        use pm_kind, only: RKG => RK3
+        real(RKG)               , intent(out)                   :: rand
+        real(RKG)               , intent(in)                    :: lb, ub
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -17730,9 +17730,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGXLU_D0_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)               , intent(out)                   :: rand
-        real(RKC)               , intent(in)                    :: lb, ub
+        use pm_kind, only: RKG => RK2
+        real(RKG)               , intent(out)                   :: rand
+        real(RKG)               , intent(in)                    :: lb, ub
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -17742,9 +17742,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGXLU_D0_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)               , intent(out)                   :: rand
-        real(RKC)               , intent(in)                    :: lb, ub
+        use pm_kind, only: RKG => RK1
+        real(RKG)               , intent(out)                   :: rand
+        real(RKG)               , intent(in)                    :: lb, ub
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -17766,8 +17766,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGXDD_D1_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)        , intent(out)                   :: rand(:)
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)        , intent(out)                   :: rand(:)
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -17777,8 +17777,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGXDD_D1_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)        , intent(out)                   :: rand(:)
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)        , intent(out)                   :: rand(:)
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -17788,8 +17788,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGXDD_D1_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)        , intent(out)                   :: rand(:)
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)        , intent(out)                   :: rand(:)
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -17799,8 +17799,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGXDD_D1_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)        , intent(out)                   :: rand(:)
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)        , intent(out)                   :: rand(:)
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -17810,8 +17810,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGXDD_D1_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)        , intent(out)                   :: rand(:)
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)        , intent(out)                   :: rand(:)
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -17823,8 +17823,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGXDD_D1_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)            , intent(out)                   :: rand(:)
+        use pm_kind, only: IKG => IK5
+        integer(IKG)            , intent(out)                   :: rand(:)
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -17834,8 +17834,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGXDD_D1_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)            , intent(out)                   :: rand(:)
+        use pm_kind, only: IKG => IK4
+        integer(IKG)            , intent(out)                   :: rand(:)
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -17845,8 +17845,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGXDD_D1_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)            , intent(out)                   :: rand(:)
+        use pm_kind, only: IKG => IK3
+        integer(IKG)            , intent(out)                   :: rand(:)
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -17856,8 +17856,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGXDD_D1_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)            , intent(out)                   :: rand(:)
+        use pm_kind, only: IKG => IK2
+        integer(IKG)            , intent(out)                   :: rand(:)
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -17867,8 +17867,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGXDD_D1_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)            , intent(out)                   :: rand(:)
+        use pm_kind, only: IKG => IK1
+        integer(IKG)            , intent(out)                   :: rand(:)
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -17880,8 +17880,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGXDD_D1_LK5
 #endif
-        use pm_kind, only: LKC => LK5
-        logical(LKC)            , intent(out)                   :: rand(:)
+        use pm_kind, only: LKG => LK5
+        logical(LKG)            , intent(out)                   :: rand(:)
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -17891,8 +17891,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGXDD_D1_LK4
 #endif
-        use pm_kind, only: LKC => LK4
-        logical(LKC)            , intent(out)                   :: rand(:)
+        use pm_kind, only: LKG => LK4
+        logical(LKG)            , intent(out)                   :: rand(:)
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -17902,8 +17902,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGXDD_D1_LK3
 #endif
-        use pm_kind, only: LKC => LK3
-        logical(LKC)            , intent(out)                   :: rand(:)
+        use pm_kind, only: LKG => LK3
+        logical(LKG)            , intent(out)                   :: rand(:)
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -17913,8 +17913,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGXDD_D1_LK2
 #endif
-        use pm_kind, only: LKC => LK2
-        logical(LKC)            , intent(out)                   :: rand(:)
+        use pm_kind, only: LKG => LK2
+        logical(LKG)            , intent(out)                   :: rand(:)
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -17924,8 +17924,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGXDD_D1_LK1
 #endif
-        use pm_kind, only: LKC => LK1
-        logical(LKC)            , intent(out)                   :: rand(:)
+        use pm_kind, only: LKG => LK1
+        logical(LKG)            , intent(out)                   :: rand(:)
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -17937,8 +17937,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGXDD_D1_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)            , intent(out)                   :: rand(:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG)            , intent(out)                   :: rand(:)
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -17948,8 +17948,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGXDD_D1_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)            , intent(out)                   :: rand(:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG)            , intent(out)                   :: rand(:)
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -17959,8 +17959,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGXDD_D1_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)            , intent(out)                   :: rand(:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG)            , intent(out)                   :: rand(:)
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -17970,8 +17970,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGXDD_D1_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)            , intent(out)                   :: rand(:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG)            , intent(out)                   :: rand(:)
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -17981,8 +17981,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGXDD_D1_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)            , intent(out)                   :: rand(:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG)            , intent(out)                   :: rand(:)
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -17994,8 +17994,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGXDD_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)               , intent(out)                   :: rand(:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)               , intent(out)                   :: rand(:)
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -18005,8 +18005,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGXDD_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)               , intent(out)                   :: rand(:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)               , intent(out)                   :: rand(:)
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -18016,8 +18016,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGXDD_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)               , intent(out)                   :: rand(:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)               , intent(out)                   :: rand(:)
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -18027,8 +18027,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGXDD_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)               , intent(out)                   :: rand(:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)               , intent(out)                   :: rand(:)
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -18038,8 +18038,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGXDD_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)               , intent(out)                   :: rand(:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)               , intent(out)                   :: rand(:)
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -18057,9 +18057,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGXLU_D1_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)        , intent(out)                   :: rand(:)
-        character(*,SKC)        , intent(in)                    :: lb, ub
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)        , intent(out)                   :: rand(:)
+        character(*,SKG)        , intent(in)                    :: lb, ub
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -18069,9 +18069,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGXLU_D1_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)        , intent(out)                   :: rand(:)
-        character(*,SKC)        , intent(in)                    :: lb, ub
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)        , intent(out)                   :: rand(:)
+        character(*,SKG)        , intent(in)                    :: lb, ub
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -18081,9 +18081,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGXLU_D1_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)        , intent(out)                   :: rand(:)
-        character(*,SKC)        , intent(in)                    :: lb, ub
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)        , intent(out)                   :: rand(:)
+        character(*,SKG)        , intent(in)                    :: lb, ub
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -18093,9 +18093,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGXLU_D1_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)        , intent(out)                   :: rand(:)
-        character(*,SKC)        , intent(in)                    :: lb, ub
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)        , intent(out)                   :: rand(:)
+        character(*,SKG)        , intent(in)                    :: lb, ub
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -18105,9 +18105,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGXLU_D1_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)        , intent(out)                   :: rand(:)
-        character(*,SKC)        , intent(in)                    :: lb, ub
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)        , intent(out)                   :: rand(:)
+        character(*,SKG)        , intent(in)                    :: lb, ub
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -18119,9 +18119,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGXLU_D1_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)            , intent(out)                   :: rand(:)
-        integer(IKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: IKG => IK5
+        integer(IKG)            , intent(out)                   :: rand(:)
+        integer(IKG)            , intent(in)                    :: lb, ub
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -18131,9 +18131,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGXLU_D1_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)            , intent(out)                   :: rand(:)
-        integer(IKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: IKG => IK4
+        integer(IKG)            , intent(out)                   :: rand(:)
+        integer(IKG)            , intent(in)                    :: lb, ub
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -18143,9 +18143,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGXLU_D1_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)            , intent(out)                   :: rand(:)
-        integer(IKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: IKG => IK3
+        integer(IKG)            , intent(out)                   :: rand(:)
+        integer(IKG)            , intent(in)                    :: lb, ub
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -18155,9 +18155,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGXLU_D1_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)            , intent(out)                   :: rand(:)
-        integer(IKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: IKG => IK2
+        integer(IKG)            , intent(out)                   :: rand(:)
+        integer(IKG)            , intent(in)                    :: lb, ub
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -18167,9 +18167,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGXLU_D1_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)            , intent(out)                   :: rand(:)
-        integer(IKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: IKG => IK1
+        integer(IKG)            , intent(out)                   :: rand(:)
+        integer(IKG)            , intent(in)                    :: lb, ub
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -18181,9 +18181,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGXLU_D1_LK5
 #endif
-        use pm_kind, only: LKC => LK5
-        logical(LKC)            , intent(out)                   :: rand(:)
-        logical(LKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: LKG => LK5
+        logical(LKG)            , intent(out)                   :: rand(:)
+        logical(LKG)            , intent(in)                    :: lb, ub
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -18193,9 +18193,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGXLU_D1_LK4
 #endif
-        use pm_kind, only: LKC => LK4
-        logical(LKC)            , intent(out)                   :: rand(:)
-        logical(LKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: LKG => LK4
+        logical(LKG)            , intent(out)                   :: rand(:)
+        logical(LKG)            , intent(in)                    :: lb, ub
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -18205,9 +18205,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGXLU_D1_LK3
 #endif
-        use pm_kind, only: LKC => LK3
-        logical(LKC)            , intent(out)                   :: rand(:)
-        logical(LKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: LKG => LK3
+        logical(LKG)            , intent(out)                   :: rand(:)
+        logical(LKG)            , intent(in)                    :: lb, ub
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -18217,9 +18217,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGXLU_D1_LK2
 #endif
-        use pm_kind, only: LKC => LK2
-        logical(LKC)            , intent(out)                   :: rand(:)
-        logical(LKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: LKG => LK2
+        logical(LKG)            , intent(out)                   :: rand(:)
+        logical(LKG)            , intent(in)                    :: lb, ub
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -18229,9 +18229,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGXLU_D1_LK1
 #endif
-        use pm_kind, only: LKC => LK1
-        logical(LKC)            , intent(out)                   :: rand(:)
-        logical(LKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: LKG => LK1
+        logical(LKG)            , intent(out)                   :: rand(:)
+        logical(LKG)            , intent(in)                    :: lb, ub
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -18243,9 +18243,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGXLU_D1_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)            , intent(out)                   :: rand(:)
-        complex(CKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: CKG => CK5
+        complex(CKG)            , intent(out)                   :: rand(:)
+        complex(CKG)            , intent(in)                    :: lb, ub
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -18255,9 +18255,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGXLU_D1_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)            , intent(out)                   :: rand(:)
-        complex(CKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: CKG => CK4
+        complex(CKG)            , intent(out)                   :: rand(:)
+        complex(CKG)            , intent(in)                    :: lb, ub
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -18267,9 +18267,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGXLU_D1_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)            , intent(out)                   :: rand(:)
-        complex(CKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: CKG => CK3
+        complex(CKG)            , intent(out)                   :: rand(:)
+        complex(CKG)            , intent(in)                    :: lb, ub
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -18279,9 +18279,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGXLU_D1_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)            , intent(out)                   :: rand(:)
-        complex(CKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: CKG => CK2
+        complex(CKG)            , intent(out)                   :: rand(:)
+        complex(CKG)            , intent(in)                    :: lb, ub
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -18291,9 +18291,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGXLU_D1_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)            , intent(out)                   :: rand(:)
-        complex(CKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: CKG => CK1
+        complex(CKG)            , intent(out)                   :: rand(:)
+        complex(CKG)            , intent(in)                    :: lb, ub
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -18305,9 +18305,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGXLU_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)               , intent(out)                   :: rand(:)
-        real(RKC)               , intent(in)                    :: lb, ub
+        use pm_kind, only: RKG => RK5
+        real(RKG)               , intent(out)                   :: rand(:)
+        real(RKG)               , intent(in)                    :: lb, ub
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -18317,9 +18317,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGXLU_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)               , intent(out)                   :: rand(:)
-        real(RKC)               , intent(in)                    :: lb, ub
+        use pm_kind, only: RKG => RK4
+        real(RKG)               , intent(out)                   :: rand(:)
+        real(RKG)               , intent(in)                    :: lb, ub
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -18329,9 +18329,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGXLU_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)               , intent(out)                   :: rand(:)
-        real(RKC)               , intent(in)                    :: lb, ub
+        use pm_kind, only: RKG => RK3
+        real(RKG)               , intent(out)                   :: rand(:)
+        real(RKG)               , intent(in)                    :: lb, ub
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -18341,9 +18341,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGXLU_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)               , intent(out)                   :: rand(:)
-        real(RKC)               , intent(in)                    :: lb, ub
+        use pm_kind, only: RKG => RK2
+        real(RKG)               , intent(out)                   :: rand(:)
+        real(RKG)               , intent(in)                    :: lb, ub
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -18353,9 +18353,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGXLU_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)               , intent(out)                   :: rand(:)
-        real(RKC)               , intent(in)                    :: lb, ub
+        use pm_kind, only: RKG => RK1
+        real(RKG)               , intent(out)                   :: rand(:)
+        real(RKG)               , intent(in)                    :: lb, ub
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -18377,8 +18377,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGXDD_D2_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)        , intent(out)                   :: rand(:,:)
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)        , intent(out)                   :: rand(:,:)
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -18388,8 +18388,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGXDD_D2_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)        , intent(out)                   :: rand(:,:)
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)        , intent(out)                   :: rand(:,:)
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -18399,8 +18399,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGXDD_D2_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)        , intent(out)                   :: rand(:,:)
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)        , intent(out)                   :: rand(:,:)
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -18410,8 +18410,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGXDD_D2_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)        , intent(out)                   :: rand(:,:)
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)        , intent(out)                   :: rand(:,:)
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -18421,8 +18421,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGXDD_D2_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)        , intent(out)                   :: rand(:,:)
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)        , intent(out)                   :: rand(:,:)
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -18434,8 +18434,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGXDD_D2_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)            , intent(out)                   :: rand(:,:)
+        use pm_kind, only: IKG => IK5
+        integer(IKG)            , intent(out)                   :: rand(:,:)
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -18445,8 +18445,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGXDD_D2_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)            , intent(out)                   :: rand(:,:)
+        use pm_kind, only: IKG => IK4
+        integer(IKG)            , intent(out)                   :: rand(:,:)
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -18456,8 +18456,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGXDD_D2_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)            , intent(out)                   :: rand(:,:)
+        use pm_kind, only: IKG => IK3
+        integer(IKG)            , intent(out)                   :: rand(:,:)
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -18467,8 +18467,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGXDD_D2_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)            , intent(out)                   :: rand(:,:)
+        use pm_kind, only: IKG => IK2
+        integer(IKG)            , intent(out)                   :: rand(:,:)
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -18478,8 +18478,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGXDD_D2_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)            , intent(out)                   :: rand(:,:)
+        use pm_kind, only: IKG => IK1
+        integer(IKG)            , intent(out)                   :: rand(:,:)
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -18491,8 +18491,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGXDD_D2_LK5
 #endif
-        use pm_kind, only: LKC => LK5
-        logical(LKC)            , intent(out)                   :: rand(:,:)
+        use pm_kind, only: LKG => LK5
+        logical(LKG)            , intent(out)                   :: rand(:,:)
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -18502,8 +18502,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGXDD_D2_LK4
 #endif
-        use pm_kind, only: LKC => LK4
-        logical(LKC)            , intent(out)                   :: rand(:,:)
+        use pm_kind, only: LKG => LK4
+        logical(LKG)            , intent(out)                   :: rand(:,:)
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -18513,8 +18513,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGXDD_D2_LK3
 #endif
-        use pm_kind, only: LKC => LK3
-        logical(LKC)            , intent(out)                   :: rand(:,:)
+        use pm_kind, only: LKG => LK3
+        logical(LKG)            , intent(out)                   :: rand(:,:)
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -18524,8 +18524,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGXDD_D2_LK2
 #endif
-        use pm_kind, only: LKC => LK2
-        logical(LKC)            , intent(out)                   :: rand(:,:)
+        use pm_kind, only: LKG => LK2
+        logical(LKG)            , intent(out)                   :: rand(:,:)
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -18535,8 +18535,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGXDD_D2_LK1
 #endif
-        use pm_kind, only: LKC => LK1
-        logical(LKC)            , intent(out)                   :: rand(:,:)
+        use pm_kind, only: LKG => LK1
+        logical(LKG)            , intent(out)                   :: rand(:,:)
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -18548,8 +18548,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGXDD_D2_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)            , intent(out)                   :: rand(:,:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG)            , intent(out)                   :: rand(:,:)
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -18559,8 +18559,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGXDD_D2_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)            , intent(out)                   :: rand(:,:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG)            , intent(out)                   :: rand(:,:)
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -18570,8 +18570,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGXDD_D2_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)            , intent(out)                   :: rand(:,:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG)            , intent(out)                   :: rand(:,:)
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -18581,8 +18581,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGXDD_D2_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)            , intent(out)                   :: rand(:,:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG)            , intent(out)                   :: rand(:,:)
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -18592,8 +18592,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGXDD_D2_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)            , intent(out)                   :: rand(:,:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG)            , intent(out)                   :: rand(:,:)
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -18605,8 +18605,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGXDD_D2_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)               , intent(out)                   :: rand(:,:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)               , intent(out)                   :: rand(:,:)
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -18616,8 +18616,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGXDD_D2_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)               , intent(out)                   :: rand(:,:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)               , intent(out)                   :: rand(:,:)
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -18627,8 +18627,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGXDD_D2_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)               , intent(out)                   :: rand(:,:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)               , intent(out)                   :: rand(:,:)
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -18638,8 +18638,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGXDD_D2_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)               , intent(out)                   :: rand(:,:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)               , intent(out)                   :: rand(:,:)
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -18649,8 +18649,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGXDD_D2_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)               , intent(out)                   :: rand(:,:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)               , intent(out)                   :: rand(:,:)
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -18668,9 +18668,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGXLU_D2_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)        , intent(out)                   :: rand(:,:)
-        character(*,SKC)        , intent(in)                    :: lb, ub
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)        , intent(out)                   :: rand(:,:)
+        character(*,SKG)        , intent(in)                    :: lb, ub
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -18680,9 +18680,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGXLU_D2_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)        , intent(out)                   :: rand(:,:)
-        character(*,SKC)        , intent(in)                    :: lb, ub
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)        , intent(out)                   :: rand(:,:)
+        character(*,SKG)        , intent(in)                    :: lb, ub
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -18692,9 +18692,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGXLU_D2_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)        , intent(out)                   :: rand(:,:)
-        character(*,SKC)        , intent(in)                    :: lb, ub
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)        , intent(out)                   :: rand(:,:)
+        character(*,SKG)        , intent(in)                    :: lb, ub
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -18704,9 +18704,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGXLU_D2_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)        , intent(out)                   :: rand(:,:)
-        character(*,SKC)        , intent(in)                    :: lb, ub
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)        , intent(out)                   :: rand(:,:)
+        character(*,SKG)        , intent(in)                    :: lb, ub
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -18716,9 +18716,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGXLU_D2_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)        , intent(out)                   :: rand(:,:)
-        character(*,SKC)        , intent(in)                    :: lb, ub
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)        , intent(out)                   :: rand(:,:)
+        character(*,SKG)        , intent(in)                    :: lb, ub
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -18730,9 +18730,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGXLU_D2_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)            , intent(out)                   :: rand(:,:)
-        integer(IKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: IKG => IK5
+        integer(IKG)            , intent(out)                   :: rand(:,:)
+        integer(IKG)            , intent(in)                    :: lb, ub
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -18742,9 +18742,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGXLU_D2_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)            , intent(out)                   :: rand(:,:)
-        integer(IKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: IKG => IK4
+        integer(IKG)            , intent(out)                   :: rand(:,:)
+        integer(IKG)            , intent(in)                    :: lb, ub
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -18754,9 +18754,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGXLU_D2_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)            , intent(out)                   :: rand(:,:)
-        integer(IKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: IKG => IK3
+        integer(IKG)            , intent(out)                   :: rand(:,:)
+        integer(IKG)            , intent(in)                    :: lb, ub
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -18766,9 +18766,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGXLU_D2_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)            , intent(out)                   :: rand(:,:)
-        integer(IKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: IKG => IK2
+        integer(IKG)            , intent(out)                   :: rand(:,:)
+        integer(IKG)            , intent(in)                    :: lb, ub
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -18778,9 +18778,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGXLU_D2_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)            , intent(out)                   :: rand(:,:)
-        integer(IKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: IKG => IK1
+        integer(IKG)            , intent(out)                   :: rand(:,:)
+        integer(IKG)            , intent(in)                    :: lb, ub
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -18792,9 +18792,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGXLU_D2_LK5
 #endif
-        use pm_kind, only: LKC => LK5
-        logical(LKC)            , intent(out)                   :: rand(:,:)
-        logical(LKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: LKG => LK5
+        logical(LKG)            , intent(out)                   :: rand(:,:)
+        logical(LKG)            , intent(in)                    :: lb, ub
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -18804,9 +18804,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGXLU_D2_LK4
 #endif
-        use pm_kind, only: LKC => LK4
-        logical(LKC)            , intent(out)                   :: rand(:,:)
-        logical(LKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: LKG => LK4
+        logical(LKG)            , intent(out)                   :: rand(:,:)
+        logical(LKG)            , intent(in)                    :: lb, ub
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -18816,9 +18816,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGXLU_D2_LK3
 #endif
-        use pm_kind, only: LKC => LK3
-        logical(LKC)            , intent(out)                   :: rand(:,:)
-        logical(LKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: LKG => LK3
+        logical(LKG)            , intent(out)                   :: rand(:,:)
+        logical(LKG)            , intent(in)                    :: lb, ub
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -18828,9 +18828,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGXLU_D2_LK2
 #endif
-        use pm_kind, only: LKC => LK2
-        logical(LKC)            , intent(out)                   :: rand(:,:)
-        logical(LKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: LKG => LK2
+        logical(LKG)            , intent(out)                   :: rand(:,:)
+        logical(LKG)            , intent(in)                    :: lb, ub
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -18840,9 +18840,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGXLU_D2_LK1
 #endif
-        use pm_kind, only: LKC => LK1
-        logical(LKC)            , intent(out)                   :: rand(:,:)
-        logical(LKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: LKG => LK1
+        logical(LKG)            , intent(out)                   :: rand(:,:)
+        logical(LKG)            , intent(in)                    :: lb, ub
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -18854,9 +18854,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGXLU_D2_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)            , intent(out)                   :: rand(:,:)
-        complex(CKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: CKG => CK5
+        complex(CKG)            , intent(out)                   :: rand(:,:)
+        complex(CKG)            , intent(in)                    :: lb, ub
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -18866,9 +18866,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGXLU_D2_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)            , intent(out)                   :: rand(:,:)
-        complex(CKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: CKG => CK4
+        complex(CKG)            , intent(out)                   :: rand(:,:)
+        complex(CKG)            , intent(in)                    :: lb, ub
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -18878,9 +18878,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGXLU_D2_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)            , intent(out)                   :: rand(:,:)
-        complex(CKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: CKG => CK3
+        complex(CKG)            , intent(out)                   :: rand(:,:)
+        complex(CKG)            , intent(in)                    :: lb, ub
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -18890,9 +18890,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGXLU_D2_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)            , intent(out)                   :: rand(:,:)
-        complex(CKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: CKG => CK2
+        complex(CKG)            , intent(out)                   :: rand(:,:)
+        complex(CKG)            , intent(in)                    :: lb, ub
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -18902,9 +18902,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGXLU_D2_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)            , intent(out)                   :: rand(:,:)
-        complex(CKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: CKG => CK1
+        complex(CKG)            , intent(out)                   :: rand(:,:)
+        complex(CKG)            , intent(in)                    :: lb, ub
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -18916,9 +18916,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGXLU_D2_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)               , intent(out)                   :: rand(:,:)
-        real(RKC)               , intent(in)                    :: lb, ub
+        use pm_kind, only: RKG => RK5
+        real(RKG)               , intent(out)                   :: rand(:,:)
+        real(RKG)               , intent(in)                    :: lb, ub
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -18928,9 +18928,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGXLU_D2_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)               , intent(out)                   :: rand(:,:)
-        real(RKC)               , intent(in)                    :: lb, ub
+        use pm_kind, only: RKG => RK4
+        real(RKG)               , intent(out)                   :: rand(:,:)
+        real(RKG)               , intent(in)                    :: lb, ub
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -18940,9 +18940,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGXLU_D2_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)               , intent(out)                   :: rand(:,:)
-        real(RKC)               , intent(in)                    :: lb, ub
+        use pm_kind, only: RKG => RK3
+        real(RKG)               , intent(out)                   :: rand(:,:)
+        real(RKG)               , intent(in)                    :: lb, ub
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -18952,9 +18952,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGXLU_D2_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)               , intent(out)                   :: rand(:,:)
-        real(RKC)               , intent(in)                    :: lb, ub
+        use pm_kind, only: RKG => RK2
+        real(RKG)               , intent(out)                   :: rand(:,:)
+        real(RKG)               , intent(in)                    :: lb, ub
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -18964,9 +18964,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGXLU_D2_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)               , intent(out)                   :: rand(:,:)
-        real(RKC)               , intent(in)                    :: lb, ub
+        use pm_kind, only: RKG => RK1
+        real(RKG)               , intent(out)                   :: rand(:,:)
+        real(RKG)               , intent(in)                    :: lb, ub
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -18988,8 +18988,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGXDD_D3_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)        , intent(out)                   :: rand(:,:,:)
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)        , intent(out)                   :: rand(:,:,:)
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -18999,8 +18999,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGXDD_D3_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)        , intent(out)                   :: rand(:,:,:)
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)        , intent(out)                   :: rand(:,:,:)
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -19010,8 +19010,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGXDD_D3_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)        , intent(out)                   :: rand(:,:,:)
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)        , intent(out)                   :: rand(:,:,:)
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -19021,8 +19021,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGXDD_D3_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)        , intent(out)                   :: rand(:,:,:)
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)        , intent(out)                   :: rand(:,:,:)
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -19032,8 +19032,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGXDD_D3_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)        , intent(out)                   :: rand(:,:,:)
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)        , intent(out)                   :: rand(:,:,:)
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -19045,8 +19045,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGXDD_D3_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)            , intent(out)                   :: rand(:,:,:)
+        use pm_kind, only: IKG => IK5
+        integer(IKG)            , intent(out)                   :: rand(:,:,:)
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -19056,8 +19056,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGXDD_D3_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)            , intent(out)                   :: rand(:,:,:)
+        use pm_kind, only: IKG => IK4
+        integer(IKG)            , intent(out)                   :: rand(:,:,:)
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -19067,8 +19067,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGXDD_D3_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)            , intent(out)                   :: rand(:,:,:)
+        use pm_kind, only: IKG => IK3
+        integer(IKG)            , intent(out)                   :: rand(:,:,:)
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -19078,8 +19078,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGXDD_D3_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)            , intent(out)                   :: rand(:,:,:)
+        use pm_kind, only: IKG => IK2
+        integer(IKG)            , intent(out)                   :: rand(:,:,:)
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -19089,8 +19089,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGXDD_D3_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)            , intent(out)                   :: rand(:,:,:)
+        use pm_kind, only: IKG => IK1
+        integer(IKG)            , intent(out)                   :: rand(:,:,:)
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -19102,8 +19102,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGXDD_D3_LK5
 #endif
-        use pm_kind, only: LKC => LK5
-        logical(LKC)            , intent(out)                   :: rand(:,:,:)
+        use pm_kind, only: LKG => LK5
+        logical(LKG)            , intent(out)                   :: rand(:,:,:)
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -19113,8 +19113,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGXDD_D3_LK4
 #endif
-        use pm_kind, only: LKC => LK4
-        logical(LKC)            , intent(out)                   :: rand(:,:,:)
+        use pm_kind, only: LKG => LK4
+        logical(LKG)            , intent(out)                   :: rand(:,:,:)
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -19124,8 +19124,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGXDD_D3_LK3
 #endif
-        use pm_kind, only: LKC => LK3
-        logical(LKC)            , intent(out)                   :: rand(:,:,:)
+        use pm_kind, only: LKG => LK3
+        logical(LKG)            , intent(out)                   :: rand(:,:,:)
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -19135,8 +19135,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGXDD_D3_LK2
 #endif
-        use pm_kind, only: LKC => LK2
-        logical(LKC)            , intent(out)                   :: rand(:,:,:)
+        use pm_kind, only: LKG => LK2
+        logical(LKG)            , intent(out)                   :: rand(:,:,:)
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -19146,8 +19146,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGXDD_D3_LK1
 #endif
-        use pm_kind, only: LKC => LK1
-        logical(LKC)            , intent(out)                   :: rand(:,:,:)
+        use pm_kind, only: LKG => LK1
+        logical(LKG)            , intent(out)                   :: rand(:,:,:)
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -19159,8 +19159,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGXDD_D3_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)            , intent(out)                   :: rand(:,:,:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG)            , intent(out)                   :: rand(:,:,:)
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -19170,8 +19170,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGXDD_D3_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)            , intent(out)                   :: rand(:,:,:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG)            , intent(out)                   :: rand(:,:,:)
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -19181,8 +19181,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGXDD_D3_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)            , intent(out)                   :: rand(:,:,:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG)            , intent(out)                   :: rand(:,:,:)
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -19192,8 +19192,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGXDD_D3_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)            , intent(out)                   :: rand(:,:,:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG)            , intent(out)                   :: rand(:,:,:)
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -19203,8 +19203,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGXDD_D3_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)            , intent(out)                   :: rand(:,:,:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG)            , intent(out)                   :: rand(:,:,:)
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -19216,8 +19216,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGXDD_D3_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)               , intent(out)                   :: rand(:,:,:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)               , intent(out)                   :: rand(:,:,:)
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -19227,8 +19227,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGXDD_D3_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)               , intent(out)                   :: rand(:,:,:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)               , intent(out)                   :: rand(:,:,:)
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -19238,8 +19238,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGXDD_D3_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)               , intent(out)                   :: rand(:,:,:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)               , intent(out)                   :: rand(:,:,:)
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -19249,8 +19249,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGXDD_D3_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)               , intent(out)                   :: rand(:,:,:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)               , intent(out)                   :: rand(:,:,:)
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -19260,8 +19260,8 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGXDD_D3_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)               , intent(out)                   :: rand(:,:,:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)               , intent(out)                   :: rand(:,:,:)
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -19279,9 +19279,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGXLU_D3_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)        , intent(out)                   :: rand(:,:,:)
-        character(*,SKC)        , intent(in)                    :: lb, ub
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)        , intent(out)                   :: rand(:,:,:)
+        character(*,SKG)        , intent(in)                    :: lb, ub
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -19291,9 +19291,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGXLU_D3_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)        , intent(out)                   :: rand(:,:,:)
-        character(*,SKC)        , intent(in)                    :: lb, ub
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)        , intent(out)                   :: rand(:,:,:)
+        character(*,SKG)        , intent(in)                    :: lb, ub
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -19303,9 +19303,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGXLU_D3_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)        , intent(out)                   :: rand(:,:,:)
-        character(*,SKC)        , intent(in)                    :: lb, ub
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)        , intent(out)                   :: rand(:,:,:)
+        character(*,SKG)        , intent(in)                    :: lb, ub
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -19315,9 +19315,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGXLU_D3_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)        , intent(out)                   :: rand(:,:,:)
-        character(*,SKC)        , intent(in)                    :: lb, ub
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)        , intent(out)                   :: rand(:,:,:)
+        character(*,SKG)        , intent(in)                    :: lb, ub
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -19327,9 +19327,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGXLU_D3_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)        , intent(out)                   :: rand(:,:,:)
-        character(*,SKC)        , intent(in)                    :: lb, ub
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)        , intent(out)                   :: rand(:,:,:)
+        character(*,SKG)        , intent(in)                    :: lb, ub
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -19341,9 +19341,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGXLU_D3_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)            , intent(out)                   :: rand(:,:,:)
-        integer(IKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: IKG => IK5
+        integer(IKG)            , intent(out)                   :: rand(:,:,:)
+        integer(IKG)            , intent(in)                    :: lb, ub
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -19353,9 +19353,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGXLU_D3_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)            , intent(out)                   :: rand(:,:,:)
-        integer(IKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: IKG => IK4
+        integer(IKG)            , intent(out)                   :: rand(:,:,:)
+        integer(IKG)            , intent(in)                    :: lb, ub
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -19365,9 +19365,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGXLU_D3_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)            , intent(out)                   :: rand(:,:,:)
-        integer(IKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: IKG => IK3
+        integer(IKG)            , intent(out)                   :: rand(:,:,:)
+        integer(IKG)            , intent(in)                    :: lb, ub
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -19377,9 +19377,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGXLU_D3_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)            , intent(out)                   :: rand(:,:,:)
-        integer(IKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: IKG => IK2
+        integer(IKG)            , intent(out)                   :: rand(:,:,:)
+        integer(IKG)            , intent(in)                    :: lb, ub
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -19389,9 +19389,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGXLU_D3_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)            , intent(out)                   :: rand(:,:,:)
-        integer(IKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: IKG => IK1
+        integer(IKG)            , intent(out)                   :: rand(:,:,:)
+        integer(IKG)            , intent(in)                    :: lb, ub
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -19403,9 +19403,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGXLU_D3_LK5
 #endif
-        use pm_kind, only: LKC => LK5
-        logical(LKC)            , intent(out)                   :: rand(:,:,:)
-        logical(LKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: LKG => LK5
+        logical(LKG)            , intent(out)                   :: rand(:,:,:)
+        logical(LKG)            , intent(in)                    :: lb, ub
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -19415,9 +19415,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGXLU_D3_LK4
 #endif
-        use pm_kind, only: LKC => LK4
-        logical(LKC)            , intent(out)                   :: rand(:,:,:)
-        logical(LKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: LKG => LK4
+        logical(LKG)            , intent(out)                   :: rand(:,:,:)
+        logical(LKG)            , intent(in)                    :: lb, ub
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -19427,9 +19427,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGXLU_D3_LK3
 #endif
-        use pm_kind, only: LKC => LK3
-        logical(LKC)            , intent(out)                   :: rand(:,:,:)
-        logical(LKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: LKG => LK3
+        logical(LKG)            , intent(out)                   :: rand(:,:,:)
+        logical(LKG)            , intent(in)                    :: lb, ub
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -19439,9 +19439,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGXLU_D3_LK2
 #endif
-        use pm_kind, only: LKC => LK2
-        logical(LKC)            , intent(out)                   :: rand(:,:,:)
-        logical(LKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: LKG => LK2
+        logical(LKG)            , intent(out)                   :: rand(:,:,:)
+        logical(LKG)            , intent(in)                    :: lb, ub
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -19451,9 +19451,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGXLU_D3_LK1
 #endif
-        use pm_kind, only: LKC => LK1
-        logical(LKC)            , intent(out)                   :: rand(:,:,:)
-        logical(LKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: LKG => LK1
+        logical(LKG)            , intent(out)                   :: rand(:,:,:)
+        logical(LKG)            , intent(in)                    :: lb, ub
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -19465,9 +19465,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGXLU_D3_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)            , intent(out)                   :: rand(:,:,:)
-        complex(CKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: CKG => CK5
+        complex(CKG)            , intent(out)                   :: rand(:,:,:)
+        complex(CKG)            , intent(in)                    :: lb, ub
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -19477,9 +19477,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGXLU_D3_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)            , intent(out)                   :: rand(:,:,:)
-        complex(CKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: CKG => CK4
+        complex(CKG)            , intent(out)                   :: rand(:,:,:)
+        complex(CKG)            , intent(in)                    :: lb, ub
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -19489,9 +19489,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGXLU_D3_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)            , intent(out)                   :: rand(:,:,:)
-        complex(CKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: CKG => CK3
+        complex(CKG)            , intent(out)                   :: rand(:,:,:)
+        complex(CKG)            , intent(in)                    :: lb, ub
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -19501,9 +19501,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGXLU_D3_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)            , intent(out)                   :: rand(:,:,:)
-        complex(CKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: CKG => CK2
+        complex(CKG)            , intent(out)                   :: rand(:,:,:)
+        complex(CKG)            , intent(in)                    :: lb, ub
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -19513,9 +19513,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGXLU_D3_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)            , intent(out)                   :: rand(:,:,:)
-        complex(CKC)            , intent(in)                    :: lb, ub
+        use pm_kind, only: CKG => CK1
+        complex(CKG)            , intent(out)                   :: rand(:,:,:)
+        complex(CKG)            , intent(in)                    :: lb, ub
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -19527,9 +19527,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGXLU_D3_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)               , intent(out)                   :: rand(:,:,:)
-        real(RKC)               , intent(in)                    :: lb, ub
+        use pm_kind, only: RKG => RK5
+        real(RKG)               , intent(out)                   :: rand(:,:,:)
+        real(RKG)               , intent(in)                    :: lb, ub
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -19539,9 +19539,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGXLU_D3_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)               , intent(out)                   :: rand(:,:,:)
-        real(RKC)               , intent(in)                    :: lb, ub
+        use pm_kind, only: RKG => RK4
+        real(RKG)               , intent(out)                   :: rand(:,:,:)
+        real(RKG)               , intent(in)                    :: lb, ub
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -19551,9 +19551,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGXLU_D3_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)               , intent(out)                   :: rand(:,:,:)
-        real(RKC)               , intent(in)                    :: lb, ub
+        use pm_kind, only: RKG => RK3
+        real(RKG)               , intent(out)                   :: rand(:,:,:)
+        real(RKG)               , intent(in)                    :: lb, ub
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -19563,9 +19563,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGXLU_D3_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)               , intent(out)                   :: rand(:,:,:)
-        real(RKC)               , intent(in)                    :: lb, ub
+        use pm_kind, only: RKG => RK2
+        real(RKG)               , intent(out)                   :: rand(:,:,:)
+        real(RKG)               , intent(in)                    :: lb, ub
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end subroutine
 #endif
@@ -19575,9 +19575,9 @@ module pm_distUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRandRNGXLU_D3_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)               , intent(out)                   :: rand(:,:,:)
-        real(RKC)               , intent(in)                    :: lb, ub
+        use pm_kind, only: RKG => RK1
+        real(RKG)               , intent(out)                   :: rand(:,:,:)
+        real(RKG)               , intent(in)                    :: lb, ub
         type(xoshiro256ssw_type) , intent(inout)                 :: rng
     end subroutine
 #endif

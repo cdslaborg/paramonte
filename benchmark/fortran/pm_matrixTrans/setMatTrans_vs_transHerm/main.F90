@@ -2,7 +2,7 @@
 program benchmark
 
     use iso_fortran_env, only: error_unit
-    use pm_kind, only: IK, RKC => RKS, RK, SK
+    use pm_kind, only: IK, RKG => RKS, RK, SK
     use pm_distUnif, only: setUnifRand
     use pm_bench, only: bench_type
 
@@ -13,8 +13,8 @@ program benchmark
     integer(IK)                         :: rank, irank                  !<  The matrix rank and its counter.
     integer(IK) , parameter             :: NRANK = 20_IK                !<  The number of benchmark ranks.
     integer(IK) , parameter             :: NBENCH = 2_IK                !<  The number of benchmark procedures.
-    complex(RKC)                        :: dummySum = 0._RKC            !<  The dummy computation to prevent the compiler from doing aggressive optimizations.
-    complex(RKC), allocatable           :: matA(:,:)                    !<  The matrix.
+    complex(RKG)                        :: dummySum = 0._RKG            !<  The dummy computation to prevent the compiler from doing aggressive optimizations.
+    complex(RKG), allocatable           :: matA(:,:)                    !<  The matrix.
     type(bench_type)                    :: bench(NBENCH)                !<  The Benchmark array.
 
     bench(1) = bench_type(name = SK_"setMatTrans(transHerm)", exec = setMatTrans , overhead = setOverhead)

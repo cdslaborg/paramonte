@@ -70,35 +70,35 @@ contains
 
 #if CK5_ENABLED
     module procedure getMeanALL_WNO_D1_CK5
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure getMeanALL_WNO_D1_CK4
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure getMeanALL_WNO_D1_CK3
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure getMeanALL_WNO_D1_CK2
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure getMeanALL_WNO_D1_CK1
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
@@ -111,35 +111,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getMeanALL_WNO_D1_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getMeanALL_WNO_D1_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getMeanALL_WNO_D1_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getMeanALL_WNO_D1_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getMeanALL_WNO_D1_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
@@ -162,35 +162,35 @@ contains
 
 #if CK5_ENABLED
     module procedure getMeanALL_WNO_D2_CK5
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure getMeanALL_WNO_D2_CK4
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure getMeanALL_WNO_D2_CK3
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure getMeanALL_WNO_D2_CK2
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure getMeanALL_WNO_D2_CK1
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
@@ -203,35 +203,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getMeanALL_WNO_D2_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getMeanALL_WNO_D2_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getMeanALL_WNO_D2_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getMeanALL_WNO_D2_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getMeanALL_WNO_D2_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
@@ -266,35 +266,35 @@ contains
 
 #if CK5_ENABLED
     module procedure getMeanALL_WTI_D1_CK5
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure getMeanALL_WTI_D1_CK4
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure getMeanALL_WTI_D1_CK3
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure getMeanALL_WTI_D1_CK2
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure getMeanALL_WTI_D1_CK1
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
@@ -307,35 +307,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getMeanALL_WTI_D1_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getMeanALL_WTI_D1_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getMeanALL_WTI_D1_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getMeanALL_WTI_D1_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getMeanALL_WTI_D1_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
@@ -358,35 +358,35 @@ contains
 
 #if CK5_ENABLED
     module procedure getMeanALL_WTI_D2_CK5
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure getMeanALL_WTI_D2_CK4
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure getMeanALL_WTI_D2_CK3
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure getMeanALL_WTI_D2_CK2
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure getMeanALL_WTI_D2_CK1
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
@@ -399,35 +399,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getMeanALL_WTI_D2_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getMeanALL_WTI_D2_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getMeanALL_WTI_D2_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getMeanALL_WTI_D2_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getMeanALL_WTI_D2_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
@@ -462,35 +462,35 @@ contains
 
 #if CK5_ENABLED
     module procedure getMeanALL_WTR_D1_CK5
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure getMeanALL_WTR_D1_CK4
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure getMeanALL_WTR_D1_CK3
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure getMeanALL_WTR_D1_CK2
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure getMeanALL_WTR_D1_CK1
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
@@ -503,35 +503,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getMeanALL_WTR_D1_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getMeanALL_WTR_D1_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getMeanALL_WTR_D1_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getMeanALL_WTR_D1_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getMeanALL_WTR_D1_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
@@ -554,35 +554,35 @@ contains
 
 #if CK5_ENABLED
     module procedure getMeanALL_WTR_D2_CK5
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure getMeanALL_WTR_D2_CK4
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure getMeanALL_WTR_D2_CK3
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure getMeanALL_WTR_D2_CK2
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure getMeanALL_WTR_D2_CK1
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
@@ -595,35 +595,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getMeanALL_WTR_D2_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getMeanALL_WTR_D2_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getMeanALL_WTR_D2_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getMeanALL_WTR_D2_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getMeanALL_WTR_D2_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
@@ -680,35 +680,35 @@ contains
 
 #if CK5_ENABLED
     module procedure getMeanDIM_WNO_D1_CK5
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure getMeanDIM_WNO_D1_CK4
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure getMeanDIM_WNO_D1_CK3
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure getMeanDIM_WNO_D1_CK2
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure getMeanDIM_WNO_D1_CK1
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
@@ -721,35 +721,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getMeanDIM_WNO_D1_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getMeanDIM_WNO_D1_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getMeanDIM_WNO_D1_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getMeanDIM_WNO_D1_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getMeanDIM_WNO_D1_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
@@ -772,35 +772,35 @@ contains
 
 #if CK5_ENABLED
     module procedure getMeanDIM_WNO_D2_CK5
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure getMeanDIM_WNO_D2_CK4
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure getMeanDIM_WNO_D2_CK3
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure getMeanDIM_WNO_D2_CK2
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure getMeanDIM_WNO_D2_CK1
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
@@ -813,35 +813,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getMeanDIM_WNO_D2_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getMeanDIM_WNO_D2_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getMeanDIM_WNO_D2_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getMeanDIM_WNO_D2_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getMeanDIM_WNO_D2_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
@@ -876,35 +876,35 @@ contains
 
 #if CK5_ENABLED
     module procedure getMeanDIM_WTI_D1_CK5
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure getMeanDIM_WTI_D1_CK4
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure getMeanDIM_WTI_D1_CK3
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure getMeanDIM_WTI_D1_CK2
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure getMeanDIM_WTI_D1_CK1
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
@@ -917,35 +917,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getMeanDIM_WTI_D1_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getMeanDIM_WTI_D1_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getMeanDIM_WTI_D1_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getMeanDIM_WTI_D1_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getMeanDIM_WTI_D1_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
@@ -968,35 +968,35 @@ contains
 
 #if CK5_ENABLED
     module procedure getMeanDIM_WTI_D2_CK5
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure getMeanDIM_WTI_D2_CK4
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure getMeanDIM_WTI_D2_CK3
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure getMeanDIM_WTI_D2_CK2
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure getMeanDIM_WTI_D2_CK1
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
@@ -1009,35 +1009,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getMeanDIM_WTI_D2_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getMeanDIM_WTI_D2_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getMeanDIM_WTI_D2_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getMeanDIM_WTI_D2_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getMeanDIM_WTI_D2_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
@@ -1072,35 +1072,35 @@ contains
 
 #if CK5_ENABLED
     module procedure getMeanDIM_WTR_D1_CK5
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure getMeanDIM_WTR_D1_CK4
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure getMeanDIM_WTR_D1_CK3
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure getMeanDIM_WTR_D1_CK2
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure getMeanDIM_WTR_D1_CK1
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
@@ -1113,35 +1113,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getMeanDIM_WTR_D1_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getMeanDIM_WTR_D1_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getMeanDIM_WTR_D1_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getMeanDIM_WTR_D1_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getMeanDIM_WTR_D1_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
@@ -1164,35 +1164,35 @@ contains
 
 #if CK5_ENABLED
     module procedure getMeanDIM_WTR_D2_CK5
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure getMeanDIM_WTR_D2_CK4
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure getMeanDIM_WTR_D2_CK3
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure getMeanDIM_WTR_D2_CK2
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure getMeanDIM_WTR_D2_CK1
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
@@ -1205,35 +1205,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getMeanDIM_WTR_D2_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getMeanDIM_WTR_D2_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getMeanDIM_WTR_D2_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getMeanDIM_WTR_D2_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getMeanDIM_WTR_D2_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
@@ -1290,35 +1290,35 @@ contains
 
 #if CK5_ENABLED
     module procedure setMeanALL_WNO_XY_CK5
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure setMeanALL_WNO_XY_CK4
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure setMeanALL_WNO_XY_CK3
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure setMeanALL_WNO_XY_CK2
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure setMeanALL_WNO_XY_CK1
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
@@ -1331,35 +1331,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setMeanALL_WNO_XY_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setMeanALL_WNO_XY_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setMeanALL_WNO_XY_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setMeanALL_WNO_XY_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setMeanALL_WNO_XY_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
@@ -1382,35 +1382,35 @@ contains
 
 #if CK5_ENABLED
     module procedure setMeanALL_WTI_XY_CK5
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure setMeanALL_WTI_XY_CK4
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure setMeanALL_WTI_XY_CK3
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure setMeanALL_WTI_XY_CK2
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure setMeanALL_WTI_XY_CK1
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
@@ -1423,35 +1423,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setMeanALL_WTI_XY_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setMeanALL_WTI_XY_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setMeanALL_WTI_XY_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setMeanALL_WTI_XY_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setMeanALL_WTI_XY_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
@@ -1474,35 +1474,35 @@ contains
 
 #if CK5_ENABLED
     module procedure setMeanALL_WTR_XY_CK5
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure setMeanALL_WTR_XY_CK4
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure setMeanALL_WTR_XY_CK3
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure setMeanALL_WTR_XY_CK2
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure setMeanALL_WTR_XY_CK1
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
@@ -1515,35 +1515,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setMeanALL_WTR_XY_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setMeanALL_WTR_XY_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setMeanALL_WTR_XY_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setMeanALL_WTR_XY_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setMeanALL_WTR_XY_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
@@ -1600,35 +1600,35 @@ contains
 
 #if CK5_ENABLED
     module procedure setMeanALL_WNO_D1_CK5
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure setMeanALL_WNO_D1_CK4
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure setMeanALL_WNO_D1_CK3
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure setMeanALL_WNO_D1_CK2
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure setMeanALL_WNO_D1_CK1
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
@@ -1641,35 +1641,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setMeanALL_WNO_D1_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setMeanALL_WNO_D1_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setMeanALL_WNO_D1_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setMeanALL_WNO_D1_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setMeanALL_WNO_D1_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
@@ -1692,35 +1692,35 @@ contains
 
 #if CK5_ENABLED
     module procedure setMeanALL_WNO_D2_CK5
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure setMeanALL_WNO_D2_CK4
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure setMeanALL_WNO_D2_CK3
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure setMeanALL_WNO_D2_CK2
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure setMeanALL_WNO_D2_CK1
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
@@ -1733,35 +1733,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setMeanALL_WNO_D2_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setMeanALL_WNO_D2_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setMeanALL_WNO_D2_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setMeanALL_WNO_D2_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setMeanALL_WNO_D2_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
@@ -1796,35 +1796,35 @@ contains
 
 #if CK5_ENABLED
     module procedure setMeanALL_WTI_D1_CK5
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure setMeanALL_WTI_D1_CK4
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure setMeanALL_WTI_D1_CK3
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure setMeanALL_WTI_D1_CK2
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure setMeanALL_WTI_D1_CK1
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
@@ -1837,35 +1837,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setMeanALL_WTI_D1_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setMeanALL_WTI_D1_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setMeanALL_WTI_D1_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setMeanALL_WTI_D1_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setMeanALL_WTI_D1_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
@@ -1888,35 +1888,35 @@ contains
 
 #if CK5_ENABLED
     module procedure setMeanALL_WTI_D2_CK5
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure setMeanALL_WTI_D2_CK4
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure setMeanALL_WTI_D2_CK3
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure setMeanALL_WTI_D2_CK2
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure setMeanALL_WTI_D2_CK1
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
@@ -1929,35 +1929,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setMeanALL_WTI_D2_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setMeanALL_WTI_D2_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setMeanALL_WTI_D2_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setMeanALL_WTI_D2_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setMeanALL_WTI_D2_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
@@ -1992,35 +1992,35 @@ contains
 
 #if CK5_ENABLED
     module procedure setMeanALL_WTR_D1_CK5
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure setMeanALL_WTR_D1_CK4
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure setMeanALL_WTR_D1_CK3
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure setMeanALL_WTR_D1_CK2
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure setMeanALL_WTR_D1_CK1
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
@@ -2033,35 +2033,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setMeanALL_WTR_D1_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setMeanALL_WTR_D1_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setMeanALL_WTR_D1_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setMeanALL_WTR_D1_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setMeanALL_WTR_D1_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
@@ -2084,35 +2084,35 @@ contains
 
 #if CK5_ENABLED
     module procedure setMeanALL_WTR_D2_CK5
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure setMeanALL_WTR_D2_CK4
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure setMeanALL_WTR_D2_CK3
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure setMeanALL_WTR_D2_CK2
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure setMeanALL_WTR_D2_CK1
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
@@ -2125,35 +2125,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setMeanALL_WTR_D2_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setMeanALL_WTR_D2_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setMeanALL_WTR_D2_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setMeanALL_WTR_D2_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setMeanALL_WTR_D2_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
@@ -2210,35 +2210,35 @@ contains
 
 #if CK5_ENABLED
     module procedure setMeanDIM_WNO_D1_CK5
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure setMeanDIM_WNO_D1_CK4
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure setMeanDIM_WNO_D1_CK3
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure setMeanDIM_WNO_D1_CK2
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure setMeanDIM_WNO_D1_CK1
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
@@ -2251,35 +2251,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setMeanDIM_WNO_D1_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setMeanDIM_WNO_D1_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setMeanDIM_WNO_D1_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setMeanDIM_WNO_D1_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setMeanDIM_WNO_D1_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
@@ -2302,35 +2302,35 @@ contains
 
 #if CK5_ENABLED
     module procedure setMeanDIM_WNO_D2_CK5
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure setMeanDIM_WNO_D2_CK4
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure setMeanDIM_WNO_D2_CK3
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure setMeanDIM_WNO_D2_CK2
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure setMeanDIM_WNO_D2_CK1
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
@@ -2343,35 +2343,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setMeanDIM_WNO_D2_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setMeanDIM_WNO_D2_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setMeanDIM_WNO_D2_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setMeanDIM_WNO_D2_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setMeanDIM_WNO_D2_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
@@ -2406,35 +2406,35 @@ contains
 
 #if CK5_ENABLED
     module procedure setMeanDIM_WTI_D1_CK5
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure setMeanDIM_WTI_D1_CK4
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure setMeanDIM_WTI_D1_CK3
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure setMeanDIM_WTI_D1_CK2
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure setMeanDIM_WTI_D1_CK1
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
@@ -2447,35 +2447,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setMeanDIM_WTI_D1_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setMeanDIM_WTI_D1_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setMeanDIM_WTI_D1_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setMeanDIM_WTI_D1_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setMeanDIM_WTI_D1_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
@@ -2498,35 +2498,35 @@ contains
 
 #if CK5_ENABLED
     module procedure setMeanDIM_WTI_D2_CK5
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure setMeanDIM_WTI_D2_CK4
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure setMeanDIM_WTI_D2_CK3
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure setMeanDIM_WTI_D2_CK2
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure setMeanDIM_WTI_D2_CK1
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
@@ -2539,35 +2539,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setMeanDIM_WTI_D2_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setMeanDIM_WTI_D2_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setMeanDIM_WTI_D2_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setMeanDIM_WTI_D2_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setMeanDIM_WTI_D2_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
@@ -2602,35 +2602,35 @@ contains
 
 #if CK5_ENABLED
     module procedure setMeanDIM_WTR_D1_CK5
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure setMeanDIM_WTR_D1_CK4
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure setMeanDIM_WTR_D1_CK3
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure setMeanDIM_WTR_D1_CK2
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure setMeanDIM_WTR_D1_CK1
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
@@ -2643,35 +2643,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setMeanDIM_WTR_D1_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setMeanDIM_WTR_D1_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setMeanDIM_WTR_D1_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setMeanDIM_WTR_D1_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setMeanDIM_WTR_D1_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
@@ -2694,35 +2694,35 @@ contains
 
 #if CK5_ENABLED
     module procedure setMeanDIM_WTR_D2_CK5
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure setMeanDIM_WTR_D2_CK4
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure setMeanDIM_WTR_D2_CK3
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure setMeanDIM_WTR_D2_CK2
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure setMeanDIM_WTR_D2_CK1
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
@@ -2735,35 +2735,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setMeanDIM_WTR_D2_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setMeanDIM_WTR_D2_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setMeanDIM_WTR_D2_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setMeanDIM_WTR_D2_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setMeanDIM_WTR_D2_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
@@ -2814,35 +2814,35 @@ contains
 
 #if CK5_ENABLED
     module procedure getMeanMergedNew_D0_CK5
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure getMeanMergedNew_D0_CK4
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure getMeanMergedNew_D0_CK3
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure getMeanMergedNew_D0_CK2
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure getMeanMergedNew_D0_CK1
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
@@ -2855,35 +2855,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getMeanMergedNew_D0_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getMeanMergedNew_D0_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getMeanMergedNew_D0_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getMeanMergedNew_D0_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getMeanMergedNew_D0_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
@@ -2906,35 +2906,35 @@ contains
 
 #if CK5_ENABLED
     module procedure getMeanMergedNew_D1_CK5
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure getMeanMergedNew_D1_CK4
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure getMeanMergedNew_D1_CK3
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure getMeanMergedNew_D1_CK2
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure getMeanMergedNew_D1_CK1
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
@@ -2947,35 +2947,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getMeanMergedNew_D1_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getMeanMergedNew_D1_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getMeanMergedNew_D1_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getMeanMergedNew_D1_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getMeanMergedNew_D1_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
@@ -3020,35 +3020,35 @@ contains
 
 #if CK5_ENABLED
     module procedure setMeanMergedNew_D0_CK5
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure setMeanMergedNew_D0_CK4
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure setMeanMergedNew_D0_CK3
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure setMeanMergedNew_D0_CK2
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure setMeanMergedNew_D0_CK1
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
@@ -3061,35 +3061,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setMeanMergedNew_D0_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setMeanMergedNew_D0_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setMeanMergedNew_D0_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setMeanMergedNew_D0_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setMeanMergedNew_D0_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
@@ -3112,35 +3112,35 @@ contains
 
 #if CK5_ENABLED
     module procedure setMeanMergedNew_D1_CK5
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure setMeanMergedNew_D1_CK4
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure setMeanMergedNew_D1_CK3
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure setMeanMergedNew_D1_CK2
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure setMeanMergedNew_D1_CK1
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
@@ -3153,35 +3153,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setMeanMergedNew_D1_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setMeanMergedNew_D1_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setMeanMergedNew_D1_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setMeanMergedNew_D1_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setMeanMergedNew_D1_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
@@ -3216,35 +3216,35 @@ contains
 
 #if CK5_ENABLED
     module procedure setMeanMergedOld_D0_CK5
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure setMeanMergedOld_D0_CK4
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure setMeanMergedOld_D0_CK3
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure setMeanMergedOld_D0_CK2
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure setMeanMergedOld_D0_CK1
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
@@ -3257,35 +3257,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setMeanMergedOld_D0_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setMeanMergedOld_D0_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setMeanMergedOld_D0_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setMeanMergedOld_D0_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setMeanMergedOld_D0_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
@@ -3308,35 +3308,35 @@ contains
 
 #if CK5_ENABLED
     module procedure setMeanMergedOld_D1_CK5
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure setMeanMergedOld_D1_CK4
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure setMeanMergedOld_D1_CK3
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure setMeanMergedOld_D1_CK2
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure setMeanMergedOld_D1_CK1
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
@@ -3349,35 +3349,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setMeanMergedOld_D1_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setMeanMergedOld_D1_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setMeanMergedOld_D1_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setMeanMergedOld_D1_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setMeanMergedOld_D1_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_sampleMean@routines.inc.F90"
     end procedure
 #endif

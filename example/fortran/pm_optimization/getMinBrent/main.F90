@@ -1,14 +1,14 @@
 program example
 
     use pm_kind, only: SK, IK, LK
-    use pm_kind, only: RKC => RKH ! all processor kinds are supported.
+    use pm_kind, only: RKG => RKH ! all processor kinds are supported.
     use pm_io, only: display_type
     use pm_optimization, only: getMinBrent
 
     implicit none
 
     integer(IK) :: niter
-    real(RKC) :: xmin, fmin
+    real(RKG) :: xmin, fmin
     type(display_type) :: disp
     disp = display_type(file = "main.out.F90")
 
@@ -37,8 +37,8 @@ program example
 contains
 
     function getSq(x) result(func)
-        real(RKC), intent(in) :: x
-        real(RKC) :: func
+        real(RKG), intent(in) :: x
+        real(RKG) :: func
         func = (x - 1)**2
     end function
 

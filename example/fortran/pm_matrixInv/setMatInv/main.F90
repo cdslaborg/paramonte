@@ -1,7 +1,7 @@
 program example
 
     use pm_io, only: getFormat
-    use pm_kind, only: SK, IK, LK, TKC => RKS
+    use pm_kind, only: SK, IK, LK, TKG => RKS
     use pm_io, only: display_type
     use pm_distUnif, only: getUnifRand
     use pm_matrixInv, only: setMatInv
@@ -29,8 +29,8 @@ program example
     type(display_type) :: disp
     disp = display_type(file = "main.out.F90")
 
-    cform = getFormat(mold = [(0._TKC, 0._TKC)], ed = SK_"f", ndigit = 2_IK, signed = .true._LK)
-    rform = getFormat(mold = [0._TKC], ed = SK_"f", ndigit = 2_IK, signed = .true._LK)
+    cform = getFormat(mold = [(0._TKG, 0._TKG)], ed = SK_"f", ndigit = 2_IK, signed = .true._LK)
+    rform = getFormat(mold = [0._TKG], ed = SK_"f", ndigit = 2_IK, signed = .true._LK)
 
     call disp%skip()
     call disp%show("!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
@@ -39,8 +39,8 @@ program example
     call disp%skip()
 
     block
-        use pm_kind, only: TKC => RKS
-        real(TKC), allocatable :: mat(:,:), inv(:,:), mul(:,:)
+        use pm_kind, only: TKG => RKS
+        real(TKG), allocatable :: mat(:,:), inv(:,:), mul(:,:)
         do itry = 1, ntry
             call disp%skip
             call disp%show("ndim = getUnifRand(1_IK, 6_IK)")
@@ -49,8 +49,8 @@ program example
             call disp%show( ndim )
             call disp%show("mat = getUnifRand(1_IK, 9_IK, ndim, ndim)")
                             mat = getUnifRand(1_IK, 9_IK, ndim, ndim)
-            call disp%show("call setMatInit(mat(2 : ndim, 1 : ndim - 1), lowDia, 0._TKC, 0._TKC)")
-                            call setMatInit(mat(2 : ndim, 1 : ndim - 1), lowDia, 0._TKC, 0._TKC)
+            call disp%show("call setMatInit(mat(2 : ndim, 1 : ndim - 1), lowDia, 0._TKG, 0._TKG)")
+                            call setMatInit(mat(2 : ndim, 1 : ndim - 1), lowDia, 0._TKG, 0._TKG)
             call disp%show("mat")
             call disp%show( mat , format = rform )
             call disp%show("call setResized(inv, shape(mat, IK))")
@@ -74,8 +74,8 @@ program example
     call disp%skip()
 
     block
-        use pm_kind, only: TKC => RKS
-        complex(TKC), allocatable :: mat(:,:), inv(:,:), mul(:,:)
+        use pm_kind, only: TKG => RKS
+        complex(TKG), allocatable :: mat(:,:), inv(:,:), mul(:,:)
         do itry = 1, ntry
             call disp%skip
             call disp%show("ndim = getUnifRand(1_IK, 6_IK)")
@@ -84,8 +84,8 @@ program example
             call disp%show( ndim )
             call disp%show("mat = getUnifRand((1., 1.), (2., 2.), ndim, ndim)")
                             mat = getUnifRand((1., 1.), (2., 2.), ndim, ndim)
-            call disp%show("call setMatInit(mat(2 : ndim, 1 : ndim - 1), lowDia, (0._TKC, 0._TKC), (0._TKC, 0._TKC))")
-                            call setMatInit(mat(2 : ndim, 1 : ndim - 1), lowDia, (0._TKC, 0._TKC), (0._TKC, 0._TKC))
+            call disp%show("call setMatInit(mat(2 : ndim, 1 : ndim - 1), lowDia, (0._TKG, 0._TKG), (0._TKG, 0._TKG))")
+                            call setMatInit(mat(2 : ndim, 1 : ndim - 1), lowDia, (0._TKG, 0._TKG), (0._TKG, 0._TKG))
             call disp%show("mat")
             call disp%show( mat , format = cform )
             call disp%show("call setResized(inv, shape(mat, IK))")
@@ -109,8 +109,8 @@ program example
     call disp%skip()
 
     block
-        use pm_kind, only: TKC => RKS
-        real(TKC), allocatable :: mat(:,:), inv(:,:), mul(:,:)
+        use pm_kind, only: TKG => RKS
+        real(TKG), allocatable :: mat(:,:), inv(:,:), mul(:,:)
         do itry = 1, ntry
             call disp%skip
             call disp%show("ndim = getUnifRand(1_IK, 6_IK)")
@@ -119,8 +119,8 @@ program example
             call disp%show( ndim )
             call disp%show("mat = getUnifRand(1_IK, 9_IK, ndim, ndim)")
                             mat = getUnifRand(1_IK, 9_IK, ndim, ndim)
-            call disp%show("call setMatInit(mat(1 : ndim - 1, 2 : ndim), uppDia, 0._TKC, 0._TKC)")
-                            call setMatInit(mat(1 : ndim - 1, 2 : ndim), uppDia, 0._TKC, 0._TKC)
+            call disp%show("call setMatInit(mat(1 : ndim - 1, 2 : ndim), uppDia, 0._TKG, 0._TKG)")
+                            call setMatInit(mat(1 : ndim - 1, 2 : ndim), uppDia, 0._TKG, 0._TKG)
             call disp%show("mat")
             call disp%show( mat , format = rform )
             call disp%show("call setResized(inv, shape(mat, IK))")
@@ -144,8 +144,8 @@ program example
     call disp%skip()
 
     block
-        use pm_kind, only: TKC => RKS
-        complex(TKC), allocatable :: mat(:,:), inv(:,:), mul(:,:)
+        use pm_kind, only: TKG => RKS
+        complex(TKG), allocatable :: mat(:,:), inv(:,:), mul(:,:)
         do itry = 1, ntry
             call disp%skip
             call disp%show("ndim = getUnifRand(1_IK, 6_IK)")
@@ -154,8 +154,8 @@ program example
             call disp%show( ndim )
             call disp%show("mat = getUnifRand((1., 1.), (2., 2.), ndim, ndim)")
                             mat = getUnifRand((1., 1.), (2., 2.), ndim, ndim)
-            call disp%show("call setMatInit(mat(1 : ndim - 1, 2 : ndim), uppDia, (0._TKC, 0._TKC), (0._TKC, 0._TKC))")
-                            call setMatInit(mat(1 : ndim - 1, 2 : ndim), uppDia, (0._TKC, 0._TKC), (0._TKC, 0._TKC))
+            call disp%show("call setMatInit(mat(1 : ndim - 1, 2 : ndim), uppDia, (0._TKG, 0._TKG), (0._TKG, 0._TKG))")
+                            call setMatInit(mat(1 : ndim - 1, 2 : ndim), uppDia, (0._TKG, 0._TKG), (0._TKG, 0._TKG))
             call disp%show("mat")
             call disp%show( mat , format = cform )
             call disp%show("call setResized(inv, shape(mat, IK))")
@@ -179,8 +179,8 @@ program example
     call disp%skip()
 
     block
-        use pm_kind, only: TKC => RKS
-        real(TKC), allocatable :: mat(:,:), inv(:,:), mul(:,:)
+        use pm_kind, only: TKG => RKS
+        real(TKG), allocatable :: mat(:,:), inv(:,:), mul(:,:)
         do itry = 1, ntry
             call disp%skip
             call disp%show("ndim = getUnifRand(1_IK, 6_IK)")
@@ -189,8 +189,8 @@ program example
             call disp%show( ndim )
             call disp%show("mat = getUnifRand(1_IK, 9_IK, ndim, ndim)")
                             mat = getUnifRand(1_IK, 9_IK, ndim, ndim)
-            call disp%show("call setMatInit(mat, lowDia, 0._TKC, 1._TKC)")
-                            call setMatInit(mat, lowDia, 0._TKC, 1._TKC)
+            call disp%show("call setMatInit(mat, lowDia, 0._TKG, 1._TKG)")
+                            call setMatInit(mat, lowDia, 0._TKG, 1._TKG)
             call disp%show("mat")
             call disp%show( mat , format = rform )
             call disp%show("call setResized(inv, shape(mat, IK))")
@@ -214,8 +214,8 @@ program example
     call disp%skip()
 
     block
-        use pm_kind, only: TKC => RKS
-        complex(TKC), allocatable :: mat(:,:), inv(:,:), mul(:,:)
+        use pm_kind, only: TKG => RKS
+        complex(TKG), allocatable :: mat(:,:), inv(:,:), mul(:,:)
         do itry = 1, ntry
             call disp%skip
             call disp%show("ndim = getUnifRand(1_IK, 6_IK)")
@@ -224,8 +224,8 @@ program example
             call disp%show( ndim )
             call disp%show("mat = getUnifRand((-1., -1.), (+1., +1.), ndim, ndim)")
                             mat = getUnifRand((-1., -1.), (+1., +1.), ndim, ndim)
-            call disp%show("call setMatInit(mat, lowDia, (0._TKC, 0._TKC), (1._TKC, 0._TKC))")
-                            call setMatInit(mat, lowDia, (0._TKC, 0._TKC), (1._TKC, 0._TKC))
+            call disp%show("call setMatInit(mat, lowDia, (0._TKG, 0._TKG), (1._TKG, 0._TKG))")
+                            call setMatInit(mat, lowDia, (0._TKG, 0._TKG), (1._TKG, 0._TKG))
             call disp%show("mat")
             call disp%show( mat , format = cform )
             call disp%show("call setResized(inv, shape(mat, IK))")
@@ -249,8 +249,8 @@ program example
     call disp%skip()
 
     block
-        use pm_kind, only: TKC => RKS
-        real(TKC), allocatable :: mat(:,:), inv(:,:), mul(:,:)
+        use pm_kind, only: TKG => RKS
+        real(TKG), allocatable :: mat(:,:), inv(:,:), mul(:,:)
         do itry = 1, ntry
             call disp%skip
             call disp%show("ndim = getUnifRand(1_IK, 6_IK)")
@@ -259,8 +259,8 @@ program example
             call disp%show( ndim )
             call disp%show("mat = getUnifRand(1_IK, 9_IK, ndim, ndim)")
                             mat = getUnifRand(1_IK, 9_IK, ndim, ndim)
-            call disp%show("call setMatInit(mat, uppDia, 0._TKC, 1._TKC)")
-                            call setMatInit(mat, uppDia, 0._TKC, 1._TKC)
+            call disp%show("call setMatInit(mat, uppDia, 0._TKG, 1._TKG)")
+                            call setMatInit(mat, uppDia, 0._TKG, 1._TKG)
             call disp%show("mat")
             call disp%show( mat , format = rform )
             call disp%show("call setResized(inv, shape(mat, IK))")
@@ -284,8 +284,8 @@ program example
     call disp%skip()
 
     block
-        use pm_kind, only: TKC => RKS
-        complex(TKC), allocatable :: mat(:,:), inv(:,:), mul(:,:)
+        use pm_kind, only: TKG => RKS
+        complex(TKG), allocatable :: mat(:,:), inv(:,:), mul(:,:)
         do itry = 1, ntry
             call disp%skip
             call disp%show("ndim = getUnifRand(1_IK, 6_IK)")
@@ -294,8 +294,8 @@ program example
             call disp%show( ndim )
             call disp%show("mat = getUnifRand((-1., -1.), (+1., +1.), ndim, ndim)")
                             mat = getUnifRand((-1., -1.), (+1., +1.), ndim, ndim)
-            call disp%show("call setMatInit(mat, uppDia, (0._TKC, 0._TKC), (1._TKC, 0._TKC))")
-                            call setMatInit(mat, uppDia, (0._TKC, 0._TKC), (1._TKC, 0._TKC))
+            call disp%show("call setMatInit(mat, uppDia, (0._TKG, 0._TKG), (1._TKG, 0._TKG))")
+                            call setMatInit(mat, uppDia, (0._TKG, 0._TKG), (1._TKG, 0._TKG))
             call disp%show("mat")
             call disp%show( mat , format = cform )
             call disp%show("call setResized(inv, shape(mat, IK))")
@@ -319,9 +319,9 @@ program example
     call disp%skip()
 
     block
-        use pm_kind, only: TKC => RKS
+        use pm_kind, only: TKG => RKS
         integer(IK), allocatable :: rperm(:)
-        real(TKC), allocatable :: mat(:,:), lup(:,:), inv(:,:), mul(:,:)
+        real(TKG), allocatable :: mat(:,:), lup(:,:), inv(:,:), mul(:,:)
         do itry = 1, ntry
             call disp%skip
             call disp%show("mat = reshape([1, 0, 2, -1, 5, 0, 0, 3, -9], shape = [3,3], order = [2, 1])")
@@ -361,9 +361,9 @@ program example
     call disp%skip()
 
     block
-        use pm_kind, only: TKC => RKS
+        use pm_kind, only: TKG => RKS
         integer(IK), allocatable :: rperm(:)
-        complex(TKC), parameter :: mat(*,*) = reshape( &
+        complex(TKG), parameter :: mat(*,*) = reshape( &
         [ (2.0, 1.0), (2.4,-1.0), (2.8,-1.0), (3.2,-1.0), (3.6,-1.0), (4.0,-1.0), (4.4,-1.0), (4.8,-1.0), (5.2,-1.0) &
         , (2.4, 1.0), (2.0, 1.0), (2.4,-1.0), (2.8,-1.0), (3.2,-1.0), (3.6,-1.0), (4.0,-1.0), (4.4,-1.0), (4.8,-1.0) &
         , (2.8, 1.0), (2.4, 1.0), (2.0, 1.0), (2.4,-1.0), (2.8,-1.0), (3.2,-1.0), (3.6,-1.0), (4.0,-1.0), (4.4,-1.0) &
@@ -374,7 +374,7 @@ program example
         , (4.8, 1.0), (4.4, 1.0), (4.0, 1.0), (3.6, 1.0), (3.2, 1.0), (2.8, 1.0), (2.4, 1.0), (2.0, 1.0), (2.4,-1.0) &
         , (5.2, 1.0), (4.8, 1.0), (4.4, 1.0), (4.0, 1.0), (3.6, 1.0), (3.2, 1.0), (2.8, 1.0), (2.4, 1.0), (2.0, 1.0) &
         ], shape = [9, 9], order = [2, 1])
-        complex(TKC), dimension(size(mat,1), size(mat,2)) :: inv, lup, mul
+        complex(TKG), dimension(size(mat,1), size(mat,2)) :: inv, lup, mul
         call disp%skip
         call disp%show("call setResized(rperm, size(mat, 1, IK))")
                         call setResized(rperm, size(mat, 1, IK))
@@ -406,16 +406,16 @@ program example
     call disp%skip()
 
     block
-        use pm_kind, only: TKC => RKS
-        real(TKC), allocatable :: mat(:,:), chol(:,:), inv(:,:), mul(:,:)
+        use pm_kind, only: TKG => RKS
+        real(TKG), allocatable :: mat(:,:), chol(:,:), inv(:,:), mul(:,:)
         do itry = 1, ntry
             call disp%skip
             call disp%show("ndim = getUnifRand(1_IK, 6_IK)")
                             ndim = getUnifRand(1_IK, 6_IK)
             call disp%show("ndim ! matrix rank")
             call disp%show( ndim )
-            call disp%show("mat = getCovRand(mold = 1._TKC, ndim = ndim)")
-                            mat = getCovRand(mold = 1._TKC, ndim = ndim)
+            call disp%show("mat = getCovRand(mold = 1._TKG, ndim = ndim)")
+                            mat = getCovRand(mold = 1._TKG, ndim = ndim)
             call disp%show("mat")
             call disp%show( mat , format = rform )
             call disp%show("chol = getMatChol(mat, subset = lowDia)")
@@ -443,10 +443,10 @@ program example
     call disp%skip()
 
     block
-        use pm_kind, only: TKC => RKS
+        use pm_kind, only: TKG => RKS
         integer(IK), parameter :: ndim = 3_IK
-        complex(TKC), allocatable :: chol(:,:), inv(:,:), mul(:,:)
-        complex(TKC), parameter :: mat(*,*) = reshape(  [ (9.0,  0.0), (3.0, 3.0), (3.0, -3.0) &
+        complex(TKG), allocatable :: chol(:,:), inv(:,:), mul(:,:)
+        complex(TKG), parameter :: mat(*,*) = reshape(  [ (9.0,  0.0), (3.0, 3.0), (3.0, -3.0) &
                                                         , (3.0, -3.0),(18.0, 0.0), (8.0, -6.0) &
                                                         , (3.0,  3.0), (8.0, 6.0),(43.0,  0.0) &
                                                         ], shape = [ndim, ndim], order = [2, 1])
@@ -471,10 +471,10 @@ program example
     end block
 
     block
-        use pm_kind, only: TKC => RKS
+        use pm_kind, only: TKG => RKS
         integer(IK), parameter :: ndim = 3_IK
-        complex(TKC), allocatable :: chol(:,:), inv(:,:), mul(:,:)
-        complex(TKC), parameter :: mat(*,*) = reshape(  [ (9.0,  0.0), (3.0, 3.0), (3.0, -3.0) &
+        complex(TKG), allocatable :: chol(:,:), inv(:,:), mul(:,:)
+        complex(TKG), parameter :: mat(*,*) = reshape(  [ (9.0,  0.0), (3.0, 3.0), (3.0, -3.0) &
                                                         , (3.0, -3.0),(18.0, 0.0), (8.0, -6.0) &
                                                         , (3.0,  3.0), (8.0, 6.0),(43.0,  0.0) &
                                                         ], shape = [ndim, ndim], order = [2, 1])
@@ -505,16 +505,16 @@ program example
     call disp%skip()
 
     block
-        use pm_kind, only: TKC => RKS
-        real(TKC), allocatable :: mat(:,:), chol(:,:), inv(:,:), mul(:,:)
+        use pm_kind, only: TKG => RKS
+        real(TKG), allocatable :: mat(:,:), chol(:,:), inv(:,:), mul(:,:)
         do itry = 1, ntry
             call disp%skip
             call disp%show("ndim = getUnifRand(1_IK, 6_IK)")
                             ndim = getUnifRand(1_IK, 6_IK)
             call disp%show("ndim ! matrix rank")
             call disp%show( ndim )
-            call disp%show("mat = getCovRand(mold = 1._TKC, ndim = ndim)")
-                            mat = getCovRand(mold = 1._TKC, ndim = ndim)
+            call disp%show("mat = getCovRand(mold = 1._TKG, ndim = ndim)")
+                            mat = getCovRand(mold = 1._TKG, ndim = ndim)
             call disp%show("mat")
             call disp%show( mat , format = rform )
             call disp%show("chol = getMatChol(mat, subset = lowDia)")
@@ -558,16 +558,16 @@ program example
     end block
 
     block
-        use pm_kind, only: TKC => RKS
-        real(TKC), allocatable :: mat(:,:), chol(:,:), inv(:,:), mul(:,:)
+        use pm_kind, only: TKG => RKS
+        real(TKG), allocatable :: mat(:,:), chol(:,:), inv(:,:), mul(:,:)
         do itry = 1, ntry
             call disp%skip
             call disp%show("ndim = getUnifRand(1_IK, 6_IK)")
                             ndim = getUnifRand(1_IK, 6_IK)
             call disp%show("ndim ! matrix rank")
             call disp%show( ndim )
-            call disp%show("mat = getCovRand(mold = 1._TKC, ndim = ndim)")
-                            mat = getCovRand(mold = 1._TKC, ndim = ndim)
+            call disp%show("mat = getCovRand(mold = 1._TKG, ndim = ndim)")
+                            mat = getCovRand(mold = 1._TKG, ndim = ndim)
             call disp%show("mat")
             call disp%show( mat , format = rform )
             call disp%show("chol = getMatChol(mat, subset = uppDia)")
@@ -617,10 +617,10 @@ program example
     call disp%skip()
 
     block
-        use pm_kind, only: TKC => RKS
+        use pm_kind, only: TKG => RKS
         integer(IK), parameter :: ndim = 3_IK
-        complex(TKC), allocatable :: chol(:,:), inv(:,:), mul(:,:)
-        complex(TKC), parameter :: mat(*,*) = reshape(  [ (9.0,  0.0), (3.0, 3.0), (3.0, -3.0) &
+        complex(TKG), allocatable :: chol(:,:), inv(:,:), mul(:,:)
+        complex(TKG), parameter :: mat(*,*) = reshape(  [ (9.0,  0.0), (3.0, 3.0), (3.0, -3.0) &
                                                         , (3.0, -3.0),(18.0, 0.0), (8.0, -6.0) &
                                                         , (3.0,  3.0), (8.0, 6.0),(43.0,  0.0) &
                                                         ], shape = [ndim, ndim], order = [2, 1])
@@ -666,10 +666,10 @@ program example
     end block
 
     block
-        use pm_kind, only: TKC => RKS
+        use pm_kind, only: TKG => RKS
         integer(IK), parameter :: ndim = 3_IK
-        complex(TKC), allocatable :: chol(:,:), inv(:,:), mul(:,:)
-        complex(TKC), parameter :: mat(*,*) = reshape(  [ (9.0,  0.0), (3.0, 3.0), (3.0, -3.0) &
+        complex(TKG), allocatable :: chol(:,:), inv(:,:), mul(:,:)
+        complex(TKG), parameter :: mat(*,*) = reshape(  [ (9.0,  0.0), (3.0, 3.0), (3.0, -3.0) &
                                                         , (3.0, -3.0),(18.0, 0.0), (8.0, -6.0) &
                                                         , (3.0,  3.0), (8.0, 6.0),(43.0,  0.0) &
                                                         ], shape = [ndim, ndim], order = [2, 1])
@@ -715,16 +715,16 @@ program example
     end block
 
     block
-        use pm_kind, only: TKC => RKS
-        complex(TKC), allocatable :: low(:,:), upp(:,:), mat(:,:), chol(:,:), inv(:,:), mul(:,:)
+        use pm_kind, only: TKG => RKS
+        complex(TKG), allocatable :: low(:,:), upp(:,:), mat(:,:), chol(:,:), inv(:,:), mul(:,:)
         do itry = 1, ntry
             call disp%skip
             call disp%show("ndim = getUnifRand(1_IK, 6_IK)")
                             ndim = getUnifRand(1_IK, 6_IK)
             call disp%show("ndim ! matrix rank")
             call disp%show( ndim )
-            low = getUnifRand((1._TKC, -1._TKC), (+2._TKC, +1._TKC), ndim, ndim)
-            call setMatInit(low, uppDia, (0._TKC, 0._TKC), cmplx(getUnifRand(1._TKC, 2._TKC, ndim), 0._TKC, TKC))
+            low = getUnifRand((1._TKG, -1._TKG), (+2._TKG, +1._TKG), ndim, ndim)
+            call setMatInit(low, uppDia, (0._TKG, 0._TKG), cmplx(getUnifRand(1._TKG, 2._TKG, ndim), 0._TKG, TKG))
             upp = transpose(conjg(low))
             mat = matmul(low, upp)
             call disp%show("mat")

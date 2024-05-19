@@ -1,6 +1,6 @@
 program example
 
-    use pm_kind, only: SK, IK, RKH, RKC => RKH ! All other real kinds are also supported.
+    use pm_kind, only: SK, IK, RKH, RKG => RKH ! All other real kinds are also supported.
     use pm_except, only: getInfNeg, getInfPos
     use pm_quadTest, only: int1_type
     use pm_quadTest, only: int2_type
@@ -42,7 +42,7 @@ program example
     call test_getQuadErr(disp, int4_type())
     call test_getQuadErr(disp, intSinCos_type(-4_IK, +4_IK, a = 10._RKH, b = -10._RKH))
     call test_getQuadErr(disp, intNormPDF_type(-3._RKH, +3._RKH))
-    call test_getQuadErr(disp, intLogNormPDF_type(lb = exp(-6._RKC), ub = exp(+6._RKC)))
+    call test_getQuadErr(disp, intLogNormPDF_type(lb = exp(-6._RKG), ub = exp(+6._RKG)))
 
     call disp%skip()
     call disp%show("!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
@@ -55,8 +55,8 @@ program example
     call disp%show("!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
     call disp%skip()
 
-    call test_getQuadErr(disp, int5_type(0._RKC, 3._RKC))
-    call test_getQuadErr(disp, int5_type(-2._RKC, +5._RKC))
+    call test_getQuadErr(disp, int5_type(0._RKG, 3._RKG))
+    call test_getQuadErr(disp, int5_type(-2._RKG, +5._RKG))
 
     call disp%skip()
     call disp%show("!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
@@ -87,7 +87,7 @@ program example
 
     call test_getQuadErr(disp, int8_type())
     call test_getQuadErr(disp, intDoncker2_type())
-    call test_getQuadErr(disp, intDoncker2_type(ub = -1._RKC))
+    call test_getQuadErr(disp, intDoncker2_type(ub = -1._RKG))
 
     call disp%skip()
     call disp%show("!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")

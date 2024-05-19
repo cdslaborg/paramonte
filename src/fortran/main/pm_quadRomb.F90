@@ -317,27 +317,27 @@ module pm_quadRomb
     !>                          \code{.F90}
     !>
     !>                              function getFunc(x) result(func)
-    !>                                  use pm_kind, only: RK => RKC
+    !>                                  use pm_kind, only: RK => RKG
     !>                                  real(RK)    , intent(in)    :: x
     !>                                  real(RK)                    :: func
     !>                              end function
     !>
     !>                          \endcode
-    !>                          where `RKC` refers to any desired `real` kind supported by the processor.<br>
+    !>                          where `RKG` refers to any desired `real` kind supported by the processor.<br>
     !>  \param[in]  lb      :   The input scalar of the same type and kind as the output `quadRomb`, containing the lower bound of the integration.
     !>  \param[in]  ub      :   The input scalar of the same type and kind as the output `quadRomb`, containing the upper bound of the integration.
     !>  \param[in]  tol     :   The input scalar of the same type and kind as the output `quadRomb`, containing the *relative* error the integration.<br>
     !>                          The algorithm converges if \f$\ms{relerr} ~(~\equiv |\Delta\ms{quadRomb}|~) ~\leq~ \ms{tol} \times | \ms{quadRomb} |\f$.<br>
-    !>                          Note that `tol > epsilon(0._RKC)` must hold at all times for integration to converge. Here `RKC` is the desired `real` kind of the output.<br>
-    !>                          Ideally, set `tol` to a value such that `tol < epsilon(0._RKC) * 100` holds to ensure convergence.<br>
+    !>                          Note that `tol > epsilon(0._RKG)` must hold at all times for integration to converge. Here `RKG` is the desired `real` kind of the output.<br>
+    !>                          Ideally, set `tol` to a value such that `tol < epsilon(0._RKG) * 100` holds to ensure convergence.<br>
     !>  \param[in]  nref    :   The input scalar `integer` of default kind \IK, representing the number of refinements to be used in the Romberg method.<br>
     !>                          Think of `nref` as the maximum possible degree of the polynomial extrapolation used for approximating the integral at any stage.
     !>                          <ul>
     !>                              <li>    The smaller values of `nref` can delay an accurate estimation of the integral via the Romberg method.
     !>                              <li>    The larger values of `nref` can delay the first estimation of the integral by requiring more function evaluations.
     !>                              <li>    The computational precision of the `real` kind used in this procedure imposes an upper limit on the value of `nref`.<br>
-    !>                                      The maximum value for `nref` is roughly equal to `int(log(epsilon(1._RKC)) / log(0.25))`
-    !>                                      with `RKC` representing the `real` kind used for the integration.
+    !>                                      The maximum value for `nref` is roughly equal to `int(log(epsilon(1._RKG)) / log(0.25))`
+    !>                                      with `RKG` representing the `real` kind used for the integration.
     !>                              <li>    The maximum `nref` for `real32`, `real64`, `real128` are respectively `12`, `26`, `56`.<br>
     !>                              <li>    If the specified `nref` is larger than the maximum possible value, the integration will fail to converge.<br>
     !>                              <li>    The number `nref = 2` corresponds to the famous Simpson integration rule.
@@ -406,11 +406,11 @@ module pm_quadRomb
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQR_Clos_EM_NM_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        procedure(real(RKC))                    :: getFunc
-        real(RKC)   , intent(in)                :: lb, ub, tol
+        use pm_kind, only: RKG => RK5
+        procedure(real(RKG))                    :: getFunc
+        real(RKG)   , intent(in)                :: lb, ub, tol
         integer(IK) , intent(in)                :: nref
-        real(RKC)                               :: quadRomb
+        real(RKG)                               :: quadRomb
     end function
 #endif
 
@@ -419,11 +419,11 @@ module pm_quadRomb
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQR_Clos_EM_NM_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        procedure(real(RKC))                    :: getFunc
-        real(RKC)   , intent(in)                :: lb, ub, tol
+        use pm_kind, only: RKG => RK4
+        procedure(real(RKG))                    :: getFunc
+        real(RKG)   , intent(in)                :: lb, ub, tol
         integer(IK) , intent(in)                :: nref
-        real(RKC)                               :: quadRomb
+        real(RKG)                               :: quadRomb
     end function
 #endif
 
@@ -432,11 +432,11 @@ module pm_quadRomb
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQR_Clos_EM_NM_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        procedure(real(RKC))                    :: getFunc
-        real(RKC)   , intent(in)                :: lb, ub, tol
+        use pm_kind, only: RKG => RK3
+        procedure(real(RKG))                    :: getFunc
+        real(RKG)   , intent(in)                :: lb, ub, tol
         integer(IK) , intent(in)                :: nref
-        real(RKC)                               :: quadRomb
+        real(RKG)                               :: quadRomb
     end function
 #endif
 
@@ -445,11 +445,11 @@ module pm_quadRomb
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQR_Clos_EM_NM_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        procedure(real(RKC))                    :: getFunc
-        real(RKC)   , intent(in)                :: lb, ub, tol
+        use pm_kind, only: RKG => RK2
+        procedure(real(RKG))                    :: getFunc
+        real(RKG)   , intent(in)                :: lb, ub, tol
         integer(IK) , intent(in)                :: nref
-        real(RKC)                               :: quadRomb
+        real(RKG)                               :: quadRomb
     end function
 #endif
 
@@ -458,11 +458,11 @@ module pm_quadRomb
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQR_Clos_EM_NM_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        procedure(real(RKC))                    :: getFunc
-        real(RKC)   , intent(in)                :: lb, ub, tol
+        use pm_kind, only: RKG => RK1
+        procedure(real(RKG))                    :: getFunc
+        real(RKG)   , intent(in)                :: lb, ub, tol
         integer(IK) , intent(in)                :: nref
-        real(RKC)                               :: quadRomb
+        real(RKG)                               :: quadRomb
     end function
 #endif
 
@@ -473,12 +473,12 @@ module pm_quadRomb
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQR_Clos_EP_NM_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        procedure(real(RKC))                    :: getFunc
-        real(RKC)   , intent(in)                :: lb, ub, tol
+        use pm_kind, only: RKG => RK5
+        procedure(real(RKG))                    :: getFunc
+        real(RKG)   , intent(in)                :: lb, ub, tol
         integer(IK) , intent(in)                :: nref
-        real(RKC)   , intent(out)               :: relerr
-        real(RKC)                               :: quadRomb
+        real(RKG)   , intent(out)               :: relerr
+        real(RKG)                               :: quadRomb
     end function
 #endif
 
@@ -487,12 +487,12 @@ module pm_quadRomb
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQR_Clos_EP_NM_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        procedure(real(RKC))                    :: getFunc
-        real(RKC)   , intent(in)                :: lb, ub, tol
+        use pm_kind, only: RKG => RK4
+        procedure(real(RKG))                    :: getFunc
+        real(RKG)   , intent(in)                :: lb, ub, tol
         integer(IK) , intent(in)                :: nref
-        real(RKC)   , intent(out)               :: relerr
-        real(RKC)                               :: quadRomb
+        real(RKG)   , intent(out)               :: relerr
+        real(RKG)                               :: quadRomb
     end function
 #endif
 
@@ -501,12 +501,12 @@ module pm_quadRomb
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQR_Clos_EP_NM_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        procedure(real(RKC))                    :: getFunc
-        real(RKC)   , intent(in)                :: lb, ub, tol
+        use pm_kind, only: RKG => RK3
+        procedure(real(RKG))                    :: getFunc
+        real(RKG)   , intent(in)                :: lb, ub, tol
         integer(IK) , intent(in)                :: nref
-        real(RKC)   , intent(out)               :: relerr
-        real(RKC)                               :: quadRomb
+        real(RKG)   , intent(out)               :: relerr
+        real(RKG)                               :: quadRomb
     end function
 #endif
 
@@ -515,12 +515,12 @@ module pm_quadRomb
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQR_Clos_EP_NM_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        procedure(real(RKC))                    :: getFunc
-        real(RKC)   , intent(in)                :: lb, ub, tol
+        use pm_kind, only: RKG => RK2
+        procedure(real(RKG))                    :: getFunc
+        real(RKG)   , intent(in)                :: lb, ub, tol
         integer(IK) , intent(in)                :: nref
-        real(RKC)   , intent(out)               :: relerr
-        real(RKC)                               :: quadRomb
+        real(RKG)   , intent(out)               :: relerr
+        real(RKG)                               :: quadRomb
     end function
 #endif
 
@@ -529,12 +529,12 @@ module pm_quadRomb
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQR_Clos_EP_NM_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        procedure(real(RKC))                    :: getFunc
-        real(RKC)   , intent(in)                :: lb, ub, tol
+        use pm_kind, only: RKG => RK1
+        procedure(real(RKG))                    :: getFunc
+        real(RKG)   , intent(in)                :: lb, ub, tol
         integer(IK) , intent(in)                :: nref
-        real(RKC)   , intent(out)               :: relerr
-        real(RKC)                               :: quadRomb
+        real(RKG)   , intent(out)               :: relerr
+        real(RKG)                               :: quadRomb
     end function
 #endif
 
@@ -545,13 +545,13 @@ module pm_quadRomb
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQR_Clos_EP_NP_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        procedure(real(RKC))                    :: getFunc
-        real(RKC)   , intent(in)                :: lb, ub, tol
+        use pm_kind, only: RKG => RK5
+        procedure(real(RKG))                    :: getFunc
+        real(RKG)   , intent(in)                :: lb, ub, tol
         integer(IK) , intent(in)                :: nref
         integer(IK) , intent(out)               :: neval
-        real(RKC)   , intent(out)               :: relerr
-        real(RKC)                               :: quadRomb
+        real(RKG)   , intent(out)               :: relerr
+        real(RKG)                               :: quadRomb
     end function
 #endif
 
@@ -560,13 +560,13 @@ module pm_quadRomb
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQR_Clos_EP_NP_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        procedure(real(RKC))                    :: getFunc
-        real(RKC)   , intent(in)                :: lb, ub, tol
+        use pm_kind, only: RKG => RK4
+        procedure(real(RKG))                    :: getFunc
+        real(RKG)   , intent(in)                :: lb, ub, tol
         integer(IK) , intent(in)                :: nref
         integer(IK) , intent(out)               :: neval
-        real(RKC)   , intent(out)               :: relerr
-        real(RKC)                               :: quadRomb
+        real(RKG)   , intent(out)               :: relerr
+        real(RKG)                               :: quadRomb
     end function
 #endif
 
@@ -575,13 +575,13 @@ module pm_quadRomb
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQR_Clos_EP_NP_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        procedure(real(RKC))                    :: getFunc
-        real(RKC)   , intent(in)                :: lb, ub, tol
+        use pm_kind, only: RKG => RK3
+        procedure(real(RKG))                    :: getFunc
+        real(RKG)   , intent(in)                :: lb, ub, tol
         integer(IK) , intent(in)                :: nref
         integer(IK) , intent(out)               :: neval
-        real(RKC)   , intent(out)               :: relerr
-        real(RKC)                               :: quadRomb
+        real(RKG)   , intent(out)               :: relerr
+        real(RKG)                               :: quadRomb
     end function
 #endif
 
@@ -590,13 +590,13 @@ module pm_quadRomb
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQR_Clos_EP_NP_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        procedure(real(RKC))                    :: getFunc
-        real(RKC)   , intent(in)                :: lb, ub, tol
+        use pm_kind, only: RKG => RK2
+        procedure(real(RKG))                    :: getFunc
+        real(RKG)   , intent(in)                :: lb, ub, tol
         integer(IK) , intent(in)                :: nref
         integer(IK) , intent(out)               :: neval
-        real(RKC)   , intent(out)               :: relerr
-        real(RKC)                               :: quadRomb
+        real(RKG)   , intent(out)               :: relerr
+        real(RKG)                               :: quadRomb
     end function
 #endif
 
@@ -605,13 +605,13 @@ module pm_quadRomb
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQR_Clos_EP_NP_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        procedure(real(RKC))                    :: getFunc
-        real(RKC)   , intent(in)                :: lb, ub, tol
+        use pm_kind, only: RKG => RK1
+        procedure(real(RKG))                    :: getFunc
+        real(RKG)   , intent(in)                :: lb, ub, tol
         integer(IK) , intent(in)                :: nref
         integer(IK) , intent(out)               :: neval
-        real(RKC)   , intent(out)               :: relerr
-        real(RKC)                               :: quadRomb
+        real(RKG)   , intent(out)               :: relerr
+        real(RKG)                               :: quadRomb
     end function
 #endif
 
@@ -628,12 +628,12 @@ module pm_quadRomb
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQR_Open_EM_NM_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        procedure(real(RKC))                    :: getFunc
-        real(RKC)   , intent(in)                :: lb, ub, tol
+        use pm_kind, only: RKG => RK5
+        procedure(real(RKG))                    :: getFunc
+        real(RKG)   , intent(in)                :: lb, ub, tol
         integer(IK) , intent(in)                :: nref
         type(open_type)                         :: interval
-        real(RKC)                               :: quadRomb
+        real(RKG)                               :: quadRomb
     end function
 #endif
 
@@ -642,12 +642,12 @@ module pm_quadRomb
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQR_Open_EM_NM_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        procedure(real(RKC))                    :: getFunc
-        real(RKC)   , intent(in)                :: lb, ub, tol
+        use pm_kind, only: RKG => RK4
+        procedure(real(RKG))                    :: getFunc
+        real(RKG)   , intent(in)                :: lb, ub, tol
         integer(IK) , intent(in)                :: nref
         type(open_type)                         :: interval
-        real(RKC)                               :: quadRomb
+        real(RKG)                               :: quadRomb
     end function
 #endif
 
@@ -656,12 +656,12 @@ module pm_quadRomb
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQR_Open_EM_NM_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        procedure(real(RKC))                    :: getFunc
-        real(RKC)   , intent(in)                :: lb, ub, tol
+        use pm_kind, only: RKG => RK3
+        procedure(real(RKG))                    :: getFunc
+        real(RKG)   , intent(in)                :: lb, ub, tol
         integer(IK) , intent(in)                :: nref
         type(open_type)                         :: interval
-        real(RKC)                               :: quadRomb
+        real(RKG)                               :: quadRomb
     end function
 #endif
 
@@ -670,12 +670,12 @@ module pm_quadRomb
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQR_Open_EM_NM_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        procedure(real(RKC))                    :: getFunc
-        real(RKC)   , intent(in)                :: lb, ub, tol
+        use pm_kind, only: RKG => RK2
+        procedure(real(RKG))                    :: getFunc
+        real(RKG)   , intent(in)                :: lb, ub, tol
         integer(IK) , intent(in)                :: nref
         type(open_type)                         :: interval
-        real(RKC)                               :: quadRomb
+        real(RKG)                               :: quadRomb
     end function
 #endif
 
@@ -684,12 +684,12 @@ module pm_quadRomb
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQR_Open_EM_NM_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        procedure(real(RKC))                    :: getFunc
-        real(RKC)   , intent(in)                :: lb, ub, tol
+        use pm_kind, only: RKG => RK1
+        procedure(real(RKG))                    :: getFunc
+        real(RKG)   , intent(in)                :: lb, ub, tol
         integer(IK) , intent(in)                :: nref
         type(open_type)                         :: interval
-        real(RKC)                               :: quadRomb
+        real(RKG)                               :: quadRomb
     end function
 #endif
 
@@ -700,13 +700,13 @@ module pm_quadRomb
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQR_Open_EP_NM_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        procedure(real(RKC))                    :: getFunc
-        real(RKC)   , intent(in)                :: lb, ub, tol
+        use pm_kind, only: RKG => RK5
+        procedure(real(RKG))                    :: getFunc
+        real(RKG)   , intent(in)                :: lb, ub, tol
         integer(IK) , intent(in)                :: nref
         type(open_type)                         :: interval
-        real(RKC)   , intent(out)               :: relerr
-        real(RKC)                               :: quadRomb
+        real(RKG)   , intent(out)               :: relerr
+        real(RKG)                               :: quadRomb
     end function
 #endif
 
@@ -715,13 +715,13 @@ module pm_quadRomb
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQR_Open_EP_NM_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        procedure(real(RKC))                    :: getFunc
-        real(RKC)   , intent(in)                :: lb, ub, tol
+        use pm_kind, only: RKG => RK4
+        procedure(real(RKG))                    :: getFunc
+        real(RKG)   , intent(in)                :: lb, ub, tol
         integer(IK) , intent(in)                :: nref
         type(open_type)                         :: interval
-        real(RKC)   , intent(out)               :: relerr
-        real(RKC)                               :: quadRomb
+        real(RKG)   , intent(out)               :: relerr
+        real(RKG)                               :: quadRomb
     end function
 #endif
 
@@ -730,13 +730,13 @@ module pm_quadRomb
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQR_Open_EP_NM_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        procedure(real(RKC))                    :: getFunc
-        real(RKC)   , intent(in)                :: lb, ub, tol
+        use pm_kind, only: RKG => RK3
+        procedure(real(RKG))                    :: getFunc
+        real(RKG)   , intent(in)                :: lb, ub, tol
         integer(IK) , intent(in)                :: nref
         type(open_type)                         :: interval
-        real(RKC)   , intent(out)               :: relerr
-        real(RKC)                               :: quadRomb
+        real(RKG)   , intent(out)               :: relerr
+        real(RKG)                               :: quadRomb
     end function
 #endif
 
@@ -745,13 +745,13 @@ module pm_quadRomb
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQR_Open_EP_NM_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        procedure(real(RKC))                    :: getFunc
-        real(RKC)   , intent(in)                :: lb, ub, tol
+        use pm_kind, only: RKG => RK2
+        procedure(real(RKG))                    :: getFunc
+        real(RKG)   , intent(in)                :: lb, ub, tol
         integer(IK) , intent(in)                :: nref
         type(open_type)                         :: interval
-        real(RKC)   , intent(out)               :: relerr
-        real(RKC)                               :: quadRomb
+        real(RKG)   , intent(out)               :: relerr
+        real(RKG)                               :: quadRomb
     end function
 #endif
 
@@ -760,13 +760,13 @@ module pm_quadRomb
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQR_Open_EP_NM_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        procedure(real(RKC))                    :: getFunc
-        real(RKC)   , intent(in)                :: lb, ub, tol
+        use pm_kind, only: RKG => RK1
+        procedure(real(RKG))                    :: getFunc
+        real(RKG)   , intent(in)                :: lb, ub, tol
         integer(IK) , intent(in)                :: nref
         type(open_type)                         :: interval
-        real(RKC)   , intent(out)               :: relerr
-        real(RKC)                               :: quadRomb
+        real(RKG)   , intent(out)               :: relerr
+        real(RKG)                               :: quadRomb
     end function
 #endif
 
@@ -777,14 +777,14 @@ module pm_quadRomb
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQR_Open_EP_NP_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        procedure(real(RKC))                    :: getFunc
-        real(RKC)   , intent(in)                :: lb, ub, tol
+        use pm_kind, only: RKG => RK5
+        procedure(real(RKG))                    :: getFunc
+        real(RKG)   , intent(in)                :: lb, ub, tol
         integer(IK) , intent(in)                :: nref
         type(open_type)                         :: interval
         integer(IK) , intent(out)               :: neval
-        real(RKC)   , intent(out)               :: relerr
-        real(RKC)                               :: quadRomb
+        real(RKG)   , intent(out)               :: relerr
+        real(RKG)                               :: quadRomb
     end function
 #endif
 
@@ -793,14 +793,14 @@ module pm_quadRomb
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQR_Open_EP_NP_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        procedure(real(RKC))                    :: getFunc
-        real(RKC)   , intent(in)                :: lb, ub, tol
+        use pm_kind, only: RKG => RK4
+        procedure(real(RKG))                    :: getFunc
+        real(RKG)   , intent(in)                :: lb, ub, tol
         integer(IK) , intent(in)                :: nref
         type(open_type)                         :: interval
         integer(IK) , intent(out)               :: neval
-        real(RKC)   , intent(out)               :: relerr
-        real(RKC)                               :: quadRomb
+        real(RKG)   , intent(out)               :: relerr
+        real(RKG)                               :: quadRomb
     end function
 #endif
 
@@ -809,14 +809,14 @@ module pm_quadRomb
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQR_Open_EP_NP_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        procedure(real(RKC))                    :: getFunc
-        real(RKC)   , intent(in)                :: lb, ub, tol
+        use pm_kind, only: RKG => RK3
+        procedure(real(RKG))                    :: getFunc
+        real(RKG)   , intent(in)                :: lb, ub, tol
         integer(IK) , intent(in)                :: nref
         type(open_type)                         :: interval
         integer(IK) , intent(out)               :: neval
-        real(RKC)   , intent(out)               :: relerr
-        real(RKC)                               :: quadRomb
+        real(RKG)   , intent(out)               :: relerr
+        real(RKG)                               :: quadRomb
     end function
 #endif
 
@@ -825,14 +825,14 @@ module pm_quadRomb
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQR_Open_EP_NP_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        procedure(real(RKC))                    :: getFunc
-        real(RKC)   , intent(in)                :: lb, ub, tol
+        use pm_kind, only: RKG => RK2
+        procedure(real(RKG))                    :: getFunc
+        real(RKG)   , intent(in)                :: lb, ub, tol
         integer(IK) , intent(in)                :: nref
         type(open_type)                         :: interval
         integer(IK) , intent(out)               :: neval
-        real(RKC)   , intent(out)               :: relerr
-        real(RKC)                               :: quadRomb
+        real(RKG)   , intent(out)               :: relerr
+        real(RKG)                               :: quadRomb
     end function
 #endif
 
@@ -841,14 +841,14 @@ module pm_quadRomb
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQR_Open_EP_NP_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        procedure(real(RKC))                    :: getFunc
-        real(RKC)   , intent(in)                :: lb, ub, tol
+        use pm_kind, only: RKG => RK1
+        procedure(real(RKG))                    :: getFunc
+        real(RKG)   , intent(in)                :: lb, ub, tol
         integer(IK) , intent(in)                :: nref
         type(open_type)                         :: interval
         integer(IK) , intent(out)               :: neval
-        real(RKC)   , intent(out)               :: relerr
-        real(RKC)                               :: quadRomb
+        real(RKG)   , intent(out)               :: relerr
+        real(RKG)                               :: quadRomb
     end function
 #endif
 
@@ -865,12 +865,12 @@ module pm_quadRomb
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQR_PWRL_EM_NM_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        procedure(real(RKC))                    :: getFunc
-        real(RKC)   , intent(in)                :: lb, ub, tol
+        use pm_kind, only: RKG => RK5
+        procedure(real(RKG))                    :: getFunc
+        real(RKG)   , intent(in)                :: lb, ub, tol
         integer(IK) , intent(in)                :: nref
         type(pwrl_type)                         :: interval
-        real(RKC)                               :: quadRomb
+        real(RKG)                               :: quadRomb
     end function
 #endif
 
@@ -879,12 +879,12 @@ module pm_quadRomb
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQR_PWRL_EM_NM_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        procedure(real(RKC))                    :: getFunc
-        real(RKC)   , intent(in)                :: lb, ub, tol
+        use pm_kind, only: RKG => RK4
+        procedure(real(RKG))                    :: getFunc
+        real(RKG)   , intent(in)                :: lb, ub, tol
         integer(IK) , intent(in)                :: nref
         type(pwrl_type)                         :: interval
-        real(RKC)                               :: quadRomb
+        real(RKG)                               :: quadRomb
     end function
 #endif
 
@@ -893,12 +893,12 @@ module pm_quadRomb
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQR_PWRL_EM_NM_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        procedure(real(RKC))                    :: getFunc
-        real(RKC)   , intent(in)                :: lb, ub, tol
+        use pm_kind, only: RKG => RK3
+        procedure(real(RKG))                    :: getFunc
+        real(RKG)   , intent(in)                :: lb, ub, tol
         integer(IK) , intent(in)                :: nref
         type(pwrl_type)                         :: interval
-        real(RKC)                               :: quadRomb
+        real(RKG)                               :: quadRomb
     end function
 #endif
 
@@ -907,12 +907,12 @@ module pm_quadRomb
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQR_PWRL_EM_NM_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        procedure(real(RKC))                    :: getFunc
-        real(RKC)   , intent(in)                :: lb, ub, tol
+        use pm_kind, only: RKG => RK2
+        procedure(real(RKG))                    :: getFunc
+        real(RKG)   , intent(in)                :: lb, ub, tol
         integer(IK) , intent(in)                :: nref
         type(pwrl_type)                         :: interval
-        real(RKC)                               :: quadRomb
+        real(RKG)                               :: quadRomb
     end function
 #endif
 
@@ -921,12 +921,12 @@ module pm_quadRomb
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQR_PWRL_EM_NM_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        procedure(real(RKC))                    :: getFunc
-        real(RKC)   , intent(in)                :: lb, ub, tol
+        use pm_kind, only: RKG => RK1
+        procedure(real(RKG))                    :: getFunc
+        real(RKG)   , intent(in)                :: lb, ub, tol
         integer(IK) , intent(in)                :: nref
         type(pwrl_type)                         :: interval
-        real(RKC)                               :: quadRomb
+        real(RKG)                               :: quadRomb
     end function
 #endif
 
@@ -937,13 +937,13 @@ module pm_quadRomb
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQR_PWRL_EP_NM_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        procedure(real(RKC))                    :: getFunc
-        real(RKC)   , intent(in)                :: lb, ub, tol
+        use pm_kind, only: RKG => RK5
+        procedure(real(RKG))                    :: getFunc
+        real(RKG)   , intent(in)                :: lb, ub, tol
         integer(IK) , intent(in)                :: nref
         type(pwrl_type)                         :: interval
-        real(RKC)   , intent(out)               :: relerr
-        real(RKC)                               :: quadRomb
+        real(RKG)   , intent(out)               :: relerr
+        real(RKG)                               :: quadRomb
     end function
 #endif
 
@@ -952,13 +952,13 @@ module pm_quadRomb
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQR_PWRL_EP_NM_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        procedure(real(RKC))                    :: getFunc
-        real(RKC)   , intent(in)                :: lb, ub, tol
+        use pm_kind, only: RKG => RK4
+        procedure(real(RKG))                    :: getFunc
+        real(RKG)   , intent(in)                :: lb, ub, tol
         integer(IK) , intent(in)                :: nref
         type(pwrl_type)                         :: interval
-        real(RKC)   , intent(out)               :: relerr
-        real(RKC)                               :: quadRomb
+        real(RKG)   , intent(out)               :: relerr
+        real(RKG)                               :: quadRomb
     end function
 #endif
 
@@ -967,13 +967,13 @@ module pm_quadRomb
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQR_PWRL_EP_NM_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        procedure(real(RKC))                    :: getFunc
-        real(RKC)   , intent(in)                :: lb, ub, tol
+        use pm_kind, only: RKG => RK3
+        procedure(real(RKG))                    :: getFunc
+        real(RKG)   , intent(in)                :: lb, ub, tol
         integer(IK) , intent(in)                :: nref
         type(pwrl_type)                         :: interval
-        real(RKC)   , intent(out)               :: relerr
-        real(RKC)                               :: quadRomb
+        real(RKG)   , intent(out)               :: relerr
+        real(RKG)                               :: quadRomb
     end function
 #endif
 
@@ -982,13 +982,13 @@ module pm_quadRomb
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQR_PWRL_EP_NM_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        procedure(real(RKC))                    :: getFunc
-        real(RKC)   , intent(in)                :: lb, ub, tol
+        use pm_kind, only: RKG => RK2
+        procedure(real(RKG))                    :: getFunc
+        real(RKG)   , intent(in)                :: lb, ub, tol
         integer(IK) , intent(in)                :: nref
         type(pwrl_type)                         :: interval
-        real(RKC)   , intent(out)               :: relerr
-        real(RKC)                               :: quadRomb
+        real(RKG)   , intent(out)               :: relerr
+        real(RKG)                               :: quadRomb
     end function
 #endif
 
@@ -997,13 +997,13 @@ module pm_quadRomb
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQR_PWRL_EP_NM_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        procedure(real(RKC))                    :: getFunc
-        real(RKC)   , intent(in)                :: lb, ub, tol
+        use pm_kind, only: RKG => RK1
+        procedure(real(RKG))                    :: getFunc
+        real(RKG)   , intent(in)                :: lb, ub, tol
         integer(IK) , intent(in)                :: nref
         type(pwrl_type)                         :: interval
-        real(RKC)   , intent(out)               :: relerr
-        real(RKC)                               :: quadRomb
+        real(RKG)   , intent(out)               :: relerr
+        real(RKG)                               :: quadRomb
     end function
 #endif
 
@@ -1014,14 +1014,14 @@ module pm_quadRomb
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQR_PWRL_EP_NP_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        procedure(real(RKC))                    :: getFunc
-        real(RKC)   , intent(in)                :: lb, ub, tol
+        use pm_kind, only: RKG => RK5
+        procedure(real(RKG))                    :: getFunc
+        real(RKG)   , intent(in)                :: lb, ub, tol
         integer(IK) , intent(in)                :: nref
         type(pwrl_type)                         :: interval
         integer(IK) , intent(out)               :: neval
-        real(RKC)   , intent(out)               :: relerr
-        real(RKC)                               :: quadRomb
+        real(RKG)   , intent(out)               :: relerr
+        real(RKG)                               :: quadRomb
     end function
 #endif
 
@@ -1030,14 +1030,14 @@ module pm_quadRomb
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQR_PWRL_EP_NP_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        procedure(real(RKC))                    :: getFunc
-        real(RKC)   , intent(in)                :: lb, ub, tol
+        use pm_kind, only: RKG => RK4
+        procedure(real(RKG))                    :: getFunc
+        real(RKG)   , intent(in)                :: lb, ub, tol
         integer(IK) , intent(in)                :: nref
         type(pwrl_type)                         :: interval
         integer(IK) , intent(out)               :: neval
-        real(RKC)   , intent(out)               :: relerr
-        real(RKC)                               :: quadRomb
+        real(RKG)   , intent(out)               :: relerr
+        real(RKG)                               :: quadRomb
     end function
 #endif
 
@@ -1046,14 +1046,14 @@ module pm_quadRomb
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQR_PWRL_EP_NP_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        procedure(real(RKC))                    :: getFunc
-        real(RKC)   , intent(in)                :: lb, ub, tol
+        use pm_kind, only: RKG => RK3
+        procedure(real(RKG))                    :: getFunc
+        real(RKG)   , intent(in)                :: lb, ub, tol
         integer(IK) , intent(in)                :: nref
         type(pwrl_type)                         :: interval
         integer(IK) , intent(out)               :: neval
-        real(RKC)   , intent(out)               :: relerr
-        real(RKC)                               :: quadRomb
+        real(RKG)   , intent(out)               :: relerr
+        real(RKG)                               :: quadRomb
     end function
 #endif
 
@@ -1062,14 +1062,14 @@ module pm_quadRomb
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQR_PWRL_EP_NP_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        procedure(real(RKC))                    :: getFunc
-        real(RKC)   , intent(in)                :: lb, ub, tol
+        use pm_kind, only: RKG => RK2
+        procedure(real(RKG))                    :: getFunc
+        real(RKG)   , intent(in)                :: lb, ub, tol
         integer(IK) , intent(in)                :: nref
         type(pwrl_type)                         :: interval
         integer(IK) , intent(out)               :: neval
-        real(RKC)   , intent(out)               :: relerr
-        real(RKC)                               :: quadRomb
+        real(RKG)   , intent(out)               :: relerr
+        real(RKG)                               :: quadRomb
     end function
 #endif
 
@@ -1078,14 +1078,14 @@ module pm_quadRomb
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQR_PWRL_EP_NP_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        procedure(real(RKC))                    :: getFunc
-        real(RKC)   , intent(in)                :: lb, ub, tol
+        use pm_kind, only: RKG => RK1
+        procedure(real(RKG))                    :: getFunc
+        real(RKG)   , intent(in)                :: lb, ub, tol
         integer(IK) , intent(in)                :: nref
         type(pwrl_type)                         :: interval
         integer(IK) , intent(out)               :: neval
-        real(RKC)   , intent(out)               :: relerr
-        real(RKC)                               :: quadRomb
+        real(RKG)   , intent(out)               :: relerr
+        real(RKG)                               :: quadRomb
     end function
 #endif
 
@@ -1102,12 +1102,12 @@ module pm_quadRomb
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQR_NEXP_EM_NM_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        procedure(real(RKC))                    :: getFunc
-        real(RKC)   , intent(in)                :: lb, ub, tol
+        use pm_kind, only: RKG => RK5
+        procedure(real(RKG))                    :: getFunc
+        real(RKG)   , intent(in)                :: lb, ub, tol
         integer(IK) , intent(in)                :: nref
         type(nexp_type)                         :: interval
-        real(RKC)                               :: quadRomb
+        real(RKG)                               :: quadRomb
     end function
 #endif
 
@@ -1116,12 +1116,12 @@ module pm_quadRomb
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQR_NEXP_EM_NM_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        procedure(real(RKC))                    :: getFunc
-        real(RKC)   , intent(in)                :: lb, ub, tol
+        use pm_kind, only: RKG => RK4
+        procedure(real(RKG))                    :: getFunc
+        real(RKG)   , intent(in)                :: lb, ub, tol
         integer(IK) , intent(in)                :: nref
         type(nexp_type)                         :: interval
-        real(RKC)                               :: quadRomb
+        real(RKG)                               :: quadRomb
     end function
 #endif
 
@@ -1130,12 +1130,12 @@ module pm_quadRomb
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQR_NEXP_EM_NM_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        procedure(real(RKC))                    :: getFunc
-        real(RKC)   , intent(in)                :: lb, ub, tol
+        use pm_kind, only: RKG => RK3
+        procedure(real(RKG))                    :: getFunc
+        real(RKG)   , intent(in)                :: lb, ub, tol
         integer(IK) , intent(in)                :: nref
         type(nexp_type)                         :: interval
-        real(RKC)                               :: quadRomb
+        real(RKG)                               :: quadRomb
     end function
 #endif
 
@@ -1144,12 +1144,12 @@ module pm_quadRomb
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQR_NEXP_EM_NM_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        procedure(real(RKC))                    :: getFunc
-        real(RKC)   , intent(in)                :: lb, ub, tol
+        use pm_kind, only: RKG => RK2
+        procedure(real(RKG))                    :: getFunc
+        real(RKG)   , intent(in)                :: lb, ub, tol
         integer(IK) , intent(in)                :: nref
         type(nexp_type)                         :: interval
-        real(RKC)                               :: quadRomb
+        real(RKG)                               :: quadRomb
     end function
 #endif
 
@@ -1158,12 +1158,12 @@ module pm_quadRomb
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQR_NEXP_EM_NM_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        procedure(real(RKC))                    :: getFunc
-        real(RKC)   , intent(in)                :: lb, ub, tol
+        use pm_kind, only: RKG => RK1
+        procedure(real(RKG))                    :: getFunc
+        real(RKG)   , intent(in)                :: lb, ub, tol
         integer(IK) , intent(in)                :: nref
         type(nexp_type)                         :: interval
-        real(RKC)                               :: quadRomb
+        real(RKG)                               :: quadRomb
     end function
 #endif
 
@@ -1174,13 +1174,13 @@ module pm_quadRomb
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQR_NEXP_EP_NM_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        procedure(real(RKC))                    :: getFunc
-        real(RKC)   , intent(in)                :: lb, ub, tol
+        use pm_kind, only: RKG => RK5
+        procedure(real(RKG))                    :: getFunc
+        real(RKG)   , intent(in)                :: lb, ub, tol
         integer(IK) , intent(in)                :: nref
         type(nexp_type)                         :: interval
-        real(RKC)   , intent(out)               :: relerr
-        real(RKC)                               :: quadRomb
+        real(RKG)   , intent(out)               :: relerr
+        real(RKG)                               :: quadRomb
     end function
 #endif
 
@@ -1189,13 +1189,13 @@ module pm_quadRomb
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQR_NEXP_EP_NM_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        procedure(real(RKC))                    :: getFunc
-        real(RKC)   , intent(in)                :: lb, ub, tol
+        use pm_kind, only: RKG => RK4
+        procedure(real(RKG))                    :: getFunc
+        real(RKG)   , intent(in)                :: lb, ub, tol
         integer(IK) , intent(in)                :: nref
         type(nexp_type)                         :: interval
-        real(RKC)   , intent(out)               :: relerr
-        real(RKC)                               :: quadRomb
+        real(RKG)   , intent(out)               :: relerr
+        real(RKG)                               :: quadRomb
     end function
 #endif
 
@@ -1204,13 +1204,13 @@ module pm_quadRomb
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQR_NEXP_EP_NM_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        procedure(real(RKC))                    :: getFunc
-        real(RKC)   , intent(in)                :: lb, ub, tol
+        use pm_kind, only: RKG => RK3
+        procedure(real(RKG))                    :: getFunc
+        real(RKG)   , intent(in)                :: lb, ub, tol
         integer(IK) , intent(in)                :: nref
         type(nexp_type)                         :: interval
-        real(RKC)   , intent(out)               :: relerr
-        real(RKC)                               :: quadRomb
+        real(RKG)   , intent(out)               :: relerr
+        real(RKG)                               :: quadRomb
     end function
 #endif
 
@@ -1219,13 +1219,13 @@ module pm_quadRomb
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQR_NEXP_EP_NM_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        procedure(real(RKC))                    :: getFunc
-        real(RKC)   , intent(in)                :: lb, ub, tol
+        use pm_kind, only: RKG => RK2
+        procedure(real(RKG))                    :: getFunc
+        real(RKG)   , intent(in)                :: lb, ub, tol
         integer(IK) , intent(in)                :: nref
         type(nexp_type)                         :: interval
-        real(RKC)   , intent(out)               :: relerr
-        real(RKC)                               :: quadRomb
+        real(RKG)   , intent(out)               :: relerr
+        real(RKG)                               :: quadRomb
     end function
 #endif
 
@@ -1234,13 +1234,13 @@ module pm_quadRomb
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQR_NEXP_EP_NM_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        procedure(real(RKC))                    :: getFunc
-        real(RKC)   , intent(in)                :: lb, ub, tol
+        use pm_kind, only: RKG => RK1
+        procedure(real(RKG))                    :: getFunc
+        real(RKG)   , intent(in)                :: lb, ub, tol
         integer(IK) , intent(in)                :: nref
         type(nexp_type)                         :: interval
-        real(RKC)   , intent(out)               :: relerr
-        real(RKC)                               :: quadRomb
+        real(RKG)   , intent(out)               :: relerr
+        real(RKG)                               :: quadRomb
     end function
 #endif
 
@@ -1251,14 +1251,14 @@ module pm_quadRomb
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQR_NEXP_EP_NP_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        procedure(real(RKC))                    :: getFunc
-        real(RKC)   , intent(in)                :: lb, ub, tol
+        use pm_kind, only: RKG => RK5
+        procedure(real(RKG))                    :: getFunc
+        real(RKG)   , intent(in)                :: lb, ub, tol
         integer(IK) , intent(in)                :: nref
         type(nexp_type)                         :: interval
         integer(IK) , intent(out)               :: neval
-        real(RKC)   , intent(out)               :: relerr
-        real(RKC)                               :: quadRomb
+        real(RKG)   , intent(out)               :: relerr
+        real(RKG)                               :: quadRomb
     end function
 #endif
 
@@ -1267,14 +1267,14 @@ module pm_quadRomb
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQR_NEXP_EP_NP_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        procedure(real(RKC))                    :: getFunc
-        real(RKC)   , intent(in)                :: lb, ub, tol
+        use pm_kind, only: RKG => RK4
+        procedure(real(RKG))                    :: getFunc
+        real(RKG)   , intent(in)                :: lb, ub, tol
         integer(IK) , intent(in)                :: nref
         type(nexp_type)                         :: interval
         integer(IK) , intent(out)               :: neval
-        real(RKC)   , intent(out)               :: relerr
-        real(RKC)                               :: quadRomb
+        real(RKG)   , intent(out)               :: relerr
+        real(RKG)                               :: quadRomb
     end function
 #endif
 
@@ -1283,14 +1283,14 @@ module pm_quadRomb
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQR_NEXP_EP_NP_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        procedure(real(RKC))                    :: getFunc
-        real(RKC)   , intent(in)                :: lb, ub, tol
+        use pm_kind, only: RKG => RK3
+        procedure(real(RKG))                    :: getFunc
+        real(RKG)   , intent(in)                :: lb, ub, tol
         integer(IK) , intent(in)                :: nref
         type(nexp_type)                         :: interval
         integer(IK) , intent(out)               :: neval
-        real(RKC)   , intent(out)               :: relerr
-        real(RKC)                               :: quadRomb
+        real(RKG)   , intent(out)               :: relerr
+        real(RKG)                               :: quadRomb
     end function
 #endif
 
@@ -1299,14 +1299,14 @@ module pm_quadRomb
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQR_NEXP_EP_NP_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        procedure(real(RKC))                    :: getFunc
-        real(RKC)   , intent(in)                :: lb, ub, tol
+        use pm_kind, only: RKG => RK2
+        procedure(real(RKG))                    :: getFunc
+        real(RKG)   , intent(in)                :: lb, ub, tol
         integer(IK) , intent(in)                :: nref
         type(nexp_type)                         :: interval
         integer(IK) , intent(out)               :: neval
-        real(RKC)   , intent(out)               :: relerr
-        real(RKC)                               :: quadRomb
+        real(RKG)   , intent(out)               :: relerr
+        real(RKG)                               :: quadRomb
     end function
 #endif
 
@@ -1315,14 +1315,14 @@ module pm_quadRomb
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQR_NEXP_EP_NP_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        procedure(real(RKC))                    :: getFunc
-        real(RKC)   , intent(in)                :: lb, ub, tol
+        use pm_kind, only: RKG => RK1
+        procedure(real(RKG))                    :: getFunc
+        real(RKG)   , intent(in)                :: lb, ub, tol
         integer(IK) , intent(in)                :: nref
         type(nexp_type)                         :: interval
         integer(IK) , intent(out)               :: neval
-        real(RKC)   , intent(out)               :: relerr
-        real(RKC)                               :: quadRomb
+        real(RKG)   , intent(out)               :: relerr
+        real(RKG)                               :: quadRomb
     end function
 #endif
 
@@ -1339,12 +1339,12 @@ module pm_quadRomb
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQR_PEXP_EM_NM_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        procedure(real(RKC))                    :: getFunc
-        real(RKC)   , intent(in)                :: lb, ub, tol
+        use pm_kind, only: RKG => RK5
+        procedure(real(RKG))                    :: getFunc
+        real(RKG)   , intent(in)                :: lb, ub, tol
         integer(IK) , intent(in)                :: nref
         type(pexp_type)                         :: interval
-        real(RKC)                               :: quadRomb
+        real(RKG)                               :: quadRomb
     end function
 #endif
 
@@ -1353,12 +1353,12 @@ module pm_quadRomb
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQR_PEXP_EM_NM_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        procedure(real(RKC))                    :: getFunc
-        real(RKC)   , intent(in)                :: lb, ub, tol
+        use pm_kind, only: RKG => RK4
+        procedure(real(RKG))                    :: getFunc
+        real(RKG)   , intent(in)                :: lb, ub, tol
         integer(IK) , intent(in)                :: nref
         type(pexp_type)                         :: interval
-        real(RKC)                               :: quadRomb
+        real(RKG)                               :: quadRomb
     end function
 #endif
 
@@ -1367,12 +1367,12 @@ module pm_quadRomb
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQR_PEXP_EM_NM_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        procedure(real(RKC))                    :: getFunc
-        real(RKC)   , intent(in)                :: lb, ub, tol
+        use pm_kind, only: RKG => RK3
+        procedure(real(RKG))                    :: getFunc
+        real(RKG)   , intent(in)                :: lb, ub, tol
         integer(IK) , intent(in)                :: nref
         type(pexp_type)                         :: interval
-        real(RKC)                               :: quadRomb
+        real(RKG)                               :: quadRomb
     end function
 #endif
 
@@ -1381,12 +1381,12 @@ module pm_quadRomb
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQR_PEXP_EM_NM_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        procedure(real(RKC))                    :: getFunc
-        real(RKC)   , intent(in)                :: lb, ub, tol
+        use pm_kind, only: RKG => RK2
+        procedure(real(RKG))                    :: getFunc
+        real(RKG)   , intent(in)                :: lb, ub, tol
         integer(IK) , intent(in)                :: nref
         type(pexp_type)                         :: interval
-        real(RKC)                               :: quadRomb
+        real(RKG)                               :: quadRomb
     end function
 #endif
 
@@ -1395,12 +1395,12 @@ module pm_quadRomb
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQR_PEXP_EM_NM_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        procedure(real(RKC))                    :: getFunc
-        real(RKC)   , intent(in)                :: lb, ub, tol
+        use pm_kind, only: RKG => RK1
+        procedure(real(RKG))                    :: getFunc
+        real(RKG)   , intent(in)                :: lb, ub, tol
         integer(IK) , intent(in)                :: nref
         type(pexp_type)                         :: interval
-        real(RKC)                               :: quadRomb
+        real(RKG)                               :: quadRomb
     end function
 #endif
 
@@ -1411,13 +1411,13 @@ module pm_quadRomb
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQR_PEXP_EP_NM_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        procedure(real(RKC))                    :: getFunc
-        real(RKC)   , intent(in)                :: lb, ub, tol
+        use pm_kind, only: RKG => RK5
+        procedure(real(RKG))                    :: getFunc
+        real(RKG)   , intent(in)                :: lb, ub, tol
         integer(IK) , intent(in)                :: nref
         type(pexp_type)                         :: interval
-        real(RKC)   , intent(out)               :: relerr
-        real(RKC)                               :: quadRomb
+        real(RKG)   , intent(out)               :: relerr
+        real(RKG)                               :: quadRomb
     end function
 #endif
 
@@ -1426,13 +1426,13 @@ module pm_quadRomb
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQR_PEXP_EP_NM_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        procedure(real(RKC))                    :: getFunc
-        real(RKC)   , intent(in)                :: lb, ub, tol
+        use pm_kind, only: RKG => RK4
+        procedure(real(RKG))                    :: getFunc
+        real(RKG)   , intent(in)                :: lb, ub, tol
         integer(IK) , intent(in)                :: nref
         type(pexp_type)                         :: interval
-        real(RKC)   , intent(out)               :: relerr
-        real(RKC)                               :: quadRomb
+        real(RKG)   , intent(out)               :: relerr
+        real(RKG)                               :: quadRomb
     end function
 #endif
 
@@ -1441,13 +1441,13 @@ module pm_quadRomb
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQR_PEXP_EP_NM_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        procedure(real(RKC))                    :: getFunc
-        real(RKC)   , intent(in)                :: lb, ub, tol
+        use pm_kind, only: RKG => RK3
+        procedure(real(RKG))                    :: getFunc
+        real(RKG)   , intent(in)                :: lb, ub, tol
         integer(IK) , intent(in)                :: nref
         type(pexp_type)                         :: interval
-        real(RKC)   , intent(out)               :: relerr
-        real(RKC)                               :: quadRomb
+        real(RKG)   , intent(out)               :: relerr
+        real(RKG)                               :: quadRomb
     end function
 #endif
 
@@ -1456,13 +1456,13 @@ module pm_quadRomb
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQR_PEXP_EP_NM_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        procedure(real(RKC))                    :: getFunc
-        real(RKC)   , intent(in)                :: lb, ub, tol
+        use pm_kind, only: RKG => RK2
+        procedure(real(RKG))                    :: getFunc
+        real(RKG)   , intent(in)                :: lb, ub, tol
         integer(IK) , intent(in)                :: nref
         type(pexp_type)                         :: interval
-        real(RKC)   , intent(out)               :: relerr
-        real(RKC)                               :: quadRomb
+        real(RKG)   , intent(out)               :: relerr
+        real(RKG)                               :: quadRomb
     end function
 #endif
 
@@ -1471,13 +1471,13 @@ module pm_quadRomb
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQR_PEXP_EP_NM_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        procedure(real(RKC))                    :: getFunc
-        real(RKC)   , intent(in)                :: lb, ub, tol
+        use pm_kind, only: RKG => RK1
+        procedure(real(RKG))                    :: getFunc
+        real(RKG)   , intent(in)                :: lb, ub, tol
         integer(IK) , intent(in)                :: nref
         type(pexp_type)                         :: interval
-        real(RKC)   , intent(out)               :: relerr
-        real(RKC)                               :: quadRomb
+        real(RKG)   , intent(out)               :: relerr
+        real(RKG)                               :: quadRomb
     end function
 #endif
 
@@ -1488,14 +1488,14 @@ module pm_quadRomb
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQR_PEXP_EP_NP_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        procedure(real(RKC))                    :: getFunc
-        real(RKC)   , intent(in)                :: lb, ub, tol
+        use pm_kind, only: RKG => RK5
+        procedure(real(RKG))                    :: getFunc
+        real(RKG)   , intent(in)                :: lb, ub, tol
         integer(IK) , intent(in)                :: nref
         type(pexp_type)                         :: interval
         integer(IK) , intent(out)               :: neval
-        real(RKC)   , intent(out)               :: relerr
-        real(RKC)                               :: quadRomb
+        real(RKG)   , intent(out)               :: relerr
+        real(RKG)                               :: quadRomb
     end function
 #endif
 
@@ -1504,14 +1504,14 @@ module pm_quadRomb
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQR_PEXP_EP_NP_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        procedure(real(RKC))                    :: getFunc
-        real(RKC)   , intent(in)                :: lb, ub, tol
+        use pm_kind, only: RKG => RK4
+        procedure(real(RKG))                    :: getFunc
+        real(RKG)   , intent(in)                :: lb, ub, tol
         integer(IK) , intent(in)                :: nref
         type(pexp_type)                         :: interval
         integer(IK) , intent(out)               :: neval
-        real(RKC)   , intent(out)               :: relerr
-        real(RKC)                               :: quadRomb
+        real(RKG)   , intent(out)               :: relerr
+        real(RKG)                               :: quadRomb
     end function
 #endif
 
@@ -1520,14 +1520,14 @@ module pm_quadRomb
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQR_PEXP_EP_NP_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        procedure(real(RKC))                    :: getFunc
-        real(RKC)   , intent(in)                :: lb, ub, tol
+        use pm_kind, only: RKG => RK3
+        procedure(real(RKG))                    :: getFunc
+        real(RKG)   , intent(in)                :: lb, ub, tol
         integer(IK) , intent(in)                :: nref
         type(pexp_type)                         :: interval
         integer(IK) , intent(out)               :: neval
-        real(RKC)   , intent(out)               :: relerr
-        real(RKC)                               :: quadRomb
+        real(RKG)   , intent(out)               :: relerr
+        real(RKG)                               :: quadRomb
     end function
 #endif
 
@@ -1536,14 +1536,14 @@ module pm_quadRomb
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQR_PEXP_EP_NP_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        procedure(real(RKC))                    :: getFunc
-        real(RKC)   , intent(in)                :: lb, ub, tol
+        use pm_kind, only: RKG => RK2
+        procedure(real(RKG))                    :: getFunc
+        real(RKG)   , intent(in)                :: lb, ub, tol
         integer(IK) , intent(in)                :: nref
         type(pexp_type)                         :: interval
         integer(IK) , intent(out)               :: neval
-        real(RKC)   , intent(out)               :: relerr
-        real(RKC)                               :: quadRomb
+        real(RKG)   , intent(out)               :: relerr
+        real(RKG)                               :: quadRomb
     end function
 #endif
 
@@ -1552,14 +1552,14 @@ module pm_quadRomb
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQR_PEXP_EP_NP_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        procedure(real(RKC))                    :: getFunc
-        real(RKC)   , intent(in)                :: lb, ub, tol
+        use pm_kind, only: RKG => RK1
+        procedure(real(RKG))                    :: getFunc
+        real(RKG)   , intent(in)                :: lb, ub, tol
         integer(IK) , intent(in)                :: nref
         type(pexp_type)                         :: interval
         integer(IK) , intent(out)               :: neval
-        real(RKC)   , intent(out)               :: relerr
-        real(RKC)                               :: quadRomb
+        real(RKG)   , intent(out)               :: relerr
+        real(RKG)                               :: quadRomb
     end function
 #endif
 
@@ -1576,12 +1576,12 @@ module pm_quadRomb
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQR_LBIS_EM_NM_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        procedure(real(RKC))                    :: getFunc
-        real(RKC)   , intent(in)                :: lb, ub, tol
+        use pm_kind, only: RKG => RK5
+        procedure(real(RKG))                    :: getFunc
+        real(RKG)   , intent(in)                :: lb, ub, tol
         integer(IK) , intent(in)                :: nref
         type(lbis_type)                         :: interval
-        real(RKC)                               :: quadRomb
+        real(RKG)                               :: quadRomb
     end function
 #endif
 
@@ -1590,12 +1590,12 @@ module pm_quadRomb
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQR_LBIS_EM_NM_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        procedure(real(RKC))                    :: getFunc
-        real(RKC)   , intent(in)                :: lb, ub, tol
+        use pm_kind, only: RKG => RK4
+        procedure(real(RKG))                    :: getFunc
+        real(RKG)   , intent(in)                :: lb, ub, tol
         integer(IK) , intent(in)                :: nref
         type(lbis_type)                         :: interval
-        real(RKC)                               :: quadRomb
+        real(RKG)                               :: quadRomb
     end function
 #endif
 
@@ -1604,12 +1604,12 @@ module pm_quadRomb
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQR_LBIS_EM_NM_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        procedure(real(RKC))                    :: getFunc
-        real(RKC)   , intent(in)                :: lb, ub, tol
+        use pm_kind, only: RKG => RK3
+        procedure(real(RKG))                    :: getFunc
+        real(RKG)   , intent(in)                :: lb, ub, tol
         integer(IK) , intent(in)                :: nref
         type(lbis_type)                         :: interval
-        real(RKC)                               :: quadRomb
+        real(RKG)                               :: quadRomb
     end function
 #endif
 
@@ -1618,12 +1618,12 @@ module pm_quadRomb
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQR_LBIS_EM_NM_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        procedure(real(RKC))                    :: getFunc
-        real(RKC)   , intent(in)                :: lb, ub, tol
+        use pm_kind, only: RKG => RK2
+        procedure(real(RKG))                    :: getFunc
+        real(RKG)   , intent(in)                :: lb, ub, tol
         integer(IK) , intent(in)                :: nref
         type(lbis_type)                         :: interval
-        real(RKC)                               :: quadRomb
+        real(RKG)                               :: quadRomb
     end function
 #endif
 
@@ -1632,12 +1632,12 @@ module pm_quadRomb
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQR_LBIS_EM_NM_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        procedure(real(RKC))                    :: getFunc
-        real(RKC)   , intent(in)                :: lb, ub, tol
+        use pm_kind, only: RKG => RK1
+        procedure(real(RKG))                    :: getFunc
+        real(RKG)   , intent(in)                :: lb, ub, tol
         integer(IK) , intent(in)                :: nref
         type(lbis_type)                         :: interval
-        real(RKC)                               :: quadRomb
+        real(RKG)                               :: quadRomb
     end function
 #endif
 
@@ -1648,13 +1648,13 @@ module pm_quadRomb
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQR_LBIS_EP_NM_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        procedure(real(RKC))                    :: getFunc
-        real(RKC)   , intent(in)                :: lb, ub, tol
+        use pm_kind, only: RKG => RK5
+        procedure(real(RKG))                    :: getFunc
+        real(RKG)   , intent(in)                :: lb, ub, tol
         integer(IK) , intent(in)                :: nref
         type(lbis_type)                         :: interval
-        real(RKC)   , intent(out)               :: relerr
-        real(RKC)                               :: quadRomb
+        real(RKG)   , intent(out)               :: relerr
+        real(RKG)                               :: quadRomb
     end function
 #endif
 
@@ -1663,13 +1663,13 @@ module pm_quadRomb
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQR_LBIS_EP_NM_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        procedure(real(RKC))                    :: getFunc
-        real(RKC)   , intent(in)                :: lb, ub, tol
+        use pm_kind, only: RKG => RK4
+        procedure(real(RKG))                    :: getFunc
+        real(RKG)   , intent(in)                :: lb, ub, tol
         integer(IK) , intent(in)                :: nref
         type(lbis_type)                         :: interval
-        real(RKC)   , intent(out)               :: relerr
-        real(RKC)                               :: quadRomb
+        real(RKG)   , intent(out)               :: relerr
+        real(RKG)                               :: quadRomb
     end function
 #endif
 
@@ -1678,13 +1678,13 @@ module pm_quadRomb
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQR_LBIS_EP_NM_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        procedure(real(RKC))                    :: getFunc
-        real(RKC)   , intent(in)                :: lb, ub, tol
+        use pm_kind, only: RKG => RK3
+        procedure(real(RKG))                    :: getFunc
+        real(RKG)   , intent(in)                :: lb, ub, tol
         integer(IK) , intent(in)                :: nref
         type(lbis_type)                         :: interval
-        real(RKC)   , intent(out)               :: relerr
-        real(RKC)                               :: quadRomb
+        real(RKG)   , intent(out)               :: relerr
+        real(RKG)                               :: quadRomb
     end function
 #endif
 
@@ -1693,13 +1693,13 @@ module pm_quadRomb
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQR_LBIS_EP_NM_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        procedure(real(RKC))                    :: getFunc
-        real(RKC)   , intent(in)                :: lb, ub, tol
+        use pm_kind, only: RKG => RK2
+        procedure(real(RKG))                    :: getFunc
+        real(RKG)   , intent(in)                :: lb, ub, tol
         integer(IK) , intent(in)                :: nref
         type(lbis_type)                         :: interval
-        real(RKC)   , intent(out)               :: relerr
-        real(RKC)                               :: quadRomb
+        real(RKG)   , intent(out)               :: relerr
+        real(RKG)                               :: quadRomb
     end function
 #endif
 
@@ -1708,13 +1708,13 @@ module pm_quadRomb
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQR_LBIS_EP_NM_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        procedure(real(RKC))                    :: getFunc
-        real(RKC)   , intent(in)                :: lb, ub, tol
+        use pm_kind, only: RKG => RK1
+        procedure(real(RKG))                    :: getFunc
+        real(RKG)   , intent(in)                :: lb, ub, tol
         integer(IK) , intent(in)                :: nref
         type(lbis_type)                         :: interval
-        real(RKC)   , intent(out)               :: relerr
-        real(RKC)                               :: quadRomb
+        real(RKG)   , intent(out)               :: relerr
+        real(RKG)                               :: quadRomb
     end function
 #endif
 
@@ -1725,14 +1725,14 @@ module pm_quadRomb
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQR_LBIS_EP_NP_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        procedure(real(RKC))                    :: getFunc
-        real(RKC)   , intent(in)                :: lb, ub, tol
+        use pm_kind, only: RKG => RK5
+        procedure(real(RKG))                    :: getFunc
+        real(RKG)   , intent(in)                :: lb, ub, tol
         integer(IK) , intent(in)                :: nref
         type(lbis_type)                         :: interval
         integer(IK) , intent(out)               :: neval
-        real(RKC)   , intent(out)               :: relerr
-        real(RKC)                               :: quadRomb
+        real(RKG)   , intent(out)               :: relerr
+        real(RKG)                               :: quadRomb
     end function
 #endif
 
@@ -1741,14 +1741,14 @@ module pm_quadRomb
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQR_LBIS_EP_NP_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        procedure(real(RKC))                    :: getFunc
-        real(RKC)   , intent(in)                :: lb, ub, tol
+        use pm_kind, only: RKG => RK4
+        procedure(real(RKG))                    :: getFunc
+        real(RKG)   , intent(in)                :: lb, ub, tol
         integer(IK) , intent(in)                :: nref
         type(lbis_type)                         :: interval
         integer(IK) , intent(out)               :: neval
-        real(RKC)   , intent(out)               :: relerr
-        real(RKC)                               :: quadRomb
+        real(RKG)   , intent(out)               :: relerr
+        real(RKG)                               :: quadRomb
     end function
 #endif
 
@@ -1757,14 +1757,14 @@ module pm_quadRomb
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQR_LBIS_EP_NP_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        procedure(real(RKC))                    :: getFunc
-        real(RKC)   , intent(in)                :: lb, ub, tol
+        use pm_kind, only: RKG => RK3
+        procedure(real(RKG))                    :: getFunc
+        real(RKG)   , intent(in)                :: lb, ub, tol
         integer(IK) , intent(in)                :: nref
         type(lbis_type)                         :: interval
         integer(IK) , intent(out)               :: neval
-        real(RKC)   , intent(out)               :: relerr
-        real(RKC)                               :: quadRomb
+        real(RKG)   , intent(out)               :: relerr
+        real(RKG)                               :: quadRomb
     end function
 #endif
 
@@ -1773,14 +1773,14 @@ module pm_quadRomb
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQR_LBIS_EP_NP_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        procedure(real(RKC))                    :: getFunc
-        real(RKC)   , intent(in)                :: lb, ub, tol
+        use pm_kind, only: RKG => RK2
+        procedure(real(RKG))                    :: getFunc
+        real(RKG)   , intent(in)                :: lb, ub, tol
         integer(IK) , intent(in)                :: nref
         type(lbis_type)                         :: interval
         integer(IK) , intent(out)               :: neval
-        real(RKC)   , intent(out)               :: relerr
-        real(RKC)                               :: quadRomb
+        real(RKG)   , intent(out)               :: relerr
+        real(RKG)                               :: quadRomb
     end function
 #endif
 
@@ -1789,14 +1789,14 @@ module pm_quadRomb
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQR_LBIS_EP_NP_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        procedure(real(RKC))                    :: getFunc
-        real(RKC)   , intent(in)                :: lb, ub, tol
+        use pm_kind, only: RKG => RK1
+        procedure(real(RKG))                    :: getFunc
+        real(RKG)   , intent(in)                :: lb, ub, tol
         integer(IK) , intent(in)                :: nref
         type(lbis_type)                         :: interval
         integer(IK) , intent(out)               :: neval
-        real(RKC)   , intent(out)               :: relerr
-        real(RKC)                               :: quadRomb
+        real(RKG)   , intent(out)               :: relerr
+        real(RKG)                               :: quadRomb
     end function
 #endif
 
@@ -1813,12 +1813,12 @@ module pm_quadRomb
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQR_UBIS_EM_NM_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        procedure(real(RKC))                    :: getFunc
-        real(RKC)   , intent(in)                :: lb, ub, tol
+        use pm_kind, only: RKG => RK5
+        procedure(real(RKG))                    :: getFunc
+        real(RKG)   , intent(in)                :: lb, ub, tol
         integer(IK) , intent(in)                :: nref
         type(ubis_type)                         :: interval
-        real(RKC)                               :: quadRomb
+        real(RKG)                               :: quadRomb
     end function
 #endif
 
@@ -1827,12 +1827,12 @@ module pm_quadRomb
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQR_UBIS_EM_NM_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        procedure(real(RKC))                    :: getFunc
-        real(RKC)   , intent(in)                :: lb, ub, tol
+        use pm_kind, only: RKG => RK4
+        procedure(real(RKG))                    :: getFunc
+        real(RKG)   , intent(in)                :: lb, ub, tol
         integer(IK) , intent(in)                :: nref
         type(ubis_type)                         :: interval
-        real(RKC)                               :: quadRomb
+        real(RKG)                               :: quadRomb
     end function
 #endif
 
@@ -1841,12 +1841,12 @@ module pm_quadRomb
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQR_UBIS_EM_NM_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        procedure(real(RKC))                    :: getFunc
-        real(RKC)   , intent(in)                :: lb, ub, tol
+        use pm_kind, only: RKG => RK3
+        procedure(real(RKG))                    :: getFunc
+        real(RKG)   , intent(in)                :: lb, ub, tol
         integer(IK) , intent(in)                :: nref
         type(ubis_type)                         :: interval
-        real(RKC)                               :: quadRomb
+        real(RKG)                               :: quadRomb
     end function
 #endif
 
@@ -1855,12 +1855,12 @@ module pm_quadRomb
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQR_UBIS_EM_NM_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        procedure(real(RKC))                    :: getFunc
-        real(RKC)   , intent(in)                :: lb, ub, tol
+        use pm_kind, only: RKG => RK2
+        procedure(real(RKG))                    :: getFunc
+        real(RKG)   , intent(in)                :: lb, ub, tol
         integer(IK) , intent(in)                :: nref
         type(ubis_type)                         :: interval
-        real(RKC)                               :: quadRomb
+        real(RKG)                               :: quadRomb
     end function
 #endif
 
@@ -1869,12 +1869,12 @@ module pm_quadRomb
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQR_UBIS_EM_NM_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        procedure(real(RKC))                    :: getFunc
-        real(RKC)   , intent(in)                :: lb, ub, tol
+        use pm_kind, only: RKG => RK1
+        procedure(real(RKG))                    :: getFunc
+        real(RKG)   , intent(in)                :: lb, ub, tol
         integer(IK) , intent(in)                :: nref
         type(ubis_type)                         :: interval
-        real(RKC)                               :: quadRomb
+        real(RKG)                               :: quadRomb
     end function
 #endif
 
@@ -1885,13 +1885,13 @@ module pm_quadRomb
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQR_UBIS_EP_NM_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        procedure(real(RKC))                    :: getFunc
-        real(RKC)   , intent(in)                :: lb, ub, tol
+        use pm_kind, only: RKG => RK5
+        procedure(real(RKG))                    :: getFunc
+        real(RKG)   , intent(in)                :: lb, ub, tol
         integer(IK) , intent(in)                :: nref
         type(ubis_type)                         :: interval
-        real(RKC)   , intent(out)               :: relerr
-        real(RKC)                               :: quadRomb
+        real(RKG)   , intent(out)               :: relerr
+        real(RKG)                               :: quadRomb
     end function
 #endif
 
@@ -1900,13 +1900,13 @@ module pm_quadRomb
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQR_UBIS_EP_NM_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        procedure(real(RKC))                    :: getFunc
-        real(RKC)   , intent(in)                :: lb, ub, tol
+        use pm_kind, only: RKG => RK4
+        procedure(real(RKG))                    :: getFunc
+        real(RKG)   , intent(in)                :: lb, ub, tol
         integer(IK) , intent(in)                :: nref
         type(ubis_type)                         :: interval
-        real(RKC)   , intent(out)               :: relerr
-        real(RKC)                               :: quadRomb
+        real(RKG)   , intent(out)               :: relerr
+        real(RKG)                               :: quadRomb
     end function
 #endif
 
@@ -1915,13 +1915,13 @@ module pm_quadRomb
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQR_UBIS_EP_NM_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        procedure(real(RKC))                    :: getFunc
-        real(RKC)   , intent(in)                :: lb, ub, tol
+        use pm_kind, only: RKG => RK3
+        procedure(real(RKG))                    :: getFunc
+        real(RKG)   , intent(in)                :: lb, ub, tol
         integer(IK) , intent(in)                :: nref
         type(ubis_type)                         :: interval
-        real(RKC)   , intent(out)               :: relerr
-        real(RKC)                               :: quadRomb
+        real(RKG)   , intent(out)               :: relerr
+        real(RKG)                               :: quadRomb
     end function
 #endif
 
@@ -1930,13 +1930,13 @@ module pm_quadRomb
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQR_UBIS_EP_NM_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        procedure(real(RKC))                    :: getFunc
-        real(RKC)   , intent(in)                :: lb, ub, tol
+        use pm_kind, only: RKG => RK2
+        procedure(real(RKG))                    :: getFunc
+        real(RKG)   , intent(in)                :: lb, ub, tol
         integer(IK) , intent(in)                :: nref
         type(ubis_type)                         :: interval
-        real(RKC)   , intent(out)               :: relerr
-        real(RKC)                               :: quadRomb
+        real(RKG)   , intent(out)               :: relerr
+        real(RKG)                               :: quadRomb
     end function
 #endif
 
@@ -1945,13 +1945,13 @@ module pm_quadRomb
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQR_UBIS_EP_NM_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        procedure(real(RKC))                    :: getFunc
-        real(RKC)   , intent(in)                :: lb, ub, tol
+        use pm_kind, only: RKG => RK1
+        procedure(real(RKG))                    :: getFunc
+        real(RKG)   , intent(in)                :: lb, ub, tol
         integer(IK) , intent(in)                :: nref
         type(ubis_type)                         :: interval
-        real(RKC)   , intent(out)               :: relerr
-        real(RKC)                               :: quadRomb
+        real(RKG)   , intent(out)               :: relerr
+        real(RKG)                               :: quadRomb
     end function
 #endif
 
@@ -1962,14 +1962,14 @@ module pm_quadRomb
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQR_UBIS_EP_NP_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        procedure(real(RKC))                    :: getFunc
-        real(RKC)   , intent(in)                :: lb, ub, tol
+        use pm_kind, only: RKG => RK5
+        procedure(real(RKG))                    :: getFunc
+        real(RKG)   , intent(in)                :: lb, ub, tol
         integer(IK) , intent(in)                :: nref
         type(ubis_type)                         :: interval
         integer(IK) , intent(out)               :: neval
-        real(RKC)   , intent(out)               :: relerr
-        real(RKC)                               :: quadRomb
+        real(RKG)   , intent(out)               :: relerr
+        real(RKG)                               :: quadRomb
     end function
 #endif
 
@@ -1978,14 +1978,14 @@ module pm_quadRomb
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQR_UBIS_EP_NP_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        procedure(real(RKC))                    :: getFunc
-        real(RKC)   , intent(in)                :: lb, ub, tol
+        use pm_kind, only: RKG => RK4
+        procedure(real(RKG))                    :: getFunc
+        real(RKG)   , intent(in)                :: lb, ub, tol
         integer(IK) , intent(in)                :: nref
         type(ubis_type)                         :: interval
         integer(IK) , intent(out)               :: neval
-        real(RKC)   , intent(out)               :: relerr
-        real(RKC)                               :: quadRomb
+        real(RKG)   , intent(out)               :: relerr
+        real(RKG)                               :: quadRomb
     end function
 #endif
 
@@ -1994,14 +1994,14 @@ module pm_quadRomb
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQR_UBIS_EP_NP_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        procedure(real(RKC))                    :: getFunc
-        real(RKC)   , intent(in)                :: lb, ub, tol
+        use pm_kind, only: RKG => RK3
+        procedure(real(RKG))                    :: getFunc
+        real(RKG)   , intent(in)                :: lb, ub, tol
         integer(IK) , intent(in)                :: nref
         type(ubis_type)                         :: interval
         integer(IK) , intent(out)               :: neval
-        real(RKC)   , intent(out)               :: relerr
-        real(RKC)                               :: quadRomb
+        real(RKG)   , intent(out)               :: relerr
+        real(RKG)                               :: quadRomb
     end function
 #endif
 
@@ -2010,14 +2010,14 @@ module pm_quadRomb
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQR_UBIS_EP_NP_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        procedure(real(RKC))                    :: getFunc
-        real(RKC)   , intent(in)                :: lb, ub, tol
+        use pm_kind, only: RKG => RK2
+        procedure(real(RKG))                    :: getFunc
+        real(RKG)   , intent(in)                :: lb, ub, tol
         integer(IK) , intent(in)                :: nref
         type(ubis_type)                         :: interval
         integer(IK) , intent(out)               :: neval
-        real(RKC)   , intent(out)               :: relerr
-        real(RKC)                               :: quadRomb
+        real(RKG)   , intent(out)               :: relerr
+        real(RKG)                               :: quadRomb
     end function
 #endif
 
@@ -2026,14 +2026,14 @@ module pm_quadRomb
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getQR_UBIS_EP_NP_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        procedure(real(RKC))                    :: getFunc
-        real(RKC)   , intent(in)                :: lb, ub, tol
+        use pm_kind, only: RKG => RK1
+        procedure(real(RKG))                    :: getFunc
+        real(RKG)   , intent(in)                :: lb, ub, tol
         integer(IK) , intent(in)                :: nref
         type(ubis_type)                         :: interval
         integer(IK) , intent(out)               :: neval
-        real(RKC)   , intent(out)               :: relerr
-        real(RKC)                               :: quadRomb
+        real(RKG)   , intent(out)               :: relerr
+        real(RKG)                               :: quadRomb
     end function
 #endif
 
@@ -2115,11 +2115,11 @@ module pm_quadRomb
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setQuadTrap_RK5
 !#endif
-!        use pm_kind, only: RKC => RK5
-!        procedure(real(RKC))                    :: getFunc
-!        real(RKC)   , intent(in)                :: lb, ub
+!        use pm_kind, only: RKG => RK5
+!        procedure(real(RKG))                    :: getFunc
+!        real(RKG)   , intent(in)                :: lb, ub
 !        integer(IK) , intent(in)                :: nref
-!        real(RKC)                               :: quadTrap
+!        real(RKG)                               :: quadTrap
 !    end subroutine
 !#endif
 !
@@ -2128,11 +2128,11 @@ module pm_quadRomb
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setQuadTrap_RK4
 !#endif
-!        use pm_kind, only: RKC => RK4
-!        procedure(real(RKC))                    :: getFunc
-!        real(RKC)   , intent(in)                :: lb, ub
+!        use pm_kind, only: RKG => RK4
+!        procedure(real(RKG))                    :: getFunc
+!        real(RKG)   , intent(in)                :: lb, ub
 !        integer(IK) , intent(in)                :: nref
-!        real(RKC)                               :: quadTrap
+!        real(RKG)                               :: quadTrap
 !    end subroutine
 !#endif
 !
@@ -2141,11 +2141,11 @@ module pm_quadRomb
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setQuadTrap_RK3
 !#endif
-!        use pm_kind, only: RKC => RK3
-!        procedure(real(RKC))                    :: getFunc
-!        real(RKC)   , intent(in)                :: lb, ub
+!        use pm_kind, only: RKG => RK3
+!        procedure(real(RKG))                    :: getFunc
+!        real(RKG)   , intent(in)                :: lb, ub
 !        integer(IK) , intent(in)                :: nref
-!        real(RKC)                               :: quadTrap
+!        real(RKG)                               :: quadTrap
 !    end subroutine
 !#endif
 !
@@ -2154,11 +2154,11 @@ module pm_quadRomb
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setQuadTrap_RK2
 !#endif
-!        use pm_kind, only: RKC => RK2
-!        procedure(real(RKC))                    :: getFunc
-!        real(RKC)   , intent(in)                :: lb, ub
+!        use pm_kind, only: RKG => RK2
+!        procedure(real(RKG))                    :: getFunc
+!        real(RKG)   , intent(in)                :: lb, ub
 !        integer(IK) , intent(in)                :: nref
-!        real(RKC)                               :: quadTrap
+!        real(RKG)                               :: quadTrap
 !    end subroutine
 !#endif
 !
@@ -2167,11 +2167,11 @@ module pm_quadRomb
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setQuadTrap_RK1
 !#endif
-!        use pm_kind, only: RKC => RK1
-!        procedure(real(RKC))                    :: getFunc
-!        real(RKC)   , intent(in)                :: lb, ub
+!        use pm_kind, only: RKG => RK1
+!        procedure(real(RKG))                    :: getFunc
+!        real(RKG)   , intent(in)                :: lb, ub
 !        integer(IK) , intent(in)                :: nref
-!        real(RKC)                               :: quadTrap
+!        real(RKG)                               :: quadTrap
 !    end subroutine
 !#endif
 !
@@ -2182,13 +2182,13 @@ module pm_quadRomb
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setQuadTrap_EP_NM_RK5
 !#endif
-!        use pm_kind, only: RKC => RK5
-!        procedure(real(RKC))                    :: getFunc
-!        real(RKC)   , intent(in)                :: lb, ub
+!        use pm_kind, only: RKG => RK5
+!        procedure(real(RKG))                    :: getFunc
+!        real(RKG)   , intent(in)                :: lb, ub
 !        integer(IK) , intent(in)                :: nref
 !        integer(IK) , intent(out)               :: neval
-!        real(RKC)   , intent(out)               :: relerr
-!        real(RKC)                               :: quadTrap
+!        real(RKG)   , intent(out)               :: relerr
+!        real(RKG)                               :: quadTrap
 !    end subroutine
 !#endif
 !
@@ -2197,13 +2197,13 @@ module pm_quadRomb
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setQuadTrap_EP_NM_RK4
 !#endif
-!        use pm_kind, only: RKC => RK4
-!        procedure(real(RKC))                    :: getFunc
-!        real(RKC)   , intent(in)                :: lb, ub
+!        use pm_kind, only: RKG => RK4
+!        procedure(real(RKG))                    :: getFunc
+!        real(RKG)   , intent(in)                :: lb, ub
 !        integer(IK) , intent(in)                :: nref
 !        integer(IK) , intent(out)               :: neval
-!        real(RKC)   , intent(out)               :: relerr
-!        real(RKC)                               :: quadTrap
+!        real(RKG)   , intent(out)               :: relerr
+!        real(RKG)                               :: quadTrap
 !    end subroutine
 !#endif
 !
@@ -2212,13 +2212,13 @@ module pm_quadRomb
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setQuadTrap_EP_NM_RK3
 !#endif
-!        use pm_kind, only: RKC => RK3
-!        procedure(real(RKC))                    :: getFunc
-!        real(RKC)   , intent(in)                :: lb, ub
+!        use pm_kind, only: RKG => RK3
+!        procedure(real(RKG))                    :: getFunc
+!        real(RKG)   , intent(in)                :: lb, ub
 !        integer(IK) , intent(in)                :: nref
 !        integer(IK) , intent(out)               :: neval
-!        real(RKC)   , intent(out)               :: relerr
-!        real(RKC)                               :: quadTrap
+!        real(RKG)   , intent(out)               :: relerr
+!        real(RKG)                               :: quadTrap
 !    end subroutine
 !#endif
 !
@@ -2227,13 +2227,13 @@ module pm_quadRomb
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setQuadTrap_EP_NM_RK2
 !#endif
-!        use pm_kind, only: RKC => RK2
-!        procedure(real(RKC))                    :: getFunc
-!        real(RKC)   , intent(in)                :: lb, ub
+!        use pm_kind, only: RKG => RK2
+!        procedure(real(RKG))                    :: getFunc
+!        real(RKG)   , intent(in)                :: lb, ub
 !        integer(IK) , intent(in)                :: nref
 !        integer(IK) , intent(out)               :: neval
-!        real(RKC)   , intent(out)               :: relerr
-!        real(RKC)   , intent(inout)             :: quadTrap
+!        real(RKG)   , intent(out)               :: relerr
+!        real(RKG)   , intent(inout)             :: quadTrap
 !    end subroutine
 !#endif
 !
@@ -2242,13 +2242,13 @@ module pm_quadRomb
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setQuadTrap_EP_NM_RK1
 !#endif
-!        use pm_kind, only: RKC => RK1
-!        procedure(real(RKC))                    :: getFunc
-!        real(RKC)   , intent(in)                :: lb, ub
+!        use pm_kind, only: RKG => RK1
+!        procedure(real(RKG))                    :: getFunc
+!        real(RKG)   , intent(in)                :: lb, ub
 !        integer(IK) , intent(in)                :: nref
 !        integer(IK) , intent(out)               :: neval
-!        real(RKC)   , intent(out)               :: relerr
-!        real(RKC)                               :: quadTrap
+!        real(RKG)   , intent(out)               :: relerr
+!        real(RKG)                               :: quadTrap
 !    end subroutine
 !#endif
 !

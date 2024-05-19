@@ -45,35 +45,35 @@ contains
 
 #if RK5_ENABLED
     module procedure test_getExpLogPDF_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "test_pm_distExp@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure test_getExpLogPDF_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "test_pm_distExp@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure test_getExpLogPDF_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "test_pm_distExp@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure test_getExpLogPDF_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "test_pm_distExp@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure test_getExpLogPDF_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "test_pm_distExp@routines.inc.F90"
     end procedure
 #endif
@@ -94,35 +94,35 @@ contains
 
 #if RK5_ENABLED
     module procedure test_setExpLogPDF_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "test_pm_distExp@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure test_setExpLogPDF_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "test_pm_distExp@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure test_setExpLogPDF_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "test_pm_distExp@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure test_setExpLogPDF_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "test_pm_distExp@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure test_setExpLogPDF_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "test_pm_distExp@routines.inc.F90"
     end procedure
 #endif
@@ -143,35 +143,35 @@ contains
 
 #if RK5_ENABLED
     module procedure test_getExpCDF_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "test_pm_distExp@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure test_getExpCDF_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "test_pm_distExp@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure test_getExpCDF_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "test_pm_distExp@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure test_getExpCDF_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "test_pm_distExp@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure test_getExpCDF_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "test_pm_distExp@routines.inc.F90"
     end procedure
 #endif
@@ -192,35 +192,35 @@ contains
 
 #if RK5_ENABLED
     module procedure test_setExpCDF_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "test_pm_distExp@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure test_setExpCDF_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "test_pm_distExp@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure test_setExpCDF_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "test_pm_distExp@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure test_setExpCDF_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "test_pm_distExp@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure test_setExpCDF_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "test_pm_distExp@routines.inc.F90"
     end procedure
 #endif
@@ -241,35 +241,35 @@ contains
 
 #if RK5_ENABLED
     module procedure test_getExpRand_RK5_1
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "test_pm_distExp@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure test_getExpRand_RK4_1
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "test_pm_distExp@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure test_getExpRand_RK3_1
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "test_pm_distExp@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure test_getExpRand_RK2_1
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "test_pm_distExp@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure test_getExpRand_RK1_1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "test_pm_distExp@routines.inc.F90"
     end procedure
 #endif
@@ -290,35 +290,35 @@ contains
 
 #if RK5_ENABLED
     module procedure test_setExpRand_RK5_1
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "test_pm_distExp@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure test_setExpRand_RK4_1
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "test_pm_distExp@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure test_setExpRand_RK3_1
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "test_pm_distExp@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure test_setExpRand_RK2_1
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "test_pm_distExp@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure test_setExpRand_RK1_1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "test_pm_distExp@routines.inc.F90"
     end procedure
 #endif

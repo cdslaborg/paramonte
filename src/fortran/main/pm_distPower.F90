@@ -275,9 +275,9 @@ module pm_distPower
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPowerLogPDFNFALD_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(in)                :: alpha, logMaxX
-        real(RKC)                               :: logPDFNF
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(in)                :: alpha, logMaxX
+        real(RKG)                               :: logPDFNF
     end function
 #endif
 
@@ -286,9 +286,9 @@ module pm_distPower
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPowerLogPDFNFALD_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(in)                :: alpha, logMaxX
-        real(RKC)                               :: logPDFNF
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(in)                :: alpha, logMaxX
+        real(RKG)                               :: logPDFNF
     end function
 #endif
 
@@ -297,9 +297,9 @@ module pm_distPower
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPowerLogPDFNFALD_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(in)                :: alpha, logMaxX
-        real(RKC)                               :: logPDFNF
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(in)                :: alpha, logMaxX
+        real(RKG)                               :: logPDFNF
     end function
 #endif
 
@@ -308,9 +308,9 @@ module pm_distPower
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPowerLogPDFNFALD_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(in)                :: alpha, logMaxX
-        real(RKC)                               :: logPDFNF
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(in)                :: alpha, logMaxX
+        real(RKG)                               :: logPDFNF
     end function
 #endif
 
@@ -319,9 +319,9 @@ module pm_distPower
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPowerLogPDFNFALD_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(in)                :: alpha, logMaxX
-        real(RKC)                               :: logPDFNF
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(in)                :: alpha, logMaxX
+        real(RKG)                               :: logPDFNF
     end function
 #endif
 
@@ -332,9 +332,9 @@ module pm_distPower
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPowerLogPDFNFALL_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(in)                :: alpha, logMinX, logMaxX
-        real(RKC)                               :: logPDFNF
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(in)                :: alpha, logMinX, logMaxX
+        real(RKG)                               :: logPDFNF
     end function
 #endif
 
@@ -343,9 +343,9 @@ module pm_distPower
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPowerLogPDFNFALL_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(in)                :: alpha, logMinX, logMaxX
-        real(RKC)                               :: logPDFNF
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(in)                :: alpha, logMinX, logMaxX
+        real(RKG)                               :: logPDFNF
     end function
 #endif
 
@@ -354,9 +354,9 @@ module pm_distPower
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPowerLogPDFNFALL_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(in)                :: alpha, logMinX, logMaxX
-        real(RKC)                               :: logPDFNF
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(in)                :: alpha, logMinX, logMaxX
+        real(RKG)                               :: logPDFNF
     end function
 #endif
 
@@ -365,9 +365,9 @@ module pm_distPower
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPowerLogPDFNFALL_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(in)                :: alpha, logMinX, logMaxX
-        real(RKC)                               :: logPDFNF
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(in)                :: alpha, logMinX, logMaxX
+        real(RKG)                               :: logPDFNF
     end function
 #endif
 
@@ -376,9 +376,9 @@ module pm_distPower
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPowerLogPDFNFALL_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(in)                :: alpha, logMinX, logMaxX
-        real(RKC)                               :: logPDFNF
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(in)                :: alpha, logMinX, logMaxX
+        real(RKG)                               :: logPDFNF
     end function
 #endif
 
@@ -461,9 +461,9 @@ module pm_distPower
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPowerLogPDFALD_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(in)                :: logx, alpha, logMaxX
-        real(RKC)                               :: logPDF
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(in)                :: logx, alpha, logMaxX
+        real(RKG)                               :: logPDF
     end function
 #endif
 
@@ -472,9 +472,9 @@ module pm_distPower
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPowerLogPDFALD_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(in)                :: logx, alpha, logMaxX
-        real(RKC)                               :: logPDF
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(in)                :: logx, alpha, logMaxX
+        real(RKG)                               :: logPDF
     end function
 #endif
 
@@ -483,9 +483,9 @@ module pm_distPower
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPowerLogPDFALD_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(in)                :: logx, alpha, logMaxX
-        real(RKC)                               :: logPDF
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(in)                :: logx, alpha, logMaxX
+        real(RKG)                               :: logPDF
     end function
 #endif
 
@@ -494,9 +494,9 @@ module pm_distPower
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPowerLogPDFALD_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(in)                :: logx, alpha, logMaxX
-        real(RKC)                               :: logPDF
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(in)                :: logx, alpha, logMaxX
+        real(RKG)                               :: logPDF
     end function
 #endif
 
@@ -505,9 +505,9 @@ module pm_distPower
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPowerLogPDFALD_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(in)                :: logx, alpha, logMaxX
-        real(RKC)                               :: logPDF
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(in)                :: logx, alpha, logMaxX
+        real(RKG)                               :: logPDF
     end function
 #endif
 
@@ -518,9 +518,9 @@ module pm_distPower
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPowerLogPDFALL_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(in)                :: logx, alpha, logMinX, logMaxX
-        real(RKC)                               :: logPDF
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(in)                :: logx, alpha, logMinX, logMaxX
+        real(RKG)                               :: logPDF
     end function
 #endif
 
@@ -529,9 +529,9 @@ module pm_distPower
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPowerLogPDFALL_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(in)                :: logx, alpha, logMinX, logMaxX
-        real(RKC)                               :: logPDF
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(in)                :: logx, alpha, logMinX, logMaxX
+        real(RKG)                               :: logPDF
     end function
 #endif
 
@@ -540,9 +540,9 @@ module pm_distPower
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPowerLogPDFALL_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(in)                :: logx, alpha, logMinX, logMaxX
-        real(RKC)                               :: logPDF
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(in)                :: logx, alpha, logMinX, logMaxX
+        real(RKG)                               :: logPDF
     end function
 #endif
 
@@ -551,9 +551,9 @@ module pm_distPower
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPowerLogPDFALL_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(in)                :: logx, alpha, logMinX, logMaxX
-        real(RKC)                               :: logPDF
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(in)                :: logx, alpha, logMinX, logMaxX
+        real(RKG)                               :: logPDF
     end function
 #endif
 
@@ -562,9 +562,9 @@ module pm_distPower
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPowerLogPDFALL_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(in)                :: logx, alpha, logMinX, logMaxX
-        real(RKC)                               :: logPDF
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(in)                :: logx, alpha, logMinX, logMaxX
+        real(RKG)                               :: logPDF
     end function
 #endif
 
@@ -645,9 +645,9 @@ module pm_distPower
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPowerLogPDF_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(out)                   :: logPDF
-        real(RKC)   , intent(in)                    :: logx, alpha, logPDFNF
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(out)                   :: logPDF
+        real(RKG)   , intent(in)                    :: logx, alpha, logPDFNF
     end subroutine
 #endif
 
@@ -656,9 +656,9 @@ module pm_distPower
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPowerLogPDF_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(out)                   :: logPDF
-        real(RKC)   , intent(in)                    :: logx, alpha, logPDFNF
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(out)                   :: logPDF
+        real(RKG)   , intent(in)                    :: logx, alpha, logPDFNF
     end subroutine
 #endif
 
@@ -667,9 +667,9 @@ module pm_distPower
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPowerLogPDF_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(out)                   :: logPDF
-        real(RKC)   , intent(in)                    :: logx, alpha, logPDFNF
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(out)                   :: logPDF
+        real(RKG)   , intent(in)                    :: logx, alpha, logPDFNF
     end subroutine
 #endif
 
@@ -678,9 +678,9 @@ module pm_distPower
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPowerLogPDF_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(out)                   :: logPDF
-        real(RKC)   , intent(in)                    :: logx, alpha, logPDFNF
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(out)                   :: logPDF
+        real(RKG)   , intent(in)                    :: logx, alpha, logPDFNF
     end subroutine
 #endif
 
@@ -689,9 +689,9 @@ module pm_distPower
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPowerLogPDF_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(out)                   :: logPDF
-        real(RKC)   , intent(in)                    :: logx, alpha, logPDFNF
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(out)                   :: logPDF
+        real(RKG)   , intent(in)                    :: logx, alpha, logPDFNF
     end subroutine
 #endif
 
@@ -793,9 +793,9 @@ module pm_distPower
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPowerLogCDFNFALD_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(in)                :: alpha, logMaxX
-        real(RKC)                               :: logCDFNF
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(in)                :: alpha, logMaxX
+        real(RKG)                               :: logCDFNF
     end function
 #endif
 
@@ -804,9 +804,9 @@ module pm_distPower
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPowerLogCDFNFALD_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(in)                :: alpha, logMaxX
-        real(RKC)                               :: logCDFNF
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(in)                :: alpha, logMaxX
+        real(RKG)                               :: logCDFNF
     end function
 #endif
 
@@ -815,9 +815,9 @@ module pm_distPower
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPowerLogCDFNFALD_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(in)                :: alpha, logMaxX
-        real(RKC)                               :: logCDFNF
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(in)                :: alpha, logMaxX
+        real(RKG)                               :: logCDFNF
     end function
 #endif
 
@@ -826,9 +826,9 @@ module pm_distPower
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPowerLogCDFNFALD_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(in)                :: alpha, logMaxX
-        real(RKC)                               :: logCDFNF
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(in)                :: alpha, logMaxX
+        real(RKG)                               :: logCDFNF
     end function
 #endif
 
@@ -837,9 +837,9 @@ module pm_distPower
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPowerLogCDFNFALD_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(in)                :: alpha, logMaxX
-        real(RKC)                               :: logCDFNF
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(in)                :: alpha, logMaxX
+        real(RKG)                               :: logCDFNF
     end function
 #endif
 
@@ -850,9 +850,9 @@ module pm_distPower
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPowerLogCDFNFALL_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(in)                :: alpha, logMinX, logMaxX
-        real(RKC)                               :: logCDFNF
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(in)                :: alpha, logMinX, logMaxX
+        real(RKG)                               :: logCDFNF
     end function
 #endif
 
@@ -861,9 +861,9 @@ module pm_distPower
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPowerLogCDFNFALL_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(in)                :: alpha, logMinX, logMaxX
-        real(RKC)                               :: logCDFNF
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(in)                :: alpha, logMinX, logMaxX
+        real(RKG)                               :: logCDFNF
     end function
 #endif
 
@@ -872,9 +872,9 @@ module pm_distPower
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPowerLogCDFNFALL_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(in)                :: alpha, logMinX, logMaxX
-        real(RKC)                               :: logCDFNF
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(in)                :: alpha, logMinX, logMaxX
+        real(RKG)                               :: logCDFNF
     end function
 #endif
 
@@ -883,9 +883,9 @@ module pm_distPower
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPowerLogCDFNFALL_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(in)                :: alpha, logMinX, logMaxX
-        real(RKC)                               :: logCDFNF
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(in)                :: alpha, logMinX, logMaxX
+        real(RKG)                               :: logCDFNF
     end function
 #endif
 
@@ -894,9 +894,9 @@ module pm_distPower
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPowerLogCDFNFALL_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(in)                :: alpha, logMinX, logMaxX
-        real(RKC)                               :: logCDFNF
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(in)                :: alpha, logMinX, logMaxX
+        real(RKG)                               :: logCDFNF
     end function
 #endif
 
@@ -979,9 +979,9 @@ module pm_distPower
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPowerLogCDFALD_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(in)                :: logx, alpha, logMaxX
-        real(RKC)                               :: logCDF
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(in)                :: logx, alpha, logMaxX
+        real(RKG)                               :: logCDF
     end function
 #endif
 
@@ -990,9 +990,9 @@ module pm_distPower
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPowerLogCDFALD_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(in)                :: logx, alpha, logMaxX
-        real(RKC)                               :: logCDF
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(in)                :: logx, alpha, logMaxX
+        real(RKG)                               :: logCDF
     end function
 #endif
 
@@ -1001,9 +1001,9 @@ module pm_distPower
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPowerLogCDFALD_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(in)                :: logx, alpha, logMaxX
-        real(RKC)                               :: logCDF
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(in)                :: logx, alpha, logMaxX
+        real(RKG)                               :: logCDF
     end function
 #endif
 
@@ -1012,9 +1012,9 @@ module pm_distPower
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPowerLogCDFALD_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(in)                :: logx, alpha, logMaxX
-        real(RKC)                               :: logCDF
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(in)                :: logx, alpha, logMaxX
+        real(RKG)                               :: logCDF
     end function
 #endif
 
@@ -1023,9 +1023,9 @@ module pm_distPower
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPowerLogCDFALD_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(in)                :: logx, alpha, logMaxX
-        real(RKC)                               :: logCDF
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(in)                :: logx, alpha, logMaxX
+        real(RKG)                               :: logCDF
     end function
 #endif
 
@@ -1036,9 +1036,9 @@ module pm_distPower
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPowerLogCDFALL_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(in)                :: logx, alpha, logMinX, logMaxX
-        real(RKC)                               :: logCDF
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(in)                :: logx, alpha, logMinX, logMaxX
+        real(RKG)                               :: logCDF
     end function
 #endif
 
@@ -1047,9 +1047,9 @@ module pm_distPower
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPowerLogCDFALL_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(in)                :: logx, alpha, logMinX, logMaxX
-        real(RKC)                               :: logCDF
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(in)                :: logx, alpha, logMinX, logMaxX
+        real(RKG)                               :: logCDF
     end function
 #endif
 
@@ -1058,9 +1058,9 @@ module pm_distPower
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPowerLogCDFALL_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(in)                :: logx, alpha, logMinX, logMaxX
-        real(RKC)                               :: logCDF
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(in)                :: logx, alpha, logMinX, logMaxX
+        real(RKG)                               :: logCDF
     end function
 #endif
 
@@ -1069,9 +1069,9 @@ module pm_distPower
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPowerLogCDFALL_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(in)                :: logx, alpha, logMinX, logMaxX
-        real(RKC)                               :: logCDF
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(in)                :: logx, alpha, logMinX, logMaxX
+        real(RKG)                               :: logCDF
     end function
 #endif
 
@@ -1080,9 +1080,9 @@ module pm_distPower
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPowerLogCDFALL_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(in)                :: logx, alpha, logMinX, logMaxX
-        real(RKC)                               :: logCDF
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(in)                :: logx, alpha, logMinX, logMaxX
+        real(RKG)                               :: logCDF
     end function
 #endif
 
@@ -1168,9 +1168,9 @@ module pm_distPower
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPowerLogCDFALD_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(out)                   :: logCDF
-        real(RKC)   , intent(in)                    :: logx, alpha, logCDFNF
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(out)                   :: logCDF
+        real(RKG)   , intent(in)                    :: logx, alpha, logCDFNF
     end subroutine
 #endif
 
@@ -1179,9 +1179,9 @@ module pm_distPower
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPowerLogCDFALD_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(out)                   :: logCDF
-        real(RKC)   , intent(in)                    :: logx, alpha, logCDFNF
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(out)                   :: logCDF
+        real(RKG)   , intent(in)                    :: logx, alpha, logCDFNF
     end subroutine
 #endif
 
@@ -1190,9 +1190,9 @@ module pm_distPower
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPowerLogCDFALD_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(out)                   :: logCDF
-        real(RKC)   , intent(in)                    :: logx, alpha, logCDFNF
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(out)                   :: logCDF
+        real(RKG)   , intent(in)                    :: logx, alpha, logCDFNF
     end subroutine
 #endif
 
@@ -1201,9 +1201,9 @@ module pm_distPower
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPowerLogCDFALD_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(out)                   :: logCDF
-        real(RKC)   , intent(in)                    :: logx, alpha, logCDFNF
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(out)                   :: logCDF
+        real(RKG)   , intent(in)                    :: logx, alpha, logCDFNF
     end subroutine
 #endif
 
@@ -1212,9 +1212,9 @@ module pm_distPower
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPowerLogCDFALD_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(out)                   :: logCDF
-        real(RKC)   , intent(in)                    :: logx, alpha, logCDFNF
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(out)                   :: logCDF
+        real(RKG)   , intent(in)                    :: logx, alpha, logCDFNF
     end subroutine
 #endif
 
@@ -1225,9 +1225,9 @@ module pm_distPower
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPowerLogCDFALL_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(out)                   :: logCDF
-        real(RKC)   , intent(in)                    :: logx, alpha, logMinX, logCDFNF
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(out)                   :: logCDF
+        real(RKG)   , intent(in)                    :: logx, alpha, logMinX, logCDFNF
     end subroutine
 #endif
 
@@ -1236,9 +1236,9 @@ module pm_distPower
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPowerLogCDFALL_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(out)                   :: logCDF
-        real(RKC)   , intent(in)                    :: logx, alpha, logMinX, logCDFNF
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(out)                   :: logCDF
+        real(RKG)   , intent(in)                    :: logx, alpha, logMinX, logCDFNF
     end subroutine
 #endif
 
@@ -1247,9 +1247,9 @@ module pm_distPower
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPowerLogCDFALL_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(out)                   :: logCDF
-        real(RKC)   , intent(in)                    :: logx, alpha, logMinX, logCDFNF
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(out)                   :: logCDF
+        real(RKG)   , intent(in)                    :: logx, alpha, logMinX, logCDFNF
     end subroutine
 #endif
 
@@ -1258,9 +1258,9 @@ module pm_distPower
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPowerLogCDFALL_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(out)                   :: logCDF
-        real(RKC)   , intent(in)                    :: logx, alpha, logMinX, logCDFNF
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(out)                   :: logCDF
+        real(RKG)   , intent(in)                    :: logx, alpha, logMinX, logCDFNF
     end subroutine
 #endif
 
@@ -1269,9 +1269,9 @@ module pm_distPower
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPowerLogCDFALL_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(out)                   :: logCDF
-        real(RKC)   , intent(in)                    :: logx, alpha, logMinX, logCDFNF
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(out)                   :: logCDF
+        real(RKG)   , intent(in)                    :: logx, alpha, logMinX, logCDFNF
     end subroutine
 #endif
 
@@ -1358,9 +1358,9 @@ module pm_distPower
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPowerLogQuanALD_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(in)                :: logCDF, alpha, logMaxX
-        real(RKC)                               :: logx
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(in)                :: logCDF, alpha, logMaxX
+        real(RKG)                               :: logx
     end function
 #endif
 
@@ -1369,9 +1369,9 @@ module pm_distPower
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPowerLogQuanALD_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(in)                :: logCDF, alpha, logMaxX
-        real(RKC)                               :: logx
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(in)                :: logCDF, alpha, logMaxX
+        real(RKG)                               :: logx
     end function
 #endif
 
@@ -1380,9 +1380,9 @@ module pm_distPower
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPowerLogQuanALD_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(in)                :: logCDF, alpha, logMaxX
-        real(RKC)                               :: logx
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(in)                :: logCDF, alpha, logMaxX
+        real(RKG)                               :: logx
     end function
 #endif
 
@@ -1391,9 +1391,9 @@ module pm_distPower
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPowerLogQuanALD_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(in)                :: logCDF, alpha, logMaxX
-        real(RKC)                               :: logx
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(in)                :: logCDF, alpha, logMaxX
+        real(RKG)                               :: logx
     end function
 #endif
 
@@ -1402,9 +1402,9 @@ module pm_distPower
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPowerLogQuanALD_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(in)                :: logCDF, alpha, logMaxX
-        real(RKC)                               :: logx
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(in)                :: logCDF, alpha, logMaxX
+        real(RKG)                               :: logx
     end function
 #endif
 
@@ -1415,9 +1415,9 @@ module pm_distPower
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPowerLogQuanALL_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(in)                :: logCDF, alpha, logMinX, logMaxX
-        real(RKC)                               :: logx
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(in)                :: logCDF, alpha, logMinX, logMaxX
+        real(RKG)                               :: logx
     end function
 #endif
 
@@ -1426,9 +1426,9 @@ module pm_distPower
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPowerLogQuanALL_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(in)                :: logCDF, alpha, logMinX, logMaxX
-        real(RKC)                               :: logx
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(in)                :: logCDF, alpha, logMinX, logMaxX
+        real(RKG)                               :: logx
     end function
 #endif
 
@@ -1437,9 +1437,9 @@ module pm_distPower
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPowerLogQuanALL_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(in)                :: logCDF, alpha, logMinX, logMaxX
-        real(RKC)                               :: logx
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(in)                :: logCDF, alpha, logMinX, logMaxX
+        real(RKG)                               :: logx
     end function
 #endif
 
@@ -1448,9 +1448,9 @@ module pm_distPower
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPowerLogQuanALL_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(in)                :: logCDF, alpha, logMinX, logMaxX
-        real(RKC)                               :: logx
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(in)                :: logCDF, alpha, logMinX, logMaxX
+        real(RKG)                               :: logx
     end function
 #endif
 
@@ -1459,9 +1459,9 @@ module pm_distPower
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPowerLogQuanALL_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(in)                :: logCDF, alpha, logMinX, logMaxX
-        real(RKC)                               :: logx
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(in)                :: logCDF, alpha, logMinX, logMaxX
+        real(RKG)                               :: logx
     end function
 #endif
 
@@ -1545,9 +1545,9 @@ module pm_distPower
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPowerLogQuanLLALD_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(out)                   :: logx
-        real(RKC)   , intent(in)                    :: logCDF, alpha, logCDFNF
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(out)                   :: logx
+        real(RKG)   , intent(in)                    :: logCDF, alpha, logCDFNF
     end subroutine
 #endif
 
@@ -1556,9 +1556,9 @@ module pm_distPower
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPowerLogQuanLLALD_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(out)                   :: logx
-        real(RKC)   , intent(in)                    :: logCDF, alpha, logCDFNF
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(out)                   :: logx
+        real(RKG)   , intent(in)                    :: logCDF, alpha, logCDFNF
     end subroutine
 #endif
 
@@ -1567,9 +1567,9 @@ module pm_distPower
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPowerLogQuanLLALD_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(out)                   :: logx
-        real(RKC)   , intent(in)                    :: logCDF, alpha, logCDFNF
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(out)                   :: logx
+        real(RKG)   , intent(in)                    :: logCDF, alpha, logCDFNF
     end subroutine
 #endif
 
@@ -1578,9 +1578,9 @@ module pm_distPower
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPowerLogQuanLLALD_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(out)                   :: logx
-        real(RKC)   , intent(in)                    :: logCDF, alpha, logCDFNF
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(out)                   :: logx
+        real(RKG)   , intent(in)                    :: logCDF, alpha, logCDFNF
     end subroutine
 #endif
 
@@ -1589,9 +1589,9 @@ module pm_distPower
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPowerLogQuanLLALD_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(out)                   :: logx
-        real(RKC)   , intent(in)                    :: logCDF, alpha, logCDFNF
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(out)                   :: logx
+        real(RKG)   , intent(in)                    :: logCDF, alpha, logCDFNF
     end subroutine
 #endif
 
@@ -1602,9 +1602,9 @@ module pm_distPower
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPowerLogQuanLLALL_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(out)                   :: logx
-        real(RKC)   , intent(in)                    :: logCDF, alpha, logMinX, logCDFNF
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(out)                   :: logx
+        real(RKG)   , intent(in)                    :: logCDF, alpha, logMinX, logCDFNF
     end subroutine
 #endif
 
@@ -1613,9 +1613,9 @@ module pm_distPower
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPowerLogQuanLLALL_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(out)                   :: logx
-        real(RKC)   , intent(in)                    :: logCDF, alpha, logMinX, logCDFNF
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(out)                   :: logx
+        real(RKG)   , intent(in)                    :: logCDF, alpha, logMinX, logCDFNF
     end subroutine
 #endif
 
@@ -1624,9 +1624,9 @@ module pm_distPower
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPowerLogQuanLLALL_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(out)                   :: logx
-        real(RKC)   , intent(in)                    :: logCDF, alpha, logMinX, logCDFNF
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(out)                   :: logx
+        real(RKG)   , intent(in)                    :: logCDF, alpha, logMinX, logCDFNF
     end subroutine
 #endif
 
@@ -1635,9 +1635,9 @@ module pm_distPower
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPowerLogQuanLLALL_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(out)                   :: logx
-        real(RKC)   , intent(in)                    :: logCDF, alpha, logMinX, logCDFNF
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(out)                   :: logx
+        real(RKG)   , intent(in)                    :: logCDF, alpha, logMinX, logCDFNF
     end subroutine
 #endif
 
@@ -1646,9 +1646,9 @@ module pm_distPower
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPowerLogQuanLLALL_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(out)                   :: logx
-        real(RKC)   , intent(in)                    :: logCDF, alpha, logMinX, logCDFNF
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(out)                   :: logx
+        real(RKG)   , intent(in)                    :: logCDF, alpha, logMinX, logCDFNF
     end subroutine
 #endif
 
@@ -1731,9 +1731,9 @@ module pm_distPower
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPowerLogRandALD_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(in)                :: alpha, logMaxX
-        real(RKC)                               :: logRand
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(in)                :: alpha, logMaxX
+        real(RKG)                               :: logRand
     end function
 #endif
 
@@ -1742,9 +1742,9 @@ module pm_distPower
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPowerLogRandALD_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(in)                :: alpha, logMaxX
-        real(RKC)                               :: logRand
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(in)                :: alpha, logMaxX
+        real(RKG)                               :: logRand
     end function
 #endif
 
@@ -1753,9 +1753,9 @@ module pm_distPower
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPowerLogRandALD_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(in)                :: alpha, logMaxX
-        real(RKC)                               :: logRand
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(in)                :: alpha, logMaxX
+        real(RKG)                               :: logRand
     end function
 #endif
 
@@ -1764,9 +1764,9 @@ module pm_distPower
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPowerLogRandALD_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(in)                :: alpha, logMaxX
-        real(RKC)                               :: logRand
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(in)                :: alpha, logMaxX
+        real(RKG)                               :: logRand
     end function
 #endif
 
@@ -1775,9 +1775,9 @@ module pm_distPower
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPowerLogRandALD_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(in)                :: alpha, logMaxX
-        real(RKC)                               :: logRand
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(in)                :: alpha, logMaxX
+        real(RKG)                               :: logRand
     end function
 #endif
 
@@ -1788,9 +1788,9 @@ module pm_distPower
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPowerLogRandALL_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(in)                :: alpha, logMinX, logMaxX
-        real(RKC)                               :: logRand
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(in)                :: alpha, logMinX, logMaxX
+        real(RKG)                               :: logRand
     end function
 #endif
 
@@ -1799,9 +1799,9 @@ module pm_distPower
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPowerLogRandALL_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(in)                :: alpha, logMinX, logMaxX
-        real(RKC)                               :: logRand
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(in)                :: alpha, logMinX, logMaxX
+        real(RKG)                               :: logRand
     end function
 #endif
 
@@ -1810,9 +1810,9 @@ module pm_distPower
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPowerLogRandALL_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(in)                :: alpha, logMinX, logMaxX
-        real(RKC)                               :: logRand
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(in)                :: alpha, logMinX, logMaxX
+        real(RKG)                               :: logRand
     end function
 #endif
 
@@ -1821,9 +1821,9 @@ module pm_distPower
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPowerLogRandALL_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(in)                :: alpha, logMinX, logMaxX
-        real(RKC)                               :: logRand
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(in)                :: alpha, logMinX, logMaxX
+        real(RKG)                               :: logRand
     end function
 #endif
 
@@ -1832,9 +1832,9 @@ module pm_distPower
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPowerLogRandALL_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(in)                :: alpha, logMinX, logMaxX
-        real(RKC)                               :: logRand
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(in)                :: alpha, logMinX, logMaxX
+        real(RKG)                               :: logRand
     end function
 #endif
 
@@ -1923,9 +1923,9 @@ module pm_distPower
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPowerLogRandLNALD_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(out)                   :: logRand
-        real(RKC)   , intent(in)                    :: negExpRand, alpha, logCDFNF
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(out)                   :: logRand
+        real(RKG)   , intent(in)                    :: negExpRand, alpha, logCDFNF
     end subroutine
 #endif
 
@@ -1934,9 +1934,9 @@ module pm_distPower
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPowerLogRandLNALD_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(out)                   :: logRand
-        real(RKC)   , intent(in)                    :: negExpRand, alpha, logCDFNF
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(out)                   :: logRand
+        real(RKG)   , intent(in)                    :: negExpRand, alpha, logCDFNF
     end subroutine
 #endif
 
@@ -1945,9 +1945,9 @@ module pm_distPower
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPowerLogRandLNALD_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(out)                   :: logRand
-        real(RKC)   , intent(in)                    :: negExpRand, alpha, logCDFNF
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(out)                   :: logRand
+        real(RKG)   , intent(in)                    :: negExpRand, alpha, logCDFNF
     end subroutine
 #endif
 
@@ -1956,9 +1956,9 @@ module pm_distPower
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPowerLogRandLNALD_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(out)                   :: logRand
-        real(RKC)   , intent(in)                    :: negExpRand, alpha, logCDFNF
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(out)                   :: logRand
+        real(RKG)   , intent(in)                    :: negExpRand, alpha, logCDFNF
     end subroutine
 #endif
 
@@ -1967,9 +1967,9 @@ module pm_distPower
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPowerLogRandLNALD_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(out)                   :: logRand
-        real(RKC)   , intent(in)                    :: negExpRand, alpha, logCDFNF
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(out)                   :: logRand
+        real(RKG)   , intent(in)                    :: negExpRand, alpha, logCDFNF
     end subroutine
 #endif
 
@@ -1980,9 +1980,9 @@ module pm_distPower
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPowerLogRandLNALL_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(out)                   :: logRand
-        real(RKC)   , intent(in)                    :: negExpRand, alpha, logMinX, logCDFNF
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(out)                   :: logRand
+        real(RKG)   , intent(in)                    :: negExpRand, alpha, logMinX, logCDFNF
     end subroutine
 #endif
 
@@ -1991,9 +1991,9 @@ module pm_distPower
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPowerLogRandLNALL_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(out)                   :: logRand
-        real(RKC)   , intent(in)                    :: negExpRand, alpha, logMinX, logCDFNF
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(out)                   :: logRand
+        real(RKG)   , intent(in)                    :: negExpRand, alpha, logMinX, logCDFNF
     end subroutine
 #endif
 
@@ -2002,9 +2002,9 @@ module pm_distPower
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPowerLogRandLNALL_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(out)                   :: logRand
-        real(RKC)   , intent(in)                    :: negExpRand, alpha, logMinX, logCDFNF
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(out)                   :: logRand
+        real(RKG)   , intent(in)                    :: negExpRand, alpha, logMinX, logCDFNF
     end subroutine
 #endif
 
@@ -2013,9 +2013,9 @@ module pm_distPower
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPowerLogRandLNALL_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(out)                   :: logRand
-        real(RKC)   , intent(in)                    :: negExpRand, alpha, logMinX, logCDFNF
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(out)                   :: logRand
+        real(RKG)   , intent(in)                    :: negExpRand, alpha, logMinX, logCDFNF
     end subroutine
 #endif
 
@@ -2024,9 +2024,9 @@ module pm_distPower
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPowerLogRandLNALL_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(out)                   :: logRand
-        real(RKC)   , intent(in)                    :: negExpRand, alpha, logMinX, logCDFNF
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(out)                   :: logRand
+        real(RKG)   , intent(in)                    :: negExpRand, alpha, logMinX, logCDFNF
     end subroutine
 #endif
 

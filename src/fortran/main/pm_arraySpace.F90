@@ -114,13 +114,13 @@ module pm_arraySpace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLinSpace_CK5
 #endif
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
         implicit none
-        complex(CKC), intent(in)            :: x1
-        complex(CKC), intent(in)            :: x2
+        complex(CKG), intent(in)            :: x1
+        complex(CKG), intent(in)            :: x2
         integer(IK) , intent(in)            :: count
         logical(LK) , intent(in), optional  :: fopen, lopen
-        complex(CKC)                        :: linSpace(0 : count - 1)
+        complex(CKG)                        :: linSpace(0 : count - 1)
     end function
 #endif
 
@@ -129,13 +129,13 @@ module pm_arraySpace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLinSpace_CK4
 #endif
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
         implicit none
-        complex(CKC), intent(in)            :: x1
-        complex(CKC), intent(in)            :: x2
+        complex(CKG), intent(in)            :: x1
+        complex(CKG), intent(in)            :: x2
         integer(IK) , intent(in)            :: count
         logical(LK) , intent(in), optional  :: fopen, lopen
-        complex(CKC)                        :: linSpace(0 : count - 1)
+        complex(CKG)                        :: linSpace(0 : count - 1)
     end function
 #endif
 
@@ -144,13 +144,13 @@ module pm_arraySpace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLinSpace_CK3
 #endif
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
         implicit none
-        complex(CKC), intent(in)            :: x1
-        complex(CKC), intent(in)            :: x2
+        complex(CKG), intent(in)            :: x1
+        complex(CKG), intent(in)            :: x2
         integer(IK) , intent(in)            :: count
         logical(LK) , intent(in), optional  :: fopen, lopen
-        complex(CKC)                        :: linSpace(0 : count - 1)
+        complex(CKG)                        :: linSpace(0 : count - 1)
     end function
 #endif
 
@@ -159,13 +159,13 @@ module pm_arraySpace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLinSpace_CK2
 #endif
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
         implicit none
-        complex(CKC), intent(in)            :: x1
-        complex(CKC), intent(in)            :: x2
+        complex(CKG), intent(in)            :: x1
+        complex(CKG), intent(in)            :: x2
         integer(IK) , intent(in)            :: count
         logical(LK) , intent(in), optional  :: fopen, lopen
-        complex(CKC)                        :: linSpace(0 : count - 1)
+        complex(CKG)                        :: linSpace(0 : count - 1)
     end function
 #endif
 
@@ -174,13 +174,13 @@ module pm_arraySpace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLinSpace_CK1
 #endif
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
         implicit none
-        complex(CKC), intent(in)            :: x1
-        complex(CKC), intent(in)            :: x2
+        complex(CKG), intent(in)            :: x1
+        complex(CKG), intent(in)            :: x2
         integer(IK) , intent(in)            :: count
         logical(LK) , intent(in), optional  :: fopen, lopen
-        complex(CKC)                        :: linSpace(0 : count - 1)
+        complex(CKG)                        :: linSpace(0 : count - 1)
     end function
 #endif
 
@@ -191,13 +191,13 @@ module pm_arraySpace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLinSpace_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         implicit none
-        real(RKC)   , intent(in)            :: x1
-        real(RKC)   , intent(in)            :: x2
+        real(RKG)   , intent(in)            :: x1
+        real(RKG)   , intent(in)            :: x2
         integer(IK) , intent(in)            :: count
         logical(LK) , intent(in), optional  :: fopen, lopen
-        real(RKC)                           :: linSpace(0 : count - 1)
+        real(RKG)                           :: linSpace(0 : count - 1)
     end function
 #endif
 
@@ -206,13 +206,13 @@ module pm_arraySpace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLinSpace_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         implicit none
-        real(RKC)   , intent(in)            :: x1
-        real(RKC)   , intent(in)            :: x2
+        real(RKG)   , intent(in)            :: x1
+        real(RKG)   , intent(in)            :: x2
         integer(IK) , intent(in)            :: count
         logical(LK) , intent(in), optional  :: fopen, lopen
-        real(RKC)                           :: linSpace(0 : count - 1)
+        real(RKG)                           :: linSpace(0 : count - 1)
     end function
 #endif
 
@@ -221,13 +221,13 @@ module pm_arraySpace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLinSpace_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         implicit none
-        real(RKC)   , intent(in)            :: x1
-        real(RKC)   , intent(in)            :: x2
+        real(RKG)   , intent(in)            :: x1
+        real(RKG)   , intent(in)            :: x2
         integer(IK) , intent(in)            :: count
         logical(LK) , intent(in), optional  :: fopen, lopen
-        real(RKC)                           :: linSpace(0 : count - 1)
+        real(RKG)                           :: linSpace(0 : count - 1)
     end function
 #endif
 
@@ -236,13 +236,13 @@ module pm_arraySpace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLinSpace_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         implicit none
-        real(RKC)   , intent(in)            :: x1
-        real(RKC)   , intent(in)            :: x2
+        real(RKG)   , intent(in)            :: x1
+        real(RKG)   , intent(in)            :: x2
         integer(IK) , intent(in)            :: count
         logical(LK) , intent(in), optional  :: fopen, lopen
-        real(RKC)                           :: linSpace(0 : count - 1)
+        real(RKG)                           :: linSpace(0 : count - 1)
     end function
 #endif
 
@@ -251,13 +251,13 @@ module pm_arraySpace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLinSpace_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         implicit none
-        real(RKC)   , intent(in)            :: x1
-        real(RKC)   , intent(in)            :: x2
+        real(RKG)   , intent(in)            :: x1
+        real(RKG)   , intent(in)            :: x2
         integer(IK) , intent(in)            :: count
         logical(LK) , intent(in), optional  :: fopen, lopen
-        real(RKC)                           :: linSpace(0 : count - 1)
+        real(RKG)                           :: linSpace(0 : count - 1)
     end function
 #endif
 
@@ -333,11 +333,11 @@ module pm_arraySpace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLinSpace_CK5
 #endif
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
         implicit none
-        complex(CKC), intent(out)   , contiguous    :: linSpace(0:)
-        complex(CKC), intent(in)                    :: x1
-        complex(CKC), intent(in)                    :: x2
+        complex(CKG), intent(out)   , contiguous    :: linSpace(0:)
+        complex(CKG), intent(in)                    :: x1
+        complex(CKG), intent(in)                    :: x2
         logical(LK) , intent(in)    , optional      :: fopen, lopen
     end subroutine
 #endif
@@ -347,11 +347,11 @@ module pm_arraySpace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLinSpace_CK4
 #endif
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
         implicit none
-        complex(CKC), intent(out)   , contiguous    :: linSpace(0:)
-        complex(CKC), intent(in)                    :: x1
-        complex(CKC), intent(in)                    :: x2
+        complex(CKG), intent(out)   , contiguous    :: linSpace(0:)
+        complex(CKG), intent(in)                    :: x1
+        complex(CKG), intent(in)                    :: x2
         logical(LK) , intent(in)    , optional      :: fopen, lopen
     end subroutine
 #endif
@@ -361,11 +361,11 @@ module pm_arraySpace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLinSpace_CK3
 #endif
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
         implicit none
-        complex(CKC), intent(out)   , contiguous    :: linSpace(0:)
-        complex(CKC), intent(in)                    :: x1
-        complex(CKC), intent(in)                    :: x2
+        complex(CKG), intent(out)   , contiguous    :: linSpace(0:)
+        complex(CKG), intent(in)                    :: x1
+        complex(CKG), intent(in)                    :: x2
         logical(LK) , intent(in)    , optional      :: fopen, lopen
     end subroutine
 #endif
@@ -375,11 +375,11 @@ module pm_arraySpace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLinSpace_CK2
 #endif
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
         implicit none
-        complex(CKC), intent(out)   , contiguous    :: linSpace(0:)
-        complex(CKC), intent(in)                    :: x1
-        complex(CKC), intent(in)                    :: x2
+        complex(CKG), intent(out)   , contiguous    :: linSpace(0:)
+        complex(CKG), intent(in)                    :: x1
+        complex(CKG), intent(in)                    :: x2
         logical(LK) , intent(in)    , optional      :: fopen, lopen
     end subroutine
 #endif
@@ -389,11 +389,11 @@ module pm_arraySpace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLinSpace_CK1
 #endif
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
         implicit none
-        complex(CKC), intent(out)   , contiguous    :: linSpace(0:)
-        complex(CKC), intent(in)                    :: x1
-        complex(CKC), intent(in)                    :: x2
+        complex(CKG), intent(out)   , contiguous    :: linSpace(0:)
+        complex(CKG), intent(in)                    :: x1
+        complex(CKG), intent(in)                    :: x2
         logical(LK) , intent(in)    , optional      :: fopen, lopen
     end subroutine
 #endif
@@ -405,11 +405,11 @@ module pm_arraySpace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLinSpace_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         implicit none
-        real(RKC)   , intent(out)   , contiguous    :: linSpace(0:)
-        real(RKC)   , intent(in)                    :: x1
-        real(RKC)   , intent(in)                    :: x2
+        real(RKG)   , intent(out)   , contiguous    :: linSpace(0:)
+        real(RKG)   , intent(in)                    :: x1
+        real(RKG)   , intent(in)                    :: x2
         logical(LK) , intent(in)    , optional      :: fopen, lopen
     end subroutine
 #endif
@@ -419,11 +419,11 @@ module pm_arraySpace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLinSpace_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         implicit none
-        real(RKC)   , intent(out)   , contiguous    :: linSpace(0:)
-        real(RKC)   , intent(in)                    :: x1
-        real(RKC)   , intent(in)                    :: x2
+        real(RKG)   , intent(out)   , contiguous    :: linSpace(0:)
+        real(RKG)   , intent(in)                    :: x1
+        real(RKG)   , intent(in)                    :: x2
         logical(LK) , intent(in)    , optional      :: fopen, lopen
     end subroutine
 #endif
@@ -433,11 +433,11 @@ module pm_arraySpace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLinSpace_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         implicit none
-        real(RKC)   , intent(out)   , contiguous    :: linSpace(0:)
-        real(RKC)   , intent(in)                    :: x1
-        real(RKC)   , intent(in)                    :: x2
+        real(RKG)   , intent(out)   , contiguous    :: linSpace(0:)
+        real(RKG)   , intent(in)                    :: x1
+        real(RKG)   , intent(in)                    :: x2
         logical(LK) , intent(in)    , optional      :: fopen, lopen
     end subroutine
 #endif
@@ -447,11 +447,11 @@ module pm_arraySpace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLinSpace_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         implicit none
-        real(RKC)   , intent(out)   , contiguous    :: linSpace(0:)
-        real(RKC)   , intent(in)                    :: x1
-        real(RKC)   , intent(in)                    :: x2
+        real(RKG)   , intent(out)   , contiguous    :: linSpace(0:)
+        real(RKG)   , intent(in)                    :: x1
+        real(RKG)   , intent(in)                    :: x2
         logical(LK) , intent(in)    , optional      :: fopen, lopen
     end subroutine
 #endif
@@ -461,11 +461,11 @@ module pm_arraySpace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLinSpace_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         implicit none
-        real(RKC)   , intent(out)   , contiguous    :: linSpace(0:)
-        real(RKC)   , intent(in)                    :: x1
-        real(RKC)   , intent(in)                    :: x2
+        real(RKG)   , intent(out)   , contiguous    :: linSpace(0:)
+        real(RKG)   , intent(in)                    :: x1
+        real(RKG)   , intent(in)                    :: x2
         logical(LK) , intent(in)    , optional      :: fopen, lopen
     end subroutine
 #endif
@@ -547,14 +547,14 @@ module pm_arraySpace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogSpace_CK5
 #endif
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
         implicit none
-        complex(CKC), intent(in)            :: logx1
-        complex(CKC), intent(in)            :: logx2
+        complex(CKG), intent(in)            :: logx1
+        complex(CKG), intent(in)            :: logx2
         integer(IK) , intent(in)            :: count
         logical(LK) , intent(in), optional  :: fopen,lopen
-        real(CKC)   , intent(in), optional  :: base
-        complex(CKC)                        :: logSpace(count)
+        real(CKG)   , intent(in), optional  :: base
+        complex(CKG)                        :: logSpace(count)
     end function
 #endif
 
@@ -563,14 +563,14 @@ module pm_arraySpace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogSpace_CK4
 #endif
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
         implicit none
-        complex(CKC), intent(in)            :: logx1
-        complex(CKC), intent(in)            :: logx2
+        complex(CKG), intent(in)            :: logx1
+        complex(CKG), intent(in)            :: logx2
         integer(IK) , intent(in)            :: count
         logical(LK) , intent(in), optional  :: fopen,lopen
-        real(CKC)   , intent(in), optional  :: base
-        complex(CKC)                        :: logSpace(count)
+        real(CKG)   , intent(in), optional  :: base
+        complex(CKG)                        :: logSpace(count)
     end function
 #endif
 
@@ -579,14 +579,14 @@ module pm_arraySpace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogSpace_CK3
 #endif
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
         implicit none
-        complex(CKC), intent(in)            :: logx1
-        complex(CKC), intent(in)            :: logx2
+        complex(CKG), intent(in)            :: logx1
+        complex(CKG), intent(in)            :: logx2
         integer(IK) , intent(in)            :: count
         logical(LK) , intent(in), optional  :: fopen,lopen
-        real(CKC)   , intent(in), optional  :: base
-        complex(CKC)                        :: logSpace(count)
+        real(CKG)   , intent(in), optional  :: base
+        complex(CKG)                        :: logSpace(count)
     end function
 #endif
 
@@ -595,14 +595,14 @@ module pm_arraySpace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogSpace_CK2
 #endif
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
         implicit none
-        complex(CKC), intent(in)            :: logx1
-        complex(CKC), intent(in)            :: logx2
+        complex(CKG), intent(in)            :: logx1
+        complex(CKG), intent(in)            :: logx2
         integer(IK) , intent(in)            :: count
         logical(LK) , intent(in), optional  :: fopen,lopen
-        real(CKC)   , intent(in), optional  :: base
-        complex(CKC)                        :: logSpace(count)
+        real(CKG)   , intent(in), optional  :: base
+        complex(CKG)                        :: logSpace(count)
     end function
 #endif
 
@@ -611,14 +611,14 @@ module pm_arraySpace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogSpace_CK1
 #endif
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
         implicit none
-        complex(CKC), intent(in)            :: logx1
-        complex(CKC), intent(in)            :: logx2
+        complex(CKG), intent(in)            :: logx1
+        complex(CKG), intent(in)            :: logx2
         integer(IK) , intent(in)            :: count
         logical(LK) , intent(in), optional  :: fopen,lopen
-        real(CKC)   , intent(in), optional  :: base
-        complex(CKC)                        :: logSpace(count)
+        real(CKG)   , intent(in), optional  :: base
+        complex(CKG)                        :: logSpace(count)
     end function
 #endif
 
@@ -629,14 +629,14 @@ module pm_arraySpace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogSpace_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         implicit none
-        real(RKC)   , intent(in)            :: logx1
-        real(RKC)   , intent(in)            :: logx2
+        real(RKG)   , intent(in)            :: logx1
+        real(RKG)   , intent(in)            :: logx2
         integer(IK) , intent(in)            :: count
         logical(LK) , intent(in), optional  :: fopen,lopen
-        real(RKC)   , intent(in), optional  :: base
-        real(RKC)                           :: logSpace(count)
+        real(RKG)   , intent(in), optional  :: base
+        real(RKG)                           :: logSpace(count)
     end function
 #endif
 
@@ -645,14 +645,14 @@ module pm_arraySpace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogSpace_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         implicit none
-        real(RKC)   , intent(in)            :: logx1
-        real(RKC)   , intent(in)            :: logx2
+        real(RKG)   , intent(in)            :: logx1
+        real(RKG)   , intent(in)            :: logx2
         integer(IK) , intent(in)            :: count
         logical(LK) , intent(in), optional  :: fopen,lopen
-        real(RKC)   , intent(in), optional  :: base
-        real(RKC)                           :: logSpace(count)
+        real(RKG)   , intent(in), optional  :: base
+        real(RKG)                           :: logSpace(count)
     end function
 #endif
 
@@ -661,14 +661,14 @@ module pm_arraySpace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogSpace_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         implicit none
-        real(RKC)   , intent(in)            :: logx1
-        real(RKC)   , intent(in)            :: logx2
+        real(RKG)   , intent(in)            :: logx1
+        real(RKG)   , intent(in)            :: logx2
         integer(IK) , intent(in)            :: count
         logical(LK) , intent(in), optional  :: fopen,lopen
-        real(RKC)   , intent(in), optional  :: base
-        real(RKC)                           :: logSpace(count)
+        real(RKG)   , intent(in), optional  :: base
+        real(RKG)                           :: logSpace(count)
     end function
 #endif
 
@@ -677,14 +677,14 @@ module pm_arraySpace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogSpace_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         implicit none
-        real(RKC)   , intent(in)            :: logx1
-        real(RKC)   , intent(in)            :: logx2
+        real(RKG)   , intent(in)            :: logx1
+        real(RKG)   , intent(in)            :: logx2
         integer(IK) , intent(in)            :: count
         logical(LK) , intent(in), optional  :: fopen,lopen
-        real(RKC)   , intent(in), optional  :: base
-        real(RKC)                           :: logSpace(count)
+        real(RKG)   , intent(in), optional  :: base
+        real(RKG)                           :: logSpace(count)
     end function
 #endif
 
@@ -693,14 +693,14 @@ module pm_arraySpace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogSpace_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         implicit none
-        real(RKC)   , intent(in)            :: logx1
-        real(RKC)   , intent(in)            :: logx2
+        real(RKG)   , intent(in)            :: logx1
+        real(RKG)   , intent(in)            :: logx2
         integer(IK) , intent(in)            :: count
         logical(LK) , intent(in), optional  :: fopen,lopen
-        real(RKC)   , intent(in), optional  :: base
-        real(RKC)                           :: logSpace(count)
+        real(RKG)   , intent(in), optional  :: base
+        real(RKG)                           :: logSpace(count)
     end function
 #endif
 
@@ -774,12 +774,12 @@ module pm_arraySpace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLogSpace_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC), intent(out)   , contiguous    :: logSpace(:)
-        complex(CKC), intent(in)                    :: logx1
-        complex(CKC), intent(in)                    :: logx2
+        use pm_kind, only: CKG => CK5
+        complex(CKG), intent(out)   , contiguous    :: logSpace(:)
+        complex(CKG), intent(in)                    :: logx1
+        complex(CKG), intent(in)                    :: logx2
         logical(LK) , intent(in)    , optional      :: fopen,lopen
-        real(CKC)   , intent(in)    , optional      :: base
+        real(CKG)   , intent(in)    , optional      :: base
     end subroutine
 #endif
 
@@ -788,12 +788,12 @@ module pm_arraySpace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLogSpace_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC), intent(out)   , contiguous    :: logSpace(:)
-        complex(CKC), intent(in)                    :: logx1
-        complex(CKC), intent(in)                    :: logx2
+        use pm_kind, only: CKG => CK4
+        complex(CKG), intent(out)   , contiguous    :: logSpace(:)
+        complex(CKG), intent(in)                    :: logx1
+        complex(CKG), intent(in)                    :: logx2
         logical(LK) , intent(in)    , optional      :: fopen,lopen
-        real(CKC)   , intent(in)    , optional      :: base
+        real(CKG)   , intent(in)    , optional      :: base
     end subroutine
 #endif
 
@@ -802,12 +802,12 @@ module pm_arraySpace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLogSpace_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC), intent(out)   , contiguous    :: logSpace(:)
-        complex(CKC), intent(in)                    :: logx1
-        complex(CKC), intent(in)                    :: logx2
+        use pm_kind, only: CKG => CK3
+        complex(CKG), intent(out)   , contiguous    :: logSpace(:)
+        complex(CKG), intent(in)                    :: logx1
+        complex(CKG), intent(in)                    :: logx2
         logical(LK) , intent(in)    , optional      :: fopen,lopen
-        real(CKC)   , intent(in)    , optional      :: base
+        real(CKG)   , intent(in)    , optional      :: base
     end subroutine
 #endif
 
@@ -816,12 +816,12 @@ module pm_arraySpace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLogSpace_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC), intent(out)   , contiguous    :: logSpace(:)
-        complex(CKC), intent(in)                    :: logx1
-        complex(CKC), intent(in)                    :: logx2
+        use pm_kind, only: CKG => CK2
+        complex(CKG), intent(out)   , contiguous    :: logSpace(:)
+        complex(CKG), intent(in)                    :: logx1
+        complex(CKG), intent(in)                    :: logx2
         logical(LK) , intent(in)    , optional      :: fopen,lopen
-        real(CKC)   , intent(in)    , optional      :: base
+        real(CKG)   , intent(in)    , optional      :: base
     end subroutine
 #endif
 
@@ -830,12 +830,12 @@ module pm_arraySpace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLogSpace_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC), intent(out)   , contiguous    :: logSpace(:)
-        complex(CKC), intent(in)                    :: logx1
-        complex(CKC), intent(in)                    :: logx2
+        use pm_kind, only: CKG => CK1
+        complex(CKG), intent(out)   , contiguous    :: logSpace(:)
+        complex(CKG), intent(in)                    :: logx1
+        complex(CKG), intent(in)                    :: logx2
         logical(LK) , intent(in)    , optional      :: fopen,lopen
-        real(CKC)   , intent(in)    , optional      :: base
+        real(CKG)   , intent(in)    , optional      :: base
     end subroutine
 #endif
 
@@ -846,12 +846,12 @@ module pm_arraySpace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLogSpace_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(out)   , contiguous    :: logSpace(:)
-        real(RKC)   , intent(in)                    :: logx1
-        real(RKC)   , intent(in)                    :: logx2
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(out)   , contiguous    :: logSpace(:)
+        real(RKG)   , intent(in)                    :: logx1
+        real(RKG)   , intent(in)                    :: logx2
         logical(LK) , intent(in)    , optional      :: fopen,lopen
-        real(RKC)   , intent(in)    , optional      :: base
+        real(RKG)   , intent(in)    , optional      :: base
     end subroutine
 #endif
 
@@ -860,12 +860,12 @@ module pm_arraySpace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLogSpace_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(out)   , contiguous    :: logSpace(:)
-        real(RKC)   , intent(in)                    :: logx1
-        real(RKC)   , intent(in)                    :: logx2
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(out)   , contiguous    :: logSpace(:)
+        real(RKG)   , intent(in)                    :: logx1
+        real(RKG)   , intent(in)                    :: logx2
         logical(LK) , intent(in)    , optional      :: fopen,lopen
-        real(RKC)   , intent(in)    , optional      :: base
+        real(RKG)   , intent(in)    , optional      :: base
     end subroutine
 #endif
 
@@ -874,12 +874,12 @@ module pm_arraySpace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLogSpace_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(out)   , contiguous    :: logSpace(:)
-        real(RKC)   , intent(in)                    :: logx1
-        real(RKC)   , intent(in)                    :: logx2
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(out)   , contiguous    :: logSpace(:)
+        real(RKG)   , intent(in)                    :: logx1
+        real(RKG)   , intent(in)                    :: logx2
         logical(LK) , intent(in)    , optional      :: fopen,lopen
-        real(RKC)   , intent(in)    , optional      :: base
+        real(RKG)   , intent(in)    , optional      :: base
     end subroutine
 #endif
 
@@ -888,12 +888,12 @@ module pm_arraySpace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLogSpace_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(out)   , contiguous    :: logSpace(:)
-        real(RKC)   , intent(in)                    :: logx1
-        real(RKC)   , intent(in)                    :: logx2
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(out)   , contiguous    :: logSpace(:)
+        real(RKG)   , intent(in)                    :: logx1
+        real(RKG)   , intent(in)                    :: logx2
         logical(LK) , intent(in)    , optional      :: fopen,lopen
-        real(RKC)   , intent(in)    , optional      :: base
+        real(RKG)   , intent(in)    , optional      :: base
     end subroutine
 #endif
 
@@ -902,12 +902,12 @@ module pm_arraySpace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLogSpace_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(out)   , contiguous    :: logSpace(:)
-        real(RKC)   , intent(in)                    :: logx1
-        real(RKC)   , intent(in)                    :: logx2
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(out)   , contiguous    :: logSpace(:)
+        real(RKG)   , intent(in)                    :: logx1
+        real(RKG)   , intent(in)                    :: logx2
         logical(LK) , intent(in)    , optional      :: fopen,lopen
-        real(RKC)   , intent(in)    , optional      :: base
+        real(RKG)   , intent(in)    , optional      :: base
     end subroutine
 #endif
 

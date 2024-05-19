@@ -31,19 +31,19 @@
 #endif
         integer(IK) :: i
         integer(IK) , parameter :: NP = 10_IK
-        real(TKC)   , parameter :: TOL = epsilon(0._TKC) * 100
-        real(TKC)   , parameter :: invOmega = 1._TKC
-        real(TKC)               :: pdf_ref(NP)
-        real(TKC)               :: diff(NP)
-        real(TKC)               :: pdf(NP)
-        real(TKC)               :: point(NP)
-        real(TKC)               :: kappa(NP)
-        real(TKC)               :: invSigma(NP)
+        real(TKG)   , parameter :: TOL = epsilon(0._TKG) * 100
+        real(TKG)   , parameter :: invOmega = 1._TKG
+        real(TKG)               :: pdf_ref(NP)
+        real(TKG)               :: diff(NP)
+        real(TKG)               :: pdf(NP)
+        real(TKG)               :: point(NP)
+        real(TKG)               :: kappa(NP)
+        real(TKG)               :: invSigma(NP)
 
         assertion = .true._LK
-        call setUnifRand(point, epsilon(0._TKC), 1000._TKC)
-        call setUnifRand(kappa, epsilon(0._TKC), 10._TKC)
-        call setUnifRand(invSigma, epsilon(0._TKC), 10._TKC)
+        call setUnifRand(point, epsilon(0._TKG), 1000._TKG)
+        call setUnifRand(kappa, epsilon(0._TKG), 10._TKG)
+        call setUnifRand(invSigma, epsilon(0._TKG), 10._TKG)
 
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

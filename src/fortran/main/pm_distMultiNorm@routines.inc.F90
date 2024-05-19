@@ -36,15 +36,15 @@
 #if     getMultiNormLogPDFNF_ENABLED
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        real(RKC), parameter :: LOG_INVERSE_SQRT_TWO_PI = -0.5_RKC * log(2 * acos(-1._RKC))
+        real(RKG), parameter :: LOG_INVERSE_SQRT_TWO_PI = -0.5_RKG * log(2 * acos(-1._RKG))
 #if     I_ENABLED
         integer(IK) :: ndim
-        real(RKC) :: logSqrtDetInvCov
+        real(RKG) :: logSqrtDetInvCov
         logSqrtDetInvCov = getMatDetSqrtLog(invCov, uppDia)
         ndim = size(invCov, 1, IK)
 #elif   IF_ENABLED
         integer(IK) :: ndim
-        real(RKC)   :: logSqrtDetInvCov, chol(size(invCov, 1, IK), size(invCov, 1, IK))
+        real(RKG)   :: logSqrtDetInvCov, chol(size(invCov, 1, IK), size(invCov, 1, IK))
         CHECK_ASSERTION(__LINE__, size(invCov, 1, IK) == size(invCov, 2, IK), SK_"@getMultiNormLogPDFNF(): The condition `size(invCov, 1) == size(invCov, 2)` must hold. shape(invCov) = "//getStr(shape(invCov, IK)))
         call setMatDetSqrtLog(invCov, uppDia, logSqrtDetInvCov, info, chol, nothing)
         ndim = size(invCov, 1, IK)
@@ -62,7 +62,7 @@
 
         ! Set the normalization factor for different interfaces.
 #if     DDD_ENABLED || MDD_ENABLED
-#define LOGNORMFAC getMultiNormLogPDFNF(size(X,1,IK), 0._RKC)
+#define LOGNORMFAC getMultiNormLogPDFNF(size(X,1,IK), 0._RKG)
 #elif   DID_ENABLED || MID_ENABLED
 #define LOGNORMFAC getMultiNormLogPDFNF(invCov)
 #elif   DDN_ENABLED || MDN_ENABLED || DIN_ENABLED || MIN_ENABLED
@@ -86,7 +86,7 @@
 #else
 #error  "Unrecognized interface."
 #endif
-        logPDF = LOGNORMFAC - 0.5_RKC * MAHAL_SQ
+        logPDF = LOGNORMFAC - 0.5_RKG * MAHAL_SQ
 
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 #elif   D1_ENABLED && (getMNR_ENABLED || setMNR_ENABLED)
@@ -125,7 +125,7 @@
 #endif
         block
             integer(IK) :: idim
-            real(RKC) :: normrnd
+            real(RKG) :: normrnd
             ! Separate the first to allow the possibility of adding an optional `mean`.
             call setNormRand(RNG normrnd)
             rand(1 : ndim) = XPLUS(mean) chol(GET_INDEX(1 : ndim, 1)) * normrnd

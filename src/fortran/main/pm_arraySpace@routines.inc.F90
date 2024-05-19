@@ -36,15 +36,15 @@
         !%%%%%%%%%%%%%%%%%%
 
 #if     CK_ENABLED
-#define TYPE_OF_SPACE complex(TKC)
+#define TYPE_OF_SPACE complex(TKG)
 #elif   RK_ENABLED
-#define TYPE_OF_SPACE real(TKC)
+#define TYPE_OF_SPACE real(TKG)
 #else
 #error  "Unrecognized interface."
 #endif
         integer(IK) :: i, count
         logical(LK) :: fopen_def, lopen_def
-        real(TKC), parameter :: HALF = 0.5_TKC
+        real(TKG), parameter :: HALF = 0.5_TKG
         TYPE_OF_SPACE :: stepSize, start
         count = size(linSpace, 1, IK)
         if (0_IK < count) then

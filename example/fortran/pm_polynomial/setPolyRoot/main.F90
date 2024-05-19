@@ -20,13 +20,13 @@ program example
 ! See the output below for the actual code.
 ! developer guideline:
 ! TYPE - type of coefficient vector: `real`, `complex`
-! RKC  - kind of coefficient vector: any supported by the processor
+! RKG  - kind of coefficient vector: any supported by the processor
 ! CREP - Number of coefficient elements to display per line: use `1` for `real` and `2` for `complex` coefficients.
-#define GET_ROOT_EIG(CREP, TYPE, RKC) \
+#define GET_ROOT_EIG(CREP, TYPE, RKG) \
 block; \
 use pm_val2str, only: getStr; \
-TYPE(RKC)   , allocatable   :: coef(:); \
-complex(RKC), allocatable   :: root(:); \
+TYPE(RKG)   , allocatable   :: coef(:); \
+complex(RKG), allocatable   :: root(:); \
 call disp%skip(); \
 coef = COEF; \
 call disp%show("coef"); \
@@ -49,13 +49,13 @@ end block;
 ! See the output below for the actual code.
 ! developer guideline:
 ! TYPE - type of coefficient vector: `real`, `complex`
-! RKC  - kind of coefficient vector: any supported by the processor
+! RKG  - kind of coefficient vector: any supported by the processor
 ! CREP - Number of coefficient elements to display per line: use `1` for `real` and `2` for `complex` coefficients.
-#define GET_ROOT_JEN(CREP, TYPE, RKC) \
+#define GET_ROOT_JEN(CREP, TYPE, RKG) \
 block; \
 use pm_val2str, only: getStr; \
-TYPE(RKC)   , allocatable   :: coef(:); \
-complex(RKC), allocatable   :: root(:); \
+TYPE(RKG)   , allocatable   :: coef(:); \
+complex(RKG), allocatable   :: root(:); \
 call disp%skip(); \
 coef = COEF; \
 call disp%show("coef"); \
@@ -78,13 +78,13 @@ end block;
 ! See the output below for the actual code.
 ! developer guideline:
 ! TYPE - type of coefficient vector: `real`, `complex`
-! RKC  - kind of coefficient vector: any supported by the processor
+! RKG  - kind of coefficient vector: any supported by the processor
 ! CREP - Number of coefficient elements to display per line: use `1` for `real` and `2` for `complex` coefficients.
-#define GET_ROOT_LAG(CREP, TYPE, RKC) \
+#define GET_ROOT_LAG(CREP, TYPE, RKG) \
 block; \
 use pm_val2str, only: getStr; \
-TYPE(RKC)   , allocatable   :: coef(:); \
-complex(RKC), allocatable   :: root(:); \
+TYPE(RKG)   , allocatable   :: coef(:); \
+complex(RKG), allocatable   :: root(:); \
 call disp%skip(); \
 coef = COEF; \
 call disp%show("coef"); \

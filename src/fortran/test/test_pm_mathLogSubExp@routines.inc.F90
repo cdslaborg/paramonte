@@ -27,20 +27,20 @@
         use pm_mathMinMax, only: setMinMax
 
 #if     test_getLogSubExp_CK_ENABLED
-        complex(CKC), parameter     :: TOL = epsilon(1._CKC) * 10_IK
-        complex(CKC)                :: logSubExp_ref
-        complex(CKC)                :: logSubExp
-        complex(CKC)                :: smaller
-        complex(CKC)                :: larger
-        complex(CKC)                :: diff
-        real(CKC)                   :: tmp
+        complex(CKG), parameter     :: TOL = epsilon(1._CKG) * 10_IK
+        complex(CKG)                :: logSubExp_ref
+        complex(CKG)                :: logSubExp
+        complex(CKG)                :: smaller
+        complex(CKG)                :: larger
+        complex(CKG)                :: diff
+        real(CKG)                   :: tmp
 #elif   test_getLogSubExp_RK_ENABLED
-        real(RKC)   , parameter     :: TOL = epsilon(1._RKC) * 10_IK
-        real(RKC)                   :: logSubExp_ref
-        real(RKC)                   :: logSubExp
-        real(RKC)                   :: smaller
-        real(RKC)                   :: larger
-        real(RKC)                   :: diff
+        real(RKG)   , parameter     :: TOL = epsilon(1._RKG) * 10_IK
+        real(RKG)                   :: logSubExp_ref
+        real(RKG)                   :: logSubExp
+        real(RKG)                   :: smaller
+        real(RKG)                   :: larger
+        real(RKG)                   :: diff
 #else
 #error  "Unrecognized interface."
 #endif

@@ -74,7 +74,7 @@
         if (size(TIMING%VALUES, kind = IK) /= counter) call setResized(TIMING%VALUES, size = counter)
         TIMING%overhead = TIMING%overhead / counter
         TIMING%mean = max(self%timer%resol, TIMING%mean / counter - TIMING%overhead)
-        TIMING%std = 0._RKC
+        TIMING%std = 0._RKG
         if (1_IK < size(TIMING%VALUES, 1, IK)) TIMING%std = max(self%timer%resol, sqrt(getVar(TIMING%VALUES)))
         TIMING%min = max(self%timer%resol, minval(TIMING%VALUES) - TIMING%overhead)
         TIMING%max = max(self%timer%resol, maxval(TIMING%VALUES) - TIMING%overhead)

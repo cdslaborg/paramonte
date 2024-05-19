@@ -32,7 +32,7 @@
 
         integer(IK)     , parameter :: NP = 5_IK
         character(*, SK), parameter :: PROCEDURE_NAME = "abs()"
-        complex(CKC)    :: Matrix(NP,NP), MatrixABS(NP,NP)
+        complex(CKG)    :: Matrix(NP,NP), MatrixABS(NP,NP)
         integer(IK)     :: i, j
 
         assertion = .true._LK

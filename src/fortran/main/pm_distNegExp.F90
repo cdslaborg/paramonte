@@ -195,10 +195,10 @@ module pm_distNegExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getNegExpLogPDFXMI_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(in)                :: x
-        real(RKC)   , intent(in)    , optional  :: mu, invSigma
-        real(RKC)                               :: logPDF
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(in)                :: x
+        real(RKG)   , intent(in)    , optional  :: mu, invSigma
+        real(RKG)                               :: logPDF
     end function
 #endif
 
@@ -207,10 +207,10 @@ module pm_distNegExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getNegExpLogPDFXMI_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(in)                :: x
-        real(RKC)   , intent(in)    , optional  :: mu, invSigma
-        real(RKC)                               :: logPDF
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(in)                :: x
+        real(RKG)   , intent(in)    , optional  :: mu, invSigma
+        real(RKG)                               :: logPDF
     end function
 #endif
 
@@ -219,10 +219,10 @@ module pm_distNegExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getNegExpLogPDFXMI_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(in)                :: x
-        real(RKC)   , intent(in)    , optional  :: mu, invSigma
-        real(RKC)                               :: logPDF
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(in)                :: x
+        real(RKG)   , intent(in)    , optional  :: mu, invSigma
+        real(RKG)                               :: logPDF
     end function
 #endif
 
@@ -231,10 +231,10 @@ module pm_distNegExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getNegExpLogPDFXMI_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(in)                :: x
-        real(RKC)   , intent(in)    , optional  :: mu, invSigma
-        real(RKC)                               :: logPDF
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(in)                :: x
+        real(RKG)   , intent(in)    , optional  :: mu, invSigma
+        real(RKG)                               :: logPDF
     end function
 #endif
 
@@ -243,10 +243,10 @@ module pm_distNegExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getNegExpLogPDFXMI_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(in)                :: x
-        real(RKC)   , intent(in)    , optional  :: mu, invSigma
-        real(RKC)                               :: logPDF
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(in)                :: x
+        real(RKG)   , intent(in)    , optional  :: mu, invSigma
+        real(RKG)                               :: logPDF
     end function
 #endif
 
@@ -332,9 +332,9 @@ module pm_distNegExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setNegExpLogPDFDDD_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(out)                   :: logPDF
-        real(RKC)   , intent(in)                    :: x
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(out)                   :: logPDF
+        real(RKG)   , intent(in)                    :: x
     end subroutine
 #endif
 
@@ -343,9 +343,9 @@ module pm_distNegExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setNegExpLogPDFDDD_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(out)                   :: logPDF
-        real(RKC)   , intent(in)                    :: x
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(out)                   :: logPDF
+        real(RKG)   , intent(in)                    :: x
     end subroutine
 #endif
 
@@ -354,9 +354,9 @@ module pm_distNegExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setNegExpLogPDFDDD_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(out)                   :: logPDF
-        real(RKC)   , intent(in)                    :: x
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(out)                   :: logPDF
+        real(RKG)   , intent(in)                    :: x
     end subroutine
 #endif
 
@@ -365,9 +365,9 @@ module pm_distNegExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setNegExpLogPDFDDD_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(out)                   :: logPDF
-        real(RKC)   , intent(in)                    :: x
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(out)                   :: logPDF
+        real(RKG)   , intent(in)                    :: x
     end subroutine
 #endif
 
@@ -376,9 +376,9 @@ module pm_distNegExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setNegExpLogPDFDDD_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(out)                   :: logPDF
-        real(RKC)   , intent(in)                    :: x
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(out)                   :: logPDF
+        real(RKG)   , intent(in)                    :: x
     end subroutine
 #endif
 
@@ -389,9 +389,9 @@ module pm_distNegExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setNegExpLogPDFXMDD_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(out)                   :: logPDF
-        real(RKC)   , intent(in)                    :: x, mu
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(out)                   :: logPDF
+        real(RKG)   , intent(in)                    :: x, mu
     end subroutine
 #endif
 
@@ -400,9 +400,9 @@ module pm_distNegExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setNegExpLogPDFXMDD_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(out)                   :: logPDF
-        real(RKC)   , intent(in)                    :: x, mu
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(out)                   :: logPDF
+        real(RKG)   , intent(in)                    :: x, mu
     end subroutine
 #endif
 
@@ -411,9 +411,9 @@ module pm_distNegExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setNegExpLogPDFXMDD_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(out)                   :: logPDF
-        real(RKC)   , intent(in)                    :: x, mu
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(out)                   :: logPDF
+        real(RKG)   , intent(in)                    :: x, mu
     end subroutine
 #endif
 
@@ -422,9 +422,9 @@ module pm_distNegExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setNegExpLogPDFXMDD_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(out)                   :: logPDF
-        real(RKC)   , intent(in)                    :: x, mu
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(out)                   :: logPDF
+        real(RKG)   , intent(in)                    :: x, mu
     end subroutine
 #endif
 
@@ -433,9 +433,9 @@ module pm_distNegExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setNegExpLogPDFXMDD_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(out)                   :: logPDF
-        real(RKC)   , intent(in)                    :: x, mu
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(out)                   :: logPDF
+        real(RKG)   , intent(in)                    :: x, mu
     end subroutine
 #endif
 
@@ -446,9 +446,9 @@ module pm_distNegExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setNegExpLogPDFDIL_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(out)                   :: logPDF
-        real(RKC)   , intent(in)                    :: x, invSigma, logInvSigma
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(out)                   :: logPDF
+        real(RKG)   , intent(in)                    :: x, invSigma, logInvSigma
     end subroutine
 #endif
 
@@ -457,9 +457,9 @@ module pm_distNegExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setNegExpLogPDFDIL_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(out)                   :: logPDF
-        real(RKC)   , intent(in)                    :: x, invSigma, logInvSigma
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(out)                   :: logPDF
+        real(RKG)   , intent(in)                    :: x, invSigma, logInvSigma
     end subroutine
 #endif
 
@@ -468,9 +468,9 @@ module pm_distNegExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setNegExpLogPDFDIL_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(out)                   :: logPDF
-        real(RKC)   , intent(in)                    :: x, invSigma, logInvSigma
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(out)                   :: logPDF
+        real(RKG)   , intent(in)                    :: x, invSigma, logInvSigma
     end subroutine
 #endif
 
@@ -479,9 +479,9 @@ module pm_distNegExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setNegExpLogPDFDIL_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(out)                   :: logPDF
-        real(RKC)   , intent(in)                    :: x, invSigma, logInvSigma
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(out)                   :: logPDF
+        real(RKG)   , intent(in)                    :: x, invSigma, logInvSigma
     end subroutine
 #endif
 
@@ -490,9 +490,9 @@ module pm_distNegExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setNegExpLogPDFDIL_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(out)                   :: logPDF
-        real(RKC)   , intent(in)                    :: x, invSigma, logInvSigma
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(out)                   :: logPDF
+        real(RKG)   , intent(in)                    :: x, invSigma, logInvSigma
     end subroutine
 #endif
 
@@ -503,9 +503,9 @@ module pm_distNegExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setNegExpLogPDFMIL_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(out)                   :: logPDF
-        real(RKC)   , intent(in)                    :: x, mu, invSigma, logInvSigma
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(out)                   :: logPDF
+        real(RKG)   , intent(in)                    :: x, mu, invSigma, logInvSigma
     end subroutine
 #endif
 
@@ -514,9 +514,9 @@ module pm_distNegExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setNegExpLogPDFMIL_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(out)                   :: logPDF
-        real(RKC)   , intent(in)                    :: x, mu, invSigma, logInvSigma
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(out)                   :: logPDF
+        real(RKG)   , intent(in)                    :: x, mu, invSigma, logInvSigma
     end subroutine
 #endif
 
@@ -525,9 +525,9 @@ module pm_distNegExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setNegExpLogPDFMIL_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(out)                   :: logPDF
-        real(RKC)   , intent(in)                    :: x, mu, invSigma, logInvSigma
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(out)                   :: logPDF
+        real(RKG)   , intent(in)                    :: x, mu, invSigma, logInvSigma
     end subroutine
 #endif
 
@@ -536,9 +536,9 @@ module pm_distNegExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setNegExpLogPDFMIL_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(out)                   :: logPDF
-        real(RKC)   , intent(in)                    :: x, mu, invSigma, logInvSigma
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(out)                   :: logPDF
+        real(RKG)   , intent(in)                    :: x, mu, invSigma, logInvSigma
     end subroutine
 #endif
 
@@ -547,9 +547,9 @@ module pm_distNegExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setNegExpLogPDFMIL_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(out)                   :: logPDF
-        real(RKC)   , intent(in)                    :: x, mu, invSigma, logInvSigma
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(out)                   :: logPDF
+        real(RKG)   , intent(in)                    :: x, mu, invSigma, logInvSigma
     end subroutine
 #endif
 
@@ -629,10 +629,10 @@ module pm_distNegExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getNegExpCDFXMI_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(in)                :: x
-        real(RKC)   , intent(in)    , optional  :: mu, invSigma
-        real(RKC)                               :: cdf
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(in)                :: x
+        real(RKG)   , intent(in)    , optional  :: mu, invSigma
+        real(RKG)                               :: cdf
     end function
 #endif
 
@@ -641,10 +641,10 @@ module pm_distNegExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getNegExpCDFXMI_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(in)                :: x
-        real(RKC)   , intent(in)    , optional  :: mu, invSigma
-        real(RKC)                               :: cdf
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(in)                :: x
+        real(RKG)   , intent(in)    , optional  :: mu, invSigma
+        real(RKG)                               :: cdf
     end function
 #endif
 
@@ -653,10 +653,10 @@ module pm_distNegExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getNegExpCDFXMI_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(in)                :: x
-        real(RKC)   , intent(in)    , optional  :: mu, invSigma
-        real(RKC)                               :: cdf
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(in)                :: x
+        real(RKG)   , intent(in)    , optional  :: mu, invSigma
+        real(RKG)                               :: cdf
     end function
 #endif
 
@@ -665,10 +665,10 @@ module pm_distNegExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getNegExpCDFXMI_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(in)                :: x
-        real(RKC)   , intent(in)    , optional  :: mu, invSigma
-        real(RKC)                               :: cdf
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(in)                :: x
+        real(RKG)   , intent(in)    , optional  :: mu, invSigma
+        real(RKG)                               :: cdf
     end function
 #endif
 
@@ -677,10 +677,10 @@ module pm_distNegExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getNegExpCDFXMI_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(in)                :: x
-        real(RKC)   , intent(in)    , optional  :: mu, invSigma
-        real(RKC)                               :: cdf
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(in)                :: x
+        real(RKG)   , intent(in)    , optional  :: mu, invSigma
+        real(RKG)                               :: cdf
     end function
 #endif
 
@@ -760,9 +760,9 @@ module pm_distNegExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setNegExpCDFXDD_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(out)                   :: cdf
-        real(RKC)   , intent(in)                    :: x
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(out)                   :: cdf
+        real(RKG)   , intent(in)                    :: x
     end subroutine
 #endif
 
@@ -771,9 +771,9 @@ module pm_distNegExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setNegExpCDFXDD_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(out)                   :: cdf
-        real(RKC)   , intent(in)                    :: x
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(out)                   :: cdf
+        real(RKG)   , intent(in)                    :: x
     end subroutine
 #endif
 
@@ -782,9 +782,9 @@ module pm_distNegExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setNegExpCDFXDD_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(out)                   :: cdf
-        real(RKC)   , intent(in)                    :: x
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(out)                   :: cdf
+        real(RKG)   , intent(in)                    :: x
     end subroutine
 #endif
 
@@ -793,9 +793,9 @@ module pm_distNegExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setNegExpCDFXDD_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(out)                   :: cdf
-        real(RKC)   , intent(in)                    :: x
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(out)                   :: cdf
+        real(RKG)   , intent(in)                    :: x
     end subroutine
 #endif
 
@@ -804,9 +804,9 @@ module pm_distNegExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setNegExpCDFXDD_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(out)                   :: cdf
-        real(RKC)   , intent(in)                    :: x
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(out)                   :: cdf
+        real(RKG)   , intent(in)                    :: x
     end subroutine
 #endif
 
@@ -817,9 +817,9 @@ module pm_distNegExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setNegExpCDFXDI_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(out)                   :: cdf
-        real(RKC)   , intent(in)                    :: x, invSigma
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(out)                   :: cdf
+        real(RKG)   , intent(in)                    :: x, invSigma
     end subroutine
 #endif
 
@@ -828,9 +828,9 @@ module pm_distNegExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setNegExpCDFXDI_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(out)                   :: cdf
-        real(RKC)   , intent(in)                    :: x, invSigma
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(out)                   :: cdf
+        real(RKG)   , intent(in)                    :: x, invSigma
     end subroutine
 #endif
 
@@ -839,9 +839,9 @@ module pm_distNegExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setNegExpCDFXDI_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(out)                   :: cdf
-        real(RKC)   , intent(in)                    :: x, invSigma
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(out)                   :: cdf
+        real(RKG)   , intent(in)                    :: x, invSigma
     end subroutine
 #endif
 
@@ -850,9 +850,9 @@ module pm_distNegExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setNegExpCDFXDI_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(out)                   :: cdf
-        real(RKC)   , intent(in)                    :: x, invSigma
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(out)                   :: cdf
+        real(RKG)   , intent(in)                    :: x, invSigma
     end subroutine
 #endif
 
@@ -861,9 +861,9 @@ module pm_distNegExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setNegExpCDFXDI_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(out)                   :: cdf
-        real(RKC)   , intent(in)                    :: x, invSigma
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(out)                   :: cdf
+        real(RKG)   , intent(in)                    :: x, invSigma
     end subroutine
 #endif
 
@@ -874,9 +874,9 @@ module pm_distNegExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setNegExpCDFXMI_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(out)                   :: cdf
-        real(RKC)   , intent(in)                    :: x, mu, invSigma
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(out)                   :: cdf
+        real(RKG)   , intent(in)                    :: x, mu, invSigma
     end subroutine
 #endif
 
@@ -885,9 +885,9 @@ module pm_distNegExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setNegExpCDFXMI_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(out)                   :: cdf
-        real(RKC)   , intent(in)                    :: x, mu, invSigma
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(out)                   :: cdf
+        real(RKG)   , intent(in)                    :: x, mu, invSigma
     end subroutine
 #endif
 
@@ -896,9 +896,9 @@ module pm_distNegExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setNegExpCDFXMI_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(out)                   :: cdf
-        real(RKC)   , intent(in)                    :: x, mu, invSigma
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(out)                   :: cdf
+        real(RKG)   , intent(in)                    :: x, mu, invSigma
     end subroutine
 #endif
 
@@ -907,9 +907,9 @@ module pm_distNegExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setNegExpCDFXMI_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(out)                   :: cdf
-        real(RKC)   , intent(in)                    :: x, mu, invSigma
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(out)                   :: cdf
+        real(RKG)   , intent(in)                    :: x, mu, invSigma
     end subroutine
 #endif
 
@@ -918,9 +918,9 @@ module pm_distNegExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setNegExpCDFXMI_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(out)                   :: cdf
-        real(RKC)   , intent(in)                    :: x, mu, invSigma
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(out)                   :: cdf
+        real(RKG)   , intent(in)                    :: x, mu, invSigma
     end subroutine
 #endif
 
@@ -996,10 +996,10 @@ module pm_distNegExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getNegExpRandSM_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)                                   :: rand
-        real(RKC)   , intent(in)                    :: sigma
-        real(RKC)   , intent(in)    , optional      :: mu
+        use pm_kind, only: RKG => RK5
+        real(RKG)                                   :: rand
+        real(RKG)   , intent(in)                    :: sigma
+        real(RKG)   , intent(in)    , optional      :: mu
     end function
 #endif
 
@@ -1008,10 +1008,10 @@ module pm_distNegExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getNegExpRandSM_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)                                   :: rand
-        real(RKC)   , intent(in)                    :: sigma
-        real(RKC)   , intent(in)    , optional      :: mu
+        use pm_kind, only: RKG => RK4
+        real(RKG)                                   :: rand
+        real(RKG)   , intent(in)                    :: sigma
+        real(RKG)   , intent(in)    , optional      :: mu
     end function
 #endif
 
@@ -1020,10 +1020,10 @@ module pm_distNegExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getNegExpRandSM_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)                                   :: rand
-        real(RKC)   , intent(in)                    :: sigma
-        real(RKC)   , intent(in)    , optional      :: mu
+        use pm_kind, only: RKG => RK3
+        real(RKG)                                   :: rand
+        real(RKG)   , intent(in)                    :: sigma
+        real(RKG)   , intent(in)    , optional      :: mu
     end function
 #endif
 
@@ -1032,10 +1032,10 @@ module pm_distNegExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getNegExpRandSM_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)                                   :: rand
-        real(RKC)   , intent(in)                    :: sigma
-        real(RKC)   , intent(in)    , optional      :: mu
+        use pm_kind, only: RKG => RK2
+        real(RKG)                                   :: rand
+        real(RKG)   , intent(in)                    :: sigma
+        real(RKG)   , intent(in)    , optional      :: mu
     end function
 #endif
 
@@ -1044,10 +1044,10 @@ module pm_distNegExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getNegExpRandSM_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)                                   :: rand
-        real(RKC)   , intent(in)                    :: sigma
-        real(RKC)   , intent(in)    , optional      :: mu
+        use pm_kind, only: RKG => RK1
+        real(RKG)                                   :: rand
+        real(RKG)   , intent(in)                    :: sigma
+        real(RKG)   , intent(in)    , optional      :: mu
     end function
 #endif
 
@@ -1145,9 +1145,9 @@ module pm_distNegExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setNegExpRandUDD_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(out)                   :: rand
-        real(RKC)   , intent(in)                    :: urand
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(out)                   :: rand
+        real(RKG)   , intent(in)                    :: urand
     end subroutine
 #endif
 
@@ -1156,9 +1156,9 @@ module pm_distNegExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setNegExpRandUDD_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(out)                   :: rand
-        real(RKC)   , intent(in)                    :: urand
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(out)                   :: rand
+        real(RKG)   , intent(in)                    :: urand
     end subroutine
 #endif
 
@@ -1167,9 +1167,9 @@ module pm_distNegExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setNegExpRandUDD_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(out)                   :: rand
-        real(RKC)   , intent(in)                    :: urand
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(out)                   :: rand
+        real(RKG)   , intent(in)                    :: urand
     end subroutine
 #endif
 
@@ -1178,9 +1178,9 @@ module pm_distNegExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setNegExpRandUDD_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(out)                   :: rand
-        real(RKC)   , intent(in)                    :: urand
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(out)                   :: rand
+        real(RKG)   , intent(in)                    :: urand
     end subroutine
 #endif
 
@@ -1189,9 +1189,9 @@ module pm_distNegExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setNegExpRandUDD_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(out)                   :: rand
-        real(RKC)   , intent(in)                    :: urand
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(out)                   :: rand
+        real(RKG)   , intent(in)                    :: urand
     end subroutine
 #endif
 
@@ -1202,9 +1202,9 @@ module pm_distNegExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setNegExpRandUSD_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(out)                   :: rand
-        real(RKC)   , intent(in)                    :: urand, sigma
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(out)                   :: rand
+        real(RKG)   , intent(in)                    :: urand, sigma
     end subroutine
 #endif
 
@@ -1213,9 +1213,9 @@ module pm_distNegExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setNegExpRandUSD_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(out)                   :: rand
-        real(RKC)   , intent(in)                    :: urand, sigma
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(out)                   :: rand
+        real(RKG)   , intent(in)                    :: urand, sigma
     end subroutine
 #endif
 
@@ -1224,9 +1224,9 @@ module pm_distNegExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setNegExpRandUSD_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(out)                   :: rand
-        real(RKC)   , intent(in)                    :: urand, sigma
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(out)                   :: rand
+        real(RKG)   , intent(in)                    :: urand, sigma
     end subroutine
 #endif
 
@@ -1235,9 +1235,9 @@ module pm_distNegExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setNegExpRandUSD_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(out)                   :: rand
-        real(RKC)   , intent(in)                    :: urand, sigma
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(out)                   :: rand
+        real(RKG)   , intent(in)                    :: urand, sigma
     end subroutine
 #endif
 
@@ -1246,9 +1246,9 @@ module pm_distNegExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setNegExpRandUSD_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(out)                   :: rand
-        real(RKC)   , intent(in)                    :: urand, sigma
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(out)                   :: rand
+        real(RKG)   , intent(in)                    :: urand, sigma
     end subroutine
 #endif
 
@@ -1259,9 +1259,9 @@ module pm_distNegExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setNegExpRandUSM_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(out)                   :: rand
-        real(RKC)   , intent(in)                    :: urand, sigma, mu
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(out)                   :: rand
+        real(RKG)   , intent(in)                    :: urand, sigma, mu
     end subroutine
 #endif
 
@@ -1270,9 +1270,9 @@ module pm_distNegExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setNegExpRandUSM_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(out)                   :: rand
-        real(RKC)   , intent(in)                    :: urand, sigma, mu
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(out)                   :: rand
+        real(RKG)   , intent(in)                    :: urand, sigma, mu
     end subroutine
 #endif
 
@@ -1281,9 +1281,9 @@ module pm_distNegExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setNegExpRandUSM_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(out)                   :: rand
-        real(RKC)   , intent(in)                    :: urand, sigma, mu
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(out)                   :: rand
+        real(RKG)   , intent(in)                    :: urand, sigma, mu
     end subroutine
 #endif
 
@@ -1292,9 +1292,9 @@ module pm_distNegExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setNegExpRandUSM_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(out)                   :: rand
-        real(RKC)   , intent(in)                    :: urand, sigma, mu
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(out)                   :: rand
+        real(RKG)   , intent(in)                    :: urand, sigma, mu
     end subroutine
 #endif
 
@@ -1303,9 +1303,9 @@ module pm_distNegExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setNegExpRandUSM_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(out)                   :: rand
-        real(RKC)   , intent(in)                    :: urand, sigma, mu
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(out)                   :: rand
+        real(RKG)   , intent(in)                    :: urand, sigma, mu
     end subroutine
 #endif
 

@@ -51,7 +51,7 @@
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
         integer(IK) :: iell
-        character(1,SKC), allocatable :: empty(:)
+        character(1,SKG), allocatable :: empty(:)
         allocate(empty(0))
         vmin = minval(empty)
         vmax = maxval(empty)
@@ -71,25 +71,25 @@
         vmin = array(1)
         vmax = array(1)
 #elif   SK_ENABLED
-        character(len(vmin, IK),SKC), allocatable :: empty(:)
+        character(len(vmin, IK),SKG), allocatable :: empty(:)
         if (allocated(empty)) deallocate(empty)
         allocate(empty(0))
         vmin = minval(empty)
         vmax = maxval(empty)
 #elif   IK_ENABLED
-        vmin = +huge(0_IKC)
-        vmax = -huge(0_IKC)
+        vmin = +huge(0_IKG)
+        vmax = -huge(0_IKG)
 #elif   LK_ENABLED
-        vmin = .true._LKC
-        vmax = .false._LKC
+        vmin = .true._LKG
+        vmax = .false._LKG
 #elif   CK_ENABLED
-        complex(CKC), parameter :: POSINF = cmplx(+huge(0._CKC), +huge(0._CKC), CKC)
-        complex(CKC), parameter :: NEGINF = cmplx(-huge(0._CKC), -huge(0._CKC), CKC)
+        complex(CKG), parameter :: POSINF = cmplx(+huge(0._CKG), +huge(0._CKG), CKG)
+        complex(CKG), parameter :: NEGINF = cmplx(-huge(0._CKG), -huge(0._CKG), CKG)
         vmin = POSINF
         vmax = NEGINF
 #elif   RK_ENABLED
-        vmin = +huge(0._RKC)
-        vmax = -huge(0._RKC)
+        vmin = +huge(0._RKG)
+        vmax = -huge(0._RKG)
 #else
 #error  "Unrecognized interface."
 #endif

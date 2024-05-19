@@ -192,10 +192,10 @@ module pm_mathErf
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErfInv_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(in)            :: x
-        real(RKC)   , intent(in), optional  :: abserr
-        real(RKC)                           :: erfinv
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(in)            :: x
+        real(RKG)   , intent(in), optional  :: abserr
+        real(RKG)                           :: erfinv
     end function
 #endif
 
@@ -204,10 +204,10 @@ module pm_mathErf
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErfInv_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(in)            :: x
-        real(RKC)   , intent(in), optional  :: abserr
-        real(RKC)                           :: erfinv
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(in)            :: x
+        real(RKG)   , intent(in), optional  :: abserr
+        real(RKG)                           :: erfinv
     end function
 #endif
 
@@ -216,10 +216,10 @@ module pm_mathErf
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErfInv_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(in)            :: x
-        real(RKC)   , intent(in), optional  :: abserr
-        real(RKC)                           :: erfinv
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(in)            :: x
+        real(RKG)   , intent(in), optional  :: abserr
+        real(RKG)                           :: erfinv
     end function
 #endif
 
@@ -228,10 +228,10 @@ module pm_mathErf
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErfInv_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(in)            :: x
-        real(RKC)   , intent(in), optional  :: abserr
-        real(RKC)                           :: erfinv
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(in)            :: x
+        real(RKG)   , intent(in), optional  :: abserr
+        real(RKG)                           :: erfinv
     end function
 #endif
 
@@ -240,10 +240,10 @@ module pm_mathErf
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErfInv_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(in)            :: x
-        real(RKC)   , intent(in), optional  :: abserr
-        real(RKC)                           :: erfinv
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(in)            :: x
+        real(RKG)   , intent(in), optional  :: abserr
+        real(RKG)                           :: erfinv
     end function
 #endif
 
@@ -341,9 +341,9 @@ module pm_mathErf
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setErfInv_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(out)   :: erfinv
-        real(RKC)   , intent(in)    :: x, abserr
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(out)   :: erfinv
+        real(RKG)   , intent(in)    :: x, abserr
     end subroutine
 #endif
 
@@ -352,9 +352,9 @@ module pm_mathErf
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setErfInv_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(out)   :: erfinv
-        real(RKC)   , intent(in)    :: x, abserr
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(out)   :: erfinv
+        real(RKG)   , intent(in)    :: x, abserr
     end subroutine
 #endif
 
@@ -363,9 +363,9 @@ module pm_mathErf
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setErfInv_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(out)   :: erfinv
-        real(RKC)   , intent(in)    :: x, abserr
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(out)   :: erfinv
+        real(RKG)   , intent(in)    :: x, abserr
     end subroutine
 #endif
 
@@ -374,9 +374,9 @@ module pm_mathErf
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setErfInv_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(out)   :: erfinv
-        real(RKC)   , intent(in)    :: x, abserr
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(out)   :: erfinv
+        real(RKG)   , intent(in)    :: x, abserr
     end subroutine
 #endif
 
@@ -385,9 +385,9 @@ module pm_mathErf
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setErfInv_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(out)   :: erfinv
-        real(RKC)   , intent(in)    :: x, abserr
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(out)   :: erfinv
+        real(RKG)   , intent(in)    :: x, abserr
     end subroutine
 #endif
 

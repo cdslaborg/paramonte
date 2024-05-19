@@ -61,35 +61,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getParetoLogPDFNFALD_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_distPareto@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getParetoLogPDFNFALD_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_distPareto@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getParetoLogPDFNFALD_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_distPareto@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getParetoLogPDFNFALD_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_distPareto@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getParetoLogPDFNFALD_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_distPareto@routines.inc.F90"
     end procedure
 #endif
@@ -112,35 +112,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getParetoLogPDFNFALL_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_distPareto@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getParetoLogPDFNFALL_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_distPareto@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getParetoLogPDFNFALL_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_distPareto@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getParetoLogPDFNFALL_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_distPareto@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getParetoLogPDFNFALL_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_distPareto@routines.inc.F90"
     end procedure
 #endif
@@ -173,35 +173,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getParetoLogPDFALD_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_distPareto@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getParetoLogPDFALD_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_distPareto@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getParetoLogPDFALD_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_distPareto@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getParetoLogPDFALD_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_distPareto@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getParetoLogPDFALD_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_distPareto@routines.inc.F90"
     end procedure
 #endif
@@ -224,35 +224,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getParetoLogPDFALL_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_distPareto@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getParetoLogPDFALL_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_distPareto@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getParetoLogPDFALL_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_distPareto@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getParetoLogPDFALL_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_distPareto@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getParetoLogPDFALL_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_distPareto@routines.inc.F90"
     end procedure
 #endif
@@ -279,35 +279,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setParetoLogPDF_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_distPareto@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setParetoLogPDF_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_distPareto@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setParetoLogPDF_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_distPareto@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setParetoLogPDF_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_distPareto@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setParetoLogPDF_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_distPareto@routines.inc.F90"
     end procedure
 #endif
@@ -334,35 +334,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getParetoLogCDFNFALD_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_distPareto@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getParetoLogCDFNFALD_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_distPareto@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getParetoLogCDFNFALD_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_distPareto@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getParetoLogCDFNFALD_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_distPareto@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getParetoLogCDFNFALD_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_distPareto@routines.inc.F90"
     end procedure
 #endif
@@ -385,35 +385,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getParetoLogCDFNFALL_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_distPareto@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getParetoLogCDFNFALL_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_distPareto@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getParetoLogCDFNFALL_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_distPareto@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getParetoLogCDFNFALL_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_distPareto@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getParetoLogCDFNFALL_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_distPareto@routines.inc.F90"
     end procedure
 #endif
@@ -446,35 +446,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getParetoLogCDFALD_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_distPareto@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getParetoLogCDFALD_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_distPareto@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getParetoLogCDFALD_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_distPareto@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getParetoLogCDFALD_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_distPareto@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getParetoLogCDFALD_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_distPareto@routines.inc.F90"
     end procedure
 #endif
@@ -497,35 +497,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getParetoLogCDFALL_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_distPareto@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getParetoLogCDFALL_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_distPareto@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getParetoLogCDFALL_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_distPareto@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getParetoLogCDFALL_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_distPareto@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getParetoLogCDFALL_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_distPareto@routines.inc.F90"
     end procedure
 #endif
@@ -558,35 +558,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setParetoLogCDFALD_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_distPareto@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setParetoLogCDFALD_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_distPareto@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setParetoLogCDFALD_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_distPareto@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setParetoLogCDFALD_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_distPareto@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setParetoLogCDFALD_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_distPareto@routines.inc.F90"
     end procedure
 #endif
@@ -609,35 +609,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setParetoLogCDFALL_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_distPareto@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setParetoLogCDFALL_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_distPareto@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setParetoLogCDFALL_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_distPareto@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setParetoLogCDFALL_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_distPareto@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setParetoLogCDFALL_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_distPareto@routines.inc.F90"
     end procedure
 #endif
@@ -670,35 +670,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getParetoLogQuanALD_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_distPareto@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getParetoLogQuanALD_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_distPareto@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getParetoLogQuanALD_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_distPareto@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getParetoLogQuanALD_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_distPareto@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getParetoLogQuanALD_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_distPareto@routines.inc.F90"
     end procedure
 #endif
@@ -721,35 +721,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getParetoLogQuanALL_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_distPareto@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getParetoLogQuanALL_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_distPareto@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getParetoLogQuanALL_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_distPareto@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getParetoLogQuanALL_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_distPareto@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getParetoLogQuanALL_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_distPareto@routines.inc.F90"
     end procedure
 #endif
@@ -782,35 +782,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setParetoLogQuanLLALD_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_distPareto@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setParetoLogQuanLLALD_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_distPareto@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setParetoLogQuanLLALD_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_distPareto@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setParetoLogQuanLLALD_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_distPareto@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setParetoLogQuanLLALD_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_distPareto@routines.inc.F90"
     end procedure
 #endif
@@ -833,35 +833,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setParetoLogQuanLLALL_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_distPareto@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setParetoLogQuanLLALL_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_distPareto@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setParetoLogQuanLLALL_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_distPareto@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setParetoLogQuanLLALL_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_distPareto@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setParetoLogQuanLLALL_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_distPareto@routines.inc.F90"
     end procedure
 #endif
@@ -894,35 +894,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getParetoLogRandALD_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_distPareto@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getParetoLogRandALD_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_distPareto@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getParetoLogRandALD_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_distPareto@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getParetoLogRandALD_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_distPareto@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getParetoLogRandALD_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_distPareto@routines.inc.F90"
     end procedure
 #endif
@@ -945,35 +945,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getParetoLogRandALL_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_distPareto@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getParetoLogRandALL_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_distPareto@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getParetoLogRandALL_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_distPareto@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getParetoLogRandALL_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_distPareto@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getParetoLogRandALL_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_distPareto@routines.inc.F90"
     end procedure
 #endif
@@ -1006,35 +1006,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setParetoLogRandLNALD_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_distPareto@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setParetoLogRandLNALD_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_distPareto@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setParetoLogRandLNALD_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_distPareto@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setParetoLogRandLNALD_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_distPareto@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setParetoLogRandLNALD_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_distPareto@routines.inc.F90"
     end procedure
 #endif
@@ -1057,35 +1057,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setParetoLogRandLNALL_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_distPareto@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setParetoLogRandLNALL_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_distPareto@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setParetoLogRandLNALL_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_distPareto@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setParetoLogRandLNALL_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_distPareto@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setParetoLogRandLNALL_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_distPareto@routines.inc.F90"
     end procedure
 #endif

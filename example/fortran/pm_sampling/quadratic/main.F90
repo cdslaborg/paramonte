@@ -1,10 +1,10 @@
 module logfunc
-    use pm_kind, only: SK, IK, RKC => RKD ! all processor kinds are supported.
+    use pm_kind, only: SK, IK, RKG => RKD ! all processor kinds are supported.
     integer(IK), parameter :: NDIM = 2
 contains
     recursive function getLogFunc(state) result(logFunc)
-        real(RKC) :: logFunc
-        real(RKC), intent(in), contiguous :: state(:)
+        real(RKG) :: logFunc
+        real(RKG), intent(in), contiguous :: state(:)
         if (size(state) /= 2) error stop "The input state vector size must be 2."
         logFunc = -sum(state**2)
     end function

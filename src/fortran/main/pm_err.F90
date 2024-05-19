@@ -510,8 +510,8 @@ module pm_err
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getFile_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC), intent(in)            :: file
+        use pm_kind, only: SKG => SK5
+        character(*,SKG), intent(in)            :: file
         character(len(file) + 7, SK)            :: str
     end function
 #endif
@@ -521,8 +521,8 @@ module pm_err
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getFile_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC), intent(in)            :: file
+        use pm_kind, only: SKG => SK4
+        character(*,SKG), intent(in)            :: file
         character(len(file) + 7, SK)            :: str
     end function
 #endif
@@ -532,8 +532,8 @@ module pm_err
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getFile_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC), intent(in)            :: file
+        use pm_kind, only: SKG => SK3
+        character(*,SKG), intent(in)            :: file
         character(len(file) + 7, SK)            :: str
     end function
 #endif
@@ -543,8 +543,8 @@ module pm_err
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getFile_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC), intent(in)            :: file
+        use pm_kind, only: SKG => SK2
+        character(*,SKG), intent(in)            :: file
         character(len(file) + 7, SK)            :: str
     end function
 #endif
@@ -554,8 +554,8 @@ module pm_err
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getFile_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC), intent(in)            :: file
+        use pm_kind, only: SKG => SK1
+        character(*,SKG), intent(in)            :: file
         character(len(file) + 7, SK)            :: str
     end function
 #endif
@@ -627,8 +627,8 @@ module pm_err
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLine_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)    , intent(in)            :: line
+        use pm_kind, only: IKG => IK5
+        integer(IKG)    , intent(in)            :: line
         character(:, SK), allocatable           :: str
     end function
 #endif
@@ -638,8 +638,8 @@ module pm_err
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLine_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)    , intent(in)            :: line
+        use pm_kind, only: IKG => IK4
+        integer(IKG)    , intent(in)            :: line
         character(:, SK), allocatable           :: str
     end function
 #endif
@@ -649,8 +649,8 @@ module pm_err
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLine_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)    , intent(in)            :: line
+        use pm_kind, only: IKG => IK3
+        integer(IKG)    , intent(in)            :: line
         character(:, SK), allocatable           :: str
     end function
 #endif
@@ -660,8 +660,8 @@ module pm_err
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLine_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)    , intent(in)            :: line
+        use pm_kind, only: IKG => IK2
+        integer(IKG)    , intent(in)            :: line
         character(:, SK), allocatable           :: str
     end function
 #endif
@@ -671,8 +671,8 @@ module pm_err
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLine_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)    , intent(in)            :: line
+        use pm_kind, only: IKG => IK1
+        integer(IKG)    , intent(in)            :: line
         character(:, SK), allocatable           :: str
     end function
 #endif
@@ -741,8 +741,8 @@ module pm_err
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setAsserted_LK5
 #endif
-        use pm_kind, only: LKC => LK5
-        logical(LKC)    , intent(in)            :: assertion
+        use pm_kind, only: LKG => LK5
+        logical(LKG)    , intent(in)            :: assertion
         character(*, SK), intent(in), optional  :: msg
         logical(LK)     , intent(in), optional  :: renabled
     end subroutine
@@ -753,8 +753,8 @@ module pm_err
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setAsserted_LK4
 #endif
-        use pm_kind, only: LKC => LK4
-        logical(LKC)    , intent(in)            :: assertion
+        use pm_kind, only: LKG => LK4
+        logical(LKG)    , intent(in)            :: assertion
         character(*, SK), intent(in), optional  :: msg
         logical(LK)     , intent(in), optional  :: renabled
     end subroutine
@@ -765,8 +765,8 @@ module pm_err
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setAsserted_LK3
 #endif
-        use pm_kind, only: LKC => LK3
-        logical(LKC)    , intent(in)            :: assertion
+        use pm_kind, only: LKG => LK3
+        logical(LKG)    , intent(in)            :: assertion
         character(*, SK), intent(in), optional  :: msg
         logical(LK)     , intent(in), optional  :: renabled
     end subroutine
@@ -777,8 +777,8 @@ module pm_err
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setAsserted_LK2
 #endif
-        use pm_kind, only: LKC => LK2
-        logical(LKC)    , intent(in)            :: assertion
+        use pm_kind, only: LKG => LK2
+        logical(LKG)    , intent(in)            :: assertion
         character(*, SK), intent(in), optional  :: msg
         logical(LK)     , intent(in), optional  :: renabled
     end subroutine
@@ -789,8 +789,8 @@ module pm_err
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setAsserted_LK1
 #endif
-        use pm_kind, only: LKC => LK1
-        logical(LKC)    , intent(in)            :: assertion
+        use pm_kind, only: LKG => LK1
+        logical(LKG)    , intent(in)            :: assertion
         character(*, SK), intent(in), optional  :: msg
         logical(LK)     , intent(in), optional  :: renabled
     end subroutine
@@ -1624,10 +1624,10 @@ module pm_err
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMarkedMethod_D0_SK5
 #endif
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
         class(mark_type)            , intent(inout)                 :: self
-        character(*,SKC)            , intent(in)                    :: msg
-        character(*,SKC)            , intent(in)    , optional      :: prefix, indent, break, newline
+        character(*,SKG)            , intent(in)                    :: msg
+        character(*,SKG)            , intent(in)    , optional      :: prefix, indent, break, newline
         integer(IK)                 , intent(in)    , optional      :: width, maxwidth
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, unit
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -1639,10 +1639,10 @@ module pm_err
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMarkedMethod_D0_SK4
 #endif
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
         class(mark_type)            , intent(inout)                 :: self
-        character(*,SKC)            , intent(in)                    :: msg
-        character(*,SKC)            , intent(in)    , optional      :: prefix, indent, break, newline
+        character(*,SKG)            , intent(in)                    :: msg
+        character(*,SKG)            , intent(in)    , optional      :: prefix, indent, break, newline
         integer(IK)                 , intent(in)    , optional      :: width, maxwidth
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, unit
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -1654,10 +1654,10 @@ module pm_err
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMarkedMethod_D0_SK3
 #endif
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
         class(mark_type)            , intent(inout)                 :: self
-        character(*,SKC)            , intent(in)                    :: msg
-        character(*,SKC)            , intent(in)    , optional      :: prefix, indent, break, newline
+        character(*,SKG)            , intent(in)                    :: msg
+        character(*,SKG)            , intent(in)    , optional      :: prefix, indent, break, newline
         integer(IK)                 , intent(in)    , optional      :: width, maxwidth
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, unit
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -1669,10 +1669,10 @@ module pm_err
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMarkedMethod_D0_SK2
 #endif
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
         class(mark_type)            , intent(inout)                 :: self
-        character(*,SKC)            , intent(in)                    :: msg
-        character(*,SKC)            , intent(in)    , optional      :: prefix, indent, break, newline
+        character(*,SKG)            , intent(in)                    :: msg
+        character(*,SKG)            , intent(in)    , optional      :: prefix, indent, break, newline
         integer(IK)                 , intent(in)    , optional      :: width, maxwidth
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, unit
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -1684,10 +1684,10 @@ module pm_err
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMarkedMethod_D0_SK1
 #endif
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
         class(mark_type)            , intent(inout)                 :: self
-        character(*,SKC)            , intent(in)                    :: msg
-        character(*,SKC)            , intent(in)    , optional      :: prefix, indent, break, newline
+        character(*,SKG)            , intent(in)                    :: msg
+        character(*,SKG)            , intent(in)    , optional      :: prefix, indent, break, newline
         integer(IK)                 , intent(in)    , optional      :: width, maxwidth
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, unit
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -1701,10 +1701,10 @@ module pm_err
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setNotedMethod_D0_SK5
 #endif
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
         class(note_type)            , intent(inout)                 :: self
-        character(*,SKC)            , intent(in)                    :: msg
-        character(*,SKC)            , intent(in)    , optional      :: prefix, indent, break, newline
+        character(*,SKG)            , intent(in)                    :: msg
+        character(*,SKG)            , intent(in)    , optional      :: prefix, indent, break, newline
         integer(IK)                 , intent(in)    , optional      :: width, maxwidth
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, unit
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -1716,10 +1716,10 @@ module pm_err
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setNotedMethod_D0_SK4
 #endif
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
         class(note_type)            , intent(inout)                 :: self
-        character(*,SKC)            , intent(in)                    :: msg
-        character(*,SKC)            , intent(in)    , optional      :: prefix, indent, break, newline
+        character(*,SKG)            , intent(in)                    :: msg
+        character(*,SKG)            , intent(in)    , optional      :: prefix, indent, break, newline
         integer(IK)                 , intent(in)    , optional      :: width, maxwidth
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, unit
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -1731,10 +1731,10 @@ module pm_err
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setNotedMethod_D0_SK3
 #endif
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
         class(note_type)            , intent(inout)                 :: self
-        character(*,SKC)            , intent(in)                    :: msg
-        character(*,SKC)            , intent(in)    , optional      :: prefix, indent, break, newline
+        character(*,SKG)            , intent(in)                    :: msg
+        character(*,SKG)            , intent(in)    , optional      :: prefix, indent, break, newline
         integer(IK)                 , intent(in)    , optional      :: width, maxwidth
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, unit
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -1746,10 +1746,10 @@ module pm_err
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setNotedMethod_D0_SK2
 #endif
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
         class(note_type)            , intent(inout)                 :: self
-        character(*,SKC)            , intent(in)                    :: msg
-        character(*,SKC)            , intent(in)    , optional      :: prefix, indent, break, newline
+        character(*,SKG)            , intent(in)                    :: msg
+        character(*,SKG)            , intent(in)    , optional      :: prefix, indent, break, newline
         integer(IK)                 , intent(in)    , optional      :: width, maxwidth
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, unit
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -1761,10 +1761,10 @@ module pm_err
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setNotedMethod_D0_SK1
 #endif
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
         class(note_type)            , intent(inout)                 :: self
-        character(*,SKC)            , intent(in)                    :: msg
-        character(*,SKC)            , intent(in)    , optional      :: prefix, indent, break, newline
+        character(*,SKG)            , intent(in)                    :: msg
+        character(*,SKG)            , intent(in)    , optional      :: prefix, indent, break, newline
         integer(IK)                 , intent(in)    , optional      :: width, maxwidth
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, unit
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -1778,10 +1778,10 @@ module pm_err
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setWarnedMethod_D0_SK5
 #endif
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
         class(warn_type)            , intent(inout)                 :: self
-        character(*,SKC)            , intent(in)                    :: msg
-        character(*,SKC)            , intent(in)    , optional      :: prefix, indent, break, newline
+        character(*,SKG)            , intent(in)                    :: msg
+        character(*,SKG)            , intent(in)    , optional      :: prefix, indent, break, newline
         integer(IK)                 , intent(in)    , optional      :: width, maxwidth
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, unit
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -1793,10 +1793,10 @@ module pm_err
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setWarnedMethod_D0_SK4
 #endif
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
         class(warn_type)            , intent(inout)                 :: self
-        character(*,SKC)            , intent(in)                    :: msg
-        character(*,SKC)            , intent(in)    , optional      :: prefix, indent, break, newline
+        character(*,SKG)            , intent(in)                    :: msg
+        character(*,SKG)            , intent(in)    , optional      :: prefix, indent, break, newline
         integer(IK)                 , intent(in)    , optional      :: width, maxwidth
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, unit
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -1808,10 +1808,10 @@ module pm_err
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setWarnedMethod_D0_SK3
 #endif
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
         class(warn_type)            , intent(inout)                 :: self
-        character(*,SKC)            , intent(in)                    :: msg
-        character(*,SKC)            , intent(in)    , optional      :: prefix, indent, break, newline
+        character(*,SKG)            , intent(in)                    :: msg
+        character(*,SKG)            , intent(in)    , optional      :: prefix, indent, break, newline
         integer(IK)                 , intent(in)    , optional      :: width, maxwidth
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, unit
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -1823,10 +1823,10 @@ module pm_err
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setWarnedMethod_D0_SK2
 #endif
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
         class(warn_type)            , intent(inout)                 :: self
-        character(*,SKC)            , intent(in)                    :: msg
-        character(*,SKC)            , intent(in)    , optional      :: prefix, indent, break, newline
+        character(*,SKG)            , intent(in)                    :: msg
+        character(*,SKG)            , intent(in)    , optional      :: prefix, indent, break, newline
         integer(IK)                 , intent(in)    , optional      :: width, maxwidth
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, unit
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -1838,10 +1838,10 @@ module pm_err
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setWarnedMethod_D0_SK1
 #endif
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
         class(warn_type)            , intent(inout)                 :: self
-        character(*,SKC)            , intent(in)                    :: msg
-        character(*,SKC)            , intent(in)    , optional      :: prefix, indent, break, newline
+        character(*,SKG)            , intent(in)                    :: msg
+        character(*,SKG)            , intent(in)    , optional      :: prefix, indent, break, newline
         integer(IK)                 , intent(in)    , optional      :: width, maxwidth
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, unit
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -1855,10 +1855,10 @@ module pm_err
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setAbortedMethod_D0_SK5
 #endif
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
         class(stop_type)            , intent(inout)                 :: self
-        character(*,SKC)            , intent(in)                    :: msg
-        character(*,SKC)            , intent(in)    , optional      :: help, prefix, indent, break, newline
+        character(*,SKG)            , intent(in)                    :: msg
+        character(*,SKG)            , intent(in)    , optional      :: help, prefix, indent, break, newline
         integer(IK)                 , intent(in)    , optional      :: width, maxwidth
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, unit, stat
         logical(LK)                 , intent(in)    , optional      :: renabled
@@ -1871,10 +1871,10 @@ module pm_err
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setAbortedMethod_D0_SK4
 #endif
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
         class(stop_type)            , intent(inout)                 :: self
-        character(*,SKC)            , intent(in)                    :: msg
-        character(*,SKC)            , intent(in)    , optional      :: help, prefix, indent, break, newline
+        character(*,SKG)            , intent(in)                    :: msg
+        character(*,SKG)            , intent(in)    , optional      :: help, prefix, indent, break, newline
         integer(IK)                 , intent(in)    , optional      :: width, maxwidth
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, unit, stat
         logical(LK)                 , intent(in)    , optional      :: renabled
@@ -1887,10 +1887,10 @@ module pm_err
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setAbortedMethod_D0_SK3
 #endif
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
         class(stop_type)            , intent(inout)                 :: self
-        character(*,SKC)            , intent(in)                    :: msg
-        character(*,SKC)            , intent(in)    , optional      :: help, prefix, indent, break, newline
+        character(*,SKG)            , intent(in)                    :: msg
+        character(*,SKG)            , intent(in)    , optional      :: help, prefix, indent, break, newline
         integer(IK)                 , intent(in)    , optional      :: width, maxwidth
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, unit, stat
         logical(LK)                 , intent(in)    , optional      :: renabled
@@ -1903,10 +1903,10 @@ module pm_err
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setAbortedMethod_D0_SK2
 #endif
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
         class(stop_type)            , intent(inout)                 :: self
-        character(*,SKC)            , intent(in)                    :: msg
-        character(*,SKC)            , intent(in)    , optional      :: help, prefix, indent, break, newline
+        character(*,SKG)            , intent(in)                    :: msg
+        character(*,SKG)            , intent(in)    , optional      :: help, prefix, indent, break, newline
         integer(IK)                 , intent(in)    , optional      :: width, maxwidth
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, unit, stat
         logical(LK)                 , intent(in)    , optional      :: renabled
@@ -1919,10 +1919,10 @@ module pm_err
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setAbortedMethod_D0_SK1
 #endif
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
         class(stop_type)            , intent(inout)                 :: self
-        character(*,SKC)            , intent(in)                    :: msg
-        character(*,SKC)            , intent(in)    , optional      :: help, prefix, indent, break, newline
+        character(*,SKG)            , intent(in)                    :: msg
+        character(*,SKG)            , intent(in)    , optional      :: help, prefix, indent, break, newline
         integer(IK)                 , intent(in)    , optional      :: width, maxwidth
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, unit, stat
         logical(LK)                 , intent(in)    , optional      :: renabled
@@ -2009,9 +2009,9 @@ module pm_err
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMarkedStatic_D0_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)            , intent(in)                    :: msg
-        character(*,SKC)            , intent(in)    , optional      :: prefix, indent, break, newline
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)            , intent(in)                    :: msg
+        character(*,SKG)            , intent(in)    , optional      :: prefix, indent, break, newline
         integer(IK)                 , intent(in)    , optional      :: width, maxwidth
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, unit
     end subroutine
@@ -2022,9 +2022,9 @@ module pm_err
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMarkedStatic_D0_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)            , intent(in)                    :: msg
-        character(*,SKC)            , intent(in)    , optional      :: prefix, indent, break, newline
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)            , intent(in)                    :: msg
+        character(*,SKG)            , intent(in)    , optional      :: prefix, indent, break, newline
         integer(IK)                 , intent(in)    , optional      :: width, maxwidth
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, unit
     end subroutine
@@ -2035,9 +2035,9 @@ module pm_err
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMarkedStatic_D0_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)            , intent(in)                    :: msg
-        character(*,SKC)            , intent(in)    , optional      :: prefix, indent, break, newline
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)            , intent(in)                    :: msg
+        character(*,SKG)            , intent(in)    , optional      :: prefix, indent, break, newline
         integer(IK)                 , intent(in)    , optional      :: width, maxwidth
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, unit
     end subroutine
@@ -2048,9 +2048,9 @@ module pm_err
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMarkedStatic_D0_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)            , intent(in)                    :: msg
-        character(*,SKC)            , intent(in)    , optional      :: prefix, indent, break, newline
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)            , intent(in)                    :: msg
+        character(*,SKG)            , intent(in)    , optional      :: prefix, indent, break, newline
         integer(IK)                 , intent(in)    , optional      :: width, maxwidth
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, unit
     end subroutine
@@ -2061,9 +2061,9 @@ module pm_err
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMarkedStatic_D0_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)            , intent(in)                    :: msg
-        character(*,SKC)            , intent(in)    , optional      :: prefix, indent, break, newline
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)            , intent(in)                    :: msg
+        character(*,SKG)            , intent(in)    , optional      :: prefix, indent, break, newline
         integer(IK)                 , intent(in)    , optional      :: width, maxwidth
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, unit
     end subroutine
@@ -2151,9 +2151,9 @@ module pm_err
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setNotedStatic_D0_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)            , intent(in)                    :: msg
-        character(*,SKC)            , intent(in)    , optional      :: prefix, indent, break, newline
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)            , intent(in)                    :: msg
+        character(*,SKG)            , intent(in)    , optional      :: prefix, indent, break, newline
         integer(IK)                 , intent(in)    , optional      :: width, maxwidth
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, unit
     end subroutine
@@ -2164,9 +2164,9 @@ module pm_err
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setNotedStatic_D0_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)            , intent(in)                    :: msg
-        character(*,SKC)            , intent(in)    , optional      :: prefix, indent, break, newline
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)            , intent(in)                    :: msg
+        character(*,SKG)            , intent(in)    , optional      :: prefix, indent, break, newline
         integer(IK)                 , intent(in)    , optional      :: width, maxwidth
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, unit
     end subroutine
@@ -2177,9 +2177,9 @@ module pm_err
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setNotedStatic_D0_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)            , intent(in)                    :: msg
-        character(*,SKC)            , intent(in)    , optional      :: prefix, indent, break, newline
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)            , intent(in)                    :: msg
+        character(*,SKG)            , intent(in)    , optional      :: prefix, indent, break, newline
         integer(IK)                 , intent(in)    , optional      :: width, maxwidth
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, unit
     end subroutine
@@ -2190,9 +2190,9 @@ module pm_err
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setNotedStatic_D0_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)            , intent(in)                    :: msg
-        character(*,SKC)            , intent(in)    , optional      :: prefix, indent, break, newline
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)            , intent(in)                    :: msg
+        character(*,SKG)            , intent(in)    , optional      :: prefix, indent, break, newline
         integer(IK)                 , intent(in)    , optional      :: width, maxwidth
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, unit
     end subroutine
@@ -2203,9 +2203,9 @@ module pm_err
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setNotedStatic_D0_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)            , intent(in)                    :: msg
-        character(*,SKC)            , intent(in)    , optional      :: prefix, indent, break, newline
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)            , intent(in)                    :: msg
+        character(*,SKG)            , intent(in)    , optional      :: prefix, indent, break, newline
         integer(IK)                 , intent(in)    , optional      :: width, maxwidth
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, unit
     end subroutine
@@ -2293,9 +2293,9 @@ module pm_err
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setWarnedStatic_D0_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)            , intent(in)                    :: msg
-        character(*,SKC)            , intent(in)    , optional      :: prefix, indent, break, newline
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)            , intent(in)                    :: msg
+        character(*,SKG)            , intent(in)    , optional      :: prefix, indent, break, newline
         integer(IK)                 , intent(in)    , optional      :: width, maxwidth
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, unit
     end subroutine
@@ -2306,9 +2306,9 @@ module pm_err
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setWarnedStatic_D0_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)            , intent(in)                    :: msg
-        character(*,SKC)            , intent(in)    , optional      :: prefix, indent, break, newline
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)            , intent(in)                    :: msg
+        character(*,SKG)            , intent(in)    , optional      :: prefix, indent, break, newline
         integer(IK)                 , intent(in)    , optional      :: width, maxwidth
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, unit
     end subroutine
@@ -2319,9 +2319,9 @@ module pm_err
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setWarnedStatic_D0_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)            , intent(in)                    :: msg
-        character(*,SKC)            , intent(in)    , optional      :: prefix, indent, break, newline
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)            , intent(in)                    :: msg
+        character(*,SKG)            , intent(in)    , optional      :: prefix, indent, break, newline
         integer(IK)                 , intent(in)    , optional      :: width, maxwidth
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, unit
     end subroutine
@@ -2332,9 +2332,9 @@ module pm_err
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setWarnedStatic_D0_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)            , intent(in)                    :: msg
-        character(*,SKC)            , intent(in)    , optional      :: prefix, indent, break, newline
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)            , intent(in)                    :: msg
+        character(*,SKG)            , intent(in)    , optional      :: prefix, indent, break, newline
         integer(IK)                 , intent(in)    , optional      :: width, maxwidth
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, unit
     end subroutine
@@ -2345,9 +2345,9 @@ module pm_err
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setWarnedStatic_D0_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)            , intent(in)                    :: msg
-        character(*,SKC)            , intent(in)    , optional      :: prefix, indent, break, newline
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)            , intent(in)                    :: msg
+        character(*,SKG)            , intent(in)    , optional      :: prefix, indent, break, newline
         integer(IK)                 , intent(in)    , optional      :: width, maxwidth
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, unit
     end subroutine
@@ -2446,9 +2446,9 @@ module pm_err
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setAbortedStatic_D0_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)            , intent(in)                    :: msg
-        character(*,SKC)            , intent(in)    , optional      :: help, prefix, indent, break, newline
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)            , intent(in)                    :: msg
+        character(*,SKG)            , intent(in)    , optional      :: help, prefix, indent, break, newline
         integer(IK)                 , intent(in)    , optional      :: width, maxwidth
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, unit, stat
         logical(LK)                 , intent(in)    , optional      :: renabled
@@ -2460,9 +2460,9 @@ module pm_err
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setAbortedStatic_D0_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)            , intent(in)                    :: msg
-        character(*,SKC)            , intent(in)    , optional      :: help, prefix, indent, break, newline
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)            , intent(in)                    :: msg
+        character(*,SKG)            , intent(in)    , optional      :: help, prefix, indent, break, newline
         integer(IK)                 , intent(in)    , optional      :: width, maxwidth
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, unit, stat
         logical(LK)                 , intent(in)    , optional      :: renabled
@@ -2474,9 +2474,9 @@ module pm_err
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setAbortedStatic_D0_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)            , intent(in)                    :: msg
-        character(*,SKC)            , intent(in)    , optional      :: help, prefix, indent, break, newline
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)            , intent(in)                    :: msg
+        character(*,SKG)            , intent(in)    , optional      :: help, prefix, indent, break, newline
         integer(IK)                 , intent(in)    , optional      :: width, maxwidth
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, unit, stat
         logical(LK)                 , intent(in)    , optional      :: renabled
@@ -2488,9 +2488,9 @@ module pm_err
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setAbortedStatic_D0_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)            , intent(in)                    :: msg
-        character(*,SKC)            , intent(in)    , optional      :: help, prefix, indent, break, newline
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)            , intent(in)                    :: msg
+        character(*,SKG)            , intent(in)    , optional      :: help, prefix, indent, break, newline
         integer(IK)                 , intent(in)    , optional      :: width, maxwidth
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, unit, stat
         logical(LK)                 , intent(in)    , optional      :: renabled
@@ -2502,9 +2502,9 @@ module pm_err
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setAbortedStatic_D0_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)            , intent(in)                    :: msg
-        character(*,SKC)            , intent(in)    , optional      :: help, prefix, indent, break, newline
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)            , intent(in)                    :: msg
+        character(*,SKG)            , intent(in)    , optional      :: help, prefix, indent, break, newline
         integer(IK)                 , intent(in)    , optional      :: width, maxwidth
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, unit, stat
         logical(LK)                 , intent(in)    , optional      :: renabled

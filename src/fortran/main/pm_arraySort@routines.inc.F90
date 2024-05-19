@@ -58,19 +58,19 @@
 #endif
         ! Set the types and kinds.
 #if     SK_ENABLED && D0_ENABLED
-#define TYPE_KIND character(1,SKC)
+#define TYPE_KIND character(1,SKG)
 #elif   SK_ENABLED && D1_ENABLED
-#define TYPE_KIND character(len(array,IK),SKC)
+#define TYPE_KIND character(len(array,IK),SKG)
 #elif   IK_ENABLED && D1_ENABLED
-#define TYPE_KIND integer(IKC)
+#define TYPE_KIND integer(IKG)
 #elif   LK_ENABLED && D1_ENABLED
-#define TYPE_KIND logical(LKC)
+#define TYPE_KIND logical(LKG)
 #elif   CK_ENABLED && D1_ENABLED
-#define TYPE_KIND complex(CKC)
+#define TYPE_KIND complex(CKG)
 #elif   RK_ENABLED && D1_ENABLED
-#define TYPE_KIND real(RKC)
+#define TYPE_KIND real(RKG)
 #elif   PSSK_ENABLED && D1_ENABLED
-#define TYPE_KIND type(css_pdt(SKC))
+#define TYPE_KIND type(css_pdt(SKG))
 #elif   BSSK_ENABLED && D1_ENABLED
 #define TYPE_KIND type(css_type)
 #else
@@ -78,7 +78,7 @@
 #endif
         ! Set the len type parameter for the string kind.
 #if     SK_ENABLED
-#define TYPE_KIND_LEN(LEN) character(LEN,SKC)
+#define TYPE_KIND_LEN(LEN) character(LEN,SKG)
 #else
 #define TYPE_KIND_LEN(LEN) TYPE_KIND
 #endif
@@ -536,9 +536,9 @@
         subroutine heapify(array, i)
             integer(IK), intent(in) :: i
 #if         SK_ENABLED && D0_ENABLED
-            character(*,SKC), intent(inout):: array
+            character(*,SKG), intent(inout):: array
 #elif       SK_ENABLED && D1_ENABLED
-            character(*,SKC), intent(inout), contiguous :: array(:)
+            character(*,SKG), intent(inout), contiguous :: array(:)
 #elif       D1_ENABLED
             TYPE_KIND, intent(inout) :: array(:)
 #else
@@ -651,7 +651,7 @@
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #if     SK_ENABLED && D0_ENABLED
-        character(len(array, kind = IK),SKC) :: temp
+        character(len(array, kind = IK),SKG) :: temp
 #elif   D1_ENABLED
         TYPE_KIND :: temp(size(array, kind = IK))
 #else
@@ -697,7 +697,7 @@
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #if     SK_ENABLED && D0_ENABLED
-        character(len(array, kind = IK),SKC) :: temp
+        character(len(array, kind = IK),SKG) :: temp
 #elif   D1_ENABLED
         TYPE_KIND :: temp(size(array, kind = IK))
 #else

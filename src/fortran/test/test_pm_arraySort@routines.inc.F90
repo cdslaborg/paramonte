@@ -63,39 +63,39 @@
 #if     SK_ENABLED && D0_ENABLED
 #define GET_SIZE(array) len(array, kind = IK)
 #define GET_INDEX(i) i:i
-        character(0,SKC)                        :: empty
-        character(:,SKC)        , allocatable   :: array
-        character(1,SKC)        , parameter     :: LOWER = SKC_"a", UPPER = SKC_"z"
+        character(0,SKG)                        :: empty
+        character(:,SKG)        , allocatable   :: array
+        character(1,SKG)        , parameter     :: LOWER = SKG_"a", UPPER = SKG_"z"
 #else
 #define GET_INDEX(i) i
 #define GET_SIZE(array) size(array, kind = IK)
 #if     SK_ENABLED && D1_ENABLED
-        character(2,SKC)                        :: empty(0)
-        character(2,SKC)        , allocatable   :: array(:)
-        character(2,SKC)        , parameter     :: LOWER = SKC_"aA", UPPER = SKC_"zZ"
+        character(2,SKG)                        :: empty(0)
+        character(2,SKG)        , allocatable   :: array(:)
+        character(2,SKG)        , parameter     :: LOWER = SKG_"aA", UPPER = SKG_"zZ"
 #elif   IK_ENABLED && D1_ENABLED
-        integer(IKC)                            :: empty(0)
-        integer(IKC)            , allocatable   :: array(:)
-        integer(IKC)            , parameter     :: LOWER = 1_IKC, UPPER = huge(1_IKC)
+        integer(IKG)                            :: empty(0)
+        integer(IKG)            , allocatable   :: array(:)
+        integer(IKG)            , parameter     :: LOWER = 1_IKG, UPPER = huge(1_IKG)
 #elif   LK_ENABLED && D1_ENABLED
-        logical(LKC)                            :: empty(0)
-        logical(LKC)            , allocatable   :: array(:)
-        logical(LKC)            , parameter     :: LOWER = .false._LKC, UPPER = .true._LKC
+        logical(LKG)                            :: empty(0)
+        logical(LKG)            , allocatable   :: array(:)
+        logical(LKG)            , parameter     :: LOWER = .false._LKG, UPPER = .true._LKG
 #elif   CK_ENABLED && D1_ENABLED
-        complex(CKC)                            :: empty(0)
-        complex(CKC)            , allocatable   :: array(:)
-        complex(CKC)            , parameter     :: LOWER = cmplx(1._CKC, -huge(1._CKC), CKC), UPPER = cmplx(huge(1._CKC), -1._CKC, CKC)
+        complex(CKG)                            :: empty(0)
+        complex(CKG)            , allocatable   :: array(:)
+        complex(CKG)            , parameter     :: LOWER = cmplx(1._CKG, -huge(1._CKG), CKG), UPPER = cmplx(huge(1._CKG), -1._CKG, CKG)
 #elif   RK_ENABLED && D1_ENABLED
-        real(RKC)                               :: empty(0)
-        real(RKC)               , allocatable   :: array(:)
-        real(RKC)               , parameter     :: LOWER = 1._RKC, UPPER = huge(1._RKC)
+        real(RKG)                               :: empty(0)
+        real(RKG)               , allocatable   :: array(:)
+        real(RKG)               , parameter     :: LOWER = 1._RKG, UPPER = huge(1._RKG)
 #elif   PSSK_ENABLED && D1_ENABLED
         integer(IK) :: i
-        type(css_pdt(SKC))                      :: empty(0)
-        type(css_pdt(SKC))      , allocatable   :: array(:)
+        type(css_pdt(SKG))                      :: empty(0)
+        type(css_pdt(SKG))      , allocatable   :: array(:)
         do i = 1, NDATA
-            allocate(character(SKC,2) :: array(i)%val)
-            call setUnifRand(array(i)%val, SKC_"AA", SKC_"ZZ")
+            allocate(character(SKG,2) :: array(i)%val)
+            call setUnifRand(array(i)%val, SKG_"AA", SKG_"ZZ")
         end do
         !write(*,"(1(g0,:,' '))") array
         !error stop
@@ -118,8 +118,8 @@
                 lenArray = getUnifRand(0, 500)
                 if (allocated(array)) deallocate(array)
 #if             SK_ENABLED && D0_ENABLED
-                allocate(character(lenArray,SKC) :: array)
-                !call setUnifRand(array, repeat(SKC_"a", len(array)), repeat(SKC_"z", len(array)))
+                allocate(character(lenArray,SKG) :: array)
+                !call setUnifRand(array, repeat(SKG_"a", len(array)), repeat(SKG_"z", len(array)))
                 call setUnifRand(array)
 #else
                 allocate(array(1 : lenArray))
@@ -206,19 +206,19 @@
         pure function isSortedElement(a, b) result(sorted)
             logical(LK) :: sorted
 #if         SK_ENABLED && D0_ENABLED
-            character(1,SKC)        , intent(in) :: a, b
+            character(1,SKG)        , intent(in) :: a, b
 #elif       SK_ENABLED && D1_ENABLED
-            character(*,SKC)        , intent(in) :: a, b
+            character(*,SKG)        , intent(in) :: a, b
 #elif       IK_ENABLED && D1_ENABLED
-            integer(IKC)            , intent(in) :: a, b
+            integer(IKG)            , intent(in) :: a, b
 #elif       LK_ENABLED && D1_ENABLED
-            logical(LKC)            , intent(in) :: a, b
+            logical(LKG)            , intent(in) :: a, b
 #elif       CK_ENABLED && D1_ENABLED
-            complex(CKC)            , intent(in) :: a, b
+            complex(CKG)            , intent(in) :: a, b
 #elif       RK_ENABLED && D1_ENABLED
-            real(RKC)               , intent(in) :: a, b
+            real(RKG)               , intent(in) :: a, b
 #elif       PSSK_ENABLED && D1_ENABLED
-            type(css_pdt(SKC))      , intent(in) :: a, b
+            type(css_pdt(SKG))      , intent(in) :: a, b
 #else
 #error      "Unrecognized interface."
 #endif
@@ -240,25 +240,25 @@
 #endif
         integer(IK)     , parameter :: NDATA = 1000_IK
 #if     D0_ENABLED && SK_ENABLED
-        character(0,SKC)            :: Empty
+        character(0,SKG)            :: Empty
         character(NDATA)            :: dataUnsorted
-        call setUnifRand(dataUnsorted, repeat(SKC_"A", len(dataUnsorted,IK)), repeat(SKC_"Z", len(dataUnsorted,IK)))
+        call setUnifRand(dataUnsorted, repeat(SKG_"A", len(dataUnsorted,IK)), repeat(SKG_"Z", len(dataUnsorted,IK)))
 #elif   D1_ENABLED && SK_ENABLED
-        character(2,SKC)            :: Empty(0)
-        character(2,SKC)            :: dataUnsorted(NDATA)
-        call setUnifRand(dataUnsorted, SKC_"AA", SKC_"ZZ")
+        character(2,SKG)            :: Empty(0)
+        character(2,SKG)            :: dataUnsorted(NDATA)
+        call setUnifRand(dataUnsorted, SKG_"AA", SKG_"ZZ")
 #elif   D1_ENABLED && IK_ENABLED
-        integer(IKC)                :: Empty(0)
-        integer(IKC)                :: dataUnsorted(NDATA)
-        call setUnifRand(dataUnsorted, 1_IKC, huge(1_IKC))
+        integer(IKG)                :: Empty(0)
+        integer(IKG)                :: dataUnsorted(NDATA)
+        call setUnifRand(dataUnsorted, 1_IKG, huge(1_IKG))
 #elif   D1_ENABLED && LK_ENABLED
-        logical(LKC)                :: Empty(0)
-        logical(LKC)                :: dataUnsorted(NDATA)
+        logical(LKG)                :: Empty(0)
+        logical(LKG)                :: dataUnsorted(NDATA)
         call setUnifRand(dataUnsorted)
 #elif   D1_ENABLED && CK_ENABLED
-        complex(CKC)    , parameter :: LB = cmplx(0., -9., CKC), UB = cmplx(9., 0., CKC)
-        complex(CKC)                :: dataUnsorted(NDATA)
-        complex(CKC)                :: Empty(0)
+        complex(CKG)    , parameter :: LB = cmplx(0., -9., CKG), UB = cmplx(9., 0., CKG)
+        complex(CKG)                :: dataUnsorted(NDATA)
+        complex(CKG)                :: Empty(0)
         ! \bug
         ! gfortran-13 release mode heap-memory nocheck shared-lib passes NAN values to `setUnifRand()` for some of the input bounds.
         ! This caused infinite loops in `setUnifRand()`. Thus, the implementation of `setUnifRand()` was modified to handle NANs gracefully.
@@ -267,16 +267,16 @@
         ! have been also observed for other `elemental` routines.
         call setUnifRand(dataUnsorted)!, LB, UB)
 #elif   D1_ENABLED && RK_ENABLED
-        real(RKC)                   :: dataUnsorted(NDATA)
-        real(RKC)                   :: Empty(0)
-        call setUnifRand(dataUnsorted, 1._RKC, huge(1._RKC))
+        real(RKG)                   :: dataUnsorted(NDATA)
+        real(RKG)                   :: Empty(0)
+        call setUnifRand(dataUnsorted, 1._RKG, huge(1._RKG))
 #elif   D1_ENABLED && PSSK_ENABLED
         integer(IK) :: i
-        type(css_pdt(SKC))          :: Empty(0)
-        type(css_pdt(SKC))          :: dataUnsorted(NDATA)
+        type(css_pdt(SKG))          :: Empty(0)
+        type(css_pdt(SKG))          :: dataUnsorted(NDATA)
         do i = 1, NDATA
-            allocate(character(SKC,2) :: dataUnsorted(i)%val)
-            call setUnifRand(dataUnsorted(i)%val, SKC_"AA", SKC_"ZZ")
+            allocate(character(SKG,2) :: dataUnsorted(i)%val)
+            call setUnifRand(dataUnsorted(i)%val, SKG_"AA", SKG_"ZZ")
         end do
 #else
 #error  "Unrecognized Interface."

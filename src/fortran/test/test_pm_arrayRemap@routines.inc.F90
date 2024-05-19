@@ -43,17 +43,17 @@
 #if     SK_ENABLED && D0_ENABLED
 #define GET_SIZE len
 #define ALL
-        character(:,SKC), allocatable :: Array, arrayNew, ArrayNew_ref
+        character(:,SKG), allocatable :: Array, arrayNew, ArrayNew_ref
 #elif   SK_ENABLED && D1_ENABLED
-        character(2,SKC), dimension(:), allocatable :: Array, arrayNew, ArrayNew_ref
+        character(2,SKG), dimension(:), allocatable :: Array, arrayNew, ArrayNew_ref
 #elif   IK_ENABLED && D1_ENABLED
-        integer(IKC)    , dimension(:), allocatable :: Array, arrayNew, ArrayNew_ref
+        integer(IKG)    , dimension(:), allocatable :: Array, arrayNew, ArrayNew_ref
 #elif   LK_ENABLED && D1_ENABLED
-        logical(LKC)    , dimension(:), allocatable :: Array, arrayNew, ArrayNew_ref
+        logical(LKG)    , dimension(:), allocatable :: Array, arrayNew, ArrayNew_ref
 #elif   CK_ENABLED && D1_ENABLED
-        complex(CKC)    , dimension(:), allocatable :: Array, arrayNew, ArrayNew_ref
+        complex(CKG)    , dimension(:), allocatable :: Array, arrayNew, ArrayNew_ref
 #elif   RK_ENABLED && D1_ENABLED
-        real(RKC)       , dimension(:), allocatable :: Array, arrayNew, ArrayNew_ref
+        real(RKG)       , dimension(:), allocatable :: Array, arrayNew, ArrayNew_ref
 #else
 #error  "Unrecognized interface."
 #endif
@@ -91,7 +91,7 @@
             Array = ""
             ArrayNew_ref = ""
 #elif       SK_ENABLED && D1_ENABLED
-            allocate(character(2,SKC) :: Array(0), ArrayNew_ref(0))
+            allocate(character(2,SKG) :: Array(0), ArrayNew_ref(0))
 #elif       IK_ENABLED && D1_ENABLED
             allocate(Array(0), ArrayNew_ref(0))
 #elif       LK_ENABLED && D1_ENABLED
@@ -108,23 +108,23 @@
             !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #if         SK_ENABLED && D0_ENABLED
-            Array = SKC_" "
-            ArrayNew_ref = SKC_" "
+            Array = SKG_" "
+            ArrayNew_ref = SKG_" "
 #elif       SK_ENABLED && D1_ENABLED
-            Array = [SKC_" "]
-            ArrayNew_ref = [SKC_" "]
+            Array = [SKG_" "]
+            ArrayNew_ref = [SKG_" "]
 #elif       IK_ENABLED && D1_ENABLED
-            Array = [1_IKC]
-            ArrayNew_ref = [1_IKC]
+            Array = [1_IKG]
+            ArrayNew_ref = [1_IKG]
 #elif       LK_ENABLED && D1_ENABLED
-            Array = [.true._LKC]
-            ArrayNew_ref = [.true._LKC]
+            Array = [.true._LKG]
+            ArrayNew_ref = [.true._LKG]
 #elif       CK_ENABLED && D1_ENABLED
-            Array = [(+1._CKC, -1._CKC)]
-            ArrayNew_ref = [(+1._CKC, -1._CKC)]
+            Array = [(+1._CKG, -1._CKG)]
+            ArrayNew_ref = [(+1._CKG, -1._CKG)]
 #elif       RK_ENABLED && D1_ENABLED
-            Array = [1._RKC]
-            ArrayNew_ref = [1._RKC]
+            Array = [1._RKG]
+            ArrayNew_ref = [1._RKG]
 #endif
             index = [1_IK]
             call report(action)
@@ -133,9 +133,9 @@
             !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #if         SK_ENABLED && D0_ENABLED
-            Array = SKC_"ABCDE "
+            Array = SKG_"ABCDE "
             if (backward_def) then
-                ArrayNew_ref = SKC_" EDCBA"
+                ArrayNew_ref = SKG_" EDCBA"
             else
                 ArrayNew_ref = Array
             end if
@@ -147,28 +147,28 @@
                 ArrayNew_ref = Array
             end if
 #elif       IK_ENABLED && D1_ENABLED
-            Array = [1_IKC, 2_IKC, 3_IKC, 4_IKC, 5_IKC, 6_IKC]
+            Array = [1_IKG, 2_IKG, 3_IKG, 4_IKG, 5_IKG, 6_IKG]
             if (backward_def) then
                 ArrayNew_ref = Array(size(Array):1:-1)
             else
                 ArrayNew_ref = Array
             end if
 #elif       LK_ENABLED && D1_ENABLED
-            Array = [.false._LKC, .true._LKC, .false._LKC, .true._LKC, .false._LKC, .true._LKC]
+            Array = [.false._LKG, .true._LKG, .false._LKG, .true._LKG, .false._LKG, .true._LKG]
             if (backward_def) then
                 ArrayNew_ref = Array(size(Array):1:-1)
             else
                 ArrayNew_ref = Array
             end if
 #elif       CK_ENABLED && D1_ENABLED
-            Array = [(+1._CKC, -1._CKC), (+2._CKC, -2._CKC), (+3._CKC, -3._CKC), (+4._CKC, -4._CKC), (+5._CKC, -5._CKC), (+6._CKC, -6._CKC)]
+            Array = [(+1._CKG, -1._CKG), (+2._CKG, -2._CKG), (+3._CKG, -3._CKG), (+4._CKG, -4._CKG), (+5._CKG, -5._CKG), (+6._CKG, -6._CKG)]
             if (backward_def) then
                 ArrayNew_ref = Array(size(Array):1:-1)
             else
                 ArrayNew_ref = Array
             end if
 #elif       RK_ENABLED && D1_ENABLED
-            Array = [1._RKC, 2._RKC, 3._RKC, 4._RKC, 5._RKC, 6._RKC]
+            Array = [1._RKG, 2._RKG, 3._RKG, 4._RKG, 5._RKG, 6._RKG]
             if (backward_def) then
                 ArrayNew_ref = Array(size(Array):1:-1)
             else
@@ -196,32 +196,32 @@
                 ArrayNew_ref = ["BB", "  ", "CC", "EE", "DD", "AA"]
             end if
 #elif       IK_ENABLED && D1_ENABLED
-            Array = [1_IKC, 2_IKC, 3_IKC, 4_IKC, 5_IKC, 6_IKC]
+            Array = [1_IKG, 2_IKG, 3_IKG, 4_IKG, 5_IKG, 6_IKG]
             if (backward_def) then
-                ArrayNew_ref = [1_IKC, 4_IKC, 5_IKC, 3_IKC, 6_IKC, 2_IKC]
+                ArrayNew_ref = [1_IKG, 4_IKG, 5_IKG, 3_IKG, 6_IKG, 2_IKG]
             else
-                ArrayNew_ref = [2_IKC, 6_IKC, 3_IKC, 5_IKC, 4_IKC, 1_IKC]
+                ArrayNew_ref = [2_IKG, 6_IKG, 3_IKG, 5_IKG, 4_IKG, 1_IKG]
             end if
 #elif       LK_ENABLED && D1_ENABLED
-            Array = [.false._LKC, .true._LKC, .false._LKC, .true._LKC, .false._LKC, .true._LKC]
+            Array = [.false._LKG, .true._LKG, .false._LKG, .true._LKG, .false._LKG, .true._LKG]
             if (backward_def) then
-                ArrayNew_ref = [.false._LKC, .true._LKC, .false._LKC, .false._LKC, .true._LKC, .true._LKC]
+                ArrayNew_ref = [.false._LKG, .true._LKG, .false._LKG, .false._LKG, .true._LKG, .true._LKG]
             else
-                ArrayNew_ref = [.true._LKC, .true._LKC, .false._LKC, .false._LKC, .true._LKC, .false._LKC]
+                ArrayNew_ref = [.true._LKG, .true._LKG, .false._LKG, .false._LKG, .true._LKG, .false._LKG]
             end if
 #elif       CK_ENABLED && D1_ENABLED
-            Array = [(+1._CKC, -1._CKC), (+2._CKC, -2._CKC), (+3._CKC, -3._CKC), (+4._CKC, -4._CKC), (+5._CKC, -5._CKC), (+6._CKC, -6._CKC)]
+            Array = [(+1._CKG, -1._CKG), (+2._CKG, -2._CKG), (+3._CKG, -3._CKG), (+4._CKG, -4._CKG), (+5._CKG, -5._CKG), (+6._CKG, -6._CKG)]
             if (backward_def) then
-                ArrayNew_ref = [(+1._CKC, -1._CKC), (+4._CKC, -4._CKC), (+5._CKC, -5._CKC), (+3._CKC, -3._CKC), (+6._CKC, -6._CKC), (+2._CKC, -2._CKC)]
+                ArrayNew_ref = [(+1._CKG, -1._CKG), (+4._CKG, -4._CKG), (+5._CKG, -5._CKG), (+3._CKG, -3._CKG), (+6._CKG, -6._CKG), (+2._CKG, -2._CKG)]
             else
-                ArrayNew_ref = [(+2._CKC, -2._CKC), (+6._CKC, -6._CKC), (+3._CKC, -3._CKC), (+5._CKC, -5._CKC), (+4._CKC, -4._CKC), (+1._CKC, -1._CKC)]
+                ArrayNew_ref = [(+2._CKG, -2._CKG), (+6._CKG, -6._CKG), (+3._CKG, -3._CKG), (+5._CKG, -5._CKG), (+4._CKG, -4._CKG), (+1._CKG, -1._CKG)]
             end if
 #elif       RK_ENABLED && D1_ENABLED
-            Array = [1._RKC, 2._RKC, 3._RKC, 4._RKC, 5._RKC, 6._RKC]
+            Array = [1._RKG, 2._RKG, 3._RKG, 4._RKG, 5._RKG, 6._RKG]
             if (backward_def) then
-                ArrayNew_ref = [1._RKC, 4._RKC, 5._RKC, 3._RKC, 6._RKC, 2._RKC]
+                ArrayNew_ref = [1._RKG, 4._RKG, 5._RKG, 3._RKG, 6._RKG, 2._RKG]
             else
-                ArrayNew_ref = [2._RKC, 6._RKC, 3._RKC, 5._RKC, 4._RKC, 1._RKC]
+                ArrayNew_ref = [2._RKG, 6._RKG, 3._RKG, 5._RKG, 4._RKG, 1._RKG]
             end if
 #endif
             index = [2_IK, 6_IK, 3_IK, 5_IK, 4_IK, 1_IK]
@@ -245,32 +245,32 @@
                 ArrayNew_ref = ["CC", "AA", "AA", "AA", "AA", "AA"]
             end if
 #elif       IK_ENABLED && D1_ENABLED
-            Array = [1_IKC, 2_IKC, 3_IKC, 4_IKC, 5_IKC, 6_IKC]
+            Array = [1_IKG, 2_IKG, 3_IKG, 4_IKG, 5_IKG, 6_IKG]
             if (backward_def) then
-                ArrayNew_ref = [1_IKC, 1_IKC, 1_IKC, 1_IKC, 1_IKC, 3_IKC]
+                ArrayNew_ref = [1_IKG, 1_IKG, 1_IKG, 1_IKG, 1_IKG, 3_IKG]
             else
-                ArrayNew_ref = [3_IKC, 1_IKC, 1_IKC, 1_IKC, 1_IKC, 1_IKC]
+                ArrayNew_ref = [3_IKG, 1_IKG, 1_IKG, 1_IKG, 1_IKG, 1_IKG]
             end if
 #elif       LK_ENABLED && D1_ENABLED
-            Array = [.false._LKC, .true._LKC, .false._LKC, .true._LKC, .false._LKC, .true._LKC]
+            Array = [.false._LKG, .true._LKG, .false._LKG, .true._LKG, .false._LKG, .true._LKG]
             if (backward_def) then
-                ArrayNew_ref = [.false._LKC, .false._LKC, .false._LKC, .false._LKC, .false._LKC, .false._LKC]
+                ArrayNew_ref = [.false._LKG, .false._LKG, .false._LKG, .false._LKG, .false._LKG, .false._LKG]
             else
-                ArrayNew_ref = [.false._LKC, .false._LKC, .false._LKC, .false._LKC, .false._LKC, .false._LKC]
+                ArrayNew_ref = [.false._LKG, .false._LKG, .false._LKG, .false._LKG, .false._LKG, .false._LKG]
             end if
 #elif       CK_ENABLED && D1_ENABLED
-            Array = [(+1._CKC, -1._CKC), (+2._CKC, -2._CKC), (+3._CKC, -3._CKC), (+4._CKC, -4._CKC), (+5._CKC, -5._CKC), (+6._CKC, -6._CKC)]
+            Array = [(+1._CKG, -1._CKG), (+2._CKG, -2._CKG), (+3._CKG, -3._CKG), (+4._CKG, -4._CKG), (+5._CKG, -5._CKG), (+6._CKG, -6._CKG)]
             if (backward_def) then
-                ArrayNew_ref = [(+1._CKC, -1._CKC), (+1._CKC, -1._CKC), (+1._CKC, -1._CKC), (+1._CKC, -1._CKC), (+1._CKC, -1._CKC), (+3._CKC, -3._CKC)]
+                ArrayNew_ref = [(+1._CKG, -1._CKG), (+1._CKG, -1._CKG), (+1._CKG, -1._CKG), (+1._CKG, -1._CKG), (+1._CKG, -1._CKG), (+3._CKG, -3._CKG)]
             else
-                ArrayNew_ref = [(+3._CKC, -3._CKC), (+1._CKC, -1._CKC), (+1._CKC, -1._CKC), (+1._CKC, -1._CKC), (+1._CKC, -1._CKC), (+1._CKC, -1._CKC)]
+                ArrayNew_ref = [(+3._CKG, -3._CKG), (+1._CKG, -1._CKG), (+1._CKG, -1._CKG), (+1._CKG, -1._CKG), (+1._CKG, -1._CKG), (+1._CKG, -1._CKG)]
             end if
 #elif       RK_ENABLED && D1_ENABLED
-            Array = [1._RKC, 2._RKC, 3._RKC, 4._RKC, 5._RKC, 6._RKC]
+            Array = [1._RKG, 2._RKG, 3._RKG, 4._RKG, 5._RKG, 6._RKG]
             if (backward_def) then
-                ArrayNew_ref = [1._RKC, 1._RKC, 1._RKC, 1._RKC, 1._RKC, 3._RKC]
+                ArrayNew_ref = [1._RKG, 1._RKG, 1._RKG, 1._RKG, 1._RKG, 3._RKG]
             else
-                ArrayNew_ref = [3._RKC, 1._RKC, 1._RKC, 1._RKC, 1._RKC, 1._RKC]
+                ArrayNew_ref = [3._RKG, 1._RKG, 1._RKG, 1._RKG, 1._RKG, 1._RKG]
             end if
 #endif
             index = [3_IK, 1_IK, 1_IK, 1_IK, 1_IK, 1_IK]

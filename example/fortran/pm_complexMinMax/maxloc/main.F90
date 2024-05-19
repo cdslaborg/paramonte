@@ -12,13 +12,13 @@ program example
     disp = display_type(file = "main.out.F90")
 
     block
-        use pm_kind, only: CKC => CKS
-        complex(CKC), allocatable :: array(:,:)
+        use pm_kind, only: CKG => CKS
+        complex(CKG), allocatable :: array(:,:)
         call disp%skip()
         call disp%show("ndim = 3; nsam = 5")
                         ndim = 3; nsam = 5
-        call disp%show("array = getUnifRand((-9._CKC, -9._CKC), (+9._CKC, +9._CKC), ndim, nsam)")
-                        array = getUnifRand((-9._CKC, -9._CKC), (+9._CKC, +9._CKC), ndim, nsam)
+        call disp%show("array = getUnifRand((-9._CKG, -9._CKG), (+9._CKG, +9._CKG), ndim, nsam)")
+                        array = getUnifRand((-9._CKG, -9._CKG), (+9._CKG, +9._CKG), ndim, nsam)
         call disp%show("array")
         call disp%show( array )
         call disp%show("maxloc(array)")
@@ -27,23 +27,23 @@ program example
         call disp%show( maxloc(array, dim = 1_IK) )
         call disp%show("maxloc(array, dim = 2_IK)")
         call disp%show( maxloc(array, dim = 2_IK) )
-        call disp%show("maxloc([complex(CKC)::])")
-        call disp%show( maxloc([complex(CKC)::]) )
-        call disp%show("maxloc([complex(CKC)::], dim = 1_IK)")
-        call disp%show( maxloc([complex(CKC)::], dim = 1_IK) )
-        call disp%show("maxloc([complex(CKC)::], dim = 2_IK)")
-        call disp%show( maxloc([complex(CKC)::], dim = 2_IK) )
+        call disp%show("maxloc([complex(CKG)::])")
+        call disp%show( maxloc([complex(CKG)::]) )
+        call disp%show("maxloc([complex(CKG)::], dim = 1_IK)")
+        call disp%show( maxloc([complex(CKG)::], dim = 1_IK) )
+        call disp%show("maxloc([complex(CKG)::], dim = 2_IK)")
+        call disp%show( maxloc([complex(CKG)::], dim = 2_IK) )
         call disp%skip()
     end block
 
     block
-        use pm_kind, only: CKC => CKD
-        complex(CKC), allocatable :: array(:,:)
+        use pm_kind, only: CKG => CKD
+        complex(CKG), allocatable :: array(:,:)
         call disp%skip()
         call disp%show("ndim = 3; nsam = 5")
                         ndim = 3; nsam = 5
-        call disp%show("array = getUnifRand((-9._CKC, -9._CKC), (+9._CKC, +9._CKC), ndim, nsam)")
-                        array = getUnifRand((-9._CKC, -9._CKC), (+9._CKC, +9._CKC), ndim, nsam)
+        call disp%show("array = getUnifRand((-9._CKG, -9._CKG), (+9._CKG, +9._CKG), ndim, nsam)")
+                        array = getUnifRand((-9._CKG, -9._CKG), (+9._CKG, +9._CKG), ndim, nsam)
         call disp%show("array")
         call disp%show( array )
         call disp%show("maxloc(array)")
@@ -52,23 +52,23 @@ program example
         call disp%show( maxloc(array, dim = 1_IK) )
         call disp%show("maxloc(array, dim = 2_IK)")
         call disp%show( maxloc(array, dim = 2_IK) )
-        call disp%show("maxloc([complex(CKC)::])")
-        call disp%show( maxloc([complex(CKC)::]) )
-        call disp%show("maxloc([complex(CKC)::], dim = 1_IK)")
-        call disp%show( maxloc([complex(CKC)::], dim = 1_IK) )
-        call disp%show("maxloc([complex(CKC)::], dim = 2_IK)")
-        call disp%show( maxloc([complex(CKC)::], dim = 2_IK) )
+        call disp%show("maxloc([complex(CKG)::])")
+        call disp%show( maxloc([complex(CKG)::]) )
+        call disp%show("maxloc([complex(CKG)::], dim = 1_IK)")
+        call disp%show( maxloc([complex(CKG)::], dim = 1_IK) )
+        call disp%show("maxloc([complex(CKG)::], dim = 2_IK)")
+        call disp%show( maxloc([complex(CKG)::], dim = 2_IK) )
         call disp%skip()
     end block
 
     block
-        use pm_kind, only: CKC => CKH
-        complex(CKC), allocatable :: array(:,:)
+        use pm_kind, only: CKG => CKH
+        complex(CKG), allocatable :: array(:,:)
         call disp%skip()
         call disp%show("ndim = 3; nsam = 5")
                         ndim = 3; nsam = 5
-        call disp%show("array = getUnifRand((-9._CKC, -9._CKC), (+9._CKC, +9._CKC), ndim, nsam)")
-                        array = getUnifRand((-9._CKC, -9._CKC), (+9._CKC, +9._CKC), ndim, nsam)
+        call disp%show("array = getUnifRand((-9._CKG, -9._CKG), (+9._CKG, +9._CKG), ndim, nsam)")
+                        array = getUnifRand((-9._CKG, -9._CKG), (+9._CKG, +9._CKG), ndim, nsam)
         call disp%show("array")
         call disp%show( array )
         call disp%show("maxloc(array)")
@@ -77,12 +77,12 @@ program example
         call disp%show( maxloc(array, dim = 1_IK) )
         call disp%show("maxloc(array, dim = 2_IK)")
         call disp%show( maxloc(array, dim = 2_IK) )
-        call disp%show("maxloc([complex(CKC)::])")
-        call disp%show( maxloc([complex(CKC)::]) )
-        call disp%show("maxloc([complex(CKC)::], dim = 1_IK)")
-        call disp%show( maxloc([complex(CKC)::], dim = 1_IK) )
-        call disp%show("maxloc([complex(CKC)::], dim = 2_IK)")
-        call disp%show( maxloc([complex(CKC)::], dim = 2_IK) )
+        call disp%show("maxloc([complex(CKG)::])")
+        call disp%show( maxloc([complex(CKG)::]) )
+        call disp%show("maxloc([complex(CKG)::], dim = 1_IK)")
+        call disp%show( maxloc([complex(CKG)::], dim = 1_IK) )
+        call disp%show("maxloc([complex(CKG)::], dim = 2_IK)")
+        call disp%show( maxloc([complex(CKG)::], dim = 2_IK) )
         call disp%skip()
     end block
 

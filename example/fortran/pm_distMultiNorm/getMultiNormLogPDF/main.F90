@@ -1,7 +1,7 @@
 program example
 
     use pm_kind, only: SK, IK
-    use pm_kind, only: RKC => RK ! all real kinds are supported.
+    use pm_kind, only: RKG => RK ! all real kinds are supported.
     use pm_distMultiNorm, only: getMultiNormLogPDF
     use pm_arraySpace, only: getLinSpace
     use pm_arraySpace, only: setLinSpace
@@ -16,18 +16,18 @@ program example
     disp = display_type(file = "main.out.F90")
 
     call disp%skip()
-    call disp%show("getMultiNormLogPDF([0._RKC]) ! 1D Norm")
-    call disp%show( getMultiNormLogPDF([0._RKC]) )
+    call disp%show("getMultiNormLogPDF([0._RKG]) ! 1D Norm")
+    call disp%show( getMultiNormLogPDF([0._RKG]) )
     call disp%skip()
 
     call disp%skip()
-    call disp%show("getMultiNormLogPDF([0._RKC], mean = [10._RKC], invCov = reshape([1._RKC], [1, 1])) ! 1D Norm")
-    call disp%show( getMultiNormLogPDF([0._RKC], mean = [10._RKC], invCov = reshape([1._RKC], [1, 1])) )
+    call disp%show("getMultiNormLogPDF([0._RKG], mean = [10._RKG], invCov = reshape([1._RKG], [1, 1])) ! 1D Norm")
+    call disp%show( getMultiNormLogPDF([0._RKG], mean = [10._RKG], invCov = reshape([1._RKG], [1, 1])) )
     call disp%skip()
 
     call disp%skip()
-    call disp%show("getMultiNormLogPDF([real(RKC) :: 0, 1], mean = [-1._RKC, 1._RKC], invCov = reshape([+1.3_RKC, -.66_RKC, -.66_RKC, 1.3_RKC], [2, 2])) ! 2D Norm")
-    call disp%show( getMultiNormLogPDF([real(RKC) :: 0, 1], mean = [-1._RKC, 1._RKC], invCov = reshape([+1.3_RKC, -.66_RKC, -.66_RKC, 1.3_RKC], [2, 2])) )
+    call disp%show("getMultiNormLogPDF([real(RKG) :: 0, 1], mean = [-1._RKG, 1._RKG], invCov = reshape([+1.3_RKG, -.66_RKG, -.66_RKG, 1.3_RKG], [2, 2])) ! 2D Norm")
+    call disp%show( getMultiNormLogPDF([real(RKG) :: 0, 1], mean = [-1._RKG, 1._RKG], invCov = reshape([+1.3_RKG, -.66_RKG, -.66_RKG, 1.3_RKG], [2, 2])) )
     call disp%skip()
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -36,11 +36,11 @@ program example
 
     block
         integer(IK) :: fileUnit, i, j
-        real(RKC)   , parameter :: signif = 5
+        real(RKG)   , parameter :: signif = 5
         integer(IK) , parameter :: ndim = 2, npnt = 500
-        real(RKC) :: grid(ndim, npnt, npnt), mean(ndim), invCov(ndim, ndim)
-        mean = [+5._RKC, -5._RKC]
-        invCov = reshape([+1.3_RKC, -.66_RKC, -.66_RKC, 1.3_RKC], [ndim, ndim])
+        real(RKG) :: grid(ndim, npnt, npnt), mean(ndim), invCov(ndim, ndim)
+        mean = [+5._RKG, -5._RKG]
+        invCov = reshape([+1.3_RKG, -.66_RKG, -.66_RKG, 1.3_RKG], [ndim, ndim])
         do i = 1, ndim
             grid(i, :, :) = spread  ( getLinSpace   ( x1 = mean(i) - signif &
                                                     , x2 = mean(i) + signif &

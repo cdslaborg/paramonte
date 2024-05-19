@@ -47,35 +47,35 @@ contains
 
 #if RK5_ENABLED
     module procedure test_getPowerLogPDF_RK5_1
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "test_pm_distPower@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure test_getPowerLogPDF_RK4_1
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "test_pm_distPower@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure test_getPowerLogPDF_RK3_1
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "test_pm_distPower@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure test_getPowerLogPDF_RK2_1
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "test_pm_distPower@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure test_getPowerLogPDF_RK1_1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "test_pm_distPower@routines.inc.F90"
     end procedure
 #endif
@@ -96,35 +96,35 @@ contains
 
 #if RK5_ENABLED
     module procedure test_setPowerLogPDF_RK5_1
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "test_pm_distPower@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure test_setPowerLogPDF_RK4_1
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "test_pm_distPower@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure test_setPowerLogPDF_RK3_1
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "test_pm_distPower@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure test_setPowerLogPDF_RK2_1
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "test_pm_distPower@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure test_setPowerLogPDF_RK1_1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "test_pm_distPower@routines.inc.F90"
     end procedure
 #endif
@@ -145,35 +145,35 @@ contains
 
 #if RK5_ENABLED
     module procedure test_getPowerLogCDF_RK5_1
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "test_pm_distPower@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure test_getPowerLogCDF_RK4_1
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "test_pm_distPower@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure test_getPowerLogCDF_RK3_1
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "test_pm_distPower@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure test_getPowerLogCDF_RK2_1
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "test_pm_distPower@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure test_getPowerLogCDF_RK1_1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "test_pm_distPower@routines.inc.F90"
     end procedure
 #endif
@@ -194,35 +194,35 @@ contains
 
 #if RK5_ENABLED
     module procedure test_setPowerLogCDF_RK5_1
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "test_pm_distPower@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure test_setPowerLogCDF_RK4_1
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "test_pm_distPower@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure test_setPowerLogCDF_RK3_1
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "test_pm_distPower@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure test_setPowerLogCDF_RK2_1
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "test_pm_distPower@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure test_setPowerLogCDF_RK1_1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "test_pm_distPower@routines.inc.F90"
     end procedure
 #endif
@@ -243,35 +243,35 @@ contains
 
 #if RK5_ENABLED
     module procedure test_getPowerLogQuan_RK5_1
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "test_pm_distPower@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure test_getPowerLogQuan_RK4_1
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "test_pm_distPower@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure test_getPowerLogQuan_RK3_1
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "test_pm_distPower@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure test_getPowerLogQuan_RK2_1
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "test_pm_distPower@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure test_getPowerLogQuan_RK1_1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "test_pm_distPower@routines.inc.F90"
     end procedure
 #endif
@@ -292,35 +292,35 @@ contains
 
 #if RK5_ENABLED
     module procedure test_setPowerLogQuan_RK5_1
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "test_pm_distPower@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure test_setPowerLogQuan_RK4_1
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "test_pm_distPower@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure test_setPowerLogQuan_RK3_1
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "test_pm_distPower@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure test_setPowerLogQuan_RK2_1
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "test_pm_distPower@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure test_setPowerLogQuan_RK1_1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "test_pm_distPower@routines.inc.F90"
     end procedure
 #endif
@@ -341,35 +341,35 @@ contains
 
 #if RK5_ENABLED
     module procedure test_getPowerLogRand_RK5_1
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "test_pm_distPower@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure test_getPowerLogRand_RK4_1
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "test_pm_distPower@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure test_getPowerLogRand_RK3_1
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "test_pm_distPower@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure test_getPowerLogRand_RK2_1
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "test_pm_distPower@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure test_getPowerLogRand_RK1_1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "test_pm_distPower@routines.inc.F90"
     end procedure
 #endif
@@ -390,35 +390,35 @@ contains
 
 #if RK5_ENABLED
     module procedure test_setPowerLogRand_RK5_1
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "test_pm_distPower@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure test_setPowerLogRand_RK4_1
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "test_pm_distPower@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure test_setPowerLogRand_RK3_1
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "test_pm_distPower@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure test_setPowerLogRand_RK2_1
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "test_pm_distPower@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure test_setPowerLogRand_RK1_1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "test_pm_distPower@routines.inc.F90"
     end procedure
 #endif

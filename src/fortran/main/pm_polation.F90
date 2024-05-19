@@ -498,10 +498,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getInterpMNPLD_ND1_QD0_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)                    :: queryx
-        real(RKC)                                           :: interp
+        use pm_kind, only: RKG => RK5
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)                    :: queryx
+        real(RKG)                                           :: interp
         type(monopol_type)  , intent(in)                    :: method
     end function
 #endif
@@ -511,10 +511,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getInterpMNPLD_ND1_QD0_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)                    :: queryx
-        real(RKC)                                           :: interp
+        use pm_kind, only: RKG => RK4
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)                    :: queryx
+        real(RKG)                                           :: interp
         type(monopol_type)  , intent(in)                    :: method
     end function
 #endif
@@ -524,10 +524,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getInterpMNPLD_ND1_QD0_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)                    :: queryx
-        real(RKC)                                           :: interp
+        use pm_kind, only: RKG => RK3
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)                    :: queryx
+        real(RKG)                                           :: interp
         type(monopol_type)  , intent(in)                    :: method
     end function
 #endif
@@ -537,10 +537,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getInterpMNPLD_ND1_QD0_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)                    :: queryx
-        real(RKC)                                           :: interp
+        use pm_kind, only: RKG => RK2
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)                    :: queryx
+        real(RKG)                                           :: interp
         type(monopol_type)  , intent(in)                    :: method
     end function
 #endif
@@ -550,10 +550,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getInterpMNPLD_ND1_QD0_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)                    :: queryx
-        real(RKC)                                           :: interp
+        use pm_kind, only: RKG => RK1
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)                    :: queryx
+        real(RKG)                                           :: interp
         type(monopol_type)  , intent(in)                    :: method
     end function
 #endif
@@ -565,10 +565,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getInterpMNPLD_ND1_QD1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)    , contiguous    :: queryx(:)
-        real(RKC)                                           :: interp(size(queryx, 1, IK))
+        use pm_kind, only: RKG => RK5
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)    , contiguous    :: queryx(:)
+        real(RKG)                                           :: interp(size(queryx, 1, IK))
         type(monopol_type)  , intent(in)                    :: method
     end function
 #endif
@@ -578,10 +578,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getInterpMNPLD_ND1_QD1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)    , contiguous    :: queryx(:)
-        real(RKC)                                           :: interp(size(queryx, 1, IK))
+        use pm_kind, only: RKG => RK4
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)    , contiguous    :: queryx(:)
+        real(RKG)                                           :: interp(size(queryx, 1, IK))
         type(monopol_type)  , intent(in)                    :: method
     end function
 #endif
@@ -591,10 +591,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getInterpMNPLD_ND1_QD1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)    , contiguous    :: queryx(:)
-        real(RKC)                                           :: interp(size(queryx, 1, IK))
+        use pm_kind, only: RKG => RK3
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)    , contiguous    :: queryx(:)
+        real(RKG)                                           :: interp(size(queryx, 1, IK))
         type(monopol_type)  , intent(in)                    :: method
     end function
 #endif
@@ -604,10 +604,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getInterpMNPLD_ND1_QD1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)    , contiguous    :: queryx(:)
-        real(RKC)                                           :: interp(size(queryx, 1, IK))
+        use pm_kind, only: RKG => RK2
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)    , contiguous    :: queryx(:)
+        real(RKG)                                           :: interp(size(queryx, 1, IK))
         type(monopol_type)  , intent(in)                    :: method
     end function
 #endif
@@ -617,10 +617,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getInterpMNPLD_ND1_QD1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)    , contiguous    :: queryx(:)
-        real(RKC)                                           :: interp(size(queryx, 1, IK))
+        use pm_kind, only: RKG => RK1
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)    , contiguous    :: queryx(:)
+        real(RKG)                                           :: interp(size(queryx, 1, IK))
         type(monopol_type)  , intent(in)                    :: method
     end function
 #endif
@@ -640,10 +640,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getInterpPWLN_ND1_QD0_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)                    :: queryx
-        real(RKC)                                           :: interp
+        use pm_kind, only: RKG => RK5
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)                    :: queryx
+        real(RKG)                                           :: interp
         type(piwilin_type)  , intent(in)                    :: method
     end function
 #endif
@@ -653,10 +653,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getInterpPWLN_ND1_QD0_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)                    :: queryx
-        real(RKC)                                           :: interp
+        use pm_kind, only: RKG => RK4
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)                    :: queryx
+        real(RKG)                                           :: interp
         type(piwilin_type)  , intent(in)                    :: method
     end function
 #endif
@@ -666,10 +666,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getInterpPWLN_ND1_QD0_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)                    :: queryx
-        real(RKC)                                           :: interp
+        use pm_kind, only: RKG => RK3
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)                    :: queryx
+        real(RKG)                                           :: interp
         type(piwilin_type)  , intent(in)                    :: method
     end function
 #endif
@@ -679,10 +679,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getInterpPWLN_ND1_QD0_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)                    :: queryx
-        real(RKC)                                           :: interp
+        use pm_kind, only: RKG => RK2
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)                    :: queryx
+        real(RKG)                                           :: interp
         type(piwilin_type)  , intent(in)                    :: method
     end function
 #endif
@@ -692,10 +692,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getInterpPWLN_ND1_QD0_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)                    :: queryx
-        real(RKC)                                           :: interp
+        use pm_kind, only: RKG => RK1
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)                    :: queryx
+        real(RKG)                                           :: interp
         type(piwilin_type)  , intent(in)                    :: method
     end function
 #endif
@@ -707,10 +707,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getInterpPWLN_ND1_QD1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)    , contiguous    :: queryx(:)
-        real(RKC)                                           :: interp(size(queryx, 1, IK))
+        use pm_kind, only: RKG => RK5
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)    , contiguous    :: queryx(:)
+        real(RKG)                                           :: interp(size(queryx, 1, IK))
         type(piwilin_type)  , intent(in)                    :: method
     end function
 #endif
@@ -720,10 +720,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getInterpPWLN_ND1_QD1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)    , contiguous    :: queryx(:)
-        real(RKC)                                           :: interp(size(queryx, 1, IK))
+        use pm_kind, only: RKG => RK4
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)    , contiguous    :: queryx(:)
+        real(RKG)                                           :: interp(size(queryx, 1, IK))
         type(piwilin_type)  , intent(in)                    :: method
     end function
 #endif
@@ -733,10 +733,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getInterpPWLN_ND1_QD1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)    , contiguous    :: queryx(:)
-        real(RKC)                                           :: interp(size(queryx, 1, IK))
+        use pm_kind, only: RKG => RK3
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)    , contiguous    :: queryx(:)
+        real(RKG)                                           :: interp(size(queryx, 1, IK))
         type(piwilin_type)  , intent(in)                    :: method
     end function
 #endif
@@ -746,10 +746,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getInterpPWLN_ND1_QD1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)    , contiguous    :: queryx(:)
-        real(RKC)                                           :: interp(size(queryx, 1, IK))
+        use pm_kind, only: RKG => RK2
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)    , contiguous    :: queryx(:)
+        real(RKG)                                           :: interp(size(queryx, 1, IK))
         type(piwilin_type)  , intent(in)                    :: method
     end function
 #endif
@@ -759,10 +759,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getInterpPWLN_ND1_QD1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)    , contiguous    :: queryx(:)
-        real(RKC)                                           :: interp(size(queryx, 1, IK))
+        use pm_kind, only: RKG => RK1
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)    , contiguous    :: queryx(:)
+        real(RKG)                                           :: interp(size(queryx, 1, IK))
         type(piwilin_type)  , intent(in)                    :: method
     end function
 #endif
@@ -782,10 +782,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getInterpMEAN_ND1_QD0_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)                    :: queryx
-        real(RKC)                                           :: interp
+        use pm_kind, only: RKG => RK5
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)                    :: queryx
+        real(RKG)                                           :: interp
         type(neimean_type)  , intent(in)                    :: method
     end function
 #endif
@@ -795,10 +795,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getInterpMEAN_ND1_QD0_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)                    :: queryx
-        real(RKC)                                           :: interp
+        use pm_kind, only: RKG => RK4
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)                    :: queryx
+        real(RKG)                                           :: interp
         type(neimean_type)  , intent(in)                    :: method
     end function
 #endif
@@ -808,10 +808,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getInterpMEAN_ND1_QD0_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)                    :: queryx
-        real(RKC)                                           :: interp
+        use pm_kind, only: RKG => RK3
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)                    :: queryx
+        real(RKG)                                           :: interp
         type(neimean_type)  , intent(in)                    :: method
     end function
 #endif
@@ -821,10 +821,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getInterpMEAN_ND1_QD0_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)                    :: queryx
-        real(RKC)                                           :: interp
+        use pm_kind, only: RKG => RK2
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)                    :: queryx
+        real(RKG)                                           :: interp
         type(neimean_type)  , intent(in)                    :: method
     end function
 #endif
@@ -834,10 +834,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getInterpMEAN_ND1_QD0_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)                    :: queryx
-        real(RKC)                                           :: interp
+        use pm_kind, only: RKG => RK1
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)                    :: queryx
+        real(RKG)                                           :: interp
         type(neimean_type)  , intent(in)                    :: method
     end function
 #endif
@@ -849,10 +849,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getInterpMEAN_ND1_QD1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)    , contiguous    :: queryx(:)
-        real(RKC)                                           :: interp(size(queryx, 1, IK))
+        use pm_kind, only: RKG => RK5
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)    , contiguous    :: queryx(:)
+        real(RKG)                                           :: interp(size(queryx, 1, IK))
         type(neimean_type)  , intent(in)                    :: method
     end function
 #endif
@@ -862,10 +862,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getInterpMEAN_ND1_QD1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)    , contiguous    :: queryx(:)
-        real(RKC)                                           :: interp(size(queryx, 1, IK))
+        use pm_kind, only: RKG => RK4
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)    , contiguous    :: queryx(:)
+        real(RKG)                                           :: interp(size(queryx, 1, IK))
         type(neimean_type)  , intent(in)                    :: method
     end function
 #endif
@@ -875,10 +875,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getInterpMEAN_ND1_QD1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)    , contiguous    :: queryx(:)
-        real(RKC)                                           :: interp(size(queryx, 1, IK))
+        use pm_kind, only: RKG => RK3
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)    , contiguous    :: queryx(:)
+        real(RKG)                                           :: interp(size(queryx, 1, IK))
         type(neimean_type)  , intent(in)                    :: method
     end function
 #endif
@@ -888,10 +888,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getInterpMEAN_ND1_QD1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)    , contiguous    :: queryx(:)
-        real(RKC)                                           :: interp(size(queryx, 1, IK))
+        use pm_kind, only: RKG => RK2
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)    , contiguous    :: queryx(:)
+        real(RKG)                                           :: interp(size(queryx, 1, IK))
         type(neimean_type)  , intent(in)                    :: method
     end function
 #endif
@@ -901,10 +901,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getInterpMEAN_ND1_QD1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)    , contiguous    :: queryx(:)
-        real(RKC)                                           :: interp(size(queryx, 1, IK))
+        use pm_kind, only: RKG => RK1
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)    , contiguous    :: queryx(:)
+        real(RKG)                                           :: interp(size(queryx, 1, IK))
         type(neimean_type)  , intent(in)                    :: method
     end function
 #endif
@@ -924,10 +924,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getInterpNEAR_ND1_QD0_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)                    :: queryx
-        real(RKC)                                           :: interp
+        use pm_kind, only: RKG => RK5
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)                    :: queryx
+        real(RKG)                                           :: interp
         type(neinear_type)  , intent(in)                    :: method
     end function
 #endif
@@ -937,10 +937,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getInterpNEAR_ND1_QD0_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)                    :: queryx
-        real(RKC)                                           :: interp
+        use pm_kind, only: RKG => RK4
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)                    :: queryx
+        real(RKG)                                           :: interp
         type(neinear_type)  , intent(in)                    :: method
     end function
 #endif
@@ -950,10 +950,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getInterpNEAR_ND1_QD0_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)                    :: queryx
-        real(RKC)                                           :: interp
+        use pm_kind, only: RKG => RK3
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)                    :: queryx
+        real(RKG)                                           :: interp
         type(neinear_type)  , intent(in)                    :: method
     end function
 #endif
@@ -963,10 +963,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getInterpNEAR_ND1_QD0_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)                    :: queryx
-        real(RKC)                                           :: interp
+        use pm_kind, only: RKG => RK2
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)                    :: queryx
+        real(RKG)                                           :: interp
         type(neinear_type)  , intent(in)                    :: method
     end function
 #endif
@@ -976,10 +976,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getInterpNEAR_ND1_QD0_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)                    :: queryx
-        real(RKC)                                           :: interp
+        use pm_kind, only: RKG => RK1
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)                    :: queryx
+        real(RKG)                                           :: interp
         type(neinear_type)  , intent(in)                    :: method
     end function
 #endif
@@ -991,10 +991,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getInterpNEAR_ND1_QD1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)    , contiguous    :: queryx(:)
-        real(RKC)                                           :: interp(size(queryx, 1, IK))
+        use pm_kind, only: RKG => RK5
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)    , contiguous    :: queryx(:)
+        real(RKG)                                           :: interp(size(queryx, 1, IK))
         type(neinear_type)  , intent(in)                    :: method
     end function
 #endif
@@ -1004,10 +1004,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getInterpNEAR_ND1_QD1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)    , contiguous    :: queryx(:)
-        real(RKC)                                           :: interp(size(queryx, 1, IK))
+        use pm_kind, only: RKG => RK4
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)    , contiguous    :: queryx(:)
+        real(RKG)                                           :: interp(size(queryx, 1, IK))
         type(neinear_type)  , intent(in)                    :: method
     end function
 #endif
@@ -1017,10 +1017,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getInterpNEAR_ND1_QD1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)    , contiguous    :: queryx(:)
-        real(RKC)                                           :: interp(size(queryx, 1, IK))
+        use pm_kind, only: RKG => RK3
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)    , contiguous    :: queryx(:)
+        real(RKG)                                           :: interp(size(queryx, 1, IK))
         type(neinear_type)  , intent(in)                    :: method
     end function
 #endif
@@ -1030,10 +1030,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getInterpNEAR_ND1_QD1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)    , contiguous    :: queryx(:)
-        real(RKC)                                           :: interp(size(queryx, 1, IK))
+        use pm_kind, only: RKG => RK2
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)    , contiguous    :: queryx(:)
+        real(RKG)                                           :: interp(size(queryx, 1, IK))
         type(neinear_type)  , intent(in)                    :: method
     end function
 #endif
@@ -1043,10 +1043,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getInterpNEAR_ND1_QD1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)    , contiguous    :: queryx(:)
-        real(RKC)                                           :: interp(size(queryx, 1, IK))
+        use pm_kind, only: RKG => RK1
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)    , contiguous    :: queryx(:)
+        real(RKG)                                           :: interp(size(queryx, 1, IK))
         type(neinear_type)  , intent(in)                    :: method
     end function
 #endif
@@ -1066,10 +1066,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getInterpNEXT_ND1_QD0_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)                    :: queryx
-        real(RKC)                                           :: interp
+        use pm_kind, only: RKG => RK5
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)                    :: queryx
+        real(RKG)                                           :: interp
         type(neinext_type)  , intent(in)                    :: method
     end function
 #endif
@@ -1079,10 +1079,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getInterpNEXT_ND1_QD0_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)                    :: queryx
-        real(RKC)                                           :: interp
+        use pm_kind, only: RKG => RK4
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)                    :: queryx
+        real(RKG)                                           :: interp
         type(neinext_type)  , intent(in)                    :: method
     end function
 #endif
@@ -1092,10 +1092,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getInterpNEXT_ND1_QD0_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)                    :: queryx
-        real(RKC)                                           :: interp
+        use pm_kind, only: RKG => RK3
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)                    :: queryx
+        real(RKG)                                           :: interp
         type(neinext_type)  , intent(in)                    :: method
     end function
 #endif
@@ -1105,10 +1105,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getInterpNEXT_ND1_QD0_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)                    :: queryx
-        real(RKC)                                           :: interp
+        use pm_kind, only: RKG => RK2
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)                    :: queryx
+        real(RKG)                                           :: interp
         type(neinext_type)  , intent(in)                    :: method
     end function
 #endif
@@ -1118,10 +1118,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getInterpNEXT_ND1_QD0_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)                    :: queryx
-        real(RKC)                                           :: interp
+        use pm_kind, only: RKG => RK1
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)                    :: queryx
+        real(RKG)                                           :: interp
         type(neinext_type)  , intent(in)                    :: method
     end function
 #endif
@@ -1133,10 +1133,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getInterpNEXT_ND1_QD1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)    , contiguous    :: queryx(:)
-        real(RKC)                                           :: interp(size(queryx, 1, IK))
+        use pm_kind, only: RKG => RK5
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)    , contiguous    :: queryx(:)
+        real(RKG)                                           :: interp(size(queryx, 1, IK))
         type(neinext_type)  , intent(in)                    :: method
     end function
 #endif
@@ -1146,10 +1146,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getInterpNEXT_ND1_QD1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)    , contiguous    :: queryx(:)
-        real(RKC)                                           :: interp(size(queryx, 1, IK))
+        use pm_kind, only: RKG => RK4
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)    , contiguous    :: queryx(:)
+        real(RKG)                                           :: interp(size(queryx, 1, IK))
         type(neinext_type)  , intent(in)                    :: method
     end function
 #endif
@@ -1159,10 +1159,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getInterpNEXT_ND1_QD1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)    , contiguous    :: queryx(:)
-        real(RKC)                                           :: interp(size(queryx, 1, IK))
+        use pm_kind, only: RKG => RK3
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)    , contiguous    :: queryx(:)
+        real(RKG)                                           :: interp(size(queryx, 1, IK))
         type(neinext_type)  , intent(in)                    :: method
     end function
 #endif
@@ -1172,10 +1172,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getInterpNEXT_ND1_QD1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)    , contiguous    :: queryx(:)
-        real(RKC)                                           :: interp(size(queryx, 1, IK))
+        use pm_kind, only: RKG => RK2
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)    , contiguous    :: queryx(:)
+        real(RKG)                                           :: interp(size(queryx, 1, IK))
         type(neinext_type)  , intent(in)                    :: method
     end function
 #endif
@@ -1185,10 +1185,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getInterpNEXT_ND1_QD1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)    , contiguous    :: queryx(:)
-        real(RKC)                                           :: interp(size(queryx, 1, IK))
+        use pm_kind, only: RKG => RK1
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)    , contiguous    :: queryx(:)
+        real(RKG)                                           :: interp(size(queryx, 1, IK))
         type(neinext_type)  , intent(in)                    :: method
     end function
 #endif
@@ -1208,10 +1208,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getInterpPREV_ND1_QD0_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)                    :: queryx
-        real(RKC)                                           :: interp
+        use pm_kind, only: RKG => RK5
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)                    :: queryx
+        real(RKG)                                           :: interp
         type(neiprev_type)  , intent(in)                    :: method
     end function
 #endif
@@ -1221,10 +1221,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getInterpPREV_ND1_QD0_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)                    :: queryx
-        real(RKC)                                           :: interp
+        use pm_kind, only: RKG => RK4
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)                    :: queryx
+        real(RKG)                                           :: interp
         type(neiprev_type)  , intent(in)                    :: method
     end function
 #endif
@@ -1234,10 +1234,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getInterpPREV_ND1_QD0_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)                    :: queryx
-        real(RKC)                                           :: interp
+        use pm_kind, only: RKG => RK3
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)                    :: queryx
+        real(RKG)                                           :: interp
         type(neiprev_type)  , intent(in)                    :: method
     end function
 #endif
@@ -1247,10 +1247,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getInterpPREV_ND1_QD0_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)                    :: queryx
-        real(RKC)                                           :: interp
+        use pm_kind, only: RKG => RK2
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)                    :: queryx
+        real(RKG)                                           :: interp
         type(neiprev_type)  , intent(in)                    :: method
     end function
 #endif
@@ -1260,10 +1260,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getInterpPREV_ND1_QD0_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)                    :: queryx
-        real(RKC)                                           :: interp
+        use pm_kind, only: RKG => RK1
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)                    :: queryx
+        real(RKG)                                           :: interp
         type(neiprev_type)  , intent(in)                    :: method
     end function
 #endif
@@ -1275,10 +1275,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getInterpPREV_ND1_QD1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)    , contiguous    :: queryx(:)
-        real(RKC)                                           :: interp(size(queryx, 1, IK))
+        use pm_kind, only: RKG => RK5
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)    , contiguous    :: queryx(:)
+        real(RKG)                                           :: interp(size(queryx, 1, IK))
         type(neiprev_type)  , intent(in)                    :: method
     end function
 #endif
@@ -1288,10 +1288,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getInterpPREV_ND1_QD1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)    , contiguous    :: queryx(:)
-        real(RKC)                                           :: interp(size(queryx, 1, IK))
+        use pm_kind, only: RKG => RK4
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)    , contiguous    :: queryx(:)
+        real(RKG)                                           :: interp(size(queryx, 1, IK))
         type(neiprev_type)  , intent(in)                    :: method
     end function
 #endif
@@ -1301,10 +1301,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getInterpPREV_ND1_QD1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)    , contiguous    :: queryx(:)
-        real(RKC)                                           :: interp(size(queryx, 1, IK))
+        use pm_kind, only: RKG => RK3
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)    , contiguous    :: queryx(:)
+        real(RKG)                                           :: interp(size(queryx, 1, IK))
         type(neiprev_type)  , intent(in)                    :: method
     end function
 #endif
@@ -1314,10 +1314,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getInterpPREV_ND1_QD1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)    , contiguous    :: queryx(:)
-        real(RKC)                                           :: interp(size(queryx, 1, IK))
+        use pm_kind, only: RKG => RK2
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)    , contiguous    :: queryx(:)
+        real(RKG)                                           :: interp(size(queryx, 1, IK))
         type(neiprev_type)  , intent(in)                    :: method
     end function
 #endif
@@ -1327,10 +1327,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getInterpPREV_ND1_QD1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)    , contiguous    :: queryx(:)
-        real(RKC)                                           :: interp(size(queryx, 1, IK))
+        use pm_kind, only: RKG => RK1
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)    , contiguous    :: queryx(:)
+        real(RKG)                                           :: interp(size(queryx, 1, IK))
         type(neiprev_type)  , intent(in)                    :: method
     end function
 #endif
@@ -1453,10 +1453,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setInterpMNPLD_ND1_QD0_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)                    :: queryx
-        real(RKC)           , intent(out)                   :: interp
+        use pm_kind, only: RKG => RK5
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)                    :: queryx
+        real(RKG)           , intent(out)                   :: interp
         type(monopol_type)  , intent(in)                    :: method
     end subroutine
 #endif
@@ -1466,10 +1466,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setInterpMNPLD_ND1_QD0_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)                    :: queryx
-        real(RKC)           , intent(out)                   :: interp
+        use pm_kind, only: RKG => RK4
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)                    :: queryx
+        real(RKG)           , intent(out)                   :: interp
         type(monopol_type)  , intent(in)                    :: method
     end subroutine
 #endif
@@ -1479,10 +1479,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setInterpMNPLD_ND1_QD0_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)                    :: queryx
-        real(RKC)           , intent(out)                   :: interp
+        use pm_kind, only: RKG => RK3
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)                    :: queryx
+        real(RKG)           , intent(out)                   :: interp
         type(monopol_type)  , intent(in)                    :: method
     end subroutine
 #endif
@@ -1492,10 +1492,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setInterpMNPLD_ND1_QD0_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)                    :: queryx
-        real(RKC)           , intent(out)                   :: interp
+        use pm_kind, only: RKG => RK2
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)                    :: queryx
+        real(RKG)           , intent(out)                   :: interp
         type(monopol_type)  , intent(in)                    :: method
     end subroutine
 #endif
@@ -1505,10 +1505,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setInterpMNPLD_ND1_QD0_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)                    :: queryx
-        real(RKC)           , intent(out)                   :: interp
+        use pm_kind, only: RKG => RK1
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)                    :: queryx
+        real(RKG)           , intent(out)                   :: interp
         type(monopol_type)  , intent(in)                    :: method
     end subroutine
 #endif
@@ -1520,10 +1520,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setInterpMNPLD_ND1_QD1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)    , contiguous    :: queryx(:)
-        real(RKC)           , intent(out)   , contiguous    :: interp(:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)    , contiguous    :: queryx(:)
+        real(RKG)           , intent(out)   , contiguous    :: interp(:)
         type(monopol_type)  , intent(in)                    :: method
     end subroutine
 #endif
@@ -1533,10 +1533,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setInterpMNPLD_ND1_QD1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)    , contiguous    :: queryx(:)
-        real(RKC)           , intent(out)   , contiguous    :: interp(:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)    , contiguous    :: queryx(:)
+        real(RKG)           , intent(out)   , contiguous    :: interp(:)
         type(monopol_type)  , intent(in)                    :: method
     end subroutine
 #endif
@@ -1546,10 +1546,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setInterpMNPLD_ND1_QD1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)    , contiguous    :: queryx(:)
-        real(RKC)           , intent(out)   , contiguous    :: interp(:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)    , contiguous    :: queryx(:)
+        real(RKG)           , intent(out)   , contiguous    :: interp(:)
         type(monopol_type)  , intent(in)                    :: method
     end subroutine
 #endif
@@ -1559,10 +1559,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setInterpMNPLD_ND1_QD1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)    , contiguous    :: queryx(:)
-        real(RKC)           , intent(out)   , contiguous    :: interp(:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)    , contiguous    :: queryx(:)
+        real(RKG)           , intent(out)   , contiguous    :: interp(:)
         type(monopol_type)  , intent(in)                    :: method
     end subroutine
 #endif
@@ -1572,10 +1572,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setInterpMNPLD_ND1_QD1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)    , contiguous    :: queryx(:)
-        real(RKC)           , intent(out)   , contiguous    :: interp(:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)    , contiguous    :: queryx(:)
+        real(RKG)           , intent(out)   , contiguous    :: interp(:)
         type(monopol_type)  , intent(in)                    :: method
     end subroutine
 #endif
@@ -1595,10 +1595,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setInterpMNPLE_ND1_QD0_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)                    :: queryx
-        real(RKC)           , intent(out)                   :: interp, relerr
+        use pm_kind, only: RKG => RK5
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)                    :: queryx
+        real(RKG)           , intent(out)                   :: interp, relerr
         type(monopol_type)  , intent(in)                    :: method
     end subroutine
 #endif
@@ -1608,10 +1608,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setInterpMNPLE_ND1_QD0_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)                    :: queryx
-        real(RKC)           , intent(out)                   :: interp, relerr
+        use pm_kind, only: RKG => RK4
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)                    :: queryx
+        real(RKG)           , intent(out)                   :: interp, relerr
         type(monopol_type)  , intent(in)                    :: method
     end subroutine
 #endif
@@ -1621,10 +1621,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setInterpMNPLE_ND1_QD0_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)                    :: queryx
-        real(RKC)           , intent(out)                   :: interp, relerr
+        use pm_kind, only: RKG => RK3
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)                    :: queryx
+        real(RKG)           , intent(out)                   :: interp, relerr
         type(monopol_type)  , intent(in)                    :: method
     end subroutine
 #endif
@@ -1634,10 +1634,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setInterpMNPLE_ND1_QD0_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)                    :: queryx
-        real(RKC)           , intent(out)                   :: interp, relerr
+        use pm_kind, only: RKG => RK2
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)                    :: queryx
+        real(RKG)           , intent(out)                   :: interp, relerr
         type(monopol_type)  , intent(in)                    :: method
     end subroutine
 #endif
@@ -1647,10 +1647,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setInterpMNPLE_ND1_QD0_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)                    :: queryx
-        real(RKC)           , intent(out)                   :: interp, relerr
+        use pm_kind, only: RKG => RK1
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)                    :: queryx
+        real(RKG)           , intent(out)                   :: interp, relerr
         type(monopol_type)  , intent(in)                    :: method
     end subroutine
 #endif
@@ -1662,10 +1662,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setInterpMNPLE_ND1_QD1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)    , contiguous    :: queryx(:)
-        real(RKC)           , intent(out)   , contiguous    :: interp(:), relerr(:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)    , contiguous    :: queryx(:)
+        real(RKG)           , intent(out)   , contiguous    :: interp(:), relerr(:)
         type(monopol_type)  , intent(in)                    :: method
     end subroutine
 #endif
@@ -1675,10 +1675,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setInterpMNPLE_ND1_QD1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)    , contiguous    :: queryx(:)
-        real(RKC)           , intent(out)   , contiguous    :: interp(:), relerr(:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)    , contiguous    :: queryx(:)
+        real(RKG)           , intent(out)   , contiguous    :: interp(:), relerr(:)
         type(monopol_type)  , intent(in)                    :: method
     end subroutine
 #endif
@@ -1688,10 +1688,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setInterpMNPLE_ND1_QD1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)    , contiguous    :: queryx(:)
-        real(RKC)           , intent(out)   , contiguous    :: interp(:), relerr(:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)    , contiguous    :: queryx(:)
+        real(RKG)           , intent(out)   , contiguous    :: interp(:), relerr(:)
         type(monopol_type)  , intent(in)                    :: method
     end subroutine
 #endif
@@ -1701,10 +1701,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setInterpMNPLE_ND1_QD1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)    , contiguous    :: queryx(:)
-        real(RKC)           , intent(out)   , contiguous    :: interp(:), relerr(:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)    , contiguous    :: queryx(:)
+        real(RKG)           , intent(out)   , contiguous    :: interp(:), relerr(:)
         type(monopol_type)  , intent(in)                    :: method
     end subroutine
 #endif
@@ -1714,10 +1714,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setInterpMNPLE_ND1_QD1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)    , contiguous    :: queryx(:)
-        real(RKC)           , intent(out)   , contiguous    :: interp(:), relerr(:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)    , contiguous    :: queryx(:)
+        real(RKG)           , intent(out)   , contiguous    :: interp(:), relerr(:)
         type(monopol_type)  , intent(in)                    :: method
     end subroutine
 #endif
@@ -1737,10 +1737,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setInterpPWLN_ND1_QD0_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)                    :: queryx
-        real(RKC)           , intent(out)                   :: interp
+        use pm_kind, only: RKG => RK5
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)                    :: queryx
+        real(RKG)           , intent(out)                   :: interp
         type(piwilin_type)  , intent(in)                    :: method
     end subroutine
 #endif
@@ -1750,10 +1750,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setInterpPWLN_ND1_QD0_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)                    :: queryx
-        real(RKC)           , intent(out)                   :: interp
+        use pm_kind, only: RKG => RK4
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)                    :: queryx
+        real(RKG)           , intent(out)                   :: interp
         type(piwilin_type)  , intent(in)                    :: method
     end subroutine
 #endif
@@ -1763,10 +1763,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setInterpPWLN_ND1_QD0_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)                    :: queryx
-        real(RKC)           , intent(out)                   :: interp
+        use pm_kind, only: RKG => RK3
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)                    :: queryx
+        real(RKG)           , intent(out)                   :: interp
         type(piwilin_type)  , intent(in)                    :: method
     end subroutine
 #endif
@@ -1776,10 +1776,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setInterpPWLN_ND1_QD0_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)                    :: queryx
-        real(RKC)           , intent(out)                   :: interp
+        use pm_kind, only: RKG => RK2
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)                    :: queryx
+        real(RKG)           , intent(out)                   :: interp
         type(piwilin_type)  , intent(in)                    :: method
     end subroutine
 #endif
@@ -1789,10 +1789,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setInterpPWLN_ND1_QD0_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)                    :: queryx
-        real(RKC)           , intent(out)                   :: interp
+        use pm_kind, only: RKG => RK1
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)                    :: queryx
+        real(RKG)           , intent(out)                   :: interp
         type(piwilin_type)  , intent(in)                    :: method
     end subroutine
 #endif
@@ -1804,10 +1804,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setInterpPWLN_ND1_QD1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)    , contiguous    :: queryx(:)
-        real(RKC)           , intent(out)   , contiguous    :: interp(:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)    , contiguous    :: queryx(:)
+        real(RKG)           , intent(out)   , contiguous    :: interp(:)
         type(piwilin_type)  , intent(in)                    :: method
     end subroutine
 #endif
@@ -1817,10 +1817,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setInterpPWLN_ND1_QD1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)    , contiguous    :: queryx(:)
-        real(RKC)           , intent(out)   , contiguous    :: interp(:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)    , contiguous    :: queryx(:)
+        real(RKG)           , intent(out)   , contiguous    :: interp(:)
         type(piwilin_type)  , intent(in)                    :: method
     end subroutine
 #endif
@@ -1830,10 +1830,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setInterpPWLN_ND1_QD1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)    , contiguous    :: queryx(:)
-        real(RKC)           , intent(out)   , contiguous    :: interp(:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)    , contiguous    :: queryx(:)
+        real(RKG)           , intent(out)   , contiguous    :: interp(:)
         type(piwilin_type)  , intent(in)                    :: method
     end subroutine
 #endif
@@ -1843,10 +1843,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setInterpPWLN_ND1_QD1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)    , contiguous    :: queryx(:)
-        real(RKC)           , intent(out)   , contiguous    :: interp(:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)    , contiguous    :: queryx(:)
+        real(RKG)           , intent(out)   , contiguous    :: interp(:)
         type(piwilin_type)  , intent(in)                    :: method
     end subroutine
 #endif
@@ -1856,10 +1856,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setInterpPWLN_ND1_QD1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)    , contiguous    :: queryx(:)
-        real(RKC)           , intent(out)   , contiguous    :: interp(:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)    , contiguous    :: queryx(:)
+        real(RKG)           , intent(out)   , contiguous    :: interp(:)
         type(piwilin_type)  , intent(in)                    :: method
     end subroutine
 #endif
@@ -1879,10 +1879,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setInterpMEAN_ND1_QD0_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)                    :: queryx
-        real(RKC)           , intent(out)                   :: interp
+        use pm_kind, only: RKG => RK5
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)                    :: queryx
+        real(RKG)           , intent(out)                   :: interp
         type(neimean_type)  , intent(in)                    :: method
     end subroutine
 #endif
@@ -1892,10 +1892,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setInterpMEAN_ND1_QD0_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)                    :: queryx
-        real(RKC)           , intent(out)                   :: interp
+        use pm_kind, only: RKG => RK4
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)                    :: queryx
+        real(RKG)           , intent(out)                   :: interp
         type(neimean_type)  , intent(in)                    :: method
     end subroutine
 #endif
@@ -1905,10 +1905,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setInterpMEAN_ND1_QD0_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)                    :: queryx
-        real(RKC)           , intent(out)                   :: interp
+        use pm_kind, only: RKG => RK3
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)                    :: queryx
+        real(RKG)           , intent(out)                   :: interp
         type(neimean_type)  , intent(in)                    :: method
     end subroutine
 #endif
@@ -1918,10 +1918,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setInterpMEAN_ND1_QD0_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)                    :: queryx
-        real(RKC)           , intent(out)                   :: interp
+        use pm_kind, only: RKG => RK2
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)                    :: queryx
+        real(RKG)           , intent(out)                   :: interp
         type(neimean_type)  , intent(in)                    :: method
     end subroutine
 #endif
@@ -1931,10 +1931,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setInterpMEAN_ND1_QD0_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)                    :: queryx
-        real(RKC)           , intent(out)                   :: interp
+        use pm_kind, only: RKG => RK1
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)                    :: queryx
+        real(RKG)           , intent(out)                   :: interp
         type(neimean_type)  , intent(in)                    :: method
     end subroutine
 #endif
@@ -1946,10 +1946,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setInterpMEAN_ND1_QD1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)    , contiguous    :: queryx(:)
-        real(RKC)           , intent(out)   , contiguous    :: interp(:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)    , contiguous    :: queryx(:)
+        real(RKG)           , intent(out)   , contiguous    :: interp(:)
         type(neimean_type)  , intent(in)                    :: method
     end subroutine
 #endif
@@ -1959,10 +1959,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setInterpMEAN_ND1_QD1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)    , contiguous    :: queryx(:)
-        real(RKC)           , intent(out)   , contiguous    :: interp(:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)    , contiguous    :: queryx(:)
+        real(RKG)           , intent(out)   , contiguous    :: interp(:)
         type(neimean_type)  , intent(in)                    :: method
     end subroutine
 #endif
@@ -1972,10 +1972,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setInterpMEAN_ND1_QD1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)    , contiguous    :: queryx(:)
-        real(RKC)           , intent(out)   , contiguous    :: interp(:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)    , contiguous    :: queryx(:)
+        real(RKG)           , intent(out)   , contiguous    :: interp(:)
         type(neimean_type)  , intent(in)                    :: method
     end subroutine
 #endif
@@ -1985,10 +1985,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setInterpMEAN_ND1_QD1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)    , contiguous    :: queryx(:)
-        real(RKC)           , intent(out)   , contiguous    :: interp(:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)    , contiguous    :: queryx(:)
+        real(RKG)           , intent(out)   , contiguous    :: interp(:)
         type(neimean_type)  , intent(in)                    :: method
     end subroutine
 #endif
@@ -1998,10 +1998,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setInterpMEAN_ND1_QD1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)    , contiguous    :: queryx(:)
-        real(RKC)           , intent(out)   , contiguous    :: interp(:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)    , contiguous    :: queryx(:)
+        real(RKG)           , intent(out)   , contiguous    :: interp(:)
         type(neimean_type)  , intent(in)                    :: method
     end subroutine
 #endif
@@ -2021,10 +2021,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setInterpNEAR_ND1_QD0_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)                    :: queryx
-        real(RKC)           , intent(out)                   :: interp
+        use pm_kind, only: RKG => RK5
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)                    :: queryx
+        real(RKG)           , intent(out)                   :: interp
         type(neinear_type)  , intent(in)                    :: method
     end subroutine
 #endif
@@ -2034,10 +2034,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setInterpNEAR_ND1_QD0_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)                    :: queryx
-        real(RKC)           , intent(out)                   :: interp
+        use pm_kind, only: RKG => RK4
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)                    :: queryx
+        real(RKG)           , intent(out)                   :: interp
         type(neinear_type)  , intent(in)                    :: method
     end subroutine
 #endif
@@ -2047,10 +2047,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setInterpNEAR_ND1_QD0_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)                    :: queryx
-        real(RKC)           , intent(out)                   :: interp
+        use pm_kind, only: RKG => RK3
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)                    :: queryx
+        real(RKG)           , intent(out)                   :: interp
         type(neinear_type)  , intent(in)                    :: method
     end subroutine
 #endif
@@ -2060,10 +2060,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setInterpNEAR_ND1_QD0_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)                    :: queryx
-        real(RKC)           , intent(out)                   :: interp
+        use pm_kind, only: RKG => RK2
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)                    :: queryx
+        real(RKG)           , intent(out)                   :: interp
         type(neinear_type)  , intent(in)                    :: method
     end subroutine
 #endif
@@ -2073,10 +2073,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setInterpNEAR_ND1_QD0_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)                    :: queryx
-        real(RKC)           , intent(out)                   :: interp
+        use pm_kind, only: RKG => RK1
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)                    :: queryx
+        real(RKG)           , intent(out)                   :: interp
         type(neinear_type)  , intent(in)                    :: method
     end subroutine
 #endif
@@ -2088,10 +2088,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setInterpNEAR_ND1_QD1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)    , contiguous    :: queryx(:)
-        real(RKC)           , intent(out)   , contiguous    :: interp(:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)    , contiguous    :: queryx(:)
+        real(RKG)           , intent(out)   , contiguous    :: interp(:)
         type(neinear_type)  , intent(in)                    :: method
     end subroutine
 #endif
@@ -2101,10 +2101,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setInterpNEAR_ND1_QD1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)    , contiguous    :: queryx(:)
-        real(RKC)           , intent(out)   , contiguous    :: interp(:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)    , contiguous    :: queryx(:)
+        real(RKG)           , intent(out)   , contiguous    :: interp(:)
         type(neinear_type)  , intent(in)                    :: method
     end subroutine
 #endif
@@ -2114,10 +2114,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setInterpNEAR_ND1_QD1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)    , contiguous    :: queryx(:)
-        real(RKC)           , intent(out)   , contiguous    :: interp(:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)    , contiguous    :: queryx(:)
+        real(RKG)           , intent(out)   , contiguous    :: interp(:)
         type(neinear_type)  , intent(in)                    :: method
     end subroutine
 #endif
@@ -2127,10 +2127,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setInterpNEAR_ND1_QD1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)    , contiguous    :: queryx(:)
-        real(RKC)           , intent(out)   , contiguous    :: interp(:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)    , contiguous    :: queryx(:)
+        real(RKG)           , intent(out)   , contiguous    :: interp(:)
         type(neinear_type)  , intent(in)                    :: method
     end subroutine
 #endif
@@ -2140,10 +2140,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setInterpNEAR_ND1_QD1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)    , contiguous    :: queryx(:)
-        real(RKC)           , intent(out)   , contiguous    :: interp(:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)    , contiguous    :: queryx(:)
+        real(RKG)           , intent(out)   , contiguous    :: interp(:)
         type(neinear_type)  , intent(in)                    :: method
     end subroutine
 #endif
@@ -2163,10 +2163,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setInterpNEXT_ND1_QD0_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)                    :: queryx
-        real(RKC)           , intent(out)                   :: interp
+        use pm_kind, only: RKG => RK5
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)                    :: queryx
+        real(RKG)           , intent(out)                   :: interp
         type(neinext_type)  , intent(in)                    :: method
     end subroutine
 #endif
@@ -2176,10 +2176,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setInterpNEXT_ND1_QD0_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)                    :: queryx
-        real(RKC)           , intent(out)                   :: interp
+        use pm_kind, only: RKG => RK4
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)                    :: queryx
+        real(RKG)           , intent(out)                   :: interp
         type(neinext_type)  , intent(in)                    :: method
     end subroutine
 #endif
@@ -2189,10 +2189,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setInterpNEXT_ND1_QD0_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)                    :: queryx
-        real(RKC)           , intent(out)                   :: interp
+        use pm_kind, only: RKG => RK3
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)                    :: queryx
+        real(RKG)           , intent(out)                   :: interp
         type(neinext_type)  , intent(in)                    :: method
     end subroutine
 #endif
@@ -2202,10 +2202,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setInterpNEXT_ND1_QD0_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)                    :: queryx
-        real(RKC)           , intent(out)                   :: interp
+        use pm_kind, only: RKG => RK2
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)                    :: queryx
+        real(RKG)           , intent(out)                   :: interp
         type(neinext_type)  , intent(in)                    :: method
     end subroutine
 #endif
@@ -2215,10 +2215,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setInterpNEXT_ND1_QD0_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)                    :: queryx
-        real(RKC)           , intent(out)                   :: interp
+        use pm_kind, only: RKG => RK1
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)                    :: queryx
+        real(RKG)           , intent(out)                   :: interp
         type(neinext_type)  , intent(in)                    :: method
     end subroutine
 #endif
@@ -2230,10 +2230,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setInterpNEXT_ND1_QD1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)    , contiguous    :: queryx(:)
-        real(RKC)           , intent(out)   , contiguous    :: interp(:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)    , contiguous    :: queryx(:)
+        real(RKG)           , intent(out)   , contiguous    :: interp(:)
         type(neinext_type)  , intent(in)                    :: method
     end subroutine
 #endif
@@ -2243,10 +2243,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setInterpNEXT_ND1_QD1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)    , contiguous    :: queryx(:)
-        real(RKC)           , intent(out)   , contiguous    :: interp(:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)    , contiguous    :: queryx(:)
+        real(RKG)           , intent(out)   , contiguous    :: interp(:)
         type(neinext_type)  , intent(in)                    :: method
     end subroutine
 #endif
@@ -2256,10 +2256,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setInterpNEXT_ND1_QD1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)    , contiguous    :: queryx(:)
-        real(RKC)           , intent(out)   , contiguous    :: interp(:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)    , contiguous    :: queryx(:)
+        real(RKG)           , intent(out)   , contiguous    :: interp(:)
         type(neinext_type)  , intent(in)                    :: method
     end subroutine
 #endif
@@ -2269,10 +2269,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setInterpNEXT_ND1_QD1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)    , contiguous    :: queryx(:)
-        real(RKC)           , intent(out)   , contiguous    :: interp(:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)    , contiguous    :: queryx(:)
+        real(RKG)           , intent(out)   , contiguous    :: interp(:)
         type(neinext_type)  , intent(in)                    :: method
     end subroutine
 #endif
@@ -2282,10 +2282,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setInterpNEXT_ND1_QD1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)    , contiguous    :: queryx(:)
-        real(RKC)           , intent(out)   , contiguous    :: interp(:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)    , contiguous    :: queryx(:)
+        real(RKG)           , intent(out)   , contiguous    :: interp(:)
         type(neinext_type)  , intent(in)                    :: method
     end subroutine
 #endif
@@ -2305,10 +2305,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setInterpPREV_ND1_QD0_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)                    :: queryx
-        real(RKC)           , intent(out)                   :: interp
+        use pm_kind, only: RKG => RK5
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)                    :: queryx
+        real(RKG)           , intent(out)                   :: interp
         type(neiprev_type)  , intent(in)                    :: method
     end subroutine
 #endif
@@ -2318,10 +2318,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setInterpPREV_ND1_QD0_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)                    :: queryx
-        real(RKC)           , intent(out)                   :: interp
+        use pm_kind, only: RKG => RK4
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)                    :: queryx
+        real(RKG)           , intent(out)                   :: interp
         type(neiprev_type)  , intent(in)                    :: method
     end subroutine
 #endif
@@ -2331,10 +2331,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setInterpPREV_ND1_QD0_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)                    :: queryx
-        real(RKC)           , intent(out)                   :: interp
+        use pm_kind, only: RKG => RK3
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)                    :: queryx
+        real(RKG)           , intent(out)                   :: interp
         type(neiprev_type)  , intent(in)                    :: method
     end subroutine
 #endif
@@ -2344,10 +2344,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setInterpPREV_ND1_QD0_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)                    :: queryx
-        real(RKC)           , intent(out)                   :: interp
+        use pm_kind, only: RKG => RK2
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)                    :: queryx
+        real(RKG)           , intent(out)                   :: interp
         type(neiprev_type)  , intent(in)                    :: method
     end subroutine
 #endif
@@ -2357,10 +2357,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setInterpPREV_ND1_QD0_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)                    :: queryx
-        real(RKC)           , intent(out)                   :: interp
+        use pm_kind, only: RKG => RK1
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)                    :: queryx
+        real(RKG)           , intent(out)                   :: interp
         type(neiprev_type)  , intent(in)                    :: method
     end subroutine
 #endif
@@ -2372,10 +2372,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setInterpPREV_ND1_QD1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)    , contiguous    :: queryx(:)
-        real(RKC)           , intent(out)   , contiguous    :: interp(:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)    , contiguous    :: queryx(:)
+        real(RKG)           , intent(out)   , contiguous    :: interp(:)
         type(neiprev_type)  , intent(in)                    :: method
     end subroutine
 #endif
@@ -2385,10 +2385,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setInterpPREV_ND1_QD1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)    , contiguous    :: queryx(:)
-        real(RKC)           , intent(out)   , contiguous    :: interp(:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)    , contiguous    :: queryx(:)
+        real(RKG)           , intent(out)   , contiguous    :: interp(:)
         type(neiprev_type)  , intent(in)                    :: method
     end subroutine
 #endif
@@ -2398,10 +2398,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setInterpPREV_ND1_QD1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)    , contiguous    :: queryx(:)
-        real(RKC)           , intent(out)   , contiguous    :: interp(:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)    , contiguous    :: queryx(:)
+        real(RKG)           , intent(out)   , contiguous    :: interp(:)
         type(neiprev_type)  , intent(in)                    :: method
     end subroutine
 #endif
@@ -2411,10 +2411,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setInterpPREV_ND1_QD1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)    , contiguous    :: queryx(:)
-        real(RKC)           , intent(out)   , contiguous    :: interp(:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)    , contiguous    :: queryx(:)
+        real(RKG)           , intent(out)   , contiguous    :: interp(:)
         type(neiprev_type)  , intent(in)                    :: method
     end subroutine
 #endif
@@ -2424,10 +2424,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setInterpPREV_ND1_QD1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)    , contiguous    :: queryx(:)
-        real(RKC)           , intent(out)   , contiguous    :: interp(:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)    , contiguous    :: queryx(:)
+        real(RKG)           , intent(out)   , contiguous    :: interp(:)
         type(neiprev_type)  , intent(in)                    :: method
     end subroutine
 #endif
@@ -2546,10 +2546,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getExtrapMNPLD_ND1_QD0_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)                    :: queryx
-        real(RKC)                                           :: extrap
+        use pm_kind, only: RKG => RK5
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)                    :: queryx
+        real(RKG)                                           :: extrap
         type(monopol_type)  , intent(in)                    :: method
     end function
 #endif
@@ -2559,10 +2559,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getExtrapMNPLD_ND1_QD0_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)                    :: queryx
-        real(RKC)                                           :: extrap
+        use pm_kind, only: RKG => RK4
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)                    :: queryx
+        real(RKG)                                           :: extrap
         type(monopol_type)  , intent(in)                    :: method
     end function
 #endif
@@ -2572,10 +2572,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getExtrapMNPLD_ND1_QD0_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)                    :: queryx
-        real(RKC)                                           :: extrap
+        use pm_kind, only: RKG => RK3
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)                    :: queryx
+        real(RKG)                                           :: extrap
         type(monopol_type)  , intent(in)                    :: method
     end function
 #endif
@@ -2585,10 +2585,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getExtrapMNPLD_ND1_QD0_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)                    :: queryx
-        real(RKC)                                           :: extrap
+        use pm_kind, only: RKG => RK2
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)                    :: queryx
+        real(RKG)                                           :: extrap
         type(monopol_type)  , intent(in)                    :: method
     end function
 #endif
@@ -2598,10 +2598,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getExtrapMNPLD_ND1_QD0_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)                    :: queryx
-        real(RKC)                                           :: extrap
+        use pm_kind, only: RKG => RK1
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)                    :: queryx
+        real(RKG)                                           :: extrap
         type(monopol_type)  , intent(in)                    :: method
     end function
 #endif
@@ -2613,10 +2613,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getExtrapMNPLD_ND1_QD1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)    , contiguous    :: queryx(:)
-        real(RKC)                                           :: extrap(size(queryx, 1, IK))
+        use pm_kind, only: RKG => RK5
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)    , contiguous    :: queryx(:)
+        real(RKG)                                           :: extrap(size(queryx, 1, IK))
         type(monopol_type)  , intent(in)                    :: method
     end function
 #endif
@@ -2626,10 +2626,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getExtrapMNPLD_ND1_QD1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)    , contiguous    :: queryx(:)
-        real(RKC)                                           :: extrap(size(queryx, 1, IK))
+        use pm_kind, only: RKG => RK4
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)    , contiguous    :: queryx(:)
+        real(RKG)                                           :: extrap(size(queryx, 1, IK))
         type(monopol_type)  , intent(in)                    :: method
     end function
 #endif
@@ -2639,10 +2639,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getExtrapMNPLD_ND1_QD1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)    , contiguous    :: queryx(:)
-        real(RKC)                                           :: extrap(size(queryx, 1, IK))
+        use pm_kind, only: RKG => RK3
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)    , contiguous    :: queryx(:)
+        real(RKG)                                           :: extrap(size(queryx, 1, IK))
         type(monopol_type)  , intent(in)                    :: method
     end function
 #endif
@@ -2652,10 +2652,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getExtrapMNPLD_ND1_QD1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)    , contiguous    :: queryx(:)
-        real(RKC)                                           :: extrap(size(queryx, 1, IK))
+        use pm_kind, only: RKG => RK2
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)    , contiguous    :: queryx(:)
+        real(RKG)                                           :: extrap(size(queryx, 1, IK))
         type(monopol_type)  , intent(in)                    :: method
     end function
 #endif
@@ -2665,10 +2665,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getExtrapMNPLD_ND1_QD1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)    , contiguous    :: queryx(:)
-        real(RKC)                                           :: extrap(size(queryx, 1, IK))
+        use pm_kind, only: RKG => RK1
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)    , contiguous    :: queryx(:)
+        real(RKG)                                           :: extrap(size(queryx, 1, IK))
         type(monopol_type)  , intent(in)                    :: method
     end function
 #endif
@@ -2688,10 +2688,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getExtrapPWLN_ND1_QD0_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)                    :: queryx
-        real(RKC)                                           :: extrap
+        use pm_kind, only: RKG => RK5
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)                    :: queryx
+        real(RKG)                                           :: extrap
         type(piwilin_type)  , intent(in)                    :: method
     end function
 #endif
@@ -2701,10 +2701,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getExtrapPWLN_ND1_QD0_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)                    :: queryx
-        real(RKC)                                           :: extrap
+        use pm_kind, only: RKG => RK4
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)                    :: queryx
+        real(RKG)                                           :: extrap
         type(piwilin_type)  , intent(in)                    :: method
     end function
 #endif
@@ -2714,10 +2714,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getExtrapPWLN_ND1_QD0_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)                    :: queryx
-        real(RKC)                                           :: extrap
+        use pm_kind, only: RKG => RK3
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)                    :: queryx
+        real(RKG)                                           :: extrap
         type(piwilin_type)  , intent(in)                    :: method
     end function
 #endif
@@ -2727,10 +2727,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getExtrapPWLN_ND1_QD0_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)                    :: queryx
-        real(RKC)                                           :: extrap
+        use pm_kind, only: RKG => RK2
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)                    :: queryx
+        real(RKG)                                           :: extrap
         type(piwilin_type)  , intent(in)                    :: method
     end function
 #endif
@@ -2740,10 +2740,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getExtrapPWLN_ND1_QD0_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)                    :: queryx
-        real(RKC)                                           :: extrap
+        use pm_kind, only: RKG => RK1
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)                    :: queryx
+        real(RKG)                                           :: extrap
         type(piwilin_type)  , intent(in)                    :: method
     end function
 #endif
@@ -2755,10 +2755,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getExtrapPWLN_ND1_QD1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)    , contiguous    :: queryx(:)
-        real(RKC)                                           :: extrap(size(queryx, 1, IK))
+        use pm_kind, only: RKG => RK5
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)    , contiguous    :: queryx(:)
+        real(RKG)                                           :: extrap(size(queryx, 1, IK))
         type(piwilin_type)  , intent(in)                    :: method
     end function
 #endif
@@ -2768,10 +2768,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getExtrapPWLN_ND1_QD1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)    , contiguous    :: queryx(:)
-        real(RKC)                                           :: extrap(size(queryx, 1, IK))
+        use pm_kind, only: RKG => RK4
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)    , contiguous    :: queryx(:)
+        real(RKG)                                           :: extrap(size(queryx, 1, IK))
         type(piwilin_type)  , intent(in)                    :: method
     end function
 #endif
@@ -2781,10 +2781,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getExtrapPWLN_ND1_QD1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)    , contiguous    :: queryx(:)
-        real(RKC)                                           :: extrap(size(queryx, 1, IK))
+        use pm_kind, only: RKG => RK3
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)    , contiguous    :: queryx(:)
+        real(RKG)                                           :: extrap(size(queryx, 1, IK))
         type(piwilin_type)  , intent(in)                    :: method
     end function
 #endif
@@ -2794,10 +2794,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getExtrapPWLN_ND1_QD1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)    , contiguous    :: queryx(:)
-        real(RKC)                                           :: extrap(size(queryx, 1, IK))
+        use pm_kind, only: RKG => RK2
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)    , contiguous    :: queryx(:)
+        real(RKG)                                           :: extrap(size(queryx, 1, IK))
         type(piwilin_type)  , intent(in)                    :: method
     end function
 #endif
@@ -2807,10 +2807,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getExtrapPWLN_ND1_QD1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)    , contiguous    :: queryx(:)
-        real(RKC)                                           :: extrap(size(queryx, 1, IK))
+        use pm_kind, only: RKG => RK1
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)    , contiguous    :: queryx(:)
+        real(RKG)                                           :: extrap(size(queryx, 1, IK))
         type(piwilin_type)  , intent(in)                    :: method
     end function
 #endif
@@ -2830,10 +2830,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getExtrapMEAN_ND1_QD0_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)                    :: queryx
-        real(RKC)                                           :: extrap
+        use pm_kind, only: RKG => RK5
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)                    :: queryx
+        real(RKG)                                           :: extrap
         type(neimean_type)  , intent(in)                    :: method
     end function
 #endif
@@ -2843,10 +2843,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getExtrapMEAN_ND1_QD0_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)                    :: queryx
-        real(RKC)                                           :: extrap
+        use pm_kind, only: RKG => RK4
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)                    :: queryx
+        real(RKG)                                           :: extrap
         type(neimean_type)  , intent(in)                    :: method
     end function
 #endif
@@ -2856,10 +2856,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getExtrapMEAN_ND1_QD0_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)                    :: queryx
-        real(RKC)                                           :: extrap
+        use pm_kind, only: RKG => RK3
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)                    :: queryx
+        real(RKG)                                           :: extrap
         type(neimean_type)  , intent(in)                    :: method
     end function
 #endif
@@ -2869,10 +2869,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getExtrapMEAN_ND1_QD0_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)                    :: queryx
-        real(RKC)                                           :: extrap
+        use pm_kind, only: RKG => RK2
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)                    :: queryx
+        real(RKG)                                           :: extrap
         type(neimean_type)  , intent(in)                    :: method
     end function
 #endif
@@ -2882,10 +2882,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getExtrapMEAN_ND1_QD0_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)                    :: queryx
-        real(RKC)                                           :: extrap
+        use pm_kind, only: RKG => RK1
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)                    :: queryx
+        real(RKG)                                           :: extrap
         type(neimean_type)  , intent(in)                    :: method
     end function
 #endif
@@ -2897,10 +2897,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getExtrapMEAN_ND1_QD1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)    , contiguous    :: queryx(:)
-        real(RKC)                                           :: extrap(size(queryx, 1, IK))
+        use pm_kind, only: RKG => RK5
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)    , contiguous    :: queryx(:)
+        real(RKG)                                           :: extrap(size(queryx, 1, IK))
         type(neimean_type)  , intent(in)                    :: method
     end function
 #endif
@@ -2910,10 +2910,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getExtrapMEAN_ND1_QD1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)    , contiguous    :: queryx(:)
-        real(RKC)                                           :: extrap(size(queryx, 1, IK))
+        use pm_kind, only: RKG => RK4
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)    , contiguous    :: queryx(:)
+        real(RKG)                                           :: extrap(size(queryx, 1, IK))
         type(neimean_type)  , intent(in)                    :: method
     end function
 #endif
@@ -2923,10 +2923,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getExtrapMEAN_ND1_QD1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)    , contiguous    :: queryx(:)
-        real(RKC)                                           :: extrap(size(queryx, 1, IK))
+        use pm_kind, only: RKG => RK3
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)    , contiguous    :: queryx(:)
+        real(RKG)                                           :: extrap(size(queryx, 1, IK))
         type(neimean_type)  , intent(in)                    :: method
     end function
 #endif
@@ -2936,10 +2936,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getExtrapMEAN_ND1_QD1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)    , contiguous    :: queryx(:)
-        real(RKC)                                           :: extrap(size(queryx, 1, IK))
+        use pm_kind, only: RKG => RK2
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)    , contiguous    :: queryx(:)
+        real(RKG)                                           :: extrap(size(queryx, 1, IK))
         type(neimean_type)  , intent(in)                    :: method
     end function
 #endif
@@ -2949,10 +2949,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getExtrapMEAN_ND1_QD1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)    , contiguous    :: queryx(:)
-        real(RKC)                                           :: extrap(size(queryx, 1, IK))
+        use pm_kind, only: RKG => RK1
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)    , contiguous    :: queryx(:)
+        real(RKG)                                           :: extrap(size(queryx, 1, IK))
         type(neimean_type)  , intent(in)                    :: method
     end function
 #endif
@@ -2972,10 +2972,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getExtrapNEAR_ND1_QD0_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)                    :: queryx
-        real(RKC)                                           :: extrap
+        use pm_kind, only: RKG => RK5
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)                    :: queryx
+        real(RKG)                                           :: extrap
         type(neinear_type)  , intent(in)                    :: method
     end function
 #endif
@@ -2985,10 +2985,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getExtrapNEAR_ND1_QD0_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)                    :: queryx
-        real(RKC)                                           :: extrap
+        use pm_kind, only: RKG => RK4
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)                    :: queryx
+        real(RKG)                                           :: extrap
         type(neinear_type)  , intent(in)                    :: method
     end function
 #endif
@@ -2998,10 +2998,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getExtrapNEAR_ND1_QD0_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)                    :: queryx
-        real(RKC)                                           :: extrap
+        use pm_kind, only: RKG => RK3
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)                    :: queryx
+        real(RKG)                                           :: extrap
         type(neinear_type)  , intent(in)                    :: method
     end function
 #endif
@@ -3011,10 +3011,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getExtrapNEAR_ND1_QD0_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)                    :: queryx
-        real(RKC)                                           :: extrap
+        use pm_kind, only: RKG => RK2
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)                    :: queryx
+        real(RKG)                                           :: extrap
         type(neinear_type)  , intent(in)                    :: method
     end function
 #endif
@@ -3024,10 +3024,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getExtrapNEAR_ND1_QD0_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)                    :: queryx
-        real(RKC)                                           :: extrap
+        use pm_kind, only: RKG => RK1
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)                    :: queryx
+        real(RKG)                                           :: extrap
         type(neinear_type)  , intent(in)                    :: method
     end function
 #endif
@@ -3039,10 +3039,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getExtrapNEAR_ND1_QD1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)    , contiguous    :: queryx(:)
-        real(RKC)                                           :: extrap(size(queryx, 1, IK))
+        use pm_kind, only: RKG => RK5
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)    , contiguous    :: queryx(:)
+        real(RKG)                                           :: extrap(size(queryx, 1, IK))
         type(neinear_type)  , intent(in)                    :: method
     end function
 #endif
@@ -3052,10 +3052,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getExtrapNEAR_ND1_QD1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)    , contiguous    :: queryx(:)
-        real(RKC)                                           :: extrap(size(queryx, 1, IK))
+        use pm_kind, only: RKG => RK4
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)    , contiguous    :: queryx(:)
+        real(RKG)                                           :: extrap(size(queryx, 1, IK))
         type(neinear_type)  , intent(in)                    :: method
     end function
 #endif
@@ -3065,10 +3065,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getExtrapNEAR_ND1_QD1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)    , contiguous    :: queryx(:)
-        real(RKC)                                           :: extrap(size(queryx, 1, IK))
+        use pm_kind, only: RKG => RK3
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)    , contiguous    :: queryx(:)
+        real(RKG)                                           :: extrap(size(queryx, 1, IK))
         type(neinear_type)  , intent(in)                    :: method
     end function
 #endif
@@ -3078,10 +3078,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getExtrapNEAR_ND1_QD1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)    , contiguous    :: queryx(:)
-        real(RKC)                                           :: extrap(size(queryx, 1, IK))
+        use pm_kind, only: RKG => RK2
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)    , contiguous    :: queryx(:)
+        real(RKG)                                           :: extrap(size(queryx, 1, IK))
         type(neinear_type)  , intent(in)                    :: method
     end function
 #endif
@@ -3091,10 +3091,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getExtrapNEAR_ND1_QD1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)    , contiguous    :: queryx(:)
-        real(RKC)                                           :: extrap(size(queryx, 1, IK))
+        use pm_kind, only: RKG => RK1
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)    , contiguous    :: queryx(:)
+        real(RKG)                                           :: extrap(size(queryx, 1, IK))
         type(neinear_type)  , intent(in)                    :: method
     end function
 #endif
@@ -3114,10 +3114,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getExtrapNEXT_ND1_QD0_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)                    :: queryx
-        real(RKC)                                           :: extrap
+        use pm_kind, only: RKG => RK5
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)                    :: queryx
+        real(RKG)                                           :: extrap
         type(neinext_type)  , intent(in)                    :: method
     end function
 #endif
@@ -3127,10 +3127,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getExtrapNEXT_ND1_QD0_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)                    :: queryx
-        real(RKC)                                           :: extrap
+        use pm_kind, only: RKG => RK4
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)                    :: queryx
+        real(RKG)                                           :: extrap
         type(neinext_type)  , intent(in)                    :: method
     end function
 #endif
@@ -3140,10 +3140,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getExtrapNEXT_ND1_QD0_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)                    :: queryx
-        real(RKC)                                           :: extrap
+        use pm_kind, only: RKG => RK3
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)                    :: queryx
+        real(RKG)                                           :: extrap
         type(neinext_type)  , intent(in)                    :: method
     end function
 #endif
@@ -3153,10 +3153,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getExtrapNEXT_ND1_QD0_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)                    :: queryx
-        real(RKC)                                           :: extrap
+        use pm_kind, only: RKG => RK2
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)                    :: queryx
+        real(RKG)                                           :: extrap
         type(neinext_type)  , intent(in)                    :: method
     end function
 #endif
@@ -3166,10 +3166,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getExtrapNEXT_ND1_QD0_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)                    :: queryx
-        real(RKC)                                           :: extrap
+        use pm_kind, only: RKG => RK1
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)                    :: queryx
+        real(RKG)                                           :: extrap
         type(neinext_type)  , intent(in)                    :: method
     end function
 #endif
@@ -3181,10 +3181,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getExtrapNEXT_ND1_QD1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)    , contiguous    :: queryx(:)
-        real(RKC)                                           :: extrap(size(queryx, 1, IK))
+        use pm_kind, only: RKG => RK5
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)    , contiguous    :: queryx(:)
+        real(RKG)                                           :: extrap(size(queryx, 1, IK))
         type(neinext_type)  , intent(in)                    :: method
     end function
 #endif
@@ -3194,10 +3194,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getExtrapNEXT_ND1_QD1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)    , contiguous    :: queryx(:)
-        real(RKC)                                           :: extrap(size(queryx, 1, IK))
+        use pm_kind, only: RKG => RK4
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)    , contiguous    :: queryx(:)
+        real(RKG)                                           :: extrap(size(queryx, 1, IK))
         type(neinext_type)  , intent(in)                    :: method
     end function
 #endif
@@ -3207,10 +3207,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getExtrapNEXT_ND1_QD1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)    , contiguous    :: queryx(:)
-        real(RKC)                                           :: extrap(size(queryx, 1, IK))
+        use pm_kind, only: RKG => RK3
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)    , contiguous    :: queryx(:)
+        real(RKG)                                           :: extrap(size(queryx, 1, IK))
         type(neinext_type)  , intent(in)                    :: method
     end function
 #endif
@@ -3220,10 +3220,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getExtrapNEXT_ND1_QD1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)    , contiguous    :: queryx(:)
-        real(RKC)                                           :: extrap(size(queryx, 1, IK))
+        use pm_kind, only: RKG => RK2
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)    , contiguous    :: queryx(:)
+        real(RKG)                                           :: extrap(size(queryx, 1, IK))
         type(neinext_type)  , intent(in)                    :: method
     end function
 #endif
@@ -3233,10 +3233,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getExtrapNEXT_ND1_QD1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)    , contiguous    :: queryx(:)
-        real(RKC)                                           :: extrap(size(queryx, 1, IK))
+        use pm_kind, only: RKG => RK1
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)    , contiguous    :: queryx(:)
+        real(RKG)                                           :: extrap(size(queryx, 1, IK))
         type(neinext_type)  , intent(in)                    :: method
     end function
 #endif
@@ -3256,10 +3256,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getExtrapPREV_ND1_QD0_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)                    :: queryx
-        real(RKC)                                           :: extrap
+        use pm_kind, only: RKG => RK5
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)                    :: queryx
+        real(RKG)                                           :: extrap
         type(neiprev_type)  , intent(in)                    :: method
     end function
 #endif
@@ -3269,10 +3269,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getExtrapPREV_ND1_QD0_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)                    :: queryx
-        real(RKC)                                           :: extrap
+        use pm_kind, only: RKG => RK4
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)                    :: queryx
+        real(RKG)                                           :: extrap
         type(neiprev_type)  , intent(in)                    :: method
     end function
 #endif
@@ -3282,10 +3282,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getExtrapPREV_ND1_QD0_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)                    :: queryx
-        real(RKC)                                           :: extrap
+        use pm_kind, only: RKG => RK3
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)                    :: queryx
+        real(RKG)                                           :: extrap
         type(neiprev_type)  , intent(in)                    :: method
     end function
 #endif
@@ -3295,10 +3295,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getExtrapPREV_ND1_QD0_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)                    :: queryx
-        real(RKC)                                           :: extrap
+        use pm_kind, only: RKG => RK2
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)                    :: queryx
+        real(RKG)                                           :: extrap
         type(neiprev_type)  , intent(in)                    :: method
     end function
 #endif
@@ -3308,10 +3308,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getExtrapPREV_ND1_QD0_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)                    :: queryx
-        real(RKC)                                           :: extrap
+        use pm_kind, only: RKG => RK1
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)                    :: queryx
+        real(RKG)                                           :: extrap
         type(neiprev_type)  , intent(in)                    :: method
     end function
 #endif
@@ -3323,10 +3323,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getExtrapPREV_ND1_QD1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)    , contiguous    :: queryx(:)
-        real(RKC)                                           :: extrap(size(queryx, 1, IK))
+        use pm_kind, only: RKG => RK5
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)    , contiguous    :: queryx(:)
+        real(RKG)                                           :: extrap(size(queryx, 1, IK))
         type(neiprev_type)  , intent(in)                    :: method
     end function
 #endif
@@ -3336,10 +3336,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getExtrapPREV_ND1_QD1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)    , contiguous    :: queryx(:)
-        real(RKC)                                           :: extrap(size(queryx, 1, IK))
+        use pm_kind, only: RKG => RK4
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)    , contiguous    :: queryx(:)
+        real(RKG)                                           :: extrap(size(queryx, 1, IK))
         type(neiprev_type)  , intent(in)                    :: method
     end function
 #endif
@@ -3349,10 +3349,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getExtrapPREV_ND1_QD1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)    , contiguous    :: queryx(:)
-        real(RKC)                                           :: extrap(size(queryx, 1, IK))
+        use pm_kind, only: RKG => RK3
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)    , contiguous    :: queryx(:)
+        real(RKG)                                           :: extrap(size(queryx, 1, IK))
         type(neiprev_type)  , intent(in)                    :: method
     end function
 #endif
@@ -3362,10 +3362,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getExtrapPREV_ND1_QD1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)    , contiguous    :: queryx(:)
-        real(RKC)                                           :: extrap(size(queryx, 1, IK))
+        use pm_kind, only: RKG => RK2
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)    , contiguous    :: queryx(:)
+        real(RKG)                                           :: extrap(size(queryx, 1, IK))
         type(neiprev_type)  , intent(in)                    :: method
     end function
 #endif
@@ -3375,10 +3375,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getExtrapPREV_ND1_QD1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)    , contiguous    :: queryx(:)
-        real(RKC)                                           :: extrap(size(queryx, 1, IK))
+        use pm_kind, only: RKG => RK1
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)    , contiguous    :: queryx(:)
+        real(RKG)                                           :: extrap(size(queryx, 1, IK))
         type(neiprev_type)  , intent(in)                    :: method
     end function
 #endif
@@ -3502,10 +3502,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setExtrapMNPLD_ND1_QD0_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)                    :: queryx
-        real(RKC)           , intent(out)                   :: extrap
+        use pm_kind, only: RKG => RK5
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)                    :: queryx
+        real(RKG)           , intent(out)                   :: extrap
         type(monopol_type)  , intent(in)                    :: method
     end subroutine
 #endif
@@ -3515,10 +3515,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setExtrapMNPLD_ND1_QD0_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)                    :: queryx
-        real(RKC)           , intent(out)                   :: extrap
+        use pm_kind, only: RKG => RK4
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)                    :: queryx
+        real(RKG)           , intent(out)                   :: extrap
         type(monopol_type)  , intent(in)                    :: method
     end subroutine
 #endif
@@ -3528,10 +3528,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setExtrapMNPLD_ND1_QD0_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)                    :: queryx
-        real(RKC)           , intent(out)                   :: extrap
+        use pm_kind, only: RKG => RK3
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)                    :: queryx
+        real(RKG)           , intent(out)                   :: extrap
         type(monopol_type)  , intent(in)                    :: method
     end subroutine
 #endif
@@ -3541,10 +3541,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setExtrapMNPLD_ND1_QD0_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)                    :: queryx
-        real(RKC)           , intent(out)                   :: extrap
+        use pm_kind, only: RKG => RK2
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)                    :: queryx
+        real(RKG)           , intent(out)                   :: extrap
         type(monopol_type)  , intent(in)                    :: method
     end subroutine
 #endif
@@ -3554,10 +3554,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setExtrapMNPLD_ND1_QD0_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)                    :: queryx
-        real(RKC)           , intent(out)                   :: extrap
+        use pm_kind, only: RKG => RK1
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)                    :: queryx
+        real(RKG)           , intent(out)                   :: extrap
         type(monopol_type)  , intent(in)                    :: method
     end subroutine
 #endif
@@ -3569,10 +3569,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setExtrapMNPLD_ND1_QD1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)    , contiguous    :: queryx(:)
-        real(RKC)           , intent(out)   , contiguous    :: extrap(:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)    , contiguous    :: queryx(:)
+        real(RKG)           , intent(out)   , contiguous    :: extrap(:)
         type(monopol_type)  , intent(in)                    :: method
     end subroutine
 #endif
@@ -3582,10 +3582,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setExtrapMNPLD_ND1_QD1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)    , contiguous    :: queryx(:)
-        real(RKC)           , intent(out)   , contiguous    :: extrap(:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)    , contiguous    :: queryx(:)
+        real(RKG)           , intent(out)   , contiguous    :: extrap(:)
         type(monopol_type)  , intent(in)                    :: method
     end subroutine
 #endif
@@ -3595,10 +3595,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setExtrapMNPLD_ND1_QD1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)    , contiguous    :: queryx(:)
-        real(RKC)           , intent(out)   , contiguous    :: extrap(:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)    , contiguous    :: queryx(:)
+        real(RKG)           , intent(out)   , contiguous    :: extrap(:)
         type(monopol_type)  , intent(in)                    :: method
     end subroutine
 #endif
@@ -3608,10 +3608,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setExtrapMNPLD_ND1_QD1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)    , contiguous    :: queryx(:)
-        real(RKC)           , intent(out)   , contiguous    :: extrap(:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)    , contiguous    :: queryx(:)
+        real(RKG)           , intent(out)   , contiguous    :: extrap(:)
         type(monopol_type)  , intent(in)                    :: method
     end subroutine
 #endif
@@ -3621,10 +3621,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setExtrapMNPLD_ND1_QD1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)    , contiguous    :: queryx(:)
-        real(RKC)           , intent(out)   , contiguous    :: extrap(:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)    , contiguous    :: queryx(:)
+        real(RKG)           , intent(out)   , contiguous    :: extrap(:)
         type(monopol_type)  , intent(in)                    :: method
     end subroutine
 #endif
@@ -3644,10 +3644,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setExtrapMNPLE_ND1_QD0_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)                    :: queryx
-        real(RKC)           , intent(out)                   :: extrap, relerr
+        use pm_kind, only: RKG => RK5
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)                    :: queryx
+        real(RKG)           , intent(out)                   :: extrap, relerr
         type(monopol_type)  , intent(in)                    :: method
     end subroutine
 #endif
@@ -3657,10 +3657,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setExtrapMNPLE_ND1_QD0_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)                    :: queryx
-        real(RKC)           , intent(out)                   :: extrap, relerr
+        use pm_kind, only: RKG => RK4
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)                    :: queryx
+        real(RKG)           , intent(out)                   :: extrap, relerr
         type(monopol_type)  , intent(in)                    :: method
     end subroutine
 #endif
@@ -3670,10 +3670,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setExtrapMNPLE_ND1_QD0_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)                    :: queryx
-        real(RKC)           , intent(out)                   :: extrap, relerr
+        use pm_kind, only: RKG => RK3
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)                    :: queryx
+        real(RKG)           , intent(out)                   :: extrap, relerr
         type(monopol_type)  , intent(in)                    :: method
     end subroutine
 #endif
@@ -3683,10 +3683,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setExtrapMNPLE_ND1_QD0_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)                    :: queryx
-        real(RKC)           , intent(out)                   :: extrap, relerr
+        use pm_kind, only: RKG => RK2
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)                    :: queryx
+        real(RKG)           , intent(out)                   :: extrap, relerr
         type(monopol_type)  , intent(in)                    :: method
     end subroutine
 #endif
@@ -3696,10 +3696,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setExtrapMNPLE_ND1_QD0_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)                    :: queryx
-        real(RKC)           , intent(out)                   :: extrap, relerr
+        use pm_kind, only: RKG => RK1
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)                    :: queryx
+        real(RKG)           , intent(out)                   :: extrap, relerr
         type(monopol_type)  , intent(in)                    :: method
     end subroutine
 #endif
@@ -3711,10 +3711,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setExtrapMNPLE_ND1_QD1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)    , contiguous    :: queryx(:)
-        real(RKC)           , intent(out)   , contiguous    :: extrap(:), relerr(:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)    , contiguous    :: queryx(:)
+        real(RKG)           , intent(out)   , contiguous    :: extrap(:), relerr(:)
         type(monopol_type)  , intent(in)                    :: method
     end subroutine
 #endif
@@ -3724,10 +3724,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setExtrapMNPLE_ND1_QD1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)    , contiguous    :: queryx(:)
-        real(RKC)           , intent(out)   , contiguous    :: extrap(:), relerr(:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)    , contiguous    :: queryx(:)
+        real(RKG)           , intent(out)   , contiguous    :: extrap(:), relerr(:)
         type(monopol_type)  , intent(in)                    :: method
     end subroutine
 #endif
@@ -3737,10 +3737,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setExtrapMNPLE_ND1_QD1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)    , contiguous    :: queryx(:)
-        real(RKC)           , intent(out)   , contiguous    :: extrap(:), relerr(:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)    , contiguous    :: queryx(:)
+        real(RKG)           , intent(out)   , contiguous    :: extrap(:), relerr(:)
         type(monopol_type)  , intent(in)                    :: method
     end subroutine
 #endif
@@ -3750,10 +3750,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setExtrapMNPLE_ND1_QD1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)    , contiguous    :: queryx(:)
-        real(RKC)           , intent(out)   , contiguous    :: extrap(:), relerr(:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)    , contiguous    :: queryx(:)
+        real(RKG)           , intent(out)   , contiguous    :: extrap(:), relerr(:)
         type(monopol_type)  , intent(in)                    :: method
     end subroutine
 #endif
@@ -3763,10 +3763,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setExtrapMNPLE_ND1_QD1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)    , contiguous    :: queryx(:)
-        real(RKC)           , intent(out)   , contiguous    :: extrap(:), relerr(:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)    , contiguous    :: queryx(:)
+        real(RKG)           , intent(out)   , contiguous    :: extrap(:), relerr(:)
         type(monopol_type)  , intent(in)                    :: method
     end subroutine
 #endif
@@ -3786,10 +3786,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setExtrapPWLN_ND1_QD0_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)                    :: queryx
-        real(RKC)           , intent(out)                   :: extrap
+        use pm_kind, only: RKG => RK5
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)                    :: queryx
+        real(RKG)           , intent(out)                   :: extrap
         type(piwilin_type)  , intent(in)                    :: method
     end subroutine
 #endif
@@ -3799,10 +3799,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setExtrapPWLN_ND1_QD0_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)                    :: queryx
-        real(RKC)           , intent(out)                   :: extrap
+        use pm_kind, only: RKG => RK4
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)                    :: queryx
+        real(RKG)           , intent(out)                   :: extrap
         type(piwilin_type)  , intent(in)                    :: method
     end subroutine
 #endif
@@ -3812,10 +3812,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setExtrapPWLN_ND1_QD0_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)                    :: queryx
-        real(RKC)           , intent(out)                   :: extrap
+        use pm_kind, only: RKG => RK3
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)                    :: queryx
+        real(RKG)           , intent(out)                   :: extrap
         type(piwilin_type)  , intent(in)                    :: method
     end subroutine
 #endif
@@ -3825,10 +3825,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setExtrapPWLN_ND1_QD0_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)                    :: queryx
-        real(RKC)           , intent(out)                   :: extrap
+        use pm_kind, only: RKG => RK2
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)                    :: queryx
+        real(RKG)           , intent(out)                   :: extrap
         type(piwilin_type)  , intent(in)                    :: method
     end subroutine
 #endif
@@ -3838,10 +3838,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setExtrapPWLN_ND1_QD0_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)                    :: queryx
-        real(RKC)           , intent(out)                   :: extrap
+        use pm_kind, only: RKG => RK1
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)                    :: queryx
+        real(RKG)           , intent(out)                   :: extrap
         type(piwilin_type)  , intent(in)                    :: method
     end subroutine
 #endif
@@ -3853,10 +3853,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setExtrapPWLN_ND1_QD1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)    , contiguous    :: queryx(:)
-        real(RKC)           , intent(out)   , contiguous    :: extrap(:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)    , contiguous    :: queryx(:)
+        real(RKG)           , intent(out)   , contiguous    :: extrap(:)
         type(piwilin_type)  , intent(in)                    :: method
     end subroutine
 #endif
@@ -3866,10 +3866,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setExtrapPWLN_ND1_QD1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)    , contiguous    :: queryx(:)
-        real(RKC)           , intent(out)   , contiguous    :: extrap(:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)    , contiguous    :: queryx(:)
+        real(RKG)           , intent(out)   , contiguous    :: extrap(:)
         type(piwilin_type)  , intent(in)                    :: method
     end subroutine
 #endif
@@ -3879,10 +3879,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setExtrapPWLN_ND1_QD1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)    , contiguous    :: queryx(:)
-        real(RKC)           , intent(out)   , contiguous    :: extrap(:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)    , contiguous    :: queryx(:)
+        real(RKG)           , intent(out)   , contiguous    :: extrap(:)
         type(piwilin_type)  , intent(in)                    :: method
     end subroutine
 #endif
@@ -3892,10 +3892,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setExtrapPWLN_ND1_QD1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)    , contiguous    :: queryx(:)
-        real(RKC)           , intent(out)   , contiguous    :: extrap(:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)    , contiguous    :: queryx(:)
+        real(RKG)           , intent(out)   , contiguous    :: extrap(:)
         type(piwilin_type)  , intent(in)                    :: method
     end subroutine
 #endif
@@ -3905,10 +3905,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setExtrapPWLN_ND1_QD1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)    , contiguous    :: queryx(:)
-        real(RKC)           , intent(out)   , contiguous    :: extrap(:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)    , contiguous    :: queryx(:)
+        real(RKG)           , intent(out)   , contiguous    :: extrap(:)
         type(piwilin_type)  , intent(in)                    :: method
     end subroutine
 #endif
@@ -3928,10 +3928,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setExtrapMEAN_ND1_QD0_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)                    :: queryx
-        real(RKC)           , intent(out)                   :: extrap
+        use pm_kind, only: RKG => RK5
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)                    :: queryx
+        real(RKG)           , intent(out)                   :: extrap
         type(neimean_type)  , intent(in)                    :: method
     end subroutine
 #endif
@@ -3941,10 +3941,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setExtrapMEAN_ND1_QD0_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)                    :: queryx
-        real(RKC)           , intent(out)                   :: extrap
+        use pm_kind, only: RKG => RK4
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)                    :: queryx
+        real(RKG)           , intent(out)                   :: extrap
         type(neimean_type)  , intent(in)                    :: method
     end subroutine
 #endif
@@ -3954,10 +3954,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setExtrapMEAN_ND1_QD0_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)                    :: queryx
-        real(RKC)           , intent(out)                   :: extrap
+        use pm_kind, only: RKG => RK3
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)                    :: queryx
+        real(RKG)           , intent(out)                   :: extrap
         type(neimean_type)  , intent(in)                    :: method
     end subroutine
 #endif
@@ -3967,10 +3967,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setExtrapMEAN_ND1_QD0_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)                    :: queryx
-        real(RKC)           , intent(out)                   :: extrap
+        use pm_kind, only: RKG => RK2
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)                    :: queryx
+        real(RKG)           , intent(out)                   :: extrap
         type(neimean_type)  , intent(in)                    :: method
     end subroutine
 #endif
@@ -3980,10 +3980,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setExtrapMEAN_ND1_QD0_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)                    :: queryx
-        real(RKC)           , intent(out)                   :: extrap
+        use pm_kind, only: RKG => RK1
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)                    :: queryx
+        real(RKG)           , intent(out)                   :: extrap
         type(neimean_type)  , intent(in)                    :: method
     end subroutine
 #endif
@@ -3995,10 +3995,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setExtrapMEAN_ND1_QD1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)    , contiguous    :: queryx(:)
-        real(RKC)           , intent(out)   , contiguous    :: extrap(:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)    , contiguous    :: queryx(:)
+        real(RKG)           , intent(out)   , contiguous    :: extrap(:)
         type(neimean_type)  , intent(in)                    :: method
     end subroutine
 #endif
@@ -4008,10 +4008,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setExtrapMEAN_ND1_QD1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)    , contiguous    :: queryx(:)
-        real(RKC)           , intent(out)   , contiguous    :: extrap(:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)    , contiguous    :: queryx(:)
+        real(RKG)           , intent(out)   , contiguous    :: extrap(:)
         type(neimean_type)  , intent(in)                    :: method
     end subroutine
 #endif
@@ -4021,10 +4021,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setExtrapMEAN_ND1_QD1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)    , contiguous    :: queryx(:)
-        real(RKC)           , intent(out)   , contiguous    :: extrap(:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)    , contiguous    :: queryx(:)
+        real(RKG)           , intent(out)   , contiguous    :: extrap(:)
         type(neimean_type)  , intent(in)                    :: method
     end subroutine
 #endif
@@ -4034,10 +4034,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setExtrapMEAN_ND1_QD1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)    , contiguous    :: queryx(:)
-        real(RKC)           , intent(out)   , contiguous    :: extrap(:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)    , contiguous    :: queryx(:)
+        real(RKG)           , intent(out)   , contiguous    :: extrap(:)
         type(neimean_type)  , intent(in)                    :: method
     end subroutine
 #endif
@@ -4047,10 +4047,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setExtrapMEAN_ND1_QD1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)    , contiguous    :: queryx(:)
-        real(RKC)           , intent(out)   , contiguous    :: extrap(:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)    , contiguous    :: queryx(:)
+        real(RKG)           , intent(out)   , contiguous    :: extrap(:)
         type(neimean_type)  , intent(in)                    :: method
     end subroutine
 #endif
@@ -4070,10 +4070,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setExtrapNEAR_ND1_QD0_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)                    :: queryx
-        real(RKC)           , intent(out)                   :: extrap
+        use pm_kind, only: RKG => RK5
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)                    :: queryx
+        real(RKG)           , intent(out)                   :: extrap
         type(neinear_type)  , intent(in)                    :: method
     end subroutine
 #endif
@@ -4083,10 +4083,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setExtrapNEAR_ND1_QD0_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)                    :: queryx
-        real(RKC)           , intent(out)                   :: extrap
+        use pm_kind, only: RKG => RK4
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)                    :: queryx
+        real(RKG)           , intent(out)                   :: extrap
         type(neinear_type)  , intent(in)                    :: method
     end subroutine
 #endif
@@ -4096,10 +4096,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setExtrapNEAR_ND1_QD0_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)                    :: queryx
-        real(RKC)           , intent(out)                   :: extrap
+        use pm_kind, only: RKG => RK3
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)                    :: queryx
+        real(RKG)           , intent(out)                   :: extrap
         type(neinear_type)  , intent(in)                    :: method
     end subroutine
 #endif
@@ -4109,10 +4109,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setExtrapNEAR_ND1_QD0_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)                    :: queryx
-        real(RKC)           , intent(out)                   :: extrap
+        use pm_kind, only: RKG => RK2
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)                    :: queryx
+        real(RKG)           , intent(out)                   :: extrap
         type(neinear_type)  , intent(in)                    :: method
     end subroutine
 #endif
@@ -4122,10 +4122,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setExtrapNEAR_ND1_QD0_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)                    :: queryx
-        real(RKC)           , intent(out)                   :: extrap
+        use pm_kind, only: RKG => RK1
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)                    :: queryx
+        real(RKG)           , intent(out)                   :: extrap
         type(neinear_type)  , intent(in)                    :: method
     end subroutine
 #endif
@@ -4137,10 +4137,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setExtrapNEAR_ND1_QD1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)    , contiguous    :: queryx(:)
-        real(RKC)           , intent(out)   , contiguous    :: extrap(:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)    , contiguous    :: queryx(:)
+        real(RKG)           , intent(out)   , contiguous    :: extrap(:)
         type(neinear_type)  , intent(in)                    :: method
     end subroutine
 #endif
@@ -4150,10 +4150,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setExtrapNEAR_ND1_QD1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)    , contiguous    :: queryx(:)
-        real(RKC)           , intent(out)   , contiguous    :: extrap(:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)    , contiguous    :: queryx(:)
+        real(RKG)           , intent(out)   , contiguous    :: extrap(:)
         type(neinear_type)  , intent(in)                    :: method
     end subroutine
 #endif
@@ -4163,10 +4163,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setExtrapNEAR_ND1_QD1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)    , contiguous    :: queryx(:)
-        real(RKC)           , intent(out)   , contiguous    :: extrap(:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)    , contiguous    :: queryx(:)
+        real(RKG)           , intent(out)   , contiguous    :: extrap(:)
         type(neinear_type)  , intent(in)                    :: method
     end subroutine
 #endif
@@ -4176,10 +4176,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setExtrapNEAR_ND1_QD1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)    , contiguous    :: queryx(:)
-        real(RKC)           , intent(out)   , contiguous    :: extrap(:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)    , contiguous    :: queryx(:)
+        real(RKG)           , intent(out)   , contiguous    :: extrap(:)
         type(neinear_type)  , intent(in)                    :: method
     end subroutine
 #endif
@@ -4189,10 +4189,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setExtrapNEAR_ND1_QD1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)    , contiguous    :: queryx(:)
-        real(RKC)           , intent(out)   , contiguous    :: extrap(:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)    , contiguous    :: queryx(:)
+        real(RKG)           , intent(out)   , contiguous    :: extrap(:)
         type(neinear_type)  , intent(in)                    :: method
     end subroutine
 #endif
@@ -4212,10 +4212,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setExtrapNEXT_ND1_QD0_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)                    :: queryx
-        real(RKC)           , intent(out)                   :: extrap
+        use pm_kind, only: RKG => RK5
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)                    :: queryx
+        real(RKG)           , intent(out)                   :: extrap
         type(neinext_type)  , intent(in)                    :: method
     end subroutine
 #endif
@@ -4225,10 +4225,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setExtrapNEXT_ND1_QD0_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)                    :: queryx
-        real(RKC)           , intent(out)                   :: extrap
+        use pm_kind, only: RKG => RK4
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)                    :: queryx
+        real(RKG)           , intent(out)                   :: extrap
         type(neinext_type)  , intent(in)                    :: method
     end subroutine
 #endif
@@ -4238,10 +4238,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setExtrapNEXT_ND1_QD0_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)                    :: queryx
-        real(RKC)           , intent(out)                   :: extrap
+        use pm_kind, only: RKG => RK3
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)                    :: queryx
+        real(RKG)           , intent(out)                   :: extrap
         type(neinext_type)  , intent(in)                    :: method
     end subroutine
 #endif
@@ -4251,10 +4251,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setExtrapNEXT_ND1_QD0_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)                    :: queryx
-        real(RKC)           , intent(out)                   :: extrap
+        use pm_kind, only: RKG => RK2
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)                    :: queryx
+        real(RKG)           , intent(out)                   :: extrap
         type(neinext_type)  , intent(in)                    :: method
     end subroutine
 #endif
@@ -4264,10 +4264,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setExtrapNEXT_ND1_QD0_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)                    :: queryx
-        real(RKC)           , intent(out)                   :: extrap
+        use pm_kind, only: RKG => RK1
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)                    :: queryx
+        real(RKG)           , intent(out)                   :: extrap
         type(neinext_type)  , intent(in)                    :: method
     end subroutine
 #endif
@@ -4279,10 +4279,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setExtrapNEXT_ND1_QD1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)    , contiguous    :: queryx(:)
-        real(RKC)           , intent(out)   , contiguous    :: extrap(:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)    , contiguous    :: queryx(:)
+        real(RKG)           , intent(out)   , contiguous    :: extrap(:)
         type(neinext_type)  , intent(in)                    :: method
     end subroutine
 #endif
@@ -4292,10 +4292,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setExtrapNEXT_ND1_QD1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)    , contiguous    :: queryx(:)
-        real(RKC)           , intent(out)   , contiguous    :: extrap(:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)    , contiguous    :: queryx(:)
+        real(RKG)           , intent(out)   , contiguous    :: extrap(:)
         type(neinext_type)  , intent(in)                    :: method
     end subroutine
 #endif
@@ -4305,10 +4305,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setExtrapNEXT_ND1_QD1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)    , contiguous    :: queryx(:)
-        real(RKC)           , intent(out)   , contiguous    :: extrap(:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)    , contiguous    :: queryx(:)
+        real(RKG)           , intent(out)   , contiguous    :: extrap(:)
         type(neinext_type)  , intent(in)                    :: method
     end subroutine
 #endif
@@ -4318,10 +4318,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setExtrapNEXT_ND1_QD1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)    , contiguous    :: queryx(:)
-        real(RKC)           , intent(out)   , contiguous    :: extrap(:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)    , contiguous    :: queryx(:)
+        real(RKG)           , intent(out)   , contiguous    :: extrap(:)
         type(neinext_type)  , intent(in)                    :: method
     end subroutine
 #endif
@@ -4331,10 +4331,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setExtrapNEXT_ND1_QD1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)    , contiguous    :: queryx(:)
-        real(RKC)           , intent(out)   , contiguous    :: extrap(:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)    , contiguous    :: queryx(:)
+        real(RKG)           , intent(out)   , contiguous    :: extrap(:)
         type(neinext_type)  , intent(in)                    :: method
     end subroutine
 #endif
@@ -4354,10 +4354,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setExtrapPREV_ND1_QD0_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)                    :: queryx
-        real(RKC)           , intent(out)                   :: extrap
+        use pm_kind, only: RKG => RK5
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)                    :: queryx
+        real(RKG)           , intent(out)                   :: extrap
         type(neiprev_type)  , intent(in)                    :: method
     end subroutine
 #endif
@@ -4367,10 +4367,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setExtrapPREV_ND1_QD0_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)                    :: queryx
-        real(RKC)           , intent(out)                   :: extrap
+        use pm_kind, only: RKG => RK4
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)                    :: queryx
+        real(RKG)           , intent(out)                   :: extrap
         type(neiprev_type)  , intent(in)                    :: method
     end subroutine
 #endif
@@ -4380,10 +4380,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setExtrapPREV_ND1_QD0_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)                    :: queryx
-        real(RKC)           , intent(out)                   :: extrap
+        use pm_kind, only: RKG => RK3
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)                    :: queryx
+        real(RKG)           , intent(out)                   :: extrap
         type(neiprev_type)  , intent(in)                    :: method
     end subroutine
 #endif
@@ -4393,10 +4393,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setExtrapPREV_ND1_QD0_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)                    :: queryx
-        real(RKC)           , intent(out)                   :: extrap
+        use pm_kind, only: RKG => RK2
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)                    :: queryx
+        real(RKG)           , intent(out)                   :: extrap
         type(neiprev_type)  , intent(in)                    :: method
     end subroutine
 #endif
@@ -4406,10 +4406,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setExtrapPREV_ND1_QD0_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)                    :: queryx
-        real(RKC)           , intent(out)                   :: extrap
+        use pm_kind, only: RKG => RK1
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)                    :: queryx
+        real(RKG)           , intent(out)                   :: extrap
         type(neiprev_type)  , intent(in)                    :: method
     end subroutine
 #endif
@@ -4421,10 +4421,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setExtrapPREV_ND1_QD1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)    , contiguous    :: queryx(:)
-        real(RKC)           , intent(out)   , contiguous    :: extrap(:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)    , contiguous    :: queryx(:)
+        real(RKG)           , intent(out)   , contiguous    :: extrap(:)
         type(neiprev_type)  , intent(in)                    :: method
     end subroutine
 #endif
@@ -4434,10 +4434,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setExtrapPREV_ND1_QD1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)    , contiguous    :: queryx(:)
-        real(RKC)           , intent(out)   , contiguous    :: extrap(:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)    , contiguous    :: queryx(:)
+        real(RKG)           , intent(out)   , contiguous    :: extrap(:)
         type(neiprev_type)  , intent(in)                    :: method
     end subroutine
 #endif
@@ -4447,10 +4447,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setExtrapPREV_ND1_QD1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)    , contiguous    :: queryx(:)
-        real(RKC)           , intent(out)   , contiguous    :: extrap(:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)    , contiguous    :: queryx(:)
+        real(RKG)           , intent(out)   , contiguous    :: extrap(:)
         type(neiprev_type)  , intent(in)                    :: method
     end subroutine
 #endif
@@ -4460,10 +4460,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setExtrapPREV_ND1_QD1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)    , contiguous    :: queryx(:)
-        real(RKC)           , intent(out)   , contiguous    :: extrap(:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)    , contiguous    :: queryx(:)
+        real(RKG)           , intent(out)   , contiguous    :: extrap(:)
         type(neiprev_type)  , intent(in)                    :: method
     end subroutine
 #endif
@@ -4473,10 +4473,10 @@ module pm_polation
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setExtrapPREV_ND1_QD1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)           , intent(in)    , contiguous    :: crdx(:), func(:)
-        real(RKC)           , intent(in)    , contiguous    :: queryx(:)
-        real(RKC)           , intent(out)   , contiguous    :: extrap(:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)           , intent(in)    , contiguous    :: crdx(:), func(:)
+        real(RKG)           , intent(in)    , contiguous    :: queryx(:)
+        real(RKG)           , intent(out)   , contiguous    :: extrap(:)
         type(neiprev_type)  , intent(in)                    :: method
     end subroutine
 #endif

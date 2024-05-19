@@ -41,44 +41,44 @@
 #if     CVXK_ENABLED
         type(css_type), allocatable :: field(:), field_ref(:)
 #elif   PVXK_ENABLED
-        type(css_pdt(SKC)), allocatable :: field(:), field_ref(:)
+        type(css_pdt(SKG)), allocatable :: field(:), field_ref(:)
 #endif
-        character(:,SKC), allocatable :: array, sep
+        character(:,SKG), allocatable :: array, sep
 #elif   SK_ENABLED && D1_D1_ENABLED
 #if     CVXK_ENABLED
         type(cvs_type), allocatable :: field(:), field_ref(:)
 #elif   PVXK_ENABLED
-        type(cvs_pdt(SKC)), allocatable :: field(:), field_ref(:)
+        type(cvs_pdt(SKG)), allocatable :: field(:), field_ref(:)
 #endif
-        character(2,SKC), allocatable :: array(:), sep(:)
+        character(2,SKG), allocatable :: array(:), sep(:)
 #elif   IK_ENABLED && D1_D1_ENABLED
 #if     CVXK_ENABLED
         type(cvi_type), allocatable :: field(:), field_ref(:)
 #elif   PVXK_ENABLED
-        type(cvi_pdt(IKC)), allocatable :: field(:), field_ref(:)
+        type(cvi_pdt(IKG)), allocatable :: field(:), field_ref(:)
 #endif
-        integer(IKC), allocatable :: array(:), sep(:)
+        integer(IKG), allocatable :: array(:), sep(:)
 #elif   LK_ENABLED && D1_D1_ENABLED
 #if     CVXK_ENABLED
         type(cvl_type), allocatable :: field(:), field_ref(:)
 #elif   PVXK_ENABLED
-        type(cvl_pdt(LKC)), allocatable :: field(:), field_ref(:)
+        type(cvl_pdt(LKG)), allocatable :: field(:), field_ref(:)
 #endif
-        logical(LKC), allocatable :: array(:), sep(:)
+        logical(LKG), allocatable :: array(:), sep(:)
 #elif   CK_ENABLED && D1_D1_ENABLED
 #if     CVXK_ENABLED
         type(cvc_type), allocatable :: field(:), field_ref(:)
 #elif   PVXK_ENABLED
-        type(cvc_pdt(CKC)), allocatable :: field(:), field_ref(:)
+        type(cvc_pdt(CKG)), allocatable :: field(:), field_ref(:)
 #endif
-        complex(CKC), allocatable :: array(:), sep(:)
+        complex(CKG), allocatable :: array(:), sep(:)
 #elif   RK_ENABLED && D1_D1_ENABLED
 #if     CVXK_ENABLED
         type(cvr_type), allocatable :: field(:), field_ref(:)
 #elif   PVXK_ENABLED
-        type(cvr_pdt(RKC)), allocatable :: field(:), field_ref(:)
+        type(cvr_pdt(RKG)), allocatable :: field(:), field_ref(:)
 #endif
-        real(RKC), allocatable :: array(:), sep(:)
+        real(RKG), allocatable :: array(:), sep(:)
 #else
 #error  "Unrecognized interface."
 #endif
@@ -114,17 +114,17 @@
             integer(IK), intent(in) :: lenDelim
 #endif
 #if         SK_ENABLED && D0_D0_ENABLED
-            character(*,SKC), intent(in) :: sep, Segment
+            character(*,SKG), intent(in) :: sep, Segment
 #elif       SK_ENABLED && D1_D1_ENABLED
-            character(*,SKC), intent(in) :: Segment(lenDelim), sep(lenDelim)
+            character(*,SKG), intent(in) :: Segment(lenDelim), sep(lenDelim)
 #elif       IK_ENABLED && D1_D1_ENABLED
-            integer(IKC)    , intent(in) :: Segment(lenDelim), sep(lenDelim)
+            integer(IKG)    , intent(in) :: Segment(lenDelim), sep(lenDelim)
 #elif       LK_ENABLED && D1_D1_ENABLED
-            logical(LKC)    , intent(in) :: Segment(lenDelim), sep(lenDelim)
+            logical(LKG)    , intent(in) :: Segment(lenDelim), sep(lenDelim)
 #elif       CK_ENABLED && D1_D1_ENABLED
-            complex(CKC)    , intent(in) :: Segment(lenDelim), sep(lenDelim)
+            complex(CKG)    , intent(in) :: Segment(lenDelim), sep(lenDelim)
 #elif       RK_ENABLED && D1_D1_ENABLED
-            real(RKC)       , intent(in) :: Segment(lenDelim), sep(lenDelim)
+            real(RKG)       , intent(in) :: Segment(lenDelim), sep(lenDelim)
 #endif
             equivalent = ALL(sep IS_EQUAL Segment)
         end function
@@ -161,16 +161,16 @@
             sep = [" "]
             allocate(array(0))
 #elif       IK_ENABLED && D1_D1_ENABLED
-            sep = [1_IKC]
+            sep = [1_IKG]
             allocate(array(0))
 #elif       LK_ENABLED && D1_D1_ENABLED
             sep = [.false._LK]
             allocate(array(0))
 #elif       CK_ENABLED && D1_D1_ENABLED
-            sep = [1._CKC]
+            sep = [1._CKG]
             allocate(array(0))
 #elif       RK_ENABLED && D1_D1_ENABLED
-            sep = [1._RKC]
+            sep = [1._RKG]
             allocate(array(0))
 #endif
 #if         CVXK_ENABLED || PVXK_ENABLED
@@ -225,16 +225,16 @@
             array = ["AA", "AA"]
             allocate(character(2) :: sep(0))
 #elif       IK_ENABLED && D1_D1_ENABLED
-            array = [1_IKC, 1_IKC]
+            array = [1_IKG, 1_IKG]
             allocate(sep(0))
 #elif       LK_ENABLED && D1_D1_ENABLED
             array = [.false._LK, .false._LK]
             allocate(sep(0))
 #elif       CK_ENABLED && D1_D1_ENABLED
-            array = [1._CKC, 1._CKC]
+            array = [1._CKG, 1._CKG]
             allocate(sep(0))
 #elif       RK_ENABLED && D1_D1_ENABLED
-            array = [1._RKC, 1._RKC]
+            array = [1._RKG, 1._RKG]
             allocate(sep(0))
 #endif
 #if         CVXK_ENABLED || PVXK_ENABLED
@@ -288,16 +288,16 @@
             array = ["AA", "AA"]
             allocate(character(2) :: sep(0))
 #elif       IK_ENABLED && D1_D1_ENABLED
-            array = [1_IKC, 1_IKC]
+            array = [1_IKG, 1_IKG]
             allocate(sep(0))
 #elif       LK_ENABLED && D1_D1_ENABLED
             array = [.false._LK, .false._LK]
             allocate(sep(0))
 #elif       CK_ENABLED && D1_D1_ENABLED
-            array = [1._CKC, 1._CKC]
+            array = [1._CKG, 1._CKG]
             allocate(sep(0))
 #elif       RK_ENABLED && D1_D1_ENABLED
-            array = [1._RKC, 1._RKC]
+            array = [1._RKG, 1._RKG]
             allocate(sep(0))
 #endif
 #if         CVXK_ENABLED || PVXK_ENABLED
@@ -372,20 +372,20 @@
             sep = ["AA"]
 #if         CVXK_ENABLED || PVXK_ENABLED
             if (getOption(.false._LK, keep)) then
-                allocate(character(2,SKC) :: field_ref(1)%val(0))
+                allocate(character(2,SKG) :: field_ref(1)%val(0))
                 field_ref(2)%val = sep
-                allocate(character(2,SKC) :: field_ref(3)%val(0))
+                allocate(character(2,SKG) :: field_ref(3)%val(0))
                 field_ref(4)%val = sep
-                allocate(character(2,SKC) :: field_ref(5)%val(0))
+                allocate(character(2,SKG) :: field_ref(5)%val(0))
             else
-                allocate(character(2,SKC) :: field_ref(1)%val(0))
-                allocate(character(2,SKC) :: field_ref(2)%val(0))
-                allocate(character(2,SKC) :: field_ref(3)%val(0))
+                allocate(character(2,SKG) :: field_ref(1)%val(0))
+                allocate(character(2,SKG) :: field_ref(2)%val(0))
+                allocate(character(2,SKG) :: field_ref(3)%val(0))
             endif
 #endif
 #elif       IK_ENABLED && D1_D1_ENABLED
-            array = [1_IKC, 1_IKC]
-            sep = [1_IKC]
+            array = [1_IKG, 1_IKG]
+            sep = [1_IKG]
 #if         CVXK_ENABLED || PVXK_ENABLED
             if (getOption(.false._LK, keep)) then
                 allocate(field_ref(1)%val(0))
@@ -416,8 +416,8 @@
             endif
 #endif
 #elif       CK_ENABLED && D1_D1_ENABLED
-            array = [(1._CKC,-1._CKC), (1._CKC,-1._CKC)]
-            sep = [(1._CKC,-1._CKC)]
+            array = [(1._CKG,-1._CKG), (1._CKG,-1._CKG)]
+            sep = [(1._CKG,-1._CKG)]
 #if         CVXK_ENABLED || PVXK_ENABLED
             if (getOption(.false._LK, keep)) then
                 allocate(field_ref(1)%val(0))
@@ -432,8 +432,8 @@
             endif
 #endif
 #elif       RK_ENABLED && D1_D1_ENABLED
-            array = [1._RKC, 1._RKC]
-            sep = [1._RKC]
+            array = [1._RKG, 1._RKG]
+            sep = [1._RKG]
 #if         CVXK_ENABLED || PVXK_ENABLED
             if (getOption(.false._LK, keep)) then
                 allocate(field_ref(1)%val(0))
@@ -526,20 +526,20 @@
             sep = ["AA"]
 #if         CVXK_ENABLED || PVXK_ENABLED
             if (getOption(.false._LK, keep)) then
-                allocate(character(2,SKC) :: field_ref(1)%val(0))
+                allocate(character(2,SKG) :: field_ref(1)%val(0))
                 field_ref(2)%val = sep
-                allocate(character(2,SKC) :: field_ref(3)%val(0))
+                allocate(character(2,SKG) :: field_ref(3)%val(0))
                 field_ref(4)%val = sep
-                allocate(character(2,SKC) :: field_ref(5)%val(0))
+                allocate(character(2,SKG) :: field_ref(5)%val(0))
             else
-                allocate(character(2,SKC) :: field_ref(1)%val(0))
-                allocate(character(2,SKC) :: field_ref(2)%val(0))
-                allocate(character(2,SKC) :: field_ref(3)%val(0))
+                allocate(character(2,SKG) :: field_ref(1)%val(0))
+                allocate(character(2,SKG) :: field_ref(2)%val(0))
+                allocate(character(2,SKG) :: field_ref(3)%val(0))
             endif
 #endif
 #elif       IK_ENABLED && D1_D1_ENABLED
-            array = [1_IKC, 1_IKC]
-            sep = [1_IKC]
+            array = [1_IKG, 1_IKG]
+            sep = [1_IKG]
 #if         CVXK_ENABLED || PVXK_ENABLED
             if (getOption(.false._LK, keep)) then
                 allocate(field_ref(1)%val(0))
@@ -570,8 +570,8 @@
             endif
 #endif
 #elif       CK_ENABLED && D1_D1_ENABLED
-            array = [(1._CKC,-1._CKC), (1._CKC,-1._CKC)]
-            sep = [(1._CKC,-1._CKC)]
+            array = [(1._CKG,-1._CKG), (1._CKG,-1._CKG)]
+            sep = [(1._CKG,-1._CKG)]
 #if         CVXK_ENABLED || PVXK_ENABLED
             if (getOption(.false._LK, keep)) then
                 allocate(field_ref(1)%val(0))
@@ -586,8 +586,8 @@
             endif
 #endif
 #elif       RK_ENABLED && D1_D1_ENABLED
-            array = [1._RKC, 1._RKC]
-            sep = [1._RKC]
+            array = [1._RKG, 1._RKG]
+            sep = [1._RKG]
 #if         CVXK_ENABLED || PVXK_ENABLED
             if (getOption(.false._LK, keep)) then
                 allocate(field_ref(1)%val(0))
@@ -680,20 +680,20 @@
             sep = ["AA"]
 #if         CVXK_ENABLED || PVXK_ENABLED
             if (getOption(.false._LK, keep)) then
-                allocate(character(2,SKC) :: field_ref(1)%val(0))
+                allocate(character(2,SKG) :: field_ref(1)%val(0))
                 field_ref(2)%val = sep
-                allocate(character(2,SKC) :: field_ref(3)%val(0))
+                allocate(character(2,SKG) :: field_ref(3)%val(0))
                 field_ref(4)%val = sep
-                allocate(character(2,SKC) :: field_ref(5)%val(0))
+                allocate(character(2,SKG) :: field_ref(5)%val(0))
             else
-                allocate(character(2,SKC) :: field_ref(1)%val(0))
-                allocate(character(2,SKC) :: field_ref(2)%val(0))
-                allocate(character(2,SKC) :: field_ref(3)%val(0))
+                allocate(character(2,SKG) :: field_ref(1)%val(0))
+                allocate(character(2,SKG) :: field_ref(2)%val(0))
+                allocate(character(2,SKG) :: field_ref(3)%val(0))
             endif
 #endif
 #elif       IK_ENABLED && D1_D1_ENABLED
-            array = [1_IKC, 1_IKC]
-            sep = [1_IKC]
+            array = [1_IKG, 1_IKG]
+            sep = [1_IKG]
 #if         CVXK_ENABLED || PVXK_ENABLED
             if (getOption(.false._LK, keep)) then
                 allocate(field_ref(1)%val(0))
@@ -724,8 +724,8 @@
             endif
 #endif
 #elif       CK_ENABLED && D1_D1_ENABLED
-            array = [(1._CKC,-1._CKC), (1._CKC,-1._CKC)]
-            sep = [(1._CKC,-1._CKC)]
+            array = [(1._CKG,-1._CKG), (1._CKG,-1._CKG)]
+            sep = [(1._CKG,-1._CKG)]
 #if         CVXK_ENABLED || PVXK_ENABLED
             if (getOption(.false._LK, keep)) then
                 allocate(field_ref(1)%val(0))
@@ -740,8 +740,8 @@
             endif
 #endif
 #elif       RK_ENABLED && D1_D1_ENABLED
-            array = [1._RKC, 1._RKC]
-            sep = [1._RKC]
+            array = [1._RKG, 1._RKG]
+            sep = [1._RKG]
 #if         CVXK_ENABLED || PVXK_ENABLED
             if (getOption(.false._LK, keep)) then
                 allocate(field_ref(1)%val(0))
@@ -834,20 +834,20 @@
             sep = ["AA"]
 #if         CVXK_ENABLED || PVXK_ENABLED
             if (getOption(.false._LK, keep)) then
-                allocate(character(2,SKC) :: field_ref(1)%val(0))
+                allocate(character(2,SKG) :: field_ref(1)%val(0))
                 field_ref(2)%val = sep
-                allocate(character(2,SKC) :: field_ref(3)%val(0))
+                allocate(character(2,SKG) :: field_ref(3)%val(0))
                 field_ref(4)%val = sep
-                allocate(character(2,SKC) :: field_ref(5)%val(0))
+                allocate(character(2,SKG) :: field_ref(5)%val(0))
             else
-                allocate(character(2,SKC) :: field_ref(1)%val(0))
-                allocate(character(2,SKC) :: field_ref(2)%val(0))
-                allocate(character(2,SKC) :: field_ref(3)%val(0))
+                allocate(character(2,SKG) :: field_ref(1)%val(0))
+                allocate(character(2,SKG) :: field_ref(2)%val(0))
+                allocate(character(2,SKG) :: field_ref(3)%val(0))
             endif
 #endif
 #elif       IK_ENABLED && D1_D1_ENABLED
-            array = [1_IKC, 1_IKC]
-            sep = [1_IKC]
+            array = [1_IKG, 1_IKG]
+            sep = [1_IKG]
 #if         CVXK_ENABLED || PVXK_ENABLED
             if (getOption(.false._LK, keep)) then
                 allocate(field_ref(1)%val(0))
@@ -878,8 +878,8 @@
             endif
 #endif
 #elif       CK_ENABLED && D1_D1_ENABLED
-            array = [(1._CKC,-1._CKC), (1._CKC,-1._CKC)]
-            sep = [(1._CKC,-1._CKC)]
+            array = [(1._CKG,-1._CKG), (1._CKG,-1._CKG)]
+            sep = [(1._CKG,-1._CKG)]
 #if         CVXK_ENABLED || PVXK_ENABLED
             if (getOption(.false._LK, keep)) then
                 allocate(field_ref(1)%val(0))
@@ -894,8 +894,8 @@
             endif
 #endif
 #elif       RK_ENABLED && D1_D1_ENABLED
-            array = [1._RKC, 1._RKC]
-            sep = [1._RKC]
+            array = [1._RKG, 1._RKG]
+            sep = [1._RKG]
 #if         CVXK_ENABLED || PVXK_ENABLED
             if (getOption(.false._LK, keep)) then
                 allocate(field_ref(1)%val(0))
@@ -979,20 +979,20 @@
             sep = ["AA"]
 #if         CVXK_ENABLED || PVXK_ENABLED
             if (getOption(.false._LK, keep)) then
-                allocate(character(2,SKC) :: field_ref(1)%val(0))
+                allocate(character(2,SKG) :: field_ref(1)%val(0))
                 field_ref(2)%val = sep
-                allocate(character(2,SKC) :: field_ref(3)%val(0))
+                allocate(character(2,SKG) :: field_ref(3)%val(0))
                 field_ref(4)%val = sep
-                allocate(character(2,SKC) :: field_ref(5)%val(0))
+                allocate(character(2,SKG) :: field_ref(5)%val(0))
             else
-                allocate(character(2,SKC) :: field_ref(1)%val(0))
-                allocate(character(2,SKC) :: field_ref(2)%val(0))
-                allocate(character(2,SKC) :: field_ref(3)%val(0))
+                allocate(character(2,SKG) :: field_ref(1)%val(0))
+                allocate(character(2,SKG) :: field_ref(2)%val(0))
+                allocate(character(2,SKG) :: field_ref(3)%val(0))
             endif
 #endif
 #elif       IK_ENABLED && D1_D1_ENABLED
-            array = [1_IKC, 1_IKC]
-            sep = [1_IKC]
+            array = [1_IKG, 1_IKG]
+            sep = [1_IKG]
 #if         CVXK_ENABLED || PVXK_ENABLED
             if (getOption(.false._LK, keep)) then
                 allocate(field_ref(1)%val(0))
@@ -1023,8 +1023,8 @@
             endif
 #endif
 #elif       CK_ENABLED && D1_D1_ENABLED
-            array = [(1._CKC,-1._CKC), (1._CKC,-1._CKC)]
-            sep = [(1._CKC,-1._CKC)]
+            array = [(1._CKG,-1._CKG), (1._CKG,-1._CKG)]
+            sep = [(1._CKG,-1._CKG)]
 #if         CVXK_ENABLED || PVXK_ENABLED
             if (getOption(.false._LK, keep)) then
                 allocate(field_ref(1)%val(0))
@@ -1039,8 +1039,8 @@
             endif
 #endif
 #elif       RK_ENABLED && D1_D1_ENABLED
-            array = [1._RKC, 1._RKC]
-            sep = [1._RKC]
+            array = [1._RKG, 1._RKG]
+            sep = [1._RKG]
 #if         CVXK_ENABLED || PVXK_ENABLED
             if (getOption(.false._LK, keep)) then
                 allocate(field_ref(1)%val(0))
@@ -1115,25 +1115,25 @@
             sep = ["AA"]
 #if         CVXK_ENABLED || PVXK_ENABLED
             if (getOption(.false._LK, keep)) then
-                field_ref(1)%val = [character(2,SKC) ::]
+                field_ref(1)%val = [character(2,SKG) ::]
                 field_ref(2)%val = sep
                 field_ref(3)%val = ["AA"]
             else
-                field_ref(1)%val = [character(2,SKC) ::]
+                field_ref(1)%val = [character(2,SKG) ::]
                 field_ref(2)%val = ["AA"]
             endif
 #endif
 #elif       IK_ENABLED && D1_D1_ENABLED
-            array = [1_IKC, 1_IKC]
-            sep = [1_IKC]
+            array = [1_IKG, 1_IKG]
+            sep = [1_IKG]
 #if         CVXK_ENABLED || PVXK_ENABLED
             if (getOption(.false._LK, keep)) then
-                field_ref(1)%val = [integer(IKC) ::]
+                field_ref(1)%val = [integer(IKG) ::]
                 field_ref(2)%val = sep
-                field_ref(3)%val = [1_IKC]
+                field_ref(3)%val = [1_IKG]
             else
-                field_ref(1)%val = [integer(IKC) ::]
-                field_ref(2)%val = [1_IKC]
+                field_ref(1)%val = [integer(IKG) ::]
+                field_ref(2)%val = [1_IKG]
             endif
 #endif
 #elif       LK_ENABLED && D1_D1_ENABLED
@@ -1141,38 +1141,38 @@
             sep = [.false._LK]
 #if         CVXK_ENABLED || PVXK_ENABLED
             if (getOption(.false._LK, keep)) then
-                field_ref(1)%val = [logical(LKC) ::]
+                field_ref(1)%val = [logical(LKG) ::]
                 field_ref(2)%val = sep
-                field_ref(3)%val = [.false._LKC]
+                field_ref(3)%val = [.false._LKG]
             else
-                field_ref(1)%val = [logical(LKC) ::]
-                field_ref(2)%val = [.false._LKC]
+                field_ref(1)%val = [logical(LKG) ::]
+                field_ref(2)%val = [.false._LKG]
             endif
 #endif
 #elif       CK_ENABLED && D1_D1_ENABLED
-            array = [(1._CKC,-1._CKC), (1._CKC,-1._CKC)]
-            sep = [(1._CKC,-1._CKC)]
+            array = [(1._CKG,-1._CKG), (1._CKG,-1._CKG)]
+            sep = [(1._CKG,-1._CKG)]
 #if         CVXK_ENABLED || PVXK_ENABLED
             if (getOption(.false._LK, keep)) then
-                field_ref(1)%val = [complex(CKC) ::]
+                field_ref(1)%val = [complex(CKG) ::]
                 field_ref(2)%val = sep
-                field_ref(3)%val = [(1._CKC,-1._CKC)]
+                field_ref(3)%val = [(1._CKG,-1._CKG)]
             else
-                field_ref(1)%val = [complex(CKC) ::]
-                field_ref(2)%val = [(1._CKC,-1._CKC)]
+                field_ref(1)%val = [complex(CKG) ::]
+                field_ref(2)%val = [(1._CKG,-1._CKG)]
             endif
 #endif
 #elif       RK_ENABLED && D1_D1_ENABLED
-            array = [1._RKC, 1._RKC]
-            sep = [1._RKC]
+            array = [1._RKG, 1._RKG]
+            sep = [1._RKG]
 #if         CVXK_ENABLED || PVXK_ENABLED
             if (getOption(.false._LK, keep)) then
-                field_ref(1)%val = [real(RKC) ::]
+                field_ref(1)%val = [real(RKG) ::]
                 field_ref(2)%val = sep
-                field_ref(3)%val = [1._RKC]
+                field_ref(3)%val = [1._RKG]
             else
-                field_ref(1)%val = [real(RKC) ::]
-                field_ref(2)%val = [1._RKC]
+                field_ref(1)%val = [real(RKG) ::]
+                field_ref(2)%val = [1._RKG]
             endif
 #endif
 #endif
@@ -1222,15 +1222,15 @@
             array = ["AA", "AA"]
             sep = ["AA"]
 !#if         CVXK_ENABLED || PVXK_ENABLED
-!            allocate(character(2,SKC) :: field_ref(1)%val(0))
+!            allocate(character(2,SKG) :: field_ref(1)%val(0))
 !            field_ref(2)%val = ["AA"]
 !#endif
 #elif       IK_ENABLED && D1_D1_ENABLED
-            array = [1_IKC, 1_IKC]
-            sep = [1_IKC]
+            array = [1_IKG, 1_IKG]
+            sep = [1_IKG]
 !#if         CVXK_ENABLED || PVXK_ENABLED
 !            allocate(field_ref(1)%val(0))
-!            field_ref(2)%val = [1_IKC]
+!            field_ref(2)%val = [1_IKG]
 !#endif
 #elif       LK_ENABLED && D1_D1_ENABLED
             array = [.false._LK, .false._LK]
@@ -1240,18 +1240,18 @@
 !            field_ref(2)%val = [.false._LK]
 !#endif
 #elif       CK_ENABLED && D1_D1_ENABLED
-            array = [(1._CKC,-1._CKC), (1._CKC,-1._CKC)]
-            sep = [(1._CKC,-1._CKC)]
+            array = [(1._CKG,-1._CKG), (1._CKG,-1._CKG)]
+            sep = [(1._CKG,-1._CKG)]
 !#if         CVXK_ENABLED || PVXK_ENABLED
 !            allocate(field_ref(1)%val(0))
-!            field_ref(2)%val = [(1._CKC,-1._CKC)]
+!            field_ref(2)%val = [(1._CKG,-1._CKG)]
 !#endif
 #elif       RK_ENABLED && D1_D1_ENABLED
-            array = [1._RKC, 1._RKC]
-            sep = [1._RKC]
+            array = [1._RKG, 1._RKG]
+            sep = [1._RKG]
 !#if         CVXK_ENABLED || PVXK_ENABLED
 !            allocate(field_ref(1)%val(0))
-!            field_ref(2)%val = [1._RKC]
+!            field_ref(2)%val = [1._RKG]
 !#endif
 #endif
             instance = [-2_IK]
@@ -1318,13 +1318,13 @@
             sep = ["AA"]
 !#if         CVXK_ENABLED || PVXK_ENABLED
 !            field_ref(1)%val = ["AA"]
-!            allocate(character(2,SKC) :: field_ref(2)%val(0))
+!            allocate(character(2,SKG) :: field_ref(2)%val(0))
 !#endif
 #elif       IK_ENABLED && D1_D1_ENABLED
-            array = [1_IKC, 1_IKC]
-            sep = [1_IKC]
+            array = [1_IKG, 1_IKG]
+            sep = [1_IKG]
 !#if         CVXK_ENABLED || PVXK_ENABLED
-!            field_ref(1)%val = [1_IKC]
+!            field_ref(1)%val = [1_IKG]
 !            allocate(field_ref(2)%val(0))
 !#endif
 #elif       LK_ENABLED && D1_D1_ENABLED
@@ -1335,17 +1335,17 @@
 !            allocate(field_ref(2)%val(0))
 !#endif
 #elif       CK_ENABLED && D1_D1_ENABLED
-            array = [(1._CKC,-1._CKC), (1._CKC,-1._CKC)]
-            sep = [(1._CKC,-1._CKC)]
+            array = [(1._CKG,-1._CKG), (1._CKG,-1._CKG)]
+            sep = [(1._CKG,-1._CKG)]
 !#if         CVXK_ENABLED || PVXK_ENABLED
-!            field_ref(1)%val = [(1._CKC,-1._CKC)]
+!            field_ref(1)%val = [(1._CKG,-1._CKG)]
 !            allocate(field_ref(2)%val(0))
 !#endif
 #elif       RK_ENABLED && D1_D1_ENABLED
-            array = [1._RKC, 1._RKC]
-            sep = [1._RKC]
+            array = [1._RKG, 1._RKG]
+            sep = [1._RKG]
 !#if         CVXK_ENABLED || PVXK_ENABLED
-!            field_ref(1)%val = [1._RKC]
+!            field_ref(1)%val = [1._RKG]
 !            allocate(field_ref(2)%val(0))
 !#endif
 #endif
@@ -1410,11 +1410,11 @@
 #elif       SK_ENABLED && D1_D1_ENABLED
             array = ["AA", "AA"]
 !#if         CVXK_ENABLED || PVXK_ENABLED
-!            allocate(character(2,SKC) :: field_ref(1)%val(0))
-!            allocate(character(2,SKC) :: field_ref(2)%val(0))
+!            allocate(character(2,SKG) :: field_ref(1)%val(0))
+!            allocate(character(2,SKG) :: field_ref(2)%val(0))
 !#endif
 #elif       IK_ENABLED && D1_D1_ENABLED
-            array = [1_IKC, 1_IKC]
+            array = [1_IKG, 1_IKG]
 !#if         CVXK_ENABLED || PVXK_ENABLED
 !            allocate(field_ref(1)%val(0))
 !            allocate(field_ref(2)%val(0))
@@ -1426,13 +1426,13 @@
 !            allocate(field_ref(2)%val(0))
 !#endif
 #elif       CK_ENABLED && D1_D1_ENABLED
-            array = [(1._CKC,-1._CKC), (1._CKC,-1._CKC)]
+            array = [(1._CKG,-1._CKG), (1._CKG,-1._CKG)]
 !#if         CVXK_ENABLED || PVXK_ENABLED
 !            allocate(field_ref(1)%val(0))
 !            allocate(field_ref(2)%val(0))
 !#endif
 #elif       RK_ENABLED && D1_D1_ENABLED
-            array = [1._RKC, 1._RKC]
+            array = [1._RKG, 1._RKG]
 !#if         CVXK_ENABLED || PVXK_ENABLED
 !            allocate(field_ref(1)%val(0))
 !            allocate(field_ref(2)%val(0))
@@ -1497,13 +1497,13 @@
 #elif       SK_ENABLED && D1_D1_ENABLED
             array = ["AA", "AA"]
 #elif       IK_ENABLED && D1_D1_ENABLED
-            array = [1_IKC, 1_IKC]
+            array = [1_IKG, 1_IKG]
 #elif       LK_ENABLED && D1_D1_ENABLED
             array = [.false._LK, .false._LK]
 #elif       CK_ENABLED && D1_D1_ENABLED
-            array = [(1._CKC,-1._CKC), (1._CKC,-1._CKC)]
+            array = [(1._CKG,-1._CKG), (1._CKG,-1._CKG)]
 #elif       RK_ENABLED && D1_D1_ENABLED
-            array = [1._RKC, 1._RKC]
+            array = [1._RKG, 1._RKG]
 #endif
             sep = array
             instance = [0_IK, 3_IK]
@@ -1546,16 +1546,16 @@
             array = ["AA", "AA"]
             sep = [array, array]
 #elif       IK_ENABLED && D1_D1_ENABLED
-            array = [1_IKC, 1_IKC]
+            array = [1_IKG, 1_IKG]
             sep = [array, array]
 #elif       LK_ENABLED && D1_D1_ENABLED
             array = [.false._LK, .false._LK]
             sep = [array, array]
 #elif       CK_ENABLED && D1_D1_ENABLED
-            array = [(1._CKC,-1._CKC), (1._CKC,-1._CKC)]
+            array = [(1._CKG,-1._CKG), (1._CKG,-1._CKG)]
             sep = [array, array]
 #elif       RK_ENABLED && D1_D1_ENABLED
-            array = [1._RKC, 1._RKC]
+            array = [1._RKG, 1._RKG]
             sep = [array, array]
 #endif
             instance = [0_IK, 3_IK]
@@ -1621,16 +1621,16 @@
             array = ["AA", "AA", "BB", "BB", "CC", "CC", "AA", "AA"]
             sep = ["AA", "AA"]
 !#if         CVXK_ENABLED || PVXK_ENABLED
-!            allocate(character(2,SKC) :: field_ref(1)%val(0))
-!            allocate(character(2,SKC) :: field_ref(3)%val(0))
+!            allocate(character(2,SKG) :: field_ref(1)%val(0))
+!            allocate(character(2,SKG) :: field_ref(3)%val(0))
 !            field_ref(2)%val = ["BB", "CC"]
 !#endif
 #elif       IK_ENABLED && D1_D1_ENABLED
-            array = [1_IKC, 1_IKC, 2_IKC, 2_IKC, 3_IKC, 3_IKC, 1_IKC, 1_IKC]
-            sep = [1_IKC, 1_IKC]
+            array = [1_IKG, 1_IKG, 2_IKG, 2_IKG, 3_IKG, 3_IKG, 1_IKG, 1_IKG]
+            sep = [1_IKG, 1_IKG]
 !#if         CVXK_ENABLED || PVXK_ENABLED
 !            allocate(field_ref(1)%val(0))
-!            field_ref(2)%val = [2_IKC, 2_IKC, 3_IKC, 3_IKC]
+!            field_ref(2)%val = [2_IKG, 2_IKG, 3_IKG, 3_IKG]
 !            allocate(field_ref(3)%val(0))
 !#endif
 #elif       LK_ENABLED && D1_D1_ENABLED
@@ -1642,19 +1642,19 @@
 !            allocate(field_ref(3)%val(0))
 !#endif
 #elif       CK_ENABLED && D1_D1_ENABLED
-            array = [(1._CKC,-1._CKC), (1._CKC,-1._CKC), (2._CKC,-2._CKC), (2._CKC,-2._CKC), (3._CKC,-3._CKC), (3._CKC,-3._CKC), (1._CKC,-1._CKC), (1._CKC,-1._CKC)]
-            sep = [(1._CKC,-1._CKC), (1._CKC,-1._CKC)]
+            array = [(1._CKG,-1._CKG), (1._CKG,-1._CKG), (2._CKG,-2._CKG), (2._CKG,-2._CKG), (3._CKG,-3._CKG), (3._CKG,-3._CKG), (1._CKG,-1._CKG), (1._CKG,-1._CKG)]
+            sep = [(1._CKG,-1._CKG), (1._CKG,-1._CKG)]
 !#if         CVXK_ENABLED || PVXK_ENABLED
 !            allocate(field_ref(1)%val(0))
-!            field_ref(2)%val = [(2._CKC,-2._CKC), (2._CKC,-2._CKC), (3._CKC,-3._CKC), (3._CKC,-3._CKC)]
+!            field_ref(2)%val = [(2._CKG,-2._CKG), (2._CKG,-2._CKG), (3._CKG,-3._CKG), (3._CKG,-3._CKG)]
 !            allocate(field_ref(3)%val(0))
 !#endif
 #elif       RK_ENABLED && D1_D1_ENABLED
-            array = [1._RKC, 1._RKC, 2._RKC, 2._RKC, 3._RKC, 3._RKC, 1._RKC, 1._RKC]
-            sep = [1._RKC, 1._RKC]
+            array = [1._RKG, 1._RKG, 2._RKG, 2._RKG, 3._RKG, 3._RKG, 1._RKG, 1._RKG]
+            sep = [1._RKG, 1._RKG]
 !#if         CVXK_ENABLED || PVXK_ENABLED
 !            allocate(field_ref(1)%val(0))
-!            field_ref(2)%val = [2._RKC, 2._RKC, 3._RKC, 3._RKC]
+!            field_ref(2)%val = [2._RKG, 2._RKG, 3._RKG, 3._RKG]
 !            allocate(field_ref(3)%val(0))
 !#endif
 #endif
@@ -1723,17 +1723,17 @@
             array = ["AA", "AA"]
             sep = ["XX"]
 #elif       IK_ENABLED && D1_D1_ENABLED
-            array = [1_IKC, 1_IKC]
-            sep = [0_IKC]
+            array = [1_IKG, 1_IKG]
+            sep = [0_IKG]
 #elif       LK_ENABLED && D1_D1_ENABLED
             array = [.false._LK, .false._LK]
             sep = [.true._LK]
 #elif       CK_ENABLED && D1_D1_ENABLED
-            array = [(1._CKC,-1._CKC), (1._CKC,-1._CKC)]
-            sep = [(0._CKC,0._CKC)]
+            array = [(1._CKG,-1._CKG), (1._CKG,-1._CKG)]
+            sep = [(0._CKG,0._CKG)]
 #elif       RK_ENABLED && D1_D1_ENABLED
-            array = [1._RKC, 1._RKC]
-            sep = [0._RKC]
+            array = [1._RKG, 1._RKG]
+            sep = [0._RKG]
 #endif
             instance = [0_IK, 3_IK]
 #if         CVXK_ENABLED || PVXK_ENABLED
@@ -1801,17 +1801,17 @@
             array = ["AA", "XX", "AA", "XX", "AA"]
             sep = ["XX"]
 #elif       IK_ENABLED && D1_D1_ENABLED
-            array = [1_IKC, 0_IKC, 1_IKC, 0_IKC, 1_IKC]
-            sep = [0_IKC]
+            array = [1_IKG, 0_IKG, 1_IKG, 0_IKG, 1_IKG]
+            sep = [0_IKG]
 #elif       LK_ENABLED && D1_D1_ENABLED
             array = [.false._LK, .true._LK, .false._LK, .true._LK, .false._LK]
             sep = [.true._LK]
 #elif       CK_ENABLED && D1_D1_ENABLED
-            array = [(1._CKC,-1._CKC), (0._CKC,0._CKC), (1._CKC,-1._CKC), (0._CKC,0._CKC), (1._CKC,-1._CKC)]
-            sep = [(0._CKC,0._CKC)]
+            array = [(1._CKG,-1._CKG), (0._CKG,0._CKG), (1._CKG,-1._CKG), (0._CKG,0._CKG), (1._CKG,-1._CKG)]
+            sep = [(0._CKG,0._CKG)]
 #elif       RK_ENABLED && D1_D1_ENABLED
-            array = [1._RKC, 0._RKC, 1._RKC, 0._RKC, 1._RKC]
-            sep = [0._RKC]
+            array = [1._RKG, 0._RKG, 1._RKG, 0._RKG, 1._RKG]
+            sep = [0._RKG]
 #endif
             instance = [1_IK, -1_IK]
 #if         CVXK_ENABLED || PVXK_ENABLED
@@ -1878,17 +1878,17 @@
             array = ["AA", "AA"]
             sep = ["AA"]
 #elif       IK_ENABLED && D1_D1_ENABLED
-            array = [1_IKC, 1_IKC]
-            sep = [1_IKC]
+            array = [1_IKG, 1_IKG]
+            sep = [1_IKG]
 #elif       LK_ENABLED && D1_D1_ENABLED
             array = [.false._LK, .false._LK]
             sep = [.false._LK]
 #elif       CK_ENABLED && D1_D1_ENABLED
-            array = [(1._CKC,-1._CKC), (1._CKC,-1._CKC)]
-            sep = [(1._CKC,-1._CKC)]
+            array = [(1._CKG,-1._CKG), (1._CKG,-1._CKG)]
+            sep = [(1._CKG,-1._CKG)]
 #elif       RK_ENABLED && D1_D1_ENABLED
-            array = [1._RKC, 1._RKC]
-            sep = [1._RKC]
+            array = [1._RKG, 1._RKG]
+            sep = [1._RKG]
 #endif
             instance = [0_IK, 3_IK]
 #if         CVXK_ENABLED || PVXK_ENABLED

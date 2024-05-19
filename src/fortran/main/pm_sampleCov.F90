@@ -354,11 +354,11 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCovCorStd_ULD_UXD_CK5
 #endif
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
         type(uppDia_type)   , intent(in)                            :: subsetr
-        real(TKC)           , intent(in)    , contiguous            :: std(:)
-        complex(TKC)        , intent(in)    , contiguous            :: cor(:,:)
-        complex(TKC)                                                :: cov(size(cor, 1, IK), size(cor,2))
+        real(TKG)           , intent(in)    , contiguous            :: std(:)
+        complex(TKG)        , intent(in)    , contiguous            :: cor(:,:)
+        complex(TKG)                                                :: cov(size(cor, 1, IK), size(cor,2))
     end function
 #endif
 
@@ -367,11 +367,11 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCovCorStd_ULD_UXD_CK4
 #endif
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
         type(uppDia_type)   , intent(in)                            :: subsetr
-        real(TKC)           , intent(in)    , contiguous            :: std(:)
-        complex(TKC)        , intent(in)    , contiguous            :: cor(:,:)
-        complex(TKC)                                                :: cov(size(cor, 1, IK), size(cor,2))
+        real(TKG)           , intent(in)    , contiguous            :: std(:)
+        complex(TKG)        , intent(in)    , contiguous            :: cor(:,:)
+        complex(TKG)                                                :: cov(size(cor, 1, IK), size(cor,2))
     end function
 #endif
 
@@ -380,11 +380,11 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCovCorStd_ULD_UXD_CK3
 #endif
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
         type(uppDia_type)   , intent(in)                            :: subsetr
-        real(TKC)           , intent(in)    , contiguous            :: std(:)
-        complex(TKC)        , intent(in)    , contiguous            :: cor(:,:)
-        complex(TKC)                                                :: cov(size(cor, 1, IK), size(cor,2))
+        real(TKG)           , intent(in)    , contiguous            :: std(:)
+        complex(TKG)        , intent(in)    , contiguous            :: cor(:,:)
+        complex(TKG)                                                :: cov(size(cor, 1, IK), size(cor,2))
     end function
 #endif
 
@@ -393,11 +393,11 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCovCorStd_ULD_UXD_CK2
 #endif
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
         type(uppDia_type)   , intent(in)                            :: subsetr
-        real(TKC)           , intent(in)    , contiguous            :: std(:)
-        complex(TKC)        , intent(in)    , contiguous            :: cor(:,:)
-        complex(TKC)                                                :: cov(size(cor, 1, IK), size(cor,2))
+        real(TKG)           , intent(in)    , contiguous            :: std(:)
+        complex(TKG)        , intent(in)    , contiguous            :: cor(:,:)
+        complex(TKG)                                                :: cov(size(cor, 1, IK), size(cor,2))
     end function
 #endif
 
@@ -406,11 +406,11 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCovCorStd_ULD_UXD_CK1
 #endif
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
         type(uppDia_type)   , intent(in)                            :: subsetr
-        real(TKC)           , intent(in)    , contiguous            :: std(:)
-        complex(TKC)        , intent(in)    , contiguous            :: cor(:,:)
-        complex(TKC)                                                :: cov(size(cor, 1, IK), size(cor,2))
+        real(TKG)           , intent(in)    , contiguous            :: std(:)
+        complex(TKG)        , intent(in)    , contiguous            :: cor(:,:)
+        complex(TKG)                                                :: cov(size(cor, 1, IK), size(cor,2))
     end function
 #endif
 
@@ -421,11 +421,11 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCovCorStd_ULD_UXD_RK5
 #endif
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
         type(uppDia_type)   , intent(in)                            :: subsetr
-        real(TKC)           , intent(in)    , contiguous            :: std(:)
-        real(TKC)           , intent(in)    , contiguous            :: cor(:,:)
-        real(TKC)                                                   :: cov(size(cor, 1, IK), size(cor,2))
+        real(TKG)           , intent(in)    , contiguous            :: std(:)
+        real(TKG)           , intent(in)    , contiguous            :: cor(:,:)
+        real(TKG)                                                   :: cov(size(cor, 1, IK), size(cor,2))
     end function
 #endif
 
@@ -434,11 +434,11 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCovCorStd_ULD_UXD_RK4
 #endif
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
         type(uppDia_type)   , intent(in)                            :: subsetr
-        real(TKC)           , intent(in)    , contiguous            :: std(:)
-        real(TKC)           , intent(in)    , contiguous            :: cor(:,:)
-        real(TKC)                                                   :: cov(size(cor, 1, IK), size(cor,2))
+        real(TKG)           , intent(in)    , contiguous            :: std(:)
+        real(TKG)           , intent(in)    , contiguous            :: cor(:,:)
+        real(TKG)                                                   :: cov(size(cor, 1, IK), size(cor,2))
     end function
 #endif
 
@@ -447,11 +447,11 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCovCorStd_ULD_UXD_RK3
 #endif
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
         type(uppDia_type)   , intent(in)                            :: subsetr
-        real(TKC)           , intent(in)    , contiguous            :: std(:)
-        real(TKC)           , intent(in)    , contiguous            :: cor(:,:)
-        real(TKC)                                                   :: cov(size(cor, 1, IK), size(cor,2))
+        real(TKG)           , intent(in)    , contiguous            :: std(:)
+        real(TKG)           , intent(in)    , contiguous            :: cor(:,:)
+        real(TKG)                                                   :: cov(size(cor, 1, IK), size(cor,2))
     end function
 #endif
 
@@ -460,11 +460,11 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCovCorStd_ULD_UXD_RK2
 #endif
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
         type(uppDia_type)   , intent(in)                            :: subsetr
-        real(TKC)           , intent(in)    , contiguous            :: std(:)
-        real(TKC)           , intent(in)    , contiguous            :: cor(:,:)
-        real(TKC)                                                   :: cov(size(cor, 1, IK), size(cor,2))
+        real(TKG)           , intent(in)    , contiguous            :: std(:)
+        real(TKG)           , intent(in)    , contiguous            :: cor(:,:)
+        real(TKG)                                                   :: cov(size(cor, 1, IK), size(cor,2))
     end function
 #endif
 
@@ -473,11 +473,11 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCovCorStd_ULD_UXD_RK1
 #endif
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
         type(uppDia_type)   , intent(in)                            :: subsetr
-        real(TKC)           , intent(in)    , contiguous            :: std(:)
-        real(TKC)           , intent(in)    , contiguous            :: cor(:,:)
-        real(TKC)                                                   :: cov(size(cor, 1, IK), size(cor,2))
+        real(TKG)           , intent(in)    , contiguous            :: std(:)
+        real(TKG)           , intent(in)    , contiguous            :: cor(:,:)
+        real(TKG)                                                   :: cov(size(cor, 1, IK), size(cor,2))
     end function
 #endif
 
@@ -494,11 +494,11 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCovCorStd_ULD_XLD_CK5
 #endif
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
         type(lowDia_type)   , intent(in)                            :: subsetr
-        real(TKC)           , intent(in)    , contiguous            :: std(:)
-        complex(TKC)        , intent(in)    , contiguous            :: cor(:,:)
-        complex(TKC)                                                :: cov(size(cor, 1, IK), size(cor,2))
+        real(TKG)           , intent(in)    , contiguous            :: std(:)
+        complex(TKG)        , intent(in)    , contiguous            :: cor(:,:)
+        complex(TKG)                                                :: cov(size(cor, 1, IK), size(cor,2))
     end function
 #endif
 
@@ -507,11 +507,11 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCovCorStd_ULD_XLD_CK4
 #endif
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
         type(lowDia_type)   , intent(in)                            :: subsetr
-        real(TKC)           , intent(in)    , contiguous            :: std(:)
-        complex(TKC)        , intent(in)    , contiguous            :: cor(:,:)
-        complex(TKC)                                                :: cov(size(cor, 1, IK), size(cor,2))
+        real(TKG)           , intent(in)    , contiguous            :: std(:)
+        complex(TKG)        , intent(in)    , contiguous            :: cor(:,:)
+        complex(TKG)                                                :: cov(size(cor, 1, IK), size(cor,2))
     end function
 #endif
 
@@ -520,11 +520,11 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCovCorStd_ULD_XLD_CK3
 #endif
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
         type(lowDia_type)   , intent(in)                            :: subsetr
-        real(TKC)           , intent(in)    , contiguous            :: std(:)
-        complex(TKC)        , intent(in)    , contiguous            :: cor(:,:)
-        complex(TKC)                                                :: cov(size(cor, 1, IK), size(cor,2))
+        real(TKG)           , intent(in)    , contiguous            :: std(:)
+        complex(TKG)        , intent(in)    , contiguous            :: cor(:,:)
+        complex(TKG)                                                :: cov(size(cor, 1, IK), size(cor,2))
     end function
 #endif
 
@@ -533,11 +533,11 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCovCorStd_ULD_XLD_CK2
 #endif
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
         type(lowDia_type)   , intent(in)                            :: subsetr
-        real(TKC)           , intent(in)    , contiguous            :: std(:)
-        complex(TKC)        , intent(in)    , contiguous            :: cor(:,:)
-        complex(TKC)                                                :: cov(size(cor, 1, IK), size(cor,2))
+        real(TKG)           , intent(in)    , contiguous            :: std(:)
+        complex(TKG)        , intent(in)    , contiguous            :: cor(:,:)
+        complex(TKG)                                                :: cov(size(cor, 1, IK), size(cor,2))
     end function
 #endif
 
@@ -546,11 +546,11 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCovCorStd_ULD_XLD_CK1
 #endif
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
         type(lowDia_type)   , intent(in)                            :: subsetr
-        real(TKC)           , intent(in)    , contiguous            :: std(:)
-        complex(TKC)        , intent(in)    , contiguous            :: cor(:,:)
-        complex(TKC)                                                :: cov(size(cor, 1, IK), size(cor,2))
+        real(TKG)           , intent(in)    , contiguous            :: std(:)
+        complex(TKG)        , intent(in)    , contiguous            :: cor(:,:)
+        complex(TKG)                                                :: cov(size(cor, 1, IK), size(cor,2))
     end function
 #endif
 
@@ -561,11 +561,11 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCovCorStd_ULD_XLD_RK5
 #endif
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
         type(lowDia_type)   , intent(in)                            :: subsetr
-        real(TKC)           , intent(in)    , contiguous            :: std(:)
-        real(TKC)           , intent(in)    , contiguous            :: cor(:,:)
-        real(TKC)                                                   :: cov(size(cor, 1, IK), size(cor,2))
+        real(TKG)           , intent(in)    , contiguous            :: std(:)
+        real(TKG)           , intent(in)    , contiguous            :: cor(:,:)
+        real(TKG)                                                   :: cov(size(cor, 1, IK), size(cor,2))
     end function
 #endif
 
@@ -574,11 +574,11 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCovCorStd_ULD_XLD_RK4
 #endif
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
         type(lowDia_type)   , intent(in)                            :: subsetr
-        real(TKC)           , intent(in)    , contiguous            :: std(:)
-        real(TKC)           , intent(in)    , contiguous            :: cor(:,:)
-        real(TKC)                                                   :: cov(size(cor, 1, IK), size(cor,2))
+        real(TKG)           , intent(in)    , contiguous            :: std(:)
+        real(TKG)           , intent(in)    , contiguous            :: cor(:,:)
+        real(TKG)                                                   :: cov(size(cor, 1, IK), size(cor,2))
     end function
 #endif
 
@@ -587,11 +587,11 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCovCorStd_ULD_XLD_RK3
 #endif
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
         type(lowDia_type)   , intent(in)                            :: subsetr
-        real(TKC)           , intent(in)    , contiguous            :: std(:)
-        real(TKC)           , intent(in)    , contiguous            :: cor(:,:)
-        real(TKC)                                                   :: cov(size(cor, 1, IK), size(cor,2))
+        real(TKG)           , intent(in)    , contiguous            :: std(:)
+        real(TKG)           , intent(in)    , contiguous            :: cor(:,:)
+        real(TKG)                                                   :: cov(size(cor, 1, IK), size(cor,2))
     end function
 #endif
 
@@ -600,11 +600,11 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCovCorStd_ULD_XLD_RK2
 #endif
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
         type(lowDia_type)   , intent(in)                            :: subsetr
-        real(TKC)           , intent(in)    , contiguous            :: std(:)
-        real(TKC)           , intent(in)    , contiguous            :: cor(:,:)
-        real(TKC)                                                   :: cov(size(cor, 1, IK), size(cor,2))
+        real(TKG)           , intent(in)    , contiguous            :: std(:)
+        real(TKG)           , intent(in)    , contiguous            :: cor(:,:)
+        real(TKG)                                                   :: cov(size(cor, 1, IK), size(cor,2))
     end function
 #endif
 
@@ -613,11 +613,11 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCovCorStd_ULD_XLD_RK1
 #endif
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
         type(lowDia_type)   , intent(in)                            :: subsetr
-        real(TKC)           , intent(in)    , contiguous            :: std(:)
-        real(TKC)           , intent(in)    , contiguous            :: cor(:,:)
-        real(TKC)                                                   :: cov(size(cor, 1, IK), size(cor,2))
+        real(TKG)           , intent(in)    , contiguous            :: std(:)
+        real(TKG)           , intent(in)    , contiguous            :: cor(:,:)
+        real(TKG)                                                   :: cov(size(cor, 1, IK), size(cor,2))
     end function
 #endif
 
@@ -642,10 +642,10 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCovWNO_XY_CK5
 #endif
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
         class(weight_type)      , intent(in)                , optional  :: correction
-        complex(TKC)            , intent(in)    , contiguous            :: x(:), y(:)
-        complex(TKC)                                                    :: cov(2, 2)
+        complex(TKG)            , intent(in)    , contiguous            :: x(:), y(:)
+        complex(TKG)                                                    :: cov(2, 2)
     end function
 #endif
 
@@ -654,10 +654,10 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCovWNO_XY_CK4
 #endif
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
         class(weight_type)      , intent(in)                , optional  :: correction
-        complex(TKC)            , intent(in)    , contiguous            :: x(:), y(:)
-        complex(TKC)                                                    :: cov(2, 2)
+        complex(TKG)            , intent(in)    , contiguous            :: x(:), y(:)
+        complex(TKG)                                                    :: cov(2, 2)
     end function
 #endif
 
@@ -666,10 +666,10 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCovWNO_XY_CK3
 #endif
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
         class(weight_type)      , intent(in)                , optional  :: correction
-        complex(TKC)            , intent(in)    , contiguous            :: x(:), y(:)
-        complex(TKC)                                                    :: cov(2, 2)
+        complex(TKG)            , intent(in)    , contiguous            :: x(:), y(:)
+        complex(TKG)                                                    :: cov(2, 2)
     end function
 #endif
 
@@ -678,10 +678,10 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCovWNO_XY_CK2
 #endif
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
         class(weight_type)      , intent(in)                , optional  :: correction
-        complex(TKC)            , intent(in)    , contiguous            :: x(:), y(:)
-        complex(TKC)                                                    :: cov(2, 2)
+        complex(TKG)            , intent(in)    , contiguous            :: x(:), y(:)
+        complex(TKG)                                                    :: cov(2, 2)
     end function
 #endif
 
@@ -690,10 +690,10 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCovWNO_XY_CK1
 #endif
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
         class(weight_type)      , intent(in)                , optional  :: correction
-        complex(TKC)            , intent(in)    , contiguous            :: x(:), y(:)
-        complex(TKC)                                                    :: cov(2, 2)
+        complex(TKG)            , intent(in)    , contiguous            :: x(:), y(:)
+        complex(TKG)                                                    :: cov(2, 2)
     end function
 #endif
 
@@ -704,10 +704,10 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCovWNO_XY_RK5
 #endif
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
         class(weight_type)      , intent(in)                , optional  :: correction
-        real(TKC)               , intent(in)    , contiguous            :: x(:), y(:)
-        real(TKC)                                                       :: cov(2, 2)
+        real(TKG)               , intent(in)    , contiguous            :: x(:), y(:)
+        real(TKG)                                                       :: cov(2, 2)
     end function
 #endif
 
@@ -716,10 +716,10 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCovWNO_XY_RK4
 #endif
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
         class(weight_type)      , intent(in)                , optional  :: correction
-        real(TKC)               , intent(in)    , contiguous            :: x(:), y(:)
-        real(TKC)                                                       :: cov(2, 2)
+        real(TKG)               , intent(in)    , contiguous            :: x(:), y(:)
+        real(TKG)                                                       :: cov(2, 2)
     end function
 #endif
 
@@ -728,10 +728,10 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCovWNO_XY_RK3
 #endif
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
         class(weight_type)      , intent(in)                , optional  :: correction
-        real(TKC)               , intent(in)    , contiguous            :: x(:), y(:)
-        real(TKC)                                                       :: cov(2, 2)
+        real(TKG)               , intent(in)    , contiguous            :: x(:), y(:)
+        real(TKG)                                                       :: cov(2, 2)
     end function
 #endif
 
@@ -740,10 +740,10 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCovWNO_XY_RK2
 #endif
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
         class(weight_type)      , intent(in)                , optional  :: correction
-        real(TKC)               , intent(in)    , contiguous            :: x(:), y(:)
-        real(TKC)                                                       :: cov(2, 2)
+        real(TKG)               , intent(in)    , contiguous            :: x(:), y(:)
+        real(TKG)                                                       :: cov(2, 2)
     end function
 #endif
 
@@ -752,10 +752,10 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCovWNO_XY_RK1
 #endif
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
         class(weight_type)      , intent(in)                , optional  :: correction
-        real(TKC)               , intent(in)    , contiguous            :: x(:), y(:)
-        real(TKC)                                                       :: cov(2, 2)
+        real(TKG)               , intent(in)    , contiguous            :: x(:), y(:)
+        real(TKG)                                                       :: cov(2, 2)
     end function
 #endif
 
@@ -774,11 +774,11 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCovWTI_XY_CK5
 #endif
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
         class(weight_type)      , intent(in)                , optional  :: correction
         integer(IK)             , intent(in)    , contiguous            :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous            :: x(:), y(:)
-        complex(TKC)                                                    :: cov(2, 2)
+        complex(TKG)            , intent(in)    , contiguous            :: x(:), y(:)
+        complex(TKG)                                                    :: cov(2, 2)
     end function
 #endif
 
@@ -787,11 +787,11 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCovWTI_XY_CK4
 #endif
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
         class(weight_type)      , intent(in)                , optional  :: correction
         integer(IK)             , intent(in)    , contiguous            :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous            :: x(:), y(:)
-        complex(TKC)                                                    :: cov(2, 2)
+        complex(TKG)            , intent(in)    , contiguous            :: x(:), y(:)
+        complex(TKG)                                                    :: cov(2, 2)
     end function
 #endif
 
@@ -800,11 +800,11 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCovWTI_XY_CK3
 #endif
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
         class(weight_type)      , intent(in)                , optional  :: correction
         integer(IK)             , intent(in)    , contiguous            :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous            :: x(:), y(:)
-        complex(TKC)                                                    :: cov(2, 2)
+        complex(TKG)            , intent(in)    , contiguous            :: x(:), y(:)
+        complex(TKG)                                                    :: cov(2, 2)
     end function
 #endif
 
@@ -813,11 +813,11 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCovWTI_XY_CK2
 #endif
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
         class(weight_type)      , intent(in)                , optional  :: correction
         integer(IK)             , intent(in)    , contiguous            :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous            :: x(:), y(:)
-        complex(TKC)                                                    :: cov(2, 2)
+        complex(TKG)            , intent(in)    , contiguous            :: x(:), y(:)
+        complex(TKG)                                                    :: cov(2, 2)
     end function
 #endif
 
@@ -826,11 +826,11 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCovWTI_XY_CK1
 #endif
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
         class(weight_type)      , intent(in)                , optional  :: correction
         integer(IK)             , intent(in)    , contiguous            :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous            :: x(:), y(:)
-        complex(TKC)                                                    :: cov(2, 2)
+        complex(TKG)            , intent(in)    , contiguous            :: x(:), y(:)
+        complex(TKG)                                                    :: cov(2, 2)
     end function
 #endif
 
@@ -841,11 +841,11 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCovWTI_XY_RK5
 #endif
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
         class(weight_type)      , intent(in)                , optional  :: correction
         integer(IK)             , intent(in)    , contiguous            :: weight(:)
-        real(TKC)               , intent(in)    , contiguous            :: x(:), y(:)
-        real(TKC)                                                       :: cov(2, 2)
+        real(TKG)               , intent(in)    , contiguous            :: x(:), y(:)
+        real(TKG)                                                       :: cov(2, 2)
     end function
 #endif
 
@@ -854,11 +854,11 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCovWTI_XY_RK4
 #endif
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
         class(weight_type)      , intent(in)                , optional  :: correction
         integer(IK)             , intent(in)    , contiguous            :: weight(:)
-        real(TKC)               , intent(in)    , contiguous            :: x(:), y(:)
-        real(TKC)                                                       :: cov(2, 2)
+        real(TKG)               , intent(in)    , contiguous            :: x(:), y(:)
+        real(TKG)                                                       :: cov(2, 2)
     end function
 #endif
 
@@ -867,11 +867,11 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCovWTI_XY_RK3
 #endif
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
         class(weight_type)      , intent(in)                , optional  :: correction
         integer(IK)             , intent(in)    , contiguous            :: weight(:)
-        real(TKC)               , intent(in)    , contiguous            :: x(:), y(:)
-        real(TKC)                                                       :: cov(2, 2)
+        real(TKG)               , intent(in)    , contiguous            :: x(:), y(:)
+        real(TKG)                                                       :: cov(2, 2)
     end function
 #endif
 
@@ -880,11 +880,11 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCovWTI_XY_RK2
 #endif
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
         class(weight_type)      , intent(in)                , optional  :: correction
         integer(IK)             , intent(in)    , contiguous            :: weight(:)
-        real(TKC)               , intent(in)    , contiguous            :: x(:), y(:)
-        real(TKC)                                                       :: cov(2, 2)
+        real(TKG)               , intent(in)    , contiguous            :: x(:), y(:)
+        real(TKG)                                                       :: cov(2, 2)
     end function
 #endif
 
@@ -893,11 +893,11 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCovWTI_XY_RK1
 #endif
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
         class(weight_type)      , intent(in)                , optional  :: correction
         integer(IK)             , intent(in)    , contiguous            :: weight(:)
-        real(TKC)               , intent(in)    , contiguous            :: x(:), y(:)
-        real(TKC)                                                       :: cov(2, 2)
+        real(TKG)               , intent(in)    , contiguous            :: x(:), y(:)
+        real(TKG)                                                       :: cov(2, 2)
     end function
 #endif
 
@@ -916,11 +916,11 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCovWTR_XY_CK5
 #endif
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
         class(weight_type)      , intent(in)                , optional  :: correction
-        real(TKC)               , intent(in)    , contiguous            :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous            :: x(:), y(:)
-        complex(TKC)                                                    :: cov(2, 2)
+        real(TKG)               , intent(in)    , contiguous            :: weight(:)
+        complex(TKG)            , intent(in)    , contiguous            :: x(:), y(:)
+        complex(TKG)                                                    :: cov(2, 2)
     end function
 #endif
 
@@ -929,11 +929,11 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCovWTR_XY_CK4
 #endif
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
         class(weight_type)      , intent(in)                , optional  :: correction
-        real(TKC)               , intent(in)    , contiguous            :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous            :: x(:), y(:)
-        complex(TKC)                                                    :: cov(2, 2)
+        real(TKG)               , intent(in)    , contiguous            :: weight(:)
+        complex(TKG)            , intent(in)    , contiguous            :: x(:), y(:)
+        complex(TKG)                                                    :: cov(2, 2)
     end function
 #endif
 
@@ -942,11 +942,11 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCovWTR_XY_CK3
 #endif
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
         class(weight_type)      , intent(in)                , optional  :: correction
-        real(TKC)               , intent(in)    , contiguous            :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous            :: x(:), y(:)
-        complex(TKC)                                                    :: cov(2, 2)
+        real(TKG)               , intent(in)    , contiguous            :: weight(:)
+        complex(TKG)            , intent(in)    , contiguous            :: x(:), y(:)
+        complex(TKG)                                                    :: cov(2, 2)
     end function
 #endif
 
@@ -955,11 +955,11 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCovWTR_XY_CK2
 #endif
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
         class(weight_type)      , intent(in)                , optional  :: correction
-        real(TKC)               , intent(in)    , contiguous            :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous            :: x(:), y(:)
-        complex(TKC)                                                    :: cov(2, 2)
+        real(TKG)               , intent(in)    , contiguous            :: weight(:)
+        complex(TKG)            , intent(in)    , contiguous            :: x(:), y(:)
+        complex(TKG)                                                    :: cov(2, 2)
     end function
 #endif
 
@@ -968,11 +968,11 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCovWTR_XY_CK1
 #endif
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
         class(weight_type)      , intent(in)                , optional  :: correction
-        real(TKC)               , intent(in)    , contiguous            :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous            :: x(:), y(:)
-        complex(TKC)                                                    :: cov(2, 2)
+        real(TKG)               , intent(in)    , contiguous            :: weight(:)
+        complex(TKG)            , intent(in)    , contiguous            :: x(:), y(:)
+        complex(TKG)                                                    :: cov(2, 2)
     end function
 #endif
 
@@ -983,11 +983,11 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCovWTR_XY_RK5
 #endif
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
         class(weight_type)      , intent(in)                , optional  :: correction
-        real(TKC)               , intent(in)    , contiguous            :: weight(:)
-        real(TKC)               , intent(in)    , contiguous            :: x(:), y(:)
-        real(TKC)                                                       :: cov(2, 2)
+        real(TKG)               , intent(in)    , contiguous            :: weight(:)
+        real(TKG)               , intent(in)    , contiguous            :: x(:), y(:)
+        real(TKG)                                                       :: cov(2, 2)
     end function
 #endif
 
@@ -996,11 +996,11 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCovWTR_XY_RK4
 #endif
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
         class(weight_type)      , intent(in)                , optional  :: correction
-        real(TKC)               , intent(in)    , contiguous            :: weight(:)
-        real(TKC)               , intent(in)    , contiguous            :: x(:), y(:)
-        real(TKC)                                                       :: cov(2, 2)
+        real(TKG)               , intent(in)    , contiguous            :: weight(:)
+        real(TKG)               , intent(in)    , contiguous            :: x(:), y(:)
+        real(TKG)                                                       :: cov(2, 2)
     end function
 #endif
 
@@ -1009,11 +1009,11 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCovWTR_XY_RK3
 #endif
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
         class(weight_type)      , intent(in)                , optional  :: correction
-        real(TKC)               , intent(in)    , contiguous            :: weight(:)
-        real(TKC)               , intent(in)    , contiguous            :: x(:), y(:)
-        real(TKC)                                                       :: cov(2, 2)
+        real(TKG)               , intent(in)    , contiguous            :: weight(:)
+        real(TKG)               , intent(in)    , contiguous            :: x(:), y(:)
+        real(TKG)                                                       :: cov(2, 2)
     end function
 #endif
 
@@ -1022,11 +1022,11 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCovWTR_XY_RK2
 #endif
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
         class(weight_type)      , intent(in)                , optional  :: correction
-        real(TKC)               , intent(in)    , contiguous            :: weight(:)
-        real(TKC)               , intent(in)    , contiguous            :: x(:), y(:)
-        real(TKC)                                                       :: cov(2, 2)
+        real(TKG)               , intent(in)    , contiguous            :: weight(:)
+        real(TKG)               , intent(in)    , contiguous            :: x(:), y(:)
+        real(TKG)                                                       :: cov(2, 2)
     end function
 #endif
 
@@ -1035,11 +1035,11 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCovWTR_XY_RK1
 #endif
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
         class(weight_type)      , intent(in)                , optional  :: correction
-        real(TKC)               , intent(in)    , contiguous            :: weight(:)
-        real(TKC)               , intent(in)    , contiguous            :: x(:), y(:)
-        real(TKC)                                                       :: cov(2, 2)
+        real(TKG)               , intent(in)    , contiguous            :: weight(:)
+        real(TKG)               , intent(in)    , contiguous            :: x(:), y(:)
+        real(TKG)                                                       :: cov(2, 2)
     end function
 #endif
 
@@ -1060,11 +1060,11 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCovWNO_ULD_CK5
 #endif
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
         integer(IK)             , intent(in)                            :: dim
         class(weight_type)      , intent(in)                , optional  :: correction
-        complex(TKC)            , intent(in)    , contiguous            :: sample(:,:)
-        complex(TKC)                                                    :: cov(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
+        complex(TKG)            , intent(in)    , contiguous            :: sample(:,:)
+        complex(TKG)                                                    :: cov(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
     end function
 #endif
 
@@ -1073,11 +1073,11 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCovWNO_ULD_CK4
 #endif
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
         integer(IK)             , intent(in)                            :: dim
         class(weight_type)      , intent(in)                , optional  :: correction
-        complex(TKC)            , intent(in)    , contiguous            :: sample(:,:)
-        complex(TKC)                                                    :: cov(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
+        complex(TKG)            , intent(in)    , contiguous            :: sample(:,:)
+        complex(TKG)                                                    :: cov(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
     end function
 #endif
 
@@ -1086,11 +1086,11 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCovWNO_ULD_CK3
 #endif
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
         integer(IK)             , intent(in)                            :: dim
         class(weight_type)      , intent(in)                , optional  :: correction
-        complex(TKC)            , intent(in)    , contiguous            :: sample(:,:)
-        complex(TKC)                                                    :: cov(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
+        complex(TKG)            , intent(in)    , contiguous            :: sample(:,:)
+        complex(TKG)                                                    :: cov(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
     end function
 #endif
 
@@ -1099,11 +1099,11 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCovWNO_ULD_CK2
 #endif
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
         integer(IK)             , intent(in)                            :: dim
         class(weight_type)      , intent(in)                , optional  :: correction
-        complex(TKC)            , intent(in)    , contiguous            :: sample(:,:)
-        complex(TKC)                                                    :: cov(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
+        complex(TKG)            , intent(in)    , contiguous            :: sample(:,:)
+        complex(TKG)                                                    :: cov(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
     end function
 #endif
 
@@ -1112,11 +1112,11 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCovWNO_ULD_CK1
 #endif
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
         integer(IK)             , intent(in)                            :: dim
         class(weight_type)      , intent(in)                , optional  :: correction
-        complex(TKC)            , intent(in)    , contiguous            :: sample(:,:)
-        complex(TKC)                                                    :: cov(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
+        complex(TKG)            , intent(in)    , contiguous            :: sample(:,:)
+        complex(TKG)                                                    :: cov(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
     end function
 #endif
 
@@ -1127,11 +1127,11 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCovWNO_ULD_RK5
 #endif
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
         integer(IK)             , intent(in)                            :: dim
         class(weight_type)      , intent(in)                , optional  :: correction
-        real(TKC)               , intent(in)    , contiguous            :: sample(:,:)
-        real(TKC)                                                       :: cov(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
+        real(TKG)               , intent(in)    , contiguous            :: sample(:,:)
+        real(TKG)                                                       :: cov(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
     end function
 #endif
 
@@ -1140,11 +1140,11 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCovWNO_ULD_RK4
 #endif
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
         integer(IK)             , intent(in)                            :: dim
         class(weight_type)      , intent(in)                , optional  :: correction
-        real(TKC)               , intent(in)    , contiguous            :: sample(:,:)
-        real(TKC)                                                       :: cov(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
+        real(TKG)               , intent(in)    , contiguous            :: sample(:,:)
+        real(TKG)                                                       :: cov(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
     end function
 #endif
 
@@ -1153,11 +1153,11 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCovWNO_ULD_RK3
 #endif
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
         integer(IK)             , intent(in)                            :: dim
         class(weight_type)      , intent(in)                , optional  :: correction
-        real(TKC)               , intent(in)    , contiguous            :: sample(:,:)
-        real(TKC)                                                       :: cov(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
+        real(TKG)               , intent(in)    , contiguous            :: sample(:,:)
+        real(TKG)                                                       :: cov(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
     end function
 #endif
 
@@ -1166,11 +1166,11 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCovWNO_ULD_RK2
 #endif
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
         integer(IK)             , intent(in)                            :: dim
         class(weight_type)      , intent(in)                , optional  :: correction
-        real(TKC)               , intent(in)    , contiguous            :: sample(:,:)
-        real(TKC)                                                       :: cov(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
+        real(TKG)               , intent(in)    , contiguous            :: sample(:,:)
+        real(TKG)                                                       :: cov(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
     end function
 #endif
 
@@ -1179,11 +1179,11 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCovWNO_ULD_RK1
 #endif
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
         integer(IK)             , intent(in)                            :: dim
         class(weight_type)      , intent(in)                , optional  :: correction
-        real(TKC)               , intent(in)    , contiguous            :: sample(:,:)
-        real(TKC)                                                       :: cov(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
+        real(TKG)               , intent(in)    , contiguous            :: sample(:,:)
+        real(TKG)                                                       :: cov(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
     end function
 #endif
 
@@ -1202,12 +1202,12 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCovWTI_ULD_CK5
 #endif
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
         integer(IK)             , intent(in)                            :: dim
         class(weight_type)      , intent(in)                , optional  :: correction
         integer(IK)             , intent(in)    , contiguous            :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous            :: sample(:,:)
-        complex(TKC)                                                    :: cov(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
+        complex(TKG)            , intent(in)    , contiguous            :: sample(:,:)
+        complex(TKG)                                                    :: cov(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
     end function
 #endif
 
@@ -1216,12 +1216,12 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCovWTI_ULD_CK4
 #endif
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
         integer(IK)             , intent(in)                            :: dim
         class(weight_type)      , intent(in)                , optional  :: correction
         integer(IK)             , intent(in)    , contiguous            :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous            :: sample(:,:)
-        complex(TKC)                                                    :: cov(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
+        complex(TKG)            , intent(in)    , contiguous            :: sample(:,:)
+        complex(TKG)                                                    :: cov(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
     end function
 #endif
 
@@ -1230,12 +1230,12 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCovWTI_ULD_CK3
 #endif
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
         integer(IK)             , intent(in)                            :: dim
         class(weight_type)      , intent(in)                , optional  :: correction
         integer(IK)             , intent(in)    , contiguous            :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous            :: sample(:,:)
-        complex(TKC)                                                    :: cov(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
+        complex(TKG)            , intent(in)    , contiguous            :: sample(:,:)
+        complex(TKG)                                                    :: cov(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
     end function
 #endif
 
@@ -1244,12 +1244,12 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCovWTI_ULD_CK2
 #endif
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
         integer(IK)             , intent(in)                            :: dim
         class(weight_type)      , intent(in)                , optional  :: correction
         integer(IK)             , intent(in)    , contiguous            :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous            :: sample(:,:)
-        complex(TKC)                                                    :: cov(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
+        complex(TKG)            , intent(in)    , contiguous            :: sample(:,:)
+        complex(TKG)                                                    :: cov(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
     end function
 #endif
 
@@ -1258,12 +1258,12 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCovWTI_ULD_CK1
 #endif
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
         integer(IK)             , intent(in)                            :: dim
         class(weight_type)      , intent(in)                , optional  :: correction
         integer(IK)             , intent(in)    , contiguous            :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous            :: sample(:,:)
-        complex(TKC)                                                    :: cov(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
+        complex(TKG)            , intent(in)    , contiguous            :: sample(:,:)
+        complex(TKG)                                                    :: cov(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
     end function
 #endif
 
@@ -1274,12 +1274,12 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCovWTI_ULD_RK5
 #endif
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
         integer(IK)             , intent(in)                            :: dim
         class(weight_type)      , intent(in)                , optional  :: correction
         integer(IK)             , intent(in)    , contiguous            :: weight(:)
-        real(TKC)               , intent(in)    , contiguous            :: sample(:,:)
-        real(TKC)                                                       :: cov(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
+        real(TKG)               , intent(in)    , contiguous            :: sample(:,:)
+        real(TKG)                                                       :: cov(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
     end function
 #endif
 
@@ -1288,12 +1288,12 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCovWTI_ULD_RK4
 #endif
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
         integer(IK)             , intent(in)                            :: dim
         class(weight_type)      , intent(in)                , optional  :: correction
         integer(IK)             , intent(in)    , contiguous            :: weight(:)
-        real(TKC)               , intent(in)    , contiguous            :: sample(:,:)
-        real(TKC)                                                       :: cov(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
+        real(TKG)               , intent(in)    , contiguous            :: sample(:,:)
+        real(TKG)                                                       :: cov(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
     end function
 #endif
 
@@ -1302,12 +1302,12 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCovWTI_ULD_RK3
 #endif
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
         integer(IK)             , intent(in)                            :: dim
         class(weight_type)      , intent(in)                , optional  :: correction
         integer(IK)             , intent(in)    , contiguous            :: weight(:)
-        real(TKC)               , intent(in)    , contiguous            :: sample(:,:)
-        real(TKC)                                                       :: cov(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
+        real(TKG)               , intent(in)    , contiguous            :: sample(:,:)
+        real(TKG)                                                       :: cov(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
     end function
 #endif
 
@@ -1316,12 +1316,12 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCovWTI_ULD_RK2
 #endif
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
         integer(IK)             , intent(in)                            :: dim
         class(weight_type)      , intent(in)                , optional  :: correction
         integer(IK)             , intent(in)    , contiguous            :: weight(:)
-        real(TKC)               , intent(in)    , contiguous            :: sample(:,:)
-        real(TKC)                                                       :: cov(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
+        real(TKG)               , intent(in)    , contiguous            :: sample(:,:)
+        real(TKG)                                                       :: cov(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
     end function
 #endif
 
@@ -1330,12 +1330,12 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCovWTI_ULD_RK1
 #endif
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
         integer(IK)             , intent(in)                            :: dim
         class(weight_type)      , intent(in)                , optional  :: correction
         integer(IK)             , intent(in)    , contiguous            :: weight(:)
-        real(TKC)               , intent(in)    , contiguous            :: sample(:,:)
-        real(TKC)                                                       :: cov(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
+        real(TKG)               , intent(in)    , contiguous            :: sample(:,:)
+        real(TKG)                                                       :: cov(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
     end function
 #endif
 
@@ -1354,12 +1354,12 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCovWTR_ULD_CK5
 #endif
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
         integer(IK)             , intent(in)                            :: dim
         class(weight_type)      , intent(in)                , optional  :: correction
-        real(TKC)               , intent(in)    , contiguous            :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous            :: sample(:,:)
-        complex(TKC)                                                    :: cov(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
+        real(TKG)               , intent(in)    , contiguous            :: weight(:)
+        complex(TKG)            , intent(in)    , contiguous            :: sample(:,:)
+        complex(TKG)                                                    :: cov(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
     end function
 #endif
 
@@ -1368,12 +1368,12 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCovWTR_ULD_CK4
 #endif
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
         integer(IK)             , intent(in)                            :: dim
         class(weight_type)      , intent(in)                , optional  :: correction
-        real(TKC)               , intent(in)    , contiguous            :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous            :: sample(:,:)
-        complex(TKC)                                                    :: cov(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
+        real(TKG)               , intent(in)    , contiguous            :: weight(:)
+        complex(TKG)            , intent(in)    , contiguous            :: sample(:,:)
+        complex(TKG)                                                    :: cov(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
     end function
 #endif
 
@@ -1382,12 +1382,12 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCovWTR_ULD_CK3
 #endif
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
         integer(IK)             , intent(in)                            :: dim
         class(weight_type)      , intent(in)                , optional  :: correction
-        real(TKC)               , intent(in)    , contiguous            :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous            :: sample(:,:)
-        complex(TKC)                                                    :: cov(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
+        real(TKG)               , intent(in)    , contiguous            :: weight(:)
+        complex(TKG)            , intent(in)    , contiguous            :: sample(:,:)
+        complex(TKG)                                                    :: cov(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
     end function
 #endif
 
@@ -1396,12 +1396,12 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCovWTR_ULD_CK2
 #endif
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
         integer(IK)             , intent(in)                            :: dim
         class(weight_type)      , intent(in)                , optional  :: correction
-        real(TKC)               , intent(in)    , contiguous            :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous            :: sample(:,:)
-        complex(TKC)                                                    :: cov(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
+        real(TKG)               , intent(in)    , contiguous            :: weight(:)
+        complex(TKG)            , intent(in)    , contiguous            :: sample(:,:)
+        complex(TKG)                                                    :: cov(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
     end function
 #endif
 
@@ -1410,12 +1410,12 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCovWTR_ULD_CK1
 #endif
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
         integer(IK)             , intent(in)                            :: dim
         class(weight_type)      , intent(in)                , optional  :: correction
-        real(TKC)               , intent(in)    , contiguous            :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous            :: sample(:,:)
-        complex(TKC)                                                    :: cov(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
+        real(TKG)               , intent(in)    , contiguous            :: weight(:)
+        complex(TKG)            , intent(in)    , contiguous            :: sample(:,:)
+        complex(TKG)                                                    :: cov(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
     end function
 #endif
 
@@ -1426,12 +1426,12 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCovWTR_ULD_RK5
 #endif
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
         integer(IK)             , intent(in)                            :: dim
         class(weight_type)      , intent(in)                , optional  :: correction
-        real(TKC)               , intent(in)    , contiguous            :: weight(:)
-        real(TKC)               , intent(in)    , contiguous            :: sample(:,:)
-        real(TKC)                                                       :: cov(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
+        real(TKG)               , intent(in)    , contiguous            :: weight(:)
+        real(TKG)               , intent(in)    , contiguous            :: sample(:,:)
+        real(TKG)                                                       :: cov(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
     end function
 #endif
 
@@ -1440,12 +1440,12 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCovWTR_ULD_RK4
 #endif
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
         integer(IK)             , intent(in)                            :: dim
         class(weight_type)      , intent(in)                , optional  :: correction
-        real(TKC)               , intent(in)    , contiguous            :: weight(:)
-        real(TKC)               , intent(in)    , contiguous            :: sample(:,:)
-        real(TKC)                                                       :: cov(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
+        real(TKG)               , intent(in)    , contiguous            :: weight(:)
+        real(TKG)               , intent(in)    , contiguous            :: sample(:,:)
+        real(TKG)                                                       :: cov(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
     end function
 #endif
 
@@ -1454,12 +1454,12 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCovWTR_ULD_RK3
 #endif
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
         integer(IK)             , intent(in)                            :: dim
         class(weight_type)      , intent(in)                , optional  :: correction
-        real(TKC)               , intent(in)    , contiguous            :: weight(:)
-        real(TKC)               , intent(in)    , contiguous            :: sample(:,:)
-        real(TKC)                                                       :: cov(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
+        real(TKG)               , intent(in)    , contiguous            :: weight(:)
+        real(TKG)               , intent(in)    , contiguous            :: sample(:,:)
+        real(TKG)                                                       :: cov(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
     end function
 #endif
 
@@ -1468,12 +1468,12 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCovWTR_ULD_RK2
 #endif
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
         integer(IK)             , intent(in)                            :: dim
         class(weight_type)      , intent(in)                , optional  :: correction
-        real(TKC)               , intent(in)    , contiguous            :: weight(:)
-        real(TKC)               , intent(in)    , contiguous            :: sample(:,:)
-        real(TKC)                                                       :: cov(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
+        real(TKG)               , intent(in)    , contiguous            :: weight(:)
+        real(TKG)               , intent(in)    , contiguous            :: sample(:,:)
+        real(TKG)                                                       :: cov(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
     end function
 #endif
 
@@ -1482,12 +1482,12 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCovWTR_ULD_RK1
 #endif
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
         integer(IK)             , intent(in)                            :: dim
         class(weight_type)      , intent(in)                , optional  :: correction
-        real(TKC)               , intent(in)    , contiguous            :: weight(:)
-        real(TKC)               , intent(in)    , contiguous            :: sample(:,:)
-        real(TKC)                                                       :: cov(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
+        real(TKG)               , intent(in)    , contiguous            :: weight(:)
+        real(TKG)               , intent(in)    , contiguous            :: sample(:,:)
+        real(TKG)                                                       :: cov(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
     end function
 #endif
 
@@ -1704,12 +1704,12 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovCorStd_UXD_UXD_CK5
 #endif
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
         type(uppDia_type)   , intent(in)                            :: subset
         type(uppDia_type)   , intent(in)                            :: subsetr
-        real(TKC)           , intent(in)    , contiguous            :: std(:)
-        complex(TKC)        , intent(in)    , contiguous            :: cor(:,:)
-        complex(TKC)        , intent(inout) , contiguous            :: cov(:,:)
+        real(TKG)           , intent(in)    , contiguous            :: std(:)
+        complex(TKG)        , intent(in)    , contiguous            :: cor(:,:)
+        complex(TKG)        , intent(inout) , contiguous            :: cov(:,:)
     end subroutine
 #endif
 
@@ -1718,12 +1718,12 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovCorStd_UXD_UXD_CK4
 #endif
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
         type(uppDia_type)   , intent(in)                            :: subset
         type(uppDia_type)   , intent(in)                            :: subsetr
-        real(TKC)           , intent(in)    , contiguous            :: std(:)
-        complex(TKC)        , intent(in)    , contiguous            :: cor(:,:)
-        complex(TKC)        , intent(inout) , contiguous            :: cov(:,:)
+        real(TKG)           , intent(in)    , contiguous            :: std(:)
+        complex(TKG)        , intent(in)    , contiguous            :: cor(:,:)
+        complex(TKG)        , intent(inout) , contiguous            :: cov(:,:)
     end subroutine
 #endif
 
@@ -1732,12 +1732,12 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovCorStd_UXD_UXD_CK3
 #endif
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
         type(uppDia_type)   , intent(in)                            :: subset
         type(uppDia_type)   , intent(in)                            :: subsetr
-        real(TKC)           , intent(in)    , contiguous            :: std(:)
-        complex(TKC)        , intent(in)    , contiguous            :: cor(:,:)
-        complex(TKC)        , intent(inout) , contiguous            :: cov(:,:)
+        real(TKG)           , intent(in)    , contiguous            :: std(:)
+        complex(TKG)        , intent(in)    , contiguous            :: cor(:,:)
+        complex(TKG)        , intent(inout) , contiguous            :: cov(:,:)
     end subroutine
 #endif
 
@@ -1746,12 +1746,12 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovCorStd_UXD_UXD_CK2
 #endif
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
         type(uppDia_type)   , intent(in)                            :: subset
         type(uppDia_type)   , intent(in)                            :: subsetr
-        real(TKC)           , intent(in)    , contiguous            :: std(:)
-        complex(TKC)        , intent(in)    , contiguous            :: cor(:,:)
-        complex(TKC)        , intent(inout) , contiguous            :: cov(:,:)
+        real(TKG)           , intent(in)    , contiguous            :: std(:)
+        complex(TKG)        , intent(in)    , contiguous            :: cor(:,:)
+        complex(TKG)        , intent(inout) , contiguous            :: cov(:,:)
     end subroutine
 #endif
 
@@ -1760,12 +1760,12 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovCorStd_UXD_UXD_CK1
 #endif
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
         type(uppDia_type)   , intent(in)                            :: subset
         type(uppDia_type)   , intent(in)                            :: subsetr
-        real(TKC)           , intent(in)    , contiguous            :: std(:)
-        complex(TKC)        , intent(in)    , contiguous            :: cor(:,:)
-        complex(TKC)        , intent(inout) , contiguous            :: cov(:,:)
+        real(TKG)           , intent(in)    , contiguous            :: std(:)
+        complex(TKG)        , intent(in)    , contiguous            :: cor(:,:)
+        complex(TKG)        , intent(inout) , contiguous            :: cov(:,:)
     end subroutine
 #endif
 
@@ -1776,12 +1776,12 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovCorStd_UXD_UXD_RK5
 #endif
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
         type(uppDia_type)   , intent(in)                            :: subset
         type(uppDia_type)   , intent(in)                            :: subsetr
-        real(TKC)           , intent(in)    , contiguous            :: std(:)
-        real(TKC)           , intent(in)    , contiguous            :: cor(:,:)
-        real(TKC)           , intent(inout) , contiguous            :: cov(:,:)
+        real(TKG)           , intent(in)    , contiguous            :: std(:)
+        real(TKG)           , intent(in)    , contiguous            :: cor(:,:)
+        real(TKG)           , intent(inout) , contiguous            :: cov(:,:)
     end subroutine
 #endif
 
@@ -1790,12 +1790,12 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovCorStd_UXD_UXD_RK4
 #endif
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
         type(uppDia_type)   , intent(in)                            :: subset
         type(uppDia_type)   , intent(in)                            :: subsetr
-        real(TKC)           , intent(in)    , contiguous            :: std(:)
-        real(TKC)           , intent(in)    , contiguous            :: cor(:,:)
-        real(TKC)           , intent(inout) , contiguous            :: cov(:,:)
+        real(TKG)           , intent(in)    , contiguous            :: std(:)
+        real(TKG)           , intent(in)    , contiguous            :: cor(:,:)
+        real(TKG)           , intent(inout) , contiguous            :: cov(:,:)
     end subroutine
 #endif
 
@@ -1804,12 +1804,12 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovCorStd_UXD_UXD_RK3
 #endif
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
         type(uppDia_type)   , intent(in)                            :: subset
         type(uppDia_type)   , intent(in)                            :: subsetr
-        real(TKC)           , intent(in)    , contiguous            :: std(:)
-        real(TKC)           , intent(in)    , contiguous            :: cor(:,:)
-        real(TKC)           , intent(inout) , contiguous            :: cov(:,:)
+        real(TKG)           , intent(in)    , contiguous            :: std(:)
+        real(TKG)           , intent(in)    , contiguous            :: cor(:,:)
+        real(TKG)           , intent(inout) , contiguous            :: cov(:,:)
     end subroutine
 #endif
 
@@ -1818,12 +1818,12 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovCorStd_UXD_UXD_RK2
 #endif
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
         type(uppDia_type)   , intent(in)                            :: subset
         type(uppDia_type)   , intent(in)                            :: subsetr
-        real(TKC)           , intent(in)    , contiguous            :: std(:)
-        real(TKC)           , intent(in)    , contiguous            :: cor(:,:)
-        real(TKC)           , intent(inout) , contiguous            :: cov(:,:)
+        real(TKG)           , intent(in)    , contiguous            :: std(:)
+        real(TKG)           , intent(in)    , contiguous            :: cor(:,:)
+        real(TKG)           , intent(inout) , contiguous            :: cov(:,:)
     end subroutine
 #endif
 
@@ -1832,12 +1832,12 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovCorStd_UXD_UXD_RK1
 #endif
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
         type(uppDia_type)   , intent(in)                            :: subset
         type(uppDia_type)   , intent(in)                            :: subsetr
-        real(TKC)           , intent(in)    , contiguous            :: std(:)
-        real(TKC)           , intent(in)    , contiguous            :: cor(:,:)
-        real(TKC)           , intent(inout) , contiguous            :: cov(:,:)
+        real(TKG)           , intent(in)    , contiguous            :: std(:)
+        real(TKG)           , intent(in)    , contiguous            :: cor(:,:)
+        real(TKG)           , intent(inout) , contiguous            :: cov(:,:)
     end subroutine
 #endif
 
@@ -1854,12 +1854,12 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovCorStd_UXD_XLD_CK5
 #endif
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
         type(uppDia_type)   , intent(in)                            :: subset
         type(lowDia_type)   , intent(in)                            :: subsetr
-        real(TKC)           , intent(in)    , contiguous            :: std(:)
-        complex(TKC)        , intent(in)    , contiguous            :: cor(:,:)
-        complex(TKC)        , intent(inout) , contiguous            :: cov(:,:)
+        real(TKG)           , intent(in)    , contiguous            :: std(:)
+        complex(TKG)        , intent(in)    , contiguous            :: cor(:,:)
+        complex(TKG)        , intent(inout) , contiguous            :: cov(:,:)
     end subroutine
 #endif
 
@@ -1868,12 +1868,12 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovCorStd_UXD_XLD_CK4
 #endif
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
         type(uppDia_type)   , intent(in)                            :: subset
         type(lowDia_type)   , intent(in)                            :: subsetr
-        real(TKC)           , intent(in)    , contiguous            :: std(:)
-        complex(TKC)        , intent(in)    , contiguous            :: cor(:,:)
-        complex(TKC)        , intent(inout) , contiguous            :: cov(:,:)
+        real(TKG)           , intent(in)    , contiguous            :: std(:)
+        complex(TKG)        , intent(in)    , contiguous            :: cor(:,:)
+        complex(TKG)        , intent(inout) , contiguous            :: cov(:,:)
     end subroutine
 #endif
 
@@ -1882,12 +1882,12 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovCorStd_UXD_XLD_CK3
 #endif
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
         type(uppDia_type)   , intent(in)                            :: subset
         type(lowDia_type)   , intent(in)                            :: subsetr
-        real(TKC)           , intent(in)    , contiguous            :: std(:)
-        complex(TKC)        , intent(in)    , contiguous            :: cor(:,:)
-        complex(TKC)        , intent(inout) , contiguous            :: cov(:,:)
+        real(TKG)           , intent(in)    , contiguous            :: std(:)
+        complex(TKG)        , intent(in)    , contiguous            :: cor(:,:)
+        complex(TKG)        , intent(inout) , contiguous            :: cov(:,:)
     end subroutine
 #endif
 
@@ -1896,12 +1896,12 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovCorStd_UXD_XLD_CK2
 #endif
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
         type(uppDia_type)   , intent(in)                            :: subset
         type(lowDia_type)   , intent(in)                            :: subsetr
-        real(TKC)           , intent(in)    , contiguous            :: std(:)
-        complex(TKC)        , intent(in)    , contiguous            :: cor(:,:)
-        complex(TKC)        , intent(inout) , contiguous            :: cov(:,:)
+        real(TKG)           , intent(in)    , contiguous            :: std(:)
+        complex(TKG)        , intent(in)    , contiguous            :: cor(:,:)
+        complex(TKG)        , intent(inout) , contiguous            :: cov(:,:)
     end subroutine
 #endif
 
@@ -1910,12 +1910,12 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovCorStd_UXD_XLD_CK1
 #endif
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
         type(uppDia_type)   , intent(in)                            :: subset
         type(lowDia_type)   , intent(in)                            :: subsetr
-        real(TKC)           , intent(in)    , contiguous            :: std(:)
-        complex(TKC)        , intent(in)    , contiguous            :: cor(:,:)
-        complex(TKC)        , intent(inout) , contiguous            :: cov(:,:)
+        real(TKG)           , intent(in)    , contiguous            :: std(:)
+        complex(TKG)        , intent(in)    , contiguous            :: cor(:,:)
+        complex(TKG)        , intent(inout) , contiguous            :: cov(:,:)
     end subroutine
 #endif
 
@@ -1926,12 +1926,12 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovCorStd_UXD_XLD_RK5
 #endif
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
         type(uppDia_type)   , intent(in)                            :: subset
         type(lowDia_type)   , intent(in)                            :: subsetr
-        real(TKC)           , intent(in)    , contiguous            :: std(:)
-        real(TKC)           , intent(in)    , contiguous            :: cor(:,:)
-        real(TKC)           , intent(inout) , contiguous            :: cov(:,:)
+        real(TKG)           , intent(in)    , contiguous            :: std(:)
+        real(TKG)           , intent(in)    , contiguous            :: cor(:,:)
+        real(TKG)           , intent(inout) , contiguous            :: cov(:,:)
     end subroutine
 #endif
 
@@ -1940,12 +1940,12 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovCorStd_UXD_XLD_RK4
 #endif
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
         type(uppDia_type)   , intent(in)                            :: subset
         type(lowDia_type)   , intent(in)                            :: subsetr
-        real(TKC)           , intent(in)    , contiguous            :: std(:)
-        real(TKC)           , intent(in)    , contiguous            :: cor(:,:)
-        real(TKC)           , intent(inout) , contiguous            :: cov(:,:)
+        real(TKG)           , intent(in)    , contiguous            :: std(:)
+        real(TKG)           , intent(in)    , contiguous            :: cor(:,:)
+        real(TKG)           , intent(inout) , contiguous            :: cov(:,:)
     end subroutine
 #endif
 
@@ -1954,12 +1954,12 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovCorStd_UXD_XLD_RK3
 #endif
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
         type(uppDia_type)   , intent(in)                            :: subset
         type(lowDia_type)   , intent(in)                            :: subsetr
-        real(TKC)           , intent(in)    , contiguous            :: std(:)
-        real(TKC)           , intent(in)    , contiguous            :: cor(:,:)
-        real(TKC)           , intent(inout) , contiguous            :: cov(:,:)
+        real(TKG)           , intent(in)    , contiguous            :: std(:)
+        real(TKG)           , intent(in)    , contiguous            :: cor(:,:)
+        real(TKG)           , intent(inout) , contiguous            :: cov(:,:)
     end subroutine
 #endif
 
@@ -1968,12 +1968,12 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovCorStd_UXD_XLD_RK2
 #endif
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
         type(uppDia_type)   , intent(in)                            :: subset
         type(lowDia_type)   , intent(in)                            :: subsetr
-        real(TKC)           , intent(in)    , contiguous            :: std(:)
-        real(TKC)           , intent(in)    , contiguous            :: cor(:,:)
-        real(TKC)           , intent(inout) , contiguous            :: cov(:,:)
+        real(TKG)           , intent(in)    , contiguous            :: std(:)
+        real(TKG)           , intent(in)    , contiguous            :: cor(:,:)
+        real(TKG)           , intent(inout) , contiguous            :: cov(:,:)
     end subroutine
 #endif
 
@@ -1982,12 +1982,12 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovCorStd_UXD_XLD_RK1
 #endif
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
         type(uppDia_type)   , intent(in)                            :: subset
         type(lowDia_type)   , intent(in)                            :: subsetr
-        real(TKC)           , intent(in)    , contiguous            :: std(:)
-        real(TKC)           , intent(in)    , contiguous            :: cor(:,:)
-        real(TKC)           , intent(inout) , contiguous            :: cov(:,:)
+        real(TKG)           , intent(in)    , contiguous            :: std(:)
+        real(TKG)           , intent(in)    , contiguous            :: cor(:,:)
+        real(TKG)           , intent(inout) , contiguous            :: cov(:,:)
     end subroutine
 #endif
 
@@ -2004,12 +2004,12 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovCorStd_XLD_UXD_CK5
 #endif
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
         type(lowDia_type)   , intent(in)                            :: subset
         type(uppDia_type)   , intent(in)                            :: subsetr
-        real(TKC)           , intent(in)    , contiguous            :: std(:)
-        complex(TKC)        , intent(in)    , contiguous            :: cor(:,:)
-        complex(TKC)        , intent(inout) , contiguous            :: cov(:,:)
+        real(TKG)           , intent(in)    , contiguous            :: std(:)
+        complex(TKG)        , intent(in)    , contiguous            :: cor(:,:)
+        complex(TKG)        , intent(inout) , contiguous            :: cov(:,:)
     end subroutine
 #endif
 
@@ -2018,12 +2018,12 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovCorStd_XLD_UXD_CK4
 #endif
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
         type(lowDia_type)   , intent(in)                            :: subset
         type(uppDia_type)   , intent(in)                            :: subsetr
-        real(TKC)           , intent(in)    , contiguous            :: std(:)
-        complex(TKC)        , intent(in)    , contiguous            :: cor(:,:)
-        complex(TKC)        , intent(inout) , contiguous            :: cov(:,:)
+        real(TKG)           , intent(in)    , contiguous            :: std(:)
+        complex(TKG)        , intent(in)    , contiguous            :: cor(:,:)
+        complex(TKG)        , intent(inout) , contiguous            :: cov(:,:)
     end subroutine
 #endif
 
@@ -2032,12 +2032,12 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovCorStd_XLD_UXD_CK3
 #endif
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
         type(lowDia_type)   , intent(in)                            :: subset
         type(uppDia_type)   , intent(in)                            :: subsetr
-        real(TKC)           , intent(in)    , contiguous            :: std(:)
-        complex(TKC)        , intent(in)    , contiguous            :: cor(:,:)
-        complex(TKC)        , intent(inout) , contiguous            :: cov(:,:)
+        real(TKG)           , intent(in)    , contiguous            :: std(:)
+        complex(TKG)        , intent(in)    , contiguous            :: cor(:,:)
+        complex(TKG)        , intent(inout) , contiguous            :: cov(:,:)
     end subroutine
 #endif
 
@@ -2046,12 +2046,12 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovCorStd_XLD_UXD_CK2
 #endif
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
         type(lowDia_type)   , intent(in)                            :: subset
         type(uppDia_type)   , intent(in)                            :: subsetr
-        real(TKC)           , intent(in)    , contiguous            :: std(:)
-        complex(TKC)        , intent(in)    , contiguous            :: cor(:,:)
-        complex(TKC)        , intent(inout) , contiguous            :: cov(:,:)
+        real(TKG)           , intent(in)    , contiguous            :: std(:)
+        complex(TKG)        , intent(in)    , contiguous            :: cor(:,:)
+        complex(TKG)        , intent(inout) , contiguous            :: cov(:,:)
     end subroutine
 #endif
 
@@ -2060,12 +2060,12 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovCorStd_XLD_UXD_CK1
 #endif
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
         type(lowDia_type)   , intent(in)                            :: subset
         type(uppDia_type)   , intent(in)                            :: subsetr
-        real(TKC)           , intent(in)    , contiguous            :: std(:)
-        complex(TKC)        , intent(in)    , contiguous            :: cor(:,:)
-        complex(TKC)        , intent(inout) , contiguous            :: cov(:,:)
+        real(TKG)           , intent(in)    , contiguous            :: std(:)
+        complex(TKG)        , intent(in)    , contiguous            :: cor(:,:)
+        complex(TKG)        , intent(inout) , contiguous            :: cov(:,:)
     end subroutine
 #endif
 
@@ -2076,12 +2076,12 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovCorStd_XLD_UXD_RK5
 #endif
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
         type(lowDia_type)   , intent(in)                            :: subset
         type(uppDia_type)   , intent(in)                            :: subsetr
-        real(TKC)           , intent(in)    , contiguous            :: std(:)
-        real(TKC)           , intent(in)    , contiguous            :: cor(:,:)
-        real(TKC)           , intent(inout) , contiguous            :: cov(:,:)
+        real(TKG)           , intent(in)    , contiguous            :: std(:)
+        real(TKG)           , intent(in)    , contiguous            :: cor(:,:)
+        real(TKG)           , intent(inout) , contiguous            :: cov(:,:)
     end subroutine
 #endif
 
@@ -2090,12 +2090,12 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovCorStd_XLD_UXD_RK4
 #endif
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
         type(lowDia_type)   , intent(in)                            :: subset
         type(uppDia_type)   , intent(in)                            :: subsetr
-        real(TKC)           , intent(in)    , contiguous            :: std(:)
-        real(TKC)           , intent(in)    , contiguous            :: cor(:,:)
-        real(TKC)           , intent(inout) , contiguous            :: cov(:,:)
+        real(TKG)           , intent(in)    , contiguous            :: std(:)
+        real(TKG)           , intent(in)    , contiguous            :: cor(:,:)
+        real(TKG)           , intent(inout) , contiguous            :: cov(:,:)
     end subroutine
 #endif
 
@@ -2104,12 +2104,12 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovCorStd_XLD_UXD_RK3
 #endif
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
         type(lowDia_type)   , intent(in)                            :: subset
         type(uppDia_type)   , intent(in)                            :: subsetr
-        real(TKC)           , intent(in)    , contiguous            :: std(:)
-        real(TKC)           , intent(in)    , contiguous            :: cor(:,:)
-        real(TKC)           , intent(inout) , contiguous            :: cov(:,:)
+        real(TKG)           , intent(in)    , contiguous            :: std(:)
+        real(TKG)           , intent(in)    , contiguous            :: cor(:,:)
+        real(TKG)           , intent(inout) , contiguous            :: cov(:,:)
     end subroutine
 #endif
 
@@ -2118,12 +2118,12 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovCorStd_XLD_UXD_RK2
 #endif
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
         type(lowDia_type)   , intent(in)                            :: subset
         type(uppDia_type)   , intent(in)                            :: subsetr
-        real(TKC)           , intent(in)    , contiguous            :: std(:)
-        real(TKC)           , intent(in)    , contiguous            :: cor(:,:)
-        real(TKC)           , intent(inout) , contiguous            :: cov(:,:)
+        real(TKG)           , intent(in)    , contiguous            :: std(:)
+        real(TKG)           , intent(in)    , contiguous            :: cor(:,:)
+        real(TKG)           , intent(inout) , contiguous            :: cov(:,:)
     end subroutine
 #endif
 
@@ -2132,12 +2132,12 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovCorStd_XLD_UXD_RK1
 #endif
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
         type(lowDia_type)   , intent(in)                            :: subset
         type(uppDia_type)   , intent(in)                            :: subsetr
-        real(TKC)           , intent(in)    , contiguous            :: std(:)
-        real(TKC)           , intent(in)    , contiguous            :: cor(:,:)
-        real(TKC)           , intent(inout) , contiguous            :: cov(:,:)
+        real(TKG)           , intent(in)    , contiguous            :: std(:)
+        real(TKG)           , intent(in)    , contiguous            :: cor(:,:)
+        real(TKG)           , intent(inout) , contiguous            :: cov(:,:)
     end subroutine
 #endif
 
@@ -2154,12 +2154,12 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovCorStd_XLD_XLD_CK5
 #endif
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
         type(lowDia_type)   , intent(in)                            :: subset
         type(lowDia_type)   , intent(in)                            :: subsetr
-        real(TKC)           , intent(in)    , contiguous            :: std(:)
-        complex(TKC)        , intent(in)    , contiguous            :: cor(:,:)
-        complex(TKC)        , intent(inout) , contiguous            :: cov(:,:)
+        real(TKG)           , intent(in)    , contiguous            :: std(:)
+        complex(TKG)        , intent(in)    , contiguous            :: cor(:,:)
+        complex(TKG)        , intent(inout) , contiguous            :: cov(:,:)
     end subroutine
 #endif
 
@@ -2168,12 +2168,12 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovCorStd_XLD_XLD_CK4
 #endif
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
         type(lowDia_type)   , intent(in)                            :: subset
         type(lowDia_type)   , intent(in)                            :: subsetr
-        real(TKC)           , intent(in)    , contiguous            :: std(:)
-        complex(TKC)        , intent(in)    , contiguous            :: cor(:,:)
-        complex(TKC)        , intent(inout) , contiguous            :: cov(:,:)
+        real(TKG)           , intent(in)    , contiguous            :: std(:)
+        complex(TKG)        , intent(in)    , contiguous            :: cor(:,:)
+        complex(TKG)        , intent(inout) , contiguous            :: cov(:,:)
     end subroutine
 #endif
 
@@ -2182,12 +2182,12 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovCorStd_XLD_XLD_CK3
 #endif
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
         type(lowDia_type)   , intent(in)                            :: subset
         type(lowDia_type)   , intent(in)                            :: subsetr
-        real(TKC)           , intent(in)    , contiguous            :: std(:)
-        complex(TKC)        , intent(in)    , contiguous            :: cor(:,:)
-        complex(TKC)        , intent(inout) , contiguous            :: cov(:,:)
+        real(TKG)           , intent(in)    , contiguous            :: std(:)
+        complex(TKG)        , intent(in)    , contiguous            :: cor(:,:)
+        complex(TKG)        , intent(inout) , contiguous            :: cov(:,:)
     end subroutine
 #endif
 
@@ -2196,12 +2196,12 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovCorStd_XLD_XLD_CK2
 #endif
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
         type(lowDia_type)   , intent(in)                            :: subset
         type(lowDia_type)   , intent(in)                            :: subsetr
-        real(TKC)           , intent(in)    , contiguous            :: std(:)
-        complex(TKC)        , intent(in)    , contiguous            :: cor(:,:)
-        complex(TKC)        , intent(inout) , contiguous            :: cov(:,:)
+        real(TKG)           , intent(in)    , contiguous            :: std(:)
+        complex(TKG)        , intent(in)    , contiguous            :: cor(:,:)
+        complex(TKG)        , intent(inout) , contiguous            :: cov(:,:)
     end subroutine
 #endif
 
@@ -2210,12 +2210,12 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovCorStd_XLD_XLD_CK1
 #endif
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
         type(lowDia_type)   , intent(in)                            :: subset
         type(lowDia_type)   , intent(in)                            :: subsetr
-        real(TKC)           , intent(in)    , contiguous            :: std(:)
-        complex(TKC)        , intent(in)    , contiguous            :: cor(:,:)
-        complex(TKC)        , intent(inout) , contiguous            :: cov(:,:)
+        real(TKG)           , intent(in)    , contiguous            :: std(:)
+        complex(TKG)        , intent(in)    , contiguous            :: cor(:,:)
+        complex(TKG)        , intent(inout) , contiguous            :: cov(:,:)
     end subroutine
 #endif
 
@@ -2226,12 +2226,12 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovCorStd_XLD_XLD_RK5
 #endif
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
         type(lowDia_type)   , intent(in)                            :: subset
         type(lowDia_type)   , intent(in)                            :: subsetr
-        real(TKC)           , intent(in)    , contiguous            :: std(:)
-        real(TKC)           , intent(in)    , contiguous            :: cor(:,:)
-        real(TKC)           , intent(inout) , contiguous            :: cov(:,:)
+        real(TKG)           , intent(in)    , contiguous            :: std(:)
+        real(TKG)           , intent(in)    , contiguous            :: cor(:,:)
+        real(TKG)           , intent(inout) , contiguous            :: cov(:,:)
     end subroutine
 #endif
 
@@ -2240,12 +2240,12 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovCorStd_XLD_XLD_RK4
 #endif
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
         type(lowDia_type)   , intent(in)                            :: subset
         type(lowDia_type)   , intent(in)                            :: subsetr
-        real(TKC)           , intent(in)    , contiguous            :: std(:)
-        real(TKC)           , intent(in)    , contiguous            :: cor(:,:)
-        real(TKC)           , intent(inout) , contiguous            :: cov(:,:)
+        real(TKG)           , intent(in)    , contiguous            :: std(:)
+        real(TKG)           , intent(in)    , contiguous            :: cor(:,:)
+        real(TKG)           , intent(inout) , contiguous            :: cov(:,:)
     end subroutine
 #endif
 
@@ -2254,12 +2254,12 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovCorStd_XLD_XLD_RK3
 #endif
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
         type(lowDia_type)   , intent(in)                            :: subset
         type(lowDia_type)   , intent(in)                            :: subsetr
-        real(TKC)           , intent(in)    , contiguous            :: std(:)
-        real(TKC)           , intent(in)    , contiguous            :: cor(:,:)
-        real(TKC)           , intent(inout) , contiguous            :: cov(:,:)
+        real(TKG)           , intent(in)    , contiguous            :: std(:)
+        real(TKG)           , intent(in)    , contiguous            :: cor(:,:)
+        real(TKG)           , intent(inout) , contiguous            :: cov(:,:)
     end subroutine
 #endif
 
@@ -2268,12 +2268,12 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovCorStd_XLD_XLD_RK2
 #endif
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
         type(lowDia_type)   , intent(in)                            :: subset
         type(lowDia_type)   , intent(in)                            :: subsetr
-        real(TKC)           , intent(in)    , contiguous            :: std(:)
-        real(TKC)           , intent(in)    , contiguous            :: cor(:,:)
-        real(TKC)           , intent(inout) , contiguous            :: cov(:,:)
+        real(TKG)           , intent(in)    , contiguous            :: std(:)
+        real(TKG)           , intent(in)    , contiguous            :: cor(:,:)
+        real(TKG)           , intent(inout) , contiguous            :: cov(:,:)
     end subroutine
 #endif
 
@@ -2282,12 +2282,12 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovCorStd_XLD_XLD_RK1
 #endif
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
         type(lowDia_type)   , intent(in)                            :: subset
         type(lowDia_type)   , intent(in)                            :: subsetr
-        real(TKC)           , intent(in)    , contiguous            :: std(:)
-        real(TKC)           , intent(in)    , contiguous            :: cor(:,:)
-        real(TKC)           , intent(inout) , contiguous            :: cov(:,:)
+        real(TKG)           , intent(in)    , contiguous            :: std(:)
+        real(TKG)           , intent(in)    , contiguous            :: cor(:,:)
+        real(TKG)           , intent(inout) , contiguous            :: cov(:,:)
     end subroutine
 #endif
 
@@ -2316,9 +2316,9 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovOrgWNO_XY_CK5
 #endif
-        use pm_kind, only: TKC => CK5
-        complex(TKC)            , intent(in)    , contiguous        :: x(:), y(:)
-        complex(TKC)            , intent(out)   , contiguous        :: cov(:,:)
+        use pm_kind, only: TKG => CK5
+        complex(TKG)            , intent(in)    , contiguous        :: x(:), y(:)
+        complex(TKG)            , intent(out)   , contiguous        :: cov(:,:)
     end subroutine
 #endif
 
@@ -2327,9 +2327,9 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovOrgWNO_XY_CK4
 #endif
-        use pm_kind, only: TKC => CK4
-        complex(TKC)            , intent(in)    , contiguous        :: x(:), y(:)
-        complex(TKC)            , intent(out)   , contiguous        :: cov(:,:)
+        use pm_kind, only: TKG => CK4
+        complex(TKG)            , intent(in)    , contiguous        :: x(:), y(:)
+        complex(TKG)            , intent(out)   , contiguous        :: cov(:,:)
     end subroutine
 #endif
 
@@ -2338,9 +2338,9 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovOrgWNO_XY_CK3
 #endif
-        use pm_kind, only: TKC => CK3
-        complex(TKC)            , intent(in)    , contiguous        :: x(:), y(:)
-        complex(TKC)            , intent(out)   , contiguous        :: cov(:,:)
+        use pm_kind, only: TKG => CK3
+        complex(TKG)            , intent(in)    , contiguous        :: x(:), y(:)
+        complex(TKG)            , intent(out)   , contiguous        :: cov(:,:)
     end subroutine
 #endif
 
@@ -2349,9 +2349,9 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovOrgWNO_XY_CK2
 #endif
-        use pm_kind, only: TKC => CK2
-        complex(TKC)            , intent(in)    , contiguous        :: x(:), y(:)
-        complex(TKC)            , intent(out)   , contiguous        :: cov(:,:)
+        use pm_kind, only: TKG => CK2
+        complex(TKG)            , intent(in)    , contiguous        :: x(:), y(:)
+        complex(TKG)            , intent(out)   , contiguous        :: cov(:,:)
     end subroutine
 #endif
 
@@ -2360,9 +2360,9 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovOrgWNO_XY_CK1
 #endif
-        use pm_kind, only: TKC => CK1
-        complex(TKC)            , intent(in)    , contiguous        :: x(:), y(:)
-        complex(TKC)            , intent(out)   , contiguous        :: cov(:,:)
+        use pm_kind, only: TKG => CK1
+        complex(TKG)            , intent(in)    , contiguous        :: x(:), y(:)
+        complex(TKG)            , intent(out)   , contiguous        :: cov(:,:)
     end subroutine
 #endif
 
@@ -2373,9 +2373,9 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovOrgWNO_XY_RK5
 #endif
-        use pm_kind, only: TKC => RK5
-        real(TKC)               , intent(in)    , contiguous        :: x(:), y(:)
-        real(TKC)               , intent(out)   , contiguous        :: cov(:,:)
+        use pm_kind, only: TKG => RK5
+        real(TKG)               , intent(in)    , contiguous        :: x(:), y(:)
+        real(TKG)               , intent(out)   , contiguous        :: cov(:,:)
     end subroutine
 #endif
 
@@ -2384,9 +2384,9 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovOrgWNO_XY_RK4
 #endif
-        use pm_kind, only: TKC => RK4
-        real(TKC)               , intent(in)    , contiguous        :: x(:), y(:)
-        real(TKC)               , intent(out)   , contiguous        :: cov(:,:)
+        use pm_kind, only: TKG => RK4
+        real(TKG)               , intent(in)    , contiguous        :: x(:), y(:)
+        real(TKG)               , intent(out)   , contiguous        :: cov(:,:)
     end subroutine
 #endif
 
@@ -2395,9 +2395,9 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovOrgWNO_XY_RK3
 #endif
-        use pm_kind, only: TKC => RK3
-        real(TKC)               , intent(in)    , contiguous        :: x(:), y(:)
-        real(TKC)               , intent(out)   , contiguous        :: cov(:,:)
+        use pm_kind, only: TKG => RK3
+        real(TKG)               , intent(in)    , contiguous        :: x(:), y(:)
+        real(TKG)               , intent(out)   , contiguous        :: cov(:,:)
     end subroutine
 #endif
 
@@ -2406,9 +2406,9 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovOrgWNO_XY_RK2
 #endif
-        use pm_kind, only: TKC => RK2
-        real(TKC)               , intent(in)    , contiguous        :: x(:), y(:)
-        real(TKC)               , intent(out)   , contiguous        :: cov(:,:)
+        use pm_kind, only: TKG => RK2
+        real(TKG)               , intent(in)    , contiguous        :: x(:), y(:)
+        real(TKG)               , intent(out)   , contiguous        :: cov(:,:)
     end subroutine
 #endif
 
@@ -2417,9 +2417,9 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovOrgWNO_XY_RK1
 #endif
-        use pm_kind, only: TKC => RK1
-        real(TKC)               , intent(in)    , contiguous        :: x(:), y(:)
-        real(TKC)               , intent(out)   , contiguous        :: cov(:,:)
+        use pm_kind, only: TKG => RK1
+        real(TKG)               , intent(in)    , contiguous        :: x(:), y(:)
+        real(TKG)               , intent(out)   , contiguous        :: cov(:,:)
     end subroutine
 #endif
 
@@ -2436,10 +2436,10 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovAvgWNO_XY_CK5
 #endif
-        use pm_kind, only: TKC => CK5
-        complex(TKC)            , intent(in)    , contiguous        :: x(:), y(:)
-        complex(TKC)            , intent(in)    , contiguous        :: mean(:)
-        complex(TKC)            , intent(out)   , contiguous        :: cov(:,:)
+        use pm_kind, only: TKG => CK5
+        complex(TKG)            , intent(in)    , contiguous        :: x(:), y(:)
+        complex(TKG)            , intent(in)    , contiguous        :: mean(:)
+        complex(TKG)            , intent(out)   , contiguous        :: cov(:,:)
     end subroutine
 #endif
 
@@ -2448,10 +2448,10 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovAvgWNO_XY_CK4
 #endif
-        use pm_kind, only: TKC => CK4
-        complex(TKC)            , intent(in)    , contiguous        :: x(:), y(:)
-        complex(TKC)            , intent(in)    , contiguous        :: mean(:)
-        complex(TKC)            , intent(out)   , contiguous        :: cov(:,:)
+        use pm_kind, only: TKG => CK4
+        complex(TKG)            , intent(in)    , contiguous        :: x(:), y(:)
+        complex(TKG)            , intent(in)    , contiguous        :: mean(:)
+        complex(TKG)            , intent(out)   , contiguous        :: cov(:,:)
     end subroutine
 #endif
 
@@ -2460,10 +2460,10 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovAvgWNO_XY_CK3
 #endif
-        use pm_kind, only: TKC => CK3
-        complex(TKC)            , intent(in)    , contiguous        :: x(:), y(:)
-        complex(TKC)            , intent(in)    , contiguous        :: mean(:)
-        complex(TKC)            , intent(out)   , contiguous        :: cov(:,:)
+        use pm_kind, only: TKG => CK3
+        complex(TKG)            , intent(in)    , contiguous        :: x(:), y(:)
+        complex(TKG)            , intent(in)    , contiguous        :: mean(:)
+        complex(TKG)            , intent(out)   , contiguous        :: cov(:,:)
     end subroutine
 #endif
 
@@ -2472,10 +2472,10 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovAvgWNO_XY_CK2
 #endif
-        use pm_kind, only: TKC => CK2
-        complex(TKC)            , intent(in)    , contiguous        :: x(:), y(:)
-        complex(TKC)            , intent(in)    , contiguous        :: mean(:)
-        complex(TKC)            , intent(out)   , contiguous        :: cov(:,:)
+        use pm_kind, only: TKG => CK2
+        complex(TKG)            , intent(in)    , contiguous        :: x(:), y(:)
+        complex(TKG)            , intent(in)    , contiguous        :: mean(:)
+        complex(TKG)            , intent(out)   , contiguous        :: cov(:,:)
     end subroutine
 #endif
 
@@ -2484,10 +2484,10 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovAvgWNO_XY_CK1
 #endif
-        use pm_kind, only: TKC => CK1
-        complex(TKC)            , intent(in)    , contiguous        :: x(:), y(:)
-        complex(TKC)            , intent(in)    , contiguous        :: mean(:)
-        complex(TKC)            , intent(out)   , contiguous        :: cov(:,:)
+        use pm_kind, only: TKG => CK1
+        complex(TKG)            , intent(in)    , contiguous        :: x(:), y(:)
+        complex(TKG)            , intent(in)    , contiguous        :: mean(:)
+        complex(TKG)            , intent(out)   , contiguous        :: cov(:,:)
     end subroutine
 #endif
 
@@ -2498,10 +2498,10 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovAvgWNO_XY_RK5
 #endif
-        use pm_kind, only: TKC => RK5
-        real(TKC)               , intent(in)    , contiguous        :: x(:), y(:)
-        real(TKC)               , intent(in)    , contiguous        :: mean(:)
-        real(TKC)               , intent(out)   , contiguous        :: cov(:,:)
+        use pm_kind, only: TKG => RK5
+        real(TKG)               , intent(in)    , contiguous        :: x(:), y(:)
+        real(TKG)               , intent(in)    , contiguous        :: mean(:)
+        real(TKG)               , intent(out)   , contiguous        :: cov(:,:)
     end subroutine
 #endif
 
@@ -2510,10 +2510,10 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovAvgWNO_XY_RK4
 #endif
-        use pm_kind, only: TKC => RK4
-        real(TKC)               , intent(in)    , contiguous        :: x(:), y(:)
-        real(TKC)               , intent(in)    , contiguous        :: mean(:)
-        real(TKC)               , intent(out)   , contiguous        :: cov(:,:)
+        use pm_kind, only: TKG => RK4
+        real(TKG)               , intent(in)    , contiguous        :: x(:), y(:)
+        real(TKG)               , intent(in)    , contiguous        :: mean(:)
+        real(TKG)               , intent(out)   , contiguous        :: cov(:,:)
     end subroutine
 #endif
 
@@ -2522,10 +2522,10 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovAvgWNO_XY_RK3
 #endif
-        use pm_kind, only: TKC => RK3
-        real(TKC)               , intent(in)    , contiguous        :: x(:), y(:)
-        real(TKC)               , intent(in)    , contiguous        :: mean(:)
-        real(TKC)               , intent(out)   , contiguous        :: cov(:,:)
+        use pm_kind, only: TKG => RK3
+        real(TKG)               , intent(in)    , contiguous        :: x(:), y(:)
+        real(TKG)               , intent(in)    , contiguous        :: mean(:)
+        real(TKG)               , intent(out)   , contiguous        :: cov(:,:)
     end subroutine
 #endif
 
@@ -2534,10 +2534,10 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovAvgWNO_XY_RK2
 #endif
-        use pm_kind, only: TKC => RK2
-        real(TKC)               , intent(in)    , contiguous        :: x(:), y(:)
-        real(TKC)               , intent(in)    , contiguous        :: mean(:)
-        real(TKC)               , intent(out)   , contiguous        :: cov(:,:)
+        use pm_kind, only: TKG => RK2
+        real(TKG)               , intent(in)    , contiguous        :: x(:), y(:)
+        real(TKG)               , intent(in)    , contiguous        :: mean(:)
+        real(TKG)               , intent(out)   , contiguous        :: cov(:,:)
     end subroutine
 #endif
 
@@ -2546,10 +2546,10 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovAvgWNO_XY_RK1
 #endif
-        use pm_kind, only: TKC => RK1
-        real(TKC)               , intent(in)    , contiguous        :: x(:), y(:)
-        real(TKC)               , intent(in)    , contiguous        :: mean(:)
-        real(TKC)               , intent(out)   , contiguous        :: cov(:,:)
+        use pm_kind, only: TKG => RK1
+        real(TKG)               , intent(in)    , contiguous        :: x(:), y(:)
+        real(TKG)               , intent(in)    , contiguous        :: mean(:)
+        real(TKG)               , intent(out)   , contiguous        :: cov(:,:)
     end subroutine
 #endif
 
@@ -2576,11 +2576,11 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovOrgWTI_XY_CK5
 #endif
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
         integer(IK)             , intent(in)                        :: weisum
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous        :: x(:), y(:)
-        complex(TKC)            , intent(out)   , contiguous        :: cov(:,:)
+        complex(TKG)            , intent(in)    , contiguous        :: x(:), y(:)
+        complex(TKG)            , intent(out)   , contiguous        :: cov(:,:)
     end subroutine
 #endif
 
@@ -2589,11 +2589,11 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovOrgWTI_XY_CK4
 #endif
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
         integer(IK)             , intent(in)                        :: weisum
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous        :: x(:), y(:)
-        complex(TKC)            , intent(out)   , contiguous        :: cov(:,:)
+        complex(TKG)            , intent(in)    , contiguous        :: x(:), y(:)
+        complex(TKG)            , intent(out)   , contiguous        :: cov(:,:)
     end subroutine
 #endif
 
@@ -2602,11 +2602,11 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovOrgWTI_XY_CK3
 #endif
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
         integer(IK)             , intent(in)                        :: weisum
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous        :: x(:), y(:)
-        complex(TKC)            , intent(out)   , contiguous        :: cov(:,:)
+        complex(TKG)            , intent(in)    , contiguous        :: x(:), y(:)
+        complex(TKG)            , intent(out)   , contiguous        :: cov(:,:)
     end subroutine
 #endif
 
@@ -2615,11 +2615,11 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovOrgWTI_XY_CK2
 #endif
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
         integer(IK)             , intent(in)                        :: weisum
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous        :: x(:), y(:)
-        complex(TKC)            , intent(out)   , contiguous        :: cov(:,:)
+        complex(TKG)            , intent(in)    , contiguous        :: x(:), y(:)
+        complex(TKG)            , intent(out)   , contiguous        :: cov(:,:)
     end subroutine
 #endif
 
@@ -2628,11 +2628,11 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovOrgWTI_XY_CK1
 #endif
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
         integer(IK)             , intent(in)                        :: weisum
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous        :: x(:), y(:)
-        complex(TKC)            , intent(out)   , contiguous        :: cov(:,:)
+        complex(TKG)            , intent(in)    , contiguous        :: x(:), y(:)
+        complex(TKG)            , intent(out)   , contiguous        :: cov(:,:)
     end subroutine
 #endif
 
@@ -2643,11 +2643,11 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovOrgWTI_XY_RK5
 #endif
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
         integer(IK)             , intent(in)                        :: weisum
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        real(TKC)               , intent(in)    , contiguous        :: x(:), y(:)
-        real(TKC)               , intent(out)   , contiguous        :: cov(:,:)
+        real(TKG)               , intent(in)    , contiguous        :: x(:), y(:)
+        real(TKG)               , intent(out)   , contiguous        :: cov(:,:)
     end subroutine
 #endif
 
@@ -2656,11 +2656,11 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovOrgWTI_XY_RK4
 #endif
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
         integer(IK)             , intent(in)                        :: weisum
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        real(TKC)               , intent(in)    , contiguous        :: x(:), y(:)
-        real(TKC)               , intent(out)   , contiguous        :: cov(:,:)
+        real(TKG)               , intent(in)    , contiguous        :: x(:), y(:)
+        real(TKG)               , intent(out)   , contiguous        :: cov(:,:)
     end subroutine
 #endif
 
@@ -2669,11 +2669,11 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovOrgWTI_XY_RK3
 #endif
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
         integer(IK)             , intent(in)                        :: weisum
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        real(TKC)               , intent(in)    , contiguous        :: x(:), y(:)
-        real(TKC)               , intent(out)   , contiguous        :: cov(:,:)
+        real(TKG)               , intent(in)    , contiguous        :: x(:), y(:)
+        real(TKG)               , intent(out)   , contiguous        :: cov(:,:)
     end subroutine
 #endif
 
@@ -2682,11 +2682,11 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovOrgWTI_XY_RK2
 #endif
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
         integer(IK)             , intent(in)                        :: weisum
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        real(TKC)               , intent(in)    , contiguous        :: x(:), y(:)
-        real(TKC)               , intent(out)   , contiguous        :: cov(:,:)
+        real(TKG)               , intent(in)    , contiguous        :: x(:), y(:)
+        real(TKG)               , intent(out)   , contiguous        :: cov(:,:)
     end subroutine
 #endif
 
@@ -2695,11 +2695,11 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovOrgWTI_XY_RK1
 #endif
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
         integer(IK)             , intent(in)                        :: weisum
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        real(TKC)               , intent(in)    , contiguous        :: x(:), y(:)
-        real(TKC)               , intent(out)   , contiguous        :: cov(:,:)
+        real(TKG)               , intent(in)    , contiguous        :: x(:), y(:)
+        real(TKG)               , intent(out)   , contiguous        :: cov(:,:)
     end subroutine
 #endif
 
@@ -2716,12 +2716,12 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovAvgWTI_XY_CK5
 #endif
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
         integer(IK)             , intent(in)                        :: weisum
-        complex(TKC)            , intent(in)    , contiguous        :: mean(:)
+        complex(TKG)            , intent(in)    , contiguous        :: mean(:)
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous        :: x(:), y(:)
-        complex(TKC)            , intent(out)   , contiguous        :: cov(:,:)
+        complex(TKG)            , intent(in)    , contiguous        :: x(:), y(:)
+        complex(TKG)            , intent(out)   , contiguous        :: cov(:,:)
     end subroutine
 #endif
 
@@ -2730,12 +2730,12 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovAvgWTI_XY_CK4
 #endif
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
         integer(IK)             , intent(in)                        :: weisum
-        complex(TKC)            , intent(in)    , contiguous        :: mean(:)
+        complex(TKG)            , intent(in)    , contiguous        :: mean(:)
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous        :: x(:), y(:)
-        complex(TKC)            , intent(out)   , contiguous        :: cov(:,:)
+        complex(TKG)            , intent(in)    , contiguous        :: x(:), y(:)
+        complex(TKG)            , intent(out)   , contiguous        :: cov(:,:)
     end subroutine
 #endif
 
@@ -2744,12 +2744,12 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovAvgWTI_XY_CK3
 #endif
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
         integer(IK)             , intent(in)                        :: weisum
-        complex(TKC)            , intent(in)    , contiguous        :: mean(:)
+        complex(TKG)            , intent(in)    , contiguous        :: mean(:)
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous        :: x(:), y(:)
-        complex(TKC)            , intent(out)   , contiguous        :: cov(:,:)
+        complex(TKG)            , intent(in)    , contiguous        :: x(:), y(:)
+        complex(TKG)            , intent(out)   , contiguous        :: cov(:,:)
     end subroutine
 #endif
 
@@ -2758,12 +2758,12 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovAvgWTI_XY_CK2
 #endif
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
         integer(IK)             , intent(in)                        :: weisum
-        complex(TKC)            , intent(in)    , contiguous        :: mean(:)
+        complex(TKG)            , intent(in)    , contiguous        :: mean(:)
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous        :: x(:), y(:)
-        complex(TKC)            , intent(out)   , contiguous        :: cov(:,:)
+        complex(TKG)            , intent(in)    , contiguous        :: x(:), y(:)
+        complex(TKG)            , intent(out)   , contiguous        :: cov(:,:)
     end subroutine
 #endif
 
@@ -2772,12 +2772,12 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovAvgWTI_XY_CK1
 #endif
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
         integer(IK)             , intent(in)                        :: weisum
-        complex(TKC)            , intent(in)    , contiguous        :: mean(:)
+        complex(TKG)            , intent(in)    , contiguous        :: mean(:)
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous        :: x(:), y(:)
-        complex(TKC)            , intent(out)   , contiguous        :: cov(:,:)
+        complex(TKG)            , intent(in)    , contiguous        :: x(:), y(:)
+        complex(TKG)            , intent(out)   , contiguous        :: cov(:,:)
     end subroutine
 #endif
 
@@ -2788,12 +2788,12 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovAvgWTI_XY_RK5
 #endif
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
         integer(IK)             , intent(in)                        :: weisum
-        real(TKC)               , intent(in)    , contiguous        :: mean(:)
+        real(TKG)               , intent(in)    , contiguous        :: mean(:)
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        real(TKC)               , intent(in)    , contiguous        :: x(:), y(:)
-        real(TKC)               , intent(out)   , contiguous        :: cov(:,:)
+        real(TKG)               , intent(in)    , contiguous        :: x(:), y(:)
+        real(TKG)               , intent(out)   , contiguous        :: cov(:,:)
     end subroutine
 #endif
 
@@ -2802,12 +2802,12 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovAvgWTI_XY_RK4
 #endif
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
         integer(IK)             , intent(in)                        :: weisum
-        real(TKC)               , intent(in)    , contiguous        :: mean(:)
+        real(TKG)               , intent(in)    , contiguous        :: mean(:)
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        real(TKC)               , intent(in)    , contiguous        :: x(:), y(:)
-        real(TKC)               , intent(out)   , contiguous        :: cov(:,:)
+        real(TKG)               , intent(in)    , contiguous        :: x(:), y(:)
+        real(TKG)               , intent(out)   , contiguous        :: cov(:,:)
     end subroutine
 #endif
 
@@ -2816,12 +2816,12 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovAvgWTI_XY_RK3
 #endif
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
         integer(IK)             , intent(in)                        :: weisum
-        real(TKC)               , intent(in)    , contiguous        :: mean(:)
+        real(TKG)               , intent(in)    , contiguous        :: mean(:)
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        real(TKC)               , intent(in)    , contiguous        :: x(:), y(:)
-        real(TKC)               , intent(out)   , contiguous        :: cov(:,:)
+        real(TKG)               , intent(in)    , contiguous        :: x(:), y(:)
+        real(TKG)               , intent(out)   , contiguous        :: cov(:,:)
     end subroutine
 #endif
 
@@ -2830,12 +2830,12 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovAvgWTI_XY_RK2
 #endif
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
         integer(IK)             , intent(in)                        :: weisum
-        real(TKC)               , intent(in)    , contiguous        :: mean(:)
+        real(TKG)               , intent(in)    , contiguous        :: mean(:)
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        real(TKC)               , intent(in)    , contiguous        :: x(:), y(:)
-        real(TKC)               , intent(out)   , contiguous        :: cov(:,:)
+        real(TKG)               , intent(in)    , contiguous        :: x(:), y(:)
+        real(TKG)               , intent(out)   , contiguous        :: cov(:,:)
     end subroutine
 #endif
 
@@ -2844,12 +2844,12 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovAvgWTI_XY_RK1
 #endif
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
         integer(IK)             , intent(in)                        :: weisum
-        real(TKC)               , intent(in)    , contiguous        :: mean(:)
+        real(TKG)               , intent(in)    , contiguous        :: mean(:)
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        real(TKC)               , intent(in)    , contiguous        :: x(:), y(:)
-        real(TKC)               , intent(out)   , contiguous        :: cov(:,:)
+        real(TKG)               , intent(in)    , contiguous        :: x(:), y(:)
+        real(TKG)               , intent(out)   , contiguous        :: cov(:,:)
     end subroutine
 #endif
 
@@ -2876,11 +2876,11 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovOrgWTR_XY_CK5
 #endif
-        use pm_kind, only: TKC => CK5
-        real(TKC)               , intent(in)                        :: weisum
-        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous        :: x(:), y(:)
-        complex(TKC)            , intent(out)   , contiguous        :: cov(:,:)
+        use pm_kind, only: TKG => CK5
+        real(TKG)               , intent(in)                        :: weisum
+        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+        complex(TKG)            , intent(in)    , contiguous        :: x(:), y(:)
+        complex(TKG)            , intent(out)   , contiguous        :: cov(:,:)
     end subroutine
 #endif
 
@@ -2889,11 +2889,11 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovOrgWTR_XY_CK4
 #endif
-        use pm_kind, only: TKC => CK4
-        real(TKC)               , intent(in)                        :: weisum
-        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous        :: x(:), y(:)
-        complex(TKC)            , intent(out)   , contiguous        :: cov(:,:)
+        use pm_kind, only: TKG => CK4
+        real(TKG)               , intent(in)                        :: weisum
+        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+        complex(TKG)            , intent(in)    , contiguous        :: x(:), y(:)
+        complex(TKG)            , intent(out)   , contiguous        :: cov(:,:)
     end subroutine
 #endif
 
@@ -2902,11 +2902,11 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovOrgWTR_XY_CK3
 #endif
-        use pm_kind, only: TKC => CK3
-        real(TKC)               , intent(in)                        :: weisum
-        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous        :: x(:), y(:)
-        complex(TKC)            , intent(out)   , contiguous        :: cov(:,:)
+        use pm_kind, only: TKG => CK3
+        real(TKG)               , intent(in)                        :: weisum
+        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+        complex(TKG)            , intent(in)    , contiguous        :: x(:), y(:)
+        complex(TKG)            , intent(out)   , contiguous        :: cov(:,:)
     end subroutine
 #endif
 
@@ -2915,11 +2915,11 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovOrgWTR_XY_CK2
 #endif
-        use pm_kind, only: TKC => CK2
-        real(TKC)               , intent(in)                        :: weisum
-        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous        :: x(:), y(:)
-        complex(TKC)            , intent(out)   , contiguous        :: cov(:,:)
+        use pm_kind, only: TKG => CK2
+        real(TKG)               , intent(in)                        :: weisum
+        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+        complex(TKG)            , intent(in)    , contiguous        :: x(:), y(:)
+        complex(TKG)            , intent(out)   , contiguous        :: cov(:,:)
     end subroutine
 #endif
 
@@ -2928,11 +2928,11 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovOrgWTR_XY_CK1
 #endif
-        use pm_kind, only: TKC => CK1
-        real(TKC)               , intent(in)                        :: weisum
-        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous        :: x(:), y(:)
-        complex(TKC)            , intent(out)   , contiguous        :: cov(:,:)
+        use pm_kind, only: TKG => CK1
+        real(TKG)               , intent(in)                        :: weisum
+        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+        complex(TKG)            , intent(in)    , contiguous        :: x(:), y(:)
+        complex(TKG)            , intent(out)   , contiguous        :: cov(:,:)
     end subroutine
 #endif
 
@@ -2943,11 +2943,11 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovOrgWTR_XY_RK5
 #endif
-        use pm_kind, only: TKC => RK5
-        real(TKC)               , intent(in)                        :: weisum
-        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-        real(TKC)               , intent(in)    , contiguous        :: x(:), y(:)
-        real(TKC)               , intent(out)   , contiguous        :: cov(:,:)
+        use pm_kind, only: TKG => RK5
+        real(TKG)               , intent(in)                        :: weisum
+        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+        real(TKG)               , intent(in)    , contiguous        :: x(:), y(:)
+        real(TKG)               , intent(out)   , contiguous        :: cov(:,:)
     end subroutine
 #endif
 
@@ -2956,11 +2956,11 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovOrgWTR_XY_RK4
 #endif
-        use pm_kind, only: TKC => RK4
-        real(TKC)               , intent(in)                        :: weisum
-        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-        real(TKC)               , intent(in)    , contiguous        :: x(:), y(:)
-        real(TKC)               , intent(out)   , contiguous        :: cov(:,:)
+        use pm_kind, only: TKG => RK4
+        real(TKG)               , intent(in)                        :: weisum
+        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+        real(TKG)               , intent(in)    , contiguous        :: x(:), y(:)
+        real(TKG)               , intent(out)   , contiguous        :: cov(:,:)
     end subroutine
 #endif
 
@@ -2969,11 +2969,11 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovOrgWTR_XY_RK3
 #endif
-        use pm_kind, only: TKC => RK3
-        real(TKC)               , intent(in)                        :: weisum
-        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-        real(TKC)               , intent(in)    , contiguous        :: x(:), y(:)
-        real(TKC)               , intent(out)   , contiguous        :: cov(:,:)
+        use pm_kind, only: TKG => RK3
+        real(TKG)               , intent(in)                        :: weisum
+        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+        real(TKG)               , intent(in)    , contiguous        :: x(:), y(:)
+        real(TKG)               , intent(out)   , contiguous        :: cov(:,:)
     end subroutine
 #endif
 
@@ -2982,11 +2982,11 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovOrgWTR_XY_RK2
 #endif
-        use pm_kind, only: TKC => RK2
-        real(TKC)               , intent(in)                        :: weisum
-        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-        real(TKC)               , intent(in)    , contiguous        :: x(:), y(:)
-        real(TKC)               , intent(out)   , contiguous        :: cov(:,:)
+        use pm_kind, only: TKG => RK2
+        real(TKG)               , intent(in)                        :: weisum
+        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+        real(TKG)               , intent(in)    , contiguous        :: x(:), y(:)
+        real(TKG)               , intent(out)   , contiguous        :: cov(:,:)
     end subroutine
 #endif
 
@@ -2995,11 +2995,11 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovOrgWTR_XY_RK1
 #endif
-        use pm_kind, only: TKC => RK1
-        real(TKC)               , intent(in)                        :: weisum
-        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-        real(TKC)               , intent(in)    , contiguous        :: x(:), y(:)
-        real(TKC)               , intent(out)   , contiguous        :: cov(:,:)
+        use pm_kind, only: TKG => RK1
+        real(TKG)               , intent(in)                        :: weisum
+        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+        real(TKG)               , intent(in)    , contiguous        :: x(:), y(:)
+        real(TKG)               , intent(out)   , contiguous        :: cov(:,:)
     end subroutine
 #endif
 
@@ -3016,12 +3016,12 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovAvgWTR_XY_CK5
 #endif
-        use pm_kind, only: TKC => CK5
-        real(TKC)               , intent(in)                        :: weisum
-        complex(TKC)            , intent(in)    , contiguous        :: mean(:)
-        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous        :: x(:), y(:)
-        complex(TKC)            , intent(out)   , contiguous        :: cov(:,:)
+        use pm_kind, only: TKG => CK5
+        real(TKG)               , intent(in)                        :: weisum
+        complex(TKG)            , intent(in)    , contiguous        :: mean(:)
+        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+        complex(TKG)            , intent(in)    , contiguous        :: x(:), y(:)
+        complex(TKG)            , intent(out)   , contiguous        :: cov(:,:)
     end subroutine
 #endif
 
@@ -3030,12 +3030,12 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovAvgWTR_XY_CK4
 #endif
-        use pm_kind, only: TKC => CK4
-        real(TKC)               , intent(in)                        :: weisum
-        complex(TKC)            , intent(in)    , contiguous        :: mean(:)
-        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous        :: x(:), y(:)
-        complex(TKC)            , intent(out)   , contiguous        :: cov(:,:)
+        use pm_kind, only: TKG => CK4
+        real(TKG)               , intent(in)                        :: weisum
+        complex(TKG)            , intent(in)    , contiguous        :: mean(:)
+        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+        complex(TKG)            , intent(in)    , contiguous        :: x(:), y(:)
+        complex(TKG)            , intent(out)   , contiguous        :: cov(:,:)
     end subroutine
 #endif
 
@@ -3044,12 +3044,12 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovAvgWTR_XY_CK3
 #endif
-        use pm_kind, only: TKC => CK3
-        real(TKC)               , intent(in)                        :: weisum
-        complex(TKC)            , intent(in)    , contiguous        :: mean(:)
-        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous        :: x(:), y(:)
-        complex(TKC)            , intent(out)   , contiguous        :: cov(:,:)
+        use pm_kind, only: TKG => CK3
+        real(TKG)               , intent(in)                        :: weisum
+        complex(TKG)            , intent(in)    , contiguous        :: mean(:)
+        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+        complex(TKG)            , intent(in)    , contiguous        :: x(:), y(:)
+        complex(TKG)            , intent(out)   , contiguous        :: cov(:,:)
     end subroutine
 #endif
 
@@ -3058,12 +3058,12 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovAvgWTR_XY_CK2
 #endif
-        use pm_kind, only: TKC => CK2
-        real(TKC)               , intent(in)                        :: weisum
-        complex(TKC)            , intent(in)    , contiguous        :: mean(:)
-        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous        :: x(:), y(:)
-        complex(TKC)            , intent(out)   , contiguous        :: cov(:,:)
+        use pm_kind, only: TKG => CK2
+        real(TKG)               , intent(in)                        :: weisum
+        complex(TKG)            , intent(in)    , contiguous        :: mean(:)
+        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+        complex(TKG)            , intent(in)    , contiguous        :: x(:), y(:)
+        complex(TKG)            , intent(out)   , contiguous        :: cov(:,:)
     end subroutine
 #endif
 
@@ -3072,12 +3072,12 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovAvgWTR_XY_CK1
 #endif
-        use pm_kind, only: TKC => CK1
-        real(TKC)               , intent(in)                        :: weisum
-        complex(TKC)            , intent(in)    , contiguous        :: mean(:)
-        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous        :: x(:), y(:)
-        complex(TKC)            , intent(out)   , contiguous        :: cov(:,:)
+        use pm_kind, only: TKG => CK1
+        real(TKG)               , intent(in)                        :: weisum
+        complex(TKG)            , intent(in)    , contiguous        :: mean(:)
+        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+        complex(TKG)            , intent(in)    , contiguous        :: x(:), y(:)
+        complex(TKG)            , intent(out)   , contiguous        :: cov(:,:)
     end subroutine
 #endif
 
@@ -3088,12 +3088,12 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovAvgWTR_XY_RK5
 #endif
-        use pm_kind, only: TKC => RK5
-        real(TKC)               , intent(in)                        :: weisum
-        real(TKC)               , intent(in)    , contiguous        :: mean(:)
-        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-        real(TKC)               , intent(in)    , contiguous        :: x(:), y(:)
-        real(TKC)               , intent(out)   , contiguous        :: cov(:,:)
+        use pm_kind, only: TKG => RK5
+        real(TKG)               , intent(in)                        :: weisum
+        real(TKG)               , intent(in)    , contiguous        :: mean(:)
+        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+        real(TKG)               , intent(in)    , contiguous        :: x(:), y(:)
+        real(TKG)               , intent(out)   , contiguous        :: cov(:,:)
     end subroutine
 #endif
 
@@ -3102,12 +3102,12 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovAvgWTR_XY_RK4
 #endif
-        use pm_kind, only: TKC => RK4
-        real(TKC)               , intent(in)                        :: weisum
-        real(TKC)               , intent(in)    , contiguous        :: mean(:)
-        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-        real(TKC)               , intent(in)    , contiguous        :: x(:), y(:)
-        real(TKC)               , intent(out)   , contiguous        :: cov(:,:)
+        use pm_kind, only: TKG => RK4
+        real(TKG)               , intent(in)                        :: weisum
+        real(TKG)               , intent(in)    , contiguous        :: mean(:)
+        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+        real(TKG)               , intent(in)    , contiguous        :: x(:), y(:)
+        real(TKG)               , intent(out)   , contiguous        :: cov(:,:)
     end subroutine
 #endif
 
@@ -3116,12 +3116,12 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovAvgWTR_XY_RK3
 #endif
-        use pm_kind, only: TKC => RK3
-        real(TKC)               , intent(in)                        :: weisum
-        real(TKC)               , intent(in)    , contiguous        :: mean(:)
-        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-        real(TKC)               , intent(in)    , contiguous        :: x(:), y(:)
-        real(TKC)               , intent(out)   , contiguous        :: cov(:,:)
+        use pm_kind, only: TKG => RK3
+        real(TKG)               , intent(in)                        :: weisum
+        real(TKG)               , intent(in)    , contiguous        :: mean(:)
+        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+        real(TKG)               , intent(in)    , contiguous        :: x(:), y(:)
+        real(TKG)               , intent(out)   , contiguous        :: cov(:,:)
     end subroutine
 #endif
 
@@ -3130,12 +3130,12 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovAvgWTR_XY_RK2
 #endif
-        use pm_kind, only: TKC => RK2
-        real(TKC)               , intent(in)                        :: weisum
-        real(TKC)               , intent(in)    , contiguous        :: mean(:)
-        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-        real(TKC)               , intent(in)    , contiguous        :: x(:), y(:)
-        real(TKC)               , intent(out)   , contiguous        :: cov(:,:)
+        use pm_kind, only: TKG => RK2
+        real(TKG)               , intent(in)                        :: weisum
+        real(TKG)               , intent(in)    , contiguous        :: mean(:)
+        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+        real(TKG)               , intent(in)    , contiguous        :: x(:), y(:)
+        real(TKG)               , intent(out)   , contiguous        :: cov(:,:)
     end subroutine
 #endif
 
@@ -3144,12 +3144,12 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovAvgWTR_XY_RK1
 #endif
-        use pm_kind, only: TKC => RK1
-        real(TKC)               , intent(in)                        :: weisum
-        real(TKC)               , intent(in)    , contiguous        :: mean(:)
-        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-        real(TKC)               , intent(in)    , contiguous        :: x(:), y(:)
-        real(TKC)               , intent(out)   , contiguous        :: cov(:,:)
+        use pm_kind, only: TKG => RK1
+        real(TKG)               , intent(in)                        :: weisum
+        real(TKG)               , intent(in)    , contiguous        :: mean(:)
+        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+        real(TKG)               , intent(in)    , contiguous        :: x(:), y(:)
+        real(TKG)               , intent(out)   , contiguous        :: cov(:,:)
     end subroutine
 #endif
 
@@ -3178,10 +3178,10 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovOrgWNO_UXD_CK5
 #endif
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
         integer(IK)             , intent(in)                        :: dim
-        complex(TKC)            , intent(in)    , contiguous        :: sample(:,:)
-        complex(TKC)            , intent(inout) , contiguous        :: cov(:,:)
+        complex(TKG)            , intent(in)    , contiguous        :: sample(:,:)
+        complex(TKG)            , intent(inout) , contiguous        :: cov(:,:)
         type(uppDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -3191,10 +3191,10 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovOrgWNO_UXD_CK4
 #endif
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
         integer(IK)             , intent(in)                        :: dim
-        complex(TKC)            , intent(in)    , contiguous        :: sample(:,:)
-        complex(TKC)            , intent(inout) , contiguous        :: cov(:,:)
+        complex(TKG)            , intent(in)    , contiguous        :: sample(:,:)
+        complex(TKG)            , intent(inout) , contiguous        :: cov(:,:)
         type(uppDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -3204,10 +3204,10 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovOrgWNO_UXD_CK3
 #endif
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
         integer(IK)             , intent(in)                        :: dim
-        complex(TKC)            , intent(in)    , contiguous        :: sample(:,:)
-        complex(TKC)            , intent(inout) , contiguous        :: cov(:,:)
+        complex(TKG)            , intent(in)    , contiguous        :: sample(:,:)
+        complex(TKG)            , intent(inout) , contiguous        :: cov(:,:)
         type(uppDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -3217,10 +3217,10 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovOrgWNO_UXD_CK2
 #endif
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
         integer(IK)             , intent(in)                        :: dim
-        complex(TKC)            , intent(in)    , contiguous        :: sample(:,:)
-        complex(TKC)            , intent(inout) , contiguous        :: cov(:,:)
+        complex(TKG)            , intent(in)    , contiguous        :: sample(:,:)
+        complex(TKG)            , intent(inout) , contiguous        :: cov(:,:)
         type(uppDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -3230,10 +3230,10 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovOrgWNO_UXD_CK1
 #endif
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
         integer(IK)             , intent(in)                        :: dim
-        complex(TKC)            , intent(in)    , contiguous        :: sample(:,:)
-        complex(TKC)            , intent(inout) , contiguous        :: cov(:,:)
+        complex(TKG)            , intent(in)    , contiguous        :: sample(:,:)
+        complex(TKG)            , intent(inout) , contiguous        :: cov(:,:)
         type(uppDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -3245,10 +3245,10 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovOrgWNO_UXD_RK5
 #endif
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
         integer(IK)             , intent(in)                        :: dim
-        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
-        real(TKC)               , intent(inout) , contiguous        :: cov(:,:)
+        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
+        real(TKG)               , intent(inout) , contiguous        :: cov(:,:)
         type(uppDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -3258,10 +3258,10 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovOrgWNO_UXD_RK4
 #endif
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
         integer(IK)             , intent(in)                        :: dim
-        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
-        real(TKC)               , intent(inout) , contiguous        :: cov(:,:)
+        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
+        real(TKG)               , intent(inout) , contiguous        :: cov(:,:)
         type(uppDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -3271,10 +3271,10 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovOrgWNO_UXD_RK3
 #endif
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
         integer(IK)             , intent(in)                        :: dim
-        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
-        real(TKC)               , intent(inout) , contiguous        :: cov(:,:)
+        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
+        real(TKG)               , intent(inout) , contiguous        :: cov(:,:)
         type(uppDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -3284,10 +3284,10 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovOrgWNO_UXD_RK2
 #endif
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
         integer(IK)             , intent(in)                        :: dim
-        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
-        real(TKC)               , intent(inout) , contiguous        :: cov(:,:)
+        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
+        real(TKG)               , intent(inout) , contiguous        :: cov(:,:)
         type(uppDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -3297,10 +3297,10 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovOrgWNO_UXD_RK1
 #endif
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
         integer(IK)             , intent(in)                        :: dim
-        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
-        real(TKC)               , intent(inout) , contiguous        :: cov(:,:)
+        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
+        real(TKG)               , intent(inout) , contiguous        :: cov(:,:)
         type(uppDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -3318,11 +3318,11 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovAvgWNO_UXD_CK5
 #endif
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
         integer(IK)             , intent(in)                        :: dim
-        complex(TKC)            , intent(in)    , contiguous        :: sample(:,:)
-        complex(TKC)            , intent(in)    , contiguous        :: mean(:)
-        complex(TKC)            , intent(inout) , contiguous        :: cov(:,:)
+        complex(TKG)            , intent(in)    , contiguous        :: sample(:,:)
+        complex(TKG)            , intent(in)    , contiguous        :: mean(:)
+        complex(TKG)            , intent(inout) , contiguous        :: cov(:,:)
         type(uppDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -3332,11 +3332,11 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovAvgWNO_UXD_CK4
 #endif
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
         integer(IK)             , intent(in)                        :: dim
-        complex(TKC)            , intent(in)    , contiguous        :: sample(:,:)
-        complex(TKC)            , intent(in)    , contiguous        :: mean(:)
-        complex(TKC)            , intent(inout) , contiguous        :: cov(:,:)
+        complex(TKG)            , intent(in)    , contiguous        :: sample(:,:)
+        complex(TKG)            , intent(in)    , contiguous        :: mean(:)
+        complex(TKG)            , intent(inout) , contiguous        :: cov(:,:)
         type(uppDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -3346,11 +3346,11 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovAvgWNO_UXD_CK3
 #endif
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
         integer(IK)             , intent(in)                        :: dim
-        complex(TKC)            , intent(in)    , contiguous        :: sample(:,:)
-        complex(TKC)            , intent(in)    , contiguous        :: mean(:)
-        complex(TKC)            , intent(inout) , contiguous        :: cov(:,:)
+        complex(TKG)            , intent(in)    , contiguous        :: sample(:,:)
+        complex(TKG)            , intent(in)    , contiguous        :: mean(:)
+        complex(TKG)            , intent(inout) , contiguous        :: cov(:,:)
         type(uppDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -3360,11 +3360,11 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovAvgWNO_UXD_CK2
 #endif
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
         integer(IK)             , intent(in)                        :: dim
-        complex(TKC)            , intent(in)    , contiguous        :: sample(:,:)
-        complex(TKC)            , intent(in)    , contiguous        :: mean(:)
-        complex(TKC)            , intent(inout) , contiguous        :: cov(:,:)
+        complex(TKG)            , intent(in)    , contiguous        :: sample(:,:)
+        complex(TKG)            , intent(in)    , contiguous        :: mean(:)
+        complex(TKG)            , intent(inout) , contiguous        :: cov(:,:)
         type(uppDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -3374,11 +3374,11 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovAvgWNO_UXD_CK1
 #endif
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
         integer(IK)             , intent(in)                        :: dim
-        complex(TKC)            , intent(in)    , contiguous        :: sample(:,:)
-        complex(TKC)            , intent(in)    , contiguous        :: mean(:)
-        complex(TKC)            , intent(inout) , contiguous        :: cov(:,:)
+        complex(TKG)            , intent(in)    , contiguous        :: sample(:,:)
+        complex(TKG)            , intent(in)    , contiguous        :: mean(:)
+        complex(TKG)            , intent(inout) , contiguous        :: cov(:,:)
         type(uppDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -3390,11 +3390,11 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovAvgWNO_UXD_RK5
 #endif
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
         integer(IK)             , intent(in)                        :: dim
-        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
-        real(TKC)               , intent(in)    , contiguous        :: mean(:)
-        real(TKC)               , intent(inout) , contiguous        :: cov(:,:)
+        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
+        real(TKG)               , intent(in)    , contiguous        :: mean(:)
+        real(TKG)               , intent(inout) , contiguous        :: cov(:,:)
         type(uppDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -3404,11 +3404,11 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovAvgWNO_UXD_RK4
 #endif
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
         integer(IK)             , intent(in)                        :: dim
-        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
-        real(TKC)               , intent(in)    , contiguous        :: mean(:)
-        real(TKC)               , intent(inout) , contiguous        :: cov(:,:)
+        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
+        real(TKG)               , intent(in)    , contiguous        :: mean(:)
+        real(TKG)               , intent(inout) , contiguous        :: cov(:,:)
         type(uppDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -3418,11 +3418,11 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovAvgWNO_UXD_RK3
 #endif
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
         integer(IK)             , intent(in)                        :: dim
-        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
-        real(TKC)               , intent(in)    , contiguous        :: mean(:)
-        real(TKC)               , intent(inout) , contiguous        :: cov(:,:)
+        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
+        real(TKG)               , intent(in)    , contiguous        :: mean(:)
+        real(TKG)               , intent(inout) , contiguous        :: cov(:,:)
         type(uppDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -3432,11 +3432,11 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovAvgWNO_UXD_RK2
 #endif
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
         integer(IK)             , intent(in)                        :: dim
-        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
-        real(TKC)               , intent(in)    , contiguous        :: mean(:)
-        real(TKC)               , intent(inout) , contiguous        :: cov(:,:)
+        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
+        real(TKG)               , intent(in)    , contiguous        :: mean(:)
+        real(TKG)               , intent(inout) , contiguous        :: cov(:,:)
         type(uppDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -3446,11 +3446,11 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovAvgWNO_UXD_RK1
 #endif
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
         integer(IK)             , intent(in)                        :: dim
-        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
-        real(TKC)               , intent(in)    , contiguous        :: mean(:)
-        real(TKC)               , intent(inout) , contiguous        :: cov(:,:)
+        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
+        real(TKG)               , intent(in)    , contiguous        :: mean(:)
+        real(TKG)               , intent(inout) , contiguous        :: cov(:,:)
         type(uppDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -3478,12 +3478,12 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovOrgWTI_UXD_CK5
 #endif
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
         integer(IK)             , intent(in)                        :: dim
         integer(IK)             , intent(in)                        :: weisum
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous        :: sample(:,:)
-        complex(TKC)            , intent(inout) , contiguous        :: cov(:,:)
+        complex(TKG)            , intent(in)    , contiguous        :: sample(:,:)
+        complex(TKG)            , intent(inout) , contiguous        :: cov(:,:)
         type(uppDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -3493,12 +3493,12 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovOrgWTI_UXD_CK4
 #endif
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
         integer(IK)             , intent(in)                        :: dim
         integer(IK)             , intent(in)                        :: weisum
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous        :: sample(:,:)
-        complex(TKC)            , intent(inout) , contiguous        :: cov(:,:)
+        complex(TKG)            , intent(in)    , contiguous        :: sample(:,:)
+        complex(TKG)            , intent(inout) , contiguous        :: cov(:,:)
         type(uppDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -3508,12 +3508,12 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovOrgWTI_UXD_CK3
 #endif
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
         integer(IK)             , intent(in)                        :: dim
         integer(IK)             , intent(in)                        :: weisum
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous        :: sample(:,:)
-        complex(TKC)            , intent(inout) , contiguous        :: cov(:,:)
+        complex(TKG)            , intent(in)    , contiguous        :: sample(:,:)
+        complex(TKG)            , intent(inout) , contiguous        :: cov(:,:)
         type(uppDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -3523,12 +3523,12 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovOrgWTI_UXD_CK2
 #endif
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
         integer(IK)             , intent(in)                        :: dim
         integer(IK)             , intent(in)                        :: weisum
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous        :: sample(:,:)
-        complex(TKC)            , intent(inout) , contiguous        :: cov(:,:)
+        complex(TKG)            , intent(in)    , contiguous        :: sample(:,:)
+        complex(TKG)            , intent(inout) , contiguous        :: cov(:,:)
         type(uppDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -3538,12 +3538,12 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovOrgWTI_UXD_CK1
 #endif
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
         integer(IK)             , intent(in)                        :: dim
         integer(IK)             , intent(in)                        :: weisum
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous        :: sample(:,:)
-        complex(TKC)            , intent(inout) , contiguous        :: cov(:,:)
+        complex(TKG)            , intent(in)    , contiguous        :: sample(:,:)
+        complex(TKG)            , intent(inout) , contiguous        :: cov(:,:)
         type(uppDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -3555,12 +3555,12 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovOrgWTI_UXD_RK5
 #endif
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
         integer(IK)             , intent(in)                        :: dim
         integer(IK)             , intent(in)                        :: weisum
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
-        real(TKC)               , intent(inout) , contiguous        :: cov(:,:)
+        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
+        real(TKG)               , intent(inout) , contiguous        :: cov(:,:)
         type(uppDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -3570,12 +3570,12 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovOrgWTI_UXD_RK4
 #endif
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
         integer(IK)             , intent(in)                        :: dim
         integer(IK)             , intent(in)                        :: weisum
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
-        real(TKC)               , intent(inout) , contiguous        :: cov(:,:)
+        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
+        real(TKG)               , intent(inout) , contiguous        :: cov(:,:)
         type(uppDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -3585,12 +3585,12 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovOrgWTI_UXD_RK3
 #endif
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
         integer(IK)             , intent(in)                        :: dim
         integer(IK)             , intent(in)                        :: weisum
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
-        real(TKC)               , intent(inout) , contiguous        :: cov(:,:)
+        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
+        real(TKG)               , intent(inout) , contiguous        :: cov(:,:)
         type(uppDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -3600,12 +3600,12 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovOrgWTI_UXD_RK2
 #endif
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
         integer(IK)             , intent(in)                        :: dim
         integer(IK)             , intent(in)                        :: weisum
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
-        real(TKC)               , intent(inout) , contiguous        :: cov(:,:)
+        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
+        real(TKG)               , intent(inout) , contiguous        :: cov(:,:)
         type(uppDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -3615,12 +3615,12 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovOrgWTI_UXD_RK1
 #endif
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
         integer(IK)             , intent(in)                        :: dim
         integer(IK)             , intent(in)                        :: weisum
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
-        real(TKC)               , intent(inout) , contiguous        :: cov(:,:)
+        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
+        real(TKG)               , intent(inout) , contiguous        :: cov(:,:)
         type(uppDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -3638,13 +3638,13 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovAvgWTI_UXD_CK5
 #endif
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
         integer(IK)             , intent(in)                        :: dim
         integer(IK)             , intent(in)                        :: weisum
-        complex(TKC)            , intent(in)    , contiguous        :: mean(:)
+        complex(TKG)            , intent(in)    , contiguous        :: mean(:)
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous        :: sample(:,:)
-        complex(TKC)            , intent(inout) , contiguous        :: cov(:,:)
+        complex(TKG)            , intent(in)    , contiguous        :: sample(:,:)
+        complex(TKG)            , intent(inout) , contiguous        :: cov(:,:)
         type(uppDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -3654,13 +3654,13 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovAvgWTI_UXD_CK4
 #endif
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
         integer(IK)             , intent(in)                        :: dim
         integer(IK)             , intent(in)                        :: weisum
-        complex(TKC)            , intent(in)    , contiguous        :: mean(:)
+        complex(TKG)            , intent(in)    , contiguous        :: mean(:)
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous        :: sample(:,:)
-        complex(TKC)            , intent(inout) , contiguous        :: cov(:,:)
+        complex(TKG)            , intent(in)    , contiguous        :: sample(:,:)
+        complex(TKG)            , intent(inout) , contiguous        :: cov(:,:)
         type(uppDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -3670,13 +3670,13 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovAvgWTI_UXD_CK3
 #endif
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
         integer(IK)             , intent(in)                        :: dim
         integer(IK)             , intent(in)                        :: weisum
-        complex(TKC)            , intent(in)    , contiguous        :: mean(:)
+        complex(TKG)            , intent(in)    , contiguous        :: mean(:)
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous        :: sample(:,:)
-        complex(TKC)            , intent(inout) , contiguous        :: cov(:,:)
+        complex(TKG)            , intent(in)    , contiguous        :: sample(:,:)
+        complex(TKG)            , intent(inout) , contiguous        :: cov(:,:)
         type(uppDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -3686,13 +3686,13 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovAvgWTI_UXD_CK2
 #endif
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
         integer(IK)             , intent(in)                        :: dim
         integer(IK)             , intent(in)                        :: weisum
-        complex(TKC)            , intent(in)    , contiguous        :: mean(:)
+        complex(TKG)            , intent(in)    , contiguous        :: mean(:)
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous        :: sample(:,:)
-        complex(TKC)            , intent(inout) , contiguous        :: cov(:,:)
+        complex(TKG)            , intent(in)    , contiguous        :: sample(:,:)
+        complex(TKG)            , intent(inout) , contiguous        :: cov(:,:)
         type(uppDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -3702,13 +3702,13 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovAvgWTI_UXD_CK1
 #endif
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
         integer(IK)             , intent(in)                        :: dim
         integer(IK)             , intent(in)                        :: weisum
-        complex(TKC)            , intent(in)    , contiguous        :: mean(:)
+        complex(TKG)            , intent(in)    , contiguous        :: mean(:)
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous        :: sample(:,:)
-        complex(TKC)            , intent(inout) , contiguous        :: cov(:,:)
+        complex(TKG)            , intent(in)    , contiguous        :: sample(:,:)
+        complex(TKG)            , intent(inout) , contiguous        :: cov(:,:)
         type(uppDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -3720,13 +3720,13 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovAvgWTI_UXD_RK5
 #endif
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
         integer(IK)             , intent(in)                        :: dim
         integer(IK)             , intent(in)                        :: weisum
-        real(TKC)               , intent(in)    , contiguous        :: mean(:)
+        real(TKG)               , intent(in)    , contiguous        :: mean(:)
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
-        real(TKC)               , intent(inout) , contiguous        :: cov(:,:)
+        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
+        real(TKG)               , intent(inout) , contiguous        :: cov(:,:)
         type(uppDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -3736,13 +3736,13 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovAvgWTI_UXD_RK4
 #endif
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
         integer(IK)             , intent(in)                        :: dim
         integer(IK)             , intent(in)                        :: weisum
-        real(TKC)               , intent(in)    , contiguous        :: mean(:)
+        real(TKG)               , intent(in)    , contiguous        :: mean(:)
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
-        real(TKC)               , intent(inout) , contiguous        :: cov(:,:)
+        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
+        real(TKG)               , intent(inout) , contiguous        :: cov(:,:)
         type(uppDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -3752,13 +3752,13 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovAvgWTI_UXD_RK3
 #endif
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
         integer(IK)             , intent(in)                        :: dim
         integer(IK)             , intent(in)                        :: weisum
-        real(TKC)               , intent(in)    , contiguous        :: mean(:)
+        real(TKG)               , intent(in)    , contiguous        :: mean(:)
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
-        real(TKC)               , intent(inout) , contiguous        :: cov(:,:)
+        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
+        real(TKG)               , intent(inout) , contiguous        :: cov(:,:)
         type(uppDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -3768,13 +3768,13 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovAvgWTI_UXD_RK2
 #endif
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
         integer(IK)             , intent(in)                        :: dim
         integer(IK)             , intent(in)                        :: weisum
-        real(TKC)               , intent(in)    , contiguous        :: mean(:)
+        real(TKG)               , intent(in)    , contiguous        :: mean(:)
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
-        real(TKC)               , intent(inout) , contiguous        :: cov(:,:)
+        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
+        real(TKG)               , intent(inout) , contiguous        :: cov(:,:)
         type(uppDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -3784,13 +3784,13 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovAvgWTI_UXD_RK1
 #endif
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
         integer(IK)             , intent(in)                        :: dim
         integer(IK)             , intent(in)                        :: weisum
-        real(TKC)               , intent(in)    , contiguous        :: mean(:)
+        real(TKG)               , intent(in)    , contiguous        :: mean(:)
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
-        real(TKC)               , intent(inout) , contiguous        :: cov(:,:)
+        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
+        real(TKG)               , intent(inout) , contiguous        :: cov(:,:)
         type(uppDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -3818,12 +3818,12 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovOrgWTR_UXD_CK5
 #endif
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
         integer(IK)             , intent(in)                        :: dim
-        real(TKC)               , intent(in)                        :: weisum
-        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous        :: sample(:,:)
-        complex(TKC)            , intent(inout) , contiguous        :: cov(:,:)
+        real(TKG)               , intent(in)                        :: weisum
+        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+        complex(TKG)            , intent(in)    , contiguous        :: sample(:,:)
+        complex(TKG)            , intent(inout) , contiguous        :: cov(:,:)
         type(uppDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -3833,12 +3833,12 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovOrgWTR_UXD_CK4
 #endif
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
         integer(IK)             , intent(in)                        :: dim
-        real(TKC)               , intent(in)                        :: weisum
-        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous        :: sample(:,:)
-        complex(TKC)            , intent(inout) , contiguous        :: cov(:,:)
+        real(TKG)               , intent(in)                        :: weisum
+        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+        complex(TKG)            , intent(in)    , contiguous        :: sample(:,:)
+        complex(TKG)            , intent(inout) , contiguous        :: cov(:,:)
         type(uppDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -3848,12 +3848,12 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovOrgWTR_UXD_CK3
 #endif
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
         integer(IK)             , intent(in)                        :: dim
-        real(TKC)               , intent(in)                        :: weisum
-        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous        :: sample(:,:)
-        complex(TKC)            , intent(inout) , contiguous        :: cov(:,:)
+        real(TKG)               , intent(in)                        :: weisum
+        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+        complex(TKG)            , intent(in)    , contiguous        :: sample(:,:)
+        complex(TKG)            , intent(inout) , contiguous        :: cov(:,:)
         type(uppDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -3863,12 +3863,12 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovOrgWTR_UXD_CK2
 #endif
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
         integer(IK)             , intent(in)                        :: dim
-        real(TKC)               , intent(in)                        :: weisum
-        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous        :: sample(:,:)
-        complex(TKC)            , intent(inout) , contiguous        :: cov(:,:)
+        real(TKG)               , intent(in)                        :: weisum
+        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+        complex(TKG)            , intent(in)    , contiguous        :: sample(:,:)
+        complex(TKG)            , intent(inout) , contiguous        :: cov(:,:)
         type(uppDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -3878,12 +3878,12 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovOrgWTR_UXD_CK1
 #endif
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
         integer(IK)             , intent(in)                        :: dim
-        real(TKC)               , intent(in)                        :: weisum
-        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous        :: sample(:,:)
-        complex(TKC)            , intent(inout) , contiguous        :: cov(:,:)
+        real(TKG)               , intent(in)                        :: weisum
+        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+        complex(TKG)            , intent(in)    , contiguous        :: sample(:,:)
+        complex(TKG)            , intent(inout) , contiguous        :: cov(:,:)
         type(uppDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -3895,12 +3895,12 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovOrgWTR_UXD_RK5
 #endif
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
         integer(IK)             , intent(in)                        :: dim
-        real(TKC)               , intent(in)                        :: weisum
-        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
-        real(TKC)               , intent(inout) , contiguous        :: cov(:,:)
+        real(TKG)               , intent(in)                        :: weisum
+        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
+        real(TKG)               , intent(inout) , contiguous        :: cov(:,:)
         type(uppDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -3910,12 +3910,12 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovOrgWTR_UXD_RK4
 #endif
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
         integer(IK)             , intent(in)                        :: dim
-        real(TKC)               , intent(in)                        :: weisum
-        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
-        real(TKC)               , intent(inout) , contiguous        :: cov(:,:)
+        real(TKG)               , intent(in)                        :: weisum
+        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
+        real(TKG)               , intent(inout) , contiguous        :: cov(:,:)
         type(uppDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -3925,12 +3925,12 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovOrgWTR_UXD_RK3
 #endif
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
         integer(IK)             , intent(in)                        :: dim
-        real(TKC)               , intent(in)                        :: weisum
-        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
-        real(TKC)               , intent(inout) , contiguous        :: cov(:,:)
+        real(TKG)               , intent(in)                        :: weisum
+        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
+        real(TKG)               , intent(inout) , contiguous        :: cov(:,:)
         type(uppDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -3940,12 +3940,12 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovOrgWTR_UXD_RK2
 #endif
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
         integer(IK)             , intent(in)                        :: dim
-        real(TKC)               , intent(in)                        :: weisum
-        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
-        real(TKC)               , intent(inout) , contiguous        :: cov(:,:)
+        real(TKG)               , intent(in)                        :: weisum
+        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
+        real(TKG)               , intent(inout) , contiguous        :: cov(:,:)
         type(uppDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -3955,12 +3955,12 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovOrgWTR_UXD_RK1
 #endif
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
         integer(IK)             , intent(in)                        :: dim
-        real(TKC)               , intent(in)                        :: weisum
-        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
-        real(TKC)               , intent(inout) , contiguous        :: cov(:,:)
+        real(TKG)               , intent(in)                        :: weisum
+        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
+        real(TKG)               , intent(inout) , contiguous        :: cov(:,:)
         type(uppDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -3978,13 +3978,13 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovAvgWTR_UXD_CK5
 #endif
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
         integer(IK)             , intent(in)                        :: dim
-        real(TKC)               , intent(in)                        :: weisum
-        complex(TKC)            , intent(in)    , contiguous        :: mean(:)
-        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous        :: sample(:,:)
-        complex(TKC)            , intent(inout) , contiguous        :: cov(:,:)
+        real(TKG)               , intent(in)                        :: weisum
+        complex(TKG)            , intent(in)    , contiguous        :: mean(:)
+        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+        complex(TKG)            , intent(in)    , contiguous        :: sample(:,:)
+        complex(TKG)            , intent(inout) , contiguous        :: cov(:,:)
         type(uppDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -3994,13 +3994,13 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovAvgWTR_UXD_CK4
 #endif
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
         integer(IK)             , intent(in)                        :: dim
-        real(TKC)               , intent(in)                        :: weisum
-        complex(TKC)            , intent(in)    , contiguous        :: mean(:)
-        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous        :: sample(:,:)
-        complex(TKC)            , intent(inout) , contiguous        :: cov(:,:)
+        real(TKG)               , intent(in)                        :: weisum
+        complex(TKG)            , intent(in)    , contiguous        :: mean(:)
+        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+        complex(TKG)            , intent(in)    , contiguous        :: sample(:,:)
+        complex(TKG)            , intent(inout) , contiguous        :: cov(:,:)
         type(uppDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -4010,13 +4010,13 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovAvgWTR_UXD_CK3
 #endif
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
         integer(IK)             , intent(in)                        :: dim
-        real(TKC)               , intent(in)                        :: weisum
-        complex(TKC)            , intent(in)    , contiguous        :: mean(:)
-        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous        :: sample(:,:)
-        complex(TKC)            , intent(inout) , contiguous        :: cov(:,:)
+        real(TKG)               , intent(in)                        :: weisum
+        complex(TKG)            , intent(in)    , contiguous        :: mean(:)
+        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+        complex(TKG)            , intent(in)    , contiguous        :: sample(:,:)
+        complex(TKG)            , intent(inout) , contiguous        :: cov(:,:)
         type(uppDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -4026,13 +4026,13 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovAvgWTR_UXD_CK2
 #endif
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
         integer(IK)             , intent(in)                        :: dim
-        real(TKC)               , intent(in)                        :: weisum
-        complex(TKC)            , intent(in)    , contiguous        :: mean(:)
-        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous        :: sample(:,:)
-        complex(TKC)            , intent(inout) , contiguous        :: cov(:,:)
+        real(TKG)               , intent(in)                        :: weisum
+        complex(TKG)            , intent(in)    , contiguous        :: mean(:)
+        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+        complex(TKG)            , intent(in)    , contiguous        :: sample(:,:)
+        complex(TKG)            , intent(inout) , contiguous        :: cov(:,:)
         type(uppDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -4042,13 +4042,13 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovAvgWTR_UXD_CK1
 #endif
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
         integer(IK)             , intent(in)                        :: dim
-        real(TKC)               , intent(in)                        :: weisum
-        complex(TKC)            , intent(in)    , contiguous        :: mean(:)
-        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous        :: sample(:,:)
-        complex(TKC)            , intent(inout) , contiguous        :: cov(:,:)
+        real(TKG)               , intent(in)                        :: weisum
+        complex(TKG)            , intent(in)    , contiguous        :: mean(:)
+        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+        complex(TKG)            , intent(in)    , contiguous        :: sample(:,:)
+        complex(TKG)            , intent(inout) , contiguous        :: cov(:,:)
         type(uppDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -4060,13 +4060,13 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovAvgWTR_UXD_RK5
 #endif
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
         integer(IK)             , intent(in)                        :: dim
-        real(TKC)               , intent(in)                        :: weisum
-        real(TKC)               , intent(in)    , contiguous        :: mean(:)
-        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
-        real(TKC)               , intent(inout) , contiguous        :: cov(:,:)
+        real(TKG)               , intent(in)                        :: weisum
+        real(TKG)               , intent(in)    , contiguous        :: mean(:)
+        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
+        real(TKG)               , intent(inout) , contiguous        :: cov(:,:)
         type(uppDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -4076,13 +4076,13 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovAvgWTR_UXD_RK4
 #endif
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
         integer(IK)             , intent(in)                        :: dim
-        real(TKC)               , intent(in)                        :: weisum
-        real(TKC)               , intent(in)    , contiguous        :: mean(:)
-        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
-        real(TKC)               , intent(inout) , contiguous        :: cov(:,:)
+        real(TKG)               , intent(in)                        :: weisum
+        real(TKG)               , intent(in)    , contiguous        :: mean(:)
+        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
+        real(TKG)               , intent(inout) , contiguous        :: cov(:,:)
         type(uppDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -4092,13 +4092,13 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovAvgWTR_UXD_RK3
 #endif
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
         integer(IK)             , intent(in)                        :: dim
-        real(TKC)               , intent(in)                        :: weisum
-        real(TKC)               , intent(in)    , contiguous        :: mean(:)
-        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
-        real(TKC)               , intent(inout) , contiguous        :: cov(:,:)
+        real(TKG)               , intent(in)                        :: weisum
+        real(TKG)               , intent(in)    , contiguous        :: mean(:)
+        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
+        real(TKG)               , intent(inout) , contiguous        :: cov(:,:)
         type(uppDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -4108,13 +4108,13 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovAvgWTR_UXD_RK2
 #endif
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
         integer(IK)             , intent(in)                        :: dim
-        real(TKC)               , intent(in)                        :: weisum
-        real(TKC)               , intent(in)    , contiguous        :: mean(:)
-        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
-        real(TKC)               , intent(inout) , contiguous        :: cov(:,:)
+        real(TKG)               , intent(in)                        :: weisum
+        real(TKG)               , intent(in)    , contiguous        :: mean(:)
+        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
+        real(TKG)               , intent(inout) , contiguous        :: cov(:,:)
         type(uppDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -4124,13 +4124,13 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovAvgWTR_UXD_RK1
 #endif
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
         integer(IK)             , intent(in)                        :: dim
-        real(TKC)               , intent(in)                        :: weisum
-        real(TKC)               , intent(in)    , contiguous        :: mean(:)
-        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
-        real(TKC)               , intent(inout) , contiguous        :: cov(:,:)
+        real(TKG)               , intent(in)                        :: weisum
+        real(TKG)               , intent(in)    , contiguous        :: mean(:)
+        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
+        real(TKG)               , intent(inout) , contiguous        :: cov(:,:)
         type(uppDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -4160,10 +4160,10 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovOrgWNO_XLD_CK5
 #endif
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
         integer(IK)             , intent(in)                        :: dim
-        complex(TKC)            , intent(in)    , contiguous        :: sample(:,:)
-        complex(TKC)            , intent(inout) , contiguous        :: cov(:,:)
+        complex(TKG)            , intent(in)    , contiguous        :: sample(:,:)
+        complex(TKG)            , intent(inout) , contiguous        :: cov(:,:)
         type(lowDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -4173,10 +4173,10 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovOrgWNO_XLD_CK4
 #endif
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
         integer(IK)             , intent(in)                        :: dim
-        complex(TKC)            , intent(in)    , contiguous        :: sample(:,:)
-        complex(TKC)            , intent(inout) , contiguous        :: cov(:,:)
+        complex(TKG)            , intent(in)    , contiguous        :: sample(:,:)
+        complex(TKG)            , intent(inout) , contiguous        :: cov(:,:)
         type(lowDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -4186,10 +4186,10 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovOrgWNO_XLD_CK3
 #endif
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
         integer(IK)             , intent(in)                        :: dim
-        complex(TKC)            , intent(in)    , contiguous        :: sample(:,:)
-        complex(TKC)            , intent(inout) , contiguous        :: cov(:,:)
+        complex(TKG)            , intent(in)    , contiguous        :: sample(:,:)
+        complex(TKG)            , intent(inout) , contiguous        :: cov(:,:)
         type(lowDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -4199,10 +4199,10 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovOrgWNO_XLD_CK2
 #endif
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
         integer(IK)             , intent(in)                        :: dim
-        complex(TKC)            , intent(in)    , contiguous        :: sample(:,:)
-        complex(TKC)            , intent(inout) , contiguous        :: cov(:,:)
+        complex(TKG)            , intent(in)    , contiguous        :: sample(:,:)
+        complex(TKG)            , intent(inout) , contiguous        :: cov(:,:)
         type(lowDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -4212,10 +4212,10 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovOrgWNO_XLD_CK1
 #endif
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
         integer(IK)             , intent(in)                        :: dim
-        complex(TKC)            , intent(in)    , contiguous        :: sample(:,:)
-        complex(TKC)            , intent(inout) , contiguous        :: cov(:,:)
+        complex(TKG)            , intent(in)    , contiguous        :: sample(:,:)
+        complex(TKG)            , intent(inout) , contiguous        :: cov(:,:)
         type(lowDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -4227,10 +4227,10 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovOrgWNO_XLD_RK5
 #endif
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
         integer(IK)             , intent(in)                        :: dim
-        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
-        real(TKC)               , intent(inout) , contiguous        :: cov(:,:)
+        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
+        real(TKG)               , intent(inout) , contiguous        :: cov(:,:)
         type(lowDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -4240,10 +4240,10 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovOrgWNO_XLD_RK4
 #endif
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
         integer(IK)             , intent(in)                        :: dim
-        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
-        real(TKC)               , intent(inout) , contiguous        :: cov(:,:)
+        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
+        real(TKG)               , intent(inout) , contiguous        :: cov(:,:)
         type(lowDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -4253,10 +4253,10 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovOrgWNO_XLD_RK3
 #endif
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
         integer(IK)             , intent(in)                        :: dim
-        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
-        real(TKC)               , intent(inout) , contiguous        :: cov(:,:)
+        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
+        real(TKG)               , intent(inout) , contiguous        :: cov(:,:)
         type(lowDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -4266,10 +4266,10 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovOrgWNO_XLD_RK2
 #endif
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
         integer(IK)             , intent(in)                        :: dim
-        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
-        real(TKC)               , intent(inout) , contiguous        :: cov(:,:)
+        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
+        real(TKG)               , intent(inout) , contiguous        :: cov(:,:)
         type(lowDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -4279,10 +4279,10 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovOrgWNO_XLD_RK1
 #endif
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
         integer(IK)             , intent(in)                        :: dim
-        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
-        real(TKC)               , intent(inout) , contiguous        :: cov(:,:)
+        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
+        real(TKG)               , intent(inout) , contiguous        :: cov(:,:)
         type(lowDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -4300,11 +4300,11 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovAvgWNO_XLD_CK5
 #endif
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
         integer(IK)             , intent(in)                        :: dim
-        complex(TKC)            , intent(in)    , contiguous        :: sample(:,:)
-        complex(TKC)            , intent(in)    , contiguous        :: mean(:)
-        complex(TKC)            , intent(inout) , contiguous        :: cov(:,:)
+        complex(TKG)            , intent(in)    , contiguous        :: sample(:,:)
+        complex(TKG)            , intent(in)    , contiguous        :: mean(:)
+        complex(TKG)            , intent(inout) , contiguous        :: cov(:,:)
         type(lowDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -4314,11 +4314,11 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovAvgWNO_XLD_CK4
 #endif
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
         integer(IK)             , intent(in)                        :: dim
-        complex(TKC)            , intent(in)    , contiguous        :: sample(:,:)
-        complex(TKC)            , intent(in)    , contiguous        :: mean(:)
-        complex(TKC)            , intent(inout) , contiguous        :: cov(:,:)
+        complex(TKG)            , intent(in)    , contiguous        :: sample(:,:)
+        complex(TKG)            , intent(in)    , contiguous        :: mean(:)
+        complex(TKG)            , intent(inout) , contiguous        :: cov(:,:)
         type(lowDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -4328,11 +4328,11 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovAvgWNO_XLD_CK3
 #endif
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
         integer(IK)             , intent(in)                        :: dim
-        complex(TKC)            , intent(in)    , contiguous        :: sample(:,:)
-        complex(TKC)            , intent(in)    , contiguous        :: mean(:)
-        complex(TKC)            , intent(inout) , contiguous        :: cov(:,:)
+        complex(TKG)            , intent(in)    , contiguous        :: sample(:,:)
+        complex(TKG)            , intent(in)    , contiguous        :: mean(:)
+        complex(TKG)            , intent(inout) , contiguous        :: cov(:,:)
         type(lowDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -4342,11 +4342,11 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovAvgWNO_XLD_CK2
 #endif
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
         integer(IK)             , intent(in)                        :: dim
-        complex(TKC)            , intent(in)    , contiguous        :: sample(:,:)
-        complex(TKC)            , intent(in)    , contiguous        :: mean(:)
-        complex(TKC)            , intent(inout) , contiguous        :: cov(:,:)
+        complex(TKG)            , intent(in)    , contiguous        :: sample(:,:)
+        complex(TKG)            , intent(in)    , contiguous        :: mean(:)
+        complex(TKG)            , intent(inout) , contiguous        :: cov(:,:)
         type(lowDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -4356,11 +4356,11 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovAvgWNO_XLD_CK1
 #endif
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
         integer(IK)             , intent(in)                        :: dim
-        complex(TKC)            , intent(in)    , contiguous        :: sample(:,:)
-        complex(TKC)            , intent(in)    , contiguous        :: mean(:)
-        complex(TKC)            , intent(inout) , contiguous        :: cov(:,:)
+        complex(TKG)            , intent(in)    , contiguous        :: sample(:,:)
+        complex(TKG)            , intent(in)    , contiguous        :: mean(:)
+        complex(TKG)            , intent(inout) , contiguous        :: cov(:,:)
         type(lowDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -4372,11 +4372,11 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovAvgWNO_XLD_RK5
 #endif
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
         integer(IK)             , intent(in)                        :: dim
-        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
-        real(TKC)               , intent(in)    , contiguous        :: mean(:)
-        real(TKC)               , intent(inout) , contiguous        :: cov(:,:)
+        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
+        real(TKG)               , intent(in)    , contiguous        :: mean(:)
+        real(TKG)               , intent(inout) , contiguous        :: cov(:,:)
         type(lowDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -4386,11 +4386,11 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovAvgWNO_XLD_RK4
 #endif
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
         integer(IK)             , intent(in)                        :: dim
-        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
-        real(TKC)               , intent(in)    , contiguous        :: mean(:)
-        real(TKC)               , intent(inout) , contiguous        :: cov(:,:)
+        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
+        real(TKG)               , intent(in)    , contiguous        :: mean(:)
+        real(TKG)               , intent(inout) , contiguous        :: cov(:,:)
         type(lowDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -4400,11 +4400,11 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovAvgWNO_XLD_RK3
 #endif
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
         integer(IK)             , intent(in)                        :: dim
-        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
-        real(TKC)               , intent(in)    , contiguous        :: mean(:)
-        real(TKC)               , intent(inout) , contiguous        :: cov(:,:)
+        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
+        real(TKG)               , intent(in)    , contiguous        :: mean(:)
+        real(TKG)               , intent(inout) , contiguous        :: cov(:,:)
         type(lowDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -4414,11 +4414,11 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovAvgWNO_XLD_RK2
 #endif
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
         integer(IK)             , intent(in)                        :: dim
-        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
-        real(TKC)               , intent(in)    , contiguous        :: mean(:)
-        real(TKC)               , intent(inout) , contiguous        :: cov(:,:)
+        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
+        real(TKG)               , intent(in)    , contiguous        :: mean(:)
+        real(TKG)               , intent(inout) , contiguous        :: cov(:,:)
         type(lowDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -4428,11 +4428,11 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovAvgWNO_XLD_RK1
 #endif
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
         integer(IK)             , intent(in)                        :: dim
-        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
-        real(TKC)               , intent(in)    , contiguous        :: mean(:)
-        real(TKC)               , intent(inout) , contiguous        :: cov(:,:)
+        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
+        real(TKG)               , intent(in)    , contiguous        :: mean(:)
+        real(TKG)               , intent(inout) , contiguous        :: cov(:,:)
         type(lowDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -4460,12 +4460,12 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovOrgWTI_XLD_CK5
 #endif
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
         integer(IK)             , intent(in)                        :: dim
         integer(IK)             , intent(in)                        :: weisum
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous        :: sample(:,:)
-        complex(TKC)            , intent(inout) , contiguous        :: cov(:,:)
+        complex(TKG)            , intent(in)    , contiguous        :: sample(:,:)
+        complex(TKG)            , intent(inout) , contiguous        :: cov(:,:)
         type(lowDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -4475,12 +4475,12 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovOrgWTI_XLD_CK4
 #endif
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
         integer(IK)             , intent(in)                        :: dim
         integer(IK)             , intent(in)                        :: weisum
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous        :: sample(:,:)
-        complex(TKC)            , intent(inout) , contiguous        :: cov(:,:)
+        complex(TKG)            , intent(in)    , contiguous        :: sample(:,:)
+        complex(TKG)            , intent(inout) , contiguous        :: cov(:,:)
         type(lowDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -4490,12 +4490,12 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovOrgWTI_XLD_CK3
 #endif
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
         integer(IK)             , intent(in)                        :: dim
         integer(IK)             , intent(in)                        :: weisum
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous        :: sample(:,:)
-        complex(TKC)            , intent(inout) , contiguous        :: cov(:,:)
+        complex(TKG)            , intent(in)    , contiguous        :: sample(:,:)
+        complex(TKG)            , intent(inout) , contiguous        :: cov(:,:)
         type(lowDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -4505,12 +4505,12 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovOrgWTI_XLD_CK2
 #endif
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
         integer(IK)             , intent(in)                        :: dim
         integer(IK)             , intent(in)                        :: weisum
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous        :: sample(:,:)
-        complex(TKC)            , intent(inout) , contiguous        :: cov(:,:)
+        complex(TKG)            , intent(in)    , contiguous        :: sample(:,:)
+        complex(TKG)            , intent(inout) , contiguous        :: cov(:,:)
         type(lowDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -4520,12 +4520,12 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovOrgWTI_XLD_CK1
 #endif
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
         integer(IK)             , intent(in)                        :: dim
         integer(IK)             , intent(in)                        :: weisum
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous        :: sample(:,:)
-        complex(TKC)            , intent(inout) , contiguous        :: cov(:,:)
+        complex(TKG)            , intent(in)    , contiguous        :: sample(:,:)
+        complex(TKG)            , intent(inout) , contiguous        :: cov(:,:)
         type(lowDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -4537,12 +4537,12 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovOrgWTI_XLD_RK5
 #endif
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
         integer(IK)             , intent(in)                        :: dim
         integer(IK)             , intent(in)                        :: weisum
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
-        real(TKC)               , intent(inout) , contiguous        :: cov(:,:)
+        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
+        real(TKG)               , intent(inout) , contiguous        :: cov(:,:)
         type(lowDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -4552,12 +4552,12 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovOrgWTI_XLD_RK4
 #endif
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
         integer(IK)             , intent(in)                        :: dim
         integer(IK)             , intent(in)                        :: weisum
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
-        real(TKC)               , intent(inout) , contiguous        :: cov(:,:)
+        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
+        real(TKG)               , intent(inout) , contiguous        :: cov(:,:)
         type(lowDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -4567,12 +4567,12 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovOrgWTI_XLD_RK3
 #endif
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
         integer(IK)             , intent(in)                        :: dim
         integer(IK)             , intent(in)                        :: weisum
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
-        real(TKC)               , intent(inout) , contiguous        :: cov(:,:)
+        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
+        real(TKG)               , intent(inout) , contiguous        :: cov(:,:)
         type(lowDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -4582,12 +4582,12 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovOrgWTI_XLD_RK2
 #endif
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
         integer(IK)             , intent(in)                        :: dim
         integer(IK)             , intent(in)                        :: weisum
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
-        real(TKC)               , intent(inout) , contiguous        :: cov(:,:)
+        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
+        real(TKG)               , intent(inout) , contiguous        :: cov(:,:)
         type(lowDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -4597,12 +4597,12 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovOrgWTI_XLD_RK1
 #endif
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
         integer(IK)             , intent(in)                        :: dim
         integer(IK)             , intent(in)                        :: weisum
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
-        real(TKC)               , intent(inout) , contiguous        :: cov(:,:)
+        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
+        real(TKG)               , intent(inout) , contiguous        :: cov(:,:)
         type(lowDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -4620,13 +4620,13 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovAvgWTI_XLD_CK5
 #endif
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
         integer(IK)             , intent(in)                        :: dim
         integer(IK)             , intent(in)                        :: weisum
-        complex(TKC)            , intent(in)    , contiguous        :: mean(:)
+        complex(TKG)            , intent(in)    , contiguous        :: mean(:)
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous        :: sample(:,:)
-        complex(TKC)            , intent(inout) , contiguous        :: cov(:,:)
+        complex(TKG)            , intent(in)    , contiguous        :: sample(:,:)
+        complex(TKG)            , intent(inout) , contiguous        :: cov(:,:)
         type(lowDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -4636,13 +4636,13 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovAvgWTI_XLD_CK4
 #endif
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
         integer(IK)             , intent(in)                        :: dim
         integer(IK)             , intent(in)                        :: weisum
-        complex(TKC)            , intent(in)    , contiguous        :: mean(:)
+        complex(TKG)            , intent(in)    , contiguous        :: mean(:)
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous        :: sample(:,:)
-        complex(TKC)            , intent(inout) , contiguous        :: cov(:,:)
+        complex(TKG)            , intent(in)    , contiguous        :: sample(:,:)
+        complex(TKG)            , intent(inout) , contiguous        :: cov(:,:)
         type(lowDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -4652,13 +4652,13 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovAvgWTI_XLD_CK3
 #endif
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
         integer(IK)             , intent(in)                        :: dim
         integer(IK)             , intent(in)                        :: weisum
-        complex(TKC)            , intent(in)    , contiguous        :: mean(:)
+        complex(TKG)            , intent(in)    , contiguous        :: mean(:)
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous        :: sample(:,:)
-        complex(TKC)            , intent(inout) , contiguous        :: cov(:,:)
+        complex(TKG)            , intent(in)    , contiguous        :: sample(:,:)
+        complex(TKG)            , intent(inout) , contiguous        :: cov(:,:)
         type(lowDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -4668,13 +4668,13 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovAvgWTI_XLD_CK2
 #endif
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
         integer(IK)             , intent(in)                        :: dim
         integer(IK)             , intent(in)                        :: weisum
-        complex(TKC)            , intent(in)    , contiguous        :: mean(:)
+        complex(TKG)            , intent(in)    , contiguous        :: mean(:)
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous        :: sample(:,:)
-        complex(TKC)            , intent(inout) , contiguous        :: cov(:,:)
+        complex(TKG)            , intent(in)    , contiguous        :: sample(:,:)
+        complex(TKG)            , intent(inout) , contiguous        :: cov(:,:)
         type(lowDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -4684,13 +4684,13 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovAvgWTI_XLD_CK1
 #endif
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
         integer(IK)             , intent(in)                        :: dim
         integer(IK)             , intent(in)                        :: weisum
-        complex(TKC)            , intent(in)    , contiguous        :: mean(:)
+        complex(TKG)            , intent(in)    , contiguous        :: mean(:)
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous        :: sample(:,:)
-        complex(TKC)            , intent(inout) , contiguous        :: cov(:,:)
+        complex(TKG)            , intent(in)    , contiguous        :: sample(:,:)
+        complex(TKG)            , intent(inout) , contiguous        :: cov(:,:)
         type(lowDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -4702,13 +4702,13 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovAvgWTI_XLD_RK5
 #endif
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
         integer(IK)             , intent(in)                        :: dim
         integer(IK)             , intent(in)                        :: weisum
-        real(TKC)               , intent(in)    , contiguous        :: mean(:)
+        real(TKG)               , intent(in)    , contiguous        :: mean(:)
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
-        real(TKC)               , intent(inout) , contiguous        :: cov(:,:)
+        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
+        real(TKG)               , intent(inout) , contiguous        :: cov(:,:)
         type(lowDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -4718,13 +4718,13 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovAvgWTI_XLD_RK4
 #endif
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
         integer(IK)             , intent(in)                        :: dim
         integer(IK)             , intent(in)                        :: weisum
-        real(TKC)               , intent(in)    , contiguous        :: mean(:)
+        real(TKG)               , intent(in)    , contiguous        :: mean(:)
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
-        real(TKC)               , intent(inout) , contiguous        :: cov(:,:)
+        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
+        real(TKG)               , intent(inout) , contiguous        :: cov(:,:)
         type(lowDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -4734,13 +4734,13 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovAvgWTI_XLD_RK3
 #endif
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
         integer(IK)             , intent(in)                        :: dim
         integer(IK)             , intent(in)                        :: weisum
-        real(TKC)               , intent(in)    , contiguous        :: mean(:)
+        real(TKG)               , intent(in)    , contiguous        :: mean(:)
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
-        real(TKC)               , intent(inout) , contiguous        :: cov(:,:)
+        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
+        real(TKG)               , intent(inout) , contiguous        :: cov(:,:)
         type(lowDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -4750,13 +4750,13 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovAvgWTI_XLD_RK2
 #endif
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
         integer(IK)             , intent(in)                        :: dim
         integer(IK)             , intent(in)                        :: weisum
-        real(TKC)               , intent(in)    , contiguous        :: mean(:)
+        real(TKG)               , intent(in)    , contiguous        :: mean(:)
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
-        real(TKC)               , intent(inout) , contiguous        :: cov(:,:)
+        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
+        real(TKG)               , intent(inout) , contiguous        :: cov(:,:)
         type(lowDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -4766,13 +4766,13 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovAvgWTI_XLD_RK1
 #endif
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
         integer(IK)             , intent(in)                        :: dim
         integer(IK)             , intent(in)                        :: weisum
-        real(TKC)               , intent(in)    , contiguous        :: mean(:)
+        real(TKG)               , intent(in)    , contiguous        :: mean(:)
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
-        real(TKC)               , intent(inout) , contiguous        :: cov(:,:)
+        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
+        real(TKG)               , intent(inout) , contiguous        :: cov(:,:)
         type(lowDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -4800,12 +4800,12 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovOrgWTR_XLD_CK5
 #endif
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
         integer(IK)             , intent(in)                        :: dim
-        real(TKC)               , intent(in)                        :: weisum
-        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous        :: sample(:,:)
-        complex(TKC)            , intent(inout) , contiguous        :: cov(:,:)
+        real(TKG)               , intent(in)                        :: weisum
+        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+        complex(TKG)            , intent(in)    , contiguous        :: sample(:,:)
+        complex(TKG)            , intent(inout) , contiguous        :: cov(:,:)
         type(lowDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -4815,12 +4815,12 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovOrgWTR_XLD_CK4
 #endif
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
         integer(IK)             , intent(in)                        :: dim
-        real(TKC)               , intent(in)                        :: weisum
-        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous        :: sample(:,:)
-        complex(TKC)            , intent(inout) , contiguous        :: cov(:,:)
+        real(TKG)               , intent(in)                        :: weisum
+        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+        complex(TKG)            , intent(in)    , contiguous        :: sample(:,:)
+        complex(TKG)            , intent(inout) , contiguous        :: cov(:,:)
         type(lowDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -4830,12 +4830,12 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovOrgWTR_XLD_CK3
 #endif
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
         integer(IK)             , intent(in)                        :: dim
-        real(TKC)               , intent(in)                        :: weisum
-        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous        :: sample(:,:)
-        complex(TKC)            , intent(inout) , contiguous        :: cov(:,:)
+        real(TKG)               , intent(in)                        :: weisum
+        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+        complex(TKG)            , intent(in)    , contiguous        :: sample(:,:)
+        complex(TKG)            , intent(inout) , contiguous        :: cov(:,:)
         type(lowDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -4845,12 +4845,12 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovOrgWTR_XLD_CK2
 #endif
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
         integer(IK)             , intent(in)                        :: dim
-        real(TKC)               , intent(in)                        :: weisum
-        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous        :: sample(:,:)
-        complex(TKC)            , intent(inout) , contiguous        :: cov(:,:)
+        real(TKG)               , intent(in)                        :: weisum
+        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+        complex(TKG)            , intent(in)    , contiguous        :: sample(:,:)
+        complex(TKG)            , intent(inout) , contiguous        :: cov(:,:)
         type(lowDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -4860,12 +4860,12 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovOrgWTR_XLD_CK1
 #endif
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
         integer(IK)             , intent(in)                        :: dim
-        real(TKC)               , intent(in)                        :: weisum
-        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous        :: sample(:,:)
-        complex(TKC)            , intent(inout) , contiguous        :: cov(:,:)
+        real(TKG)               , intent(in)                        :: weisum
+        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+        complex(TKG)            , intent(in)    , contiguous        :: sample(:,:)
+        complex(TKG)            , intent(inout) , contiguous        :: cov(:,:)
         type(lowDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -4877,12 +4877,12 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovOrgWTR_XLD_RK5
 #endif
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
         integer(IK)             , intent(in)                        :: dim
-        real(TKC)               , intent(in)                        :: weisum
-        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
-        real(TKC)               , intent(inout) , contiguous        :: cov(:,:)
+        real(TKG)               , intent(in)                        :: weisum
+        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
+        real(TKG)               , intent(inout) , contiguous        :: cov(:,:)
         type(lowDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -4892,12 +4892,12 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovOrgWTR_XLD_RK4
 #endif
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
         integer(IK)             , intent(in)                        :: dim
-        real(TKC)               , intent(in)                        :: weisum
-        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
-        real(TKC)               , intent(inout) , contiguous        :: cov(:,:)
+        real(TKG)               , intent(in)                        :: weisum
+        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
+        real(TKG)               , intent(inout) , contiguous        :: cov(:,:)
         type(lowDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -4907,12 +4907,12 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovOrgWTR_XLD_RK3
 #endif
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
         integer(IK)             , intent(in)                        :: dim
-        real(TKC)               , intent(in)                        :: weisum
-        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
-        real(TKC)               , intent(inout) , contiguous        :: cov(:,:)
+        real(TKG)               , intent(in)                        :: weisum
+        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
+        real(TKG)               , intent(inout) , contiguous        :: cov(:,:)
         type(lowDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -4922,12 +4922,12 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovOrgWTR_XLD_RK2
 #endif
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
         integer(IK)             , intent(in)                        :: dim
-        real(TKC)               , intent(in)                        :: weisum
-        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
-        real(TKC)               , intent(inout) , contiguous        :: cov(:,:)
+        real(TKG)               , intent(in)                        :: weisum
+        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
+        real(TKG)               , intent(inout) , contiguous        :: cov(:,:)
         type(lowDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -4937,12 +4937,12 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovOrgWTR_XLD_RK1
 #endif
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
         integer(IK)             , intent(in)                        :: dim
-        real(TKC)               , intent(in)                        :: weisum
-        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
-        real(TKC)               , intent(inout) , contiguous        :: cov(:,:)
+        real(TKG)               , intent(in)                        :: weisum
+        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
+        real(TKG)               , intent(inout) , contiguous        :: cov(:,:)
         type(lowDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -4960,13 +4960,13 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovAvgWTR_XLD_CK5
 #endif
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
         integer(IK)             , intent(in)                        :: dim
-        real(TKC)               , intent(in)                        :: weisum
-        complex(TKC)            , intent(in)    , contiguous        :: mean(:)
-        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous        :: sample(:,:)
-        complex(TKC)            , intent(inout) , contiguous        :: cov(:,:)
+        real(TKG)               , intent(in)                        :: weisum
+        complex(TKG)            , intent(in)    , contiguous        :: mean(:)
+        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+        complex(TKG)            , intent(in)    , contiguous        :: sample(:,:)
+        complex(TKG)            , intent(inout) , contiguous        :: cov(:,:)
         type(lowDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -4976,13 +4976,13 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovAvgWTR_XLD_CK4
 #endif
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
         integer(IK)             , intent(in)                        :: dim
-        real(TKC)               , intent(in)                        :: weisum
-        complex(TKC)            , intent(in)    , contiguous        :: mean(:)
-        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous        :: sample(:,:)
-        complex(TKC)            , intent(inout) , contiguous        :: cov(:,:)
+        real(TKG)               , intent(in)                        :: weisum
+        complex(TKG)            , intent(in)    , contiguous        :: mean(:)
+        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+        complex(TKG)            , intent(in)    , contiguous        :: sample(:,:)
+        complex(TKG)            , intent(inout) , contiguous        :: cov(:,:)
         type(lowDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -4992,13 +4992,13 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovAvgWTR_XLD_CK3
 #endif
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
         integer(IK)             , intent(in)                        :: dim
-        real(TKC)               , intent(in)                        :: weisum
-        complex(TKC)            , intent(in)    , contiguous        :: mean(:)
-        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous        :: sample(:,:)
-        complex(TKC)            , intent(inout) , contiguous        :: cov(:,:)
+        real(TKG)               , intent(in)                        :: weisum
+        complex(TKG)            , intent(in)    , contiguous        :: mean(:)
+        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+        complex(TKG)            , intent(in)    , contiguous        :: sample(:,:)
+        complex(TKG)            , intent(inout) , contiguous        :: cov(:,:)
         type(lowDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -5008,13 +5008,13 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovAvgWTR_XLD_CK2
 #endif
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
         integer(IK)             , intent(in)                        :: dim
-        real(TKC)               , intent(in)                        :: weisum
-        complex(TKC)            , intent(in)    , contiguous        :: mean(:)
-        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous        :: sample(:,:)
-        complex(TKC)            , intent(inout) , contiguous        :: cov(:,:)
+        real(TKG)               , intent(in)                        :: weisum
+        complex(TKG)            , intent(in)    , contiguous        :: mean(:)
+        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+        complex(TKG)            , intent(in)    , contiguous        :: sample(:,:)
+        complex(TKG)            , intent(inout) , contiguous        :: cov(:,:)
         type(lowDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -5024,13 +5024,13 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovAvgWTR_XLD_CK1
 #endif
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
         integer(IK)             , intent(in)                        :: dim
-        real(TKC)               , intent(in)                        :: weisum
-        complex(TKC)            , intent(in)    , contiguous        :: mean(:)
-        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous        :: sample(:,:)
-        complex(TKC)            , intent(inout) , contiguous        :: cov(:,:)
+        real(TKG)               , intent(in)                        :: weisum
+        complex(TKG)            , intent(in)    , contiguous        :: mean(:)
+        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+        complex(TKG)            , intent(in)    , contiguous        :: sample(:,:)
+        complex(TKG)            , intent(inout) , contiguous        :: cov(:,:)
         type(lowDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -5042,13 +5042,13 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovAvgWTR_XLD_RK5
 #endif
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
         integer(IK)             , intent(in)                        :: dim
-        real(TKC)               , intent(in)                        :: weisum
-        real(TKC)               , intent(in)    , contiguous        :: mean(:)
-        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
-        real(TKC)               , intent(inout) , contiguous        :: cov(:,:)
+        real(TKG)               , intent(in)                        :: weisum
+        real(TKG)               , intent(in)    , contiguous        :: mean(:)
+        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
+        real(TKG)               , intent(inout) , contiguous        :: cov(:,:)
         type(lowDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -5058,13 +5058,13 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovAvgWTR_XLD_RK4
 #endif
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
         integer(IK)             , intent(in)                        :: dim
-        real(TKC)               , intent(in)                        :: weisum
-        real(TKC)               , intent(in)    , contiguous        :: mean(:)
-        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
-        real(TKC)               , intent(inout) , contiguous        :: cov(:,:)
+        real(TKG)               , intent(in)                        :: weisum
+        real(TKG)               , intent(in)    , contiguous        :: mean(:)
+        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
+        real(TKG)               , intent(inout) , contiguous        :: cov(:,:)
         type(lowDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -5074,13 +5074,13 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovAvgWTR_XLD_RK3
 #endif
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
         integer(IK)             , intent(in)                        :: dim
-        real(TKC)               , intent(in)                        :: weisum
-        real(TKC)               , intent(in)    , contiguous        :: mean(:)
-        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
-        real(TKC)               , intent(inout) , contiguous        :: cov(:,:)
+        real(TKG)               , intent(in)                        :: weisum
+        real(TKG)               , intent(in)    , contiguous        :: mean(:)
+        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
+        real(TKG)               , intent(inout) , contiguous        :: cov(:,:)
         type(lowDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -5090,13 +5090,13 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovAvgWTR_XLD_RK2
 #endif
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
         integer(IK)             , intent(in)                        :: dim
-        real(TKC)               , intent(in)                        :: weisum
-        real(TKC)               , intent(in)    , contiguous        :: mean(:)
-        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
-        real(TKC)               , intent(inout) , contiguous        :: cov(:,:)
+        real(TKG)               , intent(in)                        :: weisum
+        real(TKG)               , intent(in)    , contiguous        :: mean(:)
+        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
+        real(TKG)               , intent(inout) , contiguous        :: cov(:,:)
         type(lowDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -5106,13 +5106,13 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovAvgWTR_XLD_RK1
 #endif
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
         integer(IK)             , intent(in)                        :: dim
-        real(TKC)               , intent(in)                        :: weisum
-        real(TKC)               , intent(in)    , contiguous        :: mean(:)
-        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
-        real(TKC)               , intent(inout) , contiguous        :: cov(:,:)
+        real(TKG)               , intent(in)                        :: weisum
+        real(TKG)               , intent(in)    , contiguous        :: mean(:)
+        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
+        real(TKG)               , intent(inout) , contiguous        :: cov(:,:)
         type(lowDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -5308,11 +5308,11 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovMeanWNO_XY_CK5
 #endif
-        use pm_kind, only: TKC => CK5
-        complex(TKC)            , intent(in)    , contiguous        :: x(:), y(:)
-        complex(TKC)            , intent(out)   , contiguous        :: mean(:)
-        complex(TKC)            , intent(out)   , contiguous        :: cov(:,:)
-        complex(TKC)            , intent(in)    , contiguous        :: meang(:)
+        use pm_kind, only: TKG => CK5
+        complex(TKG)            , intent(in)    , contiguous        :: x(:), y(:)
+        complex(TKG)            , intent(out)   , contiguous        :: mean(:)
+        complex(TKG)            , intent(out)   , contiguous        :: cov(:,:)
+        complex(TKG)            , intent(in)    , contiguous        :: meang(:)
     end subroutine
 #endif
 
@@ -5321,11 +5321,11 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovMeanWNO_XY_CK4
 #endif
-        use pm_kind, only: TKC => CK4
-        complex(TKC)            , intent(in)    , contiguous        :: x(:), y(:)
-        complex(TKC)            , intent(out)   , contiguous        :: mean(:)
-        complex(TKC)            , intent(out)   , contiguous        :: cov(:,:)
-        complex(TKC)            , intent(in)    , contiguous        :: meang(:)
+        use pm_kind, only: TKG => CK4
+        complex(TKG)            , intent(in)    , contiguous        :: x(:), y(:)
+        complex(TKG)            , intent(out)   , contiguous        :: mean(:)
+        complex(TKG)            , intent(out)   , contiguous        :: cov(:,:)
+        complex(TKG)            , intent(in)    , contiguous        :: meang(:)
     end subroutine
 #endif
 
@@ -5334,11 +5334,11 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovMeanWNO_XY_CK3
 #endif
-        use pm_kind, only: TKC => CK3
-        complex(TKC)            , intent(in)    , contiguous        :: x(:), y(:)
-        complex(TKC)            , intent(out)   , contiguous        :: mean(:)
-        complex(TKC)            , intent(out)   , contiguous        :: cov(:,:)
-        complex(TKC)            , intent(in)    , contiguous        :: meang(:)
+        use pm_kind, only: TKG => CK3
+        complex(TKG)            , intent(in)    , contiguous        :: x(:), y(:)
+        complex(TKG)            , intent(out)   , contiguous        :: mean(:)
+        complex(TKG)            , intent(out)   , contiguous        :: cov(:,:)
+        complex(TKG)            , intent(in)    , contiguous        :: meang(:)
     end subroutine
 #endif
 
@@ -5347,11 +5347,11 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovMeanWNO_XY_CK2
 #endif
-        use pm_kind, only: TKC => CK2
-        complex(TKC)            , intent(in)    , contiguous        :: x(:), y(:)
-        complex(TKC)            , intent(out)   , contiguous        :: mean(:)
-        complex(TKC)            , intent(out)   , contiguous        :: cov(:,:)
-        complex(TKC)            , intent(in)    , contiguous        :: meang(:)
+        use pm_kind, only: TKG => CK2
+        complex(TKG)            , intent(in)    , contiguous        :: x(:), y(:)
+        complex(TKG)            , intent(out)   , contiguous        :: mean(:)
+        complex(TKG)            , intent(out)   , contiguous        :: cov(:,:)
+        complex(TKG)            , intent(in)    , contiguous        :: meang(:)
     end subroutine
 #endif
 
@@ -5360,11 +5360,11 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovMeanWNO_XY_CK1
 #endif
-        use pm_kind, only: TKC => CK1
-        complex(TKC)            , intent(in)    , contiguous        :: x(:), y(:)
-        complex(TKC)            , intent(out)   , contiguous        :: mean(:)
-        complex(TKC)            , intent(out)   , contiguous        :: cov(:,:)
-        complex(TKC)            , intent(in)    , contiguous        :: meang(:)
+        use pm_kind, only: TKG => CK1
+        complex(TKG)            , intent(in)    , contiguous        :: x(:), y(:)
+        complex(TKG)            , intent(out)   , contiguous        :: mean(:)
+        complex(TKG)            , intent(out)   , contiguous        :: cov(:,:)
+        complex(TKG)            , intent(in)    , contiguous        :: meang(:)
     end subroutine
 #endif
 
@@ -5375,11 +5375,11 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovMeanWNO_XY_RK5
 #endif
-        use pm_kind, only: TKC => RK5
-        real(TKC)               , intent(in)    , contiguous        :: x(:), y(:)
-        real(TKC)               , intent(out)   , contiguous        :: mean(:)
-        real(TKC)               , intent(out)   , contiguous        :: cov(:,:)
-        real(TKC)               , intent(in)    , contiguous        :: meang(:)
+        use pm_kind, only: TKG => RK5
+        real(TKG)               , intent(in)    , contiguous        :: x(:), y(:)
+        real(TKG)               , intent(out)   , contiguous        :: mean(:)
+        real(TKG)               , intent(out)   , contiguous        :: cov(:,:)
+        real(TKG)               , intent(in)    , contiguous        :: meang(:)
     end subroutine
 #endif
 
@@ -5388,11 +5388,11 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovMeanWNO_XY_RK4
 #endif
-        use pm_kind, only: TKC => RK4
-        real(TKC)               , intent(in)    , contiguous        :: x(:), y(:)
-        real(TKC)               , intent(out)   , contiguous        :: mean(:)
-        real(TKC)               , intent(out)   , contiguous        :: cov(:,:)
-        real(TKC)               , intent(in)    , contiguous        :: meang(:)
+        use pm_kind, only: TKG => RK4
+        real(TKG)               , intent(in)    , contiguous        :: x(:), y(:)
+        real(TKG)               , intent(out)   , contiguous        :: mean(:)
+        real(TKG)               , intent(out)   , contiguous        :: cov(:,:)
+        real(TKG)               , intent(in)    , contiguous        :: meang(:)
     end subroutine
 #endif
 
@@ -5401,11 +5401,11 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovMeanWNO_XY_RK3
 #endif
-        use pm_kind, only: TKC => RK3
-        real(TKC)               , intent(in)    , contiguous        :: x(:), y(:)
-        real(TKC)               , intent(out)   , contiguous        :: mean(:)
-        real(TKC)               , intent(out)   , contiguous        :: cov(:,:)
-        real(TKC)               , intent(in)    , contiguous        :: meang(:)
+        use pm_kind, only: TKG => RK3
+        real(TKG)               , intent(in)    , contiguous        :: x(:), y(:)
+        real(TKG)               , intent(out)   , contiguous        :: mean(:)
+        real(TKG)               , intent(out)   , contiguous        :: cov(:,:)
+        real(TKG)               , intent(in)    , contiguous        :: meang(:)
     end subroutine
 #endif
 
@@ -5414,11 +5414,11 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovMeanWNO_XY_RK2
 #endif
-        use pm_kind, only: TKC => RK2
-        real(TKC)               , intent(in)    , contiguous        :: x(:), y(:)
-        real(TKC)               , intent(out)   , contiguous        :: mean(:)
-        real(TKC)               , intent(out)   , contiguous        :: cov(:,:)
-        real(TKC)               , intent(in)    , contiguous        :: meang(:)
+        use pm_kind, only: TKG => RK2
+        real(TKG)               , intent(in)    , contiguous        :: x(:), y(:)
+        real(TKG)               , intent(out)   , contiguous        :: mean(:)
+        real(TKG)               , intent(out)   , contiguous        :: cov(:,:)
+        real(TKG)               , intent(in)    , contiguous        :: meang(:)
     end subroutine
 #endif
 
@@ -5427,11 +5427,11 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovMeanWNO_XY_RK1
 #endif
-        use pm_kind, only: TKC => RK1
-        real(TKC)               , intent(in)    , contiguous        :: x(:), y(:)
-        real(TKC)               , intent(out)   , contiguous        :: mean(:)
-        real(TKC)               , intent(out)   , contiguous        :: cov(:,:)
-        real(TKC)               , intent(in)    , contiguous        :: meang(:)
+        use pm_kind, only: TKG => RK1
+        real(TKG)               , intent(in)    , contiguous        :: x(:), y(:)
+        real(TKG)               , intent(out)   , contiguous        :: mean(:)
+        real(TKG)               , intent(out)   , contiguous        :: cov(:,:)
+        real(TKG)               , intent(in)    , contiguous        :: meang(:)
     end subroutine
 #endif
 
@@ -5458,13 +5458,13 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovMeanWTI_XY_CK5
 #endif
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
         integer(IK)             , intent(out)                       :: weisum
-        complex(TKC)            , intent(out)   , contiguous        :: mean(:)
+        complex(TKG)            , intent(out)   , contiguous        :: mean(:)
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous        :: x(:), y(:)
-        complex(TKC)            , intent(out)   , contiguous        :: cov(:,:)
-        complex(TKC)            , intent(in)    , contiguous        :: meang(:)
+        complex(TKG)            , intent(in)    , contiguous        :: x(:), y(:)
+        complex(TKG)            , intent(out)   , contiguous        :: cov(:,:)
+        complex(TKG)            , intent(in)    , contiguous        :: meang(:)
     end subroutine
 #endif
 
@@ -5473,13 +5473,13 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovMeanWTI_XY_CK4
 #endif
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
         integer(IK)             , intent(out)                       :: weisum
-        complex(TKC)            , intent(out)   , contiguous        :: mean(:)
+        complex(TKG)            , intent(out)   , contiguous        :: mean(:)
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous        :: x(:), y(:)
-        complex(TKC)            , intent(out)   , contiguous        :: cov(:,:)
-        complex(TKC)            , intent(in)    , contiguous        :: meang(:)
+        complex(TKG)            , intent(in)    , contiguous        :: x(:), y(:)
+        complex(TKG)            , intent(out)   , contiguous        :: cov(:,:)
+        complex(TKG)            , intent(in)    , contiguous        :: meang(:)
     end subroutine
 #endif
 
@@ -5488,13 +5488,13 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovMeanWTI_XY_CK3
 #endif
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
         integer(IK)             , intent(out)                       :: weisum
-        complex(TKC)            , intent(out)   , contiguous        :: mean(:)
+        complex(TKG)            , intent(out)   , contiguous        :: mean(:)
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous        :: x(:), y(:)
-        complex(TKC)            , intent(out)   , contiguous        :: cov(:,:)
-        complex(TKC)            , intent(in)    , contiguous        :: meang(:)
+        complex(TKG)            , intent(in)    , contiguous        :: x(:), y(:)
+        complex(TKG)            , intent(out)   , contiguous        :: cov(:,:)
+        complex(TKG)            , intent(in)    , contiguous        :: meang(:)
     end subroutine
 #endif
 
@@ -5503,13 +5503,13 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovMeanWTI_XY_CK2
 #endif
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
         integer(IK)             , intent(out)                       :: weisum
-        complex(TKC)            , intent(out)   , contiguous        :: mean(:)
+        complex(TKG)            , intent(out)   , contiguous        :: mean(:)
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous        :: x(:), y(:)
-        complex(TKC)            , intent(out)   , contiguous        :: cov(:,:)
-        complex(TKC)            , intent(in)    , contiguous        :: meang(:)
+        complex(TKG)            , intent(in)    , contiguous        :: x(:), y(:)
+        complex(TKG)            , intent(out)   , contiguous        :: cov(:,:)
+        complex(TKG)            , intent(in)    , contiguous        :: meang(:)
     end subroutine
 #endif
 
@@ -5518,13 +5518,13 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovMeanWTI_XY_CK1
 #endif
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
         integer(IK)             , intent(out)                       :: weisum
-        complex(TKC)            , intent(out)   , contiguous        :: mean(:)
+        complex(TKG)            , intent(out)   , contiguous        :: mean(:)
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous        :: x(:), y(:)
-        complex(TKC)            , intent(out)   , contiguous        :: cov(:,:)
-        complex(TKC)            , intent(in)    , contiguous        :: meang(:)
+        complex(TKG)            , intent(in)    , contiguous        :: x(:), y(:)
+        complex(TKG)            , intent(out)   , contiguous        :: cov(:,:)
+        complex(TKG)            , intent(in)    , contiguous        :: meang(:)
     end subroutine
 #endif
 
@@ -5535,13 +5535,13 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovMeanWTI_XY_RK5
 #endif
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
         integer(IK)             , intent(out)                       :: weisum
-        real(TKC)               , intent(out)   , contiguous        :: mean(:)
+        real(TKG)               , intent(out)   , contiguous        :: mean(:)
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        real(TKC)               , intent(in)    , contiguous        :: x(:), y(:)
-        real(TKC)               , intent(out)   , contiguous        :: cov(:,:)
-        real(TKC)               , intent(in)    , contiguous        :: meang(:)
+        real(TKG)               , intent(in)    , contiguous        :: x(:), y(:)
+        real(TKG)               , intent(out)   , contiguous        :: cov(:,:)
+        real(TKG)               , intent(in)    , contiguous        :: meang(:)
     end subroutine
 #endif
 
@@ -5550,13 +5550,13 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovMeanWTI_XY_RK4
 #endif
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
         integer(IK)             , intent(out)                       :: weisum
-        real(TKC)               , intent(out)   , contiguous        :: mean(:)
+        real(TKG)               , intent(out)   , contiguous        :: mean(:)
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        real(TKC)               , intent(in)    , contiguous        :: x(:), y(:)
-        real(TKC)               , intent(out)   , contiguous        :: cov(:,:)
-        real(TKC)               , intent(in)    , contiguous        :: meang(:)
+        real(TKG)               , intent(in)    , contiguous        :: x(:), y(:)
+        real(TKG)               , intent(out)   , contiguous        :: cov(:,:)
+        real(TKG)               , intent(in)    , contiguous        :: meang(:)
     end subroutine
 #endif
 
@@ -5565,13 +5565,13 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovMeanWTI_XY_RK3
 #endif
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
         integer(IK)             , intent(out)                       :: weisum
-        real(TKC)               , intent(out)   , contiguous        :: mean(:)
+        real(TKG)               , intent(out)   , contiguous        :: mean(:)
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        real(TKC)               , intent(in)    , contiguous        :: x(:), y(:)
-        real(TKC)               , intent(out)   , contiguous        :: cov(:,:)
-        real(TKC)               , intent(in)    , contiguous        :: meang(:)
+        real(TKG)               , intent(in)    , contiguous        :: x(:), y(:)
+        real(TKG)               , intent(out)   , contiguous        :: cov(:,:)
+        real(TKG)               , intent(in)    , contiguous        :: meang(:)
     end subroutine
 #endif
 
@@ -5580,13 +5580,13 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovMeanWTI_XY_RK2
 #endif
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
         integer(IK)             , intent(out)                       :: weisum
-        real(TKC)               , intent(out)   , contiguous        :: mean(:)
+        real(TKG)               , intent(out)   , contiguous        :: mean(:)
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        real(TKC)               , intent(in)    , contiguous        :: x(:), y(:)
-        real(TKC)               , intent(out)   , contiguous        :: cov(:,:)
-        real(TKC)               , intent(in)    , contiguous        :: meang(:)
+        real(TKG)               , intent(in)    , contiguous        :: x(:), y(:)
+        real(TKG)               , intent(out)   , contiguous        :: cov(:,:)
+        real(TKG)               , intent(in)    , contiguous        :: meang(:)
     end subroutine
 #endif
 
@@ -5595,13 +5595,13 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovMeanWTI_XY_RK1
 #endif
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
         integer(IK)             , intent(out)                       :: weisum
-        real(TKC)               , intent(out)   , contiguous        :: mean(:)
+        real(TKG)               , intent(out)   , contiguous        :: mean(:)
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        real(TKC)               , intent(in)    , contiguous        :: x(:), y(:)
-        real(TKC)               , intent(out)   , contiguous        :: cov(:,:)
-        real(TKC)               , intent(in)    , contiguous        :: meang(:)
+        real(TKG)               , intent(in)    , contiguous        :: x(:), y(:)
+        real(TKG)               , intent(out)   , contiguous        :: cov(:,:)
+        real(TKG)               , intent(in)    , contiguous        :: meang(:)
     end subroutine
 #endif
 
@@ -5628,13 +5628,13 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovMeanWTR_XY_CK5
 #endif
-        use pm_kind, only: TKC => CK5
-        real(TKC)               , intent(out)                       :: weisum
-        complex(TKC)            , intent(out)   , contiguous        :: mean(:)
-        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous        :: x(:), y(:)
-        complex(TKC)            , intent(out)   , contiguous        :: cov(:,:)
-        complex(TKC)            , intent(in)    , contiguous        :: meang(:)
+        use pm_kind, only: TKG => CK5
+        real(TKG)               , intent(out)                       :: weisum
+        complex(TKG)            , intent(out)   , contiguous        :: mean(:)
+        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+        complex(TKG)            , intent(in)    , contiguous        :: x(:), y(:)
+        complex(TKG)            , intent(out)   , contiguous        :: cov(:,:)
+        complex(TKG)            , intent(in)    , contiguous        :: meang(:)
     end subroutine
 #endif
 
@@ -5643,13 +5643,13 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovMeanWTR_XY_CK4
 #endif
-        use pm_kind, only: TKC => CK4
-        real(TKC)               , intent(out)                       :: weisum
-        complex(TKC)            , intent(out)   , contiguous        :: mean(:)
-        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous        :: x(:), y(:)
-        complex(TKC)            , intent(out)   , contiguous        :: cov(:,:)
-        complex(TKC)            , intent(in)    , contiguous        :: meang(:)
+        use pm_kind, only: TKG => CK4
+        real(TKG)               , intent(out)                       :: weisum
+        complex(TKG)            , intent(out)   , contiguous        :: mean(:)
+        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+        complex(TKG)            , intent(in)    , contiguous        :: x(:), y(:)
+        complex(TKG)            , intent(out)   , contiguous        :: cov(:,:)
+        complex(TKG)            , intent(in)    , contiguous        :: meang(:)
     end subroutine
 #endif
 
@@ -5658,13 +5658,13 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovMeanWTR_XY_CK3
 #endif
-        use pm_kind, only: TKC => CK3
-        real(TKC)               , intent(out)                       :: weisum
-        complex(TKC)            , intent(out)   , contiguous        :: mean(:)
-        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous        :: x(:), y(:)
-        complex(TKC)            , intent(out)   , contiguous        :: cov(:,:)
-        complex(TKC)            , intent(in)    , contiguous        :: meang(:)
+        use pm_kind, only: TKG => CK3
+        real(TKG)               , intent(out)                       :: weisum
+        complex(TKG)            , intent(out)   , contiguous        :: mean(:)
+        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+        complex(TKG)            , intent(in)    , contiguous        :: x(:), y(:)
+        complex(TKG)            , intent(out)   , contiguous        :: cov(:,:)
+        complex(TKG)            , intent(in)    , contiguous        :: meang(:)
     end subroutine
 #endif
 
@@ -5673,13 +5673,13 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovMeanWTR_XY_CK2
 #endif
-        use pm_kind, only: TKC => CK2
-        real(TKC)               , intent(out)                       :: weisum
-        complex(TKC)            , intent(out)   , contiguous        :: mean(:)
-        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous        :: x(:), y(:)
-        complex(TKC)            , intent(out)   , contiguous        :: cov(:,:)
-        complex(TKC)            , intent(in)    , contiguous        :: meang(:)
+        use pm_kind, only: TKG => CK2
+        real(TKG)               , intent(out)                       :: weisum
+        complex(TKG)            , intent(out)   , contiguous        :: mean(:)
+        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+        complex(TKG)            , intent(in)    , contiguous        :: x(:), y(:)
+        complex(TKG)            , intent(out)   , contiguous        :: cov(:,:)
+        complex(TKG)            , intent(in)    , contiguous        :: meang(:)
     end subroutine
 #endif
 
@@ -5688,13 +5688,13 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovMeanWTR_XY_CK1
 #endif
-        use pm_kind, only: TKC => CK1
-        real(TKC)               , intent(out)                       :: weisum
-        complex(TKC)            , intent(out)   , contiguous        :: mean(:)
-        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous        :: x(:), y(:)
-        complex(TKC)            , intent(out)   , contiguous        :: cov(:,:)
-        complex(TKC)            , intent(in)    , contiguous        :: meang(:)
+        use pm_kind, only: TKG => CK1
+        real(TKG)               , intent(out)                       :: weisum
+        complex(TKG)            , intent(out)   , contiguous        :: mean(:)
+        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+        complex(TKG)            , intent(in)    , contiguous        :: x(:), y(:)
+        complex(TKG)            , intent(out)   , contiguous        :: cov(:,:)
+        complex(TKG)            , intent(in)    , contiguous        :: meang(:)
     end subroutine
 #endif
 
@@ -5705,13 +5705,13 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovMeanWTR_XY_RK5
 #endif
-        use pm_kind, only: TKC => RK5
-        real(TKC)               , intent(out)                       :: weisum
-        real(TKC)               , intent(out)   , contiguous        :: mean(:)
-        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-        real(TKC)               , intent(in)    , contiguous        :: x(:), y(:)
-        real(TKC)               , intent(out)   , contiguous        :: cov(:,:)
-        real(TKC)               , intent(in)    , contiguous        :: meang(:)
+        use pm_kind, only: TKG => RK5
+        real(TKG)               , intent(out)                       :: weisum
+        real(TKG)               , intent(out)   , contiguous        :: mean(:)
+        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+        real(TKG)               , intent(in)    , contiguous        :: x(:), y(:)
+        real(TKG)               , intent(out)   , contiguous        :: cov(:,:)
+        real(TKG)               , intent(in)    , contiguous        :: meang(:)
     end subroutine
 #endif
 
@@ -5720,13 +5720,13 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovMeanWTR_XY_RK4
 #endif
-        use pm_kind, only: TKC => RK4
-        real(TKC)               , intent(out)                       :: weisum
-        real(TKC)               , intent(out)   , contiguous        :: mean(:)
-        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-        real(TKC)               , intent(in)    , contiguous        :: x(:), y(:)
-        real(TKC)               , intent(out)   , contiguous        :: cov(:,:)
-        real(TKC)               , intent(in)    , contiguous        :: meang(:)
+        use pm_kind, only: TKG => RK4
+        real(TKG)               , intent(out)                       :: weisum
+        real(TKG)               , intent(out)   , contiguous        :: mean(:)
+        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+        real(TKG)               , intent(in)    , contiguous        :: x(:), y(:)
+        real(TKG)               , intent(out)   , contiguous        :: cov(:,:)
+        real(TKG)               , intent(in)    , contiguous        :: meang(:)
     end subroutine
 #endif
 
@@ -5735,13 +5735,13 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovMeanWTR_XY_RK3
 #endif
-        use pm_kind, only: TKC => RK3
-        real(TKC)               , intent(out)                       :: weisum
-        real(TKC)               , intent(out)   , contiguous        :: mean(:)
-        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-        real(TKC)               , intent(in)    , contiguous        :: x(:), y(:)
-        real(TKC)               , intent(out)   , contiguous        :: cov(:,:)
-        real(TKC)               , intent(in)    , contiguous        :: meang(:)
+        use pm_kind, only: TKG => RK3
+        real(TKG)               , intent(out)                       :: weisum
+        real(TKG)               , intent(out)   , contiguous        :: mean(:)
+        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+        real(TKG)               , intent(in)    , contiguous        :: x(:), y(:)
+        real(TKG)               , intent(out)   , contiguous        :: cov(:,:)
+        real(TKG)               , intent(in)    , contiguous        :: meang(:)
     end subroutine
 #endif
 
@@ -5750,13 +5750,13 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovMeanWTR_XY_RK2
 #endif
-        use pm_kind, only: TKC => RK2
-        real(TKC)               , intent(out)                       :: weisum
-        real(TKC)               , intent(out)   , contiguous        :: mean(:)
-        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-        real(TKC)               , intent(in)    , contiguous        :: x(:), y(:)
-        real(TKC)               , intent(out)   , contiguous        :: cov(:,:)
-        real(TKC)               , intent(in)    , contiguous        :: meang(:)
+        use pm_kind, only: TKG => RK2
+        real(TKG)               , intent(out)                       :: weisum
+        real(TKG)               , intent(out)   , contiguous        :: mean(:)
+        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+        real(TKG)               , intent(in)    , contiguous        :: x(:), y(:)
+        real(TKG)               , intent(out)   , contiguous        :: cov(:,:)
+        real(TKG)               , intent(in)    , contiguous        :: meang(:)
     end subroutine
 #endif
 
@@ -5765,13 +5765,13 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovMeanWTR_XY_RK1
 #endif
-        use pm_kind, only: TKC => RK1
-        real(TKC)               , intent(out)                       :: weisum
-        real(TKC)               , intent(out)   , contiguous        :: mean(:)
-        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-        real(TKC)               , intent(in)    , contiguous        :: x(:), y(:)
-        real(TKC)               , intent(out)   , contiguous        :: cov(:,:)
-        real(TKC)               , intent(in)    , contiguous        :: meang(:)
+        use pm_kind, only: TKG => RK1
+        real(TKG)               , intent(out)                       :: weisum
+        real(TKG)               , intent(out)   , contiguous        :: mean(:)
+        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+        real(TKG)               , intent(in)    , contiguous        :: x(:), y(:)
+        real(TKG)               , intent(out)   , contiguous        :: cov(:,:)
+        real(TKG)               , intent(in)    , contiguous        :: meang(:)
     end subroutine
 #endif
 
@@ -5800,12 +5800,12 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovMeanWNO_UXD_CK5
 #endif
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
         integer(IK)             , intent(in)                        :: dim
-        complex(TKC)            , intent(in)    , contiguous        :: sample(:,:)
-        complex(TKC)            , intent(out)   , contiguous        :: mean(:)
-        complex(TKC)            , intent(inout) , contiguous        :: cov(:,:)
-        complex(TKC)            , intent(in)    , contiguous        :: meang(:)
+        complex(TKG)            , intent(in)    , contiguous        :: sample(:,:)
+        complex(TKG)            , intent(out)   , contiguous        :: mean(:)
+        complex(TKG)            , intent(inout) , contiguous        :: cov(:,:)
+        complex(TKG)            , intent(in)    , contiguous        :: meang(:)
         type(uppDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -5815,12 +5815,12 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovMeanWNO_UXD_CK4
 #endif
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
         integer(IK)             , intent(in)                        :: dim
-        complex(TKC)            , intent(in)    , contiguous        :: sample(:,:)
-        complex(TKC)            , intent(out)   , contiguous        :: mean(:)
-        complex(TKC)            , intent(inout) , contiguous        :: cov(:,:)
-        complex(TKC)            , intent(in)    , contiguous        :: meang(:)
+        complex(TKG)            , intent(in)    , contiguous        :: sample(:,:)
+        complex(TKG)            , intent(out)   , contiguous        :: mean(:)
+        complex(TKG)            , intent(inout) , contiguous        :: cov(:,:)
+        complex(TKG)            , intent(in)    , contiguous        :: meang(:)
         type(uppDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -5830,12 +5830,12 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovMeanWNO_UXD_CK3
 #endif
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
         integer(IK)             , intent(in)                        :: dim
-        complex(TKC)            , intent(in)    , contiguous        :: sample(:,:)
-        complex(TKC)            , intent(out)   , contiguous        :: mean(:)
-        complex(TKC)            , intent(inout) , contiguous        :: cov(:,:)
-        complex(TKC)            , intent(in)    , contiguous        :: meang(:)
+        complex(TKG)            , intent(in)    , contiguous        :: sample(:,:)
+        complex(TKG)            , intent(out)   , contiguous        :: mean(:)
+        complex(TKG)            , intent(inout) , contiguous        :: cov(:,:)
+        complex(TKG)            , intent(in)    , contiguous        :: meang(:)
         type(uppDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -5845,12 +5845,12 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovMeanWNO_UXD_CK2
 #endif
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
         integer(IK)             , intent(in)                        :: dim
-        complex(TKC)            , intent(in)    , contiguous        :: sample(:,:)
-        complex(TKC)            , intent(out)   , contiguous        :: mean(:)
-        complex(TKC)            , intent(inout) , contiguous        :: cov(:,:)
-        complex(TKC)            , intent(in)    , contiguous        :: meang(:)
+        complex(TKG)            , intent(in)    , contiguous        :: sample(:,:)
+        complex(TKG)            , intent(out)   , contiguous        :: mean(:)
+        complex(TKG)            , intent(inout) , contiguous        :: cov(:,:)
+        complex(TKG)            , intent(in)    , contiguous        :: meang(:)
         type(uppDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -5860,12 +5860,12 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovMeanWNO_UXD_CK1
 #endif
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
         integer(IK)             , intent(in)                        :: dim
-        complex(TKC)            , intent(in)    , contiguous        :: sample(:,:)
-        complex(TKC)            , intent(out)   , contiguous        :: mean(:)
-        complex(TKC)            , intent(inout) , contiguous        :: cov(:,:)
-        complex(TKC)            , intent(in)    , contiguous        :: meang(:)
+        complex(TKG)            , intent(in)    , contiguous        :: sample(:,:)
+        complex(TKG)            , intent(out)   , contiguous        :: mean(:)
+        complex(TKG)            , intent(inout) , contiguous        :: cov(:,:)
+        complex(TKG)            , intent(in)    , contiguous        :: meang(:)
         type(uppDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -5877,12 +5877,12 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovMeanWNO_UXD_RK5
 #endif
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
         integer(IK)             , intent(in)                        :: dim
-        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
-        real(TKC)               , intent(out)   , contiguous        :: mean(:)
-        real(TKC)               , intent(inout) , contiguous        :: cov(:,:)
-        real(TKC)               , intent(in)    , contiguous        :: meang(:)
+        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
+        real(TKG)               , intent(out)   , contiguous        :: mean(:)
+        real(TKG)               , intent(inout) , contiguous        :: cov(:,:)
+        real(TKG)               , intent(in)    , contiguous        :: meang(:)
         type(uppDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -5892,12 +5892,12 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovMeanWNO_UXD_RK4
 #endif
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
         integer(IK)             , intent(in)                        :: dim
-        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
-        real(TKC)               , intent(out)   , contiguous        :: mean(:)
-        real(TKC)               , intent(inout) , contiguous        :: cov(:,:)
-        real(TKC)               , intent(in)    , contiguous        :: meang(:)
+        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
+        real(TKG)               , intent(out)   , contiguous        :: mean(:)
+        real(TKG)               , intent(inout) , contiguous        :: cov(:,:)
+        real(TKG)               , intent(in)    , contiguous        :: meang(:)
         type(uppDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -5907,12 +5907,12 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovMeanWNO_UXD_RK3
 #endif
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
         integer(IK)             , intent(in)                        :: dim
-        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
-        real(TKC)               , intent(out)   , contiguous        :: mean(:)
-        real(TKC)               , intent(inout) , contiguous        :: cov(:,:)
-        real(TKC)               , intent(in)    , contiguous        :: meang(:)
+        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
+        real(TKG)               , intent(out)   , contiguous        :: mean(:)
+        real(TKG)               , intent(inout) , contiguous        :: cov(:,:)
+        real(TKG)               , intent(in)    , contiguous        :: meang(:)
         type(uppDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -5922,12 +5922,12 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovMeanWNO_UXD_RK2
 #endif
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
         integer(IK)             , intent(in)                        :: dim
-        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
-        real(TKC)               , intent(out)   , contiguous        :: mean(:)
-        real(TKC)               , intent(inout) , contiguous        :: cov(:,:)
-        real(TKC)               , intent(in)    , contiguous        :: meang(:)
+        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
+        real(TKG)               , intent(out)   , contiguous        :: mean(:)
+        real(TKG)               , intent(inout) , contiguous        :: cov(:,:)
+        real(TKG)               , intent(in)    , contiguous        :: meang(:)
         type(uppDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -5937,12 +5937,12 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovMeanWNO_UXD_RK1
 #endif
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
         integer(IK)             , intent(in)                        :: dim
-        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
-        real(TKC)               , intent(out)   , contiguous        :: mean(:)
-        real(TKC)               , intent(inout) , contiguous        :: cov(:,:)
-        real(TKC)               , intent(in)    , contiguous        :: meang(:)
+        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
+        real(TKG)               , intent(out)   , contiguous        :: mean(:)
+        real(TKG)               , intent(inout) , contiguous        :: cov(:,:)
+        real(TKG)               , intent(in)    , contiguous        :: meang(:)
         type(uppDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -5970,14 +5970,14 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovMeanWTI_UXD_CK5
 #endif
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
         integer(IK)             , intent(in)                        :: dim
         integer(IK)             , intent(out)                       :: weisum
-        complex(TKC)            , intent(out)   , contiguous        :: mean(:)
+        complex(TKG)            , intent(out)   , contiguous        :: mean(:)
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous        :: sample(:,:)
-        complex(TKC)            , intent(inout) , contiguous        :: cov(:,:)
-        complex(TKC)            , intent(in)    , contiguous        :: meang(:)
+        complex(TKG)            , intent(in)    , contiguous        :: sample(:,:)
+        complex(TKG)            , intent(inout) , contiguous        :: cov(:,:)
+        complex(TKG)            , intent(in)    , contiguous        :: meang(:)
         type(uppDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -5987,14 +5987,14 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovMeanWTI_UXD_CK4
 #endif
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
         integer(IK)             , intent(in)                        :: dim
         integer(IK)             , intent(out)                       :: weisum
-        complex(TKC)            , intent(out)   , contiguous        :: mean(:)
+        complex(TKG)            , intent(out)   , contiguous        :: mean(:)
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous        :: sample(:,:)
-        complex(TKC)            , intent(inout) , contiguous        :: cov(:,:)
-        complex(TKC)            , intent(in)    , contiguous        :: meang(:)
+        complex(TKG)            , intent(in)    , contiguous        :: sample(:,:)
+        complex(TKG)            , intent(inout) , contiguous        :: cov(:,:)
+        complex(TKG)            , intent(in)    , contiguous        :: meang(:)
         type(uppDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -6004,14 +6004,14 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovMeanWTI_UXD_CK3
 #endif
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
         integer(IK)             , intent(in)                        :: dim
         integer(IK)             , intent(out)                       :: weisum
-        complex(TKC)            , intent(out)   , contiguous        :: mean(:)
+        complex(TKG)            , intent(out)   , contiguous        :: mean(:)
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous        :: sample(:,:)
-        complex(TKC)            , intent(inout) , contiguous        :: cov(:,:)
-        complex(TKC)            , intent(in)    , contiguous        :: meang(:)
+        complex(TKG)            , intent(in)    , contiguous        :: sample(:,:)
+        complex(TKG)            , intent(inout) , contiguous        :: cov(:,:)
+        complex(TKG)            , intent(in)    , contiguous        :: meang(:)
         type(uppDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -6021,14 +6021,14 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovMeanWTI_UXD_CK2
 #endif
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
         integer(IK)             , intent(in)                        :: dim
         integer(IK)             , intent(out)                       :: weisum
-        complex(TKC)            , intent(out)   , contiguous        :: mean(:)
+        complex(TKG)            , intent(out)   , contiguous        :: mean(:)
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous        :: sample(:,:)
-        complex(TKC)            , intent(inout) , contiguous        :: cov(:,:)
-        complex(TKC)            , intent(in)    , contiguous        :: meang(:)
+        complex(TKG)            , intent(in)    , contiguous        :: sample(:,:)
+        complex(TKG)            , intent(inout) , contiguous        :: cov(:,:)
+        complex(TKG)            , intent(in)    , contiguous        :: meang(:)
         type(uppDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -6038,14 +6038,14 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovMeanWTI_UXD_CK1
 #endif
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
         integer(IK)             , intent(in)                        :: dim
         integer(IK)             , intent(out)                       :: weisum
-        complex(TKC)            , intent(out)   , contiguous        :: mean(:)
+        complex(TKG)            , intent(out)   , contiguous        :: mean(:)
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous        :: sample(:,:)
-        complex(TKC)            , intent(inout) , contiguous        :: cov(:,:)
-        complex(TKC)            , intent(in)    , contiguous        :: meang(:)
+        complex(TKG)            , intent(in)    , contiguous        :: sample(:,:)
+        complex(TKG)            , intent(inout) , contiguous        :: cov(:,:)
+        complex(TKG)            , intent(in)    , contiguous        :: meang(:)
         type(uppDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -6057,14 +6057,14 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovMeanWTI_UXD_RK5
 #endif
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
         integer(IK)             , intent(in)                        :: dim
         integer(IK)             , intent(out)                       :: weisum
-        real(TKC)               , intent(out)   , contiguous        :: mean(:)
+        real(TKG)               , intent(out)   , contiguous        :: mean(:)
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
-        real(TKC)               , intent(inout) , contiguous        :: cov(:,:)
-        real(TKC)               , intent(in)    , contiguous        :: meang(:)
+        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
+        real(TKG)               , intent(inout) , contiguous        :: cov(:,:)
+        real(TKG)               , intent(in)    , contiguous        :: meang(:)
         type(uppDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -6074,14 +6074,14 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovMeanWTI_UXD_RK4
 #endif
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
         integer(IK)             , intent(in)                        :: dim
         integer(IK)             , intent(out)                       :: weisum
-        real(TKC)               , intent(out)   , contiguous        :: mean(:)
+        real(TKG)               , intent(out)   , contiguous        :: mean(:)
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
-        real(TKC)               , intent(inout) , contiguous        :: cov(:,:)
-        real(TKC)               , intent(in)    , contiguous        :: meang(:)
+        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
+        real(TKG)               , intent(inout) , contiguous        :: cov(:,:)
+        real(TKG)               , intent(in)    , contiguous        :: meang(:)
         type(uppDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -6091,14 +6091,14 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovMeanWTI_UXD_RK3
 #endif
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
         integer(IK)             , intent(in)                        :: dim
         integer(IK)             , intent(out)                       :: weisum
-        real(TKC)               , intent(out)   , contiguous        :: mean(:)
+        real(TKG)               , intent(out)   , contiguous        :: mean(:)
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
-        real(TKC)               , intent(inout) , contiguous        :: cov(:,:)
-        real(TKC)               , intent(in)    , contiguous        :: meang(:)
+        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
+        real(TKG)               , intent(inout) , contiguous        :: cov(:,:)
+        real(TKG)               , intent(in)    , contiguous        :: meang(:)
         type(uppDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -6108,14 +6108,14 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovMeanWTI_UXD_RK2
 #endif
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
         integer(IK)             , intent(in)                        :: dim
         integer(IK)             , intent(out)                       :: weisum
-        real(TKC)               , intent(out)   , contiguous        :: mean(:)
+        real(TKG)               , intent(out)   , contiguous        :: mean(:)
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
-        real(TKC)               , intent(inout) , contiguous        :: cov(:,:)
-        real(TKC)               , intent(in)    , contiguous        :: meang(:)
+        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
+        real(TKG)               , intent(inout) , contiguous        :: cov(:,:)
+        real(TKG)               , intent(in)    , contiguous        :: meang(:)
         type(uppDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -6125,14 +6125,14 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovMeanWTI_UXD_RK1
 #endif
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
         integer(IK)             , intent(in)                        :: dim
         integer(IK)             , intent(out)                       :: weisum
-        real(TKC)               , intent(out)   , contiguous        :: mean(:)
+        real(TKG)               , intent(out)   , contiguous        :: mean(:)
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
-        real(TKC)               , intent(inout) , contiguous        :: cov(:,:)
-        real(TKC)               , intent(in)    , contiguous        :: meang(:)
+        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
+        real(TKG)               , intent(inout) , contiguous        :: cov(:,:)
+        real(TKG)               , intent(in)    , contiguous        :: meang(:)
         type(uppDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -6160,14 +6160,14 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovMeanWTR_UXD_CK5
 #endif
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
         integer(IK)             , intent(in)                        :: dim
-        real(TKC)               , intent(out)                       :: weisum
-        complex(TKC)            , intent(out)   , contiguous        :: mean(:)
-        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous        :: sample(:,:)
-        complex(TKC)            , intent(inout) , contiguous        :: cov(:,:)
-        complex(TKC)            , intent(in)    , contiguous        :: meang(:)
+        real(TKG)               , intent(out)                       :: weisum
+        complex(TKG)            , intent(out)   , contiguous        :: mean(:)
+        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+        complex(TKG)            , intent(in)    , contiguous        :: sample(:,:)
+        complex(TKG)            , intent(inout) , contiguous        :: cov(:,:)
+        complex(TKG)            , intent(in)    , contiguous        :: meang(:)
         type(uppDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -6177,14 +6177,14 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovMeanWTR_UXD_CK4
 #endif
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
         integer(IK)             , intent(in)                        :: dim
-        real(TKC)               , intent(out)                       :: weisum
-        complex(TKC)            , intent(out)   , contiguous        :: mean(:)
-        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous        :: sample(:,:)
-        complex(TKC)            , intent(inout) , contiguous        :: cov(:,:)
-        complex(TKC)            , intent(in)    , contiguous        :: meang(:)
+        real(TKG)               , intent(out)                       :: weisum
+        complex(TKG)            , intent(out)   , contiguous        :: mean(:)
+        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+        complex(TKG)            , intent(in)    , contiguous        :: sample(:,:)
+        complex(TKG)            , intent(inout) , contiguous        :: cov(:,:)
+        complex(TKG)            , intent(in)    , contiguous        :: meang(:)
         type(uppDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -6194,14 +6194,14 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovMeanWTR_UXD_CK3
 #endif
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
         integer(IK)             , intent(in)                        :: dim
-        real(TKC)               , intent(out)                       :: weisum
-        complex(TKC)            , intent(out)   , contiguous        :: mean(:)
-        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous        :: sample(:,:)
-        complex(TKC)            , intent(inout) , contiguous        :: cov(:,:)
-        complex(TKC)            , intent(in)    , contiguous        :: meang(:)
+        real(TKG)               , intent(out)                       :: weisum
+        complex(TKG)            , intent(out)   , contiguous        :: mean(:)
+        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+        complex(TKG)            , intent(in)    , contiguous        :: sample(:,:)
+        complex(TKG)            , intent(inout) , contiguous        :: cov(:,:)
+        complex(TKG)            , intent(in)    , contiguous        :: meang(:)
         type(uppDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -6211,14 +6211,14 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovMeanWTR_UXD_CK2
 #endif
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
         integer(IK)             , intent(in)                        :: dim
-        real(TKC)               , intent(out)                       :: weisum
-        complex(TKC)            , intent(out)   , contiguous        :: mean(:)
-        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous        :: sample(:,:)
-        complex(TKC)            , intent(inout) , contiguous        :: cov(:,:)
-        complex(TKC)            , intent(in)    , contiguous        :: meang(:)
+        real(TKG)               , intent(out)                       :: weisum
+        complex(TKG)            , intent(out)   , contiguous        :: mean(:)
+        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+        complex(TKG)            , intent(in)    , contiguous        :: sample(:,:)
+        complex(TKG)            , intent(inout) , contiguous        :: cov(:,:)
+        complex(TKG)            , intent(in)    , contiguous        :: meang(:)
         type(uppDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -6228,14 +6228,14 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovMeanWTR_UXD_CK1
 #endif
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
         integer(IK)             , intent(in)                        :: dim
-        real(TKC)               , intent(out)                       :: weisum
-        complex(TKC)            , intent(out)   , contiguous        :: mean(:)
-        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous        :: sample(:,:)
-        complex(TKC)            , intent(inout) , contiguous        :: cov(:,:)
-        complex(TKC)            , intent(in)    , contiguous        :: meang(:)
+        real(TKG)               , intent(out)                       :: weisum
+        complex(TKG)            , intent(out)   , contiguous        :: mean(:)
+        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+        complex(TKG)            , intent(in)    , contiguous        :: sample(:,:)
+        complex(TKG)            , intent(inout) , contiguous        :: cov(:,:)
+        complex(TKG)            , intent(in)    , contiguous        :: meang(:)
         type(uppDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -6247,14 +6247,14 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovMeanWTR_UXD_RK5
 #endif
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
         integer(IK)             , intent(in)                        :: dim
-        real(TKC)               , intent(out)                       :: weisum
-        real(TKC)               , intent(out)   , contiguous        :: mean(:)
-        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
-        real(TKC)               , intent(inout) , contiguous        :: cov(:,:)
-        real(TKC)               , intent(in)    , contiguous        :: meang(:)
+        real(TKG)               , intent(out)                       :: weisum
+        real(TKG)               , intent(out)   , contiguous        :: mean(:)
+        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
+        real(TKG)               , intent(inout) , contiguous        :: cov(:,:)
+        real(TKG)               , intent(in)    , contiguous        :: meang(:)
         type(uppDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -6264,14 +6264,14 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovMeanWTR_UXD_RK4
 #endif
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
         integer(IK)             , intent(in)                        :: dim
-        real(TKC)               , intent(out)                       :: weisum
-        real(TKC)               , intent(out)   , contiguous        :: mean(:)
-        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
-        real(TKC)               , intent(inout) , contiguous        :: cov(:,:)
-        real(TKC)               , intent(in)    , contiguous        :: meang(:)
+        real(TKG)               , intent(out)                       :: weisum
+        real(TKG)               , intent(out)   , contiguous        :: mean(:)
+        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
+        real(TKG)               , intent(inout) , contiguous        :: cov(:,:)
+        real(TKG)               , intent(in)    , contiguous        :: meang(:)
         type(uppDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -6281,14 +6281,14 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovMeanWTR_UXD_RK3
 #endif
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
         integer(IK)             , intent(in)                        :: dim
-        real(TKC)               , intent(out)                       :: weisum
-        real(TKC)               , intent(out)   , contiguous        :: mean(:)
-        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
-        real(TKC)               , intent(inout) , contiguous        :: cov(:,:)
-        real(TKC)               , intent(in)    , contiguous        :: meang(:)
+        real(TKG)               , intent(out)                       :: weisum
+        real(TKG)               , intent(out)   , contiguous        :: mean(:)
+        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
+        real(TKG)               , intent(inout) , contiguous        :: cov(:,:)
+        real(TKG)               , intent(in)    , contiguous        :: meang(:)
         type(uppDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -6298,14 +6298,14 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovMeanWTR_UXD_RK2
 #endif
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
         integer(IK)             , intent(in)                        :: dim
-        real(TKC)               , intent(out)                       :: weisum
-        real(TKC)               , intent(out)   , contiguous        :: mean(:)
-        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
-        real(TKC)               , intent(inout) , contiguous        :: cov(:,:)
-        real(TKC)               , intent(in)    , contiguous        :: meang(:)
+        real(TKG)               , intent(out)                       :: weisum
+        real(TKG)               , intent(out)   , contiguous        :: mean(:)
+        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
+        real(TKG)               , intent(inout) , contiguous        :: cov(:,:)
+        real(TKG)               , intent(in)    , contiguous        :: meang(:)
         type(uppDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -6315,14 +6315,14 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovMeanWTR_UXD_RK1
 #endif
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
         integer(IK)             , intent(in)                        :: dim
-        real(TKC)               , intent(out)                       :: weisum
-        real(TKC)               , intent(out)   , contiguous        :: mean(:)
-        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
-        real(TKC)               , intent(inout) , contiguous        :: cov(:,:)
-        real(TKC)               , intent(in)    , contiguous        :: meang(:)
+        real(TKG)               , intent(out)                       :: weisum
+        real(TKG)               , intent(out)   , contiguous        :: mean(:)
+        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
+        real(TKG)               , intent(inout) , contiguous        :: cov(:,:)
+        real(TKG)               , intent(in)    , contiguous        :: meang(:)
         type(uppDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -6352,12 +6352,12 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovMeanWNO_XLD_CK5
 #endif
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
         integer(IK)             , intent(in)                        :: dim
-        complex(TKC)            , intent(in)    , contiguous        :: sample(:,:)
-        complex(TKC)            , intent(out)   , contiguous        :: mean(:)
-        complex(TKC)            , intent(inout) , contiguous        :: cov(:,:)
-        complex(TKC)            , intent(in)    , contiguous        :: meang(:)
+        complex(TKG)            , intent(in)    , contiguous        :: sample(:,:)
+        complex(TKG)            , intent(out)   , contiguous        :: mean(:)
+        complex(TKG)            , intent(inout) , contiguous        :: cov(:,:)
+        complex(TKG)            , intent(in)    , contiguous        :: meang(:)
         type(lowDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -6367,12 +6367,12 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovMeanWNO_XLD_CK4
 #endif
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
         integer(IK)             , intent(in)                        :: dim
-        complex(TKC)            , intent(in)    , contiguous        :: sample(:,:)
-        complex(TKC)            , intent(out)   , contiguous        :: mean(:)
-        complex(TKC)            , intent(inout) , contiguous        :: cov(:,:)
-        complex(TKC)            , intent(in)    , contiguous        :: meang(:)
+        complex(TKG)            , intent(in)    , contiguous        :: sample(:,:)
+        complex(TKG)            , intent(out)   , contiguous        :: mean(:)
+        complex(TKG)            , intent(inout) , contiguous        :: cov(:,:)
+        complex(TKG)            , intent(in)    , contiguous        :: meang(:)
         type(lowDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -6382,12 +6382,12 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovMeanWNO_XLD_CK3
 #endif
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
         integer(IK)             , intent(in)                        :: dim
-        complex(TKC)            , intent(in)    , contiguous        :: sample(:,:)
-        complex(TKC)            , intent(out)   , contiguous        :: mean(:)
-        complex(TKC)            , intent(inout) , contiguous        :: cov(:,:)
-        complex(TKC)            , intent(in)    , contiguous        :: meang(:)
+        complex(TKG)            , intent(in)    , contiguous        :: sample(:,:)
+        complex(TKG)            , intent(out)   , contiguous        :: mean(:)
+        complex(TKG)            , intent(inout) , contiguous        :: cov(:,:)
+        complex(TKG)            , intent(in)    , contiguous        :: meang(:)
         type(lowDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -6397,12 +6397,12 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovMeanWNO_XLD_CK2
 #endif
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
         integer(IK)             , intent(in)                        :: dim
-        complex(TKC)            , intent(in)    , contiguous        :: sample(:,:)
-        complex(TKC)            , intent(out)   , contiguous        :: mean(:)
-        complex(TKC)            , intent(inout) , contiguous        :: cov(:,:)
-        complex(TKC)            , intent(in)    , contiguous        :: meang(:)
+        complex(TKG)            , intent(in)    , contiguous        :: sample(:,:)
+        complex(TKG)            , intent(out)   , contiguous        :: mean(:)
+        complex(TKG)            , intent(inout) , contiguous        :: cov(:,:)
+        complex(TKG)            , intent(in)    , contiguous        :: meang(:)
         type(lowDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -6412,12 +6412,12 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovMeanWNO_XLD_CK1
 #endif
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
         integer(IK)             , intent(in)                        :: dim
-        complex(TKC)            , intent(in)    , contiguous        :: sample(:,:)
-        complex(TKC)            , intent(out)   , contiguous        :: mean(:)
-        complex(TKC)            , intent(inout) , contiguous        :: cov(:,:)
-        complex(TKC)            , intent(in)    , contiguous        :: meang(:)
+        complex(TKG)            , intent(in)    , contiguous        :: sample(:,:)
+        complex(TKG)            , intent(out)   , contiguous        :: mean(:)
+        complex(TKG)            , intent(inout) , contiguous        :: cov(:,:)
+        complex(TKG)            , intent(in)    , contiguous        :: meang(:)
         type(lowDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -6429,12 +6429,12 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovMeanWNO_XLD_RK5
 #endif
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
         integer(IK)             , intent(in)                        :: dim
-        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
-        real(TKC)               , intent(out)   , contiguous        :: mean(:)
-        real(TKC)               , intent(inout) , contiguous        :: cov(:,:)
-        real(TKC)               , intent(in)    , contiguous        :: meang(:)
+        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
+        real(TKG)               , intent(out)   , contiguous        :: mean(:)
+        real(TKG)               , intent(inout) , contiguous        :: cov(:,:)
+        real(TKG)               , intent(in)    , contiguous        :: meang(:)
         type(lowDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -6444,12 +6444,12 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovMeanWNO_XLD_RK4
 #endif
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
         integer(IK)             , intent(in)                        :: dim
-        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
-        real(TKC)               , intent(out)   , contiguous        :: mean(:)
-        real(TKC)               , intent(inout) , contiguous        :: cov(:,:)
-        real(TKC)               , intent(in)    , contiguous        :: meang(:)
+        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
+        real(TKG)               , intent(out)   , contiguous        :: mean(:)
+        real(TKG)               , intent(inout) , contiguous        :: cov(:,:)
+        real(TKG)               , intent(in)    , contiguous        :: meang(:)
         type(lowDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -6459,12 +6459,12 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovMeanWNO_XLD_RK3
 #endif
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
         integer(IK)             , intent(in)                        :: dim
-        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
-        real(TKC)               , intent(out)   , contiguous        :: mean(:)
-        real(TKC)               , intent(inout) , contiguous        :: cov(:,:)
-        real(TKC)               , intent(in)    , contiguous        :: meang(:)
+        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
+        real(TKG)               , intent(out)   , contiguous        :: mean(:)
+        real(TKG)               , intent(inout) , contiguous        :: cov(:,:)
+        real(TKG)               , intent(in)    , contiguous        :: meang(:)
         type(lowDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -6474,12 +6474,12 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovMeanWNO_XLD_RK2
 #endif
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
         integer(IK)             , intent(in)                        :: dim
-        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
-        real(TKC)               , intent(out)   , contiguous        :: mean(:)
-        real(TKC)               , intent(inout) , contiguous        :: cov(:,:)
-        real(TKC)               , intent(in)    , contiguous        :: meang(:)
+        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
+        real(TKG)               , intent(out)   , contiguous        :: mean(:)
+        real(TKG)               , intent(inout) , contiguous        :: cov(:,:)
+        real(TKG)               , intent(in)    , contiguous        :: meang(:)
         type(lowDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -6489,12 +6489,12 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovMeanWNO_XLD_RK1
 #endif
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
         integer(IK)             , intent(in)                        :: dim
-        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
-        real(TKC)               , intent(out)   , contiguous        :: mean(:)
-        real(TKC)               , intent(inout) , contiguous        :: cov(:,:)
-        real(TKC)               , intent(in)    , contiguous        :: meang(:)
+        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
+        real(TKG)               , intent(out)   , contiguous        :: mean(:)
+        real(TKG)               , intent(inout) , contiguous        :: cov(:,:)
+        real(TKG)               , intent(in)    , contiguous        :: meang(:)
         type(lowDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -6522,14 +6522,14 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovMeanWTI_XLD_CK5
 #endif
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
         integer(IK)             , intent(in)                        :: dim
         integer(IK)             , intent(out)                       :: weisum
-        complex(TKC)            , intent(out)   , contiguous        :: mean(:)
+        complex(TKG)            , intent(out)   , contiguous        :: mean(:)
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous        :: sample(:,:)
-        complex(TKC)            , intent(inout) , contiguous        :: cov(:,:)
-        complex(TKC)            , intent(in)    , contiguous        :: meang(:)
+        complex(TKG)            , intent(in)    , contiguous        :: sample(:,:)
+        complex(TKG)            , intent(inout) , contiguous        :: cov(:,:)
+        complex(TKG)            , intent(in)    , contiguous        :: meang(:)
         type(lowDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -6539,14 +6539,14 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovMeanWTI_XLD_CK4
 #endif
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
         integer(IK)             , intent(in)                        :: dim
         integer(IK)             , intent(out)                       :: weisum
-        complex(TKC)            , intent(out)   , contiguous        :: mean(:)
+        complex(TKG)            , intent(out)   , contiguous        :: mean(:)
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous        :: sample(:,:)
-        complex(TKC)            , intent(inout) , contiguous        :: cov(:,:)
-        complex(TKC)            , intent(in)    , contiguous        :: meang(:)
+        complex(TKG)            , intent(in)    , contiguous        :: sample(:,:)
+        complex(TKG)            , intent(inout) , contiguous        :: cov(:,:)
+        complex(TKG)            , intent(in)    , contiguous        :: meang(:)
         type(lowDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -6556,14 +6556,14 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovMeanWTI_XLD_CK3
 #endif
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
         integer(IK)             , intent(in)                        :: dim
         integer(IK)             , intent(out)                       :: weisum
-        complex(TKC)            , intent(out)   , contiguous        :: mean(:)
+        complex(TKG)            , intent(out)   , contiguous        :: mean(:)
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous        :: sample(:,:)
-        complex(TKC)            , intent(inout) , contiguous        :: cov(:,:)
-        complex(TKC)            , intent(in)    , contiguous        :: meang(:)
+        complex(TKG)            , intent(in)    , contiguous        :: sample(:,:)
+        complex(TKG)            , intent(inout) , contiguous        :: cov(:,:)
+        complex(TKG)            , intent(in)    , contiguous        :: meang(:)
         type(lowDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -6573,14 +6573,14 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovMeanWTI_XLD_CK2
 #endif
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
         integer(IK)             , intent(in)                        :: dim
         integer(IK)             , intent(out)                       :: weisum
-        complex(TKC)            , intent(out)   , contiguous        :: mean(:)
+        complex(TKG)            , intent(out)   , contiguous        :: mean(:)
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous        :: sample(:,:)
-        complex(TKC)            , intent(inout) , contiguous        :: cov(:,:)
-        complex(TKC)            , intent(in)    , contiguous        :: meang(:)
+        complex(TKG)            , intent(in)    , contiguous        :: sample(:,:)
+        complex(TKG)            , intent(inout) , contiguous        :: cov(:,:)
+        complex(TKG)            , intent(in)    , contiguous        :: meang(:)
         type(lowDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -6590,14 +6590,14 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovMeanWTI_XLD_CK1
 #endif
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
         integer(IK)             , intent(in)                        :: dim
         integer(IK)             , intent(out)                       :: weisum
-        complex(TKC)            , intent(out)   , contiguous        :: mean(:)
+        complex(TKG)            , intent(out)   , contiguous        :: mean(:)
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous        :: sample(:,:)
-        complex(TKC)            , intent(inout) , contiguous        :: cov(:,:)
-        complex(TKC)            , intent(in)    , contiguous        :: meang(:)
+        complex(TKG)            , intent(in)    , contiguous        :: sample(:,:)
+        complex(TKG)            , intent(inout) , contiguous        :: cov(:,:)
+        complex(TKG)            , intent(in)    , contiguous        :: meang(:)
         type(lowDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -6609,14 +6609,14 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovMeanWTI_XLD_RK5
 #endif
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
         integer(IK)             , intent(in)                        :: dim
         integer(IK)             , intent(out)                       :: weisum
-        real(TKC)               , intent(out)   , contiguous        :: mean(:)
+        real(TKG)               , intent(out)   , contiguous        :: mean(:)
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
-        real(TKC)               , intent(inout) , contiguous        :: cov(:,:)
-        real(TKC)               , intent(in)    , contiguous        :: meang(:)
+        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
+        real(TKG)               , intent(inout) , contiguous        :: cov(:,:)
+        real(TKG)               , intent(in)    , contiguous        :: meang(:)
         type(lowDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -6626,14 +6626,14 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovMeanWTI_XLD_RK4
 #endif
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
         integer(IK)             , intent(in)                        :: dim
         integer(IK)             , intent(out)                       :: weisum
-        real(TKC)               , intent(out)   , contiguous        :: mean(:)
+        real(TKG)               , intent(out)   , contiguous        :: mean(:)
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
-        real(TKC)               , intent(inout) , contiguous        :: cov(:,:)
-        real(TKC)               , intent(in)    , contiguous        :: meang(:)
+        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
+        real(TKG)               , intent(inout) , contiguous        :: cov(:,:)
+        real(TKG)               , intent(in)    , contiguous        :: meang(:)
         type(lowDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -6643,14 +6643,14 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovMeanWTI_XLD_RK3
 #endif
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
         integer(IK)             , intent(in)                        :: dim
         integer(IK)             , intent(out)                       :: weisum
-        real(TKC)               , intent(out)   , contiguous        :: mean(:)
+        real(TKG)               , intent(out)   , contiguous        :: mean(:)
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
-        real(TKC)               , intent(inout) , contiguous        :: cov(:,:)
-        real(TKC)               , intent(in)    , contiguous        :: meang(:)
+        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
+        real(TKG)               , intent(inout) , contiguous        :: cov(:,:)
+        real(TKG)               , intent(in)    , contiguous        :: meang(:)
         type(lowDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -6660,14 +6660,14 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovMeanWTI_XLD_RK2
 #endif
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
         integer(IK)             , intent(in)                        :: dim
         integer(IK)             , intent(out)                       :: weisum
-        real(TKC)               , intent(out)   , contiguous        :: mean(:)
+        real(TKG)               , intent(out)   , contiguous        :: mean(:)
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
-        real(TKC)               , intent(inout) , contiguous        :: cov(:,:)
-        real(TKC)               , intent(in)    , contiguous        :: meang(:)
+        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
+        real(TKG)               , intent(inout) , contiguous        :: cov(:,:)
+        real(TKG)               , intent(in)    , contiguous        :: meang(:)
         type(lowDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -6677,14 +6677,14 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovMeanWTI_XLD_RK1
 #endif
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
         integer(IK)             , intent(in)                        :: dim
         integer(IK)             , intent(out)                       :: weisum
-        real(TKC)               , intent(out)   , contiguous        :: mean(:)
+        real(TKG)               , intent(out)   , contiguous        :: mean(:)
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
-        real(TKC)               , intent(inout) , contiguous        :: cov(:,:)
-        real(TKC)               , intent(in)    , contiguous        :: meang(:)
+        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
+        real(TKG)               , intent(inout) , contiguous        :: cov(:,:)
+        real(TKG)               , intent(in)    , contiguous        :: meang(:)
         type(lowDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -6712,14 +6712,14 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovMeanWTR_XLD_CK5
 #endif
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
         integer(IK)             , intent(in)                        :: dim
-        real(TKC)               , intent(out)                       :: weisum
-        complex(TKC)            , intent(out)   , contiguous        :: mean(:)
-        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous        :: sample(:,:)
-        complex(TKC)            , intent(inout) , contiguous        :: cov(:,:)
-        complex(TKC)            , intent(in)    , contiguous        :: meang(:)
+        real(TKG)               , intent(out)                       :: weisum
+        complex(TKG)            , intent(out)   , contiguous        :: mean(:)
+        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+        complex(TKG)            , intent(in)    , contiguous        :: sample(:,:)
+        complex(TKG)            , intent(inout) , contiguous        :: cov(:,:)
+        complex(TKG)            , intent(in)    , contiguous        :: meang(:)
         type(lowDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -6729,14 +6729,14 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovMeanWTR_XLD_CK4
 #endif
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
         integer(IK)             , intent(in)                        :: dim
-        real(TKC)               , intent(out)                       :: weisum
-        complex(TKC)            , intent(out)   , contiguous        :: mean(:)
-        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous        :: sample(:,:)
-        complex(TKC)            , intent(inout) , contiguous        :: cov(:,:)
-        complex(TKC)            , intent(in)    , contiguous        :: meang(:)
+        real(TKG)               , intent(out)                       :: weisum
+        complex(TKG)            , intent(out)   , contiguous        :: mean(:)
+        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+        complex(TKG)            , intent(in)    , contiguous        :: sample(:,:)
+        complex(TKG)            , intent(inout) , contiguous        :: cov(:,:)
+        complex(TKG)            , intent(in)    , contiguous        :: meang(:)
         type(lowDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -6746,14 +6746,14 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovMeanWTR_XLD_CK3
 #endif
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
         integer(IK)             , intent(in)                        :: dim
-        real(TKC)               , intent(out)                       :: weisum
-        complex(TKC)            , intent(out)   , contiguous        :: mean(:)
-        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous        :: sample(:,:)
-        complex(TKC)            , intent(inout) , contiguous        :: cov(:,:)
-        complex(TKC)            , intent(in)    , contiguous        :: meang(:)
+        real(TKG)               , intent(out)                       :: weisum
+        complex(TKG)            , intent(out)   , contiguous        :: mean(:)
+        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+        complex(TKG)            , intent(in)    , contiguous        :: sample(:,:)
+        complex(TKG)            , intent(inout) , contiguous        :: cov(:,:)
+        complex(TKG)            , intent(in)    , contiguous        :: meang(:)
         type(lowDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -6763,14 +6763,14 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovMeanWTR_XLD_CK2
 #endif
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
         integer(IK)             , intent(in)                        :: dim
-        real(TKC)               , intent(out)                       :: weisum
-        complex(TKC)            , intent(out)   , contiguous        :: mean(:)
-        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous        :: sample(:,:)
-        complex(TKC)            , intent(inout) , contiguous        :: cov(:,:)
-        complex(TKC)            , intent(in)    , contiguous        :: meang(:)
+        real(TKG)               , intent(out)                       :: weisum
+        complex(TKG)            , intent(out)   , contiguous        :: mean(:)
+        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+        complex(TKG)            , intent(in)    , contiguous        :: sample(:,:)
+        complex(TKG)            , intent(inout) , contiguous        :: cov(:,:)
+        complex(TKG)            , intent(in)    , contiguous        :: meang(:)
         type(lowDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -6780,14 +6780,14 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovMeanWTR_XLD_CK1
 #endif
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
         integer(IK)             , intent(in)                        :: dim
-        real(TKC)               , intent(out)                       :: weisum
-        complex(TKC)            , intent(out)   , contiguous        :: mean(:)
-        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous        :: sample(:,:)
-        complex(TKC)            , intent(inout) , contiguous        :: cov(:,:)
-        complex(TKC)            , intent(in)    , contiguous        :: meang(:)
+        real(TKG)               , intent(out)                       :: weisum
+        complex(TKG)            , intent(out)   , contiguous        :: mean(:)
+        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+        complex(TKG)            , intent(in)    , contiguous        :: sample(:,:)
+        complex(TKG)            , intent(inout) , contiguous        :: cov(:,:)
+        complex(TKG)            , intent(in)    , contiguous        :: meang(:)
         type(lowDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -6799,14 +6799,14 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovMeanWTR_XLD_RK5
 #endif
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
         integer(IK)             , intent(in)                        :: dim
-        real(TKC)               , intent(out)                       :: weisum
-        real(TKC)               , intent(out)   , contiguous        :: mean(:)
-        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
-        real(TKC)               , intent(inout) , contiguous        :: cov(:,:)
-        real(TKC)               , intent(in)    , contiguous        :: meang(:)
+        real(TKG)               , intent(out)                       :: weisum
+        real(TKG)               , intent(out)   , contiguous        :: mean(:)
+        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
+        real(TKG)               , intent(inout) , contiguous        :: cov(:,:)
+        real(TKG)               , intent(in)    , contiguous        :: meang(:)
         type(lowDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -6816,14 +6816,14 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovMeanWTR_XLD_RK4
 #endif
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
         integer(IK)             , intent(in)                        :: dim
-        real(TKC)               , intent(out)                       :: weisum
-        real(TKC)               , intent(out)   , contiguous        :: mean(:)
-        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
-        real(TKC)               , intent(inout) , contiguous        :: cov(:,:)
-        real(TKC)               , intent(in)    , contiguous        :: meang(:)
+        real(TKG)               , intent(out)                       :: weisum
+        real(TKG)               , intent(out)   , contiguous        :: mean(:)
+        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
+        real(TKG)               , intent(inout) , contiguous        :: cov(:,:)
+        real(TKG)               , intent(in)    , contiguous        :: meang(:)
         type(lowDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -6833,14 +6833,14 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovMeanWTR_XLD_RK3
 #endif
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
         integer(IK)             , intent(in)                        :: dim
-        real(TKC)               , intent(out)                       :: weisum
-        real(TKC)               , intent(out)   , contiguous        :: mean(:)
-        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
-        real(TKC)               , intent(inout) , contiguous        :: cov(:,:)
-        real(TKC)               , intent(in)    , contiguous        :: meang(:)
+        real(TKG)               , intent(out)                       :: weisum
+        real(TKG)               , intent(out)   , contiguous        :: mean(:)
+        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
+        real(TKG)               , intent(inout) , contiguous        :: cov(:,:)
+        real(TKG)               , intent(in)    , contiguous        :: meang(:)
         type(lowDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -6850,14 +6850,14 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovMeanWTR_XLD_RK2
 #endif
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
         integer(IK)             , intent(in)                        :: dim
-        real(TKC)               , intent(out)                       :: weisum
-        real(TKC)               , intent(out)   , contiguous        :: mean(:)
-        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
-        real(TKC)               , intent(inout) , contiguous        :: cov(:,:)
-        real(TKC)               , intent(in)    , contiguous        :: meang(:)
+        real(TKG)               , intent(out)                       :: weisum
+        real(TKG)               , intent(out)   , contiguous        :: mean(:)
+        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
+        real(TKG)               , intent(inout) , contiguous        :: cov(:,:)
+        real(TKG)               , intent(in)    , contiguous        :: meang(:)
         type(lowDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -6867,14 +6867,14 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovMeanWTR_XLD_RK1
 #endif
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
         integer(IK)             , intent(in)                        :: dim
-        real(TKC)               , intent(out)                       :: weisum
-        real(TKC)               , intent(out)   , contiguous        :: mean(:)
-        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
-        real(TKC)               , intent(inout) , contiguous        :: cov(:,:)
-        real(TKC)               , intent(in)    , contiguous        :: meang(:)
+        real(TKG)               , intent(out)                       :: weisum
+        real(TKG)               , intent(out)   , contiguous        :: mean(:)
+        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
+        real(TKG)               , intent(inout) , contiguous        :: cov(:,:)
+        real(TKG)               , intent(in)    , contiguous        :: meang(:)
         type(lowDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -6981,10 +6981,10 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCovMergedNew_RDP_ULD_CK5
 #endif
-        use pm_kind, only: TKC => CK5
-        real(TKC)           , intent(in)                        :: fracA
-        complex(TKC)        , intent(in)    , contiguous        :: covB(:,:), covA(:,:), meanDiff(:)
-        complex(TKC)                                            :: cov(size(covA, 1, IK), size(covA, 2, IK))
+        use pm_kind, only: TKG => CK5
+        real(TKG)           , intent(in)                        :: fracA
+        complex(TKG)        , intent(in)    , contiguous        :: covB(:,:), covA(:,:), meanDiff(:)
+        complex(TKG)                                            :: cov(size(covA, 1, IK), size(covA, 2, IK))
     end function
 #endif
 
@@ -6993,10 +6993,10 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCovMergedNew_RDP_ULD_CK4
 #endif
-        use pm_kind, only: TKC => CK4
-        real(TKC)           , intent(in)                        :: fracA
-        complex(TKC)        , intent(in)    , contiguous        :: covB(:,:), covA(:,:), meanDiff(:)
-        complex(TKC)                                            :: cov(size(covA, 1, IK), size(covA, 2, IK))
+        use pm_kind, only: TKG => CK4
+        real(TKG)           , intent(in)                        :: fracA
+        complex(TKG)        , intent(in)    , contiguous        :: covB(:,:), covA(:,:), meanDiff(:)
+        complex(TKG)                                            :: cov(size(covA, 1, IK), size(covA, 2, IK))
     end function
 #endif
 
@@ -7005,10 +7005,10 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCovMergedNew_RDP_ULD_CK3
 #endif
-        use pm_kind, only: TKC => CK3
-        real(TKC)           , intent(in)                        :: fracA
-        complex(TKC)        , intent(in)    , contiguous        :: covB(:,:), covA(:,:), meanDiff(:)
-        complex(TKC)                                            :: cov(size(covA, 1, IK), size(covA, 2, IK))
+        use pm_kind, only: TKG => CK3
+        real(TKG)           , intent(in)                        :: fracA
+        complex(TKG)        , intent(in)    , contiguous        :: covB(:,:), covA(:,:), meanDiff(:)
+        complex(TKG)                                            :: cov(size(covA, 1, IK), size(covA, 2, IK))
     end function
 #endif
 
@@ -7017,10 +7017,10 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCovMergedNew_RDP_ULD_CK2
 #endif
-        use pm_kind, only: TKC => CK2
-        real(TKC)           , intent(in)                        :: fracA
-        complex(TKC)        , intent(in)    , contiguous        :: covB(:,:), covA(:,:), meanDiff(:)
-        complex(TKC)                                            :: cov(size(covA, 1, IK), size(covA, 2, IK))
+        use pm_kind, only: TKG => CK2
+        real(TKG)           , intent(in)                        :: fracA
+        complex(TKG)        , intent(in)    , contiguous        :: covB(:,:), covA(:,:), meanDiff(:)
+        complex(TKG)                                            :: cov(size(covA, 1, IK), size(covA, 2, IK))
     end function
 #endif
 
@@ -7029,10 +7029,10 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCovMergedNew_RDP_ULD_CK1
 #endif
-        use pm_kind, only: TKC => CK1
-        real(TKC)           , intent(in)                        :: fracA
-        complex(TKC)        , intent(in)    , contiguous        :: covB(:,:), covA(:,:), meanDiff(:)
-        complex(TKC)                                            :: cov(size(covA, 1, IK), size(covA, 2, IK))
+        use pm_kind, only: TKG => CK1
+        real(TKG)           , intent(in)                        :: fracA
+        complex(TKG)        , intent(in)    , contiguous        :: covB(:,:), covA(:,:), meanDiff(:)
+        complex(TKG)                                            :: cov(size(covA, 1, IK), size(covA, 2, IK))
     end function
 #endif
 
@@ -7043,10 +7043,10 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCovMergedNew_RDP_ULD_RK5
 #endif
-        use pm_kind, only: TKC => RK5
-        real(TKC)           , intent(in)                        :: fracA
-        real(TKC)           , intent(in)    , contiguous        :: covB(:,:), covA(:,:), meanDiff(:)
-        real(TKC)                                               :: cov(size(covA, 1, IK), size(covA, 2, IK))
+        use pm_kind, only: TKG => RK5
+        real(TKG)           , intent(in)                        :: fracA
+        real(TKG)           , intent(in)    , contiguous        :: covB(:,:), covA(:,:), meanDiff(:)
+        real(TKG)                                               :: cov(size(covA, 1, IK), size(covA, 2, IK))
     end function
 #endif
 
@@ -7055,10 +7055,10 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCovMergedNew_RDP_ULD_RK4
 #endif
-        use pm_kind, only: TKC => RK4
-        real(TKC)           , intent(in)                        :: fracA
-        real(TKC)           , intent(in)    , contiguous        :: covB(:,:), covA(:,:), meanDiff(:)
-        real(TKC)                                               :: cov(size(covA, 1, IK), size(covA, 2, IK))
+        use pm_kind, only: TKG => RK4
+        real(TKG)           , intent(in)                        :: fracA
+        real(TKG)           , intent(in)    , contiguous        :: covB(:,:), covA(:,:), meanDiff(:)
+        real(TKG)                                               :: cov(size(covA, 1, IK), size(covA, 2, IK))
     end function
 #endif
 
@@ -7067,10 +7067,10 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCovMergedNew_RDP_ULD_RK3
 #endif
-        use pm_kind, only: TKC => RK3
-        real(TKC)           , intent(in)                        :: fracA
-        real(TKC)           , intent(in)    , contiguous        :: covB(:,:), covA(:,:), meanDiff(:)
-        real(TKC)                                               :: cov(size(covA, 1, IK), size(covA, 2, IK))
+        use pm_kind, only: TKG => RK3
+        real(TKG)           , intent(in)                        :: fracA
+        real(TKG)           , intent(in)    , contiguous        :: covB(:,:), covA(:,:), meanDiff(:)
+        real(TKG)                                               :: cov(size(covA, 1, IK), size(covA, 2, IK))
     end function
 #endif
 
@@ -7079,10 +7079,10 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCovMergedNew_RDP_ULD_RK2
 #endif
-        use pm_kind, only: TKC => RK2
-        real(TKC)           , intent(in)                        :: fracA
-        real(TKC)           , intent(in)    , contiguous        :: covB(:,:), covA(:,:), meanDiff(:)
-        real(TKC)                                               :: cov(size(covA, 1, IK), size(covA, 2, IK))
+        use pm_kind, only: TKG => RK2
+        real(TKG)           , intent(in)                        :: fracA
+        real(TKG)           , intent(in)    , contiguous        :: covB(:,:), covA(:,:), meanDiff(:)
+        real(TKG)                                               :: cov(size(covA, 1, IK), size(covA, 2, IK))
     end function
 #endif
 
@@ -7091,10 +7091,10 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCovMergedNew_RDP_ULD_RK1
 #endif
-        use pm_kind, only: TKC => RK1
-        real(TKC)           , intent(in)                        :: fracA
-        real(TKC)           , intent(in)    , contiguous        :: covB(:,:), covA(:,:), meanDiff(:)
-        real(TKC)                                               :: cov(size(covA, 1, IK), size(covA, 2, IK))
+        use pm_kind, only: TKG => RK1
+        real(TKG)           , intent(in)                        :: fracA
+        real(TKG)           , intent(in)    , contiguous        :: covB(:,:), covA(:,:), meanDiff(:)
+        real(TKG)                                               :: cov(size(covA, 1, IK), size(covA, 2, IK))
     end function
 #endif
 
@@ -7203,10 +7203,10 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovMergedNew_RDP_UXD_CK5
 #endif
-        use pm_kind, only: TKC => CK5
-        real(TKC)           , intent(in)                        :: fracA
-        complex(TKC)        , intent(in)    , contiguous        :: covB(:,:), covA(:,:), meanDiff(:)
-        complex(TKC)        , intent(out)   , contiguous        :: cov(:,:)
+        use pm_kind, only: TKG => CK5
+        real(TKG)           , intent(in)                        :: fracA
+        complex(TKG)        , intent(in)    , contiguous        :: covB(:,:), covA(:,:), meanDiff(:)
+        complex(TKG)        , intent(out)   , contiguous        :: cov(:,:)
         type(uppDia_type)   , intent(in)                        :: subset
     end subroutine
 #endif
@@ -7216,10 +7216,10 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovMergedNew_RDP_UXD_CK4
 #endif
-        use pm_kind, only: TKC => CK4
-        real(TKC)           , intent(in)                        :: fracA
-        complex(TKC)        , intent(in)    , contiguous        :: covB(:,:), covA(:,:), meanDiff(:)
-        complex(TKC)        , intent(out)   , contiguous        :: cov(:,:)
+        use pm_kind, only: TKG => CK4
+        real(TKG)           , intent(in)                        :: fracA
+        complex(TKG)        , intent(in)    , contiguous        :: covB(:,:), covA(:,:), meanDiff(:)
+        complex(TKG)        , intent(out)   , contiguous        :: cov(:,:)
         type(uppDia_type)   , intent(in)                        :: subset
     end subroutine
 #endif
@@ -7229,10 +7229,10 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovMergedNew_RDP_UXD_CK3
 #endif
-        use pm_kind, only: TKC => CK3
-        real(TKC)           , intent(in)                        :: fracA
-        complex(TKC)        , intent(in)    , contiguous        :: covB(:,:), covA(:,:), meanDiff(:)
-        complex(TKC)        , intent(out)   , contiguous        :: cov(:,:)
+        use pm_kind, only: TKG => CK3
+        real(TKG)           , intent(in)                        :: fracA
+        complex(TKG)        , intent(in)    , contiguous        :: covB(:,:), covA(:,:), meanDiff(:)
+        complex(TKG)        , intent(out)   , contiguous        :: cov(:,:)
         type(uppDia_type)   , intent(in)                        :: subset
     end subroutine
 #endif
@@ -7242,10 +7242,10 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovMergedNew_RDP_UXD_CK2
 #endif
-        use pm_kind, only: TKC => CK2
-        real(TKC)           , intent(in)                        :: fracA
-        complex(TKC)        , intent(in)    , contiguous        :: covB(:,:), covA(:,:), meanDiff(:)
-        complex(TKC)        , intent(out)   , contiguous        :: cov(:,:)
+        use pm_kind, only: TKG => CK2
+        real(TKG)           , intent(in)                        :: fracA
+        complex(TKG)        , intent(in)    , contiguous        :: covB(:,:), covA(:,:), meanDiff(:)
+        complex(TKG)        , intent(out)   , contiguous        :: cov(:,:)
         type(uppDia_type)   , intent(in)                        :: subset
     end subroutine
 #endif
@@ -7255,10 +7255,10 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovMergedNew_RDP_UXD_CK1
 #endif
-        use pm_kind, only: TKC => CK1
-        real(TKC)           , intent(in)                        :: fracA
-        complex(TKC)        , intent(in)    , contiguous        :: covB(:,:), covA(:,:), meanDiff(:)
-        complex(TKC)        , intent(out)   , contiguous        :: cov(:,:)
+        use pm_kind, only: TKG => CK1
+        real(TKG)           , intent(in)                        :: fracA
+        complex(TKG)        , intent(in)    , contiguous        :: covB(:,:), covA(:,:), meanDiff(:)
+        complex(TKG)        , intent(out)   , contiguous        :: cov(:,:)
         type(uppDia_type)   , intent(in)                        :: subset
     end subroutine
 #endif
@@ -7270,10 +7270,10 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovMergedNew_RDP_UXD_RK5
 #endif
-        use pm_kind, only: TKC => RK5
-        real(TKC)           , intent(in)                        :: fracA
-        real(TKC)           , intent(in)    , contiguous        :: covB(:,:), covA(:,:), meanDiff(:)
-        real(TKC)           , intent(out)   , contiguous        :: cov(:,:)
+        use pm_kind, only: TKG => RK5
+        real(TKG)           , intent(in)                        :: fracA
+        real(TKG)           , intent(in)    , contiguous        :: covB(:,:), covA(:,:), meanDiff(:)
+        real(TKG)           , intent(out)   , contiguous        :: cov(:,:)
         type(uppDia_type)   , intent(in)                        :: subset
     end subroutine
 #endif
@@ -7283,10 +7283,10 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovMergedNew_RDP_UXD_RK4
 #endif
-        use pm_kind, only: TKC => RK4
-        real(TKC)           , intent(in)                        :: fracA
-        real(TKC)           , intent(in)    , contiguous        :: covB(:,:), covA(:,:), meanDiff(:)
-        real(TKC)           , intent(out)   , contiguous        :: cov(:,:)
+        use pm_kind, only: TKG => RK4
+        real(TKG)           , intent(in)                        :: fracA
+        real(TKG)           , intent(in)    , contiguous        :: covB(:,:), covA(:,:), meanDiff(:)
+        real(TKG)           , intent(out)   , contiguous        :: cov(:,:)
         type(uppDia_type)   , intent(in)                        :: subset
     end subroutine
 #endif
@@ -7296,10 +7296,10 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovMergedNew_RDP_UXD_RK3
 #endif
-        use pm_kind, only: TKC => RK3
-        real(TKC)           , intent(in)                        :: fracA
-        real(TKC)           , intent(in)    , contiguous        :: covB(:,:), covA(:,:), meanDiff(:)
-        real(TKC)           , intent(out)   , contiguous        :: cov(:,:)
+        use pm_kind, only: TKG => RK3
+        real(TKG)           , intent(in)                        :: fracA
+        real(TKG)           , intent(in)    , contiguous        :: covB(:,:), covA(:,:), meanDiff(:)
+        real(TKG)           , intent(out)   , contiguous        :: cov(:,:)
         type(uppDia_type)   , intent(in)                        :: subset
     end subroutine
 #endif
@@ -7309,10 +7309,10 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovMergedNew_RDP_UXD_RK2
 #endif
-        use pm_kind, only: TKC => RK2
-        real(TKC)           , intent(in)                        :: fracA
-        real(TKC)           , intent(in)    , contiguous        :: covB(:,:), covA(:,:), meanDiff(:)
-        real(TKC)           , intent(out)   , contiguous        :: cov(:,:)
+        use pm_kind, only: TKG => RK2
+        real(TKG)           , intent(in)                        :: fracA
+        real(TKG)           , intent(in)    , contiguous        :: covB(:,:), covA(:,:), meanDiff(:)
+        real(TKG)           , intent(out)   , contiguous        :: cov(:,:)
         type(uppDia_type)   , intent(in)                        :: subset
     end subroutine
 #endif
@@ -7322,10 +7322,10 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovMergedNew_RDP_UXD_RK1
 #endif
-        use pm_kind, only: TKC => RK1
-        real(TKC)           , intent(in)                        :: fracA
-        real(TKC)           , intent(in)    , contiguous        :: covB(:,:), covA(:,:), meanDiff(:)
-        real(TKC)           , intent(out)   , contiguous        :: cov(:,:)
+        use pm_kind, only: TKG => RK1
+        real(TKG)           , intent(in)                        :: fracA
+        real(TKG)           , intent(in)    , contiguous        :: covB(:,:), covA(:,:), meanDiff(:)
+        real(TKG)           , intent(out)   , contiguous        :: cov(:,:)
         type(uppDia_type)   , intent(in)                        :: subset
     end subroutine
 #endif
@@ -7345,10 +7345,10 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovMergedNew_RDP_XLD_CK5
 #endif
-        use pm_kind, only: TKC => CK5
-        real(TKC)           , intent(in)                        :: fracA
-        complex(TKC)        , intent(in)    , contiguous        :: covB(:,:), covA(:,:), meanDiff(:)
-        complex(TKC)        , intent(out)   , contiguous        :: cov(:,:)
+        use pm_kind, only: TKG => CK5
+        real(TKG)           , intent(in)                        :: fracA
+        complex(TKG)        , intent(in)    , contiguous        :: covB(:,:), covA(:,:), meanDiff(:)
+        complex(TKG)        , intent(out)   , contiguous        :: cov(:,:)
         type(lowDia_type)   , intent(in)                        :: subset
     end subroutine
 #endif
@@ -7358,10 +7358,10 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovMergedNew_RDP_XLD_CK4
 #endif
-        use pm_kind, only: TKC => CK4
-        real(TKC)           , intent(in)                        :: fracA
-        complex(TKC)        , intent(in)    , contiguous        :: covB(:,:), covA(:,:), meanDiff(:)
-        complex(TKC)        , intent(out)   , contiguous        :: cov(:,:)
+        use pm_kind, only: TKG => CK4
+        real(TKG)           , intent(in)                        :: fracA
+        complex(TKG)        , intent(in)    , contiguous        :: covB(:,:), covA(:,:), meanDiff(:)
+        complex(TKG)        , intent(out)   , contiguous        :: cov(:,:)
         type(lowDia_type)   , intent(in)                        :: subset
     end subroutine
 #endif
@@ -7371,10 +7371,10 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovMergedNew_RDP_XLD_CK3
 #endif
-        use pm_kind, only: TKC => CK3
-        real(TKC)           , intent(in)                        :: fracA
-        complex(TKC)        , intent(in)    , contiguous        :: covB(:,:), covA(:,:), meanDiff(:)
-        complex(TKC)        , intent(out)   , contiguous        :: cov(:,:)
+        use pm_kind, only: TKG => CK3
+        real(TKG)           , intent(in)                        :: fracA
+        complex(TKG)        , intent(in)    , contiguous        :: covB(:,:), covA(:,:), meanDiff(:)
+        complex(TKG)        , intent(out)   , contiguous        :: cov(:,:)
         type(lowDia_type)   , intent(in)                        :: subset
     end subroutine
 #endif
@@ -7384,10 +7384,10 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovMergedNew_RDP_XLD_CK2
 #endif
-        use pm_kind, only: TKC => CK2
-        real(TKC)           , intent(in)                        :: fracA
-        complex(TKC)        , intent(in)    , contiguous        :: covB(:,:), covA(:,:), meanDiff(:)
-        complex(TKC)        , intent(out)   , contiguous        :: cov(:,:)
+        use pm_kind, only: TKG => CK2
+        real(TKG)           , intent(in)                        :: fracA
+        complex(TKG)        , intent(in)    , contiguous        :: covB(:,:), covA(:,:), meanDiff(:)
+        complex(TKG)        , intent(out)   , contiguous        :: cov(:,:)
         type(lowDia_type)   , intent(in)                        :: subset
     end subroutine
 #endif
@@ -7397,10 +7397,10 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovMergedNew_RDP_XLD_CK1
 #endif
-        use pm_kind, only: TKC => CK1
-        real(TKC)           , intent(in)                        :: fracA
-        complex(TKC)        , intent(in)    , contiguous        :: covB(:,:), covA(:,:), meanDiff(:)
-        complex(TKC)        , intent(out)   , contiguous        :: cov(:,:)
+        use pm_kind, only: TKG => CK1
+        real(TKG)           , intent(in)                        :: fracA
+        complex(TKG)        , intent(in)    , contiguous        :: covB(:,:), covA(:,:), meanDiff(:)
+        complex(TKG)        , intent(out)   , contiguous        :: cov(:,:)
         type(lowDia_type)   , intent(in)                        :: subset
     end subroutine
 #endif
@@ -7412,10 +7412,10 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovMergedNew_RDP_XLD_RK5
 #endif
-        use pm_kind, only: TKC => RK5
-        real(TKC)           , intent(in)                        :: fracA
-        real(TKC)           , intent(in)    , contiguous        :: covB(:,:), covA(:,:), meanDiff(:)
-        real(TKC)           , intent(out)   , contiguous        :: cov(:,:)
+        use pm_kind, only: TKG => RK5
+        real(TKG)           , intent(in)                        :: fracA
+        real(TKG)           , intent(in)    , contiguous        :: covB(:,:), covA(:,:), meanDiff(:)
+        real(TKG)           , intent(out)   , contiguous        :: cov(:,:)
         type(lowDia_type)   , intent(in)                        :: subset
     end subroutine
 #endif
@@ -7425,10 +7425,10 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovMergedNew_RDP_XLD_RK4
 #endif
-        use pm_kind, only: TKC => RK4
-        real(TKC)           , intent(in)                        :: fracA
-        real(TKC)           , intent(in)    , contiguous        :: covB(:,:), covA(:,:), meanDiff(:)
-        real(TKC)           , intent(out)   , contiguous        :: cov(:,:)
+        use pm_kind, only: TKG => RK4
+        real(TKG)           , intent(in)                        :: fracA
+        real(TKG)           , intent(in)    , contiguous        :: covB(:,:), covA(:,:), meanDiff(:)
+        real(TKG)           , intent(out)   , contiguous        :: cov(:,:)
         type(lowDia_type)   , intent(in)                        :: subset
     end subroutine
 #endif
@@ -7438,10 +7438,10 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovMergedNew_RDP_XLD_RK3
 #endif
-        use pm_kind, only: TKC => RK3
-        real(TKC)           , intent(in)                        :: fracA
-        real(TKC)           , intent(in)    , contiguous        :: covB(:,:), covA(:,:), meanDiff(:)
-        real(TKC)           , intent(out)   , contiguous        :: cov(:,:)
+        use pm_kind, only: TKG => RK3
+        real(TKG)           , intent(in)                        :: fracA
+        real(TKG)           , intent(in)    , contiguous        :: covB(:,:), covA(:,:), meanDiff(:)
+        real(TKG)           , intent(out)   , contiguous        :: cov(:,:)
         type(lowDia_type)   , intent(in)                        :: subset
     end subroutine
 #endif
@@ -7451,10 +7451,10 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovMergedNew_RDP_XLD_RK2
 #endif
-        use pm_kind, only: TKC => RK2
-        real(TKC)           , intent(in)                        :: fracA
-        real(TKC)           , intent(in)    , contiguous        :: covB(:,:), covA(:,:), meanDiff(:)
-        real(TKC)           , intent(out)   , contiguous        :: cov(:,:)
+        use pm_kind, only: TKG => RK2
+        real(TKG)           , intent(in)                        :: fracA
+        real(TKG)           , intent(in)    , contiguous        :: covB(:,:), covA(:,:), meanDiff(:)
+        real(TKG)           , intent(out)   , contiguous        :: cov(:,:)
         type(lowDia_type)   , intent(in)                        :: subset
     end subroutine
 #endif
@@ -7464,10 +7464,10 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovMergedNew_RDP_XLD_RK1
 #endif
-        use pm_kind, only: TKC => RK1
-        real(TKC)           , intent(in)                        :: fracA
-        real(TKC)           , intent(in)    , contiguous        :: covB(:,:), covA(:,:), meanDiff(:)
-        real(TKC)           , intent(out)   , contiguous        :: cov(:,:)
+        use pm_kind, only: TKG => RK1
+        real(TKG)           , intent(in)                        :: fracA
+        real(TKG)           , intent(in)    , contiguous        :: covB(:,:), covA(:,:), meanDiff(:)
+        real(TKG)           , intent(out)   , contiguous        :: cov(:,:)
         type(lowDia_type)   , intent(in)                        :: subset
     end subroutine
 #endif
@@ -7487,11 +7487,11 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovMergedOld_RDP_UXD_CK5
 #endif
-        use pm_kind, only: TKC => CK5
-        complex(TKC)        , intent(inout) , contiguous        :: covB(:,:)
-        complex(TKC)        , intent(in)    , contiguous        :: covA(:,:)
-        complex(TKC)        , intent(in)    , contiguous        :: meanDiff(:)
-        real(TKC)           , intent(in)                        :: fracA
+        use pm_kind, only: TKG => CK5
+        complex(TKG)        , intent(inout) , contiguous        :: covB(:,:)
+        complex(TKG)        , intent(in)    , contiguous        :: covA(:,:)
+        complex(TKG)        , intent(in)    , contiguous        :: meanDiff(:)
+        real(TKG)           , intent(in)                        :: fracA
         type(uppDia_type)   , intent(in)                        :: subset
     end subroutine
 #endif
@@ -7501,11 +7501,11 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovMergedOld_RDP_UXD_CK4
 #endif
-        use pm_kind, only: TKC => CK4
-        complex(TKC)        , intent(inout) , contiguous        :: covB(:,:)
-        complex(TKC)        , intent(in)    , contiguous        :: covA(:,:)
-        complex(TKC)        , intent(in)    , contiguous        :: meanDiff(:)
-        real(TKC)           , intent(in)                        :: fracA
+        use pm_kind, only: TKG => CK4
+        complex(TKG)        , intent(inout) , contiguous        :: covB(:,:)
+        complex(TKG)        , intent(in)    , contiguous        :: covA(:,:)
+        complex(TKG)        , intent(in)    , contiguous        :: meanDiff(:)
+        real(TKG)           , intent(in)                        :: fracA
         type(uppDia_type)   , intent(in)                        :: subset
     end subroutine
 #endif
@@ -7515,11 +7515,11 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovMergedOld_RDP_UXD_CK3
 #endif
-        use pm_kind, only: TKC => CK3
-        complex(TKC)        , intent(inout) , contiguous        :: covB(:,:)
-        complex(TKC)        , intent(in)    , contiguous        :: covA(:,:)
-        complex(TKC)        , intent(in)    , contiguous        :: meanDiff(:)
-        real(TKC)           , intent(in)                        :: fracA
+        use pm_kind, only: TKG => CK3
+        complex(TKG)        , intent(inout) , contiguous        :: covB(:,:)
+        complex(TKG)        , intent(in)    , contiguous        :: covA(:,:)
+        complex(TKG)        , intent(in)    , contiguous        :: meanDiff(:)
+        real(TKG)           , intent(in)                        :: fracA
         type(uppDia_type)   , intent(in)                        :: subset
     end subroutine
 #endif
@@ -7529,11 +7529,11 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovMergedOld_RDP_UXD_CK2
 #endif
-        use pm_kind, only: TKC => CK2
-        complex(TKC)        , intent(inout) , contiguous        :: covB(:,:)
-        complex(TKC)        , intent(in)    , contiguous        :: covA(:,:)
-        complex(TKC)        , intent(in)    , contiguous        :: meanDiff(:)
-        real(TKC)           , intent(in)                        :: fracA
+        use pm_kind, only: TKG => CK2
+        complex(TKG)        , intent(inout) , contiguous        :: covB(:,:)
+        complex(TKG)        , intent(in)    , contiguous        :: covA(:,:)
+        complex(TKG)        , intent(in)    , contiguous        :: meanDiff(:)
+        real(TKG)           , intent(in)                        :: fracA
         type(uppDia_type)   , intent(in)                        :: subset
     end subroutine
 #endif
@@ -7543,11 +7543,11 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovMergedOld_RDP_UXD_CK1
 #endif
-        use pm_kind, only: TKC => CK1
-        complex(TKC)        , intent(inout) , contiguous        :: covB(:,:)
-        complex(TKC)        , intent(in)    , contiguous        :: covA(:,:)
-        complex(TKC)        , intent(in)    , contiguous        :: meanDiff(:)
-        real(TKC)           , intent(in)                        :: fracA
+        use pm_kind, only: TKG => CK1
+        complex(TKG)        , intent(inout) , contiguous        :: covB(:,:)
+        complex(TKG)        , intent(in)    , contiguous        :: covA(:,:)
+        complex(TKG)        , intent(in)    , contiguous        :: meanDiff(:)
+        real(TKG)           , intent(in)                        :: fracA
         type(uppDia_type)   , intent(in)                        :: subset
     end subroutine
 #endif
@@ -7559,11 +7559,11 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovMergedOld_RDP_UXD_RK5
 #endif
-        use pm_kind, only: TKC => RK5
-        real(TKC)           , intent(inout) , contiguous        :: covB(:,:)
-        real(TKC)           , intent(in)    , contiguous        :: covA(:,:)
-        real(TKC)           , intent(in)    , contiguous        :: meanDiff(:)
-        real(TKC)           , intent(in)                        :: fracA
+        use pm_kind, only: TKG => RK5
+        real(TKG)           , intent(inout) , contiguous        :: covB(:,:)
+        real(TKG)           , intent(in)    , contiguous        :: covA(:,:)
+        real(TKG)           , intent(in)    , contiguous        :: meanDiff(:)
+        real(TKG)           , intent(in)                        :: fracA
         type(uppDia_type)   , intent(in)                        :: subset
     end subroutine
 #endif
@@ -7573,11 +7573,11 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovMergedOld_RDP_UXD_RK4
 #endif
-        use pm_kind, only: TKC => RK4
-        real(TKC)           , intent(inout) , contiguous        :: covB(:,:)
-        real(TKC)           , intent(in)    , contiguous        :: covA(:,:)
-        real(TKC)           , intent(in)    , contiguous        :: meanDiff(:)
-        real(TKC)           , intent(in)                        :: fracA
+        use pm_kind, only: TKG => RK4
+        real(TKG)           , intent(inout) , contiguous        :: covB(:,:)
+        real(TKG)           , intent(in)    , contiguous        :: covA(:,:)
+        real(TKG)           , intent(in)    , contiguous        :: meanDiff(:)
+        real(TKG)           , intent(in)                        :: fracA
         type(uppDia_type)   , intent(in)                        :: subset
     end subroutine
 #endif
@@ -7587,11 +7587,11 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovMergedOld_RDP_UXD_RK3
 #endif
-        use pm_kind, only: TKC => RK3
-        real(TKC)           , intent(inout) , contiguous        :: covB(:,:)
-        real(TKC)           , intent(in)    , contiguous        :: covA(:,:)
-        real(TKC)           , intent(in)    , contiguous        :: meanDiff(:)
-        real(TKC)           , intent(in)                        :: fracA
+        use pm_kind, only: TKG => RK3
+        real(TKG)           , intent(inout) , contiguous        :: covB(:,:)
+        real(TKG)           , intent(in)    , contiguous        :: covA(:,:)
+        real(TKG)           , intent(in)    , contiguous        :: meanDiff(:)
+        real(TKG)           , intent(in)                        :: fracA
         type(uppDia_type)   , intent(in)                        :: subset
     end subroutine
 #endif
@@ -7601,11 +7601,11 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovMergedOld_RDP_UXD_RK2
 #endif
-        use pm_kind, only: TKC => RK2
-        real(TKC)           , intent(inout) , contiguous        :: covB(:,:)
-        real(TKC)           , intent(in)    , contiguous        :: covA(:,:)
-        real(TKC)           , intent(in)    , contiguous        :: meanDiff(:)
-        real(TKC)           , intent(in)                        :: fracA
+        use pm_kind, only: TKG => RK2
+        real(TKG)           , intent(inout) , contiguous        :: covB(:,:)
+        real(TKG)           , intent(in)    , contiguous        :: covA(:,:)
+        real(TKG)           , intent(in)    , contiguous        :: meanDiff(:)
+        real(TKG)           , intent(in)                        :: fracA
         type(uppDia_type)   , intent(in)                        :: subset
     end subroutine
 #endif
@@ -7615,11 +7615,11 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovMergedOld_RDP_UXD_RK1
 #endif
-        use pm_kind, only: TKC => RK1
-        real(TKC)           , intent(inout) , contiguous        :: covB(:,:)
-        real(TKC)           , intent(in)    , contiguous        :: covA(:,:)
-        real(TKC)           , intent(in)    , contiguous        :: meanDiff(:)
-        real(TKC)           , intent(in)                        :: fracA
+        use pm_kind, only: TKG => RK1
+        real(TKG)           , intent(inout) , contiguous        :: covB(:,:)
+        real(TKG)           , intent(in)    , contiguous        :: covA(:,:)
+        real(TKG)           , intent(in)    , contiguous        :: meanDiff(:)
+        real(TKG)           , intent(in)                        :: fracA
         type(uppDia_type)   , intent(in)                        :: subset
     end subroutine
 #endif
@@ -7639,11 +7639,11 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovMergedOld_RDP_XLD_CK5
 #endif
-        use pm_kind, only: TKC => CK5
-        complex(TKC)        , intent(inout) , contiguous        :: covB(:,:)
-        complex(TKC)        , intent(in)    , contiguous        :: covA(:,:)
-        complex(TKC)        , intent(in)    , contiguous        :: meanDiff(:)
-        real(TKC)           , intent(in)                        :: fracA
+        use pm_kind, only: TKG => CK5
+        complex(TKG)        , intent(inout) , contiguous        :: covB(:,:)
+        complex(TKG)        , intent(in)    , contiguous        :: covA(:,:)
+        complex(TKG)        , intent(in)    , contiguous        :: meanDiff(:)
+        real(TKG)           , intent(in)                        :: fracA
         type(lowDia_type)   , intent(in)                        :: subset
     end subroutine
 #endif
@@ -7653,11 +7653,11 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovMergedOld_RDP_XLD_CK4
 #endif
-        use pm_kind, only: TKC => CK4
-        complex(TKC)        , intent(inout) , contiguous        :: covB(:,:)
-        complex(TKC)        , intent(in)    , contiguous        :: covA(:,:)
-        complex(TKC)        , intent(in)    , contiguous        :: meanDiff(:)
-        real(TKC)           , intent(in)                        :: fracA
+        use pm_kind, only: TKG => CK4
+        complex(TKG)        , intent(inout) , contiguous        :: covB(:,:)
+        complex(TKG)        , intent(in)    , contiguous        :: covA(:,:)
+        complex(TKG)        , intent(in)    , contiguous        :: meanDiff(:)
+        real(TKG)           , intent(in)                        :: fracA
         type(lowDia_type)   , intent(in)                        :: subset
     end subroutine
 #endif
@@ -7667,11 +7667,11 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovMergedOld_RDP_XLD_CK3
 #endif
-        use pm_kind, only: TKC => CK3
-        complex(TKC)        , intent(inout) , contiguous        :: covB(:,:)
-        complex(TKC)        , intent(in)    , contiguous        :: covA(:,:)
-        complex(TKC)        , intent(in)    , contiguous        :: meanDiff(:)
-        real(TKC)           , intent(in)                        :: fracA
+        use pm_kind, only: TKG => CK3
+        complex(TKG)        , intent(inout) , contiguous        :: covB(:,:)
+        complex(TKG)        , intent(in)    , contiguous        :: covA(:,:)
+        complex(TKG)        , intent(in)    , contiguous        :: meanDiff(:)
+        real(TKG)           , intent(in)                        :: fracA
         type(lowDia_type)   , intent(in)                        :: subset
     end subroutine
 #endif
@@ -7681,11 +7681,11 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovMergedOld_RDP_XLD_CK2
 #endif
-        use pm_kind, only: TKC => CK2
-        complex(TKC)        , intent(inout) , contiguous        :: covB(:,:)
-        complex(TKC)        , intent(in)    , contiguous        :: covA(:,:)
-        complex(TKC)        , intent(in)    , contiguous        :: meanDiff(:)
-        real(TKC)           , intent(in)                        :: fracA
+        use pm_kind, only: TKG => CK2
+        complex(TKG)        , intent(inout) , contiguous        :: covB(:,:)
+        complex(TKG)        , intent(in)    , contiguous        :: covA(:,:)
+        complex(TKG)        , intent(in)    , contiguous        :: meanDiff(:)
+        real(TKG)           , intent(in)                        :: fracA
         type(lowDia_type)   , intent(in)                        :: subset
     end subroutine
 #endif
@@ -7695,11 +7695,11 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovMergedOld_RDP_XLD_CK1
 #endif
-        use pm_kind, only: TKC => CK1
-        complex(TKC)        , intent(inout) , contiguous        :: covB(:,:)
-        complex(TKC)        , intent(in)    , contiguous        :: covA(:,:)
-        complex(TKC)        , intent(in)    , contiguous        :: meanDiff(:)
-        real(TKC)           , intent(in)                        :: fracA
+        use pm_kind, only: TKG => CK1
+        complex(TKG)        , intent(inout) , contiguous        :: covB(:,:)
+        complex(TKG)        , intent(in)    , contiguous        :: covA(:,:)
+        complex(TKG)        , intent(in)    , contiguous        :: meanDiff(:)
+        real(TKG)           , intent(in)                        :: fracA
         type(lowDia_type)   , intent(in)                        :: subset
     end subroutine
 #endif
@@ -7711,11 +7711,11 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovMergedOld_RDP_XLD_RK5
 #endif
-        use pm_kind, only: TKC => RK5
-        real(TKC)           , intent(inout) , contiguous        :: covB(:,:)
-        real(TKC)           , intent(in)    , contiguous        :: covA(:,:)
-        real(TKC)           , intent(in)    , contiguous        :: meanDiff(:)
-        real(TKC)           , intent(in)                        :: fracA
+        use pm_kind, only: TKG => RK5
+        real(TKG)           , intent(inout) , contiguous        :: covB(:,:)
+        real(TKG)           , intent(in)    , contiguous        :: covA(:,:)
+        real(TKG)           , intent(in)    , contiguous        :: meanDiff(:)
+        real(TKG)           , intent(in)                        :: fracA
         type(lowDia_type)   , intent(in)                        :: subset
     end subroutine
 #endif
@@ -7725,11 +7725,11 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovMergedOld_RDP_XLD_RK4
 #endif
-        use pm_kind, only: TKC => RK4
-        real(TKC)           , intent(inout) , contiguous        :: covB(:,:)
-        real(TKC)           , intent(in)    , contiguous        :: covA(:,:)
-        real(TKC)           , intent(in)    , contiguous        :: meanDiff(:)
-        real(TKC)           , intent(in)                        :: fracA
+        use pm_kind, only: TKG => RK4
+        real(TKG)           , intent(inout) , contiguous        :: covB(:,:)
+        real(TKG)           , intent(in)    , contiguous        :: covA(:,:)
+        real(TKG)           , intent(in)    , contiguous        :: meanDiff(:)
+        real(TKG)           , intent(in)                        :: fracA
         type(lowDia_type)   , intent(in)                        :: subset
     end subroutine
 #endif
@@ -7739,11 +7739,11 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovMergedOld_RDP_XLD_RK3
 #endif
-        use pm_kind, only: TKC => RK3
-        real(TKC)           , intent(inout) , contiguous        :: covB(:,:)
-        real(TKC)           , intent(in)    , contiguous        :: covA(:,:)
-        real(TKC)           , intent(in)    , contiguous        :: meanDiff(:)
-        real(TKC)           , intent(in)                        :: fracA
+        use pm_kind, only: TKG => RK3
+        real(TKG)           , intent(inout) , contiguous        :: covB(:,:)
+        real(TKG)           , intent(in)    , contiguous        :: covA(:,:)
+        real(TKG)           , intent(in)    , contiguous        :: meanDiff(:)
+        real(TKG)           , intent(in)                        :: fracA
         type(lowDia_type)   , intent(in)                        :: subset
     end subroutine
 #endif
@@ -7753,11 +7753,11 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovMergedOld_RDP_XLD_RK2
 #endif
-        use pm_kind, only: TKC => RK2
-        real(TKC)           , intent(inout) , contiguous        :: covB(:,:)
-        real(TKC)           , intent(in)    , contiguous        :: covA(:,:)
-        real(TKC)           , intent(in)    , contiguous        :: meanDiff(:)
-        real(TKC)           , intent(in)                        :: fracA
+        use pm_kind, only: TKG => RK2
+        real(TKG)           , intent(inout) , contiguous        :: covB(:,:)
+        real(TKG)           , intent(in)    , contiguous        :: covA(:,:)
+        real(TKG)           , intent(in)    , contiguous        :: meanDiff(:)
+        real(TKG)           , intent(in)                        :: fracA
         type(lowDia_type)   , intent(in)                        :: subset
     end subroutine
 #endif
@@ -7767,11 +7767,11 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovMergedOld_RDP_XLD_RK1
 #endif
-        use pm_kind, only: TKC => RK1
-        real(TKC)           , intent(inout) , contiguous        :: covB(:,:)
-        real(TKC)           , intent(in)    , contiguous        :: covA(:,:)
-        real(TKC)           , intent(in)    , contiguous        :: meanDiff(:)
-        real(TKC)           , intent(in)                        :: fracA
+        use pm_kind, only: TKG => RK1
+        real(TKG)           , intent(inout) , contiguous        :: covB(:,:)
+        real(TKG)           , intent(in)    , contiguous        :: covA(:,:)
+        real(TKG)           , intent(in)    , contiguous        :: meanDiff(:)
+        real(TKG)           , intent(in)                        :: fracA
         type(lowDia_type)   , intent(in)                        :: subset
     end subroutine
 #endif
@@ -7889,11 +7889,11 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovMeanMergedNew_RDP_UXD_CK5
 #endif
-        use pm_kind, only: TKC => CK5
-        real(TKC)           , intent(in)                        :: fracA
-        complex(TKC)        , intent(in)    , contiguous        :: covA(:,:), meanA(:)
-        complex(TKC)        , intent(in)    , contiguous        :: covB(:,:), meanB(:)
-        complex(TKC)        , intent(out)   , contiguous        :: cov(:,:), mean(:)
+        use pm_kind, only: TKG => CK5
+        real(TKG)           , intent(in)                        :: fracA
+        complex(TKG)        , intent(in)    , contiguous        :: covA(:,:), meanA(:)
+        complex(TKG)        , intent(in)    , contiguous        :: covB(:,:), meanB(:)
+        complex(TKG)        , intent(out)   , contiguous        :: cov(:,:), mean(:)
         type(uppDia_type)   , intent(in)                        :: subset
     end subroutine
 #endif
@@ -7903,11 +7903,11 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovMeanMergedNew_RDP_UXD_CK4
 #endif
-        use pm_kind, only: TKC => CK4
-        real(TKC)           , intent(in)                        :: fracA
-        complex(TKC)        , intent(in)    , contiguous        :: covA(:,:), meanA(:)
-        complex(TKC)        , intent(in)    , contiguous        :: covB(:,:), meanB(:)
-        complex(TKC)        , intent(out)   , contiguous        :: cov(:,:), mean(:)
+        use pm_kind, only: TKG => CK4
+        real(TKG)           , intent(in)                        :: fracA
+        complex(TKG)        , intent(in)    , contiguous        :: covA(:,:), meanA(:)
+        complex(TKG)        , intent(in)    , contiguous        :: covB(:,:), meanB(:)
+        complex(TKG)        , intent(out)   , contiguous        :: cov(:,:), mean(:)
         type(uppDia_type)   , intent(in)                        :: subset
     end subroutine
 #endif
@@ -7917,11 +7917,11 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovMeanMergedNew_RDP_UXD_CK3
 #endif
-        use pm_kind, only: TKC => CK3
-        real(TKC)           , intent(in)                        :: fracA
-        complex(TKC)        , intent(in)    , contiguous        :: covA(:,:), meanA(:)
-        complex(TKC)        , intent(in)    , contiguous        :: covB(:,:), meanB(:)
-        complex(TKC)        , intent(out)   , contiguous        :: cov(:,:), mean(:)
+        use pm_kind, only: TKG => CK3
+        real(TKG)           , intent(in)                        :: fracA
+        complex(TKG)        , intent(in)    , contiguous        :: covA(:,:), meanA(:)
+        complex(TKG)        , intent(in)    , contiguous        :: covB(:,:), meanB(:)
+        complex(TKG)        , intent(out)   , contiguous        :: cov(:,:), mean(:)
         type(uppDia_type)   , intent(in)                        :: subset
     end subroutine
 #endif
@@ -7931,11 +7931,11 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovMeanMergedNew_RDP_UXD_CK2
 #endif
-        use pm_kind, only: TKC => CK2
-        real(TKC)           , intent(in)                        :: fracA
-        complex(TKC)        , intent(in)    , contiguous        :: covA(:,:), meanA(:)
-        complex(TKC)        , intent(in)    , contiguous        :: covB(:,:), meanB(:)
-        complex(TKC)        , intent(out)   , contiguous        :: cov(:,:), mean(:)
+        use pm_kind, only: TKG => CK2
+        real(TKG)           , intent(in)                        :: fracA
+        complex(TKG)        , intent(in)    , contiguous        :: covA(:,:), meanA(:)
+        complex(TKG)        , intent(in)    , contiguous        :: covB(:,:), meanB(:)
+        complex(TKG)        , intent(out)   , contiguous        :: cov(:,:), mean(:)
         type(uppDia_type)   , intent(in)                        :: subset
     end subroutine
 #endif
@@ -7945,11 +7945,11 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovMeanMergedNew_RDP_UXD_CK1
 #endif
-        use pm_kind, only: TKC => CK1
-        real(TKC)           , intent(in)                        :: fracA
-        complex(TKC)        , intent(in)    , contiguous        :: covA(:,:), meanA(:)
-        complex(TKC)        , intent(in)    , contiguous        :: covB(:,:), meanB(:)
-        complex(TKC)        , intent(out)   , contiguous        :: cov(:,:), mean(:)
+        use pm_kind, only: TKG => CK1
+        real(TKG)           , intent(in)                        :: fracA
+        complex(TKG)        , intent(in)    , contiguous        :: covA(:,:), meanA(:)
+        complex(TKG)        , intent(in)    , contiguous        :: covB(:,:), meanB(:)
+        complex(TKG)        , intent(out)   , contiguous        :: cov(:,:), mean(:)
         type(uppDia_type)   , intent(in)                        :: subset
     end subroutine
 #endif
@@ -7961,11 +7961,11 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovMeanMergedNew_RDP_UXD_RK5
 #endif
-        use pm_kind, only: TKC => RK5
-        real(TKC)           , intent(in)                        :: fracA
-        real(TKC)           , intent(in)    , contiguous        :: covA(:,:), meanA(:)
-        real(TKC)           , intent(in)    , contiguous        :: covB(:,:), meanB(:)
-        real(TKC)           , intent(out)   , contiguous        :: cov(:,:), mean(:)
+        use pm_kind, only: TKG => RK5
+        real(TKG)           , intent(in)                        :: fracA
+        real(TKG)           , intent(in)    , contiguous        :: covA(:,:), meanA(:)
+        real(TKG)           , intent(in)    , contiguous        :: covB(:,:), meanB(:)
+        real(TKG)           , intent(out)   , contiguous        :: cov(:,:), mean(:)
         type(uppDia_type)   , intent(in)                        :: subset
     end subroutine
 #endif
@@ -7975,11 +7975,11 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovMeanMergedNew_RDP_UXD_RK4
 #endif
-        use pm_kind, only: TKC => RK4
-        real(TKC)           , intent(in)                        :: fracA
-        real(TKC)           , intent(in)    , contiguous        :: covA(:,:), meanA(:)
-        real(TKC)           , intent(in)    , contiguous        :: covB(:,:), meanB(:)
-        real(TKC)           , intent(out)   , contiguous        :: cov(:,:), mean(:)
+        use pm_kind, only: TKG => RK4
+        real(TKG)           , intent(in)                        :: fracA
+        real(TKG)           , intent(in)    , contiguous        :: covA(:,:), meanA(:)
+        real(TKG)           , intent(in)    , contiguous        :: covB(:,:), meanB(:)
+        real(TKG)           , intent(out)   , contiguous        :: cov(:,:), mean(:)
         type(uppDia_type)   , intent(in)                        :: subset
     end subroutine
 #endif
@@ -7989,11 +7989,11 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovMeanMergedNew_RDP_UXD_RK3
 #endif
-        use pm_kind, only: TKC => RK3
-        real(TKC)           , intent(in)                        :: fracA
-        real(TKC)           , intent(in)    , contiguous        :: covA(:,:), meanA(:)
-        real(TKC)           , intent(in)    , contiguous        :: covB(:,:), meanB(:)
-        real(TKC)           , intent(out)   , contiguous        :: cov(:,:), mean(:)
+        use pm_kind, only: TKG => RK3
+        real(TKG)           , intent(in)                        :: fracA
+        real(TKG)           , intent(in)    , contiguous        :: covA(:,:), meanA(:)
+        real(TKG)           , intent(in)    , contiguous        :: covB(:,:), meanB(:)
+        real(TKG)           , intent(out)   , contiguous        :: cov(:,:), mean(:)
         type(uppDia_type)   , intent(in)                        :: subset
     end subroutine
 #endif
@@ -8003,11 +8003,11 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovMeanMergedNew_RDP_UXD_RK2
 #endif
-        use pm_kind, only: TKC => RK2
-        real(TKC)           , intent(in)                        :: fracA
-        real(TKC)           , intent(in)    , contiguous        :: covA(:,:), meanA(:)
-        real(TKC)           , intent(in)    , contiguous        :: covB(:,:), meanB(:)
-        real(TKC)           , intent(out)   , contiguous        :: cov(:,:), mean(:)
+        use pm_kind, only: TKG => RK2
+        real(TKG)           , intent(in)                        :: fracA
+        real(TKG)           , intent(in)    , contiguous        :: covA(:,:), meanA(:)
+        real(TKG)           , intent(in)    , contiguous        :: covB(:,:), meanB(:)
+        real(TKG)           , intent(out)   , contiguous        :: cov(:,:), mean(:)
         type(uppDia_type)   , intent(in)                        :: subset
     end subroutine
 #endif
@@ -8017,11 +8017,11 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovMeanMergedNew_RDP_UXD_RK1
 #endif
-        use pm_kind, only: TKC => RK1
-        real(TKC)           , intent(in)                        :: fracA
-        real(TKC)           , intent(in)    , contiguous        :: covA(:,:), meanA(:)
-        real(TKC)           , intent(in)    , contiguous        :: covB(:,:), meanB(:)
-        real(TKC)           , intent(out)   , contiguous        :: cov(:,:), mean(:)
+        use pm_kind, only: TKG => RK1
+        real(TKG)           , intent(in)                        :: fracA
+        real(TKG)           , intent(in)    , contiguous        :: covA(:,:), meanA(:)
+        real(TKG)           , intent(in)    , contiguous        :: covB(:,:), meanB(:)
+        real(TKG)           , intent(out)   , contiguous        :: cov(:,:), mean(:)
         type(uppDia_type)   , intent(in)                        :: subset
     end subroutine
 #endif
@@ -8041,11 +8041,11 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovMeanMergedNew_RDP_XLD_CK5
 #endif
-        use pm_kind, only: TKC => CK5
-        real(TKC)           , intent(in)                        :: fracA
-        complex(TKC)        , intent(in)    , contiguous        :: covA(:,:), meanA(:)
-        complex(TKC)        , intent(in)    , contiguous        :: covB(:,:), meanB(:)
-        complex(TKC)        , intent(out)   , contiguous        :: cov(:,:), mean(:)
+        use pm_kind, only: TKG => CK5
+        real(TKG)           , intent(in)                        :: fracA
+        complex(TKG)        , intent(in)    , contiguous        :: covA(:,:), meanA(:)
+        complex(TKG)        , intent(in)    , contiguous        :: covB(:,:), meanB(:)
+        complex(TKG)        , intent(out)   , contiguous        :: cov(:,:), mean(:)
         type(lowDia_type)   , intent(in)                        :: subset
     end subroutine
 #endif
@@ -8055,11 +8055,11 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovMeanMergedNew_RDP_XLD_CK4
 #endif
-        use pm_kind, only: TKC => CK4
-        real(TKC)           , intent(in)                        :: fracA
-        complex(TKC)        , intent(in)    , contiguous        :: covA(:,:), meanA(:)
-        complex(TKC)        , intent(in)    , contiguous        :: covB(:,:), meanB(:)
-        complex(TKC)        , intent(out)   , contiguous        :: cov(:,:), mean(:)
+        use pm_kind, only: TKG => CK4
+        real(TKG)           , intent(in)                        :: fracA
+        complex(TKG)        , intent(in)    , contiguous        :: covA(:,:), meanA(:)
+        complex(TKG)        , intent(in)    , contiguous        :: covB(:,:), meanB(:)
+        complex(TKG)        , intent(out)   , contiguous        :: cov(:,:), mean(:)
         type(lowDia_type)   , intent(in)                        :: subset
     end subroutine
 #endif
@@ -8069,11 +8069,11 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovMeanMergedNew_RDP_XLD_CK3
 #endif
-        use pm_kind, only: TKC => CK3
-        real(TKC)           , intent(in)                        :: fracA
-        complex(TKC)        , intent(in)    , contiguous        :: covA(:,:), meanA(:)
-        complex(TKC)        , intent(in)    , contiguous        :: covB(:,:), meanB(:)
-        complex(TKC)        , intent(out)   , contiguous        :: cov(:,:), mean(:)
+        use pm_kind, only: TKG => CK3
+        real(TKG)           , intent(in)                        :: fracA
+        complex(TKG)        , intent(in)    , contiguous        :: covA(:,:), meanA(:)
+        complex(TKG)        , intent(in)    , contiguous        :: covB(:,:), meanB(:)
+        complex(TKG)        , intent(out)   , contiguous        :: cov(:,:), mean(:)
         type(lowDia_type)   , intent(in)                        :: subset
     end subroutine
 #endif
@@ -8083,11 +8083,11 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovMeanMergedNew_RDP_XLD_CK2
 #endif
-        use pm_kind, only: TKC => CK2
-        real(TKC)           , intent(in)                        :: fracA
-        complex(TKC)        , intent(in)    , contiguous        :: covA(:,:), meanA(:)
-        complex(TKC)        , intent(in)    , contiguous        :: covB(:,:), meanB(:)
-        complex(TKC)        , intent(out)   , contiguous        :: cov(:,:), mean(:)
+        use pm_kind, only: TKG => CK2
+        real(TKG)           , intent(in)                        :: fracA
+        complex(TKG)        , intent(in)    , contiguous        :: covA(:,:), meanA(:)
+        complex(TKG)        , intent(in)    , contiguous        :: covB(:,:), meanB(:)
+        complex(TKG)        , intent(out)   , contiguous        :: cov(:,:), mean(:)
         type(lowDia_type)   , intent(in)                        :: subset
     end subroutine
 #endif
@@ -8097,11 +8097,11 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovMeanMergedNew_RDP_XLD_CK1
 #endif
-        use pm_kind, only: TKC => CK1
-        real(TKC)           , intent(in)                        :: fracA
-        complex(TKC)        , intent(in)    , contiguous        :: covA(:,:), meanA(:)
-        complex(TKC)        , intent(in)    , contiguous        :: covB(:,:), meanB(:)
-        complex(TKC)        , intent(out)   , contiguous        :: cov(:,:), mean(:)
+        use pm_kind, only: TKG => CK1
+        real(TKG)           , intent(in)                        :: fracA
+        complex(TKG)        , intent(in)    , contiguous        :: covA(:,:), meanA(:)
+        complex(TKG)        , intent(in)    , contiguous        :: covB(:,:), meanB(:)
+        complex(TKG)        , intent(out)   , contiguous        :: cov(:,:), mean(:)
         type(lowDia_type)   , intent(in)                        :: subset
     end subroutine
 #endif
@@ -8113,11 +8113,11 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovMeanMergedNew_RDP_XLD_RK5
 #endif
-        use pm_kind, only: TKC => RK5
-        real(TKC)           , intent(in)                        :: fracA
-        real(TKC)           , intent(in)    , contiguous        :: covA(:,:), meanA(:)
-        real(TKC)           , intent(in)    , contiguous        :: covB(:,:), meanB(:)
-        real(TKC)           , intent(out)   , contiguous        :: cov(:,:), mean(:)
+        use pm_kind, only: TKG => RK5
+        real(TKG)           , intent(in)                        :: fracA
+        real(TKG)           , intent(in)    , contiguous        :: covA(:,:), meanA(:)
+        real(TKG)           , intent(in)    , contiguous        :: covB(:,:), meanB(:)
+        real(TKG)           , intent(out)   , contiguous        :: cov(:,:), mean(:)
         type(lowDia_type)   , intent(in)                        :: subset
     end subroutine
 #endif
@@ -8127,11 +8127,11 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovMeanMergedNew_RDP_XLD_RK4
 #endif
-        use pm_kind, only: TKC => RK4
-        real(TKC)           , intent(in)                        :: fracA
-        real(TKC)           , intent(in)    , contiguous        :: covA(:,:), meanA(:)
-        real(TKC)           , intent(in)    , contiguous        :: covB(:,:), meanB(:)
-        real(TKC)           , intent(out)   , contiguous        :: cov(:,:), mean(:)
+        use pm_kind, only: TKG => RK4
+        real(TKG)           , intent(in)                        :: fracA
+        real(TKG)           , intent(in)    , contiguous        :: covA(:,:), meanA(:)
+        real(TKG)           , intent(in)    , contiguous        :: covB(:,:), meanB(:)
+        real(TKG)           , intent(out)   , contiguous        :: cov(:,:), mean(:)
         type(lowDia_type)   , intent(in)                        :: subset
     end subroutine
 #endif
@@ -8141,11 +8141,11 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovMeanMergedNew_RDP_XLD_RK3
 #endif
-        use pm_kind, only: TKC => RK3
-        real(TKC)           , intent(in)                        :: fracA
-        real(TKC)           , intent(in)    , contiguous        :: covA(:,:), meanA(:)
-        real(TKC)           , intent(in)    , contiguous        :: covB(:,:), meanB(:)
-        real(TKC)           , intent(out)   , contiguous        :: cov(:,:), mean(:)
+        use pm_kind, only: TKG => RK3
+        real(TKG)           , intent(in)                        :: fracA
+        real(TKG)           , intent(in)    , contiguous        :: covA(:,:), meanA(:)
+        real(TKG)           , intent(in)    , contiguous        :: covB(:,:), meanB(:)
+        real(TKG)           , intent(out)   , contiguous        :: cov(:,:), mean(:)
         type(lowDia_type)   , intent(in)                        :: subset
     end subroutine
 #endif
@@ -8155,11 +8155,11 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovMeanMergedNew_RDP_XLD_RK2
 #endif
-        use pm_kind, only: TKC => RK2
-        real(TKC)           , intent(in)                        :: fracA
-        real(TKC)           , intent(in)    , contiguous        :: covA(:,:), meanA(:)
-        real(TKC)           , intent(in)    , contiguous        :: covB(:,:), meanB(:)
-        real(TKC)           , intent(out)   , contiguous        :: cov(:,:), mean(:)
+        use pm_kind, only: TKG => RK2
+        real(TKG)           , intent(in)                        :: fracA
+        real(TKG)           , intent(in)    , contiguous        :: covA(:,:), meanA(:)
+        real(TKG)           , intent(in)    , contiguous        :: covB(:,:), meanB(:)
+        real(TKG)           , intent(out)   , contiguous        :: cov(:,:), mean(:)
         type(lowDia_type)   , intent(in)                        :: subset
     end subroutine
 #endif
@@ -8169,11 +8169,11 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovMeanMergedNew_RDP_XLD_RK1
 #endif
-        use pm_kind, only: TKC => RK1
-        real(TKC)           , intent(in)                        :: fracA
-        real(TKC)           , intent(in)    , contiguous        :: covA(:,:), meanA(:)
-        real(TKC)           , intent(in)    , contiguous        :: covB(:,:), meanB(:)
-        real(TKC)           , intent(out)   , contiguous        :: cov(:,:), mean(:)
+        use pm_kind, only: TKG => RK1
+        real(TKG)           , intent(in)                        :: fracA
+        real(TKG)           , intent(in)    , contiguous        :: covA(:,:), meanA(:)
+        real(TKG)           , intent(in)    , contiguous        :: covB(:,:), meanB(:)
+        real(TKG)           , intent(out)   , contiguous        :: cov(:,:), mean(:)
         type(lowDia_type)   , intent(in)                        :: subset
     end subroutine
 #endif
@@ -8193,10 +8193,10 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovMeanMergedOld_RDP_UXD_CK5
 #endif
-        use pm_kind, only: TKC => CK5
-        complex(TKC)        , intent(inout) , contiguous        :: covB(:,:), meanB(:)
-        complex(TKC)        , intent(in)    , contiguous        :: covA(:,:), meanA(:)
-        real(TKC)           , intent(in)                        :: fracA
+        use pm_kind, only: TKG => CK5
+        complex(TKG)        , intent(inout) , contiguous        :: covB(:,:), meanB(:)
+        complex(TKG)        , intent(in)    , contiguous        :: covA(:,:), meanA(:)
+        real(TKG)           , intent(in)                        :: fracA
         type(uppDia_type)   , intent(in)                        :: subset
     end subroutine
 #endif
@@ -8206,10 +8206,10 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovMeanMergedOld_RDP_UXD_CK4
 #endif
-        use pm_kind, only: TKC => CK4
-        complex(TKC)        , intent(inout) , contiguous        :: covB(:,:), meanB(:)
-        complex(TKC)        , intent(in)    , contiguous        :: covA(:,:), meanA(:)
-        real(TKC)           , intent(in)                        :: fracA
+        use pm_kind, only: TKG => CK4
+        complex(TKG)        , intent(inout) , contiguous        :: covB(:,:), meanB(:)
+        complex(TKG)        , intent(in)    , contiguous        :: covA(:,:), meanA(:)
+        real(TKG)           , intent(in)                        :: fracA
         type(uppDia_type)   , intent(in)                        :: subset
     end subroutine
 #endif
@@ -8219,10 +8219,10 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovMeanMergedOld_RDP_UXD_CK3
 #endif
-        use pm_kind, only: TKC => CK3
-        complex(TKC)        , intent(inout) , contiguous        :: covB(:,:), meanB(:)
-        complex(TKC)        , intent(in)    , contiguous        :: covA(:,:), meanA(:)
-        real(TKC)           , intent(in)                        :: fracA
+        use pm_kind, only: TKG => CK3
+        complex(TKG)        , intent(inout) , contiguous        :: covB(:,:), meanB(:)
+        complex(TKG)        , intent(in)    , contiguous        :: covA(:,:), meanA(:)
+        real(TKG)           , intent(in)                        :: fracA
         type(uppDia_type)   , intent(in)                        :: subset
     end subroutine
 #endif
@@ -8232,10 +8232,10 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovMeanMergedOld_RDP_UXD_CK2
 #endif
-        use pm_kind, only: TKC => CK2
-        complex(TKC)        , intent(inout) , contiguous        :: covB(:,:), meanB(:)
-        complex(TKC)        , intent(in)    , contiguous        :: covA(:,:), meanA(:)
-        real(TKC)           , intent(in)                        :: fracA
+        use pm_kind, only: TKG => CK2
+        complex(TKG)        , intent(inout) , contiguous        :: covB(:,:), meanB(:)
+        complex(TKG)        , intent(in)    , contiguous        :: covA(:,:), meanA(:)
+        real(TKG)           , intent(in)                        :: fracA
         type(uppDia_type)   , intent(in)                        :: subset
     end subroutine
 #endif
@@ -8245,10 +8245,10 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovMeanMergedOld_RDP_UXD_CK1
 #endif
-        use pm_kind, only: TKC => CK1
-        complex(TKC)        , intent(inout) , contiguous        :: covB(:,:), meanB(:)
-        complex(TKC)        , intent(in)    , contiguous        :: covA(:,:), meanA(:)
-        real(TKC)           , intent(in)                        :: fracA
+        use pm_kind, only: TKG => CK1
+        complex(TKG)        , intent(inout) , contiguous        :: covB(:,:), meanB(:)
+        complex(TKG)        , intent(in)    , contiguous        :: covA(:,:), meanA(:)
+        real(TKG)           , intent(in)                        :: fracA
         type(uppDia_type)   , intent(in)                        :: subset
     end subroutine
 #endif
@@ -8260,10 +8260,10 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovMeanMergedOld_RDP_UXD_RK5
 #endif
-        use pm_kind, only: TKC => RK5
-        real(TKC)           , intent(inout) , contiguous        :: covB(:,:), meanB(:)
-        real(TKC)           , intent(in)    , contiguous        :: covA(:,:), meanA(:)
-        real(TKC)           , intent(in)                        :: fracA
+        use pm_kind, only: TKG => RK5
+        real(TKG)           , intent(inout) , contiguous        :: covB(:,:), meanB(:)
+        real(TKG)           , intent(in)    , contiguous        :: covA(:,:), meanA(:)
+        real(TKG)           , intent(in)                        :: fracA
         type(uppDia_type)   , intent(in)                        :: subset
     end subroutine
 #endif
@@ -8273,10 +8273,10 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovMeanMergedOld_RDP_UXD_RK4
 #endif
-        use pm_kind, only: TKC => RK4
-        real(TKC)           , intent(inout) , contiguous        :: covB(:,:), meanB(:)
-        real(TKC)           , intent(in)    , contiguous        :: covA(:,:), meanA(:)
-        real(TKC)           , intent(in)                        :: fracA
+        use pm_kind, only: TKG => RK4
+        real(TKG)           , intent(inout) , contiguous        :: covB(:,:), meanB(:)
+        real(TKG)           , intent(in)    , contiguous        :: covA(:,:), meanA(:)
+        real(TKG)           , intent(in)                        :: fracA
         type(uppDia_type)   , intent(in)                        :: subset
     end subroutine
 #endif
@@ -8286,10 +8286,10 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovMeanMergedOld_RDP_UXD_RK3
 #endif
-        use pm_kind, only: TKC => RK3
-        real(TKC)           , intent(inout) , contiguous        :: covB(:,:), meanB(:)
-        real(TKC)           , intent(in)    , contiguous        :: covA(:,:), meanA(:)
-        real(TKC)           , intent(in)                        :: fracA
+        use pm_kind, only: TKG => RK3
+        real(TKG)           , intent(inout) , contiguous        :: covB(:,:), meanB(:)
+        real(TKG)           , intent(in)    , contiguous        :: covA(:,:), meanA(:)
+        real(TKG)           , intent(in)                        :: fracA
         type(uppDia_type)   , intent(in)                        :: subset
     end subroutine
 #endif
@@ -8299,10 +8299,10 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovMeanMergedOld_RDP_UXD_RK2
 #endif
-        use pm_kind, only: TKC => RK2
-        real(TKC)           , intent(inout) , contiguous        :: covB(:,:), meanB(:)
-        real(TKC)           , intent(in)    , contiguous        :: covA(:,:), meanA(:)
-        real(TKC)           , intent(in)                        :: fracA
+        use pm_kind, only: TKG => RK2
+        real(TKG)           , intent(inout) , contiguous        :: covB(:,:), meanB(:)
+        real(TKG)           , intent(in)    , contiguous        :: covA(:,:), meanA(:)
+        real(TKG)           , intent(in)                        :: fracA
         type(uppDia_type)   , intent(in)                        :: subset
     end subroutine
 #endif
@@ -8312,10 +8312,10 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovMeanMergedOld_RDP_UXD_RK1
 #endif
-        use pm_kind, only: TKC => RK1
-        real(TKC)           , intent(inout) , contiguous        :: covB(:,:), meanB(:)
-        real(TKC)           , intent(in)    , contiguous        :: covA(:,:), meanA(:)
-        real(TKC)           , intent(in)                        :: fracA
+        use pm_kind, only: TKG => RK1
+        real(TKG)           , intent(inout) , contiguous        :: covB(:,:), meanB(:)
+        real(TKG)           , intent(in)    , contiguous        :: covA(:,:), meanA(:)
+        real(TKG)           , intent(in)                        :: fracA
         type(uppDia_type)   , intent(in)                        :: subset
     end subroutine
 #endif
@@ -8335,10 +8335,10 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovMeanMergedOld_RDP_XLD_CK5
 #endif
-        use pm_kind, only: TKC => CK5
-        complex(TKC)        , intent(inout) , contiguous        :: covB(:,:), meanB(:)
-        complex(TKC)        , intent(in)    , contiguous        :: covA(:,:), meanA(:)
-        real(TKC)           , intent(in)                        :: fracA
+        use pm_kind, only: TKG => CK5
+        complex(TKG)        , intent(inout) , contiguous        :: covB(:,:), meanB(:)
+        complex(TKG)        , intent(in)    , contiguous        :: covA(:,:), meanA(:)
+        real(TKG)           , intent(in)                        :: fracA
         type(lowDia_type)   , intent(in)                        :: subset
     end subroutine
 #endif
@@ -8348,10 +8348,10 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovMeanMergedOld_RDP_XLD_CK4
 #endif
-        use pm_kind, only: TKC => CK4
-        complex(TKC)        , intent(inout) , contiguous        :: covB(:,:), meanB(:)
-        complex(TKC)        , intent(in)    , contiguous        :: covA(:,:), meanA(:)
-        real(TKC)           , intent(in)                        :: fracA
+        use pm_kind, only: TKG => CK4
+        complex(TKG)        , intent(inout) , contiguous        :: covB(:,:), meanB(:)
+        complex(TKG)        , intent(in)    , contiguous        :: covA(:,:), meanA(:)
+        real(TKG)           , intent(in)                        :: fracA
         type(lowDia_type)   , intent(in)                        :: subset
     end subroutine
 #endif
@@ -8361,10 +8361,10 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovMeanMergedOld_RDP_XLD_CK3
 #endif
-        use pm_kind, only: TKC => CK3
-        complex(TKC)        , intent(inout) , contiguous        :: covB(:,:), meanB(:)
-        complex(TKC)        , intent(in)    , contiguous        :: covA(:,:), meanA(:)
-        real(TKC)           , intent(in)                        :: fracA
+        use pm_kind, only: TKG => CK3
+        complex(TKG)        , intent(inout) , contiguous        :: covB(:,:), meanB(:)
+        complex(TKG)        , intent(in)    , contiguous        :: covA(:,:), meanA(:)
+        real(TKG)           , intent(in)                        :: fracA
         type(lowDia_type)   , intent(in)                        :: subset
     end subroutine
 #endif
@@ -8374,10 +8374,10 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovMeanMergedOld_RDP_XLD_CK2
 #endif
-        use pm_kind, only: TKC => CK2
-        complex(TKC)        , intent(inout) , contiguous        :: covB(:,:), meanB(:)
-        complex(TKC)        , intent(in)    , contiguous        :: covA(:,:), meanA(:)
-        real(TKC)           , intent(in)                        :: fracA
+        use pm_kind, only: TKG => CK2
+        complex(TKG)        , intent(inout) , contiguous        :: covB(:,:), meanB(:)
+        complex(TKG)        , intent(in)    , contiguous        :: covA(:,:), meanA(:)
+        real(TKG)           , intent(in)                        :: fracA
         type(lowDia_type)   , intent(in)                        :: subset
     end subroutine
 #endif
@@ -8387,10 +8387,10 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovMeanMergedOld_RDP_XLD_CK1
 #endif
-        use pm_kind, only: TKC => CK1
-        complex(TKC)        , intent(inout) , contiguous        :: covB(:,:), meanB(:)
-        complex(TKC)        , intent(in)    , contiguous        :: covA(:,:), meanA(:)
-        real(TKC)           , intent(in)                        :: fracA
+        use pm_kind, only: TKG => CK1
+        complex(TKG)        , intent(inout) , contiguous        :: covB(:,:), meanB(:)
+        complex(TKG)        , intent(in)    , contiguous        :: covA(:,:), meanA(:)
+        real(TKG)           , intent(in)                        :: fracA
         type(lowDia_type)   , intent(in)                        :: subset
     end subroutine
 #endif
@@ -8402,10 +8402,10 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovMeanMergedOld_RDP_XLD_RK5
 #endif
-        use pm_kind, only: TKC => RK5
-        real(TKC)           , intent(inout) , contiguous        :: covB(:,:), meanB(:)
-        real(TKC)           , intent(in)    , contiguous        :: covA(:,:), meanA(:)
-        real(TKC)           , intent(in)                        :: fracA
+        use pm_kind, only: TKG => RK5
+        real(TKG)           , intent(inout) , contiguous        :: covB(:,:), meanB(:)
+        real(TKG)           , intent(in)    , contiguous        :: covA(:,:), meanA(:)
+        real(TKG)           , intent(in)                        :: fracA
         type(lowDia_type)   , intent(in)                        :: subset
     end subroutine
 #endif
@@ -8415,10 +8415,10 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovMeanMergedOld_RDP_XLD_RK4
 #endif
-        use pm_kind, only: TKC => RK4
-        real(TKC)           , intent(inout) , contiguous        :: covB(:,:), meanB(:)
-        real(TKC)           , intent(in)    , contiguous        :: covA(:,:), meanA(:)
-        real(TKC)           , intent(in)                        :: fracA
+        use pm_kind, only: TKG => RK4
+        real(TKG)           , intent(inout) , contiguous        :: covB(:,:), meanB(:)
+        real(TKG)           , intent(in)    , contiguous        :: covA(:,:), meanA(:)
+        real(TKG)           , intent(in)                        :: fracA
         type(lowDia_type)   , intent(in)                        :: subset
     end subroutine
 #endif
@@ -8428,10 +8428,10 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovMeanMergedOld_RDP_XLD_RK3
 #endif
-        use pm_kind, only: TKC => RK3
-        real(TKC)           , intent(inout) , contiguous        :: covB(:,:), meanB(:)
-        real(TKC)           , intent(in)    , contiguous        :: covA(:,:), meanA(:)
-        real(TKC)           , intent(in)                        :: fracA
+        use pm_kind, only: TKG => RK3
+        real(TKG)           , intent(inout) , contiguous        :: covB(:,:), meanB(:)
+        real(TKG)           , intent(in)    , contiguous        :: covA(:,:), meanA(:)
+        real(TKG)           , intent(in)                        :: fracA
         type(lowDia_type)   , intent(in)                        :: subset
     end subroutine
 #endif
@@ -8441,10 +8441,10 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovMeanMergedOld_RDP_XLD_RK2
 #endif
-        use pm_kind, only: TKC => RK2
-        real(TKC)           , intent(inout) , contiguous        :: covB(:,:), meanB(:)
-        real(TKC)           , intent(in)    , contiguous        :: covA(:,:), meanA(:)
-        real(TKC)           , intent(in)                        :: fracA
+        use pm_kind, only: TKG => RK2
+        real(TKG)           , intent(inout) , contiguous        :: covB(:,:), meanB(:)
+        real(TKG)           , intent(in)    , contiguous        :: covA(:,:), meanA(:)
+        real(TKG)           , intent(in)                        :: fracA
         type(lowDia_type)   , intent(in)                        :: subset
     end subroutine
 #endif
@@ -8454,10 +8454,10 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovMeanMergedOld_RDP_XLD_RK1
 #endif
-        use pm_kind, only: TKC => RK1
-        real(TKC)           , intent(inout) , contiguous        :: covB(:,:), meanB(:)
-        real(TKC)           , intent(in)    , contiguous        :: covA(:,:), meanA(:)
-        real(TKC)           , intent(in)                        :: fracA
+        use pm_kind, only: TKG => RK1
+        real(TKG)           , intent(inout) , contiguous        :: covB(:,:), meanB(:)
+        real(TKG)           , intent(in)    , contiguous        :: covA(:,:), meanA(:)
+        real(TKG)           , intent(in)                        :: fracA
         type(lowDia_type)   , intent(in)                        :: subset
     end subroutine
 #endif
@@ -8559,10 +8559,10 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovUpdatedOld_RDP_UXD_CK5
 #endif
-        use pm_kind, only: TKC => CK5
-        complex(TKC)        , intent(inout) , contiguous        :: covA(:,:)
-        complex(TKC)        , intent(in)    , contiguous        :: meanDiff(:)
-        real(TKC)           , intent(in)                        :: fracA
+        use pm_kind, only: TKG => CK5
+        complex(TKG)        , intent(inout) , contiguous        :: covA(:,:)
+        complex(TKG)        , intent(in)    , contiguous        :: meanDiff(:)
+        real(TKG)           , intent(in)                        :: fracA
         type(uppDia_type)   , intent(in)                        :: subset
     end subroutine
 #endif
@@ -8572,10 +8572,10 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovUpdatedOld_RDP_UXD_CK4
 #endif
-        use pm_kind, only: TKC => CK4
-        complex(TKC)        , intent(inout) , contiguous        :: covA(:,:)
-        complex(TKC)        , intent(in)    , contiguous        :: meanDiff(:)
-        real(TKC)           , intent(in)                        :: fracA
+        use pm_kind, only: TKG => CK4
+        complex(TKG)        , intent(inout) , contiguous        :: covA(:,:)
+        complex(TKG)        , intent(in)    , contiguous        :: meanDiff(:)
+        real(TKG)           , intent(in)                        :: fracA
         type(uppDia_type)   , intent(in)                        :: subset
     end subroutine
 #endif
@@ -8585,10 +8585,10 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovUpdatedOld_RDP_UXD_CK3
 #endif
-        use pm_kind, only: TKC => CK3
-        complex(TKC)        , intent(inout) , contiguous        :: covA(:,:)
-        complex(TKC)        , intent(in)    , contiguous        :: meanDiff(:)
-        real(TKC)           , intent(in)                        :: fracA
+        use pm_kind, only: TKG => CK3
+        complex(TKG)        , intent(inout) , contiguous        :: covA(:,:)
+        complex(TKG)        , intent(in)    , contiguous        :: meanDiff(:)
+        real(TKG)           , intent(in)                        :: fracA
         type(uppDia_type)   , intent(in)                        :: subset
     end subroutine
 #endif
@@ -8598,10 +8598,10 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovUpdatedOld_RDP_UXD_CK2
 #endif
-        use pm_kind, only: TKC => CK2
-        complex(TKC)        , intent(inout) , contiguous        :: covA(:,:)
-        complex(TKC)        , intent(in)    , contiguous        :: meanDiff(:)
-        real(TKC)           , intent(in)                        :: fracA
+        use pm_kind, only: TKG => CK2
+        complex(TKG)        , intent(inout) , contiguous        :: covA(:,:)
+        complex(TKG)        , intent(in)    , contiguous        :: meanDiff(:)
+        real(TKG)           , intent(in)                        :: fracA
         type(uppDia_type)   , intent(in)                        :: subset
     end subroutine
 #endif
@@ -8611,10 +8611,10 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovUpdatedOld_RDP_UXD_CK1
 #endif
-        use pm_kind, only: TKC => CK1
-        complex(TKC)        , intent(inout) , contiguous        :: covA(:,:)
-        complex(TKC)        , intent(in)    , contiguous        :: meanDiff(:)
-        real(TKC)           , intent(in)                        :: fracA
+        use pm_kind, only: TKG => CK1
+        complex(TKG)        , intent(inout) , contiguous        :: covA(:,:)
+        complex(TKG)        , intent(in)    , contiguous        :: meanDiff(:)
+        real(TKG)           , intent(in)                        :: fracA
         type(uppDia_type)   , intent(in)                        :: subset
     end subroutine
 #endif
@@ -8626,11 +8626,11 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovUpdatedOld_RDP_UXD_RK5
 #endif
-        use pm_kind, only: TKC => RK5
-        real(TKC)           , intent(inout) , contiguous        :: covA(:,:)
-        real(TKC)           , intent(in)    , contiguous        :: covA(:,:)
-        real(TKC)           , intent(in)    , contiguous        :: meanDiff(:)
-        real(TKC)           , intent(in)                        :: fracA
+        use pm_kind, only: TKG => RK5
+        real(TKG)           , intent(inout) , contiguous        :: covA(:,:)
+        real(TKG)           , intent(in)    , contiguous        :: covA(:,:)
+        real(TKG)           , intent(in)    , contiguous        :: meanDiff(:)
+        real(TKG)           , intent(in)                        :: fracA
         type(uppDia_type)   , intent(in)                        :: subset
     end subroutine
 #endif
@@ -8640,10 +8640,10 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovUpdatedOld_RDP_UXD_RK4
 #endif
-        use pm_kind, only: TKC => RK4
-        real(TKC)           , intent(inout) , contiguous        :: covA(:,:)
-        real(TKC)           , intent(in)    , contiguous        :: meanDiff(:)
-        real(TKC)           , intent(in)                        :: fracA
+        use pm_kind, only: TKG => RK4
+        real(TKG)           , intent(inout) , contiguous        :: covA(:,:)
+        real(TKG)           , intent(in)    , contiguous        :: meanDiff(:)
+        real(TKG)           , intent(in)                        :: fracA
         type(uppDia_type)   , intent(in)                        :: subset
     end subroutine
 #endif
@@ -8653,10 +8653,10 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovUpdatedOld_RDP_UXD_RK3
 #endif
-        use pm_kind, only: TKC => RK3
-        real(TKC)           , intent(inout) , contiguous        :: covA(:,:)
-        real(TKC)           , intent(in)    , contiguous        :: meanDiff(:)
-        real(TKC)           , intent(in)                        :: fracA
+        use pm_kind, only: TKG => RK3
+        real(TKG)           , intent(inout) , contiguous        :: covA(:,:)
+        real(TKG)           , intent(in)    , contiguous        :: meanDiff(:)
+        real(TKG)           , intent(in)                        :: fracA
         type(uppDia_type)   , intent(in)                        :: subset
     end subroutine
 #endif
@@ -8666,10 +8666,10 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovUpdatedOld_RDP_UXD_RK2
 #endif
-        use pm_kind, only: TKC => RK2
-        real(TKC)           , intent(inout) , contiguous        :: covA(:,:)
-        real(TKC)           , intent(in)    , contiguous        :: meanDiff(:)
-        real(TKC)           , intent(in)                        :: fracA
+        use pm_kind, only: TKG => RK2
+        real(TKG)           , intent(inout) , contiguous        :: covA(:,:)
+        real(TKG)           , intent(in)    , contiguous        :: meanDiff(:)
+        real(TKG)           , intent(in)                        :: fracA
         type(uppDia_type)   , intent(in)                        :: subset
     end subroutine
 #endif
@@ -8679,10 +8679,10 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovUpdatedOld_RDP_UXD_RK1
 #endif
-        use pm_kind, only: TKC => RK1
-        real(TKC)           , intent(inout) , contiguous        :: covA(:,:)
-        real(TKC)           , intent(in)    , contiguous        :: meanDiff(:)
-        real(TKC)           , intent(in)                        :: fracA
+        use pm_kind, only: TKG => RK1
+        real(TKG)           , intent(inout) , contiguous        :: covA(:,:)
+        real(TKG)           , intent(in)    , contiguous        :: meanDiff(:)
+        real(TKG)           , intent(in)                        :: fracA
         type(uppDia_type)   , intent(in)                        :: subset
     end subroutine
 #endif
@@ -8702,10 +8702,10 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovUpdatedOld_RDP_XLD_CK5
 #endif
-        use pm_kind, only: TKC => CK5
-        complex(TKC)        , intent(inout) , contiguous        :: covA(:,:)
-        complex(TKC)        , intent(in)    , contiguous        :: meanDiff(:)
-        real(TKC)           , intent(in)                        :: fracA
+        use pm_kind, only: TKG => CK5
+        complex(TKG)        , intent(inout) , contiguous        :: covA(:,:)
+        complex(TKG)        , intent(in)    , contiguous        :: meanDiff(:)
+        real(TKG)           , intent(in)                        :: fracA
         type(lowDia_type)   , intent(in)                        :: subset
     end subroutine
 #endif
@@ -8715,10 +8715,10 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovUpdatedOld_RDP_XLD_CK4
 #endif
-        use pm_kind, only: TKC => CK4
-        complex(TKC)        , intent(inout) , contiguous        :: covA(:,:)
-        complex(TKC)        , intent(in)    , contiguous        :: meanDiff(:)
-        real(TKC)           , intent(in)                        :: fracA
+        use pm_kind, only: TKG => CK4
+        complex(TKG)        , intent(inout) , contiguous        :: covA(:,:)
+        complex(TKG)        , intent(in)    , contiguous        :: meanDiff(:)
+        real(TKG)           , intent(in)                        :: fracA
         type(lowDia_type)   , intent(in)                        :: subset
     end subroutine
 #endif
@@ -8728,10 +8728,10 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovUpdatedOld_RDP_XLD_CK3
 #endif
-        use pm_kind, only: TKC => CK3
-        complex(TKC)        , intent(inout) , contiguous        :: covA(:,:)
-        complex(TKC)        , intent(in)    , contiguous        :: meanDiff(:)
-        real(TKC)           , intent(in)                        :: fracA
+        use pm_kind, only: TKG => CK3
+        complex(TKG)        , intent(inout) , contiguous        :: covA(:,:)
+        complex(TKG)        , intent(in)    , contiguous        :: meanDiff(:)
+        real(TKG)           , intent(in)                        :: fracA
         type(lowDia_type)   , intent(in)                        :: subset
     end subroutine
 #endif
@@ -8741,10 +8741,10 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovUpdatedOld_RDP_XLD_CK2
 #endif
-        use pm_kind, only: TKC => CK2
-        complex(TKC)        , intent(inout) , contiguous        :: covA(:,:)
-        complex(TKC)        , intent(in)    , contiguous        :: meanDiff(:)
-        real(TKC)           , intent(in)                        :: fracA
+        use pm_kind, only: TKG => CK2
+        complex(TKG)        , intent(inout) , contiguous        :: covA(:,:)
+        complex(TKG)        , intent(in)    , contiguous        :: meanDiff(:)
+        real(TKG)           , intent(in)                        :: fracA
         type(lowDia_type)   , intent(in)                        :: subset
     end subroutine
 #endif
@@ -8754,10 +8754,10 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovUpdatedOld_RDP_XLD_CK1
 #endif
-        use pm_kind, only: TKC => CK1
-        complex(TKC)        , intent(inout) , contiguous        :: covA(:,:)
-        complex(TKC)        , intent(in)    , contiguous        :: meanDiff(:)
-        real(TKC)           , intent(in)                        :: fracA
+        use pm_kind, only: TKG => CK1
+        complex(TKG)        , intent(inout) , contiguous        :: covA(:,:)
+        complex(TKG)        , intent(in)    , contiguous        :: meanDiff(:)
+        real(TKG)           , intent(in)                        :: fracA
         type(lowDia_type)   , intent(in)                        :: subset
     end subroutine
 #endif
@@ -8769,10 +8769,10 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovUpdatedOld_RDP_XLD_RK5
 #endif
-        use pm_kind, only: TKC => RK5
-        real(TKC)           , intent(inout) , contiguous        :: covA(:,:)
-        real(TKC)           , intent(in)    , contiguous        :: meanDiff(:)
-        real(TKC)           , intent(in)                        :: fracA
+        use pm_kind, only: TKG => RK5
+        real(TKG)           , intent(inout) , contiguous        :: covA(:,:)
+        real(TKG)           , intent(in)    , contiguous        :: meanDiff(:)
+        real(TKG)           , intent(in)                        :: fracA
         type(lowDia_type)   , intent(in)                        :: subset
     end subroutine
 #endif
@@ -8782,10 +8782,10 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovUpdatedOld_RDP_XLD_RK4
 #endif
-        use pm_kind, only: TKC => RK4
-        real(TKC)           , intent(inout) , contiguous        :: covA(:,:)
-        real(TKC)           , intent(in)    , contiguous        :: meanDiff(:)
-        real(TKC)           , intent(in)                        :: fracA
+        use pm_kind, only: TKG => RK4
+        real(TKG)           , intent(inout) , contiguous        :: covA(:,:)
+        real(TKG)           , intent(in)    , contiguous        :: meanDiff(:)
+        real(TKG)           , intent(in)                        :: fracA
         type(lowDia_type)   , intent(in)                        :: subset
     end subroutine
 #endif
@@ -8795,10 +8795,10 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovUpdatedOld_RDP_XLD_RK3
 #endif
-        use pm_kind, only: TKC => RK3
-        real(TKC)           , intent(inout) , contiguous        :: covA(:,:)
-        real(TKC)           , intent(in)    , contiguous        :: meanDiff(:)
-        real(TKC)           , intent(in)                        :: fracA
+        use pm_kind, only: TKG => RK3
+        real(TKG)           , intent(inout) , contiguous        :: covA(:,:)
+        real(TKG)           , intent(in)    , contiguous        :: meanDiff(:)
+        real(TKG)           , intent(in)                        :: fracA
         type(lowDia_type)   , intent(in)                        :: subset
     end subroutine
 #endif
@@ -8808,10 +8808,10 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovUpdatedOld_RDP_XLD_RK2
 #endif
-        use pm_kind, only: TKC => RK2
-        real(TKC)           , intent(inout) , contiguous        :: covA(:,:)
-        real(TKC)           , intent(in)    , contiguous        :: meanDiff(:)
-        real(TKC)           , intent(in)                        :: fracA
+        use pm_kind, only: TKG => RK2
+        real(TKG)           , intent(inout) , contiguous        :: covA(:,:)
+        real(TKG)           , intent(in)    , contiguous        :: meanDiff(:)
+        real(TKG)           , intent(in)                        :: fracA
         type(lowDia_type)   , intent(in)                        :: subset
     end subroutine
 #endif
@@ -8821,10 +8821,10 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovUpdatedOld_RDP_XLD_RK1
 #endif
-        use pm_kind, only: TKC => RK1
-        real(TKC)           , intent(inout) , contiguous        :: covA(:,:)
-        real(TKC)           , intent(in)    , contiguous        :: meanDiff(:)
-        real(TKC)           , intent(in)                        :: fracA
+        use pm_kind, only: TKG => RK1
+        real(TKG)           , intent(inout) , contiguous        :: covA(:,:)
+        real(TKG)           , intent(in)    , contiguous        :: meanDiff(:)
+        real(TKG)           , intent(in)                        :: fracA
         type(lowDia_type)   , intent(in)                        :: subset
     end subroutine
 #endif
@@ -8928,10 +8928,10 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovMeanUpdatedOld_RDP_UXD_CK5
 #endif
-        use pm_kind, only: TKC => CK5
-        real(TKC)           , intent(in)                        :: fracA
-        complex(TKC)        , intent(inout) , contiguous        :: covA(:,:), meanA(:)
-        complex(TKC)        , intent(in)    , contiguous        :: meanB(:)
+        use pm_kind, only: TKG => CK5
+        real(TKG)           , intent(in)                        :: fracA
+        complex(TKG)        , intent(inout) , contiguous        :: covA(:,:), meanA(:)
+        complex(TKG)        , intent(in)    , contiguous        :: meanB(:)
         type(uppDia_type)   , intent(in)                        :: subset
     end subroutine
 #endif
@@ -8941,10 +8941,10 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovMeanUpdatedOld_RDP_UXD_CK4
 #endif
-        use pm_kind, only: TKC => CK4
-        real(TKC)           , intent(in)                        :: fracA
-        complex(TKC)        , intent(inout) , contiguous        :: covA(:,:), meanA(:)
-        complex(TKC)        , intent(in)    , contiguous        :: meanB(:)
+        use pm_kind, only: TKG => CK4
+        real(TKG)           , intent(in)                        :: fracA
+        complex(TKG)        , intent(inout) , contiguous        :: covA(:,:), meanA(:)
+        complex(TKG)        , intent(in)    , contiguous        :: meanB(:)
         type(uppDia_type)   , intent(in)                        :: subset
     end subroutine
 #endif
@@ -8954,10 +8954,10 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovMeanUpdatedOld_RDP_UXD_CK3
 #endif
-        use pm_kind, only: TKC => CK3
-        real(TKC)           , intent(in)                        :: fracA
-        complex(TKC)        , intent(inout) , contiguous        :: covA(:,:), meanA(:)
-        complex(TKC)        , intent(in)    , contiguous        :: meanB(:)
+        use pm_kind, only: TKG => CK3
+        real(TKG)           , intent(in)                        :: fracA
+        complex(TKG)        , intent(inout) , contiguous        :: covA(:,:), meanA(:)
+        complex(TKG)        , intent(in)    , contiguous        :: meanB(:)
         type(uppDia_type)   , intent(in)                        :: subset
     end subroutine
 #endif
@@ -8967,10 +8967,10 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovMeanUpdatedOld_RDP_UXD_CK2
 #endif
-        use pm_kind, only: TKC => CK2
-        real(TKC)           , intent(in)                        :: fracA
-        complex(TKC)        , intent(inout) , contiguous        :: covA(:,:), meanA(:)
-        complex(TKC)        , intent(in)    , contiguous        :: meanB(:)
+        use pm_kind, only: TKG => CK2
+        real(TKG)           , intent(in)                        :: fracA
+        complex(TKG)        , intent(inout) , contiguous        :: covA(:,:), meanA(:)
+        complex(TKG)        , intent(in)    , contiguous        :: meanB(:)
         type(uppDia_type)   , intent(in)                        :: subset
     end subroutine
 #endif
@@ -8980,10 +8980,10 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovMeanUpdatedOld_RDP_UXD_CK1
 #endif
-        use pm_kind, only: TKC => CK1
-        real(TKC)           , intent(in)                        :: fracA
-        complex(TKC)        , intent(inout) , contiguous        :: covA(:,:), meanA(:)
-        complex(TKC)        , intent(in)    , contiguous        :: meanB(:)
+        use pm_kind, only: TKG => CK1
+        real(TKG)           , intent(in)                        :: fracA
+        complex(TKG)        , intent(inout) , contiguous        :: covA(:,:), meanA(:)
+        complex(TKG)        , intent(in)    , contiguous        :: meanB(:)
         type(uppDia_type)   , intent(in)                        :: subset
     end subroutine
 #endif
@@ -8995,10 +8995,10 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovMeanUpdatedOld_RDP_UXD_RK5
 #endif
-        use pm_kind, only: TKC => RK5
-        real(TKC)           , intent(in)                        :: fracA
-        real(TKC)           , intent(inout) , contiguous        :: covA(:,:), meanA(:)
-        real(TKC)           , intent(in)    , contiguous        :: meanB(:)
+        use pm_kind, only: TKG => RK5
+        real(TKG)           , intent(in)                        :: fracA
+        real(TKG)           , intent(inout) , contiguous        :: covA(:,:), meanA(:)
+        real(TKG)           , intent(in)    , contiguous        :: meanB(:)
         type(uppDia_type)   , intent(in)                        :: subset
     end subroutine
 #endif
@@ -9008,10 +9008,10 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovMeanUpdatedOld_RDP_UXD_RK4
 #endif
-        use pm_kind, only: TKC => RK4
-        real(TKC)           , intent(in)                        :: fracA
-        real(TKC)           , intent(inout) , contiguous        :: covA(:,:), meanA(:)
-        real(TKC)           , intent(in)    , contiguous        :: meanB(:)
+        use pm_kind, only: TKG => RK4
+        real(TKG)           , intent(in)                        :: fracA
+        real(TKG)           , intent(inout) , contiguous        :: covA(:,:), meanA(:)
+        real(TKG)           , intent(in)    , contiguous        :: meanB(:)
         type(uppDia_type)   , intent(in)                        :: subset
     end subroutine
 #endif
@@ -9021,10 +9021,10 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovMeanUpdatedOld_RDP_UXD_RK3
 #endif
-        use pm_kind, only: TKC => RK3
-        real(TKC)           , intent(in)                        :: fracA
-        real(TKC)           , intent(inout) , contiguous        :: covA(:,:), meanA(:)
-        real(TKC)           , intent(in)    , contiguous        :: meanB(:)
+        use pm_kind, only: TKG => RK3
+        real(TKG)           , intent(in)                        :: fracA
+        real(TKG)           , intent(inout) , contiguous        :: covA(:,:), meanA(:)
+        real(TKG)           , intent(in)    , contiguous        :: meanB(:)
         type(uppDia_type)   , intent(in)                        :: subset
     end subroutine
 #endif
@@ -9034,10 +9034,10 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovMeanUpdatedOld_RDP_UXD_RK2
 #endif
-        use pm_kind, only: TKC => RK2
-        real(TKC)           , intent(in)                        :: fracA
-        real(TKC)           , intent(inout) , contiguous        :: covA(:,:), meanA(:)
-        real(TKC)           , intent(in)    , contiguous        :: meanB(:)
+        use pm_kind, only: TKG => RK2
+        real(TKG)           , intent(in)                        :: fracA
+        real(TKG)           , intent(inout) , contiguous        :: covA(:,:), meanA(:)
+        real(TKG)           , intent(in)    , contiguous        :: meanB(:)
         type(uppDia_type)   , intent(in)                        :: subset
     end subroutine
 #endif
@@ -9047,10 +9047,10 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovMeanUpdatedOld_RDP_UXD_RK1
 #endif
-        use pm_kind, only: TKC => RK1
-        real(TKC)           , intent(in)                        :: fracA
-        real(TKC)           , intent(inout) , contiguous        :: covA(:,:), meanA(:)
-        real(TKC)           , intent(in)    , contiguous        :: meanB(:)
+        use pm_kind, only: TKG => RK1
+        real(TKG)           , intent(in)                        :: fracA
+        real(TKG)           , intent(inout) , contiguous        :: covA(:,:), meanA(:)
+        real(TKG)           , intent(in)    , contiguous        :: meanB(:)
         type(uppDia_type)   , intent(in)                        :: subset
     end subroutine
 #endif
@@ -9070,10 +9070,10 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovMeanUpdatedOld_RDP_XLD_CK5
 #endif
-        use pm_kind, only: TKC => CK5
-        real(TKC)           , intent(in)                        :: fracA
-        complex(TKC)        , intent(inout) , contiguous        :: covA(:,:), meanA(:)
-        complex(TKC)        , intent(in)    , contiguous        :: meanB(:)
+        use pm_kind, only: TKG => CK5
+        real(TKG)           , intent(in)                        :: fracA
+        complex(TKG)        , intent(inout) , contiguous        :: covA(:,:), meanA(:)
+        complex(TKG)        , intent(in)    , contiguous        :: meanB(:)
         type(lowDia_type)   , intent(in)                        :: subset
     end subroutine
 #endif
@@ -9083,10 +9083,10 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovMeanUpdatedOld_RDP_XLD_CK4
 #endif
-        use pm_kind, only: TKC => CK4
-        real(TKC)           , intent(in)                        :: fracA
-        complex(TKC)        , intent(inout) , contiguous        :: covA(:,:), meanA(:)
-        complex(TKC)        , intent(in)    , contiguous        :: meanB(:)
+        use pm_kind, only: TKG => CK4
+        real(TKG)           , intent(in)                        :: fracA
+        complex(TKG)        , intent(inout) , contiguous        :: covA(:,:), meanA(:)
+        complex(TKG)        , intent(in)    , contiguous        :: meanB(:)
         type(lowDia_type)   , intent(in)                        :: subset
     end subroutine
 #endif
@@ -9096,10 +9096,10 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovMeanUpdatedOld_RDP_XLD_CK3
 #endif
-        use pm_kind, only: TKC => CK3
-        real(TKC)           , intent(in)                        :: fracA
-        complex(TKC)        , intent(inout) , contiguous        :: covA(:,:), meanA(:)
-        complex(TKC)        , intent(in)    , contiguous        :: meanB(:)
+        use pm_kind, only: TKG => CK3
+        real(TKG)           , intent(in)                        :: fracA
+        complex(TKG)        , intent(inout) , contiguous        :: covA(:,:), meanA(:)
+        complex(TKG)        , intent(in)    , contiguous        :: meanB(:)
         type(lowDia_type)   , intent(in)                        :: subset
     end subroutine
 #endif
@@ -9109,10 +9109,10 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovMeanUpdatedOld_RDP_XLD_CK2
 #endif
-        use pm_kind, only: TKC => CK2
-        real(TKC)           , intent(in)                        :: fracA
-        complex(TKC)        , intent(inout) , contiguous        :: covA(:,:), meanA(:)
-        complex(TKC)        , intent(in)    , contiguous        :: meanB(:)
+        use pm_kind, only: TKG => CK2
+        real(TKG)           , intent(in)                        :: fracA
+        complex(TKG)        , intent(inout) , contiguous        :: covA(:,:), meanA(:)
+        complex(TKG)        , intent(in)    , contiguous        :: meanB(:)
         type(lowDia_type)   , intent(in)                        :: subset
     end subroutine
 #endif
@@ -9122,10 +9122,10 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovMeanUpdatedOld_RDP_XLD_CK1
 #endif
-        use pm_kind, only: TKC => CK1
-        real(TKC)           , intent(in)                        :: fracA
-        complex(TKC)        , intent(inout) , contiguous        :: covA(:,:), meanA(:)
-        complex(TKC)        , intent(in)    , contiguous        :: meanB(:)
+        use pm_kind, only: TKG => CK1
+        real(TKG)           , intent(in)                        :: fracA
+        complex(TKG)        , intent(inout) , contiguous        :: covA(:,:), meanA(:)
+        complex(TKG)        , intent(in)    , contiguous        :: meanB(:)
         type(lowDia_type)   , intent(in)                        :: subset
     end subroutine
 #endif
@@ -9137,10 +9137,10 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovMeanUpdatedOld_RDP_XLD_RK5
 #endif
-        use pm_kind, only: TKC => RK5
-        real(TKC)           , intent(in)                        :: fracA
-        real(TKC)           , intent(inout) , contiguous        :: covA(:,:), meanA(:)
-        real(TKC)           , intent(in)    , contiguous        :: meanB(:)
+        use pm_kind, only: TKG => RK5
+        real(TKG)           , intent(in)                        :: fracA
+        real(TKG)           , intent(inout) , contiguous        :: covA(:,:), meanA(:)
+        real(TKG)           , intent(in)    , contiguous        :: meanB(:)
         type(lowDia_type)   , intent(in)                        :: subset
     end subroutine
 #endif
@@ -9150,10 +9150,10 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovMeanUpdatedOld_RDP_XLD_RK4
 #endif
-        use pm_kind, only: TKC => RK4
-        real(TKC)           , intent(in)                        :: fracA
-        real(TKC)           , intent(inout) , contiguous        :: covA(:,:), meanA(:)
-        real(TKC)           , intent(in)    , contiguous        :: meanB(:)
+        use pm_kind, only: TKG => RK4
+        real(TKG)           , intent(in)                        :: fracA
+        real(TKG)           , intent(inout) , contiguous        :: covA(:,:), meanA(:)
+        real(TKG)           , intent(in)    , contiguous        :: meanB(:)
         type(lowDia_type)   , intent(in)                        :: subset
     end subroutine
 #endif
@@ -9163,10 +9163,10 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovMeanUpdatedOld_RDP_XLD_RK3
 #endif
-        use pm_kind, only: TKC => RK3
-        real(TKC)           , intent(in)                        :: fracA
-        real(TKC)           , intent(inout) , contiguous        :: covA(:,:), meanA(:)
-        real(TKC)           , intent(in)    , contiguous        :: meanB(:)
+        use pm_kind, only: TKG => RK3
+        real(TKG)           , intent(in)                        :: fracA
+        real(TKG)           , intent(inout) , contiguous        :: covA(:,:), meanA(:)
+        real(TKG)           , intent(in)    , contiguous        :: meanB(:)
         type(lowDia_type)   , intent(in)                        :: subset
     end subroutine
 #endif
@@ -9176,10 +9176,10 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovMeanUpdatedOld_RDP_XLD_RK2
 #endif
-        use pm_kind, only: TKC => RK2
-        real(TKC)           , intent(in)                        :: fracA
-        real(TKC)           , intent(inout) , contiguous        :: covA(:,:), meanA(:)
-        real(TKC)           , intent(in)    , contiguous        :: meanB(:)
+        use pm_kind, only: TKG => RK2
+        real(TKG)           , intent(in)                        :: fracA
+        real(TKG)           , intent(inout) , contiguous        :: covA(:,:), meanA(:)
+        real(TKG)           , intent(in)    , contiguous        :: meanB(:)
         type(lowDia_type)   , intent(in)                        :: subset
     end subroutine
 #endif
@@ -9189,10 +9189,10 @@ module pm_sampleCov
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCovMeanUpdatedOld_RDP_XLD_RK1
 #endif
-        use pm_kind, only: TKC => RK1
-        real(TKC)           , intent(in)                        :: fracA
-        real(TKC)           , intent(inout) , contiguous        :: covA(:,:), meanA(:)
-        real(TKC)           , intent(in)    , contiguous        :: meanB(:)
+        use pm_kind, only: TKG => RK1
+        real(TKG)           , intent(in)                        :: fracA
+        real(TKG)           , intent(inout) , contiguous        :: covA(:,:), meanA(:)
+        real(TKG)           , intent(in)    , contiguous        :: meanB(:)
         type(lowDia_type)   , intent(in)                        :: subset
     end subroutine
 #endif

@@ -1,10 +1,10 @@
 module zig_mod
     use pm_distNorm, only: xoshiro256ssw_type
     use pm_distNorm, only: getZigNorm
-    use pm_kind, only: RKC => RK
+    use pm_kind, only: RKG => RK
     implicit none
-    real(RKC) :: abserr
-    real(RKC), allocatable :: zig(:,:)
+    real(RKG) :: abserr
+    real(RKG), allocatable :: zig(:,:)
 end module zig_mod
 
 ! Test the performance of `setNormRandZiggurat()` vs. `setNormRandBoxBasic()`.
@@ -22,8 +22,8 @@ program benchmark
     integer(IK)                         :: itime
     integer(IK)                         :: ibench
     integer(IK)         , parameter     :: NSIM = 10000_IK ! must be even number.
-    real(RKC)                           :: rand(NSIM) = 0._RKC
-    real(RKC)                           :: dummy = 0._RKC
+    real(RKG)                           :: rand(NSIM) = 0._RKG
+    real(RKG)                           :: dummy = 0._RKG
     type(benchMulti_type)               :: bench
     type(display_type)                  :: disp
     integer(IK)                         :: miniter = 10_IK

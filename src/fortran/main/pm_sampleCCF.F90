@@ -270,11 +270,11 @@ module pm_sampleCCF
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getACF_D1_CK5
 #endif
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
         class(*)                , intent(in)                , optional  :: norm
         integer(IK)             , intent(in)    , contiguous, optional  :: lag(:)
-        complex(CKC)            , intent(in)    , contiguous            :: f(:)
-        complex(CKC)            , allocatable                           :: acf(:)
+        complex(CKG)            , intent(in)    , contiguous            :: f(:)
+        complex(CKG)            , allocatable                           :: acf(:)
     end function
 #endif
 
@@ -283,11 +283,11 @@ module pm_sampleCCF
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getACF_D1_CK4
 #endif
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
         class(*)                , intent(in)                , optional  :: norm
         integer(IK)             , intent(in)    , contiguous, optional  :: lag(:)
-        complex(CKC)            , intent(in)    , contiguous            :: f(:)
-        complex(CKC)            , allocatable                           :: acf(:)
+        complex(CKG)            , intent(in)    , contiguous            :: f(:)
+        complex(CKG)            , allocatable                           :: acf(:)
     end function
 #endif
 
@@ -296,11 +296,11 @@ module pm_sampleCCF
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getACF_D1_CK3
 #endif
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
         class(*)                , intent(in)                , optional  :: norm
         integer(IK)             , intent(in)    , contiguous, optional  :: lag(:)
-        complex(CKC)            , intent(in)    , contiguous            :: f(:)
-        complex(CKC)            , allocatable                           :: acf(:)
+        complex(CKG)            , intent(in)    , contiguous            :: f(:)
+        complex(CKG)            , allocatable                           :: acf(:)
     end function
 #endif
 
@@ -309,11 +309,11 @@ module pm_sampleCCF
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getACF_D1_CK2
 #endif
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
         class(*)                , intent(in)                , optional  :: norm
         integer(IK)             , intent(in)    , contiguous, optional  :: lag(:)
-        complex(CKC)            , intent(in)    , contiguous            :: f(:)
-        complex(CKC)            , allocatable                           :: acf(:)
+        complex(CKG)            , intent(in)    , contiguous            :: f(:)
+        complex(CKG)            , allocatable                           :: acf(:)
     end function
 #endif
 
@@ -322,11 +322,11 @@ module pm_sampleCCF
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getACF_D1_CK1
 #endif
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
         class(*)                , intent(in)                , optional  :: norm
         integer(IK)             , intent(in)    , contiguous, optional  :: lag(:)
-        complex(CKC)            , intent(in)    , contiguous            :: f(:)
-        complex(CKC)            , allocatable                           :: acf(:)
+        complex(CKG)            , intent(in)    , contiguous            :: f(:)
+        complex(CKG)            , allocatable                           :: acf(:)
     end function
 #endif
 
@@ -337,11 +337,11 @@ module pm_sampleCCF
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getACF_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         class(*)                , intent(in)                , optional  :: norm
         integer(IK)             , intent(in)    , contiguous, optional  :: lag(:)
-        real(RKC)               , intent(in)    , contiguous            :: f(:)
-        real(RKC)               , allocatable                           :: acf(:)
+        real(RKG)               , intent(in)    , contiguous            :: f(:)
+        real(RKG)               , allocatable                           :: acf(:)
     end function
 #endif
 
@@ -350,11 +350,11 @@ module pm_sampleCCF
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getACF_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         class(*)                , intent(in)                , optional  :: norm
         integer(IK)             , intent(in)    , contiguous, optional  :: lag(:)
-        real(RKC)               , intent(in)    , contiguous            :: f(:)
-        real(RKC)               , allocatable                           :: acf(:)
+        real(RKG)               , intent(in)    , contiguous            :: f(:)
+        real(RKG)               , allocatable                           :: acf(:)
     end function
 #endif
 
@@ -363,11 +363,11 @@ module pm_sampleCCF
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getACF_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         class(*)                , intent(in)                , optional  :: norm
         integer(IK)             , intent(in)    , contiguous, optional  :: lag(:)
-        real(RKC)               , intent(in)    , contiguous            :: f(:)
-        real(RKC)               , allocatable                           :: acf(:)
+        real(RKG)               , intent(in)    , contiguous            :: f(:)
+        real(RKG)               , allocatable                           :: acf(:)
     end function
 #endif
 
@@ -376,11 +376,11 @@ module pm_sampleCCF
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getACF_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         class(*)                , intent(in)                , optional  :: norm
         integer(IK)             , intent(in)    , contiguous, optional  :: lag(:)
-        real(RKC)               , intent(in)    , contiguous            :: f(:)
-        real(RKC)               , allocatable                           :: acf(:)
+        real(RKG)               , intent(in)    , contiguous            :: f(:)
+        real(RKG)               , allocatable                           :: acf(:)
     end function
 #endif
 
@@ -389,11 +389,11 @@ module pm_sampleCCF
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getACF_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         class(*)                , intent(in)                , optional  :: norm
         integer(IK)             , intent(in)    , contiguous, optional  :: lag(:)
-        real(RKC)               , intent(in)    , contiguous            :: f(:)
-        real(RKC)               , allocatable                           :: acf(:)
+        real(RKG)               , intent(in)    , contiguous            :: f(:)
+        real(RKG)               , allocatable                           :: acf(:)
     end function
 #endif
 
@@ -531,11 +531,11 @@ module pm_sampleCCF
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setACF_FP_D1_CK5
 #endif
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
         logical(LK)             , intent(out)                   :: inf
-        complex(CKC)            , intent(out)   , contiguous    :: work(:)
-        complex(CKC)            , intent(inout) , contiguous    :: f(:)
-        complex(CKC)            , intent(in)    , contiguous    :: coef(:)
+        complex(CKG)            , intent(out)   , contiguous    :: work(:)
+        complex(CKG)            , intent(inout) , contiguous    :: f(:)
+        complex(CKG)            , intent(in)    , contiguous    :: coef(:)
         integer(IK)             , intent(in)    , contiguous    :: factor(:)
     end subroutine
 #endif
@@ -545,11 +545,11 @@ module pm_sampleCCF
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setACF_FP_D1_CK4
 #endif
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
         logical(LK)             , intent(out)                   :: inf
-        complex(CKC)            , intent(out)   , contiguous    :: work(:)
-        complex(CKC)            , intent(inout) , contiguous    :: f(:)
-        complex(CKC)            , intent(in)    , contiguous    :: coef(:)
+        complex(CKG)            , intent(out)   , contiguous    :: work(:)
+        complex(CKG)            , intent(inout) , contiguous    :: f(:)
+        complex(CKG)            , intent(in)    , contiguous    :: coef(:)
         integer(IK)             , intent(in)    , contiguous    :: factor(:)
     end subroutine
 #endif
@@ -559,11 +559,11 @@ module pm_sampleCCF
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setACF_FP_D1_CK3
 #endif
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
         logical(LK)             , intent(out)                   :: inf
-        complex(CKC)            , intent(out)   , contiguous    :: work(:)
-        complex(CKC)            , intent(inout) , contiguous    :: f(:)
-        complex(CKC)            , intent(in)    , contiguous    :: coef(:)
+        complex(CKG)            , intent(out)   , contiguous    :: work(:)
+        complex(CKG)            , intent(inout) , contiguous    :: f(:)
+        complex(CKG)            , intent(in)    , contiguous    :: coef(:)
         integer(IK)             , intent(in)    , contiguous    :: factor(:)
     end subroutine
 #endif
@@ -573,11 +573,11 @@ module pm_sampleCCF
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setACF_FP_D1_CK2
 #endif
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
         logical(LK)             , intent(out)                   :: inf
-        complex(CKC)            , intent(out)   , contiguous    :: work(:)
-        complex(CKC)            , intent(inout) , contiguous    :: f(:)
-        complex(CKC)            , intent(in)    , contiguous    :: coef(:)
+        complex(CKG)            , intent(out)   , contiguous    :: work(:)
+        complex(CKG)            , intent(inout) , contiguous    :: f(:)
+        complex(CKG)            , intent(in)    , contiguous    :: coef(:)
         integer(IK)             , intent(in)    , contiguous    :: factor(:)
     end subroutine
 #endif
@@ -587,11 +587,11 @@ module pm_sampleCCF
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setACF_FP_D1_CK1
 #endif
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
         logical(LK)             , intent(out)                   :: inf
-        complex(CKC)            , intent(out)   , contiguous    :: work(:)
-        complex(CKC)            , intent(inout) , contiguous    :: f(:)
-        complex(CKC)            , intent(in)    , contiguous    :: coef(:)
+        complex(CKG)            , intent(out)   , contiguous    :: work(:)
+        complex(CKG)            , intent(inout) , contiguous    :: f(:)
+        complex(CKG)            , intent(in)    , contiguous    :: coef(:)
         integer(IK)             , intent(in)    , contiguous    :: factor(:)
     end subroutine
 #endif
@@ -603,11 +603,11 @@ module pm_sampleCCF
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setACF_FP_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         logical(LK)             , intent(out)                   :: inf
-        real(RKC)               , intent(out)   , contiguous    :: work(:)
-        real(RKC)               , intent(inout) , contiguous    :: f(:)
-        real(RKC)               , intent(in)    , contiguous    :: coef(:)
+        real(RKG)               , intent(out)   , contiguous    :: work(:)
+        real(RKG)               , intent(inout) , contiguous    :: f(:)
+        real(RKG)               , intent(in)    , contiguous    :: coef(:)
         integer(IK)             , intent(in)    , contiguous    :: factor(:)
     end subroutine
 #endif
@@ -617,11 +617,11 @@ module pm_sampleCCF
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setACF_FP_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         logical(LK)             , intent(out)                   :: inf
-        real(RKC)               , intent(out)   , contiguous    :: work(:)
-        real(RKC)               , intent(inout) , contiguous    :: f(:)
-        real(RKC)               , intent(in)    , contiguous    :: coef(:)
+        real(RKG)               , intent(out)   , contiguous    :: work(:)
+        real(RKG)               , intent(inout) , contiguous    :: f(:)
+        real(RKG)               , intent(in)    , contiguous    :: coef(:)
         integer(IK)             , intent(in)    , contiguous    :: factor(:)
     end subroutine
 #endif
@@ -631,11 +631,11 @@ module pm_sampleCCF
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setACF_FP_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         logical(LK)             , intent(out)                   :: inf
-        real(RKC)               , intent(out)   , contiguous    :: work(:)
-        real(RKC)               , intent(inout) , contiguous    :: f(:)
-        real(RKC)               , intent(in)    , contiguous    :: coef(:)
+        real(RKG)               , intent(out)   , contiguous    :: work(:)
+        real(RKG)               , intent(inout) , contiguous    :: f(:)
+        real(RKG)               , intent(in)    , contiguous    :: coef(:)
         integer(IK)             , intent(in)    , contiguous    :: factor(:)
     end subroutine
 #endif
@@ -645,11 +645,11 @@ module pm_sampleCCF
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setACF_FP_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         logical(LK)             , intent(out)                   :: inf
-        real(RKC)               , intent(out)   , contiguous    :: work(:)
-        real(RKC)               , intent(inout) , contiguous    :: f(:)
-        real(RKC)               , intent(in)    , contiguous    :: coef(:)
+        real(RKG)               , intent(out)   , contiguous    :: work(:)
+        real(RKG)               , intent(inout) , contiguous    :: f(:)
+        real(RKG)               , intent(in)    , contiguous    :: coef(:)
         integer(IK)             , intent(in)    , contiguous    :: factor(:)
     end subroutine
 #endif
@@ -659,11 +659,11 @@ module pm_sampleCCF
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setACF_FP_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         logical(LK)             , intent(out)                   :: inf
-        real(RKC)               , intent(out)   , contiguous    :: work(:)
-        real(RKC)               , intent(inout) , contiguous    :: f(:)
-        real(RKC)               , intent(in)    , contiguous    :: coef(:)
+        real(RKG)               , intent(out)   , contiguous    :: work(:)
+        real(RKG)               , intent(inout) , contiguous    :: f(:)
+        real(RKG)               , intent(in)    , contiguous    :: coef(:)
         integer(IK)             , intent(in)    , contiguous    :: factor(:)
     end subroutine
 #endif
@@ -790,11 +790,11 @@ module pm_sampleCCF
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCCF_FG_CK5
 #endif
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
         class(*)                , intent(in)                , optional  :: norm
         integer(IK)             , intent(in)    , contiguous, optional  :: lag(:)
-        complex(CKC)            , intent(in)    , contiguous            :: f(:), g(:)
-        complex(CKC)            , allocatable                           :: ccf(:)
+        complex(CKG)            , intent(in)    , contiguous            :: f(:), g(:)
+        complex(CKG)            , allocatable                           :: ccf(:)
     end function
 #endif
 
@@ -803,11 +803,11 @@ module pm_sampleCCF
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCCF_FG_CK4
 #endif
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
         class(*)                , intent(in)                , optional  :: norm
         integer(IK)             , intent(in)    , contiguous, optional  :: lag(:)
-        complex(CKC)            , intent(in)    , contiguous            :: f(:), g(:)
-        complex(CKC)            , allocatable                           :: ccf(:)
+        complex(CKG)            , intent(in)    , contiguous            :: f(:), g(:)
+        complex(CKG)            , allocatable                           :: ccf(:)
     end function
 #endif
 
@@ -816,11 +816,11 @@ module pm_sampleCCF
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCCF_FG_CK3
 #endif
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
         class(*)                , intent(in)                , optional  :: norm
         integer(IK)             , intent(in)    , contiguous, optional  :: lag(:)
-        complex(CKC)            , intent(in)    , contiguous            :: f(:), g(:)
-        complex(CKC)            , allocatable                           :: ccf(:)
+        complex(CKG)            , intent(in)    , contiguous            :: f(:), g(:)
+        complex(CKG)            , allocatable                           :: ccf(:)
     end function
 #endif
 
@@ -829,11 +829,11 @@ module pm_sampleCCF
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCCF_FG_CK2
 #endif
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
         class(*)                , intent(in)                , optional  :: norm
         integer(IK)             , intent(in)    , contiguous, optional  :: lag(:)
-        complex(CKC)            , intent(in)    , contiguous            :: f(:), g(:)
-        complex(CKC)            , allocatable                           :: ccf(:)
+        complex(CKG)            , intent(in)    , contiguous            :: f(:), g(:)
+        complex(CKG)            , allocatable                           :: ccf(:)
     end function
 #endif
 
@@ -842,11 +842,11 @@ module pm_sampleCCF
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCCF_FG_CK1
 #endif
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
         class(*)                , intent(in)                , optional  :: norm
         integer(IK)             , intent(in)    , contiguous, optional  :: lag(:)
-        complex(CKC)            , intent(in)    , contiguous            :: f(:), g(:)
-        complex(CKC)            , allocatable                           :: ccf(:)
+        complex(CKG)            , intent(in)    , contiguous            :: f(:), g(:)
+        complex(CKG)            , allocatable                           :: ccf(:)
     end function
 #endif
 
@@ -857,11 +857,11 @@ module pm_sampleCCF
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCCF_FG_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         class(*)                , intent(in)                , optional  :: norm
         integer(IK)             , intent(in)    , contiguous, optional  :: lag(:)
-        real(RKC)               , intent(in)    , contiguous            :: f(:), g(:)
-        real(RKC)               , allocatable                           :: ccf(:)
+        real(RKG)               , intent(in)    , contiguous            :: f(:), g(:)
+        real(RKG)               , allocatable                           :: ccf(:)
     end function
 #endif
 
@@ -870,11 +870,11 @@ module pm_sampleCCF
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCCF_FG_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         class(*)                , intent(in)                , optional  :: norm
         integer(IK)             , intent(in)    , contiguous, optional  :: lag(:)
-        real(RKC)               , intent(in)    , contiguous            :: f(:), g(:)
-        real(RKC)               , allocatable                           :: ccf(:)
+        real(RKG)               , intent(in)    , contiguous            :: f(:), g(:)
+        real(RKG)               , allocatable                           :: ccf(:)
     end function
 #endif
 
@@ -883,11 +883,11 @@ module pm_sampleCCF
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCCF_FG_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         class(*)                , intent(in)                , optional  :: norm
         integer(IK)             , intent(in)    , contiguous, optional  :: lag(:)
-        real(RKC)               , intent(in)    , contiguous            :: f(:), g(:)
-        real(RKC)               , allocatable                           :: ccf(:)
+        real(RKG)               , intent(in)    , contiguous            :: f(:), g(:)
+        real(RKG)               , allocatable                           :: ccf(:)
     end function
 #endif
 
@@ -896,11 +896,11 @@ module pm_sampleCCF
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCCF_FG_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         class(*)                , intent(in)                , optional  :: norm
         integer(IK)             , intent(in)    , contiguous, optional  :: lag(:)
-        real(RKC)               , intent(in)    , contiguous            :: f(:), g(:)
-        real(RKC)               , allocatable                           :: ccf(:)
+        real(RKG)               , intent(in)    , contiguous            :: f(:), g(:)
+        real(RKG)               , allocatable                           :: ccf(:)
     end function
 #endif
 
@@ -909,11 +909,11 @@ module pm_sampleCCF
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCCF_FG_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         class(*)                , intent(in)                , optional  :: norm
         integer(IK)             , intent(in)    , contiguous, optional  :: lag(:)
-        real(RKC)               , intent(in)    , contiguous            :: f(:), g(:)
-        real(RKC)               , allocatable                           :: ccf(:)
+        real(RKG)               , intent(in)    , contiguous            :: f(:), g(:)
+        real(RKG)               , allocatable                           :: ccf(:)
     end function
 #endif
 
@@ -1057,11 +1057,11 @@ module pm_sampleCCF
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCCF_FP_FG_CK5
 #endif
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
         logical(LK)             , intent(out)                   :: inf
-        complex(CKC)            , intent(out)   , contiguous    :: work(:)
-        complex(CKC)            , intent(inout) , contiguous    :: f(:), g(:)
-        complex(CKC)            , intent(in)    , contiguous    :: coef(:)
+        complex(CKG)            , intent(out)   , contiguous    :: work(:)
+        complex(CKG)            , intent(inout) , contiguous    :: f(:), g(:)
+        complex(CKG)            , intent(in)    , contiguous    :: coef(:)
         integer(IK)             , intent(in)    , contiguous    :: factor(:)
     end subroutine
 #endif
@@ -1071,11 +1071,11 @@ module pm_sampleCCF
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCCF_FP_FG_CK4
 #endif
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
         logical(LK)             , intent(out)                   :: inf
-        complex(CKC)            , intent(out)   , contiguous    :: work(:)
-        complex(CKC)            , intent(inout) , contiguous    :: f(:), g(:)
-        complex(CKC)            , intent(in)    , contiguous    :: coef(:)
+        complex(CKG)            , intent(out)   , contiguous    :: work(:)
+        complex(CKG)            , intent(inout) , contiguous    :: f(:), g(:)
+        complex(CKG)            , intent(in)    , contiguous    :: coef(:)
         integer(IK)             , intent(in)    , contiguous    :: factor(:)
     end subroutine
 #endif
@@ -1085,11 +1085,11 @@ module pm_sampleCCF
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCCF_FP_FG_CK3
 #endif
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
         logical(LK)             , intent(out)                   :: inf
-        complex(CKC)            , intent(out)   , contiguous    :: work(:)
-        complex(CKC)            , intent(inout) , contiguous    :: f(:), g(:)
-        complex(CKC)            , intent(in)    , contiguous    :: coef(:)
+        complex(CKG)            , intent(out)   , contiguous    :: work(:)
+        complex(CKG)            , intent(inout) , contiguous    :: f(:), g(:)
+        complex(CKG)            , intent(in)    , contiguous    :: coef(:)
         integer(IK)             , intent(in)    , contiguous    :: factor(:)
     end subroutine
 #endif
@@ -1099,11 +1099,11 @@ module pm_sampleCCF
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCCF_FP_FG_CK2
 #endif
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
         logical(LK)             , intent(out)                   :: inf
-        complex(CKC)            , intent(out)   , contiguous    :: work(:)
-        complex(CKC)            , intent(inout) , contiguous    :: f(:), g(:)
-        complex(CKC)            , intent(in)    , contiguous    :: coef(:)
+        complex(CKG)            , intent(out)   , contiguous    :: work(:)
+        complex(CKG)            , intent(inout) , contiguous    :: f(:), g(:)
+        complex(CKG)            , intent(in)    , contiguous    :: coef(:)
         integer(IK)             , intent(in)    , contiguous    :: factor(:)
     end subroutine
 #endif
@@ -1113,11 +1113,11 @@ module pm_sampleCCF
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCCF_FP_FG_CK1
 #endif
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
         logical(LK)             , intent(out)                   :: inf
-        complex(CKC)            , intent(out)   , contiguous    :: work(:)
-        complex(CKC)            , intent(inout) , contiguous    :: f(:), g(:)
-        complex(CKC)            , intent(in)    , contiguous    :: coef(:)
+        complex(CKG)            , intent(out)   , contiguous    :: work(:)
+        complex(CKG)            , intent(inout) , contiguous    :: f(:), g(:)
+        complex(CKG)            , intent(in)    , contiguous    :: coef(:)
         integer(IK)             , intent(in)    , contiguous    :: factor(:)
     end subroutine
 #endif
@@ -1129,11 +1129,11 @@ module pm_sampleCCF
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCCF_FP_FG_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         logical(LK)             , intent(out)                   :: inf
-        real(RKC)               , intent(out)   , contiguous    :: work(:)
-        real(RKC)               , intent(inout) , contiguous    :: f(:), g(:)
-        real(RKC)               , intent(in)    , contiguous    :: coef(:)
+        real(RKG)               , intent(out)   , contiguous    :: work(:)
+        real(RKG)               , intent(inout) , contiguous    :: f(:), g(:)
+        real(RKG)               , intent(in)    , contiguous    :: coef(:)
         integer(IK)             , intent(in)    , contiguous    :: factor(:)
     end subroutine
 #endif
@@ -1143,11 +1143,11 @@ module pm_sampleCCF
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCCF_FP_FG_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         logical(LK)             , intent(out)                   :: inf
-        real(RKC)               , intent(out)   , contiguous    :: work(:)
-        real(RKC)               , intent(inout) , contiguous    :: f(:), g(:)
-        real(RKC)               , intent(in)    , contiguous    :: coef(:)
+        real(RKG)               , intent(out)   , contiguous    :: work(:)
+        real(RKG)               , intent(inout) , contiguous    :: f(:), g(:)
+        real(RKG)               , intent(in)    , contiguous    :: coef(:)
         integer(IK)             , intent(in)    , contiguous    :: factor(:)
     end subroutine
 #endif
@@ -1157,11 +1157,11 @@ module pm_sampleCCF
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCCF_FP_FG_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         logical(LK)             , intent(out)                   :: inf
-        real(RKC)               , intent(out)   , contiguous    :: work(:)
-        real(RKC)               , intent(inout) , contiguous    :: f(:), g(:)
-        real(RKC)               , intent(in)    , contiguous    :: coef(:)
+        real(RKG)               , intent(out)   , contiguous    :: work(:)
+        real(RKG)               , intent(inout) , contiguous    :: f(:), g(:)
+        real(RKG)               , intent(in)    , contiguous    :: coef(:)
         integer(IK)             , intent(in)    , contiguous    :: factor(:)
     end subroutine
 #endif
@@ -1171,11 +1171,11 @@ module pm_sampleCCF
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCCF_FP_FG_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         logical(LK)             , intent(out)                   :: inf
-        real(RKC)               , intent(out)   , contiguous    :: work(:)
-        real(RKC)               , intent(inout) , contiguous    :: f(:), g(:)
-        real(RKC)               , intent(in)    , contiguous    :: coef(:)
+        real(RKG)               , intent(out)   , contiguous    :: work(:)
+        real(RKG)               , intent(inout) , contiguous    :: f(:), g(:)
+        real(RKG)               , intent(in)    , contiguous    :: coef(:)
         integer(IK)             , intent(in)    , contiguous    :: factor(:)
     end subroutine
 #endif
@@ -1185,11 +1185,11 @@ module pm_sampleCCF
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCCF_FP_FG_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         logical(LK)             , intent(out)                   :: inf
-        real(RKC)               , intent(out)   , contiguous    :: work(:)
-        real(RKC)               , intent(inout) , contiguous    :: f(:), g(:)
-        real(RKC)               , intent(in)    , contiguous    :: coef(:)
+        real(RKG)               , intent(out)   , contiguous    :: work(:)
+        real(RKG)               , intent(inout) , contiguous    :: f(:), g(:)
+        real(RKG)               , intent(in)    , contiguous    :: coef(:)
         integer(IK)             , intent(in)    , contiguous    :: factor(:)
     end subroutine
 #endif

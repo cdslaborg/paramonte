@@ -440,10 +440,10 @@ end if;
 
         if (is_iostat_eor(err%stat)) then
             err%iswarned = .true._LK
-            err%msg = SKC_"An end-of-record condition occurred while parsing the contents of the chain file at chain row "//getStr(cfc%nsam)//SKC_": "//trim(err%msg)//& ! LCOV_EXCL_LINE
-            SKC_". Assuming the previous chain sampleState as the last in the chain file with the corresponding values: "
+            err%msg = SKG_"An end-of-record condition occurred while parsing the contents of the chain file at chain row "//getStr(cfc%nsam)//SKG_": "//trim(err%msg)//& ! LCOV_EXCL_LINE
+            SKG_". Assuming the previous chain sampleState as the last in the chain file with the corresponding values: "
             if (0 == cfc%nsam) then
-                err%msg = err%msg//SKC_"Nothing. The first row of the chain file is corrupt (incomplete)."
+                err%msg = err%msg//SKG_"Nothing. The first row of the chain file is corrupt (incomplete)."
             else
                 err%msg = err%msg//getStr(cfc%sampleState(1 : ndim, cfc%nsam - 1))
                 ! return the position to the end of the last successful row read.
@@ -503,7 +503,7 @@ end if;
     !   For now, code clarity by avoiding code duplication wins over the slight performance improvement.
     function isFailedChainResize(cfc, ndim, nrow, errmsg) result(failed)
         use pm_arrayRefill, only: setRefilled
-        real(RKC), parameter :: NULL_RK = -huge(0._RKC)
+        real(RKG), parameter :: NULL_RK = -huge(0._RKG)
         integer(IK), parameter :: NULL_IK = -huge(0_IK)
         type(CFC_TYPE), intent(inout) :: cfc
         integer(IK), intent(in) :: ndim, nrow
@@ -584,7 +584,7 @@ end if;
         isCompact = isCompact .or. isVerbose
         isVerbose = .false._LK
 #endif
-        err%msg = repeat(SKC_" ", 255)
+        err%msg = repeat(SKG_" ", 255)
         inquire(file = file, opened = opened, iostat = err%stat, iomsg = err%msg)!, exist = exist
         RETURN_IF_FAILED(__LINE__,err%stat /= 0,err%msg)!.not. exist .or.
 
@@ -650,14 +650,14 @@ end if;
             if (isVerbose) then
                 block
                     integer(IK) :: j, counter
-                    real(RKC) :: adaptation
+                    real(RKG) :: adaptation
                     counter = ibeg_def
                     do i = ibeg_def, iend_def
                         do j = 1, cfc%sampleWeight(i)
                             if (mod(counter, proposalAdaptationPeriod) == 0_IK) then
                                 adaptation = cfc%proposalAdaptation(i)
                             else
-                                adaptation = 0._RKC
+                                adaptation = 0._RKG
                             end if
                             write(unit, format, iostat = err%stat, iomsg = err%msg  ) cfc%processID(i) &
                                                                                     , cfc%delayedRejectionStage(i) &

@@ -16,10 +16,10 @@ program example
     disp = display_type(file = "main.out.F90")
 
     block
-        use pm_kind, only: TKC => RKS ! all real kinds are supported.
-        real(TKC), allocatable :: rand(:,:)
-        real(TKC) :: mold
-        real(TKC) :: scale
+        use pm_kind, only: TKG => RKS ! all real kinds are supported.
+        real(TKG), allocatable :: rand(:,:)
+        real(TKG) :: mold
+        real(TKG) :: scale
         do itry = 1, 5
             call disp%skip()
             call disp%show("ndim = getUnifRand(2, 3)")
@@ -40,8 +40,8 @@ program example
             call disp%show( isMatClass(rand, posdefmat) )
             call disp%skip()
             call disp%skip()
-            call disp%show("rand = getCovRand(mold = 0._TKC, scale = [(real(itry, TKC), itry = 1, 5)])")
-                            rand = getCovRand(mold = 0._TKC, scale = [(real(itry, TKC), itry = 1, 5)])
+            call disp%show("rand = getCovRand(mold = 0._TKG, scale = [(real(itry, TKG), itry = 1, 5)])")
+                            rand = getCovRand(mold = 0._TKG, scale = [(real(itry, TKG), itry = 1, 5)])
             call disp%show("rand")
             call disp%show( rand )
             call disp%show("isMatClass(rand, posdefmat)")
@@ -51,10 +51,10 @@ program example
     end block
 
     block
-        use pm_kind, only: TKC => CKS ! all real kinds are supported.
-        complex(TKC), allocatable :: rand(:,:)
-        complex(TKC) :: mold
-        real(TKC) :: scale
+        use pm_kind, only: TKG => CKS ! all real kinds are supported.
+        complex(TKG), allocatable :: rand(:,:)
+        complex(TKG) :: mold
+        real(TKG) :: scale
         do itry = 1, 5
             call disp%skip()
             call disp%show("ndim = getUnifRand(2, 3)")
@@ -75,8 +75,8 @@ program example
             call disp%show( isMatClass(rand, posdefmat) )
             call disp%skip()
             call disp%skip()
-            call disp%show("rand = getCovRand(mold = 0._TKC, scale = [(real(itry, TKC), itry = 1, 5)])")
-                            rand = getCovRand(mold = 0._TKC, scale = [(real(itry, TKC), itry = 1, 5)])
+            call disp%show("rand = getCovRand(mold = 0._TKG, scale = [(real(itry, TKG), itry = 1, 5)])")
+                            rand = getCovRand(mold = 0._TKG, scale = [(real(itry, TKG), itry = 1, 5)])
             call disp%show("rand")
             call disp%show( rand )
             call disp%show("isMatClass(rand, posdefmat)")

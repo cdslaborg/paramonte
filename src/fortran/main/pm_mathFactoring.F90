@@ -133,9 +133,9 @@ module pm_mathFactoring
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getFactoring_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC), value                 :: posint
-        integer(IKC), allocatable           :: Factoring(:)
+        use pm_kind, only: IKG => IK5
+        integer(IKG), value                 :: posint
+        integer(IKG), allocatable           :: Factoring(:)
     end function
 #endif
 
@@ -144,9 +144,9 @@ module pm_mathFactoring
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getFactoring_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC), value                 :: posint
-        integer(IKC), allocatable           :: Factoring(:)
+        use pm_kind, only: IKG => IK4
+        integer(IKG), value                 :: posint
+        integer(IKG), allocatable           :: Factoring(:)
     end function
 #endif
 
@@ -155,9 +155,9 @@ module pm_mathFactoring
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getFactoring_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC), value                 :: posint
-        integer(IKC), allocatable           :: Factoring(:)
+        use pm_kind, only: IKG => IK3
+        integer(IKG), value                 :: posint
+        integer(IKG), allocatable           :: Factoring(:)
     end function
 #endif
 
@@ -166,9 +166,9 @@ module pm_mathFactoring
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getFactoring_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC), value                 :: posint
-        integer(IKC), allocatable           :: Factoring(:)
+        use pm_kind, only: IKG => IK2
+        integer(IKG), value                 :: posint
+        integer(IKG), allocatable           :: Factoring(:)
     end function
 #endif
 
@@ -177,9 +177,9 @@ module pm_mathFactoring
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getFactoring_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC), value                 :: posint
-        integer(IKC), allocatable           :: Factoring(:)
+        use pm_kind, only: IKG => IK1
+        integer(IKG), value                 :: posint
+        integer(IKG), allocatable           :: Factoring(:)
     end function
 #endif
 

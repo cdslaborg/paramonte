@@ -89,8 +89,8 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     !function isFailedInitShell(errmsg) result(failed)
-    !    use pm_kind, only: SKC => SK
-    !    character(*,SKC), intent(inout), optional :: errmsg
+    !    use pm_kind, only: SKG => SK
+    !    character(*,SKG), intent(inout), optional :: errmsg
     !    logical(LK) :: failed
     !    failed = .not. allocated(mc_shell)
     !    if (failed) then
@@ -115,11 +115,11 @@ contains
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     module procedure isFailedGetDirTempMsg
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
         use pm_sysPath, only: isDir
         character(*, SK), parameter :: PROCEDURE_NAME = MODULE_NAME//SK_"@isFailedGetDirTemp()"
         integer(IK), parameter :: MAXLEN = max(len(VARENV_DIRTEMP_UNIX), len(VARENV_DIRTEMP_WINDOWS))
-        character(MAXLEN, SK), parameter :: VARENV_DIRTEMP(*) = [character(MAXLEN,SKC) :: VARENV_DIRTEMP_UNIX, VARENV_DIRTEMP_WINDOWS]
+        character(MAXLEN, SK), parameter :: VARENV_DIRTEMP(*) = [character(MAXLEN,SKG) :: VARENV_DIRTEMP_UNIX, VARENV_DIRTEMP_WINDOWS]
         integer(IK) :: ienv
 #if     OMP_ENABLED
         !$omp critical
@@ -136,7 +136,7 @@ contains
                 if (.not. failed) exit
             end do
             ! One last try.
-            if (failed) dirTemp = SKC_"/tmp"
+            if (failed) dirTemp = SKG_"/tmp"
             failed = .not. isDir(dirTemp, ienv, errmsg)
             failed = failed .or. ienv /= 0_IK
             if (.not. failed) mc_sysDirTemp = dirTemp
@@ -146,9 +146,9 @@ contains
 #endif
     end procedure
     !#if         INTEL_ENABLED
-    !#define     FILE_ARG directory = SKC_"/tmp/"
+    !#define     FILE_ARG directory = SKG_"/tmp/"
     !#else
-    !#define     FILE_ARG file = SKC_"/tmp/"
+    !#define     FILE_ARG file = SKG_"/tmp/"
     !#endif
     !            inquire(FILE_ARG, exist = exists, iostat = i, iomsg = errmsg) ! last forward slash in FILE_ARG is significant.
     !#undef      FILE_ARG
@@ -170,15 +170,15 @@ contains
 
     module procedure isFailedGetOutputMsg
         use pm_err, only: getLine
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
         use pm_str, only: isEndedWith
         use pm_arrayStrip, only: getStripped
         use pm_parallelism, only: getImageID
         use pm_distUnif, only: setUnifRand, xoshiro256ssw_type
         type(xoshiro256ssw_type)        :: rng
-        character(*, SK), parameter     :: NLC = new_line(SKC_"a"), LF = char(10, SKC), CR = char(13, SKC)
+        character(*, SK), parameter     :: NLC = new_line(SKG_"a"), LF = char(10, SKG), CR = char(13, SKG)
         character(*, SK), parameter     :: PROCEDURE_NAME = MODULE_NAME//SK_"@isFailedGetOutputMsg()"
-        character(:,SKC), allocatable   :: filetemp, basetemp
+        character(:,SKG), allocatable   :: filetemp, basetemp
         integer(IK)     , parameter     :: lenNLC = len(NLC, IK)
         integer(IK)     , parameter     :: NTRY = 100000_IK
        !integer(IK)                     :: lenBaseTempPlus1
@@ -199,15 +199,15 @@ errmsg = PROCEDURE_NAME//getLine(LINE)//SK_": Failed to fetch command output. "/
 
         failed = isFailedGetDirTemp(basetemp, errmsg)
         if (failed) then
-            basetemp = SKC_"isFailedGetOutputMsg.tmp."
+            basetemp = SKG_"isFailedGetOutputMsg.tmp."
         else
-        !basetemp = basetemp//shell%dirsep//SKC_"isFailedGetOutputMsg.tmp"
+        !basetemp = basetemp//shell%dirsep//SKG_"isFailedGetOutputMsg.tmp"
             !   \todo
             !   \warning
             !   The following assumes that all platforms and runtime shells recognize forward slash as a directory separator.
             !   While this is currently the case, it may not be so in the future. A more robust solution may be necessary.
             !   One solution is to remove dependence on the temporary directory and create the file in the current directory.
-            basetemp = basetemp//SKC_"/isFailedGetOutputMsg.tmp."
+            basetemp = basetemp//SKG_"/isFailedGetOutputMsg.tmp."
         end if
 
         ! Generate a unique file to avoid racing conditions in parallel.
@@ -215,15 +215,15 @@ errmsg = PROCEDURE_NAME//getLine(LINE)//SK_": Failed to fetch command output. "/
         lenBaseTemp = len(basetemp, IK)
         lenFileTemp = lenBaseTemp + 20_IK ! 18 + 12_IK ! date_and_time() is 18 characters.
         if (allocated(filetemp)) deallocate(filetemp) ! \bug gfortran bug in automatic deallocation as of version 11.
-        allocate(character(lenFileTemp, SKC) :: filetemp)
+        allocate(character(lenFileTemp, SKG) :: filetemp)
         rng = xoshiro256ssw_type(imageID = getImageID())
         filetemp(1 : lenBaseTemp) = basetemp
         do counter = 1_IK, NTRY
             !call setStr(filetemp(lenBaseTempPlus1 : lenFileTemp), length, counter)
             !inquire(file = filetemp(1 : lenBaseTempPlus1 + length - 1), exist = failed, iostat = iostat, iomsg = errmsg)
-            !call setUnifRand(filetemp(lenBaseTemp + 19 :), SKC_"a", SKC_"z")
+            !call setUnifRand(filetemp(lenBaseTemp + 19 :), SKG_"a", SKG_"z")
             !call date_and_time(date = filetemp(lenBaseTemp + 1 : lenBaseTemp + 8), time = filetemp(lenBaseTemp + 9 : lenBaseTemp + 18))
-            call setUnifRand(rng, filetemp(lenBaseTemp + 1 :), SKC_"a", SKC_"z")
+            call setUnifRand(rng, filetemp(lenBaseTemp + 1 :), SKG_"a", SKG_"z")
             inquire(file = filetemp, exist = failed, iostat = iostat, iomsg = errmsg)
             failed = failed .or. logical(iostat /= 0_IK, LK)
             if (.not. failed) exit
@@ -232,7 +232,7 @@ errmsg = PROCEDURE_NAME//getLine(LINE)//SK_": Failed to fetch command output. "/
 
         if (.not. failed) then
             ! Run the command. Beware that the command execution can fail if the command is nonsensical.
-            failed = isFailedExec(command//SKC_" 1>"""//filetemp(1 : lenFileTemp)//SKC_""" 2>&1", cmdmsg = errmsg, exitstat = exitstat)
+            failed = isFailedExec(command//SKG_" 1>"""//filetemp(1 : lenFileTemp)//SKG_""" 2>&1", cmdmsg = errmsg, exitstat = exitstat)
             if (.not. failed) then
                 ! Read the command output from file if it exists.
                 call setContentsFrom(filetemp(1 : lenFileTemp), contents = output, iostat = iostat, iomsg = errmsg, del = .true._LK)
@@ -243,12 +243,12 @@ errmsg = PROCEDURE_NAME//getLine(LINE)//SK_": Failed to fetch command output. "/
                     ! Remove the end-of-file (linefeed) and Carriage Return characters from the captured text,
                     ! because this is artificially added to the command output when written to the file.
                     !if (output(max(1_IK, len(output, IK) - lenNLC + 1_IK) : len(output, IK)) == NLC) output = output(1 : len(output, IK) - lenNLC)
-                    !output = output(getSIL(output, new_line(SKC_"a")) : getSIR(output, new_line(SKC_"a")))
+                    !output = output(getSIL(output, new_line(SKG_"a")) : getSIR(output, new_line(SKG_"a")))
                     output = getStripped(output, NLC)
                     loopStrip: do
                         counter = min(1, len(output))
                         if (output(1 : counter) == LF .or. isEndedWith(output, LF) .or. output(1 : counter) == CR .or. isEndedWith(output, CR)) then
-                            output = getStripped(getStripped(output, new_line(SKC_"a")), achar(13, SKC)) ! CR must be removed on Windows OS.
+                            output = getStripped(getStripped(output, new_line(SKG_"a")), achar(13, SKG)) ! CR must be removed on Windows OS.
                         else
                             exit loopStrip
                         end if
@@ -266,7 +266,7 @@ errmsg = PROCEDURE_NAME//getLine(LINE)//SK_": Failed to fetch command output. "/
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     module procedure isFailedExec
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
         use pm_val2str, only: getStr
         character(:, SK), allocatable               :: details
         logical                                     :: wait_def
@@ -507,7 +507,7 @@ errmsg = PROCEDURE_NAME//getLine(LINE)//SK_": Failed to fetch command output. "/
         use pm_sysPath, only: DIR_SEP_POSIX, DIR_SEP_POSIX_ALL
         use pm_distUnif, only: setUnifRand, xoshiro256ssw_type
         use pm_arrayStrip, only: getSIL, getSIR
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
         use pm_err, only: getLine
 
         type(xoshiro256ssw_type)        :: rng
@@ -530,21 +530,21 @@ errmsg = PROCEDURE_NAME//getLine(LINE)//SK_": Failed to fetch shell name. "//tri
 
             ! Initialize the allocatable components to the default.
 
-            shell%name = SKC_""
+            shell%name = SKG_""
             shell%dirseps = DIR_SEP_POSIX_ALL
 
             ! Fetch the system temporary dir and create the base of the path.
 
             failed = isFailedGetDirTemp(basetemp, errmsg)
             if (failed) then
-                basetemp = SKC_"shell_typer.tmp."
+                basetemp = SKG_"shell_typer.tmp."
             else
                 !   \todo
                 !   \warning
                 !   The following assumes that all platforms and runtime shells recognize forward slash as a directory separator.
                 !   While this is currently the case, it may not be so in the future. A more robust solution may be necessary.
                 !   One solution is to remove dependence on the temporary directory and create the file in the current directory.
-                basetemp = basetemp//SKC_"/shell_typer.tmp."
+                basetemp = basetemp//SKG_"/shell_typer.tmp."
             end if
 
             ! Generate a unique file name to avoid racing conditions in parallel.
@@ -552,11 +552,11 @@ errmsg = PROCEDURE_NAME//getLine(LINE)//SK_": Failed to fetch shell name. "//tri
             lenBaseTemp = len(basetemp, IK)
             lenFileTemp = lenBaseTemp + 21 ! + 12 ! + 1 dot + date and time length is 18.
             if (allocated(filetemp)) deallocate(filetemp) ! \bug gfortran bug in automatic deallocation as of version 11.
-            allocate(character(lenFileTemp, SKC) :: filetemp)
+            allocate(character(lenFileTemp, SKG) :: filetemp)
             rng = xoshiro256ssw_type(imageID = getImageID())
             filetemp(1 : lenBaseTemp) = basetemp
             do counter = 1_IK, NTRY
-                call setUnifRand(rng, filetemp(lenBaseTemp + 1 :), SKC_"a", SKC_"z")
+                call setUnifRand(rng, filetemp(lenBaseTemp + 1 :), SKG_"a", SKG_"z")
                 inquire(file = filetemp, exist = failed, iostat = iostat, iomsg = errmsg)
                 failed = failed .or. logical(iostat /= 0_IK, LK)
                 if (.not. failed) exit
@@ -594,7 +594,7 @@ errmsg = PROCEDURE_NAME//getLine(LINE)//SK_": Failed to fetch shell name. "//tri
                         end if
                         ! Fetch the symlink target.
                         if (.not. failed) then
-                            failed = isFailedExec(SKC_"ls -l """//shell%name//SKC_""" 1>"""//filetemp//""" 2>&1")
+                            failed = isFailedExec(SKG_"ls -l """//shell%name//SKG_""" 1>"""//filetemp//""" 2>&1")
                             if (.not. failed) then
                                 call setContentsFrom(file = filetemp, contents = shell%name, iostat = iostat, iomsg = errmsg, del = .true._LK)
                                 failed = logical(iostat /= 0_IK, LK)
@@ -603,7 +603,7 @@ errmsg = PROCEDURE_NAME//getLine(LINE)//SK_": Failed to fetch shell name. "//tri
                         end if
                         if (failed) then
                             errmsg = PROCEDURE_NAME//SK_": "//trim(errmsg) ! LCOV_EXCL_LINE
-                            shell%name = SKC_"sh" ! LCOV_EXCL_LINE
+                            shell%name = SKG_"sh" ! LCOV_EXCL_LINE
                             failed = .false._LK ! LCOV_EXCL_LINE
                         end if
                     elseif (.not. shell%is%posix) then
@@ -611,11 +611,11 @@ errmsg = PROCEDURE_NAME//getLine(LINE)//SK_": Failed to fetch shell name. "//tri
                         failed = isFailedGetEnvVar("FISH_VERSION", shell%name, errmsg, length = 63_IK)
                         if (failed) then
                             errmsg = PROCEDURE_NAME//SK_": "//trim(errmsg) ! LCOV_EXCL_LINE
-                            shell%name = SKC_"" ! LCOV_EXCL_LINE
+                            shell%name = SKG_"" ! LCOV_EXCL_LINE
                         elseif (len_trim(shell%name, IK) > 0_IK) then
                             !shell%is%posix = .true._LK ! fish is not posix-compliant. Dont you dare setting this to .true.!
                             shell%is%fish = .true._LK
-                            shell%name = SKC_"fish"
+                            shell%name = SKG_"fish"
                         end if
                     end if
                     !  Test for Windows-based terminals.
@@ -633,10 +633,10 @@ errmsg = PROCEDURE_NAME//getLine(LINE)//SK_": Failed to fetch shell name. "//tri
                             failed = logical(iostat /= 0_IK, LK)
                             if (failed) SET_ERRMSG(__LINE__) ! LCOV_EXCL_LINE
                             if (.not. failed) then
-                                if (index(shell%name, SKC_"CMD", kind = IK) > 0_IK) then
+                                if (index(shell%name, SKG_"CMD", kind = IK) > 0_IK) then
                                     shell%is%windows = .true._LK
                                     shell%is%cmd = .true._LK
-                                elseif (index(shell%name, SKC_"PowerShell", kind = IK) > 0_IK) then
+                                elseif (index(shell%name, SKG_"PowerShell", kind = IK) > 0_IK) then
                                     shell%is%powershell = .true._LK
 #if                                 WINDOWS_ENABLED
                                     shell%is%windows = .true._LK
@@ -679,48 +679,48 @@ errmsg = PROCEDURE_NAME//getLine(LINE)//SK_": Failed to fetch shell name. "//tri
 
         subroutine setShell()
             ! Do **not** change the order of the following name checks.
-            if (index(shell%name, SKC_"bash", kind = IK) > 0_IK) then
-                shell%name = SKC_"bash"
+            if (index(shell%name, SKG_"bash", kind = IK) > 0_IK) then
+                shell%name = SKG_"bash"
                 shell%is%sh = .false._LK
                 shell%is%bash = .true._LK
                 shell%is%posix = .true._LK
-            elseif (index(shell%name, SKC_"dash", kind = IK) > 0_IK) then
-                shell%name = SKC_"dash"
+            elseif (index(shell%name, SKG_"dash", kind = IK) > 0_IK) then
+                shell%name = SKG_"dash"
                 shell%is%sh = .false._LK
                 shell%is%dash = .true._LK
                 shell%is%posix = .true._LK
-            elseif (index(shell%name, SKC_"yash", kind = IK) > 0_IK) then
-                shell%name = SKC_"yash"
+            elseif (index(shell%name, SKG_"yash", kind = IK) > 0_IK) then
+                shell%name = SKG_"yash"
                 shell%is%sh = .false._LK
                 shell%is%yash = .true._LK
                 shell%is%posix = .true._LK
-            elseif (index(shell%name, SKC_"ash", kind = IK) > 0_IK) then
-                shell%name = SKC_"ash"
+            elseif (index(shell%name, SKG_"ash", kind = IK) > 0_IK) then
+                shell%name = SKG_"ash"
                 shell%is%sh = .false._LK
                 shell%is%ash = .true._LK
                 shell%is%posix = .true._LK
-            elseif (index(shell%name, SKC_"tcsh", kind = IK) > 0_IK) then
-                shell%name = SKC_"tcsh"
+            elseif (index(shell%name, SKG_"tcsh", kind = IK) > 0_IK) then
+                shell%name = SKG_"tcsh"
                 shell%is%sh = .false._LK
                 shell%is%tcsh = .true._LK
                 shell%is%posix = .true._LK
-            elseif (index(shell%name, SKC_"csh", kind = IK) > 0_IK) then
-                shell%name = SKC_"csh"
+            elseif (index(shell%name, SKG_"csh", kind = IK) > 0_IK) then
+                shell%name = SKG_"csh"
                 shell%is%sh = .false._LK
                 shell%is%csh = .true._LK
                 shell%is%posix = .true._LK
-            elseif (index(shell%name, SKC_"ksh", kind = IK) > 0_IK) then
-                shell%name = SKC_"ksh"
+            elseif (index(shell%name, SKG_"ksh", kind = IK) > 0_IK) then
+                shell%name = SKG_"ksh"
                 shell%is%sh = .false._LK
                 shell%is%ksh = .true._LK
                 shell%is%posix = .true._LK
-            elseif (index(shell%name, SKC_"zsh", kind = IK) > 0_IK) then
-                shell%name = SKC_"zsh"
+            elseif (index(shell%name, SKG_"zsh", kind = IK) > 0_IK) then
+                shell%name = SKG_"zsh"
                 shell%is%sh = .false._LK
                 shell%is%zsh = .true._LK
                 shell%is%posix = .true._LK
-            elseif (index(shell%name, SKC_"sh", kind = IK) > 0_IK) then
-                shell%name = SKC_"sh"
+            elseif (index(shell%name, SKG_"sh", kind = IK) > 0_IK) then
+                shell%name = SKG_"sh"
                 shell%is%sh = .true._LK
                 shell%is%posix = .true._LK
             end if
@@ -740,7 +740,7 @@ errmsg = PROCEDURE_NAME//getLine(LINE)//SK_": Failed to fetch shell name. "//tri
 
     module procedure isFailedGetEnvVarMsg
 
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
         use pm_val2str, only: getStr
         character(*, SK), parameter :: PROCEDURE_NAME = MODULE_NAME//SK_"@isFailedGetEnvVarMsg()"
         integer :: status, lengthReal
@@ -753,15 +753,15 @@ errmsg = PROCEDURE_NAME//getLine(LINE)//SK_": Failed to fetch shell name. "//tri
             lenVal = 8191_IK ! 2**13 - 1
         end if
 
-        allocate(character(lenVal, SKC) :: value, stat = status)
+        allocate(character(lenVal, SKG) :: value, stat = status)
         failed = logical(status /= 0, LK)
         if (failed) then
             errmsg = PROCEDURE_NAME//SK_": Fortran runtime error: Allocation of value failed with size = "//getStr(lenVal)//SK_". stat = "//getStr(status)//SK_"." ! LCOV_EXCL_LINE
-            !value = SKC_"" ! LCOV_EXCL_LINE
+            !value = SKG_"" ! LCOV_EXCL_LINE
             return ! LCOV_EXCL_LINE
         end if
 
-        failed = logical(name == SKC_"", LK)
+        failed = logical(name == SKG_"", LK)
         if (failed) then
             errmsg = PROCEDURE_NAME//SK_": Fortran runtime error: Zero-length string passed as name to get_environment_variable()."
             !value = SK_""

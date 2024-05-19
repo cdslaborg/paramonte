@@ -17,9 +17,9 @@ program example
     call disp%skip()
 
     block
-        use pm_kind, only: TKC => SK ! All kinds are supported.
-        character(:,TKC), allocatable :: array
-        character(1,TKC) :: vmin, vmax
+        use pm_kind, only: TKG => SK ! All kinds are supported.
+        character(:,TKG), allocatable :: array
+        character(1,TKG) :: vmin, vmax
         call disp%skip()
         call disp%show("array = 'ParaMonte is a Machine Learning Library.'")
                         array = 'ParaMonte is a Machine Learning Library.'
@@ -45,12 +45,12 @@ program example
     call disp%skip()
 
     block
-        use pm_kind, only: TKC => SK ! All kinds are supported.
-        character(10,TKC), allocatable :: array(:)
-        character(10,TKC) :: vmin, vmax
+        use pm_kind, only: TKG => SK ! All kinds are supported.
+        character(10,TKG), allocatable :: array(:)
+        character(10,TKG) :: vmin, vmax
         call disp%skip()
-        call disp%show('array = [character(10,TKC) :: "ParaMonte", "is", "a", "Monte", "Carlo", "Library."]')
-                        array = [character(10,TKC) :: "ParaMonte", "is", "a", "Monte", "Carlo", "Library."]
+        call disp%show('array = [character(10,TKG) :: "ParaMonte", "is", "a", "Monte", "Carlo", "Library."]')
+                        array = [character(10,TKG) :: "ParaMonte", "is", "a", "Monte", "Carlo", "Library."]
         call disp%show("array")
         call disp%show( array , deliml = SK_"""" )
         call disp%show("call setMinMaxVal(array, vmin, vmax)")
@@ -71,13 +71,13 @@ program example
     call disp%skip()
 
     block
-        use pm_kind, only: TKC => SK ! All kinds are supported.
+        use pm_kind, only: TKG => SK ! All kinds are supported.
         use pm_container, only: css_type
         type(css_type), allocatable :: array(:)
         type(css_type) :: vmin, vmax
         call disp%skip()
-        call disp%show('array = css_type([character(10,TKC) :: "ParaMonte", "is", "a", "Monte", "Carlo", "Library."])')
-                        array = css_type([character(10,TKC) :: "ParaMonte", "is", "a", "Monte", "Carlo", "Library."])
+        call disp%show('array = css_type([character(10,TKG) :: "ParaMonte", "is", "a", "Monte", "Carlo", "Library."])')
+                        array = css_type([character(10,TKG) :: "ParaMonte", "is", "a", "Monte", "Carlo", "Library."])
         call disp%show("array")
         call disp%show( array , deliml = SK_"""" )
         call disp%show("call setMinMaxVal(array, vmin, vmax)")
@@ -98,9 +98,9 @@ program example
     call disp%skip()
 
     block
-        use pm_kind, only: TKC => IK ! All kinds are supported.
-        integer(TKC), allocatable :: array(:)
-        integer(TKC) :: vmin, vmax
+        use pm_kind, only: TKG => IK ! All kinds are supported.
+        integer(TKG), allocatable :: array(:)
+        integer(TKG) :: vmin, vmax
         call disp%skip()
         call disp%show('array = getUnifRand(-9, 9, getUnifRand(3_IK, 9_IK))')
                         array = getUnifRand(-9, 9, getUnifRand(3_IK, 9_IK))
@@ -124,9 +124,9 @@ program example
     call disp%skip()
 
     block
-        use pm_kind, only: TKC => LK ! All kinds are supported.
-        logical(TKC), allocatable :: array(:)
-        logical(TKC) :: vmin, vmax
+        use pm_kind, only: TKG => LK ! All kinds are supported.
+        logical(TKG), allocatable :: array(:)
+        logical(TKG) :: vmin, vmax
         call disp%skip()
         call disp%show('array = getUnifRand(.false., .true., getUnifRand(3_IK, 9_IK))')
                         array = getUnifRand(.false., .true., getUnifRand(3_IK, 9_IK))
@@ -150,9 +150,9 @@ program example
     call disp%skip()
 
     block
-        use pm_kind, only: TKC => CKS ! All kinds are supported.
-        complex(TKC), allocatable :: array(:)
-        complex(TKC) :: vmin, vmax
+        use pm_kind, only: TKG => CKS ! All kinds are supported.
+        complex(TKG), allocatable :: array(:)
+        complex(TKG) :: vmin, vmax
         call disp%skip()
         call disp%show('array = getUnifRand((-9., -9.), (9., 9.), getUnifRand(3_IK, 9_IK))')
                         array = getUnifRand((-9., -9.), (9., 9.), getUnifRand(3_IK, 9_IK))
@@ -176,9 +176,9 @@ program example
     call disp%skip()
 
     block
-        use pm_kind, only: TKC => RKS ! All kinds are supported.
-        real(TKC), allocatable :: array(:)
-        real(TKC) :: vmin, vmax
+        use pm_kind, only: TKG => RKS ! All kinds are supported.
+        real(TKG), allocatable :: array(:)
+        real(TKG) :: vmin, vmax
         call disp%skip()
         call disp%show('array = getUnifRand(-9, 9, getUnifRand(3_IK, 9_IK))')
                         array = getUnifRand(-9, 9, getUnifRand(3_IK, 9_IK))

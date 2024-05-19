@@ -135,9 +135,9 @@ module pm_mathUnsigned
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: uadd_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC), intent(in)            :: a, b
-        integer(IKC)                        :: sum
+        use pm_kind, only: IKG => IK5
+        integer(IKG), intent(in)            :: a, b
+        integer(IKG)                        :: sum
     end function
 #endif
 
@@ -146,9 +146,9 @@ module pm_mathUnsigned
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: uadd_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC), intent(in)            :: a, b
-        integer(IKC)                        :: sum
+        use pm_kind, only: IKG => IK4
+        integer(IKG), intent(in)            :: a, b
+        integer(IKG)                        :: sum
     end function
 #endif
 
@@ -157,9 +157,9 @@ module pm_mathUnsigned
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: uadd_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC), intent(in)            :: a, b
-        integer(IKC)                        :: sum
+        use pm_kind, only: IKG => IK3
+        integer(IKG), intent(in)            :: a, b
+        integer(IKG)                        :: sum
     end function
 #endif
 
@@ -168,9 +168,9 @@ module pm_mathUnsigned
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: uadd_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC), intent(in)            :: a, b
-        integer(IKC)                        :: sum
+        use pm_kind, only: IKG => IK2
+        integer(IKG), intent(in)            :: a, b
+        integer(IKG)                        :: sum
     end function
 #endif
 
@@ -179,9 +179,9 @@ module pm_mathUnsigned
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: uadd_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC), intent(in)            :: a, b
-        integer(IKC)                        :: sum
+        use pm_kind, only: IKG => IK1
+        integer(IKG), intent(in)            :: a, b
+        integer(IKG)                        :: sum
     end function
 #endif
 

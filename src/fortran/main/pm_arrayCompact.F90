@@ -132,9 +132,9 @@ module pm_arrayCompact
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCompact_D0_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)            , intent(in)                    :: array
-        character(:,SKC)            , allocatable                   :: compact
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)            , intent(in)                    :: array
+        character(:,SKG)            , allocatable                   :: compact
     end function
 #endif
 
@@ -143,9 +143,9 @@ module pm_arrayCompact
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCompact_D0_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)            , intent(in)                    :: array
-        character(:,SKC)            , allocatable                   :: compact
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)            , intent(in)                    :: array
+        character(:,SKG)            , allocatable                   :: compact
     end function
 #endif
 
@@ -154,9 +154,9 @@ module pm_arrayCompact
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCompact_D0_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)            , intent(in)                    :: array
-        character(:,SKC)            , allocatable                   :: compact
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)            , intent(in)                    :: array
+        character(:,SKG)            , allocatable                   :: compact
     end function
 #endif
 
@@ -165,9 +165,9 @@ module pm_arrayCompact
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCompact_D0_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)            , intent(in)                    :: array
-        character(:,SKC)            , allocatable                   :: compact
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)            , intent(in)                    :: array
+        character(:,SKG)            , allocatable                   :: compact
     end function
 #endif
 
@@ -176,9 +176,9 @@ module pm_arrayCompact
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCompact_D0_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)            , intent(in)                    :: array
-        character(:,SKC)            , allocatable                   :: compact
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)            , intent(in)                    :: array
+        character(:,SKG)            , allocatable                   :: compact
     end function
 #endif
 
@@ -195,9 +195,9 @@ module pm_arrayCompact
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCompact_D1_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
-        character(LEN_STR,SKC)                      , allocatable   :: compact(:)
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
+        character(LEN_STR,SKG)                      , allocatable   :: compact(:)
     end function
 #endif
 
@@ -206,9 +206,9 @@ module pm_arrayCompact
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCompact_D1_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
-        character(LEN_STR,SKC)                      , allocatable   :: compact(:)
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
+        character(LEN_STR,SKG)                      , allocatable   :: compact(:)
     end function
 #endif
 
@@ -217,9 +217,9 @@ module pm_arrayCompact
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCompact_D1_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
-        character(LEN_STR,SKC)                      , allocatable   :: compact(:)
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
+        character(LEN_STR,SKG)                      , allocatable   :: compact(:)
     end function
 #endif
 
@@ -228,9 +228,9 @@ module pm_arrayCompact
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCompact_D1_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
-        character(LEN_STR,SKC)                      , allocatable   :: compact(:)
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
+        character(LEN_STR,SKG)                      , allocatable   :: compact(:)
     end function
 #endif
 
@@ -239,9 +239,9 @@ module pm_arrayCompact
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCompact_D1_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
-        character(LEN_STR,SKC)                      , allocatable   :: compact(:)
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
+        character(LEN_STR,SKG)                      , allocatable   :: compact(:)
     end function
 #endif
 
@@ -252,9 +252,9 @@ module pm_arrayCompact
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCompact_D1_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
-        integer(IKC)                , allocatable                   :: compact(:)
+        use pm_kind, only: IKG => IK5
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
+        integer(IKG)                , allocatable                   :: compact(:)
     end function
 #endif
 
@@ -263,9 +263,9 @@ module pm_arrayCompact
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCompact_D1_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
-        integer(IKC)                , allocatable                   :: compact(:)
+        use pm_kind, only: IKG => IK4
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
+        integer(IKG)                , allocatable                   :: compact(:)
     end function
 #endif
 
@@ -274,9 +274,9 @@ module pm_arrayCompact
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCompact_D1_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
-        integer(IKC)                , allocatable                   :: compact(:)
+        use pm_kind, only: IKG => IK3
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
+        integer(IKG)                , allocatable                   :: compact(:)
     end function
 #endif
 
@@ -285,9 +285,9 @@ module pm_arrayCompact
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCompact_D1_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
-        integer(IKC)                , allocatable                   :: compact(:)
+        use pm_kind, only: IKG => IK2
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
+        integer(IKG)                , allocatable                   :: compact(:)
     end function
 #endif
 
@@ -296,9 +296,9 @@ module pm_arrayCompact
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCompact_D1_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
-        integer(IKC)                , allocatable                   :: compact(:)
+        use pm_kind, only: IKG => IK1
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
+        integer(IKG)                , allocatable                   :: compact(:)
     end function
 #endif
 
@@ -309,9 +309,9 @@ module pm_arrayCompact
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCompact_D1_LK5
 #endif
-        use pm_kind, only: LKC => LK5
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
-        logical(LKC)                , allocatable                   :: compact(:)
+        use pm_kind, only: LKG => LK5
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
+        logical(LKG)                , allocatable                   :: compact(:)
     end function
 #endif
 
@@ -320,9 +320,9 @@ module pm_arrayCompact
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCompact_D1_LK4
 #endif
-        use pm_kind, only: LKC => LK4
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
-        logical(LKC)                , allocatable                   :: compact(:)
+        use pm_kind, only: LKG => LK4
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
+        logical(LKG)                , allocatable                   :: compact(:)
     end function
 #endif
 
@@ -331,9 +331,9 @@ module pm_arrayCompact
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCompact_D1_LK3
 #endif
-        use pm_kind, only: LKC => LK3
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
-        logical(LKC)                , allocatable                   :: compact(:)
+        use pm_kind, only: LKG => LK3
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
+        logical(LKG)                , allocatable                   :: compact(:)
     end function
 #endif
 
@@ -342,9 +342,9 @@ module pm_arrayCompact
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCompact_D1_LK2
 #endif
-        use pm_kind, only: LKC => LK2
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
-        logical(LKC)                , allocatable                   :: compact(:)
+        use pm_kind, only: LKG => LK2
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
+        logical(LKG)                , allocatable                   :: compact(:)
     end function
 #endif
 
@@ -353,9 +353,9 @@ module pm_arrayCompact
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCompact_D1_LK1
 #endif
-        use pm_kind, only: LKC => LK1
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
-        logical(LKC)                , allocatable                   :: compact(:)
+        use pm_kind, only: LKG => LK1
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
+        logical(LKG)                , allocatable                   :: compact(:)
     end function
 #endif
 
@@ -366,9 +366,9 @@ module pm_arrayCompact
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCompact_D1_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
-        complex(CKC)                , allocatable                   :: compact(:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
+        complex(CKG)                , allocatable                   :: compact(:)
     end function
 #endif
 
@@ -377,9 +377,9 @@ module pm_arrayCompact
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCompact_D1_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
-        complex(CKC)                , allocatable                   :: compact(:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
+        complex(CKG)                , allocatable                   :: compact(:)
     end function
 #endif
 
@@ -388,9 +388,9 @@ module pm_arrayCompact
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCompact_D1_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
-        complex(CKC)                , allocatable                   :: compact(:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
+        complex(CKG)                , allocatable                   :: compact(:)
     end function
 #endif
 
@@ -399,9 +399,9 @@ module pm_arrayCompact
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCompact_D1_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
-        complex(CKC)                , allocatable                   :: compact(:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
+        complex(CKG)                , allocatable                   :: compact(:)
     end function
 #endif
 
@@ -410,9 +410,9 @@ module pm_arrayCompact
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCompact_D1_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
-        complex(CKC)                , allocatable                   :: compact(:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
+        complex(CKG)                , allocatable                   :: compact(:)
     end function
 #endif
 
@@ -423,9 +423,9 @@ module pm_arrayCompact
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCompact_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
-        real(RKC)                   , allocatable                   :: compact(:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
+        real(RKG)                   , allocatable                   :: compact(:)
     end function
 #endif
 
@@ -434,9 +434,9 @@ module pm_arrayCompact
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCompact_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
-        real(RKC)                   , allocatable                   :: compact(:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
+        real(RKG)                   , allocatable                   :: compact(:)
     end function
 #endif
 
@@ -445,9 +445,9 @@ module pm_arrayCompact
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCompact_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
-        real(RKC)                   , allocatable                   :: compact(:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
+        real(RKG)                   , allocatable                   :: compact(:)
     end function
 #endif
 
@@ -456,9 +456,9 @@ module pm_arrayCompact
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCompact_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
-        real(RKC)                   , allocatable                   :: compact(:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
+        real(RKG)                   , allocatable                   :: compact(:)
     end function
 #endif
 
@@ -467,9 +467,9 @@ module pm_arrayCompact
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCompact_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
-        real(RKC)                   , allocatable                   :: compact(:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
+        real(RKG)                   , allocatable                   :: compact(:)
     end function
 #endif
 
@@ -486,10 +486,10 @@ module pm_arrayCompact
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCompact_D2_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:,:)
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:,:)
         integer(IK)                 , intent(in)                    :: dim
-        character(LEN_STR,SKC)                      , allocatable   :: compact(:,:)
+        character(LEN_STR,SKG)                      , allocatable   :: compact(:,:)
     end function
 #endif
 
@@ -498,10 +498,10 @@ module pm_arrayCompact
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCompact_D2_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:,:)
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:,:)
         integer(IK)                 , intent(in)                    :: dim
-        character(LEN_STR,SKC)                      , allocatable   :: compact(:,:)
+        character(LEN_STR,SKG)                      , allocatable   :: compact(:,:)
     end function
 #endif
 
@@ -510,10 +510,10 @@ module pm_arrayCompact
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCompact_D2_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:,:)
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:,:)
         integer(IK)                 , intent(in)                    :: dim
-        character(LEN_STR,SKC)                      , allocatable   :: compact(:,:)
+        character(LEN_STR,SKG)                      , allocatable   :: compact(:,:)
     end function
 #endif
 
@@ -522,10 +522,10 @@ module pm_arrayCompact
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCompact_D2_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:,:)
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:,:)
         integer(IK)                 , intent(in)                    :: dim
-        character(LEN_STR,SKC)                      , allocatable   :: compact(:,:)
+        character(LEN_STR,SKG)                      , allocatable   :: compact(:,:)
     end function
 #endif
 
@@ -534,10 +534,10 @@ module pm_arrayCompact
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCompact_D2_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:,:)
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:,:)
         integer(IK)                 , intent(in)                    :: dim
-        character(LEN_STR,SKC)                      , allocatable   :: compact(:,:)
+        character(LEN_STR,SKG)                      , allocatable   :: compact(:,:)
     end function
 #endif
 
@@ -548,10 +548,10 @@ module pm_arrayCompact
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCompact_D2_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)                , intent(in)    , contiguous    :: array(:,:)
+        use pm_kind, only: IKG => IK5
+        integer(IKG)                , intent(in)    , contiguous    :: array(:,:)
         integer(IK)                 , intent(in)                    :: dim
-        integer(IKC)                                , allocatable   :: compact(:,:)
+        integer(IKG)                                , allocatable   :: compact(:,:)
     end function
 #endif
 
@@ -560,10 +560,10 @@ module pm_arrayCompact
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCompact_D2_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)                , intent(in)    , contiguous    :: array(:,:)
+        use pm_kind, only: IKG => IK4
+        integer(IKG)                , intent(in)    , contiguous    :: array(:,:)
         integer(IK)                 , intent(in)                    :: dim
-        integer(IKC)                                , allocatable   :: compact(:,:)
+        integer(IKG)                                , allocatable   :: compact(:,:)
     end function
 #endif
 
@@ -572,10 +572,10 @@ module pm_arrayCompact
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCompact_D2_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)                , intent(in)    , contiguous    :: array(:,:)
+        use pm_kind, only: IKG => IK3
+        integer(IKG)                , intent(in)    , contiguous    :: array(:,:)
         integer(IK)                 , intent(in)                    :: dim
-        integer(IKC)                                , allocatable   :: compact(:,:)
+        integer(IKG)                                , allocatable   :: compact(:,:)
     end function
 #endif
 
@@ -584,10 +584,10 @@ module pm_arrayCompact
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCompact_D2_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)                , intent(in)    , contiguous    :: array(:,:)
+        use pm_kind, only: IKG => IK2
+        integer(IKG)                , intent(in)    , contiguous    :: array(:,:)
         integer(IK)                 , intent(in)                    :: dim
-        integer(IKC)                                , allocatable   :: compact(:,:)
+        integer(IKG)                                , allocatable   :: compact(:,:)
     end function
 #endif
 
@@ -596,10 +596,10 @@ module pm_arrayCompact
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCompact_D2_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)                , intent(in)    , contiguous    :: array(:,:)
+        use pm_kind, only: IKG => IK1
+        integer(IKG)                , intent(in)    , contiguous    :: array(:,:)
         integer(IK)                 , intent(in)                    :: dim
-        integer(IKC)                                , allocatable   :: compact(:,:)
+        integer(IKG)                                , allocatable   :: compact(:,:)
     end function
 #endif
 
@@ -610,10 +610,10 @@ module pm_arrayCompact
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCompact_D2_LK5
 #endif
-        use pm_kind, only: LKC => LK5
-        logical(LKC)                , intent(in)    , contiguous    :: array(:,:)
+        use pm_kind, only: LKG => LK5
+        logical(LKG)                , intent(in)    , contiguous    :: array(:,:)
         integer(IK)                 , intent(in)                    :: dim
-        logical(LKC)                                , allocatable   :: compact(:,:)
+        logical(LKG)                                , allocatable   :: compact(:,:)
     end function
 #endif
 
@@ -622,10 +622,10 @@ module pm_arrayCompact
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCompact_D2_LK4
 #endif
-        use pm_kind, only: LKC => LK4
-        logical(LKC)                , intent(in)    , contiguous    :: array(:,:)
+        use pm_kind, only: LKG => LK4
+        logical(LKG)                , intent(in)    , contiguous    :: array(:,:)
         integer(IK)                 , intent(in)                    :: dim
-        logical(LKC)                                , allocatable   :: compact(:,:)
+        logical(LKG)                                , allocatable   :: compact(:,:)
     end function
 #endif
 
@@ -634,10 +634,10 @@ module pm_arrayCompact
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCompact_D2_LK3
 #endif
-        use pm_kind, only: LKC => LK3
-        logical(LKC)                , intent(in)    , contiguous    :: array(:,:)
+        use pm_kind, only: LKG => LK3
+        logical(LKG)                , intent(in)    , contiguous    :: array(:,:)
         integer(IK)                 , intent(in)                    :: dim
-        logical(LKC)                                , allocatable   :: compact(:,:)
+        logical(LKG)                                , allocatable   :: compact(:,:)
     end function
 #endif
 
@@ -646,10 +646,10 @@ module pm_arrayCompact
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCompact_D2_LK2
 #endif
-        use pm_kind, only: LKC => LK2
-        logical(LKC)                , intent(in)    , contiguous    :: array(:,:)
+        use pm_kind, only: LKG => LK2
+        logical(LKG)                , intent(in)    , contiguous    :: array(:,:)
         integer(IK)                 , intent(in)                    :: dim
-        logical(LKC)                                , allocatable   :: compact(:,:)
+        logical(LKG)                                , allocatable   :: compact(:,:)
     end function
 #endif
 
@@ -658,10 +658,10 @@ module pm_arrayCompact
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCompact_D2_LK1
 #endif
-        use pm_kind, only: LKC => LK1
-        logical(LKC)                , intent(in)    , contiguous    :: array(:,:)
+        use pm_kind, only: LKG => LK1
+        logical(LKG)                , intent(in)    , contiguous    :: array(:,:)
         integer(IK)                 , intent(in)                    :: dim
-        logical(LKC)                                , allocatable   :: compact(:,:)
+        logical(LKG)                                , allocatable   :: compact(:,:)
     end function
 #endif
 
@@ -672,10 +672,10 @@ module pm_arrayCompact
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCompact_D2_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)                , intent(in)    , contiguous    :: array(:,:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG)                , intent(in)    , contiguous    :: array(:,:)
         integer(IK)                 , intent(in)                    :: dim
-        complex(CKC)                                , allocatable   :: compact(:,:)
+        complex(CKG)                                , allocatable   :: compact(:,:)
     end function
 #endif
 
@@ -684,10 +684,10 @@ module pm_arrayCompact
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCompact_D2_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)                , intent(in)    , contiguous    :: array(:,:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG)                , intent(in)    , contiguous    :: array(:,:)
         integer(IK)                 , intent(in)                    :: dim
-        complex(CKC)                                , allocatable   :: compact(:,:)
+        complex(CKG)                                , allocatable   :: compact(:,:)
     end function
 #endif
 
@@ -696,10 +696,10 @@ module pm_arrayCompact
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCompact_D2_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)                , intent(in)    , contiguous    :: array(:,:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG)                , intent(in)    , contiguous    :: array(:,:)
         integer(IK)                 , intent(in)                    :: dim
-        complex(CKC)                                , allocatable   :: compact(:,:)
+        complex(CKG)                                , allocatable   :: compact(:,:)
     end function
 #endif
 
@@ -708,10 +708,10 @@ module pm_arrayCompact
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCompact_D2_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)                , intent(in)    , contiguous    :: array(:,:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG)                , intent(in)    , contiguous    :: array(:,:)
         integer(IK)                 , intent(in)                    :: dim
-        complex(CKC)                                , allocatable   :: compact(:,:)
+        complex(CKG)                                , allocatable   :: compact(:,:)
     end function
 #endif
 
@@ -720,10 +720,10 @@ module pm_arrayCompact
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCompact_D2_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)                , intent(in)    , contiguous    :: array(:,:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG)                , intent(in)    , contiguous    :: array(:,:)
         integer(IK)                 , intent(in)                    :: dim
-        complex(CKC)                                , allocatable   :: compact(:,:)
+        complex(CKG)                                , allocatable   :: compact(:,:)
     end function
 #endif
 
@@ -734,10 +734,10 @@ module pm_arrayCompact
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCompact_D2_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)                   , intent(in)    , contiguous    :: array(:,:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)                   , intent(in)    , contiguous    :: array(:,:)
         integer(IK)                 , intent(in)                    :: dim
-        real(RKC)                                   , allocatable   :: compact(:,:)
+        real(RKG)                                   , allocatable   :: compact(:,:)
     end function
 #endif
 
@@ -746,10 +746,10 @@ module pm_arrayCompact
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCompact_D2_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)                   , intent(in)    , contiguous    :: array(:,:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)                   , intent(in)    , contiguous    :: array(:,:)
         integer(IK)                 , intent(in)                    :: dim
-        real(RKC)                                   , allocatable   :: compact(:,:)
+        real(RKG)                                   , allocatable   :: compact(:,:)
     end function
 #endif
 
@@ -758,10 +758,10 @@ module pm_arrayCompact
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCompact_D2_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)                   , intent(in)    , contiguous    :: array(:,:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)                   , intent(in)    , contiguous    :: array(:,:)
         integer(IK)                 , intent(in)                    :: dim
-        real(RKC)                                   , allocatable   :: compact(:,:)
+        real(RKG)                                   , allocatable   :: compact(:,:)
     end function
 #endif
 
@@ -770,10 +770,10 @@ module pm_arrayCompact
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCompact_D2_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)                   , intent(in)    , contiguous    :: array(:,:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)                   , intent(in)    , contiguous    :: array(:,:)
         integer(IK)                 , intent(in)                    :: dim
-        real(RKC)                                   , allocatable   :: compact(:,:)
+        real(RKG)                                   , allocatable   :: compact(:,:)
     end function
 #endif
 
@@ -782,10 +782,10 @@ module pm_arrayCompact
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCompact_D2_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)                   , intent(in)    , contiguous    :: array(:,:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)                   , intent(in)    , contiguous    :: array(:,:)
         integer(IK)                 , intent(in)                    :: dim
-        real(RKC)                                   , allocatable   :: compact(:,:)
+        real(RKG)                                   , allocatable   :: compact(:,:)
     end function
 #endif
 
@@ -875,8 +875,8 @@ module pm_arrayCompact
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCompact_D0_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)            , intent(inout)                 :: array
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)            , intent(inout)                 :: array
         integer(IK)                 , intent(out)   , contiguous    :: weight(:)
         integer(IK)                 , intent(out)                   :: csize
     end subroutine
@@ -887,8 +887,8 @@ module pm_arrayCompact
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCompact_D0_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)            , intent(inout)                 :: array
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)            , intent(inout)                 :: array
         integer(IK)                 , intent(out)   , contiguous    :: weight(:)
         integer(IK)                 , intent(out)                   :: csize
     end subroutine
@@ -899,8 +899,8 @@ module pm_arrayCompact
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCompact_D0_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)            , intent(inout)                 :: array
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)            , intent(inout)                 :: array
         integer(IK)                 , intent(out)   , contiguous    :: weight(:)
         integer(IK)                 , intent(out)                   :: csize
     end subroutine
@@ -911,8 +911,8 @@ module pm_arrayCompact
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCompact_D0_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)            , intent(inout)                 :: array
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)            , intent(inout)                 :: array
         integer(IK)                 , intent(out)   , contiguous    :: weight(:)
         integer(IK)                 , intent(out)                   :: csize
     end subroutine
@@ -923,8 +923,8 @@ module pm_arrayCompact
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCompact_D0_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)            , intent(inout)                 :: array
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)            , intent(inout)                 :: array
         integer(IK)                 , intent(out)   , contiguous    :: weight(:)
         integer(IK)                 , intent(out)                   :: csize
     end subroutine
@@ -943,8 +943,8 @@ module pm_arrayCompact
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCompact_D1_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)            , intent(inout) , contiguous    :: array(:)
         integer(IK)                 , intent(out)   , contiguous    :: weight(:)
         integer(IK)                 , intent(out)                   :: csize
     end subroutine
@@ -955,8 +955,8 @@ module pm_arrayCompact
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCompact_D1_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)            , intent(inout) , contiguous    :: array(:)
         integer(IK)                 , intent(out)   , contiguous    :: weight(:)
         integer(IK)                 , intent(out)                   :: csize
     end subroutine
@@ -967,8 +967,8 @@ module pm_arrayCompact
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCompact_D1_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)            , intent(inout) , contiguous    :: array(:)
         integer(IK)                 , intent(out)   , contiguous    :: weight(:)
         integer(IK)                 , intent(out)                   :: csize
     end subroutine
@@ -979,8 +979,8 @@ module pm_arrayCompact
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCompact_D1_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)            , intent(inout) , contiguous    :: array(:)
         integer(IK)                 , intent(out)   , contiguous    :: weight(:)
         integer(IK)                 , intent(out)                   :: csize
     end subroutine
@@ -991,8 +991,8 @@ module pm_arrayCompact
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCompact_D1_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)            , intent(inout) , contiguous    :: array(:)
         integer(IK)                 , intent(out)   , contiguous    :: weight(:)
         integer(IK)                 , intent(out)                   :: csize
     end subroutine
@@ -1005,8 +1005,8 @@ module pm_arrayCompact
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCompact_D1_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)                , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK5
+        integer(IKG)                , intent(inout) , contiguous    :: array(:)
         integer(IK)                 , intent(out)   , contiguous    :: weight(:)
         integer(IK)                 , intent(out)                   :: csize
     end subroutine
@@ -1017,8 +1017,8 @@ module pm_arrayCompact
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCompact_D1_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)                , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK4
+        integer(IKG)                , intent(inout) , contiguous    :: array(:)
         integer(IK)                 , intent(out)   , contiguous    :: weight(:)
         integer(IK)                 , intent(out)                   :: csize
     end subroutine
@@ -1029,8 +1029,8 @@ module pm_arrayCompact
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCompact_D1_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)                , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK3
+        integer(IKG)                , intent(inout) , contiguous    :: array(:)
         integer(IK)                 , intent(out)   , contiguous    :: weight(:)
         integer(IK)                 , intent(out)                   :: csize
     end subroutine
@@ -1041,8 +1041,8 @@ module pm_arrayCompact
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCompact_D1_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)                , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK2
+        integer(IKG)                , intent(inout) , contiguous    :: array(:)
         integer(IK)                 , intent(out)   , contiguous    :: weight(:)
         integer(IK)                 , intent(out)                   :: csize
     end subroutine
@@ -1053,8 +1053,8 @@ module pm_arrayCompact
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCompact_D1_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)                , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK1
+        integer(IKG)                , intent(inout) , contiguous    :: array(:)
         integer(IK)                 , intent(out)   , contiguous    :: weight(:)
         integer(IK)                 , intent(out)                   :: csize
     end subroutine
@@ -1067,8 +1067,8 @@ module pm_arrayCompact
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCompact_D1_LK5
 #endif
-        use pm_kind, only: LKC => LK5
-        logical(LKC)                , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: LKG => LK5
+        logical(LKG)                , intent(inout) , contiguous    :: array(:)
         integer(IK)                 , intent(out)   , contiguous    :: weight(:)
         integer(IK)                 , intent(out)                   :: csize
     end subroutine
@@ -1079,8 +1079,8 @@ module pm_arrayCompact
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCompact_D1_LK4
 #endif
-        use pm_kind, only: LKC => LK4
-        logical(LKC)                , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: LKG => LK4
+        logical(LKG)                , intent(inout) , contiguous    :: array(:)
         integer(IK)                 , intent(out)   , contiguous    :: weight(:)
         integer(IK)                 , intent(out)                   :: csize
     end subroutine
@@ -1091,8 +1091,8 @@ module pm_arrayCompact
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCompact_D1_LK3
 #endif
-        use pm_kind, only: LKC => LK3
-        logical(LKC)                , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: LKG => LK3
+        logical(LKG)                , intent(inout) , contiguous    :: array(:)
         integer(IK)                 , intent(out)   , contiguous    :: weight(:)
         integer(IK)                 , intent(out)                   :: csize
     end subroutine
@@ -1103,8 +1103,8 @@ module pm_arrayCompact
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCompact_D1_LK2
 #endif
-        use pm_kind, only: LKC => LK2
-        logical(LKC)                , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: LKG => LK2
+        logical(LKG)                , intent(inout) , contiguous    :: array(:)
         integer(IK)                 , intent(out)   , contiguous    :: weight(:)
         integer(IK)                 , intent(out)                   :: csize
     end subroutine
@@ -1115,8 +1115,8 @@ module pm_arrayCompact
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCompact_D1_LK1
 #endif
-        use pm_kind, only: LKC => LK1
-        logical(LKC)                , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: LKG => LK1
+        logical(LKG)                , intent(inout) , contiguous    :: array(:)
         integer(IK)                 , intent(out)   , contiguous    :: weight(:)
         integer(IK)                 , intent(out)                   :: csize
     end subroutine
@@ -1129,8 +1129,8 @@ module pm_arrayCompact
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCompact_D1_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)                , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG)                , intent(inout) , contiguous    :: array(:)
         integer(IK)                 , intent(out)   , contiguous    :: weight(:)
         integer(IK)                 , intent(out)                   :: csize
     end subroutine
@@ -1141,8 +1141,8 @@ module pm_arrayCompact
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCompact_D1_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)                , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG)                , intent(inout) , contiguous    :: array(:)
         integer(IK)                 , intent(out)   , contiguous    :: weight(:)
         integer(IK)                 , intent(out)                   :: csize
     end subroutine
@@ -1153,8 +1153,8 @@ module pm_arrayCompact
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCompact_D1_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)                , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG)                , intent(inout) , contiguous    :: array(:)
         integer(IK)                 , intent(out)   , contiguous    :: weight(:)
         integer(IK)                 , intent(out)                   :: csize
     end subroutine
@@ -1165,8 +1165,8 @@ module pm_arrayCompact
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCompact_D1_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)                , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG)                , intent(inout) , contiguous    :: array(:)
         integer(IK)                 , intent(out)   , contiguous    :: weight(:)
         integer(IK)                 , intent(out)                   :: csize
     end subroutine
@@ -1177,8 +1177,8 @@ module pm_arrayCompact
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCompact_D1_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)                , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG)                , intent(inout) , contiguous    :: array(:)
         integer(IK)                 , intent(out)   , contiguous    :: weight(:)
         integer(IK)                 , intent(out)                   :: csize
     end subroutine
@@ -1191,8 +1191,8 @@ module pm_arrayCompact
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCompact_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)                   , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)                   , intent(inout) , contiguous    :: array(:)
         integer(IK)                 , intent(out)   , contiguous    :: weight(:)
         integer(IK)                 , intent(out)                   :: csize
     end subroutine
@@ -1203,8 +1203,8 @@ module pm_arrayCompact
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCompact_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)                   , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)                   , intent(inout) , contiguous    :: array(:)
         integer(IK)                 , intent(out)   , contiguous    :: weight(:)
         integer(IK)                 , intent(out)                   :: csize
     end subroutine
@@ -1215,8 +1215,8 @@ module pm_arrayCompact
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCompact_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)                   , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)                   , intent(inout) , contiguous    :: array(:)
         integer(IK)                 , intent(out)   , contiguous    :: weight(:)
         integer(IK)                 , intent(out)                   :: csize
     end subroutine
@@ -1227,8 +1227,8 @@ module pm_arrayCompact
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCompact_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)                   , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)                   , intent(inout) , contiguous    :: array(:)
         integer(IK)                 , intent(out)   , contiguous    :: weight(:)
         integer(IK)                 , intent(out)                   :: csize
     end subroutine
@@ -1239,8 +1239,8 @@ module pm_arrayCompact
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCompact_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)                   , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)                   , intent(inout) , contiguous    :: array(:)
         integer(IK)                 , intent(out)   , contiguous    :: weight(:)
         integer(IK)                 , intent(out)                   :: csize
     end subroutine
@@ -1259,8 +1259,8 @@ module pm_arrayCompact
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCompact_D2_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)            , intent(inout) , contiguous    :: array(:,:)
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)            , intent(inout) , contiguous    :: array(:,:)
         integer(IK)                 , intent(out)   , contiguous    :: weight(:)
         integer(IK)                 , intent(out)                   :: csize
         integer(IK)                 , intent(in)                    :: dim
@@ -1272,8 +1272,8 @@ module pm_arrayCompact
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCompact_D2_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)            , intent(inout) , contiguous    :: array(:,:)
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)            , intent(inout) , contiguous    :: array(:,:)
         integer(IK)                 , intent(out)   , contiguous    :: weight(:)
         integer(IK)                 , intent(out)                   :: csize
         integer(IK)                 , intent(in)                    :: dim
@@ -1285,8 +1285,8 @@ module pm_arrayCompact
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCompact_D2_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)            , intent(inout) , contiguous    :: array(:,:)
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)            , intent(inout) , contiguous    :: array(:,:)
         integer(IK)                 , intent(out)   , contiguous    :: weight(:)
         integer(IK)                 , intent(out)                   :: csize
         integer(IK)                 , intent(in)                    :: dim
@@ -1298,8 +1298,8 @@ module pm_arrayCompact
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCompact_D2_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)            , intent(inout) , contiguous    :: array(:,:)
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)            , intent(inout) , contiguous    :: array(:,:)
         integer(IK)                 , intent(out)   , contiguous    :: weight(:)
         integer(IK)                 , intent(out)                   :: csize
         integer(IK)                 , intent(in)                    :: dim
@@ -1311,8 +1311,8 @@ module pm_arrayCompact
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCompact_D2_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)            , intent(inout) , contiguous    :: array(:,:)
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)            , intent(inout) , contiguous    :: array(:,:)
         integer(IK)                 , intent(out)   , contiguous    :: weight(:)
         integer(IK)                 , intent(out)                   :: csize
         integer(IK)                 , intent(in)                    :: dim
@@ -1326,8 +1326,8 @@ module pm_arrayCompact
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCompact_D2_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)                , intent(inout) , contiguous    :: array(:,:)
+        use pm_kind, only: IKG => IK5
+        integer(IKG)                , intent(inout) , contiguous    :: array(:,:)
         integer(IK)                 , intent(out)   , contiguous    :: weight(:)
         integer(IK)                 , intent(out)                   :: csize
         integer(IK)                 , intent(in)                    :: dim
@@ -1339,8 +1339,8 @@ module pm_arrayCompact
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCompact_D2_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)                , intent(inout) , contiguous    :: array(:,:)
+        use pm_kind, only: IKG => IK4
+        integer(IKG)                , intent(inout) , contiguous    :: array(:,:)
         integer(IK)                 , intent(out)   , contiguous    :: weight(:)
         integer(IK)                 , intent(out)                   :: csize
         integer(IK)                 , intent(in)                    :: dim
@@ -1352,8 +1352,8 @@ module pm_arrayCompact
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCompact_D2_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)                , intent(inout) , contiguous    :: array(:,:)
+        use pm_kind, only: IKG => IK3
+        integer(IKG)                , intent(inout) , contiguous    :: array(:,:)
         integer(IK)                 , intent(out)   , contiguous    :: weight(:)
         integer(IK)                 , intent(out)                   :: csize
         integer(IK)                 , intent(in)                    :: dim
@@ -1365,8 +1365,8 @@ module pm_arrayCompact
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCompact_D2_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)                , intent(inout) , contiguous    :: array(:,:)
+        use pm_kind, only: IKG => IK2
+        integer(IKG)                , intent(inout) , contiguous    :: array(:,:)
         integer(IK)                 , intent(out)   , contiguous    :: weight(:)
         integer(IK)                 , intent(out)                   :: csize
         integer(IK)                 , intent(in)                    :: dim
@@ -1378,8 +1378,8 @@ module pm_arrayCompact
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCompact_D2_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)                , intent(inout) , contiguous    :: array(:,:)
+        use pm_kind, only: IKG => IK1
+        integer(IKG)                , intent(inout) , contiguous    :: array(:,:)
         integer(IK)                 , intent(out)   , contiguous    :: weight(:)
         integer(IK)                 , intent(out)                   :: csize
         integer(IK)                 , intent(in)                    :: dim
@@ -1393,8 +1393,8 @@ module pm_arrayCompact
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCompact_D2_LK5
 #endif
-        use pm_kind, only: LKC => LK5
-        logical(LKC)                , intent(inout) , contiguous    :: array(:,:)
+        use pm_kind, only: LKG => LK5
+        logical(LKG)                , intent(inout) , contiguous    :: array(:,:)
         integer(IK)                 , intent(out)   , contiguous    :: weight(:)
         integer(IK)                 , intent(out)                   :: csize
         integer(IK)                 , intent(in)                    :: dim
@@ -1406,8 +1406,8 @@ module pm_arrayCompact
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCompact_D2_LK4
 #endif
-        use pm_kind, only: LKC => LK4
-        logical(LKC)                , intent(inout) , contiguous    :: array(:,:)
+        use pm_kind, only: LKG => LK4
+        logical(LKG)                , intent(inout) , contiguous    :: array(:,:)
         integer(IK)                 , intent(out)   , contiguous    :: weight(:)
         integer(IK)                 , intent(out)                   :: csize
         integer(IK)                 , intent(in)                    :: dim
@@ -1419,8 +1419,8 @@ module pm_arrayCompact
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCompact_D2_LK3
 #endif
-        use pm_kind, only: LKC => LK3
-        logical(LKC)                , intent(inout) , contiguous    :: array(:,:)
+        use pm_kind, only: LKG => LK3
+        logical(LKG)                , intent(inout) , contiguous    :: array(:,:)
         integer(IK)                 , intent(out)   , contiguous    :: weight(:)
         integer(IK)                 , intent(out)                   :: csize
         integer(IK)                 , intent(in)                    :: dim
@@ -1432,8 +1432,8 @@ module pm_arrayCompact
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCompact_D2_LK2
 #endif
-        use pm_kind, only: LKC => LK2
-        logical(LKC)                , intent(inout) , contiguous    :: array(:,:)
+        use pm_kind, only: LKG => LK2
+        logical(LKG)                , intent(inout) , contiguous    :: array(:,:)
         integer(IK)                 , intent(out)   , contiguous    :: weight(:)
         integer(IK)                 , intent(out)                   :: csize
         integer(IK)                 , intent(in)                    :: dim
@@ -1445,8 +1445,8 @@ module pm_arrayCompact
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCompact_D2_LK1
 #endif
-        use pm_kind, only: LKC => LK1
-        logical(LKC)                , intent(inout) , contiguous    :: array(:,:)
+        use pm_kind, only: LKG => LK1
+        logical(LKG)                , intent(inout) , contiguous    :: array(:,:)
         integer(IK)                 , intent(out)   , contiguous    :: weight(:)
         integer(IK)                 , intent(out)                   :: csize
         integer(IK)                 , intent(in)                    :: dim
@@ -1460,8 +1460,8 @@ module pm_arrayCompact
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCompact_D2_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)                , intent(inout) , contiguous    :: array(:,:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG)                , intent(inout) , contiguous    :: array(:,:)
         integer(IK)                 , intent(out)   , contiguous    :: weight(:)
         integer(IK)                 , intent(out)                   :: csize
         integer(IK)                 , intent(in)                    :: dim
@@ -1473,8 +1473,8 @@ module pm_arrayCompact
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCompact_D2_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)                , intent(inout) , contiguous    :: array(:,:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG)                , intent(inout) , contiguous    :: array(:,:)
         integer(IK)                 , intent(out)   , contiguous    :: weight(:)
         integer(IK)                 , intent(out)                   :: csize
         integer(IK)                 , intent(in)                    :: dim
@@ -1486,8 +1486,8 @@ module pm_arrayCompact
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCompact_D2_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)                , intent(inout) , contiguous    :: array(:,:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG)                , intent(inout) , contiguous    :: array(:,:)
         integer(IK)                 , intent(out)   , contiguous    :: weight(:)
         integer(IK)                 , intent(out)                   :: csize
         integer(IK)                 , intent(in)                    :: dim
@@ -1499,8 +1499,8 @@ module pm_arrayCompact
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCompact_D2_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)                , intent(inout) , contiguous    :: array(:,:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG)                , intent(inout) , contiguous    :: array(:,:)
         integer(IK)                 , intent(out)   , contiguous    :: weight(:)
         integer(IK)                 , intent(out)                   :: csize
         integer(IK)                 , intent(in)                    :: dim
@@ -1512,8 +1512,8 @@ module pm_arrayCompact
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCompact_D2_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)                , intent(inout) , contiguous    :: array(:,:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG)                , intent(inout) , contiguous    :: array(:,:)
         integer(IK)                 , intent(out)   , contiguous    :: weight(:)
         integer(IK)                 , intent(out)                   :: csize
         integer(IK)                 , intent(in)                    :: dim
@@ -1527,8 +1527,8 @@ module pm_arrayCompact
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCompact_D2_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)                   , intent(inout) , contiguous    :: array(:,:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)                   , intent(inout) , contiguous    :: array(:,:)
         integer(IK)                 , intent(out)   , contiguous    :: weight(:)
         integer(IK)                 , intent(out)                   :: csize
         integer(IK)                 , intent(in)                    :: dim
@@ -1540,8 +1540,8 @@ module pm_arrayCompact
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCompact_D2_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)                   , intent(inout) , contiguous    :: array(:,:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)                   , intent(inout) , contiguous    :: array(:,:)
         integer(IK)                 , intent(out)   , contiguous    :: weight(:)
         integer(IK)                 , intent(out)                   :: csize
         integer(IK)                 , intent(in)                    :: dim
@@ -1553,8 +1553,8 @@ module pm_arrayCompact
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCompact_D2_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)                   , intent(inout) , contiguous    :: array(:,:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)                   , intent(inout) , contiguous    :: array(:,:)
         integer(IK)                 , intent(out)   , contiguous    :: weight(:)
         integer(IK)                 , intent(out)                   :: csize
         integer(IK)                 , intent(in)                    :: dim
@@ -1566,8 +1566,8 @@ module pm_arrayCompact
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCompact_D2_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)                   , intent(inout) , contiguous    :: array(:,:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)                   , intent(inout) , contiguous    :: array(:,:)
         integer(IK)                 , intent(out)   , contiguous    :: weight(:)
         integer(IK)                 , intent(out)                   :: csize
         integer(IK)                 , intent(in)                    :: dim
@@ -1579,8 +1579,8 @@ module pm_arrayCompact
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCompact_D2_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)                   , intent(inout) , contiguous    :: array(:,:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)                   , intent(inout) , contiguous    :: array(:,:)
         integer(IK)                 , intent(out)   , contiguous    :: weight(:)
         integer(IK)                 , intent(out)                   :: csize
         integer(IK)                 , intent(in)                    :: dim
@@ -1598,10 +1598,10 @@ module pm_arrayCompact
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setCompactNew_D0_SK5
 !#endif
-!        use pm_kind, only: SKC => SK5
-!        character(*,SKC)            , intent(in)                    :: array
+!        use pm_kind, only: SKG => SK5
+!        character(*,SKG)            , intent(in)                    :: array
 !        integer(IK)                 , intent(in)    , allocatable   :: weight(:)
-!        character(:,SKC)            , intent(out)   , allocatable   :: compact
+!        character(:,SKG)            , intent(out)   , allocatable   :: compact
 !    end subroutine
 !#endif
 !
@@ -1610,10 +1610,10 @@ module pm_arrayCompact
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setCompactNew_D0_SK4
 !#endif
-!        use pm_kind, only: SKC => SK4
-!        character(*,SKC)            , intent(in)                    :: array
+!        use pm_kind, only: SKG => SK4
+!        character(*,SKG)            , intent(in)                    :: array
 !        integer(IK)                 , intent(out)   , allocatable   :: weight(:)
-!        character(:,SKC)            , intent(out)   , allocatable   :: compact
+!        character(:,SKG)            , intent(out)   , allocatable   :: compact
 !    end subroutine
 !#endif
 !
@@ -1622,10 +1622,10 @@ module pm_arrayCompact
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setCompactNew_D0_SK3
 !#endif
-!        use pm_kind, only: SKC => SK3
-!        character(*,SKC)            , intent(in)                    :: array
+!        use pm_kind, only: SKG => SK3
+!        character(*,SKG)            , intent(in)                    :: array
 !        integer(IK)                 , intent(out)   , allocatable   :: weight(:)
-!        character(:,SKC)            , intent(out)   , allocatable   :: compact
+!        character(:,SKG)            , intent(out)   , allocatable   :: compact
 !    end subroutine
 !#endif
 !
@@ -1634,10 +1634,10 @@ module pm_arrayCompact
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setCompactNew_D0_SK2
 !#endif
-!        use pm_kind, only: SKC => SK2
-!        character(*,SKC)            , intent(in)                    :: array
+!        use pm_kind, only: SKG => SK2
+!        character(*,SKG)            , intent(in)                    :: array
 !        integer(IK)                 , intent(out)   , allocatable   :: weight(:)
-!        character(:,SKC)            , intent(out)   , allocatable   :: compact
+!        character(:,SKG)            , intent(out)   , allocatable   :: compact
 !    end subroutine
 !#endif
 !
@@ -1646,10 +1646,10 @@ module pm_arrayCompact
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setCompactNew_D0_SK1
 !#endif
-!        use pm_kind, only: SKC => SK1
-!        character(*,SKC)            , intent(in)                    :: array
+!        use pm_kind, only: SKG => SK1
+!        character(*,SKG)            , intent(in)                    :: array
 !        integer(IK)                 , intent(out)   , allocatable   :: weight(:)
-!        character(:,SKC)            , intent(out)   , allocatable   :: compact
+!        character(:,SKG)            , intent(out)   , allocatable   :: compact
 !    end subroutine
 !#endif
 !
@@ -1666,10 +1666,10 @@ module pm_arrayCompact
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setCompactNew_D1_SK5
 !#endif
-!        use pm_kind, only: SKC => SK5
-!        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
+!        use pm_kind, only: SKG => SK5
+!        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
 !        integer(IK)                 , intent(out)   , allocatable   :: weight(:)
-!        character(len(array),SKC)   , intent(out)   , allocatable   :: compact(:)
+!        character(len(array),SKG)   , intent(out)   , allocatable   :: compact(:)
 !    end subroutine
 !#endif
 !
@@ -1678,10 +1678,10 @@ module pm_arrayCompact
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setCompactNew_D1_SK4
 !#endif
-!        use pm_kind, only: SKC => SK4
-!        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
+!        use pm_kind, only: SKG => SK4
+!        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
 !        integer(IK)                 , intent(out)   , allocatable   :: weight(:)
-!        character(len(array),SKC)   , intent(out)   , allocatable   :: compact(:)
+!        character(len(array),SKG)   , intent(out)   , allocatable   :: compact(:)
 !    end subroutine
 !#endif
 !
@@ -1690,10 +1690,10 @@ module pm_arrayCompact
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setCompactNew_D1_SK3
 !#endif
-!        use pm_kind, only: SKC => SK3
-!        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
+!        use pm_kind, only: SKG => SK3
+!        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
 !        integer(IK)                 , intent(out)   , allocatable   :: weight(:)
-!        character(len(array),SKC)   , intent(out)   , allocatable   :: compact(:)
+!        character(len(array),SKG)   , intent(out)   , allocatable   :: compact(:)
 !    end subroutine
 !#endif
 !
@@ -1702,10 +1702,10 @@ module pm_arrayCompact
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setCompactNew_D1_SK2
 !#endif
-!        use pm_kind, only: SKC => SK2
-!        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
+!        use pm_kind, only: SKG => SK2
+!        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
 !        integer(IK)                 , intent(out)   , allocatable   :: weight(:)
-!        character(len(array),SKC)   , intent(out)   , allocatable   :: compact(:)
+!        character(len(array),SKG)   , intent(out)   , allocatable   :: compact(:)
 !    end subroutine
 !#endif
 !
@@ -1714,10 +1714,10 @@ module pm_arrayCompact
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setCompactNew_D1_SK1
 !#endif
-!        use pm_kind, only: SKC => SK1
-!        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
+!        use pm_kind, only: SKG => SK1
+!        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
 !        integer(IK)                 , intent(out)   , allocatable   :: weight(:)
-!        character(len(array),SKC)   , intent(out)   , allocatable   :: compact(:)
+!        character(len(array),SKG)   , intent(out)   , allocatable   :: compact(:)
 !    end subroutine
 !#endif
 !
@@ -1728,10 +1728,10 @@ module pm_arrayCompact
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setCompactNew_D1_IK5
 !#endif
-!        use pm_kind, only: IKC => IK5
-!        integer(IKC)                , intent(in)    , contiguous    :: array(:)
+!        use pm_kind, only: IKG => IK5
+!        integer(IKG)                , intent(in)    , contiguous    :: array(:)
 !        integer(IK)                 , intent(out)   , allocatable   :: weight(:)
-!        integer(IKC)                , intent(out)   , allocatable   :: compact(:)
+!        integer(IKG)                , intent(out)   , allocatable   :: compact(:)
 !    end subroutine
 !#endif
 !
@@ -1740,10 +1740,10 @@ module pm_arrayCompact
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setCompactNew_D1_IK4
 !#endif
-!        use pm_kind, only: IKC => IK4
-!        integer(IKC)                , intent(in)    , contiguous    :: array(:)
+!        use pm_kind, only: IKG => IK4
+!        integer(IKG)                , intent(in)    , contiguous    :: array(:)
 !        integer(IK)                 , intent(out)   , allocatable   :: weight(:)
-!        integer(IKC)                , intent(out)   , allocatable   :: compact(:)
+!        integer(IKG)                , intent(out)   , allocatable   :: compact(:)
 !    end subroutine
 !#endif
 !
@@ -1752,10 +1752,10 @@ module pm_arrayCompact
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setCompactNew_D1_IK3
 !#endif
-!        use pm_kind, only: IKC => IK3
-!        integer(IKC)                , intent(in)    , contiguous    :: array(:)
+!        use pm_kind, only: IKG => IK3
+!        integer(IKG)                , intent(in)    , contiguous    :: array(:)
 !        integer(IK)                 , intent(out)   , allocatable   :: weight(:)
-!        integer(IKC)                , intent(out)   , allocatable   :: compact(:)
+!        integer(IKG)                , intent(out)   , allocatable   :: compact(:)
 !    end subroutine
 !#endif
 !
@@ -1764,10 +1764,10 @@ module pm_arrayCompact
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setCompactNew_D1_IK2
 !#endif
-!        use pm_kind, only: IKC => IK2
-!        integer(IKC)                , intent(in)    , contiguous    :: array(:)
+!        use pm_kind, only: IKG => IK2
+!        integer(IKG)                , intent(in)    , contiguous    :: array(:)
 !        integer(IK)                 , intent(out)   , allocatable   :: weight(:)
-!        integer(IKC)                , intent(out)   , allocatable   :: compact(:)
+!        integer(IKG)                , intent(out)   , allocatable   :: compact(:)
 !    end subroutine
 !#endif
 !
@@ -1776,10 +1776,10 @@ module pm_arrayCompact
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setCompactNew_D1_IK1
 !#endif
-!        use pm_kind, only: IKC => IK1
-!        integer(IKC)                , intent(in)    , contiguous    :: array(:)
+!        use pm_kind, only: IKG => IK1
+!        integer(IKG)                , intent(in)    , contiguous    :: array(:)
 !        integer(IK)                 , intent(out)   , allocatable   :: weight(:)
-!        integer(IKC)                , intent(out)   , allocatable   :: compact(:)
+!        integer(IKG)                , intent(out)   , allocatable   :: compact(:)
 !    end subroutine
 !#endif
 !
@@ -1790,10 +1790,10 @@ module pm_arrayCompact
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setCompactNew_D1_LK5
 !#endif
-!        use pm_kind, only: LKC => LK5
-!        logical(LKC)                , intent(in)    , contiguous    :: array(:)
+!        use pm_kind, only: LKG => LK5
+!        logical(LKG)                , intent(in)    , contiguous    :: array(:)
 !        integer(IK)                 , intent(out)   , allocatable   :: weight(:)
-!        logical(LKC)                , intent(out)   , allocatable   :: compact(:)
+!        logical(LKG)                , intent(out)   , allocatable   :: compact(:)
 !    end subroutine
 !#endif
 !
@@ -1802,10 +1802,10 @@ module pm_arrayCompact
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setCompactNew_D1_LK4
 !#endif
-!        use pm_kind, only: LKC => LK4
-!        logical(LKC)                , intent(in)    , contiguous    :: array(:)
+!        use pm_kind, only: LKG => LK4
+!        logical(LKG)                , intent(in)    , contiguous    :: array(:)
 !        integer(IK)                 , intent(out)   , allocatable   :: weight(:)
-!        logical(LKC)                , intent(out)   , allocatable   :: compact(:)
+!        logical(LKG)                , intent(out)   , allocatable   :: compact(:)
 !    end subroutine
 !#endif
 !
@@ -1814,10 +1814,10 @@ module pm_arrayCompact
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setCompactNew_D1_LK3
 !#endif
-!        use pm_kind, only: LKC => LK3
-!        logical(LKC)                , intent(in)    , contiguous    :: array(:)
+!        use pm_kind, only: LKG => LK3
+!        logical(LKG)                , intent(in)    , contiguous    :: array(:)
 !        integer(IK)                 , intent(out)   , allocatable   :: weight(:)
-!        logical(LKC)                , intent(out)   , allocatable   :: compact(:)
+!        logical(LKG)                , intent(out)   , allocatable   :: compact(:)
 !    end subroutine
 !#endif
 !
@@ -1826,10 +1826,10 @@ module pm_arrayCompact
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setCompactNew_D1_LK2
 !#endif
-!        use pm_kind, only: LKC => LK2
-!        logical(LKC)                , intent(in)    , contiguous    :: array(:)
+!        use pm_kind, only: LKG => LK2
+!        logical(LKG)                , intent(in)    , contiguous    :: array(:)
 !        integer(IK)                 , intent(out)   , allocatable   :: weight(:)
-!        logical(LKC)                , intent(out)   , allocatable   :: compact(:)
+!        logical(LKG)                , intent(out)   , allocatable   :: compact(:)
 !    end subroutine
 !#endif
 !
@@ -1838,10 +1838,10 @@ module pm_arrayCompact
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setCompactNew_D1_LK1
 !#endif
-!        use pm_kind, only: LKC => LK1
-!        logical(LKC)                , intent(in)    , contiguous    :: array(:)
+!        use pm_kind, only: LKG => LK1
+!        logical(LKG)                , intent(in)    , contiguous    :: array(:)
 !        integer(IK)                 , intent(out)   , allocatable   :: weight(:)
-!        logical(LKC)                , intent(out)   , allocatable   :: compact(:)
+!        logical(LKG)                , intent(out)   , allocatable   :: compact(:)
 !    end subroutine
 !#endif
 !
@@ -1852,10 +1852,10 @@ module pm_arrayCompact
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setCompactNew_D1_CK5
 !#endif
-!        use pm_kind, only: CKC => CK5
-!        complex(CKC)                , intent(in)    , contiguous    :: array(:)
+!        use pm_kind, only: CKG => CK5
+!        complex(CKG)                , intent(in)    , contiguous    :: array(:)
 !        integer(IK)                 , intent(out)   , allocatable   :: weight(:)
-!        complex(CKC)                , intent(out)   , allocatable   :: compact(:)
+!        complex(CKG)                , intent(out)   , allocatable   :: compact(:)
 !    end subroutine
 !#endif
 !
@@ -1864,10 +1864,10 @@ module pm_arrayCompact
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setCompactNew_D1_CK4
 !#endif
-!        use pm_kind, only: CKC => CK4
-!        complex(CKC)                , intent(in)    , contiguous    :: array(:)
+!        use pm_kind, only: CKG => CK4
+!        complex(CKG)                , intent(in)    , contiguous    :: array(:)
 !        integer(IK)                 , intent(out)   , allocatable   :: weight(:)
-!        complex(CKC)                , intent(out)   , allocatable   :: compact(:)
+!        complex(CKG)                , intent(out)   , allocatable   :: compact(:)
 !    end subroutine
 !#endif
 !
@@ -1876,10 +1876,10 @@ module pm_arrayCompact
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setCompactNew_D1_CK3
 !#endif
-!        use pm_kind, only: CKC => CK3
-!        complex(CKC)                , intent(in)    , contiguous    :: array(:)
+!        use pm_kind, only: CKG => CK3
+!        complex(CKG)                , intent(in)    , contiguous    :: array(:)
 !        integer(IK)                 , intent(out)   , allocatable   :: weight(:)
-!        complex(CKC)                , intent(out)   , allocatable   :: compact(:)
+!        complex(CKG)                , intent(out)   , allocatable   :: compact(:)
 !    end subroutine
 !#endif
 !
@@ -1888,10 +1888,10 @@ module pm_arrayCompact
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setCompactNew_D1_CK2
 !#endif
-!        use pm_kind, only: CKC => CK2
-!        complex(CKC)                , intent(in)    , contiguous    :: array(:)
+!        use pm_kind, only: CKG => CK2
+!        complex(CKG)                , intent(in)    , contiguous    :: array(:)
 !        integer(IK)                 , intent(out)   , allocatable   :: weight(:)
-!        complex(CKC)                , intent(out)   , allocatable   :: compact(:)
+!        complex(CKG)                , intent(out)   , allocatable   :: compact(:)
 !    end subroutine
 !#endif
 !
@@ -1900,10 +1900,10 @@ module pm_arrayCompact
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setCompactNew_D1_CK1
 !#endif
-!        use pm_kind, only: CKC => CK1
-!        complex(CKC)                , intent(in)    , contiguous    :: array(:)
+!        use pm_kind, only: CKG => CK1
+!        complex(CKG)                , intent(in)    , contiguous    :: array(:)
 !        integer(IK)                 , intent(out)   , allocatable   :: weight(:)
-!        complex(CKC)                , intent(out)   , allocatable   :: compact(:)
+!        complex(CKG)                , intent(out)   , allocatable   :: compact(:)
 !    end subroutine
 !#endif
 !
@@ -1914,10 +1914,10 @@ module pm_arrayCompact
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setCompactNew_D1_RK5
 !#endif
-!        use pm_kind, only: RKC => RK5
-!        real(RKC)                   , intent(in)    , contiguous    :: array(:)
+!        use pm_kind, only: RKG => RK5
+!        real(RKG)                   , intent(in)    , contiguous    :: array(:)
 !        integer(IK)                 , intent(out)   , allocatable   :: weight(:)
-!        real(RKC)                   , intent(out)   , allocatable   :: compact(:)
+!        real(RKG)                   , intent(out)   , allocatable   :: compact(:)
 !    end subroutine
 !#endif
 !
@@ -1926,10 +1926,10 @@ module pm_arrayCompact
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setCompactNew_D1_RK4
 !#endif
-!        use pm_kind, only: RKC => RK4
-!        real(RKC)                   , intent(in)    , contiguous    :: array(:)
+!        use pm_kind, only: RKG => RK4
+!        real(RKG)                   , intent(in)    , contiguous    :: array(:)
 !        integer(IK)                 , intent(out)   , allocatable   :: weight(:)
-!        real(RKC)                   , intent(out)   , allocatable   :: compact(:)
+!        real(RKG)                   , intent(out)   , allocatable   :: compact(:)
 !    end subroutine
 !#endif
 !
@@ -1938,10 +1938,10 @@ module pm_arrayCompact
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setCompactNew_D1_RK3
 !#endif
-!        use pm_kind, only: RKC => RK3
-!        real(RKC)                   , intent(in)    , contiguous    :: array(:)
+!        use pm_kind, only: RKG => RK3
+!        real(RKG)                   , intent(in)    , contiguous    :: array(:)
 !        integer(IK)                 , intent(out)   , allocatable   :: weight(:)
-!        real(RKC)                   , intent(out)   , allocatable   :: compact(:)
+!        real(RKG)                   , intent(out)   , allocatable   :: compact(:)
 !    end subroutine
 !#endif
 !
@@ -1950,10 +1950,10 @@ module pm_arrayCompact
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setCompactNew_D1_RK2
 !#endif
-!        use pm_kind, only: RKC => RK2
-!        real(RKC)                   , intent(in)    , contiguous    :: array(:)
+!        use pm_kind, only: RKG => RK2
+!        real(RKG)                   , intent(in)    , contiguous    :: array(:)
 !        integer(IK)                 , intent(out)   , allocatable   :: weight(:)
-!        real(RKC)                   , intent(out)   , allocatable   :: compact(:)
+!        real(RKG)                   , intent(out)   , allocatable   :: compact(:)
 !    end subroutine
 !#endif
 !
@@ -1962,10 +1962,10 @@ module pm_arrayCompact
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setCompactNew_D1_RK1
 !#endif
-!        use pm_kind, only: RKC => RK1
-!        real(RKC)                   , intent(in)    , contiguous    :: array(:)
+!        use pm_kind, only: RKG => RK1
+!        real(RKG)                   , intent(in)    , contiguous    :: array(:)
 !        integer(IK)                 , intent(out)   , allocatable   :: weight(:)
-!        real(RKC)                   , intent(out)   , allocatable   :: compact(:)
+!        real(RKG)                   , intent(out)   , allocatable   :: compact(:)
 !    end subroutine
 !#endif
 !
@@ -1982,11 +1982,11 @@ module pm_arrayCompact
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setCompactNew_D2_SK5
 !#endif
-!        use pm_kind, only: SKC => SK5
-!        character(*,SKC)            , intent(in)    , contiguous    :: array(:,:)
+!        use pm_kind, only: SKG => SK5
+!        character(*,SKG)            , intent(in)    , contiguous    :: array(:,:)
 !        integer(IK)                 , intent(out)   , allocatable   :: weight(:)
 !        integer(IK)                 , intent(in)                    :: dim
-!        character(len(array),SKC)   , intent(out)   , allocatable   :: compact(:,:)
+!        character(len(array),SKG)   , intent(out)   , allocatable   :: compact(:,:)
 !    end subroutine
 !#endif
 !
@@ -1995,11 +1995,11 @@ module pm_arrayCompact
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setCompactNew_D2_SK4
 !#endif
-!        use pm_kind, only: SKC => SK4
-!        character(*,SKC)            , intent(in)    , contiguous    :: array(:,:)
+!        use pm_kind, only: SKG => SK4
+!        character(*,SKG)            , intent(in)    , contiguous    :: array(:,:)
 !        integer(IK)                 , intent(out)   , allocatable   :: weight(:)
 !        integer(IK)                 , intent(in)                    :: dim
-!        character(len(array),SKC)   , intent(out)   , allocatable   :: compact(:,:)
+!        character(len(array),SKG)   , intent(out)   , allocatable   :: compact(:,:)
 !    end subroutine
 !#endif
 !
@@ -2008,11 +2008,11 @@ module pm_arrayCompact
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setCompactNew_D2_SK3
 !#endif
-!        use pm_kind, only: SKC => SK3
-!        character(*,SKC)            , intent(in)    , contiguous    :: array(:,:)
+!        use pm_kind, only: SKG => SK3
+!        character(*,SKG)            , intent(in)    , contiguous    :: array(:,:)
 !        integer(IK)                 , intent(out)   , allocatable   :: weight(:)
 !        integer(IK)                 , intent(in)                    :: dim
-!        character(len(array),SKC)   , intent(out)   , allocatable   :: compact(:,:)
+!        character(len(array),SKG)   , intent(out)   , allocatable   :: compact(:,:)
 !    end subroutine
 !#endif
 !
@@ -2021,11 +2021,11 @@ module pm_arrayCompact
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setCompactNew_D2_SK2
 !#endif
-!        use pm_kind, only: SKC => SK2
-!        character(*,SKC)            , intent(in)    , contiguous    :: array(:,:)
+!        use pm_kind, only: SKG => SK2
+!        character(*,SKG)            , intent(in)    , contiguous    :: array(:,:)
 !        integer(IK)                 , intent(out)   , allocatable   :: weight(:)
 !        integer(IK)                 , intent(in)                    :: dim
-!        character(len(array),SKC)   , intent(out)   , allocatable   :: compact(:,:)
+!        character(len(array),SKG)   , intent(out)   , allocatable   :: compact(:,:)
 !    end subroutine
 !#endif
 !
@@ -2034,11 +2034,11 @@ module pm_arrayCompact
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setCompactNew_D2_SK1
 !#endif
-!        use pm_kind, only: SKC => SK1
-!        character(*,SKC)            , intent(in)    , contiguous    :: array(:,:)
+!        use pm_kind, only: SKG => SK1
+!        character(*,SKG)            , intent(in)    , contiguous    :: array(:,:)
 !        integer(IK)                 , intent(out)   , allocatable   :: weight(:)
 !        integer(IK)                 , intent(in)                    :: dim
-!        character(len(array),SKC)   , intent(out)   , allocatable   :: compact(:,:)
+!        character(len(array),SKG)   , intent(out)   , allocatable   :: compact(:,:)
 !    end subroutine
 !#endif
 !
@@ -2049,11 +2049,11 @@ module pm_arrayCompact
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setCompactNew_D2_IK5
 !#endif
-!        use pm_kind, only: IKC => IK5
-!        integer(IKC)                , intent(in)    , contiguous    :: array(:,:)
+!        use pm_kind, only: IKG => IK5
+!        integer(IKG)                , intent(in)    , contiguous    :: array(:,:)
 !        integer(IK)                 , intent(out)   , allocatable   :: weight(:)
 !        integer(IK)                 , intent(in)                    :: dim
-!        integer(IKC)                , intent(out)   , allocatable   :: compact(:,:)
+!        integer(IKG)                , intent(out)   , allocatable   :: compact(:,:)
 !    end subroutine
 !#endif
 !
@@ -2062,11 +2062,11 @@ module pm_arrayCompact
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setCompactNew_D2_IK4
 !#endif
-!        use pm_kind, only: IKC => IK4
-!        integer(IKC)                , intent(in)    , contiguous    :: array(:,:)
+!        use pm_kind, only: IKG => IK4
+!        integer(IKG)                , intent(in)    , contiguous    :: array(:,:)
 !        integer(IK)                 , intent(out)   , allocatable   :: weight(:)
 !        integer(IK)                 , intent(in)                    :: dim
-!        integer(IKC)                , intent(out)   , allocatable   :: compact(:,:)
+!        integer(IKG)                , intent(out)   , allocatable   :: compact(:,:)
 !    end subroutine
 !#endif
 !
@@ -2075,11 +2075,11 @@ module pm_arrayCompact
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setCompactNew_D2_IK3
 !#endif
-!        use pm_kind, only: IKC => IK3
-!        integer(IKC)                , intent(in)    , contiguous    :: array(:,:)
+!        use pm_kind, only: IKG => IK3
+!        integer(IKG)                , intent(in)    , contiguous    :: array(:,:)
 !        integer(IK)                 , intent(out)   , allocatable   :: weight(:)
 !        integer(IK)                 , intent(in)                    :: dim
-!        integer(IKC)                , intent(out)   , allocatable   :: compact(:,:)
+!        integer(IKG)                , intent(out)   , allocatable   :: compact(:,:)
 !    end subroutine
 !#endif
 !
@@ -2088,11 +2088,11 @@ module pm_arrayCompact
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setCompactNew_D2_IK2
 !#endif
-!        use pm_kind, only: IKC => IK2
-!        integer(IKC)                , intent(in)    , contiguous    :: array(:,:)
+!        use pm_kind, only: IKG => IK2
+!        integer(IKG)                , intent(in)    , contiguous    :: array(:,:)
 !        integer(IK)                 , intent(out)   , allocatable   :: weight(:)
 !        integer(IK)                 , intent(in)                    :: dim
-!        integer(IKC)                , intent(out)   , allocatable   :: compact(:,:)
+!        integer(IKG)                , intent(out)   , allocatable   :: compact(:,:)
 !    end subroutine
 !#endif
 !
@@ -2101,11 +2101,11 @@ module pm_arrayCompact
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setCompactNew_D2_IK1
 !#endif
-!        use pm_kind, only: IKC => IK1
-!        integer(IKC)                , intent(in)    , contiguous    :: array(:,:)
+!        use pm_kind, only: IKG => IK1
+!        integer(IKG)                , intent(in)    , contiguous    :: array(:,:)
 !        integer(IK)                 , intent(out)   , allocatable   :: weight(:)
 !        integer(IK)                 , intent(in)                    :: dim
-!        integer(IKC)                , intent(out)   , allocatable   :: compact(:,:)
+!        integer(IKG)                , intent(out)   , allocatable   :: compact(:,:)
 !    end subroutine
 !#endif
 !
@@ -2116,11 +2116,11 @@ module pm_arrayCompact
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setCompactNew_D2_LK5
 !#endif
-!        use pm_kind, only: LKC => LK5
-!        logical(LKC)                , intent(in)    , contiguous    :: array(:,:)
+!        use pm_kind, only: LKG => LK5
+!        logical(LKG)                , intent(in)    , contiguous    :: array(:,:)
 !        integer(IK)                 , intent(out)   , allocatable   :: weight(:)
 !        integer(IK)                 , intent(in)                    :: dim
-!        logical(LKC)                , intent(out)   , allocatable   :: compact(:,:)
+!        logical(LKG)                , intent(out)   , allocatable   :: compact(:,:)
 !    end subroutine
 !#endif
 !
@@ -2129,11 +2129,11 @@ module pm_arrayCompact
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setCompactNew_D2_LK4
 !#endif
-!        use pm_kind, only: LKC => LK4
-!        logical(LKC)                , intent(in)    , contiguous    :: array(:,:)
+!        use pm_kind, only: LKG => LK4
+!        logical(LKG)                , intent(in)    , contiguous    :: array(:,:)
 !        integer(IK)                 , intent(out)   , allocatable   :: weight(:)
 !        integer(IK)                 , intent(in)                    :: dim
-!        logical(LKC)                , intent(out)   , allocatable   :: compact(:,:)
+!        logical(LKG)                , intent(out)   , allocatable   :: compact(:,:)
 !    end subroutine
 !#endif
 !
@@ -2142,11 +2142,11 @@ module pm_arrayCompact
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setCompactNew_D2_LK3
 !#endif
-!        use pm_kind, only: LKC => LK3
-!        logical(LKC)                , intent(in)    , contiguous    :: array(:,:)
+!        use pm_kind, only: LKG => LK3
+!        logical(LKG)                , intent(in)    , contiguous    :: array(:,:)
 !        integer(IK)                 , intent(out)   , allocatable   :: weight(:)
 !        integer(IK)                 , intent(in)                    :: dim
-!        logical(LKC)                , intent(out)   , allocatable   :: compact(:,:)
+!        logical(LKG)                , intent(out)   , allocatable   :: compact(:,:)
 !    end subroutine
 !#endif
 !
@@ -2155,11 +2155,11 @@ module pm_arrayCompact
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setCompactNew_D2_LK2
 !#endif
-!        use pm_kind, only: LKC => LK2
-!        logical(LKC)                , intent(in)    , contiguous    :: array(:,:)
+!        use pm_kind, only: LKG => LK2
+!        logical(LKG)                , intent(in)    , contiguous    :: array(:,:)
 !        integer(IK)                 , intent(out)   , allocatable   :: weight(:)
 !        integer(IK)                 , intent(in)                    :: dim
-!        logical(LKC)                , intent(out)   , allocatable   :: compact(:,:)
+!        logical(LKG)                , intent(out)   , allocatable   :: compact(:,:)
 !    end subroutine
 !#endif
 !
@@ -2168,11 +2168,11 @@ module pm_arrayCompact
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setCompactNew_D2_LK1
 !#endif
-!        use pm_kind, only: LKC => LK1
-!        logical(LKC)                , intent(in)    , contiguous    :: array(:,:)
+!        use pm_kind, only: LKG => LK1
+!        logical(LKG)                , intent(in)    , contiguous    :: array(:,:)
 !        integer(IK)                 , intent(out)   , allocatable   :: weight(:)
 !        integer(IK)                 , intent(in)                    :: dim
-!        logical(LKC)                , intent(out)   , allocatable   :: compact(:,:)
+!        logical(LKG)                , intent(out)   , allocatable   :: compact(:,:)
 !    end subroutine
 !#endif
 !
@@ -2183,11 +2183,11 @@ module pm_arrayCompact
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setCompactNew_D2_CK5
 !#endif
-!        use pm_kind, only: CKC => CK5
-!        complex(CKC)                , intent(in)    , contiguous    :: array(:,:)
+!        use pm_kind, only: CKG => CK5
+!        complex(CKG)                , intent(in)    , contiguous    :: array(:,:)
 !        integer(IK)                 , intent(out)   , allocatable   :: weight(:)
 !        integer(IK)                 , intent(in)                    :: dim
-!        complex(CKC)                , intent(out)   , allocatable   :: compact(:,:)
+!        complex(CKG)                , intent(out)   , allocatable   :: compact(:,:)
 !    end subroutine
 !#endif
 !
@@ -2196,11 +2196,11 @@ module pm_arrayCompact
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setCompactNew_D2_CK4
 !#endif
-!        use pm_kind, only: CKC => CK4
-!        complex(CKC)                , intent(in)    , contiguous    :: array(:,:)
+!        use pm_kind, only: CKG => CK4
+!        complex(CKG)                , intent(in)    , contiguous    :: array(:,:)
 !        integer(IK)                 , intent(out)   , allocatable   :: weight(:)
 !        integer(IK)                 , intent(in)                    :: dim
-!        complex(CKC)                , intent(out)   , allocatable   :: compact(:,:)
+!        complex(CKG)                , intent(out)   , allocatable   :: compact(:,:)
 !    end subroutine
 !#endif
 !
@@ -2209,11 +2209,11 @@ module pm_arrayCompact
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setCompactNew_D2_CK3
 !#endif
-!        use pm_kind, only: CKC => CK3
-!        complex(CKC)                , intent(in)    , contiguous    :: array(:,:)
+!        use pm_kind, only: CKG => CK3
+!        complex(CKG)                , intent(in)    , contiguous    :: array(:,:)
 !        integer(IK)                 , intent(out)   , allocatable   :: weight(:)
 !        integer(IK)                 , intent(in)                    :: dim
-!        complex(CKC)                , intent(out)   , allocatable   :: compact(:,:)
+!        complex(CKG)                , intent(out)   , allocatable   :: compact(:,:)
 !    end subroutine
 !#endif
 !
@@ -2222,11 +2222,11 @@ module pm_arrayCompact
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setCompactNew_D2_CK2
 !#endif
-!        use pm_kind, only: CKC => CK2
-!        complex(CKC)                , intent(in)    , contiguous    :: array(:,:)
+!        use pm_kind, only: CKG => CK2
+!        complex(CKG)                , intent(in)    , contiguous    :: array(:,:)
 !        integer(IK)                 , intent(out)   , allocatable   :: weight(:)
 !        integer(IK)                 , intent(in)                    :: dim
-!        complex(CKC)                , intent(out)   , allocatable   :: compact(:,:)
+!        complex(CKG)                , intent(out)   , allocatable   :: compact(:,:)
 !    end subroutine
 !#endif
 !
@@ -2235,11 +2235,11 @@ module pm_arrayCompact
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setCompactNew_D2_CK1
 !#endif
-!        use pm_kind, only: CKC => CK1
-!        complex(CKC)                , intent(in)    , contiguous    :: array(:,:)
+!        use pm_kind, only: CKG => CK1
+!        complex(CKG)                , intent(in)    , contiguous    :: array(:,:)
 !        integer(IK)                 , intent(out)   , allocatable   :: weight(:)
 !        integer(IK)                 , intent(in)                    :: dim
-!        complex(CKC)                , intent(out)   , allocatable   :: compact(:,:)
+!        complex(CKG)                , intent(out)   , allocatable   :: compact(:,:)
 !    end subroutine
 !#endif
 !
@@ -2250,11 +2250,11 @@ module pm_arrayCompact
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setCompactNew_D2_RK5
 !#endif
-!        use pm_kind, only: RKC => RK5
-!        real(RKC)                   , intent(in)    , contiguous    :: array(:,:)
+!        use pm_kind, only: RKG => RK5
+!        real(RKG)                   , intent(in)    , contiguous    :: array(:,:)
 !        integer(IK)                 , intent(out)   , allocatable   :: weight(:)
 !        integer(IK)                 , intent(in)                    :: dim
-!        real(RKC)                   , intent(out)   , allocatable   :: compact(:,:)
+!        real(RKG)                   , intent(out)   , allocatable   :: compact(:,:)
 !    end subroutine
 !#endif
 !
@@ -2263,11 +2263,11 @@ module pm_arrayCompact
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setCompactNew_D2_RK4
 !#endif
-!        use pm_kind, only: RKC => RK4
-!        real(RKC)                   , intent(in)    , contiguous    :: array(:,:)
+!        use pm_kind, only: RKG => RK4
+!        real(RKG)                   , intent(in)    , contiguous    :: array(:,:)
 !        integer(IK)                 , intent(out)   , allocatable   :: weight(:)
 !        integer(IK)                 , intent(in)                    :: dim
-!        real(RKC)                   , intent(out)   , allocatable   :: compact(:,:)
+!        real(RKG)                   , intent(out)   , allocatable   :: compact(:,:)
 !    end subroutine
 !#endif
 !
@@ -2276,11 +2276,11 @@ module pm_arrayCompact
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setCompactNew_D2_RK3
 !#endif
-!        use pm_kind, only: RKC => RK3
-!        real(RKC)                   , intent(in)    , contiguous    :: array(:,:)
+!        use pm_kind, only: RKG => RK3
+!        real(RKG)                   , intent(in)    , contiguous    :: array(:,:)
 !        integer(IK)                 , intent(out)   , allocatable   :: weight(:)
 !        integer(IK)                 , intent(in)                    :: dim
-!        real(RKC)                   , intent(out)   , allocatable   :: compact(:,:)
+!        real(RKG)                   , intent(out)   , allocatable   :: compact(:,:)
 !    end subroutine
 !#endif
 !
@@ -2289,11 +2289,11 @@ module pm_arrayCompact
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setCompactNew_D2_RK2
 !#endif
-!        use pm_kind, only: RKC => RK2
-!        real(RKC)                   , intent(in)    , contiguous    :: array(:,:)
+!        use pm_kind, only: RKG => RK2
+!        real(RKG)                   , intent(in)    , contiguous    :: array(:,:)
 !        integer(IK)                 , intent(out)   , allocatable   :: weight(:)
 !        integer(IK)                 , intent(in)                    :: dim
-!        real(RKC)                   , intent(out)   , allocatable   :: compact(:,:)
+!        real(RKG)                   , intent(out)   , allocatable   :: compact(:,:)
 !    end subroutine
 !#endif
 !
@@ -2302,11 +2302,11 @@ module pm_arrayCompact
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setCompactNew_D2_RK1
 !#endif
-!        use pm_kind, only: RKC => RK1
-!        real(RKC)                   , intent(in)    , contiguous    :: array(:,:)
+!        use pm_kind, only: RKG => RK1
+!        real(RKG)                   , intent(in)    , contiguous    :: array(:,:)
 !        integer(IK)                 , intent(out)   , allocatable   :: weight(:)
 !        integer(IK)                 , intent(in)                    :: dim
-!        real(RKC)                   , intent(out)   , allocatable   :: compact(:,:)
+!        real(RKG)                   , intent(out)   , allocatable   :: compact(:,:)
 !    end subroutine
 !#endif
 !

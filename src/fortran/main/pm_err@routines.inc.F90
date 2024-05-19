@@ -34,13 +34,13 @@
 #elif   getFile_ENABLED
         !%%%%%%%%%%%%%%
 
-        str = SKC_'@file('//file//SKC_")"
+        str = SKG_'@file('//file//SKG_")"
 
         !%%%%%%%%%%%%%%
 #elif   getLine_ENABLED
         !%%%%%%%%%%%%%%
 
-        str = repeat(SK_" ", range(0_IKC) + 3) ! sign. 2 is essential. extra 1 is cautionary.
+        str = repeat(SK_" ", range(0_IKG) + 3) ! sign. 2 is essential. extra 1 is cautionary.
         write(str, "(I0)") line
         str = '@line('//trim(str)//")"
 
@@ -70,8 +70,8 @@
 
         use pm_str, only: getStrWrapped
 
-        character(:,SKC), allocatable   :: def_prefix, remark
-        character(1,SKC), parameter     :: LF = new_line(SKC_"a") ! char(10, SKC)
+        character(:,SKG), allocatable   :: def_prefix, remark
+        character(1,SKG), parameter     :: LF = new_line(SKG_"a") ! char(10, SKG)
         integer(IK)                     :: def_unit, def_tmsize, def_bmsize
 
         ! Set the prefix.
@@ -79,7 +79,7 @@
         if (present(prefix)) then
             def_prefix = prefix
         else
-            def_prefix = SKC_" - REMARK: "
+            def_prefix = SKG_" - REMARK: "
         end if
 
         ! Set the default.
@@ -98,7 +98,7 @@
         remark = repeat(LF, def_tmsize)//getStrWrapped(msg, prefix = def_prefix, indent = indent, break = break, newline = newline, linefeed = LF, width = width, maxwidth = maxwidth)//repeat(LF, def_bmsize)
 #if     MEXPRINT_ENABLED
         if (def_unit == output_unit) then
-            call mexPrintf(remark//new_line(SKC_"a"))
+            call mexPrintf(remark//new_line(SKG_"a"))
             return
         end if
 #endif
@@ -108,7 +108,7 @@
 #elif   setNoted_ENABLED && Static_ENABLED
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        character(*,SKC), parameter :: REMARK = SKC_" - NOTE: "
+        character(*,SKG), parameter :: REMARK = SKG_" - NOTE: "
         if (present(prefix)) then
             call setMarked(msg, prefix//REMARK, indent, break, newline, width, maxwidth, tmsize, bmsize, unit)
         else
@@ -119,7 +119,7 @@
 #elif   setWarned_ENABLED && Static_ENABLED
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        character(*,SKC), parameter :: REMARK = SKC_" - WARNING: "
+        character(*,SKG), parameter :: REMARK = SKG_" - WARNING: "
         if (present(prefix)) then
             call setMarked(msg, prefix//REMARK, indent, break, newline, width, maxwidth, tmsize, bmsize, unit)
         else
@@ -130,10 +130,10 @@
 #elif   setAborted_ENABLED && Static_ENABLED
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        character(1,SKC), parameter :: LF = new_line(SKC_"a") ! char(10, SKC)
-        character(*,SKC), parameter :: REMARK = SKC_" - FATAL: "
-        character(:,SKC), allocatable :: def_prefix, def_msg
-        character(31,SKC) :: val2str
+        character(1,SKG), parameter :: LF = new_line(SKG_"a") ! char(10, SKG)
+        character(*,SKG), parameter :: REMARK = SKG_" - FATAL: "
+        character(:,SKG), allocatable :: def_prefix, def_msg
+        character(31,SKG) :: val2str
 
         if (present(prefix)) then
             def_prefix = prefix//REMARK
@@ -144,7 +144,7 @@
         ! Set the error code.
 
         if (present(stat)) then
-            write(val2str, "(2(g0))") LF//SKC_"ERROR CODE: ", stat
+            write(val2str, "(2(g0))") LF//SKG_"ERROR CODE: ", stat
             def_msg = msg//trim(adjustl(val2str))
         else
             def_msg = msg
@@ -159,9 +159,9 @@
 
         ! Report the final troubleshooting info.
 
-        def_msg = def_msg//LF//SKC_"Please correct the error(s) and rerun the program."//LF
+        def_msg = def_msg//LF//SKG_"Please correct the error(s) and rerun the program."//LF
         if (present(help)) def_msg = def_msg//help//LF
-        def_msg = def_msg//SKC_"Gracefully exiting on image/process "//trim(adjustl(val2str))//SKC_"."//LF//LF
+        def_msg = def_msg//SKG_"Gracefully exiting on image/process "//trim(adjustl(val2str))//SKG_"."//LF//LF
 
         call setMarked(msg, def_prefix, indent, break, newline, width, maxwidth, tmsize, bmsize, unit)
 
@@ -228,12 +228,12 @@
 #define SET_MARKED setAborted
         integer(IK), allocatable :: def_stat
         logical(LK), allocatable :: def_renabled
-        character(:,SKC), allocatable :: def_help
+        character(:,SKG), allocatable :: def_help
 #else
 #error  "Unrecognized interface."
 #endif
         integer(IK), allocatable :: def_width, def_maxwidth, def_tmsize, def_bmsize, def_unit
-        character(:,SKC), allocatable :: def_prefix, def_indent, def_break, def_newline
+        character(:,SKG), allocatable :: def_prefix, def_indent, def_break, def_newline
         if (present(sticky)) self%sticky = sticky
         if (self%sticky) then
             if (present(prefix  ))self%prefix   = prefix    ;

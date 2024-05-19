@@ -15,7 +15,7 @@ program example
     disp = display_type(file = "main.out.F90")
 
     block
-        use pm_kind, only: RKC => RKH ! all real kinds are supported.
+        use pm_kind, only: RKG => RKH ! all real kinds are supported.
         real, allocatable :: array(:), cumPropExp(:)
         call disp%skip
         call disp%show("array = log([1., 2., 3., 4.])")
@@ -56,7 +56,7 @@ program example
     call disp%skip()
 
     block
-        use pm_kind, only: RKC => RKH ! all real kinds are supported.
+        use pm_kind, only: RKG => RKH ! all real kinds are supported.
         real, allocatable :: array(:)
         call disp%skip
         call disp%show("array = log([1., 2., 3., 4.])")

@@ -26,9 +26,9 @@
 
         use pm_except, only: isNAN
         use pm_except, only: isInf, isInfNeg, isInfPos
-        integer, parameter :: TKC = kind(x)
-        real(TKC) :: reltol_def, abstol_def
-        real(TKC) :: absDiff
+        integer, parameter :: TKG = kind(x)
+        real(TKG) :: reltol_def, abstol_def
+        real(TKG) :: absDiff
 
         if (isNAN(x) .or. isNAN(y)) then
             close = .false._LK
@@ -41,18 +41,18 @@
             if (close) return
 
             if (present(reltol)) then
-                CHECK_ASSERTION(__LINE__, 0._TKC <= reltol, \
+                CHECK_ASSERTION(__LINE__, 0._TKG <= reltol, \
                 SK_"@isClose(): The condition `0. < reltol` must hold. reltol = "//getStr(reltol)) ! fpp
                 reltol_def = reltol
             else
-                reltol_def = epsilon(0._TKC)
+                reltol_def = epsilon(0._TKG)
             end if
             if (present(abstol)) then
-                CHECK_ASSERTION(__LINE__, 0._TKC <= abstol, \
+                CHECK_ASSERTION(__LINE__, 0._TKG <= abstol, \
                 SK_"@isClose(): The condition `0. <= abstol` must hold. abstol = "//getStr(abstol)) ! fpp
                 abstol_def = abstol
             else
-                abstol_def = tiny(0._TKC)
+                abstol_def = tiny(0._TKG)
             end if
             absDiff = abs(y - x)
 #if         isCloseReference_ENABLED
@@ -62,7 +62,7 @@
 #elif       isCloseWeak_ENABLED || isCloseDefault_ENABLED
             close = logical(absDiff <= abs(reltol_def * x) .or. absDiff <= abs(reltol_def * y) .or. absDiff <= abstol_def, LK)
 #elif       isCloseMean_ENABLED
-            close = logical(absDiff <= abs(reltol_def * 0.5_TKC * (x + y)) .or. absDiff <= abstol_def, LK)
+            close = logical(absDiff <= abs(reltol_def * 0.5_TKG * (x + y)) .or. absDiff <= abstol_def, LK)
 #else
 #error      "Unrecognized interface."
 #endif

@@ -31,20 +31,20 @@
 #error  "Unrecognized interface."
 #endif
 #if     CK_ENABLED
-        complex(CKC), parameter :: ONE = cmplx(1._CKC, 0._CKC, CKC)
-        complex(CKC)            :: ratio, y, z
+        complex(CKG), parameter :: ONE = cmplx(1._CKG, 0._CKG, CKG)
+        complex(CKG)            :: ratio, y, z
 #define GET_REAL(x) x%re
 #elif   RK_ENABLED
-        real(RKC)   , parameter :: ONE = 1._RKC
-        real(RKC)               :: ratio, y, z
+        real(RKG)   , parameter :: ONE = 1._RKG
+        real(RKG)               :: ratio, y, z
 #define GET_REAL(x) x
 #else
 #error  "Unrecognized interface."
 #endif
-        integer     , parameter :: TKC = kind(logAddExp) ! This kind current.
-        real(TKC)   , parameter :: LOGTINY = log(tiny(0._TKC))
-        real(TKC)   , parameter :: LOGEPS = log(epsilon(0._TKC))
-        CHECK_ASSERTION(__LINE__, real(smaller, TKC) <= real(larger, TKC), \
+        integer     , parameter :: TKG = kind(logAddExp) ! type kind generic.
+        real(TKG)   , parameter :: LOGTINY = log(tiny(0._TKG))
+        real(TKG)   , parameter :: LOGEPS = log(epsilon(0._TKG))
+        CHECK_ASSERTION(__LINE__, real(smaller, TKG) <= real(larger, TKG), \
         SK_"@getLogAddExp(): The condition `real(smaller) <= real(larger)` must hold. smaller, larger = "//getStr([smaller, larger]))
 #if     Seq_ENABLED
         ratio = exp(smaller - larger)

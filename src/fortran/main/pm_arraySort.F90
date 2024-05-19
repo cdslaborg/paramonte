@@ -241,8 +241,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isAscendingAllDefCom_D0_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)        , intent(in)                    :: array
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)        , intent(in)                    :: array
         logical(LK)                                             :: ascendingAll
     end function
 #endif
@@ -252,8 +252,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isAscendingAllDefCom_D0_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)        , intent(in)                    :: array
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)        , intent(in)                    :: array
         logical(LK)                                             :: ascendingAll
     end function
 #endif
@@ -263,8 +263,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isAscendingAllDefCom_D0_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)        , intent(in)                    :: array
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)        , intent(in)                    :: array
         logical(LK)                                             :: ascendingAll
     end function
 #endif
@@ -274,8 +274,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isAscendingAllDefCom_D0_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)        , intent(in)                    :: array
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)        , intent(in)                    :: array
         logical(LK)                                             :: ascendingAll
     end function
 #endif
@@ -285,8 +285,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isAscendingAllDefCom_D0_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)        , intent(in)                    :: array
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)        , intent(in)                    :: array
         logical(LK)                                             :: ascendingAll
     end function
 #endif
@@ -298,8 +298,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isAscendingAllDefCom_D1_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)        , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)        , intent(in)    , contiguous    :: array(:)
         logical(LK)                                             :: ascendingAll
     end function
 #endif
@@ -309,8 +309,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isAscendingAllDefCom_D1_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)        , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)        , intent(in)    , contiguous    :: array(:)
         logical(LK)                                             :: ascendingAll
     end function
 #endif
@@ -320,8 +320,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isAscendingAllDefCom_D1_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)        , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)        , intent(in)    , contiguous    :: array(:)
         logical(LK)                                             :: ascendingAll
     end function
 #endif
@@ -331,8 +331,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isAscendingAllDefCom_D1_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)        , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)        , intent(in)    , contiguous    :: array(:)
         logical(LK)                                             :: ascendingAll
     end function
 #endif
@@ -342,8 +342,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isAscendingAllDefCom_D1_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)        , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)        , intent(in)    , contiguous    :: array(:)
         logical(LK)                                             :: ascendingAll
     end function
 #endif
@@ -355,8 +355,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isAscendingAllDefCom_D1_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK5
+        integer(IKG)            , intent(in)    , contiguous    :: array(:)
         logical(LK)                                             :: ascendingAll
     end function
 #endif
@@ -366,8 +366,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isAscendingAllDefCom_D1_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK4
+        integer(IKG)            , intent(in)    , contiguous    :: array(:)
         logical(LK)                                             :: ascendingAll
     end function
 #endif
@@ -377,8 +377,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isAscendingAllDefCom_D1_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK3
+        integer(IKG)            , intent(in)    , contiguous    :: array(:)
         logical(LK)                                             :: ascendingAll
     end function
 #endif
@@ -388,8 +388,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isAscendingAllDefCom_D1_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK2
+        integer(IKG)            , intent(in)    , contiguous    :: array(:)
         logical(LK)                                             :: ascendingAll
     end function
 #endif
@@ -399,8 +399,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isAscendingAllDefCom_D1_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK1
+        integer(IKG)            , intent(in)    , contiguous    :: array(:)
         logical(LK)                                             :: ascendingAll
     end function
 #endif
@@ -412,8 +412,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isAscendingAllDefCom_D1_LK5
 #endif
-        use pm_kind, only: LKC => LK5
-        logical(LKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: LKG => LK5
+        logical(LKG)            , intent(in)    , contiguous    :: array(:)
         logical(LK)                                             :: ascendingAll
     end function
 #endif
@@ -423,8 +423,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isAscendingAllDefCom_D1_LK4
 #endif
-        use pm_kind, only: LKC => LK4
-        logical(LKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: LKG => LK4
+        logical(LKG)            , intent(in)    , contiguous    :: array(:)
         logical(LK)                                             :: ascendingAll
     end function
 #endif
@@ -434,8 +434,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isAscendingAllDefCom_D1_LK3
 #endif
-        use pm_kind, only: LKC => LK3
-        logical(LKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: LKG => LK3
+        logical(LKG)            , intent(in)    , contiguous    :: array(:)
         logical(LK)                                             :: ascendingAll
     end function
 #endif
@@ -445,8 +445,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isAscendingAllDefCom_D1_LK2
 #endif
-        use pm_kind, only: LKC => LK2
-        logical(LKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: LKG => LK2
+        logical(LKG)            , intent(in)    , contiguous    :: array(:)
         logical(LK)                                             :: ascendingAll
     end function
 #endif
@@ -456,8 +456,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isAscendingAllDefCom_D1_LK1
 #endif
-        use pm_kind, only: LKC => LK1
-        logical(LKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: LKG => LK1
+        logical(LKG)            , intent(in)    , contiguous    :: array(:)
         logical(LK)                                             :: ascendingAll
     end function
 #endif
@@ -469,8 +469,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isAscendingAllDefCom_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)               , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)               , intent(in)    , contiguous    :: array(:)
         logical(LK)                                             :: ascendingAll
     end function
 #endif
@@ -480,8 +480,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isAscendingAllDefCom_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)               , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)               , intent(in)    , contiguous    :: array(:)
         logical(LK)                                             :: ascendingAll
     end function
 #endif
@@ -491,8 +491,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isAscendingAllDefCom_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)               , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)               , intent(in)    , contiguous    :: array(:)
         logical(LK)                                             :: ascendingAll
     end function
 #endif
@@ -502,8 +502,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isAscendingAllDefCom_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)               , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)               , intent(in)    , contiguous    :: array(:)
         logical(LK)                                             :: ascendingAll
     end function
 #endif
@@ -513,8 +513,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isAscendingAllDefCom_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)               , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)               , intent(in)    , contiguous    :: array(:)
         logical(LK)                                             :: ascendingAll
     end function
 #endif
@@ -526,8 +526,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isAscendingAllDefCom_D1_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG)            , intent(in)    , contiguous    :: array(:)
         logical(LK)                                             :: ascendingAll
     end function
 #endif
@@ -537,8 +537,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isAscendingAllDefCom_D1_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG)            , intent(in)    , contiguous    :: array(:)
         logical(LK)                                             :: ascendingAll
     end function
 #endif
@@ -548,8 +548,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isAscendingAllDefCom_D1_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG)            , intent(in)    , contiguous    :: array(:)
         logical(LK)                                             :: ascendingAll
     end function
 #endif
@@ -559,8 +559,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isAscendingAllDefCom_D1_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG)            , intent(in)    , contiguous    :: array(:)
         logical(LK)                                             :: ascendingAll
     end function
 #endif
@@ -570,8 +570,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isAscendingAllDefCom_D1_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG)            , intent(in)    , contiguous    :: array(:)
         logical(LK)                                             :: ascendingAll
     end function
 #endif
@@ -585,9 +585,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isAscendingAllDefCom_D1_PSSK5
 #endif
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))      , intent(in)    , contiguous    :: array(:)
+        type(css_pdt(SKG))      , intent(in)    , contiguous    :: array(:)
         logical(LK)                                             :: ascendingAll
     end function
 #endif
@@ -597,9 +597,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isAscendingAllDefCom_D1_PSSK4
 #endif
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))      , intent(in)    , contiguous    :: array(:)
+        type(css_pdt(SKG))      , intent(in)    , contiguous    :: array(:)
         logical(LK)                                             :: ascendingAll
     end function
 #endif
@@ -609,9 +609,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isAscendingAllDefCom_D1_PSSK3
 #endif
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))      , intent(in)    , contiguous    :: array(:)
+        type(css_pdt(SKG))      , intent(in)    , contiguous    :: array(:)
         logical(LK)                                             :: ascendingAll
     end function
 #endif
@@ -621,9 +621,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isAscendingAllDefCom_D1_PSSK2
 #endif
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))      , intent(in)    , contiguous    :: array(:)
+        type(css_pdt(SKG))      , intent(in)    , contiguous    :: array(:)
         logical(LK)                                             :: ascendingAll
     end function
 #endif
@@ -633,9 +633,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isAscendingAllDefCom_D1_PSSK1
 #endif
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))      , intent(in)    , contiguous    :: array(:)
+        type(css_pdt(SKG))      , intent(in)    , contiguous    :: array(:)
         logical(LK)                                             :: ascendingAll
     end function
 #endif
@@ -649,7 +649,7 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isAscendingAllDefCom_D1_BSSK
 #endif
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
         use pm_container, only: css_type
         type(css_type)          , intent(in)    , contiguous    :: array(:)
         logical(LK)                                             :: ascendingAll
@@ -740,8 +740,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isDescendingAllDefCom_D0_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)        , intent(in)                    :: array
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)        , intent(in)                    :: array
         logical(LK)                                             :: descendingAll
     end function
 #endif
@@ -751,8 +751,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isDescendingAllDefCom_D0_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)        , intent(in)                    :: array
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)        , intent(in)                    :: array
         logical(LK)                                             :: descendingAll
     end function
 #endif
@@ -762,8 +762,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isDescendingAllDefCom_D0_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)        , intent(in)                    :: array
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)        , intent(in)                    :: array
         logical(LK)                                             :: descendingAll
     end function
 #endif
@@ -773,8 +773,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isDescendingAllDefCom_D0_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)        , intent(in)                    :: array
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)        , intent(in)                    :: array
         logical(LK)                                             :: descendingAll
     end function
 #endif
@@ -784,8 +784,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isDescendingAllDefCom_D0_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)        , intent(in)                    :: array
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)        , intent(in)                    :: array
         logical(LK)                                             :: descendingAll
     end function
 #endif
@@ -797,8 +797,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isDescendingAllDefCom_D1_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)        , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)        , intent(in)    , contiguous    :: array(:)
         logical(LK)                                             :: descendingAll
     end function
 #endif
@@ -808,8 +808,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isDescendingAllDefCom_D1_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)        , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)        , intent(in)    , contiguous    :: array(:)
         logical(LK)                                             :: descendingAll
     end function
 #endif
@@ -819,8 +819,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isDescendingAllDefCom_D1_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)        , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)        , intent(in)    , contiguous    :: array(:)
         logical(LK)                                             :: descendingAll
     end function
 #endif
@@ -830,8 +830,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isDescendingAllDefCom_D1_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)        , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)        , intent(in)    , contiguous    :: array(:)
         logical(LK)                                             :: descendingAll
     end function
 #endif
@@ -841,8 +841,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isDescendingAllDefCom_D1_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)        , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)        , intent(in)    , contiguous    :: array(:)
         logical(LK)                                             :: descendingAll
     end function
 #endif
@@ -854,8 +854,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isDescendingAllDefCom_D1_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK5
+        integer(IKG)            , intent(in)    , contiguous    :: array(:)
         logical(LK)                                             :: descendingAll
     end function
 #endif
@@ -865,8 +865,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isDescendingAllDefCom_D1_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK4
+        integer(IKG)            , intent(in)    , contiguous    :: array(:)
         logical(LK)                                             :: descendingAll
     end function
 #endif
@@ -876,8 +876,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isDescendingAllDefCom_D1_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK3
+        integer(IKG)            , intent(in)    , contiguous    :: array(:)
         logical(LK)                                             :: descendingAll
     end function
 #endif
@@ -887,8 +887,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isDescendingAllDefCom_D1_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK2
+        integer(IKG)            , intent(in)    , contiguous    :: array(:)
         logical(LK)                                             :: descendingAll
     end function
 #endif
@@ -898,8 +898,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isDescendingAllDefCom_D1_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK1
+        integer(IKG)            , intent(in)    , contiguous    :: array(:)
         logical(LK)                                             :: descendingAll
     end function
 #endif
@@ -911,8 +911,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isDescendingAllDefCom_D1_LK5
 #endif
-        use pm_kind, only: LKC => LK5
-        logical(LKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: LKG => LK5
+        logical(LKG)            , intent(in)    , contiguous    :: array(:)
         logical(LK)                                             :: descendingAll
     end function
 #endif
@@ -922,8 +922,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isDescendingAllDefCom_D1_LK4
 #endif
-        use pm_kind, only: LKC => LK4
-        logical(LKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: LKG => LK4
+        logical(LKG)            , intent(in)    , contiguous    :: array(:)
         logical(LK)                                             :: descendingAll
     end function
 #endif
@@ -933,8 +933,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isDescendingAllDefCom_D1_LK3
 #endif
-        use pm_kind, only: LKC => LK3
-        logical(LKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: LKG => LK3
+        logical(LKG)            , intent(in)    , contiguous    :: array(:)
         logical(LK)                                             :: descendingAll
     end function
 #endif
@@ -944,8 +944,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isDescendingAllDefCom_D1_LK2
 #endif
-        use pm_kind, only: LKC => LK2
-        logical(LKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: LKG => LK2
+        logical(LKG)            , intent(in)    , contiguous    :: array(:)
         logical(LK)                                             :: descendingAll
     end function
 #endif
@@ -955,8 +955,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isDescendingAllDefCom_D1_LK1
 #endif
-        use pm_kind, only: LKC => LK1
-        logical(LKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: LKG => LK1
+        logical(LKG)            , intent(in)    , contiguous    :: array(:)
         logical(LK)                                             :: descendingAll
     end function
 #endif
@@ -968,8 +968,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isDescendingAllDefCom_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)               , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)               , intent(in)    , contiguous    :: array(:)
         logical(LK)                                             :: descendingAll
     end function
 #endif
@@ -979,8 +979,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isDescendingAllDefCom_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)               , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)               , intent(in)    , contiguous    :: array(:)
         logical(LK)                                             :: descendingAll
     end function
 #endif
@@ -990,8 +990,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isDescendingAllDefCom_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)               , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)               , intent(in)    , contiguous    :: array(:)
         logical(LK)                                             :: descendingAll
     end function
 #endif
@@ -1001,8 +1001,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isDescendingAllDefCom_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)               , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)               , intent(in)    , contiguous    :: array(:)
         logical(LK)                                             :: descendingAll
     end function
 #endif
@@ -1012,8 +1012,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isDescendingAllDefCom_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)               , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)               , intent(in)    , contiguous    :: array(:)
         logical(LK)                                             :: descendingAll
     end function
 #endif
@@ -1025,8 +1025,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isDescendingAllDefCom_D1_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG)            , intent(in)    , contiguous    :: array(:)
         logical(LK)                                             :: descendingAll
     end function
 #endif
@@ -1036,8 +1036,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isDescendingAllDefCom_D1_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG)            , intent(in)    , contiguous    :: array(:)
         logical(LK)                                             :: descendingAll
     end function
 #endif
@@ -1047,8 +1047,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isDescendingAllDefCom_D1_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG)            , intent(in)    , contiguous    :: array(:)
         logical(LK)                                             :: descendingAll
     end function
 #endif
@@ -1058,8 +1058,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isDescendingAllDefCom_D1_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG)            , intent(in)    , contiguous    :: array(:)
         logical(LK)                                             :: descendingAll
     end function
 #endif
@@ -1069,8 +1069,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isDescendingAllDefCom_D1_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG)            , intent(in)    , contiguous    :: array(:)
         logical(LK)                                             :: descendingAll
     end function
 #endif
@@ -1084,9 +1084,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isDescendingAllDefCom_D1_PSSK5
 #endif
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))      , intent(in)    , contiguous    :: array(:)
+        type(css_pdt(SKG))      , intent(in)    , contiguous    :: array(:)
         logical(LK)                                             :: descendingAll
     end function
 #endif
@@ -1096,9 +1096,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isDescendingAllDefCom_D1_PSSK4
 #endif
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))      , intent(in)    , contiguous    :: array(:)
+        type(css_pdt(SKG))      , intent(in)    , contiguous    :: array(:)
         logical(LK)                                             :: descendingAll
     end function
 #endif
@@ -1108,9 +1108,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isDescendingAllDefCom_D1_PSSK3
 #endif
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))      , intent(in)    , contiguous    :: array(:)
+        type(css_pdt(SKG))      , intent(in)    , contiguous    :: array(:)
         logical(LK)                                             :: descendingAll
     end function
 #endif
@@ -1120,9 +1120,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isDescendingAllDefCom_D1_PSSK2
 #endif
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))      , intent(in)    , contiguous    :: array(:)
+        type(css_pdt(SKG))      , intent(in)    , contiguous    :: array(:)
         logical(LK)                                             :: descendingAll
     end function
 #endif
@@ -1132,9 +1132,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isDescendingAllDefCom_D1_PSSK1
 #endif
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))      , intent(in)    , contiguous    :: array(:)
+        type(css_pdt(SKG))      , intent(in)    , contiguous    :: array(:)
         logical(LK)                                             :: descendingAll
     end function
 #endif
@@ -1148,7 +1148,7 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isDescendingAllDefCom_D1_BSSK
 #endif
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
         use pm_container, only: css_type
         type(css_type)          , intent(in)    , contiguous    :: array(:)
         logical(LK)                                             :: descendingAll
@@ -1239,8 +1239,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isAscendingDefCom_D0_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)        , intent(in)                    :: array
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)        , intent(in)                    :: array
         logical(LK)                                             :: ascending
     end function
 #endif
@@ -1250,8 +1250,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isAscendingDefCom_D0_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)        , intent(in)                    :: array
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)        , intent(in)                    :: array
         logical(LK)                                             :: ascending
     end function
 #endif
@@ -1261,8 +1261,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isAscendingDefCom_D0_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)        , intent(in)                    :: array
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)        , intent(in)                    :: array
         logical(LK)                                             :: ascending
     end function
 #endif
@@ -1272,8 +1272,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isAscendingDefCom_D0_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)        , intent(in)                    :: array
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)        , intent(in)                    :: array
         logical(LK)                                             :: ascending
     end function
 #endif
@@ -1283,8 +1283,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isAscendingDefCom_D0_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)        , intent(in)                    :: array
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)        , intent(in)                    :: array
         logical(LK)                                             :: ascending
     end function
 #endif
@@ -1296,8 +1296,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isAscendingDefCom_D1_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)        , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)        , intent(in)    , contiguous    :: array(:)
         logical(LK)                                             :: ascending
     end function
 #endif
@@ -1307,8 +1307,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isAscendingDefCom_D1_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)        , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)        , intent(in)    , contiguous    :: array(:)
         logical(LK)                                             :: ascending
     end function
 #endif
@@ -1318,8 +1318,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isAscendingDefCom_D1_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)        , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)        , intent(in)    , contiguous    :: array(:)
         logical(LK)                                             :: ascending
     end function
 #endif
@@ -1329,8 +1329,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isAscendingDefCom_D1_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)        , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)        , intent(in)    , contiguous    :: array(:)
         logical(LK)                                             :: ascending
     end function
 #endif
@@ -1340,8 +1340,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isAscendingDefCom_D1_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)        , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)        , intent(in)    , contiguous    :: array(:)
         logical(LK)                                             :: ascending
     end function
 #endif
@@ -1353,8 +1353,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isAscendingDefCom_D1_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK5
+        integer(IKG)            , intent(in)    , contiguous    :: array(:)
         logical(LK)                                             :: ascending
     end function
 #endif
@@ -1364,8 +1364,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isAscendingDefCom_D1_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK4
+        integer(IKG)            , intent(in)    , contiguous    :: array(:)
         logical(LK)                                             :: ascending
     end function
 #endif
@@ -1375,8 +1375,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isAscendingDefCom_D1_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK3
+        integer(IKG)            , intent(in)    , contiguous    :: array(:)
         logical(LK)                                             :: ascending
     end function
 #endif
@@ -1386,8 +1386,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isAscendingDefCom_D1_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK2
+        integer(IKG)            , intent(in)    , contiguous    :: array(:)
         logical(LK)                                             :: ascending
     end function
 #endif
@@ -1397,8 +1397,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isAscendingDefCom_D1_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK1
+        integer(IKG)            , intent(in)    , contiguous    :: array(:)
         logical(LK)                                             :: ascending
     end function
 #endif
@@ -1410,8 +1410,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isAscendingDefCom_D1_LK5
 #endif
-        use pm_kind, only: LKC => LK5
-        logical(LKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: LKG => LK5
+        logical(LKG)            , intent(in)    , contiguous    :: array(:)
         logical(LK)                                             :: ascending
     end function
 #endif
@@ -1421,8 +1421,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isAscendingDefCom_D1_LK4
 #endif
-        use pm_kind, only: LKC => LK4
-        logical(LKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: LKG => LK4
+        logical(LKG)            , intent(in)    , contiguous    :: array(:)
         logical(LK)                                             :: ascending
     end function
 #endif
@@ -1432,8 +1432,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isAscendingDefCom_D1_LK3
 #endif
-        use pm_kind, only: LKC => LK3
-        logical(LKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: LKG => LK3
+        logical(LKG)            , intent(in)    , contiguous    :: array(:)
         logical(LK)                                             :: ascending
     end function
 #endif
@@ -1443,8 +1443,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isAscendingDefCom_D1_LK2
 #endif
-        use pm_kind, only: LKC => LK2
-        logical(LKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: LKG => LK2
+        logical(LKG)            , intent(in)    , contiguous    :: array(:)
         logical(LK)                                             :: ascending
     end function
 #endif
@@ -1454,8 +1454,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isAscendingDefCom_D1_LK1
 #endif
-        use pm_kind, only: LKC => LK1
-        logical(LKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: LKG => LK1
+        logical(LKG)            , intent(in)    , contiguous    :: array(:)
         logical(LK)                                             :: ascending
     end function
 #endif
@@ -1467,8 +1467,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isAscendingDefCom_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)               , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)               , intent(in)    , contiguous    :: array(:)
         logical(LK)                                             :: ascending
     end function
 #endif
@@ -1478,8 +1478,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isAscendingDefCom_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)               , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)               , intent(in)    , contiguous    :: array(:)
         logical(LK)                                             :: ascending
     end function
 #endif
@@ -1489,8 +1489,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isAscendingDefCom_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)               , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)               , intent(in)    , contiguous    :: array(:)
         logical(LK)                                             :: ascending
     end function
 #endif
@@ -1500,8 +1500,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isAscendingDefCom_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)               , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)               , intent(in)    , contiguous    :: array(:)
         logical(LK)                                             :: ascending
     end function
 #endif
@@ -1511,8 +1511,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isAscendingDefCom_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)               , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)               , intent(in)    , contiguous    :: array(:)
         logical(LK)                                             :: ascending
     end function
 #endif
@@ -1524,8 +1524,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isAscendingDefCom_D1_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG)            , intent(in)    , contiguous    :: array(:)
         logical(LK)                                             :: ascending
     end function
 #endif
@@ -1535,8 +1535,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isAscendingDefCom_D1_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG)            , intent(in)    , contiguous    :: array(:)
         logical(LK)                                             :: ascending
     end function
 #endif
@@ -1546,8 +1546,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isAscendingDefCom_D1_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG)            , intent(in)    , contiguous    :: array(:)
         logical(LK)                                             :: ascending
     end function
 #endif
@@ -1557,8 +1557,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isAscendingDefCom_D1_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG)            , intent(in)    , contiguous    :: array(:)
         logical(LK)                                             :: ascending
     end function
 #endif
@@ -1568,8 +1568,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isAscendingDefCom_D1_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG)            , intent(in)    , contiguous    :: array(:)
         logical(LK)                                             :: ascending
     end function
 #endif
@@ -1583,9 +1583,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isAscendingDefCom_D1_PSSK5
 #endif
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))      , intent(in)    , contiguous    :: array(:)
+        type(css_pdt(SKG))      , intent(in)    , contiguous    :: array(:)
         logical(LK)                                             :: ascending
     end function
 #endif
@@ -1595,9 +1595,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isAscendingDefCom_D1_PSSK4
 #endif
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))      , intent(in)    , contiguous    :: array(:)
+        type(css_pdt(SKG))      , intent(in)    , contiguous    :: array(:)
         logical(LK)                                             :: ascending
     end function
 #endif
@@ -1607,9 +1607,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isAscendingDefCom_D1_PSSK3
 #endif
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))      , intent(in)    , contiguous    :: array(:)
+        type(css_pdt(SKG))      , intent(in)    , contiguous    :: array(:)
         logical(LK)                                             :: ascending
     end function
 #endif
@@ -1619,9 +1619,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isAscendingDefCom_D1_PSSK2
 #endif
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))      , intent(in)    , contiguous    :: array(:)
+        type(css_pdt(SKG))      , intent(in)    , contiguous    :: array(:)
         logical(LK)                                             :: ascending
     end function
 #endif
@@ -1631,9 +1631,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isAscendingDefCom_D1_PSSK1
 #endif
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))      , intent(in)    , contiguous    :: array(:)
+        type(css_pdt(SKG))      , intent(in)    , contiguous    :: array(:)
         logical(LK)                                             :: ascending
     end function
 #endif
@@ -1647,7 +1647,7 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isAscendingDefCom_D1_BSSK
 #endif
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
         use pm_container, only: css_type
         type(css_type)          , intent(in)    , contiguous    :: array(:)
         logical(LK)                                             :: ascending
@@ -1734,8 +1734,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isDescendingDefCom_D0_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)        , intent(in)                    :: array
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)        , intent(in)                    :: array
         logical(LK)                                             :: descending
     end function
 #endif
@@ -1745,8 +1745,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isDescendingDefCom_D0_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)        , intent(in)                    :: array
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)        , intent(in)                    :: array
         logical(LK)                                             :: descending
     end function
 #endif
@@ -1756,8 +1756,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isDescendingDefCom_D0_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)        , intent(in)                    :: array
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)        , intent(in)                    :: array
         logical(LK)                                             :: descending
     end function
 #endif
@@ -1767,8 +1767,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isDescendingDefCom_D0_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)        , intent(in)                    :: array
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)        , intent(in)                    :: array
         logical(LK)                                             :: descending
     end function
 #endif
@@ -1778,8 +1778,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isDescendingDefCom_D0_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)        , intent(in)                    :: array
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)        , intent(in)                    :: array
         logical(LK)                                             :: descending
     end function
 #endif
@@ -1791,8 +1791,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isDescendingDefCom_D1_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)        , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)        , intent(in)    , contiguous    :: array(:)
         logical(LK)                                             :: descending
     end function
 #endif
@@ -1802,8 +1802,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isDescendingDefCom_D1_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)        , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)        , intent(in)    , contiguous    :: array(:)
         logical(LK)                                             :: descending
     end function
 #endif
@@ -1813,8 +1813,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isDescendingDefCom_D1_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)        , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)        , intent(in)    , contiguous    :: array(:)
         logical(LK)                                             :: descending
     end function
 #endif
@@ -1824,8 +1824,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isDescendingDefCom_D1_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)        , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)        , intent(in)    , contiguous    :: array(:)
         logical(LK)                                             :: descending
     end function
 #endif
@@ -1835,8 +1835,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isDescendingDefCom_D1_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)        , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)        , intent(in)    , contiguous    :: array(:)
         logical(LK)                                             :: descending
     end function
 #endif
@@ -1848,8 +1848,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isDescendingDefCom_D1_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK5
+        integer(IKG)            , intent(in)    , contiguous    :: array(:)
         logical(LK)                                             :: descending
     end function
 #endif
@@ -1859,8 +1859,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isDescendingDefCom_D1_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK4
+        integer(IKG)            , intent(in)    , contiguous    :: array(:)
         logical(LK)                                             :: descending
     end function
 #endif
@@ -1870,8 +1870,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isDescendingDefCom_D1_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK3
+        integer(IKG)            , intent(in)    , contiguous    :: array(:)
         logical(LK)                                             :: descending
     end function
 #endif
@@ -1881,8 +1881,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isDescendingDefCom_D1_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK2
+        integer(IKG)            , intent(in)    , contiguous    :: array(:)
         logical(LK)                                             :: descending
     end function
 #endif
@@ -1892,8 +1892,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isDescendingDefCom_D1_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK1
+        integer(IKG)            , intent(in)    , contiguous    :: array(:)
         logical(LK)                                             :: descending
     end function
 #endif
@@ -1905,8 +1905,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isDescendingDefCom_D1_LK5
 #endif
-        use pm_kind, only: LKC => LK5
-        logical(LKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: LKG => LK5
+        logical(LKG)            , intent(in)    , contiguous    :: array(:)
         logical(LK)                                             :: descending
     end function
 #endif
@@ -1916,8 +1916,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isDescendingDefCom_D1_LK4
 #endif
-        use pm_kind, only: LKC => LK4
-        logical(LKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: LKG => LK4
+        logical(LKG)            , intent(in)    , contiguous    :: array(:)
         logical(LK)                                             :: descending
     end function
 #endif
@@ -1927,8 +1927,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isDescendingDefCom_D1_LK3
 #endif
-        use pm_kind, only: LKC => LK3
-        logical(LKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: LKG => LK3
+        logical(LKG)            , intent(in)    , contiguous    :: array(:)
         logical(LK)                                             :: descending
     end function
 #endif
@@ -1938,8 +1938,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isDescendingDefCom_D1_LK2
 #endif
-        use pm_kind, only: LKC => LK2
-        logical(LKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: LKG => LK2
+        logical(LKG)            , intent(in)    , contiguous    :: array(:)
         logical(LK)                                             :: descending
     end function
 #endif
@@ -1949,8 +1949,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isDescendingDefCom_D1_LK1
 #endif
-        use pm_kind, only: LKC => LK1
-        logical(LKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: LKG => LK1
+        logical(LKG)            , intent(in)    , contiguous    :: array(:)
         logical(LK)                                             :: descending
     end function
 #endif
@@ -1962,8 +1962,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isDescendingDefCom_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)               , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)               , intent(in)    , contiguous    :: array(:)
         logical(LK)                                             :: descending
     end function
 #endif
@@ -1973,8 +1973,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isDescendingDefCom_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)               , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)               , intent(in)    , contiguous    :: array(:)
         logical(LK)                                             :: descending
     end function
 #endif
@@ -1984,8 +1984,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isDescendingDefCom_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)               , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)               , intent(in)    , contiguous    :: array(:)
         logical(LK)                                             :: descending
     end function
 #endif
@@ -1995,8 +1995,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isDescendingDefCom_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)               , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)               , intent(in)    , contiguous    :: array(:)
         logical(LK)                                             :: descending
     end function
 #endif
@@ -2006,8 +2006,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isDescendingDefCom_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)               , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)               , intent(in)    , contiguous    :: array(:)
         logical(LK)                                             :: descending
     end function
 #endif
@@ -2019,8 +2019,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isDescendingDefCom_D1_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG)            , intent(in)    , contiguous    :: array(:)
         logical(LK)                                             :: descending
     end function
 #endif
@@ -2030,8 +2030,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isDescendingDefCom_D1_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG)            , intent(in)    , contiguous    :: array(:)
         logical(LK)                                             :: descending
     end function
 #endif
@@ -2041,8 +2041,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isDescendingDefCom_D1_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG)            , intent(in)    , contiguous    :: array(:)
         logical(LK)                                             :: descending
     end function
 #endif
@@ -2052,8 +2052,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isDescendingDefCom_D1_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG)            , intent(in)    , contiguous    :: array(:)
         logical(LK)                                             :: descending
     end function
 #endif
@@ -2063,8 +2063,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isDescendingDefCom_D1_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG)            , intent(in)    , contiguous    :: array(:)
         logical(LK)                                             :: descending
     end function
 #endif
@@ -2078,9 +2078,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isDescendingDefCom_D1_PSSK5
 #endif
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))      , intent(in)    , contiguous    :: array(:)
+        type(css_pdt(SKG))      , intent(in)    , contiguous    :: array(:)
         logical(LK)                                             :: descending
     end function
 #endif
@@ -2090,9 +2090,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isDescendingDefCom_D1_PSSK4
 #endif
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))      , intent(in)    , contiguous    :: array(:)
+        type(css_pdt(SKG))      , intent(in)    , contiguous    :: array(:)
         logical(LK)                                             :: descending
     end function
 #endif
@@ -2102,9 +2102,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isDescendingDefCom_D1_PSSK3
 #endif
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))      , intent(in)    , contiguous    :: array(:)
+        type(css_pdt(SKG))      , intent(in)    , contiguous    :: array(:)
         logical(LK)                                             :: descending
     end function
 #endif
@@ -2114,9 +2114,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isDescendingDefCom_D1_PSSK2
 #endif
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))      , intent(in)    , contiguous    :: array(:)
+        type(css_pdt(SKG))      , intent(in)    , contiguous    :: array(:)
         logical(LK)                                             :: descending
     end function
 #endif
@@ -2126,9 +2126,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isDescendingDefCom_D1_PSSK1
 #endif
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))      , intent(in)    , contiguous    :: array(:)
+        type(css_pdt(SKG))      , intent(in)    , contiguous    :: array(:)
         logical(LK)                                             :: descending
     end function
 #endif
@@ -2142,7 +2142,7 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isDescendingDefCom_D1_BSSK
 #endif
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
         use pm_container, only: css_type
         type(css_type)          , intent(in)    , contiguous    :: array(:)
         logical(LK)                                             :: descending
@@ -2261,8 +2261,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isSortedDefCom_D0_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)        , intent(in)                    :: array
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)        , intent(in)                    :: array
         logical(LK)                                             :: sorted
     end function
 #endif
@@ -2272,8 +2272,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isSortedDefCom_D0_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)        , intent(in)                    :: array
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)        , intent(in)                    :: array
         logical(LK)                                             :: sorted
     end function
 #endif
@@ -2283,8 +2283,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isSortedDefCom_D0_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)        , intent(in)                    :: array
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)        , intent(in)                    :: array
         logical(LK)                                             :: sorted
     end function
 #endif
@@ -2294,8 +2294,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isSortedDefCom_D0_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)        , intent(in)                    :: array
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)        , intent(in)                    :: array
         logical(LK)                                             :: sorted
     end function
 #endif
@@ -2305,8 +2305,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isSortedDefCom_D0_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)        , intent(in)                    :: array
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)        , intent(in)                    :: array
         logical(LK)                                             :: sorted
     end function
 #endif
@@ -2318,8 +2318,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isSortedDefCom_D1_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)        , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)        , intent(in)    , contiguous    :: array(:)
         logical(LK)                                             :: sorted
     end function
 #endif
@@ -2329,8 +2329,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isSortedDefCom_D1_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)        , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)        , intent(in)    , contiguous    :: array(:)
         logical(LK)                                             :: sorted
     end function
 #endif
@@ -2340,8 +2340,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isSortedDefCom_D1_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)        , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)        , intent(in)    , contiguous    :: array(:)
         logical(LK)                                             :: sorted
     end function
 #endif
@@ -2351,8 +2351,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isSortedDefCom_D1_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)        , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)        , intent(in)    , contiguous    :: array(:)
         logical(LK)                                             :: sorted
     end function
 #endif
@@ -2362,8 +2362,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isSortedDefCom_D1_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)        , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)        , intent(in)    , contiguous    :: array(:)
         logical(LK)                                             :: sorted
     end function
 #endif
@@ -2375,8 +2375,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isSortedDefCom_D1_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK5
+        integer(IKG)            , intent(in)    , contiguous    :: array(:)
         logical(LK)                                             :: sorted
     end function
 #endif
@@ -2386,8 +2386,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isSortedDefCom_D1_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK4
+        integer(IKG)            , intent(in)    , contiguous    :: array(:)
         logical(LK)                                             :: sorted
     end function
 #endif
@@ -2397,8 +2397,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isSortedDefCom_D1_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK3
+        integer(IKG)            , intent(in)    , contiguous    :: array(:)
         logical(LK)                                             :: sorted
     end function
 #endif
@@ -2408,8 +2408,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isSortedDefCom_D1_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK2
+        integer(IKG)            , intent(in)    , contiguous    :: array(:)
         logical(LK)                                             :: sorted
     end function
 #endif
@@ -2419,8 +2419,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isSortedDefCom_D1_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK1
+        integer(IKG)            , intent(in)    , contiguous    :: array(:)
         logical(LK)                                             :: sorted
     end function
 #endif
@@ -2432,8 +2432,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isSortedDefCom_D1_LK5
 #endif
-        use pm_kind, only: LKC => LK5
-        logical(LKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: LKG => LK5
+        logical(LKG)            , intent(in)    , contiguous    :: array(:)
         logical(LK)                                             :: sorted
     end function
 #endif
@@ -2443,8 +2443,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isSortedDefCom_D1_LK4
 #endif
-        use pm_kind, only: LKC => LK4
-        logical(LKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: LKG => LK4
+        logical(LKG)            , intent(in)    , contiguous    :: array(:)
         logical(LK)                                             :: sorted
     end function
 #endif
@@ -2454,8 +2454,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isSortedDefCom_D1_LK3
 #endif
-        use pm_kind, only: LKC => LK3
-        logical(LKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: LKG => LK3
+        logical(LKG)            , intent(in)    , contiguous    :: array(:)
         logical(LK)                                             :: sorted
     end function
 #endif
@@ -2465,8 +2465,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isSortedDefCom_D1_LK2
 #endif
-        use pm_kind, only: LKC => LK2
-        logical(LKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: LKG => LK2
+        logical(LKG)            , intent(in)    , contiguous    :: array(:)
         logical(LK)                                             :: sorted
     end function
 #endif
@@ -2476,8 +2476,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isSortedDefCom_D1_LK1
 #endif
-        use pm_kind, only: LKC => LK1
-        logical(LKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: LKG => LK1
+        logical(LKG)            , intent(in)    , contiguous    :: array(:)
         logical(LK)                                             :: sorted
     end function
 #endif
@@ -2489,8 +2489,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isSortedDefCom_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)               , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)               , intent(in)    , contiguous    :: array(:)
         logical(LK)                                             :: sorted
     end function
 #endif
@@ -2500,8 +2500,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isSortedDefCom_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)               , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)               , intent(in)    , contiguous    :: array(:)
         logical(LK)                                             :: sorted
     end function
 #endif
@@ -2511,8 +2511,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isSortedDefCom_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)               , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)               , intent(in)    , contiguous    :: array(:)
         logical(LK)                                             :: sorted
     end function
 #endif
@@ -2522,8 +2522,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isSortedDefCom_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)               , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)               , intent(in)    , contiguous    :: array(:)
         logical(LK)                                             :: sorted
     end function
 #endif
@@ -2533,8 +2533,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isSortedDefCom_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)               , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)               , intent(in)    , contiguous    :: array(:)
         logical(LK)                                             :: sorted
     end function
 #endif
@@ -2546,8 +2546,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isSortedDefCom_D1_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG)            , intent(in)    , contiguous    :: array(:)
         logical(LK)                                             :: sorted
     end function
 #endif
@@ -2557,8 +2557,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isSortedDefCom_D1_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG)            , intent(in)    , contiguous    :: array(:)
         logical(LK)                                             :: sorted
     end function
 #endif
@@ -2568,8 +2568,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isSortedDefCom_D1_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG)            , intent(in)    , contiguous    :: array(:)
         logical(LK)                                             :: sorted
     end function
 #endif
@@ -2579,8 +2579,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isSortedDefCom_D1_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG)            , intent(in)    , contiguous    :: array(:)
         logical(LK)                                             :: sorted
     end function
 #endif
@@ -2590,8 +2590,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isSortedDefCom_D1_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG)            , intent(in)    , contiguous    :: array(:)
         logical(LK)                                             :: sorted
     end function
 #endif
@@ -2605,9 +2605,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isSortedDefCom_D1_PSSK5
 #endif
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))      , intent(in)    , contiguous    :: array(:)
+        type(css_pdt(SKG))      , intent(in)    , contiguous    :: array(:)
         logical(LK)                                             :: sorted
     end function
 #endif
@@ -2617,9 +2617,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isSortedDefCom_D1_PSSK4
 #endif
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))      , intent(in)    , contiguous    :: array(:)
+        type(css_pdt(SKG))      , intent(in)    , contiguous    :: array(:)
         logical(LK)                                             :: sorted
     end function
 #endif
@@ -2629,9 +2629,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isSortedDefCom_D1_PSSK3
 #endif
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))      , intent(in)    , contiguous    :: array(:)
+        type(css_pdt(SKG))      , intent(in)    , contiguous    :: array(:)
         logical(LK)                                             :: sorted
     end function
 #endif
@@ -2641,9 +2641,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isSortedDefCom_D1_PSSK2
 #endif
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))      , intent(in)    , contiguous    :: array(:)
+        type(css_pdt(SKG))      , intent(in)    , contiguous    :: array(:)
         logical(LK)                                             :: sorted
     end function
 #endif
@@ -2653,9 +2653,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isSortedDefCom_D1_PSSK1
 #endif
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))      , intent(in)    , contiguous    :: array(:)
+        type(css_pdt(SKG))      , intent(in)    , contiguous    :: array(:)
         logical(LK)                                             :: sorted
     end function
 #endif
@@ -2669,7 +2669,7 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isSortedDefCom_D1_BSSK
 #endif
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
         use pm_container, only: css_type
         type(css_type)          , intent(in)    , contiguous    :: array(:)
         logical(LK)                                             :: sorted
@@ -2688,8 +2688,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isSortedCusCom_D0_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)        , intent(in)                    :: array
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)        , intent(in)                    :: array
         procedure(logical(LK))                                  :: isSorted
         logical(LK)                                             :: sorted
     end function
@@ -2700,8 +2700,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isSortedCusCom_D0_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)        , intent(in)                    :: array
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)        , intent(in)                    :: array
         procedure(logical(LK))                                  :: isSorted
         logical(LK)                                             :: sorted
     end function
@@ -2712,8 +2712,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isSortedCusCom_D0_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)        , intent(in)                    :: array
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)        , intent(in)                    :: array
         procedure(logical(LK))                                  :: isSorted
         logical(LK)                                             :: sorted
     end function
@@ -2724,8 +2724,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isSortedCusCom_D0_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)        , intent(in)                    :: array
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)        , intent(in)                    :: array
         procedure(logical(LK))                                  :: isSorted
         logical(LK)                                             :: sorted
     end function
@@ -2736,8 +2736,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isSortedCusCom_D0_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)        , intent(in)                    :: array
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)        , intent(in)                    :: array
         procedure(logical(LK))                                  :: isSorted
         logical(LK)                                             :: sorted
     end function
@@ -2750,8 +2750,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isSortedCusCom_D1_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)        , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)        , intent(in)    , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         logical(LK)                                             :: sorted
     end function
@@ -2762,8 +2762,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isSortedCusCom_D1_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)        , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)        , intent(in)    , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         logical(LK)                                             :: sorted
     end function
@@ -2774,8 +2774,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isSortedCusCom_D1_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)        , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)        , intent(in)    , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         logical(LK)                                             :: sorted
     end function
@@ -2786,8 +2786,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isSortedCusCom_D1_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)        , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)        , intent(in)    , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         logical(LK)                                             :: sorted
     end function
@@ -2798,8 +2798,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isSortedCusCom_D1_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)        , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)        , intent(in)    , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         logical(LK)                                             :: sorted
     end function
@@ -2812,8 +2812,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isSortedCusCom_D1_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK5
+        integer(IKG)            , intent(in)    , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         logical(LK)                                             :: sorted
     end function
@@ -2824,8 +2824,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isSortedCusCom_D1_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK4
+        integer(IKG)            , intent(in)    , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         logical(LK)                                             :: sorted
     end function
@@ -2836,8 +2836,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isSortedCusCom_D1_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK3
+        integer(IKG)            , intent(in)    , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         logical(LK)                                             :: sorted
     end function
@@ -2848,8 +2848,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isSortedCusCom_D1_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK2
+        integer(IKG)            , intent(in)    , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         logical(LK)                                             :: sorted
     end function
@@ -2860,8 +2860,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isSortedCusCom_D1_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK1
+        integer(IKG)            , intent(in)    , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         logical(LK)                                             :: sorted
     end function
@@ -2874,8 +2874,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isSortedCusCom_D1_LK5
 #endif
-        use pm_kind, only: LKC => LK5
-        logical(LKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: LKG => LK5
+        logical(LKG)            , intent(in)    , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         logical(LK)                                             :: sorted
     end function
@@ -2886,8 +2886,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isSortedCusCom_D1_LK4
 #endif
-        use pm_kind, only: LKC => LK4
-        logical(LKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: LKG => LK4
+        logical(LKG)            , intent(in)    , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         logical(LK)                                             :: sorted
     end function
@@ -2898,8 +2898,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isSortedCusCom_D1_LK3
 #endif
-        use pm_kind, only: LKC => LK3
-        logical(LKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: LKG => LK3
+        logical(LKG)            , intent(in)    , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         logical(LK)                                             :: sorted
     end function
@@ -2910,8 +2910,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isSortedCusCom_D1_LK2
 #endif
-        use pm_kind, only: LKC => LK2
-        logical(LKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: LKG => LK2
+        logical(LKG)            , intent(in)    , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         logical(LK)                                             :: sorted
     end function
@@ -2922,8 +2922,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isSortedCusCom_D1_LK1
 #endif
-        use pm_kind, only: LKC => LK1
-        logical(LKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: LKG => LK1
+        logical(LKG)            , intent(in)    , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         logical(LK)                                             :: sorted
     end function
@@ -2936,8 +2936,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isSortedCusCom_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)               , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)               , intent(in)    , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         logical(LK)                                             :: sorted
     end function
@@ -2948,8 +2948,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isSortedCusCom_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)               , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)               , intent(in)    , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         logical(LK)                                             :: sorted
     end function
@@ -2960,8 +2960,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isSortedCusCom_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)               , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)               , intent(in)    , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         logical(LK)                                             :: sorted
     end function
@@ -2972,8 +2972,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isSortedCusCom_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)               , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)               , intent(in)    , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         logical(LK)                                             :: sorted
     end function
@@ -2984,8 +2984,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isSortedCusCom_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)               , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)               , intent(in)    , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         logical(LK)                                             :: sorted
     end function
@@ -2998,8 +2998,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isSortedCusCom_D1_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG)            , intent(in)    , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         logical(LK)                                             :: sorted
     end function
@@ -3010,8 +3010,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isSortedCusCom_D1_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG)            , intent(in)    , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         logical(LK)                                             :: sorted
     end function
@@ -3022,8 +3022,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isSortedCusCom_D1_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG)            , intent(in)    , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         logical(LK)                                             :: sorted
     end function
@@ -3034,8 +3034,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isSortedCusCom_D1_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG)            , intent(in)    , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         logical(LK)                                             :: sorted
     end function
@@ -3046,8 +3046,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isSortedCusCom_D1_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG)            , intent(in)    , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         logical(LK)                                             :: sorted
     end function
@@ -3062,9 +3062,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isSortedCusCom_D1_PSSK5
 #endif
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))      , intent(in)    , contiguous    :: array(:)
+        type(css_pdt(SKG))      , intent(in)    , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         logical(LK)                                             :: sorted
     end function
@@ -3075,9 +3075,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isSortedCusCom_D1_PSSK4
 #endif
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))      , intent(in)    , contiguous    :: array(:)
+        type(css_pdt(SKG))      , intent(in)    , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         logical(LK)                                             :: sorted
     end function
@@ -3088,9 +3088,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isSortedCusCom_D1_PSSK3
 #endif
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))      , intent(in)    , contiguous    :: array(:)
+        type(css_pdt(SKG))      , intent(in)    , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         logical(LK)                                             :: sorted
     end function
@@ -3101,9 +3101,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isSortedCusCom_D1_PSSK2
 #endif
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))      , intent(in)    , contiguous    :: array(:)
+        type(css_pdt(SKG))      , intent(in)    , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         logical(LK)                                             :: sorted
     end function
@@ -3114,9 +3114,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isSortedCusCom_D1_PSSK1
 #endif
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))      , intent(in)    , contiguous    :: array(:)
+        type(css_pdt(SKG))      , intent(in)    , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         logical(LK)                                             :: sorted
     end function
@@ -3131,7 +3131,7 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isSortedCusCom_D1_BSSK
 #endif
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
         use pm_container, only: css_type
         type(css_type)          , intent(in)    , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
@@ -3359,8 +3359,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getSortedIndCusComDef_D0_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)            , intent(in)                    :: array
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)            , intent(in)                    :: array
         procedure(logical(LK))                                      :: isSorted
         integer(IK)                                                 :: sorting(len(array, IK))
         type(isort_type)            , intent(in)                    :: method
@@ -3372,8 +3372,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getSortedIndCusComDef_D0_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)            , intent(in)                    :: array
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)            , intent(in)                    :: array
         procedure(logical(LK))                                      :: isSorted
         integer(IK)                                                 :: sorting(len(array, IK))
         type(isort_type)            , intent(in)                    :: method
@@ -3385,8 +3385,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getSortedIndCusComDef_D0_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)            , intent(in)                    :: array
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)            , intent(in)                    :: array
         procedure(logical(LK))                                      :: isSorted
         integer(IK)                                                 :: sorting(len(array, IK))
         type(isort_type)            , intent(in)                    :: method
@@ -3398,8 +3398,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getSortedIndCusComDef_D0_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)            , intent(in)                    :: array
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)            , intent(in)                    :: array
         procedure(logical(LK))                                      :: isSorted
         integer(IK)                                                 :: sorting(len(array, IK))
         type(isort_type)            , intent(in)                    :: method
@@ -3411,8 +3411,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getSortedIndCusComDef_D0_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)            , intent(in)                    :: array
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)            , intent(in)                    :: array
         procedure(logical(LK))                                      :: isSorted
         integer(IK)                                                 :: sorting(len(array, IK))
         type(isort_type)            , intent(in)                    :: method
@@ -3426,8 +3426,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getSortedIndCusComDef_D1_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
         procedure(logical(LK))                                      :: isSorted
         integer(IK)                                                 :: sorting(size(array, 1, IK))
         type(isort_type)            , intent(in)                    :: method
@@ -3439,8 +3439,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getSortedIndCusComDef_D1_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
         procedure(logical(LK))                                      :: isSorted
         integer(IK)                                                 :: sorting(size(array, 1, IK))
         type(isort_type)            , intent(in)                    :: method
@@ -3452,8 +3452,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getSortedIndCusComDef_D1_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
         procedure(logical(LK))                                      :: isSorted
         integer(IK)                                                 :: sorting(size(array, 1, IK))
         type(isort_type)            , intent(in)                    :: method
@@ -3465,8 +3465,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getSortedIndCusComDef_D1_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
         procedure(logical(LK))                                      :: isSorted
         integer(IK)                                                 :: sorting(size(array, 1, IK))
         type(isort_type)            , intent(in)                    :: method
@@ -3478,8 +3478,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getSortedIndCusComDef_D1_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
         procedure(logical(LK))                                      :: isSorted
         integer(IK)                                                 :: sorting(size(array, 1, IK))
         type(isort_type)            , intent(in)                    :: method
@@ -3493,8 +3493,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getSortedIndCusComDef_D1_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK5
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
         procedure(logical(LK))                                      :: isSorted
         integer(IK)                                                 :: sorting(size(array, 1, IK))
         type(isort_type)            , intent(in)                    :: method
@@ -3506,8 +3506,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getSortedIndCusComDef_D1_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK4
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
         procedure(logical(LK))                                      :: isSorted
         integer(IK)                                                 :: sorting(size(array, 1, IK))
         type(isort_type)            , intent(in)                    :: method
@@ -3519,8 +3519,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getSortedIndCusComDef_D1_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK3
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
         procedure(logical(LK))                                      :: isSorted
         integer(IK)                                                 :: sorting(size(array, 1, IK))
         type(isort_type)            , intent(in)                    :: method
@@ -3532,8 +3532,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getSortedIndCusComDef_D1_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK2
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
         procedure(logical(LK))                                      :: isSorted
         integer(IK)                                                 :: sorting(size(array, 1, IK))
         type(isort_type)            , intent(in)                    :: method
@@ -3545,8 +3545,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getSortedIndCusComDef_D1_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK1
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
         procedure(logical(LK))                                      :: isSorted
         integer(IK)                                                 :: sorting(size(array, 1, IK))
         type(isort_type)            , intent(in)                    :: method
@@ -3560,8 +3560,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getSortedIndCusComDef_D1_LK5
 #endif
-        use pm_kind, only: LKC => LK5
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: LKG => LK5
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
         procedure(logical(LK))                                      :: isSorted
         integer(IK)                                                 :: sorting(size(array, 1, IK))
         type(isort_type)            , intent(in)                    :: method
@@ -3573,8 +3573,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getSortedIndCusComDef_D1_LK4
 #endif
-        use pm_kind, only: LKC => LK4
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: LKG => LK4
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
         procedure(logical(LK))                                      :: isSorted
         integer(IK)                                                 :: sorting(size(array, 1, IK))
         type(isort_type)            , intent(in)                    :: method
@@ -3586,8 +3586,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getSortedIndCusComDef_D1_LK3
 #endif
-        use pm_kind, only: LKC => LK3
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: LKG => LK3
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
         procedure(logical(LK))                                      :: isSorted
         integer(IK)                                                 :: sorting(size(array, 1, IK))
         type(isort_type)            , intent(in)                    :: method
@@ -3599,8 +3599,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getSortedIndCusComDef_D1_LK2
 #endif
-        use pm_kind, only: LKC => LK2
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: LKG => LK2
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
         procedure(logical(LK))                                      :: isSorted
         integer(IK)                                                 :: sorting(size(array, 1, IK))
         type(isort_type)            , intent(in)                    :: method
@@ -3612,8 +3612,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getSortedIndCusComDef_D1_LK1
 #endif
-        use pm_kind, only: LKC => LK1
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: LKG => LK1
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
         procedure(logical(LK))                                      :: isSorted
         integer(IK)                                                 :: sorting(size(array, 1, IK))
         type(isort_type)            , intent(in)                    :: method
@@ -3627,8 +3627,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getSortedIndCusComDef_D1_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
         procedure(logical(LK))                                      :: isSorted
         integer(IK)                                                 :: sorting(size(array, 1, IK))
         type(isort_type)            , intent(in)                    :: method
@@ -3640,8 +3640,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getSortedIndCusComDef_D1_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
         procedure(logical(LK))                                      :: isSorted
         integer(IK)                                                 :: sorting(size(array, 1, IK))
         type(isort_type)            , intent(in)                    :: method
@@ -3653,8 +3653,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getSortedIndCusComDef_D1_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
         procedure(logical(LK))                                      :: isSorted
         integer(IK)                                                 :: sorting(size(array, 1, IK))
         type(isort_type)            , intent(in)                    :: method
@@ -3666,8 +3666,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getSortedIndCusComDef_D1_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
         procedure(logical(LK))                                      :: isSorted
         integer(IK)                                                 :: sorting(size(array, 1, IK))
         type(isort_type)            , intent(in)                    :: method
@@ -3679,8 +3679,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getSortedIndCusComDef_D1_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
         procedure(logical(LK))                                      :: isSorted
         integer(IK)                                                 :: sorting(size(array, 1, IK))
         type(isort_type)            , intent(in)                    :: method
@@ -3694,8 +3694,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getSortedIndCusComDef_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
         procedure(logical(LK))                                      :: isSorted
         integer(IK)                                                 :: sorting(size(array, 1, IK))
         type(isort_type)            , intent(in)                    :: method
@@ -3707,8 +3707,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getSortedIndCusComDef_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
         procedure(logical(LK))                                      :: isSorted
         integer(IK)                                                 :: sorting(size(array, 1, IK))
         type(isort_type)            , intent(in)                    :: method
@@ -3720,8 +3720,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getSortedIndCusComDef_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
         procedure(logical(LK))                                      :: isSorted
         integer(IK)                                                 :: sorting(size(array, 1, IK))
         type(isort_type)            , intent(in)                    :: method
@@ -3733,8 +3733,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getSortedIndCusComDef_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
         procedure(logical(LK))                                      :: isSorted
         integer(IK)                                                 :: sorting(size(array, 1, IK))
         type(isort_type)            , intent(in)                    :: method
@@ -3746,8 +3746,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getSortedIndCusComDef_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
         procedure(logical(LK))                                      :: isSorted
         integer(IK)                                                 :: sorting(size(array, 1, IK))
         type(isort_type)            , intent(in)                    :: method
@@ -3763,9 +3763,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getSortedIndCusComDef_D1_PSSK5
 #endif
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))          , intent(in)    , contiguous    :: array(:)
+        type(css_pdt(SKG))          , intent(in)    , contiguous    :: array(:)
         procedure(logical(LK))                                      :: isSorted
         integer(IK)                                                 :: sorting(size(array, 1, IK))
         type(isort_type)            , intent(in)                    :: method
@@ -3777,9 +3777,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getSortedIndCusComDef_D1_PSSK4
 #endif
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))          , intent(in)    , contiguous    :: array(:)
+        type(css_pdt(SKG))          , intent(in)    , contiguous    :: array(:)
         procedure(logical(LK))                                      :: isSorted
         integer(IK)                                                 :: sorting(size(array, 1, IK))
         type(isort_type)            , intent(in)                    :: method
@@ -3791,9 +3791,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getSortedIndCusComDef_D1_PSSK3
 #endif
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))          , intent(in)    , contiguous    :: array(:)
+        type(css_pdt(SKG))          , intent(in)    , contiguous    :: array(:)
         procedure(logical(LK))                                      :: isSorted
         integer(IK)                                                 :: sorting(size(array, 1, IK))
         type(isort_type)            , intent(in)                    :: method
@@ -3805,9 +3805,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getSortedIndCusComDef_D1_PSSK2
 #endif
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))          , intent(in)    , contiguous    :: array(:)
+        type(css_pdt(SKG))          , intent(in)    , contiguous    :: array(:)
         procedure(logical(LK))                                      :: isSorted
         integer(IK)                                                 :: sorting(size(array, 1, IK))
         type(isort_type)            , intent(in)                    :: method
@@ -3819,9 +3819,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getSortedIndCusComDef_D1_PSSK1
 #endif
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))          , intent(in)    , contiguous    :: array(:)
+        type(css_pdt(SKG))          , intent(in)    , contiguous    :: array(:)
         procedure(logical(LK))                                      :: isSorted
         integer(IK)                                                 :: sorting(size(array, 1, IK))
         type(isort_type)            , intent(in)                    :: method
@@ -3837,7 +3837,7 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getSortedIndCusComDef_D1_BSSK
 #endif
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
         use pm_container, only: css_type
         type(css_type)              , intent(in)    , contiguous    :: array(:)
         procedure(logical(LK))                                      :: isSorted
@@ -3864,9 +3864,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getSortedArrCusComDef_D0_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)        , intent(in)                    :: array
-        character(len(array, IK),SKC)                           :: sorting
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)        , intent(in)                    :: array
+        character(len(array, IK),SKG)                           :: sorting
         procedure(logical(LK))                                  :: isSorted
         class(sort_type)        , intent(in)    , optional      :: method
     end function
@@ -3877,9 +3877,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getSortedArrCusComDef_D0_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)        , intent(in)                    :: array
-        character(len(array, IK),SKC)                           :: sorting
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)        , intent(in)                    :: array
+        character(len(array, IK),SKG)                           :: sorting
         procedure(logical(LK))                                  :: isSorted
         class(sort_type)        , intent(in)    , optional      :: method
     end function
@@ -3890,9 +3890,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getSortedArrCusComDef_D0_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)        , intent(in)                    :: array
-        character(len(array, IK),SKC)                           :: sorting
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)        , intent(in)                    :: array
+        character(len(array, IK),SKG)                           :: sorting
         procedure(logical(LK))                                  :: isSorted
         class(sort_type)        , intent(in)    , optional      :: method
     end function
@@ -3903,9 +3903,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getSortedArrCusComDef_D0_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)        , intent(in)                    :: array
-        character(len(array, IK),SKC)                           :: sorting
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)        , intent(in)                    :: array
+        character(len(array, IK),SKG)                           :: sorting
         procedure(logical(LK))                                  :: isSorted
         class(sort_type)        , intent(in)    , optional      :: method
     end function
@@ -3916,9 +3916,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getSortedArrCusComDef_D0_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)        , intent(in)                    :: array
-        character(len(array, IK),SKC)                           :: sorting
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)        , intent(in)                    :: array
+        character(len(array, IK),SKG)                           :: sorting
         procedure(logical(LK))                                  :: isSorted
         class(sort_type)        , intent(in)    , optional      :: method
     end function
@@ -3931,9 +3931,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getSortedArrCusComDef_D1_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)        , intent(in)    , contiguous    :: array(:)
-        character(len(array, IK),SKC)                           :: sorting(size(array, 1, IK))
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)        , intent(in)    , contiguous    :: array(:)
+        character(len(array, IK),SKG)                           :: sorting(size(array, 1, IK))
         procedure(logical(LK))                                  :: isSorted
         class(sort_type)        , intent(in)    , optional      :: method
     end function
@@ -3944,9 +3944,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getSortedArrCusComDef_D1_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)        , intent(in)    , contiguous    :: array(:)
-        character(len(array, IK),SKC)                           :: sorting(size(array, 1, IK))
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)        , intent(in)    , contiguous    :: array(:)
+        character(len(array, IK),SKG)                           :: sorting(size(array, 1, IK))
         procedure(logical(LK))                                  :: isSorted
         class(sort_type)        , intent(in)    , optional      :: method
     end function
@@ -3957,9 +3957,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getSortedArrCusComDef_D1_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)        , intent(in)    , contiguous    :: array(:)
-        character(len(array, IK),SKC)                           :: sorting(size(array, 1, IK))
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)        , intent(in)    , contiguous    :: array(:)
+        character(len(array, IK),SKG)                           :: sorting(size(array, 1, IK))
         procedure(logical(LK))                                  :: isSorted
         class(sort_type)        , intent(in)    , optional      :: method
     end function
@@ -3970,9 +3970,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getSortedArrCusComDef_D1_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)        , intent(in)    , contiguous    :: array(:)
-        character(len(array, IK),SKC)                           :: sorting(size(array, 1, IK))
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)        , intent(in)    , contiguous    :: array(:)
+        character(len(array, IK),SKG)                           :: sorting(size(array, 1, IK))
         procedure(logical(LK))                                  :: isSorted
         class(sort_type)        , intent(in)    , optional      :: method
     end function
@@ -3983,9 +3983,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getSortedArrCusComDef_D1_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)        , intent(in)    , contiguous    :: array(:)
-        character(len(array, IK),SKC)                           :: sorting(size(array, 1, IK))
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)        , intent(in)    , contiguous    :: array(:)
+        character(len(array, IK),SKG)                           :: sorting(size(array, 1, IK))
         procedure(logical(LK))                                  :: isSorted
         class(sort_type)        , intent(in)    , optional      :: method
     end function
@@ -3998,9 +3998,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getSortedArrCusComDef_D1_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)            , intent(in)    , contiguous    :: array(:)
-        integer(IKC)                                            :: sorting(size(array, 1, IK))
+        use pm_kind, only: IKG => IK5
+        integer(IKG)            , intent(in)    , contiguous    :: array(:)
+        integer(IKG)                                            :: sorting(size(array, 1, IK))
         procedure(logical(LK))                                  :: isSorted
         class(sort_type)        , intent(in)    , optional      :: method
     end function
@@ -4011,9 +4011,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getSortedArrCusComDef_D1_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)            , intent(in)    , contiguous    :: array(:)
-        integer(IKC)                                            :: sorting(size(array, 1, IK))
+        use pm_kind, only: IKG => IK4
+        integer(IKG)            , intent(in)    , contiguous    :: array(:)
+        integer(IKG)                                            :: sorting(size(array, 1, IK))
         procedure(logical(LK))                                  :: isSorted
         class(sort_type)        , intent(in)    , optional      :: method
     end function
@@ -4024,9 +4024,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getSortedArrCusComDef_D1_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)            , intent(in)    , contiguous    :: array(:)
-        integer(IKC)                                            :: sorting(size(array, 1, IK))
+        use pm_kind, only: IKG => IK3
+        integer(IKG)            , intent(in)    , contiguous    :: array(:)
+        integer(IKG)                                            :: sorting(size(array, 1, IK))
         procedure(logical(LK))                                  :: isSorted
         class(sort_type)        , intent(in)    , optional      :: method
     end function
@@ -4037,9 +4037,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getSortedArrCusComDef_D1_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)            , intent(in)    , contiguous    :: array(:)
-        integer(IKC)                                            :: sorting(size(array, 1, IK))
+        use pm_kind, only: IKG => IK2
+        integer(IKG)            , intent(in)    , contiguous    :: array(:)
+        integer(IKG)                                            :: sorting(size(array, 1, IK))
         procedure(logical(LK))                                  :: isSorted
         class(sort_type)        , intent(in)    , optional      :: method
     end function
@@ -4050,9 +4050,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getSortedArrCusComDef_D1_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)            , intent(in)    , contiguous    :: array(:)
-        integer(IKC)                                            :: sorting(size(array, 1, IK))
+        use pm_kind, only: IKG => IK1
+        integer(IKG)            , intent(in)    , contiguous    :: array(:)
+        integer(IKG)                                            :: sorting(size(array, 1, IK))
         procedure(logical(LK))                                  :: isSorted
         class(sort_type)        , intent(in)    , optional      :: method
     end function
@@ -4065,9 +4065,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getSortedArrCusComDef_D1_LK5
 #endif
-        use pm_kind, only: LKC => LK5
-        logical(LKC)            , intent(in)    , contiguous    :: array(:)
-        logical(LKC)                                            :: sorting(size(array, 1, IK))
+        use pm_kind, only: LKG => LK5
+        logical(LKG)            , intent(in)    , contiguous    :: array(:)
+        logical(LKG)                                            :: sorting(size(array, 1, IK))
         procedure(logical(LK))                                  :: isSorted
         class(sort_type)        , intent(in)    , optional      :: method
     end function
@@ -4078,9 +4078,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getSortedArrCusComDef_D1_LK4
 #endif
-        use pm_kind, only: LKC => LK4
-        logical(LKC)            , intent(in)    , contiguous    :: array(:)
-        logical(LKC)                                            :: sorting(size(array, 1, IK))
+        use pm_kind, only: LKG => LK4
+        logical(LKG)            , intent(in)    , contiguous    :: array(:)
+        logical(LKG)                                            :: sorting(size(array, 1, IK))
         procedure(logical(LK))                                  :: isSorted
         class(sort_type)        , intent(in)    , optional      :: method
     end function
@@ -4091,9 +4091,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getSortedArrCusComDef_D1_LK3
 #endif
-        use pm_kind, only: LKC => LK3
-        logical(LKC)            , intent(in)    , contiguous    :: array(:)
-        logical(LKC)                                            :: sorting(size(array, 1, IK))
+        use pm_kind, only: LKG => LK3
+        logical(LKG)            , intent(in)    , contiguous    :: array(:)
+        logical(LKG)                                            :: sorting(size(array, 1, IK))
         procedure(logical(LK))                                  :: isSorted
         class(sort_type)        , intent(in)    , optional      :: method
     end function
@@ -4104,9 +4104,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getSortedArrCusComDef_D1_LK2
 #endif
-        use pm_kind, only: LKC => LK2
-        logical(LKC)            , intent(in)    , contiguous    :: array(:)
-        logical(LKC)                                            :: sorting(size(array, 1, IK))
+        use pm_kind, only: LKG => LK2
+        logical(LKG)            , intent(in)    , contiguous    :: array(:)
+        logical(LKG)                                            :: sorting(size(array, 1, IK))
         procedure(logical(LK))                                  :: isSorted
         class(sort_type)        , intent(in)    , optional      :: method
     end function
@@ -4117,9 +4117,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getSortedArrCusComDef_D1_LK1
 #endif
-        use pm_kind, only: LKC => LK1
-        logical(LKC)            , intent(in)    , contiguous    :: array(:)
-        logical(LKC)                                            :: sorting(size(array, 1, IK))
+        use pm_kind, only: LKG => LK1
+        logical(LKG)            , intent(in)    , contiguous    :: array(:)
+        logical(LKG)                                            :: sorting(size(array, 1, IK))
         procedure(logical(LK))                                  :: isSorted
         class(sort_type)        , intent(in)    , optional      :: method
     end function
@@ -4132,9 +4132,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getSortedArrCusComDef_D1_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)            , intent(in)    , contiguous    :: array(:)
-        complex(CKC)                                            :: sorting(size(array, 1, IK))
+        use pm_kind, only: CKG => CK5
+        complex(CKG)            , intent(in)    , contiguous    :: array(:)
+        complex(CKG)                                            :: sorting(size(array, 1, IK))
         procedure(logical(LK))                                  :: isSorted
         class(sort_type)        , intent(in)    , optional      :: method
     end function
@@ -4145,9 +4145,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getSortedArrCusComDef_D1_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)            , intent(in)    , contiguous    :: array(:)
-        complex(CKC)                                            :: sorting(size(array, 1, IK))
+        use pm_kind, only: CKG => CK4
+        complex(CKG)            , intent(in)    , contiguous    :: array(:)
+        complex(CKG)                                            :: sorting(size(array, 1, IK))
         procedure(logical(LK))                                  :: isSorted
         class(sort_type)        , intent(in)    , optional      :: method
     end function
@@ -4158,9 +4158,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getSortedArrCusComDef_D1_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)            , intent(in)    , contiguous    :: array(:)
-        complex(CKC)                                            :: sorting(size(array, 1, IK))
+        use pm_kind, only: CKG => CK3
+        complex(CKG)            , intent(in)    , contiguous    :: array(:)
+        complex(CKG)                                            :: sorting(size(array, 1, IK))
         procedure(logical(LK))                                  :: isSorted
         class(sort_type)        , intent(in)    , optional      :: method
     end function
@@ -4171,9 +4171,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getSortedArrCusComDef_D1_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)            , intent(in)    , contiguous    :: array(:)
-        complex(CKC)                                            :: sorting(size(array, 1, IK))
+        use pm_kind, only: CKG => CK2
+        complex(CKG)            , intent(in)    , contiguous    :: array(:)
+        complex(CKG)                                            :: sorting(size(array, 1, IK))
         procedure(logical(LK))                                  :: isSorted
         class(sort_type)        , intent(in)    , optional      :: method
     end function
@@ -4184,9 +4184,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getSortedArrCusComDef_D1_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)            , intent(in)    , contiguous    :: array(:)
-        complex(CKC)                                            :: sorting(size(array, 1, IK))
+        use pm_kind, only: CKG => CK1
+        complex(CKG)            , intent(in)    , contiguous    :: array(:)
+        complex(CKG)                                            :: sorting(size(array, 1, IK))
         procedure(logical(LK))                                  :: isSorted
         class(sort_type)        , intent(in)    , optional      :: method
     end function
@@ -4199,9 +4199,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getSortedArrCusComDef_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)               , intent(in)    , contiguous    :: array(:)
-        real(RKC)                                               :: sorting(size(array, 1, IK))
+        use pm_kind, only: RKG => RK5
+        real(RKG)               , intent(in)    , contiguous    :: array(:)
+        real(RKG)                                               :: sorting(size(array, 1, IK))
         procedure(logical(LK))                                  :: isSorted
         class(sort_type)        , intent(in)    , optional      :: method
     end function
@@ -4212,9 +4212,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getSortedArrCusComDef_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)               , intent(in)    , contiguous    :: array(:)
-        real(RKC)                                               :: sorting(size(array, 1, IK))
+        use pm_kind, only: RKG => RK4
+        real(RKG)               , intent(in)    , contiguous    :: array(:)
+        real(RKG)                                               :: sorting(size(array, 1, IK))
         procedure(logical(LK))                                  :: isSorted
         class(sort_type)        , intent(in)    , optional      :: method
     end function
@@ -4225,9 +4225,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getSortedArrCusComDef_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)               , intent(in)    , contiguous    :: array(:)
-        real(RKC)                                               :: sorting(size(array, 1, IK))
+        use pm_kind, only: RKG => RK3
+        real(RKG)               , intent(in)    , contiguous    :: array(:)
+        real(RKG)                                               :: sorting(size(array, 1, IK))
         procedure(logical(LK))                                  :: isSorted
         class(sort_type)        , intent(in)    , optional      :: method
     end function
@@ -4238,9 +4238,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getSortedArrCusComDef_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)               , intent(in)    , contiguous    :: array(:)
-        real(RKC)                                               :: sorting(size(array, 1, IK))
+        use pm_kind, only: RKG => RK2
+        real(RKG)               , intent(in)    , contiguous    :: array(:)
+        real(RKG)                                               :: sorting(size(array, 1, IK))
         procedure(logical(LK))                                  :: isSorted
         class(sort_type)        , intent(in)    , optional      :: method
     end function
@@ -4251,9 +4251,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getSortedArrCusComDef_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)               , intent(in)    , contiguous    :: array(:)
-        real(RKC)                                               :: sorting(size(array, 1, IK))
+        use pm_kind, only: RKG => RK1
+        real(RKG)               , intent(in)    , contiguous    :: array(:)
+        real(RKG)                                               :: sorting(size(array, 1, IK))
         procedure(logical(LK))                                  :: isSorted
         class(sort_type)        , intent(in)    , optional      :: method
     end function
@@ -4268,10 +4268,10 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getSortedArrCusComDef_D1_PSSK5
 #endif
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))      , intent(in)    , contiguous    :: array(:)
-        type(css_pdt(SKC))                                      :: sorting(size(array, 1, IK))
+        type(css_pdt(SKG))      , intent(in)    , contiguous    :: array(:)
+        type(css_pdt(SKG))                                      :: sorting(size(array, 1, IK))
         procedure(logical(LK))                                  :: isSorted
         class(sort_type)        , intent(in)    , optional      :: method
     end function
@@ -4282,10 +4282,10 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getSortedArrCusComDef_D1_PSSK4
 #endif
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))      , intent(in)    , contiguous    :: array(:)
-        type(css_pdt(SKC))                                      :: sorting(size(array, 1, IK))
+        type(css_pdt(SKG))      , intent(in)    , contiguous    :: array(:)
+        type(css_pdt(SKG))                                      :: sorting(size(array, 1, IK))
         procedure(logical(LK))                                  :: isSorted
         class(sort_type)        , intent(in)    , optional      :: method
     end function
@@ -4296,10 +4296,10 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getSortedArrCusComDef_D1_PSSK3
 #endif
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))      , intent(in)    , contiguous    :: array(:)
-        type(css_pdt(SKC))                                      :: sorting(size(array, 1, IK))
+        type(css_pdt(SKG))      , intent(in)    , contiguous    :: array(:)
+        type(css_pdt(SKG))                                      :: sorting(size(array, 1, IK))
         procedure(logical(LK))                                  :: isSorted
         class(sort_type)        , intent(in)    , optional      :: method
     end function
@@ -4310,10 +4310,10 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getSortedArrCusComDef_D1_PSSK2
 #endif
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))      , intent(in)    , contiguous    :: array(:)
-        type(css_pdt(SKC))                                      :: sorting(size(array, 1, IK))
+        type(css_pdt(SKG))      , intent(in)    , contiguous    :: array(:)
+        type(css_pdt(SKG))                                      :: sorting(size(array, 1, IK))
         procedure(logical(LK))                                  :: isSorted
         class(sort_type)        , intent(in)    , optional      :: method
     end function
@@ -4324,10 +4324,10 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getSortedArrCusComDef_D1_PSSK1
 #endif
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))      , intent(in)    , contiguous    :: array(:)
-        type(css_pdt(SKC))                                      :: sorting(size(array, 1, IK))
+        type(css_pdt(SKG))      , intent(in)    , contiguous    :: array(:)
+        type(css_pdt(SKG))                                      :: sorting(size(array, 1, IK))
         procedure(logical(LK))                                  :: isSorted
         class(sort_type)        , intent(in)    , optional      :: method
     end function
@@ -4342,7 +4342,7 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getSortedArrCusComDef_D1_BSSK
 #endif
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
         use pm_container, only: css_type
         type(css_type)          , intent(in)    , contiguous    :: array(:)
         type(css_type)                                          :: sorting(size(array, 1, IK))
@@ -4373,8 +4373,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getSortedIndDefComDef_D0_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)            , intent(in)                    :: array
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)            , intent(in)                    :: array
         integer(IK)                                                 :: sorting(len(array, IK))
         type(isort_type)            , intent(in)                    :: method
     end function
@@ -4385,8 +4385,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getSortedIndDefComDef_D0_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)            , intent(in)                    :: array
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)            , intent(in)                    :: array
         integer(IK)                                                 :: sorting(len(array, IK))
         type(isort_type)            , intent(in)                    :: method
     end function
@@ -4397,8 +4397,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getSortedIndDefComDef_D0_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)            , intent(in)                    :: array
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)            , intent(in)                    :: array
         integer(IK)                                                 :: sorting(len(array, IK))
         type(isort_type)            , intent(in)                    :: method
     end function
@@ -4409,8 +4409,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getSortedIndDefComDef_D0_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)            , intent(in)                    :: array
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)            , intent(in)                    :: array
         integer(IK)                                                 :: sorting(len(array, IK))
         type(isort_type)            , intent(in)                    :: method
     end function
@@ -4421,8 +4421,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getSortedIndDefComDef_D0_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)            , intent(in)                    :: array
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)            , intent(in)                    :: array
         integer(IK)                                                 :: sorting(len(array, IK))
         type(isort_type)            , intent(in)                    :: method
     end function
@@ -4435,8 +4435,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getSortedIndDefComDef_D1_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
         integer(IK)                                                 :: sorting(size(array, 1, IK))
         type(isort_type)            , intent(in)                    :: method
     end function
@@ -4447,8 +4447,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getSortedIndDefComDef_D1_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
         integer(IK)                                                 :: sorting(size(array, 1, IK))
         type(isort_type)            , intent(in)                    :: method
     end function
@@ -4459,8 +4459,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getSortedIndDefComDef_D1_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
         integer(IK)                                                 :: sorting(size(array, 1, IK))
         type(isort_type)            , intent(in)                    :: method
     end function
@@ -4471,8 +4471,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getSortedIndDefComDef_D1_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
         integer(IK)                                                 :: sorting(size(array, 1, IK))
         type(isort_type)            , intent(in)                    :: method
     end function
@@ -4483,8 +4483,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getSortedIndDefComDef_D1_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
         integer(IK)                                                 :: sorting(size(array, 1, IK))
         type(isort_type)            , intent(in)                    :: method
     end function
@@ -4497,8 +4497,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getSortedIndDefComDef_D1_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK5
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
         integer(IK)                                                 :: sorting(size(array, 1, IK))
         type(isort_type)            , intent(in)                    :: method
     end function
@@ -4509,8 +4509,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getSortedIndDefComDef_D1_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK4
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
         integer(IK)                                                 :: sorting(size(array, 1, IK))
         type(isort_type)            , intent(in)                    :: method
     end function
@@ -4521,8 +4521,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getSortedIndDefComDef_D1_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK3
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
         integer(IK)                                                 :: sorting(size(array, 1, IK))
         type(isort_type)            , intent(in)                    :: method
     end function
@@ -4533,8 +4533,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getSortedIndDefComDef_D1_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK2
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
         integer(IK)                                                 :: sorting(size(array, 1, IK))
         type(isort_type)            , intent(in)                    :: method
     end function
@@ -4545,8 +4545,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getSortedIndDefComDef_D1_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK1
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
         integer(IK)                                                 :: sorting(size(array, 1, IK))
         type(isort_type)            , intent(in)                    :: method
     end function
@@ -4559,8 +4559,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getSortedIndDefComDef_D1_LK5
 #endif
-        use pm_kind, only: LKC => LK5
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: LKG => LK5
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
         integer(IK)                                                 :: sorting(size(array, 1, IK))
         type(isort_type)            , intent(in)                    :: method
     end function
@@ -4571,8 +4571,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getSortedIndDefComDef_D1_LK4
 #endif
-        use pm_kind, only: LKC => LK4
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: LKG => LK4
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
         integer(IK)                                                 :: sorting(size(array, 1, IK))
         type(isort_type)            , intent(in)                    :: method
     end function
@@ -4583,8 +4583,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getSortedIndDefComDef_D1_LK3
 #endif
-        use pm_kind, only: LKC => LK3
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: LKG => LK3
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
         integer(IK)                                                 :: sorting(size(array, 1, IK))
         type(isort_type)            , intent(in)                    :: method
     end function
@@ -4595,8 +4595,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getSortedIndDefComDef_D1_LK2
 #endif
-        use pm_kind, only: LKC => LK2
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: LKG => LK2
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
         integer(IK)                                                 :: sorting(size(array, 1, IK))
         type(isort_type)            , intent(in)                    :: method
     end function
@@ -4607,8 +4607,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getSortedIndDefComDef_D1_LK1
 #endif
-        use pm_kind, only: LKC => LK1
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: LKG => LK1
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
         integer(IK)                                                 :: sorting(size(array, 1, IK))
         type(isort_type)            , intent(in)                    :: method
     end function
@@ -4621,8 +4621,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getSortedIndDefComDef_D1_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
         integer(IK)                                                 :: sorting(size(array, 1, IK))
         type(isort_type)            , intent(in)                    :: method
     end function
@@ -4633,8 +4633,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getSortedIndDefComDef_D1_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
         integer(IK)                                                 :: sorting(size(array, 1, IK))
         type(isort_type)            , intent(in)                    :: method
     end function
@@ -4645,8 +4645,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getSortedIndDefComDef_D1_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
         integer(IK)                                                 :: sorting(size(array, 1, IK))
         type(isort_type)            , intent(in)                    :: method
     end function
@@ -4657,8 +4657,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getSortedIndDefComDef_D1_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
         integer(IK)                                                 :: sorting(size(array, 1, IK))
         type(isort_type)            , intent(in)                    :: method
     end function
@@ -4669,8 +4669,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getSortedIndDefComDef_D1_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
         integer(IK)                                                 :: sorting(size(array, 1, IK))
         type(isort_type)            , intent(in)                    :: method
     end function
@@ -4683,8 +4683,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getSortedIndDefComDef_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
         integer(IK)                                                 :: sorting(size(array, 1, IK))
         type(isort_type)            , intent(in)                    :: method
     end function
@@ -4695,8 +4695,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getSortedIndDefComDef_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
         integer(IK)                                                 :: sorting(size(array, 1, IK))
         type(isort_type)            , intent(in)                    :: method
     end function
@@ -4707,8 +4707,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getSortedIndDefComDef_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
         integer(IK)                                                 :: sorting(size(array, 1, IK))
         type(isort_type)            , intent(in)                    :: method
     end function
@@ -4719,8 +4719,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getSortedIndDefComDef_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
         integer(IK)                                                 :: sorting(size(array, 1, IK))
         type(isort_type)            , intent(in)                    :: method
     end function
@@ -4731,8 +4731,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getSortedIndDefComDef_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
         integer(IK)                                                 :: sorting(size(array, 1, IK))
         type(isort_type)            , intent(in)                    :: method
     end function
@@ -4747,9 +4747,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getSortedIndDefComDef_D1_PSSK5
 #endif
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))          , intent(in)    , contiguous    :: array(:)
+        type(css_pdt(SKG))          , intent(in)    , contiguous    :: array(:)
         integer(IK)                                                 :: sorting(size(array, 1, IK))
         type(isort_type)            , intent(in)                    :: method
     end function
@@ -4760,9 +4760,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getSortedIndDefComDef_D1_PSSK4
 #endif
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))          , intent(in)    , contiguous    :: array(:)
+        type(css_pdt(SKG))          , intent(in)    , contiguous    :: array(:)
         integer(IK)                                                 :: sorting(size(array, 1, IK))
         type(isort_type)            , intent(in)                    :: method
     end function
@@ -4773,9 +4773,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getSortedIndDefComDef_D1_PSSK3
 #endif
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))          , intent(in)    , contiguous    :: array(:)
+        type(css_pdt(SKG))          , intent(in)    , contiguous    :: array(:)
         integer(IK)                                                 :: sorting(size(array, 1, IK))
         type(isort_type)            , intent(in)                    :: method
     end function
@@ -4786,9 +4786,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getSortedIndDefComDef_D1_PSSK2
 #endif
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))          , intent(in)    , contiguous    :: array(:)
+        type(css_pdt(SKG))          , intent(in)    , contiguous    :: array(:)
         integer(IK)                                                 :: sorting(size(array, 1, IK))
         type(isort_type)            , intent(in)                    :: method
     end function
@@ -4799,9 +4799,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getSortedIndDefComDef_D1_PSSK1
 #endif
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))          , intent(in)    , contiguous    :: array(:)
+        type(css_pdt(SKG))          , intent(in)    , contiguous    :: array(:)
         integer(IK)                                                 :: sorting(size(array, 1, IK))
         type(isort_type)            , intent(in)                    :: method
     end function
@@ -4816,7 +4816,7 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getSortedIndDefComDef_D1_BSSK
 #endif
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
         use pm_container, only: css_type
         type(css_type)              , intent(in)    , contiguous    :: array(:)
         integer(IK)                                                 :: sorting(size(array, 1, IK))
@@ -4842,9 +4842,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getSortedArrDefComDef_D0_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)        , intent(in)                    :: array
-        character(len(array, IK),SKC)                           :: sorting
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)        , intent(in)                    :: array
+        character(len(array, IK),SKG)                           :: sorting
         class(sort_type)        , intent(in)    , optional      :: method
     end function
 #endif
@@ -4854,9 +4854,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getSortedArrDefComDef_D0_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)        , intent(in)                    :: array
-        character(len(array, IK),SKC)                           :: sorting
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)        , intent(in)                    :: array
+        character(len(array, IK),SKG)                           :: sorting
         class(sort_type)        , intent(in)    , optional      :: method
     end function
 #endif
@@ -4866,9 +4866,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getSortedArrDefComDef_D0_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)        , intent(in)                    :: array
-        character(len(array, IK),SKC)                           :: sorting
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)        , intent(in)                    :: array
+        character(len(array, IK),SKG)                           :: sorting
         class(sort_type)        , intent(in)    , optional      :: method
     end function
 #endif
@@ -4878,9 +4878,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getSortedArrDefComDef_D0_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)        , intent(in)                    :: array
-        character(len(array, IK),SKC)                           :: sorting
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)        , intent(in)                    :: array
+        character(len(array, IK),SKG)                           :: sorting
         class(sort_type)        , intent(in)    , optional      :: method
     end function
 #endif
@@ -4890,9 +4890,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getSortedArrDefComDef_D0_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)        , intent(in)                    :: array
-        character(len(array, IK),SKC)                           :: sorting
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)        , intent(in)                    :: array
+        character(len(array, IK),SKG)                           :: sorting
         class(sort_type)        , intent(in)    , optional      :: method
     end function
 #endif
@@ -4904,9 +4904,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getSortedArrDefComDef_D1_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)        , intent(in)    , contiguous    :: array(:)
-        character(len(array, IK),SKC)                           :: sorting(size(array, 1, IK))
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)        , intent(in)    , contiguous    :: array(:)
+        character(len(array, IK),SKG)                           :: sorting(size(array, 1, IK))
         class(sort_type)        , intent(in)    , optional      :: method
     end function
 #endif
@@ -4916,9 +4916,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getSortedArrDefComDef_D1_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)        , intent(in)    , contiguous    :: array(:)
-        character(len(array, IK),SKC)                           :: sorting(size(array, 1, IK))
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)        , intent(in)    , contiguous    :: array(:)
+        character(len(array, IK),SKG)                           :: sorting(size(array, 1, IK))
         class(sort_type)        , intent(in)    , optional      :: method
     end function
 #endif
@@ -4928,9 +4928,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getSortedArrDefComDef_D1_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)        , intent(in)    , contiguous    :: array(:)
-        character(len(array, IK),SKC)                           :: sorting(size(array, 1, IK))
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)        , intent(in)    , contiguous    :: array(:)
+        character(len(array, IK),SKG)                           :: sorting(size(array, 1, IK))
         class(sort_type)        , intent(in)    , optional      :: method
     end function
 #endif
@@ -4940,9 +4940,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getSortedArrDefComDef_D1_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)        , intent(in)    , contiguous    :: array(:)
-        character(len(array, IK),SKC)                           :: sorting(size(array, 1, IK))
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)        , intent(in)    , contiguous    :: array(:)
+        character(len(array, IK),SKG)                           :: sorting(size(array, 1, IK))
         class(sort_type)        , intent(in)    , optional      :: method
     end function
 #endif
@@ -4952,9 +4952,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getSortedArrDefComDef_D1_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)        , intent(in)    , contiguous    :: array(:)
-        character(len(array, IK),SKC)                           :: sorting(size(array, 1, IK))
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)        , intent(in)    , contiguous    :: array(:)
+        character(len(array, IK),SKG)                           :: sorting(size(array, 1, IK))
         class(sort_type)        , intent(in)    , optional      :: method
     end function
 #endif
@@ -4966,9 +4966,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getSortedArrDefComDef_D1_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)            , intent(in)    , contiguous    :: array(:)
-        integer(IKC)                                            :: sorting(size(array, 1, IK))
+        use pm_kind, only: IKG => IK5
+        integer(IKG)            , intent(in)    , contiguous    :: array(:)
+        integer(IKG)                                            :: sorting(size(array, 1, IK))
         class(sort_type)        , intent(in)    , optional      :: method
     end function
 #endif
@@ -4978,9 +4978,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getSortedArrDefComDef_D1_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)            , intent(in)    , contiguous    :: array(:)
-        integer(IKC)                                            :: sorting(size(array, 1, IK))
+        use pm_kind, only: IKG => IK4
+        integer(IKG)            , intent(in)    , contiguous    :: array(:)
+        integer(IKG)                                            :: sorting(size(array, 1, IK))
         class(sort_type)        , intent(in)    , optional      :: method
     end function
 #endif
@@ -4990,9 +4990,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getSortedArrDefComDef_D1_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)            , intent(in)    , contiguous    :: array(:)
-        integer(IKC)                                            :: sorting(size(array, 1, IK))
+        use pm_kind, only: IKG => IK3
+        integer(IKG)            , intent(in)    , contiguous    :: array(:)
+        integer(IKG)                                            :: sorting(size(array, 1, IK))
         class(sort_type)        , intent(in)    , optional      :: method
     end function
 #endif
@@ -5002,9 +5002,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getSortedArrDefComDef_D1_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)            , intent(in)    , contiguous    :: array(:)
-        integer(IKC)                                            :: sorting(size(array, 1, IK))
+        use pm_kind, only: IKG => IK2
+        integer(IKG)            , intent(in)    , contiguous    :: array(:)
+        integer(IKG)                                            :: sorting(size(array, 1, IK))
         class(sort_type)        , intent(in)    , optional      :: method
     end function
 #endif
@@ -5014,9 +5014,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getSortedArrDefComDef_D1_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)            , intent(in)    , contiguous    :: array(:)
-        integer(IKC)                                            :: sorting(size(array, 1, IK))
+        use pm_kind, only: IKG => IK1
+        integer(IKG)            , intent(in)    , contiguous    :: array(:)
+        integer(IKG)                                            :: sorting(size(array, 1, IK))
         class(sort_type)        , intent(in)    , optional      :: method
     end function
 #endif
@@ -5028,9 +5028,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getSortedArrDefComDef_D1_LK5
 #endif
-        use pm_kind, only: LKC => LK5
-        logical(LKC)            , intent(in)    , contiguous    :: array(:)
-        logical(LKC)                                            :: sorting(size(array, 1, IK))
+        use pm_kind, only: LKG => LK5
+        logical(LKG)            , intent(in)    , contiguous    :: array(:)
+        logical(LKG)                                            :: sorting(size(array, 1, IK))
         class(sort_type)        , intent(in)    , optional      :: method
     end function
 #endif
@@ -5040,9 +5040,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getSortedArrDefComDef_D1_LK4
 #endif
-        use pm_kind, only: LKC => LK4
-        logical(LKC)            , intent(in)    , contiguous    :: array(:)
-        logical(LKC)                                            :: sorting(size(array, 1, IK))
+        use pm_kind, only: LKG => LK4
+        logical(LKG)            , intent(in)    , contiguous    :: array(:)
+        logical(LKG)                                            :: sorting(size(array, 1, IK))
         class(sort_type)        , intent(in)    , optional      :: method
     end function
 #endif
@@ -5052,9 +5052,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getSortedArrDefComDef_D1_LK3
 #endif
-        use pm_kind, only: LKC => LK3
-        logical(LKC)            , intent(in)    , contiguous    :: array(:)
-        logical(LKC)                                            :: sorting(size(array, 1, IK))
+        use pm_kind, only: LKG => LK3
+        logical(LKG)            , intent(in)    , contiguous    :: array(:)
+        logical(LKG)                                            :: sorting(size(array, 1, IK))
         class(sort_type)        , intent(in)    , optional      :: method
     end function
 #endif
@@ -5064,9 +5064,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getSortedArrDefComDef_D1_LK2
 #endif
-        use pm_kind, only: LKC => LK2
-        logical(LKC)            , intent(in)    , contiguous    :: array(:)
-        logical(LKC)                                            :: sorting(size(array, 1, IK))
+        use pm_kind, only: LKG => LK2
+        logical(LKG)            , intent(in)    , contiguous    :: array(:)
+        logical(LKG)                                            :: sorting(size(array, 1, IK))
         class(sort_type)        , intent(in)    , optional      :: method
     end function
 #endif
@@ -5076,9 +5076,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getSortedArrDefComDef_D1_LK1
 #endif
-        use pm_kind, only: LKC => LK1
-        logical(LKC)            , intent(in)    , contiguous    :: array(:)
-        logical(LKC)                                            :: sorting(size(array, 1, IK))
+        use pm_kind, only: LKG => LK1
+        logical(LKG)            , intent(in)    , contiguous    :: array(:)
+        logical(LKG)                                            :: sorting(size(array, 1, IK))
         class(sort_type)        , intent(in)    , optional      :: method
     end function
 #endif
@@ -5090,9 +5090,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getSortedArrDefComDef_D1_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)            , intent(in)    , contiguous    :: array(:)
-        complex(CKC)                                            :: sorting(size(array, 1, IK))
+        use pm_kind, only: CKG => CK5
+        complex(CKG)            , intent(in)    , contiguous    :: array(:)
+        complex(CKG)                                            :: sorting(size(array, 1, IK))
         class(sort_type)        , intent(in)    , optional      :: method
     end function
 #endif
@@ -5102,9 +5102,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getSortedArrDefComDef_D1_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)            , intent(in)    , contiguous    :: array(:)
-        complex(CKC)                                            :: sorting(size(array, 1, IK))
+        use pm_kind, only: CKG => CK4
+        complex(CKG)            , intent(in)    , contiguous    :: array(:)
+        complex(CKG)                                            :: sorting(size(array, 1, IK))
         class(sort_type)        , intent(in)    , optional      :: method
     end function
 #endif
@@ -5114,9 +5114,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getSortedArrDefComDef_D1_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)            , intent(in)    , contiguous    :: array(:)
-        complex(CKC)                                            :: sorting(size(array, 1, IK))
+        use pm_kind, only: CKG => CK3
+        complex(CKG)            , intent(in)    , contiguous    :: array(:)
+        complex(CKG)                                            :: sorting(size(array, 1, IK))
         class(sort_type)        , intent(in)    , optional      :: method
     end function
 #endif
@@ -5126,9 +5126,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getSortedArrDefComDef_D1_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)            , intent(in)    , contiguous    :: array(:)
-        complex(CKC)                                            :: sorting(size(array, 1, IK))
+        use pm_kind, only: CKG => CK2
+        complex(CKG)            , intent(in)    , contiguous    :: array(:)
+        complex(CKG)                                            :: sorting(size(array, 1, IK))
         class(sort_type)        , intent(in)    , optional      :: method
     end function
 #endif
@@ -5138,9 +5138,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getSortedArrDefComDef_D1_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)            , intent(in)    , contiguous    :: array(:)
-        complex(CKC)                                            :: sorting(size(array, 1, IK))
+        use pm_kind, only: CKG => CK1
+        complex(CKG)            , intent(in)    , contiguous    :: array(:)
+        complex(CKG)                                            :: sorting(size(array, 1, IK))
         class(sort_type)        , intent(in)    , optional      :: method
     end function
 #endif
@@ -5152,9 +5152,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getSortedArrDefComDef_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)               , intent(in)    , contiguous    :: array(:)
-        real(RKC)                                               :: sorting(size(array, 1, IK))
+        use pm_kind, only: RKG => RK5
+        real(RKG)               , intent(in)    , contiguous    :: array(:)
+        real(RKG)                                               :: sorting(size(array, 1, IK))
         class(sort_type)        , intent(in)    , optional      :: method
     end function
 #endif
@@ -5164,9 +5164,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getSortedArrDefComDef_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)               , intent(in)    , contiguous    :: array(:)
-        real(RKC)                                               :: sorting(size(array, 1, IK))
+        use pm_kind, only: RKG => RK4
+        real(RKG)               , intent(in)    , contiguous    :: array(:)
+        real(RKG)                                               :: sorting(size(array, 1, IK))
         class(sort_type)        , intent(in)    , optional      :: method
     end function
 #endif
@@ -5176,9 +5176,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getSortedArrDefComDef_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)               , intent(in)    , contiguous    :: array(:)
-        real(RKC)                                               :: sorting(size(array, 1, IK))
+        use pm_kind, only: RKG => RK3
+        real(RKG)               , intent(in)    , contiguous    :: array(:)
+        real(RKG)                                               :: sorting(size(array, 1, IK))
         class(sort_type)        , intent(in)    , optional      :: method
     end function
 #endif
@@ -5188,9 +5188,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getSortedArrDefComDef_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)               , intent(in)    , contiguous    :: array(:)
-        real(RKC)                                               :: sorting(size(array, 1, IK))
+        use pm_kind, only: RKG => RK2
+        real(RKG)               , intent(in)    , contiguous    :: array(:)
+        real(RKG)                                               :: sorting(size(array, 1, IK))
         class(sort_type)        , intent(in)    , optional      :: method
     end function
 #endif
@@ -5200,9 +5200,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getSortedArrDefComDef_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)               , intent(in)    , contiguous    :: array(:)
-        real(RKC)                                               :: sorting(size(array, 1, IK))
+        use pm_kind, only: RKG => RK1
+        real(RKG)               , intent(in)    , contiguous    :: array(:)
+        real(RKG)                                               :: sorting(size(array, 1, IK))
         class(sort_type)        , intent(in)    , optional      :: method
     end function
 #endif
@@ -5216,10 +5216,10 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getSortedArrDefComDef_D1_PSSK5
 #endif
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))      , intent(in)    , contiguous    :: array(:)
-        type(css_pdt(SKC))                                      :: sorting(size(array, 1, IK))
+        type(css_pdt(SKG))      , intent(in)    , contiguous    :: array(:)
+        type(css_pdt(SKG))                                      :: sorting(size(array, 1, IK))
         class(sort_type)        , intent(in)    , optional      :: method
     end function
 #endif
@@ -5229,10 +5229,10 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getSortedArrDefComDef_D1_PSSK4
 #endif
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))      , intent(in)    , contiguous    :: array(:)
-        type(css_pdt(SKC))                                      :: sorting(size(array, 1, IK))
+        type(css_pdt(SKG))      , intent(in)    , contiguous    :: array(:)
+        type(css_pdt(SKG))                                      :: sorting(size(array, 1, IK))
         class(sort_type)        , intent(in)    , optional      :: method
     end function
 #endif
@@ -5242,10 +5242,10 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getSortedArrDefComDef_D1_PSSK3
 #endif
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))      , intent(in)    , contiguous    :: array(:)
-        type(css_pdt(SKC))                                      :: sorting(size(array, 1, IK))
+        type(css_pdt(SKG))      , intent(in)    , contiguous    :: array(:)
+        type(css_pdt(SKG))                                      :: sorting(size(array, 1, IK))
         class(sort_type)        , intent(in)    , optional      :: method
     end function
 #endif
@@ -5255,10 +5255,10 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getSortedArrDefComDef_D1_PSSK2
 #endif
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))      , intent(in)    , contiguous    :: array(:)
-        type(css_pdt(SKC))                                      :: sorting(size(array, 1, IK))
+        type(css_pdt(SKG))      , intent(in)    , contiguous    :: array(:)
+        type(css_pdt(SKG))                                      :: sorting(size(array, 1, IK))
         class(sort_type)        , intent(in)    , optional      :: method
     end function
 #endif
@@ -5268,10 +5268,10 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getSortedArrDefComDef_D1_PSSK1
 #endif
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))      , intent(in)    , contiguous    :: array(:)
-        type(css_pdt(SKC))                                      :: sorting(size(array, 1, IK))
+        type(css_pdt(SKG))      , intent(in)    , contiguous    :: array(:)
+        type(css_pdt(SKG))                                      :: sorting(size(array, 1, IK))
         class(sort_type)        , intent(in)    , optional      :: method
     end function
 #endif
@@ -5285,7 +5285,7 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getSortedArrDefComDef_D1_BSSK
 #endif
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
         use pm_container, only: css_type
         type(css_type)          , intent(in)    , contiguous    :: array(:)
         type(css_type)                                          :: sorting(size(array, 1, IK))
@@ -5550,8 +5550,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedIndDefComDef_D0_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)            , intent(in)                    :: array
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)            , intent(in)                    :: array
         integer(IK)                 , intent(out)   , contiguous    :: index(:)
     end subroutine
 #endif
@@ -5561,8 +5561,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedIndDefComDef_D0_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)            , intent(in)                    :: array
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)            , intent(in)                    :: array
         integer(IK)                 , intent(out)   , contiguous    :: index(:)
     end subroutine
 #endif
@@ -5572,8 +5572,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedIndDefComDef_D0_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)            , intent(in)                    :: array
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)            , intent(in)                    :: array
         integer(IK)                 , intent(out)   , contiguous    :: index(:)
     end subroutine
 #endif
@@ -5583,8 +5583,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedIndDefComDef_D0_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)            , intent(in)                    :: array
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)            , intent(in)                    :: array
         integer(IK)                 , intent(out)   , contiguous    :: index(:)
     end subroutine
 #endif
@@ -5594,8 +5594,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedIndDefComDef_D0_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)            , intent(in)                    :: array
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)            , intent(in)                    :: array
         integer(IK)                 , intent(out)   , contiguous    :: index(:)
     end subroutine
 #endif
@@ -5607,8 +5607,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedIndDefComDef_D1_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
         integer(IK)                 , intent(out)   , contiguous    :: index(:)
     end subroutine
 #endif
@@ -5618,8 +5618,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedIndDefComDef_D1_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
         integer(IK)                 , intent(out)   , contiguous    :: index(:)
     end subroutine
 #endif
@@ -5629,8 +5629,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedIndDefComDef_D1_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
         integer(IK)                 , intent(out)   , contiguous    :: index(:)
     end subroutine
 #endif
@@ -5640,8 +5640,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedIndDefComDef_D1_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
         integer(IK)                 , intent(out)   , contiguous    :: index(:)
     end subroutine
 #endif
@@ -5651,8 +5651,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedIndDefComDef_D1_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
         integer(IK)                 , intent(out)   , contiguous    :: index(:)
     end subroutine
 #endif
@@ -5664,8 +5664,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedIndDefComDef_D1_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK5
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
         integer(IK)                 , intent(out)   , contiguous    :: index(:)
     end subroutine
 #endif
@@ -5675,8 +5675,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedIndDefComDef_D1_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK4
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
         integer(IK)                 , intent(out)   , contiguous    :: index(:)
     end subroutine
 #endif
@@ -5686,8 +5686,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedIndDefComDef_D1_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK3
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
         integer(IK)                 , intent(out)   , contiguous    :: index(:)
     end subroutine
 #endif
@@ -5697,8 +5697,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedIndDefComDef_D1_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK2
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
         integer(IK)                 , intent(out)   , contiguous    :: index(:)
     end subroutine
 #endif
@@ -5708,8 +5708,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedIndDefComDef_D1_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK1
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
         integer(IK)                 , intent(out)   , contiguous    :: index(:)
     end subroutine
 #endif
@@ -5721,8 +5721,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedIndDefComDef_D1_LK5
 #endif
-        use pm_kind, only: LKC => LK5
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: LKG => LK5
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
         integer(IK)                 , intent(out)   , contiguous    :: index(:)
     end subroutine
 #endif
@@ -5732,8 +5732,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedIndDefComDef_D1_LK4
 #endif
-        use pm_kind, only: LKC => LK4
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: LKG => LK4
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
         integer(IK)                 , intent(out)   , contiguous    :: index(:)
     end subroutine
 #endif
@@ -5743,8 +5743,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedIndDefComDef_D1_LK3
 #endif
-        use pm_kind, only: LKC => LK3
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: LKG => LK3
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
         integer(IK)                 , intent(out)   , contiguous    :: index(:)
     end subroutine
 #endif
@@ -5754,8 +5754,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedIndDefComDef_D1_LK2
 #endif
-        use pm_kind, only: LKC => LK2
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: LKG => LK2
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
         integer(IK)                 , intent(out)   , contiguous    :: index(:)
     end subroutine
 #endif
@@ -5765,8 +5765,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedIndDefComDef_D1_LK1
 #endif
-        use pm_kind, only: LKC => LK1
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: LKG => LK1
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
         integer(IK)                 , intent(out)   , contiguous    :: index(:)
     end subroutine
 #endif
@@ -5778,8 +5778,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedIndDefComDef_D1_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
         integer(IK)                 , intent(out)   , contiguous    :: index(:)
     end subroutine
 #endif
@@ -5789,8 +5789,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedIndDefComDef_D1_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
         integer(IK)                 , intent(out)   , contiguous    :: index(:)
     end subroutine
 #endif
@@ -5800,8 +5800,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedIndDefComDef_D1_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
         integer(IK)                 , intent(out)   , contiguous    :: index(:)
     end subroutine
 #endif
@@ -5811,8 +5811,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedIndDefComDef_D1_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
         integer(IK)                 , intent(out)   , contiguous    :: index(:)
     end subroutine
 #endif
@@ -5822,8 +5822,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedIndDefComDef_D1_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
         integer(IK)                 , intent(out)   , contiguous    :: index(:)
     end subroutine
 #endif
@@ -5835,8 +5835,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedIndDefComDef_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
         integer(IK)                 , intent(out)   , contiguous    :: index(:)
     end subroutine
 #endif
@@ -5846,8 +5846,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedIndDefComDef_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
         integer(IK)                 , intent(out)   , contiguous    :: index(:)
     end subroutine
 #endif
@@ -5857,8 +5857,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedIndDefComDef_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
         integer(IK)                 , intent(out)   , contiguous    :: index(:)
     end subroutine
 #endif
@@ -5868,8 +5868,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedIndDefComDef_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
         integer(IK)                 , intent(out)   , contiguous    :: index(:)
     end subroutine
 #endif
@@ -5879,8 +5879,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedIndDefComDef_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
         integer(IK)                 , intent(out)   , contiguous    :: index(:)
     end subroutine
 #endif
@@ -5894,9 +5894,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedIndDefComDef_D1_PSSK5
 #endif
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))          , intent(in)    , contiguous    :: array(:)
+        type(css_pdt(SKG))          , intent(in)    , contiguous    :: array(:)
         integer(IK)                 , intent(out)   , contiguous    :: index(:)
     end subroutine
 #endif
@@ -5906,9 +5906,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedIndDefComDef_D1_PSSK4
 #endif
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))          , intent(in)    , contiguous    :: array(:)
+        type(css_pdt(SKG))          , intent(in)    , contiguous    :: array(:)
         integer(IK)                 , intent(out)   , contiguous    :: index(:)
     end subroutine
 #endif
@@ -5918,9 +5918,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedIndDefComDef_D1_PSSK3
 #endif
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))          , intent(in)    , contiguous    :: array(:)
+        type(css_pdt(SKG))          , intent(in)    , contiguous    :: array(:)
         integer(IK)                 , intent(out)   , contiguous    :: index(:)
     end subroutine
 #endif
@@ -5930,9 +5930,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedIndDefComDef_D1_PSSK2
 #endif
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))          , intent(in)    , contiguous    :: array(:)
+        type(css_pdt(SKG))          , intent(in)    , contiguous    :: array(:)
         integer(IK)                 , intent(out)   , contiguous    :: index(:)
     end subroutine
 #endif
@@ -5942,9 +5942,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedIndDefComDef_D1_PSSK1
 #endif
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))          , intent(in)    , contiguous    :: array(:)
+        type(css_pdt(SKG))          , intent(in)    , contiguous    :: array(:)
         integer(IK)                 , intent(out)   , contiguous    :: index(:)
     end subroutine
 #endif
@@ -5958,7 +5958,7 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedIndDefComDef_D1_BSSK
 #endif
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
         use pm_container, only: css_type
         type(css_type)              , intent(in)    , contiguous    :: array(:)
         integer(IK)                 , intent(out)   , contiguous    :: index(:)
@@ -5987,8 +5987,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedIndCusComDef_D0_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)            , intent(in)                    :: array
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)            , intent(in)                    :: array
         integer(IK)                 , intent(out)   , contiguous    :: index(:)
         procedure(logical(LK))                                      :: isSorted
     end subroutine
@@ -5999,8 +5999,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedIndCusComDef_D0_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)            , intent(in)                    :: array
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)            , intent(in)                    :: array
         integer(IK)                 , intent(out)   , contiguous    :: index(:)
         procedure(logical(LK))                                      :: isSorted
     end subroutine
@@ -6011,8 +6011,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedIndCusComDef_D0_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)            , intent(in)                    :: array
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)            , intent(in)                    :: array
         integer(IK)                 , intent(out)   , contiguous    :: index(:)
         procedure(logical(LK))                                      :: isSorted
     end subroutine
@@ -6023,8 +6023,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedIndCusComDef_D0_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)            , intent(in)                    :: array
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)            , intent(in)                    :: array
         integer(IK)                 , intent(out)   , contiguous    :: index(:)
         procedure(logical(LK))                                      :: isSorted
     end subroutine
@@ -6035,8 +6035,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedIndCusComDef_D0_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)            , intent(in)                    :: array
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)            , intent(in)                    :: array
         integer(IK)                 , intent(out)   , contiguous    :: index(:)
         procedure(logical(LK))                                      :: isSorted
     end subroutine
@@ -6049,8 +6049,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedIndCusComDef_D1_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
         integer(IK)                 , intent(out)   , contiguous    :: index(:)
         procedure(logical(LK))                                      :: isSorted
     end subroutine
@@ -6061,8 +6061,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedIndCusComDef_D1_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
         integer(IK)                 , intent(out)   , contiguous    :: index(:)
         procedure(logical(LK))                                      :: isSorted
     end subroutine
@@ -6073,8 +6073,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedIndCusComDef_D1_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
         integer(IK)                 , intent(out)   , contiguous    :: index(:)
         procedure(logical(LK))                                      :: isSorted
     end subroutine
@@ -6085,8 +6085,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedIndCusComDef_D1_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
         integer(IK)                 , intent(out)   , contiguous    :: index(:)
         procedure(logical(LK))                                      :: isSorted
     end subroutine
@@ -6097,8 +6097,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedIndCusComDef_D1_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
         integer(IK)                 , intent(out)   , contiguous    :: index(:)
         procedure(logical(LK))                                      :: isSorted
     end subroutine
@@ -6111,8 +6111,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedIndCusComDef_D1_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK5
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
         integer(IK)                 , intent(out)   , contiguous    :: index(:)
         procedure(logical(LK))                                      :: isSorted
     end subroutine
@@ -6123,8 +6123,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedIndCusComDef_D1_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK4
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
         integer(IK)                 , intent(out)   , contiguous    :: index(:)
         procedure(logical(LK))                                      :: isSorted
     end subroutine
@@ -6135,8 +6135,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedIndCusComDef_D1_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK3
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
         integer(IK)                 , intent(out)   , contiguous    :: index(:)
         procedure(logical(LK))                                      :: isSorted
     end subroutine
@@ -6147,8 +6147,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedIndCusComDef_D1_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK2
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
         integer(IK)                 , intent(out)   , contiguous    :: index(:)
         procedure(logical(LK))                                      :: isSorted
     end subroutine
@@ -6159,8 +6159,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedIndCusComDef_D1_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK1
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
         integer(IK)                 , intent(out)   , contiguous    :: index(:)
         procedure(logical(LK))                                      :: isSorted
     end subroutine
@@ -6173,8 +6173,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedIndCusComDef_D1_LK5
 #endif
-        use pm_kind, only: LKC => LK5
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: LKG => LK5
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
         integer(IK)                 , intent(out)   , contiguous    :: index(:)
         procedure(logical(LK))                                      :: isSorted
     end subroutine
@@ -6185,8 +6185,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedIndCusComDef_D1_LK4
 #endif
-        use pm_kind, only: LKC => LK4
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: LKG => LK4
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
         integer(IK)                 , intent(out)   , contiguous    :: index(:)
         procedure(logical(LK))                                      :: isSorted
     end subroutine
@@ -6197,8 +6197,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedIndCusComDef_D1_LK3
 #endif
-        use pm_kind, only: LKC => LK3
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: LKG => LK3
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
         integer(IK)                 , intent(out)   , contiguous    :: index(:)
         procedure(logical(LK))                                      :: isSorted
     end subroutine
@@ -6209,8 +6209,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedIndCusComDef_D1_LK2
 #endif
-        use pm_kind, only: LKC => LK2
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: LKG => LK2
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
         integer(IK)                 , intent(out)   , contiguous    :: index(:)
         procedure(logical(LK))                                      :: isSorted
     end subroutine
@@ -6221,8 +6221,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedIndCusComDef_D1_LK1
 #endif
-        use pm_kind, only: LKC => LK1
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: LKG => LK1
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
         integer(IK)                 , intent(out)   , contiguous    :: index(:)
         procedure(logical(LK))                                      :: isSorted
     end subroutine
@@ -6235,8 +6235,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedIndCusComDef_D1_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
         integer(IK)                 , intent(out)   , contiguous    :: index(:)
         procedure(logical(LK))                                      :: isSorted
     end subroutine
@@ -6247,8 +6247,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedIndCusComDef_D1_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
         integer(IK)                 , intent(out)   , contiguous    :: index(:)
         procedure(logical(LK))                                      :: isSorted
     end subroutine
@@ -6259,8 +6259,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedIndCusComDef_D1_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
         integer(IK)                 , intent(out)   , contiguous    :: index(:)
         procedure(logical(LK))                                      :: isSorted
     end subroutine
@@ -6271,8 +6271,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedIndCusComDef_D1_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
         integer(IK)                 , intent(out)   , contiguous    :: index(:)
         procedure(logical(LK))                                      :: isSorted
     end subroutine
@@ -6283,8 +6283,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedIndCusComDef_D1_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
         integer(IK)                 , intent(out)   , contiguous    :: index(:)
         procedure(logical(LK))                                      :: isSorted
     end subroutine
@@ -6297,8 +6297,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedIndCusComDef_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
         integer(IK)                 , intent(out)   , contiguous    :: index(:)
         procedure(logical(LK))                                      :: isSorted
     end subroutine
@@ -6309,8 +6309,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedIndCusComDef_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
         integer(IK)                 , intent(out)   , contiguous    :: index(:)
         procedure(logical(LK))                                      :: isSorted
     end subroutine
@@ -6321,8 +6321,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedIndCusComDef_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
         integer(IK)                 , intent(out)   , contiguous    :: index(:)
         procedure(logical(LK))                                      :: isSorted
     end subroutine
@@ -6333,8 +6333,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedIndCusComDef_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
         integer(IK)                 , intent(out)   , contiguous    :: index(:)
         procedure(logical(LK))                                      :: isSorted
     end subroutine
@@ -6345,8 +6345,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedIndCusComDef_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
         integer(IK)                 , intent(out)   , contiguous    :: index(:)
         procedure(logical(LK))                                      :: isSorted
     end subroutine
@@ -6361,9 +6361,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedIndCusComDef_D1_PSSK5
 #endif
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))          , intent(in)    , contiguous    :: array(:)
+        type(css_pdt(SKG))          , intent(in)    , contiguous    :: array(:)
         integer(IK)                 , intent(out)   , contiguous    :: index(:)
         procedure(logical(LK))                                      :: isSorted
     end subroutine
@@ -6374,9 +6374,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedIndCusComDef_D1_PSSK4
 #endif
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))          , intent(in)    , contiguous    :: array(:)
+        type(css_pdt(SKG))          , intent(in)    , contiguous    :: array(:)
         integer(IK)                 , intent(out)   , contiguous    :: index(:)
         procedure(logical(LK))                                      :: isSorted
     end subroutine
@@ -6387,9 +6387,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedIndCusComDef_D1_PSSK3
 #endif
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))          , intent(in)    , contiguous    :: array(:)
+        type(css_pdt(SKG))          , intent(in)    , contiguous    :: array(:)
         integer(IK)                 , intent(out)   , contiguous    :: index(:)
         procedure(logical(LK))                                      :: isSorted
     end subroutine
@@ -6400,9 +6400,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedIndCusComDef_D1_PSSK2
 #endif
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))          , intent(in)    , contiguous    :: array(:)
+        type(css_pdt(SKG))          , intent(in)    , contiguous    :: array(:)
         integer(IK)                 , intent(out)   , contiguous    :: index(:)
         procedure(logical(LK))                                      :: isSorted
     end subroutine
@@ -6413,9 +6413,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedIndCusComDef_D1_PSSK1
 #endif
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))          , intent(in)    , contiguous    :: array(:)
+        type(css_pdt(SKG))          , intent(in)    , contiguous    :: array(:)
         integer(IK)                 , intent(out)   , contiguous    :: index(:)
         procedure(logical(LK))                                      :: isSorted
     end subroutine
@@ -6430,7 +6430,7 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedIndCusComDef_D1_BSSK
 #endif
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
         use pm_container, only: css_type
         type(css_type)              , intent(in)    , contiguous    :: array(:)
         integer(IK)                 , intent(out)   , contiguous    :: index(:)
@@ -6458,8 +6458,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComDef_D0_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)        , intent(inout)                 :: array
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)        , intent(inout)                 :: array
         procedure(logical(LK))                                  :: isSorted
     end subroutine
 #endif
@@ -6469,8 +6469,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComDef_D0_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)        , intent(inout)                 :: array
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)        , intent(inout)                 :: array
         procedure(logical(LK))                                  :: isSorted
     end subroutine
 #endif
@@ -6480,8 +6480,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComDef_D0_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)        , intent(inout)                 :: array
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)        , intent(inout)                 :: array
         procedure(logical(LK))                                  :: isSorted
     end subroutine
 #endif
@@ -6491,8 +6491,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComDef_D0_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)        , intent(inout)                 :: array
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)        , intent(inout)                 :: array
         procedure(logical(LK))                                  :: isSorted
     end subroutine
 #endif
@@ -6502,8 +6502,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComDef_D0_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)        , intent(inout)                 :: array
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)        , intent(inout)                 :: array
         procedure(logical(LK))                                  :: isSorted
     end subroutine
 #endif
@@ -6515,8 +6515,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComDef_D1_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)        , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)        , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
     end subroutine
 #endif
@@ -6526,8 +6526,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComDef_D1_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)        , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)        , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
     end subroutine
 #endif
@@ -6537,8 +6537,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComDef_D1_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)        , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)        , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
     end subroutine
 #endif
@@ -6548,8 +6548,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComDef_D1_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)        , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)        , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
     end subroutine
 #endif
@@ -6559,8 +6559,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComDef_D1_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)        , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)        , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
     end subroutine
 #endif
@@ -6572,8 +6572,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComDef_D1_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK5
+        integer(IKG)            , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
     end subroutine
 #endif
@@ -6583,8 +6583,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComDef_D1_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK4
+        integer(IKG)            , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
     end subroutine
 #endif
@@ -6594,8 +6594,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComDef_D1_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK3
+        integer(IKG)            , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
     end subroutine
 #endif
@@ -6605,8 +6605,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComDef_D1_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK2
+        integer(IKG)            , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
     end subroutine
 #endif
@@ -6616,8 +6616,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComDef_D1_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK1
+        integer(IKG)            , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
     end subroutine
 #endif
@@ -6629,8 +6629,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComDef_D1_LK5
 #endif
-        use pm_kind, only: LKC => LK5
-        logical(LKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: LKG => LK5
+        logical(LKG)            , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
     end subroutine
 #endif
@@ -6640,8 +6640,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComDef_D1_LK4
 #endif
-        use pm_kind, only: LKC => LK4
-        logical(LKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: LKG => LK4
+        logical(LKG)            , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
     end subroutine
 #endif
@@ -6651,8 +6651,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComDef_D1_LK3
 #endif
-        use pm_kind, only: LKC => LK3
-        logical(LKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: LKG => LK3
+        logical(LKG)            , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
     end subroutine
 #endif
@@ -6662,8 +6662,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComDef_D1_LK2
 #endif
-        use pm_kind, only: LKC => LK2
-        logical(LKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: LKG => LK2
+        logical(LKG)            , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
     end subroutine
 #endif
@@ -6673,8 +6673,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComDef_D1_LK1
 #endif
-        use pm_kind, only: LKC => LK1
-        logical(LKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: LKG => LK1
+        logical(LKG)            , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
     end subroutine
 #endif
@@ -6686,8 +6686,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComDef_D1_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG)            , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
     end subroutine
 #endif
@@ -6697,8 +6697,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComDef_D1_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG)            , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
     end subroutine
 #endif
@@ -6708,8 +6708,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComDef_D1_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG)            , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
     end subroutine
 #endif
@@ -6719,8 +6719,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComDef_D1_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG)            , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
     end subroutine
 #endif
@@ -6730,8 +6730,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComDef_D1_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG)            , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
     end subroutine
 #endif
@@ -6743,8 +6743,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComDef_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)               , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)               , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
     end subroutine
 #endif
@@ -6754,8 +6754,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComDef_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)               , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)               , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
     end subroutine
 #endif
@@ -6765,8 +6765,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComDef_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)               , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)               , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
     end subroutine
 #endif
@@ -6776,8 +6776,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComDef_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)               , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)               , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
     end subroutine
 #endif
@@ -6787,8 +6787,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComDef_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)               , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)               , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
     end subroutine
 #endif
@@ -6802,9 +6802,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComDef_D1_PSSK5
 #endif
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))      , intent(inout) , contiguous    :: array(:)
+        type(css_pdt(SKG))      , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
     end subroutine
 #endif
@@ -6814,9 +6814,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComDef_D1_PSSK4
 #endif
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))      , intent(inout) , contiguous    :: array(:)
+        type(css_pdt(SKG))      , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
     end subroutine
 #endif
@@ -6826,9 +6826,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComDef_D1_PSSK3
 #endif
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))      , intent(inout) , contiguous    :: array(:)
+        type(css_pdt(SKG))      , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
     end subroutine
 #endif
@@ -6838,9 +6838,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComDef_D1_PSSK2
 #endif
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))      , intent(inout) , contiguous    :: array(:)
+        type(css_pdt(SKG))      , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
     end subroutine
 #endif
@@ -6850,9 +6850,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComDef_D1_PSSK1
 #endif
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))      , intent(inout) , contiguous    :: array(:)
+        type(css_pdt(SKG))      , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
     end subroutine
 #endif
@@ -6866,7 +6866,7 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComDef_D1_BSSK
 #endif
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
         use pm_container, only: css_type
         type(css_type)          , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
@@ -6895,8 +6895,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComQsorti_D0_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)        , intent(inout)                 :: array
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)        , intent(inout)                 :: array
         procedure(logical(LK))                                  :: isSorted
         type(qsorti_type)       , intent(in)                    :: method
     end subroutine
@@ -6907,8 +6907,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComQsorti_D0_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)        , intent(inout)                 :: array
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)        , intent(inout)                 :: array
         procedure(logical(LK))                                  :: isSorted
         type(qsorti_type)       , intent(in)                    :: method
     end subroutine
@@ -6919,8 +6919,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComQsorti_D0_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)        , intent(inout)                 :: array
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)        , intent(inout)                 :: array
         procedure(logical(LK))                                  :: isSorted
         type(qsorti_type)       , intent(in)                    :: method
     end subroutine
@@ -6931,8 +6931,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComQsorti_D0_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)        , intent(inout)                 :: array
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)        , intent(inout)                 :: array
         procedure(logical(LK))                                  :: isSorted
         type(qsorti_type)       , intent(in)                    :: method
     end subroutine
@@ -6943,8 +6943,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComQsorti_D0_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)        , intent(inout)                 :: array
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)        , intent(inout)                 :: array
         procedure(logical(LK))                                  :: isSorted
         type(qsorti_type)       , intent(in)                    :: method
     end subroutine
@@ -6957,8 +6957,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComQsorti_D1_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)        , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)        , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(qsorti_type)       , intent(in)                    :: method
     end subroutine
@@ -6969,8 +6969,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComQsorti_D1_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)        , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)        , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(qsorti_type)       , intent(in)                    :: method
     end subroutine
@@ -6981,8 +6981,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComQsorti_D1_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)        , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)        , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(qsorti_type)       , intent(in)                    :: method
     end subroutine
@@ -6993,8 +6993,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComQsorti_D1_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)        , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)        , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(qsorti_type)       , intent(in)                    :: method
     end subroutine
@@ -7005,8 +7005,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComQsorti_D1_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)        , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)        , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(qsorti_type)       , intent(in)                    :: method
     end subroutine
@@ -7019,8 +7019,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComQsorti_D1_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK5
+        integer(IKG)            , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(qsorti_type)       , intent(in)                    :: method
     end subroutine
@@ -7031,8 +7031,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComQsorti_D1_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK4
+        integer(IKG)            , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(qsorti_type)       , intent(in)                    :: method
     end subroutine
@@ -7043,8 +7043,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComQsorti_D1_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK3
+        integer(IKG)            , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(qsorti_type)       , intent(in)                    :: method
     end subroutine
@@ -7055,8 +7055,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComQsorti_D1_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK2
+        integer(IKG)            , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(qsorti_type)       , intent(in)                    :: method
     end subroutine
@@ -7067,8 +7067,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComQsorti_D1_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK1
+        integer(IKG)            , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(qsorti_type)       , intent(in)                    :: method
     end subroutine
@@ -7081,8 +7081,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComQsorti_D1_LK5
 #endif
-        use pm_kind, only: LKC => LK5
-        logical(LKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: LKG => LK5
+        logical(LKG)            , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(qsorti_type)       , intent(in)                    :: method
     end subroutine
@@ -7093,8 +7093,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComQsorti_D1_LK4
 #endif
-        use pm_kind, only: LKC => LK4
-        logical(LKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: LKG => LK4
+        logical(LKG)            , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(qsorti_type)       , intent(in)                    :: method
     end subroutine
@@ -7105,8 +7105,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComQsorti_D1_LK3
 #endif
-        use pm_kind, only: LKC => LK3
-        logical(LKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: LKG => LK3
+        logical(LKG)            , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(qsorti_type)       , intent(in)                    :: method
     end subroutine
@@ -7117,8 +7117,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComQsorti_D1_LK2
 #endif
-        use pm_kind, only: LKC => LK2
-        logical(LKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: LKG => LK2
+        logical(LKG)            , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(qsorti_type)       , intent(in)                    :: method
     end subroutine
@@ -7129,8 +7129,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComQsorti_D1_LK1
 #endif
-        use pm_kind, only: LKC => LK1
-        logical(LKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: LKG => LK1
+        logical(LKG)            , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(qsorti_type)       , intent(in)                    :: method
     end subroutine
@@ -7143,8 +7143,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComQsorti_D1_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG)            , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(qsorti_type)       , intent(in)                    :: method
     end subroutine
@@ -7155,8 +7155,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComQsorti_D1_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG)            , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(qsorti_type)       , intent(in)                    :: method
     end subroutine
@@ -7167,8 +7167,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComQsorti_D1_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG)            , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(qsorti_type)       , intent(in)                    :: method
     end subroutine
@@ -7179,8 +7179,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComQsorti_D1_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG)            , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(qsorti_type)       , intent(in)                    :: method
     end subroutine
@@ -7191,8 +7191,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComQsorti_D1_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG)            , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(qsorti_type)       , intent(in)                    :: method
     end subroutine
@@ -7205,8 +7205,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComQsorti_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)               , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)               , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(qsorti_type)       , intent(in)                    :: method
     end subroutine
@@ -7217,8 +7217,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComQsorti_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)               , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)               , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(qsorti_type)       , intent(in)                    :: method
     end subroutine
@@ -7229,8 +7229,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComQsorti_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)               , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)               , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(qsorti_type)       , intent(in)                    :: method
     end subroutine
@@ -7241,8 +7241,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComQsorti_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)               , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)               , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(qsorti_type)       , intent(in)                    :: method
     end subroutine
@@ -7253,8 +7253,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComQsorti_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)               , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)               , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(qsorti_type)       , intent(in)                    :: method
     end subroutine
@@ -7269,9 +7269,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComQsorti_D1_PSSK5
 #endif
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))      , intent(inout) , contiguous    :: array(:)
+        type(css_pdt(SKG))      , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(qsorti_type)       , intent(in)                    :: method
     end subroutine
@@ -7282,9 +7282,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComQsorti_D1_PSSK4
 #endif
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))      , intent(inout) , contiguous    :: array(:)
+        type(css_pdt(SKG))      , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(qsorti_type)       , intent(in)                    :: method
     end subroutine
@@ -7295,9 +7295,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComQsorti_D1_PSSK3
 #endif
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))      , intent(inout) , contiguous    :: array(:)
+        type(css_pdt(SKG))      , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(qsorti_type)       , intent(in)                    :: method
     end subroutine
@@ -7308,9 +7308,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComQsorti_D1_PSSK2
 #endif
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))      , intent(inout) , contiguous    :: array(:)
+        type(css_pdt(SKG))      , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(qsorti_type)       , intent(in)                    :: method
     end subroutine
@@ -7321,9 +7321,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComQsorti_D1_PSSK1
 #endif
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))      , intent(inout) , contiguous    :: array(:)
+        type(css_pdt(SKG))      , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(qsorti_type)       , intent(in)                    :: method
     end subroutine
@@ -7338,7 +7338,7 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComQsorti_D1_BSSK
 #endif
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
         use pm_container, only: css_type
         type(css_type)          , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
@@ -7368,8 +7368,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComQsortr_D0_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)        , intent(inout)                 :: array
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)        , intent(inout)                 :: array
         procedure(logical(LK))                                  :: isSorted
         type(qsortr_type)       , intent(in)                    :: method
     end subroutine
@@ -7380,8 +7380,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComQsortr_D0_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)        , intent(inout)                 :: array
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)        , intent(inout)                 :: array
         procedure(logical(LK))                                  :: isSorted
         type(qsortr_type)       , intent(in)                    :: method
     end subroutine
@@ -7392,8 +7392,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComQsortr_D0_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)        , intent(inout)                 :: array
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)        , intent(inout)                 :: array
         procedure(logical(LK))                                  :: isSorted
         type(qsortr_type)       , intent(in)                    :: method
     end subroutine
@@ -7404,8 +7404,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComQsortr_D0_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)        , intent(inout)                 :: array
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)        , intent(inout)                 :: array
         procedure(logical(LK))                                  :: isSorted
         type(qsortr_type)       , intent(in)                    :: method
     end subroutine
@@ -7416,8 +7416,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComQsortr_D0_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)        , intent(inout)                 :: array
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)        , intent(inout)                 :: array
         procedure(logical(LK))                                  :: isSorted
         type(qsortr_type)       , intent(in)                    :: method
     end subroutine
@@ -7430,8 +7430,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComQsortr_D1_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)        , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)        , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(qsortr_type)       , intent(in)                    :: method
     end subroutine
@@ -7442,8 +7442,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComQsortr_D1_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)        , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)        , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(qsortr_type)       , intent(in)                    :: method
     end subroutine
@@ -7454,8 +7454,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComQsortr_D1_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)        , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)        , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(qsortr_type)       , intent(in)                    :: method
     end subroutine
@@ -7466,8 +7466,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComQsortr_D1_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)        , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)        , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(qsortr_type)       , intent(in)                    :: method
     end subroutine
@@ -7478,8 +7478,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComQsortr_D1_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)        , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)        , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(qsortr_type)       , intent(in)                    :: method
     end subroutine
@@ -7492,8 +7492,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComQsortr_D1_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK5
+        integer(IKG)            , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(qsortr_type)       , intent(in)                    :: method
     end subroutine
@@ -7504,8 +7504,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComQsortr_D1_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK4
+        integer(IKG)            , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(qsortr_type)       , intent(in)                    :: method
     end subroutine
@@ -7516,8 +7516,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComQsortr_D1_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK3
+        integer(IKG)            , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(qsortr_type)       , intent(in)                    :: method
     end subroutine
@@ -7528,8 +7528,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComQsortr_D1_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK2
+        integer(IKG)            , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(qsortr_type)       , intent(in)                    :: method
     end subroutine
@@ -7540,8 +7540,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComQsortr_D1_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK1
+        integer(IKG)            , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(qsortr_type)       , intent(in)                    :: method
     end subroutine
@@ -7554,8 +7554,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComQsortr_D1_LK5
 #endif
-        use pm_kind, only: LKC => LK5
-        logical(LKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: LKG => LK5
+        logical(LKG)            , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(qsortr_type)       , intent(in)                    :: method
     end subroutine
@@ -7566,8 +7566,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComQsortr_D1_LK4
 #endif
-        use pm_kind, only: LKC => LK4
-        logical(LKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: LKG => LK4
+        logical(LKG)            , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(qsortr_type)       , intent(in)                    :: method
     end subroutine
@@ -7578,8 +7578,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComQsortr_D1_LK3
 #endif
-        use pm_kind, only: LKC => LK3
-        logical(LKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: LKG => LK3
+        logical(LKG)            , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(qsortr_type)       , intent(in)                    :: method
     end subroutine
@@ -7590,8 +7590,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComQsortr_D1_LK2
 #endif
-        use pm_kind, only: LKC => LK2
-        logical(LKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: LKG => LK2
+        logical(LKG)            , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(qsortr_type)       , intent(in)                    :: method
     end subroutine
@@ -7602,8 +7602,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComQsortr_D1_LK1
 #endif
-        use pm_kind, only: LKC => LK1
-        logical(LKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: LKG => LK1
+        logical(LKG)            , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(qsortr_type)       , intent(in)                    :: method
     end subroutine
@@ -7616,8 +7616,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComQsortr_D1_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG)            , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(qsortr_type)       , intent(in)                    :: method
     end subroutine
@@ -7628,8 +7628,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComQsortr_D1_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG)            , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(qsortr_type)       , intent(in)                    :: method
     end subroutine
@@ -7640,8 +7640,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComQsortr_D1_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG)            , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(qsortr_type)       , intent(in)                    :: method
     end subroutine
@@ -7652,8 +7652,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComQsortr_D1_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG)            , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(qsortr_type)       , intent(in)                    :: method
     end subroutine
@@ -7664,8 +7664,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComQsortr_D1_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG)            , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(qsortr_type)       , intent(in)                    :: method
     end subroutine
@@ -7678,8 +7678,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComQsortr_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)               , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)               , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(qsortr_type)       , intent(in)                    :: method
     end subroutine
@@ -7690,8 +7690,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComQsortr_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)               , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)               , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(qsortr_type)       , intent(in)                    :: method
     end subroutine
@@ -7702,8 +7702,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComQsortr_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)               , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)               , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(qsortr_type)       , intent(in)                    :: method
     end subroutine
@@ -7714,8 +7714,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComQsortr_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)               , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)               , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(qsortr_type)       , intent(in)                    :: method
     end subroutine
@@ -7726,8 +7726,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComQsortr_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)               , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)               , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(qsortr_type)       , intent(in)                    :: method
     end subroutine
@@ -7742,9 +7742,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComQsortr_D1_PSSK5
 #endif
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))      , intent(inout) , contiguous    :: array(:)
+        type(css_pdt(SKG))      , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(qsortr_type)       , intent(in)                    :: method
     end subroutine
@@ -7755,9 +7755,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComQsortr_D1_PSSK4
 #endif
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))      , intent(inout) , contiguous    :: array(:)
+        type(css_pdt(SKG))      , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(qsortr_type)       , intent(in)                    :: method
     end subroutine
@@ -7768,9 +7768,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComQsortr_D1_PSSK3
 #endif
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))      , intent(inout) , contiguous    :: array(:)
+        type(css_pdt(SKG))      , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(qsortr_type)       , intent(in)                    :: method
     end subroutine
@@ -7781,9 +7781,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComQsortr_D1_PSSK2
 #endif
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))      , intent(inout) , contiguous    :: array(:)
+        type(css_pdt(SKG))      , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(qsortr_type)       , intent(in)                    :: method
     end subroutine
@@ -7794,9 +7794,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComQsortr_D1_PSSK1
 #endif
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))      , intent(inout) , contiguous    :: array(:)
+        type(css_pdt(SKG))      , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(qsortr_type)       , intent(in)                    :: method
     end subroutine
@@ -7811,7 +7811,7 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComQsortr_D1_BSSK
 #endif
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
         use pm_container, only: css_type
         type(css_type)          , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
@@ -7841,8 +7841,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComQsortrdp_D0_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)        , intent(inout)                 :: array
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)        , intent(inout)                 :: array
         procedure(logical(LK))                                  :: isSorted
         type(qsortrdp_type)     , intent(in)                    :: method
     end subroutine
@@ -7853,8 +7853,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComQsortrdp_D0_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)        , intent(inout)                 :: array
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)        , intent(inout)                 :: array
         procedure(logical(LK))                                  :: isSorted
         type(qsortrdp_type)     , intent(in)                    :: method
     end subroutine
@@ -7865,8 +7865,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComQsortrdp_D0_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)        , intent(inout)                 :: array
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)        , intent(inout)                 :: array
         procedure(logical(LK))                                  :: isSorted
         type(qsortrdp_type)     , intent(in)                    :: method
     end subroutine
@@ -7877,8 +7877,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComQsortrdp_D0_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)        , intent(inout)                 :: array
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)        , intent(inout)                 :: array
         procedure(logical(LK))                                  :: isSorted
         type(qsortrdp_type)     , intent(in)                    :: method
     end subroutine
@@ -7889,8 +7889,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComQsortrdp_D0_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)        , intent(inout)                 :: array
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)        , intent(inout)                 :: array
         procedure(logical(LK))                                  :: isSorted
         type(qsortrdp_type)     , intent(in)                    :: method
     end subroutine
@@ -7903,8 +7903,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComQsortrdp_D1_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)        , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)        , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(qsortrdp_type)     , intent(in)                    :: method
     end subroutine
@@ -7915,8 +7915,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComQsortrdp_D1_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)        , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)        , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(qsortrdp_type)     , intent(in)                    :: method
     end subroutine
@@ -7927,8 +7927,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComQsortrdp_D1_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)        , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)        , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(qsortrdp_type)     , intent(in)                    :: method
     end subroutine
@@ -7939,8 +7939,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComQsortrdp_D1_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)        , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)        , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(qsortrdp_type)     , intent(in)                    :: method
     end subroutine
@@ -7951,8 +7951,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComQsortrdp_D1_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)        , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)        , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(qsortrdp_type)     , intent(in)                    :: method
     end subroutine
@@ -7965,8 +7965,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComQsortrdp_D1_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK5
+        integer(IKG)            , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(qsortrdp_type)     , intent(in)                    :: method
     end subroutine
@@ -7977,8 +7977,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComQsortrdp_D1_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK4
+        integer(IKG)            , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(qsortrdp_type)     , intent(in)                    :: method
     end subroutine
@@ -7989,8 +7989,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComQsortrdp_D1_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK3
+        integer(IKG)            , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(qsortrdp_type)     , intent(in)                    :: method
     end subroutine
@@ -8001,8 +8001,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComQsortrdp_D1_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK2
+        integer(IKG)            , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(qsortrdp_type)     , intent(in)                    :: method
     end subroutine
@@ -8013,8 +8013,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComQsortrdp_D1_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK1
+        integer(IKG)            , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(qsortrdp_type)     , intent(in)                    :: method
     end subroutine
@@ -8027,8 +8027,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComQsortrdp_D1_LK5
 #endif
-        use pm_kind, only: LKC => LK5
-        logical(LKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: LKG => LK5
+        logical(LKG)            , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(qsortrdp_type)     , intent(in)                    :: method
     end subroutine
@@ -8039,8 +8039,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComQsortrdp_D1_LK4
 #endif
-        use pm_kind, only: LKC => LK4
-        logical(LKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: LKG => LK4
+        logical(LKG)            , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(qsortrdp_type)     , intent(in)                    :: method
     end subroutine
@@ -8051,8 +8051,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComQsortrdp_D1_LK3
 #endif
-        use pm_kind, only: LKC => LK3
-        logical(LKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: LKG => LK3
+        logical(LKG)            , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(qsortrdp_type)     , intent(in)                    :: method
     end subroutine
@@ -8063,8 +8063,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComQsortrdp_D1_LK2
 #endif
-        use pm_kind, only: LKC => LK2
-        logical(LKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: LKG => LK2
+        logical(LKG)            , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(qsortrdp_type)     , intent(in)                    :: method
     end subroutine
@@ -8075,8 +8075,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComQsortrdp_D1_LK1
 #endif
-        use pm_kind, only: LKC => LK1
-        logical(LKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: LKG => LK1
+        logical(LKG)            , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(qsortrdp_type)     , intent(in)                    :: method
     end subroutine
@@ -8089,8 +8089,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComQsortrdp_D1_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG)            , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(qsortrdp_type)     , intent(in)                    :: method
     end subroutine
@@ -8101,8 +8101,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComQsortrdp_D1_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG)            , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(qsortrdp_type)     , intent(in)                    :: method
     end subroutine
@@ -8113,8 +8113,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComQsortrdp_D1_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG)            , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(qsortrdp_type)     , intent(in)                    :: method
     end subroutine
@@ -8125,8 +8125,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComQsortrdp_D1_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG)            , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(qsortrdp_type)     , intent(in)                    :: method
     end subroutine
@@ -8137,8 +8137,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComQsortrdp_D1_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG)            , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(qsortrdp_type)     , intent(in)                    :: method
     end subroutine
@@ -8151,8 +8151,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComQsortrdp_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)               , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)               , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(qsortrdp_type)     , intent(in)                    :: method
     end subroutine
@@ -8163,8 +8163,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComQsortrdp_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)               , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)               , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(qsortrdp_type)     , intent(in)                    :: method
     end subroutine
@@ -8175,8 +8175,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComQsortrdp_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)               , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)               , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(qsortrdp_type)     , intent(in)                    :: method
     end subroutine
@@ -8187,8 +8187,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComQsortrdp_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)               , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)               , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(qsortrdp_type)     , intent(in)                    :: method
     end subroutine
@@ -8199,8 +8199,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComQsortrdp_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)               , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)               , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(qsortrdp_type)     , intent(in)                    :: method
     end subroutine
@@ -8215,9 +8215,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComQsortrdp_D1_PSSK5
 #endif
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))      , intent(inout) , contiguous    :: array(:)
+        type(css_pdt(SKG))      , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(qsortrdp_type)     , intent(in)                    :: method
     end subroutine
@@ -8228,9 +8228,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComQsortrdp_D1_PSSK4
 #endif
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))      , intent(inout) , contiguous    :: array(:)
+        type(css_pdt(SKG))      , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(qsortrdp_type)     , intent(in)                    :: method
     end subroutine
@@ -8241,9 +8241,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComQsortrdp_D1_PSSK3
 #endif
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))      , intent(inout) , contiguous    :: array(:)
+        type(css_pdt(SKG))      , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(qsortrdp_type)     , intent(in)                    :: method
     end subroutine
@@ -8254,9 +8254,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComQsortrdp_D1_PSSK2
 #endif
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))      , intent(inout) , contiguous    :: array(:)
+        type(css_pdt(SKG))      , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(qsortrdp_type)     , intent(in)                    :: method
     end subroutine
@@ -8267,9 +8267,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComQsortrdp_D1_PSSK1
 #endif
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))      , intent(inout) , contiguous    :: array(:)
+        type(css_pdt(SKG))      , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(qsortrdp_type)     , intent(in)                    :: method
     end subroutine
@@ -8284,7 +8284,7 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComQsortrdp_D1_BSSK
 #endif
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
         use pm_container, only: css_type
         type(css_type)          , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
@@ -8314,8 +8314,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComBubble_D0_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)        , intent(inout)                 :: array
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)        , intent(inout)                 :: array
         procedure(logical(LK))                                  :: isSorted
         type(bubble_type)       , intent(in)                    :: method
     end subroutine
@@ -8326,8 +8326,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComBubble_D0_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)        , intent(inout)                 :: array
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)        , intent(inout)                 :: array
         procedure(logical(LK))                                  :: isSorted
         type(bubble_type)       , intent(in)                    :: method
     end subroutine
@@ -8338,8 +8338,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComBubble_D0_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)        , intent(inout)                 :: array
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)        , intent(inout)                 :: array
         procedure(logical(LK))                                  :: isSorted
         type(bubble_type)       , intent(in)                    :: method
     end subroutine
@@ -8350,8 +8350,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComBubble_D0_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)        , intent(inout)                 :: array
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)        , intent(inout)                 :: array
         procedure(logical(LK))                                  :: isSorted
         type(bubble_type)       , intent(in)                    :: method
     end subroutine
@@ -8362,8 +8362,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComBubble_D0_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)        , intent(inout)                 :: array
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)        , intent(inout)                 :: array
         procedure(logical(LK))                                  :: isSorted
         type(bubble_type)       , intent(in)                    :: method
     end subroutine
@@ -8376,8 +8376,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComBubble_D1_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)        , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)        , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(bubble_type)       , intent(in)                    :: method
     end subroutine
@@ -8388,8 +8388,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComBubble_D1_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)        , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)        , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(bubble_type)       , intent(in)                    :: method
     end subroutine
@@ -8400,8 +8400,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComBubble_D1_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)        , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)        , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(bubble_type)       , intent(in)                    :: method
     end subroutine
@@ -8412,8 +8412,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComBubble_D1_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)        , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)        , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(bubble_type)       , intent(in)                    :: method
     end subroutine
@@ -8424,8 +8424,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComBubble_D1_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)        , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)        , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(bubble_type)       , intent(in)                    :: method
     end subroutine
@@ -8438,8 +8438,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComBubble_D1_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK5
+        integer(IKG)            , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(bubble_type)       , intent(in)                    :: method
     end subroutine
@@ -8450,8 +8450,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComBubble_D1_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK4
+        integer(IKG)            , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(bubble_type)       , intent(in)                    :: method
     end subroutine
@@ -8462,8 +8462,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComBubble_D1_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK3
+        integer(IKG)            , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(bubble_type)       , intent(in)                    :: method
     end subroutine
@@ -8474,8 +8474,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComBubble_D1_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK2
+        integer(IKG)            , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(bubble_type)       , intent(in)                    :: method
     end subroutine
@@ -8486,8 +8486,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComBubble_D1_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK1
+        integer(IKG)            , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(bubble_type)       , intent(in)                    :: method
     end subroutine
@@ -8500,8 +8500,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComBubble_D1_LK5
 #endif
-        use pm_kind, only: LKC => LK5
-        logical(LKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: LKG => LK5
+        logical(LKG)            , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(bubble_type)       , intent(in)                    :: method
     end subroutine
@@ -8512,8 +8512,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComBubble_D1_LK4
 #endif
-        use pm_kind, only: LKC => LK4
-        logical(LKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: LKG => LK4
+        logical(LKG)            , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(bubble_type)       , intent(in)                    :: method
     end subroutine
@@ -8524,8 +8524,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComBubble_D1_LK3
 #endif
-        use pm_kind, only: LKC => LK3
-        logical(LKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: LKG => LK3
+        logical(LKG)            , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(bubble_type)       , intent(in)                    :: method
     end subroutine
@@ -8536,8 +8536,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComBubble_D1_LK2
 #endif
-        use pm_kind, only: LKC => LK2
-        logical(LKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: LKG => LK2
+        logical(LKG)            , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(bubble_type)       , intent(in)                    :: method
     end subroutine
@@ -8548,8 +8548,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComBubble_D1_LK1
 #endif
-        use pm_kind, only: LKC => LK1
-        logical(LKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: LKG => LK1
+        logical(LKG)            , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(bubble_type)       , intent(in)                    :: method
     end subroutine
@@ -8562,8 +8562,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComBubble_D1_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG)            , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(bubble_type)       , intent(in)                    :: method
     end subroutine
@@ -8574,8 +8574,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComBubble_D1_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG)            , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(bubble_type)       , intent(in)                    :: method
     end subroutine
@@ -8586,8 +8586,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComBubble_D1_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG)            , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(bubble_type)       , intent(in)                    :: method
     end subroutine
@@ -8598,8 +8598,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComBubble_D1_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG)            , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(bubble_type)       , intent(in)                    :: method
     end subroutine
@@ -8610,8 +8610,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComBubble_D1_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG)            , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(bubble_type)       , intent(in)                    :: method
     end subroutine
@@ -8624,8 +8624,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComBubble_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)               , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)               , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(bubble_type)       , intent(in)                    :: method
     end subroutine
@@ -8636,8 +8636,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComBubble_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)               , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)               , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(bubble_type)       , intent(in)                    :: method
     end subroutine
@@ -8648,8 +8648,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComBubble_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)               , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)               , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(bubble_type)       , intent(in)                    :: method
     end subroutine
@@ -8660,8 +8660,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComBubble_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)               , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)               , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(bubble_type)       , intent(in)                    :: method
     end subroutine
@@ -8672,8 +8672,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComBubble_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)               , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)               , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(bubble_type)       , intent(in)                    :: method
     end subroutine
@@ -8688,9 +8688,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComBubble_D1_PSSK5
 #endif
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))      , intent(inout) , contiguous    :: array(:)
+        type(css_pdt(SKG))      , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(bubble_type)       , intent(in)                    :: method
     end subroutine
@@ -8701,9 +8701,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComBubble_D1_PSSK4
 #endif
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))      , intent(inout) , contiguous    :: array(:)
+        type(css_pdt(SKG))      , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(bubble_type)       , intent(in)                    :: method
     end subroutine
@@ -8714,9 +8714,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComBubble_D1_PSSK3
 #endif
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))      , intent(inout) , contiguous    :: array(:)
+        type(css_pdt(SKG))      , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(bubble_type)       , intent(in)                    :: method
     end subroutine
@@ -8727,9 +8727,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComBubble_D1_PSSK2
 #endif
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))      , intent(inout) , contiguous    :: array(:)
+        type(css_pdt(SKG))      , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(bubble_type)       , intent(in)                    :: method
     end subroutine
@@ -8740,9 +8740,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComBubble_D1_PSSK1
 #endif
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))      , intent(inout) , contiguous    :: array(:)
+        type(css_pdt(SKG))      , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(bubble_type)       , intent(in)                    :: method
     end subroutine
@@ -8757,7 +8757,7 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComBubble_D1_BSSK
 #endif
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
         use pm_container, only: css_type
         type(css_type)          , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
@@ -8787,8 +8787,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComHeapi_D0_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)        , intent(inout)                 :: array
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)        , intent(inout)                 :: array
         procedure(logical(LK))                                  :: isSorted
         type(heapi_type)        , intent(in)                    :: method
     end subroutine
@@ -8799,8 +8799,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComHeapi_D0_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)        , intent(inout)                 :: array
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)        , intent(inout)                 :: array
         procedure(logical(LK))                                  :: isSorted
         type(heapi_type)        , intent(in)                    :: method
     end subroutine
@@ -8811,8 +8811,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComHeapi_D0_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)        , intent(inout)                 :: array
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)        , intent(inout)                 :: array
         procedure(logical(LK))                                  :: isSorted
         type(heapi_type)        , intent(in)                    :: method
     end subroutine
@@ -8823,8 +8823,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComHeapi_D0_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)        , intent(inout)                 :: array
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)        , intent(inout)                 :: array
         procedure(logical(LK))                                  :: isSorted
         type(heapi_type)        , intent(in)                    :: method
     end subroutine
@@ -8835,8 +8835,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComHeapi_D0_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)        , intent(inout)                 :: array
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)        , intent(inout)                 :: array
         procedure(logical(LK))                                  :: isSorted
         type(heapi_type)        , intent(in)                    :: method
     end subroutine
@@ -8849,8 +8849,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComHeapi_D1_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)        , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)        , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(heapi_type)        , intent(in)                    :: method
     end subroutine
@@ -8861,8 +8861,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComHeapi_D1_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)        , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)        , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(heapi_type)        , intent(in)                    :: method
     end subroutine
@@ -8873,8 +8873,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComHeapi_D1_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)        , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)        , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(heapi_type)        , intent(in)                    :: method
     end subroutine
@@ -8885,8 +8885,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComHeapi_D1_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)        , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)        , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(heapi_type)        , intent(in)                    :: method
     end subroutine
@@ -8897,8 +8897,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComHeapi_D1_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)        , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)        , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(heapi_type)        , intent(in)                    :: method
     end subroutine
@@ -8911,8 +8911,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComHeapi_D1_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK5
+        integer(IKG)            , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(heapi_type)        , intent(in)                    :: method
     end subroutine
@@ -8923,8 +8923,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComHeapi_D1_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK4
+        integer(IKG)            , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(heapi_type)        , intent(in)                    :: method
     end subroutine
@@ -8935,8 +8935,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComHeapi_D1_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK3
+        integer(IKG)            , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(heapi_type)        , intent(in)                    :: method
     end subroutine
@@ -8947,8 +8947,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComHeapi_D1_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK2
+        integer(IKG)            , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(heapi_type)        , intent(in)                    :: method
     end subroutine
@@ -8959,8 +8959,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComHeapi_D1_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK1
+        integer(IKG)            , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(heapi_type)        , intent(in)                    :: method
     end subroutine
@@ -8973,8 +8973,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComHeapi_D1_LK5
 #endif
-        use pm_kind, only: LKC => LK5
-        logical(LKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: LKG => LK5
+        logical(LKG)            , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(heapi_type)        , intent(in)                    :: method
     end subroutine
@@ -8985,8 +8985,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComHeapi_D1_LK4
 #endif
-        use pm_kind, only: LKC => LK4
-        logical(LKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: LKG => LK4
+        logical(LKG)            , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(heapi_type)        , intent(in)                    :: method
     end subroutine
@@ -8997,8 +8997,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComHeapi_D1_LK3
 #endif
-        use pm_kind, only: LKC => LK3
-        logical(LKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: LKG => LK3
+        logical(LKG)            , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(heapi_type)        , intent(in)                    :: method
     end subroutine
@@ -9009,8 +9009,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComHeapi_D1_LK2
 #endif
-        use pm_kind, only: LKC => LK2
-        logical(LKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: LKG => LK2
+        logical(LKG)            , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(heapi_type)        , intent(in)                    :: method
     end subroutine
@@ -9021,8 +9021,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComHeapi_D1_LK1
 #endif
-        use pm_kind, only: LKC => LK1
-        logical(LKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: LKG => LK1
+        logical(LKG)            , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(heapi_type)        , intent(in)                    :: method
     end subroutine
@@ -9035,8 +9035,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComHeapi_D1_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG)            , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(heapi_type)        , intent(in)                    :: method
     end subroutine
@@ -9047,8 +9047,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComHeapi_D1_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG)            , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(heapi_type)        , intent(in)                    :: method
     end subroutine
@@ -9059,8 +9059,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComHeapi_D1_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG)            , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(heapi_type)        , intent(in)                    :: method
     end subroutine
@@ -9071,8 +9071,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComHeapi_D1_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG)            , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(heapi_type)        , intent(in)                    :: method
     end subroutine
@@ -9083,8 +9083,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComHeapi_D1_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG)            , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(heapi_type)        , intent(in)                    :: method
     end subroutine
@@ -9097,8 +9097,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComHeapi_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)               , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)               , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(heapi_type)        , intent(in)                    :: method
     end subroutine
@@ -9109,8 +9109,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComHeapi_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)               , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)               , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(heapi_type)        , intent(in)                    :: method
     end subroutine
@@ -9121,8 +9121,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComHeapi_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)               , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)               , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(heapi_type)        , intent(in)                    :: method
     end subroutine
@@ -9133,8 +9133,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComHeapi_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)               , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)               , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(heapi_type)        , intent(in)                    :: method
     end subroutine
@@ -9145,8 +9145,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComHeapi_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)               , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)               , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(heapi_type)        , intent(in)                    :: method
     end subroutine
@@ -9161,9 +9161,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComHeapi_D1_PSSK5
 #endif
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))      , intent(inout) , contiguous    :: array(:)
+        type(css_pdt(SKG))      , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(heapi_type)        , intent(in)                    :: method
     end subroutine
@@ -9174,9 +9174,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComHeapi_D1_PSSK4
 #endif
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))      , intent(inout) , contiguous    :: array(:)
+        type(css_pdt(SKG))      , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(heapi_type)        , intent(in)                    :: method
     end subroutine
@@ -9187,9 +9187,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComHeapi_D1_PSSK3
 #endif
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))      , intent(inout) , contiguous    :: array(:)
+        type(css_pdt(SKG))      , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(heapi_type)        , intent(in)                    :: method
     end subroutine
@@ -9200,9 +9200,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComHeapi_D1_PSSK2
 #endif
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))      , intent(inout) , contiguous    :: array(:)
+        type(css_pdt(SKG))      , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(heapi_type)        , intent(in)                    :: method
     end subroutine
@@ -9213,9 +9213,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComHeapi_D1_PSSK1
 #endif
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))      , intent(inout) , contiguous    :: array(:)
+        type(css_pdt(SKG))      , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(heapi_type)        , intent(in)                    :: method
     end subroutine
@@ -9230,7 +9230,7 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComHeapi_D1_BSSK
 #endif
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
         use pm_container, only: css_type
         type(css_type)          , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
@@ -9260,8 +9260,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComHeapr_D0_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)        , intent(inout)                 :: array
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)        , intent(inout)                 :: array
         procedure(logical(LK))                                  :: isSorted
         type(heapr_type)        , intent(in)                    :: method
     end subroutine
@@ -9272,8 +9272,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComHeapr_D0_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)        , intent(inout)                 :: array
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)        , intent(inout)                 :: array
         procedure(logical(LK))                                  :: isSorted
         type(heapr_type)        , intent(in)                    :: method
     end subroutine
@@ -9284,8 +9284,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComHeapr_D0_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)        , intent(inout)                 :: array
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)        , intent(inout)                 :: array
         procedure(logical(LK))                                  :: isSorted
         type(heapr_type)        , intent(in)                    :: method
     end subroutine
@@ -9296,8 +9296,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComHeapr_D0_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)        , intent(inout)                 :: array
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)        , intent(inout)                 :: array
         procedure(logical(LK))                                  :: isSorted
         type(heapr_type)        , intent(in)                    :: method
     end subroutine
@@ -9308,8 +9308,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComHeapr_D0_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)        , intent(inout)                 :: array
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)        , intent(inout)                 :: array
         procedure(logical(LK))                                  :: isSorted
         type(heapr_type)        , intent(in)                    :: method
     end subroutine
@@ -9322,8 +9322,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComHeapr_D1_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)        , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)        , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(heapr_type)        , intent(in)                    :: method
     end subroutine
@@ -9334,8 +9334,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComHeapr_D1_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)        , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)        , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(heapr_type)        , intent(in)                    :: method
     end subroutine
@@ -9346,8 +9346,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComHeapr_D1_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)        , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)        , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(heapr_type)        , intent(in)                    :: method
     end subroutine
@@ -9358,8 +9358,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComHeapr_D1_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)        , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)        , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(heapr_type)        , intent(in)                    :: method
     end subroutine
@@ -9370,8 +9370,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComHeapr_D1_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)        , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)        , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(heapr_type)        , intent(in)                    :: method
     end subroutine
@@ -9384,8 +9384,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComHeapr_D1_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK5
+        integer(IKG)            , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(heapr_type)        , intent(in)                    :: method
     end subroutine
@@ -9396,8 +9396,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComHeapr_D1_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK4
+        integer(IKG)            , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(heapr_type)        , intent(in)                    :: method
     end subroutine
@@ -9408,8 +9408,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComHeapr_D1_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK3
+        integer(IKG)            , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(heapr_type)        , intent(in)                    :: method
     end subroutine
@@ -9420,8 +9420,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComHeapr_D1_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK2
+        integer(IKG)            , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(heapr_type)        , intent(in)                    :: method
     end subroutine
@@ -9432,8 +9432,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComHeapr_D1_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK1
+        integer(IKG)            , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(heapr_type)        , intent(in)                    :: method
     end subroutine
@@ -9446,8 +9446,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComHeapr_D1_LK5
 #endif
-        use pm_kind, only: LKC => LK5
-        logical(LKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: LKG => LK5
+        logical(LKG)            , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(heapr_type)        , intent(in)                    :: method
     end subroutine
@@ -9458,8 +9458,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComHeapr_D1_LK4
 #endif
-        use pm_kind, only: LKC => LK4
-        logical(LKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: LKG => LK4
+        logical(LKG)            , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(heapr_type)        , intent(in)                    :: method
     end subroutine
@@ -9470,8 +9470,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComHeapr_D1_LK3
 #endif
-        use pm_kind, only: LKC => LK3
-        logical(LKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: LKG => LK3
+        logical(LKG)            , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(heapr_type)        , intent(in)                    :: method
     end subroutine
@@ -9482,8 +9482,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComHeapr_D1_LK2
 #endif
-        use pm_kind, only: LKC => LK2
-        logical(LKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: LKG => LK2
+        logical(LKG)            , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(heapr_type)        , intent(in)                    :: method
     end subroutine
@@ -9494,8 +9494,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComHeapr_D1_LK1
 #endif
-        use pm_kind, only: LKC => LK1
-        logical(LKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: LKG => LK1
+        logical(LKG)            , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(heapr_type)        , intent(in)                    :: method
     end subroutine
@@ -9508,8 +9508,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComHeapr_D1_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG)            , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(heapr_type)        , intent(in)                    :: method
     end subroutine
@@ -9520,8 +9520,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComHeapr_D1_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG)            , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(heapr_type)        , intent(in)                    :: method
     end subroutine
@@ -9532,8 +9532,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComHeapr_D1_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG)            , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(heapr_type)        , intent(in)                    :: method
     end subroutine
@@ -9544,8 +9544,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComHeapr_D1_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG)            , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(heapr_type)        , intent(in)                    :: method
     end subroutine
@@ -9556,8 +9556,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComHeapr_D1_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG)            , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(heapr_type)        , intent(in)                    :: method
     end subroutine
@@ -9570,8 +9570,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComHeapr_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)               , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)               , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(heapr_type)        , intent(in)                    :: method
     end subroutine
@@ -9582,8 +9582,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComHeapr_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)               , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)               , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(heapr_type)        , intent(in)                    :: method
     end subroutine
@@ -9594,8 +9594,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComHeapr_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)               , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)               , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(heapr_type)        , intent(in)                    :: method
     end subroutine
@@ -9606,8 +9606,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComHeapr_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)               , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)               , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(heapr_type)        , intent(in)                    :: method
     end subroutine
@@ -9618,8 +9618,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComHeapr_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)               , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)               , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(heapr_type)        , intent(in)                    :: method
     end subroutine
@@ -9634,9 +9634,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComHeapr_D1_PSSK5
 #endif
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))      , intent(inout) , contiguous    :: array(:)
+        type(css_pdt(SKG))      , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(heapr_type)        , intent(in)                    :: method
     end subroutine
@@ -9647,9 +9647,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComHeapr_D1_PSSK4
 #endif
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))      , intent(inout) , contiguous    :: array(:)
+        type(css_pdt(SKG))      , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(heapr_type)        , intent(in)                    :: method
     end subroutine
@@ -9660,9 +9660,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComHeapr_D1_PSSK3
 #endif
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))      , intent(inout) , contiguous    :: array(:)
+        type(css_pdt(SKG))      , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(heapr_type)        , intent(in)                    :: method
     end subroutine
@@ -9673,9 +9673,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComHeapr_D1_PSSK2
 #endif
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))      , intent(inout) , contiguous    :: array(:)
+        type(css_pdt(SKG))      , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(heapr_type)        , intent(in)                    :: method
     end subroutine
@@ -9686,9 +9686,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComHeapr_D1_PSSK1
 #endif
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))      , intent(inout) , contiguous    :: array(:)
+        type(css_pdt(SKG))      , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(heapr_type)        , intent(in)                    :: method
     end subroutine
@@ -9703,7 +9703,7 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComHeapr_D1_BSSK
 #endif
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
         use pm_container, only: css_type
         type(css_type)          , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
@@ -9733,8 +9733,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComInsertionl_D0_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)        , intent(inout)                 :: array
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)        , intent(inout)                 :: array
         procedure(logical(LK))                                  :: isSorted
         type(insertionl_type)   , intent(in)                    :: method
     end subroutine
@@ -9745,8 +9745,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComInsertionl_D0_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)        , intent(inout)                 :: array
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)        , intent(inout)                 :: array
         procedure(logical(LK))                                  :: isSorted
         type(insertionl_type)   , intent(in)                    :: method
     end subroutine
@@ -9757,8 +9757,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComInsertionl_D0_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)        , intent(inout)                 :: array
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)        , intent(inout)                 :: array
         procedure(logical(LK))                                  :: isSorted
         type(insertionl_type)   , intent(in)                    :: method
     end subroutine
@@ -9769,8 +9769,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComInsertionl_D0_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)        , intent(inout)                 :: array
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)        , intent(inout)                 :: array
         procedure(logical(LK))                                  :: isSorted
         type(insertionl_type)   , intent(in)                    :: method
     end subroutine
@@ -9781,8 +9781,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComInsertionl_D0_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)        , intent(inout)                 :: array
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)        , intent(inout)                 :: array
         procedure(logical(LK))                                  :: isSorted
         type(insertionl_type)   , intent(in)                    :: method
     end subroutine
@@ -9795,8 +9795,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComInsertionl_D1_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)        , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)        , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(insertionl_type)   , intent(in)                    :: method
     end subroutine
@@ -9807,8 +9807,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComInsertionl_D1_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)        , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)        , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(insertionl_type)   , intent(in)                    :: method
     end subroutine
@@ -9819,8 +9819,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComInsertionl_D1_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)        , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)        , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(insertionl_type)   , intent(in)                    :: method
     end subroutine
@@ -9831,8 +9831,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComInsertionl_D1_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)        , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)        , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(insertionl_type)   , intent(in)                    :: method
     end subroutine
@@ -9843,8 +9843,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComInsertionl_D1_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)        , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)        , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(insertionl_type)   , intent(in)                    :: method
     end subroutine
@@ -9857,8 +9857,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComInsertionl_D1_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK5
+        integer(IKG)            , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(insertionl_type)   , intent(in)                    :: method
     end subroutine
@@ -9869,8 +9869,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComInsertionl_D1_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK4
+        integer(IKG)            , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(insertionl_type)   , intent(in)                    :: method
     end subroutine
@@ -9881,8 +9881,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComInsertionl_D1_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK3
+        integer(IKG)            , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(insertionl_type)   , intent(in)                    :: method
     end subroutine
@@ -9893,8 +9893,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComInsertionl_D1_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK2
+        integer(IKG)            , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(insertionl_type)   , intent(in)                    :: method
     end subroutine
@@ -9905,8 +9905,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComInsertionl_D1_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK1
+        integer(IKG)            , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(insertionl_type)   , intent(in)                    :: method
     end subroutine
@@ -9919,8 +9919,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComInsertionl_D1_LK5
 #endif
-        use pm_kind, only: LKC => LK5
-        logical(LKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: LKG => LK5
+        logical(LKG)            , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(insertionl_type)   , intent(in)                    :: method
     end subroutine
@@ -9931,8 +9931,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComInsertionl_D1_LK4
 #endif
-        use pm_kind, only: LKC => LK4
-        logical(LKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: LKG => LK4
+        logical(LKG)            , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(insertionl_type)   , intent(in)                    :: method
     end subroutine
@@ -9943,8 +9943,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComInsertionl_D1_LK3
 #endif
-        use pm_kind, only: LKC => LK3
-        logical(LKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: LKG => LK3
+        logical(LKG)            , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(insertionl_type)   , intent(in)                    :: method
     end subroutine
@@ -9955,8 +9955,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComInsertionl_D1_LK2
 #endif
-        use pm_kind, only: LKC => LK2
-        logical(LKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: LKG => LK2
+        logical(LKG)            , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(insertionl_type)   , intent(in)                    :: method
     end subroutine
@@ -9967,8 +9967,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComInsertionl_D1_LK1
 #endif
-        use pm_kind, only: LKC => LK1
-        logical(LKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: LKG => LK1
+        logical(LKG)            , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(insertionl_type)   , intent(in)                    :: method
     end subroutine
@@ -9981,8 +9981,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComInsertionl_D1_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG)            , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(insertionl_type)   , intent(in)                    :: method
     end subroutine
@@ -9993,8 +9993,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComInsertionl_D1_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG)            , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(insertionl_type)   , intent(in)                    :: method
     end subroutine
@@ -10005,8 +10005,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComInsertionl_D1_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG)            , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(insertionl_type)   , intent(in)                    :: method
     end subroutine
@@ -10017,8 +10017,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComInsertionl_D1_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG)            , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(insertionl_type)   , intent(in)                    :: method
     end subroutine
@@ -10029,8 +10029,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComInsertionl_D1_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG)            , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(insertionl_type)   , intent(in)                    :: method
     end subroutine
@@ -10043,8 +10043,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComInsertionl_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)               , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)               , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(insertionl_type)   , intent(in)                    :: method
     end subroutine
@@ -10055,8 +10055,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComInsertionl_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)               , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)               , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(insertionl_type)   , intent(in)                    :: method
     end subroutine
@@ -10067,8 +10067,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComInsertionl_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)               , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)               , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(insertionl_type)   , intent(in)                    :: method
     end subroutine
@@ -10079,8 +10079,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComInsertionl_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)               , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)               , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(insertionl_type)   , intent(in)                    :: method
     end subroutine
@@ -10091,8 +10091,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComInsertionl_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)               , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)               , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(insertionl_type)   , intent(in)                    :: method
     end subroutine
@@ -10107,9 +10107,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComInsertionl_D1_PSSK5
 #endif
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))      , intent(inout) , contiguous    :: array(:)
+        type(css_pdt(SKG))      , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(insertionl_type)   , intent(in)                    :: method
     end subroutine
@@ -10120,9 +10120,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComInsertionl_D1_PSSK4
 #endif
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))      , intent(inout) , contiguous    :: array(:)
+        type(css_pdt(SKG))      , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(insertionl_type)   , intent(in)                    :: method
     end subroutine
@@ -10133,9 +10133,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComInsertionl_D1_PSSK3
 #endif
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))      , intent(inout) , contiguous    :: array(:)
+        type(css_pdt(SKG))      , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(insertionl_type)   , intent(in)                    :: method
     end subroutine
@@ -10146,9 +10146,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComInsertionl_D1_PSSK2
 #endif
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))      , intent(inout) , contiguous    :: array(:)
+        type(css_pdt(SKG))      , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(insertionl_type)   , intent(in)                    :: method
     end subroutine
@@ -10159,9 +10159,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComInsertionl_D1_PSSK1
 #endif
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))      , intent(inout) , contiguous    :: array(:)
+        type(css_pdt(SKG))      , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(insertionl_type)   , intent(in)                    :: method
     end subroutine
@@ -10176,7 +10176,7 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComInsertionl_D1_BSSK
 #endif
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
         use pm_container, only: css_type
         type(css_type)          , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
@@ -10206,8 +10206,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComInsertionb_D0_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)        , intent(inout)                 :: array
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)        , intent(inout)                 :: array
         procedure(logical(LK))                                  :: isSorted
         type(insertionb_type)   , intent(in)                    :: method
     end subroutine
@@ -10218,8 +10218,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComInsertionb_D0_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)        , intent(inout)                 :: array
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)        , intent(inout)                 :: array
         procedure(logical(LK))                                  :: isSorted
         type(insertionb_type)   , intent(in)                    :: method
     end subroutine
@@ -10230,8 +10230,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComInsertionb_D0_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)        , intent(inout)                 :: array
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)        , intent(inout)                 :: array
         procedure(logical(LK))                                  :: isSorted
         type(insertionb_type)   , intent(in)                    :: method
     end subroutine
@@ -10242,8 +10242,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComInsertionb_D0_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)        , intent(inout)                 :: array
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)        , intent(inout)                 :: array
         procedure(logical(LK))                                  :: isSorted
         type(insertionb_type)   , intent(in)                    :: method
     end subroutine
@@ -10254,8 +10254,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComInsertionb_D0_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)        , intent(inout)                 :: array
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)        , intent(inout)                 :: array
         procedure(logical(LK))                                  :: isSorted
         type(insertionb_type)   , intent(in)                    :: method
     end subroutine
@@ -10268,8 +10268,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComInsertionb_D1_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)        , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)        , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(insertionb_type)   , intent(in)                    :: method
     end subroutine
@@ -10280,8 +10280,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComInsertionb_D1_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)        , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)        , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(insertionb_type)   , intent(in)                    :: method
     end subroutine
@@ -10292,8 +10292,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComInsertionb_D1_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)        , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)        , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(insertionb_type)   , intent(in)                    :: method
     end subroutine
@@ -10304,8 +10304,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComInsertionb_D1_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)        , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)        , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(insertionb_type)   , intent(in)                    :: method
     end subroutine
@@ -10316,8 +10316,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComInsertionb_D1_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)        , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)        , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(insertionb_type)   , intent(in)                    :: method
     end subroutine
@@ -10330,8 +10330,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComInsertionb_D1_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK5
+        integer(IKG)            , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(insertionb_type)   , intent(in)                    :: method
     end subroutine
@@ -10342,8 +10342,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComInsertionb_D1_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK4
+        integer(IKG)            , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(insertionb_type)   , intent(in)                    :: method
     end subroutine
@@ -10354,8 +10354,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComInsertionb_D1_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK3
+        integer(IKG)            , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(insertionb_type)   , intent(in)                    :: method
     end subroutine
@@ -10366,8 +10366,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComInsertionb_D1_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK2
+        integer(IKG)            , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(insertionb_type)   , intent(in)                    :: method
     end subroutine
@@ -10378,8 +10378,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComInsertionb_D1_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK1
+        integer(IKG)            , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(insertionb_type)   , intent(in)                    :: method
     end subroutine
@@ -10392,8 +10392,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComInsertionb_D1_LK5
 #endif
-        use pm_kind, only: LKC => LK5
-        logical(LKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: LKG => LK5
+        logical(LKG)            , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(insertionb_type)   , intent(in)                    :: method
     end subroutine
@@ -10404,8 +10404,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComInsertionb_D1_LK4
 #endif
-        use pm_kind, only: LKC => LK4
-        logical(LKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: LKG => LK4
+        logical(LKG)            , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(insertionb_type)   , intent(in)                    :: method
     end subroutine
@@ -10416,8 +10416,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComInsertionb_D1_LK3
 #endif
-        use pm_kind, only: LKC => LK3
-        logical(LKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: LKG => LK3
+        logical(LKG)            , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(insertionb_type)   , intent(in)                    :: method
     end subroutine
@@ -10428,8 +10428,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComInsertionb_D1_LK2
 #endif
-        use pm_kind, only: LKC => LK2
-        logical(LKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: LKG => LK2
+        logical(LKG)            , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(insertionb_type)   , intent(in)                    :: method
     end subroutine
@@ -10440,8 +10440,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComInsertionb_D1_LK1
 #endif
-        use pm_kind, only: LKC => LK1
-        logical(LKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: LKG => LK1
+        logical(LKG)            , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(insertionb_type)   , intent(in)                    :: method
     end subroutine
@@ -10454,8 +10454,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComInsertionb_D1_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG)            , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(insertionb_type)   , intent(in)                    :: method
     end subroutine
@@ -10466,8 +10466,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComInsertionb_D1_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG)            , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(insertionb_type)   , intent(in)                    :: method
     end subroutine
@@ -10478,8 +10478,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComInsertionb_D1_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG)            , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(insertionb_type)   , intent(in)                    :: method
     end subroutine
@@ -10490,8 +10490,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComInsertionb_D1_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG)            , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(insertionb_type)   , intent(in)                    :: method
     end subroutine
@@ -10502,8 +10502,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComInsertionb_D1_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG)            , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(insertionb_type)   , intent(in)                    :: method
     end subroutine
@@ -10516,8 +10516,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComInsertionb_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)               , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)               , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(insertionb_type)   , intent(in)                    :: method
     end subroutine
@@ -10528,8 +10528,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComInsertionb_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)               , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)               , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(insertionb_type)   , intent(in)                    :: method
     end subroutine
@@ -10540,8 +10540,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComInsertionb_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)               , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)               , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(insertionb_type)   , intent(in)                    :: method
     end subroutine
@@ -10552,8 +10552,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComInsertionb_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)               , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)               , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(insertionb_type)   , intent(in)                    :: method
     end subroutine
@@ -10564,8 +10564,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComInsertionb_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)               , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)               , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(insertionb_type)   , intent(in)                    :: method
     end subroutine
@@ -10580,9 +10580,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComInsertionb_D1_PSSK5
 #endif
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))      , intent(inout) , contiguous    :: array(:)
+        type(css_pdt(SKG))      , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(insertionb_type)   , intent(in)                    :: method
     end subroutine
@@ -10593,9 +10593,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComInsertionb_D1_PSSK4
 #endif
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))      , intent(inout) , contiguous    :: array(:)
+        type(css_pdt(SKG))      , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(insertionb_type)   , intent(in)                    :: method
     end subroutine
@@ -10606,9 +10606,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComInsertionb_D1_PSSK3
 #endif
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))      , intent(inout) , contiguous    :: array(:)
+        type(css_pdt(SKG))      , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(insertionb_type)   , intent(in)                    :: method
     end subroutine
@@ -10619,9 +10619,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComInsertionb_D1_PSSK2
 #endif
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))      , intent(inout) , contiguous    :: array(:)
+        type(css_pdt(SKG))      , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(insertionb_type)   , intent(in)                    :: method
     end subroutine
@@ -10632,9 +10632,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComInsertionb_D1_PSSK1
 #endif
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))      , intent(inout) , contiguous    :: array(:)
+        type(css_pdt(SKG))      , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(insertionb_type)   , intent(in)                    :: method
     end subroutine
@@ -10649,7 +10649,7 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComInsertionb_D1_BSSK
 #endif
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
         use pm_container, only: css_type
         type(css_type)          , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
@@ -10679,8 +10679,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComMerger_D0_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)        , intent(inout)                 :: array
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)        , intent(inout)                 :: array
         procedure(logical(LK))                                  :: isSorted
         type(merger_type)       , intent(in)                    :: method
     end subroutine
@@ -10691,8 +10691,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComMerger_D0_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)        , intent(inout)                 :: array
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)        , intent(inout)                 :: array
         procedure(logical(LK))                                  :: isSorted
         type(merger_type)       , intent(in)                    :: method
     end subroutine
@@ -10703,8 +10703,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComMerger_D0_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)        , intent(inout)                 :: array
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)        , intent(inout)                 :: array
         procedure(logical(LK))                                  :: isSorted
         type(merger_type)       , intent(in)                    :: method
     end subroutine
@@ -10715,8 +10715,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComMerger_D0_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)        , intent(inout)                 :: array
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)        , intent(inout)                 :: array
         procedure(logical(LK))                                  :: isSorted
         type(merger_type)       , intent(in)                    :: method
     end subroutine
@@ -10727,8 +10727,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComMerger_D0_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)        , intent(inout)                 :: array
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)        , intent(inout)                 :: array
         procedure(logical(LK))                                  :: isSorted
         type(merger_type)       , intent(in)                    :: method
     end subroutine
@@ -10741,8 +10741,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComMerger_D1_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)        , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)        , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(merger_type)       , intent(in)                    :: method
     end subroutine
@@ -10753,8 +10753,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComMerger_D1_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)        , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)        , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(merger_type)       , intent(in)                    :: method
     end subroutine
@@ -10765,8 +10765,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComMerger_D1_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)        , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)        , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(merger_type)       , intent(in)                    :: method
     end subroutine
@@ -10777,8 +10777,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComMerger_D1_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)        , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)        , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(merger_type)       , intent(in)                    :: method
     end subroutine
@@ -10789,8 +10789,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComMerger_D1_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)        , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)        , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(merger_type)       , intent(in)                    :: method
     end subroutine
@@ -10803,8 +10803,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComMerger_D1_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK5
+        integer(IKG)            , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(merger_type)       , intent(in)                    :: method
     end subroutine
@@ -10815,8 +10815,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComMerger_D1_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK4
+        integer(IKG)            , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(merger_type)       , intent(in)                    :: method
     end subroutine
@@ -10827,8 +10827,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComMerger_D1_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK3
+        integer(IKG)            , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(merger_type)       , intent(in)                    :: method
     end subroutine
@@ -10839,8 +10839,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComMerger_D1_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK2
+        integer(IKG)            , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(merger_type)       , intent(in)                    :: method
     end subroutine
@@ -10851,8 +10851,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComMerger_D1_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK1
+        integer(IKG)            , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(merger_type)       , intent(in)                    :: method
     end subroutine
@@ -10865,8 +10865,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComMerger_D1_LK5
 #endif
-        use pm_kind, only: LKC => LK5
-        logical(LKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: LKG => LK5
+        logical(LKG)            , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(merger_type)       , intent(in)                    :: method
     end subroutine
@@ -10877,8 +10877,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComMerger_D1_LK4
 #endif
-        use pm_kind, only: LKC => LK4
-        logical(LKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: LKG => LK4
+        logical(LKG)            , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(merger_type)       , intent(in)                    :: method
     end subroutine
@@ -10889,8 +10889,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComMerger_D1_LK3
 #endif
-        use pm_kind, only: LKC => LK3
-        logical(LKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: LKG => LK3
+        logical(LKG)            , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(merger_type)       , intent(in)                    :: method
     end subroutine
@@ -10901,8 +10901,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComMerger_D1_LK2
 #endif
-        use pm_kind, only: LKC => LK2
-        logical(LKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: LKG => LK2
+        logical(LKG)            , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(merger_type)       , intent(in)                    :: method
     end subroutine
@@ -10913,8 +10913,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComMerger_D1_LK1
 #endif
-        use pm_kind, only: LKC => LK1
-        logical(LKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: LKG => LK1
+        logical(LKG)            , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(merger_type)       , intent(in)                    :: method
     end subroutine
@@ -10927,8 +10927,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComMerger_D1_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG)            , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(merger_type)       , intent(in)                    :: method
     end subroutine
@@ -10939,8 +10939,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComMerger_D1_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG)            , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(merger_type)       , intent(in)                    :: method
     end subroutine
@@ -10951,8 +10951,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComMerger_D1_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG)            , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(merger_type)       , intent(in)                    :: method
     end subroutine
@@ -10963,8 +10963,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComMerger_D1_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG)            , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(merger_type)       , intent(in)                    :: method
     end subroutine
@@ -10975,8 +10975,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComMerger_D1_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG)            , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(merger_type)       , intent(in)                    :: method
     end subroutine
@@ -10989,8 +10989,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComMerger_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)               , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)               , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(merger_type)       , intent(in)                    :: method
     end subroutine
@@ -11001,8 +11001,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComMerger_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)               , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)               , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(merger_type)       , intent(in)                    :: method
     end subroutine
@@ -11013,8 +11013,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComMerger_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)               , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)               , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(merger_type)       , intent(in)                    :: method
     end subroutine
@@ -11025,8 +11025,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComMerger_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)               , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)               , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(merger_type)       , intent(in)                    :: method
     end subroutine
@@ -11037,8 +11037,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComMerger_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)               , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)               , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(merger_type)       , intent(in)                    :: method
     end subroutine
@@ -11053,9 +11053,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComMerger_D1_PSSK5
 #endif
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))      , intent(inout) , contiguous    :: array(:)
+        type(css_pdt(SKG))      , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(merger_type)       , intent(in)                    :: method
     end subroutine
@@ -11066,9 +11066,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComMerger_D1_PSSK4
 #endif
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))      , intent(inout) , contiguous    :: array(:)
+        type(css_pdt(SKG))      , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(merger_type)       , intent(in)                    :: method
     end subroutine
@@ -11079,9 +11079,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComMerger_D1_PSSK3
 #endif
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))      , intent(inout) , contiguous    :: array(:)
+        type(css_pdt(SKG))      , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(merger_type)       , intent(in)                    :: method
     end subroutine
@@ -11092,9 +11092,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComMerger_D1_PSSK2
 #endif
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))      , intent(inout) , contiguous    :: array(:)
+        type(css_pdt(SKG))      , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(merger_type)       , intent(in)                    :: method
     end subroutine
@@ -11105,9 +11105,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComMerger_D1_PSSK1
 #endif
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))      , intent(inout) , contiguous    :: array(:)
+        type(css_pdt(SKG))      , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(merger_type)       , intent(in)                    :: method
     end subroutine
@@ -11122,7 +11122,7 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComMerger_D1_BSSK
 #endif
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
         use pm_container, only: css_type
         type(css_type)          , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
@@ -11152,8 +11152,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComSelection_D0_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)        , intent(inout)                 :: array
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)        , intent(inout)                 :: array
         procedure(logical(LK))                                  :: isSorted
         type(selection_type)    , intent(in)                    :: method
     end subroutine
@@ -11164,8 +11164,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComSelection_D0_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)        , intent(inout)                 :: array
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)        , intent(inout)                 :: array
         procedure(logical(LK))                                  :: isSorted
         type(selection_type)    , intent(in)                    :: method
     end subroutine
@@ -11176,8 +11176,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComSelection_D0_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)        , intent(inout)                 :: array
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)        , intent(inout)                 :: array
         procedure(logical(LK))                                  :: isSorted
         type(selection_type)    , intent(in)                    :: method
     end subroutine
@@ -11188,8 +11188,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComSelection_D0_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)        , intent(inout)                 :: array
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)        , intent(inout)                 :: array
         procedure(logical(LK))                                  :: isSorted
         type(selection_type)    , intent(in)                    :: method
     end subroutine
@@ -11200,8 +11200,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComSelection_D0_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)        , intent(inout)                 :: array
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)        , intent(inout)                 :: array
         procedure(logical(LK))                                  :: isSorted
         type(selection_type)    , intent(in)                    :: method
     end subroutine
@@ -11214,8 +11214,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComSelection_D1_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)        , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)        , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(selection_type)    , intent(in)                    :: method
     end subroutine
@@ -11226,8 +11226,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComSelection_D1_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)        , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)        , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(selection_type)    , intent(in)                    :: method
     end subroutine
@@ -11238,8 +11238,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComSelection_D1_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)        , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)        , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(selection_type)    , intent(in)                    :: method
     end subroutine
@@ -11250,8 +11250,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComSelection_D1_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)        , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)        , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(selection_type)    , intent(in)                    :: method
     end subroutine
@@ -11262,8 +11262,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComSelection_D1_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)        , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)        , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(selection_type)    , intent(in)                    :: method
     end subroutine
@@ -11276,8 +11276,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComSelection_D1_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK5
+        integer(IKG)            , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(selection_type)    , intent(in)                    :: method
     end subroutine
@@ -11288,8 +11288,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComSelection_D1_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK4
+        integer(IKG)            , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(selection_type)    , intent(in)                    :: method
     end subroutine
@@ -11300,8 +11300,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComSelection_D1_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK3
+        integer(IKG)            , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(selection_type)    , intent(in)                    :: method
     end subroutine
@@ -11312,8 +11312,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComSelection_D1_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK2
+        integer(IKG)            , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(selection_type)    , intent(in)                    :: method
     end subroutine
@@ -11324,8 +11324,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComSelection_D1_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK1
+        integer(IKG)            , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(selection_type)    , intent(in)                    :: method
     end subroutine
@@ -11338,8 +11338,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComSelection_D1_LK5
 #endif
-        use pm_kind, only: LKC => LK5
-        logical(LKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: LKG => LK5
+        logical(LKG)            , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(selection_type)    , intent(in)                    :: method
     end subroutine
@@ -11350,8 +11350,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComSelection_D1_LK4
 #endif
-        use pm_kind, only: LKC => LK4
-        logical(LKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: LKG => LK4
+        logical(LKG)            , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(selection_type)    , intent(in)                    :: method
     end subroutine
@@ -11362,8 +11362,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComSelection_D1_LK3
 #endif
-        use pm_kind, only: LKC => LK3
-        logical(LKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: LKG => LK3
+        logical(LKG)            , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(selection_type)    , intent(in)                    :: method
     end subroutine
@@ -11374,8 +11374,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComSelection_D1_LK2
 #endif
-        use pm_kind, only: LKC => LK2
-        logical(LKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: LKG => LK2
+        logical(LKG)            , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(selection_type)    , intent(in)                    :: method
     end subroutine
@@ -11386,8 +11386,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComSelection_D1_LK1
 #endif
-        use pm_kind, only: LKC => LK1
-        logical(LKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: LKG => LK1
+        logical(LKG)            , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(selection_type)    , intent(in)                    :: method
     end subroutine
@@ -11400,8 +11400,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComSelection_D1_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG)            , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(selection_type)    , intent(in)                    :: method
     end subroutine
@@ -11412,8 +11412,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComSelection_D1_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG)            , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(selection_type)    , intent(in)                    :: method
     end subroutine
@@ -11424,8 +11424,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComSelection_D1_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG)            , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(selection_type)    , intent(in)                    :: method
     end subroutine
@@ -11436,8 +11436,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComSelection_D1_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG)            , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(selection_type)    , intent(in)                    :: method
     end subroutine
@@ -11448,8 +11448,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComSelection_D1_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG)            , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(selection_type)    , intent(in)                    :: method
     end subroutine
@@ -11462,8 +11462,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComSelection_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)               , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)               , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(selection_type)    , intent(in)                    :: method
     end subroutine
@@ -11474,8 +11474,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComSelection_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)               , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)               , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(selection_type)    , intent(in)                    :: method
     end subroutine
@@ -11486,8 +11486,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComSelection_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)               , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)               , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(selection_type)    , intent(in)                    :: method
     end subroutine
@@ -11498,8 +11498,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComSelection_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)               , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)               , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(selection_type)    , intent(in)                    :: method
     end subroutine
@@ -11510,8 +11510,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComSelection_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)               , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)               , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(selection_type)    , intent(in)                    :: method
     end subroutine
@@ -11526,9 +11526,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComSelection_D1_PSSK5
 #endif
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))      , intent(inout) , contiguous    :: array(:)
+        type(css_pdt(SKG))      , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(selection_type)    , intent(in)                    :: method
     end subroutine
@@ -11539,9 +11539,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComSelection_D1_PSSK4
 #endif
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))      , intent(inout) , contiguous    :: array(:)
+        type(css_pdt(SKG))      , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(selection_type)    , intent(in)                    :: method
     end subroutine
@@ -11552,9 +11552,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComSelection_D1_PSSK3
 #endif
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))      , intent(inout) , contiguous    :: array(:)
+        type(css_pdt(SKG))      , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(selection_type)    , intent(in)                    :: method
     end subroutine
@@ -11565,9 +11565,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComSelection_D1_PSSK2
 #endif
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))      , intent(inout) , contiguous    :: array(:)
+        type(css_pdt(SKG))      , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(selection_type)    , intent(in)                    :: method
     end subroutine
@@ -11578,9 +11578,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComSelection_D1_PSSK1
 #endif
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))      , intent(inout) , contiguous    :: array(:)
+        type(css_pdt(SKG))      , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(selection_type)    , intent(in)                    :: method
     end subroutine
@@ -11595,7 +11595,7 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComSelection_D1_BSSK
 #endif
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
         use pm_container, only: css_type
         type(css_type)          , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
@@ -11625,8 +11625,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComShell_D0_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)        , intent(inout)                 :: array
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)        , intent(inout)                 :: array
         procedure(logical(LK))                                  :: isSorted
         type(shell_type)        , intent(in)                    :: method
     end subroutine
@@ -11637,8 +11637,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComShell_D0_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)        , intent(inout)                 :: array
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)        , intent(inout)                 :: array
         procedure(logical(LK))                                  :: isSorted
         type(shell_type)        , intent(in)                    :: method
     end subroutine
@@ -11649,8 +11649,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComShell_D0_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)        , intent(inout)                 :: array
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)        , intent(inout)                 :: array
         procedure(logical(LK))                                  :: isSorted
         type(shell_type)        , intent(in)                    :: method
     end subroutine
@@ -11661,8 +11661,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComShell_D0_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)        , intent(inout)                 :: array
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)        , intent(inout)                 :: array
         procedure(logical(LK))                                  :: isSorted
         type(shell_type)        , intent(in)                    :: method
     end subroutine
@@ -11673,8 +11673,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComShell_D0_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)        , intent(inout)                 :: array
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)        , intent(inout)                 :: array
         procedure(logical(LK))                                  :: isSorted
         type(shell_type)        , intent(in)                    :: method
     end subroutine
@@ -11687,8 +11687,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComShell_D1_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)        , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)        , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(shell_type)        , intent(in)                    :: method
     end subroutine
@@ -11699,8 +11699,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComShell_D1_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)        , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)        , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(shell_type)        , intent(in)                    :: method
     end subroutine
@@ -11711,8 +11711,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComShell_D1_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)        , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)        , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(shell_type)        , intent(in)                    :: method
     end subroutine
@@ -11723,8 +11723,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComShell_D1_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)        , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)        , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(shell_type)        , intent(in)                    :: method
     end subroutine
@@ -11735,8 +11735,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComShell_D1_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)        , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)        , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(shell_type)        , intent(in)                    :: method
     end subroutine
@@ -11749,8 +11749,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComShell_D1_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK5
+        integer(IKG)            , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(shell_type)        , intent(in)                    :: method
     end subroutine
@@ -11761,8 +11761,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComShell_D1_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK4
+        integer(IKG)            , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(shell_type)        , intent(in)                    :: method
     end subroutine
@@ -11773,8 +11773,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComShell_D1_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK3
+        integer(IKG)            , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(shell_type)        , intent(in)                    :: method
     end subroutine
@@ -11785,8 +11785,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComShell_D1_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK2
+        integer(IKG)            , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(shell_type)        , intent(in)                    :: method
     end subroutine
@@ -11797,8 +11797,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComShell_D1_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK1
+        integer(IKG)            , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(shell_type)        , intent(in)                    :: method
     end subroutine
@@ -11811,8 +11811,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComShell_D1_LK5
 #endif
-        use pm_kind, only: LKC => LK5
-        logical(LKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: LKG => LK5
+        logical(LKG)            , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(shell_type)        , intent(in)                    :: method
     end subroutine
@@ -11823,8 +11823,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComShell_D1_LK4
 #endif
-        use pm_kind, only: LKC => LK4
-        logical(LKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: LKG => LK4
+        logical(LKG)            , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(shell_type)        , intent(in)                    :: method
     end subroutine
@@ -11835,8 +11835,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComShell_D1_LK3
 #endif
-        use pm_kind, only: LKC => LK3
-        logical(LKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: LKG => LK3
+        logical(LKG)            , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(shell_type)        , intent(in)                    :: method
     end subroutine
@@ -11847,8 +11847,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComShell_D1_LK2
 #endif
-        use pm_kind, only: LKC => LK2
-        logical(LKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: LKG => LK2
+        logical(LKG)            , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(shell_type)        , intent(in)                    :: method
     end subroutine
@@ -11859,8 +11859,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComShell_D1_LK1
 #endif
-        use pm_kind, only: LKC => LK1
-        logical(LKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: LKG => LK1
+        logical(LKG)            , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(shell_type)        , intent(in)                    :: method
     end subroutine
@@ -11873,8 +11873,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComShell_D1_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG)            , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(shell_type)        , intent(in)                    :: method
     end subroutine
@@ -11885,8 +11885,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComShell_D1_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG)            , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(shell_type)        , intent(in)                    :: method
     end subroutine
@@ -11897,8 +11897,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComShell_D1_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG)            , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(shell_type)        , intent(in)                    :: method
     end subroutine
@@ -11909,8 +11909,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComShell_D1_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG)            , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(shell_type)        , intent(in)                    :: method
     end subroutine
@@ -11921,8 +11921,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComShell_D1_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG)            , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(shell_type)        , intent(in)                    :: method
     end subroutine
@@ -11935,8 +11935,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComShell_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)               , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)               , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(shell_type)        , intent(in)                    :: method
     end subroutine
@@ -11947,8 +11947,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComShell_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)               , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)               , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(shell_type)        , intent(in)                    :: method
     end subroutine
@@ -11959,8 +11959,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComShell_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)               , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)               , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(shell_type)        , intent(in)                    :: method
     end subroutine
@@ -11971,8 +11971,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComShell_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)               , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)               , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(shell_type)        , intent(in)                    :: method
     end subroutine
@@ -11983,8 +11983,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComShell_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)               , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)               , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(shell_type)        , intent(in)                    :: method
     end subroutine
@@ -11999,9 +11999,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComShell_D1_PSSK5
 #endif
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))      , intent(inout) , contiguous    :: array(:)
+        type(css_pdt(SKG))      , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(shell_type)        , intent(in)                    :: method
     end subroutine
@@ -12012,9 +12012,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComShell_D1_PSSK4
 #endif
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))      , intent(inout) , contiguous    :: array(:)
+        type(css_pdt(SKG))      , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(shell_type)        , intent(in)                    :: method
     end subroutine
@@ -12025,9 +12025,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComShell_D1_PSSK3
 #endif
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))      , intent(inout) , contiguous    :: array(:)
+        type(css_pdt(SKG))      , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(shell_type)        , intent(in)                    :: method
     end subroutine
@@ -12038,9 +12038,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComShell_D1_PSSK2
 #endif
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))      , intent(inout) , contiguous    :: array(:)
+        type(css_pdt(SKG))      , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(shell_type)        , intent(in)                    :: method
     end subroutine
@@ -12051,9 +12051,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComShell_D1_PSSK1
 #endif
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))      , intent(inout) , contiguous    :: array(:)
+        type(css_pdt(SKG))      , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
         type(shell_type)        , intent(in)                    :: method
     end subroutine
@@ -12068,7 +12068,7 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrCusComShell_D1_BSSK
 #endif
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
         use pm_container, only: css_type
         type(css_type)          , intent(inout) , contiguous    :: array(:)
         procedure(logical(LK))                                  :: isSorted
@@ -12100,8 +12100,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComDef_D0_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)        , intent(inout)                 :: array
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)        , intent(inout)                 :: array
     end subroutine
 #endif
 
@@ -12110,8 +12110,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComDef_D0_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)        , intent(inout)                 :: array
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)        , intent(inout)                 :: array
     end subroutine
 #endif
 
@@ -12120,8 +12120,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComDef_D0_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)        , intent(inout)                 :: array
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)        , intent(inout)                 :: array
     end subroutine
 #endif
 
@@ -12130,8 +12130,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComDef_D0_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)        , intent(inout)                 :: array
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)        , intent(inout)                 :: array
     end subroutine
 #endif
 
@@ -12140,8 +12140,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComDef_D0_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)        , intent(inout)                 :: array
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)        , intent(inout)                 :: array
     end subroutine
 #endif
 
@@ -12152,8 +12152,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComDef_D1_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)        , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)        , intent(inout) , contiguous    :: array(:)
     end subroutine
 #endif
 
@@ -12162,8 +12162,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComDef_D1_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)        , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)        , intent(inout) , contiguous    :: array(:)
     end subroutine
 #endif
 
@@ -12172,8 +12172,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComDef_D1_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)        , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)        , intent(inout) , contiguous    :: array(:)
     end subroutine
 #endif
 
@@ -12182,8 +12182,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComDef_D1_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)        , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)        , intent(inout) , contiguous    :: array(:)
     end subroutine
 #endif
 
@@ -12192,8 +12192,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComDef_D1_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)        , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)        , intent(inout) , contiguous    :: array(:)
     end subroutine
 #endif
 
@@ -12204,8 +12204,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComDef_D1_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK5
+        integer(IKG)            , intent(inout) , contiguous    :: array(:)
     end subroutine
 #endif
 
@@ -12214,8 +12214,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComDef_D1_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK4
+        integer(IKG)            , intent(inout) , contiguous    :: array(:)
     end subroutine
 #endif
 
@@ -12224,8 +12224,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComDef_D1_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK3
+        integer(IKG)            , intent(inout) , contiguous    :: array(:)
     end subroutine
 #endif
 
@@ -12234,8 +12234,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComDef_D1_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK2
+        integer(IKG)            , intent(inout) , contiguous    :: array(:)
     end subroutine
 #endif
 
@@ -12244,8 +12244,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComDef_D1_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK1
+        integer(IKG)            , intent(inout) , contiguous    :: array(:)
     end subroutine
 #endif
 
@@ -12256,8 +12256,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComDef_D1_LK5
 #endif
-        use pm_kind, only: LKC => LK5
-        logical(LKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: LKG => LK5
+        logical(LKG)            , intent(inout) , contiguous    :: array(:)
     end subroutine
 #endif
 
@@ -12266,8 +12266,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComDef_D1_LK4
 #endif
-        use pm_kind, only: LKC => LK4
-        logical(LKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: LKG => LK4
+        logical(LKG)            , intent(inout) , contiguous    :: array(:)
     end subroutine
 #endif
 
@@ -12276,8 +12276,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComDef_D1_LK3
 #endif
-        use pm_kind, only: LKC => LK3
-        logical(LKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: LKG => LK3
+        logical(LKG)            , intent(inout) , contiguous    :: array(:)
     end subroutine
 #endif
 
@@ -12286,8 +12286,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComDef_D1_LK2
 #endif
-        use pm_kind, only: LKC => LK2
-        logical(LKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: LKG => LK2
+        logical(LKG)            , intent(inout) , contiguous    :: array(:)
     end subroutine
 #endif
 
@@ -12296,8 +12296,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComDef_D1_LK1
 #endif
-        use pm_kind, only: LKC => LK1
-        logical(LKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: LKG => LK1
+        logical(LKG)            , intent(inout) , contiguous    :: array(:)
     end subroutine
 #endif
 
@@ -12308,8 +12308,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComDef_D1_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG)            , intent(inout) , contiguous    :: array(:)
     end subroutine
 #endif
 
@@ -12318,8 +12318,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComDef_D1_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG)            , intent(inout) , contiguous    :: array(:)
     end subroutine
 #endif
 
@@ -12328,8 +12328,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComDef_D1_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG)            , intent(inout) , contiguous    :: array(:)
     end subroutine
 #endif
 
@@ -12338,8 +12338,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComDef_D1_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG)            , intent(inout) , contiguous    :: array(:)
     end subroutine
 #endif
 
@@ -12348,8 +12348,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComDef_D1_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG)            , intent(inout) , contiguous    :: array(:)
     end subroutine
 #endif
 
@@ -12360,8 +12360,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComDef_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)               , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)               , intent(inout) , contiguous    :: array(:)
     end subroutine
 #endif
 
@@ -12370,8 +12370,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComDef_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)               , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)               , intent(inout) , contiguous    :: array(:)
     end subroutine
 #endif
 
@@ -12380,8 +12380,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComDef_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)               , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)               , intent(inout) , contiguous    :: array(:)
     end subroutine
 #endif
 
@@ -12390,8 +12390,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComDef_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)               , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)               , intent(inout) , contiguous    :: array(:)
     end subroutine
 #endif
 
@@ -12400,8 +12400,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComDef_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)               , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)               , intent(inout) , contiguous    :: array(:)
     end subroutine
 #endif
 
@@ -12414,9 +12414,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComDef_D1_PSSK5
 #endif
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))      , intent(inout) , contiguous    :: array(:)
+        type(css_pdt(SKG))      , intent(inout) , contiguous    :: array(:)
     end subroutine
 #endif
 
@@ -12425,9 +12425,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComDef_D1_PSSK4
 #endif
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))      , intent(inout) , contiguous    :: array(:)
+        type(css_pdt(SKG))      , intent(inout) , contiguous    :: array(:)
     end subroutine
 #endif
 
@@ -12436,9 +12436,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComDef_D1_PSSK3
 #endif
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))      , intent(inout) , contiguous    :: array(:)
+        type(css_pdt(SKG))      , intent(inout) , contiguous    :: array(:)
     end subroutine
 #endif
 
@@ -12447,9 +12447,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComDef_D1_PSSK2
 #endif
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))      , intent(inout) , contiguous    :: array(:)
+        type(css_pdt(SKG))      , intent(inout) , contiguous    :: array(:)
     end subroutine
 #endif
 
@@ -12458,9 +12458,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComDef_D1_PSSK1
 #endif
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))      , intent(inout) , contiguous    :: array(:)
+        type(css_pdt(SKG))      , intent(inout) , contiguous    :: array(:)
     end subroutine
 #endif
 
@@ -12473,7 +12473,7 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComDef_D1_BSSK
 #endif
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
         use pm_container, only: css_type
         type(css_type)          , intent(inout) , contiguous    :: array(:)
     end subroutine
@@ -12501,8 +12501,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComQsorti_D0_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)        , intent(inout)                 :: array
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)        , intent(inout)                 :: array
         type(qsorti_type)       , intent(in)                    :: method
     end subroutine
 #endif
@@ -12512,8 +12512,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComQsorti_D0_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)        , intent(inout)                 :: array
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)        , intent(inout)                 :: array
         type(qsorti_type)       , intent(in)                    :: method
     end subroutine
 #endif
@@ -12523,8 +12523,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComQsorti_D0_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)        , intent(inout)                 :: array
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)        , intent(inout)                 :: array
         type(qsorti_type)       , intent(in)                    :: method
     end subroutine
 #endif
@@ -12534,8 +12534,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComQsorti_D0_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)        , intent(inout)                 :: array
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)        , intent(inout)                 :: array
         type(qsorti_type)       , intent(in)                    :: method
     end subroutine
 #endif
@@ -12545,8 +12545,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComQsorti_D0_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)        , intent(inout)                 :: array
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)        , intent(inout)                 :: array
         type(qsorti_type)       , intent(in)                    :: method
     end subroutine
 #endif
@@ -12558,8 +12558,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComQsorti_D1_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)        , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)        , intent(inout) , contiguous    :: array(:)
         type(qsorti_type)       , intent(in)                    :: method
     end subroutine
 #endif
@@ -12569,8 +12569,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComQsorti_D1_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)        , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)        , intent(inout) , contiguous    :: array(:)
         type(qsorti_type)       , intent(in)                    :: method
     end subroutine
 #endif
@@ -12580,8 +12580,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComQsorti_D1_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)        , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)        , intent(inout) , contiguous    :: array(:)
         type(qsorti_type)       , intent(in)                    :: method
     end subroutine
 #endif
@@ -12591,8 +12591,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComQsorti_D1_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)        , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)        , intent(inout) , contiguous    :: array(:)
         type(qsorti_type)       , intent(in)                    :: method
     end subroutine
 #endif
@@ -12602,8 +12602,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComQsorti_D1_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)        , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)        , intent(inout) , contiguous    :: array(:)
         type(qsorti_type)       , intent(in)                    :: method
     end subroutine
 #endif
@@ -12615,8 +12615,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComQsorti_D1_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK5
+        integer(IKG)            , intent(inout) , contiguous    :: array(:)
         type(qsorti_type)       , intent(in)                    :: method
     end subroutine
 #endif
@@ -12626,8 +12626,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComQsorti_D1_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK4
+        integer(IKG)            , intent(inout) , contiguous    :: array(:)
         type(qsorti_type)       , intent(in)                    :: method
     end subroutine
 #endif
@@ -12637,8 +12637,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComQsorti_D1_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK3
+        integer(IKG)            , intent(inout) , contiguous    :: array(:)
         type(qsorti_type)       , intent(in)                    :: method
     end subroutine
 #endif
@@ -12648,8 +12648,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComQsorti_D1_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK2
+        integer(IKG)            , intent(inout) , contiguous    :: array(:)
         type(qsorti_type)       , intent(in)                    :: method
     end subroutine
 #endif
@@ -12659,8 +12659,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComQsorti_D1_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK1
+        integer(IKG)            , intent(inout) , contiguous    :: array(:)
         type(qsorti_type)       , intent(in)                    :: method
     end subroutine
 #endif
@@ -12672,8 +12672,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComQsorti_D1_LK5
 #endif
-        use pm_kind, only: LKC => LK5
-        logical(LKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: LKG => LK5
+        logical(LKG)            , intent(inout) , contiguous    :: array(:)
         type(qsorti_type)       , intent(in)                    :: method
     end subroutine
 #endif
@@ -12683,8 +12683,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComQsorti_D1_LK4
 #endif
-        use pm_kind, only: LKC => LK4
-        logical(LKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: LKG => LK4
+        logical(LKG)            , intent(inout) , contiguous    :: array(:)
         type(qsorti_type)       , intent(in)                    :: method
     end subroutine
 #endif
@@ -12694,8 +12694,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComQsorti_D1_LK3
 #endif
-        use pm_kind, only: LKC => LK3
-        logical(LKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: LKG => LK3
+        logical(LKG)            , intent(inout) , contiguous    :: array(:)
         type(qsorti_type)       , intent(in)                    :: method
     end subroutine
 #endif
@@ -12705,8 +12705,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComQsorti_D1_LK2
 #endif
-        use pm_kind, only: LKC => LK2
-        logical(LKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: LKG => LK2
+        logical(LKG)            , intent(inout) , contiguous    :: array(:)
         type(qsorti_type)       , intent(in)                    :: method
     end subroutine
 #endif
@@ -12716,8 +12716,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComQsorti_D1_LK1
 #endif
-        use pm_kind, only: LKC => LK1
-        logical(LKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: LKG => LK1
+        logical(LKG)            , intent(inout) , contiguous    :: array(:)
         type(qsorti_type)       , intent(in)                    :: method
     end subroutine
 #endif
@@ -12729,8 +12729,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComQsorti_D1_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG)            , intent(inout) , contiguous    :: array(:)
         type(qsorti_type)       , intent(in)                    :: method
     end subroutine
 #endif
@@ -12740,8 +12740,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComQsorti_D1_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG)            , intent(inout) , contiguous    :: array(:)
         type(qsorti_type)       , intent(in)                    :: method
     end subroutine
 #endif
@@ -12751,8 +12751,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComQsorti_D1_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG)            , intent(inout) , contiguous    :: array(:)
         type(qsorti_type)       , intent(in)                    :: method
     end subroutine
 #endif
@@ -12762,8 +12762,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComQsorti_D1_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG)            , intent(inout) , contiguous    :: array(:)
         type(qsorti_type)       , intent(in)                    :: method
     end subroutine
 #endif
@@ -12773,8 +12773,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComQsorti_D1_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG)            , intent(inout) , contiguous    :: array(:)
         type(qsorti_type)       , intent(in)                    :: method
     end subroutine
 #endif
@@ -12786,8 +12786,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComQsorti_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)               , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)               , intent(inout) , contiguous    :: array(:)
         type(qsorti_type)       , intent(in)                    :: method
     end subroutine
 #endif
@@ -12797,8 +12797,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComQsorti_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)               , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)               , intent(inout) , contiguous    :: array(:)
         type(qsorti_type)       , intent(in)                    :: method
     end subroutine
 #endif
@@ -12808,8 +12808,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComQsorti_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)               , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)               , intent(inout) , contiguous    :: array(:)
         type(qsorti_type)       , intent(in)                    :: method
     end subroutine
 #endif
@@ -12819,8 +12819,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComQsorti_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)               , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)               , intent(inout) , contiguous    :: array(:)
         type(qsorti_type)       , intent(in)                    :: method
     end subroutine
 #endif
@@ -12830,8 +12830,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComQsorti_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)               , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)               , intent(inout) , contiguous    :: array(:)
         type(qsorti_type)       , intent(in)                    :: method
     end subroutine
 #endif
@@ -12845,9 +12845,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComQsorti_D1_PSSK5
 #endif
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))      , intent(inout) , contiguous    :: array(:)
+        type(css_pdt(SKG))      , intent(inout) , contiguous    :: array(:)
         type(qsorti_type)       , intent(in)                    :: method
     end subroutine
 #endif
@@ -12857,9 +12857,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComQsorti_D1_PSSK4
 #endif
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))      , intent(inout) , contiguous    :: array(:)
+        type(css_pdt(SKG))      , intent(inout) , contiguous    :: array(:)
         type(qsorti_type)       , intent(in)                    :: method
     end subroutine
 #endif
@@ -12869,9 +12869,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComQsorti_D1_PSSK3
 #endif
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))      , intent(inout) , contiguous    :: array(:)
+        type(css_pdt(SKG))      , intent(inout) , contiguous    :: array(:)
         type(qsorti_type)       , intent(in)                    :: method
     end subroutine
 #endif
@@ -12881,9 +12881,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComQsorti_D1_PSSK2
 #endif
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))      , intent(inout) , contiguous    :: array(:)
+        type(css_pdt(SKG))      , intent(inout) , contiguous    :: array(:)
         type(qsorti_type)       , intent(in)                    :: method
     end subroutine
 #endif
@@ -12893,9 +12893,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComQsorti_D1_PSSK1
 #endif
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))      , intent(inout) , contiguous    :: array(:)
+        type(css_pdt(SKG))      , intent(inout) , contiguous    :: array(:)
         type(qsorti_type)       , intent(in)                    :: method
     end subroutine
 #endif
@@ -12909,7 +12909,7 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComQsorti_D1_BSSK
 #endif
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
         use pm_container, only: css_type
         type(css_type)          , intent(inout) , contiguous    :: array(:)
         type(qsorti_type)       , intent(in)                    :: method
@@ -12938,8 +12938,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComQsortr_D0_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)        , intent(inout)                 :: array
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)        , intent(inout)                 :: array
         type(qsortr_type)       , intent(in)                    :: method
     end subroutine
 #endif
@@ -12949,8 +12949,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComQsortr_D0_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)        , intent(inout)                 :: array
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)        , intent(inout)                 :: array
         type(qsortr_type)       , intent(in)                    :: method
     end subroutine
 #endif
@@ -12960,8 +12960,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComQsortr_D0_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)        , intent(inout)                 :: array
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)        , intent(inout)                 :: array
         type(qsortr_type)       , intent(in)                    :: method
     end subroutine
 #endif
@@ -12971,8 +12971,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComQsortr_D0_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)        , intent(inout)                 :: array
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)        , intent(inout)                 :: array
         type(qsortr_type)       , intent(in)                    :: method
     end subroutine
 #endif
@@ -12982,8 +12982,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComQsortr_D0_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)        , intent(inout)                 :: array
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)        , intent(inout)                 :: array
         type(qsortr_type)       , intent(in)                    :: method
     end subroutine
 #endif
@@ -12995,8 +12995,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComQsortr_D1_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)        , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)        , intent(inout) , contiguous    :: array(:)
         type(qsortr_type)       , intent(in)                    :: method
     end subroutine
 #endif
@@ -13006,8 +13006,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComQsortr_D1_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)        , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)        , intent(inout) , contiguous    :: array(:)
         type(qsortr_type)       , intent(in)                    :: method
     end subroutine
 #endif
@@ -13017,8 +13017,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComQsortr_D1_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)        , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)        , intent(inout) , contiguous    :: array(:)
         type(qsortr_type)       , intent(in)                    :: method
     end subroutine
 #endif
@@ -13028,8 +13028,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComQsortr_D1_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)        , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)        , intent(inout) , contiguous    :: array(:)
         type(qsortr_type)       , intent(in)                    :: method
     end subroutine
 #endif
@@ -13039,8 +13039,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComQsortr_D1_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)        , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)        , intent(inout) , contiguous    :: array(:)
         type(qsortr_type)       , intent(in)                    :: method
     end subroutine
 #endif
@@ -13052,8 +13052,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComQsortr_D1_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK5
+        integer(IKG)            , intent(inout) , contiguous    :: array(:)
         type(qsortr_type)       , intent(in)                    :: method
     end subroutine
 #endif
@@ -13063,8 +13063,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComQsortr_D1_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK4
+        integer(IKG)            , intent(inout) , contiguous    :: array(:)
         type(qsortr_type)       , intent(in)                    :: method
     end subroutine
 #endif
@@ -13074,8 +13074,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComQsortr_D1_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK3
+        integer(IKG)            , intent(inout) , contiguous    :: array(:)
         type(qsortr_type)       , intent(in)                    :: method
     end subroutine
 #endif
@@ -13085,8 +13085,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComQsortr_D1_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK2
+        integer(IKG)            , intent(inout) , contiguous    :: array(:)
         type(qsortr_type)       , intent(in)                    :: method
     end subroutine
 #endif
@@ -13096,8 +13096,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComQsortr_D1_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK1
+        integer(IKG)            , intent(inout) , contiguous    :: array(:)
         type(qsortr_type)       , intent(in)                    :: method
     end subroutine
 #endif
@@ -13109,8 +13109,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComQsortr_D1_LK5
 #endif
-        use pm_kind, only: LKC => LK5
-        logical(LKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: LKG => LK5
+        logical(LKG)            , intent(inout) , contiguous    :: array(:)
         type(qsortr_type)       , intent(in)                    :: method
     end subroutine
 #endif
@@ -13120,8 +13120,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComQsortr_D1_LK4
 #endif
-        use pm_kind, only: LKC => LK4
-        logical(LKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: LKG => LK4
+        logical(LKG)            , intent(inout) , contiguous    :: array(:)
         type(qsortr_type)       , intent(in)                    :: method
     end subroutine
 #endif
@@ -13131,8 +13131,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComQsortr_D1_LK3
 #endif
-        use pm_kind, only: LKC => LK3
-        logical(LKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: LKG => LK3
+        logical(LKG)            , intent(inout) , contiguous    :: array(:)
         type(qsortr_type)       , intent(in)                    :: method
     end subroutine
 #endif
@@ -13142,8 +13142,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComQsortr_D1_LK2
 #endif
-        use pm_kind, only: LKC => LK2
-        logical(LKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: LKG => LK2
+        logical(LKG)            , intent(inout) , contiguous    :: array(:)
         type(qsortr_type)       , intent(in)                    :: method
     end subroutine
 #endif
@@ -13153,8 +13153,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComQsortr_D1_LK1
 #endif
-        use pm_kind, only: LKC => LK1
-        logical(LKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: LKG => LK1
+        logical(LKG)            , intent(inout) , contiguous    :: array(:)
         type(qsortr_type)       , intent(in)                    :: method
     end subroutine
 #endif
@@ -13166,8 +13166,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComQsortr_D1_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG)            , intent(inout) , contiguous    :: array(:)
         type(qsortr_type)       , intent(in)                    :: method
     end subroutine
 #endif
@@ -13177,8 +13177,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComQsortr_D1_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG)            , intent(inout) , contiguous    :: array(:)
         type(qsortr_type)       , intent(in)                    :: method
     end subroutine
 #endif
@@ -13188,8 +13188,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComQsortr_D1_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG)            , intent(inout) , contiguous    :: array(:)
         type(qsortr_type)       , intent(in)                    :: method
     end subroutine
 #endif
@@ -13199,8 +13199,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComQsortr_D1_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG)            , intent(inout) , contiguous    :: array(:)
         type(qsortr_type)       , intent(in)                    :: method
     end subroutine
 #endif
@@ -13210,8 +13210,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComQsortr_D1_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG)            , intent(inout) , contiguous    :: array(:)
         type(qsortr_type)       , intent(in)                    :: method
     end subroutine
 #endif
@@ -13223,8 +13223,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComQsortr_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)               , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)               , intent(inout) , contiguous    :: array(:)
         type(qsortr_type)       , intent(in)                    :: method
     end subroutine
 #endif
@@ -13234,8 +13234,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComQsortr_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)               , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)               , intent(inout) , contiguous    :: array(:)
         type(qsortr_type)       , intent(in)                    :: method
     end subroutine
 #endif
@@ -13245,8 +13245,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComQsortr_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)               , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)               , intent(inout) , contiguous    :: array(:)
         type(qsortr_type)       , intent(in)                    :: method
     end subroutine
 #endif
@@ -13256,8 +13256,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComQsortr_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)               , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)               , intent(inout) , contiguous    :: array(:)
         type(qsortr_type)       , intent(in)                    :: method
     end subroutine
 #endif
@@ -13267,8 +13267,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComQsortr_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)               , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)               , intent(inout) , contiguous    :: array(:)
         type(qsortr_type)       , intent(in)                    :: method
     end subroutine
 #endif
@@ -13282,9 +13282,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComQsortr_D1_PSSK5
 #endif
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))      , intent(inout) , contiguous    :: array(:)
+        type(css_pdt(SKG))      , intent(inout) , contiguous    :: array(:)
         type(qsortr_type)       , intent(in)                    :: method
     end subroutine
 #endif
@@ -13294,9 +13294,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComQsortr_D1_PSSK4
 #endif
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))      , intent(inout) , contiguous    :: array(:)
+        type(css_pdt(SKG))      , intent(inout) , contiguous    :: array(:)
         type(qsortr_type)       , intent(in)                    :: method
     end subroutine
 #endif
@@ -13306,9 +13306,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComQsortr_D1_PSSK3
 #endif
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))      , intent(inout) , contiguous    :: array(:)
+        type(css_pdt(SKG))      , intent(inout) , contiguous    :: array(:)
         type(qsortr_type)       , intent(in)                    :: method
     end subroutine
 #endif
@@ -13318,9 +13318,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComQsortr_D1_PSSK2
 #endif
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))      , intent(inout) , contiguous    :: array(:)
+        type(css_pdt(SKG))      , intent(inout) , contiguous    :: array(:)
         type(qsortr_type)       , intent(in)                    :: method
     end subroutine
 #endif
@@ -13330,9 +13330,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComQsortr_D1_PSSK1
 #endif
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))      , intent(inout) , contiguous    :: array(:)
+        type(css_pdt(SKG))      , intent(inout) , contiguous    :: array(:)
         type(qsortr_type)       , intent(in)                    :: method
     end subroutine
 #endif
@@ -13346,7 +13346,7 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComQsortr_D1_BSSK
 #endif
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
         use pm_container, only: css_type
         type(css_type)          , intent(inout) , contiguous    :: array(:)
         type(qsortr_type)       , intent(in)                    :: method
@@ -13375,8 +13375,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComQsortrdp_D0_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)        , intent(inout)                 :: array
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)        , intent(inout)                 :: array
         type(qsortrdp_type)     , intent(in)                    :: method
     end subroutine
 #endif
@@ -13386,8 +13386,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComQsortrdp_D0_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)        , intent(inout)                 :: array
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)        , intent(inout)                 :: array
         type(qsortrdp_type)     , intent(in)                    :: method
     end subroutine
 #endif
@@ -13397,8 +13397,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComQsortrdp_D0_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)        , intent(inout)                 :: array
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)        , intent(inout)                 :: array
         type(qsortrdp_type)     , intent(in)                    :: method
     end subroutine
 #endif
@@ -13408,8 +13408,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComQsortrdp_D0_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)        , intent(inout)                 :: array
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)        , intent(inout)                 :: array
         type(qsortrdp_type)     , intent(in)                    :: method
     end subroutine
 #endif
@@ -13419,8 +13419,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComQsortrdp_D0_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)        , intent(inout)                 :: array
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)        , intent(inout)                 :: array
         type(qsortrdp_type)     , intent(in)                    :: method
     end subroutine
 #endif
@@ -13432,8 +13432,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComQsortrdp_D1_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)        , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)        , intent(inout) , contiguous    :: array(:)
         type(qsortrdp_type)     , intent(in)                    :: method
     end subroutine
 #endif
@@ -13443,8 +13443,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComQsortrdp_D1_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)        , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)        , intent(inout) , contiguous    :: array(:)
         type(qsortrdp_type)     , intent(in)                    :: method
     end subroutine
 #endif
@@ -13454,8 +13454,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComQsortrdp_D1_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)        , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)        , intent(inout) , contiguous    :: array(:)
         type(qsortrdp_type)     , intent(in)                    :: method
     end subroutine
 #endif
@@ -13465,8 +13465,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComQsortrdp_D1_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)        , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)        , intent(inout) , contiguous    :: array(:)
         type(qsortrdp_type)     , intent(in)                    :: method
     end subroutine
 #endif
@@ -13476,8 +13476,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComQsortrdp_D1_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)        , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)        , intent(inout) , contiguous    :: array(:)
         type(qsortrdp_type)     , intent(in)                    :: method
     end subroutine
 #endif
@@ -13489,8 +13489,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComQsortrdp_D1_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK5
+        integer(IKG)            , intent(inout) , contiguous    :: array(:)
         type(qsortrdp_type)     , intent(in)                    :: method
     end subroutine
 #endif
@@ -13500,8 +13500,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComQsortrdp_D1_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK4
+        integer(IKG)            , intent(inout) , contiguous    :: array(:)
         type(qsortrdp_type)     , intent(in)                    :: method
     end subroutine
 #endif
@@ -13511,8 +13511,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComQsortrdp_D1_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK3
+        integer(IKG)            , intent(inout) , contiguous    :: array(:)
         type(qsortrdp_type)     , intent(in)                    :: method
     end subroutine
 #endif
@@ -13522,8 +13522,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComQsortrdp_D1_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK2
+        integer(IKG)            , intent(inout) , contiguous    :: array(:)
         type(qsortrdp_type)     , intent(in)                    :: method
     end subroutine
 #endif
@@ -13533,8 +13533,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComQsortrdp_D1_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK1
+        integer(IKG)            , intent(inout) , contiguous    :: array(:)
         type(qsortrdp_type)     , intent(in)                    :: method
     end subroutine
 #endif
@@ -13546,8 +13546,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComQsortrdp_D1_LK5
 #endif
-        use pm_kind, only: LKC => LK5
-        logical(LKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: LKG => LK5
+        logical(LKG)            , intent(inout) , contiguous    :: array(:)
         type(qsortrdp_type)     , intent(in)                    :: method
     end subroutine
 #endif
@@ -13557,8 +13557,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComQsortrdp_D1_LK4
 #endif
-        use pm_kind, only: LKC => LK4
-        logical(LKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: LKG => LK4
+        logical(LKG)            , intent(inout) , contiguous    :: array(:)
         type(qsortrdp_type)     , intent(in)                    :: method
     end subroutine
 #endif
@@ -13568,8 +13568,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComQsortrdp_D1_LK3
 #endif
-        use pm_kind, only: LKC => LK3
-        logical(LKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: LKG => LK3
+        logical(LKG)            , intent(inout) , contiguous    :: array(:)
         type(qsortrdp_type)     , intent(in)                    :: method
     end subroutine
 #endif
@@ -13579,8 +13579,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComQsortrdp_D1_LK2
 #endif
-        use pm_kind, only: LKC => LK2
-        logical(LKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: LKG => LK2
+        logical(LKG)            , intent(inout) , contiguous    :: array(:)
         type(qsortrdp_type)     , intent(in)                    :: method
     end subroutine
 #endif
@@ -13590,8 +13590,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComQsortrdp_D1_LK1
 #endif
-        use pm_kind, only: LKC => LK1
-        logical(LKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: LKG => LK1
+        logical(LKG)            , intent(inout) , contiguous    :: array(:)
         type(qsortrdp_type)     , intent(in)                    :: method
     end subroutine
 #endif
@@ -13603,8 +13603,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComQsortrdp_D1_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG)            , intent(inout) , contiguous    :: array(:)
         type(qsortrdp_type)     , intent(in)                    :: method
     end subroutine
 #endif
@@ -13614,8 +13614,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComQsortrdp_D1_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG)            , intent(inout) , contiguous    :: array(:)
         type(qsortrdp_type)     , intent(in)                    :: method
     end subroutine
 #endif
@@ -13625,8 +13625,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComQsortrdp_D1_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG)            , intent(inout) , contiguous    :: array(:)
         type(qsortrdp_type)     , intent(in)                    :: method
     end subroutine
 #endif
@@ -13636,8 +13636,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComQsortrdp_D1_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG)            , intent(inout) , contiguous    :: array(:)
         type(qsortrdp_type)     , intent(in)                    :: method
     end subroutine
 #endif
@@ -13647,8 +13647,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComQsortrdp_D1_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG)            , intent(inout) , contiguous    :: array(:)
         type(qsortrdp_type)     , intent(in)                    :: method
     end subroutine
 #endif
@@ -13660,8 +13660,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComQsortrdp_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)               , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)               , intent(inout) , contiguous    :: array(:)
         type(qsortrdp_type)     , intent(in)                    :: method
     end subroutine
 #endif
@@ -13671,8 +13671,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComQsortrdp_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)               , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)               , intent(inout) , contiguous    :: array(:)
         type(qsortrdp_type)     , intent(in)                    :: method
     end subroutine
 #endif
@@ -13682,8 +13682,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComQsortrdp_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)               , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)               , intent(inout) , contiguous    :: array(:)
         type(qsortrdp_type)     , intent(in)                    :: method
     end subroutine
 #endif
@@ -13693,8 +13693,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComQsortrdp_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)               , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)               , intent(inout) , contiguous    :: array(:)
         type(qsortrdp_type)     , intent(in)                    :: method
     end subroutine
 #endif
@@ -13704,8 +13704,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComQsortrdp_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)               , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)               , intent(inout) , contiguous    :: array(:)
         type(qsortrdp_type)     , intent(in)                    :: method
     end subroutine
 #endif
@@ -13719,9 +13719,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComQsortrdp_D1_PSSK5
 #endif
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))      , intent(inout) , contiguous    :: array(:)
+        type(css_pdt(SKG))      , intent(inout) , contiguous    :: array(:)
         type(qsortrdp_type)     , intent(in)                    :: method
     end subroutine
 #endif
@@ -13731,9 +13731,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComQsortrdp_D1_PSSK4
 #endif
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))      , intent(inout) , contiguous    :: array(:)
+        type(css_pdt(SKG))      , intent(inout) , contiguous    :: array(:)
         type(qsortrdp_type)     , intent(in)                    :: method
     end subroutine
 #endif
@@ -13743,9 +13743,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComQsortrdp_D1_PSSK3
 #endif
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))      , intent(inout) , contiguous    :: array(:)
+        type(css_pdt(SKG))      , intent(inout) , contiguous    :: array(:)
         type(qsortrdp_type)     , intent(in)                    :: method
     end subroutine
 #endif
@@ -13755,9 +13755,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComQsortrdp_D1_PSSK2
 #endif
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))      , intent(inout) , contiguous    :: array(:)
+        type(css_pdt(SKG))      , intent(inout) , contiguous    :: array(:)
         type(qsortrdp_type)     , intent(in)                    :: method
     end subroutine
 #endif
@@ -13767,9 +13767,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComQsortrdp_D1_PSSK1
 #endif
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))      , intent(inout) , contiguous    :: array(:)
+        type(css_pdt(SKG))      , intent(inout) , contiguous    :: array(:)
         type(qsortrdp_type)     , intent(in)                    :: method
     end subroutine
 #endif
@@ -13783,7 +13783,7 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComQsortrdp_D1_BSSK
 #endif
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
         use pm_container, only: css_type
         type(css_type)          , intent(inout) , contiguous    :: array(:)
         type(qsortrdp_type)     , intent(in)                    :: method
@@ -13812,8 +13812,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComBubble_D0_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)        , intent(inout)                 :: array
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)        , intent(inout)                 :: array
         type(bubble_type)       , intent(in)                    :: method
     end subroutine
 #endif
@@ -13823,8 +13823,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComBubble_D0_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)        , intent(inout)                 :: array
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)        , intent(inout)                 :: array
         type(bubble_type)       , intent(in)                    :: method
     end subroutine
 #endif
@@ -13834,8 +13834,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComBubble_D0_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)        , intent(inout)                 :: array
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)        , intent(inout)                 :: array
         type(bubble_type)       , intent(in)                    :: method
     end subroutine
 #endif
@@ -13845,8 +13845,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComBubble_D0_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)        , intent(inout)                 :: array
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)        , intent(inout)                 :: array
         type(bubble_type)       , intent(in)                    :: method
     end subroutine
 #endif
@@ -13856,8 +13856,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComBubble_D0_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)        , intent(inout)                 :: array
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)        , intent(inout)                 :: array
         type(bubble_type)       , intent(in)                    :: method
     end subroutine
 #endif
@@ -13869,8 +13869,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComBubble_D1_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)        , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)        , intent(inout) , contiguous    :: array(:)
         type(bubble_type)       , intent(in)                    :: method
     end subroutine
 #endif
@@ -13880,8 +13880,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComBubble_D1_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)        , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)        , intent(inout) , contiguous    :: array(:)
         type(bubble_type)       , intent(in)                    :: method
     end subroutine
 #endif
@@ -13891,8 +13891,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComBubble_D1_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)        , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)        , intent(inout) , contiguous    :: array(:)
         type(bubble_type)       , intent(in)                    :: method
     end subroutine
 #endif
@@ -13902,8 +13902,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComBubble_D1_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)        , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)        , intent(inout) , contiguous    :: array(:)
         type(bubble_type)       , intent(in)                    :: method
     end subroutine
 #endif
@@ -13913,8 +13913,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComBubble_D1_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)        , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)        , intent(inout) , contiguous    :: array(:)
         type(bubble_type)       , intent(in)                    :: method
     end subroutine
 #endif
@@ -13926,8 +13926,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComBubble_D1_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK5
+        integer(IKG)            , intent(inout) , contiguous    :: array(:)
         type(bubble_type)       , intent(in)                    :: method
     end subroutine
 #endif
@@ -13937,8 +13937,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComBubble_D1_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK4
+        integer(IKG)            , intent(inout) , contiguous    :: array(:)
         type(bubble_type)       , intent(in)                    :: method
     end subroutine
 #endif
@@ -13948,8 +13948,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComBubble_D1_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK3
+        integer(IKG)            , intent(inout) , contiguous    :: array(:)
         type(bubble_type)       , intent(in)                    :: method
     end subroutine
 #endif
@@ -13959,8 +13959,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComBubble_D1_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK2
+        integer(IKG)            , intent(inout) , contiguous    :: array(:)
         type(bubble_type)       , intent(in)                    :: method
     end subroutine
 #endif
@@ -13970,8 +13970,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComBubble_D1_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK1
+        integer(IKG)            , intent(inout) , contiguous    :: array(:)
         type(bubble_type)       , intent(in)                    :: method
     end subroutine
 #endif
@@ -13983,8 +13983,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComBubble_D1_LK5
 #endif
-        use pm_kind, only: LKC => LK5
-        logical(LKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: LKG => LK5
+        logical(LKG)            , intent(inout) , contiguous    :: array(:)
         type(bubble_type)       , intent(in)                    :: method
     end subroutine
 #endif
@@ -13994,8 +13994,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComBubble_D1_LK4
 #endif
-        use pm_kind, only: LKC => LK4
-        logical(LKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: LKG => LK4
+        logical(LKG)            , intent(inout) , contiguous    :: array(:)
         type(bubble_type)       , intent(in)                    :: method
     end subroutine
 #endif
@@ -14005,8 +14005,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComBubble_D1_LK3
 #endif
-        use pm_kind, only: LKC => LK3
-        logical(LKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: LKG => LK3
+        logical(LKG)            , intent(inout) , contiguous    :: array(:)
         type(bubble_type)       , intent(in)                    :: method
     end subroutine
 #endif
@@ -14016,8 +14016,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComBubble_D1_LK2
 #endif
-        use pm_kind, only: LKC => LK2
-        logical(LKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: LKG => LK2
+        logical(LKG)            , intent(inout) , contiguous    :: array(:)
         type(bubble_type)       , intent(in)                    :: method
     end subroutine
 #endif
@@ -14027,8 +14027,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComBubble_D1_LK1
 #endif
-        use pm_kind, only: LKC => LK1
-        logical(LKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: LKG => LK1
+        logical(LKG)            , intent(inout) , contiguous    :: array(:)
         type(bubble_type)       , intent(in)                    :: method
     end subroutine
 #endif
@@ -14040,8 +14040,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComBubble_D1_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG)            , intent(inout) , contiguous    :: array(:)
         type(bubble_type)       , intent(in)                    :: method
     end subroutine
 #endif
@@ -14051,8 +14051,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComBubble_D1_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG)            , intent(inout) , contiguous    :: array(:)
         type(bubble_type)       , intent(in)                    :: method
     end subroutine
 #endif
@@ -14062,8 +14062,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComBubble_D1_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG)            , intent(inout) , contiguous    :: array(:)
         type(bubble_type)       , intent(in)                    :: method
     end subroutine
 #endif
@@ -14073,8 +14073,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComBubble_D1_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG)            , intent(inout) , contiguous    :: array(:)
         type(bubble_type)       , intent(in)                    :: method
     end subroutine
 #endif
@@ -14084,8 +14084,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComBubble_D1_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG)            , intent(inout) , contiguous    :: array(:)
         type(bubble_type)       , intent(in)                    :: method
     end subroutine
 #endif
@@ -14097,8 +14097,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComBubble_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)               , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)               , intent(inout) , contiguous    :: array(:)
         type(bubble_type)       , intent(in)                    :: method
     end subroutine
 #endif
@@ -14108,8 +14108,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComBubble_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)               , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)               , intent(inout) , contiguous    :: array(:)
         type(bubble_type)       , intent(in)                    :: method
     end subroutine
 #endif
@@ -14119,8 +14119,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComBubble_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)               , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)               , intent(inout) , contiguous    :: array(:)
         type(bubble_type)       , intent(in)                    :: method
     end subroutine
 #endif
@@ -14130,8 +14130,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComBubble_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)               , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)               , intent(inout) , contiguous    :: array(:)
         type(bubble_type)       , intent(in)                    :: method
     end subroutine
 #endif
@@ -14141,8 +14141,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComBubble_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)               , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)               , intent(inout) , contiguous    :: array(:)
         type(bubble_type)       , intent(in)                    :: method
     end subroutine
 #endif
@@ -14156,9 +14156,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComBubble_D1_PSSK5
 #endif
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))      , intent(inout) , contiguous    :: array(:)
+        type(css_pdt(SKG))      , intent(inout) , contiguous    :: array(:)
         type(bubble_type)       , intent(in)                    :: method
     end subroutine
 #endif
@@ -14168,9 +14168,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComBubble_D1_PSSK4
 #endif
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))      , intent(inout) , contiguous    :: array(:)
+        type(css_pdt(SKG))      , intent(inout) , contiguous    :: array(:)
         type(bubble_type)       , intent(in)                    :: method
     end subroutine
 #endif
@@ -14180,9 +14180,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComBubble_D1_PSSK3
 #endif
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))      , intent(inout) , contiguous    :: array(:)
+        type(css_pdt(SKG))      , intent(inout) , contiguous    :: array(:)
         type(bubble_type)       , intent(in)                    :: method
     end subroutine
 #endif
@@ -14192,9 +14192,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComBubble_D1_PSSK2
 #endif
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))      , intent(inout) , contiguous    :: array(:)
+        type(css_pdt(SKG))      , intent(inout) , contiguous    :: array(:)
         type(bubble_type)       , intent(in)                    :: method
     end subroutine
 #endif
@@ -14204,9 +14204,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComBubble_D1_PSSK1
 #endif
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))      , intent(inout) , contiguous    :: array(:)
+        type(css_pdt(SKG))      , intent(inout) , contiguous    :: array(:)
         type(bubble_type)       , intent(in)                    :: method
     end subroutine
 #endif
@@ -14220,7 +14220,7 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComBubble_D1_BSSK
 #endif
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
         use pm_container, only: css_type
         type(css_type)          , intent(inout) , contiguous    :: array(:)
         type(bubble_type)       , intent(in)                    :: method
@@ -14249,8 +14249,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComHeapi_D0_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)        , intent(inout)                 :: array
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)        , intent(inout)                 :: array
         type(heapi_type)        , intent(in)                    :: method
     end subroutine
 #endif
@@ -14260,8 +14260,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComHeapi_D0_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)        , intent(inout)                 :: array
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)        , intent(inout)                 :: array
         type(heapi_type)        , intent(in)                    :: method
     end subroutine
 #endif
@@ -14271,8 +14271,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComHeapi_D0_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)        , intent(inout)                 :: array
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)        , intent(inout)                 :: array
         type(heapi_type)        , intent(in)                    :: method
     end subroutine
 #endif
@@ -14282,8 +14282,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComHeapi_D0_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)        , intent(inout)                 :: array
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)        , intent(inout)                 :: array
         type(heapi_type)        , intent(in)                    :: method
     end subroutine
 #endif
@@ -14293,8 +14293,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComHeapi_D0_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)        , intent(inout)                 :: array
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)        , intent(inout)                 :: array
         type(heapi_type)        , intent(in)                    :: method
     end subroutine
 #endif
@@ -14306,8 +14306,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComHeapi_D1_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)        , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)        , intent(inout) , contiguous    :: array(:)
         type(heapi_type)        , intent(in)                    :: method
     end subroutine
 #endif
@@ -14317,8 +14317,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComHeapi_D1_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)        , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)        , intent(inout) , contiguous    :: array(:)
         type(heapi_type)        , intent(in)                    :: method
     end subroutine
 #endif
@@ -14328,8 +14328,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComHeapi_D1_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)        , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)        , intent(inout) , contiguous    :: array(:)
         type(heapi_type)        , intent(in)                    :: method
     end subroutine
 #endif
@@ -14339,8 +14339,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComHeapi_D1_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)        , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)        , intent(inout) , contiguous    :: array(:)
         type(heapi_type)        , intent(in)                    :: method
     end subroutine
 #endif
@@ -14350,8 +14350,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComHeapi_D1_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)        , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)        , intent(inout) , contiguous    :: array(:)
         type(heapi_type)        , intent(in)                    :: method
     end subroutine
 #endif
@@ -14363,8 +14363,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComHeapi_D1_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK5
+        integer(IKG)            , intent(inout) , contiguous    :: array(:)
         type(heapi_type)        , intent(in)                    :: method
     end subroutine
 #endif
@@ -14374,8 +14374,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComHeapi_D1_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK4
+        integer(IKG)            , intent(inout) , contiguous    :: array(:)
         type(heapi_type)        , intent(in)                    :: method
     end subroutine
 #endif
@@ -14385,8 +14385,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComHeapi_D1_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK3
+        integer(IKG)            , intent(inout) , contiguous    :: array(:)
         type(heapi_type)        , intent(in)                    :: method
     end subroutine
 #endif
@@ -14396,8 +14396,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComHeapi_D1_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK2
+        integer(IKG)            , intent(inout) , contiguous    :: array(:)
         type(heapi_type)        , intent(in)                    :: method
     end subroutine
 #endif
@@ -14407,8 +14407,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComHeapi_D1_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK1
+        integer(IKG)            , intent(inout) , contiguous    :: array(:)
         type(heapi_type)        , intent(in)                    :: method
     end subroutine
 #endif
@@ -14420,8 +14420,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComHeapi_D1_LK5
 #endif
-        use pm_kind, only: LKC => LK5
-        logical(LKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: LKG => LK5
+        logical(LKG)            , intent(inout) , contiguous    :: array(:)
         type(heapi_type)        , intent(in)                    :: method
     end subroutine
 #endif
@@ -14431,8 +14431,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComHeapi_D1_LK4
 #endif
-        use pm_kind, only: LKC => LK4
-        logical(LKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: LKG => LK4
+        logical(LKG)            , intent(inout) , contiguous    :: array(:)
         type(heapi_type)        , intent(in)                    :: method
     end subroutine
 #endif
@@ -14442,8 +14442,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComHeapi_D1_LK3
 #endif
-        use pm_kind, only: LKC => LK3
-        logical(LKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: LKG => LK3
+        logical(LKG)            , intent(inout) , contiguous    :: array(:)
         type(heapi_type)        , intent(in)                    :: method
     end subroutine
 #endif
@@ -14453,8 +14453,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComHeapi_D1_LK2
 #endif
-        use pm_kind, only: LKC => LK2
-        logical(LKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: LKG => LK2
+        logical(LKG)            , intent(inout) , contiguous    :: array(:)
         type(heapi_type)        , intent(in)                    :: method
     end subroutine
 #endif
@@ -14464,8 +14464,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComHeapi_D1_LK1
 #endif
-        use pm_kind, only: LKC => LK1
-        logical(LKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: LKG => LK1
+        logical(LKG)            , intent(inout) , contiguous    :: array(:)
         type(heapi_type)        , intent(in)                    :: method
     end subroutine
 #endif
@@ -14477,8 +14477,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComHeapi_D1_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG)            , intent(inout) , contiguous    :: array(:)
         type(heapi_type)        , intent(in)                    :: method
     end subroutine
 #endif
@@ -14488,8 +14488,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComHeapi_D1_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG)            , intent(inout) , contiguous    :: array(:)
         type(heapi_type)        , intent(in)                    :: method
     end subroutine
 #endif
@@ -14499,8 +14499,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComHeapi_D1_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG)            , intent(inout) , contiguous    :: array(:)
         type(heapi_type)        , intent(in)                    :: method
     end subroutine
 #endif
@@ -14510,8 +14510,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComHeapi_D1_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG)            , intent(inout) , contiguous    :: array(:)
         type(heapi_type)        , intent(in)                    :: method
     end subroutine
 #endif
@@ -14521,8 +14521,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComHeapi_D1_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG)            , intent(inout) , contiguous    :: array(:)
         type(heapi_type)        , intent(in)                    :: method
     end subroutine
 #endif
@@ -14534,8 +14534,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComHeapi_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)               , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)               , intent(inout) , contiguous    :: array(:)
         type(heapi_type)        , intent(in)                    :: method
     end subroutine
 #endif
@@ -14545,8 +14545,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComHeapi_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)               , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)               , intent(inout) , contiguous    :: array(:)
         type(heapi_type)        , intent(in)                    :: method
     end subroutine
 #endif
@@ -14556,8 +14556,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComHeapi_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)               , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)               , intent(inout) , contiguous    :: array(:)
         type(heapi_type)        , intent(in)                    :: method
     end subroutine
 #endif
@@ -14567,8 +14567,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComHeapi_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)               , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)               , intent(inout) , contiguous    :: array(:)
         type(heapi_type)        , intent(in)                    :: method
     end subroutine
 #endif
@@ -14578,8 +14578,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComHeapi_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)               , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)               , intent(inout) , contiguous    :: array(:)
         type(heapi_type)        , intent(in)                    :: method
     end subroutine
 #endif
@@ -14593,9 +14593,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComHeapi_D1_PSSK5
 #endif
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))      , intent(inout) , contiguous    :: array(:)
+        type(css_pdt(SKG))      , intent(inout) , contiguous    :: array(:)
         type(heapi_type)        , intent(in)                    :: method
     end subroutine
 #endif
@@ -14605,9 +14605,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComHeapi_D1_PSSK4
 #endif
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))      , intent(inout) , contiguous    :: array(:)
+        type(css_pdt(SKG))      , intent(inout) , contiguous    :: array(:)
         type(heapi_type)        , intent(in)                    :: method
     end subroutine
 #endif
@@ -14617,9 +14617,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComHeapi_D1_PSSK3
 #endif
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))      , intent(inout) , contiguous    :: array(:)
+        type(css_pdt(SKG))      , intent(inout) , contiguous    :: array(:)
         type(heapi_type)        , intent(in)                    :: method
     end subroutine
 #endif
@@ -14629,9 +14629,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComHeapi_D1_PSSK2
 #endif
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))      , intent(inout) , contiguous    :: array(:)
+        type(css_pdt(SKG))      , intent(inout) , contiguous    :: array(:)
         type(heapi_type)        , intent(in)                    :: method
     end subroutine
 #endif
@@ -14641,9 +14641,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComHeapi_D1_PSSK1
 #endif
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))      , intent(inout) , contiguous    :: array(:)
+        type(css_pdt(SKG))      , intent(inout) , contiguous    :: array(:)
         type(heapi_type)        , intent(in)                    :: method
     end subroutine
 #endif
@@ -14657,7 +14657,7 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComHeapi_D1_BSSK
 #endif
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
         use pm_container, only: css_type
         type(css_type)          , intent(inout) , contiguous    :: array(:)
         type(heapi_type)        , intent(in)                    :: method
@@ -14686,8 +14686,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComHeapr_D0_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)        , intent(inout)                 :: array
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)        , intent(inout)                 :: array
         type(heapr_type)        , intent(in)                    :: method
     end subroutine
 #endif
@@ -14697,8 +14697,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComHeapr_D0_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)        , intent(inout)                 :: array
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)        , intent(inout)                 :: array
         type(heapr_type)        , intent(in)                    :: method
     end subroutine
 #endif
@@ -14708,8 +14708,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComHeapr_D0_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)        , intent(inout)                 :: array
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)        , intent(inout)                 :: array
         type(heapr_type)        , intent(in)                    :: method
     end subroutine
 #endif
@@ -14719,8 +14719,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComHeapr_D0_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)        , intent(inout)                 :: array
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)        , intent(inout)                 :: array
         type(heapr_type)        , intent(in)                    :: method
     end subroutine
 #endif
@@ -14730,8 +14730,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComHeapr_D0_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)        , intent(inout)                 :: array
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)        , intent(inout)                 :: array
         type(heapr_type)        , intent(in)                    :: method
     end subroutine
 #endif
@@ -14743,8 +14743,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComHeapr_D1_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)        , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)        , intent(inout) , contiguous    :: array(:)
         type(heapr_type)        , intent(in)                    :: method
     end subroutine
 #endif
@@ -14754,8 +14754,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComHeapr_D1_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)        , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)        , intent(inout) , contiguous    :: array(:)
         type(heapr_type)        , intent(in)                    :: method
     end subroutine
 #endif
@@ -14765,8 +14765,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComHeapr_D1_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)        , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)        , intent(inout) , contiguous    :: array(:)
         type(heapr_type)        , intent(in)                    :: method
     end subroutine
 #endif
@@ -14776,8 +14776,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComHeapr_D1_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)        , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)        , intent(inout) , contiguous    :: array(:)
         type(heapr_type)        , intent(in)                    :: method
     end subroutine
 #endif
@@ -14787,8 +14787,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComHeapr_D1_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)        , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)        , intent(inout) , contiguous    :: array(:)
         type(heapr_type)        , intent(in)                    :: method
     end subroutine
 #endif
@@ -14800,8 +14800,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComHeapr_D1_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK5
+        integer(IKG)            , intent(inout) , contiguous    :: array(:)
         type(heapr_type)        , intent(in)                    :: method
     end subroutine
 #endif
@@ -14811,8 +14811,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComHeapr_D1_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK4
+        integer(IKG)            , intent(inout) , contiguous    :: array(:)
         type(heapr_type)        , intent(in)                    :: method
     end subroutine
 #endif
@@ -14822,8 +14822,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComHeapr_D1_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK3
+        integer(IKG)            , intent(inout) , contiguous    :: array(:)
         type(heapr_type)        , intent(in)                    :: method
     end subroutine
 #endif
@@ -14833,8 +14833,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComHeapr_D1_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK2
+        integer(IKG)            , intent(inout) , contiguous    :: array(:)
         type(heapr_type)        , intent(in)                    :: method
     end subroutine
 #endif
@@ -14844,8 +14844,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComHeapr_D1_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK1
+        integer(IKG)            , intent(inout) , contiguous    :: array(:)
         type(heapr_type)        , intent(in)                    :: method
     end subroutine
 #endif
@@ -14857,8 +14857,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComHeapr_D1_LK5
 #endif
-        use pm_kind, only: LKC => LK5
-        logical(LKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: LKG => LK5
+        logical(LKG)            , intent(inout) , contiguous    :: array(:)
         type(heapr_type)        , intent(in)                    :: method
     end subroutine
 #endif
@@ -14868,8 +14868,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComHeapr_D1_LK4
 #endif
-        use pm_kind, only: LKC => LK4
-        logical(LKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: LKG => LK4
+        logical(LKG)            , intent(inout) , contiguous    :: array(:)
         type(heapr_type)        , intent(in)                    :: method
     end subroutine
 #endif
@@ -14879,8 +14879,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComHeapr_D1_LK3
 #endif
-        use pm_kind, only: LKC => LK3
-        logical(LKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: LKG => LK3
+        logical(LKG)            , intent(inout) , contiguous    :: array(:)
         type(heapr_type)        , intent(in)                    :: method
     end subroutine
 #endif
@@ -14890,8 +14890,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComHeapr_D1_LK2
 #endif
-        use pm_kind, only: LKC => LK2
-        logical(LKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: LKG => LK2
+        logical(LKG)            , intent(inout) , contiguous    :: array(:)
         type(heapr_type)        , intent(in)                    :: method
     end subroutine
 #endif
@@ -14901,8 +14901,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComHeapr_D1_LK1
 #endif
-        use pm_kind, only: LKC => LK1
-        logical(LKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: LKG => LK1
+        logical(LKG)            , intent(inout) , contiguous    :: array(:)
         type(heapr_type)        , intent(in)                    :: method
     end subroutine
 #endif
@@ -14914,8 +14914,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComHeapr_D1_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG)            , intent(inout) , contiguous    :: array(:)
         type(heapr_type)        , intent(in)                    :: method
     end subroutine
 #endif
@@ -14925,8 +14925,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComHeapr_D1_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG)            , intent(inout) , contiguous    :: array(:)
         type(heapr_type)        , intent(in)                    :: method
     end subroutine
 #endif
@@ -14936,8 +14936,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComHeapr_D1_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG)            , intent(inout) , contiguous    :: array(:)
         type(heapr_type)        , intent(in)                    :: method
     end subroutine
 #endif
@@ -14947,8 +14947,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComHeapr_D1_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG)            , intent(inout) , contiguous    :: array(:)
         type(heapr_type)        , intent(in)                    :: method
     end subroutine
 #endif
@@ -14958,8 +14958,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComHeapr_D1_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG)            , intent(inout) , contiguous    :: array(:)
         type(heapr_type)        , intent(in)                    :: method
     end subroutine
 #endif
@@ -14971,8 +14971,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComHeapr_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)               , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)               , intent(inout) , contiguous    :: array(:)
         type(heapr_type)        , intent(in)                    :: method
     end subroutine
 #endif
@@ -14982,8 +14982,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComHeapr_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)               , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)               , intent(inout) , contiguous    :: array(:)
         type(heapr_type)        , intent(in)                    :: method
     end subroutine
 #endif
@@ -14993,8 +14993,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComHeapr_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)               , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)               , intent(inout) , contiguous    :: array(:)
         type(heapr_type)        , intent(in)                    :: method
     end subroutine
 #endif
@@ -15004,8 +15004,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComHeapr_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)               , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)               , intent(inout) , contiguous    :: array(:)
         type(heapr_type)        , intent(in)                    :: method
     end subroutine
 #endif
@@ -15015,8 +15015,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComHeapr_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)               , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)               , intent(inout) , contiguous    :: array(:)
         type(heapr_type)        , intent(in)                    :: method
     end subroutine
 #endif
@@ -15030,9 +15030,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComHeapr_D1_PSSK5
 #endif
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))      , intent(inout) , contiguous    :: array(:)
+        type(css_pdt(SKG))      , intent(inout) , contiguous    :: array(:)
         type(heapr_type)        , intent(in)                    :: method
     end subroutine
 #endif
@@ -15042,9 +15042,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComHeapr_D1_PSSK4
 #endif
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))      , intent(inout) , contiguous    :: array(:)
+        type(css_pdt(SKG))      , intent(inout) , contiguous    :: array(:)
         type(heapr_type)        , intent(in)                    :: method
     end subroutine
 #endif
@@ -15054,9 +15054,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComHeapr_D1_PSSK3
 #endif
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))      , intent(inout) , contiguous    :: array(:)
+        type(css_pdt(SKG))      , intent(inout) , contiguous    :: array(:)
         type(heapr_type)        , intent(in)                    :: method
     end subroutine
 #endif
@@ -15066,9 +15066,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComHeapr_D1_PSSK2
 #endif
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))      , intent(inout) , contiguous    :: array(:)
+        type(css_pdt(SKG))      , intent(inout) , contiguous    :: array(:)
         type(heapr_type)        , intent(in)                    :: method
     end subroutine
 #endif
@@ -15078,9 +15078,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComHeapr_D1_PSSK1
 #endif
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))      , intent(inout) , contiguous    :: array(:)
+        type(css_pdt(SKG))      , intent(inout) , contiguous    :: array(:)
         type(heapr_type)        , intent(in)                    :: method
     end subroutine
 #endif
@@ -15094,7 +15094,7 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComHeapr_D1_BSSK
 #endif
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
         use pm_container, only: css_type
         type(css_type)          , intent(inout) , contiguous    :: array(:)
         type(heapr_type)        , intent(in)                    :: method
@@ -15123,8 +15123,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComInsertionl_D0_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)        , intent(inout)                 :: array
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)        , intent(inout)                 :: array
         type(insertionl_type)   , intent(in)                    :: method
     end subroutine
 #endif
@@ -15134,8 +15134,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComInsertionl_D0_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)        , intent(inout)                 :: array
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)        , intent(inout)                 :: array
         type(insertionl_type)   , intent(in)                    :: method
     end subroutine
 #endif
@@ -15145,8 +15145,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComInsertionl_D0_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)        , intent(inout)                 :: array
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)        , intent(inout)                 :: array
         type(insertionl_type)   , intent(in)                    :: method
     end subroutine
 #endif
@@ -15156,8 +15156,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComInsertionl_D0_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)        , intent(inout)                 :: array
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)        , intent(inout)                 :: array
         type(insertionl_type)   , intent(in)                    :: method
     end subroutine
 #endif
@@ -15167,8 +15167,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComInsertionl_D0_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)        , intent(inout)                 :: array
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)        , intent(inout)                 :: array
         type(insertionl_type)   , intent(in)                    :: method
     end subroutine
 #endif
@@ -15180,8 +15180,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComInsertionl_D1_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)        , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)        , intent(inout) , contiguous    :: array(:)
         type(insertionl_type)   , intent(in)                    :: method
     end subroutine
 #endif
@@ -15191,8 +15191,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComInsertionl_D1_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)        , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)        , intent(inout) , contiguous    :: array(:)
         type(insertionl_type)   , intent(in)                    :: method
     end subroutine
 #endif
@@ -15202,8 +15202,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComInsertionl_D1_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)        , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)        , intent(inout) , contiguous    :: array(:)
         type(insertionl_type)   , intent(in)                    :: method
     end subroutine
 #endif
@@ -15213,8 +15213,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComInsertionl_D1_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)        , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)        , intent(inout) , contiguous    :: array(:)
         type(insertionl_type)   , intent(in)                    :: method
     end subroutine
 #endif
@@ -15224,8 +15224,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComInsertionl_D1_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)        , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)        , intent(inout) , contiguous    :: array(:)
         type(insertionl_type)   , intent(in)                    :: method
     end subroutine
 #endif
@@ -15237,8 +15237,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComInsertionl_D1_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK5
+        integer(IKG)            , intent(inout) , contiguous    :: array(:)
         type(insertionl_type)   , intent(in)                    :: method
     end subroutine
 #endif
@@ -15248,8 +15248,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComInsertionl_D1_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK4
+        integer(IKG)            , intent(inout) , contiguous    :: array(:)
         type(insertionl_type)   , intent(in)                    :: method
     end subroutine
 #endif
@@ -15259,8 +15259,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComInsertionl_D1_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK3
+        integer(IKG)            , intent(inout) , contiguous    :: array(:)
         type(insertionl_type)   , intent(in)                    :: method
     end subroutine
 #endif
@@ -15270,8 +15270,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComInsertionl_D1_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK2
+        integer(IKG)            , intent(inout) , contiguous    :: array(:)
         type(insertionl_type)   , intent(in)                    :: method
     end subroutine
 #endif
@@ -15281,8 +15281,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComInsertionl_D1_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK1
+        integer(IKG)            , intent(inout) , contiguous    :: array(:)
         type(insertionl_type)   , intent(in)                    :: method
     end subroutine
 #endif
@@ -15294,8 +15294,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComInsertionl_D1_LK5
 #endif
-        use pm_kind, only: LKC => LK5
-        logical(LKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: LKG => LK5
+        logical(LKG)            , intent(inout) , contiguous    :: array(:)
         type(insertionl_type)   , intent(in)                    :: method
     end subroutine
 #endif
@@ -15305,8 +15305,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComInsertionl_D1_LK4
 #endif
-        use pm_kind, only: LKC => LK4
-        logical(LKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: LKG => LK4
+        logical(LKG)            , intent(inout) , contiguous    :: array(:)
         type(insertionl_type)   , intent(in)                    :: method
     end subroutine
 #endif
@@ -15316,8 +15316,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComInsertionl_D1_LK3
 #endif
-        use pm_kind, only: LKC => LK3
-        logical(LKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: LKG => LK3
+        logical(LKG)            , intent(inout) , contiguous    :: array(:)
         type(insertionl_type)   , intent(in)                    :: method
     end subroutine
 #endif
@@ -15327,8 +15327,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComInsertionl_D1_LK2
 #endif
-        use pm_kind, only: LKC => LK2
-        logical(LKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: LKG => LK2
+        logical(LKG)            , intent(inout) , contiguous    :: array(:)
         type(insertionl_type)   , intent(in)                    :: method
     end subroutine
 #endif
@@ -15338,8 +15338,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComInsertionl_D1_LK1
 #endif
-        use pm_kind, only: LKC => LK1
-        logical(LKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: LKG => LK1
+        logical(LKG)            , intent(inout) , contiguous    :: array(:)
         type(insertionl_type)   , intent(in)                    :: method
     end subroutine
 #endif
@@ -15351,8 +15351,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComInsertionl_D1_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG)            , intent(inout) , contiguous    :: array(:)
         type(insertionl_type)   , intent(in)                    :: method
     end subroutine
 #endif
@@ -15362,8 +15362,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComInsertionl_D1_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG)            , intent(inout) , contiguous    :: array(:)
         type(insertionl_type)   , intent(in)                    :: method
     end subroutine
 #endif
@@ -15373,8 +15373,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComInsertionl_D1_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG)            , intent(inout) , contiguous    :: array(:)
         type(insertionl_type)   , intent(in)                    :: method
     end subroutine
 #endif
@@ -15384,8 +15384,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComInsertionl_D1_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG)            , intent(inout) , contiguous    :: array(:)
         type(insertionl_type)   , intent(in)                    :: method
     end subroutine
 #endif
@@ -15395,8 +15395,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComInsertionl_D1_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG)            , intent(inout) , contiguous    :: array(:)
         type(insertionl_type)   , intent(in)                    :: method
     end subroutine
 #endif
@@ -15408,8 +15408,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComInsertionl_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)               , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)               , intent(inout) , contiguous    :: array(:)
         type(insertionl_type)   , intent(in)                    :: method
     end subroutine
 #endif
@@ -15419,8 +15419,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComInsertionl_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)               , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)               , intent(inout) , contiguous    :: array(:)
         type(insertionl_type)   , intent(in)                    :: method
     end subroutine
 #endif
@@ -15430,8 +15430,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComInsertionl_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)               , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)               , intent(inout) , contiguous    :: array(:)
         type(insertionl_type)   , intent(in)                    :: method
     end subroutine
 #endif
@@ -15441,8 +15441,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComInsertionl_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)               , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)               , intent(inout) , contiguous    :: array(:)
         type(insertionl_type)   , intent(in)                    :: method
     end subroutine
 #endif
@@ -15452,8 +15452,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComInsertionl_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)               , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)               , intent(inout) , contiguous    :: array(:)
         type(insertionl_type)   , intent(in)                    :: method
     end subroutine
 #endif
@@ -15467,9 +15467,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComInsertionl_D1_PSSK5
 #endif
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))      , intent(inout) , contiguous    :: array(:)
+        type(css_pdt(SKG))      , intent(inout) , contiguous    :: array(:)
         type(insertionl_type)   , intent(in)                    :: method
     end subroutine
 #endif
@@ -15479,9 +15479,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComInsertionl_D1_PSSK4
 #endif
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))      , intent(inout) , contiguous    :: array(:)
+        type(css_pdt(SKG))      , intent(inout) , contiguous    :: array(:)
         type(insertionl_type)   , intent(in)                    :: method
     end subroutine
 #endif
@@ -15491,9 +15491,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComInsertionl_D1_PSSK3
 #endif
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))      , intent(inout) , contiguous    :: array(:)
+        type(css_pdt(SKG))      , intent(inout) , contiguous    :: array(:)
         type(insertionl_type)   , intent(in)                    :: method
     end subroutine
 #endif
@@ -15503,9 +15503,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComInsertionl_D1_PSSK2
 #endif
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))      , intent(inout) , contiguous    :: array(:)
+        type(css_pdt(SKG))      , intent(inout) , contiguous    :: array(:)
         type(insertionl_type)   , intent(in)                    :: method
     end subroutine
 #endif
@@ -15515,9 +15515,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComInsertionl_D1_PSSK1
 #endif
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))      , intent(inout) , contiguous    :: array(:)
+        type(css_pdt(SKG))      , intent(inout) , contiguous    :: array(:)
         type(insertionl_type)   , intent(in)                    :: method
     end subroutine
 #endif
@@ -15531,7 +15531,7 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComInsertionl_D1_BSSK
 #endif
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
         use pm_container, only: css_type
         type(css_type)          , intent(inout) , contiguous    :: array(:)
         type(insertionl_type)   , intent(in)                    :: method
@@ -15560,8 +15560,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComInsertionb_D0_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)        , intent(inout)                 :: array
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)        , intent(inout)                 :: array
         type(insertionb_type)   , intent(in)                    :: method
     end subroutine
 #endif
@@ -15571,8 +15571,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComInsertionb_D0_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)        , intent(inout)                 :: array
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)        , intent(inout)                 :: array
         type(insertionb_type)   , intent(in)                    :: method
     end subroutine
 #endif
@@ -15582,8 +15582,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComInsertionb_D0_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)        , intent(inout)                 :: array
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)        , intent(inout)                 :: array
         type(insertionb_type)   , intent(in)                    :: method
     end subroutine
 #endif
@@ -15593,8 +15593,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComInsertionb_D0_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)        , intent(inout)                 :: array
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)        , intent(inout)                 :: array
         type(insertionb_type)   , intent(in)                    :: method
     end subroutine
 #endif
@@ -15604,8 +15604,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComInsertionb_D0_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)        , intent(inout)                 :: array
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)        , intent(inout)                 :: array
         type(insertionb_type)   , intent(in)                    :: method
     end subroutine
 #endif
@@ -15617,8 +15617,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComInsertionb_D1_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)        , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)        , intent(inout) , contiguous    :: array(:)
         type(insertionb_type)   , intent(in)                    :: method
     end subroutine
 #endif
@@ -15628,8 +15628,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComInsertionb_D1_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)        , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)        , intent(inout) , contiguous    :: array(:)
         type(insertionb_type)   , intent(in)                    :: method
     end subroutine
 #endif
@@ -15639,8 +15639,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComInsertionb_D1_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)        , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)        , intent(inout) , contiguous    :: array(:)
         type(insertionb_type)   , intent(in)                    :: method
     end subroutine
 #endif
@@ -15650,8 +15650,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComInsertionb_D1_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)        , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)        , intent(inout) , contiguous    :: array(:)
         type(insertionb_type)   , intent(in)                    :: method
     end subroutine
 #endif
@@ -15661,8 +15661,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComInsertionb_D1_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)        , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)        , intent(inout) , contiguous    :: array(:)
         type(insertionb_type)   , intent(in)                    :: method
     end subroutine
 #endif
@@ -15674,8 +15674,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComInsertionb_D1_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK5
+        integer(IKG)            , intent(inout) , contiguous    :: array(:)
         type(insertionb_type)   , intent(in)                    :: method
     end subroutine
 #endif
@@ -15685,8 +15685,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComInsertionb_D1_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK4
+        integer(IKG)            , intent(inout) , contiguous    :: array(:)
         type(insertionb_type)   , intent(in)                    :: method
     end subroutine
 #endif
@@ -15696,8 +15696,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComInsertionb_D1_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK3
+        integer(IKG)            , intent(inout) , contiguous    :: array(:)
         type(insertionb_type)   , intent(in)                    :: method
     end subroutine
 #endif
@@ -15707,8 +15707,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComInsertionb_D1_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK2
+        integer(IKG)            , intent(inout) , contiguous    :: array(:)
         type(insertionb_type)   , intent(in)                    :: method
     end subroutine
 #endif
@@ -15718,8 +15718,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComInsertionb_D1_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK1
+        integer(IKG)            , intent(inout) , contiguous    :: array(:)
         type(insertionb_type)   , intent(in)                    :: method
     end subroutine
 #endif
@@ -15731,8 +15731,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComInsertionb_D1_LK5
 #endif
-        use pm_kind, only: LKC => LK5
-        logical(LKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: LKG => LK5
+        logical(LKG)            , intent(inout) , contiguous    :: array(:)
         type(insertionb_type)   , intent(in)                    :: method
     end subroutine
 #endif
@@ -15742,8 +15742,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComInsertionb_D1_LK4
 #endif
-        use pm_kind, only: LKC => LK4
-        logical(LKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: LKG => LK4
+        logical(LKG)            , intent(inout) , contiguous    :: array(:)
         type(insertionb_type)   , intent(in)                    :: method
     end subroutine
 #endif
@@ -15753,8 +15753,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComInsertionb_D1_LK3
 #endif
-        use pm_kind, only: LKC => LK3
-        logical(LKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: LKG => LK3
+        logical(LKG)            , intent(inout) , contiguous    :: array(:)
         type(insertionb_type)   , intent(in)                    :: method
     end subroutine
 #endif
@@ -15764,8 +15764,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComInsertionb_D1_LK2
 #endif
-        use pm_kind, only: LKC => LK2
-        logical(LKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: LKG => LK2
+        logical(LKG)            , intent(inout) , contiguous    :: array(:)
         type(insertionb_type)   , intent(in)                    :: method
     end subroutine
 #endif
@@ -15775,8 +15775,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComInsertionb_D1_LK1
 #endif
-        use pm_kind, only: LKC => LK1
-        logical(LKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: LKG => LK1
+        logical(LKG)            , intent(inout) , contiguous    :: array(:)
         type(insertionb_type)   , intent(in)                    :: method
     end subroutine
 #endif
@@ -15788,8 +15788,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComInsertionb_D1_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG)            , intent(inout) , contiguous    :: array(:)
         type(insertionb_type)   , intent(in)                    :: method
     end subroutine
 #endif
@@ -15799,8 +15799,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComInsertionb_D1_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG)            , intent(inout) , contiguous    :: array(:)
         type(insertionb_type)   , intent(in)                    :: method
     end subroutine
 #endif
@@ -15810,8 +15810,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComInsertionb_D1_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG)            , intent(inout) , contiguous    :: array(:)
         type(insertionb_type)   , intent(in)                    :: method
     end subroutine
 #endif
@@ -15821,8 +15821,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComInsertionb_D1_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG)            , intent(inout) , contiguous    :: array(:)
         type(insertionb_type)   , intent(in)                    :: method
     end subroutine
 #endif
@@ -15832,8 +15832,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComInsertionb_D1_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG)            , intent(inout) , contiguous    :: array(:)
         type(insertionb_type)   , intent(in)                    :: method
     end subroutine
 #endif
@@ -15845,8 +15845,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComInsertionb_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)               , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)               , intent(inout) , contiguous    :: array(:)
         type(insertionb_type)   , intent(in)                    :: method
     end subroutine
 #endif
@@ -15856,8 +15856,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComInsertionb_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)               , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)               , intent(inout) , contiguous    :: array(:)
         type(insertionb_type)   , intent(in)                    :: method
     end subroutine
 #endif
@@ -15867,8 +15867,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComInsertionb_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)               , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)               , intent(inout) , contiguous    :: array(:)
         type(insertionb_type)   , intent(in)                    :: method
     end subroutine
 #endif
@@ -15878,8 +15878,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComInsertionb_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)               , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)               , intent(inout) , contiguous    :: array(:)
         type(insertionb_type)   , intent(in)                    :: method
     end subroutine
 #endif
@@ -15889,8 +15889,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComInsertionb_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)               , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)               , intent(inout) , contiguous    :: array(:)
         type(insertionb_type)   , intent(in)                    :: method
     end subroutine
 #endif
@@ -15904,9 +15904,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComInsertionb_D1_PSSK5
 #endif
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))      , intent(inout) , contiguous    :: array(:)
+        type(css_pdt(SKG))      , intent(inout) , contiguous    :: array(:)
         type(insertionb_type)   , intent(in)                    :: method
     end subroutine
 #endif
@@ -15916,9 +15916,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComInsertionb_D1_PSSK4
 #endif
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))      , intent(inout) , contiguous    :: array(:)
+        type(css_pdt(SKG))      , intent(inout) , contiguous    :: array(:)
         type(insertionb_type)   , intent(in)                    :: method
     end subroutine
 #endif
@@ -15928,9 +15928,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComInsertionb_D1_PSSK3
 #endif
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))      , intent(inout) , contiguous    :: array(:)
+        type(css_pdt(SKG))      , intent(inout) , contiguous    :: array(:)
         type(insertionb_type)   , intent(in)                    :: method
     end subroutine
 #endif
@@ -15940,9 +15940,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComInsertionb_D1_PSSK2
 #endif
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))      , intent(inout) , contiguous    :: array(:)
+        type(css_pdt(SKG))      , intent(inout) , contiguous    :: array(:)
         type(insertionb_type)   , intent(in)                    :: method
     end subroutine
 #endif
@@ -15952,9 +15952,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComInsertionb_D1_PSSK1
 #endif
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))      , intent(inout) , contiguous    :: array(:)
+        type(css_pdt(SKG))      , intent(inout) , contiguous    :: array(:)
         type(insertionb_type)   , intent(in)                    :: method
     end subroutine
 #endif
@@ -15968,7 +15968,7 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComInsertionb_D1_BSSK
 #endif
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
         use pm_container, only: css_type
         type(css_type)          , intent(inout) , contiguous    :: array(:)
         type(insertionb_type)   , intent(in)                    :: method
@@ -15997,8 +15997,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComMerger_D0_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)        , intent(inout)                 :: array
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)        , intent(inout)                 :: array
         type(merger_type)       , intent(in)                    :: method
     end subroutine
 #endif
@@ -16008,8 +16008,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComMerger_D0_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)        , intent(inout)                 :: array
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)        , intent(inout)                 :: array
         type(merger_type)       , intent(in)                    :: method
     end subroutine
 #endif
@@ -16019,8 +16019,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComMerger_D0_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)        , intent(inout)                 :: array
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)        , intent(inout)                 :: array
         type(merger_type)       , intent(in)                    :: method
     end subroutine
 #endif
@@ -16030,8 +16030,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComMerger_D0_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)        , intent(inout)                 :: array
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)        , intent(inout)                 :: array
         type(merger_type)       , intent(in)                    :: method
     end subroutine
 #endif
@@ -16041,8 +16041,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComMerger_D0_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)        , intent(inout)                 :: array
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)        , intent(inout)                 :: array
         type(merger_type)       , intent(in)                    :: method
     end subroutine
 #endif
@@ -16054,8 +16054,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComMerger_D1_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)        , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)        , intent(inout) , contiguous    :: array(:)
         type(merger_type)       , intent(in)                    :: method
     end subroutine
 #endif
@@ -16065,8 +16065,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComMerger_D1_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)        , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)        , intent(inout) , contiguous    :: array(:)
         type(merger_type)       , intent(in)                    :: method
     end subroutine
 #endif
@@ -16076,8 +16076,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComMerger_D1_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)        , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)        , intent(inout) , contiguous    :: array(:)
         type(merger_type)       , intent(in)                    :: method
     end subroutine
 #endif
@@ -16087,8 +16087,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComMerger_D1_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)        , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)        , intent(inout) , contiguous    :: array(:)
         type(merger_type)       , intent(in)                    :: method
     end subroutine
 #endif
@@ -16098,8 +16098,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComMerger_D1_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)        , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)        , intent(inout) , contiguous    :: array(:)
         type(merger_type)       , intent(in)                    :: method
     end subroutine
 #endif
@@ -16111,8 +16111,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComMerger_D1_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK5
+        integer(IKG)            , intent(inout) , contiguous    :: array(:)
         type(merger_type)       , intent(in)                    :: method
     end subroutine
 #endif
@@ -16122,8 +16122,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComMerger_D1_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK4
+        integer(IKG)            , intent(inout) , contiguous    :: array(:)
         type(merger_type)       , intent(in)                    :: method
     end subroutine
 #endif
@@ -16133,8 +16133,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComMerger_D1_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK3
+        integer(IKG)            , intent(inout) , contiguous    :: array(:)
         type(merger_type)       , intent(in)                    :: method
     end subroutine
 #endif
@@ -16144,8 +16144,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComMerger_D1_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK2
+        integer(IKG)            , intent(inout) , contiguous    :: array(:)
         type(merger_type)       , intent(in)                    :: method
     end subroutine
 #endif
@@ -16155,8 +16155,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComMerger_D1_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK1
+        integer(IKG)            , intent(inout) , contiguous    :: array(:)
         type(merger_type)       , intent(in)                    :: method
     end subroutine
 #endif
@@ -16168,8 +16168,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComMerger_D1_LK5
 #endif
-        use pm_kind, only: LKC => LK5
-        logical(LKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: LKG => LK5
+        logical(LKG)            , intent(inout) , contiguous    :: array(:)
         type(merger_type)       , intent(in)                    :: method
     end subroutine
 #endif
@@ -16179,8 +16179,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComMerger_D1_LK4
 #endif
-        use pm_kind, only: LKC => LK4
-        logical(LKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: LKG => LK4
+        logical(LKG)            , intent(inout) , contiguous    :: array(:)
         type(merger_type)       , intent(in)                    :: method
     end subroutine
 #endif
@@ -16190,8 +16190,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComMerger_D1_LK3
 #endif
-        use pm_kind, only: LKC => LK3
-        logical(LKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: LKG => LK3
+        logical(LKG)            , intent(inout) , contiguous    :: array(:)
         type(merger_type)       , intent(in)                    :: method
     end subroutine
 #endif
@@ -16201,8 +16201,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComMerger_D1_LK2
 #endif
-        use pm_kind, only: LKC => LK2
-        logical(LKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: LKG => LK2
+        logical(LKG)            , intent(inout) , contiguous    :: array(:)
         type(merger_type)       , intent(in)                    :: method
     end subroutine
 #endif
@@ -16212,8 +16212,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComMerger_D1_LK1
 #endif
-        use pm_kind, only: LKC => LK1
-        logical(LKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: LKG => LK1
+        logical(LKG)            , intent(inout) , contiguous    :: array(:)
         type(merger_type)       , intent(in)                    :: method
     end subroutine
 #endif
@@ -16225,8 +16225,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComMerger_D1_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG)            , intent(inout) , contiguous    :: array(:)
         type(merger_type)       , intent(in)                    :: method
     end subroutine
 #endif
@@ -16236,8 +16236,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComMerger_D1_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG)            , intent(inout) , contiguous    :: array(:)
         type(merger_type)       , intent(in)                    :: method
     end subroutine
 #endif
@@ -16247,8 +16247,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComMerger_D1_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG)            , intent(inout) , contiguous    :: array(:)
         type(merger_type)       , intent(in)                    :: method
     end subroutine
 #endif
@@ -16258,8 +16258,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComMerger_D1_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG)            , intent(inout) , contiguous    :: array(:)
         type(merger_type)       , intent(in)                    :: method
     end subroutine
 #endif
@@ -16269,8 +16269,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComMerger_D1_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG)            , intent(inout) , contiguous    :: array(:)
         type(merger_type)       , intent(in)                    :: method
     end subroutine
 #endif
@@ -16282,8 +16282,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComMerger_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)               , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)               , intent(inout) , contiguous    :: array(:)
         type(merger_type)       , intent(in)                    :: method
     end subroutine
 #endif
@@ -16293,8 +16293,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComMerger_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)               , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)               , intent(inout) , contiguous    :: array(:)
         type(merger_type)       , intent(in)                    :: method
     end subroutine
 #endif
@@ -16304,8 +16304,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComMerger_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)               , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)               , intent(inout) , contiguous    :: array(:)
         type(merger_type)       , intent(in)                    :: method
     end subroutine
 #endif
@@ -16315,8 +16315,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComMerger_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)               , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)               , intent(inout) , contiguous    :: array(:)
         type(merger_type)       , intent(in)                    :: method
     end subroutine
 #endif
@@ -16326,8 +16326,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComMerger_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)               , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)               , intent(inout) , contiguous    :: array(:)
         type(merger_type)       , intent(in)                    :: method
     end subroutine
 #endif
@@ -16341,9 +16341,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComMerger_D1_PSSK5
 #endif
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))      , intent(inout) , contiguous    :: array(:)
+        type(css_pdt(SKG))      , intent(inout) , contiguous    :: array(:)
         type(merger_type)       , intent(in)                    :: method
     end subroutine
 #endif
@@ -16353,9 +16353,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComMerger_D1_PSSK4
 #endif
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))      , intent(inout) , contiguous    :: array(:)
+        type(css_pdt(SKG))      , intent(inout) , contiguous    :: array(:)
         type(merger_type)       , intent(in)                    :: method
     end subroutine
 #endif
@@ -16365,9 +16365,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComMerger_D1_PSSK3
 #endif
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))      , intent(inout) , contiguous    :: array(:)
+        type(css_pdt(SKG))      , intent(inout) , contiguous    :: array(:)
         type(merger_type)       , intent(in)                    :: method
     end subroutine
 #endif
@@ -16377,9 +16377,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComMerger_D1_PSSK2
 #endif
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))      , intent(inout) , contiguous    :: array(:)
+        type(css_pdt(SKG))      , intent(inout) , contiguous    :: array(:)
         type(merger_type)       , intent(in)                    :: method
     end subroutine
 #endif
@@ -16389,9 +16389,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComMerger_D1_PSSK1
 #endif
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))      , intent(inout) , contiguous    :: array(:)
+        type(css_pdt(SKG))      , intent(inout) , contiguous    :: array(:)
         type(merger_type)       , intent(in)                    :: method
     end subroutine
 #endif
@@ -16405,7 +16405,7 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComMerger_D1_BSSK
 #endif
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
         use pm_container, only: css_type
         type(css_type)          , intent(inout) , contiguous    :: array(:)
         type(merger_type)       , intent(in)                    :: method
@@ -16434,8 +16434,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComSelection_D0_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)        , intent(inout)                 :: array
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)        , intent(inout)                 :: array
         type(selection_type)    , intent(in)                    :: method
     end subroutine
 #endif
@@ -16445,8 +16445,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComSelection_D0_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)        , intent(inout)                 :: array
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)        , intent(inout)                 :: array
         type(selection_type)    , intent(in)                    :: method
     end subroutine
 #endif
@@ -16456,8 +16456,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComSelection_D0_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)        , intent(inout)                 :: array
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)        , intent(inout)                 :: array
         type(selection_type)    , intent(in)                    :: method
     end subroutine
 #endif
@@ -16467,8 +16467,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComSelection_D0_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)        , intent(inout)                 :: array
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)        , intent(inout)                 :: array
         type(selection_type)    , intent(in)                    :: method
     end subroutine
 #endif
@@ -16478,8 +16478,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComSelection_D0_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)        , intent(inout)                 :: array
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)        , intent(inout)                 :: array
         type(selection_type)    , intent(in)                    :: method
     end subroutine
 #endif
@@ -16491,8 +16491,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComSelection_D1_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)        , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)        , intent(inout) , contiguous    :: array(:)
         type(selection_type)    , intent(in)                    :: method
     end subroutine
 #endif
@@ -16502,8 +16502,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComSelection_D1_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)        , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)        , intent(inout) , contiguous    :: array(:)
         type(selection_type)    , intent(in)                    :: method
     end subroutine
 #endif
@@ -16513,8 +16513,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComSelection_D1_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)        , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)        , intent(inout) , contiguous    :: array(:)
         type(selection_type)    , intent(in)                    :: method
     end subroutine
 #endif
@@ -16524,8 +16524,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComSelection_D1_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)        , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)        , intent(inout) , contiguous    :: array(:)
         type(selection_type)    , intent(in)                    :: method
     end subroutine
 #endif
@@ -16535,8 +16535,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComSelection_D1_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)        , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)        , intent(inout) , contiguous    :: array(:)
         type(selection_type)    , intent(in)                    :: method
     end subroutine
 #endif
@@ -16548,8 +16548,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComSelection_D1_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK5
+        integer(IKG)            , intent(inout) , contiguous    :: array(:)
         type(selection_type)    , intent(in)                    :: method
     end subroutine
 #endif
@@ -16559,8 +16559,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComSelection_D1_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK4
+        integer(IKG)            , intent(inout) , contiguous    :: array(:)
         type(selection_type)    , intent(in)                    :: method
     end subroutine
 #endif
@@ -16570,8 +16570,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComSelection_D1_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK3
+        integer(IKG)            , intent(inout) , contiguous    :: array(:)
         type(selection_type)    , intent(in)                    :: method
     end subroutine
 #endif
@@ -16581,8 +16581,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComSelection_D1_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK2
+        integer(IKG)            , intent(inout) , contiguous    :: array(:)
         type(selection_type)    , intent(in)                    :: method
     end subroutine
 #endif
@@ -16592,8 +16592,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComSelection_D1_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK1
+        integer(IKG)            , intent(inout) , contiguous    :: array(:)
         type(selection_type)    , intent(in)                    :: method
     end subroutine
 #endif
@@ -16605,8 +16605,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComSelection_D1_LK5
 #endif
-        use pm_kind, only: LKC => LK5
-        logical(LKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: LKG => LK5
+        logical(LKG)            , intent(inout) , contiguous    :: array(:)
         type(selection_type)    , intent(in)                    :: method
     end subroutine
 #endif
@@ -16616,8 +16616,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComSelection_D1_LK4
 #endif
-        use pm_kind, only: LKC => LK4
-        logical(LKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: LKG => LK4
+        logical(LKG)            , intent(inout) , contiguous    :: array(:)
         type(selection_type)    , intent(in)                    :: method
     end subroutine
 #endif
@@ -16627,8 +16627,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComSelection_D1_LK3
 #endif
-        use pm_kind, only: LKC => LK3
-        logical(LKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: LKG => LK3
+        logical(LKG)            , intent(inout) , contiguous    :: array(:)
         type(selection_type)    , intent(in)                    :: method
     end subroutine
 #endif
@@ -16638,8 +16638,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComSelection_D1_LK2
 #endif
-        use pm_kind, only: LKC => LK2
-        logical(LKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: LKG => LK2
+        logical(LKG)            , intent(inout) , contiguous    :: array(:)
         type(selection_type)    , intent(in)                    :: method
     end subroutine
 #endif
@@ -16649,8 +16649,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComSelection_D1_LK1
 #endif
-        use pm_kind, only: LKC => LK1
-        logical(LKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: LKG => LK1
+        logical(LKG)            , intent(inout) , contiguous    :: array(:)
         type(selection_type)    , intent(in)                    :: method
     end subroutine
 #endif
@@ -16662,8 +16662,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComSelection_D1_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG)            , intent(inout) , contiguous    :: array(:)
         type(selection_type)    , intent(in)                    :: method
     end subroutine
 #endif
@@ -16673,8 +16673,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComSelection_D1_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG)            , intent(inout) , contiguous    :: array(:)
         type(selection_type)    , intent(in)                    :: method
     end subroutine
 #endif
@@ -16684,8 +16684,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComSelection_D1_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG)            , intent(inout) , contiguous    :: array(:)
         type(selection_type)    , intent(in)                    :: method
     end subroutine
 #endif
@@ -16695,8 +16695,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComSelection_D1_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG)            , intent(inout) , contiguous    :: array(:)
         type(selection_type)    , intent(in)                    :: method
     end subroutine
 #endif
@@ -16706,8 +16706,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComSelection_D1_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG)            , intent(inout) , contiguous    :: array(:)
         type(selection_type)    , intent(in)                    :: method
     end subroutine
 #endif
@@ -16719,8 +16719,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComSelection_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)               , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)               , intent(inout) , contiguous    :: array(:)
         type(selection_type)    , intent(in)                    :: method
     end subroutine
 #endif
@@ -16730,8 +16730,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComSelection_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)               , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)               , intent(inout) , contiguous    :: array(:)
         type(selection_type)    , intent(in)                    :: method
     end subroutine
 #endif
@@ -16741,8 +16741,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComSelection_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)               , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)               , intent(inout) , contiguous    :: array(:)
         type(selection_type)    , intent(in)                    :: method
     end subroutine
 #endif
@@ -16752,8 +16752,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComSelection_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)               , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)               , intent(inout) , contiguous    :: array(:)
         type(selection_type)    , intent(in)                    :: method
     end subroutine
 #endif
@@ -16763,8 +16763,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComSelection_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)               , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)               , intent(inout) , contiguous    :: array(:)
         type(selection_type)    , intent(in)                    :: method
     end subroutine
 #endif
@@ -16778,9 +16778,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComSelection_D1_PSSK5
 #endif
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))      , intent(inout) , contiguous    :: array(:)
+        type(css_pdt(SKG))      , intent(inout) , contiguous    :: array(:)
         type(selection_type)    , intent(in)                    :: method
     end subroutine
 #endif
@@ -16790,9 +16790,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComSelection_D1_PSSK4
 #endif
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))      , intent(inout) , contiguous    :: array(:)
+        type(css_pdt(SKG))      , intent(inout) , contiguous    :: array(:)
         type(selection_type)    , intent(in)                    :: method
     end subroutine
 #endif
@@ -16802,9 +16802,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComSelection_D1_PSSK3
 #endif
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))      , intent(inout) , contiguous    :: array(:)
+        type(css_pdt(SKG))      , intent(inout) , contiguous    :: array(:)
         type(selection_type)    , intent(in)                    :: method
     end subroutine
 #endif
@@ -16814,9 +16814,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComSelection_D1_PSSK2
 #endif
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))      , intent(inout) , contiguous    :: array(:)
+        type(css_pdt(SKG))      , intent(inout) , contiguous    :: array(:)
         type(selection_type)    , intent(in)                    :: method
     end subroutine
 #endif
@@ -16826,9 +16826,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComSelection_D1_PSSK1
 #endif
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))      , intent(inout) , contiguous    :: array(:)
+        type(css_pdt(SKG))      , intent(inout) , contiguous    :: array(:)
         type(selection_type)    , intent(in)                    :: method
     end subroutine
 #endif
@@ -16842,7 +16842,7 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComSelection_D1_BSSK
 #endif
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
         use pm_container, only: css_type
         type(css_type)          , intent(inout) , contiguous    :: array(:)
         type(selection_type)    , intent(in)                    :: method
@@ -16871,8 +16871,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComShell_D0_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)        , intent(inout)                 :: array
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)        , intent(inout)                 :: array
         type(shell_type)        , intent(in)                    :: method
     end subroutine
 #endif
@@ -16882,8 +16882,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComShell_D0_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)        , intent(inout)                 :: array
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)        , intent(inout)                 :: array
         type(shell_type)        , intent(in)                    :: method
     end subroutine
 #endif
@@ -16893,8 +16893,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComShell_D0_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)        , intent(inout)                 :: array
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)        , intent(inout)                 :: array
         type(shell_type)        , intent(in)                    :: method
     end subroutine
 #endif
@@ -16904,8 +16904,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComShell_D0_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)        , intent(inout)                 :: array
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)        , intent(inout)                 :: array
         type(shell_type)        , intent(in)                    :: method
     end subroutine
 #endif
@@ -16915,8 +16915,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComShell_D0_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)        , intent(inout)                 :: array
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)        , intent(inout)                 :: array
         type(shell_type)        , intent(in)                    :: method
     end subroutine
 #endif
@@ -16928,8 +16928,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComShell_D1_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)        , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)        , intent(inout) , contiguous    :: array(:)
         type(shell_type)        , intent(in)                    :: method
     end subroutine
 #endif
@@ -16939,8 +16939,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComShell_D1_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)        , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)        , intent(inout) , contiguous    :: array(:)
         type(shell_type)        , intent(in)                    :: method
     end subroutine
 #endif
@@ -16950,8 +16950,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComShell_D1_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)        , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)        , intent(inout) , contiguous    :: array(:)
         type(shell_type)        , intent(in)                    :: method
     end subroutine
 #endif
@@ -16961,8 +16961,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComShell_D1_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)        , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)        , intent(inout) , contiguous    :: array(:)
         type(shell_type)        , intent(in)                    :: method
     end subroutine
 #endif
@@ -16972,8 +16972,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComShell_D1_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)        , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)        , intent(inout) , contiguous    :: array(:)
         type(shell_type)        , intent(in)                    :: method
     end subroutine
 #endif
@@ -16985,8 +16985,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComShell_D1_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK5
+        integer(IKG)            , intent(inout) , contiguous    :: array(:)
         type(shell_type)        , intent(in)                    :: method
     end subroutine
 #endif
@@ -16996,8 +16996,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComShell_D1_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK4
+        integer(IKG)            , intent(inout) , contiguous    :: array(:)
         type(shell_type)        , intent(in)                    :: method
     end subroutine
 #endif
@@ -17007,8 +17007,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComShell_D1_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK3
+        integer(IKG)            , intent(inout) , contiguous    :: array(:)
         type(shell_type)        , intent(in)                    :: method
     end subroutine
 #endif
@@ -17018,8 +17018,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComShell_D1_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK2
+        integer(IKG)            , intent(inout) , contiguous    :: array(:)
         type(shell_type)        , intent(in)                    :: method
     end subroutine
 #endif
@@ -17029,8 +17029,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComShell_D1_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK1
+        integer(IKG)            , intent(inout) , contiguous    :: array(:)
         type(shell_type)        , intent(in)                    :: method
     end subroutine
 #endif
@@ -17042,8 +17042,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComShell_D1_LK5
 #endif
-        use pm_kind, only: LKC => LK5
-        logical(LKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: LKG => LK5
+        logical(LKG)            , intent(inout) , contiguous    :: array(:)
         type(shell_type)        , intent(in)                    :: method
     end subroutine
 #endif
@@ -17053,8 +17053,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComShell_D1_LK4
 #endif
-        use pm_kind, only: LKC => LK4
-        logical(LKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: LKG => LK4
+        logical(LKG)            , intent(inout) , contiguous    :: array(:)
         type(shell_type)        , intent(in)                    :: method
     end subroutine
 #endif
@@ -17064,8 +17064,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComShell_D1_LK3
 #endif
-        use pm_kind, only: LKC => LK3
-        logical(LKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: LKG => LK3
+        logical(LKG)            , intent(inout) , contiguous    :: array(:)
         type(shell_type)        , intent(in)                    :: method
     end subroutine
 #endif
@@ -17075,8 +17075,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComShell_D1_LK2
 #endif
-        use pm_kind, only: LKC => LK2
-        logical(LKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: LKG => LK2
+        logical(LKG)            , intent(inout) , contiguous    :: array(:)
         type(shell_type)        , intent(in)                    :: method
     end subroutine
 #endif
@@ -17086,8 +17086,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComShell_D1_LK1
 #endif
-        use pm_kind, only: LKC => LK1
-        logical(LKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: LKG => LK1
+        logical(LKG)            , intent(inout) , contiguous    :: array(:)
         type(shell_type)        , intent(in)                    :: method
     end subroutine
 #endif
@@ -17099,8 +17099,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComShell_D1_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG)            , intent(inout) , contiguous    :: array(:)
         type(shell_type)        , intent(in)                    :: method
     end subroutine
 #endif
@@ -17110,8 +17110,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComShell_D1_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG)            , intent(inout) , contiguous    :: array(:)
         type(shell_type)        , intent(in)                    :: method
     end subroutine
 #endif
@@ -17121,8 +17121,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComShell_D1_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG)            , intent(inout) , contiguous    :: array(:)
         type(shell_type)        , intent(in)                    :: method
     end subroutine
 #endif
@@ -17132,8 +17132,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComShell_D1_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG)            , intent(inout) , contiguous    :: array(:)
         type(shell_type)        , intent(in)                    :: method
     end subroutine
 #endif
@@ -17143,8 +17143,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComShell_D1_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)            , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG)            , intent(inout) , contiguous    :: array(:)
         type(shell_type)        , intent(in)                    :: method
     end subroutine
 #endif
@@ -17156,8 +17156,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComShell_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)               , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)               , intent(inout) , contiguous    :: array(:)
         type(shell_type)        , intent(in)                    :: method
     end subroutine
 #endif
@@ -17167,8 +17167,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComShell_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)               , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)               , intent(inout) , contiguous    :: array(:)
         type(shell_type)        , intent(in)                    :: method
     end subroutine
 #endif
@@ -17178,8 +17178,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComShell_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)               , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)               , intent(inout) , contiguous    :: array(:)
         type(shell_type)        , intent(in)                    :: method
     end subroutine
 #endif
@@ -17189,8 +17189,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComShell_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)               , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)               , intent(inout) , contiguous    :: array(:)
         type(shell_type)        , intent(in)                    :: method
     end subroutine
 #endif
@@ -17200,8 +17200,8 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComShell_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)               , intent(inout) , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)               , intent(inout) , contiguous    :: array(:)
         type(shell_type)        , intent(in)                    :: method
     end subroutine
 #endif
@@ -17215,9 +17215,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComShell_D1_PSSK5
 #endif
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))      , intent(inout) , contiguous    :: array(:)
+        type(css_pdt(SKG))      , intent(inout) , contiguous    :: array(:)
         type(shell_type)        , intent(in)                    :: method
     end subroutine
 #endif
@@ -17227,9 +17227,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComShell_D1_PSSK4
 #endif
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))      , intent(inout) , contiguous    :: array(:)
+        type(css_pdt(SKG))      , intent(inout) , contiguous    :: array(:)
         type(shell_type)        , intent(in)                    :: method
     end subroutine
 #endif
@@ -17239,9 +17239,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComShell_D1_PSSK3
 #endif
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))      , intent(inout) , contiguous    :: array(:)
+        type(css_pdt(SKG))      , intent(inout) , contiguous    :: array(:)
         type(shell_type)        , intent(in)                    :: method
     end subroutine
 #endif
@@ -17251,9 +17251,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComShell_D1_PSSK2
 #endif
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))      , intent(inout) , contiguous    :: array(:)
+        type(css_pdt(SKG))      , intent(inout) , contiguous    :: array(:)
         type(shell_type)        , intent(in)                    :: method
     end subroutine
 #endif
@@ -17263,9 +17263,9 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComShell_D1_PSSK1
 #endif
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))      , intent(inout) , contiguous    :: array(:)
+        type(css_pdt(SKG))      , intent(inout) , contiguous    :: array(:)
         type(shell_type)        , intent(in)                    :: method
     end subroutine
 #endif
@@ -17279,7 +17279,7 @@ module pm_arraySort
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSortedArrDefComShell_D1_BSSK
 #endif
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
         use pm_container, only: css_type
         type(css_type)          , intent(inout) , contiguous    :: array(:)
         type(shell_type)        , intent(in)                    :: method

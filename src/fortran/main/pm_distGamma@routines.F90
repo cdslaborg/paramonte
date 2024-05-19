@@ -61,35 +61,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getGammaLogPDFNFKD_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_distGamma@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getGammaLogPDFNFKD_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_distGamma@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getGammaLogPDFNFKD_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_distGamma@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getGammaLogPDFNFKD_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_distGamma@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getGammaLogPDFNFKD_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_distGamma@routines.inc.F90"
     end procedure
 #endif
@@ -112,35 +112,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getGammaLogPDFNFKS_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_distGamma@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getGammaLogPDFNFKS_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_distGamma@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getGammaLogPDFNFKS_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_distGamma@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getGammaLogPDFNFKS_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_distGamma@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getGammaLogPDFNFKS_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_distGamma@routines.inc.F90"
     end procedure
 #endif
@@ -167,35 +167,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getGammaLogPDF_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_distGamma@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getGammaLogPDF_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_distGamma@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getGammaLogPDF_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_distGamma@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getGammaLogPDF_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_distGamma@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getGammaLogPDF_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_distGamma@routines.inc.F90"
     end procedure
 #endif
@@ -222,35 +222,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setGammaLogPDFDDD_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_distGamma@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setGammaLogPDFDDD_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_distGamma@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setGammaLogPDFDDD_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_distGamma@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setGammaLogPDFDDD_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_distGamma@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setGammaLogPDFDDD_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_distGamma@routines.inc.F90"
     end procedure
 #endif
@@ -273,35 +273,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setGammaLogPDFNKD_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_distGamma@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setGammaLogPDFNKD_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_distGamma@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setGammaLogPDFNKD_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_distGamma@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setGammaLogPDFNKD_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_distGamma@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setGammaLogPDFNKD_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_distGamma@routines.inc.F90"
     end procedure
 #endif
@@ -324,35 +324,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setGammaLogPDFNKS_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_distGamma@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setGammaLogPDFNKS_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_distGamma@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setGammaLogPDFNKS_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_distGamma@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setGammaLogPDFNKS_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_distGamma@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setGammaLogPDFNKS_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_distGamma@routines.inc.F90"
     end procedure
 #endif
@@ -379,35 +379,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getGammaCDF_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_distGamma@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getGammaCDF_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_distGamma@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getGammaCDF_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_distGamma@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getGammaCDF_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_distGamma@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getGammaCDF_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_distGamma@routines.inc.F90"
     end procedure
 #endif
@@ -434,35 +434,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setGammaCDFDD_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_distGamma@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setGammaCDFDD_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_distGamma@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setGammaCDFDD_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_distGamma@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setGammaCDFDD_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_distGamma@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setGammaCDFDD_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_distGamma@routines.inc.F90"
     end procedure
 #endif
@@ -485,35 +485,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setGammaCDFKD_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_distGamma@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setGammaCDFKD_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_distGamma@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setGammaCDFKD_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_distGamma@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setGammaCDFKD_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_distGamma@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setGammaCDFKD_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_distGamma@routines.inc.F90"
     end procedure
 #endif
@@ -536,35 +536,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setGammaCDFKS_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_distGamma@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setGammaCDFKS_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_distGamma@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setGammaCDFKS_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_distGamma@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setGammaCDFKS_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_distGamma@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setGammaCDFKS_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_distGamma@routines.inc.F90"
     end procedure
 #endif
@@ -609,35 +609,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setGammaRandRNGD_D0_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_distGamma@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setGammaRandRNGD_D0_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_distGamma@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setGammaRandRNGD_D0_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_distGamma@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setGammaRandRNGD_D0_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_distGamma@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setGammaRandRNGD_D0_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_distGamma@routines.inc.F90"
     end procedure
 #endif
@@ -660,35 +660,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setGammaRandRNGF_D0_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_distGamma@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setGammaRandRNGF_D0_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_distGamma@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setGammaRandRNGF_D0_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_distGamma@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setGammaRandRNGF_D0_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_distGamma@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setGammaRandRNGF_D0_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_distGamma@routines.inc.F90"
     end procedure
 #endif
@@ -711,35 +711,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setGammaRandRNGX_D0_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_distGamma@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setGammaRandRNGX_D0_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_distGamma@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setGammaRandRNGX_D0_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_distGamma@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setGammaRandRNGX_D0_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_distGamma@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setGammaRandRNGX_D0_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_distGamma@routines.inc.F90"
     end procedure
 #endif
@@ -774,35 +774,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setGammaRandRNGD_D1_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_distGamma@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setGammaRandRNGD_D1_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_distGamma@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setGammaRandRNGD_D1_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_distGamma@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setGammaRandRNGD_D1_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_distGamma@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setGammaRandRNGD_D1_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_distGamma@routines.inc.F90"
     end procedure
 #endif
@@ -825,35 +825,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setGammaRandRNGF_D1_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_distGamma@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setGammaRandRNGF_D1_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_distGamma@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setGammaRandRNGF_D1_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_distGamma@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setGammaRandRNGF_D1_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_distGamma@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setGammaRandRNGF_D1_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_distGamma@routines.inc.F90"
     end procedure
 #endif
@@ -876,35 +876,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setGammaRandRNGX_D1_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_distGamma@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setGammaRandRNGX_D1_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_distGamma@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setGammaRandRNGX_D1_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_distGamma@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setGammaRandRNGX_D1_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_distGamma@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setGammaRandRNGX_D1_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_distGamma@routines.inc.F90"
     end procedure
 #endif

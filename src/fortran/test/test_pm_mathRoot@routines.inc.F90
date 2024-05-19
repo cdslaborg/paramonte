@@ -25,9 +25,9 @@
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #if     CK_ENABLED
-#define TYPE_KIND complex(TKC)
+#define TYPE_KIND complex(TKG)
 #elif   RK_ENABLED
-#define TYPE_KIND real(TKC)
+#define TYPE_KIND real(TKG)
 #else
 #error  "Unrecognized interface."
 #endif
@@ -60,7 +60,7 @@
         type(METHOD), parameter :: method = METHOD()
         type(display_type) :: disp
         integer(IK) :: itry, neval, niter
-        real(TKC), parameter :: abstol_ref = epsilon(0._TKC)**.8
+        real(TKG), parameter :: abstol_ref = epsilon(0._TKG)**.8
         TYPE_KIND :: roots(2), lb, ub, xmid
         assertion = .true._LK
 
@@ -70,7 +70,7 @@
             lb = getChoice([minval(roots, 1), minval(roots, 1) - 1])
             ub = getChoice([maxval(roots, 1), maxval(roots, 1) + 1])
             if (roots .allinrange. [lb, ub]) then
-                xmid = .5_TKC * sum(roots(1:2))
+                xmid = .5_TKG * sum(roots(1:2))
                 if (getUnifRand()) then
                     lb = xmid
                 else
@@ -119,19 +119,19 @@
     contains
 
         pure function getFunc(x) result(func)
-            real(TKC), intent(in) :: x
-            real(TKC) :: func
+            real(TKG), intent(in) :: x
+            real(TKG) :: func
             func = x**2 - sum(roots(1:2)) * x + product(roots) ! (x - roots(1)) * (x - roots(2))
         end function
 
 #if     Newton_ENABLED || Halley_ENABLED || Schroder_ENABLED
         pure function getFuncDiff(x, order) result(func)
             integer(IK), intent(in) :: order
-            real(TKC), intent(in) :: x
-            real(TKC) :: func
+            real(TKG), intent(in) :: x
+            real(TKG) :: func
             if (order == 0) func = getFunc(x)
-            if (order == 1) func = 2._TKC * x - sum(roots(1:2))
-            if (order == 2) func = 2._TKC
+            if (order == 1) func = 2._TKG * x - sum(roots(1:2))
+            if (order == 2) func = 2._TKG
         end function
 #endif
 
@@ -139,22 +139,22 @@
         subroutine testWith(method, abstol, neval, niter)
             type(METHOD), intent(in), optional :: method
             integer(IK), intent(inout), optional :: neval, niter
-            real(TKC), intent(in), optional :: abstol
-            real(TKC) :: abstol_def
+            real(TKG), intent(in), optional :: abstol
+            real(TKG) :: abstol_def
             integer(IK) :: neval_def
             TYPE_KIND :: root
             if (present(abstol)) then
-                abstol_def = abstol * 1000._TKC
+                abstol_def = abstol * 1000._TKG
             else
-                abstol_def = abstol_ref * (abs(lb) + abs(ub)) * 1000._TKC
+                abstol_def = abstol_ref * (abs(lb) + abs(ub)) * 1000._TKG
             end if
             if (present(method)) then
                 root = getRoot(method, GETFUNC, lb, ub, abstol, neval, niter)
                 assertion = assertion .and. (any(abs(roots - root) < abstol_def) .or. getOption(0_IK, neval) < 0_IK)
                 call report(__LINE__, root, method, abstol, neval, niter)
 #if             Newton_ENABLED || Halley_ENABLED || Schroder_ENABLED
-                !call disp%show("[real(TKC) :: lb, ub, getFunc(lb), getFunc(ub), abstol_def]")
-                !call disp%show( [real(TKC) :: lb, ub, getFunc(lb), getFunc(ub), abstol_def] )
+                !call disp%show("[real(TKG) :: lb, ub, getFunc(lb), getFunc(ub), abstol_def]")
+                !call disp%show( [real(TKG) :: lb, ub, getFunc(lb), getFunc(ub), abstol_def] )
                 !call disp%show("[roots, getFunc(roots(1)), getFunc(roots(2))]")
                 !call disp%show( [roots, getFunc(roots(1)), getFunc(roots(2))] )
                 root = getRoot(method, GETFUNC, lb, ub, abstol, neval, niter, init = getUnifRand(lb - 1, ub + 1))
@@ -179,7 +179,7 @@
         subroutine report(line, root, method, abstol, neval, niter)
             type(METHOD), intent(in), optional :: method
             integer(IK), intent(in), optional :: neval, niter
-            real(TKC), intent(in), optional :: abstol
+            real(TKG), intent(in), optional :: abstol
             TYPE_KIND, intent(in) :: root
             integer, intent(in) :: line
             if (test%traceable .and. .not. assertion) then

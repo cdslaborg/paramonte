@@ -20,24 +20,24 @@ program example
     call disp%skip()
 
     block
-        use pm_kind, only: RKC => RKS ! all processor kinds are supported.
+        use pm_kind, only: RKG => RKS ! all processor kinds are supported.
         use pm_mathConst, only: PI_RKH => PI
-        real(RKC), parameter :: PI = PI_RKH
-        real(RKC), allocatable :: crdx(:), func(:), queryx(:), interp(:)
+        real(RKG), parameter :: PI = PI_RKH
+        real(RKG), allocatable :: crdx(:), func(:), queryx(:), interp(:)
         integer(IK) :: ncrd, nquery
         call disp%skip()
         call disp%show("ncrd = 9; nquery = 33")
                         ncrd = 9; nquery = 33
-        call disp%show("crdx = getLinSpace(0._RKC, 2 * PI, ncrd)")
-                        crdx = getLinSpace(0._RKC, 2 * PI, ncrd)
+        call disp%show("crdx = getLinSpace(0._RKG, 2 * PI, ncrd)")
+                        crdx = getLinSpace(0._RKG, 2 * PI, ncrd)
         call disp%show("crdx")
         call disp%show( crdx )
         call disp%show("func = sin(crdx)")
                         func = sin(crdx)
         call disp%show("func")
         call disp%show( func )
-        call disp%show("queryx = getLinSpace(0._RKC, 2 * PI, nquery)")
-                        queryx = getLinSpace(0._RKC, 2 * PI, nquery)
+        call disp%show("queryx = getLinSpace(0._RKG, 2 * PI, nquery)")
+                        queryx = getLinSpace(0._RKG, 2 * PI, nquery)
         call disp%show("queryx")
         call disp%show( queryx )
         call disp%skip()

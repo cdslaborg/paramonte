@@ -58,12 +58,12 @@ getStr([shape(center, IK), shape(invCov, IK)]))
         ! Set the type and kind.
 #if     RK_ENABLED
 #define GET_CONJG(point) point
-#define TYPE_KIND real(RKC)
-        real(RKC)   , parameter :: ZERO = 0._RKC
+#define TYPE_KIND real(RKG)
+        real(RKG)   , parameter :: ZERO = 0._RKG
 #elif   CK_ENABLED
 #define GET_CONJG(point) conjg(point)
-#define TYPE_KIND complex(CKC)
-        complex(CKC), parameter :: ZERO = (0._CKC, 0._CKC)
+#define TYPE_KIND complex(CKG)
+        complex(CKG), parameter :: ZERO = (0._CKG, 0._CKG)
 #else
 #error  "Unrecognized interface."
 #endif
@@ -77,7 +77,7 @@ getStr([shape(center, IK), shape(invCov, IK)]))
         !%%%%%%%%%
 
 #if     RK_ENABLED
-        CHECK_ASSERTION(__LINE__, 0._RKC < invCov, SK_": The condition `0. < invCov` must hold. invCov = "//getStr(invCov))
+        CHECK_ASSERTION(__LINE__, 0._RKG < invCov, SK_": The condition `0. < invCov` must hold. invCov = "//getStr(invCov))
 #elif   !CK_ENABLED
 #error  "Unrecognized interface."
 #endif

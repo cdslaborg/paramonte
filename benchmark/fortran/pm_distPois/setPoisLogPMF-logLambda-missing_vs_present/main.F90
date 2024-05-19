@@ -4,7 +4,7 @@ program benchmark
     use pm_bench, only: bench_type
     use pm_distUnif, only: xoshiro256ssw_type
     use pm_distUnif, only: setUnifRand
-    use pm_kind, only: SK, IK, RK, RKC => RK
+    use pm_kind, only: SK, IK, RK, RKG => RK
 
     implicit none
 
@@ -15,9 +15,9 @@ program benchmark
     integer(IK)     , parameter         :: NBENCH = 2_IK                !<  The number of benchmark procedures.
     integer(IK)                         :: arraySize(0:NSIZE)           !<  The sizes of the benchmark logPMF.
     integer(IK)     , allocatable       :: count(:)                     !<  The benchmark point.
-    real(RKC)       , allocatable       :: logPMF(:)                    !<  The benchmark array.
-    real(RKC)       , allocatable       :: logLambda(:), lambda(:)      !<  The distribution parameters.
-    real(RKC)                           :: dummy = 0._RKC               !<  The dummy computation to prevent the compiler from doing aggressive optimizations.
+    real(RKG)       , allocatable       :: logPMF(:)                    !<  The benchmark array.
+    real(RKG)       , allocatable       :: logLambda(:), lambda(:)      !<  The distribution parameters.
+    real(RKG)                           :: dummy = 0._RKG               !<  The dummy computation to prevent the compiler from doing aggressive optimizations.
     type(bench_type)                    :: bench(NBENCH)                !<  The Benchmark array.
     type(xoshiro256ssw_type)            :: rng
 
@@ -43,7 +43,7 @@ program benchmark
             allocate(logPMF(arraySize(isize)), count(arraySize(isize)), lambda(arraySize(isize)))
             call setUnifRand(rng, count, 0_IK, 1023_IK)
             call random_number(lambda)
-            lambda = 1._RKC - lambda
+            lambda = 1._RKG - lambda
             logLambda = log(lambda)
             do i = 1, NBENCH
                 bench(i)%timing = bench(i)%getTiming(minsec = 0.05_RK)

@@ -36,10 +36,10 @@ program example
     call disp%skip()
 
     block
-        use pm_kind, only: TKC => RKS ! All other real types are also supported.
+        use pm_kind, only: TKG => RKS ! All other real types are also supported.
         integer(IK), allocatable :: factor(:), lag(:)
-        real(TKC), allocatable :: seq(:), f(:), g(:), acf(:), coef(:), range(:)
-        real(TKC), parameter :: ZERO = 0._TKC
+        real(TKG), allocatable :: seq(:), f(:), g(:), acf(:), coef(:), range(:)
+        real(TKG), parameter :: ZERO = 0._TKG
         call disp%skip()
         call disp%show("nsam = 41")
                         nsam = 41
@@ -79,8 +79,8 @@ program example
                         lag = getRange(-nsam + 1_IK, nsam - 1_IK)
         call disp%show("if (0 /= getErrTableWrite(SK_'setACF.crd.sin.RK.txt', reshape([range, seq], [nsam, 2_IK]), header = SK_'crd,f')) error stop 'acf outputting failed.'")
                         if (0 /= getErrTableWrite(SK_'setACF.crd.sin.RK.txt', reshape([range, seq], [nsam, 2_IK]), header = SK_'crd,f')) error stop 'acf outputting failed.'
-        call disp%show("if (0 /= getErrTableWrite(SK_'setACF.acf.sin.RK.txt', reshape([real(lag, TKC), acf], [size(lag), 2]), header = SK_'lag,acf')) error stop 'acf outputting failed.'")
-                        if (0 /= getErrTableWrite(SK_'setACF.acf.sin.RK.txt', reshape([real(lag, TKC), acf], [size(lag), 2]), header = SK_'lag,acf')) error stop 'acf outputting failed.'
+        call disp%show("if (0 /= getErrTableWrite(SK_'setACF.acf.sin.RK.txt', reshape([real(lag, TKG), acf], [size(lag), 2]), header = SK_'lag,acf')) error stop 'acf outputting failed.'")
+                        if (0 /= getErrTableWrite(SK_'setACF.acf.sin.RK.txt', reshape([real(lag, TKG), acf], [size(lag), 2]), header = SK_'lag,acf')) error stop 'acf outputting failed.'
         call disp%skip()
     end block
 

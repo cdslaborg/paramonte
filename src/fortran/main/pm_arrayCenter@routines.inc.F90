@@ -29,11 +29,11 @@
 !>  Fortran runtime error: Integer overflow when calculating the amount of memory to allocate
 !>  The following preprocessor condition bypasses gfortran's bug.
 !#if     getCenteredAsis_D0_SK_ENABLED || getCenteredMarg_D0_SK_ENABLED || setCenteredAsis_D0_SK_ENABLED || setCenteredMarg_D0_SK_ENABLED
-!#define ALLOCATE_NEW_WITH_STAT allocate(character(size + lmsize + rmsize, SKC) :: arrayCentered, stat = stat)
-!#define ALLOCATE_NEW allocate(character(size + lmsize + rmsize, SKC) :: arrayCentered)
+!#define ALLOCATE_NEW_WITH_STAT allocate(character(size + lmsize + rmsize, SKG) :: arrayCentered, stat = stat)
+!#define ALLOCATE_NEW allocate(character(size + lmsize + rmsize, SKG) :: arrayCentered)
 !#elif   getCenteredAsis_D1_SK_ENABLED || getCenteredMarg_D1_SK_ENABLED || setCenteredAsis_D1_SK_ENABLED || setCenteredMarg_D1_SK_ENABLED
-!#define ALLOCATE_NEW_WITH_STAT allocate(character(len(array),SKC) :: arrayCentered(lb : lb + size + lmsize + rmsize - 1_IK), stat = stat)
-!#define ALLOCATE_NEW allocate(character(len(array),SKC) :: arrayCentered(lb : lb + size + lmsize + rmsize - 1_IK))
+!#define ALLOCATE_NEW_WITH_STAT allocate(character(len(array),SKG) :: arrayCentered(lb : lb + size + lmsize + rmsize - 1_IK), stat = stat)
+!#define ALLOCATE_NEW allocate(character(len(array),SKG) :: arrayCentered(lb : lb + size + lmsize + rmsize - 1_IK))
 !#else
 !#define ALLOCATE_NEW_WITH_STAT allocate(arrayCentered(lb : lb + size + lmsize + rmsize - 1_IK), stat = stat)
 !#define ALLOCATE_NEW allocate(arrayCentered(lb : lb + size + lmsize + rmsize - 1_IK))

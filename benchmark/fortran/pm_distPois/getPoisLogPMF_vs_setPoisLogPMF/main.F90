@@ -2,7 +2,7 @@
 program benchmark
 
     use iso_fortran_env, only: error_unit
-    use pm_kind, only: SK, IK, RK, RKC => RK
+    use pm_kind, only: SK, IK, RK, RKG => RK
     use pm_distUnif, only: xoshiro256ssw_type
     use pm_bench, only: bench_type
 
@@ -15,8 +15,8 @@ program benchmark
     integer(IK)     , parameter         :: NBENCH = 2_IK                !<  The number of benchmark procedures.
     integer(IK)                         :: arraySize(NSIZE)             !<  The sizes of the benchmark array.
     integer(IK)     , allocatable       :: count(:)                     !<  The benchmark point.
-    real(RKC)       , allocatable       :: array(:)                     !<  The benchmark array.
-    real(RKC)                           :: dummy = 0._RKC               !<  The dummy computation to prevent the compiler from doing aggressive optimizations.
+    real(RKG)       , allocatable       :: array(:)                     !<  The benchmark array.
+    real(RKG)                           :: dummy = 0._RKG               !<  The dummy computation to prevent the compiler from doing aggressive optimizations.
     type(bench_type)                    :: bench(NBENCH)                !<  The Benchmark array.
     type(xoshiro256ssw_type)            :: rng
 
@@ -78,7 +78,7 @@ contains
         block
             use pm_distPois, only: setPoisLogPMF
             call initialize()
-            call setPoisLogPMF(array, count, lambda = 1._RKC)
+            call setPoisLogPMF(array, count, lambda = 1._RKG)
             call finalize()
         end block
     end subroutine
@@ -87,7 +87,7 @@ contains
         block
             use pm_distPois, only: getPoisLogPMF
             call initialize()
-            array = getPoisLogPMF(count, lambda = 1._RKC)
+            array = getPoisLogPMF(count, lambda = 1._RKG)
             call finalize()
         end block
     end subroutine

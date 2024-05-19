@@ -25,12 +25,12 @@
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #define CHECK_POSITIVE_RADIUS \
-CHECK_ASSERTION(__LINE__, all([0._RKC < radius]), \
-SK_"@getNormShellLogUDF(): The condition `all([0._RKC < radius])` must hold. width = "//getStr(radius)) ! fpp
+CHECK_ASSERTION(__LINE__, all([0._RKG < radius]), \
+SK_"@getNormShellLogUDF(): The condition `all([0._RKG < radius])` must hold. width = "//getStr(radius)) ! fpp
 
 #define CHECK_POSITIVE_WIDTH \
-CHECK_ASSERTION(__LINE__, all([0._RKC < width]), \
-SK_"@getNormShellLogUDF(): The condition `all([0._RKC < width])` must hold. width = "//getStr(width)); ! fpp
+CHECK_ASSERTION(__LINE__, all([0._RKG < width]), \
+SK_"@getNormShellLogUDF(): The condition `all([0._RKG < width])` must hold. width = "//getStr(width)); ! fpp
 
 #define CHECK_LENGTH_RADIUS \
 CHECK_ASSERTION(__LINE__, size(radius, 1, IK) == size(center, 2, IK), \
@@ -46,7 +46,7 @@ getStr([size(width, 1, IK), size(center, 2, IK)])) ! fpp
 #if     getNormShellLogUDF_ENABLED
         !%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        real(RKC), parameter :: ZERO = 0._RKC, ONE = 1._RKC !, TWO = 2._RKC !, PI = acos(-1._RKC)
+        real(RKG), parameter :: ZERO = 0._RKG, ONE = 1._RKG !, TWO = 2._RKG !, PI = acos(-1._RKG)
 #if     CI_ENABLED
         CHECK_ASSERTION(__LINE__, size(X, 1, IK) == size(center, 1, IK), \
         SK_"@getNormShellLogUDF(): The condition `size(X, 1) == size(center, 1)` must hold. size(X, 1), size(center, 1) = "//\
@@ -75,16 +75,16 @@ getStr([size(width, 1, IK), size(center, 2, IK)])) ! fpp
             CHECK_POSITIVE_WIDTH
             if (present(radius)) then
                 CHECK_POSITIVE_RADIUS
-                logUDF = -.5_RKC * ((sqrt(MAHAL_SQ) - radius) / width)**2
+                logUDF = -.5_RKG * ((sqrt(MAHAL_SQ) - radius) / width)**2
             else
-                logUDF = -.5_RKC * ((sqrt(MAHAL_SQ) - ONE) / width)**2
+                logUDF = -.5_RKG * ((sqrt(MAHAL_SQ) - ONE) / width)**2
             end if
         else
             if (present(radius)) then
                 CHECK_POSITIVE_RADIUS
-                logUDF = -.5_RKC *  (sqrt(MAHAL_SQ) - radius)**2
+                logUDF = -.5_RKG *  (sqrt(MAHAL_SQ) - radius)**2
             else
-                logUDF = -.5_RKC *  (sqrt(MAHAL_SQ) - ONE)**2
+                logUDF = -.5_RKG *  (sqrt(MAHAL_SQ) - ONE)**2
             end if
         end if
 #elif   Mix_ENABLED && D1_ENABLED && DD_ENABLED
@@ -93,7 +93,7 @@ getStr([size(width, 1, IK), size(center, 2, IK)])) ! fpp
         getStr([size(width, 1, IK), size(radius, 1, IK)])) ! fpp
         CHECK_POSITIVE_RADIUS
         CHECK_POSITIVE_WIDTH
-        logUDF = -.5_RKC * ((sqrt(sum(X**2)) - radius) / width)**2
+        logUDF = -.5_RKG * ((sqrt(sum(X**2)) - radius) / width)**2
 #else
 #error  "Unrecognized interface."
 #endif

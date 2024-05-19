@@ -21,73 +21,27 @@ program example
     call disp%skip
 
     block
-        use pm_kind, only: TKC => RKS
-        real(TKC), allocatable :: mat_lup(:,:), lup_ref(:,:)
-        mat_lup = reshape(  [ 1.0_TKC, +1.2_TKC, 1.4_TKC, 1.6_TKC, 1.8_TKC, 2.0_TKC, 2.2_TKC, 2.4_TKC, 2.6_TKC &
-                            , 1.2_TKC, +1.0_TKC, 1.2_TKC, 1.4_TKC, 1.6_TKC, 1.8_TKC, 2.0_TKC, 2.2_TKC, 2.4_TKC &
-                            , 1.4_TKC, +1.2_TKC, 1.0_TKC, 1.2_TKC, 1.4_TKC, 1.6_TKC, 1.8_TKC, 2.0_TKC, 2.2_TKC &
-                            , 1.6_TKC, +1.4_TKC, 1.2_TKC, 1.0_TKC, 1.2_TKC, 1.4_TKC, 1.6_TKC, 1.8_TKC, 2.0_TKC &
-                            , 1.8_TKC, +1.6_TKC, 1.4_TKC, 1.2_TKC, 1.0_TKC, 1.2_TKC, 1.4_TKC, 1.6_TKC, 1.8_TKC &
-                            , 2.0_TKC, +1.8_TKC, 1.6_TKC, 1.4_TKC, 1.2_TKC, 1.0_TKC, 1.2_TKC, 1.4_TKC, 1.6_TKC &
-                            , 2.2_TKC, +2.0_TKC, 1.8_TKC, 1.6_TKC, 1.4_TKC, 1.2_TKC, 1.0_TKC, 1.2_TKC, 1.4_TKC &
-                            , 2.4_TKC, +2.2_TKC, 2.0_TKC, 1.8_TKC, 1.6_TKC, 1.4_TKC, 1.2_TKC, 1.0_TKC, 1.2_TKC &
-                            , 2.6_TKC, +2.4_TKC, 2.2_TKC, 2.0_TKC, 1.8_TKC, 1.6_TKC, 1.4_TKC, 1.2_TKC, 1.0_TKC &
+        use pm_kind, only: TKG => RKS
+        real(TKG), allocatable :: mat_lup(:,:), lup_ref(:,:)
+        mat_lup = reshape(  [ 1.0_TKG, +1.2_TKG, 1.4_TKG, 1.6_TKG, 1.8_TKG, 2.0_TKG, 2.2_TKG, 2.4_TKG, 2.6_TKG &
+                            , 1.2_TKG, +1.0_TKG, 1.2_TKG, 1.4_TKG, 1.6_TKG, 1.8_TKG, 2.0_TKG, 2.2_TKG, 2.4_TKG &
+                            , 1.4_TKG, +1.2_TKG, 1.0_TKG, 1.2_TKG, 1.4_TKG, 1.6_TKG, 1.8_TKG, 2.0_TKG, 2.2_TKG &
+                            , 1.6_TKG, +1.4_TKG, 1.2_TKG, 1.0_TKG, 1.2_TKG, 1.4_TKG, 1.6_TKG, 1.8_TKG, 2.0_TKG &
+                            , 1.8_TKG, +1.6_TKG, 1.4_TKG, 1.2_TKG, 1.0_TKG, 1.2_TKG, 1.4_TKG, 1.6_TKG, 1.8_TKG &
+                            , 2.0_TKG, +1.8_TKG, 1.6_TKG, 1.4_TKG, 1.2_TKG, 1.0_TKG, 1.2_TKG, 1.4_TKG, 1.6_TKG &
+                            , 2.2_TKG, +2.0_TKG, 1.8_TKG, 1.6_TKG, 1.4_TKG, 1.2_TKG, 1.0_TKG, 1.2_TKG, 1.4_TKG &
+                            , 2.4_TKG, +2.2_TKG, 2.0_TKG, 1.8_TKG, 1.6_TKG, 1.4_TKG, 1.2_TKG, 1.0_TKG, 1.2_TKG &
+                            , 2.6_TKG, +2.4_TKG, 2.2_TKG, 2.0_TKG, 1.8_TKG, 1.6_TKG, 1.4_TKG, 1.2_TKG, 1.0_TKG &
                             ], shape = [9, 9], order = [2, 1])
-        lup_ref = reshape(  [ 2.6_TKC,  2.4_TKC, 2.2_TKC, 2.0_TKC, 1.8_TKC, 1.6_TKC, 1.4_TKC, 1.2_TKC, 1.0_TKC &
-                            , 0.4_TKC,  0.3_TKC, 0.6_TKC, 0.8_TKC, 1.1_TKC, 1.4_TKC, 1.7_TKC, 1.9_TKC, 2.2_TKC &
-                            , 0.5_TKC, -0.4_TKC, 0.4_TKC, 0.8_TKC, 1.2_TKC, 1.6_TKC, 2.0_TKC, 2.4_TKC, 2.8_TKC &
-                            , 0.5_TKC, -0.3_TKC, 0.0_TKC, 0.4_TKC, 0.8_TKC, 1.2_TKC, 1.6_TKC, 2.0_TKC, 2.4_TKC &
-                            , 0.6_TKC, -0.3_TKC, 0.0_TKC, 0.0_TKC, 0.4_TKC, 0.8_TKC, 1.2_TKC, 1.6_TKC, 2.0_TKC &
-                            , 0.7_TKC, -0.2_TKC, 0.0_TKC, 0.0_TKC, 0.0_TKC, 0.4_TKC, 0.8_TKC, 1.2_TKC, 1.6_TKC &
-                            , 0.8_TKC, -0.2_TKC, 0.0_TKC, 0.0_TKC, 0.0_TKC, 0.0_TKC, 0.4_TKC, 0.8_TKC, 1.2_TKC &
-                            , 0.8_TKC, -0.1_TKC, 0.0_TKC, 0.0_TKC, 0.0_TKC, 0.0_TKC, 0.0_TKC, 0.4_TKC, 0.8_TKC &
-                            , 0.9_TKC, -0.1_TKC, 0.0_TKC, 0.0_TKC, 0.0_TKC, 0.0_TKC, 0.0_TKC, 0.0_TKC, 0.4_TKC &
-                            ], shape = [9, 9], order = [2, 1])
-        rperm_ref = [9, 9, 9, 9, 9, 9, 9, 9, 9]
-        call disp%skip
-        call disp%show("mat_lup")
-        call disp%show( mat_lup )
-        call disp%show("call setResized(rperm, size(mat_lup, 1, IK))")
-                        call setResized(rperm, size(mat_lup, 1, IK))
-        call disp%show("call setMatLUP(mat_lup, rperm, info); if (info /= 0) error stop")
-                        call setMatLUP(mat_lup, rperm, info); if (info /= 0) error stop
-        call disp%show("mat_lup")
-        call disp%show( mat_lup )
-        call disp%show("call setResized(rperm, size(mat_lup, 1, IK)) ! reconstruct the original matrix.")
-                        call setResized(rperm, size(mat_lup, 1, IK))
-        call disp%show("lup_ref ! reference matrix rounded to 1 significant digit.")
-        call disp%show( lup_ref )
-        call disp%show("lup_ref - mat_lup, format = SK_'(*(f0.1,:,"", ""))'")
-        call disp%show( lup_ref - mat_lup, format = SK_"(*(f0.1,:,"", ""))" )
-        call disp%show("rperm_ref")
-        call disp%show( rperm_ref )
-        call disp%show("rperm")
-        call disp%show( rperm )
-        call disp%skip
-    end block
-
-    block
-        use pm_kind, only: TKC => RKD
-        real(TKC), allocatable :: mat_lup(:,:), lup_ref(:,:)
-        mat_lup = reshape(  [ 1.0_TKC, +1.2_TKC, 1.4_TKC, 1.6_TKC, 1.8_TKC, 2.0_TKC, 2.2_TKC, 2.4_TKC, 2.6_TKC &
-                            , 1.2_TKC, +1.0_TKC, 1.2_TKC, 1.4_TKC, 1.6_TKC, 1.8_TKC, 2.0_TKC, 2.2_TKC, 2.4_TKC &
-                            , 1.4_TKC, +1.2_TKC, 1.0_TKC, 1.2_TKC, 1.4_TKC, 1.6_TKC, 1.8_TKC, 2.0_TKC, 2.2_TKC &
-                            , 1.6_TKC, +1.4_TKC, 1.2_TKC, 1.0_TKC, 1.2_TKC, 1.4_TKC, 1.6_TKC, 1.8_TKC, 2.0_TKC &
-                            , 1.8_TKC, +1.6_TKC, 1.4_TKC, 1.2_TKC, 1.0_TKC, 1.2_TKC, 1.4_TKC, 1.6_TKC, 1.8_TKC &
-                            , 2.0_TKC, +1.8_TKC, 1.6_TKC, 1.4_TKC, 1.2_TKC, 1.0_TKC, 1.2_TKC, 1.4_TKC, 1.6_TKC &
-                            , 2.2_TKC, +2.0_TKC, 1.8_TKC, 1.6_TKC, 1.4_TKC, 1.2_TKC, 1.0_TKC, 1.2_TKC, 1.4_TKC &
-                            , 2.4_TKC, +2.2_TKC, 2.0_TKC, 1.8_TKC, 1.6_TKC, 1.4_TKC, 1.2_TKC, 1.0_TKC, 1.2_TKC &
-                            , 2.6_TKC, +2.4_TKC, 2.2_TKC, 2.0_TKC, 1.8_TKC, 1.6_TKC, 1.4_TKC, 1.2_TKC, 1.0_TKC &
-                            ], shape = [9, 9], order = [2, 1])
-        lup_ref = reshape(  [ 2.6_TKC,  2.4_TKC, 2.2_TKC, 2.0_TKC, 1.8_TKC, 1.6_TKC, 1.4_TKC, 1.2_TKC, 1.0_TKC &
-                            , 0.4_TKC,  0.3_TKC, 0.6_TKC, 0.8_TKC, 1.1_TKC, 1.4_TKC, 1.7_TKC, 1.9_TKC, 2.2_TKC &
-                            , 0.5_TKC, -0.4_TKC, 0.4_TKC, 0.8_TKC, 1.2_TKC, 1.6_TKC, 2.0_TKC, 2.4_TKC, 2.8_TKC &
-                            , 0.5_TKC, -0.3_TKC, 0.0_TKC, 0.4_TKC, 0.8_TKC, 1.2_TKC, 1.6_TKC, 2.0_TKC, 2.4_TKC &
-                            , 0.6_TKC, -0.3_TKC, 0.0_TKC, 0.0_TKC, 0.4_TKC, 0.8_TKC, 1.2_TKC, 1.6_TKC, 2.0_TKC &
-                            , 0.7_TKC, -0.2_TKC, 0.0_TKC, 0.0_TKC, 0.0_TKC, 0.4_TKC, 0.8_TKC, 1.2_TKC, 1.6_TKC &
-                            , 0.8_TKC, -0.2_TKC, 0.0_TKC, 0.0_TKC, 0.0_TKC, 0.0_TKC, 0.4_TKC, 0.8_TKC, 1.2_TKC &
-                            , 0.8_TKC, -0.1_TKC, 0.0_TKC, 0.0_TKC, 0.0_TKC, 0.0_TKC, 0.0_TKC, 0.4_TKC, 0.8_TKC &
-                            , 0.9_TKC, -0.1_TKC, 0.0_TKC, 0.0_TKC, 0.0_TKC, 0.0_TKC, 0.0_TKC, 0.0_TKC, 0.4_TKC &
+        lup_ref = reshape(  [ 2.6_TKG,  2.4_TKG, 2.2_TKG, 2.0_TKG, 1.8_TKG, 1.6_TKG, 1.4_TKG, 1.2_TKG, 1.0_TKG &
+                            , 0.4_TKG,  0.3_TKG, 0.6_TKG, 0.8_TKG, 1.1_TKG, 1.4_TKG, 1.7_TKG, 1.9_TKG, 2.2_TKG &
+                            , 0.5_TKG, -0.4_TKG, 0.4_TKG, 0.8_TKG, 1.2_TKG, 1.6_TKG, 2.0_TKG, 2.4_TKG, 2.8_TKG &
+                            , 0.5_TKG, -0.3_TKG, 0.0_TKG, 0.4_TKG, 0.8_TKG, 1.2_TKG, 1.6_TKG, 2.0_TKG, 2.4_TKG &
+                            , 0.6_TKG, -0.3_TKG, 0.0_TKG, 0.0_TKG, 0.4_TKG, 0.8_TKG, 1.2_TKG, 1.6_TKG, 2.0_TKG &
+                            , 0.7_TKG, -0.2_TKG, 0.0_TKG, 0.0_TKG, 0.0_TKG, 0.4_TKG, 0.8_TKG, 1.2_TKG, 1.6_TKG &
+                            , 0.8_TKG, -0.2_TKG, 0.0_TKG, 0.0_TKG, 0.0_TKG, 0.0_TKG, 0.4_TKG, 0.8_TKG, 1.2_TKG &
+                            , 0.8_TKG, -0.1_TKG, 0.0_TKG, 0.0_TKG, 0.0_TKG, 0.0_TKG, 0.0_TKG, 0.4_TKG, 0.8_TKG &
+                            , 0.9_TKG, -0.1_TKG, 0.0_TKG, 0.0_TKG, 0.0_TKG, 0.0_TKG, 0.0_TKG, 0.0_TKG, 0.4_TKG &
                             ], shape = [9, 9], order = [2, 1])
         rperm_ref = [9, 9, 9, 9, 9, 9, 9, 9, 9]
         call disp%skip
@@ -113,27 +67,73 @@ program example
     end block
 
     block
-        use pm_kind, only: TKC => RKH
-        real(TKC), allocatable :: mat_lup(:,:), lup_ref(:,:)
-        mat_lup = reshape(  [ 1.0_TKC, +1.2_TKC, 1.4_TKC, 1.6_TKC, 1.8_TKC, 2.0_TKC, 2.2_TKC, 2.4_TKC, 2.6_TKC &
-                            , 1.2_TKC, +1.0_TKC, 1.2_TKC, 1.4_TKC, 1.6_TKC, 1.8_TKC, 2.0_TKC, 2.2_TKC, 2.4_TKC &
-                            , 1.4_TKC, +1.2_TKC, 1.0_TKC, 1.2_TKC, 1.4_TKC, 1.6_TKC, 1.8_TKC, 2.0_TKC, 2.2_TKC &
-                            , 1.6_TKC, +1.4_TKC, 1.2_TKC, 1.0_TKC, 1.2_TKC, 1.4_TKC, 1.6_TKC, 1.8_TKC, 2.0_TKC &
-                            , 1.8_TKC, +1.6_TKC, 1.4_TKC, 1.2_TKC, 1.0_TKC, 1.2_TKC, 1.4_TKC, 1.6_TKC, 1.8_TKC &
-                            , 2.0_TKC, +1.8_TKC, 1.6_TKC, 1.4_TKC, 1.2_TKC, 1.0_TKC, 1.2_TKC, 1.4_TKC, 1.6_TKC &
-                            , 2.2_TKC, +2.0_TKC, 1.8_TKC, 1.6_TKC, 1.4_TKC, 1.2_TKC, 1.0_TKC, 1.2_TKC, 1.4_TKC &
-                            , 2.4_TKC, +2.2_TKC, 2.0_TKC, 1.8_TKC, 1.6_TKC, 1.4_TKC, 1.2_TKC, 1.0_TKC, 1.2_TKC &
-                            , 2.6_TKC, +2.4_TKC, 2.2_TKC, 2.0_TKC, 1.8_TKC, 1.6_TKC, 1.4_TKC, 1.2_TKC, 1.0_TKC &
+        use pm_kind, only: TKG => RKD
+        real(TKG), allocatable :: mat_lup(:,:), lup_ref(:,:)
+        mat_lup = reshape(  [ 1.0_TKG, +1.2_TKG, 1.4_TKG, 1.6_TKG, 1.8_TKG, 2.0_TKG, 2.2_TKG, 2.4_TKG, 2.6_TKG &
+                            , 1.2_TKG, +1.0_TKG, 1.2_TKG, 1.4_TKG, 1.6_TKG, 1.8_TKG, 2.0_TKG, 2.2_TKG, 2.4_TKG &
+                            , 1.4_TKG, +1.2_TKG, 1.0_TKG, 1.2_TKG, 1.4_TKG, 1.6_TKG, 1.8_TKG, 2.0_TKG, 2.2_TKG &
+                            , 1.6_TKG, +1.4_TKG, 1.2_TKG, 1.0_TKG, 1.2_TKG, 1.4_TKG, 1.6_TKG, 1.8_TKG, 2.0_TKG &
+                            , 1.8_TKG, +1.6_TKG, 1.4_TKG, 1.2_TKG, 1.0_TKG, 1.2_TKG, 1.4_TKG, 1.6_TKG, 1.8_TKG &
+                            , 2.0_TKG, +1.8_TKG, 1.6_TKG, 1.4_TKG, 1.2_TKG, 1.0_TKG, 1.2_TKG, 1.4_TKG, 1.6_TKG &
+                            , 2.2_TKG, +2.0_TKG, 1.8_TKG, 1.6_TKG, 1.4_TKG, 1.2_TKG, 1.0_TKG, 1.2_TKG, 1.4_TKG &
+                            , 2.4_TKG, +2.2_TKG, 2.0_TKG, 1.8_TKG, 1.6_TKG, 1.4_TKG, 1.2_TKG, 1.0_TKG, 1.2_TKG &
+                            , 2.6_TKG, +2.4_TKG, 2.2_TKG, 2.0_TKG, 1.8_TKG, 1.6_TKG, 1.4_TKG, 1.2_TKG, 1.0_TKG &
                             ], shape = [9, 9], order = [2, 1])
-        lup_ref = reshape(  [ 2.6_TKC,  2.4_TKC, 2.2_TKC, 2.0_TKC, 1.8_TKC, 1.6_TKC, 1.4_TKC, 1.2_TKC, 1.0_TKC &
-                            , 0.4_TKC,  0.3_TKC, 0.6_TKC, 0.8_TKC, 1.1_TKC, 1.4_TKC, 1.7_TKC, 1.9_TKC, 2.2_TKC &
-                            , 0.5_TKC, -0.4_TKC, 0.4_TKC, 0.8_TKC, 1.2_TKC, 1.6_TKC, 2.0_TKC, 2.4_TKC, 2.8_TKC &
-                            , 0.5_TKC, -0.3_TKC, 0.0_TKC, 0.4_TKC, 0.8_TKC, 1.2_TKC, 1.6_TKC, 2.0_TKC, 2.4_TKC &
-                            , 0.6_TKC, -0.3_TKC, 0.0_TKC, 0.0_TKC, 0.4_TKC, 0.8_TKC, 1.2_TKC, 1.6_TKC, 2.0_TKC &
-                            , 0.7_TKC, -0.2_TKC, 0.0_TKC, 0.0_TKC, 0.0_TKC, 0.4_TKC, 0.8_TKC, 1.2_TKC, 1.6_TKC &
-                            , 0.8_TKC, -0.2_TKC, 0.0_TKC, 0.0_TKC, 0.0_TKC, 0.0_TKC, 0.4_TKC, 0.8_TKC, 1.2_TKC &
-                            , 0.8_TKC, -0.1_TKC, 0.0_TKC, 0.0_TKC, 0.0_TKC, 0.0_TKC, 0.0_TKC, 0.4_TKC, 0.8_TKC &
-                            , 0.9_TKC, -0.1_TKC, 0.0_TKC, 0.0_TKC, 0.0_TKC, 0.0_TKC, 0.0_TKC, 0.0_TKC, 0.4_TKC &
+        lup_ref = reshape(  [ 2.6_TKG,  2.4_TKG, 2.2_TKG, 2.0_TKG, 1.8_TKG, 1.6_TKG, 1.4_TKG, 1.2_TKG, 1.0_TKG &
+                            , 0.4_TKG,  0.3_TKG, 0.6_TKG, 0.8_TKG, 1.1_TKG, 1.4_TKG, 1.7_TKG, 1.9_TKG, 2.2_TKG &
+                            , 0.5_TKG, -0.4_TKG, 0.4_TKG, 0.8_TKG, 1.2_TKG, 1.6_TKG, 2.0_TKG, 2.4_TKG, 2.8_TKG &
+                            , 0.5_TKG, -0.3_TKG, 0.0_TKG, 0.4_TKG, 0.8_TKG, 1.2_TKG, 1.6_TKG, 2.0_TKG, 2.4_TKG &
+                            , 0.6_TKG, -0.3_TKG, 0.0_TKG, 0.0_TKG, 0.4_TKG, 0.8_TKG, 1.2_TKG, 1.6_TKG, 2.0_TKG &
+                            , 0.7_TKG, -0.2_TKG, 0.0_TKG, 0.0_TKG, 0.0_TKG, 0.4_TKG, 0.8_TKG, 1.2_TKG, 1.6_TKG &
+                            , 0.8_TKG, -0.2_TKG, 0.0_TKG, 0.0_TKG, 0.0_TKG, 0.0_TKG, 0.4_TKG, 0.8_TKG, 1.2_TKG &
+                            , 0.8_TKG, -0.1_TKG, 0.0_TKG, 0.0_TKG, 0.0_TKG, 0.0_TKG, 0.0_TKG, 0.4_TKG, 0.8_TKG &
+                            , 0.9_TKG, -0.1_TKG, 0.0_TKG, 0.0_TKG, 0.0_TKG, 0.0_TKG, 0.0_TKG, 0.0_TKG, 0.4_TKG &
+                            ], shape = [9, 9], order = [2, 1])
+        rperm_ref = [9, 9, 9, 9, 9, 9, 9, 9, 9]
+        call disp%skip
+        call disp%show("mat_lup")
+        call disp%show( mat_lup )
+        call disp%show("call setResized(rperm, size(mat_lup, 1, IK))")
+                        call setResized(rperm, size(mat_lup, 1, IK))
+        call disp%show("call setMatLUP(mat_lup, rperm, info); if (info /= 0) error stop")
+                        call setMatLUP(mat_lup, rperm, info); if (info /= 0) error stop
+        call disp%show("mat_lup")
+        call disp%show( mat_lup )
+        call disp%show("call setResized(rperm, size(mat_lup, 1, IK)) ! reconstruct the original matrix.")
+                        call setResized(rperm, size(mat_lup, 1, IK))
+        call disp%show("lup_ref ! reference matrix rounded to 1 significant digit.")
+        call disp%show( lup_ref )
+        call disp%show("lup_ref - mat_lup, format = SK_'(*(f0.1,:,"", ""))'")
+        call disp%show( lup_ref - mat_lup, format = SK_"(*(f0.1,:,"", ""))" )
+        call disp%show("rperm_ref")
+        call disp%show( rperm_ref )
+        call disp%show("rperm")
+        call disp%show( rperm )
+        call disp%skip
+    end block
+
+    block
+        use pm_kind, only: TKG => RKH
+        real(TKG), allocatable :: mat_lup(:,:), lup_ref(:,:)
+        mat_lup = reshape(  [ 1.0_TKG, +1.2_TKG, 1.4_TKG, 1.6_TKG, 1.8_TKG, 2.0_TKG, 2.2_TKG, 2.4_TKG, 2.6_TKG &
+                            , 1.2_TKG, +1.0_TKG, 1.2_TKG, 1.4_TKG, 1.6_TKG, 1.8_TKG, 2.0_TKG, 2.2_TKG, 2.4_TKG &
+                            , 1.4_TKG, +1.2_TKG, 1.0_TKG, 1.2_TKG, 1.4_TKG, 1.6_TKG, 1.8_TKG, 2.0_TKG, 2.2_TKG &
+                            , 1.6_TKG, +1.4_TKG, 1.2_TKG, 1.0_TKG, 1.2_TKG, 1.4_TKG, 1.6_TKG, 1.8_TKG, 2.0_TKG &
+                            , 1.8_TKG, +1.6_TKG, 1.4_TKG, 1.2_TKG, 1.0_TKG, 1.2_TKG, 1.4_TKG, 1.6_TKG, 1.8_TKG &
+                            , 2.0_TKG, +1.8_TKG, 1.6_TKG, 1.4_TKG, 1.2_TKG, 1.0_TKG, 1.2_TKG, 1.4_TKG, 1.6_TKG &
+                            , 2.2_TKG, +2.0_TKG, 1.8_TKG, 1.6_TKG, 1.4_TKG, 1.2_TKG, 1.0_TKG, 1.2_TKG, 1.4_TKG &
+                            , 2.4_TKG, +2.2_TKG, 2.0_TKG, 1.8_TKG, 1.6_TKG, 1.4_TKG, 1.2_TKG, 1.0_TKG, 1.2_TKG &
+                            , 2.6_TKG, +2.4_TKG, 2.2_TKG, 2.0_TKG, 1.8_TKG, 1.6_TKG, 1.4_TKG, 1.2_TKG, 1.0_TKG &
+                            ], shape = [9, 9], order = [2, 1])
+        lup_ref = reshape(  [ 2.6_TKG,  2.4_TKG, 2.2_TKG, 2.0_TKG, 1.8_TKG, 1.6_TKG, 1.4_TKG, 1.2_TKG, 1.0_TKG &
+                            , 0.4_TKG,  0.3_TKG, 0.6_TKG, 0.8_TKG, 1.1_TKG, 1.4_TKG, 1.7_TKG, 1.9_TKG, 2.2_TKG &
+                            , 0.5_TKG, -0.4_TKG, 0.4_TKG, 0.8_TKG, 1.2_TKG, 1.6_TKG, 2.0_TKG, 2.4_TKG, 2.8_TKG &
+                            , 0.5_TKG, -0.3_TKG, 0.0_TKG, 0.4_TKG, 0.8_TKG, 1.2_TKG, 1.6_TKG, 2.0_TKG, 2.4_TKG &
+                            , 0.6_TKG, -0.3_TKG, 0.0_TKG, 0.0_TKG, 0.4_TKG, 0.8_TKG, 1.2_TKG, 1.6_TKG, 2.0_TKG &
+                            , 0.7_TKG, -0.2_TKG, 0.0_TKG, 0.0_TKG, 0.0_TKG, 0.4_TKG, 0.8_TKG, 1.2_TKG, 1.6_TKG &
+                            , 0.8_TKG, -0.2_TKG, 0.0_TKG, 0.0_TKG, 0.0_TKG, 0.0_TKG, 0.4_TKG, 0.8_TKG, 1.2_TKG &
+                            , 0.8_TKG, -0.1_TKG, 0.0_TKG, 0.0_TKG, 0.0_TKG, 0.0_TKG, 0.0_TKG, 0.4_TKG, 0.8_TKG &
+                            , 0.9_TKG, -0.1_TKG, 0.0_TKG, 0.0_TKG, 0.0_TKG, 0.0_TKG, 0.0_TKG, 0.0_TKG, 0.4_TKG &
                             ], shape = [9, 9], order = [2, 1])
         rperm_ref = [9, 9, 9, 9, 9, 9, 9, 9, 9]
         call disp%skip
@@ -166,8 +166,8 @@ program example
     call disp%skip
 
     block
-        use pm_kind, only: TKC => CKS
-        complex(TKC), allocatable :: mat_lup(:,:), lup_ref(:,:)
+        use pm_kind, only: TKG => CKS
+        complex(TKG), allocatable :: mat_lup(:,:), lup_ref(:,:)
          mat_lup = reshape( [ (2.0, 1.0), (2.4,-1.0), (2.8,-1.0), (3.2,-1.0), (3.6,-1.0), (4.0,-1.0), (4.4,-1.0), (4.8,-1.0), (5.2,-1.0) &
                             , (2.4, 1.0), (2.0, 1.0), (2.4,-1.0), (2.8,-1.0), (3.2,-1.0), (3.6,-1.0), (4.0,-1.0), (4.4,-1.0), (4.8,-1.0) &
                             , (2.8, 1.0), (2.4, 1.0), (2.0, 1.0), (2.4,-1.0), (2.8,-1.0), (3.2,-1.0), (3.6,-1.0), (4.0,-1.0), (4.4,-1.0) &
@@ -212,8 +212,8 @@ program example
     end block
 
     block
-        use pm_kind, only: TKC => CKD
-        complex(TKC), allocatable :: mat_lup(:,:), lup_ref(:,:)
+        use pm_kind, only: TKG => CKD
+        complex(TKG), allocatable :: mat_lup(:,:), lup_ref(:,:)
          mat_lup = reshape( [ (2.0, 1.0), (2.4,-1.0), (2.8,-1.0), (3.2,-1.0), (3.6,-1.0), (4.0,-1.0), (4.4,-1.0), (4.8,-1.0), (5.2,-1.0) &
                             , (2.4, 1.0), (2.0, 1.0), (2.4,-1.0), (2.8,-1.0), (3.2,-1.0), (3.6,-1.0), (4.0,-1.0), (4.4,-1.0), (4.8,-1.0) &
                             , (2.8, 1.0), (2.4, 1.0), (2.0, 1.0), (2.4,-1.0), (2.8,-1.0), (3.2,-1.0), (3.6,-1.0), (4.0,-1.0), (4.4,-1.0) &
@@ -258,8 +258,8 @@ program example
     end block
 
     block
-        use pm_kind, only: TKC => CKH
-        complex(TKC), allocatable :: mat_lup(:,:), lup_ref(:,:)
+        use pm_kind, only: TKG => CKH
+        complex(TKG), allocatable :: mat_lup(:,:), lup_ref(:,:)
          mat_lup = reshape( [ (2.0, 1.0), (2.4,-1.0), (2.8,-1.0), (3.2,-1.0), (3.6,-1.0), (4.0,-1.0), (4.4,-1.0), (4.8,-1.0), (5.2,-1.0) &
                             , (2.4, 1.0), (2.0, 1.0), (2.4,-1.0), (2.8,-1.0), (3.2,-1.0), (3.6,-1.0), (4.0,-1.0), (4.4,-1.0), (4.8,-1.0) &
                             , (2.8, 1.0), (2.4, 1.0), (2.0, 1.0), (2.4,-1.0), (2.8,-1.0), (3.2,-1.0), (3.6,-1.0), (4.0,-1.0), (4.4,-1.0) &

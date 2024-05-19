@@ -473,10 +473,10 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPolyVal_D0_CK5_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC), intent(in)    , contiguous    :: coef(0:)
-        complex(CKC), intent(in)                    :: x
-        complex(CKC)                                :: poly
+        use pm_kind, only: CKG => CK5
+        complex(CKG), intent(in)    , contiguous    :: coef(0:)
+        complex(CKG), intent(in)                    :: x
+        complex(CKG)                                :: poly
     end function
 #endif
 
@@ -485,10 +485,10 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPolyVal_D0_CK4_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC), intent(in)    , contiguous    :: coef(0:)
-        complex(CKC), intent(in)                    :: x
-        complex(CKC)                                :: poly
+        use pm_kind, only: CKG => CK4
+        complex(CKG), intent(in)    , contiguous    :: coef(0:)
+        complex(CKG), intent(in)                    :: x
+        complex(CKG)                                :: poly
     end function
 #endif
 
@@ -497,10 +497,10 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPolyVal_D0_CK3_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC), intent(in)    , contiguous    :: coef(0:)
-        complex(CKC), intent(in)                    :: x
-        complex(CKC)                                :: poly
+        use pm_kind, only: CKG => CK3
+        complex(CKG), intent(in)    , contiguous    :: coef(0:)
+        complex(CKG), intent(in)                    :: x
+        complex(CKG)                                :: poly
     end function
 #endif
 
@@ -509,10 +509,10 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPolyVal_D0_CK2_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC), intent(in)    , contiguous    :: coef(0:)
-        complex(CKC), intent(in)                    :: x
-        complex(CKC)                                :: poly
+        use pm_kind, only: CKG => CK2
+        complex(CKG), intent(in)    , contiguous    :: coef(0:)
+        complex(CKG), intent(in)                    :: x
+        complex(CKG)                                :: poly
     end function
 #endif
 
@@ -521,10 +521,10 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPolyVal_D0_CK1_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC), intent(in)    , contiguous    :: coef(0:)
-        complex(CKC), intent(in)                    :: x
-        complex(CKC)                                :: poly
+        use pm_kind, only: CKG => CK1
+        complex(CKG), intent(in)    , contiguous    :: coef(0:)
+        complex(CKG), intent(in)                    :: x
+        complex(CKG)                                :: poly
     end function
 #endif
 
@@ -535,10 +535,10 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPolyVal_D0_RK5_CK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(in)    , contiguous    :: coef(0:)
-        complex(RKC), intent(in)                    :: x
-        complex(RKC)                                :: poly
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(in)    , contiguous    :: coef(0:)
+        complex(RKG), intent(in)                    :: x
+        complex(RKG)                                :: poly
     end function
 #endif
 
@@ -547,10 +547,10 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPolyVal_D0_RK4_CK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(in)    , contiguous    :: coef(0:)
-        complex(RKC), intent(in)                    :: x
-        complex(RKC)                                :: poly
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(in)    , contiguous    :: coef(0:)
+        complex(RKG), intent(in)                    :: x
+        complex(RKG)                                :: poly
     end function
 #endif
 
@@ -559,10 +559,10 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPolyVal_D0_RK3_CK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(in)    , contiguous    :: coef(0:)
-        complex(RKC), intent(in)                    :: x
-        complex(RKC)                                :: poly
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(in)    , contiguous    :: coef(0:)
+        complex(RKG), intent(in)                    :: x
+        complex(RKG)                                :: poly
     end function
 #endif
 
@@ -571,10 +571,10 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPolyVal_D0_RK2_CK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(in)    , contiguous    :: coef(0:)
-        complex(RKC), intent(in)                    :: x
-        complex(RKC)                                :: poly
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(in)    , contiguous    :: coef(0:)
+        complex(RKG), intent(in)                    :: x
+        complex(RKG)                                :: poly
     end function
 #endif
 
@@ -583,10 +583,10 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPolyVal_D0_RK1_CK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(in)    , contiguous    :: coef(0:)
-        complex(RKC), intent(in)                    :: x
-        complex(RKC)                                :: poly
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(in)    , contiguous    :: coef(0:)
+        complex(RKG), intent(in)                    :: x
+        complex(RKG)                                :: poly
     end function
 #endif
 
@@ -597,10 +597,10 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPolyVal_D0_RK5_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(in)    , contiguous    :: coef(0:)
-        real(RKC)   , intent(in)                    :: x
-        real(RKC)                                   :: poly
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(in)    , contiguous    :: coef(0:)
+        real(RKG)   , intent(in)                    :: x
+        real(RKG)                                   :: poly
     end function
 #endif
 
@@ -609,10 +609,10 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPolyVal_D0_RK4_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(in)    , contiguous    :: coef(0:)
-        real(RKC)   , intent(in)                    :: x
-        real(RKC)                                   :: poly
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(in)    , contiguous    :: coef(0:)
+        real(RKG)   , intent(in)                    :: x
+        real(RKG)                                   :: poly
     end function
 #endif
 
@@ -621,10 +621,10 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPolyVal_D0_RK3_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(in)    , contiguous    :: coef(0:)
-        real(RKC)   , intent(in)                    :: x
-        real(RKC)                                   :: poly
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(in)    , contiguous    :: coef(0:)
+        real(RKG)   , intent(in)                    :: x
+        real(RKG)                                   :: poly
     end function
 #endif
 
@@ -633,10 +633,10 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPolyVal_D0_RK2_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(in)    , contiguous    :: coef(0:)
-        real(RKC)   , intent(in)                    :: x
-        real(RKC)                                   :: poly
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(in)    , contiguous    :: coef(0:)
+        real(RKG)   , intent(in)                    :: x
+        real(RKG)                                   :: poly
     end function
 #endif
 
@@ -645,10 +645,10 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPolyVal_D0_RK1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(in)    , contiguous    :: coef(0:)
-        real(RKC)   , intent(in)                    :: x
-        real(RKC)                                   :: poly
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(in)    , contiguous    :: coef(0:)
+        real(RKG)   , intent(in)                    :: x
+        real(RKG)                                   :: poly
     end function
 #endif
 
@@ -665,10 +665,10 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPolyVal_D1_CK5_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC), intent(in)    , contiguous    :: coef(0:)
-        complex(CKC), intent(in)    , contiguous    :: x(:)
-        complex(CKC)                                :: poly(size(x, 1, IK))
+        use pm_kind, only: CKG => CK5
+        complex(CKG), intent(in)    , contiguous    :: coef(0:)
+        complex(CKG), intent(in)    , contiguous    :: x(:)
+        complex(CKG)                                :: poly(size(x, 1, IK))
     end function
 #endif
 
@@ -677,10 +677,10 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPolyVal_D1_CK4_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC), intent(in)    , contiguous    :: coef(0:)
-        complex(CKC), intent(in)    , contiguous    :: x(:)
-        complex(CKC)                                :: poly(size(x, 1, IK))
+        use pm_kind, only: CKG => CK4
+        complex(CKG), intent(in)    , contiguous    :: coef(0:)
+        complex(CKG), intent(in)    , contiguous    :: x(:)
+        complex(CKG)                                :: poly(size(x, 1, IK))
     end function
 #endif
 
@@ -689,10 +689,10 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPolyVal_D1_CK3_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC), intent(in)    , contiguous    :: coef(0:)
-        complex(CKC), intent(in)    , contiguous    :: x(:)
-        complex(CKC)                                :: poly(size(x, 1, IK))
+        use pm_kind, only: CKG => CK3
+        complex(CKG), intent(in)    , contiguous    :: coef(0:)
+        complex(CKG), intent(in)    , contiguous    :: x(:)
+        complex(CKG)                                :: poly(size(x, 1, IK))
     end function
 #endif
 
@@ -701,10 +701,10 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPolyVal_D1_CK2_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC), intent(in)    , contiguous    :: coef(0:)
-        complex(CKC), intent(in)    , contiguous    :: x(:)
-        complex(CKC)                                :: poly(size(x, 1, IK))
+        use pm_kind, only: CKG => CK2
+        complex(CKG), intent(in)    , contiguous    :: coef(0:)
+        complex(CKG), intent(in)    , contiguous    :: x(:)
+        complex(CKG)                                :: poly(size(x, 1, IK))
     end function
 #endif
 
@@ -713,10 +713,10 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPolyVal_D1_CK1_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC), intent(in)    , contiguous    :: coef(0:)
-        complex(CKC), intent(in)    , contiguous    :: x(:)
-        complex(CKC)                                :: poly(size(x, 1, IK))
+        use pm_kind, only: CKG => CK1
+        complex(CKG), intent(in)    , contiguous    :: coef(0:)
+        complex(CKG), intent(in)    , contiguous    :: x(:)
+        complex(CKG)                                :: poly(size(x, 1, IK))
     end function
 #endif
 
@@ -727,10 +727,10 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPolyVal_D1_RK5_CK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(in)    , contiguous    :: coef(0:)
-        complex(RKC), intent(in)    , contiguous    :: x(:)
-        complex(RKC)                                :: poly(size(x, 1, IK))
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(in)    , contiguous    :: coef(0:)
+        complex(RKG), intent(in)    , contiguous    :: x(:)
+        complex(RKG)                                :: poly(size(x, 1, IK))
     end function
 #endif
 
@@ -739,10 +739,10 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPolyVal_D1_RK4_CK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(in)    , contiguous    :: coef(0:)
-        complex(RKC), intent(in)    , contiguous    :: x(:)
-        complex(RKC)                                :: poly(size(x, 1, IK))
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(in)    , contiguous    :: coef(0:)
+        complex(RKG), intent(in)    , contiguous    :: x(:)
+        complex(RKG)                                :: poly(size(x, 1, IK))
     end function
 #endif
 
@@ -751,10 +751,10 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPolyVal_D1_RK3_CK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(in)    , contiguous    :: coef(0:)
-        complex(RKC), intent(in)    , contiguous    :: x(:)
-        complex(RKC)                                :: poly(size(x, 1, IK))
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(in)    , contiguous    :: coef(0:)
+        complex(RKG), intent(in)    , contiguous    :: x(:)
+        complex(RKG)                                :: poly(size(x, 1, IK))
     end function
 #endif
 
@@ -763,10 +763,10 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPolyVal_D1_RK2_CK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(in)    , contiguous    :: coef(0:)
-        complex(RKC), intent(in)    , contiguous    :: x(:)
-        complex(RKC)                                :: poly(size(x, 1, IK))
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(in)    , contiguous    :: coef(0:)
+        complex(RKG), intent(in)    , contiguous    :: x(:)
+        complex(RKG)                                :: poly(size(x, 1, IK))
     end function
 #endif
 
@@ -775,10 +775,10 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPolyVal_D1_RK1_CK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(in)    , contiguous    :: coef(0:)
-        complex(RKC), intent(in)    , contiguous    :: x(:)
-        complex(RKC)                                :: poly(size(x, 1, IK))
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(in)    , contiguous    :: coef(0:)
+        complex(RKG), intent(in)    , contiguous    :: x(:)
+        complex(RKG)                                :: poly(size(x, 1, IK))
     end function
 #endif
 
@@ -789,10 +789,10 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPolyVal_D1_RK5_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(in)    , contiguous    :: coef(0:)
-        real(RKC)   , intent(in)    , contiguous    :: x(:)
-        real(RKC)                                   :: poly(size(x, 1, IK))
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(in)    , contiguous    :: coef(0:)
+        real(RKG)   , intent(in)    , contiguous    :: x(:)
+        real(RKG)                                   :: poly(size(x, 1, IK))
     end function
 #endif
 
@@ -801,10 +801,10 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPolyVal_D1_RK4_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(in)    , contiguous    :: coef(0:)
-        real(RKC)   , intent(in)    , contiguous    :: x(:)
-        real(RKC)                                   :: poly(size(x, 1, IK))
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(in)    , contiguous    :: coef(0:)
+        real(RKG)   , intent(in)    , contiguous    :: x(:)
+        real(RKG)                                   :: poly(size(x, 1, IK))
     end function
 #endif
 
@@ -813,10 +813,10 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPolyVal_D1_RK3_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(in)    , contiguous    :: coef(0:)
-        real(RKC)   , intent(in)    , contiguous    :: x(:)
-        real(RKC)                                   :: poly(size(x, 1, IK))
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(in)    , contiguous    :: coef(0:)
+        real(RKG)   , intent(in)    , contiguous    :: x(:)
+        real(RKG)                                   :: poly(size(x, 1, IK))
     end function
 #endif
 
@@ -825,10 +825,10 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPolyVal_D1_RK2_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(in)    , contiguous    :: coef(0:)
-        real(RKC)   , intent(in)    , contiguous    :: x(:)
-        real(RKC)                                   :: poly(size(x, 1, IK))
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(in)    , contiguous    :: coef(0:)
+        real(RKG)   , intent(in)    , contiguous    :: x(:)
+        real(RKG)                                   :: poly(size(x, 1, IK))
     end function
 #endif
 
@@ -837,10 +837,10 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPolyVal_D1_RK1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(in)    , contiguous    :: coef(0:)
-        real(RKC)   , intent(in)    , contiguous    :: x(:)
-        real(RKC)                                   :: poly(size(x, 1, IK))
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(in)    , contiguous    :: coef(0:)
+        real(RKG)   , intent(in)    , contiguous    :: x(:)
+        real(RKG)                                   :: poly(size(x, 1, IK))
     end function
 #endif
 
@@ -930,10 +930,10 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPolyAdd_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC), intent(in)    , contiguous    :: lhs(:)
-        complex(CKC), intent(in)    , contiguous    :: rhs(:)
-        complex(CKC)                                :: add(max(size(lhs), size(rhs)))
+        use pm_kind, only: CKG => CK5
+        complex(CKG), intent(in)    , contiguous    :: lhs(:)
+        complex(CKG), intent(in)    , contiguous    :: rhs(:)
+        complex(CKG)                                :: add(max(size(lhs), size(rhs)))
     end function
 #endif
 
@@ -942,10 +942,10 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPolyAdd_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC), intent(in)    , contiguous    :: lhs(:)
-        complex(CKC), intent(in)    , contiguous    :: rhs(:)
-        complex(CKC)                                :: add(max(size(lhs), size(rhs)))
+        use pm_kind, only: CKG => CK4
+        complex(CKG), intent(in)    , contiguous    :: lhs(:)
+        complex(CKG), intent(in)    , contiguous    :: rhs(:)
+        complex(CKG)                                :: add(max(size(lhs), size(rhs)))
     end function
 #endif
 
@@ -954,10 +954,10 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPolyAdd_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC), intent(in)    , contiguous    :: lhs(:)
-        complex(CKC), intent(in)    , contiguous    :: rhs(:)
-        complex(CKC)                                :: add(max(size(lhs), size(rhs)))
+        use pm_kind, only: CKG => CK3
+        complex(CKG), intent(in)    , contiguous    :: lhs(:)
+        complex(CKG), intent(in)    , contiguous    :: rhs(:)
+        complex(CKG)                                :: add(max(size(lhs), size(rhs)))
     end function
 #endif
 
@@ -966,10 +966,10 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPolyAdd_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC), intent(in)    , contiguous    :: lhs(:)
-        complex(CKC), intent(in)    , contiguous    :: rhs(:)
-        complex(CKC)                                :: add(max(size(lhs), size(rhs)))
+        use pm_kind, only: CKG => CK2
+        complex(CKG), intent(in)    , contiguous    :: lhs(:)
+        complex(CKG), intent(in)    , contiguous    :: rhs(:)
+        complex(CKG)                                :: add(max(size(lhs), size(rhs)))
     end function
 #endif
 
@@ -978,10 +978,10 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPolyAdd_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC), intent(in)    , contiguous    :: lhs(:)
-        complex(CKC), intent(in)    , contiguous    :: rhs(:)
-        complex(CKC)                                :: add(max(size(lhs), size(rhs)))
+        use pm_kind, only: CKG => CK1
+        complex(CKG), intent(in)    , contiguous    :: lhs(:)
+        complex(CKG), intent(in)    , contiguous    :: rhs(:)
+        complex(CKG)                                :: add(max(size(lhs), size(rhs)))
     end function
 #endif
 
@@ -992,10 +992,10 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPolyAdd_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(in)    , contiguous    :: lhs(:)
-        real(RKC)   , intent(in)    , contiguous    :: rhs(:)
-        real(RKC)                                   :: add(max(size(lhs), size(rhs)))
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(in)    , contiguous    :: lhs(:)
+        real(RKG)   , intent(in)    , contiguous    :: rhs(:)
+        real(RKG)                                   :: add(max(size(lhs), size(rhs)))
     end function
 #endif
 
@@ -1004,10 +1004,10 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPolyAdd_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(in)    , contiguous    :: lhs(:)
-        real(RKC)   , intent(in)    , contiguous    :: rhs(:)
-        real(RKC)                                   :: add(max(size(lhs), size(rhs)))
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(in)    , contiguous    :: lhs(:)
+        real(RKG)   , intent(in)    , contiguous    :: rhs(:)
+        real(RKG)                                   :: add(max(size(lhs), size(rhs)))
     end function
 #endif
 
@@ -1016,10 +1016,10 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPolyAdd_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(in)    , contiguous    :: lhs(:)
-        real(RKC)   , intent(in)    , contiguous    :: rhs(:)
-        real(RKC)                                   :: add(max(size(lhs), size(rhs)))
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(in)    , contiguous    :: lhs(:)
+        real(RKG)   , intent(in)    , contiguous    :: rhs(:)
+        real(RKG)                                   :: add(max(size(lhs), size(rhs)))
     end function
 #endif
 
@@ -1028,10 +1028,10 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPolyAdd_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(in)    , contiguous    :: lhs(:)
-        real(RKC)   , intent(in)    , contiguous    :: rhs(:)
-        real(RKC)                                   :: add(max(size(lhs), size(rhs)))
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(in)    , contiguous    :: lhs(:)
+        real(RKG)   , intent(in)    , contiguous    :: rhs(:)
+        real(RKG)                                   :: add(max(size(lhs), size(rhs)))
     end function
 #endif
 
@@ -1040,10 +1040,10 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPolyAdd_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(in)    , contiguous    :: lhs(:)
-        real(RKC)   , intent(in)    , contiguous    :: rhs(:)
-        real(RKC)                                   :: add(max(size(lhs), size(rhs)))
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(in)    , contiguous    :: lhs(:)
+        real(RKG)   , intent(in)    , contiguous    :: rhs(:)
+        real(RKG)                                   :: add(max(size(lhs), size(rhs)))
     end function
 #endif
 
@@ -1134,10 +1134,10 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPolyAdd_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC), intent(in)    , contiguous    :: lhs(:)
-        complex(CKC), intent(in)    , contiguous    :: rhs(:)
-        complex(CKC), intent(out)   , contiguous    :: add(:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG), intent(in)    , contiguous    :: lhs(:)
+        complex(CKG), intent(in)    , contiguous    :: rhs(:)
+        complex(CKG), intent(out)   , contiguous    :: add(:)
     end subroutine
 #endif
 
@@ -1146,10 +1146,10 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPolyAdd_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC), intent(in)    , contiguous    :: lhs(:)
-        complex(CKC), intent(in)    , contiguous    :: rhs(:)
-        complex(CKC), intent(out)   , contiguous    :: add(:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG), intent(in)    , contiguous    :: lhs(:)
+        complex(CKG), intent(in)    , contiguous    :: rhs(:)
+        complex(CKG), intent(out)   , contiguous    :: add(:)
     end subroutine
 #endif
 
@@ -1158,10 +1158,10 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPolyAdd_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC), intent(in)    , contiguous    :: lhs(:)
-        complex(CKC), intent(in)    , contiguous    :: rhs(:)
-        complex(CKC), intent(out)   , contiguous    :: add(:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG), intent(in)    , contiguous    :: lhs(:)
+        complex(CKG), intent(in)    , contiguous    :: rhs(:)
+        complex(CKG), intent(out)   , contiguous    :: add(:)
     end subroutine
 #endif
 
@@ -1170,10 +1170,10 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPolyAdd_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC), intent(in)    , contiguous    :: lhs(:)
-        complex(CKC), intent(in)    , contiguous    :: rhs(:)
-        complex(CKC), intent(out)   , contiguous    :: add(:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG), intent(in)    , contiguous    :: lhs(:)
+        complex(CKG), intent(in)    , contiguous    :: rhs(:)
+        complex(CKG), intent(out)   , contiguous    :: add(:)
     end subroutine
 #endif
 
@@ -1182,10 +1182,10 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPolyAdd_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC), intent(in)    , contiguous    :: lhs(:)
-        complex(CKC), intent(in)    , contiguous    :: rhs(:)
-        complex(CKC), intent(out)   , contiguous    :: add(:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG), intent(in)    , contiguous    :: lhs(:)
+        complex(CKG), intent(in)    , contiguous    :: rhs(:)
+        complex(CKG), intent(out)   , contiguous    :: add(:)
     end subroutine
 #endif
 
@@ -1196,10 +1196,10 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPolyAdd_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(in)    , contiguous    :: lhs(:)
-        real(RKC)   , intent(in)    , contiguous    :: rhs(:)
-        real(RKC)   , intent(out)   , contiguous    :: add(:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(in)    , contiguous    :: lhs(:)
+        real(RKG)   , intent(in)    , contiguous    :: rhs(:)
+        real(RKG)   , intent(out)   , contiguous    :: add(:)
     end subroutine
 #endif
 
@@ -1208,10 +1208,10 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPolyAdd_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(in)    , contiguous    :: lhs(:)
-        real(RKC)   , intent(in)    , contiguous    :: rhs(:)
-        real(RKC)   , intent(out)   , contiguous    :: add(:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(in)    , contiguous    :: lhs(:)
+        real(RKG)   , intent(in)    , contiguous    :: rhs(:)
+        real(RKG)   , intent(out)   , contiguous    :: add(:)
     end subroutine
 #endif
 
@@ -1220,10 +1220,10 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPolyAdd_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(in)    , contiguous    :: lhs(:)
-        real(RKC)   , intent(in)    , contiguous    :: rhs(:)
-        real(RKC)   , intent(out)   , contiguous    :: add(:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(in)    , contiguous    :: lhs(:)
+        real(RKG)   , intent(in)    , contiguous    :: rhs(:)
+        real(RKG)   , intent(out)   , contiguous    :: add(:)
     end subroutine
 #endif
 
@@ -1232,10 +1232,10 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPolyAdd_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(in)    , contiguous    :: lhs(:)
-        real(RKC)   , intent(in)    , contiguous    :: rhs(:)
-        real(RKC)   , intent(out)   , contiguous    :: add(:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(in)    , contiguous    :: lhs(:)
+        real(RKG)   , intent(in)    , contiguous    :: rhs(:)
+        real(RKG)   , intent(out)   , contiguous    :: add(:)
     end subroutine
 #endif
 
@@ -1244,10 +1244,10 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPolyAdd_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(in)    , contiguous    :: lhs(:)
-        real(RKC)   , intent(in)    , contiguous    :: rhs(:)
-        real(RKC)   , intent(out)   , contiguous    :: add(:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(in)    , contiguous    :: lhs(:)
+        real(RKG)   , intent(in)    , contiguous    :: rhs(:)
+        real(RKG)   , intent(out)   , contiguous    :: add(:)
     end subroutine
 #endif
 
@@ -1337,10 +1337,10 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPolySub_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC), intent(in)    , contiguous    :: lhs(:)
-        complex(CKC), intent(in)    , contiguous    :: rhs(:)
-        complex(CKC)                                :: sub(max(size(lhs), size(rhs)))
+        use pm_kind, only: CKG => CK5
+        complex(CKG), intent(in)    , contiguous    :: lhs(:)
+        complex(CKG), intent(in)    , contiguous    :: rhs(:)
+        complex(CKG)                                :: sub(max(size(lhs), size(rhs)))
     end function
 #endif
 
@@ -1349,10 +1349,10 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPolySub_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC), intent(in)    , contiguous    :: lhs(:)
-        complex(CKC), intent(in)    , contiguous    :: rhs(:)
-        complex(CKC)                                :: sub(max(size(lhs), size(rhs)))
+        use pm_kind, only: CKG => CK4
+        complex(CKG), intent(in)    , contiguous    :: lhs(:)
+        complex(CKG), intent(in)    , contiguous    :: rhs(:)
+        complex(CKG)                                :: sub(max(size(lhs), size(rhs)))
     end function
 #endif
 
@@ -1361,10 +1361,10 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPolySub_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC), intent(in)    , contiguous    :: lhs(:)
-        complex(CKC), intent(in)    , contiguous    :: rhs(:)
-        complex(CKC)                                :: sub(max(size(lhs), size(rhs)))
+        use pm_kind, only: CKG => CK3
+        complex(CKG), intent(in)    , contiguous    :: lhs(:)
+        complex(CKG), intent(in)    , contiguous    :: rhs(:)
+        complex(CKG)                                :: sub(max(size(lhs), size(rhs)))
     end function
 #endif
 
@@ -1373,10 +1373,10 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPolySub_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC), intent(in)    , contiguous    :: lhs(:)
-        complex(CKC), intent(in)    , contiguous    :: rhs(:)
-        complex(CKC)                                :: sub(max(size(lhs), size(rhs)))
+        use pm_kind, only: CKG => CK2
+        complex(CKG), intent(in)    , contiguous    :: lhs(:)
+        complex(CKG), intent(in)    , contiguous    :: rhs(:)
+        complex(CKG)                                :: sub(max(size(lhs), size(rhs)))
     end function
 #endif
 
@@ -1385,10 +1385,10 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPolySub_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC), intent(in)    , contiguous    :: lhs(:)
-        complex(CKC), intent(in)    , contiguous    :: rhs(:)
-        complex(CKC)                                :: sub(max(size(lhs), size(rhs)))
+        use pm_kind, only: CKG => CK1
+        complex(CKG), intent(in)    , contiguous    :: lhs(:)
+        complex(CKG), intent(in)    , contiguous    :: rhs(:)
+        complex(CKG)                                :: sub(max(size(lhs), size(rhs)))
     end function
 #endif
 
@@ -1399,10 +1399,10 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPolySub_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(in)    , contiguous    :: lhs(:)
-        real(RKC)   , intent(in)    , contiguous    :: rhs(:)
-        real(RKC)                                   :: sub(max(size(lhs), size(rhs)))
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(in)    , contiguous    :: lhs(:)
+        real(RKG)   , intent(in)    , contiguous    :: rhs(:)
+        real(RKG)                                   :: sub(max(size(lhs), size(rhs)))
     end function
 #endif
 
@@ -1411,10 +1411,10 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPolySub_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(in)    , contiguous    :: lhs(:)
-        real(RKC)   , intent(in)    , contiguous    :: rhs(:)
-        real(RKC)                                   :: sub(max(size(lhs), size(rhs)))
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(in)    , contiguous    :: lhs(:)
+        real(RKG)   , intent(in)    , contiguous    :: rhs(:)
+        real(RKG)                                   :: sub(max(size(lhs), size(rhs)))
     end function
 #endif
 
@@ -1423,10 +1423,10 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPolySub_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(in)    , contiguous    :: lhs(:)
-        real(RKC)   , intent(in)    , contiguous    :: rhs(:)
-        real(RKC)                                   :: sub(max(size(lhs), size(rhs)))
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(in)    , contiguous    :: lhs(:)
+        real(RKG)   , intent(in)    , contiguous    :: rhs(:)
+        real(RKG)                                   :: sub(max(size(lhs), size(rhs)))
     end function
 #endif
 
@@ -1435,10 +1435,10 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPolySub_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(in)    , contiguous    :: lhs(:)
-        real(RKC)   , intent(in)    , contiguous    :: rhs(:)
-        real(RKC)                                   :: sub(max(size(lhs), size(rhs)))
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(in)    , contiguous    :: lhs(:)
+        real(RKG)   , intent(in)    , contiguous    :: rhs(:)
+        real(RKG)                                   :: sub(max(size(lhs), size(rhs)))
     end function
 #endif
 
@@ -1447,10 +1447,10 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPolySub_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(in)    , contiguous    :: lhs(:)
-        real(RKC)   , intent(in)    , contiguous    :: rhs(:)
-        real(RKC)                                   :: sub(max(size(lhs), size(rhs)))
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(in)    , contiguous    :: lhs(:)
+        real(RKG)   , intent(in)    , contiguous    :: rhs(:)
+        real(RKG)                                   :: sub(max(size(lhs), size(rhs)))
     end function
 #endif
 
@@ -1541,10 +1541,10 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPolySub_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC), intent(in)    , contiguous    :: lhs(:)
-        complex(CKC), intent(in)    , contiguous    :: rhs(:)
-        complex(CKC), intent(out)   , contiguous    :: sub(:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG), intent(in)    , contiguous    :: lhs(:)
+        complex(CKG), intent(in)    , contiguous    :: rhs(:)
+        complex(CKG), intent(out)   , contiguous    :: sub(:)
     end subroutine
 #endif
 
@@ -1553,10 +1553,10 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPolySub_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC), intent(in)    , contiguous    :: lhs(:)
-        complex(CKC), intent(in)    , contiguous    :: rhs(:)
-        complex(CKC), intent(out)   , contiguous    :: sub(:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG), intent(in)    , contiguous    :: lhs(:)
+        complex(CKG), intent(in)    , contiguous    :: rhs(:)
+        complex(CKG), intent(out)   , contiguous    :: sub(:)
     end subroutine
 #endif
 
@@ -1565,10 +1565,10 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPolySub_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC), intent(in)    , contiguous    :: lhs(:)
-        complex(CKC), intent(in)    , contiguous    :: rhs(:)
-        complex(CKC), intent(out)   , contiguous    :: sub(:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG), intent(in)    , contiguous    :: lhs(:)
+        complex(CKG), intent(in)    , contiguous    :: rhs(:)
+        complex(CKG), intent(out)   , contiguous    :: sub(:)
     end subroutine
 #endif
 
@@ -1577,10 +1577,10 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPolySub_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC), intent(in)    , contiguous    :: lhs(:)
-        complex(CKC), intent(in)    , contiguous    :: rhs(:)
-        complex(CKC), intent(out)   , contiguous    :: sub(:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG), intent(in)    , contiguous    :: lhs(:)
+        complex(CKG), intent(in)    , contiguous    :: rhs(:)
+        complex(CKG), intent(out)   , contiguous    :: sub(:)
     end subroutine
 #endif
 
@@ -1589,10 +1589,10 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPolySub_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC), intent(in)    , contiguous    :: lhs(:)
-        complex(CKC), intent(in)    , contiguous    :: rhs(:)
-        complex(CKC), intent(out)   , contiguous    :: sub(:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG), intent(in)    , contiguous    :: lhs(:)
+        complex(CKG), intent(in)    , contiguous    :: rhs(:)
+        complex(CKG), intent(out)   , contiguous    :: sub(:)
     end subroutine
 #endif
 
@@ -1603,10 +1603,10 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPolySub_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(in)    , contiguous    :: lhs(:)
-        real(RKC)   , intent(in)    , contiguous    :: rhs(:)
-        real(RKC)   , intent(out)   , contiguous    :: sub(:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(in)    , contiguous    :: lhs(:)
+        real(RKG)   , intent(in)    , contiguous    :: rhs(:)
+        real(RKG)   , intent(out)   , contiguous    :: sub(:)
     end subroutine
 #endif
 
@@ -1615,10 +1615,10 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPolySub_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(in)    , contiguous    :: lhs(:)
-        real(RKC)   , intent(in)    , contiguous    :: rhs(:)
-        real(RKC)   , intent(out)   , contiguous    :: sub(:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(in)    , contiguous    :: lhs(:)
+        real(RKG)   , intent(in)    , contiguous    :: rhs(:)
+        real(RKG)   , intent(out)   , contiguous    :: sub(:)
     end subroutine
 #endif
 
@@ -1627,10 +1627,10 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPolySub_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(in)    , contiguous    :: lhs(:)
-        real(RKC)   , intent(in)    , contiguous    :: rhs(:)
-        real(RKC)   , intent(out)   , contiguous    :: sub(:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(in)    , contiguous    :: lhs(:)
+        real(RKG)   , intent(in)    , contiguous    :: rhs(:)
+        real(RKG)   , intent(out)   , contiguous    :: sub(:)
     end subroutine
 #endif
 
@@ -1639,10 +1639,10 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPolySub_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(in)    , contiguous    :: lhs(:)
-        real(RKC)   , intent(in)    , contiguous    :: rhs(:)
-        real(RKC)   , intent(out)   , contiguous    :: sub(:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(in)    , contiguous    :: lhs(:)
+        real(RKG)   , intent(in)    , contiguous    :: rhs(:)
+        real(RKG)   , intent(out)   , contiguous    :: sub(:)
     end subroutine
 #endif
 
@@ -1651,10 +1651,10 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPolySub_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(in)    , contiguous    :: lhs(:)
-        real(RKC)   , intent(in)    , contiguous    :: rhs(:)
-        real(RKC)   , intent(out)   , contiguous    :: sub(:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(in)    , contiguous    :: lhs(:)
+        real(RKG)   , intent(in)    , contiguous    :: rhs(:)
+        real(RKG)   , intent(out)   , contiguous    :: sub(:)
     end subroutine
 #endif
 
@@ -1748,10 +1748,10 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPolyMul_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC), intent(in)    , contiguous    :: lhs(:)
-        complex(CKC), intent(in)    , contiguous    :: rhs(:)
-        complex(CKC)                                :: mul(1 : min(size(lhs, 1, IK) * size(rhs, 1, IK), size(lhs, 1, IK) + size(rhs, 1, IK) - 1_IK))
+        use pm_kind, only: CKG => CK5
+        complex(CKG), intent(in)    , contiguous    :: lhs(:)
+        complex(CKG), intent(in)    , contiguous    :: rhs(:)
+        complex(CKG)                                :: mul(1 : min(size(lhs, 1, IK) * size(rhs, 1, IK), size(lhs, 1, IK) + size(rhs, 1, IK) - 1_IK))
     end function
 #endif
 
@@ -1760,10 +1760,10 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPolyMul_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC), intent(in)    , contiguous    :: lhs(:)
-        complex(CKC), intent(in)    , contiguous    :: rhs(:)
-        complex(CKC)                                :: mul(1 : min(size(lhs, 1, IK) * size(rhs, 1, IK), size(lhs, 1, IK) + size(rhs, 1, IK) - 1_IK))
+        use pm_kind, only: CKG => CK4
+        complex(CKG), intent(in)    , contiguous    :: lhs(:)
+        complex(CKG), intent(in)    , contiguous    :: rhs(:)
+        complex(CKG)                                :: mul(1 : min(size(lhs, 1, IK) * size(rhs, 1, IK), size(lhs, 1, IK) + size(rhs, 1, IK) - 1_IK))
     end function
 #endif
 
@@ -1772,10 +1772,10 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPolyMul_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC), intent(in)    , contiguous    :: lhs(:)
-        complex(CKC), intent(in)    , contiguous    :: rhs(:)
-        complex(CKC)                                :: mul(1 : min(size(lhs, 1, IK) * size(rhs, 1, IK), size(lhs, 1, IK) + size(rhs, 1, IK) - 1_IK))
+        use pm_kind, only: CKG => CK3
+        complex(CKG), intent(in)    , contiguous    :: lhs(:)
+        complex(CKG), intent(in)    , contiguous    :: rhs(:)
+        complex(CKG)                                :: mul(1 : min(size(lhs, 1, IK) * size(rhs, 1, IK), size(lhs, 1, IK) + size(rhs, 1, IK) - 1_IK))
     end function
 #endif
 
@@ -1784,10 +1784,10 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPolyMul_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC), intent(in)    , contiguous    :: lhs(:)
-        complex(CKC), intent(in)    , contiguous    :: rhs(:)
-        complex(CKC)                                :: mul(1 : min(size(lhs, 1, IK) * size(rhs, 1, IK), size(lhs, 1, IK) + size(rhs, 1, IK) - 1_IK))
+        use pm_kind, only: CKG => CK2
+        complex(CKG), intent(in)    , contiguous    :: lhs(:)
+        complex(CKG), intent(in)    , contiguous    :: rhs(:)
+        complex(CKG)                                :: mul(1 : min(size(lhs, 1, IK) * size(rhs, 1, IK), size(lhs, 1, IK) + size(rhs, 1, IK) - 1_IK))
     end function
 #endif
 
@@ -1796,10 +1796,10 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPolyMul_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC), intent(in)    , contiguous    :: lhs(:)
-        complex(CKC), intent(in)    , contiguous    :: rhs(:)
-        complex(CKC)                                :: mul(1 : min(size(lhs, 1, IK) * size(rhs, 1, IK), size(lhs, 1, IK) + size(rhs, 1, IK) - 1_IK))
+        use pm_kind, only: CKG => CK1
+        complex(CKG), intent(in)    , contiguous    :: lhs(:)
+        complex(CKG), intent(in)    , contiguous    :: rhs(:)
+        complex(CKG)                                :: mul(1 : min(size(lhs, 1, IK) * size(rhs, 1, IK), size(lhs, 1, IK) + size(rhs, 1, IK) - 1_IK))
     end function
 #endif
 
@@ -1810,10 +1810,10 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPolyMul_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(in)    , contiguous    :: lhs(:)
-        real(RKC)   , intent(in)    , contiguous    :: rhs(:)
-        real(RKC)                                   :: mul(1 : min(size(lhs, 1, IK) * size(rhs, 1, IK), size(lhs, 1, IK) + size(rhs, 1, IK) - 1_IK))
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(in)    , contiguous    :: lhs(:)
+        real(RKG)   , intent(in)    , contiguous    :: rhs(:)
+        real(RKG)                                   :: mul(1 : min(size(lhs, 1, IK) * size(rhs, 1, IK), size(lhs, 1, IK) + size(rhs, 1, IK) - 1_IK))
     end function
 #endif
 
@@ -1822,10 +1822,10 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPolyMul_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(in)    , contiguous    :: lhs(:)
-        real(RKC)   , intent(in)    , contiguous    :: rhs(:)
-        real(RKC)                                   :: mul(1 : min(size(lhs, 1, IK) * size(rhs, 1, IK), size(lhs, 1, IK) + size(rhs, 1, IK) - 1_IK))
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(in)    , contiguous    :: lhs(:)
+        real(RKG)   , intent(in)    , contiguous    :: rhs(:)
+        real(RKG)                                   :: mul(1 : min(size(lhs, 1, IK) * size(rhs, 1, IK), size(lhs, 1, IK) + size(rhs, 1, IK) - 1_IK))
     end function
 #endif
 
@@ -1834,10 +1834,10 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPolyMul_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(in)    , contiguous    :: lhs(:)
-        real(RKC)   , intent(in)    , contiguous    :: rhs(:)
-        real(RKC)                                   :: mul(1 : min(size(lhs, 1, IK) * size(rhs, 1, IK), size(lhs, 1, IK) + size(rhs, 1, IK) - 1_IK))
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(in)    , contiguous    :: lhs(:)
+        real(RKG)   , intent(in)    , contiguous    :: rhs(:)
+        real(RKG)                                   :: mul(1 : min(size(lhs, 1, IK) * size(rhs, 1, IK), size(lhs, 1, IK) + size(rhs, 1, IK) - 1_IK))
     end function
 #endif
 
@@ -1846,10 +1846,10 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPolyMul_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(in)    , contiguous    :: lhs(:)
-        real(RKC)   , intent(in)    , contiguous    :: rhs(:)
-        real(RKC)                                   :: mul(1 : min(size(lhs, 1, IK) * size(rhs, 1, IK), size(lhs, 1, IK) + size(rhs, 1, IK) - 1_IK))
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(in)    , contiguous    :: lhs(:)
+        real(RKG)   , intent(in)    , contiguous    :: rhs(:)
+        real(RKG)                                   :: mul(1 : min(size(lhs, 1, IK) * size(rhs, 1, IK), size(lhs, 1, IK) + size(rhs, 1, IK) - 1_IK))
     end function
 #endif
 
@@ -1858,10 +1858,10 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPolyMul_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(in)    , contiguous    :: lhs(:)
-        real(RKC)   , intent(in)    , contiguous    :: rhs(:)
-        real(RKC)                                   :: mul(1 : min(size(lhs, 1, IK) * size(rhs, 1, IK), size(lhs, 1, IK) + size(rhs, 1, IK) - 1_IK))
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(in)    , contiguous    :: lhs(:)
+        real(RKG)   , intent(in)    , contiguous    :: rhs(:)
+        real(RKG)                                   :: mul(1 : min(size(lhs, 1, IK) * size(rhs, 1, IK), size(lhs, 1, IK) + size(rhs, 1, IK) - 1_IK))
     end function
 #endif
 
@@ -1952,10 +1952,10 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPolyMul_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC), intent(in)    , contiguous    :: lhs(0:)
-        complex(CKC), intent(in)    , contiguous    :: rhs(0:)
-        complex(CKC), intent(out)   , contiguous    :: mul(0:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG), intent(in)    , contiguous    :: lhs(0:)
+        complex(CKG), intent(in)    , contiguous    :: rhs(0:)
+        complex(CKG), intent(out)   , contiguous    :: mul(0:)
     end subroutine
 #endif
 
@@ -1964,10 +1964,10 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPolyMul_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC), intent(in)    , contiguous    :: lhs(0:)
-        complex(CKC), intent(in)    , contiguous    :: rhs(0:)
-        complex(CKC), intent(out)   , contiguous    :: mul(0:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG), intent(in)    , contiguous    :: lhs(0:)
+        complex(CKG), intent(in)    , contiguous    :: rhs(0:)
+        complex(CKG), intent(out)   , contiguous    :: mul(0:)
     end subroutine
 #endif
 
@@ -1976,10 +1976,10 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPolyMul_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC), intent(in)    , contiguous    :: lhs(0:)
-        complex(CKC), intent(in)    , contiguous    :: rhs(0:)
-        complex(CKC), intent(out)   , contiguous    :: mul(0:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG), intent(in)    , contiguous    :: lhs(0:)
+        complex(CKG), intent(in)    , contiguous    :: rhs(0:)
+        complex(CKG), intent(out)   , contiguous    :: mul(0:)
     end subroutine
 #endif
 
@@ -1988,10 +1988,10 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPolyMul_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC), intent(in)    , contiguous    :: lhs(0:)
-        complex(CKC), intent(in)    , contiguous    :: rhs(0:)
-        complex(CKC), intent(out)   , contiguous    :: mul(0:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG), intent(in)    , contiguous    :: lhs(0:)
+        complex(CKG), intent(in)    , contiguous    :: rhs(0:)
+        complex(CKG), intent(out)   , contiguous    :: mul(0:)
     end subroutine
 #endif
 
@@ -2000,10 +2000,10 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPolyMul_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC), intent(in)    , contiguous    :: lhs(0:)
-        complex(CKC), intent(in)    , contiguous    :: rhs(0:)
-        complex(CKC), intent(out)   , contiguous    :: mul(0:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG), intent(in)    , contiguous    :: lhs(0:)
+        complex(CKG), intent(in)    , contiguous    :: rhs(0:)
+        complex(CKG), intent(out)   , contiguous    :: mul(0:)
     end subroutine
 #endif
 
@@ -2014,10 +2014,10 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPolyMul_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(in)    , contiguous    :: lhs(0:)
-        real(RKC)   , intent(in)    , contiguous    :: rhs(0:)
-        real(RKC)   , intent(out)   , contiguous    :: mul(0:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(in)    , contiguous    :: lhs(0:)
+        real(RKG)   , intent(in)    , contiguous    :: rhs(0:)
+        real(RKG)   , intent(out)   , contiguous    :: mul(0:)
     end subroutine
 #endif
 
@@ -2026,10 +2026,10 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPolyMul_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(in)    , contiguous    :: lhs(0:)
-        real(RKC)   , intent(in)    , contiguous    :: rhs(0:)
-        real(RKC)   , intent(out)   , contiguous    :: mul(0:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(in)    , contiguous    :: lhs(0:)
+        real(RKG)   , intent(in)    , contiguous    :: rhs(0:)
+        real(RKG)   , intent(out)   , contiguous    :: mul(0:)
     end subroutine
 #endif
 
@@ -2038,10 +2038,10 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPolyMul_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(in)    , contiguous    :: lhs(0:)
-        real(RKC)   , intent(in)    , contiguous    :: rhs(0:)
-        real(RKC)   , intent(out)   , contiguous    :: mul(0:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(in)    , contiguous    :: lhs(0:)
+        real(RKG)   , intent(in)    , contiguous    :: rhs(0:)
+        real(RKG)   , intent(out)   , contiguous    :: mul(0:)
     end subroutine
 #endif
 
@@ -2050,10 +2050,10 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPolyMul_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(in)    , contiguous    :: lhs(0:)
-        real(RKC)   , intent(in)    , contiguous    :: rhs(0:)
-        real(RKC)   , intent(out)   , contiguous    :: mul(0:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(in)    , contiguous    :: lhs(0:)
+        real(RKG)   , intent(in)    , contiguous    :: rhs(0:)
+        real(RKG)   , intent(out)   , contiguous    :: mul(0:)
     end subroutine
 #endif
 
@@ -2062,10 +2062,10 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPolyMul_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(in)    , contiguous    :: lhs(0:)
-        real(RKC)   , intent(in)    , contiguous    :: rhs(0:)
-        real(RKC)   , intent(out)   , contiguous    :: mul(0:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(in)    , contiguous    :: lhs(0:)
+        real(RKG)   , intent(in)    , contiguous    :: rhs(0:)
+        real(RKG)   , intent(out)   , contiguous    :: mul(0:)
     end subroutine
 #endif
 
@@ -2164,10 +2164,10 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPolyDiv_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC), intent(in)    , contiguous    :: dividend(:)
-        complex(CKC), intent(in)    , contiguous    :: divisor(:)
-        complex(CKC), intent(out)   , contiguous    :: quorem(:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG), intent(in)    , contiguous    :: dividend(:)
+        complex(CKG), intent(in)    , contiguous    :: divisor(:)
+        complex(CKG), intent(out)   , contiguous    :: quorem(:)
         integer(IK) , intent(out)                   :: lenQuo
     end subroutine
 #endif
@@ -2177,10 +2177,10 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPolyDiv_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC), intent(in)    , contiguous    :: dividend(:)
-        complex(CKC), intent(in)    , contiguous    :: divisor(:)
-        complex(CKC), intent(out)   , contiguous    :: quorem(:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG), intent(in)    , contiguous    :: dividend(:)
+        complex(CKG), intent(in)    , contiguous    :: divisor(:)
+        complex(CKG), intent(out)   , contiguous    :: quorem(:)
         integer(IK) , intent(out)                   :: lenQuo
     end subroutine
 #endif
@@ -2190,10 +2190,10 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPolyDiv_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC), intent(in)    , contiguous    :: dividend(:)
-        complex(CKC), intent(in)    , contiguous    :: divisor(:)
-        complex(CKC), intent(out)   , contiguous    :: quorem(:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG), intent(in)    , contiguous    :: dividend(:)
+        complex(CKG), intent(in)    , contiguous    :: divisor(:)
+        complex(CKG), intent(out)   , contiguous    :: quorem(:)
         integer(IK) , intent(out)                   :: lenQuo
     end subroutine
 #endif
@@ -2203,10 +2203,10 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPolyDiv_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC), intent(in)    , contiguous    :: dividend(:)
-        complex(CKC), intent(in)    , contiguous    :: divisor(:)
-        complex(CKC), intent(out)   , contiguous    :: quorem(:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG), intent(in)    , contiguous    :: dividend(:)
+        complex(CKG), intent(in)    , contiguous    :: divisor(:)
+        complex(CKG), intent(out)   , contiguous    :: quorem(:)
         integer(IK) , intent(out)                   :: lenQuo
     end subroutine
 #endif
@@ -2216,10 +2216,10 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPolyDiv_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC), intent(in)    , contiguous    :: dividend(:)
-        complex(CKC), intent(in)    , contiguous    :: divisor(:)
-        complex(CKC), intent(out)   , contiguous    :: quorem(:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG), intent(in)    , contiguous    :: dividend(:)
+        complex(CKG), intent(in)    , contiguous    :: divisor(:)
+        complex(CKG), intent(out)   , contiguous    :: quorem(:)
         integer(IK) , intent(out)                   :: lenQuo
     end subroutine
 #endif
@@ -2231,10 +2231,10 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPolyDiv_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(in)    , contiguous    :: dividend(:)
-        real(RKC)   , intent(in)    , contiguous    :: divisor(:)
-        real(RKC)   , intent(out)   , contiguous    :: quorem(:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(in)    , contiguous    :: dividend(:)
+        real(RKG)   , intent(in)    , contiguous    :: divisor(:)
+        real(RKG)   , intent(out)   , contiguous    :: quorem(:)
         integer(IK) , intent(out)                   :: lenQuo
     end subroutine
 #endif
@@ -2244,10 +2244,10 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPolyDiv_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(in)    , contiguous    :: dividend(:)
-        real(RKC)   , intent(in)    , contiguous    :: divisor(:)
-        real(RKC)   , intent(out)   , contiguous    :: quorem(:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(in)    , contiguous    :: dividend(:)
+        real(RKG)   , intent(in)    , contiguous    :: divisor(:)
+        real(RKG)   , intent(out)   , contiguous    :: quorem(:)
         integer(IK) , intent(out)                   :: lenQuo
     end subroutine
 #endif
@@ -2257,10 +2257,10 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPolyDiv_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(in)    , contiguous    :: dividend(:)
-        real(RKC)   , intent(in)    , contiguous    :: divisor(:)
-        real(RKC)   , intent(out)   , contiguous    :: quorem(:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(in)    , contiguous    :: dividend(:)
+        real(RKG)   , intent(in)    , contiguous    :: divisor(:)
+        real(RKG)   , intent(out)   , contiguous    :: quorem(:)
         integer(IK) , intent(out)                   :: lenQuo
     end subroutine
 #endif
@@ -2270,10 +2270,10 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPolyDiv_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(in)    , contiguous    :: dividend(:)
-        real(RKC)   , intent(in)    , contiguous    :: divisor(:)
-        real(RKC)   , intent(out)   , contiguous    :: quorem(:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(in)    , contiguous    :: dividend(:)
+        real(RKG)   , intent(in)    , contiguous    :: divisor(:)
+        real(RKG)   , intent(out)   , contiguous    :: quorem(:)
         integer(IK) , intent(out)                   :: lenQuo
     end subroutine
 #endif
@@ -2283,10 +2283,10 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPolyDiv_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(in)    , contiguous    :: dividend(:)
-        real(RKC)   , intent(in)    , contiguous    :: divisor(:)
-        real(RKC)   , intent(out)   , contiguous    :: quorem(:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(in)    , contiguous    :: dividend(:)
+        real(RKG)   , intent(in)    , contiguous    :: divisor(:)
+        real(RKG)   , intent(out)   , contiguous    :: quorem(:)
         integer(IK) , intent(out)                   :: lenQuo
     end subroutine
 #endif
@@ -2371,9 +2371,9 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPolyDiffDef_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC), intent(in)    , contiguous    :: coef(0:)
-        complex(CKC)                                :: diff(1 : size(coef, 1, IK) - 1_IK)
+        use pm_kind, only: CKG => CK5
+        complex(CKG), intent(in)    , contiguous    :: coef(0:)
+        complex(CKG)                                :: diff(1 : size(coef, 1, IK) - 1_IK)
     end function
 #endif
 
@@ -2382,9 +2382,9 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPolyDiffDef_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC), intent(in)    , contiguous    :: coef(0:)
-        complex(CKC)                                :: diff(1 : size(coef, 1, IK) - 1_IK)
+        use pm_kind, only: CKG => CK4
+        complex(CKG), intent(in)    , contiguous    :: coef(0:)
+        complex(CKG)                                :: diff(1 : size(coef, 1, IK) - 1_IK)
     end function
 #endif
 
@@ -2393,9 +2393,9 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPolyDiffDef_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC), intent(in)    , contiguous    :: coef(0:)
-        complex(CKC)                                :: diff(1 : size(coef, 1, IK) - 1_IK)
+        use pm_kind, only: CKG => CK3
+        complex(CKG), intent(in)    , contiguous    :: coef(0:)
+        complex(CKG)                                :: diff(1 : size(coef, 1, IK) - 1_IK)
     end function
 #endif
 
@@ -2404,9 +2404,9 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPolyDiffDef_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC), intent(in)    , contiguous    :: coef(0:)
-        complex(CKC)                                :: diff(1 : size(coef, 1, IK) - 1_IK)
+        use pm_kind, only: CKG => CK2
+        complex(CKG), intent(in)    , contiguous    :: coef(0:)
+        complex(CKG)                                :: diff(1 : size(coef, 1, IK) - 1_IK)
     end function
 #endif
 
@@ -2415,9 +2415,9 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPolyDiffDef_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC), intent(in)    , contiguous    :: coef(0:)
-        complex(CKC)                                :: diff(1 : size(coef, 1, IK) - 1_IK)
+        use pm_kind, only: CKG => CK1
+        complex(CKG), intent(in)    , contiguous    :: coef(0:)
+        complex(CKG)                                :: diff(1 : size(coef, 1, IK) - 1_IK)
     end function
 #endif
 
@@ -2428,9 +2428,9 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPolyDiffDef_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(in)    , contiguous    :: coef(0:)
-        real(RKC)                                   :: diff(1 : size(coef, 1, IK) - 1_IK)
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(in)    , contiguous    :: coef(0:)
+        real(RKG)                                   :: diff(1 : size(coef, 1, IK) - 1_IK)
     end function
 #endif
 
@@ -2439,9 +2439,9 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPolyDiffDef_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(in)    , contiguous    :: coef(0:)
-        real(RKC)                                   :: diff(1 : size(coef, 1, IK) - 1_IK)
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(in)    , contiguous    :: coef(0:)
+        real(RKG)                                   :: diff(1 : size(coef, 1, IK) - 1_IK)
     end function
 #endif
 
@@ -2450,9 +2450,9 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPolyDiffDef_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(in)    , contiguous    :: coef(0:)
-        real(RKC)                                   :: diff(1 : size(coef, 1, IK) - 1_IK)
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(in)    , contiguous    :: coef(0:)
+        real(RKG)                                   :: diff(1 : size(coef, 1, IK) - 1_IK)
     end function
 #endif
 
@@ -2461,9 +2461,9 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPolyDiffDef_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(in)    , contiguous    :: coef(0:)
-        real(RKC)                                   :: diff(1 : size(coef, 1, IK) - 1_IK)
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(in)    , contiguous    :: coef(0:)
+        real(RKG)                                   :: diff(1 : size(coef, 1, IK) - 1_IK)
     end function
 #endif
 
@@ -2472,9 +2472,9 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPolyDiffDef_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(in)    , contiguous    :: coef(0:)
-        real(RKC)                                   :: diff(1 : size(coef, 1, IK) - 1_IK)
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(in)    , contiguous    :: coef(0:)
+        real(RKG)                                   :: diff(1 : size(coef, 1, IK) - 1_IK)
     end function
 #endif
 
@@ -2491,10 +2491,10 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPolyDiffOrd_CK5
 #endif
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
         integer(IK) , intent(in)                    :: order
-        complex(CKC), intent(in)    , contiguous    :: coef(0:)
-        complex(CKC)                                :: diff(order : size(coef, 1, IK) - 1_IK)
+        complex(CKG), intent(in)    , contiguous    :: coef(0:)
+        complex(CKG)                                :: diff(order : size(coef, 1, IK) - 1_IK)
     end function
 #endif
 
@@ -2503,10 +2503,10 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPolyDiffOrd_CK4
 #endif
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
         integer(IK) , intent(in)                    :: order
-        complex(CKC), intent(in)    , contiguous    :: coef(0:)
-        complex(CKC)                                :: diff(order : size(coef, 1, IK) - 1_IK)
+        complex(CKG), intent(in)    , contiguous    :: coef(0:)
+        complex(CKG)                                :: diff(order : size(coef, 1, IK) - 1_IK)
     end function
 #endif
 
@@ -2515,10 +2515,10 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPolyDiffOrd_CK3
 #endif
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
         integer(IK) , intent(in)                    :: order
-        complex(CKC), intent(in)    , contiguous    :: coef(0:)
-        complex(CKC)                                :: diff(order : size(coef, 1, IK) - 1_IK)
+        complex(CKG), intent(in)    , contiguous    :: coef(0:)
+        complex(CKG)                                :: diff(order : size(coef, 1, IK) - 1_IK)
     end function
 #endif
 
@@ -2527,10 +2527,10 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPolyDiffOrd_CK2
 #endif
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
         integer(IK) , intent(in)                    :: order
-        complex(CKC), intent(in)    , contiguous    :: coef(0:)
-        complex(CKC)                                :: diff(order : size(coef, 1, IK) - 1_IK)
+        complex(CKG), intent(in)    , contiguous    :: coef(0:)
+        complex(CKG)                                :: diff(order : size(coef, 1, IK) - 1_IK)
     end function
 #endif
 
@@ -2539,10 +2539,10 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPolyDiffOrd_CK1
 #endif
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
         integer(IK) , intent(in)                    :: order
-        complex(CKC), intent(in)    , contiguous    :: coef(0:)
-        complex(CKC)                                :: diff(order : size(coef, 1, IK) - 1_IK)
+        complex(CKG), intent(in)    , contiguous    :: coef(0:)
+        complex(CKG)                                :: diff(order : size(coef, 1, IK) - 1_IK)
     end function
 #endif
 
@@ -2553,10 +2553,10 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPolyDiffOrd_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         integer(IK) , intent(in)                    :: order
-        real(RKC)   , intent(in)    , contiguous    :: coef(0:)
-        real(RKC)                                   :: diff(order : size(coef, 1, IK) - 1_IK)
+        real(RKG)   , intent(in)    , contiguous    :: coef(0:)
+        real(RKG)                                   :: diff(order : size(coef, 1, IK) - 1_IK)
     end function
 #endif
 
@@ -2565,10 +2565,10 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPolyDiffOrd_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         integer(IK) , intent(in)                    :: order
-        real(RKC)   , intent(in)    , contiguous    :: coef(0:)
-        real(RKC)                                   :: diff(order : size(coef, 1, IK) - 1_IK)
+        real(RKG)   , intent(in)    , contiguous    :: coef(0:)
+        real(RKG)                                   :: diff(order : size(coef, 1, IK) - 1_IK)
     end function
 #endif
 
@@ -2577,10 +2577,10 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPolyDiffOrd_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         integer(IK) , intent(in)                    :: order
-        real(RKC)   , intent(in)    , contiguous    :: coef(0:)
-        real(RKC)                                   :: diff(order : size(coef, 1, IK) - 1_IK)
+        real(RKG)   , intent(in)    , contiguous    :: coef(0:)
+        real(RKG)                                   :: diff(order : size(coef, 1, IK) - 1_IK)
     end function
 #endif
 
@@ -2589,10 +2589,10 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPolyDiffOrd_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         integer(IK) , intent(in)                    :: order
-        real(RKC)   , intent(in)    , contiguous    :: coef(0:)
-        real(RKC)                                   :: diff(order : size(coef, 1, IK) - 1_IK)
+        real(RKG)   , intent(in)    , contiguous    :: coef(0:)
+        real(RKG)                                   :: diff(order : size(coef, 1, IK) - 1_IK)
     end function
 #endif
 
@@ -2601,10 +2601,10 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPolyDiffOrd_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         integer(IK) , intent(in)                    :: order
-        real(RKC)   , intent(in)    , contiguous    :: coef(0:)
-        real(RKC)                                   :: diff(order : size(coef, 1, IK) - 1_IK)
+        real(RKG)   , intent(in)    , contiguous    :: coef(0:)
+        real(RKG)                                   :: diff(order : size(coef, 1, IK) - 1_IK)
     end function
 #endif
 
@@ -2686,9 +2686,9 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPolyDiffDef_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC), intent(in)    , contiguous    :: coef(0:)
-        complex(CKC), intent(out)   , contiguous    :: diff(1:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG), intent(in)    , contiguous    :: coef(0:)
+        complex(CKG), intent(out)   , contiguous    :: diff(1:)
     end subroutine
 #endif
 
@@ -2697,9 +2697,9 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPolyDiffDef_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC), intent(in)    , contiguous    :: coef(0:)
-        complex(CKC), intent(out)   , contiguous    :: diff(1:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG), intent(in)    , contiguous    :: coef(0:)
+        complex(CKG), intent(out)   , contiguous    :: diff(1:)
     end subroutine
 #endif
 
@@ -2708,9 +2708,9 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPolyDiffDef_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC), intent(in)    , contiguous    :: coef(0:)
-        complex(CKC), intent(out)   , contiguous    :: diff(1:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG), intent(in)    , contiguous    :: coef(0:)
+        complex(CKG), intent(out)   , contiguous    :: diff(1:)
     end subroutine
 #endif
 
@@ -2719,9 +2719,9 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPolyDiffDef_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC), intent(in)    , contiguous    :: coef(0:)
-        complex(CKC), intent(out)   , contiguous    :: diff(1:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG), intent(in)    , contiguous    :: coef(0:)
+        complex(CKG), intent(out)   , contiguous    :: diff(1:)
     end subroutine
 #endif
 
@@ -2730,9 +2730,9 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPolyDiffDef_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC), intent(in)    , contiguous    :: coef(0:)
-        complex(CKC), intent(out)   , contiguous    :: diff(1:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG), intent(in)    , contiguous    :: coef(0:)
+        complex(CKG), intent(out)   , contiguous    :: diff(1:)
     end subroutine
 #endif
 
@@ -2743,9 +2743,9 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPolyDiffDef_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(in)    , contiguous    :: coef(0:)
-        real(RKC)   , intent(out)   , contiguous    :: diff(1:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(in)    , contiguous    :: coef(0:)
+        real(RKG)   , intent(out)   , contiguous    :: diff(1:)
     end subroutine
 #endif
 
@@ -2754,9 +2754,9 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPolyDiffDef_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(in)    , contiguous    :: coef(0:)
-        real(RKC)   , intent(out)   , contiguous    :: diff(1:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(in)    , contiguous    :: coef(0:)
+        real(RKG)   , intent(out)   , contiguous    :: diff(1:)
     end subroutine
 #endif
 
@@ -2765,9 +2765,9 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPolyDiffDef_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(in)    , contiguous    :: coef(0:)
-        real(RKC)   , intent(out)   , contiguous    :: diff(1:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(in)    , contiguous    :: coef(0:)
+        real(RKG)   , intent(out)   , contiguous    :: diff(1:)
     end subroutine
 #endif
 
@@ -2776,9 +2776,9 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPolyDiffDef_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(in)    , contiguous    :: coef(0:)
-        real(RKC)   , intent(out)   , contiguous    :: diff(1:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(in)    , contiguous    :: coef(0:)
+        real(RKG)   , intent(out)   , contiguous    :: diff(1:)
     end subroutine
 #endif
 
@@ -2787,9 +2787,9 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPolyDiffDef_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(in)    , contiguous    :: coef(0:)
-        real(RKC)   , intent(out)   , contiguous    :: diff(1:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(in)    , contiguous    :: coef(0:)
+        real(RKG)   , intent(out)   , contiguous    :: diff(1:)
     end subroutine
 #endif
 
@@ -2806,10 +2806,10 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPolyDiffOrd_CK5
 #endif
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
         integer(IK) , intent(in)                    :: order
-        complex(CKC), intent(in)    , contiguous    :: coef(0:)
-        complex(CKC), intent(out)   , contiguous    :: diff(order:)
+        complex(CKG), intent(in)    , contiguous    :: coef(0:)
+        complex(CKG), intent(out)   , contiguous    :: diff(order:)
     end subroutine
 #endif
 
@@ -2818,10 +2818,10 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPolyDiffOrd_CK4
 #endif
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
         integer(IK) , intent(in)                    :: order
-        complex(CKC), intent(in)    , contiguous    :: coef(0:)
-        complex(CKC), intent(out)   , contiguous    :: diff(order:)
+        complex(CKG), intent(in)    , contiguous    :: coef(0:)
+        complex(CKG), intent(out)   , contiguous    :: diff(order:)
     end subroutine
 #endif
 
@@ -2830,10 +2830,10 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPolyDiffOrd_CK3
 #endif
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
         integer(IK) , intent(in)                    :: order
-        complex(CKC), intent(in)    , contiguous    :: coef(0:)
-        complex(CKC), intent(out)   , contiguous    :: diff(order:)
+        complex(CKG), intent(in)    , contiguous    :: coef(0:)
+        complex(CKG), intent(out)   , contiguous    :: diff(order:)
     end subroutine
 #endif
 
@@ -2842,10 +2842,10 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPolyDiffOrd_CK2
 #endif
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
         integer(IK) , intent(in)                    :: order
-        complex(CKC), intent(in)    , contiguous    :: coef(0:)
-        complex(CKC), intent(out)   , contiguous    :: diff(order:)
+        complex(CKG), intent(in)    , contiguous    :: coef(0:)
+        complex(CKG), intent(out)   , contiguous    :: diff(order:)
     end subroutine
 #endif
 
@@ -2854,10 +2854,10 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPolyDiffOrd_CK1
 #endif
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
         integer(IK) , intent(in)                    :: order
-        complex(CKC), intent(in)    , contiguous    :: coef(0:)
-        complex(CKC), intent(out)   , contiguous    :: diff(order:)
+        complex(CKG), intent(in)    , contiguous    :: coef(0:)
+        complex(CKG), intent(out)   , contiguous    :: diff(order:)
     end subroutine
 #endif
 
@@ -2868,10 +2868,10 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPolyDiffOrd_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         integer(IK) , intent(in)                    :: order
-        real(RKC)   , intent(in)    , contiguous    :: coef(0:)
-        real(RKC)   , intent(out)   , contiguous    :: diff(order:)
+        real(RKG)   , intent(in)    , contiguous    :: coef(0:)
+        real(RKG)   , intent(out)   , contiguous    :: diff(order:)
     end subroutine
 #endif
 
@@ -2880,10 +2880,10 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPolyDiffOrd_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         integer(IK) , intent(in)                    :: order
-        real(RKC)   , intent(in)    , contiguous    :: coef(0:)
-        real(RKC)   , intent(out)   , contiguous    :: diff(order:)
+        real(RKG)   , intent(in)    , contiguous    :: coef(0:)
+        real(RKG)   , intent(out)   , contiguous    :: diff(order:)
     end subroutine
 #endif
 
@@ -2892,10 +2892,10 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPolyDiffOrd_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         integer(IK) , intent(in)                    :: order
-        real(RKC)   , intent(in)    , contiguous    :: coef(0:)
-        real(RKC)   , intent(out)   , contiguous    :: diff(order:)
+        real(RKG)   , intent(in)    , contiguous    :: coef(0:)
+        real(RKG)   , intent(out)   , contiguous    :: diff(order:)
     end subroutine
 #endif
 
@@ -2904,10 +2904,10 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPolyDiffOrd_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         integer(IK) , intent(in)                    :: order
-        real(RKC)   , intent(in)    , contiguous    :: coef(0:)
-        real(RKC)   , intent(out)   , contiguous    :: diff(order:)
+        real(RKG)   , intent(in)    , contiguous    :: coef(0:)
+        real(RKG)   , intent(out)   , contiguous    :: diff(order:)
     end subroutine
 #endif
 
@@ -2916,10 +2916,10 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPolyDiffOrd_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         integer(IK) , intent(in)                    :: order
-        real(RKC)   , intent(in)    , contiguous    :: coef(0:)
-        real(RKC)   , intent(out)   , contiguous    :: diff(order:)
+        real(RKG)   , intent(in)    , contiguous    :: coef(0:)
+        real(RKG)   , intent(out)   , contiguous    :: diff(order:)
     end subroutine
 #endif
 
@@ -3003,9 +3003,9 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPolyStrDef_CK5
 #endif
-        use pm_kind, only: SKC => SK, CKC => CK5
-        complex(CKC)    , intent(in)    , contiguous    :: coef(0:)
-        character(:,SKC)                , allocatable   :: str
+        use pm_kind, only: SKG => SK, CKG => CK5
+        complex(CKG)    , intent(in)    , contiguous    :: coef(0:)
+        character(:,SKG)                , allocatable   :: str
     end function
 #endif
 
@@ -3014,9 +3014,9 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPolyStrDef_CK4
 #endif
-        use pm_kind, only: SKC => SK, CKC => CK4
-        complex(CKC)    , intent(in)    , contiguous    :: coef(0:)
-        character(:,SKC)                , allocatable   :: str
+        use pm_kind, only: SKG => SK, CKG => CK4
+        complex(CKG)    , intent(in)    , contiguous    :: coef(0:)
+        character(:,SKG)                , allocatable   :: str
     end function
 #endif
 
@@ -3025,9 +3025,9 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPolyStrDef_CK3
 #endif
-        use pm_kind, only: SKC => SK, CKC => CK3
-        complex(CKC)    , intent(in)    , contiguous    :: coef(0:)
-        character(:,SKC)                , allocatable   :: str
+        use pm_kind, only: SKG => SK, CKG => CK3
+        complex(CKG)    , intent(in)    , contiguous    :: coef(0:)
+        character(:,SKG)                , allocatable   :: str
     end function
 #endif
 
@@ -3036,9 +3036,9 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPolyStrDef_CK2
 #endif
-        use pm_kind, only: SKC => SK, CKC => CK2
-        complex(CKC)    , intent(in)    , contiguous    :: coef(0:)
-        character(:,SKC)                , allocatable   :: str
+        use pm_kind, only: SKG => SK, CKG => CK2
+        complex(CKG)    , intent(in)    , contiguous    :: coef(0:)
+        character(:,SKG)                , allocatable   :: str
     end function
 #endif
 
@@ -3047,9 +3047,9 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPolyStrDef_CK1
 #endif
-        use pm_kind, only: SKC => SK, CKC => CK1
-        complex(CKC)    , intent(in)    , contiguous    :: coef(0:)
-        character(:,SKC)                , allocatable   :: str
+        use pm_kind, only: SKG => SK, CKG => CK1
+        complex(CKG)    , intent(in)    , contiguous    :: coef(0:)
+        character(:,SKG)                , allocatable   :: str
     end function
 #endif
 
@@ -3060,9 +3060,9 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPolyStrDef_RK5
 #endif
-        use pm_kind, only: SKC => SK, RKC => RK5
-        real(RKC)       , intent(in)    , contiguous    :: coef(0:)
-        character(:,SKC)                , allocatable   :: str
+        use pm_kind, only: SKG => SK, RKG => RK5
+        real(RKG)       , intent(in)    , contiguous    :: coef(0:)
+        character(:,SKG)                , allocatable   :: str
     end function
 #endif
 
@@ -3071,9 +3071,9 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPolyStrDef_RK4
 #endif
-        use pm_kind, only: SKC => SK, RKC => RK4
-        real(RKC)       , intent(in)    , contiguous    :: coef(0:)
-        character(:,SKC)                , allocatable   :: str
+        use pm_kind, only: SKG => SK, RKG => RK4
+        real(RKG)       , intent(in)    , contiguous    :: coef(0:)
+        character(:,SKG)                , allocatable   :: str
     end function
 #endif
 
@@ -3082,9 +3082,9 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPolyStrDef_RK3
 #endif
-        use pm_kind, only: SKC => SK, RKC => RK3
-        real(RKC)       , intent(in)    , contiguous    :: coef(0:)
-        character(:,SKC)                , allocatable   :: str
+        use pm_kind, only: SKG => SK, RKG => RK3
+        real(RKG)       , intent(in)    , contiguous    :: coef(0:)
+        character(:,SKG)                , allocatable   :: str
     end function
 #endif
 
@@ -3093,9 +3093,9 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPolyStrDef_RK2
 #endif
-        use pm_kind, only: SKC => SK, RKC => RK2
-        real(RKC)       , intent(in)    , contiguous    :: coef(0:)
-        character(:,SKC)                , allocatable   :: str
+        use pm_kind, only: SKG => SK, RKG => RK2
+        real(RKG)       , intent(in)    , contiguous    :: coef(0:)
+        character(:,SKG)                , allocatable   :: str
     end function
 #endif
 
@@ -3104,9 +3104,9 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPolyStrDef_RK1
 #endif
-        use pm_kind, only: SKC => SK, RKC => RK1
-        real(RKC)       , intent(in)    , contiguous    :: coef(0:)
-        character(:,SKC)                , allocatable   :: str
+        use pm_kind, only: SKG => SK, RKG => RK1
+        real(RKG)       , intent(in)    , contiguous    :: coef(0:)
+        character(:,SKG)                , allocatable   :: str
     end function
 #endif
 
@@ -3383,9 +3383,9 @@ module pm_polynomial
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setPolyCoef_CK5_CK5
 !#endif
-!        use pm_kind, only: CKC => CK5
-!        complex(CKC)            , intent(out)   , contiguous    :: coef(:)
-!        complex(CKC)            , intent(in)    , contiguous    :: root(:)
+!        use pm_kind, only: CKG => CK5
+!        complex(CKG)            , intent(out)   , contiguous    :: coef(:)
+!        complex(CKG)            , intent(in)    , contiguous    :: root(:)
 !    end subroutine
 !#endif
 !
@@ -3394,9 +3394,9 @@ module pm_polynomial
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setPolyCoef_CK4_CK4
 !#endif
-!        use pm_kind, only: CKC => CK4
-!        complex(CKC)            , intent(out)   , contiguous    :: coef(:)
-!        complex(CKC)            , intent(in)    , contiguous    :: root(:)
+!        use pm_kind, only: CKG => CK4
+!        complex(CKG)            , intent(out)   , contiguous    :: coef(:)
+!        complex(CKG)            , intent(in)    , contiguous    :: root(:)
 !    end subroutine
 !#endif
 !
@@ -3405,9 +3405,9 @@ module pm_polynomial
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setPolyCoef_CK3_CK3
 !#endif
-!        use pm_kind, only: CKC => CK3
-!        complex(CKC)            , intent(out)   , contiguous    :: coef(:)
-!        complex(CKC)            , intent(in)    , contiguous    :: root(:)
+!        use pm_kind, only: CKG => CK3
+!        complex(CKG)            , intent(out)   , contiguous    :: coef(:)
+!        complex(CKG)            , intent(in)    , contiguous    :: root(:)
 !    end subroutine
 !#endif
 !
@@ -3416,9 +3416,9 @@ module pm_polynomial
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setPolyCoef_CK2_CK2
 !#endif
-!        use pm_kind, only: CKC => CK2
-!        complex(CKC)            , intent(out)   , contiguous    :: coef(:)
-!        complex(CKC)            , intent(in)    , contiguous    :: root(:)
+!        use pm_kind, only: CKG => CK2
+!        complex(CKG)            , intent(out)   , contiguous    :: coef(:)
+!        complex(CKG)            , intent(in)    , contiguous    :: root(:)
 !    end subroutine
 !#endif
 !
@@ -3427,9 +3427,9 @@ module pm_polynomial
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setPolyCoef_CK1_CK1
 !#endif
-!        use pm_kind, only: CKC => CK1
-!        complex(CKC)            , intent(out)   , contiguous    :: coef(:)
-!        complex(CKC)            , intent(in)    , contiguous    :: root(:)
+!        use pm_kind, only: CKG => CK1
+!        complex(CKG)            , intent(out)   , contiguous    :: coef(:)
+!        complex(CKG)            , intent(in)    , contiguous    :: root(:)
 !    end subroutine
 !#endif
 !
@@ -3440,9 +3440,9 @@ module pm_polynomial
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setPolyCoef_RK5_RK5
 !#endif
-!        use pm_kind, only: RKC => RK5
-!        real(RKC)               , intent(out)   , contiguous    :: coef(:)
-!        real(RKC)               , intent(in)    , contiguous    :: root(:)
+!        use pm_kind, only: RKG => RK5
+!        real(RKG)               , intent(out)   , contiguous    :: coef(:)
+!        real(RKG)               , intent(in)    , contiguous    :: root(:)
 !    end subroutine
 !#endif
 !
@@ -3451,9 +3451,9 @@ module pm_polynomial
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setPolyCoef_RK4_RK4
 !#endif
-!        use pm_kind, only: RKC => RK4
-!        real(RKC)               , intent(out)   , contiguous    :: coef(:)
-!        real(RKC)               , intent(in)    , contiguous    :: root(:)
+!        use pm_kind, only: RKG => RK4
+!        real(RKG)               , intent(out)   , contiguous    :: coef(:)
+!        real(RKG)               , intent(in)    , contiguous    :: root(:)
 !    end subroutine
 !#endif
 !
@@ -3462,9 +3462,9 @@ module pm_polynomial
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setPolyCoef_RK3_RK3
 !#endif
-!        use pm_kind, only: RKC => RK3
-!        real(RKC)               , intent(out)   , contiguous    :: coef(:)
-!        real(RKC)               , intent(in)    , contiguous    :: root(:)
+!        use pm_kind, only: RKG => RK3
+!        real(RKG)               , intent(out)   , contiguous    :: coef(:)
+!        real(RKG)               , intent(in)    , contiguous    :: root(:)
 !    end subroutine
 !#endif
 !
@@ -3473,9 +3473,9 @@ module pm_polynomial
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setPolyCoef_RK2_RK2
 !#endif
-!        use pm_kind, only: RKC => RK2
-!        real(RKC)               , intent(out)   , contiguous    :: coef(:)
-!        real(RKC)               , intent(in)    , contiguous    :: root(:)
+!        use pm_kind, only: RKG => RK2
+!        real(RKG)               , intent(out)   , contiguous    :: coef(:)
+!        real(RKG)               , intent(in)    , contiguous    :: root(:)
 !    end subroutine
 !#endif
 !
@@ -3484,9 +3484,9 @@ module pm_polynomial
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setPolyCoef_RK1_RK1
 !#endif
-!        use pm_kind, only: RKC => RK1
-!        real(RKC)               , intent(out)   , contiguous    :: coef(:)
-!        real(RKC)               , intent(in)    , contiguous    :: root(:)
+!        use pm_kind, only: RKG => RK1
+!        real(RKG)               , intent(out)   , contiguous    :: coef(:)
+!        real(RKG)               , intent(in)    , contiguous    :: root(:)
 !    end subroutine
 !#endif
 !
@@ -3590,9 +3590,9 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPolyRootDef_CK5_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)                            , allocatable   :: root(:)
-        complex(CKC)            , intent(in)    , contiguous    :: coef(0:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG)                            , allocatable   :: root(:)
+        complex(CKG)            , intent(in)    , contiguous    :: coef(0:)
     end function
 #endif
 
@@ -3601,9 +3601,9 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPolyRootDef_CK4_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)                            , allocatable   :: root(:)
-        complex(CKC)            , intent(in)    , contiguous    :: coef(0:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG)                            , allocatable   :: root(:)
+        complex(CKG)            , intent(in)    , contiguous    :: coef(0:)
     end function
 #endif
 
@@ -3612,9 +3612,9 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPolyRootDef_CK3_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)                            , allocatable   :: root(:)
-        complex(CKC)            , intent(in)    , contiguous    :: coef(0:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG)                            , allocatable   :: root(:)
+        complex(CKG)            , intent(in)    , contiguous    :: coef(0:)
     end function
 #endif
 
@@ -3623,9 +3623,9 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPolyRootDef_CK2_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)                            , allocatable   :: root(:)
-        complex(CKC)            , intent(in)    , contiguous    :: coef(0:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG)                            , allocatable   :: root(:)
+        complex(CKG)            , intent(in)    , contiguous    :: coef(0:)
     end function
 #endif
 
@@ -3634,9 +3634,9 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPolyRootDef_CK1_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)                            , allocatable   :: root(:)
-        complex(CKC)            , intent(in)    , contiguous    :: coef(0:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG)                            , allocatable   :: root(:)
+        complex(CKG)            , intent(in)    , contiguous    :: coef(0:)
     end function
 #endif
 
@@ -3647,9 +3647,9 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPolyRootDef_RK5_CK5
 #endif
-        use pm_kind, only: RKC => RK5
-        complex(RKC)                            , allocatable   :: root(:)
-        real(RKC)               , intent(in)    , contiguous    :: coef(0:)
+        use pm_kind, only: RKG => RK5
+        complex(RKG)                            , allocatable   :: root(:)
+        real(RKG)               , intent(in)    , contiguous    :: coef(0:)
     end function
 #endif
 
@@ -3658,9 +3658,9 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPolyRootDef_RK4_CK4
 #endif
-        use pm_kind, only: RKC => RK4
-        complex(RKC)                            , allocatable   :: root(:)
-        real(RKC)               , intent(in)    , contiguous    :: coef(0:)
+        use pm_kind, only: RKG => RK4
+        complex(RKG)                            , allocatable   :: root(:)
+        real(RKG)               , intent(in)    , contiguous    :: coef(0:)
     end function
 #endif
 
@@ -3669,9 +3669,9 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPolyRootDef_RK3_CK3
 #endif
-        use pm_kind, only: RKC => RK3
-        complex(RKC)                            , allocatable   :: root(:)
-        real(RKC)               , intent(in)    , contiguous    :: coef(0:)
+        use pm_kind, only: RKG => RK3
+        complex(RKG)                            , allocatable   :: root(:)
+        real(RKG)               , intent(in)    , contiguous    :: coef(0:)
     end function
 #endif
 
@@ -3680,9 +3680,9 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPolyRootDef_RK2_CK2
 #endif
-        use pm_kind, only: RKC => RK2
-        complex(RKC)                            , allocatable   :: root(:)
-        real(RKC)               , intent(in)    , contiguous    :: coef(0:)
+        use pm_kind, only: RKG => RK2
+        complex(RKG)                            , allocatable   :: root(:)
+        real(RKG)               , intent(in)    , contiguous    :: coef(0:)
     end function
 #endif
 
@@ -3691,9 +3691,9 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPolyRootDef_RK1_CK1
 #endif
-        use pm_kind, only: RKC => RK1
-        complex(RKC)                            , allocatable   :: root(:)
-        real(RKC)               , intent(in)    , contiguous    :: coef(0:)
+        use pm_kind, only: RKG => RK1
+        complex(RKG)                            , allocatable   :: root(:)
+        real(RKG)               , intent(in)    , contiguous    :: coef(0:)
     end function
 #endif
 
@@ -3720,9 +3720,9 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPolyRootEig_CK5_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)                            , allocatable   :: root(:)
-        complex(CKC)            , intent(in)    , contiguous    :: coef(0:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG)                            , allocatable   :: root(:)
+        complex(CKG)            , intent(in)    , contiguous    :: coef(0:)
         type(eigen_type)        , intent(in)                    :: method
     end function
 #endif
@@ -3732,9 +3732,9 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPolyRootEig_CK4_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)                            , allocatable   :: root(:)
-        complex(CKC)            , intent(in)    , contiguous    :: coef(0:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG)                            , allocatable   :: root(:)
+        complex(CKG)            , intent(in)    , contiguous    :: coef(0:)
         type(eigen_type)        , intent(in)                    :: method
     end function
 #endif
@@ -3744,9 +3744,9 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPolyRootEig_CK3_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)                            , allocatable   :: root(:)
-        complex(CKC)            , intent(in)    , contiguous    :: coef(0:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG)                            , allocatable   :: root(:)
+        complex(CKG)            , intent(in)    , contiguous    :: coef(0:)
         type(eigen_type)        , intent(in)                    :: method
     end function
 #endif
@@ -3756,9 +3756,9 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPolyRootEig_CK2_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)                            , allocatable   :: root(:)
-        complex(CKC)            , intent(in)    , contiguous    :: coef(0:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG)                            , allocatable   :: root(:)
+        complex(CKG)            , intent(in)    , contiguous    :: coef(0:)
         type(eigen_type)        , intent(in)                    :: method
     end function
 #endif
@@ -3768,9 +3768,9 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPolyRootEig_CK1_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)                            , allocatable   :: root(:)
-        complex(CKC)            , intent(in)    , contiguous    :: coef(0:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG)                            , allocatable   :: root(:)
+        complex(CKG)            , intent(in)    , contiguous    :: coef(0:)
         type(eigen_type)        , intent(in)                    :: method
     end function
 #endif
@@ -3782,9 +3782,9 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPolyRootEig_RK5_CK5
 #endif
-        use pm_kind, only: RKC => RK5
-        complex(RKC)                            , allocatable   :: root(:)
-        real(RKC)               , intent(in)    , contiguous    :: coef(0:)
+        use pm_kind, only: RKG => RK5
+        complex(RKG)                            , allocatable   :: root(:)
+        real(RKG)               , intent(in)    , contiguous    :: coef(0:)
         type(eigen_type)        , intent(in)                    :: method
     end function
 #endif
@@ -3794,9 +3794,9 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPolyRootEig_RK4_CK4
 #endif
-        use pm_kind, only: RKC => RK4
-        complex(RKC)                            , allocatable   :: root(:)
-        real(RKC)               , intent(in)    , contiguous    :: coef(0:)
+        use pm_kind, only: RKG => RK4
+        complex(RKG)                            , allocatable   :: root(:)
+        real(RKG)               , intent(in)    , contiguous    :: coef(0:)
         type(eigen_type)        , intent(in)                    :: method
     end function
 #endif
@@ -3806,9 +3806,9 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPolyRootEig_RK3_CK3
 #endif
-        use pm_kind, only: RKC => RK3
-        complex(RKC)                            , allocatable   :: root(:)
-        real(RKC)               , intent(in)    , contiguous    :: coef(0:)
+        use pm_kind, only: RKG => RK3
+        complex(RKG)                            , allocatable   :: root(:)
+        real(RKG)               , intent(in)    , contiguous    :: coef(0:)
         type(eigen_type)        , intent(in)                    :: method
     end function
 #endif
@@ -3818,9 +3818,9 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPolyRootEig_RK2_CK2
 #endif
-        use pm_kind, only: RKC => RK2
-        complex(RKC)                            , allocatable   :: root(:)
-        real(RKC)               , intent(in)    , contiguous    :: coef(0:)
+        use pm_kind, only: RKG => RK2
+        complex(RKG)                            , allocatable   :: root(:)
+        real(RKG)               , intent(in)    , contiguous    :: coef(0:)
         type(eigen_type)        , intent(in)                    :: method
     end function
 #endif
@@ -3830,9 +3830,9 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPolyRootEig_RK1_CK1
 #endif
-        use pm_kind, only: RKC => RK1
-        complex(RKC)                            , allocatable   :: root(:)
-        real(RKC)               , intent(in)    , contiguous    :: coef(0:)
+        use pm_kind, only: RKG => RK1
+        complex(RKG)                            , allocatable   :: root(:)
+        real(RKG)               , intent(in)    , contiguous    :: coef(0:)
         type(eigen_type)        , intent(in)                    :: method
     end function
 #endif
@@ -3860,9 +3860,9 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPolyRootJen_CK5_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)                            , allocatable   :: root(:)
-        complex(CKC)            , intent(in)    , contiguous    :: coef(0:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG)                            , allocatable   :: root(:)
+        complex(CKG)            , intent(in)    , contiguous    :: coef(0:)
         type(jenkins_type)      , intent(in)                    :: method
     end function
 #endif
@@ -3872,9 +3872,9 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPolyRootJen_CK4_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)                            , allocatable   :: root(:)
-        complex(CKC)            , intent(in)    , contiguous    :: coef(0:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG)                            , allocatable   :: root(:)
+        complex(CKG)            , intent(in)    , contiguous    :: coef(0:)
         type(jenkins_type)      , intent(in)                    :: method
     end function
 #endif
@@ -3884,9 +3884,9 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPolyRootJen_CK3_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)                            , allocatable   :: root(:)
-        complex(CKC)            , intent(in)    , contiguous    :: coef(0:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG)                            , allocatable   :: root(:)
+        complex(CKG)            , intent(in)    , contiguous    :: coef(0:)
         type(jenkins_type)      , intent(in)                    :: method
     end function
 #endif
@@ -3896,9 +3896,9 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPolyRootJen_CK2_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)                            , allocatable   :: root(:)
-        complex(CKC)            , intent(in)    , contiguous    :: coef(0:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG)                            , allocatable   :: root(:)
+        complex(CKG)            , intent(in)    , contiguous    :: coef(0:)
         type(jenkins_type)      , intent(in)                    :: method
     end function
 #endif
@@ -3908,9 +3908,9 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPolyRootJen_CK1_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)                            , allocatable   :: root(:)
-        complex(CKC)            , intent(in)    , contiguous    :: coef(0:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG)                            , allocatable   :: root(:)
+        complex(CKG)            , intent(in)    , contiguous    :: coef(0:)
         type(jenkins_type)      , intent(in)                    :: method
     end function
 #endif
@@ -3922,9 +3922,9 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPolyRootJen_RK5_CK5
 #endif
-        use pm_kind, only: RKC => RK5
-        complex(RKC)                            , allocatable   :: root(:)
-        real(RKC)               , intent(in)    , contiguous    :: coef(0:)
+        use pm_kind, only: RKG => RK5
+        complex(RKG)                            , allocatable   :: root(:)
+        real(RKG)               , intent(in)    , contiguous    :: coef(0:)
         type(jenkins_type)      , intent(in)                    :: method
     end function
 #endif
@@ -3934,9 +3934,9 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPolyRootJen_RK4_CK4
 #endif
-        use pm_kind, only: RKC => RK4
-        complex(RKC)                            , allocatable   :: root(:)
-        real(RKC)               , intent(in)    , contiguous    :: coef(0:)
+        use pm_kind, only: RKG => RK4
+        complex(RKG)                            , allocatable   :: root(:)
+        real(RKG)               , intent(in)    , contiguous    :: coef(0:)
         type(jenkins_type)      , intent(in)                    :: method
     end function
 #endif
@@ -3946,9 +3946,9 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPolyRootJen_RK3_CK3
 #endif
-        use pm_kind, only: RKC => RK3
-        complex(RKC)                            , allocatable   :: root(:)
-        real(RKC)               , intent(in)    , contiguous    :: coef(0:)
+        use pm_kind, only: RKG => RK3
+        complex(RKG)                            , allocatable   :: root(:)
+        real(RKG)               , intent(in)    , contiguous    :: coef(0:)
         type(jenkins_type)      , intent(in)                    :: method
     end function
 #endif
@@ -3958,9 +3958,9 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPolyRootJen_RK2_CK2
 #endif
-        use pm_kind, only: RKC => RK2
-        complex(RKC)                            , allocatable   :: root(:)
-        real(RKC)               , intent(in)    , contiguous    :: coef(0:)
+        use pm_kind, only: RKG => RK2
+        complex(RKG)                            , allocatable   :: root(:)
+        real(RKG)               , intent(in)    , contiguous    :: coef(0:)
         type(jenkins_type)      , intent(in)                    :: method
     end function
 #endif
@@ -3970,9 +3970,9 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPolyRootJen_RK1_CK1
 #endif
-        use pm_kind, only: RKC => RK1
-        complex(RKC)                            , allocatable   :: root(:)
-        real(RKC)               , intent(in)    , contiguous    :: coef(0:)
+        use pm_kind, only: RKG => RK1
+        complex(RKG)                            , allocatable   :: root(:)
+        real(RKG)               , intent(in)    , contiguous    :: coef(0:)
         type(jenkins_type)      , intent(in)                    :: method
     end function
 #endif
@@ -4000,9 +4000,9 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPolyRootLag_CK5_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)                            , allocatable   :: root(:)
-        complex(CKC)            , intent(in)    , contiguous    :: coef(0:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG)                            , allocatable   :: root(:)
+        complex(CKG)            , intent(in)    , contiguous    :: coef(0:)
         type(laguerre_type)     , intent(in)                    :: method
     end function
 #endif
@@ -4012,9 +4012,9 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPolyRootLag_CK4_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)                            , allocatable   :: root(:)
-        complex(CKC)            , intent(in)    , contiguous    :: coef(0:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG)                            , allocatable   :: root(:)
+        complex(CKG)            , intent(in)    , contiguous    :: coef(0:)
         type(laguerre_type)     , intent(in)                    :: method
     end function
 #endif
@@ -4024,9 +4024,9 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPolyRootLag_CK3_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)                            , allocatable   :: root(:)
-        complex(CKC)            , intent(in)    , contiguous    :: coef(0:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG)                            , allocatable   :: root(:)
+        complex(CKG)            , intent(in)    , contiguous    :: coef(0:)
         type(laguerre_type)     , intent(in)                    :: method
     end function
 #endif
@@ -4036,9 +4036,9 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPolyRootLag_CK2_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)                            , allocatable   :: root(:)
-        complex(CKC)            , intent(in)    , contiguous    :: coef(0:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG)                            , allocatable   :: root(:)
+        complex(CKG)            , intent(in)    , contiguous    :: coef(0:)
         type(laguerre_type)     , intent(in)                    :: method
     end function
 #endif
@@ -4048,9 +4048,9 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPolyRootLag_CK1_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)                            , allocatable   :: root(:)
-        complex(CKC)            , intent(in)    , contiguous    :: coef(0:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG)                            , allocatable   :: root(:)
+        complex(CKG)            , intent(in)    , contiguous    :: coef(0:)
         type(laguerre_type)     , intent(in)                    :: method
     end function
 #endif
@@ -4062,9 +4062,9 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPolyRootLag_RK5_CK5
 #endif
-        use pm_kind, only: RKC => RK5
-        complex(RKC)                            , allocatable   :: root(:)
-        real(RKC)               , intent(in)    , contiguous    :: coef(0:)
+        use pm_kind, only: RKG => RK5
+        complex(RKG)                            , allocatable   :: root(:)
+        real(RKG)               , intent(in)    , contiguous    :: coef(0:)
         type(laguerre_type)     , intent(in)                    :: method
     end function
 #endif
@@ -4074,9 +4074,9 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPolyRootLag_RK4_CK4
 #endif
-        use pm_kind, only: RKC => RK4
-        complex(RKC)                            , allocatable   :: root(:)
-        real(RKC)               , intent(in)    , contiguous    :: coef(0:)
+        use pm_kind, only: RKG => RK4
+        complex(RKG)                            , allocatable   :: root(:)
+        real(RKG)               , intent(in)    , contiguous    :: coef(0:)
         type(laguerre_type)     , intent(in)                    :: method
     end function
 #endif
@@ -4086,9 +4086,9 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPolyRootLag_RK3_CK3
 #endif
-        use pm_kind, only: RKC => RK3
-        complex(RKC)                            , allocatable   :: root(:)
-        real(RKC)               , intent(in)    , contiguous    :: coef(0:)
+        use pm_kind, only: RKG => RK3
+        complex(RKG)                            , allocatable   :: root(:)
+        real(RKG)               , intent(in)    , contiguous    :: coef(0:)
         type(laguerre_type)     , intent(in)                    :: method
     end function
 #endif
@@ -4098,9 +4098,9 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPolyRootLag_RK2_CK2
 #endif
-        use pm_kind, only: RKC => RK2
-        complex(RKC)                            , allocatable   :: root(:)
-        real(RKC)               , intent(in)    , contiguous    :: coef(0:)
+        use pm_kind, only: RKG => RK2
+        complex(RKG)                            , allocatable   :: root(:)
+        real(RKG)               , intent(in)    , contiguous    :: coef(0:)
         type(laguerre_type)     , intent(in)                    :: method
     end function
 #endif
@@ -4110,9 +4110,9 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPolyRootLag_RK1_CK1
 #endif
-        use pm_kind, only: RKC => RK1
-        complex(RKC)                            , allocatable   :: root(:)
-        real(RKC)               , intent(in)    , contiguous    :: coef(0:)
+        use pm_kind, only: RKG => RK1
+        complex(RKG)                            , allocatable   :: root(:)
+        real(RKG)               , intent(in)    , contiguous    :: coef(0:)
         type(laguerre_type)     , intent(in)                    :: method
     end function
 #endif
@@ -4288,10 +4288,10 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPolyRootEig_CK5_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)            , intent(in)    , contiguous    :: coef(0:)
-       !complex(CKC)            , intent(out)   , contiguous    :: workspace(:,:)
-        complex(CKC)            , intent(out)   , contiguous    :: root(:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG)            , intent(in)    , contiguous    :: coef(0:)
+       !complex(CKG)            , intent(out)   , contiguous    :: workspace(:,:)
+        complex(CKG)            , intent(out)   , contiguous    :: root(:)
         integer(IK)             , intent(out)                   :: count
         type(eigen_type)        , intent(in)                    :: method
     end subroutine
@@ -4302,10 +4302,10 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPolyRootEig_CK4_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)            , intent(in)    , contiguous    :: coef(0:)
-       !complex(CKC)            , intent(out)   , contiguous    :: workspace(:,:)
-        complex(CKC)            , intent(out)   , contiguous    :: root(:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG)            , intent(in)    , contiguous    :: coef(0:)
+       !complex(CKG)            , intent(out)   , contiguous    :: workspace(:,:)
+        complex(CKG)            , intent(out)   , contiguous    :: root(:)
         integer(IK)             , intent(out)                   :: count
         type(eigen_type)        , intent(in)                    :: method
     end subroutine
@@ -4316,10 +4316,10 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPolyRootEig_CK3_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)            , intent(in)    , contiguous    :: coef(0:)
-       !complex(CKC)            , intent(out)   , contiguous    :: workspace(:,:)
-        complex(CKC)            , intent(out)   , contiguous    :: root(:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG)            , intent(in)    , contiguous    :: coef(0:)
+       !complex(CKG)            , intent(out)   , contiguous    :: workspace(:,:)
+        complex(CKG)            , intent(out)   , contiguous    :: root(:)
         integer(IK)             , intent(out)                   :: count
         type(eigen_type)        , intent(in)                    :: method
     end subroutine
@@ -4330,10 +4330,10 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPolyRootEig_CK2_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)            , intent(in)    , contiguous    :: coef(0:)
-       !complex(CKC)            , intent(out)   , contiguous    :: workspace(:,:)
-        complex(CKC)            , intent(out)   , contiguous    :: root(:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG)            , intent(in)    , contiguous    :: coef(0:)
+       !complex(CKG)            , intent(out)   , contiguous    :: workspace(:,:)
+        complex(CKG)            , intent(out)   , contiguous    :: root(:)
         integer(IK)             , intent(out)                   :: count
         type(eigen_type)        , intent(in)                    :: method
     end subroutine
@@ -4344,10 +4344,10 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPolyRootEig_CK1_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)            , intent(in)    , contiguous    :: coef(0:)
-       !complex(CKC)            , intent(out)   , contiguous    :: workspace(:,:)
-        complex(CKC)            , intent(out)   , contiguous    :: root(:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG)            , intent(in)    , contiguous    :: coef(0:)
+       !complex(CKG)            , intent(out)   , contiguous    :: workspace(:,:)
+        complex(CKG)            , intent(out)   , contiguous    :: root(:)
         integer(IK)             , intent(out)                   :: count
         type(eigen_type)        , intent(in)                    :: method
     end subroutine
@@ -4360,10 +4360,10 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPolyRootEig_RK5_CK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)               , intent(in)    , contiguous    :: coef(0:)
-       !real(RKC)               , intent(out)   , contiguous    :: workspace(:,:)
-        complex(RKC)            , intent(out)   , contiguous    :: root(:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)               , intent(in)    , contiguous    :: coef(0:)
+       !real(RKG)               , intent(out)   , contiguous    :: workspace(:,:)
+        complex(RKG)            , intent(out)   , contiguous    :: root(:)
         integer(IK)             , intent(out)                   :: count
         type(eigen_type)        , intent(in)                    :: method
     end subroutine
@@ -4374,10 +4374,10 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPolyRootEig_RK4_CK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)               , intent(in)    , contiguous    :: coef(0:)
-       !real(RKC)               , intent(out)   , contiguous    :: workspace(:,:)
-        complex(RKC)            , intent(out)   , contiguous    :: root(:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)               , intent(in)    , contiguous    :: coef(0:)
+       !real(RKG)               , intent(out)   , contiguous    :: workspace(:,:)
+        complex(RKG)            , intent(out)   , contiguous    :: root(:)
         integer(IK)             , intent(out)                   :: count
         type(eigen_type)        , intent(in)                    :: method
     end subroutine
@@ -4388,10 +4388,10 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPolyRootEig_RK3_CK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)               , intent(in)    , contiguous    :: coef(0:)
-       !real(RKC)               , intent(out)   , contiguous    :: workspace(:,:)
-        complex(RKC)            , intent(out)   , contiguous    :: root(:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)               , intent(in)    , contiguous    :: coef(0:)
+       !real(RKG)               , intent(out)   , contiguous    :: workspace(:,:)
+        complex(RKG)            , intent(out)   , contiguous    :: root(:)
         integer(IK)             , intent(out)                   :: count
         type(eigen_type)        , intent(in)                    :: method
     end subroutine
@@ -4402,10 +4402,10 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPolyRootEig_RK2_CK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)               , intent(in)    , contiguous    :: coef(0:)
-       !real(RKC)               , intent(out)   , contiguous    :: workspace(:,:)
-        complex(RKC)            , intent(out)   , contiguous    :: root(:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)               , intent(in)    , contiguous    :: coef(0:)
+       !real(RKG)               , intent(out)   , contiguous    :: workspace(:,:)
+        complex(RKG)            , intent(out)   , contiguous    :: root(:)
         integer(IK)             , intent(out)                   :: count
         type(eigen_type)        , intent(in)                    :: method
     end subroutine
@@ -4416,10 +4416,10 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPolyRootEig_RK1_CK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)               , intent(in)    , contiguous    :: coef(0:)
-       !real(RKC)               , intent(out)   , contiguous    :: workspace(:,:)
-        complex(RKC)            , intent(out)   , contiguous    :: root(:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)               , intent(in)    , contiguous    :: coef(0:)
+       !real(RKG)               , intent(out)   , contiguous    :: workspace(:,:)
+        complex(RKG)            , intent(out)   , contiguous    :: root(:)
         integer(IK)             , intent(out)                   :: count
         type(eigen_type)        , intent(in)                    :: method
     end subroutine
@@ -4440,10 +4440,10 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPolyRootJen_CK5_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)            , intent(in)    , contiguous    :: coef(0:)
-       !complex(CKC)            , intent(out)   , contiguous    :: workspace(:)
-        complex(CKC)            , intent(out)   , contiguous    :: root(:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG)            , intent(in)    , contiguous    :: coef(0:)
+       !complex(CKG)            , intent(out)   , contiguous    :: workspace(:)
+        complex(CKG)            , intent(out)   , contiguous    :: root(:)
         integer(IK)             , intent(out)                   :: count
         type(jenkins_type)      , intent(in)                    :: method
     end subroutine
@@ -4454,10 +4454,10 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPolyRootJen_CK4_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)            , intent(in)    , contiguous    :: coef(0:)
-       !complex(CKC)            , intent(out)   , contiguous    :: workspace(:)
-        complex(CKC)            , intent(out)   , contiguous    :: root(:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG)            , intent(in)    , contiguous    :: coef(0:)
+       !complex(CKG)            , intent(out)   , contiguous    :: workspace(:)
+        complex(CKG)            , intent(out)   , contiguous    :: root(:)
         integer(IK)             , intent(out)                   :: count
         type(jenkins_type)      , intent(in)                    :: method
     end subroutine
@@ -4468,10 +4468,10 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPolyRootJen_CK3_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)            , intent(in)    , contiguous    :: coef(0:)
-       !complex(CKC)            , intent(out)   , contiguous    :: workspace(:)
-        complex(CKC)            , intent(out)   , contiguous    :: root(:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG)            , intent(in)    , contiguous    :: coef(0:)
+       !complex(CKG)            , intent(out)   , contiguous    :: workspace(:)
+        complex(CKG)            , intent(out)   , contiguous    :: root(:)
         integer(IK)             , intent(out)                   :: count
         type(jenkins_type)      , intent(in)                    :: method
     end subroutine
@@ -4482,10 +4482,10 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPolyRootJen_CK2_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)            , intent(in)    , contiguous    :: coef(0:)
-       !complex(CKC)            , intent(out)   , contiguous    :: workspace(:)
-        complex(CKC)            , intent(out)   , contiguous    :: root(:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG)            , intent(in)    , contiguous    :: coef(0:)
+       !complex(CKG)            , intent(out)   , contiguous    :: workspace(:)
+        complex(CKG)            , intent(out)   , contiguous    :: root(:)
         integer(IK)             , intent(out)                   :: count
         type(jenkins_type)      , intent(in)                    :: method
     end subroutine
@@ -4496,10 +4496,10 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPolyRootJen_CK1_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)            , intent(in)    , contiguous    :: coef(0:)
-       !complex(CKC)            , intent(out)   , contiguous    :: workspace(:)
-        complex(CKC)            , intent(out)   , contiguous    :: root(:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG)            , intent(in)    , contiguous    :: coef(0:)
+       !complex(CKG)            , intent(out)   , contiguous    :: workspace(:)
+        complex(CKG)            , intent(out)   , contiguous    :: root(:)
         integer(IK)             , intent(out)                   :: count
         type(jenkins_type)      , intent(in)                    :: method
     end subroutine
@@ -4512,10 +4512,10 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPolyRootJen_RK5_CK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)               , intent(in)    , contiguous    :: coef(0:)
-       !real(RKC)               , intent(out)   , contiguous    :: workspace(:)
-        complex(RKC)            , intent(out)   , contiguous    :: root(:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)               , intent(in)    , contiguous    :: coef(0:)
+       !real(RKG)               , intent(out)   , contiguous    :: workspace(:)
+        complex(RKG)            , intent(out)   , contiguous    :: root(:)
         integer(IK)             , intent(out)                   :: count
         type(jenkins_type)      , intent(in)                    :: method
     end subroutine
@@ -4526,10 +4526,10 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPolyRootJen_RK4_CK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)               , intent(in)    , contiguous    :: coef(0:)
-       !real(RKC)               , intent(out)   , contiguous    :: workspace(:)
-        complex(RKC)            , intent(out)   , contiguous    :: root(:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)               , intent(in)    , contiguous    :: coef(0:)
+       !real(RKG)               , intent(out)   , contiguous    :: workspace(:)
+        complex(RKG)            , intent(out)   , contiguous    :: root(:)
         integer(IK)             , intent(out)                   :: count
         type(jenkins_type)      , intent(in)                    :: method
     end subroutine
@@ -4540,10 +4540,10 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPolyRootJen_RK3_CK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)               , intent(in)    , contiguous    :: coef(0:)
-       !real(RKC)               , intent(out)   , contiguous    :: workspace(:)
-        complex(RKC)            , intent(out)   , contiguous    :: root(:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)               , intent(in)    , contiguous    :: coef(0:)
+       !real(RKG)               , intent(out)   , contiguous    :: workspace(:)
+        complex(RKG)            , intent(out)   , contiguous    :: root(:)
         integer(IK)             , intent(out)                   :: count
         type(jenkins_type)      , intent(in)                    :: method
     end subroutine
@@ -4554,10 +4554,10 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPolyRootJen_RK2_CK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)               , intent(in)    , contiguous    :: coef(0:)
-       !real(RKC)               , intent(out)   , contiguous    :: workspace(:)
-        complex(RKC)            , intent(out)   , contiguous    :: root(:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)               , intent(in)    , contiguous    :: coef(0:)
+       !real(RKG)               , intent(out)   , contiguous    :: workspace(:)
+        complex(RKG)            , intent(out)   , contiguous    :: root(:)
         integer(IK)             , intent(out)                   :: count
         type(jenkins_type)      , intent(in)                    :: method
     end subroutine
@@ -4568,10 +4568,10 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPolyRootJen_RK1_CK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)               , intent(in)    , contiguous    :: coef(0:)
-       !real(RKC)               , intent(out)   , contiguous    :: workspace(:)
-        complex(RKC)            , intent(out)   , contiguous    :: root(:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)               , intent(in)    , contiguous    :: coef(0:)
+       !real(RKG)               , intent(out)   , contiguous    :: workspace(:)
+        complex(RKG)            , intent(out)   , contiguous    :: root(:)
         integer(IK)             , intent(out)                   :: count
         type(jenkins_type)      , intent(in)                    :: method
     end subroutine
@@ -4592,10 +4592,10 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPolyRootLag_CK5_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)            , intent(in)    , contiguous    :: coef(0:)
-       !complex(CKC)            , intent(out)   , contiguous    :: workspace(:)
-        complex(CKC)            , intent(out)   , contiguous    :: root(:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG)            , intent(in)    , contiguous    :: coef(0:)
+       !complex(CKG)            , intent(out)   , contiguous    :: workspace(:)
+        complex(CKG)            , intent(out)   , contiguous    :: root(:)
         integer(IK)             , intent(out)                   :: count
         type(laguerre_type)     , intent(in)                    :: method
     end subroutine
@@ -4606,10 +4606,10 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPolyRootLag_CK4_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)            , intent(in)    , contiguous    :: coef(0:)
-       !complex(CKC)            , intent(out)   , contiguous    :: workspace(:)
-        complex(CKC)            , intent(out)   , contiguous    :: root(:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG)            , intent(in)    , contiguous    :: coef(0:)
+       !complex(CKG)            , intent(out)   , contiguous    :: workspace(:)
+        complex(CKG)            , intent(out)   , contiguous    :: root(:)
         integer(IK)             , intent(out)                   :: count
         type(laguerre_type)     , intent(in)                    :: method
     end subroutine
@@ -4620,10 +4620,10 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPolyRootLag_CK3_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)            , intent(in)    , contiguous    :: coef(0:)
-       !complex(CKC)            , intent(out)   , contiguous    :: workspace(:)
-        complex(CKC)            , intent(out)   , contiguous    :: root(:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG)            , intent(in)    , contiguous    :: coef(0:)
+       !complex(CKG)            , intent(out)   , contiguous    :: workspace(:)
+        complex(CKG)            , intent(out)   , contiguous    :: root(:)
         integer(IK)             , intent(out)                   :: count
         type(laguerre_type)     , intent(in)                    :: method
     end subroutine
@@ -4634,10 +4634,10 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPolyRootLag_CK2_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)            , intent(in)    , contiguous    :: coef(0:)
-       !complex(CKC)            , intent(out)   , contiguous    :: workspace(:)
-        complex(CKC)            , intent(out)   , contiguous    :: root(:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG)            , intent(in)    , contiguous    :: coef(0:)
+       !complex(CKG)            , intent(out)   , contiguous    :: workspace(:)
+        complex(CKG)            , intent(out)   , contiguous    :: root(:)
         integer(IK)             , intent(out)                   :: count
         type(laguerre_type)     , intent(in)                    :: method
     end subroutine
@@ -4648,10 +4648,10 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPolyRootLag_CK1_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)            , intent(in)    , contiguous    :: coef(0:)
-       !complex(CKC)            , intent(out)   , contiguous    :: workspace(:)
-        complex(CKC)            , intent(out)   , contiguous    :: root(:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG)            , intent(in)    , contiguous    :: coef(0:)
+       !complex(CKG)            , intent(out)   , contiguous    :: workspace(:)
+        complex(CKG)            , intent(out)   , contiguous    :: root(:)
         integer(IK)             , intent(out)                   :: count
         type(laguerre_type)     , intent(in)                    :: method
     end subroutine
@@ -4664,10 +4664,10 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPolyRootLag_RK5_CK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)               , intent(in)    , contiguous    :: coef(0:)
-       !real(RKC)               , intent(out)   , contiguous    :: workspace(:)
-        complex(RKC)            , intent(out)   , contiguous    :: root(:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)               , intent(in)    , contiguous    :: coef(0:)
+       !real(RKG)               , intent(out)   , contiguous    :: workspace(:)
+        complex(RKG)            , intent(out)   , contiguous    :: root(:)
         integer(IK)             , intent(out)                   :: count
         type(laguerre_type)     , intent(in)                    :: method
     end subroutine
@@ -4678,10 +4678,10 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPolyRootLag_RK4_CK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)               , intent(in)    , contiguous    :: coef(0:)
-       !real(RKC)               , intent(out)   , contiguous    :: workspace(:)
-        complex(RKC)            , intent(out)   , contiguous    :: root(:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)               , intent(in)    , contiguous    :: coef(0:)
+       !real(RKG)               , intent(out)   , contiguous    :: workspace(:)
+        complex(RKG)            , intent(out)   , contiguous    :: root(:)
         integer(IK)             , intent(out)                   :: count
         type(laguerre_type)     , intent(in)                    :: method
     end subroutine
@@ -4692,10 +4692,10 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPolyRootLag_RK3_CK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)               , intent(in)    , contiguous    :: coef(0:)
-       !real(RKC)               , intent(out)   , contiguous    :: workspace(:)
-        complex(RKC)            , intent(out)   , contiguous    :: root(:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)               , intent(in)    , contiguous    :: coef(0:)
+       !real(RKG)               , intent(out)   , contiguous    :: workspace(:)
+        complex(RKG)            , intent(out)   , contiguous    :: root(:)
         integer(IK)             , intent(out)                   :: count
         type(laguerre_type)     , intent(in)                    :: method
     end subroutine
@@ -4706,10 +4706,10 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPolyRootLag_RK2_CK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)               , intent(in)    , contiguous    :: coef(0:)
-       !real(RKC)               , intent(out)   , contiguous    :: workspace(:)
-        complex(RKC)            , intent(out)   , contiguous    :: root(:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)               , intent(in)    , contiguous    :: coef(0:)
+       !real(RKG)               , intent(out)   , contiguous    :: workspace(:)
+        complex(RKG)            , intent(out)   , contiguous    :: root(:)
         integer(IK)             , intent(out)                   :: count
         type(laguerre_type)     , intent(in)                    :: method
     end subroutine
@@ -4720,10 +4720,10 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPolyRootLag_RK1_CK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)               , intent(in)    , contiguous    :: coef(0:)
-       !real(RKC)               , intent(out)   , contiguous    :: workspace(:)
-        complex(RKC)            , intent(out)   , contiguous    :: root(:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)               , intent(in)    , contiguous    :: coef(0:)
+       !real(RKG)               , intent(out)   , contiguous    :: workspace(:)
+        complex(RKG)            , intent(out)   , contiguous    :: root(:)
         integer(IK)             , intent(out)                   :: count
         type(laguerre_type)     , intent(in)                    :: method
     end subroutine
@@ -4817,9 +4817,9 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPolyRootPolishedLag_CK5_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)            , intent(in)    , contiguous    :: coef(0:)
-        complex(CKC)            , intent(inout)                 :: root
+        use pm_kind, only: CKG => CK5
+        complex(CKG)            , intent(in)    , contiguous    :: coef(0:)
+        complex(CKG)            , intent(inout)                 :: root
         integer(IK)             , intent(out)                   :: niter
     end subroutine
 #endif
@@ -4829,9 +4829,9 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPolyRootPolishedLag_CK4_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)            , intent(in)    , contiguous    :: coef(0:)
-        complex(CKC)            , intent(inout)                 :: root
+        use pm_kind, only: CKG => CK4
+        complex(CKG)            , intent(in)    , contiguous    :: coef(0:)
+        complex(CKG)            , intent(inout)                 :: root
         integer(IK)             , intent(out)                   :: niter
     end subroutine
 #endif
@@ -4841,9 +4841,9 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPolyRootPolishedLag_CK3_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)            , intent(in)    , contiguous    :: coef(0:)
-        complex(CKC)            , intent(inout)                 :: root
+        use pm_kind, only: CKG => CK3
+        complex(CKG)            , intent(in)    , contiguous    :: coef(0:)
+        complex(CKG)            , intent(inout)                 :: root
         integer(IK)             , intent(out)                   :: niter
     end subroutine
 #endif
@@ -4853,9 +4853,9 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPolyRootPolishedLag_CK2_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)            , intent(in)    , contiguous    :: coef(0:)
-        complex(CKC)            , intent(inout)                 :: root
+        use pm_kind, only: CKG => CK2
+        complex(CKG)            , intent(in)    , contiguous    :: coef(0:)
+        complex(CKG)            , intent(inout)                 :: root
         integer(IK)             , intent(out)                   :: niter
     end subroutine
 #endif
@@ -4865,9 +4865,9 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPolyRootPolishedLag_CK1_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)            , intent(in)    , contiguous    :: coef(0:)
-        complex(CKC)            , intent(inout)                 :: root
+        use pm_kind, only: CKG => CK1
+        complex(CKG)            , intent(in)    , contiguous    :: coef(0:)
+        complex(CKG)            , intent(inout)                 :: root
         integer(IK)             , intent(out)                   :: niter
     end subroutine
 #endif
@@ -4879,9 +4879,9 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPolyRootPolishedLag_RK5_CK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)               , intent(in)    , contiguous    :: coef(0:)
-        complex(RKC)            , intent(inout)                 :: root
+        use pm_kind, only: RKG => RK5
+        real(RKG)               , intent(in)    , contiguous    :: coef(0:)
+        complex(RKG)            , intent(inout)                 :: root
         integer(IK)             , intent(out)                   :: niter
     end subroutine
 #endif
@@ -4891,9 +4891,9 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPolyRootPolishedLag_RK4_CK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)               , intent(in)    , contiguous    :: coef(0:)
-        complex(RKC)            , intent(inout)                 :: root
+        use pm_kind, only: RKG => RK4
+        real(RKG)               , intent(in)    , contiguous    :: coef(0:)
+        complex(RKG)            , intent(inout)                 :: root
         integer(IK)             , intent(out)                   :: niter
     end subroutine
 #endif
@@ -4903,9 +4903,9 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPolyRootPolishedLag_RK3_CK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)               , intent(in)    , contiguous    :: coef(0:)
-        complex(RKC)            , intent(inout)                 :: root
+        use pm_kind, only: RKG => RK3
+        real(RKG)               , intent(in)    , contiguous    :: coef(0:)
+        complex(RKG)            , intent(inout)                 :: root
         integer(IK)             , intent(out)                   :: niter
     end subroutine
 #endif
@@ -4915,9 +4915,9 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPolyRootPolishedLag_RK2_CK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)               , intent(in)    , contiguous    :: coef(0:)
-        complex(RKC)            , intent(inout)                 :: root
+        use pm_kind, only: RKG => RK2
+        real(RKG)               , intent(in)    , contiguous    :: coef(0:)
+        complex(RKG)            , intent(inout)                 :: root
         integer(IK)             , intent(out)                   :: niter
     end subroutine
 #endif
@@ -4927,9 +4927,9 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPolyRootPolishedLag_RK1_CK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)               , intent(in)    , contiguous    :: coef(0:)
-        complex(RKC)            , intent(inout)                 :: root
+        use pm_kind, only: RKG => RK1
+        real(RKG)               , intent(in)    , contiguous    :: coef(0:)
+        complex(RKG)            , intent(inout)                 :: root
         integer(IK)             , intent(out)                   :: niter
     end subroutine
 #endif
@@ -4941,9 +4941,9 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPolyRootPolishedLag_RK5_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)               , intent(in)    , contiguous    :: coef(0:)
-        real(RKC)               , intent(inout)                 :: root
+        use pm_kind, only: RKG => RK5
+        real(RKG)               , intent(in)    , contiguous    :: coef(0:)
+        real(RKG)               , intent(inout)                 :: root
         integer(IK)             , intent(out)                   :: niter
     end subroutine
 #endif
@@ -4953,9 +4953,9 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPolyRootPolishedLag_RK4_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)               , intent(in)    , contiguous    :: coef(0:)
-        real(RKC)               , intent(inout)                 :: root
+        use pm_kind, only: RKG => RK4
+        real(RKG)               , intent(in)    , contiguous    :: coef(0:)
+        real(RKG)               , intent(inout)                 :: root
         integer(IK)             , intent(out)                   :: niter
     end subroutine
 #endif
@@ -4965,9 +4965,9 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPolyRootPolishedLag_RK3_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)               , intent(in)    , contiguous    :: coef(0:)
-        real(RKC)               , intent(inout)                 :: root
+        use pm_kind, only: RKG => RK3
+        real(RKG)               , intent(in)    , contiguous    :: coef(0:)
+        real(RKG)               , intent(inout)                 :: root
         integer(IK)             , intent(out)                   :: niter
     end subroutine
 #endif
@@ -4977,9 +4977,9 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPolyRootPolishedLag_RK2_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)               , intent(in)    , contiguous    :: coef(0:)
-        real(RKC)               , intent(inout)                 :: root
+        use pm_kind, only: RKG => RK2
+        real(RKG)               , intent(in)    , contiguous    :: coef(0:)
+        real(RKG)               , intent(inout)                 :: root
         integer(IK)             , intent(out)                   :: niter
     end subroutine
 #endif
@@ -4989,9 +4989,9 @@ module pm_polynomial
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPolyRootPolishedLag_RK1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)               , intent(in)    , contiguous    :: coef(0:)
-        real(RKC)               , intent(inout)                 :: root
+        use pm_kind, only: RKG => RK1
+        real(RKG)               , intent(in)    , contiguous    :: coef(0:)
+        real(RKG)               , intent(inout)                 :: root
         integer(IK)             , intent(out)                   :: niter
     end subroutine
 #endif

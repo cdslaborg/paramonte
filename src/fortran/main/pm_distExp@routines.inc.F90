@@ -58,7 +58,7 @@
 
 #if     XDI_ENABLED || XMI_ENABLED
         CHECK_ASSERTION(__LINE__, 0 < invSigma, SK_"@setExpPDF(): The condition `0 < invSigma` must hold. invSigma = "//getStr(invSigma)) ! fpp
-        CHECK_ASSERTION(__LINE__, abs(log(invSigma) - logInvSigma) < epsilon(0._TKC) * 10, SK_"@setExpPDF(): The condition `log(invSigma) == logInvSigma` must hold. invSigma, logInvSigma = "//getStr([invSigma, logInvSigma])) ! fpp
+        CHECK_ASSERTION(__LINE__, abs(log(invSigma) - logInvSigma) < epsilon(0._TKG) * 10, SK_"@setExpPDF(): The condition `log(invSigma) == logInvSigma` must hold. invSigma, logInvSigma = "//getStr([invSigma, logInvSigma])) ! fpp
 #elif   !(XDD_ENABLED || XMD_ENABLED)
 #error  "Unrecognized interface."
 #endif
@@ -118,11 +118,11 @@
         ! Compute the CDF.
 
 #if     XDD_ENABLED
-        cdf = 1._TKC - exp(-x)
+        cdf = 1._TKG - exp(-x)
 #elif   XDI_ENABLED
-        cdf = 1._TKC - exp(-x * invSigma)
+        cdf = 1._TKG - exp(-x * invSigma)
 #elif   XMI_ENABLED
-        cdf = 1._TKC - exp(-(x - mu) * invSigma)
+        cdf = 1._TKG - exp(-(x - mu) * invSigma)
 #else
 #error  "Unrecognized interface."
 #endif
@@ -132,7 +132,7 @@
         !%%%%%%%%%%%%%%%%%
 
         call setUnifRand(rand)
-        rand = 1._TKC - rand
+        rand = 1._TKG - rand
         call setExpRand(rand, sigma)
         if (present(mu)) rand = rand + mu
 

@@ -51,7 +51,7 @@
 #define ARRAY compact
         integer(IK) :: csize
 #if     SK_ENABLED && D0_ENABLED
-        allocate(character(len(array,IK),SKC) :: compact)
+        allocate(character(len(array,IK),SKG) :: compact)
 #else
         allocate(compact, mold = array)
 #endif

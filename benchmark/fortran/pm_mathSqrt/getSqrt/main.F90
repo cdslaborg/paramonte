@@ -4,7 +4,7 @@ program benchmark
     use pm_bench, only: bench_type
     use pm_arrayUnique, only: getUnique
     use pm_arraySpace, only: getLogSpace
-    use pm_kind, only: IK, LK, IKC => IK, RK, SK
+    use pm_kind, only: IK, LK, IKG => IK, RK, SK
     use iso_fortran_env, only: error_unit
 
     implicit none
@@ -12,8 +12,8 @@ program benchmark
     integer(IK)                         :: ibench
     integer(IK)                         :: iposint
     integer(IK)                         :: fileUnit
-    integer(IKC)                        :: intSqrt, dumm
-    integer(IKC)        , allocatable   :: posint(:)
+    integer(IKG)                        :: intSqrt, dumm
+    integer(IKG)        , allocatable   :: posint(:)
     type(bench_type)    , allocatable   :: bench(:)
 
     bench = [ bench_type(name = SK_"getSqrtBinary", exec = getSqrtBinary, overhead = setOverhead) &
@@ -28,7 +28,7 @@ program benchmark
     open(newunit = fileUnit, file = "main.out", status = "replace")
 
         write(fileUnit, "(*(g0,:,','))") "Integer", (bench(ibench)%name, ibench = 1, size(bench))
-        posint = getUnique(int(getLogSpace(0._RK, log(real(huge(0_IK), RK)), count = 50_IK), IKC))
+        posint = getUnique(int(getLogSpace(0._RK, log(real(huge(0_IK), RK)), count = 50_IK), IKG))
         loopOverArraySize: do iposint = 1, size(posint)
 
             write(*,"(*(g0,:,' '))") "Benchmarking with posint = ", posint(iposint)
@@ -70,7 +70,7 @@ contains
     end subroutine
 
     subroutine floor_sqrt()
-        intSqrt = floor(sqrt(real(posint(iposint), RK)), IKC)
+        intSqrt = floor(sqrt(real(posint(iposint), RK)), IKG)
         call getDummy()
     end subroutine
 

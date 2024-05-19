@@ -171,10 +171,10 @@ module pm_distNormShell
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getNormShellLogUDFODD_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(in)    , contiguous            :: X(:)
-        real(RKC)   , intent(in)                , optional  :: width, radius
-        real(RKC)                                           :: logUDF
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(in)    , contiguous            :: X(:)
+        real(RKG)   , intent(in)                , optional  :: width, radius
+        real(RKG)                                           :: logUDF
     end function
 #endif
 
@@ -183,10 +183,10 @@ module pm_distNormShell
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getNormShellLogUDFODD_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(in)    , contiguous            :: X(:)
-        real(RKC)   , intent(in)                , optional  :: width, radius
-        real(RKC)                                           :: logUDF
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(in)    , contiguous            :: X(:)
+        real(RKG)   , intent(in)                , optional  :: width, radius
+        real(RKG)                                           :: logUDF
     end function
 #endif
 
@@ -195,10 +195,10 @@ module pm_distNormShell
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getNormShellLogUDFODD_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(in)    , contiguous            :: X(:)
-        real(RKC)   , intent(in)                , optional  :: width, radius
-        real(RKC)                                           :: logUDF
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(in)    , contiguous            :: X(:)
+        real(RKG)   , intent(in)                , optional  :: width, radius
+        real(RKG)                                           :: logUDF
     end function
 #endif
 
@@ -207,10 +207,10 @@ module pm_distNormShell
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getNormShellLogUDFODD_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(in)    , contiguous            :: X(:)
-        real(RKC)   , intent(in)                , optional  :: width, radius
-        real(RKC)                                           :: logUDF
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(in)    , contiguous            :: X(:)
+        real(RKG)   , intent(in)                , optional  :: width, radius
+        real(RKG)                                           :: logUDF
     end function
 #endif
 
@@ -219,10 +219,10 @@ module pm_distNormShell
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getNormShellLogUDFODD_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(in)    , contiguous            :: X(:)
-        real(RKC)   , intent(in)                , optional  :: width, radius
-        real(RKC)                                           :: logUDF
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(in)    , contiguous            :: X(:)
+        real(RKG)   , intent(in)                , optional  :: width, radius
+        real(RKG)                                           :: logUDF
     end function
 #endif
 
@@ -233,10 +233,10 @@ module pm_distNormShell
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getNormShellLogUDFOCI_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(in)    , contiguous            :: X(:), center(:), invCov(:,:)
-        real(RKC)   , intent(in)                , optional  :: width, radius
-        real(RKC)                                           :: logUDF
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(in)    , contiguous            :: X(:), center(:), invCov(:,:)
+        real(RKG)   , intent(in)                , optional  :: width, radius
+        real(RKG)                                           :: logUDF
     end function
 #endif
 
@@ -245,10 +245,10 @@ module pm_distNormShell
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getNormShellLogUDFOCI_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(in)    , contiguous            :: X(:), center(:), invCov(:,:)
-        real(RKC)   , intent(in)                , optional  :: width, radius
-        real(RKC)                                           :: logUDF
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(in)    , contiguous            :: X(:), center(:), invCov(:,:)
+        real(RKG)   , intent(in)                , optional  :: width, radius
+        real(RKG)                                           :: logUDF
     end function
 #endif
 
@@ -257,10 +257,10 @@ module pm_distNormShell
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getNormShellLogUDFOCI_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(in)    , contiguous            :: X(:), center(:), invCov(:,:)
-        real(RKC)   , intent(in)                , optional  :: width, radius
-        real(RKC)                                           :: logUDF
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(in)    , contiguous            :: X(:), center(:), invCov(:,:)
+        real(RKG)   , intent(in)                , optional  :: width, radius
+        real(RKG)                                           :: logUDF
     end function
 #endif
 
@@ -269,10 +269,10 @@ module pm_distNormShell
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getNormShellLogUDFOCI_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(in)    , contiguous            :: X(:), center(:), invCov(:,:)
-        real(RKC)   , intent(in)                , optional  :: width, radius
-        real(RKC)                                           :: logUDF
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(in)    , contiguous            :: X(:), center(:), invCov(:,:)
+        real(RKG)   , intent(in)                , optional  :: width, radius
+        real(RKG)                                           :: logUDF
     end function
 #endif
 
@@ -281,10 +281,10 @@ module pm_distNormShell
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getNormShellLogUDFOCI_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(in)    , contiguous            :: X(:), center(:), invCov(:,:)
-        real(RKC)   , intent(in)                , optional  :: width, radius
-        real(RKC)                                           :: logUDF
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(in)    , contiguous            :: X(:), center(:), invCov(:,:)
+        real(RKG)   , intent(in)                , optional  :: width, radius
+        real(RKG)                                           :: logUDF
     end function
 #endif
 
@@ -301,10 +301,10 @@ module pm_distNormShell
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getNormShellLogUDFMDD_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(in)    , contiguous            :: X(:)
-        real(RKC)   , intent(in)    , contiguous            :: width(:), radius(:)
-        real(RKC)                                           :: logUDF(size(width, 1, IK))
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(in)    , contiguous            :: X(:)
+        real(RKG)   , intent(in)    , contiguous            :: width(:), radius(:)
+        real(RKG)                                           :: logUDF(size(width, 1, IK))
     end function
 #endif
 
@@ -313,10 +313,10 @@ module pm_distNormShell
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getNormShellLogUDFMDD_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(in)    , contiguous            :: X(:)
-        real(RKC)   , intent(in)    , contiguous            :: width(:), radius(:)
-        real(RKC)                                           :: logUDF(size(width, 1, IK))
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(in)    , contiguous            :: X(:)
+        real(RKG)   , intent(in)    , contiguous            :: width(:), radius(:)
+        real(RKG)                                           :: logUDF(size(width, 1, IK))
     end function
 #endif
 
@@ -325,10 +325,10 @@ module pm_distNormShell
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getNormShellLogUDFMDD_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(in)    , contiguous            :: X(:)
-        real(RKC)   , intent(in)    , contiguous            :: width(:), radius(:)
-        real(RKC)                                           :: logUDF(size(width, 1, IK))
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(in)    , contiguous            :: X(:)
+        real(RKG)   , intent(in)    , contiguous            :: width(:), radius(:)
+        real(RKG)                                           :: logUDF(size(width, 1, IK))
     end function
 #endif
 
@@ -337,10 +337,10 @@ module pm_distNormShell
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getNormShellLogUDFMDD_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(in)    , contiguous            :: X(:)
-        real(RKC)   , intent(in)    , contiguous            :: width(:), radius(:)
-        real(RKC)                                           :: logUDF(size(width, 1, IK))
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(in)    , contiguous            :: X(:)
+        real(RKG)   , intent(in)    , contiguous            :: width(:), radius(:)
+        real(RKG)                                           :: logUDF(size(width, 1, IK))
     end function
 #endif
 
@@ -349,10 +349,10 @@ module pm_distNormShell
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getNormShellLogUDFMDD_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(in)    , contiguous            :: X(:)
-        real(RKC)   , intent(in)    , contiguous            :: width(:), radius(:)
-        real(RKC)                                           :: logUDF(size(width, 1, IK))
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(in)    , contiguous            :: X(:)
+        real(RKG)   , intent(in)    , contiguous            :: width(:), radius(:)
+        real(RKG)                                           :: logUDF(size(width, 1, IK))
     end function
 #endif
 
@@ -363,10 +363,10 @@ module pm_distNormShell
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getNormShellLogUDFMCI_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(in)    , contiguous            :: X(:), center(:,:), invCov(:,:,:)
-        real(RKC)   , intent(in)    , contiguous, optional  :: width(:), radius(:)
-        real(RKC)                                           :: logUDF(size(center, 2, IK))
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(in)    , contiguous            :: X(:), center(:,:), invCov(:,:,:)
+        real(RKG)   , intent(in)    , contiguous, optional  :: width(:), radius(:)
+        real(RKG)                                           :: logUDF(size(center, 2, IK))
     end function
 #endif
 
@@ -375,10 +375,10 @@ module pm_distNormShell
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getNormShellLogUDFMCI_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(in)    , contiguous            :: X(:), center(:,:), invCov(:,:,:)
-        real(RKC)   , intent(in)    , contiguous, optional  :: width(:), radius(:)
-        real(RKC)                                           :: logUDF(size(center, 2, IK))
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(in)    , contiguous            :: X(:), center(:,:), invCov(:,:,:)
+        real(RKG)   , intent(in)    , contiguous, optional  :: width(:), radius(:)
+        real(RKG)                                           :: logUDF(size(center, 2, IK))
     end function
 #endif
 
@@ -387,10 +387,10 @@ module pm_distNormShell
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getNormShellLogUDFMCI_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(in)    , contiguous            :: X(:), center(:,:), invCov(:,:,:)
-        real(RKC)   , intent(in)    , contiguous, optional  :: width(:), radius(:)
-        real(RKC)                                           :: logUDF(size(center, 2, IK))
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(in)    , contiguous            :: X(:), center(:,:), invCov(:,:,:)
+        real(RKG)   , intent(in)    , contiguous, optional  :: width(:), radius(:)
+        real(RKG)                                           :: logUDF(size(center, 2, IK))
     end function
 #endif
 
@@ -399,10 +399,10 @@ module pm_distNormShell
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getNormShellLogUDFMCI_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(in)    , contiguous            :: X(:), center(:,:), invCov(:,:,:)
-        real(RKC)   , intent(in)    , contiguous, optional  :: width(:), radius(:)
-        real(RKC)                                           :: logUDF(size(center, 2, IK))
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(in)    , contiguous            :: X(:), center(:,:), invCov(:,:,:)
+        real(RKG)   , intent(in)    , contiguous, optional  :: width(:), radius(:)
+        real(RKG)                                           :: logUDF(size(center, 2, IK))
     end function
 #endif
 
@@ -411,10 +411,10 @@ module pm_distNormShell
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getNormShellLogUDFMCI_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(in)    , contiguous            :: X(:), center(:,:), invCov(:,:,:)
-        real(RKC)   , intent(in)    , contiguous, optional  :: width(:), radius(:)
-        real(RKC)                                           :: logUDF(size(center, 2, IK))
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(in)    , contiguous            :: X(:), center(:,:), invCov(:,:,:)
+        real(RKG)   , intent(in)    , contiguous, optional  :: width(:), radius(:)
+        real(RKG)                                           :: logUDF(size(center, 2, IK))
     end function
 #endif
 

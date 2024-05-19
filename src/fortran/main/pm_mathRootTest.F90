@@ -106,11 +106,11 @@ module pm_mathRootTest
     !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan
     abstract interface
         PURE function get_proc(self, x) result(func)
-            use pm_kind, only: RKC => RKH
+            use pm_kind, only: RKG => RKH
             import :: func_type
             class(func_type)    , intent(in)    :: self
-            real(RKC)           , intent(in)    :: x
-            real(RKC)                           :: func
+            real(RKG)           , intent(in)    :: x
+            real(RKG)                           :: func
         end function
     end interface
 
@@ -169,8 +169,8 @@ module pm_mathRootTest
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: func1_typer
 #endif
-        use pm_kind, only: RKC => RKH
-        real(RKC), intent(in), optional :: lb, ub
+        use pm_kind, only: RKG => RKH
+        real(RKG), intent(in), optional :: lb, ub
         type(func1_type)                :: self
     end function
     end interface
@@ -183,10 +183,10 @@ module pm_mathRootTest
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getFunc1
 #endif
-        use pm_kind, only: RKC => RKH
+        use pm_kind, only: RKG => RKH
         class(func1_type)   , intent(in)    :: self
-        real(RKC)           , intent(in)    :: x
-        real(RKC)                           :: func
+        real(RKG)           , intent(in)    :: x
+        real(RKG)                           :: func
     end function
     end interface
 

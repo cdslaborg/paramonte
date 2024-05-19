@@ -28,15 +28,15 @@
 #if     (getLogVolUnitBall_ENABLED || setLogVolUnitBall_ENABLED) && Gamm_ENABLED
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        real(RKC) :: ndimHalf
-        real(RKC), parameter :: LOG_PI = log(acos(-1._RKC))
-        CHECK_ASSERTION(__LINE__, real(0, RKC) <= ndim, \
+        real(RKG) :: ndimHalf
+        real(RKG), parameter :: LOG_PI = log(acos(-1._RKG))
+        CHECK_ASSERTION(__LINE__, real(0, RKG) <= ndim, \
         SK_"@setLogVolUnitBall(): The condition `0 <= ndim` must hold. ndim = "//getStr(ndim))
-        ndimHalf = 0.5_RKC * ndim
-        if (0._RKC < ndim) then
-            logVolUnitBall = ndimHalf * LOG_PI - log_gamma(1._RKC + ndimHalf)
+        ndimHalf = 0.5_RKG * ndim
+        if (0._RKG < ndim) then
+            logVolUnitBall = ndimHalf * LOG_PI - log_gamma(1._RKG + ndimHalf)
         else
-            logVolUnitBall = 0._RKC
+            logVolUnitBall = 0._RKG
         end if
 
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -44,8 +44,8 @@
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
         integer(IK)             :: idim, hdim
-        real(RKC)   , parameter :: PI = acos(-1._RKC)
-        real(RKC)   , parameter :: FOUR_PI = PI * 4._RKC
+        real(RKG)   , parameter :: PI = acos(-1._RKG)
+        real(RKG)   , parameter :: FOUR_PI = PI * 4._RKG
         CHECK_ASSERTION(__LINE__, 0_IK <= ndim, \
         SK_"@setLogVolUnitBall(): The condition `0 <= ndim` must hold. ndim = "//getStr(ndim))
         if (0_IK < ndim) then
@@ -64,7 +64,7 @@
                 ! gamma(ndim / 2 + 1) = gamma(hdim + 1 / 2);
                 ! gamma(hdim + 1 / 2) = sqrt(PI) * (2 * hdim)! / (4**hdim * hdim!)
                 hdim = ndim + 1_IK
-                logVolUnitBall = 4._RKC / (hdim + 1_IK) ! This is to avoid an extra unnecessary division of `logVolUnitBall` by `PI`.
+                logVolUnitBall = 4._RKG / (hdim + 1_IK) ! This is to avoid an extra unnecessary division of `logVolUnitBall` by `PI`.
                 do idim = hdim + 2_IK, 2_IK * hdim
                     ! logVolUnitBall
                     ! = PI**(hdim - 1 / 2) / gamma(hdim + 1 / 2)
@@ -75,7 +75,7 @@
             end if
             logVolUnitBall = log(logVolUnitBall)
         else
-            logVolUnitBall = 0._RKC
+            logVolUnitBall = 0._RKG
         end if
 
         !%%%%%%%%%%%%%%%%%%%
@@ -83,7 +83,7 @@
         !%%%%%%%%%%%%%%%%%%%
 
         CHECK_ASSERTION(__LINE__, size(gramian, 1, IK) == size(gramian, 2, IK), SK_"@setLogVolEllipsoid(): The condition `size(gramian, 1) == size(gramian, 2)` must hold. shape(gramian) = "//getStr(shape(gramian, IK)))
-        logVolEll = getLogVolUnitBall(real(size(gramian, 1, IK), RKC)) + getMatDetSqrtLog(gramian)
+        logVolEll = getLogVolUnitBall(real(size(gramian, 1, IK), RKG)) + getMatDetSqrtLog(gramian)
 
         !%%%%%%%%%%%%%%%%%%%%%%%%
 #elif   getCountMemberEll_ENABLED
@@ -118,13 +118,13 @@
 
         integer(IK) :: ndim
 #if     Cen_ENABLED
-        real(RKC)   :: normedPoint(size(point, 1, IK))
+        real(RKG)   :: normedPoint(size(point, 1, IK))
         CHECK_ASSERTION(__LINE__, size(point, 1, IK) == size(center, 1, IK), SK_"@isMemberEll(): The condition `size(point) == size(center)` must hold. size(point), size(center) = "//getStr([size(point, 1, IK), size(center, 1, IK)]))
 #elif   !Org_ENABLED
 #error  "Unrecognized interface."
 #endif
 #if     Sph_ENABLED
-        CHECK_ASSERTION(__LINE__, 0._RKC < radius, SK_"@isMemberEll(): The condition `0. < radius` must hold. radius = "//getStr(radius))
+        CHECK_ASSERTION(__LINE__, 0._RKG < radius, SK_"@isMemberEll(): The condition `0. < radius` must hold. radius = "//getStr(radius))
 #elif   Ell_ENABLED
         CHECK_ASSERTION(__LINE__, all(size(point, 1, IK) == shape(invGram, IK)), SK_"@isMemberEll(): The condition `all(size(point, 1) == shape(invGram))` must hold. size(point, 1), shape(invGram) = "//getStr([size(point, 1, IK), shape(invGram, IK)]))
 #endif
@@ -140,7 +140,7 @@
 #if     Sph_ENABLED
         isMember = logical(dot_product(NORMEDPOINT, NORMEDPOINT) <= radius, LK)
 #elif   Ell_ENABLED
-        isMember = logical(dot_product(NORMEDPOINT, matmul(invGram, NORMEDPOINT)) <= 1._RKC, LK)
+        isMember = logical(dot_product(NORMEDPOINT, matmul(invGram, NORMEDPOINT)) <= 1._RKG, LK)
 #else
 #error  "Unrecognized interface."
 #endif

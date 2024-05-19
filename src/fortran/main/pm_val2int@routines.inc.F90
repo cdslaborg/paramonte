@@ -26,9 +26,9 @@
 
 #if     LK_ENABLED
         if (val) then
-            conversion = 1_IKC
+            conversion = 1_IKG
         else
-            conversion = 0_IKC
+            conversion = 0_IKG
         end if
 #elif   SK_ENABLED && Def_ENABLED
         read(val, *) conversion

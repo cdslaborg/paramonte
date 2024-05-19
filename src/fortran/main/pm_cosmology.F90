@@ -276,12 +276,12 @@ module pm_cosmology
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getSizeUnivNormedZ_D0_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(in)                    :: zplus1
-        real(RKC)   , intent(in)                    :: reltol
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(in)                    :: zplus1
+        real(RKG)   , intent(in)                    :: reltol
         integer(IK) , intent(out)   , optional      :: neval
         integer(IK) , intent(out)   , optional      :: err
-        real(RKC)                                   :: sizeUnivNormed
+        real(RKG)                                   :: sizeUnivNormed
     end function
 #endif
 
@@ -290,12 +290,12 @@ module pm_cosmology
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getSizeUnivNormedZ_D0_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(in)                    :: zplus1
-        real(RKC)   , intent(in)                    :: reltol
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(in)                    :: zplus1
+        real(RKG)   , intent(in)                    :: reltol
         integer(IK) , intent(out)   , optional      :: neval
         integer(IK) , intent(out)   , optional      :: err
-        real(RKC)                                   :: sizeUnivNormed
+        real(RKG)                                   :: sizeUnivNormed
     end function
 #endif
 
@@ -304,12 +304,12 @@ module pm_cosmology
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getSizeUnivNormedZ_D0_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(in)                    :: zplus1
-        real(RKC)   , intent(in)                    :: reltol
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(in)                    :: zplus1
+        real(RKG)   , intent(in)                    :: reltol
         integer(IK) , intent(out)   , optional      :: neval
         integer(IK) , intent(out)   , optional      :: err
-        real(RKC)                                   :: sizeUnivNormed
+        real(RKG)                                   :: sizeUnivNormed
     end function
 #endif
 
@@ -318,12 +318,12 @@ module pm_cosmology
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getSizeUnivNormedZ_D0_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(in)                    :: zplus1
-        real(RKC)   , intent(in)                    :: reltol
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(in)                    :: zplus1
+        real(RKG)   , intent(in)                    :: reltol
         integer(IK) , intent(out)   , optional      :: neval
         integer(IK) , intent(out)   , optional      :: err
-        real(RKC)                                   :: sizeUnivNormed
+        real(RKG)                                   :: sizeUnivNormed
     end function
 #endif
 
@@ -332,12 +332,12 @@ module pm_cosmology
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getSizeUnivNormedZ_D0_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(in)                    :: zplus1
-        real(RKC)   , intent(in)                    :: reltol
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(in)                    :: zplus1
+        real(RKG)   , intent(in)                    :: reltol
         integer(IK) , intent(out)   , optional      :: neval
         integer(IK) , intent(out)   , optional      :: err
-        real(RKC)                                   :: sizeUnivNormed
+        real(RKG)                                   :: sizeUnivNormed
     end function
 #endif
 
@@ -348,12 +348,12 @@ module pm_cosmology
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getSizeUnivNormedZML_D0_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(in)                    :: zplus1, omegaM, omegaL
-        real(RKC)   , intent(in)                    :: reltol
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(in)                    :: zplus1, omegaM, omegaL
+        real(RKG)   , intent(in)                    :: reltol
         integer(IK) , intent(out)   , optional      :: neval
         integer(IK) , intent(out)   , optional      :: err
-        real(RKC)                                   :: sizeUnivNormed
+        real(RKG)                                   :: sizeUnivNormed
     end function
 #endif
 
@@ -362,12 +362,12 @@ module pm_cosmology
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getSizeUnivNormedZML_D0_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(in)                    :: zplus1, omegaM, omegaL
-        real(RKC)   , intent(in)                    :: reltol
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(in)                    :: zplus1, omegaM, omegaL
+        real(RKG)   , intent(in)                    :: reltol
         integer(IK) , intent(out)   , optional      :: neval
         integer(IK) , intent(out)   , optional      :: err
-        real(RKC)                                   :: sizeUnivNormed
+        real(RKG)                                   :: sizeUnivNormed
     end function
 #endif
 
@@ -376,12 +376,12 @@ module pm_cosmology
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getSizeUnivNormedZML_D0_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(in)                    :: zplus1, omegaM, omegaL
-        real(RKC)   , intent(in)                    :: reltol
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(in)                    :: zplus1, omegaM, omegaL
+        real(RKG)   , intent(in)                    :: reltol
         integer(IK) , intent(out)   , optional      :: neval
         integer(IK) , intent(out)   , optional      :: err
-        real(RKC)                                   :: sizeUnivNormed
+        real(RKG)                                   :: sizeUnivNormed
     end function
 #endif
 
@@ -390,12 +390,12 @@ module pm_cosmology
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getSizeUnivNormedZML_D0_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(in)                    :: zplus1, omegaM, omegaL
-        real(RKC)   , intent(in)                    :: reltol
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(in)                    :: zplus1, omegaM, omegaL
+        real(RKG)   , intent(in)                    :: reltol
         integer(IK) , intent(out)   , optional      :: neval
         integer(IK) , intent(out)   , optional      :: err
-        real(RKC)                                   :: sizeUnivNormed
+        real(RKG)                                   :: sizeUnivNormed
     end function
 #endif
 
@@ -404,12 +404,12 @@ module pm_cosmology
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getSizeUnivNormedZML_D0_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(in)                    :: zplus1, omegaM, omegaL
-        real(RKC)   , intent(in)                    :: reltol
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(in)                    :: zplus1, omegaM, omegaL
+        real(RKG)   , intent(in)                    :: reltol
         integer(IK) , intent(out)   , optional      :: neval
         integer(IK) , intent(out)   , optional      :: err
-        real(RKC)                                   :: sizeUnivNormed
+        real(RKG)                                   :: sizeUnivNormed
     end function
 #endif
 
@@ -420,12 +420,12 @@ module pm_cosmology
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getSizeUnivNormedZMLR_D0_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(in)                    :: zplus1, omegaM, omegaL, omegaR
-        real(RKC)   , intent(in)                    :: reltol
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(in)                    :: zplus1, omegaM, omegaL, omegaR
+        real(RKG)   , intent(in)                    :: reltol
         integer(IK) , intent(out)   , optional      :: neval
         integer(IK) , intent(out)   , optional      :: err
-        real(RKC)                                   :: sizeUnivNormed
+        real(RKG)                                   :: sizeUnivNormed
     end function
 #endif
 
@@ -434,12 +434,12 @@ module pm_cosmology
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getSizeUnivNormedZMLR_D0_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(in)                    :: zplus1, omegaM, omegaL, omegaR
-        real(RKC)   , intent(in)                    :: reltol
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(in)                    :: zplus1, omegaM, omegaL, omegaR
+        real(RKG)   , intent(in)                    :: reltol
         integer(IK) , intent(out)   , optional      :: neval
         integer(IK) , intent(out)   , optional      :: err
-        real(RKC)                                   :: sizeUnivNormed
+        real(RKG)                                   :: sizeUnivNormed
     end function
 #endif
 
@@ -448,12 +448,12 @@ module pm_cosmology
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getSizeUnivNormedZMLR_D0_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(in)                    :: zplus1, omegaM, omegaL, omegaR
-        real(RKC)   , intent(in)                    :: reltol
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(in)                    :: zplus1, omegaM, omegaL, omegaR
+        real(RKG)   , intent(in)                    :: reltol
         integer(IK) , intent(out)   , optional      :: neval
         integer(IK) , intent(out)   , optional      :: err
-        real(RKC)                                   :: sizeUnivNormed
+        real(RKG)                                   :: sizeUnivNormed
     end function
 #endif
 
@@ -462,12 +462,12 @@ module pm_cosmology
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getSizeUnivNormedZMLR_D0_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(in)                    :: zplus1, omegaM, omegaL, omegaR
-        real(RKC)   , intent(in)                    :: reltol
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(in)                    :: zplus1, omegaM, omegaL, omegaR
+        real(RKG)   , intent(in)                    :: reltol
         integer(IK) , intent(out)   , optional      :: neval
         integer(IK) , intent(out)   , optional      :: err
-        real(RKC)                                   :: sizeUnivNormed
+        real(RKG)                                   :: sizeUnivNormed
     end function
 #endif
 
@@ -476,12 +476,12 @@ module pm_cosmology
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getSizeUnivNormedZMLR_D0_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(in)                    :: zplus1, omegaM, omegaL, omegaR
-        real(RKC)   , intent(in)                    :: reltol
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(in)                    :: zplus1, omegaM, omegaL, omegaR
+        real(RKG)   , intent(in)                    :: reltol
         integer(IK) , intent(out)   , optional      :: neval
         integer(IK) , intent(out)   , optional      :: err
-        real(RKC)                                   :: sizeUnivNormed
+        real(RKG)                                   :: sizeUnivNormed
     end function
 #endif
 
@@ -492,12 +492,12 @@ module pm_cosmology
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getSizeUnivNormedZMLRK_D0_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(in)                    :: zplus1, omegaM, omegaL, omegaR, omegaK
-        real(RKC)   , intent(in)                    :: reltol
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(in)                    :: zplus1, omegaM, omegaL, omegaR, omegaK
+        real(RKG)   , intent(in)                    :: reltol
         integer(IK) , intent(out)   , optional      :: neval
         integer(IK) , intent(out)   , optional      :: err
-        real(RKC)                                   :: sizeUnivNormed
+        real(RKG)                                   :: sizeUnivNormed
     end function
 #endif
 
@@ -506,12 +506,12 @@ module pm_cosmology
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getSizeUnivNormedZMLRK_D0_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(in)                    :: zplus1, omegaM, omegaL, omegaR, omegaK
-        real(RKC)   , intent(in)                    :: reltol
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(in)                    :: zplus1, omegaM, omegaL, omegaR, omegaK
+        real(RKG)   , intent(in)                    :: reltol
         integer(IK) , intent(out)   , optional      :: neval
         integer(IK) , intent(out)   , optional      :: err
-        real(RKC)                                   :: sizeUnivNormed
+        real(RKG)                                   :: sizeUnivNormed
     end function
 #endif
 
@@ -520,12 +520,12 @@ module pm_cosmology
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getSizeUnivNormedZMLRK_D0_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(in)                    :: zplus1, omegaM, omegaL, omegaR, omegaK
-        real(RKC)   , intent(in)                    :: reltol
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(in)                    :: zplus1, omegaM, omegaL, omegaR, omegaK
+        real(RKG)   , intent(in)                    :: reltol
         integer(IK) , intent(out)   , optional      :: neval
         integer(IK) , intent(out)   , optional      :: err
-        real(RKC)                                   :: sizeUnivNormed
+        real(RKG)                                   :: sizeUnivNormed
     end function
 #endif
 
@@ -534,12 +534,12 @@ module pm_cosmology
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getSizeUnivNormedZMLRK_D0_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(in)                    :: zplus1, omegaM, omegaL, omegaR, omegaK
-        real(RKC)   , intent(in)                    :: reltol
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(in)                    :: zplus1, omegaM, omegaL, omegaR, omegaK
+        real(RKG)   , intent(in)                    :: reltol
         integer(IK) , intent(out)   , optional      :: neval
         integer(IK) , intent(out)   , optional      :: err
-        real(RKC)                                   :: sizeUnivNormed
+        real(RKG)                                   :: sizeUnivNormed
     end function
 #endif
 
@@ -548,12 +548,12 @@ module pm_cosmology
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getSizeUnivNormedZMLRK_D0_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(in)                    :: zplus1, omegaM, omegaL, omegaR, omegaK
-        real(RKC)   , intent(in)                    :: reltol
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(in)                    :: zplus1, omegaM, omegaL, omegaR, omegaK
+        real(RKG)   , intent(in)                    :: reltol
         integer(IK) , intent(out)   , optional      :: neval
         integer(IK) , intent(out)   , optional      :: err
-        real(RKC)                                   :: sizeUnivNormed
+        real(RKG)                                   :: sizeUnivNormed
     end function
 #endif
 
@@ -704,12 +704,12 @@ module pm_cosmology
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisLookbackNormedZ_D0_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(in)                    :: zplus1
-        real(RKC)   , intent(in)                    :: reltol
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(in)                    :: zplus1
+        real(RKG)   , intent(in)                    :: reltol
         integer(IK) , intent(out)   , optional      :: neval
         integer(IK) , intent(out)   , optional      :: err
-        real(RKC)                                   :: disLookbackNormed
+        real(RKG)                                   :: disLookbackNormed
     end function
 #endif
 
@@ -718,12 +718,12 @@ module pm_cosmology
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisLookbackNormedZ_D0_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(in)                    :: zplus1
-        real(RKC)   , intent(in)                    :: reltol
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(in)                    :: zplus1
+        real(RKG)   , intent(in)                    :: reltol
         integer(IK) , intent(out)   , optional      :: neval
         integer(IK) , intent(out)   , optional      :: err
-        real(RKC)                                   :: disLookbackNormed
+        real(RKG)                                   :: disLookbackNormed
     end function
 #endif
 
@@ -732,12 +732,12 @@ module pm_cosmology
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisLookbackNormedZ_D0_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(in)                    :: zplus1
-        real(RKC)   , intent(in)                    :: reltol
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(in)                    :: zplus1
+        real(RKG)   , intent(in)                    :: reltol
         integer(IK) , intent(out)   , optional      :: neval
         integer(IK) , intent(out)   , optional      :: err
-        real(RKC)                                   :: disLookbackNormed
+        real(RKG)                                   :: disLookbackNormed
     end function
 #endif
 
@@ -746,12 +746,12 @@ module pm_cosmology
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisLookbackNormedZ_D0_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(in)                    :: zplus1
-        real(RKC)   , intent(in)                    :: reltol
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(in)                    :: zplus1
+        real(RKG)   , intent(in)                    :: reltol
         integer(IK) , intent(out)   , optional      :: neval
         integer(IK) , intent(out)   , optional      :: err
-        real(RKC)                                   :: disLookbackNormed
+        real(RKG)                                   :: disLookbackNormed
     end function
 #endif
 
@@ -760,12 +760,12 @@ module pm_cosmology
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisLookbackNormedZ_D0_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(in)                    :: zplus1
-        real(RKC)   , intent(in)                    :: reltol
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(in)                    :: zplus1
+        real(RKG)   , intent(in)                    :: reltol
         integer(IK) , intent(out)   , optional      :: neval
         integer(IK) , intent(out)   , optional      :: err
-        real(RKC)                                   :: disLookbackNormed
+        real(RKG)                                   :: disLookbackNormed
     end function
 #endif
 
@@ -776,12 +776,12 @@ module pm_cosmology
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisLookbackNormedZML_D0_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(in)                    :: zplus1, omegaM, omegaL
-        real(RKC)   , intent(in)                    :: reltol
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(in)                    :: zplus1, omegaM, omegaL
+        real(RKG)   , intent(in)                    :: reltol
         integer(IK) , intent(out)   , optional      :: neval
         integer(IK) , intent(out)   , optional      :: err
-        real(RKC)                                   :: disLookbackNormed
+        real(RKG)                                   :: disLookbackNormed
     end function
 #endif
 
@@ -790,12 +790,12 @@ module pm_cosmology
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisLookbackNormedZML_D0_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(in)                    :: zplus1, omegaM, omegaL
-        real(RKC)   , intent(in)                    :: reltol
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(in)                    :: zplus1, omegaM, omegaL
+        real(RKG)   , intent(in)                    :: reltol
         integer(IK) , intent(out)   , optional      :: neval
         integer(IK) , intent(out)   , optional      :: err
-        real(RKC)                                   :: disLookbackNormed
+        real(RKG)                                   :: disLookbackNormed
     end function
 #endif
 
@@ -804,12 +804,12 @@ module pm_cosmology
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisLookbackNormedZML_D0_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(in)                    :: zplus1, omegaM, omegaL
-        real(RKC)   , intent(in)                    :: reltol
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(in)                    :: zplus1, omegaM, omegaL
+        real(RKG)   , intent(in)                    :: reltol
         integer(IK) , intent(out)   , optional      :: neval
         integer(IK) , intent(out)   , optional      :: err
-        real(RKC)                                   :: disLookbackNormed
+        real(RKG)                                   :: disLookbackNormed
     end function
 #endif
 
@@ -818,12 +818,12 @@ module pm_cosmology
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisLookbackNormedZML_D0_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(in)                    :: zplus1, omegaM, omegaL
-        real(RKC)   , intent(in)                    :: reltol
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(in)                    :: zplus1, omegaM, omegaL
+        real(RKG)   , intent(in)                    :: reltol
         integer(IK) , intent(out)   , optional      :: neval
         integer(IK) , intent(out)   , optional      :: err
-        real(RKC)                                   :: disLookbackNormed
+        real(RKG)                                   :: disLookbackNormed
     end function
 #endif
 
@@ -832,12 +832,12 @@ module pm_cosmology
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisLookbackNormedZML_D0_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(in)                    :: zplus1, omegaM, omegaL
-        real(RKC)   , intent(in)                    :: reltol
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(in)                    :: zplus1, omegaM, omegaL
+        real(RKG)   , intent(in)                    :: reltol
         integer(IK) , intent(out)   , optional      :: neval
         integer(IK) , intent(out)   , optional      :: err
-        real(RKC)                                   :: disLookbackNormed
+        real(RKG)                                   :: disLookbackNormed
     end function
 #endif
 
@@ -848,12 +848,12 @@ module pm_cosmology
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisLookbackNormedZMLR_D0_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(in)                    :: zplus1, omegaM, omegaL, omegaR
-        real(RKC)   , intent(in)                    :: reltol
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(in)                    :: zplus1, omegaM, omegaL, omegaR
+        real(RKG)   , intent(in)                    :: reltol
         integer(IK) , intent(out)   , optional      :: neval
         integer(IK) , intent(out)   , optional      :: err
-        real(RKC)                                   :: disLookbackNormed
+        real(RKG)                                   :: disLookbackNormed
     end function
 #endif
 
@@ -862,12 +862,12 @@ module pm_cosmology
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisLookbackNormedZMLR_D0_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(in)                    :: zplus1, omegaM, omegaL, omegaR
-        real(RKC)   , intent(in)                    :: reltol
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(in)                    :: zplus1, omegaM, omegaL, omegaR
+        real(RKG)   , intent(in)                    :: reltol
         integer(IK) , intent(out)   , optional      :: neval
         integer(IK) , intent(out)   , optional      :: err
-        real(RKC)                                   :: disLookbackNormed
+        real(RKG)                                   :: disLookbackNormed
     end function
 #endif
 
@@ -876,12 +876,12 @@ module pm_cosmology
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisLookbackNormedZMLR_D0_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(in)                    :: zplus1, omegaM, omegaL, omegaR
-        real(RKC)   , intent(in)                    :: reltol
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(in)                    :: zplus1, omegaM, omegaL, omegaR
+        real(RKG)   , intent(in)                    :: reltol
         integer(IK) , intent(out)   , optional      :: neval
         integer(IK) , intent(out)   , optional      :: err
-        real(RKC)                                   :: disLookbackNormed
+        real(RKG)                                   :: disLookbackNormed
     end function
 #endif
 
@@ -890,12 +890,12 @@ module pm_cosmology
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisLookbackNormedZMLR_D0_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(in)                    :: zplus1, omegaM, omegaL, omegaR
-        real(RKC)   , intent(in)                    :: reltol
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(in)                    :: zplus1, omegaM, omegaL, omegaR
+        real(RKG)   , intent(in)                    :: reltol
         integer(IK) , intent(out)   , optional      :: neval
         integer(IK) , intent(out)   , optional      :: err
-        real(RKC)                                   :: disLookbackNormed
+        real(RKG)                                   :: disLookbackNormed
     end function
 #endif
 
@@ -904,12 +904,12 @@ module pm_cosmology
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisLookbackNormedZMLR_D0_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(in)                    :: zplus1, omegaM, omegaL, omegaR
-        real(RKC)   , intent(in)                    :: reltol
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(in)                    :: zplus1, omegaM, omegaL, omegaR
+        real(RKG)   , intent(in)                    :: reltol
         integer(IK) , intent(out)   , optional      :: neval
         integer(IK) , intent(out)   , optional      :: err
-        real(RKC)                                   :: disLookbackNormed
+        real(RKG)                                   :: disLookbackNormed
     end function
 #endif
 
@@ -920,12 +920,12 @@ module pm_cosmology
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisLookbackNormedZMLRK_D0_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(in)                    :: zplus1, omegaM, omegaL, omegaR, omegaK
-        real(RKC)   , intent(in)                    :: reltol
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(in)                    :: zplus1, omegaM, omegaL, omegaR, omegaK
+        real(RKG)   , intent(in)                    :: reltol
         integer(IK) , intent(out)   , optional      :: neval
         integer(IK) , intent(out)   , optional      :: err
-        real(RKC)                                   :: disLookbackNormed
+        real(RKG)                                   :: disLookbackNormed
     end function
 #endif
 
@@ -934,12 +934,12 @@ module pm_cosmology
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisLookbackNormedZMLRK_D0_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(in)                    :: zplus1, omegaM, omegaL, omegaR, omegaK
-        real(RKC)   , intent(in)                    :: reltol
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(in)                    :: zplus1, omegaM, omegaL, omegaR, omegaK
+        real(RKG)   , intent(in)                    :: reltol
         integer(IK) , intent(out)   , optional      :: neval
         integer(IK) , intent(out)   , optional      :: err
-        real(RKC)                                   :: disLookbackNormed
+        real(RKG)                                   :: disLookbackNormed
     end function
 #endif
 
@@ -948,12 +948,12 @@ module pm_cosmology
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisLookbackNormedZMLRK_D0_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(in)                    :: zplus1, omegaM, omegaL, omegaR, omegaK
-        real(RKC)   , intent(in)                    :: reltol
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(in)                    :: zplus1, omegaM, omegaL, omegaR, omegaK
+        real(RKG)   , intent(in)                    :: reltol
         integer(IK) , intent(out)   , optional      :: neval
         integer(IK) , intent(out)   , optional      :: err
-        real(RKC)                                   :: disLookbackNormed
+        real(RKG)                                   :: disLookbackNormed
     end function
 #endif
 
@@ -962,12 +962,12 @@ module pm_cosmology
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisLookbackNormedZMLRK_D0_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(in)                    :: zplus1, omegaM, omegaL, omegaR, omegaK
-        real(RKC)   , intent(in)                    :: reltol
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(in)                    :: zplus1, omegaM, omegaL, omegaR, omegaK
+        real(RKG)   , intent(in)                    :: reltol
         integer(IK) , intent(out)   , optional      :: neval
         integer(IK) , intent(out)   , optional      :: err
-        real(RKC)                                   :: disLookbackNormed
+        real(RKG)                                   :: disLookbackNormed
     end function
 #endif
 
@@ -976,12 +976,12 @@ module pm_cosmology
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisLookbackNormedZMLRK_D0_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(in)                    :: zplus1, omegaM, omegaL, omegaR, omegaK
-        real(RKC)   , intent(in)                    :: reltol
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(in)                    :: zplus1, omegaM, omegaL, omegaR, omegaK
+        real(RKG)   , intent(in)                    :: reltol
         integer(IK) , intent(out)   , optional      :: neval
         integer(IK) , intent(out)   , optional      :: err
-        real(RKC)                                   :: disLookbackNormed
+        real(RKG)                                   :: disLookbackNormed
     end function
 #endif
 
@@ -1112,12 +1112,12 @@ module pm_cosmology
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisComNormedZ_D0_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(in)                    :: zplus1
-        real(RKC)   , intent(in)                    :: reltol
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(in)                    :: zplus1
+        real(RKG)   , intent(in)                    :: reltol
         integer(IK) , intent(out)   , optional      :: neval
         integer(IK) , intent(out)   , optional      :: err
-        real(RKC)                                   :: disComNormed
+        real(RKG)                                   :: disComNormed
     end function
 #endif
 
@@ -1126,12 +1126,12 @@ module pm_cosmology
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisComNormedZ_D0_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(in)                    :: zplus1
-        real(RKC)   , intent(in)                    :: reltol
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(in)                    :: zplus1
+        real(RKG)   , intent(in)                    :: reltol
         integer(IK) , intent(out)   , optional      :: neval
         integer(IK) , intent(out)   , optional      :: err
-        real(RKC)                                   :: disComNormed
+        real(RKG)                                   :: disComNormed
     end function
 #endif
 
@@ -1140,12 +1140,12 @@ module pm_cosmology
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisComNormedZ_D0_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(in)                    :: zplus1
-        real(RKC)   , intent(in)                    :: reltol
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(in)                    :: zplus1
+        real(RKG)   , intent(in)                    :: reltol
         integer(IK) , intent(out)   , optional      :: neval
         integer(IK) , intent(out)   , optional      :: err
-        real(RKC)                                   :: disComNormed
+        real(RKG)                                   :: disComNormed
     end function
 #endif
 
@@ -1154,12 +1154,12 @@ module pm_cosmology
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisComNormedZ_D0_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(in)                    :: zplus1
-        real(RKC)   , intent(in)                    :: reltol
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(in)                    :: zplus1
+        real(RKG)   , intent(in)                    :: reltol
         integer(IK) , intent(out)   , optional      :: neval
         integer(IK) , intent(out)   , optional      :: err
-        real(RKC)                                   :: disComNormed
+        real(RKG)                                   :: disComNormed
     end function
 #endif
 
@@ -1168,12 +1168,12 @@ module pm_cosmology
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisComNormedZ_D0_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(in)                    :: zplus1
-        real(RKC)   , intent(in)                    :: reltol
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(in)                    :: zplus1
+        real(RKG)   , intent(in)                    :: reltol
         integer(IK) , intent(out)   , optional      :: neval
         integer(IK) , intent(out)   , optional      :: err
-        real(RKC)                                   :: disComNormed
+        real(RKG)                                   :: disComNormed
     end function
 #endif
 
@@ -1184,12 +1184,12 @@ module pm_cosmology
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisComNormedZML_D0_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(in)                    :: zplus1, omegaM, omegaL
-        real(RKC)   , intent(in)                    :: reltol
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(in)                    :: zplus1, omegaM, omegaL
+        real(RKG)   , intent(in)                    :: reltol
         integer(IK) , intent(out)   , optional      :: neval
         integer(IK) , intent(out)   , optional      :: err
-        real(RKC)                                   :: disComNormed
+        real(RKG)                                   :: disComNormed
     end function
 #endif
 
@@ -1198,12 +1198,12 @@ module pm_cosmology
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisComNormedZML_D0_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(in)                    :: zplus1, omegaM, omegaL
-        real(RKC)   , intent(in)                    :: reltol
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(in)                    :: zplus1, omegaM, omegaL
+        real(RKG)   , intent(in)                    :: reltol
         integer(IK) , intent(out)   , optional      :: neval
         integer(IK) , intent(out)   , optional      :: err
-        real(RKC)                                   :: disComNormed
+        real(RKG)                                   :: disComNormed
     end function
 #endif
 
@@ -1212,12 +1212,12 @@ module pm_cosmology
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisComNormedZML_D0_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(in)                    :: zplus1, omegaM, omegaL
-        real(RKC)   , intent(in)                    :: reltol
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(in)                    :: zplus1, omegaM, omegaL
+        real(RKG)   , intent(in)                    :: reltol
         integer(IK) , intent(out)   , optional      :: neval
         integer(IK) , intent(out)   , optional      :: err
-        real(RKC)                                   :: disComNormed
+        real(RKG)                                   :: disComNormed
     end function
 #endif
 
@@ -1226,12 +1226,12 @@ module pm_cosmology
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisComNormedZML_D0_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(in)                    :: zplus1, omegaM, omegaL
-        real(RKC)   , intent(in)                    :: reltol
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(in)                    :: zplus1, omegaM, omegaL
+        real(RKG)   , intent(in)                    :: reltol
         integer(IK) , intent(out)   , optional      :: neval
         integer(IK) , intent(out)   , optional      :: err
-        real(RKC)                                   :: disComNormed
+        real(RKG)                                   :: disComNormed
     end function
 #endif
 
@@ -1240,12 +1240,12 @@ module pm_cosmology
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisComNormedZML_D0_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(in)                    :: zplus1, omegaM, omegaL
-        real(RKC)   , intent(in)                    :: reltol
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(in)                    :: zplus1, omegaM, omegaL
+        real(RKG)   , intent(in)                    :: reltol
         integer(IK) , intent(out)   , optional      :: neval
         integer(IK) , intent(out)   , optional      :: err
-        real(RKC)                                   :: disComNormed
+        real(RKG)                                   :: disComNormed
     end function
 #endif
 
@@ -1256,12 +1256,12 @@ module pm_cosmology
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisComNormedZMLR_D0_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(in)                    :: zplus1, omegaM, omegaL, omegaR
-        real(RKC)   , intent(in)                    :: reltol
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(in)                    :: zplus1, omegaM, omegaL, omegaR
+        real(RKG)   , intent(in)                    :: reltol
         integer(IK) , intent(out)   , optional      :: neval
         integer(IK) , intent(out)   , optional      :: err
-        real(RKC)                                   :: disComNormed
+        real(RKG)                                   :: disComNormed
     end function
 #endif
 
@@ -1270,12 +1270,12 @@ module pm_cosmology
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisComNormedZMLR_D0_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(in)                    :: zplus1, omegaM, omegaL, omegaR
-        real(RKC)   , intent(in)                    :: reltol
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(in)                    :: zplus1, omegaM, omegaL, omegaR
+        real(RKG)   , intent(in)                    :: reltol
         integer(IK) , intent(out)   , optional      :: neval
         integer(IK) , intent(out)   , optional      :: err
-        real(RKC)                                   :: disComNormed
+        real(RKG)                                   :: disComNormed
     end function
 #endif
 
@@ -1284,12 +1284,12 @@ module pm_cosmology
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisComNormedZMLR_D0_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(in)                    :: zplus1, omegaM, omegaL, omegaR
-        real(RKC)   , intent(in)                    :: reltol
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(in)                    :: zplus1, omegaM, omegaL, omegaR
+        real(RKG)   , intent(in)                    :: reltol
         integer(IK) , intent(out)   , optional      :: neval
         integer(IK) , intent(out)   , optional      :: err
-        real(RKC)                                   :: disComNormed
+        real(RKG)                                   :: disComNormed
     end function
 #endif
 
@@ -1298,12 +1298,12 @@ module pm_cosmology
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisComNormedZMLR_D0_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(in)                    :: zplus1, omegaM, omegaL, omegaR
-        real(RKC)   , intent(in)                    :: reltol
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(in)                    :: zplus1, omegaM, omegaL, omegaR
+        real(RKG)   , intent(in)                    :: reltol
         integer(IK) , intent(out)   , optional      :: neval
         integer(IK) , intent(out)   , optional      :: err
-        real(RKC)                                   :: disComNormed
+        real(RKG)                                   :: disComNormed
     end function
 #endif
 
@@ -1312,12 +1312,12 @@ module pm_cosmology
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisComNormedZMLR_D0_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(in)                    :: zplus1, omegaM, omegaL, omegaR
-        real(RKC)   , intent(in)                    :: reltol
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(in)                    :: zplus1, omegaM, omegaL, omegaR
+        real(RKG)   , intent(in)                    :: reltol
         integer(IK) , intent(out)   , optional      :: neval
         integer(IK) , intent(out)   , optional      :: err
-        real(RKC)                                   :: disComNormed
+        real(RKG)                                   :: disComNormed
     end function
 #endif
 
@@ -1328,12 +1328,12 @@ module pm_cosmology
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisComNormedZMLRK_D0_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(in)                    :: zplus1, omegaM, omegaL, omegaR, omegaK
-        real(RKC)   , intent(in)                    :: reltol
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(in)                    :: zplus1, omegaM, omegaL, omegaR, omegaK
+        real(RKG)   , intent(in)                    :: reltol
         integer(IK) , intent(out)   , optional      :: neval
         integer(IK) , intent(out)   , optional      :: err
-        real(RKC)                                   :: disComNormed
+        real(RKG)                                   :: disComNormed
     end function
 #endif
 
@@ -1342,12 +1342,12 @@ module pm_cosmology
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisComNormedZMLRK_D0_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(in)                    :: zplus1, omegaM, omegaL, omegaR, omegaK
-        real(RKC)   , intent(in)                    :: reltol
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(in)                    :: zplus1, omegaM, omegaL, omegaR, omegaK
+        real(RKG)   , intent(in)                    :: reltol
         integer(IK) , intent(out)   , optional      :: neval
         integer(IK) , intent(out)   , optional      :: err
-        real(RKC)                                   :: disComNormed
+        real(RKG)                                   :: disComNormed
     end function
 #endif
 
@@ -1356,12 +1356,12 @@ module pm_cosmology
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisComNormedZMLRK_D0_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(in)                    :: zplus1, omegaM, omegaL, omegaR, omegaK
-        real(RKC)   , intent(in)                    :: reltol
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(in)                    :: zplus1, omegaM, omegaL, omegaR, omegaK
+        real(RKG)   , intent(in)                    :: reltol
         integer(IK) , intent(out)   , optional      :: neval
         integer(IK) , intent(out)   , optional      :: err
-        real(RKC)                                   :: disComNormed
+        real(RKG)                                   :: disComNormed
     end function
 #endif
 
@@ -1370,12 +1370,12 @@ module pm_cosmology
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisComNormedZMLRK_D0_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(in)                    :: zplus1, omegaM, omegaL, omegaR, omegaK
-        real(RKC)   , intent(in)                    :: reltol
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(in)                    :: zplus1, omegaM, omegaL, omegaR, omegaK
+        real(RKG)   , intent(in)                    :: reltol
         integer(IK) , intent(out)   , optional      :: neval
         integer(IK) , intent(out)   , optional      :: err
-        real(RKC)                                   :: disComNormed
+        real(RKG)                                   :: disComNormed
     end function
 #endif
 
@@ -1384,12 +1384,12 @@ module pm_cosmology
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisComNormedZMLRK_D0_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(in)                    :: zplus1, omegaM, omegaL, omegaR, omegaK
-        real(RKC)   , intent(in)                    :: reltol
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(in)                    :: zplus1, omegaM, omegaL, omegaR, omegaK
+        real(RKG)   , intent(in)                    :: reltol
         integer(IK) , intent(out)   , optional      :: neval
         integer(IK) , intent(out)   , optional      :: err
-        real(RKC)                                   :: disComNormed
+        real(RKG)                                   :: disComNormed
     end function
 #endif
 
@@ -1529,12 +1529,12 @@ module pm_cosmology
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisComTransNormedZ_D0_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(in)                    :: zplus1
-        real(RKC)   , intent(in)                    :: reltol
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(in)                    :: zplus1
+        real(RKG)   , intent(in)                    :: reltol
         integer(IK) , intent(out)   , optional      :: neval
         integer(IK) , intent(out)   , optional      :: err
-        real(RKC)                                   :: disComTransNormed
+        real(RKG)                                   :: disComTransNormed
     end function
 #endif
 
@@ -1543,12 +1543,12 @@ module pm_cosmology
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisComTransNormedZ_D0_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(in)                    :: zplus1
-        real(RKC)   , intent(in)                    :: reltol
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(in)                    :: zplus1
+        real(RKG)   , intent(in)                    :: reltol
         integer(IK) , intent(out)   , optional      :: neval
         integer(IK) , intent(out)   , optional      :: err
-        real(RKC)                                   :: disComTransNormed
+        real(RKG)                                   :: disComTransNormed
     end function
 #endif
 
@@ -1557,12 +1557,12 @@ module pm_cosmology
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisComTransNormedZ_D0_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(in)                    :: zplus1
-        real(RKC)   , intent(in)                    :: reltol
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(in)                    :: zplus1
+        real(RKG)   , intent(in)                    :: reltol
         integer(IK) , intent(out)   , optional      :: neval
         integer(IK) , intent(out)   , optional      :: err
-        real(RKC)                                   :: disComTransNormed
+        real(RKG)                                   :: disComTransNormed
     end function
 #endif
 
@@ -1571,12 +1571,12 @@ module pm_cosmology
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisComTransNormedZ_D0_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(in)                    :: zplus1
-        real(RKC)   , intent(in)                    :: reltol
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(in)                    :: zplus1
+        real(RKG)   , intent(in)                    :: reltol
         integer(IK) , intent(out)   , optional      :: neval
         integer(IK) , intent(out)   , optional      :: err
-        real(RKC)                                   :: disComTransNormed
+        real(RKG)                                   :: disComTransNormed
     end function
 #endif
 
@@ -1585,12 +1585,12 @@ module pm_cosmology
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisComTransNormedZ_D0_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(in)                    :: zplus1
-        real(RKC)   , intent(in)                    :: reltol
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(in)                    :: zplus1
+        real(RKG)   , intent(in)                    :: reltol
         integer(IK) , intent(out)   , optional      :: neval
         integer(IK) , intent(out)   , optional      :: err
-        real(RKC)                                   :: disComTransNormed
+        real(RKG)                                   :: disComTransNormed
     end function
 #endif
 
@@ -1601,12 +1601,12 @@ module pm_cosmology
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisComTransNormedZML_D0_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(in)                    :: zplus1, omegaM, omegaL
-        real(RKC)   , intent(in)                    :: reltol
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(in)                    :: zplus1, omegaM, omegaL
+        real(RKG)   , intent(in)                    :: reltol
         integer(IK) , intent(out)   , optional      :: neval
         integer(IK) , intent(out)   , optional      :: err
-        real(RKC)                                   :: disComTransNormed
+        real(RKG)                                   :: disComTransNormed
     end function
 #endif
 
@@ -1615,12 +1615,12 @@ module pm_cosmology
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisComTransNormedZML_D0_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(in)                    :: zplus1, omegaM, omegaL
-        real(RKC)   , intent(in)                    :: reltol
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(in)                    :: zplus1, omegaM, omegaL
+        real(RKG)   , intent(in)                    :: reltol
         integer(IK) , intent(out)   , optional      :: neval
         integer(IK) , intent(out)   , optional      :: err
-        real(RKC)                                   :: disComTransNormed
+        real(RKG)                                   :: disComTransNormed
     end function
 #endif
 
@@ -1629,12 +1629,12 @@ module pm_cosmology
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisComTransNormedZML_D0_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(in)                    :: zplus1, omegaM, omegaL
-        real(RKC)   , intent(in)                    :: reltol
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(in)                    :: zplus1, omegaM, omegaL
+        real(RKG)   , intent(in)                    :: reltol
         integer(IK) , intent(out)   , optional      :: neval
         integer(IK) , intent(out)   , optional      :: err
-        real(RKC)                                   :: disComTransNormed
+        real(RKG)                                   :: disComTransNormed
     end function
 #endif
 
@@ -1643,12 +1643,12 @@ module pm_cosmology
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisComTransNormedZML_D0_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(in)                    :: zplus1, omegaM, omegaL
-        real(RKC)   , intent(in)                    :: reltol
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(in)                    :: zplus1, omegaM, omegaL
+        real(RKG)   , intent(in)                    :: reltol
         integer(IK) , intent(out)   , optional      :: neval
         integer(IK) , intent(out)   , optional      :: err
-        real(RKC)                                   :: disComTransNormed
+        real(RKG)                                   :: disComTransNormed
     end function
 #endif
 
@@ -1657,12 +1657,12 @@ module pm_cosmology
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisComTransNormedZML_D0_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(in)                    :: zplus1, omegaM, omegaL
-        real(RKC)   , intent(in)                    :: reltol
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(in)                    :: zplus1, omegaM, omegaL
+        real(RKG)   , intent(in)                    :: reltol
         integer(IK) , intent(out)   , optional      :: neval
         integer(IK) , intent(out)   , optional      :: err
-        real(RKC)                                   :: disComTransNormed
+        real(RKG)                                   :: disComTransNormed
     end function
 #endif
 
@@ -1673,12 +1673,12 @@ module pm_cosmology
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisComTransNormedZMLR_D0_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(in)                    :: zplus1, omegaM, omegaL, omegaR
-        real(RKC)   , intent(in)                    :: reltol
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(in)                    :: zplus1, omegaM, omegaL, omegaR
+        real(RKG)   , intent(in)                    :: reltol
         integer(IK) , intent(out)   , optional      :: neval
         integer(IK) , intent(out)   , optional      :: err
-        real(RKC)                                   :: disComTransNormed
+        real(RKG)                                   :: disComTransNormed
     end function
 #endif
 
@@ -1687,12 +1687,12 @@ module pm_cosmology
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisComTransNormedZMLR_D0_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(in)                    :: zplus1, omegaM, omegaL, omegaR
-        real(RKC)   , intent(in)                    :: reltol
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(in)                    :: zplus1, omegaM, omegaL, omegaR
+        real(RKG)   , intent(in)                    :: reltol
         integer(IK) , intent(out)   , optional      :: neval
         integer(IK) , intent(out)   , optional      :: err
-        real(RKC)                                   :: disComTransNormed
+        real(RKG)                                   :: disComTransNormed
     end function
 #endif
 
@@ -1701,12 +1701,12 @@ module pm_cosmology
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisComTransNormedZMLR_D0_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(in)                    :: zplus1, omegaM, omegaL, omegaR
-        real(RKC)   , intent(in)                    :: reltol
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(in)                    :: zplus1, omegaM, omegaL, omegaR
+        real(RKG)   , intent(in)                    :: reltol
         integer(IK) , intent(out)   , optional      :: neval
         integer(IK) , intent(out)   , optional      :: err
-        real(RKC)                                   :: disComTransNormed
+        real(RKG)                                   :: disComTransNormed
     end function
 #endif
 
@@ -1715,12 +1715,12 @@ module pm_cosmology
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisComTransNormedZMLR_D0_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(in)                    :: zplus1, omegaM, omegaL, omegaR
-        real(RKC)   , intent(in)                    :: reltol
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(in)                    :: zplus1, omegaM, omegaL, omegaR
+        real(RKG)   , intent(in)                    :: reltol
         integer(IK) , intent(out)   , optional      :: neval
         integer(IK) , intent(out)   , optional      :: err
-        real(RKC)                                   :: disComTransNormed
+        real(RKG)                                   :: disComTransNormed
     end function
 #endif
 
@@ -1729,12 +1729,12 @@ module pm_cosmology
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisComTransNormedZMLR_D0_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(in)                    :: zplus1, omegaM, omegaL, omegaR
-        real(RKC)   , intent(in)                    :: reltol
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(in)                    :: zplus1, omegaM, omegaL, omegaR
+        real(RKG)   , intent(in)                    :: reltol
         integer(IK) , intent(out)   , optional      :: neval
         integer(IK) , intent(out)   , optional      :: err
-        real(RKC)                                   :: disComTransNormed
+        real(RKG)                                   :: disComTransNormed
     end function
 #endif
 
@@ -1745,12 +1745,12 @@ module pm_cosmology
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisComTransNormedZMLRK_D0_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(in)                    :: zplus1, omegaM, omegaL, omegaR, omegaK, sqrtAbsOmegaK
-        real(RKC)   , intent(in)                    :: reltol
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(in)                    :: zplus1, omegaM, omegaL, omegaR, omegaK, sqrtAbsOmegaK
+        real(RKG)   , intent(in)                    :: reltol
         integer(IK) , intent(out)   , optional      :: neval
         integer(IK) , intent(out)   , optional      :: err
-        real(RKC)                                   :: disComTransNormed
+        real(RKG)                                   :: disComTransNormed
     end function
 #endif
 
@@ -1759,12 +1759,12 @@ module pm_cosmology
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisComTransNormedZMLRK_D0_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(in)                    :: zplus1, omegaM, omegaL, omegaR, omegaK, sqrtAbsOmegaK
-        real(RKC)   , intent(in)                    :: reltol
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(in)                    :: zplus1, omegaM, omegaL, omegaR, omegaK, sqrtAbsOmegaK
+        real(RKG)   , intent(in)                    :: reltol
         integer(IK) , intent(out)   , optional      :: neval
         integer(IK) , intent(out)   , optional      :: err
-        real(RKC)                                   :: disComTransNormed
+        real(RKG)                                   :: disComTransNormed
     end function
 #endif
 
@@ -1773,12 +1773,12 @@ module pm_cosmology
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisComTransNormedZMLRK_D0_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(in)                    :: zplus1, omegaM, omegaL, omegaR, omegaK, sqrtAbsOmegaK
-        real(RKC)   , intent(in)                    :: reltol
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(in)                    :: zplus1, omegaM, omegaL, omegaR, omegaK, sqrtAbsOmegaK
+        real(RKG)   , intent(in)                    :: reltol
         integer(IK) , intent(out)   , optional      :: neval
         integer(IK) , intent(out)   , optional      :: err
-        real(RKC)                                   :: disComTransNormed
+        real(RKG)                                   :: disComTransNormed
     end function
 #endif
 
@@ -1787,12 +1787,12 @@ module pm_cosmology
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisComTransNormedZMLRK_D0_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(in)                    :: zplus1, omegaM, omegaL, omegaR, omegaK, sqrtAbsOmegaK
-        real(RKC)   , intent(in)                    :: reltol
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(in)                    :: zplus1, omegaM, omegaL, omegaR, omegaK, sqrtAbsOmegaK
+        real(RKG)   , intent(in)                    :: reltol
         integer(IK) , intent(out)   , optional      :: neval
         integer(IK) , intent(out)   , optional      :: err
-        real(RKC)                                   :: disComTransNormed
+        real(RKG)                                   :: disComTransNormed
     end function
 #endif
 
@@ -1801,12 +1801,12 @@ module pm_cosmology
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisComTransNormedZMLRK_D0_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(in)                    :: zplus1, omegaM, omegaL, omegaR, omegaK, sqrtAbsOmegaK
-        real(RKC)   , intent(in)                    :: reltol
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(in)                    :: zplus1, omegaM, omegaL, omegaR, omegaK, sqrtAbsOmegaK
+        real(RKG)   , intent(in)                    :: reltol
         integer(IK) , intent(out)   , optional      :: neval
         integer(IK) , intent(out)   , optional      :: err
-        real(RKC)                                   :: disComTransNormed
+        real(RKG)                                   :: disComTransNormed
     end function
 #endif
 
@@ -1938,12 +1938,12 @@ module pm_cosmology
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisAngNormedZ_D0_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(in)                    :: zplus1
-        real(RKC)   , intent(in)                    :: reltol
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(in)                    :: zplus1
+        real(RKG)   , intent(in)                    :: reltol
         integer(IK) , intent(out)   , optional      :: neval
         integer(IK) , intent(out)   , optional      :: err
-        real(RKC)                                   :: disAngNormed
+        real(RKG)                                   :: disAngNormed
     end function
 #endif
 
@@ -1952,12 +1952,12 @@ module pm_cosmology
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisAngNormedZ_D0_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(in)                    :: zplus1
-        real(RKC)   , intent(in)                    :: reltol
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(in)                    :: zplus1
+        real(RKG)   , intent(in)                    :: reltol
         integer(IK) , intent(out)   , optional      :: neval
         integer(IK) , intent(out)   , optional      :: err
-        real(RKC)                                   :: disAngNormed
+        real(RKG)                                   :: disAngNormed
     end function
 #endif
 
@@ -1966,12 +1966,12 @@ module pm_cosmology
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisAngNormedZ_D0_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(in)                    :: zplus1
-        real(RKC)   , intent(in)                    :: reltol
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(in)                    :: zplus1
+        real(RKG)   , intent(in)                    :: reltol
         integer(IK) , intent(out)   , optional      :: neval
         integer(IK) , intent(out)   , optional      :: err
-        real(RKC)                                   :: disAngNormed
+        real(RKG)                                   :: disAngNormed
     end function
 #endif
 
@@ -1980,12 +1980,12 @@ module pm_cosmology
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisAngNormedZ_D0_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(in)                    :: zplus1
-        real(RKC)   , intent(in)                    :: reltol
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(in)                    :: zplus1
+        real(RKG)   , intent(in)                    :: reltol
         integer(IK) , intent(out)   , optional      :: neval
         integer(IK) , intent(out)   , optional      :: err
-        real(RKC)                                   :: disAngNormed
+        real(RKG)                                   :: disAngNormed
     end function
 #endif
 
@@ -1994,12 +1994,12 @@ module pm_cosmology
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisAngNormedZ_D0_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(in)                    :: zplus1
-        real(RKC)   , intent(in)                    :: reltol
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(in)                    :: zplus1
+        real(RKG)   , intent(in)                    :: reltol
         integer(IK) , intent(out)   , optional      :: neval
         integer(IK) , intent(out)   , optional      :: err
-        real(RKC)                                   :: disAngNormed
+        real(RKG)                                   :: disAngNormed
     end function
 #endif
 
@@ -2010,12 +2010,12 @@ module pm_cosmology
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisAngNormedZML_D0_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(in)                    :: zplus1, omegaM, omegaL
-        real(RKC)   , intent(in)                    :: reltol
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(in)                    :: zplus1, omegaM, omegaL
+        real(RKG)   , intent(in)                    :: reltol
         integer(IK) , intent(out)   , optional      :: neval
         integer(IK) , intent(out)   , optional      :: err
-        real(RKC)                                   :: disAngNormed
+        real(RKG)                                   :: disAngNormed
     end function
 #endif
 
@@ -2024,12 +2024,12 @@ module pm_cosmology
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisAngNormedZML_D0_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(in)                    :: zplus1, omegaM, omegaL
-        real(RKC)   , intent(in)                    :: reltol
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(in)                    :: zplus1, omegaM, omegaL
+        real(RKG)   , intent(in)                    :: reltol
         integer(IK) , intent(out)   , optional      :: neval
         integer(IK) , intent(out)   , optional      :: err
-        real(RKC)                                   :: disAngNormed
+        real(RKG)                                   :: disAngNormed
     end function
 #endif
 
@@ -2038,12 +2038,12 @@ module pm_cosmology
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisAngNormedZML_D0_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(in)                    :: zplus1, omegaM, omegaL
-        real(RKC)   , intent(in)                    :: reltol
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(in)                    :: zplus1, omegaM, omegaL
+        real(RKG)   , intent(in)                    :: reltol
         integer(IK) , intent(out)   , optional      :: neval
         integer(IK) , intent(out)   , optional      :: err
-        real(RKC)                                   :: disAngNormed
+        real(RKG)                                   :: disAngNormed
     end function
 #endif
 
@@ -2052,12 +2052,12 @@ module pm_cosmology
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisAngNormedZML_D0_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(in)                    :: zplus1, omegaM, omegaL
-        real(RKC)   , intent(in)                    :: reltol
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(in)                    :: zplus1, omegaM, omegaL
+        real(RKG)   , intent(in)                    :: reltol
         integer(IK) , intent(out)   , optional      :: neval
         integer(IK) , intent(out)   , optional      :: err
-        real(RKC)                                   :: disAngNormed
+        real(RKG)                                   :: disAngNormed
     end function
 #endif
 
@@ -2066,12 +2066,12 @@ module pm_cosmology
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisAngNormedZML_D0_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(in)                    :: zplus1, omegaM, omegaL
-        real(RKC)   , intent(in)                    :: reltol
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(in)                    :: zplus1, omegaM, omegaL
+        real(RKG)   , intent(in)                    :: reltol
         integer(IK) , intent(out)   , optional      :: neval
         integer(IK) , intent(out)   , optional      :: err
-        real(RKC)                                   :: disAngNormed
+        real(RKG)                                   :: disAngNormed
     end function
 #endif
 
@@ -2082,12 +2082,12 @@ module pm_cosmology
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisAngNormedZMLR_D0_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(in)                    :: zplus1, omegaM, omegaL, omegaR
-        real(RKC)   , intent(in)                    :: reltol
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(in)                    :: zplus1, omegaM, omegaL, omegaR
+        real(RKG)   , intent(in)                    :: reltol
         integer(IK) , intent(out)   , optional      :: neval
         integer(IK) , intent(out)   , optional      :: err
-        real(RKC)                                   :: disAngNormed
+        real(RKG)                                   :: disAngNormed
     end function
 #endif
 
@@ -2096,12 +2096,12 @@ module pm_cosmology
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisAngNormedZMLR_D0_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(in)                    :: zplus1, omegaM, omegaL, omegaR
-        real(RKC)   , intent(in)                    :: reltol
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(in)                    :: zplus1, omegaM, omegaL, omegaR
+        real(RKG)   , intent(in)                    :: reltol
         integer(IK) , intent(out)   , optional      :: neval
         integer(IK) , intent(out)   , optional      :: err
-        real(RKC)                                   :: disAngNormed
+        real(RKG)                                   :: disAngNormed
     end function
 #endif
 
@@ -2110,12 +2110,12 @@ module pm_cosmology
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisAngNormedZMLR_D0_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(in)                    :: zplus1, omegaM, omegaL, omegaR
-        real(RKC)   , intent(in)                    :: reltol
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(in)                    :: zplus1, omegaM, omegaL, omegaR
+        real(RKG)   , intent(in)                    :: reltol
         integer(IK) , intent(out)   , optional      :: neval
         integer(IK) , intent(out)   , optional      :: err
-        real(RKC)                                   :: disAngNormed
+        real(RKG)                                   :: disAngNormed
     end function
 #endif
 
@@ -2124,12 +2124,12 @@ module pm_cosmology
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisAngNormedZMLR_D0_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(in)                    :: zplus1, omegaM, omegaL, omegaR
-        real(RKC)   , intent(in)                    :: reltol
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(in)                    :: zplus1, omegaM, omegaL, omegaR
+        real(RKG)   , intent(in)                    :: reltol
         integer(IK) , intent(out)   , optional      :: neval
         integer(IK) , intent(out)   , optional      :: err
-        real(RKC)                                   :: disAngNormed
+        real(RKG)                                   :: disAngNormed
     end function
 #endif
 
@@ -2138,12 +2138,12 @@ module pm_cosmology
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisAngNormedZMLR_D0_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(in)                    :: zplus1, omegaM, omegaL, omegaR
-        real(RKC)   , intent(in)                    :: reltol
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(in)                    :: zplus1, omegaM, omegaL, omegaR
+        real(RKG)   , intent(in)                    :: reltol
         integer(IK) , intent(out)   , optional      :: neval
         integer(IK) , intent(out)   , optional      :: err
-        real(RKC)                                   :: disAngNormed
+        real(RKG)                                   :: disAngNormed
     end function
 #endif
 
@@ -2154,12 +2154,12 @@ module pm_cosmology
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisAngNormedZMLRK_D0_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(in)                    :: zplus1, omegaM, omegaL, omegaR, omegaK, sqrtAbsOmegaK
-        real(RKC)   , intent(in)                    :: reltol
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(in)                    :: zplus1, omegaM, omegaL, omegaR, omegaK, sqrtAbsOmegaK
+        real(RKG)   , intent(in)                    :: reltol
         integer(IK) , intent(out)   , optional      :: neval
         integer(IK) , intent(out)   , optional      :: err
-        real(RKC)                                   :: disAngNormed
+        real(RKG)                                   :: disAngNormed
     end function
 #endif
 
@@ -2168,12 +2168,12 @@ module pm_cosmology
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisAngNormedZMLRK_D0_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(in)                    :: zplus1, omegaM, omegaL, omegaR, omegaK, sqrtAbsOmegaK
-        real(RKC)   , intent(in)                    :: reltol
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(in)                    :: zplus1, omegaM, omegaL, omegaR, omegaK, sqrtAbsOmegaK
+        real(RKG)   , intent(in)                    :: reltol
         integer(IK) , intent(out)   , optional      :: neval
         integer(IK) , intent(out)   , optional      :: err
-        real(RKC)                                   :: disAngNormed
+        real(RKG)                                   :: disAngNormed
     end function
 #endif
 
@@ -2182,12 +2182,12 @@ module pm_cosmology
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisAngNormedZMLRK_D0_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(in)                    :: zplus1, omegaM, omegaL, omegaR, omegaK, sqrtAbsOmegaK
-        real(RKC)   , intent(in)                    :: reltol
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(in)                    :: zplus1, omegaM, omegaL, omegaR, omegaK, sqrtAbsOmegaK
+        real(RKG)   , intent(in)                    :: reltol
         integer(IK) , intent(out)   , optional      :: neval
         integer(IK) , intent(out)   , optional      :: err
-        real(RKC)                                   :: disAngNormed
+        real(RKG)                                   :: disAngNormed
     end function
 #endif
 
@@ -2196,12 +2196,12 @@ module pm_cosmology
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisAngNormedZMLRK_D0_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(in)                    :: zplus1, omegaM, omegaL, omegaR, omegaK, sqrtAbsOmegaK
-        real(RKC)   , intent(in)                    :: reltol
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(in)                    :: zplus1, omegaM, omegaL, omegaR, omegaK, sqrtAbsOmegaK
+        real(RKG)   , intent(in)                    :: reltol
         integer(IK) , intent(out)   , optional      :: neval
         integer(IK) , intent(out)   , optional      :: err
-        real(RKC)                                   :: disAngNormed
+        real(RKG)                                   :: disAngNormed
     end function
 #endif
 
@@ -2210,12 +2210,12 @@ module pm_cosmology
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisAngNormedZMLRK_D0_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(in)                    :: zplus1, omegaM, omegaL, omegaR, omegaK, sqrtAbsOmegaK
-        real(RKC)   , intent(in)                    :: reltol
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(in)                    :: zplus1, omegaM, omegaL, omegaR, omegaK, sqrtAbsOmegaK
+        real(RKG)   , intent(in)                    :: reltol
         integer(IK) , intent(out)   , optional      :: neval
         integer(IK) , intent(out)   , optional      :: err
-        real(RKC)                                   :: disAngNormed
+        real(RKG)                                   :: disAngNormed
     end function
 #endif
 
@@ -2350,12 +2350,12 @@ module pm_cosmology
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisLumNormedZ_D0_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(in)                    :: zplus1
-        real(RKC)   , intent(in)                    :: reltol
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(in)                    :: zplus1
+        real(RKG)   , intent(in)                    :: reltol
         integer(IK) , intent(out)   , optional      :: neval
         integer(IK) , intent(out)   , optional      :: err
-        real(RKC)                                   :: disLumNormed
+        real(RKG)                                   :: disLumNormed
     end function
 #endif
 
@@ -2364,12 +2364,12 @@ module pm_cosmology
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisLumNormedZ_D0_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(in)                    :: zplus1
-        real(RKC)   , intent(in)                    :: reltol
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(in)                    :: zplus1
+        real(RKG)   , intent(in)                    :: reltol
         integer(IK) , intent(out)   , optional      :: neval
         integer(IK) , intent(out)   , optional      :: err
-        real(RKC)                                   :: disLumNormed
+        real(RKG)                                   :: disLumNormed
     end function
 #endif
 
@@ -2378,12 +2378,12 @@ module pm_cosmology
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisLumNormedZ_D0_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(in)                    :: zplus1
-        real(RKC)   , intent(in)                    :: reltol
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(in)                    :: zplus1
+        real(RKG)   , intent(in)                    :: reltol
         integer(IK) , intent(out)   , optional      :: neval
         integer(IK) , intent(out)   , optional      :: err
-        real(RKC)                                   :: disLumNormed
+        real(RKG)                                   :: disLumNormed
     end function
 #endif
 
@@ -2392,12 +2392,12 @@ module pm_cosmology
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisLumNormedZ_D0_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(in)                    :: zplus1
-        real(RKC)   , intent(in)                    :: reltol
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(in)                    :: zplus1
+        real(RKG)   , intent(in)                    :: reltol
         integer(IK) , intent(out)   , optional      :: neval
         integer(IK) , intent(out)   , optional      :: err
-        real(RKC)                                   :: disLumNormed
+        real(RKG)                                   :: disLumNormed
     end function
 #endif
 
@@ -2406,12 +2406,12 @@ module pm_cosmology
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisLumNormedZ_D0_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(in)                    :: zplus1
-        real(RKC)   , intent(in)                    :: reltol
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(in)                    :: zplus1
+        real(RKG)   , intent(in)                    :: reltol
         integer(IK) , intent(out)   , optional      :: neval
         integer(IK) , intent(out)   , optional      :: err
-        real(RKC)                                   :: disLumNormed
+        real(RKG)                                   :: disLumNormed
     end function
 #endif
 
@@ -2422,12 +2422,12 @@ module pm_cosmology
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisLumNormedZML_D0_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(in)                    :: zplus1, omegaM, omegaL
-        real(RKC)   , intent(in)                    :: reltol
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(in)                    :: zplus1, omegaM, omegaL
+        real(RKG)   , intent(in)                    :: reltol
         integer(IK) , intent(out)   , optional      :: neval
         integer(IK) , intent(out)   , optional      :: err
-        real(RKC)                                   :: disLumNormed
+        real(RKG)                                   :: disLumNormed
     end function
 #endif
 
@@ -2436,12 +2436,12 @@ module pm_cosmology
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisLumNormedZML_D0_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(in)                    :: zplus1, omegaM, omegaL
-        real(RKC)   , intent(in)                    :: reltol
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(in)                    :: zplus1, omegaM, omegaL
+        real(RKG)   , intent(in)                    :: reltol
         integer(IK) , intent(out)   , optional      :: neval
         integer(IK) , intent(out)   , optional      :: err
-        real(RKC)                                   :: disLumNormed
+        real(RKG)                                   :: disLumNormed
     end function
 #endif
 
@@ -2450,12 +2450,12 @@ module pm_cosmology
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisLumNormedZML_D0_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(in)                    :: zplus1, omegaM, omegaL
-        real(RKC)   , intent(in)                    :: reltol
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(in)                    :: zplus1, omegaM, omegaL
+        real(RKG)   , intent(in)                    :: reltol
         integer(IK) , intent(out)   , optional      :: neval
         integer(IK) , intent(out)   , optional      :: err
-        real(RKC)                                   :: disLumNormed
+        real(RKG)                                   :: disLumNormed
     end function
 #endif
 
@@ -2464,12 +2464,12 @@ module pm_cosmology
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisLumNormedZML_D0_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(in)                    :: zplus1, omegaM, omegaL
-        real(RKC)   , intent(in)                    :: reltol
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(in)                    :: zplus1, omegaM, omegaL
+        real(RKG)   , intent(in)                    :: reltol
         integer(IK) , intent(out)   , optional      :: neval
         integer(IK) , intent(out)   , optional      :: err
-        real(RKC)                                   :: disLumNormed
+        real(RKG)                                   :: disLumNormed
     end function
 #endif
 
@@ -2478,12 +2478,12 @@ module pm_cosmology
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisLumNormedZML_D0_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(in)                    :: zplus1, omegaM, omegaL
-        real(RKC)   , intent(in)                    :: reltol
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(in)                    :: zplus1, omegaM, omegaL
+        real(RKG)   , intent(in)                    :: reltol
         integer(IK) , intent(out)   , optional      :: neval
         integer(IK) , intent(out)   , optional      :: err
-        real(RKC)                                   :: disLumNormed
+        real(RKG)                                   :: disLumNormed
     end function
 #endif
 
@@ -2494,12 +2494,12 @@ module pm_cosmology
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisLumNormedZMLR_D0_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(in)                    :: zplus1, omegaM, omegaL, omegaR
-        real(RKC)   , intent(in)                    :: reltol
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(in)                    :: zplus1, omegaM, omegaL, omegaR
+        real(RKG)   , intent(in)                    :: reltol
         integer(IK) , intent(out)   , optional      :: neval
         integer(IK) , intent(out)   , optional      :: err
-        real(RKC)                                   :: disLumNormed
+        real(RKG)                                   :: disLumNormed
     end function
 #endif
 
@@ -2508,12 +2508,12 @@ module pm_cosmology
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisLumNormedZMLR_D0_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(in)                    :: zplus1, omegaM, omegaL, omegaR
-        real(RKC)   , intent(in)                    :: reltol
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(in)                    :: zplus1, omegaM, omegaL, omegaR
+        real(RKG)   , intent(in)                    :: reltol
         integer(IK) , intent(out)   , optional      :: neval
         integer(IK) , intent(out)   , optional      :: err
-        real(RKC)                                   :: disLumNormed
+        real(RKG)                                   :: disLumNormed
     end function
 #endif
 
@@ -2522,12 +2522,12 @@ module pm_cosmology
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisLumNormedZMLR_D0_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(in)                    :: zplus1, omegaM, omegaL, omegaR
-        real(RKC)   , intent(in)                    :: reltol
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(in)                    :: zplus1, omegaM, omegaL, omegaR
+        real(RKG)   , intent(in)                    :: reltol
         integer(IK) , intent(out)   , optional      :: neval
         integer(IK) , intent(out)   , optional      :: err
-        real(RKC)                                   :: disLumNormed
+        real(RKG)                                   :: disLumNormed
     end function
 #endif
 
@@ -2536,12 +2536,12 @@ module pm_cosmology
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisLumNormedZMLR_D0_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(in)                    :: zplus1, omegaM, omegaL, omegaR
-        real(RKC)   , intent(in)                    :: reltol
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(in)                    :: zplus1, omegaM, omegaL, omegaR
+        real(RKG)   , intent(in)                    :: reltol
         integer(IK) , intent(out)   , optional      :: neval
         integer(IK) , intent(out)   , optional      :: err
-        real(RKC)                                   :: disLumNormed
+        real(RKG)                                   :: disLumNormed
     end function
 #endif
 
@@ -2550,12 +2550,12 @@ module pm_cosmology
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisLumNormedZMLR_D0_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(in)                    :: zplus1, omegaM, omegaL, omegaR
-        real(RKC)   , intent(in)                    :: reltol
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(in)                    :: zplus1, omegaM, omegaL, omegaR
+        real(RKG)   , intent(in)                    :: reltol
         integer(IK) , intent(out)   , optional      :: neval
         integer(IK) , intent(out)   , optional      :: err
-        real(RKC)                                   :: disLumNormed
+        real(RKG)                                   :: disLumNormed
     end function
 #endif
 
@@ -2566,12 +2566,12 @@ module pm_cosmology
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisLumNormedZMLRK_D0_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(in)                    :: zplus1, omegaM, omegaL, omegaR, omegaK, sqrtAbsOmegaK
-        real(RKC)   , intent(in)                    :: reltol
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(in)                    :: zplus1, omegaM, omegaL, omegaR, omegaK, sqrtAbsOmegaK
+        real(RKG)   , intent(in)                    :: reltol
         integer(IK) , intent(out)   , optional      :: neval
         integer(IK) , intent(out)   , optional      :: err
-        real(RKC)                                   :: disLumNormed
+        real(RKG)                                   :: disLumNormed
     end function
 #endif
 
@@ -2580,12 +2580,12 @@ module pm_cosmology
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisLumNormedZMLRK_D0_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(in)                    :: zplus1, omegaM, omegaL, omegaR, omegaK, sqrtAbsOmegaK
-        real(RKC)   , intent(in)                    :: reltol
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(in)                    :: zplus1, omegaM, omegaL, omegaR, omegaK, sqrtAbsOmegaK
+        real(RKG)   , intent(in)                    :: reltol
         integer(IK) , intent(out)   , optional      :: neval
         integer(IK) , intent(out)   , optional      :: err
-        real(RKC)                                   :: disLumNormed
+        real(RKG)                                   :: disLumNormed
     end function
 #endif
 
@@ -2594,12 +2594,12 @@ module pm_cosmology
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisLumNormedZMLRK_D0_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(in)                    :: zplus1, omegaM, omegaL, omegaR, omegaK, sqrtAbsOmegaK
-        real(RKC)   , intent(in)                    :: reltol
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(in)                    :: zplus1, omegaM, omegaL, omegaR, omegaK, sqrtAbsOmegaK
+        real(RKG)   , intent(in)                    :: reltol
         integer(IK) , intent(out)   , optional      :: neval
         integer(IK) , intent(out)   , optional      :: err
-        real(RKC)                                   :: disLumNormed
+        real(RKG)                                   :: disLumNormed
     end function
 #endif
 
@@ -2608,12 +2608,12 @@ module pm_cosmology
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisLumNormedZMLRK_D0_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(in)                    :: zplus1, omegaM, omegaL, omegaR, omegaK, sqrtAbsOmegaK
-        real(RKC)   , intent(in)                    :: reltol
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(in)                    :: zplus1, omegaM, omegaL, omegaR, omegaK, sqrtAbsOmegaK
+        real(RKG)   , intent(in)                    :: reltol
         integer(IK) , intent(out)   , optional      :: neval
         integer(IK) , intent(out)   , optional      :: err
-        real(RKC)                                   :: disLumNormed
+        real(RKG)                                   :: disLumNormed
     end function
 #endif
 
@@ -2622,12 +2622,12 @@ module pm_cosmology
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisLumNormedZMLRK_D0_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(in)                    :: zplus1, omegaM, omegaL, omegaR, omegaK, sqrtAbsOmegaK
-        real(RKC)   , intent(in)                    :: reltol
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(in)                    :: zplus1, omegaM, omegaL, omegaR, omegaK, sqrtAbsOmegaK
+        real(RKG)   , intent(in)                    :: reltol
         integer(IK) , intent(out)   , optional      :: neval
         integer(IK) , intent(out)   , optional      :: err
-        real(RKC)                                   :: disLumNormed
+        real(RKG)                                   :: disLumNormed
     end function
 #endif
 
@@ -2745,9 +2745,9 @@ module pm_cosmology
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisComTransNormedWU10Z_D0_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(in)                    :: zplus1
-        real(RKC)                                   :: disComTransNormedWU10
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(in)                    :: zplus1
+        real(RKG)                                   :: disComTransNormedWU10
     end function
 #endif
 
@@ -2756,9 +2756,9 @@ module pm_cosmology
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisComTransNormedWU10Z_D0_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(in)                    :: zplus1
-        real(RKC)                                   :: disComTransNormedWU10
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(in)                    :: zplus1
+        real(RKG)                                   :: disComTransNormedWU10
     end function
 #endif
 
@@ -2767,9 +2767,9 @@ module pm_cosmology
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisComTransNormedWU10Z_D0_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(in)                    :: zplus1
-        real(RKC)                                   :: disComTransNormedWU10
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(in)                    :: zplus1
+        real(RKG)                                   :: disComTransNormedWU10
     end function
 #endif
 
@@ -2778,9 +2778,9 @@ module pm_cosmology
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisComTransNormedWU10Z_D0_RK2
 #endif
-        use pm_kind, only: LK, RKC => RK2
-        real(RKC)   , intent(in)                    :: zplus1
-        real(RKC)                                   :: disComTransNormedWU10
+        use pm_kind, only: LK, RKG => RK2
+        real(RKG)   , intent(in)                    :: zplus1
+        real(RKG)                                   :: disComTransNormedWU10
     end function
 #endif
 
@@ -2789,9 +2789,9 @@ module pm_cosmology
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisComTransNormedWU10Z_D0_RK1
 #endif
-        use pm_kind, only: LK, RKC => RK1
-        real(RKC)   , intent(in)                    :: zplus1
-        real(RKC)                                   :: disComTransNormedWU10
+        use pm_kind, only: LK, RKG => RK1
+        real(RKG)   , intent(in)                    :: zplus1
+        real(RKG)                                   :: disComTransNormedWU10
     end function
 #endif
 
@@ -2802,9 +2802,9 @@ module pm_cosmology
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisComTransNormedWU10ZML_D0_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(in)                    :: zplus1, omegaM, omegaL
-        real(RKC)                                   :: disComTransNormedWU10
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(in)                    :: zplus1, omegaM, omegaL
+        real(RKG)                                   :: disComTransNormedWU10
     end function
 #endif
 
@@ -2813,9 +2813,9 @@ module pm_cosmology
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisComTransNormedWU10ZML_D0_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(in)                    :: zplus1, omegaM, omegaL
-        real(RKC)                                   :: disComTransNormedWU10
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(in)                    :: zplus1, omegaM, omegaL
+        real(RKG)                                   :: disComTransNormedWU10
     end function
 #endif
 
@@ -2824,9 +2824,9 @@ module pm_cosmology
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisComTransNormedWU10ZML_D0_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(in)                    :: zplus1, omegaM, omegaL
-        real(RKC)                                   :: disComTransNormedWU10
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(in)                    :: zplus1, omegaM, omegaL
+        real(RKG)                                   :: disComTransNormedWU10
     end function
 #endif
 
@@ -2835,9 +2835,9 @@ module pm_cosmology
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisComTransNormedWU10ZML_D0_RK2
 #endif
-        use pm_kind, only: LK, RKC => RK2
-        real(RKC)   , intent(in)                    :: zplus1, omegaM, omegaL
-        real(RKC)                                   :: disComTransNormedWU10
+        use pm_kind, only: LK, RKG => RK2
+        real(RKG)   , intent(in)                    :: zplus1, omegaM, omegaL
+        real(RKG)                                   :: disComTransNormedWU10
     end function
 #endif
 
@@ -2846,9 +2846,9 @@ module pm_cosmology
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisComTransNormedWU10ZML_D0_RK1
 #endif
-        use pm_kind, only: LK, RKC => RK1
-        real(RKC)   , intent(in)                    :: zplus1, omegaM, omegaL
-        real(RKC)                                   :: disComTransNormedWU10
+        use pm_kind, only: LK, RKG => RK1
+        real(RKG)   , intent(in)                    :: zplus1, omegaM, omegaL
+        real(RKG)                                   :: disComTransNormedWU10
     end function
 #endif
 
@@ -2969,9 +2969,9 @@ module pm_cosmology
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getHubbleParamNormedSqZ_D0_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(in)                :: zplus1
-        real(RKC)                               :: hubbleParamNormedSq
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(in)                :: zplus1
+        real(RKG)                               :: hubbleParamNormedSq
     end function
 #endif
 
@@ -2980,9 +2980,9 @@ module pm_cosmology
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getHubbleParamNormedSqZ_D0_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(in)                :: zplus1
-        real(RKC)                               :: hubbleParamNormedSq
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(in)                :: zplus1
+        real(RKG)                               :: hubbleParamNormedSq
     end function
 #endif
 
@@ -2991,9 +2991,9 @@ module pm_cosmology
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getHubbleParamNormedSqZ_D0_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(in)                :: zplus1
-        real(RKC)                               :: hubbleParamNormedSq
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(in)                :: zplus1
+        real(RKG)                               :: hubbleParamNormedSq
     end function
 #endif
 
@@ -3002,9 +3002,9 @@ module pm_cosmology
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getHubbleParamNormedSqZ_D0_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(in)                :: zplus1
-        real(RKC)                               :: hubbleParamNormedSq
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(in)                :: zplus1
+        real(RKG)                               :: hubbleParamNormedSq
     end function
 #endif
 
@@ -3013,9 +3013,9 @@ module pm_cosmology
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getHubbleParamNormedSqZ_D0_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(in)                :: zplus1
-        real(RKC)                               :: hubbleParamNormedSq
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(in)                :: zplus1
+        real(RKG)                               :: hubbleParamNormedSq
     end function
 #endif
 
@@ -3026,9 +3026,9 @@ module pm_cosmology
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getHubbleParamNormedSqZML_D0_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(in)                :: zplus1, omegaM, omegaL
-        real(RKC)                               :: hubbleParamNormedSq
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(in)                :: zplus1, omegaM, omegaL
+        real(RKG)                               :: hubbleParamNormedSq
     end function
 #endif
 
@@ -3037,9 +3037,9 @@ module pm_cosmology
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getHubbleParamNormedSqZML_D0_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(in)                :: zplus1, omegaM, omegaL
-        real(RKC)                               :: hubbleParamNormedSq
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(in)                :: zplus1, omegaM, omegaL
+        real(RKG)                               :: hubbleParamNormedSq
     end function
 #endif
 
@@ -3048,9 +3048,9 @@ module pm_cosmology
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getHubbleParamNormedSqZML_D0_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(in)                :: zplus1, omegaM, omegaL
-        real(RKC)                               :: hubbleParamNormedSq
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(in)                :: zplus1, omegaM, omegaL
+        real(RKG)                               :: hubbleParamNormedSq
     end function
 #endif
 
@@ -3059,9 +3059,9 @@ module pm_cosmology
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getHubbleParamNormedSqZML_D0_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(in)                :: zplus1, omegaM, omegaL
-        real(RKC)                               :: hubbleParamNormedSq
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(in)                :: zplus1, omegaM, omegaL
+        real(RKG)                               :: hubbleParamNormedSq
     end function
 #endif
 
@@ -3070,9 +3070,9 @@ module pm_cosmology
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getHubbleParamNormedSqZML_D0_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(in)                :: zplus1, omegaM, omegaL
-        real(RKC)                               :: hubbleParamNormedSq
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(in)                :: zplus1, omegaM, omegaL
+        real(RKG)                               :: hubbleParamNormedSq
     end function
 #endif
 
@@ -3083,9 +3083,9 @@ module pm_cosmology
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getHubbleParamNormedSqZMLR_D0_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(in)                :: zplus1, omegaM, omegaL, omegaR
-        real(RKC)                               :: hubbleParamNormedSq
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(in)                :: zplus1, omegaM, omegaL, omegaR
+        real(RKG)                               :: hubbleParamNormedSq
     end function
 #endif
 
@@ -3094,9 +3094,9 @@ module pm_cosmology
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getHubbleParamNormedSqZMLR_D0_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(in)                :: zplus1, omegaM, omegaL, omegaR
-        real(RKC)                               :: hubbleParamNormedSq
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(in)                :: zplus1, omegaM, omegaL, omegaR
+        real(RKG)                               :: hubbleParamNormedSq
     end function
 #endif
 
@@ -3105,9 +3105,9 @@ module pm_cosmology
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getHubbleParamNormedSqZMLR_D0_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(in)                :: zplus1, omegaM, omegaL, omegaR
-        real(RKC)                               :: hubbleParamNormedSq
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(in)                :: zplus1, omegaM, omegaL, omegaR
+        real(RKG)                               :: hubbleParamNormedSq
     end function
 #endif
 
@@ -3116,9 +3116,9 @@ module pm_cosmology
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getHubbleParamNormedSqZMLR_D0_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(in)                :: zplus1, omegaM, omegaL, omegaR
-        real(RKC)                               :: hubbleParamNormedSq
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(in)                :: zplus1, omegaM, omegaL, omegaR
+        real(RKG)                               :: hubbleParamNormedSq
     end function
 #endif
 
@@ -3127,9 +3127,9 @@ module pm_cosmology
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getHubbleParamNormedSqZMLR_D0_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(in)                :: zplus1, omegaM, omegaL, omegaR
-        real(RKC)                               :: hubbleParamNormedSq
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(in)                :: zplus1, omegaM, omegaL, omegaR
+        real(RKG)                               :: hubbleParamNormedSq
     end function
 #endif
 
@@ -3140,9 +3140,9 @@ module pm_cosmology
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getHubbleParamNormedSqZMLRK_D0_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(in)                :: zplus1, omegaM, omegaL, omegaR, omegaK
-        real(RKC)                               :: hubbleParamNormedSq
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(in)                :: zplus1, omegaM, omegaL, omegaR, omegaK
+        real(RKG)                               :: hubbleParamNormedSq
     end function
 #endif
 
@@ -3151,9 +3151,9 @@ module pm_cosmology
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getHubbleParamNormedSqZMLRK_D0_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(in)                :: zplus1, omegaM, omegaL, omegaR, omegaK
-        real(RKC)                               :: hubbleParamNormedSq
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(in)                :: zplus1, omegaM, omegaL, omegaR, omegaK
+        real(RKG)                               :: hubbleParamNormedSq
     end function
 #endif
 
@@ -3162,9 +3162,9 @@ module pm_cosmology
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getHubbleParamNormedSqZMLRK_D0_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(in)                :: zplus1, omegaM, omegaL, omegaR, omegaK
-        real(RKC)                               :: hubbleParamNormedSq
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(in)                :: zplus1, omegaM, omegaL, omegaR, omegaK
+        real(RKG)                               :: hubbleParamNormedSq
     end function
 #endif
 
@@ -3173,9 +3173,9 @@ module pm_cosmology
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getHubbleParamNormedSqZMLRK_D0_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(in)                :: zplus1, omegaM, omegaL, omegaR, omegaK
-        real(RKC)                               :: hubbleParamNormedSq
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(in)                :: zplus1, omegaM, omegaL, omegaR, omegaK
+        real(RKG)                               :: hubbleParamNormedSq
     end function
 #endif
 
@@ -3184,9 +3184,9 @@ module pm_cosmology
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getHubbleParamNormedSqZMLRK_D0_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(in)                :: zplus1, omegaM, omegaL, omegaR, omegaK
-        real(RKC)                               :: hubbleParamNormedSq
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(in)                :: zplus1, omegaM, omegaL, omegaR, omegaK
+        real(RKG)                               :: hubbleParamNormedSq
     end function
 #endif
 
@@ -3329,12 +3329,12 @@ module pm_cosmology
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getVolComDiffNormedZ_D0_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(in)                    :: zplus1
-        real(RKC)   , intent(in)                    :: reltol
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(in)                    :: zplus1
+        real(RKG)   , intent(in)                    :: reltol
         integer(IK) , intent(out)   , optional      :: neval
         integer(IK) , intent(out)   , optional      :: err
-        real(RKC)                                   :: volComDiffNormed
+        real(RKG)                                   :: volComDiffNormed
     end function
 #endif
 
@@ -3343,12 +3343,12 @@ module pm_cosmology
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getVolComDiffNormedZ_D0_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(in)                    :: zplus1
-        real(RKC)   , intent(in)                    :: reltol
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(in)                    :: zplus1
+        real(RKG)   , intent(in)                    :: reltol
         integer(IK) , intent(out)   , optional      :: neval
         integer(IK) , intent(out)   , optional      :: err
-        real(RKC)                                   :: volComDiffNormed
+        real(RKG)                                   :: volComDiffNormed
     end function
 #endif
 
@@ -3357,12 +3357,12 @@ module pm_cosmology
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getVolComDiffNormedZ_D0_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(in)                    :: zplus1
-        real(RKC)   , intent(in)                    :: reltol
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(in)                    :: zplus1
+        real(RKG)   , intent(in)                    :: reltol
         integer(IK) , intent(out)   , optional      :: neval
         integer(IK) , intent(out)   , optional      :: err
-        real(RKC)                                   :: volComDiffNormed
+        real(RKG)                                   :: volComDiffNormed
     end function
 #endif
 
@@ -3371,12 +3371,12 @@ module pm_cosmology
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getVolComDiffNormedZ_D0_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(in)                    :: zplus1
-        real(RKC)   , intent(in)                    :: reltol
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(in)                    :: zplus1
+        real(RKG)   , intent(in)                    :: reltol
         integer(IK) , intent(out)   , optional      :: neval
         integer(IK) , intent(out)   , optional      :: err
-        real(RKC)                                   :: volComDiffNormed
+        real(RKG)                                   :: volComDiffNormed
     end function
 #endif
 
@@ -3385,12 +3385,12 @@ module pm_cosmology
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getVolComDiffNormedZ_D0_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(in)                    :: zplus1
-        real(RKC)   , intent(in)                    :: reltol
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(in)                    :: zplus1
+        real(RKG)   , intent(in)                    :: reltol
         integer(IK) , intent(out)   , optional      :: neval
         integer(IK) , intent(out)   , optional      :: err
-        real(RKC)                                   :: volComDiffNormed
+        real(RKG)                                   :: volComDiffNormed
     end function
 #endif
 
@@ -3401,12 +3401,12 @@ module pm_cosmology
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getVolComDiffNormedZML_D0_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(in)                    :: zplus1, omegaM, omegaL
-        real(RKC)   , intent(in)                    :: reltol
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(in)                    :: zplus1, omegaM, omegaL
+        real(RKG)   , intent(in)                    :: reltol
         integer(IK) , intent(out)   , optional      :: neval
         integer(IK) , intent(out)   , optional      :: err
-        real(RKC)                                   :: volComDiffNormed
+        real(RKG)                                   :: volComDiffNormed
     end function
 #endif
 
@@ -3415,12 +3415,12 @@ module pm_cosmology
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getVolComDiffNormedZML_D0_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(in)                    :: zplus1, omegaM, omegaL
-        real(RKC)   , intent(in)                    :: reltol
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(in)                    :: zplus1, omegaM, omegaL
+        real(RKG)   , intent(in)                    :: reltol
         integer(IK) , intent(out)   , optional      :: neval
         integer(IK) , intent(out)   , optional      :: err
-        real(RKC)                                   :: volComDiffNormed
+        real(RKG)                                   :: volComDiffNormed
     end function
 #endif
 
@@ -3429,12 +3429,12 @@ module pm_cosmology
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getVolComDiffNormedZML_D0_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(in)                    :: zplus1, omegaM, omegaL
-        real(RKC)   , intent(in)                    :: reltol
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(in)                    :: zplus1, omegaM, omegaL
+        real(RKG)   , intent(in)                    :: reltol
         integer(IK) , intent(out)   , optional      :: neval
         integer(IK) , intent(out)   , optional      :: err
-        real(RKC)                                   :: volComDiffNormed
+        real(RKG)                                   :: volComDiffNormed
     end function
 #endif
 
@@ -3443,12 +3443,12 @@ module pm_cosmology
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getVolComDiffNormedZML_D0_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(in)                    :: zplus1, omegaM, omegaL
-        real(RKC)   , intent(in)                    :: reltol
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(in)                    :: zplus1, omegaM, omegaL
+        real(RKG)   , intent(in)                    :: reltol
         integer(IK) , intent(out)   , optional      :: neval
         integer(IK) , intent(out)   , optional      :: err
-        real(RKC)                                   :: volComDiffNormed
+        real(RKG)                                   :: volComDiffNormed
     end function
 #endif
 
@@ -3457,12 +3457,12 @@ module pm_cosmology
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getVolComDiffNormedZML_D0_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(in)                    :: zplus1, omegaM, omegaL
-        real(RKC)   , intent(in)                    :: reltol
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(in)                    :: zplus1, omegaM, omegaL
+        real(RKG)   , intent(in)                    :: reltol
         integer(IK) , intent(out)   , optional      :: neval
         integer(IK) , intent(out)   , optional      :: err
-        real(RKC)                                   :: volComDiffNormed
+        real(RKG)                                   :: volComDiffNormed
     end function
 #endif
 
@@ -3473,12 +3473,12 @@ module pm_cosmology
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getVolComDiffNormedZMLR_D0_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(in)                    :: zplus1, omegaM, omegaL, omegaR
-        real(RKC)   , intent(in)                    :: reltol
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(in)                    :: zplus1, omegaM, omegaL, omegaR
+        real(RKG)   , intent(in)                    :: reltol
         integer(IK) , intent(out)   , optional      :: neval
         integer(IK) , intent(out)   , optional      :: err
-        real(RKC)                                   :: volComDiffNormed
+        real(RKG)                                   :: volComDiffNormed
     end function
 #endif
 
@@ -3487,12 +3487,12 @@ module pm_cosmology
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getVolComDiffNormedZMLR_D0_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(in)                    :: zplus1, omegaM, omegaL, omegaR
-        real(RKC)   , intent(in)                    :: reltol
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(in)                    :: zplus1, omegaM, omegaL, omegaR
+        real(RKG)   , intent(in)                    :: reltol
         integer(IK) , intent(out)   , optional      :: neval
         integer(IK) , intent(out)   , optional      :: err
-        real(RKC)                                   :: volComDiffNormed
+        real(RKG)                                   :: volComDiffNormed
     end function
 #endif
 
@@ -3501,12 +3501,12 @@ module pm_cosmology
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getVolComDiffNormedZMLR_D0_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(in)                    :: zplus1, omegaM, omegaL, omegaR
-        real(RKC)   , intent(in)                    :: reltol
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(in)                    :: zplus1, omegaM, omegaL, omegaR
+        real(RKG)   , intent(in)                    :: reltol
         integer(IK) , intent(out)   , optional      :: neval
         integer(IK) , intent(out)   , optional      :: err
-        real(RKC)                                   :: volComDiffNormed
+        real(RKG)                                   :: volComDiffNormed
     end function
 #endif
 
@@ -3515,12 +3515,12 @@ module pm_cosmology
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getVolComDiffNormedZMLR_D0_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(in)                    :: zplus1, omegaM, omegaL, omegaR
-        real(RKC)   , intent(in)                    :: reltol
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(in)                    :: zplus1, omegaM, omegaL, omegaR
+        real(RKG)   , intent(in)                    :: reltol
         integer(IK) , intent(out)   , optional      :: neval
         integer(IK) , intent(out)   , optional      :: err
-        real(RKC)                                   :: volComDiffNormed
+        real(RKG)                                   :: volComDiffNormed
     end function
 #endif
 
@@ -3529,12 +3529,12 @@ module pm_cosmology
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getVolComDiffNormedZMLR_D0_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(in)                    :: zplus1, omegaM, omegaL, omegaR
-        real(RKC)   , intent(in)                    :: reltol
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(in)                    :: zplus1, omegaM, omegaL, omegaR
+        real(RKG)   , intent(in)                    :: reltol
         integer(IK) , intent(out)   , optional      :: neval
         integer(IK) , intent(out)   , optional      :: err
-        real(RKC)                                   :: volComDiffNormed
+        real(RKG)                                   :: volComDiffNormed
     end function
 #endif
 
@@ -3545,12 +3545,12 @@ module pm_cosmology
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getVolComDiffNormedZMLRK_D0_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(in)                    :: zplus1, omegaM, omegaL, omegaR, omegaK, sqrtAbsOmegaK
-        real(RKC)   , intent(in)                    :: reltol
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(in)                    :: zplus1, omegaM, omegaL, omegaR, omegaK, sqrtAbsOmegaK
+        real(RKG)   , intent(in)                    :: reltol
         integer(IK) , intent(out)   , optional      :: neval
         integer(IK) , intent(out)   , optional      :: err
-        real(RKC)                                   :: volComDiffNormed
+        real(RKG)                                   :: volComDiffNormed
     end function
 #endif
 
@@ -3559,12 +3559,12 @@ module pm_cosmology
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getVolComDiffNormedZMLRK_D0_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(in)                    :: zplus1, omegaM, omegaL, omegaR, omegaK, sqrtAbsOmegaK
-        real(RKC)   , intent(in)                    :: reltol
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(in)                    :: zplus1, omegaM, omegaL, omegaR, omegaK, sqrtAbsOmegaK
+        real(RKG)   , intent(in)                    :: reltol
         integer(IK) , intent(out)   , optional      :: neval
         integer(IK) , intent(out)   , optional      :: err
-        real(RKC)                                   :: volComDiffNormed
+        real(RKG)                                   :: volComDiffNormed
     end function
 #endif
 
@@ -3573,12 +3573,12 @@ module pm_cosmology
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getVolComDiffNormedZMLRK_D0_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(in)                    :: zplus1, omegaM, omegaL, omegaR, omegaK, sqrtAbsOmegaK
-        real(RKC)   , intent(in)                    :: reltol
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(in)                    :: zplus1, omegaM, omegaL, omegaR, omegaK, sqrtAbsOmegaK
+        real(RKG)   , intent(in)                    :: reltol
         integer(IK) , intent(out)   , optional      :: neval
         integer(IK) , intent(out)   , optional      :: err
-        real(RKC)                                   :: volComDiffNormed
+        real(RKG)                                   :: volComDiffNormed
     end function
 #endif
 
@@ -3587,12 +3587,12 @@ module pm_cosmology
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getVolComDiffNormedZMLRK_D0_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(in)                    :: zplus1, omegaM, omegaL, omegaR, omegaK, sqrtAbsOmegaK
-        real(RKC)   , intent(in)                    :: reltol
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(in)                    :: zplus1, omegaM, omegaL, omegaR, omegaK, sqrtAbsOmegaK
+        real(RKG)   , intent(in)                    :: reltol
         integer(IK) , intent(out)   , optional      :: neval
         integer(IK) , intent(out)   , optional      :: err
-        real(RKC)                                   :: volComDiffNormed
+        real(RKG)                                   :: volComDiffNormed
     end function
 #endif
 
@@ -3601,12 +3601,12 @@ module pm_cosmology
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getVolComDiffNormedZMLRK_D0_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(in)                    :: zplus1, omegaM, omegaL, omegaR, omegaK, sqrtAbsOmegaK
-        real(RKC)   , intent(in)                    :: reltol
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(in)                    :: zplus1, omegaM, omegaL, omegaR, omegaK, sqrtAbsOmegaK
+        real(RKG)   , intent(in)                    :: reltol
         integer(IK) , intent(out)   , optional      :: neval
         integer(IK) , intent(out)   , optional      :: err
-        real(RKC)                                   :: volComDiffNormed
+        real(RKG)                                   :: volComDiffNormed
     end function
 #endif
 
@@ -3729,9 +3729,9 @@ module pm_cosmology
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVolComDiffNormed_D0_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(out)                   :: volComDiffNormed
-        real(RKC)   , intent(in)                    :: disComTransNormedSq, hubbleParamNormed
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(out)                   :: volComDiffNormed
+        real(RKG)   , intent(in)                    :: disComTransNormedSq, hubbleParamNormed
     end subroutine
 #endif
 
@@ -3740,9 +3740,9 @@ module pm_cosmology
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVolComDiffNormed_D0_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(out)                   :: volComDiffNormed
-        real(RKC)   , intent(in)                    :: disComTransNormedSq, hubbleParamNormed
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(out)                   :: volComDiffNormed
+        real(RKG)   , intent(in)                    :: disComTransNormedSq, hubbleParamNormed
     end subroutine
 #endif
 
@@ -3751,9 +3751,9 @@ module pm_cosmology
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVolComDiffNormed_D0_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(out)                   :: volComDiffNormed
-        real(RKC)   , intent(in)                    :: disComTransNormedSq, hubbleParamNormed
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(out)                   :: volComDiffNormed
+        real(RKG)   , intent(in)                    :: disComTransNormedSq, hubbleParamNormed
     end subroutine
 #endif
 
@@ -3762,9 +3762,9 @@ module pm_cosmology
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVolComDiffNormed_D0_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(out)                   :: volComDiffNormed
-        real(RKC)   , intent(in)                    :: disComTransNormedSq, hubbleParamNormed
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(out)                   :: volComDiffNormed
+        real(RKG)   , intent(in)                    :: disComTransNormedSq, hubbleParamNormed
     end subroutine
 #endif
 
@@ -3773,9 +3773,9 @@ module pm_cosmology
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVolComDiffNormed_D0_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(out)                   :: volComDiffNormed
-        real(RKC)   , intent(in)                    :: disComTransNormedSq, hubbleParamNormed
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(out)                   :: volComDiffNormed
+        real(RKG)   , intent(in)                    :: disComTransNormedSq, hubbleParamNormed
     end subroutine
 #endif
 
@@ -3903,9 +3903,9 @@ module pm_cosmology
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getVolComNormedD_D0_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(in)                    :: disComTransNormed
-        real(RKC)                                   :: volComNormed
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(in)                    :: disComTransNormed
+        real(RKG)                                   :: volComNormed
     end function
 #endif
 
@@ -3914,9 +3914,9 @@ module pm_cosmology
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getVolComNormedD_D0_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(in)                    :: disComTransNormed
-        real(RKC)                                   :: volComNormed
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(in)                    :: disComTransNormed
+        real(RKG)                                   :: volComNormed
     end function
 #endif
 
@@ -3925,9 +3925,9 @@ module pm_cosmology
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getVolComNormedD_D0_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(in)                    :: disComTransNormed
-        real(RKC)                                   :: volComNormed
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(in)                    :: disComTransNormed
+        real(RKG)                                   :: volComNormed
     end function
 #endif
 
@@ -3936,9 +3936,9 @@ module pm_cosmology
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getVolComNormedD_D0_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(in)                    :: disComTransNormed
-        real(RKC)                                   :: volComNormed
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(in)                    :: disComTransNormed
+        real(RKG)                                   :: volComNormed
     end function
 #endif
 
@@ -3947,9 +3947,9 @@ module pm_cosmology
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getVolComNormedD_D0_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(in)                    :: disComTransNormed
-        real(RKC)                                   :: volComNormed
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(in)                    :: disComTransNormed
+        real(RKG)                                   :: volComNormed
     end function
 #endif
 
@@ -3960,9 +3960,9 @@ module pm_cosmology
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getVolComNormedDOS_D0_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(in)                    :: disComTransNormed, omegaK, sqrtAbsOmegaK
-        real(RKC)                                   :: volComNormed
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(in)                    :: disComTransNormed, omegaK, sqrtAbsOmegaK
+        real(RKG)                                   :: volComNormed
     end function
 #endif
 
@@ -3971,9 +3971,9 @@ module pm_cosmology
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getVolComNormedDOS_D0_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(in)                    :: disComTransNormed, omegaK, sqrtAbsOmegaK
-        real(RKC)                                   :: volComNormed
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(in)                    :: disComTransNormed, omegaK, sqrtAbsOmegaK
+        real(RKG)                                   :: volComNormed
     end function
 #endif
 
@@ -3982,9 +3982,9 @@ module pm_cosmology
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getVolComNormedDOS_D0_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(in)                    :: disComTransNormed, omegaK, sqrtAbsOmegaK
-        real(RKC)                                   :: volComNormed
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(in)                    :: disComTransNormed, omegaK, sqrtAbsOmegaK
+        real(RKG)                                   :: volComNormed
     end function
 #endif
 
@@ -3993,9 +3993,9 @@ module pm_cosmology
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getVolComNormedDOS_D0_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(in)                    :: disComTransNormed, omegaK, sqrtAbsOmegaK
-        real(RKC)                                   :: volComNormed
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(in)                    :: disComTransNormed, omegaK, sqrtAbsOmegaK
+        real(RKG)                                   :: volComNormed
     end function
 #endif
 
@@ -4004,9 +4004,9 @@ module pm_cosmology
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getVolComNormedDOS_D0_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(in)                    :: disComTransNormed, omegaK, sqrtAbsOmegaK
-        real(RKC)                                   :: volComNormed
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(in)                    :: disComTransNormed, omegaK, sqrtAbsOmegaK
+        real(RKG)                                   :: volComNormed
     end function
 #endif
 

@@ -65,35 +65,35 @@ contains
 
 #if SK5_ENABLED
     module procedure getRangeUnit_D0_SK5
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
 #include "pm_arrayRange@routines.inc.F90"
     end procedure
 #endif
 
 #if SK4_ENABLED
     module procedure getRangeUnit_D0_SK4
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
 #include "pm_arrayRange@routines.inc.F90"
     end procedure
 #endif
 
 #if SK3_ENABLED
     module procedure getRangeUnit_D0_SK3
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
 #include "pm_arrayRange@routines.inc.F90"
     end procedure
 #endif
 
 #if SK2_ENABLED
     module procedure getRangeUnit_D0_SK2
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
 #include "pm_arrayRange@routines.inc.F90"
     end procedure
 #endif
 
 #if SK1_ENABLED
     module procedure getRangeUnit_D0_SK1
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
 #include "pm_arrayRange@routines.inc.F90"
     end procedure
 #endif
@@ -116,35 +116,35 @@ contains
 
 #if SK5_ENABLED
     module procedure getRangeStep_D0_SK5
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
 #include "pm_arrayRange@routines.inc.F90"
     end procedure
 #endif
 
 #if SK4_ENABLED
     module procedure getRangeStep_D0_SK4
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
 #include "pm_arrayRange@routines.inc.F90"
     end procedure
 #endif
 
 #if SK3_ENABLED
     module procedure getRangeStep_D0_SK3
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
 #include "pm_arrayRange@routines.inc.F90"
     end procedure
 #endif
 
 #if SK2_ENABLED
     module procedure getRangeStep_D0_SK2
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
 #include "pm_arrayRange@routines.inc.F90"
     end procedure
 #endif
 
 #if SK1_ENABLED
     module procedure getRangeStep_D0_SK1
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
 #include "pm_arrayRange@routines.inc.F90"
     end procedure
 #endif
@@ -181,35 +181,35 @@ contains
 
 #if IK5_ENABLED
     module procedure getRangeUnit_D1_IK5
-        use pm_kind, only: IKC => IK5
+        use pm_kind, only: IKG => IK5
 #include "pm_arrayRange@routines.inc.F90"
     end procedure
 #endif
 
 #if IK4_ENABLED
     module procedure getRangeUnit_D1_IK4
-        use pm_kind, only: IKC => IK4
+        use pm_kind, only: IKG => IK4
 #include "pm_arrayRange@routines.inc.F90"
     end procedure
 #endif
 
 #if IK3_ENABLED
     module procedure getRangeUnit_D1_IK3
-        use pm_kind, only: IKC => IK3
+        use pm_kind, only: IKG => IK3
 #include "pm_arrayRange@routines.inc.F90"
     end procedure
 #endif
 
 #if IK2_ENABLED
     module procedure getRangeUnit_D1_IK2
-        use pm_kind, only: IKC => IK2
+        use pm_kind, only: IKG => IK2
 #include "pm_arrayRange@routines.inc.F90"
     end procedure
 #endif
 
 #if IK1_ENABLED
     module procedure getRangeUnit_D1_IK1
-        use pm_kind, only: IKC => IK1
+        use pm_kind, only: IKG => IK1
 #include "pm_arrayRange@routines.inc.F90"
     end procedure
 #endif
@@ -222,35 +222,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getRangeUnit_D1_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_arrayRange@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getRangeUnit_D1_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_arrayRange@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getRangeUnit_D1_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_arrayRange@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getRangeUnit_D1_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_arrayRange@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getRangeUnit_D1_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_arrayRange@routines.inc.F90"
     end procedure
 #endif
@@ -273,35 +273,35 @@ contains
 
 #if IK5_ENABLED
     module procedure getRangeStep_D1_IK5
-        use pm_kind, only: IKC => IK5
+        use pm_kind, only: IKG => IK5
 #include "pm_arrayRange@routines.inc.F90"
     end procedure
 #endif
 
 #if IK4_ENABLED
     module procedure getRangeStep_D1_IK4
-        use pm_kind, only: IKC => IK4
+        use pm_kind, only: IKG => IK4
 #include "pm_arrayRange@routines.inc.F90"
     end procedure
 #endif
 
 #if IK3_ENABLED
     module procedure getRangeStep_D1_IK3
-        use pm_kind, only: IKC => IK3
+        use pm_kind, only: IKG => IK3
 #include "pm_arrayRange@routines.inc.F90"
     end procedure
 #endif
 
 #if IK2_ENABLED
     module procedure getRangeStep_D1_IK2
-        use pm_kind, only: IKC => IK2
+        use pm_kind, only: IKG => IK2
 #include "pm_arrayRange@routines.inc.F90"
     end procedure
 #endif
 
 #if IK1_ENABLED
     module procedure getRangeStep_D1_IK1
-        use pm_kind, only: IKC => IK1
+        use pm_kind, only: IKG => IK1
 #include "pm_arrayRange@routines.inc.F90"
     end procedure
 #endif
@@ -314,35 +314,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getRangeStep_D1_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_arrayRange@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getRangeStep_D1_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_arrayRange@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getRangeStep_D1_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_arrayRange@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getRangeStep_D1_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_arrayRange@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getRangeStep_D1_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_arrayRange@routines.inc.F90"
     end procedure
 #endif
@@ -377,35 +377,35 @@ contains
 !
 !#if IK5_ENABLED
 !    module procedure getRangeUnit_D2_IK5
-!        use pm_kind, only: IKC => IK5
+!        use pm_kind, only: IKG => IK5
 !#include "pm_arrayRange@routines.inc.F90"
 !    end procedure
 !#endif
 !
 !#if IK4_ENABLED
 !    module procedure getRangeUnit_D2_IK4
-!        use pm_kind, only: IKC => IK4
+!        use pm_kind, only: IKG => IK4
 !#include "pm_arrayRange@routines.inc.F90"
 !    end procedure
 !#endif
 !
 !#if IK3_ENABLED
 !    module procedure getRangeUnit_D2_IK3
-!        use pm_kind, only: IKC => IK3
+!        use pm_kind, only: IKG => IK3
 !#include "pm_arrayRange@routines.inc.F90"
 !    end procedure
 !#endif
 !
 !#if IK2_ENABLED
 !    module procedure getRangeUnit_D2_IK2
-!        use pm_kind, only: IKC => IK2
+!        use pm_kind, only: IKG => IK2
 !#include "pm_arrayRange@routines.inc.F90"
 !    end procedure
 !#endif
 !
 !#if IK1_ENABLED
 !    module procedure getRangeUnit_D2_IK1
-!        use pm_kind, only: IKC => IK1
+!        use pm_kind, only: IKG => IK1
 !#include "pm_arrayRange@routines.inc.F90"
 !    end procedure
 !#endif
@@ -428,35 +428,35 @@ contains
 !
 !#if IK5_ENABLED
 !    module procedure getRangeStep_D2_IK5
-!        use pm_kind, only: IKC => IK5
+!        use pm_kind, only: IKG => IK5
 !#include "pm_arrayRange@routines.inc.F90"
 !    end procedure
 !#endif
 !
 !#if IK4_ENABLED
 !    module procedure getRangeStep_D2_IK4
-!        use pm_kind, only: IKC => IK4
+!        use pm_kind, only: IKG => IK4
 !#include "pm_arrayRange@routines.inc.F90"
 !    end procedure
 !#endif
 !
 !#if IK3_ENABLED
 !    module procedure getRangeStep_D2_IK3
-!        use pm_kind, only: IKC => IK3
+!        use pm_kind, only: IKG => IK3
 !#include "pm_arrayRange@routines.inc.F90"
 !    end procedure
 !#endif
 !
 !#if IK2_ENABLED
 !    module procedure getRangeStep_D2_IK2
-!        use pm_kind, only: IKC => IK2
+!        use pm_kind, only: IKG => IK2
 !#include "pm_arrayRange@routines.inc.F90"
 !    end procedure
 !#endif
 !
 !#if IK1_ENABLED
 !    module procedure getRangeStep_D2_IK1
-!        use pm_kind, only: IKC => IK1
+!        use pm_kind, only: IKG => IK1
 !#include "pm_arrayRange@routines.inc.F90"
 !    end procedure
 !#endif
@@ -503,35 +503,35 @@ contains
 
 #if SK5_ENABLED
     module procedure setRangeUnit_D0_SK5
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
 #include "pm_arrayRange@routines.inc.F90"
     end procedure
 #endif
 
 #if SK4_ENABLED
     module procedure setRangeUnit_D0_SK4
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
 #include "pm_arrayRange@routines.inc.F90"
     end procedure
 #endif
 
 #if SK3_ENABLED
     module procedure setRangeUnit_D0_SK3
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
 #include "pm_arrayRange@routines.inc.F90"
     end procedure
 #endif
 
 #if SK2_ENABLED
     module procedure setRangeUnit_D0_SK2
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
 #include "pm_arrayRange@routines.inc.F90"
     end procedure
 #endif
 
 #if SK1_ENABLED
     module procedure setRangeUnit_D0_SK1
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
 #include "pm_arrayRange@routines.inc.F90"
     end procedure
 #endif
@@ -554,35 +554,35 @@ contains
 
 #if SK5_ENABLED
     module procedure setRangeStep_D0_SK5
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
 #include "pm_arrayRange@routines.inc.F90"
     end procedure
 #endif
 
 #if SK4_ENABLED
     module procedure setRangeStep_D0_SK4
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
 #include "pm_arrayRange@routines.inc.F90"
     end procedure
 #endif
 
 #if SK3_ENABLED
     module procedure setRangeStep_D0_SK3
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
 #include "pm_arrayRange@routines.inc.F90"
     end procedure
 #endif
 
 #if SK2_ENABLED
     module procedure setRangeStep_D0_SK2
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
 #include "pm_arrayRange@routines.inc.F90"
     end procedure
 #endif
 
 #if SK1_ENABLED
     module procedure setRangeStep_D0_SK1
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
 #include "pm_arrayRange@routines.inc.F90"
     end procedure
 #endif
@@ -619,35 +619,35 @@ contains
 
 #if IK5_ENABLED
     module procedure setRangeUnit_D1_IK5
-        use pm_kind, only: IKC => IK5
+        use pm_kind, only: IKG => IK5
 #include "pm_arrayRange@routines.inc.F90"
     end procedure
 #endif
 
 #if IK4_ENABLED
     module procedure setRangeUnit_D1_IK4
-        use pm_kind, only: IKC => IK4
+        use pm_kind, only: IKG => IK4
 #include "pm_arrayRange@routines.inc.F90"
     end procedure
 #endif
 
 #if IK3_ENABLED
     module procedure setRangeUnit_D1_IK3
-        use pm_kind, only: IKC => IK3
+        use pm_kind, only: IKG => IK3
 #include "pm_arrayRange@routines.inc.F90"
     end procedure
 #endif
 
 #if IK2_ENABLED
     module procedure setRangeUnit_D1_IK2
-        use pm_kind, only: IKC => IK2
+        use pm_kind, only: IKG => IK2
 #include "pm_arrayRange@routines.inc.F90"
     end procedure
 #endif
 
 #if IK1_ENABLED
     module procedure setRangeUnit_D1_IK1
-        use pm_kind, only: IKC => IK1
+        use pm_kind, only: IKG => IK1
 #include "pm_arrayRange@routines.inc.F90"
     end procedure
 #endif
@@ -660,35 +660,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setRangeUnit_D1_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_arrayRange@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setRangeUnit_D1_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_arrayRange@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setRangeUnit_D1_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_arrayRange@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setRangeUnit_D1_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_arrayRange@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setRangeUnit_D1_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_arrayRange@routines.inc.F90"
     end procedure
 #endif
@@ -711,35 +711,35 @@ contains
 
 #if IK5_ENABLED
     module procedure setRangeStep_D1_IK5
-        use pm_kind, only: IKC => IK5
+        use pm_kind, only: IKG => IK5
 #include "pm_arrayRange@routines.inc.F90"
     end procedure
 #endif
 
 #if IK4_ENABLED
     module procedure setRangeStep_D1_IK4
-        use pm_kind, only: IKC => IK4
+        use pm_kind, only: IKG => IK4
 #include "pm_arrayRange@routines.inc.F90"
     end procedure
 #endif
 
 #if IK3_ENABLED
     module procedure setRangeStep_D1_IK3
-        use pm_kind, only: IKC => IK3
+        use pm_kind, only: IKG => IK3
 #include "pm_arrayRange@routines.inc.F90"
     end procedure
 #endif
 
 #if IK2_ENABLED
     module procedure setRangeStep_D1_IK2
-        use pm_kind, only: IKC => IK2
+        use pm_kind, only: IKG => IK2
 #include "pm_arrayRange@routines.inc.F90"
     end procedure
 #endif
 
 #if IK1_ENABLED
     module procedure setRangeStep_D1_IK1
-        use pm_kind, only: IKC => IK1
+        use pm_kind, only: IKG => IK1
 #include "pm_arrayRange@routines.inc.F90"
     end procedure
 #endif
@@ -752,35 +752,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setRangeStep_D1_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_arrayRange@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setRangeStep_D1_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_arrayRange@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setRangeStep_D1_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_arrayRange@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setRangeStep_D1_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_arrayRange@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setRangeStep_D1_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_arrayRange@routines.inc.F90"
     end procedure
 #endif

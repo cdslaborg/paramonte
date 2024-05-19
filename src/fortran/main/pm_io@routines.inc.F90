@@ -176,7 +176,7 @@ if (present(iostat)) then; iostat = iostat_def; if (present(iomsg)) iomsg = ioms
 #elif   setContentsFrom_ENABLED && Unit_ENABLED
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        character(*,SKC)    , parameter     :: LF = new_line(SKC_"a")
+        character(*,SKG)    , parameter     :: LF = new_line(SKG_"a")
         integer(IK)         , parameter     :: LENLF = len(LF, IK)
         integer(IK)                         :: lb, ub, pos, size, recl
         character(10, SK)                   :: access
@@ -201,13 +201,13 @@ if (iostat /= 0_IK) return ! LCOV_EXCL_LINE
         if (access == SK_"STREAM") then
             inquire(unit = unit, pos = pos, size = size IOSTAT_IOMSG)
             RETURN_IF_FAILED
-            allocate(character(size,SKC) :: contents)
+            allocate(character(size,SKG) :: contents)
             read(unit, pos = pos IOSTAT_IOMSG) contents
         elseif (access == SK_"DIRECT") then
             inquire(unit = unit, nextrec = pos, recl = recl IOSTAT_IOMSG)
             RETURN_IF_FAILED
             recl = recl + LENLF
-            allocate(character(recl,SKC) :: contents)
+            allocate(character(recl,SKG) :: contents)
             size = len(contents, IK)
             lb = 1_IK
             ub = recl
@@ -227,7 +227,7 @@ if (iostat /= 0_IK) return ! LCOV_EXCL_LINE
 #endif
         else!if (access == SK_"SEQUENTIAL") then or it could be "UNDEFINED" if not set explicitly in gfortran 13.
             !error stop MODULE_NAME//SK_"@setContentsFromUnit(): An impossible Internal library error detected. The access attribute of the input `unit` is unrecognized. access="//access ! LCOV_EXCL_LINE
-            allocate(character(LEN_IOMSG,SKC) :: contents)
+            allocate(character(LEN_IOMSG,SKG) :: contents)
             lb = 1_IK
             do
                 call setRecordFrom(unit, contents, iostat, iomsg, lb = lb, ub = ub, linefed = .true._LK)
@@ -323,7 +323,7 @@ if (iostat /= 0_IK) return ! LCOV_EXCL_LINE
 #elif   !URII_ENABLED
 #error  "Unrecognized interface."
 #endif
-        character(*,SKC), parameter :: LF = new_line(SKC_"a")
+        character(*,SKG), parameter :: LF = new_line(SKG_"a")
         integer(IK), parameter :: LENLF = len(LF, IK)
         integer(IK) :: nlen
 
@@ -422,7 +422,7 @@ if (iostat /= 0_IK) return ! LCOV_EXCL_LINE
         integer(IK) :: icol, ncol, lenrec, lenLoc, sepLen, nsep
 #endif
 #if     CK_ENABLED && !(D1_ENABLED && NO_ENABLED)
-        real(CKC), allocatable :: field(:)
+        real(CKG), allocatable :: field(:)
 #endif
         ! Define the transposition rules.
 #if     D2_ENABLED && NO_ENABLED
@@ -543,7 +543,7 @@ if (iostat /= 0_IK) return ! LCOV_EXCL_LINE
             end do
             read(record(sepLoc(icol - 1) + sepLen : lenrec), *, iostat = err, iomsg = iomsg_def) field(icol)
             RETURN_IF_FAILED(__LINE__)
-            table(1 : ncol) = cmplx(field(1 : nsep : 2), field(2 : nsep + 1 : 2), CKC)
+            table(1 : ncol) = cmplx(field(1 : nsep : 2), field(2 : nsep + 1 : 2), CKG)
 #else
             read(record(1 : sepLoc(1) - 1), *, iostat = err, iomsg = iomsg_def) table(1)
             RETURN_IF_FAILED(__LINE__)
@@ -589,7 +589,7 @@ if (iostat /= 0_IK) return ! LCOV_EXCL_LINE
             if (0_IK == irow .and. 0_IK == icol) then
                 ! read the complex table as a simple table of `real` fields.
                 !block
-                !    real(RKC), allocatable :: rtable(:,:)
+                !    real(RKG), allocatable :: rtable(:,:)
                 !    err = getErrTableRead(rtable, unit, trans)
                 !    return_if_failed
                 !    if (present(trans)) then
@@ -611,7 +611,7 @@ if (iostat /= 0_IK) return ! LCOV_EXCL_LINE
                     return
                 end if
                 RETURN_IF_FAILED(__LINE__)
-                table(1 : ncol) = cmplx(field(1 : nsep : 2), field(2 : nsep : 2), CKC)
+                table(1 : ncol) = cmplx(field(1 : nsep : 2), field(2 : nsep : 2), CKG)
                 return
             elseif (irow /= icol) then
                 if (present(iomsg)) iomsg = MODULE_NAME//SK_"@getErrTableRead(): The number of left and right parenthesis delimiters for `complex` table fields must match. '(', ')' = "//getStr([irow, icol])
@@ -703,7 +703,7 @@ if (iostat /= 0_IK) return ! LCOV_EXCL_LINE
                 end do
                 read(record(sepLoc(icol - 1) + sepLen : lenrec), *, iostat = err, iomsg = iomsg_def) field(icol)
                 RETURN_IF_FAILED(__LINE__)
-                table(GET_INDEX(irow, 1 : ncol)) = cmplx(field(1 : nsep : 2), field(2 : nsep + 1 : 2), CKC)
+                table(GET_INDEX(irow, 1 : ncol)) = cmplx(field(1 : nsep : 2), field(2 : nsep + 1 : 2), CKG)
 #else
                 read(record(1 : sepLoc(1) - 1), *, iostat = err, iomsg = iomsg_def) table(GET_INDEX(irow, 1))
                 RETURN_IF_FAILED(__LINE__)
@@ -757,7 +757,7 @@ if (iostat /= 0_IK) return ! LCOV_EXCL_LINE
             if (0_IK == irow .and. 0_IK == icol) then
                 ! read the complex table as a simple table of `real` fields.
                 !block
-                !    real(RKC), allocatable :: rtable(:,:)
+                !    real(RKG), allocatable :: rtable(:,:)
                 !    err = getErrTableRead(rtable, unit, trans)
                 !    return_if_failed
                 !    if (present(trans)) then
@@ -782,7 +782,7 @@ if (iostat /= 0_IK) return ! LCOV_EXCL_LINE
                         return
                     end if
                     RETURN_IF_FAILED(__LINE__)
-                    table(GET_INDEX(irow, 1 : ncol)) = cmplx(field(1 : nsep : 2), field(2 : nsep : 2), CKC)
+                    table(GET_INDEX(irow, 1 : ncol)) = cmplx(field(1 : nsep : 2), field(2 : nsep : 2), CKG)
                     if (irow < nrow) cycle
                     nrow = nrow * 2_IK
                     call setResized(table, [GET_INDEX(nrow, ncol)])
@@ -966,7 +966,7 @@ SK_'(*('//getStrQuoted(DELIML)//SK_',g0,'//getStrQuoted(DELIMR)//SK_',:,'//SEP//
         nseps = GET_SIZE(seps)
         if (0_IK == nseps) then
             if (present(iomsg)) iomsg = MODULE_NAME//SK_"@getFieldSep(): The condition `0 < len(seps)` must hold."
-            sep = SKC_""
+            sep = SKG_""
             return
         end if
 #elif   CD1_ENABLED
@@ -976,13 +976,13 @@ SK_'(*('//getStrQuoted(DELIML)//SK_',g0,'//getStrQuoted(DELIMR)//SK_',:,'//SEP//
                 offset(isep) = len(seps(isep)%val, IK) - 1_IK
                 if (offset(isep) < 0_IK) then
                     if (present(iomsg)) iomsg = MODULE_NAME//SK_"@getFieldSep(): The component seps("//getStr(isep)//SK_")%val must have a non-zero length."
-                    sep = SKC_""
+                    sep = SKG_""
                     return
                 end if
             end do
         else
             if (present(iomsg)) iomsg = MODULE_NAME//SK_"@getFieldSep(): The condition `0 < size(seps)` must hold."
-            sep = SKC_""
+            sep = SKG_""
             return
         end if
 #endif
@@ -992,7 +992,7 @@ SK_'(*('//getStrQuoted(DELIML)//SK_',g0,'//getStrQuoted(DELIMR)//SK_',:,'//SEP//
         ! Open file.
 #if     File_ENABLED
 #define FAILED_RETURN(LINE) \
-close(unit, iostat = iostat); if (present(iomsg)) iomsg = getStr(LINE)//SK_": "//iomsg_def; sep = SKC_""; return
+close(unit, iostat = iostat); if (present(iomsg)) iomsg = getStr(LINE)//SK_": "//iomsg_def; sep = SKG_""; return
         open( file = file & ! LCOV_EXCL_LINE
             , newunit = unit & ! LCOV_EXCL_LINE
             , form = "formatted" & ! LCOV_EXCL_LINE
@@ -1005,12 +1005,12 @@ close(unit, iostat = iostat); if (present(iomsg)) iomsg = getStr(LINE)//SK_": "/
             INTEL_SHARED_FILE)
         if (iostat /= 0_IK) then
             if (present(iomsg)) iomsg = iomsg_def
-            sep = SKC_""
+            sep = SKG_""
             return
         end if
 #elif   Unit_ENABLED
 #define FAILED_RETURN(LINE) \
-do isep = 1, isam - 1; backspace(unit); end do; if (present(iomsg)) iomsg = getStr(LINE)//SK_": "//iomsg_def; sep = SKC_""; return ! LCOV_EXCL_LINE
+do isep = 1, isam - 1; backspace(unit); end do; if (present(iomsg)) iomsg = getStr(LINE)//SK_": "//iomsg_def; sep = SKG_""; return ! LCOV_EXCL_LINE
 #endif
 #if     FDEF_ENABLED
         loopLineSample: do isam = 1, nsam
@@ -1036,12 +1036,12 @@ do isep = 1, isam - 1; backspace(unit); end do; if (present(iomsg)) iomsg = getS
         end do loopLineSample
 #elif   FCSV_ENABLED || FFLD_ENABLED
         block
-            character(1,SKC) :: qbeg
+            character(1,SKG) :: qbeg
             logical(LK) :: quoted
             integer(IK) :: lb, i
             loopLineSample: do isam = 1, nsam
                 freq = 0_IK
-                qbeg = SKC_" "
+                qbeg = SKG_" "
                 quoted = .false.
                 loopReadMultiLineRecord: do
                     lb = 1_IK
@@ -1066,16 +1066,16 @@ do isep = 1, isam - 1; backspace(unit); end do; if (present(iomsg)) iomsg = getS
                             loopQuoteOpen: do i = i, ub
 #if                             FFLD_ENABLED
                                  ! Take care of complex pair first.
-                                quoted = record(i:i) == SKC_'('
+                                quoted = record(i:i) == SKG_'('
                                 if (quoted) then
                                     lb = i + 1_IK
-                                    qbeg = SKC_")"
+                                    qbeg = SKG_")"
                                     cycle loopSkipQuote
                                 end if
 #elif                           !FCSV_ENABLED
 #error                          "Unrecognized interface."
 #endif
-                                quoted = record(i:i) == SKC_"""" .or. record(i:i) == SKC_''''
+                                quoted = record(i:i) == SKG_"""" .or. record(i:i) == SKG_''''
                                 if (quoted) then
                                     lb = i + 1_IK
                                     qbeg = record(i:i)
@@ -1087,7 +1087,7 @@ do isep = 1, isam - 1; backspace(unit); end do; if (present(iomsg)) iomsg = getS
                                         if (record(i : i + OFFSET(isep)) == GET_SEPS(isep)) freq(isep) = freq(isep) + 1_IK
 #elif                                   FFLD_ENABLED
                                         if (record(i : i + OFFSET(isep)) == GET_SEPS(isep)) then
-                                            if (isDiscrete .or. GET_SEPS(isep) /= SKC_" ") then
+                                            if (isDiscrete .or. GET_SEPS(isep) /= SKG_" ") then
                                                 freq(isep) = freq(isep) + 1_IK
                                                 isDiscrete = .false._LK
                                             end if
@@ -1122,7 +1122,7 @@ do isep = 1, isam - 1; backspace(unit); end do; if (present(iomsg)) iomsg = getS
         close(unit, iostat = iostat)
         if (iostat /= 0_IK) then
             if (present(iomsg)) iomsg = MODULE_NAME//SK_"@getFieldSep(): Failed to close the input file."
-            sep = SKC_""
+            sep = SKG_""
             return
         end if
 #elif   Unit_ENABLED
@@ -1141,7 +1141,7 @@ do isep = 1, isam - 1; backspace(unit); end do; if (present(iomsg)) iomsg = getS
             end if
         end do
         if (present(iomsg)) iomsg = MODULE_NAME//SK_"@getFieldSep(): There is likely only one field in the records of this file."
-        sep = SKC_""
+        sep = SKG_""
 #if     NF_ENABLED
         nfield = 1_IK
 #elif   !XX_ENABLED
@@ -1368,7 +1368,7 @@ do isep = 1, isam - 1; backspace(unit); end do; if (present(iomsg)) iomsg = getS
 
 #if     File_ENABLED
         logical(LK) :: opened
-        character(:,SKC), allocatable :: status_def, position_def
+        character(:,SKG), allocatable :: status_def, position_def
         inquire(file = file, opened = opened, number = disp%unit)
         if (opened) close(disp%unit)
 
@@ -1376,18 +1376,18 @@ do isep = 1, isam - 1; backspace(unit); end do; if (present(iomsg)) iomsg = getS
             CHECK_ASSERTION(__LINE__, isValidStatus(status), SK_"@display_typer(): The condition `isValidPosition(status)` must hold. status = "//getStr(status))
             status_def = status
         elseif (opened) then
-            status_def = SKC_"old"
+            status_def = SKG_"old"
         else
-            status_def = SKC_"unknown"
+            status_def = SKG_"unknown"
         end if
 
         if (present(position)) then
             CHECK_ASSERTION(__LINE__, isValidPosition(position), SK_"@display_typer(): The condition `isValidPosition(position)` must hold. position = "//getStr(position))
             position_def = position
         elseif (opened) then
-            position_def = SKC_"append"
+            position_def = SKG_"append"
         else
-            position_def = SKC_"asis"
+            position_def = SKG_"asis"
         end if
         !>  \bug
         !>  There is an Intel Fortran compiler bug with the use of `newunit` argument in `open` statement.
@@ -1416,28 +1416,28 @@ do isep = 1, isam - 1; backspace(unit); end do; if (present(iomsg)) iomsg = getS
         if (present(bmsize))    disp%bmsize     = bmsize
         if (present(count))     disp%count      = count
 
-        if (.not. allocated(disp%deliml%string))    disp%deliml%string  = SKC_""
-        if (.not. allocated(disp%deliml%integer))   disp%deliml%integer = SKC_""
-        if (.not. allocated(disp%deliml%logical))   disp%deliml%logical = SKC_""
-        if (.not. allocated(disp%deliml%complex))   disp%deliml%complex = SKC_"("
-        if (.not. allocated(disp%deliml%real))      disp%deliml%real    = SKC_""
+        if (.not. allocated(disp%deliml%string))    disp%deliml%string  = SKG_""
+        if (.not. allocated(disp%deliml%integer))   disp%deliml%integer = SKG_""
+        if (.not. allocated(disp%deliml%logical))   disp%deliml%logical = SKG_""
+        if (.not. allocated(disp%deliml%complex))   disp%deliml%complex = SKG_"("
+        if (.not. allocated(disp%deliml%real))      disp%deliml%real    = SKG_""
 
-        if (.not. allocated(disp%delimr%string))    disp%delimr%string  = SKC_""
-        if (.not. allocated(disp%delimr%integer))   disp%delimr%integer = SKC_""
-        if (.not. allocated(disp%delimr%logical))   disp%delimr%logical = SKC_""
-        if (.not. allocated(disp%delimr%complex))   disp%delimr%complex = SKC_")"
-        if (.not. allocated(disp%delimr%real))      disp%delimr%real    = SKC_""
+        if (.not. allocated(disp%delimr%string))    disp%delimr%string  = SKG_""
+        if (.not. allocated(disp%delimr%integer))   disp%delimr%integer = SKG_""
+        if (.not. allocated(disp%delimr%logical))   disp%delimr%logical = SKG_""
+        if (.not. allocated(disp%delimr%complex))   disp%delimr%complex = SKG_")"
+        if (.not. allocated(disp%delimr%real))      disp%delimr%real    = SKG_""
 
         ! Take care of the special cases.
         if (allocated(disp%format%complex)) then
             if (getStrLower(disp%format%complex) == SK_"math") disp%format%complex = FORMAT_GENERIC_DISPLAY_COMPLEX_MATH
         end if
 
-        if (.not. allocated(disp%format%string  ))  disp%format%string  = SKC_'(sp,*('//getStrQuoted(disp%deliml%string  )//SKC_',g0,'           //getStrQuoted(disp%delimr%string  ) //SKC_',:,", "))'
-        if (.not. allocated(disp%format%integer ))  disp%format%integer = SKC_'(sp,*('//getStrQuoted(disp%deliml%integer )//SKC_',g0,'           //getStrQuoted(disp%delimr%integer ) //SKC_',:,", "))'
-        if (.not. allocated(disp%format%logical ))  disp%format%logical = SKC_'(sp,*('//getStrQuoted(disp%deliml%logical )//SKC_',g0,'           //getStrQuoted(disp%delimr%logical ) //SKC_',:,", "))'
-        if (.not. allocated(disp%format%complex ))  disp%format%complex = SKC_'(sp,*('//getStrQuoted(disp%deliml%complex )//SKC_',g0,", ",g0,'   //getStrQuoted(disp%delimr%complex ) //SKC_',:,", "))'
-        if (.not. allocated(disp%format%real    ))  disp%format%real    = SKC_'(sp,*('//getStrQuoted(disp%deliml%real    )//SKC_',g0,'           //getStrQuoted(disp%delimr%real    ) //SKC_',:,", "))'
+        if (.not. allocated(disp%format%string  ))  disp%format%string  = SKG_'(sp,*('//getStrQuoted(disp%deliml%string  )//SKG_',g0,'           //getStrQuoted(disp%delimr%string  ) //SKG_',:,", "))'
+        if (.not. allocated(disp%format%integer ))  disp%format%integer = SKG_'(sp,*('//getStrQuoted(disp%deliml%integer )//SKG_',g0,'           //getStrQuoted(disp%delimr%integer ) //SKG_',:,", "))'
+        if (.not. allocated(disp%format%logical ))  disp%format%logical = SKG_'(sp,*('//getStrQuoted(disp%deliml%logical )//SKG_',g0,'           //getStrQuoted(disp%delimr%logical ) //SKG_',:,", "))'
+        if (.not. allocated(disp%format%complex ))  disp%format%complex = SKG_'(sp,*('//getStrQuoted(disp%deliml%complex )//SKG_',g0,", ",g0,'   //getStrQuoted(disp%delimr%complex ) //SKG_',:,", "))'
+        if (.not. allocated(disp%format%real    ))  disp%format%real    = SKG_'(sp,*('//getStrQuoted(disp%deliml%real    )//SKG_',g0,'           //getStrQuoted(disp%delimr%real    ) //SKG_',:,", "))'
 
         if (disp%unit == output_unit) then
             if (isFailedGetShellHeight(disp%height)) disp%height = 0_IK
@@ -1825,29 +1825,29 @@ call self%show(object, tmsize = tmsize, bmsize = bmsize, count = count, unit = u
 !
 !#define RESIZE(strWrapped) \
 !        if (pos + fullwidth + lenLF > lenStrWrapped) then; \
-!            allocate(character(lenStrWrapped * 2, SKC) :: temp); \
+!            allocate(character(lenStrWrapped * 2, SKG) :: temp); \
 !            temp(1:lenStrWrapped) = strWrapped; \
 !            call move_alloc(temp, strWrapped); \
 !            lenStrWrapped = len(strWrapped, IK); \
 !            BYPASS_GFORTRAN_BUG \
 !        end if
-       !character(:,SKC), allocatable   :: temp
-        character(1,SKC), parameter     :: FILL_SKC = MFILL
-        character(1,SKC), parameter     :: LF = new_line(SKC_"a") ! char(10, SKC)
+       !character(:,SKG), allocatable   :: temp
+        character(1,SKG), parameter     :: FILL_SKG = MFILL
+        character(1,SKG), parameter     :: LF = new_line(SKG_"a") ! char(10, SKG)
         integer(IK)     , parameter     :: lenLF = len(LF, IK)
 
         integer(IK)                     :: def_lwsize, def_rwsize, def_twsize, def_bwsize, def_tmsize, def_bmsize, def_width, def_unit
         integer(IK)                     :: lenStr, lenLine, lenNewLine, fullwidth, pos, i, iend !, lenStrWrapped
-        character(1,SKC)                :: def_lwfill, def_rwfill, def_twfill, def_bwfill, def_fill
-        character(:,SKC), allocatable   :: tbwrap, def_newline, strWrapped
+        character(1,SKG)                :: def_lwfill, def_rwfill, def_twfill, def_bwfill, def_fill
+        character(:,SKG), allocatable   :: tbwrap, def_newline, strWrapped
 
         if (self%uninit) then
             if (.not. allocated(self%newline)) self%newline = LF
-            if (.not. allocated(self%lwfill )) self%lwfill  = FILL_SKC
-            if (.not. allocated(self%rwfill )) self%rwfill  = FILL_SKC
-            if (.not. allocated(self%twfill )) self%twfill  = FILL_SKC
-            if (.not. allocated(self%bwfill )) self%bwfill  = FILL_SKC
-            if (.not. allocated(self%fill   )) self%fill    = SKC_" "
+            if (.not. allocated(self%lwfill )) self%lwfill  = FILL_SKG
+            if (.not. allocated(self%rwfill )) self%rwfill  = FILL_SKG
+            if (.not. allocated(self%twfill )) self%twfill  = FILL_SKG
+            if (.not. allocated(self%bwfill )) self%bwfill  = FILL_SKG
+            if (.not. allocated(self%fill   )) self%fill    = SKG_" "
             self%uninit = .true._LK
         end if
 
@@ -1872,7 +1872,7 @@ call self%show(object, tmsize = tmsize, bmsize = bmsize, count = count, unit = u
         lenLine = lenStr * 5_IK / def_width ! best guess for the number of lines, assuming each line is 1/5 of the specified width.
         fullwidth = def_lwsize + def_width + def_rwsize ! the full width of each line (excluding the newline character at the end).
         !lenStrWrapped = (fullwidth + lenLF) * (def_twsize + def_bwsize + lenLine)
-        allocate(character((fullwidth + lenLF) * (def_twsize + def_bwsize + lenLine) + (def_tmsize + def_bmsize) * lenLF, SKC) :: strWrapped)
+        allocate(character((fullwidth + lenLF) * (def_twsize + def_bwsize + lenLine) + (def_tmsize + def_bmsize) * lenLF, SKG) :: strWrapped)
 
         ! Add the top margin.
 

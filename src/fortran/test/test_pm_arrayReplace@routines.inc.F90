@@ -51,77 +51,77 @@
 
 #if     getReplaced_D0_D0_D0_SK_ENABLED || setReplaced_D0_D0_D0_SK_ENABLED
 #define ALL
-        character(:,SKC), allocatable   :: ArrayNew_ref, ArrayTemplate, Array, pattern, Replacement
+        character(:,SKG), allocatable   :: ArrayNew_ref, ArrayTemplate, Array, pattern, Replacement
 #elif   getReplaced_D1_D0_D0_SK_ENABLED || setReplaced_D1_D0_D0_SK_ENABLED
-        character(2,SKC), allocatable   :: ArrayNew_ref(:), ArrayTemplate(:), Array(:)
-        character(2,SKC)                :: pattern, Replacement, lower, upper
-        lower = SKC_"aa"; upper = SKC_"zz"
+        character(2,SKG), allocatable   :: ArrayNew_ref(:), ArrayTemplate(:), Array(:)
+        character(2,SKG)                :: pattern, Replacement, lower, upper
+        lower = SKG_"aa"; upper = SKG_"zz"
 #elif   getReplaced_D1_D0_D0_IK_ENABLED || setReplaced_D1_D0_D0_IK_ENABLED
-        integer(IKC)    , allocatable   :: ArrayNew_ref(:), ArrayTemplate(:), Array(:)
-        integer(IKC)                    :: pattern, Replacement, lower, upper
-        lower = -127_IKC; upper = 127_IKC
+        integer(IKG)    , allocatable   :: ArrayNew_ref(:), ArrayTemplate(:), Array(:)
+        integer(IKG)                    :: pattern, Replacement, lower, upper
+        lower = -127_IKG; upper = 127_IKG
 #elif   getReplaced_D1_D0_D0_LK_ENABLED || setReplaced_D1_D0_D0_LK_ENABLED
-        logical(LKC)    , allocatable   :: ArrayNew_ref(:), ArrayTemplate(:), Array(:)
-        logical(LKC)                    :: pattern, Replacement, lower, upper
-        lower = .false._LKC; upper = .true._LKC
+        logical(LKG)    , allocatable   :: ArrayNew_ref(:), ArrayTemplate(:), Array(:)
+        logical(LKG)                    :: pattern, Replacement, lower, upper
+        lower = .false._LKG; upper = .true._LKG
 #elif   getReplaced_D1_D0_D0_CK_ENABLED || setReplaced_D1_D0_D0_CK_ENABLED
-        complex(CKC)    , allocatable   :: ArrayNew_ref(:), ArrayTemplate(:), Array(:)
-        complex(CKC)                    :: pattern, Replacement, lower, upper
-        lower = (0._CKC, 0._CKC); upper = (1._CKC, 1._CKC)
+        complex(CKG)    , allocatable   :: ArrayNew_ref(:), ArrayTemplate(:), Array(:)
+        complex(CKG)                    :: pattern, Replacement, lower, upper
+        lower = (0._CKG, 0._CKG); upper = (1._CKG, 1._CKG)
 #elif   getReplaced_D1_D0_D0_RK_ENABLED || setReplaced_D1_D0_D0_RK_ENABLED
-        real(RKC)       , allocatable   :: ArrayNew_ref(:), ArrayTemplate(:), Array(:)
-        real(RKC)                       :: pattern, Replacement, lower, upper
-        lower = 0._RKC; upper = 1._RKC
+        real(RKG)       , allocatable   :: ArrayNew_ref(:), ArrayTemplate(:), Array(:)
+        real(RKG)                       :: pattern, Replacement, lower, upper
+        lower = 0._RKG; upper = 1._RKG
 #elif   getReplaced_D1_D0_D1_SK_ENABLED || setReplaced_D1_D0_D1_SK_ENABLED
-        character(2,SKC), allocatable   :: ArrayNew_ref(:), ArrayTemplate(:), Array(:), Replacement(:)
-        character(2,SKC)                :: pattern, lower, upper
-        lower = SKC_"aa"; upper = SKC_"zz"
+        character(2,SKG), allocatable   :: ArrayNew_ref(:), ArrayTemplate(:), Array(:), Replacement(:)
+        character(2,SKG)                :: pattern, lower, upper
+        lower = SKG_"aa"; upper = SKG_"zz"
 #elif   getReplaced_D1_D0_D1_IK_ENABLED || setReplaced_D1_D0_D1_IK_ENABLED
-        integer(IKC)    , allocatable   :: ArrayNew_ref(:), ArrayTemplate(:), Array(:), Replacement(:)
-        integer(IKC)                    :: pattern, lower, upper
-        lower = 0_IKC; upper = 9_IKC
+        integer(IKG)    , allocatable   :: ArrayNew_ref(:), ArrayTemplate(:), Array(:), Replacement(:)
+        integer(IKG)                    :: pattern, lower, upper
+        lower = 0_IKG; upper = 9_IKG
 #elif   getReplaced_D1_D0_D1_LK_ENABLED || setReplaced_D1_D0_D1_LK_ENABLED
-        logical(LKC)    , allocatable   :: ArrayNew_ref(:), ArrayTemplate(:), Array(:), Replacement(:)
-        logical(LKC)                    :: pattern, lower, upper
-        lower = .false._LKC; upper = .true._LKC
+        logical(LKG)    , allocatable   :: ArrayNew_ref(:), ArrayTemplate(:), Array(:), Replacement(:)
+        logical(LKG)                    :: pattern, lower, upper
+        lower = .false._LKG; upper = .true._LKG
 #elif   getReplaced_D1_D0_D1_CK_ENABLED || setReplaced_D1_D0_D1_CK_ENABLED
-        complex(CKC)    , allocatable   :: ArrayNew_ref(:), ArrayTemplate(:), Array(:), Replacement(:)
-        complex(CKC)                    :: pattern, lower, upper
-        lower = (0._CKC, 0._CKC); upper = (1._CKC, 1._CKC)
+        complex(CKG)    , allocatable   :: ArrayNew_ref(:), ArrayTemplate(:), Array(:), Replacement(:)
+        complex(CKG)                    :: pattern, lower, upper
+        lower = (0._CKG, 0._CKG); upper = (1._CKG, 1._CKG)
 #elif   getReplaced_D1_D0_D1_RK_ENABLED || setReplaced_D1_D0_D1_RK_ENABLED
-        real(RKC)       , allocatable   :: ArrayNew_ref(:), ArrayTemplate(:), Array(:), Replacement(:)
-        real(RKC)                       :: pattern, lower, upper
-        lower = 0._RKC; upper = 1._RKC
+        real(RKG)       , allocatable   :: ArrayNew_ref(:), ArrayTemplate(:), Array(:), Replacement(:)
+        real(RKG)                       :: pattern, lower, upper
+        lower = 0._RKG; upper = 1._RKG
 #elif   getReplaced_D1_D1_D0_SK_ENABLED || setReplaced_D1_D1_D0_SK_ENABLED
-        character(2,SKC), allocatable   :: ArrayNew_ref(:), ArrayTemplate(:), Array(:), pattern(:)
-        character(2,SKC)                :: Replacement, lower, upper
-        lower = SKC_"aa"; upper = SKC_"zz"
+        character(2,SKG), allocatable   :: ArrayNew_ref(:), ArrayTemplate(:), Array(:), pattern(:)
+        character(2,SKG)                :: Replacement, lower, upper
+        lower = SKG_"aa"; upper = SKG_"zz"
 #elif   getReplaced_D1_D1_D0_IK_ENABLED || setReplaced_D1_D1_D0_IK_ENABLED
-        integer(IKC)    , allocatable   :: ArrayNew_ref(:), ArrayTemplate(:), Array(:), pattern(:)
-        integer(IKC)                    :: Replacement, lower, upper
-        lower = 0_IKC; upper = 9_IKC
+        integer(IKG)    , allocatable   :: ArrayNew_ref(:), ArrayTemplate(:), Array(:), pattern(:)
+        integer(IKG)                    :: Replacement, lower, upper
+        lower = 0_IKG; upper = 9_IKG
 #elif   getReplaced_D1_D1_D0_LK_ENABLED || setReplaced_D1_D1_D0_LK_ENABLED
-        logical(LKC)    , allocatable   :: ArrayNew_ref(:), ArrayTemplate(:), Array(:), pattern(:)
-        logical(LKC)                    :: Replacement, lower, upper
-        lower = .false._LKC; upper = .true._LKC
+        logical(LKG)    , allocatable   :: ArrayNew_ref(:), ArrayTemplate(:), Array(:), pattern(:)
+        logical(LKG)                    :: Replacement, lower, upper
+        lower = .false._LKG; upper = .true._LKG
 #elif   getReplaced_D1_D1_D0_CK_ENABLED || setReplaced_D1_D1_D0_CK_ENABLED
-        complex(CKC)    , allocatable   :: ArrayNew_ref(:), ArrayTemplate(:), Array(:), pattern(:)
-        complex(CKC)                    :: Replacement, lower, upper
-        lower = (0._CKC, 0._CKC); upper = (1._CKC, 1._CKC)
+        complex(CKG)    , allocatable   :: ArrayNew_ref(:), ArrayTemplate(:), Array(:), pattern(:)
+        complex(CKG)                    :: Replacement, lower, upper
+        lower = (0._CKG, 0._CKG); upper = (1._CKG, 1._CKG)
 #elif   getReplaced_D1_D1_D0_RK_ENABLED || setReplaced_D1_D1_D0_RK_ENABLED
-        real(RKC)       , allocatable   :: ArrayNew_ref(:), ArrayTemplate(:), Array(:), pattern(:)
-        real(RKC)                       :: Replacement, lower, upper
-        lower = 0._RKC; upper = 1._RKC
+        real(RKG)       , allocatable   :: ArrayNew_ref(:), ArrayTemplate(:), Array(:), pattern(:)
+        real(RKG)                       :: Replacement, lower, upper
+        lower = 0._RKG; upper = 1._RKG
 #elif   getReplaced_D1_D1_D1_SK_ENABLED || setReplaced_D1_D1_D1_SK_ENABLED
-        character(2,SKC), allocatable   :: ArrayNew_ref(:), ArrayTemplate(:), Array(:), pattern(:), Replacement(:)
+        character(2,SKG), allocatable   :: ArrayNew_ref(:), ArrayTemplate(:), Array(:), pattern(:), Replacement(:)
 #elif   getReplaced_D1_D1_D1_IK_ENABLED || setReplaced_D1_D1_D1_IK_ENABLED
-        integer(IKC)    , allocatable   :: ArrayNew_ref(:), ArrayTemplate(:), Array(:), pattern(:), Replacement(:)
+        integer(IKG)    , allocatable   :: ArrayNew_ref(:), ArrayTemplate(:), Array(:), pattern(:), Replacement(:)
 #elif   getReplaced_D1_D1_D1_LK_ENABLED || setReplaced_D1_D1_D1_LK_ENABLED
-        logical(LKC)    , allocatable   :: ArrayNew_ref(:), ArrayTemplate(:), Array(:), pattern(:), Replacement(:)
+        logical(LKG)    , allocatable   :: ArrayNew_ref(:), ArrayTemplate(:), Array(:), pattern(:), Replacement(:)
 #elif   getReplaced_D1_D1_D1_CK_ENABLED || setReplaced_D1_D1_D1_CK_ENABLED
-        complex(CKC)    , allocatable   :: ArrayNew_ref(:), ArrayTemplate(:), Array(:), pattern(:), Replacement(:)
+        complex(CKG)    , allocatable   :: ArrayNew_ref(:), ArrayTemplate(:), Array(:), pattern(:), Replacement(:)
 #elif   getReplaced_D1_D1_D1_RK_ENABLED || setReplaced_D1_D1_D1_RK_ENABLED
-        real(RKC)       , allocatable   :: ArrayNew_ref(:), ArrayTemplate(:), Array(:), pattern(:), Replacement(:)
+        real(RKG)       , allocatable   :: ArrayNew_ref(:), ArrayTemplate(:), Array(:), pattern(:), Replacement(:)
 #else
 #error  "Unrecognized interface."
 #endif
@@ -253,7 +253,7 @@
             Replacement = ""
             ArrayNew_ref = ""
 #elif       getReplaced_D1_D1_D1_SK_ENABLED
-            allocate(character(2,SKC) :: ArrayTemplate(0), ArrayNew_ref(0), Replacement(0), pattern(0))
+            allocate(character(2,SKG) :: ArrayTemplate(0), ArrayNew_ref(0), Replacement(0), pattern(0))
 #elif       setReplaced_D1_D1_D1_SK_ENABLED
             allocate(ArrayTemplate(0), ArrayNew_ref(0), Replacement(0), pattern(0))
 #elif       getReplaced_D1_D1_D1_IK_ENABLED || setReplaced_D1_D1_D1_IK_ENABLED
@@ -316,20 +316,20 @@
             pattern = ""
             Replacement = "XX"
 #elif       getReplaced_D1_D1_D1_SK_ENABLED || setReplaced_D1_D1_D1_SK_ENABLED
-            allocate(character(2,SKC) :: ArrayTemplate(0), pattern(0))
+            allocate(character(2,SKG) :: ArrayTemplate(0), pattern(0))
             Replacement = ["XX"]
 #elif       getReplaced_D1_D1_D1_IK_ENABLED || setReplaced_D1_D1_D1_IK_ENABLED
             allocate(ArrayTemplate(0), pattern(0))
-            Replacement = [11_IKC]
+            Replacement = [11_IKG]
 #elif       getReplaced_D1_D1_D1_CK_ENABLED || setReplaced_D1_D1_D1_CK_ENABLED
             allocate(ArrayTemplate(0), pattern(0))
-            Replacement = [11._CKC]
+            Replacement = [11._CKG]
 #elif       getReplaced_D1_D1_D1_RK_ENABLED || setReplaced_D1_D1_D1_RK_ENABLED
             allocate(ArrayTemplate(0), pattern(0))
-            Replacement = [11._RKC]
+            Replacement = [11._RKG]
 #elif       getReplaced_D1_D1_D1_LK_ENABLED || setReplaced_D1_D1_D1_LK_ENABLED
             allocate(ArrayTemplate(0), pattern(0))
-            Replacement = [.false._LKC]
+            Replacement = [.false._LKG]
 #endif
             ArrayNew_ref = Replacement
             allocate(instance(0))
@@ -384,20 +384,20 @@
             pattern = ""
             Replacement = "XX"
 #elif       getReplaced_D1_D1_D1_SK_ENABLED || setReplaced_D1_D1_D1_SK_ENABLED
-            allocate(character(2,SKC) :: ArrayTemplate(0), pattern(0))
+            allocate(character(2,SKG) :: ArrayTemplate(0), pattern(0))
             Replacement = ["XX"]
 #elif       getReplaced_D1_D1_D1_IK_ENABLED || setReplaced_D1_D1_D1_IK_ENABLED
             allocate(ArrayTemplate(0), pattern(0))
-            Replacement = [11_IKC]
+            Replacement = [11_IKG]
 #elif       getReplaced_D1_D1_D1_CK_ENABLED || setReplaced_D1_D1_D1_CK_ENABLED
             allocate(ArrayTemplate(0), pattern(0))
-            Replacement = [11._CKC]
+            Replacement = [11._CKG]
 #elif       getReplaced_D1_D1_D1_RK_ENABLED || setReplaced_D1_D1_D1_RK_ENABLED
             allocate(ArrayTemplate(0), pattern(0))
-            Replacement = [11._RKC]
+            Replacement = [11._RKG]
 #elif       getReplaced_D1_D1_D1_LK_ENABLED || setReplaced_D1_D1_D1_LK_ENABLED
             allocate(ArrayTemplate(0), pattern(0))
-            Replacement = [.false._LKC]
+            Replacement = [.false._LKG]
 #endif
             ArrayNew_ref = Replacement
             instance = [1000_IK]
@@ -454,29 +454,29 @@
             ArrayNew_ref = "XXAXX"
 #elif       getReplaced_D1_D1_D1_SK_ENABLED || setReplaced_D1_D1_D1_SK_ENABLED
             ArrayTemplate = ["AA"]
-            allocate(character(2,SKC) :: pattern(0))
+            allocate(character(2,SKG) :: pattern(0))
             Replacement = ["XX"]
             ArrayNew_ref = ["XX", "AA", "XX"]
 #elif       getReplaced_D1_D1_D1_IK_ENABLED || setReplaced_D1_D1_D1_IK_ENABLED
-            ArrayTemplate = [33_IKC]
+            ArrayTemplate = [33_IKG]
             allocate(pattern(0))
-            Replacement = [11_IKC]
-            ArrayNew_ref = [11_IKC, 33_IKC, 11_IKC]
+            Replacement = [11_IKG]
+            ArrayNew_ref = [11_IKG, 33_IKG, 11_IKG]
 #elif       getReplaced_D1_D1_D1_CK_ENABLED || setReplaced_D1_D1_D1_CK_ENABLED
-            ArrayTemplate = [33._CKC]
+            ArrayTemplate = [33._CKG]
             allocate(pattern(0))
-            Replacement = [11._CKC]
-            ArrayNew_ref = [11._CKC, 33._CKC, 11._CKC]
+            Replacement = [11._CKG]
+            ArrayNew_ref = [11._CKG, 33._CKG, 11._CKG]
 #elif       getReplaced_D1_D1_D1_RK_ENABLED || setReplaced_D1_D1_D1_RK_ENABLED
-            ArrayTemplate = [33._RKC]
+            ArrayTemplate = [33._RKG]
             allocate(pattern(0))
-            Replacement = [11._RKC]
-            ArrayNew_ref = [11._RKC, 33._RKC, 11._RKC]
+            Replacement = [11._RKG]
+            ArrayNew_ref = [11._RKG, 33._RKG, 11._RKG]
 #elif       getReplaced_D1_D1_D1_LK_ENABLED || setReplaced_D1_D1_D1_LK_ENABLED
-            ArrayTemplate = [.true._LKC]
+            ArrayTemplate = [.true._LKG]
             allocate(pattern(0))
-            Replacement = [.false._LKC]
-            ArrayNew_ref = [.false._LKC, .true._LKC, .false._LKC]
+            Replacement = [.false._LKG]
+            ArrayNew_ref = [.false._LKG, .true._LKG, .false._LKG]
 #endif
             allocate(instance(0))
 
@@ -532,29 +532,29 @@
             ArrayNew_ref = "XXAXX"
 #elif       getReplaced_D1_D1_D1_SK_ENABLED || setReplaced_D1_D1_D1_SK_ENABLED
             ArrayTemplate = ["AA"]
-            allocate(character(2,SKC) :: pattern(0))
+            allocate(character(2,SKG) :: pattern(0))
             Replacement = ["XX"]
             ArrayNew_ref = ["XX", "AA", "XX"]
 #elif       getReplaced_D1_D1_D1_IK_ENABLED || setReplaced_D1_D1_D1_IK_ENABLED
-            ArrayTemplate = [33_IKC]
+            ArrayTemplate = [33_IKG]
             allocate(pattern(0))
-            Replacement = [11_IKC]
-            ArrayNew_ref = [11_IKC, 33_IKC, 11_IKC]
+            Replacement = [11_IKG]
+            ArrayNew_ref = [11_IKG, 33_IKG, 11_IKG]
 #elif       getReplaced_D1_D1_D1_CK_ENABLED || setReplaced_D1_D1_D1_CK_ENABLED
-            ArrayTemplate = [33._CKC]
+            ArrayTemplate = [33._CKG]
             allocate(pattern(0))
-            Replacement = [11._CKC]
-            ArrayNew_ref = [11._CKC, 33._CKC, 11._CKC]
+            Replacement = [11._CKG]
+            ArrayNew_ref = [11._CKG, 33._CKG, 11._CKG]
 #elif       getReplaced_D1_D1_D1_RK_ENABLED || setReplaced_D1_D1_D1_RK_ENABLED
-            ArrayTemplate = [33._RKC]
+            ArrayTemplate = [33._RKG]
             allocate(pattern(0))
-            Replacement = [11._RKC]
-            ArrayNew_ref = [11._RKC, 33._RKC, 11._RKC]
+            Replacement = [11._RKG]
+            ArrayNew_ref = [11._RKG, 33._RKG, 11._RKG]
 #elif       getReplaced_D1_D1_D1_LK_ENABLED || setReplaced_D1_D1_D1_LK_ENABLED
-            ArrayTemplate = [.true._LKC]
+            ArrayTemplate = [.true._LKG]
             allocate(pattern(0))
-            Replacement = [.false._LKC]
-            ArrayNew_ref = [.false._LKC, .true._LKC, .false._LKC]
+            Replacement = [.false._LKG]
+            ArrayNew_ref = [.false._LKG, .true._LKG, .false._LKG]
 #endif
             instance = [1_IK, -1_IK]
 
@@ -609,24 +609,24 @@
             ArrayNew_ref = "XXAXX"
 #elif       getReplaced_D1_D1_D1_SK_ENABLED || setReplaced_D1_D1_D1_SK_ENABLED
             ArrayTemplate = ["AA"]
-            allocate(character(2,SKC) :: pattern(0))
+            allocate(character(2,SKG) :: pattern(0))
             Replacement = ["XX"]
             ArrayNew_ref = ["XX", "AA", "XX"]
 #elif       getReplaced_D1_D1_D1_IK_ENABLED || setReplaced_D1_D1_D1_IK_ENABLED
-            ArrayTemplate = [33_IKC]
+            ArrayTemplate = [33_IKG]
             allocate(pattern(0))
-            Replacement = [11_IKC]
-            ArrayNew_ref = [11_IKC, 33_IKC, 11_IKC]
+            Replacement = [11_IKG]
+            ArrayNew_ref = [11_IKG, 33_IKG, 11_IKG]
 #elif       getReplaced_D1_D1_D1_CK_ENABLED || setReplaced_D1_D1_D1_CK_ENABLED
-            ArrayTemplate = [33._CKC]
+            ArrayTemplate = [33._CKG]
             allocate(pattern(0))
-            Replacement = [11._CKC]
-            ArrayNew_ref = [11._CKC, 33._CKC, 11._CKC]
+            Replacement = [11._CKG]
+            ArrayNew_ref = [11._CKG, 33._CKG, 11._CKG]
 #elif       getReplaced_D1_D1_D1_RK_ENABLED || setReplaced_D1_D1_D1_RK_ENABLED
-            ArrayTemplate = [33._RKC]
+            ArrayTemplate = [33._RKG]
             allocate(pattern(0))
-            Replacement = [11._RKC]
-            ArrayNew_ref = [11._RKC, 33._RKC, 11._RKC]
+            Replacement = [11._RKG]
+            ArrayNew_ref = [11._RKG, 33._RKG, 11._RKG]
 #elif       getReplaced_D1_D1_D1_LK_ENABLED || setReplaced_D1_D1_D1_LK_ENABLED
             ArrayTemplate = [.true._LK]
             allocate(pattern(0))
@@ -687,24 +687,24 @@
             ArrayNew_ref = "AXX"
 #elif       getReplaced_D1_D1_D1_SK_ENABLED || setReplaced_D1_D1_D1_SK_ENABLED
             ArrayTemplate = ["AA"]
-            allocate(character(2,SKC) :: pattern(0))
+            allocate(character(2,SKG) :: pattern(0))
             Replacement = ["XX"]
             ArrayNew_ref = ["AA", "XX"]
 #elif       getReplaced_D1_D1_D1_IK_ENABLED || setReplaced_D1_D1_D1_IK_ENABLED
-            ArrayTemplate = [33_IKC]
+            ArrayTemplate = [33_IKG]
             allocate(pattern(0))
-            Replacement = [11_IKC]
-            ArrayNew_ref = [33_IKC, 11_IKC]
+            Replacement = [11_IKG]
+            ArrayNew_ref = [33_IKG, 11_IKG]
 #elif       getReplaced_D1_D1_D1_CK_ENABLED || setReplaced_D1_D1_D1_CK_ENABLED
-            ArrayTemplate = [33._CKC]
+            ArrayTemplate = [33._CKG]
             allocate(pattern(0))
-            Replacement = [11._CKC]
-            ArrayNew_ref = [33._CKC, 11._CKC]
+            Replacement = [11._CKG]
+            ArrayNew_ref = [33._CKG, 11._CKG]
 #elif       getReplaced_D1_D1_D1_RK_ENABLED || setReplaced_D1_D1_D1_RK_ENABLED
-            ArrayTemplate = [33._RKC]
+            ArrayTemplate = [33._RKG]
             allocate(pattern(0))
-            Replacement = [11._RKC]
-            ArrayNew_ref = [33._RKC, 11._RKC]
+            Replacement = [11._RKG]
+            ArrayNew_ref = [33._RKG, 11._RKG]
 #elif       getReplaced_D1_D1_D1_LK_ENABLED || setReplaced_D1_D1_D1_LK_ENABLED
             ArrayTemplate = [.true._LK]
             allocate(pattern(0))
@@ -763,21 +763,21 @@
             pattern = "A"
             Replacement = "XX"
 #elif       getReplaced_D1_D1_D1_SK_ENABLED || setReplaced_D1_D1_D1_SK_ENABLED
-            allocate(character(2,SKC) :: ArrayTemplate(0))
+            allocate(character(2,SKG) :: ArrayTemplate(0))
             pattern = ["AA"]
             Replacement = ["XX"]
 #elif       getReplaced_D1_D1_D1_IK_ENABLED || setReplaced_D1_D1_D1_IK_ENABLED
             allocate(ArrayTemplate(0))
-            pattern = [33_IKC]
-            Replacement = [11_IKC]
+            pattern = [33_IKG]
+            Replacement = [11_IKG]
 #elif       getReplaced_D1_D1_D1_CK_ENABLED || setReplaced_D1_D1_D1_CK_ENABLED
             allocate(ArrayTemplate(0))
-            pattern = [33._CKC]
-            Replacement = [11._CKC]
+            pattern = [33._CKG]
+            Replacement = [11._CKG]
 #elif       getReplaced_D1_D1_D1_RK_ENABLED || setReplaced_D1_D1_D1_RK_ENABLED
             allocate(ArrayTemplate(0))
-            pattern = [33._RKC]
-            Replacement = [11._RKC]
+            pattern = [33._RKG]
+            Replacement = [11._RKG]
 #elif       getReplaced_D1_D1_D1_LK_ENABLED || setReplaced_D1_D1_D1_LK_ENABLED
             allocate(ArrayTemplate(0))
             pattern = [.true._LK]
@@ -839,16 +839,16 @@
             pattern = ["AA"]
             allocate(Replacement(0))
 #elif       getReplaced_D1_D1_D1_IK_ENABLED || setReplaced_D1_D1_D1_IK_ENABLED
-            ArrayTemplate = [33_IKC, 33_IKC]
-            pattern = [33_IKC]
+            ArrayTemplate = [33_IKG, 33_IKG]
+            pattern = [33_IKG]
             allocate(Replacement(0))
 #elif       getReplaced_D1_D1_D1_CK_ENABLED || setReplaced_D1_D1_D1_CK_ENABLED
-            ArrayTemplate = [33._CKC, 33._CKC]
-            pattern = [33._CKC]
+            ArrayTemplate = [33._CKG, 33._CKG]
+            pattern = [33._CKG]
             allocate(Replacement(0))
 #elif       getReplaced_D1_D1_D1_RK_ENABLED || setReplaced_D1_D1_D1_RK_ENABLED
-            ArrayTemplate = [33._RKC, 33._RKC]
-            pattern = [33._RKC]
+            ArrayTemplate = [33._RKG, 33._RKG]
+            pattern = [33._RKG]
             allocate(Replacement(0))
 #elif       getReplaced_D1_D1_D1_LK_ENABLED || setReplaced_D1_D1_D1_LK_ENABLED
             ArrayTemplate = [.true._LK]
@@ -913,20 +913,20 @@
             Replacement = ["XX", "XX"]
             ArrayNew_ref = ["XX", "XX", "AA", "BB", "BB", "XX", "XX", "AA", "CC", "CC", "AA", "AA", "DD", "DD", "XX", "XX", "XX", "XX", "EE", "EE"]
 #elif       getReplaced_D1_D1_D1_IK_ENABLED || setReplaced_D1_D1_D1_IK_ENABLED
-            ArrayTemplate = [1_IKC, 1_IKC, 2_IKC, 2_IKC, 1_IKC, 1_IKC, 3_IKC, 3_IKC, 1_IKC, 1_IKC, 4_IKC, 4_IKC, 1_IKC, 1_IKC, 5_IKC, 5_IKC]
-            pattern = [1_IKC]
-            Replacement = [0_IKC, 0_IKC]
-            ArrayNew_ref = [0_IKC, 0_IKC, 1_IKC, 2_IKC, 2_IKC, 0_IKC, 0_IKC, 1_IKC, 3_IKC, 3_IKC, 1_IKC, 1_IKC, 4_IKC, 4_IKC, 0_IKC, 0_IKC, 0_IKC, 0_IKC, 5_IKC, 5_IKC]
+            ArrayTemplate = [1_IKG, 1_IKG, 2_IKG, 2_IKG, 1_IKG, 1_IKG, 3_IKG, 3_IKG, 1_IKG, 1_IKG, 4_IKG, 4_IKG, 1_IKG, 1_IKG, 5_IKG, 5_IKG]
+            pattern = [1_IKG]
+            Replacement = [0_IKG, 0_IKG]
+            ArrayNew_ref = [0_IKG, 0_IKG, 1_IKG, 2_IKG, 2_IKG, 0_IKG, 0_IKG, 1_IKG, 3_IKG, 3_IKG, 1_IKG, 1_IKG, 4_IKG, 4_IKG, 0_IKG, 0_IKG, 0_IKG, 0_IKG, 5_IKG, 5_IKG]
 #elif       getReplaced_D1_D1_D1_CK_ENABLED || setReplaced_D1_D1_D1_CK_ENABLED
-            ArrayTemplate = [1._CKC, 1._CKC, 2._CKC, 2._CKC, 1._CKC, 1._CKC, 3._CKC, 3._CKC, 1._CKC, 1._CKC, 4._CKC, 4._CKC, 1._CKC, 1._CKC, 5._CKC, 5._CKC]
-            pattern = [1._CKC]
-            Replacement = [0._CKC, 0._CKC]
-            ArrayNew_ref = [0._CKC, 0._CKC, 1._CKC, 2._CKC, 2._CKC, 0._CKC, 0._CKC, 1._CKC, 3._CKC, 3._CKC, 1._CKC, 1._CKC, 4._CKC, 4._CKC, 0._CKC, 0._CKC, 0._CKC, 0._CKC, 5._CKC, 5._CKC]
+            ArrayTemplate = [1._CKG, 1._CKG, 2._CKG, 2._CKG, 1._CKG, 1._CKG, 3._CKG, 3._CKG, 1._CKG, 1._CKG, 4._CKG, 4._CKG, 1._CKG, 1._CKG, 5._CKG, 5._CKG]
+            pattern = [1._CKG]
+            Replacement = [0._CKG, 0._CKG]
+            ArrayNew_ref = [0._CKG, 0._CKG, 1._CKG, 2._CKG, 2._CKG, 0._CKG, 0._CKG, 1._CKG, 3._CKG, 3._CKG, 1._CKG, 1._CKG, 4._CKG, 4._CKG, 0._CKG, 0._CKG, 0._CKG, 0._CKG, 5._CKG, 5._CKG]
 #elif       getReplaced_D1_D1_D1_RK_ENABLED || setReplaced_D1_D1_D1_RK_ENABLED
-            ArrayTemplate = [1._RKC, 1._RKC, 2._RKC, 2._RKC, 1._RKC, 1._RKC, 3._RKC, 3._RKC, 1._RKC, 1._RKC, 4._RKC, 4._RKC, 1._RKC, 1._RKC, 5._RKC, 5._RKC]
-            pattern = [1._RKC]
-            Replacement = [0._RKC, 0._RKC]
-            ArrayNew_ref = [0._RKC, 0._RKC, 1._RKC, 2._RKC, 2._RKC, 0._RKC, 0._RKC, 1._RKC, 3._RKC, 3._RKC, 1._RKC, 1._RKC, 4._RKC, 4._RKC, 0._RKC, 0._RKC, 0._RKC, 0._RKC, 5._RKC, 5._RKC]
+            ArrayTemplate = [1._RKG, 1._RKG, 2._RKG, 2._RKG, 1._RKG, 1._RKG, 3._RKG, 3._RKG, 1._RKG, 1._RKG, 4._RKG, 4._RKG, 1._RKG, 1._RKG, 5._RKG, 5._RKG]
+            pattern = [1._RKG]
+            Replacement = [0._RKG, 0._RKG]
+            ArrayNew_ref = [0._RKG, 0._RKG, 1._RKG, 2._RKG, 2._RKG, 0._RKG, 0._RKG, 1._RKG, 3._RKG, 3._RKG, 1._RKG, 1._RKG, 4._RKG, 4._RKG, 0._RKG, 0._RKG, 0._RKG, 0._RKG, 5._RKG, 5._RKG]
 #elif       getReplaced_D1_D1_D1_LK_ENABLED || setReplaced_D1_D1_D1_LK_ENABLED
             ArrayTemplate = [.true._LK, .true._LK, .false._LK, .false._LK, .true._LK, .true._LK, .false._LK, .false._LK, .true._LK, .true._LK, .false._LK, .false._LK, .true._LK, .true._LK, .false._LK, .false._LK]
             pattern = [.true._LK]
@@ -991,20 +991,20 @@
             Replacement = ["XX", "XX"]
             ArrayNew_ref = ["XX", "XX", "XX", "XX", "BB", "BB", "XX", "XX", "XX", "XX", "CC", "CC", "XX", "XX", "XX", "XX", "DD", "DD", "XX", "XX", "XX", "XX", "EE", "EE"]
 #elif       getReplaced_D1_D1_D1_IK_ENABLED || setReplaced_D1_D1_D1_IK_ENABLED
-            ArrayTemplate = [1_IKC, 1_IKC, 2_IKC, 2_IKC, 1_IKC, 1_IKC, 3_IKC, 3_IKC, 1_IKC, 1_IKC, 4_IKC, 4_IKC, 1_IKC, 1_IKC, 5_IKC, 5_IKC]
-            pattern = [1_IKC]
-            Replacement = [0_IKC, 0_IKC]
-            ArrayNew_ref = [0_IKC, 0_IKC, 0_IKC, 0_IKC, 2_IKC, 2_IKC, 0_IKC, 0_IKC, 0_IKC, 0_IKC, 3_IKC, 3_IKC, 0_IKC, 0_IKC, 0_IKC, 0_IKC, 4_IKC, 4_IKC, 0_IKC, 0_IKC, 0_IKC, 0_IKC, 5_IKC, 5_IKC]
+            ArrayTemplate = [1_IKG, 1_IKG, 2_IKG, 2_IKG, 1_IKG, 1_IKG, 3_IKG, 3_IKG, 1_IKG, 1_IKG, 4_IKG, 4_IKG, 1_IKG, 1_IKG, 5_IKG, 5_IKG]
+            pattern = [1_IKG]
+            Replacement = [0_IKG, 0_IKG]
+            ArrayNew_ref = [0_IKG, 0_IKG, 0_IKG, 0_IKG, 2_IKG, 2_IKG, 0_IKG, 0_IKG, 0_IKG, 0_IKG, 3_IKG, 3_IKG, 0_IKG, 0_IKG, 0_IKG, 0_IKG, 4_IKG, 4_IKG, 0_IKG, 0_IKG, 0_IKG, 0_IKG, 5_IKG, 5_IKG]
 #elif       getReplaced_D1_D1_D1_CK_ENABLED || setReplaced_D1_D1_D1_CK_ENABLED
-            ArrayTemplate = [1._CKC, 1._CKC, 2._CKC, 2._CKC, 1._CKC, 1._CKC, 3._CKC, 3._CKC, 1._CKC, 1._CKC, 4._CKC, 4._CKC, 1._CKC, 1._CKC, 5._CKC, 5._CKC]
-            pattern = [1._CKC]
-            Replacement = [0._CKC, 0._CKC]
-            ArrayNew_ref = [0._CKC, 0._CKC, 0._CKC, 0._CKC, 2._CKC, 2._CKC, 0._CKC, 0._CKC, 0._CKC, 0._CKC, 3._CKC, 3._CKC, 0._CKC, 0._CKC, 0._CKC, 0._CKC, 4._CKC, 4._CKC, 0._CKC, 0._CKC, 0._CKC, 0._CKC, 5._CKC, 5._CKC]
+            ArrayTemplate = [1._CKG, 1._CKG, 2._CKG, 2._CKG, 1._CKG, 1._CKG, 3._CKG, 3._CKG, 1._CKG, 1._CKG, 4._CKG, 4._CKG, 1._CKG, 1._CKG, 5._CKG, 5._CKG]
+            pattern = [1._CKG]
+            Replacement = [0._CKG, 0._CKG]
+            ArrayNew_ref = [0._CKG, 0._CKG, 0._CKG, 0._CKG, 2._CKG, 2._CKG, 0._CKG, 0._CKG, 0._CKG, 0._CKG, 3._CKG, 3._CKG, 0._CKG, 0._CKG, 0._CKG, 0._CKG, 4._CKG, 4._CKG, 0._CKG, 0._CKG, 0._CKG, 0._CKG, 5._CKG, 5._CKG]
 #elif       getReplaced_D1_D1_D1_RK_ENABLED || setReplaced_D1_D1_D1_RK_ENABLED
-            ArrayTemplate = [1._RKC, 1._RKC, 2._RKC, 2._RKC, 1._RKC, 1._RKC, 3._RKC, 3._RKC, 1._RKC, 1._RKC, 4._RKC, 4._RKC, 1._RKC, 1._RKC, 5._RKC, 5._RKC]
-            pattern = [1._RKC]
-            Replacement = [0._RKC, 0._RKC]
-            ArrayNew_ref = [0._RKC, 0._RKC, 0._RKC, 0._RKC, 2._RKC, 2._RKC, 0._RKC, 0._RKC, 0._RKC, 0._RKC, 3._RKC, 3._RKC, 0._RKC, 0._RKC, 0._RKC, 0._RKC, 4._RKC, 4._RKC, 0._RKC, 0._RKC, 0._RKC, 0._RKC, 5._RKC, 5._RKC]
+            ArrayTemplate = [1._RKG, 1._RKG, 2._RKG, 2._RKG, 1._RKG, 1._RKG, 3._RKG, 3._RKG, 1._RKG, 1._RKG, 4._RKG, 4._RKG, 1._RKG, 1._RKG, 5._RKG, 5._RKG]
+            pattern = [1._RKG]
+            Replacement = [0._RKG, 0._RKG]
+            ArrayNew_ref = [0._RKG, 0._RKG, 0._RKG, 0._RKG, 2._RKG, 2._RKG, 0._RKG, 0._RKG, 0._RKG, 0._RKG, 3._RKG, 3._RKG, 0._RKG, 0._RKG, 0._RKG, 0._RKG, 4._RKG, 4._RKG, 0._RKG, 0._RKG, 0._RKG, 0._RKG, 5._RKG, 5._RKG]
 #elif       getReplaced_D1_D1_D1_LK_ENABLED || setReplaced_D1_D1_D1_LK_ENABLED
             ArrayTemplate = [.true., .true., .false., .false., .true., .true., .false., .false., .true., .true., .false., .false., .true., .true., .false., .false.]
             pattern = [.true.]
@@ -1078,17 +1078,17 @@
             pattern = ["YY"]
             Replacement = ["XX", "XX"]
 #elif       getReplaced_D1_D1_D1_IK_ENABLED || setReplaced_D1_D1_D1_IK_ENABLED
-            ArrayTemplate = [1_IKC, 1_IKC, 2_IKC, 2_IKC, 1_IKC, 1_IKC, 3_IKC, 3_IKC, 1_IKC, 1_IKC, 4_IKC, 4_IKC, 1_IKC, 1_IKC, 5_IKC, 5_IKC]
-            pattern = [-1_IKC]
-            Replacement = [0_IKC, 0_IKC]
+            ArrayTemplate = [1_IKG, 1_IKG, 2_IKG, 2_IKG, 1_IKG, 1_IKG, 3_IKG, 3_IKG, 1_IKG, 1_IKG, 4_IKG, 4_IKG, 1_IKG, 1_IKG, 5_IKG, 5_IKG]
+            pattern = [-1_IKG]
+            Replacement = [0_IKG, 0_IKG]
 #elif       getReplaced_D1_D1_D1_CK_ENABLED || setReplaced_D1_D1_D1_CK_ENABLED
-            ArrayTemplate = [1._CKC, 1._CKC, 2._CKC, 2._CKC, 1._CKC, 1._CKC, 3._CKC, 3._CKC, 1._CKC, 1._CKC, 4._CKC, 4._CKC, 1._CKC, 1._CKC, 5._CKC, 5._CKC]
-            pattern = [-1._CKC]
-            Replacement = [0._CKC, 0._CKC]
+            ArrayTemplate = [1._CKG, 1._CKG, 2._CKG, 2._CKG, 1._CKG, 1._CKG, 3._CKG, 3._CKG, 1._CKG, 1._CKG, 4._CKG, 4._CKG, 1._CKG, 1._CKG, 5._CKG, 5._CKG]
+            pattern = [-1._CKG]
+            Replacement = [0._CKG, 0._CKG]
 #elif       getReplaced_D1_D1_D1_RK_ENABLED || setReplaced_D1_D1_D1_RK_ENABLED
-            ArrayTemplate = [1._RKC, 1._RKC, 2._RKC, 2._RKC, 1._RKC, 1._RKC, 3._RKC, 3._RKC, 1._RKC, 1._RKC, 4._RKC, 4._RKC, 1._RKC, 1._RKC, 5._RKC, 5._RKC]
-            pattern = [-1._RKC]
-            Replacement = [0._RKC, 0._RKC]
+            ArrayTemplate = [1._RKG, 1._RKG, 2._RKG, 2._RKG, 1._RKG, 1._RKG, 3._RKG, 3._RKG, 1._RKG, 1._RKG, 4._RKG, 4._RKG, 1._RKG, 1._RKG, 5._RKG, 5._RKG]
+            pattern = [-1._RKG]
+            Replacement = [0._RKG, 0._RKG]
 #elif       getReplaced_D1_D1_D1_LK_ENABLED || setReplaced_D1_D1_D1_LK_ENABLED
             ArrayTemplate = [.true., .true., .true., .true., .true., .true., .true., .true., .true., .true., .true., .true., .true., .true., .true., .true.]
             pattern = [.false.]
@@ -1160,14 +1160,14 @@
             ArrayTemplate = ["AA"]
             Replacement = ["XX"]
 #elif       getReplaced_D1_D1_D1_IK_ENABLED || setReplaced_D1_D1_D1_IK_ENABLED
-            ArrayTemplate = [33_IKC]
-            Replacement = [11_IKC, 11_IKC]
+            ArrayTemplate = [33_IKG]
+            Replacement = [11_IKG, 11_IKG]
 #elif       getReplaced_D1_D1_D1_CK_ENABLED || setReplaced_D1_D1_D1_CK_ENABLED
-            ArrayTemplate = [(33._CKC,-33._CKC)]
-            Replacement = [(11._CKC,-11._CKC), (11._CKC,-11._CKC)]
+            ArrayTemplate = [(33._CKG,-33._CKG)]
+            Replacement = [(11._CKG,-11._CKG), (11._CKG,-11._CKG)]
 #elif       getReplaced_D1_D1_D1_RK_ENABLED || setReplaced_D1_D1_D1_RK_ENABLED
-            ArrayTemplate = [33._RKC]
-            Replacement = [11._RKC, 11._RKC]
+            ArrayTemplate = [33._RKG]
+            Replacement = [11._RKG, 11._RKG]
 #elif       getReplaced_D1_D1_D1_LK_ENABLED || setReplaced_D1_D1_D1_LK_ENABLED
             ArrayTemplate = [.true., .true.]
             Replacement = [.false., .false.]
@@ -1390,7 +1390,7 @@
 
 #if     getReplaced_D0_D0_D0_ENABLED || setReplaced_D0_D0_D0_ENABLED
         function iseq(Segment, pattern) result(equivalent)
-            character(*,SKC), intent(in) :: pattern, Segment
+            character(*,SKG), intent(in) :: pattern, Segment
             logical(LK) :: equivalent
             equivalent = Segment == pattern
         end function
@@ -1399,19 +1399,19 @@
         function iseq(Segment, pattern) result(equivalent)
 #if         getReplaced_D1_D0_D0_SK_ENABLED || getReplaced_D1_D0_D1_SK_ENABLED || \
             setReplaced_D1_D0_D0_SK_ENABLED || setReplaced_D1_D0_D1_SK_ENABLED
-            character(*,SKC), intent(in)    :: Segment, pattern
+            character(*,SKG), intent(in)    :: Segment, pattern
 #elif       getReplaced_D1_D0_D0_IK_ENABLED || getReplaced_D1_D0_D1_IK_ENABLED || \
             setReplaced_D1_D0_D0_IK_ENABLED || setReplaced_D1_D0_D1_IK_ENABLED
-            integer(IKC)    , intent(in)    :: Segment, pattern
+            integer(IKG)    , intent(in)    :: Segment, pattern
 #elif       getReplaced_D1_D0_D0_LK_ENABLED || getReplaced_D1_D0_D1_LK_ENABLED || \
             setReplaced_D1_D0_D0_LK_ENABLED || setReplaced_D1_D0_D1_LK_ENABLED
-            logical(LKC)    , intent(in)    :: Segment, pattern
+            logical(LKG)    , intent(in)    :: Segment, pattern
 #elif       getReplaced_D1_D0_D0_CK_ENABLED || getReplaced_D1_D0_D1_CK_ENABLED || \
             setReplaced_D1_D0_D0_CK_ENABLED || setReplaced_D1_D0_D1_CK_ENABLED
-            complex(CKC)    , intent(in)    :: Segment, pattern
+            complex(CKG)    , intent(in)    :: Segment, pattern
 #elif       getReplaced_D1_D0_D0_RK_ENABLED || getReplaced_D1_D0_D1_RK_ENABLED || \
             setReplaced_D1_D0_D0_RK_ENABLED || setReplaced_D1_D0_D1_RK_ENABLED
-            real(RKC)       , intent(in)    :: Segment, pattern
+            real(RKG)       , intent(in)    :: Segment, pattern
 #endif
             logical(LK) :: equivalent
             equivalent = Segment IS_EQUAL pattern
@@ -1423,19 +1423,19 @@
             integer(IK), intent(in) :: lenPattern
 #if         getReplaced_D1_D1_D0_SK_ENABLED || getReplaced_D1_D1_D1_SK_ENABLED || \
             setReplaced_D1_D1_D0_SK_ENABLED || setReplaced_D1_D1_D1_SK_ENABLED
-            character(*,SKC), intent(in)    :: Segment(lenPattern), pattern(lenPattern)
+            character(*,SKG), intent(in)    :: Segment(lenPattern), pattern(lenPattern)
 #elif       getReplaced_D1_D1_D0_IK_ENABLED || getReplaced_D1_D1_D1_IK_ENABLED || \
             setReplaced_D1_D1_D0_IK_ENABLED || setReplaced_D1_D1_D1_IK_ENABLED
-            integer(IKC)    , intent(in)    :: Segment(lenPattern), pattern(lenPattern)
+            integer(IKG)    , intent(in)    :: Segment(lenPattern), pattern(lenPattern)
 #elif       getReplaced_D1_D1_D0_LK_ENABLED || getReplaced_D1_D1_D1_LK_ENABLED || \
             setReplaced_D1_D1_D0_LK_ENABLED || setReplaced_D1_D1_D1_LK_ENABLED
-            logical(LKC)    , intent(in)    :: Segment(lenPattern), pattern(lenPattern)
+            logical(LKG)    , intent(in)    :: Segment(lenPattern), pattern(lenPattern)
 #elif       getReplaced_D1_D1_D0_CK_ENABLED || getReplaced_D1_D1_D1_CK_ENABLED || \
             setReplaced_D1_D1_D0_CK_ENABLED || setReplaced_D1_D1_D1_CK_ENABLED
-            complex(CKC)    , intent(in)    :: Segment(lenPattern), pattern(lenPattern)
+            complex(CKG)    , intent(in)    :: Segment(lenPattern), pattern(lenPattern)
 #elif       getReplaced_D1_D1_D0_RK_ENABLED || getReplaced_D1_D1_D1_RK_ENABLED || \
             setReplaced_D1_D1_D0_RK_ENABLED || setReplaced_D1_D1_D1_RK_ENABLED
-            real(RKC)       , intent(in)    :: Segment(lenPattern), pattern(lenPattern)
+            real(RKG)       , intent(in)    :: Segment(lenPattern), pattern(lenPattern)
 #endif
             equivalent = all(Segment IS_EQUAL pattern)
         end function
@@ -1450,19 +1450,19 @@
             integer(IK), intent(in) :: lenPattern
 #if         getReplaced_D1_D0_D0_SK_ENABLED || getReplaced_D1_D0_D1_SK_ENABLED || getReplaced_D1_D1_D0_SK_ENABLED || \
             setReplaced_D1_D0_D0_SK_ENABLED || setReplaced_D1_D0_D1_SK_ENABLED || setReplaced_D1_D1_D0_SK_ENABLED
-            character(*,SKC), intent(in)    :: Segment(lenPattern), pattern(lenPattern)
+            character(*,SKG), intent(in)    :: Segment(lenPattern), pattern(lenPattern)
 #elif       getReplaced_D1_D0_D0_IK_ENABLED || getReplaced_D1_D0_D1_IK_ENABLED || getReplaced_D1_D1_D0_IK_ENABLED || \
             setReplaced_D1_D0_D0_IK_ENABLED || setReplaced_D1_D0_D1_IK_ENABLED || setReplaced_D1_D1_D0_IK_ENABLED
-            integer(IKC)    , intent(in)    :: Segment(lenPattern), pattern(lenPattern)
+            integer(IKG)    , intent(in)    :: Segment(lenPattern), pattern(lenPattern)
 #elif       getReplaced_D1_D0_D0_LK_ENABLED || getReplaced_D1_D0_D1_LK_ENABLED || getReplaced_D1_D1_D0_LK_ENABLED || \
             setReplaced_D1_D0_D0_LK_ENABLED || setReplaced_D1_D0_D1_LK_ENABLED || setReplaced_D1_D1_D0_LK_ENABLED
-            logical(LKC)    , intent(in)    :: Segment(lenPattern), pattern(lenPattern)
+            logical(LKG)    , intent(in)    :: Segment(lenPattern), pattern(lenPattern)
 #elif       getReplaced_D1_D0_D0_CK_ENABLED || getReplaced_D1_D0_D1_CK_ENABLED || getReplaced_D1_D1_D0_CK_ENABLED || \
             setReplaced_D1_D0_D0_CK_ENABLED || setReplaced_D1_D0_D1_CK_ENABLED || setReplaced_D1_D1_D0_CK_ENABLED
-            complex(CKC)    , intent(in)    :: Segment(lenPattern), pattern(lenPattern)
+            complex(CKG)    , intent(in)    :: Segment(lenPattern), pattern(lenPattern)
 #elif       getReplaced_D1_D0_D0_RK_ENABLED || getReplaced_D1_D0_D1_RK_ENABLED || getReplaced_D1_D1_D0_RK_ENABLED || \
             setReplaced_D1_D0_D0_RK_ENABLED || setReplaced_D1_D0_D1_RK_ENABLED || setReplaced_D1_D1_D0_RK_ENABLED
-            real(RKC)       , intent(in)    :: Segment(lenPattern), pattern(lenPattern)
+            real(RKG)       , intent(in)    :: Segment(lenPattern), pattern(lenPattern)
 #endif
             equivalent = all(Segment IS_EQUAL pattern)
         end function

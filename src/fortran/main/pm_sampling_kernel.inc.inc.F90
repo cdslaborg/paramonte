@@ -108,19 +108,19 @@
                             do imageID = 1, spec%image%count
 #endif
                                 if (CO_LOGFUNCSTATE(0, imageID, -1) <= CO_LOGFUNCSTATE(0, imageID, counterDRS)) then ! accept the proposed state.
-                                    CO_ACCR(imageID, counterDRS) = 1._RKC
-                                    CO_ACCR(imageID, -1) = real(counterDRS, RKC)
+                                    CO_ACCR(imageID, counterDRS) = 1._RKG
+                                    CO_ACCR(imageID, -1) = real(counterDRS, RKG)
                                     CO_LOGFUNCSTATE(0 : ndim, imageID, -1) = CO_LOGFUNCSTATE(0 : ndim, imageID, counterDRS)
 #if                                 OMP_ENABLED || !CAFMPI_SINGLCHAIN_ENABLED
                                     exit loopNextMove
 #endif
                                 elseif (CO_LOGFUNCSTATE(0, imageID, counterDRS) < GET_ELL(maxLogFuncRejectedProposal, imageID)) then ! reject the proposed state. This step should be reachable only when proposalDelayedRejectionCount > 0
-                                    CO_ACCR(imageID, counterDRS) = 0._RKC ! proposal rejected XXX is this correct? could `co_accr` be absolute zero?
+                                    CO_ACCR(imageID, counterDRS) = 0._RKG ! proposal rejected XXX is this correct? could `co_accr` be absolute zero?
                                 else ! accept with probability co_accr.
                                     if (counterDRS == 0_IK) then ! This should be equivalent to GET_ELL(maxLogFuncRejectedProposal, imageID) == NEGBIG_RK
                                         logFuncDiff = CO_LOGFUNCSTATE(0, imageID, counterDRS) - CO_LOGFUNCSTATE(0, imageID, -1)
-                                        if (logFuncDiff < log(tiny(0._RKC))) then ! xxx should the condition for LOGHUGE_RK be also added?
-                                            CO_ACCR(imageID, counterDRS) = 0._RKC
+                                        if (logFuncDiff < log(tiny(0._RKG))) then ! xxx should the condition for LOGHUGE_RK be also added?
+                                            CO_ACCR(imageID, counterDRS) = 0._RKG
                                         else
                                             CO_ACCR(imageID, counterDRS) = exp(logFuncDiff)
                                         end if
@@ -128,15 +128,15 @@
                                         CO_ACCR(imageID, counterDRS) & ! LCOV_EXCL_LINE
                                         = getLogSubExp(smaller = GET_ELL(maxLogFuncRejectedProposal, imageID), larger = CO_LOGFUNCSTATE(0, imageID, counterDRS)) & ! LCOV_EXCL_LINE
                                         - getLogSubExp(smaller = GET_ELL(maxLogFuncRejectedProposal, imageID), larger = CO_LOGFUNCSTATE(0, imageID, -1))
-                                        if (CO_ACCR(imageID, counterDRS) < log(tiny(0._RKC))) then
-                                            CO_ACCR(imageID, counterDRS) = 0._RKC
+                                        if (CO_ACCR(imageID, counterDRS) < log(tiny(0._RKG))) then
+                                            CO_ACCR(imageID, counterDRS) = 0._RKG
                                         else
                                             CO_ACCR(imageID, counterDRS) = exp(CO_ACCR(imageID, counterDRS))
                                         end if
                                     end if
                                     if (GET_ELL(unifrnd, imageID) < CO_ACCR(imageID, counterDRS)) then ! accept the proposed state
                                         CO_LOGFUNCSTATE(0 : ndim, imageID, -1) = CO_LOGFUNCSTATE(0 : ndim, imageID, counterDRS)
-                                        CO_ACCR(imageID, -1) = real(counterDRS, RKC)
+                                        CO_ACCR(imageID, -1) = real(counterDRS, RKG)
 #if                                     OMP_ENABLED || !CAFMPI_SINGLCHAIN_ENABLED
                                         exit loopNextMove
 #endif
@@ -151,7 +151,7 @@
                             if (spec%image%id == stat%cfc%processID(numFunCallAcceptedPlusOne) .and. &
                                 currentStateWeight + spec%image%id - 1_IK == stat%cfc%sampleWeight(stat%numFunCallAccepted) .and. &
                                 counterDRS == stat%cfc%delayedRejectionStage(numFunCallAcceptedPlusOne)) then
-                                co_accr(-1) = real(counterDRS, RKC)
+                                co_accr(-1) = real(counterDRS, RKG)
                                 co_logFuncState(0, counterDRS) = stat%cfc%sampleLogFunc(numFunCallAcceptedPlusOne)
                                 co_logFuncState(1 : ndim, counterDRS) = stat%cfc%sampleState(1 : ndim,numFunCallAcceptedPlusOne)
                                 co_logFuncState(0 : ndim, -1) = co_logFuncState(0 : ndim, counterDRS)
@@ -159,7 +159,7 @@
 #elif                       OMP_ENABLED
                             imageID = stat%cfc%processID(numFunCallAcceptedPlusOne)
                             if (currentStateWeight + imageID - 1_IK == stat%cfc%sampleWeight(stat%numFunCallAccepted) .and. counterDRS == stat%cfc%delayedRejectionStage(numFunCallAcceptedPlusOne)) then
-                                co_accr(imageID, -1) = real(counterDRS, RKC)
+                                co_accr(imageID, -1) = real(counterDRS, RKG)
                                 co_logFuncState(0, imageID, counterDRS) = stat%cfc%sampleLogFunc(numFunCallAcceptedPlusOne)
                                 co_logFuncState(1 : ndim, imageID, counterDRS) = stat%cfc%sampleState(1 : ndim,numFunCallAcceptedPlusOne)
                                 co_logFuncState(0 : ndim, imageID, -1) = co_logFuncState(0 : ndim, imageID, counterDRS)
@@ -167,7 +167,7 @@
                             end if
 #else
                             if (currentStateWeight == stat%cfc%sampleWeight(stat%numFunCallAccepted) .and. counterDRS == stat%cfc%delayedRejectionStage(numFunCallAcceptedPlusOne)) then
-                                co_accr(-1) = real(counterDRS, RKC)
+                                co_accr(-1) = real(counterDRS, RKG)
                                 co_logFuncState(0, -1) = stat%cfc%sampleLogFunc(numFunCallAcceptedPlusOne)
                                 co_logFuncState(1 : ndim, -1) = stat%cfc%sampleState(1 : ndim, numFunCallAcceptedPlusOne)
                                 exit loopNextMove
@@ -179,7 +179,7 @@
                         ! This is needed in singleChain parallelism to avoid unnecessary delayed rejection if a proposal is already found.
                         ! Note that this is not necessary when the delayed rejection is deactivated.
                         if (0 < spec%proposalDelayedRejectionCount%val) then
-                            if (-0.5_RKC < co_accr(-1)) proposalFoundSinglChainMode = 1 ! -0.5 instead of -1. avoids possible real roundoff errors.
+                            if (-0.5_RKG < co_accr(-1)) proposalFoundSinglChainMode = 1 ! -0.5 instead of -1. avoids possible real roundoff errors.
                             stat%timer%clock = stat%timer%time()
                             SET_CAF(call co_sum(proposalFoundSinglChainMode))
                             ! send buffer, recv buffer, buffer size, datatype, mpi reduction operation, comm, ierr

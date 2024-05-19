@@ -1,6 +1,6 @@
 program example
 
-    use pm_kind, only: SK, IK, RKH, RKC => RKH ! All other real kinds are also supported.
+    use pm_kind, only: SK, IK, RKH, RKG => RKH ! All other real kinds are also supported.
     use pm_quadTest, only: int1_type
     use pm_quadTest, only: int2_type
     use pm_quadTest, only: int3_type
@@ -43,7 +43,7 @@ program example
     call test_isFailedQuad(disp, int4_type())
     call test_isFailedQuad(disp, intSinCos_type(-4_IK, +4_IK, a = 10._RKH, b = -10._RKH))
     call test_isFailedQuad(disp, intNormPDF_type(-3._RKH, +3._RKH))
-    call test_isFailedQuad(disp, intLogNormPDF_type(lb = exp(-6._RKC), ub = exp(+6._RKC)))
+    call test_isFailedQuad(disp, intLogNormPDF_type(lb = exp(-6._RKG), ub = exp(+6._RKG)))
 
     call disp%skip()
     call disp%show("!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
@@ -56,8 +56,8 @@ program example
     call disp%show("!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
     call disp%skip()
 
-    call test_isFailedQuad(disp, int5_type(0._RKC, 3._RKC))
-    call test_isFailedQuad(disp, int5_type(-2._RKC, +5._RKC))
+    call test_isFailedQuad(disp, int5_type(0._RKG, 3._RKG))
+    call test_isFailedQuad(disp, int5_type(-2._RKG, +5._RKG))
 
     call disp%skip()
     call disp%show("!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
@@ -71,20 +71,20 @@ program example
     call disp%skip()
 
     call test_isFailedQuad(disp, intGamUpp_type())
-    !call disp%show("call test_isFailedQuad(disp, intGamUpp_type(lb = 1._RKC, alpha = +1.0_RKC, beta = 3._RKC))")
-    !                call test_isFailedQuad(disp, intGamUpp_type(lb = 1._RKC, alpha = +1.0_RKC, beta = 3._RKC))
-    !call disp%show("call test_isFailedQuad(disp, intGamUpp_type(lb = 1._RKC, alpha = +0.5_RKC, beta = 3._RKC))")
-    !                call test_isFailedQuad(disp, intGamUpp_type(lb = 1._RKC, alpha = +0.5_RKC, beta = 3._RKC))
-    !call disp%show("call test_isFailedQuad(disp, intGamUpp_type(lb = 1._RKC, alpha = +0.0_RKC, beta = 3._RKC))")
-    !                call test_isFailedQuad(disp, intGamUpp_type(lb = 1._RKC, alpha = +0.0_RKC, beta = 3._RKC))
-    !call disp%show("call test_isFailedQuad(disp, intGamUpp_type(lb = 1._RKC, alpha = -0.5_RKC, beta = 3._RKC))")
-    !                call test_isFailedQuad(disp, intGamUpp_type(lb = 1._RKC, alpha = -0.5_RKC, beta = 3._RKC))
-    !call disp%show("call test_isFailedQuad(disp, intGamUpp_type(lb = 1._RKC, alpha = -1.0_RKC, beta = 3._RKC))")
-    !                call test_isFailedQuad(disp, intGamUpp_type(lb = 1._RKC, alpha = -1.0_RKC, beta = 3._RKC))
-    !call disp%show("call test_isFailedQuad(disp, intGamUpp_type(lb = 1._RKC, alpha = -1.5_RKC, beta = 3._RKC))")
-    !                call test_isFailedQuad(disp, intGamUpp_type(lb = 1._RKC, alpha = -1.5_RKC, beta = 3._RKC))
-    !call disp%show("call test_isFailedQuad(disp, intGamUpp_type(lb = 1._RKC, alpha = -2.0_RKC, beta = 3._RKC))")
-    !                call test_isFailedQuad(disp, intGamUpp_type(lb = 1._RKC, alpha = -2.0_RKC, beta = 3._RKC))
+    !call disp%show("call test_isFailedQuad(disp, intGamUpp_type(lb = 1._RKG, alpha = +1.0_RKG, beta = 3._RKG))")
+    !                call test_isFailedQuad(disp, intGamUpp_type(lb = 1._RKG, alpha = +1.0_RKG, beta = 3._RKG))
+    !call disp%show("call test_isFailedQuad(disp, intGamUpp_type(lb = 1._RKG, alpha = +0.5_RKG, beta = 3._RKG))")
+    !                call test_isFailedQuad(disp, intGamUpp_type(lb = 1._RKG, alpha = +0.5_RKG, beta = 3._RKG))
+    !call disp%show("call test_isFailedQuad(disp, intGamUpp_type(lb = 1._RKG, alpha = +0.0_RKG, beta = 3._RKG))")
+    !                call test_isFailedQuad(disp, intGamUpp_type(lb = 1._RKG, alpha = +0.0_RKG, beta = 3._RKG))
+    !call disp%show("call test_isFailedQuad(disp, intGamUpp_type(lb = 1._RKG, alpha = -0.5_RKG, beta = 3._RKG))")
+    !                call test_isFailedQuad(disp, intGamUpp_type(lb = 1._RKG, alpha = -0.5_RKG, beta = 3._RKG))
+    !call disp%show("call test_isFailedQuad(disp, intGamUpp_type(lb = 1._RKG, alpha = -1.0_RKG, beta = 3._RKG))")
+    !                call test_isFailedQuad(disp, intGamUpp_type(lb = 1._RKG, alpha = -1.0_RKG, beta = 3._RKG))
+    !call disp%show("call test_isFailedQuad(disp, intGamUpp_type(lb = 1._RKG, alpha = -1.5_RKG, beta = 3._RKG))")
+    !                call test_isFailedQuad(disp, intGamUpp_type(lb = 1._RKG, alpha = -1.5_RKG, beta = 3._RKG))
+    !call disp%show("call test_isFailedQuad(disp, intGamUpp_type(lb = 1._RKG, alpha = -2.0_RKG, beta = 3._RKG))")
+    !                call test_isFailedQuad(disp, intGamUpp_type(lb = 1._RKG, alpha = -2.0_RKG, beta = 3._RKG))
     call test_isFailedQuad(disp, intLogNormPDF_type())
     call test_isFailedQuad(disp, intDoncker1_type())
     call test_isFailedQuad(disp, int6_type())
@@ -103,7 +103,7 @@ program example
 
     call test_isFailedQuad(disp, int8_type())
     call test_isFailedQuad(disp, intDoncker2_type())
-    call test_isFailedQuad(disp, intDoncker2_type(ub = -1._RKC))
+    call test_isFailedQuad(disp, intDoncker2_type(ub = -1._RKG))
 
     call disp%skip()
     call disp%show("!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")

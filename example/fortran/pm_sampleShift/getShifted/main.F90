@@ -20,8 +20,8 @@ program example
     call disp%skip()
 
     block
-        use pm_kind, only: TKC => RKS ! All kinds are supported.
-        real(TKC), allocatable :: sample(:)
+        use pm_kind, only: TKG => RKS ! All kinds are supported.
+        real(TKG), allocatable :: sample(:)
         call disp%show("sample = getLinSpace(x1 = 0., x2 = 10., count = 11_IK)")
                         sample = getLinSpace(x1 = 0., x2 = 10., count = 11_IK)
         call disp%show("sample")
@@ -38,10 +38,10 @@ program example
     end block
 
     block
-        use pm_kind, only: TKC => RKS ! All kinds are supported.
-        complex(TKC), allocatable :: sample(:)
-        call disp%show("sample = cmplx(getLinSpace(x1 = 0., x2 = 10., count = 11_IK), -getLinSpace(x1 = 0., x2 = 10., count = 11_IK), TKC)")
-                        sample = cmplx(getLinSpace(x1 = 0., x2 = 10., count = 11_IK), -getLinSpace(x1 = 0., x2 = 10., count = 11_IK), TKC)
+        use pm_kind, only: TKG => RKS ! All kinds are supported.
+        complex(TKG), allocatable :: sample(:)
+        call disp%show("sample = cmplx(getLinSpace(x1 = 0., x2 = 10., count = 11_IK), -getLinSpace(x1 = 0., x2 = 10., count = 11_IK), TKG)")
+                        sample = cmplx(getLinSpace(x1 = 0., x2 = 10., count = 11_IK), -getLinSpace(x1 = 0., x2 = 10., count = 11_IK), TKG)
         call disp%show("sample")
         call disp%show( sample )
         call disp%show("getMean(sample)")
@@ -62,10 +62,10 @@ program example
     call disp%skip()
 
     block
-        use pm_kind, only: TKC => RKS ! All kinds are supported.
-        real(TKC), allocatable :: sample(:,:)
-        call disp%show("sample = reshape(getLinSpace(x1 = 1._TKC, x2 = 10._TKC, count = 10_IK), [2,5])")
-                        sample = reshape(getLinSpace(x1 = 1._TKC, x2 = 10._TKC, count = 10_IK), [2,5])
+        use pm_kind, only: TKG => RKS ! All kinds are supported.
+        real(TKG), allocatable :: sample(:,:)
+        call disp%show("sample = reshape(getLinSpace(x1 = 1._TKG, x2 = 10._TKG, count = 10_IK), [2,5])")
+                        sample = reshape(getLinSpace(x1 = 1._TKG, x2 = 10._TKG, count = 10_IK), [2,5])
         call disp%show("sample")
         call disp%show( sample )
         call disp%show("dim = 2")
@@ -82,10 +82,10 @@ program example
     end block
 
     block
-        use pm_kind, only: TKC => RKS ! All kinds are supported.
-        complex(TKC), allocatable :: sample(:,:)
-        call disp%show("sample = cmplx(reshape(getLinSpace(x1 = 1._TKC, x2 = 10._TKC, count = 10_IK), [2,5]), -reshape(getLinSpace(x1 = 1._TKC, x2 = 10._TKC, count = 10_IK), [2,5]))")
-                        sample = cmplx(reshape(getLinSpace(x1 = 1._TKC, x2 = 10._TKC, count = 10_IK), [2,5]), -reshape(getLinSpace(x1 = 1._TKC, x2 = 10._TKC, count = 10_IK), [2,5]))
+        use pm_kind, only: TKG => RKS ! All kinds are supported.
+        complex(TKG), allocatable :: sample(:,:)
+        call disp%show("sample = cmplx(reshape(getLinSpace(x1 = 1._TKG, x2 = 10._TKG, count = 10_IK), [2,5]), -reshape(getLinSpace(x1 = 1._TKG, x2 = 10._TKG, count = 10_IK), [2,5]))")
+                        sample = cmplx(reshape(getLinSpace(x1 = 1._TKG, x2 = 10._TKG, count = 10_IK), [2,5]), -reshape(getLinSpace(x1 = 1._TKG, x2 = 10._TKG, count = 10_IK), [2,5]))
         call disp%show("sample")
         call disp%show( sample )
         call disp%show("dim = 2")
@@ -108,10 +108,10 @@ program example
     call disp%skip()
 
     block
-        use pm_kind, only: TKC => RKS ! All kinds are supported.
-        real(TKC), allocatable :: sample(:,:)
-        call disp%show("sample = reshape(getLinSpace(x1 = 1._TKC, x2 = 10._TKC, count = 10_IK), [2,5])")
-                        sample = reshape(getLinSpace(x1 = 1._TKC, x2 = 10._TKC, count = 10_IK), [2,5])
+        use pm_kind, only: TKG => RKS ! All kinds are supported.
+        real(TKG), allocatable :: sample(:,:)
+        call disp%show("sample = reshape(getLinSpace(x1 = 1._TKG, x2 = 10._TKG, count = 10_IK), [2,5])")
+                        sample = reshape(getLinSpace(x1 = 1._TKG, x2 = 10._TKG, count = 10_IK), [2,5])
         call disp%show("sample")
         call disp%show( sample )
         call disp%show("dim = 2")
@@ -128,10 +128,10 @@ program example
     end block
 
     block
-        use pm_kind, only: TKC => RKS ! All kinds are supported.
-        complex(TKC), allocatable :: sample(:,:)
-        call disp%show("sample = cmplx(reshape(getLinSpace(x1 = 1._TKC, x2 = 10._TKC, count = 10_IK), [2,5]), -reshape(getLinSpace(x1 = 1._TKC, x2 = 10._TKC, count = 10_IK), [2,5]))")
-                        sample = cmplx(reshape(getLinSpace(x1 = 1._TKC, x2 = 10._TKC, count = 10_IK), [2,5]), -reshape(getLinSpace(x1 = 1._TKC, x2 = 10._TKC, count = 10_IK), [2,5]))
+        use pm_kind, only: TKG => RKS ! All kinds are supported.
+        complex(TKG), allocatable :: sample(:,:)
+        call disp%show("sample = cmplx(reshape(getLinSpace(x1 = 1._TKG, x2 = 10._TKG, count = 10_IK), [2,5]), -reshape(getLinSpace(x1 = 1._TKG, x2 = 10._TKG, count = 10_IK), [2,5]))")
+                        sample = cmplx(reshape(getLinSpace(x1 = 1._TKG, x2 = 10._TKG, count = 10_IK), [2,5]), -reshape(getLinSpace(x1 = 1._TKG, x2 = 10._TKG, count = 10_IK), [2,5]))
         call disp%show("sample")
         call disp%show( sample )
         call disp%show("dim = 2")

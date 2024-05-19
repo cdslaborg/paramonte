@@ -24,19 +24,19 @@
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        !real(TKC), parameter :: IHUGE = 1._TKC / huge(0._TKC)
-        !real(TKC), parameter :: SMALL = merge(tiny(0._TKC), IHUGE * (1._TKC + epsilon(0._TKC)), IHUGE < tiny(0._TKC))
-        real(TKC), parameter :: SMALL = tiny(0._TKC)**.999
+        !real(TKG), parameter :: IHUGE = 1._TKG / huge(0._TKG)
+        !real(TKG), parameter :: SMALL = merge(tiny(0._TKG), IHUGE * (1._TKG + epsilon(0._TKG)), IHUGE < tiny(0._TKG))
+        real(TKG), parameter :: SMALL = tiny(0._TKG)**.999
 #if     CK_ENABLED
 #define GET_CONJG(X) conjg(X)
-#define TYPE_KIND complex(TKC)
+#define TYPE_KIND complex(TKG)
 #define GET_ABSL1(X) abs(X%re) + abs(X%im)
-        complex(TKC), parameter :: ZERO = (0._TKC, 0._TKC), ONE = (1._TKC, 0._TKC)
+        complex(TKG), parameter :: ZERO = (0._TKG, 0._TKG), ONE = (1._TKG, 0._TKG)
 #elif   RK_ENABLED
 #define GET_CONJG(X) X
 #define GET_ABSL1(X) abs(X)
-#define TYPE_KIND real(TKC)
-        real(TKC), parameter :: ZERO = 0._TKC, ONE = 1._TKC
+#define TYPE_KIND real(TKG)
+        real(TKG), parameter :: ZERO = 0._TKG, ONE = 1._TKG
 #else
 #error  "Unrecognized interface."
 #endif
@@ -64,7 +64,7 @@
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
         TYPE_KIND :: dumm, summ !, parity_def
-        real(TKC) :: rowMax, temp, rowMaxInv(size(rperm, 1, IK))
+        real(TKG) :: rowMax, temp, rowMaxInv(size(rperm, 1, IK))
         integer(IK) :: irow, imax, icol, idim, ndim
         CHECK_ASSERTION(__LINE__, all(size(rperm, 1, IK) == shape(mat, IK)), \
         SK_"@setMatLUP(): The condition `all(size(rperm) == shape(mat))` must hold. size(rperm), shape(mat) = "//\
@@ -78,7 +78,7 @@
             rowMaxInv(info) = abs(mat(maxloc(abs(mat(1 : ndim, info)), 1, kind = IK), info))
             !rowMaxInv(info) = abs(mat(maxloc(GET_ABSL1(mat(1 : ndim, info)), 1, kind = IK), info))
             if (rowMaxInv(info) == ZERO) return
-            rowMaxInv(info) = 1._TKC / rowMaxInv(info)
+            rowMaxInv(info) = 1._TKG / rowMaxInv(info)
         end do
         info = 0_IK
         do icol = 1, ndim
@@ -89,7 +89,7 @@
                 end do
                 mat(irow, icol) = summ
             end do
-            rowMax = 0._TKC
+            rowMax = 0._TKG
             do irow = icol, ndim
                 summ = mat(irow, icol)
                 do idim = 1, icol - 1

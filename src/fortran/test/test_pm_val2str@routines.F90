@@ -112,28 +112,28 @@ contains
 
 #if IK4_ENABLED
     module procedure test_getStr_IK4_1
-        use pm_kind, only: IK, IKC => IK4
+        use pm_kind, only: IK, IKG => IK4
 #include "test_pm_val2str@routines.inc.F90"
     end procedure
 #endif
 
 #if IK3_ENABLED
     module procedure test_getStr_IK3_1
-        use pm_kind, only: IK, IKC => IK3
+        use pm_kind, only: IK, IKG => IK3
 #include "test_pm_val2str@routines.inc.F90"
     end procedure
 #endif
 
 #if IK2_ENABLED
     module procedure test_getStr_IK2_1
-        use pm_kind, only: IK, IKC => IK2
+        use pm_kind, only: IK, IKG => IK2
 #include "test_pm_val2str@routines.inc.F90"
     end procedure
 #endif
 
 #if IK1_ENABLED
     module procedure test_getStr_IK1_1
-        use pm_kind, only: IK, IKC => IK1
+        use pm_kind, only: IK, IKG => IK1
 #include "test_pm_val2str@routines.inc.F90"
     end procedure
 #endif

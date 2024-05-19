@@ -223,23 +223,23 @@ contains
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    subroutine killMeAlreadyCMake1_RK5(); use pm_sampling_kernel_dise_RK5, only: RKC; end subroutine
-    subroutine killMeAlreadyCMake1_RK4(); use pm_sampling_kernel_dise_RK4, only: RKC; end subroutine
-    subroutine killMeAlreadyCMake1_RK3(); use pm_sampling_kernel_dise_RK3, only: RKC; end subroutine
-    subroutine killMeAlreadyCMake1_RK2(); use pm_sampling_kernel_dise_RK2, only: RKC; end subroutine
-    subroutine killMeAlreadyCMake1_RK1(); use pm_sampling_kernel_dise_RK1, only: RKC; end subroutine
+    subroutine killMeAlreadyCMake1_RK5(); use pm_sampling_kernel_dise_RK5, only: RKG; end subroutine
+    subroutine killMeAlreadyCMake1_RK4(); use pm_sampling_kernel_dise_RK4, only: RKG; end subroutine
+    subroutine killMeAlreadyCMake1_RK3(); use pm_sampling_kernel_dise_RK3, only: RKG; end subroutine
+    subroutine killMeAlreadyCMake1_RK2(); use pm_sampling_kernel_dise_RK2, only: RKG; end subroutine
+    subroutine killMeAlreadyCMake1_RK1(); use pm_sampling_kernel_dise_RK1, only: RKG; end subroutine
 
-    subroutine killMeAlreadyCMake2_RK5(); use pm_sampling_kernel_dram_RK5, only: RKC; end subroutine
-    subroutine killMeAlreadyCMake2_RK4(); use pm_sampling_kernel_dram_RK4, only: RKC; end subroutine
-    subroutine killMeAlreadyCMake2_RK3(); use pm_sampling_kernel_dram_RK3, only: RKC; end subroutine
-    subroutine killMeAlreadyCMake2_RK2(); use pm_sampling_kernel_dram_RK2, only: RKC; end subroutine
-    subroutine killMeAlreadyCMake2_RK1(); use pm_sampling_kernel_dram_RK1, only: RKC; end subroutine
+    subroutine killMeAlreadyCMake2_RK5(); use pm_sampling_kernel_dram_RK5, only: RKG; end subroutine
+    subroutine killMeAlreadyCMake2_RK4(); use pm_sampling_kernel_dram_RK4, only: RKG; end subroutine
+    subroutine killMeAlreadyCMake2_RK3(); use pm_sampling_kernel_dram_RK3, only: RKG; end subroutine
+    subroutine killMeAlreadyCMake2_RK2(); use pm_sampling_kernel_dram_RK2, only: RKG; end subroutine
+    subroutine killMeAlreadyCMake2_RK1(); use pm_sampling_kernel_dram_RK1, only: RKG; end subroutine
 
-    !subroutine killMeAlreadyCMake3_RK5(); use pm_sampling_kernel_nest_RK5, only: RKC; end subroutine
-    !subroutine killMeAlreadyCMake3_RK4(); use pm_sampling_kernel_nest_RK4, only: RKC; end subroutine
-    !subroutine killMeAlreadyCMake3_RK3(); use pm_sampling_kernel_nest_RK3, only: RKC; end subroutine
-    !subroutine killMeAlreadyCMake3_RK2(); use pm_sampling_kernel_nest_RK2, only: RKC; end subroutine
-    !subroutine killMeAlreadyCMake3_RK1(); use pm_sampling_kernel_nest_RK1, only: RKC; end subroutine
+    !subroutine killMeAlreadyCMake3_RK5(); use pm_sampling_kernel_nest_RK5, only: RKG; end subroutine
+    !subroutine killMeAlreadyCMake3_RK4(); use pm_sampling_kernel_nest_RK4, only: RKG; end subroutine
+    !subroutine killMeAlreadyCMake3_RK3(); use pm_sampling_kernel_nest_RK3, only: RKG; end subroutine
+    !subroutine killMeAlreadyCMake3_RK2(); use pm_sampling_kernel_nest_RK2, only: RKG; end subroutine
+    !subroutine killMeAlreadyCMake3_RK1(); use pm_sampling_kernel_nest_RK1, only: RKG; end subroutine
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

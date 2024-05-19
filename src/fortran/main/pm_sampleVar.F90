@@ -487,9 +487,9 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getVarCorrectionFreq_RK5
 #endif
-        use pm_kind, only: TKC => RK5
-        real(TKC)               , intent(in)                :: weisum
-        real(TKC)                                           :: correction
+        use pm_kind, only: TKG => RK5
+        real(TKG)               , intent(in)                :: weisum
+        real(TKG)                                           :: correction
     end function
 #endif
 
@@ -498,9 +498,9 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getVarCorrectionFreq_RK4
 #endif
-        use pm_kind, only: TKC => RK4
-        real(TKC)               , intent(in)                :: weisum
-        real(TKC)                                           :: correction
+        use pm_kind, only: TKG => RK4
+        real(TKG)               , intent(in)                :: weisum
+        real(TKG)                                           :: correction
     end function
 #endif
 
@@ -509,9 +509,9 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getVarCorrectionFreq_RK3
 #endif
-        use pm_kind, only: TKC => RK3
-        real(TKC)               , intent(in)                :: weisum
-        real(TKC)                                           :: correction
+        use pm_kind, only: TKG => RK3
+        real(TKG)               , intent(in)                :: weisum
+        real(TKG)                                           :: correction
     end function
 #endif
 
@@ -520,9 +520,9 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getVarCorrectionFreq_RK2
 #endif
-        use pm_kind, only: TKC => RK2
-        real(TKC)               , intent(in)                :: weisum
-        real(TKC)                                           :: correction
+        use pm_kind, only: TKG => RK2
+        real(TKG)               , intent(in)                :: weisum
+        real(TKG)                                           :: correction
     end function
 #endif
 
@@ -531,9 +531,9 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getVarCorrectionFreq_RK1
 #endif
-        use pm_kind, only: TKC => RK1
-        real(TKC)               , intent(in)                :: weisum
-        real(TKC)                                           :: correction
+        use pm_kind, only: TKG => RK1
+        real(TKG)               , intent(in)                :: weisum
+        real(TKG)                                           :: correction
     end function
 #endif
 
@@ -544,9 +544,9 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getVarCorrectionReli_RK5
 #endif
-        use pm_kind, only: TKC => RK5
-        real(TKC)               , intent(in)                :: weisum, weisqs
-        real(TKC)                                           :: correction
+        use pm_kind, only: TKG => RK5
+        real(TKG)               , intent(in)                :: weisum, weisqs
+        real(TKG)                                           :: correction
     end function
 #endif
 
@@ -555,9 +555,9 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getVarCorrectionReli_RK4
 #endif
-        use pm_kind, only: TKC => RK4
-        real(TKC)               , intent(in)                :: weisum, weisqs
-        real(TKC)                                           :: correction
+        use pm_kind, only: TKG => RK4
+        real(TKG)               , intent(in)                :: weisum, weisqs
+        real(TKG)                                           :: correction
     end function
 #endif
 
@@ -566,9 +566,9 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getVarCorrectionReli_RK3
 #endif
-        use pm_kind, only: TKC => RK3
-        real(TKC)               , intent(in)                :: weisum, weisqs
-        real(TKC)                                           :: correction
+        use pm_kind, only: TKG => RK3
+        real(TKG)               , intent(in)                :: weisum, weisqs
+        real(TKG)                                           :: correction
     end function
 #endif
 
@@ -577,9 +577,9 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getVarCorrectionReli_RK2
 #endif
-        use pm_kind, only: TKC => RK2
-        real(TKC)               , intent(in)                :: weisum, weisqs
-        real(TKC)                                           :: correction
+        use pm_kind, only: TKG => RK2
+        real(TKG)               , intent(in)                :: weisum, weisqs
+        real(TKG)                                           :: correction
     end function
 #endif
 
@@ -588,9 +588,9 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getVarCorrectionReli_RK1
 #endif
-        use pm_kind, only: TKC => RK1
-        real(TKC)               , intent(in)                :: weisum, weisqs
-        real(TKC)                                           :: correction
+        use pm_kind, only: TKG => RK1
+        real(TKG)               , intent(in)                :: weisum, weisqs
+        real(TKG)                                           :: correction
     end function
 #endif
 
@@ -725,10 +725,10 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getVarALL_WNO_D1_CK5
 #endif
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
         class(weight_type)      , intent(in)                    , optional      :: correction
-        complex(TKC)            , intent(in)    , contiguous                    :: sample(:)
-        real(TKC)                                                               :: var
+        complex(TKG)            , intent(in)    , contiguous                    :: sample(:)
+        real(TKG)                                                               :: var
     end function
 #endif
 
@@ -737,10 +737,10 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getVarALL_WNO_D1_CK4
 #endif
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
         class(weight_type)      , intent(in)                    , optional      :: correction
-        complex(TKC)            , intent(in)    , contiguous                    :: sample(:)
-        real(TKC)                                                               :: var
+        complex(TKG)            , intent(in)    , contiguous                    :: sample(:)
+        real(TKG)                                                               :: var
     end function
 #endif
 
@@ -749,10 +749,10 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getVarALL_WNO_D1_CK3
 #endif
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
         class(weight_type)      , intent(in)                    , optional      :: correction
-        complex(TKC)            , intent(in)    , contiguous                    :: sample(:)
-        real(TKC)                                                               :: var
+        complex(TKG)            , intent(in)    , contiguous                    :: sample(:)
+        real(TKG)                                                               :: var
     end function
 #endif
 
@@ -761,10 +761,10 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getVarALL_WNO_D1_CK2
 #endif
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
         class(weight_type)      , intent(in)                    , optional      :: correction
-        complex(TKC)            , intent(in)    , contiguous                    :: sample(:)
-        real(TKC)                                                               :: var
+        complex(TKG)            , intent(in)    , contiguous                    :: sample(:)
+        real(TKG)                                                               :: var
     end function
 #endif
 
@@ -773,10 +773,10 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getVarALL_WNO_D1_CK1
 #endif
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
         class(weight_type)      , intent(in)                    , optional      :: correction
-        complex(TKC)            , intent(in)    , contiguous                    :: sample(:)
-        real(TKC)                                                               :: var
+        complex(TKG)            , intent(in)    , contiguous                    :: sample(:)
+        real(TKG)                                                               :: var
     end function
 #endif
 
@@ -787,10 +787,10 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getVarALL_WNO_D1_RK5
 #endif
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
         class(weight_type)      , intent(in)                    , optional      :: correction
-        real(TKC)               , intent(in)    , contiguous                    :: sample(:)
-        real(TKC)                                                               :: var
+        real(TKG)               , intent(in)    , contiguous                    :: sample(:)
+        real(TKG)                                                               :: var
     end function
 #endif
 
@@ -799,10 +799,10 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getVarALL_WNO_D1_RK4
 #endif
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
         class(weight_type)      , intent(in)                    , optional      :: correction
-        real(TKC)               , intent(in)    , contiguous                    :: sample(:)
-        real(TKC)                                                               :: var
+        real(TKG)               , intent(in)    , contiguous                    :: sample(:)
+        real(TKG)                                                               :: var
     end function
 #endif
 
@@ -811,10 +811,10 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getVarALL_WNO_D1_RK3
 #endif
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
         class(weight_type)      , intent(in)                    , optional      :: correction
-        real(TKC)               , intent(in)    , contiguous                    :: sample(:)
-        real(TKC)                                                               :: var
+        real(TKG)               , intent(in)    , contiguous                    :: sample(:)
+        real(TKG)                                                               :: var
     end function
 #endif
 
@@ -823,10 +823,10 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getVarALL_WNO_D1_RK2
 #endif
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
         class(weight_type)      , intent(in)                    , optional      :: correction
-        real(TKC)               , intent(in)    , contiguous                    :: sample(:)
-        real(TKC)                                                               :: var
+        real(TKG)               , intent(in)    , contiguous                    :: sample(:)
+        real(TKG)                                                               :: var
     end function
 #endif
 
@@ -835,10 +835,10 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getVarALL_WNO_D1_RK1
 #endif
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
         class(weight_type)      , intent(in)                    , optional      :: correction
-        real(TKC)               , intent(in)    , contiguous                    :: sample(:)
-        real(TKC)                                                               :: var
+        real(TKG)               , intent(in)    , contiguous                    :: sample(:)
+        real(TKG)                                                               :: var
     end function
 #endif
 
@@ -855,11 +855,11 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getVarALL_WTI_D1_CK5
 #endif
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
         class(weight_type)      , intent(in)                    , optional      :: correction
         integer(IK)             , intent(in)    , contiguous                    :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous                    :: sample(:)
-        real(TKC)                                                               :: var
+        complex(TKG)            , intent(in)    , contiguous                    :: sample(:)
+        real(TKG)                                                               :: var
     end function
 #endif
 
@@ -868,11 +868,11 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getVarALL_WTI_D1_CK4
 #endif
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
         class(weight_type)      , intent(in)                    , optional      :: correction
         integer(IK)             , intent(in)    , contiguous                    :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous                    :: sample(:)
-        real(TKC)                                                               :: var
+        complex(TKG)            , intent(in)    , contiguous                    :: sample(:)
+        real(TKG)                                                               :: var
     end function
 #endif
 
@@ -881,11 +881,11 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getVarALL_WTI_D1_CK3
 #endif
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
         class(weight_type)      , intent(in)                    , optional      :: correction
         integer(IK)             , intent(in)    , contiguous                    :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous                    :: sample(:)
-        real(TKC)                                                               :: var
+        complex(TKG)            , intent(in)    , contiguous                    :: sample(:)
+        real(TKG)                                                               :: var
     end function
 #endif
 
@@ -894,11 +894,11 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getVarALL_WTI_D1_CK2
 #endif
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
         class(weight_type)      , intent(in)                    , optional      :: correction
         integer(IK)             , intent(in)    , contiguous                    :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous                    :: sample(:)
-        real(TKC)                                                               :: var
+        complex(TKG)            , intent(in)    , contiguous                    :: sample(:)
+        real(TKG)                                                               :: var
     end function
 #endif
 
@@ -907,11 +907,11 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getVarALL_WTI_D1_CK1
 #endif
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
         class(weight_type)      , intent(in)                    , optional      :: correction
         integer(IK)             , intent(in)    , contiguous                    :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous                    :: sample(:)
-        real(TKC)                                                               :: var
+        complex(TKG)            , intent(in)    , contiguous                    :: sample(:)
+        real(TKG)                                                               :: var
     end function
 #endif
 
@@ -922,11 +922,11 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getVarALL_WTI_D1_RK5
 #endif
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
         class(weight_type)      , intent(in)                    , optional      :: correction
         integer(IK)             , intent(in)    , contiguous                    :: weight(:)
-        real(TKC)               , intent(in)    , contiguous                    :: sample(:)
-        real(TKC)                                                               :: var
+        real(TKG)               , intent(in)    , contiguous                    :: sample(:)
+        real(TKG)                                                               :: var
     end function
 #endif
 
@@ -935,11 +935,11 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getVarALL_WTI_D1_RK4
 #endif
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
         class(weight_type)      , intent(in)                    , optional      :: correction
         integer(IK)             , intent(in)    , contiguous                    :: weight(:)
-        real(TKC)               , intent(in)    , contiguous                    :: sample(:)
-        real(TKC)                                                               :: var
+        real(TKG)               , intent(in)    , contiguous                    :: sample(:)
+        real(TKG)                                                               :: var
     end function
 #endif
 
@@ -948,11 +948,11 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getVarALL_WTI_D1_RK3
 #endif
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
         class(weight_type)      , intent(in)                    , optional      :: correction
         integer(IK)             , intent(in)    , contiguous                    :: weight(:)
-        real(TKC)               , intent(in)    , contiguous                    :: sample(:)
-        real(TKC)                                                               :: var
+        real(TKG)               , intent(in)    , contiguous                    :: sample(:)
+        real(TKG)                                                               :: var
     end function
 #endif
 
@@ -961,11 +961,11 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getVarALL_WTI_D1_RK2
 #endif
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
         class(weight_type)      , intent(in)                    , optional      :: correction
         integer(IK)             , intent(in)    , contiguous                    :: weight(:)
-        real(TKC)               , intent(in)    , contiguous                    :: sample(:)
-        real(TKC)                                                               :: var
+        real(TKG)               , intent(in)    , contiguous                    :: sample(:)
+        real(TKG)                                                               :: var
     end function
 #endif
 
@@ -974,11 +974,11 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getVarALL_WTI_D1_RK1
 #endif
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
         class(weight_type)      , intent(in)                    , optional      :: correction
         integer(IK)             , intent(in)    , contiguous                    :: weight(:)
-        real(TKC)               , intent(in)    , contiguous                    :: sample(:)
-        real(TKC)                                                               :: var
+        real(TKG)               , intent(in)    , contiguous                    :: sample(:)
+        real(TKG)                                                               :: var
     end function
 #endif
 
@@ -995,11 +995,11 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getVarALL_WTR_D1_CK5
 #endif
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
         class(weight_type)      , intent(in)                    , optional      :: correction
-        real(TKC)               , intent(in)    , contiguous                    :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous                    :: sample(:)
-        real(TKC)                                                               :: var
+        real(TKG)               , intent(in)    , contiguous                    :: weight(:)
+        complex(TKG)            , intent(in)    , contiguous                    :: sample(:)
+        real(TKG)                                                               :: var
     end function
 #endif
 
@@ -1008,11 +1008,11 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getVarALL_WTR_D1_CK4
 #endif
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
         class(weight_type)      , intent(in)                    , optional      :: correction
-        real(TKC)               , intent(in)    , contiguous                    :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous                    :: sample(:)
-        real(TKC)                                                               :: var
+        real(TKG)               , intent(in)    , contiguous                    :: weight(:)
+        complex(TKG)            , intent(in)    , contiguous                    :: sample(:)
+        real(TKG)                                                               :: var
     end function
 #endif
 
@@ -1021,11 +1021,11 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getVarALL_WTR_D1_CK3
 #endif
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
         class(weight_type)      , intent(in)                    , optional      :: correction
-        real(TKC)               , intent(in)    , contiguous                    :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous                    :: sample(:)
-        real(TKC)                                                               :: var
+        real(TKG)               , intent(in)    , contiguous                    :: weight(:)
+        complex(TKG)            , intent(in)    , contiguous                    :: sample(:)
+        real(TKG)                                                               :: var
     end function
 #endif
 
@@ -1034,11 +1034,11 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getVarALL_WTR_D1_CK2
 #endif
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
         class(weight_type)      , intent(in)                    , optional      :: correction
-        real(TKC)               , intent(in)    , contiguous                    :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous                    :: sample(:)
-        real(TKC)                                                               :: var
+        real(TKG)               , intent(in)    , contiguous                    :: weight(:)
+        complex(TKG)            , intent(in)    , contiguous                    :: sample(:)
+        real(TKG)                                                               :: var
     end function
 #endif
 
@@ -1047,11 +1047,11 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getVarALL_WTR_D1_CK1
 #endif
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
         class(weight_type)      , intent(in)                    , optional      :: correction
-        real(TKC)               , intent(in)    , contiguous                    :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous                    :: sample(:)
-        real(TKC)                                                               :: var
+        real(TKG)               , intent(in)    , contiguous                    :: weight(:)
+        complex(TKG)            , intent(in)    , contiguous                    :: sample(:)
+        real(TKG)                                                               :: var
     end function
 #endif
 
@@ -1062,11 +1062,11 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getVarALL_WTR_D1_RK5
 #endif
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
         class(weight_type)      , intent(in)                    , optional      :: correction
-        real(TKC)               , intent(in)    , contiguous                    :: weight(:)
-        real(TKC)               , intent(in)    , contiguous                    :: sample(:)
-        real(TKC)                                                               :: var
+        real(TKG)               , intent(in)    , contiguous                    :: weight(:)
+        real(TKG)               , intent(in)    , contiguous                    :: sample(:)
+        real(TKG)                                                               :: var
     end function
 #endif
 
@@ -1075,11 +1075,11 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getVarALL_WTR_D1_RK4
 #endif
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
         class(weight_type)      , intent(in)                    , optional      :: correction
-        real(TKC)               , intent(in)    , contiguous                    :: weight(:)
-        real(TKC)               , intent(in)    , contiguous                    :: sample(:)
-        real(TKC)                                                               :: var
+        real(TKG)               , intent(in)    , contiguous                    :: weight(:)
+        real(TKG)               , intent(in)    , contiguous                    :: sample(:)
+        real(TKG)                                                               :: var
     end function
 #endif
 
@@ -1088,11 +1088,11 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getVarALL_WTR_D1_RK3
 #endif
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
         class(weight_type)      , intent(in)                    , optional      :: correction
-        real(TKC)               , intent(in)    , contiguous                    :: weight(:)
-        real(TKC)               , intent(in)    , contiguous                    :: sample(:)
-        real(TKC)                                                               :: var
+        real(TKG)               , intent(in)    , contiguous                    :: weight(:)
+        real(TKG)               , intent(in)    , contiguous                    :: sample(:)
+        real(TKG)                                                               :: var
     end function
 #endif
 
@@ -1101,11 +1101,11 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getVarALL_WTR_D1_RK2
 #endif
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
         class(weight_type)      , intent(in)                    , optional      :: correction
-        real(TKC)               , intent(in)    , contiguous                    :: weight(:)
-        real(TKC)               , intent(in)    , contiguous                    :: sample(:)
-        real(TKC)                                                               :: var
+        real(TKG)               , intent(in)    , contiguous                    :: weight(:)
+        real(TKG)               , intent(in)    , contiguous                    :: sample(:)
+        real(TKG)                                                               :: var
     end function
 #endif
 
@@ -1114,11 +1114,11 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getVarALL_WTR_D1_RK1
 #endif
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
         class(weight_type)      , intent(in)                    , optional      :: correction
-        real(TKC)               , intent(in)    , contiguous                    :: weight(:)
-        real(TKC)               , intent(in)    , contiguous                    :: sample(:)
-        real(TKC)                                                               :: var
+        real(TKG)               , intent(in)    , contiguous                    :: weight(:)
+        real(TKG)               , intent(in)    , contiguous                    :: sample(:)
+        real(TKG)                                                               :: var
     end function
 #endif
 
@@ -1145,10 +1145,10 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getVarALL_WNO_D2_CK5
 #endif
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
         class(weight_type)      , intent(in)                    , optional      :: correction
-        complex(TKC)            , intent(in)    , contiguous                    :: sample(:,:)
-        real(TKC)                                                               :: var
+        complex(TKG)            , intent(in)    , contiguous                    :: sample(:,:)
+        real(TKG)                                                               :: var
     end function
 #endif
 
@@ -1157,10 +1157,10 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getVarALL_WNO_D2_CK4
 #endif
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
         class(weight_type)      , intent(in)                    , optional      :: correction
-        complex(TKC)            , intent(in)    , contiguous                    :: sample(:,:)
-        real(TKC)                                                               :: var
+        complex(TKG)            , intent(in)    , contiguous                    :: sample(:,:)
+        real(TKG)                                                               :: var
     end function
 #endif
 
@@ -1169,10 +1169,10 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getVarALL_WNO_D2_CK3
 #endif
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
         class(weight_type)      , intent(in)                    , optional      :: correction
-        complex(TKC)            , intent(in)    , contiguous                    :: sample(:,:)
-        real(TKC)                                                               :: var
+        complex(TKG)            , intent(in)    , contiguous                    :: sample(:,:)
+        real(TKG)                                                               :: var
     end function
 #endif
 
@@ -1181,10 +1181,10 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getVarALL_WNO_D2_CK2
 #endif
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
         class(weight_type)      , intent(in)                    , optional      :: correction
-        complex(TKC)            , intent(in)    , contiguous                    :: sample(:,:)
-        real(TKC)                                                               :: var
+        complex(TKG)            , intent(in)    , contiguous                    :: sample(:,:)
+        real(TKG)                                                               :: var
     end function
 #endif
 
@@ -1193,10 +1193,10 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getVarALL_WNO_D2_CK1
 #endif
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
         class(weight_type)      , intent(in)                    , optional      :: correction
-        complex(TKC)            , intent(in)    , contiguous                    :: sample(:,:)
-        real(TKC)                                                               :: var
+        complex(TKG)            , intent(in)    , contiguous                    :: sample(:,:)
+        real(TKG)                                                               :: var
     end function
 #endif
 
@@ -1207,10 +1207,10 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getVarALL_WNO_D2_RK5
 #endif
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
         class(weight_type)      , intent(in)                    , optional      :: correction
-        real(TKC)               , intent(in)    , contiguous                    :: sample(:,:)
-        real(TKC)                                                               :: var
+        real(TKG)               , intent(in)    , contiguous                    :: sample(:,:)
+        real(TKG)                                                               :: var
     end function
 #endif
 
@@ -1219,10 +1219,10 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getVarALL_WNO_D2_RK4
 #endif
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
         class(weight_type)      , intent(in)                    , optional      :: correction
-        real(TKC)               , intent(in)    , contiguous                    :: sample(:,:)
-        real(TKC)                                                               :: var
+        real(TKG)               , intent(in)    , contiguous                    :: sample(:,:)
+        real(TKG)                                                               :: var
     end function
 #endif
 
@@ -1231,10 +1231,10 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getVarALL_WNO_D2_RK3
 #endif
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
         class(weight_type)      , intent(in)                    , optional      :: correction
-        real(TKC)               , intent(in)    , contiguous                    :: sample(:,:)
-        real(TKC)                                                               :: var
+        real(TKG)               , intent(in)    , contiguous                    :: sample(:,:)
+        real(TKG)                                                               :: var
     end function
 #endif
 
@@ -1243,10 +1243,10 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getVarALL_WNO_D2_RK2
 #endif
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
         class(weight_type)      , intent(in)                    , optional      :: correction
-        real(TKC)               , intent(in)    , contiguous                    :: sample(:,:)
-        real(TKC)                                                               :: var
+        real(TKG)               , intent(in)    , contiguous                    :: sample(:,:)
+        real(TKG)                                                               :: var
     end function
 #endif
 
@@ -1255,10 +1255,10 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getVarALL_WNO_D2_RK1
 #endif
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
         class(weight_type)      , intent(in)                    , optional      :: correction
-        real(TKC)               , intent(in)    , contiguous                    :: sample(:,:)
-        real(TKC)                                                               :: var
+        real(TKG)               , intent(in)    , contiguous                    :: sample(:,:)
+        real(TKG)                                                               :: var
     end function
 #endif
 
@@ -1275,11 +1275,11 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getVarALL_WTI_D2_CK5
 #endif
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
         class(weight_type)      , intent(in)                    , optional      :: correction
         integer(IK)             , intent(in)    , contiguous                    :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous                    :: sample(:,:)
-        real(TKC)                                                               :: var
+        complex(TKG)            , intent(in)    , contiguous                    :: sample(:,:)
+        real(TKG)                                                               :: var
     end function
 #endif
 
@@ -1288,11 +1288,11 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getVarALL_WTI_D2_CK4
 #endif
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
         class(weight_type)      , intent(in)                    , optional      :: correction
         integer(IK)             , intent(in)    , contiguous                    :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous                    :: sample(:,:)
-        real(TKC)                                                               :: var
+        complex(TKG)            , intent(in)    , contiguous                    :: sample(:,:)
+        real(TKG)                                                               :: var
     end function
 #endif
 
@@ -1301,11 +1301,11 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getVarALL_WTI_D2_CK3
 #endif
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
         class(weight_type)      , intent(in)                    , optional      :: correction
         integer(IK)             , intent(in)    , contiguous                    :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous                    :: sample(:,:)
-        real(TKC)                                                               :: var
+        complex(TKG)            , intent(in)    , contiguous                    :: sample(:,:)
+        real(TKG)                                                               :: var
     end function
 #endif
 
@@ -1314,11 +1314,11 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getVarALL_WTI_D2_CK2
 #endif
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
         class(weight_type)      , intent(in)                    , optional      :: correction
         integer(IK)             , intent(in)    , contiguous                    :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous                    :: sample(:,:)
-        real(TKC)                                                               :: var
+        complex(TKG)            , intent(in)    , contiguous                    :: sample(:,:)
+        real(TKG)                                                               :: var
     end function
 #endif
 
@@ -1327,11 +1327,11 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getVarALL_WTI_D2_CK1
 #endif
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
         class(weight_type)      , intent(in)                    , optional      :: correction
         integer(IK)             , intent(in)    , contiguous                    :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous                    :: sample(:,:)
-        real(TKC)                                                               :: var
+        complex(TKG)            , intent(in)    , contiguous                    :: sample(:,:)
+        real(TKG)                                                               :: var
     end function
 #endif
 
@@ -1342,11 +1342,11 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getVarALL_WTI_D2_RK5
 #endif
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
         class(weight_type)      , intent(in)                    , optional      :: correction
         integer(IK)             , intent(in)    , contiguous                    :: weight(:)
-        real(TKC)               , intent(in)    , contiguous                    :: sample(:,:)
-        real(TKC)                                                               :: var
+        real(TKG)               , intent(in)    , contiguous                    :: sample(:,:)
+        real(TKG)                                                               :: var
     end function
 #endif
 
@@ -1355,11 +1355,11 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getVarALL_WTI_D2_RK4
 #endif
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
         class(weight_type)      , intent(in)                    , optional      :: correction
         integer(IK)             , intent(in)    , contiguous                    :: weight(:)
-        real(TKC)               , intent(in)    , contiguous                    :: sample(:,:)
-        real(TKC)                                                               :: var
+        real(TKG)               , intent(in)    , contiguous                    :: sample(:,:)
+        real(TKG)                                                               :: var
     end function
 #endif
 
@@ -1368,11 +1368,11 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getVarALL_WTI_D2_RK3
 #endif
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
         class(weight_type)      , intent(in)                    , optional      :: correction
         integer(IK)             , intent(in)    , contiguous                    :: weight(:)
-        real(TKC)               , intent(in)    , contiguous                    :: sample(:,:)
-        real(TKC)                                                               :: var
+        real(TKG)               , intent(in)    , contiguous                    :: sample(:,:)
+        real(TKG)                                                               :: var
     end function
 #endif
 
@@ -1381,11 +1381,11 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getVarALL_WTI_D2_RK2
 #endif
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
         class(weight_type)      , intent(in)                    , optional      :: correction
         integer(IK)             , intent(in)    , contiguous                    :: weight(:)
-        real(TKC)               , intent(in)    , contiguous                    :: sample(:,:)
-        real(TKC)                                                               :: var
+        real(TKG)               , intent(in)    , contiguous                    :: sample(:,:)
+        real(TKG)                                                               :: var
     end function
 #endif
 
@@ -1394,11 +1394,11 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getVarALL_WTI_D2_RK1
 #endif
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
         class(weight_type)      , intent(in)                    , optional      :: correction
         integer(IK)             , intent(in)    , contiguous                    :: weight(:)
-        real(TKC)               , intent(in)    , contiguous                    :: sample(:,:)
-        real(TKC)                                                               :: var
+        real(TKG)               , intent(in)    , contiguous                    :: sample(:,:)
+        real(TKG)                                                               :: var
     end function
 #endif
 
@@ -1415,11 +1415,11 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getVarALL_WTR_D2_CK5
 #endif
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
         class(weight_type)      , intent(in)                    , optional      :: correction
-        real(TKC)               , intent(in)    , contiguous                    :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous                    :: sample(:,:)
-        real(TKC)                                                               :: var
+        real(TKG)               , intent(in)    , contiguous                    :: weight(:)
+        complex(TKG)            , intent(in)    , contiguous                    :: sample(:,:)
+        real(TKG)                                                               :: var
     end function
 #endif
 
@@ -1428,11 +1428,11 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getVarALL_WTR_D2_CK4
 #endif
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
         class(weight_type)      , intent(in)                    , optional      :: correction
-        real(TKC)               , intent(in)    , contiguous                    :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous                    :: sample(:,:)
-        real(TKC)                                                               :: var
+        real(TKG)               , intent(in)    , contiguous                    :: weight(:)
+        complex(TKG)            , intent(in)    , contiguous                    :: sample(:,:)
+        real(TKG)                                                               :: var
     end function
 #endif
 
@@ -1441,11 +1441,11 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getVarALL_WTR_D2_CK3
 #endif
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
         class(weight_type)      , intent(in)                    , optional      :: correction
-        real(TKC)               , intent(in)    , contiguous                    :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous                    :: sample(:,:)
-        real(TKC)                                                               :: var
+        real(TKG)               , intent(in)    , contiguous                    :: weight(:)
+        complex(TKG)            , intent(in)    , contiguous                    :: sample(:,:)
+        real(TKG)                                                               :: var
     end function
 #endif
 
@@ -1454,11 +1454,11 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getVarALL_WTR_D2_CK2
 #endif
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
         class(weight_type)      , intent(in)                    , optional      :: correction
-        real(TKC)               , intent(in)    , contiguous                    :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous                    :: sample(:,:)
-        real(TKC)                                                               :: var
+        real(TKG)               , intent(in)    , contiguous                    :: weight(:)
+        complex(TKG)            , intent(in)    , contiguous                    :: sample(:,:)
+        real(TKG)                                                               :: var
     end function
 #endif
 
@@ -1467,11 +1467,11 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getVarALL_WTR_D2_CK1
 #endif
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
         class(weight_type)      , intent(in)                    , optional      :: correction
-        real(TKC)               , intent(in)    , contiguous                    :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous                    :: sample(:,:)
-        real(TKC)                                                               :: var
+        real(TKG)               , intent(in)    , contiguous                    :: weight(:)
+        complex(TKG)            , intent(in)    , contiguous                    :: sample(:,:)
+        real(TKG)                                                               :: var
     end function
 #endif
 
@@ -1482,11 +1482,11 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getVarALL_WTR_D2_RK5
 #endif
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
         class(weight_type)      , intent(in)                    , optional      :: correction
-        real(TKC)               , intent(in)    , contiguous                    :: weight(:)
-        real(TKC)               , intent(in)    , contiguous                    :: sample(:,:)
-        real(TKC)                                                               :: var
+        real(TKG)               , intent(in)    , contiguous                    :: weight(:)
+        real(TKG)               , intent(in)    , contiguous                    :: sample(:,:)
+        real(TKG)                                                               :: var
     end function
 #endif
 
@@ -1495,11 +1495,11 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getVarALL_WTR_D2_RK4
 #endif
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
         class(weight_type)      , intent(in)                    , optional      :: correction
-        real(TKC)               , intent(in)    , contiguous                    :: weight(:)
-        real(TKC)               , intent(in)    , contiguous                    :: sample(:,:)
-        real(TKC)                                                               :: var
+        real(TKG)               , intent(in)    , contiguous                    :: weight(:)
+        real(TKG)               , intent(in)    , contiguous                    :: sample(:,:)
+        real(TKG)                                                               :: var
     end function
 #endif
 
@@ -1508,11 +1508,11 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getVarALL_WTR_D2_RK3
 #endif
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
         class(weight_type)      , intent(in)                    , optional      :: correction
-        real(TKC)               , intent(in)    , contiguous                    :: weight(:)
-        real(TKC)               , intent(in)    , contiguous                    :: sample(:,:)
-        real(TKC)                                                               :: var
+        real(TKG)               , intent(in)    , contiguous                    :: weight(:)
+        real(TKG)               , intent(in)    , contiguous                    :: sample(:,:)
+        real(TKG)                                                               :: var
     end function
 #endif
 
@@ -1521,11 +1521,11 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getVarALL_WTR_D2_RK2
 #endif
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
         class(weight_type)      , intent(in)                    , optional      :: correction
-        real(TKC)               , intent(in)    , contiguous                    :: weight(:)
-        real(TKC)               , intent(in)    , contiguous                    :: sample(:,:)
-        real(TKC)                                                               :: var
+        real(TKG)               , intent(in)    , contiguous                    :: weight(:)
+        real(TKG)               , intent(in)    , contiguous                    :: sample(:,:)
+        real(TKG)                                                               :: var
     end function
 #endif
 
@@ -1534,11 +1534,11 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getVarALL_WTR_D2_RK1
 #endif
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
         class(weight_type)      , intent(in)                    , optional      :: correction
-        real(TKC)               , intent(in)    , contiguous                    :: weight(:)
-        real(TKC)               , intent(in)    , contiguous                    :: sample(:,:)
-        real(TKC)                                                               :: var
+        real(TKG)               , intent(in)    , contiguous                    :: weight(:)
+        real(TKG)               , intent(in)    , contiguous                    :: sample(:,:)
+        real(TKG)                                                               :: var
     end function
 #endif
 
@@ -1565,11 +1565,11 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getVarDIM_WNO_D1_CK5
 #endif
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
         integer(IK)             , intent(in)                                    :: dim
         class(weight_type)      , intent(in)                    , optional      :: correction
-        complex(TKC)            , intent(in)    , contiguous                    :: sample(:)
-        real(TKC)                                                               :: var
+        complex(TKG)            , intent(in)    , contiguous                    :: sample(:)
+        real(TKG)                                                               :: var
     end function
 #endif
 
@@ -1578,11 +1578,11 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getVarDIM_WNO_D1_CK4
 #endif
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
         integer(IK)             , intent(in)                                    :: dim
         class(weight_type)      , intent(in)                    , optional      :: correction
-        complex(TKC)            , intent(in)    , contiguous                    :: sample(:)
-        real(TKC)                                                               :: var
+        complex(TKG)            , intent(in)    , contiguous                    :: sample(:)
+        real(TKG)                                                               :: var
     end function
 #endif
 
@@ -1591,11 +1591,11 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getVarDIM_WNO_D1_CK3
 #endif
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
         integer(IK)             , intent(in)                                    :: dim
         class(weight_type)      , intent(in)                    , optional      :: correction
-        complex(TKC)            , intent(in)    , contiguous                    :: sample(:)
-        real(TKC)                                                               :: var
+        complex(TKG)            , intent(in)    , contiguous                    :: sample(:)
+        real(TKG)                                                               :: var
     end function
 #endif
 
@@ -1604,11 +1604,11 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getVarDIM_WNO_D1_CK2
 #endif
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
         integer(IK)             , intent(in)                                    :: dim
         class(weight_type)      , intent(in)                    , optional      :: correction
-        complex(TKC)            , intent(in)    , contiguous                    :: sample(:)
-        real(TKC)                                                               :: var
+        complex(TKG)            , intent(in)    , contiguous                    :: sample(:)
+        real(TKG)                                                               :: var
     end function
 #endif
 
@@ -1617,11 +1617,11 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getVarDIM_WNO_D1_CK1
 #endif
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
         integer(IK)             , intent(in)                                    :: dim
         class(weight_type)      , intent(in)                    , optional      :: correction
-        complex(TKC)            , intent(in)    , contiguous                    :: sample(:)
-        real(TKC)                                                               :: var
+        complex(TKG)            , intent(in)    , contiguous                    :: sample(:)
+        real(TKG)                                                               :: var
     end function
 #endif
 
@@ -1632,11 +1632,11 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getVarDIM_WNO_D1_RK5
 #endif
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
         integer(IK)             , intent(in)                                    :: dim
         class(weight_type)      , intent(in)                    , optional      :: correction
-        real(TKC)               , intent(in)    , contiguous                    :: sample(:)
-        real(TKC)                                                               :: var
+        real(TKG)               , intent(in)    , contiguous                    :: sample(:)
+        real(TKG)                                                               :: var
     end function
 #endif
 
@@ -1645,11 +1645,11 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getVarDIM_WNO_D1_RK4
 #endif
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
         integer(IK)             , intent(in)                                    :: dim
         class(weight_type)      , intent(in)                    , optional      :: correction
-        real(TKC)               , intent(in)    , contiguous                    :: sample(:)
-        real(TKC)                                                               :: var
+        real(TKG)               , intent(in)    , contiguous                    :: sample(:)
+        real(TKG)                                                               :: var
     end function
 #endif
 
@@ -1658,11 +1658,11 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getVarDIM_WNO_D1_RK3
 #endif
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
         integer(IK)             , intent(in)                                    :: dim
         class(weight_type)      , intent(in)                    , optional      :: correction
-        real(TKC)               , intent(in)    , contiguous                    :: sample(:)
-        real(TKC)                                                               :: var
+        real(TKG)               , intent(in)    , contiguous                    :: sample(:)
+        real(TKG)                                                               :: var
     end function
 #endif
 
@@ -1671,11 +1671,11 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getVarDIM_WNO_D1_RK2
 #endif
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
         integer(IK)             , intent(in)                                    :: dim
         class(weight_type)      , intent(in)                    , optional      :: correction
-        real(TKC)               , intent(in)    , contiguous                    :: sample(:)
-        real(TKC)                                                               :: var
+        real(TKG)               , intent(in)    , contiguous                    :: sample(:)
+        real(TKG)                                                               :: var
     end function
 #endif
 
@@ -1684,11 +1684,11 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getVarDIM_WNO_D1_RK1
 #endif
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
         integer(IK)             , intent(in)                                    :: dim
         class(weight_type)      , intent(in)                    , optional      :: correction
-        real(TKC)               , intent(in)    , contiguous                    :: sample(:)
-        real(TKC)                                                               :: var
+        real(TKG)               , intent(in)    , contiguous                    :: sample(:)
+        real(TKG)                                                               :: var
     end function
 #endif
 
@@ -1705,12 +1705,12 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getVarDIM_WTI_D1_CK5
 #endif
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
         integer(IK)             , intent(in)                                    :: dim
         class(weight_type)      , intent(in)                    , optional      :: correction
         integer(IK)             , intent(in)    , contiguous                    :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous                    :: sample(:)
-        real(TKC)                                                               :: var
+        complex(TKG)            , intent(in)    , contiguous                    :: sample(:)
+        real(TKG)                                                               :: var
     end function
 #endif
 
@@ -1719,12 +1719,12 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getVarDIM_WTI_D1_CK4
 #endif
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
         integer(IK)             , intent(in)                                    :: dim
         class(weight_type)      , intent(in)                    , optional      :: correction
         integer(IK)             , intent(in)    , contiguous                    :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous                    :: sample(:)
-        real(TKC)                                                               :: var
+        complex(TKG)            , intent(in)    , contiguous                    :: sample(:)
+        real(TKG)                                                               :: var
     end function
 #endif
 
@@ -1733,12 +1733,12 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getVarDIM_WTI_D1_CK3
 #endif
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
         integer(IK)             , intent(in)                                    :: dim
         class(weight_type)      , intent(in)                    , optional      :: correction
         integer(IK)             , intent(in)    , contiguous                    :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous                    :: sample(:)
-        real(TKC)                                                               :: var
+        complex(TKG)            , intent(in)    , contiguous                    :: sample(:)
+        real(TKG)                                                               :: var
     end function
 #endif
 
@@ -1747,12 +1747,12 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getVarDIM_WTI_D1_CK2
 #endif
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
         integer(IK)             , intent(in)                                    :: dim
         class(weight_type)      , intent(in)                    , optional      :: correction
         integer(IK)             , intent(in)    , contiguous                    :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous                    :: sample(:)
-        real(TKC)                                                               :: var
+        complex(TKG)            , intent(in)    , contiguous                    :: sample(:)
+        real(TKG)                                                               :: var
     end function
 #endif
 
@@ -1761,12 +1761,12 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getVarDIM_WTI_D1_CK1
 #endif
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
         integer(IK)             , intent(in)                                    :: dim
         class(weight_type)      , intent(in)                    , optional      :: correction
         integer(IK)             , intent(in)    , contiguous                    :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous                    :: sample(:)
-        real(TKC)                                                               :: var
+        complex(TKG)            , intent(in)    , contiguous                    :: sample(:)
+        real(TKG)                                                               :: var
     end function
 #endif
 
@@ -1777,12 +1777,12 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getVarDIM_WTI_D1_RK5
 #endif
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
         integer(IK)             , intent(in)                                    :: dim
         class(weight_type)      , intent(in)                    , optional      :: correction
         integer(IK)             , intent(in)    , contiguous                    :: weight(:)
-        real(TKC)               , intent(in)    , contiguous                    :: sample(:)
-        real(TKC)                                                               :: var
+        real(TKG)               , intent(in)    , contiguous                    :: sample(:)
+        real(TKG)                                                               :: var
     end function
 #endif
 
@@ -1791,12 +1791,12 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getVarDIM_WTI_D1_RK4
 #endif
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
         integer(IK)             , intent(in)                                    :: dim
         class(weight_type)      , intent(in)                    , optional      :: correction
         integer(IK)             , intent(in)    , contiguous                    :: weight(:)
-        real(TKC)               , intent(in)    , contiguous                    :: sample(:)
-        real(TKC)                                                               :: var
+        real(TKG)               , intent(in)    , contiguous                    :: sample(:)
+        real(TKG)                                                               :: var
     end function
 #endif
 
@@ -1805,12 +1805,12 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getVarDIM_WTI_D1_RK3
 #endif
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
         integer(IK)             , intent(in)                                    :: dim
         class(weight_type)      , intent(in)                    , optional      :: correction
         integer(IK)             , intent(in)    , contiguous                    :: weight(:)
-        real(TKC)               , intent(in)    , contiguous                    :: sample(:)
-        real(TKC)                                                               :: var
+        real(TKG)               , intent(in)    , contiguous                    :: sample(:)
+        real(TKG)                                                               :: var
     end function
 #endif
 
@@ -1819,12 +1819,12 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getVarDIM_WTI_D1_RK2
 #endif
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
         integer(IK)             , intent(in)                                    :: dim
         class(weight_type)      , intent(in)                    , optional      :: correction
         integer(IK)             , intent(in)    , contiguous                    :: weight(:)
-        real(TKC)               , intent(in)    , contiguous                    :: sample(:)
-        real(TKC)                                                               :: var
+        real(TKG)               , intent(in)    , contiguous                    :: sample(:)
+        real(TKG)                                                               :: var
     end function
 #endif
 
@@ -1833,12 +1833,12 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getVarDIM_WTI_D1_RK1
 #endif
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
         integer(IK)             , intent(in)                                    :: dim
         class(weight_type)      , intent(in)                    , optional      :: correction
         integer(IK)             , intent(in)    , contiguous                    :: weight(:)
-        real(TKC)               , intent(in)    , contiguous                    :: sample(:)
-        real(TKC)                                                               :: var
+        real(TKG)               , intent(in)    , contiguous                    :: sample(:)
+        real(TKG)                                                               :: var
     end function
 #endif
 
@@ -1855,12 +1855,12 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getVarDIM_WTR_D1_CK5
 #endif
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
         integer(IK)             , intent(in)                                    :: dim
         class(weight_type)      , intent(in)                    , optional      :: correction
-        real(TKC)               , intent(in)    , contiguous                    :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous                    :: sample(:)
-        real(TKC)                                                               :: var
+        real(TKG)               , intent(in)    , contiguous                    :: weight(:)
+        complex(TKG)            , intent(in)    , contiguous                    :: sample(:)
+        real(TKG)                                                               :: var
     end function
 #endif
 
@@ -1869,12 +1869,12 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getVarDIM_WTR_D1_CK4
 #endif
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
         integer(IK)             , intent(in)                                    :: dim
         class(weight_type)      , intent(in)                    , optional      :: correction
-        real(TKC)               , intent(in)    , contiguous                    :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous                    :: sample(:)
-        real(TKC)                                                               :: var
+        real(TKG)               , intent(in)    , contiguous                    :: weight(:)
+        complex(TKG)            , intent(in)    , contiguous                    :: sample(:)
+        real(TKG)                                                               :: var
     end function
 #endif
 
@@ -1883,12 +1883,12 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getVarDIM_WTR_D1_CK3
 #endif
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
         integer(IK)             , intent(in)                                    :: dim
         class(weight_type)      , intent(in)                    , optional      :: correction
-        real(TKC)               , intent(in)    , contiguous                    :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous                    :: sample(:)
-        real(TKC)                                                               :: var
+        real(TKG)               , intent(in)    , contiguous                    :: weight(:)
+        complex(TKG)            , intent(in)    , contiguous                    :: sample(:)
+        real(TKG)                                                               :: var
     end function
 #endif
 
@@ -1897,12 +1897,12 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getVarDIM_WTR_D1_CK2
 #endif
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
         integer(IK)             , intent(in)                                    :: dim
         class(weight_type)      , intent(in)                    , optional      :: correction
-        real(TKC)               , intent(in)    , contiguous                    :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous                    :: sample(:)
-        real(TKC)                                                               :: var
+        real(TKG)               , intent(in)    , contiguous                    :: weight(:)
+        complex(TKG)            , intent(in)    , contiguous                    :: sample(:)
+        real(TKG)                                                               :: var
     end function
 #endif
 
@@ -1911,12 +1911,12 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getVarDIM_WTR_D1_CK1
 #endif
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
         integer(IK)             , intent(in)                                    :: dim
         class(weight_type)      , intent(in)                    , optional      :: correction
-        real(TKC)               , intent(in)    , contiguous                    :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous                    :: sample(:)
-        real(TKC)                                                               :: var
+        real(TKG)               , intent(in)    , contiguous                    :: weight(:)
+        complex(TKG)            , intent(in)    , contiguous                    :: sample(:)
+        real(TKG)                                                               :: var
     end function
 #endif
 
@@ -1927,12 +1927,12 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getVarDIM_WTR_D1_RK5
 #endif
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
         integer(IK)             , intent(in)                                    :: dim
         class(weight_type)      , intent(in)                    , optional      :: correction
-        real(TKC)               , intent(in)    , contiguous                    :: weight(:)
-        real(TKC)               , intent(in)    , contiguous                    :: sample(:)
-        real(TKC)                                                               :: var
+        real(TKG)               , intent(in)    , contiguous                    :: weight(:)
+        real(TKG)               , intent(in)    , contiguous                    :: sample(:)
+        real(TKG)                                                               :: var
     end function
 #endif
 
@@ -1941,12 +1941,12 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getVarDIM_WTR_D1_RK4
 #endif
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
         integer(IK)             , intent(in)                                    :: dim
         class(weight_type)      , intent(in)                    , optional      :: correction
-        real(TKC)               , intent(in)    , contiguous                    :: weight(:)
-        real(TKC)               , intent(in)    , contiguous                    :: sample(:)
-        real(TKC)                                                               :: var
+        real(TKG)               , intent(in)    , contiguous                    :: weight(:)
+        real(TKG)               , intent(in)    , contiguous                    :: sample(:)
+        real(TKG)                                                               :: var
     end function
 #endif
 
@@ -1955,12 +1955,12 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getVarDIM_WTR_D1_RK3
 #endif
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
         integer(IK)             , intent(in)                                    :: dim
         class(weight_type)      , intent(in)                    , optional      :: correction
-        real(TKC)               , intent(in)    , contiguous                    :: weight(:)
-        real(TKC)               , intent(in)    , contiguous                    :: sample(:)
-        real(TKC)                                                               :: var
+        real(TKG)               , intent(in)    , contiguous                    :: weight(:)
+        real(TKG)               , intent(in)    , contiguous                    :: sample(:)
+        real(TKG)                                                               :: var
     end function
 #endif
 
@@ -1969,12 +1969,12 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getVarDIM_WTR_D1_RK2
 #endif
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
         integer(IK)             , intent(in)                                    :: dim
         class(weight_type)      , intent(in)                    , optional      :: correction
-        real(TKC)               , intent(in)    , contiguous                    :: weight(:)
-        real(TKC)               , intent(in)    , contiguous                    :: sample(:)
-        real(TKC)                                                               :: var
+        real(TKG)               , intent(in)    , contiguous                    :: weight(:)
+        real(TKG)               , intent(in)    , contiguous                    :: sample(:)
+        real(TKG)                                                               :: var
     end function
 #endif
 
@@ -1983,12 +1983,12 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getVarDIM_WTR_D1_RK1
 #endif
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
         integer(IK)             , intent(in)                                    :: dim
         class(weight_type)      , intent(in)                    , optional      :: correction
-        real(TKC)               , intent(in)    , contiguous                    :: weight(:)
-        real(TKC)               , intent(in)    , contiguous                    :: sample(:)
-        real(TKC)                                                               :: var
+        real(TKG)               , intent(in)    , contiguous                    :: weight(:)
+        real(TKG)               , intent(in)    , contiguous                    :: sample(:)
+        real(TKG)                                                               :: var
     end function
 #endif
 
@@ -2015,11 +2015,11 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getVarDIM_WNO_D2_CK5
 #endif
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
         integer(IK)             , intent(in)                                    :: dim
         class(weight_type)      , intent(in)                    , optional      :: correction
-        complex(TKC)            , intent(in)    , contiguous                    :: sample(:,:)
-        real(TKC)                                                               :: var(size(sample, 3 - dim, IK))
+        complex(TKG)            , intent(in)    , contiguous                    :: sample(:,:)
+        real(TKG)                                                               :: var(size(sample, 3 - dim, IK))
     end function
 #endif
 
@@ -2028,11 +2028,11 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getVarDIM_WNO_D2_CK4
 #endif
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
         integer(IK)             , intent(in)                                    :: dim
         class(weight_type)      , intent(in)                    , optional      :: correction
-        complex(TKC)            , intent(in)    , contiguous                    :: sample(:,:)
-        real(TKC)                                                               :: var(size(sample, 3 - dim, IK))
+        complex(TKG)            , intent(in)    , contiguous                    :: sample(:,:)
+        real(TKG)                                                               :: var(size(sample, 3 - dim, IK))
     end function
 #endif
 
@@ -2041,11 +2041,11 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getVarDIM_WNO_D2_CK3
 #endif
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
         integer(IK)             , intent(in)                                    :: dim
         class(weight_type)      , intent(in)                    , optional      :: correction
-        complex(TKC)            , intent(in)    , contiguous                    :: sample(:,:)
-        real(TKC)                                                               :: var(size(sample, 3 - dim, IK))
+        complex(TKG)            , intent(in)    , contiguous                    :: sample(:,:)
+        real(TKG)                                                               :: var(size(sample, 3 - dim, IK))
     end function
 #endif
 
@@ -2054,11 +2054,11 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getVarDIM_WNO_D2_CK2
 #endif
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
         integer(IK)             , intent(in)                                    :: dim
         class(weight_type)      , intent(in)                    , optional      :: correction
-        complex(TKC)            , intent(in)    , contiguous                    :: sample(:,:)
-        real(TKC)                                                               :: var(size(sample, 3 - dim, IK))
+        complex(TKG)            , intent(in)    , contiguous                    :: sample(:,:)
+        real(TKG)                                                               :: var(size(sample, 3 - dim, IK))
     end function
 #endif
 
@@ -2067,11 +2067,11 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getVarDIM_WNO_D2_CK1
 #endif
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
         integer(IK)             , intent(in)                                    :: dim
         class(weight_type)      , intent(in)                    , optional      :: correction
-        complex(TKC)            , intent(in)    , contiguous                    :: sample(:,:)
-        real(TKC)                                                               :: var(size(sample, 3 - dim, IK))
+        complex(TKG)            , intent(in)    , contiguous                    :: sample(:,:)
+        real(TKG)                                                               :: var(size(sample, 3 - dim, IK))
     end function
 #endif
 
@@ -2082,11 +2082,11 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getVarDIM_WNO_D2_RK5
 #endif
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
         integer(IK)             , intent(in)                                    :: dim
         class(weight_type)      , intent(in)                    , optional      :: correction
-        real(TKC)               , intent(in)    , contiguous                    :: sample(:,:)
-        real(TKC)                                                               :: var(size(sample, 3 - dim, IK))
+        real(TKG)               , intent(in)    , contiguous                    :: sample(:,:)
+        real(TKG)                                                               :: var(size(sample, 3 - dim, IK))
     end function
 #endif
 
@@ -2095,11 +2095,11 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getVarDIM_WNO_D2_RK4
 #endif
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
         integer(IK)             , intent(in)                                    :: dim
         class(weight_type)      , intent(in)                    , optional      :: correction
-        real(TKC)               , intent(in)    , contiguous                    :: sample(:,:)
-        real(TKC)                                                               :: var(size(sample, 3 - dim, IK))
+        real(TKG)               , intent(in)    , contiguous                    :: sample(:,:)
+        real(TKG)                                                               :: var(size(sample, 3 - dim, IK))
     end function
 #endif
 
@@ -2108,11 +2108,11 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getVarDIM_WNO_D2_RK3
 #endif
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
         integer(IK)             , intent(in)                                    :: dim
         class(weight_type)      , intent(in)                    , optional      :: correction
-        real(TKC)               , intent(in)    , contiguous                    :: sample(:,:)
-        real(TKC)                                                               :: var(size(sample, 3 - dim, IK))
+        real(TKG)               , intent(in)    , contiguous                    :: sample(:,:)
+        real(TKG)                                                               :: var(size(sample, 3 - dim, IK))
     end function
 #endif
 
@@ -2121,11 +2121,11 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getVarDIM_WNO_D2_RK2
 #endif
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
         integer(IK)             , intent(in)                                    :: dim
         class(weight_type)      , intent(in)                    , optional      :: correction
-        real(TKC)               , intent(in)    , contiguous                    :: sample(:,:)
-        real(TKC)                                                               :: var(size(sample, 3 - dim, IK))
+        real(TKG)               , intent(in)    , contiguous                    :: sample(:,:)
+        real(TKG)                                                               :: var(size(sample, 3 - dim, IK))
     end function
 #endif
 
@@ -2134,11 +2134,11 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getVarDIM_WNO_D2_RK1
 #endif
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
         integer(IK)             , intent(in)                                    :: dim
         class(weight_type)      , intent(in)                    , optional      :: correction
-        real(TKC)               , intent(in)    , contiguous                    :: sample(:,:)
-        real(TKC)                                                               :: var(size(sample, 3 - dim, IK))
+        real(TKG)               , intent(in)    , contiguous                    :: sample(:,:)
+        real(TKG)                                                               :: var(size(sample, 3 - dim, IK))
     end function
 #endif
 
@@ -2155,12 +2155,12 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getVarDIM_WTI_D2_CK5
 #endif
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
         integer(IK)             , intent(in)                                    :: dim
         class(weight_type)      , intent(in)                    , optional      :: correction
         integer(IK)             , intent(in)    , contiguous                    :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous                    :: sample(:,:)
-        real(TKC)                                                               :: var(size(sample, 3 - dim, IK))
+        complex(TKG)            , intent(in)    , contiguous                    :: sample(:,:)
+        real(TKG)                                                               :: var(size(sample, 3 - dim, IK))
     end function
 #endif
 
@@ -2169,12 +2169,12 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getVarDIM_WTI_D2_CK4
 #endif
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
         integer(IK)             , intent(in)                                    :: dim
         class(weight_type)      , intent(in)                    , optional      :: correction
         integer(IK)             , intent(in)    , contiguous                    :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous                    :: sample(:,:)
-        real(TKC)                                                               :: var(size(sample, 3 - dim, IK))
+        complex(TKG)            , intent(in)    , contiguous                    :: sample(:,:)
+        real(TKG)                                                               :: var(size(sample, 3 - dim, IK))
     end function
 #endif
 
@@ -2183,12 +2183,12 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getVarDIM_WTI_D2_CK3
 #endif
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
         integer(IK)             , intent(in)                                    :: dim
         class(weight_type)      , intent(in)                    , optional      :: correction
         integer(IK)             , intent(in)    , contiguous                    :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous                    :: sample(:,:)
-        real(TKC)                                                               :: var(size(sample, 3 - dim, IK))
+        complex(TKG)            , intent(in)    , contiguous                    :: sample(:,:)
+        real(TKG)                                                               :: var(size(sample, 3 - dim, IK))
     end function
 #endif
 
@@ -2197,12 +2197,12 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getVarDIM_WTI_D2_CK2
 #endif
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
         integer(IK)             , intent(in)                                    :: dim
         class(weight_type)      , intent(in)                    , optional      :: correction
         integer(IK)             , intent(in)    , contiguous                    :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous                    :: sample(:,:)
-        real(TKC)                                                               :: var(size(sample, 3 - dim, IK))
+        complex(TKG)            , intent(in)    , contiguous                    :: sample(:,:)
+        real(TKG)                                                               :: var(size(sample, 3 - dim, IK))
     end function
 #endif
 
@@ -2211,12 +2211,12 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getVarDIM_WTI_D2_CK1
 #endif
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
         integer(IK)             , intent(in)                                    :: dim
         class(weight_type)      , intent(in)                    , optional      :: correction
         integer(IK)             , intent(in)    , contiguous                    :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous                    :: sample(:,:)
-        real(TKC)                                                               :: var(size(sample, 3 - dim, IK))
+        complex(TKG)            , intent(in)    , contiguous                    :: sample(:,:)
+        real(TKG)                                                               :: var(size(sample, 3 - dim, IK))
     end function
 #endif
 
@@ -2227,12 +2227,12 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getVarDIM_WTI_D2_RK5
 #endif
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
         integer(IK)             , intent(in)                                    :: dim
         class(weight_type)      , intent(in)                    , optional      :: correction
         integer(IK)             , intent(in)    , contiguous                    :: weight(:)
-        real(TKC)               , intent(in)    , contiguous                    :: sample(:,:)
-        real(TKC)                                                               :: var(size(sample, 3 - dim, IK))
+        real(TKG)               , intent(in)    , contiguous                    :: sample(:,:)
+        real(TKG)                                                               :: var(size(sample, 3 - dim, IK))
     end function
 #endif
 
@@ -2241,12 +2241,12 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getVarDIM_WTI_D2_RK4
 #endif
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
         integer(IK)             , intent(in)                                    :: dim
         class(weight_type)      , intent(in)                    , optional      :: correction
         integer(IK)             , intent(in)    , contiguous                    :: weight(:)
-        real(TKC)               , intent(in)    , contiguous                    :: sample(:,:)
-        real(TKC)                                                               :: var(size(sample, 3 - dim, IK))
+        real(TKG)               , intent(in)    , contiguous                    :: sample(:,:)
+        real(TKG)                                                               :: var(size(sample, 3 - dim, IK))
     end function
 #endif
 
@@ -2255,12 +2255,12 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getVarDIM_WTI_D2_RK3
 #endif
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
         integer(IK)             , intent(in)                                    :: dim
         class(weight_type)      , intent(in)                    , optional      :: correction
         integer(IK)             , intent(in)    , contiguous                    :: weight(:)
-        real(TKC)               , intent(in)    , contiguous                    :: sample(:,:)
-        real(TKC)                                                               :: var(size(sample, 3 - dim, IK))
+        real(TKG)               , intent(in)    , contiguous                    :: sample(:,:)
+        real(TKG)                                                               :: var(size(sample, 3 - dim, IK))
     end function
 #endif
 
@@ -2269,12 +2269,12 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getVarDIM_WTI_D2_RK2
 #endif
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
         integer(IK)             , intent(in)                                    :: dim
         class(weight_type)      , intent(in)                    , optional      :: correction
         integer(IK)             , intent(in)    , contiguous                    :: weight(:)
-        real(TKC)               , intent(in)    , contiguous                    :: sample(:,:)
-        real(TKC)                                                               :: var(size(sample, 3 - dim, IK))
+        real(TKG)               , intent(in)    , contiguous                    :: sample(:,:)
+        real(TKG)                                                               :: var(size(sample, 3 - dim, IK))
     end function
 #endif
 
@@ -2283,12 +2283,12 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getVarDIM_WTI_D2_RK1
 #endif
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
         integer(IK)             , intent(in)                                    :: dim
         class(weight_type)      , intent(in)                    , optional      :: correction
         integer(IK)             , intent(in)    , contiguous                    :: weight(:)
-        real(TKC)               , intent(in)    , contiguous                    :: sample(:,:)
-        real(TKC)                                                               :: var(size(sample, 3 - dim, IK))
+        real(TKG)               , intent(in)    , contiguous                    :: sample(:,:)
+        real(TKG)                                                               :: var(size(sample, 3 - dim, IK))
     end function
 #endif
 
@@ -2305,12 +2305,12 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getVarDIM_WTR_D2_CK5
 #endif
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
         integer(IK)             , intent(in)                                    :: dim
         class(weight_type)      , intent(in)                    , optional      :: correction
-        real(TKC)               , intent(in)    , contiguous                    :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous                    :: sample(:,:)
-        real(TKC)                                                               :: var(size(sample, 3 - dim, IK))
+        real(TKG)               , intent(in)    , contiguous                    :: weight(:)
+        complex(TKG)            , intent(in)    , contiguous                    :: sample(:,:)
+        real(TKG)                                                               :: var(size(sample, 3 - dim, IK))
     end function
 #endif
 
@@ -2319,12 +2319,12 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getVarDIM_WTR_D2_CK4
 #endif
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
         integer(IK)             , intent(in)                                    :: dim
         class(weight_type)      , intent(in)                    , optional      :: correction
-        real(TKC)               , intent(in)    , contiguous                    :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous                    :: sample(:,:)
-        real(TKC)                                                               :: var(size(sample, 3 - dim, IK))
+        real(TKG)               , intent(in)    , contiguous                    :: weight(:)
+        complex(TKG)            , intent(in)    , contiguous                    :: sample(:,:)
+        real(TKG)                                                               :: var(size(sample, 3 - dim, IK))
     end function
 #endif
 
@@ -2333,12 +2333,12 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getVarDIM_WTR_D2_CK3
 #endif
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
         integer(IK)             , intent(in)                                    :: dim
         class(weight_type)      , intent(in)                    , optional      :: correction
-        real(TKC)               , intent(in)    , contiguous                    :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous                    :: sample(:,:)
-        real(TKC)                                                               :: var(size(sample, 3 - dim, IK))
+        real(TKG)               , intent(in)    , contiguous                    :: weight(:)
+        complex(TKG)            , intent(in)    , contiguous                    :: sample(:,:)
+        real(TKG)                                                               :: var(size(sample, 3 - dim, IK))
     end function
 #endif
 
@@ -2347,12 +2347,12 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getVarDIM_WTR_D2_CK2
 #endif
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
         integer(IK)             , intent(in)                                    :: dim
         class(weight_type)      , intent(in)                    , optional      :: correction
-        real(TKC)               , intent(in)    , contiguous                    :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous                    :: sample(:,:)
-        real(TKC)                                                               :: var(size(sample, 3 - dim, IK))
+        real(TKG)               , intent(in)    , contiguous                    :: weight(:)
+        complex(TKG)            , intent(in)    , contiguous                    :: sample(:,:)
+        real(TKG)                                                               :: var(size(sample, 3 - dim, IK))
     end function
 #endif
 
@@ -2361,12 +2361,12 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getVarDIM_WTR_D2_CK1
 #endif
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
         integer(IK)             , intent(in)                                    :: dim
         class(weight_type)      , intent(in)                    , optional      :: correction
-        real(TKC)               , intent(in)    , contiguous                    :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous                    :: sample(:,:)
-        real(TKC)                                                               :: var(size(sample, 3 - dim, IK))
+        real(TKG)               , intent(in)    , contiguous                    :: weight(:)
+        complex(TKG)            , intent(in)    , contiguous                    :: sample(:,:)
+        real(TKG)                                                               :: var(size(sample, 3 - dim, IK))
     end function
 #endif
 
@@ -2377,12 +2377,12 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getVarDIM_WTR_D2_RK5
 #endif
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
         integer(IK)             , intent(in)                                    :: dim
         class(weight_type)      , intent(in)                    , optional      :: correction
-        real(TKC)               , intent(in)    , contiguous                    :: weight(:)
-        real(TKC)               , intent(in)    , contiguous                    :: sample(:,:)
-        real(TKC)                                                               :: var(size(sample, 3 - dim, IK))
+        real(TKG)               , intent(in)    , contiguous                    :: weight(:)
+        real(TKG)               , intent(in)    , contiguous                    :: sample(:,:)
+        real(TKG)                                                               :: var(size(sample, 3 - dim, IK))
     end function
 #endif
 
@@ -2391,12 +2391,12 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getVarDIM_WTR_D2_RK4
 #endif
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
         integer(IK)             , intent(in)                                    :: dim
         class(weight_type)      , intent(in)                    , optional      :: correction
-        real(TKC)               , intent(in)    , contiguous                    :: weight(:)
-        real(TKC)               , intent(in)    , contiguous                    :: sample(:,:)
-        real(TKC)                                                               :: var(size(sample, 3 - dim, IK))
+        real(TKG)               , intent(in)    , contiguous                    :: weight(:)
+        real(TKG)               , intent(in)    , contiguous                    :: sample(:,:)
+        real(TKG)                                                               :: var(size(sample, 3 - dim, IK))
     end function
 #endif
 
@@ -2405,12 +2405,12 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getVarDIM_WTR_D2_RK3
 #endif
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
         integer(IK)             , intent(in)                                    :: dim
         class(weight_type)      , intent(in)                    , optional      :: correction
-        real(TKC)               , intent(in)    , contiguous                    :: weight(:)
-        real(TKC)               , intent(in)    , contiguous                    :: sample(:,:)
-        real(TKC)                                                               :: var(size(sample, 3 - dim, IK))
+        real(TKG)               , intent(in)    , contiguous                    :: weight(:)
+        real(TKG)               , intent(in)    , contiguous                    :: sample(:,:)
+        real(TKG)                                                               :: var(size(sample, 3 - dim, IK))
     end function
 #endif
 
@@ -2419,12 +2419,12 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getVarDIM_WTR_D2_RK2
 #endif
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
         integer(IK)             , intent(in)                                    :: dim
         class(weight_type)      , intent(in)                    , optional      :: correction
-        real(TKC)               , intent(in)    , contiguous                    :: weight(:)
-        real(TKC)               , intent(in)    , contiguous                    :: sample(:,:)
-        real(TKC)                                                               :: var(size(sample, 3 - dim, IK))
+        real(TKG)               , intent(in)    , contiguous                    :: weight(:)
+        real(TKG)               , intent(in)    , contiguous                    :: sample(:,:)
+        real(TKG)                                                               :: var(size(sample, 3 - dim, IK))
     end function
 #endif
 
@@ -2433,12 +2433,12 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getVarDIM_WTR_D2_RK1
 #endif
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
         integer(IK)             , intent(in)                                    :: dim
         class(weight_type)      , intent(in)                    , optional      :: correction
-        real(TKC)               , intent(in)    , contiguous                    :: weight(:)
-        real(TKC)               , intent(in)    , contiguous                    :: sample(:,:)
-        real(TKC)                                                               :: var(size(sample, 3 - dim, IK))
+        real(TKG)               , intent(in)    , contiguous                    :: weight(:)
+        real(TKG)               , intent(in)    , contiguous                    :: sample(:,:)
+        real(TKG)                                                               :: var(size(sample, 3 - dim, IK))
     end function
 #endif
 
@@ -2628,11 +2628,11 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarAvgDIM_WNO_D1_CK5
 #endif
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
         integer(IK)             , intent(in)                                :: dim
-        complex(TKC)            , intent(in)    , contiguous                :: sample(:)
-        complex(TKC)            , intent(in)                                :: mean
-        real(TKC)               , intent(out)                               :: var
+        complex(TKG)            , intent(in)    , contiguous                :: sample(:)
+        complex(TKG)            , intent(in)                                :: mean
+        real(TKG)               , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -2641,11 +2641,11 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarAvgDIM_WNO_D1_CK4
 #endif
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
         integer(IK)             , intent(in)                                :: dim
-        complex(TKC)            , intent(in)    , contiguous                :: sample(:)
-        complex(TKC)            , intent(in)                                :: mean
-        real(TKC)               , intent(out)                               :: var
+        complex(TKG)            , intent(in)    , contiguous                :: sample(:)
+        complex(TKG)            , intent(in)                                :: mean
+        real(TKG)               , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -2654,11 +2654,11 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarAvgDIM_WNO_D1_CK3
 #endif
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
         integer(IK)             , intent(in)                                :: dim
-        complex(TKC)            , intent(in)    , contiguous                :: sample(:)
-        complex(TKC)            , intent(in)                                :: mean
-        real(TKC)               , intent(out)                               :: var
+        complex(TKG)            , intent(in)    , contiguous                :: sample(:)
+        complex(TKG)            , intent(in)                                :: mean
+        real(TKG)               , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -2667,11 +2667,11 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarAvgDIM_WNO_D1_CK2
 #endif
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
         integer(IK)             , intent(in)                                :: dim
-        complex(TKC)            , intent(in)    , contiguous                :: sample(:)
-        complex(TKC)            , intent(in)                                :: mean
-        real(TKC)               , intent(out)                               :: var
+        complex(TKG)            , intent(in)    , contiguous                :: sample(:)
+        complex(TKG)            , intent(in)                                :: mean
+        real(TKG)               , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -2680,11 +2680,11 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarAvgDIM_WNO_D1_CK1
 #endif
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
         integer(IK)             , intent(in)                                :: dim
-        complex(TKC)            , intent(in)    , contiguous                :: sample(:)
-        complex(TKC)            , intent(in)                                :: mean
-        real(TKC)               , intent(out)                               :: var
+        complex(TKG)            , intent(in)    , contiguous                :: sample(:)
+        complex(TKG)            , intent(in)                                :: mean
+        real(TKG)               , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -2695,11 +2695,11 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarAvgDIM_WNO_D1_RK5
 #endif
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
         integer(IK)             , intent(in)                                :: dim
-        real(TKC)               , intent(in)    , contiguous                :: sample(:)
-        real(TKC)               , intent(in)                                :: mean
-        real(TKC)               , intent(out)                               :: var
+        real(TKG)               , intent(in)    , contiguous                :: sample(:)
+        real(TKG)               , intent(in)                                :: mean
+        real(TKG)               , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -2708,11 +2708,11 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarAvgDIM_WNO_D1_RK4
 #endif
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
         integer(IK)             , intent(in)                                :: dim
-        real(TKC)               , intent(in)    , contiguous                :: sample(:)
-        real(TKC)               , intent(in)                                :: mean
-        real(TKC)               , intent(out)                               :: var
+        real(TKG)               , intent(in)    , contiguous                :: sample(:)
+        real(TKG)               , intent(in)                                :: mean
+        real(TKG)               , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -2721,11 +2721,11 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarAvgDIM_WNO_D1_RK3
 #endif
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
         integer(IK)             , intent(in)                                :: dim
-        real(TKC)               , intent(in)    , contiguous                :: sample(:)
-        real(TKC)               , intent(in)                                :: mean
-        real(TKC)               , intent(out)                               :: var
+        real(TKG)               , intent(in)    , contiguous                :: sample(:)
+        real(TKG)               , intent(in)                                :: mean
+        real(TKG)               , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -2734,11 +2734,11 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarAvgDIM_WNO_D1_RK2
 #endif
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
         integer(IK)             , intent(in)                                :: dim
-        real(TKC)               , intent(in)    , contiguous                :: sample(:)
-        real(TKC)               , intent(in)                                :: mean
-        real(TKC)               , intent(out)                               :: var
+        real(TKG)               , intent(in)    , contiguous                :: sample(:)
+        real(TKG)               , intent(in)                                :: mean
+        real(TKG)               , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -2747,11 +2747,11 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarAvgDIM_WNO_D1_RK1
 #endif
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
         integer(IK)             , intent(in)                                :: dim
-        real(TKC)               , intent(in)    , contiguous                :: sample(:)
-        real(TKC)               , intent(in)                                :: mean
-        real(TKC)               , intent(out)                               :: var
+        real(TKG)               , intent(in)    , contiguous                :: sample(:)
+        real(TKG)               , intent(in)                                :: mean
+        real(TKG)               , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -2768,11 +2768,11 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarAvgDIM_WNO_D2_CK5
 #endif
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
         integer(IK)             , intent(in)                                :: dim
-        complex(TKC)            , intent(in)    , contiguous                :: sample(:,:)
-        complex(TKC)            , intent(in)    , contiguous                :: mean(:)
-        real(TKC)               , intent(out)   , contiguous                :: var(:)
+        complex(TKG)            , intent(in)    , contiguous                :: sample(:,:)
+        complex(TKG)            , intent(in)    , contiguous                :: mean(:)
+        real(TKG)               , intent(out)   , contiguous                :: var(:)
     end subroutine
 #endif
 
@@ -2781,11 +2781,11 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarAvgDIM_WNO_D2_CK4
 #endif
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
         integer(IK)             , intent(in)                                :: dim
-        complex(TKC)            , intent(in)    , contiguous                :: sample(:,:)
-        complex(TKC)            , intent(in)    , contiguous                :: mean(:)
-        real(TKC)               , intent(out)   , contiguous                :: var(:)
+        complex(TKG)            , intent(in)    , contiguous                :: sample(:,:)
+        complex(TKG)            , intent(in)    , contiguous                :: mean(:)
+        real(TKG)               , intent(out)   , contiguous                :: var(:)
     end subroutine
 #endif
 
@@ -2794,11 +2794,11 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarAvgDIM_WNO_D2_CK3
 #endif
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
         integer(IK)             , intent(in)                                :: dim
-        complex(TKC)            , intent(in)    , contiguous                :: sample(:,:)
-        complex(TKC)            , intent(in)    , contiguous                :: mean(:)
-        real(TKC)               , intent(out)   , contiguous                :: var(:)
+        complex(TKG)            , intent(in)    , contiguous                :: sample(:,:)
+        complex(TKG)            , intent(in)    , contiguous                :: mean(:)
+        real(TKG)               , intent(out)   , contiguous                :: var(:)
     end subroutine
 #endif
 
@@ -2807,11 +2807,11 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarAvgDIM_WNO_D2_CK2
 #endif
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
         integer(IK)             , intent(in)                                :: dim
-        complex(TKC)            , intent(in)    , contiguous                :: sample(:,:)
-        complex(TKC)            , intent(in)    , contiguous                :: mean(:)
-        real(TKC)               , intent(out)   , contiguous                :: var(:)
+        complex(TKG)            , intent(in)    , contiguous                :: sample(:,:)
+        complex(TKG)            , intent(in)    , contiguous                :: mean(:)
+        real(TKG)               , intent(out)   , contiguous                :: var(:)
     end subroutine
 #endif
 
@@ -2820,11 +2820,11 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarAvgDIM_WNO_D2_CK1
 #endif
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
         integer(IK)             , intent(in)                                :: dim
-        complex(TKC)            , intent(in)    , contiguous                :: sample(:,:)
-        complex(TKC)            , intent(in)    , contiguous                :: mean(:)
-        real(TKC)               , intent(out)   , contiguous                :: var(:)
+        complex(TKG)            , intent(in)    , contiguous                :: sample(:,:)
+        complex(TKG)            , intent(in)    , contiguous                :: mean(:)
+        real(TKG)               , intent(out)   , contiguous                :: var(:)
     end subroutine
 #endif
 
@@ -2835,11 +2835,11 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarAvgDIM_WNO_D2_RK5
 #endif
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
         integer(IK)             , intent(in)                                :: dim
-        real(TKC)               , intent(in)    , contiguous                :: sample(:,:)
-        real(TKC)               , intent(in)    , contiguous                :: mean(:)
-        real(TKC)               , intent(out)   , contiguous                :: var(:)
+        real(TKG)               , intent(in)    , contiguous                :: sample(:,:)
+        real(TKG)               , intent(in)    , contiguous                :: mean(:)
+        real(TKG)               , intent(out)   , contiguous                :: var(:)
     end subroutine
 #endif
 
@@ -2848,11 +2848,11 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarAvgDIM_WNO_D2_RK4
 #endif
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
         integer(IK)             , intent(in)                                :: dim
-        real(TKC)               , intent(in)    , contiguous                :: sample(:,:)
-        real(TKC)               , intent(in)    , contiguous                :: mean(:)
-        real(TKC)               , intent(out)   , contiguous                :: var(:)
+        real(TKG)               , intent(in)    , contiguous                :: sample(:,:)
+        real(TKG)               , intent(in)    , contiguous                :: mean(:)
+        real(TKG)               , intent(out)   , contiguous                :: var(:)
     end subroutine
 #endif
 
@@ -2861,11 +2861,11 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarAvgDIM_WNO_D2_RK3
 #endif
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
         integer(IK)             , intent(in)                                :: dim
-        real(TKC)               , intent(in)    , contiguous                :: sample(:,:)
-        real(TKC)               , intent(in)    , contiguous                :: mean(:)
-        real(TKC)               , intent(out)   , contiguous                :: var(:)
+        real(TKG)               , intent(in)    , contiguous                :: sample(:,:)
+        real(TKG)               , intent(in)    , contiguous                :: mean(:)
+        real(TKG)               , intent(out)   , contiguous                :: var(:)
     end subroutine
 #endif
 
@@ -2874,11 +2874,11 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarAvgDIM_WNO_D2_RK2
 #endif
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
         integer(IK)             , intent(in)                                :: dim
-        real(TKC)               , intent(in)    , contiguous                :: sample(:,:)
-        real(TKC)               , intent(in)    , contiguous                :: mean(:)
-        real(TKC)               , intent(out)   , contiguous                :: var(:)
+        real(TKG)               , intent(in)    , contiguous                :: sample(:,:)
+        real(TKG)               , intent(in)    , contiguous                :: mean(:)
+        real(TKG)               , intent(out)   , contiguous                :: var(:)
     end subroutine
 #endif
 
@@ -2887,11 +2887,11 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarAvgDIM_WNO_D2_RK1
 #endif
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
         integer(IK)             , intent(in)                                :: dim
-        real(TKC)               , intent(in)    , contiguous                :: sample(:,:)
-        real(TKC)               , intent(in)    , contiguous                :: mean(:)
-        real(TKC)               , intent(out)   , contiguous                :: var(:)
+        real(TKG)               , intent(in)    , contiguous                :: sample(:,:)
+        real(TKG)               , intent(in)    , contiguous                :: mean(:)
+        real(TKG)               , intent(out)   , contiguous                :: var(:)
     end subroutine
 #endif
 
@@ -2918,13 +2918,13 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarAvgDIM_WTI_D1_CK5
 #endif
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
         integer(IK)             , intent(in)                                :: dim
         integer(IK)             , intent(in)                                :: weisum
         integer(IK)             , intent(in)    , contiguous                :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous                :: sample(:)
-        complex(TKC)            , intent(in)                                :: mean
-        real(TKC)               , intent(out)                               :: var
+        complex(TKG)            , intent(in)    , contiguous                :: sample(:)
+        complex(TKG)            , intent(in)                                :: mean
+        real(TKG)               , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -2933,13 +2933,13 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarAvgDIM_WTI_D1_CK4
 #endif
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
         integer(IK)             , intent(in)                                :: dim
         integer(IK)             , intent(in)                                :: weisum
         integer(IK)             , intent(in)    , contiguous                :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous                :: sample(:)
-        complex(TKC)            , intent(in)                                :: mean
-        real(TKC)               , intent(out)                               :: var
+        complex(TKG)            , intent(in)    , contiguous                :: sample(:)
+        complex(TKG)            , intent(in)                                :: mean
+        real(TKG)               , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -2948,13 +2948,13 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarAvgDIM_WTI_D1_CK3
 #endif
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
         integer(IK)             , intent(in)                                :: dim
         integer(IK)             , intent(in)                                :: weisum
         integer(IK)             , intent(in)    , contiguous                :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous                :: sample(:)
-        complex(TKC)            , intent(in)                                :: mean
-        real(TKC)               , intent(out)                               :: var
+        complex(TKG)            , intent(in)    , contiguous                :: sample(:)
+        complex(TKG)            , intent(in)                                :: mean
+        real(TKG)               , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -2963,13 +2963,13 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarAvgDIM_WTI_D1_CK2
 #endif
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
         integer(IK)             , intent(in)                                :: dim
         integer(IK)             , intent(in)                                :: weisum
         integer(IK)             , intent(in)    , contiguous                :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous                :: sample(:)
-        complex(TKC)            , intent(in)                                :: mean
-        real(TKC)               , intent(out)                               :: var
+        complex(TKG)            , intent(in)    , contiguous                :: sample(:)
+        complex(TKG)            , intent(in)                                :: mean
+        real(TKG)               , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -2978,13 +2978,13 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarAvgDIM_WTI_D1_CK1
 #endif
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
         integer(IK)             , intent(in)                                :: dim
         integer(IK)             , intent(in)                                :: weisum
         integer(IK)             , intent(in)    , contiguous                :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous                :: sample(:)
-        complex(TKC)            , intent(in)                                :: mean
-        real(TKC)               , intent(out)                               :: var
+        complex(TKG)            , intent(in)    , contiguous                :: sample(:)
+        complex(TKG)            , intent(in)                                :: mean
+        real(TKG)               , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -2995,13 +2995,13 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarAvgDIM_WTI_D1_RK5
 #endif
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
         integer(IK)             , intent(in)                                :: dim
         integer(IK)             , intent(in)                                :: weisum
         integer(IK)             , intent(in)    , contiguous                :: weight(:)
-        real(TKC)               , intent(in)    , contiguous                :: sample(:)
-        real(TKC)               , intent(in)                                :: mean
-        real(TKC)               , intent(out)                               :: var
+        real(TKG)               , intent(in)    , contiguous                :: sample(:)
+        real(TKG)               , intent(in)                                :: mean
+        real(TKG)               , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -3010,13 +3010,13 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarAvgDIM_WTI_D1_RK4
 #endif
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
         integer(IK)             , intent(in)                                :: dim
         integer(IK)             , intent(in)                                :: weisum
         integer(IK)             , intent(in)    , contiguous                :: weight(:)
-        real(TKC)               , intent(in)    , contiguous                :: sample(:)
-        real(TKC)               , intent(in)                                :: mean
-        real(TKC)               , intent(out)                               :: var
+        real(TKG)               , intent(in)    , contiguous                :: sample(:)
+        real(TKG)               , intent(in)                                :: mean
+        real(TKG)               , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -3025,13 +3025,13 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarAvgDIM_WTI_D1_RK3
 #endif
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
         integer(IK)             , intent(in)                                :: dim
         integer(IK)             , intent(in)                                :: weisum
         integer(IK)             , intent(in)    , contiguous                :: weight(:)
-        real(TKC)               , intent(in)    , contiguous                :: sample(:)
-        real(TKC)               , intent(in)                                :: mean
-        real(TKC)               , intent(out)                               :: var
+        real(TKG)               , intent(in)    , contiguous                :: sample(:)
+        real(TKG)               , intent(in)                                :: mean
+        real(TKG)               , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -3040,13 +3040,13 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarAvgDIM_WTI_D1_RK2
 #endif
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
         integer(IK)             , intent(in)                                :: dim
         integer(IK)             , intent(in)                                :: weisum
         integer(IK)             , intent(in)    , contiguous                :: weight(:)
-        real(TKC)               , intent(in)    , contiguous                :: sample(:)
-        real(TKC)               , intent(in)                                :: mean
-        real(TKC)               , intent(out)                               :: var
+        real(TKG)               , intent(in)    , contiguous                :: sample(:)
+        real(TKG)               , intent(in)                                :: mean
+        real(TKG)               , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -3055,13 +3055,13 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarAvgDIM_WTI_D1_RK1
 #endif
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
         integer(IK)             , intent(in)                                :: dim
         integer(IK)             , intent(in)                                :: weisum
         integer(IK)             , intent(in)    , contiguous                :: weight(:)
-        real(TKC)               , intent(in)    , contiguous                :: sample(:)
-        real(TKC)               , intent(in)                                :: mean
-        real(TKC)               , intent(out)                               :: var
+        real(TKG)               , intent(in)    , contiguous                :: sample(:)
+        real(TKG)               , intent(in)                                :: mean
+        real(TKG)               , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -3078,13 +3078,13 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarAvgDIM_WTI_D2_CK5
 #endif
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
         integer(IK)             , intent(in)                                :: dim
         integer(IK)             , intent(in)                                :: weisum
         integer(IK)             , intent(in)    , contiguous                :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous                :: sample(:,:)
-        complex(TKC)            , intent(in)    , contiguous                :: mean(:)
-        real(TKC)               , intent(out)   , contiguous                :: var(:)
+        complex(TKG)            , intent(in)    , contiguous                :: sample(:,:)
+        complex(TKG)            , intent(in)    , contiguous                :: mean(:)
+        real(TKG)               , intent(out)   , contiguous                :: var(:)
     end subroutine
 #endif
 
@@ -3093,13 +3093,13 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarAvgDIM_WTI_D2_CK4
 #endif
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
         integer(IK)             , intent(in)                                :: dim
         integer(IK)             , intent(in)                                :: weisum
         integer(IK)             , intent(in)    , contiguous                :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous                :: sample(:,:)
-        complex(TKC)            , intent(in)    , contiguous                :: mean(:)
-        real(TKC)               , intent(out)   , contiguous                :: var(:)
+        complex(TKG)            , intent(in)    , contiguous                :: sample(:,:)
+        complex(TKG)            , intent(in)    , contiguous                :: mean(:)
+        real(TKG)               , intent(out)   , contiguous                :: var(:)
     end subroutine
 #endif
 
@@ -3108,13 +3108,13 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarAvgDIM_WTI_D2_CK3
 #endif
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
         integer(IK)             , intent(in)                                :: dim
         integer(IK)             , intent(in)                                :: weisum
         integer(IK)             , intent(in)    , contiguous                :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous                :: sample(:,:)
-        complex(TKC)            , intent(in)    , contiguous                :: mean(:)
-        real(TKC)               , intent(out)   , contiguous                :: var(:)
+        complex(TKG)            , intent(in)    , contiguous                :: sample(:,:)
+        complex(TKG)            , intent(in)    , contiguous                :: mean(:)
+        real(TKG)               , intent(out)   , contiguous                :: var(:)
     end subroutine
 #endif
 
@@ -3123,13 +3123,13 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarAvgDIM_WTI_D2_CK2
 #endif
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
         integer(IK)             , intent(in)                                :: dim
         integer(IK)             , intent(in)                                :: weisum
         integer(IK)             , intent(in)    , contiguous                :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous                :: sample(:,:)
-        complex(TKC)            , intent(in)    , contiguous                :: mean(:)
-        real(TKC)               , intent(out)   , contiguous                :: var(:)
+        complex(TKG)            , intent(in)    , contiguous                :: sample(:,:)
+        complex(TKG)            , intent(in)    , contiguous                :: mean(:)
+        real(TKG)               , intent(out)   , contiguous                :: var(:)
     end subroutine
 #endif
 
@@ -3138,13 +3138,13 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarAvgDIM_WTI_D2_CK1
 #endif
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
         integer(IK)             , intent(in)                                :: dim
         integer(IK)             , intent(in)                                :: weisum
         integer(IK)             , intent(in)    , contiguous                :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous                :: sample(:,:)
-        complex(TKC)            , intent(in)    , contiguous                :: mean(:)
-        real(TKC)               , intent(out)   , contiguous                :: var(:)
+        complex(TKG)            , intent(in)    , contiguous                :: sample(:,:)
+        complex(TKG)            , intent(in)    , contiguous                :: mean(:)
+        real(TKG)               , intent(out)   , contiguous                :: var(:)
     end subroutine
 #endif
 
@@ -3155,13 +3155,13 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarAvgDIM_WTI_D2_RK5
 #endif
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
         integer(IK)             , intent(in)                                :: dim
         integer(IK)             , intent(in)                                :: weisum
         integer(IK)             , intent(in)    , contiguous                :: weight(:)
-        real(TKC)               , intent(in)    , contiguous                :: sample(:,:)
-        real(TKC)               , intent(in)    , contiguous                :: mean(:)
-        real(TKC)               , intent(out)   , contiguous                :: var(:)
+        real(TKG)               , intent(in)    , contiguous                :: sample(:,:)
+        real(TKG)               , intent(in)    , contiguous                :: mean(:)
+        real(TKG)               , intent(out)   , contiguous                :: var(:)
     end subroutine
 #endif
 
@@ -3170,13 +3170,13 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarAvgDIM_WTI_D2_RK4
 #endif
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
         integer(IK)             , intent(in)                                :: dim
         integer(IK)             , intent(in)                                :: weisum
         integer(IK)             , intent(in)    , contiguous                :: weight(:)
-        real(TKC)               , intent(in)    , contiguous                :: sample(:,:)
-        real(TKC)               , intent(in)    , contiguous                :: mean(:)
-        real(TKC)               , intent(out)   , contiguous                :: var(:)
+        real(TKG)               , intent(in)    , contiguous                :: sample(:,:)
+        real(TKG)               , intent(in)    , contiguous                :: mean(:)
+        real(TKG)               , intent(out)   , contiguous                :: var(:)
     end subroutine
 #endif
 
@@ -3185,13 +3185,13 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarAvgDIM_WTI_D2_RK3
 #endif
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
         integer(IK)             , intent(in)                                :: dim
         integer(IK)             , intent(in)                                :: weisum
         integer(IK)             , intent(in)    , contiguous                :: weight(:)
-        real(TKC)               , intent(in)    , contiguous                :: sample(:,:)
-        real(TKC)               , intent(in)    , contiguous                :: mean(:)
-        real(TKC)               , intent(out)   , contiguous                :: var(:)
+        real(TKG)               , intent(in)    , contiguous                :: sample(:,:)
+        real(TKG)               , intent(in)    , contiguous                :: mean(:)
+        real(TKG)               , intent(out)   , contiguous                :: var(:)
     end subroutine
 #endif
 
@@ -3200,13 +3200,13 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarAvgDIM_WTI_D2_RK2
 #endif
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
         integer(IK)             , intent(in)                                :: dim
         integer(IK)             , intent(in)                                :: weisum
         integer(IK)             , intent(in)    , contiguous                :: weight(:)
-        real(TKC)               , intent(in)    , contiguous                :: sample(:,:)
-        real(TKC)               , intent(in)    , contiguous                :: mean(:)
-        real(TKC)               , intent(out)   , contiguous                :: var(:)
+        real(TKG)               , intent(in)    , contiguous                :: sample(:,:)
+        real(TKG)               , intent(in)    , contiguous                :: mean(:)
+        real(TKG)               , intent(out)   , contiguous                :: var(:)
     end subroutine
 #endif
 
@@ -3215,13 +3215,13 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarAvgDIM_WTI_D2_RK1
 #endif
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
         integer(IK)             , intent(in)                                :: dim
         integer(IK)             , intent(in)                                :: weisum
         integer(IK)             , intent(in)    , contiguous                :: weight(:)
-        real(TKC)               , intent(in)    , contiguous                :: sample(:,:)
-        real(TKC)               , intent(in)    , contiguous                :: mean(:)
-        real(TKC)               , intent(out)   , contiguous                :: var(:)
+        real(TKG)               , intent(in)    , contiguous                :: sample(:,:)
+        real(TKG)               , intent(in)    , contiguous                :: mean(:)
+        real(TKG)               , intent(out)   , contiguous                :: var(:)
     end subroutine
 #endif
 
@@ -3248,13 +3248,13 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarAvgDIM_WTR_D1_CK5
 #endif
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
         integer(IK)             , intent(in)                                :: dim
-        real(TKC)               , intent(in)                                :: weisum
-        real(TKC)               , intent(in)    , contiguous                :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous                :: sample(:)
-        complex(TKC)            , intent(in)                                :: mean
-        real(TKC)               , intent(out)                               :: var
+        real(TKG)               , intent(in)                                :: weisum
+        real(TKG)               , intent(in)    , contiguous                :: weight(:)
+        complex(TKG)            , intent(in)    , contiguous                :: sample(:)
+        complex(TKG)            , intent(in)                                :: mean
+        real(TKG)               , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -3263,13 +3263,13 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarAvgDIM_WTR_D1_CK4
 #endif
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
         integer(IK)             , intent(in)                                :: dim
-        real(TKC)               , intent(in)                                :: weisum
-        real(TKC)               , intent(in)    , contiguous                :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous                :: sample(:)
-        complex(TKC)            , intent(in)                                :: mean
-        real(TKC)               , intent(out)                               :: var
+        real(TKG)               , intent(in)                                :: weisum
+        real(TKG)               , intent(in)    , contiguous                :: weight(:)
+        complex(TKG)            , intent(in)    , contiguous                :: sample(:)
+        complex(TKG)            , intent(in)                                :: mean
+        real(TKG)               , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -3278,13 +3278,13 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarAvgDIM_WTR_D1_CK3
 #endif
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
         integer(IK)             , intent(in)                                :: dim
-        real(TKC)               , intent(in)                                :: weisum
-        real(TKC)               , intent(in)    , contiguous                :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous                :: sample(:)
-        complex(TKC)            , intent(in)                                :: mean
-        real(TKC)               , intent(out)                               :: var
+        real(TKG)               , intent(in)                                :: weisum
+        real(TKG)               , intent(in)    , contiguous                :: weight(:)
+        complex(TKG)            , intent(in)    , contiguous                :: sample(:)
+        complex(TKG)            , intent(in)                                :: mean
+        real(TKG)               , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -3293,13 +3293,13 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarAvgDIM_WTR_D1_CK2
 #endif
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
         integer(IK)             , intent(in)                                :: dim
-        real(TKC)               , intent(in)                                :: weisum
-        real(TKC)               , intent(in)    , contiguous                :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous                :: sample(:)
-        complex(TKC)            , intent(in)                                :: mean
-        real(TKC)               , intent(out)                               :: var
+        real(TKG)               , intent(in)                                :: weisum
+        real(TKG)               , intent(in)    , contiguous                :: weight(:)
+        complex(TKG)            , intent(in)    , contiguous                :: sample(:)
+        complex(TKG)            , intent(in)                                :: mean
+        real(TKG)               , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -3308,13 +3308,13 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarAvgDIM_WTR_D1_CK1
 #endif
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
         integer(IK)             , intent(in)                                :: dim
-        real(TKC)               , intent(in)                                :: weisum
-        real(TKC)               , intent(in)    , contiguous                :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous                :: sample(:)
-        complex(TKC)            , intent(in)                                :: mean
-        real(TKC)               , intent(out)                               :: var
+        real(TKG)               , intent(in)                                :: weisum
+        real(TKG)               , intent(in)    , contiguous                :: weight(:)
+        complex(TKG)            , intent(in)    , contiguous                :: sample(:)
+        complex(TKG)            , intent(in)                                :: mean
+        real(TKG)               , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -3325,13 +3325,13 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarAvgDIM_WTR_D1_RK5
 #endif
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
         integer(IK)             , intent(in)                                :: dim
-        real(TKC)               , intent(in)                                :: weisum
-        real(TKC)               , intent(in)    , contiguous                :: weight(:)
-        real(TKC)               , intent(in)    , contiguous                :: sample(:)
-        real(TKC)               , intent(in)                                :: mean
-        real(TKC)               , intent(out)                               :: var
+        real(TKG)               , intent(in)                                :: weisum
+        real(TKG)               , intent(in)    , contiguous                :: weight(:)
+        real(TKG)               , intent(in)    , contiguous                :: sample(:)
+        real(TKG)               , intent(in)                                :: mean
+        real(TKG)               , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -3340,13 +3340,13 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarAvgDIM_WTR_D1_RK4
 #endif
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
         integer(IK)             , intent(in)                                :: dim
-        real(TKC)               , intent(in)                                :: weisum
-        real(TKC)               , intent(in)    , contiguous                :: weight(:)
-        real(TKC)               , intent(in)    , contiguous                :: sample(:)
-        real(TKC)               , intent(in)                                :: mean
-        real(TKC)               , intent(out)                               :: var
+        real(TKG)               , intent(in)                                :: weisum
+        real(TKG)               , intent(in)    , contiguous                :: weight(:)
+        real(TKG)               , intent(in)    , contiguous                :: sample(:)
+        real(TKG)               , intent(in)                                :: mean
+        real(TKG)               , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -3355,13 +3355,13 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarAvgDIM_WTR_D1_RK3
 #endif
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
         integer(IK)             , intent(in)                                :: dim
-        real(TKC)               , intent(in)                                :: weisum
-        real(TKC)               , intent(in)    , contiguous                :: weight(:)
-        real(TKC)               , intent(in)    , contiguous                :: sample(:)
-        real(TKC)               , intent(in)                                :: mean
-        real(TKC)               , intent(out)                               :: var
+        real(TKG)               , intent(in)                                :: weisum
+        real(TKG)               , intent(in)    , contiguous                :: weight(:)
+        real(TKG)               , intent(in)    , contiguous                :: sample(:)
+        real(TKG)               , intent(in)                                :: mean
+        real(TKG)               , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -3370,13 +3370,13 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarAvgDIM_WTR_D1_RK2
 #endif
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
         integer(IK)             , intent(in)                                :: dim
-        real(TKC)               , intent(in)                                :: weisum
-        real(TKC)               , intent(in)    , contiguous                :: weight(:)
-        real(TKC)               , intent(in)    , contiguous                :: sample(:)
-        real(TKC)               , intent(in)                                :: mean
-        real(TKC)               , intent(out)                               :: var
+        real(TKG)               , intent(in)                                :: weisum
+        real(TKG)               , intent(in)    , contiguous                :: weight(:)
+        real(TKG)               , intent(in)    , contiguous                :: sample(:)
+        real(TKG)               , intent(in)                                :: mean
+        real(TKG)               , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -3385,13 +3385,13 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarAvgDIM_WTR_D1_RK1
 #endif
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
         integer(IK)             , intent(in)                                :: dim
-        real(TKC)               , intent(in)                                :: weisum
-        real(TKC)               , intent(in)    , contiguous                :: weight(:)
-        real(TKC)               , intent(in)    , contiguous                :: sample(:)
-        real(TKC)               , intent(in)                                :: mean
-        real(TKC)               , intent(out)                               :: var
+        real(TKG)               , intent(in)                                :: weisum
+        real(TKG)               , intent(in)    , contiguous                :: weight(:)
+        real(TKG)               , intent(in)    , contiguous                :: sample(:)
+        real(TKG)               , intent(in)                                :: mean
+        real(TKG)               , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -3408,13 +3408,13 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarAvgDIM_WTR_D2_CK5
 #endif
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
         integer(IK)             , intent(in)                                :: dim
-        real(TKC)               , intent(in)                                :: weisum
-        real(TKC)               , intent(in)    , contiguous                :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous                :: sample(:,:)
-        complex(TKC)            , intent(in)    , contiguous                :: mean(:)
-        real(TKC)               , intent(out)   , contiguous                :: var(:)
+        real(TKG)               , intent(in)                                :: weisum
+        real(TKG)               , intent(in)    , contiguous                :: weight(:)
+        complex(TKG)            , intent(in)    , contiguous                :: sample(:,:)
+        complex(TKG)            , intent(in)    , contiguous                :: mean(:)
+        real(TKG)               , intent(out)   , contiguous                :: var(:)
     end subroutine
 #endif
 
@@ -3423,13 +3423,13 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarAvgDIM_WTR_D2_CK4
 #endif
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
         integer(IK)             , intent(in)                                :: dim
-        real(TKC)               , intent(in)                                :: weisum
-        real(TKC)               , intent(in)    , contiguous                :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous                :: sample(:,:)
-        complex(TKC)            , intent(in)    , contiguous                :: mean(:)
-        real(TKC)               , intent(out)   , contiguous                :: var(:)
+        real(TKG)               , intent(in)                                :: weisum
+        real(TKG)               , intent(in)    , contiguous                :: weight(:)
+        complex(TKG)            , intent(in)    , contiguous                :: sample(:,:)
+        complex(TKG)            , intent(in)    , contiguous                :: mean(:)
+        real(TKG)               , intent(out)   , contiguous                :: var(:)
     end subroutine
 #endif
 
@@ -3438,13 +3438,13 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarAvgDIM_WTR_D2_CK3
 #endif
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
         integer(IK)             , intent(in)                                :: dim
-        real(TKC)               , intent(in)                                :: weisum
-        real(TKC)               , intent(in)    , contiguous                :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous                :: sample(:,:)
-        complex(TKC)            , intent(in)    , contiguous                :: mean(:)
-        real(TKC)               , intent(out)   , contiguous                :: var(:)
+        real(TKG)               , intent(in)                                :: weisum
+        real(TKG)               , intent(in)    , contiguous                :: weight(:)
+        complex(TKG)            , intent(in)    , contiguous                :: sample(:,:)
+        complex(TKG)            , intent(in)    , contiguous                :: mean(:)
+        real(TKG)               , intent(out)   , contiguous                :: var(:)
     end subroutine
 #endif
 
@@ -3453,13 +3453,13 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarAvgDIM_WTR_D2_CK2
 #endif
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
         integer(IK)             , intent(in)                                :: dim
-        real(TKC)               , intent(in)                                :: weisum
-        real(TKC)               , intent(in)    , contiguous                :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous                :: sample(:,:)
-        complex(TKC)            , intent(in)    , contiguous                :: mean(:)
-        real(TKC)               , intent(out)   , contiguous                :: var(:)
+        real(TKG)               , intent(in)                                :: weisum
+        real(TKG)               , intent(in)    , contiguous                :: weight(:)
+        complex(TKG)            , intent(in)    , contiguous                :: sample(:,:)
+        complex(TKG)            , intent(in)    , contiguous                :: mean(:)
+        real(TKG)               , intent(out)   , contiguous                :: var(:)
     end subroutine
 #endif
 
@@ -3468,13 +3468,13 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarAvgDIM_WTR_D2_CK1
 #endif
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
         integer(IK)             , intent(in)                                :: dim
-        real(TKC)               , intent(in)                                :: weisum
-        real(TKC)               , intent(in)    , contiguous                :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous                :: sample(:,:)
-        complex(TKC)            , intent(in)    , contiguous                :: mean(:)
-        real(TKC)               , intent(out)   , contiguous                :: var(:)
+        real(TKG)               , intent(in)                                :: weisum
+        real(TKG)               , intent(in)    , contiguous                :: weight(:)
+        complex(TKG)            , intent(in)    , contiguous                :: sample(:,:)
+        complex(TKG)            , intent(in)    , contiguous                :: mean(:)
+        real(TKG)               , intent(out)   , contiguous                :: var(:)
     end subroutine
 #endif
 
@@ -3485,13 +3485,13 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarAvgDIM_WTR_D2_RK5
 #endif
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
         integer(IK)             , intent(in)                                :: dim
-        real(TKC)               , intent(in)                                :: weisum
-        real(TKC)               , intent(in)    , contiguous                :: weight(:)
-        real(TKC)               , intent(in)    , contiguous                :: sample(:,:)
-        real(TKC)               , intent(in)    , contiguous                :: mean(:)
-        real(TKC)               , intent(out)   , contiguous                :: var(:)
+        real(TKG)               , intent(in)                                :: weisum
+        real(TKG)               , intent(in)    , contiguous                :: weight(:)
+        real(TKG)               , intent(in)    , contiguous                :: sample(:,:)
+        real(TKG)               , intent(in)    , contiguous                :: mean(:)
+        real(TKG)               , intent(out)   , contiguous                :: var(:)
     end subroutine
 #endif
 
@@ -3500,13 +3500,13 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarAvgDIM_WTR_D2_RK4
 #endif
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
         integer(IK)             , intent(in)                                :: dim
-        real(TKC)               , intent(in)                                :: weisum
-        real(TKC)               , intent(in)    , contiguous                :: weight(:)
-        real(TKC)               , intent(in)    , contiguous                :: sample(:,:)
-        real(TKC)               , intent(in)    , contiguous                :: mean(:)
-        real(TKC)               , intent(out)   , contiguous                :: var(:)
+        real(TKG)               , intent(in)                                :: weisum
+        real(TKG)               , intent(in)    , contiguous                :: weight(:)
+        real(TKG)               , intent(in)    , contiguous                :: sample(:,:)
+        real(TKG)               , intent(in)    , contiguous                :: mean(:)
+        real(TKG)               , intent(out)   , contiguous                :: var(:)
     end subroutine
 #endif
 
@@ -3515,13 +3515,13 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarAvgDIM_WTR_D2_RK3
 #endif
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
         integer(IK)             , intent(in)                                :: dim
-        real(TKC)               , intent(in)                                :: weisum
-        real(TKC)               , intent(in)    , contiguous                :: weight(:)
-        real(TKC)               , intent(in)    , contiguous                :: sample(:,:)
-        real(TKC)               , intent(in)    , contiguous                :: mean(:)
-        real(TKC)               , intent(out)   , contiguous                :: var(:)
+        real(TKG)               , intent(in)                                :: weisum
+        real(TKG)               , intent(in)    , contiguous                :: weight(:)
+        real(TKG)               , intent(in)    , contiguous                :: sample(:,:)
+        real(TKG)               , intent(in)    , contiguous                :: mean(:)
+        real(TKG)               , intent(out)   , contiguous                :: var(:)
     end subroutine
 #endif
 
@@ -3530,13 +3530,13 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarAvgDIM_WTR_D2_RK2
 #endif
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
         integer(IK)             , intent(in)                                :: dim
-        real(TKC)               , intent(in)                                :: weisum
-        real(TKC)               , intent(in)    , contiguous                :: weight(:)
-        real(TKC)               , intent(in)    , contiguous                :: sample(:,:)
-        real(TKC)               , intent(in)    , contiguous                :: mean(:)
-        real(TKC)               , intent(out)   , contiguous                :: var(:)
+        real(TKG)               , intent(in)                                :: weisum
+        real(TKG)               , intent(in)    , contiguous                :: weight(:)
+        real(TKG)               , intent(in)    , contiguous                :: sample(:,:)
+        real(TKG)               , intent(in)    , contiguous                :: mean(:)
+        real(TKG)               , intent(out)   , contiguous                :: var(:)
     end subroutine
 #endif
 
@@ -3545,13 +3545,13 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarAvgDIM_WTR_D2_RK1
 #endif
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
         integer(IK)             , intent(in)                                :: dim
-        real(TKC)               , intent(in)                                :: weisum
-        real(TKC)               , intent(in)    , contiguous                :: weight(:)
-        real(TKC)               , intent(in)    , contiguous                :: sample(:,:)
-        real(TKC)               , intent(in)    , contiguous                :: mean(:)
-        real(TKC)               , intent(out)   , contiguous                :: var(:)
+        real(TKG)               , intent(in)                                :: weisum
+        real(TKG)               , intent(in)    , contiguous                :: weight(:)
+        real(TKG)               , intent(in)    , contiguous                :: sample(:,:)
+        real(TKG)               , intent(in)    , contiguous                :: mean(:)
+        real(TKG)               , intent(out)   , contiguous                :: var(:)
     end subroutine
 #endif
 
@@ -3578,10 +3578,10 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarOrgDIM_WNO_D1_CK5
 #endif
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
         integer(IK)             , intent(in)                                :: dim
-        complex(TKC)            , intent(in)    , contiguous                :: sample(:)
-        real(TKC)               , intent(out)                               :: var
+        complex(TKG)            , intent(in)    , contiguous                :: sample(:)
+        real(TKG)               , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -3590,10 +3590,10 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarOrgDIM_WNO_D1_CK4
 #endif
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
         integer(IK)             , intent(in)                                :: dim
-        complex(TKC)            , intent(in)    , contiguous                :: sample(:)
-        real(TKC)               , intent(out)                               :: var
+        complex(TKG)            , intent(in)    , contiguous                :: sample(:)
+        real(TKG)               , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -3602,10 +3602,10 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarOrgDIM_WNO_D1_CK3
 #endif
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
         integer(IK)             , intent(in)                                :: dim
-        complex(TKC)            , intent(in)    , contiguous                :: sample(:)
-        real(TKC)               , intent(out)                               :: var
+        complex(TKG)            , intent(in)    , contiguous                :: sample(:)
+        real(TKG)               , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -3614,10 +3614,10 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarOrgDIM_WNO_D1_CK2
 #endif
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
         integer(IK)             , intent(in)                                :: dim
-        complex(TKC)            , intent(in)    , contiguous                :: sample(:)
-        real(TKC)               , intent(out)                               :: var
+        complex(TKG)            , intent(in)    , contiguous                :: sample(:)
+        real(TKG)               , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -3626,10 +3626,10 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarOrgDIM_WNO_D1_CK1
 #endif
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
         integer(IK)             , intent(in)                                :: dim
-        complex(TKC)            , intent(in)    , contiguous                :: sample(:)
-        real(TKC)               , intent(out)                               :: var
+        complex(TKG)            , intent(in)    , contiguous                :: sample(:)
+        real(TKG)               , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -3640,10 +3640,10 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarOrgDIM_WNO_D1_RK5
 #endif
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
         integer(IK)             , intent(in)                                :: dim
-        real(TKC)               , intent(in)    , contiguous                :: sample(:)
-        real(TKC)               , intent(out)                               :: var
+        real(TKG)               , intent(in)    , contiguous                :: sample(:)
+        real(TKG)               , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -3652,10 +3652,10 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarOrgDIM_WNO_D1_RK4
 #endif
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
         integer(IK)             , intent(in)                                :: dim
-        real(TKC)               , intent(in)    , contiguous                :: sample(:)
-        real(TKC)               , intent(out)                               :: var
+        real(TKG)               , intent(in)    , contiguous                :: sample(:)
+        real(TKG)               , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -3664,10 +3664,10 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarOrgDIM_WNO_D1_RK3
 #endif
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
         integer(IK)             , intent(in)                                :: dim
-        real(TKC)               , intent(in)    , contiguous                :: sample(:)
-        real(TKC)               , intent(out)                               :: var
+        real(TKG)               , intent(in)    , contiguous                :: sample(:)
+        real(TKG)               , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -3676,10 +3676,10 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarOrgDIM_WNO_D1_RK2
 #endif
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
         integer(IK)             , intent(in)                                :: dim
-        real(TKC)               , intent(in)    , contiguous                :: sample(:)
-        real(TKC)               , intent(out)                               :: var
+        real(TKG)               , intent(in)    , contiguous                :: sample(:)
+        real(TKG)               , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -3688,10 +3688,10 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarOrgDIM_WNO_D1_RK1
 #endif
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
         integer(IK)             , intent(in)                                :: dim
-        real(TKC)               , intent(in)    , contiguous                :: sample(:)
-        real(TKC)               , intent(out)                               :: var
+        real(TKG)               , intent(in)    , contiguous                :: sample(:)
+        real(TKG)               , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -3708,10 +3708,10 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarOrgDIM_WNO_D2_CK5
 #endif
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
         integer(IK)             , intent(in)                                :: dim
-        complex(TKC)            , intent(in)    , contiguous                :: sample(:,:)
-        real(TKC)               , intent(out)   , contiguous                :: var(:)
+        complex(TKG)            , intent(in)    , contiguous                :: sample(:,:)
+        real(TKG)               , intent(out)   , contiguous                :: var(:)
     end subroutine
 #endif
 
@@ -3720,10 +3720,10 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarOrgDIM_WNO_D2_CK4
 #endif
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
         integer(IK)             , intent(in)                                :: dim
-        complex(TKC)            , intent(in)    , contiguous                :: sample(:,:)
-        real(TKC)               , intent(out)   , contiguous                :: var(:)
+        complex(TKG)            , intent(in)    , contiguous                :: sample(:,:)
+        real(TKG)               , intent(out)   , contiguous                :: var(:)
     end subroutine
 #endif
 
@@ -3732,10 +3732,10 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarOrgDIM_WNO_D2_CK3
 #endif
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
         integer(IK)             , intent(in)                                :: dim
-        complex(TKC)            , intent(in)    , contiguous                :: sample(:,:)
-        real(TKC)               , intent(out)   , contiguous                :: var(:)
+        complex(TKG)            , intent(in)    , contiguous                :: sample(:,:)
+        real(TKG)               , intent(out)   , contiguous                :: var(:)
     end subroutine
 #endif
 
@@ -3744,10 +3744,10 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarOrgDIM_WNO_D2_CK2
 #endif
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
         integer(IK)             , intent(in)                                :: dim
-        complex(TKC)            , intent(in)    , contiguous                :: sample(:,:)
-        real(TKC)               , intent(out)   , contiguous                :: var(:)
+        complex(TKG)            , intent(in)    , contiguous                :: sample(:,:)
+        real(TKG)               , intent(out)   , contiguous                :: var(:)
     end subroutine
 #endif
 
@@ -3756,10 +3756,10 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarOrgDIM_WNO_D2_CK1
 #endif
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
         integer(IK)             , intent(in)                                :: dim
-        complex(TKC)            , intent(in)    , contiguous                :: sample(:,:)
-        real(TKC)               , intent(out)   , contiguous                :: var(:)
+        complex(TKG)            , intent(in)    , contiguous                :: sample(:,:)
+        real(TKG)               , intent(out)   , contiguous                :: var(:)
     end subroutine
 #endif
 
@@ -3770,10 +3770,10 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarOrgDIM_WNO_D2_RK5
 #endif
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
         integer(IK)             , intent(in)                                :: dim
-        real(TKC)               , intent(in)    , contiguous                :: sample(:,:)
-        real(TKC)               , intent(out)   , contiguous                :: var(:)
+        real(TKG)               , intent(in)    , contiguous                :: sample(:,:)
+        real(TKG)               , intent(out)   , contiguous                :: var(:)
     end subroutine
 #endif
 
@@ -3782,10 +3782,10 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarOrgDIM_WNO_D2_RK4
 #endif
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
         integer(IK)             , intent(in)                                :: dim
-        real(TKC)               , intent(in)    , contiguous                :: sample(:,:)
-        real(TKC)               , intent(out)   , contiguous                :: var(:)
+        real(TKG)               , intent(in)    , contiguous                :: sample(:,:)
+        real(TKG)               , intent(out)   , contiguous                :: var(:)
     end subroutine
 #endif
 
@@ -3794,10 +3794,10 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarOrgDIM_WNO_D2_RK3
 #endif
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
         integer(IK)             , intent(in)                                :: dim
-        real(TKC)               , intent(in)    , contiguous                :: sample(:,:)
-        real(TKC)               , intent(out)   , contiguous                :: var(:)
+        real(TKG)               , intent(in)    , contiguous                :: sample(:,:)
+        real(TKG)               , intent(out)   , contiguous                :: var(:)
     end subroutine
 #endif
 
@@ -3806,10 +3806,10 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarOrgDIM_WNO_D2_RK2
 #endif
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
         integer(IK)             , intent(in)                                :: dim
-        real(TKC)               , intent(in)    , contiguous                :: sample(:,:)
-        real(TKC)               , intent(out)   , contiguous                :: var(:)
+        real(TKG)               , intent(in)    , contiguous                :: sample(:,:)
+        real(TKG)               , intent(out)   , contiguous                :: var(:)
     end subroutine
 #endif
 
@@ -3818,10 +3818,10 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarOrgDIM_WNO_D2_RK1
 #endif
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
         integer(IK)             , intent(in)                                :: dim
-        real(TKC)               , intent(in)    , contiguous                :: sample(:,:)
-        real(TKC)               , intent(out)   , contiguous                :: var(:)
+        real(TKG)               , intent(in)    , contiguous                :: sample(:,:)
+        real(TKG)               , intent(out)   , contiguous                :: var(:)
     end subroutine
 #endif
 
@@ -3848,12 +3848,12 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarOrgDIM_WTI_D1_CK5
 #endif
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
         integer(IK)             , intent(in)                                :: dim
         integer(IK)             , intent(in)                                :: weisum
         integer(IK)             , intent(in)    , contiguous                :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous                :: sample(:)
-        real(TKC)               , intent(out)                               :: var
+        complex(TKG)            , intent(in)    , contiguous                :: sample(:)
+        real(TKG)               , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -3862,12 +3862,12 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarOrgDIM_WTI_D1_CK4
 #endif
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
         integer(IK)             , intent(in)                                :: dim
         integer(IK)             , intent(in)                                :: weisum
         integer(IK)             , intent(in)    , contiguous                :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous                :: sample(:)
-        real(TKC)               , intent(out)                               :: var
+        complex(TKG)            , intent(in)    , contiguous                :: sample(:)
+        real(TKG)               , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -3876,12 +3876,12 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarOrgDIM_WTI_D1_CK3
 #endif
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
         integer(IK)             , intent(in)                                :: dim
         integer(IK)             , intent(in)                                :: weisum
         integer(IK)             , intent(in)    , contiguous                :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous                :: sample(:)
-        real(TKC)               , intent(out)                               :: var
+        complex(TKG)            , intent(in)    , contiguous                :: sample(:)
+        real(TKG)               , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -3890,12 +3890,12 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarOrgDIM_WTI_D1_CK2
 #endif
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
         integer(IK)             , intent(in)                                :: dim
         integer(IK)             , intent(in)                                :: weisum
         integer(IK)             , intent(in)    , contiguous                :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous                :: sample(:)
-        real(TKC)               , intent(out)                               :: var
+        complex(TKG)            , intent(in)    , contiguous                :: sample(:)
+        real(TKG)               , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -3904,12 +3904,12 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarOrgDIM_WTI_D1_CK1
 #endif
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
         integer(IK)             , intent(in)                                :: dim
         integer(IK)             , intent(in)                                :: weisum
         integer(IK)             , intent(in)    , contiguous                :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous                :: sample(:)
-        real(TKC)               , intent(out)                               :: var
+        complex(TKG)            , intent(in)    , contiguous                :: sample(:)
+        real(TKG)               , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -3920,12 +3920,12 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarOrgDIM_WTI_D1_RK5
 #endif
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
         integer(IK)             , intent(in)                                :: dim
         integer(IK)             , intent(in)                                :: weisum
         integer(IK)             , intent(in)    , contiguous                :: weight(:)
-        real(TKC)               , intent(in)    , contiguous                :: sample(:)
-        real(TKC)               , intent(out)                               :: var
+        real(TKG)               , intent(in)    , contiguous                :: sample(:)
+        real(TKG)               , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -3934,12 +3934,12 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarOrgDIM_WTI_D1_RK4
 #endif
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
         integer(IK)             , intent(in)                                :: dim
         integer(IK)             , intent(in)                                :: weisum
         integer(IK)             , intent(in)    , contiguous                :: weight(:)
-        real(TKC)               , intent(in)    , contiguous                :: sample(:)
-        real(TKC)               , intent(out)                               :: var
+        real(TKG)               , intent(in)    , contiguous                :: sample(:)
+        real(TKG)               , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -3948,12 +3948,12 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarOrgDIM_WTI_D1_RK3
 #endif
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
         integer(IK)             , intent(in)                                :: dim
         integer(IK)             , intent(in)                                :: weisum
         integer(IK)             , intent(in)    , contiguous                :: weight(:)
-        real(TKC)               , intent(in)    , contiguous                :: sample(:)
-        real(TKC)               , intent(out)                               :: var
+        real(TKG)               , intent(in)    , contiguous                :: sample(:)
+        real(TKG)               , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -3962,12 +3962,12 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarOrgDIM_WTI_D1_RK2
 #endif
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
         integer(IK)             , intent(in)                                :: dim
         integer(IK)             , intent(in)                                :: weisum
         integer(IK)             , intent(in)    , contiguous                :: weight(:)
-        real(TKC)               , intent(in)    , contiguous                :: sample(:)
-        real(TKC)               , intent(out)                               :: var
+        real(TKG)               , intent(in)    , contiguous                :: sample(:)
+        real(TKG)               , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -3976,12 +3976,12 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarOrgDIM_WTI_D1_RK1
 #endif
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
         integer(IK)             , intent(in)                                :: dim
         integer(IK)             , intent(in)                                :: weisum
         integer(IK)             , intent(in)    , contiguous                :: weight(:)
-        real(TKC)               , intent(in)    , contiguous                :: sample(:)
-        real(TKC)               , intent(out)                               :: var
+        real(TKG)               , intent(in)    , contiguous                :: sample(:)
+        real(TKG)               , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -3998,12 +3998,12 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarOrgDIM_WTI_D2_CK5
 #endif
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
         integer(IK)             , intent(in)                                :: dim
         integer(IK)             , intent(in)                                :: weisum
         integer(IK)             , intent(in)    , contiguous                :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous                :: sample(:,:)
-        real(TKC)               , intent(out)   , contiguous                :: var(:)
+        complex(TKG)            , intent(in)    , contiguous                :: sample(:,:)
+        real(TKG)               , intent(out)   , contiguous                :: var(:)
     end subroutine
 #endif
 
@@ -4012,12 +4012,12 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarOrgDIM_WTI_D2_CK4
 #endif
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
         integer(IK)             , intent(in)                                :: dim
         integer(IK)             , intent(in)                                :: weisum
         integer(IK)             , intent(in)    , contiguous                :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous                :: sample(:,:)
-        real(TKC)               , intent(out)   , contiguous                :: var(:)
+        complex(TKG)            , intent(in)    , contiguous                :: sample(:,:)
+        real(TKG)               , intent(out)   , contiguous                :: var(:)
     end subroutine
 #endif
 
@@ -4026,12 +4026,12 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarOrgDIM_WTI_D2_CK3
 #endif
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
         integer(IK)             , intent(in)                                :: dim
         integer(IK)             , intent(in)                                :: weisum
         integer(IK)             , intent(in)    , contiguous                :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous                :: sample(:,:)
-        real(TKC)               , intent(out)   , contiguous                :: var(:)
+        complex(TKG)            , intent(in)    , contiguous                :: sample(:,:)
+        real(TKG)               , intent(out)   , contiguous                :: var(:)
     end subroutine
 #endif
 
@@ -4040,12 +4040,12 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarOrgDIM_WTI_D2_CK2
 #endif
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
         integer(IK)             , intent(in)                                :: dim
         integer(IK)             , intent(in)                                :: weisum
         integer(IK)             , intent(in)    , contiguous                :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous                :: sample(:,:)
-        real(TKC)               , intent(out)   , contiguous                :: var(:)
+        complex(TKG)            , intent(in)    , contiguous                :: sample(:,:)
+        real(TKG)               , intent(out)   , contiguous                :: var(:)
     end subroutine
 #endif
 
@@ -4054,12 +4054,12 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarOrgDIM_WTI_D2_CK1
 #endif
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
         integer(IK)             , intent(in)                                :: dim
         integer(IK)             , intent(in)                                :: weisum
         integer(IK)             , intent(in)    , contiguous                :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous                :: sample(:,:)
-        real(TKC)               , intent(out)   , contiguous                :: var(:)
+        complex(TKG)            , intent(in)    , contiguous                :: sample(:,:)
+        real(TKG)               , intent(out)   , contiguous                :: var(:)
     end subroutine
 #endif
 
@@ -4070,12 +4070,12 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarOrgDIM_WTI_D2_RK5
 #endif
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
         integer(IK)             , intent(in)                                :: dim
         integer(IK)             , intent(in)                                :: weisum
         integer(IK)             , intent(in)    , contiguous                :: weight(:)
-        real(TKC)               , intent(in)    , contiguous                :: sample(:,:)
-        real(TKC)               , intent(out)   , contiguous                :: var(:)
+        real(TKG)               , intent(in)    , contiguous                :: sample(:,:)
+        real(TKG)               , intent(out)   , contiguous                :: var(:)
     end subroutine
 #endif
 
@@ -4084,12 +4084,12 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarOrgDIM_WTI_D2_RK4
 #endif
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
         integer(IK)             , intent(in)                                :: dim
         integer(IK)             , intent(in)                                :: weisum
         integer(IK)             , intent(in)    , contiguous                :: weight(:)
-        real(TKC)               , intent(in)    , contiguous                :: sample(:,:)
-        real(TKC)               , intent(out)   , contiguous                :: var(:)
+        real(TKG)               , intent(in)    , contiguous                :: sample(:,:)
+        real(TKG)               , intent(out)   , contiguous                :: var(:)
     end subroutine
 #endif
 
@@ -4098,12 +4098,12 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarOrgDIM_WTI_D2_RK3
 #endif
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
         integer(IK)             , intent(in)                                :: dim
         integer(IK)             , intent(in)                                :: weisum
         integer(IK)             , intent(in)    , contiguous                :: weight(:)
-        real(TKC)               , intent(in)    , contiguous                :: sample(:,:)
-        real(TKC)               , intent(out)   , contiguous                :: var(:)
+        real(TKG)               , intent(in)    , contiguous                :: sample(:,:)
+        real(TKG)               , intent(out)   , contiguous                :: var(:)
     end subroutine
 #endif
 
@@ -4112,12 +4112,12 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarOrgDIM_WTI_D2_RK2
 #endif
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
         integer(IK)             , intent(in)                                :: dim
         integer(IK)             , intent(in)                                :: weisum
         integer(IK)             , intent(in)    , contiguous                :: weight(:)
-        real(TKC)               , intent(in)    , contiguous                :: sample(:,:)
-        real(TKC)               , intent(out)   , contiguous                :: var(:)
+        real(TKG)               , intent(in)    , contiguous                :: sample(:,:)
+        real(TKG)               , intent(out)   , contiguous                :: var(:)
     end subroutine
 #endif
 
@@ -4126,12 +4126,12 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarOrgDIM_WTI_D2_RK1
 #endif
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
         integer(IK)             , intent(in)                                :: dim
         integer(IK)             , intent(in)                                :: weisum
         integer(IK)             , intent(in)    , contiguous                :: weight(:)
-        real(TKC)               , intent(in)    , contiguous                :: sample(:,:)
-        real(TKC)               , intent(out)   , contiguous                :: var(:)
+        real(TKG)               , intent(in)    , contiguous                :: sample(:,:)
+        real(TKG)               , intent(out)   , contiguous                :: var(:)
     end subroutine
 #endif
 
@@ -4158,12 +4158,12 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarOrgDIM_WTR_D1_CK5
 #endif
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
         integer(IK)             , intent(in)                                :: dim
-        real(TKC)               , intent(in)                                :: weisum
-        real(TKC)               , intent(in)    , contiguous                :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous                :: sample(:)
-        real(TKC)               , intent(out)                               :: var
+        real(TKG)               , intent(in)                                :: weisum
+        real(TKG)               , intent(in)    , contiguous                :: weight(:)
+        complex(TKG)            , intent(in)    , contiguous                :: sample(:)
+        real(TKG)               , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -4172,12 +4172,12 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarOrgDIM_WTR_D1_CK4
 #endif
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
         integer(IK)             , intent(in)                                :: dim
-        real(TKC)               , intent(in)                                :: weisum
-        real(TKC)               , intent(in)    , contiguous                :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous                :: sample(:)
-        real(TKC)               , intent(out)                               :: var
+        real(TKG)               , intent(in)                                :: weisum
+        real(TKG)               , intent(in)    , contiguous                :: weight(:)
+        complex(TKG)            , intent(in)    , contiguous                :: sample(:)
+        real(TKG)               , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -4186,12 +4186,12 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarOrgDIM_WTR_D1_CK3
 #endif
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
         integer(IK)             , intent(in)                                :: dim
-        real(TKC)               , intent(in)                                :: weisum
-        real(TKC)               , intent(in)    , contiguous                :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous                :: sample(:)
-        real(TKC)               , intent(out)                               :: var
+        real(TKG)               , intent(in)                                :: weisum
+        real(TKG)               , intent(in)    , contiguous                :: weight(:)
+        complex(TKG)            , intent(in)    , contiguous                :: sample(:)
+        real(TKG)               , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -4200,12 +4200,12 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarOrgDIM_WTR_D1_CK2
 #endif
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
         integer(IK)             , intent(in)                                :: dim
-        real(TKC)               , intent(in)                                :: weisum
-        real(TKC)               , intent(in)    , contiguous                :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous                :: sample(:)
-        real(TKC)               , intent(out)                               :: var
+        real(TKG)               , intent(in)                                :: weisum
+        real(TKG)               , intent(in)    , contiguous                :: weight(:)
+        complex(TKG)            , intent(in)    , contiguous                :: sample(:)
+        real(TKG)               , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -4214,12 +4214,12 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarOrgDIM_WTR_D1_CK1
 #endif
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
         integer(IK)             , intent(in)                                :: dim
-        real(TKC)               , intent(in)                                :: weisum
-        real(TKC)               , intent(in)    , contiguous                :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous                :: sample(:)
-        real(TKC)               , intent(out)                               :: var
+        real(TKG)               , intent(in)                                :: weisum
+        real(TKG)               , intent(in)    , contiguous                :: weight(:)
+        complex(TKG)            , intent(in)    , contiguous                :: sample(:)
+        real(TKG)               , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -4230,12 +4230,12 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarOrgDIM_WTR_D1_RK5
 #endif
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
         integer(IK)             , intent(in)                                :: dim
-        real(TKC)               , intent(in)                                :: weisum
-        real(TKC)               , intent(in)    , contiguous                :: weight(:)
-        real(TKC)               , intent(in)    , contiguous                :: sample(:)
-        real(TKC)               , intent(out)                               :: var
+        real(TKG)               , intent(in)                                :: weisum
+        real(TKG)               , intent(in)    , contiguous                :: weight(:)
+        real(TKG)               , intent(in)    , contiguous                :: sample(:)
+        real(TKG)               , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -4244,12 +4244,12 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarOrgDIM_WTR_D1_RK4
 #endif
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
         integer(IK)             , intent(in)                                :: dim
-        real(TKC)               , intent(in)                                :: weisum
-        real(TKC)               , intent(in)    , contiguous                :: weight(:)
-        real(TKC)               , intent(in)    , contiguous                :: sample(:)
-        real(TKC)               , intent(out)                               :: var
+        real(TKG)               , intent(in)                                :: weisum
+        real(TKG)               , intent(in)    , contiguous                :: weight(:)
+        real(TKG)               , intent(in)    , contiguous                :: sample(:)
+        real(TKG)               , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -4258,12 +4258,12 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarOrgDIM_WTR_D1_RK3
 #endif
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
         integer(IK)             , intent(in)                                :: dim
-        real(TKC)               , intent(in)                                :: weisum
-        real(TKC)               , intent(in)    , contiguous                :: weight(:)
-        real(TKC)               , intent(in)    , contiguous                :: sample(:)
-        real(TKC)               , intent(out)                               :: var
+        real(TKG)               , intent(in)                                :: weisum
+        real(TKG)               , intent(in)    , contiguous                :: weight(:)
+        real(TKG)               , intent(in)    , contiguous                :: sample(:)
+        real(TKG)               , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -4272,12 +4272,12 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarOrgDIM_WTR_D1_RK2
 #endif
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
         integer(IK)             , intent(in)                                :: dim
-        real(TKC)               , intent(in)                                :: weisum
-        real(TKC)               , intent(in)    , contiguous                :: weight(:)
-        real(TKC)               , intent(in)    , contiguous                :: sample(:)
-        real(TKC)               , intent(out)                               :: var
+        real(TKG)               , intent(in)                                :: weisum
+        real(TKG)               , intent(in)    , contiguous                :: weight(:)
+        real(TKG)               , intent(in)    , contiguous                :: sample(:)
+        real(TKG)               , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -4286,12 +4286,12 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarOrgDIM_WTR_D1_RK1
 #endif
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
         integer(IK)             , intent(in)                                :: dim
-        real(TKC)               , intent(in)                                :: weisum
-        real(TKC)               , intent(in)    , contiguous                :: weight(:)
-        real(TKC)               , intent(in)    , contiguous                :: sample(:)
-        real(TKC)               , intent(out)                               :: var
+        real(TKG)               , intent(in)                                :: weisum
+        real(TKG)               , intent(in)    , contiguous                :: weight(:)
+        real(TKG)               , intent(in)    , contiguous                :: sample(:)
+        real(TKG)               , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -4308,12 +4308,12 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarOrgDIM_WTR_D2_CK5
 #endif
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
         integer(IK)             , intent(in)                                :: dim
-        real(TKC)               , intent(in)                                :: weisum
-        real(TKC)               , intent(in)    , contiguous                :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous                :: sample(:,:)
-        real(TKC)               , intent(out)   , contiguous                :: var(:)
+        real(TKG)               , intent(in)                                :: weisum
+        real(TKG)               , intent(in)    , contiguous                :: weight(:)
+        complex(TKG)            , intent(in)    , contiguous                :: sample(:,:)
+        real(TKG)               , intent(out)   , contiguous                :: var(:)
     end subroutine
 #endif
 
@@ -4322,12 +4322,12 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarOrgDIM_WTR_D2_CK4
 #endif
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
         integer(IK)             , intent(in)                                :: dim
-        real(TKC)               , intent(in)                                :: weisum
-        real(TKC)               , intent(in)    , contiguous                :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous                :: sample(:,:)
-        real(TKC)               , intent(out)   , contiguous                :: var(:)
+        real(TKG)               , intent(in)                                :: weisum
+        real(TKG)               , intent(in)    , contiguous                :: weight(:)
+        complex(TKG)            , intent(in)    , contiguous                :: sample(:,:)
+        real(TKG)               , intent(out)   , contiguous                :: var(:)
     end subroutine
 #endif
 
@@ -4336,12 +4336,12 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarOrgDIM_WTR_D2_CK3
 #endif
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
         integer(IK)             , intent(in)                                :: dim
-        real(TKC)               , intent(in)                                :: weisum
-        real(TKC)               , intent(in)    , contiguous                :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous                :: sample(:,:)
-        real(TKC)               , intent(out)   , contiguous                :: var(:)
+        real(TKG)               , intent(in)                                :: weisum
+        real(TKG)               , intent(in)    , contiguous                :: weight(:)
+        complex(TKG)            , intent(in)    , contiguous                :: sample(:,:)
+        real(TKG)               , intent(out)   , contiguous                :: var(:)
     end subroutine
 #endif
 
@@ -4350,12 +4350,12 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarOrgDIM_WTR_D2_CK2
 #endif
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
         integer(IK)             , intent(in)                                :: dim
-        real(TKC)               , intent(in)                                :: weisum
-        real(TKC)               , intent(in)    , contiguous                :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous                :: sample(:,:)
-        real(TKC)               , intent(out)   , contiguous                :: var(:)
+        real(TKG)               , intent(in)                                :: weisum
+        real(TKG)               , intent(in)    , contiguous                :: weight(:)
+        complex(TKG)            , intent(in)    , contiguous                :: sample(:,:)
+        real(TKG)               , intent(out)   , contiguous                :: var(:)
     end subroutine
 #endif
 
@@ -4364,12 +4364,12 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarOrgDIM_WTR_D2_CK1
 #endif
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
         integer(IK)             , intent(in)                                :: dim
-        real(TKC)               , intent(in)                                :: weisum
-        real(TKC)               , intent(in)    , contiguous                :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous                :: sample(:,:)
-        real(TKC)               , intent(out)   , contiguous                :: var(:)
+        real(TKG)               , intent(in)                                :: weisum
+        real(TKG)               , intent(in)    , contiguous                :: weight(:)
+        complex(TKG)            , intent(in)    , contiguous                :: sample(:,:)
+        real(TKG)               , intent(out)   , contiguous                :: var(:)
     end subroutine
 #endif
 
@@ -4380,12 +4380,12 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarOrgDIM_WTR_D2_RK5
 #endif
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
         integer(IK)             , intent(in)                                :: dim
-        real(TKC)               , intent(in)                                :: weisum
-        real(TKC)               , intent(in)    , contiguous                :: weight(:)
-        real(TKC)               , intent(in)    , contiguous                :: sample(:,:)
-        real(TKC)               , intent(out)   , contiguous                :: var(:)
+        real(TKG)               , intent(in)                                :: weisum
+        real(TKG)               , intent(in)    , contiguous                :: weight(:)
+        real(TKG)               , intent(in)    , contiguous                :: sample(:,:)
+        real(TKG)               , intent(out)   , contiguous                :: var(:)
     end subroutine
 #endif
 
@@ -4394,12 +4394,12 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarOrgDIM_WTR_D2_RK4
 #endif
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
         integer(IK)             , intent(in)                                :: dim
-        real(TKC)               , intent(in)                                :: weisum
-        real(TKC)               , intent(in)    , contiguous                :: weight(:)
-        real(TKC)               , intent(in)    , contiguous                :: sample(:,:)
-        real(TKC)               , intent(out)   , contiguous                :: var(:)
+        real(TKG)               , intent(in)                                :: weisum
+        real(TKG)               , intent(in)    , contiguous                :: weight(:)
+        real(TKG)               , intent(in)    , contiguous                :: sample(:,:)
+        real(TKG)               , intent(out)   , contiguous                :: var(:)
     end subroutine
 #endif
 
@@ -4408,12 +4408,12 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarOrgDIM_WTR_D2_RK3
 #endif
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
         integer(IK)             , intent(in)                                :: dim
-        real(TKC)               , intent(in)                                :: weisum
-        real(TKC)               , intent(in)    , contiguous                :: weight(:)
-        real(TKC)               , intent(in)    , contiguous                :: sample(:,:)
-        real(TKC)               , intent(out)   , contiguous                :: var(:)
+        real(TKG)               , intent(in)                                :: weisum
+        real(TKG)               , intent(in)    , contiguous                :: weight(:)
+        real(TKG)               , intent(in)    , contiguous                :: sample(:,:)
+        real(TKG)               , intent(out)   , contiguous                :: var(:)
     end subroutine
 #endif
 
@@ -4422,12 +4422,12 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarOrgDIM_WTR_D2_RK2
 #endif
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
         integer(IK)             , intent(in)                                :: dim
-        real(TKC)               , intent(in)                                :: weisum
-        real(TKC)               , intent(in)    , contiguous                :: weight(:)
-        real(TKC)               , intent(in)    , contiguous                :: sample(:,:)
-        real(TKC)               , intent(out)   , contiguous                :: var(:)
+        real(TKG)               , intent(in)                                :: weisum
+        real(TKG)               , intent(in)    , contiguous                :: weight(:)
+        real(TKG)               , intent(in)    , contiguous                :: sample(:,:)
+        real(TKG)               , intent(out)   , contiguous                :: var(:)
     end subroutine
 #endif
 
@@ -4436,12 +4436,12 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarOrgDIM_WTR_D2_RK1
 #endif
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
         integer(IK)             , intent(in)                                :: dim
-        real(TKC)               , intent(in)                                :: weisum
-        real(TKC)               , intent(in)    , contiguous                :: weight(:)
-        real(TKC)               , intent(in)    , contiguous                :: sample(:,:)
-        real(TKC)               , intent(out)   , contiguous                :: var(:)
+        real(TKG)               , intent(in)                                :: weisum
+        real(TKG)               , intent(in)    , contiguous                :: weight(:)
+        real(TKG)               , intent(in)    , contiguous                :: sample(:,:)
+        real(TKG)               , intent(out)   , contiguous                :: var(:)
     end subroutine
 #endif
 
@@ -4470,10 +4470,10 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarAvgALL_WNO_D1_CK5
 #endif
-        use pm_kind, only: TKC => CK5
-        complex(TKC)            , intent(in)    , contiguous                :: sample(:)
-        complex(TKC)            , intent(in)                                :: mean
-        real(TKC)               , intent(out)                               :: var
+        use pm_kind, only: TKG => CK5
+        complex(TKG)            , intent(in)    , contiguous                :: sample(:)
+        complex(TKG)            , intent(in)                                :: mean
+        real(TKG)               , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -4482,10 +4482,10 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarAvgALL_WNO_D1_CK4
 #endif
-        use pm_kind, only: TKC => CK4
-        complex(TKC)            , intent(in)    , contiguous                :: sample(:)
-        complex(TKC)            , intent(in)                                :: mean
-        real(TKC)               , intent(out)                               :: var
+        use pm_kind, only: TKG => CK4
+        complex(TKG)            , intent(in)    , contiguous                :: sample(:)
+        complex(TKG)            , intent(in)                                :: mean
+        real(TKG)               , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -4494,10 +4494,10 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarAvgALL_WNO_D1_CK3
 #endif
-        use pm_kind, only: TKC => CK3
-        complex(TKC)            , intent(in)    , contiguous                :: sample(:)
-        complex(TKC)            , intent(in)                                :: mean
-        real(TKC)               , intent(out)                               :: var
+        use pm_kind, only: TKG => CK3
+        complex(TKG)            , intent(in)    , contiguous                :: sample(:)
+        complex(TKG)            , intent(in)                                :: mean
+        real(TKG)               , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -4506,10 +4506,10 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarAvgALL_WNO_D1_CK2
 #endif
-        use pm_kind, only: TKC => CK2
-        complex(TKC)            , intent(in)    , contiguous                :: sample(:)
-        complex(TKC)            , intent(in)                                :: mean
-        real(TKC)               , intent(out)                               :: var
+        use pm_kind, only: TKG => CK2
+        complex(TKG)            , intent(in)    , contiguous                :: sample(:)
+        complex(TKG)            , intent(in)                                :: mean
+        real(TKG)               , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -4518,10 +4518,10 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarAvgALL_WNO_D1_CK1
 #endif
-        use pm_kind, only: TKC => CK1
-        complex(TKC)            , intent(in)    , contiguous                :: sample(:)
-        complex(TKC)            , intent(in)                                :: mean
-        real(TKC)               , intent(out)                               :: var
+        use pm_kind, only: TKG => CK1
+        complex(TKG)            , intent(in)    , contiguous                :: sample(:)
+        complex(TKG)            , intent(in)                                :: mean
+        real(TKG)               , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -4532,10 +4532,10 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarAvgALL_WNO_D1_RK5
 #endif
-        use pm_kind, only: TKC => RK5
-        real(TKC)               , intent(in)    , contiguous                :: sample(:)
-        real(TKC)               , intent(in)                                :: mean
-        real(TKC)               , intent(out)                               :: var
+        use pm_kind, only: TKG => RK5
+        real(TKG)               , intent(in)    , contiguous                :: sample(:)
+        real(TKG)               , intent(in)                                :: mean
+        real(TKG)               , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -4544,10 +4544,10 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarAvgALL_WNO_D1_RK4
 #endif
-        use pm_kind, only: TKC => RK4
-        real(TKC)               , intent(in)    , contiguous                :: sample(:)
-        real(TKC)               , intent(in)                                :: mean
-        real(TKC)               , intent(out)                               :: var
+        use pm_kind, only: TKG => RK4
+        real(TKG)               , intent(in)    , contiguous                :: sample(:)
+        real(TKG)               , intent(in)                                :: mean
+        real(TKG)               , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -4556,10 +4556,10 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarAvgALL_WNO_D1_RK3
 #endif
-        use pm_kind, only: TKC => RK3
-        real(TKC)               , intent(in)    , contiguous                :: sample(:)
-        real(TKC)               , intent(in)                                :: mean
-        real(TKC)               , intent(out)                               :: var
+        use pm_kind, only: TKG => RK3
+        real(TKG)               , intent(in)    , contiguous                :: sample(:)
+        real(TKG)               , intent(in)                                :: mean
+        real(TKG)               , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -4568,10 +4568,10 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarAvgALL_WNO_D1_RK2
 #endif
-        use pm_kind, only: TKC => RK2
-        real(TKC)               , intent(in)    , contiguous                :: sample(:)
-        real(TKC)               , intent(in)                                :: mean
-        real(TKC)               , intent(out)                               :: var
+        use pm_kind, only: TKG => RK2
+        real(TKG)               , intent(in)    , contiguous                :: sample(:)
+        real(TKG)               , intent(in)                                :: mean
+        real(TKG)               , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -4580,10 +4580,10 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarAvgALL_WNO_D1_RK1
 #endif
-        use pm_kind, only: TKC => RK1
-        real(TKC)               , intent(in)    , contiguous                :: sample(:)
-        real(TKC)               , intent(in)                                :: mean
-        real(TKC)               , intent(out)                               :: var
+        use pm_kind, only: TKG => RK1
+        real(TKG)               , intent(in)    , contiguous                :: sample(:)
+        real(TKG)               , intent(in)                                :: mean
+        real(TKG)               , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -4600,10 +4600,10 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarAvgALL_WNO_D2_CK5
 #endif
-        use pm_kind, only: TKC => CK5
-        complex(TKC)            , intent(in)    , contiguous                :: sample(:,:)
-        complex(TKC)            , intent(in)                                :: mean
-        real(TKC)               , intent(out)                               :: var
+        use pm_kind, only: TKG => CK5
+        complex(TKG)            , intent(in)    , contiguous                :: sample(:,:)
+        complex(TKG)            , intent(in)                                :: mean
+        real(TKG)               , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -4612,10 +4612,10 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarAvgALL_WNO_D2_CK4
 #endif
-        use pm_kind, only: TKC => CK4
-        complex(TKC)            , intent(in)    , contiguous                :: sample(:,:)
-        complex(TKC)            , intent(in)                                :: mean
-        real(TKC)               , intent(out)                               :: var
+        use pm_kind, only: TKG => CK4
+        complex(TKG)            , intent(in)    , contiguous                :: sample(:,:)
+        complex(TKG)            , intent(in)                                :: mean
+        real(TKG)               , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -4624,10 +4624,10 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarAvgALL_WNO_D2_CK3
 #endif
-        use pm_kind, only: TKC => CK3
-        complex(TKC)            , intent(in)    , contiguous                :: sample(:,:)
-        complex(TKC)            , intent(in)                                :: mean
-        real(TKC)               , intent(out)                               :: var
+        use pm_kind, only: TKG => CK3
+        complex(TKG)            , intent(in)    , contiguous                :: sample(:,:)
+        complex(TKG)            , intent(in)                                :: mean
+        real(TKG)               , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -4636,10 +4636,10 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarAvgALL_WNO_D2_CK2
 #endif
-        use pm_kind, only: TKC => CK2
-        complex(TKC)            , intent(in)    , contiguous                :: sample(:,:)
-        complex(TKC)            , intent(in)                                :: mean
-        real(TKC)               , intent(out)                               :: var
+        use pm_kind, only: TKG => CK2
+        complex(TKG)            , intent(in)    , contiguous                :: sample(:,:)
+        complex(TKG)            , intent(in)                                :: mean
+        real(TKG)               , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -4648,10 +4648,10 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarAvgALL_WNO_D2_CK1
 #endif
-        use pm_kind, only: TKC => CK1
-        complex(TKC)            , intent(in)    , contiguous                :: sample(:,:)
-        complex(TKC)            , intent(in)                                :: mean
-        real(TKC)               , intent(out)                               :: var
+        use pm_kind, only: TKG => CK1
+        complex(TKG)            , intent(in)    , contiguous                :: sample(:,:)
+        complex(TKG)            , intent(in)                                :: mean
+        real(TKG)               , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -4662,10 +4662,10 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarAvgALL_WNO_D2_RK5
 #endif
-        use pm_kind, only: TKC => RK5
-        real(TKC)               , intent(in)    , contiguous                :: sample(:,:)
-        real(TKC)               , intent(in)                                :: mean
-        real(TKC)               , intent(out)                               :: var
+        use pm_kind, only: TKG => RK5
+        real(TKG)               , intent(in)    , contiguous                :: sample(:,:)
+        real(TKG)               , intent(in)                                :: mean
+        real(TKG)               , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -4674,10 +4674,10 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarAvgALL_WNO_D2_RK4
 #endif
-        use pm_kind, only: TKC => RK4
-        real(TKC)               , intent(in)    , contiguous                :: sample(:,:)
-        real(TKC)               , intent(in)                                :: mean
-        real(TKC)               , intent(out)                               :: var
+        use pm_kind, only: TKG => RK4
+        real(TKG)               , intent(in)    , contiguous                :: sample(:,:)
+        real(TKG)               , intent(in)                                :: mean
+        real(TKG)               , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -4686,10 +4686,10 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarAvgALL_WNO_D2_RK3
 #endif
-        use pm_kind, only: TKC => RK3
-        real(TKC)               , intent(in)    , contiguous                :: sample(:,:)
-        real(TKC)               , intent(in)                                :: mean
-        real(TKC)               , intent(out)                               :: var
+        use pm_kind, only: TKG => RK3
+        real(TKG)               , intent(in)    , contiguous                :: sample(:,:)
+        real(TKG)               , intent(in)                                :: mean
+        real(TKG)               , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -4698,10 +4698,10 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarAvgALL_WNO_D2_RK2
 #endif
-        use pm_kind, only: TKC => RK2
-        real(TKC)               , intent(in)    , contiguous                :: sample(:,:)
-        real(TKC)               , intent(in)                                :: mean
-        real(TKC)               , intent(out)                               :: var
+        use pm_kind, only: TKG => RK2
+        real(TKG)               , intent(in)    , contiguous                :: sample(:,:)
+        real(TKG)               , intent(in)                                :: mean
+        real(TKG)               , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -4710,10 +4710,10 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarAvgALL_WNO_D2_RK1
 #endif
-        use pm_kind, only: TKC => RK1
-        real(TKC)               , intent(in)    , contiguous                :: sample(:,:)
-        real(TKC)               , intent(in)                                :: mean
-        real(TKC)               , intent(out)                               :: var
+        use pm_kind, only: TKG => RK1
+        real(TKG)               , intent(in)    , contiguous                :: sample(:,:)
+        real(TKG)               , intent(in)                                :: mean
+        real(TKG)               , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -4740,12 +4740,12 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarAvgALL_WTI_D1_CK5
 #endif
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
         integer(IK)             , intent(in)                                :: weisum
         integer(IK)             , intent(in)    , contiguous                :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous                :: sample(:)
-        complex(TKC)            , intent(in)                                :: mean
-        real(TKC)               , intent(out)                               :: var
+        complex(TKG)            , intent(in)    , contiguous                :: sample(:)
+        complex(TKG)            , intent(in)                                :: mean
+        real(TKG)               , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -4754,12 +4754,12 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarAvgALL_WTI_D1_CK4
 #endif
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
         integer(IK)             , intent(in)                                :: weisum
         integer(IK)             , intent(in)    , contiguous                :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous                :: sample(:)
-        complex(TKC)            , intent(in)                                :: mean
-        real(TKC)               , intent(out)                               :: var
+        complex(TKG)            , intent(in)    , contiguous                :: sample(:)
+        complex(TKG)            , intent(in)                                :: mean
+        real(TKG)               , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -4768,12 +4768,12 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarAvgALL_WTI_D1_CK3
 #endif
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
         integer(IK)             , intent(in)                                :: weisum
         integer(IK)             , intent(in)    , contiguous                :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous                :: sample(:)
-        complex(TKC)            , intent(in)                                :: mean
-        real(TKC)               , intent(out)                               :: var
+        complex(TKG)            , intent(in)    , contiguous                :: sample(:)
+        complex(TKG)            , intent(in)                                :: mean
+        real(TKG)               , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -4782,12 +4782,12 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarAvgALL_WTI_D1_CK2
 #endif
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
         integer(IK)             , intent(in)                                :: weisum
         integer(IK)             , intent(in)    , contiguous                :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous                :: sample(:)
-        complex(TKC)            , intent(in)                                :: mean
-        real(TKC)               , intent(out)                               :: var
+        complex(TKG)            , intent(in)    , contiguous                :: sample(:)
+        complex(TKG)            , intent(in)                                :: mean
+        real(TKG)               , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -4796,12 +4796,12 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarAvgALL_WTI_D1_CK1
 #endif
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
         integer(IK)             , intent(in)                                :: weisum
         integer(IK)             , intent(in)    , contiguous                :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous                :: sample(:)
-        complex(TKC)            , intent(in)                                :: mean
-        real(TKC)               , intent(out)                               :: var
+        complex(TKG)            , intent(in)    , contiguous                :: sample(:)
+        complex(TKG)            , intent(in)                                :: mean
+        real(TKG)               , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -4812,12 +4812,12 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarAvgALL_WTI_D1_RK5
 #endif
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
         integer(IK)             , intent(in)                                :: weisum
         integer(IK)             , intent(in)    , contiguous                :: weight(:)
-        real(TKC)               , intent(in)    , contiguous                :: sample(:)
-        real(TKC)               , intent(in)                                :: mean
-        real(TKC)               , intent(out)                               :: var
+        real(TKG)               , intent(in)    , contiguous                :: sample(:)
+        real(TKG)               , intent(in)                                :: mean
+        real(TKG)               , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -4826,12 +4826,12 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarAvgALL_WTI_D1_RK4
 #endif
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
         integer(IK)             , intent(in)                                :: weisum
         integer(IK)             , intent(in)    , contiguous                :: weight(:)
-        real(TKC)               , intent(in)    , contiguous                :: sample(:)
-        real(TKC)               , intent(in)                                :: mean
-        real(TKC)               , intent(out)                               :: var
+        real(TKG)               , intent(in)    , contiguous                :: sample(:)
+        real(TKG)               , intent(in)                                :: mean
+        real(TKG)               , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -4840,12 +4840,12 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarAvgALL_WTI_D1_RK3
 #endif
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
         integer(IK)             , intent(in)                                :: weisum
         integer(IK)             , intent(in)    , contiguous                :: weight(:)
-        real(TKC)               , intent(in)    , contiguous                :: sample(:)
-        real(TKC)               , intent(in)                                :: mean
-        real(TKC)               , intent(out)                               :: var
+        real(TKG)               , intent(in)    , contiguous                :: sample(:)
+        real(TKG)               , intent(in)                                :: mean
+        real(TKG)               , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -4854,12 +4854,12 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarAvgALL_WTI_D1_RK2
 #endif
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
         integer(IK)             , intent(in)                                :: weisum
         integer(IK)             , intent(in)    , contiguous                :: weight(:)
-        real(TKC)               , intent(in)    , contiguous                :: sample(:)
-        real(TKC)               , intent(in)                                :: mean
-        real(TKC)               , intent(out)                               :: var
+        real(TKG)               , intent(in)    , contiguous                :: sample(:)
+        real(TKG)               , intent(in)                                :: mean
+        real(TKG)               , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -4868,12 +4868,12 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarAvgALL_WTI_D1_RK1
 #endif
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
         integer(IK)             , intent(in)                                :: weisum
         integer(IK)             , intent(in)    , contiguous                :: weight(:)
-        real(TKC)               , intent(in)    , contiguous                :: sample(:)
-        real(TKC)               , intent(in)                                :: mean
-        real(TKC)               , intent(out)                               :: var
+        real(TKG)               , intent(in)    , contiguous                :: sample(:)
+        real(TKG)               , intent(in)                                :: mean
+        real(TKG)               , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -4890,12 +4890,12 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarAvgALL_WTI_D2_CK5
 #endif
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
         integer(IK)             , intent(in)                                :: weisum
         integer(IK)             , intent(in)    , contiguous                :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous                :: sample(:,:)
-        complex(TKC)            , intent(in)                                :: mean
-        real(TKC)               , intent(out)                               :: var
+        complex(TKG)            , intent(in)    , contiguous                :: sample(:,:)
+        complex(TKG)            , intent(in)                                :: mean
+        real(TKG)               , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -4904,12 +4904,12 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarAvgALL_WTI_D2_CK4
 #endif
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
         integer(IK)             , intent(in)                                :: weisum
         integer(IK)             , intent(in)    , contiguous                :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous                :: sample(:,:)
-        complex(TKC)            , intent(in)                                :: mean
-        real(TKC)               , intent(out)                               :: var
+        complex(TKG)            , intent(in)    , contiguous                :: sample(:,:)
+        complex(TKG)            , intent(in)                                :: mean
+        real(TKG)               , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -4918,12 +4918,12 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarAvgALL_WTI_D2_CK3
 #endif
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
         integer(IK)             , intent(in)                                :: weisum
         integer(IK)             , intent(in)    , contiguous                :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous                :: sample(:,:)
-        complex(TKC)            , intent(in)                                :: mean
-        real(TKC)               , intent(out)                               :: var
+        complex(TKG)            , intent(in)    , contiguous                :: sample(:,:)
+        complex(TKG)            , intent(in)                                :: mean
+        real(TKG)               , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -4932,12 +4932,12 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarAvgALL_WTI_D2_CK2
 #endif
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
         integer(IK)             , intent(in)                                :: weisum
         integer(IK)             , intent(in)    , contiguous                :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous                :: sample(:,:)
-        complex(TKC)            , intent(in)                                :: mean
-        real(TKC)               , intent(out)                               :: var
+        complex(TKG)            , intent(in)    , contiguous                :: sample(:,:)
+        complex(TKG)            , intent(in)                                :: mean
+        real(TKG)               , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -4946,12 +4946,12 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarAvgALL_WTI_D2_CK1
 #endif
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
         integer(IK)             , intent(in)                                :: weisum
         integer(IK)             , intent(in)    , contiguous                :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous                :: sample(:,:)
-        complex(TKC)            , intent(in)                                :: mean
-        real(TKC)               , intent(out)                               :: var
+        complex(TKG)            , intent(in)    , contiguous                :: sample(:,:)
+        complex(TKG)            , intent(in)                                :: mean
+        real(TKG)               , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -4962,12 +4962,12 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarAvgALL_WTI_D2_RK5
 #endif
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
         integer(IK)             , intent(in)                                :: weisum
         integer(IK)             , intent(in)    , contiguous                :: weight(:)
-        real(TKC)               , intent(in)    , contiguous                :: sample(:,:)
-        real(TKC)               , intent(in)                                :: mean
-        real(TKC)               , intent(out)                               :: var
+        real(TKG)               , intent(in)    , contiguous                :: sample(:,:)
+        real(TKG)               , intent(in)                                :: mean
+        real(TKG)               , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -4976,12 +4976,12 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarAvgALL_WTI_D2_RK4
 #endif
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
         integer(IK)             , intent(in)                                :: weisum
         integer(IK)             , intent(in)    , contiguous                :: weight(:)
-        real(TKC)               , intent(in)    , contiguous                :: sample(:,:)
-        real(TKC)               , intent(in)                                :: mean
-        real(TKC)               , intent(out)                               :: var
+        real(TKG)               , intent(in)    , contiguous                :: sample(:,:)
+        real(TKG)               , intent(in)                                :: mean
+        real(TKG)               , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -4990,12 +4990,12 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarAvgALL_WTI_D2_RK3
 #endif
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
         integer(IK)             , intent(in)                                :: weisum
         integer(IK)             , intent(in)    , contiguous                :: weight(:)
-        real(TKC)               , intent(in)    , contiguous                :: sample(:,:)
-        real(TKC)               , intent(in)                                :: mean
-        real(TKC)               , intent(out)                               :: var
+        real(TKG)               , intent(in)    , contiguous                :: sample(:,:)
+        real(TKG)               , intent(in)                                :: mean
+        real(TKG)               , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -5004,12 +5004,12 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarAvgALL_WTI_D2_RK2
 #endif
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
         integer(IK)             , intent(in)                                :: weisum
         integer(IK)             , intent(in)    , contiguous                :: weight(:)
-        real(TKC)               , intent(in)    , contiguous                :: sample(:,:)
-        real(TKC)               , intent(in)                                :: mean
-        real(TKC)               , intent(out)                               :: var
+        real(TKG)               , intent(in)    , contiguous                :: sample(:,:)
+        real(TKG)               , intent(in)                                :: mean
+        real(TKG)               , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -5018,12 +5018,12 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarAvgALL_WTI_D2_RK1
 #endif
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
         integer(IK)             , intent(in)                                :: weisum
         integer(IK)             , intent(in)    , contiguous                :: weight(:)
-        real(TKC)               , intent(in)    , contiguous                :: sample(:,:)
-        real(TKC)               , intent(in)                                :: mean
-        real(TKC)               , intent(out)                               :: var
+        real(TKG)               , intent(in)    , contiguous                :: sample(:,:)
+        real(TKG)               , intent(in)                                :: mean
+        real(TKG)               , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -5050,12 +5050,12 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarAvgALL_WTR_D1_CK5
 #endif
-        use pm_kind, only: TKC => CK5
-        real(TKC)               , intent(in)                                :: weisum
-        real(TKC)               , intent(in)    , contiguous                :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous                :: sample(:)
-        complex(TKC)            , intent(in)                                :: mean
-        real(TKC)               , intent(out)                               :: var
+        use pm_kind, only: TKG => CK5
+        real(TKG)               , intent(in)                                :: weisum
+        real(TKG)               , intent(in)    , contiguous                :: weight(:)
+        complex(TKG)            , intent(in)    , contiguous                :: sample(:)
+        complex(TKG)            , intent(in)                                :: mean
+        real(TKG)               , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -5064,12 +5064,12 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarAvgALL_WTR_D1_CK4
 #endif
-        use pm_kind, only: TKC => CK4
-        real(TKC)               , intent(in)                                :: weisum
-        real(TKC)               , intent(in)    , contiguous                :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous                :: sample(:)
-        complex(TKC)            , intent(in)                                :: mean
-        real(TKC)               , intent(out)                               :: var
+        use pm_kind, only: TKG => CK4
+        real(TKG)               , intent(in)                                :: weisum
+        real(TKG)               , intent(in)    , contiguous                :: weight(:)
+        complex(TKG)            , intent(in)    , contiguous                :: sample(:)
+        complex(TKG)            , intent(in)                                :: mean
+        real(TKG)               , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -5078,12 +5078,12 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarAvgALL_WTR_D1_CK3
 #endif
-        use pm_kind, only: TKC => CK3
-        real(TKC)               , intent(in)                                :: weisum
-        real(TKC)               , intent(in)    , contiguous                :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous                :: sample(:)
-        complex(TKC)            , intent(in)                                :: mean
-        real(TKC)               , intent(out)                               :: var
+        use pm_kind, only: TKG => CK3
+        real(TKG)               , intent(in)                                :: weisum
+        real(TKG)               , intent(in)    , contiguous                :: weight(:)
+        complex(TKG)            , intent(in)    , contiguous                :: sample(:)
+        complex(TKG)            , intent(in)                                :: mean
+        real(TKG)               , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -5092,12 +5092,12 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarAvgALL_WTR_D1_CK2
 #endif
-        use pm_kind, only: TKC => CK2
-        real(TKC)               , intent(in)                                :: weisum
-        real(TKC)               , intent(in)    , contiguous                :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous                :: sample(:)
-        complex(TKC)            , intent(in)                                :: mean
-        real(TKC)               , intent(out)                               :: var
+        use pm_kind, only: TKG => CK2
+        real(TKG)               , intent(in)                                :: weisum
+        real(TKG)               , intent(in)    , contiguous                :: weight(:)
+        complex(TKG)            , intent(in)    , contiguous                :: sample(:)
+        complex(TKG)            , intent(in)                                :: mean
+        real(TKG)               , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -5106,12 +5106,12 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarAvgALL_WTR_D1_CK1
 #endif
-        use pm_kind, only: TKC => CK1
-        real(TKC)               , intent(in)                                :: weisum
-        real(TKC)               , intent(in)    , contiguous                :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous                :: sample(:)
-        complex(TKC)            , intent(in)                                :: mean
-        real(TKC)               , intent(out)                               :: var
+        use pm_kind, only: TKG => CK1
+        real(TKG)               , intent(in)                                :: weisum
+        real(TKG)               , intent(in)    , contiguous                :: weight(:)
+        complex(TKG)            , intent(in)    , contiguous                :: sample(:)
+        complex(TKG)            , intent(in)                                :: mean
+        real(TKG)               , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -5122,12 +5122,12 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarAvgALL_WTR_D1_RK5
 #endif
-        use pm_kind, only: TKC => RK5
-        real(TKC)               , intent(in)                                :: weisum
-        real(TKC)               , intent(in)    , contiguous                :: weight(:)
-        real(TKC)               , intent(in)    , contiguous                :: sample(:)
-        real(TKC)               , intent(in)                                :: mean
-        real(TKC)               , intent(out)                               :: var
+        use pm_kind, only: TKG => RK5
+        real(TKG)               , intent(in)                                :: weisum
+        real(TKG)               , intent(in)    , contiguous                :: weight(:)
+        real(TKG)               , intent(in)    , contiguous                :: sample(:)
+        real(TKG)               , intent(in)                                :: mean
+        real(TKG)               , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -5136,12 +5136,12 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarAvgALL_WTR_D1_RK4
 #endif
-        use pm_kind, only: TKC => RK4
-        real(TKC)               , intent(in)                                :: weisum
-        real(TKC)               , intent(in)    , contiguous                :: weight(:)
-        real(TKC)               , intent(in)    , contiguous                :: sample(:)
-        real(TKC)               , intent(in)                                :: mean
-        real(TKC)               , intent(out)                               :: var
+        use pm_kind, only: TKG => RK4
+        real(TKG)               , intent(in)                                :: weisum
+        real(TKG)               , intent(in)    , contiguous                :: weight(:)
+        real(TKG)               , intent(in)    , contiguous                :: sample(:)
+        real(TKG)               , intent(in)                                :: mean
+        real(TKG)               , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -5150,12 +5150,12 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarAvgALL_WTR_D1_RK3
 #endif
-        use pm_kind, only: TKC => RK3
-        real(TKC)               , intent(in)                                :: weisum
-        real(TKC)               , intent(in)    , contiguous                :: weight(:)
-        real(TKC)               , intent(in)    , contiguous                :: sample(:)
-        real(TKC)               , intent(in)                                :: mean
-        real(TKC)               , intent(out)                               :: var
+        use pm_kind, only: TKG => RK3
+        real(TKG)               , intent(in)                                :: weisum
+        real(TKG)               , intent(in)    , contiguous                :: weight(:)
+        real(TKG)               , intent(in)    , contiguous                :: sample(:)
+        real(TKG)               , intent(in)                                :: mean
+        real(TKG)               , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -5164,12 +5164,12 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarAvgALL_WTR_D1_RK2
 #endif
-        use pm_kind, only: TKC => RK2
-        real(TKC)               , intent(in)                                :: weisum
-        real(TKC)               , intent(in)    , contiguous                :: weight(:)
-        real(TKC)               , intent(in)    , contiguous                :: sample(:)
-        real(TKC)               , intent(in)                                :: mean
-        real(TKC)               , intent(out)                               :: var
+        use pm_kind, only: TKG => RK2
+        real(TKG)               , intent(in)                                :: weisum
+        real(TKG)               , intent(in)    , contiguous                :: weight(:)
+        real(TKG)               , intent(in)    , contiguous                :: sample(:)
+        real(TKG)               , intent(in)                                :: mean
+        real(TKG)               , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -5178,12 +5178,12 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarAvgALL_WTR_D1_RK1
 #endif
-        use pm_kind, only: TKC => RK1
-        real(TKC)               , intent(in)                                :: weisum
-        real(TKC)               , intent(in)    , contiguous                :: weight(:)
-        real(TKC)               , intent(in)    , contiguous                :: sample(:)
-        real(TKC)               , intent(in)                                :: mean
-        real(TKC)               , intent(out)                               :: var
+        use pm_kind, only: TKG => RK1
+        real(TKG)               , intent(in)                                :: weisum
+        real(TKG)               , intent(in)    , contiguous                :: weight(:)
+        real(TKG)               , intent(in)    , contiguous                :: sample(:)
+        real(TKG)               , intent(in)                                :: mean
+        real(TKG)               , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -5200,12 +5200,12 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarAvgALL_WTR_D2_CK5
 #endif
-        use pm_kind, only: TKC => CK5
-        real(TKC)               , intent(in)                                :: weisum
-        real(TKC)               , intent(in)    , contiguous                :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous                :: sample(:,:)
-        complex(TKC)            , intent(in)                                :: mean
-        real(TKC)               , intent(out)                               :: var
+        use pm_kind, only: TKG => CK5
+        real(TKG)               , intent(in)                                :: weisum
+        real(TKG)               , intent(in)    , contiguous                :: weight(:)
+        complex(TKG)            , intent(in)    , contiguous                :: sample(:,:)
+        complex(TKG)            , intent(in)                                :: mean
+        real(TKG)               , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -5214,12 +5214,12 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarAvgALL_WTR_D2_CK4
 #endif
-        use pm_kind, only: TKC => CK4
-        real(TKC)               , intent(in)                                :: weisum
-        real(TKC)               , intent(in)    , contiguous                :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous                :: sample(:,:)
-        complex(TKC)            , intent(in)                                :: mean
-        real(TKC)               , intent(out)                               :: var
+        use pm_kind, only: TKG => CK4
+        real(TKG)               , intent(in)                                :: weisum
+        real(TKG)               , intent(in)    , contiguous                :: weight(:)
+        complex(TKG)            , intent(in)    , contiguous                :: sample(:,:)
+        complex(TKG)            , intent(in)                                :: mean
+        real(TKG)               , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -5228,12 +5228,12 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarAvgALL_WTR_D2_CK3
 #endif
-        use pm_kind, only: TKC => CK3
-        real(TKC)               , intent(in)                                :: weisum
-        real(TKC)               , intent(in)    , contiguous                :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous                :: sample(:,:)
-        complex(TKC)            , intent(in)                                :: mean
-        real(TKC)               , intent(out)                               :: var
+        use pm_kind, only: TKG => CK3
+        real(TKG)               , intent(in)                                :: weisum
+        real(TKG)               , intent(in)    , contiguous                :: weight(:)
+        complex(TKG)            , intent(in)    , contiguous                :: sample(:,:)
+        complex(TKG)            , intent(in)                                :: mean
+        real(TKG)               , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -5242,12 +5242,12 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarAvgALL_WTR_D2_CK2
 #endif
-        use pm_kind, only: TKC => CK2
-        real(TKC)               , intent(in)                                :: weisum
-        real(TKC)               , intent(in)    , contiguous                :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous                :: sample(:,:)
-        complex(TKC)            , intent(in)                                :: mean
-        real(TKC)               , intent(out)                               :: var
+        use pm_kind, only: TKG => CK2
+        real(TKG)               , intent(in)                                :: weisum
+        real(TKG)               , intent(in)    , contiguous                :: weight(:)
+        complex(TKG)            , intent(in)    , contiguous                :: sample(:,:)
+        complex(TKG)            , intent(in)                                :: mean
+        real(TKG)               , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -5256,12 +5256,12 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarAvgALL_WTR_D2_CK1
 #endif
-        use pm_kind, only: TKC => CK1
-        real(TKC)               , intent(in)                                :: weisum
-        real(TKC)               , intent(in)    , contiguous                :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous                :: sample(:,:)
-        complex(TKC)            , intent(in)                                :: mean
-        real(TKC)               , intent(out)                               :: var
+        use pm_kind, only: TKG => CK1
+        real(TKG)               , intent(in)                                :: weisum
+        real(TKG)               , intent(in)    , contiguous                :: weight(:)
+        complex(TKG)            , intent(in)    , contiguous                :: sample(:,:)
+        complex(TKG)            , intent(in)                                :: mean
+        real(TKG)               , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -5272,12 +5272,12 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarAvgALL_WTR_D2_RK5
 #endif
-        use pm_kind, only: TKC => RK5
-        real(TKC)               , intent(in)                                :: weisum
-        real(TKC)               , intent(in)    , contiguous                :: weight(:)
-        real(TKC)               , intent(in)    , contiguous                :: sample(:,:)
-        real(TKC)               , intent(in)                                :: mean
-        real(TKC)               , intent(out)                               :: var
+        use pm_kind, only: TKG => RK5
+        real(TKG)               , intent(in)                                :: weisum
+        real(TKG)               , intent(in)    , contiguous                :: weight(:)
+        real(TKG)               , intent(in)    , contiguous                :: sample(:,:)
+        real(TKG)               , intent(in)                                :: mean
+        real(TKG)               , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -5286,12 +5286,12 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarAvgALL_WTR_D2_RK4
 #endif
-        use pm_kind, only: TKC => RK4
-        real(TKC)               , intent(in)                                :: weisum
-        real(TKC)               , intent(in)    , contiguous                :: weight(:)
-        real(TKC)               , intent(in)    , contiguous                :: sample(:,:)
-        real(TKC)               , intent(in)                                :: mean
-        real(TKC)               , intent(out)                               :: var
+        use pm_kind, only: TKG => RK4
+        real(TKG)               , intent(in)                                :: weisum
+        real(TKG)               , intent(in)    , contiguous                :: weight(:)
+        real(TKG)               , intent(in)    , contiguous                :: sample(:,:)
+        real(TKG)               , intent(in)                                :: mean
+        real(TKG)               , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -5300,12 +5300,12 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarAvgALL_WTR_D2_RK3
 #endif
-        use pm_kind, only: TKC => RK3
-        real(TKC)               , intent(in)                                :: weisum
-        real(TKC)               , intent(in)    , contiguous                :: weight(:)
-        real(TKC)               , intent(in)    , contiguous                :: sample(:,:)
-        real(TKC)               , intent(in)                                :: mean
-        real(TKC)               , intent(out)                               :: var
+        use pm_kind, only: TKG => RK3
+        real(TKG)               , intent(in)                                :: weisum
+        real(TKG)               , intent(in)    , contiguous                :: weight(:)
+        real(TKG)               , intent(in)    , contiguous                :: sample(:,:)
+        real(TKG)               , intent(in)                                :: mean
+        real(TKG)               , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -5314,12 +5314,12 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarAvgALL_WTR_D2_RK2
 #endif
-        use pm_kind, only: TKC => RK2
-        real(TKC)               , intent(in)                                :: weisum
-        real(TKC)               , intent(in)    , contiguous                :: weight(:)
-        real(TKC)               , intent(in)    , contiguous                :: sample(:,:)
-        real(TKC)               , intent(in)                                :: mean
-        real(TKC)               , intent(out)                               :: var
+        use pm_kind, only: TKG => RK2
+        real(TKG)               , intent(in)                                :: weisum
+        real(TKG)               , intent(in)    , contiguous                :: weight(:)
+        real(TKG)               , intent(in)    , contiguous                :: sample(:,:)
+        real(TKG)               , intent(in)                                :: mean
+        real(TKG)               , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -5328,12 +5328,12 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarAvgALL_WTR_D2_RK1
 #endif
-        use pm_kind, only: TKC => RK1
-        real(TKC)               , intent(in)                                :: weisum
-        real(TKC)               , intent(in)    , contiguous                :: weight(:)
-        real(TKC)               , intent(in)    , contiguous                :: sample(:,:)
-        real(TKC)               , intent(in)                                :: mean
-        real(TKC)               , intent(out)                               :: var
+        use pm_kind, only: TKG => RK1
+        real(TKG)               , intent(in)                                :: weisum
+        real(TKG)               , intent(in)    , contiguous                :: weight(:)
+        real(TKG)               , intent(in)    , contiguous                :: sample(:,:)
+        real(TKG)               , intent(in)                                :: mean
+        real(TKG)               , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -5360,9 +5360,9 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarOrgALL_WNO_D1_CK5
 #endif
-        use pm_kind, only: TKC => CK5
-        complex(TKC)            , intent(in)    , contiguous                :: sample(:)
-        real(TKC)               , intent(out)                               :: var
+        use pm_kind, only: TKG => CK5
+        complex(TKG)            , intent(in)    , contiguous                :: sample(:)
+        real(TKG)               , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -5371,9 +5371,9 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarOrgALL_WNO_D1_CK4
 #endif
-        use pm_kind, only: TKC => CK4
-        complex(TKC)            , intent(in)    , contiguous                :: sample(:)
-        real(TKC)               , intent(out)                               :: var
+        use pm_kind, only: TKG => CK4
+        complex(TKG)            , intent(in)    , contiguous                :: sample(:)
+        real(TKG)               , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -5382,9 +5382,9 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarOrgALL_WNO_D1_CK3
 #endif
-        use pm_kind, only: TKC => CK3
-        complex(TKC)            , intent(in)    , contiguous                :: sample(:)
-        real(TKC)               , intent(out)                               :: var
+        use pm_kind, only: TKG => CK3
+        complex(TKG)            , intent(in)    , contiguous                :: sample(:)
+        real(TKG)               , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -5393,9 +5393,9 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarOrgALL_WNO_D1_CK2
 #endif
-        use pm_kind, only: TKC => CK2
-        complex(TKC)            , intent(in)    , contiguous                :: sample(:)
-        real(TKC)               , intent(out)                               :: var
+        use pm_kind, only: TKG => CK2
+        complex(TKG)            , intent(in)    , contiguous                :: sample(:)
+        real(TKG)               , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -5404,9 +5404,9 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarOrgALL_WNO_D1_CK1
 #endif
-        use pm_kind, only: TKC => CK1
-        complex(TKC)            , intent(in)    , contiguous                :: sample(:)
-        real(TKC)               , intent(out)                               :: var
+        use pm_kind, only: TKG => CK1
+        complex(TKG)            , intent(in)    , contiguous                :: sample(:)
+        real(TKG)               , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -5417,9 +5417,9 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarOrgALL_WNO_D1_RK5
 #endif
-        use pm_kind, only: TKC => RK5
-        real(TKC)               , intent(in)    , contiguous                :: sample(:)
-        real(TKC)               , intent(out)                               :: var
+        use pm_kind, only: TKG => RK5
+        real(TKG)               , intent(in)    , contiguous                :: sample(:)
+        real(TKG)               , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -5428,9 +5428,9 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarOrgALL_WNO_D1_RK4
 #endif
-        use pm_kind, only: TKC => RK4
-        real(TKC)               , intent(in)    , contiguous                :: sample(:)
-        real(TKC)               , intent(out)                               :: var
+        use pm_kind, only: TKG => RK4
+        real(TKG)               , intent(in)    , contiguous                :: sample(:)
+        real(TKG)               , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -5439,9 +5439,9 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarOrgALL_WNO_D1_RK3
 #endif
-        use pm_kind, only: TKC => RK3
-        real(TKC)               , intent(in)    , contiguous                :: sample(:)
-        real(TKC)               , intent(out)                               :: var
+        use pm_kind, only: TKG => RK3
+        real(TKG)               , intent(in)    , contiguous                :: sample(:)
+        real(TKG)               , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -5450,9 +5450,9 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarOrgALL_WNO_D1_RK2
 #endif
-        use pm_kind, only: TKC => RK2
-        real(TKC)               , intent(in)    , contiguous                :: sample(:)
-        real(TKC)               , intent(out)                               :: var
+        use pm_kind, only: TKG => RK2
+        real(TKG)               , intent(in)    , contiguous                :: sample(:)
+        real(TKG)               , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -5461,9 +5461,9 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarOrgALL_WNO_D1_RK1
 #endif
-        use pm_kind, only: TKC => RK1
-        real(TKC)               , intent(in)    , contiguous                :: sample(:)
-        real(TKC)               , intent(out)                               :: var
+        use pm_kind, only: TKG => RK1
+        real(TKG)               , intent(in)    , contiguous                :: sample(:)
+        real(TKG)               , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -5480,9 +5480,9 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarOrgALL_WNO_D2_CK5
 #endif
-        use pm_kind, only: TKC => CK5
-        complex(TKC)            , intent(in)    , contiguous                :: sample(:,:)
-        real(TKC)               , intent(out)                               :: var
+        use pm_kind, only: TKG => CK5
+        complex(TKG)            , intent(in)    , contiguous                :: sample(:,:)
+        real(TKG)               , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -5491,9 +5491,9 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarOrgALL_WNO_D2_CK4
 #endif
-        use pm_kind, only: TKC => CK4
-        complex(TKC)            , intent(in)    , contiguous                :: sample(:,:)
-        real(TKC)               , intent(out)                               :: var
+        use pm_kind, only: TKG => CK4
+        complex(TKG)            , intent(in)    , contiguous                :: sample(:,:)
+        real(TKG)               , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -5502,9 +5502,9 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarOrgALL_WNO_D2_CK3
 #endif
-        use pm_kind, only: TKC => CK3
-        complex(TKC)            , intent(in)    , contiguous                :: sample(:,:)
-        real(TKC)               , intent(out)                               :: var
+        use pm_kind, only: TKG => CK3
+        complex(TKG)            , intent(in)    , contiguous                :: sample(:,:)
+        real(TKG)               , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -5513,9 +5513,9 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarOrgALL_WNO_D2_CK2
 #endif
-        use pm_kind, only: TKC => CK2
-        complex(TKC)            , intent(in)    , contiguous                :: sample(:,:)
-        real(TKC)               , intent(out)                               :: var
+        use pm_kind, only: TKG => CK2
+        complex(TKG)            , intent(in)    , contiguous                :: sample(:,:)
+        real(TKG)               , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -5524,9 +5524,9 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarOrgALL_WNO_D2_CK1
 #endif
-        use pm_kind, only: TKC => CK1
-        complex(TKC)            , intent(in)    , contiguous                :: sample(:,:)
-        real(TKC)               , intent(out)                               :: var
+        use pm_kind, only: TKG => CK1
+        complex(TKG)            , intent(in)    , contiguous                :: sample(:,:)
+        real(TKG)               , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -5537,9 +5537,9 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarOrgALL_WNO_D2_RK5
 #endif
-        use pm_kind, only: TKC => RK5
-        real(TKC)               , intent(in)    , contiguous                :: sample(:,:)
-        real(TKC)               , intent(out)                               :: var
+        use pm_kind, only: TKG => RK5
+        real(TKG)               , intent(in)    , contiguous                :: sample(:,:)
+        real(TKG)               , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -5548,9 +5548,9 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarOrgALL_WNO_D2_RK4
 #endif
-        use pm_kind, only: TKC => RK4
-        real(TKC)               , intent(in)    , contiguous                :: sample(:,:)
-        real(TKC)               , intent(out)                               :: var
+        use pm_kind, only: TKG => RK4
+        real(TKG)               , intent(in)    , contiguous                :: sample(:,:)
+        real(TKG)               , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -5559,9 +5559,9 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarOrgALL_WNO_D2_RK3
 #endif
-        use pm_kind, only: TKC => RK3
-        real(TKC)               , intent(in)    , contiguous                :: sample(:,:)
-        real(TKC)               , intent(out)                               :: var
+        use pm_kind, only: TKG => RK3
+        real(TKG)               , intent(in)    , contiguous                :: sample(:,:)
+        real(TKG)               , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -5570,9 +5570,9 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarOrgALL_WNO_D2_RK2
 #endif
-        use pm_kind, only: TKC => RK2
-        real(TKC)               , intent(in)    , contiguous                :: sample(:,:)
-        real(TKC)               , intent(out)                               :: var
+        use pm_kind, only: TKG => RK2
+        real(TKG)               , intent(in)    , contiguous                :: sample(:,:)
+        real(TKG)               , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -5581,9 +5581,9 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarOrgALL_WNO_D2_RK1
 #endif
-        use pm_kind, only: TKC => RK1
-        real(TKC)               , intent(in)    , contiguous                :: sample(:,:)
-        real(TKC)               , intent(out)                               :: var
+        use pm_kind, only: TKG => RK1
+        real(TKG)               , intent(in)    , contiguous                :: sample(:,:)
+        real(TKG)               , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -5610,11 +5610,11 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarOrgALL_WTI_D1_CK5
 #endif
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
         integer(IK)             , intent(in)                                :: weisum
         integer(IK)             , intent(in)    , contiguous                :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous                :: sample(:)
-        real(TKC)               , intent(out)                               :: var
+        complex(TKG)            , intent(in)    , contiguous                :: sample(:)
+        real(TKG)               , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -5623,11 +5623,11 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarOrgALL_WTI_D1_CK4
 #endif
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
         integer(IK)             , intent(in)                                :: weisum
         integer(IK)             , intent(in)    , contiguous                :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous                :: sample(:)
-        real(TKC)               , intent(out)                               :: var
+        complex(TKG)            , intent(in)    , contiguous                :: sample(:)
+        real(TKG)               , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -5636,11 +5636,11 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarOrgALL_WTI_D1_CK3
 #endif
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
         integer(IK)             , intent(in)                                :: weisum
         integer(IK)             , intent(in)    , contiguous                :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous                :: sample(:)
-        real(TKC)               , intent(out)                               :: var
+        complex(TKG)            , intent(in)    , contiguous                :: sample(:)
+        real(TKG)               , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -5649,11 +5649,11 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarOrgALL_WTI_D1_CK2
 #endif
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
         integer(IK)             , intent(in)                                :: weisum
         integer(IK)             , intent(in)    , contiguous                :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous                :: sample(:)
-        real(TKC)               , intent(out)                               :: var
+        complex(TKG)            , intent(in)    , contiguous                :: sample(:)
+        real(TKG)               , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -5662,11 +5662,11 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarOrgALL_WTI_D1_CK1
 #endif
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
         integer(IK)             , intent(in)                                :: weisum
         integer(IK)             , intent(in)    , contiguous                :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous                :: sample(:)
-        real(TKC)               , intent(out)                               :: var
+        complex(TKG)            , intent(in)    , contiguous                :: sample(:)
+        real(TKG)               , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -5677,11 +5677,11 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarOrgALL_WTI_D1_RK5
 #endif
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
         integer(IK)             , intent(in)                                :: weisum
         integer(IK)             , intent(in)    , contiguous                :: weight(:)
-        real(TKC)               , intent(in)    , contiguous                :: sample(:)
-        real(TKC)               , intent(out)                               :: var
+        real(TKG)               , intent(in)    , contiguous                :: sample(:)
+        real(TKG)               , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -5690,11 +5690,11 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarOrgALL_WTI_D1_RK4
 #endif
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
         integer(IK)             , intent(in)                                :: weisum
         integer(IK)             , intent(in)    , contiguous                :: weight(:)
-        real(TKC)               , intent(in)    , contiguous                :: sample(:)
-        real(TKC)               , intent(out)                               :: var
+        real(TKG)               , intent(in)    , contiguous                :: sample(:)
+        real(TKG)               , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -5703,11 +5703,11 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarOrgALL_WTI_D1_RK3
 #endif
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
         integer(IK)             , intent(in)                                :: weisum
         integer(IK)             , intent(in)    , contiguous                :: weight(:)
-        real(TKC)               , intent(in)    , contiguous                :: sample(:)
-        real(TKC)               , intent(out)                               :: var
+        real(TKG)               , intent(in)    , contiguous                :: sample(:)
+        real(TKG)               , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -5716,11 +5716,11 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarOrgALL_WTI_D1_RK2
 #endif
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
         integer(IK)             , intent(in)                                :: weisum
         integer(IK)             , intent(in)    , contiguous                :: weight(:)
-        real(TKC)               , intent(in)    , contiguous                :: sample(:)
-        real(TKC)               , intent(out)                               :: var
+        real(TKG)               , intent(in)    , contiguous                :: sample(:)
+        real(TKG)               , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -5729,11 +5729,11 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarOrgALL_WTI_D1_RK1
 #endif
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
         integer(IK)             , intent(in)                                :: weisum
         integer(IK)             , intent(in)    , contiguous                :: weight(:)
-        real(TKC)               , intent(in)    , contiguous                :: sample(:)
-        real(TKC)               , intent(out)                               :: var
+        real(TKG)               , intent(in)    , contiguous                :: sample(:)
+        real(TKG)               , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -5750,11 +5750,11 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarOrgALL_WTI_D2_CK5
 #endif
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
         integer(IK)             , intent(in)                                :: weisum
         integer(IK)             , intent(in)    , contiguous                :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous                :: sample(:,:)
-        real(TKC)               , intent(out)                               :: var
+        complex(TKG)            , intent(in)    , contiguous                :: sample(:,:)
+        real(TKG)               , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -5763,11 +5763,11 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarOrgALL_WTI_D2_CK4
 #endif
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
         integer(IK)             , intent(in)                                :: weisum
         integer(IK)             , intent(in)    , contiguous                :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous                :: sample(:,:)
-        real(TKC)               , intent(out)                               :: var
+        complex(TKG)            , intent(in)    , contiguous                :: sample(:,:)
+        real(TKG)               , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -5776,11 +5776,11 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarOrgALL_WTI_D2_CK3
 #endif
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
         integer(IK)             , intent(in)                                :: weisum
         integer(IK)             , intent(in)    , contiguous                :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous                :: sample(:,:)
-        real(TKC)               , intent(out)                               :: var
+        complex(TKG)            , intent(in)    , contiguous                :: sample(:,:)
+        real(TKG)               , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -5789,11 +5789,11 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarOrgALL_WTI_D2_CK2
 #endif
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
         integer(IK)             , intent(in)                                :: weisum
         integer(IK)             , intent(in)    , contiguous                :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous                :: sample(:,:)
-        real(TKC)               , intent(out)                               :: var
+        complex(TKG)            , intent(in)    , contiguous                :: sample(:,:)
+        real(TKG)               , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -5802,11 +5802,11 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarOrgALL_WTI_D2_CK1
 #endif
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
         integer(IK)             , intent(in)                                :: weisum
         integer(IK)             , intent(in)    , contiguous                :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous                :: sample(:,:)
-        real(TKC)               , intent(out)                               :: var
+        complex(TKG)            , intent(in)    , contiguous                :: sample(:,:)
+        real(TKG)               , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -5817,11 +5817,11 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarOrgALL_WTI_D2_RK5
 #endif
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
         integer(IK)             , intent(in)                                :: weisum
         integer(IK)             , intent(in)    , contiguous                :: weight(:)
-        real(TKC)               , intent(in)    , contiguous                :: sample(:,:)
-        real(TKC)               , intent(out)                               :: var
+        real(TKG)               , intent(in)    , contiguous                :: sample(:,:)
+        real(TKG)               , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -5830,11 +5830,11 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarOrgALL_WTI_D2_RK4
 #endif
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
         integer(IK)             , intent(in)                                :: weisum
         integer(IK)             , intent(in)    , contiguous                :: weight(:)
-        real(TKC)               , intent(in)    , contiguous                :: sample(:,:)
-        real(TKC)               , intent(out)                               :: var
+        real(TKG)               , intent(in)    , contiguous                :: sample(:,:)
+        real(TKG)               , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -5843,11 +5843,11 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarOrgALL_WTI_D2_RK3
 #endif
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
         integer(IK)             , intent(in)                                :: weisum
         integer(IK)             , intent(in)    , contiguous                :: weight(:)
-        real(TKC)               , intent(in)    , contiguous                :: sample(:,:)
-        real(TKC)               , intent(out)                               :: var
+        real(TKG)               , intent(in)    , contiguous                :: sample(:,:)
+        real(TKG)               , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -5856,11 +5856,11 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarOrgALL_WTI_D2_RK2
 #endif
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
         integer(IK)             , intent(in)                                :: weisum
         integer(IK)             , intent(in)    , contiguous                :: weight(:)
-        real(TKC)               , intent(in)    , contiguous                :: sample(:,:)
-        real(TKC)               , intent(out)                               :: var
+        real(TKG)               , intent(in)    , contiguous                :: sample(:,:)
+        real(TKG)               , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -5869,11 +5869,11 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarOrgALL_WTI_D2_RK1
 #endif
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
         integer(IK)             , intent(in)                                :: weisum
         integer(IK)             , intent(in)    , contiguous                :: weight(:)
-        real(TKC)               , intent(in)    , contiguous                :: sample(:,:)
-        real(TKC)               , intent(out)                               :: var
+        real(TKG)               , intent(in)    , contiguous                :: sample(:,:)
+        real(TKG)               , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -5900,11 +5900,11 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarOrgALL_WTR_D1_CK5
 #endif
-        use pm_kind, only: TKC => CK5
-        real(TKC)               , intent(in)                                :: weisum
-        real(TKC)               , intent(in)    , contiguous                :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous                :: sample(:)
-        real(TKC)               , intent(out)                               :: var
+        use pm_kind, only: TKG => CK5
+        real(TKG)               , intent(in)                                :: weisum
+        real(TKG)               , intent(in)    , contiguous                :: weight(:)
+        complex(TKG)            , intent(in)    , contiguous                :: sample(:)
+        real(TKG)               , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -5913,11 +5913,11 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarOrgALL_WTR_D1_CK4
 #endif
-        use pm_kind, only: TKC => CK4
-        real(TKC)               , intent(in)                                :: weisum
-        real(TKC)               , intent(in)    , contiguous                :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous                :: sample(:)
-        real(TKC)               , intent(out)                               :: var
+        use pm_kind, only: TKG => CK4
+        real(TKG)               , intent(in)                                :: weisum
+        real(TKG)               , intent(in)    , contiguous                :: weight(:)
+        complex(TKG)            , intent(in)    , contiguous                :: sample(:)
+        real(TKG)               , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -5926,11 +5926,11 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarOrgALL_WTR_D1_CK3
 #endif
-        use pm_kind, only: TKC => CK3
-        real(TKC)               , intent(in)                                :: weisum
-        real(TKC)               , intent(in)    , contiguous                :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous                :: sample(:)
-        real(TKC)               , intent(out)                               :: var
+        use pm_kind, only: TKG => CK3
+        real(TKG)               , intent(in)                                :: weisum
+        real(TKG)               , intent(in)    , contiguous                :: weight(:)
+        complex(TKG)            , intent(in)    , contiguous                :: sample(:)
+        real(TKG)               , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -5939,11 +5939,11 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarOrgALL_WTR_D1_CK2
 #endif
-        use pm_kind, only: TKC => CK2
-        real(TKC)               , intent(in)                                :: weisum
-        real(TKC)               , intent(in)    , contiguous                :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous                :: sample(:)
-        real(TKC)               , intent(out)                               :: var
+        use pm_kind, only: TKG => CK2
+        real(TKG)               , intent(in)                                :: weisum
+        real(TKG)               , intent(in)    , contiguous                :: weight(:)
+        complex(TKG)            , intent(in)    , contiguous                :: sample(:)
+        real(TKG)               , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -5952,11 +5952,11 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarOrgALL_WTR_D1_CK1
 #endif
-        use pm_kind, only: TKC => CK1
-        real(TKC)               , intent(in)                                :: weisum
-        real(TKC)               , intent(in)    , contiguous                :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous                :: sample(:)
-        real(TKC)               , intent(out)                               :: var
+        use pm_kind, only: TKG => CK1
+        real(TKG)               , intent(in)                                :: weisum
+        real(TKG)               , intent(in)    , contiguous                :: weight(:)
+        complex(TKG)            , intent(in)    , contiguous                :: sample(:)
+        real(TKG)               , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -5967,11 +5967,11 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarOrgALL_WTR_D1_RK5
 #endif
-        use pm_kind, only: TKC => RK5
-        real(TKC)               , intent(in)                                :: weisum
-        real(TKC)               , intent(in)    , contiguous                :: weight(:)
-        real(TKC)               , intent(in)    , contiguous                :: sample(:)
-        real(TKC)               , intent(out)                               :: var
+        use pm_kind, only: TKG => RK5
+        real(TKG)               , intent(in)                                :: weisum
+        real(TKG)               , intent(in)    , contiguous                :: weight(:)
+        real(TKG)               , intent(in)    , contiguous                :: sample(:)
+        real(TKG)               , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -5980,11 +5980,11 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarOrgALL_WTR_D1_RK4
 #endif
-        use pm_kind, only: TKC => RK4
-        real(TKC)               , intent(in)                                :: weisum
-        real(TKC)               , intent(in)    , contiguous                :: weight(:)
-        real(TKC)               , intent(in)    , contiguous                :: sample(:)
-        real(TKC)               , intent(out)                               :: var
+        use pm_kind, only: TKG => RK4
+        real(TKG)               , intent(in)                                :: weisum
+        real(TKG)               , intent(in)    , contiguous                :: weight(:)
+        real(TKG)               , intent(in)    , contiguous                :: sample(:)
+        real(TKG)               , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -5993,11 +5993,11 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarOrgALL_WTR_D1_RK3
 #endif
-        use pm_kind, only: TKC => RK3
-        real(TKC)               , intent(in)                                :: weisum
-        real(TKC)               , intent(in)    , contiguous                :: weight(:)
-        real(TKC)               , intent(in)    , contiguous                :: sample(:)
-        real(TKC)               , intent(out)                               :: var
+        use pm_kind, only: TKG => RK3
+        real(TKG)               , intent(in)                                :: weisum
+        real(TKG)               , intent(in)    , contiguous                :: weight(:)
+        real(TKG)               , intent(in)    , contiguous                :: sample(:)
+        real(TKG)               , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -6006,11 +6006,11 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarOrgALL_WTR_D1_RK2
 #endif
-        use pm_kind, only: TKC => RK2
-        real(TKC)               , intent(in)                                :: weisum
-        real(TKC)               , intent(in)    , contiguous                :: weight(:)
-        real(TKC)               , intent(in)    , contiguous                :: sample(:)
-        real(TKC)               , intent(out)                               :: var
+        use pm_kind, only: TKG => RK2
+        real(TKG)               , intent(in)                                :: weisum
+        real(TKG)               , intent(in)    , contiguous                :: weight(:)
+        real(TKG)               , intent(in)    , contiguous                :: sample(:)
+        real(TKG)               , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -6019,11 +6019,11 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarOrgALL_WTR_D1_RK1
 #endif
-        use pm_kind, only: TKC => RK1
-        real(TKC)               , intent(in)                                :: weisum
-        real(TKC)               , intent(in)    , contiguous                :: weight(:)
-        real(TKC)               , intent(in)    , contiguous                :: sample(:)
-        real(TKC)               , intent(out)                               :: var
+        use pm_kind, only: TKG => RK1
+        real(TKG)               , intent(in)                                :: weisum
+        real(TKG)               , intent(in)    , contiguous                :: weight(:)
+        real(TKG)               , intent(in)    , contiguous                :: sample(:)
+        real(TKG)               , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -6040,11 +6040,11 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarOrgALL_WTR_D2_CK5
 #endif
-        use pm_kind, only: TKC => CK5
-        real(TKC)               , intent(in)                                :: weisum
-        real(TKC)               , intent(in)    , contiguous                :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous                :: sample(:,:)
-        real(TKC)               , intent(out)                               :: var
+        use pm_kind, only: TKG => CK5
+        real(TKG)               , intent(in)                                :: weisum
+        real(TKG)               , intent(in)    , contiguous                :: weight(:)
+        complex(TKG)            , intent(in)    , contiguous                :: sample(:,:)
+        real(TKG)               , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -6053,11 +6053,11 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarOrgALL_WTR_D2_CK4
 #endif
-        use pm_kind, only: TKC => CK4
-        real(TKC)               , intent(in)                                :: weisum
-        real(TKC)               , intent(in)    , contiguous                :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous                :: sample(:,:)
-        real(TKC)               , intent(out)                               :: var
+        use pm_kind, only: TKG => CK4
+        real(TKG)               , intent(in)                                :: weisum
+        real(TKG)               , intent(in)    , contiguous                :: weight(:)
+        complex(TKG)            , intent(in)    , contiguous                :: sample(:,:)
+        real(TKG)               , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -6066,11 +6066,11 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarOrgALL_WTR_D2_CK3
 #endif
-        use pm_kind, only: TKC => CK3
-        real(TKC)               , intent(in)                                :: weisum
-        real(TKC)               , intent(in)    , contiguous                :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous                :: sample(:,:)
-        real(TKC)               , intent(out)                               :: var
+        use pm_kind, only: TKG => CK3
+        real(TKG)               , intent(in)                                :: weisum
+        real(TKG)               , intent(in)    , contiguous                :: weight(:)
+        complex(TKG)            , intent(in)    , contiguous                :: sample(:,:)
+        real(TKG)               , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -6079,11 +6079,11 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarOrgALL_WTR_D2_CK2
 #endif
-        use pm_kind, only: TKC => CK2
-        real(TKC)               , intent(in)                                :: weisum
-        real(TKC)               , intent(in)    , contiguous                :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous                :: sample(:,:)
-        real(TKC)               , intent(out)                               :: var
+        use pm_kind, only: TKG => CK2
+        real(TKG)               , intent(in)                                :: weisum
+        real(TKG)               , intent(in)    , contiguous                :: weight(:)
+        complex(TKG)            , intent(in)    , contiguous                :: sample(:,:)
+        real(TKG)               , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -6092,11 +6092,11 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarOrgALL_WTR_D2_CK1
 #endif
-        use pm_kind, only: TKC => CK1
-        real(TKC)               , intent(in)                                :: weisum
-        real(TKC)               , intent(in)    , contiguous                :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous                :: sample(:,:)
-        real(TKC)               , intent(out)                               :: var
+        use pm_kind, only: TKG => CK1
+        real(TKG)               , intent(in)                                :: weisum
+        real(TKG)               , intent(in)    , contiguous                :: weight(:)
+        complex(TKG)            , intent(in)    , contiguous                :: sample(:,:)
+        real(TKG)               , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -6107,11 +6107,11 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarOrgALL_WTR_D2_RK5
 #endif
-        use pm_kind, only: TKC => RK5
-        real(TKC)               , intent(in)                                :: weisum
-        real(TKC)               , intent(in)    , contiguous                :: weight(:)
-        real(TKC)               , intent(in)    , contiguous                :: sample(:,:)
-        real(TKC)               , intent(out)                               :: var
+        use pm_kind, only: TKG => RK5
+        real(TKG)               , intent(in)                                :: weisum
+        real(TKG)               , intent(in)    , contiguous                :: weight(:)
+        real(TKG)               , intent(in)    , contiguous                :: sample(:,:)
+        real(TKG)               , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -6120,11 +6120,11 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarOrgALL_WTR_D2_RK4
 #endif
-        use pm_kind, only: TKC => RK4
-        real(TKC)               , intent(in)                                :: weisum
-        real(TKC)               , intent(in)    , contiguous                :: weight(:)
-        real(TKC)               , intent(in)    , contiguous                :: sample(:,:)
-        real(TKC)               , intent(out)                               :: var
+        use pm_kind, only: TKG => RK4
+        real(TKG)               , intent(in)                                :: weisum
+        real(TKG)               , intent(in)    , contiguous                :: weight(:)
+        real(TKG)               , intent(in)    , contiguous                :: sample(:,:)
+        real(TKG)               , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -6133,11 +6133,11 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarOrgALL_WTR_D2_RK3
 #endif
-        use pm_kind, only: TKC => RK3
-        real(TKC)               , intent(in)                                :: weisum
-        real(TKC)               , intent(in)    , contiguous                :: weight(:)
-        real(TKC)               , intent(in)    , contiguous                :: sample(:,:)
-        real(TKC)               , intent(out)                               :: var
+        use pm_kind, only: TKG => RK3
+        real(TKG)               , intent(in)                                :: weisum
+        real(TKG)               , intent(in)    , contiguous                :: weight(:)
+        real(TKG)               , intent(in)    , contiguous                :: sample(:,:)
+        real(TKG)               , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -6146,11 +6146,11 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarOrgALL_WTR_D2_RK2
 #endif
-        use pm_kind, only: TKC => RK2
-        real(TKC)               , intent(in)                                :: weisum
-        real(TKC)               , intent(in)    , contiguous                :: weight(:)
-        real(TKC)               , intent(in)    , contiguous                :: sample(:,:)
-        real(TKC)               , intent(out)                               :: var
+        use pm_kind, only: TKG => RK2
+        real(TKG)               , intent(in)                                :: weisum
+        real(TKG)               , intent(in)    , contiguous                :: weight(:)
+        real(TKG)               , intent(in)    , contiguous                :: sample(:,:)
+        real(TKG)               , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -6159,11 +6159,11 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarOrgALL_WTR_D2_RK1
 #endif
-        use pm_kind, only: TKC => RK1
-        real(TKC)               , intent(in)                                :: weisum
-        real(TKC)               , intent(in)    , contiguous                :: weight(:)
-        real(TKC)               , intent(in)    , contiguous                :: sample(:,:)
-        real(TKC)               , intent(out)                               :: var
+        use pm_kind, only: TKG => RK1
+        real(TKG)               , intent(in)                                :: weisum
+        real(TKG)               , intent(in)    , contiguous                :: weight(:)
+        real(TKG)               , intent(in)    , contiguous                :: sample(:,:)
+        real(TKG)               , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -6262,8 +6262,8 @@ module pm_sampleVar
     !>      integer(IK)                 :: i
     !>      integer(IK) , parameter     :: NDIM = 3_IK
     !>      integer(IK) , parameter     :: NSAM = 1000_IK
-    !>      real(TKC)   , parameter     :: sample(NDIM,NSAM) = reshape([( real(i,RK), i = 1, NSAM )], shape = shape(sample))
-    !>      real(TKC)   , allocatable   :: mean(:)
+    !>      real(TKG)   , parameter     :: sample(NDIM,NSAM) = reshape([( real(i,RK), i = 1, NSAM )], shape = shape(sample))
+    !>      real(TKG)   , allocatable   :: mean(:)
     !>      mean = sum(sample, dim = 1) / size(transpose(sample), dim = 1)  ! assuming the first dimension represents the observations
     !>      mean = sum(sample, dim = 2) / size(sample, dim = 2)             ! assuming the second dimension represents the observations
     !>  \endcode
@@ -6314,11 +6314,11 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanALL_WNODD_D1_CK5
 #endif
-        use pm_kind, only: TKC => CK5
-        complex(TKC)    , intent(in)    , contiguous                :: sample(:)
-        complex(TKC)    , intent(in)                                :: meang
-        complex(TKC)    , intent(out)                               :: mean
-        real(TKC)       , intent(out)                               :: var
+        use pm_kind, only: TKG => CK5
+        complex(TKG)    , intent(in)    , contiguous                :: sample(:)
+        complex(TKG)    , intent(in)                                :: meang
+        complex(TKG)    , intent(out)                               :: mean
+        real(TKG)       , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -6327,11 +6327,11 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanALL_WNODD_D1_CK4
 #endif
-        use pm_kind, only: TKC => CK4
-        complex(TKC)    , intent(in)    , contiguous                :: sample(:)
-        complex(TKC)    , intent(in)                                :: meang
-        complex(TKC)    , intent(out)                               :: mean
-        real(TKC)       , intent(out)                               :: var
+        use pm_kind, only: TKG => CK4
+        complex(TKG)    , intent(in)    , contiguous                :: sample(:)
+        complex(TKG)    , intent(in)                                :: meang
+        complex(TKG)    , intent(out)                               :: mean
+        real(TKG)       , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -6340,11 +6340,11 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanALL_WNODD_D1_CK3
 #endif
-        use pm_kind, only: TKC => CK3
-        complex(TKC)    , intent(in)    , contiguous                :: sample(:)
-        complex(TKC)    , intent(in)                                :: meang
-        complex(TKC)    , intent(out)                               :: mean
-        real(TKC)       , intent(out)                               :: var
+        use pm_kind, only: TKG => CK3
+        complex(TKG)    , intent(in)    , contiguous                :: sample(:)
+        complex(TKG)    , intent(in)                                :: meang
+        complex(TKG)    , intent(out)                               :: mean
+        real(TKG)       , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -6353,11 +6353,11 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanALL_WNODD_D1_CK2
 #endif
-        use pm_kind, only: TKC => CK2
-        complex(TKC)    , intent(in)    , contiguous                :: sample(:)
-        complex(TKC)    , intent(in)                                :: meang
-        complex(TKC)    , intent(out)                               :: mean
-        real(TKC)       , intent(out)                               :: var
+        use pm_kind, only: TKG => CK2
+        complex(TKG)    , intent(in)    , contiguous                :: sample(:)
+        complex(TKG)    , intent(in)                                :: meang
+        complex(TKG)    , intent(out)                               :: mean
+        real(TKG)       , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -6366,11 +6366,11 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanALL_WNODD_D1_CK1
 #endif
-        use pm_kind, only: TKC => CK1
-        complex(TKC)    , intent(in)    , contiguous                :: sample(:)
-        complex(TKC)    , intent(in)                                :: meang
-        complex(TKC)    , intent(out)                               :: mean
-        real(TKC)       , intent(out)                               :: var
+        use pm_kind, only: TKG => CK1
+        complex(TKG)    , intent(in)    , contiguous                :: sample(:)
+        complex(TKG)    , intent(in)                                :: meang
+        complex(TKG)    , intent(out)                               :: mean
+        real(TKG)       , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -6381,11 +6381,11 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanALL_WNODD_D1_RK5
 #endif
-        use pm_kind, only: TKC => RK5
-        real(TKC)       , intent(in)    , contiguous                :: sample(:)
-        real(TKC)       , intent(in)                                :: meang
-        real(TKC)       , intent(out)                               :: mean
-        real(TKC)       , intent(out)                               :: var
+        use pm_kind, only: TKG => RK5
+        real(TKG)       , intent(in)    , contiguous                :: sample(:)
+        real(TKG)       , intent(in)                                :: meang
+        real(TKG)       , intent(out)                               :: mean
+        real(TKG)       , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -6394,11 +6394,11 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanALL_WNODD_D1_RK4
 #endif
-        use pm_kind, only: TKC => RK4
-        real(TKC)       , intent(in)    , contiguous                :: sample(:)
-        real(TKC)       , intent(in)                                :: meang
-        real(TKC)       , intent(out)                               :: mean
-        real(TKC)       , intent(out)                               :: var
+        use pm_kind, only: TKG => RK4
+        real(TKG)       , intent(in)    , contiguous                :: sample(:)
+        real(TKG)       , intent(in)                                :: meang
+        real(TKG)       , intent(out)                               :: mean
+        real(TKG)       , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -6407,11 +6407,11 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanALL_WNODD_D1_RK3
 #endif
-        use pm_kind, only: TKC => RK3
-        real(TKC)       , intent(in)    , contiguous                :: sample(:)
-        real(TKC)       , intent(in)                                :: meang
-        real(TKC)       , intent(out)                               :: mean
-        real(TKC)       , intent(out)                               :: var
+        use pm_kind, only: TKG => RK3
+        real(TKG)       , intent(in)    , contiguous                :: sample(:)
+        real(TKG)       , intent(in)                                :: meang
+        real(TKG)       , intent(out)                               :: mean
+        real(TKG)       , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -6420,11 +6420,11 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanALL_WNODD_D1_RK2
 #endif
-        use pm_kind, only: TKC => RK2
-        real(TKC)       , intent(in)    , contiguous                :: sample(:)
-        real(TKC)       , intent(in)                                :: meang
-        real(TKC)       , intent(out)                               :: mean
-        real(TKC)       , intent(out)                               :: var
+        use pm_kind, only: TKG => RK2
+        real(TKG)       , intent(in)    , contiguous                :: sample(:)
+        real(TKG)       , intent(in)                                :: meang
+        real(TKG)       , intent(out)                               :: mean
+        real(TKG)       , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -6433,11 +6433,11 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanALL_WNODD_D1_RK1
 #endif
-        use pm_kind, only: TKC => RK1
-        real(TKC)       , intent(in)    , contiguous                :: sample(:)
-        real(TKC)       , intent(in)                                :: meang
-        real(TKC)       , intent(out)                               :: mean
-        real(TKC)       , intent(out)                               :: var
+        use pm_kind, only: TKG => RK1
+        real(TKG)       , intent(in)    , contiguous                :: sample(:)
+        real(TKG)       , intent(in)                                :: meang
+        real(TKG)       , intent(out)                               :: mean
+        real(TKG)       , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -6454,13 +6454,13 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanALL_WTISD_D1_CK5
 #endif
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
         integer(IK)     , intent(out)                               :: weisum
         integer(IK)     , intent(in)    , contiguous                :: weight(:)
-        complex(TKC)    , intent(in)    , contiguous                :: sample(:)
-        complex(TKC)    , intent(in)                                :: meang
-        complex(TKC)    , intent(out)                               :: mean
-        real(TKC)       , intent(out)                               :: var
+        complex(TKG)    , intent(in)    , contiguous                :: sample(:)
+        complex(TKG)    , intent(in)                                :: meang
+        complex(TKG)    , intent(out)                               :: mean
+        real(TKG)       , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -6469,13 +6469,13 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanALL_WTISD_D1_CK4
 #endif
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
         integer(IK)     , intent(out)                               :: weisum
         integer(IK)     , intent(in)    , contiguous                :: weight(:)
-        complex(TKC)    , intent(in)    , contiguous                :: sample(:)
-        complex(TKC)    , intent(in)                                :: meang
-        complex(TKC)    , intent(out)                               :: mean
-        real(TKC)       , intent(out)                               :: var
+        complex(TKG)    , intent(in)    , contiguous                :: sample(:)
+        complex(TKG)    , intent(in)                                :: meang
+        complex(TKG)    , intent(out)                               :: mean
+        real(TKG)       , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -6484,13 +6484,13 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanALL_WTISD_D1_CK3
 #endif
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
         integer(IK)     , intent(out)                               :: weisum
         integer(IK)     , intent(in)    , contiguous                :: weight(:)
-        complex(TKC)    , intent(in)    , contiguous                :: sample(:)
-        complex(TKC)    , intent(in)                                :: meang
-        complex(TKC)    , intent(out)                               :: mean
-        real(TKC)       , intent(out)                               :: var
+        complex(TKG)    , intent(in)    , contiguous                :: sample(:)
+        complex(TKG)    , intent(in)                                :: meang
+        complex(TKG)    , intent(out)                               :: mean
+        real(TKG)       , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -6499,13 +6499,13 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanALL_WTISD_D1_CK2
 #endif
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
         integer(IK)     , intent(out)                               :: weisum
         integer(IK)     , intent(in)    , contiguous                :: weight(:)
-        complex(TKC)    , intent(in)    , contiguous                :: sample(:)
-        complex(TKC)    , intent(in)                                :: meang
-        complex(TKC)    , intent(out)                               :: mean
-        real(TKC)       , intent(out)                               :: var
+        complex(TKG)    , intent(in)    , contiguous                :: sample(:)
+        complex(TKG)    , intent(in)                                :: meang
+        complex(TKG)    , intent(out)                               :: mean
+        real(TKG)       , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -6514,13 +6514,13 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanALL_WTISD_D1_CK1
 #endif
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
         integer(IK)     , intent(out)                               :: weisum
         integer(IK)     , intent(in)    , contiguous                :: weight(:)
-        complex(TKC)    , intent(in)    , contiguous                :: sample(:)
-        complex(TKC)    , intent(in)                                :: meang
-        complex(TKC)    , intent(out)                               :: mean
-        real(TKC)       , intent(out)                               :: var
+        complex(TKG)    , intent(in)    , contiguous                :: sample(:)
+        complex(TKG)    , intent(in)                                :: meang
+        complex(TKG)    , intent(out)                               :: mean
+        real(TKG)       , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -6531,13 +6531,13 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanALL_WTISD_D1_RK5
 #endif
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
         integer(IK)     , intent(out)                               :: weisum
         integer(IK)     , intent(in)    , contiguous                :: weight(:)
-        real(TKC)       , intent(in)    , contiguous                :: sample(:)
-        real(TKC)       , intent(in)                                :: meang
-        real(TKC)       , intent(out)                               :: mean
-        real(TKC)       , intent(out)                               :: var
+        real(TKG)       , intent(in)    , contiguous                :: sample(:)
+        real(TKG)       , intent(in)                                :: meang
+        real(TKG)       , intent(out)                               :: mean
+        real(TKG)       , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -6546,13 +6546,13 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanALL_WTISD_D1_RK4
 #endif
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
         integer(IK)     , intent(out)                               :: weisum
         integer(IK)     , intent(in)    , contiguous                :: weight(:)
-        real(TKC)       , intent(in)    , contiguous                :: sample(:)
-        real(TKC)       , intent(in)                                :: meang
-        real(TKC)       , intent(out)                               :: mean
-        real(TKC)       , intent(out)                               :: var
+        real(TKG)       , intent(in)    , contiguous                :: sample(:)
+        real(TKG)       , intent(in)                                :: meang
+        real(TKG)       , intent(out)                               :: mean
+        real(TKG)       , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -6561,13 +6561,13 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanALL_WTISD_D1_RK3
 #endif
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
         integer(IK)     , intent(out)                               :: weisum
         integer(IK)     , intent(in)    , contiguous                :: weight(:)
-        real(TKC)       , intent(in)    , contiguous                :: sample(:)
-        real(TKC)       , intent(in)                                :: meang
-        real(TKC)       , intent(out)                               :: mean
-        real(TKC)       , intent(out)                               :: var
+        real(TKG)       , intent(in)    , contiguous                :: sample(:)
+        real(TKG)       , intent(in)                                :: meang
+        real(TKG)       , intent(out)                               :: mean
+        real(TKG)       , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -6576,13 +6576,13 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanALL_WTISD_D1_RK2
 #endif
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
         integer(IK)     , intent(out)                               :: weisum
         integer(IK)     , intent(in)    , contiguous                :: weight(:)
-        real(TKC)       , intent(in)    , contiguous                :: sample(:)
-        real(TKC)       , intent(in)                                :: meang
-        real(TKC)       , intent(out)                               :: mean
-        real(TKC)       , intent(out)                               :: var
+        real(TKG)       , intent(in)    , contiguous                :: sample(:)
+        real(TKG)       , intent(in)                                :: meang
+        real(TKG)       , intent(out)                               :: mean
+        real(TKG)       , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -6591,13 +6591,13 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanALL_WTISD_D1_RK1
 #endif
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
         integer(IK)     , intent(out)                               :: weisum
         integer(IK)     , intent(in)    , contiguous                :: weight(:)
-        real(TKC)       , intent(in)    , contiguous                :: sample(:)
-        real(TKC)       , intent(in)                                :: meang
-        real(TKC)       , intent(out)                               :: mean
-        real(TKC)       , intent(out)                               :: var
+        real(TKG)       , intent(in)    , contiguous                :: sample(:)
+        real(TKG)       , intent(in)                                :: meang
+        real(TKG)       , intent(out)                               :: mean
+        real(TKG)       , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -6614,13 +6614,13 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanALL_WTRSD_D1_CK5
 #endif
-        use pm_kind, only: TKC => CK5
-        real(TKC)       , intent(out)                               :: weisum
-        real(TKC)       , intent(in)    , contiguous                :: weight(:)
-        complex(TKC)    , intent(in)    , contiguous                :: sample(:)
-        complex(TKC)    , intent(in)                                :: meang
-        complex(TKC)    , intent(out)                               :: mean
-        real(TKC)       , intent(out)                               :: var
+        use pm_kind, only: TKG => CK5
+        real(TKG)       , intent(out)                               :: weisum
+        real(TKG)       , intent(in)    , contiguous                :: weight(:)
+        complex(TKG)    , intent(in)    , contiguous                :: sample(:)
+        complex(TKG)    , intent(in)                                :: meang
+        complex(TKG)    , intent(out)                               :: mean
+        real(TKG)       , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -6629,13 +6629,13 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanALL_WTRSD_D1_CK4
 #endif
-        use pm_kind, only: TKC => CK4
-        real(TKC)       , intent(out)                               :: weisum
-        real(TKC)       , intent(in)    , contiguous                :: weight(:)
-        complex(TKC)    , intent(in)    , contiguous                :: sample(:)
-        complex(TKC)    , intent(in)                                :: meang
-        complex(TKC)    , intent(out)                               :: mean
-        real(TKC)       , intent(out)                               :: var
+        use pm_kind, only: TKG => CK4
+        real(TKG)       , intent(out)                               :: weisum
+        real(TKG)       , intent(in)    , contiguous                :: weight(:)
+        complex(TKG)    , intent(in)    , contiguous                :: sample(:)
+        complex(TKG)    , intent(in)                                :: meang
+        complex(TKG)    , intent(out)                               :: mean
+        real(TKG)       , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -6644,13 +6644,13 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanALL_WTRSD_D1_CK3
 #endif
-        use pm_kind, only: TKC => CK3
-        real(TKC)       , intent(out)                               :: weisum
-        real(TKC)       , intent(in)    , contiguous                :: weight(:)
-        complex(TKC)    , intent(in)    , contiguous                :: sample(:)
-        complex(TKC)    , intent(in)                                :: meang
-        complex(TKC)    , intent(out)                               :: mean
-        real(TKC)       , intent(out)                               :: var
+        use pm_kind, only: TKG => CK3
+        real(TKG)       , intent(out)                               :: weisum
+        real(TKG)       , intent(in)    , contiguous                :: weight(:)
+        complex(TKG)    , intent(in)    , contiguous                :: sample(:)
+        complex(TKG)    , intent(in)                                :: meang
+        complex(TKG)    , intent(out)                               :: mean
+        real(TKG)       , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -6659,13 +6659,13 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanALL_WTRSD_D1_CK2
 #endif
-        use pm_kind, only: TKC => CK2
-        real(TKC)       , intent(out)                               :: weisum
-        real(TKC)       , intent(in)    , contiguous                :: weight(:)
-        complex(TKC)    , intent(in)    , contiguous                :: sample(:)
-        complex(TKC)    , intent(in)                                :: meang
-        complex(TKC)    , intent(out)                               :: mean
-        real(TKC)       , intent(out)                               :: var
+        use pm_kind, only: TKG => CK2
+        real(TKG)       , intent(out)                               :: weisum
+        real(TKG)       , intent(in)    , contiguous                :: weight(:)
+        complex(TKG)    , intent(in)    , contiguous                :: sample(:)
+        complex(TKG)    , intent(in)                                :: meang
+        complex(TKG)    , intent(out)                               :: mean
+        real(TKG)       , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -6674,13 +6674,13 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanALL_WTRSD_D1_CK1
 #endif
-        use pm_kind, only: TKC => CK1
-        real(TKC)       , intent(out)                               :: weisum
-        real(TKC)       , intent(in)    , contiguous                :: weight(:)
-        complex(TKC)    , intent(in)    , contiguous                :: sample(:)
-        complex(TKC)    , intent(in)                                :: meang
-        complex(TKC)    , intent(out)                               :: mean
-        real(TKC)       , intent(out)                               :: var
+        use pm_kind, only: TKG => CK1
+        real(TKG)       , intent(out)                               :: weisum
+        real(TKG)       , intent(in)    , contiguous                :: weight(:)
+        complex(TKG)    , intent(in)    , contiguous                :: sample(:)
+        complex(TKG)    , intent(in)                                :: meang
+        complex(TKG)    , intent(out)                               :: mean
+        real(TKG)       , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -6691,13 +6691,13 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanALL_WTRSD_D1_RK5
 #endif
-        use pm_kind, only: TKC => RK5
-        real(TKC)       , intent(out)                               :: weisum
-        real(TKC)       , intent(in)    , contiguous                :: weight(:)
-        real(TKC)       , intent(in)    , contiguous                :: sample(:)
-        real(TKC)       , intent(in)                                :: meang
-        real(TKC)       , intent(out)                               :: mean
-        real(TKC)       , intent(out)                               :: var
+        use pm_kind, only: TKG => RK5
+        real(TKG)       , intent(out)                               :: weisum
+        real(TKG)       , intent(in)    , contiguous                :: weight(:)
+        real(TKG)       , intent(in)    , contiguous                :: sample(:)
+        real(TKG)       , intent(in)                                :: meang
+        real(TKG)       , intent(out)                               :: mean
+        real(TKG)       , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -6706,13 +6706,13 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanALL_WTRSD_D1_RK4
 #endif
-        use pm_kind, only: TKC => RK4
-        real(TKC)       , intent(out)                               :: weisum
-        real(TKC)       , intent(in)    , contiguous                :: weight(:)
-        real(TKC)       , intent(in)    , contiguous                :: sample(:)
-        real(TKC)       , intent(in)                                :: meang
-        real(TKC)       , intent(out)                               :: mean
-        real(TKC)       , intent(out)                               :: var
+        use pm_kind, only: TKG => RK4
+        real(TKG)       , intent(out)                               :: weisum
+        real(TKG)       , intent(in)    , contiguous                :: weight(:)
+        real(TKG)       , intent(in)    , contiguous                :: sample(:)
+        real(TKG)       , intent(in)                                :: meang
+        real(TKG)       , intent(out)                               :: mean
+        real(TKG)       , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -6721,13 +6721,13 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanALL_WTRSD_D1_RK3
 #endif
-        use pm_kind, only: TKC => RK3
-        real(TKC)       , intent(out)                               :: weisum
-        real(TKC)       , intent(in)    , contiguous                :: weight(:)
-        real(TKC)       , intent(in)    , contiguous                :: sample(:)
-        real(TKC)       , intent(in)                                :: meang
-        real(TKC)       , intent(out)                               :: mean
-        real(TKC)       , intent(out)                               :: var
+        use pm_kind, only: TKG => RK3
+        real(TKG)       , intent(out)                               :: weisum
+        real(TKG)       , intent(in)    , contiguous                :: weight(:)
+        real(TKG)       , intent(in)    , contiguous                :: sample(:)
+        real(TKG)       , intent(in)                                :: meang
+        real(TKG)       , intent(out)                               :: mean
+        real(TKG)       , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -6736,13 +6736,13 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanALL_WTRSD_D1_RK2
 #endif
-        use pm_kind, only: TKC => RK2
-        real(TKC)       , intent(out)                               :: weisum
-        real(TKC)       , intent(in)    , contiguous                :: weight(:)
-        real(TKC)       , intent(in)    , contiguous                :: sample(:)
-        real(TKC)       , intent(in)                                :: meang
-        real(TKC)       , intent(out)                               :: mean
-        real(TKC)       , intent(out)                               :: var
+        use pm_kind, only: TKG => RK2
+        real(TKG)       , intent(out)                               :: weisum
+        real(TKG)       , intent(in)    , contiguous                :: weight(:)
+        real(TKG)       , intent(in)    , contiguous                :: sample(:)
+        real(TKG)       , intent(in)                                :: meang
+        real(TKG)       , intent(out)                               :: mean
+        real(TKG)       , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -6751,13 +6751,13 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanALL_WTRSD_D1_RK1
 #endif
-        use pm_kind, only: TKC => RK1
-        real(TKC)       , intent(out)                               :: weisum
-        real(TKC)       , intent(in)    , contiguous                :: weight(:)
-        real(TKC)       , intent(in)    , contiguous                :: sample(:)
-        real(TKC)       , intent(in)                                :: meang
-        real(TKC)       , intent(out)                               :: mean
-        real(TKC)       , intent(out)                               :: var
+        use pm_kind, only: TKG => RK1
+        real(TKG)       , intent(out)                               :: weisum
+        real(TKG)       , intent(in)    , contiguous                :: weight(:)
+        real(TKG)       , intent(in)    , contiguous                :: sample(:)
+        real(TKG)       , intent(in)                                :: meang
+        real(TKG)       , intent(out)                               :: mean
+        real(TKG)       , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -6784,11 +6784,11 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanALL_WNODD_D2_CK5
 #endif
-        use pm_kind, only: TKC => CK5
-        complex(TKC)    , intent(in)    , contiguous                :: sample(:,:)
-        complex(TKC)    , intent(in)                                :: meang
-        complex(TKC)    , intent(out)                               :: mean
-        real(TKC)       , intent(out)                               :: var
+        use pm_kind, only: TKG => CK5
+        complex(TKG)    , intent(in)    , contiguous                :: sample(:,:)
+        complex(TKG)    , intent(in)                                :: meang
+        complex(TKG)    , intent(out)                               :: mean
+        real(TKG)       , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -6797,11 +6797,11 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanALL_WNODD_D2_CK4
 #endif
-        use pm_kind, only: TKC => CK4
-        complex(TKC)    , intent(in)    , contiguous                :: sample(:,:)
-        complex(TKC)    , intent(in)                                :: meang
-        complex(TKC)    , intent(out)                               :: mean
-        real(TKC)       , intent(out)                               :: var
+        use pm_kind, only: TKG => CK4
+        complex(TKG)    , intent(in)    , contiguous                :: sample(:,:)
+        complex(TKG)    , intent(in)                                :: meang
+        complex(TKG)    , intent(out)                               :: mean
+        real(TKG)       , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -6810,11 +6810,11 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanALL_WNODD_D2_CK3
 #endif
-        use pm_kind, only: TKC => CK3
-        complex(TKC)    , intent(in)    , contiguous                :: sample(:,:)
-        complex(TKC)    , intent(in)                                :: meang
-        complex(TKC)    , intent(out)                               :: mean
-        real(TKC)       , intent(out)                               :: var
+        use pm_kind, only: TKG => CK3
+        complex(TKG)    , intent(in)    , contiguous                :: sample(:,:)
+        complex(TKG)    , intent(in)                                :: meang
+        complex(TKG)    , intent(out)                               :: mean
+        real(TKG)       , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -6823,11 +6823,11 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanALL_WNODD_D2_CK2
 #endif
-        use pm_kind, only: TKC => CK2
-        complex(TKC)    , intent(in)    , contiguous                :: sample(:,:)
-        complex(TKC)    , intent(in)                                :: meang
-        complex(TKC)    , intent(out)                               :: mean
-        real(TKC)       , intent(out)                               :: var
+        use pm_kind, only: TKG => CK2
+        complex(TKG)    , intent(in)    , contiguous                :: sample(:,:)
+        complex(TKG)    , intent(in)                                :: meang
+        complex(TKG)    , intent(out)                               :: mean
+        real(TKG)       , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -6836,11 +6836,11 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanALL_WNODD_D2_CK1
 #endif
-        use pm_kind, only: TKC => CK1
-        complex(TKC)    , intent(in)    , contiguous                :: sample(:,:)
-        complex(TKC)    , intent(in)                                :: meang
-        complex(TKC)    , intent(out)                               :: mean
-        real(TKC)       , intent(out)                               :: var
+        use pm_kind, only: TKG => CK1
+        complex(TKG)    , intent(in)    , contiguous                :: sample(:,:)
+        complex(TKG)    , intent(in)                                :: meang
+        complex(TKG)    , intent(out)                               :: mean
+        real(TKG)       , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -6851,11 +6851,11 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanALL_WNODD_D2_RK5
 #endif
-        use pm_kind, only: TKC => RK5
-        real(TKC)       , intent(in)    , contiguous                :: sample(:,:)
-        real(TKC)       , intent(in)                                :: meang
-        real(TKC)       , intent(out)                               :: mean
-        real(TKC)       , intent(out)                               :: var
+        use pm_kind, only: TKG => RK5
+        real(TKG)       , intent(in)    , contiguous                :: sample(:,:)
+        real(TKG)       , intent(in)                                :: meang
+        real(TKG)       , intent(out)                               :: mean
+        real(TKG)       , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -6864,11 +6864,11 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanALL_WNODD_D2_RK4
 #endif
-        use pm_kind, only: TKC => RK4
-        real(TKC)       , intent(in)    , contiguous                :: sample(:,:)
-        real(TKC)       , intent(in)                                :: meang
-        real(TKC)       , intent(out)                               :: mean
-        real(TKC)       , intent(out)                               :: var
+        use pm_kind, only: TKG => RK4
+        real(TKG)       , intent(in)    , contiguous                :: sample(:,:)
+        real(TKG)       , intent(in)                                :: meang
+        real(TKG)       , intent(out)                               :: mean
+        real(TKG)       , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -6877,11 +6877,11 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanALL_WNODD_D2_RK3
 #endif
-        use pm_kind, only: TKC => RK3
-        real(TKC)       , intent(in)    , contiguous                :: sample(:,:)
-        real(TKC)       , intent(in)                                :: meang
-        real(TKC)       , intent(out)                               :: mean
-        real(TKC)       , intent(out)                               :: var
+        use pm_kind, only: TKG => RK3
+        real(TKG)       , intent(in)    , contiguous                :: sample(:,:)
+        real(TKG)       , intent(in)                                :: meang
+        real(TKG)       , intent(out)                               :: mean
+        real(TKG)       , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -6890,11 +6890,11 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanALL_WNODD_D2_RK2
 #endif
-        use pm_kind, only: TKC => RK2
-        real(TKC)       , intent(in)    , contiguous                :: sample(:,:)
-        real(TKC)       , intent(in)                                :: meang
-        real(TKC)       , intent(out)                               :: mean
-        real(TKC)       , intent(out)                               :: var
+        use pm_kind, only: TKG => RK2
+        real(TKG)       , intent(in)    , contiguous                :: sample(:,:)
+        real(TKG)       , intent(in)                                :: meang
+        real(TKG)       , intent(out)                               :: mean
+        real(TKG)       , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -6903,11 +6903,11 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanALL_WNODD_D2_RK1
 #endif
-        use pm_kind, only: TKC => RK1
-        real(TKC)       , intent(in)    , contiguous                :: sample(:,:)
-        real(TKC)       , intent(in)                                :: meang
-        real(TKC)       , intent(out)                               :: mean
-        real(TKC)       , intent(out)                               :: var
+        use pm_kind, only: TKG => RK1
+        real(TKG)       , intent(in)    , contiguous                :: sample(:,:)
+        real(TKG)       , intent(in)                                :: meang
+        real(TKG)       , intent(out)                               :: mean
+        real(TKG)       , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -6924,13 +6924,13 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanALL_WTISD_D2_CK5
 #endif
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
         integer(IK)     , intent(out)                               :: weisum
         integer(IK)     , intent(in)    , contiguous                :: weight(:)
-        complex(TKC)    , intent(in)    , contiguous                :: sample(:,:)
-        complex(TKC)    , intent(in)                                :: meang
-        complex(TKC)    , intent(out)                               :: mean
-        real(TKC)       , intent(out)                               :: var
+        complex(TKG)    , intent(in)    , contiguous                :: sample(:,:)
+        complex(TKG)    , intent(in)                                :: meang
+        complex(TKG)    , intent(out)                               :: mean
+        real(TKG)       , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -6939,13 +6939,13 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanALL_WTISD_D2_CK4
 #endif
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
         integer(IK)     , intent(out)                               :: weisum
         integer(IK)     , intent(in)    , contiguous                :: weight(:)
-        complex(TKC)    , intent(in)    , contiguous                :: sample(:,:)
-        complex(TKC)    , intent(in)                                :: meang
-        complex(TKC)    , intent(out)                               :: mean
-        real(TKC)       , intent(out)                               :: var
+        complex(TKG)    , intent(in)    , contiguous                :: sample(:,:)
+        complex(TKG)    , intent(in)                                :: meang
+        complex(TKG)    , intent(out)                               :: mean
+        real(TKG)       , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -6954,13 +6954,13 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanALL_WTISD_D2_CK3
 #endif
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
         integer(IK)     , intent(out)                               :: weisum
         integer(IK)     , intent(in)    , contiguous                :: weight(:)
-        complex(TKC)    , intent(in)    , contiguous                :: sample(:,:)
-        complex(TKC)    , intent(in)                                :: meang
-        complex(TKC)    , intent(out)                               :: mean
-        real(TKC)       , intent(out)                               :: var
+        complex(TKG)    , intent(in)    , contiguous                :: sample(:,:)
+        complex(TKG)    , intent(in)                                :: meang
+        complex(TKG)    , intent(out)                               :: mean
+        real(TKG)       , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -6969,13 +6969,13 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanALL_WTISD_D2_CK2
 #endif
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
         integer(IK)     , intent(out)                               :: weisum
         integer(IK)     , intent(in)    , contiguous                :: weight(:)
-        complex(TKC)    , intent(in)    , contiguous                :: sample(:,:)
-        complex(TKC)    , intent(in)                                :: meang
-        complex(TKC)    , intent(out)                               :: mean
-        real(TKC)       , intent(out)                               :: var
+        complex(TKG)    , intent(in)    , contiguous                :: sample(:,:)
+        complex(TKG)    , intent(in)                                :: meang
+        complex(TKG)    , intent(out)                               :: mean
+        real(TKG)       , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -6984,13 +6984,13 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanALL_WTISD_D2_CK1
 #endif
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
         integer(IK)     , intent(out)                               :: weisum
         integer(IK)     , intent(in)    , contiguous                :: weight(:)
-        complex(TKC)    , intent(in)    , contiguous                :: sample(:,:)
-        complex(TKC)    , intent(in)                                :: meang
-        complex(TKC)    , intent(out)                               :: mean
-        real(TKC)       , intent(out)                               :: var
+        complex(TKG)    , intent(in)    , contiguous                :: sample(:,:)
+        complex(TKG)    , intent(in)                                :: meang
+        complex(TKG)    , intent(out)                               :: mean
+        real(TKG)       , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -7001,13 +7001,13 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanALL_WTISD_D2_RK5
 #endif
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
         integer(IK)     , intent(out)                               :: weisum
         integer(IK)     , intent(in)    , contiguous                :: weight(:)
-        real(TKC)       , intent(in)    , contiguous                :: sample(:,:)
-        real(TKC)       , intent(in)                                :: meang
-        real(TKC)       , intent(out)                               :: mean
-        real(TKC)       , intent(out)                               :: var
+        real(TKG)       , intent(in)    , contiguous                :: sample(:,:)
+        real(TKG)       , intent(in)                                :: meang
+        real(TKG)       , intent(out)                               :: mean
+        real(TKG)       , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -7016,13 +7016,13 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanALL_WTISD_D2_RK4
 #endif
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
         integer(IK)     , intent(out)                               :: weisum
         integer(IK)     , intent(in)    , contiguous                :: weight(:)
-        real(TKC)       , intent(in)    , contiguous                :: sample(:,:)
-        real(TKC)       , intent(in)                                :: meang
-        real(TKC)       , intent(out)                               :: mean
-        real(TKC)       , intent(out)                               :: var
+        real(TKG)       , intent(in)    , contiguous                :: sample(:,:)
+        real(TKG)       , intent(in)                                :: meang
+        real(TKG)       , intent(out)                               :: mean
+        real(TKG)       , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -7031,13 +7031,13 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanALL_WTISD_D2_RK3
 #endif
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
         integer(IK)     , intent(out)                               :: weisum
         integer(IK)     , intent(in)    , contiguous                :: weight(:)
-        real(TKC)       , intent(in)    , contiguous                :: sample(:,:)
-        real(TKC)       , intent(in)                                :: meang
-        real(TKC)       , intent(out)                               :: mean
-        real(TKC)       , intent(out)                               :: var
+        real(TKG)       , intent(in)    , contiguous                :: sample(:,:)
+        real(TKG)       , intent(in)                                :: meang
+        real(TKG)       , intent(out)                               :: mean
+        real(TKG)       , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -7046,13 +7046,13 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanALL_WTISD_D2_RK2
 #endif
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
         integer(IK)     , intent(out)                               :: weisum
         integer(IK)     , intent(in)    , contiguous                :: weight(:)
-        real(TKC)       , intent(in)    , contiguous                :: sample(:,:)
-        real(TKC)       , intent(in)                                :: meang
-        real(TKC)       , intent(out)                               :: mean
-        real(TKC)       , intent(out)                               :: var
+        real(TKG)       , intent(in)    , contiguous                :: sample(:,:)
+        real(TKG)       , intent(in)                                :: meang
+        real(TKG)       , intent(out)                               :: mean
+        real(TKG)       , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -7061,13 +7061,13 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanALL_WTISD_D2_RK1
 #endif
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
         integer(IK)     , intent(out)                               :: weisum
         integer(IK)     , intent(in)    , contiguous                :: weight(:)
-        real(TKC)       , intent(in)    , contiguous                :: sample(:,:)
-        real(TKC)       , intent(in)                                :: meang
-        real(TKC)       , intent(out)                               :: mean
-        real(TKC)       , intent(out)                               :: var
+        real(TKG)       , intent(in)    , contiguous                :: sample(:,:)
+        real(TKG)       , intent(in)                                :: meang
+        real(TKG)       , intent(out)                               :: mean
+        real(TKG)       , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -7084,13 +7084,13 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanALL_WTRSD_D2_CK5
 #endif
-        use pm_kind, only: TKC => CK5
-        real(TKC)       , intent(out)                               :: weisum
-        real(TKC)       , intent(in)    , contiguous                :: weight(:)
-        complex(TKC)    , intent(in)    , contiguous                :: sample(:,:)
-        complex(TKC)    , intent(in)                                :: meang
-        complex(TKC)    , intent(out)                               :: mean
-        real(TKC)       , intent(out)                               :: var
+        use pm_kind, only: TKG => CK5
+        real(TKG)       , intent(out)                               :: weisum
+        real(TKG)       , intent(in)    , contiguous                :: weight(:)
+        complex(TKG)    , intent(in)    , contiguous                :: sample(:,:)
+        complex(TKG)    , intent(in)                                :: meang
+        complex(TKG)    , intent(out)                               :: mean
+        real(TKG)       , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -7099,13 +7099,13 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanALL_WTRSD_D2_CK4
 #endif
-        use pm_kind, only: TKC => CK4
-        real(TKC)       , intent(out)                               :: weisum
-        real(TKC)       , intent(in)    , contiguous                :: weight(:)
-        complex(TKC)    , intent(in)    , contiguous                :: sample(:,:)
-        complex(TKC)    , intent(in)                                :: meang
-        complex(TKC)    , intent(out)                               :: mean
-        real(TKC)       , intent(out)                               :: var
+        use pm_kind, only: TKG => CK4
+        real(TKG)       , intent(out)                               :: weisum
+        real(TKG)       , intent(in)    , contiguous                :: weight(:)
+        complex(TKG)    , intent(in)    , contiguous                :: sample(:,:)
+        complex(TKG)    , intent(in)                                :: meang
+        complex(TKG)    , intent(out)                               :: mean
+        real(TKG)       , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -7114,13 +7114,13 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanALL_WTRSD_D2_CK3
 #endif
-        use pm_kind, only: TKC => CK3
-        real(TKC)       , intent(out)                               :: weisum
-        real(TKC)       , intent(in)    , contiguous                :: weight(:)
-        complex(TKC)    , intent(in)    , contiguous                :: sample(:,:)
-        complex(TKC)    , intent(in)                                :: meang
-        complex(TKC)    , intent(out)                               :: mean
-        real(TKC)       , intent(out)                               :: var
+        use pm_kind, only: TKG => CK3
+        real(TKG)       , intent(out)                               :: weisum
+        real(TKG)       , intent(in)    , contiguous                :: weight(:)
+        complex(TKG)    , intent(in)    , contiguous                :: sample(:,:)
+        complex(TKG)    , intent(in)                                :: meang
+        complex(TKG)    , intent(out)                               :: mean
+        real(TKG)       , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -7129,13 +7129,13 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanALL_WTRSD_D2_CK2
 #endif
-        use pm_kind, only: TKC => CK2
-        real(TKC)       , intent(out)                               :: weisum
-        real(TKC)       , intent(in)    , contiguous                :: weight(:)
-        complex(TKC)    , intent(in)    , contiguous                :: sample(:,:)
-        complex(TKC)    , intent(in)                                :: meang
-        complex(TKC)    , intent(out)                               :: mean
-        real(TKC)       , intent(out)                               :: var
+        use pm_kind, only: TKG => CK2
+        real(TKG)       , intent(out)                               :: weisum
+        real(TKG)       , intent(in)    , contiguous                :: weight(:)
+        complex(TKG)    , intent(in)    , contiguous                :: sample(:,:)
+        complex(TKG)    , intent(in)                                :: meang
+        complex(TKG)    , intent(out)                               :: mean
+        real(TKG)       , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -7144,13 +7144,13 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanALL_WTRSD_D2_CK1
 #endif
-        use pm_kind, only: TKC => CK1
-        real(TKC)       , intent(out)                               :: weisum
-        real(TKC)       , intent(in)    , contiguous                :: weight(:)
-        complex(TKC)    , intent(in)    , contiguous                :: sample(:,:)
-        complex(TKC)    , intent(in)                                :: meang
-        complex(TKC)    , intent(out)                               :: mean
-        real(TKC)       , intent(out)                               :: var
+        use pm_kind, only: TKG => CK1
+        real(TKG)       , intent(out)                               :: weisum
+        real(TKG)       , intent(in)    , contiguous                :: weight(:)
+        complex(TKG)    , intent(in)    , contiguous                :: sample(:,:)
+        complex(TKG)    , intent(in)                                :: meang
+        complex(TKG)    , intent(out)                               :: mean
+        real(TKG)       , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -7161,13 +7161,13 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanALL_WTRSD_D2_RK5
 #endif
-        use pm_kind, only: TKC => RK5
-        real(TKC)       , intent(out)                               :: weisum
-        real(TKC)       , intent(in)    , contiguous                :: weight(:)
-        real(TKC)       , intent(in)    , contiguous                :: sample(:,:)
-        real(TKC)       , intent(in)                                :: meang
-        real(TKC)       , intent(out)                               :: mean
-        real(TKC)       , intent(out)                               :: var
+        use pm_kind, only: TKG => RK5
+        real(TKG)       , intent(out)                               :: weisum
+        real(TKG)       , intent(in)    , contiguous                :: weight(:)
+        real(TKG)       , intent(in)    , contiguous                :: sample(:,:)
+        real(TKG)       , intent(in)                                :: meang
+        real(TKG)       , intent(out)                               :: mean
+        real(TKG)       , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -7176,13 +7176,13 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanALL_WTRSD_D2_RK4
 #endif
-        use pm_kind, only: TKC => RK4
-        real(TKC)       , intent(out)                               :: weisum
-        real(TKC)       , intent(in)    , contiguous                :: weight(:)
-        real(TKC)       , intent(in)    , contiguous                :: sample(:,:)
-        real(TKC)       , intent(in)                                :: meang
-        real(TKC)       , intent(out)                               :: mean
-        real(TKC)       , intent(out)                               :: var
+        use pm_kind, only: TKG => RK4
+        real(TKG)       , intent(out)                               :: weisum
+        real(TKG)       , intent(in)    , contiguous                :: weight(:)
+        real(TKG)       , intent(in)    , contiguous                :: sample(:,:)
+        real(TKG)       , intent(in)                                :: meang
+        real(TKG)       , intent(out)                               :: mean
+        real(TKG)       , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -7191,13 +7191,13 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanALL_WTRSD_D2_RK3
 #endif
-        use pm_kind, only: TKC => RK3
-        real(TKC)       , intent(out)                               :: weisum
-        real(TKC)       , intent(in)    , contiguous                :: weight(:)
-        real(TKC)       , intent(in)    , contiguous                :: sample(:,:)
-        real(TKC)       , intent(in)                                :: meang
-        real(TKC)       , intent(out)                               :: mean
-        real(TKC)       , intent(out)                               :: var
+        use pm_kind, only: TKG => RK3
+        real(TKG)       , intent(out)                               :: weisum
+        real(TKG)       , intent(in)    , contiguous                :: weight(:)
+        real(TKG)       , intent(in)    , contiguous                :: sample(:,:)
+        real(TKG)       , intent(in)                                :: meang
+        real(TKG)       , intent(out)                               :: mean
+        real(TKG)       , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -7206,13 +7206,13 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanALL_WTRSD_D2_RK2
 #endif
-        use pm_kind, only: TKC => RK2
-        real(TKC)       , intent(out)                               :: weisum
-        real(TKC)       , intent(in)    , contiguous                :: weight(:)
-        real(TKC)       , intent(in)    , contiguous                :: sample(:,:)
-        real(TKC)       , intent(in)                                :: meang
-        real(TKC)       , intent(out)                               :: mean
-        real(TKC)       , intent(out)                               :: var
+        use pm_kind, only: TKG => RK2
+        real(TKG)       , intent(out)                               :: weisum
+        real(TKG)       , intent(in)    , contiguous                :: weight(:)
+        real(TKG)       , intent(in)    , contiguous                :: sample(:,:)
+        real(TKG)       , intent(in)                                :: meang
+        real(TKG)       , intent(out)                               :: mean
+        real(TKG)       , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -7221,13 +7221,13 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanALL_WTRSD_D2_RK1
 #endif
-        use pm_kind, only: TKC => RK1
-        real(TKC)       , intent(out)                               :: weisum
-        real(TKC)       , intent(in)    , contiguous                :: weight(:)
-        real(TKC)       , intent(in)    , contiguous                :: sample(:,:)
-        real(TKC)       , intent(in)                                :: meang
-        real(TKC)       , intent(out)                               :: mean
-        real(TKC)       , intent(out)                               :: var
+        use pm_kind, only: TKG => RK1
+        real(TKG)       , intent(out)                               :: weisum
+        real(TKG)       , intent(in)    , contiguous                :: weight(:)
+        real(TKG)       , intent(in)    , contiguous                :: sample(:,:)
+        real(TKG)       , intent(in)                                :: meang
+        real(TKG)       , intent(out)                               :: mean
+        real(TKG)       , intent(out)                               :: var
     end subroutine
 #endif
 
@@ -7254,11 +7254,11 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanDIM_WNODD_D1_CK5
 #endif
-        use pm_kind, only: TKC => CK5
-        complex(TKC)    , intent(in)    , contiguous                :: sample(:)
-        complex(TKC)    , intent(in)                                :: meang
-        complex(TKC)    , intent(out)                               :: mean
-        real(TKC)       , intent(out)                               :: var
+        use pm_kind, only: TKG => CK5
+        complex(TKG)    , intent(in)    , contiguous                :: sample(:)
+        complex(TKG)    , intent(in)                                :: meang
+        complex(TKG)    , intent(out)                               :: mean
+        real(TKG)       , intent(out)                               :: var
         integer(IK)     , intent(in)                                :: dim
     end subroutine
 #endif
@@ -7268,11 +7268,11 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanDIM_WNODD_D1_CK4
 #endif
-        use pm_kind, only: TKC => CK4
-        complex(TKC)    , intent(in)    , contiguous                :: sample(:)
-        complex(TKC)    , intent(in)                                :: meang
-        complex(TKC)    , intent(out)                               :: mean
-        real(TKC)       , intent(out)                               :: var
+        use pm_kind, only: TKG => CK4
+        complex(TKG)    , intent(in)    , contiguous                :: sample(:)
+        complex(TKG)    , intent(in)                                :: meang
+        complex(TKG)    , intent(out)                               :: mean
+        real(TKG)       , intent(out)                               :: var
         integer(IK)     , intent(in)                                :: dim
     end subroutine
 #endif
@@ -7282,11 +7282,11 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanDIM_WNODD_D1_CK3
 #endif
-        use pm_kind, only: TKC => CK3
-        complex(TKC)    , intent(in)    , contiguous                :: sample(:)
-        complex(TKC)    , intent(in)                                :: meang
-        complex(TKC)    , intent(out)                               :: mean
-        real(TKC)       , intent(out)                               :: var
+        use pm_kind, only: TKG => CK3
+        complex(TKG)    , intent(in)    , contiguous                :: sample(:)
+        complex(TKG)    , intent(in)                                :: meang
+        complex(TKG)    , intent(out)                               :: mean
+        real(TKG)       , intent(out)                               :: var
         integer(IK)     , intent(in)                                :: dim
     end subroutine
 #endif
@@ -7296,11 +7296,11 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanDIM_WNODD_D1_CK2
 #endif
-        use pm_kind, only: TKC => CK2
-        complex(TKC)    , intent(in)    , contiguous                :: sample(:)
-        complex(TKC)    , intent(in)                                :: meang
-        complex(TKC)    , intent(out)                               :: mean
-        real(TKC)       , intent(out)                               :: var
+        use pm_kind, only: TKG => CK2
+        complex(TKG)    , intent(in)    , contiguous                :: sample(:)
+        complex(TKG)    , intent(in)                                :: meang
+        complex(TKG)    , intent(out)                               :: mean
+        real(TKG)       , intent(out)                               :: var
         integer(IK)     , intent(in)                                :: dim
     end subroutine
 #endif
@@ -7310,11 +7310,11 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanDIM_WNODD_D1_CK1
 #endif
-        use pm_kind, only: TKC => CK1
-        complex(TKC)    , intent(in)    , contiguous                :: sample(:)
-        complex(TKC)    , intent(in)                                :: meang
-        complex(TKC)    , intent(out)                               :: mean
-        real(TKC)       , intent(out)                               :: var
+        use pm_kind, only: TKG => CK1
+        complex(TKG)    , intent(in)    , contiguous                :: sample(:)
+        complex(TKG)    , intent(in)                                :: meang
+        complex(TKG)    , intent(out)                               :: mean
+        real(TKG)       , intent(out)                               :: var
         integer(IK)     , intent(in)                                :: dim
     end subroutine
 #endif
@@ -7326,11 +7326,11 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanDIM_WNODD_D1_RK5
 #endif
-        use pm_kind, only: TKC => RK5
-        real(TKC)       , intent(in)    , contiguous                :: sample(:)
-        real(TKC)       , intent(in)                                :: meang
-        real(TKC)       , intent(out)                               :: mean
-        real(TKC)       , intent(out)                               :: var
+        use pm_kind, only: TKG => RK5
+        real(TKG)       , intent(in)    , contiguous                :: sample(:)
+        real(TKG)       , intent(in)                                :: meang
+        real(TKG)       , intent(out)                               :: mean
+        real(TKG)       , intent(out)                               :: var
         integer(IK)     , intent(in)                                :: dim
     end subroutine
 #endif
@@ -7340,11 +7340,11 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanDIM_WNODD_D1_RK4
 #endif
-        use pm_kind, only: TKC => RK4
-        real(TKC)       , intent(in)    , contiguous                :: sample(:)
-        real(TKC)       , intent(in)                                :: meang
-        real(TKC)       , intent(out)                               :: mean
-        real(TKC)       , intent(out)                               :: var
+        use pm_kind, only: TKG => RK4
+        real(TKG)       , intent(in)    , contiguous                :: sample(:)
+        real(TKG)       , intent(in)                                :: meang
+        real(TKG)       , intent(out)                               :: mean
+        real(TKG)       , intent(out)                               :: var
         integer(IK)     , intent(in)                                :: dim
     end subroutine
 #endif
@@ -7354,11 +7354,11 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanDIM_WNODD_D1_RK3
 #endif
-        use pm_kind, only: TKC => RK3
-        real(TKC)       , intent(in)    , contiguous                :: sample(:)
-        real(TKC)       , intent(in)                                :: meang
-        real(TKC)       , intent(out)                               :: mean
-        real(TKC)       , intent(out)                               :: var
+        use pm_kind, only: TKG => RK3
+        real(TKG)       , intent(in)    , contiguous                :: sample(:)
+        real(TKG)       , intent(in)                                :: meang
+        real(TKG)       , intent(out)                               :: mean
+        real(TKG)       , intent(out)                               :: var
         integer(IK)     , intent(in)                                :: dim
     end subroutine
 #endif
@@ -7368,11 +7368,11 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanDIM_WNODD_D1_RK2
 #endif
-        use pm_kind, only: TKC => RK2
-        real(TKC)       , intent(in)    , contiguous                :: sample(:)
-        real(TKC)       , intent(in)                                :: meang
-        real(TKC)       , intent(out)                               :: mean
-        real(TKC)       , intent(out)                               :: var
+        use pm_kind, only: TKG => RK2
+        real(TKG)       , intent(in)    , contiguous                :: sample(:)
+        real(TKG)       , intent(in)                                :: meang
+        real(TKG)       , intent(out)                               :: mean
+        real(TKG)       , intent(out)                               :: var
         integer(IK)     , intent(in)                                :: dim
     end subroutine
 #endif
@@ -7382,11 +7382,11 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanDIM_WNODD_D1_RK1
 #endif
-        use pm_kind, only: TKC => RK1
-        real(TKC)       , intent(in)    , contiguous                :: sample(:)
-        real(TKC)       , intent(in)                                :: meang
-        real(TKC)       , intent(out)                               :: mean
-        real(TKC)       , intent(out)                               :: var
+        use pm_kind, only: TKG => RK1
+        real(TKG)       , intent(in)    , contiguous                :: sample(:)
+        real(TKG)       , intent(in)                                :: meang
+        real(TKG)       , intent(out)                               :: mean
+        real(TKG)       , intent(out)                               :: var
         integer(IK)     , intent(in)                                :: dim
     end subroutine
 #endif
@@ -7404,13 +7404,13 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanDIM_WTISD_D1_CK5
 #endif
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
         integer(IK)     , intent(out)                               :: weisum
         integer(IK)     , intent(in)    , contiguous                :: weight(:)
-        complex(TKC)    , intent(in)    , contiguous                :: sample(:)
-        complex(TKC)    , intent(in)                                :: meang
-        complex(TKC)    , intent(out)                               :: mean
-        real(TKC)       , intent(out)                               :: var
+        complex(TKG)    , intent(in)    , contiguous                :: sample(:)
+        complex(TKG)    , intent(in)                                :: meang
+        complex(TKG)    , intent(out)                               :: mean
+        real(TKG)       , intent(out)                               :: var
         integer(IK)     , intent(in)                                :: dim
     end subroutine
 #endif
@@ -7420,13 +7420,13 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanDIM_WTISD_D1_CK4
 #endif
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
         integer(IK)     , intent(out)                               :: weisum
         integer(IK)     , intent(in)    , contiguous                :: weight(:)
-        complex(TKC)    , intent(in)    , contiguous                :: sample(:)
-        complex(TKC)    , intent(in)                                :: meang
-        complex(TKC)    , intent(out)                               :: mean
-        real(TKC)       , intent(out)                               :: var
+        complex(TKG)    , intent(in)    , contiguous                :: sample(:)
+        complex(TKG)    , intent(in)                                :: meang
+        complex(TKG)    , intent(out)                               :: mean
+        real(TKG)       , intent(out)                               :: var
         integer(IK)     , intent(in)                                :: dim
     end subroutine
 #endif
@@ -7436,13 +7436,13 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanDIM_WTISD_D1_CK3
 #endif
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
         integer(IK)     , intent(out)                               :: weisum
         integer(IK)     , intent(in)    , contiguous                :: weight(:)
-        complex(TKC)    , intent(in)    , contiguous                :: sample(:)
-        complex(TKC)    , intent(in)                                :: meang
-        complex(TKC)    , intent(out)                               :: mean
-        real(TKC)       , intent(out)                               :: var
+        complex(TKG)    , intent(in)    , contiguous                :: sample(:)
+        complex(TKG)    , intent(in)                                :: meang
+        complex(TKG)    , intent(out)                               :: mean
+        real(TKG)       , intent(out)                               :: var
         integer(IK)     , intent(in)                                :: dim
     end subroutine
 #endif
@@ -7452,13 +7452,13 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanDIM_WTISD_D1_CK2
 #endif
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
         integer(IK)     , intent(out)                               :: weisum
         integer(IK)     , intent(in)    , contiguous                :: weight(:)
-        complex(TKC)    , intent(in)    , contiguous                :: sample(:)
-        complex(TKC)    , intent(in)                                :: meang
-        complex(TKC)    , intent(out)                               :: mean
-        real(TKC)       , intent(out)                               :: var
+        complex(TKG)    , intent(in)    , contiguous                :: sample(:)
+        complex(TKG)    , intent(in)                                :: meang
+        complex(TKG)    , intent(out)                               :: mean
+        real(TKG)       , intent(out)                               :: var
         integer(IK)     , intent(in)                                :: dim
     end subroutine
 #endif
@@ -7468,13 +7468,13 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanDIM_WTISD_D1_CK1
 #endif
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
         integer(IK)     , intent(out)                               :: weisum
         integer(IK)     , intent(in)    , contiguous                :: weight(:)
-        complex(TKC)    , intent(in)    , contiguous                :: sample(:)
-        complex(TKC)    , intent(in)                                :: meang
-        complex(TKC)    , intent(out)                               :: mean
-        real(TKC)       , intent(out)                               :: var
+        complex(TKG)    , intent(in)    , contiguous                :: sample(:)
+        complex(TKG)    , intent(in)                                :: meang
+        complex(TKG)    , intent(out)                               :: mean
+        real(TKG)       , intent(out)                               :: var
         integer(IK)     , intent(in)                                :: dim
     end subroutine
 #endif
@@ -7486,13 +7486,13 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanDIM_WTISD_D1_RK5
 #endif
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
         integer(IK)     , intent(out)                               :: weisum
         integer(IK)     , intent(in)    , contiguous                :: weight(:)
-        real(TKC)       , intent(in)    , contiguous                :: sample(:)
-        real(TKC)       , intent(in)                                :: meang
-        real(TKC)       , intent(out)                               :: mean
-        real(TKC)       , intent(out)                               :: var
+        real(TKG)       , intent(in)    , contiguous                :: sample(:)
+        real(TKG)       , intent(in)                                :: meang
+        real(TKG)       , intent(out)                               :: mean
+        real(TKG)       , intent(out)                               :: var
         integer(IK)     , intent(in)                                :: dim
     end subroutine
 #endif
@@ -7502,13 +7502,13 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanDIM_WTISD_D1_RK4
 #endif
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
         integer(IK)     , intent(out)                               :: weisum
         integer(IK)     , intent(in)    , contiguous                :: weight(:)
-        real(TKC)       , intent(in)    , contiguous                :: sample(:)
-        real(TKC)       , intent(in)                                :: meang
-        real(TKC)       , intent(out)                               :: mean
-        real(TKC)       , intent(out)                               :: var
+        real(TKG)       , intent(in)    , contiguous                :: sample(:)
+        real(TKG)       , intent(in)                                :: meang
+        real(TKG)       , intent(out)                               :: mean
+        real(TKG)       , intent(out)                               :: var
         integer(IK)     , intent(in)                                :: dim
     end subroutine
 #endif
@@ -7518,13 +7518,13 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanDIM_WTISD_D1_RK3
 #endif
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
         integer(IK)     , intent(out)                               :: weisum
         integer(IK)     , intent(in)    , contiguous                :: weight(:)
-        real(TKC)       , intent(in)    , contiguous                :: sample(:)
-        real(TKC)       , intent(in)                                :: meang
-        real(TKC)       , intent(out)                               :: mean
-        real(TKC)       , intent(out)                               :: var
+        real(TKG)       , intent(in)    , contiguous                :: sample(:)
+        real(TKG)       , intent(in)                                :: meang
+        real(TKG)       , intent(out)                               :: mean
+        real(TKG)       , intent(out)                               :: var
         integer(IK)     , intent(in)                                :: dim
     end subroutine
 #endif
@@ -7534,13 +7534,13 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanDIM_WTISD_D1_RK2
 #endif
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
         integer(IK)     , intent(out)                               :: weisum
         integer(IK)     , intent(in)    , contiguous                :: weight(:)
-        real(TKC)       , intent(in)    , contiguous                :: sample(:)
-        real(TKC)       , intent(in)                                :: meang
-        real(TKC)       , intent(out)                               :: mean
-        real(TKC)       , intent(out)                               :: var
+        real(TKG)       , intent(in)    , contiguous                :: sample(:)
+        real(TKG)       , intent(in)                                :: meang
+        real(TKG)       , intent(out)                               :: mean
+        real(TKG)       , intent(out)                               :: var
         integer(IK)     , intent(in)                                :: dim
     end subroutine
 #endif
@@ -7550,13 +7550,13 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanDIM_WTISD_D1_RK1
 #endif
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
         integer(IK)     , intent(out)                               :: weisum
         integer(IK)     , intent(in)    , contiguous                :: weight(:)
-        real(TKC)       , intent(in)    , contiguous                :: sample(:)
-        real(TKC)       , intent(in)                                :: meang
-        real(TKC)       , intent(out)                               :: mean
-        real(TKC)       , intent(out)                               :: var
+        real(TKG)       , intent(in)    , contiguous                :: sample(:)
+        real(TKG)       , intent(in)                                :: meang
+        real(TKG)       , intent(out)                               :: mean
+        real(TKG)       , intent(out)                               :: var
         integer(IK)     , intent(in)                                :: dim
     end subroutine
 #endif
@@ -7574,13 +7574,13 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanDIM_WTRSD_D1_CK5
 #endif
-        use pm_kind, only: TKC => CK5
-        real(TKC)       , intent(out)                               :: weisum
-        real(TKC)       , intent(in)    , contiguous                :: weight(:)
-        complex(TKC)    , intent(in)    , contiguous                :: sample(:)
-        complex(TKC)    , intent(in)                                :: meang
-        complex(TKC)    , intent(out)                               :: mean
-        real(TKC)       , intent(out)                               :: var
+        use pm_kind, only: TKG => CK5
+        real(TKG)       , intent(out)                               :: weisum
+        real(TKG)       , intent(in)    , contiguous                :: weight(:)
+        complex(TKG)    , intent(in)    , contiguous                :: sample(:)
+        complex(TKG)    , intent(in)                                :: meang
+        complex(TKG)    , intent(out)                               :: mean
+        real(TKG)       , intent(out)                               :: var
         integer(IK)     , intent(in)                                :: dim
     end subroutine
 #endif
@@ -7590,13 +7590,13 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanDIM_WTRSD_D1_CK4
 #endif
-        use pm_kind, only: TKC => CK4
-        real(TKC)       , intent(out)                               :: weisum
-        real(TKC)       , intent(in)    , contiguous                :: weight(:)
-        complex(TKC)    , intent(in)    , contiguous                :: sample(:)
-        complex(TKC)    , intent(in)                                :: meang
-        complex(TKC)    , intent(out)                               :: mean
-        real(TKC)       , intent(out)                               :: var
+        use pm_kind, only: TKG => CK4
+        real(TKG)       , intent(out)                               :: weisum
+        real(TKG)       , intent(in)    , contiguous                :: weight(:)
+        complex(TKG)    , intent(in)    , contiguous                :: sample(:)
+        complex(TKG)    , intent(in)                                :: meang
+        complex(TKG)    , intent(out)                               :: mean
+        real(TKG)       , intent(out)                               :: var
         integer(IK)     , intent(in)                                :: dim
     end subroutine
 #endif
@@ -7606,13 +7606,13 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanDIM_WTRSD_D1_CK3
 #endif
-        use pm_kind, only: TKC => CK3
-        real(TKC)       , intent(out)                               :: weisum
-        real(TKC)       , intent(in)    , contiguous                :: weight(:)
-        complex(TKC)    , intent(in)    , contiguous                :: sample(:)
-        complex(TKC)    , intent(in)                                :: meang
-        complex(TKC)    , intent(out)                               :: mean
-        real(TKC)       , intent(out)                               :: var
+        use pm_kind, only: TKG => CK3
+        real(TKG)       , intent(out)                               :: weisum
+        real(TKG)       , intent(in)    , contiguous                :: weight(:)
+        complex(TKG)    , intent(in)    , contiguous                :: sample(:)
+        complex(TKG)    , intent(in)                                :: meang
+        complex(TKG)    , intent(out)                               :: mean
+        real(TKG)       , intent(out)                               :: var
         integer(IK)     , intent(in)                                :: dim
     end subroutine
 #endif
@@ -7622,13 +7622,13 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanDIM_WTRSD_D1_CK2
 #endif
-        use pm_kind, only: TKC => CK2
-        real(TKC)       , intent(out)                               :: weisum
-        real(TKC)       , intent(in)    , contiguous                :: weight(:)
-        complex(TKC)    , intent(in)    , contiguous                :: sample(:)
-        complex(TKC)    , intent(in)                                :: meang
-        complex(TKC)    , intent(out)                               :: mean
-        real(TKC)       , intent(out)                               :: var
+        use pm_kind, only: TKG => CK2
+        real(TKG)       , intent(out)                               :: weisum
+        real(TKG)       , intent(in)    , contiguous                :: weight(:)
+        complex(TKG)    , intent(in)    , contiguous                :: sample(:)
+        complex(TKG)    , intent(in)                                :: meang
+        complex(TKG)    , intent(out)                               :: mean
+        real(TKG)       , intent(out)                               :: var
         integer(IK)     , intent(in)                                :: dim
     end subroutine
 #endif
@@ -7638,13 +7638,13 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanDIM_WTRSD_D1_CK1
 #endif
-        use pm_kind, only: TKC => CK1
-        real(TKC)       , intent(out)                               :: weisum
-        real(TKC)       , intent(in)    , contiguous                :: weight(:)
-        complex(TKC)    , intent(in)    , contiguous                :: sample(:)
-        complex(TKC)    , intent(in)                                :: meang
-        complex(TKC)    , intent(out)                               :: mean
-        real(TKC)       , intent(out)                               :: var
+        use pm_kind, only: TKG => CK1
+        real(TKG)       , intent(out)                               :: weisum
+        real(TKG)       , intent(in)    , contiguous                :: weight(:)
+        complex(TKG)    , intent(in)    , contiguous                :: sample(:)
+        complex(TKG)    , intent(in)                                :: meang
+        complex(TKG)    , intent(out)                               :: mean
+        real(TKG)       , intent(out)                               :: var
         integer(IK)     , intent(in)                                :: dim
     end subroutine
 #endif
@@ -7656,13 +7656,13 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanDIM_WTRSD_D1_RK5
 #endif
-        use pm_kind, only: TKC => RK5
-        real(TKC)       , intent(out)                               :: weisum
-        real(TKC)       , intent(in)    , contiguous                :: weight(:)
-        real(TKC)       , intent(in)    , contiguous                :: sample(:)
-        real(TKC)       , intent(in)                                :: meang
-        real(TKC)       , intent(out)                               :: mean
-        real(TKC)       , intent(out)                               :: var
+        use pm_kind, only: TKG => RK5
+        real(TKG)       , intent(out)                               :: weisum
+        real(TKG)       , intent(in)    , contiguous                :: weight(:)
+        real(TKG)       , intent(in)    , contiguous                :: sample(:)
+        real(TKG)       , intent(in)                                :: meang
+        real(TKG)       , intent(out)                               :: mean
+        real(TKG)       , intent(out)                               :: var
         integer(IK)     , intent(in)                                :: dim
     end subroutine
 #endif
@@ -7672,13 +7672,13 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanDIM_WTRSD_D1_RK4
 #endif
-        use pm_kind, only: TKC => RK4
-        real(TKC)       , intent(out)                               :: weisum
-        real(TKC)       , intent(in)    , contiguous                :: weight(:)
-        real(TKC)       , intent(in)    , contiguous                :: sample(:)
-        real(TKC)       , intent(in)                                :: meang
-        real(TKC)       , intent(out)                               :: mean
-        real(TKC)       , intent(out)                               :: var
+        use pm_kind, only: TKG => RK4
+        real(TKG)       , intent(out)                               :: weisum
+        real(TKG)       , intent(in)    , contiguous                :: weight(:)
+        real(TKG)       , intent(in)    , contiguous                :: sample(:)
+        real(TKG)       , intent(in)                                :: meang
+        real(TKG)       , intent(out)                               :: mean
+        real(TKG)       , intent(out)                               :: var
         integer(IK)     , intent(in)                                :: dim
     end subroutine
 #endif
@@ -7688,13 +7688,13 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanDIM_WTRSD_D1_RK3
 #endif
-        use pm_kind, only: TKC => RK3
-        real(TKC)       , intent(out)                               :: weisum
-        real(TKC)       , intent(in)    , contiguous                :: weight(:)
-        real(TKC)       , intent(in)    , contiguous                :: sample(:)
-        real(TKC)       , intent(in)                                :: meang
-        real(TKC)       , intent(out)                               :: mean
-        real(TKC)       , intent(out)                               :: var
+        use pm_kind, only: TKG => RK3
+        real(TKG)       , intent(out)                               :: weisum
+        real(TKG)       , intent(in)    , contiguous                :: weight(:)
+        real(TKG)       , intent(in)    , contiguous                :: sample(:)
+        real(TKG)       , intent(in)                                :: meang
+        real(TKG)       , intent(out)                               :: mean
+        real(TKG)       , intent(out)                               :: var
         integer(IK)     , intent(in)                                :: dim
     end subroutine
 #endif
@@ -7704,13 +7704,13 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanDIM_WTRSD_D1_RK2
 #endif
-        use pm_kind, only: TKC => RK2
-        real(TKC)       , intent(out)                               :: weisum
-        real(TKC)       , intent(in)    , contiguous                :: weight(:)
-        real(TKC)       , intent(in)    , contiguous                :: sample(:)
-        real(TKC)       , intent(in)                                :: meang
-        real(TKC)       , intent(out)                               :: mean
-        real(TKC)       , intent(out)                               :: var
+        use pm_kind, only: TKG => RK2
+        real(TKG)       , intent(out)                               :: weisum
+        real(TKG)       , intent(in)    , contiguous                :: weight(:)
+        real(TKG)       , intent(in)    , contiguous                :: sample(:)
+        real(TKG)       , intent(in)                                :: meang
+        real(TKG)       , intent(out)                               :: mean
+        real(TKG)       , intent(out)                               :: var
         integer(IK)     , intent(in)                                :: dim
     end subroutine
 #endif
@@ -7720,13 +7720,13 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanDIM_WTRSD_D1_RK1
 #endif
-        use pm_kind, only: TKC => RK1
-        real(TKC)       , intent(out)                               :: weisum
-        real(TKC)       , intent(in)    , contiguous                :: weight(:)
-        real(TKC)       , intent(in)    , contiguous                :: sample(:)
-        real(TKC)       , intent(in)                                :: meang
-        real(TKC)       , intent(out)                               :: mean
-        real(TKC)       , intent(out)                               :: var
+        use pm_kind, only: TKG => RK1
+        real(TKG)       , intent(out)                               :: weisum
+        real(TKG)       , intent(in)    , contiguous                :: weight(:)
+        real(TKG)       , intent(in)    , contiguous                :: sample(:)
+        real(TKG)       , intent(in)                                :: meang
+        real(TKG)       , intent(out)                               :: mean
+        real(TKG)       , intent(out)                               :: var
         integer(IK)     , intent(in)                                :: dim
     end subroutine
 #endif
@@ -7754,12 +7754,12 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanDIM_WNODD_D2_CK5
 #endif
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
         integer(IK)     , intent(in)                                :: dim
-        complex(TKC)    , intent(in)    , contiguous                :: sample(:,:)
-        complex(TKC)    , intent(in)    , contiguous                :: meang(:)
-        complex(TKC)    , intent(out)   , contiguous                :: mean(:)
-        real(TKC)       , intent(out)   , contiguous                :: var(:)
+        complex(TKG)    , intent(in)    , contiguous                :: sample(:,:)
+        complex(TKG)    , intent(in)    , contiguous                :: meang(:)
+        complex(TKG)    , intent(out)   , contiguous                :: mean(:)
+        real(TKG)       , intent(out)   , contiguous                :: var(:)
     end subroutine
 #endif
 
@@ -7768,12 +7768,12 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanDIM_WNODD_D2_CK4
 #endif
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
         integer(IK)     , intent(in)                                :: dim
-        complex(TKC)    , intent(in)    , contiguous                :: sample(:,:)
-        complex(TKC)    , intent(in)    , contiguous                :: meang(:)
-        complex(TKC)    , intent(out)   , contiguous                :: mean(:)
-        real(TKC)       , intent(out)   , contiguous                :: var(:)
+        complex(TKG)    , intent(in)    , contiguous                :: sample(:,:)
+        complex(TKG)    , intent(in)    , contiguous                :: meang(:)
+        complex(TKG)    , intent(out)   , contiguous                :: mean(:)
+        real(TKG)       , intent(out)   , contiguous                :: var(:)
     end subroutine
 #endif
 
@@ -7782,12 +7782,12 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanDIM_WNODD_D2_CK3
 #endif
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
         integer(IK)     , intent(in)                                :: dim
-        complex(TKC)    , intent(in)    , contiguous                :: sample(:,:)
-        complex(TKC)    , intent(in)    , contiguous                :: meang(:)
-        complex(TKC)    , intent(out)   , contiguous                :: mean(:)
-        real(TKC)       , intent(out)   , contiguous                :: var(:)
+        complex(TKG)    , intent(in)    , contiguous                :: sample(:,:)
+        complex(TKG)    , intent(in)    , contiguous                :: meang(:)
+        complex(TKG)    , intent(out)   , contiguous                :: mean(:)
+        real(TKG)       , intent(out)   , contiguous                :: var(:)
     end subroutine
 #endif
 
@@ -7796,12 +7796,12 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanDIM_WNODD_D2_CK2
 #endif
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
         integer(IK)     , intent(in)                                :: dim
-        complex(TKC)    , intent(in)    , contiguous                :: sample(:,:)
-        complex(TKC)    , intent(in)    , contiguous                :: meang(:)
-        complex(TKC)    , intent(out)   , contiguous                :: mean(:)
-        real(TKC)       , intent(out)   , contiguous                :: var(:)
+        complex(TKG)    , intent(in)    , contiguous                :: sample(:,:)
+        complex(TKG)    , intent(in)    , contiguous                :: meang(:)
+        complex(TKG)    , intent(out)   , contiguous                :: mean(:)
+        real(TKG)       , intent(out)   , contiguous                :: var(:)
     end subroutine
 #endif
 
@@ -7810,12 +7810,12 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanDIM_WNODD_D2_CK1
 #endif
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
         integer(IK)     , intent(in)                                :: dim
-        complex(TKC)    , intent(in)    , contiguous                :: sample(:,:)
-        complex(TKC)    , intent(in)    , contiguous                :: meang(:)
-        complex(TKC)    , intent(out)   , contiguous                :: mean(:)
-        real(TKC)       , intent(out)   , contiguous                :: var(:)
+        complex(TKG)    , intent(in)    , contiguous                :: sample(:,:)
+        complex(TKG)    , intent(in)    , contiguous                :: meang(:)
+        complex(TKG)    , intent(out)   , contiguous                :: mean(:)
+        real(TKG)       , intent(out)   , contiguous                :: var(:)
     end subroutine
 #endif
 
@@ -7826,12 +7826,12 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanDIM_WNODD_D2_RK5
 #endif
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
         integer(IK)     , intent(in)                                :: dim
-        real(TKC)       , intent(in)    , contiguous                :: sample(:,:)
-        real(TKC)       , intent(in)    , contiguous                :: meang(:)
-        real(TKC)       , intent(out)   , contiguous                :: mean(:)
-        real(TKC)       , intent(out)   , contiguous                :: var(:)
+        real(TKG)       , intent(in)    , contiguous                :: sample(:,:)
+        real(TKG)       , intent(in)    , contiguous                :: meang(:)
+        real(TKG)       , intent(out)   , contiguous                :: mean(:)
+        real(TKG)       , intent(out)   , contiguous                :: var(:)
     end subroutine
 #endif
 
@@ -7840,12 +7840,12 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanDIM_WNODD_D2_RK4
 #endif
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
         integer(IK)     , intent(in)                                :: dim
-        real(TKC)       , intent(in)    , contiguous                :: sample(:,:)
-        real(TKC)       , intent(in)    , contiguous                :: meang(:)
-        real(TKC)       , intent(out)   , contiguous                :: mean(:)
-        real(TKC)       , intent(out)   , contiguous                :: var(:)
+        real(TKG)       , intent(in)    , contiguous                :: sample(:,:)
+        real(TKG)       , intent(in)    , contiguous                :: meang(:)
+        real(TKG)       , intent(out)   , contiguous                :: mean(:)
+        real(TKG)       , intent(out)   , contiguous                :: var(:)
     end subroutine
 #endif
 
@@ -7854,12 +7854,12 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanDIM_WNODD_D2_RK3
 #endif
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
         integer(IK)     , intent(in)                                :: dim
-        real(TKC)       , intent(in)    , contiguous                :: sample(:,:)
-        real(TKC)       , intent(in)    , contiguous                :: meang(:)
-        real(TKC)       , intent(out)   , contiguous                :: mean(:)
-        real(TKC)       , intent(out)   , contiguous                :: var(:)
+        real(TKG)       , intent(in)    , contiguous                :: sample(:,:)
+        real(TKG)       , intent(in)    , contiguous                :: meang(:)
+        real(TKG)       , intent(out)   , contiguous                :: mean(:)
+        real(TKG)       , intent(out)   , contiguous                :: var(:)
     end subroutine
 #endif
 
@@ -7868,12 +7868,12 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanDIM_WNODD_D2_RK2
 #endif
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
         integer(IK)     , intent(in)                                :: dim
-        real(TKC)       , intent(in)    , contiguous                :: sample(:,:)
-        real(TKC)       , intent(in)    , contiguous                :: meang(:)
-        real(TKC)       , intent(out)   , contiguous                :: mean(:)
-        real(TKC)       , intent(out)   , contiguous                :: var(:)
+        real(TKG)       , intent(in)    , contiguous                :: sample(:,:)
+        real(TKG)       , intent(in)    , contiguous                :: meang(:)
+        real(TKG)       , intent(out)   , contiguous                :: mean(:)
+        real(TKG)       , intent(out)   , contiguous                :: var(:)
     end subroutine
 #endif
 
@@ -7882,12 +7882,12 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanDIM_WNODD_D2_RK1
 #endif
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
         integer(IK)     , intent(in)                                :: dim
-        real(TKC)       , intent(in)    , contiguous                :: sample(:,:)
-        real(TKC)       , intent(in)    , contiguous                :: meang(:)
-        real(TKC)       , intent(out)   , contiguous                :: mean(:)
-        real(TKC)       , intent(out)   , contiguous                :: var(:)
+        real(TKG)       , intent(in)    , contiguous                :: sample(:,:)
+        real(TKG)       , intent(in)    , contiguous                :: meang(:)
+        real(TKG)       , intent(out)   , contiguous                :: mean(:)
+        real(TKG)       , intent(out)   , contiguous                :: var(:)
     end subroutine
 #endif
 
@@ -7904,14 +7904,14 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanDIM_WTISD_D2_CK5
 #endif
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
         integer(IK)     , intent(in)                                :: dim
         integer(IK)     , intent(out)                               :: weisum
         integer(IK)     , intent(in)    , contiguous                :: weight(:)
-        complex(TKC)    , intent(in)    , contiguous                :: sample(:,:)
-        complex(TKC)    , intent(in)    , contiguous                :: meang(:)
-        complex(TKC)    , intent(out)   , contiguous                :: mean(:)
-        real(TKC)       , intent(out)   , contiguous                :: var(:)
+        complex(TKG)    , intent(in)    , contiguous                :: sample(:,:)
+        complex(TKG)    , intent(in)    , contiguous                :: meang(:)
+        complex(TKG)    , intent(out)   , contiguous                :: mean(:)
+        real(TKG)       , intent(out)   , contiguous                :: var(:)
     end subroutine
 #endif
 
@@ -7920,14 +7920,14 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanDIM_WTISD_D2_CK4
 #endif
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
         integer(IK)     , intent(in)                                :: dim
         integer(IK)     , intent(out)                               :: weisum
         integer(IK)     , intent(in)    , contiguous                :: weight(:)
-        complex(TKC)    , intent(in)    , contiguous                :: sample(:,:)
-        complex(TKC)    , intent(in)    , contiguous                :: meang(:)
-        complex(TKC)    , intent(out)   , contiguous                :: mean(:)
-        real(TKC)       , intent(out)   , contiguous                :: var(:)
+        complex(TKG)    , intent(in)    , contiguous                :: sample(:,:)
+        complex(TKG)    , intent(in)    , contiguous                :: meang(:)
+        complex(TKG)    , intent(out)   , contiguous                :: mean(:)
+        real(TKG)       , intent(out)   , contiguous                :: var(:)
     end subroutine
 #endif
 
@@ -7936,14 +7936,14 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanDIM_WTISD_D2_CK3
 #endif
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
         integer(IK)     , intent(in)                                :: dim
         integer(IK)     , intent(out)                               :: weisum
         integer(IK)     , intent(in)    , contiguous                :: weight(:)
-        complex(TKC)    , intent(in)    , contiguous                :: sample(:,:)
-        complex(TKC)    , intent(in)    , contiguous                :: meang(:)
-        complex(TKC)    , intent(out)   , contiguous                :: mean(:)
-        real(TKC)       , intent(out)   , contiguous                :: var(:)
+        complex(TKG)    , intent(in)    , contiguous                :: sample(:,:)
+        complex(TKG)    , intent(in)    , contiguous                :: meang(:)
+        complex(TKG)    , intent(out)   , contiguous                :: mean(:)
+        real(TKG)       , intent(out)   , contiguous                :: var(:)
     end subroutine
 #endif
 
@@ -7952,14 +7952,14 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanDIM_WTISD_D2_CK2
 #endif
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
         integer(IK)     , intent(in)                                :: dim
         integer(IK)     , intent(out)                               :: weisum
         integer(IK)     , intent(in)    , contiguous                :: weight(:)
-        complex(TKC)    , intent(in)    , contiguous                :: sample(:,:)
-        complex(TKC)    , intent(in)    , contiguous                :: meang(:)
-        complex(TKC)    , intent(out)   , contiguous                :: mean(:)
-        real(TKC)       , intent(out)   , contiguous                :: var(:)
+        complex(TKG)    , intent(in)    , contiguous                :: sample(:,:)
+        complex(TKG)    , intent(in)    , contiguous                :: meang(:)
+        complex(TKG)    , intent(out)   , contiguous                :: mean(:)
+        real(TKG)       , intent(out)   , contiguous                :: var(:)
     end subroutine
 #endif
 
@@ -7968,14 +7968,14 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanDIM_WTISD_D2_CK1
 #endif
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
         integer(IK)     , intent(in)                                :: dim
         integer(IK)     , intent(out)                               :: weisum
         integer(IK)     , intent(in)    , contiguous                :: weight(:)
-        complex(TKC)    , intent(in)    , contiguous                :: sample(:,:)
-        complex(TKC)    , intent(in)    , contiguous                :: meang(:)
-        complex(TKC)    , intent(out)   , contiguous                :: mean(:)
-        real(TKC)       , intent(out)   , contiguous                :: var(:)
+        complex(TKG)    , intent(in)    , contiguous                :: sample(:,:)
+        complex(TKG)    , intent(in)    , contiguous                :: meang(:)
+        complex(TKG)    , intent(out)   , contiguous                :: mean(:)
+        real(TKG)       , intent(out)   , contiguous                :: var(:)
     end subroutine
 #endif
 
@@ -7986,14 +7986,14 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanDIM_WTISD_D2_RK5
 #endif
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
         integer(IK)     , intent(in)                                :: dim
         integer(IK)     , intent(out)                               :: weisum
         integer(IK)     , intent(in)    , contiguous                :: weight(:)
-        real(TKC)       , intent(in)    , contiguous                :: sample(:,:)
-        real(TKC)       , intent(in)    , contiguous                :: meang(:)
-        real(TKC)       , intent(out)   , contiguous                :: mean(:)
-        real(TKC)       , intent(out)   , contiguous                :: var(:)
+        real(TKG)       , intent(in)    , contiguous                :: sample(:,:)
+        real(TKG)       , intent(in)    , contiguous                :: meang(:)
+        real(TKG)       , intent(out)   , contiguous                :: mean(:)
+        real(TKG)       , intent(out)   , contiguous                :: var(:)
     end subroutine
 #endif
 
@@ -8002,14 +8002,14 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanDIM_WTISD_D2_RK4
 #endif
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
         integer(IK)     , intent(in)                                :: dim
         integer(IK)     , intent(out)                               :: weisum
         integer(IK)     , intent(in)    , contiguous                :: weight(:)
-        real(TKC)       , intent(in)    , contiguous                :: sample(:,:)
-        real(TKC)       , intent(in)    , contiguous                :: meang(:)
-        real(TKC)       , intent(out)   , contiguous                :: mean(:)
-        real(TKC)       , intent(out)   , contiguous                :: var(:)
+        real(TKG)       , intent(in)    , contiguous                :: sample(:,:)
+        real(TKG)       , intent(in)    , contiguous                :: meang(:)
+        real(TKG)       , intent(out)   , contiguous                :: mean(:)
+        real(TKG)       , intent(out)   , contiguous                :: var(:)
     end subroutine
 #endif
 
@@ -8018,14 +8018,14 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanDIM_WTISD_D2_RK3
 #endif
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
         integer(IK)     , intent(in)                                :: dim
         integer(IK)     , intent(out)                               :: weisum
         integer(IK)     , intent(in)    , contiguous                :: weight(:)
-        real(TKC)       , intent(in)    , contiguous                :: sample(:,:)
-        real(TKC)       , intent(in)    , contiguous                :: meang(:)
-        real(TKC)       , intent(out)   , contiguous                :: mean(:)
-        real(TKC)       , intent(out)   , contiguous                :: var(:)
+        real(TKG)       , intent(in)    , contiguous                :: sample(:,:)
+        real(TKG)       , intent(in)    , contiguous                :: meang(:)
+        real(TKG)       , intent(out)   , contiguous                :: mean(:)
+        real(TKG)       , intent(out)   , contiguous                :: var(:)
     end subroutine
 #endif
 
@@ -8034,14 +8034,14 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanDIM_WTISD_D2_RK2
 #endif
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
         integer(IK)     , intent(in)                                :: dim
         integer(IK)     , intent(out)                               :: weisum
         integer(IK)     , intent(in)    , contiguous                :: weight(:)
-        real(TKC)       , intent(in)    , contiguous                :: sample(:,:)
-        real(TKC)       , intent(in)    , contiguous                :: meang(:)
-        real(TKC)       , intent(out)   , contiguous                :: mean(:)
-        real(TKC)       , intent(out)   , contiguous                :: var(:)
+        real(TKG)       , intent(in)    , contiguous                :: sample(:,:)
+        real(TKG)       , intent(in)    , contiguous                :: meang(:)
+        real(TKG)       , intent(out)   , contiguous                :: mean(:)
+        real(TKG)       , intent(out)   , contiguous                :: var(:)
     end subroutine
 #endif
 
@@ -8050,14 +8050,14 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanDIM_WTISD_D2_RK1
 #endif
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
         integer(IK)     , intent(in)                                :: dim
         integer(IK)     , intent(out)                               :: weisum
         integer(IK)     , intent(in)    , contiguous                :: weight(:)
-        real(TKC)       , intent(in)    , contiguous                :: sample(:,:)
-        real(TKC)       , intent(in)    , contiguous                :: meang(:)
-        real(TKC)       , intent(out)   , contiguous                :: mean(:)
-        real(TKC)       , intent(out)   , contiguous                :: var(:)
+        real(TKG)       , intent(in)    , contiguous                :: sample(:,:)
+        real(TKG)       , intent(in)    , contiguous                :: meang(:)
+        real(TKG)       , intent(out)   , contiguous                :: mean(:)
+        real(TKG)       , intent(out)   , contiguous                :: var(:)
     end subroutine
 #endif
 
@@ -8074,14 +8074,14 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanDIM_WTRSD_D2_CK5
 #endif
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
         integer(IK)     , intent(in)                                :: dim
-        real(TKC)       , intent(out)                               :: weisum
-        real(TKC)       , intent(in)    , contiguous                :: weight(:)
-        complex(TKC)    , intent(in)    , contiguous                :: sample(:,:)
-        complex(TKC)    , intent(in)    , contiguous                :: meang(:)
-        complex(TKC)    , intent(out)   , contiguous                :: mean(:)
-        real(TKC)       , intent(out)   , contiguous                :: var(:)
+        real(TKG)       , intent(out)                               :: weisum
+        real(TKG)       , intent(in)    , contiguous                :: weight(:)
+        complex(TKG)    , intent(in)    , contiguous                :: sample(:,:)
+        complex(TKG)    , intent(in)    , contiguous                :: meang(:)
+        complex(TKG)    , intent(out)   , contiguous                :: mean(:)
+        real(TKG)       , intent(out)   , contiguous                :: var(:)
     end subroutine
 #endif
 
@@ -8090,14 +8090,14 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanDIM_WTRSD_D2_CK4
 #endif
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
         integer(IK)     , intent(in)                                :: dim
-        real(TKC)       , intent(out)                               :: weisum
-        real(TKC)       , intent(in)    , contiguous                :: weight(:)
-        complex(TKC)    , intent(in)    , contiguous                :: sample(:,:)
-        complex(TKC)    , intent(in)    , contiguous                :: meang(:)
-        complex(TKC)    , intent(out)   , contiguous                :: mean(:)
-        real(TKC)       , intent(out)   , contiguous                :: var(:)
+        real(TKG)       , intent(out)                               :: weisum
+        real(TKG)       , intent(in)    , contiguous                :: weight(:)
+        complex(TKG)    , intent(in)    , contiguous                :: sample(:,:)
+        complex(TKG)    , intent(in)    , contiguous                :: meang(:)
+        complex(TKG)    , intent(out)   , contiguous                :: mean(:)
+        real(TKG)       , intent(out)   , contiguous                :: var(:)
     end subroutine
 #endif
 
@@ -8106,14 +8106,14 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanDIM_WTRSD_D2_CK3
 #endif
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
         integer(IK)     , intent(in)                                :: dim
-        real(TKC)       , intent(out)                               :: weisum
-        real(TKC)       , intent(in)    , contiguous                :: weight(:)
-        complex(TKC)    , intent(in)    , contiguous                :: sample(:,:)
-        complex(TKC)    , intent(in)    , contiguous                :: meang(:)
-        complex(TKC)    , intent(out)   , contiguous                :: mean(:)
-        real(TKC)       , intent(out)   , contiguous                :: var(:)
+        real(TKG)       , intent(out)                               :: weisum
+        real(TKG)       , intent(in)    , contiguous                :: weight(:)
+        complex(TKG)    , intent(in)    , contiguous                :: sample(:,:)
+        complex(TKG)    , intent(in)    , contiguous                :: meang(:)
+        complex(TKG)    , intent(out)   , contiguous                :: mean(:)
+        real(TKG)       , intent(out)   , contiguous                :: var(:)
     end subroutine
 #endif
 
@@ -8122,14 +8122,14 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanDIM_WTRSD_D2_CK2
 #endif
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
         integer(IK)     , intent(in)                                :: dim
-        real(TKC)       , intent(out)                               :: weisum
-        real(TKC)       , intent(in)    , contiguous                :: weight(:)
-        complex(TKC)    , intent(in)    , contiguous                :: sample(:,:)
-        complex(TKC)    , intent(in)    , contiguous                :: meang(:)
-        complex(TKC)    , intent(out)   , contiguous                :: mean(:)
-        real(TKC)       , intent(out)   , contiguous                :: var(:)
+        real(TKG)       , intent(out)                               :: weisum
+        real(TKG)       , intent(in)    , contiguous                :: weight(:)
+        complex(TKG)    , intent(in)    , contiguous                :: sample(:,:)
+        complex(TKG)    , intent(in)    , contiguous                :: meang(:)
+        complex(TKG)    , intent(out)   , contiguous                :: mean(:)
+        real(TKG)       , intent(out)   , contiguous                :: var(:)
     end subroutine
 #endif
 
@@ -8138,14 +8138,14 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanDIM_WTRSD_D2_CK1
 #endif
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
         integer(IK)     , intent(in)                                :: dim
-        real(TKC)       , intent(out)                               :: weisum
-        real(TKC)       , intent(in)    , contiguous                :: weight(:)
-        complex(TKC)    , intent(in)    , contiguous                :: sample(:,:)
-        complex(TKC)    , intent(in)    , contiguous                :: meang(:)
-        complex(TKC)    , intent(out)   , contiguous                :: mean(:)
-        real(TKC)       , intent(out)   , contiguous                :: var(:)
+        real(TKG)       , intent(out)                               :: weisum
+        real(TKG)       , intent(in)    , contiguous                :: weight(:)
+        complex(TKG)    , intent(in)    , contiguous                :: sample(:,:)
+        complex(TKG)    , intent(in)    , contiguous                :: meang(:)
+        complex(TKG)    , intent(out)   , contiguous                :: mean(:)
+        real(TKG)       , intent(out)   , contiguous                :: var(:)
     end subroutine
 #endif
 
@@ -8156,14 +8156,14 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanDIM_WTRSD_D2_RK5
 #endif
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
         integer(IK)     , intent(in)                                :: dim
-        real(TKC)       , intent(out)                               :: weisum
-        real(TKC)       , intent(in)    , contiguous                :: weight(:)
-        real(TKC)       , intent(in)    , contiguous                :: sample(:,:)
-        real(TKC)       , intent(in)    , contiguous                :: meang(:)
-        real(TKC)       , intent(out)   , contiguous                :: mean(:)
-        real(TKC)       , intent(out)   , contiguous                :: var(:)
+        real(TKG)       , intent(out)                               :: weisum
+        real(TKG)       , intent(in)    , contiguous                :: weight(:)
+        real(TKG)       , intent(in)    , contiguous                :: sample(:,:)
+        real(TKG)       , intent(in)    , contiguous                :: meang(:)
+        real(TKG)       , intent(out)   , contiguous                :: mean(:)
+        real(TKG)       , intent(out)   , contiguous                :: var(:)
     end subroutine
 #endif
 
@@ -8172,14 +8172,14 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanDIM_WTRSD_D2_RK4
 #endif
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
         integer(IK)     , intent(in)                                :: dim
-        real(TKC)       , intent(out)                               :: weisum
-        real(TKC)       , intent(in)    , contiguous                :: weight(:)
-        real(TKC)       , intent(in)    , contiguous                :: sample(:,:)
-        real(TKC)       , intent(in)    , contiguous                :: meang(:)
-        real(TKC)       , intent(out)   , contiguous                :: mean(:)
-        real(TKC)       , intent(out)   , contiguous                :: var(:)
+        real(TKG)       , intent(out)                               :: weisum
+        real(TKG)       , intent(in)    , contiguous                :: weight(:)
+        real(TKG)       , intent(in)    , contiguous                :: sample(:,:)
+        real(TKG)       , intent(in)    , contiguous                :: meang(:)
+        real(TKG)       , intent(out)   , contiguous                :: mean(:)
+        real(TKG)       , intent(out)   , contiguous                :: var(:)
     end subroutine
 #endif
 
@@ -8188,14 +8188,14 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanDIM_WTRSD_D2_RK3
 #endif
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
         integer(IK)     , intent(in)                                :: dim
-        real(TKC)       , intent(out)                               :: weisum
-        real(TKC)       , intent(in)    , contiguous                :: weight(:)
-        real(TKC)       , intent(in)    , contiguous                :: sample(:,:)
-        real(TKC)       , intent(in)    , contiguous                :: meang(:)
-        real(TKC)       , intent(out)   , contiguous                :: mean(:)
-        real(TKC)       , intent(out)   , contiguous                :: var(:)
+        real(TKG)       , intent(out)                               :: weisum
+        real(TKG)       , intent(in)    , contiguous                :: weight(:)
+        real(TKG)       , intent(in)    , contiguous                :: sample(:,:)
+        real(TKG)       , intent(in)    , contiguous                :: meang(:)
+        real(TKG)       , intent(out)   , contiguous                :: mean(:)
+        real(TKG)       , intent(out)   , contiguous                :: var(:)
     end subroutine
 #endif
 
@@ -8204,14 +8204,14 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanDIM_WTRSD_D2_RK2
 #endif
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
         integer(IK)     , intent(in)                                :: dim
-        real(TKC)       , intent(out)                               :: weisum
-        real(TKC)       , intent(in)    , contiguous                :: weight(:)
-        real(TKC)       , intent(in)    , contiguous                :: sample(:,:)
-        real(TKC)       , intent(in)    , contiguous                :: meang(:)
-        real(TKC)       , intent(out)   , contiguous                :: mean(:)
-        real(TKC)       , intent(out)   , contiguous                :: var(:)
+        real(TKG)       , intent(out)                               :: weisum
+        real(TKG)       , intent(in)    , contiguous                :: weight(:)
+        real(TKG)       , intent(in)    , contiguous                :: sample(:,:)
+        real(TKG)       , intent(in)    , contiguous                :: meang(:)
+        real(TKG)       , intent(out)   , contiguous                :: mean(:)
+        real(TKG)       , intent(out)   , contiguous                :: var(:)
     end subroutine
 #endif
 
@@ -8220,14 +8220,14 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanDIM_WTRSD_D2_RK1
 #endif
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
         integer(IK)     , intent(in)                                :: dim
-        real(TKC)       , intent(out)                               :: weisum
-        real(TKC)       , intent(in)    , contiguous                :: weight(:)
-        real(TKC)       , intent(in)    , contiguous                :: sample(:,:)
-        real(TKC)       , intent(in)    , contiguous                :: meang(:)
-        real(TKC)       , intent(out)   , contiguous                :: mean(:)
-        real(TKC)       , intent(out)   , contiguous                :: var(:)
+        real(TKG)       , intent(out)                               :: weisum
+        real(TKG)       , intent(in)    , contiguous                :: weight(:)
+        real(TKG)       , intent(in)    , contiguous                :: sample(:,:)
+        real(TKG)       , intent(in)    , contiguous                :: meang(:)
+        real(TKG)       , intent(out)   , contiguous                :: mean(:)
+        real(TKG)       , intent(out)   , contiguous                :: var(:)
     end subroutine
 #endif
 
@@ -8336,11 +8336,11 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getVarMergedNew_D0_CK5
 #endif
-        use pm_kind, only: TKC => CK5
-        real(TKC)       , intent(in)                                :: fracA
-        complex(TKC)    , intent(in)                                :: meanDiff
-        real(TKC)       , intent(in)                                :: varB, varA
-        real(TKC)                                                   :: varMerged
+        use pm_kind, only: TKG => CK5
+        real(TKG)       , intent(in)                                :: fracA
+        complex(TKG)    , intent(in)                                :: meanDiff
+        real(TKG)       , intent(in)                                :: varB, varA
+        real(TKG)                                                   :: varMerged
     end function
 #endif
 
@@ -8349,11 +8349,11 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getVarMergedNew_D0_CK4
 #endif
-        use pm_kind, only: TKC => CK4
-        real(TKC)       , intent(in)                                :: fracA
-        complex(TKC)    , intent(in)                                :: meanDiff
-        real(TKC)       , intent(in)                                :: varB, varA
-        real(TKC)                                                   :: varMerged
+        use pm_kind, only: TKG => CK4
+        real(TKG)       , intent(in)                                :: fracA
+        complex(TKG)    , intent(in)                                :: meanDiff
+        real(TKG)       , intent(in)                                :: varB, varA
+        real(TKG)                                                   :: varMerged
     end function
 #endif
 
@@ -8362,11 +8362,11 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getVarMergedNew_D0_CK3
 #endif
-        use pm_kind, only: TKC => CK3
-        real(TKC)       , intent(in)                                :: fracA
-        complex(TKC)    , intent(in)                                :: meanDiff
-        real(TKC)       , intent(in)                                :: varB, varA
-        real(TKC)                                                   :: varMerged
+        use pm_kind, only: TKG => CK3
+        real(TKG)       , intent(in)                                :: fracA
+        complex(TKG)    , intent(in)                                :: meanDiff
+        real(TKG)       , intent(in)                                :: varB, varA
+        real(TKG)                                                   :: varMerged
     end function
 #endif
 
@@ -8375,11 +8375,11 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getVarMergedNew_D0_CK2
 #endif
-        use pm_kind, only: TKC => CK2
-        real(TKC)       , intent(in)                                :: fracA
-        complex(TKC)    , intent(in)                                :: meanDiff
-        real(TKC)       , intent(in)                                :: varB, varA
-        real(TKC)                                                   :: varMerged
+        use pm_kind, only: TKG => CK2
+        real(TKG)       , intent(in)                                :: fracA
+        complex(TKG)    , intent(in)                                :: meanDiff
+        real(TKG)       , intent(in)                                :: varB, varA
+        real(TKG)                                                   :: varMerged
     end function
 #endif
 
@@ -8388,11 +8388,11 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getVarMergedNew_D0_CK1
 #endif
-        use pm_kind, only: TKC => CK1
-        real(TKC)       , intent(in)                                :: fracA
-        complex(TKC)    , intent(in)                                :: meanDiff
-        real(TKC)       , intent(in)                                :: varB, varA
-        real(TKC)                                                   :: varMerged
+        use pm_kind, only: TKG => CK1
+        real(TKG)       , intent(in)                                :: fracA
+        complex(TKG)    , intent(in)                                :: meanDiff
+        real(TKG)       , intent(in)                                :: varB, varA
+        real(TKG)                                                   :: varMerged
     end function
 #endif
 
@@ -8403,11 +8403,11 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getVarMergedNew_D0_RK5
 #endif
-        use pm_kind, only: TKC => RK5
-        real(TKC)       , intent(in)                                :: fracA
-        real(TKC)       , intent(in)                                :: meanDiff
-        real(TKC)       , intent(in)                                :: varB, varA
-        real(TKC)                                                   :: varMerged
+        use pm_kind, only: TKG => RK5
+        real(TKG)       , intent(in)                                :: fracA
+        real(TKG)       , intent(in)                                :: meanDiff
+        real(TKG)       , intent(in)                                :: varB, varA
+        real(TKG)                                                   :: varMerged
     end function
 #endif
 
@@ -8416,11 +8416,11 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getVarMergedNew_D0_RK4
 #endif
-        use pm_kind, only: TKC => RK4
-        real(TKC)       , intent(in)                                :: fracA
-        real(TKC)       , intent(in)                                :: meanDiff
-        real(TKC)       , intent(in)                                :: varB, varA
-        real(TKC)                                                   :: varMerged
+        use pm_kind, only: TKG => RK4
+        real(TKG)       , intent(in)                                :: fracA
+        real(TKG)       , intent(in)                                :: meanDiff
+        real(TKG)       , intent(in)                                :: varB, varA
+        real(TKG)                                                   :: varMerged
     end function
 #endif
 
@@ -8429,11 +8429,11 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getVarMergedNew_D0_RK3
 #endif
-        use pm_kind, only: TKC => RK3
-        real(TKC)       , intent(in)                                :: fracA
-        real(TKC)       , intent(in)                                :: meanDiff
-        real(TKC)       , intent(in)                                :: varB, varA
-        real(TKC)                                                   :: varMerged
+        use pm_kind, only: TKG => RK3
+        real(TKG)       , intent(in)                                :: fracA
+        real(TKG)       , intent(in)                                :: meanDiff
+        real(TKG)       , intent(in)                                :: varB, varA
+        real(TKG)                                                   :: varMerged
     end function
 #endif
 
@@ -8442,11 +8442,11 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getVarMergedNew_D0_RK2
 #endif
-        use pm_kind, only: TKC => RK2
-        real(TKC)       , intent(in)                                :: fracA
-        real(TKC)       , intent(in)                                :: meanDiff
-        real(TKC)       , intent(in)                                :: varB, varA
-        real(TKC)                                                   :: varMerged
+        use pm_kind, only: TKG => RK2
+        real(TKG)       , intent(in)                                :: fracA
+        real(TKG)       , intent(in)                                :: meanDiff
+        real(TKG)       , intent(in)                                :: varB, varA
+        real(TKG)                                                   :: varMerged
     end function
 #endif
 
@@ -8455,11 +8455,11 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getVarMergedNew_D0_RK1
 #endif
-        use pm_kind, only: TKC => RK1
-        real(TKC)       , intent(in)                                :: fracA
-        real(TKC)       , intent(in)                                :: meanDiff
-        real(TKC)       , intent(in)                                :: varB, varA
-        real(TKC)                                                   :: varMerged
+        use pm_kind, only: TKG => RK1
+        real(TKG)       , intent(in)                                :: fracA
+        real(TKG)       , intent(in)                                :: meanDiff
+        real(TKG)       , intent(in)                                :: varB, varA
+        real(TKG)                                                   :: varMerged
     end function
 #endif
 
@@ -8478,11 +8478,11 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getVarMergedNew_D1_CK5
 #endif
-        use pm_kind, only: TKC => CK5
-        real(TKC)       , intent(in)                                :: fracA
-        complex(TKC)    , intent(in)    , contiguous                :: meanDiff(:)
-        real(TKC)       , intent(in)    , contiguous                :: varB(:), varA(:)
-        real(TKC)                                                   :: varMerged(size(meanDiff, 1, IK))
+        use pm_kind, only: TKG => CK5
+        real(TKG)       , intent(in)                                :: fracA
+        complex(TKG)    , intent(in)    , contiguous                :: meanDiff(:)
+        real(TKG)       , intent(in)    , contiguous                :: varB(:), varA(:)
+        real(TKG)                                                   :: varMerged(size(meanDiff, 1, IK))
     end function
 #endif
 
@@ -8491,11 +8491,11 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getVarMergedNew_D1_CK4
 #endif
-        use pm_kind, only: TKC => CK4
-        real(TKC)       , intent(in)                                :: fracA
-        complex(TKC)    , intent(in)    , contiguous                :: meanDiff(:)
-        real(TKC)       , intent(in)    , contiguous                :: varB(:), varA(:)
-        real(TKC)                                                   :: varMerged(size(meanDiff, 1, IK))
+        use pm_kind, only: TKG => CK4
+        real(TKG)       , intent(in)                                :: fracA
+        complex(TKG)    , intent(in)    , contiguous                :: meanDiff(:)
+        real(TKG)       , intent(in)    , contiguous                :: varB(:), varA(:)
+        real(TKG)                                                   :: varMerged(size(meanDiff, 1, IK))
     end function
 #endif
 
@@ -8504,11 +8504,11 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getVarMergedNew_D1_CK3
 #endif
-        use pm_kind, only: TKC => CK3
-        real(TKC)       , intent(in)                                :: fracA
-        complex(TKC)    , intent(in)    , contiguous                :: meanDiff(:)
-        real(TKC)       , intent(in)    , contiguous                :: varB(:), varA(:)
-        real(TKC)                                                   :: varMerged(size(meanDiff, 1, IK))
+        use pm_kind, only: TKG => CK3
+        real(TKG)       , intent(in)                                :: fracA
+        complex(TKG)    , intent(in)    , contiguous                :: meanDiff(:)
+        real(TKG)       , intent(in)    , contiguous                :: varB(:), varA(:)
+        real(TKG)                                                   :: varMerged(size(meanDiff, 1, IK))
     end function
 #endif
 
@@ -8517,11 +8517,11 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getVarMergedNew_D1_CK2
 #endif
-        use pm_kind, only: TKC => CK2
-        real(TKC)       , intent(in)                                :: fracA
-        complex(TKC)    , intent(in)    , contiguous                :: meanDiff(:)
-        real(TKC)       , intent(in)    , contiguous                :: varB(:), varA(:)
-        real(TKC)                                                   :: varMerged(size(meanDiff, 1, IK))
+        use pm_kind, only: TKG => CK2
+        real(TKG)       , intent(in)                                :: fracA
+        complex(TKG)    , intent(in)    , contiguous                :: meanDiff(:)
+        real(TKG)       , intent(in)    , contiguous                :: varB(:), varA(:)
+        real(TKG)                                                   :: varMerged(size(meanDiff, 1, IK))
     end function
 #endif
 
@@ -8530,11 +8530,11 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getVarMergedNew_D1_CK1
 #endif
-        use pm_kind, only: TKC => CK1
-        real(TKC)       , intent(in)                                :: fracA
-        complex(TKC)    , intent(in)    , contiguous                :: meanDiff(:)
-        real(TKC)       , intent(in)    , contiguous                :: varB(:), varA(:)
-        real(TKC)                                                   :: varMerged(size(meanDiff, 1, IK))
+        use pm_kind, only: TKG => CK1
+        real(TKG)       , intent(in)                                :: fracA
+        complex(TKG)    , intent(in)    , contiguous                :: meanDiff(:)
+        real(TKG)       , intent(in)    , contiguous                :: varB(:), varA(:)
+        real(TKG)                                                   :: varMerged(size(meanDiff, 1, IK))
     end function
 #endif
 
@@ -8545,11 +8545,11 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getVarMergedNew_D1_RK5
 #endif
-        use pm_kind, only: TKC => RK5
-        real(TKC)       , intent(in)                                :: fracA
-        real(TKC)       , intent(in)    , contiguous                :: meanDiff(:)
-        real(TKC)       , intent(in)    , contiguous                :: varB(:), varA(:)
-        real(TKC)                                                   :: varMerged(size(meanDiff, 1, IK))
+        use pm_kind, only: TKG => RK5
+        real(TKG)       , intent(in)                                :: fracA
+        real(TKG)       , intent(in)    , contiguous                :: meanDiff(:)
+        real(TKG)       , intent(in)    , contiguous                :: varB(:), varA(:)
+        real(TKG)                                                   :: varMerged(size(meanDiff, 1, IK))
     end function
 #endif
 
@@ -8558,11 +8558,11 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getVarMergedNew_D1_RK4
 #endif
-        use pm_kind, only: TKC => RK4
-        real(TKC)       , intent(in)                                :: fracA
-        real(TKC)       , intent(in)    , contiguous                :: meanDiff(:)
-        real(TKC)       , intent(in)    , contiguous                :: varB(:), varA(:)
-        real(TKC)                                                   :: varMerged(size(meanDiff, 1, IK))
+        use pm_kind, only: TKG => RK4
+        real(TKG)       , intent(in)                                :: fracA
+        real(TKG)       , intent(in)    , contiguous                :: meanDiff(:)
+        real(TKG)       , intent(in)    , contiguous                :: varB(:), varA(:)
+        real(TKG)                                                   :: varMerged(size(meanDiff, 1, IK))
     end function
 #endif
 
@@ -8571,11 +8571,11 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getVarMergedNew_D1_RK3
 #endif
-        use pm_kind, only: TKC => RK3
-        real(TKC)       , intent(in)                                :: fracA
-        real(TKC)       , intent(in)    , contiguous                :: meanDiff(:)
-        real(TKC)       , intent(in)    , contiguous                :: varB(:), varA(:)
-        real(TKC)                                                   :: varMerged(size(meanDiff, 1, IK))
+        use pm_kind, only: TKG => RK3
+        real(TKG)       , intent(in)                                :: fracA
+        real(TKG)       , intent(in)    , contiguous                :: meanDiff(:)
+        real(TKG)       , intent(in)    , contiguous                :: varB(:), varA(:)
+        real(TKG)                                                   :: varMerged(size(meanDiff, 1, IK))
     end function
 #endif
 
@@ -8584,11 +8584,11 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getVarMergedNew_D1_RK2
 #endif
-        use pm_kind, only: TKC => RK2
-        real(TKC)       , intent(in)                                :: fracA
-        real(TKC)       , intent(in)    , contiguous                :: meanDiff(:)
-        real(TKC)       , intent(in)    , contiguous                :: varB(:), varA(:)
-        real(TKC)                                                   :: varMerged(size(meanDiff, 1, IK))
+        use pm_kind, only: TKG => RK2
+        real(TKG)       , intent(in)                                :: fracA
+        real(TKG)       , intent(in)    , contiguous                :: meanDiff(:)
+        real(TKG)       , intent(in)    , contiguous                :: varB(:), varA(:)
+        real(TKG)                                                   :: varMerged(size(meanDiff, 1, IK))
     end function
 #endif
 
@@ -8597,11 +8597,11 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getVarMergedNew_D1_RK1
 #endif
-        use pm_kind, only: TKC => RK1
-        real(TKC)       , intent(in)                                :: fracA
-        real(TKC)       , intent(in)    , contiguous                :: meanDiff(:)
-        real(TKC)       , intent(in)    , contiguous                :: varB(:), varA(:)
-        real(TKC)                                                   :: varMerged(size(meanDiff, 1, IK))
+        use pm_kind, only: TKG => RK1
+        real(TKG)       , intent(in)                                :: fracA
+        real(TKG)       , intent(in)    , contiguous                :: meanDiff(:)
+        real(TKG)       , intent(in)    , contiguous                :: varB(:), varA(:)
+        real(TKG)                                                   :: varMerged(size(meanDiff, 1, IK))
     end function
 #endif
 
@@ -8711,11 +8711,11 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarMergedNew_D0_CK5
 #endif
-        use pm_kind, only: TKC => CK5
-        real(TKC)       , intent(in)                                :: fracA
-        complex(TKC)    , intent(in)                                :: meanDiff
-        real(TKC)       , intent(in)                                :: varB, varA
-        real(TKC)       , intent(out)                               :: varMerged
+        use pm_kind, only: TKG => CK5
+        real(TKG)       , intent(in)                                :: fracA
+        complex(TKG)    , intent(in)                                :: meanDiff
+        real(TKG)       , intent(in)                                :: varB, varA
+        real(TKG)       , intent(out)                               :: varMerged
     end subroutine
 #endif
 
@@ -8724,11 +8724,11 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarMergedNew_D0_CK4
 #endif
-        use pm_kind, only: TKC => CK4
-        real(TKC)       , intent(in)                                :: fracA
-        complex(TKC)    , intent(in)                                :: meanDiff
-        real(TKC)       , intent(in)                                :: varB, varA
-        real(TKC)       , intent(out)                               :: varMerged
+        use pm_kind, only: TKG => CK4
+        real(TKG)       , intent(in)                                :: fracA
+        complex(TKG)    , intent(in)                                :: meanDiff
+        real(TKG)       , intent(in)                                :: varB, varA
+        real(TKG)       , intent(out)                               :: varMerged
     end subroutine
 #endif
 
@@ -8737,11 +8737,11 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarMergedNew_D0_CK3
 #endif
-        use pm_kind, only: TKC => CK3
-        real(TKC)       , intent(in)                                :: fracA
-        complex(TKC)    , intent(in)                                :: meanDiff
-        real(TKC)       , intent(in)                                :: varB, varA
-        real(TKC)       , intent(out)                               :: varMerged
+        use pm_kind, only: TKG => CK3
+        real(TKG)       , intent(in)                                :: fracA
+        complex(TKG)    , intent(in)                                :: meanDiff
+        real(TKG)       , intent(in)                                :: varB, varA
+        real(TKG)       , intent(out)                               :: varMerged
     end subroutine
 #endif
 
@@ -8750,11 +8750,11 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarMergedNew_D0_CK2
 #endif
-        use pm_kind, only: TKC => CK2
-        real(TKC)       , intent(in)                                :: fracA
-        complex(TKC)    , intent(in)                                :: meanDiff
-        real(TKC)       , intent(in)                                :: varB, varA
-        real(TKC)       , intent(out)                               :: varMerged
+        use pm_kind, only: TKG => CK2
+        real(TKG)       , intent(in)                                :: fracA
+        complex(TKG)    , intent(in)                                :: meanDiff
+        real(TKG)       , intent(in)                                :: varB, varA
+        real(TKG)       , intent(out)                               :: varMerged
     end subroutine
 #endif
 
@@ -8763,11 +8763,11 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarMergedNew_D0_CK1
 #endif
-        use pm_kind, only: TKC => CK1
-        real(TKC)       , intent(in)                                :: fracA
-        complex(TKC)    , intent(in)                                :: meanDiff
-        real(TKC)       , intent(in)                                :: varB, varA
-        real(TKC)       , intent(out)                               :: varMerged
+        use pm_kind, only: TKG => CK1
+        real(TKG)       , intent(in)                                :: fracA
+        complex(TKG)    , intent(in)                                :: meanDiff
+        real(TKG)       , intent(in)                                :: varB, varA
+        real(TKG)       , intent(out)                               :: varMerged
     end subroutine
 #endif
 
@@ -8778,11 +8778,11 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarMergedNew_D0_RK5
 #endif
-        use pm_kind, only: TKC => RK5
-        real(TKC)       , intent(in)                                :: fracA
-        real(TKC)       , intent(in)                                :: meanDiff
-        real(TKC)       , intent(in)                                :: varB, varA
-        real(TKC)       , intent(out)                               :: varMerged
+        use pm_kind, only: TKG => RK5
+        real(TKG)       , intent(in)                                :: fracA
+        real(TKG)       , intent(in)                                :: meanDiff
+        real(TKG)       , intent(in)                                :: varB, varA
+        real(TKG)       , intent(out)                               :: varMerged
     end subroutine
 #endif
 
@@ -8791,11 +8791,11 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarMergedNew_D0_RK4
 #endif
-        use pm_kind, only: TKC => RK4
-        real(TKC)       , intent(in)                                :: fracA
-        real(TKC)       , intent(in)                                :: meanDiff
-        real(TKC)       , intent(in)                                :: varB, varA
-        real(TKC)       , intent(out)                               :: varMerged
+        use pm_kind, only: TKG => RK4
+        real(TKG)       , intent(in)                                :: fracA
+        real(TKG)       , intent(in)                                :: meanDiff
+        real(TKG)       , intent(in)                                :: varB, varA
+        real(TKG)       , intent(out)                               :: varMerged
     end subroutine
 #endif
 
@@ -8804,11 +8804,11 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarMergedNew_D0_RK3
 #endif
-        use pm_kind, only: TKC => RK3
-        real(TKC)       , intent(in)                                :: fracA
-        real(TKC)       , intent(in)                                :: meanDiff
-        real(TKC)       , intent(in)                                :: varB, varA
-        real(TKC)       , intent(out)                               :: varMerged
+        use pm_kind, only: TKG => RK3
+        real(TKG)       , intent(in)                                :: fracA
+        real(TKG)       , intent(in)                                :: meanDiff
+        real(TKG)       , intent(in)                                :: varB, varA
+        real(TKG)       , intent(out)                               :: varMerged
     end subroutine
 #endif
 
@@ -8817,11 +8817,11 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarMergedNew_D0_RK2
 #endif
-        use pm_kind, only: TKC => RK2
-        real(TKC)       , intent(in)                                :: fracA
-        real(TKC)       , intent(in)                                :: meanDiff
-        real(TKC)       , intent(in)                                :: varB, varA
-        real(TKC)       , intent(out)                               :: varMerged
+        use pm_kind, only: TKG => RK2
+        real(TKG)       , intent(in)                                :: fracA
+        real(TKG)       , intent(in)                                :: meanDiff
+        real(TKG)       , intent(in)                                :: varB, varA
+        real(TKG)       , intent(out)                               :: varMerged
     end subroutine
 #endif
 
@@ -8830,11 +8830,11 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarMergedNew_D0_RK1
 #endif
-        use pm_kind, only: TKC => RK1
-        real(TKC)       , intent(in)                                :: fracA
-        real(TKC)       , intent(in)                                :: meanDiff
-        real(TKC)       , intent(in)                                :: varB, varA
-        real(TKC)       , intent(out)                               :: varMerged
+        use pm_kind, only: TKG => RK1
+        real(TKG)       , intent(in)                                :: fracA
+        real(TKG)       , intent(in)                                :: meanDiff
+        real(TKG)       , intent(in)                                :: varB, varA
+        real(TKG)       , intent(out)                               :: varMerged
     end subroutine
 #endif
 
@@ -8853,11 +8853,11 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarMergedNew_D1_CK5
 #endif
-        use pm_kind, only: TKC => CK5
-        real(TKC)       , intent(in)                                :: fracA
-        complex(TKC)    , intent(in)    , contiguous                :: meanDiff(:)
-        real(TKC)       , intent(in)    , contiguous                :: varB(:), varA(:)
-        real(TKC)       , intent(out)   , contiguous                :: varMerged(:)
+        use pm_kind, only: TKG => CK5
+        real(TKG)       , intent(in)                                :: fracA
+        complex(TKG)    , intent(in)    , contiguous                :: meanDiff(:)
+        real(TKG)       , intent(in)    , contiguous                :: varB(:), varA(:)
+        real(TKG)       , intent(out)   , contiguous                :: varMerged(:)
     end subroutine
 #endif
 
@@ -8866,11 +8866,11 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarMergedNew_D1_CK4
 #endif
-        use pm_kind, only: TKC => CK4
-        real(TKC)       , intent(in)                                :: fracA
-        complex(TKC)    , intent(in)    , contiguous                :: meanDiff(:)
-        real(TKC)       , intent(in)    , contiguous                :: varB(:), varA(:)
-        real(TKC)       , intent(out)   , contiguous                :: varMerged(:)
+        use pm_kind, only: TKG => CK4
+        real(TKG)       , intent(in)                                :: fracA
+        complex(TKG)    , intent(in)    , contiguous                :: meanDiff(:)
+        real(TKG)       , intent(in)    , contiguous                :: varB(:), varA(:)
+        real(TKG)       , intent(out)   , contiguous                :: varMerged(:)
     end subroutine
 #endif
 
@@ -8879,11 +8879,11 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarMergedNew_D1_CK3
 #endif
-        use pm_kind, only: TKC => CK3
-        real(TKC)       , intent(in)                                :: fracA
-        complex(TKC)    , intent(in)    , contiguous                :: meanDiff(:)
-        real(TKC)       , intent(in)    , contiguous                :: varB(:), varA(:)
-        real(TKC)       , intent(out)   , contiguous                :: varMerged(:)
+        use pm_kind, only: TKG => CK3
+        real(TKG)       , intent(in)                                :: fracA
+        complex(TKG)    , intent(in)    , contiguous                :: meanDiff(:)
+        real(TKG)       , intent(in)    , contiguous                :: varB(:), varA(:)
+        real(TKG)       , intent(out)   , contiguous                :: varMerged(:)
     end subroutine
 #endif
 
@@ -8892,11 +8892,11 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarMergedNew_D1_CK2
 #endif
-        use pm_kind, only: TKC => CK2
-        real(TKC)       , intent(in)                                :: fracA
-        complex(TKC)    , intent(in)    , contiguous                :: meanDiff(:)
-        real(TKC)       , intent(in)    , contiguous                :: varB(:), varA(:)
-        real(TKC)       , intent(out)   , contiguous                :: varMerged(:)
+        use pm_kind, only: TKG => CK2
+        real(TKG)       , intent(in)                                :: fracA
+        complex(TKG)    , intent(in)    , contiguous                :: meanDiff(:)
+        real(TKG)       , intent(in)    , contiguous                :: varB(:), varA(:)
+        real(TKG)       , intent(out)   , contiguous                :: varMerged(:)
     end subroutine
 #endif
 
@@ -8905,11 +8905,11 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarMergedNew_D1_CK1
 #endif
-        use pm_kind, only: TKC => CK1
-        real(TKC)       , intent(in)                                :: fracA
-        complex(TKC)    , intent(in)    , contiguous                :: meanDiff(:)
-        real(TKC)       , intent(in)    , contiguous                :: varB(:), varA(:)
-        real(TKC)       , intent(out)   , contiguous                :: varMerged(:)
+        use pm_kind, only: TKG => CK1
+        real(TKG)       , intent(in)                                :: fracA
+        complex(TKG)    , intent(in)    , contiguous                :: meanDiff(:)
+        real(TKG)       , intent(in)    , contiguous                :: varB(:), varA(:)
+        real(TKG)       , intent(out)   , contiguous                :: varMerged(:)
     end subroutine
 #endif
 
@@ -8920,11 +8920,11 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarMergedNew_D1_RK5
 #endif
-        use pm_kind, only: TKC => RK5
-        real(TKC)       , intent(in)                                :: fracA
-        real(TKC)       , intent(in)    , contiguous                :: meanDiff(:)
-        real(TKC)       , intent(in)    , contiguous                :: varB(:), varA(:)
-        real(TKC)       , intent(out)   , contiguous                :: varMerged(:)
+        use pm_kind, only: TKG => RK5
+        real(TKG)       , intent(in)                                :: fracA
+        real(TKG)       , intent(in)    , contiguous                :: meanDiff(:)
+        real(TKG)       , intent(in)    , contiguous                :: varB(:), varA(:)
+        real(TKG)       , intent(out)   , contiguous                :: varMerged(:)
     end subroutine
 #endif
 
@@ -8933,11 +8933,11 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarMergedNew_D1_RK4
 #endif
-        use pm_kind, only: TKC => RK4
-        real(TKC)       , intent(in)                                :: fracA
-        real(TKC)       , intent(in)    , contiguous                :: meanDiff(:)
-        real(TKC)       , intent(in)    , contiguous                :: varB(:), varA(:)
-        real(TKC)       , intent(out)   , contiguous                :: varMerged(:)
+        use pm_kind, only: TKG => RK4
+        real(TKG)       , intent(in)                                :: fracA
+        real(TKG)       , intent(in)    , contiguous                :: meanDiff(:)
+        real(TKG)       , intent(in)    , contiguous                :: varB(:), varA(:)
+        real(TKG)       , intent(out)   , contiguous                :: varMerged(:)
     end subroutine
 #endif
 
@@ -8946,11 +8946,11 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarMergedNew_D1_RK3
 #endif
-        use pm_kind, only: TKC => RK3
-        real(TKC)       , intent(in)                                :: fracA
-        real(TKC)       , intent(in)    , contiguous                :: meanDiff(:)
-        real(TKC)       , intent(in)    , contiguous                :: varB(:), varA(:)
-        real(TKC)       , intent(out)   , contiguous                :: varMerged(:)
+        use pm_kind, only: TKG => RK3
+        real(TKG)       , intent(in)                                :: fracA
+        real(TKG)       , intent(in)    , contiguous                :: meanDiff(:)
+        real(TKG)       , intent(in)    , contiguous                :: varB(:), varA(:)
+        real(TKG)       , intent(out)   , contiguous                :: varMerged(:)
     end subroutine
 #endif
 
@@ -8959,11 +8959,11 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarMergedNew_D1_RK2
 #endif
-        use pm_kind, only: TKC => RK2
-        real(TKC)       , intent(in)                                :: fracA
-        real(TKC)       , intent(in)    , contiguous                :: meanDiff(:)
-        real(TKC)       , intent(in)    , contiguous                :: varB(:), varA(:)
-        real(TKC)       , intent(out)   , contiguous                :: varMerged(:)
+        use pm_kind, only: TKG => RK2
+        real(TKG)       , intent(in)                                :: fracA
+        real(TKG)       , intent(in)    , contiguous                :: meanDiff(:)
+        real(TKG)       , intent(in)    , contiguous                :: varB(:), varA(:)
+        real(TKG)       , intent(out)   , contiguous                :: varMerged(:)
     end subroutine
 #endif
 
@@ -8972,11 +8972,11 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarMergedNew_D1_RK1
 #endif
-        use pm_kind, only: TKC => RK1
-        real(TKC)       , intent(in)                                :: fracA
-        real(TKC)       , intent(in)    , contiguous                :: meanDiff(:)
-        real(TKC)       , intent(in)    , contiguous                :: varB(:), varA(:)
-        real(TKC)       , intent(out)   , contiguous                :: varMerged(:)
+        use pm_kind, only: TKG => RK1
+        real(TKG)       , intent(in)                                :: fracA
+        real(TKG)       , intent(in)    , contiguous                :: meanDiff(:)
+        real(TKG)       , intent(in)    , contiguous                :: varB(:), varA(:)
+        real(TKG)       , intent(out)   , contiguous                :: varMerged(:)
     end subroutine
 #endif
 
@@ -8995,11 +8995,11 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarMergedOld_D0_CK5
 #endif
-        use pm_kind, only: TKC => CK5
-        real(TKC)       , intent(inout)                             :: varB
-        real(TKC)       , intent(in)                                :: varA
-        complex(TKC)    , intent(in)                                :: meanDiff
-        real(TKC)       , intent(in)                                :: fracA
+        use pm_kind, only: TKG => CK5
+        real(TKG)       , intent(inout)                             :: varB
+        real(TKG)       , intent(in)                                :: varA
+        complex(TKG)    , intent(in)                                :: meanDiff
+        real(TKG)       , intent(in)                                :: fracA
     end subroutine
 #endif
 
@@ -9008,11 +9008,11 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarMergedOld_D0_CK4
 #endif
-        use pm_kind, only: TKC => CK4
-        real(TKC)       , intent(inout)                             :: varB
-        real(TKC)       , intent(in)                                :: varA
-        complex(TKC)    , intent(in)                                :: meanDiff
-        real(TKC)       , intent(in)                                :: fracA
+        use pm_kind, only: TKG => CK4
+        real(TKG)       , intent(inout)                             :: varB
+        real(TKG)       , intent(in)                                :: varA
+        complex(TKG)    , intent(in)                                :: meanDiff
+        real(TKG)       , intent(in)                                :: fracA
     end subroutine
 #endif
 
@@ -9021,11 +9021,11 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarMergedOld_D0_CK3
 #endif
-        use pm_kind, only: TKC => CK3
-        real(TKC)       , intent(inout)                             :: varB
-        real(TKC)       , intent(in)                                :: varA
-        complex(TKC)    , intent(in)                                :: meanDiff
-        real(TKC)       , intent(in)                                :: fracA
+        use pm_kind, only: TKG => CK3
+        real(TKG)       , intent(inout)                             :: varB
+        real(TKG)       , intent(in)                                :: varA
+        complex(TKG)    , intent(in)                                :: meanDiff
+        real(TKG)       , intent(in)                                :: fracA
     end subroutine
 #endif
 
@@ -9034,11 +9034,11 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarMergedOld_D0_CK2
 #endif
-        use pm_kind, only: TKC => CK2
-        real(TKC)       , intent(inout)                             :: varB
-        real(TKC)       , intent(in)                                :: varA
-        complex(TKC)    , intent(in)                                :: meanDiff
-        real(TKC)       , intent(in)                                :: fracA
+        use pm_kind, only: TKG => CK2
+        real(TKG)       , intent(inout)                             :: varB
+        real(TKG)       , intent(in)                                :: varA
+        complex(TKG)    , intent(in)                                :: meanDiff
+        real(TKG)       , intent(in)                                :: fracA
     end subroutine
 #endif
 
@@ -9047,11 +9047,11 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarMergedOld_D0_CK1
 #endif
-        use pm_kind, only: TKC => CK1
-        real(TKC)       , intent(inout)                             :: varB
-        real(TKC)       , intent(in)                                :: varA
-        complex(TKC)    , intent(in)                                :: meanDiff
-        real(TKC)       , intent(in)                                :: fracA
+        use pm_kind, only: TKG => CK1
+        real(TKG)       , intent(inout)                             :: varB
+        real(TKG)       , intent(in)                                :: varA
+        complex(TKG)    , intent(in)                                :: meanDiff
+        real(TKG)       , intent(in)                                :: fracA
     end subroutine
 #endif
 
@@ -9062,11 +9062,11 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarMergedOld_D0_RK5
 #endif
-        use pm_kind, only: TKC => RK5
-        real(TKC)       , intent(inout)                             :: varB
-        real(TKC)       , intent(in)                                :: varA
-        real(TKC)       , intent(in)                                :: meanDiff
-        real(TKC)       , intent(in)                                :: fracA
+        use pm_kind, only: TKG => RK5
+        real(TKG)       , intent(inout)                             :: varB
+        real(TKG)       , intent(in)                                :: varA
+        real(TKG)       , intent(in)                                :: meanDiff
+        real(TKG)       , intent(in)                                :: fracA
     end subroutine
 #endif
 
@@ -9075,11 +9075,11 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarMergedOld_D0_RK4
 #endif
-        use pm_kind, only: TKC => RK4
-        real(TKC)       , intent(inout)                             :: varB
-        real(TKC)       , intent(in)                                :: varA
-        real(TKC)       , intent(in)                                :: meanDiff
-        real(TKC)       , intent(in)                                :: fracA
+        use pm_kind, only: TKG => RK4
+        real(TKG)       , intent(inout)                             :: varB
+        real(TKG)       , intent(in)                                :: varA
+        real(TKG)       , intent(in)                                :: meanDiff
+        real(TKG)       , intent(in)                                :: fracA
     end subroutine
 #endif
 
@@ -9088,11 +9088,11 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarMergedOld_D0_RK3
 #endif
-        use pm_kind, only: TKC => RK3
-        real(TKC)       , intent(inout)                             :: varB
-        real(TKC)       , intent(in)                                :: varA
-        real(TKC)       , intent(in)                                :: meanDiff
-        real(TKC)       , intent(in)                                :: fracA
+        use pm_kind, only: TKG => RK3
+        real(TKG)       , intent(inout)                             :: varB
+        real(TKG)       , intent(in)                                :: varA
+        real(TKG)       , intent(in)                                :: meanDiff
+        real(TKG)       , intent(in)                                :: fracA
     end subroutine
 #endif
 
@@ -9101,11 +9101,11 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarMergedOld_D0_RK2
 #endif
-        use pm_kind, only: TKC => RK2
-        real(TKC)       , intent(inout)                             :: varB
-        real(TKC)       , intent(in)                                :: varA
-        real(TKC)       , intent(in)                                :: meanDiff
-        real(TKC)       , intent(in)                                :: fracA
+        use pm_kind, only: TKG => RK2
+        real(TKG)       , intent(inout)                             :: varB
+        real(TKG)       , intent(in)                                :: varA
+        real(TKG)       , intent(in)                                :: meanDiff
+        real(TKG)       , intent(in)                                :: fracA
     end subroutine
 #endif
 
@@ -9114,11 +9114,11 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarMergedOld_D0_RK1
 #endif
-        use pm_kind, only: TKC => RK1
-        real(TKC)       , intent(inout)                             :: varB
-        real(TKC)       , intent(in)                                :: varA
-        real(TKC)       , intent(in)                                :: meanDiff
-        real(TKC)       , intent(in)                                :: fracA
+        use pm_kind, only: TKG => RK1
+        real(TKG)       , intent(inout)                             :: varB
+        real(TKG)       , intent(in)                                :: varA
+        real(TKG)       , intent(in)                                :: meanDiff
+        real(TKG)       , intent(in)                                :: fracA
     end subroutine
 #endif
 
@@ -9137,11 +9137,11 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarMergedOld_D1_CK5
 #endif
-        use pm_kind, only: TKC => CK5
-        real(TKC)       , intent(inout) , contiguous                :: varB(:)
-        real(TKC)       , intent(in)    , contiguous                :: varA(:)
-        complex(TKC)    , intent(in)    , contiguous                :: meanDiff(:)
-        real(TKC)       , intent(in)                                :: fracA
+        use pm_kind, only: TKG => CK5
+        real(TKG)       , intent(inout) , contiguous                :: varB(:)
+        real(TKG)       , intent(in)    , contiguous                :: varA(:)
+        complex(TKG)    , intent(in)    , contiguous                :: meanDiff(:)
+        real(TKG)       , intent(in)                                :: fracA
     end subroutine
 #endif
 
@@ -9150,11 +9150,11 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarMergedOld_D1_CK4
 #endif
-        use pm_kind, only: TKC => CK4
-        real(TKC)       , intent(inout) , contiguous                :: varB(:)
-        real(TKC)       , intent(in)    , contiguous                :: varA(:)
-        complex(TKC)    , intent(in)    , contiguous                :: meanDiff(:)
-        real(TKC)       , intent(in)                                :: fracA
+        use pm_kind, only: TKG => CK4
+        real(TKG)       , intent(inout) , contiguous                :: varB(:)
+        real(TKG)       , intent(in)    , contiguous                :: varA(:)
+        complex(TKG)    , intent(in)    , contiguous                :: meanDiff(:)
+        real(TKG)       , intent(in)                                :: fracA
     end subroutine
 #endif
 
@@ -9163,11 +9163,11 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarMergedOld_D1_CK3
 #endif
-        use pm_kind, only: TKC => CK3
-        real(TKC)       , intent(inout) , contiguous                :: varB(:)
-        real(TKC)       , intent(in)    , contiguous                :: varA(:)
-        complex(TKC)    , intent(in)    , contiguous                :: meanDiff(:)
-        real(TKC)       , intent(in)                                :: fracA
+        use pm_kind, only: TKG => CK3
+        real(TKG)       , intent(inout) , contiguous                :: varB(:)
+        real(TKG)       , intent(in)    , contiguous                :: varA(:)
+        complex(TKG)    , intent(in)    , contiguous                :: meanDiff(:)
+        real(TKG)       , intent(in)                                :: fracA
     end subroutine
 #endif
 
@@ -9176,11 +9176,11 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarMergedOld_D1_CK2
 #endif
-        use pm_kind, only: TKC => CK2
-        real(TKC)       , intent(inout) , contiguous                :: varB(:)
-        real(TKC)       , intent(in)    , contiguous                :: varA(:)
-        complex(TKC)    , intent(in)    , contiguous                :: meanDiff(:)
-        real(TKC)       , intent(in)                                :: fracA
+        use pm_kind, only: TKG => CK2
+        real(TKG)       , intent(inout) , contiguous                :: varB(:)
+        real(TKG)       , intent(in)    , contiguous                :: varA(:)
+        complex(TKG)    , intent(in)    , contiguous                :: meanDiff(:)
+        real(TKG)       , intent(in)                                :: fracA
     end subroutine
 #endif
 
@@ -9189,11 +9189,11 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarMergedOld_D1_CK1
 #endif
-        use pm_kind, only: TKC => CK1
-        real(TKC)       , intent(inout) , contiguous                :: varB(:)
-        real(TKC)       , intent(in)    , contiguous                :: varA(:)
-        complex(TKC)    , intent(in)    , contiguous                :: meanDiff(:)
-        real(TKC)       , intent(in)                                :: fracA
+        use pm_kind, only: TKG => CK1
+        real(TKG)       , intent(inout) , contiguous                :: varB(:)
+        real(TKG)       , intent(in)    , contiguous                :: varA(:)
+        complex(TKG)    , intent(in)    , contiguous                :: meanDiff(:)
+        real(TKG)       , intent(in)                                :: fracA
     end subroutine
 #endif
 
@@ -9204,11 +9204,11 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarMergedOld_D1_RK5
 #endif
-        use pm_kind, only: TKC => RK5
-        real(TKC)       , intent(inout) , contiguous                :: varB(:)
-        real(TKC)       , intent(in)    , contiguous                :: varA(:)
-        real(TKC)       , intent(in)    , contiguous                :: meanDiff(:)
-        real(TKC)       , intent(in)                                :: fracA
+        use pm_kind, only: TKG => RK5
+        real(TKG)       , intent(inout) , contiguous                :: varB(:)
+        real(TKG)       , intent(in)    , contiguous                :: varA(:)
+        real(TKG)       , intent(in)    , contiguous                :: meanDiff(:)
+        real(TKG)       , intent(in)                                :: fracA
     end subroutine
 #endif
 
@@ -9217,11 +9217,11 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarMergedOld_D1_RK4
 #endif
-        use pm_kind, only: TKC => RK4
-        real(TKC)       , intent(inout) , contiguous                :: varB(:)
-        real(TKC)       , intent(in)    , contiguous                :: varA(:)
-        real(TKC)       , intent(in)    , contiguous                :: meanDiff(:)
-        real(TKC)       , intent(in)                                :: fracA
+        use pm_kind, only: TKG => RK4
+        real(TKG)       , intent(inout) , contiguous                :: varB(:)
+        real(TKG)       , intent(in)    , contiguous                :: varA(:)
+        real(TKG)       , intent(in)    , contiguous                :: meanDiff(:)
+        real(TKG)       , intent(in)                                :: fracA
     end subroutine
 #endif
 
@@ -9230,11 +9230,11 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarMergedOld_D1_RK3
 #endif
-        use pm_kind, only: TKC => RK3
-        real(TKC)       , intent(inout) , contiguous                :: varB(:)
-        real(TKC)       , intent(in)    , contiguous                :: varA(:)
-        real(TKC)       , intent(in)    , contiguous                :: meanDiff(:)
-        real(TKC)       , intent(in)                                :: fracA
+        use pm_kind, only: TKG => RK3
+        real(TKG)       , intent(inout) , contiguous                :: varB(:)
+        real(TKG)       , intent(in)    , contiguous                :: varA(:)
+        real(TKG)       , intent(in)    , contiguous                :: meanDiff(:)
+        real(TKG)       , intent(in)                                :: fracA
     end subroutine
 #endif
 
@@ -9243,11 +9243,11 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarMergedOld_D1_RK2
 #endif
-        use pm_kind, only: TKC => RK2
-        real(TKC)       , intent(inout) , contiguous                :: varB(:)
-        real(TKC)       , intent(in)    , contiguous                :: varA(:)
-        real(TKC)       , intent(in)    , contiguous                :: meanDiff(:)
-        real(TKC)       , intent(in)                                :: fracA
+        use pm_kind, only: TKG => RK2
+        real(TKG)       , intent(inout) , contiguous                :: varB(:)
+        real(TKG)       , intent(in)    , contiguous                :: varA(:)
+        real(TKG)       , intent(in)    , contiguous                :: meanDiff(:)
+        real(TKG)       , intent(in)                                :: fracA
     end subroutine
 #endif
 
@@ -9256,11 +9256,11 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarMergedOld_D1_RK1
 #endif
-        use pm_kind, only: TKC => RK1
-        real(TKC)       , intent(inout) , contiguous                :: varB(:)
-        real(TKC)       , intent(in)    , contiguous                :: varA(:)
-        real(TKC)       , intent(in)    , contiguous                :: meanDiff(:)
-        real(TKC)       , intent(in)                                :: fracA
+        use pm_kind, only: TKG => RK1
+        real(TKG)       , intent(inout) , contiguous                :: varB(:)
+        real(TKG)       , intent(in)    , contiguous                :: varA(:)
+        real(TKG)       , intent(in)    , contiguous                :: meanDiff(:)
+        real(TKG)       , intent(in)                                :: fracA
     end subroutine
 #endif
 
@@ -9380,14 +9380,14 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanMergedNew_D0_CK5
 #endif
-        use pm_kind, only: TKC => CK5
-        real(TKC)       , intent(in)                                :: fracA
-        real(TKC)       , intent(in)                                :: varA
-        real(TKC)       , intent(in)                                :: varB
-        real(TKC)       , intent(out)                               :: varMerged
-        complex(TKC)    , intent(in)                                :: meanA
-        complex(TKC)    , intent(in)                                :: meanB
-        complex(TKC)    , intent(out)                               :: meanMerged
+        use pm_kind, only: TKG => CK5
+        real(TKG)       , intent(in)                                :: fracA
+        real(TKG)       , intent(in)                                :: varA
+        real(TKG)       , intent(in)                                :: varB
+        real(TKG)       , intent(out)                               :: varMerged
+        complex(TKG)    , intent(in)                                :: meanA
+        complex(TKG)    , intent(in)                                :: meanB
+        complex(TKG)    , intent(out)                               :: meanMerged
     end subroutine
 #endif
 
@@ -9396,14 +9396,14 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanMergedNew_D0_CK4
 #endif
-        use pm_kind, only: TKC => CK4
-        real(TKC)       , intent(in)                                :: fracA
-        real(TKC)       , intent(in)                                :: varA
-        real(TKC)       , intent(in)                                :: varB
-        real(TKC)       , intent(out)                               :: varMerged
-        complex(TKC)    , intent(in)                                :: meanA
-        complex(TKC)    , intent(in)                                :: meanB
-        complex(TKC)    , intent(out)                               :: meanMerged
+        use pm_kind, only: TKG => CK4
+        real(TKG)       , intent(in)                                :: fracA
+        real(TKG)       , intent(in)                                :: varA
+        real(TKG)       , intent(in)                                :: varB
+        real(TKG)       , intent(out)                               :: varMerged
+        complex(TKG)    , intent(in)                                :: meanA
+        complex(TKG)    , intent(in)                                :: meanB
+        complex(TKG)    , intent(out)                               :: meanMerged
     end subroutine
 #endif
 
@@ -9412,14 +9412,14 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanMergedNew_D0_CK3
 #endif
-        use pm_kind, only: TKC => CK3
-        real(TKC)       , intent(in)                                :: fracA
-        real(TKC)       , intent(in)                                :: varA
-        real(TKC)       , intent(in)                                :: varB
-        real(TKC)       , intent(out)                               :: varMerged
-        complex(TKC)    , intent(in)                                :: meanA
-        complex(TKC)    , intent(in)                                :: meanB
-        complex(TKC)    , intent(out)                               :: meanMerged
+        use pm_kind, only: TKG => CK3
+        real(TKG)       , intent(in)                                :: fracA
+        real(TKG)       , intent(in)                                :: varA
+        real(TKG)       , intent(in)                                :: varB
+        real(TKG)       , intent(out)                               :: varMerged
+        complex(TKG)    , intent(in)                                :: meanA
+        complex(TKG)    , intent(in)                                :: meanB
+        complex(TKG)    , intent(out)                               :: meanMerged
     end subroutine
 #endif
 
@@ -9428,14 +9428,14 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanMergedNew_D0_CK2
 #endif
-        use pm_kind, only: TKC => CK2
-        real(TKC)       , intent(in)                                :: fracA
-        real(TKC)       , intent(in)                                :: varA
-        real(TKC)       , intent(in)                                :: varB
-        real(TKC)       , intent(out)                               :: varMerged
-        complex(TKC)    , intent(in)                                :: meanA
-        complex(TKC)    , intent(in)                                :: meanB
-        complex(TKC)    , intent(out)                               :: meanMerged
+        use pm_kind, only: TKG => CK2
+        real(TKG)       , intent(in)                                :: fracA
+        real(TKG)       , intent(in)                                :: varA
+        real(TKG)       , intent(in)                                :: varB
+        real(TKG)       , intent(out)                               :: varMerged
+        complex(TKG)    , intent(in)                                :: meanA
+        complex(TKG)    , intent(in)                                :: meanB
+        complex(TKG)    , intent(out)                               :: meanMerged
     end subroutine
 #endif
 
@@ -9444,14 +9444,14 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanMergedNew_D0_CK1
 #endif
-        use pm_kind, only: TKC => CK1
-        real(TKC)       , intent(in)                                :: fracA
-        real(TKC)       , intent(in)                                :: varA
-        real(TKC)       , intent(in)                                :: varB
-        real(TKC)       , intent(out)                               :: varMerged
-        complex(TKC)    , intent(in)                                :: meanA
-        complex(TKC)    , intent(in)                                :: meanB
-        complex(TKC)    , intent(out)                               :: meanMerged
+        use pm_kind, only: TKG => CK1
+        real(TKG)       , intent(in)                                :: fracA
+        real(TKG)       , intent(in)                                :: varA
+        real(TKG)       , intent(in)                                :: varB
+        real(TKG)       , intent(out)                               :: varMerged
+        complex(TKG)    , intent(in)                                :: meanA
+        complex(TKG)    , intent(in)                                :: meanB
+        complex(TKG)    , intent(out)                               :: meanMerged
     end subroutine
 #endif
 
@@ -9462,14 +9462,14 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanMergedNew_D0_RK5
 #endif
-        use pm_kind, only: TKC => RK5
-        real(TKC)       , intent(in)                                :: fracA
-        real(TKC)       , intent(in)                                :: varA
-        real(TKC)       , intent(in)                                :: varB
-        real(TKC)       , intent(out)                               :: varMerged
-        real(TKC)       , intent(in)                                :: meanA
-        real(TKC)       , intent(in)                                :: meanB
-        real(TKC)       , intent(out)                               :: meanMerged
+        use pm_kind, only: TKG => RK5
+        real(TKG)       , intent(in)                                :: fracA
+        real(TKG)       , intent(in)                                :: varA
+        real(TKG)       , intent(in)                                :: varB
+        real(TKG)       , intent(out)                               :: varMerged
+        real(TKG)       , intent(in)                                :: meanA
+        real(TKG)       , intent(in)                                :: meanB
+        real(TKG)       , intent(out)                               :: meanMerged
     end subroutine
 #endif
 
@@ -9478,14 +9478,14 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanMergedNew_D0_RK4
 #endif
-        use pm_kind, only: TKC => RK4
-        real(TKC)       , intent(in)                                :: fracA
-        real(TKC)       , intent(in)                                :: varA
-        real(TKC)       , intent(in)                                :: varB
-        real(TKC)       , intent(out)                               :: varMerged
-        real(TKC)       , intent(in)                                :: meanA
-        real(TKC)       , intent(in)                                :: meanB
-        real(TKC)       , intent(out)                               :: meanMerged
+        use pm_kind, only: TKG => RK4
+        real(TKG)       , intent(in)                                :: fracA
+        real(TKG)       , intent(in)                                :: varA
+        real(TKG)       , intent(in)                                :: varB
+        real(TKG)       , intent(out)                               :: varMerged
+        real(TKG)       , intent(in)                                :: meanA
+        real(TKG)       , intent(in)                                :: meanB
+        real(TKG)       , intent(out)                               :: meanMerged
     end subroutine
 #endif
 
@@ -9494,14 +9494,14 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanMergedNew_D0_RK3
 #endif
-        use pm_kind, only: TKC => RK3
-        real(TKC)       , intent(in)                                :: fracA
-        real(TKC)       , intent(in)                                :: varA
-        real(TKC)       , intent(in)                                :: varB
-        real(TKC)       , intent(out)                               :: varMerged
-        real(TKC)       , intent(in)                                :: meanA
-        real(TKC)       , intent(in)                                :: meanB
-        real(TKC)       , intent(out)                               :: meanMerged
+        use pm_kind, only: TKG => RK3
+        real(TKG)       , intent(in)                                :: fracA
+        real(TKG)       , intent(in)                                :: varA
+        real(TKG)       , intent(in)                                :: varB
+        real(TKG)       , intent(out)                               :: varMerged
+        real(TKG)       , intent(in)                                :: meanA
+        real(TKG)       , intent(in)                                :: meanB
+        real(TKG)       , intent(out)                               :: meanMerged
     end subroutine
 #endif
 
@@ -9510,14 +9510,14 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanMergedNew_D0_RK2
 #endif
-        use pm_kind, only: TKC => RK2
-        real(TKC)       , intent(in)                                :: fracA
-        real(TKC)       , intent(in)                                :: varA
-        real(TKC)       , intent(in)                                :: varB
-        real(TKC)       , intent(out)                               :: varMerged
-        real(TKC)       , intent(in)                                :: meanA
-        real(TKC)       , intent(in)                                :: meanB
-        real(TKC)       , intent(out)                               :: meanMerged
+        use pm_kind, only: TKG => RK2
+        real(TKG)       , intent(in)                                :: fracA
+        real(TKG)       , intent(in)                                :: varA
+        real(TKG)       , intent(in)                                :: varB
+        real(TKG)       , intent(out)                               :: varMerged
+        real(TKG)       , intent(in)                                :: meanA
+        real(TKG)       , intent(in)                                :: meanB
+        real(TKG)       , intent(out)                               :: meanMerged
     end subroutine
 #endif
 
@@ -9526,14 +9526,14 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanMergedNew_D0_RK1
 #endif
-        use pm_kind, only: TKC => RK1
-        real(TKC)       , intent(in)                                :: fracA
-        real(TKC)       , intent(in)                                :: varA
-        real(TKC)       , intent(in)                                :: varB
-        real(TKC)       , intent(out)                               :: varMerged
-        real(TKC)       , intent(in)                                :: meanA
-        real(TKC)       , intent(in)                                :: meanB
-        real(TKC)       , intent(out)                               :: meanMerged
+        use pm_kind, only: TKG => RK1
+        real(TKG)       , intent(in)                                :: fracA
+        real(TKG)       , intent(in)                                :: varA
+        real(TKG)       , intent(in)                                :: varB
+        real(TKG)       , intent(out)                               :: varMerged
+        real(TKG)       , intent(in)                                :: meanA
+        real(TKG)       , intent(in)                                :: meanB
+        real(TKG)       , intent(out)                               :: meanMerged
     end subroutine
 #endif
 
@@ -9552,14 +9552,14 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanMergedNew_D1_CK5
 #endif
-        use pm_kind, only: TKC => CK5
-        real(TKC)       , intent(in)                                :: fracA
-        real(TKC)       , intent(in)    , contiguous                :: varA(:)
-        real(TKC)       , intent(in)    , contiguous                :: varB(:)
-        real(TKC)       , intent(out)   , contiguous                :: varMerged(:)
-        complex(TKC)    , intent(in)    , contiguous                :: meanA(:)
-        complex(TKC)    , intent(in)    , contiguous                :: meanB(:)
-        complex(TKC)    , intent(out)   , contiguous                :: meanMerged(:)
+        use pm_kind, only: TKG => CK5
+        real(TKG)       , intent(in)                                :: fracA
+        real(TKG)       , intent(in)    , contiguous                :: varA(:)
+        real(TKG)       , intent(in)    , contiguous                :: varB(:)
+        real(TKG)       , intent(out)   , contiguous                :: varMerged(:)
+        complex(TKG)    , intent(in)    , contiguous                :: meanA(:)
+        complex(TKG)    , intent(in)    , contiguous                :: meanB(:)
+        complex(TKG)    , intent(out)   , contiguous                :: meanMerged(:)
     end subroutine
 #endif
 
@@ -9568,14 +9568,14 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanMergedNew_D1_CK4
 #endif
-        use pm_kind, only: TKC => CK4
-        real(TKC)       , intent(in)                                :: fracA
-        real(TKC)       , intent(in)    , contiguous                :: varA(:)
-        real(TKC)       , intent(in)    , contiguous                :: varB(:)
-        real(TKC)       , intent(out)   , contiguous                :: varMerged(:)
-        complex(TKC)    , intent(in)    , contiguous                :: meanA(:)
-        complex(TKC)    , intent(in)    , contiguous                :: meanB(:)
-        complex(TKC)    , intent(out)   , contiguous                :: meanMerged(:)
+        use pm_kind, only: TKG => CK4
+        real(TKG)       , intent(in)                                :: fracA
+        real(TKG)       , intent(in)    , contiguous                :: varA(:)
+        real(TKG)       , intent(in)    , contiguous                :: varB(:)
+        real(TKG)       , intent(out)   , contiguous                :: varMerged(:)
+        complex(TKG)    , intent(in)    , contiguous                :: meanA(:)
+        complex(TKG)    , intent(in)    , contiguous                :: meanB(:)
+        complex(TKG)    , intent(out)   , contiguous                :: meanMerged(:)
     end subroutine
 #endif
 
@@ -9584,14 +9584,14 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanMergedNew_D1_CK3
 #endif
-        use pm_kind, only: TKC => CK3
-        real(TKC)       , intent(in)                                :: fracA
-        real(TKC)       , intent(in)    , contiguous                :: varA(:)
-        real(TKC)       , intent(in)    , contiguous                :: varB(:)
-        real(TKC)       , intent(out)   , contiguous                :: varMerged(:)
-        complex(TKC)    , intent(in)    , contiguous                :: meanA(:)
-        complex(TKC)    , intent(in)    , contiguous                :: meanB(:)
-        complex(TKC)    , intent(out)   , contiguous                :: meanMerged(:)
+        use pm_kind, only: TKG => CK3
+        real(TKG)       , intent(in)                                :: fracA
+        real(TKG)       , intent(in)    , contiguous                :: varA(:)
+        real(TKG)       , intent(in)    , contiguous                :: varB(:)
+        real(TKG)       , intent(out)   , contiguous                :: varMerged(:)
+        complex(TKG)    , intent(in)    , contiguous                :: meanA(:)
+        complex(TKG)    , intent(in)    , contiguous                :: meanB(:)
+        complex(TKG)    , intent(out)   , contiguous                :: meanMerged(:)
     end subroutine
 #endif
 
@@ -9600,14 +9600,14 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanMergedNew_D1_CK2
 #endif
-        use pm_kind, only: TKC => CK2
-        real(TKC)       , intent(in)                                :: fracA
-        real(TKC)       , intent(in)    , contiguous                :: varA(:)
-        real(TKC)       , intent(in)    , contiguous                :: varB(:)
-        real(TKC)       , intent(out)   , contiguous                :: varMerged(:)
-        complex(TKC)    , intent(in)    , contiguous                :: meanA(:)
-        complex(TKC)    , intent(in)    , contiguous                :: meanB(:)
-        complex(TKC)    , intent(out)   , contiguous                :: meanMerged(:)
+        use pm_kind, only: TKG => CK2
+        real(TKG)       , intent(in)                                :: fracA
+        real(TKG)       , intent(in)    , contiguous                :: varA(:)
+        real(TKG)       , intent(in)    , contiguous                :: varB(:)
+        real(TKG)       , intent(out)   , contiguous                :: varMerged(:)
+        complex(TKG)    , intent(in)    , contiguous                :: meanA(:)
+        complex(TKG)    , intent(in)    , contiguous                :: meanB(:)
+        complex(TKG)    , intent(out)   , contiguous                :: meanMerged(:)
     end subroutine
 #endif
 
@@ -9616,14 +9616,14 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanMergedNew_D1_CK1
 #endif
-        use pm_kind, only: TKC => CK1
-        real(TKC)       , intent(in)                                :: fracA
-        real(TKC)       , intent(in)    , contiguous                :: varA(:)
-        real(TKC)       , intent(in)    , contiguous                :: varB(:)
-        real(TKC)       , intent(out)   , contiguous                :: varMerged(:)
-        complex(TKC)    , intent(in)    , contiguous                :: meanA(:)
-        complex(TKC)    , intent(in)    , contiguous                :: meanB(:)
-        complex(TKC)    , intent(out)   , contiguous                :: meanMerged(:)
+        use pm_kind, only: TKG => CK1
+        real(TKG)       , intent(in)                                :: fracA
+        real(TKG)       , intent(in)    , contiguous                :: varA(:)
+        real(TKG)       , intent(in)    , contiguous                :: varB(:)
+        real(TKG)       , intent(out)   , contiguous                :: varMerged(:)
+        complex(TKG)    , intent(in)    , contiguous                :: meanA(:)
+        complex(TKG)    , intent(in)    , contiguous                :: meanB(:)
+        complex(TKG)    , intent(out)   , contiguous                :: meanMerged(:)
     end subroutine
 #endif
 
@@ -9634,14 +9634,14 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanMergedNew_D1_RK5
 #endif
-        use pm_kind, only: TKC => RK5
-        real(TKC)       , intent(in)                                :: fracA
-        real(TKC)       , intent(in)    , contiguous                :: varA(:)
-        real(TKC)       , intent(in)    , contiguous                :: varB(:)
-        real(TKC)       , intent(out)   , contiguous                :: varMerged(:)
-        real(TKC)       , intent(in)    , contiguous                :: meanA(:)
-        real(TKC)       , intent(in)    , contiguous                :: meanB(:)
-        real(TKC)       , intent(out)   , contiguous                :: meanMerged(:)
+        use pm_kind, only: TKG => RK5
+        real(TKG)       , intent(in)                                :: fracA
+        real(TKG)       , intent(in)    , contiguous                :: varA(:)
+        real(TKG)       , intent(in)    , contiguous                :: varB(:)
+        real(TKG)       , intent(out)   , contiguous                :: varMerged(:)
+        real(TKG)       , intent(in)    , contiguous                :: meanA(:)
+        real(TKG)       , intent(in)    , contiguous                :: meanB(:)
+        real(TKG)       , intent(out)   , contiguous                :: meanMerged(:)
     end subroutine
 #endif
 
@@ -9650,14 +9650,14 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanMergedNew_D1_RK4
 #endif
-        use pm_kind, only: TKC => RK4
-        real(TKC)       , intent(in)                                :: fracA
-        real(TKC)       , intent(in)    , contiguous                :: varA(:)
-        real(TKC)       , intent(in)    , contiguous                :: varB(:)
-        real(TKC)       , intent(out)   , contiguous                :: varMerged(:)
-        real(TKC)       , intent(in)    , contiguous                :: meanA(:)
-        real(TKC)       , intent(in)    , contiguous                :: meanB(:)
-        real(TKC)       , intent(out)   , contiguous                :: meanMerged(:)
+        use pm_kind, only: TKG => RK4
+        real(TKG)       , intent(in)                                :: fracA
+        real(TKG)       , intent(in)    , contiguous                :: varA(:)
+        real(TKG)       , intent(in)    , contiguous                :: varB(:)
+        real(TKG)       , intent(out)   , contiguous                :: varMerged(:)
+        real(TKG)       , intent(in)    , contiguous                :: meanA(:)
+        real(TKG)       , intent(in)    , contiguous                :: meanB(:)
+        real(TKG)       , intent(out)   , contiguous                :: meanMerged(:)
     end subroutine
 #endif
 
@@ -9666,14 +9666,14 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanMergedNew_D1_RK3
 #endif
-        use pm_kind, only: TKC => RK3
-        real(TKC)       , intent(in)                                :: fracA
-        real(TKC)       , intent(in)    , contiguous                :: varA(:)
-        real(TKC)       , intent(in)    , contiguous                :: varB(:)
-        real(TKC)       , intent(out)   , contiguous                :: varMerged(:)
-        real(TKC)       , intent(in)    , contiguous                :: meanA(:)
-        real(TKC)       , intent(in)    , contiguous                :: meanB(:)
-        real(TKC)       , intent(out)   , contiguous                :: meanMerged(:)
+        use pm_kind, only: TKG => RK3
+        real(TKG)       , intent(in)                                :: fracA
+        real(TKG)       , intent(in)    , contiguous                :: varA(:)
+        real(TKG)       , intent(in)    , contiguous                :: varB(:)
+        real(TKG)       , intent(out)   , contiguous                :: varMerged(:)
+        real(TKG)       , intent(in)    , contiguous                :: meanA(:)
+        real(TKG)       , intent(in)    , contiguous                :: meanB(:)
+        real(TKG)       , intent(out)   , contiguous                :: meanMerged(:)
     end subroutine
 #endif
 
@@ -9682,14 +9682,14 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanMergedNew_D1_RK2
 #endif
-        use pm_kind, only: TKC => RK2
-        real(TKC)       , intent(in)                                :: fracA
-        real(TKC)       , intent(in)    , contiguous                :: varA(:)
-        real(TKC)       , intent(in)    , contiguous                :: varB(:)
-        real(TKC)       , intent(out)   , contiguous                :: varMerged(:)
-        real(TKC)       , intent(in)    , contiguous                :: meanA(:)
-        real(TKC)       , intent(in)    , contiguous                :: meanB(:)
-        real(TKC)       , intent(out)   , contiguous                :: meanMerged(:)
+        use pm_kind, only: TKG => RK2
+        real(TKG)       , intent(in)                                :: fracA
+        real(TKG)       , intent(in)    , contiguous                :: varA(:)
+        real(TKG)       , intent(in)    , contiguous                :: varB(:)
+        real(TKG)       , intent(out)   , contiguous                :: varMerged(:)
+        real(TKG)       , intent(in)    , contiguous                :: meanA(:)
+        real(TKG)       , intent(in)    , contiguous                :: meanB(:)
+        real(TKG)       , intent(out)   , contiguous                :: meanMerged(:)
     end subroutine
 #endif
 
@@ -9698,14 +9698,14 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanMergedNew_D1_RK1
 #endif
-        use pm_kind, only: TKC => RK1
-        real(TKC)       , intent(in)                                :: fracA
-        real(TKC)       , intent(in)    , contiguous                :: varA(:)
-        real(TKC)       , intent(in)    , contiguous                :: varB(:)
-        real(TKC)       , intent(out)   , contiguous                :: varMerged(:)
-        real(TKC)       , intent(in)    , contiguous                :: meanA(:)
-        real(TKC)       , intent(in)    , contiguous                :: meanB(:)
-        real(TKC)       , intent(out)   , contiguous                :: meanMerged(:)
+        use pm_kind, only: TKG => RK1
+        real(TKG)       , intent(in)                                :: fracA
+        real(TKG)       , intent(in)    , contiguous                :: varA(:)
+        real(TKG)       , intent(in)    , contiguous                :: varB(:)
+        real(TKG)       , intent(out)   , contiguous                :: varMerged(:)
+        real(TKG)       , intent(in)    , contiguous                :: meanA(:)
+        real(TKG)       , intent(in)    , contiguous                :: meanB(:)
+        real(TKG)       , intent(out)   , contiguous                :: meanMerged(:)
     end subroutine
 #endif
 
@@ -9724,12 +9724,12 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanMergedOld_D0_CK5
 #endif
-        use pm_kind, only: TKC => CK5
-        real(TKC)       , intent(in)                                :: fracA
-        real(TKC)       , intent(in)                                :: varA
-        real(TKC)       , intent(out)                               :: varB
-        complex(TKC)    , intent(in)                                :: meanA
-        complex(TKC)    , intent(out)                               :: meanB
+        use pm_kind, only: TKG => CK5
+        real(TKG)       , intent(in)                                :: fracA
+        real(TKG)       , intent(in)                                :: varA
+        real(TKG)       , intent(out)                               :: varB
+        complex(TKG)    , intent(in)                                :: meanA
+        complex(TKG)    , intent(out)                               :: meanB
     end subroutine
 #endif
 
@@ -9738,12 +9738,12 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanMergedOld_D0_CK4
 #endif
-        use pm_kind, only: TKC => CK4
-        real(TKC)       , intent(in)                                :: fracA
-        real(TKC)       , intent(in)                                :: varA
-        real(TKC)       , intent(out)                               :: varB
-        complex(TKC)    , intent(in)                                :: meanA
-        complex(TKC)    , intent(out)                               :: meanB
+        use pm_kind, only: TKG => CK4
+        real(TKG)       , intent(in)                                :: fracA
+        real(TKG)       , intent(in)                                :: varA
+        real(TKG)       , intent(out)                               :: varB
+        complex(TKG)    , intent(in)                                :: meanA
+        complex(TKG)    , intent(out)                               :: meanB
     end subroutine
 #endif
 
@@ -9752,12 +9752,12 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanMergedOld_D0_CK3
 #endif
-        use pm_kind, only: TKC => CK3
-        real(TKC)       , intent(in)                                :: fracA
-        real(TKC)       , intent(in)                                :: varA
-        real(TKC)       , intent(out)                               :: varB
-        complex(TKC)    , intent(in)                                :: meanA
-        complex(TKC)    , intent(out)                               :: meanB
+        use pm_kind, only: TKG => CK3
+        real(TKG)       , intent(in)                                :: fracA
+        real(TKG)       , intent(in)                                :: varA
+        real(TKG)       , intent(out)                               :: varB
+        complex(TKG)    , intent(in)                                :: meanA
+        complex(TKG)    , intent(out)                               :: meanB
     end subroutine
 #endif
 
@@ -9766,12 +9766,12 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanMergedOld_D0_CK2
 #endif
-        use pm_kind, only: TKC => CK2
-        real(TKC)       , intent(in)                                :: fracA
-        real(TKC)       , intent(in)                                :: varA
-        real(TKC)       , intent(out)                               :: varB
-        complex(TKC)    , intent(in)                                :: meanA
-        complex(TKC)    , intent(out)                               :: meanB
+        use pm_kind, only: TKG => CK2
+        real(TKG)       , intent(in)                                :: fracA
+        real(TKG)       , intent(in)                                :: varA
+        real(TKG)       , intent(out)                               :: varB
+        complex(TKG)    , intent(in)                                :: meanA
+        complex(TKG)    , intent(out)                               :: meanB
     end subroutine
 #endif
 
@@ -9780,12 +9780,12 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanMergedOld_D0_CK1
 #endif
-        use pm_kind, only: TKC => CK1
-        real(TKC)       , intent(in)                                :: fracA
-        real(TKC)       , intent(in)                                :: varA
-        real(TKC)       , intent(out)                               :: varB
-        complex(TKC)    , intent(in)                                :: meanA
-        complex(TKC)    , intent(out)                               :: meanB
+        use pm_kind, only: TKG => CK1
+        real(TKG)       , intent(in)                                :: fracA
+        real(TKG)       , intent(in)                                :: varA
+        real(TKG)       , intent(out)                               :: varB
+        complex(TKG)    , intent(in)                                :: meanA
+        complex(TKG)    , intent(out)                               :: meanB
     end subroutine
 #endif
 
@@ -9796,12 +9796,12 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanMergedOld_D0_RK5
 #endif
-        use pm_kind, only: TKC => RK5
-        real(TKC)       , intent(in)                                :: fracA
-        real(TKC)       , intent(in)                                :: varA
-        real(TKC)       , intent(out)                               :: varB
-        real(TKC)       , intent(in)                                :: meanA
-        real(TKC)       , intent(out)                               :: meanB
+        use pm_kind, only: TKG => RK5
+        real(TKG)       , intent(in)                                :: fracA
+        real(TKG)       , intent(in)                                :: varA
+        real(TKG)       , intent(out)                               :: varB
+        real(TKG)       , intent(in)                                :: meanA
+        real(TKG)       , intent(out)                               :: meanB
     end subroutine
 #endif
 
@@ -9810,12 +9810,12 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanMergedOld_D0_RK4
 #endif
-        use pm_kind, only: TKC => RK4
-        real(TKC)       , intent(in)                                :: fracA
-        real(TKC)       , intent(in)                                :: varA
-        real(TKC)       , intent(out)                               :: varB
-        real(TKC)       , intent(in)                                :: meanA
-        real(TKC)       , intent(out)                               :: meanB
+        use pm_kind, only: TKG => RK4
+        real(TKG)       , intent(in)                                :: fracA
+        real(TKG)       , intent(in)                                :: varA
+        real(TKG)       , intent(out)                               :: varB
+        real(TKG)       , intent(in)                                :: meanA
+        real(TKG)       , intent(out)                               :: meanB
     end subroutine
 #endif
 
@@ -9824,12 +9824,12 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanMergedOld_D0_RK3
 #endif
-        use pm_kind, only: TKC => RK3
-        real(TKC)       , intent(in)                                :: fracA
-        real(TKC)       , intent(in)                                :: varA
-        real(TKC)       , intent(out)                               :: varB
-        real(TKC)       , intent(in)                                :: meanA
-        real(TKC)       , intent(out)                               :: meanB
+        use pm_kind, only: TKG => RK3
+        real(TKG)       , intent(in)                                :: fracA
+        real(TKG)       , intent(in)                                :: varA
+        real(TKG)       , intent(out)                               :: varB
+        real(TKG)       , intent(in)                                :: meanA
+        real(TKG)       , intent(out)                               :: meanB
     end subroutine
 #endif
 
@@ -9838,12 +9838,12 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanMergedOld_D0_RK2
 #endif
-        use pm_kind, only: TKC => RK2
-        real(TKC)       , intent(in)                                :: fracA
-        real(TKC)       , intent(in)                                :: varA
-        real(TKC)       , intent(out)                               :: varB
-        real(TKC)       , intent(in)                                :: meanA
-        real(TKC)       , intent(out)                               :: meanB
+        use pm_kind, only: TKG => RK2
+        real(TKG)       , intent(in)                                :: fracA
+        real(TKG)       , intent(in)                                :: varA
+        real(TKG)       , intent(out)                               :: varB
+        real(TKG)       , intent(in)                                :: meanA
+        real(TKG)       , intent(out)                               :: meanB
     end subroutine
 #endif
 
@@ -9852,12 +9852,12 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanMergedOld_D0_RK1
 #endif
-        use pm_kind, only: TKC => RK1
-        real(TKC)       , intent(in)                                :: fracA
-        real(TKC)       , intent(in)                                :: varA
-        real(TKC)       , intent(out)                               :: varB
-        real(TKC)       , intent(in)                                :: meanA
-        real(TKC)       , intent(out)                               :: meanB
+        use pm_kind, only: TKG => RK1
+        real(TKG)       , intent(in)                                :: fracA
+        real(TKG)       , intent(in)                                :: varA
+        real(TKG)       , intent(out)                               :: varB
+        real(TKG)       , intent(in)                                :: meanA
+        real(TKG)       , intent(out)                               :: meanB
     end subroutine
 #endif
 
@@ -9876,12 +9876,12 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanMergedOld_D1_CK5
 #endif
-        use pm_kind, only: TKC => CK5
-        real(TKC)       , intent(in)                                :: fracA
-        real(TKC)       , intent(in)    , contiguous                :: varA(:)
-        real(TKC)       , intent(out)   , contiguous                :: varB(:)
-        complex(TKC)    , intent(in)    , contiguous                :: meanA(:)
-        complex(TKC)    , intent(out)   , contiguous                :: meanB(:)
+        use pm_kind, only: TKG => CK5
+        real(TKG)       , intent(in)                                :: fracA
+        real(TKG)       , intent(in)    , contiguous                :: varA(:)
+        real(TKG)       , intent(out)   , contiguous                :: varB(:)
+        complex(TKG)    , intent(in)    , contiguous                :: meanA(:)
+        complex(TKG)    , intent(out)   , contiguous                :: meanB(:)
     end subroutine
 #endif
 
@@ -9890,12 +9890,12 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanMergedOld_D1_CK4
 #endif
-        use pm_kind, only: TKC => CK4
-        real(TKC)       , intent(in)                                :: fracA
-        real(TKC)       , intent(in)    , contiguous                :: varA(:)
-        real(TKC)       , intent(out)   , contiguous                :: varB(:)
-        complex(TKC)    , intent(in)    , contiguous                :: meanA(:)
-        complex(TKC)    , intent(out)   , contiguous                :: meanB(:)
+        use pm_kind, only: TKG => CK4
+        real(TKG)       , intent(in)                                :: fracA
+        real(TKG)       , intent(in)    , contiguous                :: varA(:)
+        real(TKG)       , intent(out)   , contiguous                :: varB(:)
+        complex(TKG)    , intent(in)    , contiguous                :: meanA(:)
+        complex(TKG)    , intent(out)   , contiguous                :: meanB(:)
     end subroutine
 #endif
 
@@ -9904,12 +9904,12 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanMergedOld_D1_CK3
 #endif
-        use pm_kind, only: TKC => CK3
-        real(TKC)       , intent(in)                                :: fracA
-        real(TKC)       , intent(in)    , contiguous                :: varA(:)
-        real(TKC)       , intent(out)   , contiguous                :: varB(:)
-        complex(TKC)    , intent(in)    , contiguous                :: meanA(:)
-        complex(TKC)    , intent(out)   , contiguous                :: meanB(:)
+        use pm_kind, only: TKG => CK3
+        real(TKG)       , intent(in)                                :: fracA
+        real(TKG)       , intent(in)    , contiguous                :: varA(:)
+        real(TKG)       , intent(out)   , contiguous                :: varB(:)
+        complex(TKG)    , intent(in)    , contiguous                :: meanA(:)
+        complex(TKG)    , intent(out)   , contiguous                :: meanB(:)
     end subroutine
 #endif
 
@@ -9918,12 +9918,12 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanMergedOld_D1_CK2
 #endif
-        use pm_kind, only: TKC => CK2
-        real(TKC)       , intent(in)                                :: fracA
-        real(TKC)       , intent(in)    , contiguous                :: varA(:)
-        real(TKC)       , intent(out)   , contiguous                :: varB(:)
-        complex(TKC)    , intent(in)    , contiguous                :: meanA(:)
-        complex(TKC)    , intent(out)   , contiguous                :: meanB(:)
+        use pm_kind, only: TKG => CK2
+        real(TKG)       , intent(in)                                :: fracA
+        real(TKG)       , intent(in)    , contiguous                :: varA(:)
+        real(TKG)       , intent(out)   , contiguous                :: varB(:)
+        complex(TKG)    , intent(in)    , contiguous                :: meanA(:)
+        complex(TKG)    , intent(out)   , contiguous                :: meanB(:)
     end subroutine
 #endif
 
@@ -9932,12 +9932,12 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanMergedOld_D1_CK1
 #endif
-        use pm_kind, only: TKC => CK1
-        real(TKC)       , intent(in)                                :: fracA
-        real(TKC)       , intent(in)    , contiguous                :: varA(:)
-        real(TKC)       , intent(out)   , contiguous                :: varB(:)
-        complex(TKC)    , intent(in)    , contiguous                :: meanA(:)
-        complex(TKC)    , intent(out)   , contiguous                :: meanB(:)
+        use pm_kind, only: TKG => CK1
+        real(TKG)       , intent(in)                                :: fracA
+        real(TKG)       , intent(in)    , contiguous                :: varA(:)
+        real(TKG)       , intent(out)   , contiguous                :: varB(:)
+        complex(TKG)    , intent(in)    , contiguous                :: meanA(:)
+        complex(TKG)    , intent(out)   , contiguous                :: meanB(:)
     end subroutine
 #endif
 
@@ -9948,12 +9948,12 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanMergedOld_D1_RK5
 #endif
-        use pm_kind, only: TKC => RK5
-        real(TKC)       , intent(in)                                :: fracA
-        real(TKC)       , intent(in)    , contiguous                :: varA(:)
-        real(TKC)       , intent(out)   , contiguous                :: varB(:)
-        real(TKC)       , intent(in)    , contiguous                :: meanA(:)
-        real(TKC)       , intent(out)   , contiguous                :: meanB(:)
+        use pm_kind, only: TKG => RK5
+        real(TKG)       , intent(in)                                :: fracA
+        real(TKG)       , intent(in)    , contiguous                :: varA(:)
+        real(TKG)       , intent(out)   , contiguous                :: varB(:)
+        real(TKG)       , intent(in)    , contiguous                :: meanA(:)
+        real(TKG)       , intent(out)   , contiguous                :: meanB(:)
     end subroutine
 #endif
 
@@ -9962,12 +9962,12 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanMergedOld_D1_RK4
 #endif
-        use pm_kind, only: TKC => RK4
-        real(TKC)       , intent(in)                                :: fracA
-        real(TKC)       , intent(in)    , contiguous                :: varA(:)
-        real(TKC)       , intent(out)   , contiguous                :: varB(:)
-        real(TKC)       , intent(in)    , contiguous                :: meanA(:)
-        real(TKC)       , intent(out)   , contiguous                :: meanB(:)
+        use pm_kind, only: TKG => RK4
+        real(TKG)       , intent(in)                                :: fracA
+        real(TKG)       , intent(in)    , contiguous                :: varA(:)
+        real(TKG)       , intent(out)   , contiguous                :: varB(:)
+        real(TKG)       , intent(in)    , contiguous                :: meanA(:)
+        real(TKG)       , intent(out)   , contiguous                :: meanB(:)
     end subroutine
 #endif
 
@@ -9976,12 +9976,12 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanMergedOld_D1_RK3
 #endif
-        use pm_kind, only: TKC => RK3
-        real(TKC)       , intent(in)                                :: fracA
-        real(TKC)       , intent(in)    , contiguous                :: varA(:)
-        real(TKC)       , intent(out)   , contiguous                :: varB(:)
-        real(TKC)       , intent(in)    , contiguous                :: meanA(:)
-        real(TKC)       , intent(out)   , contiguous                :: meanB(:)
+        use pm_kind, only: TKG => RK3
+        real(TKG)       , intent(in)                                :: fracA
+        real(TKG)       , intent(in)    , contiguous                :: varA(:)
+        real(TKG)       , intent(out)   , contiguous                :: varB(:)
+        real(TKG)       , intent(in)    , contiguous                :: meanA(:)
+        real(TKG)       , intent(out)   , contiguous                :: meanB(:)
     end subroutine
 #endif
 
@@ -9990,12 +9990,12 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanMergedOld_D1_RK2
 #endif
-        use pm_kind, only: TKC => RK2
-        real(TKC)       , intent(in)                                :: fracA
-        real(TKC)       , intent(in)    , contiguous                :: varA(:)
-        real(TKC)       , intent(out)   , contiguous                :: varB(:)
-        real(TKC)       , intent(in)    , contiguous                :: meanA(:)
-        real(TKC)       , intent(out)   , contiguous                :: meanB(:)
+        use pm_kind, only: TKG => RK2
+        real(TKG)       , intent(in)                                :: fracA
+        real(TKG)       , intent(in)    , contiguous                :: varA(:)
+        real(TKG)       , intent(out)   , contiguous                :: varB(:)
+        real(TKG)       , intent(in)    , contiguous                :: meanA(:)
+        real(TKG)       , intent(out)   , contiguous                :: meanB(:)
     end subroutine
 #endif
 
@@ -10004,12 +10004,12 @@ module pm_sampleVar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setVarMeanMergedOld_D1_RK1
 #endif
-        use pm_kind, only: TKC => RK1
-        real(TKC)       , intent(in)                                :: fracA
-        real(TKC)       , intent(in)    , contiguous                :: varA(:)
-        real(TKC)       , intent(out)   , contiguous                :: varB(:)
-        real(TKC)       , intent(in)    , contiguous                :: meanA(:)
-        real(TKC)       , intent(out)   , contiguous                :: meanB(:)
+        use pm_kind, only: TKG => RK1
+        real(TKG)       , intent(in)                                :: fracA
+        real(TKG)       , intent(in)    , contiguous                :: varA(:)
+        real(TKG)       , intent(out)   , contiguous                :: varB(:)
+        real(TKG)       , intent(in)    , contiguous                :: meanA(:)
+        real(TKG)       , intent(out)   , contiguous                :: meanB(:)
     end subroutine
 #endif
 

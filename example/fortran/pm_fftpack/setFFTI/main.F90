@@ -15,11 +15,11 @@ program example
     disp = display_type(file = "main.out.F90")
 
     block
-        use pm_kind, only: CKC => CKS
-        complex(CKC), allocatable :: data(:), coef(:), work(:)
+        use pm_kind, only: CKG => CKS
+        complex(CKG), allocatable :: data(:), coef(:), work(:)
         call disp%skip()
-        call disp%show("data = [complex(CKC) :: (1., -6.), (2., -5.), (3., -4.), (4., -3.), (5., -2.), (6., -1.)]")
-                        data = [complex(CKC) :: (1., -6.), (2., -5.), (3., -4.), (4., -3.), (5., -2.), (6., -1.)]
+        call disp%show("data = [complex(CKG) :: (1., -6.), (2., -5.), (3., -4.), (4., -3.), (5., -2.), (6., -1.)]")
+                        data = [complex(CKG) :: (1., -6.), (2., -5.), (3., -4.), (4., -3.), (5., -2.), (6., -1.)]
         call disp%show("if (allocated(coef)) deallocate(coef); allocate(coef, mold = data)")
                         if (allocated(coef)) deallocate(coef); allocate(coef, mold = data)
         call disp%show("if (allocated(work)) deallocate(work); allocate(work, mold = data)")
@@ -47,11 +47,11 @@ program example
     end block
 
     block
-        use pm_kind, only: CKC => CKD
-        complex(CKC), allocatable :: data(:), coef(:), work(:)
+        use pm_kind, only: CKG => CKD
+        complex(CKG), allocatable :: data(:), coef(:), work(:)
         call disp%skip()
-        call disp%show("data = [complex(CKC) :: (1., -6.), (2., -5.), (3., -4.), (4., -3.), (5., -2.), (6., -1.)]")
-                        data = [complex(CKC) :: (1., -6.), (2., -5.), (3., -4.), (4., -3.), (5., -2.), (6., -1.)]
+        call disp%show("data = [complex(CKG) :: (1., -6.), (2., -5.), (3., -4.), (4., -3.), (5., -2.), (6., -1.)]")
+                        data = [complex(CKG) :: (1., -6.), (2., -5.), (3., -4.), (4., -3.), (5., -2.), (6., -1.)]
         call disp%show("if (allocated(coef)) deallocate(coef); allocate(coef, mold = data)")
                         if (allocated(coef)) deallocate(coef); allocate(coef, mold = data)
         call disp%show("if (allocated(work)) deallocate(work); allocate(work, mold = data)")
@@ -79,11 +79,11 @@ program example
     end block
 
     block
-        use pm_kind, only: CKC => CKH
-        complex(CKC), allocatable :: data(:), coef(:), work(:)
+        use pm_kind, only: CKG => CKH
+        complex(CKG), allocatable :: data(:), coef(:), work(:)
         call disp%skip()
-        call disp%show("data = [complex(CKC) :: (1., -6.), (2., -5.), (3., -4.), (4., -3.), (5., -2.), (6., -1.)]")
-                        data = [complex(CKC) :: (1., -6.), (2., -5.), (3., -4.), (4., -3.), (5., -2.), (6., -1.)]
+        call disp%show("data = [complex(CKG) :: (1., -6.), (2., -5.), (3., -4.), (4., -3.), (5., -2.), (6., -1.)]")
+                        data = [complex(CKG) :: (1., -6.), (2., -5.), (3., -4.), (4., -3.), (5., -2.), (6., -1.)]
         call disp%show("if (allocated(coef)) deallocate(coef); allocate(coef, mold = data)")
                         if (allocated(coef)) deallocate(coef); allocate(coef, mold = data)
         call disp%show("if (allocated(work)) deallocate(work); allocate(work, mold = data)")
@@ -111,11 +111,11 @@ program example
     end block
 
     block
-        use pm_kind, only: RKC => RKS
-        real(RKC), allocatable :: data(:), coef(:), work(:)
+        use pm_kind, only: RKG => RKS
+        real(RKG), allocatable :: data(:), coef(:), work(:)
         call disp%skip()
-        call disp%show("data = [real(RKC) :: 1., 2., 3., 4., 5., 6.5]")
-                        data = [real(RKC) :: 1., 2., 3., 4., 5., 6.5]
+        call disp%show("data = [real(RKG) :: 1., 2., 3., 4., 5., 6.5]")
+                        data = [real(RKG) :: 1., 2., 3., 4., 5., 6.5]
         call disp%show("if (allocated(coef)) deallocate(coef); allocate(coef, mold = data)")
                         if (allocated(coef)) deallocate(coef); allocate(coef, mold = data)
         call disp%show("if (allocated(work)) deallocate(work); allocate(work, mold = data)")
@@ -143,11 +143,11 @@ program example
     end block
 
     block
-        use pm_kind, only: RKC => RKD
-        real(RKC), allocatable :: data(:), coef(:), work(:)
+        use pm_kind, only: RKG => RKD
+        real(RKG), allocatable :: data(:), coef(:), work(:)
         call disp%skip()
-        call disp%show("data = [real(RKC) :: 1., 2., 3., 4., 5., 6.5]")
-                        data = [real(RKC) :: 1., 2., 3., 4., 5., 6.5]
+        call disp%show("data = [real(RKG) :: 1., 2., 3., 4., 5., 6.5]")
+                        data = [real(RKG) :: 1., 2., 3., 4., 5., 6.5]
         call disp%show("if (allocated(coef)) deallocate(coef); allocate(coef, mold = data)")
                         if (allocated(coef)) deallocate(coef); allocate(coef, mold = data)
         call disp%show("if (allocated(work)) deallocate(work); allocate(work, mold = data)")
@@ -175,11 +175,11 @@ program example
     end block
 
     block
-        use pm_kind, only: RKC => RKH
-        real(RKC), allocatable :: data(:), coef(:), work(:)
+        use pm_kind, only: RKG => RKH
+        real(RKG), allocatable :: data(:), coef(:), work(:)
         call disp%skip()
-        call disp%show("data = [real(RKC) :: 1., 2., 3., 4., 5., 6.5]")
-                        data = [real(RKC) :: 1., 2., 3., 4., 5., 6.5]
+        call disp%show("data = [real(RKG) :: 1., 2., 3., 4., 5., 6.5]")
+                        data = [real(RKG) :: 1., 2., 3., 4., 5., 6.5]
         call disp%show("if (allocated(coef)) deallocate(coef); allocate(coef, mold = data)")
                         if (allocated(coef)) deallocate(coef); allocate(coef, mold = data)
         call disp%show("if (allocated(work)) deallocate(work); allocate(work, mold = data)")

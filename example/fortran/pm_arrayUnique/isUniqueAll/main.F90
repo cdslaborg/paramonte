@@ -4,7 +4,7 @@ program example
     use pm_kind, only: SK ! Any kinds are supported.
     use pm_kind, only: IK ! Any kinds are supported.
     use pm_kind, only: CK ! Any kinds are supported.
-    use pm_kind, only: RKC => RK ! Any kinds are supported.
+    use pm_kind, only: RKG => RK ! Any kinds are supported.
     use pm_io, only: display_type
     use pm_arrayUnique, only: isUniqueAll
 
@@ -173,8 +173,8 @@ program example
     call disp%show("!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
     call disp%skip()
 
-    call disp%show("isUniqueAll([real(RKC) :: 1.01, 1.04, 0.98, 1.0, 1.02, 2.], iseq = iseq_RK)")
-    call disp%show( isUniqueAll([real(RKC) :: 1.01, 1.04, 0.98, 1.0, 1.02, 2.], iseq = iseq_RK) )
+    call disp%show("isUniqueAll([real(RKG) :: 1.01, 1.04, 0.98, 1.0, 1.02, 2.], iseq = iseq_RK)")
+    call disp%show( isUniqueAll([real(RKG) :: 1.01, 1.04, 0.98, 1.0, 1.02, 2.], iseq = iseq_RK) )
 
     call disp%skip()
     call disp%show("!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
@@ -188,9 +188,9 @@ program example
 contains
 
     pure function iseq_RK(element1, element2) result(iseq)
-        real(RKC)   , intent(in)    :: element1, element2
+        real(RKG)   , intent(in)    :: element1, element2
         logical(LK)                 :: iseq
-        iseq = abs(abs(element1) - abs(element2)) < 0.05_RKC
+        iseq = abs(abs(element1) - abs(element2)) < 0.05_RKG
     end function
 
     pure function iseq_SK(element1, element2) result(iseq)

@@ -34,17 +34,17 @@
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
         integer(IK) :: i
-        real(RKC)   , parameter     :: HUGE_RKC = huge(0._RKC)
-        real(RKC)   , parameter     :: LOG_HUGE = log(HUGE_RKC)
-        real(RKC)   , parameter     :: TOL = sqrt(epsilon(0._RKC))
-        real(RKC)                   :: alpha, logPDFNF, logMinX, logMaxX
-        real(RKC)                   :: output, output_ref, diff
+        real(RKG)   , parameter     :: HUGE_RKG = huge(0._RKG)
+        real(RKG)   , parameter     :: LOG_HUGE = log(HUGE_RKG)
+        real(RKG)   , parameter     :: TOL = sqrt(epsilon(0._RKG))
+        real(RKG)                   :: alpha, logPDFNF, logMinX, logMaxX
+        real(RKG)                   :: output, output_ref, diff
 
         assertion = .true._LK
 
         do i = 1_IK, 50_IK
-            logMinX = getUnifRand(-5._RKC, +4._RKC)
-            logMaxX = getUnifRand(logMinX + 1._RKC, logMinX + 4._RKC)
+            logMinX = getUnifRand(-5._RKG, +4._RKG)
+            logMaxX = getUnifRand(logMinX + 1._RKG, logMinX + 4._RKG)
             call runTestsWith(logMinX)
             call runTestsWith()
         end do
@@ -57,10 +57,10 @@
 
         subroutine runTestsWith(logMinX)
 
-            real(RKC), parameter :: SQRT_LOG_HUGE = sqrt(log(huge(0._RKC)))
-            real(RKC), intent(in), optional :: logMinX
+            real(RKG), parameter :: SQRT_LOG_HUGE = sqrt(log(huge(0._RKG)))
+            real(RKG), intent(in), optional :: logMinX
 
-            alpha = getUnifRand(0.5_RKC, +3._RKC)
+            alpha = getUnifRand(0.5_RKG, +3._RKG)
             if (present(logMinX)) then
                 logPDFNF = getPowerLogPDFNF(alpha, logMinX, logMaxX)
             else
@@ -69,7 +69,7 @@
 
 #if         getPowerLogPDF_ENABLED
             block
-                real(RKC) :: logx
+                real(RKG) :: logx
                 logx = getUnifRand(getOption(-SQRT_LOG_HUGE, logMinX), logMaxX)
                 call setPowerLogPDF(output_ref, logx, alpha, logPDFNF)
                 if (present(logMinX)) then
@@ -80,19 +80,19 @@
                 call compare(logMinX, logx)
             end block
 #elif       setPowerLogPDF_ENABLED
-            output_ref = 1._RKC
+            output_ref = 1._RKG
             block
                 use pm_quadPack, only: isFailedQuad, getQuadErr, GK31, weps
                 integer(IK) :: err, neval, nint, sindex(2000)
-                real(RKC) :: lb, abserr, sinfo(4,2000)
+                real(RKG) :: lb, abserr, sinfo(4,2000)
                 character(255, SK) :: msg
                 msg = SK_" "
-                lb = 0._RKC
+                lb = 0._RKG
                 if (present(logMinX)) lb = exp(logMinX)
-                if (alpha > 1._RKC) then
+                if (alpha > 1._RKG) then
                     assertion = assertion .and. .not. isFailedQuad(getPowerPDF, lb, exp(logMaxX), output, reltol = TOL, msg = msg)
                 else
-                    err = getQuadErr(getPowerPDF, lb, exp(logMaxX), 0._RKC, TOL, GK31, weps, output, abserr, sinfo, sindex, neval, nint) ! extends QAGS/QAGI routines of QuadPack.
+                    err = getQuadErr(getPowerPDF, lb, exp(logMaxX), 0._RKG, TOL, GK31, weps, output, abserr, sinfo, sindex, neval, nint) ! extends QAGS/QAGI routines of QuadPack.
                     assertion = assertion .and. err == 0_IK
                 end if
                 call report(logMinX)
@@ -110,7 +110,7 @@
 
 #if     getPowerLogPDF_ENABLED
         subroutine compare(logMinX, logx)
-            real(RKC), intent(in), optional :: logMinX, logx
+            real(RKG), intent(in), optional :: logMinX, logx
             diff = abs(output - output_ref)
             assertion = assertion .and. diff <= max(abs(output_ref) * TOL, TOL)
             call report(logMinX, logx)
@@ -122,8 +122,8 @@
             assertion = assertion .and. diff <= max(abs(output_ref) * TOL, TOL)
         end subroutine
         function getPowerPDF(x) result(pdf)
-            real(RKC), intent(in) :: x
-            real(RKC) :: pdf
+            real(RKG), intent(in) :: x
+            real(RKG) :: pdf
             call setPowerLogPDF(pdf, log(x), alpha, logPDFNF)
             pdf = exp(pdf)
         end function
@@ -134,14 +134,14 @@
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
         subroutine report(logMinX, logx)
-            real(RKC), intent(in), optional :: logMinX, logx
+            real(RKG), intent(in), optional :: logMinX, logx
             if (test%traceable .and. .not. assertion) then
                 ! LCOV_EXCL_START
                 write(test%disp%unit,"(*(g0,:,', '))")
                 write(test%disp%unit,"(*(g0,:,', '))") "present(logx)", present(logx)
                 write(test%disp%unit,"(*(g0,:,', '))") "present(logMinX)", present(logMinX)
-                write(test%disp%unit,"(*(g0,:,', '))") "getOption(HUGE_RKC, logx)", getOption(HUGE_RKC, logx)
-                write(test%disp%unit,"(*(g0,:,', '))") "getOption(-HUGE_RKC, logMinX)", getOption(-HUGE_RKC, logMinX)
+                write(test%disp%unit,"(*(g0,:,', '))") "getOption(HUGE_RKG, logx)", getOption(HUGE_RKG, logx)
+                write(test%disp%unit,"(*(g0,:,', '))") "getOption(-HUGE_RKG, logMinX)", getOption(-HUGE_RKG, logMinX)
                 write(test%disp%unit,"(*(g0,:,', '))") "logPDFNF", logPDFNF
                 write(test%disp%unit,"(*(g0,:,', '))") "logMaxX", logMaxX
                 write(test%disp%unit,"(*(g0,:,', '))") "alpha", alpha
@@ -161,18 +161,18 @@
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
         integer(IK) :: i
-        real(RKC)   , parameter     :: HUGE_RKC = huge(0._RKC)
-        real(RKC)   , parameter     :: LOG_HUGE = log(HUGE_RKC)
-        real(RKC)   , parameter     :: TOL = sqrt(epsilon(0._RKC))
-        real(RKC)                   :: alpha, logCDFNF, logMinX, logMaxX
-        real(RKC)                   :: output, output_ref, diff
+        real(RKG)   , parameter     :: HUGE_RKG = huge(0._RKG)
+        real(RKG)   , parameter     :: LOG_HUGE = log(HUGE_RKG)
+        real(RKG)   , parameter     :: TOL = sqrt(epsilon(0._RKG))
+        real(RKG)                   :: alpha, logCDFNF, logMinX, logMaxX
+        real(RKG)                   :: output, output_ref, diff
         logical(LK)                 :: logMinXPresent
 
         assertion = .true._LK
 
         do i = 1_IK, 300_IK
-            logMinX = getUnifRand(-5._RKC, +4._RKC)
-            logMaxX = getUnifRand(logMinX + 1._RKC, logMinX + 4._RKC)
+            logMinX = getUnifRand(-5._RKG, +4._RKG)
+            logMaxX = getUnifRand(logMinX + 1._RKG, logMinX + 4._RKG)
             call runTestsWith(logMinX = logMinX)
             call runTestsWith()
         end do
@@ -186,12 +186,12 @@
         subroutine runTestsWith(logMinX)
 
             use pm_val2str, only: getStr
-            real(RKC), parameter :: SQRT_LOG_HUGE = sqrt(LOG_HUGE)
-            real(RKC), intent(in), optional :: logMinX
-            real(RKC) :: logx
+            real(RKG), parameter :: SQRT_LOG_HUGE = sqrt(LOG_HUGE)
+            real(RKG), intent(in), optional :: logMinX
+            real(RKG) :: logx
 
             logMinXPresent = present(logMinX)
-            alpha = getUnifRand(0.5_RKC, +3._RKC)
+            alpha = getUnifRand(0.5_RKG, +3._RKG)
             if (logMinXPresent) then
                 logCDFNF = getPowerLogCDFNF(alpha, logMinX, logMaxX)
             else
@@ -224,7 +224,7 @@
             call report(logMinX, logx)
             call test%assert(assertion, SK_"@setPowerLogCDF(): The CDF of the Power distribution at the lower limit of the support must be zero.", int(__LINE__, IK))
 
-            output_ref = 0._RKC
+            output_ref = 0._RKG
             logx = logMaxX
 
             if (logMinXPresent) then
@@ -240,16 +240,16 @@
             block
                 use pm_quadPack, only: isFailedQuad, getQuadErr, GK31, weps
                 integer(IK) :: err, neval, nint, sindex(2000)
-                real(RKC) :: lb, abserr, sinfo(4,2000)
+                real(RKG) :: lb, abserr, sinfo(4,2000)
                 character(255, SK) :: msg
                 msg = SK_" "
-                lb = 0._RKC
+                lb = 0._RKG
                 if (logMinXPresent) lb = exp(logMinX)
-                logx = log(getUnifRand((exp(logMaxX) + lb) * .5_RKC, exp(logMaxX)))
-                if (alpha > 1._RKC) then
+                logx = log(getUnifRand((exp(logMaxX) + lb) * .5_RKG, exp(logMaxX)))
+                if (alpha > 1._RKG) then
                     assertion = assertion .and. .not. isFailedQuad(getPowerPDF, lb, exp(logx), output_ref, reltol = TOL, msg = msg)
                 else
-                    err = getQuadErr(getPowerPDF, lb, exp(logx), 0._RKC, TOL, GK31, weps, output_ref, abserr, sinfo, sindex, neval, nint) ! extends QAGS/QAGI routines of QuadPack.
+                    err = getQuadErr(getPowerPDF, lb, exp(logx), 0._RKG, TOL, GK31, weps, output_ref, abserr, sinfo, sindex, neval, nint) ! extends QAGS/QAGI routines of QuadPack.
                     assertion = assertion .and. err == 0_IK
                 end if
                 call report(logMinX, logx)
@@ -275,7 +275,7 @@
 #if     getPowerLogCDF_ENABLED
         subroutine compare(line, logMinX, logx)
             integer :: line
-            real(RKC), intent(in), optional :: logMinX, logx
+            real(RKG), intent(in), optional :: logMinX, logx
             diff = abs(output - output_ref)
             assertion = assertion .and. diff <= max(abs(output_ref) * TOL, TOL)
             call report(logMinX, logx)
@@ -288,8 +288,8 @@
         end subroutine
         function getPowerPDF(x) result(pdf)
             use pm_distPower, only: getPowerLogPDF
-            real(RKC), intent(in) :: x
-            real(RKC) :: pdf
+            real(RKG), intent(in) :: x
+            real(RKG) :: pdf
             if (logMinXPresent) then
                 pdf = exp(getPowerLogPDF(log(x), alpha, logMinX, logMaxX))
             else
@@ -303,14 +303,14 @@
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
         subroutine report(logMinX, logx)
-            real(RKC), intent(in), optional :: logMinX, logx
+            real(RKG), intent(in), optional :: logMinX, logx
             if (test%traceable .and. .not. assertion) then
                 ! LCOV_EXCL_START
                 write(test%disp%unit,"(*(g0,:,', '))")
                 write(test%disp%unit,"(*(g0,:,', '))") "present(logx)", present(logx)
                 write(test%disp%unit,"(*(g0,:,', '))") "present(logMinX)", present(logMinX)
-                write(test%disp%unit,"(*(g0,:,', '))") "getOption(HUGE_RKC, logx)", getOption(HUGE_RKC, logx)
-                write(test%disp%unit,"(*(g0,:,', '))") "getOption(-HUGE_RKC, logMinX)", getOption(-HUGE_RKC, logMinX)
+                write(test%disp%unit,"(*(g0,:,', '))") "getOption(HUGE_RKG, logx)", getOption(HUGE_RKG, logx)
+                write(test%disp%unit,"(*(g0,:,', '))") "getOption(-HUGE_RKG, logMinX)", getOption(-HUGE_RKG, logMinX)
                 write(test%disp%unit,"(*(g0,:,', '))") "logCDFNF", logCDFNF
                 write(test%disp%unit,"(*(g0,:,', '))") "logMaxX", logMaxX
                 write(test%disp%unit,"(*(g0,:,', '))") "alpha", alpha
@@ -330,18 +330,18 @@
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
         integer(IK) :: i
-        real(RKC)   , parameter     :: HUGE_RKC = huge(0._RKC)
-        real(RKC)   , parameter     :: LOG_HUGE = log(HUGE_RKC)
-        real(RKC)   , parameter     :: TOL = sqrt(epsilon(0._RKC))! * 1000
-        real(RKC)                   :: alpha, logCDFNF, logMinX, logMaxX
-        real(RKC)                   :: logx, output, output_ref, diff
+        real(RKG)   , parameter     :: HUGE_RKG = huge(0._RKG)
+        real(RKG)   , parameter     :: LOG_HUGE = log(HUGE_RKG)
+        real(RKG)   , parameter     :: TOL = sqrt(epsilon(0._RKG))! * 1000
+        real(RKG)                   :: alpha, logCDFNF, logMinX, logMaxX
+        real(RKG)                   :: logx, output, output_ref, diff
         logical(LK)                 :: logMinXPresent
 
         assertion = .true._LK
 
         do i = 1_IK, 500_IK
             logMinX = getUnifRand(-LOG_HUGE, LOG_HUGE)
-            logMaxX = getUnifRand(logMinX + 1._RKC, logMinX + 4._RKC)
+            logMaxX = getUnifRand(logMinX + 1._RKG, logMinX + 4._RKG)
             call runTestsWith(logMinX = logMinX)
             call runTestsWith()
         end do
@@ -355,11 +355,11 @@
         subroutine runTestsWith(logMinX)
 
             use pm_val2str, only: getStr
-            real(RKC), parameter :: SQRT_LOG_HUGE = sqrt(LOG_HUGE)
-            real(RKC), intent(in), optional :: logMinX
+            real(RKG), parameter :: SQRT_LOG_HUGE = sqrt(LOG_HUGE)
+            real(RKG), intent(in), optional :: logMinX
 
             logMinXPresent = present(logMinX)
-            alpha = getUnifRand(0.5_RKC, +3._RKC)
+            alpha = getUnifRand(0.5_RKG, +3._RKG)
             if (logMinXPresent) then
                 logCDFNF = getPowerLogCDFNF(alpha, logMinX, logMaxX)
             else
@@ -367,10 +367,10 @@
             end if
 
             if (i > 1_IK) then
-                logx = getUnifRand(getOption(logMaxX - 4._RKC, logMinX), logMaxX)
+                logx = getUnifRand(getOption(logMaxX - 4._RKG, logMinX), logMaxX)
             else ! test for logCDF = 0.
                 logx = logMaxX
-                output_ref = 0._RKC ! logCDF
+                output_ref = 0._RKG ! logCDF
             end if
             if (logMinXPresent) then
                 if (i > 1_IK) call setPowerLogCDF(output_ref, logx, alpha, logMinX, logCDFNF)
@@ -398,7 +398,7 @@
 
         subroutine report(line, logMinX, logx)
             integer, intent(in) :: line
-            real(RKC), intent(in), optional :: logMinX, logx
+            real(RKG), intent(in), optional :: logMinX, logx
             diff = abs(output - output_ref)
             assertion = assertion .and. diff <= max(abs(output_ref) * TOL, TOL)
             if (test%traceable .and. .not. assertion) then
@@ -406,8 +406,8 @@
                 write(test%disp%unit,"(*(g0,:,', '))")
                 write(test%disp%unit,"(*(g0,:,', '))") "present(logx)", present(logx)
                 write(test%disp%unit,"(*(g0,:,', '))") "present(logMinX)", present(logMinX)
-                write(test%disp%unit,"(*(g0,:,', '))") "getOption(HUGE_RKC, logx)", getOption(HUGE_RKC, logx)
-                write(test%disp%unit,"(*(g0,:,', '))") "getOption(-HUGE_RKC, logMinX)", getOption(-HUGE_RKC, logMinX)
+                write(test%disp%unit,"(*(g0,:,', '))") "getOption(HUGE_RKG, logx)", getOption(HUGE_RKG, logx)
+                write(test%disp%unit,"(*(g0,:,', '))") "getOption(-HUGE_RKG, logMinX)", getOption(-HUGE_RKG, logMinX)
                 write(test%disp%unit,"(*(g0,:,', '))") "logCDFNF", logCDFNF
                 write(test%disp%unit,"(*(g0,:,', '))") "logMaxX", logMaxX
                 write(test%disp%unit,"(*(g0,:,', '))") "alpha", alpha
@@ -430,19 +430,19 @@
         integer(IK) :: i
 
         integer(IK) , parameter     :: NSIM = 1000_IK
-        real(RKC)   , parameter     :: MEAN_REF = 0.5_RKC
-        real(RKC)   , parameter     :: HUGE_RKC = huge(0._RKC)
-        real(RKC)   , parameter     :: LOG_HUGE = log(HUGE_RKC)
-        real(RKC)   , parameter     :: TOL = 0.1_RKC
-        real(RKC)                   :: alpha, logCDFNF, logMinX, logMaxX
-        real(RKC)                   :: LogRand(NSIM), CDF(NSIM), mean, diff
+        real(RKG)   , parameter     :: MEAN_REF = 0.5_RKG
+        real(RKG)   , parameter     :: HUGE_RKG = huge(0._RKG)
+        real(RKG)   , parameter     :: LOG_HUGE = log(HUGE_RKG)
+        real(RKG)   , parameter     :: TOL = 0.1_RKG
+        real(RKG)                   :: alpha, logCDFNF, logMinX, logMaxX
+        real(RKG)                   :: LogRand(NSIM), CDF(NSIM), mean, diff
         logical(LK)                 :: logMinXPresent
 
         assertion = .true._LK
 
         do i = 1_IK, 2_IK
             logMinX = getUnifRand(-LOG_HUGE, LOG_HUGE)
-            logMaxX = getUnifRand(logMinX + 1._RKC, logMinX + 4._RKC)
+            logMaxX = getUnifRand(logMinX + 1._RKG, logMinX + 4._RKG)
             call runTestsWith(logMinX = logMinX)
             call runTestsWith()
         end do
@@ -458,25 +458,25 @@
             use pm_val2str, only: getStr
             use pm_sampleMean, only: getMean
             use pm_distNegExp, only: getNegExpRand
-            real(RKC), parameter :: SQRT_LOG_HUGE = sqrt(LOG_HUGE)
-            real(RKC), intent(in), optional :: logMinX
+            real(RKG), parameter :: SQRT_LOG_HUGE = sqrt(LOG_HUGE)
+            real(RKG), intent(in), optional :: logMinX
             integer(IK) :: j
 
             logMinXPresent = present(logMinX)
-            alpha = getUnifRand(0.5_RKC, +3._RKC)
+            alpha = getUnifRand(0.5_RKG, +3._RKG)
             if (logMinXPresent) then
                 logCDFNF = getPowerLogCDFNF(alpha, logMinX, logMaxX)
             else
                 logCDFNF = getPowerLogCDFNF(alpha, logMaxX)
             end if
 
-            LogRand = getUnifRand(getOption(logMaxX - 4._RKC, logMinX), logMaxX, s1 = size(LogRand, kind = IK))
+            LogRand = getUnifRand(getOption(logMaxX - 4._RKG, logMinX), logMaxX, s1 = size(LogRand, kind = IK))
             if (logMinXPresent) then
                 do j = 1_IK, size(LogRand, kind = IK)
 #if                 getPowerLogRand_ENABLED
                     LogRand(j) = getPowerLogRand(alpha, logMinX, logMaxX) ! Truncated Power distribution.
 #elif               setPowerLogRand_ENABLED
-                    call setPowerLogRand(LogRand(j), getNegExpRand(1._RKC), alpha, logMinX, logCDFNF)
+                    call setPowerLogRand(LogRand(j), getNegExpRand(1._RKG), alpha, logMinX, logCDFNF)
 #else
 #error              "Unrecognized interface."
 #endif
@@ -488,7 +488,7 @@
 #if                 getPowerLogRand_ENABLED
                     LogRand(j) = getPowerLogRand(alpha, logMaxX) ! Truncated Power distribution.
 #elif               setPowerLogRand_ENABLED
-                    call setPowerLogRand(LogRand(j), getNegExpRand(1._RKC), alpha, logCDFNF)
+                    call setPowerLogRand(LogRand(j), getNegExpRand(1._RKG), alpha, logCDFNF)
 #else
 #error              "Unrecognized interface."
 #endif
@@ -505,7 +505,7 @@
 
         subroutine report(line, logMinX, logRand, mean)
             integer, intent(in) :: line
-            real(RKC), intent(in), optional :: logMinX, logRand, mean
+            real(RKG), intent(in), optional :: logMinX, logRand, mean
             if (present(mean) .and. present(logRand)) then
                 error stop "Internal error occurred. Both `logRand` and `mean` input arguments cannot be present simultaneously." ! LCOV_EXCL_LINE
             elseif (present(mean)) then
@@ -521,8 +521,8 @@
                 write(test%disp%unit,"(*(g0,:,', '))")
                 write(test%disp%unit,"(*(g0,:,', '))") "present(LogRand)", present(LogRand)
                 write(test%disp%unit,"(*(g0,:,', '))") "present(logMinX)", present(logMinX)
-                write(test%disp%unit,"(*(g0,:,', '))") "getOption(HUGE_RKC, LogRand)", getOption(HUGE_RKC, LogRand)
-                write(test%disp%unit,"(*(g0,:,', '))") "getOption(-HUGE_RKC, logMinX)", getOption(-HUGE_RKC, logMinX)
+                write(test%disp%unit,"(*(g0,:,', '))") "getOption(HUGE_RKG, LogRand)", getOption(HUGE_RKG, LogRand)
+                write(test%disp%unit,"(*(g0,:,', '))") "getOption(-HUGE_RKG, logMinX)", getOption(-HUGE_RKG, logMinX)
                 write(test%disp%unit,"(*(g0,:,', '))") "logCDFNF", logCDFNF
                 write(test%disp%unit,"(*(g0,:,', '))") "logMaxX", logMaxX
                 write(test%disp%unit,"(*(g0,:,', '))") "alpha", alpha

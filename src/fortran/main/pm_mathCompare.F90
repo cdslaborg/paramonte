@@ -545,9 +545,9 @@ module pm_mathCompare
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isCloseDefault_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)        , intent(in)            :: x, y
-        real(CKC)           , intent(in), optional  :: reltol, abstol
+        use pm_kind, only: CKG => CK5
+        complex(CKG)        , intent(in)            :: x, y
+        real(CKG)           , intent(in), optional  :: reltol, abstol
         logical(LK)                                 :: close
     end function
 #endif
@@ -557,9 +557,9 @@ module pm_mathCompare
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isCloseDefault_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)        , intent(in)            :: x, y
-        real(CKC)           , intent(in), optional  :: reltol, abstol
+        use pm_kind, only: CKG => CK4
+        complex(CKG)        , intent(in)            :: x, y
+        real(CKG)           , intent(in), optional  :: reltol, abstol
         logical(LK)                                 :: close
     end function
 #endif
@@ -569,9 +569,9 @@ module pm_mathCompare
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isCloseDefault_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)        , intent(in)            :: x, y
-        real(CKC)           , intent(in), optional  :: reltol, abstol
+        use pm_kind, only: CKG => CK3
+        complex(CKG)        , intent(in)            :: x, y
+        real(CKG)           , intent(in), optional  :: reltol, abstol
         logical(LK)                                 :: close
     end function
 #endif
@@ -581,9 +581,9 @@ module pm_mathCompare
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isCloseDefault_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)        , intent(in)            :: x, y
-        real(CKC)           , intent(in), optional  :: reltol, abstol
+        use pm_kind, only: CKG => CK2
+        complex(CKG)        , intent(in)            :: x, y
+        real(CKG)           , intent(in), optional  :: reltol, abstol
         logical(LK)                                 :: close
     end function
 #endif
@@ -593,9 +593,9 @@ module pm_mathCompare
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isCloseDefault_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)        , intent(in)            :: x, y
-        real(CKC)           , intent(in), optional  :: reltol, abstol
+        use pm_kind, only: CKG => CK1
+        complex(CKG)        , intent(in)            :: x, y
+        real(CKG)           , intent(in), optional  :: reltol, abstol
         logical(LK)                                 :: close
     end function
 #endif
@@ -607,9 +607,9 @@ module pm_mathCompare
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isCloseDefault_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)           , intent(in)            :: x, y
-        real(RKC)           , intent(in), optional  :: reltol, abstol
+        use pm_kind, only: RKG => RK5
+        real(RKG)           , intent(in)            :: x, y
+        real(RKG)           , intent(in), optional  :: reltol, abstol
         logical(LK)                                 :: close
     end function
 #endif
@@ -619,9 +619,9 @@ module pm_mathCompare
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isCloseDefault_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)           , intent(in)            :: x, y
-        real(RKC)           , intent(in), optional  :: reltol, abstol
+        use pm_kind, only: RKG => RK4
+        real(RKG)           , intent(in)            :: x, y
+        real(RKG)           , intent(in), optional  :: reltol, abstol
         logical(LK)                                 :: close
     end function
 #endif
@@ -631,9 +631,9 @@ module pm_mathCompare
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isCloseDefault_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)           , intent(in)            :: x, y
-        real(RKC)           , intent(in), optional  :: reltol, abstol
+        use pm_kind, only: RKG => RK3
+        real(RKG)           , intent(in)            :: x, y
+        real(RKG)           , intent(in), optional  :: reltol, abstol
         logical(LK)                                 :: close
     end function
 #endif
@@ -643,9 +643,9 @@ module pm_mathCompare
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isCloseDefault_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)           , intent(in)            :: x, y
-        real(RKC)           , intent(in), optional  :: reltol, abstol
+        use pm_kind, only: RKG => RK2
+        real(RKG)           , intent(in)            :: x, y
+        real(RKG)           , intent(in), optional  :: reltol, abstol
         logical(LK)                                 :: close
     end function
 #endif
@@ -655,9 +655,9 @@ module pm_mathCompare
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isCloseDefault_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)           , intent(in)            :: x, y
-        real(RKC)           , intent(in), optional  :: reltol, abstol
+        use pm_kind, only: RKG => RK1
+        real(RKG)           , intent(in)            :: x, y
+        real(RKG)           , intent(in), optional  :: reltol, abstol
         logical(LK)                                 :: close
     end function
 #endif
@@ -675,10 +675,10 @@ module pm_mathCompare
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isCloseReference_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)        , intent(in)            :: x, y
+        use pm_kind, only: CKG => CK5
+        complex(CKG)        , intent(in)            :: x, y
         type(reference_type), intent(in)            :: method
-        real(CKC)           , intent(in), optional  :: reltol, abstol
+        real(CKG)           , intent(in), optional  :: reltol, abstol
         logical(LK)                                 :: close
     end function
 #endif
@@ -688,10 +688,10 @@ module pm_mathCompare
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isCloseReference_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)        , intent(in)            :: x, y
+        use pm_kind, only: CKG => CK4
+        complex(CKG)        , intent(in)            :: x, y
         type(reference_type), intent(in)            :: method
-        real(CKC)           , intent(in), optional  :: reltol, abstol
+        real(CKG)           , intent(in), optional  :: reltol, abstol
         logical(LK)                                 :: close
     end function
 #endif
@@ -701,10 +701,10 @@ module pm_mathCompare
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isCloseReference_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)        , intent(in)            :: x, y
+        use pm_kind, only: CKG => CK3
+        complex(CKG)        , intent(in)            :: x, y
         type(reference_type), intent(in)            :: method
-        real(CKC)           , intent(in), optional  :: reltol, abstol
+        real(CKG)           , intent(in), optional  :: reltol, abstol
         logical(LK)                                 :: close
     end function
 #endif
@@ -714,10 +714,10 @@ module pm_mathCompare
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isCloseReference_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)        , intent(in)            :: x, y
+        use pm_kind, only: CKG => CK2
+        complex(CKG)        , intent(in)            :: x, y
         type(reference_type), intent(in)            :: method
-        real(CKC)           , intent(in), optional  :: reltol, abstol
+        real(CKG)           , intent(in), optional  :: reltol, abstol
         logical(LK)                                 :: close
     end function
 #endif
@@ -727,10 +727,10 @@ module pm_mathCompare
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isCloseReference_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)        , intent(in)            :: x, y
+        use pm_kind, only: CKG => CK1
+        complex(CKG)        , intent(in)            :: x, y
         type(reference_type), intent(in)            :: method
-        real(CKC)           , intent(in), optional  :: reltol, abstol
+        real(CKG)           , intent(in), optional  :: reltol, abstol
         logical(LK)                                 :: close
     end function
 #endif
@@ -742,10 +742,10 @@ module pm_mathCompare
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isCloseReference_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)           , intent(in)            :: x, y
+        use pm_kind, only: RKG => RK5
+        real(RKG)           , intent(in)            :: x, y
         type(reference_type), intent(in)            :: method
-        real(RKC)           , intent(in), optional  :: reltol, abstol
+        real(RKG)           , intent(in), optional  :: reltol, abstol
         logical(LK)                                 :: close
     end function
 #endif
@@ -755,10 +755,10 @@ module pm_mathCompare
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isCloseReference_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)           , intent(in)            :: x, y
+        use pm_kind, only: RKG => RK4
+        real(RKG)           , intent(in)            :: x, y
         type(reference_type), intent(in)            :: method
-        real(RKC)           , intent(in), optional  :: reltol, abstol
+        real(RKG)           , intent(in), optional  :: reltol, abstol
         logical(LK)                                 :: close
     end function
 #endif
@@ -768,10 +768,10 @@ module pm_mathCompare
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isCloseReference_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)           , intent(in)            :: x, y
+        use pm_kind, only: RKG => RK3
+        real(RKG)           , intent(in)            :: x, y
         type(reference_type), intent(in)            :: method
-        real(RKC)           , intent(in), optional  :: reltol, abstol
+        real(RKG)           , intent(in), optional  :: reltol, abstol
         logical(LK)                                 :: close
     end function
 #endif
@@ -781,10 +781,10 @@ module pm_mathCompare
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isCloseReference_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)           , intent(in)            :: x, y
+        use pm_kind, only: RKG => RK2
+        real(RKG)           , intent(in)            :: x, y
         type(reference_type), intent(in)            :: method
-        real(RKC)           , intent(in), optional  :: reltol, abstol
+        real(RKG)           , intent(in), optional  :: reltol, abstol
         logical(LK)                                 :: close
     end function
 #endif
@@ -794,10 +794,10 @@ module pm_mathCompare
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isCloseReference_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)           , intent(in)            :: x, y
+        use pm_kind, only: RKG => RK1
+        real(RKG)           , intent(in)            :: x, y
         type(reference_type), intent(in)            :: method
-        real(RKC)           , intent(in), optional  :: reltol, abstol
+        real(RKG)           , intent(in), optional  :: reltol, abstol
         logical(LK)                                 :: close
     end function
 #endif
@@ -815,10 +815,10 @@ module pm_mathCompare
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isCloseStrong_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)        , intent(in)            :: x, y
+        use pm_kind, only: CKG => CK5
+        complex(CKG)        , intent(in)            :: x, y
         type(strong_type)   , intent(in)            :: method
-        real(CKC)           , intent(in), optional  :: reltol, abstol
+        real(CKG)           , intent(in), optional  :: reltol, abstol
         logical(LK)                                 :: close
     end function
 #endif
@@ -828,10 +828,10 @@ module pm_mathCompare
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isCloseStrong_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)        , intent(in)            :: x, y
+        use pm_kind, only: CKG => CK4
+        complex(CKG)        , intent(in)            :: x, y
         type(strong_type)   , intent(in)            :: method
-        real(CKC)           , intent(in), optional  :: reltol, abstol
+        real(CKG)           , intent(in), optional  :: reltol, abstol
         logical(LK)                                 :: close
     end function
 #endif
@@ -841,10 +841,10 @@ module pm_mathCompare
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isCloseStrong_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)        , intent(in)            :: x, y
+        use pm_kind, only: CKG => CK3
+        complex(CKG)        , intent(in)            :: x, y
         type(strong_type)   , intent(in)            :: method
-        real(CKC)           , intent(in), optional  :: reltol, abstol
+        real(CKG)           , intent(in), optional  :: reltol, abstol
         logical(LK)                                 :: close
     end function
 #endif
@@ -854,10 +854,10 @@ module pm_mathCompare
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isCloseStrong_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)        , intent(in)            :: x, y
+        use pm_kind, only: CKG => CK2
+        complex(CKG)        , intent(in)            :: x, y
         type(strong_type)   , intent(in)            :: method
-        real(CKC)           , intent(in), optional  :: reltol, abstol
+        real(CKG)           , intent(in), optional  :: reltol, abstol
         logical(LK)                                 :: close
     end function
 #endif
@@ -867,10 +867,10 @@ module pm_mathCompare
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isCloseStrong_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)        , intent(in)            :: x, y
+        use pm_kind, only: CKG => CK1
+        complex(CKG)        , intent(in)            :: x, y
         type(strong_type)   , intent(in)            :: method
-        real(CKC)           , intent(in), optional  :: reltol, abstol
+        real(CKG)           , intent(in), optional  :: reltol, abstol
         logical(LK)                                 :: close
     end function
 #endif
@@ -882,10 +882,10 @@ module pm_mathCompare
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isCloseStrong_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)           , intent(in)            :: x, y
+        use pm_kind, only: RKG => RK5
+        real(RKG)           , intent(in)            :: x, y
         type(strong_type)   , intent(in)            :: method
-        real(RKC)           , intent(in), optional  :: reltol, abstol
+        real(RKG)           , intent(in), optional  :: reltol, abstol
         logical(LK)                                 :: close
     end function
 #endif
@@ -895,10 +895,10 @@ module pm_mathCompare
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isCloseStrong_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)           , intent(in)            :: x, y
+        use pm_kind, only: RKG => RK4
+        real(RKG)           , intent(in)            :: x, y
         type(strong_type)   , intent(in)            :: method
-        real(RKC)           , intent(in), optional  :: reltol, abstol
+        real(RKG)           , intent(in), optional  :: reltol, abstol
         logical(LK)                                 :: close
     end function
 #endif
@@ -908,10 +908,10 @@ module pm_mathCompare
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isCloseStrong_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)           , intent(in)            :: x, y
+        use pm_kind, only: RKG => RK3
+        real(RKG)           , intent(in)            :: x, y
         type(strong_type)   , intent(in)            :: method
-        real(RKC)           , intent(in), optional  :: reltol, abstol
+        real(RKG)           , intent(in), optional  :: reltol, abstol
         logical(LK)                                 :: close
     end function
 #endif
@@ -921,10 +921,10 @@ module pm_mathCompare
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isCloseStrong_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)           , intent(in)            :: x, y
+        use pm_kind, only: RKG => RK2
+        real(RKG)           , intent(in)            :: x, y
         type(strong_type)   , intent(in)            :: method
-        real(RKC)           , intent(in), optional  :: reltol, abstol
+        real(RKG)           , intent(in), optional  :: reltol, abstol
         logical(LK)                                 :: close
     end function
 #endif
@@ -934,10 +934,10 @@ module pm_mathCompare
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isCloseStrong_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)           , intent(in)            :: x, y
+        use pm_kind, only: RKG => RK1
+        real(RKG)           , intent(in)            :: x, y
         type(strong_type)   , intent(in)            :: method
-        real(RKC)           , intent(in), optional  :: reltol, abstol
+        real(RKG)           , intent(in), optional  :: reltol, abstol
         logical(LK)                                 :: close
     end function
 #endif
@@ -955,10 +955,10 @@ module pm_mathCompare
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isCloseWeak_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)        , intent(in)            :: x, y
+        use pm_kind, only: CKG => CK5
+        complex(CKG)        , intent(in)            :: x, y
         type(weak_type)     , intent(in)            :: method
-        real(CKC)           , intent(in), optional  :: reltol, abstol
+        real(CKG)           , intent(in), optional  :: reltol, abstol
         logical(LK)                                 :: close
     end function
 #endif
@@ -968,10 +968,10 @@ module pm_mathCompare
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isCloseWeak_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)        , intent(in)            :: x, y
+        use pm_kind, only: CKG => CK4
+        complex(CKG)        , intent(in)            :: x, y
         type(weak_type)     , intent(in)            :: method
-        real(CKC)           , intent(in), optional  :: reltol, abstol
+        real(CKG)           , intent(in), optional  :: reltol, abstol
         logical(LK)                                 :: close
     end function
 #endif
@@ -981,10 +981,10 @@ module pm_mathCompare
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isCloseWeak_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)        , intent(in)            :: x, y
+        use pm_kind, only: CKG => CK3
+        complex(CKG)        , intent(in)            :: x, y
         type(weak_type)     , intent(in)            :: method
-        real(CKC)           , intent(in), optional  :: reltol, abstol
+        real(CKG)           , intent(in), optional  :: reltol, abstol
         logical(LK)                                 :: close
     end function
 #endif
@@ -994,10 +994,10 @@ module pm_mathCompare
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isCloseWeak_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)        , intent(in)            :: x, y
+        use pm_kind, only: CKG => CK2
+        complex(CKG)        , intent(in)            :: x, y
         type(weak_type)     , intent(in)            :: method
-        real(CKC)           , intent(in), optional  :: reltol, abstol
+        real(CKG)           , intent(in), optional  :: reltol, abstol
         logical(LK)                                 :: close
     end function
 #endif
@@ -1007,10 +1007,10 @@ module pm_mathCompare
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isCloseWeak_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)        , intent(in)            :: x, y
+        use pm_kind, only: CKG => CK1
+        complex(CKG)        , intent(in)            :: x, y
         type(weak_type)     , intent(in)            :: method
-        real(CKC)           , intent(in), optional  :: reltol, abstol
+        real(CKG)           , intent(in), optional  :: reltol, abstol
         logical(LK)                                 :: close
     end function
 #endif
@@ -1022,10 +1022,10 @@ module pm_mathCompare
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isCloseWeak_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)           , intent(in)            :: x, y
+        use pm_kind, only: RKG => RK5
+        real(RKG)           , intent(in)            :: x, y
         type(weak_type)     , intent(in)            :: method
-        real(RKC)           , intent(in), optional  :: reltol, abstol
+        real(RKG)           , intent(in), optional  :: reltol, abstol
         logical(LK)                                 :: close
     end function
 #endif
@@ -1035,10 +1035,10 @@ module pm_mathCompare
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isCloseWeak_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)           , intent(in)            :: x, y
+        use pm_kind, only: RKG => RK4
+        real(RKG)           , intent(in)            :: x, y
         type(weak_type)     , intent(in)            :: method
-        real(RKC)           , intent(in), optional  :: reltol, abstol
+        real(RKG)           , intent(in), optional  :: reltol, abstol
         logical(LK)                                 :: close
     end function
 #endif
@@ -1048,10 +1048,10 @@ module pm_mathCompare
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isCloseWeak_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)           , intent(in)            :: x, y
+        use pm_kind, only: RKG => RK3
+        real(RKG)           , intent(in)            :: x, y
         type(weak_type)     , intent(in)            :: method
-        real(RKC)           , intent(in), optional  :: reltol, abstol
+        real(RKG)           , intent(in), optional  :: reltol, abstol
         logical(LK)                                 :: close
     end function
 #endif
@@ -1061,10 +1061,10 @@ module pm_mathCompare
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isCloseWeak_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)           , intent(in)            :: x, y
+        use pm_kind, only: RKG => RK2
+        real(RKG)           , intent(in)            :: x, y
         type(weak_type)     , intent(in)            :: method
-        real(RKC)           , intent(in), optional  :: reltol, abstol
+        real(RKG)           , intent(in), optional  :: reltol, abstol
         logical(LK)                                 :: close
     end function
 #endif
@@ -1074,10 +1074,10 @@ module pm_mathCompare
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isCloseWeak_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)           , intent(in)            :: x, y
+        use pm_kind, only: RKG => RK1
+        real(RKG)           , intent(in)            :: x, y
         type(weak_type)     , intent(in)            :: method
-        real(RKC)           , intent(in), optional  :: reltol, abstol
+        real(RKG)           , intent(in), optional  :: reltol, abstol
         logical(LK)                                 :: close
     end function
 #endif
@@ -1095,10 +1095,10 @@ module pm_mathCompare
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isCloseMean_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)        , intent(in)            :: x, y
+        use pm_kind, only: CKG => CK5
+        complex(CKG)        , intent(in)            :: x, y
         type(mean_type)     , intent(in)            :: method
-        real(CKC)           , intent(in), optional  :: reltol, abstol
+        real(CKG)           , intent(in), optional  :: reltol, abstol
         logical(LK)                                 :: close
     end function
 #endif
@@ -1108,10 +1108,10 @@ module pm_mathCompare
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isCloseMean_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)        , intent(in)            :: x, y
+        use pm_kind, only: CKG => CK4
+        complex(CKG)        , intent(in)            :: x, y
         type(mean_type)     , intent(in)            :: method
-        real(CKC)           , intent(in), optional  :: reltol, abstol
+        real(CKG)           , intent(in), optional  :: reltol, abstol
         logical(LK)                                 :: close
     end function
 #endif
@@ -1121,10 +1121,10 @@ module pm_mathCompare
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isCloseMean_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)        , intent(in)            :: x, y
+        use pm_kind, only: CKG => CK3
+        complex(CKG)        , intent(in)            :: x, y
         type(mean_type)     , intent(in)            :: method
-        real(CKC)           , intent(in), optional  :: reltol, abstol
+        real(CKG)           , intent(in), optional  :: reltol, abstol
         logical(LK)                                 :: close
     end function
 #endif
@@ -1134,10 +1134,10 @@ module pm_mathCompare
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isCloseMean_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)        , intent(in)            :: x, y
+        use pm_kind, only: CKG => CK2
+        complex(CKG)        , intent(in)            :: x, y
         type(mean_type)     , intent(in)            :: method
-        real(CKC)           , intent(in), optional  :: reltol, abstol
+        real(CKG)           , intent(in), optional  :: reltol, abstol
         logical(LK)                                 :: close
     end function
 #endif
@@ -1147,10 +1147,10 @@ module pm_mathCompare
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isCloseMean_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)        , intent(in)            :: x, y
+        use pm_kind, only: CKG => CK1
+        complex(CKG)        , intent(in)            :: x, y
         type(mean_type)     , intent(in)            :: method
-        real(CKC)           , intent(in), optional  :: reltol, abstol
+        real(CKG)           , intent(in), optional  :: reltol, abstol
         logical(LK)                                 :: close
     end function
 #endif
@@ -1162,10 +1162,10 @@ module pm_mathCompare
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isCloseMean_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)           , intent(in)            :: x, y
+        use pm_kind, only: RKG => RK5
+        real(RKG)           , intent(in)            :: x, y
         type(mean_type)     , intent(in)            :: method
-        real(RKC)           , intent(in), optional  :: reltol, abstol
+        real(RKG)           , intent(in), optional  :: reltol, abstol
         logical(LK)                                 :: close
     end function
 #endif
@@ -1175,10 +1175,10 @@ module pm_mathCompare
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isCloseMean_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)           , intent(in)            :: x, y
+        use pm_kind, only: RKG => RK4
+        real(RKG)           , intent(in)            :: x, y
         type(mean_type)     , intent(in)            :: method
-        real(RKC)           , intent(in), optional  :: reltol, abstol
+        real(RKG)           , intent(in), optional  :: reltol, abstol
         logical(LK)                                 :: close
     end function
 #endif
@@ -1188,10 +1188,10 @@ module pm_mathCompare
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isCloseMean_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)           , intent(in)            :: x, y
+        use pm_kind, only: RKG => RK3
+        real(RKG)           , intent(in)            :: x, y
         type(mean_type)     , intent(in)            :: method
-        real(RKC)           , intent(in), optional  :: reltol, abstol
+        real(RKG)           , intent(in), optional  :: reltol, abstol
         logical(LK)                                 :: close
     end function
 #endif
@@ -1201,10 +1201,10 @@ module pm_mathCompare
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isCloseMean_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)           , intent(in)            :: x, y
+        use pm_kind, only: RKG => RK2
+        real(RKG)           , intent(in)            :: x, y
         type(mean_type)     , intent(in)            :: method
-        real(RKC)           , intent(in), optional  :: reltol, abstol
+        real(RKG)           , intent(in), optional  :: reltol, abstol
         logical(LK)                                 :: close
     end function
 #endif
@@ -1214,10 +1214,10 @@ module pm_mathCompare
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isCloseMean_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)           , intent(in)            :: x, y
+        use pm_kind, only: RKG => RK1
+        real(RKG)           , intent(in)            :: x, y
         type(mean_type)     , intent(in)            :: method
-        real(RKC)           , intent(in), optional  :: reltol, abstol
+        real(RKG)           , intent(in), optional  :: reltol, abstol
         logical(LK)                                 :: close
     end function
 #endif

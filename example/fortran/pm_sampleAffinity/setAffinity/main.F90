@@ -28,8 +28,8 @@ program example
     call disp%skip()
 
     block
-        use pm_kind, only: RKC => RKS
-        real(RKC), allocatable :: tlate(:), tform(:,:), sample(:,:), affinInv(:,:), affinity(:,:)
+        use pm_kind, only: RKG => RKS
+        real(RKG), allocatable :: tlate(:), tform(:,:), sample(:,:), affinInv(:,:), affinity(:,:)
         do itry = 1, ntry
             call disp%skip()
             call disp%show("dim = 2; ndim = getUnifRand(1, 3); nsam = getUnifRand(4, 5)")
@@ -71,8 +71,8 @@ program example
             call disp%show("transpose(sample) ! for comparison with affinInv.")
             call disp%show( transpose(sample) )
             call disp%skip()
-            call disp%show("call setMatInit(tform(2:,1:ndim-1), lowDia, vlow = 0._RKC, vdia = 0._RKC) ! make tform an upper-diagonal matrix.")
-                            call setMatInit(tform(2:,1:ndim-1), lowDia, vlow = 0._RKC, vdia = 0._RKC) ! make tform an upper-diagonal matrix.
+            call disp%show("call setMatInit(tform(2:,1:ndim-1), lowDia, vlow = 0._RKG, vdia = 0._RKG) ! make tform an upper-diagonal matrix.")
+                            call setMatInit(tform(2:,1:ndim-1), lowDia, vlow = 0._RKG, vdia = 0._RKG) ! make tform an upper-diagonal matrix.
             call disp%show("tform")
             call disp%show( tform )
             call disp%show("call setAffinity(affinity, sample, dim, tform, class = upperDiag) ! whole sample transformation.")
@@ -160,8 +160,8 @@ program example
     call disp%skip()
 
     block
-        use pm_kind, only: RKC => RKS
-        real(RKC), allocatable :: tlate(:), tform(:,:), sample(:,:), affinInv(:,:), affinity(:,:)
+        use pm_kind, only: RKG => RKS
+        real(RKG), allocatable :: tlate(:), tform(:,:), sample(:,:), affinInv(:,:), affinity(:,:)
         do itry = 1, ntry
             call disp%skip()
             call disp%show("dim = 1; ndim = getUnifRand(1, 3); nsam = getUnifRand(4, 5)")
@@ -203,8 +203,8 @@ program example
             call disp%show("sample ! for comparison with affinInv.")
             call disp%show( sample )
             call disp%skip()
-            call disp%show("call setMatInit(tform(2:,1:ndim-1), lowDia, vlow = 0._RKC, vdia = 0._RKC) ! make tform an upper-diagonal matrix.")
-                            call setMatInit(tform(2:,1:ndim-1), lowDia, vlow = 0._RKC, vdia = 0._RKC) ! make tform an upper-diagonal matrix.
+            call disp%show("call setMatInit(tform(2:,1:ndim-1), lowDia, vlow = 0._RKG, vdia = 0._RKG) ! make tform an upper-diagonal matrix.")
+                            call setMatInit(tform(2:,1:ndim-1), lowDia, vlow = 0._RKG, vdia = 0._RKG) ! make tform an upper-diagonal matrix.
             call disp%show("tform")
             call disp%show( tform )
             call disp%show("call setAffinity(affinity, sample, dim, tform, class = upperDiag) ! whole sample transformation.")
@@ -300,11 +300,11 @@ program example
         use pm_distUnifEll, only: getUnifEllRand, uppDia
         use pm_sampleShift, only: getShifted
         use pm_matrixInv, only: getMatInv
-        use pm_kind, only: RKC => RKS
+        use pm_kind, only: RKG => RKS
         type(css_type), allocatable :: shapes(:), tforms(:)
         integer(IK) :: ishape, itform
         integer(IK), parameter :: nsam = 1000, ndim = 2, dim = 2
-        real(RKC), allocatable :: angle, tlate(:), cov(:,:), tform(:,:), sample(:,:), affinity(:,:), affinInv(:,:)
+        real(RKG), allocatable :: angle, tlate(:), cov(:,:), tform(:,:), sample(:,:), affinity(:,:), affinInv(:,:)
         tforms = [css_type(SK_"warp"), css_type(SK_"rotation")]
         shapes = [css_type(SK_"circle"), css_type(SK_"square")]
         tlate = getUnifRand(0, 5, ndim)

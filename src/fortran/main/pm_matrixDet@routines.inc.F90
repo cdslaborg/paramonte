@@ -25,11 +25,11 @@
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #if     CK_ENABLED
-#define TYPE_KIND complex(TKC)
+#define TYPE_KIND complex(TKG)
 #define GET_CONJG(X) conjg(X)
 #elif   RK_ENABLED
 #define GET_CONJG(X) X
-#define TYPE_KIND real(TKC)
+#define TYPE_KIND real(TKG)
 #else
 #error  "Unrecognized interface."
 #endif
@@ -126,9 +126,9 @@ call setMatDetSqrtLog(mat, SUBSET, detSqrtLog, info, chol, nothing)
                 call setMatChol(chol, uppDia, info, iteration)
             end if
             if (info /= 0_IK) error stop "The Cholesky factorization of large matrix failed."
-            OUTPUT = GETLOG(real(chol(1, 1), TKC))
+            OUTPUT = GETLOG(real(chol(1, 1), TKG))
             do info = 2, size(chol, 1, IK)
-                INCREMENT(OUTPUT,real(chol(info, info), TKC))
+                INCREMENT(OUTPUT,real(chol(info, info), TKG))
             end do
             info = 0_IK
         end if
@@ -138,7 +138,7 @@ call setMatDetSqrtLog(mat, SUBSET, detSqrtLog, info, chol, nothing)
 #elif   setMatDetSqrt_ENABLED || setMatDetSqrtLog_ENABLED
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        real(TKC) :: summ
+        real(TKG) :: summ
         integer(IK) :: irow
 !#if     IMP_ENABLED
         integer(IK) :: ndim
@@ -167,12 +167,12 @@ call setMatDetSqrtLog(mat, SUBSET, detSqrtLog, info, chol, nothing)
 #endif
         if (1_IK < ndim) then
             info = 1_IK
-            summ = real(mat(info, info), TKC)
-            if (0._TKC < summ) then
+            summ = real(mat(info, info), TKG)
+            if (0._TKG < summ) then
                 summ = sqrt(summ)
                 chol(info, info) = summ
                 OUTPUT = GETLOG(summ)
-                summ = 1._TKC / summ
+                summ = 1._TKG / summ
 #if             ONO_ENABLED
                 do irow = info + 1, ndim
                     GETMAT(chol, irow, info) = (GETMAT(mat, irow, info) - dot_product(GETMAT(chol, info, 1 : info - 1), GETMAT(chol, irow, 1 : info - 1))) * summ
@@ -184,17 +184,17 @@ call setMatDetSqrtLog(mat, SUBSET, detSqrtLog, info, chol, nothing)
 #endif
                 do info = 2_IK, ndim
 #if                 ONO_ENABLED
-                    summ = real(mat(info, info), TKC) - real(dot_product(GETMAT(chol, info, 1 : info - 1), GETMAT(chol, info, 1 : info - 1)), TKC)
+                    summ = real(mat(info, info), TKG) - real(dot_product(GETMAT(chol, info, 1 : info - 1), GETMAT(chol, info, 1 : info - 1)), TKG)
 #elif               OTH_ENABLED
-                    summ = real(mat(info, info), TKC) - real(dot_product(GETMAT(chol, 1 : info - 1, info), GETMAT(chol, 1 : info - 1, info)), TKC)
+                    summ = real(mat(info, info), TKG) - real(dot_product(GETMAT(chol, 1 : info - 1, info), GETMAT(chol, 1 : info - 1, info)), TKG)
 #else
 #error              "Unrecognized interface."
 #endif
-                    if (0._TKC < summ) then
+                    if (0._TKG < summ) then
                         summ = sqrt(summ)
                         chol(info, info) = summ
                         INCREMENT(OUTPUT,summ)
-                        summ = 1._TKC / summ
+                        summ = 1._TKG / summ
 #if                     ONO_ENABLED
                         !GETMAT(chol, info + 1 : ndim, info) = (GETMAT(mat, info + 1 : ndim, info) - GET_MATMUL(GET_CONJG(GETMAT(chol, info + 1 : ndim, 1 : info - 1)),GETMAT(chol, info, 1 : info - 1))) * summ
                         do irow = info + 1, ndim
@@ -212,8 +212,8 @@ call setMatDetSqrtLog(mat, SUBSET, detSqrtLog, info, chol, nothing)
                 info = 0_IK
             end if
         elseif (1_IK == ndim) then
-            summ = real(mat(1, 1), TKC)
-            if (0._TKC < real(summ, TKC)) then
+            summ = real(mat(1, 1), TKG)
+            if (0._TKG < real(summ, TKG)) then
                 summ = sqrt(summ)
                 OUTPUT = GETLOG(summ)
                 chol(1,1) = summ

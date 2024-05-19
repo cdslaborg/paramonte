@@ -45,9 +45,9 @@
             end do
             call setShuffled(index, count)
 #if         D0_ENABLED && SK_ENABLED
-            allocate(character(count,SKC) :: arrayShuffled)
+            allocate(character(count,SKG) :: arrayShuffled)
 #elif       D1_ENABLED && SK_ENABLED
-            allocate(character(len(array,IK),SKC) :: arrayShuffled(count))
+            allocate(character(len(array,IK),SKG) :: arrayShuffled(count))
 #elif       D1_ENABLED
             allocate(arrayShuffled(count))
 #else
@@ -66,19 +66,19 @@
         !%%%%%%%%%%%%%%%%%%
 
 #if     D0_ENABLED && SK_ENABLED
-        character(1,SKC) :: temp
+        character(1,SKG) :: temp
 #elif   D1_ENABLED && SK_ENABLED
-        character(len(array,IK),SKC) :: temp
+        character(len(array,IK),SKG) :: temp
 #elif   D1_ENABLED && IK_ENABLED
-        integer(IKC) :: temp
+        integer(IKG) :: temp
 #elif   D1_ENABLED && LK_ENABLED
-        logical(LKC) :: temp
+        logical(LKG) :: temp
 #elif   D1_ENABLED && CK_ENABLED
-        complex(CKC) :: temp
+        complex(CKG) :: temp
 #elif   D1_ENABLED && RK_ENABLED
-        real(RKC) :: temp
+        real(RKG) :: temp
 #elif   D1_ENABLED && PSSK_ENABLED
-        type(css_pdt(SKC)) :: temp
+        type(css_pdt(SKG)) :: temp
 #elif   D1_ENABLED && BSSK_ENABLED
         type(css_type) :: temp
 #else

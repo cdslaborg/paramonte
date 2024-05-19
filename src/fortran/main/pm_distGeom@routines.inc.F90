@@ -28,8 +28,8 @@
 #if     getGeomLogPMF_ENABLED
         !%%%%%%%%%%%%%%%%%%%%
 
-        CHECK_ASSERTION(__LINE__, 0._RKC < probSuccess, SK_"@setGeomLogPMF(): The condition `0 <= probSuccess` must hold. probSuccess = "//getStr(probSuccess)) ! fpp
-        CHECK_ASSERTION(__LINE__, probSuccess <= 1._RKC, SK_"@setGeomLogPMF(): The condition `probSuccess <= 1` must hold. probSuccess = "//getStr(probSuccess)) ! fpp
+        CHECK_ASSERTION(__LINE__, 0._RKG < probSuccess, SK_"@setGeomLogPMF(): The condition `0 <= probSuccess` must hold. probSuccess = "//getStr(probSuccess)) ! fpp
+        CHECK_ASSERTION(__LINE__, probSuccess <= 1._RKG, SK_"@setGeomLogPMF(): The condition `probSuccess <= 1` must hold. probSuccess = "//getStr(probSuccess)) ! fpp
         call setGeomLogPMF(logPMF, stepSuccess, log(probSuccess))
 
         !%%%%%%%%%%%%%%%%%%%%
@@ -38,9 +38,9 @@
 
         ! Validate the input.
         CHECK_ASSERTION(__LINE__, 0_IK < stepSuccess, SK_"@setGeomLogPMF(): The condition `0 < stepSuccess` must hold. stepSuccess = "//getStr(stepSuccess)) ! fpp
-        CHECK_ASSERTION(__LINE__, logProbSuccess <= 0._RKC, SK_"@setGeomLogPMF(): The condition `logProbSuccess <= 0.` must hold. logProbSuccess = "//getStr(logProbSuccess)) ! fpp
+        CHECK_ASSERTION(__LINE__, logProbSuccess <= 0._RKG, SK_"@setGeomLogPMF(): The condition `logProbSuccess <= 0.` must hold. logProbSuccess = "//getStr(logProbSuccess)) ! fpp
 #if     Log_ENABLED
-        CHECK_ASSERTION(__LINE__, abs(1._RKC - exp(logProbSuccess) - exp(logProbFailure)) < epsilon(0._RKC) * 100, \
+        CHECK_ASSERTION(__LINE__, abs(1._RKG - exp(logProbSuccess) - exp(logProbFailure)) < epsilon(0._RKG) * 100, \
         SK_"@setGeomLogPMF(): The condition `exp(logProbFailure) + exp(logProbSuccess) == 1.` must hold. logProbFailure, logProbSuccess = "\
         //getStr([logProbFailure, logProbSuccess])) ! fpp
 #elif   Def_ENABLED
@@ -49,13 +49,13 @@
 #error  "Unrecognized interface."
 #endif
         ! Compute the PMF.
-        if (logProbSuccess /= 0._RKC) then ! imperfect probability of success.
-            logPMF = (real(stepSuccess, RKC) - 1_IK) * logProbFailure + logProbSuccess
+        if (logProbSuccess /= 0._RKG) then ! imperfect probability of success.
+            logPMF = (real(stepSuccess, RKG) - 1_IK) * logProbFailure + logProbSuccess
         else ! 100% probability of success.
             if (1_IK < stepSuccess) then
                 logPMF = -huge(logPMF)
             else
-                logPMF = 0._RKC
+                logPMF = 0._RKG
             end if
         end if
 
@@ -64,21 +64,21 @@
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
         ! Validate the input.
-        CHECK_ASSERTION(__LINE__, 0._RKC < probSuccess, SK_"@setGeomCDF(): The condition `0. < probSuccess` must hold. probSuccess = "//getStr(probSuccess)) ! fpp
-        CHECK_ASSERTION(__LINE__, probSuccess <= 1._RKC, SK_"@setGeomCDF(): The condition `probSuccess <= 1.` must hold. probSuccess = "//getStr(probSuccess)) ! fpp
+        CHECK_ASSERTION(__LINE__, 0._RKG < probSuccess, SK_"@setGeomCDF(): The condition `0. < probSuccess` must hold. probSuccess = "//getStr(probSuccess)) ! fpp
+        CHECK_ASSERTION(__LINE__, probSuccess <= 1._RKG, SK_"@setGeomCDF(): The condition `probSuccess <= 1.` must hold. probSuccess = "//getStr(probSuccess)) ! fpp
         CHECK_ASSERTION(__LINE__, 0_IK < stepSuccess, SK_"@setGeomCDF(): The condition `0 <= stepSuccess` must hold. stepSuccess = "//getStr(stepSuccess)) ! fpp
-        cdf = 1._RKC - (1._RKC - probSuccess)**stepSuccess
+        cdf = 1._RKG - (1._RKG - probSuccess)**stepSuccess
 
         !%%%%%%%%%%%%%%%%%%
 #elif   getGeomRand_ENABLED
         !%%%%%%%%%%%%%%%%%%
 
-        CHECK_ASSERTION(__LINE__, 0._RKC < probSuccess, SK_"@getGeomRand(): The condition `0 <= probSuccess` must hold. probSuccess = "//getStr(probSuccess)) ! fpp
-        if (probSuccess < 1._RKC) then
-            call setGeomRand(rand, log(1._RKC - probSuccess))
+        CHECK_ASSERTION(__LINE__, 0._RKG < probSuccess, SK_"@getGeomRand(): The condition `0 <= probSuccess` must hold. probSuccess = "//getStr(probSuccess)) ! fpp
+        if (probSuccess < 1._RKG) then
+            call setGeomRand(rand, log(1._RKG - probSuccess))
         else
             rand = 1_IK
-            CHECK_ASSERTION(__LINE__, probSuccess <= 1._RKC, SK_"@getGeomRand(): The condition `probSuccess <= 1` must hold. probSuccess = "//getStr(probSuccess)) ! fpp
+            CHECK_ASSERTION(__LINE__, probSuccess <= 1._RKG, SK_"@getGeomRand(): The condition `probSuccess <= 1` must hold. probSuccess = "//getStr(probSuccess)) ! fpp
         end if
 
         !%%%%%%%%%%%%%%%%%%
@@ -86,13 +86,13 @@
         !%%%%%%%%%%%%%%%%%%
 
 #if     D0_ENABLED
-        real(RKC) :: unifrnd
+        real(RKG) :: unifrnd
 #elif   D1_ENABLED
-        real(RKC) :: unifrnd(size(rand, 1, IK)), logProbFailureInverse
+        real(RKG) :: unifrnd(size(rand, 1, IK)), logProbFailureInverse
 #else
 #error  "Unrecognized interface."
 #endif
-        CHECK_ASSERTION(__LINE__, logProbFailure < 0._RKC, SK_"@setGeomRand(): The condition `logProbFailure < 0.` must hold. logProbFailure = "//getStr(logProbFailure)) ! fpp
+        CHECK_ASSERTION(__LINE__, logProbFailure < 0._RKG, SK_"@setGeomRand(): The condition `logProbFailure < 0.` must hold. logProbFailure = "//getStr(logProbFailure)) ! fpp
 #if     RNGD_ENABLED || RNGF_ENABLED
         call random_number(unifrnd)
 #elif   RNGX_ENABLED
@@ -101,10 +101,10 @@
 #error  "Unrecognized interface."
 #endif
 #if     D0_ENABLED
-        rand = 1_IK + floor(log(1._RKC - unifrnd) / logProbFailure)
+        rand = 1_IK + floor(log(1._RKG - unifrnd) / logProbFailure)
 #elif   D1_ENABLED
-        logProbFailureInverse = 1._RKC / logProbFailure
-        rand = 1_IK + floor(log(1._RKC - unifrnd) * logProbFailureInverse)
+        logProbFailureInverse = 1._RKG / logProbFailure
+        rand = 1_IK + floor(log(1._RKG - unifrnd) * logProbFailureInverse)
 #endif
 
 #else

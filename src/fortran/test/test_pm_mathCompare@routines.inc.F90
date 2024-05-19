@@ -28,22 +28,22 @@
         use pm_except, only: setInfNeg, setInfPos, isInf
         use pm_except, only: setNAN, isNAN
 #if     isClose_CK_ENABLED
-        complex(CKC)                    :: x, y
-        complex(CKC)    , parameter     :: ZERO = (0._CKC, 0._CKC)
-        complex(CKC)    , parameter     :: low = -cmplx(sqrt(sqrt(huge(0._CKC))), sqrt(sqrt(huge(0._CKC))), CKC)
-        complex(CKC)    , parameter     :: upp = +cmplx(sqrt(sqrt(huge(0._CKC))), sqrt(sqrt(huge(0._CKC))), CKC)
+        complex(CKG)                    :: x, y
+        complex(CKG)    , parameter     :: ZERO = (0._CKG, 0._CKG)
+        complex(CKG)    , parameter     :: low = -cmplx(sqrt(sqrt(huge(0._CKG))), sqrt(sqrt(huge(0._CKG))), CKG)
+        complex(CKG)    , parameter     :: upp = +cmplx(sqrt(sqrt(huge(0._CKG))), sqrt(sqrt(huge(0._CKG))), CKG)
 #elif   isClose_RK_ENABLED
-        real(RKC)                       :: x, y
-        real(RKC)       , parameter     :: low = -sqrt(sqrt(huge(low)))
-        real(RKC)       , parameter     :: upp = +sqrt(sqrt(huge(upp)))
-        real(RKC)       , parameter     :: ZERO = 0._RKC
+        real(RKG)                       :: x, y
+        real(RKG)       , parameter     :: low = -sqrt(sqrt(huge(low)))
+        real(RKG)       , parameter     :: upp = +sqrt(sqrt(huge(upp)))
+        real(RKG)       , parameter     :: ZERO = 0._RKG
 #else
 #error  "Unrecognized interface."
 #endif
-        integer         , parameter     :: TKC = kind(x)
-        real(TKC)       , parameter     :: EPS = epsilon(1._TKC) * 100, TIN = tiny(0._TKC)
+        integer         , parameter     :: TKG = kind(x)
+        real(TKG)       , parameter     :: EPS = epsilon(1._TKG) * 100, TIN = tiny(0._TKG)
         logical(LK)                     :: close, close_def, isRelTolDef, isAbsTolDef
-        real(TKC)                       :: reltol, abstol
+        real(TKG)                       :: reltol, abstol
         class(*)        , allocatable   :: method
         integer(IK)                     :: i, choice
 
@@ -67,8 +67,8 @@
 
             isAbsTolDef = getUnifRand()
             isRelTolDef = getUnifRand()
-            if (.not. (isInf(x) .or. isNAN(x))) reltol = merge(EPS, getUnifRand(0.1_TKC * abs(x), 10._TKC * abs(x)), isRelTolDef)
-            if (.not. (isInf(x) .or. isNAN(x))) abstol = merge(TIN, getUnifRand(0.2_TKC * abs(x),  5._TKC * abs(x)), isAbsTolDef)
+            if (.not. (isInf(x) .or. isNAN(x))) reltol = merge(EPS, getUnifRand(0.1_TKG * abs(x), 10._TKG * abs(x)), isRelTolDef)
+            if (.not. (isInf(x) .or. isNAN(x))) abstol = merge(TIN, getUnifRand(0.2_TKG * abs(x),  5._TKG * abs(x)), isAbsTolDef)
 
             choice = getUnifRand(0_IK, 9_IK)
             if (choice == 0_IK) then
@@ -134,7 +134,7 @@
 
         subroutine runTestsWith(method, reltol, abstol)
             class(*)    , intent(in), optional  :: method
-            real(TKC)   , intent(in), optional  :: reltol, abstol
+            real(TKG)   , intent(in), optional  :: reltol, abstol
             if (present(method)) then
                 close_def = isClose_def(method, reltol, abstol)
                 select type (method)
@@ -160,11 +160,11 @@
             use pm_except, only: isInf, isInfNeg, isInfPos
             use pm_except, only: isNAN
             class(*)    , intent(in), optional  :: method
-            real(TKC)   , intent(in), optional  :: reltol, abstol
+            real(TKG)   , intent(in), optional  :: reltol, abstol
             logical(LK) :: close
 
-            real(TKC) :: reltol_def, abstol_def
-            real(TKC) :: absDiff
+            real(TKG) :: reltol_def, abstol_def
+            real(TKG) :: absDiff
 
             if (isNAN(x) .or. isNAN(y)) then
                 close = .false._LK
@@ -177,12 +177,12 @@
                 if (present(reltol)) then
                     reltol_def = reltol
                 else
-                    reltol_def = epsilon(0._TKC)
+                    reltol_def = epsilon(0._TKG)
                 end if
                 if (present(abstol)) then
                     abstol_def = abstol
                 else
-                    abstol_def = tiny(0._TKC)
+                    abstol_def = tiny(0._TKG)
                 end if
                 absDiff = abs(y - x)
                 if (present(method)) then
@@ -194,7 +194,7 @@
                         type is (weak_type)
                             close = logical(absDiff <= abs(reltol_def * x) .or. absDiff <= abs(reltol_def * y) .or. absDiff <= abstol_def, LK)
                         type is (mean_type)
-                            close = logical(absDiff <= abs(reltol_def * 0.5_TKC * (x + y)) .or. absDiff <= abstol_def, LK)
+                            close = logical(absDiff <= abs(reltol_def * 0.5_TKG * (x + y)) .or. absDiff <= abstol_def, LK)
                     end select
                 else ! assume `weak_type`.
                     close = logical(absDiff <= abs(reltol_def * x) .or. absDiff <= abs(reltol_def * y) .or. absDiff <= abstol_def, LK)
@@ -212,7 +212,7 @@
             use pm_option, only: getOption
             integer     , intent(in) :: line
             class(*)    , intent(in), optional :: method
-            real(TKC)   , intent(in), optional :: reltol, abstol
+            real(TKG)   , intent(in), optional :: reltol, abstol
             type(display_type)  :: disp
             assertion = assertion .and. (close .eqv. close_def)
             if (test%traceable .and. .not. assertion) then

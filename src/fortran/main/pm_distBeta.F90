@@ -233,9 +233,9 @@ module pm_distBeta
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getBetaPDF_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(in)    :: x, alpha, beta
-        real(RKC)                   :: pdf
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(in)    :: x, alpha, beta
+        real(RKG)                   :: pdf
     end function
 #endif
 
@@ -244,9 +244,9 @@ module pm_distBeta
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getBetaPDF_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(in)    :: x, alpha, beta
-        real(RKC)                   :: pdf
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(in)    :: x, alpha, beta
+        real(RKG)                   :: pdf
     end function
 #endif
 
@@ -255,9 +255,9 @@ module pm_distBeta
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getBetaPDF_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(in)    :: x, alpha, beta
-        real(RKC)                   :: pdf
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(in)    :: x, alpha, beta
+        real(RKG)                   :: pdf
     end function
 #endif
 
@@ -266,9 +266,9 @@ module pm_distBeta
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getBetaPDF_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(in)    :: x, alpha, beta
-        real(RKC)                   :: pdf
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(in)    :: x, alpha, beta
+        real(RKG)                   :: pdf
     end function
 #endif
 
@@ -277,9 +277,9 @@ module pm_distBeta
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getBetaPDF_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(in)    :: x, alpha, beta
-        real(RKC)                   :: pdf
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(in)    :: x, alpha, beta
+        real(RKG)                   :: pdf
     end function
 #endif
 
@@ -363,9 +363,9 @@ module pm_distBeta
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getBetaLogPDFD_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(in)    :: x, alpha, beta
-        real(RKC)                   :: logPDF
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(in)    :: x, alpha, beta
+        real(RKG)                   :: logPDF
     end function
 #endif
 
@@ -374,9 +374,9 @@ module pm_distBeta
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getBetaLogPDFD_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(in)    :: x, alpha, beta
-        real(RKC)                   :: logPDF
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(in)    :: x, alpha, beta
+        real(RKG)                   :: logPDF
     end function
 #endif
 
@@ -385,9 +385,9 @@ module pm_distBeta
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getBetaLogPDFD_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(in)    :: x, alpha, beta
-        real(RKC)                   :: logPDF
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(in)    :: x, alpha, beta
+        real(RKG)                   :: logPDF
     end function
 #endif
 
@@ -396,9 +396,9 @@ module pm_distBeta
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getBetaLogPDFD_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(in)    :: x, alpha, beta
-        real(RKC)                   :: logPDF
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(in)    :: x, alpha, beta
+        real(RKG)                   :: logPDF
     end function
 #endif
 
@@ -407,9 +407,9 @@ module pm_distBeta
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getBetaLogPDFD_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(in)    :: x, alpha, beta
-        real(RKC)                   :: logPDF
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(in)    :: x, alpha, beta
+        real(RKG)                   :: logPDF
     end function
 #endif
 
@@ -420,9 +420,9 @@ module pm_distBeta
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getBetaLogPDFL_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(in)    :: x, alpha, beta, logBeta
-        real(RKC)                   :: logPDF
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(in)    :: x, alpha, beta, logBeta
+        real(RKG)                   :: logPDF
     end function
 #endif
 
@@ -431,9 +431,9 @@ module pm_distBeta
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getBetaLogPDFL_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(in)    :: x, alpha, beta, logBeta
-        real(RKC)                   :: logPDF
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(in)    :: x, alpha, beta, logBeta
+        real(RKG)                   :: logPDF
     end function
 #endif
 
@@ -442,9 +442,9 @@ module pm_distBeta
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getBetaLogPDFL_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(in)    :: x, alpha, beta, logBeta
-        real(RKC)                   :: logPDF
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(in)    :: x, alpha, beta, logBeta
+        real(RKG)                   :: logPDF
     end function
 #endif
 
@@ -453,9 +453,9 @@ module pm_distBeta
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getBetaLogPDFL_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(in)    :: x, alpha, beta, logBeta
-        real(RKC)                   :: logPDF
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(in)    :: x, alpha, beta, logBeta
+        real(RKG)                   :: logPDF
     end function
 #endif
 
@@ -464,9 +464,9 @@ module pm_distBeta
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getBetaLogPDFL_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(in)    :: x, alpha, beta, logBeta
-        real(RKC)                   :: logPDF
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(in)    :: x, alpha, beta, logBeta
+        real(RKG)                   :: logPDF
     end function
 #endif
 
@@ -548,9 +548,9 @@ module pm_distBeta
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setBetaLogPDFD_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(out)                   :: logPDF
-        real(RKC)   , intent(in)                    :: x, alpha, beta
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(out)                   :: logPDF
+        real(RKG)   , intent(in)                    :: x, alpha, beta
     end subroutine
 #endif
 
@@ -559,9 +559,9 @@ module pm_distBeta
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setBetaLogPDFD_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(out)                   :: logPDF
-        real(RKC)   , intent(in)                    :: x, alpha, beta
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(out)                   :: logPDF
+        real(RKG)   , intent(in)                    :: x, alpha, beta
     end subroutine
 #endif
 
@@ -570,9 +570,9 @@ module pm_distBeta
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setBetaLogPDFD_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(out)                   :: logPDF
-        real(RKC)   , intent(in)                    :: x, alpha, beta
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(out)                   :: logPDF
+        real(RKG)   , intent(in)                    :: x, alpha, beta
     end subroutine
 #endif
 
@@ -581,9 +581,9 @@ module pm_distBeta
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setBetaLogPDFD_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(out)                   :: logPDF
-        real(RKC)   , intent(in)                    :: x, alpha, beta
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(out)                   :: logPDF
+        real(RKG)   , intent(in)                    :: x, alpha, beta
     end subroutine
 #endif
 
@@ -592,9 +592,9 @@ module pm_distBeta
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setBetaLogPDFD_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(out)                   :: logPDF
-        real(RKC)   , intent(in)                    :: x, alpha, beta
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(out)                   :: logPDF
+        real(RKG)   , intent(in)                    :: x, alpha, beta
     end subroutine
 #endif
 
@@ -605,9 +605,9 @@ module pm_distBeta
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setBetaLogPDFL_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(out)                   :: logPDF
-        real(RKC)   , intent(in)                    :: x, alpha, beta, logBeta
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(out)                   :: logPDF
+        real(RKG)   , intent(in)                    :: x, alpha, beta, logBeta
     end subroutine
 #endif
 
@@ -616,9 +616,9 @@ module pm_distBeta
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setBetaLogPDFL_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(out)                   :: logPDF
-        real(RKC)   , intent(in)                    :: x, alpha, beta, logBeta
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(out)                   :: logPDF
+        real(RKG)   , intent(in)                    :: x, alpha, beta, logBeta
     end subroutine
 #endif
 
@@ -627,9 +627,9 @@ module pm_distBeta
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setBetaLogPDFL_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(out)                   :: logPDF
-        real(RKC)   , intent(in)                    :: x, alpha, beta, logBeta
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(out)                   :: logPDF
+        real(RKG)   , intent(in)                    :: x, alpha, beta, logBeta
     end subroutine
 #endif
 
@@ -638,9 +638,9 @@ module pm_distBeta
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setBetaLogPDFL_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(out)                   :: logPDF
-        real(RKC)   , intent(in)                    :: x, alpha, beta, logBeta
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(out)                   :: logPDF
+        real(RKG)   , intent(in)                    :: x, alpha, beta, logBeta
     end subroutine
 #endif
 
@@ -649,9 +649,9 @@ module pm_distBeta
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setBetaLogPDFL_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(out)                   :: logPDF
-        real(RKC)   , intent(in)                    :: x, alpha, beta, logBeta
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(out)                   :: logPDF
+        real(RKG)   , intent(in)                    :: x, alpha, beta, logBeta
     end subroutine
 #endif
 
@@ -738,10 +738,10 @@ module pm_distBeta
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getBetaCDF_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         logical(LK) , intent(in), optional  :: signed
-        real(RKC)   , intent(in)            :: x, alpha, beta
-        real(RKC)                           :: cdf
+        real(RKG)   , intent(in)            :: x, alpha, beta
+        real(RKG)                           :: cdf
     end function
 #endif
 
@@ -750,10 +750,10 @@ module pm_distBeta
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getBetaCDF_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         logical(LK) , intent(in), optional  :: signed
-        real(RKC)   , intent(in)            :: x, alpha, beta
-        real(RKC)                           :: cdf
+        real(RKG)   , intent(in)            :: x, alpha, beta
+        real(RKG)                           :: cdf
     end function
 #endif
 
@@ -762,10 +762,10 @@ module pm_distBeta
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getBetaCDF_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         logical(LK) , intent(in), optional  :: signed
-        real(RKC)   , intent(in)            :: x, alpha, beta
-        real(RKC)                           :: cdf
+        real(RKG)   , intent(in)            :: x, alpha, beta
+        real(RKG)                           :: cdf
     end function
 #endif
 
@@ -774,10 +774,10 @@ module pm_distBeta
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getBetaCDF_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         logical(LK) , intent(in), optional  :: signed
-        real(RKC)   , intent(in)            :: x, alpha, beta
-        real(RKC)                           :: cdf
+        real(RKG)   , intent(in)            :: x, alpha, beta
+        real(RKG)                           :: cdf
     end function
 #endif
 
@@ -786,10 +786,10 @@ module pm_distBeta
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getBetaCDF_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         logical(LK) , intent(in), optional  :: signed
-        real(RKC)   , intent(in)            :: x, alpha, beta
-        real(RKC)                           :: cdf
+        real(RKG)   , intent(in)            :: x, alpha, beta
+        real(RKG)                           :: cdf
     end function
 #endif
 
@@ -887,9 +887,9 @@ module pm_distBeta
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setBetaCDF_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(out)   :: cdf
-        real(RKC)   , intent(in)    :: x, alpha, beta, logFuncBeta
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(out)   :: cdf
+        real(RKG)   , intent(in)    :: x, alpha, beta, logFuncBeta
         logical(LK) , intent(in)    :: signed
         integer(IK) , intent(out)   :: info
     end subroutine
@@ -900,9 +900,9 @@ module pm_distBeta
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setBetaCDF_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(out)   :: cdf
-        real(RKC)   , intent(in)    :: x, alpha, beta, logFuncBeta
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(out)   :: cdf
+        real(RKG)   , intent(in)    :: x, alpha, beta, logFuncBeta
         logical(LK) , intent(in)    :: signed
         integer(IK) , intent(out)   :: info
     end subroutine
@@ -913,9 +913,9 @@ module pm_distBeta
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setBetaCDF_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(out)   :: cdf
-        real(RKC)   , intent(in)    :: x, alpha, beta, logFuncBeta
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(out)   :: cdf
+        real(RKG)   , intent(in)    :: x, alpha, beta, logFuncBeta
         logical(LK) , intent(in)    :: signed
         integer(IK) , intent(out)   :: info
     end subroutine
@@ -926,9 +926,9 @@ module pm_distBeta
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setBetaCDF_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(out)   :: cdf
-        real(RKC)   , intent(in)    :: x, alpha, beta, logFuncBeta
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(out)   :: cdf
+        real(RKG)   , intent(in)    :: x, alpha, beta, logFuncBeta
         logical(LK) , intent(in)    :: signed
         integer(IK) , intent(out)   :: info
     end subroutine
@@ -939,9 +939,9 @@ module pm_distBeta
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setBetaCDF_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(out)   :: cdf
-        real(RKC)   , intent(in)    :: x, alpha, beta, logFuncBeta
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(out)   :: cdf
+        real(RKG)   , intent(in)    :: x, alpha, beta, logFuncBeta
         logical(LK) , intent(in)    :: signed
         integer(IK) , intent(out)   :: info
     end subroutine
@@ -1049,9 +1049,9 @@ module pm_distBeta
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setBetaRandRNGD_D0_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)               , intent(out)                   :: rand
-        real(RKC)               , intent(in)                    :: alpha, beta
+        use pm_kind, only: RKG => RK5
+        real(RKG)               , intent(out)                   :: rand
+        real(RKG)               , intent(in)                    :: alpha, beta
     end subroutine
 #endif
 
@@ -1060,9 +1060,9 @@ module pm_distBeta
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setBetaRandRNGD_D0_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)               , intent(out)                   :: rand
-        real(RKC)               , intent(in)                    :: alpha, beta
+        use pm_kind, only: RKG => RK4
+        real(RKG)               , intent(out)                   :: rand
+        real(RKG)               , intent(in)                    :: alpha, beta
     end subroutine
 #endif
 
@@ -1071,9 +1071,9 @@ module pm_distBeta
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setBetaRandRNGD_D0_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)               , intent(out)                   :: rand
-        real(RKC)               , intent(in)                    :: alpha, beta
+        use pm_kind, only: RKG => RK3
+        real(RKG)               , intent(out)                   :: rand
+        real(RKG)               , intent(in)                    :: alpha, beta
     end subroutine
 #endif
 
@@ -1082,9 +1082,9 @@ module pm_distBeta
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setBetaRandRNGD_D0_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)               , intent(out)                   :: rand
-        real(RKC)               , intent(in)                    :: alpha, beta
+        use pm_kind, only: RKG => RK2
+        real(RKG)               , intent(out)                   :: rand
+        real(RKG)               , intent(in)                    :: alpha, beta
     end subroutine
 #endif
 
@@ -1093,9 +1093,9 @@ module pm_distBeta
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setBetaRandRNGD_D0_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)               , intent(out)                   :: rand
-        real(RKC)               , intent(in)                    :: alpha, beta
+        use pm_kind, only: RKG => RK1
+        real(RKG)               , intent(out)                   :: rand
+        real(RKG)               , intent(in)                    :: alpha, beta
     end subroutine
 #endif
 
@@ -1106,10 +1106,10 @@ module pm_distBeta
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setBetaRandRNGF_D0_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         type(rngf_type)         , intent(in)                    :: rng
-        real(RKC)               , intent(out)                   :: rand
-        real(RKC)               , intent(in)                    :: alpha, beta
+        real(RKG)               , intent(out)                   :: rand
+        real(RKG)               , intent(in)                    :: alpha, beta
     end subroutine
 #endif
 
@@ -1118,10 +1118,10 @@ module pm_distBeta
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setBetaRandRNGF_D0_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         type(rngf_type)         , intent(in)                    :: rng
-        real(RKC)               , intent(out)                   :: rand
-        real(RKC)               , intent(in)                    :: alpha, beta
+        real(RKG)               , intent(out)                   :: rand
+        real(RKG)               , intent(in)                    :: alpha, beta
     end subroutine
 #endif
 
@@ -1130,10 +1130,10 @@ module pm_distBeta
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setBetaRandRNGF_D0_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         type(rngf_type)         , intent(in)                    :: rng
-        real(RKC)               , intent(out)                   :: rand
-        real(RKC)               , intent(in)                    :: alpha, beta
+        real(RKG)               , intent(out)                   :: rand
+        real(RKG)               , intent(in)                    :: alpha, beta
     end subroutine
 #endif
 
@@ -1142,10 +1142,10 @@ module pm_distBeta
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setBetaRandRNGF_D0_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         type(rngf_type)         , intent(in)                    :: rng
-        real(RKC)               , intent(out)                   :: rand
-        real(RKC)               , intent(in)                    :: alpha, beta
+        real(RKG)               , intent(out)                   :: rand
+        real(RKG)               , intent(in)                    :: alpha, beta
     end subroutine
 #endif
 
@@ -1154,10 +1154,10 @@ module pm_distBeta
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setBetaRandRNGF_D0_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         type(rngf_type)         , intent(in)                    :: rng
-        real(RKC)               , intent(out)                   :: rand
-        real(RKC)               , intent(in)                    :: alpha, beta
+        real(RKG)               , intent(out)                   :: rand
+        real(RKG)               , intent(in)                    :: alpha, beta
     end subroutine
 #endif
 
@@ -1168,10 +1168,10 @@ module pm_distBeta
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setBetaRandRNGX_D0_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         type(xoshiro256ssw_type), intent(inout)                 :: rng
-        real(RKC)               , intent(out)                   :: rand
-        real(RKC)               , intent(in)                    :: alpha, beta
+        real(RKG)               , intent(out)                   :: rand
+        real(RKG)               , intent(in)                    :: alpha, beta
     end subroutine
 #endif
 
@@ -1180,10 +1180,10 @@ module pm_distBeta
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setBetaRandRNGX_D0_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         type(xoshiro256ssw_type), intent(inout)                 :: rng
-        real(RKC)               , intent(out)                   :: rand
-        real(RKC)               , intent(in)                    :: alpha, beta
+        real(RKG)               , intent(out)                   :: rand
+        real(RKG)               , intent(in)                    :: alpha, beta
     end subroutine
 #endif
 
@@ -1192,10 +1192,10 @@ module pm_distBeta
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setBetaRandRNGX_D0_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         type(xoshiro256ssw_type), intent(inout)                 :: rng
-        real(RKC)               , intent(out)                   :: rand
-        real(RKC)               , intent(in)                    :: alpha, beta
+        real(RKG)               , intent(out)                   :: rand
+        real(RKG)               , intent(in)                    :: alpha, beta
     end subroutine
 #endif
 
@@ -1204,10 +1204,10 @@ module pm_distBeta
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setBetaRandRNGX_D0_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         type(xoshiro256ssw_type), intent(inout)                 :: rng
-        real(RKC)               , intent(out)                   :: rand
-        real(RKC)               , intent(in)                    :: alpha, beta
+        real(RKG)               , intent(out)                   :: rand
+        real(RKG)               , intent(in)                    :: alpha, beta
     end subroutine
 #endif
 
@@ -1216,10 +1216,10 @@ module pm_distBeta
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setBetaRandRNGX_D0_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         type(xoshiro256ssw_type), intent(inout)                 :: rng
-        real(RKC)               , intent(out)                   :: rand
-        real(RKC)               , intent(in)                    :: alpha, beta
+        real(RKG)               , intent(out)                   :: rand
+        real(RKG)               , intent(in)                    :: alpha, beta
     end subroutine
 #endif
 
@@ -1236,9 +1236,9 @@ module pm_distBeta
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setBetaRandRNGD_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)               , intent(out)                   :: rand(:)
-        real(RKC)               , intent(in)                    :: alpha, beta
+        use pm_kind, only: RKG => RK5
+        real(RKG)               , intent(out)                   :: rand(:)
+        real(RKG)               , intent(in)                    :: alpha, beta
     end subroutine
 #endif
 
@@ -1247,9 +1247,9 @@ module pm_distBeta
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setBetaRandRNGD_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)               , intent(out)                   :: rand(:)
-        real(RKC)               , intent(in)                    :: alpha, beta
+        use pm_kind, only: RKG => RK4
+        real(RKG)               , intent(out)                   :: rand(:)
+        real(RKG)               , intent(in)                    :: alpha, beta
     end subroutine
 #endif
 
@@ -1258,9 +1258,9 @@ module pm_distBeta
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setBetaRandRNGD_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)               , intent(out)                   :: rand(:)
-        real(RKC)               , intent(in)                    :: alpha, beta
+        use pm_kind, only: RKG => RK3
+        real(RKG)               , intent(out)                   :: rand(:)
+        real(RKG)               , intent(in)                    :: alpha, beta
     end subroutine
 #endif
 
@@ -1269,9 +1269,9 @@ module pm_distBeta
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setBetaRandRNGD_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)               , intent(out)                   :: rand(:)
-        real(RKC)               , intent(in)                    :: alpha, beta
+        use pm_kind, only: RKG => RK2
+        real(RKG)               , intent(out)                   :: rand(:)
+        real(RKG)               , intent(in)                    :: alpha, beta
     end subroutine
 #endif
 
@@ -1280,9 +1280,9 @@ module pm_distBeta
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setBetaRandRNGD_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)               , intent(out)                   :: rand(:)
-        real(RKC)               , intent(in)                    :: alpha, beta
+        use pm_kind, only: RKG => RK1
+        real(RKG)               , intent(out)                   :: rand(:)
+        real(RKG)               , intent(in)                    :: alpha, beta
     end subroutine
 #endif
 
@@ -1293,10 +1293,10 @@ module pm_distBeta
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setBetaRandRNGF_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         type(rngf_type)         , intent(in)                    :: rng
-        real(RKC)               , intent(out)                   :: rand(:)
-        real(RKC)               , intent(in)                    :: alpha, beta
+        real(RKG)               , intent(out)                   :: rand(:)
+        real(RKG)               , intent(in)                    :: alpha, beta
     end subroutine
 #endif
 
@@ -1305,10 +1305,10 @@ module pm_distBeta
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setBetaRandRNGF_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         type(rngf_type)         , intent(in)                    :: rng
-        real(RKC)               , intent(out)                   :: rand(:)
-        real(RKC)               , intent(in)                    :: alpha, beta
+        real(RKG)               , intent(out)                   :: rand(:)
+        real(RKG)               , intent(in)                    :: alpha, beta
     end subroutine
 #endif
 
@@ -1317,10 +1317,10 @@ module pm_distBeta
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setBetaRandRNGF_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         type(rngf_type)         , intent(in)                    :: rng
-        real(RKC)               , intent(out)                   :: rand(:)
-        real(RKC)               , intent(in)                    :: alpha, beta
+        real(RKG)               , intent(out)                   :: rand(:)
+        real(RKG)               , intent(in)                    :: alpha, beta
     end subroutine
 #endif
 
@@ -1329,10 +1329,10 @@ module pm_distBeta
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setBetaRandRNGF_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         type(rngf_type)         , intent(in)                    :: rng
-        real(RKC)               , intent(out)                   :: rand(:)
-        real(RKC)               , intent(in)                    :: alpha, beta
+        real(RKG)               , intent(out)                   :: rand(:)
+        real(RKG)               , intent(in)                    :: alpha, beta
     end subroutine
 #endif
 
@@ -1341,10 +1341,10 @@ module pm_distBeta
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setBetaRandRNGF_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         type(rngf_type)         , intent(in)                    :: rng
-        real(RKC)               , intent(out)                   :: rand(:)
-        real(RKC)               , intent(in)                    :: alpha, beta
+        real(RKG)               , intent(out)                   :: rand(:)
+        real(RKG)               , intent(in)                    :: alpha, beta
     end subroutine
 #endif
 
@@ -1355,10 +1355,10 @@ module pm_distBeta
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setBetaRandRNGX_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         type(xoshiro256ssw_type), intent(inout)                 :: rng
-        real(RKC)               , intent(out)                   :: rand(:)
-        real(RKC)               , intent(in)                    :: alpha, beta
+        real(RKG)               , intent(out)                   :: rand(:)
+        real(RKG)               , intent(in)                    :: alpha, beta
     end subroutine
 #endif
 
@@ -1367,10 +1367,10 @@ module pm_distBeta
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setBetaRandRNGX_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         type(xoshiro256ssw_type), intent(inout)                 :: rng
-        real(RKC)               , intent(out)                   :: rand(:)
-        real(RKC)               , intent(in)                    :: alpha, beta
+        real(RKG)               , intent(out)                   :: rand(:)
+        real(RKG)               , intent(in)                    :: alpha, beta
     end subroutine
 #endif
 
@@ -1379,10 +1379,10 @@ module pm_distBeta
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setBetaRandRNGX_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         type(xoshiro256ssw_type), intent(inout)                 :: rng
-        real(RKC)               , intent(out)                   :: rand(:)
-        real(RKC)               , intent(in)                    :: alpha, beta
+        real(RKG)               , intent(out)                   :: rand(:)
+        real(RKG)               , intent(in)                    :: alpha, beta
     end subroutine
 #endif
 
@@ -1391,10 +1391,10 @@ module pm_distBeta
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setBetaRandRNGX_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         type(xoshiro256ssw_type), intent(inout)                 :: rng
-        real(RKC)               , intent(out)                   :: rand(:)
-        real(RKC)               , intent(in)                    :: alpha, beta
+        real(RKG)               , intent(out)                   :: rand(:)
+        real(RKG)               , intent(in)                    :: alpha, beta
     end subroutine
 #endif
 
@@ -1403,10 +1403,10 @@ module pm_distBeta
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setBetaRandRNGX_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         type(xoshiro256ssw_type), intent(inout)                 :: rng
-        real(RKC)               , intent(out)                   :: rand(:)
-        real(RKC)               , intent(in)                    :: alpha, beta
+        real(RKG)               , intent(out)                   :: rand(:)
+        real(RKG)               , intent(in)                    :: alpha, beta
     end subroutine
 #endif
 

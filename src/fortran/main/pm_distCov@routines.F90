@@ -79,35 +79,35 @@ contains
 
 #if CK5_ENABLED
     module procedure getCovRandGRNGDS0_CK5
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
 #include "pm_distCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure getCovRandGRNGDS0_CK4
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
 #include "pm_distCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure getCovRandGRNGDS0_CK3
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
 #include "pm_distCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure getCovRandGRNGDS0_CK2
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
 #include "pm_distCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure getCovRandGRNGDS0_CK1
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
 #include "pm_distCov@routines.inc.F90"
     end procedure
 #endif
@@ -120,35 +120,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getCovRandGRNGDS0_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_distCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getCovRandGRNGDS0_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_distCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getCovRandGRNGDS0_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_distCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getCovRandGRNGDS0_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_distCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getCovRandGRNGDS0_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_distCov@routines.inc.F90"
     end procedure
 #endif
@@ -171,35 +171,35 @@ contains
 
 #if CK5_ENABLED
     module procedure getCovRandGRNGDS1_CK5
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
 #include "pm_distCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure getCovRandGRNGDS1_CK4
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
 #include "pm_distCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure getCovRandGRNGDS1_CK3
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
 #include "pm_distCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure getCovRandGRNGDS1_CK2
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
 #include "pm_distCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure getCovRandGRNGDS1_CK1
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
 #include "pm_distCov@routines.inc.F90"
     end procedure
 #endif
@@ -212,35 +212,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getCovRandGRNGDS1_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_distCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getCovRandGRNGDS1_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_distCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getCovRandGRNGDS1_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_distCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getCovRandGRNGDS1_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_distCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getCovRandGRNGDS1_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_distCov@routines.inc.F90"
     end procedure
 #endif
@@ -297,35 +297,35 @@ contains
 
 #if CK5_ENABLED
     module procedure setCovRandGRNGFSD_CK5
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
 #include "pm_distCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure setCovRandGRNGFSD_CK4
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
 #include "pm_distCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure setCovRandGRNGFSD_CK3
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
 #include "pm_distCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure setCovRandGRNGFSD_CK2
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
 #include "pm_distCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure setCovRandGRNGFSD_CK1
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
 #include "pm_distCov@routines.inc.F90"
     end procedure
 #endif
@@ -338,35 +338,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setCovRandGRNGFSD_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_distCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setCovRandGRNGFSD_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_distCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setCovRandGRNGFSD_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_distCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setCovRandGRNGFSD_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_distCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setCovRandGRNGFSD_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_distCov@routines.inc.F90"
     end procedure
 #endif
@@ -389,35 +389,35 @@ contains
 
 #if CK5_ENABLED
     module procedure setCovRandGRNGFS0_CK5
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
 #include "pm_distCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure setCovRandGRNGFS0_CK4
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
 #include "pm_distCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure setCovRandGRNGFS0_CK3
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
 #include "pm_distCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure setCovRandGRNGFS0_CK2
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
 #include "pm_distCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure setCovRandGRNGFS0_CK1
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
 #include "pm_distCov@routines.inc.F90"
     end procedure
 #endif
@@ -430,35 +430,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setCovRandGRNGFS0_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_distCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setCovRandGRNGFS0_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_distCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setCovRandGRNGFS0_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_distCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setCovRandGRNGFS0_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_distCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setCovRandGRNGFS0_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_distCov@routines.inc.F90"
     end procedure
 #endif
@@ -481,35 +481,35 @@ contains
 
 #if CK5_ENABLED
     module procedure setCovRandGRNGFS1_CK5
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
 #include "pm_distCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure setCovRandGRNGFS1_CK4
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
 #include "pm_distCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure setCovRandGRNGFS1_CK3
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
 #include "pm_distCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure setCovRandGRNGFS1_CK2
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
 #include "pm_distCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure setCovRandGRNGFS1_CK1
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
 #include "pm_distCov@routines.inc.F90"
     end procedure
 #endif
@@ -522,35 +522,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setCovRandGRNGFS1_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_distCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setCovRandGRNGFS1_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_distCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setCovRandGRNGFS1_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_distCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setCovRandGRNGFS1_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_distCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setCovRandGRNGFS1_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_distCov@routines.inc.F90"
     end procedure
 #endif
@@ -585,35 +585,35 @@ contains
 
 #if CK5_ENABLED
     module procedure setCovRandGRNGXSD_CK5
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
 #include "pm_distCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure setCovRandGRNGXSD_CK4
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
 #include "pm_distCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure setCovRandGRNGXSD_CK3
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
 #include "pm_distCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure setCovRandGRNGXSD_CK2
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
 #include "pm_distCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure setCovRandGRNGXSD_CK1
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
 #include "pm_distCov@routines.inc.F90"
     end procedure
 #endif
@@ -626,35 +626,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setCovRandGRNGXSD_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_distCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setCovRandGRNGXSD_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_distCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setCovRandGRNGXSD_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_distCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setCovRandGRNGXSD_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_distCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setCovRandGRNGXSD_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_distCov@routines.inc.F90"
     end procedure
 #endif
@@ -677,35 +677,35 @@ contains
 
 #if CK5_ENABLED
     module procedure setCovRandGRNGXS0_CK5
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
 #include "pm_distCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure setCovRandGRNGXS0_CK4
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
 #include "pm_distCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure setCovRandGRNGXS0_CK3
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
 #include "pm_distCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure setCovRandGRNGXS0_CK2
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
 #include "pm_distCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure setCovRandGRNGXS0_CK1
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
 #include "pm_distCov@routines.inc.F90"
     end procedure
 #endif
@@ -718,35 +718,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setCovRandGRNGXS0_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_distCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setCovRandGRNGXS0_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_distCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setCovRandGRNGXS0_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_distCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setCovRandGRNGXS0_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_distCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setCovRandGRNGXS0_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_distCov@routines.inc.F90"
     end procedure
 #endif
@@ -769,35 +769,35 @@ contains
 
 #if CK5_ENABLED
     module procedure setCovRandGRNGXS1_CK5
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
 #include "pm_distCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure setCovRandGRNGXS1_CK4
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
 #include "pm_distCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure setCovRandGRNGXS1_CK3
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
 #include "pm_distCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure setCovRandGRNGXS1_CK2
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
 #include "pm_distCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure setCovRandGRNGXS1_CK1
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
 #include "pm_distCov@routines.inc.F90"
     end procedure
 #endif
@@ -810,35 +810,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setCovRandGRNGXS1_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_distCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setCovRandGRNGXS1_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_distCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setCovRandGRNGXS1_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_distCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setCovRandGRNGXS1_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_distCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setCovRandGRNGXS1_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_distCov@routines.inc.F90"
     end procedure
 #endif
@@ -885,35 +885,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setCovRandDRNGFSD_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_distCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setCovRandDRNGFSD_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_distCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setCovRandDRNGFSD_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_distCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setCovRandDRNGFSD_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_distCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setCovRandDRNGFSD_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_distCov@routines.inc.F90"
     end procedure
 #endif
@@ -936,35 +936,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setCovRandDRNGFS0_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_distCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setCovRandDRNGFS0_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_distCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setCovRandDRNGFS0_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_distCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setCovRandDRNGFS0_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_distCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setCovRandDRNGFS0_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_distCov@routines.inc.F90"
     end procedure
 #endif
@@ -987,35 +987,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setCovRandDRNGFS1_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_distCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setCovRandDRNGFS1_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_distCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setCovRandDRNGFS1_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_distCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setCovRandDRNGFS1_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_distCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setCovRandDRNGFS1_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_distCov@routines.inc.F90"
     end procedure
 #endif
@@ -1050,35 +1050,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setCovRandDRNGXSD_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_distCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setCovRandDRNGXSD_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_distCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setCovRandDRNGXSD_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_distCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setCovRandDRNGXSD_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_distCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setCovRandDRNGXSD_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_distCov@routines.inc.F90"
     end procedure
 #endif
@@ -1101,35 +1101,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setCovRandDRNGXS0_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_distCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setCovRandDRNGXS0_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_distCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setCovRandDRNGXS0_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_distCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setCovRandDRNGXS0_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_distCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setCovRandDRNGXS0_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_distCov@routines.inc.F90"
     end procedure
 #endif
@@ -1152,35 +1152,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setCovRandDRNGXS1_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_distCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setCovRandDRNGXS1_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_distCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setCovRandDRNGXS1_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_distCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setCovRandDRNGXS1_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_distCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setCovRandDRNGXS1_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_distCov@routines.inc.F90"
     end procedure
 #endif
@@ -1227,35 +1227,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setCovRandORNGFSD_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_distCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setCovRandORNGFSD_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_distCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setCovRandORNGFSD_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_distCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setCovRandORNGFSD_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_distCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setCovRandORNGFSD_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_distCov@routines.inc.F90"
     end procedure
 #endif
@@ -1278,35 +1278,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setCovRandORNGFS0_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_distCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setCovRandORNGFS0_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_distCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setCovRandORNGFS0_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_distCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setCovRandORNGFS0_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_distCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setCovRandORNGFS0_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_distCov@routines.inc.F90"
     end procedure
 #endif
@@ -1329,35 +1329,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setCovRandORNGFS1_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_distCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setCovRandORNGFS1_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_distCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setCovRandORNGFS1_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_distCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setCovRandORNGFS1_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_distCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setCovRandORNGFS1_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_distCov@routines.inc.F90"
     end procedure
 #endif
@@ -1392,35 +1392,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setCovRandORNGXSD_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_distCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setCovRandORNGXSD_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_distCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setCovRandORNGXSD_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_distCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setCovRandORNGXSD_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_distCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setCovRandORNGXSD_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_distCov@routines.inc.F90"
     end procedure
 #endif
@@ -1443,35 +1443,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setCovRandORNGXS0_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_distCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setCovRandORNGXS0_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_distCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setCovRandORNGXS0_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_distCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setCovRandORNGXS0_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_distCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setCovRandORNGXS0_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_distCov@routines.inc.F90"
     end procedure
 #endif
@@ -1494,35 +1494,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setCovRandORNGXS1_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_distCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setCovRandORNGXS1_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_distCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setCovRandORNGXS1_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_distCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setCovRandORNGXS1_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_distCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setCovRandORNGXS1_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_distCov@routines.inc.F90"
     end procedure
 #endif

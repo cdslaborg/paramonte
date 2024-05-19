@@ -115,8 +115,8 @@ module pm_ziggurat
     !>  \param[in]      abstol  :   The input scalar of same type and kind as the output `abserr`, representing the absolute tolerance used as the stopping criterion of the search.<br>
     !>                              The search iterations continue until the search interval becomes smaller than `abstol` in absolute units.<br>
     !>                              Care must be taken for specifying a reasonable value for `abstol` (see the warnings below).<br>
-    !>                              If no suitable value for `abstol` is known a priori, try `abstol = epsilon(0._RKC)**.8 * (abs(lb) + abs(ub))`
-    !>                              where `RKC` refers to the kind of the output argument `root`.<br>
+    !>                              If no suitable value for `abstol` is known a priori, try `abstol = epsilon(0._RKG)**.8 * (abs(lb) + abs(ub))`
+    !>                              where `RKG` refers to the kind of the output argument `root`.<br>
     !>                              See also the corresponding argument of [getRoot](@ref pm_mathRoot::getRoot).<br>
     !>                              (**optional** The default value is set by [getRoot](@ref pm_mathRoot::getRoot).)
     !>
@@ -183,12 +183,12 @@ module pm_ziggurat
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getZig_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        procedure(real(RKC))                            :: getFunc, getFuncInv, getZigArea
+        use pm_kind, only: RKG => RK5
+        procedure(real(RKG))                            :: getFunc, getFuncInv, getZigArea
         integer(IK)         , intent(in)                :: nlay
-        real(RKC)           , intent(out)               :: abserr
-        real(RKC)           , intent(in)    , optional  :: abstol
-        real(RKC)                                       :: zig(2, 0 : nlay)
+        real(RKG)           , intent(out)               :: abserr
+        real(RKG)           , intent(in)    , optional  :: abstol
+        real(RKG)                                       :: zig(2, 0 : nlay)
     end function
 #endif
 
@@ -197,12 +197,12 @@ module pm_ziggurat
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getZig_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        procedure(real(RKC))                            :: getFunc, getFuncInv, getZigArea
+        use pm_kind, only: RKG => RK4
+        procedure(real(RKG))                            :: getFunc, getFuncInv, getZigArea
         integer(IK)         , intent(in)                :: nlay
-        real(RKC)           , intent(out)               :: abserr
-        real(RKC)           , intent(in)    , optional  :: abstol
-        real(RKC)                                       :: zig(2, 0 : nlay)
+        real(RKG)           , intent(out)               :: abserr
+        real(RKG)           , intent(in)    , optional  :: abstol
+        real(RKG)                                       :: zig(2, 0 : nlay)
     end function
 #endif
 
@@ -211,12 +211,12 @@ module pm_ziggurat
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getZig_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        procedure(real(RKC))                            :: getFunc, getFuncInv, getZigArea
+        use pm_kind, only: RKG => RK3
+        procedure(real(RKG))                            :: getFunc, getFuncInv, getZigArea
         integer(IK)         , intent(in)                :: nlay
-        real(RKC)           , intent(out)               :: abserr
-        real(RKC)           , intent(in)    , optional  :: abstol
-        real(RKC)                                       :: zig(2, 0 : nlay)
+        real(RKG)           , intent(out)               :: abserr
+        real(RKG)           , intent(in)    , optional  :: abstol
+        real(RKG)                                       :: zig(2, 0 : nlay)
     end function
 #endif
 
@@ -225,12 +225,12 @@ module pm_ziggurat
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getZig_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        procedure(real(RKC))                            :: getFunc, getFuncInv, getZigArea
+        use pm_kind, only: RKG => RK2
+        procedure(real(RKG))                            :: getFunc, getFuncInv, getZigArea
         integer(IK)         , intent(in)                :: nlay
-        real(RKC)           , intent(out)               :: abserr
-        real(RKC)           , intent(in)    , optional  :: abstol
-        real(RKC)                                       :: zig(2, 0 : nlay)
+        real(RKG)           , intent(out)               :: abserr
+        real(RKG)           , intent(in)    , optional  :: abstol
+        real(RKG)                                       :: zig(2, 0 : nlay)
     end function
 #endif
 
@@ -239,12 +239,12 @@ module pm_ziggurat
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getZig_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        procedure(real(RKC))                            :: getFunc, getFuncInv, getZigArea
+        use pm_kind, only: RKG => RK1
+        procedure(real(RKG))                            :: getFunc, getFuncInv, getZigArea
         integer(IK)         , intent(in)                :: nlay
-        real(RKC)           , intent(out)               :: abserr
-        real(RKC)           , intent(in)    , optional  :: abstol
-        real(RKC)                                       :: zig(2, 0 : nlay)
+        real(RKG)           , intent(out)               :: abserr
+        real(RKG)           , intent(in)    , optional  :: abstol
+        real(RKG)                                       :: zig(2, 0 : nlay)
     end function
 #endif
 
@@ -322,9 +322,9 @@ module pm_ziggurat
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getZigCRD_RK5
 !#endif
-!        use pm_kind, only: RKC => RK5
-!        real(RKC)   , intent(in)                        :: zig(0:)
-!        real(RKC)                                       :: crd(2, size(zig, 1, IK) / 2_IK)
+!        use pm_kind, only: RKG => RK5
+!        real(RKG)   , intent(in)                        :: zig(0:)
+!        real(RKG)                                       :: crd(2, size(zig, 1, IK) / 2_IK)
 !    end function
 !#endif
 !
@@ -333,9 +333,9 @@ module pm_ziggurat
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getZigCRD_RK4
 !#endif
-!        use pm_kind, only: RKC => RK4
-!        real(RKC)   , intent(in)                        :: zig(0:)
-!        real(RKC)                                       :: crd(2, size(zig, 1, IK) / 2_IK)
+!        use pm_kind, only: RKG => RK4
+!        real(RKG)   , intent(in)                        :: zig(0:)
+!        real(RKG)                                       :: crd(2, size(zig, 1, IK) / 2_IK)
 !    end function
 !#endif
 !
@@ -344,9 +344,9 @@ module pm_ziggurat
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getZigCRD_RK3
 !#endif
-!        use pm_kind, only: RKC => RK3
-!        real(RKC)   , intent(in)                        :: zig(0:)
-!        real(RKC)                                       :: crd(2, size(zig, 1, IK) / 2_IK)
+!        use pm_kind, only: RKG => RK3
+!        real(RKG)   , intent(in)                        :: zig(0:)
+!        real(RKG)                                       :: crd(2, size(zig, 1, IK) / 2_IK)
 !    end function
 !#endif
 !
@@ -355,9 +355,9 @@ module pm_ziggurat
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getZigCRD_RK2
 !#endif
-!        use pm_kind, only: RKC => RK2
-!        real(RKC)   , intent(in)                        :: zig(0:)
-!        real(RKC)                                       :: crd(2, size(zig, 1, IK) / 2_IK)
+!        use pm_kind, only: RKG => RK2
+!        real(RKG)   , intent(in)                        :: zig(0:)
+!        real(RKG)                                       :: crd(2, size(zig, 1, IK) / 2_IK)
 !    end function
 !#endif
 !
@@ -366,9 +366,9 @@ module pm_ziggurat
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getZigCRD_RK1
 !#endif
-!        use pm_kind, only: RKC => RK1
-!        real(RKC)   , intent(in)                        :: zig(0:)
-!        real(RKC)                                       :: crd(2, size(zig, 1, IK) / 2_IK)
+!        use pm_kind, only: RKG => RK1
+!        real(RKG)   , intent(in)                        :: zig(0:)
+!        real(RKG)                                       :: crd(2, size(zig, 1, IK) / 2_IK)
 !    end function
 !#endif
 !

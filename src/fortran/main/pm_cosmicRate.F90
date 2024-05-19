@@ -121,9 +121,9 @@ module pm_cosmicRate
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogRateDensityH06_D0_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(in)                :: logzplus1
-        real(RKC)                               :: logRateDensity
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(in)                :: logzplus1
+        real(RKG)                               :: logRateDensity
     end function
 #endif
 
@@ -132,9 +132,9 @@ module pm_cosmicRate
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogRateDensityH06_D0_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(in)                :: logzplus1
-        real(RKC)                               :: logRateDensity
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(in)                :: logzplus1
+        real(RKG)                               :: logRateDensity
     end function
 #endif
 
@@ -143,9 +143,9 @@ module pm_cosmicRate
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogRateDensityH06_D0_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(in)                :: logzplus1
-        real(RKC)                               :: logRateDensity
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(in)                :: logzplus1
+        real(RKG)                               :: logRateDensity
     end function
 #endif
 
@@ -154,9 +154,9 @@ module pm_cosmicRate
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogRateDensityH06_D0_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(in)                :: logzplus1
-        real(RKC)                               :: logRateDensity
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(in)                :: logzplus1
+        real(RKG)                               :: logRateDensity
     end function
 #endif
 
@@ -165,9 +165,9 @@ module pm_cosmicRate
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogRateDensityH06_D0_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(in)                :: logzplus1
-        real(RKC)                               :: logRateDensity
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(in)                :: logzplus1
+        real(RKG)                               :: logRateDensity
     end function
 #endif
 
@@ -178,9 +178,9 @@ module pm_cosmicRate
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getLogRateDensityH06_D1_RK5
 !#endif
-!        use pm_kind, only: RKC => RK5
-!        real(RKC)   , intent(in)                :: logzplus1
-!        real(RKC)                               :: logRateDensity
+!        use pm_kind, only: RKG => RK5
+!        real(RKG)   , intent(in)                :: logzplus1
+!        real(RKG)                               :: logRateDensity
 !    end function
 !#endif
 !
@@ -189,9 +189,9 @@ module pm_cosmicRate
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getLogRateDensityH06_D1_RK4
 !#endif
-!        use pm_kind, only: RKC => RK4
-!        real(RKC)   , intent(in)                :: logzplus1
-!        real(RKC)                               :: logRateDensity
+!        use pm_kind, only: RKG => RK4
+!        real(RKG)   , intent(in)                :: logzplus1
+!        real(RKG)                               :: logRateDensity
 !    end function
 !#endif
 !
@@ -200,9 +200,9 @@ module pm_cosmicRate
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getLogRateDensityH06_D1_RK3
 !#endif
-!        use pm_kind, only: RKC => RK3
-!        real(RKC)   , intent(in), contiguous    :: logzplus1(:)
-!        real(RKC)                               :: LogRateDensity(size(logzplus1))
+!        use pm_kind, only: RKG => RK3
+!        real(RKG)   , intent(in), contiguous    :: logzplus1(:)
+!        real(RKG)                               :: LogRateDensity(size(logzplus1))
 !    end function
 !#endif
 !
@@ -211,9 +211,9 @@ module pm_cosmicRate
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getLogRateDensityH06_D1_RK2
 !#endif
-!        use pm_kind, only: RKC => RK2
-!        real(RKC)   , intent(in), contiguous    :: logzplus1(:)
-!        real(RKC)                               :: LogRateDensity(size(logzplus1))
+!        use pm_kind, only: RKG => RK2
+!        real(RKG)   , intent(in), contiguous    :: logzplus1(:)
+!        real(RKG)                               :: LogRateDensity(size(logzplus1))
 !    end function
 !#endif
 !
@@ -222,9 +222,9 @@ module pm_cosmicRate
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getLogRateDensityH06_D1_RK1
 !#endif
-!        use pm_kind, only: RKC => RK1
-!        real(RKC)   , intent(in), contiguous    :: logzplus1(:)
-!        real(RKC)                               :: LogRateDensity(size(logzplus1))
+!        use pm_kind, only: RKG => RK1
+!        real(RKG)   , intent(in), contiguous    :: logzplus1(:)
+!        real(RKG)                               :: LogRateDensity(size(logzplus1))
 !    end function
 !#endif
 !
@@ -299,9 +299,9 @@ module pm_cosmicRate
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogRateDensityL08_D0_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(in)                :: logzplus1
-        real(RKC)                               :: logRateDensity
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(in)                :: logzplus1
+        real(RKG)                               :: logRateDensity
     end function
 #endif
 
@@ -310,9 +310,9 @@ module pm_cosmicRate
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogRateDensityL08_D0_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(in)                :: logzplus1
-        real(RKC)                               :: logRateDensity
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(in)                :: logzplus1
+        real(RKG)                               :: logRateDensity
     end function
 #endif
 
@@ -321,9 +321,9 @@ module pm_cosmicRate
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogRateDensityL08_D0_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(in)                :: logzplus1
-        real(RKC)                               :: logRateDensity
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(in)                :: logzplus1
+        real(RKG)                               :: logRateDensity
     end function
 #endif
 
@@ -332,9 +332,9 @@ module pm_cosmicRate
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogRateDensityL08_D0_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(in)                :: logzplus1
-        real(RKC)                               :: logRateDensity
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(in)                :: logzplus1
+        real(RKG)                               :: logRateDensity
     end function
 #endif
 
@@ -343,9 +343,9 @@ module pm_cosmicRate
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogRateDensityL08_D0_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(in)                :: logzplus1
-        real(RKC)                               :: logRateDensity
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(in)                :: logzplus1
+        real(RKG)                               :: logRateDensity
     end function
 #endif
 
@@ -356,9 +356,9 @@ module pm_cosmicRate
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getLogRateDensityL08_D1_RK5
 !#endif
-!        use pm_kind, only: RKC => RK5
-!        real(RKC)   , intent(in)                :: logzplus1
-!        real(RKC)                               :: logRateDensity
+!        use pm_kind, only: RKG => RK5
+!        real(RKG)   , intent(in)                :: logzplus1
+!        real(RKG)                               :: logRateDensity
 !    end function
 !#endif
 !
@@ -367,9 +367,9 @@ module pm_cosmicRate
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getLogRateDensityL08_D1_RK4
 !#endif
-!        use pm_kind, only: RKC => RK4
-!        real(RKC)   , intent(in)                :: logzplus1
-!        real(RKC)                               :: logRateDensity
+!        use pm_kind, only: RKG => RK4
+!        real(RKG)   , intent(in)                :: logzplus1
+!        real(RKG)                               :: logRateDensity
 !    end function
 !#endif
 !
@@ -378,9 +378,9 @@ module pm_cosmicRate
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getLogRateDensityL08_D1_RK3
 !#endif
-!        use pm_kind, only: RKC => RK3
-!        real(RKC)   , intent(in), contiguous    :: logzplus1(:)
-!        real(RKC)                               :: LogRateDensity(size(logzplus1))
+!        use pm_kind, only: RKG => RK3
+!        real(RKG)   , intent(in), contiguous    :: logzplus1(:)
+!        real(RKG)                               :: LogRateDensity(size(logzplus1))
 !    end function
 !#endif
 !
@@ -389,9 +389,9 @@ module pm_cosmicRate
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getLogRateDensityL08_D1_RK2
 !#endif
-!        use pm_kind, only: RKC => RK2
-!        real(RKC)   , intent(in), contiguous    :: logzplus1(:)
-!        real(RKC)                               :: LogRateDensity(size(logzplus1))
+!        use pm_kind, only: RKG => RK2
+!        real(RKG)   , intent(in), contiguous    :: logzplus1(:)
+!        real(RKG)                               :: LogRateDensity(size(logzplus1))
 !    end function
 !#endif
 !
@@ -400,9 +400,9 @@ module pm_cosmicRate
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getLogRateDensityL08_D1_RK1
 !#endif
-!        use pm_kind, only: RKC => RK1
-!        real(RKC)   , intent(in), contiguous    :: logzplus1(:)
-!        real(RKC)                               :: LogRateDensity(size(logzplus1))
+!        use pm_kind, only: RKG => RK1
+!        real(RKG)   , intent(in), contiguous    :: logzplus1(:)
+!        real(RKG)                               :: LogRateDensity(size(logzplus1))
 !    end function
 !#endif
 !
@@ -485,9 +485,9 @@ module pm_cosmicRate
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogRateDensityM14_D0_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(in)                :: zplus1, logzplus1
-        real(RKC)                               :: logRateDensity
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(in)                :: zplus1, logzplus1
+        real(RKG)                               :: logRateDensity
     end function
 #endif
 
@@ -496,9 +496,9 @@ module pm_cosmicRate
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogRateDensityM14_D0_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(in)                :: zplus1, logzplus1
-        real(RKC)                               :: logRateDensity
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(in)                :: zplus1, logzplus1
+        real(RKG)                               :: logRateDensity
     end function
 #endif
 
@@ -507,9 +507,9 @@ module pm_cosmicRate
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogRateDensityM14_D0_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(in)                :: zplus1, logzplus1
-        real(RKC)                               :: logRateDensity
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(in)                :: zplus1, logzplus1
+        real(RKG)                               :: logRateDensity
     end function
 #endif
 
@@ -518,9 +518,9 @@ module pm_cosmicRate
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogRateDensityM14_D0_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(in)                :: zplus1, logzplus1
-        real(RKC)                               :: logRateDensity
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(in)                :: zplus1, logzplus1
+        real(RKG)                               :: logRateDensity
     end function
 #endif
 
@@ -529,9 +529,9 @@ module pm_cosmicRate
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogRateDensityM14_D0_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(in)                :: zplus1, logzplus1
-        real(RKC)                               :: logRateDensity
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(in)                :: zplus1, logzplus1
+        real(RKG)                               :: logRateDensity
     end function
 #endif
 
@@ -542,9 +542,9 @@ module pm_cosmicRate
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getLogRateDensityM14_D1_RK5
 !#endif
-!        use pm_kind, only: RKC => RK5
-!        real(RKC)   , intent(in), contiguous    :: zplus1(:), logzplus1(:)
-!        real(RKC)                               :: LogRateDensity(size(logzplus1))
+!        use pm_kind, only: RKG => RK5
+!        real(RKG)   , intent(in), contiguous    :: zplus1(:), logzplus1(:)
+!        real(RKG)                               :: LogRateDensity(size(logzplus1))
 !    end function
 !#endif
 !
@@ -553,9 +553,9 @@ module pm_cosmicRate
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getLogRateDensityM14_D1_RK4
 !#endif
-!        use pm_kind, only: RKC => RK4
-!        real(RKC)   , intent(in), contiguous    :: zplus1(:), logzplus1(:)
-!        real(RKC)                               :: LogRateDensity(size(logzplus1))
+!        use pm_kind, only: RKG => RK4
+!        real(RKG)   , intent(in), contiguous    :: zplus1(:), logzplus1(:)
+!        real(RKG)                               :: LogRateDensity(size(logzplus1))
 !    end function
 !#endif
 !
@@ -564,9 +564,9 @@ module pm_cosmicRate
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getLogRateDensityM14_D1_RK3
 !#endif
-!        use pm_kind, only: RKC => RK3
-!        real(RKC)   , intent(in), contiguous    :: zplus1(:), logzplus1(:)
-!        real(RKC)                               :: LogRateDensity(size(logzplus1))
+!        use pm_kind, only: RKG => RK3
+!        real(RKG)   , intent(in), contiguous    :: zplus1(:), logzplus1(:)
+!        real(RKG)                               :: LogRateDensity(size(logzplus1))
 !    end function
 !#endif
 !
@@ -575,9 +575,9 @@ module pm_cosmicRate
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getLogRateDensityM14_D1_RK2
 !#endif
-!        use pm_kind, only: RKC => RK2
-!        real(RKC)   , intent(in), contiguous    :: zplus1(:), logzplus1(:)
-!        real(RKC)                               :: LogRateDensity(size(logzplus1))
+!        use pm_kind, only: RKG => RK2
+!        real(RKG)   , intent(in), contiguous    :: zplus1(:), logzplus1(:)
+!        real(RKG)                               :: LogRateDensity(size(logzplus1))
 !    end function
 !#endif
 !
@@ -586,9 +586,9 @@ module pm_cosmicRate
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getLogRateDensityM14_D1_RK1
 !#endif
-!        use pm_kind, only: RKC => RK1
-!        real(RKC)   , intent(in), contiguous    :: zplus1(:), logzplus1(:)
-!        real(RKC)                               :: LogRateDensity(size(logzplus1))
+!        use pm_kind, only: RKG => RK1
+!        real(RKG)   , intent(in), contiguous    :: zplus1(:), logzplus1(:)
+!        real(RKG)                               :: LogRateDensity(size(logzplus1))
 !    end function
 !#endif
 !
@@ -670,9 +670,9 @@ module pm_cosmicRate
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogRateDensityM17_D0_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(in)                :: zplus1, logzplus1
-        real(RKC)                               :: logRateDensity
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(in)                :: zplus1, logzplus1
+        real(RKG)                               :: logRateDensity
     end function
 #endif
 
@@ -681,9 +681,9 @@ module pm_cosmicRate
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogRateDensityM17_D0_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(in)                :: zplus1, logzplus1
-        real(RKC)                               :: logRateDensity
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(in)                :: zplus1, logzplus1
+        real(RKG)                               :: logRateDensity
     end function
 #endif
 
@@ -692,9 +692,9 @@ module pm_cosmicRate
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogRateDensityM17_D0_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(in)                :: zplus1, logzplus1
-        real(RKC)                               :: logRateDensity
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(in)                :: zplus1, logzplus1
+        real(RKG)                               :: logRateDensity
     end function
 #endif
 
@@ -703,9 +703,9 @@ module pm_cosmicRate
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogRateDensityM17_D0_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(in)                :: zplus1, logzplus1
-        real(RKC)                               :: logRateDensity
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(in)                :: zplus1, logzplus1
+        real(RKG)                               :: logRateDensity
     end function
 #endif
 
@@ -714,9 +714,9 @@ module pm_cosmicRate
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogRateDensityM17_D0_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(in)                :: zplus1, logzplus1
-        real(RKC)                               :: logRateDensity
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(in)                :: zplus1, logzplus1
+        real(RKG)                               :: logRateDensity
     end function
 #endif
 
@@ -727,9 +727,9 @@ module pm_cosmicRate
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getLogRateDensityM17_D1_RK5
 !#endif
-!        use pm_kind, only: RKC => RK5
-!        real(RKC)   , intent(in), contiguous    :: zplus1(:), logzplus1(:)
-!        real(RKC)                               :: LogRateDensity(size(logzplus1))
+!        use pm_kind, only: RKG => RK5
+!        real(RKG)   , intent(in), contiguous    :: zplus1(:), logzplus1(:)
+!        real(RKG)                               :: LogRateDensity(size(logzplus1))
 !    end function
 !#endif
 !
@@ -738,9 +738,9 @@ module pm_cosmicRate
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getLogRateDensityM17_D1_RK4
 !#endif
-!        use pm_kind, only: RKC => RK4
-!        real(RKC)   , intent(in), contiguous    :: zplus1(:), logzplus1(:)
-!        real(RKC)                               :: LogRateDensity(size(logzplus1))
+!        use pm_kind, only: RKG => RK4
+!        real(RKG)   , intent(in), contiguous    :: zplus1(:), logzplus1(:)
+!        real(RKG)                               :: LogRateDensity(size(logzplus1))
 !    end function
 !#endif
 !
@@ -749,9 +749,9 @@ module pm_cosmicRate
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getLogRateDensityM17_D1_RK3
 !#endif
-!        use pm_kind, only: RKC => RK3
-!        real(RKC)   , intent(in), contiguous    :: zplus1(:), logzplus1(:)
-!        real(RKC)                               :: LogRateDensity(size(logzplus1))
+!        use pm_kind, only: RKG => RK3
+!        real(RKG)   , intent(in), contiguous    :: zplus1(:), logzplus1(:)
+!        real(RKG)                               :: LogRateDensity(size(logzplus1))
 !    end function
 !#endif
 !
@@ -760,9 +760,9 @@ module pm_cosmicRate
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getLogRateDensityM17_D1_RK2
 !#endif
-!        use pm_kind, only: RKC => RK2
-!        real(RKC)   , intent(in), contiguous    :: zplus1(:), logzplus1(:)
-!        real(RKC)                               :: LogRateDensity(size(logzplus1))
+!        use pm_kind, only: RKG => RK2
+!        real(RKG)   , intent(in), contiguous    :: zplus1(:), logzplus1(:)
+!        real(RKG)                               :: LogRateDensity(size(logzplus1))
 !    end function
 !#endif
 !
@@ -771,9 +771,9 @@ module pm_cosmicRate
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getLogRateDensityM17_D1_RK1
 !#endif
-!        use pm_kind, only: RKC => RK1
-!        real(RKC)   , intent(in), contiguous    :: zplus1(:), logzplus1(:)
-!        real(RKC)                               :: LogRateDensity(size(logzplus1))
+!        use pm_kind, only: RKG => RK1
+!        real(RKG)   , intent(in), contiguous    :: zplus1(:), logzplus1(:)
+!        real(RKG)                               :: LogRateDensity(size(logzplus1))
 !    end function
 !#endif
 !
@@ -855,9 +855,9 @@ module pm_cosmicRate
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogRateDensityF18_D0_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(in)                :: zplus1, logzplus1
-        real(RKC)                               :: logRateDensity
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(in)                :: zplus1, logzplus1
+        real(RKG)                               :: logRateDensity
     end function
 #endif
 
@@ -866,9 +866,9 @@ module pm_cosmicRate
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogRateDensityF18_D0_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(in)                :: zplus1, logzplus1
-        real(RKC)                               :: logRateDensity
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(in)                :: zplus1, logzplus1
+        real(RKG)                               :: logRateDensity
     end function
 #endif
 
@@ -877,9 +877,9 @@ module pm_cosmicRate
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogRateDensityF18_D0_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(in)                :: zplus1, logzplus1
-        real(RKC)                               :: logRateDensity
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(in)                :: zplus1, logzplus1
+        real(RKG)                               :: logRateDensity
     end function
 #endif
 
@@ -888,9 +888,9 @@ module pm_cosmicRate
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogRateDensityF18_D0_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(in)                :: zplus1, logzplus1
-        real(RKC)                               :: logRateDensity
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(in)                :: zplus1, logzplus1
+        real(RKG)                               :: logRateDensity
     end function
 #endif
 
@@ -899,9 +899,9 @@ module pm_cosmicRate
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogRateDensityF18_D0_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(in)                :: zplus1, logzplus1
-        real(RKC)                               :: logRateDensity
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(in)                :: zplus1, logzplus1
+        real(RKG)                               :: logRateDensity
     end function
 #endif
 
@@ -912,9 +912,9 @@ module pm_cosmicRate
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getLogRateDensityF18_D1_RK5
 !#endif
-!        use pm_kind, only: RKC => RK5
-!        real(RKC)   , intent(in), contiguous    :: zplus1(:), logzplus1(:)
-!        real(RKC)                               :: LogRateDensity(size(logzplus1))
+!        use pm_kind, only: RKG => RK5
+!        real(RKG)   , intent(in), contiguous    :: zplus1(:), logzplus1(:)
+!        real(RKG)                               :: LogRateDensity(size(logzplus1))
 !    end function
 !#endif
 !
@@ -923,9 +923,9 @@ module pm_cosmicRate
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getLogRateDensityF18_D1_RK4
 !#endif
-!        use pm_kind, only: RKC => RK4
-!        real(RKC)   , intent(in), contiguous    :: zplus1(:), logzplus1(:)
-!        real(RKC)                               :: LogRateDensity(size(logzplus1))
+!        use pm_kind, only: RKG => RK4
+!        real(RKG)   , intent(in), contiguous    :: zplus1(:), logzplus1(:)
+!        real(RKG)                               :: LogRateDensity(size(logzplus1))
 !    end function
 !#endif
 !
@@ -934,9 +934,9 @@ module pm_cosmicRate
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getLogRateDensityF18_D1_RK3
 !#endif
-!        use pm_kind, only: RKC => RK3
-!        real(RKC)   , intent(in), contiguous    :: zplus1(:), logzplus1(:)
-!        real(RKC)                               :: LogRateDensity(size(logzplus1))
+!        use pm_kind, only: RKG => RK3
+!        real(RKG)   , intent(in), contiguous    :: zplus1(:), logzplus1(:)
+!        real(RKG)                               :: LogRateDensity(size(logzplus1))
 !    end function
 !#endif
 !
@@ -945,9 +945,9 @@ module pm_cosmicRate
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getLogRateDensityF18_D1_RK2
 !#endif
-!        use pm_kind, only: RKC => RK2
-!        real(RKC)   , intent(in), contiguous    :: zplus1(:), logzplus1(:)
-!        real(RKC)                               :: LogRateDensity(size(logzplus1))
+!        use pm_kind, only: RKG => RK2
+!        real(RKG)   , intent(in), contiguous    :: zplus1(:), logzplus1(:)
+!        real(RKG)                               :: LogRateDensity(size(logzplus1))
 !    end function
 !#endif
 !
@@ -956,9 +956,9 @@ module pm_cosmicRate
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getLogRateDensityF18_D1_RK1
 !#endif
-!        use pm_kind, only: RKC => RK1
-!        real(RKC)   , intent(in), contiguous    :: zplus1(:), logzplus1(:)
-!        real(RKC)                               :: LogRateDensity(size(logzplus1))
+!        use pm_kind, only: RKG => RK1
+!        real(RKG)   , intent(in), contiguous    :: zplus1(:), logzplus1(:)
+!        real(RKG)                               :: LogRateDensity(size(logzplus1))
 !    end function
 !#endif
 !
@@ -1045,9 +1045,9 @@ module pm_cosmicRate
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogRateDensityB10_D0_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(in)                :: logzplus1
-        real(RKC)                               :: logRateDensity
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(in)                :: logzplus1
+        real(RKG)                               :: logRateDensity
     end function
 #endif
 
@@ -1056,9 +1056,9 @@ module pm_cosmicRate
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogRateDensityB10_D0_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(in)                :: logzplus1
-        real(RKC)                               :: logRateDensity
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(in)                :: logzplus1
+        real(RKG)                               :: logRateDensity
     end function
 #endif
 
@@ -1067,9 +1067,9 @@ module pm_cosmicRate
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogRateDensityB10_D0_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(in)                :: logzplus1
-        real(RKC)                               :: logRateDensity
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(in)                :: logzplus1
+        real(RKG)                               :: logRateDensity
     end function
 #endif
 
@@ -1078,9 +1078,9 @@ module pm_cosmicRate
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogRateDensityB10_D0_RK2
 #endif
-        use pm_kind, only: LK, RKC => RK2
-        real(RKC)   , intent(in)                :: logzplus1
-        real(RKC)                               :: logRateDensity
+        use pm_kind, only: LK, RKG => RK2
+        real(RKG)   , intent(in)                :: logzplus1
+        real(RKG)                               :: logRateDensity
     end function
 #endif
 
@@ -1089,9 +1089,9 @@ module pm_cosmicRate
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogRateDensityB10_D0_RK1
 #endif
-        use pm_kind, only: LK, RKC => RK1
-        real(RKC)   , intent(in)                :: logzplus1
-        real(RKC)                               :: logRateDensity
+        use pm_kind, only: LK, RKG => RK1
+        real(RKG)   , intent(in)                :: logzplus1
+        real(RKG)                               :: logRateDensity
     end function
 #endif
 
@@ -1167,9 +1167,9 @@ module pm_cosmicRate
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogRateDensityP15_D0_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(in)                :: logzplus1
-        real(RKC)                               :: logRateDensity
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(in)                :: logzplus1
+        real(RKG)                               :: logRateDensity
     end function
 #endif
 
@@ -1178,9 +1178,9 @@ module pm_cosmicRate
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogRateDensityP15_D0_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(in)                :: logzplus1
-        real(RKC)                               :: logRateDensity
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(in)                :: logzplus1
+        real(RKG)                               :: logRateDensity
     end function
 #endif
 
@@ -1189,9 +1189,9 @@ module pm_cosmicRate
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogRateDensityP15_D0_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(in)                :: logzplus1
-        real(RKC)                               :: logRateDensity
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(in)                :: logzplus1
+        real(RKG)                               :: logRateDensity
     end function
 #endif
 
@@ -1200,9 +1200,9 @@ module pm_cosmicRate
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogRateDensityP15_D0_RK2
 #endif
-        use pm_kind, only: LK, RKC => RK2
-        real(RKC)   , intent(in)                :: logzplus1
-        real(RKC)                               :: logRateDensity
+        use pm_kind, only: LK, RKG => RK2
+        real(RKG)   , intent(in)                :: logzplus1
+        real(RKG)                               :: logRateDensity
     end function
 #endif
 
@@ -1211,9 +1211,9 @@ module pm_cosmicRate
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogRateDensityP15_D0_RK1
 #endif
-        use pm_kind, only: LK, RKC => RK1
-        real(RKC)   , intent(in)                :: logzplus1
-        real(RKC)                               :: logRateDensity
+        use pm_kind, only: LK, RKG => RK1
+        real(RKG)   , intent(in)                :: logzplus1
+        real(RKG)                               :: logRateDensity
     end function
 #endif
 

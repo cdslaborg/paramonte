@@ -38,18 +38,18 @@
 
 #if     D0_ENABLED
         CHECK_ASSERTION(__LINE__, 0_IK < ndim, SK_"@getUnifEllLogPDF(): The condition `0 < ndim` must hold. ndim = "//getStr(ndim))
-        logPDF = -ndim * logChoDia - getLogVolUnitBall(real(ndim, RKC))
+        logPDF = -ndim * logChoDia - getLogVolUnitBall(real(ndim, RKG))
 #elif   D1_ENABLED
-        logPDF = -sum(logChoDia) - getLogVolUnitBall(real(size(logChoDia, 1, IK), RKC))
+        logPDF = -sum(logChoDia) - getLogVolUnitBall(real(size(logChoDia, 1, IK), RKG))
 #elif   D2_ENABLED && AIP_ENABLED
         integer(IK) :: info
-        real(RKC) :: chol(size(gramian, 1, IK), size(gramian, 2, IK))
+        real(RKG) :: chol(size(gramian, 1, IK), size(gramian, 2, IK))
         CHECK_ASSERTION(__LINE__, size(gramian, 1, IK) == size(gramian, 2, IK), SK_"@getUnifEllLogPDF(): The condition `size(gramian, 1) == size(gramian, 2)` must hold. shape(gramian) = "//getStr(shape(gramian,IK)))
         call setMatCopy(chol, rdpack, gramian, rdpack, uppDia, doff = 0_IK)
         call setMatDetSqrtLog(chol, uppDia, logPDF, info, chol, transHerm)
         if (info /= 0_IK) error stop "The Cholesky factorization of Gramian failed. Graming is not positive definite."
-        logPDF = -(logPDF + getLogVolUnitBall(real(size(gramian, 1, IK), RKC)))
-        !logPDF = -getLogVolUnitBall(real(size(gramian, 1, IK), RKC)) - getMatMulTraceLog(chol)
+        logPDF = -(logPDF + getLogVolUnitBall(real(size(gramian, 1, IK), RKG)))
+        !logPDF = -getLogVolUnitBall(real(size(gramian, 1, IK), RKG)) - getMatMulTraceLog(chol)
 #else
 #error  "Unrecognized interface."
 #endif
@@ -59,11 +59,11 @@
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
         integer(IK) :: idim, ndim
-        real(RKC)   :: unifrnd, ndimInv
-        real(RKC)   :: sumSqUnifBallRand
+        real(RKG)   :: unifrnd, ndimInv
+        real(RKG)   :: sumSqUnifBallRand
 #if     AC_ENABLED
 #define UNIFBALLRAND unifBallRand
-        real(RKC)   :: unifBallRand(size(rand, 1, IK))
+        real(RKG)   :: unifBallRand(size(rand, 1, IK))
 #elif   DC_ENABLED
 #define UNIFBALLRAND rand
 #else
@@ -78,15 +78,15 @@
 #error  "Unrecognized interface."
 #endif
         ndim = size(rand, kind = IK)
-        ndimInv = 1._RKC / real(ndim, RKC)
+        ndimInv = 1._RKG / real(ndim, RKG)
         do
-            sumSqUnifBallRand = 0._RKC
+            sumSqUnifBallRand = 0._RKG
             do idim = 1_IK, ndim
                 call setNormRand(RNG UNIFBALLRAND(idim))
                 sumSqUnifBallRand = sumSqUnifBallRand + UNIFBALLRAND(idim)**2
             end do
             ! Ensure the vector is not origin. Highly unlikely but possible.
-            if (0._RKC < sumSqUnifBallRand) exit
+            if (0._RKG < sumSqUnifBallRand) exit
         end do
 #if     RNGD_ENABLED || RNGF_ENABLED
         call random_number(unifrnd)

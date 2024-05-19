@@ -1,7 +1,7 @@
 program example
 
     use pm_kind, only: SK, IK, LK
-    use pm_kind, only: TKC => RKS ! All other real types are also supported.
+    use pm_kind, only: TKG => RKS ! All other real types are also supported.
     use pm_io, only: display_type
     use pm_sampleVar, only: getVar
     use pm_arraySpace, only: getLinSpace
@@ -25,10 +25,10 @@ program example
     call disp%skip()
 
     block
-        real(TKC) :: var
-        real(TKC), allocatable :: sample(:)
-        call disp%show("sample = getLinSpace(1._TKC, 9._TKC, 5_IK)")
-                        sample = getLinSpace(1._TKC, 9._TKC, 5_IK)
+        real(TKG) :: var
+        real(TKG), allocatable :: sample(:)
+        call disp%show("sample = getLinSpace(1._TKG, 9._TKG, 5_IK)")
+                        sample = getLinSpace(1._TKG, 9._TKG, 5_IK)
         call disp%show("sample")
         call disp%show( sample )
         call disp%show("var = getVar(sample)")
@@ -59,10 +59,10 @@ program example
     end block
 
     block
-        real(TKC) :: var
-        complex(TKC) , allocatable :: sample(:)
-        call disp%show("sample = cmplx(getShuffled(getLinSpace(1., 9., 5_IK)), getShuffled(getLinSpace(1., 9., 5_IK)), TKC)")
-                        sample = cmplx(getShuffled(getLinSpace(1., 9., 5_IK)), getShuffled(getLinSpace(1., 9., 5_IK)), TKC)
+        real(TKG) :: var
+        complex(TKG) , allocatable :: sample(:)
+        call disp%show("sample = cmplx(getShuffled(getLinSpace(1., 9., 5_IK)), getShuffled(getLinSpace(1., 9., 5_IK)), TKG)")
+                        sample = cmplx(getShuffled(getLinSpace(1., 9., 5_IK)), getShuffled(getLinSpace(1., 9., 5_IK)), TKG)
         call disp%show("sample")
         call disp%show( sample )
         call disp%show("var = getVar(sample)")
@@ -99,10 +99,10 @@ program example
     call disp%skip()
 
     block
-        real(TKC), allocatable :: var(:), sample(:,:)
+        real(TKG), allocatable :: var(:), sample(:,:)
         call disp%skip()
-        call disp%show("sample = getUnifRand(1._TKC, 9._TKC, 4_IK, 5_IK)")
-                        sample = getUnifRand(1._TKC, 9._TKC, 4_IK, 5_IK)
+        call disp%show("sample = getUnifRand(1._TKG, 9._TKG, 4_IK, 5_IK)")
+                        sample = getUnifRand(1._TKG, 9._TKG, 4_IK, 5_IK)
         call disp%show("sample")
         call disp%show( sample )
         call disp%show("call setResized(var, 1_IK)")
@@ -123,8 +123,8 @@ program example
         do dim = 1, 2
             call disp%show("dim ! The observations axis.")
             call disp%show( dim )
-            call disp%show("sample = getUnifRand(1._TKC, 9._TKC, 4_IK, 5_IK)")
-                            sample = getUnifRand(1._TKC, 9._TKC, 4_IK, 5_IK)
+            call disp%show("sample = getUnifRand(1._TKG, 9._TKG, 4_IK, 5_IK)")
+                            sample = getUnifRand(1._TKG, 9._TKG, 4_IK, 5_IK)
             call disp%show("var = getVar(sample, dim, correction = fweight)")
                             var = getVar(sample, dim, correction = fweight)
             call disp%show("var")
@@ -138,11 +138,11 @@ program example
     end block
 
     block
-        real(TKC), allocatable :: var(:)
-        complex(TKC), allocatable :: sample(:,:)
+        real(TKG), allocatable :: var(:)
+        complex(TKG), allocatable :: sample(:,:)
         call disp%skip()
-        call disp%show("sample = cmplx(getUnifRand(-9, 9, 4_IK, 5_IK), -getUnifRand(-9, 9, 4_IK, 5_IK), TKC)")
-                        sample = cmplx(getUnifRand(-9, 9, 4_IK, 5_IK), -getUnifRand(-9, 9, 4_IK, 5_IK), TKC)
+        call disp%show("sample = cmplx(getUnifRand(-9, 9, 4_IK, 5_IK), -getUnifRand(-9, 9, 4_IK, 5_IK), TKG)")
+                        sample = cmplx(getUnifRand(-9, 9, 4_IK, 5_IK), -getUnifRand(-9, 9, 4_IK, 5_IK), TKG)
         call disp%show("sample")
         call disp%show( sample )
         call disp%show("call setResized(var, 1_IK)")
@@ -163,8 +163,8 @@ program example
         do dim = 1, 2
             call disp%show("dim ! The observations axis.")
             call disp%show( dim )
-            call disp%show("sample = cmplx(getUnifRand(-9, 9, 4_IK, 5_IK), -getUnifRand(-9, 9, 4_IK, 5_IK), TKC)")
-                            sample = cmplx(getUnifRand(-9, 9, 4_IK, 5_IK), -getUnifRand(-9, 9, 4_IK, 5_IK), TKC)
+            call disp%show("sample = cmplx(getUnifRand(-9, 9, 4_IK, 5_IK), -getUnifRand(-9, 9, 4_IK, 5_IK), TKG)")
+                            sample = cmplx(getUnifRand(-9, 9, 4_IK, 5_IK), -getUnifRand(-9, 9, 4_IK, 5_IK), TKG)
             call disp%show("sample")
             call disp%show( sample )
             call disp%show("var = getVar(sample, dim)")
@@ -190,15 +190,15 @@ program example
     call disp%skip()
 
     block
-        real(TKC) :: var
-        real(TKC), allocatable :: sample(:)
-        real(TKC) , allocatable :: weight(:)
-        call disp%show("sample = getLinSpace(1._TKC, 9._TKC, 5_IK)")
-                        sample = getLinSpace(1._TKC, 9._TKC, 5_IK)
+        real(TKG) :: var
+        real(TKG), allocatable :: sample(:)
+        real(TKG) , allocatable :: weight(:)
+        call disp%show("sample = getLinSpace(1._TKG, 9._TKG, 5_IK)")
+                        sample = getLinSpace(1._TKG, 9._TKG, 5_IK)
         call disp%show("sample")
         call disp%show( sample )
-        call disp%show("weight = getLinSpace(1._TKC, 9._TKC, size(sample, 1, IK))")
-                        weight = getLinSpace(1._TKC, 9._TKC, size(sample, 1, IK))
+        call disp%show("weight = getLinSpace(1._TKG, 9._TKG, size(sample, 1, IK))")
+                        weight = getLinSpace(1._TKG, 9._TKG, size(sample, 1, IK))
         call disp%show("weight")
         call disp%show( weight )
         call disp%show("var = getVar(sample, weight = weight)")
@@ -235,15 +235,15 @@ program example
     call disp%skip()
 
     block
-        real(TKC), allocatable :: var(:), sample(:,:)
-        real(TKC), allocatable :: weight(:)
+        real(TKG), allocatable :: var(:), sample(:,:)
+        real(TKG), allocatable :: weight(:)
         call disp%skip()
-        call disp%show("sample = getUnifRand(1._TKC, 9._TKC, 4_IK, 5_IK)")
-                        sample = getUnifRand(1._TKC, 9._TKC, 4_IK, 5_IK)
+        call disp%show("sample = getUnifRand(1._TKG, 9._TKG, 4_IK, 5_IK)")
+                        sample = getUnifRand(1._TKG, 9._TKG, 4_IK, 5_IK)
         call disp%show("sample")
         call disp%show( sample )
-        call disp%show("weight = getLinSpace(1._TKC, 9._TKC, size(sample, kind = IK))")
-                        weight = getLinSpace(1._TKC, 9._TKC, size(sample, kind = IK))
+        call disp%show("weight = getLinSpace(1._TKG, 9._TKG, size(sample, kind = IK))")
+                        weight = getLinSpace(1._TKG, 9._TKG, size(sample, kind = IK))
         call disp%show("weight")
         call disp%show( weight )
         call disp%show("call setResized(var, 1_IK)")
@@ -264,12 +264,12 @@ program example
         do dim = 1, 2
             call disp%show("dim ! The observations axis.")
             call disp%show( dim )
-            call disp%show("sample = getUnifRand(1._TKC, 9._TKC, 4_IK, 5_IK)")
-                            sample = getUnifRand(1._TKC, 9._TKC, 4_IK, 5_IK)
+            call disp%show("sample = getUnifRand(1._TKG, 9._TKG, 4_IK, 5_IK)")
+                            sample = getUnifRand(1._TKG, 9._TKG, 4_IK, 5_IK)
             call disp%show("sample")
             call disp%show( sample )
-            call disp%show("weight = getLinSpace(1._TKC, 9._TKC, size(sample, dim, IK))")
-                            weight = getLinSpace(1._TKC, 9._TKC, size(sample, dim, IK))
+            call disp%show("weight = getLinSpace(1._TKG, 9._TKG, size(sample, dim, IK))")
+                            weight = getLinSpace(1._TKG, 9._TKG, size(sample, dim, IK))
             call disp%show("weight")
             call disp%show( weight )
             call disp%show("var = getVar(sample, dim, weight = weight)")
@@ -295,9 +295,9 @@ program example
     call disp%skip()
 
     block
-        real(TKC), allocatable :: var
-        real(TKC), allocatable, target :: sample(:,:,:)
-        real(TKC), pointer :: samptr(:)
+        real(TKG), allocatable :: var
+        real(TKG), allocatable, target :: sample(:,:,:)
+        real(TKG), pointer :: samptr(:)
         call disp%show("sample = getUnifRand(0., 1., 3_IK, 3_IK, 3_IK)")
                         sample = getUnifRand(0., 1., 3_IK, 3_IK, 3_IK)
         call disp%show("sample")

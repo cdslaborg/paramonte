@@ -142,10 +142,10 @@ module pm_arrayFill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getFilled_D1_SK5
 #endif
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
         integer(IK)                 , intent(in)                        :: s1
-        character(*,SKC)            , intent(in)                        :: val
-        character(len(val,IK),SKC)                                      :: array(s1)
+        character(*,SKG)            , intent(in)                        :: val
+        character(len(val,IK),SKG)                                      :: array(s1)
     end function
 #endif
 
@@ -154,10 +154,10 @@ module pm_arrayFill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getFilled_D1_SK4
 #endif
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
         integer(IK)                 , intent(in)                        :: s1
-        character(*,SKC)            , intent(in)                        :: val
-        character(len(val,IK),SKC)                                      :: array(s1)
+        character(*,SKG)            , intent(in)                        :: val
+        character(len(val,IK),SKG)                                      :: array(s1)
     end function
 #endif
 
@@ -166,10 +166,10 @@ module pm_arrayFill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getFilled_D1_SK3
 #endif
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
         integer(IK)                 , intent(in)                        :: s1
-        character(*,SKC)            , intent(in)                        :: val
-        character(len(val,IK),SKC)                                      :: array(s1)
+        character(*,SKG)            , intent(in)                        :: val
+        character(len(val,IK),SKG)                                      :: array(s1)
     end function
 #endif
 
@@ -178,10 +178,10 @@ module pm_arrayFill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getFilled_D1_SK2
 #endif
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
         integer(IK)                 , intent(in)                        :: s1
-        character(*,SKC)            , intent(in)                        :: val
-        character(len(val,IK),SKC)                                      :: array(s1)
+        character(*,SKG)            , intent(in)                        :: val
+        character(len(val,IK),SKG)                                      :: array(s1)
     end function
 #endif
 
@@ -190,10 +190,10 @@ module pm_arrayFill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getFilled_D1_SK1
 #endif
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
         integer(IK)                 , intent(in)                        :: s1
-        character(*,SKC)            , intent(in)                        :: val
-        character(len(val,IK),SKC)                                      :: array(s1)
+        character(*,SKG)            , intent(in)                        :: val
+        character(len(val,IK),SKG)                                      :: array(s1)
     end function
 #endif
 
@@ -204,10 +204,10 @@ module pm_arrayFill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getFilled_D1_IK5
 #endif
-        use pm_kind, only: IKC => IK5
+        use pm_kind, only: IKG => IK5
         integer(IK)                 , intent(in)                        :: s1
-        integer(IKC)                , intent(in)                        :: val
-        integer(IKC)                                                    :: array(s1)
+        integer(IKG)                , intent(in)                        :: val
+        integer(IKG)                                                    :: array(s1)
     end function
 #endif
 
@@ -216,10 +216,10 @@ module pm_arrayFill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getFilled_D1_IK4
 #endif
-        use pm_kind, only: IKC => IK4
+        use pm_kind, only: IKG => IK4
         integer(IK)                 , intent(in)                        :: s1
-        integer(IKC)                , intent(in)                        :: val
-        integer(IKC)                                                    :: array(s1)
+        integer(IKG)                , intent(in)                        :: val
+        integer(IKG)                                                    :: array(s1)
     end function
 #endif
 
@@ -228,10 +228,10 @@ module pm_arrayFill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getFilled_D1_IK3
 #endif
-        use pm_kind, only: IKC => IK3
+        use pm_kind, only: IKG => IK3
         integer(IK)                 , intent(in)                        :: s1
-        integer(IKC)                , intent(in)                        :: val
-        integer(IKC)                                                    :: array(s1)
+        integer(IKG)                , intent(in)                        :: val
+        integer(IKG)                                                    :: array(s1)
     end function
 #endif
 
@@ -240,10 +240,10 @@ module pm_arrayFill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getFilled_D1_IK2
 #endif
-        use pm_kind, only: IKC => IK2
+        use pm_kind, only: IKG => IK2
         integer(IK)                 , intent(in)                        :: s1
-        integer(IKC)                , intent(in)                        :: val
-        integer(IKC)                                                    :: array(s1)
+        integer(IKG)                , intent(in)                        :: val
+        integer(IKG)                                                    :: array(s1)
     end function
 #endif
 
@@ -252,10 +252,10 @@ module pm_arrayFill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getFilled_D1_IK1
 #endif
-        use pm_kind, only: IKC => IK1
+        use pm_kind, only: IKG => IK1
         integer(IK)                 , intent(in)                        :: s1
-        integer(IKC)                , intent(in)                        :: val
-        integer(IKC)                                                    :: array(s1)
+        integer(IKG)                , intent(in)                        :: val
+        integer(IKG)                                                    :: array(s1)
     end function
 #endif
 
@@ -266,10 +266,10 @@ module pm_arrayFill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getFilled_D1_LK5
 #endif
-        use pm_kind, only: LKC => LK5
+        use pm_kind, only: LKG => LK5
         integer(IK)                 , intent(in)                        :: s1
-        logical(LKC)                , intent(in)                        :: val
-        logical(LKC)                                                    :: array(s1)
+        logical(LKG)                , intent(in)                        :: val
+        logical(LKG)                                                    :: array(s1)
     end function
 #endif
 
@@ -278,10 +278,10 @@ module pm_arrayFill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getFilled_D1_LK4
 #endif
-        use pm_kind, only: LKC => LK4
+        use pm_kind, only: LKG => LK4
         integer(IK)                 , intent(in)                        :: s1
-        logical(LKC)                , intent(in)                        :: val
-        logical(LKC)                                                    :: array(s1)
+        logical(LKG)                , intent(in)                        :: val
+        logical(LKG)                                                    :: array(s1)
     end function
 #endif
 
@@ -290,10 +290,10 @@ module pm_arrayFill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getFilled_D1_LK3
 #endif
-        use pm_kind, only: LKC => LK3
+        use pm_kind, only: LKG => LK3
         integer(IK)                 , intent(in)                        :: s1
-        logical(LKC)                , intent(in)                        :: val
-        logical(LKC)                                                    :: array(s1)
+        logical(LKG)                , intent(in)                        :: val
+        logical(LKG)                                                    :: array(s1)
     end function
 #endif
 
@@ -302,10 +302,10 @@ module pm_arrayFill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getFilled_D1_LK2
 #endif
-        use pm_kind, only: LKC => LK2
+        use pm_kind, only: LKG => LK2
         integer(IK)                 , intent(in)                        :: s1
-        logical(LKC)                , intent(in)                        :: val
-        logical(LKC)                                                    :: array(s1)
+        logical(LKG)                , intent(in)                        :: val
+        logical(LKG)                                                    :: array(s1)
     end function
 #endif
 
@@ -314,10 +314,10 @@ module pm_arrayFill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getFilled_D1_LK1
 #endif
-        use pm_kind, only: LKC => LK1
+        use pm_kind, only: LKG => LK1
         integer(IK)                 , intent(in)                        :: s1
-        logical(LKC)                , intent(in)                        :: val
-        logical(LKC)                                                    :: array(s1)
+        logical(LKG)                , intent(in)                        :: val
+        logical(LKG)                                                    :: array(s1)
     end function
 #endif
 
@@ -328,10 +328,10 @@ module pm_arrayFill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getFilled_D1_CK5
 #endif
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
         integer(IK)                 , intent(in)                        :: s1
-        complex(CKC)                , intent(in)                        :: val
-        complex(CKC)                                                    :: array(s1)
+        complex(CKG)                , intent(in)                        :: val
+        complex(CKG)                                                    :: array(s1)
     end function
 #endif
 
@@ -340,10 +340,10 @@ module pm_arrayFill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getFilled_D1_CK4
 #endif
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
         integer(IK)                 , intent(in)                        :: s1
-        complex(CKC)                , intent(in)                        :: val
-        complex(CKC)                                                    :: array(s1)
+        complex(CKG)                , intent(in)                        :: val
+        complex(CKG)                                                    :: array(s1)
     end function
 #endif
 
@@ -352,10 +352,10 @@ module pm_arrayFill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getFilled_D1_CK3
 #endif
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
         integer(IK)                 , intent(in)                        :: s1
-        complex(CKC)                , intent(in)                        :: val
-        complex(CKC)                                                    :: array(s1)
+        complex(CKG)                , intent(in)                        :: val
+        complex(CKG)                                                    :: array(s1)
     end function
 #endif
 
@@ -364,10 +364,10 @@ module pm_arrayFill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getFilled_D1_CK2
 #endif
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
         integer(IK)                 , intent(in)                        :: s1
-        complex(CKC)                , intent(in)                        :: val
-        complex(CKC)                                                    :: array(s1)
+        complex(CKG)                , intent(in)                        :: val
+        complex(CKG)                                                    :: array(s1)
     end function
 #endif
 
@@ -376,10 +376,10 @@ module pm_arrayFill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getFilled_D1_CK1
 #endif
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
         integer(IK)                 , intent(in)                        :: s1
-        complex(CKC)                , intent(in)                        :: val
-        complex(CKC)                                                    :: array(s1)
+        complex(CKG)                , intent(in)                        :: val
+        complex(CKG)                                                    :: array(s1)
     end function
 #endif
 
@@ -390,10 +390,10 @@ module pm_arrayFill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getFilled_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         integer(IK)                 , intent(in)                        :: s1
-        real(RKC)                   , intent(in)                        :: val
-        real(RKC)                                                       :: array(s1)
+        real(RKG)                   , intent(in)                        :: val
+        real(RKG)                                                       :: array(s1)
     end function
 #endif
 
@@ -402,10 +402,10 @@ module pm_arrayFill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getFilled_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         integer(IK)                 , intent(in)                        :: s1
-        real(RKC)                   , intent(in)                        :: val
-        real(RKC)                                                       :: array(s1)
+        real(RKG)                   , intent(in)                        :: val
+        real(RKG)                                                       :: array(s1)
     end function
 #endif
 
@@ -414,10 +414,10 @@ module pm_arrayFill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getFilled_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         integer(IK)                 , intent(in)                        :: s1
-        real(RKC)                   , intent(in)                        :: val
-        real(RKC)                                                       :: array(s1)
+        real(RKG)                   , intent(in)                        :: val
+        real(RKG)                                                       :: array(s1)
     end function
 #endif
 
@@ -426,10 +426,10 @@ module pm_arrayFill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getFilled_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         integer(IK)                 , intent(in)                        :: s1
-        real(RKC)                   , intent(in)                        :: val
-        real(RKC)                                                       :: array(s1)
+        real(RKG)                   , intent(in)                        :: val
+        real(RKG)                                                       :: array(s1)
     end function
 #endif
 
@@ -438,10 +438,10 @@ module pm_arrayFill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getFilled_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         integer(IK)                 , intent(in)                        :: s1
-        real(RKC)                   , intent(in)                        :: val
-        real(RKC)                                                       :: array(s1)
+        real(RKG)                   , intent(in)                        :: val
+        real(RKG)                                                       :: array(s1)
     end function
 #endif
 
@@ -458,10 +458,10 @@ module pm_arrayFill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getFilled_D2_SK5
 #endif
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
         integer(IK)                 , intent(in)                        :: s1, s2
-        character(*,SKC)            , intent(in)                        :: val
-        character(len(val,IK),SKC)                                      :: array(s1, s2)
+        character(*,SKG)            , intent(in)                        :: val
+        character(len(val,IK),SKG)                                      :: array(s1, s2)
     end function
 #endif
 
@@ -470,10 +470,10 @@ module pm_arrayFill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getFilled_D2_SK4
 #endif
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
         integer(IK)                 , intent(in)                        :: s1, s2
-        character(*,SKC)            , intent(in)                        :: val
-        character(len(val,IK),SKC)                                      :: array(s1, s2)
+        character(*,SKG)            , intent(in)                        :: val
+        character(len(val,IK),SKG)                                      :: array(s1, s2)
     end function
 #endif
 
@@ -482,10 +482,10 @@ module pm_arrayFill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getFilled_D2_SK3
 #endif
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
         integer(IK)                 , intent(in)                        :: s1, s2
-        character(*,SKC)            , intent(in)                        :: val
-        character(len(val,IK),SKC)                                      :: array(s1, s2)
+        character(*,SKG)            , intent(in)                        :: val
+        character(len(val,IK),SKG)                                      :: array(s1, s2)
     end function
 #endif
 
@@ -494,10 +494,10 @@ module pm_arrayFill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getFilled_D2_SK2
 #endif
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
         integer(IK)                 , intent(in)                        :: s1, s2
-        character(*,SKC)            , intent(in)                        :: val
-        character(len(val,IK),SKC)                                      :: array(s1, s2)
+        character(*,SKG)            , intent(in)                        :: val
+        character(len(val,IK),SKG)                                      :: array(s1, s2)
     end function
 #endif
 
@@ -506,10 +506,10 @@ module pm_arrayFill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getFilled_D2_SK1
 #endif
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
         integer(IK)                 , intent(in)                        :: s1, s2
-        character(*,SKC)            , intent(in)                        :: val
-        character(len(val,IK),SKC)                                      :: array(s1, s2)
+        character(*,SKG)            , intent(in)                        :: val
+        character(len(val,IK),SKG)                                      :: array(s1, s2)
     end function
 #endif
 
@@ -520,10 +520,10 @@ module pm_arrayFill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getFilled_D2_IK5
 #endif
-        use pm_kind, only: IKC => IK5
+        use pm_kind, only: IKG => IK5
         integer(IK)                 , intent(in)                        :: s1, s2
-        integer(IKC)                , intent(in)                        :: val
-        integer(IKC)                                                    :: array(s1, s2)
+        integer(IKG)                , intent(in)                        :: val
+        integer(IKG)                                                    :: array(s1, s2)
     end function
 #endif
 
@@ -532,10 +532,10 @@ module pm_arrayFill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getFilled_D2_IK4
 #endif
-        use pm_kind, only: IKC => IK4
+        use pm_kind, only: IKG => IK4
         integer(IK)                 , intent(in)                        :: s1, s2
-        integer(IKC)                , intent(in)                        :: val
-        integer(IKC)                                                    :: array(s1, s2)
+        integer(IKG)                , intent(in)                        :: val
+        integer(IKG)                                                    :: array(s1, s2)
     end function
 #endif
 
@@ -544,10 +544,10 @@ module pm_arrayFill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getFilled_D2_IK3
 #endif
-        use pm_kind, only: IKC => IK3
+        use pm_kind, only: IKG => IK3
         integer(IK)                 , intent(in)                        :: s1, s2
-        integer(IKC)                , intent(in)                        :: val
-        integer(IKC)                                                    :: array(s1, s2)
+        integer(IKG)                , intent(in)                        :: val
+        integer(IKG)                                                    :: array(s1, s2)
     end function
 #endif
 
@@ -556,10 +556,10 @@ module pm_arrayFill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getFilled_D2_IK2
 #endif
-        use pm_kind, only: IKC => IK2
+        use pm_kind, only: IKG => IK2
         integer(IK)                 , intent(in)                        :: s1, s2
-        integer(IKC)                , intent(in)                        :: val
-        integer(IKC)                                                    :: array(s1, s2)
+        integer(IKG)                , intent(in)                        :: val
+        integer(IKG)                                                    :: array(s1, s2)
     end function
 #endif
 
@@ -568,10 +568,10 @@ module pm_arrayFill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getFilled_D2_IK1
 #endif
-        use pm_kind, only: IKC => IK1
+        use pm_kind, only: IKG => IK1
         integer(IK)                 , intent(in)                        :: s1, s2
-        integer(IKC)                , intent(in)                        :: val
-        integer(IKC)                                                    :: array(s1, s2)
+        integer(IKG)                , intent(in)                        :: val
+        integer(IKG)                                                    :: array(s1, s2)
     end function
 #endif
 
@@ -582,10 +582,10 @@ module pm_arrayFill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getFilled_D2_LK5
 #endif
-        use pm_kind, only: LKC => LK5
+        use pm_kind, only: LKG => LK5
         integer(IK)                 , intent(in)                        :: s1, s2
-        logical(LKC)                , intent(in)                        :: val
-        logical(LKC)                                                    :: array(s1, s2)
+        logical(LKG)                , intent(in)                        :: val
+        logical(LKG)                                                    :: array(s1, s2)
     end function
 #endif
 
@@ -594,10 +594,10 @@ module pm_arrayFill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getFilled_D2_LK4
 #endif
-        use pm_kind, only: LKC => LK4
+        use pm_kind, only: LKG => LK4
         integer(IK)                 , intent(in)                        :: s1, s2
-        logical(LKC)                , intent(in)                        :: val
-        logical(LKC)                                                    :: array(s1, s2)
+        logical(LKG)                , intent(in)                        :: val
+        logical(LKG)                                                    :: array(s1, s2)
     end function
 #endif
 
@@ -606,10 +606,10 @@ module pm_arrayFill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getFilled_D2_LK3
 #endif
-        use pm_kind, only: LKC => LK3
+        use pm_kind, only: LKG => LK3
         integer(IK)                 , intent(in)                        :: s1, s2
-        logical(LKC)                , intent(in)                        :: val
-        logical(LKC)                                                    :: array(s1, s2)
+        logical(LKG)                , intent(in)                        :: val
+        logical(LKG)                                                    :: array(s1, s2)
     end function
 #endif
 
@@ -618,10 +618,10 @@ module pm_arrayFill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getFilled_D2_LK2
 #endif
-        use pm_kind, only: LKC => LK2
+        use pm_kind, only: LKG => LK2
         integer(IK)                 , intent(in)                        :: s1, s2
-        logical(LKC)                , intent(in)                        :: val
-        logical(LKC)                                                    :: array(s1, s2)
+        logical(LKG)                , intent(in)                        :: val
+        logical(LKG)                                                    :: array(s1, s2)
     end function
 #endif
 
@@ -630,10 +630,10 @@ module pm_arrayFill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getFilled_D2_LK1
 #endif
-        use pm_kind, only: LKC => LK1
+        use pm_kind, only: LKG => LK1
         integer(IK)                 , intent(in)                        :: s1, s2
-        logical(LKC)                , intent(in)                        :: val
-        logical(LKC)                                                    :: array(s1, s2)
+        logical(LKG)                , intent(in)                        :: val
+        logical(LKG)                                                    :: array(s1, s2)
     end function
 #endif
 
@@ -644,10 +644,10 @@ module pm_arrayFill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getFilled_D2_CK5
 #endif
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
         integer(IK)                 , intent(in)                        :: s1, s2
-        complex(CKC)                , intent(in)                        :: val
-        complex(CKC)                                                    :: array(s1, s2)
+        complex(CKG)                , intent(in)                        :: val
+        complex(CKG)                                                    :: array(s1, s2)
     end function
 #endif
 
@@ -656,10 +656,10 @@ module pm_arrayFill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getFilled_D2_CK4
 #endif
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
         integer(IK)                 , intent(in)                        :: s1, s2
-        complex(CKC)                , intent(in)                        :: val
-        complex(CKC)                                                    :: array(s1, s2)
+        complex(CKG)                , intent(in)                        :: val
+        complex(CKG)                                                    :: array(s1, s2)
     end function
 #endif
 
@@ -668,10 +668,10 @@ module pm_arrayFill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getFilled_D2_CK3
 #endif
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
         integer(IK)                 , intent(in)                        :: s1, s2
-        complex(CKC)                , intent(in)                        :: val
-        complex(CKC)                                                    :: array(s1, s2)
+        complex(CKG)                , intent(in)                        :: val
+        complex(CKG)                                                    :: array(s1, s2)
     end function
 #endif
 
@@ -680,10 +680,10 @@ module pm_arrayFill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getFilled_D2_CK2
 #endif
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
         integer(IK)                 , intent(in)                        :: s1, s2
-        complex(CKC)                , intent(in)                        :: val
-        complex(CKC)                                                    :: array(s1, s2)
+        complex(CKG)                , intent(in)                        :: val
+        complex(CKG)                                                    :: array(s1, s2)
     end function
 #endif
 
@@ -692,10 +692,10 @@ module pm_arrayFill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getFilled_D2_CK1
 #endif
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
         integer(IK)                 , intent(in)                        :: s1, s2
-        complex(CKC)                , intent(in)                        :: val
-        complex(CKC)                                                    :: array(s1, s2)
+        complex(CKG)                , intent(in)                        :: val
+        complex(CKG)                                                    :: array(s1, s2)
     end function
 #endif
 
@@ -706,10 +706,10 @@ module pm_arrayFill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getFilled_D2_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         integer(IK)                 , intent(in)                        :: s1, s2
-        real(RKC)                   , intent(in)                        :: val
-        real(RKC)                                                       :: array(s1, s2)
+        real(RKG)                   , intent(in)                        :: val
+        real(RKG)                                                       :: array(s1, s2)
     end function
 #endif
 
@@ -718,10 +718,10 @@ module pm_arrayFill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getFilled_D2_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         integer(IK)                 , intent(in)                        :: s1, s2
-        real(RKC)                   , intent(in)                        :: val
-        real(RKC)                                                       :: array(s1, s2)
+        real(RKG)                   , intent(in)                        :: val
+        real(RKG)                                                       :: array(s1, s2)
     end function
 #endif
 
@@ -730,10 +730,10 @@ module pm_arrayFill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getFilled_D2_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         integer(IK)                 , intent(in)                        :: s1, s2
-        real(RKC)                   , intent(in)                        :: val
-        real(RKC)                                                       :: array(s1, s2)
+        real(RKG)                   , intent(in)                        :: val
+        real(RKG)                                                       :: array(s1, s2)
     end function
 #endif
 
@@ -742,10 +742,10 @@ module pm_arrayFill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getFilled_D2_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         integer(IK)                 , intent(in)                        :: s1, s2
-        real(RKC)                   , intent(in)                        :: val
-        real(RKC)                                                       :: array(s1, s2)
+        real(RKG)                   , intent(in)                        :: val
+        real(RKG)                                                       :: array(s1, s2)
     end function
 #endif
 
@@ -754,10 +754,10 @@ module pm_arrayFill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getFilled_D2_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         integer(IK)                 , intent(in)                        :: s1, s2
-        real(RKC)                   , intent(in)                        :: val
-        real(RKC)                                                       :: array(s1, s2)
+        real(RKG)                   , intent(in)                        :: val
+        real(RKG)                                                       :: array(s1, s2)
     end function
 #endif
 
@@ -774,10 +774,10 @@ module pm_arrayFill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getFilled_D3_SK5
 #endif
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
         integer(IK)                 , intent(in)                        :: s1, s2, s3
-        character(*,SKC)            , intent(in)                        :: val
-        character(len(val,IK),SKC)                                      :: array(s1, s2, s3)
+        character(*,SKG)            , intent(in)                        :: val
+        character(len(val,IK),SKG)                                      :: array(s1, s2, s3)
     end function
 #endif
 
@@ -786,10 +786,10 @@ module pm_arrayFill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getFilled_D3_SK4
 #endif
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
         integer(IK)                 , intent(in)                        :: s1, s2, s3
-        character(*,SKC)            , intent(in)                        :: val
-        character(len(val,IK),SKC)                                      :: array(s1, s2, s3)
+        character(*,SKG)            , intent(in)                        :: val
+        character(len(val,IK),SKG)                                      :: array(s1, s2, s3)
     end function
 #endif
 
@@ -798,10 +798,10 @@ module pm_arrayFill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getFilled_D3_SK3
 #endif
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
         integer(IK)                 , intent(in)                        :: s1, s2, s3
-        character(*,SKC)            , intent(in)                        :: val
-        character(len(val,IK),SKC)                                      :: array(s1, s2, s3)
+        character(*,SKG)            , intent(in)                        :: val
+        character(len(val,IK),SKG)                                      :: array(s1, s2, s3)
     end function
 #endif
 
@@ -810,10 +810,10 @@ module pm_arrayFill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getFilled_D3_SK2
 #endif
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
         integer(IK)                 , intent(in)                        :: s1, s2, s3
-        character(*,SKC)            , intent(in)                        :: val
-        character(len(val,IK),SKC)                                      :: array(s1, s2, s3)
+        character(*,SKG)            , intent(in)                        :: val
+        character(len(val,IK),SKG)                                      :: array(s1, s2, s3)
     end function
 #endif
 
@@ -822,10 +822,10 @@ module pm_arrayFill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getFilled_D3_SK1
 #endif
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
         integer(IK)                 , intent(in)                        :: s1, s2, s3
-        character(*,SKC)            , intent(in)                        :: val
-        character(len(val,IK),SKC)                                      :: array(s1, s2, s3)
+        character(*,SKG)            , intent(in)                        :: val
+        character(len(val,IK),SKG)                                      :: array(s1, s2, s3)
     end function
 #endif
 
@@ -836,10 +836,10 @@ module pm_arrayFill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getFilled_D3_IK5
 #endif
-        use pm_kind, only: IKC => IK5
+        use pm_kind, only: IKG => IK5
         integer(IK)                 , intent(in)                        :: s1, s2, s3
-        integer(IKC)                , intent(in)                        :: val
-        integer(IKC)                                                    :: array(s1, s2, s3)
+        integer(IKG)                , intent(in)                        :: val
+        integer(IKG)                                                    :: array(s1, s2, s3)
     end function
 #endif
 
@@ -848,10 +848,10 @@ module pm_arrayFill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getFilled_D3_IK4
 #endif
-        use pm_kind, only: IKC => IK4
+        use pm_kind, only: IKG => IK4
         integer(IK)                 , intent(in)                        :: s1, s2, s3
-        integer(IKC)                , intent(in)                        :: val
-        integer(IKC)                                                    :: array(s1, s2, s3)
+        integer(IKG)                , intent(in)                        :: val
+        integer(IKG)                                                    :: array(s1, s2, s3)
     end function
 #endif
 
@@ -860,10 +860,10 @@ module pm_arrayFill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getFilled_D3_IK3
 #endif
-        use pm_kind, only: IKC => IK3
+        use pm_kind, only: IKG => IK3
         integer(IK)                 , intent(in)                        :: s1, s2, s3
-        integer(IKC)                , intent(in)                        :: val
-        integer(IKC)                                                    :: array(s1, s2, s3)
+        integer(IKG)                , intent(in)                        :: val
+        integer(IKG)                                                    :: array(s1, s2, s3)
     end function
 #endif
 
@@ -872,10 +872,10 @@ module pm_arrayFill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getFilled_D3_IK2
 #endif
-        use pm_kind, only: IKC => IK2
+        use pm_kind, only: IKG => IK2
         integer(IK)                 , intent(in)                        :: s1, s2, s3
-        integer(IKC)                , intent(in)                        :: val
-        integer(IKC)                                                    :: array(s1, s2, s3)
+        integer(IKG)                , intent(in)                        :: val
+        integer(IKG)                                                    :: array(s1, s2, s3)
     end function
 #endif
 
@@ -884,10 +884,10 @@ module pm_arrayFill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getFilled_D3_IK1
 #endif
-        use pm_kind, only: IKC => IK1
+        use pm_kind, only: IKG => IK1
         integer(IK)                 , intent(in)                        :: s1, s2, s3
-        integer(IKC)                , intent(in)                        :: val
-        integer(IKC)                                                    :: array(s1, s2, s3)
+        integer(IKG)                , intent(in)                        :: val
+        integer(IKG)                                                    :: array(s1, s2, s3)
     end function
 #endif
 
@@ -898,10 +898,10 @@ module pm_arrayFill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getFilled_D3_LK5
 #endif
-        use pm_kind, only: LKC => LK5
+        use pm_kind, only: LKG => LK5
         integer(IK)                 , intent(in)                        :: s1, s2, s3
-        logical(LKC)                , intent(in)                        :: val
-        logical(LKC)                                                    :: array(s1, s2, s3)
+        logical(LKG)                , intent(in)                        :: val
+        logical(LKG)                                                    :: array(s1, s2, s3)
     end function
 #endif
 
@@ -910,10 +910,10 @@ module pm_arrayFill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getFilled_D3_LK4
 #endif
-        use pm_kind, only: LKC => LK4
+        use pm_kind, only: LKG => LK4
         integer(IK)                 , intent(in)                        :: s1, s2, s3
-        logical(LKC)                , intent(in)                        :: val
-        logical(LKC)                                                    :: array(s1, s2, s3)
+        logical(LKG)                , intent(in)                        :: val
+        logical(LKG)                                                    :: array(s1, s2, s3)
     end function
 #endif
 
@@ -922,10 +922,10 @@ module pm_arrayFill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getFilled_D3_LK3
 #endif
-        use pm_kind, only: LKC => LK3
+        use pm_kind, only: LKG => LK3
         integer(IK)                 , intent(in)                        :: s1, s2, s3
-        logical(LKC)                , intent(in)                        :: val
-        logical(LKC)                                                    :: array(s1, s2, s3)
+        logical(LKG)                , intent(in)                        :: val
+        logical(LKG)                                                    :: array(s1, s2, s3)
     end function
 #endif
 
@@ -934,10 +934,10 @@ module pm_arrayFill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getFilled_D3_LK2
 #endif
-        use pm_kind, only: LKC => LK2
+        use pm_kind, only: LKG => LK2
         integer(IK)                 , intent(in)                        :: s1, s2, s3
-        logical(LKC)                , intent(in)                        :: val
-        logical(LKC)                                                    :: array(s1, s2, s3)
+        logical(LKG)                , intent(in)                        :: val
+        logical(LKG)                                                    :: array(s1, s2, s3)
     end function
 #endif
 
@@ -946,10 +946,10 @@ module pm_arrayFill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getFilled_D3_LK1
 #endif
-        use pm_kind, only: LKC => LK1
+        use pm_kind, only: LKG => LK1
         integer(IK)                 , intent(in)                        :: s1, s2, s3
-        logical(LKC)                , intent(in)                        :: val
-        logical(LKC)                                                    :: array(s1, s2, s3)
+        logical(LKG)                , intent(in)                        :: val
+        logical(LKG)                                                    :: array(s1, s2, s3)
     end function
 #endif
 
@@ -960,10 +960,10 @@ module pm_arrayFill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getFilled_D3_CK5
 #endif
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
         integer(IK)                 , intent(in)                        :: s1, s2, s3
-        complex(CKC)                , intent(in)                        :: val
-        complex(CKC)                                                    :: array(s1, s2, s3)
+        complex(CKG)                , intent(in)                        :: val
+        complex(CKG)                                                    :: array(s1, s2, s3)
     end function
 #endif
 
@@ -972,10 +972,10 @@ module pm_arrayFill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getFilled_D3_CK4
 #endif
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
         integer(IK)                 , intent(in)                        :: s1, s2, s3
-        complex(CKC)                , intent(in)                        :: val
-        complex(CKC)                                                    :: array(s1, s2, s3)
+        complex(CKG)                , intent(in)                        :: val
+        complex(CKG)                                                    :: array(s1, s2, s3)
     end function
 #endif
 
@@ -984,10 +984,10 @@ module pm_arrayFill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getFilled_D3_CK3
 #endif
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
         integer(IK)                 , intent(in)                        :: s1, s2, s3
-        complex(CKC)                , intent(in)                        :: val
-        complex(CKC)                                                    :: array(s1, s2, s3)
+        complex(CKG)                , intent(in)                        :: val
+        complex(CKG)                                                    :: array(s1, s2, s3)
     end function
 #endif
 
@@ -996,10 +996,10 @@ module pm_arrayFill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getFilled_D3_CK2
 #endif
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
         integer(IK)                 , intent(in)                        :: s1, s2, s3
-        complex(CKC)                , intent(in)                        :: val
-        complex(CKC)                                                    :: array(s1, s2, s3)
+        complex(CKG)                , intent(in)                        :: val
+        complex(CKG)                                                    :: array(s1, s2, s3)
     end function
 #endif
 
@@ -1008,10 +1008,10 @@ module pm_arrayFill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getFilled_D3_CK1
 #endif
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
         integer(IK)                 , intent(in)                        :: s1, s2, s3
-        complex(CKC)                , intent(in)                        :: val
-        complex(CKC)                                                    :: array(s1, s2, s3)
+        complex(CKG)                , intent(in)                        :: val
+        complex(CKG)                                                    :: array(s1, s2, s3)
     end function
 #endif
 
@@ -1022,10 +1022,10 @@ module pm_arrayFill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getFilled_D3_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         integer(IK)                 , intent(in)                        :: s1, s2, s3
-        real(RKC)                   , intent(in)                        :: val
-        real(RKC)                                                       :: array(s1, s2, s3)
+        real(RKG)                   , intent(in)                        :: val
+        real(RKG)                                                       :: array(s1, s2, s3)
     end function
 #endif
 
@@ -1034,10 +1034,10 @@ module pm_arrayFill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getFilled_D3_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         integer(IK)                 , intent(in)                        :: s1, s2, s3
-        real(RKC)                   , intent(in)                        :: val
-        real(RKC)                                                       :: array(s1, s2, s3)
+        real(RKG)                   , intent(in)                        :: val
+        real(RKG)                                                       :: array(s1, s2, s3)
     end function
 #endif
 
@@ -1046,10 +1046,10 @@ module pm_arrayFill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getFilled_D3_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         integer(IK)                 , intent(in)                        :: s1, s2, s3
-        real(RKC)                   , intent(in)                        :: val
-        real(RKC)                                                       :: array(s1, s2, s3)
+        real(RKG)                   , intent(in)                        :: val
+        real(RKG)                                                       :: array(s1, s2, s3)
     end function
 #endif
 
@@ -1058,10 +1058,10 @@ module pm_arrayFill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getFilled_D3_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         integer(IK)                 , intent(in)                        :: s1, s2, s3
-        real(RKC)                   , intent(in)                        :: val
-        real(RKC)                                                       :: array(s1, s2, s3)
+        real(RKG)                   , intent(in)                        :: val
+        real(RKG)                                                       :: array(s1, s2, s3)
     end function
 #endif
 
@@ -1070,10 +1070,10 @@ module pm_arrayFill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getFilled_D3_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         integer(IK)                 , intent(in)                        :: s1, s2, s3
-        real(RKC)                   , intent(in)                        :: val
-        real(RKC)                                                       :: array(s1, s2, s3)
+        real(RKG)                   , intent(in)                        :: val
+        real(RKG)                                                       :: array(s1, s2, s3)
     end function
 #endif
 

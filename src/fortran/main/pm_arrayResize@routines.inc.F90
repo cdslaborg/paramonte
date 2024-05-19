@@ -53,7 +53,7 @@
 #define ALL(X) X
 #define GET_SHAPE(X)len(X, IK)
 #define ARRAY_SLICE array(lbcold : ubcold)
-#define SET_DIM(OBJECT) character(ub,SKC) :: OBJECT
+#define SET_DIM(OBJECT) character(ub,SKG) :: OBJECT
 #define TEMP_SLICE temp(lbc : lbc - lbcold + ubcold)
         integer(IK), parameter :: lbold = 1_IK
         integer(IK) :: ubold, ub
@@ -129,7 +129,7 @@
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #if     SK_ENABLED && !D0_ENABLED && __GFORTRAN__
-#define TYPE_OF_ARRAY character(len(array,IK),SKC) ::
+#define TYPE_OF_ARRAY character(len(array,IK),SKG) ::
 #else
 #define TYPE_OF_ARRAY
 #endif

@@ -73,8 +73,8 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     function isFailedInitOS(errmsg) result(failed)
-        use pm_kind, only: SKC => SK
-        character(*,SKC), intent(inout), optional :: errmsg
+        use pm_kind, only: SKG => SK
+        character(*,SKG), intent(inout), optional :: errmsg
         logical(LK) :: failed
         failed = .not. allocated(mc_kernel)
         if (failed) then
@@ -143,7 +143,7 @@ contains
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     module procedure kernel_typerFailedMsg
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
         character(*, SK), parameter :: PROCEDURE_NAME = MODULE_NAME//SK_"@kernel_typer()"
         if (allocated(mc_kernel)) then
             failed = .false._LK
@@ -178,7 +178,7 @@ contains
             failed = .false._LK
 #else
             block
-                character(:,SKC), allocatable :: nameLower
+                character(:,SKG), allocatable :: nameLower
                 ! Lets infer it through the runtime shell. Firs assume Window OS.
                 failed = isFailedGetEnvVar(name = SK_"OS", value = kernel%name, errmsg, length = length)
                 if (failed) then
@@ -186,22 +186,22 @@ contains
                     failed = isFailedGetEnvVar(name = SK_"OSTYPE", value = kernel%name, errmsg, length = length)
                     if (failed) then
                         ! Try one last time with the universal UNIX command `uname`.
-                        failed = isFailedGetOutput(SKC_"uname", kernel%name, errmsg)
+                        failed = isFailedGetOutput(SKG_"uname", kernel%name, errmsg)
                         if (failed) then
                             errmsg = PROCEDURE_NAME//SK_": "//trim(errmsg) ! LCOV_EXCL_LINE
-                            kernel%name = SKC_"" ! LCOV_EXCL_LINE
+                            kernel%name = SKG_"" ! LCOV_EXCL_LINE
                             return ! LCOV_EXCL_LINE
                         end if
                     end if
                 end if
                 nameLower = getStrLower(kernel%name)
-                kernel%is%freebsd = logical(index(nameLower, SKC_"freebsd"), LK)
-                kernel%is%darwin = logical(index(nameLower, SKC_"darwin"), LK)
-                kernel%is%linux = logical(index(nameLower, SKC_"linux"), LK)
-                kernel%is%msys = logical(index(nameLower, SKC_"msys"), LK)
-                kernel%is%mingw = logical(index(nameLower, SKC_"mingw"), LK)
-                kernel%is%cygwin = logical(index(nameLower, SKC_"cygwin"), LK)
-                kernel%is%windows = logical(index(nameLower, SKC_"windows"), LK) .or. kernel%is%msys .or. kernel%is%mingw .or. kernel%is%cygwin
+                kernel%is%freebsd = logical(index(nameLower, SKG_"freebsd"), LK)
+                kernel%is%darwin = logical(index(nameLower, SKG_"darwin"), LK)
+                kernel%is%linux = logical(index(nameLower, SKG_"linux"), LK)
+                kernel%is%msys = logical(index(nameLower, SKG_"msys"), LK)
+                kernel%is%mingw = logical(index(nameLower, SKG_"mingw"), LK)
+                kernel%is%cygwin = logical(index(nameLower, SKG_"cygwin"), LK)
+                kernel%is%windows = logical(index(nameLower, SKG_"windows"), LK) .or. kernel%is%msys .or. kernel%is%mingw .or. kernel%is%cygwin
             end block
 #endif
             if (.not. allocated(mc_kernel)) allocate(mc_kernel, source = kernel)
@@ -296,10 +296,10 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     module procedure getSysInfo
-        use pm_kind, only: SKC => SK
-        character(LEN_IOMSG,SKC) :: errmsg
+        use pm_kind, only: SKG => SK
+        character(LEN_IOMSG,SKG) :: errmsg
         logical(LK) :: failed
-        errmsg = SKC_""
+        errmsg = SKG_""
         sysInfo = getSysInfo(failed, errmsg)
         if (failed) error stop trim(errmsg)
     end procedure
@@ -307,8 +307,8 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     module procedure getSysInfoFailed
-        use pm_kind, only: SKC => SK
-        character(LEN_IOMSG,SKC) :: errmsg
+        use pm_kind, only: SKG => SK
+        character(LEN_IOMSG,SKG) :: errmsg
         sysInfo = getSysInfo(failed, errmsg)
     end procedure
 
@@ -316,7 +316,7 @@ contains
 
     module procedure getSysInfoFailedMsg
 
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
         use pm_val2str, only: getStr
         use pm_io, only: setContentsFrom
         use pm_sysShell, only: isFailedExec
@@ -324,16 +324,16 @@ contains
         use pm_sysShell, only: shell_type
         use pm_container, only: css_type
 
-        character(*,SKC), parameter     :: NLC = new_line(SKC_"a")
+        character(*,SKG), parameter     :: NLC = new_line(SKG_"a")
         character(*, SK), parameter     :: PROCEDURE_NAME = MODULE_NAME//SK_"@getSysInfo()"
-        character(:,SKC), allocatable   :: contents, stderr, stdout, dumper
+        character(:,SKG), allocatable   :: contents, stderr, stdout, dumper
         type(css_type)  , allocatable   :: cmd(:)
         type(shell_type)                :: shell
         logical(LK)                     :: done
         integer(IK)                     :: icmd
         integer(IK)                     :: iostat
 
-        sysInfo = SKC_""
+        sysInfo = SKG_""
 
         ! Infer the shell type.
 

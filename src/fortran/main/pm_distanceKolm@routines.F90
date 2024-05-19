@@ -72,35 +72,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getDisKolmSSD_WDD_D1_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getDisKolmSSD_WDD_D1_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getDisKolmSSD_WDD_D1_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getDisKolmSSD_WDD_D1_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getDisKolmSSD_WDD_D1_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
@@ -123,35 +123,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getDisKolmSSA_WDD_D1_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getDisKolmSSA_WDD_D1_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getDisKolmSSA_WDD_D1_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getDisKolmSSA_WDD_D1_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getDisKolmSSA_WDD_D1_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
@@ -186,35 +186,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getDisKolmSSD_WID_D1_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getDisKolmSSD_WID_D1_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getDisKolmSSD_WID_D1_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getDisKolmSSD_WID_D1_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getDisKolmSSD_WID_D1_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
@@ -237,35 +237,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getDisKolmSSA_WID_D1_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getDisKolmSSA_WID_D1_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getDisKolmSSA_WID_D1_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getDisKolmSSA_WID_D1_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getDisKolmSSA_WID_D1_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
@@ -300,35 +300,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getDisKolmSSD_WRD_D1_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getDisKolmSSD_WRD_D1_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getDisKolmSSD_WRD_D1_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getDisKolmSSD_WRD_D1_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getDisKolmSSD_WRD_D1_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
@@ -351,35 +351,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getDisKolmSSA_WRD_D1_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getDisKolmSSA_WRD_D1_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getDisKolmSSA_WRD_D1_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getDisKolmSSA_WRD_D1_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getDisKolmSSA_WRD_D1_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
@@ -414,35 +414,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getDisKolmSSD_WII_D1_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getDisKolmSSD_WII_D1_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getDisKolmSSD_WII_D1_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getDisKolmSSD_WII_D1_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getDisKolmSSD_WII_D1_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
@@ -465,35 +465,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getDisKolmSSA_WII_D1_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getDisKolmSSA_WII_D1_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getDisKolmSSA_WII_D1_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getDisKolmSSA_WII_D1_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getDisKolmSSA_WII_D1_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
@@ -528,35 +528,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getDisKolmSSD_WRR_D1_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getDisKolmSSD_WRR_D1_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getDisKolmSSD_WRR_D1_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getDisKolmSSD_WRR_D1_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getDisKolmSSD_WRR_D1_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
@@ -579,35 +579,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getDisKolmSSA_WRR_D1_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getDisKolmSSA_WRR_D1_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getDisKolmSSA_WRR_D1_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getDisKolmSSA_WRR_D1_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getDisKolmSSA_WRR_D1_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
@@ -642,35 +642,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getDisKolmSXD_WDD_D1_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getDisKolmSXD_WDD_D1_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getDisKolmSXD_WDD_D1_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getDisKolmSXD_WDD_D1_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getDisKolmSXD_WDD_D1_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
@@ -693,35 +693,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getDisKolmSXA_WDD_D1_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getDisKolmSXA_WDD_D1_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getDisKolmSXA_WDD_D1_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getDisKolmSXA_WDD_D1_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getDisKolmSXA_WDD_D1_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
@@ -756,35 +756,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getDisKolmSXD_WID_D1_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getDisKolmSXD_WID_D1_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getDisKolmSXD_WID_D1_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getDisKolmSXD_WID_D1_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getDisKolmSXD_WID_D1_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
@@ -807,35 +807,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getDisKolmSXA_WID_D1_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getDisKolmSXA_WID_D1_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getDisKolmSXA_WID_D1_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getDisKolmSXA_WID_D1_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getDisKolmSXA_WID_D1_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
@@ -870,35 +870,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getDisKolmSXD_WRD_D1_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getDisKolmSXD_WRD_D1_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getDisKolmSXD_WRD_D1_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getDisKolmSXD_WRD_D1_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getDisKolmSXD_WRD_D1_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
@@ -921,35 +921,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getDisKolmSXA_WRD_D1_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getDisKolmSXA_WRD_D1_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getDisKolmSXA_WRD_D1_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getDisKolmSXA_WRD_D1_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getDisKolmSXA_WRD_D1_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
@@ -984,35 +984,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getDisKolmSCD_WDD_D1_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getDisKolmSCD_WDD_D1_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getDisKolmSCD_WDD_D1_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getDisKolmSCD_WDD_D1_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getDisKolmSCD_WDD_D1_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
@@ -1035,35 +1035,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getDisKolmSCA_WDD_D1_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getDisKolmSCA_WDD_D1_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getDisKolmSCA_WDD_D1_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getDisKolmSCA_WDD_D1_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getDisKolmSCA_WDD_D1_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
@@ -1098,35 +1098,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getDisKolmSCD_WID_D1_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getDisKolmSCD_WID_D1_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getDisKolmSCD_WID_D1_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getDisKolmSCD_WID_D1_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getDisKolmSCD_WID_D1_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
@@ -1149,35 +1149,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getDisKolmSCA_WID_D1_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getDisKolmSCA_WID_D1_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getDisKolmSCA_WID_D1_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getDisKolmSCA_WID_D1_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getDisKolmSCA_WID_D1_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
@@ -1212,35 +1212,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getDisKolmSCD_WRD_D1_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getDisKolmSCD_WRD_D1_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getDisKolmSCD_WRD_D1_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getDisKolmSCD_WRD_D1_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getDisKolmSCD_WRD_D1_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
@@ -1263,35 +1263,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getDisKolmSCA_WRD_D1_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getDisKolmSCA_WRD_D1_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getDisKolmSCA_WRD_D1_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getDisKolmSCA_WRD_D1_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getDisKolmSCA_WRD_D1_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
@@ -1348,35 +1348,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setDisKolmSSD_WDD_D1_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setDisKolmSSD_WDD_D1_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setDisKolmSSD_WDD_D1_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setDisKolmSSD_WDD_D1_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setDisKolmSSD_WDD_D1_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
@@ -1399,35 +1399,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setDisKolmSSA_WDD_D1_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setDisKolmSSA_WDD_D1_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setDisKolmSSA_WDD_D1_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setDisKolmSSA_WDD_D1_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setDisKolmSSA_WDD_D1_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
@@ -1462,35 +1462,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setDisKolmSSD_WID_D1_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setDisKolmSSD_WID_D1_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setDisKolmSSD_WID_D1_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setDisKolmSSD_WID_D1_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setDisKolmSSD_WID_D1_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
@@ -1513,35 +1513,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setDisKolmSSA_WID_D1_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setDisKolmSSA_WID_D1_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setDisKolmSSA_WID_D1_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setDisKolmSSA_WID_D1_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setDisKolmSSA_WID_D1_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
@@ -1576,35 +1576,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setDisKolmSSD_WRD_D1_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setDisKolmSSD_WRD_D1_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setDisKolmSSD_WRD_D1_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setDisKolmSSD_WRD_D1_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setDisKolmSSD_WRD_D1_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
@@ -1627,35 +1627,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setDisKolmSSA_WRD_D1_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setDisKolmSSA_WRD_D1_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setDisKolmSSA_WRD_D1_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setDisKolmSSA_WRD_D1_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setDisKolmSSA_WRD_D1_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
@@ -1690,35 +1690,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setDisKolmSSD_WII_D1_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setDisKolmSSD_WII_D1_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setDisKolmSSD_WII_D1_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setDisKolmSSD_WII_D1_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setDisKolmSSD_WII_D1_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
@@ -1741,35 +1741,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setDisKolmSSA_WII_D1_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setDisKolmSSA_WII_D1_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setDisKolmSSA_WII_D1_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setDisKolmSSA_WII_D1_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setDisKolmSSA_WII_D1_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
@@ -1804,35 +1804,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setDisKolmSSD_WRR_D1_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setDisKolmSSD_WRR_D1_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setDisKolmSSD_WRR_D1_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setDisKolmSSD_WRR_D1_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setDisKolmSSD_WRR_D1_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
@@ -1855,35 +1855,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setDisKolmSSA_WRR_D1_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setDisKolmSSA_WRR_D1_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setDisKolmSSA_WRR_D1_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setDisKolmSSA_WRR_D1_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setDisKolmSSA_WRR_D1_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
@@ -1918,35 +1918,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setDisKolmSXD_WDD_D1_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setDisKolmSXD_WDD_D1_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setDisKolmSXD_WDD_D1_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setDisKolmSXD_WDD_D1_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setDisKolmSXD_WDD_D1_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
@@ -1969,35 +1969,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setDisKolmSXA_WDD_D1_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setDisKolmSXA_WDD_D1_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setDisKolmSXA_WDD_D1_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setDisKolmSXA_WDD_D1_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setDisKolmSXA_WDD_D1_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
@@ -2032,35 +2032,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setDisKolmSXD_WID_D1_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setDisKolmSXD_WID_D1_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setDisKolmSXD_WID_D1_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setDisKolmSXD_WID_D1_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setDisKolmSXD_WID_D1_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
@@ -2083,35 +2083,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setDisKolmSXA_WID_D1_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setDisKolmSXA_WID_D1_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setDisKolmSXA_WID_D1_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setDisKolmSXA_WID_D1_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setDisKolmSXA_WID_D1_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
@@ -2146,35 +2146,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setDisKolmSXD_WRD_D1_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setDisKolmSXD_WRD_D1_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setDisKolmSXD_WRD_D1_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setDisKolmSXD_WRD_D1_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setDisKolmSXD_WRD_D1_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
@@ -2197,35 +2197,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setDisKolmSXA_WRD_D1_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setDisKolmSXA_WRD_D1_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setDisKolmSXA_WRD_D1_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setDisKolmSXA_WRD_D1_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setDisKolmSXA_WRD_D1_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
@@ -2260,35 +2260,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setDisKolmSCD_WDD_D1_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setDisKolmSCD_WDD_D1_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setDisKolmSCD_WDD_D1_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setDisKolmSCD_WDD_D1_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setDisKolmSCD_WDD_D1_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
@@ -2311,35 +2311,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setDisKolmSCA_WDD_D1_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setDisKolmSCA_WDD_D1_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setDisKolmSCA_WDD_D1_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setDisKolmSCA_WDD_D1_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setDisKolmSCA_WDD_D1_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
@@ -2374,35 +2374,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setDisKolmSCD_WID_D1_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setDisKolmSCD_WID_D1_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setDisKolmSCD_WID_D1_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setDisKolmSCD_WID_D1_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setDisKolmSCD_WID_D1_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
@@ -2425,35 +2425,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setDisKolmSCA_WID_D1_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setDisKolmSCA_WID_D1_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setDisKolmSCA_WID_D1_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setDisKolmSCA_WID_D1_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setDisKolmSCA_WID_D1_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
@@ -2488,35 +2488,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setDisKolmSCD_WRD_D1_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setDisKolmSCD_WRD_D1_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setDisKolmSCD_WRD_D1_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setDisKolmSCD_WRD_D1_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setDisKolmSCD_WRD_D1_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
@@ -2539,35 +2539,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setDisKolmSCA_WRD_D1_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setDisKolmSCA_WRD_D1_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setDisKolmSCA_WRD_D1_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setDisKolmSCA_WRD_D1_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setDisKolmSCA_WRD_D1_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_distanceKolm@routines.inc.F90"
     end procedure
 #endif

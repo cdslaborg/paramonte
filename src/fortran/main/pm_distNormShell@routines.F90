@@ -73,35 +73,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getNormShellLogUDFODD_D1_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_distNormShell@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getNormShellLogUDFODD_D1_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_distNormShell@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getNormShellLogUDFODD_D1_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_distNormShell@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getNormShellLogUDFODD_D1_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_distNormShell@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getNormShellLogUDFODD_D1_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_distNormShell@routines.inc.F90"
     end procedure
 #endif
@@ -124,35 +124,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getNormShellLogUDFOCI_D1_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_distNormShell@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getNormShellLogUDFOCI_D1_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_distNormShell@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getNormShellLogUDFOCI_D1_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_distNormShell@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getNormShellLogUDFOCI_D1_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_distNormShell@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getNormShellLogUDFOCI_D1_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_distNormShell@routines.inc.F90"
     end procedure
 #endif
@@ -187,35 +187,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getNormShellLogUDFMDD_D1_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_distNormShell@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getNormShellLogUDFMDD_D1_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_distNormShell@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getNormShellLogUDFMDD_D1_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_distNormShell@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getNormShellLogUDFMDD_D1_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_distNormShell@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getNormShellLogUDFMDD_D1_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_distNormShell@routines.inc.F90"
     end procedure
 #endif
@@ -238,35 +238,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getNormShellLogUDFMCI_D1_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_distNormShell@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getNormShellLogUDFMCI_D1_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_distNormShell@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getNormShellLogUDFMCI_D1_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_distNormShell@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getNormShellLogUDFMCI_D1_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_distNormShell@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getNormShellLogUDFMCI_D1_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_distNormShell@routines.inc.F90"
     end procedure
 #endif

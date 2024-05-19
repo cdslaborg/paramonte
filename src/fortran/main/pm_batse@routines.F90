@@ -56,35 +56,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getCorrectionLogEffPPF_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_batse@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getCorrectionLogEffPPF_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_batse@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getCorrectionLogEffPPF_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_batse@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getCorrectionLogEffPPF_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_batse@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getCorrectionLogEffPPF_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_batse@routines.inc.F90"
     end procedure
 #endif
@@ -105,35 +105,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getLogEffPPF_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_batse@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getLogEffPPF_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_batse@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getLogEffPPF_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_batse@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getLogEffPPF_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_batse@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getLogEffPPF_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_batse@routines.inc.F90"
     end procedure
 #endif
@@ -154,35 +154,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getLogPbol_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_batse@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getLogPbol_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_batse@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getLogPbol_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_batse@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getLogPbol_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_batse@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getLogPbol_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_batse@routines.inc.F90"
     end procedure
 #endif
@@ -203,35 +203,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getLogPF53_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_batse@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getLogPF53_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_batse@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getLogPF53_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_batse@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getLogPF53_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_batse@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getLogPF53_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_batse@routines.inc.F90"
     end procedure
 #endif
@@ -252,35 +252,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getLog10PF53_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_batse@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getLog10PF53_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_batse@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getLog10PF53_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_batse@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getLog10PF53_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_batse@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getLog10PF53_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_batse@routines.inc.F90"
     end procedure
 #endif

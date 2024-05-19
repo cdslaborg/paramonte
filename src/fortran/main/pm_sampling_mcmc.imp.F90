@@ -21,7 +21,7 @@ call setAsserted(ASSERTION,getFine(__FILE__,LINE)//MODULE_NAME//MSG);
 #else
 #define CHECK_ASSERTION(LINE,ASSERTION,MSG) continue;
 #endif
-    use pm_kind, only: SKC => SK, SK, IK, LK
+    use pm_kind, only: SKG => SK, SK, IK, LK
     use pm_matrixClass, only: isMatClass, posdefmat
     use pm_sampling_base, only: specbase_type, astatbase_type, sfcbase_type, NL2, NL1
     use pm_arrayRemove, only: getRemoved
@@ -36,7 +36,7 @@ call setAsserted(ASSERTION,getFine(__FILE__,LINE)//MODULE_NAME//MSG);
 
     implicit none
 
-    character(*,SKC)        , parameter     :: MODULE_NAME = SK_"@pm_sampling_mcmc"
+    character(*,SKG)        , parameter     :: MODULE_NAME = SK_"@pm_sampling_mcmc"
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     ! simulation declarations.
@@ -49,7 +49,7 @@ call setAsserted(ASSERTION,getFine(__FILE__,LINE)//MODULE_NAME//MSG);
 
     ! type for chain refinements
     type, extends(sfcbase_type)             :: sfcmcmc_type
-        real(RKC)           , allocatable   :: act(:,:) !<  \public The array of shape `(1:ndim, 0:nref)` containing he Integrated AutoCorrelation Time at each refinement stage.
+        real(RKG)           , allocatable   :: act(:,:) !<  \public The array of shape `(1:ndim, 0:nref)` containing he Integrated AutoCorrelation Time at each refinement stage.
     contains
         procedure           , pass          :: getErrRefinement
     end type
@@ -68,102 +68,102 @@ call setAsserted(ASSERTION,getFine(__FILE__,LINE)//MODULE_NAME//MSG);
         integer(IK)                         :: val
         integer(IK)                         :: def
         integer(IK)                         :: null
-        character(:,SKC)    , allocatable   :: desc
+        character(:,SKG)    , allocatable   :: desc
     end type
 
    !integer(IK)                             :: outputSampleRefinementCount ! namelist input
     type                                    :: outputSampleRefinementCount_type
-        character(:,SKC)    , allocatable   :: str
+        character(:,SKG)    , allocatable   :: str
         integer(IK)                         :: val
         integer(IK)                         :: def
         integer(IK)                         :: null
-        character(:,SKC)    , allocatable   :: desc
+        character(:,SKG)    , allocatable   :: desc
     end type
 
-   !character(63,SKC)                       :: outputSampleRefinementMethod ! namelist input
+   !character(63,SKG)                       :: outputSampleRefinementMethod ! namelist input
     type                                    :: outputSampleRefinementMethod_type
         logical(LK)                         :: isBatchMeansCompact = .false._LK
         logical(LK)                         :: isBatchMeansVerbose = .false._LK
         logical(LK)                         :: isMaxCumSumACF = .false._LK
         logical(LK)                         :: isBatchMeans = .false._LK
-        character(12,SKC)                   :: maxCumSumACF = "maxCumSumACF"
-        character(10,SKC)                   :: batchMeans = "BatchMeans"
-        character(9,SKC)                    :: cutoffACF = "cutoffACF"
-        character(:,SKC)    , allocatable   :: def
-        character(:,SKC)    , allocatable   :: val
-        character(:,SKC)    , allocatable   :: null
-        character(:,SKC)    , allocatable   :: desc
+        character(12,SKG)                   :: maxCumSumACF = "maxCumSumACF"
+        character(10,SKG)                   :: batchMeans = "BatchMeans"
+        character(9,SKG)                    :: cutoffACF = "cutoffACF"
+        character(:,SKG)    , allocatable   :: def
+        character(:,SKG)    , allocatable   :: val
+        character(:,SKG)    , allocatable   :: null
+        character(:,SKG)    , allocatable   :: desc
     end type
 
-   !character(63,SKC)                       :: proposal ! namelist input
+   !character(63,SKG)                       :: proposal ! namelist input
     type                                    :: proposalis_type
         logical(LK)                         :: normal = .false._LK
         logical(LK)                         :: uniform = .false._LK
     end type
     type                                    :: proposal_type
         type(proposalis_type)               :: is
-        character(7,SKC)                    :: uniform
-        character(6,SKC)                    :: normal
-        character(:,SKC)    , allocatable   :: val
-        character(:,SKC)    , allocatable   :: def
-        character(:,SKC)    , allocatable   :: null
-        character(:,SKC)    , allocatable   :: desc
+        character(7,SKG)                    :: uniform
+        character(6,SKG)                    :: normal
+        character(:,SKG)    , allocatable   :: val
+        character(:,SKG)    , allocatable   :: def
+        character(:,SKG)    , allocatable   :: null
+        character(:,SKG)    , allocatable   :: desc
     end type
 
-   !real(RKC)               , allocatable   :: proposalCor(:,:) ! namelist input
+   !real(RKG)               , allocatable   :: proposalCor(:,:) ! namelist input
     type                                    :: proposalCor_type
-        real(RKC)           , allocatable   :: val(:,:)
-        real(RKC)           , allocatable   :: def(:,:)
-        character(:,SKC)    , allocatable   :: desc
+        real(RKG)           , allocatable   :: val(:,:)
+        real(RKG)           , allocatable   :: def(:,:)
+        character(:,SKG)    , allocatable   :: desc
     end type
 
-   !real(RKC)               , allocatable   :: proposalCov(:,:) ! namelist input
+   !real(RKG)               , allocatable   :: proposalCov(:,:) ! namelist input
     type                                    :: proposalCov_type
         logical(LK)                         :: isUserSet
-        real(RKC)           , allocatable   :: def(:,:)
-        real(RKC)           , allocatable   :: val(:,:)
-        character(:,SKC)    , allocatable   :: desc
+        real(RKG)           , allocatable   :: def(:,:)
+        real(RKG)           , allocatable   :: val(:,:)
+        character(:,SKG)    , allocatable   :: desc
     end type
 
-   !character(127,SKC)                      :: proposalScale
+   !character(127,SKG)                      :: proposalScale
     type                                    :: proposalScale_type
-        real(RKC)                           :: val, valdef
-        character(:,SKC)    , allocatable   :: str, strdef, null, desc
+        real(RKG)                           :: val, valdef
+        character(:,SKG)    , allocatable   :: str, strdef, null, desc
     end type
 
-   !real(RKC)               , allocatable   :: proposalStart(:) ! namelist input
+   !real(RKG)               , allocatable   :: proposalStart(:) ! namelist input
     type                                    :: proposalStart_type
-        real(RKC)           , allocatable   :: val(:)
-        character(:,SKC)    , allocatable   :: desc
+        real(RKG)           , allocatable   :: val(:)
+        character(:,SKG)    , allocatable   :: desc
     end type
 
-   !real(RKC)               , allocatable   :: proposalStartDomainCubeLimitLower(:) ! namelist input
+   !real(RKG)               , allocatable   :: proposalStartDomainCubeLimitLower(:) ! namelist input
     type                                    :: proposalStartDomainCubeLimitLower_type
-        real(RKC)                           :: null
-        real(RKC)                           :: def
-        real(RKC)           , allocatable   :: val(:)
-        character(:,SKC)    , allocatable   :: desc
+        real(RKG)                           :: null
+        real(RKG)                           :: def
+        real(RKG)           , allocatable   :: val(:)
+        character(:,SKG)    , allocatable   :: desc
     end type
 
-   !real(RKC)               , allocatable   :: proposalStartDomainCubeLimitUpper(:) ! namelist input
+   !real(RKG)               , allocatable   :: proposalStartDomainCubeLimitUpper(:) ! namelist input
     type                                    :: proposalStartDomainCubeLimitUpper_type
-        real(RKC)                           :: def
-        real(RKC)           , allocatable   :: val(:)
-        character(:,SKC)    , allocatable   :: desc
+        real(RKG)                           :: def
+        real(RKG)           , allocatable   :: val(:)
+        character(:,SKG)    , allocatable   :: desc
     end type
 
    !logical(LK)                             :: proposalStartRandomized ! namelist input
     type                                    :: proposalStartRandomized_type
         logical(LK)                         :: val
         logical(LK)                         :: def
-        character(:,SKC)    , allocatable   :: desc
+        character(:,SKG)    , allocatable   :: desc
     end type
 
-   !real(RKC)               , allocatable   :: proposalStd(:) ! namelist input
+   !real(RKG)               , allocatable   :: proposalStd(:) ! namelist input
     type                                    :: proposalStd_type
-        real(RKC)           , allocatable   :: val(:)
-        real(RKC)           , allocatable   :: def(:)
-        character(:,SKC)    , allocatable   :: desc
+        real(RKG)           , allocatable   :: val(:)
+        real(RKG)           , allocatable   :: def(:)
+        character(:,SKG)    , allocatable   :: desc
     end type
 
     type, extends(specbase_type)                        :: specmcmc_type
@@ -210,17 +210,17 @@ contains
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    subroutine killMeAlreadyCMake1_RK5(); use pm_sampling_scio_RK5, only: RKC; end subroutine
-    subroutine killMeAlreadyCMake1_RK4(); use pm_sampling_scio_RK4, only: RKC; end subroutine
-    subroutine killMeAlreadyCMake1_RK3(); use pm_sampling_scio_RK3, only: RKC; end subroutine
-    subroutine killMeAlreadyCMake1_RK2(); use pm_sampling_scio_RK2, only: RKC; end subroutine
-    subroutine killMeAlreadyCMake1_RK1(); use pm_sampling_scio_RK1, only: RKC; end subroutine
+    subroutine killMeAlreadyCMake1_RK5(); use pm_sampling_scio_RK5, only: RKG; end subroutine
+    subroutine killMeAlreadyCMake1_RK4(); use pm_sampling_scio_RK4, only: RKG; end subroutine
+    subroutine killMeAlreadyCMake1_RK3(); use pm_sampling_scio_RK3, only: RKG; end subroutine
+    subroutine killMeAlreadyCMake1_RK2(); use pm_sampling_scio_RK2, only: RKG; end subroutine
+    subroutine killMeAlreadyCMake1_RK1(); use pm_sampling_scio_RK1, only: RKG; end subroutine
 
-    subroutine killMeAlreadyCMake2_RK5(); use pm_sampling_base_RK5, only: RKC; end subroutine
-    subroutine killMeAlreadyCMake2_RK4(); use pm_sampling_base_RK4, only: RKC; end subroutine
-    subroutine killMeAlreadyCMake2_RK3(); use pm_sampling_base_RK3, only: RKC; end subroutine
-    subroutine killMeAlreadyCMake2_RK2(); use pm_sampling_base_RK2, only: RKC; end subroutine
-    subroutine killMeAlreadyCMake2_RK1(); use pm_sampling_base_RK1, only: RKC; end subroutine
+    subroutine killMeAlreadyCMake2_RK5(); use pm_sampling_base_RK5, only: RKG; end subroutine
+    subroutine killMeAlreadyCMake2_RK4(); use pm_sampling_base_RK4, only: RKG; end subroutine
+    subroutine killMeAlreadyCMake2_RK3(); use pm_sampling_base_RK3, only: RKG; end subroutine
+    subroutine killMeAlreadyCMake2_RK2(); use pm_sampling_base_RK2, only: RKG; end subroutine
+    subroutine killMeAlreadyCMake2_RK1(); use pm_sampling_base_RK1, only: RKG; end subroutine
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -230,7 +230,7 @@ contains
 #endif
         use pm_kind, only: modelr_type
         type(modelr_type), intent(in) :: modelr
-        character(*,SKC), intent(in) :: method
+        character(*,SKG), intent(in) :: method
         integer(IK), intent(in) :: ndim
         type(specmcmc_type) :: spec
 
@@ -241,14 +241,14 @@ contains
             spec%outputChainSize%null   = -huge(0_IK)
             spec%outputChainSize%def    = 100000_IK
             spec%outputChainSize%desc   = &
-            SKC_"The simulation specification `outputChainSize` is a positive scalar of type `integer` whose value determines the number &
+            SKG_"The simulation specification `outputChainSize` is a positive scalar of type `integer` whose value determines the number &
                 &of non-refined, potentially auto-correlated, but unique samples drawn by the MCMC sampler before stopping the sampling. &
                 &For example, if `outputChainSize = 10000`, then `10000` unique sample points (with no duplicates) will be drawn from the &
                 &target objective function that the user has provided. &
                 &The input value for `outputChainSize` must be a positive integer of a minimum value `ndim + 1` or larger, &
                 &where `ndim` is the number of dimensions of the domain of the objective function to be sampled. &
                 &Note that `outputChainSize` is different from and always smaller than the length of the constructed MCMC chain. &
-                &The default value for `outputChainSize` is `"//getStr(spec%outputChainSize%def)//SKC_"`."
+                &The default value for `outputChainSize` is `"//getStr(spec%outputChainSize%def)//SKG_"`."
             !!$omp master
             outputChainSize = spec%outputChainSize%null
             !!$omp end master
@@ -259,14 +259,14 @@ contains
             spec%outputSampleRefinementCount%null = -huge(0_IK)
             spec%outputSampleRefinementCount%def  = huge(0_IK)
             spec%outputSampleRefinementCount%desc = &
-            SKC_"The simulation specification `outputSampleRefinementCount` is a positive-valued scalar of type `integer`. &
+            SKG_"The simulation specification `outputSampleRefinementCount` is a positive-valued scalar of type `integer`. &
                 &When `outputSampleSize < 0`, the value of `outputSampleRefinementCount` dictates the maximum number of times &
                 &the MCMC chain will be refined to remove the autocorrelation within the output MCMC sample. For example,"//NL2//&
-            SKC_"+   if `outputSampleRefinementCount = 0`,"//NL2//&
-            SKC_"    no refinement of the output MCMC chain will be performed. The resulting MCMC sample will correspond &
+            SKG_"+   if `outputSampleRefinementCount = 0`,"//NL2//&
+            SKG_"    no refinement of the output MCMC chain will be performed. The resulting MCMC sample will correspond &
                      &to the full MCMC chain in verbose format (i.e., each sampled state has a weight of one)."//NL2//&
-            SKC_"+   if `outputSampleRefinementCount = 1`,"//NL2//&
-            SKC_"    the refinement of the output MCMC chain will be done only once if needed, and no more, &
+            SKG_"+   if `outputSampleRefinementCount = 1`,"//NL2//&
+            SKG_"    the refinement of the output MCMC chain will be done only once if needed, and no more, &
                      &even though some residual autocorrelation in the output MCMC sample may still exist. &
                      &In practice, only one refinement of the final output MCMC chain should be enough to remove &
                      &the existing autocorrelations in the final output sample. Exceptions occur when the integrated &
@@ -277,17 +277,17 @@ contains
                      &one refinement of the MCMC chain will be necessary. A tiny small sample size resulting from multiple &
                      &refinements of the sample could be a strong indication of the bad mixing of the MCMC chain and &
                      &the lack of convergence to the target objective function."//NL2//&
-            SKC_"+   if `outputSampleRefinementCount > 1`,"//NL2//&
-            SKC_"    the refinement of the output MCMC chain will be done for a maximum `outputSampleRefinementCount` number of &
+            SKG_"+   if `outputSampleRefinementCount > 1`,"//NL2//&
+            SKG_"    the refinement of the output MCMC chain will be done for a maximum `outputSampleRefinementCount` number of &
                      &times, even though some residual autocorrelation in the final output MCMC sample may still exist."//NL2//&
-            SKC_"+   if `outputSampleRefinementCount >> 1` (e.g., comparable to or larger than the length of the MCMC chain),"//NL2//&
-            SKC_"    the refinement of the output MCMC chain will continue until the integrated autocorrelation of the resulting &
+            SKG_"+   if `outputSampleRefinementCount >> 1` (e.g., comparable to or larger than the length of the MCMC chain),"//NL2//&
+            SKG_"    the refinement of the output MCMC chain will continue until the integrated autocorrelation of the resulting &
                      &final sample is less than 2, virtually implying that an independent identically distributed (i.i.d.) sample &
                      &from the target objective function has finally been obtained."//NL2//&
-            SKC_"Note that to obtain i.i.d. samples from a multidimensional chain, the sampler will, by default, use the maximum of &
+            SKG_"Note that to obtain i.i.d. samples from a multidimensional chain, the sampler will, by default, use the maximum of &
                 &integrated Autocorrelation (ACT) among all chain dimensions to refine the chain. &
                 &Note that the value specified for `outputSampleRefinementCount` is used only when the variable `outputSampleSize < 0`; &
-                &otherwise, it will be ignored. The default value for `outputSampleRefinementCount` is `"//getStr(spec%outputSampleRefinementCount%def)//SKC_"`."
+                &otherwise, it will be ignored. The default value for `outputSampleRefinementCount` is `"//getStr(spec%outputSampleRefinementCount%def)//SKG_"`."
             !!$omp master
             outputSampleRefinementCount = spec%outputSampleRefinementCount%null
             !!$omp end master
@@ -298,14 +298,14 @@ contains
             spec%outputSampleRefinementMethod%def = spec%outputSampleRefinementMethod%batchMeans
             spec%outputSampleRefinementMethod%null = repeat(SUB, len(outputSampleRefinementMethod, IK))
             spec%outputSampleRefinementMethod%desc = &
-            SKC_"The simulation specification `outputSampleRefinementMethod` is a scalar string of maximum length `"//getStr(len(outputSampleRefinementMethod, IK))//&
-            SKC_"` representing the method of computing the (integrated) AutoCorrelation Time (ACT) to be used in the simulation for refining &
+            SKG_"The simulation specification `outputSampleRefinementMethod` is a scalar string of maximum length `"//getStr(len(outputSampleRefinementMethod, IK))//&
+            SKG_"` representing the method of computing the (integrated) AutoCorrelation Time (ACT) to be used in the simulation for refining &
                 &the final output MCMC chain and sample. If specified within an external input file, it must be either singly or doubly quoted. &
                 &Methods that are currently supported include:"//NL2//&
-            SKC_"+  `outputSampleRefinementMethod = '"//spec%outputSampleRefinementMethod%batchMeans//SKC_"'`"//NL2//&
-            SKC_"    This method of computing the integrated Autocorrelation Time is based on the approach described in"//NL2//&
-            SKC_"        SCHMEISER, B., 1982, Batch size effects in the analysis of simulation output, Oper. Res. 30 556-568."//NL2//&
-            SKC_"    The batch sizes in the BatchMeans method are chosen to be `int(N^(2/3))`, where `N` is the length of the MCMC chain. &
+            SKG_"+  `outputSampleRefinementMethod = '"//spec%outputSampleRefinementMethod%batchMeans//SKG_"'`"//NL2//&
+            SKG_"    This method of computing the integrated Autocorrelation Time is based on the approach described in"//NL2//&
+            SKG_"        SCHMEISER, B., 1982, Batch size effects in the analysis of simulation output, Oper. Res. 30 556-568."//NL2//&
+            SKG_"    The batch sizes in the BatchMeans method are chosen to be `int(N^(2/3))`, where `N` is the length of the MCMC chain. &
                      &As long as the batch size is larger than the ACT of the chain and there are significantly more than `10` batches, &
                      &the BatchMeans method will provide reliable estimates of the ACT. &
                      &Note that the refinement strategy involves two separate phases of sample decorrelation. At the first stage, &
@@ -314,27 +314,27 @@ contains
                      &such that its compact format is fully decorrelated, the second phase of the decorrelation begins, during which &
                      &the Markov chain is decorrelated based on the ACT of the chain in its verbose (Markov) format. This process &
                      &is repeated recursively for as long as residual autocorrelation exists in the refined sample."//NL2//&
-            SKC_"+   `outputSampleRefinementMethod = '"//spec%outputSampleRefinementMethod%batchMeans//SKC_"-compact'`"//NL2//&
-            SKC_"    This is the same as the first case above, except that only the first phase of the sample refinement &
+            SKG_"+   `outputSampleRefinementMethod = '"//spec%outputSampleRefinementMethod%batchMeans//SKG_"-compact'`"//NL2//&
+            SKG_"    This is the same as the first case above, except that only the first phase of the sample refinement &
                      &described above will be performed; that is, the (verbose) Markov chain is refined only based on the &
                      &ACT computed from the compact format of the Markov chain. This will lead to a larger, final, refined sample. &
                      &However, the final sample will likely not be fully decorrelated."//NL2//&
-            SKC_"+   `outputSampleRefinementMethod = '"//spec%outputSampleRefinementMethod%batchMeans//SKC_"-verbose'`"//NL2//&
-            SKC_"    This is the same as the first case above, except that only the second phase of the sample refinement &
+            SKG_"+   `outputSampleRefinementMethod = '"//spec%outputSampleRefinementMethod%batchMeans//SKG_"-verbose'`"//NL2//&
+            SKG_"    This is the same as the first case above, except that only the second phase of the sample refinement &
                      &described above will be performed; that is, the (verbose) Markov chain is refined only based on the ACT &
                      &computed from the verbose format of the Markov chain. While the resulting refined sample will be fully decorrelated, &
                      &the size of the refined sample may be smaller than the default choice in the first case above."//NL2//&
-            SKC_"Note that to obtain i.i.d. samples from a multidimensional chain, the sampler will use the average of the &
+            SKG_"Note that to obtain i.i.d. samples from a multidimensional chain, the sampler will use the average of the &
                 &ACT among all dimensions of the chain to refine the chain. If the maximum, minimum, or median of IACs is preferred &
                 &add `'-max'` (or `'-maximum'`), `'-min'` (or `'-minimum'`), `'-med'` (or `'-median'`), respectively, to the value of &
                 &`outputSampleRefinementMethod`. For example, "//NL2//&
-            SKC_"+   `outputSampleRefinementMethod = '"//spec%outputSampleRefinementMethod%batchMeans//SKC_"-max'`"//NL2//&
-            SKC_"or, "//NL2//&
-            SKC_"+   `outputSampleRefinementMethod = '"//spec%outputSampleRefinementMethod%batchMeans//SKC_"-compact-max'`"//NL2//&
-            SKC_"or, "//NL2//&
-            SKC_"+   `outputSampleRefinementMethod = '"//spec%outputSampleRefinementMethod%batchMeans//SKC_"-max-compact'`"//NL2//&
-            SKC_"Note that the specified `outputSampleRefinementCount` is used only when the condition `outputSampleSize < 0` holds. &
-                &Otherwise, it is ignored. The default value for `outputSampleRefinementMethod` is `'"//spec%outputSampleRefinementMethod%def//SKC_"'`. &
+            SKG_"+   `outputSampleRefinementMethod = '"//spec%outputSampleRefinementMethod%batchMeans//SKG_"-max'`"//NL2//&
+            SKG_"or, "//NL2//&
+            SKG_"+   `outputSampleRefinementMethod = '"//spec%outputSampleRefinementMethod%batchMeans//SKG_"-compact-max'`"//NL2//&
+            SKG_"or, "//NL2//&
+            SKG_"+   `outputSampleRefinementMethod = '"//spec%outputSampleRefinementMethod%batchMeans//SKG_"-max-compact'`"//NL2//&
+            SKG_"Note that the specified `outputSampleRefinementCount` is used only when the condition `outputSampleSize < 0` holds. &
+                &Otherwise, it is ignored. The default value for `outputSampleRefinementMethod` is `'"//spec%outputSampleRefinementMethod%def//SKG_"'`. &
                 &Note that the input values are case-INsensitive and white-space characters are ignored."
             !!$omp master
             outputSampleRefinementMethod = spec%outputSampleRefinementMethod%null
@@ -350,15 +350,15 @@ contains
             spec%proposal%def = spec%proposal%normal
             spec%proposal%null = repeat(SUB, len(proposal, IK))
             spec%proposal%desc = &
-            SKC_"The simulation specification `proposal` is a scalar string of maximum length `"//getStr(len(proposal, IK))//SKC_"` containing &
+            SKG_"The simulation specification `proposal` is a scalar string of maximum length `"//getStr(len(proposal, IK))//SKG_"` containing &
                 &the name of the proposal distribution for the MCMC sampler. When specified from within an external input file, it must &
                 &be singly or doubly quoted. Options that are currently supported include:"//NL2//&
-            SKC_"+   `proposal = '"//spec%proposal%normal//SKC_"'`"//NL2//&
-            SKC_"    This is equivalent to the multivariate normal distribution, which, for MCMC samplers, is the most widely used proposal model."//NL2//&
-            SKC_"+   `proposal = '"//spec%proposal%uniform//SKC_"'`"//NL2//&
-            SKC_"    The proposals will be drawn uniformly from within a ndim-dimensional ellipsoid whose covariance matrix &
+            SKG_"+   `proposal = '"//spec%proposal%normal//SKG_"'`"//NL2//&
+            SKG_"    This is equivalent to the multivariate normal distribution, which, for MCMC samplers, is the most widely used proposal model."//NL2//&
+            SKG_"+   `proposal = '"//spec%proposal%uniform//SKG_"'`"//NL2//&
+            SKG_"    The proposals will be drawn uniformly from within a ndim-dimensional ellipsoid whose covariance matrix &
                      &and scale are initialized by the user and optionally adaptively updated throughout the simulation."//NL2//&
-            SKC_"The default value for `proposal` is `'"//spec%proposal%def//SKC_"'`."
+            SKG_"The default value for `proposal` is `'"//spec%proposal%def//SKG_"'`."
             !!$omp master
             proposal = spec%proposal%null
             !!$omp end master
@@ -368,9 +368,9 @@ contains
             use pm_except, only: setNAN
             use pm_sampling_scio, only: proposalCor
             use pm_matrixInit, only: getMatInit, uppLowDia
-            spec%proposalCor%def = getMatInit([ndim, ndim], uppLowDia, 0._RKC, 0._RKC, 1._RKC)
+            spec%proposalCor%def = getMatInit([ndim, ndim], uppLowDia, 0._RKG, 0._RKG, 1._RKG)
             spec%proposalCor%desc = &
-            SKC_"The simulation specification `proposalCor` is a positive-definite square matrix of type `real` of the highest precision &
+            SKG_"The simulation specification `proposalCor` is a positive-definite square matrix of type `real` of the highest precision &
                 &available within the ParaMonte library matrix of size `(ndim, ndim)`, where `ndim` is the dimension of the sampling space. &
                 &It serves as the best-guess starting correlation matrix of the proposal distribution used by the sampler. &
                 &It is used (along with the input vector `proposalStd`) to construct the covariance matrix of the proposal &
@@ -390,11 +390,11 @@ contains
             use pm_except, only: setNAN
             use pm_sampling_scio, only: proposalCov
             use pm_matrixInit, only: getMatInit, uppLowDia
-            spec%proposalCov%def = getMatInit([ndim, ndim], uppLowDia, 0._RKC, 0._RKC, 1._RKC)
+            spec%proposalCov%def = getMatInit([ndim, ndim], uppLowDia, 0._RKG, 0._RKG, 1._RKG)
             ! This must be set here. It is important for the proper setting from inputFile and inputArg.
             spec%proposalCov%isUserSet = .false._LK
             spec%proposalCov%desc = &
-            SKC_"The simulation specification `proposalCov` is a square positive-definite matrix of type `real` of the highest precision &
+            SKG_"The simulation specification `proposalCov` is a square positive-definite matrix of type `real` of the highest precision &
                 &available within the ParaMonte library, of shape `(ndim, ndim)`, where `ndim` is the number of dimensions of the sampling space. &
                 &It serves as the best-guess starting covariance matrix of the proposal distribution. &
                 &To bring the sampling efficiency of the sampler to within the desired requested range, the covariance matrix will &
@@ -414,34 +414,34 @@ contains
 
         proposalScale_block: block
             use pm_sampling_scio, only: proposalScale
-            spec%proposalScale%strdef = SKC_"1"
-            spec%proposalScale%valdef = 1._RKC ! 2.38_RKC / sqrt(real(ndim, RKC)) ! Gelman, Roberts, Gilks (1996): Efficient Metropolis Jumping Rules.
+            spec%proposalScale%strdef = SKG_"1"
+            spec%proposalScale%valdef = 1._RKG ! 2.38_RKG / sqrt(real(ndim, RKG)) ! Gelman, Roberts, Gilks (1996): Efficient Metropolis Jumping Rules.
             spec%proposalScale%null = repeat(SUB, len(proposalScale, IK))
             spec%proposalScale%desc = &
-            SKC_"The simulation specification `proposalScale` is a scalar string of maximum length `"//getStr(len(proposalScale, IK))//SKC_"` &
+            SKG_"The simulation specification `proposalScale` is a scalar string of maximum length `"//getStr(len(proposalScale, IK))//SKG_"` &
                 &containing a positive real-valued number whose square will be multiplied with the covariance matrix of the proposal distribution &
                 &of the MCMC sampler to shrink or enlarge it. In other words, the proposal distribution will be scaled in every direction &
                 &by the specified numeric value of `proposalScale`. It can also be given in units of the string keyword `'gelman'` &
                 &(which is case-INsensitive) after the paper:"//NL2//&
-            SKC_"    Gelman, Roberts, and Gilks (1996), Efficient Metropolis Jumping Rules."//NL2//&
-            SKC_"The paper finds that the optimal scaling factor for a Multivariate Gaussian proposal distribution for the Metropolis-Hastings &
+            SKG_"    Gelman, Roberts, and Gilks (1996), Efficient Metropolis Jumping Rules."//NL2//&
+            SKG_"The paper finds that the optimal scaling factor for a Multivariate Gaussian proposal distribution for the Metropolis-Hastings &
                 &Markov Chain Monte Carlo sampling of a target Multivariate Normal Distribution of dimension `ndim` is given by:"//NL2//&
-            SKC_"    proposalScale = 2.38 / sqrt(ndim)  ,  in the limit of ndim -> Infinity."//NL2//&
-            SKC_"Multiples of the Gelman scale factors are also acceptable as input and can be specified as in the following examples:"//NL2//&
-            SKC_"+   `proposalScale = '1'`"//NL2//&
-            SKC_"    multiplies the ndim-dimensional proposal covariance matrix by 1, &
+            SKG_"    proposalScale = 2.38 / sqrt(ndim)  ,  in the limit of ndim -> Infinity."//NL2//&
+            SKG_"Multiples of the Gelman scale factors are also acceptable as input and can be specified as in the following examples:"//NL2//&
+            SKG_"+   `proposalScale = '1'`"//NL2//&
+            SKG_"    multiplies the ndim-dimensional proposal covariance matrix by 1, &
                      &essentially no change occurs to the covariance matrix."//NL2//&
-            SKC_"+   `proposalScale = ""1""`"//NL2//&
-            SKC_"    same as the previous example. The double-quotation marks act the same way as single-quotation marks."//NL2//&
-            SKC_"+   `proposalScale = '2.5'`"//NL2//&
-            SKC_"    multiplies the ndim-dimensional proposal covariance matrix by 2.5."//NL2//&
-            SKC_"+   `proposalScale = '2.5*Gelman'`"//NL2//&
-            SKC_"    multiplies the `ndim`-dimensional proposal covariance matrix by 2.5 * 2.38/sqrt(ndim)."//NL2//&
-            SKC_"+   `proposalScale = ""2.5 * gelman""`"//NL2//&
-            SKC_"    same as the previous example but with double-quotation marks. space characters are ignored."//NL2//&
-            SKC_"+   `proposalScale = ""2.5 * gelman*gelman*2""`"//NL2//&
-            SKC_"    equivalent to gelmanFactor-squared multiplied by `5`."//NL2//&
-            SKC_"Note, however, that the result of Gelman et al. paper applies only to multivariate normal proposal distributions in the limit &
+            SKG_"+   `proposalScale = ""1""`"//NL2//&
+            SKG_"    same as the previous example. The double-quotation marks act the same way as single-quotation marks."//NL2//&
+            SKG_"+   `proposalScale = '2.5'`"//NL2//&
+            SKG_"    multiplies the ndim-dimensional proposal covariance matrix by 2.5."//NL2//&
+            SKG_"+   `proposalScale = '2.5*Gelman'`"//NL2//&
+            SKG_"    multiplies the `ndim`-dimensional proposal covariance matrix by 2.5 * 2.38/sqrt(ndim)."//NL2//&
+            SKG_"+   `proposalScale = ""2.5 * gelman""`"//NL2//&
+            SKG_"    same as the previous example but with double-quotation marks. space characters are ignored."//NL2//&
+            SKG_"+   `proposalScale = ""2.5 * gelman*gelman*2""`"//NL2//&
+            SKG_"    equivalent to gelmanFactor-squared multiplied by `5`."//NL2//&
+            SKG_"Note, however, that the result of Gelman et al. paper applies only to multivariate normal proposal distributions in the limit &
                 &of infinite dimensions. Therefore, care must be taken when using Gelman's scaling factor with non-Gaussian proposals and target &
                 &objective functions. Only the product symbol `*` can be parsed in the string value of `proposalScale`. &
                 &The presence of other mathematical symbols or multiple appearances of the product symbol will lead to a simulation crash. &
@@ -457,7 +457,7 @@ contains
         proposalStart_block: block
             use pm_sampling_scio, only: proposalStart
             spec%proposalStart%desc = &
-            SKC_"The simulation specification `proposalStart` is a vector type of `real` of the highest precision available &
+            SKG_"The simulation specification `proposalStart` is a vector type of `real` of the highest precision available &
                 &within the ParaMonte library of length `ndim` where `ndim` is the dimension of the domain of the objective function. &
                 &For every element of `proposalStart` not provided as input, the default value will be the center of the sampling domain &
                 &as determined by `domainCubeLimitLower` and `domainCubeLimitUpper` input specifications. &
@@ -478,7 +478,7 @@ contains
             use pm_sampling_scio, only: proposalStartDomainCubeLimitLower
             spec%proposalStartDomainCubeLimitLower%def = spec%domainCubeLimitLower%def
             spec%proposalStartDomainCubeLimitLower%desc = &
-            SKC_"The simulation specification `proposalStartDomainCubeLimitLower` is a vector of type `real` of the highest precision available &
+            SKG_"The simulation specification `proposalStartDomainCubeLimitLower` is a vector of type `real` of the highest precision available &
                 &in the ParaMonet library of size `ndim` is the number of dimensions of the domain of the objective function. It contains the &
                 &lower boundaries of the cubical domain from which the starting point(s) of the MCMC chain(s) will be initialized randomly &
                 &(only if requested via the input variable `proposalStartRandomized`). &
@@ -491,14 +491,14 @@ contains
                 &When specified from within an external input file to the sampler, it is also possible to assign only select &
                 &values of `proposalStartDomainCubeLimitLower` and leave the rest of the components to be assigned the default value. &
                 &For example, having the following inside the input file, "//NL2//&
-            SKC_"+   `proposalStartDomainCubeLimitLower(3:5) = -100`"//NL2//&
-            SKC_"    will only set the lower limits of the third, fourth, and fifth dimensions to -100, or,"//NL2//&
-            SKC_"+   `proposalStartDomainCubeLimitLower(1) = -100, proposalStartDomainCubeLimitLower(2) = -1.e6`"//NL2//&
-            SKC_"    will set the lower limit on the first dimension to -100, and 1.e6 on the second dimension, or,"//NL2//&
-            SKC_"+   `proposalStartDomainCubeLimitLower = 3*-2.5e100`"//NL2//&
-            SKC_"    will only set the lower limits on the first, second, and third dimensions to `-2.5*10^100`, &
+            SKG_"+   `proposalStartDomainCubeLimitLower(3:5) = -100`"//NL2//&
+            SKG_"    will only set the lower limits of the third, fourth, and fifth dimensions to -100, or,"//NL2//&
+            SKG_"+   `proposalStartDomainCubeLimitLower(1) = -100, proposalStartDomainCubeLimitLower(2) = -1.e6`"//NL2//&
+            SKG_"    will set the lower limit on the first dimension to -100, and 1.e6 on the second dimension, or,"//NL2//&
+            SKG_"+   `proposalStartDomainCubeLimitLower = 3*-2.5e100`"//NL2//&
+            SKG_"    will only set the lower limits on the first, second, and third dimensions to `-2.5*10^100`, &
                      &while the rest of the lower limits for the missing dimensions will be automatically set to the default value."//NL2//&
-            SKC_"The default for all `proposalStartDomainCubeLimitLower` elements is taken from the corresponding elements of `domainCubeLimitLower`."
+            SKG_"The default for all `proposalStartDomainCubeLimitLower` elements is taken from the corresponding elements of `domainCubeLimitLower`."
             !!$omp master
             call setResized(proposalStartDomainCubeLimitLower, ndim)
             call setNAN(proposalStartDomainCubeLimitLower)
@@ -509,7 +509,7 @@ contains
             use pm_sampling_scio, only: proposalStartDomainCubeLimitUpper
             spec%proposalStartDomainCubeLimitUpper%def = spec%domainCubeLimitUpper%def
             spec%proposalStartDomainCubeLimitUpper%desc = &
-            SKC_"The simulation specification `proposalStartDomainCubeLimitUpper` is a vector of type `real` of the highest precision available &
+            SKG_"The simulation specification `proposalStartDomainCubeLimitUpper` is a vector of type `real` of the highest precision available &
                 &in the ParaMonet library of size `ndim` is the number of dimensions of the domain of the objective function. It contains the &
                 &upper boundaries of the cubical domain from which the starting point(s) of the MCMC chain(s) will be initialized randomly &
                 &(only if requested via the input variable `proposalStartRandomized`). &
@@ -522,14 +522,14 @@ contains
                 &When specified from within an external input file to the sampler, it is also possible to assign only select &
                 &values of `proposalStartDomainCubeLimitUpper` and leave the rest of the components to be assigned the default value. &
                 &For example, having the following inside the input file, "//NL2//&
-            SKC_"+   `proposalStartDomainCubeLimitUpper(3:5) = -100`"//NL2//&
-            SKC_"    will only set the upper limits of the third, fourth, and fifth dimensions to `-100`, or,"//NL2//&
-            SKC_"+   `proposalStartDomainCubeLimitUpper(1) = -100, proposalStartDomainCubeLimitUpper(2) = -1.e6`"//NL2//&
-            SKC_"    will set the upper limit on the first dimension to -100, and 1.e6 on the second dimension, or,"//NL2//&
-            SKC_"+   `proposalStartDomainCubeLimitUpper = 3*-2.5e100`"//NL2//&
-            SKC_"    will only set the upper limits on the first, second, and third dimensions to `-2.5*10**100`, while &
+            SKG_"+   `proposalStartDomainCubeLimitUpper(3:5) = -100`"//NL2//&
+            SKG_"    will only set the upper limits of the third, fourth, and fifth dimensions to `-100`, or,"//NL2//&
+            SKG_"+   `proposalStartDomainCubeLimitUpper(1) = -100, proposalStartDomainCubeLimitUpper(2) = -1.e6`"//NL2//&
+            SKG_"    will set the upper limit on the first dimension to -100, and 1.e6 on the second dimension, or,"//NL2//&
+            SKG_"+   `proposalStartDomainCubeLimitUpper = 3*-2.5e100`"//NL2//&
+            SKG_"    will only set the upper limits on the first, second, and third dimensions to `-2.5*10**100`, while &
                      &the rest of the upper limits for the missing dimensions will be automatically set to the default value."//NL2//&
-            SKC_"The default values for all elements of `proposalStartDomainCubeLimitUpper` are &
+            SKG_"The default values for all elements of `proposalStartDomainCubeLimitUpper` are &
                 &taken from the corresponding values in the input variable `domainCubeLimitUpper`."
             !!$omp master
             call setResized(proposalStartDomainCubeLimitUpper, ndim)
@@ -541,7 +541,7 @@ contains
             use pm_sampling_scio, only: proposalStartRandomized
             spec%proposalStartRandomized%def = .false._LK
             spec%proposalStartRandomized%desc = &
-            SKC_"The simulation specification `proposalStartRandomized` is a scalar of type `logical` (Boolean). &
+            SKG_"The simulation specification `proposalStartRandomized` is a scalar of type `logical` (Boolean). &
                 &If `true` (or `.true.` or `TRUE` or `.t.` from within an external input file), then the variable `proposalStart` &
                 &will be initialized randomly for each MCMC chain that is to be generated by the sampler. The random values will be &
                 &drawn from the specified or the default domain of `proposalStart`, given by `proposalStartDomainCubeLimitLower` and &
@@ -549,7 +549,7 @@ contains
                 &random initialization. In other words, only uninitialized elements of `proposalStart` will be randomly initialized only &
                 &if `proposalStartRandomized` is set to the logical true value. Note that even if `proposalStart` is randomly initialized, &
                 &its random value will be deterministic between different independent simulation runs if the input variable `randomSeed` &
-                &is specified by the user. The default value is `"//getStr(spec%proposalStartRandomized%def)//SKC_"`."
+                &is specified by the user. The default value is `"//getStr(spec%proposalStartRandomized%def)//SKG_"`."
             !!$omp master
             proposalStartRandomized = spec%proposalStartRandomized%def
             !!$omp end master
@@ -558,9 +558,9 @@ contains
         proposalStd_block: block
             use pm_arrayFill, only: getFilled
             use pm_sampling_scio, only: proposalStd
-            spec%proposalStd%def = getFilled(1._RKC, ndim)
+            spec%proposalStd%def = getFilled(1._RKG, ndim)
             spec%proposalStd%desc = &
-            SKC_"The simulation specification `proposalStd` is a positive-valued vector of type `real` of the highest precision available &
+            SKG_"The simulation specification `proposalStd` is a positive-valued vector of type `real` of the highest precision available &
                 &within the ParaMonte library, of size `ndim`, where `ndim` is the dimension of the domain of the objective function. &
                 &It serves as the best-guess starting standard deviation for each component of the proposal distribution. &
                 &If the initial covariance matrix (`proposalCov`) is missing as an input specification to the sampler, &
@@ -623,18 +623,18 @@ contains
 
             outputSampleRefinementMethod_block: block
                 use pm_sampling_scio, only: outputSampleRefinementMethod
-                character(:,SKC), allocatable :: lowval
+                character(:,SKG), allocatable :: lowval
                 if (spec%overridable .and. allocated(sampler%outputSampleRefinementMethod)) then
-                    spec%outputSampleRefinementMethod%val = trim(adjustl(getRemoved(sampler%outputSampleRefinementMethod, SKC_" ")))
+                    spec%outputSampleRefinementMethod%val = trim(adjustl(getRemoved(sampler%outputSampleRefinementMethod, SKG_" ")))
                 else
-                    spec%outputSampleRefinementMethod%val = trim(adjustl(getRemoved(outputSampleRefinementMethod, SKC_" ")))
+                    spec%outputSampleRefinementMethod%val = trim(adjustl(getRemoved(outputSampleRefinementMethod, SKG_" ")))
                 end if
                 if (spec%outputSampleRefinementMethod%val == trim(adjustl(spec%outputSampleRefinementMethod%null))) spec%outputSampleRefinementMethod%val = spec%outputSampleRefinementMethod%def
                 lowval = getStrLower(spec%outputSampleRefinementMethod%val)
-                spec%outputSampleRefinementMethod%isMaxCumSumACF = logical(lowval == SKC_"maxcumsumacf", LK)
-                spec%outputSampleRefinementMethod%isBatchMeans = logical(0 < index(lowval, SKC_"batchmeans"), LK)
-                spec%outputSampleRefinementMethod%isBatchMeansCompact = spec%outputSampleRefinementMethod%isBatchMeans .and. logical(0 < index(lowval, SKC_"compact"), LK)
-                spec%outputSampleRefinementMethod%isBatchMeansVerbose = spec%outputSampleRefinementMethod%isBatchMeans .and. logical(0 < index(lowval, SKC_"verbose"), LK)
+                spec%outputSampleRefinementMethod%isMaxCumSumACF = logical(lowval == SKG_"maxcumsumacf", LK)
+                spec%outputSampleRefinementMethod%isBatchMeans = logical(0 < index(lowval, SKG_"batchmeans"), LK)
+                spec%outputSampleRefinementMethod%isBatchMeansCompact = spec%outputSampleRefinementMethod%isBatchMeans .and. logical(0 < index(lowval, SKG_"compact"), LK)
+                spec%outputSampleRefinementMethod%isBatchMeansVerbose = spec%outputSampleRefinementMethod%isBatchMeans .and. logical(0 < index(lowval, SKG_"verbose"), LK)
             end block outputSampleRefinementMethod_block
 
             proposal_block: block
@@ -652,7 +652,7 @@ contains
             proposalCor_block: block
                 use pm_sampling_scio, only: proposalCor
                 if (spec%overridable .and. allocated(sampler%proposalCor)) then
-                    spec%proposalCor%val = real(sampler%proposalCor, RKC)
+                    spec%proposalCor%val = real(sampler%proposalCor, RKG)
                 else
                     spec%proposalCor%val = proposalCor
                 end if
@@ -665,7 +665,7 @@ contains
                 use pm_sampling_scio, only: proposalCov
                 integer(IK) :: idim, jdim
                 if (spec%overridable .and. allocated(sampler%proposalCov)) then
-                    spec%proposalCov%val = real(sampler%proposalCov, RKC)
+                    spec%proposalCov%val = real(sampler%proposalCov, RKG)
                 else
                     spec%proposalCov%val = proposalCov
                 end if
@@ -696,7 +696,7 @@ contains
             proposalStart_block: block
                 use pm_sampling_scio, only: proposalStart
                 if (spec%overridable .and. allocated(sampler%proposalStart)) then
-                    spec%proposalStart%val = real(sampler%proposalStart, RKC)
+                    spec%proposalStart%val = real(sampler%proposalStart, RKG)
                 else
                     spec%proposalStart%val = proposalStart
                 end if
@@ -705,7 +705,7 @@ contains
             proposalStartDomainCubeLimitLower_block: block
                 use pm_sampling_scio, only: proposalStartDomainCubeLimitLower
                 if (spec%overridable .and. allocated(sampler%proposalStartDomainCubeLimitLower)) then
-                    spec%proposalStartDomainCubeLimitLower%val = real(sampler%proposalStartDomainCubeLimitLower, RKC)
+                    spec%proposalStartDomainCubeLimitLower%val = real(sampler%proposalStartDomainCubeLimitLower, RKG)
                 else
                     spec%proposalStartDomainCubeLimitLower%val = proposalStartDomainCubeLimitLower
                 end if
@@ -717,7 +717,7 @@ contains
             proposalStartDomainCubeLimitUpper_block: block
                 use pm_sampling_scio, only: proposalStartDomainCubeLimitUpper
                 if (spec%overridable .and. allocated(sampler%proposalStartDomainCubeLimitUpper)) then
-                    spec%proposalStartDomainCubeLimitUpper%val = real(sampler%proposalStartDomainCubeLimitUpper, RKC)
+                    spec%proposalStartDomainCubeLimitUpper%val = real(sampler%proposalStartDomainCubeLimitUpper, RKG)
                 else
                     spec%proposalStartDomainCubeLimitUpper%val = proposalStartDomainCubeLimitUpper
                 end if
@@ -738,7 +738,7 @@ contains
             proposalStd_block: block
                 use pm_sampling_scio, only: proposalStd
                 if (spec%overridable .and. allocated(sampler%proposalStd)) then
-                    spec%proposalStd%val = real(sampler%proposalStd, RKC)
+                    spec%proposalStd%val = real(sampler%proposalStd, RKG)
                 else
                     spec%proposalStd%val = proposalStd
                 end if
@@ -755,7 +755,7 @@ contains
                     use pm_sampleCov, only: setCov, uppDia
                     use pm_io, only: getErrTableRead, LEN_IOMSG
                     use pm_matrixCopy, only: setMatCopy, rdpack, upp, transHerm
-                    real(RKC), allocatable :: logFuncState(:,:)
+                    real(RKG), allocatable :: logFuncState(:,:)
                     call setResized(err%msg, LEN_IOMSG)
                     err%stat = getErrTableRead(spec%sampleFile%list(spec%run%id - 1)%val, logFuncState, sep = spec%outputSeparator%val, roff = 1_IK, iomsg = err%msg)
                     err%occurred = err%stat /= 0
@@ -779,7 +779,7 @@ contains
                             if (spec%proposalStartRandomized%val) then
                                 call setUnifRand(spec%rng, spec%proposalStart%val(idim), spec%proposalStartDomainCubeLimitLower%val(idim), spec%proposalStartDomainCubeLimitUpper%val(idim))
                             else
-                                spec%proposalStart%val(idim) = 0.5_RKC * spec%proposalStartDomainCubeLimitLower%val(idim) + 0.5_RKC * spec%proposalStartDomainCubeLimitUpper%val(idim)
+                                spec%proposalStart%val(idim) = 0.5_RKG * spec%proposalStartDomainCubeLimitLower%val(idim) + 0.5_RKG * spec%proposalStartDomainCubeLimitUpper%val(idim)
                             end if
                         end if
                     end do
@@ -805,7 +805,7 @@ contains
 #endif
         class(specmcmc_type), intent(inout) :: spec
 
-        call spec%disp%text%wrap(NL1//spec%method%val//SKC_".simulation.specifications.mcmc"//NL1)
+        call spec%disp%text%wrap(NL1//spec%method%val//SKG_".simulation.specifications.mcmc"//NL1)
 
         associate(ndim => spec%ndim%val, format => spec%reportFile%format%generic)
 
@@ -835,7 +835,7 @@ contains
 
             call spec%disp%show("proposalScale")
             call spec%disp%show(spec%proposalScale%str, format = format)
-           !call spec%disp%show(spec%proposalScale%str//SKC_" (gelman(ndim = "//getStr(spec%ndim%val)//SKC_") = "//getStr(spec%proposalScale%valdef)//SKC_")", format = format)
+           !call spec%disp%show(spec%proposalScale%str//SKG_" (gelman(ndim = "//getStr(spec%ndim%val)//SKG_") = "//getStr(spec%proposalScale%valdef)//SKG_")", format = format)
             call spec%disp%note%show(spec%proposalScale%desc)
 
             call spec%disp%show("proposalStart")
@@ -871,14 +871,14 @@ contains
         use pm_err, only: err_type
         type(err_type), intent(inout) :: err
         class(specmcmc_type), intent(inout) :: spec
-        character(*,SKC), parameter :: PROCEDURE_NAME = MODULE_NAME//SKC_"@sanitize()"
+        character(*,SKG), parameter :: PROCEDURE_NAME = MODULE_NAME//SKG_"@sanitize()"
 
         outputChainSize_block: block
             if (spec%outputChainSize%val < spec%ndim%val + 1_IK) then
                 err%occurred = .true._LK
-                err%msg =   err%msg//NL2//PROCEDURE_NAME//getFine(__FILE__, __LINE__)//SKC_": Error occurred. The input requested value for `outputChainSize` ("//getStr(spec%outputChainSize%val)//&
-                            SKC_") can neither be negative nor smaller than `ndim + 1`, where `ndim` represents the dimension of the domain of the objective &
-                            &function, here `ndim = "//getStr(spec%ndim%val)//SKC_". If you do not know an appropriate value for `outputChainSize`, &
+                err%msg =   err%msg//NL2//PROCEDURE_NAME//getFine(__FILE__, __LINE__)//SKG_": Error occurred. The input requested value for `outputChainSize` ("//getStr(spec%outputChainSize%val)//&
+                            SKG_") can neither be negative nor smaller than `ndim + 1`, where `ndim` represents the dimension of the domain of the objective &
+                            &function, here `ndim = "//getStr(spec%ndim%val)//SKG_". If you do not know an appropriate value for `outputChainSize`, &
                             &drop it from the input list. The MCMC sampler will automatically assign an appropriate value to it."
             end if
         end block outputChainSize_block
@@ -886,7 +886,7 @@ contains
         outputSampleRefinementCount_block: block
             if (spec%outputSampleRefinementCount%val < 0_IK) then
                 err%occurred = .true._LK
-                err%msg =   err%msg//NL2//PROCEDURE_NAME//getFine(__FILE__, __LINE__)//SKC_": Error occurred. &
+                err%msg =   err%msg//NL2//PROCEDURE_NAME//getFine(__FILE__, __LINE__)//SKG_": Error occurred. &
                             &The input value for variable `outputSampleRefinementCount` must be a non-negative integer. &
                             &If you are unsure about the appropriate value for this variable, simply drop it from the input. &
                             &The sampler will automatically assign an appropriate value to it."
@@ -894,7 +894,7 @@ contains
         end block outputSampleRefinementCount_block
 
         outputSampleRefinementMethod_block: block
-            character(:,SKC), allocatable :: lowerCaseVal
+            character(:,SKG), allocatable :: lowerCaseVal
             lowerCaseVal = getStrLower(spec%outputSampleRefinementMethod%val)
             if  (& ! LCOV_EXCL_LINE
                 index(lowerCaseVal, getStrLower(spec%outputSampleRefinementMethod%maxCumSumACF)) == 0_IK & ! LCOV_EXCL_LINE
@@ -904,11 +904,11 @@ contains
                 index(lowerCaseVal, getStrLower(spec%outputSampleRefinementMethod%cutoffACF)) == 0_IK & ! LCOV_EXCL_LINE
                ) then
                 err%occurred = .true._LK
-                err%msg =   err%msg//NL2//PROCEDURE_NAME//getFine(__FILE__, __LINE__)//SKC_": Error occurred. &
+                err%msg =   err%msg//NL2//PROCEDURE_NAME//getFine(__FILE__, __LINE__)//SKG_": Error occurred. &
                             &The input requested method for the computation of the integrated AutoCorrelation Time ("//spec%outputSampleRefinementMethod%val//&
-                            SKC_") assigned to the variable `outputSampleRefinementMethod` cannot be anything other than "//spec%outputSampleRefinementMethod%batchMeans//SKC_". "//&
+                            SKG_") assigned to the variable `outputSampleRefinementMethod` cannot be anything other than "//spec%outputSampleRefinementMethod%batchMeans//SKG_". "//&
                             ! " or "//spec%maxCumSumACF//". &
-                            SKC_"If you are unsure of the appropriate value for `outputSampleRefinementMethod`, &
+                            SKG_"If you are unsure of the appropriate value for `outputSampleRefinementMethod`, &
                             &drop it from the input list. The sampler will automatically assign an appropriate value to it."
             end if
         end block outputSampleRefinementMethod_block
@@ -916,25 +916,25 @@ contains
         proposal_block: block
             if (.not. (spec%proposal%is%normal .or. spec%proposal%is%uniform)) then
                 err%occurred = .true._LK
-                err%msg =   err%msg//NL2//PROCEDURE_NAME//getFine(__FILE__, __LINE__)//SKC_": Error occurred. &
+                err%msg =   err%msg//NL2//PROCEDURE_NAME//getFine(__FILE__, __LINE__)//SKG_": Error occurred. &
                             &The input requested proposal model ("//spec%proposal%val//") is not supported. &
                             &The variable proposal cannot be set to anything other than '"//&
-                            spec%proposal%normal//SKC_"', or '"//&
-                            spec%proposal%uniform//SKC_"'."
+                            spec%proposal%normal//SKG_"', or '"//&
+                            spec%proposal%uniform//SKG_"'."
             end if
         end block proposal_block
 
         proposalCor_block: block
             if (.not. isMatClass(spec%proposalCor%val, posdefmat)) then
                 err%occurred = .true._LK
-                err%msg = err%msg//PROCEDURE_NAME//getFine(__FILE__, __LINE__)//SKC_": Error occurred. The specified `proposalCor` is not positive-definite: "//getStr(spec%proposalCor%val)//SKC_""
+                err%msg = err%msg//PROCEDURE_NAME//getFine(__FILE__, __LINE__)//SKG_": Error occurred. The specified `proposalCor` is not positive-definite: "//getStr(spec%proposalCor%val)//SKG_""
             end if
         end block proposalCor_block
 
         proposalCov_block: block
             if (.not. isMatClass(spec%proposalCov%val, posdefmat)) then
                 err%occurred = .true._LK
-                err%msg = err%msg//PROCEDURE_NAME//getFine(__FILE__, __LINE__)//SKC_": Error occurred. The specified `proposalCov` is not positive-definite: "//getStr(spec%proposalCov%val)//SKC_""
+                err%msg = err%msg//PROCEDURE_NAME//getFine(__FILE__, __LINE__)//SKG_": Error occurred. The specified `proposalCov` is not positive-definite: "//getStr(spec%proposalCov%val)//SKG_""
             end if
         end block proposalCov_block
 
@@ -942,32 +942,32 @@ contains
             use pm_val2real, only: setReal
             use pm_arraySplit, only: setSplit
             integer(IK), allocatable :: sindex(:,:)
-            character(:,SKC), allocatable :: str
-            real(RKC) :: conversion
+            character(:,SKG), allocatable :: str
+            real(RKG) :: conversion
             integer(IK) :: ipart
             ! First convert the proposalScale string to real value:
-            str = getRemoved(spec%proposalScale%str, SKC_" ") ! remove the white spaces.
+            str = getRemoved(spec%proposalScale%str, SKG_" ") ! remove the white spaces.
             if (len_trim(adjustl(str)) == 0_IK) then
                 err%occurred = .true._LK
-                err%msg =   err%msg//NL2//PROCEDURE_NAME//getFine(__FILE__, __LINE__)//SKC_": Error occurred. &
-                            &The input string value ("//spec%proposalScale%str//SKC_") for the variable `proposalScale` is empty. &
+                err%msg =   err%msg//NL2//PROCEDURE_NAME//getFine(__FILE__, __LINE__)//SKG_": Error occurred. &
+                            &The input string value ("//spec%proposalScale%str//SKG_") for the variable `proposalScale` is empty. &
                             &Ensure the specified string follows the syntax rules of the sampler for this variable. Otherwise drop &
                             &it from the input list. The sampler will automatically assign an appropriate value to it."
             end if
             ! Now split the string by "*" to real coefficient and character (gelman) parts for further evaluations.
-            call setSplit(sindex, str, sep = SKC_"*")
-            spec%proposalScale%val = 1._RKC
+            call setSplit(sindex, str, sep = SKG_"*")
+            spec%proposalScale%val = 1._RKG
             do ipart = 1, size(sindex, 2, IK)
-                if (getStrLower(str(sindex(1, ipart) : sindex(2, ipart))) == SKC_"gelman") then
+                if (getStrLower(str(sindex(1, ipart) : sindex(2, ipart))) == SKG_"gelman") then
                     spec%proposalScale%val = spec%proposalScale%val * spec%proposalScale%valdef
                 else
                     call setReal(conversion, str(sindex(1, ipart) : sindex(2, ipart)), iostat = err%stat)
                     if (err%stat /= 0_IK) then
                         err%occurred = .true._LK
-                        err%msg = err%msg//PROCEDURE_NAME//getFine(__FILE__, __LINE__)//SKC_": Error occurred while reading real number. &
-                        &The input string value for the variable `proposalScale` ("//spec%proposalScale%str//SKC_") does not appear to follow &
+                        err%msg = err%msg//PROCEDURE_NAME//getFine(__FILE__, __LINE__)//SKG_": Error occurred while reading real number. &
+                        &The input string value for the variable `proposalScale` ("//spec%proposalScale%str//SKG_") does not appear to follow &
                         &the standard syntax rules of the sampler for this variable. The slice `"//str(sindex(1, ipart) : sindex(1, ipart))//& ! LCOV_EXCL_LINE
-                        SKC_"` cannot be parsed into any meaningful token. Please correct the input value, or drop it from the input list &
+                        SKG_"` cannot be parsed into any meaningful token. Please correct the input value, or drop it from the input list &
                         &in which case, the sampler will automatically assign an appropriate value to it."
                     else
                         spec%proposalScale%val = spec%proposalScale%val * conversion
@@ -977,8 +977,8 @@ contains
             ! Now check if the real value is positive
             if (spec%proposalScale%val <= 0_IK) then
                 err%occurred = .true._LK
-                err%msg = err%msg//PROCEDURE_NAME//getFine(__FILE__, __LINE__)//SKC_": Error occurred. &
-                &The input string value ("""//spec%proposalScale%str//""") translates to a non-positive real value: "//getStr(spec%proposalScale%val)//SKC_". &
+                err%msg = err%msg//PROCEDURE_NAME//getFine(__FILE__, __LINE__)//SKG_": Error occurred. &
+                &The input string value ("""//spec%proposalScale%str//""") translates to a non-positive real value: "//getStr(spec%proposalScale%val)//SKG_". &
                 &Make sure the input string follows the syntax rules of the sampler for this variable. &
                 &Otherwise drop it from the input list. The sampler will automatically assign an appropriate value to it."
             end if
@@ -1007,29 +1007,29 @@ contains
                 ! Check if the domain is set when random start point is requested.
                 if (spec%proposalStartRandomized%val .and. spec%proposalStartDomainCubeLimitUpper%val(idim) == spec%domainCubeLimitUpper%def) then
                     err%occurred = .true._LK
-                    err%msg =   err%msg//NL2//PROCEDURE_NAME//getFine(__FILE__, __LINE__)//SKC_": Error occurred. &
+                    err%msg =   err%msg//NL2//PROCEDURE_NAME//getFine(__FILE__, __LINE__)//SKG_": Error occurred. &
                                 &You have requested a random start point by setting `proposalStartRandomized` to TRUE while the &
-                                &element #"//getStr(idim)//SKC_" of `proposalStartDomainCubeLimitLower` has not been preset to a finite value. &
+                                &element #"//getStr(idim)//SKG_" of `proposalStartDomainCubeLimitLower` has not been preset to a finite value. &
                                 &This information is essential otherwise, how could the sampler draw points randomly from within an unspecified domain?"
                 end if
                 ! The upper boundary of the domain of random-start-point must be smaller than the upper boundary of the target's domain.
                 if (spec%domainCubeLimitUpper%val(idim) < spec%proposalStartDomainCubeLimitUpper%val(idim)) then
                     err%occurred = .true._LK
-                    err%msg =   err%msg//NL2//PROCEDURE_NAME//getFine(__FILE__, __LINE__)//SKC_": Error occurred. The component "//getStr(idim)//& ! LCOV_EXCL_LINE
-                                SKC_" of the variable `proposalStartDomainCubeLimitUpper` ("//getStr(spec%proposalStartDomainCubeLimitUpper%val(idim))//SKC_") cannot be "//& ! LCOV_EXCL_LINE
-                                SKC_"larger than the corresponding component of the variable domainCubeLimitUpper ("//& ! LCOV_EXCL_LINE
-                                    getStr(spec%domainCubeLimitUpper%val(idim))//SKC_"). If you do not know an appropriate &
+                    err%msg =   err%msg//NL2//PROCEDURE_NAME//getFine(__FILE__, __LINE__)//SKG_": Error occurred. The component "//getStr(idim)//& ! LCOV_EXCL_LINE
+                                SKG_" of the variable `proposalStartDomainCubeLimitUpper` ("//getStr(spec%proposalStartDomainCubeLimitUpper%val(idim))//SKG_") cannot be "//& ! LCOV_EXCL_LINE
+                                SKG_"larger than the corresponding component of the variable domainCubeLimitUpper ("//& ! LCOV_EXCL_LINE
+                                    getStr(spec%domainCubeLimitUpper%val(idim))//SKG_"). If you do not know an appropriate &
                                     &value to set for `proposalStartDomainCubeLimitUpper`, drop it from the input list. &
                                     &The sampler will automatically assign an appropriate value to it."
                 end if
                 ! The upper boundary of the domain of random-start-point must be smaller than the corresponding lower boundary.
                 if (spec%proposalStartDomainCubeLimitUpper%val(idim) <= spec%proposalStartDomainCubeLimitLower%val(idim)) then
                     err%occurred = .true._LK
-                    err%msg =   err%msg//NL2//PROCEDURE_NAME//getFine(__FILE__, __LINE__)//SKC_": Error occurred. The input upper limit value in the component "//getStr(idim)//&
-                                SKC_" of the variable `proposalStartDomainCubeLimitUpper` cannot be smaller than or equal to the corresponding input &
+                    err%msg =   err%msg//NL2//PROCEDURE_NAME//getFine(__FILE__, __LINE__)//SKG_": Error occurred. The input upper limit value in the component "//getStr(idim)//&
+                                SKG_" of the variable `proposalStartDomainCubeLimitUpper` cannot be smaller than or equal to the corresponding input &
                                     &lower limit value in `proposalStartDomainCubeLimitLower`:"//NL1//&
-                                SKC_"    proposalStartDomainCubeLimitLower("//getStr(idim)//SKC_") = "//getStr(spec%proposalStartDomainCubeLimitLower%val(idim))//NL1//&
-                                SKC_"    proposalStartDomainCubeLimitUpper("//getStr(idim)//SKC_") = "//getStr(spec%proposalStartDomainCubeLimitUpper%val(idim))//SKC_""
+                                SKG_"    proposalStartDomainCubeLimitLower("//getStr(idim)//SKG_") = "//getStr(spec%proposalStartDomainCubeLimitLower%val(idim))//NL1//&
+                                SKG_"    proposalStartDomainCubeLimitUpper("//getStr(idim)//SKG_") = "//getStr(spec%proposalStartDomainCubeLimitUpper%val(idim))//SKG_""
                 end if
 
             end do
@@ -1045,11 +1045,11 @@ contains
         proposalStd_block: block
             integer(IK) :: idim
             do idim = 1, spec%ndim%val
-                if (spec%proposalStd%val(idim) <= 0._RKC) then
+                if (spec%proposalStd%val(idim) <= 0._RKG) then
                     err%occurred = .true._LK
-                    err%msg =   err%msg//NL2//PROCEDURE_NAME//getFine(__FILE__, __LINE__)//SKC_": Error occurred. &
-                                &The input requested value ("//getStr(spec%proposalStd%val(idim))//SKC_") for the component "//getStr(idim)//&
-                                SKC_" of the variable proposalStd for the proposal distribution of the sampler must be a positive real number."
+                    err%msg =   err%msg//NL2//PROCEDURE_NAME//getFine(__FILE__, __LINE__)//SKG_": Error occurred. &
+                                &The input requested value ("//getStr(spec%proposalStd%val(idim))//SKG_") for the component "//getStr(idim)//&
+                                SKG_" of the variable proposalStd for the proposal distribution of the sampler must be a positive real number."
                 end if
             end do
         end block proposalStd_block
@@ -1062,10 +1062,10 @@ contains
             do idim = 1, size(spec%proposalStart%val, 1, IK)
                 if (spec%proposalStart%val(idim) < spec%domainCubeLimitLower%val(idim) .or. spec%domainCubeLimitUpper%val(idim) < spec%proposalStart%val(idim)) then
                     err%occurred = .true._LK
-                    err%msg =   err%msg//NL2//PROCEDURE_NAME//getFine(__FILE__, __LINE__)//SKC_": Error occurred. &
-                                &The input requested value for the component "//getStr(idim)//SKC_" of the vector `proposalStart` ("//& ! LCOV_EXCL_LINE
-                                getStr(spec%proposalStart%val(idim))//SKC_") must be within the range of the sampling domain defined in the program: ["//& ! LCOV_EXCL_LINE
-                                getStr([spec%domainCubeLimitLower%val(idim), spec%domainCubeLimitUpper%val(idim)])//SKC_"]. &
+                    err%msg =   err%msg//NL2//PROCEDURE_NAME//getFine(__FILE__, __LINE__)//SKG_": Error occurred. &
+                                &The input requested value for the component "//getStr(idim)//SKG_" of the vector `proposalStart` ("//& ! LCOV_EXCL_LINE
+                                getStr(spec%proposalStart%val(idim))//SKG_") must be within the range of the sampling domain defined in the program: ["//& ! LCOV_EXCL_LINE
+                                getStr([spec%domainCubeLimitLower%val(idim), spec%domainCubeLimitUpper%val(idim)])//SKG_"]. &
                                 &If you do not know an appropriate value for proposalStart, drop it from the input list. &
                                 &The sampler will automatically assign an appropriate value to it."
                 end if
@@ -1079,17 +1079,17 @@ contains
                 ! check if the domain is set when random start point is requested.
                 if (spec%proposalStartRandomized%val .and. spec%proposalStartDomainCubeLimitLower%val(idim) == spec%domainCubeLimitLower%def) then
                     err%occurred = .true._LK
-                    err%msg =   err%msg//NL2//PROCEDURE_NAME//getFine(__FILE__, __LINE__)//SKC_": Error occurred. &
+                    err%msg =   err%msg//NL2//PROCEDURE_NAME//getFine(__FILE__, __LINE__)//SKG_": Error occurred. &
                                 &You have requested a random start point by setting `proposalStartRandomized` to the logical/Boolean true value &
-                                &while the element #"//getStr(idim)//SKC_" of `proposalStartDomainCubeLimitLower` has not been preset to a finite value. &
+                                &while the element #"//getStr(idim)//SKG_" of `proposalStartDomainCubeLimitLower` has not been preset to a finite value. &
                                 &This information is essential otherwise, how could the sampler draw points randomly from within an unspecified domain?"
                 end if
                 ! check if the random start point domain is within the boundaries of the domain of the target.
                 if (spec%proposalStartDomainCubeLimitLower%val(idim) < spec%domainCubeLimitLower%val(idim)) then
                     err%occurred = .true._LK
-                    err%msg =   err%msg//NL2//PROCEDURE_NAME//getFine(__FILE__, __LINE__)//SKC_": Error occurred. The component "//getStr(idim)//& ! LCOV_EXCL_LINE
-                                SKC_" of the variable `proposalStartDomainCubeLimitLower` ("//getStr(spec%proposalStartDomainCubeLimitLower%val(idim))//& ! LCOV_EXCL_LINE
-                                SKC_") cannot be smaller than the corresponding component of the variable `domainCubeLimitLower` ("//& ! LCOV_EXCL_LINE
+                    err%msg =   err%msg//NL2//PROCEDURE_NAME//getFine(__FILE__, __LINE__)//SKG_": Error occurred. The component "//getStr(idim)//& ! LCOV_EXCL_LINE
+                                SKG_" of the variable `proposalStartDomainCubeLimitLower` ("//getStr(spec%proposalStartDomainCubeLimitLower%val(idim))//& ! LCOV_EXCL_LINE
+                                SKG_") cannot be smaller than the corresponding component of the variable `domainCubeLimitLower` ("//& ! LCOV_EXCL_LINE
                                 getStr(spec%domainCubeLimitLower%val(idim))//"). If you do not know &an appropriate value to &
                                 &set for `proposalStartDomainCubeLimitLower`, drop it from the input list. The sampler will &
                                 &automatically assign an appropriate value to it."
@@ -1125,13 +1125,13 @@ contains
         type(err_type)                                      :: err
         class(sfcmcmc_type) , intent(inout)                 :: sfc
         integer(IK)         , intent(in)    , contiguous    :: sampleWeight(:)
-        real(RKC)           , intent(in)    , contiguous    :: sampleLogFunc(:), sampleState(:,:)
+        real(RKG)           , intent(in)    , contiguous    :: sampleLogFunc(:), sampleState(:,:)
         integer(IK)         , intent(in)    , optional      :: outputSampleRefinementCount
         character(*, SK)    , intent(in)    , optional      :: outputSampleRefinementMethod
-        real(RKC)           , allocatable                   :: logFuncStateAxis(:) ! ensures contiguity.
+        real(RKG)           , allocatable                   :: logFuncStateAxis(:) ! ensures contiguity.
         character(*, SK)    , parameter                     :: PROCEDURE_NAME = SK_"@getErrRefinement()"
         integer(IK)                                         :: idim, ndim, nsam, ndimp1, nrefAlloc, outputSampleRefinementCount_def
-        real(RKC)                                           :: act, ndimp1inv
+        real(RKG)                                           :: act, ndimp1inv
         type(method_type)                                   :: method
 
         CHECK_ASSERTION(__LINE__, 0_IK < size(sampleState, 1, IK), SK_"The condition `0 < size(sampleState, 1)` must hold. shape(sampleState) = "//getStr(shape(sampleState, IK)))
@@ -1144,7 +1144,7 @@ contains
 
         ! This is to avoid memory overflow due to extremely large `outputSampleRefinementCount` requested by the user.
 
-        ndimp1inv = 1._RKC / ndimp1
+        ndimp1inv = 1._RKG / ndimp1
         outputSampleRefinementCount_def = 20_IK  ! this is a temporary maximum value, to be increased later if needed
         if (present(outputSampleRefinementCount)) outputSampleRefinementCount_def = outputSampleRefinementCount
         nrefAlloc = min(2_IK, outputSampleRefinementCount_def)
@@ -1210,7 +1210,7 @@ contains
                 if (method%isAvg) then
                     act = sum(sfc%act(0 : ndim, sfc%nref)) * ndimp1inv
                 elseif (method%isMed) then
-                    act = getQuan(piwilin, .5_RKC, sfc%act(0 : ndim, sfc%nref))
+                    act = getQuan(piwilin, .5_RKG, sfc%act(0 : ndim, sfc%nref))
                 elseif (method%isMax) then
                     act = maxval(sfc%act(0 : ndim, sfc%nref))
                 elseif (method%isMin) then
@@ -1224,7 +1224,7 @@ contains
                 ! This is the right place to quit if needed, as all components for the current stage of the refinement are set.
 
                 if (sfc%nref == outputSampleRefinementCount_def) exit loopRefinement
-                if (act < 2._RKC) then
+                if (act < 2._RKG) then
                     if (method%isViaCompactChain .and. method%isViaVerboseChain) then
                         method%isViaCompactChain = .false._LK
                         cycle loopRefinement
@@ -1256,7 +1256,7 @@ contains
                 !   call disp%show("sfc%nsam(0 : sfc%nref - 1)")
                 !   call disp%show( sfc%nsam(0 : sfc%nref - 1) )
                 !end block
-                if (act < 2._RKC) cycle loopRefinement ! no need for refinement. should happen only when transitioning from compact to verbose.
+                if (act < 2._RKG) cycle loopRefinement ! no need for refinement. should happen only when transitioning from compact to verbose.
                 call setRefined(sfc%sampleLogFuncState(:, 1 : sfc%nsam(sfc%nref - 1)), 2_IK, sfc%sampleWeight(1 : sfc%nsam(sfc%nref - 1)), skip = int(act, IK), rsize = sfc%nsam(sfc%nref))
 
             end do loopRefinement

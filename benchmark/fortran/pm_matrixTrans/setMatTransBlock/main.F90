@@ -3,7 +3,7 @@
 program benchmark
 
     use iso_fortran_env, only: error_unit
-    use pm_kind, only: IK, RKC => RK, RK, SK
+    use pm_kind, only: IK, RKG => RK, RK, SK
     use pm_distUnif, only: setUnifRand
     use pm_arraySpace, only: getLogSpace
     use pm_arrayReplace, only: getReplaced
@@ -18,12 +18,12 @@ program benchmark
     integer(IK)                     :: iblock               !<  The matrix rank and its counter.
     integer(IK)                     :: bsize                !<  The matrix rank and its counter.
     integer(IK)     , parameter     :: RANK = 1000_IK       !<  The matrix rank.
-    real(RKC)                       :: dummySum = 0._RKC    !<  The dummy computation to prevent the compiler from doing aggressive optimizations.
+    real(RKG)                       :: dummySum = 0._RKG    !<  The dummy computation to prevent the compiler from doing aggressive optimizations.
     integer(IK)     , allocatable   :: BlockSize(:)         !<  The vector of block sizes.
     type(bench_type), allocatable   :: bench(:)             !<  The Benchmark array.
-    real(RKC)       , allocatable   :: matA(:,:)            !<  The matrix.
+    real(RKG)       , allocatable   :: matA(:,:)            !<  The matrix.
 #if MatB_ENABLED
-    real(RKC)       , allocatable   :: matB(:,:)            !<  The matrix transposed.
+    real(RKG)       , allocatable   :: matB(:,:)            !<  The matrix transposed.
     allocate(matB(RANK, RANK))
     call setUnifRand(matB)
 #endif
@@ -34,7 +34,7 @@ program benchmark
             , bench_type(name = getReplaced(  SK_"transpose(matA(RANK,RANK))", SK_"RANK", getStr(RANK)), exec = transpose, overhead = setOverhead) &
             ]
 
-    BlockSize = getUnique(int(getLogSpace(log(1._RKC), log(real(2*RANK, RKC)), count = 50_IK), IK))
+    BlockSize = getUnique(int(getLogSpace(log(1._RKG), log(real(2*RANK, RKG)), count = 50_IK), IK))
 
     write(*,"(*(g0,:,' '))")
     write(*,"(*(g0,:,' '))") "setMatTransBlock"

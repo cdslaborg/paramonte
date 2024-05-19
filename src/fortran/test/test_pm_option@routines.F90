@@ -115,28 +115,28 @@ contains
 
 #if IK4_ENABLED
     module procedure test_getOption_IK4_1
-        use pm_kind, only: IK, LK, IKC => IK4
+        use pm_kind, only: IK, LK, IKG => IK4
 #include "test_pm_option@routines.inc.F90"
     end procedure
 #endif
 
 #if IK3_ENABLED
     module procedure test_getOption_IK3_1
-        use pm_kind, only: IK, LK, IKC => IK3
+        use pm_kind, only: IK, LK, IKG => IK3
 #include "test_pm_option@routines.inc.F90"
     end procedure
 #endif
 
 #if IK2_ENABLED
     module procedure test_getOption_IK2_1
-        use pm_kind, only: IK, LK, IKC => IK2
+        use pm_kind, only: IK, LK, IKG => IK2
 #include "test_pm_option@routines.inc.F90"
     end procedure
 #endif
 
 #if IK1_ENABLED
     module procedure test_getOption_IK1_1
-        use pm_kind, only: IK, LK, IKC => IK1
+        use pm_kind, only: IK, LK, IKG => IK1
 #include "test_pm_option@routines.inc.F90"
     end procedure
 #endif

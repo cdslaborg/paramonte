@@ -26,11 +26,11 @@
 
         ! Define zero.
 #if     CK_ENABLED || CK_CK_ENABLED
-#define TYPE_KIND complex(TKC)
-        complex(TKC), parameter :: ZERO = (0._TKC, 0._TKC), ONE = (1._TKC, 0._TKC)
+#define TYPE_KIND complex(TKG)
+        complex(TKG), parameter :: ZERO = (0._TKG, 0._TKG), ONE = (1._TKG, 0._TKG)
 #elif   RK_ENABLED || RK_RK_ENABLED || RK_CK_ENABLED
-#define TYPE_KIND real(TKC)
-        real(TKC), parameter :: ZERO = 0._TKC, ONE = 1._TKC
+#define TYPE_KIND real(TKG)
+        real(TKG), parameter :: ZERO = 0._TKG, ONE = 1._TKG
 #else
 #error  "Unrecognized interface."
 #endif
@@ -309,7 +309,7 @@
 #endif
         if (0_IK < order) then
             do concurrent(i = order : lenCoef - 1_IK)
-                diff(i) = coef(i) * real(i, TKC)
+                diff(i) = coef(i) * real(i, TKG)
             end do
         else
             CHECK_ASSERTION(__LINE__, 0_IK <= order, SK_"@setPolyDiff(): The condition `0 <= order` must hold. order = "//getStr(order))
@@ -331,26 +331,26 @@
         character(127, SK)          :: iomsg
         integer(IK)                 :: i, iostat, lenCoef, strlen
         integer(IK)     , parameter :: NUMERIC_MAXLEN = 127_IK
-        character(*,SKC), parameter :: PRODSYM = SKC_""
-        character(*,SKC), parameter :: VARNAME = SKC_"x"
-        character(*,SKC), parameter :: POWSYM = SKC_"^"
-        character(*,SKC), parameter :: FIXED = PRODSYM//VARNAME//POWSYM
+        character(*,SKG), parameter :: PRODSYM = SKG_""
+        character(*,SKG), parameter :: VARNAME = SKG_"x"
+        character(*,SKG), parameter :: POWSYM = SKG_"^"
+        character(*,SKG), parameter :: FIXED = PRODSYM//VARNAME//POWSYM
 #if     CK_ENABLED
-#define GET_POLY_TERM(i) SKC_"(", coef(i)%re, SKC_",", coef(i)%im, SKC_")", FIXED, i
+#define GET_POLY_TERM(i) SKG_"(", coef(i)%re, SKG_",", coef(i)%im, SKG_")", FIXED, i
 #define POLY_TERM_CONST GET_POLY_TERM(0)
-#define GET_SIGNSYM(i) SKC_" + "
+#define GET_SIGNSYM(i) SKG_" + "
 #elif   RK_ENABLED
-        character(*,SKC), parameter :: SIGNSYM(-1:1) = [SKC_" - ", SKC_"   ", SKC_" + "]
+        character(*,SKG), parameter :: SIGNSYM(-1:1) = [SKG_" - ", SKG_"   ", SKG_" + "]
 #define POLY_TERM_CONST coef(0), FIXED, 0
 #define GET_POLY_TERM(i) abs(coef(i)), FIXED, i
-#define GET_SIGNSYM(i) SIGNSYM(int(sign(1.1_TKC, coef(i))))
+#define GET_SIGNSYM(i) SIGNSYM(int(sign(1.1_TKG, coef(i))))
 #else
 #error  "Unrecognized interface."
 #endif
         lenCoef = size(coef, 1, IK)
         if (0 < lenCoef) then
             strlen = NUMERIC_MAXLEN * lenCoef
-            allocate(character(strlen,SKC) :: str)
+            allocate(character(strlen,SKG) :: str)
             loopExpandStr: do
                 write(str, "(ss,*(g0))", iostat = iostat, iomsg = iomsg) POLY_TERM_CONST, (GET_SIGNSYM(i), GET_POLY_TERM(i), i = 1_IK, lenCoef - 1_IK)
                 !write(*,*); write(*,*) is_iostat_eor(iostat), iostat, iomsg; write(*,*)
@@ -366,7 +366,7 @@
                 end if
             end do loopExpandStr
         else
-            str = SKC_""
+            str = SKG_""
         end if
 #undef  POLY_TERM_CONST
 #undef  GET_POLY_TERM
@@ -390,10 +390,10 @@
 #elif   setPolyRoot_ENABLED && Eig_ENABLED
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        real(TKC), parameter :: EPS = epsilon(0._TKC), BASE = radix(1._TKC), BASESQ = BASE * BASE
+        real(TKG), parameter :: EPS = epsilon(0._TKG), BASE = radix(1._TKG), BASESQ = BASE * BASE
 #if     RK_CK_ENABLED
 #define GET_ABS(x) abs(x)
-        real(TKC) :: p, q, t, w, x, y, zz
+        real(TKG) :: p, q, t, w, x, y, zz
         integer(IK) :: k, l, m, ll, low, mm, mp2, na, niter, enm2
         logical(LK) :: notlas
 #elif   CK_CK_ENABLED
@@ -404,7 +404,7 @@
         integer(IK) :: i, j, degree
         logical(LK) :: normReductionEnabled
         TYPE_KIND :: workspace(size(root, 1, IK), size(root, 1, IK))
-        real(TKC) :: r, s, c, scaleFac, g
+        real(TKG) :: r, s, c, scaleFac, g
         degree = size(coef, 1, IK) - 1_IK
         CHECK_ASSERTION(__LINE__, 0_IK < degree, SK_"@setPolyRoot(): The condition `1 < size(coef)` must hold. size(coef) = "//getStr(degree + 1_IK))
         CHECK_ASSERTION(__LINE__, size(root, 1, IK) == degree, SK_"@setPolyRoot(): The condition `size(root) == size(coef) - 1` must hold. size(root), size(coef) - 1 = "//getStr([size(root, 1, IK), degree]))
@@ -428,7 +428,7 @@
 
         do j = degree, 1_IK, -1_IK
             if (workspace(1, j) /= ZERO) exit
-            root(j) = cmplx(ZERO, kind = TKC) ! xxx
+            root(j) = cmplx(ZERO, kind = TKG) ! xxx
             degree = degree - 1_IK
         end do
 
@@ -482,7 +482,7 @@
                 ! Determine column scale factor, `scaleFac`.
 
                 g = r / BASE
-                scaleFac = real(ONE, TKC)
+                scaleFac = real(ONE, TKG)
                 s = c + r
                 do
                     if (c < g) then
@@ -504,9 +504,9 @@
 
                 ! Will the factor `scaleFac` have a significant effect?
 
-                if ((c + r) / scaleFac < .95_TKC * s) then ! yes, so do the scaling.
+                if ((c + r) / scaleFac < .95_TKG * s) then ! yes, so do the scaling.
 
-                    g = real(ONE, TKC) / scaleFac
+                    g = real(ONE, TKG) / scaleFac
                     normReductionEnabled = .true.
 
                     ! scale row `i`
@@ -561,18 +561,18 @@
                 y = workspace(na,na)
                 w = workspace(count,na) * workspace(na,count)
                 if (l == na) then ! two roots found
-                    p = (y - x) * .5_TKC
+                    p = (y - x) * .5_TKG
                     q = p * p + w
                     zz = sqrt(abs(q))
                     x = x + t
                     if (q < ZERO) then ! complex pair
-                        root(na) = cmplx(x + p, zz, TKC)
-                        root(count) = cmplx(x + p, -zz, TKC)
+                        root(na) = cmplx(x + p, zz, TKG)
+                        root(count) = cmplx(x + p, -zz, TKG)
                     else ! pair of reals
                         zz = p + sign(zz, p)
-                        root(na) = cmplx(x + zz, ZERO, TKC)
+                        root(na) = cmplx(x + zz, ZERO, TKG)
                         root(count) = root(na)
-                        if (zz /= ZERO) root(count) = cmplx(x - w / zz, ZERO, TKC)
+                        if (zz /= ZERO) root(count) = cmplx(x - w / zz, ZERO, TKG)
                     end if
                     count = enm2
                     cycle loopNextEigen
@@ -586,9 +586,9 @@
                         workspace(i,i) = workspace(i,i) - x
                     end do
                     s = abs(workspace(count, na)) + abs(workspace(na, enm2))
-                    x = .75_TKC * s
+                    x = .75_TKG * s
                     y = x
-                    w = -.4375_TKC * s * s
+                    w = -.4375_TKG * s * s
                 end if
                 niter = niter + 1_IK
                 ! Look for two consecutive small sub-diagonal elements. for `m = count - 2 step -1` until l do.
@@ -663,7 +663,7 @@
                 end do
             end do
             !   ********** ONE root found **********
-            root(count) = cmplx(x + t, ZERO, TKC)
+            root(count) = cmplx(x + t, ZERO, TKG)
             count = na
         end do loopNextEigen
         count = count + 1_IK
@@ -678,7 +678,7 @@
         !   However, given that most polynomials are of low degree, the final reversal copy cost should generally be quite negligible.
         !   Because of the complexity of the rest of the algorithm, a final copy was the preferred approach over merging the reversal with the algorithm, for now.
         block
-            complex(TKC) :: temp
+            complex(TKG) :: temp
             integer(IK) :: lenRoot
             lenRoot = size(root, 1, IK)
             do i = lenRoot, count, -1_IK
@@ -718,22 +718,22 @@
         !   procedure cdiv by complex division and use of the subroutines
         !   sqrt and cmplx in computing complex square roots.
         pure subroutine dcomqr(low, igh, hessen, eigen, first)
-            complex(TKC)    , intent(out)   :: eigen(:)
-            complex(TKC)    , intent(inout) :: hessen(:,:) ! hessen%im(nm, order),hessen%re(nm,order)
+            complex(TKG)    , intent(out)   :: eigen(:)
+            complex(TKG)    , intent(inout) :: hessen(:,:) ! hessen%im(nm, order),hessen%re(nm,order)
             integer(IK)     , intent(in)    :: low, igh
             integer(IK)     , intent(out)   :: first
-            complex(TKC)                    :: s, t, x, y, z3, zz
+            complex(TKG)                    :: s, t, x, y, z3, zz
             integer(IK)                     :: enm1, i, niter, j, l, ll, lp1, order
-            real(TKC)                       :: norm
+            real(TKG)                       :: norm
             order = size(eigen, 1, IK) ! The order of the Hessenberg matrix.
             if (low /= igh) then ! 180
                 !   create real subdiagonal elements
                 l = low + 1_IK
                 do i = l, igh
-                    if (hessen(i, i - 1)%im /= 0._TKC) then
+                    if (hessen(i, i - 1)%im /= 0._TKG) then
                         norm = abs(hessen(i, i - 1))
                         y = hessen(i, i - 1) / norm
-                        hessen(i, i - 1) = cmplx(norm, 0._TKC, TKC)
+                        hessen(i, i - 1) = cmplx(norm, 0._TKG, TKG)
                         do j = i, igh
                             s%im = y%re * hessen(i, j)%im - y%im * hessen(i, j)%re
                             hessen(i, j)%re = y%re * hessen(i, j)%re + y%im * hessen(i, j)%im
@@ -753,7 +753,7 @@
                 eigen(i) = hessen(i, i)
             end do
             first = igh
-            t = (0._TKC, 0._TKC)
+            t = (0._TKG, 0._TKG)
             !   Search for next eigenvalue.
             loopNextEigen: do ! 220
                 if (first < low) then ! convergence achieved.
@@ -787,16 +787,16 @@
                         return
                     end if
                     if (niter == 10_IK .or. niter == 20_IK) then ! 320 Form exceptional shift.
-                        s = cmplx(abs(hessen(first, enm1)%re) + abs(hessen(enm1, first - 2)%re), 0._TKC, TKC)
+                        s = cmplx(abs(hessen(first, enm1)%re) + abs(hessen(enm1, first - 2)%re), 0._TKG, TKG)
                     else
                         s = hessen(first, first)
                         x%re = hessen(enm1, first)%re * hessen(first, enm1)%re
                         x%im = hessen(enm1, first)%im * hessen(first, enm1)%re
-                        if (x%re /= 0._TKC .or. x%im /= 0._TKC) then ! 340 ! xx z3 and zz can be replaced with a single variable `z`.
-                            y = 0.5_TKC * (hessen(enm1, enm1) - s)
-                            z3 = sqrt(cmplx(y%re**2 - y%im**2 + x%re, 2._TKC * y%re * y%im + x%im, TKC))
+                        if (x%re /= 0._TKG .or. x%im /= 0._TKG) then ! 340 ! xx z3 and zz can be replaced with a single variable `z`.
+                            y = 0.5_TKG * (hessen(enm1, enm1) - s)
+                            z3 = sqrt(cmplx(y%re**2 - y%im**2 + x%re, 2._TKG * y%re * y%im + x%im, TKG))
                             zz = z3
-                            if (y%re * zz%re + y%im * zz%im < 0._TKC) zz = -zz ! 310
+                            if (y%re * zz%re + y%im * zz%im < 0._TKG) zz = -zz ! 310
                             z3 = x / (y + zz)
                             s = s - z3
                         end if
@@ -810,11 +810,11 @@
                     lp1 = l + 1_IK
                     do i = lp1, first ! 500
                         s%re = hessen(i, i - 1)%re
-                        hessen(i, i - 1)%re = 0._TKC
+                        hessen(i, i - 1)%re = 0._TKG
                         norm = sqrt(s%re**2 + hessen(i - 1, i - 1)%re**2 + hessen(i - 1, i - 1)%im**2)
                         x = hessen(i - 1, i - 1) / norm
                         eigen(i - 1) = x
-                        hessen(i - 1, i - 1) = cmplx(norm, 0._TKC, TKC)
+                        hessen(i - 1, i - 1) = cmplx(norm, 0._TKG, TKG)
                         hessen(i, i - 1)%im = s%re / norm
                         do j = i, first ! 490
                             y = hessen(i - 1, j)
@@ -826,17 +826,17 @@
                         end do
                     end do
                     s%im = hessen(first, first)%im
-                    if (s%im /= 0._TKC) then
-                        norm = abs(cmplx(hessen(first, first)%re, s%im, TKC))
+                    if (s%im /= 0._TKG) then
+                        norm = abs(cmplx(hessen(first, first)%re, s%im, TKG))
                         s%re = hessen(first, first)%re / norm
                         s%im = s%im / norm
-                        hessen(first, first) = cmplx(norm, 0._TKC, TKC)
+                        hessen(first, first) = cmplx(norm, 0._TKG, TKG)
                     end if
                     ! Inverse operation (columns).
                     do j = lp1, first ! 540
                         x = eigen(j - 1)
                         do i = l, j
-                            y = cmplx(hessen(i, j - 1)%re, 0._TKC, TKC)
+                            y = cmplx(hessen(i, j - 1)%re, 0._TKG, TKG)
                             zz = hessen(i, j)
                             if (i /= j) then ! 560
                                 y%im = hessen(i, j - 1)%im
@@ -847,7 +847,7 @@
                             hessen(i, j)%im = x%re * zz%im - x%im * zz%re - hessen(j, j - 1)%im * y%im
                         end do
                     end do
-                    if (s%im == 0._TKC) cycle loop240
+                    if (s%im == 0._TKG) cycle loop240
                     do i = l, first
                         y = hessen(i,first)
                         hessen(i,first)%re = s%re * y%re - s%im * y%im
@@ -868,22 +868,22 @@
         ! provided the overflowed quantity is replaced by a large number.
 
         ! Global variables.
-        real(TKC)   , parameter     :: BASE = radix(0._TKC), EPS = epsilon(0._TKC), TIN = tiny(0._TKC), INF = huge(0._TKC)
-        real(TKC)   , parameter     :: SINR = SIND(94._TKC), COSR = COSD(94._TKC) ! rotation by 94 degrees.
-        real(TKC)   , parameter     :: MRE = 2._TKC * sqrt(2._TKC) * EPS ! error bound on complex multiplication.
-        real(TKC)   , parameter     :: ARE = EPS ! error bound on complex addition.
-        real(TKC)   , parameter     :: HALF_SQRT2 = 0.5_TKC * sqrt(2._TKC) ! cos(45d)
-        complex(TKC), allocatable   :: h(:), qp(:), qh(:), sh(:), workspace(:)
-        complex(TKC)                :: s, t, pv
+        real(TKG)   , parameter     :: BASE = radix(0._TKG), EPS = epsilon(0._TKG), TIN = tiny(0._TKG), INF = huge(0._TKG)
+        real(TKG)   , parameter     :: SINR = SIND(94._TKG), COSR = COSD(94._TKG) ! rotation by 94 degrees.
+        real(TKG)   , parameter     :: MRE = 2._TKG * sqrt(2._TKG) * EPS ! error bound on complex multiplication.
+        real(TKG)   , parameter     :: ARE = EPS ! error bound on complex addition.
+        real(TKG)   , parameter     :: HALF_SQRT2 = 0.5_TKG * sqrt(2._TKG) ! cos(45d)
+        complex(TKG), allocatable   :: h(:), qp(:), qh(:), sh(:), workspace(:)
+        complex(TKG)                :: s, t, pv
         integer(IK)                 :: degree
         integer(IK)                 :: nn
 
         ! Local variables.
-        complex(TKC)                :: temp
-        real(TKC)   , parameter     :: HIGH = sqrt(INF), LOW = TIN / EPS, INV_LOG_BASE = 1._TKC / log(BASE)
-        real(TKC)   , parameter     :: NEG_HALF_INV_LOG_BASE = -.5_TKC * INV_LOG_BASE
-        real(TKC)                   :: xx, yy, xxx, bnd, max, min
-        real(TKC)                   :: x, xm, f, dx, df, xni ! cauchy, noshft routines
+        complex(TKG)                :: temp
+        real(TKG)   , parameter     :: HIGH = sqrt(INF), LOW = TIN / EPS, INV_LOG_BASE = 1._TKG / log(BASE)
+        real(TKG)   , parameter     :: NEG_HALF_INV_LOG_BASE = -.5_TKG * INV_LOG_BASE
+        real(TKG)                   :: xx, yy, xxx, bnd, max, min
+        real(TKG)                   :: x, xm, f, dx, df, xni ! cauchy, noshft routines
         integer(IK)                 :: cnt1, cnt2, i, n, j, jj, nm1
         logical(LK)                 :: converged
 
@@ -932,25 +932,25 @@
 
         ! Find largest and smallest moduli of coefficients.
         min = INF
-        max = 0._TKC
+        max = 0._TKG
         do i = 1_IK, nn
             if (sh(i)%re > max) max = sh(i)%re
-            if (sh(i)%re /= 0._TKC .and. sh(i)%re < min) min = sh(i)%re
+            if (sh(i)%re /= 0._TKG .and. sh(i)%re < min) min = sh(i)%re
         end do
 
         ! Scale only if there are very large or very small components.
         if (LOW <= min .and. max <= HIGH) then
-            bnd = 1._TKC
+            bnd = 1._TKG
         else
             bnd = LOW / min
-            if (bnd <= 1._TKC) then
-                bnd = BASE ** int((log(max) + log(min)) * NEG_HALF_INV_LOG_BASE + .5_TKC)
+            if (bnd <= 1._TKG) then
+                bnd = BASE ** int((log(max) + log(min)) * NEG_HALF_INV_LOG_BASE + .5_TKG)
             elseif (max < INF / bnd) then
-                bnd = 1._TKC
+                bnd = 1._TKG
             else
-                bnd = BASE ** int(log(bnd) * INV_LOG_BASE + .5_TKC)
+                bnd = BASE ** int(log(bnd) * INV_LOG_BASE + .5_TKG)
             end if
-            if (bnd /= 1._TKC) then
+            if (bnd /= 1._TKG) then
                 ! Scale the polynomial.
                 do i = 1_IK, nn
                     workspace(i) = bnd * workspace(i)
@@ -983,19 +983,19 @@
             n = nn - 1_IK
             sh(nn)%re = -sh(nn)%re
             x = exp((log(-sh(nn)%re) - log(sh(1)%re)) / n)
-            if (sh(n)%re /= 0._TKC) then
+            if (sh(n)%re /= 0._TKG) then
                 ! if newton step at the origin is better, use it.
                 xm = -sh(nn)%re / sh(n)%re
                 if (xm < x) x = xm
             end if
             ! Chop the interval (0,x) until `f <= 0`.
             do ! 10
-                xm = x * .1_TKC
+                xm = x * .1_TKG
                 f = sh(1)%re
                 do i = 2_IK, nn
                     f = f * xm + sh(i)%re
                 end do
-                if (f > 0._TKC) then
+                if (f > 0._TKG) then
                     x = xm
                     cycle ! 10
                 end if
@@ -1004,7 +1004,7 @@
             dx = x
             ! Do newton iteration until x converges to two decimal places.
             do ! 30
-                if (abs(dx / x) > .005_TKC) then
+                if (abs(dx / x) > .005_TKG) then
                     sh(1)%im = sh(1)%re
                     do i = 2_IK, nn
                         sh(i)%im = sh(i - 1)%im * x + sh(i)%re
@@ -1034,10 +1034,10 @@
                 nm1 = n - 1_IK
                 do i = 1_IK, n
                     xni = nn - i
-                    h(i) = xni * workspace(i) / real(n, TKC)
+                    h(i) = xni * workspace(i) / real(n, TKG)
                 end do
                 do jj = 1_IK, 5_IK
-                    if (GET_ABS(h(n)) > 10._TKC * EPS * GET_ABS(workspace(n))) then ! hypot
+                    if (GET_ABS(h(n)) > 10._TKG * EPS * GET_ABS(workspace(n))) then ! hypot
                         t = GET_RATIO(-workspace(nn), h(n))
                         do i = 1, nm1
                             j = nn - i
@@ -1098,9 +1098,9 @@
             ! z - the output approximate zero if `converged == .true._LK`.
             ! converged  - logical indicating convergence of stage 3 iteration.
             integer(IK) , intent(in)    :: l2
-            complex(TKC), intent(out)   :: z
+            complex(TKG), intent(out)   :: z
             logical(LK) , intent(out)   :: converged
-            complex(TKC)                :: ot, svs
+            complex(TKG)                :: ot, svs
             logical(LK)                 :: test, pasd, bool
             integer(LK)                 :: i, j, n
             n = nn - 1_IK
@@ -1119,7 +1119,7 @@
                 z = s + t
                 ! Test for convergence unless stage 3 has failed once or this is the last h polynomial.
                 if (.not. (bool .or. .not. test .or. j == l2)) then
-                    if (GET_ABS(t - ot) < .5_TKC * GET_ABS(z)) then
+                    if (GET_ABS(t - ot) < .5_TKG * GET_ABS(z)) then
                         if (pasd) then
                             ! The weak convergence test has been passed twice, start the third stage iteration,
                             ! after saving the current h polynomial and shift.
@@ -1157,9 +1157,9 @@
             ! z:            on entry contains the initial iterate, if the iteration converges it contains the final iterate on exit.
             ! converged:    `.true.` if iteration converges.
             integer(IK) , intent(in)        :: limss3
-            complex(TKC), intent(inout)     :: z
+            complex(TKG), intent(inout)     :: z
             logical(LK) , intent(out)       :: converged
-            real(TKC)                       :: mp, ms, omp, relstp, r1, r2, tp
+            real(TKG)                       :: mp, ms, omp, relstp, r1, r2, tp
             logical(LK)                     :: b, bool
             integer(IK)                     :: i, j
             converged = .false._LK
@@ -1171,22 +1171,22 @@
                 call polyev(nn, s, workspace, qp, pv)
                 mp = GET_ABS(pv)
                 ms = GET_ABS(s)
-                if (mp <= 20._TKC * getErrHorner(nn, qp, ms, mp)) then
+                if (mp <= 20._TKG * getErrHorner(nn, qp, ms, mp)) then
                     ! Polynomial value is smaller in value than a bound on the error in evaluating p, terminate the iteration.
                     converged = .true._LK
                     z = s
                     return
                 end if
                 if (i /= 1_IK) then
-                    if (.not. (b .or. mp < omp .or. relstp >= .05_TKC)) then
+                    if (.not. (b .or. mp < omp .or. relstp >= .05_TKG)) then
                         ! Iteration has stalled. probably a cluster of zeros.
                         ! Do 5 fixed shift steps into the cluster to force one zero to dominate.
                         tp = relstp
                         b = .true._LK
                         if (relstp < EPS) tp = EPS
                         r1 = sqrt(tp)
-                        r2 = s%re * (1._TKC + r1) - s%im * r1
-                        s%im = s%re * r1 + s%im * (1._TKC + r1)
+                        r2 = s%re * (1._TKG + r1) - s%im * r1
+                        s%im = s%re * r1 + s%im * (1._TKG + r1)
                         s%re = r2
                         call polyev(nn, s, workspace, qp, pv)
                         do j = 1_IK, 5_IK
@@ -1197,7 +1197,7 @@
                         goto 20
                     end if
                     ! Exit if polynomial value increases significantly.
-                    if (omp < .1_TKC * mp) return
+                    if (omp < .1_TKG * mp) return
                 end if
                 omp = mp
                 ! Calculate the next iterate.
@@ -1217,12 +1217,12 @@
             ! Computes  t = -p(s) / h(s).
             ! bool: logical(LK) , set true if h(s) is essentially zero.
             logical(LK) , intent(out)   :: bool
-            complex(TKC)                :: hv
+            complex(TKG)                :: hv
             integer(IK)                 :: n
             n = nn - 1_IK
             ! Evaluate h(s).
             call polyev(n, s, h, qh, hv)
-            bool = GET_ABS(hv) <= 10._TKC * ARE * GET_ABS(h(n))
+            bool = GET_ABS(hv) <= 10._TKG * ARE * GET_ABS(h(n))
             if (.not. bool) then
                 t = GET_RATIO(-pv, hv)
                 return
@@ -1236,7 +1236,7 @@
             ! Compute the next shifted `h` polynomial.
             ! bool: logical(LK) , if .true._LK h(s) is essentially zero
             logical(LK) , intent(in)    :: bool
-            complex(TKC)                :: temp
+            complex(TKG)                :: temp
             integer(IK)                 :: j,n
             n = nn - 1_IK
             if (.not. bool) then
@@ -1260,11 +1260,11 @@
         pure subroutine polyev(nn, s, workspace, q, pv)
             ! Evaluate a polynomial  p  at  s  by the horner recurrence placing the partial sums in q and the computed value in pv.
             integer(IK) , intent(in)                    :: nn
-            complex(TKC), intent(in)                    :: s
-            complex(TKC), intent(in)    , contiguous    :: workspace(:)
-            complex(TKC), intent(out)   , contiguous    :: q(:)
-            complex(TKC), intent(out)                   :: pv
-            real(TKC)   :: tempo
+            complex(TKG), intent(in)                    :: s
+            complex(TKG), intent(in)    , contiguous    :: workspace(:)
+            complex(TKG), intent(out)   , contiguous    :: q(:)
+            complex(TKG), intent(out)                   :: pv
+            real(TKG)   :: tempo
             integer(IK) :: i
             q(1) = workspace(1)
             pv = q(1)
@@ -1284,11 +1284,11 @@
             ! ms:   modulus of the point.
             ! mp:   modulus of polynomial value.
             integer(IK) , intent(in)    :: nn
-            complex(TKC), intent(in)    :: q(:)
-            real(TKC)   , intent(in)    :: ms
-            real(TKC)   , intent(in)    :: mp
-            real(TKC)                   :: errHorner
-            real(TKC)                   :: e
+            complex(TKG), intent(in)    :: q(:)
+            real(TKG)   , intent(in)    :: ms
+            real(TKG)   , intent(in)    :: mp
+            real(TKG)                   :: errHorner
+            real(TKG)                   :: e
             integer                     :: i
             e = GET_ABS(q(1)) * MRE / (ARE + MRE)
             do i = 1_IK, nn
@@ -1304,16 +1304,16 @@
         ! Global variables.
 
         integer(IK)     , parameter     :: MAX_ITER = 30_IK
-        integer         , parameter     :: RKR = TKC ! SELECTED_REAL_KIND(int(precision(0._TKC) / 3.))
+        integer         , parameter     :: RKR = TKG ! SELECTED_REAL_KIND(int(precision(0._TKG) / 3.))
         real(RKR)       , parameter     :: BASE = radix(0._RKR)
-        real(RKR)       , parameter     :: EPS = epsilon(0._TKC) ! important to ask for the `TKC` precision.
+        real(RKR)       , parameter     :: EPS = epsilon(0._TKG) ! important to ask for the `TKG` precision.
         real(RKR)       , parameter     :: TIN = tiny(0._RKR)
         real(RKR)       , parameter     :: INF = huge(0._RKR)
         real(RKR)       , parameter     :: MRE = EPS ! error bound on complex multiplication.
         real(RKR)       , parameter     :: ARE = EPS ! The error bound on `+` operation.
-        real(TKC)                       :: u, v, a, b, c, d, a1, a3, a7, e, f, g, h ! , a2, a6
-        real(TKC)       , allocatable   :: qp(:), k(:), qk(:), svk(:), workspace(:)
-        complex(TKC)                    :: s, sz, lz
+        real(TKG)                       :: u, v, a, b, c, d, a1, a3, a7, e, f, g, h ! , a2, a6
+        real(TKG)       , allocatable   :: qp(:), k(:), qk(:), svk(:), workspace(:)
+        complex(TKG)                    :: s, sz, lz
         integer(IK)                     :: n, nn
 
         ! Local variables.
@@ -1322,8 +1322,8 @@
         real(RKR)       , parameter     :: SINR = SIND(94._RKR), COSR = COSD(94._RKR) ! rotation by 94 degrees.
         real(RKR)       , parameter     :: LOW = TIN / EPS
         real(RKR)       , allocatable   :: pt(:)
-        real(TKC)       , allocatable   :: temp(:)
-        real(TKC)                       :: t, aa, bb, cc, factor
+        real(TKG)       , allocatable   :: temp(:)
+        real(TKG)                       :: t, aa, bb, cc, factor
         integer(IK)                     :: cnt, nz, i, j, jj, nm1
         logical(LK)                     :: zerok, scalingEnabled
 
@@ -1332,7 +1332,7 @@
         n = count
 
         CHECK_ASSERTION(__LINE__, 1_IK < nn, SK_"@setPolyRoot(): The condition `1 < size(coef)` must hold. size(coef) = "//getStr(nn))
-        CHECK_ASSERTION(__LINE__, coef(count) /= 0._TKC, SK_"@setPolyRoot(): The condition `coef(size(coef)) /= 0.` must hold. coef = "//getStr(coef))
+        CHECK_ASSERTION(__LINE__, coef(count) /= 0._TKG, SK_"@setPolyRoot(): The condition `coef(size(coef)) /= 0.` must hold. coef = "//getStr(coef))
         CHECK_ASSERTION(__LINE__, size(root, 1, IK) == count, SK_"@setPolyRoot(): The condition `size(root) == size(coef) - 1` must hold. size(root), size(coef) - 1 = "//getStr([size(root, 1, IK), count]))
 
         ! Initialization of constants for shift rotation.
@@ -1340,15 +1340,15 @@
         yy = -xx
 
         ! Algorithm fails if the leading coefficient is zero.
-        if (coef(count) == 0._TKC) then
+        if (coef(count) == 0._TKG) then
             count = 0_IK
             return
         end if
 
         ! Extract any exact ZERO roots and set count = degree of remaining polynomial.
         do j = 1_IK, count
-            if (coef(j - 1) /= 0._TKC) exit
-            root(j) = (0._TKC, 0._TKC)
+            if (coef(j - 1) /= 0._TKG) exit
+            root(j) = (0._TKG, 0._TKG)
             nn = nn - 1_IK
             n = n - 1_IK
             !count = count - 1_IK
@@ -1381,7 +1381,7 @@
                 ! Compute the final zero or pair of zeros.
                 if (n /= 2_IK) then
                     root(count)%re = -workspace(2) / workspace(1)
-                    root(count)%im = 0._TKC
+                    root(count)%im = 0._TKG
                     return
                 end if
                 call quad(workspace(1), workspace(2), workspace(3), root(count - 1), root(count))
@@ -1409,8 +1409,8 @@
             end if
             if (scalingEnabled) then
                 if (sc == 0._RKR) sc = TIN
-                factor = real(BASE, TKC) ** int(log(sc) / log(BASE) + .5_RKR, IK)
-                if (factor /= 1._TKC) then
+                factor = real(BASE, TKG) ** int(log(sc) / log(BASE) + .5_RKR, IK)
+                if (factor /= 1._TKG) then
                     do concurrent(i = 1_IK : nn)
                         workspace(i) = factor * workspace(i)
                     end do
@@ -1466,7 +1466,7 @@
             k(1) = workspace(1)
             aa = workspace(nn)
             bb = workspace(n)
-            zerok = logical(k(n) == 0._TKC, LK)
+            zerok = logical(k(n) == 0._TKG, LK)
             do jj = 1_IK, 5_IK
                 cc = k(n)
                 if (.not. zerok) then
@@ -1484,8 +1484,8 @@
                         j = nn - i
                         k(j) = k(j - 1)
                     end do
-                    k(1) = 0._TKC
-                    zerok = logical(k(n) == 0._TKC, LK)
+                    k(1) = 0._TKG
+                    zerok = logical(k(n) == 0._TKG, LK)
                 end if
             end do
 
@@ -1501,7 +1501,7 @@
                 xx = xxx
                 s%re = bnd * xx
                 s%im = bnd * yy
-                u = -2._TKC * s%re
+                u = -2._TKG * s%re
                 v = bnd
                 ! Second stage calculation, fixed quadratic.
                 call fxshfr(MAX_ITER * cnt, nz)
@@ -1538,7 +1538,7 @@
             ! nz:   number of zeros found
             integer(IK) , intent(in)    :: l2
             integer(IK) , intent(out)   :: nz
-            real(TKC)                   :: svu, svv, ui, vi, slocal
+            real(TKG)                   :: svu, svv, ui, vi, slocal
             real(RKR)                   :: betas, betav, oss, ovv, ss, vv, ts, tv, ots, otv, tvv, tss
             logical(LK)                 :: vpass, spass, vtry, stry
             integer(IK)                 :: itype, j, iflag
@@ -1562,7 +1562,7 @@
                 vv = real(vi, RKR)
                 ! Estimate `s`.
                 ss = 0._RKR
-                if (k(n) /= 0._TKC) ss = real(-workspace(nn) / k(n), RKR)
+                if (k(n) /= 0._TKG) ss = real(-workspace(nn) / k(n), RKR)
                 tv = 1._RKR
                 ts = 1._RKR
                 !write(*,*) "BLOCK: ", j, itype
@@ -1633,10 +1633,10 @@
             ! Variable-shift `k`-polynomial iteration for a quadratic factor, converges only if the zeros are equimodular or nearly so.
             ! uu, vv:   coefficients of starting quadratic
             ! nz:       number of zero found
-            real(TKC)   , intent(in)    :: uu
-            real(TKC)   , intent(in)    :: vv
+            real(TKG)   , intent(in)    :: uu
+            real(TKG)   , intent(in)    :: vv
             integer(IK) , intent(out)   :: nz
-            real(TKC)                   :: ui, vi
+            real(TKG)                   :: ui, vi
             real(RKR)                   :: mp, omp, ee, relstp, t, zm
             integer(IK)                 :: itype, i, j
             logical(LK)                 :: tried
@@ -1646,9 +1646,9 @@
             v = vv
             j = 0_IK
             ! main loop
-            10 call quad(1._TKC, u, v, sz, lz)
+            10 call quad(1._TKG, u, v, sz, lz)
             ! Return if roots of the quadratic are real and not close to multiple or nearly equal and  of opposite sign.
-            if (abs(abs(sz%re) - abs(lz%re)) > .01_TKC * abs(lz%re)) return
+            if (abs(abs(sz%re) - abs(lz%re)) > .01_TKG * abs(lz%re)) return
             ! Evaluate polynomial by quadratic synthetic division.
             call quadsd(nn, u, v, workspace, qp, a, b)
             mp = real(abs(a - sz%re * b) + abs(sz%im * b), RKR)
@@ -1692,7 +1692,7 @@
             call calcsc(itype)
             call newest(itype, ui, vi)
             ! If vi is zero the iteration is not converging.
-            if (vi == 0._TKC) return
+            if (vi == 0._TKG) return
             relstp = real(abs((vi - v) / vi), RKR)
             u = ui
             v = vi
@@ -1706,9 +1706,9 @@
             ! sss  : starting iterate.
             ! nz   : number of zero found.
             ! iflag: flag to indicate a pair of zeros near real axis.
-            real(TKC)   , intent(inout) :: sss
+            real(TKG)   , intent(inout) :: sss
             integer(IK) , intent(out)   :: nz, iflag
-            real(TKC)                   :: pv, kv, t, s
+            real(TKG)                   :: pv, kv, t, s
             real(RKR)                   :: ms, mp, omp, ee
             integer(IK)                 :: i, j
             nz = 0_IK
@@ -1736,7 +1736,7 @@
                 ! Iteration has converged sufficiently if the polynomial value is less than 20 times this bound.
                 if (mp <= MAX_ITER * ((ARE + MRE) * ee - MRE * mp)) then
                     sz%re = s
-                    sz%im = 0._TKC
+                    sz%im = 0._TKG
                     nz = 1_IK
                     return
                 end if
@@ -1744,7 +1744,7 @@
                 ! Stop iteration after `10` steps.
                 if (j > 10_IK) return
                 if (j >= 2_IK) then
-                    if (abs(t) <= .001_TKC * abs(s - t) .and. mp > omp) then
+                    if (abs(t) <= .001_TKG * abs(s - t) .and. mp > omp) then
                         ! A cluster of zeros near the real axis has been encountered, return with iflag set to initiate a quadratic iteration.
                         iflag = 1_IK
                         sss = s
@@ -1760,7 +1760,7 @@
                     kv = kv * s + k(i)
                     qk(i) = kv
                 end do
-                if (abs(kv) > abs(k(n)) * EPS * 10._TKC) then
+                if (abs(kv) > abs(k(n)) * EPS * 10._TKG) then
                     ! Use the scaled form of the recurrence if the value of k at s is nonzero.
                     t = -pv / kv
                     k(1) = qp(1)
@@ -1769,7 +1769,7 @@
                     end do
                 else
                     ! Use unscaled form.
-                    k(1) = 0._TKC
+                    k(1) = 0._TKG
                     do i = 2_IK, n
                         k(i) = qk(i - 1)
                     end do
@@ -1778,8 +1778,8 @@
                 do i = 2_IK, n
                     kv = kv * s + k(i)
                 end do
-                t = 0._TKC
-                if (abs(kv) > abs(k(n)) * EPS * 10._TKC) t = -pv / kv
+                t = 0._TKG
+                if (abs(kv) > abs(k(n)) * EPS * 10._TKG) t = -pv / kv
                 s = s + t
             end do ! goto 10
         end subroutine realit
@@ -1792,8 +1792,8 @@
             integer(IK), intent(out) :: itype
             ! Synthetic division of k by the quadratic 1, u, v.
             call quadsd(n, u, v, k, qk, c, d)
-            if (abs(c) <= abs(k(n)) * EPS * 100._TKC) then
-                if (abs(d) <= abs(k(n - 1)) * EPS * 100._TKC) then
+            if (abs(c) <= abs(k(n)) * EPS * 100._TKG) then
+                if (abs(d) <= abs(k(n - 1)) * EPS * 100._TKG) then
                     itype = 3_IK ! Indicates the quadratic is almost a factor of `k`.
                     return
                 end if
@@ -1825,14 +1825,14 @@
         subroutine nextk(itype) ! checked
             ! Compute the next `k` polynomials using scalars computed in `calcsc()`.
             integer(IK) , intent(in)    :: itype
-            real(TKC)                   :: temp
+            real(TKG)                   :: temp
             integer(IK)                 :: i
             if (itype /= 3_IK) then
                 temp = a
                 if (itype == 1_IK) temp = b
-                if (abs(a1) <= abs(temp) * EPS * 10._TKC) then
+                if (abs(a1) <= abs(temp) * EPS * 10._TKG) then
                     ! If `a1` is nearly zero then use a special form of the recurrence.
-                    k(1) = 0._TKC
+                    k(1) = 0._TKG
                     k(2) = -a7 * qp(1)
                     do i = 3_IK, n
                         k(i) = a3 * qk(i - 2) - a7 * qp(i - 1)
@@ -1850,8 +1850,8 @@
                 return
             end if
             ! Use unscaled form of the recurrence if itype is 3.
-            k(1) = 0._TKC
-            k(2) = 0._TKC
+            k(1) = 0._TKG
+            k(2) = 0._TKG
             do i = 3_IK, n
                 k(i) = qk(i - 2)
             end do
@@ -1862,9 +1862,9 @@
         subroutine newest(itype, uu, vv)
             ! Compute new estimates of the quadratic coefficients using the scalars computed in calcsc.
             integer(IK) , intent(in)    :: itype
-            real(TKC)   , intent(out)   :: uu
-            real(TKC)   , intent(out)   :: vv
-            real(TKC)                   :: a4, a5, b1, b2, c1, c2, c3, c4, temp
+            real(TKG)   , intent(out)   :: uu
+            real(TKG)   , intent(out)   :: vv
+            real(TKG)                   :: a4, a5, b1, b2, c1, c2, c3, c4, temp
             ! Use formulas appropriate to setting of itype.
             if (itype /= 3_IK) then
                 if (itype /= 2_IK) then
@@ -1882,15 +1882,15 @@
                 c3 = b1 * b1 * a3
                 c4 = c1 - c2 - c3
                 temp = a5 + b1 * a4 - c4
-                if (temp /= 0._TKC) then
+                if (temp /= 0._TKG) then
                     uu = u - (u * (c3 + c2) + v * (b1 * a1 + b2 * a7)) / temp
-                    vv = v * (1._TKC + c4 / temp)
+                    vv = v * (1._TKG + c4 / temp)
                     return
                 end if
             end if
             ! If itype = 3 the quadratic is zeroed.
-            uu = 0._TKC
-            vv = 0._TKC
+            uu = 0._TKG
+            vv = 0._TKG
         end subroutine newest
 
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1898,9 +1898,9 @@
         pure subroutine quadsd(nn, u, v, workspace, q, a, b)
             ! Divide P (`workspace`) by the quadratic `1, u, v` placing the quotient in `q` and the remainder in `a, b`.
             integer(IK) , intent(in)    :: nn
-            real(TKC)   , intent(in)    :: u, v, workspace(nn)
-            real(TKC)   , intent(out)   :: q(nn), a, b
-            real(TKC)                   :: c
+            real(TKG)   , intent(in)    :: u, v, workspace(nn)
+            real(TKG)   , intent(out)   :: q(nn), a, b
+            real(TKG)                   :: c
             integer(IK)                 :: i
             b = workspace(1)
             q(1) = b
@@ -1920,40 +1920,40 @@
             ! Compute the zeros of the quadratic `a * z**2 + b1 * z + c`.
             ! The quadratic formula, modified to avoid overflow, is used to find the larger zero if the zeros are real and both zeros are complex.
             ! The smaller real zero is found directly from the product of the zeros `c / a`.
-            real(TKC)   , intent(in)    :: a, b1, c
-            complex(TKC), intent(out)   :: sroot, lroot
-            complex(TKC), parameter     :: ZERO = (0._TKC, 0._TKC)
-            real(TKC)                   :: b, d, e
-            if (a == 0._TKC) then
+            real(TKG)   , intent(in)    :: a, b1, c
+            complex(TKG), intent(out)   :: sroot, lroot
+            complex(TKG), parameter     :: ZERO = (0._TKG, 0._TKG)
+            real(TKG)                   :: b, d, e
+            if (a == 0._TKG) then
                 lroot = ZERO
                 sroot = ZERO
-                if (b1 /= 0._TKC) sroot%re = -c / b1
+                if (b1 /= 0._TKG) sroot%re = -c / b1
                 return
             end if
-            if (c == 0._TKC) then
+            if (c == 0._TKG) then
                 lroot%re = -b1 / a
-                lroot%im = 0._TKC
+                lroot%im = 0._TKG
                 sroot = ZERO
                 return
             end if
             ! Compute discriminant avoiding overflow.
-            b = b1 * .5_TKC
+            b = b1 * .5_TKG
             if (abs(b) >= abs(c)) then
-                e = 1._TKC - (a / b) * (c / b)
+                e = 1._TKG - (a / b) * (c / b)
                 d = sqrt(abs(e)) * abs(b)
             else
                 e = a
-                if (c < 0._TKC) e = -a
+                if (c < 0._TKG) e = -a
                 e = b * (b / abs(c)) - e
                 d = sqrt(abs(e)) * sqrt(abs(c))
             end if
-            if (e >= 0._TKC) then
+            if (e >= 0._TKG) then
                 ! Real zeros.
-                if (b >= 0._TKC) d = -d
+                if (b >= 0._TKG) d = -d
                 lroot%re = (-b + d) / a
-                lroot%im = 0._TKC
+                lroot%im = 0._TKG
                 sroot = ZERO
-                if (lroot%re /= 0._TKC) sroot%re = (c / lroot%re) / a
+                if (lroot%re /= 0._TKG) sroot%re = (c / lroot%re) / a
                 return
             end if
             ! Complex conjugate zeros.
@@ -1968,8 +1968,8 @@
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
         integer(IK) :: ideg, jdeg, niter, degree
-        real(TKC), parameter :: EPS = 2 * epsilon(0._TKC) ! the estimated fractional roundoff error.
-        complex(TKC) :: temp, b, c, workspace(size(coef, 1, IK))
+        real(TKG), parameter :: EPS = 2 * epsilon(0._TKG) ! the estimated fractional roundoff error.
+        complex(TKG) :: temp, b, c, workspace(size(coef, 1, IK))
         degree = size(coef, 1, IK) - 1_IK
         CHECK_ASSERTION(__LINE__, 0_IK < degree, SK_"@setPolyRoot(): The condition `1 < size(coef)` must hold. size(coef) = "//getStr(size(coef, 1, IK)))
         CHECK_ASSERTION(__LINE__, coef(degree) /= ZERO, SK_"@setPolyRoot(): The condition `coef(size(coef)) /= 0.` must hold. coef = "//getStr(coef))
@@ -1981,7 +1981,7 @@
             temp = ZERO
             call setPolyRootPolished(temp, niter, workspace)
             if (0_IK < niter) then
-                if (abs(temp%im) <= 2._TKC * EPS**2 * abs(temp%re)) temp%im = 0._TKC
+                if (abs(temp%im) <= 2._TKG * EPS**2 * abs(temp%re)) temp%im = 0._TKG
                 count = count + 1_IK
                 root(count) = temp
                 ! deflate.
@@ -2019,7 +2019,7 @@
 #elif   setPolyRootPolished_ENABLED && Lag_ENABLED && RK_RK_ENABLED
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        complex(TKC) :: croot
+        complex(TKG) :: croot
         croot = root
         call setPolyRootPolished(croot, niter, coef)
         root = croot%re
@@ -2033,11 +2033,11 @@
         ! within the achievable roundoff limit, to a root of the given polynomial.<br>
         ! The number of iterations taken is returned as `niter`.<br>
         ! Break (rare) limit cycles with different fractional values once every `nstep` steps, for `nitermax` total allowed iterations.<br>
-        real(TKC), parameter :: EPS = 10_IK * epsilon(0._TKC) ! the estimated fractional roundoff error.
-        real(TKC), parameter :: fraction(8) = [.5_TKC, .25_TKC, .75_TKC, .13_TKC, .38_TKC, .62_TKC, .88_TKC, 1._TKC] ! Fractions used to break a limit cycle.
+        real(TKG), parameter :: EPS = 10_IK * epsilon(0._TKG) ! the estimated fractional roundoff error.
+        real(TKG), parameter :: fraction(8) = [.5_TKG, .25_TKG, .75_TKG, .13_TKG, .38_TKG, .62_TKG, .88_TKG, 1._TKG] ! Fractions used to break a limit cycle.
         integer(IK) , parameter :: nstep = 10, nitermax = size(fraction, 1, IK) * nstep * 10000 ! amir: Extra 10000 was added to allow convergence for extremely awkward coefficients.
-        complex(TKC) :: droot, rootnew, der0, der1, der2, der12, der12sq, hterm, dterm, denom1, denom2
-        real(TKC) :: absroot, absdenom1, absdenom2, relerr
+        complex(TKG) :: droot, rootnew, der0, der1, der2, der12, der12sq, hterm, dterm, denom1, denom2
+        real(TKG) :: absroot, absdenom1, absdenom2, relerr
         integer(IK) :: degree, id, ifrac, counter
         degree = size(coef, 1, IK) - 1
         CHECK_ASSERTION(__LINE__, 0_IK < degree, SK_"@setPolyRootPolished(): The condition `1 < size(coef)` must hold. size(coef) = "//getStr(size(coef, 1, IK)))
@@ -2073,10 +2073,10 @@
                 absdenom1 = absdenom2
                 denom1 = denom2
             end if
-            if (absdenom1 /= 0._TKC) then
+            if (absdenom1 /= 0._TKG) then
                 droot = degree / denom1
             else
-                droot = exp(cmplx(log(1._TKC + absroot), real(niter, TKC), TKC))
+                droot = exp(cmplx(log(1._TKG + absroot), real(niter, TKG), TKG))
             endif
             rootnew = root - droot
             if(root == rootnew) return

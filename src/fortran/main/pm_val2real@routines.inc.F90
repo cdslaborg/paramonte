@@ -26,9 +26,9 @@
 
 #if     LK_ENABLED
         if (val) then
-            conversion = 1._RKC
+            conversion = 1._RKG
         else
-            conversion = 0._RKC
+            conversion = 0._RKG
         end if
 #elif   SK_ENABLED && Def_ENABLED
         read(val, *) conversion

@@ -46,31 +46,31 @@
 #endif
         integer(IK) , parameter     :: NDATA = 1000_IK
 #if     setSelected_D0_SK_ENABLED   || getSelected_D0_SK_ENABLED
-        character(NDATA,SKC)        :: dataUnsorted, DataUnsorted_ref
-        character(1,SKC)            :: selection
+        character(NDATA,SKG)        :: dataUnsorted, DataUnsorted_ref
+        character(1,SKG)            :: selection
         call setUnifRand(DataUnsorted_ref)
 #elif   setSelected_D1_SK_ENABLED   || getSelected_D1_SK_ENABLED
-        character(2,SKC)            :: dataUnsorted(NDATA), DataUnsorted_ref(NDATA), selection
+        character(2,SKG)            :: dataUnsorted(NDATA), DataUnsorted_ref(NDATA), selection
         call setUnifRand(DataUnsorted_ref)
 #elif   setSelected_D1_IK_ENABLED   || getSelected_D1_IK_ENABLED
-        integer(IKC)                :: dataUnsorted(NDATA), DataUnsorted_ref(NDATA), selection
-        call setUnifRand(DataUnsorted_ref, 0_IKC, huge(DataUnsorted_ref) - 1_IKC)
+        integer(IKG)                :: dataUnsorted(NDATA), DataUnsorted_ref(NDATA), selection
+        call setUnifRand(DataUnsorted_ref, 0_IKG, huge(DataUnsorted_ref) - 1_IKG)
 #elif   setSelected_D1_LK_ENABLED   || getSelected_D1_LK_ENABLED
-        logical(LKC)                :: dataUnsorted(NDATA), DataUnsorted_ref(NDATA), selection
+        logical(LKG)                :: dataUnsorted(NDATA), DataUnsorted_ref(NDATA), selection
         call setUnifRand(DataUnsorted_ref)
 #elif   setSelected_D1_CK_ENABLED   || getSelected_D1_CK_ENABLED
-        complex(CKC)                :: dataUnsorted(NDATA), DataUnsorted_ref(NDATA), selection
+        complex(CKG)                :: dataUnsorted(NDATA), DataUnsorted_ref(NDATA), selection
         call setUnifRand(DataUnsorted_ref)
 #elif   setSelected_D1_RK_ENABLED   || getSelected_D1_RK_ENABLED
-        real(RKC)                   :: dataUnsorted(NDATA), DataUnsorted_ref(NDATA), selection
+        real(RKG)                   :: dataUnsorted(NDATA), DataUnsorted_ref(NDATA), selection
         call setUnifRand(DataUnsorted_ref)
 #elif   setSelected_D1_PSSK_ENABLED || getSelected_D1_PSSK_ENABLED
-        type(css_pdt(SKC))          :: dataUnsorted(NDATA), DataUnsorted_ref(NDATA), selection
+        type(css_pdt(SKG))          :: dataUnsorted(NDATA), DataUnsorted_ref(NDATA), selection
         integer(IK)                 :: stringSize
         integer(IK)                 :: i
         do i = 1_IK, NDATA
             call setUnifRand(stringSize, 1_IK, 100_IK)
-            allocate(character(stringSize,SKC) :: DataUnsorted_ref(i)%val)
+            allocate(character(stringSize,SKG) :: DataUnsorted_ref(i)%val)
             call setUnifRand(DataUnsorted_ref(i)%val)
         end do
 #else
@@ -180,19 +180,19 @@
 
         function isAscending_local(a, b) result(sorted)
 #if         setSelected_D0_SK_ENABLED || getSelected_D0_SK_ENABLED
-            character(1,SKC), intent(in) :: a, b
+            character(1,SKG), intent(in) :: a, b
 #elif       setSelected_D1_SK_ENABLED || getSelected_D1_SK_ENABLED
-            character(*,SKC), intent(in) :: a, b
+            character(*,SKG), intent(in) :: a, b
 #elif       setSelected_D1_IK_ENABLED || getSelected_D1_IK_ENABLED
-            integer(IKC)    , intent(in) :: a, b
+            integer(IKG)    , intent(in) :: a, b
 #elif       setSelected_D1_LK_ENABLED || getSelected_D1_LK_ENABLED
-            logical(LKC)    , intent(in) :: a, b
+            logical(LKG)    , intent(in) :: a, b
 #elif       setSelected_D1_CK_ENABLED || getSelected_D1_CK_ENABLED
-            complex(CKC)    , intent(in) :: a, b
+            complex(CKG)    , intent(in) :: a, b
 #elif       setSelected_D1_RK_ENABLED || getSelected_D1_RK_ENABLED
-            real(RKC)       , intent(in) :: a, b
+            real(RKG)       , intent(in) :: a, b
 #elif       setSelected_D1_PSSK_ENABLED || getSelected_D1_PSSK_ENABLED
-            type(css_pdt(SKC)) , intent(in) :: a, b
+            type(css_pdt(SKG)) , intent(in) :: a, b
 #else
 #error      "Unrecognized interface."
 #endif
@@ -204,19 +204,19 @@
 
         function isDescending_local(a, b) result(sorted)
 #if         setSelected_D0_SK_ENABLED || getSelected_D0_SK_ENABLED
-            character(1,SKC), intent(in) :: a, b
+            character(1,SKG), intent(in) :: a, b
 #elif       setSelected_D1_SK_ENABLED || getSelected_D1_SK_ENABLED
-            character(*,SKC), intent(in) :: a, b
+            character(*,SKG), intent(in) :: a, b
 #elif       setSelected_D1_IK_ENABLED || getSelected_D1_IK_ENABLED
-            integer(IKC)    , intent(in) :: a, b
+            integer(IKG)    , intent(in) :: a, b
 #elif       setSelected_D1_LK_ENABLED || getSelected_D1_LK_ENABLED
-            logical(LKC)    , intent(in) :: a, b
+            logical(LKG)    , intent(in) :: a, b
 #elif       setSelected_D1_CK_ENABLED || getSelected_D1_CK_ENABLED
-            complex(CKC)    , intent(in) :: a, b
+            complex(CKG)    , intent(in) :: a, b
 #elif       setSelected_D1_RK_ENABLED || getSelected_D1_RK_ENABLED
-            real(RKC)       , intent(in) :: a, b
+            real(RKG)       , intent(in) :: a, b
 #elif       setSelected_D1_PSSK_ENABLED || getSelected_D1_PSSK_ENABLED
-            type(css_pdt(SKC)) , intent(in) :: a, b
+            type(css_pdt(SKG)) , intent(in) :: a, b
 #else
 #error      "Unrecognized interface."
 #endif

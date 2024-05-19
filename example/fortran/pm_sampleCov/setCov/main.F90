@@ -30,12 +30,12 @@ program example
     call disp%skip()
 
     block
-        use pm_kind, only: TKC => RKS ! All other real types are also supported.
+        use pm_kind, only: TKG => RKS ! All other real types are also supported.
         use pm_matrixCopy, only: setMatCopy, rdpack
         use pm_distCov, only: getCovRand
         integer(IK) :: ndim
-        real(TKC), allocatable :: cov(:,:), cor(:,:), std(:)
-        format = getFormat(mold = [0._TKC], ed = SK_"es", signed = .true._LK)
+        real(TKG), allocatable :: cov(:,:), cor(:,:), std(:)
+        format = getFormat(mold = [0._TKG], ed = SK_"es", signed = .true._LK)
         do itry = 1, ntry
             call disp%skip()
             call disp%show("ndim = getUnifRand(1, 7)")
@@ -50,8 +50,8 @@ program example
                             cor = getCovRand(1., ndim)
             call disp%show("cor")
             call disp%show( cor , format = format )
-            call disp%show("cov = getFilled(0._TKC, ndim, ndim + 1)")
-                            cov = getFilled(0._TKC, ndim, ndim + 1)
+            call disp%show("cov = getFilled(0._TKG, ndim, ndim + 1)")
+                            cov = getFilled(0._TKG, ndim, ndim + 1)
             call disp%show("call setMatCopy(cov(1:ndim, 1:ndim), rdpack, cor, rdpack, lowDia)")
                             call setMatCopy(cov(1:ndim, 1:ndim), rdpack, cor, rdpack, lowDia)
             call disp%show("cov")
@@ -61,8 +61,8 @@ program example
             call disp%show("cov")
             call disp%show( cov , format = format )
             call disp%skip()
-            call disp%show("cov = getFilled(0._TKC, ndim, ndim + 1)")
-                            cov = getFilled(0._TKC, ndim, ndim + 1)
+            call disp%show("cov = getFilled(0._TKG, ndim, ndim + 1)")
+                            cov = getFilled(0._TKG, ndim, ndim + 1)
             call disp%show("call setMatCopy(cov(1:ndim, 2:ndim+1), rdpack, cor, rdpack, uppDia)")
                             call setMatCopy(cov(1:ndim, 2:ndim+1), rdpack, cor, rdpack, uppDia)
             call disp%show("cov")
@@ -84,8 +84,8 @@ program example
     call disp%skip()
 
     block
-        use pm_kind, only: TKC => RKS ! All other real types are also supported.
-        real(TKC), allocatable :: sample(:,:), samShifted(:,:), cov(:,:), mean(:)
+        use pm_kind, only: TKG => RKS ! All other real types are also supported.
+        real(TKG), allocatable :: sample(:,:), samShifted(:,:), cov(:,:), mean(:)
         integer(IK) :: ndim, nsam, dim
         call disp%show("ndim = 2; nsam = 10; dim = 2")
                         ndim = 2; nsam = 10; dim = 2
@@ -183,12 +183,12 @@ program example
     call disp%skip()
 
     block
-        use pm_kind, only: TKC => RKS ! All other real types are also supported.
-        real(TKC) :: rweisum
+        use pm_kind, only: TKG => RKS ! All other real types are also supported.
+        real(TKG) :: rweisum
         integer(IK) :: iweisum
-        real(TKC), allocatable :: rweight(:)
+        real(TKG), allocatable :: rweight(:)
         integer(IK), allocatable :: iweight(:)
-        real(TKC), allocatable :: sample(:,:), samShifted(:,:), cov(:,:), mean(:)
+        real(TKG), allocatable :: sample(:,:), samShifted(:,:), cov(:,:), mean(:)
         integer(IK) :: ndim, nsam, dim
         call disp%show("ndim = 2; nsam = 10; dim = 2")
                         ndim = 2; nsam = 10; dim = 2

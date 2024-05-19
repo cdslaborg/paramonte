@@ -66,35 +66,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getUnifSphereLogPDF_D0_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getUnifSphereLogPDF_D0_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getUnifSphereLogPDF_D0_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getUnifSphereLogPDF_D0_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getUnifSphereLogPDF_D0_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
@@ -151,35 +151,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getUSR_RNGD_DM_AC_UXD_D1_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getUSR_RNGD_DM_AC_UXD_D1_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getUSR_RNGD_DM_AC_UXD_D1_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getUSR_RNGD_DM_AC_UXD_D1_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getUSR_RNGD_DM_AC_UXD_D1_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
@@ -202,35 +202,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getUSR_RNGD_DM_AC_XLD_D1_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getUSR_RNGD_DM_AC_XLD_D1_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getUSR_RNGD_DM_AC_XLD_D1_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getUSR_RNGD_DM_AC_XLD_D1_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getUSR_RNGD_DM_AC_XLD_D1_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
@@ -271,35 +271,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getUSR_RNGD_AM_DC_XXX_D1_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getUSR_RNGD_AM_DC_XXX_D1_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getUSR_RNGD_AM_DC_XXX_D1_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getUSR_RNGD_AM_DC_XXX_D1_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getUSR_RNGD_AM_DC_XXX_D1_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
@@ -328,35 +328,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getUSR_RNGD_AM_AC_UXD_D1_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getUSR_RNGD_AM_AC_UXD_D1_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getUSR_RNGD_AM_AC_UXD_D1_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getUSR_RNGD_AM_AC_UXD_D1_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getUSR_RNGD_AM_AC_UXD_D1_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
@@ -379,35 +379,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getUSR_RNGD_AM_AC_XLD_D1_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getUSR_RNGD_AM_AC_XLD_D1_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getUSR_RNGD_AM_AC_XLD_D1_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getUSR_RNGD_AM_AC_XLD_D1_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getUSR_RNGD_AM_AC_XLD_D1_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
@@ -466,35 +466,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getUSR_RNGF_DM_AC_UXD_D1_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getUSR_RNGF_DM_AC_UXD_D1_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getUSR_RNGF_DM_AC_UXD_D1_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getUSR_RNGF_DM_AC_UXD_D1_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getUSR_RNGF_DM_AC_UXD_D1_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
@@ -517,35 +517,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getUSR_RNGF_DM_AC_XLD_D1_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getUSR_RNGF_DM_AC_XLD_D1_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getUSR_RNGF_DM_AC_XLD_D1_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getUSR_RNGF_DM_AC_XLD_D1_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getUSR_RNGF_DM_AC_XLD_D1_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
@@ -586,35 +586,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getUSR_RNGF_AM_DC_XXX_D1_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getUSR_RNGF_AM_DC_XXX_D1_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getUSR_RNGF_AM_DC_XXX_D1_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getUSR_RNGF_AM_DC_XXX_D1_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getUSR_RNGF_AM_DC_XXX_D1_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
@@ -643,35 +643,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getUSR_RNGF_AM_AC_UXD_D1_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getUSR_RNGF_AM_AC_UXD_D1_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getUSR_RNGF_AM_AC_UXD_D1_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getUSR_RNGF_AM_AC_UXD_D1_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getUSR_RNGF_AM_AC_UXD_D1_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
@@ -694,35 +694,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getUSR_RNGF_AM_AC_XLD_D1_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getUSR_RNGF_AM_AC_XLD_D1_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getUSR_RNGF_AM_AC_XLD_D1_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getUSR_RNGF_AM_AC_XLD_D1_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getUSR_RNGF_AM_AC_XLD_D1_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
@@ -781,35 +781,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getUSR_RNGX_DM_AC_UXD_D1_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getUSR_RNGX_DM_AC_UXD_D1_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getUSR_RNGX_DM_AC_UXD_D1_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getUSR_RNGX_DM_AC_UXD_D1_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getUSR_RNGX_DM_AC_UXD_D1_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
@@ -832,35 +832,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getUSR_RNGX_DM_AC_XLD_D1_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getUSR_RNGX_DM_AC_XLD_D1_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getUSR_RNGX_DM_AC_XLD_D1_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getUSR_RNGX_DM_AC_XLD_D1_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getUSR_RNGX_DM_AC_XLD_D1_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
@@ -901,35 +901,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getUSR_RNGX_AM_DC_XXX_D1_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getUSR_RNGX_AM_DC_XXX_D1_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getUSR_RNGX_AM_DC_XXX_D1_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getUSR_RNGX_AM_DC_XXX_D1_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getUSR_RNGX_AM_DC_XXX_D1_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
@@ -958,35 +958,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getUSR_RNGX_AM_AC_UXD_D1_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getUSR_RNGX_AM_AC_UXD_D1_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getUSR_RNGX_AM_AC_UXD_D1_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getUSR_RNGX_AM_AC_UXD_D1_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getUSR_RNGX_AM_AC_UXD_D1_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
@@ -1009,35 +1009,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getUSR_RNGX_AM_AC_XLD_D1_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getUSR_RNGX_AM_AC_XLD_D1_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getUSR_RNGX_AM_AC_XLD_D1_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getUSR_RNGX_AM_AC_XLD_D1_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getUSR_RNGX_AM_AC_XLD_D1_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
@@ -1108,35 +1108,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getUSR_RNGD_DM_AC_UXD_D2_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getUSR_RNGD_DM_AC_UXD_D2_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getUSR_RNGD_DM_AC_UXD_D2_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getUSR_RNGD_DM_AC_UXD_D2_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getUSR_RNGD_DM_AC_UXD_D2_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
@@ -1159,35 +1159,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getUSR_RNGD_DM_AC_XLD_D2_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getUSR_RNGD_DM_AC_XLD_D2_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getUSR_RNGD_DM_AC_XLD_D2_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getUSR_RNGD_DM_AC_XLD_D2_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getUSR_RNGD_DM_AC_XLD_D2_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
@@ -1228,35 +1228,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getUSR_RNGD_AM_DC_XXX_D2_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getUSR_RNGD_AM_DC_XXX_D2_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getUSR_RNGD_AM_DC_XXX_D2_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getUSR_RNGD_AM_DC_XXX_D2_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getUSR_RNGD_AM_DC_XXX_D2_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
@@ -1285,35 +1285,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getUSR_RNGD_AM_AC_UXD_D2_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getUSR_RNGD_AM_AC_UXD_D2_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getUSR_RNGD_AM_AC_UXD_D2_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getUSR_RNGD_AM_AC_UXD_D2_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getUSR_RNGD_AM_AC_UXD_D2_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
@@ -1336,35 +1336,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getUSR_RNGD_AM_AC_XLD_D2_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getUSR_RNGD_AM_AC_XLD_D2_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getUSR_RNGD_AM_AC_XLD_D2_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getUSR_RNGD_AM_AC_XLD_D2_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getUSR_RNGD_AM_AC_XLD_D2_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
@@ -1423,35 +1423,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getUSR_RNGF_DM_AC_UXD_D2_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getUSR_RNGF_DM_AC_UXD_D2_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getUSR_RNGF_DM_AC_UXD_D2_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getUSR_RNGF_DM_AC_UXD_D2_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getUSR_RNGF_DM_AC_UXD_D2_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
@@ -1474,35 +1474,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getUSR_RNGF_DM_AC_XLD_D2_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getUSR_RNGF_DM_AC_XLD_D2_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getUSR_RNGF_DM_AC_XLD_D2_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getUSR_RNGF_DM_AC_XLD_D2_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getUSR_RNGF_DM_AC_XLD_D2_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
@@ -1543,35 +1543,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getUSR_RNGF_AM_DC_XXX_D2_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getUSR_RNGF_AM_DC_XXX_D2_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getUSR_RNGF_AM_DC_XXX_D2_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getUSR_RNGF_AM_DC_XXX_D2_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getUSR_RNGF_AM_DC_XXX_D2_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
@@ -1600,35 +1600,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getUSR_RNGF_AM_AC_UXD_D2_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getUSR_RNGF_AM_AC_UXD_D2_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getUSR_RNGF_AM_AC_UXD_D2_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getUSR_RNGF_AM_AC_UXD_D2_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getUSR_RNGF_AM_AC_UXD_D2_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
@@ -1651,35 +1651,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getUSR_RNGF_AM_AC_XLD_D2_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getUSR_RNGF_AM_AC_XLD_D2_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getUSR_RNGF_AM_AC_XLD_D2_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getUSR_RNGF_AM_AC_XLD_D2_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getUSR_RNGF_AM_AC_XLD_D2_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
@@ -1738,35 +1738,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getUSR_RNGX_DM_AC_UXD_D2_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getUSR_RNGX_DM_AC_UXD_D2_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getUSR_RNGX_DM_AC_UXD_D2_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getUSR_RNGX_DM_AC_UXD_D2_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getUSR_RNGX_DM_AC_UXD_D2_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
@@ -1789,35 +1789,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getUSR_RNGX_DM_AC_XLD_D2_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getUSR_RNGX_DM_AC_XLD_D2_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getUSR_RNGX_DM_AC_XLD_D2_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getUSR_RNGX_DM_AC_XLD_D2_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getUSR_RNGX_DM_AC_XLD_D2_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
@@ -1858,35 +1858,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getUSR_RNGX_AM_DC_XXX_D2_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getUSR_RNGX_AM_DC_XXX_D2_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getUSR_RNGX_AM_DC_XXX_D2_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getUSR_RNGX_AM_DC_XXX_D2_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getUSR_RNGX_AM_DC_XXX_D2_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
@@ -1915,35 +1915,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getUSR_RNGX_AM_AC_UXD_D2_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getUSR_RNGX_AM_AC_UXD_D2_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getUSR_RNGX_AM_AC_UXD_D2_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getUSR_RNGX_AM_AC_UXD_D2_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getUSR_RNGX_AM_AC_UXD_D2_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
@@ -1966,35 +1966,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getUSR_RNGX_AM_AC_XLD_D2_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getUSR_RNGX_AM_AC_XLD_D2_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getUSR_RNGX_AM_AC_XLD_D2_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getUSR_RNGX_AM_AC_XLD_D2_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getUSR_RNGX_AM_AC_XLD_D2_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
@@ -2069,35 +2069,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setUSR_RNGD_DM_DC_XXX_D1_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setUSR_RNGD_DM_DC_XXX_D1_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setUSR_RNGD_DM_DC_XXX_D1_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setUSR_RNGD_DM_DC_XXX_D1_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setUSR_RNGD_DM_DC_XXX_D1_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
@@ -2126,35 +2126,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setUSR_RNGD_DM_AC_UXD_D1_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setUSR_RNGD_DM_AC_UXD_D1_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setUSR_RNGD_DM_AC_UXD_D1_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setUSR_RNGD_DM_AC_UXD_D1_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setUSR_RNGD_DM_AC_UXD_D1_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
@@ -2177,35 +2177,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setUSR_RNGD_DM_AC_XLD_D1_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setUSR_RNGD_DM_AC_XLD_D1_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setUSR_RNGD_DM_AC_XLD_D1_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setUSR_RNGD_DM_AC_XLD_D1_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setUSR_RNGD_DM_AC_XLD_D1_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
@@ -2246,35 +2246,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setUSR_RNGD_AM_DC_XXX_D1_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setUSR_RNGD_AM_DC_XXX_D1_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setUSR_RNGD_AM_DC_XXX_D1_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setUSR_RNGD_AM_DC_XXX_D1_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setUSR_RNGD_AM_DC_XXX_D1_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
@@ -2303,35 +2303,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setUSR_RNGD_AM_AC_UXD_D1_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setUSR_RNGD_AM_AC_UXD_D1_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setUSR_RNGD_AM_AC_UXD_D1_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setUSR_RNGD_AM_AC_UXD_D1_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setUSR_RNGD_AM_AC_UXD_D1_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
@@ -2354,35 +2354,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setUSR_RNGD_AM_AC_XLD_D1_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setUSR_RNGD_AM_AC_XLD_D1_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setUSR_RNGD_AM_AC_XLD_D1_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setUSR_RNGD_AM_AC_XLD_D1_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setUSR_RNGD_AM_AC_XLD_D1_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
@@ -2435,35 +2435,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setUSR_RNGF_DM_DC_XXX_D1_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setUSR_RNGF_DM_DC_XXX_D1_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setUSR_RNGF_DM_DC_XXX_D1_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setUSR_RNGF_DM_DC_XXX_D1_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setUSR_RNGF_DM_DC_XXX_D1_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
@@ -2492,35 +2492,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setUSR_RNGF_DM_AC_UXD_D1_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setUSR_RNGF_DM_AC_UXD_D1_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setUSR_RNGF_DM_AC_UXD_D1_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setUSR_RNGF_DM_AC_UXD_D1_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setUSR_RNGF_DM_AC_UXD_D1_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
@@ -2543,35 +2543,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setUSR_RNGF_DM_AC_XLD_D1_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setUSR_RNGF_DM_AC_XLD_D1_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setUSR_RNGF_DM_AC_XLD_D1_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setUSR_RNGF_DM_AC_XLD_D1_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setUSR_RNGF_DM_AC_XLD_D1_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
@@ -2612,35 +2612,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setUSR_RNGF_AM_DC_XXX_D1_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setUSR_RNGF_AM_DC_XXX_D1_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setUSR_RNGF_AM_DC_XXX_D1_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setUSR_RNGF_AM_DC_XXX_D1_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setUSR_RNGF_AM_DC_XXX_D1_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
@@ -2669,35 +2669,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setUSR_RNGF_AM_AC_UXD_D1_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setUSR_RNGF_AM_AC_UXD_D1_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setUSR_RNGF_AM_AC_UXD_D1_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setUSR_RNGF_AM_AC_UXD_D1_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setUSR_RNGF_AM_AC_UXD_D1_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
@@ -2720,35 +2720,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setUSR_RNGF_AM_AC_XLD_D1_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setUSR_RNGF_AM_AC_XLD_D1_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setUSR_RNGF_AM_AC_XLD_D1_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setUSR_RNGF_AM_AC_XLD_D1_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setUSR_RNGF_AM_AC_XLD_D1_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
@@ -2801,35 +2801,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setUSR_RNGX_DM_DC_XXX_D1_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setUSR_RNGX_DM_DC_XXX_D1_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setUSR_RNGX_DM_DC_XXX_D1_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setUSR_RNGX_DM_DC_XXX_D1_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setUSR_RNGX_DM_DC_XXX_D1_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
@@ -2858,35 +2858,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setUSR_RNGX_DM_AC_UXD_D1_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setUSR_RNGX_DM_AC_UXD_D1_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setUSR_RNGX_DM_AC_UXD_D1_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setUSR_RNGX_DM_AC_UXD_D1_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setUSR_RNGX_DM_AC_UXD_D1_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
@@ -2909,35 +2909,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setUSR_RNGX_DM_AC_XLD_D1_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setUSR_RNGX_DM_AC_XLD_D1_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setUSR_RNGX_DM_AC_XLD_D1_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setUSR_RNGX_DM_AC_XLD_D1_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setUSR_RNGX_DM_AC_XLD_D1_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
@@ -2978,35 +2978,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setUSR_RNGX_AM_DC_XXX_D1_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setUSR_RNGX_AM_DC_XXX_D1_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setUSR_RNGX_AM_DC_XXX_D1_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setUSR_RNGX_AM_DC_XXX_D1_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setUSR_RNGX_AM_DC_XXX_D1_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
@@ -3035,35 +3035,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setUSR_RNGX_AM_AC_UXD_D1_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setUSR_RNGX_AM_AC_UXD_D1_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setUSR_RNGX_AM_AC_UXD_D1_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setUSR_RNGX_AM_AC_UXD_D1_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setUSR_RNGX_AM_AC_UXD_D1_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
@@ -3086,35 +3086,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setUSR_RNGX_AM_AC_XLD_D1_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setUSR_RNGX_AM_AC_XLD_D1_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setUSR_RNGX_AM_AC_XLD_D1_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setUSR_RNGX_AM_AC_XLD_D1_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setUSR_RNGX_AM_AC_XLD_D1_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
@@ -3179,35 +3179,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setUSR_RNGD_DM_DC_XXX_D2_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setUSR_RNGD_DM_DC_XXX_D2_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setUSR_RNGD_DM_DC_XXX_D2_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setUSR_RNGD_DM_DC_XXX_D2_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setUSR_RNGD_DM_DC_XXX_D2_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
@@ -3236,35 +3236,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setUSR_RNGD_DM_AC_UXD_D2_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setUSR_RNGD_DM_AC_UXD_D2_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setUSR_RNGD_DM_AC_UXD_D2_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setUSR_RNGD_DM_AC_UXD_D2_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setUSR_RNGD_DM_AC_UXD_D2_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
@@ -3287,35 +3287,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setUSR_RNGD_DM_AC_XLD_D2_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setUSR_RNGD_DM_AC_XLD_D2_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setUSR_RNGD_DM_AC_XLD_D2_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setUSR_RNGD_DM_AC_XLD_D2_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setUSR_RNGD_DM_AC_XLD_D2_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
@@ -3356,35 +3356,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setUSR_RNGD_AM_DC_XXX_D2_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setUSR_RNGD_AM_DC_XXX_D2_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setUSR_RNGD_AM_DC_XXX_D2_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setUSR_RNGD_AM_DC_XXX_D2_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setUSR_RNGD_AM_DC_XXX_D2_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
@@ -3413,35 +3413,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setUSR_RNGD_AM_AC_UXD_D2_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setUSR_RNGD_AM_AC_UXD_D2_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setUSR_RNGD_AM_AC_UXD_D2_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setUSR_RNGD_AM_AC_UXD_D2_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setUSR_RNGD_AM_AC_UXD_D2_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
@@ -3464,35 +3464,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setUSR_RNGD_AM_AC_XLD_D2_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setUSR_RNGD_AM_AC_XLD_D2_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setUSR_RNGD_AM_AC_XLD_D2_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setUSR_RNGD_AM_AC_XLD_D2_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setUSR_RNGD_AM_AC_XLD_D2_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
@@ -3545,35 +3545,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setUSR_RNGF_DM_DC_XXX_D2_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setUSR_RNGF_DM_DC_XXX_D2_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setUSR_RNGF_DM_DC_XXX_D2_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setUSR_RNGF_DM_DC_XXX_D2_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setUSR_RNGF_DM_DC_XXX_D2_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
@@ -3602,35 +3602,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setUSR_RNGF_DM_AC_UXD_D2_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setUSR_RNGF_DM_AC_UXD_D2_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setUSR_RNGF_DM_AC_UXD_D2_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setUSR_RNGF_DM_AC_UXD_D2_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setUSR_RNGF_DM_AC_UXD_D2_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
@@ -3653,35 +3653,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setUSR_RNGF_DM_AC_XLD_D2_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setUSR_RNGF_DM_AC_XLD_D2_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setUSR_RNGF_DM_AC_XLD_D2_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setUSR_RNGF_DM_AC_XLD_D2_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setUSR_RNGF_DM_AC_XLD_D2_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
@@ -3722,35 +3722,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setUSR_RNGF_AM_DC_XXX_D2_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setUSR_RNGF_AM_DC_XXX_D2_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setUSR_RNGF_AM_DC_XXX_D2_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setUSR_RNGF_AM_DC_XXX_D2_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setUSR_RNGF_AM_DC_XXX_D2_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
@@ -3779,35 +3779,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setUSR_RNGF_AM_AC_UXD_D2_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setUSR_RNGF_AM_AC_UXD_D2_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setUSR_RNGF_AM_AC_UXD_D2_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setUSR_RNGF_AM_AC_UXD_D2_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setUSR_RNGF_AM_AC_UXD_D2_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
@@ -3830,35 +3830,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setUSR_RNGF_AM_AC_XLD_D2_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setUSR_RNGF_AM_AC_XLD_D2_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setUSR_RNGF_AM_AC_XLD_D2_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setUSR_RNGF_AM_AC_XLD_D2_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setUSR_RNGF_AM_AC_XLD_D2_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
@@ -3911,35 +3911,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setUSR_RNGX_DM_DC_XXX_D2_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setUSR_RNGX_DM_DC_XXX_D2_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setUSR_RNGX_DM_DC_XXX_D2_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setUSR_RNGX_DM_DC_XXX_D2_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setUSR_RNGX_DM_DC_XXX_D2_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
@@ -3968,35 +3968,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setUSR_RNGX_DM_AC_UXD_D2_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setUSR_RNGX_DM_AC_UXD_D2_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setUSR_RNGX_DM_AC_UXD_D2_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setUSR_RNGX_DM_AC_UXD_D2_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setUSR_RNGX_DM_AC_UXD_D2_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
@@ -4019,35 +4019,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setUSR_RNGX_DM_AC_XLD_D2_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setUSR_RNGX_DM_AC_XLD_D2_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setUSR_RNGX_DM_AC_XLD_D2_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setUSR_RNGX_DM_AC_XLD_D2_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setUSR_RNGX_DM_AC_XLD_D2_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
@@ -4088,35 +4088,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setUSR_RNGX_AM_DC_XXX_D2_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setUSR_RNGX_AM_DC_XXX_D2_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setUSR_RNGX_AM_DC_XXX_D2_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setUSR_RNGX_AM_DC_XXX_D2_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setUSR_RNGX_AM_DC_XXX_D2_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
@@ -4145,35 +4145,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setUSR_RNGX_AM_AC_UXD_D2_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setUSR_RNGX_AM_AC_UXD_D2_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setUSR_RNGX_AM_AC_UXD_D2_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setUSR_RNGX_AM_AC_UXD_D2_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setUSR_RNGX_AM_AC_UXD_D2_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
@@ -4196,35 +4196,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setUSR_RNGX_AM_AC_XLD_D2_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setUSR_RNGX_AM_AC_XLD_D2_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setUSR_RNGX_AM_AC_XLD_D2_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setUSR_RNGX_AM_AC_XLD_D2_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setUSR_RNGX_AM_AC_XLD_D2_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_distUnifSphere@routines.inc.F90"
     end procedure
 #endif

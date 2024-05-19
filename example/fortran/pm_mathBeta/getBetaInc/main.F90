@@ -71,14 +71,14 @@ program example
     !end block
 
     block
-        use pm_kind, only: RKC => RKH, RKH
+        use pm_kind, only: RKG => RKH, RKH
         use pm_arraySpace, only: setLinSpace
         integer(IK) , parameter :: nx = 1000
-        real(RKC)   , parameter :: alpha(*) = [0.1_RKC, 10._RKC, 1._RKC, 0.1_RKC, 10._RKC], beta(*) = [0.1_RKC, 0.1_RKC, 1._RKC, 10._RKC, 10._RKC]
-        real(RKC)   :: betaInc(max(size(alpha), size(beta)))
-        real(RKC)   :: x(nx)
+        real(RKG)   , parameter :: alpha(*) = [0.1_RKG, 10._RKG, 1._RKG, 0.1_RKG, 10._RKG], beta(*) = [0.1_RKG, 0.1_RKG, 1._RKG, 10._RKG, 10._RKG]
+        real(RKG)   :: betaInc(max(size(alpha), size(beta)))
+        real(RKG)   :: x(nx)
         integer     :: fileUnit, i
-        call setLinSpace(x, 0._RKC, 1._RKC, fopen = .true._LK, lopen = .true._LK)
+        call setLinSpace(x, 0._RKG, 1._RKG, fopen = .true._LK, lopen = .true._LK)
         open(newunit = fileUnit, file = "getBetaInc.RK.txt")
         do i = 1, nx
             betaInc = getBetaInc(x(i), alpha, beta)

@@ -34,35 +34,35 @@ contains
 
 #if CK5_ENABLED
     module procedure islexless_CK5
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
 #include "pm_complexCompareLex@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure islexless_CK4
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
 #include "pm_complexCompareLex@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure islexless_CK3
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
 #include "pm_complexCompareLex@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure islexless_CK2
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
 #include "pm_complexCompareLex@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure islexless_CK1
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
 #include "pm_complexCompareLex@routines.inc.F90"
     end procedure
 #endif
@@ -75,35 +75,35 @@ contains
 
 #if CK5_ENABLED
     module procedure islexleq_CK5
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
 #include "pm_complexCompareLex@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure islexleq_CK4
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
 #include "pm_complexCompareLex@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure islexleq_CK3
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
 #include "pm_complexCompareLex@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure islexleq_CK2
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
 #include "pm_complexCompareLex@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure islexleq_CK1
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
 #include "pm_complexCompareLex@routines.inc.F90"
     end procedure
 #endif
@@ -116,21 +116,21 @@ contains
 !
 !#if CK3_ENABLED
 !    module procedure islexneq_CK3
-!        use pm_kind, only: CKC => CK3
+!        use pm_kind, only: CKG => CK3
 !#include "pm_complexCompareLex@routines.inc.F90"
 !    end procedure
 !#endif
 !
 !#if CK2_ENABLED
 !    module procedure islexneq_CK2
-!        use pm_kind, only: CKC => CK2
+!        use pm_kind, only: CKG => CK2
 !#include "pm_complexCompareLex@routines.inc.F90"
 !    end procedure
 !#endif
 !
 !#if CK1_ENABLED
 !    module procedure islexneq_CK1
-!        use pm_kind, only: CKC => CK1
+!        use pm_kind, only: CKG => CK1
 !#include "pm_complexCompareLex@routines.inc.F90"
 !    end procedure
 !#endif
@@ -143,21 +143,21 @@ contains
 !
 !#if CK3_ENABLED
 !    module procedure isanyeq_CK3
-!        use pm_kind, only: CKC => CK3
+!        use pm_kind, only: CKG => CK3
 !#include "pm_complexCompareLex@routines.inc.F90"
 !    end procedure
 !#endif
 !
 !#if CK2_ENABLED
 !    module procedure isanyeq_CK2
-!        use pm_kind, only: CKC => CK2
+!        use pm_kind, only: CKG => CK2
 !#include "pm_complexCompareLex@routines.inc.F90"
 !    end procedure
 !#endif
 !
 !#if CK1_ENABLED
 !    module procedure isanyeq_CK1
-!        use pm_kind, only: CKC => CK1
+!        use pm_kind, only: CKG => CK1
 !#include "pm_complexCompareLex@routines.inc.F90"
 !    end procedure
 !#endif
@@ -170,35 +170,35 @@ contains
 
 #if CK5_ENABLED
     module procedure islexmeq_CK5
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
 #include "pm_complexCompareLex@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure islexmeq_CK4
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
 #include "pm_complexCompareLex@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure islexmeq_CK3
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
 #include "pm_complexCompareLex@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure islexmeq_CK2
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
 #include "pm_complexCompareLex@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure islexmeq_CK1
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
 #include "pm_complexCompareLex@routines.inc.F90"
     end procedure
 #endif
@@ -211,35 +211,35 @@ contains
 
 #if CK5_ENABLED
     module procedure islexmore_CK5
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
 #include "pm_complexCompareLex@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure islexmore_CK4
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
 #include "pm_complexCompareLex@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure islexmore_CK3
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
 #include "pm_complexCompareLex@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure islexmore_CK2
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
 #include "pm_complexCompareLex@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure islexmore_CK1
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
 #include "pm_complexCompareLex@routines.inc.F90"
     end procedure
 #endif

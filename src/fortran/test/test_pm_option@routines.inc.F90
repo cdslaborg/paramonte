@@ -35,7 +35,7 @@
 #elif option_RK_ENABLED
         real(RK)        , allocatable   :: Optional(:,:), Default(:,:)
 #elif option_IK_ENABLED
-        integer(IKC)    , allocatable   :: Optional(:,:), Default(:,:)
+        integer(IKG)    , allocatable   :: Optional(:,:), Default(:,:)
 #elif option_LK_ENABLED
         logical(LK)     , allocatable   :: Optional(:,:), Default(:,:)
 #elif option_SK_ENABLED
@@ -71,8 +71,8 @@
         Default     = reshape([+1._RK], shape = [1,1])
         Optional    = reshape([-1._RK], shape = [1,1])
 #elif option_IK_ENABLED
-        Default     = reshape([+1_IKC], shape = [1,1])
-        Optional    = reshape([-1_IKC], shape = [1,1])
+        Default     = reshape([+1_IKG], shape = [1,1])
+        Optional    = reshape([-1_IKG], shape = [1,1])
 #elif option_LK_ENABLED
         Default     = reshape([.true._LK], shape = [1,1])
         Optional    = reshape([.false._LK], shape = [1,1])
@@ -124,8 +124,8 @@
         Default     = reshape([+1._RK, +2._RK, +3._RK, +4._RK], shape = [2,2])
         Optional    = reshape([-1._RK, -2._RK, -3._RK, -4._RK], shape = [2,2])
 #elif option_IK_ENABLED
-        Default     = reshape([+1_IKC, +2_IKC, +3_IKC, +4_IKC], shape = [2,2])
-        Optional    = reshape([-1_IKC, -2_IKC, -3_IKC, -4_IKC], shape = [2,2])
+        Default     = reshape([+1_IKG, +2_IKG, +3_IKG, +4_IKG], shape = [2,2])
+        Optional    = reshape([-1_IKG, -2_IKG, -3_IKG, -4_IKG], shape = [2,2])
 #elif option_LK_ENABLED
         Default     = reshape([.true._LK, .false._LK, .true._LK, .false._LK], shape = [2,2])
         Optional    = reshape([.false._LK, .true._LK, .false._LK, .true._LK], shape = [2,2])

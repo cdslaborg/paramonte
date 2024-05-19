@@ -58,35 +58,35 @@ contains
 
 #if CK5_ENABLED
     module procedure min_D0_CK5
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
 #include "pm_complexMinMax@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure min_D0_CK4
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
 #include "pm_complexMinMax@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure min_D0_CK3
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
 #include "pm_complexMinMax@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure min_D0_CK2
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
 #include "pm_complexMinMax@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure min_D0_CK1
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
 #include "pm_complexMinMax@routines.inc.F90"
     end procedure
 #endif
@@ -119,35 +119,35 @@ contains
 
 #if CK5_ENABLED
     module procedure max_D0_CK5
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
 #include "pm_complexMinMax@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure max_D0_CK4
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
 #include "pm_complexMinMax@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure max_D0_CK3
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
 #include "pm_complexMinMax@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure max_D0_CK2
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
 #include "pm_complexMinMax@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure max_D0_CK1
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
 #include "pm_complexMinMax@routines.inc.F90"
     end procedure
 #endif
@@ -186,35 +186,35 @@ contains
 
 #if CK5_ENABLED
     module procedure minvalALL_D1_CK5
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
 #include "pm_complexMinMax@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure minvalALL_D1_CK4
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
 #include "pm_complexMinMax@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure minvalALL_D1_CK3
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
 #include "pm_complexMinMax@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure minvalALL_D1_CK2
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
 #include "pm_complexMinMax@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure minvalALL_D1_CK1
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
 #include "pm_complexMinMax@routines.inc.F90"
     end procedure
 #endif
@@ -237,35 +237,35 @@ contains
 
 #if CK5_ENABLED
     module procedure minvalALL_D2_CK5
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
 #include "pm_complexMinMax@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure minvalALL_D2_CK4
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
 #include "pm_complexMinMax@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure minvalALL_D2_CK3
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
 #include "pm_complexMinMax@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure minvalALL_D2_CK2
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
 #include "pm_complexMinMax@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure minvalALL_D2_CK1
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
 #include "pm_complexMinMax@routines.inc.F90"
     end procedure
 #endif
@@ -300,35 +300,35 @@ contains
 
 #if CK5_ENABLED
     module procedure minvalDIM_D1_CK5
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
 #include "pm_complexMinMax@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure minvalDIM_D1_CK4
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
 #include "pm_complexMinMax@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure minvalDIM_D1_CK3
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
 #include "pm_complexMinMax@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure minvalDIM_D1_CK2
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
 #include "pm_complexMinMax@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure minvalDIM_D1_CK1
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
 #include "pm_complexMinMax@routines.inc.F90"
     end procedure
 #endif
@@ -351,35 +351,35 @@ contains
 
 #if CK5_ENABLED
     module procedure minvalDIM_D2_CK5
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
 #include "pm_complexMinMax@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure minvalDIM_D2_CK4
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
 #include "pm_complexMinMax@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure minvalDIM_D2_CK3
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
 #include "pm_complexMinMax@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure minvalDIM_D2_CK2
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
 #include "pm_complexMinMax@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure minvalDIM_D2_CK1
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
 #include "pm_complexMinMax@routines.inc.F90"
     end procedure
 #endif
@@ -424,35 +424,35 @@ contains
 
 #if CK5_ENABLED
     module procedure maxvalALL_D1_CK5
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
 #include "pm_complexMinMax@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure maxvalALL_D1_CK4
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
 #include "pm_complexMinMax@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure maxvalALL_D1_CK3
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
 #include "pm_complexMinMax@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure maxvalALL_D1_CK2
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
 #include "pm_complexMinMax@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure maxvalALL_D1_CK1
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
 #include "pm_complexMinMax@routines.inc.F90"
     end procedure
 #endif
@@ -475,35 +475,35 @@ contains
 
 #if CK5_ENABLED
     module procedure maxvalALL_D2_CK5
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
 #include "pm_complexMinMax@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure maxvalALL_D2_CK4
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
 #include "pm_complexMinMax@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure maxvalALL_D2_CK3
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
 #include "pm_complexMinMax@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure maxvalALL_D2_CK2
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
 #include "pm_complexMinMax@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure maxvalALL_D2_CK1
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
 #include "pm_complexMinMax@routines.inc.F90"
     end procedure
 #endif
@@ -538,35 +538,35 @@ contains
 
 #if CK5_ENABLED
     module procedure maxvalDIM_D1_CK5
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
 #include "pm_complexMinMax@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure maxvalDIM_D1_CK4
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
 #include "pm_complexMinMax@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure maxvalDIM_D1_CK3
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
 #include "pm_complexMinMax@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure maxvalDIM_D1_CK2
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
 #include "pm_complexMinMax@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure maxvalDIM_D1_CK1
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
 #include "pm_complexMinMax@routines.inc.F90"
     end procedure
 #endif
@@ -589,35 +589,35 @@ contains
 
 #if CK5_ENABLED
     module procedure maxvalDIM_D2_CK5
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
 #include "pm_complexMinMax@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure maxvalDIM_D2_CK4
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
 #include "pm_complexMinMax@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure maxvalDIM_D2_CK3
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
 #include "pm_complexMinMax@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure maxvalDIM_D2_CK2
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
 #include "pm_complexMinMax@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure maxvalDIM_D2_CK1
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
 #include "pm_complexMinMax@routines.inc.F90"
     end procedure
 #endif
@@ -662,35 +662,35 @@ contains
 
 #if CK5_ENABLED
     module procedure minlocALL_D1_CK5
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
 #include "pm_complexMinMax@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure minlocALL_D1_CK4
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
 #include "pm_complexMinMax@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure minlocALL_D1_CK3
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
 #include "pm_complexMinMax@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure minlocALL_D1_CK2
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
 #include "pm_complexMinMax@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure minlocALL_D1_CK1
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
 #include "pm_complexMinMax@routines.inc.F90"
     end procedure
 #endif
@@ -713,35 +713,35 @@ contains
 
 #if CK5_ENABLED
     module procedure minlocALL_D2_CK5
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
 #include "pm_complexMinMax@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure minlocALL_D2_CK4
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
 #include "pm_complexMinMax@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure minlocALL_D2_CK3
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
 #include "pm_complexMinMax@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure minlocALL_D2_CK2
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
 #include "pm_complexMinMax@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure minlocALL_D2_CK1
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
 #include "pm_complexMinMax@routines.inc.F90"
     end procedure
 #endif
@@ -776,35 +776,35 @@ contains
 
 #if CK5_ENABLED
     module procedure minlocDIM_D1_CK5
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
 #include "pm_complexMinMax@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure minlocDIM_D1_CK4
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
 #include "pm_complexMinMax@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure minlocDIM_D1_CK3
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
 #include "pm_complexMinMax@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure minlocDIM_D1_CK2
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
 #include "pm_complexMinMax@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure minlocDIM_D1_CK1
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
 #include "pm_complexMinMax@routines.inc.F90"
     end procedure
 #endif
@@ -827,35 +827,35 @@ contains
 
 #if CK5_ENABLED
     module procedure minlocDIM_D2_CK5
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
 #include "pm_complexMinMax@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure minlocDIM_D2_CK4
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
 #include "pm_complexMinMax@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure minlocDIM_D2_CK3
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
 #include "pm_complexMinMax@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure minlocDIM_D2_CK2
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
 #include "pm_complexMinMax@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure minlocDIM_D2_CK1
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
 #include "pm_complexMinMax@routines.inc.F90"
     end procedure
 #endif
@@ -900,35 +900,35 @@ contains
 
 #if CK5_ENABLED
     module procedure maxlocALL_D1_CK5
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
 #include "pm_complexMinMax@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure maxlocALL_D1_CK4
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
 #include "pm_complexMinMax@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure maxlocALL_D1_CK3
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
 #include "pm_complexMinMax@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure maxlocALL_D1_CK2
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
 #include "pm_complexMinMax@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure maxlocALL_D1_CK1
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
 #include "pm_complexMinMax@routines.inc.F90"
     end procedure
 #endif
@@ -951,35 +951,35 @@ contains
 
 #if CK5_ENABLED
     module procedure maxlocALL_D2_CK5
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
 #include "pm_complexMinMax@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure maxlocALL_D2_CK4
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
 #include "pm_complexMinMax@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure maxlocALL_D2_CK3
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
 #include "pm_complexMinMax@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure maxlocALL_D2_CK2
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
 #include "pm_complexMinMax@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure maxlocALL_D2_CK1
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
 #include "pm_complexMinMax@routines.inc.F90"
     end procedure
 #endif
@@ -1014,35 +1014,35 @@ contains
 
 #if CK5_ENABLED
     module procedure maxlocDIM_D1_CK5
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
 #include "pm_complexMinMax@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure maxlocDIM_D1_CK4
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
 #include "pm_complexMinMax@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure maxlocDIM_D1_CK3
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
 #include "pm_complexMinMax@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure maxlocDIM_D1_CK2
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
 #include "pm_complexMinMax@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure maxlocDIM_D1_CK1
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
 #include "pm_complexMinMax@routines.inc.F90"
     end procedure
 #endif
@@ -1065,35 +1065,35 @@ contains
 
 #if CK5_ENABLED
     module procedure maxlocDIM_D2_CK5
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
 #include "pm_complexMinMax@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure maxlocDIM_D2_CK4
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
 #include "pm_complexMinMax@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure maxlocDIM_D2_CK3
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
 #include "pm_complexMinMax@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure maxlocDIM_D2_CK2
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
 #include "pm_complexMinMax@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure maxlocDIM_D2_CK1
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
 #include "pm_complexMinMax@routines.inc.F90"
     end procedure
 #endif

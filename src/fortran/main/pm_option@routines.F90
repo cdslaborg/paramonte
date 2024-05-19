@@ -61,35 +61,35 @@ contains
 
 #if SK5_ENABLED
     module procedure getOption_D0_SK5
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
 #include "pm_option@routines.inc.F90"
     end procedure
 #endif
 
 #if SK4_ENABLED
     module procedure getOption_D0_SK4
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
 #include "pm_option@routines.inc.F90"
     end procedure
 #endif
 
 #if SK3_ENABLED
     module procedure getOption_D0_SK3
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
 #include "pm_option@routines.inc.F90"
     end procedure
 #endif
 
 #if SK2_ENABLED
     module procedure getOption_D0_SK2
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
 #include "pm_option@routines.inc.F90"
     end procedure
 #endif
 
 #if SK1_ENABLED
     module procedure getOption_D0_SK1
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
 #include "pm_option@routines.inc.F90"
     end procedure
 #endif
@@ -102,35 +102,35 @@ contains
 
 #if IK5_ENABLED
     module procedure getOption_D0_IK5
-        use pm_kind, only: IKC => IK5
+        use pm_kind, only: IKG => IK5
 #include "pm_option@routines.inc.F90"
     end procedure
 #endif
 
 #if IK4_ENABLED
     module procedure getOption_D0_IK4
-        use pm_kind, only: IKC => IK4
+        use pm_kind, only: IKG => IK4
 #include "pm_option@routines.inc.F90"
     end procedure
 #endif
 
 #if IK3_ENABLED
     module procedure getOption_D0_IK3
-        use pm_kind, only: IKC => IK3
+        use pm_kind, only: IKG => IK3
 #include "pm_option@routines.inc.F90"
     end procedure
 #endif
 
 #if IK2_ENABLED
     module procedure getOption_D0_IK2
-        use pm_kind, only: IKC => IK2
+        use pm_kind, only: IKG => IK2
 #include "pm_option@routines.inc.F90"
     end procedure
 #endif
 
 #if IK1_ENABLED
     module procedure getOption_D0_IK1
-        use pm_kind, only: IKC => IK1
+        use pm_kind, only: IKG => IK1
 #include "pm_option@routines.inc.F90"
     end procedure
 #endif
@@ -143,35 +143,35 @@ contains
 
 #if LK5_ENABLED
     module procedure getOption_D0_LK5
-        use pm_kind, only: LKC => LK5
+        use pm_kind, only: LKG => LK5
 #include "pm_option@routines.inc.F90"
     end procedure
 #endif
 
 #if LK4_ENABLED
     module procedure getOption_D0_LK4
-        use pm_kind, only: LKC => LK4
+        use pm_kind, only: LKG => LK4
 #include "pm_option@routines.inc.F90"
     end procedure
 #endif
 
 #if LK3_ENABLED
     module procedure getOption_D0_LK3
-        use pm_kind, only: LKC => LK3
+        use pm_kind, only: LKG => LK3
 #include "pm_option@routines.inc.F90"
     end procedure
 #endif
 
 #if LK2_ENABLED
     module procedure getOption_D0_LK2
-        use pm_kind, only: LKC => LK2
+        use pm_kind, only: LKG => LK2
 #include "pm_option@routines.inc.F90"
     end procedure
 #endif
 
 #if LK1_ENABLED
     module procedure getOption_D0_LK1
-        use pm_kind, only: LKC => LK1
+        use pm_kind, only: LKG => LK1
 #include "pm_option@routines.inc.F90"
     end procedure
 #endif
@@ -184,35 +184,35 @@ contains
 
 #if CK5_ENABLED
     module procedure getOption_D0_CK5
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
 #include "pm_option@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure getOption_D0_CK4
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
 #include "pm_option@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure getOption_D0_CK3
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
 #include "pm_option@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure getOption_D0_CK2
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
 #include "pm_option@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure getOption_D0_CK1
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
 #include "pm_option@routines.inc.F90"
     end procedure
 #endif
@@ -225,35 +225,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getOption_D0_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_option@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getOption_D0_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_option@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getOption_D0_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_option@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getOption_D0_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_option@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getOption_D0_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_option@routines.inc.F90"
     end procedure
 #endif
@@ -276,35 +276,35 @@ contains
 
 #if SK5_ENABLED
     module procedure getOption_D1_SK5
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
 #include "pm_option@routines.inc.F90"
     end procedure
 #endif
 
 #if SK4_ENABLED
     module procedure getOption_D1_SK4
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
 #include "pm_option@routines.inc.F90"
     end procedure
 #endif
 
 #if SK3_ENABLED
     module procedure getOption_D1_SK3
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
 #include "pm_option@routines.inc.F90"
     end procedure
 #endif
 
 #if SK2_ENABLED
     module procedure getOption_D1_SK2
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
 #include "pm_option@routines.inc.F90"
     end procedure
 #endif
 
 #if SK1_ENABLED
     module procedure getOption_D1_SK1
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
 #include "pm_option@routines.inc.F90"
     end procedure
 #endif
@@ -317,35 +317,35 @@ contains
 
 #if IK5_ENABLED
     module procedure getOption_D1_IK5
-        use pm_kind, only: IKC => IK5
+        use pm_kind, only: IKG => IK5
 #include "pm_option@routines.inc.F90"
     end procedure
 #endif
 
 #if IK4_ENABLED
     module procedure getOption_D1_IK4
-        use pm_kind, only: IKC => IK4
+        use pm_kind, only: IKG => IK4
 #include "pm_option@routines.inc.F90"
     end procedure
 #endif
 
 #if IK3_ENABLED
     module procedure getOption_D1_IK3
-        use pm_kind, only: IKC => IK3
+        use pm_kind, only: IKG => IK3
 #include "pm_option@routines.inc.F90"
     end procedure
 #endif
 
 #if IK2_ENABLED
     module procedure getOption_D1_IK2
-        use pm_kind, only: IKC => IK2
+        use pm_kind, only: IKG => IK2
 #include "pm_option@routines.inc.F90"
     end procedure
 #endif
 
 #if IK1_ENABLED
     module procedure getOption_D1_IK1
-        use pm_kind, only: IKC => IK1
+        use pm_kind, only: IKG => IK1
 #include "pm_option@routines.inc.F90"
     end procedure
 #endif
@@ -358,35 +358,35 @@ contains
 
 #if LK5_ENABLED
     module procedure getOption_D1_LK5
-        use pm_kind, only: LKC => LK5
+        use pm_kind, only: LKG => LK5
 #include "pm_option@routines.inc.F90"
     end procedure
 #endif
 
 #if LK4_ENABLED
     module procedure getOption_D1_LK4
-        use pm_kind, only: LKC => LK4
+        use pm_kind, only: LKG => LK4
 #include "pm_option@routines.inc.F90"
     end procedure
 #endif
 
 #if LK3_ENABLED
     module procedure getOption_D1_LK3
-        use pm_kind, only: LKC => LK3
+        use pm_kind, only: LKG => LK3
 #include "pm_option@routines.inc.F90"
     end procedure
 #endif
 
 #if LK2_ENABLED
     module procedure getOption_D1_LK2
-        use pm_kind, only: LKC => LK2
+        use pm_kind, only: LKG => LK2
 #include "pm_option@routines.inc.F90"
     end procedure
 #endif
 
 #if LK1_ENABLED
     module procedure getOption_D1_LK1
-        use pm_kind, only: LKC => LK1
+        use pm_kind, only: LKG => LK1
 #include "pm_option@routines.inc.F90"
     end procedure
 #endif
@@ -399,35 +399,35 @@ contains
 
 #if CK5_ENABLED
     module procedure getOption_D1_CK5
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
 #include "pm_option@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure getOption_D1_CK4
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
 #include "pm_option@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure getOption_D1_CK3
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
 #include "pm_option@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure getOption_D1_CK2
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
 #include "pm_option@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure getOption_D1_CK1
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
 #include "pm_option@routines.inc.F90"
     end procedure
 #endif
@@ -440,35 +440,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getOption_D1_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_option@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getOption_D1_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_option@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getOption_D1_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_option@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getOption_D1_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_option@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getOption_D1_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_option@routines.inc.F90"
     end procedure
 #endif
@@ -491,35 +491,35 @@ contains
 
 #if SK5_ENABLED
     module procedure getOption_D2_SK5
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
 #include "pm_option@routines.inc.F90"
     end procedure
 #endif
 
 #if SK4_ENABLED
     module procedure getOption_D2_SK4
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
 #include "pm_option@routines.inc.F90"
     end procedure
 #endif
 
 #if SK3_ENABLED
     module procedure getOption_D2_SK3
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
 #include "pm_option@routines.inc.F90"
     end procedure
 #endif
 
 #if SK2_ENABLED
     module procedure getOption_D2_SK2
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
 #include "pm_option@routines.inc.F90"
     end procedure
 #endif
 
 #if SK1_ENABLED
     module procedure getOption_D2_SK1
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
 #include "pm_option@routines.inc.F90"
     end procedure
 #endif
@@ -532,35 +532,35 @@ contains
 
 #if IK5_ENABLED
     module procedure getOption_D2_IK5
-        use pm_kind, only: IKC => IK5
+        use pm_kind, only: IKG => IK5
 #include "pm_option@routines.inc.F90"
     end procedure
 #endif
 
 #if IK4_ENABLED
     module procedure getOption_D2_IK4
-        use pm_kind, only: IKC => IK4
+        use pm_kind, only: IKG => IK4
 #include "pm_option@routines.inc.F90"
     end procedure
 #endif
 
 #if IK3_ENABLED
     module procedure getOption_D2_IK3
-        use pm_kind, only: IKC => IK3
+        use pm_kind, only: IKG => IK3
 #include "pm_option@routines.inc.F90"
     end procedure
 #endif
 
 #if IK2_ENABLED
     module procedure getOption_D2_IK2
-        use pm_kind, only: IKC => IK2
+        use pm_kind, only: IKG => IK2
 #include "pm_option@routines.inc.F90"
     end procedure
 #endif
 
 #if IK1_ENABLED
     module procedure getOption_D2_IK1
-        use pm_kind, only: IKC => IK1
+        use pm_kind, only: IKG => IK1
 #include "pm_option@routines.inc.F90"
     end procedure
 #endif
@@ -573,35 +573,35 @@ contains
 
 #if LK5_ENABLED
     module procedure getOption_D2_LK5
-        use pm_kind, only: LKC => LK5
+        use pm_kind, only: LKG => LK5
 #include "pm_option@routines.inc.F90"
     end procedure
 #endif
 
 #if LK4_ENABLED
     module procedure getOption_D2_LK4
-        use pm_kind, only: LKC => LK4
+        use pm_kind, only: LKG => LK4
 #include "pm_option@routines.inc.F90"
     end procedure
 #endif
 
 #if LK3_ENABLED
     module procedure getOption_D2_LK3
-        use pm_kind, only: LKC => LK3
+        use pm_kind, only: LKG => LK3
 #include "pm_option@routines.inc.F90"
     end procedure
 #endif
 
 #if LK2_ENABLED
     module procedure getOption_D2_LK2
-        use pm_kind, only: LKC => LK2
+        use pm_kind, only: LKG => LK2
 #include "pm_option@routines.inc.F90"
     end procedure
 #endif
 
 #if LK1_ENABLED
     module procedure getOption_D2_LK1
-        use pm_kind, only: LKC => LK1
+        use pm_kind, only: LKG => LK1
 #include "pm_option@routines.inc.F90"
     end procedure
 #endif
@@ -614,35 +614,35 @@ contains
 
 #if CK5_ENABLED
     module procedure getOption_D2_CK5
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
 #include "pm_option@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure getOption_D2_CK4
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
 #include "pm_option@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure getOption_D2_CK3
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
 #include "pm_option@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure getOption_D2_CK2
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
 #include "pm_option@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure getOption_D2_CK1
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
 #include "pm_option@routines.inc.F90"
     end procedure
 #endif
@@ -655,35 +655,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getOption_D2_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_option@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getOption_D2_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_option@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getOption_D2_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_option@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getOption_D2_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_option@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getOption_D2_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_option@routines.inc.F90"
     end procedure
 #endif

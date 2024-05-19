@@ -46,19 +46,19 @@
 #if     wcauchy_typer_ENABLED
         !%%%%%%%%%%%%%%%%%%%%%%%
 
-        wcauchy%cs = real(cs, RKC)
+        wcauchy%cs = real(cs, RKG)
 
         !%%%%%%%%%%%%%%%%%
 #elif   wsin_typer_ENABLED
         !%%%%%%%%%%%%%%%%%
 
-        wsin%omega = real(omega, RKC)
+        wsin%omega = real(omega, RKG)
 
         !%%%%%%%%%%%%%%%%%
 #elif   wcos_typer_ENABLED
         !%%%%%%%%%%%%%%%%%
 
-        wcos%omega = real(omega, RKC)
+        wcos%omega = real(omega, RKG)
 
         !%%%%%%%%%%%%%%%%%%%%%%
 #elif   setNodeWeightGK_ENABLED
@@ -66,14 +66,14 @@
 
         logical(LK)             :: orderIsEven
         integer(IK)             :: i, k, kk, l, ll, halfOrder, halfOrderPlusOne
-        real(RKC)               :: ak, an, bb, c, coefNode, coefWeight, d, x1, xx, s, y
-        real(RKC)   , parameter :: TOL = epsilon(0._RKC) * 10._RKC
+        real(RKG)               :: ak, an, bb, c, coefNode, coefWeight, d, x1, xx, s, y
+        real(RKG)   , parameter :: TOL = epsilon(0._RKG) * 10._RKG
 #if     Fixed_ENABLED
-        real(RKC)               :: B((size(nodeK, kind = IK) / 2_IK) + 1_IK), Tau(size(nodeK, kind = IK) / 2_IK)
+        real(RKG)               :: B((size(nodeK, kind = IK) / 2_IK) + 1_IK), Tau(size(nodeK, kind = IK) / 2_IK)
         integer(IK)             :: order
         order = size(nodeK, kind = IK) - 1_IK
 #elif   Alloc_ENABLED
-        real(RKC)               :: B(((order + 1_IK) / 2_IK) + 1_IK), Tau((order + 1_IK) / 2_IK)
+        real(RKG)               :: B(((order + 1_IK) / 2_IK) + 1_IK), Tau((order + 1_IK) / 2_IK)
         allocate(nodeK(order + 1_IK), weightK(order + 1_IK), weightG((order + 1_IK) / 2_IK))
 #else
 #error  "Unrecognized intefrace."
@@ -86,44 +86,44 @@
         CHECK_ASSERTION(__LINE__, size(weightK, kind = IK) == order + 1_IK, SK_"@setNodeWeightGK(): The condition `size(weightK) == order + 1` must hold. size(weightK), order = "//getStr([size(weightK, kind = IK), order]))
         CHECK_ASSERTION(__LINE__, size(weightG, kind = IK) == halfOrder, SK_"@setNodeWeightGK(): The condition `size(weightG) == halfOrder` must hold. size(weightG), halfOrder = "//getStr([size(weightG, kind = IK), halfOrder]))
 
-        d = 2._RKC
-        an = 0._RKC
+        d = 2._RKG
+        an = 0._RKG
         do k = 1_IK, order
-          an = an + 1._RKC
-          d = d * an / (an + 0.5_RKC)
+          an = an + 1._RKG
+          d = d * an / (an + 0.5_RKG)
         end do
 
         ! Compute the Chebyshev coefficients of the orthogonal polynomial.
 
-        Tau(1) = (an + 2._RKC) / (an + an + 3._RKC)
-        B(halfOrder) = Tau(1) - 1._RKC
+        Tau(1) = (an + 2._RKG) / (an + an + 3._RKG)
+        B(halfOrder) = Tau(1) - 1._RKG
         ak = an
         do l = 1_IK, halfOrder - 1_IK
-          ak = ak + 2._RKC
-          Tau(l + 1_IK) = ((ak - 1._RKC) * ak - an * (an + 1._RKC)) * (ak + 2._RKC) * Tau(l) / (ak * ((ak + 3._RKC) * (ak + 2._RKC) - an * (an + 1._RKC)))
+          ak = ak + 2._RKG
+          Tau(l + 1_IK) = ((ak - 1._RKG) * ak - an * (an + 1._RKG)) * (ak + 2._RKG) * Tau(l) / (ak * ((ak + 3._RKG) * (ak + 2._RKG) - an * (an + 1._RKG)))
           B(halfOrder - l) = Tau(l + 1_IK)
           do ll = 1_IK, l
             B(halfOrder - l) = B(halfOrder - l) + Tau(ll) * B(halfOrder - l + ll)
           end do
         end do
-        B(halfOrderPlusOne) = 1._RKC
+        B(halfOrderPlusOne) = 1._RKG
 
         ! Calculation of approximate values for the abscissas.
 
-        bb = sin(1.570796_RKC / (an + an + 1._RKC))
-        x1 = sqrt(1._RKC - bb * bb)
-        s = 2._RKC * bb * x1
-        c = sqrt(1._RKC - s * s)
-        coefNode = 1._RKC - (1._RKC - 1._RKC / an) / (8._RKC * an * an)
+        bb = sin(1.570796_RKG / (an + an + 1._RKG))
+        x1 = sqrt(1._RKG - bb * bb)
+        s = 2._RKG * bb * x1
+        c = sqrt(1._RKG - s * s)
+        coefNode = 1._RKG - (1._RKG - 1._RKG / an) / (8._RKG * an * an)
         xx = coefNode * x1
 
         ! Coefficient needed for weights.
 
         ! COEF2 = 2^(2*order+1) * order! * order! / (2n+1)!
 
-        coefWeight = 2._RKC / real(2_IK * order + 1_IK, RKC)
+        coefWeight = 2._RKG / real(2_IK * order + 1_IK, RKG)
         do i = 1_IK, order
-          coefWeight = coefWeight * 4._RKC * real(i, RKC) / real(order + i, RKC)
+          coefWeight = coefWeight * 4._RKG * real(i, RKG) / real(order + i, RKG)
         end do
 
         ! Calculation of the K-th abscissa (a Kronrod abscissa) and the corresponding weight.
@@ -133,13 +133,13 @@
 
             kk = 2_IK * k - 1_IK
             call setNodeWeightK(xx, weightK(kk))
-            !weightG(k) = 0._RKC
+            !weightG(k) = 0._RKG
             nodeK(kk) = xx
             y = x1
             x1 = y * c - bb * s
             bb = y * s + bb * c
             if (kk == order) then
-              xx = 0._RKC
+              xx = 0._RKG
             else
               xx = coefNode * x1
             end if
@@ -159,9 +159,9 @@
         ! Compute the Kronrod abscissa at the origin if order is even.
 
         if (orderIsEven) then
-            xx = 0._RKC
+            xx = 0._RKG
             call setNodeWeightK(xx, weightK(order + 1_IK))
-            !weightG(order + 1_IK) = 0._RKC
+            !weightG(order + 1_IK) = 0._RKG
             nodeK(order + 1_IK) = xx
         end if
 
@@ -169,31 +169,31 @@
 
         pure subroutine setNodeWeightK(node, weight)
 
-            real(RKC)   , intent(inout) :: node
-            real(RKC)   , intent(out)   :: weight
-            real(RKC)   :: ai, b0, ub1, ub2, d0, d1, d2, delta, dif, getFunc, fd, yy
+            real(RKG)   , intent(inout) :: node
+            real(RKG)   , intent(out)   :: weight
+            real(RKG)   :: ai, b0, ub1, ub2, d0, d1, d2, delta, dif, getFunc, fd, yy
             logical(LK) :: convergenceOccurred
             integer(IK) :: ii, iter, kk
 
-            convergenceOccurred = node == 0._RKC
+            convergenceOccurred = node == 0._RKG
 
             ! Iteratively compute a Kronrod node.
 
             do iter = 1_IK, 50_IK
 
-                ub1 = 0._RKC
+                ub1 = 0._RKG
                 ub2 = B(halfOrderPlusOne)
-                yy = 4._RKC * node * node - 2._RKC
-                d1 = 0._RKC
+                yy = 4._RKG * node * node - 2._RKG
+                d1 = 0._RKG
 
                 if (orderIsEven) then
                     ai = halfOrder + halfOrderPlusOne
                     d2 = ai * B(halfOrderPlusOne)
-                    dif = 2._RKC
+                    dif = 2._RKG
                 else
-                    ai = real(halfOrderPlusOne, RKC)
-                    d2 = 0._RKC
-                    dif = 1._RKC
+                    ai = real(halfOrderPlusOne, RKG)
+                    d2 = 0._RKG
+                    dif = 1._RKG
                 end if
 
                 do kk = 1_IK, halfOrder
@@ -212,8 +212,8 @@
                     getFunc = node * (ub2 - ub1)
                     fd = d2 + d1
                 else
-                    getFunc = 0.5_RKC * (ub2 - b0)
-                    fd = 4._RKC * node * d2
+                    getFunc = 0.5_RKG * (ub2 - b0)
+                    fd = 4._RKG * node * d2
                 end if
 
                 ! Newton correction.
@@ -221,12 +221,12 @@
                 delta = getFunc / fd
                 node = node - delta
                 if (convergenceOccurred) then
-                    d0 = 1._RKC
+                    d0 = 1._RKG
                     d1 = node
-                    ai = 0._RKC
+                    ai = 0._RKG
                     do kk = 2_IK, order
-                        ai = ai + 1._RKC
-                        d2 = ((ai + ai + 1._RKC) * node * d1 - ai * d0) / (ai + 1._RKC)
+                        ai = ai + 1._RKG
+                        d2 = ((ai + ai + 1._RKG) * node * d1 - ai * d0) / (ai + 1._RKG)
                         d0 = d1
                         d1 = d2
                     end do
@@ -243,37 +243,37 @@
 
         pure subroutine setNodeWeightGK(node, weightKronrod, weightGauss)
 
-            real(RKC)   , intent(inout) :: node
-            real(RKC)   , intent(out)   :: weightKronrod, weightGauss
-            real(RKC)   :: ai, delta, p0, p1, p2, pd0, pd1, pd2, yy
+            real(RKG)   , intent(inout) :: node
+            real(RKG)   , intent(out)   :: weightKronrod, weightGauss
+            real(RKG)   :: ai, delta, p0, p1, p2, pd0, pd1, pd2, yy
             logical(LK) :: convergenceOccurred
             integer(IK) :: ii, iter, kk
-            convergenceOccurred = logical(node == 0._RKC, LK)
+            convergenceOccurred = logical(node == 0._RKG, LK)
 
             ! Iteratively compute a Kronrod node.
 
             do iter = 1_IK, 50_IK
 
                 p1 = node
-                p0 = 1._RKC
-                pd0 = 0._RKC
-                pd1 = 1._RKC
+                p0 = 1._RKG
+                pd0 = 0._RKG
+                pd1 = 1._RKG
 
                 if (order <= 1) then ! Initialize P2 and PD2 to avoid problems with `delta`.
                     if (epsilon(node) < abs(node)) then
-                        p2 = 0.5_RKC * (3._RKC * node * node - 1._RKC)
-                        pd2 = 3._RKC * node
+                        p2 = 0.5_RKG * (3._RKG * node * node - 1._RKG)
+                        pd2 = 3._RKG * node
                     else
-                        p2 = 3._RKC * node
-                        pd2 = 3._RKC
+                        p2 = 3._RKG * node
+                        pd2 = 3._RKG
                     end if
                 end if
 
-                ai = 0._RKC
+                ai = 0._RKG
                 do kk = 2_IK, order
-                    ai = ai + 1._RKC
-                    p2 = ((ai + ai + 1._RKC) * node * p1 - ai * p0) / (ai + 1._RKC)
-                    pd2 = ((ai + ai + 1._RKC) * (p1 + node * pd1) - ai * pd0) / (ai + 1._RKC)
+                    ai = ai + 1._RKG
+                    p2 = ((ai + ai + 1._RKG) * node * p1 - ai * p0) / (ai + 1._RKG)
+                    pd2 = ((ai + ai + 1._RKG) * (p1 + node * pd1) - ai * pd0) / (ai + 1._RKG)
                     p0 = p1
                     p1 = p2
                     pd0 = pd1
@@ -285,10 +285,10 @@
                 delta = p2 / pd2
                 node = node - delta
                 if (convergenceOccurred) then
-                    weightGauss = 2._RKC / (order * pd2 * p0)
-                    yy = 4._RKC * node * node - 2._RKC
+                    weightGauss = 2._RKG / (order * pd2 * p0)
+                    yy = 4._RKG * node * node - 2._RKG
                     p2 = B(halfOrderPlusOne)
-                    p1 = 0._RKC
+                    p1 = 0._RKG
                     do kk = 1_IK, halfOrder
                         ii = halfOrderPlusOne - kk
                         p0 = p1
@@ -298,7 +298,7 @@
                     if (orderIsEven) then
                         weightKronrod = weightGauss + coefWeight / (pd2 * node * (p2 - p1))
                     else
-                        weightKronrod = weightGauss + 2._RKC * coefWeight / (pd2 * (p2 - p0))
+                        weightKronrod = weightGauss + 2._RKG * coefWeight / (pd2 * (p2 - p0))
                     end if
                     return
                 end if
@@ -317,7 +317,7 @@
         ! set maxErrLoc and maxErrVal.
 #define SET_ERROR_VALUE maxErrLoc = sindex(nrmax); maxErrVal = sinfoErr(maxErrLoc);
 
-        real(RKC)   :: errmin
+        real(RKG)   :: errmin
         integer(IK) :: i, ibeg, ido, isucc, j, jbnd, jupbn, k
         integer(IK) :: nint
 
@@ -392,20 +392,20 @@
 #elif   setSeqLimEps_ENABLED
         !%%%%%%%%%%%%%%%%%%%
 
-        real(RKC)   , parameter :: HUGE_RKC = huge(0._RKC)
-        real(RKC)   , parameter :: EPS_RKC = epsilon(0._RKC)
-        real(RKC)               :: delta1, delta2, delta3, epsinf, err1, err2, err3, e0, e1, e1abs, e2, e3, res, ss, tol1, tol2, tol3
-        real(RKC)               :: error ! `error = abs(e1-e0)+abs(e2-e1)+abs(new-e2)`
+        real(RKG)   , parameter :: HUGE_RKG = huge(0._RKG)
+        real(RKG)   , parameter :: EPS_RKG = epsilon(0._RKG)
+        real(RKG)               :: delta1, delta2, delta3, epsinf, err1, err2, err3, e0, e1, e1abs, e2, e3, res, ss, tol1, tol2, tol3
+        real(RKG)               :: error ! `error = abs(e1-e0)+abs(e2-e1)+abs(new-e2)`
         integer(IK)             :: newelm ! number of elements to be computed in the new diagonal
         integer(IK)             :: i, ib, ib2, indx, k1, k2, k3, num
         ! `seqlim` is the element in the new diagonal with least value of error.
         ical = ical + 1_IK
-        abserr = HUGE_RKC
+        abserr = HUGE_RKG
         seqlim = EpsTable(inew)
         blockNewCondition: if (inew >= 3_IK) then
             EpsTable(inew + 2) = EpsTable(inew)
             newelm = (inew - 1_IK) / 2_IK
-            EpsTable(inew) = HUGE_RKC
+            EpsTable(inew) = HUGE_RKG
             num = inew
             k1 = inew
             loopNewElement: do i = 1_IK, newelm
@@ -418,23 +418,23 @@
                 e1abs = abs(e1)
                 delta2 = e2 - e1
                 err2 = abs(delta2)
-                tol2 = max(abs(e2), e1abs) * EPS_RKC
+                tol2 = max(abs(e2), e1abs) * EPS_RKG
                 delta3 = e1 - e0
                 err3 = abs(delta3)
-                tol3 = max(e1abs, abs(e0)) * EPS_RKC
+                tol3 = max(e1abs, abs(e0)) * EPS_RKG
                 if (err2 > tol2 .or. err3 > tol3) then
                     e3 = EpsTable(k1)
                     EpsTable(k1) = e1
                     delta1 = e1 - e3
                     err1 = abs(delta1)
-                    tol1 = max(e1abs, abs(e3)) * EPS_RKC
+                    tol1 = max(e1abs, abs(e3)) * EPS_RKG
                     ! If two elements are very close to each other, omit a part of the table by adjusting the value of `inew`.
                     if (err1 > tol1 .and. err2 > tol2 .and. err3 > tol3) then
-                        ss = 1._RKC / delta1 + 1._RKC / delta2 - 1._RKC / delta3
+                        ss = 1._RKG / delta1 + 1._RKG / delta2 - 1._RKG / delta3
                         epsinf = abs(ss * e1)
                         ! Test to detect irregular behavior in the table and eventually omit a part of the table adjusting the value of `inew`.
-                        if (epsinf > 1.e-4_RKC) then
-                            res = e1 + 1._RKC / ss
+                        if (epsinf > 1.e-4_RKG) then
+                            res = e1 + 1._RKG / ss
                             EpsTable(k1) = res
                             k1 = k1 - 2_IK
                             error = err2 + abs(res - e2) + err3
@@ -473,7 +473,7 @@
             end if
             if (ical < 4_IK) then
                 seqlims(ical) = seqlim
-                abserr = HUGE_RKC
+                abserr = HUGE_RKG
             else
                 abserr = sum(abs(seqlim - seqlims)) ! abs(seqlim - seqlims(3)) + abs(seqlim - seqlims(2)) + abs(seqlim - seqlims(1))
                 seqlims(1) = seqlims(2)
@@ -481,19 +481,19 @@
                 seqlims(3) = seqlim
             end if
         end if blockNewCondition
-        abserr = max(abserr, 5._RKC * EPS_RKC * abs(seqlim)) ! \warning This is set incorrectly in QuadPack of John Burkardt.
+        abserr = max(abserr, 5._RKG * EPS_RKG * abs(seqlim)) ! \warning This is set incorrectly in QuadPack of John Burkardt.
 
         !%%%%%%%%%%%%%%%%%%%
 #elif   isFailedQuad_ENABLED
         !%%%%%%%%%%%%%%%%%%%
 
-        real(RKC), parameter :: vinf = huge(0._RKC) / 1000._RKC ! virtual infinity.
+        real(RKG), parameter :: vinf = huge(0._RKG) / 1000._RKG ! virtual infinity.
         integer(IK) , parameter :: MAX_NUM_INTERVAL = 2000_IK
         integer(IK) :: err, nint_def, neval_def, sindex(MAX_NUM_INTERVAL)
-        real(RKC) :: abserr_def, abstol_def, reltol_def
-        real(RKC) :: sinfo(4, MAX_NUM_INTERVAL)
-        abstol_def = 0._RKC; if (present(abstol)) abstol_def = abstol
-        reltol_def = epsilon(0._RKC)**(2./3.); if (present(reltol)) reltol_def = reltol
+        real(RKG) :: abserr_def, abstol_def, reltol_def
+        real(RKG) :: sinfo(4, MAX_NUM_INTERVAL)
+        abstol_def = 0._RKG; if (present(abstol)) abstol_def = abstol
+        reltol_def = epsilon(0._RKG)**(2./3.); if (present(reltol)) reltol_def = reltol
         if (-vinf < lb .and. ub < vinf)  then ! finite
             err = getQuadErr(getFunc, lb, ub, abstol_def, reltol_def, GK21 HELP_ARG, integral, abserr_def, sinfo, sindex, neval_def, nint_def)
         elseif (lb <= -vinf .and. vinf <= ub) then ! both infinite
@@ -535,16 +535,16 @@
 
         ! Setup the transformation coefficient.
 #if     QAWC_ENABLED
-        real(RKC) :: cstrans
+        real(RKG) :: cstrans
 #if     II_ENABLED
 #define TRANS_COEF invx * (-cstrans)
-        cstrans = 1._RKC / (1._RKC + real(help%cs, RKC))
+        cstrans = 1._RKG / (1._RKG + real(help%cs, RKG))
 #elif   IF_ENABLED
 #define TRANS_COEF invx * cstrans
-        cstrans = 1._RKC / (1._RKC - real(help%cs, RKC) + ub)
+        cstrans = 1._RKG / (1._RKG - real(help%cs, RKG) + ub)
 #elif   FI_ENABLED
 #define TRANS_COEF invx * (-cstrans)
-        cstrans = 1._RKC / (1._RKC + real(help%cs, RKC) - lb)
+        cstrans = 1._RKG / (1._RKG + real(help%cs, RKG) - lb)
 #endif
 #elif   QAGD_ENABLED || QAGS_ENABLED || QAGP_ENABLED
 #define TRANS_COEF invx**2
@@ -553,33 +553,33 @@
 #endif
         ! Transform QAGP break points.
 #if     QAGP_ENABLED && II_ENABLED
-        real(RKC) :: breakTrans(size(help, kind = IK))
+        real(RKG) :: breakTrans(size(help, kind = IK))
         ! Double infinite range requires special care to remove duplicate breaks.
         integer(IK) :: locLastNegBreak, lenBreak
-        CHECK_ASSERTION(__LINE__, all(help /= -1._RKC), SK_"@getQuadErr(): The condition `all(help /= -1.)` must hold. help = "//getStr(help))
+        CHECK_ASSERTION(__LINE__, all(help /= -1._RKG), SK_"@getQuadErr(): The condition `all(help /= -1.)` must hold. help = "//getStr(help))
         lenBreak = size(help, kind = IK)
-        locLastNegBreak = maxloc(help, mask = help < -1._RKC, dim = 1)
-        call setMerged(breakTrans, 1._RKC / (1._RKC - help(1:locLastNegBreak)), 1._RKC / (1._RKC + help(lenBreak : locLastNegBreak + 1 : -1)))
+        locLastNegBreak = maxloc(help, mask = help < -1._RKG, dim = 1)
+        call setMerged(breakTrans, 1._RKG / (1._RKG - help(1:locLastNegBreak)), 1._RKG / (1._RKG + help(lenBreak : locLastNegBreak + 1 : -1)))
         !print *, help(1:locLastNegBreak); print *, help(locLastNegBreak+1:); print *, breakTrans
 #elif   QAGP_ENABLED && IF_ENABLED
-        real(RKC) :: breakTrans(size(help, kind = IK))
-        breakTrans = 1._RKC / (1._RKC - help + ub)
+        real(RKG) :: breakTrans(size(help, kind = IK))
+        breakTrans = 1._RKG / (1._RKG - help + ub)
 #elif   QAGP_ENABLED && FI_ENABLED
-        real(RKC) :: breakTrans(size(help, kind = IK))
-        breakTrans = 1._RKC / (1._RKC + help(size(help) : 1 : -1) - lb)
+        real(RKG) :: breakTrans(size(help, kind = IK))
+        breakTrans = 1._RKG / (1._RKG + help(size(help) : 1 : -1) - lb)
 #elif   !(QAGD_ENABLED || QAGS_ENABLED || QAWC_ENABLED || QAWFS_ENABLED || QAWFC_ENABLED)
 #error  "Unrecognized interface."
 #endif
-        err = getQuadErr(getFuncTrans, 0._RKC, 1._RKC, abstol, reltol, QRULE_ARG HELP_ARG, integral, abserr, sinfo, sindex, neval, nint)
+        err = getQuadErr(getFuncTrans, 0._RKG, 1._RKG, abstol, reltol, QRULE_ARG HELP_ARG, integral, abserr, sinfo, sindex, neval, nint)
     contains
         function getFuncTrans(x) result(func)
             implicit none
-            real(RKC), intent(in)   :: x
-            real(RKC)               :: func
-            real(RKC)               :: invx
-            real(RKC)               :: xMinuxOne2x
-            invx = 1._RKC / x
-            xMinuxOne2x = (x - 1._RKC) * invx
+            real(RKG), intent(in)   :: x
+            real(RKG)               :: func
+            real(RKG)               :: invx
+            real(RKG)               :: xMinuxOne2x
+            invx = 1._RKG / x
+            xMinuxOne2x = (x - 1._RKG) * invx
 #if         II_ENABLED
             func = (getFunc(xMinuxOne2x) + getFunc(-xMinuxOne2x)) * TRANS_COEF
 #elif       IF_ENABLED
@@ -604,50 +604,50 @@
 #endif
         ! Define the nodes for different rules.
 #if     GK15_ENABLED
-       !real(RKC)   , parameter :: nodeG(*) = real(nodeG7(size(nodeG7):1:-1), RKC)
-        real(RKC)   , parameter :: nodeK(*) = real(nodeK15(size(nodeK15):1:-1), RKC)
-        real(RKC)   , parameter :: weightG(*) = real(weightG7(size(weightG7):1:-1), RKC)
-        real(RKC)   , parameter :: weightK(*) = real(weightK15(size(weightK15):1:-1), RKC)
+       !real(RKG)   , parameter :: nodeG(*) = real(nodeG7(size(nodeG7):1:-1), RKG)
+        real(RKG)   , parameter :: nodeK(*) = real(nodeK15(size(nodeK15):1:-1), RKG)
+        real(RKG)   , parameter :: weightG(*) = real(weightG7(size(weightG7):1:-1), RKG)
+        real(RKG)   , parameter :: weightK(*) = real(weightK15(size(weightK15):1:-1), RKG)
 #elif   GK21_ENABLED
-       !real(RKC)   , parameter :: nodeG(*) = real(nodeG10(size(nodeG10):1:-1), RKC)
-        real(RKC)   , parameter :: nodeK(*) = real(nodeK21(size(nodeK21):1:-1), RKC)
-        real(RKC)   , parameter :: weightG(*) = real(weightG10(size(weightG10):1:-1), RKC)
-        real(RKC)   , parameter :: weightK(*) = real(weightK21(size(weightK21):1:-1), RKC)
+       !real(RKG)   , parameter :: nodeG(*) = real(nodeG10(size(nodeG10):1:-1), RKG)
+        real(RKG)   , parameter :: nodeK(*) = real(nodeK21(size(nodeK21):1:-1), RKG)
+        real(RKG)   , parameter :: weightG(*) = real(weightG10(size(weightG10):1:-1), RKG)
+        real(RKG)   , parameter :: weightK(*) = real(weightK21(size(weightK21):1:-1), RKG)
 #elif   GK31_ENABLED
-       !real(RKC)   , parameter :: nodeG(*) = real(nodeG15(size(nodeG15):1:-1), RKC)
-        real(RKC)   , parameter :: nodeK(*) = real(nodeK31(size(nodeK31):1:-1), RKC)
-        real(RKC)   , parameter :: weightG(*) = real(weightG15(size(weightG15):1:-1), RKC)
-        real(RKC)   , parameter :: weightK(*) = real(weightK31(size(weightK31):1:-1), RKC)
+       !real(RKG)   , parameter :: nodeG(*) = real(nodeG15(size(nodeG15):1:-1), RKG)
+        real(RKG)   , parameter :: nodeK(*) = real(nodeK31(size(nodeK31):1:-1), RKG)
+        real(RKG)   , parameter :: weightG(*) = real(weightG15(size(weightG15):1:-1), RKG)
+        real(RKG)   , parameter :: weightK(*) = real(weightK31(size(weightK31):1:-1), RKG)
 #elif   GK41_ENABLED
-       !real(RKC)   , parameter :: nodeG(*) = real(nodeG20(size(nodeG20):1:-1), RKC)
-        real(RKC)   , parameter :: nodeK(*) = real(nodeK41(size(nodeK41):1:-1), RKC)
-        real(RKC)   , parameter :: weightG(*) = real(weightG20(size(weightG20):1:-1), RKC)
-        real(RKC)   , parameter :: weightK(*) = real(weightK41(size(weightK41):1:-1), RKC)
+       !real(RKG)   , parameter :: nodeG(*) = real(nodeG20(size(nodeG20):1:-1), RKG)
+        real(RKG)   , parameter :: nodeK(*) = real(nodeK41(size(nodeK41):1:-1), RKG)
+        real(RKG)   , parameter :: weightG(*) = real(weightG20(size(weightG20):1:-1), RKG)
+        real(RKG)   , parameter :: weightK(*) = real(weightK41(size(weightK41):1:-1), RKG)
 #elif   GK51_ENABLED
-       !real(RKC)   , parameter :: nodeG(*) = real(nodeG25(size(nodeG25):1:-1), RKC)
-        real(RKC)   , parameter :: nodeK(*) = real(nodeK51(size(nodeK51):1:-1), RKC)
-        real(RKC)   , parameter :: weightG(*) = real(weightG25(size(weightG25):1:-1), RKC)
-        real(RKC)   , parameter :: weightK(*) = real(weightK51(size(weightK51):1:-1), RKC)
+       !real(RKG)   , parameter :: nodeG(*) = real(nodeG25(size(nodeG25):1:-1), RKG)
+        real(RKG)   , parameter :: nodeK(*) = real(nodeK51(size(nodeK51):1:-1), RKG)
+        real(RKG)   , parameter :: weightG(*) = real(weightG25(size(weightG25):1:-1), RKG)
+        real(RKG)   , parameter :: weightK(*) = real(weightK51(size(weightK51):1:-1), RKG)
 #elif   GK61_ENABLED
-       !real(RKC)   , parameter :: nodeG(*) = real(nodeG30(size(nodeG30):1:-1), RKC)
-        real(RKC)   , parameter :: nodeK(*) = real(nodeK61(size(nodeK61):1:-1), RKC)
-        real(RKC)   , parameter :: weightG(*) = real(weightG30(size(weightG30):1:-1), RKC)
-        real(RKC)   , parameter :: weightK(*) = real(weightK61(size(weightK61):1:-1), RKC)
+       !real(RKG)   , parameter :: nodeG(*) = real(nodeG30(size(nodeG30):1:-1), RKG)
+        real(RKG)   , parameter :: nodeK(*) = real(nodeK61(size(nodeK61):1:-1), RKG)
+        real(RKG)   , parameter :: weightG(*) = real(weightG30(size(weightG30):1:-1), RKG)
+        real(RKG)   , parameter :: weightK(*) = real(weightK61(size(weightK61):1:-1), RKG)
 #elif   !GKXX_ENABLED
 #error  "Unrecognized interface."
 #endif
-        real(RKC)   , parameter :: TINY_RKC = tiny(0._RKC)
-        real(RKC)   , parameter :: EPS_RKC = epsilon(0._RKC)
+        real(RKG)   , parameter :: TINY_RKG = tiny(0._RKG)
+        real(RKG)   , parameter :: EPS_RKG = epsilon(0._RKG)
         integer(IK)             :: i, ishared, sizeNodeG
-        real(RKC)               :: sumFunc
-        real(RKC)               :: midFunc      ! function value at the center of the interval.
-        real(RKC)               :: avgFunc      ! approximation to the mean value of `getFunc` over `(lb, ub)`, i.e. to `quadGK / (ub - lb)`
-        real(RKC)               :: quadG        ! integral via the 7-point gauss formula
-        real(RKC)               :: quadK        ! integral via the 15-point kronrod formula
-        real(RKC)               :: abscissa
-        real(RKC)               :: midInterval
-        real(RKC)               :: halfInterval
-        real(RKC)               :: absHalfInterval, NegFunc(size(nodeK, kind = IK) - 1_IK), PosFunc(size(nodeK, kind = IK) - 1_IK)
+        real(RKG)               :: sumFunc
+        real(RKG)               :: midFunc      ! function value at the center of the interval.
+        real(RKG)               :: avgFunc      ! approximation to the mean value of `getFunc` over `(lb, ub)`, i.e. to `quadGK / (ub - lb)`
+        real(RKG)               :: quadG        ! integral via the 7-point gauss formula
+        real(RKG)               :: quadK        ! integral via the 15-point kronrod formula
+        real(RKG)               :: abscissa
+        real(RKG)               :: midInterval
+        real(RKG)               :: halfInterval
+        real(RKG)               :: absHalfInterval, NegFunc(size(nodeK, kind = IK) - 1_IK), PosFunc(size(nodeK, kind = IK) - 1_IK)
         integer(IK)             :: offset
 
         ! integration limits.
@@ -655,19 +655,19 @@
 #define LBT lb
 #define UBT ub
 #else
-        real(RKC) :: invx, xMinuxOne2x
-#define LBT 0._RKC
-#define UBT 1._RKC
+        real(RKG) :: invx, xMinuxOne2x
+#define LBT 0._RKG
+#define UBT 1._RKG
 #endif
         ! integration function.
 #if     FF_ENABLED
 #define EVAL_EXPR(y, x) y = getFunc(x)
 #elif   FI_ENABLED
-#define EVAL_EXPR(y, x) invx = 1._RKC / (x); xMinuxOne2x = (x - 1._RKC) * invx; y = getFunc(lb - xMinuxOne2x) * invx**2
+#define EVAL_EXPR(y, x) invx = 1._RKG / (x); xMinuxOne2x = (x - 1._RKG) * invx; y = getFunc(lb - xMinuxOne2x) * invx**2
 #elif   IF_ENABLED
-#define EVAL_EXPR(y, x) invx = 1._RKC / (x); xMinuxOne2x = (x - 1._RKC) * invx; y = getFunc(ub + xMinuxOne2x) * invx**2
+#define EVAL_EXPR(y, x) invx = 1._RKG / (x); xMinuxOne2x = (x - 1._RKG) * invx; y = getFunc(ub + xMinuxOne2x) * invx**2
 #elif   II_ENABLED
-#define EVAL_EXPR(y, x) invx = 1._RKC / (x); xMinuxOne2x = (x - 1._RKC) * invx; y = (getFunc(xMinuxOne2x) + getFunc(-xMinuxOne2x)) * invx**2
+#define EVAL_EXPR(y, x) invx = 1._RKG / (x); xMinuxOne2x = (x - 1._RKG) * invx; y = (getFunc(xMinuxOne2x) + getFunc(-xMinuxOne2x)) * invx**2
 #else
 #error  "Unrecognized interface."
 #endif
@@ -679,8 +679,8 @@
 #else
         CHECK_ASSERTION(__LINE__, precision(nodeK) <= 100, SK_"@getQuadGK(): The condition `precision(nodeK) <= 100` must hold. precision(nodeK) = "//getStr(precision(nodeK)))
 #endif
-        midInterval     = 0.5_RKC * (LBT + UBT)
-        halfInterval    = 0.5_RKC * (UBT - LBT)
+        midInterval     = 0.5_RKG * (LBT + UBT)
+        halfInterval    = 0.5_RKG * (UBT - LBT)
         absHalfInterval = abs(halfInterval)
 
         ! Initialize the summation depending on whether zero is in the abscissas of the Gauss summation.
@@ -689,7 +689,7 @@
         if (offset == 1_IK) then
             quadG = midFunc * weightG(size(weightG))
         else
-            quadG = 0._RKC
+            quadG = 0._RKG
         end if
         quadK = midFunc * weightK(size(weightK))
         intAbsFunc = abs(quadK)
@@ -720,7 +720,7 @@
 
         ! Estimate the error.
 
-        avgFunc = quadK * 0.5_RKC
+        avgFunc = quadK * 0.5_RKG
         smoothness = weightK(1) * abs(midFunc - avgFunc)
         do i = 1_IK, size(nodeK, kind = IK) - 1_IK
             smoothness = smoothness + weightK(i) * (abs(NegFunc(i) - avgFunc) + abs(PosFunc(i) - avgFunc))
@@ -737,16 +737,16 @@
         !print *, "abserr, quadK, quadG", abserr, quadK, quadG, halfInterval
         !write(*,*) "======================================================================================"
         !write(*,*)
-        if (smoothness /= 0._RKC .and. abserr /= 0._RKC) then
-            abserr = 200._RKC * abserr / smoothness ! `abserr` represents relative error here.
-            if (abserr < 1._RKC) then
+        if (smoothness /= 0._RKG .and. abserr /= 0._RKG) then
+            abserr = 200._RKG * abserr / smoothness ! `abserr` represents relative error here.
+            if (abserr < 1._RKG) then
                 abserr = smoothness * sqrt(abserr)**3
             else
                 abserr = smoothness
             end if
-            !abserr = smoothness * min(1._RKC, sqrt(200._RKC * abserr / smoothness)**3) ! the sqrt and exponentiation can be avoided here.
+            !abserr = smoothness * min(1._RKG, sqrt(200._RKG * abserr / smoothness)**3) ! the sqrt and exponentiation can be avoided here.
         end if
-        if (intAbsFunc > TINY_RKC / (50._RKC * EPS_RKC)) abserr = max((EPS_RKC * 50._RKC) * intAbsFunc, abserr)
+        if (intAbsFunc > TINY_RKG / (50._RKG * EPS_RKG)) abserr = max((EPS_RKG * 50._RKG) * intAbsFunc, abserr)
 #undef  SET_PARAMETER
 #undef  EVAL_EXPR
 #undef  LBT
@@ -757,41 +757,41 @@
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #if     QAWC_ENABLED
-        real(RKC) :: cs
+        real(RKG) :: cs
 #endif
-        real(RKC)   , parameter :: HUGE_RKC = huge(0._RKC)
-        real(RKC)   , parameter :: TINY_RKC = tiny(0._RKC)
-        real(RKC)   , parameter :: EPS_RKC = epsilon(0._RKC)
+        real(RKG)   , parameter :: HUGE_RKG = huge(0._RKG)
+        real(RKG)   , parameter :: TINY_RKG = tiny(0._RKG)
+        real(RKG)   , parameter :: EPS_RKG = epsilon(0._RKG)
         integer(IK)             :: iroff1, iroff2
         integer(IK)             :: nintmax, nrmax, maxErrLoc    ! pointer to the interval with largest error estimate.
-        real(RKC)               :: result1, lb1, ub1, abserr1   ! variables for the left  subinterval.
-        real(RKC)               :: result2, lb2, ub2, abserr2   ! variables for the right subinterval.
-        real(RKC)               :: result                       ! sum of the integrals over the subintervals
-        real(RKC)               :: result12                     ! `result1 + result2`
-        real(RKC)               :: abserr12                     ! `abserr1 + abserr2`
-        real(RKC)               :: maxErrVal                    ! `elist(maxErrLoc)`.
-        real(RKC)               :: errsum                       ! sum of the errors over the subintervals.
-        real(RKC)               :: errbnd                       ! requested accuracy `max(abstol, reltol * abs(integral))`.
-        real(RKC)               :: intAbsFunc1, intAbsFunc2
-        real(RKC)               :: smoothness1, smoothness2
+        real(RKG)               :: result1, lb1, ub1, abserr1   ! variables for the left  subinterval.
+        real(RKG)               :: result2, lb2, ub2, abserr2   ! variables for the right subinterval.
+        real(RKG)               :: result                       ! sum of the integrals over the subintervals
+        real(RKG)               :: result12                     ! `result1 + result2`
+        real(RKG)               :: abserr12                     ! `abserr1 + abserr2`
+        real(RKG)               :: maxErrVal                    ! `elist(maxErrLoc)`.
+        real(RKG)               :: errsum                       ! sum of the errors over the subintervals.
+        real(RKG)               :: errbnd                       ! requested accuracy `max(abstol, reltol * abs(integral))`.
+        real(RKG)               :: intAbsFunc1, intAbsFunc2
+        real(RKG)               :: smoothness1, smoothness2
 #if     QAGD_ENABLED || QAWC_ENABLED
 #define FINALIZE_INTEGRATION integral = sum(sinfo(3,1:nint)); abserr = errsum; return
-        real(RKC)   , parameter :: FACTOR = 1._RKC
+        real(RKG)   , parameter :: FACTOR = 1._RKG
 #elif   QAGS_ENABLED || QAGP_ENABLED
 #define FINALIZE_INTEGRATION integral = sum(sinfo(3,1:nint)); abserr = errsum; if (err > 2_IK) err = err - 1_IK; return
-        real(RKC)   , parameter :: FACTOR = 2._RKC
+        real(RKG)   , parameter :: FACTOR = 2._RKG
         integer(IK)             :: ksgn
-        real(RKC)               :: EpsTable(MAXLEN_EPSTAB + 2)
-        real(RKC)               :: absErrEps, seqlim, seqlims(3)
+        real(RKG)               :: EpsTable(MAXLEN_EPSTAB + 2)
+        real(RKG)               :: absErrEps, seqlim, seqlims(3)
         ! error on the interval currently subdivided;
         ! sum of the errors over the intervals larger than the smallest interval considered up to now.
-        real(RKC)               :: erlast, erlarg, correc, ertest
+        real(RKG)               :: erlast, erlarg, correc, ertest
         integer(IK)             :: lenEpsTable, nextrap, iroffnew, k, ktmin, jupbnd, ierro ! roundoff error flag
         logical(LK)             :: extrapolating, extrapAllowed
 #if     QAGS_ENABLED
 #define CYCLE_NEEDED abs(sinfo(2,maxErrLoc) - sinfo(1,maxErrLoc)) > small
 #define EPS_TABLE_START_OFFSET 1_IK
-        real(RKC)               :: small
+        real(RKG)               :: small
 #elif   QAGP_ENABLED
 #define CYCLE_NEEDED level(maxErrLoc) < maximumLevel
 #define EPS_TABLE_START_OFFSET 0_IK
@@ -824,7 +824,7 @@
 #endif
         nintmax = size(sindex, kind = IK)
 #if     QAWC_ENABLED
-        cs = real(help%cs, RKC)
+        cs = real(help%cs, RKG)
         CHECK_ASSERTION(__LINE__, lb < cs, SK_"@getQuadErr(): The condition `lb < cs` must hold. lb, cs = "//getStr([lb, cs]))
         CHECK_ASSERTION(__LINE__, cs < ub, SK_"@getQuadErr(): The condition `cs < ub` must hold. cs, ub = "//getStr([cs, ub]))
 #endif
@@ -834,8 +834,8 @@
         !   Update Dec 2022: This bug is likely related to the Intel bug with the maximum number
         !   of `use` statements in subdmoules in [pm_araryRebill](@ref pm_araryRebill).
         CHECK_ASSERTION(__LINE__, lb < ub, SK_"@getQuadErr(): The condition `lb < ub` must hold. lb, ub = "//getStr([lb, ub]))
-        CHECK_ASSERTION(__LINE__, abstol >= 0._RKC, SK_"@getQuadErr(): The condition `abstol >= 0.` must hold. abstol = "//getStr(abstol))
-        CHECK_ASSERTION(__LINE__, reltol >= 0._RKC, SK_"@getQuadErr(): The condition `reltol >= 0.` must hold. reltol = "//getStr(reltol))
+        CHECK_ASSERTION(__LINE__, abstol >= 0._RKG, SK_"@getQuadErr(): The condition `abstol >= 0.` must hold. abstol = "//getStr(abstol))
+        CHECK_ASSERTION(__LINE__, reltol >= 0._RKG, SK_"@getQuadErr(): The condition `reltol >= 0.` must hold. reltol = "//getStr(reltol))
         CHECK_ASSERTION(__LINE__, all(shape(sinfo, kind = IK) == [4_IK, nintmax]), SK_"@getQuadErr(): The condition `all(shape(sinfo) == [4, size(sindex)])` must hold. shape(sinfo), size(sindex) = "//getStr([shape(sinfo, kind = IK), size(sindex, kind = IK)]))
         CHECK_ASSERTION(__LINE__, size(sinfo, 2, IK) == nintmax, SK_"@getQuadErr(): The condition `size(sinfo,2) == size(sindex)` must hold. size(sinfo,2), size(sindex) = "//getStr([size(sinfo, 2, IK), nintmax]))
         CHECK_ASSERTION(__LINE__, nintmax >= 1_IK, SK_"@getQuadErr(): The condition `size(sindex, kind = IK) >= 1` must hold. size(sinfo,2) = "//getStr(size(sindex, kind = IK)))
@@ -857,13 +857,13 @@
         end do
         sinfo(2,i) = ub
         ! Compute the first approximation to the integral.
-        abserr = 0._RKC
-        integral = 0._RKC
-        intAbsFunc1 = 0._RKC
+        abserr = 0._RKG
+        integral = 0._RKG
+        intAbsFunc1 = 0._RKG
         do i = 1_IK, lenBreakPlusOne ! loop over the first set of intervals.
             result1 = getQuadGK(getFunc, sinfo(1,i), sinfo(2,i), QRULE_ARG, abserr1, intAbsFunc2, smoothness1) ! Compute the first approximation to the integral.
             neval = neval + NEVAL0
-            refinementNeeded(i) = abserr1 /= 0._RKC .and. abserr1 == smoothness1
+            refinementNeeded(i) = abserr1 /= 0._RKG .and. abserr1 == smoothness1
             intAbsFunc1 = intAbsFunc1 + intAbsFunc2
             integral = integral + result1
             abserr = abserr + abserr1
@@ -873,7 +873,7 @@
             sindex(i) = i
         end do
         ! Set the overall error estimate.
-        errsum = 0._RKC
+        errsum = 0._RKG
         do i = 1_IK, lenBreakPlusOne
             if (refinementNeeded(i)) sinfo(4,i) = abserr
             errsum = errsum + sinfo(4,i)
@@ -916,17 +916,17 @@
         err = 0_IK
         errbnd = max(abstol, reltol * abs(integral))
         if (nint == nintmax) then; err = 1_IK; return; end if
-        if (errbnd < abserr .and. abserr <= FACTOR * 50._RKC * EPS_RKC * intAbsFunc1) then; err = 2_IK; return; end if
+        if (errbnd < abserr .and. abserr <= FACTOR * 50._RKG * EPS_RKG * intAbsFunc1) then; err = 2_IK; return; end if
 #if     QAGP_ENABLED
         if (abserr <= errbnd) return
 #elif   QAGD_ENABLED || QAGS_ENABLED || QAWC_ENABLED
-        if (abserr == 0._RKC) return
+        if (abserr == 0._RKG) return
         if (abserr <= errbnd .and. abserr /= smoothness1) return
 #else
 #error  "Unrecognized interface."
 #endif
 !#if    QAWC_ENABLED
-!       if (abserr <= min(0.01_RKC * abs(integral), errbnd)) return
+!       if (abserr <= min(0.01_RKG * abs(integral), errbnd)) return
 !#endif
         ! Refine the integration.
 #if     QAGP_ENABLED
@@ -949,13 +949,13 @@
         ktmin = 0_IK
         nextrap = 0_IK
         iroffnew = 0_IK
-        abserr = HUGE_RKC
+        abserr = HUGE_RKG
         EpsTable(1) = integral
         lenEpsTable = 1_IK + EPS_TABLE_START_OFFSET ! remark: The second element of `EpsTable` for QAGS will be set later on.
         extrapAllowed = .true._LK
         extrapolating = .false._LK
         ! \warning \bug The quadpack.F90 version of John Burkardt is different from the original quadpack, where 50 is replaced with 0.5 in QAGP.
-        ksgn = -1_IK; if (abs(integral) >= (1._RKC - 50._RKC * EPS_RKC) * intAbsFunc1) ksgn = 1_IK
+        ksgn = -1_IK; if (abs(integral) >= (1._RKG - 50._RKG * EPS_RKG) * intAbsFunc1) ksgn = 1_IK
 #elif   !(QAGD_ENABLED || QAWC_ENABLED)
 #error  "Unrecognized interface."
 #endif
@@ -965,12 +965,12 @@
             ! Bisect the subinterval that has the largest error estimate.
             lb1 = sinfo(1,maxErrLoc)
             ub2 = sinfo(2,maxErrLoc)
-            ub1 = 0.5_RKC * (lb1 + ub2)
+            ub1 = 0.5_RKG * (lb1 + ub2)
 #if         QAWC_ENABLED
             if (lb1 < cs .and. cs <= ub1) then
-                ub1 = 0.5_RKC * (cs + ub2)
+                ub1 = 0.5_RKG * (cs + ub2)
             elseif (ub1 < cs .and. cs <  ub2) then
-                ub1 = 0.5_RKC * (lb1 + cs)
+                ub1 = 0.5_RKG * (lb1 + cs)
             end if
 #endif
             lb2 = ub1
@@ -1000,7 +1000,7 @@
             result = result + result12 - sinfo(3,maxErrLoc)
             if (smoothness1 /= abserr1 .and. smoothness2 /= abserr2) then
                 if (nint > 10_IK .and. abserr12 > maxErrVal) iroff2 = iroff2 + 1_IK
-                if (abs(sinfo(3,maxErrLoc) - result12) <= 1.e-05_RKC * abs(result12) .and. abserr12 >= 0.99_RKC * maxErrVal) then
+                if (abs(sinfo(3,maxErrLoc) - result12) <= 1.e-05_RKG * abs(result12) .and. abserr12 >= 0.99_RKG * maxErrVal) then
 #if                 QAGD_ENABLED || QAWC_ENABLED
                     iroff1 = iroff1 + 1_IK
 #elif               QAGS_ENABLED || QAGP_ENABLED
@@ -1048,14 +1048,14 @@
             if (iroff1 >= 6_IK .or. iroff2 >= 20_IK) err = 2_IK ! test for roundoff error and eventually set error flag.
             if (nint == nintmax) err = 1_IK ! set error flag in the case that the number of subintervals equals nintmax.
             ! \warning \bug QuadPack version of John Burkardt, replaces 1000 in the original code with 10000 in the condition below.
-            if (max(abs(lb1), abs(ub2)) <= (1._RKC + NEVAL0 * 100._RKC * EPS_RKC) * (abs(lb2) + 1000._RKC * TINY_RKC)) err = 3_IK !>  \warning \todo The impact of NEVAL0 in this condition may need further investigation for high-order > 61 rules.
+            if (max(abs(lb1), abs(ub2)) <= (1._RKG + NEVAL0 * 100._RKG * EPS_RKG) * (abs(lb2) + 1000._RKG * TINY_RKG)) err = 3_IK !>  \warning \todo The impact of NEVAL0 in this condition may need further investigation for high-order > 61 rules.
 #elif       QAGS_ENABLED || QAGP_ENABLED
             if (iroff1 + iroffnew >= 10_IK .or. iroff2 >= 20) err = 2_IK ! roundoff error.
             if (iroffnew >= 5_IK) ierro = 3_IK
             !if (iroffnew >= 5_IK) error stop __LINE__
             if (nint == nintmax) err = 1_IK
             ! \warning \bug QuadPack version of John Burkardt, replaces 100 in the original code with 1000 in the condition below.
-            if (max(abs(lb1), abs(ub2)) <= (1._RKC + 100._RKC * EPS_RKC) * (abs(lb2) + 1000._RKC * TINY_RKC)) err = 4_IK ! bad integrand behavior.
+            if (max(abs(lb1), abs(ub2)) <= (1._RKG + 100._RKG * EPS_RKG) * (abs(lb2) + 1000._RKG * TINY_RKG)) err = 4_IK ! bad integrand behavior.
 #else
 #error      "Unrecognized interface."
 #endif
@@ -1063,7 +1063,7 @@
 #if         QAGS_ENABLED
             ! Extrapolate, if allowed.
             if (nint == 2_IK) then
-                small = abs(ub - lb) * 0.375_RKC
+                small = abs(ub - lb) * 0.375_RKG
                 erlarg = errsum
                 ertest = errbnd
                 EpsTable(2) = result
@@ -1113,7 +1113,7 @@
                     !print *, "end0", "ktmin", ktmin
                     !print *, "end0", "errsum", errsum
                     !print *, "end0", "abserr", abserr
-                    if (ktmin > 5_IK .and. abserr < 1.e-03_RKC * errsum) err = 5_IK
+                    if (ktmin > 5_IK .and. abserr < 1.e-03_RKG * errsum) err = 5_IK
                     !print *, "end1", MAXLEN_EPSTAB, lenEpsTable
                     if (absErrEps < abserr) then
                         ktmin = 0_IK
@@ -1130,7 +1130,7 @@
                 end if
                 maximumLevel = maximumLevel + 1_IK
 #elif           QAGS_ENABLED
-                small = small * 0.5_RKC
+                small = small * 0.5_RKG
 #else
 #error          "Unrecognized intefrace."
 #endif
@@ -1148,16 +1148,16 @@
         getStr([nint, nintmax])//SK_"]. Please report this error to the ParaMonte library developers.")
 
 #if     QAGS_ENABLED || QAGP_ENABLED
-        if (abserr /= HUGE_RKC) then
+        if (abserr /= HUGE_RKG) then
             if (err + ierro /= 0_IK) then
                 if (ierro == 3_IK) abserr = abserr + correc
                 if (err == 0_IK) err = 3_IK
                 !if (err == 3) error stop __LINE__
-                if (integral == 0._RKC .or. result == 0._RKC) then
+                if (integral == 0._RKG .or. result == 0._RKG) then
                     if (abserr > errsum) then
                         FINALIZE_INTEGRATION
                     end if
-                    if (result == 0._RKC) then
+                    if (result == 0._RKG) then
                         if (err > 2_IK) err = err - 1_IK
                         return
                     end if
@@ -1165,8 +1165,8 @@
                     FINALIZE_INTEGRATION
                 end if
             end if
-            if (ksgn /= -1_IK .or. max(abs(integral), abs(result)) > intAbsFunc1 * 0.01_RKC) then ! test on divergence.
-                if (0.01_RKC > integral / result .or. integral / result > 100._RKC .or. errsum > abs(result)) err = 6_IK
+            if (ksgn /= -1_IK .or. max(abs(integral), abs(result)) > intAbsFunc1 * 0.01_RKG) then ! test on divergence.
+                if (0.01_RKG > integral / result .or. integral / result > 100._RKG .or. errsum > abs(result)) err = 6_IK
             end if
             if (err > 2_IK) err = err - 1_IK
             return
@@ -1187,29 +1187,29 @@
         !   This routine uses `getFunc`, `getFuncWC`, `NEVAL0`, and `cs` objects from the parent routine.
         !   However, it does not have any side effects (does not change any global variables).
         subroutine setQuadQAWC(quadQAWC, lb, ub, abserr, intAbsFunc, smoothness, neval)
-            real(RKC)           , intent(in)    :: lb, ub           ! the integration lower/upper bound.
-            real(RKC)           , intent(out)   :: abserr           ! the abslue value of the integral error estimate, which equals or exceeds `abs(i - quadQAWC)`.
-            real(RKC)           , intent(out)   :: intAbsFunc       ! integral of the absolute of the function.
-            real(RKC)           , intent(out)   :: smoothness       ! An integrand smoothness measure.
+            real(RKG)           , intent(in)    :: lb, ub           ! the integration lower/upper bound.
+            real(RKG)           , intent(out)   :: abserr           ! the abslue value of the integral error estimate, which equals or exceeds `abs(i - quadQAWC)`.
+            real(RKG)           , intent(out)   :: intAbsFunc       ! integral of the absolute of the function.
+            real(RKG)           , intent(out)   :: smoothness       ! An integrand smoothness measure.
             integer(IK)         , intent(inout) :: neval            ! number of function evaluations.
-            real(RKC)           , intent(out)   :: quadQAWC         ! approximation to the integral.
+            real(RKG)           , intent(out)   :: quadQAWC         ! approximation to the integral.
             integer(IK)                         :: i, j
-            real(RKC)           , parameter     :: NODE(11) = [(cos(i * acos(-1._RKC) / 24._RKC), i = 1_IK, 11_IK)]
-            real(RKC)                           :: ak22, amom0, amom1, amom2, u, cstrans
-            real(RKC)                           :: cheb12(13)           ! Chebyshev series expansion of degree 12.
-            real(RKC)                           :: cheb24(25)           ! Chebyshev series expansion of degree 24.
-            real(RKC)                           :: func(25)             ! Function values at `cos(k*pi/24)`, `k = 0, ..., 24`.
-            real(RKC)                           :: result12, result24   ! approximations to the integral Via Clenshaw-Curtis of orders 13 and 25.
-            real(RKC)                           :: midInterval, halfInterval
-            cstrans = (2._RKC * cs - ub - lb) / (ub - lb) ! Compute the position of cs.
+            real(RKG)           , parameter     :: NODE(11) = [(cos(i * acos(-1._RKG) / 24._RKG), i = 1_IK, 11_IK)]
+            real(RKG)                           :: ak22, amom0, amom1, amom2, u, cstrans
+            real(RKG)                           :: cheb12(13)           ! Chebyshev series expansion of degree 12.
+            real(RKG)                           :: cheb24(25)           ! Chebyshev series expansion of degree 24.
+            real(RKG)                           :: func(25)             ! Function values at `cos(k*pi/24)`, `k = 0, ..., 24`.
+            real(RKG)                           :: result12, result24   ! approximations to the integral Via Clenshaw-Curtis of orders 13 and 25.
+            real(RKG)                           :: midInterval, halfInterval
+            cstrans = (2._RKG * cs - ub - lb) / (ub - lb) ! Compute the position of cs.
             !print *, cstrans
-            if (abs(cstrans) < 1.1_RKC) then ! Use the generalized Clenshaw-Curtis method.
+            if (abs(cstrans) < 1.1_RKG) then ! Use the generalized Clenshaw-Curtis method.
                 smoothness = huge(smoothness)
-                halfInterval = 0.5_RKC * (ub - lb)
-                midInterval = 0.5_RKC * (ub + lb)
-                func(1) = 0.5_RKC * getFunc(halfInterval + midInterval)
+                halfInterval = 0.5_RKG * (ub - lb)
+                midInterval = 0.5_RKG * (ub + lb)
+                func(1) = 0.5_RKG * getFunc(halfInterval + midInterval)
                 func(13) = getFunc(midInterval)
-                func(25) = 0.5_RKC * getFunc(midInterval - halfInterval)
+                func(25) = 0.5_RKG * getFunc(midInterval - halfInterval)
                 do i = 2_IK, 12_IK
                     u = halfInterval * NODE(i - 1_IK)
                     func(i) = getFunc(u + midInterval)
@@ -1217,16 +1217,16 @@
                 end do
                 call setChebExpan(func, cheb12, cheb24) ! compute the Chebyshev series expansion.
                 ! the modified Chebyshev moments are computed by forward recursion, using amom0 and amom1 as starting values.
-                amom0 = log(abs((1._RKC - cstrans) / (1._RKC + cstrans)))
-                amom1 = 2._RKC + cstrans * amom0
+                amom0 = log(abs((1._RKG - cstrans) / (1._RKG + cstrans)))
+                amom1 = 2._RKG + cstrans * amom0
                 result12 = cheb12(1) * amom0 + cheb12(2) * amom1
                 result24 = cheb24(1) * amom0 + cheb24(2) * amom1
                 intAbsFunc = abs(cheb24(1))
                 j = 1_IK
                 do i = 3_IK, 13_IK
-                    amom2 = 2._RKC * cstrans * amom1 - amom0
-                    ak22 = real((i - 2_IK) * (i - 2_IK), RKC)
-                    if (i == (i / 2_IK) * 2_IK) amom2 = amom2 - 4._RKC / (ak22 - 1._RKC)
+                    amom2 = 2._RKG * cstrans * amom1 - amom0
+                    ak22 = real((i - 2_IK) * (i - 2_IK), RKG)
+                    if (i == (i / 2_IK) * 2_IK) amom2 = amom2 - 4._RKG / (ak22 - 1._RKG)
                     result12 = result12 + cheb12(i) * amom2
                     result24 = result24 + cheb24(i) * amom2
                     amom0 = amom1
@@ -1235,9 +1235,9 @@
                     intAbsFunc = intAbsFunc + abs(cheb24(j - 1)) + abs(cheb24(j))
                 end do
                 do i = 14_IK, 25_IK
-                    amom2 = 2._RKC * cstrans * amom1 - amom0
-                    ak22 = real((i - 2_IK) * (i - 2_IK), RKC)
-                    if (i == (i / 2_IK) * 2_IK) amom2 = amom2 - 4._RKC / (ak22 - 1._RKC)
+                    amom2 = 2._RKG * cstrans * amom1 - amom0
+                    ak22 = real((i - 2_IK) * (i - 2_IK), RKG)
+                    if (i == (i / 2_IK) * 2_IK) amom2 = amom2 - 4._RKG / (ak22 - 1._RKG)
                     result24 = result24 + cheb24(i) * amom2
                     amom0 = amom1
                     amom1 = amom2
@@ -1254,53 +1254,53 @@
         ! Cauchy-Weighted function.
 
         function getFuncWC(x) result(funcWC)
-            real(RKC)   , intent(in)    :: x
-            real(RKC)                   :: funcWC
+            real(RKG)   , intent(in)    :: x
+            real(RKG)                   :: funcWC
             funcWC = getFunc(x) / (x - cs)
         end function
 
 #elif   QAWFS_ENABLED || QAWFC_ENABLED
 
         subroutine getQuadWF(quadWF, lb, ub, currentLevel, ksave, abserr, intAbsFunc, smoothness, chebmom, momcom, neval)
-            real(RKC)   , intent(in)                    :: lb, ub           !<  The current integration limits.
+            real(RKG)   , intent(in)                    :: lb, ub           !<  The current integration limits.
             integer(IK) , intent(in)                    :: ksave            !<  The key which is one when the moments for the current interval have been computed.
             integer(IK) , intent(in)                    :: currentLevel     !<  The length of interval `(lb,ub)` is equal to the length of the original integration interval divided by `2**currentLevel`.
                                                                             !!  We assume that the routine is used in an adaptive integration process, otherwise set `currentLevel = 0`.
                                                                             !!  `currentLevel` must be zero at the first call.
-            real(RKC)   , intent(out)                   :: abserr           !<  estimate of the modulus of the absolute error, which should equal or exceed `abs(i-quadWF)`.
-            real(RKC)   , intent(out)                   :: intAbsFunc       !<  Approximation to the integral of the absolute of the function `abs(f(x))`.
-            real(RKC)   , intent(out)                   :: smoothness       !<  Approximation to the integral of `abs(f - i / (ub - lb))`.
-            real(RKC)   , intent(inout) , contiguous    :: chebmom(:, 25)   !<  Array of shape `(maxLenChebMom,25)` containing the modified Chebyshev moments for the first `momcom` interval lengths.
+            real(RKG)   , intent(out)                   :: abserr           !<  estimate of the modulus of the absolute error, which should equal or exceed `abs(i-quadWF)`.
+            real(RKG)   , intent(out)                   :: intAbsFunc       !<  Approximation to the integral of the absolute of the function `abs(f(x))`.
+            real(RKG)   , intent(out)                   :: smoothness       !<  Approximation to the integral of `abs(f - i / (ub - lb))`.
+            real(RKG)   , intent(inout) , contiguous    :: chebmom(:, 25)   !<  Array of shape `(maxLenChebMom,25)` containing the modified Chebyshev moments for the first `momcom` interval lengths.
             integer(IK) , intent(inout)                 :: momcom           !<  For each interval length we need to compute the Chebyshev moments.
                                                                             !!  `momcom` counts the number of intervals for which these moments have already been computed.
                                                                             !!  If `currentLevel < momcom` or `ksave = 1`, the Chebyshev moments for the interval `(lb, ub)` have already been computed.
                                                                             !!  Otherwise we compute them and we increase `momcom`.
             integer(IK) , intent(out)                   :: neval            !<  Number of integrand evaluations.
-            real(RKC)                                   :: quadWF           !<  approximation to the integral i
+            real(RKG)                                   :: quadWF           !<  approximation to the integral i
 
-            real(RKC)                   , parameter     :: NODE(11) = [(cos(i * acos(-1._RKC) / 24._RKC), i = 1_IK, 11_IK)]
+            real(RKG)                   , parameter     :: NODE(11) = [(cos(i * acos(-1._RKG) / 24._RKG), i = 1_IK, 11_IK)]
             integer(IK)                                 :: i, iers, isym, j, k, m, noequ, noeq1
             integer(IK)                                 :: maxLenChebMom        !<  The upper bound on the number of Chebyshev moments which can be stored,
                                                                                 !<  i.e. for the intervals of lengths `abs(bb-aa)*2**(-l)`, `l = 0,1,2, ..., maxLenChebMom-2`.
-            real(RKC)                                   :: ac, an, ansq, invansq, as, asap, ass, conc, cons, cospar, d(25), d1(25), d2(25), estc, ests, parint, par2, par22, p2, p3, p4, sinpar, Vector(28)
-            real(RKC)                                   :: halfInterval
-            real(RKC)                                   :: midInterval
-            real(RKC)                                   :: cheb12(13)       !<  Chebyshev series expansion of degree 12.
-            real(RKC)                                   :: cheb24(25)       !<  Chebyshev series expansion of degree 24.
-            real(RKC)                                   :: func(25)         !<  Function values at `(ub - lb) * 0.5 * cos(k * pi / 12) + (ub + lb) * 0.5`, `k = 0, ..., 24`.
-            real(RKC)                                   :: result12cos      !<  approximation to the integral of `cos(0.5 * (ub - lb) * omega * NODE) * getFunc(0.5 * (ub - lb) * NODE + 0.5 * (ub + lb))` over `(-1, +1)`, using the Chebyshev series expansion of degree 12.
-            real(RKC)                                   :: result24cos      !<  approximation to the integral of `cos(0.5 * (ub - lb) * omega * NODE) * getFunc(0.5 * (ub - lb) * NODE + 0.5 * (ub + lb))` over `(-1, +1)`, using the Chebyshev series expansion of degree 12.
-            real(RKC)                                   :: result12sin      !<  approximation to the integral of `sin(0.5 * (ub - lb) * omega * NODE) * getFunc(0.5 * (ub - lb) * NODE + 0.5 * (ub + lb))` over `(-1, +1)`, using the Chebyshev series expansion of degree 12.
-            real(RKC)                                   :: result24sin      !<  approximation to the integral of `sin(0.5 * (ub - lb) * omega * NODE) * getFunc(0.5 * (ub - lb) * NODE + 0.5 * (ub + lb))` over `(-1, +1)`, using the Chebyshev series expansion of degree 12.
+            real(RKG)                                   :: ac, an, ansq, invansq, as, asap, ass, conc, cons, cospar, d(25), d1(25), d2(25), estc, ests, parint, par2, par22, p2, p3, p4, sinpar, Vector(28)
+            real(RKG)                                   :: halfInterval
+            real(RKG)                                   :: midInterval
+            real(RKG)                                   :: cheb12(13)       !<  Chebyshev series expansion of degree 12.
+            real(RKG)                                   :: cheb24(25)       !<  Chebyshev series expansion of degree 24.
+            real(RKG)                                   :: func(25)         !<  Function values at `(ub - lb) * 0.5 * cos(k * pi / 12) + (ub + lb) * 0.5`, `k = 0, ..., 24`.
+            real(RKG)                                   :: result12cos      !<  approximation to the integral of `cos(0.5 * (ub - lb) * omega * NODE) * getFunc(0.5 * (ub - lb) * NODE + 0.5 * (ub + lb))` over `(-1, +1)`, using the Chebyshev series expansion of degree 12.
+            real(RKG)                                   :: result24cos      !<  approximation to the integral of `cos(0.5 * (ub - lb) * omega * NODE) * getFunc(0.5 * (ub - lb) * NODE + 0.5 * (ub + lb))` over `(-1, +1)`, using the Chebyshev series expansion of degree 12.
+            real(RKG)                                   :: result12sin      !<  approximation to the integral of `sin(0.5 * (ub - lb) * omega * NODE) * getFunc(0.5 * (ub - lb) * NODE + 0.5 * (ub + lb))` over `(-1, +1)`, using the Chebyshev series expansion of degree 12.
+            real(RKG)                                   :: result24sin      !<  approximation to the integral of `sin(0.5 * (ub - lb) * omega * NODE) * getFunc(0.5 * (ub - lb) * NODE + 0.5 * (ub + lb))` over `(-1, +1)`, using the Chebyshev series expansion of degree 12.
 
-            midInterval = 0.5_RKC * (ub + lb)
-            halfInterval = 0.5_RKC * (ub - lb)
+            midInterval = 0.5_RKG * (ub + lb)
+            halfInterval = 0.5_RKG * (ub - lb)
             parint = Weight%omega * halfInterval
             maxLenChebMom = size(chebmom, 1_IK, IK)
 
             ! Compute the integral using the 15-point gauss-kronrod formula if the value of the parameter in the integrand is small.
 
-            if (abs(parint) > 2._RKC) then
+            if (abs(parint) > 2._RKG) then
 
                 ! Compute the integral using the generalized clenshaw-curtis method.
 
@@ -1315,44 +1315,44 @@
 
                     m = momcom + 1_IK
                     par2 = parint*parint
-                    par22 = par2 + 2._RKC
+                    par22 = par2 + 2._RKG
                     sinpar = sin(parint)
                     cospar = cos(parint)
 
                     ! compute the Chebyshev moments with respect to cosine.
 
-                    Vector(1) = 2._RKC*sinpar / parint
-                    Vector(2) = (8._RKC*cospar + (par2 + par2 - 8._RKC) * sinpar / parint) / par2
-                    Vector(3) = (32._RKC*(par2 - 12._RKC)*cospar + (2._RKC * ((par2 - 80._RKC) * par2 + 192._RKC) * sinpar) / parint) / (par2*par2)
-                    ac = 8._RKC * cospar
-                    as = 24._RKC * parint * sinpar
-                    if (abs(parint) > 24._RKC) then ! Compute the Chebyshev moments by means of forward recursion.
-                        an = 4._RKC
+                    Vector(1) = 2._RKG*sinpar / parint
+                    Vector(2) = (8._RKG*cospar + (par2 + par2 - 8._RKG) * sinpar / parint) / par2
+                    Vector(3) = (32._RKG*(par2 - 12._RKG)*cospar + (2._RKG * ((par2 - 80._RKG) * par2 + 192._RKG) * sinpar) / parint) / (par2*par2)
+                    ac = 8._RKG * cospar
+                    as = 24._RKG * parint * sinpar
+                    if (abs(parint) > 24._RKG) then ! Compute the Chebyshev moments by means of forward recursion.
+                        an = 4._RKG
                         do i = 4_IK, 13_IK
                             ansq = an * an
-                            Vector(i) = ((ansq - 4._RKC) * (2._RKC * (par22 - ansq - ansq) * Vector(i - 1) - ac) + as - par2 * (an + 1._RKC) * (an + 2._RKC) * Vector(i - 2)) / (par2 * (an - 1._RKC) * (an - 2._RKC))
-                            an = an + 2._RKC
+                            Vector(i) = ((ansq - 4._RKG) * (2._RKG * (par22 - ansq - ansq) * Vector(i - 1) - ac) + as - par2 * (an + 1._RKG) * (an + 2._RKG) * Vector(i - 2)) / (par2 * (an - 1._RKG) * (an - 2._RKG))
+                            an = an + 2._RKG
                         end do
                     else ! Compute the Chebyshev moments as the solutions of a boundary value problem with 1 initial value (Vector(3)) and 1 end value (computed using an asymptotic formula).
                         noequ = 25_IK
                         noeq1 = noequ - 1_IK
-                        an = 6._RKC
+                        an = 6._RKG
                         do k = 1_IK, noeq1
                             ansq = an * an
-                            d(k) = -2._RKC * (ansq - 4._RKC) * (par22 - ansq - ansq)
-                            d2(k) = (an - 1._RKC) * (an - 2._RKC) * par2
-                            d1(k + 1) = (an + 3._RKC) * (an + 4._RKC) * par2
-                            Vector(k + 3) = as - (ansq - 4._RKC) * ac
-                            an = an + 2._RKC
+                            d(k) = -2._RKG * (ansq - 4._RKG) * (par22 - ansq - ansq)
+                            d2(k) = (an - 1._RKG) * (an - 2._RKG) * par2
+                            d1(k + 1) = (an + 3._RKG) * (an + 4._RKG) * par2
+                            Vector(k + 3) = as - (ansq - 4._RKG) * ac
+                            an = an + 2._RKG
                         end do
                         ansq = an * an
-                        invansq = 1._RKC / ansq
-                        d(noequ) = -2._RKC * (ansq - 4._RKC) * (par22 - ansq - ansq)
-                        Vector(noequ + 3) = as - (ansq - 4._RKC) * ac
-                        Vector(4) = Vector(4) - 56._RKC * par2 * Vector(3)
+                        invansq = 1._RKG / ansq
+                        d(noequ) = -2._RKG * (ansq - 4._RKG) * (par22 - ansq - ansq)
+                        Vector(noequ + 3) = as - (ansq - 4._RKG) * ac
+                        Vector(4) = Vector(4) - 56._RKG * par2 * Vector(3)
                         ass = parint * sinpar
-                        asap = (((((210._RKC * par2 - 1._RKC) * cospar - (105._RKC * par2 - 63._RKC) * ass) * invansq - (1._RKC - 15._RKC * par2) * cospar + 15._RKC * ass) * invansq - cospar + 3._RKC * ass) * invansq - cospar) * invansq
-                        Vector(noequ + 3) = Vector(noequ + 3) - 2._RKC * asap * par2 * (an - 1._RKC) * (an - 2._RKC)
+                        asap = (((((210._RKG * par2 - 1._RKG) * cospar - (105._RKG * par2 - 63._RKG) * ass) * invansq - (1._RKG - 15._RKG * par2) * cospar + 15._RKG * ass) * invansq - cospar + 3._RKG * ass) * invansq - cospar) * invansq
+                        Vector(noequ + 3) = Vector(noequ + 3) - 2._RKG * asap * par2 * (an - 1._RKG) * (an - 2._RKG)
                         ! Solve the tridiagonal system by means of Gaussian elimination with partial pivoting.
                         call dgtsl(noequ, d1, d, d2, Vector(4), iers)
                     end if
@@ -1362,35 +1362,35 @@
 
                     ! Compute the Chebyshev moments with respect to sine.
 
-                    Vector(1) = 2._RKC * (sinpar - parint * cospar) / par2
-                    Vector(2) = (18._RKC - 48._RKC / par2) * sinpar / par2 + (-2._RKC + 48._RKC / par2) * cospar / parint
-                    ac = -24._RKC * parint * cospar
-                    as = -8._RKC * sinpar
-                    if (abs(parint) > 24._RKC) then ! Compute the Chebyshev moments by means of forward recursion.
-                        an = 3._RKC
+                    Vector(1) = 2._RKG * (sinpar - parint * cospar) / par2
+                    Vector(2) = (18._RKG - 48._RKG / par2) * sinpar / par2 + (-2._RKG + 48._RKG / par2) * cospar / parint
+                    ac = -24._RKG * parint * cospar
+                    as = -8._RKG * sinpar
+                    if (abs(parint) > 24._RKG) then ! Compute the Chebyshev moments by means of forward recursion.
+                        an = 3._RKG
                         do i = 3_IK, 12_IK
                             ansq = an * an
-                            Vector(i) = ((ansq - 4._RKC) * (2._RKC * (par22 - ansq - ansq) * Vector(i - 1) + as) + ac - par2 * (an + 1._RKC) * (an + 2._RKC) * Vector(i - 2)) / (par2 * (an - 1._RKC) * (an - 2._RKC))
-                            an = an + 2._RKC
+                            Vector(i) = ((ansq - 4._RKG) * (2._RKG * (par22 - ansq - ansq) * Vector(i - 1) + as) + ac - par2 * (an + 1._RKG) * (an + 2._RKG) * Vector(i - 2)) / (par2 * (an - 1._RKG) * (an - 2._RKG))
+                            an = an + 2._RKG
                         end do
                     else ! Compute the Chebyshev moments as the solutions of a boundary value problem with 1 initial value (Vector(2)) and 1 end value (computed using an asymptotic formula).
-                        an = 5._RKC
+                        an = 5._RKG
                         do k = 1_IK, noeq1
                             ansq = an * an
-                            d(k) = -2._RKC * (ansq - 4._RKC) * (par22 - ansq - ansq)
-                            d2(k) = (an - 1._RKC) * (an - 2._RKC) * par2
-                            d1(k + 1) = (an + 3._RKC) * (an + 4._RKC) * par2
-                            Vector(k + 2) = ac + (ansq - 4._RKC) * as
-                            an = an + 2._RKC
+                            d(k) = -2._RKG * (ansq - 4._RKG) * (par22 - ansq - ansq)
+                            d2(k) = (an - 1._RKG) * (an - 2._RKG) * par2
+                            d1(k + 1) = (an + 3._RKG) * (an + 4._RKG) * par2
+                            Vector(k + 2) = ac + (ansq - 4._RKG) * as
+                            an = an + 2._RKG
                         end do
                         ansq = an * an
-                        d(noequ) = -2._RKC * (ansq - 4._RKC) * (par22 - ansq - ansq)
-                        Vector(noequ + 2) = ac + (ansq - 4._RKC) * as
-                        Vector(3) = Vector(3) - 42._RKC * par2 * Vector(2)
+                        d(noequ) = -2._RKG * (ansq - 4._RKG) * (par22 - ansq - ansq)
+                        Vector(noequ + 2) = ac + (ansq - 4._RKG) * as
+                        Vector(3) = Vector(3) - 42._RKG * par2 * Vector(2)
                         ass = parint * cospar
-                        invansq = 1._RKC / ansq
-                        asap = (((((105._RKC * par2 - 63._RKC) * ass + (210._RKC * par2 - 1._RKC) * sinpar) * invansq + (15._RKC * par2 - 1._RKC) * sinpar - 15._RKC * ass) * invansq - 3._RKC * ass - sinpar) * invansq - sinpar) * invansq
-                        Vector(noequ + 2) = Vector(noequ + 2) - 2._RKC * asap * par2 * (an - 1._RKC) * (an - 2._RKC)
+                        invansq = 1._RKG / ansq
+                        asap = (((((105._RKG * par2 - 63._RKG) * ass + (210._RKG * par2 - 1._RKG) * sinpar) * invansq + (15._RKG * par2 - 1._RKG) * sinpar - 15._RKG * ass) * invansq - 3._RKG * ass - sinpar) * invansq - sinpar) * invansq
+                        Vector(noequ + 2) = Vector(noequ + 2) - 2._RKG * asap * par2 * (an - 1._RKG) * (an - 2._RKG)
                         ! Solve the tridiagonal system by means of Gaussian elimination with partial pivoting.
                         call dgtsl(noequ, d1, d, d2, Vector(3), iers)
                     end if
@@ -1403,9 +1403,9 @@
 
                 ! Compute the coefficients of the Chebyshev expansions of degrees 12 and 24 of the function `f(x)`.
 
-                func(1) = 0.5_RKC * f(midInterval + halfInterval)
+                func(1) = 0.5_RKG * f(midInterval + halfInterval)
                 func(13) = f(midInterval)
-                func(25) = 0.5_RKC * f(midInterval - halfInterval)
+                func(25) = 0.5_RKG * f(midInterval - halfInterval)
                 do i = 2_IK, 12_IK
                     isym = 26_IK - i
                     func(i) = f(halfInterval * NODE(i - 1) + midInterval)
@@ -1416,7 +1416,7 @@
                 ! Compute the integral and error estimates.
 
                 result12cos = cheb12(13) * chebmom(m, 13)
-                result12sin = 0._RKC
+                result12sin = 0._RKG
                 k = 11_IK
                 do j = 1_IK, 6_IK
                     result12cos = result12cos + cheb12(k) * chebmom(m, k)
@@ -1424,7 +1424,7 @@
                     k = k - 2_IK
                 end do
                 result24cos = cheb24(25) * chebmom(m, 25)
-                result24sin = 0._RKC
+                result24sin = 0._RKG
                 intAbsFunc = abs(cheb24(25))
                 k = 23_IK
                 do j = 1_IK, 12_IK
@@ -1450,14 +1450,14 @@
         end function
 
         function getFuncWeightedSin(x) result(funcWeightedFour)
-            real(RKC)   , intent(in)    :: x
-            real(RKC)                   :: funcWeightedFour
+            real(RKG)   , intent(in)    :: x
+            real(RKG)                   :: funcWeightedFour
             funcWeightedFour = sin(Weight%omega * x) * getFunc(x)
         end function
 
         function getFuncWeightedSin(x) result(funcWeightedFour)
-            real(RKC)   , intent(in)    :: x
-            real(RKC)                   :: funcWeightedFour
+            real(RKG)   , intent(in)    :: x
+            real(RKG)                   :: funcWeightedFour
             funcWeightedFour = sin(Weight%omega * x) * getFunc(x)
         end function
 
@@ -1468,8 +1468,8 @@
         !%%%%%%%%%%%%%%%%%%%
 
         integer(IK)             :: i, j
-        real(RKC)               :: alam, alam1, alam2, part1, part2, part3, Vector(12)
-        real(RKC)   , parameter :: NODE(11) = [(cos(i * acos(-1._RKC) / 24._RKC), i = 1, size(NODE))]
+        real(RKG)               :: alam, alam1, alam2, part1, part2, part3, Vector(12)
+        real(RKG)   , parameter :: NODE(11) = [(cos(i * acos(-1._RKG) / 24._RKG), i = 1, size(NODE))]
 
         do i = 1_IK, 12_IK
             j = 26_IK - i
@@ -1549,18 +1549,18 @@
         cheb24(25) = cheb12(1) - alam
         cheb12(13) = Vector(1) - Vector(3)
         cheb24(13) = cheb12(13)
-        alam = 1._RKC / 6._RKC
+        alam = 1._RKG / 6._RKG
         do i = 2_IK, 12_IK
             cheb12(i) = cheb12(i) * alam
         end do
-        alam = 0.5_RKC * alam
+        alam = 0.5_RKG * alam
         cheb12(1) = cheb12(1) * alam
         cheb12(13) = cheb12(13) * alam
         do i = 2_IK, 24_IK
             cheb24(i) = cheb24(i) * alam
         end do
-        cheb24(1) = 0.5_RKC * alam * cheb24(1)
-        cheb24(25) = 0.5_RKC * alam * cheb24(25)
+        cheb24(1) = 0.5_RKG * alam * cheb24(1)
+        cheb24(25) = 0.5_RKG * alam * cheb24(25)
 
 #else
         !%%%%%%%%%%%%%%%%%%%%%%%%

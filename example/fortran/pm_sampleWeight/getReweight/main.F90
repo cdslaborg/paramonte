@@ -12,9 +12,9 @@ program example
     disp = display_type(file = "main.out.F90")
 
     block
-        use pm_kind, only: IKC => IK ! all processor kinds are supported.
-        integer(IKC), allocatable :: weight(:)
-        integer(IKC) :: skip
+        use pm_kind, only: IKG => IK ! all processor kinds are supported.
+        integer(IKG), allocatable :: weight(:)
+        integer(IKG) :: skip
         do itry = 1, ntry
             call disp%show("lenwei = getUnifRand(0, 9); skip = getUnifRand(1, 4)")
                             lenwei = getUnifRand(0, 9); skip = getUnifRand(1, 4)
@@ -35,18 +35,18 @@ program example
     end block
 
     block
-        use pm_kind, only: RKC => RKS ! all processor kinds are supported.
-        real(RKC), allocatable :: weight(:)
-        real(RKC) :: skip
+        use pm_kind, only: RKG => RKS ! all processor kinds are supported.
+        real(RKG), allocatable :: weight(:)
+        real(RKG) :: skip
         do itry = 1, ntry
-            call disp%show("lenwei = getUnifRand(0, 9); skip = getUnifRand(.1_RKC, 4._RKC)")
-                            lenwei = getUnifRand(0, 9); skip = getUnifRand(.1_RKC, 4._RKC)
+            call disp%show("lenwei = getUnifRand(0, 9); skip = getUnifRand(.1_RKG, 4._RKG)")
+                            lenwei = getUnifRand(0, 9); skip = getUnifRand(.1_RKG, 4._RKG)
             call disp%show("lenwei")
             call disp%show( lenwei )
             call disp%show("skip")
             call disp%show( skip )
-            call disp%show("weight = getUnifRand(-1._RKC, 9._RKC, lenwei)")
-                            weight = getUnifRand(-1._RKC, 9._RKC, lenwei)
+            call disp%show("weight = getUnifRand(-1._RKG, 9._RKG, lenwei)")
+                            weight = getUnifRand(-1._RKG, 9._RKG, lenwei)
             call disp%show("weight")
             call disp%show( weight )
             call disp%show("weight = getReweight(weight, skip)")

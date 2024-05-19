@@ -67,9 +67,9 @@
 
         integer(IK) :: info
 #if     CK_ENABLED
-        complex(CKC) :: chol(size(mat, 1, IK), size(mat, 2, IK))
+        complex(CKG) :: chol(size(mat, 1, IK), size(mat, 2, IK))
 #elif   RK_ENABLED
-        real(RKC) :: chol(size(mat, 1, IK), size(mat, 2, IK))
+        real(RKG) :: chol(size(mat, 1, IK), size(mat, 2, IK))
 #else
 #error  "Unrecorgnized interface."
 #endif

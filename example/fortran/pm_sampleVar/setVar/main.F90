@@ -1,7 +1,7 @@
 program example
 
     use pm_kind, only: SK, IK, LK, RK
-    use pm_kind, only: TKC => RKS ! All other real types are also supported.
+    use pm_kind, only: TKG => RKS ! All other real types are also supported.
     use pm_io, only: display_type
     use pm_sampleVar, only: setVar
     use pm_arraySpace, only: getLinSpace
@@ -25,10 +25,10 @@ program example
     call disp%skip()
 
     block
-        real(TKC) :: var, mean
-        real(TKC), allocatable :: sample(:)
-        call disp%show("sample = getLinSpace(1._TKC, 9._TKC, 5_IK)")
-                        sample = getLinSpace(1._TKC, 9._TKC, 5_IK)
+        real(TKG) :: var, mean
+        real(TKG), allocatable :: sample(:)
+        call disp%show("sample = getLinSpace(1._TKG, 9._TKG, 5_IK)")
+                        sample = getLinSpace(1._TKG, 9._TKG, 5_IK)
         call disp%show("sample")
         call disp%show( sample )
         call disp%show("mean = getMean(sample)")
@@ -55,11 +55,11 @@ program example
     end block
 
     block
-        real(TKC) :: var
-        complex(TKC) :: mean
-        complex(TKC), allocatable :: sample(:)
-        call disp%show("sample = cmplx(getLinSpace(1., 9., 5_IK), -getLinSpace(1., 9., 5_IK), TKC)")
-                        sample = cmplx(getLinSpace(1., 9., 5_IK), -getLinSpace(1., 9., 5_IK), TKC)
+        real(TKG) :: var
+        complex(TKG) :: mean
+        complex(TKG), allocatable :: sample(:)
+        call disp%show("sample = cmplx(getLinSpace(1., 9., 5_IK), -getLinSpace(1., 9., 5_IK), TKG)")
+                        sample = cmplx(getLinSpace(1., 9., 5_IK), -getLinSpace(1., 9., 5_IK), TKG)
         call disp%show("sample")
         call disp%show( sample )
         call disp%show("mean = getMean(sample)")
@@ -92,16 +92,16 @@ program example
     call disp%skip()
 
     block
-        real(TKC) :: var, weisum
-        real(TKC), allocatable :: weight(:)
-        real(TKC), allocatable :: sample(:)
-        real(TKC) :: mean
-        call disp%show("sample = getLinSpace(1._TKC, 9._TKC, 5_IK)")
-                        sample = getLinSpace(1._TKC, 9._TKC, 5_IK)
+        real(TKG) :: var, weisum
+        real(TKG), allocatable :: weight(:)
+        real(TKG), allocatable :: sample(:)
+        real(TKG) :: mean
+        call disp%show("sample = getLinSpace(1._TKG, 9._TKG, 5_IK)")
+                        sample = getLinSpace(1._TKG, 9._TKG, 5_IK)
         call disp%show("sample")
         call disp%show( sample )
-        call disp%show("weight = getLinSpace(1._TKC, 9._TKC, size(sample, kind = IK))")
-                        weight = getLinSpace(1._TKC, 9._TKC, size(sample, kind = IK))
+        call disp%show("weight = getLinSpace(1._TKG, 9._TKG, size(sample, kind = IK))")
+                        weight = getLinSpace(1._TKG, 9._TKG, size(sample, kind = IK))
         call disp%show("weight")
         call disp%show( weight )
         call disp%show("call setMean(mean, sample, weight, weisum)")
@@ -128,16 +128,16 @@ program example
     end block
 
     block
-        real(TKC) :: var, weisum
-        real(TKC), allocatable :: weight(:)
-        complex(TKC), allocatable :: sample(:)
-        complex(TKC) :: mean
-        call disp%show("sample = cmplx(getLinSpace(1., 9., 5_IK), -getLinSpace(1., 9., 5_IK), TKC)")
-                        sample = cmplx(getLinSpace(1., 9., 5_IK), -getLinSpace(1., 9., 5_IK), TKC)
+        real(TKG) :: var, weisum
+        real(TKG), allocatable :: weight(:)
+        complex(TKG), allocatable :: sample(:)
+        complex(TKG) :: mean
+        call disp%show("sample = cmplx(getLinSpace(1., 9., 5_IK), -getLinSpace(1., 9., 5_IK), TKG)")
+                        sample = cmplx(getLinSpace(1., 9., 5_IK), -getLinSpace(1., 9., 5_IK), TKG)
         call disp%show("sample")
         call disp%show( sample )
-        call disp%show("weight = getLinSpace(1._TKC, 9._TKC, size(sample, kind = IK))")
-                        weight = getLinSpace(1._TKC, 9._TKC, size(sample, kind = IK))
+        call disp%show("weight = getLinSpace(1._TKG, 9._TKG, size(sample, kind = IK))")
+                        weight = getLinSpace(1._TKG, 9._TKG, size(sample, kind = IK))
         call disp%show("weight")
         call disp%show( weight )
         call disp%show("call setMean(mean, sample, weight, weisum)")
@@ -170,10 +170,10 @@ program example
     call disp%skip()
 
     block
-        real(TKC), allocatable :: var(:), mean(:), sample(:,:)
+        real(TKG), allocatable :: var(:), mean(:), sample(:,:)
         call disp%skip()
-        call disp%show("sample = getUnifRand(1._TKC, 9._TKC, 4_IK, 5_IK)")
-                        sample = getUnifRand(1._TKC, 9._TKC, 4_IK, 5_IK)
+        call disp%show("sample = getUnifRand(1._TKG, 9._TKG, 4_IK, 5_IK)")
+                        sample = getUnifRand(1._TKG, 9._TKG, 4_IK, 5_IK)
         call disp%show("sample")
         call disp%show( sample )
         call disp%show("mean = [getMean(sample)]")
@@ -194,8 +194,8 @@ program example
         do dim = 1, 2
             call disp%show("dim ! The observations axis.")
             call disp%show( dim )
-            call disp%show("sample = getUnifRand(1._TKC, 9._TKC, 4_IK, 5_IK)")
-                            sample = getUnifRand(1._TKC, 9._TKC, 4_IK, 5_IK)
+            call disp%show("sample = getUnifRand(1._TKG, 9._TKG, 4_IK, 5_IK)")
+                            sample = getUnifRand(1._TKG, 9._TKG, 4_IK, 5_IK)
             call disp%show("sample")
             call disp%show( sample )
             call disp%show("mean = getMean(sample, dim)")
@@ -217,11 +217,11 @@ program example
     end block
 
     block
-        real(TKC), allocatable :: var(:)
-        complex(TKC), allocatable :: mean(:), sample(:,:)
+        real(TKG), allocatable :: var(:)
+        complex(TKG), allocatable :: mean(:), sample(:,:)
         call disp%skip()
-        call disp%show("sample = cmplx(getUnifRand(1., 9., 4_IK, 5_IK), -getUnifRand(1., 9., 4_IK, 5_IK), TKC)")
-                        sample = cmplx(getUnifRand(1., 9., 4_IK, 5_IK), -getUnifRand(1., 9., 4_IK, 5_IK), TKC)
+        call disp%show("sample = cmplx(getUnifRand(1., 9., 4_IK, 5_IK), -getUnifRand(1., 9., 4_IK, 5_IK), TKG)")
+                        sample = cmplx(getUnifRand(1., 9., 4_IK, 5_IK), -getUnifRand(1., 9., 4_IK, 5_IK), TKG)
         call disp%show("sample")
         call disp%show( sample )
         call disp%show("mean = [getMean(sample)]")
@@ -242,8 +242,8 @@ program example
         do dim = 1, 2
             call disp%show("dim ! The observations axis.")
             call disp%show( dim )
-            call disp%show("sample = getUnifRand(1._TKC, 9._TKC, 4_IK, 5_IK)")
-                            sample = getUnifRand(1._TKC, 9._TKC, 4_IK, 5_IK)
+            call disp%show("sample = getUnifRand(1._TKG, 9._TKG, 4_IK, 5_IK)")
+                            sample = getUnifRand(1._TKG, 9._TKG, 4_IK, 5_IK)
             call disp%show("sample")
             call disp%show( sample )
             call disp%show("mean = getMean(sample, dim)")

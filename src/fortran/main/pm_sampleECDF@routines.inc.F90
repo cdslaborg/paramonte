@@ -42,18 +42,18 @@ CHECK_ASSERTION(__LINE__, size(ucdf, 1, IK) == size(ecdf, 1, IK), \
 SK_"@setECDF(): The condition `size(ucdf) == size(ecdf)` must hold. size(ucdf), size(ecdf) = "//getStr([size(ucdf, 1, IK), size(ecdf, 1, IK)]))
 
         integer(IK) :: nsam, isam
-        real(TKC), parameter :: ZERO = 0._TKC, UNIT = 1._TKC
-        real(TKC):: nsamInv
+        real(TKG), parameter :: ZERO = 0._TKG, UNIT = 1._TKG
+        real(TKG):: nsamInv
         nsam = size(ecdf, 1, IK)
         if (nsam == 0_IK) return
 #if     ONE_ENABLED
 #define GET_WEIGHTED(W,X)X
-        nsamInv = UNIT / real(nsam, TKC)
+        nsamInv = UNIT / real(nsam, TKG)
 #elif   WIK_ENABLED || WRK_ENABLED
-#define GET_WEIGHTED(W,X)real(W, TKC) * X
+#define GET_WEIGHTED(W,X)real(W, TKG) * X
         CHECK_ASSERTION(__LINE__, all(0 <= weight), SK_"@setECDF(): The condition `all(0 <= weight)` must hold. weight = "//getStr(weight))
-        CHECK_ASSERTION(__LINE__, abs(weisum - sum(weight)) < epsilon(0._TKC) * 100, SK_"@setECDF(): The condition `abs(weisum - sum(weight)) < epsilon(0._TKC) * 100` must hold. weisum, sum(weight) = "//getStr([weisum, sum(weight)]))
-        nsamInv = UNIT / real(weisum, TKC)
+        CHECK_ASSERTION(__LINE__, abs(weisum - sum(weight)) < epsilon(0._TKG) * 100, SK_"@setECDF(): The condition `abs(weisum - sum(weight)) < epsilon(0._TKG) * 100` must hold. weisum, sum(weight) = "//getStr([weisum, sum(weight)]))
+        nsamInv = UNIT / real(weisum, TKG)
 #else
 #error  "Unrecognized interface."
 #endif
@@ -67,8 +67,8 @@ SK_"@setECDF(): The condition `size(ucdf) == size(ecdf)` must hold. size(ucdf), 
                 do isam = 2, nsam - 1
                     ecdf(isam) = ecdf(isam - 1) + GET_WEIGHTED(weight(isam),nsamInv)
                 end do
-                if (1._TKC < ecdf(nsam - 1)) then
-                    nsamInv = 1._TKC / (ecdf(nsam - 1) + GET_WEIGHTED(weight(nsam),nsamInv))
+                if (1._TKG < ecdf(nsam - 1)) then
+                    nsamInv = 1._TKG / (ecdf(nsam - 1) + GET_WEIGHTED(weight(nsam),nsamInv))
                     do concurrent(isam = 1 : nsam - 1)
                         ecdf(isam) = ecdf(isam) * nsamInv
                     end do
@@ -76,7 +76,7 @@ SK_"@setECDF(): The condition `size(ucdf) == size(ecdf)` must hold. size(ucdf), 
 #elif           MULTIPLICATION_ENABLED
 #define         ISAM nsam
                 do concurrent(isam = 2 : nsam - 1)
-                    ecdf(isam) = real(isam, TKC) * nsamInv
+                    ecdf(isam) = real(isam, TKG) * nsamInv
                 end do
 #else
 #error          "Unrecognized interface."
@@ -85,12 +85,12 @@ SK_"@setECDF(): The condition `size(ucdf) == size(ecdf)` must hold. size(ucdf), 
 #if         !WRK_ENABLED
             else blockExpectedLowerUpper
                 block
-                    real(TKC):: sqrt_nsamInvTwice_logTwoOverAlpha
+                    real(TKG):: sqrt_nsamInvTwice_logTwoOverAlpha
                     if (present(alpha)) then
                         CHECK_ASSERTION(__LINE__, ZERO < alpha .and. alpha < UNIT, SK_"@setECDF(): The condition `0 < alpha .and. alpha < 1` must hold. alpha = "//getStr(alpha))
-                        sqrt_nsamInvTwice_logTwoOverAlpha = sqrt(0.5_TKC * nsamInv * log(2._TKC / alpha))
+                        sqrt_nsamInvTwice_logTwoOverAlpha = sqrt(0.5_TKG * nsamInv * log(2._TKG / alpha))
                     else
-                        sqrt_nsamInvTwice_logTwoOverAlpha = sqrt(0.5_TKC * nsamInv * log(2._TKC / 0.05_TKC))
+                        sqrt_nsamInvTwice_logTwoOverAlpha = sqrt(0.5_TKG * nsamInv * log(2._TKG / 0.05_TKG))
                     end if
                     if (present(lcdf) .and. present(ucdf)) then
                         CHECK_LEN_LCDF ! fpp
@@ -105,7 +105,7 @@ SK_"@setECDF(): The condition `size(ucdf) == size(ecdf)` must hold. size(ucdf), 
                         end do
 #elif                   MULTIPLICATION_ENABLED
                         do concurrent(isam = 2 : nsam - 1)
-                            ecdf(isam) = real(isam, TKC) * nsamInv
+                            ecdf(isam) = real(isam, TKG) * nsamInv
                             lcdf(isam) = max(ZERO, ecdf(isam) - sqrt_nsamInvTwice_logTwoOverAlpha)
                             ucdf(isam) = min(UNIT, ecdf(isam) + sqrt_nsamInvTwice_logTwoOverAlpha)
                         end do
@@ -123,7 +123,7 @@ SK_"@setECDF(): The condition `size(ucdf) == size(ecdf)` must hold. size(ucdf), 
                         end do
 #elif                   MULTIPLICATION_ENABLED
                         do concurrent(isam = 2 : nsam - 1)
-                            ecdf(isam) = real(isam, TKC) * nsamInv
+                            ecdf(isam) = real(isam, TKG) * nsamInv
                             lcdf(isam) = max(ZERO, ecdf(isam) - sqrt_nsamInvTwice_logTwoOverAlpha)
                         end do
 #endif
@@ -139,7 +139,7 @@ SK_"@setECDF(): The condition `size(ucdf) == size(ecdf)` must hold. size(ucdf), 
                         end do
 #elif                   MULTIPLICATION_ENABLED
                         do concurrent(isam = 2 : nsam - 1)
-                            ecdf(isam) = real(isam, TKC) * nsamInv
+                            ecdf(isam) = real(isam, TKG) * nsamInv
                             ucdf(isam) = min(UNIT, ecdf(isam) + sqrt_nsamInvTwice_logTwoOverAlpha)
                         end do
 #endif

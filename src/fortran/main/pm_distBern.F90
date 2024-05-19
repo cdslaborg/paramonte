@@ -125,8 +125,8 @@ module pm_distBern
     !>  Keep in mind that the interface `isHead()` uses a default single-precision value `p = .5`.<br>
     !>  On the current hardware technology, this corresponds to a 32-bit `real` precision.<br>
     !>  This implies a repeat cycle of \f$\sim10^6\f$ for the generated random numbers.<br>
-    !>  If more random numbers are needed, specify the value `p = .5_RKC`,
-    !>  where `RKC` refers to a higher real precision kind capable of
+    !>  If more random numbers are needed, specify the value `p = .5_RKG`,
+    !>  where `RKG` refers to a higher real precision kind capable of
     !>  generating the desired number of random coin-flipping.<br>
     !>
     !>  \impure
@@ -185,8 +185,8 @@ module pm_distBern
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isHeadPD_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(in)                    :: p
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(in)                    :: p
         logical(LK)                                 :: rand
     end function
 #endif
@@ -196,8 +196,8 @@ module pm_distBern
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isHeadPD_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(in)                    :: p
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(in)                    :: p
         logical(LK)                                 :: rand
     end function
 #endif
@@ -207,8 +207,8 @@ module pm_distBern
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isHeadPD_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(in)                    :: p
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(in)                    :: p
         logical(LK)                                 :: rand
     end function
 #endif
@@ -218,8 +218,8 @@ module pm_distBern
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isHeadPD_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(in)                    :: p
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(in)                    :: p
         logical(LK)                                 :: rand
     end function
 #endif
@@ -229,8 +229,8 @@ module pm_distBern
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isHeadPD_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(in)                    :: p
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(in)                    :: p
         logical(LK)                                 :: rand
     end function
 #endif
@@ -242,8 +242,8 @@ module pm_distBern
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isHeadPS_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)       , intent(in)                :: p
+        use pm_kind, only: RKG => RK5
+        real(RKG)       , intent(in)                :: p
         integer(IK)     , intent(in)                :: size
         logical(LK)                                 :: rand(size)
     end function
@@ -254,8 +254,8 @@ module pm_distBern
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isHeadPS_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)       , intent(in)                :: p
+        use pm_kind, only: RKG => RK4
+        real(RKG)       , intent(in)                :: p
         integer(IK)     , intent(in)                :: size
         logical(LK)                                 :: rand(size)
     end function
@@ -266,8 +266,8 @@ module pm_distBern
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isHeadPS_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)       , intent(in)                :: p
+        use pm_kind, only: RKG => RK3
+        real(RKG)       , intent(in)                :: p
         integer(IK)     , intent(in)                :: size
         logical(LK)                                 :: rand(size)
     end function
@@ -278,8 +278,8 @@ module pm_distBern
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isHeadPS_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)       , intent(in)                :: p
+        use pm_kind, only: RKG => RK2
+        real(RKG)       , intent(in)                :: p
         integer(IK)     , intent(in)                :: size
         logical(LK)                                 :: rand(size)
     end function
@@ -290,8 +290,8 @@ module pm_distBern
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isHeadPS_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)       , intent(in)                :: p
+        use pm_kind, only: RKG => RK1
+        real(RKG)       , intent(in)                :: p
         integer(IK)     , intent(in)                :: size
         logical(LK)                                 :: rand(size)
     end function
@@ -363,8 +363,8 @@ module pm_distBern
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getBernRandPD_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(in)                    :: p
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(in)                    :: p
         integer(IK)                                 :: rand
     end function
 #endif
@@ -374,8 +374,8 @@ module pm_distBern
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getBernRandPD_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(in)                    :: p
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(in)                    :: p
         integer(IK)                                 :: rand
     end function
 #endif
@@ -385,8 +385,8 @@ module pm_distBern
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getBernRandPD_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(in)                    :: p
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(in)                    :: p
         integer(IK)                                 :: rand
     end function
 #endif
@@ -396,8 +396,8 @@ module pm_distBern
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getBernRandPD_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(in)                    :: p
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(in)                    :: p
         integer(IK)                                 :: rand
     end function
 #endif
@@ -407,8 +407,8 @@ module pm_distBern
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getBernRandPD_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(in)                    :: p
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(in)                    :: p
         integer(IK)                                 :: rand
     end function
 #endif
@@ -420,8 +420,8 @@ module pm_distBern
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getBernRandPS_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)       , intent(in)                :: p
+        use pm_kind, only: RKG => RK5
+        real(RKG)       , intent(in)                :: p
         integer(IK)     , intent(in)                :: size
         integer(IK)                                 :: rand(size)
     end function
@@ -432,8 +432,8 @@ module pm_distBern
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getBernRandPS_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)       , intent(in)                :: p
+        use pm_kind, only: RKG => RK4
+        real(RKG)       , intent(in)                :: p
         integer(IK)     , intent(in)                :: size
         integer(IK)                                 :: rand(size)
     end function
@@ -444,8 +444,8 @@ module pm_distBern
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getBernRandPS_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)       , intent(in)                :: p
+        use pm_kind, only: RKG => RK3
+        real(RKG)       , intent(in)                :: p
         integer(IK)     , intent(in)                :: size
         integer(IK)                                 :: rand(size)
     end function
@@ -456,8 +456,8 @@ module pm_distBern
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getBernRandPS_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)       , intent(in)                :: p
+        use pm_kind, only: RKG => RK2
+        real(RKG)       , intent(in)                :: p
         integer(IK)     , intent(in)                :: size
         integer(IK)                                 :: rand(size)
     end function
@@ -468,8 +468,8 @@ module pm_distBern
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getBernRandPS_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)       , intent(in)                :: p
+        use pm_kind, only: RKG => RK1
+        real(RKG)       , intent(in)                :: p
         integer(IK)     , intent(in)                :: size
         integer(IK)                                 :: rand(size)
     end function
@@ -564,9 +564,9 @@ module pm_distBern
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setBernRandRUP_IK5_RK5
 #endif
-        use pm_kind, only: IKC => IK5, RKC => RK5
-        integer(IKC), intent(out)                   :: rand
-        real(RKC)   , intent(in)                    :: urand, p
+        use pm_kind, only: IKG => IK5, RKG => RK5
+        integer(IKG), intent(out)                   :: rand
+        real(RKG)   , intent(in)                    :: urand, p
     end subroutine
 #endif
 
@@ -575,9 +575,9 @@ module pm_distBern
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setBernRandRUP_IK5_RK4
 #endif
-        use pm_kind, only: IKC => IK5, RKC => RK4
-        integer(IKC), intent(out)                   :: rand
-        real(RKC)   , intent(in)                    :: urand, p
+        use pm_kind, only: IKG => IK5, RKG => RK4
+        integer(IKG), intent(out)                   :: rand
+        real(RKG)   , intent(in)                    :: urand, p
     end subroutine
 #endif
 
@@ -586,9 +586,9 @@ module pm_distBern
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setBernRandRUP_IK5_RK3
 #endif
-        use pm_kind, only: IKC => IK5, RKC => RK3
-        integer(IKC), intent(out)                   :: rand
-        real(RKC)   , intent(in)                    :: urand, p
+        use pm_kind, only: IKG => IK5, RKG => RK3
+        integer(IKG), intent(out)                   :: rand
+        real(RKG)   , intent(in)                    :: urand, p
     end subroutine
 #endif
 
@@ -597,9 +597,9 @@ module pm_distBern
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setBernRandRUP_IK5_RK2
 #endif
-        use pm_kind, only: IKC => IK5, RKC => RK2
-        integer(IKC), intent(out)                   :: rand
-        real(RKC)   , intent(in)                    :: urand, p
+        use pm_kind, only: IKG => IK5, RKG => RK2
+        integer(IKG), intent(out)                   :: rand
+        real(RKG)   , intent(in)                    :: urand, p
     end subroutine
 #endif
 
@@ -608,9 +608,9 @@ module pm_distBern
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setBernRandRUP_IK5_RK1
 #endif
-        use pm_kind, only: IKC => IK5, RKC => RK1
-        integer(IKC), intent(out)                   :: rand
-        real(RKC)   , intent(in)                    :: urand, p
+        use pm_kind, only: IKG => IK5, RKG => RK1
+        integer(IKG), intent(out)                   :: rand
+        real(RKG)   , intent(in)                    :: urand, p
     end subroutine
 #endif
 
@@ -621,9 +621,9 @@ module pm_distBern
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setBernRandRUP_IK4_RK5
 #endif
-        use pm_kind, only: IKC => IK4, RKC => RK5
-        integer(IKC), intent(out)                   :: rand
-        real(RKC)   , intent(in)                    :: urand, p
+        use pm_kind, only: IKG => IK4, RKG => RK5
+        integer(IKG), intent(out)                   :: rand
+        real(RKG)   , intent(in)                    :: urand, p
     end subroutine
 #endif
 
@@ -632,9 +632,9 @@ module pm_distBern
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setBernRandRUP_IK4_RK4
 #endif
-        use pm_kind, only: IKC => IK4, RKC => RK4
-        integer(IKC), intent(out)                   :: rand
-        real(RKC)   , intent(in)                    :: urand, p
+        use pm_kind, only: IKG => IK4, RKG => RK4
+        integer(IKG), intent(out)                   :: rand
+        real(RKG)   , intent(in)                    :: urand, p
     end subroutine
 #endif
 
@@ -643,9 +643,9 @@ module pm_distBern
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setBernRandRUP_IK4_RK3
 #endif
-        use pm_kind, only: IKC => IK4, RKC => RK3
-        integer(IKC), intent(out)                   :: rand
-        real(RKC)   , intent(in)                    :: urand, p
+        use pm_kind, only: IKG => IK4, RKG => RK3
+        integer(IKG), intent(out)                   :: rand
+        real(RKG)   , intent(in)                    :: urand, p
     end subroutine
 #endif
 
@@ -654,9 +654,9 @@ module pm_distBern
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setBernRandRUP_IK4_RK2
 #endif
-        use pm_kind, only: IKC => IK4, RKC => RK2
-        integer(IKC), intent(out)                   :: rand
-        real(RKC)   , intent(in)                    :: urand, p
+        use pm_kind, only: IKG => IK4, RKG => RK2
+        integer(IKG), intent(out)                   :: rand
+        real(RKG)   , intent(in)                    :: urand, p
     end subroutine
 #endif
 
@@ -665,9 +665,9 @@ module pm_distBern
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setBernRandRUP_IK4_RK1
 #endif
-        use pm_kind, only: IKC => IK4, RKC => RK1
-        integer(IKC), intent(out)                   :: rand
-        real(RKC)   , intent(in)                    :: urand, p
+        use pm_kind, only: IKG => IK4, RKG => RK1
+        integer(IKG), intent(out)                   :: rand
+        real(RKG)   , intent(in)                    :: urand, p
     end subroutine
 #endif
 
@@ -678,9 +678,9 @@ module pm_distBern
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setBernRandRUP_IK3_RK5
 #endif
-        use pm_kind, only: IKC => IK3, RKC => RK5
-        integer(IKC), intent(out)                   :: rand
-        real(RKC)   , intent(in)                    :: urand, p
+        use pm_kind, only: IKG => IK3, RKG => RK5
+        integer(IKG), intent(out)                   :: rand
+        real(RKG)   , intent(in)                    :: urand, p
     end subroutine
 #endif
 
@@ -689,9 +689,9 @@ module pm_distBern
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setBernRandRUP_IK3_RK4
 #endif
-        use pm_kind, only: IKC => IK3, RKC => RK4
-        integer(IKC), intent(out)                   :: rand
-        real(RKC)   , intent(in)                    :: urand, p
+        use pm_kind, only: IKG => IK3, RKG => RK4
+        integer(IKG), intent(out)                   :: rand
+        real(RKG)   , intent(in)                    :: urand, p
     end subroutine
 #endif
 
@@ -700,9 +700,9 @@ module pm_distBern
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setBernRandRUP_IK3_RK3
 #endif
-        use pm_kind, only: IKC => IK3, RKC => RK3
-        integer(IKC), intent(out)                   :: rand
-        real(RKC)   , intent(in)                    :: urand, p
+        use pm_kind, only: IKG => IK3, RKG => RK3
+        integer(IKG), intent(out)                   :: rand
+        real(RKG)   , intent(in)                    :: urand, p
     end subroutine
 #endif
 
@@ -711,9 +711,9 @@ module pm_distBern
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setBernRandRUP_IK3_RK2
 #endif
-        use pm_kind, only: IKC => IK3, RKC => RK2
-        integer(IKC), intent(out)                   :: rand
-        real(RKC)   , intent(in)                    :: urand, p
+        use pm_kind, only: IKG => IK3, RKG => RK2
+        integer(IKG), intent(out)                   :: rand
+        real(RKG)   , intent(in)                    :: urand, p
     end subroutine
 #endif
 
@@ -722,9 +722,9 @@ module pm_distBern
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setBernRandRUP_IK3_RK1
 #endif
-        use pm_kind, only: IKC => IK3, RKC => RK1
-        integer(IKC), intent(out)                   :: rand
-        real(RKC)   , intent(in)                    :: urand, p
+        use pm_kind, only: IKG => IK3, RKG => RK1
+        integer(IKG), intent(out)                   :: rand
+        real(RKG)   , intent(in)                    :: urand, p
     end subroutine
 #endif
 
@@ -735,9 +735,9 @@ module pm_distBern
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setBernRandRUP_IK2_RK5
 #endif
-        use pm_kind, only: IKC => IK2, RKC => RK5
-        integer(IKC), intent(out)                   :: rand
-        real(RKC)   , intent(in)                    :: urand, p
+        use pm_kind, only: IKG => IK2, RKG => RK5
+        integer(IKG), intent(out)                   :: rand
+        real(RKG)   , intent(in)                    :: urand, p
     end subroutine
 #endif
 
@@ -746,9 +746,9 @@ module pm_distBern
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setBernRandRUP_IK2_RK4
 #endif
-        use pm_kind, only: IKC => IK2, RKC => RK4
-        integer(IKC), intent(out)                   :: rand
-        real(RKC)   , intent(in)                    :: urand, p
+        use pm_kind, only: IKG => IK2, RKG => RK4
+        integer(IKG), intent(out)                   :: rand
+        real(RKG)   , intent(in)                    :: urand, p
     end subroutine
 #endif
 
@@ -757,9 +757,9 @@ module pm_distBern
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setBernRandRUP_IK2_RK3
 #endif
-        use pm_kind, only: IKC => IK2, RKC => RK3
-        integer(IKC), intent(out)                   :: rand
-        real(RKC)   , intent(in)                    :: urand, p
+        use pm_kind, only: IKG => IK2, RKG => RK3
+        integer(IKG), intent(out)                   :: rand
+        real(RKG)   , intent(in)                    :: urand, p
     end subroutine
 #endif
 
@@ -768,9 +768,9 @@ module pm_distBern
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setBernRandRUP_IK2_RK2
 #endif
-        use pm_kind, only: IKC => IK2, RKC => RK2
-        integer(IKC), intent(out)                   :: rand
-        real(RKC)   , intent(in)                    :: urand, p
+        use pm_kind, only: IKG => IK2, RKG => RK2
+        integer(IKG), intent(out)                   :: rand
+        real(RKG)   , intent(in)                    :: urand, p
     end subroutine
 #endif
 
@@ -779,9 +779,9 @@ module pm_distBern
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setBernRandRUP_IK2_RK1
 #endif
-        use pm_kind, only: IKC => IK2, RKC => RK1
-        integer(IKC), intent(out)                   :: rand
-        real(RKC)   , intent(in)                    :: urand, p
+        use pm_kind, only: IKG => IK2, RKG => RK1
+        integer(IKG), intent(out)                   :: rand
+        real(RKG)   , intent(in)                    :: urand, p
     end subroutine
 #endif
 
@@ -792,9 +792,9 @@ module pm_distBern
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setBernRandRUP_IK1_RK5
 #endif
-        use pm_kind, only: IKC => IK1, RKC => RK5
-        integer(IKC), intent(out)                   :: rand
-        real(RKC)   , intent(in)                    :: urand, p
+        use pm_kind, only: IKG => IK1, RKG => RK5
+        integer(IKG), intent(out)                   :: rand
+        real(RKG)   , intent(in)                    :: urand, p
     end subroutine
 #endif
 
@@ -803,9 +803,9 @@ module pm_distBern
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setBernRandRUP_IK1_RK4
 #endif
-        use pm_kind, only: IKC => IK1, RKC => RK4
-        integer(IKC), intent(out)                   :: rand
-        real(RKC)   , intent(in)                    :: urand, p
+        use pm_kind, only: IKG => IK1, RKG => RK4
+        integer(IKG), intent(out)                   :: rand
+        real(RKG)   , intent(in)                    :: urand, p
     end subroutine
 #endif
 
@@ -814,9 +814,9 @@ module pm_distBern
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setBernRandRUP_IK1_RK3
 #endif
-        use pm_kind, only: IKC => IK1, RKC => RK3
-        integer(IKC), intent(out)                   :: rand
-        real(RKC)   , intent(in)                    :: urand, p
+        use pm_kind, only: IKG => IK1, RKG => RK3
+        integer(IKG), intent(out)                   :: rand
+        real(RKG)   , intent(in)                    :: urand, p
     end subroutine
 #endif
 
@@ -825,9 +825,9 @@ module pm_distBern
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setBernRandRUP_IK1_RK2
 #endif
-        use pm_kind, only: IKC => IK1, RKC => RK2
-        integer(IKC), intent(out)                   :: rand
-        real(RKC)   , intent(in)                    :: urand, p
+        use pm_kind, only: IKG => IK1, RKG => RK2
+        integer(IKG), intent(out)                   :: rand
+        real(RKG)   , intent(in)                    :: urand, p
     end subroutine
 #endif
 
@@ -836,9 +836,9 @@ module pm_distBern
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setBernRandRUP_IK1_RK1
 #endif
-        use pm_kind, only: IKC => IK1, RKC => RK1
-        integer(IKC), intent(out)                   :: rand
-        real(RKC)   , intent(in)                    :: urand, p
+        use pm_kind, only: IKG => IK1, RKG => RK1
+        integer(IKG), intent(out)                   :: rand
+        real(RKG)   , intent(in)                    :: urand, p
     end subroutine
 #endif
 
@@ -855,9 +855,9 @@ module pm_distBern
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setBernRandRUP_LK5_RK5
 #endif
-        use pm_kind, only: LKC => LK5, RKC => RK5
-        logical(LKC), intent(out)                   :: rand
-        real(RKC)   , intent(in)                    :: urand, p
+        use pm_kind, only: LKG => LK5, RKG => RK5
+        logical(LKG), intent(out)                   :: rand
+        real(RKG)   , intent(in)                    :: urand, p
     end subroutine
 #endif
 
@@ -866,9 +866,9 @@ module pm_distBern
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setBernRandRUP_LK5_RK4
 #endif
-        use pm_kind, only: LKC => LK5, RKC => RK4
-        logical(LKC), intent(out)                   :: rand
-        real(RKC)   , intent(in)                    :: urand, p
+        use pm_kind, only: LKG => LK5, RKG => RK4
+        logical(LKG), intent(out)                   :: rand
+        real(RKG)   , intent(in)                    :: urand, p
     end subroutine
 #endif
 
@@ -877,9 +877,9 @@ module pm_distBern
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setBernRandRUP_LK5_RK3
 #endif
-        use pm_kind, only: LKC => LK5, RKC => RK3
-        logical(LKC), intent(out)                   :: rand
-        real(RKC)   , intent(in)                    :: urand, p
+        use pm_kind, only: LKG => LK5, RKG => RK3
+        logical(LKG), intent(out)                   :: rand
+        real(RKG)   , intent(in)                    :: urand, p
     end subroutine
 #endif
 
@@ -888,9 +888,9 @@ module pm_distBern
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setBernRandRUP_LK5_RK2
 #endif
-        use pm_kind, only: LKC => LK5, RKC => RK2
-        logical(LKC), intent(out)                   :: rand
-        real(RKC)   , intent(in)                    :: urand, p
+        use pm_kind, only: LKG => LK5, RKG => RK2
+        logical(LKG), intent(out)                   :: rand
+        real(RKG)   , intent(in)                    :: urand, p
     end subroutine
 #endif
 
@@ -899,9 +899,9 @@ module pm_distBern
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setBernRandRUP_LK5_RK1
 #endif
-        use pm_kind, only: LKC => LK5, RKC => RK1
-        logical(LKC), intent(out)                   :: rand
-        real(RKC)   , intent(in)                    :: urand, p
+        use pm_kind, only: LKG => LK5, RKG => RK1
+        logical(LKG), intent(out)                   :: rand
+        real(RKG)   , intent(in)                    :: urand, p
     end subroutine
 #endif
 
@@ -912,9 +912,9 @@ module pm_distBern
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setBernRandRUP_LK4_RK5
 #endif
-        use pm_kind, only: LKC => LK4, RKC => RK5
-        logical(LKC), intent(out)                   :: rand
-        real(RKC)   , intent(in)                    :: urand, p
+        use pm_kind, only: LKG => LK4, RKG => RK5
+        logical(LKG), intent(out)                   :: rand
+        real(RKG)   , intent(in)                    :: urand, p
     end subroutine
 #endif
 
@@ -923,9 +923,9 @@ module pm_distBern
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setBernRandRUP_LK4_RK4
 #endif
-        use pm_kind, only: LKC => LK4, RKC => RK4
-        logical(LKC), intent(out)                   :: rand
-        real(RKC)   , intent(in)                    :: urand, p
+        use pm_kind, only: LKG => LK4, RKG => RK4
+        logical(LKG), intent(out)                   :: rand
+        real(RKG)   , intent(in)                    :: urand, p
     end subroutine
 #endif
 
@@ -934,9 +934,9 @@ module pm_distBern
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setBernRandRUP_LK4_RK3
 #endif
-        use pm_kind, only: LKC => LK4, RKC => RK3
-        logical(LKC), intent(out)                   :: rand
-        real(RKC)   , intent(in)                    :: urand, p
+        use pm_kind, only: LKG => LK4, RKG => RK3
+        logical(LKG), intent(out)                   :: rand
+        real(RKG)   , intent(in)                    :: urand, p
     end subroutine
 #endif
 
@@ -945,9 +945,9 @@ module pm_distBern
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setBernRandRUP_LK4_RK2
 #endif
-        use pm_kind, only: LKC => LK4, RKC => RK2
-        logical(LKC), intent(out)                   :: rand
-        real(RKC)   , intent(in)                    :: urand, p
+        use pm_kind, only: LKG => LK4, RKG => RK2
+        logical(LKG), intent(out)                   :: rand
+        real(RKG)   , intent(in)                    :: urand, p
     end subroutine
 #endif
 
@@ -956,9 +956,9 @@ module pm_distBern
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setBernRandRUP_LK4_RK1
 #endif
-        use pm_kind, only: LKC => LK4, RKC => RK1
-        logical(LKC), intent(out)                   :: rand
-        real(RKC)   , intent(in)                    :: urand, p
+        use pm_kind, only: LKG => LK4, RKG => RK1
+        logical(LKG), intent(out)                   :: rand
+        real(RKG)   , intent(in)                    :: urand, p
     end subroutine
 #endif
 
@@ -969,9 +969,9 @@ module pm_distBern
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setBernRandRUP_LK3_RK5
 #endif
-        use pm_kind, only: LKC => LK3, RKC => RK5
-        logical(LKC), intent(out)                   :: rand
-        real(RKC)   , intent(in)                    :: urand, p
+        use pm_kind, only: LKG => LK3, RKG => RK5
+        logical(LKG), intent(out)                   :: rand
+        real(RKG)   , intent(in)                    :: urand, p
     end subroutine
 #endif
 
@@ -980,9 +980,9 @@ module pm_distBern
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setBernRandRUP_LK3_RK4
 #endif
-        use pm_kind, only: LKC => LK3, RKC => RK4
-        logical(LKC), intent(out)                   :: rand
-        real(RKC)   , intent(in)                    :: urand, p
+        use pm_kind, only: LKG => LK3, RKG => RK4
+        logical(LKG), intent(out)                   :: rand
+        real(RKG)   , intent(in)                    :: urand, p
     end subroutine
 #endif
 
@@ -991,9 +991,9 @@ module pm_distBern
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setBernRandRUP_LK3_RK3
 #endif
-        use pm_kind, only: LKC => LK3, RKC => RK3
-        logical(LKC), intent(out)                   :: rand
-        real(RKC)   , intent(in)                    :: urand, p
+        use pm_kind, only: LKG => LK3, RKG => RK3
+        logical(LKG), intent(out)                   :: rand
+        real(RKG)   , intent(in)                    :: urand, p
     end subroutine
 #endif
 
@@ -1002,9 +1002,9 @@ module pm_distBern
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setBernRandRUP_LK3_RK2
 #endif
-        use pm_kind, only: LKC => LK3, RKC => RK2
-        logical(LKC), intent(out)                   :: rand
-        real(RKC)   , intent(in)                    :: urand, p
+        use pm_kind, only: LKG => LK3, RKG => RK2
+        logical(LKG), intent(out)                   :: rand
+        real(RKG)   , intent(in)                    :: urand, p
     end subroutine
 #endif
 
@@ -1013,9 +1013,9 @@ module pm_distBern
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setBernRandRUP_LK3_RK1
 #endif
-        use pm_kind, only: LKC => LK3, RKC => RK1
-        logical(LKC), intent(out)                   :: rand
-        real(RKC)   , intent(in)                    :: urand, p
+        use pm_kind, only: LKG => LK3, RKG => RK1
+        logical(LKG), intent(out)                   :: rand
+        real(RKG)   , intent(in)                    :: urand, p
     end subroutine
 #endif
 
@@ -1026,9 +1026,9 @@ module pm_distBern
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setBernRandRUP_LK2_RK5
 #endif
-        use pm_kind, only: LKC => LK2, RKC => RK5
-        logical(LKC), intent(out)                   :: rand
-        real(RKC)   , intent(in)                    :: urand, p
+        use pm_kind, only: LKG => LK2, RKG => RK5
+        logical(LKG), intent(out)                   :: rand
+        real(RKG)   , intent(in)                    :: urand, p
     end subroutine
 #endif
 
@@ -1037,9 +1037,9 @@ module pm_distBern
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setBernRandRUP_LK2_RK4
 #endif
-        use pm_kind, only: LKC => LK2, RKC => RK4
-        logical(LKC), intent(out)                   :: rand
-        real(RKC)   , intent(in)                    :: urand, p
+        use pm_kind, only: LKG => LK2, RKG => RK4
+        logical(LKG), intent(out)                   :: rand
+        real(RKG)   , intent(in)                    :: urand, p
     end subroutine
 #endif
 
@@ -1048,9 +1048,9 @@ module pm_distBern
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setBernRandRUP_LK2_RK3
 #endif
-        use pm_kind, only: LKC => LK2, RKC => RK3
-        logical(LKC), intent(out)                   :: rand
-        real(RKC)   , intent(in)                    :: urand, p
+        use pm_kind, only: LKG => LK2, RKG => RK3
+        logical(LKG), intent(out)                   :: rand
+        real(RKG)   , intent(in)                    :: urand, p
     end subroutine
 #endif
 
@@ -1059,9 +1059,9 @@ module pm_distBern
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setBernRandRUP_LK2_RK2
 #endif
-        use pm_kind, only: LKC => LK2, RKC => RK2
-        logical(LKC), intent(out)                   :: rand
-        real(RKC)   , intent(in)                    :: urand, p
+        use pm_kind, only: LKG => LK2, RKG => RK2
+        logical(LKG), intent(out)                   :: rand
+        real(RKG)   , intent(in)                    :: urand, p
     end subroutine
 #endif
 
@@ -1070,9 +1070,9 @@ module pm_distBern
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setBernRandRUP_LK2_RK1
 #endif
-        use pm_kind, only: LKC => LK2, RKC => RK1
-        logical(LKC), intent(out)                   :: rand
-        real(RKC)   , intent(in)                    :: urand, p
+        use pm_kind, only: LKG => LK2, RKG => RK1
+        logical(LKG), intent(out)                   :: rand
+        real(RKG)   , intent(in)                    :: urand, p
     end subroutine
 #endif
 
@@ -1083,9 +1083,9 @@ module pm_distBern
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setBernRandRUP_LK1_RK5
 #endif
-        use pm_kind, only: LKC => LK1, RKC => RK5
-        logical(LKC), intent(out)                   :: rand
-        real(RKC)   , intent(in)                    :: urand, p
+        use pm_kind, only: LKG => LK1, RKG => RK5
+        logical(LKG), intent(out)                   :: rand
+        real(RKG)   , intent(in)                    :: urand, p
     end subroutine
 #endif
 
@@ -1094,9 +1094,9 @@ module pm_distBern
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setBernRandRUP_LK1_RK4
 #endif
-        use pm_kind, only: LKC => LK1, RKC => RK4
-        logical(LKC), intent(out)                   :: rand
-        real(RKC)   , intent(in)                    :: urand, p
+        use pm_kind, only: LKG => LK1, RKG => RK4
+        logical(LKG), intent(out)                   :: rand
+        real(RKG)   , intent(in)                    :: urand, p
     end subroutine
 #endif
 
@@ -1105,9 +1105,9 @@ module pm_distBern
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setBernRandRUP_LK1_RK3
 #endif
-        use pm_kind, only: LKC => LK1, RKC => RK3
-        logical(LKC), intent(out)                   :: rand
-        real(RKC)   , intent(in)                    :: urand, p
+        use pm_kind, only: LKG => LK1, RKG => RK3
+        logical(LKG), intent(out)                   :: rand
+        real(RKG)   , intent(in)                    :: urand, p
     end subroutine
 #endif
 
@@ -1116,9 +1116,9 @@ module pm_distBern
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setBernRandRUP_LK1_RK2
 #endif
-        use pm_kind, only: LKC => LK1, RKC => RK2
-        logical(LKC), intent(out)                   :: rand
-        real(RKC)   , intent(in)                    :: urand, p
+        use pm_kind, only: LKG => LK1, RKG => RK2
+        logical(LKG), intent(out)                   :: rand
+        real(RKG)   , intent(in)                    :: urand, p
     end subroutine
 #endif
 
@@ -1127,9 +1127,9 @@ module pm_distBern
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setBernRandRUP_LK1_RK1
 #endif
-        use pm_kind, only: LKC => LK1, RKC => RK1
-        logical(LKC), intent(out)                   :: rand
-        real(RKC)   , intent(in)                    :: urand, p
+        use pm_kind, only: LKG => LK1, RKG => RK1
+        logical(LKG), intent(out)                   :: rand
+        real(RKG)   , intent(in)                    :: urand, p
     end subroutine
 #endif
 
@@ -1146,9 +1146,9 @@ module pm_distBern
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setBernRandRUP_RK5_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(out)                   :: rand
-        real(RKC)   , intent(in)                    :: urand, p
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(out)                   :: rand
+        real(RKG)   , intent(in)                    :: urand, p
     end subroutine
 #endif
 
@@ -1157,9 +1157,9 @@ module pm_distBern
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setBernRandRUP_RK4_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(out)                   :: rand
-        real(RKC)   , intent(in)                    :: urand, p
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(out)                   :: rand
+        real(RKG)   , intent(in)                    :: urand, p
     end subroutine
 #endif
 
@@ -1168,9 +1168,9 @@ module pm_distBern
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setBernRandRUP_RK3_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(out)                   :: rand
-        real(RKC)   , intent(in)                    :: urand, p
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(out)                   :: rand
+        real(RKG)   , intent(in)                    :: urand, p
     end subroutine
 #endif
 
@@ -1179,9 +1179,9 @@ module pm_distBern
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setBernRandRUP_RK2_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(out)                   :: rand
-        real(RKC)   , intent(in)                    :: urand, p
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(out)                   :: rand
+        real(RKG)   , intent(in)                    :: urand, p
     end subroutine
 #endif
 
@@ -1190,9 +1190,9 @@ module pm_distBern
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setBernRandRUP_RK1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(out)                   :: rand
-        real(RKC)   , intent(in)                    :: urand, p
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(out)                   :: rand
+        real(RKG)   , intent(in)                    :: urand, p
     end subroutine
 #endif
 

@@ -67,35 +67,35 @@ contains
 
 #if SK5_ENABLED
     module procedure getMatCopy_RDP_RDP_UXX_AIO_SK5
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK4_ENABLED
     module procedure getMatCopy_RDP_RDP_UXX_AIO_SK4
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK3_ENABLED
     module procedure getMatCopy_RDP_RDP_UXX_AIO_SK3
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK2_ENABLED
     module procedure getMatCopy_RDP_RDP_UXX_AIO_SK2
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK1_ENABLED
     module procedure getMatCopy_RDP_RDP_UXX_AIO_SK1
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -108,35 +108,35 @@ contains
 
 #if IK5_ENABLED
     module procedure getMatCopy_RDP_RDP_UXX_AIO_IK5
-        use pm_kind, only: IKC => IK5
+        use pm_kind, only: IKG => IK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK4_ENABLED
     module procedure getMatCopy_RDP_RDP_UXX_AIO_IK4
-        use pm_kind, only: IKC => IK4
+        use pm_kind, only: IKG => IK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK3_ENABLED
     module procedure getMatCopy_RDP_RDP_UXX_AIO_IK3
-        use pm_kind, only: IKC => IK3
+        use pm_kind, only: IKG => IK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK2_ENABLED
     module procedure getMatCopy_RDP_RDP_UXX_AIO_IK2
-        use pm_kind, only: IKC => IK2
+        use pm_kind, only: IKG => IK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK1_ENABLED
     module procedure getMatCopy_RDP_RDP_UXX_AIO_IK1
-        use pm_kind, only: IKC => IK1
+        use pm_kind, only: IKG => IK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -149,35 +149,35 @@ contains
 
 #if LK5_ENABLED
     module procedure getMatCopy_RDP_RDP_UXX_AIO_LK5
-        use pm_kind, only: LKC => LK5
+        use pm_kind, only: LKG => LK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK4_ENABLED
     module procedure getMatCopy_RDP_RDP_UXX_AIO_LK4
-        use pm_kind, only: LKC => LK4
+        use pm_kind, only: LKG => LK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK3_ENABLED
     module procedure getMatCopy_RDP_RDP_UXX_AIO_LK3
-        use pm_kind, only: LKC => LK3
+        use pm_kind, only: LKG => LK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK2_ENABLED
     module procedure getMatCopy_RDP_RDP_UXX_AIO_LK2
-        use pm_kind, only: LKC => LK2
+        use pm_kind, only: LKG => LK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK1_ENABLED
     module procedure getMatCopy_RDP_RDP_UXX_AIO_LK1
-        use pm_kind, only: LKC => LK1
+        use pm_kind, only: LKG => LK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -190,35 +190,35 @@ contains
 
 #if CK5_ENABLED
     module procedure getMatCopy_RDP_RDP_UXX_AIO_CK5
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure getMatCopy_RDP_RDP_UXX_AIO_CK4
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure getMatCopy_RDP_RDP_UXX_AIO_CK3
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure getMatCopy_RDP_RDP_UXX_AIO_CK2
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure getMatCopy_RDP_RDP_UXX_AIO_CK1
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -231,35 +231,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getMatCopy_RDP_RDP_UXX_AIO_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getMatCopy_RDP_RDP_UXX_AIO_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getMatCopy_RDP_RDP_UXX_AIO_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getMatCopy_RDP_RDP_UXX_AIO_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getMatCopy_RDP_RDP_UXX_AIO_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -284,35 +284,35 @@ contains
 
 #if SK5_ENABLED
     module procedure getMatCopy_RDP_RDP_UXX_TSO_SK5
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK4_ENABLED
     module procedure getMatCopy_RDP_RDP_UXX_TSO_SK4
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK3_ENABLED
     module procedure getMatCopy_RDP_RDP_UXX_TSO_SK3
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK2_ENABLED
     module procedure getMatCopy_RDP_RDP_UXX_TSO_SK2
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK1_ENABLED
     module procedure getMatCopy_RDP_RDP_UXX_TSO_SK1
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -325,35 +325,35 @@ contains
 
 #if IK5_ENABLED
     module procedure getMatCopy_RDP_RDP_UXX_TSO_IK5
-        use pm_kind, only: IKC => IK5
+        use pm_kind, only: IKG => IK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK4_ENABLED
     module procedure getMatCopy_RDP_RDP_UXX_TSO_IK4
-        use pm_kind, only: IKC => IK4
+        use pm_kind, only: IKG => IK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK3_ENABLED
     module procedure getMatCopy_RDP_RDP_UXX_TSO_IK3
-        use pm_kind, only: IKC => IK3
+        use pm_kind, only: IKG => IK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK2_ENABLED
     module procedure getMatCopy_RDP_RDP_UXX_TSO_IK2
-        use pm_kind, only: IKC => IK2
+        use pm_kind, only: IKG => IK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK1_ENABLED
     module procedure getMatCopy_RDP_RDP_UXX_TSO_IK1
-        use pm_kind, only: IKC => IK1
+        use pm_kind, only: IKG => IK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -366,35 +366,35 @@ contains
 
 #if LK5_ENABLED
     module procedure getMatCopy_RDP_RDP_UXX_TSO_LK5
-        use pm_kind, only: LKC => LK5
+        use pm_kind, only: LKG => LK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK4_ENABLED
     module procedure getMatCopy_RDP_RDP_UXX_TSO_LK4
-        use pm_kind, only: LKC => LK4
+        use pm_kind, only: LKG => LK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK3_ENABLED
     module procedure getMatCopy_RDP_RDP_UXX_TSO_LK3
-        use pm_kind, only: LKC => LK3
+        use pm_kind, only: LKG => LK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK2_ENABLED
     module procedure getMatCopy_RDP_RDP_UXX_TSO_LK2
-        use pm_kind, only: LKC => LK2
+        use pm_kind, only: LKG => LK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK1_ENABLED
     module procedure getMatCopy_RDP_RDP_UXX_TSO_LK1
-        use pm_kind, only: LKC => LK1
+        use pm_kind, only: LKG => LK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -407,35 +407,35 @@ contains
 
 #if CK5_ENABLED
     module procedure getMatCopy_RDP_RDP_UXX_TSO_CK5
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure getMatCopy_RDP_RDP_UXX_TSO_CK4
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure getMatCopy_RDP_RDP_UXX_TSO_CK3
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure getMatCopy_RDP_RDP_UXX_TSO_CK2
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure getMatCopy_RDP_RDP_UXX_TSO_CK1
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -448,35 +448,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getMatCopy_RDP_RDP_UXX_TSO_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getMatCopy_RDP_RDP_UXX_TSO_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getMatCopy_RDP_RDP_UXX_TSO_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getMatCopy_RDP_RDP_UXX_TSO_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getMatCopy_RDP_RDP_UXX_TSO_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -501,35 +501,35 @@ contains
 
 #if SK5_ENABLED
     module procedure getMatCopy_RDP_RDP_UXX_THO_SK5
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK4_ENABLED
     module procedure getMatCopy_RDP_RDP_UXX_THO_SK4
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK3_ENABLED
     module procedure getMatCopy_RDP_RDP_UXX_THO_SK3
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK2_ENABLED
     module procedure getMatCopy_RDP_RDP_UXX_THO_SK2
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK1_ENABLED
     module procedure getMatCopy_RDP_RDP_UXX_THO_SK1
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -542,35 +542,35 @@ contains
 
 #if IK5_ENABLED
     module procedure getMatCopy_RDP_RDP_UXX_THO_IK5
-        use pm_kind, only: IKC => IK5
+        use pm_kind, only: IKG => IK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK4_ENABLED
     module procedure getMatCopy_RDP_RDP_UXX_THO_IK4
-        use pm_kind, only: IKC => IK4
+        use pm_kind, only: IKG => IK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK3_ENABLED
     module procedure getMatCopy_RDP_RDP_UXX_THO_IK3
-        use pm_kind, only: IKC => IK3
+        use pm_kind, only: IKG => IK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK2_ENABLED
     module procedure getMatCopy_RDP_RDP_UXX_THO_IK2
-        use pm_kind, only: IKC => IK2
+        use pm_kind, only: IKG => IK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK1_ENABLED
     module procedure getMatCopy_RDP_RDP_UXX_THO_IK1
-        use pm_kind, only: IKC => IK1
+        use pm_kind, only: IKG => IK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -583,35 +583,35 @@ contains
 
 #if LK5_ENABLED
     module procedure getMatCopy_RDP_RDP_UXX_THO_LK5
-        use pm_kind, only: LKC => LK5
+        use pm_kind, only: LKG => LK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK4_ENABLED
     module procedure getMatCopy_RDP_RDP_UXX_THO_LK4
-        use pm_kind, only: LKC => LK4
+        use pm_kind, only: LKG => LK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK3_ENABLED
     module procedure getMatCopy_RDP_RDP_UXX_THO_LK3
-        use pm_kind, only: LKC => LK3
+        use pm_kind, only: LKG => LK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK2_ENABLED
     module procedure getMatCopy_RDP_RDP_UXX_THO_LK2
-        use pm_kind, only: LKC => LK2
+        use pm_kind, only: LKG => LK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK1_ENABLED
     module procedure getMatCopy_RDP_RDP_UXX_THO_LK1
-        use pm_kind, only: LKC => LK1
+        use pm_kind, only: LKG => LK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -624,35 +624,35 @@ contains
 
 #if CK5_ENABLED
     module procedure getMatCopy_RDP_RDP_UXX_THO_CK5
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure getMatCopy_RDP_RDP_UXX_THO_CK4
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure getMatCopy_RDP_RDP_UXX_THO_CK3
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure getMatCopy_RDP_RDP_UXX_THO_CK2
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure getMatCopy_RDP_RDP_UXX_THO_CK1
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -665,35 +665,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getMatCopy_RDP_RDP_UXX_THO_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getMatCopy_RDP_RDP_UXX_THO_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getMatCopy_RDP_RDP_UXX_THO_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getMatCopy_RDP_RDP_UXX_THO_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getMatCopy_RDP_RDP_UXX_THO_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -718,35 +718,35 @@ contains
 
 #if SK5_ENABLED
     module procedure getMatCopy_RDP_RDP_XLX_AIO_SK5
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK4_ENABLED
     module procedure getMatCopy_RDP_RDP_XLX_AIO_SK4
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK3_ENABLED
     module procedure getMatCopy_RDP_RDP_XLX_AIO_SK3
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK2_ENABLED
     module procedure getMatCopy_RDP_RDP_XLX_AIO_SK2
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK1_ENABLED
     module procedure getMatCopy_RDP_RDP_XLX_AIO_SK1
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -759,35 +759,35 @@ contains
 
 #if IK5_ENABLED
     module procedure getMatCopy_RDP_RDP_XLX_AIO_IK5
-        use pm_kind, only: IKC => IK5
+        use pm_kind, only: IKG => IK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK4_ENABLED
     module procedure getMatCopy_RDP_RDP_XLX_AIO_IK4
-        use pm_kind, only: IKC => IK4
+        use pm_kind, only: IKG => IK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK3_ENABLED
     module procedure getMatCopy_RDP_RDP_XLX_AIO_IK3
-        use pm_kind, only: IKC => IK3
+        use pm_kind, only: IKG => IK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK2_ENABLED
     module procedure getMatCopy_RDP_RDP_XLX_AIO_IK2
-        use pm_kind, only: IKC => IK2
+        use pm_kind, only: IKG => IK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK1_ENABLED
     module procedure getMatCopy_RDP_RDP_XLX_AIO_IK1
-        use pm_kind, only: IKC => IK1
+        use pm_kind, only: IKG => IK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -800,35 +800,35 @@ contains
 
 #if LK5_ENABLED
     module procedure getMatCopy_RDP_RDP_XLX_AIO_LK5
-        use pm_kind, only: LKC => LK5
+        use pm_kind, only: LKG => LK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK4_ENABLED
     module procedure getMatCopy_RDP_RDP_XLX_AIO_LK4
-        use pm_kind, only: LKC => LK4
+        use pm_kind, only: LKG => LK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK3_ENABLED
     module procedure getMatCopy_RDP_RDP_XLX_AIO_LK3
-        use pm_kind, only: LKC => LK3
+        use pm_kind, only: LKG => LK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK2_ENABLED
     module procedure getMatCopy_RDP_RDP_XLX_AIO_LK2
-        use pm_kind, only: LKC => LK2
+        use pm_kind, only: LKG => LK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK1_ENABLED
     module procedure getMatCopy_RDP_RDP_XLX_AIO_LK1
-        use pm_kind, only: LKC => LK1
+        use pm_kind, only: LKG => LK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -841,35 +841,35 @@ contains
 
 #if CK5_ENABLED
     module procedure getMatCopy_RDP_RDP_XLX_AIO_CK5
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure getMatCopy_RDP_RDP_XLX_AIO_CK4
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure getMatCopy_RDP_RDP_XLX_AIO_CK3
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure getMatCopy_RDP_RDP_XLX_AIO_CK2
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure getMatCopy_RDP_RDP_XLX_AIO_CK1
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -882,35 +882,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getMatCopy_RDP_RDP_XLX_AIO_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getMatCopy_RDP_RDP_XLX_AIO_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getMatCopy_RDP_RDP_XLX_AIO_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getMatCopy_RDP_RDP_XLX_AIO_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getMatCopy_RDP_RDP_XLX_AIO_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -935,35 +935,35 @@ contains
 
 #if SK5_ENABLED
     module procedure getMatCopy_RDP_RDP_XLX_TSO_SK5
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK4_ENABLED
     module procedure getMatCopy_RDP_RDP_XLX_TSO_SK4
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK3_ENABLED
     module procedure getMatCopy_RDP_RDP_XLX_TSO_SK3
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK2_ENABLED
     module procedure getMatCopy_RDP_RDP_XLX_TSO_SK2
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK1_ENABLED
     module procedure getMatCopy_RDP_RDP_XLX_TSO_SK1
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -976,35 +976,35 @@ contains
 
 #if IK5_ENABLED
     module procedure getMatCopy_RDP_RDP_XLX_TSO_IK5
-        use pm_kind, only: IKC => IK5
+        use pm_kind, only: IKG => IK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK4_ENABLED
     module procedure getMatCopy_RDP_RDP_XLX_TSO_IK4
-        use pm_kind, only: IKC => IK4
+        use pm_kind, only: IKG => IK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK3_ENABLED
     module procedure getMatCopy_RDP_RDP_XLX_TSO_IK3
-        use pm_kind, only: IKC => IK3
+        use pm_kind, only: IKG => IK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK2_ENABLED
     module procedure getMatCopy_RDP_RDP_XLX_TSO_IK2
-        use pm_kind, only: IKC => IK2
+        use pm_kind, only: IKG => IK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK1_ENABLED
     module procedure getMatCopy_RDP_RDP_XLX_TSO_IK1
-        use pm_kind, only: IKC => IK1
+        use pm_kind, only: IKG => IK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -1017,35 +1017,35 @@ contains
 
 #if LK5_ENABLED
     module procedure getMatCopy_RDP_RDP_XLX_TSO_LK5
-        use pm_kind, only: LKC => LK5
+        use pm_kind, only: LKG => LK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK4_ENABLED
     module procedure getMatCopy_RDP_RDP_XLX_TSO_LK4
-        use pm_kind, only: LKC => LK4
+        use pm_kind, only: LKG => LK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK3_ENABLED
     module procedure getMatCopy_RDP_RDP_XLX_TSO_LK3
-        use pm_kind, only: LKC => LK3
+        use pm_kind, only: LKG => LK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK2_ENABLED
     module procedure getMatCopy_RDP_RDP_XLX_TSO_LK2
-        use pm_kind, only: LKC => LK2
+        use pm_kind, only: LKG => LK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK1_ENABLED
     module procedure getMatCopy_RDP_RDP_XLX_TSO_LK1
-        use pm_kind, only: LKC => LK1
+        use pm_kind, only: LKG => LK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -1058,35 +1058,35 @@ contains
 
 #if CK5_ENABLED
     module procedure getMatCopy_RDP_RDP_XLX_TSO_CK5
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure getMatCopy_RDP_RDP_XLX_TSO_CK4
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure getMatCopy_RDP_RDP_XLX_TSO_CK3
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure getMatCopy_RDP_RDP_XLX_TSO_CK2
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure getMatCopy_RDP_RDP_XLX_TSO_CK1
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -1099,35 +1099,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getMatCopy_RDP_RDP_XLX_TSO_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getMatCopy_RDP_RDP_XLX_TSO_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getMatCopy_RDP_RDP_XLX_TSO_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getMatCopy_RDP_RDP_XLX_TSO_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getMatCopy_RDP_RDP_XLX_TSO_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -1152,35 +1152,35 @@ contains
 
 #if SK5_ENABLED
     module procedure getMatCopy_RDP_RDP_XLX_THO_SK5
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK4_ENABLED
     module procedure getMatCopy_RDP_RDP_XLX_THO_SK4
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK3_ENABLED
     module procedure getMatCopy_RDP_RDP_XLX_THO_SK3
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK2_ENABLED
     module procedure getMatCopy_RDP_RDP_XLX_THO_SK2
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK1_ENABLED
     module procedure getMatCopy_RDP_RDP_XLX_THO_SK1
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -1193,35 +1193,35 @@ contains
 
 #if IK5_ENABLED
     module procedure getMatCopy_RDP_RDP_XLX_THO_IK5
-        use pm_kind, only: IKC => IK5
+        use pm_kind, only: IKG => IK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK4_ENABLED
     module procedure getMatCopy_RDP_RDP_XLX_THO_IK4
-        use pm_kind, only: IKC => IK4
+        use pm_kind, only: IKG => IK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK3_ENABLED
     module procedure getMatCopy_RDP_RDP_XLX_THO_IK3
-        use pm_kind, only: IKC => IK3
+        use pm_kind, only: IKG => IK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK2_ENABLED
     module procedure getMatCopy_RDP_RDP_XLX_THO_IK2
-        use pm_kind, only: IKC => IK2
+        use pm_kind, only: IKG => IK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK1_ENABLED
     module procedure getMatCopy_RDP_RDP_XLX_THO_IK1
-        use pm_kind, only: IKC => IK1
+        use pm_kind, only: IKG => IK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -1234,35 +1234,35 @@ contains
 
 #if LK5_ENABLED
     module procedure getMatCopy_RDP_RDP_XLX_THO_LK5
-        use pm_kind, only: LKC => LK5
+        use pm_kind, only: LKG => LK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK4_ENABLED
     module procedure getMatCopy_RDP_RDP_XLX_THO_LK4
-        use pm_kind, only: LKC => LK4
+        use pm_kind, only: LKG => LK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK3_ENABLED
     module procedure getMatCopy_RDP_RDP_XLX_THO_LK3
-        use pm_kind, only: LKC => LK3
+        use pm_kind, only: LKG => LK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK2_ENABLED
     module procedure getMatCopy_RDP_RDP_XLX_THO_LK2
-        use pm_kind, only: LKC => LK2
+        use pm_kind, only: LKG => LK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK1_ENABLED
     module procedure getMatCopy_RDP_RDP_XLX_THO_LK1
-        use pm_kind, only: LKC => LK1
+        use pm_kind, only: LKG => LK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -1275,35 +1275,35 @@ contains
 
 #if CK5_ENABLED
     module procedure getMatCopy_RDP_RDP_XLX_THO_CK5
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure getMatCopy_RDP_RDP_XLX_THO_CK4
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure getMatCopy_RDP_RDP_XLX_THO_CK3
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure getMatCopy_RDP_RDP_XLX_THO_CK2
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure getMatCopy_RDP_RDP_XLX_THO_CK1
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -1316,35 +1316,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getMatCopy_RDP_RDP_XLX_THO_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getMatCopy_RDP_RDP_XLX_THO_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getMatCopy_RDP_RDP_XLX_THO_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getMatCopy_RDP_RDP_XLX_THO_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getMatCopy_RDP_RDP_XLX_THO_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -1369,35 +1369,35 @@ contains
 
 #if SK5_ENABLED
     module procedure getMatCopy_RDP_RDP_XXD_AIO_SK5
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK4_ENABLED
     module procedure getMatCopy_RDP_RDP_XXD_AIO_SK4
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK3_ENABLED
     module procedure getMatCopy_RDP_RDP_XXD_AIO_SK3
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK2_ENABLED
     module procedure getMatCopy_RDP_RDP_XXD_AIO_SK2
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK1_ENABLED
     module procedure getMatCopy_RDP_RDP_XXD_AIO_SK1
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -1410,35 +1410,35 @@ contains
 
 #if IK5_ENABLED
     module procedure getMatCopy_RDP_RDP_XXD_AIO_IK5
-        use pm_kind, only: IKC => IK5
+        use pm_kind, only: IKG => IK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK4_ENABLED
     module procedure getMatCopy_RDP_RDP_XXD_AIO_IK4
-        use pm_kind, only: IKC => IK4
+        use pm_kind, only: IKG => IK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK3_ENABLED
     module procedure getMatCopy_RDP_RDP_XXD_AIO_IK3
-        use pm_kind, only: IKC => IK3
+        use pm_kind, only: IKG => IK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK2_ENABLED
     module procedure getMatCopy_RDP_RDP_XXD_AIO_IK2
-        use pm_kind, only: IKC => IK2
+        use pm_kind, only: IKG => IK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK1_ENABLED
     module procedure getMatCopy_RDP_RDP_XXD_AIO_IK1
-        use pm_kind, only: IKC => IK1
+        use pm_kind, only: IKG => IK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -1451,35 +1451,35 @@ contains
 
 #if LK5_ENABLED
     module procedure getMatCopy_RDP_RDP_XXD_AIO_LK5
-        use pm_kind, only: LKC => LK5
+        use pm_kind, only: LKG => LK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK4_ENABLED
     module procedure getMatCopy_RDP_RDP_XXD_AIO_LK4
-        use pm_kind, only: LKC => LK4
+        use pm_kind, only: LKG => LK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK3_ENABLED
     module procedure getMatCopy_RDP_RDP_XXD_AIO_LK3
-        use pm_kind, only: LKC => LK3
+        use pm_kind, only: LKG => LK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK2_ENABLED
     module procedure getMatCopy_RDP_RDP_XXD_AIO_LK2
-        use pm_kind, only: LKC => LK2
+        use pm_kind, only: LKG => LK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK1_ENABLED
     module procedure getMatCopy_RDP_RDP_XXD_AIO_LK1
-        use pm_kind, only: LKC => LK1
+        use pm_kind, only: LKG => LK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -1492,35 +1492,35 @@ contains
 
 #if CK5_ENABLED
     module procedure getMatCopy_RDP_RDP_XXD_AIO_CK5
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure getMatCopy_RDP_RDP_XXD_AIO_CK4
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure getMatCopy_RDP_RDP_XXD_AIO_CK3
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure getMatCopy_RDP_RDP_XXD_AIO_CK2
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure getMatCopy_RDP_RDP_XXD_AIO_CK1
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -1533,35 +1533,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getMatCopy_RDP_RDP_XXD_AIO_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getMatCopy_RDP_RDP_XXD_AIO_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getMatCopy_RDP_RDP_XXD_AIO_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getMatCopy_RDP_RDP_XXD_AIO_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getMatCopy_RDP_RDP_XXD_AIO_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -1586,35 +1586,35 @@ contains
 
 #if SK5_ENABLED
     module procedure getMatCopy_RDP_RDP_XXD_TSO_SK5
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK4_ENABLED
     module procedure getMatCopy_RDP_RDP_XXD_TSO_SK4
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK3_ENABLED
     module procedure getMatCopy_RDP_RDP_XXD_TSO_SK3
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK2_ENABLED
     module procedure getMatCopy_RDP_RDP_XXD_TSO_SK2
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK1_ENABLED
     module procedure getMatCopy_RDP_RDP_XXD_TSO_SK1
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -1627,35 +1627,35 @@ contains
 
 #if IK5_ENABLED
     module procedure getMatCopy_RDP_RDP_XXD_TSO_IK5
-        use pm_kind, only: IKC => IK5
+        use pm_kind, only: IKG => IK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK4_ENABLED
     module procedure getMatCopy_RDP_RDP_XXD_TSO_IK4
-        use pm_kind, only: IKC => IK4
+        use pm_kind, only: IKG => IK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK3_ENABLED
     module procedure getMatCopy_RDP_RDP_XXD_TSO_IK3
-        use pm_kind, only: IKC => IK3
+        use pm_kind, only: IKG => IK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK2_ENABLED
     module procedure getMatCopy_RDP_RDP_XXD_TSO_IK2
-        use pm_kind, only: IKC => IK2
+        use pm_kind, only: IKG => IK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK1_ENABLED
     module procedure getMatCopy_RDP_RDP_XXD_TSO_IK1
-        use pm_kind, only: IKC => IK1
+        use pm_kind, only: IKG => IK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -1668,35 +1668,35 @@ contains
 
 #if LK5_ENABLED
     module procedure getMatCopy_RDP_RDP_XXD_TSO_LK5
-        use pm_kind, only: LKC => LK5
+        use pm_kind, only: LKG => LK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK4_ENABLED
     module procedure getMatCopy_RDP_RDP_XXD_TSO_LK4
-        use pm_kind, only: LKC => LK4
+        use pm_kind, only: LKG => LK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK3_ENABLED
     module procedure getMatCopy_RDP_RDP_XXD_TSO_LK3
-        use pm_kind, only: LKC => LK3
+        use pm_kind, only: LKG => LK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK2_ENABLED
     module procedure getMatCopy_RDP_RDP_XXD_TSO_LK2
-        use pm_kind, only: LKC => LK2
+        use pm_kind, only: LKG => LK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK1_ENABLED
     module procedure getMatCopy_RDP_RDP_XXD_TSO_LK1
-        use pm_kind, only: LKC => LK1
+        use pm_kind, only: LKG => LK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -1709,35 +1709,35 @@ contains
 
 #if CK5_ENABLED
     module procedure getMatCopy_RDP_RDP_XXD_TSO_CK5
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure getMatCopy_RDP_RDP_XXD_TSO_CK4
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure getMatCopy_RDP_RDP_XXD_TSO_CK3
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure getMatCopy_RDP_RDP_XXD_TSO_CK2
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure getMatCopy_RDP_RDP_XXD_TSO_CK1
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -1750,35 +1750,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getMatCopy_RDP_RDP_XXD_TSO_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getMatCopy_RDP_RDP_XXD_TSO_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getMatCopy_RDP_RDP_XXD_TSO_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getMatCopy_RDP_RDP_XXD_TSO_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getMatCopy_RDP_RDP_XXD_TSO_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -1803,35 +1803,35 @@ contains
 
 #if SK5_ENABLED
     module procedure getMatCopy_RDP_RDP_XXD_THO_SK5
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK4_ENABLED
     module procedure getMatCopy_RDP_RDP_XXD_THO_SK4
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK3_ENABLED
     module procedure getMatCopy_RDP_RDP_XXD_THO_SK3
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK2_ENABLED
     module procedure getMatCopy_RDP_RDP_XXD_THO_SK2
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK1_ENABLED
     module procedure getMatCopy_RDP_RDP_XXD_THO_SK1
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -1844,35 +1844,35 @@ contains
 
 #if IK5_ENABLED
     module procedure getMatCopy_RDP_RDP_XXD_THO_IK5
-        use pm_kind, only: IKC => IK5
+        use pm_kind, only: IKG => IK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK4_ENABLED
     module procedure getMatCopy_RDP_RDP_XXD_THO_IK4
-        use pm_kind, only: IKC => IK4
+        use pm_kind, only: IKG => IK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK3_ENABLED
     module procedure getMatCopy_RDP_RDP_XXD_THO_IK3
-        use pm_kind, only: IKC => IK3
+        use pm_kind, only: IKG => IK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK2_ENABLED
     module procedure getMatCopy_RDP_RDP_XXD_THO_IK2
-        use pm_kind, only: IKC => IK2
+        use pm_kind, only: IKG => IK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK1_ENABLED
     module procedure getMatCopy_RDP_RDP_XXD_THO_IK1
-        use pm_kind, only: IKC => IK1
+        use pm_kind, only: IKG => IK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -1885,35 +1885,35 @@ contains
 
 #if LK5_ENABLED
     module procedure getMatCopy_RDP_RDP_XXD_THO_LK5
-        use pm_kind, only: LKC => LK5
+        use pm_kind, only: LKG => LK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK4_ENABLED
     module procedure getMatCopy_RDP_RDP_XXD_THO_LK4
-        use pm_kind, only: LKC => LK4
+        use pm_kind, only: LKG => LK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK3_ENABLED
     module procedure getMatCopy_RDP_RDP_XXD_THO_LK3
-        use pm_kind, only: LKC => LK3
+        use pm_kind, only: LKG => LK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK2_ENABLED
     module procedure getMatCopy_RDP_RDP_XXD_THO_LK2
-        use pm_kind, only: LKC => LK2
+        use pm_kind, only: LKG => LK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK1_ENABLED
     module procedure getMatCopy_RDP_RDP_XXD_THO_LK1
-        use pm_kind, only: LKC => LK1
+        use pm_kind, only: LKG => LK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -1926,35 +1926,35 @@ contains
 
 #if CK5_ENABLED
     module procedure getMatCopy_RDP_RDP_XXD_THO_CK5
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure getMatCopy_RDP_RDP_XXD_THO_CK4
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure getMatCopy_RDP_RDP_XXD_THO_CK3
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure getMatCopy_RDP_RDP_XXD_THO_CK2
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure getMatCopy_RDP_RDP_XXD_THO_CK1
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -1967,35 +1967,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getMatCopy_RDP_RDP_XXD_THO_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getMatCopy_RDP_RDP_XXD_THO_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getMatCopy_RDP_RDP_XXD_THO_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getMatCopy_RDP_RDP_XXD_THO_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getMatCopy_RDP_RDP_XXD_THO_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -2020,35 +2020,35 @@ contains
 
 #if SK5_ENABLED
     module procedure getMatCopy_RDP_RDP_UXD_AIO_SK5
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK4_ENABLED
     module procedure getMatCopy_RDP_RDP_UXD_AIO_SK4
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK3_ENABLED
     module procedure getMatCopy_RDP_RDP_UXD_AIO_SK3
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK2_ENABLED
     module procedure getMatCopy_RDP_RDP_UXD_AIO_SK2
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK1_ENABLED
     module procedure getMatCopy_RDP_RDP_UXD_AIO_SK1
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -2061,35 +2061,35 @@ contains
 
 #if IK5_ENABLED
     module procedure getMatCopy_RDP_RDP_UXD_AIO_IK5
-        use pm_kind, only: IKC => IK5
+        use pm_kind, only: IKG => IK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK4_ENABLED
     module procedure getMatCopy_RDP_RDP_UXD_AIO_IK4
-        use pm_kind, only: IKC => IK4
+        use pm_kind, only: IKG => IK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK3_ENABLED
     module procedure getMatCopy_RDP_RDP_UXD_AIO_IK3
-        use pm_kind, only: IKC => IK3
+        use pm_kind, only: IKG => IK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK2_ENABLED
     module procedure getMatCopy_RDP_RDP_UXD_AIO_IK2
-        use pm_kind, only: IKC => IK2
+        use pm_kind, only: IKG => IK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK1_ENABLED
     module procedure getMatCopy_RDP_RDP_UXD_AIO_IK1
-        use pm_kind, only: IKC => IK1
+        use pm_kind, only: IKG => IK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -2102,35 +2102,35 @@ contains
 
 #if LK5_ENABLED
     module procedure getMatCopy_RDP_RDP_UXD_AIO_LK5
-        use pm_kind, only: LKC => LK5
+        use pm_kind, only: LKG => LK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK4_ENABLED
     module procedure getMatCopy_RDP_RDP_UXD_AIO_LK4
-        use pm_kind, only: LKC => LK4
+        use pm_kind, only: LKG => LK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK3_ENABLED
     module procedure getMatCopy_RDP_RDP_UXD_AIO_LK3
-        use pm_kind, only: LKC => LK3
+        use pm_kind, only: LKG => LK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK2_ENABLED
     module procedure getMatCopy_RDP_RDP_UXD_AIO_LK2
-        use pm_kind, only: LKC => LK2
+        use pm_kind, only: LKG => LK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK1_ENABLED
     module procedure getMatCopy_RDP_RDP_UXD_AIO_LK1
-        use pm_kind, only: LKC => LK1
+        use pm_kind, only: LKG => LK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -2143,35 +2143,35 @@ contains
 
 #if CK5_ENABLED
     module procedure getMatCopy_RDP_RDP_UXD_AIO_CK5
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure getMatCopy_RDP_RDP_UXD_AIO_CK4
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure getMatCopy_RDP_RDP_UXD_AIO_CK3
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure getMatCopy_RDP_RDP_UXD_AIO_CK2
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure getMatCopy_RDP_RDP_UXD_AIO_CK1
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -2184,35 +2184,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getMatCopy_RDP_RDP_UXD_AIO_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getMatCopy_RDP_RDP_UXD_AIO_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getMatCopy_RDP_RDP_UXD_AIO_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getMatCopy_RDP_RDP_UXD_AIO_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getMatCopy_RDP_RDP_UXD_AIO_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -2237,35 +2237,35 @@ contains
 
 #if SK5_ENABLED
     module procedure getMatCopy_RDP_RDP_UXD_TSO_SK5
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK4_ENABLED
     module procedure getMatCopy_RDP_RDP_UXD_TSO_SK4
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK3_ENABLED
     module procedure getMatCopy_RDP_RDP_UXD_TSO_SK3
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK2_ENABLED
     module procedure getMatCopy_RDP_RDP_UXD_TSO_SK2
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK1_ENABLED
     module procedure getMatCopy_RDP_RDP_UXD_TSO_SK1
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -2278,35 +2278,35 @@ contains
 
 #if IK5_ENABLED
     module procedure getMatCopy_RDP_RDP_UXD_TSO_IK5
-        use pm_kind, only: IKC => IK5
+        use pm_kind, only: IKG => IK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK4_ENABLED
     module procedure getMatCopy_RDP_RDP_UXD_TSO_IK4
-        use pm_kind, only: IKC => IK4
+        use pm_kind, only: IKG => IK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK3_ENABLED
     module procedure getMatCopy_RDP_RDP_UXD_TSO_IK3
-        use pm_kind, only: IKC => IK3
+        use pm_kind, only: IKG => IK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK2_ENABLED
     module procedure getMatCopy_RDP_RDP_UXD_TSO_IK2
-        use pm_kind, only: IKC => IK2
+        use pm_kind, only: IKG => IK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK1_ENABLED
     module procedure getMatCopy_RDP_RDP_UXD_TSO_IK1
-        use pm_kind, only: IKC => IK1
+        use pm_kind, only: IKG => IK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -2319,35 +2319,35 @@ contains
 
 #if LK5_ENABLED
     module procedure getMatCopy_RDP_RDP_UXD_TSO_LK5
-        use pm_kind, only: LKC => LK5
+        use pm_kind, only: LKG => LK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK4_ENABLED
     module procedure getMatCopy_RDP_RDP_UXD_TSO_LK4
-        use pm_kind, only: LKC => LK4
+        use pm_kind, only: LKG => LK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK3_ENABLED
     module procedure getMatCopy_RDP_RDP_UXD_TSO_LK3
-        use pm_kind, only: LKC => LK3
+        use pm_kind, only: LKG => LK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK2_ENABLED
     module procedure getMatCopy_RDP_RDP_UXD_TSO_LK2
-        use pm_kind, only: LKC => LK2
+        use pm_kind, only: LKG => LK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK1_ENABLED
     module procedure getMatCopy_RDP_RDP_UXD_TSO_LK1
-        use pm_kind, only: LKC => LK1
+        use pm_kind, only: LKG => LK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -2360,35 +2360,35 @@ contains
 
 #if CK5_ENABLED
     module procedure getMatCopy_RDP_RDP_UXD_TSO_CK5
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure getMatCopy_RDP_RDP_UXD_TSO_CK4
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure getMatCopy_RDP_RDP_UXD_TSO_CK3
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure getMatCopy_RDP_RDP_UXD_TSO_CK2
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure getMatCopy_RDP_RDP_UXD_TSO_CK1
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -2401,35 +2401,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getMatCopy_RDP_RDP_UXD_TSO_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getMatCopy_RDP_RDP_UXD_TSO_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getMatCopy_RDP_RDP_UXD_TSO_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getMatCopy_RDP_RDP_UXD_TSO_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getMatCopy_RDP_RDP_UXD_TSO_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -2454,35 +2454,35 @@ contains
 
 #if SK5_ENABLED
     module procedure getMatCopy_RDP_RDP_UXD_THO_SK5
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK4_ENABLED
     module procedure getMatCopy_RDP_RDP_UXD_THO_SK4
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK3_ENABLED
     module procedure getMatCopy_RDP_RDP_UXD_THO_SK3
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK2_ENABLED
     module procedure getMatCopy_RDP_RDP_UXD_THO_SK2
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK1_ENABLED
     module procedure getMatCopy_RDP_RDP_UXD_THO_SK1
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -2495,35 +2495,35 @@ contains
 
 #if IK5_ENABLED
     module procedure getMatCopy_RDP_RDP_UXD_THO_IK5
-        use pm_kind, only: IKC => IK5
+        use pm_kind, only: IKG => IK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK4_ENABLED
     module procedure getMatCopy_RDP_RDP_UXD_THO_IK4
-        use pm_kind, only: IKC => IK4
+        use pm_kind, only: IKG => IK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK3_ENABLED
     module procedure getMatCopy_RDP_RDP_UXD_THO_IK3
-        use pm_kind, only: IKC => IK3
+        use pm_kind, only: IKG => IK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK2_ENABLED
     module procedure getMatCopy_RDP_RDP_UXD_THO_IK2
-        use pm_kind, only: IKC => IK2
+        use pm_kind, only: IKG => IK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK1_ENABLED
     module procedure getMatCopy_RDP_RDP_UXD_THO_IK1
-        use pm_kind, only: IKC => IK1
+        use pm_kind, only: IKG => IK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -2536,35 +2536,35 @@ contains
 
 #if LK5_ENABLED
     module procedure getMatCopy_RDP_RDP_UXD_THO_LK5
-        use pm_kind, only: LKC => LK5
+        use pm_kind, only: LKG => LK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK4_ENABLED
     module procedure getMatCopy_RDP_RDP_UXD_THO_LK4
-        use pm_kind, only: LKC => LK4
+        use pm_kind, only: LKG => LK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK3_ENABLED
     module procedure getMatCopy_RDP_RDP_UXD_THO_LK3
-        use pm_kind, only: LKC => LK3
+        use pm_kind, only: LKG => LK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK2_ENABLED
     module procedure getMatCopy_RDP_RDP_UXD_THO_LK2
-        use pm_kind, only: LKC => LK2
+        use pm_kind, only: LKG => LK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK1_ENABLED
     module procedure getMatCopy_RDP_RDP_UXD_THO_LK1
-        use pm_kind, only: LKC => LK1
+        use pm_kind, only: LKG => LK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -2577,35 +2577,35 @@ contains
 
 #if CK5_ENABLED
     module procedure getMatCopy_RDP_RDP_UXD_THO_CK5
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure getMatCopy_RDP_RDP_UXD_THO_CK4
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure getMatCopy_RDP_RDP_UXD_THO_CK3
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure getMatCopy_RDP_RDP_UXD_THO_CK2
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure getMatCopy_RDP_RDP_UXD_THO_CK1
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -2618,35 +2618,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getMatCopy_RDP_RDP_UXD_THO_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getMatCopy_RDP_RDP_UXD_THO_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getMatCopy_RDP_RDP_UXD_THO_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getMatCopy_RDP_RDP_UXD_THO_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getMatCopy_RDP_RDP_UXD_THO_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -2671,35 +2671,35 @@ contains
 
 #if SK5_ENABLED
     module procedure getMatCopy_RDP_RDP_XLD_AIO_SK5
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK4_ENABLED
     module procedure getMatCopy_RDP_RDP_XLD_AIO_SK4
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK3_ENABLED
     module procedure getMatCopy_RDP_RDP_XLD_AIO_SK3
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK2_ENABLED
     module procedure getMatCopy_RDP_RDP_XLD_AIO_SK2
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK1_ENABLED
     module procedure getMatCopy_RDP_RDP_XLD_AIO_SK1
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -2712,35 +2712,35 @@ contains
 
 #if IK5_ENABLED
     module procedure getMatCopy_RDP_RDP_XLD_AIO_IK5
-        use pm_kind, only: IKC => IK5
+        use pm_kind, only: IKG => IK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK4_ENABLED
     module procedure getMatCopy_RDP_RDP_XLD_AIO_IK4
-        use pm_kind, only: IKC => IK4
+        use pm_kind, only: IKG => IK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK3_ENABLED
     module procedure getMatCopy_RDP_RDP_XLD_AIO_IK3
-        use pm_kind, only: IKC => IK3
+        use pm_kind, only: IKG => IK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK2_ENABLED
     module procedure getMatCopy_RDP_RDP_XLD_AIO_IK2
-        use pm_kind, only: IKC => IK2
+        use pm_kind, only: IKG => IK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK1_ENABLED
     module procedure getMatCopy_RDP_RDP_XLD_AIO_IK1
-        use pm_kind, only: IKC => IK1
+        use pm_kind, only: IKG => IK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -2753,35 +2753,35 @@ contains
 
 #if LK5_ENABLED
     module procedure getMatCopy_RDP_RDP_XLD_AIO_LK5
-        use pm_kind, only: LKC => LK5
+        use pm_kind, only: LKG => LK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK4_ENABLED
     module procedure getMatCopy_RDP_RDP_XLD_AIO_LK4
-        use pm_kind, only: LKC => LK4
+        use pm_kind, only: LKG => LK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK3_ENABLED
     module procedure getMatCopy_RDP_RDP_XLD_AIO_LK3
-        use pm_kind, only: LKC => LK3
+        use pm_kind, only: LKG => LK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK2_ENABLED
     module procedure getMatCopy_RDP_RDP_XLD_AIO_LK2
-        use pm_kind, only: LKC => LK2
+        use pm_kind, only: LKG => LK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK1_ENABLED
     module procedure getMatCopy_RDP_RDP_XLD_AIO_LK1
-        use pm_kind, only: LKC => LK1
+        use pm_kind, only: LKG => LK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -2794,35 +2794,35 @@ contains
 
 #if CK5_ENABLED
     module procedure getMatCopy_RDP_RDP_XLD_AIO_CK5
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure getMatCopy_RDP_RDP_XLD_AIO_CK4
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure getMatCopy_RDP_RDP_XLD_AIO_CK3
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure getMatCopy_RDP_RDP_XLD_AIO_CK2
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure getMatCopy_RDP_RDP_XLD_AIO_CK1
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -2835,35 +2835,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getMatCopy_RDP_RDP_XLD_AIO_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getMatCopy_RDP_RDP_XLD_AIO_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getMatCopy_RDP_RDP_XLD_AIO_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getMatCopy_RDP_RDP_XLD_AIO_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getMatCopy_RDP_RDP_XLD_AIO_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -2888,35 +2888,35 @@ contains
 
 #if SK5_ENABLED
     module procedure getMatCopy_RDP_RDP_XLD_TSO_SK5
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK4_ENABLED
     module procedure getMatCopy_RDP_RDP_XLD_TSO_SK4
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK3_ENABLED
     module procedure getMatCopy_RDP_RDP_XLD_TSO_SK3
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK2_ENABLED
     module procedure getMatCopy_RDP_RDP_XLD_TSO_SK2
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK1_ENABLED
     module procedure getMatCopy_RDP_RDP_XLD_TSO_SK1
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -2929,35 +2929,35 @@ contains
 
 #if IK5_ENABLED
     module procedure getMatCopy_RDP_RDP_XLD_TSO_IK5
-        use pm_kind, only: IKC => IK5
+        use pm_kind, only: IKG => IK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK4_ENABLED
     module procedure getMatCopy_RDP_RDP_XLD_TSO_IK4
-        use pm_kind, only: IKC => IK4
+        use pm_kind, only: IKG => IK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK3_ENABLED
     module procedure getMatCopy_RDP_RDP_XLD_TSO_IK3
-        use pm_kind, only: IKC => IK3
+        use pm_kind, only: IKG => IK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK2_ENABLED
     module procedure getMatCopy_RDP_RDP_XLD_TSO_IK2
-        use pm_kind, only: IKC => IK2
+        use pm_kind, only: IKG => IK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK1_ENABLED
     module procedure getMatCopy_RDP_RDP_XLD_TSO_IK1
-        use pm_kind, only: IKC => IK1
+        use pm_kind, only: IKG => IK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -2970,35 +2970,35 @@ contains
 
 #if LK5_ENABLED
     module procedure getMatCopy_RDP_RDP_XLD_TSO_LK5
-        use pm_kind, only: LKC => LK5
+        use pm_kind, only: LKG => LK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK4_ENABLED
     module procedure getMatCopy_RDP_RDP_XLD_TSO_LK4
-        use pm_kind, only: LKC => LK4
+        use pm_kind, only: LKG => LK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK3_ENABLED
     module procedure getMatCopy_RDP_RDP_XLD_TSO_LK3
-        use pm_kind, only: LKC => LK3
+        use pm_kind, only: LKG => LK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK2_ENABLED
     module procedure getMatCopy_RDP_RDP_XLD_TSO_LK2
-        use pm_kind, only: LKC => LK2
+        use pm_kind, only: LKG => LK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK1_ENABLED
     module procedure getMatCopy_RDP_RDP_XLD_TSO_LK1
-        use pm_kind, only: LKC => LK1
+        use pm_kind, only: LKG => LK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -3011,35 +3011,35 @@ contains
 
 #if CK5_ENABLED
     module procedure getMatCopy_RDP_RDP_XLD_TSO_CK5
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure getMatCopy_RDP_RDP_XLD_TSO_CK4
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure getMatCopy_RDP_RDP_XLD_TSO_CK3
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure getMatCopy_RDP_RDP_XLD_TSO_CK2
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure getMatCopy_RDP_RDP_XLD_TSO_CK1
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -3052,35 +3052,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getMatCopy_RDP_RDP_XLD_TSO_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getMatCopy_RDP_RDP_XLD_TSO_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getMatCopy_RDP_RDP_XLD_TSO_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getMatCopy_RDP_RDP_XLD_TSO_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getMatCopy_RDP_RDP_XLD_TSO_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -3105,35 +3105,35 @@ contains
 
 #if SK5_ENABLED
     module procedure getMatCopy_RDP_RDP_XLD_THO_SK5
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK4_ENABLED
     module procedure getMatCopy_RDP_RDP_XLD_THO_SK4
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK3_ENABLED
     module procedure getMatCopy_RDP_RDP_XLD_THO_SK3
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK2_ENABLED
     module procedure getMatCopy_RDP_RDP_XLD_THO_SK2
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK1_ENABLED
     module procedure getMatCopy_RDP_RDP_XLD_THO_SK1
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -3146,35 +3146,35 @@ contains
 
 #if IK5_ENABLED
     module procedure getMatCopy_RDP_RDP_XLD_THO_IK5
-        use pm_kind, only: IKC => IK5
+        use pm_kind, only: IKG => IK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK4_ENABLED
     module procedure getMatCopy_RDP_RDP_XLD_THO_IK4
-        use pm_kind, only: IKC => IK4
+        use pm_kind, only: IKG => IK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK3_ENABLED
     module procedure getMatCopy_RDP_RDP_XLD_THO_IK3
-        use pm_kind, only: IKC => IK3
+        use pm_kind, only: IKG => IK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK2_ENABLED
     module procedure getMatCopy_RDP_RDP_XLD_THO_IK2
-        use pm_kind, only: IKC => IK2
+        use pm_kind, only: IKG => IK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK1_ENABLED
     module procedure getMatCopy_RDP_RDP_XLD_THO_IK1
-        use pm_kind, only: IKC => IK1
+        use pm_kind, only: IKG => IK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -3187,35 +3187,35 @@ contains
 
 #if LK5_ENABLED
     module procedure getMatCopy_RDP_RDP_XLD_THO_LK5
-        use pm_kind, only: LKC => LK5
+        use pm_kind, only: LKG => LK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK4_ENABLED
     module procedure getMatCopy_RDP_RDP_XLD_THO_LK4
-        use pm_kind, only: LKC => LK4
+        use pm_kind, only: LKG => LK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK3_ENABLED
     module procedure getMatCopy_RDP_RDP_XLD_THO_LK3
-        use pm_kind, only: LKC => LK3
+        use pm_kind, only: LKG => LK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK2_ENABLED
     module procedure getMatCopy_RDP_RDP_XLD_THO_LK2
-        use pm_kind, only: LKC => LK2
+        use pm_kind, only: LKG => LK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK1_ENABLED
     module procedure getMatCopy_RDP_RDP_XLD_THO_LK1
-        use pm_kind, only: LKC => LK1
+        use pm_kind, only: LKG => LK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -3228,35 +3228,35 @@ contains
 
 #if CK5_ENABLED
     module procedure getMatCopy_RDP_RDP_XLD_THO_CK5
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure getMatCopy_RDP_RDP_XLD_THO_CK4
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure getMatCopy_RDP_RDP_XLD_THO_CK3
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure getMatCopy_RDP_RDP_XLD_THO_CK2
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure getMatCopy_RDP_RDP_XLD_THO_CK1
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -3269,35 +3269,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getMatCopy_RDP_RDP_XLD_THO_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getMatCopy_RDP_RDP_XLD_THO_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getMatCopy_RDP_RDP_XLD_THO_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getMatCopy_RDP_RDP_XLD_THO_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getMatCopy_RDP_RDP_XLD_THO_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -3322,35 +3322,35 @@ contains
 
 #if SK5_ENABLED
     module procedure getMatCopy_RDP_RDP_ULX_AIO_SK5
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK4_ENABLED
     module procedure getMatCopy_RDP_RDP_ULX_AIO_SK4
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK3_ENABLED
     module procedure getMatCopy_RDP_RDP_ULX_AIO_SK3
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK2_ENABLED
     module procedure getMatCopy_RDP_RDP_ULX_AIO_SK2
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK1_ENABLED
     module procedure getMatCopy_RDP_RDP_ULX_AIO_SK1
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -3363,35 +3363,35 @@ contains
 
 #if IK5_ENABLED
     module procedure getMatCopy_RDP_RDP_ULX_AIO_IK5
-        use pm_kind, only: IKC => IK5
+        use pm_kind, only: IKG => IK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK4_ENABLED
     module procedure getMatCopy_RDP_RDP_ULX_AIO_IK4
-        use pm_kind, only: IKC => IK4
+        use pm_kind, only: IKG => IK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK3_ENABLED
     module procedure getMatCopy_RDP_RDP_ULX_AIO_IK3
-        use pm_kind, only: IKC => IK3
+        use pm_kind, only: IKG => IK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK2_ENABLED
     module procedure getMatCopy_RDP_RDP_ULX_AIO_IK2
-        use pm_kind, only: IKC => IK2
+        use pm_kind, only: IKG => IK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK1_ENABLED
     module procedure getMatCopy_RDP_RDP_ULX_AIO_IK1
-        use pm_kind, only: IKC => IK1
+        use pm_kind, only: IKG => IK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -3404,35 +3404,35 @@ contains
 
 #if LK5_ENABLED
     module procedure getMatCopy_RDP_RDP_ULX_AIO_LK5
-        use pm_kind, only: LKC => LK5
+        use pm_kind, only: LKG => LK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK4_ENABLED
     module procedure getMatCopy_RDP_RDP_ULX_AIO_LK4
-        use pm_kind, only: LKC => LK4
+        use pm_kind, only: LKG => LK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK3_ENABLED
     module procedure getMatCopy_RDP_RDP_ULX_AIO_LK3
-        use pm_kind, only: LKC => LK3
+        use pm_kind, only: LKG => LK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK2_ENABLED
     module procedure getMatCopy_RDP_RDP_ULX_AIO_LK2
-        use pm_kind, only: LKC => LK2
+        use pm_kind, only: LKG => LK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK1_ENABLED
     module procedure getMatCopy_RDP_RDP_ULX_AIO_LK1
-        use pm_kind, only: LKC => LK1
+        use pm_kind, only: LKG => LK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -3445,35 +3445,35 @@ contains
 
 #if CK5_ENABLED
     module procedure getMatCopy_RDP_RDP_ULX_AIO_CK5
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure getMatCopy_RDP_RDP_ULX_AIO_CK4
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure getMatCopy_RDP_RDP_ULX_AIO_CK3
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure getMatCopy_RDP_RDP_ULX_AIO_CK2
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure getMatCopy_RDP_RDP_ULX_AIO_CK1
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -3486,35 +3486,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getMatCopy_RDP_RDP_ULX_AIO_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getMatCopy_RDP_RDP_ULX_AIO_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getMatCopy_RDP_RDP_ULX_AIO_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getMatCopy_RDP_RDP_ULX_AIO_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getMatCopy_RDP_RDP_ULX_AIO_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -3539,35 +3539,35 @@ contains
 
 #if SK5_ENABLED
     module procedure getMatCopy_RDP_RDP_ULX_TSO_SK5
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK4_ENABLED
     module procedure getMatCopy_RDP_RDP_ULX_TSO_SK4
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK3_ENABLED
     module procedure getMatCopy_RDP_RDP_ULX_TSO_SK3
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK2_ENABLED
     module procedure getMatCopy_RDP_RDP_ULX_TSO_SK2
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK1_ENABLED
     module procedure getMatCopy_RDP_RDP_ULX_TSO_SK1
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -3580,35 +3580,35 @@ contains
 
 #if IK5_ENABLED
     module procedure getMatCopy_RDP_RDP_ULX_TSO_IK5
-        use pm_kind, only: IKC => IK5
+        use pm_kind, only: IKG => IK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK4_ENABLED
     module procedure getMatCopy_RDP_RDP_ULX_TSO_IK4
-        use pm_kind, only: IKC => IK4
+        use pm_kind, only: IKG => IK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK3_ENABLED
     module procedure getMatCopy_RDP_RDP_ULX_TSO_IK3
-        use pm_kind, only: IKC => IK3
+        use pm_kind, only: IKG => IK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK2_ENABLED
     module procedure getMatCopy_RDP_RDP_ULX_TSO_IK2
-        use pm_kind, only: IKC => IK2
+        use pm_kind, only: IKG => IK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK1_ENABLED
     module procedure getMatCopy_RDP_RDP_ULX_TSO_IK1
-        use pm_kind, only: IKC => IK1
+        use pm_kind, only: IKG => IK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -3621,35 +3621,35 @@ contains
 
 #if LK5_ENABLED
     module procedure getMatCopy_RDP_RDP_ULX_TSO_LK5
-        use pm_kind, only: LKC => LK5
+        use pm_kind, only: LKG => LK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK4_ENABLED
     module procedure getMatCopy_RDP_RDP_ULX_TSO_LK4
-        use pm_kind, only: LKC => LK4
+        use pm_kind, only: LKG => LK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK3_ENABLED
     module procedure getMatCopy_RDP_RDP_ULX_TSO_LK3
-        use pm_kind, only: LKC => LK3
+        use pm_kind, only: LKG => LK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK2_ENABLED
     module procedure getMatCopy_RDP_RDP_ULX_TSO_LK2
-        use pm_kind, only: LKC => LK2
+        use pm_kind, only: LKG => LK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK1_ENABLED
     module procedure getMatCopy_RDP_RDP_ULX_TSO_LK1
-        use pm_kind, only: LKC => LK1
+        use pm_kind, only: LKG => LK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -3662,35 +3662,35 @@ contains
 
 #if CK5_ENABLED
     module procedure getMatCopy_RDP_RDP_ULX_TSO_CK5
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure getMatCopy_RDP_RDP_ULX_TSO_CK4
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure getMatCopy_RDP_RDP_ULX_TSO_CK3
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure getMatCopy_RDP_RDP_ULX_TSO_CK2
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure getMatCopy_RDP_RDP_ULX_TSO_CK1
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -3703,35 +3703,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getMatCopy_RDP_RDP_ULX_TSO_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getMatCopy_RDP_RDP_ULX_TSO_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getMatCopy_RDP_RDP_ULX_TSO_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getMatCopy_RDP_RDP_ULX_TSO_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getMatCopy_RDP_RDP_ULX_TSO_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -3756,35 +3756,35 @@ contains
 
 #if SK5_ENABLED
     module procedure getMatCopy_RDP_RDP_ULX_THO_SK5
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK4_ENABLED
     module procedure getMatCopy_RDP_RDP_ULX_THO_SK4
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK3_ENABLED
     module procedure getMatCopy_RDP_RDP_ULX_THO_SK3
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK2_ENABLED
     module procedure getMatCopy_RDP_RDP_ULX_THO_SK2
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK1_ENABLED
     module procedure getMatCopy_RDP_RDP_ULX_THO_SK1
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -3797,35 +3797,35 @@ contains
 
 #if IK5_ENABLED
     module procedure getMatCopy_RDP_RDP_ULX_THO_IK5
-        use pm_kind, only: IKC => IK5
+        use pm_kind, only: IKG => IK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK4_ENABLED
     module procedure getMatCopy_RDP_RDP_ULX_THO_IK4
-        use pm_kind, only: IKC => IK4
+        use pm_kind, only: IKG => IK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK3_ENABLED
     module procedure getMatCopy_RDP_RDP_ULX_THO_IK3
-        use pm_kind, only: IKC => IK3
+        use pm_kind, only: IKG => IK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK2_ENABLED
     module procedure getMatCopy_RDP_RDP_ULX_THO_IK2
-        use pm_kind, only: IKC => IK2
+        use pm_kind, only: IKG => IK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK1_ENABLED
     module procedure getMatCopy_RDP_RDP_ULX_THO_IK1
-        use pm_kind, only: IKC => IK1
+        use pm_kind, only: IKG => IK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -3838,35 +3838,35 @@ contains
 
 #if LK5_ENABLED
     module procedure getMatCopy_RDP_RDP_ULX_THO_LK5
-        use pm_kind, only: LKC => LK5
+        use pm_kind, only: LKG => LK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK4_ENABLED
     module procedure getMatCopy_RDP_RDP_ULX_THO_LK4
-        use pm_kind, only: LKC => LK4
+        use pm_kind, only: LKG => LK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK3_ENABLED
     module procedure getMatCopy_RDP_RDP_ULX_THO_LK3
-        use pm_kind, only: LKC => LK3
+        use pm_kind, only: LKG => LK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK2_ENABLED
     module procedure getMatCopy_RDP_RDP_ULX_THO_LK2
-        use pm_kind, only: LKC => LK2
+        use pm_kind, only: LKG => LK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK1_ENABLED
     module procedure getMatCopy_RDP_RDP_ULX_THO_LK1
-        use pm_kind, only: LKC => LK1
+        use pm_kind, only: LKG => LK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -3879,35 +3879,35 @@ contains
 
 #if CK5_ENABLED
     module procedure getMatCopy_RDP_RDP_ULX_THO_CK5
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure getMatCopy_RDP_RDP_ULX_THO_CK4
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure getMatCopy_RDP_RDP_ULX_THO_CK3
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure getMatCopy_RDP_RDP_ULX_THO_CK2
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure getMatCopy_RDP_RDP_ULX_THO_CK1
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -3920,35 +3920,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getMatCopy_RDP_RDP_ULX_THO_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getMatCopy_RDP_RDP_ULX_THO_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getMatCopy_RDP_RDP_ULX_THO_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getMatCopy_RDP_RDP_ULX_THO_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getMatCopy_RDP_RDP_ULX_THO_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -3986,35 +3986,35 @@ contains
 
 #if SK5_ENABLED
     module procedure getMatCopy_RDP_LFP_XXD_AIO_SK5
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK4_ENABLED
     module procedure getMatCopy_RDP_LFP_XXD_AIO_SK4
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK3_ENABLED
     module procedure getMatCopy_RDP_LFP_XXD_AIO_SK3
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK2_ENABLED
     module procedure getMatCopy_RDP_LFP_XXD_AIO_SK2
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK1_ENABLED
     module procedure getMatCopy_RDP_LFP_XXD_AIO_SK1
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -4027,35 +4027,35 @@ contains
 
 #if IK5_ENABLED
     module procedure getMatCopy_RDP_LFP_XXD_AIO_IK5
-        use pm_kind, only: IKC => IK5
+        use pm_kind, only: IKG => IK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK4_ENABLED
     module procedure getMatCopy_RDP_LFP_XXD_AIO_IK4
-        use pm_kind, only: IKC => IK4
+        use pm_kind, only: IKG => IK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK3_ENABLED
     module procedure getMatCopy_RDP_LFP_XXD_AIO_IK3
-        use pm_kind, only: IKC => IK3
+        use pm_kind, only: IKG => IK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK2_ENABLED
     module procedure getMatCopy_RDP_LFP_XXD_AIO_IK2
-        use pm_kind, only: IKC => IK2
+        use pm_kind, only: IKG => IK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK1_ENABLED
     module procedure getMatCopy_RDP_LFP_XXD_AIO_IK1
-        use pm_kind, only: IKC => IK1
+        use pm_kind, only: IKG => IK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -4068,35 +4068,35 @@ contains
 
 #if LK5_ENABLED
     module procedure getMatCopy_RDP_LFP_XXD_AIO_LK5
-        use pm_kind, only: LKC => LK5
+        use pm_kind, only: LKG => LK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK4_ENABLED
     module procedure getMatCopy_RDP_LFP_XXD_AIO_LK4
-        use pm_kind, only: LKC => LK4
+        use pm_kind, only: LKG => LK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK3_ENABLED
     module procedure getMatCopy_RDP_LFP_XXD_AIO_LK3
-        use pm_kind, only: LKC => LK3
+        use pm_kind, only: LKG => LK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK2_ENABLED
     module procedure getMatCopy_RDP_LFP_XXD_AIO_LK2
-        use pm_kind, only: LKC => LK2
+        use pm_kind, only: LKG => LK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK1_ENABLED
     module procedure getMatCopy_RDP_LFP_XXD_AIO_LK1
-        use pm_kind, only: LKC => LK1
+        use pm_kind, only: LKG => LK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -4109,35 +4109,35 @@ contains
 
 #if CK5_ENABLED
     module procedure getMatCopy_RDP_LFP_XXD_AIO_CK5
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure getMatCopy_RDP_LFP_XXD_AIO_CK4
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure getMatCopy_RDP_LFP_XXD_AIO_CK3
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure getMatCopy_RDP_LFP_XXD_AIO_CK2
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure getMatCopy_RDP_LFP_XXD_AIO_CK1
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -4150,35 +4150,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getMatCopy_RDP_LFP_XXD_AIO_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getMatCopy_RDP_LFP_XXD_AIO_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getMatCopy_RDP_LFP_XXD_AIO_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getMatCopy_RDP_LFP_XXD_AIO_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getMatCopy_RDP_LFP_XXD_AIO_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -4203,35 +4203,35 @@ contains
 
 #if SK5_ENABLED
     module procedure getMatCopy_RDP_LFP_XXD_TSO_SK5
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK4_ENABLED
     module procedure getMatCopy_RDP_LFP_XXD_TSO_SK4
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK3_ENABLED
     module procedure getMatCopy_RDP_LFP_XXD_TSO_SK3
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK2_ENABLED
     module procedure getMatCopy_RDP_LFP_XXD_TSO_SK2
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK1_ENABLED
     module procedure getMatCopy_RDP_LFP_XXD_TSO_SK1
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -4244,35 +4244,35 @@ contains
 
 #if IK5_ENABLED
     module procedure getMatCopy_RDP_LFP_XXD_TSO_IK5
-        use pm_kind, only: IKC => IK5
+        use pm_kind, only: IKG => IK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK4_ENABLED
     module procedure getMatCopy_RDP_LFP_XXD_TSO_IK4
-        use pm_kind, only: IKC => IK4
+        use pm_kind, only: IKG => IK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK3_ENABLED
     module procedure getMatCopy_RDP_LFP_XXD_TSO_IK3
-        use pm_kind, only: IKC => IK3
+        use pm_kind, only: IKG => IK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK2_ENABLED
     module procedure getMatCopy_RDP_LFP_XXD_TSO_IK2
-        use pm_kind, only: IKC => IK2
+        use pm_kind, only: IKG => IK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK1_ENABLED
     module procedure getMatCopy_RDP_LFP_XXD_TSO_IK1
-        use pm_kind, only: IKC => IK1
+        use pm_kind, only: IKG => IK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -4285,35 +4285,35 @@ contains
 
 #if LK5_ENABLED
     module procedure getMatCopy_RDP_LFP_XXD_TSO_LK5
-        use pm_kind, only: LKC => LK5
+        use pm_kind, only: LKG => LK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK4_ENABLED
     module procedure getMatCopy_RDP_LFP_XXD_TSO_LK4
-        use pm_kind, only: LKC => LK4
+        use pm_kind, only: LKG => LK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK3_ENABLED
     module procedure getMatCopy_RDP_LFP_XXD_TSO_LK3
-        use pm_kind, only: LKC => LK3
+        use pm_kind, only: LKG => LK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK2_ENABLED
     module procedure getMatCopy_RDP_LFP_XXD_TSO_LK2
-        use pm_kind, only: LKC => LK2
+        use pm_kind, only: LKG => LK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK1_ENABLED
     module procedure getMatCopy_RDP_LFP_XXD_TSO_LK1
-        use pm_kind, only: LKC => LK1
+        use pm_kind, only: LKG => LK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -4326,35 +4326,35 @@ contains
 
 #if CK5_ENABLED
     module procedure getMatCopy_RDP_LFP_XXD_TSO_CK5
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure getMatCopy_RDP_LFP_XXD_TSO_CK4
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure getMatCopy_RDP_LFP_XXD_TSO_CK3
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure getMatCopy_RDP_LFP_XXD_TSO_CK2
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure getMatCopy_RDP_LFP_XXD_TSO_CK1
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -4367,35 +4367,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getMatCopy_RDP_LFP_XXD_TSO_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getMatCopy_RDP_LFP_XXD_TSO_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getMatCopy_RDP_LFP_XXD_TSO_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getMatCopy_RDP_LFP_XXD_TSO_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getMatCopy_RDP_LFP_XXD_TSO_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -4420,35 +4420,35 @@ contains
 
 #if SK5_ENABLED
     module procedure getMatCopy_RDP_LFP_XXD_THO_SK5
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK4_ENABLED
     module procedure getMatCopy_RDP_LFP_XXD_THO_SK4
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK3_ENABLED
     module procedure getMatCopy_RDP_LFP_XXD_THO_SK3
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK2_ENABLED
     module procedure getMatCopy_RDP_LFP_XXD_THO_SK2
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK1_ENABLED
     module procedure getMatCopy_RDP_LFP_XXD_THO_SK1
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -4461,35 +4461,35 @@ contains
 
 #if IK5_ENABLED
     module procedure getMatCopy_RDP_LFP_XXD_THO_IK5
-        use pm_kind, only: IKC => IK5
+        use pm_kind, only: IKG => IK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK4_ENABLED
     module procedure getMatCopy_RDP_LFP_XXD_THO_IK4
-        use pm_kind, only: IKC => IK4
+        use pm_kind, only: IKG => IK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK3_ENABLED
     module procedure getMatCopy_RDP_LFP_XXD_THO_IK3
-        use pm_kind, only: IKC => IK3
+        use pm_kind, only: IKG => IK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK2_ENABLED
     module procedure getMatCopy_RDP_LFP_XXD_THO_IK2
-        use pm_kind, only: IKC => IK2
+        use pm_kind, only: IKG => IK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK1_ENABLED
     module procedure getMatCopy_RDP_LFP_XXD_THO_IK1
-        use pm_kind, only: IKC => IK1
+        use pm_kind, only: IKG => IK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -4502,35 +4502,35 @@ contains
 
 #if LK5_ENABLED
     module procedure getMatCopy_RDP_LFP_XXD_THO_LK5
-        use pm_kind, only: LKC => LK5
+        use pm_kind, only: LKG => LK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK4_ENABLED
     module procedure getMatCopy_RDP_LFP_XXD_THO_LK4
-        use pm_kind, only: LKC => LK4
+        use pm_kind, only: LKG => LK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK3_ENABLED
     module procedure getMatCopy_RDP_LFP_XXD_THO_LK3
-        use pm_kind, only: LKC => LK3
+        use pm_kind, only: LKG => LK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK2_ENABLED
     module procedure getMatCopy_RDP_LFP_XXD_THO_LK2
-        use pm_kind, only: LKC => LK2
+        use pm_kind, only: LKG => LK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK1_ENABLED
     module procedure getMatCopy_RDP_LFP_XXD_THO_LK1
-        use pm_kind, only: LKC => LK1
+        use pm_kind, only: LKG => LK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -4543,35 +4543,35 @@ contains
 
 #if CK5_ENABLED
     module procedure getMatCopy_RDP_LFP_XXD_THO_CK5
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure getMatCopy_RDP_LFP_XXD_THO_CK4
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure getMatCopy_RDP_LFP_XXD_THO_CK3
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure getMatCopy_RDP_LFP_XXD_THO_CK2
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure getMatCopy_RDP_LFP_XXD_THO_CK1
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -4584,35 +4584,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getMatCopy_RDP_LFP_XXD_THO_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getMatCopy_RDP_LFP_XXD_THO_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getMatCopy_RDP_LFP_XXD_THO_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getMatCopy_RDP_LFP_XXD_THO_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getMatCopy_RDP_LFP_XXD_THO_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -4637,35 +4637,35 @@ contains
 
 #if SK5_ENABLED
     module procedure getMatCopy_RDP_LFP_UXD_AIO_SK5
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK4_ENABLED
     module procedure getMatCopy_RDP_LFP_UXD_AIO_SK4
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK3_ENABLED
     module procedure getMatCopy_RDP_LFP_UXD_AIO_SK3
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK2_ENABLED
     module procedure getMatCopy_RDP_LFP_UXD_AIO_SK2
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK1_ENABLED
     module procedure getMatCopy_RDP_LFP_UXD_AIO_SK1
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -4678,35 +4678,35 @@ contains
 
 #if IK5_ENABLED
     module procedure getMatCopy_RDP_LFP_UXD_AIO_IK5
-        use pm_kind, only: IKC => IK5
+        use pm_kind, only: IKG => IK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK4_ENABLED
     module procedure getMatCopy_RDP_LFP_UXD_AIO_IK4
-        use pm_kind, only: IKC => IK4
+        use pm_kind, only: IKG => IK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK3_ENABLED
     module procedure getMatCopy_RDP_LFP_UXD_AIO_IK3
-        use pm_kind, only: IKC => IK3
+        use pm_kind, only: IKG => IK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK2_ENABLED
     module procedure getMatCopy_RDP_LFP_UXD_AIO_IK2
-        use pm_kind, only: IKC => IK2
+        use pm_kind, only: IKG => IK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK1_ENABLED
     module procedure getMatCopy_RDP_LFP_UXD_AIO_IK1
-        use pm_kind, only: IKC => IK1
+        use pm_kind, only: IKG => IK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -4719,35 +4719,35 @@ contains
 
 #if LK5_ENABLED
     module procedure getMatCopy_RDP_LFP_UXD_AIO_LK5
-        use pm_kind, only: LKC => LK5
+        use pm_kind, only: LKG => LK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK4_ENABLED
     module procedure getMatCopy_RDP_LFP_UXD_AIO_LK4
-        use pm_kind, only: LKC => LK4
+        use pm_kind, only: LKG => LK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK3_ENABLED
     module procedure getMatCopy_RDP_LFP_UXD_AIO_LK3
-        use pm_kind, only: LKC => LK3
+        use pm_kind, only: LKG => LK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK2_ENABLED
     module procedure getMatCopy_RDP_LFP_UXD_AIO_LK2
-        use pm_kind, only: LKC => LK2
+        use pm_kind, only: LKG => LK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK1_ENABLED
     module procedure getMatCopy_RDP_LFP_UXD_AIO_LK1
-        use pm_kind, only: LKC => LK1
+        use pm_kind, only: LKG => LK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -4760,35 +4760,35 @@ contains
 
 #if CK5_ENABLED
     module procedure getMatCopy_RDP_LFP_UXD_AIO_CK5
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure getMatCopy_RDP_LFP_UXD_AIO_CK4
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure getMatCopy_RDP_LFP_UXD_AIO_CK3
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure getMatCopy_RDP_LFP_UXD_AIO_CK2
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure getMatCopy_RDP_LFP_UXD_AIO_CK1
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -4801,35 +4801,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getMatCopy_RDP_LFP_UXD_AIO_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getMatCopy_RDP_LFP_UXD_AIO_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getMatCopy_RDP_LFP_UXD_AIO_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getMatCopy_RDP_LFP_UXD_AIO_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getMatCopy_RDP_LFP_UXD_AIO_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -4854,35 +4854,35 @@ contains
 
 #if SK5_ENABLED
     module procedure getMatCopy_RDP_LFP_UXD_TSO_SK5
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK4_ENABLED
     module procedure getMatCopy_RDP_LFP_UXD_TSO_SK4
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK3_ENABLED
     module procedure getMatCopy_RDP_LFP_UXD_TSO_SK3
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK2_ENABLED
     module procedure getMatCopy_RDP_LFP_UXD_TSO_SK2
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK1_ENABLED
     module procedure getMatCopy_RDP_LFP_UXD_TSO_SK1
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -4895,35 +4895,35 @@ contains
 
 #if IK5_ENABLED
     module procedure getMatCopy_RDP_LFP_UXD_TSO_IK5
-        use pm_kind, only: IKC => IK5
+        use pm_kind, only: IKG => IK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK4_ENABLED
     module procedure getMatCopy_RDP_LFP_UXD_TSO_IK4
-        use pm_kind, only: IKC => IK4
+        use pm_kind, only: IKG => IK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK3_ENABLED
     module procedure getMatCopy_RDP_LFP_UXD_TSO_IK3
-        use pm_kind, only: IKC => IK3
+        use pm_kind, only: IKG => IK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK2_ENABLED
     module procedure getMatCopy_RDP_LFP_UXD_TSO_IK2
-        use pm_kind, only: IKC => IK2
+        use pm_kind, only: IKG => IK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK1_ENABLED
     module procedure getMatCopy_RDP_LFP_UXD_TSO_IK1
-        use pm_kind, only: IKC => IK1
+        use pm_kind, only: IKG => IK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -4936,35 +4936,35 @@ contains
 
 #if LK5_ENABLED
     module procedure getMatCopy_RDP_LFP_UXD_TSO_LK5
-        use pm_kind, only: LKC => LK5
+        use pm_kind, only: LKG => LK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK4_ENABLED
     module procedure getMatCopy_RDP_LFP_UXD_TSO_LK4
-        use pm_kind, only: LKC => LK4
+        use pm_kind, only: LKG => LK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK3_ENABLED
     module procedure getMatCopy_RDP_LFP_UXD_TSO_LK3
-        use pm_kind, only: LKC => LK3
+        use pm_kind, only: LKG => LK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK2_ENABLED
     module procedure getMatCopy_RDP_LFP_UXD_TSO_LK2
-        use pm_kind, only: LKC => LK2
+        use pm_kind, only: LKG => LK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK1_ENABLED
     module procedure getMatCopy_RDP_LFP_UXD_TSO_LK1
-        use pm_kind, only: LKC => LK1
+        use pm_kind, only: LKG => LK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -4977,35 +4977,35 @@ contains
 
 #if CK5_ENABLED
     module procedure getMatCopy_RDP_LFP_UXD_TSO_CK5
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure getMatCopy_RDP_LFP_UXD_TSO_CK4
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure getMatCopy_RDP_LFP_UXD_TSO_CK3
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure getMatCopy_RDP_LFP_UXD_TSO_CK2
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure getMatCopy_RDP_LFP_UXD_TSO_CK1
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -5018,35 +5018,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getMatCopy_RDP_LFP_UXD_TSO_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getMatCopy_RDP_LFP_UXD_TSO_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getMatCopy_RDP_LFP_UXD_TSO_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getMatCopy_RDP_LFP_UXD_TSO_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getMatCopy_RDP_LFP_UXD_TSO_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -5071,35 +5071,35 @@ contains
 
 #if SK5_ENABLED
     module procedure getMatCopy_RDP_LFP_UXD_THO_SK5
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK4_ENABLED
     module procedure getMatCopy_RDP_LFP_UXD_THO_SK4
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK3_ENABLED
     module procedure getMatCopy_RDP_LFP_UXD_THO_SK3
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK2_ENABLED
     module procedure getMatCopy_RDP_LFP_UXD_THO_SK2
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK1_ENABLED
     module procedure getMatCopy_RDP_LFP_UXD_THO_SK1
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -5112,35 +5112,35 @@ contains
 
 #if IK5_ENABLED
     module procedure getMatCopy_RDP_LFP_UXD_THO_IK5
-        use pm_kind, only: IKC => IK5
+        use pm_kind, only: IKG => IK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK4_ENABLED
     module procedure getMatCopy_RDP_LFP_UXD_THO_IK4
-        use pm_kind, only: IKC => IK4
+        use pm_kind, only: IKG => IK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK3_ENABLED
     module procedure getMatCopy_RDP_LFP_UXD_THO_IK3
-        use pm_kind, only: IKC => IK3
+        use pm_kind, only: IKG => IK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK2_ENABLED
     module procedure getMatCopy_RDP_LFP_UXD_THO_IK2
-        use pm_kind, only: IKC => IK2
+        use pm_kind, only: IKG => IK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK1_ENABLED
     module procedure getMatCopy_RDP_LFP_UXD_THO_IK1
-        use pm_kind, only: IKC => IK1
+        use pm_kind, only: IKG => IK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -5153,35 +5153,35 @@ contains
 
 #if LK5_ENABLED
     module procedure getMatCopy_RDP_LFP_UXD_THO_LK5
-        use pm_kind, only: LKC => LK5
+        use pm_kind, only: LKG => LK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK4_ENABLED
     module procedure getMatCopy_RDP_LFP_UXD_THO_LK4
-        use pm_kind, only: LKC => LK4
+        use pm_kind, only: LKG => LK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK3_ENABLED
     module procedure getMatCopy_RDP_LFP_UXD_THO_LK3
-        use pm_kind, only: LKC => LK3
+        use pm_kind, only: LKG => LK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK2_ENABLED
     module procedure getMatCopy_RDP_LFP_UXD_THO_LK2
-        use pm_kind, only: LKC => LK2
+        use pm_kind, only: LKG => LK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK1_ENABLED
     module procedure getMatCopy_RDP_LFP_UXD_THO_LK1
-        use pm_kind, only: LKC => LK1
+        use pm_kind, only: LKG => LK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -5194,35 +5194,35 @@ contains
 
 #if CK5_ENABLED
     module procedure getMatCopy_RDP_LFP_UXD_THO_CK5
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure getMatCopy_RDP_LFP_UXD_THO_CK4
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure getMatCopy_RDP_LFP_UXD_THO_CK3
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure getMatCopy_RDP_LFP_UXD_THO_CK2
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure getMatCopy_RDP_LFP_UXD_THO_CK1
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -5235,35 +5235,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getMatCopy_RDP_LFP_UXD_THO_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getMatCopy_RDP_LFP_UXD_THO_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getMatCopy_RDP_LFP_UXD_THO_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getMatCopy_RDP_LFP_UXD_THO_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getMatCopy_RDP_LFP_UXD_THO_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -5288,35 +5288,35 @@ contains
 
 #if SK5_ENABLED
     module procedure getMatCopy_RDP_LFP_XLD_AIO_SK5
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK4_ENABLED
     module procedure getMatCopy_RDP_LFP_XLD_AIO_SK4
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK3_ENABLED
     module procedure getMatCopy_RDP_LFP_XLD_AIO_SK3
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK2_ENABLED
     module procedure getMatCopy_RDP_LFP_XLD_AIO_SK2
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK1_ENABLED
     module procedure getMatCopy_RDP_LFP_XLD_AIO_SK1
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -5329,35 +5329,35 @@ contains
 
 #if IK5_ENABLED
     module procedure getMatCopy_RDP_LFP_XLD_AIO_IK5
-        use pm_kind, only: IKC => IK5
+        use pm_kind, only: IKG => IK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK4_ENABLED
     module procedure getMatCopy_RDP_LFP_XLD_AIO_IK4
-        use pm_kind, only: IKC => IK4
+        use pm_kind, only: IKG => IK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK3_ENABLED
     module procedure getMatCopy_RDP_LFP_XLD_AIO_IK3
-        use pm_kind, only: IKC => IK3
+        use pm_kind, only: IKG => IK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK2_ENABLED
     module procedure getMatCopy_RDP_LFP_XLD_AIO_IK2
-        use pm_kind, only: IKC => IK2
+        use pm_kind, only: IKG => IK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK1_ENABLED
     module procedure getMatCopy_RDP_LFP_XLD_AIO_IK1
-        use pm_kind, only: IKC => IK1
+        use pm_kind, only: IKG => IK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -5370,35 +5370,35 @@ contains
 
 #if LK5_ENABLED
     module procedure getMatCopy_RDP_LFP_XLD_AIO_LK5
-        use pm_kind, only: LKC => LK5
+        use pm_kind, only: LKG => LK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK4_ENABLED
     module procedure getMatCopy_RDP_LFP_XLD_AIO_LK4
-        use pm_kind, only: LKC => LK4
+        use pm_kind, only: LKG => LK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK3_ENABLED
     module procedure getMatCopy_RDP_LFP_XLD_AIO_LK3
-        use pm_kind, only: LKC => LK3
+        use pm_kind, only: LKG => LK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK2_ENABLED
     module procedure getMatCopy_RDP_LFP_XLD_AIO_LK2
-        use pm_kind, only: LKC => LK2
+        use pm_kind, only: LKG => LK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK1_ENABLED
     module procedure getMatCopy_RDP_LFP_XLD_AIO_LK1
-        use pm_kind, only: LKC => LK1
+        use pm_kind, only: LKG => LK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -5411,35 +5411,35 @@ contains
 
 #if CK5_ENABLED
     module procedure getMatCopy_RDP_LFP_XLD_AIO_CK5
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure getMatCopy_RDP_LFP_XLD_AIO_CK4
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure getMatCopy_RDP_LFP_XLD_AIO_CK3
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure getMatCopy_RDP_LFP_XLD_AIO_CK2
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure getMatCopy_RDP_LFP_XLD_AIO_CK1
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -5452,35 +5452,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getMatCopy_RDP_LFP_XLD_AIO_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getMatCopy_RDP_LFP_XLD_AIO_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getMatCopy_RDP_LFP_XLD_AIO_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getMatCopy_RDP_LFP_XLD_AIO_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getMatCopy_RDP_LFP_XLD_AIO_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -5505,35 +5505,35 @@ contains
 
 #if SK5_ENABLED
     module procedure getMatCopy_RDP_LFP_XLD_TSO_SK5
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK4_ENABLED
     module procedure getMatCopy_RDP_LFP_XLD_TSO_SK4
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK3_ENABLED
     module procedure getMatCopy_RDP_LFP_XLD_TSO_SK3
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK2_ENABLED
     module procedure getMatCopy_RDP_LFP_XLD_TSO_SK2
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK1_ENABLED
     module procedure getMatCopy_RDP_LFP_XLD_TSO_SK1
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -5546,35 +5546,35 @@ contains
 
 #if IK5_ENABLED
     module procedure getMatCopy_RDP_LFP_XLD_TSO_IK5
-        use pm_kind, only: IKC => IK5
+        use pm_kind, only: IKG => IK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK4_ENABLED
     module procedure getMatCopy_RDP_LFP_XLD_TSO_IK4
-        use pm_kind, only: IKC => IK4
+        use pm_kind, only: IKG => IK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK3_ENABLED
     module procedure getMatCopy_RDP_LFP_XLD_TSO_IK3
-        use pm_kind, only: IKC => IK3
+        use pm_kind, only: IKG => IK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK2_ENABLED
     module procedure getMatCopy_RDP_LFP_XLD_TSO_IK2
-        use pm_kind, only: IKC => IK2
+        use pm_kind, only: IKG => IK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK1_ENABLED
     module procedure getMatCopy_RDP_LFP_XLD_TSO_IK1
-        use pm_kind, only: IKC => IK1
+        use pm_kind, only: IKG => IK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -5587,35 +5587,35 @@ contains
 
 #if LK5_ENABLED
     module procedure getMatCopy_RDP_LFP_XLD_TSO_LK5
-        use pm_kind, only: LKC => LK5
+        use pm_kind, only: LKG => LK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK4_ENABLED
     module procedure getMatCopy_RDP_LFP_XLD_TSO_LK4
-        use pm_kind, only: LKC => LK4
+        use pm_kind, only: LKG => LK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK3_ENABLED
     module procedure getMatCopy_RDP_LFP_XLD_TSO_LK3
-        use pm_kind, only: LKC => LK3
+        use pm_kind, only: LKG => LK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK2_ENABLED
     module procedure getMatCopy_RDP_LFP_XLD_TSO_LK2
-        use pm_kind, only: LKC => LK2
+        use pm_kind, only: LKG => LK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK1_ENABLED
     module procedure getMatCopy_RDP_LFP_XLD_TSO_LK1
-        use pm_kind, only: LKC => LK1
+        use pm_kind, only: LKG => LK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -5628,35 +5628,35 @@ contains
 
 #if CK5_ENABLED
     module procedure getMatCopy_RDP_LFP_XLD_TSO_CK5
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure getMatCopy_RDP_LFP_XLD_TSO_CK4
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure getMatCopy_RDP_LFP_XLD_TSO_CK3
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure getMatCopy_RDP_LFP_XLD_TSO_CK2
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure getMatCopy_RDP_LFP_XLD_TSO_CK1
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -5669,35 +5669,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getMatCopy_RDP_LFP_XLD_TSO_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getMatCopy_RDP_LFP_XLD_TSO_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getMatCopy_RDP_LFP_XLD_TSO_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getMatCopy_RDP_LFP_XLD_TSO_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getMatCopy_RDP_LFP_XLD_TSO_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -5722,35 +5722,35 @@ contains
 
 #if SK5_ENABLED
     module procedure getMatCopy_RDP_LFP_XLD_THO_SK5
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK4_ENABLED
     module procedure getMatCopy_RDP_LFP_XLD_THO_SK4
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK3_ENABLED
     module procedure getMatCopy_RDP_LFP_XLD_THO_SK3
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK2_ENABLED
     module procedure getMatCopy_RDP_LFP_XLD_THO_SK2
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK1_ENABLED
     module procedure getMatCopy_RDP_LFP_XLD_THO_SK1
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -5763,35 +5763,35 @@ contains
 
 #if IK5_ENABLED
     module procedure getMatCopy_RDP_LFP_XLD_THO_IK5
-        use pm_kind, only: IKC => IK5
+        use pm_kind, only: IKG => IK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK4_ENABLED
     module procedure getMatCopy_RDP_LFP_XLD_THO_IK4
-        use pm_kind, only: IKC => IK4
+        use pm_kind, only: IKG => IK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK3_ENABLED
     module procedure getMatCopy_RDP_LFP_XLD_THO_IK3
-        use pm_kind, only: IKC => IK3
+        use pm_kind, only: IKG => IK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK2_ENABLED
     module procedure getMatCopy_RDP_LFP_XLD_THO_IK2
-        use pm_kind, only: IKC => IK2
+        use pm_kind, only: IKG => IK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK1_ENABLED
     module procedure getMatCopy_RDP_LFP_XLD_THO_IK1
-        use pm_kind, only: IKC => IK1
+        use pm_kind, only: IKG => IK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -5804,35 +5804,35 @@ contains
 
 #if LK5_ENABLED
     module procedure getMatCopy_RDP_LFP_XLD_THO_LK5
-        use pm_kind, only: LKC => LK5
+        use pm_kind, only: LKG => LK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK4_ENABLED
     module procedure getMatCopy_RDP_LFP_XLD_THO_LK4
-        use pm_kind, only: LKC => LK4
+        use pm_kind, only: LKG => LK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK3_ENABLED
     module procedure getMatCopy_RDP_LFP_XLD_THO_LK3
-        use pm_kind, only: LKC => LK3
+        use pm_kind, only: LKG => LK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK2_ENABLED
     module procedure getMatCopy_RDP_LFP_XLD_THO_LK2
-        use pm_kind, only: LKC => LK2
+        use pm_kind, only: LKG => LK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK1_ENABLED
     module procedure getMatCopy_RDP_LFP_XLD_THO_LK1
-        use pm_kind, only: LKC => LK1
+        use pm_kind, only: LKG => LK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -5845,35 +5845,35 @@ contains
 
 #if CK5_ENABLED
     module procedure getMatCopy_RDP_LFP_XLD_THO_CK5
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure getMatCopy_RDP_LFP_XLD_THO_CK4
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure getMatCopy_RDP_LFP_XLD_THO_CK3
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure getMatCopy_RDP_LFP_XLD_THO_CK2
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure getMatCopy_RDP_LFP_XLD_THO_CK1
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -5886,35 +5886,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getMatCopy_RDP_LFP_XLD_THO_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getMatCopy_RDP_LFP_XLD_THO_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getMatCopy_RDP_LFP_XLD_THO_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getMatCopy_RDP_LFP_XLD_THO_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getMatCopy_RDP_LFP_XLD_THO_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -5954,35 +5954,35 @@ contains
 
 #if SK5_ENABLED
     module procedure getMatCopy_LFP_RDP_XXD_AIO_SK5
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK4_ENABLED
     module procedure getMatCopy_LFP_RDP_XXD_AIO_SK4
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK3_ENABLED
     module procedure getMatCopy_LFP_RDP_XXD_AIO_SK3
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK2_ENABLED
     module procedure getMatCopy_LFP_RDP_XXD_AIO_SK2
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK1_ENABLED
     module procedure getMatCopy_LFP_RDP_XXD_AIO_SK1
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -5995,35 +5995,35 @@ contains
 
 #if IK5_ENABLED
     module procedure getMatCopy_LFP_RDP_XXD_AIO_IK5
-        use pm_kind, only: IKC => IK5
+        use pm_kind, only: IKG => IK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK4_ENABLED
     module procedure getMatCopy_LFP_RDP_XXD_AIO_IK4
-        use pm_kind, only: IKC => IK4
+        use pm_kind, only: IKG => IK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK3_ENABLED
     module procedure getMatCopy_LFP_RDP_XXD_AIO_IK3
-        use pm_kind, only: IKC => IK3
+        use pm_kind, only: IKG => IK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK2_ENABLED
     module procedure getMatCopy_LFP_RDP_XXD_AIO_IK2
-        use pm_kind, only: IKC => IK2
+        use pm_kind, only: IKG => IK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK1_ENABLED
     module procedure getMatCopy_LFP_RDP_XXD_AIO_IK1
-        use pm_kind, only: IKC => IK1
+        use pm_kind, only: IKG => IK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -6036,35 +6036,35 @@ contains
 
 #if LK5_ENABLED
     module procedure getMatCopy_LFP_RDP_XXD_AIO_LK5
-        use pm_kind, only: LKC => LK5
+        use pm_kind, only: LKG => LK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK4_ENABLED
     module procedure getMatCopy_LFP_RDP_XXD_AIO_LK4
-        use pm_kind, only: LKC => LK4
+        use pm_kind, only: LKG => LK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK3_ENABLED
     module procedure getMatCopy_LFP_RDP_XXD_AIO_LK3
-        use pm_kind, only: LKC => LK3
+        use pm_kind, only: LKG => LK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK2_ENABLED
     module procedure getMatCopy_LFP_RDP_XXD_AIO_LK2
-        use pm_kind, only: LKC => LK2
+        use pm_kind, only: LKG => LK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK1_ENABLED
     module procedure getMatCopy_LFP_RDP_XXD_AIO_LK1
-        use pm_kind, only: LKC => LK1
+        use pm_kind, only: LKG => LK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -6077,35 +6077,35 @@ contains
 
 #if CK5_ENABLED
     module procedure getMatCopy_LFP_RDP_XXD_AIO_CK5
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure getMatCopy_LFP_RDP_XXD_AIO_CK4
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure getMatCopy_LFP_RDP_XXD_AIO_CK3
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure getMatCopy_LFP_RDP_XXD_AIO_CK2
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure getMatCopy_LFP_RDP_XXD_AIO_CK1
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -6118,35 +6118,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getMatCopy_LFP_RDP_XXD_AIO_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getMatCopy_LFP_RDP_XXD_AIO_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getMatCopy_LFP_RDP_XXD_AIO_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getMatCopy_LFP_RDP_XXD_AIO_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getMatCopy_LFP_RDP_XXD_AIO_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -6171,35 +6171,35 @@ contains
 
 #if SK5_ENABLED
     module procedure getMatCopy_LFP_RDP_XXD_TSO_SK5
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK4_ENABLED
     module procedure getMatCopy_LFP_RDP_XXD_TSO_SK4
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK3_ENABLED
     module procedure getMatCopy_LFP_RDP_XXD_TSO_SK3
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK2_ENABLED
     module procedure getMatCopy_LFP_RDP_XXD_TSO_SK2
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK1_ENABLED
     module procedure getMatCopy_LFP_RDP_XXD_TSO_SK1
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -6212,35 +6212,35 @@ contains
 
 #if IK5_ENABLED
     module procedure getMatCopy_LFP_RDP_XXD_TSO_IK5
-        use pm_kind, only: IKC => IK5
+        use pm_kind, only: IKG => IK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK4_ENABLED
     module procedure getMatCopy_LFP_RDP_XXD_TSO_IK4
-        use pm_kind, only: IKC => IK4
+        use pm_kind, only: IKG => IK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK3_ENABLED
     module procedure getMatCopy_LFP_RDP_XXD_TSO_IK3
-        use pm_kind, only: IKC => IK3
+        use pm_kind, only: IKG => IK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK2_ENABLED
     module procedure getMatCopy_LFP_RDP_XXD_TSO_IK2
-        use pm_kind, only: IKC => IK2
+        use pm_kind, only: IKG => IK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK1_ENABLED
     module procedure getMatCopy_LFP_RDP_XXD_TSO_IK1
-        use pm_kind, only: IKC => IK1
+        use pm_kind, only: IKG => IK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -6253,35 +6253,35 @@ contains
 
 #if LK5_ENABLED
     module procedure getMatCopy_LFP_RDP_XXD_TSO_LK5
-        use pm_kind, only: LKC => LK5
+        use pm_kind, only: LKG => LK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK4_ENABLED
     module procedure getMatCopy_LFP_RDP_XXD_TSO_LK4
-        use pm_kind, only: LKC => LK4
+        use pm_kind, only: LKG => LK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK3_ENABLED
     module procedure getMatCopy_LFP_RDP_XXD_TSO_LK3
-        use pm_kind, only: LKC => LK3
+        use pm_kind, only: LKG => LK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK2_ENABLED
     module procedure getMatCopy_LFP_RDP_XXD_TSO_LK2
-        use pm_kind, only: LKC => LK2
+        use pm_kind, only: LKG => LK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK1_ENABLED
     module procedure getMatCopy_LFP_RDP_XXD_TSO_LK1
-        use pm_kind, only: LKC => LK1
+        use pm_kind, only: LKG => LK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -6294,35 +6294,35 @@ contains
 
 #if CK5_ENABLED
     module procedure getMatCopy_LFP_RDP_XXD_TSO_CK5
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure getMatCopy_LFP_RDP_XXD_TSO_CK4
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure getMatCopy_LFP_RDP_XXD_TSO_CK3
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure getMatCopy_LFP_RDP_XXD_TSO_CK2
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure getMatCopy_LFP_RDP_XXD_TSO_CK1
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -6335,35 +6335,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getMatCopy_LFP_RDP_XXD_TSO_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getMatCopy_LFP_RDP_XXD_TSO_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getMatCopy_LFP_RDP_XXD_TSO_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getMatCopy_LFP_RDP_XXD_TSO_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getMatCopy_LFP_RDP_XXD_TSO_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -6388,35 +6388,35 @@ contains
 
 #if SK5_ENABLED
     module procedure getMatCopy_LFP_RDP_XXD_THO_SK5
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK4_ENABLED
     module procedure getMatCopy_LFP_RDP_XXD_THO_SK4
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK3_ENABLED
     module procedure getMatCopy_LFP_RDP_XXD_THO_SK3
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK2_ENABLED
     module procedure getMatCopy_LFP_RDP_XXD_THO_SK2
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK1_ENABLED
     module procedure getMatCopy_LFP_RDP_XXD_THO_SK1
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -6429,35 +6429,35 @@ contains
 
 #if IK5_ENABLED
     module procedure getMatCopy_LFP_RDP_XXD_THO_IK5
-        use pm_kind, only: IKC => IK5
+        use pm_kind, only: IKG => IK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK4_ENABLED
     module procedure getMatCopy_LFP_RDP_XXD_THO_IK4
-        use pm_kind, only: IKC => IK4
+        use pm_kind, only: IKG => IK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK3_ENABLED
     module procedure getMatCopy_LFP_RDP_XXD_THO_IK3
-        use pm_kind, only: IKC => IK3
+        use pm_kind, only: IKG => IK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK2_ENABLED
     module procedure getMatCopy_LFP_RDP_XXD_THO_IK2
-        use pm_kind, only: IKC => IK2
+        use pm_kind, only: IKG => IK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK1_ENABLED
     module procedure getMatCopy_LFP_RDP_XXD_THO_IK1
-        use pm_kind, only: IKC => IK1
+        use pm_kind, only: IKG => IK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -6470,35 +6470,35 @@ contains
 
 #if LK5_ENABLED
     module procedure getMatCopy_LFP_RDP_XXD_THO_LK5
-        use pm_kind, only: LKC => LK5
+        use pm_kind, only: LKG => LK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK4_ENABLED
     module procedure getMatCopy_LFP_RDP_XXD_THO_LK4
-        use pm_kind, only: LKC => LK4
+        use pm_kind, only: LKG => LK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK3_ENABLED
     module procedure getMatCopy_LFP_RDP_XXD_THO_LK3
-        use pm_kind, only: LKC => LK3
+        use pm_kind, only: LKG => LK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK2_ENABLED
     module procedure getMatCopy_LFP_RDP_XXD_THO_LK2
-        use pm_kind, only: LKC => LK2
+        use pm_kind, only: LKG => LK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK1_ENABLED
     module procedure getMatCopy_LFP_RDP_XXD_THO_LK1
-        use pm_kind, only: LKC => LK1
+        use pm_kind, only: LKG => LK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -6511,35 +6511,35 @@ contains
 
 #if CK5_ENABLED
     module procedure getMatCopy_LFP_RDP_XXD_THO_CK5
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure getMatCopy_LFP_RDP_XXD_THO_CK4
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure getMatCopy_LFP_RDP_XXD_THO_CK3
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure getMatCopy_LFP_RDP_XXD_THO_CK2
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure getMatCopy_LFP_RDP_XXD_THO_CK1
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -6552,35 +6552,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getMatCopy_LFP_RDP_XXD_THO_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getMatCopy_LFP_RDP_XXD_THO_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getMatCopy_LFP_RDP_XXD_THO_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getMatCopy_LFP_RDP_XXD_THO_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getMatCopy_LFP_RDP_XXD_THO_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -6605,35 +6605,35 @@ contains
 
 #if SK5_ENABLED
     module procedure getMatCopy_LFP_RDP_UXD_AIO_SK5
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK4_ENABLED
     module procedure getMatCopy_LFP_RDP_UXD_AIO_SK4
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK3_ENABLED
     module procedure getMatCopy_LFP_RDP_UXD_AIO_SK3
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK2_ENABLED
     module procedure getMatCopy_LFP_RDP_UXD_AIO_SK2
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK1_ENABLED
     module procedure getMatCopy_LFP_RDP_UXD_AIO_SK1
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -6646,35 +6646,35 @@ contains
 
 #if IK5_ENABLED
     module procedure getMatCopy_LFP_RDP_UXD_AIO_IK5
-        use pm_kind, only: IKC => IK5
+        use pm_kind, only: IKG => IK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK4_ENABLED
     module procedure getMatCopy_LFP_RDP_UXD_AIO_IK4
-        use pm_kind, only: IKC => IK4
+        use pm_kind, only: IKG => IK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK3_ENABLED
     module procedure getMatCopy_LFP_RDP_UXD_AIO_IK3
-        use pm_kind, only: IKC => IK3
+        use pm_kind, only: IKG => IK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK2_ENABLED
     module procedure getMatCopy_LFP_RDP_UXD_AIO_IK2
-        use pm_kind, only: IKC => IK2
+        use pm_kind, only: IKG => IK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK1_ENABLED
     module procedure getMatCopy_LFP_RDP_UXD_AIO_IK1
-        use pm_kind, only: IKC => IK1
+        use pm_kind, only: IKG => IK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -6687,35 +6687,35 @@ contains
 
 #if LK5_ENABLED
     module procedure getMatCopy_LFP_RDP_UXD_AIO_LK5
-        use pm_kind, only: LKC => LK5
+        use pm_kind, only: LKG => LK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK4_ENABLED
     module procedure getMatCopy_LFP_RDP_UXD_AIO_LK4
-        use pm_kind, only: LKC => LK4
+        use pm_kind, only: LKG => LK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK3_ENABLED
     module procedure getMatCopy_LFP_RDP_UXD_AIO_LK3
-        use pm_kind, only: LKC => LK3
+        use pm_kind, only: LKG => LK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK2_ENABLED
     module procedure getMatCopy_LFP_RDP_UXD_AIO_LK2
-        use pm_kind, only: LKC => LK2
+        use pm_kind, only: LKG => LK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK1_ENABLED
     module procedure getMatCopy_LFP_RDP_UXD_AIO_LK1
-        use pm_kind, only: LKC => LK1
+        use pm_kind, only: LKG => LK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -6728,35 +6728,35 @@ contains
 
 #if CK5_ENABLED
     module procedure getMatCopy_LFP_RDP_UXD_AIO_CK5
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure getMatCopy_LFP_RDP_UXD_AIO_CK4
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure getMatCopy_LFP_RDP_UXD_AIO_CK3
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure getMatCopy_LFP_RDP_UXD_AIO_CK2
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure getMatCopy_LFP_RDP_UXD_AIO_CK1
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -6769,35 +6769,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getMatCopy_LFP_RDP_UXD_AIO_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getMatCopy_LFP_RDP_UXD_AIO_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getMatCopy_LFP_RDP_UXD_AIO_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getMatCopy_LFP_RDP_UXD_AIO_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getMatCopy_LFP_RDP_UXD_AIO_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -6822,35 +6822,35 @@ contains
 
 #if SK5_ENABLED
     module procedure getMatCopy_LFP_RDP_UXD_TSO_SK5
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK4_ENABLED
     module procedure getMatCopy_LFP_RDP_UXD_TSO_SK4
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK3_ENABLED
     module procedure getMatCopy_LFP_RDP_UXD_TSO_SK3
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK2_ENABLED
     module procedure getMatCopy_LFP_RDP_UXD_TSO_SK2
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK1_ENABLED
     module procedure getMatCopy_LFP_RDP_UXD_TSO_SK1
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -6863,35 +6863,35 @@ contains
 
 #if IK5_ENABLED
     module procedure getMatCopy_LFP_RDP_UXD_TSO_IK5
-        use pm_kind, only: IKC => IK5
+        use pm_kind, only: IKG => IK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK4_ENABLED
     module procedure getMatCopy_LFP_RDP_UXD_TSO_IK4
-        use pm_kind, only: IKC => IK4
+        use pm_kind, only: IKG => IK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK3_ENABLED
     module procedure getMatCopy_LFP_RDP_UXD_TSO_IK3
-        use pm_kind, only: IKC => IK3
+        use pm_kind, only: IKG => IK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK2_ENABLED
     module procedure getMatCopy_LFP_RDP_UXD_TSO_IK2
-        use pm_kind, only: IKC => IK2
+        use pm_kind, only: IKG => IK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK1_ENABLED
     module procedure getMatCopy_LFP_RDP_UXD_TSO_IK1
-        use pm_kind, only: IKC => IK1
+        use pm_kind, only: IKG => IK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -6904,35 +6904,35 @@ contains
 
 #if LK5_ENABLED
     module procedure getMatCopy_LFP_RDP_UXD_TSO_LK5
-        use pm_kind, only: LKC => LK5
+        use pm_kind, only: LKG => LK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK4_ENABLED
     module procedure getMatCopy_LFP_RDP_UXD_TSO_LK4
-        use pm_kind, only: LKC => LK4
+        use pm_kind, only: LKG => LK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK3_ENABLED
     module procedure getMatCopy_LFP_RDP_UXD_TSO_LK3
-        use pm_kind, only: LKC => LK3
+        use pm_kind, only: LKG => LK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK2_ENABLED
     module procedure getMatCopy_LFP_RDP_UXD_TSO_LK2
-        use pm_kind, only: LKC => LK2
+        use pm_kind, only: LKG => LK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK1_ENABLED
     module procedure getMatCopy_LFP_RDP_UXD_TSO_LK1
-        use pm_kind, only: LKC => LK1
+        use pm_kind, only: LKG => LK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -6945,35 +6945,35 @@ contains
 
 #if CK5_ENABLED
     module procedure getMatCopy_LFP_RDP_UXD_TSO_CK5
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure getMatCopy_LFP_RDP_UXD_TSO_CK4
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure getMatCopy_LFP_RDP_UXD_TSO_CK3
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure getMatCopy_LFP_RDP_UXD_TSO_CK2
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure getMatCopy_LFP_RDP_UXD_TSO_CK1
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -6986,35 +6986,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getMatCopy_LFP_RDP_UXD_TSO_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getMatCopy_LFP_RDP_UXD_TSO_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getMatCopy_LFP_RDP_UXD_TSO_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getMatCopy_LFP_RDP_UXD_TSO_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getMatCopy_LFP_RDP_UXD_TSO_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -7039,35 +7039,35 @@ contains
 
 #if SK5_ENABLED
     module procedure getMatCopy_LFP_RDP_UXD_THO_SK5
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK4_ENABLED
     module procedure getMatCopy_LFP_RDP_UXD_THO_SK4
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK3_ENABLED
     module procedure getMatCopy_LFP_RDP_UXD_THO_SK3
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK2_ENABLED
     module procedure getMatCopy_LFP_RDP_UXD_THO_SK2
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK1_ENABLED
     module procedure getMatCopy_LFP_RDP_UXD_THO_SK1
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -7080,35 +7080,35 @@ contains
 
 #if IK5_ENABLED
     module procedure getMatCopy_LFP_RDP_UXD_THO_IK5
-        use pm_kind, only: IKC => IK5
+        use pm_kind, only: IKG => IK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK4_ENABLED
     module procedure getMatCopy_LFP_RDP_UXD_THO_IK4
-        use pm_kind, only: IKC => IK4
+        use pm_kind, only: IKG => IK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK3_ENABLED
     module procedure getMatCopy_LFP_RDP_UXD_THO_IK3
-        use pm_kind, only: IKC => IK3
+        use pm_kind, only: IKG => IK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK2_ENABLED
     module procedure getMatCopy_LFP_RDP_UXD_THO_IK2
-        use pm_kind, only: IKC => IK2
+        use pm_kind, only: IKG => IK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK1_ENABLED
     module procedure getMatCopy_LFP_RDP_UXD_THO_IK1
-        use pm_kind, only: IKC => IK1
+        use pm_kind, only: IKG => IK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -7121,35 +7121,35 @@ contains
 
 #if LK5_ENABLED
     module procedure getMatCopy_LFP_RDP_UXD_THO_LK5
-        use pm_kind, only: LKC => LK5
+        use pm_kind, only: LKG => LK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK4_ENABLED
     module procedure getMatCopy_LFP_RDP_UXD_THO_LK4
-        use pm_kind, only: LKC => LK4
+        use pm_kind, only: LKG => LK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK3_ENABLED
     module procedure getMatCopy_LFP_RDP_UXD_THO_LK3
-        use pm_kind, only: LKC => LK3
+        use pm_kind, only: LKG => LK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK2_ENABLED
     module procedure getMatCopy_LFP_RDP_UXD_THO_LK2
-        use pm_kind, only: LKC => LK2
+        use pm_kind, only: LKG => LK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK1_ENABLED
     module procedure getMatCopy_LFP_RDP_UXD_THO_LK1
-        use pm_kind, only: LKC => LK1
+        use pm_kind, only: LKG => LK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -7162,35 +7162,35 @@ contains
 
 #if CK5_ENABLED
     module procedure getMatCopy_LFP_RDP_UXD_THO_CK5
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure getMatCopy_LFP_RDP_UXD_THO_CK4
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure getMatCopy_LFP_RDP_UXD_THO_CK3
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure getMatCopy_LFP_RDP_UXD_THO_CK2
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure getMatCopy_LFP_RDP_UXD_THO_CK1
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -7203,35 +7203,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getMatCopy_LFP_RDP_UXD_THO_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getMatCopy_LFP_RDP_UXD_THO_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getMatCopy_LFP_RDP_UXD_THO_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getMatCopy_LFP_RDP_UXD_THO_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getMatCopy_LFP_RDP_UXD_THO_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -7256,35 +7256,35 @@ contains
 
 #if SK5_ENABLED
     module procedure getMatCopy_LFP_RDP_XLD_AIO_SK5
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK4_ENABLED
     module procedure getMatCopy_LFP_RDP_XLD_AIO_SK4
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK3_ENABLED
     module procedure getMatCopy_LFP_RDP_XLD_AIO_SK3
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK2_ENABLED
     module procedure getMatCopy_LFP_RDP_XLD_AIO_SK2
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK1_ENABLED
     module procedure getMatCopy_LFP_RDP_XLD_AIO_SK1
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -7297,35 +7297,35 @@ contains
 
 #if IK5_ENABLED
     module procedure getMatCopy_LFP_RDP_XLD_AIO_IK5
-        use pm_kind, only: IKC => IK5
+        use pm_kind, only: IKG => IK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK4_ENABLED
     module procedure getMatCopy_LFP_RDP_XLD_AIO_IK4
-        use pm_kind, only: IKC => IK4
+        use pm_kind, only: IKG => IK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK3_ENABLED
     module procedure getMatCopy_LFP_RDP_XLD_AIO_IK3
-        use pm_kind, only: IKC => IK3
+        use pm_kind, only: IKG => IK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK2_ENABLED
     module procedure getMatCopy_LFP_RDP_XLD_AIO_IK2
-        use pm_kind, only: IKC => IK2
+        use pm_kind, only: IKG => IK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK1_ENABLED
     module procedure getMatCopy_LFP_RDP_XLD_AIO_IK1
-        use pm_kind, only: IKC => IK1
+        use pm_kind, only: IKG => IK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -7338,35 +7338,35 @@ contains
 
 #if LK5_ENABLED
     module procedure getMatCopy_LFP_RDP_XLD_AIO_LK5
-        use pm_kind, only: LKC => LK5
+        use pm_kind, only: LKG => LK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK4_ENABLED
     module procedure getMatCopy_LFP_RDP_XLD_AIO_LK4
-        use pm_kind, only: LKC => LK4
+        use pm_kind, only: LKG => LK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK3_ENABLED
     module procedure getMatCopy_LFP_RDP_XLD_AIO_LK3
-        use pm_kind, only: LKC => LK3
+        use pm_kind, only: LKG => LK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK2_ENABLED
     module procedure getMatCopy_LFP_RDP_XLD_AIO_LK2
-        use pm_kind, only: LKC => LK2
+        use pm_kind, only: LKG => LK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK1_ENABLED
     module procedure getMatCopy_LFP_RDP_XLD_AIO_LK1
-        use pm_kind, only: LKC => LK1
+        use pm_kind, only: LKG => LK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -7379,35 +7379,35 @@ contains
 
 #if CK5_ENABLED
     module procedure getMatCopy_LFP_RDP_XLD_AIO_CK5
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure getMatCopy_LFP_RDP_XLD_AIO_CK4
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure getMatCopy_LFP_RDP_XLD_AIO_CK3
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure getMatCopy_LFP_RDP_XLD_AIO_CK2
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure getMatCopy_LFP_RDP_XLD_AIO_CK1
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -7420,35 +7420,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getMatCopy_LFP_RDP_XLD_AIO_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getMatCopy_LFP_RDP_XLD_AIO_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getMatCopy_LFP_RDP_XLD_AIO_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getMatCopy_LFP_RDP_XLD_AIO_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getMatCopy_LFP_RDP_XLD_AIO_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -7473,35 +7473,35 @@ contains
 
 #if SK5_ENABLED
     module procedure getMatCopy_LFP_RDP_XLD_TSO_SK5
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK4_ENABLED
     module procedure getMatCopy_LFP_RDP_XLD_TSO_SK4
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK3_ENABLED
     module procedure getMatCopy_LFP_RDP_XLD_TSO_SK3
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK2_ENABLED
     module procedure getMatCopy_LFP_RDP_XLD_TSO_SK2
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK1_ENABLED
     module procedure getMatCopy_LFP_RDP_XLD_TSO_SK1
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -7514,35 +7514,35 @@ contains
 
 #if IK5_ENABLED
     module procedure getMatCopy_LFP_RDP_XLD_TSO_IK5
-        use pm_kind, only: IKC => IK5
+        use pm_kind, only: IKG => IK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK4_ENABLED
     module procedure getMatCopy_LFP_RDP_XLD_TSO_IK4
-        use pm_kind, only: IKC => IK4
+        use pm_kind, only: IKG => IK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK3_ENABLED
     module procedure getMatCopy_LFP_RDP_XLD_TSO_IK3
-        use pm_kind, only: IKC => IK3
+        use pm_kind, only: IKG => IK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK2_ENABLED
     module procedure getMatCopy_LFP_RDP_XLD_TSO_IK2
-        use pm_kind, only: IKC => IK2
+        use pm_kind, only: IKG => IK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK1_ENABLED
     module procedure getMatCopy_LFP_RDP_XLD_TSO_IK1
-        use pm_kind, only: IKC => IK1
+        use pm_kind, only: IKG => IK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -7555,35 +7555,35 @@ contains
 
 #if LK5_ENABLED
     module procedure getMatCopy_LFP_RDP_XLD_TSO_LK5
-        use pm_kind, only: LKC => LK5
+        use pm_kind, only: LKG => LK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK4_ENABLED
     module procedure getMatCopy_LFP_RDP_XLD_TSO_LK4
-        use pm_kind, only: LKC => LK4
+        use pm_kind, only: LKG => LK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK3_ENABLED
     module procedure getMatCopy_LFP_RDP_XLD_TSO_LK3
-        use pm_kind, only: LKC => LK3
+        use pm_kind, only: LKG => LK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK2_ENABLED
     module procedure getMatCopy_LFP_RDP_XLD_TSO_LK2
-        use pm_kind, only: LKC => LK2
+        use pm_kind, only: LKG => LK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK1_ENABLED
     module procedure getMatCopy_LFP_RDP_XLD_TSO_LK1
-        use pm_kind, only: LKC => LK1
+        use pm_kind, only: LKG => LK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -7596,35 +7596,35 @@ contains
 
 #if CK5_ENABLED
     module procedure getMatCopy_LFP_RDP_XLD_TSO_CK5
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure getMatCopy_LFP_RDP_XLD_TSO_CK4
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure getMatCopy_LFP_RDP_XLD_TSO_CK3
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure getMatCopy_LFP_RDP_XLD_TSO_CK2
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure getMatCopy_LFP_RDP_XLD_TSO_CK1
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -7637,35 +7637,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getMatCopy_LFP_RDP_XLD_TSO_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getMatCopy_LFP_RDP_XLD_TSO_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getMatCopy_LFP_RDP_XLD_TSO_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getMatCopy_LFP_RDP_XLD_TSO_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getMatCopy_LFP_RDP_XLD_TSO_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -7690,35 +7690,35 @@ contains
 
 #if SK5_ENABLED
     module procedure getMatCopy_LFP_RDP_XLD_THO_SK5
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK4_ENABLED
     module procedure getMatCopy_LFP_RDP_XLD_THO_SK4
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK3_ENABLED
     module procedure getMatCopy_LFP_RDP_XLD_THO_SK3
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK2_ENABLED
     module procedure getMatCopy_LFP_RDP_XLD_THO_SK2
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK1_ENABLED
     module procedure getMatCopy_LFP_RDP_XLD_THO_SK1
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -7731,35 +7731,35 @@ contains
 
 #if IK5_ENABLED
     module procedure getMatCopy_LFP_RDP_XLD_THO_IK5
-        use pm_kind, only: IKC => IK5
+        use pm_kind, only: IKG => IK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK4_ENABLED
     module procedure getMatCopy_LFP_RDP_XLD_THO_IK4
-        use pm_kind, only: IKC => IK4
+        use pm_kind, only: IKG => IK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK3_ENABLED
     module procedure getMatCopy_LFP_RDP_XLD_THO_IK3
-        use pm_kind, only: IKC => IK3
+        use pm_kind, only: IKG => IK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK2_ENABLED
     module procedure getMatCopy_LFP_RDP_XLD_THO_IK2
-        use pm_kind, only: IKC => IK2
+        use pm_kind, only: IKG => IK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK1_ENABLED
     module procedure getMatCopy_LFP_RDP_XLD_THO_IK1
-        use pm_kind, only: IKC => IK1
+        use pm_kind, only: IKG => IK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -7772,35 +7772,35 @@ contains
 
 #if LK5_ENABLED
     module procedure getMatCopy_LFP_RDP_XLD_THO_LK5
-        use pm_kind, only: LKC => LK5
+        use pm_kind, only: LKG => LK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK4_ENABLED
     module procedure getMatCopy_LFP_RDP_XLD_THO_LK4
-        use pm_kind, only: LKC => LK4
+        use pm_kind, only: LKG => LK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK3_ENABLED
     module procedure getMatCopy_LFP_RDP_XLD_THO_LK3
-        use pm_kind, only: LKC => LK3
+        use pm_kind, only: LKG => LK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK2_ENABLED
     module procedure getMatCopy_LFP_RDP_XLD_THO_LK2
-        use pm_kind, only: LKC => LK2
+        use pm_kind, only: LKG => LK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK1_ENABLED
     module procedure getMatCopy_LFP_RDP_XLD_THO_LK1
-        use pm_kind, only: LKC => LK1
+        use pm_kind, only: LKG => LK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -7813,35 +7813,35 @@ contains
 
 #if CK5_ENABLED
     module procedure getMatCopy_LFP_RDP_XLD_THO_CK5
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure getMatCopy_LFP_RDP_XLD_THO_CK4
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure getMatCopy_LFP_RDP_XLD_THO_CK3
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure getMatCopy_LFP_RDP_XLD_THO_CK2
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure getMatCopy_LFP_RDP_XLD_THO_CK1
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -7854,35 +7854,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getMatCopy_LFP_RDP_XLD_THO_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getMatCopy_LFP_RDP_XLD_THO_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getMatCopy_LFP_RDP_XLD_THO_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getMatCopy_LFP_RDP_XLD_THO_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getMatCopy_LFP_RDP_XLD_THO_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -7922,35 +7922,35 @@ contains
 
 #if SK5_ENABLED
     module procedure getMatCopy_RDP_RFP_UXD_AIO_SK5
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK4_ENABLED
     module procedure getMatCopy_RDP_RFP_UXD_AIO_SK4
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK3_ENABLED
     module procedure getMatCopy_RDP_RFP_UXD_AIO_SK3
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK2_ENABLED
     module procedure getMatCopy_RDP_RFP_UXD_AIO_SK2
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK1_ENABLED
     module procedure getMatCopy_RDP_RFP_UXD_AIO_SK1
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -7963,35 +7963,35 @@ contains
 
 #if IK5_ENABLED
     module procedure getMatCopy_RDP_RFP_UXD_AIO_IK5
-        use pm_kind, only: IKC => IK5
+        use pm_kind, only: IKG => IK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK4_ENABLED
     module procedure getMatCopy_RDP_RFP_UXD_AIO_IK4
-        use pm_kind, only: IKC => IK4
+        use pm_kind, only: IKG => IK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK3_ENABLED
     module procedure getMatCopy_RDP_RFP_UXD_AIO_IK3
-        use pm_kind, only: IKC => IK3
+        use pm_kind, only: IKG => IK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK2_ENABLED
     module procedure getMatCopy_RDP_RFP_UXD_AIO_IK2
-        use pm_kind, only: IKC => IK2
+        use pm_kind, only: IKG => IK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK1_ENABLED
     module procedure getMatCopy_RDP_RFP_UXD_AIO_IK1
-        use pm_kind, only: IKC => IK1
+        use pm_kind, only: IKG => IK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -8004,35 +8004,35 @@ contains
 
 #if LK5_ENABLED
     module procedure getMatCopy_RDP_RFP_UXD_AIO_LK5
-        use pm_kind, only: LKC => LK5
+        use pm_kind, only: LKG => LK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK4_ENABLED
     module procedure getMatCopy_RDP_RFP_UXD_AIO_LK4
-        use pm_kind, only: LKC => LK4
+        use pm_kind, only: LKG => LK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK3_ENABLED
     module procedure getMatCopy_RDP_RFP_UXD_AIO_LK3
-        use pm_kind, only: LKC => LK3
+        use pm_kind, only: LKG => LK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK2_ENABLED
     module procedure getMatCopy_RDP_RFP_UXD_AIO_LK2
-        use pm_kind, only: LKC => LK2
+        use pm_kind, only: LKG => LK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK1_ENABLED
     module procedure getMatCopy_RDP_RFP_UXD_AIO_LK1
-        use pm_kind, only: LKC => LK1
+        use pm_kind, only: LKG => LK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -8045,35 +8045,35 @@ contains
 
 #if CK5_ENABLED
     module procedure getMatCopy_RDP_RFP_UXD_AIO_CK5
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure getMatCopy_RDP_RFP_UXD_AIO_CK4
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure getMatCopy_RDP_RFP_UXD_AIO_CK3
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure getMatCopy_RDP_RFP_UXD_AIO_CK2
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure getMatCopy_RDP_RFP_UXD_AIO_CK1
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -8086,35 +8086,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getMatCopy_RDP_RFP_UXD_AIO_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getMatCopy_RDP_RFP_UXD_AIO_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getMatCopy_RDP_RFP_UXD_AIO_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getMatCopy_RDP_RFP_UXD_AIO_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getMatCopy_RDP_RFP_UXD_AIO_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -8139,35 +8139,35 @@ contains
 
 #if SK5_ENABLED
     module procedure getMatCopy_RDP_RFP_XLD_AIO_SK5
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK4_ENABLED
     module procedure getMatCopy_RDP_RFP_XLD_AIO_SK4
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK3_ENABLED
     module procedure getMatCopy_RDP_RFP_XLD_AIO_SK3
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK2_ENABLED
     module procedure getMatCopy_RDP_RFP_XLD_AIO_SK2
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK1_ENABLED
     module procedure getMatCopy_RDP_RFP_XLD_AIO_SK1
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -8180,35 +8180,35 @@ contains
 
 #if IK5_ENABLED
     module procedure getMatCopy_RDP_RFP_XLD_AIO_IK5
-        use pm_kind, only: IKC => IK5
+        use pm_kind, only: IKG => IK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK4_ENABLED
     module procedure getMatCopy_RDP_RFP_XLD_AIO_IK4
-        use pm_kind, only: IKC => IK4
+        use pm_kind, only: IKG => IK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK3_ENABLED
     module procedure getMatCopy_RDP_RFP_XLD_AIO_IK3
-        use pm_kind, only: IKC => IK3
+        use pm_kind, only: IKG => IK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK2_ENABLED
     module procedure getMatCopy_RDP_RFP_XLD_AIO_IK2
-        use pm_kind, only: IKC => IK2
+        use pm_kind, only: IKG => IK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK1_ENABLED
     module procedure getMatCopy_RDP_RFP_XLD_AIO_IK1
-        use pm_kind, only: IKC => IK1
+        use pm_kind, only: IKG => IK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -8221,35 +8221,35 @@ contains
 
 #if LK5_ENABLED
     module procedure getMatCopy_RDP_RFP_XLD_AIO_LK5
-        use pm_kind, only: LKC => LK5
+        use pm_kind, only: LKG => LK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK4_ENABLED
     module procedure getMatCopy_RDP_RFP_XLD_AIO_LK4
-        use pm_kind, only: LKC => LK4
+        use pm_kind, only: LKG => LK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK3_ENABLED
     module procedure getMatCopy_RDP_RFP_XLD_AIO_LK3
-        use pm_kind, only: LKC => LK3
+        use pm_kind, only: LKG => LK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK2_ENABLED
     module procedure getMatCopy_RDP_RFP_XLD_AIO_LK2
-        use pm_kind, only: LKC => LK2
+        use pm_kind, only: LKG => LK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK1_ENABLED
     module procedure getMatCopy_RDP_RFP_XLD_AIO_LK1
-        use pm_kind, only: LKC => LK1
+        use pm_kind, only: LKG => LK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -8262,35 +8262,35 @@ contains
 
 #if CK5_ENABLED
     module procedure getMatCopy_RDP_RFP_XLD_AIO_CK5
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure getMatCopy_RDP_RFP_XLD_AIO_CK4
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure getMatCopy_RDP_RFP_XLD_AIO_CK3
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure getMatCopy_RDP_RFP_XLD_AIO_CK2
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure getMatCopy_RDP_RFP_XLD_AIO_CK1
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -8303,35 +8303,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getMatCopy_RDP_RFP_XLD_AIO_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getMatCopy_RDP_RFP_XLD_AIO_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getMatCopy_RDP_RFP_XLD_AIO_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getMatCopy_RDP_RFP_XLD_AIO_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getMatCopy_RDP_RFP_XLD_AIO_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -8371,35 +8371,35 @@ contains
 
 #if SK5_ENABLED
     module procedure getMatCopy_RFP_RDP_UXD_AIO_SK5
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK4_ENABLED
     module procedure getMatCopy_RFP_RDP_UXD_AIO_SK4
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK3_ENABLED
     module procedure getMatCopy_RFP_RDP_UXD_AIO_SK3
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK2_ENABLED
     module procedure getMatCopy_RFP_RDP_UXD_AIO_SK2
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK1_ENABLED
     module procedure getMatCopy_RFP_RDP_UXD_AIO_SK1
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -8412,35 +8412,35 @@ contains
 
 #if IK5_ENABLED
     module procedure getMatCopy_RFP_RDP_UXD_AIO_IK5
-        use pm_kind, only: IKC => IK5
+        use pm_kind, only: IKG => IK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK4_ENABLED
     module procedure getMatCopy_RFP_RDP_UXD_AIO_IK4
-        use pm_kind, only: IKC => IK4
+        use pm_kind, only: IKG => IK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK3_ENABLED
     module procedure getMatCopy_RFP_RDP_UXD_AIO_IK3
-        use pm_kind, only: IKC => IK3
+        use pm_kind, only: IKG => IK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK2_ENABLED
     module procedure getMatCopy_RFP_RDP_UXD_AIO_IK2
-        use pm_kind, only: IKC => IK2
+        use pm_kind, only: IKG => IK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK1_ENABLED
     module procedure getMatCopy_RFP_RDP_UXD_AIO_IK1
-        use pm_kind, only: IKC => IK1
+        use pm_kind, only: IKG => IK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -8453,35 +8453,35 @@ contains
 
 #if LK5_ENABLED
     module procedure getMatCopy_RFP_RDP_UXD_AIO_LK5
-        use pm_kind, only: LKC => LK5
+        use pm_kind, only: LKG => LK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK4_ENABLED
     module procedure getMatCopy_RFP_RDP_UXD_AIO_LK4
-        use pm_kind, only: LKC => LK4
+        use pm_kind, only: LKG => LK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK3_ENABLED
     module procedure getMatCopy_RFP_RDP_UXD_AIO_LK3
-        use pm_kind, only: LKC => LK3
+        use pm_kind, only: LKG => LK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK2_ENABLED
     module procedure getMatCopy_RFP_RDP_UXD_AIO_LK2
-        use pm_kind, only: LKC => LK2
+        use pm_kind, only: LKG => LK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK1_ENABLED
     module procedure getMatCopy_RFP_RDP_UXD_AIO_LK1
-        use pm_kind, only: LKC => LK1
+        use pm_kind, only: LKG => LK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -8494,35 +8494,35 @@ contains
 
 #if CK5_ENABLED
     module procedure getMatCopy_RFP_RDP_UXD_AIO_CK5
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure getMatCopy_RFP_RDP_UXD_AIO_CK4
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure getMatCopy_RFP_RDP_UXD_AIO_CK3
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure getMatCopy_RFP_RDP_UXD_AIO_CK2
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure getMatCopy_RFP_RDP_UXD_AIO_CK1
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -8535,35 +8535,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getMatCopy_RFP_RDP_UXD_AIO_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getMatCopy_RFP_RDP_UXD_AIO_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getMatCopy_RFP_RDP_UXD_AIO_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getMatCopy_RFP_RDP_UXD_AIO_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getMatCopy_RFP_RDP_UXD_AIO_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -8588,35 +8588,35 @@ contains
 
 #if SK5_ENABLED
     module procedure getMatCopy_RFP_RDP_XLD_AIO_SK5
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK4_ENABLED
     module procedure getMatCopy_RFP_RDP_XLD_AIO_SK4
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK3_ENABLED
     module procedure getMatCopy_RFP_RDP_XLD_AIO_SK3
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK2_ENABLED
     module procedure getMatCopy_RFP_RDP_XLD_AIO_SK2
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK1_ENABLED
     module procedure getMatCopy_RFP_RDP_XLD_AIO_SK1
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -8629,35 +8629,35 @@ contains
 
 #if IK5_ENABLED
     module procedure getMatCopy_RFP_RDP_XLD_AIO_IK5
-        use pm_kind, only: IKC => IK5
+        use pm_kind, only: IKG => IK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK4_ENABLED
     module procedure getMatCopy_RFP_RDP_XLD_AIO_IK4
-        use pm_kind, only: IKC => IK4
+        use pm_kind, only: IKG => IK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK3_ENABLED
     module procedure getMatCopy_RFP_RDP_XLD_AIO_IK3
-        use pm_kind, only: IKC => IK3
+        use pm_kind, only: IKG => IK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK2_ENABLED
     module procedure getMatCopy_RFP_RDP_XLD_AIO_IK2
-        use pm_kind, only: IKC => IK2
+        use pm_kind, only: IKG => IK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK1_ENABLED
     module procedure getMatCopy_RFP_RDP_XLD_AIO_IK1
-        use pm_kind, only: IKC => IK1
+        use pm_kind, only: IKG => IK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -8670,35 +8670,35 @@ contains
 
 #if LK5_ENABLED
     module procedure getMatCopy_RFP_RDP_XLD_AIO_LK5
-        use pm_kind, only: LKC => LK5
+        use pm_kind, only: LKG => LK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK4_ENABLED
     module procedure getMatCopy_RFP_RDP_XLD_AIO_LK4
-        use pm_kind, only: LKC => LK4
+        use pm_kind, only: LKG => LK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK3_ENABLED
     module procedure getMatCopy_RFP_RDP_XLD_AIO_LK3
-        use pm_kind, only: LKC => LK3
+        use pm_kind, only: LKG => LK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK2_ENABLED
     module procedure getMatCopy_RFP_RDP_XLD_AIO_LK2
-        use pm_kind, only: LKC => LK2
+        use pm_kind, only: LKG => LK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK1_ENABLED
     module procedure getMatCopy_RFP_RDP_XLD_AIO_LK1
-        use pm_kind, only: LKC => LK1
+        use pm_kind, only: LKG => LK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -8711,35 +8711,35 @@ contains
 
 #if CK5_ENABLED
     module procedure getMatCopy_RFP_RDP_XLD_AIO_CK5
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure getMatCopy_RFP_RDP_XLD_AIO_CK4
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure getMatCopy_RFP_RDP_XLD_AIO_CK3
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure getMatCopy_RFP_RDP_XLD_AIO_CK2
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure getMatCopy_RFP_RDP_XLD_AIO_CK1
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -8752,35 +8752,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getMatCopy_RFP_RDP_XLD_AIO_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getMatCopy_RFP_RDP_XLD_AIO_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getMatCopy_RFP_RDP_XLD_AIO_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getMatCopy_RFP_RDP_XLD_AIO_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getMatCopy_RFP_RDP_XLD_AIO_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -8829,35 +8829,35 @@ contains
 
 #if SK5_ENABLED
     module procedure setMatCopy_RDP_RDP_UXX_AIO_SK5
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK4_ENABLED
     module procedure setMatCopy_RDP_RDP_UXX_AIO_SK4
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK3_ENABLED
     module procedure setMatCopy_RDP_RDP_UXX_AIO_SK3
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK2_ENABLED
     module procedure setMatCopy_RDP_RDP_UXX_AIO_SK2
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK1_ENABLED
     module procedure setMatCopy_RDP_RDP_UXX_AIO_SK1
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -8870,35 +8870,35 @@ contains
 
 #if IK5_ENABLED
     module procedure setMatCopy_RDP_RDP_UXX_AIO_IK5
-        use pm_kind, only: IKC => IK5
+        use pm_kind, only: IKG => IK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK4_ENABLED
     module procedure setMatCopy_RDP_RDP_UXX_AIO_IK4
-        use pm_kind, only: IKC => IK4
+        use pm_kind, only: IKG => IK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK3_ENABLED
     module procedure setMatCopy_RDP_RDP_UXX_AIO_IK3
-        use pm_kind, only: IKC => IK3
+        use pm_kind, only: IKG => IK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK2_ENABLED
     module procedure setMatCopy_RDP_RDP_UXX_AIO_IK2
-        use pm_kind, only: IKC => IK2
+        use pm_kind, only: IKG => IK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK1_ENABLED
     module procedure setMatCopy_RDP_RDP_UXX_AIO_IK1
-        use pm_kind, only: IKC => IK1
+        use pm_kind, only: IKG => IK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -8911,35 +8911,35 @@ contains
 
 #if LK5_ENABLED
     module procedure setMatCopy_RDP_RDP_UXX_AIO_LK5
-        use pm_kind, only: LKC => LK5
+        use pm_kind, only: LKG => LK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK4_ENABLED
     module procedure setMatCopy_RDP_RDP_UXX_AIO_LK4
-        use pm_kind, only: LKC => LK4
+        use pm_kind, only: LKG => LK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK3_ENABLED
     module procedure setMatCopy_RDP_RDP_UXX_AIO_LK3
-        use pm_kind, only: LKC => LK3
+        use pm_kind, only: LKG => LK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK2_ENABLED
     module procedure setMatCopy_RDP_RDP_UXX_AIO_LK2
-        use pm_kind, only: LKC => LK2
+        use pm_kind, only: LKG => LK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK1_ENABLED
     module procedure setMatCopy_RDP_RDP_UXX_AIO_LK1
-        use pm_kind, only: LKC => LK1
+        use pm_kind, only: LKG => LK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -8952,35 +8952,35 @@ contains
 
 #if CK5_ENABLED
     module procedure setMatCopy_RDP_RDP_UXX_AIO_CK5
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure setMatCopy_RDP_RDP_UXX_AIO_CK4
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure setMatCopy_RDP_RDP_UXX_AIO_CK3
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure setMatCopy_RDP_RDP_UXX_AIO_CK2
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure setMatCopy_RDP_RDP_UXX_AIO_CK1
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -8993,35 +8993,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setMatCopy_RDP_RDP_UXX_AIO_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setMatCopy_RDP_RDP_UXX_AIO_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setMatCopy_RDP_RDP_UXX_AIO_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setMatCopy_RDP_RDP_UXX_AIO_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setMatCopy_RDP_RDP_UXX_AIO_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -9046,35 +9046,35 @@ contains
 
 #if SK5_ENABLED
     module procedure setMatCopy_RDP_RDP_UXX_TSO_SK5
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK4_ENABLED
     module procedure setMatCopy_RDP_RDP_UXX_TSO_SK4
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK3_ENABLED
     module procedure setMatCopy_RDP_RDP_UXX_TSO_SK3
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK2_ENABLED
     module procedure setMatCopy_RDP_RDP_UXX_TSO_SK2
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK1_ENABLED
     module procedure setMatCopy_RDP_RDP_UXX_TSO_SK1
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -9087,35 +9087,35 @@ contains
 
 #if IK5_ENABLED
     module procedure setMatCopy_RDP_RDP_UXX_TSO_IK5
-        use pm_kind, only: IKC => IK5
+        use pm_kind, only: IKG => IK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK4_ENABLED
     module procedure setMatCopy_RDP_RDP_UXX_TSO_IK4
-        use pm_kind, only: IKC => IK4
+        use pm_kind, only: IKG => IK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK3_ENABLED
     module procedure setMatCopy_RDP_RDP_UXX_TSO_IK3
-        use pm_kind, only: IKC => IK3
+        use pm_kind, only: IKG => IK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK2_ENABLED
     module procedure setMatCopy_RDP_RDP_UXX_TSO_IK2
-        use pm_kind, only: IKC => IK2
+        use pm_kind, only: IKG => IK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK1_ENABLED
     module procedure setMatCopy_RDP_RDP_UXX_TSO_IK1
-        use pm_kind, only: IKC => IK1
+        use pm_kind, only: IKG => IK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -9128,35 +9128,35 @@ contains
 
 #if LK5_ENABLED
     module procedure setMatCopy_RDP_RDP_UXX_TSO_LK5
-        use pm_kind, only: LKC => LK5
+        use pm_kind, only: LKG => LK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK4_ENABLED
     module procedure setMatCopy_RDP_RDP_UXX_TSO_LK4
-        use pm_kind, only: LKC => LK4
+        use pm_kind, only: LKG => LK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK3_ENABLED
     module procedure setMatCopy_RDP_RDP_UXX_TSO_LK3
-        use pm_kind, only: LKC => LK3
+        use pm_kind, only: LKG => LK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK2_ENABLED
     module procedure setMatCopy_RDP_RDP_UXX_TSO_LK2
-        use pm_kind, only: LKC => LK2
+        use pm_kind, only: LKG => LK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK1_ENABLED
     module procedure setMatCopy_RDP_RDP_UXX_TSO_LK1
-        use pm_kind, only: LKC => LK1
+        use pm_kind, only: LKG => LK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -9169,35 +9169,35 @@ contains
 
 #if CK5_ENABLED
     module procedure setMatCopy_RDP_RDP_UXX_TSO_CK5
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure setMatCopy_RDP_RDP_UXX_TSO_CK4
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure setMatCopy_RDP_RDP_UXX_TSO_CK3
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure setMatCopy_RDP_RDP_UXX_TSO_CK2
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure setMatCopy_RDP_RDP_UXX_TSO_CK1
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -9210,35 +9210,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setMatCopy_RDP_RDP_UXX_TSO_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setMatCopy_RDP_RDP_UXX_TSO_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setMatCopy_RDP_RDP_UXX_TSO_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setMatCopy_RDP_RDP_UXX_TSO_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setMatCopy_RDP_RDP_UXX_TSO_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -9263,35 +9263,35 @@ contains
 
 #if SK5_ENABLED
     module procedure setMatCopy_RDP_RDP_UXX_THO_SK5
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK4_ENABLED
     module procedure setMatCopy_RDP_RDP_UXX_THO_SK4
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK3_ENABLED
     module procedure setMatCopy_RDP_RDP_UXX_THO_SK3
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK2_ENABLED
     module procedure setMatCopy_RDP_RDP_UXX_THO_SK2
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK1_ENABLED
     module procedure setMatCopy_RDP_RDP_UXX_THO_SK1
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -9304,35 +9304,35 @@ contains
 
 #if IK5_ENABLED
     module procedure setMatCopy_RDP_RDP_UXX_THO_IK5
-        use pm_kind, only: IKC => IK5
+        use pm_kind, only: IKG => IK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK4_ENABLED
     module procedure setMatCopy_RDP_RDP_UXX_THO_IK4
-        use pm_kind, only: IKC => IK4
+        use pm_kind, only: IKG => IK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK3_ENABLED
     module procedure setMatCopy_RDP_RDP_UXX_THO_IK3
-        use pm_kind, only: IKC => IK3
+        use pm_kind, only: IKG => IK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK2_ENABLED
     module procedure setMatCopy_RDP_RDP_UXX_THO_IK2
-        use pm_kind, only: IKC => IK2
+        use pm_kind, only: IKG => IK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK1_ENABLED
     module procedure setMatCopy_RDP_RDP_UXX_THO_IK1
-        use pm_kind, only: IKC => IK1
+        use pm_kind, only: IKG => IK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -9345,35 +9345,35 @@ contains
 
 #if LK5_ENABLED
     module procedure setMatCopy_RDP_RDP_UXX_THO_LK5
-        use pm_kind, only: LKC => LK5
+        use pm_kind, only: LKG => LK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK4_ENABLED
     module procedure setMatCopy_RDP_RDP_UXX_THO_LK4
-        use pm_kind, only: LKC => LK4
+        use pm_kind, only: LKG => LK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK3_ENABLED
     module procedure setMatCopy_RDP_RDP_UXX_THO_LK3
-        use pm_kind, only: LKC => LK3
+        use pm_kind, only: LKG => LK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK2_ENABLED
     module procedure setMatCopy_RDP_RDP_UXX_THO_LK2
-        use pm_kind, only: LKC => LK2
+        use pm_kind, only: LKG => LK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK1_ENABLED
     module procedure setMatCopy_RDP_RDP_UXX_THO_LK1
-        use pm_kind, only: LKC => LK1
+        use pm_kind, only: LKG => LK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -9386,35 +9386,35 @@ contains
 
 #if CK5_ENABLED
     module procedure setMatCopy_RDP_RDP_UXX_THO_CK5
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure setMatCopy_RDP_RDP_UXX_THO_CK4
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure setMatCopy_RDP_RDP_UXX_THO_CK3
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure setMatCopy_RDP_RDP_UXX_THO_CK2
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure setMatCopy_RDP_RDP_UXX_THO_CK1
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -9427,35 +9427,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setMatCopy_RDP_RDP_UXX_THO_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setMatCopy_RDP_RDP_UXX_THO_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setMatCopy_RDP_RDP_UXX_THO_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setMatCopy_RDP_RDP_UXX_THO_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setMatCopy_RDP_RDP_UXX_THO_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -9480,35 +9480,35 @@ contains
 
 #if SK5_ENABLED
     module procedure setMatCopy_RDP_RDP_XLX_AIO_SK5
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK4_ENABLED
     module procedure setMatCopy_RDP_RDP_XLX_AIO_SK4
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK3_ENABLED
     module procedure setMatCopy_RDP_RDP_XLX_AIO_SK3
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK2_ENABLED
     module procedure setMatCopy_RDP_RDP_XLX_AIO_SK2
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK1_ENABLED
     module procedure setMatCopy_RDP_RDP_XLX_AIO_SK1
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -9521,35 +9521,35 @@ contains
 
 #if IK5_ENABLED
     module procedure setMatCopy_RDP_RDP_XLX_AIO_IK5
-        use pm_kind, only: IKC => IK5
+        use pm_kind, only: IKG => IK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK4_ENABLED
     module procedure setMatCopy_RDP_RDP_XLX_AIO_IK4
-        use pm_kind, only: IKC => IK4
+        use pm_kind, only: IKG => IK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK3_ENABLED
     module procedure setMatCopy_RDP_RDP_XLX_AIO_IK3
-        use pm_kind, only: IKC => IK3
+        use pm_kind, only: IKG => IK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK2_ENABLED
     module procedure setMatCopy_RDP_RDP_XLX_AIO_IK2
-        use pm_kind, only: IKC => IK2
+        use pm_kind, only: IKG => IK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK1_ENABLED
     module procedure setMatCopy_RDP_RDP_XLX_AIO_IK1
-        use pm_kind, only: IKC => IK1
+        use pm_kind, only: IKG => IK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -9562,35 +9562,35 @@ contains
 
 #if LK5_ENABLED
     module procedure setMatCopy_RDP_RDP_XLX_AIO_LK5
-        use pm_kind, only: LKC => LK5
+        use pm_kind, only: LKG => LK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK4_ENABLED
     module procedure setMatCopy_RDP_RDP_XLX_AIO_LK4
-        use pm_kind, only: LKC => LK4
+        use pm_kind, only: LKG => LK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK3_ENABLED
     module procedure setMatCopy_RDP_RDP_XLX_AIO_LK3
-        use pm_kind, only: LKC => LK3
+        use pm_kind, only: LKG => LK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK2_ENABLED
     module procedure setMatCopy_RDP_RDP_XLX_AIO_LK2
-        use pm_kind, only: LKC => LK2
+        use pm_kind, only: LKG => LK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK1_ENABLED
     module procedure setMatCopy_RDP_RDP_XLX_AIO_LK1
-        use pm_kind, only: LKC => LK1
+        use pm_kind, only: LKG => LK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -9603,35 +9603,35 @@ contains
 
 #if CK5_ENABLED
     module procedure setMatCopy_RDP_RDP_XLX_AIO_CK5
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure setMatCopy_RDP_RDP_XLX_AIO_CK4
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure setMatCopy_RDP_RDP_XLX_AIO_CK3
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure setMatCopy_RDP_RDP_XLX_AIO_CK2
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure setMatCopy_RDP_RDP_XLX_AIO_CK1
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -9644,35 +9644,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setMatCopy_RDP_RDP_XLX_AIO_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setMatCopy_RDP_RDP_XLX_AIO_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setMatCopy_RDP_RDP_XLX_AIO_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setMatCopy_RDP_RDP_XLX_AIO_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setMatCopy_RDP_RDP_XLX_AIO_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -9697,35 +9697,35 @@ contains
 
 #if SK5_ENABLED
     module procedure setMatCopy_RDP_RDP_XLX_TSO_SK5
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK4_ENABLED
     module procedure setMatCopy_RDP_RDP_XLX_TSO_SK4
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK3_ENABLED
     module procedure setMatCopy_RDP_RDP_XLX_TSO_SK3
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK2_ENABLED
     module procedure setMatCopy_RDP_RDP_XLX_TSO_SK2
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK1_ENABLED
     module procedure setMatCopy_RDP_RDP_XLX_TSO_SK1
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -9738,35 +9738,35 @@ contains
 
 #if IK5_ENABLED
     module procedure setMatCopy_RDP_RDP_XLX_TSO_IK5
-        use pm_kind, only: IKC => IK5
+        use pm_kind, only: IKG => IK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK4_ENABLED
     module procedure setMatCopy_RDP_RDP_XLX_TSO_IK4
-        use pm_kind, only: IKC => IK4
+        use pm_kind, only: IKG => IK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK3_ENABLED
     module procedure setMatCopy_RDP_RDP_XLX_TSO_IK3
-        use pm_kind, only: IKC => IK3
+        use pm_kind, only: IKG => IK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK2_ENABLED
     module procedure setMatCopy_RDP_RDP_XLX_TSO_IK2
-        use pm_kind, only: IKC => IK2
+        use pm_kind, only: IKG => IK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK1_ENABLED
     module procedure setMatCopy_RDP_RDP_XLX_TSO_IK1
-        use pm_kind, only: IKC => IK1
+        use pm_kind, only: IKG => IK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -9779,35 +9779,35 @@ contains
 
 #if LK5_ENABLED
     module procedure setMatCopy_RDP_RDP_XLX_TSO_LK5
-        use pm_kind, only: LKC => LK5
+        use pm_kind, only: LKG => LK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK4_ENABLED
     module procedure setMatCopy_RDP_RDP_XLX_TSO_LK4
-        use pm_kind, only: LKC => LK4
+        use pm_kind, only: LKG => LK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK3_ENABLED
     module procedure setMatCopy_RDP_RDP_XLX_TSO_LK3
-        use pm_kind, only: LKC => LK3
+        use pm_kind, only: LKG => LK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK2_ENABLED
     module procedure setMatCopy_RDP_RDP_XLX_TSO_LK2
-        use pm_kind, only: LKC => LK2
+        use pm_kind, only: LKG => LK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK1_ENABLED
     module procedure setMatCopy_RDP_RDP_XLX_TSO_LK1
-        use pm_kind, only: LKC => LK1
+        use pm_kind, only: LKG => LK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -9820,35 +9820,35 @@ contains
 
 #if CK5_ENABLED
     module procedure setMatCopy_RDP_RDP_XLX_TSO_CK5
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure setMatCopy_RDP_RDP_XLX_TSO_CK4
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure setMatCopy_RDP_RDP_XLX_TSO_CK3
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure setMatCopy_RDP_RDP_XLX_TSO_CK2
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure setMatCopy_RDP_RDP_XLX_TSO_CK1
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -9861,35 +9861,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setMatCopy_RDP_RDP_XLX_TSO_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setMatCopy_RDP_RDP_XLX_TSO_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setMatCopy_RDP_RDP_XLX_TSO_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setMatCopy_RDP_RDP_XLX_TSO_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setMatCopy_RDP_RDP_XLX_TSO_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -9914,35 +9914,35 @@ contains
 
 #if SK5_ENABLED
     module procedure setMatCopy_RDP_RDP_XLX_THO_SK5
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK4_ENABLED
     module procedure setMatCopy_RDP_RDP_XLX_THO_SK4
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK3_ENABLED
     module procedure setMatCopy_RDP_RDP_XLX_THO_SK3
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK2_ENABLED
     module procedure setMatCopy_RDP_RDP_XLX_THO_SK2
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK1_ENABLED
     module procedure setMatCopy_RDP_RDP_XLX_THO_SK1
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -9955,35 +9955,35 @@ contains
 
 #if IK5_ENABLED
     module procedure setMatCopy_RDP_RDP_XLX_THO_IK5
-        use pm_kind, only: IKC => IK5
+        use pm_kind, only: IKG => IK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK4_ENABLED
     module procedure setMatCopy_RDP_RDP_XLX_THO_IK4
-        use pm_kind, only: IKC => IK4
+        use pm_kind, only: IKG => IK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK3_ENABLED
     module procedure setMatCopy_RDP_RDP_XLX_THO_IK3
-        use pm_kind, only: IKC => IK3
+        use pm_kind, only: IKG => IK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK2_ENABLED
     module procedure setMatCopy_RDP_RDP_XLX_THO_IK2
-        use pm_kind, only: IKC => IK2
+        use pm_kind, only: IKG => IK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK1_ENABLED
     module procedure setMatCopy_RDP_RDP_XLX_THO_IK1
-        use pm_kind, only: IKC => IK1
+        use pm_kind, only: IKG => IK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -9996,35 +9996,35 @@ contains
 
 #if LK5_ENABLED
     module procedure setMatCopy_RDP_RDP_XLX_THO_LK5
-        use pm_kind, only: LKC => LK5
+        use pm_kind, only: LKG => LK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK4_ENABLED
     module procedure setMatCopy_RDP_RDP_XLX_THO_LK4
-        use pm_kind, only: LKC => LK4
+        use pm_kind, only: LKG => LK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK3_ENABLED
     module procedure setMatCopy_RDP_RDP_XLX_THO_LK3
-        use pm_kind, only: LKC => LK3
+        use pm_kind, only: LKG => LK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK2_ENABLED
     module procedure setMatCopy_RDP_RDP_XLX_THO_LK2
-        use pm_kind, only: LKC => LK2
+        use pm_kind, only: LKG => LK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK1_ENABLED
     module procedure setMatCopy_RDP_RDP_XLX_THO_LK1
-        use pm_kind, only: LKC => LK1
+        use pm_kind, only: LKG => LK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -10037,35 +10037,35 @@ contains
 
 #if CK5_ENABLED
     module procedure setMatCopy_RDP_RDP_XLX_THO_CK5
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure setMatCopy_RDP_RDP_XLX_THO_CK4
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure setMatCopy_RDP_RDP_XLX_THO_CK3
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure setMatCopy_RDP_RDP_XLX_THO_CK2
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure setMatCopy_RDP_RDP_XLX_THO_CK1
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -10078,35 +10078,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setMatCopy_RDP_RDP_XLX_THO_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setMatCopy_RDP_RDP_XLX_THO_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setMatCopy_RDP_RDP_XLX_THO_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setMatCopy_RDP_RDP_XLX_THO_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setMatCopy_RDP_RDP_XLX_THO_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -10131,35 +10131,35 @@ contains
 
 #if SK5_ENABLED
     module procedure setMatCopy_RDP_RDP_XXD_AIO_SK5
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK4_ENABLED
     module procedure setMatCopy_RDP_RDP_XXD_AIO_SK4
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK3_ENABLED
     module procedure setMatCopy_RDP_RDP_XXD_AIO_SK3
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK2_ENABLED
     module procedure setMatCopy_RDP_RDP_XXD_AIO_SK2
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK1_ENABLED
     module procedure setMatCopy_RDP_RDP_XXD_AIO_SK1
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -10172,35 +10172,35 @@ contains
 
 #if IK5_ENABLED
     module procedure setMatCopy_RDP_RDP_XXD_AIO_IK5
-        use pm_kind, only: IKC => IK5
+        use pm_kind, only: IKG => IK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK4_ENABLED
     module procedure setMatCopy_RDP_RDP_XXD_AIO_IK4
-        use pm_kind, only: IKC => IK4
+        use pm_kind, only: IKG => IK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK3_ENABLED
     module procedure setMatCopy_RDP_RDP_XXD_AIO_IK3
-        use pm_kind, only: IKC => IK3
+        use pm_kind, only: IKG => IK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK2_ENABLED
     module procedure setMatCopy_RDP_RDP_XXD_AIO_IK2
-        use pm_kind, only: IKC => IK2
+        use pm_kind, only: IKG => IK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK1_ENABLED
     module procedure setMatCopy_RDP_RDP_XXD_AIO_IK1
-        use pm_kind, only: IKC => IK1
+        use pm_kind, only: IKG => IK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -10213,35 +10213,35 @@ contains
 
 #if LK5_ENABLED
     module procedure setMatCopy_RDP_RDP_XXD_AIO_LK5
-        use pm_kind, only: LKC => LK5
+        use pm_kind, only: LKG => LK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK4_ENABLED
     module procedure setMatCopy_RDP_RDP_XXD_AIO_LK4
-        use pm_kind, only: LKC => LK4
+        use pm_kind, only: LKG => LK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK3_ENABLED
     module procedure setMatCopy_RDP_RDP_XXD_AIO_LK3
-        use pm_kind, only: LKC => LK3
+        use pm_kind, only: LKG => LK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK2_ENABLED
     module procedure setMatCopy_RDP_RDP_XXD_AIO_LK2
-        use pm_kind, only: LKC => LK2
+        use pm_kind, only: LKG => LK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK1_ENABLED
     module procedure setMatCopy_RDP_RDP_XXD_AIO_LK1
-        use pm_kind, only: LKC => LK1
+        use pm_kind, only: LKG => LK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -10254,35 +10254,35 @@ contains
 
 #if CK5_ENABLED
     module procedure setMatCopy_RDP_RDP_XXD_AIO_CK5
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure setMatCopy_RDP_RDP_XXD_AIO_CK4
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure setMatCopy_RDP_RDP_XXD_AIO_CK3
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure setMatCopy_RDP_RDP_XXD_AIO_CK2
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure setMatCopy_RDP_RDP_XXD_AIO_CK1
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -10295,35 +10295,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setMatCopy_RDP_RDP_XXD_AIO_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setMatCopy_RDP_RDP_XXD_AIO_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setMatCopy_RDP_RDP_XXD_AIO_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setMatCopy_RDP_RDP_XXD_AIO_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setMatCopy_RDP_RDP_XXD_AIO_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -10348,35 +10348,35 @@ contains
 
 #if SK5_ENABLED
     module procedure setMatCopy_RDP_RDP_XXD_TSO_SK5
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK4_ENABLED
     module procedure setMatCopy_RDP_RDP_XXD_TSO_SK4
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK3_ENABLED
     module procedure setMatCopy_RDP_RDP_XXD_TSO_SK3
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK2_ENABLED
     module procedure setMatCopy_RDP_RDP_XXD_TSO_SK2
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK1_ENABLED
     module procedure setMatCopy_RDP_RDP_XXD_TSO_SK1
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -10389,35 +10389,35 @@ contains
 
 #if IK5_ENABLED
     module procedure setMatCopy_RDP_RDP_XXD_TSO_IK5
-        use pm_kind, only: IKC => IK5
+        use pm_kind, only: IKG => IK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK4_ENABLED
     module procedure setMatCopy_RDP_RDP_XXD_TSO_IK4
-        use pm_kind, only: IKC => IK4
+        use pm_kind, only: IKG => IK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK3_ENABLED
     module procedure setMatCopy_RDP_RDP_XXD_TSO_IK3
-        use pm_kind, only: IKC => IK3
+        use pm_kind, only: IKG => IK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK2_ENABLED
     module procedure setMatCopy_RDP_RDP_XXD_TSO_IK2
-        use pm_kind, only: IKC => IK2
+        use pm_kind, only: IKG => IK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK1_ENABLED
     module procedure setMatCopy_RDP_RDP_XXD_TSO_IK1
-        use pm_kind, only: IKC => IK1
+        use pm_kind, only: IKG => IK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -10430,35 +10430,35 @@ contains
 
 #if LK5_ENABLED
     module procedure setMatCopy_RDP_RDP_XXD_TSO_LK5
-        use pm_kind, only: LKC => LK5
+        use pm_kind, only: LKG => LK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK4_ENABLED
     module procedure setMatCopy_RDP_RDP_XXD_TSO_LK4
-        use pm_kind, only: LKC => LK4
+        use pm_kind, only: LKG => LK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK3_ENABLED
     module procedure setMatCopy_RDP_RDP_XXD_TSO_LK3
-        use pm_kind, only: LKC => LK3
+        use pm_kind, only: LKG => LK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK2_ENABLED
     module procedure setMatCopy_RDP_RDP_XXD_TSO_LK2
-        use pm_kind, only: LKC => LK2
+        use pm_kind, only: LKG => LK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK1_ENABLED
     module procedure setMatCopy_RDP_RDP_XXD_TSO_LK1
-        use pm_kind, only: LKC => LK1
+        use pm_kind, only: LKG => LK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -10471,35 +10471,35 @@ contains
 
 #if CK5_ENABLED
     module procedure setMatCopy_RDP_RDP_XXD_TSO_CK5
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure setMatCopy_RDP_RDP_XXD_TSO_CK4
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure setMatCopy_RDP_RDP_XXD_TSO_CK3
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure setMatCopy_RDP_RDP_XXD_TSO_CK2
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure setMatCopy_RDP_RDP_XXD_TSO_CK1
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -10512,35 +10512,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setMatCopy_RDP_RDP_XXD_TSO_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setMatCopy_RDP_RDP_XXD_TSO_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setMatCopy_RDP_RDP_XXD_TSO_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setMatCopy_RDP_RDP_XXD_TSO_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setMatCopy_RDP_RDP_XXD_TSO_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -10565,35 +10565,35 @@ contains
 
 #if SK5_ENABLED
     module procedure setMatCopy_RDP_RDP_XXD_THO_SK5
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK4_ENABLED
     module procedure setMatCopy_RDP_RDP_XXD_THO_SK4
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK3_ENABLED
     module procedure setMatCopy_RDP_RDP_XXD_THO_SK3
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK2_ENABLED
     module procedure setMatCopy_RDP_RDP_XXD_THO_SK2
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK1_ENABLED
     module procedure setMatCopy_RDP_RDP_XXD_THO_SK1
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -10606,35 +10606,35 @@ contains
 
 #if IK5_ENABLED
     module procedure setMatCopy_RDP_RDP_XXD_THO_IK5
-        use pm_kind, only: IKC => IK5
+        use pm_kind, only: IKG => IK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK4_ENABLED
     module procedure setMatCopy_RDP_RDP_XXD_THO_IK4
-        use pm_kind, only: IKC => IK4
+        use pm_kind, only: IKG => IK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK3_ENABLED
     module procedure setMatCopy_RDP_RDP_XXD_THO_IK3
-        use pm_kind, only: IKC => IK3
+        use pm_kind, only: IKG => IK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK2_ENABLED
     module procedure setMatCopy_RDP_RDP_XXD_THO_IK2
-        use pm_kind, only: IKC => IK2
+        use pm_kind, only: IKG => IK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK1_ENABLED
     module procedure setMatCopy_RDP_RDP_XXD_THO_IK1
-        use pm_kind, only: IKC => IK1
+        use pm_kind, only: IKG => IK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -10647,35 +10647,35 @@ contains
 
 #if LK5_ENABLED
     module procedure setMatCopy_RDP_RDP_XXD_THO_LK5
-        use pm_kind, only: LKC => LK5
+        use pm_kind, only: LKG => LK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK4_ENABLED
     module procedure setMatCopy_RDP_RDP_XXD_THO_LK4
-        use pm_kind, only: LKC => LK4
+        use pm_kind, only: LKG => LK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK3_ENABLED
     module procedure setMatCopy_RDP_RDP_XXD_THO_LK3
-        use pm_kind, only: LKC => LK3
+        use pm_kind, only: LKG => LK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK2_ENABLED
     module procedure setMatCopy_RDP_RDP_XXD_THO_LK2
-        use pm_kind, only: LKC => LK2
+        use pm_kind, only: LKG => LK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK1_ENABLED
     module procedure setMatCopy_RDP_RDP_XXD_THO_LK1
-        use pm_kind, only: LKC => LK1
+        use pm_kind, only: LKG => LK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -10688,35 +10688,35 @@ contains
 
 #if CK5_ENABLED
     module procedure setMatCopy_RDP_RDP_XXD_THO_CK5
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure setMatCopy_RDP_RDP_XXD_THO_CK4
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure setMatCopy_RDP_RDP_XXD_THO_CK3
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure setMatCopy_RDP_RDP_XXD_THO_CK2
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure setMatCopy_RDP_RDP_XXD_THO_CK1
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -10729,35 +10729,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setMatCopy_RDP_RDP_XXD_THO_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setMatCopy_RDP_RDP_XXD_THO_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setMatCopy_RDP_RDP_XXD_THO_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setMatCopy_RDP_RDP_XXD_THO_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setMatCopy_RDP_RDP_XXD_THO_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -10782,35 +10782,35 @@ contains
 
 #if SK5_ENABLED
     module procedure setMatCopy_RDP_RDP_UXD_AIO_SK5
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK4_ENABLED
     module procedure setMatCopy_RDP_RDP_UXD_AIO_SK4
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK3_ENABLED
     module procedure setMatCopy_RDP_RDP_UXD_AIO_SK3
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK2_ENABLED
     module procedure setMatCopy_RDP_RDP_UXD_AIO_SK2
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK1_ENABLED
     module procedure setMatCopy_RDP_RDP_UXD_AIO_SK1
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -10823,35 +10823,35 @@ contains
 
 #if IK5_ENABLED
     module procedure setMatCopy_RDP_RDP_UXD_AIO_IK5
-        use pm_kind, only: IKC => IK5
+        use pm_kind, only: IKG => IK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK4_ENABLED
     module procedure setMatCopy_RDP_RDP_UXD_AIO_IK4
-        use pm_kind, only: IKC => IK4
+        use pm_kind, only: IKG => IK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK3_ENABLED
     module procedure setMatCopy_RDP_RDP_UXD_AIO_IK3
-        use pm_kind, only: IKC => IK3
+        use pm_kind, only: IKG => IK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK2_ENABLED
     module procedure setMatCopy_RDP_RDP_UXD_AIO_IK2
-        use pm_kind, only: IKC => IK2
+        use pm_kind, only: IKG => IK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK1_ENABLED
     module procedure setMatCopy_RDP_RDP_UXD_AIO_IK1
-        use pm_kind, only: IKC => IK1
+        use pm_kind, only: IKG => IK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -10864,35 +10864,35 @@ contains
 
 #if LK5_ENABLED
     module procedure setMatCopy_RDP_RDP_UXD_AIO_LK5
-        use pm_kind, only: LKC => LK5
+        use pm_kind, only: LKG => LK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK4_ENABLED
     module procedure setMatCopy_RDP_RDP_UXD_AIO_LK4
-        use pm_kind, only: LKC => LK4
+        use pm_kind, only: LKG => LK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK3_ENABLED
     module procedure setMatCopy_RDP_RDP_UXD_AIO_LK3
-        use pm_kind, only: LKC => LK3
+        use pm_kind, only: LKG => LK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK2_ENABLED
     module procedure setMatCopy_RDP_RDP_UXD_AIO_LK2
-        use pm_kind, only: LKC => LK2
+        use pm_kind, only: LKG => LK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK1_ENABLED
     module procedure setMatCopy_RDP_RDP_UXD_AIO_LK1
-        use pm_kind, only: LKC => LK1
+        use pm_kind, only: LKG => LK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -10905,35 +10905,35 @@ contains
 
 #if CK5_ENABLED
     module procedure setMatCopy_RDP_RDP_UXD_AIO_CK5
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure setMatCopy_RDP_RDP_UXD_AIO_CK4
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure setMatCopy_RDP_RDP_UXD_AIO_CK3
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure setMatCopy_RDP_RDP_UXD_AIO_CK2
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure setMatCopy_RDP_RDP_UXD_AIO_CK1
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -10946,35 +10946,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setMatCopy_RDP_RDP_UXD_AIO_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setMatCopy_RDP_RDP_UXD_AIO_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setMatCopy_RDP_RDP_UXD_AIO_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setMatCopy_RDP_RDP_UXD_AIO_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setMatCopy_RDP_RDP_UXD_AIO_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -10999,35 +10999,35 @@ contains
 
 #if SK5_ENABLED
     module procedure setMatCopy_RDP_RDP_UXD_TSO_SK5
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK4_ENABLED
     module procedure setMatCopy_RDP_RDP_UXD_TSO_SK4
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK3_ENABLED
     module procedure setMatCopy_RDP_RDP_UXD_TSO_SK3
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK2_ENABLED
     module procedure setMatCopy_RDP_RDP_UXD_TSO_SK2
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK1_ENABLED
     module procedure setMatCopy_RDP_RDP_UXD_TSO_SK1
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -11040,35 +11040,35 @@ contains
 
 #if IK5_ENABLED
     module procedure setMatCopy_RDP_RDP_UXD_TSO_IK5
-        use pm_kind, only: IKC => IK5
+        use pm_kind, only: IKG => IK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK4_ENABLED
     module procedure setMatCopy_RDP_RDP_UXD_TSO_IK4
-        use pm_kind, only: IKC => IK4
+        use pm_kind, only: IKG => IK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK3_ENABLED
     module procedure setMatCopy_RDP_RDP_UXD_TSO_IK3
-        use pm_kind, only: IKC => IK3
+        use pm_kind, only: IKG => IK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK2_ENABLED
     module procedure setMatCopy_RDP_RDP_UXD_TSO_IK2
-        use pm_kind, only: IKC => IK2
+        use pm_kind, only: IKG => IK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK1_ENABLED
     module procedure setMatCopy_RDP_RDP_UXD_TSO_IK1
-        use pm_kind, only: IKC => IK1
+        use pm_kind, only: IKG => IK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -11081,35 +11081,35 @@ contains
 
 #if LK5_ENABLED
     module procedure setMatCopy_RDP_RDP_UXD_TSO_LK5
-        use pm_kind, only: LKC => LK5
+        use pm_kind, only: LKG => LK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK4_ENABLED
     module procedure setMatCopy_RDP_RDP_UXD_TSO_LK4
-        use pm_kind, only: LKC => LK4
+        use pm_kind, only: LKG => LK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK3_ENABLED
     module procedure setMatCopy_RDP_RDP_UXD_TSO_LK3
-        use pm_kind, only: LKC => LK3
+        use pm_kind, only: LKG => LK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK2_ENABLED
     module procedure setMatCopy_RDP_RDP_UXD_TSO_LK2
-        use pm_kind, only: LKC => LK2
+        use pm_kind, only: LKG => LK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK1_ENABLED
     module procedure setMatCopy_RDP_RDP_UXD_TSO_LK1
-        use pm_kind, only: LKC => LK1
+        use pm_kind, only: LKG => LK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -11122,35 +11122,35 @@ contains
 
 #if CK5_ENABLED
     module procedure setMatCopy_RDP_RDP_UXD_TSO_CK5
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure setMatCopy_RDP_RDP_UXD_TSO_CK4
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure setMatCopy_RDP_RDP_UXD_TSO_CK3
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure setMatCopy_RDP_RDP_UXD_TSO_CK2
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure setMatCopy_RDP_RDP_UXD_TSO_CK1
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -11163,35 +11163,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setMatCopy_RDP_RDP_UXD_TSO_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setMatCopy_RDP_RDP_UXD_TSO_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setMatCopy_RDP_RDP_UXD_TSO_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setMatCopy_RDP_RDP_UXD_TSO_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setMatCopy_RDP_RDP_UXD_TSO_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -11216,35 +11216,35 @@ contains
 
 #if SK5_ENABLED
     module procedure setMatCopy_RDP_RDP_UXD_THO_SK5
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK4_ENABLED
     module procedure setMatCopy_RDP_RDP_UXD_THO_SK4
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK3_ENABLED
     module procedure setMatCopy_RDP_RDP_UXD_THO_SK3
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK2_ENABLED
     module procedure setMatCopy_RDP_RDP_UXD_THO_SK2
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK1_ENABLED
     module procedure setMatCopy_RDP_RDP_UXD_THO_SK1
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -11257,35 +11257,35 @@ contains
 
 #if IK5_ENABLED
     module procedure setMatCopy_RDP_RDP_UXD_THO_IK5
-        use pm_kind, only: IKC => IK5
+        use pm_kind, only: IKG => IK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK4_ENABLED
     module procedure setMatCopy_RDP_RDP_UXD_THO_IK4
-        use pm_kind, only: IKC => IK4
+        use pm_kind, only: IKG => IK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK3_ENABLED
     module procedure setMatCopy_RDP_RDP_UXD_THO_IK3
-        use pm_kind, only: IKC => IK3
+        use pm_kind, only: IKG => IK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK2_ENABLED
     module procedure setMatCopy_RDP_RDP_UXD_THO_IK2
-        use pm_kind, only: IKC => IK2
+        use pm_kind, only: IKG => IK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK1_ENABLED
     module procedure setMatCopy_RDP_RDP_UXD_THO_IK1
-        use pm_kind, only: IKC => IK1
+        use pm_kind, only: IKG => IK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -11298,35 +11298,35 @@ contains
 
 #if LK5_ENABLED
     module procedure setMatCopy_RDP_RDP_UXD_THO_LK5
-        use pm_kind, only: LKC => LK5
+        use pm_kind, only: LKG => LK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK4_ENABLED
     module procedure setMatCopy_RDP_RDP_UXD_THO_LK4
-        use pm_kind, only: LKC => LK4
+        use pm_kind, only: LKG => LK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK3_ENABLED
     module procedure setMatCopy_RDP_RDP_UXD_THO_LK3
-        use pm_kind, only: LKC => LK3
+        use pm_kind, only: LKG => LK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK2_ENABLED
     module procedure setMatCopy_RDP_RDP_UXD_THO_LK2
-        use pm_kind, only: LKC => LK2
+        use pm_kind, only: LKG => LK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK1_ENABLED
     module procedure setMatCopy_RDP_RDP_UXD_THO_LK1
-        use pm_kind, only: LKC => LK1
+        use pm_kind, only: LKG => LK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -11339,35 +11339,35 @@ contains
 
 #if CK5_ENABLED
     module procedure setMatCopy_RDP_RDP_UXD_THO_CK5
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure setMatCopy_RDP_RDP_UXD_THO_CK4
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure setMatCopy_RDP_RDP_UXD_THO_CK3
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure setMatCopy_RDP_RDP_UXD_THO_CK2
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure setMatCopy_RDP_RDP_UXD_THO_CK1
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -11380,35 +11380,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setMatCopy_RDP_RDP_UXD_THO_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setMatCopy_RDP_RDP_UXD_THO_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setMatCopy_RDP_RDP_UXD_THO_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setMatCopy_RDP_RDP_UXD_THO_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setMatCopy_RDP_RDP_UXD_THO_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -11433,35 +11433,35 @@ contains
 
 #if SK5_ENABLED
     module procedure setMatCopy_RDP_RDP_XLD_AIO_SK5
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK4_ENABLED
     module procedure setMatCopy_RDP_RDP_XLD_AIO_SK4
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK3_ENABLED
     module procedure setMatCopy_RDP_RDP_XLD_AIO_SK3
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK2_ENABLED
     module procedure setMatCopy_RDP_RDP_XLD_AIO_SK2
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK1_ENABLED
     module procedure setMatCopy_RDP_RDP_XLD_AIO_SK1
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -11474,35 +11474,35 @@ contains
 
 #if IK5_ENABLED
     module procedure setMatCopy_RDP_RDP_XLD_AIO_IK5
-        use pm_kind, only: IKC => IK5
+        use pm_kind, only: IKG => IK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK4_ENABLED
     module procedure setMatCopy_RDP_RDP_XLD_AIO_IK4
-        use pm_kind, only: IKC => IK4
+        use pm_kind, only: IKG => IK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK3_ENABLED
     module procedure setMatCopy_RDP_RDP_XLD_AIO_IK3
-        use pm_kind, only: IKC => IK3
+        use pm_kind, only: IKG => IK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK2_ENABLED
     module procedure setMatCopy_RDP_RDP_XLD_AIO_IK2
-        use pm_kind, only: IKC => IK2
+        use pm_kind, only: IKG => IK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK1_ENABLED
     module procedure setMatCopy_RDP_RDP_XLD_AIO_IK1
-        use pm_kind, only: IKC => IK1
+        use pm_kind, only: IKG => IK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -11515,35 +11515,35 @@ contains
 
 #if LK5_ENABLED
     module procedure setMatCopy_RDP_RDP_XLD_AIO_LK5
-        use pm_kind, only: LKC => LK5
+        use pm_kind, only: LKG => LK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK4_ENABLED
     module procedure setMatCopy_RDP_RDP_XLD_AIO_LK4
-        use pm_kind, only: LKC => LK4
+        use pm_kind, only: LKG => LK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK3_ENABLED
     module procedure setMatCopy_RDP_RDP_XLD_AIO_LK3
-        use pm_kind, only: LKC => LK3
+        use pm_kind, only: LKG => LK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK2_ENABLED
     module procedure setMatCopy_RDP_RDP_XLD_AIO_LK2
-        use pm_kind, only: LKC => LK2
+        use pm_kind, only: LKG => LK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK1_ENABLED
     module procedure setMatCopy_RDP_RDP_XLD_AIO_LK1
-        use pm_kind, only: LKC => LK1
+        use pm_kind, only: LKG => LK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -11556,35 +11556,35 @@ contains
 
 #if CK5_ENABLED
     module procedure setMatCopy_RDP_RDP_XLD_AIO_CK5
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure setMatCopy_RDP_RDP_XLD_AIO_CK4
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure setMatCopy_RDP_RDP_XLD_AIO_CK3
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure setMatCopy_RDP_RDP_XLD_AIO_CK2
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure setMatCopy_RDP_RDP_XLD_AIO_CK1
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -11597,35 +11597,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setMatCopy_RDP_RDP_XLD_AIO_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setMatCopy_RDP_RDP_XLD_AIO_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setMatCopy_RDP_RDP_XLD_AIO_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setMatCopy_RDP_RDP_XLD_AIO_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setMatCopy_RDP_RDP_XLD_AIO_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -11650,35 +11650,35 @@ contains
 
 #if SK5_ENABLED
     module procedure setMatCopy_RDP_RDP_XLD_TSO_SK5
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK4_ENABLED
     module procedure setMatCopy_RDP_RDP_XLD_TSO_SK4
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK3_ENABLED
     module procedure setMatCopy_RDP_RDP_XLD_TSO_SK3
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK2_ENABLED
     module procedure setMatCopy_RDP_RDP_XLD_TSO_SK2
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK1_ENABLED
     module procedure setMatCopy_RDP_RDP_XLD_TSO_SK1
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -11691,35 +11691,35 @@ contains
 
 #if IK5_ENABLED
     module procedure setMatCopy_RDP_RDP_XLD_TSO_IK5
-        use pm_kind, only: IKC => IK5
+        use pm_kind, only: IKG => IK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK4_ENABLED
     module procedure setMatCopy_RDP_RDP_XLD_TSO_IK4
-        use pm_kind, only: IKC => IK4
+        use pm_kind, only: IKG => IK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK3_ENABLED
     module procedure setMatCopy_RDP_RDP_XLD_TSO_IK3
-        use pm_kind, only: IKC => IK3
+        use pm_kind, only: IKG => IK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK2_ENABLED
     module procedure setMatCopy_RDP_RDP_XLD_TSO_IK2
-        use pm_kind, only: IKC => IK2
+        use pm_kind, only: IKG => IK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK1_ENABLED
     module procedure setMatCopy_RDP_RDP_XLD_TSO_IK1
-        use pm_kind, only: IKC => IK1
+        use pm_kind, only: IKG => IK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -11732,35 +11732,35 @@ contains
 
 #if LK5_ENABLED
     module procedure setMatCopy_RDP_RDP_XLD_TSO_LK5
-        use pm_kind, only: LKC => LK5
+        use pm_kind, only: LKG => LK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK4_ENABLED
     module procedure setMatCopy_RDP_RDP_XLD_TSO_LK4
-        use pm_kind, only: LKC => LK4
+        use pm_kind, only: LKG => LK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK3_ENABLED
     module procedure setMatCopy_RDP_RDP_XLD_TSO_LK3
-        use pm_kind, only: LKC => LK3
+        use pm_kind, only: LKG => LK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK2_ENABLED
     module procedure setMatCopy_RDP_RDP_XLD_TSO_LK2
-        use pm_kind, only: LKC => LK2
+        use pm_kind, only: LKG => LK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK1_ENABLED
     module procedure setMatCopy_RDP_RDP_XLD_TSO_LK1
-        use pm_kind, only: LKC => LK1
+        use pm_kind, only: LKG => LK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -11773,35 +11773,35 @@ contains
 
 #if CK5_ENABLED
     module procedure setMatCopy_RDP_RDP_XLD_TSO_CK5
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure setMatCopy_RDP_RDP_XLD_TSO_CK4
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure setMatCopy_RDP_RDP_XLD_TSO_CK3
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure setMatCopy_RDP_RDP_XLD_TSO_CK2
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure setMatCopy_RDP_RDP_XLD_TSO_CK1
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -11814,35 +11814,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setMatCopy_RDP_RDP_XLD_TSO_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setMatCopy_RDP_RDP_XLD_TSO_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setMatCopy_RDP_RDP_XLD_TSO_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setMatCopy_RDP_RDP_XLD_TSO_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setMatCopy_RDP_RDP_XLD_TSO_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -11867,35 +11867,35 @@ contains
 
 #if SK5_ENABLED
     module procedure setMatCopy_RDP_RDP_XLD_THO_SK5
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK4_ENABLED
     module procedure setMatCopy_RDP_RDP_XLD_THO_SK4
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK3_ENABLED
     module procedure setMatCopy_RDP_RDP_XLD_THO_SK3
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK2_ENABLED
     module procedure setMatCopy_RDP_RDP_XLD_THO_SK2
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK1_ENABLED
     module procedure setMatCopy_RDP_RDP_XLD_THO_SK1
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -11908,35 +11908,35 @@ contains
 
 #if IK5_ENABLED
     module procedure setMatCopy_RDP_RDP_XLD_THO_IK5
-        use pm_kind, only: IKC => IK5
+        use pm_kind, only: IKG => IK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK4_ENABLED
     module procedure setMatCopy_RDP_RDP_XLD_THO_IK4
-        use pm_kind, only: IKC => IK4
+        use pm_kind, only: IKG => IK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK3_ENABLED
     module procedure setMatCopy_RDP_RDP_XLD_THO_IK3
-        use pm_kind, only: IKC => IK3
+        use pm_kind, only: IKG => IK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK2_ENABLED
     module procedure setMatCopy_RDP_RDP_XLD_THO_IK2
-        use pm_kind, only: IKC => IK2
+        use pm_kind, only: IKG => IK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK1_ENABLED
     module procedure setMatCopy_RDP_RDP_XLD_THO_IK1
-        use pm_kind, only: IKC => IK1
+        use pm_kind, only: IKG => IK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -11949,35 +11949,35 @@ contains
 
 #if LK5_ENABLED
     module procedure setMatCopy_RDP_RDP_XLD_THO_LK5
-        use pm_kind, only: LKC => LK5
+        use pm_kind, only: LKG => LK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK4_ENABLED
     module procedure setMatCopy_RDP_RDP_XLD_THO_LK4
-        use pm_kind, only: LKC => LK4
+        use pm_kind, only: LKG => LK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK3_ENABLED
     module procedure setMatCopy_RDP_RDP_XLD_THO_LK3
-        use pm_kind, only: LKC => LK3
+        use pm_kind, only: LKG => LK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK2_ENABLED
     module procedure setMatCopy_RDP_RDP_XLD_THO_LK2
-        use pm_kind, only: LKC => LK2
+        use pm_kind, only: LKG => LK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK1_ENABLED
     module procedure setMatCopy_RDP_RDP_XLD_THO_LK1
-        use pm_kind, only: LKC => LK1
+        use pm_kind, only: LKG => LK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -11990,35 +11990,35 @@ contains
 
 #if CK5_ENABLED
     module procedure setMatCopy_RDP_RDP_XLD_THO_CK5
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure setMatCopy_RDP_RDP_XLD_THO_CK4
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure setMatCopy_RDP_RDP_XLD_THO_CK3
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure setMatCopy_RDP_RDP_XLD_THO_CK2
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure setMatCopy_RDP_RDP_XLD_THO_CK1
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -12031,35 +12031,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setMatCopy_RDP_RDP_XLD_THO_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setMatCopy_RDP_RDP_XLD_THO_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setMatCopy_RDP_RDP_XLD_THO_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setMatCopy_RDP_RDP_XLD_THO_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setMatCopy_RDP_RDP_XLD_THO_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -12084,35 +12084,35 @@ contains
 
 #if SK5_ENABLED
     module procedure setMatCopy_RDP_RDP_ULX_AIO_SK5
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK4_ENABLED
     module procedure setMatCopy_RDP_RDP_ULX_AIO_SK4
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK3_ENABLED
     module procedure setMatCopy_RDP_RDP_ULX_AIO_SK3
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK2_ENABLED
     module procedure setMatCopy_RDP_RDP_ULX_AIO_SK2
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK1_ENABLED
     module procedure setMatCopy_RDP_RDP_ULX_AIO_SK1
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -12125,35 +12125,35 @@ contains
 
 #if IK5_ENABLED
     module procedure setMatCopy_RDP_RDP_ULX_AIO_IK5
-        use pm_kind, only: IKC => IK5
+        use pm_kind, only: IKG => IK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK4_ENABLED
     module procedure setMatCopy_RDP_RDP_ULX_AIO_IK4
-        use pm_kind, only: IKC => IK4
+        use pm_kind, only: IKG => IK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK3_ENABLED
     module procedure setMatCopy_RDP_RDP_ULX_AIO_IK3
-        use pm_kind, only: IKC => IK3
+        use pm_kind, only: IKG => IK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK2_ENABLED
     module procedure setMatCopy_RDP_RDP_ULX_AIO_IK2
-        use pm_kind, only: IKC => IK2
+        use pm_kind, only: IKG => IK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK1_ENABLED
     module procedure setMatCopy_RDP_RDP_ULX_AIO_IK1
-        use pm_kind, only: IKC => IK1
+        use pm_kind, only: IKG => IK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -12166,35 +12166,35 @@ contains
 
 #if LK5_ENABLED
     module procedure setMatCopy_RDP_RDP_ULX_AIO_LK5
-        use pm_kind, only: LKC => LK5
+        use pm_kind, only: LKG => LK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK4_ENABLED
     module procedure setMatCopy_RDP_RDP_ULX_AIO_LK4
-        use pm_kind, only: LKC => LK4
+        use pm_kind, only: LKG => LK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK3_ENABLED
     module procedure setMatCopy_RDP_RDP_ULX_AIO_LK3
-        use pm_kind, only: LKC => LK3
+        use pm_kind, only: LKG => LK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK2_ENABLED
     module procedure setMatCopy_RDP_RDP_ULX_AIO_LK2
-        use pm_kind, only: LKC => LK2
+        use pm_kind, only: LKG => LK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK1_ENABLED
     module procedure setMatCopy_RDP_RDP_ULX_AIO_LK1
-        use pm_kind, only: LKC => LK1
+        use pm_kind, only: LKG => LK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -12207,35 +12207,35 @@ contains
 
 #if CK5_ENABLED
     module procedure setMatCopy_RDP_RDP_ULX_AIO_CK5
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure setMatCopy_RDP_RDP_ULX_AIO_CK4
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure setMatCopy_RDP_RDP_ULX_AIO_CK3
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure setMatCopy_RDP_RDP_ULX_AIO_CK2
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure setMatCopy_RDP_RDP_ULX_AIO_CK1
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -12248,35 +12248,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setMatCopy_RDP_RDP_ULX_AIO_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setMatCopy_RDP_RDP_ULX_AIO_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setMatCopy_RDP_RDP_ULX_AIO_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setMatCopy_RDP_RDP_ULX_AIO_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setMatCopy_RDP_RDP_ULX_AIO_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -12301,35 +12301,35 @@ contains
 
 #if SK5_ENABLED
     module procedure setMatCopy_RDP_RDP_ULX_TSO_SK5
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK4_ENABLED
     module procedure setMatCopy_RDP_RDP_ULX_TSO_SK4
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK3_ENABLED
     module procedure setMatCopy_RDP_RDP_ULX_TSO_SK3
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK2_ENABLED
     module procedure setMatCopy_RDP_RDP_ULX_TSO_SK2
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK1_ENABLED
     module procedure setMatCopy_RDP_RDP_ULX_TSO_SK1
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -12342,35 +12342,35 @@ contains
 
 #if IK5_ENABLED
     module procedure setMatCopy_RDP_RDP_ULX_TSO_IK5
-        use pm_kind, only: IKC => IK5
+        use pm_kind, only: IKG => IK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK4_ENABLED
     module procedure setMatCopy_RDP_RDP_ULX_TSO_IK4
-        use pm_kind, only: IKC => IK4
+        use pm_kind, only: IKG => IK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK3_ENABLED
     module procedure setMatCopy_RDP_RDP_ULX_TSO_IK3
-        use pm_kind, only: IKC => IK3
+        use pm_kind, only: IKG => IK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK2_ENABLED
     module procedure setMatCopy_RDP_RDP_ULX_TSO_IK2
-        use pm_kind, only: IKC => IK2
+        use pm_kind, only: IKG => IK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK1_ENABLED
     module procedure setMatCopy_RDP_RDP_ULX_TSO_IK1
-        use pm_kind, only: IKC => IK1
+        use pm_kind, only: IKG => IK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -12383,35 +12383,35 @@ contains
 
 #if LK5_ENABLED
     module procedure setMatCopy_RDP_RDP_ULX_TSO_LK5
-        use pm_kind, only: LKC => LK5
+        use pm_kind, only: LKG => LK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK4_ENABLED
     module procedure setMatCopy_RDP_RDP_ULX_TSO_LK4
-        use pm_kind, only: LKC => LK4
+        use pm_kind, only: LKG => LK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK3_ENABLED
     module procedure setMatCopy_RDP_RDP_ULX_TSO_LK3
-        use pm_kind, only: LKC => LK3
+        use pm_kind, only: LKG => LK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK2_ENABLED
     module procedure setMatCopy_RDP_RDP_ULX_TSO_LK2
-        use pm_kind, only: LKC => LK2
+        use pm_kind, only: LKG => LK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK1_ENABLED
     module procedure setMatCopy_RDP_RDP_ULX_TSO_LK1
-        use pm_kind, only: LKC => LK1
+        use pm_kind, only: LKG => LK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -12424,35 +12424,35 @@ contains
 
 #if CK5_ENABLED
     module procedure setMatCopy_RDP_RDP_ULX_TSO_CK5
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure setMatCopy_RDP_RDP_ULX_TSO_CK4
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure setMatCopy_RDP_RDP_ULX_TSO_CK3
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure setMatCopy_RDP_RDP_ULX_TSO_CK2
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure setMatCopy_RDP_RDP_ULX_TSO_CK1
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -12465,35 +12465,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setMatCopy_RDP_RDP_ULX_TSO_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setMatCopy_RDP_RDP_ULX_TSO_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setMatCopy_RDP_RDP_ULX_TSO_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setMatCopy_RDP_RDP_ULX_TSO_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setMatCopy_RDP_RDP_ULX_TSO_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -12518,35 +12518,35 @@ contains
 
 #if SK5_ENABLED
     module procedure setMatCopy_RDP_RDP_ULX_THO_SK5
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK4_ENABLED
     module procedure setMatCopy_RDP_RDP_ULX_THO_SK4
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK3_ENABLED
     module procedure setMatCopy_RDP_RDP_ULX_THO_SK3
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK2_ENABLED
     module procedure setMatCopy_RDP_RDP_ULX_THO_SK2
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK1_ENABLED
     module procedure setMatCopy_RDP_RDP_ULX_THO_SK1
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -12559,35 +12559,35 @@ contains
 
 #if IK5_ENABLED
     module procedure setMatCopy_RDP_RDP_ULX_THO_IK5
-        use pm_kind, only: IKC => IK5
+        use pm_kind, only: IKG => IK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK4_ENABLED
     module procedure setMatCopy_RDP_RDP_ULX_THO_IK4
-        use pm_kind, only: IKC => IK4
+        use pm_kind, only: IKG => IK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK3_ENABLED
     module procedure setMatCopy_RDP_RDP_ULX_THO_IK3
-        use pm_kind, only: IKC => IK3
+        use pm_kind, only: IKG => IK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK2_ENABLED
     module procedure setMatCopy_RDP_RDP_ULX_THO_IK2
-        use pm_kind, only: IKC => IK2
+        use pm_kind, only: IKG => IK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK1_ENABLED
     module procedure setMatCopy_RDP_RDP_ULX_THO_IK1
-        use pm_kind, only: IKC => IK1
+        use pm_kind, only: IKG => IK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -12600,35 +12600,35 @@ contains
 
 #if LK5_ENABLED
     module procedure setMatCopy_RDP_RDP_ULX_THO_LK5
-        use pm_kind, only: LKC => LK5
+        use pm_kind, only: LKG => LK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK4_ENABLED
     module procedure setMatCopy_RDP_RDP_ULX_THO_LK4
-        use pm_kind, only: LKC => LK4
+        use pm_kind, only: LKG => LK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK3_ENABLED
     module procedure setMatCopy_RDP_RDP_ULX_THO_LK3
-        use pm_kind, only: LKC => LK3
+        use pm_kind, only: LKG => LK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK2_ENABLED
     module procedure setMatCopy_RDP_RDP_ULX_THO_LK2
-        use pm_kind, only: LKC => LK2
+        use pm_kind, only: LKG => LK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK1_ENABLED
     module procedure setMatCopy_RDP_RDP_ULX_THO_LK1
-        use pm_kind, only: LKC => LK1
+        use pm_kind, only: LKG => LK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -12641,35 +12641,35 @@ contains
 
 #if CK5_ENABLED
     module procedure setMatCopy_RDP_RDP_ULX_THO_CK5
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure setMatCopy_RDP_RDP_ULX_THO_CK4
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure setMatCopy_RDP_RDP_ULX_THO_CK3
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure setMatCopy_RDP_RDP_ULX_THO_CK2
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure setMatCopy_RDP_RDP_ULX_THO_CK1
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -12682,35 +12682,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setMatCopy_RDP_RDP_ULX_THO_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setMatCopy_RDP_RDP_ULX_THO_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setMatCopy_RDP_RDP_ULX_THO_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setMatCopy_RDP_RDP_ULX_THO_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setMatCopy_RDP_RDP_ULX_THO_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -12748,35 +12748,35 @@ contains
 
 #if SK5_ENABLED
     module procedure setMatCopy_RDP_LFP_XXD_AIO_SK5
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK4_ENABLED
     module procedure setMatCopy_RDP_LFP_XXD_AIO_SK4
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK3_ENABLED
     module procedure setMatCopy_RDP_LFP_XXD_AIO_SK3
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK2_ENABLED
     module procedure setMatCopy_RDP_LFP_XXD_AIO_SK2
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK1_ENABLED
     module procedure setMatCopy_RDP_LFP_XXD_AIO_SK1
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -12789,35 +12789,35 @@ contains
 
 #if IK5_ENABLED
     module procedure setMatCopy_RDP_LFP_XXD_AIO_IK5
-        use pm_kind, only: IKC => IK5
+        use pm_kind, only: IKG => IK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK4_ENABLED
     module procedure setMatCopy_RDP_LFP_XXD_AIO_IK4
-        use pm_kind, only: IKC => IK4
+        use pm_kind, only: IKG => IK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK3_ENABLED
     module procedure setMatCopy_RDP_LFP_XXD_AIO_IK3
-        use pm_kind, only: IKC => IK3
+        use pm_kind, only: IKG => IK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK2_ENABLED
     module procedure setMatCopy_RDP_LFP_XXD_AIO_IK2
-        use pm_kind, only: IKC => IK2
+        use pm_kind, only: IKG => IK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK1_ENABLED
     module procedure setMatCopy_RDP_LFP_XXD_AIO_IK1
-        use pm_kind, only: IKC => IK1
+        use pm_kind, only: IKG => IK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -12830,35 +12830,35 @@ contains
 
 #if LK5_ENABLED
     module procedure setMatCopy_RDP_LFP_XXD_AIO_LK5
-        use pm_kind, only: LKC => LK5
+        use pm_kind, only: LKG => LK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK4_ENABLED
     module procedure setMatCopy_RDP_LFP_XXD_AIO_LK4
-        use pm_kind, only: LKC => LK4
+        use pm_kind, only: LKG => LK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK3_ENABLED
     module procedure setMatCopy_RDP_LFP_XXD_AIO_LK3
-        use pm_kind, only: LKC => LK3
+        use pm_kind, only: LKG => LK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK2_ENABLED
     module procedure setMatCopy_RDP_LFP_XXD_AIO_LK2
-        use pm_kind, only: LKC => LK2
+        use pm_kind, only: LKG => LK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK1_ENABLED
     module procedure setMatCopy_RDP_LFP_XXD_AIO_LK1
-        use pm_kind, only: LKC => LK1
+        use pm_kind, only: LKG => LK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -12871,35 +12871,35 @@ contains
 
 #if CK5_ENABLED
     module procedure setMatCopy_RDP_LFP_XXD_AIO_CK5
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure setMatCopy_RDP_LFP_XXD_AIO_CK4
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure setMatCopy_RDP_LFP_XXD_AIO_CK3
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure setMatCopy_RDP_LFP_XXD_AIO_CK2
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure setMatCopy_RDP_LFP_XXD_AIO_CK1
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -12912,35 +12912,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setMatCopy_RDP_LFP_XXD_AIO_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setMatCopy_RDP_LFP_XXD_AIO_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setMatCopy_RDP_LFP_XXD_AIO_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setMatCopy_RDP_LFP_XXD_AIO_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setMatCopy_RDP_LFP_XXD_AIO_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -12965,35 +12965,35 @@ contains
 
 #if SK5_ENABLED
     module procedure setMatCopy_RDP_LFP_XXD_TSO_SK5
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK4_ENABLED
     module procedure setMatCopy_RDP_LFP_XXD_TSO_SK4
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK3_ENABLED
     module procedure setMatCopy_RDP_LFP_XXD_TSO_SK3
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK2_ENABLED
     module procedure setMatCopy_RDP_LFP_XXD_TSO_SK2
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK1_ENABLED
     module procedure setMatCopy_RDP_LFP_XXD_TSO_SK1
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -13006,35 +13006,35 @@ contains
 
 #if IK5_ENABLED
     module procedure setMatCopy_RDP_LFP_XXD_TSO_IK5
-        use pm_kind, only: IKC => IK5
+        use pm_kind, only: IKG => IK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK4_ENABLED
     module procedure setMatCopy_RDP_LFP_XXD_TSO_IK4
-        use pm_kind, only: IKC => IK4
+        use pm_kind, only: IKG => IK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK3_ENABLED
     module procedure setMatCopy_RDP_LFP_XXD_TSO_IK3
-        use pm_kind, only: IKC => IK3
+        use pm_kind, only: IKG => IK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK2_ENABLED
     module procedure setMatCopy_RDP_LFP_XXD_TSO_IK2
-        use pm_kind, only: IKC => IK2
+        use pm_kind, only: IKG => IK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK1_ENABLED
     module procedure setMatCopy_RDP_LFP_XXD_TSO_IK1
-        use pm_kind, only: IKC => IK1
+        use pm_kind, only: IKG => IK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -13047,35 +13047,35 @@ contains
 
 #if LK5_ENABLED
     module procedure setMatCopy_RDP_LFP_XXD_TSO_LK5
-        use pm_kind, only: LKC => LK5
+        use pm_kind, only: LKG => LK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK4_ENABLED
     module procedure setMatCopy_RDP_LFP_XXD_TSO_LK4
-        use pm_kind, only: LKC => LK4
+        use pm_kind, only: LKG => LK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK3_ENABLED
     module procedure setMatCopy_RDP_LFP_XXD_TSO_LK3
-        use pm_kind, only: LKC => LK3
+        use pm_kind, only: LKG => LK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK2_ENABLED
     module procedure setMatCopy_RDP_LFP_XXD_TSO_LK2
-        use pm_kind, only: LKC => LK2
+        use pm_kind, only: LKG => LK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK1_ENABLED
     module procedure setMatCopy_RDP_LFP_XXD_TSO_LK1
-        use pm_kind, only: LKC => LK1
+        use pm_kind, only: LKG => LK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -13088,35 +13088,35 @@ contains
 
 #if CK5_ENABLED
     module procedure setMatCopy_RDP_LFP_XXD_TSO_CK5
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure setMatCopy_RDP_LFP_XXD_TSO_CK4
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure setMatCopy_RDP_LFP_XXD_TSO_CK3
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure setMatCopy_RDP_LFP_XXD_TSO_CK2
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure setMatCopy_RDP_LFP_XXD_TSO_CK1
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -13129,35 +13129,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setMatCopy_RDP_LFP_XXD_TSO_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setMatCopy_RDP_LFP_XXD_TSO_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setMatCopy_RDP_LFP_XXD_TSO_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setMatCopy_RDP_LFP_XXD_TSO_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setMatCopy_RDP_LFP_XXD_TSO_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -13182,35 +13182,35 @@ contains
 
 #if SK5_ENABLED
     module procedure setMatCopy_RDP_LFP_XXD_THO_SK5
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK4_ENABLED
     module procedure setMatCopy_RDP_LFP_XXD_THO_SK4
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK3_ENABLED
     module procedure setMatCopy_RDP_LFP_XXD_THO_SK3
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK2_ENABLED
     module procedure setMatCopy_RDP_LFP_XXD_THO_SK2
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK1_ENABLED
     module procedure setMatCopy_RDP_LFP_XXD_THO_SK1
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -13223,35 +13223,35 @@ contains
 
 #if IK5_ENABLED
     module procedure setMatCopy_RDP_LFP_XXD_THO_IK5
-        use pm_kind, only: IKC => IK5
+        use pm_kind, only: IKG => IK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK4_ENABLED
     module procedure setMatCopy_RDP_LFP_XXD_THO_IK4
-        use pm_kind, only: IKC => IK4
+        use pm_kind, only: IKG => IK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK3_ENABLED
     module procedure setMatCopy_RDP_LFP_XXD_THO_IK3
-        use pm_kind, only: IKC => IK3
+        use pm_kind, only: IKG => IK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK2_ENABLED
     module procedure setMatCopy_RDP_LFP_XXD_THO_IK2
-        use pm_kind, only: IKC => IK2
+        use pm_kind, only: IKG => IK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK1_ENABLED
     module procedure setMatCopy_RDP_LFP_XXD_THO_IK1
-        use pm_kind, only: IKC => IK1
+        use pm_kind, only: IKG => IK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -13264,35 +13264,35 @@ contains
 
 #if LK5_ENABLED
     module procedure setMatCopy_RDP_LFP_XXD_THO_LK5
-        use pm_kind, only: LKC => LK5
+        use pm_kind, only: LKG => LK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK4_ENABLED
     module procedure setMatCopy_RDP_LFP_XXD_THO_LK4
-        use pm_kind, only: LKC => LK4
+        use pm_kind, only: LKG => LK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK3_ENABLED
     module procedure setMatCopy_RDP_LFP_XXD_THO_LK3
-        use pm_kind, only: LKC => LK3
+        use pm_kind, only: LKG => LK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK2_ENABLED
     module procedure setMatCopy_RDP_LFP_XXD_THO_LK2
-        use pm_kind, only: LKC => LK2
+        use pm_kind, only: LKG => LK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK1_ENABLED
     module procedure setMatCopy_RDP_LFP_XXD_THO_LK1
-        use pm_kind, only: LKC => LK1
+        use pm_kind, only: LKG => LK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -13305,35 +13305,35 @@ contains
 
 #if CK5_ENABLED
     module procedure setMatCopy_RDP_LFP_XXD_THO_CK5
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure setMatCopy_RDP_LFP_XXD_THO_CK4
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure setMatCopy_RDP_LFP_XXD_THO_CK3
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure setMatCopy_RDP_LFP_XXD_THO_CK2
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure setMatCopy_RDP_LFP_XXD_THO_CK1
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -13346,35 +13346,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setMatCopy_RDP_LFP_XXD_THO_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setMatCopy_RDP_LFP_XXD_THO_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setMatCopy_RDP_LFP_XXD_THO_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setMatCopy_RDP_LFP_XXD_THO_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setMatCopy_RDP_LFP_XXD_THO_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -13399,35 +13399,35 @@ contains
 
 #if SK5_ENABLED
     module procedure setMatCopy_RDP_LFP_UXD_AIO_SK5
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK4_ENABLED
     module procedure setMatCopy_RDP_LFP_UXD_AIO_SK4
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK3_ENABLED
     module procedure setMatCopy_RDP_LFP_UXD_AIO_SK3
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK2_ENABLED
     module procedure setMatCopy_RDP_LFP_UXD_AIO_SK2
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK1_ENABLED
     module procedure setMatCopy_RDP_LFP_UXD_AIO_SK1
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -13440,35 +13440,35 @@ contains
 
 #if IK5_ENABLED
     module procedure setMatCopy_RDP_LFP_UXD_AIO_IK5
-        use pm_kind, only: IKC => IK5
+        use pm_kind, only: IKG => IK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK4_ENABLED
     module procedure setMatCopy_RDP_LFP_UXD_AIO_IK4
-        use pm_kind, only: IKC => IK4
+        use pm_kind, only: IKG => IK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK3_ENABLED
     module procedure setMatCopy_RDP_LFP_UXD_AIO_IK3
-        use pm_kind, only: IKC => IK3
+        use pm_kind, only: IKG => IK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK2_ENABLED
     module procedure setMatCopy_RDP_LFP_UXD_AIO_IK2
-        use pm_kind, only: IKC => IK2
+        use pm_kind, only: IKG => IK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK1_ENABLED
     module procedure setMatCopy_RDP_LFP_UXD_AIO_IK1
-        use pm_kind, only: IKC => IK1
+        use pm_kind, only: IKG => IK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -13481,35 +13481,35 @@ contains
 
 #if LK5_ENABLED
     module procedure setMatCopy_RDP_LFP_UXD_AIO_LK5
-        use pm_kind, only: LKC => LK5
+        use pm_kind, only: LKG => LK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK4_ENABLED
     module procedure setMatCopy_RDP_LFP_UXD_AIO_LK4
-        use pm_kind, only: LKC => LK4
+        use pm_kind, only: LKG => LK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK3_ENABLED
     module procedure setMatCopy_RDP_LFP_UXD_AIO_LK3
-        use pm_kind, only: LKC => LK3
+        use pm_kind, only: LKG => LK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK2_ENABLED
     module procedure setMatCopy_RDP_LFP_UXD_AIO_LK2
-        use pm_kind, only: LKC => LK2
+        use pm_kind, only: LKG => LK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK1_ENABLED
     module procedure setMatCopy_RDP_LFP_UXD_AIO_LK1
-        use pm_kind, only: LKC => LK1
+        use pm_kind, only: LKG => LK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -13522,35 +13522,35 @@ contains
 
 #if CK5_ENABLED
     module procedure setMatCopy_RDP_LFP_UXD_AIO_CK5
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure setMatCopy_RDP_LFP_UXD_AIO_CK4
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure setMatCopy_RDP_LFP_UXD_AIO_CK3
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure setMatCopy_RDP_LFP_UXD_AIO_CK2
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure setMatCopy_RDP_LFP_UXD_AIO_CK1
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -13563,35 +13563,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setMatCopy_RDP_LFP_UXD_AIO_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setMatCopy_RDP_LFP_UXD_AIO_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setMatCopy_RDP_LFP_UXD_AIO_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setMatCopy_RDP_LFP_UXD_AIO_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setMatCopy_RDP_LFP_UXD_AIO_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -13616,35 +13616,35 @@ contains
 
 #if SK5_ENABLED
     module procedure setMatCopy_RDP_LFP_UXD_TSO_SK5
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK4_ENABLED
     module procedure setMatCopy_RDP_LFP_UXD_TSO_SK4
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK3_ENABLED
     module procedure setMatCopy_RDP_LFP_UXD_TSO_SK3
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK2_ENABLED
     module procedure setMatCopy_RDP_LFP_UXD_TSO_SK2
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK1_ENABLED
     module procedure setMatCopy_RDP_LFP_UXD_TSO_SK1
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -13657,35 +13657,35 @@ contains
 
 #if IK5_ENABLED
     module procedure setMatCopy_RDP_LFP_UXD_TSO_IK5
-        use pm_kind, only: IKC => IK5
+        use pm_kind, only: IKG => IK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK4_ENABLED
     module procedure setMatCopy_RDP_LFP_UXD_TSO_IK4
-        use pm_kind, only: IKC => IK4
+        use pm_kind, only: IKG => IK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK3_ENABLED
     module procedure setMatCopy_RDP_LFP_UXD_TSO_IK3
-        use pm_kind, only: IKC => IK3
+        use pm_kind, only: IKG => IK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK2_ENABLED
     module procedure setMatCopy_RDP_LFP_UXD_TSO_IK2
-        use pm_kind, only: IKC => IK2
+        use pm_kind, only: IKG => IK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK1_ENABLED
     module procedure setMatCopy_RDP_LFP_UXD_TSO_IK1
-        use pm_kind, only: IKC => IK1
+        use pm_kind, only: IKG => IK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -13698,35 +13698,35 @@ contains
 
 #if LK5_ENABLED
     module procedure setMatCopy_RDP_LFP_UXD_TSO_LK5
-        use pm_kind, only: LKC => LK5
+        use pm_kind, only: LKG => LK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK4_ENABLED
     module procedure setMatCopy_RDP_LFP_UXD_TSO_LK4
-        use pm_kind, only: LKC => LK4
+        use pm_kind, only: LKG => LK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK3_ENABLED
     module procedure setMatCopy_RDP_LFP_UXD_TSO_LK3
-        use pm_kind, only: LKC => LK3
+        use pm_kind, only: LKG => LK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK2_ENABLED
     module procedure setMatCopy_RDP_LFP_UXD_TSO_LK2
-        use pm_kind, only: LKC => LK2
+        use pm_kind, only: LKG => LK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK1_ENABLED
     module procedure setMatCopy_RDP_LFP_UXD_TSO_LK1
-        use pm_kind, only: LKC => LK1
+        use pm_kind, only: LKG => LK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -13739,35 +13739,35 @@ contains
 
 #if CK5_ENABLED
     module procedure setMatCopy_RDP_LFP_UXD_TSO_CK5
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure setMatCopy_RDP_LFP_UXD_TSO_CK4
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure setMatCopy_RDP_LFP_UXD_TSO_CK3
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure setMatCopy_RDP_LFP_UXD_TSO_CK2
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure setMatCopy_RDP_LFP_UXD_TSO_CK1
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -13780,35 +13780,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setMatCopy_RDP_LFP_UXD_TSO_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setMatCopy_RDP_LFP_UXD_TSO_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setMatCopy_RDP_LFP_UXD_TSO_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setMatCopy_RDP_LFP_UXD_TSO_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setMatCopy_RDP_LFP_UXD_TSO_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -13833,35 +13833,35 @@ contains
 
 #if SK5_ENABLED
     module procedure setMatCopy_RDP_LFP_UXD_THO_SK5
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK4_ENABLED
     module procedure setMatCopy_RDP_LFP_UXD_THO_SK4
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK3_ENABLED
     module procedure setMatCopy_RDP_LFP_UXD_THO_SK3
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK2_ENABLED
     module procedure setMatCopy_RDP_LFP_UXD_THO_SK2
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK1_ENABLED
     module procedure setMatCopy_RDP_LFP_UXD_THO_SK1
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -13874,35 +13874,35 @@ contains
 
 #if IK5_ENABLED
     module procedure setMatCopy_RDP_LFP_UXD_THO_IK5
-        use pm_kind, only: IKC => IK5
+        use pm_kind, only: IKG => IK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK4_ENABLED
     module procedure setMatCopy_RDP_LFP_UXD_THO_IK4
-        use pm_kind, only: IKC => IK4
+        use pm_kind, only: IKG => IK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK3_ENABLED
     module procedure setMatCopy_RDP_LFP_UXD_THO_IK3
-        use pm_kind, only: IKC => IK3
+        use pm_kind, only: IKG => IK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK2_ENABLED
     module procedure setMatCopy_RDP_LFP_UXD_THO_IK2
-        use pm_kind, only: IKC => IK2
+        use pm_kind, only: IKG => IK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK1_ENABLED
     module procedure setMatCopy_RDP_LFP_UXD_THO_IK1
-        use pm_kind, only: IKC => IK1
+        use pm_kind, only: IKG => IK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -13915,35 +13915,35 @@ contains
 
 #if LK5_ENABLED
     module procedure setMatCopy_RDP_LFP_UXD_THO_LK5
-        use pm_kind, only: LKC => LK5
+        use pm_kind, only: LKG => LK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK4_ENABLED
     module procedure setMatCopy_RDP_LFP_UXD_THO_LK4
-        use pm_kind, only: LKC => LK4
+        use pm_kind, only: LKG => LK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK3_ENABLED
     module procedure setMatCopy_RDP_LFP_UXD_THO_LK3
-        use pm_kind, only: LKC => LK3
+        use pm_kind, only: LKG => LK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK2_ENABLED
     module procedure setMatCopy_RDP_LFP_UXD_THO_LK2
-        use pm_kind, only: LKC => LK2
+        use pm_kind, only: LKG => LK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK1_ENABLED
     module procedure setMatCopy_RDP_LFP_UXD_THO_LK1
-        use pm_kind, only: LKC => LK1
+        use pm_kind, only: LKG => LK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -13956,35 +13956,35 @@ contains
 
 #if CK5_ENABLED
     module procedure setMatCopy_RDP_LFP_UXD_THO_CK5
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure setMatCopy_RDP_LFP_UXD_THO_CK4
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure setMatCopy_RDP_LFP_UXD_THO_CK3
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure setMatCopy_RDP_LFP_UXD_THO_CK2
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure setMatCopy_RDP_LFP_UXD_THO_CK1
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -13997,35 +13997,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setMatCopy_RDP_LFP_UXD_THO_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setMatCopy_RDP_LFP_UXD_THO_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setMatCopy_RDP_LFP_UXD_THO_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setMatCopy_RDP_LFP_UXD_THO_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setMatCopy_RDP_LFP_UXD_THO_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -14050,35 +14050,35 @@ contains
 
 #if SK5_ENABLED
     module procedure setMatCopy_RDP_LFP_XLD_AIO_SK5
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK4_ENABLED
     module procedure setMatCopy_RDP_LFP_XLD_AIO_SK4
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK3_ENABLED
     module procedure setMatCopy_RDP_LFP_XLD_AIO_SK3
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK2_ENABLED
     module procedure setMatCopy_RDP_LFP_XLD_AIO_SK2
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK1_ENABLED
     module procedure setMatCopy_RDP_LFP_XLD_AIO_SK1
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -14091,35 +14091,35 @@ contains
 
 #if IK5_ENABLED
     module procedure setMatCopy_RDP_LFP_XLD_AIO_IK5
-        use pm_kind, only: IKC => IK5
+        use pm_kind, only: IKG => IK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK4_ENABLED
     module procedure setMatCopy_RDP_LFP_XLD_AIO_IK4
-        use pm_kind, only: IKC => IK4
+        use pm_kind, only: IKG => IK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK3_ENABLED
     module procedure setMatCopy_RDP_LFP_XLD_AIO_IK3
-        use pm_kind, only: IKC => IK3
+        use pm_kind, only: IKG => IK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK2_ENABLED
     module procedure setMatCopy_RDP_LFP_XLD_AIO_IK2
-        use pm_kind, only: IKC => IK2
+        use pm_kind, only: IKG => IK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK1_ENABLED
     module procedure setMatCopy_RDP_LFP_XLD_AIO_IK1
-        use pm_kind, only: IKC => IK1
+        use pm_kind, only: IKG => IK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -14132,35 +14132,35 @@ contains
 
 #if LK5_ENABLED
     module procedure setMatCopy_RDP_LFP_XLD_AIO_LK5
-        use pm_kind, only: LKC => LK5
+        use pm_kind, only: LKG => LK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK4_ENABLED
     module procedure setMatCopy_RDP_LFP_XLD_AIO_LK4
-        use pm_kind, only: LKC => LK4
+        use pm_kind, only: LKG => LK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK3_ENABLED
     module procedure setMatCopy_RDP_LFP_XLD_AIO_LK3
-        use pm_kind, only: LKC => LK3
+        use pm_kind, only: LKG => LK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK2_ENABLED
     module procedure setMatCopy_RDP_LFP_XLD_AIO_LK2
-        use pm_kind, only: LKC => LK2
+        use pm_kind, only: LKG => LK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK1_ENABLED
     module procedure setMatCopy_RDP_LFP_XLD_AIO_LK1
-        use pm_kind, only: LKC => LK1
+        use pm_kind, only: LKG => LK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -14173,35 +14173,35 @@ contains
 
 #if CK5_ENABLED
     module procedure setMatCopy_RDP_LFP_XLD_AIO_CK5
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure setMatCopy_RDP_LFP_XLD_AIO_CK4
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure setMatCopy_RDP_LFP_XLD_AIO_CK3
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure setMatCopy_RDP_LFP_XLD_AIO_CK2
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure setMatCopy_RDP_LFP_XLD_AIO_CK1
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -14214,35 +14214,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setMatCopy_RDP_LFP_XLD_AIO_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setMatCopy_RDP_LFP_XLD_AIO_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setMatCopy_RDP_LFP_XLD_AIO_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setMatCopy_RDP_LFP_XLD_AIO_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setMatCopy_RDP_LFP_XLD_AIO_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -14267,35 +14267,35 @@ contains
 
 #if SK5_ENABLED
     module procedure setMatCopy_RDP_LFP_XLD_TSO_SK5
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK4_ENABLED
     module procedure setMatCopy_RDP_LFP_XLD_TSO_SK4
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK3_ENABLED
     module procedure setMatCopy_RDP_LFP_XLD_TSO_SK3
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK2_ENABLED
     module procedure setMatCopy_RDP_LFP_XLD_TSO_SK2
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK1_ENABLED
     module procedure setMatCopy_RDP_LFP_XLD_TSO_SK1
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -14308,35 +14308,35 @@ contains
 
 #if IK5_ENABLED
     module procedure setMatCopy_RDP_LFP_XLD_TSO_IK5
-        use pm_kind, only: IKC => IK5
+        use pm_kind, only: IKG => IK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK4_ENABLED
     module procedure setMatCopy_RDP_LFP_XLD_TSO_IK4
-        use pm_kind, only: IKC => IK4
+        use pm_kind, only: IKG => IK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK3_ENABLED
     module procedure setMatCopy_RDP_LFP_XLD_TSO_IK3
-        use pm_kind, only: IKC => IK3
+        use pm_kind, only: IKG => IK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK2_ENABLED
     module procedure setMatCopy_RDP_LFP_XLD_TSO_IK2
-        use pm_kind, only: IKC => IK2
+        use pm_kind, only: IKG => IK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK1_ENABLED
     module procedure setMatCopy_RDP_LFP_XLD_TSO_IK1
-        use pm_kind, only: IKC => IK1
+        use pm_kind, only: IKG => IK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -14349,35 +14349,35 @@ contains
 
 #if LK5_ENABLED
     module procedure setMatCopy_RDP_LFP_XLD_TSO_LK5
-        use pm_kind, only: LKC => LK5
+        use pm_kind, only: LKG => LK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK4_ENABLED
     module procedure setMatCopy_RDP_LFP_XLD_TSO_LK4
-        use pm_kind, only: LKC => LK4
+        use pm_kind, only: LKG => LK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK3_ENABLED
     module procedure setMatCopy_RDP_LFP_XLD_TSO_LK3
-        use pm_kind, only: LKC => LK3
+        use pm_kind, only: LKG => LK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK2_ENABLED
     module procedure setMatCopy_RDP_LFP_XLD_TSO_LK2
-        use pm_kind, only: LKC => LK2
+        use pm_kind, only: LKG => LK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK1_ENABLED
     module procedure setMatCopy_RDP_LFP_XLD_TSO_LK1
-        use pm_kind, only: LKC => LK1
+        use pm_kind, only: LKG => LK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -14390,35 +14390,35 @@ contains
 
 #if CK5_ENABLED
     module procedure setMatCopy_RDP_LFP_XLD_TSO_CK5
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure setMatCopy_RDP_LFP_XLD_TSO_CK4
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure setMatCopy_RDP_LFP_XLD_TSO_CK3
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure setMatCopy_RDP_LFP_XLD_TSO_CK2
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure setMatCopy_RDP_LFP_XLD_TSO_CK1
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -14431,35 +14431,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setMatCopy_RDP_LFP_XLD_TSO_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setMatCopy_RDP_LFP_XLD_TSO_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setMatCopy_RDP_LFP_XLD_TSO_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setMatCopy_RDP_LFP_XLD_TSO_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setMatCopy_RDP_LFP_XLD_TSO_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -14484,35 +14484,35 @@ contains
 
 #if SK5_ENABLED
     module procedure setMatCopy_RDP_LFP_XLD_THO_SK5
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK4_ENABLED
     module procedure setMatCopy_RDP_LFP_XLD_THO_SK4
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK3_ENABLED
     module procedure setMatCopy_RDP_LFP_XLD_THO_SK3
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK2_ENABLED
     module procedure setMatCopy_RDP_LFP_XLD_THO_SK2
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK1_ENABLED
     module procedure setMatCopy_RDP_LFP_XLD_THO_SK1
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -14525,35 +14525,35 @@ contains
 
 #if IK5_ENABLED
     module procedure setMatCopy_RDP_LFP_XLD_THO_IK5
-        use pm_kind, only: IKC => IK5
+        use pm_kind, only: IKG => IK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK4_ENABLED
     module procedure setMatCopy_RDP_LFP_XLD_THO_IK4
-        use pm_kind, only: IKC => IK4
+        use pm_kind, only: IKG => IK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK3_ENABLED
     module procedure setMatCopy_RDP_LFP_XLD_THO_IK3
-        use pm_kind, only: IKC => IK3
+        use pm_kind, only: IKG => IK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK2_ENABLED
     module procedure setMatCopy_RDP_LFP_XLD_THO_IK2
-        use pm_kind, only: IKC => IK2
+        use pm_kind, only: IKG => IK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK1_ENABLED
     module procedure setMatCopy_RDP_LFP_XLD_THO_IK1
-        use pm_kind, only: IKC => IK1
+        use pm_kind, only: IKG => IK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -14566,35 +14566,35 @@ contains
 
 #if LK5_ENABLED
     module procedure setMatCopy_RDP_LFP_XLD_THO_LK5
-        use pm_kind, only: LKC => LK5
+        use pm_kind, only: LKG => LK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK4_ENABLED
     module procedure setMatCopy_RDP_LFP_XLD_THO_LK4
-        use pm_kind, only: LKC => LK4
+        use pm_kind, only: LKG => LK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK3_ENABLED
     module procedure setMatCopy_RDP_LFP_XLD_THO_LK3
-        use pm_kind, only: LKC => LK3
+        use pm_kind, only: LKG => LK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK2_ENABLED
     module procedure setMatCopy_RDP_LFP_XLD_THO_LK2
-        use pm_kind, only: LKC => LK2
+        use pm_kind, only: LKG => LK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK1_ENABLED
     module procedure setMatCopy_RDP_LFP_XLD_THO_LK1
-        use pm_kind, only: LKC => LK1
+        use pm_kind, only: LKG => LK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -14607,35 +14607,35 @@ contains
 
 #if CK5_ENABLED
     module procedure setMatCopy_RDP_LFP_XLD_THO_CK5
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure setMatCopy_RDP_LFP_XLD_THO_CK4
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure setMatCopy_RDP_LFP_XLD_THO_CK3
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure setMatCopy_RDP_LFP_XLD_THO_CK2
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure setMatCopy_RDP_LFP_XLD_THO_CK1
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -14648,35 +14648,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setMatCopy_RDP_LFP_XLD_THO_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setMatCopy_RDP_LFP_XLD_THO_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setMatCopy_RDP_LFP_XLD_THO_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setMatCopy_RDP_LFP_XLD_THO_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setMatCopy_RDP_LFP_XLD_THO_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -14716,35 +14716,35 @@ contains
 
 #if SK5_ENABLED
     module procedure setMatCopy_LFP_RDP_XXD_AIO_SK5
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK4_ENABLED
     module procedure setMatCopy_LFP_RDP_XXD_AIO_SK4
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK3_ENABLED
     module procedure setMatCopy_LFP_RDP_XXD_AIO_SK3
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK2_ENABLED
     module procedure setMatCopy_LFP_RDP_XXD_AIO_SK2
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK1_ENABLED
     module procedure setMatCopy_LFP_RDP_XXD_AIO_SK1
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -14757,35 +14757,35 @@ contains
 
 #if IK5_ENABLED
     module procedure setMatCopy_LFP_RDP_XXD_AIO_IK5
-        use pm_kind, only: IKC => IK5
+        use pm_kind, only: IKG => IK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK4_ENABLED
     module procedure setMatCopy_LFP_RDP_XXD_AIO_IK4
-        use pm_kind, only: IKC => IK4
+        use pm_kind, only: IKG => IK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK3_ENABLED
     module procedure setMatCopy_LFP_RDP_XXD_AIO_IK3
-        use pm_kind, only: IKC => IK3
+        use pm_kind, only: IKG => IK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK2_ENABLED
     module procedure setMatCopy_LFP_RDP_XXD_AIO_IK2
-        use pm_kind, only: IKC => IK2
+        use pm_kind, only: IKG => IK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK1_ENABLED
     module procedure setMatCopy_LFP_RDP_XXD_AIO_IK1
-        use pm_kind, only: IKC => IK1
+        use pm_kind, only: IKG => IK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -14798,35 +14798,35 @@ contains
 
 #if LK5_ENABLED
     module procedure setMatCopy_LFP_RDP_XXD_AIO_LK5
-        use pm_kind, only: LKC => LK5
+        use pm_kind, only: LKG => LK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK4_ENABLED
     module procedure setMatCopy_LFP_RDP_XXD_AIO_LK4
-        use pm_kind, only: LKC => LK4
+        use pm_kind, only: LKG => LK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK3_ENABLED
     module procedure setMatCopy_LFP_RDP_XXD_AIO_LK3
-        use pm_kind, only: LKC => LK3
+        use pm_kind, only: LKG => LK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK2_ENABLED
     module procedure setMatCopy_LFP_RDP_XXD_AIO_LK2
-        use pm_kind, only: LKC => LK2
+        use pm_kind, only: LKG => LK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK1_ENABLED
     module procedure setMatCopy_LFP_RDP_XXD_AIO_LK1
-        use pm_kind, only: LKC => LK1
+        use pm_kind, only: LKG => LK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -14839,35 +14839,35 @@ contains
 
 #if CK5_ENABLED
     module procedure setMatCopy_LFP_RDP_XXD_AIO_CK5
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure setMatCopy_LFP_RDP_XXD_AIO_CK4
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure setMatCopy_LFP_RDP_XXD_AIO_CK3
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure setMatCopy_LFP_RDP_XXD_AIO_CK2
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure setMatCopy_LFP_RDP_XXD_AIO_CK1
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -14880,35 +14880,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setMatCopy_LFP_RDP_XXD_AIO_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setMatCopy_LFP_RDP_XXD_AIO_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setMatCopy_LFP_RDP_XXD_AIO_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setMatCopy_LFP_RDP_XXD_AIO_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setMatCopy_LFP_RDP_XXD_AIO_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -14933,35 +14933,35 @@ contains
 
 #if SK5_ENABLED
     module procedure setMatCopy_LFP_RDP_XXD_TSO_SK5
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK4_ENABLED
     module procedure setMatCopy_LFP_RDP_XXD_TSO_SK4
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK3_ENABLED
     module procedure setMatCopy_LFP_RDP_XXD_TSO_SK3
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK2_ENABLED
     module procedure setMatCopy_LFP_RDP_XXD_TSO_SK2
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK1_ENABLED
     module procedure setMatCopy_LFP_RDP_XXD_TSO_SK1
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -14974,35 +14974,35 @@ contains
 
 #if IK5_ENABLED
     module procedure setMatCopy_LFP_RDP_XXD_TSO_IK5
-        use pm_kind, only: IKC => IK5
+        use pm_kind, only: IKG => IK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK4_ENABLED
     module procedure setMatCopy_LFP_RDP_XXD_TSO_IK4
-        use pm_kind, only: IKC => IK4
+        use pm_kind, only: IKG => IK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK3_ENABLED
     module procedure setMatCopy_LFP_RDP_XXD_TSO_IK3
-        use pm_kind, only: IKC => IK3
+        use pm_kind, only: IKG => IK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK2_ENABLED
     module procedure setMatCopy_LFP_RDP_XXD_TSO_IK2
-        use pm_kind, only: IKC => IK2
+        use pm_kind, only: IKG => IK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK1_ENABLED
     module procedure setMatCopy_LFP_RDP_XXD_TSO_IK1
-        use pm_kind, only: IKC => IK1
+        use pm_kind, only: IKG => IK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -15015,35 +15015,35 @@ contains
 
 #if LK5_ENABLED
     module procedure setMatCopy_LFP_RDP_XXD_TSO_LK5
-        use pm_kind, only: LKC => LK5
+        use pm_kind, only: LKG => LK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK4_ENABLED
     module procedure setMatCopy_LFP_RDP_XXD_TSO_LK4
-        use pm_kind, only: LKC => LK4
+        use pm_kind, only: LKG => LK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK3_ENABLED
     module procedure setMatCopy_LFP_RDP_XXD_TSO_LK3
-        use pm_kind, only: LKC => LK3
+        use pm_kind, only: LKG => LK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK2_ENABLED
     module procedure setMatCopy_LFP_RDP_XXD_TSO_LK2
-        use pm_kind, only: LKC => LK2
+        use pm_kind, only: LKG => LK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK1_ENABLED
     module procedure setMatCopy_LFP_RDP_XXD_TSO_LK1
-        use pm_kind, only: LKC => LK1
+        use pm_kind, only: LKG => LK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -15056,35 +15056,35 @@ contains
 
 #if CK5_ENABLED
     module procedure setMatCopy_LFP_RDP_XXD_TSO_CK5
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure setMatCopy_LFP_RDP_XXD_TSO_CK4
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure setMatCopy_LFP_RDP_XXD_TSO_CK3
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure setMatCopy_LFP_RDP_XXD_TSO_CK2
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure setMatCopy_LFP_RDP_XXD_TSO_CK1
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -15097,35 +15097,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setMatCopy_LFP_RDP_XXD_TSO_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setMatCopy_LFP_RDP_XXD_TSO_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setMatCopy_LFP_RDP_XXD_TSO_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setMatCopy_LFP_RDP_XXD_TSO_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setMatCopy_LFP_RDP_XXD_TSO_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -15150,35 +15150,35 @@ contains
 
 #if SK5_ENABLED
     module procedure setMatCopy_LFP_RDP_XXD_THO_SK5
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK4_ENABLED
     module procedure setMatCopy_LFP_RDP_XXD_THO_SK4
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK3_ENABLED
     module procedure setMatCopy_LFP_RDP_XXD_THO_SK3
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK2_ENABLED
     module procedure setMatCopy_LFP_RDP_XXD_THO_SK2
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK1_ENABLED
     module procedure setMatCopy_LFP_RDP_XXD_THO_SK1
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -15191,35 +15191,35 @@ contains
 
 #if IK5_ENABLED
     module procedure setMatCopy_LFP_RDP_XXD_THO_IK5
-        use pm_kind, only: IKC => IK5
+        use pm_kind, only: IKG => IK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK4_ENABLED
     module procedure setMatCopy_LFP_RDP_XXD_THO_IK4
-        use pm_kind, only: IKC => IK4
+        use pm_kind, only: IKG => IK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK3_ENABLED
     module procedure setMatCopy_LFP_RDP_XXD_THO_IK3
-        use pm_kind, only: IKC => IK3
+        use pm_kind, only: IKG => IK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK2_ENABLED
     module procedure setMatCopy_LFP_RDP_XXD_THO_IK2
-        use pm_kind, only: IKC => IK2
+        use pm_kind, only: IKG => IK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK1_ENABLED
     module procedure setMatCopy_LFP_RDP_XXD_THO_IK1
-        use pm_kind, only: IKC => IK1
+        use pm_kind, only: IKG => IK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -15232,35 +15232,35 @@ contains
 
 #if LK5_ENABLED
     module procedure setMatCopy_LFP_RDP_XXD_THO_LK5
-        use pm_kind, only: LKC => LK5
+        use pm_kind, only: LKG => LK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK4_ENABLED
     module procedure setMatCopy_LFP_RDP_XXD_THO_LK4
-        use pm_kind, only: LKC => LK4
+        use pm_kind, only: LKG => LK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK3_ENABLED
     module procedure setMatCopy_LFP_RDP_XXD_THO_LK3
-        use pm_kind, only: LKC => LK3
+        use pm_kind, only: LKG => LK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK2_ENABLED
     module procedure setMatCopy_LFP_RDP_XXD_THO_LK2
-        use pm_kind, only: LKC => LK2
+        use pm_kind, only: LKG => LK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK1_ENABLED
     module procedure setMatCopy_LFP_RDP_XXD_THO_LK1
-        use pm_kind, only: LKC => LK1
+        use pm_kind, only: LKG => LK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -15273,35 +15273,35 @@ contains
 
 #if CK5_ENABLED
     module procedure setMatCopy_LFP_RDP_XXD_THO_CK5
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure setMatCopy_LFP_RDP_XXD_THO_CK4
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure setMatCopy_LFP_RDP_XXD_THO_CK3
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure setMatCopy_LFP_RDP_XXD_THO_CK2
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure setMatCopy_LFP_RDP_XXD_THO_CK1
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -15314,35 +15314,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setMatCopy_LFP_RDP_XXD_THO_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setMatCopy_LFP_RDP_XXD_THO_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setMatCopy_LFP_RDP_XXD_THO_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setMatCopy_LFP_RDP_XXD_THO_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setMatCopy_LFP_RDP_XXD_THO_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -15367,35 +15367,35 @@ contains
 
 #if SK5_ENABLED
     module procedure setMatCopy_LFP_RDP_UXD_AIO_SK5
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK4_ENABLED
     module procedure setMatCopy_LFP_RDP_UXD_AIO_SK4
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK3_ENABLED
     module procedure setMatCopy_LFP_RDP_UXD_AIO_SK3
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK2_ENABLED
     module procedure setMatCopy_LFP_RDP_UXD_AIO_SK2
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK1_ENABLED
     module procedure setMatCopy_LFP_RDP_UXD_AIO_SK1
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -15408,35 +15408,35 @@ contains
 
 #if IK5_ENABLED
     module procedure setMatCopy_LFP_RDP_UXD_AIO_IK5
-        use pm_kind, only: IKC => IK5
+        use pm_kind, only: IKG => IK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK4_ENABLED
     module procedure setMatCopy_LFP_RDP_UXD_AIO_IK4
-        use pm_kind, only: IKC => IK4
+        use pm_kind, only: IKG => IK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK3_ENABLED
     module procedure setMatCopy_LFP_RDP_UXD_AIO_IK3
-        use pm_kind, only: IKC => IK3
+        use pm_kind, only: IKG => IK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK2_ENABLED
     module procedure setMatCopy_LFP_RDP_UXD_AIO_IK2
-        use pm_kind, only: IKC => IK2
+        use pm_kind, only: IKG => IK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK1_ENABLED
     module procedure setMatCopy_LFP_RDP_UXD_AIO_IK1
-        use pm_kind, only: IKC => IK1
+        use pm_kind, only: IKG => IK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -15449,35 +15449,35 @@ contains
 
 #if LK5_ENABLED
     module procedure setMatCopy_LFP_RDP_UXD_AIO_LK5
-        use pm_kind, only: LKC => LK5
+        use pm_kind, only: LKG => LK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK4_ENABLED
     module procedure setMatCopy_LFP_RDP_UXD_AIO_LK4
-        use pm_kind, only: LKC => LK4
+        use pm_kind, only: LKG => LK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK3_ENABLED
     module procedure setMatCopy_LFP_RDP_UXD_AIO_LK3
-        use pm_kind, only: LKC => LK3
+        use pm_kind, only: LKG => LK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK2_ENABLED
     module procedure setMatCopy_LFP_RDP_UXD_AIO_LK2
-        use pm_kind, only: LKC => LK2
+        use pm_kind, only: LKG => LK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK1_ENABLED
     module procedure setMatCopy_LFP_RDP_UXD_AIO_LK1
-        use pm_kind, only: LKC => LK1
+        use pm_kind, only: LKG => LK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -15490,35 +15490,35 @@ contains
 
 #if CK5_ENABLED
     module procedure setMatCopy_LFP_RDP_UXD_AIO_CK5
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure setMatCopy_LFP_RDP_UXD_AIO_CK4
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure setMatCopy_LFP_RDP_UXD_AIO_CK3
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure setMatCopy_LFP_RDP_UXD_AIO_CK2
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure setMatCopy_LFP_RDP_UXD_AIO_CK1
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -15531,35 +15531,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setMatCopy_LFP_RDP_UXD_AIO_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setMatCopy_LFP_RDP_UXD_AIO_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setMatCopy_LFP_RDP_UXD_AIO_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setMatCopy_LFP_RDP_UXD_AIO_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setMatCopy_LFP_RDP_UXD_AIO_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -15584,35 +15584,35 @@ contains
 
 #if SK5_ENABLED
     module procedure setMatCopy_LFP_RDP_UXD_TSO_SK5
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK4_ENABLED
     module procedure setMatCopy_LFP_RDP_UXD_TSO_SK4
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK3_ENABLED
     module procedure setMatCopy_LFP_RDP_UXD_TSO_SK3
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK2_ENABLED
     module procedure setMatCopy_LFP_RDP_UXD_TSO_SK2
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK1_ENABLED
     module procedure setMatCopy_LFP_RDP_UXD_TSO_SK1
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -15625,35 +15625,35 @@ contains
 
 #if IK5_ENABLED
     module procedure setMatCopy_LFP_RDP_UXD_TSO_IK5
-        use pm_kind, only: IKC => IK5
+        use pm_kind, only: IKG => IK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK4_ENABLED
     module procedure setMatCopy_LFP_RDP_UXD_TSO_IK4
-        use pm_kind, only: IKC => IK4
+        use pm_kind, only: IKG => IK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK3_ENABLED
     module procedure setMatCopy_LFP_RDP_UXD_TSO_IK3
-        use pm_kind, only: IKC => IK3
+        use pm_kind, only: IKG => IK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK2_ENABLED
     module procedure setMatCopy_LFP_RDP_UXD_TSO_IK2
-        use pm_kind, only: IKC => IK2
+        use pm_kind, only: IKG => IK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK1_ENABLED
     module procedure setMatCopy_LFP_RDP_UXD_TSO_IK1
-        use pm_kind, only: IKC => IK1
+        use pm_kind, only: IKG => IK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -15666,35 +15666,35 @@ contains
 
 #if LK5_ENABLED
     module procedure setMatCopy_LFP_RDP_UXD_TSO_LK5
-        use pm_kind, only: LKC => LK5
+        use pm_kind, only: LKG => LK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK4_ENABLED
     module procedure setMatCopy_LFP_RDP_UXD_TSO_LK4
-        use pm_kind, only: LKC => LK4
+        use pm_kind, only: LKG => LK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK3_ENABLED
     module procedure setMatCopy_LFP_RDP_UXD_TSO_LK3
-        use pm_kind, only: LKC => LK3
+        use pm_kind, only: LKG => LK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK2_ENABLED
     module procedure setMatCopy_LFP_RDP_UXD_TSO_LK2
-        use pm_kind, only: LKC => LK2
+        use pm_kind, only: LKG => LK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK1_ENABLED
     module procedure setMatCopy_LFP_RDP_UXD_TSO_LK1
-        use pm_kind, only: LKC => LK1
+        use pm_kind, only: LKG => LK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -15707,35 +15707,35 @@ contains
 
 #if CK5_ENABLED
     module procedure setMatCopy_LFP_RDP_UXD_TSO_CK5
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure setMatCopy_LFP_RDP_UXD_TSO_CK4
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure setMatCopy_LFP_RDP_UXD_TSO_CK3
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure setMatCopy_LFP_RDP_UXD_TSO_CK2
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure setMatCopy_LFP_RDP_UXD_TSO_CK1
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -15748,35 +15748,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setMatCopy_LFP_RDP_UXD_TSO_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setMatCopy_LFP_RDP_UXD_TSO_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setMatCopy_LFP_RDP_UXD_TSO_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setMatCopy_LFP_RDP_UXD_TSO_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setMatCopy_LFP_RDP_UXD_TSO_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -15801,35 +15801,35 @@ contains
 
 #if SK5_ENABLED
     module procedure setMatCopy_LFP_RDP_UXD_THO_SK5
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK4_ENABLED
     module procedure setMatCopy_LFP_RDP_UXD_THO_SK4
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK3_ENABLED
     module procedure setMatCopy_LFP_RDP_UXD_THO_SK3
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK2_ENABLED
     module procedure setMatCopy_LFP_RDP_UXD_THO_SK2
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK1_ENABLED
     module procedure setMatCopy_LFP_RDP_UXD_THO_SK1
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -15842,35 +15842,35 @@ contains
 
 #if IK5_ENABLED
     module procedure setMatCopy_LFP_RDP_UXD_THO_IK5
-        use pm_kind, only: IKC => IK5
+        use pm_kind, only: IKG => IK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK4_ENABLED
     module procedure setMatCopy_LFP_RDP_UXD_THO_IK4
-        use pm_kind, only: IKC => IK4
+        use pm_kind, only: IKG => IK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK3_ENABLED
     module procedure setMatCopy_LFP_RDP_UXD_THO_IK3
-        use pm_kind, only: IKC => IK3
+        use pm_kind, only: IKG => IK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK2_ENABLED
     module procedure setMatCopy_LFP_RDP_UXD_THO_IK2
-        use pm_kind, only: IKC => IK2
+        use pm_kind, only: IKG => IK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK1_ENABLED
     module procedure setMatCopy_LFP_RDP_UXD_THO_IK1
-        use pm_kind, only: IKC => IK1
+        use pm_kind, only: IKG => IK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -15883,35 +15883,35 @@ contains
 
 #if LK5_ENABLED
     module procedure setMatCopy_LFP_RDP_UXD_THO_LK5
-        use pm_kind, only: LKC => LK5
+        use pm_kind, only: LKG => LK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK4_ENABLED
     module procedure setMatCopy_LFP_RDP_UXD_THO_LK4
-        use pm_kind, only: LKC => LK4
+        use pm_kind, only: LKG => LK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK3_ENABLED
     module procedure setMatCopy_LFP_RDP_UXD_THO_LK3
-        use pm_kind, only: LKC => LK3
+        use pm_kind, only: LKG => LK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK2_ENABLED
     module procedure setMatCopy_LFP_RDP_UXD_THO_LK2
-        use pm_kind, only: LKC => LK2
+        use pm_kind, only: LKG => LK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK1_ENABLED
     module procedure setMatCopy_LFP_RDP_UXD_THO_LK1
-        use pm_kind, only: LKC => LK1
+        use pm_kind, only: LKG => LK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -15924,35 +15924,35 @@ contains
 
 #if CK5_ENABLED
     module procedure setMatCopy_LFP_RDP_UXD_THO_CK5
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure setMatCopy_LFP_RDP_UXD_THO_CK4
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure setMatCopy_LFP_RDP_UXD_THO_CK3
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure setMatCopy_LFP_RDP_UXD_THO_CK2
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure setMatCopy_LFP_RDP_UXD_THO_CK1
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -15965,35 +15965,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setMatCopy_LFP_RDP_UXD_THO_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setMatCopy_LFP_RDP_UXD_THO_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setMatCopy_LFP_RDP_UXD_THO_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setMatCopy_LFP_RDP_UXD_THO_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setMatCopy_LFP_RDP_UXD_THO_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -16018,35 +16018,35 @@ contains
 
 #if SK5_ENABLED
     module procedure setMatCopy_LFP_RDP_XLD_AIO_SK5
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK4_ENABLED
     module procedure setMatCopy_LFP_RDP_XLD_AIO_SK4
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK3_ENABLED
     module procedure setMatCopy_LFP_RDP_XLD_AIO_SK3
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK2_ENABLED
     module procedure setMatCopy_LFP_RDP_XLD_AIO_SK2
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK1_ENABLED
     module procedure setMatCopy_LFP_RDP_XLD_AIO_SK1
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -16059,35 +16059,35 @@ contains
 
 #if IK5_ENABLED
     module procedure setMatCopy_LFP_RDP_XLD_AIO_IK5
-        use pm_kind, only: IKC => IK5
+        use pm_kind, only: IKG => IK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK4_ENABLED
     module procedure setMatCopy_LFP_RDP_XLD_AIO_IK4
-        use pm_kind, only: IKC => IK4
+        use pm_kind, only: IKG => IK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK3_ENABLED
     module procedure setMatCopy_LFP_RDP_XLD_AIO_IK3
-        use pm_kind, only: IKC => IK3
+        use pm_kind, only: IKG => IK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK2_ENABLED
     module procedure setMatCopy_LFP_RDP_XLD_AIO_IK2
-        use pm_kind, only: IKC => IK2
+        use pm_kind, only: IKG => IK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK1_ENABLED
     module procedure setMatCopy_LFP_RDP_XLD_AIO_IK1
-        use pm_kind, only: IKC => IK1
+        use pm_kind, only: IKG => IK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -16100,35 +16100,35 @@ contains
 
 #if LK5_ENABLED
     module procedure setMatCopy_LFP_RDP_XLD_AIO_LK5
-        use pm_kind, only: LKC => LK5
+        use pm_kind, only: LKG => LK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK4_ENABLED
     module procedure setMatCopy_LFP_RDP_XLD_AIO_LK4
-        use pm_kind, only: LKC => LK4
+        use pm_kind, only: LKG => LK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK3_ENABLED
     module procedure setMatCopy_LFP_RDP_XLD_AIO_LK3
-        use pm_kind, only: LKC => LK3
+        use pm_kind, only: LKG => LK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK2_ENABLED
     module procedure setMatCopy_LFP_RDP_XLD_AIO_LK2
-        use pm_kind, only: LKC => LK2
+        use pm_kind, only: LKG => LK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK1_ENABLED
     module procedure setMatCopy_LFP_RDP_XLD_AIO_LK1
-        use pm_kind, only: LKC => LK1
+        use pm_kind, only: LKG => LK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -16141,35 +16141,35 @@ contains
 
 #if CK5_ENABLED
     module procedure setMatCopy_LFP_RDP_XLD_AIO_CK5
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure setMatCopy_LFP_RDP_XLD_AIO_CK4
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure setMatCopy_LFP_RDP_XLD_AIO_CK3
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure setMatCopy_LFP_RDP_XLD_AIO_CK2
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure setMatCopy_LFP_RDP_XLD_AIO_CK1
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -16182,35 +16182,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setMatCopy_LFP_RDP_XLD_AIO_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setMatCopy_LFP_RDP_XLD_AIO_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setMatCopy_LFP_RDP_XLD_AIO_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setMatCopy_LFP_RDP_XLD_AIO_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setMatCopy_LFP_RDP_XLD_AIO_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -16235,35 +16235,35 @@ contains
 
 #if SK5_ENABLED
     module procedure setMatCopy_LFP_RDP_XLD_TSO_SK5
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK4_ENABLED
     module procedure setMatCopy_LFP_RDP_XLD_TSO_SK4
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK3_ENABLED
     module procedure setMatCopy_LFP_RDP_XLD_TSO_SK3
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK2_ENABLED
     module procedure setMatCopy_LFP_RDP_XLD_TSO_SK2
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK1_ENABLED
     module procedure setMatCopy_LFP_RDP_XLD_TSO_SK1
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -16276,35 +16276,35 @@ contains
 
 #if IK5_ENABLED
     module procedure setMatCopy_LFP_RDP_XLD_TSO_IK5
-        use pm_kind, only: IKC => IK5
+        use pm_kind, only: IKG => IK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK4_ENABLED
     module procedure setMatCopy_LFP_RDP_XLD_TSO_IK4
-        use pm_kind, only: IKC => IK4
+        use pm_kind, only: IKG => IK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK3_ENABLED
     module procedure setMatCopy_LFP_RDP_XLD_TSO_IK3
-        use pm_kind, only: IKC => IK3
+        use pm_kind, only: IKG => IK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK2_ENABLED
     module procedure setMatCopy_LFP_RDP_XLD_TSO_IK2
-        use pm_kind, only: IKC => IK2
+        use pm_kind, only: IKG => IK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK1_ENABLED
     module procedure setMatCopy_LFP_RDP_XLD_TSO_IK1
-        use pm_kind, only: IKC => IK1
+        use pm_kind, only: IKG => IK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -16317,35 +16317,35 @@ contains
 
 #if LK5_ENABLED
     module procedure setMatCopy_LFP_RDP_XLD_TSO_LK5
-        use pm_kind, only: LKC => LK5
+        use pm_kind, only: LKG => LK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK4_ENABLED
     module procedure setMatCopy_LFP_RDP_XLD_TSO_LK4
-        use pm_kind, only: LKC => LK4
+        use pm_kind, only: LKG => LK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK3_ENABLED
     module procedure setMatCopy_LFP_RDP_XLD_TSO_LK3
-        use pm_kind, only: LKC => LK3
+        use pm_kind, only: LKG => LK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK2_ENABLED
     module procedure setMatCopy_LFP_RDP_XLD_TSO_LK2
-        use pm_kind, only: LKC => LK2
+        use pm_kind, only: LKG => LK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK1_ENABLED
     module procedure setMatCopy_LFP_RDP_XLD_TSO_LK1
-        use pm_kind, only: LKC => LK1
+        use pm_kind, only: LKG => LK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -16358,35 +16358,35 @@ contains
 
 #if CK5_ENABLED
     module procedure setMatCopy_LFP_RDP_XLD_TSO_CK5
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure setMatCopy_LFP_RDP_XLD_TSO_CK4
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure setMatCopy_LFP_RDP_XLD_TSO_CK3
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure setMatCopy_LFP_RDP_XLD_TSO_CK2
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure setMatCopy_LFP_RDP_XLD_TSO_CK1
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -16399,35 +16399,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setMatCopy_LFP_RDP_XLD_TSO_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setMatCopy_LFP_RDP_XLD_TSO_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setMatCopy_LFP_RDP_XLD_TSO_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setMatCopy_LFP_RDP_XLD_TSO_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setMatCopy_LFP_RDP_XLD_TSO_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -16452,35 +16452,35 @@ contains
 
 #if SK5_ENABLED
     module procedure setMatCopy_LFP_RDP_XLD_THO_SK5
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK4_ENABLED
     module procedure setMatCopy_LFP_RDP_XLD_THO_SK4
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK3_ENABLED
     module procedure setMatCopy_LFP_RDP_XLD_THO_SK3
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK2_ENABLED
     module procedure setMatCopy_LFP_RDP_XLD_THO_SK2
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK1_ENABLED
     module procedure setMatCopy_LFP_RDP_XLD_THO_SK1
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -16493,35 +16493,35 @@ contains
 
 #if IK5_ENABLED
     module procedure setMatCopy_LFP_RDP_XLD_THO_IK5
-        use pm_kind, only: IKC => IK5
+        use pm_kind, only: IKG => IK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK4_ENABLED
     module procedure setMatCopy_LFP_RDP_XLD_THO_IK4
-        use pm_kind, only: IKC => IK4
+        use pm_kind, only: IKG => IK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK3_ENABLED
     module procedure setMatCopy_LFP_RDP_XLD_THO_IK3
-        use pm_kind, only: IKC => IK3
+        use pm_kind, only: IKG => IK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK2_ENABLED
     module procedure setMatCopy_LFP_RDP_XLD_THO_IK2
-        use pm_kind, only: IKC => IK2
+        use pm_kind, only: IKG => IK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK1_ENABLED
     module procedure setMatCopy_LFP_RDP_XLD_THO_IK1
-        use pm_kind, only: IKC => IK1
+        use pm_kind, only: IKG => IK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -16534,35 +16534,35 @@ contains
 
 #if LK5_ENABLED
     module procedure setMatCopy_LFP_RDP_XLD_THO_LK5
-        use pm_kind, only: LKC => LK5
+        use pm_kind, only: LKG => LK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK4_ENABLED
     module procedure setMatCopy_LFP_RDP_XLD_THO_LK4
-        use pm_kind, only: LKC => LK4
+        use pm_kind, only: LKG => LK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK3_ENABLED
     module procedure setMatCopy_LFP_RDP_XLD_THO_LK3
-        use pm_kind, only: LKC => LK3
+        use pm_kind, only: LKG => LK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK2_ENABLED
     module procedure setMatCopy_LFP_RDP_XLD_THO_LK2
-        use pm_kind, only: LKC => LK2
+        use pm_kind, only: LKG => LK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK1_ENABLED
     module procedure setMatCopy_LFP_RDP_XLD_THO_LK1
-        use pm_kind, only: LKC => LK1
+        use pm_kind, only: LKG => LK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -16575,35 +16575,35 @@ contains
 
 #if CK5_ENABLED
     module procedure setMatCopy_LFP_RDP_XLD_THO_CK5
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure setMatCopy_LFP_RDP_XLD_THO_CK4
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure setMatCopy_LFP_RDP_XLD_THO_CK3
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure setMatCopy_LFP_RDP_XLD_THO_CK2
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure setMatCopy_LFP_RDP_XLD_THO_CK1
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -16616,35 +16616,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setMatCopy_LFP_RDP_XLD_THO_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setMatCopy_LFP_RDP_XLD_THO_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setMatCopy_LFP_RDP_XLD_THO_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setMatCopy_LFP_RDP_XLD_THO_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setMatCopy_LFP_RDP_XLD_THO_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -16684,35 +16684,35 @@ contains
 
 #if SK5_ENABLED
     module procedure setMatCopy_RDP_RFP_UXD_AIO_SK5
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK4_ENABLED
     module procedure setMatCopy_RDP_RFP_UXD_AIO_SK4
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK3_ENABLED
     module procedure setMatCopy_RDP_RFP_UXD_AIO_SK3
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK2_ENABLED
     module procedure setMatCopy_RDP_RFP_UXD_AIO_SK2
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK1_ENABLED
     module procedure setMatCopy_RDP_RFP_UXD_AIO_SK1
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -16725,35 +16725,35 @@ contains
 
 #if IK5_ENABLED
     module procedure setMatCopy_RDP_RFP_UXD_AIO_IK5
-        use pm_kind, only: IKC => IK5
+        use pm_kind, only: IKG => IK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK4_ENABLED
     module procedure setMatCopy_RDP_RFP_UXD_AIO_IK4
-        use pm_kind, only: IKC => IK4
+        use pm_kind, only: IKG => IK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK3_ENABLED
     module procedure setMatCopy_RDP_RFP_UXD_AIO_IK3
-        use pm_kind, only: IKC => IK3
+        use pm_kind, only: IKG => IK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK2_ENABLED
     module procedure setMatCopy_RDP_RFP_UXD_AIO_IK2
-        use pm_kind, only: IKC => IK2
+        use pm_kind, only: IKG => IK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK1_ENABLED
     module procedure setMatCopy_RDP_RFP_UXD_AIO_IK1
-        use pm_kind, only: IKC => IK1
+        use pm_kind, only: IKG => IK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -16766,35 +16766,35 @@ contains
 
 #if LK5_ENABLED
     module procedure setMatCopy_RDP_RFP_UXD_AIO_LK5
-        use pm_kind, only: LKC => LK5
+        use pm_kind, only: LKG => LK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK4_ENABLED
     module procedure setMatCopy_RDP_RFP_UXD_AIO_LK4
-        use pm_kind, only: LKC => LK4
+        use pm_kind, only: LKG => LK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK3_ENABLED
     module procedure setMatCopy_RDP_RFP_UXD_AIO_LK3
-        use pm_kind, only: LKC => LK3
+        use pm_kind, only: LKG => LK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK2_ENABLED
     module procedure setMatCopy_RDP_RFP_UXD_AIO_LK2
-        use pm_kind, only: LKC => LK2
+        use pm_kind, only: LKG => LK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK1_ENABLED
     module procedure setMatCopy_RDP_RFP_UXD_AIO_LK1
-        use pm_kind, only: LKC => LK1
+        use pm_kind, only: LKG => LK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -16807,35 +16807,35 @@ contains
 
 #if CK5_ENABLED
     module procedure setMatCopy_RDP_RFP_UXD_AIO_CK5
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure setMatCopy_RDP_RFP_UXD_AIO_CK4
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure setMatCopy_RDP_RFP_UXD_AIO_CK3
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure setMatCopy_RDP_RFP_UXD_AIO_CK2
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure setMatCopy_RDP_RFP_UXD_AIO_CK1
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -16848,35 +16848,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setMatCopy_RDP_RFP_UXD_AIO_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setMatCopy_RDP_RFP_UXD_AIO_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setMatCopy_RDP_RFP_UXD_AIO_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setMatCopy_RDP_RFP_UXD_AIO_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setMatCopy_RDP_RFP_UXD_AIO_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -16901,35 +16901,35 @@ contains
 
 #if SK5_ENABLED
     module procedure setMatCopy_RDP_RFP_XLD_AIO_SK5
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK4_ENABLED
     module procedure setMatCopy_RDP_RFP_XLD_AIO_SK4
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK3_ENABLED
     module procedure setMatCopy_RDP_RFP_XLD_AIO_SK3
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK2_ENABLED
     module procedure setMatCopy_RDP_RFP_XLD_AIO_SK2
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK1_ENABLED
     module procedure setMatCopy_RDP_RFP_XLD_AIO_SK1
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -16942,35 +16942,35 @@ contains
 
 #if IK5_ENABLED
     module procedure setMatCopy_RDP_RFP_XLD_AIO_IK5
-        use pm_kind, only: IKC => IK5
+        use pm_kind, only: IKG => IK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK4_ENABLED
     module procedure setMatCopy_RDP_RFP_XLD_AIO_IK4
-        use pm_kind, only: IKC => IK4
+        use pm_kind, only: IKG => IK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK3_ENABLED
     module procedure setMatCopy_RDP_RFP_XLD_AIO_IK3
-        use pm_kind, only: IKC => IK3
+        use pm_kind, only: IKG => IK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK2_ENABLED
     module procedure setMatCopy_RDP_RFP_XLD_AIO_IK2
-        use pm_kind, only: IKC => IK2
+        use pm_kind, only: IKG => IK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK1_ENABLED
     module procedure setMatCopy_RDP_RFP_XLD_AIO_IK1
-        use pm_kind, only: IKC => IK1
+        use pm_kind, only: IKG => IK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -16983,35 +16983,35 @@ contains
 
 #if LK5_ENABLED
     module procedure setMatCopy_RDP_RFP_XLD_AIO_LK5
-        use pm_kind, only: LKC => LK5
+        use pm_kind, only: LKG => LK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK4_ENABLED
     module procedure setMatCopy_RDP_RFP_XLD_AIO_LK4
-        use pm_kind, only: LKC => LK4
+        use pm_kind, only: LKG => LK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK3_ENABLED
     module procedure setMatCopy_RDP_RFP_XLD_AIO_LK3
-        use pm_kind, only: LKC => LK3
+        use pm_kind, only: LKG => LK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK2_ENABLED
     module procedure setMatCopy_RDP_RFP_XLD_AIO_LK2
-        use pm_kind, only: LKC => LK2
+        use pm_kind, only: LKG => LK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK1_ENABLED
     module procedure setMatCopy_RDP_RFP_XLD_AIO_LK1
-        use pm_kind, only: LKC => LK1
+        use pm_kind, only: LKG => LK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -17024,35 +17024,35 @@ contains
 
 #if CK5_ENABLED
     module procedure setMatCopy_RDP_RFP_XLD_AIO_CK5
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure setMatCopy_RDP_RFP_XLD_AIO_CK4
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure setMatCopy_RDP_RFP_XLD_AIO_CK3
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure setMatCopy_RDP_RFP_XLD_AIO_CK2
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure setMatCopy_RDP_RFP_XLD_AIO_CK1
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -17065,35 +17065,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setMatCopy_RDP_RFP_XLD_AIO_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setMatCopy_RDP_RFP_XLD_AIO_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setMatCopy_RDP_RFP_XLD_AIO_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setMatCopy_RDP_RFP_XLD_AIO_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setMatCopy_RDP_RFP_XLD_AIO_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -17133,35 +17133,35 @@ contains
 
 #if SK5_ENABLED
     module procedure setMatCopy_RFP_RDP_UXD_AIO_SK5
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK4_ENABLED
     module procedure setMatCopy_RFP_RDP_UXD_AIO_SK4
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK3_ENABLED
     module procedure setMatCopy_RFP_RDP_UXD_AIO_SK3
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK2_ENABLED
     module procedure setMatCopy_RFP_RDP_UXD_AIO_SK2
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK1_ENABLED
     module procedure setMatCopy_RFP_RDP_UXD_AIO_SK1
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -17174,35 +17174,35 @@ contains
 
 #if IK5_ENABLED
     module procedure setMatCopy_RFP_RDP_UXD_AIO_IK5
-        use pm_kind, only: IKC => IK5
+        use pm_kind, only: IKG => IK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK4_ENABLED
     module procedure setMatCopy_RFP_RDP_UXD_AIO_IK4
-        use pm_kind, only: IKC => IK4
+        use pm_kind, only: IKG => IK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK3_ENABLED
     module procedure setMatCopy_RFP_RDP_UXD_AIO_IK3
-        use pm_kind, only: IKC => IK3
+        use pm_kind, only: IKG => IK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK2_ENABLED
     module procedure setMatCopy_RFP_RDP_UXD_AIO_IK2
-        use pm_kind, only: IKC => IK2
+        use pm_kind, only: IKG => IK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK1_ENABLED
     module procedure setMatCopy_RFP_RDP_UXD_AIO_IK1
-        use pm_kind, only: IKC => IK1
+        use pm_kind, only: IKG => IK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -17215,35 +17215,35 @@ contains
 
 #if LK5_ENABLED
     module procedure setMatCopy_RFP_RDP_UXD_AIO_LK5
-        use pm_kind, only: LKC => LK5
+        use pm_kind, only: LKG => LK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK4_ENABLED
     module procedure setMatCopy_RFP_RDP_UXD_AIO_LK4
-        use pm_kind, only: LKC => LK4
+        use pm_kind, only: LKG => LK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK3_ENABLED
     module procedure setMatCopy_RFP_RDP_UXD_AIO_LK3
-        use pm_kind, only: LKC => LK3
+        use pm_kind, only: LKG => LK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK2_ENABLED
     module procedure setMatCopy_RFP_RDP_UXD_AIO_LK2
-        use pm_kind, only: LKC => LK2
+        use pm_kind, only: LKG => LK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK1_ENABLED
     module procedure setMatCopy_RFP_RDP_UXD_AIO_LK1
-        use pm_kind, only: LKC => LK1
+        use pm_kind, only: LKG => LK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -17256,35 +17256,35 @@ contains
 
 #if CK5_ENABLED
     module procedure setMatCopy_RFP_RDP_UXD_AIO_CK5
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure setMatCopy_RFP_RDP_UXD_AIO_CK4
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure setMatCopy_RFP_RDP_UXD_AIO_CK3
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure setMatCopy_RFP_RDP_UXD_AIO_CK2
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure setMatCopy_RFP_RDP_UXD_AIO_CK1
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -17297,35 +17297,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setMatCopy_RFP_RDP_UXD_AIO_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setMatCopy_RFP_RDP_UXD_AIO_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setMatCopy_RFP_RDP_UXD_AIO_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setMatCopy_RFP_RDP_UXD_AIO_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setMatCopy_RFP_RDP_UXD_AIO_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -17350,35 +17350,35 @@ contains
 
 #if SK5_ENABLED
     module procedure setMatCopy_RFP_RDP_XLD_AIO_SK5
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK4_ENABLED
     module procedure setMatCopy_RFP_RDP_XLD_AIO_SK4
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK3_ENABLED
     module procedure setMatCopy_RFP_RDP_XLD_AIO_SK3
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK2_ENABLED
     module procedure setMatCopy_RFP_RDP_XLD_AIO_SK2
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if SK1_ENABLED
     module procedure setMatCopy_RFP_RDP_XLD_AIO_SK1
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -17391,35 +17391,35 @@ contains
 
 #if IK5_ENABLED
     module procedure setMatCopy_RFP_RDP_XLD_AIO_IK5
-        use pm_kind, only: IKC => IK5
+        use pm_kind, only: IKG => IK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK4_ENABLED
     module procedure setMatCopy_RFP_RDP_XLD_AIO_IK4
-        use pm_kind, only: IKC => IK4
+        use pm_kind, only: IKG => IK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK3_ENABLED
     module procedure setMatCopy_RFP_RDP_XLD_AIO_IK3
-        use pm_kind, only: IKC => IK3
+        use pm_kind, only: IKG => IK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK2_ENABLED
     module procedure setMatCopy_RFP_RDP_XLD_AIO_IK2
-        use pm_kind, only: IKC => IK2
+        use pm_kind, only: IKG => IK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if IK1_ENABLED
     module procedure setMatCopy_RFP_RDP_XLD_AIO_IK1
-        use pm_kind, only: IKC => IK1
+        use pm_kind, only: IKG => IK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -17432,35 +17432,35 @@ contains
 
 #if LK5_ENABLED
     module procedure setMatCopy_RFP_RDP_XLD_AIO_LK5
-        use pm_kind, only: LKC => LK5
+        use pm_kind, only: LKG => LK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK4_ENABLED
     module procedure setMatCopy_RFP_RDP_XLD_AIO_LK4
-        use pm_kind, only: LKC => LK4
+        use pm_kind, only: LKG => LK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK3_ENABLED
     module procedure setMatCopy_RFP_RDP_XLD_AIO_LK3
-        use pm_kind, only: LKC => LK3
+        use pm_kind, only: LKG => LK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK2_ENABLED
     module procedure setMatCopy_RFP_RDP_XLD_AIO_LK2
-        use pm_kind, only: LKC => LK2
+        use pm_kind, only: LKG => LK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if LK1_ENABLED
     module procedure setMatCopy_RFP_RDP_XLD_AIO_LK1
-        use pm_kind, only: LKC => LK1
+        use pm_kind, only: LKG => LK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -17473,35 +17473,35 @@ contains
 
 #if CK5_ENABLED
     module procedure setMatCopy_RFP_RDP_XLD_AIO_CK5
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure setMatCopy_RFP_RDP_XLD_AIO_CK4
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure setMatCopy_RFP_RDP_XLD_AIO_CK3
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure setMatCopy_RFP_RDP_XLD_AIO_CK2
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure setMatCopy_RFP_RDP_XLD_AIO_CK1
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
@@ -17514,35 +17514,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setMatCopy_RFP_RDP_XLD_AIO_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setMatCopy_RFP_RDP_XLD_AIO_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setMatCopy_RFP_RDP_XLD_AIO_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setMatCopy_RFP_RDP_XLD_AIO_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setMatCopy_RFP_RDP_XLD_AIO_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_matrixCopy@routines.inc.F90"
     end procedure
 #endif

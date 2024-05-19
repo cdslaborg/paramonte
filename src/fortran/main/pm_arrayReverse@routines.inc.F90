@@ -46,20 +46,20 @@
         ! Declare the temporary storage.
 #if     Old_ENABLED
 #if     SK_ENABLED && D0_ENABLED
-        character(1,SKC) :: temp
+        character(1,SKG) :: temp
 #elif   SK_ENABLED && D1_ENABLED
-        character(len(array),SKC) :: temp
+        character(len(array),SKG) :: temp
 #elif   IK_ENABLED && D1_ENABLED
-        integer(IKC) :: temp
+        integer(IKG) :: temp
 #elif   LK_ENABLED && D1_ENABLED
-        logical(LKC) :: temp
+        logical(LKG) :: temp
 #elif   CK_ENABLED && D1_ENABLED
-        complex(CKC) :: temp
+        complex(CKG) :: temp
 #elif   RK_ENABLED && D1_ENABLED
-        real(RKC) :: temp
+        real(RKG) :: temp
 #elif   PSSK_ENABLED && D1_ENABLED
         use pm_container, only: css_pdt
-        type(css_pdt(SKC)) :: temp
+        type(css_pdt(SKG)) :: temp
 #else
 #error  "Unrecognized interface."
 #endif

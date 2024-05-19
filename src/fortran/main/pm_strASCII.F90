@@ -296,8 +296,8 @@ module pm_strASCII
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocSpace_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)            , intent(in)                :: str
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)            , intent(in)                :: str
         integer(IK)                                             :: locSpace
     end function
 #endif
@@ -307,8 +307,8 @@ module pm_strASCII
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocSpace_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)            , intent(in)                :: str
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)            , intent(in)                :: str
         integer(IK)                                             :: locSpace
     end function
 #endif
@@ -318,8 +318,8 @@ module pm_strASCII
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocSpace_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)            , intent(in)                :: str
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)            , intent(in)                :: str
         integer(IK)                                             :: locSpace
     end function
 #endif
@@ -329,8 +329,8 @@ module pm_strASCII
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocSpace_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)            , intent(in)                :: str
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)            , intent(in)                :: str
         integer(IK)                                             :: locSpace
     end function
 #endif
@@ -340,8 +340,8 @@ module pm_strASCII
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocSpace_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)            , intent(in)                :: str
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)            , intent(in)                :: str
         integer(IK)                                             :: locSpace
     end function
 #endif
@@ -410,8 +410,8 @@ module pm_strASCII
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocNonSpace_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)            , intent(in)                :: str
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)            , intent(in)                :: str
         integer(IK)                                             :: locNonSpace
     end function
 #endif
@@ -421,8 +421,8 @@ module pm_strASCII
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocNonSpace_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)            , intent(in)                :: str
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)            , intent(in)                :: str
         integer(IK)                                             :: locNonSpace
     end function
 #endif
@@ -432,8 +432,8 @@ module pm_strASCII
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocNonSpace_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)            , intent(in)                :: str
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)            , intent(in)                :: str
         integer(IK)                                             :: locNonSpace
     end function
 #endif
@@ -443,8 +443,8 @@ module pm_strASCII
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocNonSpace_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)            , intent(in)                :: str
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)            , intent(in)                :: str
         integer(IK)                                             :: locNonSpace
     end function
 #endif
@@ -454,8 +454,8 @@ module pm_strASCII
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocNonSpace_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)            , intent(in)                :: str
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)            , intent(in)                :: str
         integer(IK)                                             :: locNonSpace
     end function
 #endif
@@ -527,8 +527,8 @@ module pm_strASCII
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isCharDigit_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(1,SKC)            , intent(in)                :: chr
+        use pm_kind, only: SKG => SK5
+        character(1,SKG)            , intent(in)                :: chr
         logical(LK)                                             :: charIsDigit
     end function
 #endif
@@ -538,8 +538,8 @@ module pm_strASCII
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isCharDigit_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(1,SKC)            , intent(in)                :: chr
+        use pm_kind, only: SKG => SK4
+        character(1,SKG)            , intent(in)                :: chr
         logical(LK)                                             :: charIsDigit
     end function
 #endif
@@ -549,8 +549,8 @@ module pm_strASCII
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isCharDigit_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(1,SKC)            , intent(in)                :: chr
+        use pm_kind, only: SKG => SK3
+        character(1,SKG)            , intent(in)                :: chr
         logical(LK)                                             :: charIsDigit
     end function
 #endif
@@ -560,8 +560,8 @@ module pm_strASCII
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isCharDigit_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(1,SKC)            , intent(in)                :: chr
+        use pm_kind, only: SKG => SK2
+        character(1,SKG)            , intent(in)                :: chr
         logical(LK)                                             :: charIsDigit
     end function
 #endif
@@ -571,8 +571,8 @@ module pm_strASCII
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isCharDigit_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(1,SKC)            , intent(in)                :: chr
+        use pm_kind, only: SKG => SK1
+        character(1,SKG)            , intent(in)                :: chr
         logical(LK)                                             :: charIsDigit
     end function
 #endif
@@ -655,8 +655,8 @@ module pm_strASCII
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isStrDigitAll_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)            , intent(in)                :: str
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)            , intent(in)                :: str
         logical(LK)                                             :: strIsDigitAll
     end function
 #endif
@@ -666,8 +666,8 @@ module pm_strASCII
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isStrDigitAll_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)            , intent(in)                :: str
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)            , intent(in)                :: str
         logical(LK)                                             :: strIsDigitAll
     end function
 #endif
@@ -677,8 +677,8 @@ module pm_strASCII
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isStrDigitAll_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)            , intent(in)                :: str
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)            , intent(in)                :: str
         logical(LK)                                             :: strIsDigitAll
     end function
 #endif
@@ -688,8 +688,8 @@ module pm_strASCII
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isStrDigitAll_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)            , intent(in)                :: str
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)            , intent(in)                :: str
         logical(LK)                                             :: strIsDigitAll
     end function
 #endif
@@ -699,8 +699,8 @@ module pm_strASCII
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isStrDigitAll_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)            , intent(in)                :: str
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)            , intent(in)                :: str
         logical(LK)                                             :: strIsDigitAll
     end function
 #endif
@@ -783,8 +783,8 @@ module pm_strASCII
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isStrDigitAny_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)            , intent(in)                :: str
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)            , intent(in)                :: str
         logical(LK)                                             :: strIsDigitAny
     end function
 #endif
@@ -794,8 +794,8 @@ module pm_strASCII
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isStrDigitAny_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)            , intent(in)                :: str
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)            , intent(in)                :: str
         logical(LK)                                             :: strIsDigitAny
     end function
 #endif
@@ -805,8 +805,8 @@ module pm_strASCII
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isStrDigitAny_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)            , intent(in)                :: str
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)            , intent(in)                :: str
         logical(LK)                                             :: strIsDigitAny
     end function
 #endif
@@ -816,8 +816,8 @@ module pm_strASCII
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isStrDigitAny_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)            , intent(in)                :: str
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)            , intent(in)                :: str
         logical(LK)                                             :: strIsDigitAny
     end function
 #endif
@@ -827,8 +827,8 @@ module pm_strASCII
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isStrDigitAny_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)            , intent(in)                :: str
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)            , intent(in)                :: str
         logical(LK)                                             :: strIsDigitAny
     end function
 #endif
@@ -899,8 +899,8 @@ module pm_strASCII
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isStrDigit_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)            , intent(in)                :: str
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)            , intent(in)                :: str
         logical(LK)                                             :: StrIsNumeric(len(str,IK))
     end function
 #endif
@@ -910,8 +910,8 @@ module pm_strASCII
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isStrDigit_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)            , intent(in)                :: str
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)            , intent(in)                :: str
         logical(LK)                                             :: StrIsNumeric(len(str,IK))
     end function
 #endif
@@ -921,8 +921,8 @@ module pm_strASCII
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isStrDigit_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)            , intent(in)                :: str
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)            , intent(in)                :: str
         logical(LK)                                             :: StrIsNumeric(len(str,IK))
     end function
 #endif
@@ -932,8 +932,8 @@ module pm_strASCII
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isStrDigit_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)            , intent(in)                :: str
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)            , intent(in)                :: str
         logical(LK)                                             :: StrIsNumeric(len(str,IK))
     end function
 #endif
@@ -943,8 +943,8 @@ module pm_strASCII
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isStrDigit_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)            , intent(in)                :: str
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)            , intent(in)                :: str
         logical(LK)                                             :: StrIsNumeric(len(str,IK))
     end function
 #endif
@@ -1026,8 +1026,8 @@ module pm_strASCII
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isStrReal_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)            , intent(in)                :: str
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)            , intent(in)                :: str
         logical(LK)                                             :: strIsReal
     end function
 #endif
@@ -1037,8 +1037,8 @@ module pm_strASCII
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isStrReal_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)            , intent(in)                :: str
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)            , intent(in)                :: str
         logical(LK)                                             :: strIsReal
     end function
 #endif
@@ -1048,8 +1048,8 @@ module pm_strASCII
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isStrReal_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)            , intent(in)                :: str
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)            , intent(in)                :: str
         logical(LK)                                             :: strIsReal
     end function
 #endif
@@ -1059,8 +1059,8 @@ module pm_strASCII
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isStrReal_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)            , intent(in)                :: str
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)            , intent(in)                :: str
         logical(LK)                                             :: strIsReal
     end function
 #endif
@@ -1070,8 +1070,8 @@ module pm_strASCII
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isStrReal_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)            , intent(in)                :: str
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)            , intent(in)                :: str
         logical(LK)                                             :: strIsReal
     end function
 #endif
@@ -1147,8 +1147,8 @@ module pm_strASCII
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isStrComplex_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)            , intent(in)                :: str
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)            , intent(in)                :: str
         logical(LK)                                             :: strIsComplex
     end function
 #endif
@@ -1158,8 +1158,8 @@ module pm_strASCII
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isStrComplex_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)            , intent(in)                :: str
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)            , intent(in)                :: str
         logical(LK)                                             :: strIsComplex
     end function
 #endif
@@ -1169,8 +1169,8 @@ module pm_strASCII
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isStrComplex_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)            , intent(in)                :: str
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)            , intent(in)                :: str
         logical(LK)                                             :: strIsComplex
     end function
 #endif
@@ -1180,8 +1180,8 @@ module pm_strASCII
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isStrComplex_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)            , intent(in)                :: str
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)            , intent(in)                :: str
         logical(LK)                                             :: strIsComplex
     end function
 #endif
@@ -1191,8 +1191,8 @@ module pm_strASCII
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isStrComplex_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)            , intent(in)                :: str
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)            , intent(in)                :: str
         logical(LK)                                             :: strIsComplex
     end function
 #endif
@@ -1268,8 +1268,8 @@ module pm_strASCII
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isStrInteger_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)            , intent(in)                :: str
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)            , intent(in)                :: str
         logical(LK)                                             :: strIsInteger
     end function
 #endif
@@ -1279,8 +1279,8 @@ module pm_strASCII
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isStrInteger_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)            , intent(in)                :: str
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)            , intent(in)                :: str
         logical(LK)                                             :: strIsInteger
     end function
 #endif
@@ -1290,8 +1290,8 @@ module pm_strASCII
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isStrInteger_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)            , intent(in)                :: str
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)            , intent(in)                :: str
         logical(LK)                                             :: strIsInteger
     end function
 #endif
@@ -1301,8 +1301,8 @@ module pm_strASCII
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isStrInteger_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)            , intent(in)                :: str
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)            , intent(in)                :: str
         logical(LK)                                             :: strIsInteger
     end function
 #endif
@@ -1312,8 +1312,8 @@ module pm_strASCII
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isStrInteger_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)            , intent(in)                :: str
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)            , intent(in)                :: str
         logical(LK)                                             :: strIsInteger
     end function
 #endif
@@ -1385,8 +1385,8 @@ module pm_strASCII
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isStrNumber_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)            , intent(in)                :: str
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)            , intent(in)                :: str
         logical(LK)                                             :: strIsNumber
     end function
 #endif
@@ -1396,8 +1396,8 @@ module pm_strASCII
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isStrNumber_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)            , intent(in)                :: str
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)            , intent(in)                :: str
         logical(LK)                                             :: strIsNumber
     end function
 #endif
@@ -1407,8 +1407,8 @@ module pm_strASCII
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isStrNumber_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)            , intent(in)                :: str
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)            , intent(in)                :: str
         logical(LK)                                             :: strIsNumber
     end function
 #endif
@@ -1418,8 +1418,8 @@ module pm_strASCII
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isStrNumber_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)            , intent(in)                :: str
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)            , intent(in)                :: str
         logical(LK)                                             :: strIsNumber
     end function
 #endif
@@ -1429,8 +1429,8 @@ module pm_strASCII
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isStrNumber_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)            , intent(in)                :: str
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)            , intent(in)                :: str
         logical(LK)                                             :: strIsNumber
     end function
 #endif
@@ -1502,8 +1502,8 @@ module pm_strASCII
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isCharUpper_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(1,SKC)            , intent(in)                :: chr
+        use pm_kind, only: SKG => SK5
+        character(1,SKG)            , intent(in)                :: chr
         logical(LK)                                             :: charIsUpper
     end function
 #endif
@@ -1513,8 +1513,8 @@ module pm_strASCII
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isCharUpper_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(1,SKC)            , intent(in)                :: chr
+        use pm_kind, only: SKG => SK4
+        character(1,SKG)            , intent(in)                :: chr
         logical(LK)                                             :: charIsUpper
     end function
 #endif
@@ -1524,8 +1524,8 @@ module pm_strASCII
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isCharUpper_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(1,SKC)            , intent(in)                :: chr
+        use pm_kind, only: SKG => SK3
+        character(1,SKG)            , intent(in)                :: chr
         logical(LK)                                             :: charIsUpper
     end function
 #endif
@@ -1535,8 +1535,8 @@ module pm_strASCII
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isCharUpper_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(1,SKC)            , intent(in)                :: chr
+        use pm_kind, only: SKG => SK2
+        character(1,SKG)            , intent(in)                :: chr
         logical(LK)                                             :: charIsUpper
     end function
 #endif
@@ -1546,8 +1546,8 @@ module pm_strASCII
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isCharUpper_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(1,SKC)            , intent(in)                :: chr
+        use pm_kind, only: SKG => SK1
+        character(1,SKG)            , intent(in)                :: chr
         logical(LK)                                             :: charIsUpper
     end function
 #endif
@@ -1619,8 +1619,8 @@ module pm_strASCII
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isCharLower_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(1,SKC)            , intent(in)                :: chr
+        use pm_kind, only: SKG => SK5
+        character(1,SKG)            , intent(in)                :: chr
         logical(LK)                                             :: charIsLower
     end function
 #endif
@@ -1630,8 +1630,8 @@ module pm_strASCII
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isCharLower_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(1,SKC)            , intent(in)                :: chr
+        use pm_kind, only: SKG => SK4
+        character(1,SKG)            , intent(in)                :: chr
         logical(LK)                                             :: charIsLower
     end function
 #endif
@@ -1641,8 +1641,8 @@ module pm_strASCII
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isCharLower_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(1,SKC)            , intent(in)                :: chr
+        use pm_kind, only: SKG => SK3
+        character(1,SKG)            , intent(in)                :: chr
         logical(LK)                                             :: charIsLower
     end function
 #endif
@@ -1652,8 +1652,8 @@ module pm_strASCII
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isCharLower_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(1,SKC)            , intent(in)                :: chr
+        use pm_kind, only: SKG => SK2
+        character(1,SKG)            , intent(in)                :: chr
         logical(LK)                                             :: charIsLower
     end function
 #endif
@@ -1663,8 +1663,8 @@ module pm_strASCII
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isCharLower_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(1,SKC)            , intent(in)                :: chr
+        use pm_kind, only: SKG => SK1
+        character(1,SKG)            , intent(in)                :: chr
         logical(LK)                                             :: charIsLower
     end function
 #endif
@@ -1747,8 +1747,8 @@ module pm_strASCII
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isStrUpperAll_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)            , intent(in)                :: str
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)            , intent(in)                :: str
         logical(LK)                                             :: strIsUpperAll
     end function
 #endif
@@ -1758,8 +1758,8 @@ module pm_strASCII
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isStrUpperAll_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)            , intent(in)                :: str
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)            , intent(in)                :: str
         logical(LK)                                             :: strIsUpperAll
     end function
 #endif
@@ -1769,8 +1769,8 @@ module pm_strASCII
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isStrUpperAll_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)            , intent(in)                :: str
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)            , intent(in)                :: str
         logical(LK)                                             :: strIsUpperAll
     end function
 #endif
@@ -1780,8 +1780,8 @@ module pm_strASCII
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isStrUpperAll_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)            , intent(in)                :: str
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)            , intent(in)                :: str
         logical(LK)                                             :: strIsUpperAll
     end function
 #endif
@@ -1791,8 +1791,8 @@ module pm_strASCII
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isStrUpperAll_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)            , intent(in)                :: str
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)            , intent(in)                :: str
         logical(LK)                                             :: strIsUpperAll
     end function
 #endif
@@ -1875,8 +1875,8 @@ module pm_strASCII
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isStrUpperAny_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)            , intent(in)                :: str
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)            , intent(in)                :: str
         logical(LK)                                             :: strIsUpperAny
     end function
 #endif
@@ -1886,8 +1886,8 @@ module pm_strASCII
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isStrUpperAny_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)            , intent(in)                :: str
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)            , intent(in)                :: str
         logical(LK)                                             :: strIsUpperAny
     end function
 #endif
@@ -1897,8 +1897,8 @@ module pm_strASCII
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isStrUpperAny_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)            , intent(in)                :: str
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)            , intent(in)                :: str
         logical(LK)                                             :: strIsUpperAny
     end function
 #endif
@@ -1908,8 +1908,8 @@ module pm_strASCII
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isStrUpperAny_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)            , intent(in)                :: str
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)            , intent(in)                :: str
         logical(LK)                                             :: strIsUpperAny
     end function
 #endif
@@ -1919,8 +1919,8 @@ module pm_strASCII
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isStrUpperAny_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)            , intent(in)                :: str
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)            , intent(in)                :: str
         logical(LK)                                             :: strIsUpperAny
     end function
 #endif
@@ -1993,8 +1993,8 @@ module pm_strASCII
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isStrUpper_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)            , intent(in)                :: str
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)            , intent(in)                :: str
         logical(LK)                                             :: StrIsUpper(len(str,IK))
     end function
 #endif
@@ -2004,8 +2004,8 @@ module pm_strASCII
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isStrUpper_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)            , intent(in)                :: str
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)            , intent(in)                :: str
         logical(LK)                                             :: StrIsUpper(len(str,IK))
     end function
 #endif
@@ -2015,8 +2015,8 @@ module pm_strASCII
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isStrUpper_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)            , intent(in)                :: str
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)            , intent(in)                :: str
         logical(LK)                                             :: StrIsUpper(len(str,IK))
     end function
 #endif
@@ -2026,8 +2026,8 @@ module pm_strASCII
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isStrUpper_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)            , intent(in)                :: str
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)            , intent(in)                :: str
         logical(LK)                                             :: StrIsUpper(len(str,IK))
     end function
 #endif
@@ -2037,8 +2037,8 @@ module pm_strASCII
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isStrUpper_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)            , intent(in)                :: str
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)            , intent(in)                :: str
         logical(LK)                                             :: StrIsUpper(len(str,IK))
     end function
 #endif
@@ -2122,8 +2122,8 @@ module pm_strASCII
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isStrLowerAll_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)            , intent(in)                :: str
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)            , intent(in)                :: str
         logical(LK)                                             :: strIsLowerAll
     end function
 #endif
@@ -2133,8 +2133,8 @@ module pm_strASCII
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isStrLowerAll_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)            , intent(in)                :: str
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)            , intent(in)                :: str
         logical(LK)                                             :: strIsLowerAll
     end function
 #endif
@@ -2144,8 +2144,8 @@ module pm_strASCII
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isStrLowerAll_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)            , intent(in)                :: str
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)            , intent(in)                :: str
         logical(LK)                                             :: strIsLowerAll
     end function
 #endif
@@ -2155,8 +2155,8 @@ module pm_strASCII
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isStrLowerAll_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)            , intent(in)                :: str
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)            , intent(in)                :: str
         logical(LK)                                             :: strIsLowerAll
     end function
 #endif
@@ -2166,8 +2166,8 @@ module pm_strASCII
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isStrLowerAll_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)            , intent(in)                :: str
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)            , intent(in)                :: str
         logical(LK)                                             :: strIsLowerAll
     end function
 #endif
@@ -2250,8 +2250,8 @@ module pm_strASCII
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isStrLowerAny_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)            , intent(in)                :: str
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)            , intent(in)                :: str
         logical(LK)                                             :: strIsLowerAny
     end function
 #endif
@@ -2261,8 +2261,8 @@ module pm_strASCII
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isStrLowerAny_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)            , intent(in)                :: str
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)            , intent(in)                :: str
         logical(LK)                                             :: strIsLowerAny
     end function
 #endif
@@ -2272,8 +2272,8 @@ module pm_strASCII
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isStrLowerAny_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)            , intent(in)                :: str
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)            , intent(in)                :: str
         logical(LK)                                             :: strIsLowerAny
     end function
 #endif
@@ -2283,8 +2283,8 @@ module pm_strASCII
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isStrLowerAny_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)            , intent(in)                :: str
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)            , intent(in)                :: str
         logical(LK)                                             :: strIsLowerAny
     end function
 #endif
@@ -2294,8 +2294,8 @@ module pm_strASCII
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isStrLowerAny_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)            , intent(in)                :: str
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)            , intent(in)                :: str
         logical(LK)                                             :: strIsLowerAny
     end function
 #endif
@@ -2366,8 +2366,8 @@ module pm_strASCII
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isStrLower_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)            , intent(in)                :: str
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)            , intent(in)                :: str
         logical(LK)                                             :: StrIsLower(len(str,IK))
     end function
 #endif
@@ -2377,8 +2377,8 @@ module pm_strASCII
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isStrLower_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)            , intent(in)                :: str
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)            , intent(in)                :: str
         logical(LK)                                             :: StrIsLower(len(str,IK))
     end function
 #endif
@@ -2388,8 +2388,8 @@ module pm_strASCII
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isStrLower_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)            , intent(in)                :: str
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)            , intent(in)                :: str
         logical(LK)                                             :: StrIsLower(len(str,IK))
     end function
 #endif
@@ -2399,8 +2399,8 @@ module pm_strASCII
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isStrLower_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)            , intent(in)                :: str
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)            , intent(in)                :: str
         logical(LK)                                             :: StrIsLower(len(str,IK))
     end function
 #endif
@@ -2410,8 +2410,8 @@ module pm_strASCII
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isStrLower_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)            , intent(in)                :: str
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)            , intent(in)                :: str
         logical(LK)                                             :: StrIsLower(len(str,IK))
     end function
 #endif
@@ -2484,8 +2484,8 @@ module pm_strASCII
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isCharAlphaNum_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(1,SKC)            , intent(in)                :: chr
+        use pm_kind, only: SKG => SK5
+        character(1,SKG)            , intent(in)                :: chr
         logical(LK)                                             :: charIsAlphaNum
     end function
 #endif
@@ -2495,8 +2495,8 @@ module pm_strASCII
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isCharAlphaNum_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(1,SKC)            , intent(in)                :: chr
+        use pm_kind, only: SKG => SK4
+        character(1,SKG)            , intent(in)                :: chr
         logical(LK)                                             :: charIsAlphaNum
     end function
 #endif
@@ -2506,8 +2506,8 @@ module pm_strASCII
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isCharAlphaNum_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(1,SKC)            , intent(in)                :: chr
+        use pm_kind, only: SKG => SK3
+        character(1,SKG)            , intent(in)                :: chr
         logical(LK)                                             :: charIsAlphaNum
     end function
 #endif
@@ -2517,8 +2517,8 @@ module pm_strASCII
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isCharAlphaNum_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(1,SKC)            , intent(in)                :: chr
+        use pm_kind, only: SKG => SK2
+        character(1,SKG)            , intent(in)                :: chr
         logical(LK)                                             :: charIsAlphaNum
     end function
 #endif
@@ -2528,8 +2528,8 @@ module pm_strASCII
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isCharAlphaNum_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(1,SKC)            , intent(in)                :: chr
+        use pm_kind, only: SKG => SK1
+        character(1,SKG)            , intent(in)                :: chr
         logical(LK)                                             :: charIsAlphaNum
     end function
 #endif
@@ -2613,8 +2613,8 @@ module pm_strASCII
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isStrAlphaNumAll_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)            , intent(in)                :: str
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)            , intent(in)                :: str
         logical(LK)                                             :: strIsAlphaNumAll
     end function
 #endif
@@ -2624,8 +2624,8 @@ module pm_strASCII
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isStrAlphaNumAll_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)            , intent(in)                :: str
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)            , intent(in)                :: str
         logical(LK)                                             :: strIsAlphaNumAll
     end function
 #endif
@@ -2635,8 +2635,8 @@ module pm_strASCII
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isStrAlphaNumAll_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)            , intent(in)                :: str
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)            , intent(in)                :: str
         logical(LK)                                             :: strIsAlphaNumAll
     end function
 #endif
@@ -2646,8 +2646,8 @@ module pm_strASCII
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isStrAlphaNumAll_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)            , intent(in)                :: str
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)            , intent(in)                :: str
         logical(LK)                                             :: strIsAlphaNumAll
     end function
 #endif
@@ -2657,8 +2657,8 @@ module pm_strASCII
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isStrAlphaNumAll_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)            , intent(in)                :: str
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)            , intent(in)                :: str
         logical(LK)                                             :: strIsAlphaNumAll
     end function
 #endif
@@ -2741,8 +2741,8 @@ module pm_strASCII
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isStrAlphaNumAny_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)            , intent(in)                :: str
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)            , intent(in)                :: str
         logical(LK)                                             :: strIsAlphaNumAny
     end function
 #endif
@@ -2752,8 +2752,8 @@ module pm_strASCII
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isStrAlphaNumAny_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)            , intent(in)                :: str
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)            , intent(in)                :: str
         logical(LK)                                             :: strIsAlphaNumAny
     end function
 #endif
@@ -2763,8 +2763,8 @@ module pm_strASCII
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isStrAlphaNumAny_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)            , intent(in)                :: str
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)            , intent(in)                :: str
         logical(LK)                                             :: strIsAlphaNumAny
     end function
 #endif
@@ -2774,8 +2774,8 @@ module pm_strASCII
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isStrAlphaNumAny_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)            , intent(in)                :: str
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)            , intent(in)                :: str
         logical(LK)                                             :: strIsAlphaNumAny
     end function
 #endif
@@ -2785,8 +2785,8 @@ module pm_strASCII
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isStrAlphaNumAny_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)            , intent(in)                :: str
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)            , intent(in)                :: str
         logical(LK)                                             :: strIsAlphaNumAny
     end function
 #endif
@@ -2857,8 +2857,8 @@ module pm_strASCII
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isStrAlphaNum_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)            , intent(in)                :: str
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)            , intent(in)                :: str
         logical(LK)                                             :: StrIsAlphaNum(len(str,IK))
     end function
 #endif
@@ -2868,8 +2868,8 @@ module pm_strASCII
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isStrAlphaNum_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)            , intent(in)                :: str
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)            , intent(in)                :: str
         logical(LK)                                             :: StrIsAlphaNum(len(str,IK))
     end function
 #endif
@@ -2879,8 +2879,8 @@ module pm_strASCII
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isStrAlphaNum_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)            , intent(in)                :: str
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)            , intent(in)                :: str
         logical(LK)                                             :: StrIsAlphaNum(len(str,IK))
     end function
 #endif
@@ -2890,8 +2890,8 @@ module pm_strASCII
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isStrAlphaNum_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)            , intent(in)                :: str
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)            , intent(in)                :: str
         logical(LK)                                             :: StrIsAlphaNum(len(str,IK))
     end function
 #endif
@@ -2901,8 +2901,8 @@ module pm_strASCII
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isStrAlphaNum_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)            , intent(in)                :: str
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)            , intent(in)                :: str
         logical(LK)                                             :: StrIsAlphaNum(len(str,IK))
     end function
 #endif
@@ -2975,8 +2975,8 @@ module pm_strASCII
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isCharAlpha_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(1,SKC)            , intent(in)                :: chr
+        use pm_kind, only: SKG => SK5
+        character(1,SKG)            , intent(in)                :: chr
         logical(LK)                                             :: charIsAlpha
     end function
 #endif
@@ -2986,8 +2986,8 @@ module pm_strASCII
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isCharAlpha_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(1,SKC)            , intent(in)                :: chr
+        use pm_kind, only: SKG => SK4
+        character(1,SKG)            , intent(in)                :: chr
         logical(LK)                                             :: charIsAlpha
     end function
 #endif
@@ -2997,8 +2997,8 @@ module pm_strASCII
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isCharAlpha_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(1,SKC)            , intent(in)                :: chr
+        use pm_kind, only: SKG => SK3
+        character(1,SKG)            , intent(in)                :: chr
         logical(LK)                                             :: charIsAlpha
     end function
 #endif
@@ -3008,8 +3008,8 @@ module pm_strASCII
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isCharAlpha_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(1,SKC)            , intent(in)                :: chr
+        use pm_kind, only: SKG => SK2
+        character(1,SKG)            , intent(in)                :: chr
         logical(LK)                                             :: charIsAlpha
     end function
 #endif
@@ -3019,8 +3019,8 @@ module pm_strASCII
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isCharAlpha_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(1,SKC)            , intent(in)                :: chr
+        use pm_kind, only: SKG => SK1
+        character(1,SKG)            , intent(in)                :: chr
         logical(LK)                                             :: charIsAlpha
     end function
 #endif
@@ -3104,8 +3104,8 @@ module pm_strASCII
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isStrAlphaAll_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)            , intent(in)                :: str
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)            , intent(in)                :: str
         logical(LK)                                             :: strIsAlphaAll
     end function
 #endif
@@ -3115,8 +3115,8 @@ module pm_strASCII
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isStrAlphaAll_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)            , intent(in)                :: str
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)            , intent(in)                :: str
         logical(LK)                                             :: strIsAlphaAll
     end function
 #endif
@@ -3126,8 +3126,8 @@ module pm_strASCII
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isStrAlphaAll_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)            , intent(in)                :: str
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)            , intent(in)                :: str
         logical(LK)                                             :: strIsAlphaAll
     end function
 #endif
@@ -3137,8 +3137,8 @@ module pm_strASCII
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isStrAlphaAll_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)            , intent(in)                :: str
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)            , intent(in)                :: str
         logical(LK)                                             :: strIsAlphaAll
     end function
 #endif
@@ -3148,8 +3148,8 @@ module pm_strASCII
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isStrAlphaAll_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)            , intent(in)                :: str
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)            , intent(in)                :: str
         logical(LK)                                             :: strIsAlphaAll
     end function
 #endif
@@ -3232,8 +3232,8 @@ module pm_strASCII
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isStrAlphaAny_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)            , intent(in)                :: str
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)            , intent(in)                :: str
         logical(LK)                                             :: strIsAlphaAny
     end function
 #endif
@@ -3243,8 +3243,8 @@ module pm_strASCII
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isStrAlphaAny_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)            , intent(in)                :: str
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)            , intent(in)                :: str
         logical(LK)                                             :: strIsAlphaAny
     end function
 #endif
@@ -3254,8 +3254,8 @@ module pm_strASCII
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isStrAlphaAny_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)            , intent(in)                :: str
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)            , intent(in)                :: str
         logical(LK)                                             :: strIsAlphaAny
     end function
 #endif
@@ -3265,8 +3265,8 @@ module pm_strASCII
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isStrAlphaAny_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)            , intent(in)                :: str
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)            , intent(in)                :: str
         logical(LK)                                             :: strIsAlphaAny
     end function
 #endif
@@ -3276,8 +3276,8 @@ module pm_strASCII
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isStrAlphaAny_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)            , intent(in)                :: str
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)            , intent(in)                :: str
         logical(LK)                                             :: strIsAlphaAny
     end function
 #endif
@@ -3348,8 +3348,8 @@ module pm_strASCII
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isStrAlpha_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)            , intent(in)                :: str
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)            , intent(in)                :: str
         logical(LK)                                             :: StrIsAlpha(len(str,IK))
     end function
 #endif
@@ -3359,8 +3359,8 @@ module pm_strASCII
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isStrAlpha_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)            , intent(in)                :: str
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)            , intent(in)                :: str
         logical(LK)                                             :: StrIsAlpha(len(str,IK))
     end function
 #endif
@@ -3370,8 +3370,8 @@ module pm_strASCII
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isStrAlpha_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)            , intent(in)                :: str
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)            , intent(in)                :: str
         logical(LK)                                             :: StrIsAlpha(len(str,IK))
     end function
 #endif
@@ -3381,8 +3381,8 @@ module pm_strASCII
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isStrAlpha_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)            , intent(in)                :: str
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)            , intent(in)                :: str
         logical(LK)                                             :: StrIsAlpha(len(str,IK))
     end function
 #endif
@@ -3392,8 +3392,8 @@ module pm_strASCII
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isStrAlpha_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)            , intent(in)                :: str
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)            , intent(in)                :: str
         logical(LK)                                             :: StrIsAlpha(len(str,IK))
     end function
 #endif
@@ -3459,9 +3459,9 @@ module pm_strASCII
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCharUpper_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(1,SKC)            , intent(in)                :: chr
-        character(1,SKC)                                        :: chrUpper
+        use pm_kind, only: SKG => SK5
+        character(1,SKG)            , intent(in)                :: chr
+        character(1,SKG)                                        :: chrUpper
     end function
 #endif
 
@@ -3470,9 +3470,9 @@ module pm_strASCII
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCharUpper_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(1,SKC)            , intent(in)                :: chr
-        character(1,SKC)                                        :: chrUpper
+        use pm_kind, only: SKG => SK4
+        character(1,SKG)            , intent(in)                :: chr
+        character(1,SKG)                                        :: chrUpper
     end function
 #endif
 
@@ -3481,9 +3481,9 @@ module pm_strASCII
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCharUpper_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(1,SKC)            , intent(in)                :: chr
-        character(1,SKC)                                        :: chrUpper
+        use pm_kind, only: SKG => SK3
+        character(1,SKG)            , intent(in)                :: chr
+        character(1,SKG)                                        :: chrUpper
     end function
 #endif
 
@@ -3492,9 +3492,9 @@ module pm_strASCII
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCharUpper_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(1,SKC)            , intent(in)                :: chr
-        character(1,SKC)                                        :: chrUpper
+        use pm_kind, only: SKG => SK2
+        character(1,SKG)            , intent(in)                :: chr
+        character(1,SKG)                                        :: chrUpper
     end function
 #endif
 
@@ -3503,9 +3503,9 @@ module pm_strASCII
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCharUpper_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(1,SKC)            , intent(in)                :: chr
-        character(1,SKC)                                        :: chrUpper
+        use pm_kind, only: SKG => SK1
+        character(1,SKG)            , intent(in)                :: chr
+        character(1,SKG)                                        :: chrUpper
     end function
 #endif
 
@@ -3566,8 +3566,8 @@ module pm_strASCII
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCharUpper_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(1,SKC)            , intent(inout)             :: chr
+        use pm_kind, only: SKG => SK5
+        character(1,SKG)            , intent(inout)             :: chr
     end subroutine
 #endif
 
@@ -3576,8 +3576,8 @@ module pm_strASCII
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCharUpper_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(1,SKC)            , intent(inout)             :: chr
+        use pm_kind, only: SKG => SK4
+        character(1,SKG)            , intent(inout)             :: chr
     end subroutine
 #endif
 
@@ -3586,8 +3586,8 @@ module pm_strASCII
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCharUpper_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(1,SKC)            , intent(inout)             :: chr
+        use pm_kind, only: SKG => SK3
+        character(1,SKG)            , intent(inout)             :: chr
     end subroutine
 #endif
 
@@ -3596,8 +3596,8 @@ module pm_strASCII
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCharUpper_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(1,SKC)            , intent(inout)             :: chr
+        use pm_kind, only: SKG => SK2
+        character(1,SKG)            , intent(inout)             :: chr
     end subroutine
 #endif
 
@@ -3606,8 +3606,8 @@ module pm_strASCII
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCharUpper_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(1,SKC)            , intent(inout)             :: chr
+        use pm_kind, only: SKG => SK1
+        character(1,SKG)            , intent(inout)             :: chr
     end subroutine
 #endif
 
@@ -3672,9 +3672,9 @@ module pm_strASCII
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCharLower_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(1,SKC)            , intent(in)                :: chr
-        character(1,SKC)                                        :: chrLower
+        use pm_kind, only: SKG => SK5
+        character(1,SKG)            , intent(in)                :: chr
+        character(1,SKG)                                        :: chrLower
     end function
 #endif
 
@@ -3683,9 +3683,9 @@ module pm_strASCII
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCharLower_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(1,SKC)            , intent(in)                :: chr
-        character(1,SKC)                                        :: chrLower
+        use pm_kind, only: SKG => SK4
+        character(1,SKG)            , intent(in)                :: chr
+        character(1,SKG)                                        :: chrLower
     end function
 #endif
 
@@ -3694,9 +3694,9 @@ module pm_strASCII
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCharLower_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(1,SKC)            , intent(in)                :: chr
-        character(1,SKC)                                        :: chrLower
+        use pm_kind, only: SKG => SK3
+        character(1,SKG)            , intent(in)                :: chr
+        character(1,SKG)                                        :: chrLower
     end function
 #endif
 
@@ -3705,9 +3705,9 @@ module pm_strASCII
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCharLower_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(1,SKC)            , intent(in)                :: chr
-        character(1,SKC)                                        :: chrLower
+        use pm_kind, only: SKG => SK2
+        character(1,SKG)            , intent(in)                :: chr
+        character(1,SKG)                                        :: chrLower
     end function
 #endif
 
@@ -3716,9 +3716,9 @@ module pm_strASCII
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCharLower_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(1,SKC)            , intent(in)                :: chr
-        character(1,SKC)                                        :: chrLower
+        use pm_kind, only: SKG => SK1
+        character(1,SKG)            , intent(in)                :: chr
+        character(1,SKG)                                        :: chrLower
     end function
 #endif
 
@@ -3779,8 +3779,8 @@ module pm_strASCII
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCharLower_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(1,SKC)            , intent(inout)             :: chr
+        use pm_kind, only: SKG => SK5
+        character(1,SKG)            , intent(inout)             :: chr
     end subroutine
 #endif
 
@@ -3789,8 +3789,8 @@ module pm_strASCII
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCharLower_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(1,SKC)            , intent(inout)             :: chr
+        use pm_kind, only: SKG => SK4
+        character(1,SKG)            , intent(inout)             :: chr
     end subroutine
 #endif
 
@@ -3799,8 +3799,8 @@ module pm_strASCII
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCharLower_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(1,SKC)            , intent(inout)             :: chr
+        use pm_kind, only: SKG => SK3
+        character(1,SKG)            , intent(inout)             :: chr
     end subroutine
 #endif
 
@@ -3809,8 +3809,8 @@ module pm_strASCII
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCharLower_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(1,SKC)            , intent(inout)             :: chr
+        use pm_kind, only: SKG => SK2
+        character(1,SKG)            , intent(inout)             :: chr
     end subroutine
 #endif
 
@@ -3819,8 +3819,8 @@ module pm_strASCII
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCharLower_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(1,SKC)            , intent(inout)             :: chr
+        use pm_kind, only: SKG => SK1
+        character(1,SKG)            , intent(inout)             :: chr
     end subroutine
 #endif
 
@@ -3885,9 +3885,9 @@ module pm_strASCII
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getStrUpper_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)            , intent(in)                :: str
-        character(len(str,IK),SKC)                              :: strUpper
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)            , intent(in)                :: str
+        character(len(str,IK),SKG)                              :: strUpper
     end function
 #endif
 
@@ -3896,9 +3896,9 @@ module pm_strASCII
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getStrUpper_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)            , intent(in)                :: str
-        character(len(str,IK),SKC)                              :: strUpper
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)            , intent(in)                :: str
+        character(len(str,IK),SKG)                              :: strUpper
     end function
 #endif
 
@@ -3907,9 +3907,9 @@ module pm_strASCII
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getStrUpper_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)            , intent(in)                :: str
-        character(len(str,IK),SKC)                              :: strUpper
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)            , intent(in)                :: str
+        character(len(str,IK),SKG)                              :: strUpper
     end function
 #endif
 
@@ -3918,9 +3918,9 @@ module pm_strASCII
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getStrUpper_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)            , intent(in)                :: str
-        character(len(str,IK),SKC)                              :: strUpper
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)            , intent(in)                :: str
+        character(len(str,IK),SKG)                              :: strUpper
     end function
 #endif
 
@@ -3929,9 +3929,9 @@ module pm_strASCII
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getStrUpper_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)            , intent(in)                :: str
-        character(len(str,IK),SKC)                              :: strUpper
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)            , intent(in)                :: str
+        character(len(str,IK),SKG)                              :: strUpper
     end function
 #endif
 
@@ -3992,8 +3992,8 @@ module pm_strASCII
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setStrUpper_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)            , intent(inout)             :: str
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)            , intent(inout)             :: str
     end subroutine
 #endif
 
@@ -4002,8 +4002,8 @@ module pm_strASCII
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setStrUpper_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)            , intent(inout)             :: str
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)            , intent(inout)             :: str
     end subroutine
 #endif
 
@@ -4012,8 +4012,8 @@ module pm_strASCII
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setStrUpper_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)            , intent(inout)             :: str
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)            , intent(inout)             :: str
     end subroutine
 #endif
 
@@ -4022,8 +4022,8 @@ module pm_strASCII
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setStrUpper_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)            , intent(inout)             :: str
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)            , intent(inout)             :: str
     end subroutine
 #endif
 
@@ -4032,8 +4032,8 @@ module pm_strASCII
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setStrUpper_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)            , intent(inout)             :: str
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)            , intent(inout)             :: str
     end subroutine
 #endif
 
@@ -4098,9 +4098,9 @@ module pm_strASCII
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getStrLower_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)            , intent(in)                :: str
-        character(len(str,IK),SKC)                              :: strLower
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)            , intent(in)                :: str
+        character(len(str,IK),SKG)                              :: strLower
     end function
 #endif
 
@@ -4109,9 +4109,9 @@ module pm_strASCII
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getStrLower_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)            , intent(in)                :: str
-        character(len(str,IK),SKC)                              :: strLower
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)            , intent(in)                :: str
+        character(len(str,IK),SKG)                              :: strLower
     end function
 #endif
 
@@ -4120,9 +4120,9 @@ module pm_strASCII
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getStrLower_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)            , intent(in)                :: str
-        character(len(str,IK),SKC)                              :: strLower
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)            , intent(in)                :: str
+        character(len(str,IK),SKG)                              :: strLower
     end function
 #endif
 
@@ -4131,9 +4131,9 @@ module pm_strASCII
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getStrLower_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)            , intent(in)                :: str
-        character(len(str,IK),SKC)                              :: strLower
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)            , intent(in)                :: str
+        character(len(str,IK),SKG)                              :: strLower
     end function
 #endif
 
@@ -4142,9 +4142,9 @@ module pm_strASCII
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getStrLower_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)            , intent(in)                :: str
-        character(len(str,IK),SKC)                              :: strLower
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)            , intent(in)                :: str
+        character(len(str,IK),SKG)                              :: strLower
     end function
 #endif
 
@@ -4205,8 +4205,8 @@ module pm_strASCII
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setStrLower_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)            , intent(inout)             :: str
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)            , intent(inout)             :: str
     end subroutine
 #endif
 
@@ -4215,8 +4215,8 @@ module pm_strASCII
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setStrLower_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)            , intent(inout)             :: str
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)            , intent(inout)             :: str
     end subroutine
 #endif
 
@@ -4225,8 +4225,8 @@ module pm_strASCII
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setStrLower_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)            , intent(inout)             :: str
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)            , intent(inout)             :: str
     end subroutine
 #endif
 
@@ -4235,8 +4235,8 @@ module pm_strASCII
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setStrLower_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)            , intent(inout)             :: str
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)            , intent(inout)             :: str
     end subroutine
 #endif
 
@@ -4245,8 +4245,8 @@ module pm_strASCII
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setStrLower_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)            , intent(inout)             :: str
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)            , intent(inout)             :: str
     end subroutine
 #endif
 
@@ -4302,7 +4302,7 @@ module pm_strASCII
     !>
     !>  \todo
     !>  \pmed This generic interface can be extended to include an optional argument `delim` of type
-    !>  `character(1,SKC)` that contains the user-specified quotation mark (other than double-quote).<br>
+    !>  `character(1,SKG)` that contains the user-specified quotation mark (other than double-quote).<br>
     !>
     !>  \final
     !>
@@ -4317,9 +4317,9 @@ module pm_strASCII
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getStrQuoted_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)            , intent(in)                :: str
-        character(:,SKC)            , allocatable               :: strQuoted
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)            , intent(in)                :: str
+        character(:,SKG)            , allocatable               :: strQuoted
     end function
 #endif
 
@@ -4328,9 +4328,9 @@ module pm_strASCII
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getStrQuoted_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)            , intent(in)                :: str
-        character(:,SKC)            , allocatable               :: strQuoted
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)            , intent(in)                :: str
+        character(:,SKG)            , allocatable               :: strQuoted
     end function
 #endif
 
@@ -4339,9 +4339,9 @@ module pm_strASCII
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getStrQuoted_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)            , intent(in)                :: str
-        character(:,SKC)            , allocatable               :: strQuoted
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)            , intent(in)                :: str
+        character(:,SKG)            , allocatable               :: strQuoted
     end function
 #endif
 
@@ -4350,9 +4350,9 @@ module pm_strASCII
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getStrQuoted_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)            , intent(in)                :: str
-        character(:,SKC)            , allocatable               :: strQuoted
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)            , intent(in)                :: str
+        character(:,SKG)            , allocatable               :: strQuoted
     end function
 #endif
 
@@ -4361,9 +4361,9 @@ module pm_strASCII
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getStrQuoted_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)            , intent(in)                :: str
-        character(:,SKC)            , allocatable               :: strQuoted
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)            , intent(in)                :: str
+        character(:,SKG)            , allocatable               :: strQuoted
     end function
 #endif
 
@@ -4416,7 +4416,7 @@ module pm_strASCII
     !>
     !>  \todo
     !>  \pmed This generic interface can be extended to include an optional argument `delim` of type
-    !>  `character(1,SKC)` that contains the user-specified quotation mark (other than double-quote).<br>
+    !>  `character(1,SKG)` that contains the user-specified quotation mark (other than double-quote).<br>
     !>
     !>  \final
     !>
@@ -4431,9 +4431,9 @@ module pm_strASCII
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setStrQuoted_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(:,SKC)    , intent(out)   , allocatable       :: strQuoted
-        character(*,SKC)    , intent(in)                        :: str
+        use pm_kind, only: SKG => SK5
+        character(:,SKG)    , intent(out)   , allocatable       :: strQuoted
+        character(*,SKG)    , intent(in)                        :: str
     end subroutine
 #endif
 
@@ -4442,9 +4442,9 @@ module pm_strASCII
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setStrQuoted_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(:,SKC)    , intent(out)   , allocatable       :: strQuoted
-        character(*,SKC)    , intent(in)                        :: str
+        use pm_kind, only: SKG => SK4
+        character(:,SKG)    , intent(out)   , allocatable       :: strQuoted
+        character(*,SKG)    , intent(in)                        :: str
     end subroutine
 #endif
 
@@ -4453,9 +4453,9 @@ module pm_strASCII
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setStrQuoted_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(:,SKC)    , intent(out)   , allocatable       :: strQuoted
-        character(*,SKC)    , intent(in)                        :: str
+        use pm_kind, only: SKG => SK3
+        character(:,SKG)    , intent(out)   , allocatable       :: strQuoted
+        character(*,SKG)    , intent(in)                        :: str
     end subroutine
 #endif
 
@@ -4464,9 +4464,9 @@ module pm_strASCII
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setStrQuoted_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(:,SKC)    , intent(out)   , allocatable       :: strQuoted
-        character(*,SKC)    , intent(in)                        :: str
+        use pm_kind, only: SKG => SK2
+        character(:,SKG)    , intent(out)   , allocatable       :: strQuoted
+        character(*,SKG)    , intent(in)                        :: str
     end subroutine
 #endif
 
@@ -4475,9 +4475,9 @@ module pm_strASCII
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setStrQuoted_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(:,SKC)    , intent(out)   , allocatable       :: strQuoted
-        character(*,SKC)    , intent(in)                        :: str
+        use pm_kind, only: SKG => SK1
+        character(:,SKG)    , intent(out)   , allocatable       :: strQuoted
+        character(*,SKG)    , intent(in)                        :: str
     end subroutine
 #endif
 
@@ -4540,9 +4540,9 @@ module pm_strASCII
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getAsciiFromEscapedNew_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)            , intent(in)                :: str
-        character(:,SKC)            , allocatable               :: ascii
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)            , intent(in)                :: str
+        character(:,SKG)            , allocatable               :: ascii
     end function
 #endif
 
@@ -4551,9 +4551,9 @@ module pm_strASCII
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getAsciiFromEscapedNew_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)            , intent(in)                :: str
-        character(:,SKC)            , allocatable               :: ascii
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)            , intent(in)                :: str
+        character(:,SKG)            , allocatable               :: ascii
     end function
 #endif
 
@@ -4562,9 +4562,9 @@ module pm_strASCII
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getAsciiFromEscapedNew_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)            , intent(in)                :: str
-        character(:,SKC)            , allocatable               :: ascii
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)            , intent(in)                :: str
+        character(:,SKG)            , allocatable               :: ascii
     end function
 #endif
 
@@ -4573,9 +4573,9 @@ module pm_strASCII
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getAsciiFromEscapedNew_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)            , intent(in)                :: str
-        character(:,SKC)            , allocatable               :: ascii
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)            , intent(in)                :: str
+        character(:,SKG)            , allocatable               :: ascii
     end function
 #endif
 
@@ -4584,9 +4584,9 @@ module pm_strASCII
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getAsciiFromEscapedNew_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)            , intent(in)                :: str
-        character(:,SKC)            , allocatable               :: ascii
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)            , intent(in)                :: str
+        character(:,SKG)            , allocatable               :: ascii
     end function
 #endif
 
@@ -4739,8 +4739,8 @@ module pm_strASCII
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setAsciiFromEscapedRep_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)            , intent(inout)             :: str
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)            , intent(inout)             :: str
         integer(IK)                 , intent(out)               :: endloc
     end subroutine
 #endif
@@ -4750,8 +4750,8 @@ module pm_strASCII
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setAsciiFromEscapedRep_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)            , intent(inout)             :: str
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)            , intent(inout)             :: str
         integer(IK)                 , intent(out)               :: endloc
     end subroutine
 #endif
@@ -4761,8 +4761,8 @@ module pm_strASCII
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setAsciiFromEscapedRep_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)            , intent(inout)             :: str
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)            , intent(inout)             :: str
         integer(IK)                 , intent(out)               :: endloc
     end subroutine
 #endif
@@ -4772,8 +4772,8 @@ module pm_strASCII
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setAsciiFromEscapedRep_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)            , intent(inout)             :: str
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)            , intent(inout)             :: str
         integer(IK)                 , intent(out)               :: endloc
     end subroutine
 #endif
@@ -4783,8 +4783,8 @@ module pm_strASCII
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setAsciiFromEscapedRep_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)            , intent(inout)             :: str
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)            , intent(inout)             :: str
         integer(IK)                 , intent(out)               :: endloc
     end subroutine
 #endif
@@ -4796,9 +4796,9 @@ module pm_strASCII
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setAsciiFromEscapedNew_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)            , intent(in)                :: str
-        character(*,SKC)            , intent(out)               :: ascii
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)            , intent(in)                :: str
+        character(*,SKG)            , intent(out)               :: ascii
         integer(IK)                 , intent(out)               :: endloc
     end subroutine
 #endif
@@ -4808,9 +4808,9 @@ module pm_strASCII
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setAsciiFromEscapedNew_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)            , intent(in)                :: str
-        character(*,SKC)            , intent(out)               :: ascii
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)            , intent(in)                :: str
+        character(*,SKG)            , intent(out)               :: ascii
         integer(IK)                 , intent(out)               :: endloc
     end subroutine
 #endif
@@ -4820,9 +4820,9 @@ module pm_strASCII
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setAsciiFromEscapedNew_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)            , intent(in)                :: str
-        character(*,SKC)            , intent(out)               :: ascii
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)            , intent(in)                :: str
+        character(*,SKG)            , intent(out)               :: ascii
         integer(IK)                 , intent(out)               :: endloc
     end subroutine
 #endif
@@ -4832,9 +4832,9 @@ module pm_strASCII
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setAsciiFromEscapedNew_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)            , intent(in)                :: str
-        character(*,SKC)            , intent(out)               :: ascii
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)            , intent(in)                :: str
+        character(*,SKG)            , intent(out)               :: ascii
         integer(IK)                 , intent(out)               :: endloc
     end subroutine
 #endif
@@ -4844,9 +4844,9 @@ module pm_strASCII
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setAsciiFromEscapedNew_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)            , intent(in)                :: str
-        character(*,SKC)            , intent(out)               :: ascii
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)            , intent(in)                :: str
+        character(*,SKG)            , intent(out)               :: ascii
         integer(IK)                 , intent(out)               :: endloc
     end subroutine
 #endif

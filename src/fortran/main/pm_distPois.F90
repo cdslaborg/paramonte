@@ -232,10 +232,10 @@ module pm_distPois
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPoisLogPMF_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         integer(IK) , intent(in)                    :: count
-        real(RKC)   , intent(in)                    :: lambda
-        real(RKC)                                   :: logPMF
+        real(RKG)   , intent(in)                    :: lambda
+        real(RKG)                                   :: logPMF
     end function
 #endif
 
@@ -244,10 +244,10 @@ module pm_distPois
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPoisLogPMF_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         integer(IK) , intent(in)                    :: count
-        real(RKC)   , intent(in)                    :: lambda
-        real(RKC)                                   :: logPMF
+        real(RKG)   , intent(in)                    :: lambda
+        real(RKG)                                   :: logPMF
     end function
 #endif
 
@@ -256,10 +256,10 @@ module pm_distPois
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPoisLogPMF_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         integer(IK) , intent(in)                    :: count
-        real(RKC)   , intent(in)                    :: lambda
-        real(RKC)                                   :: logPMF
+        real(RKG)   , intent(in)                    :: lambda
+        real(RKG)                                   :: logPMF
     end function
 #endif
 
@@ -268,10 +268,10 @@ module pm_distPois
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPoisLogPMF_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         integer(IK) , intent(in)                    :: count
-        real(RKC)   , intent(in)                    :: lambda
-        real(RKC)                                   :: logPMF
+        real(RKG)   , intent(in)                    :: lambda
+        real(RKG)                                   :: logPMF
     end function
 #endif
 
@@ -280,10 +280,10 @@ module pm_distPois
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPoisLogPMF_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         integer(IK) , intent(in)                    :: count
-        real(RKC)   , intent(in)                    :: lambda
-        real(RKC)                                   :: logPMF
+        real(RKG)   , intent(in)                    :: lambda
+        real(RKG)                                   :: logPMF
     end function
 #endif
 
@@ -364,9 +364,9 @@ module pm_distPois
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPoisLogPMFDef_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(in)                    :: lambda
-        real(RKC)   , intent(out)                   :: logPMF
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(in)                    :: lambda
+        real(RKG)   , intent(out)                   :: logPMF
         integer(IK) , intent(in)                    :: count
     end subroutine
 #endif
@@ -376,9 +376,9 @@ module pm_distPois
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPoisLogPMFDef_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(in)                    :: lambda
-        real(RKC)   , intent(out)                   :: logPMF
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(in)                    :: lambda
+        real(RKG)   , intent(out)                   :: logPMF
         integer(IK) , intent(in)                    :: count
     end subroutine
 #endif
@@ -388,9 +388,9 @@ module pm_distPois
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPoisLogPMFDef_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(in)                    :: lambda
-        real(RKC)   , intent(out)                   :: logPMF
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(in)                    :: lambda
+        real(RKG)   , intent(out)                   :: logPMF
         integer(IK) , intent(in)                    :: count
     end subroutine
 #endif
@@ -400,9 +400,9 @@ module pm_distPois
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPoisLogPMFDef_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(in)                    :: lambda
-        real(RKC)   , intent(out)                   :: logPMF
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(in)                    :: lambda
+        real(RKG)   , intent(out)                   :: logPMF
         integer(IK) , intent(in)                    :: count
     end subroutine
 #endif
@@ -412,9 +412,9 @@ module pm_distPois
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPoisLogPMFDef_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(in)                    :: lambda
-        real(RKC)   , intent(out)                   :: logPMF
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(in)                    :: lambda
+        real(RKG)   , intent(out)                   :: logPMF
         integer(IK) , intent(in)                    :: count
     end subroutine
 #endif
@@ -426,9 +426,9 @@ module pm_distPois
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPoisLogPMFLog_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(in)                    :: lambda, logLambda
-        real(RKC)   , intent(out)                   :: logPMF
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(in)                    :: lambda, logLambda
+        real(RKG)   , intent(out)                   :: logPMF
         integer(IK) , intent(in)                    :: count
     end subroutine
 #endif
@@ -438,9 +438,9 @@ module pm_distPois
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPoisLogPMFLog_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(in)                    :: lambda, logLambda
-        real(RKC)   , intent(out)                   :: logPMF
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(in)                    :: lambda, logLambda
+        real(RKG)   , intent(out)                   :: logPMF
         integer(IK) , intent(in)                    :: count
     end subroutine
 #endif
@@ -450,9 +450,9 @@ module pm_distPois
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPoisLogPMFLog_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(in)                    :: lambda, logLambda
-        real(RKC)   , intent(out)                   :: logPMF
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(in)                    :: lambda, logLambda
+        real(RKG)   , intent(out)                   :: logPMF
         integer(IK) , intent(in)                    :: count
     end subroutine
 #endif
@@ -462,9 +462,9 @@ module pm_distPois
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPoisLogPMFLog_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(in)                    :: lambda, logLambda
-        real(RKC)   , intent(out)                   :: logPMF
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(in)                    :: lambda, logLambda
+        real(RKG)   , intent(out)                   :: logPMF
         integer(IK) , intent(in)                    :: count
     end subroutine
 #endif
@@ -474,9 +474,9 @@ module pm_distPois
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPoisLogPMFLog_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(in)                    :: lambda, logLambda
-        real(RKC)   , intent(out)                   :: logPMF
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(in)                    :: lambda, logLambda
+        real(RKG)   , intent(out)                   :: logPMF
         integer(IK) , intent(in)                    :: count
     end subroutine
 #endif
@@ -551,10 +551,10 @@ module pm_distPois
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPoisCDF_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         integer(IK) , intent(in)                    :: count
-        real(RKC)   , intent(in)                    :: lambda
-        real(RKC)                                   :: cdf
+        real(RKG)   , intent(in)                    :: lambda
+        real(RKG)                                   :: cdf
     end function
 #endif
 
@@ -563,10 +563,10 @@ module pm_distPois
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPoisCDF_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         integer(IK) , intent(in)                    :: count
-        real(RKC)   , intent(in)                    :: lambda
-        real(RKC)                                   :: cdf
+        real(RKG)   , intent(in)                    :: lambda
+        real(RKG)                                   :: cdf
     end function
 #endif
 
@@ -575,10 +575,10 @@ module pm_distPois
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPoisCDF_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         integer(IK) , intent(in)                    :: count
-        real(RKC)   , intent(in)                    :: lambda
-        real(RKC)                                   :: cdf
+        real(RKG)   , intent(in)                    :: lambda
+        real(RKG)                                   :: cdf
     end function
 #endif
 
@@ -587,10 +587,10 @@ module pm_distPois
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPoisCDF_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         integer(IK) , intent(in)                    :: count
-        real(RKC)   , intent(in)                    :: lambda
-        real(RKC)                                   :: cdf
+        real(RKG)   , intent(in)                    :: lambda
+        real(RKG)                                   :: cdf
     end function
 #endif
 
@@ -599,10 +599,10 @@ module pm_distPois
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPoisCDF_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         integer(IK) , intent(in)                    :: count
-        real(RKC)   , intent(in)                    :: lambda
-        real(RKC)                                   :: cdf
+        real(RKG)   , intent(in)                    :: lambda
+        real(RKG)                                   :: cdf
     end function
 #endif
 
@@ -651,7 +651,7 @@ module pm_distPois
     !>  The condition `0 < lambda` must hold for the corresponding input arguments.<br>
     !>  The condition `1. <= countP1` must hold for the corresponding input arguments.<br>
     !>  The condition `logGammaCountP1 == log_gamma(countP1)` must hold for the corresponding input arguments.<br>
-    !>  The condition `mod(countP1, 1._RKC) == 0._RKC` must hold for the corresponding input arguments,
+    !>  The condition `mod(countP1, 1._RKG) == 0._RKG` must hold for the corresponding input arguments,
     !>  that is, the input argument `countP1` must be a whole number.<br>
     !>  \vericons
     !>
@@ -688,11 +688,11 @@ module pm_distPois
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPoisCDFLog_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(in)                    :: countP1, logGammaCountP1, lambda
-        real(RKC)   , intent(out)                   :: cdf
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(in)                    :: countP1, logGammaCountP1, lambda
+        real(RKG)   , intent(out)                   :: cdf
         integer(IK) , intent(out)                   :: info
-        real(RKC)   , intent(in)    , optional      :: tol
+        real(RKG)   , intent(in)    , optional      :: tol
     end subroutine
 #endif
 
@@ -701,11 +701,11 @@ module pm_distPois
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPoisCDFLog_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(in)                    :: countP1, logGammaCountP1, lambda
-        real(RKC)   , intent(out)                   :: cdf
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(in)                    :: countP1, logGammaCountP1, lambda
+        real(RKG)   , intent(out)                   :: cdf
         integer(IK) , intent(out)                   :: info
-        real(RKC)   , intent(in)    , optional      :: tol
+        real(RKG)   , intent(in)    , optional      :: tol
     end subroutine
 #endif
 
@@ -714,11 +714,11 @@ module pm_distPois
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPoisCDFLog_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(in)                    :: countP1, logGammaCountP1, lambda
-        real(RKC)   , intent(out)                   :: cdf
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(in)                    :: countP1, logGammaCountP1, lambda
+        real(RKG)   , intent(out)                   :: cdf
         integer(IK) , intent(out)                   :: info
-        real(RKC)   , intent(in)    , optional      :: tol
+        real(RKG)   , intent(in)    , optional      :: tol
     end subroutine
 #endif
 
@@ -727,11 +727,11 @@ module pm_distPois
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPoisCDFLog_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(in)                    :: countP1, logGammaCountP1, lambda
-        real(RKC)   , intent(out)                   :: cdf
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(in)                    :: countP1, logGammaCountP1, lambda
+        real(RKG)   , intent(out)                   :: cdf
         integer(IK) , intent(out)                   :: info
-        real(RKC)   , intent(in)    , optional      :: tol
+        real(RKG)   , intent(in)    , optional      :: tol
     end subroutine
 #endif
 
@@ -740,11 +740,11 @@ module pm_distPois
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPoisCDFLog_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(in)                    :: countP1, logGammaCountP1, lambda
-        real(RKC)   , intent(out)                   :: cdf
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(in)                    :: countP1, logGammaCountP1, lambda
+        real(RKG)   , intent(out)                   :: cdf
         integer(IK) , intent(out)                   :: info
-        real(RKC)   , intent(in)    , optional      :: tol
+        real(RKG)   , intent(in)    , optional      :: tol
     end subroutine
 #endif
 
@@ -838,9 +838,9 @@ module pm_distPois
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPoisRand_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         integer(IK)                                 :: rand
-        real(RKC)   , intent(in)                    :: lambda
+        real(RKG)   , intent(in)                    :: lambda
     end function
 #endif
 
@@ -849,9 +849,9 @@ module pm_distPois
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPoisRand_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         integer(IK)                                 :: rand
-        real(RKC)   , intent(in)                    :: lambda
+        real(RKG)   , intent(in)                    :: lambda
     end function
 #endif
 
@@ -860,9 +860,9 @@ module pm_distPois
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPoisRand_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         integer(IK)                                 :: rand
-        real(RKC)   , intent(in)                    :: lambda
+        real(RKG)   , intent(in)                    :: lambda
     end function
 #endif
 
@@ -871,9 +871,9 @@ module pm_distPois
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPoisRand_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         integer(IK)                                 :: rand
-        real(RKC)   , intent(in)                    :: lambda
+        real(RKG)   , intent(in)                    :: lambda
     end function
 #endif
 
@@ -882,9 +882,9 @@ module pm_distPois
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPoisRand_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         integer(IK)                                 :: rand
-        real(RKC)   , intent(in)                    :: lambda
+        real(RKG)   , intent(in)                    :: lambda
     end function
 #endif
 
@@ -1001,9 +1001,9 @@ module pm_distPois
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPoisRandExpRNGD_D0_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         integer(IK)             , intent(out)                   :: rand
-        real(RKC)               , intent(in)                    :: expNegLambda
+        real(RKG)               , intent(in)                    :: expNegLambda
     end subroutine
 #endif
 
@@ -1012,9 +1012,9 @@ module pm_distPois
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPoisRandExpRNGD_D0_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         integer(IK)             , intent(out)                   :: rand
-        real(RKC)               , intent(in)                    :: expNegLambda
+        real(RKG)               , intent(in)                    :: expNegLambda
     end subroutine
 #endif
 
@@ -1023,9 +1023,9 @@ module pm_distPois
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPoisRandExpRNGD_D0_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         integer(IK)             , intent(out)                   :: rand
-        real(RKC)               , intent(in)                    :: expNegLambda
+        real(RKG)               , intent(in)                    :: expNegLambda
     end subroutine
 #endif
 
@@ -1034,9 +1034,9 @@ module pm_distPois
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPoisRandExpRNGD_D0_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         integer(IK)             , intent(out)                   :: rand
-        real(RKC)               , intent(in)                    :: expNegLambda
+        real(RKG)               , intent(in)                    :: expNegLambda
     end subroutine
 #endif
 
@@ -1045,9 +1045,9 @@ module pm_distPois
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPoisRandExpRNGD_D0_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         integer(IK)             , intent(out)                   :: rand
-        real(RKC)               , intent(in)                    :: expNegLambda
+        real(RKG)               , intent(in)                    :: expNegLambda
     end subroutine
 #endif
 
@@ -1058,10 +1058,10 @@ module pm_distPois
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPoisRandExpRNGF_D0_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         type(rngf_type)         , intent(in)                    :: rng
         integer(IK)             , intent(out)                   :: rand
-        real(RKC)               , intent(in)                    :: expNegLambda
+        real(RKG)               , intent(in)                    :: expNegLambda
     end subroutine
 #endif
 
@@ -1070,10 +1070,10 @@ module pm_distPois
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPoisRandExpRNGF_D0_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         type(rngf_type)         , intent(in)                    :: rng
         integer(IK)             , intent(out)                   :: rand
-        real(RKC)               , intent(in)                    :: expNegLambda
+        real(RKG)               , intent(in)                    :: expNegLambda
     end subroutine
 #endif
 
@@ -1082,10 +1082,10 @@ module pm_distPois
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPoisRandExpRNGF_D0_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         type(rngf_type)         , intent(in)                    :: rng
         integer(IK)             , intent(out)                   :: rand
-        real(RKC)               , intent(in)                    :: expNegLambda
+        real(RKG)               , intent(in)                    :: expNegLambda
     end subroutine
 #endif
 
@@ -1094,10 +1094,10 @@ module pm_distPois
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPoisRandExpRNGF_D0_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         type(rngf_type)         , intent(in)                    :: rng
         integer(IK)             , intent(out)                   :: rand
-        real(RKC)               , intent(in)                    :: expNegLambda
+        real(RKG)               , intent(in)                    :: expNegLambda
     end subroutine
 #endif
 
@@ -1106,10 +1106,10 @@ module pm_distPois
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPoisRandExpRNGF_D0_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         type(rngf_type)         , intent(in)                    :: rng
         integer(IK)             , intent(out)                   :: rand
-        real(RKC)               , intent(in)                    :: expNegLambda
+        real(RKG)               , intent(in)                    :: expNegLambda
     end subroutine
 #endif
 
@@ -1120,10 +1120,10 @@ module pm_distPois
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPoisRandExpRNGX_D0_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         type(xoshiro256ssw_type), intent(inout)                 :: rng
         integer(IK)             , intent(out)                   :: rand
-        real(RKC)               , intent(in)                    :: expNegLambda
+        real(RKG)               , intent(in)                    :: expNegLambda
     end subroutine
 #endif
 
@@ -1132,10 +1132,10 @@ module pm_distPois
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPoisRandExpRNGX_D0_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         type(xoshiro256ssw_type), intent(inout)                 :: rng
         integer(IK)             , intent(out)                   :: rand
-        real(RKC)               , intent(in)                    :: expNegLambda
+        real(RKG)               , intent(in)                    :: expNegLambda
     end subroutine
 #endif
 
@@ -1144,10 +1144,10 @@ module pm_distPois
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPoisRandExpRNGX_D0_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         type(xoshiro256ssw_type), intent(inout)                 :: rng
         integer(IK)             , intent(out)                   :: rand
-        real(RKC)               , intent(in)                    :: expNegLambda
+        real(RKG)               , intent(in)                    :: expNegLambda
     end subroutine
 #endif
 
@@ -1156,10 +1156,10 @@ module pm_distPois
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPoisRandExpRNGX_D0_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         type(xoshiro256ssw_type), intent(inout)                 :: rng
         integer(IK)             , intent(out)                   :: rand
-        real(RKC)               , intent(in)                    :: expNegLambda
+        real(RKG)               , intent(in)                    :: expNegLambda
     end subroutine
 #endif
 
@@ -1168,10 +1168,10 @@ module pm_distPois
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPoisRandExpRNGX_D0_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         type(xoshiro256ssw_type), intent(inout)                 :: rng
         integer(IK)             , intent(out)                   :: rand
-        real(RKC)               , intent(in)                    :: expNegLambda
+        real(RKG)               , intent(in)                    :: expNegLambda
     end subroutine
 #endif
 
@@ -1188,9 +1188,9 @@ module pm_distPois
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPoisRandExpRNGD_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         integer(IK)             , intent(out)                   :: rand(:)
-        real(RKC)               , intent(in)                    :: expNegLambda
+        real(RKG)               , intent(in)                    :: expNegLambda
     end subroutine
 #endif
 
@@ -1199,9 +1199,9 @@ module pm_distPois
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPoisRandExpRNGD_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         integer(IK)             , intent(out)                   :: rand(:)
-        real(RKC)               , intent(in)                    :: expNegLambda
+        real(RKG)               , intent(in)                    :: expNegLambda
     end subroutine
 #endif
 
@@ -1210,9 +1210,9 @@ module pm_distPois
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPoisRandExpRNGD_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         integer(IK)             , intent(out)                   :: rand(:)
-        real(RKC)               , intent(in)                    :: expNegLambda
+        real(RKG)               , intent(in)                    :: expNegLambda
     end subroutine
 #endif
 
@@ -1221,9 +1221,9 @@ module pm_distPois
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPoisRandExpRNGD_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         integer(IK)             , intent(out)                   :: rand(:)
-        real(RKC)               , intent(in)                    :: expNegLambda
+        real(RKG)               , intent(in)                    :: expNegLambda
     end subroutine
 #endif
 
@@ -1232,9 +1232,9 @@ module pm_distPois
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPoisRandExpRNGD_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         integer(IK)             , intent(out)                   :: rand(:)
-        real(RKC)               , intent(in)                    :: expNegLambda
+        real(RKG)               , intent(in)                    :: expNegLambda
     end subroutine
 #endif
 
@@ -1245,10 +1245,10 @@ module pm_distPois
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPoisRandExpRNGF_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         type(rngf_type)         , intent(in)                    :: rng
         integer(IK)             , intent(out)                   :: rand(:)
-        real(RKC)               , intent(in)                    :: expNegLambda
+        real(RKG)               , intent(in)                    :: expNegLambda
     end subroutine
 #endif
 
@@ -1257,10 +1257,10 @@ module pm_distPois
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPoisRandExpRNGF_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         type(rngf_type)         , intent(in)                    :: rng
         integer(IK)             , intent(out)                   :: rand(:)
-        real(RKC)               , intent(in)                    :: expNegLambda
+        real(RKG)               , intent(in)                    :: expNegLambda
     end subroutine
 #endif
 
@@ -1269,10 +1269,10 @@ module pm_distPois
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPoisRandExpRNGF_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         type(rngf_type)         , intent(in)                    :: rng
         integer(IK)             , intent(out)                   :: rand(:)
-        real(RKC)               , intent(in)                    :: expNegLambda
+        real(RKG)               , intent(in)                    :: expNegLambda
     end subroutine
 #endif
 
@@ -1281,10 +1281,10 @@ module pm_distPois
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPoisRandExpRNGF_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         type(rngf_type)         , intent(in)                    :: rng
         integer(IK)             , intent(out)                   :: rand(:)
-        real(RKC)               , intent(in)                    :: expNegLambda
+        real(RKG)               , intent(in)                    :: expNegLambda
     end subroutine
 #endif
 
@@ -1293,10 +1293,10 @@ module pm_distPois
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPoisRandExpRNGF_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         type(rngf_type)         , intent(in)                    :: rng
         integer(IK)             , intent(out)                   :: rand(:)
-        real(RKC)               , intent(in)                    :: expNegLambda
+        real(RKG)               , intent(in)                    :: expNegLambda
     end subroutine
 #endif
 
@@ -1307,10 +1307,10 @@ module pm_distPois
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPoisRandExpRNGX_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         type(xoshiro256ssw_type), intent(inout)                 :: rng
         integer(IK)             , intent(out)                   :: rand(:)
-        real(RKC)               , intent(in)                    :: expNegLambda
+        real(RKG)               , intent(in)                    :: expNegLambda
     end subroutine
 #endif
 
@@ -1319,10 +1319,10 @@ module pm_distPois
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPoisRandExpRNGX_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         type(xoshiro256ssw_type), intent(inout)                 :: rng
         integer(IK)             , intent(out)                   :: rand(:)
-        real(RKC)               , intent(in)                    :: expNegLambda
+        real(RKG)               , intent(in)                    :: expNegLambda
     end subroutine
 #endif
 
@@ -1331,10 +1331,10 @@ module pm_distPois
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPoisRandExpRNGX_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         type(xoshiro256ssw_type), intent(inout)                 :: rng
         integer(IK)             , intent(out)                   :: rand(:)
-        real(RKC)               , intent(in)                    :: expNegLambda
+        real(RKG)               , intent(in)                    :: expNegLambda
     end subroutine
 #endif
 
@@ -1343,10 +1343,10 @@ module pm_distPois
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPoisRandExpRNGX_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         type(xoshiro256ssw_type), intent(inout)                 :: rng
         integer(IK)             , intent(out)                   :: rand(:)
-        real(RKC)               , intent(in)                    :: expNegLambda
+        real(RKG)               , intent(in)                    :: expNegLambda
     end subroutine
 #endif
 
@@ -1355,10 +1355,10 @@ module pm_distPois
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPoisRandExpRNGX_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         type(xoshiro256ssw_type), intent(inout)                 :: rng
         integer(IK)             , intent(out)                   :: rand(:)
-        real(RKC)               , intent(in)                    :: expNegLambda
+        real(RKG)               , intent(in)                    :: expNegLambda
     end subroutine
 #endif
 
@@ -1379,9 +1379,9 @@ module pm_distPois
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPoisRandRejRNGD_D0_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         integer(IK)             , intent(out)                   :: rand
-        real(RKC)               , intent(in)                    :: lambda, logLambda, sqrtLambda
+        real(RKG)               , intent(in)                    :: lambda, logLambda, sqrtLambda
     end subroutine
 #endif
 
@@ -1390,9 +1390,9 @@ module pm_distPois
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPoisRandRejRNGD_D0_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         integer(IK)             , intent(out)                   :: rand
-        real(RKC)               , intent(in)                    :: lambda, logLambda, sqrtLambda
+        real(RKG)               , intent(in)                    :: lambda, logLambda, sqrtLambda
     end subroutine
 #endif
 
@@ -1401,9 +1401,9 @@ module pm_distPois
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPoisRandRejRNGD_D0_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         integer(IK)             , intent(out)                   :: rand
-        real(RKC)               , intent(in)                    :: lambda, logLambda, sqrtLambda
+        real(RKG)               , intent(in)                    :: lambda, logLambda, sqrtLambda
     end subroutine
 #endif
 
@@ -1412,9 +1412,9 @@ module pm_distPois
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPoisRandRejRNGD_D0_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         integer(IK)             , intent(out)                   :: rand
-        real(RKC)               , intent(in)                    :: lambda, logLambda, sqrtLambda
+        real(RKG)               , intent(in)                    :: lambda, logLambda, sqrtLambda
     end subroutine
 #endif
 
@@ -1423,9 +1423,9 @@ module pm_distPois
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPoisRandRejRNGD_D0_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         integer(IK)             , intent(out)                   :: rand
-        real(RKC)               , intent(in)                    :: lambda, logLambda, sqrtLambda
+        real(RKG)               , intent(in)                    :: lambda, logLambda, sqrtLambda
     end subroutine
 #endif
 
@@ -1436,10 +1436,10 @@ module pm_distPois
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPoisRandRejRNGF_D0_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         type(rngf_type)         , intent(in)                    :: rng
         integer(IK)             , intent(out)                   :: rand
-        real(RKC)               , intent(in)                    :: lambda, logLambda, sqrtLambda
+        real(RKG)               , intent(in)                    :: lambda, logLambda, sqrtLambda
     end subroutine
 #endif
 
@@ -1448,10 +1448,10 @@ module pm_distPois
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPoisRandRejRNGF_D0_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         type(rngf_type)         , intent(in)                    :: rng
         integer(IK)             , intent(out)                   :: rand
-        real(RKC)               , intent(in)                    :: lambda, logLambda, sqrtLambda
+        real(RKG)               , intent(in)                    :: lambda, logLambda, sqrtLambda
     end subroutine
 #endif
 
@@ -1460,10 +1460,10 @@ module pm_distPois
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPoisRandRejRNGF_D0_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         type(rngf_type)         , intent(in)                    :: rng
         integer(IK)             , intent(out)                   :: rand
-        real(RKC)               , intent(in)                    :: lambda, logLambda, sqrtLambda
+        real(RKG)               , intent(in)                    :: lambda, logLambda, sqrtLambda
     end subroutine
 #endif
 
@@ -1472,10 +1472,10 @@ module pm_distPois
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPoisRandRejRNGF_D0_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         type(rngf_type)         , intent(in)                    :: rng
         integer(IK)             , intent(out)                   :: rand
-        real(RKC)               , intent(in)                    :: lambda, logLambda, sqrtLambda
+        real(RKG)               , intent(in)                    :: lambda, logLambda, sqrtLambda
     end subroutine
 #endif
 
@@ -1484,10 +1484,10 @@ module pm_distPois
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPoisRandRejRNGF_D0_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         type(rngf_type)         , intent(in)                    :: rng
         integer(IK)             , intent(out)                   :: rand
-        real(RKC)               , intent(in)                    :: lambda, logLambda, sqrtLambda
+        real(RKG)               , intent(in)                    :: lambda, logLambda, sqrtLambda
     end subroutine
 #endif
 
@@ -1498,10 +1498,10 @@ module pm_distPois
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPoisRandRejRNGX_D0_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         type(xoshiro256ssw_type), intent(inout)                 :: rng
         integer(IK)             , intent(out)                   :: rand
-        real(RKC)               , intent(in)                    :: lambda, logLambda, sqrtLambda
+        real(RKG)               , intent(in)                    :: lambda, logLambda, sqrtLambda
     end subroutine
 #endif
 
@@ -1510,10 +1510,10 @@ module pm_distPois
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPoisRandRejRNGX_D0_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         type(xoshiro256ssw_type), intent(inout)                 :: rng
         integer(IK)             , intent(out)                   :: rand
-        real(RKC)               , intent(in)                    :: lambda, logLambda, sqrtLambda
+        real(RKG)               , intent(in)                    :: lambda, logLambda, sqrtLambda
     end subroutine
 #endif
 
@@ -1522,10 +1522,10 @@ module pm_distPois
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPoisRandRejRNGX_D0_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         type(xoshiro256ssw_type), intent(inout)                 :: rng
         integer(IK)             , intent(out)                   :: rand
-        real(RKC)               , intent(in)                    :: lambda, logLambda, sqrtLambda
+        real(RKG)               , intent(in)                    :: lambda, logLambda, sqrtLambda
     end subroutine
 #endif
 
@@ -1534,10 +1534,10 @@ module pm_distPois
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPoisRandRejRNGX_D0_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         type(xoshiro256ssw_type), intent(inout)                 :: rng
         integer(IK)             , intent(out)                   :: rand
-        real(RKC)               , intent(in)                    :: lambda, logLambda, sqrtLambda
+        real(RKG)               , intent(in)                    :: lambda, logLambda, sqrtLambda
     end subroutine
 #endif
 
@@ -1546,10 +1546,10 @@ module pm_distPois
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPoisRandRejRNGX_D0_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         type(xoshiro256ssw_type), intent(inout)                 :: rng
         integer(IK)             , intent(out)                   :: rand
-        real(RKC)               , intent(in)                    :: lambda, logLambda, sqrtLambda
+        real(RKG)               , intent(in)                    :: lambda, logLambda, sqrtLambda
     end subroutine
 #endif
 
@@ -1566,9 +1566,9 @@ module pm_distPois
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPoisRandRejRNGD_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         integer(IK)             , intent(out)                   :: rand(:)
-        real(RKC)               , intent(in)                    :: lambda, logLambda, sqrtLambda
+        real(RKG)               , intent(in)                    :: lambda, logLambda, sqrtLambda
     end subroutine
 #endif
 
@@ -1577,9 +1577,9 @@ module pm_distPois
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPoisRandRejRNGD_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         integer(IK)             , intent(out)                   :: rand(:)
-        real(RKC)               , intent(in)                    :: lambda, logLambda, sqrtLambda
+        real(RKG)               , intent(in)                    :: lambda, logLambda, sqrtLambda
     end subroutine
 #endif
 
@@ -1588,9 +1588,9 @@ module pm_distPois
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPoisRandRejRNGD_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         integer(IK)             , intent(out)                   :: rand(:)
-        real(RKC)               , intent(in)                    :: lambda, logLambda, sqrtLambda
+        real(RKG)               , intent(in)                    :: lambda, logLambda, sqrtLambda
     end subroutine
 #endif
 
@@ -1599,9 +1599,9 @@ module pm_distPois
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPoisRandRejRNGD_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         integer(IK)             , intent(out)                   :: rand(:)
-        real(RKC)               , intent(in)                    :: lambda, logLambda, sqrtLambda
+        real(RKG)               , intent(in)                    :: lambda, logLambda, sqrtLambda
     end subroutine
 #endif
 
@@ -1610,9 +1610,9 @@ module pm_distPois
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPoisRandRejRNGD_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         integer(IK)             , intent(out)                   :: rand(:)
-        real(RKC)               , intent(in)                    :: lambda, logLambda, sqrtLambda
+        real(RKG)               , intent(in)                    :: lambda, logLambda, sqrtLambda
     end subroutine
 #endif
 
@@ -1623,10 +1623,10 @@ module pm_distPois
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPoisRandRejRNGF_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         type(rngf_type)         , intent(in)                    :: rng
         integer(IK)             , intent(out)                   :: rand(:)
-        real(RKC)               , intent(in)                    :: lambda, logLambda, sqrtLambda
+        real(RKG)               , intent(in)                    :: lambda, logLambda, sqrtLambda
     end subroutine
 #endif
 
@@ -1635,10 +1635,10 @@ module pm_distPois
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPoisRandRejRNGF_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         type(rngf_type)         , intent(in)                    :: rng
         integer(IK)             , intent(out)                   :: rand(:)
-        real(RKC)               , intent(in)                    :: lambda, logLambda, sqrtLambda
+        real(RKG)               , intent(in)                    :: lambda, logLambda, sqrtLambda
     end subroutine
 #endif
 
@@ -1647,10 +1647,10 @@ module pm_distPois
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPoisRandRejRNGF_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         type(rngf_type)         , intent(in)                    :: rng
         integer(IK)             , intent(out)                   :: rand(:)
-        real(RKC)               , intent(in)                    :: lambda, logLambda, sqrtLambda
+        real(RKG)               , intent(in)                    :: lambda, logLambda, sqrtLambda
     end subroutine
 #endif
 
@@ -1659,10 +1659,10 @@ module pm_distPois
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPoisRandRejRNGF_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         type(rngf_type)         , intent(in)                    :: rng
         integer(IK)             , intent(out)                   :: rand(:)
-        real(RKC)               , intent(in)                    :: lambda, logLambda, sqrtLambda
+        real(RKG)               , intent(in)                    :: lambda, logLambda, sqrtLambda
     end subroutine
 #endif
 
@@ -1671,10 +1671,10 @@ module pm_distPois
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPoisRandRejRNGF_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         type(rngf_type)         , intent(in)                    :: rng
         integer(IK)             , intent(out)                   :: rand(:)
-        real(RKC)               , intent(in)                    :: lambda, logLambda, sqrtLambda
+        real(RKG)               , intent(in)                    :: lambda, logLambda, sqrtLambda
     end subroutine
 #endif
 
@@ -1685,10 +1685,10 @@ module pm_distPois
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPoisRandRejRNGX_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         type(xoshiro256ssw_type), intent(inout)                 :: rng
         integer(IK)             , intent(out)                   :: rand(:)
-        real(RKC)               , intent(in)                    :: lambda, logLambda, sqrtLambda
+        real(RKG)               , intent(in)                    :: lambda, logLambda, sqrtLambda
     end subroutine
 #endif
 
@@ -1697,10 +1697,10 @@ module pm_distPois
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPoisRandRejRNGX_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         type(xoshiro256ssw_type), intent(inout)                 :: rng
         integer(IK)             , intent(out)                   :: rand(:)
-        real(RKC)               , intent(in)                    :: lambda, logLambda, sqrtLambda
+        real(RKG)               , intent(in)                    :: lambda, logLambda, sqrtLambda
     end subroutine
 #endif
 
@@ -1709,10 +1709,10 @@ module pm_distPois
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPoisRandRejRNGX_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         type(xoshiro256ssw_type), intent(inout)                 :: rng
         integer(IK)             , intent(out)                   :: rand(:)
-        real(RKC)               , intent(in)                    :: lambda, logLambda, sqrtLambda
+        real(RKG)               , intent(in)                    :: lambda, logLambda, sqrtLambda
     end subroutine
 #endif
 
@@ -1721,10 +1721,10 @@ module pm_distPois
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPoisRandRejRNGX_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         type(xoshiro256ssw_type), intent(inout)                 :: rng
         integer(IK)             , intent(out)                   :: rand(:)
-        real(RKC)               , intent(in)                    :: lambda, logLambda, sqrtLambda
+        real(RKG)               , intent(in)                    :: lambda, logLambda, sqrtLambda
     end subroutine
 #endif
 
@@ -1733,10 +1733,10 @@ module pm_distPois
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPoisRandRejRNGX_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         type(xoshiro256ssw_type), intent(inout)                 :: rng
         integer(IK)             , intent(out)                   :: rand(:)
-        real(RKC)               , intent(in)                    :: lambda, logLambda, sqrtLambda
+        real(RKG)               , intent(in)                    :: lambda, logLambda, sqrtLambda
     end subroutine
 #endif
 

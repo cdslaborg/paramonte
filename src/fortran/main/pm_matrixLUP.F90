@@ -197,10 +197,10 @@ module pm_matrixLUP
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatLUP_IMP_SQM_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)        , intent(inout) , contiguous    :: mat(:,:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG)        , intent(inout) , contiguous    :: mat(:,:)
         integer(IK)         , intent(out)   , contiguous    :: rperm(:)
-       !complex(CKC)        , intent(out)   , optional      :: parity
+       !complex(CKG)        , intent(out)   , optional      :: parity
         integer(IK)         , intent(out)                   :: info
     end subroutine
 #endif
@@ -210,10 +210,10 @@ module pm_matrixLUP
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatLUP_IMP_SQM_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)        , intent(inout) , contiguous    :: mat(:,:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG)        , intent(inout) , contiguous    :: mat(:,:)
         integer(IK)         , intent(out)   , contiguous    :: rperm(:)
-       !complex(CKC)        , intent(out)   , optional      :: parity
+       !complex(CKG)        , intent(out)   , optional      :: parity
         integer(IK)         , intent(out)                   :: info
     end subroutine
 #endif
@@ -223,10 +223,10 @@ module pm_matrixLUP
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatLUP_IMP_SQM_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)        , intent(inout) , contiguous    :: mat(:,:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG)        , intent(inout) , contiguous    :: mat(:,:)
         integer(IK)         , intent(out)   , contiguous    :: rperm(:)
-       !complex(CKC)        , intent(out)   , optional      :: parity
+       !complex(CKG)        , intent(out)   , optional      :: parity
         integer(IK)         , intent(out)                   :: info
     end subroutine
 #endif
@@ -236,10 +236,10 @@ module pm_matrixLUP
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatLUP_IMP_SQM_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)        , intent(inout) , contiguous    :: mat(:,:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG)        , intent(inout) , contiguous    :: mat(:,:)
         integer(IK)         , intent(out)   , contiguous    :: rperm(:)
-       !complex(CKC)        , intent(out)   , optional      :: parity
+       !complex(CKG)        , intent(out)   , optional      :: parity
         integer(IK)         , intent(out)                   :: info
     end subroutine
 #endif
@@ -249,10 +249,10 @@ module pm_matrixLUP
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatLUP_IMP_SQM_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)        , intent(inout) , contiguous    :: mat(:,:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG)        , intent(inout) , contiguous    :: mat(:,:)
         integer(IK)         , intent(out)   , contiguous    :: rperm(:)
-       !complex(CKC)        , intent(out)   , optional      :: parity
+       !complex(CKG)        , intent(out)   , optional      :: parity
         integer(IK)         , intent(out)                   :: info
     end subroutine
 #endif
@@ -264,10 +264,10 @@ module pm_matrixLUP
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatLUP_IMP_SQM_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)           , intent(inout) , contiguous    :: mat(:,:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)           , intent(inout) , contiguous    :: mat(:,:)
         integer(IK)         , intent(out)   , contiguous    :: rperm(:)
-       !real(RKC)           , intent(out)   , optional      :: parity
+       !real(RKG)           , intent(out)   , optional      :: parity
         integer(IK)         , intent(out)                   :: info
     end subroutine
 #endif
@@ -277,10 +277,10 @@ module pm_matrixLUP
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatLUP_IMP_SQM_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)           , intent(inout) , contiguous    :: mat(:,:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)           , intent(inout) , contiguous    :: mat(:,:)
         integer(IK)         , intent(out)   , contiguous    :: rperm(:)
-       !real(RKC)           , intent(out)   , optional      :: parity
+       !real(RKG)           , intent(out)   , optional      :: parity
         integer(IK)         , intent(out)                   :: info
     end subroutine
 #endif
@@ -290,10 +290,10 @@ module pm_matrixLUP
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatLUP_IMP_SQM_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)           , intent(inout) , contiguous    :: mat(:,:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)           , intent(inout) , contiguous    :: mat(:,:)
         integer(IK)         , intent(out)   , contiguous    :: rperm(:)
-       !real(RKC)           , intent(out)   , optional      :: parity
+       !real(RKG)           , intent(out)   , optional      :: parity
         integer(IK)         , intent(out)                   :: info
     end subroutine
 #endif
@@ -303,10 +303,10 @@ module pm_matrixLUP
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatLUP_IMP_SQM_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)           , intent(inout) , contiguous    :: mat(:,:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)           , intent(inout) , contiguous    :: mat(:,:)
         integer(IK)         , intent(out)   , contiguous    :: rperm(:)
-       !real(RKC)           , intent(out)   , optional      :: parity
+       !real(RKG)           , intent(out)   , optional      :: parity
         integer(IK)         , intent(out)                   :: info
     end subroutine
 #endif
@@ -316,10 +316,10 @@ module pm_matrixLUP
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatLUP_IMP_SQM_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)           , intent(inout) , contiguous    :: mat(:,:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)           , intent(inout) , contiguous    :: mat(:,:)
         integer(IK)         , intent(out)   , contiguous    :: rperm(:)
-       !real(RKC)           , intent(out)   , optional      :: parity
+       !real(RKG)           , intent(out)   , optional      :: parity
         integer(IK)         , intent(out)                   :: info
     end subroutine
 #endif
@@ -331,8 +331,8 @@ module pm_matrixLUP
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setMatLUP_IMP_ITE_RK5
 !#endif
-!        use pm_kind, only: RKC => RK5
-!        real(RKC)           , intent(inout) , contiguous    :: mat(:,:)
+!        use pm_kind, only: RKG => RK5
+!        real(RKG)           , intent(inout) , contiguous    :: mat(:,:)
 !        integer(IK)         , intent(out)   , contiguous    :: rperm(:)
 !        integer(IK)         , intent(out)                   :: info
 !        type(iteration_type), intent(in)                    :: control
@@ -344,8 +344,8 @@ module pm_matrixLUP
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setMatLUP_IMP_ITE_RK4
 !#endif
-!        use pm_kind, only: RKC => RK4
-!        real(RKC)           , intent(inout) , contiguous    :: mat(:,:)
+!        use pm_kind, only: RKG => RK4
+!        real(RKG)           , intent(inout) , contiguous    :: mat(:,:)
 !        integer(IK)         , intent(out)   , contiguous    :: rperm(:)
 !        integer(IK)         , intent(out)                   :: info
 !        type(iteration_type), intent(in)                    :: control
@@ -357,8 +357,8 @@ module pm_matrixLUP
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setMatLUP_IMP_ITE_RK3
 !#endif
-!        use pm_kind, only: RKC => RK3
-!        real(RKC)           , intent(inout) , contiguous    :: mat(:,:)
+!        use pm_kind, only: RKG => RK3
+!        real(RKG)           , intent(inout) , contiguous    :: mat(:,:)
 !        integer(IK)         , intent(out)   , contiguous    :: rperm(:)
 !        integer(IK)         , intent(out)                   :: info
 !        type(iteration_type), intent(in)                    :: control
@@ -370,8 +370,8 @@ module pm_matrixLUP
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setMatLUP_IMP_ITE_RK2
 !#endif
-!        use pm_kind, only: RKC => RK2
-!        real(RKC)           , intent(inout) , contiguous    :: mat(:,:)
+!        use pm_kind, only: RKG => RK2
+!        real(RKG)           , intent(inout) , contiguous    :: mat(:,:)
 !        integer(IK)         , intent(out)   , contiguous    :: rperm(:)
 !        integer(IK)         , intent(out)                   :: info
 !        type(iteration_type), intent(in)                    :: control
@@ -383,8 +383,8 @@ module pm_matrixLUP
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setMatLUP_IMP_ITE_RK1
 !#endif
-!        use pm_kind, only: RKC => RK1
-!        real(RKC)           , intent(inout) , contiguous    :: mat(:,:)
+!        use pm_kind, only: RKG => RK1
+!        real(RKG)           , intent(inout) , contiguous    :: mat(:,:)
 !        integer(IK)         , intent(out)   , contiguous    :: rperm(:)
 !        integer(IK)         , intent(out)                   :: info
 !        type(iteration_type), intent(in)                    :: control
@@ -398,8 +398,8 @@ module pm_matrixLUP
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setMatLUP_IMP_REC_RK5
 !#endif
-!        use pm_kind, only: RKC => RK5
-!        real(RKC)           , intent(inout) , contiguous    :: mat(:,:)
+!        use pm_kind, only: RKG => RK5
+!        real(RKG)           , intent(inout) , contiguous    :: mat(:,:)
 !        integer(IK)         , intent(out)   , contiguous    :: rperm(:)
 !        integer(IK)         , intent(out)                   :: info
 !        type(recursion_type), intent(in)                    :: control
@@ -411,8 +411,8 @@ module pm_matrixLUP
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setMatLUP_IMP_REC_RK4
 !#endif
-!        use pm_kind, only: RKC => RK4
-!        real(RKC)           , intent(inout) , contiguous    :: mat(:,:)
+!        use pm_kind, only: RKG => RK4
+!        real(RKG)           , intent(inout) , contiguous    :: mat(:,:)
 !        integer(IK)         , intent(out)   , contiguous    :: rperm(:)
 !        integer(IK)         , intent(out)                   :: info
 !        type(recursion_type), intent(in)                    :: control
@@ -424,8 +424,8 @@ module pm_matrixLUP
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setMatLUP_IMP_REC_RK3
 !#endif
-!        use pm_kind, only: RKC => RK3
-!        real(RKC)           , intent(inout) , contiguous    :: mat(:,:)
+!        use pm_kind, only: RKG => RK3
+!        real(RKG)           , intent(inout) , contiguous    :: mat(:,:)
 !        integer(IK)         , intent(out)   , contiguous    :: rperm(:)
 !        integer(IK)         , intent(out)                   :: info
 !        type(recursion_type), intent(in)                    :: control
@@ -437,8 +437,8 @@ module pm_matrixLUP
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setMatLUP_IMP_REC_RK2
 !#endif
-!        use pm_kind, only: RKC => RK2
-!        real(RKC)           , intent(inout) , contiguous    :: mat(:,:)
+!        use pm_kind, only: RKG => RK2
+!        real(RKG)           , intent(inout) , contiguous    :: mat(:,:)
 !        integer(IK)         , intent(out)   , contiguous    :: rperm(:)
 !        integer(IK)         , intent(out)                   :: info
 !        type(recursion_type), intent(in)                    :: control
@@ -450,8 +450,8 @@ module pm_matrixLUP
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setMatLUP_IMP_REC_RK1
 !#endif
-!        use pm_kind, only: RKC => RK1
-!        real(RKC)           , intent(inout) , contiguous    :: mat(:,:)
+!        use pm_kind, only: RKG => RK1
+!        real(RKG)           , intent(inout) , contiguous    :: mat(:,:)
 !        integer(IK)         , intent(out)   , contiguous    :: rperm(:)
 !        integer(IK)         , intent(out)                   :: info
 !        type(recursion_type), intent(in)                    :: control
@@ -473,11 +473,11 @@ module pm_matrixLUP
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setMatLUP_EXP_SQM_RK5
 !#endif
-!        use pm_kind, only: RKC => RK5
+!        use pm_kind, only: RKG => RK5
 !        integer(IK)         , intent(in)                    :: nrow, ncol, roff, coff
-!        real(RKC)           , intent(inout) , contiguous    :: mat(1 - roff :, 1 - coff :)
+!        real(RKG)           , intent(inout) , contiguous    :: mat(1 - roff :, 1 - coff :)
 !        integer(IK)         , intent(out)   , contiguous    :: rperm(:)
-!       !real(RKC)           , intent(out)   , optional      :: parity
+!       !real(RKG)           , intent(out)   , optional      :: parity
 !        integer(IK)         , intent(out)                   :: info
 !    end subroutine
 !#endif
@@ -487,11 +487,11 @@ module pm_matrixLUP
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setMatLUP_EXP_SQM_RK4
 !#endif
-!        use pm_kind, only: RKC => RK4
+!        use pm_kind, only: RKG => RK4
 !        integer(IK)         , intent(in)                    :: nrow, ncol, roff, coff
-!        real(RKC)           , intent(inout) , contiguous    :: mat(1 - roff :, 1 - coff :)
+!        real(RKG)           , intent(inout) , contiguous    :: mat(1 - roff :, 1 - coff :)
 !        integer(IK)         , intent(out)   , contiguous    :: rperm(:)
-!       !real(RKC)           , intent(out)   , optional      :: parity
+!       !real(RKG)           , intent(out)   , optional      :: parity
 !        integer(IK)         , intent(out)                   :: info
 !    end subroutine
 !#endif
@@ -501,11 +501,11 @@ module pm_matrixLUP
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setMatLUP_EXP_SQM_RK3
 !#endif
-!        use pm_kind, only: RKC => RK3
+!        use pm_kind, only: RKG => RK3
 !        integer(IK)         , intent(in)                    :: nrow, ncol, roff, coff
-!        real(RKC)           , intent(inout) , contiguous    :: mat(1 - roff :, 1 - coff :)
+!        real(RKG)           , intent(inout) , contiguous    :: mat(1 - roff :, 1 - coff :)
 !        integer(IK)         , intent(out)   , contiguous    :: rperm(:)
-!       !real(RKC)           , intent(out)   , optional      :: parity
+!       !real(RKG)           , intent(out)   , optional      :: parity
 !        integer(IK)         , intent(out)                   :: info
 !    end subroutine
 !#endif
@@ -515,11 +515,11 @@ module pm_matrixLUP
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setMatLUP_EXP_SQM_RK2
 !#endif
-!        use pm_kind, only: RKC => RK2
+!        use pm_kind, only: RKG => RK2
 !        integer(IK)         , intent(in)                    :: nrow, ncol, roff, coff
-!        real(RKC)           , intent(inout) , contiguous    :: mat(1 - roff :, 1 - coff :)
+!        real(RKG)           , intent(inout) , contiguous    :: mat(1 - roff :, 1 - coff :)
 !        integer(IK)         , intent(out)   , contiguous    :: rperm(:)
-!       !real(RKC)           , intent(out)   , optional      :: parity
+!       !real(RKG)           , intent(out)   , optional      :: parity
 !        integer(IK)         , intent(out)                   :: info
 !    end subroutine
 !#endif
@@ -529,11 +529,11 @@ module pm_matrixLUP
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setMatLUP_EXP_SQM_RK1
 !#endif
-!        use pm_kind, only: RKC => RK1
+!        use pm_kind, only: RKG => RK1
 !        integer(IK)         , intent(in)                    :: nrow, ncol, roff, coff
-!        real(RKC)           , intent(inout) , contiguous    :: mat(1 - roff :, 1 - coff :)
+!        real(RKG)           , intent(inout) , contiguous    :: mat(1 - roff :, 1 - coff :)
 !        integer(IK)         , intent(out)   , contiguous    :: rperm(:)
-!       !real(RKC)           , intent(out)   , optional      :: parity
+!       !real(RKG)           , intent(out)   , optional      :: parity
 !        integer(IK)         , intent(out)                   :: info
 !    end subroutine
 !#endif
@@ -545,9 +545,9 @@ module pm_matrixLUP
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setMatLUP_EXP_ITE_RK5
 !#endif
-!        use pm_kind, only: RKC => RK5
+!        use pm_kind, only: RKG => RK5
 !        integer(IK)         , intent(in)                    :: nrow, ncol, roff, coff
-!        real(RKC)           , intent(inout) , contiguous    :: mat(1 - roff :, 1 - coff :)
+!        real(RKG)           , intent(inout) , contiguous    :: mat(1 - roff :, 1 - coff :)
 !        integer(IK)         , intent(out)   , contiguous    :: rperm(:)
 !        integer(IK)         , intent(out)                   :: info
 !        type(iteration_type), intent(in)                    :: control
@@ -559,9 +559,9 @@ module pm_matrixLUP
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setMatLUP_EXP_ITE_RK4
 !#endif
-!        use pm_kind, only: RKC => RK4
+!        use pm_kind, only: RKG => RK4
 !        integer(IK)         , intent(in)                    :: nrow, ncol, roff, coff
-!        real(RKC)           , intent(inout) , contiguous    :: mat(1 - roff :, 1 - coff :)
+!        real(RKG)           , intent(inout) , contiguous    :: mat(1 - roff :, 1 - coff :)
 !        integer(IK)         , intent(out)   , contiguous    :: rperm(:)
 !        integer(IK)         , intent(out)                   :: info
 !        type(iteration_type), intent(in)                    :: control
@@ -573,9 +573,9 @@ module pm_matrixLUP
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setMatLUP_EXP_ITE_RK3
 !#endif
-!        use pm_kind, only: RKC => RK3
+!        use pm_kind, only: RKG => RK3
 !        integer(IK)         , intent(in)                    :: nrow, ncol, roff, coff
-!        real(RKC)           , intent(inout) , contiguous    :: mat(1 - roff :, 1 - coff :)
+!        real(RKG)           , intent(inout) , contiguous    :: mat(1 - roff :, 1 - coff :)
 !        integer(IK)         , intent(out)   , contiguous    :: rperm(:)
 !        integer(IK)         , intent(out)                   :: info
 !        type(iteration_type), intent(in)                    :: control
@@ -587,9 +587,9 @@ module pm_matrixLUP
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setMatLUP_EXP_ITE_RK2
 !#endif
-!        use pm_kind, only: RKC => RK2
+!        use pm_kind, only: RKG => RK2
 !        integer(IK)         , intent(in)                    :: nrow, ncol, roff, coff
-!        real(RKC)           , intent(inout) , contiguous    :: mat(1 - roff :, 1 - coff :)
+!        real(RKG)           , intent(inout) , contiguous    :: mat(1 - roff :, 1 - coff :)
 !        integer(IK)         , intent(out)   , contiguous    :: rperm(:)
 !        integer(IK)         , intent(out)                   :: info
 !        type(iteration_type), intent(in)                    :: control
@@ -601,9 +601,9 @@ module pm_matrixLUP
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setMatLUP_EXP_ITE_RK1
 !#endif
-!        use pm_kind, only: RKC => RK1
+!        use pm_kind, only: RKG => RK1
 !        integer(IK)         , intent(in)                    :: nrow, ncol, roff, coff
-!        real(RKC)           , intent(inout) , contiguous    :: mat(1 - roff :, 1 - coff :)
+!        real(RKG)           , intent(inout) , contiguous    :: mat(1 - roff :, 1 - coff :)
 !        integer(IK)         , intent(out)   , contiguous    :: rperm(:)
 !        integer(IK)         , intent(out)                   :: info
 !        type(iteration_type), intent(in)                    :: control
@@ -617,9 +617,9 @@ module pm_matrixLUP
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setMatLUP_EXP_REC_RK5
 !#endif
-!        use pm_kind, only: RKC => RK5
+!        use pm_kind, only: RKG => RK5
 !        integer(IK)         , intent(in)                    :: nrow, ncol, roff, coff
-!        real(RKC)           , intent(inout) , contiguous    :: mat(1 - roff :, 1 - coff :)
+!        real(RKG)           , intent(inout) , contiguous    :: mat(1 - roff :, 1 - coff :)
 !        integer(IK)         , intent(out)   , contiguous    :: rperm(:)
 !        integer(IK)         , intent(out)                   :: info
 !        type(recursion_type), intent(in)                    :: control
@@ -631,9 +631,9 @@ module pm_matrixLUP
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setMatLUP_EXP_REC_RK4
 !#endif
-!        use pm_kind, only: RKC => RK4
+!        use pm_kind, only: RKG => RK4
 !        integer(IK)         , intent(in)                    :: nrow, ncol, roff, coff
-!        real(RKC)           , intent(inout) , contiguous    :: mat(1 - roff :, 1 - coff :)
+!        real(RKG)           , intent(inout) , contiguous    :: mat(1 - roff :, 1 - coff :)
 !        integer(IK)         , intent(out)   , contiguous    :: rperm(:)
 !        integer(IK)         , intent(out)                   :: info
 !        type(recursion_type), intent(in)                    :: control
@@ -645,9 +645,9 @@ module pm_matrixLUP
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setMatLUP_EXP_REC_RK3
 !#endif
-!        use pm_kind, only: RKC => RK3
+!        use pm_kind, only: RKG => RK3
 !        integer(IK)         , intent(in)                    :: nrow, ncol, roff, coff
-!        real(RKC)           , intent(inout) , contiguous    :: mat(1 - roff :, 1 - coff :)
+!        real(RKG)           , intent(inout) , contiguous    :: mat(1 - roff :, 1 - coff :)
 !        integer(IK)         , intent(out)   , contiguous    :: rperm(:)
 !        integer(IK)         , intent(out)                   :: info
 !        type(recursion_type), intent(in)                    :: control
@@ -659,9 +659,9 @@ module pm_matrixLUP
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setMatLUP_EXP_REC_RK2
 !#endif
-!        use pm_kind, only: RKC => RK2
+!        use pm_kind, only: RKG => RK2
 !        integer(IK)         , intent(in)                    :: nrow, ncol, roff, coff
-!        real(RKC)           , intent(inout) , contiguous    :: mat(1 - roff :, 1 - coff :)
+!        real(RKG)           , intent(inout) , contiguous    :: mat(1 - roff :, 1 - coff :)
 !        integer(IK)         , intent(out)   , contiguous    :: rperm(:)
 !        integer(IK)         , intent(out)                   :: info
 !        type(recursion_type), intent(in)                    :: control
@@ -673,9 +673,9 @@ module pm_matrixLUP
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setMatLUP_EXP_REC_RK1
 !#endif
-!        use pm_kind, only: RKC => RK1
+!        use pm_kind, only: RKG => RK1
 !        integer(IK)         , intent(in)                    :: nrow, ncol, roff, coff
-!        real(RKC)           , intent(inout) , contiguous    :: mat(1 - roff :, 1 - coff :)
+!        real(RKG)           , intent(inout) , contiguous    :: mat(1 - roff :, 1 - coff :)
 !        integer(IK)         , intent(out)   , contiguous    :: rperm(:)
 !        integer(IK)         , intent(out)                   :: info
 !        type(recursion_type), intent(in)                    :: control

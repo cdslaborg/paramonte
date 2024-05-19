@@ -1,6 +1,6 @@
 program example
 
-    use pm_kind, only: SK, IK, RKC => RK
+    use pm_kind, only: SK, IK, RKG => RK
     use pm_io, only: display_type
     use pm_arrayChoice, only: getChoice
     use pm_distUnif, only: getUnifRand

@@ -46,35 +46,35 @@ contains
 
 #if IK5_ENABLED
     module procedure test_getCumSum_IK5
-        use pm_kind, only: TKC => IK5
+        use pm_kind, only: TKG => IK5
 #include "test_pm_mathCumSum@routines.inc.F90"
     end procedure
 #endif
 
 #if IK4_ENABLED
     module procedure test_getCumSum_IK4
-        use pm_kind, only: TKC => IK4
+        use pm_kind, only: TKG => IK4
 #include "test_pm_mathCumSum@routines.inc.F90"
     end procedure
 #endif
 
 #if IK3_ENABLED
     module procedure test_getCumSum_IK3
-        use pm_kind, only: TKC => IK3
+        use pm_kind, only: TKG => IK3
 #include "test_pm_mathCumSum@routines.inc.F90"
     end procedure
 #endif
 
 #if IK2_ENABLED
     module procedure test_getCumSum_IK2
-        use pm_kind, only: TKC => IK2
+        use pm_kind, only: TKG => IK2
 #include "test_pm_mathCumSum@routines.inc.F90"
     end procedure
 #endif
 
 #if IK1_ENABLED
     module procedure test_getCumSum_IK1
-        use pm_kind, only: TKC => IK1
+        use pm_kind, only: TKG => IK1
 #include "test_pm_mathCumSum@routines.inc.F90"
     end procedure
 #endif
@@ -87,35 +87,35 @@ contains
 
 #if CK5_ENABLED
     module procedure test_getCumSum_CK5
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
 #include "test_pm_mathCumSum@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure test_getCumSum_CK4
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
 #include "test_pm_mathCumSum@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure test_getCumSum_CK3
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
 #include "test_pm_mathCumSum@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure test_getCumSum_CK2
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
 #include "test_pm_mathCumSum@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure test_getCumSum_CK1
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
 #include "test_pm_mathCumSum@routines.inc.F90"
     end procedure
 #endif
@@ -128,35 +128,35 @@ contains
 
 #if RK5_ENABLED
     module procedure test_getCumSum_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "test_pm_mathCumSum@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure test_getCumSum_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "test_pm_mathCumSum@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure test_getCumSum_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "test_pm_mathCumSum@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure test_getCumSum_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "test_pm_mathCumSum@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure test_getCumSum_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "test_pm_mathCumSum@routines.inc.F90"
     end procedure
 #endif
@@ -177,35 +177,35 @@ contains
 
 #if IK5_ENABLED
     module procedure test_setCumSum_IK5
-        use pm_kind, only: TKC => IK5
+        use pm_kind, only: TKG => IK5
 #include "test_pm_mathCumSum@routines.inc.F90"
     end procedure
 #endif
 
 #if IK4_ENABLED
     module procedure test_setCumSum_IK4
-        use pm_kind, only: TKC => IK4
+        use pm_kind, only: TKG => IK4
 #include "test_pm_mathCumSum@routines.inc.F90"
     end procedure
 #endif
 
 #if IK3_ENABLED
     module procedure test_setCumSum_IK3
-        use pm_kind, only: TKC => IK3
+        use pm_kind, only: TKG => IK3
 #include "test_pm_mathCumSum@routines.inc.F90"
     end procedure
 #endif
 
 #if IK2_ENABLED
     module procedure test_setCumSum_IK2
-        use pm_kind, only: TKC => IK2
+        use pm_kind, only: TKG => IK2
 #include "test_pm_mathCumSum@routines.inc.F90"
     end procedure
 #endif
 
 #if IK1_ENABLED
     module procedure test_setCumSum_IK1
-        use pm_kind, only: TKC => IK1
+        use pm_kind, only: TKG => IK1
 #include "test_pm_mathCumSum@routines.inc.F90"
     end procedure
 #endif
@@ -218,35 +218,35 @@ contains
 
 #if CK5_ENABLED
     module procedure test_setCumSum_CK5
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
 #include "test_pm_mathCumSum@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure test_setCumSum_CK4
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
 #include "test_pm_mathCumSum@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure test_setCumSum_CK3
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
 #include "test_pm_mathCumSum@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure test_setCumSum_CK2
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
 #include "test_pm_mathCumSum@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure test_setCumSum_CK1
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
 #include "test_pm_mathCumSum@routines.inc.F90"
     end procedure
 #endif
@@ -259,35 +259,35 @@ contains
 
 #if RK5_ENABLED
     module procedure test_setCumSum_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "test_pm_mathCumSum@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure test_setCumSum_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "test_pm_mathCumSum@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure test_setCumSum_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "test_pm_mathCumSum@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure test_setCumSum_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "test_pm_mathCumSum@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure test_setCumSum_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "test_pm_mathCumSum@routines.inc.F90"
     end procedure
 #endif

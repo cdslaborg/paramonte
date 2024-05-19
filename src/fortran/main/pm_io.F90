@@ -1589,20 +1589,20 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getContentsFromUnit_SK
 #endif
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
         integer(IK)     , intent(in)                    :: unit
         logical(LK)     , intent(in)    , optional      :: del
-        character(:,SKC), allocatable                   :: contents
+        character(:,SKG), allocatable                   :: contents
     end function
 
     module function getContentsFromFile_SK(file, del) result(contents)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getContentsFromFile_SK
 #endif
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
         character(*, SK), intent(in)                    :: file
         logical(LK)     , intent(in)    , optional      :: del
-        character(:,SKC), allocatable                   :: contents
+        character(:,SKG), allocatable                   :: contents
     end function
 
     end interface
@@ -1681,9 +1681,9 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setContentsFromUnitCDD_SK
 #endif
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
         integer(IK)     , intent(in)                    :: unit
-        character(:,SKC), intent(out)   , allocatable   :: contents
+        character(:,SKG), intent(out)   , allocatable   :: contents
         logical(LK)     , intent(in)    , optional      :: del
     end subroutine
 
@@ -1691,9 +1691,9 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setContentsFromUnitCII_SK
 #endif
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
         integer(IK)     , intent(in)                    :: unit
-        character(:,SKC), intent(out)   , allocatable   :: contents
+        character(:,SKG), intent(out)   , allocatable   :: contents
         integer(IK)     , intent(out)                   :: iostat
         character(*, SK), intent(inout)                 :: iomsg
         logical(LK)     , intent(in)    , optional      :: del
@@ -1703,9 +1703,9 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setContentsFromFileCDD_SK
 #endif
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
         character(*, SK), intent(in)                    :: file
-        character(:,SKC), intent(out)   , allocatable   :: contents
+        character(:,SKG), intent(out)   , allocatable   :: contents
         logical(LK)     , intent(in)    , optional      :: del
     end subroutine
 
@@ -1713,9 +1713,9 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setContentsFromFileCII_SK
 #endif
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
         character(*, SK), intent(in)                    :: file
-        character(:,SKC), intent(out)   , allocatable   :: contents
+        character(:,SKG), intent(out)   , allocatable   :: contents
         integer(IK)     , intent(out)                   :: iostat
         character(*, SK), intent(inout)                 :: iomsg
         logical(LK)     , intent(in)    , optional      :: del
@@ -1794,18 +1794,18 @@ module pm_io
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setContentsToUnitCDD_SK
 !#endif
-!        use pm_kind, only: SKC => SK
+!        use pm_kind, only: SKG => SK
 !        integer(IK)     , intent(in)                    :: unit
-!        character(*,SKC), intent(in)                    :: contents
+!        character(*,SKG), intent(in)                    :: contents
 !    end subroutine
 !
 !    module subroutine setContentsToUnitCII_SK(unit, contents, iostat, iomsg)
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setContentsToUnitCII_SK
 !#endif
-!        use pm_kind, only: SKC => SK
+!        use pm_kind, only: SKG => SK
 !        integer(IK)     , intent(in)                    :: unit
-!        character(*,SKC), intent(in)                    :: contents
+!        character(*,SKG), intent(in)                    :: contents
 !        integer(IK)     , intent(out)                   :: iostat
 !        character(*, SK), intent(inout)                 :: iomsg
 !    end subroutine
@@ -1814,18 +1814,18 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setContentsToFileCDD_SK
 #endif
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
         character(*, SK), intent(in)                    :: file
-        character(*,SKC), intent(in)                    :: contents
+        character(*,SKG), intent(in)                    :: contents
     end subroutine
 
     module subroutine setContentsToFileCII_SK(file, contents, iostat, iomsg)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setContentsToFileCII_SK
 #endif
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
         character(*, SK), intent(in)                    :: file
-        character(*,SKC), intent(in)                    :: contents
+        character(*,SKG), intent(in)                    :: contents
         integer(IK)     , intent(out)                   :: iostat
         character(*, SK), intent(inout)                 :: iomsg
     end subroutine
@@ -1974,12 +1974,12 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRecordFromUnit_SK
 #endif
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
         integer(IK)     , intent(in)                    :: unit
         integer(IK)     , intent(out)   , optional      :: iostat
         character(*, SK), intent(inout) , optional      :: iomsg
         logical(LK)     , intent(in)    , optional      :: linefed
-        character(:,SKC), allocatable                   :: record
+        character(:,SKG), allocatable                   :: record
     end function
 
     end interface
@@ -2117,9 +2117,9 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRecordFromUR_SK
 #endif
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
         integer(IK)     , intent(in)                    :: unit
-        character(:,SKC), intent(inout) , allocatable   :: record
+        character(:,SKG), intent(inout) , allocatable   :: record
         integer(IK)     , intent(in)    , optional      :: lb
         integer(IK)     , intent(out)   , optional      :: ub
         logical(LK)     , intent(in)    , optional      :: linefed
@@ -2129,9 +2129,9 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRecordFromURII_SK
 #endif
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
         integer(IK)     , intent(in)                    :: unit
-        character(:,SKC), intent(inout) , allocatable   :: record
+        character(:,SKG), intent(inout) , allocatable   :: record
         integer(IK)     , intent(out)                   :: iostat
         character(*, SK), intent(inout)                 :: iomsg
         integer(IK)     , intent(in)    , optional      :: lb
@@ -2396,8 +2396,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadFile_NO_D1_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)            , intent(out)   , allocatable               :: table(:)
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)            , intent(out)   , allocatable               :: table(:)
         character(:, SK)            , intent(out)   , allocatable   , optional  :: header
         character(*, SK)            , intent(in)                                :: file
         character(*, SK)            , intent(in)                    , optional  :: sep
@@ -2412,8 +2412,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadFile_NO_D1_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)            , intent(out)   , allocatable               :: table(:)
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)            , intent(out)   , allocatable               :: table(:)
         character(:, SK)            , intent(out)   , allocatable   , optional  :: header
         character(*, SK)            , intent(in)                                :: file
         character(*, SK)            , intent(in)                    , optional  :: sep
@@ -2428,8 +2428,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadFile_NO_D1_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)            , intent(out)   , allocatable               :: table(:)
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)            , intent(out)   , allocatable               :: table(:)
         character(:, SK)            , intent(out)   , allocatable   , optional  :: header
         character(*, SK)            , intent(in)                                :: file
         character(*, SK)            , intent(in)                    , optional  :: sep
@@ -2444,8 +2444,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadFile_NO_D1_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)            , intent(out)   , allocatable               :: table(:)
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)            , intent(out)   , allocatable               :: table(:)
         character(:, SK)            , intent(out)   , allocatable   , optional  :: header
         character(*, SK)            , intent(in)                                :: file
         character(*, SK)            , intent(in)                    , optional  :: sep
@@ -2460,8 +2460,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadFile_NO_D1_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)            , intent(out)   , allocatable               :: table(:)
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)            , intent(out)   , allocatable               :: table(:)
         character(:, SK)            , intent(out)   , allocatable   , optional  :: header
         character(*, SK)            , intent(in)                                :: file
         character(*, SK)            , intent(in)                    , optional  :: sep
@@ -2478,8 +2478,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadFile_NO_D1_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)                , intent(out)   , allocatable               :: table(:)
+        use pm_kind, only: IKG => IK5
+        integer(IKG)                , intent(out)   , allocatable               :: table(:)
         character(:, SK)            , intent(out)   , allocatable   , optional  :: header
         character(*, SK)            , intent(in)                                :: file
         character(*, SK)            , intent(in)                    , optional  :: sep
@@ -2494,8 +2494,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadFile_NO_D1_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)                , intent(out)   , allocatable               :: table(:)
+        use pm_kind, only: IKG => IK4
+        integer(IKG)                , intent(out)   , allocatable               :: table(:)
         character(:, SK)            , intent(out)   , allocatable   , optional  :: header
         character(*, SK)            , intent(in)                                :: file
         character(*, SK)            , intent(in)                    , optional  :: sep
@@ -2510,8 +2510,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadFile_NO_D1_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)                , intent(out)   , allocatable               :: table(:)
+        use pm_kind, only: IKG => IK3
+        integer(IKG)                , intent(out)   , allocatable               :: table(:)
         character(:, SK)            , intent(out)   , allocatable   , optional  :: header
         character(*, SK)            , intent(in)                                :: file
         character(*, SK)            , intent(in)                    , optional  :: sep
@@ -2526,8 +2526,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadFile_NO_D1_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)                , intent(out)   , allocatable               :: table(:)
+        use pm_kind, only: IKG => IK2
+        integer(IKG)                , intent(out)   , allocatable               :: table(:)
         character(:, SK)            , intent(out)   , allocatable   , optional  :: header
         character(*, SK)            , intent(in)                                :: file
         character(*, SK)            , intent(in)                    , optional  :: sep
@@ -2542,8 +2542,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadFile_NO_D1_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)                , intent(out)   , allocatable               :: table(:)
+        use pm_kind, only: IKG => IK1
+        integer(IKG)                , intent(out)   , allocatable               :: table(:)
         character(:, SK)            , intent(out)   , allocatable   , optional  :: header
         character(*, SK)            , intent(in)                                :: file
         character(*, SK)            , intent(in)                    , optional  :: sep
@@ -2560,8 +2560,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadFile_NO_D1_LK5
 #endif
-        use pm_kind, only: LKC => LK5
-        logical(LKC)                , intent(out)   , allocatable               :: table(:)
+        use pm_kind, only: LKG => LK5
+        logical(LKG)                , intent(out)   , allocatable               :: table(:)
         character(:, SK)            , intent(out)   , allocatable   , optional  :: header
         character(*, SK)            , intent(in)                                :: file
         character(*, SK)            , intent(in)                    , optional  :: sep
@@ -2576,8 +2576,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadFile_NO_D1_LK4
 #endif
-        use pm_kind, only: LKC => LK4
-        logical(LKC)                , intent(out)   , allocatable               :: table(:)
+        use pm_kind, only: LKG => LK4
+        logical(LKG)                , intent(out)   , allocatable               :: table(:)
         character(:, SK)            , intent(out)   , allocatable   , optional  :: header
         character(*, SK)            , intent(in)                                :: file
         character(*, SK)            , intent(in)                    , optional  :: sep
@@ -2592,8 +2592,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadFile_NO_D1_LK3
 #endif
-        use pm_kind, only: LKC => LK3
-        logical(LKC)                , intent(out)   , allocatable               :: table(:)
+        use pm_kind, only: LKG => LK3
+        logical(LKG)                , intent(out)   , allocatable               :: table(:)
         character(:, SK)            , intent(out)   , allocatable   , optional  :: header
         character(*, SK)            , intent(in)                                :: file
         character(*, SK)            , intent(in)                    , optional  :: sep
@@ -2608,8 +2608,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadFile_NO_D1_LK2
 #endif
-        use pm_kind, only: LKC => LK2
-        logical(LKC)                , intent(out)   , allocatable               :: table(:)
+        use pm_kind, only: LKG => LK2
+        logical(LKG)                , intent(out)   , allocatable               :: table(:)
         character(:, SK)            , intent(out)   , allocatable   , optional  :: header
         character(*, SK)            , intent(in)                                :: file
         character(*, SK)            , intent(in)                    , optional  :: sep
@@ -2624,8 +2624,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadFile_NO_D1_LK1
 #endif
-        use pm_kind, only: LKC => LK1
-        logical(LKC)                , intent(out)   , allocatable               :: table(:)
+        use pm_kind, only: LKG => LK1
+        logical(LKG)                , intent(out)   , allocatable               :: table(:)
         character(:, SK)            , intent(out)   , allocatable   , optional  :: header
         character(*, SK)            , intent(in)                                :: file
         character(*, SK)            , intent(in)                    , optional  :: sep
@@ -2642,8 +2642,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadFile_NO_D1_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)                , intent(out)   , allocatable               :: table(:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG)                , intent(out)   , allocatable               :: table(:)
         character(:, SK)            , intent(out)   , allocatable   , optional  :: header
         character(*, SK)            , intent(in)                                :: file
         character(*, SK)            , intent(in)                    , optional  :: sep
@@ -2658,8 +2658,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadFile_NO_D1_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)                , intent(out)   , allocatable               :: table(:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG)                , intent(out)   , allocatable               :: table(:)
         character(:, SK)            , intent(out)   , allocatable   , optional  :: header
         character(*, SK)            , intent(in)                                :: file
         character(*, SK)            , intent(in)                    , optional  :: sep
@@ -2674,8 +2674,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadFile_NO_D1_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)                , intent(out)   , allocatable               :: table(:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG)                , intent(out)   , allocatable               :: table(:)
         character(:, SK)            , intent(out)   , allocatable   , optional  :: header
         character(*, SK)            , intent(in)                                :: file
         character(*, SK)            , intent(in)                    , optional  :: sep
@@ -2690,8 +2690,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadFile_NO_D1_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)                , intent(out)   , allocatable               :: table(:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG)                , intent(out)   , allocatable               :: table(:)
         character(:, SK)            , intent(out)   , allocatable   , optional  :: header
         character(*, SK)            , intent(in)                                :: file
         character(*, SK)            , intent(in)                    , optional  :: sep
@@ -2706,8 +2706,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadFile_NO_D1_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)                , intent(out)   , allocatable               :: table(:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG)                , intent(out)   , allocatable               :: table(:)
         character(:, SK)            , intent(out)   , allocatable   , optional  :: header
         character(*, SK)            , intent(in)                                :: file
         character(*, SK)            , intent(in)                    , optional  :: sep
@@ -2724,8 +2724,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadFile_NO_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)                   , intent(out)   , allocatable               :: table(:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)                   , intent(out)   , allocatable               :: table(:)
         character(:, SK)            , intent(out)   , allocatable   , optional  :: header
         character(*, SK)            , intent(in)                                :: file
         character(*, SK)            , intent(in)                    , optional  :: sep
@@ -2740,8 +2740,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadFile_NO_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)                   , intent(out)   , allocatable               :: table(:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)                   , intent(out)   , allocatable               :: table(:)
         character(:, SK)            , intent(out)   , allocatable   , optional  :: header
         character(*, SK)            , intent(in)                                :: file
         character(*, SK)            , intent(in)                    , optional  :: sep
@@ -2756,8 +2756,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadFile_NO_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)                   , intent(out)   , allocatable               :: table(:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)                   , intent(out)   , allocatable               :: table(:)
         character(:, SK)            , intent(out)   , allocatable   , optional  :: header
         character(*, SK)            , intent(in)                                :: file
         character(*, SK)            , intent(in)                    , optional  :: sep
@@ -2772,8 +2772,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadFile_NO_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)                   , intent(out)   , allocatable               :: table(:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)                   , intent(out)   , allocatable               :: table(:)
         character(:, SK)            , intent(out)   , allocatable   , optional  :: header
         character(*, SK)            , intent(in)                                :: file
         character(*, SK)            , intent(in)                    , optional  :: sep
@@ -2788,8 +2788,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadFile_NO_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)                   , intent(out)   , allocatable               :: table(:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)                   , intent(out)   , allocatable               :: table(:)
         character(:, SK)            , intent(out)   , allocatable   , optional  :: header
         character(*, SK)            , intent(in)                                :: file
         character(*, SK)            , intent(in)                    , optional  :: sep
@@ -2814,8 +2814,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadFile_NO_D2_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)            , intent(out)   , allocatable               :: table(:,:)
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)            , intent(out)   , allocatable               :: table(:,:)
         character(:, SK)            , intent(out)   , allocatable   , optional  :: header
         character(*, SK)            , intent(in)                                :: file
         character(*, SK)            , intent(in)                    , optional  :: sep
@@ -2830,8 +2830,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadFile_NO_D2_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)            , intent(out)   , allocatable               :: table(:,:)
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)            , intent(out)   , allocatable               :: table(:,:)
         character(:, SK)            , intent(out)   , allocatable   , optional  :: header
         character(*, SK)            , intent(in)                                :: file
         character(*, SK)            , intent(in)                    , optional  :: sep
@@ -2846,8 +2846,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadFile_NO_D2_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)            , intent(out)   , allocatable               :: table(:,:)
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)            , intent(out)   , allocatable               :: table(:,:)
         character(:, SK)            , intent(out)   , allocatable   , optional  :: header
         character(*, SK)            , intent(in)                                :: file
         character(*, SK)            , intent(in)                    , optional  :: sep
@@ -2862,8 +2862,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadFile_NO_D2_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)            , intent(out)   , allocatable               :: table(:,:)
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)            , intent(out)   , allocatable               :: table(:,:)
         character(:, SK)            , intent(out)   , allocatable   , optional  :: header
         character(*, SK)            , intent(in)                                :: file
         character(*, SK)            , intent(in)                    , optional  :: sep
@@ -2878,8 +2878,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadFile_NO_D2_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)            , intent(out)   , allocatable               :: table(:,:)
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)            , intent(out)   , allocatable               :: table(:,:)
         character(:, SK)            , intent(out)   , allocatable   , optional  :: header
         character(*, SK)            , intent(in)                                :: file
         character(*, SK)            , intent(in)                    , optional  :: sep
@@ -2896,8 +2896,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadFile_NO_D2_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)                , intent(out)   , allocatable               :: table(:,:)
+        use pm_kind, only: IKG => IK5
+        integer(IKG)                , intent(out)   , allocatable               :: table(:,:)
         character(:, SK)            , intent(out)   , allocatable   , optional  :: header
         character(*, SK)            , intent(in)                                :: file
         character(*, SK)            , intent(in)                    , optional  :: sep
@@ -2912,8 +2912,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadFile_NO_D2_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)                , intent(out)   , allocatable               :: table(:,:)
+        use pm_kind, only: IKG => IK4
+        integer(IKG)                , intent(out)   , allocatable               :: table(:,:)
         character(:, SK)            , intent(out)   , allocatable   , optional  :: header
         character(*, SK)            , intent(in)                                :: file
         character(*, SK)            , intent(in)                    , optional  :: sep
@@ -2928,8 +2928,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadFile_NO_D2_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)                , intent(out)   , allocatable               :: table(:,:)
+        use pm_kind, only: IKG => IK3
+        integer(IKG)                , intent(out)   , allocatable               :: table(:,:)
         character(:, SK)            , intent(out)   , allocatable   , optional  :: header
         character(*, SK)            , intent(in)                                :: file
         character(*, SK)            , intent(in)                    , optional  :: sep
@@ -2944,8 +2944,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadFile_NO_D2_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)                , intent(out)   , allocatable               :: table(:,:)
+        use pm_kind, only: IKG => IK2
+        integer(IKG)                , intent(out)   , allocatable               :: table(:,:)
         character(:, SK)            , intent(out)   , allocatable   , optional  :: header
         character(*, SK)            , intent(in)                                :: file
         character(*, SK)            , intent(in)                    , optional  :: sep
@@ -2960,8 +2960,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadFile_NO_D2_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)                , intent(out)   , allocatable               :: table(:,:)
+        use pm_kind, only: IKG => IK1
+        integer(IKG)                , intent(out)   , allocatable               :: table(:,:)
         character(:, SK)            , intent(out)   , allocatable   , optional  :: header
         character(*, SK)            , intent(in)                                :: file
         character(*, SK)            , intent(in)                    , optional  :: sep
@@ -2978,8 +2978,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadFile_NO_D2_LK5
 #endif
-        use pm_kind, only: LKC => LK5
-        logical(LKC)                , intent(out)   , allocatable               :: table(:,:)
+        use pm_kind, only: LKG => LK5
+        logical(LKG)                , intent(out)   , allocatable               :: table(:,:)
         character(:, SK)            , intent(out)   , allocatable   , optional  :: header
         character(*, SK)            , intent(in)                                :: file
         character(*, SK)            , intent(in)                    , optional  :: sep
@@ -2994,8 +2994,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadFile_NO_D2_LK4
 #endif
-        use pm_kind, only: LKC => LK4
-        logical(LKC)                , intent(out)   , allocatable               :: table(:,:)
+        use pm_kind, only: LKG => LK4
+        logical(LKG)                , intent(out)   , allocatable               :: table(:,:)
         character(:, SK)            , intent(out)   , allocatable   , optional  :: header
         character(*, SK)            , intent(in)                                :: file
         character(*, SK)            , intent(in)                    , optional  :: sep
@@ -3010,8 +3010,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadFile_NO_D2_LK3
 #endif
-        use pm_kind, only: LKC => LK3
-        logical(LKC)                , intent(out)   , allocatable               :: table(:,:)
+        use pm_kind, only: LKG => LK3
+        logical(LKG)                , intent(out)   , allocatable               :: table(:,:)
         character(:, SK)            , intent(out)   , allocatable   , optional  :: header
         character(*, SK)            , intent(in)                                :: file
         character(*, SK)            , intent(in)                    , optional  :: sep
@@ -3026,8 +3026,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadFile_NO_D2_LK2
 #endif
-        use pm_kind, only: LKC => LK2
-        logical(LKC)                , intent(out)   , allocatable               :: table(:,:)
+        use pm_kind, only: LKG => LK2
+        logical(LKG)                , intent(out)   , allocatable               :: table(:,:)
         character(:, SK)            , intent(out)   , allocatable   , optional  :: header
         character(*, SK)            , intent(in)                                :: file
         character(*, SK)            , intent(in)                    , optional  :: sep
@@ -3042,8 +3042,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadFile_NO_D2_LK1
 #endif
-        use pm_kind, only: LKC => LK1
-        logical(LKC)                , intent(out)   , allocatable               :: table(:,:)
+        use pm_kind, only: LKG => LK1
+        logical(LKG)                , intent(out)   , allocatable               :: table(:,:)
         character(:, SK)            , intent(out)   , allocatable   , optional  :: header
         character(*, SK)            , intent(in)                                :: file
         character(*, SK)            , intent(in)                    , optional  :: sep
@@ -3060,8 +3060,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadFile_NO_D2_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)                , intent(out)   , allocatable               :: table(:,:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG)                , intent(out)   , allocatable               :: table(:,:)
         character(:, SK)            , intent(out)   , allocatable   , optional  :: header
         character(*, SK)            , intent(in)                                :: file
         character(*, SK)            , intent(in)                    , optional  :: sep
@@ -3076,8 +3076,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadFile_NO_D2_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)                , intent(out)   , allocatable               :: table(:,:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG)                , intent(out)   , allocatable               :: table(:,:)
         character(:, SK)            , intent(out)   , allocatable   , optional  :: header
         character(*, SK)            , intent(in)                                :: file
         character(*, SK)            , intent(in)                    , optional  :: sep
@@ -3092,8 +3092,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadFile_NO_D2_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)                , intent(out)   , allocatable               :: table(:,:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG)                , intent(out)   , allocatable               :: table(:,:)
         character(:, SK)            , intent(out)   , allocatable   , optional  :: header
         character(*, SK)            , intent(in)                                :: file
         character(*, SK)            , intent(in)                    , optional  :: sep
@@ -3108,8 +3108,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadFile_NO_D2_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)                , intent(out)   , allocatable               :: table(:,:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG)                , intent(out)   , allocatable               :: table(:,:)
         character(:, SK)            , intent(out)   , allocatable   , optional  :: header
         character(*, SK)            , intent(in)                                :: file
         character(*, SK)            , intent(in)                    , optional  :: sep
@@ -3124,8 +3124,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadFile_NO_D2_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)                , intent(out)   , allocatable               :: table(:,:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG)                , intent(out)   , allocatable               :: table(:,:)
         character(:, SK)            , intent(out)   , allocatable   , optional  :: header
         character(*, SK)            , intent(in)                                :: file
         character(*, SK)            , intent(in)                    , optional  :: sep
@@ -3142,8 +3142,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadFile_NO_D2_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)                   , intent(out)   , allocatable               :: table(:,:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)                   , intent(out)   , allocatable               :: table(:,:)
         character(:, SK)            , intent(out)   , allocatable   , optional  :: header
         character(*, SK)            , intent(in)                                :: file
         character(*, SK)            , intent(in)                    , optional  :: sep
@@ -3158,8 +3158,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadFile_NO_D2_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)                   , intent(out)   , allocatable               :: table(:,:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)                   , intent(out)   , allocatable               :: table(:,:)
         character(:, SK)            , intent(out)   , allocatable   , optional  :: header
         character(*, SK)            , intent(in)                                :: file
         character(*, SK)            , intent(in)                    , optional  :: sep
@@ -3174,8 +3174,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadFile_NO_D2_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)                   , intent(out)   , allocatable               :: table(:,:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)                   , intent(out)   , allocatable               :: table(:,:)
         character(:, SK)            , intent(out)   , allocatable   , optional  :: header
         character(*, SK)            , intent(in)                                :: file
         character(*, SK)            , intent(in)                    , optional  :: sep
@@ -3190,8 +3190,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadFile_NO_D2_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)                   , intent(out)   , allocatable               :: table(:,:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)                   , intent(out)   , allocatable               :: table(:,:)
         character(:, SK)            , intent(out)   , allocatable   , optional  :: header
         character(*, SK)            , intent(in)                                :: file
         character(*, SK)            , intent(in)                    , optional  :: sep
@@ -3206,8 +3206,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadFile_NO_D2_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)                   , intent(out)   , allocatable               :: table(:,:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)                   , intent(out)   , allocatable               :: table(:,:)
         character(:, SK)            , intent(out)   , allocatable   , optional  :: header
         character(*, SK)            , intent(in)                                :: file
         character(*, SK)            , intent(in)                    , optional  :: sep
@@ -3232,8 +3232,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadUnit_NO_D1_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)            , intent(out)   , allocatable               :: table(:)
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)            , intent(out)   , allocatable               :: table(:)
         character(:, SK)            , intent(out)   , allocatable   , optional  :: header
         character(*, SK)            , intent(in)                    , optional  :: sep
         character(*, SK)            , intent(inout)                 , optional  :: iomsg
@@ -3248,8 +3248,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadUnit_NO_D1_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)            , intent(out)   , allocatable               :: table(:)
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)            , intent(out)   , allocatable               :: table(:)
         character(:, SK)            , intent(out)   , allocatable   , optional  :: header
         character(*, SK)            , intent(in)                    , optional  :: sep
         character(*, SK)            , intent(inout)                 , optional  :: iomsg
@@ -3264,8 +3264,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadUnit_NO_D1_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)            , intent(out)   , allocatable               :: table(:)
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)            , intent(out)   , allocatable               :: table(:)
         character(:, SK)            , intent(out)   , allocatable   , optional  :: header
         character(*, SK)            , intent(in)                    , optional  :: sep
         character(*, SK)            , intent(inout)                 , optional  :: iomsg
@@ -3280,8 +3280,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadUnit_NO_D1_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)            , intent(out)   , allocatable               :: table(:)
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)            , intent(out)   , allocatable               :: table(:)
         character(:, SK)            , intent(out)   , allocatable   , optional  :: header
         character(*, SK)            , intent(in)                    , optional  :: sep
         character(*, SK)            , intent(inout)                 , optional  :: iomsg
@@ -3296,8 +3296,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadUnit_NO_D1_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)            , intent(out)   , allocatable               :: table(:)
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)            , intent(out)   , allocatable               :: table(:)
         character(:, SK)            , intent(out)   , allocatable   , optional  :: header
         character(*, SK)            , intent(in)                    , optional  :: sep
         character(*, SK)            , intent(inout)                 , optional  :: iomsg
@@ -3314,8 +3314,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadUnit_NO_D1_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)                , intent(out)   , allocatable               :: table(:)
+        use pm_kind, only: IKG => IK5
+        integer(IKG)                , intent(out)   , allocatable               :: table(:)
         character(:, SK)            , intent(out)   , allocatable   , optional  :: header
         character(*, SK)            , intent(in)                    , optional  :: sep
         character(*, SK)            , intent(inout)                 , optional  :: iomsg
@@ -3330,8 +3330,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadUnit_NO_D1_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)                , intent(out)   , allocatable               :: table(:)
+        use pm_kind, only: IKG => IK4
+        integer(IKG)                , intent(out)   , allocatable               :: table(:)
         character(:, SK)            , intent(out)   , allocatable   , optional  :: header
         character(*, SK)            , intent(in)                    , optional  :: sep
         character(*, SK)            , intent(inout)                 , optional  :: iomsg
@@ -3346,8 +3346,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadUnit_NO_D1_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)                , intent(out)   , allocatable               :: table(:)
+        use pm_kind, only: IKG => IK3
+        integer(IKG)                , intent(out)   , allocatable               :: table(:)
         character(:, SK)            , intent(out)   , allocatable   , optional  :: header
         character(*, SK)            , intent(in)                    , optional  :: sep
         character(*, SK)            , intent(inout)                 , optional  :: iomsg
@@ -3362,8 +3362,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadUnit_NO_D1_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)                , intent(out)   , allocatable               :: table(:)
+        use pm_kind, only: IKG => IK2
+        integer(IKG)                , intent(out)   , allocatable               :: table(:)
         character(:, SK)            , intent(out)   , allocatable   , optional  :: header
         character(*, SK)            , intent(in)                    , optional  :: sep
         character(*, SK)            , intent(inout)                 , optional  :: iomsg
@@ -3378,8 +3378,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadUnit_NO_D1_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)                , intent(out)   , allocatable               :: table(:)
+        use pm_kind, only: IKG => IK1
+        integer(IKG)                , intent(out)   , allocatable               :: table(:)
         character(:, SK)            , intent(out)   , allocatable   , optional  :: header
         character(*, SK)            , intent(in)                    , optional  :: sep
         character(*, SK)            , intent(inout)                 , optional  :: iomsg
@@ -3396,8 +3396,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadUnit_NO_D1_LK5
 #endif
-        use pm_kind, only: LKC => LK5
-        logical(LKC)                , intent(out)   , allocatable               :: table(:)
+        use pm_kind, only: LKG => LK5
+        logical(LKG)                , intent(out)   , allocatable               :: table(:)
         character(:, SK)            , intent(out)   , allocatable   , optional  :: header
         character(*, SK)            , intent(in)                    , optional  :: sep
         character(*, SK)            , intent(inout)                 , optional  :: iomsg
@@ -3412,8 +3412,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadUnit_NO_D1_LK4
 #endif
-        use pm_kind, only: LKC => LK4
-        logical(LKC)                , intent(out)   , allocatable               :: table(:)
+        use pm_kind, only: LKG => LK4
+        logical(LKG)                , intent(out)   , allocatable               :: table(:)
         character(:, SK)            , intent(out)   , allocatable   , optional  :: header
         character(*, SK)            , intent(in)                    , optional  :: sep
         character(*, SK)            , intent(inout)                 , optional  :: iomsg
@@ -3428,8 +3428,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadUnit_NO_D1_LK3
 #endif
-        use pm_kind, only: LKC => LK3
-        logical(LKC)                , intent(out)   , allocatable               :: table(:)
+        use pm_kind, only: LKG => LK3
+        logical(LKG)                , intent(out)   , allocatable               :: table(:)
         character(:, SK)            , intent(out)   , allocatable   , optional  :: header
         character(*, SK)            , intent(in)                    , optional  :: sep
         character(*, SK)            , intent(inout)                 , optional  :: iomsg
@@ -3444,8 +3444,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadUnit_NO_D1_LK2
 #endif
-        use pm_kind, only: LKC => LK2
-        logical(LKC)                , intent(out)   , allocatable               :: table(:)
+        use pm_kind, only: LKG => LK2
+        logical(LKG)                , intent(out)   , allocatable               :: table(:)
         character(:, SK)            , intent(out)   , allocatable   , optional  :: header
         character(*, SK)            , intent(in)                    , optional  :: sep
         character(*, SK)            , intent(inout)                 , optional  :: iomsg
@@ -3460,8 +3460,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadUnit_NO_D1_LK1
 #endif
-        use pm_kind, only: LKC => LK1
-        logical(LKC)                , intent(out)   , allocatable               :: table(:)
+        use pm_kind, only: LKG => LK1
+        logical(LKG)                , intent(out)   , allocatable               :: table(:)
         character(:, SK)            , intent(out)   , allocatable   , optional  :: header
         character(*, SK)            , intent(in)                    , optional  :: sep
         character(*, SK)            , intent(inout)                 , optional  :: iomsg
@@ -3478,8 +3478,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadUnit_NO_D1_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)                , intent(out)   , allocatable               :: table(:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG)                , intent(out)   , allocatable               :: table(:)
         character(:, SK)            , intent(out)   , allocatable   , optional  :: header
         character(*, SK)            , intent(in)                    , optional  :: sep
         character(*, SK)            , intent(inout)                 , optional  :: iomsg
@@ -3494,8 +3494,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadUnit_NO_D1_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)                , intent(out)   , allocatable               :: table(:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG)                , intent(out)   , allocatable               :: table(:)
         character(:, SK)            , intent(out)   , allocatable   , optional  :: header
         character(*, SK)            , intent(in)                    , optional  :: sep
         character(*, SK)            , intent(inout)                 , optional  :: iomsg
@@ -3510,8 +3510,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadUnit_NO_D1_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)                , intent(out)   , allocatable               :: table(:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG)                , intent(out)   , allocatable               :: table(:)
         character(:, SK)            , intent(out)   , allocatable   , optional  :: header
         character(*, SK)            , intent(in)                    , optional  :: sep
         character(*, SK)            , intent(inout)                 , optional  :: iomsg
@@ -3526,8 +3526,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadUnit_NO_D1_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)                , intent(out)   , allocatable               :: table(:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG)                , intent(out)   , allocatable               :: table(:)
         character(:, SK)            , intent(out)   , allocatable   , optional  :: header
         character(*, SK)            , intent(in)                    , optional  :: sep
         character(*, SK)            , intent(inout)                 , optional  :: iomsg
@@ -3542,8 +3542,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadUnit_NO_D1_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)                , intent(out)   , allocatable               :: table(:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG)                , intent(out)   , allocatable               :: table(:)
         character(:, SK)            , intent(out)   , allocatable   , optional  :: header
         character(*, SK)            , intent(in)                    , optional  :: sep
         character(*, SK)            , intent(inout)                 , optional  :: iomsg
@@ -3560,8 +3560,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadUnit_NO_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)                   , intent(out)   , allocatable               :: table(:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)                   , intent(out)   , allocatable               :: table(:)
         character(:, SK)            , intent(out)   , allocatable   , optional  :: header
         character(*, SK)            , intent(in)                    , optional  :: sep
         character(*, SK)            , intent(inout)                 , optional  :: iomsg
@@ -3576,8 +3576,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadUnit_NO_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)                   , intent(out)   , allocatable               :: table(:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)                   , intent(out)   , allocatable               :: table(:)
         character(:, SK)            , intent(out)   , allocatable   , optional  :: header
         character(*, SK)            , intent(in)                    , optional  :: sep
         character(*, SK)            , intent(inout)                 , optional  :: iomsg
@@ -3592,8 +3592,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadUnit_NO_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)                   , intent(out)   , allocatable               :: table(:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)                   , intent(out)   , allocatable               :: table(:)
         character(:, SK)            , intent(out)   , allocatable   , optional  :: header
         character(*, SK)            , intent(in)                    , optional  :: sep
         character(*, SK)            , intent(inout)                 , optional  :: iomsg
@@ -3608,8 +3608,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadUnit_NO_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)                   , intent(out)   , allocatable               :: table(:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)                   , intent(out)   , allocatable               :: table(:)
         character(:, SK)            , intent(out)   , allocatable   , optional  :: header
         character(*, SK)            , intent(in)                    , optional  :: sep
         character(*, SK)            , intent(inout)                 , optional  :: iomsg
@@ -3624,8 +3624,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadUnit_NO_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)                   , intent(out)   , allocatable               :: table(:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)                   , intent(out)   , allocatable               :: table(:)
         character(:, SK)            , intent(out)   , allocatable   , optional  :: header
         character(*, SK)            , intent(in)                    , optional  :: sep
         character(*, SK)            , intent(inout)                 , optional  :: iomsg
@@ -3650,8 +3650,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadUnit_NO_D2_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)            , intent(out)   , allocatable               :: table(:,:)
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)            , intent(out)   , allocatable               :: table(:,:)
         character(:, SK)            , intent(out)   , allocatable   , optional  :: header
         character(*, SK)            , intent(in)                    , optional  :: sep
         character(*, SK)            , intent(inout)                 , optional  :: iomsg
@@ -3666,8 +3666,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadUnit_NO_D2_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)            , intent(out)   , allocatable               :: table(:,:)
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)            , intent(out)   , allocatable               :: table(:,:)
         character(:, SK)            , intent(out)   , allocatable   , optional  :: header
         character(*, SK)            , intent(in)                    , optional  :: sep
         character(*, SK)            , intent(inout)                 , optional  :: iomsg
@@ -3682,8 +3682,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadUnit_NO_D2_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)            , intent(out)   , allocatable               :: table(:,:)
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)            , intent(out)   , allocatable               :: table(:,:)
         character(:, SK)            , intent(out)   , allocatable   , optional  :: header
         character(*, SK)            , intent(in)                    , optional  :: sep
         character(*, SK)            , intent(inout)                 , optional  :: iomsg
@@ -3698,8 +3698,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadUnit_NO_D2_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)            , intent(out)   , allocatable               :: table(:,:)
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)            , intent(out)   , allocatable               :: table(:,:)
         character(:, SK)            , intent(out)   , allocatable   , optional  :: header
         character(*, SK)            , intent(in)                    , optional  :: sep
         character(*, SK)            , intent(inout)                 , optional  :: iomsg
@@ -3714,8 +3714,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadUnit_NO_D2_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)            , intent(out)   , allocatable               :: table(:,:)
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)            , intent(out)   , allocatable               :: table(:,:)
         character(:, SK)            , intent(out)   , allocatable   , optional  :: header
         character(*, SK)            , intent(in)                    , optional  :: sep
         character(*, SK)            , intent(inout)                 , optional  :: iomsg
@@ -3732,8 +3732,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadUnit_NO_D2_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)                , intent(out)   , allocatable               :: table(:,:)
+        use pm_kind, only: IKG => IK5
+        integer(IKG)                , intent(out)   , allocatable               :: table(:,:)
         character(:, SK)            , intent(out)   , allocatable   , optional  :: header
         character(*, SK)            , intent(in)                    , optional  :: sep
         character(*, SK)            , intent(inout)                 , optional  :: iomsg
@@ -3748,8 +3748,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadUnit_NO_D2_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)                , intent(out)   , allocatable               :: table(:,:)
+        use pm_kind, only: IKG => IK4
+        integer(IKG)                , intent(out)   , allocatable               :: table(:,:)
         character(:, SK)            , intent(out)   , allocatable   , optional  :: header
         character(*, SK)            , intent(in)                    , optional  :: sep
         character(*, SK)            , intent(inout)                 , optional  :: iomsg
@@ -3764,8 +3764,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadUnit_NO_D2_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)                , intent(out)   , allocatable               :: table(:,:)
+        use pm_kind, only: IKG => IK3
+        integer(IKG)                , intent(out)   , allocatable               :: table(:,:)
         character(:, SK)            , intent(out)   , allocatable   , optional  :: header
         character(*, SK)            , intent(in)                    , optional  :: sep
         character(*, SK)            , intent(inout)                 , optional  :: iomsg
@@ -3780,8 +3780,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadUnit_NO_D2_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)                , intent(out)   , allocatable               :: table(:,:)
+        use pm_kind, only: IKG => IK2
+        integer(IKG)                , intent(out)   , allocatable               :: table(:,:)
         character(:, SK)            , intent(out)   , allocatable   , optional  :: header
         character(*, SK)            , intent(in)                    , optional  :: sep
         character(*, SK)            , intent(inout)                 , optional  :: iomsg
@@ -3796,8 +3796,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadUnit_NO_D2_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)                , intent(out)   , allocatable               :: table(:,:)
+        use pm_kind, only: IKG => IK1
+        integer(IKG)                , intent(out)   , allocatable               :: table(:,:)
         character(:, SK)            , intent(out)   , allocatable   , optional  :: header
         character(*, SK)            , intent(in)                    , optional  :: sep
         character(*, SK)            , intent(inout)                 , optional  :: iomsg
@@ -3814,8 +3814,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadUnit_NO_D2_LK5
 #endif
-        use pm_kind, only: LKC => LK5
-        logical(LKC)                , intent(out)   , allocatable               :: table(:,:)
+        use pm_kind, only: LKG => LK5
+        logical(LKG)                , intent(out)   , allocatable               :: table(:,:)
         character(:, SK)            , intent(out)   , allocatable   , optional  :: header
         character(*, SK)            , intent(in)                    , optional  :: sep
         character(*, SK)            , intent(inout)                 , optional  :: iomsg
@@ -3830,8 +3830,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadUnit_NO_D2_LK4
 #endif
-        use pm_kind, only: LKC => LK4
-        logical(LKC)                , intent(out)   , allocatable               :: table(:,:)
+        use pm_kind, only: LKG => LK4
+        logical(LKG)                , intent(out)   , allocatable               :: table(:,:)
         character(:, SK)            , intent(out)   , allocatable   , optional  :: header
         character(*, SK)            , intent(in)                    , optional  :: sep
         character(*, SK)            , intent(inout)                 , optional  :: iomsg
@@ -3846,8 +3846,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadUnit_NO_D2_LK3
 #endif
-        use pm_kind, only: LKC => LK3
-        logical(LKC)                , intent(out)   , allocatable               :: table(:,:)
+        use pm_kind, only: LKG => LK3
+        logical(LKG)                , intent(out)   , allocatable               :: table(:,:)
         character(:, SK)            , intent(out)   , allocatable   , optional  :: header
         character(*, SK)            , intent(in)                    , optional  :: sep
         character(*, SK)            , intent(inout)                 , optional  :: iomsg
@@ -3862,8 +3862,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadUnit_NO_D2_LK2
 #endif
-        use pm_kind, only: LKC => LK2
-        logical(LKC)                , intent(out)   , allocatable               :: table(:,:)
+        use pm_kind, only: LKG => LK2
+        logical(LKG)                , intent(out)   , allocatable               :: table(:,:)
         character(:, SK)            , intent(out)   , allocatable   , optional  :: header
         character(*, SK)            , intent(in)                    , optional  :: sep
         character(*, SK)            , intent(inout)                 , optional  :: iomsg
@@ -3878,8 +3878,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadUnit_NO_D2_LK1
 #endif
-        use pm_kind, only: LKC => LK1
-        logical(LKC)                , intent(out)   , allocatable               :: table(:,:)
+        use pm_kind, only: LKG => LK1
+        logical(LKG)                , intent(out)   , allocatable               :: table(:,:)
         character(:, SK)            , intent(out)   , allocatable   , optional  :: header
         character(*, SK)            , intent(in)                    , optional  :: sep
         character(*, SK)            , intent(inout)                 , optional  :: iomsg
@@ -3896,8 +3896,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadUnit_NO_D2_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)                , intent(out)   , allocatable               :: table(:,:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG)                , intent(out)   , allocatable               :: table(:,:)
         character(:, SK)            , intent(out)   , allocatable   , optional  :: header
         character(*, SK)            , intent(in)                    , optional  :: sep
         character(*, SK)            , intent(inout)                 , optional  :: iomsg
@@ -3912,8 +3912,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadUnit_NO_D2_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)                , intent(out)   , allocatable               :: table(:,:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG)                , intent(out)   , allocatable               :: table(:,:)
         character(:, SK)            , intent(out)   , allocatable   , optional  :: header
         character(*, SK)            , intent(in)                    , optional  :: sep
         character(*, SK)            , intent(inout)                 , optional  :: iomsg
@@ -3928,8 +3928,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadUnit_NO_D2_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)                , intent(out)   , allocatable               :: table(:,:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG)                , intent(out)   , allocatable               :: table(:,:)
         character(:, SK)            , intent(out)   , allocatable   , optional  :: header
         character(*, SK)            , intent(in)                    , optional  :: sep
         character(*, SK)            , intent(inout)                 , optional  :: iomsg
@@ -3944,8 +3944,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadUnit_NO_D2_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)                , intent(out)   , allocatable               :: table(:,:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG)                , intent(out)   , allocatable               :: table(:,:)
         character(:, SK)            , intent(out)   , allocatable   , optional  :: header
         character(*, SK)            , intent(in)                    , optional  :: sep
         character(*, SK)            , intent(inout)                 , optional  :: iomsg
@@ -3960,8 +3960,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadUnit_NO_D2_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)                , intent(out)   , allocatable               :: table(:,:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG)                , intent(out)   , allocatable               :: table(:,:)
         character(:, SK)            , intent(out)   , allocatable   , optional  :: header
         character(*, SK)            , intent(in)                    , optional  :: sep
         character(*, SK)            , intent(inout)                 , optional  :: iomsg
@@ -3978,8 +3978,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadUnit_NO_D2_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)                   , intent(out)   , allocatable               :: table(:,:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)                   , intent(out)   , allocatable               :: table(:,:)
         character(:, SK)            , intent(out)   , allocatable   , optional  :: header
         character(*, SK)            , intent(in)                    , optional  :: sep
         character(*, SK)            , intent(inout)                 , optional  :: iomsg
@@ -3994,8 +3994,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadUnit_NO_D2_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)                   , intent(out)   , allocatable               :: table(:,:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)                   , intent(out)   , allocatable               :: table(:,:)
         character(:, SK)            , intent(out)   , allocatable   , optional  :: header
         character(*, SK)            , intent(in)                    , optional  :: sep
         character(*, SK)            , intent(inout)                 , optional  :: iomsg
@@ -4010,8 +4010,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadUnit_NO_D2_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)                   , intent(out)   , allocatable               :: table(:,:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)                   , intent(out)   , allocatable               :: table(:,:)
         character(:, SK)            , intent(out)   , allocatable   , optional  :: header
         character(*, SK)            , intent(in)                    , optional  :: sep
         character(*, SK)            , intent(inout)                 , optional  :: iomsg
@@ -4026,8 +4026,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadUnit_NO_D2_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)                   , intent(out)   , allocatable               :: table(:,:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)                   , intent(out)   , allocatable               :: table(:,:)
         character(:, SK)            , intent(out)   , allocatable   , optional  :: header
         character(*, SK)            , intent(in)                    , optional  :: sep
         character(*, SK)            , intent(inout)                 , optional  :: iomsg
@@ -4042,8 +4042,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadUnit_NO_D2_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)                   , intent(out)   , allocatable               :: table(:,:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)                   , intent(out)   , allocatable               :: table(:,:)
         character(:, SK)            , intent(out)   , allocatable   , optional  :: header
         character(*, SK)            , intent(in)                    , optional  :: sep
         character(*, SK)            , intent(inout)                 , optional  :: iomsg
@@ -4068,8 +4068,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadFile_TO_D1_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)            , intent(out)   , allocatable               :: table(:)
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)            , intent(out)   , allocatable               :: table(:)
         character(:, SK)            , intent(out)   , allocatable   , optional  :: header
         character(*, SK)            , intent(in)                                :: file
         character(*, SK)            , intent(in)                    , optional  :: sep
@@ -4085,8 +4085,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadFile_TO_D1_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)            , intent(out)   , allocatable               :: table(:)
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)            , intent(out)   , allocatable               :: table(:)
         character(:, SK)            , intent(out)   , allocatable   , optional  :: header
         character(*, SK)            , intent(in)                                :: file
         character(*, SK)            , intent(in)                    , optional  :: sep
@@ -4102,8 +4102,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadFile_TO_D1_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)            , intent(out)   , allocatable               :: table(:)
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)            , intent(out)   , allocatable               :: table(:)
         character(:, SK)            , intent(out)   , allocatable   , optional  :: header
         character(*, SK)            , intent(in)                                :: file
         character(*, SK)            , intent(in)                    , optional  :: sep
@@ -4119,8 +4119,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadFile_TO_D1_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)            , intent(out)   , allocatable               :: table(:)
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)            , intent(out)   , allocatable               :: table(:)
         character(:, SK)            , intent(out)   , allocatable   , optional  :: header
         character(*, SK)            , intent(in)                                :: file
         character(*, SK)            , intent(in)                    , optional  :: sep
@@ -4136,8 +4136,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadFile_TO_D1_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)            , intent(out)   , allocatable               :: table(:)
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)            , intent(out)   , allocatable               :: table(:)
         character(:, SK)            , intent(out)   , allocatable   , optional  :: header
         character(*, SK)            , intent(in)                                :: file
         character(*, SK)            , intent(in)                    , optional  :: sep
@@ -4155,8 +4155,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadFile_TO_D1_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)                , intent(out)   , allocatable               :: table(:)
+        use pm_kind, only: IKG => IK5
+        integer(IKG)                , intent(out)   , allocatable               :: table(:)
         character(:, SK)            , intent(out)   , allocatable   , optional  :: header
         character(*, SK)            , intent(in)                                :: file
         character(*, SK)            , intent(in)                    , optional  :: sep
@@ -4172,8 +4172,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadFile_TO_D1_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)                , intent(out)   , allocatable               :: table(:)
+        use pm_kind, only: IKG => IK4
+        integer(IKG)                , intent(out)   , allocatable               :: table(:)
         character(:, SK)            , intent(out)   , allocatable   , optional  :: header
         character(*, SK)            , intent(in)                                :: file
         character(*, SK)            , intent(in)                    , optional  :: sep
@@ -4189,8 +4189,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadFile_TO_D1_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)                , intent(out)   , allocatable               :: table(:)
+        use pm_kind, only: IKG => IK3
+        integer(IKG)                , intent(out)   , allocatable               :: table(:)
         character(:, SK)            , intent(out)   , allocatable   , optional  :: header
         character(*, SK)            , intent(in)                                :: file
         character(*, SK)            , intent(in)                    , optional  :: sep
@@ -4206,8 +4206,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadFile_TO_D1_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)                , intent(out)   , allocatable               :: table(:)
+        use pm_kind, only: IKG => IK2
+        integer(IKG)                , intent(out)   , allocatable               :: table(:)
         character(:, SK)            , intent(out)   , allocatable   , optional  :: header
         character(*, SK)            , intent(in)                                :: file
         character(*, SK)            , intent(in)                    , optional  :: sep
@@ -4223,8 +4223,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadFile_TO_D1_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)                , intent(out)   , allocatable               :: table(:)
+        use pm_kind, only: IKG => IK1
+        integer(IKG)                , intent(out)   , allocatable               :: table(:)
         character(:, SK)            , intent(out)   , allocatable   , optional  :: header
         character(*, SK)            , intent(in)                                :: file
         character(*, SK)            , intent(in)                    , optional  :: sep
@@ -4242,8 +4242,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadFile_TO_D1_LK5
 #endif
-        use pm_kind, only: LKC => LK5
-        logical(LKC)                , intent(out)   , allocatable               :: table(:)
+        use pm_kind, only: LKG => LK5
+        logical(LKG)                , intent(out)   , allocatable               :: table(:)
         character(:, SK)            , intent(out)   , allocatable   , optional  :: header
         character(*, SK)            , intent(in)                                :: file
         character(*, SK)            , intent(in)                    , optional  :: sep
@@ -4259,8 +4259,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadFile_TO_D1_LK4
 #endif
-        use pm_kind, only: LKC => LK4
-        logical(LKC)                , intent(out)   , allocatable               :: table(:)
+        use pm_kind, only: LKG => LK4
+        logical(LKG)                , intent(out)   , allocatable               :: table(:)
         character(:, SK)            , intent(out)   , allocatable   , optional  :: header
         character(*, SK)            , intent(in)                                :: file
         character(*, SK)            , intent(in)                    , optional  :: sep
@@ -4276,8 +4276,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadFile_TO_D1_LK3
 #endif
-        use pm_kind, only: LKC => LK3
-        logical(LKC)                , intent(out)   , allocatable               :: table(:)
+        use pm_kind, only: LKG => LK3
+        logical(LKG)                , intent(out)   , allocatable               :: table(:)
         character(:, SK)            , intent(out)   , allocatable   , optional  :: header
         character(*, SK)            , intent(in)                                :: file
         character(*, SK)            , intent(in)                    , optional  :: sep
@@ -4293,8 +4293,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadFile_TO_D1_LK2
 #endif
-        use pm_kind, only: LKC => LK2
-        logical(LKC)                , intent(out)   , allocatable               :: table(:)
+        use pm_kind, only: LKG => LK2
+        logical(LKG)                , intent(out)   , allocatable               :: table(:)
         character(:, SK)            , intent(out)   , allocatable   , optional  :: header
         character(*, SK)            , intent(in)                                :: file
         character(*, SK)            , intent(in)                    , optional  :: sep
@@ -4310,8 +4310,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadFile_TO_D1_LK1
 #endif
-        use pm_kind, only: LKC => LK1
-        logical(LKC)                , intent(out)   , allocatable               :: table(:)
+        use pm_kind, only: LKG => LK1
+        logical(LKG)                , intent(out)   , allocatable               :: table(:)
         character(:, SK)            , intent(out)   , allocatable   , optional  :: header
         character(*, SK)            , intent(in)                                :: file
         character(*, SK)            , intent(in)                    , optional  :: sep
@@ -4329,8 +4329,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadFile_TO_D1_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)                , intent(out)   , allocatable               :: table(:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG)                , intent(out)   , allocatable               :: table(:)
         character(:, SK)            , intent(out)   , allocatable   , optional  :: header
         character(*, SK)            , intent(in)                                :: file
         character(*, SK)            , intent(in)                    , optional  :: sep
@@ -4346,8 +4346,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadFile_TO_D1_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)                , intent(out)   , allocatable               :: table(:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG)                , intent(out)   , allocatable               :: table(:)
         character(:, SK)            , intent(out)   , allocatable   , optional  :: header
         character(*, SK)            , intent(in)                                :: file
         character(*, SK)            , intent(in)                    , optional  :: sep
@@ -4363,8 +4363,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadFile_TO_D1_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)                , intent(out)   , allocatable               :: table(:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG)                , intent(out)   , allocatable               :: table(:)
         character(:, SK)            , intent(out)   , allocatable   , optional  :: header
         character(*, SK)            , intent(in)                                :: file
         character(*, SK)            , intent(in)                    , optional  :: sep
@@ -4380,8 +4380,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadFile_TO_D1_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)                , intent(out)   , allocatable               :: table(:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG)                , intent(out)   , allocatable               :: table(:)
         character(:, SK)            , intent(out)   , allocatable   , optional  :: header
         character(*, SK)            , intent(in)                                :: file
         character(*, SK)            , intent(in)                    , optional  :: sep
@@ -4397,8 +4397,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadFile_TO_D1_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)                , intent(out)   , allocatable               :: table(:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG)                , intent(out)   , allocatable               :: table(:)
         character(:, SK)            , intent(out)   , allocatable   , optional  :: header
         character(*, SK)            , intent(in)                                :: file
         character(*, SK)            , intent(in)                    , optional  :: sep
@@ -4416,8 +4416,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadFile_TO_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)                   , intent(out)   , allocatable               :: table(:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)                   , intent(out)   , allocatable               :: table(:)
         character(:, SK)            , intent(out)   , allocatable   , optional  :: header
         character(*, SK)            , intent(in)                                :: file
         character(*, SK)            , intent(in)                    , optional  :: sep
@@ -4433,8 +4433,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadFile_TO_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)                   , intent(out)   , allocatable               :: table(:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)                   , intent(out)   , allocatable               :: table(:)
         character(:, SK)            , intent(out)   , allocatable   , optional  :: header
         character(*, SK)            , intent(in)                                :: file
         character(*, SK)            , intent(in)                    , optional  :: sep
@@ -4450,8 +4450,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadFile_TO_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)                   , intent(out)   , allocatable               :: table(:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)                   , intent(out)   , allocatable               :: table(:)
         character(:, SK)            , intent(out)   , allocatable   , optional  :: header
         character(*, SK)            , intent(in)                                :: file
         character(*, SK)            , intent(in)                    , optional  :: sep
@@ -4467,8 +4467,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadFile_TO_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)                   , intent(out)   , allocatable               :: table(:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)                   , intent(out)   , allocatable               :: table(:)
         character(:, SK)            , intent(out)   , allocatable   , optional  :: header
         character(*, SK)            , intent(in)                                :: file
         character(*, SK)            , intent(in)                    , optional  :: sep
@@ -4484,8 +4484,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadFile_TO_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)                   , intent(out)   , allocatable               :: table(:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)                   , intent(out)   , allocatable               :: table(:)
         character(:, SK)            , intent(out)   , allocatable   , optional  :: header
         character(*, SK)            , intent(in)                                :: file
         character(*, SK)            , intent(in)                    , optional  :: sep
@@ -4511,8 +4511,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadUnit_TO_D1_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)            , intent(out)   , allocatable               :: table(:)
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)            , intent(out)   , allocatable               :: table(:)
         character(:, SK)            , intent(out)   , allocatable   , optional  :: header
         character(*, SK)            , intent(in)                    , optional  :: sep
         character(*, SK)            , intent(inout)                 , optional  :: iomsg
@@ -4528,8 +4528,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadUnit_TO_D1_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)            , intent(out)   , allocatable               :: table(:)
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)            , intent(out)   , allocatable               :: table(:)
         character(:, SK)            , intent(out)   , allocatable   , optional  :: header
         character(*, SK)            , intent(in)                    , optional  :: sep
         character(*, SK)            , intent(inout)                 , optional  :: iomsg
@@ -4545,8 +4545,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadUnit_TO_D1_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)            , intent(out)   , allocatable               :: table(:)
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)            , intent(out)   , allocatable               :: table(:)
         character(:, SK)            , intent(out)   , allocatable   , optional  :: header
         character(*, SK)            , intent(in)                    , optional  :: sep
         character(*, SK)            , intent(inout)                 , optional  :: iomsg
@@ -4562,8 +4562,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadUnit_TO_D1_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)            , intent(out)   , allocatable               :: table(:)
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)            , intent(out)   , allocatable               :: table(:)
         character(:, SK)            , intent(out)   , allocatable   , optional  :: header
         character(*, SK)            , intent(in)                    , optional  :: sep
         character(*, SK)            , intent(inout)                 , optional  :: iomsg
@@ -4579,8 +4579,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadUnit_TO_D1_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)            , intent(out)   , allocatable               :: table(:)
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)            , intent(out)   , allocatable               :: table(:)
         character(:, SK)            , intent(out)   , allocatable   , optional  :: header
         character(*, SK)            , intent(in)                    , optional  :: sep
         character(*, SK)            , intent(inout)                 , optional  :: iomsg
@@ -4598,8 +4598,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadUnit_TO_D1_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)                , intent(out)   , allocatable               :: table(:)
+        use pm_kind, only: IKG => IK5
+        integer(IKG)                , intent(out)   , allocatable               :: table(:)
         character(:, SK)            , intent(out)   , allocatable   , optional  :: header
         character(*, SK)            , intent(in)                    , optional  :: sep
         character(*, SK)            , intent(inout)                 , optional  :: iomsg
@@ -4615,8 +4615,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadUnit_TO_D1_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)                , intent(out)   , allocatable               :: table(:)
+        use pm_kind, only: IKG => IK4
+        integer(IKG)                , intent(out)   , allocatable               :: table(:)
         character(:, SK)            , intent(out)   , allocatable   , optional  :: header
         character(*, SK)            , intent(in)                    , optional  :: sep
         character(*, SK)            , intent(inout)                 , optional  :: iomsg
@@ -4632,8 +4632,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadUnit_TO_D1_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)                , intent(out)   , allocatable               :: table(:)
+        use pm_kind, only: IKG => IK3
+        integer(IKG)                , intent(out)   , allocatable               :: table(:)
         character(:, SK)            , intent(out)   , allocatable   , optional  :: header
         character(*, SK)            , intent(in)                    , optional  :: sep
         character(*, SK)            , intent(inout)                 , optional  :: iomsg
@@ -4649,8 +4649,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadUnit_TO_D1_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)                , intent(out)   , allocatable               :: table(:)
+        use pm_kind, only: IKG => IK2
+        integer(IKG)                , intent(out)   , allocatable               :: table(:)
         character(:, SK)            , intent(out)   , allocatable   , optional  :: header
         character(*, SK)            , intent(in)                    , optional  :: sep
         character(*, SK)            , intent(inout)                 , optional  :: iomsg
@@ -4666,8 +4666,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadUnit_TO_D1_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)                , intent(out)   , allocatable               :: table(:)
+        use pm_kind, only: IKG => IK1
+        integer(IKG)                , intent(out)   , allocatable               :: table(:)
         character(:, SK)            , intent(out)   , allocatable   , optional  :: header
         character(*, SK)            , intent(in)                    , optional  :: sep
         character(*, SK)            , intent(inout)                 , optional  :: iomsg
@@ -4685,8 +4685,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadUnit_TO_D1_LK5
 #endif
-        use pm_kind, only: LKC => LK5
-        logical(LKC)                , intent(out)   , allocatable               :: table(:)
+        use pm_kind, only: LKG => LK5
+        logical(LKG)                , intent(out)   , allocatable               :: table(:)
         character(:, SK)            , intent(out)   , allocatable   , optional  :: header
         character(*, SK)            , intent(in)                    , optional  :: sep
         character(*, SK)            , intent(inout)                 , optional  :: iomsg
@@ -4702,8 +4702,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadUnit_TO_D1_LK4
 #endif
-        use pm_kind, only: LKC => LK4
-        logical(LKC)                , intent(out)   , allocatable               :: table(:)
+        use pm_kind, only: LKG => LK4
+        logical(LKG)                , intent(out)   , allocatable               :: table(:)
         character(:, SK)            , intent(out)   , allocatable   , optional  :: header
         character(*, SK)            , intent(in)                    , optional  :: sep
         character(*, SK)            , intent(inout)                 , optional  :: iomsg
@@ -4719,8 +4719,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadUnit_TO_D1_LK3
 #endif
-        use pm_kind, only: LKC => LK3
-        logical(LKC)                , intent(out)   , allocatable               :: table(:)
+        use pm_kind, only: LKG => LK3
+        logical(LKG)                , intent(out)   , allocatable               :: table(:)
         character(:, SK)            , intent(out)   , allocatable   , optional  :: header
         character(*, SK)            , intent(in)                    , optional  :: sep
         character(*, SK)            , intent(inout)                 , optional  :: iomsg
@@ -4736,8 +4736,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadUnit_TO_D1_LK2
 #endif
-        use pm_kind, only: LKC => LK2
-        logical(LKC)                , intent(out)   , allocatable               :: table(:)
+        use pm_kind, only: LKG => LK2
+        logical(LKG)                , intent(out)   , allocatable               :: table(:)
         character(:, SK)            , intent(out)   , allocatable   , optional  :: header
         character(*, SK)            , intent(in)                    , optional  :: sep
         character(*, SK)            , intent(inout)                 , optional  :: iomsg
@@ -4753,8 +4753,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadUnit_TO_D1_LK1
 #endif
-        use pm_kind, only: LKC => LK1
-        logical(LKC)                , intent(out)   , allocatable               :: table(:)
+        use pm_kind, only: LKG => LK1
+        logical(LKG)                , intent(out)   , allocatable               :: table(:)
         character(:, SK)            , intent(out)   , allocatable   , optional  :: header
         character(*, SK)            , intent(in)                    , optional  :: sep
         character(*, SK)            , intent(inout)                 , optional  :: iomsg
@@ -4772,8 +4772,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadUnit_TO_D1_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)                , intent(out)   , allocatable               :: table(:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG)                , intent(out)   , allocatable               :: table(:)
         character(:, SK)            , intent(out)   , allocatable   , optional  :: header
         character(*, SK)            , intent(in)                    , optional  :: sep
         character(*, SK)            , intent(inout)                 , optional  :: iomsg
@@ -4789,8 +4789,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadUnit_TO_D1_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)                , intent(out)   , allocatable               :: table(:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG)                , intent(out)   , allocatable               :: table(:)
         character(:, SK)            , intent(out)   , allocatable   , optional  :: header
         character(*, SK)            , intent(in)                    , optional  :: sep
         character(*, SK)            , intent(inout)                 , optional  :: iomsg
@@ -4806,8 +4806,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadUnit_TO_D1_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)                , intent(out)   , allocatable               :: table(:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG)                , intent(out)   , allocatable               :: table(:)
         character(:, SK)            , intent(out)   , allocatable   , optional  :: header
         character(*, SK)            , intent(in)                    , optional  :: sep
         character(*, SK)            , intent(inout)                 , optional  :: iomsg
@@ -4823,8 +4823,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadUnit_TO_D1_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)                , intent(out)   , allocatable               :: table(:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG)                , intent(out)   , allocatable               :: table(:)
         character(:, SK)            , intent(out)   , allocatable   , optional  :: header
         character(*, SK)            , intent(in)                    , optional  :: sep
         character(*, SK)            , intent(inout)                 , optional  :: iomsg
@@ -4840,8 +4840,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadUnit_TO_D1_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)                , intent(out)   , allocatable               :: table(:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG)                , intent(out)   , allocatable               :: table(:)
         character(:, SK)            , intent(out)   , allocatable   , optional  :: header
         character(*, SK)            , intent(in)                    , optional  :: sep
         character(*, SK)            , intent(inout)                 , optional  :: iomsg
@@ -4859,8 +4859,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadUnit_TO_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)                   , intent(out)   , allocatable               :: table(:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)                   , intent(out)   , allocatable               :: table(:)
         character(:, SK)            , intent(out)   , allocatable   , optional  :: header
         character(*, SK)            , intent(in)                    , optional  :: sep
         character(*, SK)            , intent(inout)                 , optional  :: iomsg
@@ -4876,8 +4876,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadUnit_TO_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)                   , intent(out)   , allocatable               :: table(:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)                   , intent(out)   , allocatable               :: table(:)
         character(:, SK)            , intent(out)   , allocatable   , optional  :: header
         character(*, SK)            , intent(in)                    , optional  :: sep
         character(*, SK)            , intent(inout)                 , optional  :: iomsg
@@ -4893,8 +4893,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadUnit_TO_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)                   , intent(out)   , allocatable               :: table(:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)                   , intent(out)   , allocatable               :: table(:)
         character(:, SK)            , intent(out)   , allocatable   , optional  :: header
         character(*, SK)            , intent(in)                    , optional  :: sep
         character(*, SK)            , intent(inout)                 , optional  :: iomsg
@@ -4910,8 +4910,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadUnit_TO_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)                   , intent(out)   , allocatable               :: table(:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)                   , intent(out)   , allocatable               :: table(:)
         character(:, SK)            , intent(out)   , allocatable   , optional  :: header
         character(*, SK)            , intent(in)                    , optional  :: sep
         character(*, SK)            , intent(inout)                 , optional  :: iomsg
@@ -4927,8 +4927,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadUnit_TO_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)                   , intent(out)   , allocatable               :: table(:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)                   , intent(out)   , allocatable               :: table(:)
         character(:, SK)            , intent(out)   , allocatable   , optional  :: header
         character(*, SK)            , intent(in)                    , optional  :: sep
         character(*, SK)            , intent(inout)                 , optional  :: iomsg
@@ -4954,8 +4954,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadFile_TO_D2_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)            , intent(out)   , allocatable               :: table(:,:)
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)            , intent(out)   , allocatable               :: table(:,:)
         character(:, SK)            , intent(out)   , allocatable   , optional  :: header
         character(*, SK)            , intent(in)                                :: file
         character(*, SK)            , intent(in)                    , optional  :: sep
@@ -4971,8 +4971,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadFile_TO_D2_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)            , intent(out)   , allocatable               :: table(:,:)
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)            , intent(out)   , allocatable               :: table(:,:)
         character(:, SK)            , intent(out)   , allocatable   , optional  :: header
         character(*, SK)            , intent(in)                                :: file
         character(*, SK)            , intent(in)                    , optional  :: sep
@@ -4988,8 +4988,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadFile_TO_D2_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)            , intent(out)   , allocatable               :: table(:,:)
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)            , intent(out)   , allocatable               :: table(:,:)
         character(:, SK)            , intent(out)   , allocatable   , optional  :: header
         character(*, SK)            , intent(in)                                :: file
         character(*, SK)            , intent(in)                    , optional  :: sep
@@ -5005,8 +5005,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadFile_TO_D2_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)            , intent(out)   , allocatable               :: table(:,:)
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)            , intent(out)   , allocatable               :: table(:,:)
         character(:, SK)            , intent(out)   , allocatable   , optional  :: header
         character(*, SK)            , intent(in)                                :: file
         character(*, SK)            , intent(in)                    , optional  :: sep
@@ -5022,8 +5022,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadFile_TO_D2_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)            , intent(out)   , allocatable               :: table(:,:)
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)            , intent(out)   , allocatable               :: table(:,:)
         character(:, SK)            , intent(out)   , allocatable   , optional  :: header
         character(*, SK)            , intent(in)                                :: file
         character(*, SK)            , intent(in)                    , optional  :: sep
@@ -5041,8 +5041,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadFile_TO_D2_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)                , intent(out)   , allocatable               :: table(:,:)
+        use pm_kind, only: IKG => IK5
+        integer(IKG)                , intent(out)   , allocatable               :: table(:,:)
         character(:, SK)            , intent(out)   , allocatable   , optional  :: header
         character(*, SK)            , intent(in)                                :: file
         character(*, SK)            , intent(in)                    , optional  :: sep
@@ -5058,8 +5058,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadFile_TO_D2_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)                , intent(out)   , allocatable               :: table(:,:)
+        use pm_kind, only: IKG => IK4
+        integer(IKG)                , intent(out)   , allocatable               :: table(:,:)
         character(:, SK)            , intent(out)   , allocatable   , optional  :: header
         character(*, SK)            , intent(in)                                :: file
         character(*, SK)            , intent(in)                    , optional  :: sep
@@ -5075,8 +5075,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadFile_TO_D2_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)                , intent(out)   , allocatable               :: table(:,:)
+        use pm_kind, only: IKG => IK3
+        integer(IKG)                , intent(out)   , allocatable               :: table(:,:)
         character(:, SK)            , intent(out)   , allocatable   , optional  :: header
         character(*, SK)            , intent(in)                                :: file
         character(*, SK)            , intent(in)                    , optional  :: sep
@@ -5092,8 +5092,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadFile_TO_D2_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)                , intent(out)   , allocatable               :: table(:,:)
+        use pm_kind, only: IKG => IK2
+        integer(IKG)                , intent(out)   , allocatable               :: table(:,:)
         character(:, SK)            , intent(out)   , allocatable   , optional  :: header
         character(*, SK)            , intent(in)                                :: file
         character(*, SK)            , intent(in)                    , optional  :: sep
@@ -5109,8 +5109,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadFile_TO_D2_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)                , intent(out)   , allocatable               :: table(:,:)
+        use pm_kind, only: IKG => IK1
+        integer(IKG)                , intent(out)   , allocatable               :: table(:,:)
         character(:, SK)            , intent(out)   , allocatable   , optional  :: header
         character(*, SK)            , intent(in)                                :: file
         character(*, SK)            , intent(in)                    , optional  :: sep
@@ -5128,8 +5128,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadFile_TO_D2_LK5
 #endif
-        use pm_kind, only: LKC => LK5
-        logical(LKC)                , intent(out)   , allocatable               :: table(:,:)
+        use pm_kind, only: LKG => LK5
+        logical(LKG)                , intent(out)   , allocatable               :: table(:,:)
         character(:, SK)            , intent(out)   , allocatable   , optional  :: header
         character(*, SK)            , intent(in)                                :: file
         character(*, SK)            , intent(in)                    , optional  :: sep
@@ -5145,8 +5145,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadFile_TO_D2_LK4
 #endif
-        use pm_kind, only: LKC => LK4
-        logical(LKC)                , intent(out)   , allocatable               :: table(:,:)
+        use pm_kind, only: LKG => LK4
+        logical(LKG)                , intent(out)   , allocatable               :: table(:,:)
         character(:, SK)            , intent(out)   , allocatable   , optional  :: header
         character(*, SK)            , intent(in)                                :: file
         character(*, SK)            , intent(in)                    , optional  :: sep
@@ -5162,8 +5162,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadFile_TO_D2_LK3
 #endif
-        use pm_kind, only: LKC => LK3
-        logical(LKC)                , intent(out)   , allocatable               :: table(:,:)
+        use pm_kind, only: LKG => LK3
+        logical(LKG)                , intent(out)   , allocatable               :: table(:,:)
         character(:, SK)            , intent(out)   , allocatable   , optional  :: header
         character(*, SK)            , intent(in)                                :: file
         character(*, SK)            , intent(in)                    , optional  :: sep
@@ -5179,8 +5179,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadFile_TO_D2_LK2
 #endif
-        use pm_kind, only: LKC => LK2
-        logical(LKC)                , intent(out)   , allocatable               :: table(:,:)
+        use pm_kind, only: LKG => LK2
+        logical(LKG)                , intent(out)   , allocatable               :: table(:,:)
         character(:, SK)            , intent(out)   , allocatable   , optional  :: header
         character(*, SK)            , intent(in)                                :: file
         character(*, SK)            , intent(in)                    , optional  :: sep
@@ -5196,8 +5196,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadFile_TO_D2_LK1
 #endif
-        use pm_kind, only: LKC => LK1
-        logical(LKC)                , intent(out)   , allocatable               :: table(:,:)
+        use pm_kind, only: LKG => LK1
+        logical(LKG)                , intent(out)   , allocatable               :: table(:,:)
         character(:, SK)            , intent(out)   , allocatable   , optional  :: header
         character(*, SK)            , intent(in)                                :: file
         character(*, SK)            , intent(in)                    , optional  :: sep
@@ -5215,8 +5215,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadFile_TO_D2_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)                , intent(out)   , allocatable               :: table(:,:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG)                , intent(out)   , allocatable               :: table(:,:)
         character(:, SK)            , intent(out)   , allocatable   , optional  :: header
         character(*, SK)            , intent(in)                                :: file
         character(*, SK)            , intent(in)                    , optional  :: sep
@@ -5232,8 +5232,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadFile_TO_D2_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)                , intent(out)   , allocatable               :: table(:,:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG)                , intent(out)   , allocatable               :: table(:,:)
         character(:, SK)            , intent(out)   , allocatable   , optional  :: header
         character(*, SK)            , intent(in)                                :: file
         character(*, SK)            , intent(in)                    , optional  :: sep
@@ -5249,8 +5249,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadFile_TO_D2_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)                , intent(out)   , allocatable               :: table(:,:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG)                , intent(out)   , allocatable               :: table(:,:)
         character(:, SK)            , intent(out)   , allocatable   , optional  :: header
         character(*, SK)            , intent(in)                                :: file
         character(*, SK)            , intent(in)                    , optional  :: sep
@@ -5266,8 +5266,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadFile_TO_D2_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)                , intent(out)   , allocatable               :: table(:,:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG)                , intent(out)   , allocatable               :: table(:,:)
         character(:, SK)            , intent(out)   , allocatable   , optional  :: header
         character(*, SK)            , intent(in)                                :: file
         character(*, SK)            , intent(in)                    , optional  :: sep
@@ -5283,8 +5283,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadFile_TO_D2_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)                , intent(out)   , allocatable               :: table(:,:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG)                , intent(out)   , allocatable               :: table(:,:)
         character(:, SK)            , intent(out)   , allocatable   , optional  :: header
         character(*, SK)            , intent(in)                                :: file
         character(*, SK)            , intent(in)                    , optional  :: sep
@@ -5302,8 +5302,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadFile_TO_D2_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)                   , intent(out)   , allocatable               :: table(:,:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)                   , intent(out)   , allocatable               :: table(:,:)
         character(:, SK)            , intent(out)   , allocatable   , optional  :: header
         character(*, SK)            , intent(in)                                :: file
         character(*, SK)            , intent(in)                    , optional  :: sep
@@ -5319,8 +5319,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadFile_TO_D2_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)                   , intent(out)   , allocatable               :: table(:,:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)                   , intent(out)   , allocatable               :: table(:,:)
         character(:, SK)            , intent(out)   , allocatable   , optional  :: header
         character(*, SK)            , intent(in)                                :: file
         character(*, SK)            , intent(in)                    , optional  :: sep
@@ -5336,8 +5336,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadFile_TO_D2_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)                   , intent(out)   , allocatable               :: table(:,:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)                   , intent(out)   , allocatable               :: table(:,:)
         character(:, SK)            , intent(out)   , allocatable   , optional  :: header
         character(*, SK)            , intent(in)                                :: file
         character(*, SK)            , intent(in)                    , optional  :: sep
@@ -5353,8 +5353,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadFile_TO_D2_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)                   , intent(out)   , allocatable               :: table(:,:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)                   , intent(out)   , allocatable               :: table(:,:)
         character(:, SK)            , intent(out)   , allocatable   , optional  :: header
         character(*, SK)            , intent(in)                                :: file
         character(*, SK)            , intent(in)                    , optional  :: sep
@@ -5370,8 +5370,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadFile_TO_D2_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)                   , intent(out)   , allocatable               :: table(:,:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)                   , intent(out)   , allocatable               :: table(:,:)
         character(:, SK)            , intent(out)   , allocatable   , optional  :: header
         character(*, SK)            , intent(in)                                :: file
         character(*, SK)            , intent(in)                    , optional  :: sep
@@ -5397,8 +5397,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadUnit_TO_D2_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)            , intent(out)   , allocatable               :: table(:,:)
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)            , intent(out)   , allocatable               :: table(:,:)
         character(:, SK)            , intent(out)   , allocatable   , optional  :: header
         character(*, SK)            , intent(in)                    , optional  :: sep
         character(*, SK)            , intent(inout)                 , optional  :: iomsg
@@ -5414,8 +5414,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadUnit_TO_D2_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)            , intent(out)   , allocatable               :: table(:,:)
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)            , intent(out)   , allocatable               :: table(:,:)
         character(:, SK)            , intent(out)   , allocatable   , optional  :: header
         character(*, SK)            , intent(in)                    , optional  :: sep
         character(*, SK)            , intent(inout)                 , optional  :: iomsg
@@ -5431,8 +5431,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadUnit_TO_D2_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)            , intent(out)   , allocatable               :: table(:,:)
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)            , intent(out)   , allocatable               :: table(:,:)
         character(:, SK)            , intent(out)   , allocatable   , optional  :: header
         character(*, SK)            , intent(in)                    , optional  :: sep
         character(*, SK)            , intent(inout)                 , optional  :: iomsg
@@ -5448,8 +5448,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadUnit_TO_D2_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)            , intent(out)   , allocatable               :: table(:,:)
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)            , intent(out)   , allocatable               :: table(:,:)
         character(:, SK)            , intent(out)   , allocatable   , optional  :: header
         character(*, SK)            , intent(in)                    , optional  :: sep
         character(*, SK)            , intent(inout)                 , optional  :: iomsg
@@ -5465,8 +5465,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadUnit_TO_D2_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)            , intent(out)   , allocatable               :: table(:,:)
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)            , intent(out)   , allocatable               :: table(:,:)
         character(:, SK)            , intent(out)   , allocatable   , optional  :: header
         character(*, SK)            , intent(in)                    , optional  :: sep
         character(*, SK)            , intent(inout)                 , optional  :: iomsg
@@ -5484,8 +5484,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadUnit_TO_D2_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)                , intent(out)   , allocatable               :: table(:,:)
+        use pm_kind, only: IKG => IK5
+        integer(IKG)                , intent(out)   , allocatable               :: table(:,:)
         character(:, SK)            , intent(out)   , allocatable   , optional  :: header
         character(*, SK)            , intent(in)                    , optional  :: sep
         character(*, SK)            , intent(inout)                 , optional  :: iomsg
@@ -5501,8 +5501,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadUnit_TO_D2_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)                , intent(out)   , allocatable               :: table(:,:)
+        use pm_kind, only: IKG => IK4
+        integer(IKG)                , intent(out)   , allocatable               :: table(:,:)
         character(:, SK)            , intent(out)   , allocatable   , optional  :: header
         character(*, SK)            , intent(in)                    , optional  :: sep
         character(*, SK)            , intent(inout)                 , optional  :: iomsg
@@ -5518,8 +5518,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadUnit_TO_D2_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)                , intent(out)   , allocatable               :: table(:,:)
+        use pm_kind, only: IKG => IK3
+        integer(IKG)                , intent(out)   , allocatable               :: table(:,:)
         character(:, SK)            , intent(out)   , allocatable   , optional  :: header
         character(*, SK)            , intent(in)                    , optional  :: sep
         character(*, SK)            , intent(inout)                 , optional  :: iomsg
@@ -5535,8 +5535,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadUnit_TO_D2_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)                , intent(out)   , allocatable               :: table(:,:)
+        use pm_kind, only: IKG => IK2
+        integer(IKG)                , intent(out)   , allocatable               :: table(:,:)
         character(:, SK)            , intent(out)   , allocatable   , optional  :: header
         character(*, SK)            , intent(in)                    , optional  :: sep
         character(*, SK)            , intent(inout)                 , optional  :: iomsg
@@ -5552,8 +5552,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadUnit_TO_D2_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)                , intent(out)   , allocatable               :: table(:,:)
+        use pm_kind, only: IKG => IK1
+        integer(IKG)                , intent(out)   , allocatable               :: table(:,:)
         character(:, SK)            , intent(out)   , allocatable   , optional  :: header
         character(*, SK)            , intent(in)                    , optional  :: sep
         character(*, SK)            , intent(inout)                 , optional  :: iomsg
@@ -5571,8 +5571,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadUnit_TO_D2_LK5
 #endif
-        use pm_kind, only: LKC => LK5
-        logical(LKC)                , intent(out)   , allocatable               :: table(:,:)
+        use pm_kind, only: LKG => LK5
+        logical(LKG)                , intent(out)   , allocatable               :: table(:,:)
         character(:, SK)            , intent(out)   , allocatable   , optional  :: header
         character(*, SK)            , intent(in)                    , optional  :: sep
         character(*, SK)            , intent(inout)                 , optional  :: iomsg
@@ -5588,8 +5588,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadUnit_TO_D2_LK4
 #endif
-        use pm_kind, only: LKC => LK4
-        logical(LKC)                , intent(out)   , allocatable               :: table(:,:)
+        use pm_kind, only: LKG => LK4
+        logical(LKG)                , intent(out)   , allocatable               :: table(:,:)
         character(:, SK)            , intent(out)   , allocatable   , optional  :: header
         character(*, SK)            , intent(in)                    , optional  :: sep
         character(*, SK)            , intent(inout)                 , optional  :: iomsg
@@ -5605,8 +5605,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadUnit_TO_D2_LK3
 #endif
-        use pm_kind, only: LKC => LK3
-        logical(LKC)                , intent(out)   , allocatable               :: table(:,:)
+        use pm_kind, only: LKG => LK3
+        logical(LKG)                , intent(out)   , allocatable               :: table(:,:)
         character(:, SK)            , intent(out)   , allocatable   , optional  :: header
         character(*, SK)            , intent(in)                    , optional  :: sep
         character(*, SK)            , intent(inout)                 , optional  :: iomsg
@@ -5622,8 +5622,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadUnit_TO_D2_LK2
 #endif
-        use pm_kind, only: LKC => LK2
-        logical(LKC)                , intent(out)   , allocatable               :: table(:,:)
+        use pm_kind, only: LKG => LK2
+        logical(LKG)                , intent(out)   , allocatable               :: table(:,:)
         character(:, SK)            , intent(out)   , allocatable   , optional  :: header
         character(*, SK)            , intent(in)                    , optional  :: sep
         character(*, SK)            , intent(inout)                 , optional  :: iomsg
@@ -5639,8 +5639,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadUnit_TO_D2_LK1
 #endif
-        use pm_kind, only: LKC => LK1
-        logical(LKC)                , intent(out)   , allocatable               :: table(:,:)
+        use pm_kind, only: LKG => LK1
+        logical(LKG)                , intent(out)   , allocatable               :: table(:,:)
         character(:, SK)            , intent(out)   , allocatable   , optional  :: header
         character(*, SK)            , intent(in)                    , optional  :: sep
         character(*, SK)            , intent(inout)                 , optional  :: iomsg
@@ -5658,8 +5658,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadUnit_TO_D2_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)                , intent(out)   , allocatable               :: table(:,:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG)                , intent(out)   , allocatable               :: table(:,:)
         character(:, SK)            , intent(out)   , allocatable   , optional  :: header
         character(*, SK)            , intent(in)                    , optional  :: sep
         character(*, SK)            , intent(inout)                 , optional  :: iomsg
@@ -5675,8 +5675,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadUnit_TO_D2_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)                , intent(out)   , allocatable               :: table(:,:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG)                , intent(out)   , allocatable               :: table(:,:)
         character(:, SK)            , intent(out)   , allocatable   , optional  :: header
         character(*, SK)            , intent(in)                    , optional  :: sep
         character(*, SK)            , intent(inout)                 , optional  :: iomsg
@@ -5692,8 +5692,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadUnit_TO_D2_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)                , intent(out)   , allocatable               :: table(:,:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG)                , intent(out)   , allocatable               :: table(:,:)
         character(:, SK)            , intent(out)   , allocatable   , optional  :: header
         character(*, SK)            , intent(in)                    , optional  :: sep
         character(*, SK)            , intent(inout)                 , optional  :: iomsg
@@ -5709,8 +5709,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadUnit_TO_D2_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)                , intent(out)   , allocatable               :: table(:,:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG)                , intent(out)   , allocatable               :: table(:,:)
         character(:, SK)            , intent(out)   , allocatable   , optional  :: header
         character(*, SK)            , intent(in)                    , optional  :: sep
         character(*, SK)            , intent(inout)                 , optional  :: iomsg
@@ -5726,8 +5726,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadUnit_TO_D2_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)                , intent(out)   , allocatable               :: table(:,:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG)                , intent(out)   , allocatable               :: table(:,:)
         character(:, SK)            , intent(out)   , allocatable   , optional  :: header
         character(*, SK)            , intent(in)                    , optional  :: sep
         character(*, SK)            , intent(inout)                 , optional  :: iomsg
@@ -5745,8 +5745,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadUnit_TO_D2_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)                   , intent(out)   , allocatable               :: table(:,:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)                   , intent(out)   , allocatable               :: table(:,:)
         character(:, SK)            , intent(out)   , allocatable   , optional  :: header
         character(*, SK)            , intent(in)                    , optional  :: sep
         character(*, SK)            , intent(inout)                 , optional  :: iomsg
@@ -5762,8 +5762,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadUnit_TO_D2_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)                   , intent(out)   , allocatable               :: table(:,:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)                   , intent(out)   , allocatable               :: table(:,:)
         character(:, SK)            , intent(out)   , allocatable   , optional  :: header
         character(*, SK)            , intent(in)                    , optional  :: sep
         character(*, SK)            , intent(inout)                 , optional  :: iomsg
@@ -5779,8 +5779,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadUnit_TO_D2_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)                   , intent(out)   , allocatable               :: table(:,:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)                   , intent(out)   , allocatable               :: table(:,:)
         character(:, SK)            , intent(out)   , allocatable   , optional  :: header
         character(*, SK)            , intent(in)                    , optional  :: sep
         character(*, SK)            , intent(inout)                 , optional  :: iomsg
@@ -5796,8 +5796,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadUnit_TO_D2_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)                   , intent(out)   , allocatable               :: table(:,:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)                   , intent(out)   , allocatable               :: table(:,:)
         character(:, SK)            , intent(out)   , allocatable   , optional  :: header
         character(*, SK)            , intent(in)                    , optional  :: sep
         character(*, SK)            , intent(inout)                 , optional  :: iomsg
@@ -5813,8 +5813,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableReadUnit_TO_D2_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)                   , intent(out)   , allocatable               :: table(:,:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)                   , intent(out)   , allocatable               :: table(:,:)
         character(:, SK)            , intent(out)   , allocatable   , optional  :: header
         character(*, SK)            , intent(in)                    , optional  :: sep
         character(*, SK)            , intent(inout)                 , optional  :: iomsg
@@ -5946,8 +5946,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableWriteFile_NO_D1_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)            , intent(in)    , contiguous    :: table(:)
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)            , intent(in)    , contiguous    :: table(:)
         character(*, SK)            , intent(in)    , optional      :: file, header, sep
         character(*, SK)            , intent(in)    , optional      :: deliml, delimr
         character(*, SK)            , intent(inout) , optional      :: iomsg
@@ -5961,8 +5961,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableWriteFile_NO_D1_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)            , intent(in)    , contiguous    :: table(:)
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)            , intent(in)    , contiguous    :: table(:)
         character(*, SK)            , intent(in)    , optional      :: file, header, sep
         character(*, SK)            , intent(in)    , optional      :: deliml, delimr
         character(*, SK)            , intent(inout) , optional      :: iomsg
@@ -5976,8 +5976,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableWriteFile_NO_D1_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)            , intent(in)    , contiguous    :: table(:)
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)            , intent(in)    , contiguous    :: table(:)
         character(*, SK)            , intent(in)    , optional      :: file, header, sep
         character(*, SK)            , intent(in)    , optional      :: deliml, delimr
         character(*, SK)            , intent(inout) , optional      :: iomsg
@@ -5991,8 +5991,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableWriteFile_NO_D1_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)            , intent(in)    , contiguous    :: table(:)
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)            , intent(in)    , contiguous    :: table(:)
         character(*, SK)            , intent(in)    , optional      :: file, header, sep
         character(*, SK)            , intent(in)    , optional      :: deliml, delimr
         character(*, SK)            , intent(inout) , optional      :: iomsg
@@ -6006,8 +6006,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableWriteFile_NO_D1_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)            , intent(in)    , contiguous    :: table(:)
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)            , intent(in)    , contiguous    :: table(:)
         character(*, SK)            , intent(in)    , optional      :: file, header, sep
         character(*, SK)            , intent(in)    , optional      :: deliml, delimr
         character(*, SK)            , intent(inout) , optional      :: iomsg
@@ -6023,8 +6023,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableWriteFile_NO_D1_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)                , intent(in)    , contiguous    :: table(:)
+        use pm_kind, only: IKG => IK5
+        integer(IKG)                , intent(in)    , contiguous    :: table(:)
         character(*, SK)            , intent(in)    , optional      :: file, header, sep
         character(*, SK)            , intent(in)    , optional      :: deliml, delimr
         character(*, SK)            , intent(inout) , optional      :: iomsg
@@ -6038,8 +6038,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableWriteFile_NO_D1_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)                , intent(in)    , contiguous    :: table(:)
+        use pm_kind, only: IKG => IK4
+        integer(IKG)                , intent(in)    , contiguous    :: table(:)
         character(*, SK)            , intent(in)    , optional      :: file, header, sep
         character(*, SK)            , intent(in)    , optional      :: deliml, delimr
         character(*, SK)            , intent(inout) , optional      :: iomsg
@@ -6053,8 +6053,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableWriteFile_NO_D1_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)                , intent(in)    , contiguous    :: table(:)
+        use pm_kind, only: IKG => IK3
+        integer(IKG)                , intent(in)    , contiguous    :: table(:)
         character(*, SK)            , intent(in)    , optional      :: file, header, sep
         character(*, SK)            , intent(in)    , optional      :: deliml, delimr
         character(*, SK)            , intent(inout) , optional      :: iomsg
@@ -6068,8 +6068,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableWriteFile_NO_D1_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)                , intent(in)    , contiguous    :: table(:)
+        use pm_kind, only: IKG => IK2
+        integer(IKG)                , intent(in)    , contiguous    :: table(:)
         character(*, SK)            , intent(in)    , optional      :: file, header, sep
         character(*, SK)            , intent(in)    , optional      :: deliml, delimr
         character(*, SK)            , intent(inout) , optional      :: iomsg
@@ -6083,8 +6083,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableWriteFile_NO_D1_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)                , intent(in)    , contiguous    :: table(:)
+        use pm_kind, only: IKG => IK1
+        integer(IKG)                , intent(in)    , contiguous    :: table(:)
         character(*, SK)            , intent(in)    , optional      :: file, header, sep
         character(*, SK)            , intent(in)    , optional      :: deliml, delimr
         character(*, SK)            , intent(inout) , optional      :: iomsg
@@ -6100,8 +6100,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableWriteFile_NO_D1_LK5
 #endif
-        use pm_kind, only: LKC => LK5
-        logical(LKC)                , intent(in)    , contiguous    :: table(:)
+        use pm_kind, only: LKG => LK5
+        logical(LKG)                , intent(in)    , contiguous    :: table(:)
         character(*, SK)            , intent(in)    , optional      :: file, header, sep
         character(*, SK)            , intent(in)    , optional      :: deliml, delimr
         character(*, SK)            , intent(inout) , optional      :: iomsg
@@ -6115,8 +6115,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableWriteFile_NO_D1_LK4
 #endif
-        use pm_kind, only: LKC => LK4
-        logical(LKC)                , intent(in)    , contiguous    :: table(:)
+        use pm_kind, only: LKG => LK4
+        logical(LKG)                , intent(in)    , contiguous    :: table(:)
         character(*, SK)            , intent(in)    , optional      :: file, header, sep
         character(*, SK)            , intent(in)    , optional      :: deliml, delimr
         character(*, SK)            , intent(inout) , optional      :: iomsg
@@ -6130,8 +6130,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableWriteFile_NO_D1_LK3
 #endif
-        use pm_kind, only: LKC => LK3
-        logical(LKC)                , intent(in)    , contiguous    :: table(:)
+        use pm_kind, only: LKG => LK3
+        logical(LKG)                , intent(in)    , contiguous    :: table(:)
         character(*, SK)            , intent(in)    , optional      :: file, header, sep
         character(*, SK)            , intent(in)    , optional      :: deliml, delimr
         character(*, SK)            , intent(inout) , optional      :: iomsg
@@ -6145,8 +6145,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableWriteFile_NO_D1_LK2
 #endif
-        use pm_kind, only: LKC => LK2
-        logical(LKC)                , intent(in)    , contiguous    :: table(:)
+        use pm_kind, only: LKG => LK2
+        logical(LKG)                , intent(in)    , contiguous    :: table(:)
         character(*, SK)            , intent(in)    , optional      :: file, header, sep
         character(*, SK)            , intent(in)    , optional      :: deliml, delimr
         character(*, SK)            , intent(inout) , optional      :: iomsg
@@ -6160,8 +6160,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableWriteFile_NO_D1_LK1
 #endif
-        use pm_kind, only: LKC => LK1
-        logical(LKC)                , intent(in)    , contiguous    :: table(:)
+        use pm_kind, only: LKG => LK1
+        logical(LKG)                , intent(in)    , contiguous    :: table(:)
         character(*, SK)            , intent(in)    , optional      :: file, header, sep
         character(*, SK)            , intent(in)    , optional      :: deliml, delimr
         character(*, SK)            , intent(inout) , optional      :: iomsg
@@ -6177,8 +6177,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableWriteFile_NO_D1_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)                , intent(in)    , contiguous    :: table(:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG)                , intent(in)    , contiguous    :: table(:)
         character(*, SK)            , intent(in)    , optional      :: file, header, sep
         character(*, SK)            , intent(in)    , optional      :: deliml, delimr
         character(*, SK)            , intent(inout) , optional      :: iomsg
@@ -6192,8 +6192,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableWriteFile_NO_D1_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)                , intent(in)    , contiguous    :: table(:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG)                , intent(in)    , contiguous    :: table(:)
         character(*, SK)            , intent(in)    , optional      :: file, header, sep
         character(*, SK)            , intent(in)    , optional      :: deliml, delimr
         character(*, SK)            , intent(inout) , optional      :: iomsg
@@ -6207,8 +6207,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableWriteFile_NO_D1_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)                , intent(in)    , contiguous    :: table(:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG)                , intent(in)    , contiguous    :: table(:)
         character(*, SK)            , intent(in)    , optional      :: file, header, sep
         character(*, SK)            , intent(in)    , optional      :: deliml, delimr
         character(*, SK)            , intent(inout) , optional      :: iomsg
@@ -6222,8 +6222,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableWriteFile_NO_D1_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)                , intent(in)    , contiguous    :: table(:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG)                , intent(in)    , contiguous    :: table(:)
         character(*, SK)            , intent(in)    , optional      :: file, header, sep
         character(*, SK)            , intent(in)    , optional      :: deliml, delimr
         character(*, SK)            , intent(inout) , optional      :: iomsg
@@ -6237,8 +6237,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableWriteFile_NO_D1_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)                , intent(in)    , contiguous    :: table(:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG)                , intent(in)    , contiguous    :: table(:)
         character(*, SK)            , intent(in)    , optional      :: file, header, sep
         character(*, SK)            , intent(in)    , optional      :: deliml, delimr
         character(*, SK)            , intent(inout) , optional      :: iomsg
@@ -6254,8 +6254,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableWriteFile_NO_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)                   , intent(in)    , contiguous    :: table(:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)                   , intent(in)    , contiguous    :: table(:)
         character(*, SK)            , intent(in)    , optional      :: file, header, sep
         character(*, SK)            , intent(in)    , optional      :: deliml, delimr
         character(*, SK)            , intent(inout) , optional      :: iomsg
@@ -6269,8 +6269,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableWriteFile_NO_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)                   , intent(in)    , contiguous    :: table(:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)                   , intent(in)    , contiguous    :: table(:)
         character(*, SK)            , intent(in)    , optional      :: file, header, sep
         character(*, SK)            , intent(in)    , optional      :: deliml, delimr
         character(*, SK)            , intent(inout) , optional      :: iomsg
@@ -6284,8 +6284,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableWriteFile_NO_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)                   , intent(in)    , contiguous    :: table(:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)                   , intent(in)    , contiguous    :: table(:)
         character(*, SK)            , intent(in)    , optional      :: file, header, sep
         character(*, SK)            , intent(in)    , optional      :: deliml, delimr
         character(*, SK)            , intent(inout) , optional      :: iomsg
@@ -6299,8 +6299,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableWriteFile_NO_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)                   , intent(in)    , contiguous    :: table(:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)                   , intent(in)    , contiguous    :: table(:)
         character(*, SK)            , intent(in)    , optional      :: file, header, sep
         character(*, SK)            , intent(in)    , optional      :: deliml, delimr
         character(*, SK)            , intent(inout) , optional      :: iomsg
@@ -6314,8 +6314,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableWriteFile_NO_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)                   , intent(in)    , contiguous    :: table(:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)                   , intent(in)    , contiguous    :: table(:)
         character(*, SK)            , intent(in)    , optional      :: file, header, sep
         character(*, SK)            , intent(in)    , optional      :: deliml, delimr
         character(*, SK)            , intent(inout) , optional      :: iomsg
@@ -6339,8 +6339,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableWriteUnit_NO_D1_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)            , intent(in)    , contiguous    :: table(:)
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)            , intent(in)    , contiguous    :: table(:)
         character(*, SK)            , intent(in)    , optional      :: header, sep
         character(*, SK)            , intent(in)    , optional      :: deliml, delimr
         character(*, SK)            , intent(inout) , optional      :: iomsg
@@ -6355,8 +6355,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableWriteUnit_NO_D1_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)            , intent(in)    , contiguous    :: table(:)
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)            , intent(in)    , contiguous    :: table(:)
         character(*, SK)            , intent(in)    , optional      :: header, sep
         character(*, SK)            , intent(in)    , optional      :: deliml, delimr
         character(*, SK)            , intent(inout) , optional      :: iomsg
@@ -6371,8 +6371,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableWriteUnit_NO_D1_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)            , intent(in)    , contiguous    :: table(:)
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)            , intent(in)    , contiguous    :: table(:)
         character(*, SK)            , intent(in)    , optional      :: header, sep
         character(*, SK)            , intent(in)    , optional      :: deliml, delimr
         character(*, SK)            , intent(inout) , optional      :: iomsg
@@ -6387,8 +6387,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableWriteUnit_NO_D1_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)            , intent(in)    , contiguous    :: table(:)
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)            , intent(in)    , contiguous    :: table(:)
         character(*, SK)            , intent(in)    , optional      :: header, sep
         character(*, SK)            , intent(in)    , optional      :: deliml, delimr
         character(*, SK)            , intent(inout) , optional      :: iomsg
@@ -6403,8 +6403,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableWriteUnit_NO_D1_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)            , intent(in)    , contiguous    :: table(:)
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)            , intent(in)    , contiguous    :: table(:)
         character(*, SK)            , intent(in)    , optional      :: header, sep
         character(*, SK)            , intent(in)    , optional      :: deliml, delimr
         character(*, SK)            , intent(inout) , optional      :: iomsg
@@ -6421,8 +6421,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableWriteUnit_NO_D1_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)                , intent(in)    , contiguous    :: table(:)
+        use pm_kind, only: IKG => IK5
+        integer(IKG)                , intent(in)    , contiguous    :: table(:)
         character(*, SK)            , intent(in)    , optional      :: header, sep
         character(*, SK)            , intent(in)    , optional      :: deliml, delimr
         character(*, SK)            , intent(inout) , optional      :: iomsg
@@ -6437,8 +6437,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableWriteUnit_NO_D1_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)                , intent(in)    , contiguous    :: table(:)
+        use pm_kind, only: IKG => IK4
+        integer(IKG)                , intent(in)    , contiguous    :: table(:)
         character(*, SK)            , intent(in)    , optional      :: header, sep
         character(*, SK)            , intent(in)    , optional      :: deliml, delimr
         character(*, SK)            , intent(inout) , optional      :: iomsg
@@ -6453,8 +6453,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableWriteUnit_NO_D1_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)                , intent(in)    , contiguous    :: table(:)
+        use pm_kind, only: IKG => IK3
+        integer(IKG)                , intent(in)    , contiguous    :: table(:)
         character(*, SK)            , intent(in)    , optional      :: header, sep
         character(*, SK)            , intent(in)    , optional      :: deliml, delimr
         character(*, SK)            , intent(inout) , optional      :: iomsg
@@ -6469,8 +6469,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableWriteUnit_NO_D1_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)                , intent(in)    , contiguous    :: table(:)
+        use pm_kind, only: IKG => IK2
+        integer(IKG)                , intent(in)    , contiguous    :: table(:)
         character(*, SK)            , intent(in)    , optional      :: header, sep
         character(*, SK)            , intent(in)    , optional      :: deliml, delimr
         character(*, SK)            , intent(inout) , optional      :: iomsg
@@ -6485,8 +6485,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableWriteUnit_NO_D1_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)                , intent(in)    , contiguous    :: table(:)
+        use pm_kind, only: IKG => IK1
+        integer(IKG)                , intent(in)    , contiguous    :: table(:)
         character(*, SK)            , intent(in)    , optional      :: header, sep
         character(*, SK)            , intent(in)    , optional      :: deliml, delimr
         character(*, SK)            , intent(inout) , optional      :: iomsg
@@ -6503,8 +6503,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableWriteUnit_NO_D1_LK5
 #endif
-        use pm_kind, only: LKC => LK5
-        logical(LKC)                , intent(in)    , contiguous    :: table(:)
+        use pm_kind, only: LKG => LK5
+        logical(LKG)                , intent(in)    , contiguous    :: table(:)
         character(*, SK)            , intent(in)    , optional      :: header, sep
         character(*, SK)            , intent(in)    , optional      :: deliml, delimr
         character(*, SK)            , intent(inout) , optional      :: iomsg
@@ -6519,8 +6519,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableWriteUnit_NO_D1_LK4
 #endif
-        use pm_kind, only: LKC => LK4
-        logical(LKC)                , intent(in)    , contiguous    :: table(:)
+        use pm_kind, only: LKG => LK4
+        logical(LKG)                , intent(in)    , contiguous    :: table(:)
         character(*, SK)            , intent(in)    , optional      :: header, sep
         character(*, SK)            , intent(in)    , optional      :: deliml, delimr
         character(*, SK)            , intent(inout) , optional      :: iomsg
@@ -6535,8 +6535,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableWriteUnit_NO_D1_LK3
 #endif
-        use pm_kind, only: LKC => LK3
-        logical(LKC)                , intent(in)    , contiguous    :: table(:)
+        use pm_kind, only: LKG => LK3
+        logical(LKG)                , intent(in)    , contiguous    :: table(:)
         character(*, SK)            , intent(in)    , optional      :: header, sep
         character(*, SK)            , intent(in)    , optional      :: deliml, delimr
         character(*, SK)            , intent(inout) , optional      :: iomsg
@@ -6551,8 +6551,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableWriteUnit_NO_D1_LK2
 #endif
-        use pm_kind, only: LKC => LK2
-        logical(LKC)                , intent(in)    , contiguous    :: table(:)
+        use pm_kind, only: LKG => LK2
+        logical(LKG)                , intent(in)    , contiguous    :: table(:)
         character(*, SK)            , intent(in)    , optional      :: header, sep
         character(*, SK)            , intent(in)    , optional      :: deliml, delimr
         character(*, SK)            , intent(inout) , optional      :: iomsg
@@ -6567,8 +6567,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableWriteUnit_NO_D1_LK1
 #endif
-        use pm_kind, only: LKC => LK1
-        logical(LKC)                , intent(in)    , contiguous    :: table(:)
+        use pm_kind, only: LKG => LK1
+        logical(LKG)                , intent(in)    , contiguous    :: table(:)
         character(*, SK)            , intent(in)    , optional      :: header, sep
         character(*, SK)            , intent(in)    , optional      :: deliml, delimr
         character(*, SK)            , intent(inout) , optional      :: iomsg
@@ -6585,8 +6585,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableWriteUnit_NO_D1_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)                , intent(in)    , contiguous    :: table(:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG)                , intent(in)    , contiguous    :: table(:)
         character(*, SK)            , intent(in)    , optional      :: header, sep
         character(*, SK)            , intent(in)    , optional      :: deliml, delimr
         character(*, SK)            , intent(inout) , optional      :: iomsg
@@ -6601,8 +6601,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableWriteUnit_NO_D1_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)                , intent(in)    , contiguous    :: table(:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG)                , intent(in)    , contiguous    :: table(:)
         character(*, SK)            , intent(in)    , optional      :: header, sep
         character(*, SK)            , intent(in)    , optional      :: deliml, delimr
         character(*, SK)            , intent(inout) , optional      :: iomsg
@@ -6617,8 +6617,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableWriteUnit_NO_D1_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)                , intent(in)    , contiguous    :: table(:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG)                , intent(in)    , contiguous    :: table(:)
         character(*, SK)            , intent(in)    , optional      :: header, sep
         character(*, SK)            , intent(in)    , optional      :: deliml, delimr
         character(*, SK)            , intent(inout) , optional      :: iomsg
@@ -6633,8 +6633,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableWriteUnit_NO_D1_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)                , intent(in)    , contiguous    :: table(:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG)                , intent(in)    , contiguous    :: table(:)
         character(*, SK)            , intent(in)    , optional      :: header, sep
         character(*, SK)            , intent(in)    , optional      :: deliml, delimr
         character(*, SK)            , intent(inout) , optional      :: iomsg
@@ -6649,8 +6649,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableWriteUnit_NO_D1_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)                , intent(in)    , contiguous    :: table(:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG)                , intent(in)    , contiguous    :: table(:)
         character(*, SK)            , intent(in)    , optional      :: header, sep
         character(*, SK)            , intent(in)    , optional      :: deliml, delimr
         character(*, SK)            , intent(inout) , optional      :: iomsg
@@ -6667,8 +6667,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableWriteUnit_NO_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)                   , intent(in)    , contiguous    :: table(:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)                   , intent(in)    , contiguous    :: table(:)
         character(*, SK)            , intent(in)    , optional      :: header, sep
         character(*, SK)            , intent(in)    , optional      :: deliml, delimr
         character(*, SK)            , intent(inout) , optional      :: iomsg
@@ -6683,8 +6683,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableWriteUnit_NO_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)                   , intent(in)    , contiguous    :: table(:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)                   , intent(in)    , contiguous    :: table(:)
         character(*, SK)            , intent(in)    , optional      :: header, sep
         character(*, SK)            , intent(in)    , optional      :: deliml, delimr
         character(*, SK)            , intent(inout) , optional      :: iomsg
@@ -6699,8 +6699,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableWriteUnit_NO_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)                   , intent(in)    , contiguous    :: table(:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)                   , intent(in)    , contiguous    :: table(:)
         character(*, SK)            , intent(in)    , optional      :: header, sep
         character(*, SK)            , intent(in)    , optional      :: deliml, delimr
         character(*, SK)            , intent(inout) , optional      :: iomsg
@@ -6715,8 +6715,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableWriteUnit_NO_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)                   , intent(in)    , contiguous    :: table(:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)                   , intent(in)    , contiguous    :: table(:)
         character(*, SK)            , intent(in)    , optional      :: header, sep
         character(*, SK)            , intent(in)    , optional      :: deliml, delimr
         character(*, SK)            , intent(inout) , optional      :: iomsg
@@ -6731,8 +6731,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableWriteUnit_NO_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)                   , intent(in)    , contiguous    :: table(:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)                   , intent(in)    , contiguous    :: table(:)
         character(*, SK)            , intent(in)    , optional      :: header, sep
         character(*, SK)            , intent(in)    , optional      :: deliml, delimr
         character(*, SK)            , intent(inout) , optional      :: iomsg
@@ -6757,8 +6757,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableWriteFile_NO_D2_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)            , intent(in)    , contiguous    :: table(:,:)
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)            , intent(in)    , contiguous    :: table(:,:)
         character(*, SK)            , intent(in)    , optional      :: file, header, sep
         character(*, SK)            , intent(in)    , optional      :: deliml, delimr
         character(*, SK)            , intent(inout) , optional      :: iomsg
@@ -6772,8 +6772,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableWriteFile_NO_D2_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)            , intent(in)    , contiguous    :: table(:,:)
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)            , intent(in)    , contiguous    :: table(:,:)
         character(*, SK)            , intent(in)    , optional      :: file, header, sep
         character(*, SK)            , intent(in)    , optional      :: deliml, delimr
         character(*, SK)            , intent(inout) , optional      :: iomsg
@@ -6787,8 +6787,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableWriteFile_NO_D2_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)            , intent(in)    , contiguous    :: table(:,:)
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)            , intent(in)    , contiguous    :: table(:,:)
         character(*, SK)            , intent(in)    , optional      :: file, header, sep
         character(*, SK)            , intent(in)    , optional      :: deliml, delimr
         character(*, SK)            , intent(inout) , optional      :: iomsg
@@ -6802,8 +6802,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableWriteFile_NO_D2_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)            , intent(in)    , contiguous    :: table(:,:)
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)            , intent(in)    , contiguous    :: table(:,:)
         character(*, SK)            , intent(in)    , optional      :: file, header, sep
         character(*, SK)            , intent(in)    , optional      :: deliml, delimr
         character(*, SK)            , intent(inout) , optional      :: iomsg
@@ -6817,8 +6817,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableWriteFile_NO_D2_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)            , intent(in)    , contiguous    :: table(:,:)
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)            , intent(in)    , contiguous    :: table(:,:)
         character(*, SK)            , intent(in)    , optional      :: file, header, sep
         character(*, SK)            , intent(in)    , optional      :: deliml, delimr
         character(*, SK)            , intent(inout) , optional      :: iomsg
@@ -6834,8 +6834,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableWriteFile_NO_D2_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)                , intent(in)    , contiguous    :: table(:,:)
+        use pm_kind, only: IKG => IK5
+        integer(IKG)                , intent(in)    , contiguous    :: table(:,:)
         character(*, SK)            , intent(in)    , optional      :: file, header, sep
         character(*, SK)            , intent(in)    , optional      :: deliml, delimr
         character(*, SK)            , intent(inout) , optional      :: iomsg
@@ -6849,8 +6849,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableWriteFile_NO_D2_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)                , intent(in)    , contiguous    :: table(:,:)
+        use pm_kind, only: IKG => IK4
+        integer(IKG)                , intent(in)    , contiguous    :: table(:,:)
         character(*, SK)            , intent(in)    , optional      :: file, header, sep
         character(*, SK)            , intent(in)    , optional      :: deliml, delimr
         character(*, SK)            , intent(inout) , optional      :: iomsg
@@ -6864,8 +6864,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableWriteFile_NO_D2_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)                , intent(in)    , contiguous    :: table(:,:)
+        use pm_kind, only: IKG => IK3
+        integer(IKG)                , intent(in)    , contiguous    :: table(:,:)
         character(*, SK)            , intent(in)    , optional      :: file, header, sep
         character(*, SK)            , intent(in)    , optional      :: deliml, delimr
         character(*, SK)            , intent(inout) , optional      :: iomsg
@@ -6879,8 +6879,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableWriteFile_NO_D2_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)                , intent(in)    , contiguous    :: table(:,:)
+        use pm_kind, only: IKG => IK2
+        integer(IKG)                , intent(in)    , contiguous    :: table(:,:)
         character(*, SK)            , intent(in)    , optional      :: file, header, sep
         character(*, SK)            , intent(in)    , optional      :: deliml, delimr
         character(*, SK)            , intent(inout) , optional      :: iomsg
@@ -6894,8 +6894,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableWriteFile_NO_D2_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)                , intent(in)    , contiguous    :: table(:,:)
+        use pm_kind, only: IKG => IK1
+        integer(IKG)                , intent(in)    , contiguous    :: table(:,:)
         character(*, SK)            , intent(in)    , optional      :: file, header, sep
         character(*, SK)            , intent(in)    , optional      :: deliml, delimr
         character(*, SK)            , intent(inout) , optional      :: iomsg
@@ -6911,8 +6911,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableWriteFile_NO_D2_LK5
 #endif
-        use pm_kind, only: LKC => LK5
-        logical(LKC)                , intent(in)    , contiguous    :: table(:,:)
+        use pm_kind, only: LKG => LK5
+        logical(LKG)                , intent(in)    , contiguous    :: table(:,:)
         character(*, SK)            , intent(in)    , optional      :: file, header, sep
         character(*, SK)            , intent(in)    , optional      :: deliml, delimr
         character(*, SK)            , intent(inout) , optional      :: iomsg
@@ -6926,8 +6926,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableWriteFile_NO_D2_LK4
 #endif
-        use pm_kind, only: LKC => LK4
-        logical(LKC)                , intent(in)    , contiguous    :: table(:,:)
+        use pm_kind, only: LKG => LK4
+        logical(LKG)                , intent(in)    , contiguous    :: table(:,:)
         character(*, SK)            , intent(in)    , optional      :: file, header, sep
         character(*, SK)            , intent(in)    , optional      :: deliml, delimr
         character(*, SK)            , intent(inout) , optional      :: iomsg
@@ -6941,8 +6941,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableWriteFile_NO_D2_LK3
 #endif
-        use pm_kind, only: LKC => LK3
-        logical(LKC)                , intent(in)    , contiguous    :: table(:,:)
+        use pm_kind, only: LKG => LK3
+        logical(LKG)                , intent(in)    , contiguous    :: table(:,:)
         character(*, SK)            , intent(in)    , optional      :: file, header, sep
         character(*, SK)            , intent(in)    , optional      :: deliml, delimr
         character(*, SK)            , intent(inout) , optional      :: iomsg
@@ -6956,8 +6956,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableWriteFile_NO_D2_LK2
 #endif
-        use pm_kind, only: LKC => LK2
-        logical(LKC)                , intent(in)    , contiguous    :: table(:,:)
+        use pm_kind, only: LKG => LK2
+        logical(LKG)                , intent(in)    , contiguous    :: table(:,:)
         character(*, SK)            , intent(in)    , optional      :: file, header, sep
         character(*, SK)            , intent(in)    , optional      :: deliml, delimr
         character(*, SK)            , intent(inout) , optional      :: iomsg
@@ -6971,8 +6971,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableWriteFile_NO_D2_LK1
 #endif
-        use pm_kind, only: LKC => LK1
-        logical(LKC)                , intent(in)    , contiguous    :: table(:,:)
+        use pm_kind, only: LKG => LK1
+        logical(LKG)                , intent(in)    , contiguous    :: table(:,:)
         character(*, SK)            , intent(in)    , optional      :: file, header, sep
         character(*, SK)            , intent(in)    , optional      :: deliml, delimr
         character(*, SK)            , intent(inout) , optional      :: iomsg
@@ -6988,8 +6988,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableWriteFile_NO_D2_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)                , intent(in)    , contiguous    :: table(:,:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG)                , intent(in)    , contiguous    :: table(:,:)
         character(*, SK)            , intent(in)    , optional      :: file, header, sep
         character(*, SK)            , intent(in)    , optional      :: deliml, delimr
         character(*, SK)            , intent(inout) , optional      :: iomsg
@@ -7003,8 +7003,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableWriteFile_NO_D2_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)                , intent(in)    , contiguous    :: table(:,:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG)                , intent(in)    , contiguous    :: table(:,:)
         character(*, SK)            , intent(in)    , optional      :: file, header, sep
         character(*, SK)            , intent(in)    , optional      :: deliml, delimr
         character(*, SK)            , intent(inout) , optional      :: iomsg
@@ -7018,8 +7018,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableWriteFile_NO_D2_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)                , intent(in)    , contiguous    :: table(:,:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG)                , intent(in)    , contiguous    :: table(:,:)
         character(*, SK)            , intent(in)    , optional      :: file, header, sep
         character(*, SK)            , intent(in)    , optional      :: deliml, delimr
         character(*, SK)            , intent(inout) , optional      :: iomsg
@@ -7033,8 +7033,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableWriteFile_NO_D2_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)                , intent(in)    , contiguous    :: table(:,:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG)                , intent(in)    , contiguous    :: table(:,:)
         character(*, SK)            , intent(in)    , optional      :: file, header, sep
         character(*, SK)            , intent(in)    , optional      :: deliml, delimr
         character(*, SK)            , intent(inout) , optional      :: iomsg
@@ -7048,8 +7048,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableWriteFile_NO_D2_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)                , intent(in)    , contiguous    :: table(:,:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG)                , intent(in)    , contiguous    :: table(:,:)
         character(*, SK)            , intent(in)    , optional      :: file, header, sep
         character(*, SK)            , intent(in)    , optional      :: deliml, delimr
         character(*, SK)            , intent(inout) , optional      :: iomsg
@@ -7065,8 +7065,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableWriteFile_NO_D2_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)                   , intent(in)    , contiguous    :: table(:,:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)                   , intent(in)    , contiguous    :: table(:,:)
         character(*, SK)            , intent(in)    , optional      :: file, header, sep
         character(*, SK)            , intent(in)    , optional      :: deliml, delimr
         character(*, SK)            , intent(inout) , optional      :: iomsg
@@ -7080,8 +7080,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableWriteFile_NO_D2_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)                   , intent(in)    , contiguous    :: table(:,:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)                   , intent(in)    , contiguous    :: table(:,:)
         character(*, SK)            , intent(in)    , optional      :: file, header, sep
         character(*, SK)            , intent(in)    , optional      :: deliml, delimr
         character(*, SK)            , intent(inout) , optional      :: iomsg
@@ -7095,8 +7095,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableWriteFile_NO_D2_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)                   , intent(in)    , contiguous    :: table(:,:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)                   , intent(in)    , contiguous    :: table(:,:)
         character(*, SK)            , intent(in)    , optional      :: file, header, sep
         character(*, SK)            , intent(in)    , optional      :: deliml, delimr
         character(*, SK)            , intent(inout) , optional      :: iomsg
@@ -7110,8 +7110,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableWriteFile_NO_D2_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)                   , intent(in)    , contiguous    :: table(:,:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)                   , intent(in)    , contiguous    :: table(:,:)
         character(*, SK)            , intent(in)    , optional      :: file, header, sep
         character(*, SK)            , intent(in)    , optional      :: deliml, delimr
         character(*, SK)            , intent(inout) , optional      :: iomsg
@@ -7125,8 +7125,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableWriteFile_NO_D2_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)                   , intent(in)    , contiguous    :: table(:,:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)                   , intent(in)    , contiguous    :: table(:,:)
         character(*, SK)            , intent(in)    , optional      :: file, header, sep
         character(*, SK)            , intent(in)    , optional      :: deliml, delimr
         character(*, SK)            , intent(inout) , optional      :: iomsg
@@ -7150,8 +7150,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableWriteUnit_NO_D2_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)            , intent(in)    , contiguous    :: table(:,:)
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)            , intent(in)    , contiguous    :: table(:,:)
         character(*, SK)            , intent(in)    , optional      :: header, sep
         character(*, SK)            , intent(in)    , optional      :: deliml, delimr
         character(*, SK)            , intent(inout) , optional      :: iomsg
@@ -7166,8 +7166,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableWriteUnit_NO_D2_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)            , intent(in)    , contiguous    :: table(:,:)
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)            , intent(in)    , contiguous    :: table(:,:)
         character(*, SK)            , intent(in)    , optional      :: header, sep
         character(*, SK)            , intent(in)    , optional      :: deliml, delimr
         character(*, SK)            , intent(inout) , optional      :: iomsg
@@ -7182,8 +7182,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableWriteUnit_NO_D2_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)            , intent(in)    , contiguous    :: table(:,:)
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)            , intent(in)    , contiguous    :: table(:,:)
         character(*, SK)            , intent(in)    , optional      :: header, sep
         character(*, SK)            , intent(in)    , optional      :: deliml, delimr
         character(*, SK)            , intent(inout) , optional      :: iomsg
@@ -7198,8 +7198,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableWriteUnit_NO_D2_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)            , intent(in)    , contiguous    :: table(:,:)
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)            , intent(in)    , contiguous    :: table(:,:)
         character(*, SK)            , intent(in)    , optional      :: header, sep
         character(*, SK)            , intent(in)    , optional      :: deliml, delimr
         character(*, SK)            , intent(inout) , optional      :: iomsg
@@ -7214,8 +7214,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableWriteUnit_NO_D2_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)            , intent(in)    , contiguous    :: table(:,:)
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)            , intent(in)    , contiguous    :: table(:,:)
         character(*, SK)            , intent(in)    , optional      :: header, sep
         character(*, SK)            , intent(in)    , optional      :: deliml, delimr
         character(*, SK)            , intent(inout) , optional      :: iomsg
@@ -7232,8 +7232,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableWriteUnit_NO_D2_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)                , intent(in)    , contiguous    :: table(:,:)
+        use pm_kind, only: IKG => IK5
+        integer(IKG)                , intent(in)    , contiguous    :: table(:,:)
         character(*, SK)            , intent(in)    , optional      :: header, sep
         character(*, SK)            , intent(in)    , optional      :: deliml, delimr
         character(*, SK)            , intent(inout) , optional      :: iomsg
@@ -7248,8 +7248,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableWriteUnit_NO_D2_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)                , intent(in)    , contiguous    :: table(:,:)
+        use pm_kind, only: IKG => IK4
+        integer(IKG)                , intent(in)    , contiguous    :: table(:,:)
         character(*, SK)            , intent(in)    , optional      :: header, sep
         character(*, SK)            , intent(in)    , optional      :: deliml, delimr
         character(*, SK)            , intent(inout) , optional      :: iomsg
@@ -7264,8 +7264,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableWriteUnit_NO_D2_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)                , intent(in)    , contiguous    :: table(:,:)
+        use pm_kind, only: IKG => IK3
+        integer(IKG)                , intent(in)    , contiguous    :: table(:,:)
         character(*, SK)            , intent(in)    , optional      :: header, sep
         character(*, SK)            , intent(in)    , optional      :: deliml, delimr
         character(*, SK)            , intent(inout) , optional      :: iomsg
@@ -7280,8 +7280,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableWriteUnit_NO_D2_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)                , intent(in)    , contiguous    :: table(:,:)
+        use pm_kind, only: IKG => IK2
+        integer(IKG)                , intent(in)    , contiguous    :: table(:,:)
         character(*, SK)            , intent(in)    , optional      :: header, sep
         character(*, SK)            , intent(in)    , optional      :: deliml, delimr
         character(*, SK)            , intent(inout) , optional      :: iomsg
@@ -7296,8 +7296,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableWriteUnit_NO_D2_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)                , intent(in)    , contiguous    :: table(:,:)
+        use pm_kind, only: IKG => IK1
+        integer(IKG)                , intent(in)    , contiguous    :: table(:,:)
         character(*, SK)            , intent(in)    , optional      :: header, sep
         character(*, SK)            , intent(in)    , optional      :: deliml, delimr
         character(*, SK)            , intent(inout) , optional      :: iomsg
@@ -7314,8 +7314,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableWriteUnit_NO_D2_LK5
 #endif
-        use pm_kind, only: LKC => LK5
-        logical(LKC)                , intent(in)    , contiguous    :: table(:,:)
+        use pm_kind, only: LKG => LK5
+        logical(LKG)                , intent(in)    , contiguous    :: table(:,:)
         character(*, SK)            , intent(in)    , optional      :: header, sep
         character(*, SK)            , intent(in)    , optional      :: deliml, delimr
         character(*, SK)            , intent(inout) , optional      :: iomsg
@@ -7330,8 +7330,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableWriteUnit_NO_D2_LK4
 #endif
-        use pm_kind, only: LKC => LK4
-        logical(LKC)                , intent(in)    , contiguous    :: table(:,:)
+        use pm_kind, only: LKG => LK4
+        logical(LKG)                , intent(in)    , contiguous    :: table(:,:)
         character(*, SK)            , intent(in)    , optional      :: header, sep
         character(*, SK)            , intent(in)    , optional      :: deliml, delimr
         character(*, SK)            , intent(inout) , optional      :: iomsg
@@ -7346,8 +7346,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableWriteUnit_NO_D2_LK3
 #endif
-        use pm_kind, only: LKC => LK3
-        logical(LKC)                , intent(in)    , contiguous    :: table(:,:)
+        use pm_kind, only: LKG => LK3
+        logical(LKG)                , intent(in)    , contiguous    :: table(:,:)
         character(*, SK)            , intent(in)    , optional      :: header, sep
         character(*, SK)            , intent(in)    , optional      :: deliml, delimr
         character(*, SK)            , intent(inout) , optional      :: iomsg
@@ -7362,8 +7362,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableWriteUnit_NO_D2_LK2
 #endif
-        use pm_kind, only: LKC => LK2
-        logical(LKC)                , intent(in)    , contiguous    :: table(:,:)
+        use pm_kind, only: LKG => LK2
+        logical(LKG)                , intent(in)    , contiguous    :: table(:,:)
         character(*, SK)            , intent(in)    , optional      :: header, sep
         character(*, SK)            , intent(in)    , optional      :: deliml, delimr
         character(*, SK)            , intent(inout) , optional      :: iomsg
@@ -7378,8 +7378,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableWriteUnit_NO_D2_LK1
 #endif
-        use pm_kind, only: LKC => LK1
-        logical(LKC)                , intent(in)    , contiguous    :: table(:,:)
+        use pm_kind, only: LKG => LK1
+        logical(LKG)                , intent(in)    , contiguous    :: table(:,:)
         character(*, SK)            , intent(in)    , optional      :: header, sep
         character(*, SK)            , intent(in)    , optional      :: deliml, delimr
         character(*, SK)            , intent(inout) , optional      :: iomsg
@@ -7396,8 +7396,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableWriteUnit_NO_D2_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)                , intent(in)    , contiguous    :: table(:,:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG)                , intent(in)    , contiguous    :: table(:,:)
         character(*, SK)            , intent(in)    , optional      :: header, sep
         character(*, SK)            , intent(in)    , optional      :: deliml, delimr
         character(*, SK)            , intent(inout) , optional      :: iomsg
@@ -7412,8 +7412,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableWriteUnit_NO_D2_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)                , intent(in)    , contiguous    :: table(:,:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG)                , intent(in)    , contiguous    :: table(:,:)
         character(*, SK)            , intent(in)    , optional      :: header, sep
         character(*, SK)            , intent(in)    , optional      :: deliml, delimr
         character(*, SK)            , intent(inout) , optional      :: iomsg
@@ -7428,8 +7428,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableWriteUnit_NO_D2_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)                , intent(in)    , contiguous    :: table(:,:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG)                , intent(in)    , contiguous    :: table(:,:)
         character(*, SK)            , intent(in)    , optional      :: header, sep
         character(*, SK)            , intent(in)    , optional      :: deliml, delimr
         character(*, SK)            , intent(inout) , optional      :: iomsg
@@ -7444,8 +7444,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableWriteUnit_NO_D2_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)                , intent(in)    , contiguous    :: table(:,:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG)                , intent(in)    , contiguous    :: table(:,:)
         character(*, SK)            , intent(in)    , optional      :: header, sep
         character(*, SK)            , intent(in)    , optional      :: deliml, delimr
         character(*, SK)            , intent(inout) , optional      :: iomsg
@@ -7460,8 +7460,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableWriteUnit_NO_D2_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)                , intent(in)    , contiguous    :: table(:,:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG)                , intent(in)    , contiguous    :: table(:,:)
         character(*, SK)            , intent(in)    , optional      :: header, sep
         character(*, SK)            , intent(in)    , optional      :: deliml, delimr
         character(*, SK)            , intent(inout) , optional      :: iomsg
@@ -7478,8 +7478,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableWriteUnit_NO_D2_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)                   , intent(in)    , contiguous    :: table(:,:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)                   , intent(in)    , contiguous    :: table(:,:)
         character(*, SK)            , intent(in)    , optional      :: header, sep
         character(*, SK)            , intent(in)    , optional      :: deliml, delimr
         character(*, SK)            , intent(inout) , optional      :: iomsg
@@ -7494,8 +7494,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableWriteUnit_NO_D2_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)                   , intent(in)    , contiguous    :: table(:,:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)                   , intent(in)    , contiguous    :: table(:,:)
         character(*, SK)            , intent(in)    , optional      :: header, sep
         character(*, SK)            , intent(in)    , optional      :: deliml, delimr
         character(*, SK)            , intent(inout) , optional      :: iomsg
@@ -7510,8 +7510,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableWriteUnit_NO_D2_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)                   , intent(in)    , contiguous    :: table(:,:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)                   , intent(in)    , contiguous    :: table(:,:)
         character(*, SK)            , intent(in)    , optional      :: header, sep
         character(*, SK)            , intent(in)    , optional      :: deliml, delimr
         character(*, SK)            , intent(inout) , optional      :: iomsg
@@ -7526,8 +7526,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableWriteUnit_NO_D2_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)                   , intent(in)    , contiguous    :: table(:,:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)                   , intent(in)    , contiguous    :: table(:,:)
         character(*, SK)            , intent(in)    , optional      :: header, sep
         character(*, SK)            , intent(in)    , optional      :: deliml, delimr
         character(*, SK)            , intent(inout) , optional      :: iomsg
@@ -7542,8 +7542,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableWriteUnit_NO_D2_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)                   , intent(in)    , contiguous    :: table(:,:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)                   , intent(in)    , contiguous    :: table(:,:)
         character(*, SK)            , intent(in)    , optional      :: header, sep
         character(*, SK)            , intent(in)    , optional      :: deliml, delimr
         character(*, SK)            , intent(inout) , optional      :: iomsg
@@ -7568,8 +7568,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableWriteFile_TO_D1_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)            , intent(in)    , contiguous    :: table(:)
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)            , intent(in)    , contiguous    :: table(:)
         character(*, SK)            , intent(in)    , optional      :: file, header, sep
         character(*, SK)            , intent(in)    , optional      :: deliml, delimr
         character(*, SK)            , intent(inout) , optional      :: iomsg
@@ -7584,8 +7584,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableWriteFile_TO_D1_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)            , intent(in)    , contiguous    :: table(:)
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)            , intent(in)    , contiguous    :: table(:)
         character(*, SK)            , intent(in)    , optional      :: file, header, sep
         character(*, SK)            , intent(in)    , optional      :: deliml, delimr
         character(*, SK)            , intent(inout) , optional      :: iomsg
@@ -7600,8 +7600,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableWriteFile_TO_D1_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)            , intent(in)    , contiguous    :: table(:)
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)            , intent(in)    , contiguous    :: table(:)
         character(*, SK)            , intent(in)    , optional      :: file, header, sep
         character(*, SK)            , intent(in)    , optional      :: deliml, delimr
         character(*, SK)            , intent(inout) , optional      :: iomsg
@@ -7616,8 +7616,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableWriteFile_TO_D1_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)            , intent(in)    , contiguous    :: table(:)
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)            , intent(in)    , contiguous    :: table(:)
         character(*, SK)            , intent(in)    , optional      :: file, header, sep
         character(*, SK)            , intent(in)    , optional      :: deliml, delimr
         character(*, SK)            , intent(inout) , optional      :: iomsg
@@ -7632,8 +7632,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableWriteFile_TO_D1_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)            , intent(in)    , contiguous    :: table(:)
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)            , intent(in)    , contiguous    :: table(:)
         character(*, SK)            , intent(in)    , optional      :: file, header, sep
         character(*, SK)            , intent(in)    , optional      :: deliml, delimr
         character(*, SK)            , intent(inout) , optional      :: iomsg
@@ -7650,8 +7650,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableWriteFile_TO_D1_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)                , intent(in)    , contiguous    :: table(:)
+        use pm_kind, only: IKG => IK5
+        integer(IKG)                , intent(in)    , contiguous    :: table(:)
         character(*, SK)            , intent(in)    , optional      :: file, header, sep
         character(*, SK)            , intent(in)    , optional      :: deliml, delimr
         character(*, SK)            , intent(inout) , optional      :: iomsg
@@ -7666,8 +7666,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableWriteFile_TO_D1_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)                , intent(in)    , contiguous    :: table(:)
+        use pm_kind, only: IKG => IK4
+        integer(IKG)                , intent(in)    , contiguous    :: table(:)
         character(*, SK)            , intent(in)    , optional      :: file, header, sep
         character(*, SK)            , intent(in)    , optional      :: deliml, delimr
         character(*, SK)            , intent(inout) , optional      :: iomsg
@@ -7682,8 +7682,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableWriteFile_TO_D1_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)                , intent(in)    , contiguous    :: table(:)
+        use pm_kind, only: IKG => IK3
+        integer(IKG)                , intent(in)    , contiguous    :: table(:)
         character(*, SK)            , intent(in)    , optional      :: file, header, sep
         character(*, SK)            , intent(in)    , optional      :: deliml, delimr
         character(*, SK)            , intent(inout) , optional      :: iomsg
@@ -7698,8 +7698,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableWriteFile_TO_D1_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)                , intent(in)    , contiguous    :: table(:)
+        use pm_kind, only: IKG => IK2
+        integer(IKG)                , intent(in)    , contiguous    :: table(:)
         character(*, SK)            , intent(in)    , optional      :: file, header, sep
         character(*, SK)            , intent(in)    , optional      :: deliml, delimr
         character(*, SK)            , intent(inout) , optional      :: iomsg
@@ -7714,8 +7714,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableWriteFile_TO_D1_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)                , intent(in)    , contiguous    :: table(:)
+        use pm_kind, only: IKG => IK1
+        integer(IKG)                , intent(in)    , contiguous    :: table(:)
         character(*, SK)            , intent(in)    , optional      :: file, header, sep
         character(*, SK)            , intent(in)    , optional      :: deliml, delimr
         character(*, SK)            , intent(inout) , optional      :: iomsg
@@ -7732,8 +7732,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableWriteFile_TO_D1_LK5
 #endif
-        use pm_kind, only: LKC => LK5
-        logical(LKC)                , intent(in)    , contiguous    :: table(:)
+        use pm_kind, only: LKG => LK5
+        logical(LKG)                , intent(in)    , contiguous    :: table(:)
         character(*, SK)            , intent(in)    , optional      :: file, header, sep
         character(*, SK)            , intent(in)    , optional      :: deliml, delimr
         character(*, SK)            , intent(inout) , optional      :: iomsg
@@ -7748,8 +7748,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableWriteFile_TO_D1_LK4
 #endif
-        use pm_kind, only: LKC => LK4
-        logical(LKC)                , intent(in)    , contiguous    :: table(:)
+        use pm_kind, only: LKG => LK4
+        logical(LKG)                , intent(in)    , contiguous    :: table(:)
         character(*, SK)            , intent(in)    , optional      :: file, header, sep
         character(*, SK)            , intent(in)    , optional      :: deliml, delimr
         character(*, SK)            , intent(inout) , optional      :: iomsg
@@ -7764,8 +7764,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableWriteFile_TO_D1_LK3
 #endif
-        use pm_kind, only: LKC => LK3
-        logical(LKC)                , intent(in)    , contiguous    :: table(:)
+        use pm_kind, only: LKG => LK3
+        logical(LKG)                , intent(in)    , contiguous    :: table(:)
         character(*, SK)            , intent(in)    , optional      :: file, header, sep
         character(*, SK)            , intent(in)    , optional      :: deliml, delimr
         character(*, SK)            , intent(inout) , optional      :: iomsg
@@ -7780,8 +7780,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableWriteFile_TO_D1_LK2
 #endif
-        use pm_kind, only: LKC => LK2
-        logical(LKC)                , intent(in)    , contiguous    :: table(:)
+        use pm_kind, only: LKG => LK2
+        logical(LKG)                , intent(in)    , contiguous    :: table(:)
         character(*, SK)            , intent(in)    , optional      :: file, header, sep
         character(*, SK)            , intent(in)    , optional      :: deliml, delimr
         character(*, SK)            , intent(inout) , optional      :: iomsg
@@ -7796,8 +7796,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableWriteFile_TO_D1_LK1
 #endif
-        use pm_kind, only: LKC => LK1
-        logical(LKC)                , intent(in)    , contiguous    :: table(:)
+        use pm_kind, only: LKG => LK1
+        logical(LKG)                , intent(in)    , contiguous    :: table(:)
         character(*, SK)            , intent(in)    , optional      :: file, header, sep
         character(*, SK)            , intent(in)    , optional      :: deliml, delimr
         character(*, SK)            , intent(inout) , optional      :: iomsg
@@ -7814,8 +7814,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableWriteFile_TO_D1_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)                , intent(in)    , contiguous    :: table(:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG)                , intent(in)    , contiguous    :: table(:)
         character(*, SK)            , intent(in)    , optional      :: file, header, sep
         character(*, SK)            , intent(in)    , optional      :: deliml, delimr
         character(*, SK)            , intent(inout) , optional      :: iomsg
@@ -7830,8 +7830,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableWriteFile_TO_D1_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)                , intent(in)    , contiguous    :: table(:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG)                , intent(in)    , contiguous    :: table(:)
         character(*, SK)            , intent(in)    , optional      :: file, header, sep
         character(*, SK)            , intent(in)    , optional      :: deliml, delimr
         character(*, SK)            , intent(inout) , optional      :: iomsg
@@ -7846,8 +7846,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableWriteFile_TO_D1_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)                , intent(in)    , contiguous    :: table(:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG)                , intent(in)    , contiguous    :: table(:)
         character(*, SK)            , intent(in)    , optional      :: file, header, sep
         character(*, SK)            , intent(in)    , optional      :: deliml, delimr
         character(*, SK)            , intent(inout) , optional      :: iomsg
@@ -7862,8 +7862,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableWriteFile_TO_D1_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)                , intent(in)    , contiguous    :: table(:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG)                , intent(in)    , contiguous    :: table(:)
         character(*, SK)            , intent(in)    , optional      :: file, header, sep
         character(*, SK)            , intent(in)    , optional      :: deliml, delimr
         character(*, SK)            , intent(inout) , optional      :: iomsg
@@ -7878,8 +7878,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableWriteFile_TO_D1_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)                , intent(in)    , contiguous    :: table(:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG)                , intent(in)    , contiguous    :: table(:)
         character(*, SK)            , intent(in)    , optional      :: file, header, sep
         character(*, SK)            , intent(in)    , optional      :: deliml, delimr
         character(*, SK)            , intent(inout) , optional      :: iomsg
@@ -7896,8 +7896,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableWriteFile_TO_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)                   , intent(in)    , contiguous    :: table(:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)                   , intent(in)    , contiguous    :: table(:)
         character(*, SK)            , intent(in)    , optional      :: file, header, sep
         character(*, SK)            , intent(in)    , optional      :: deliml, delimr
         character(*, SK)            , intent(inout) , optional      :: iomsg
@@ -7912,8 +7912,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableWriteFile_TO_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)                   , intent(in)    , contiguous    :: table(:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)                   , intent(in)    , contiguous    :: table(:)
         character(*, SK)            , intent(in)    , optional      :: file, header, sep
         character(*, SK)            , intent(in)    , optional      :: deliml, delimr
         character(*, SK)            , intent(inout) , optional      :: iomsg
@@ -7928,8 +7928,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableWriteFile_TO_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)                   , intent(in)    , contiguous    :: table(:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)                   , intent(in)    , contiguous    :: table(:)
         character(*, SK)            , intent(in)    , optional      :: file, header, sep
         character(*, SK)            , intent(in)    , optional      :: deliml, delimr
         character(*, SK)            , intent(inout) , optional      :: iomsg
@@ -7944,8 +7944,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableWriteFile_TO_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)                   , intent(in)    , contiguous    :: table(:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)                   , intent(in)    , contiguous    :: table(:)
         character(*, SK)            , intent(in)    , optional      :: file, header, sep
         character(*, SK)            , intent(in)    , optional      :: deliml, delimr
         character(*, SK)            , intent(inout) , optional      :: iomsg
@@ -7960,8 +7960,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableWriteFile_TO_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)                   , intent(in)    , contiguous    :: table(:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)                   , intent(in)    , contiguous    :: table(:)
         character(*, SK)            , intent(in)    , optional      :: file, header, sep
         character(*, SK)            , intent(in)    , optional      :: deliml, delimr
         character(*, SK)            , intent(inout) , optional      :: iomsg
@@ -7986,8 +7986,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableWriteUnit_TO_D1_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)            , intent(in)    , contiguous    :: table(:)
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)            , intent(in)    , contiguous    :: table(:)
         character(*, SK)            , intent(in)    , optional      :: header, sep
         character(*, SK)            , intent(in)    , optional      :: deliml, delimr
         character(*, SK)            , intent(inout) , optional      :: iomsg
@@ -8003,8 +8003,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableWriteUnit_TO_D1_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)            , intent(in)    , contiguous    :: table(:)
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)            , intent(in)    , contiguous    :: table(:)
         character(*, SK)            , intent(in)    , optional      :: header, sep
         character(*, SK)            , intent(in)    , optional      :: deliml, delimr
         character(*, SK)            , intent(inout) , optional      :: iomsg
@@ -8020,8 +8020,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableWriteUnit_TO_D1_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)            , intent(in)    , contiguous    :: table(:)
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)            , intent(in)    , contiguous    :: table(:)
         character(*, SK)            , intent(in)    , optional      :: header, sep
         character(*, SK)            , intent(in)    , optional      :: deliml, delimr
         character(*, SK)            , intent(inout) , optional      :: iomsg
@@ -8037,8 +8037,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableWriteUnit_TO_D1_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)            , intent(in)    , contiguous    :: table(:)
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)            , intent(in)    , contiguous    :: table(:)
         character(*, SK)            , intent(in)    , optional      :: header, sep
         character(*, SK)            , intent(in)    , optional      :: deliml, delimr
         character(*, SK)            , intent(inout) , optional      :: iomsg
@@ -8054,8 +8054,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableWriteUnit_TO_D1_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)            , intent(in)    , contiguous    :: table(:)
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)            , intent(in)    , contiguous    :: table(:)
         character(*, SK)            , intent(in)    , optional      :: header, sep
         character(*, SK)            , intent(in)    , optional      :: deliml, delimr
         character(*, SK)            , intent(inout) , optional      :: iomsg
@@ -8073,8 +8073,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableWriteUnit_TO_D1_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)                , intent(in)    , contiguous    :: table(:)
+        use pm_kind, only: IKG => IK5
+        integer(IKG)                , intent(in)    , contiguous    :: table(:)
         character(*, SK)            , intent(in)    , optional      :: header, sep
         character(*, SK)            , intent(in)    , optional      :: deliml, delimr
         character(*, SK)            , intent(inout) , optional      :: iomsg
@@ -8090,8 +8090,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableWriteUnit_TO_D1_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)                , intent(in)    , contiguous    :: table(:)
+        use pm_kind, only: IKG => IK4
+        integer(IKG)                , intent(in)    , contiguous    :: table(:)
         character(*, SK)            , intent(in)    , optional      :: header, sep
         character(*, SK)            , intent(in)    , optional      :: deliml, delimr
         character(*, SK)            , intent(inout) , optional      :: iomsg
@@ -8107,8 +8107,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableWriteUnit_TO_D1_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)                , intent(in)    , contiguous    :: table(:)
+        use pm_kind, only: IKG => IK3
+        integer(IKG)                , intent(in)    , contiguous    :: table(:)
         character(*, SK)            , intent(in)    , optional      :: header, sep
         character(*, SK)            , intent(in)    , optional      :: deliml, delimr
         character(*, SK)            , intent(inout) , optional      :: iomsg
@@ -8124,8 +8124,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableWriteUnit_TO_D1_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)                , intent(in)    , contiguous    :: table(:)
+        use pm_kind, only: IKG => IK2
+        integer(IKG)                , intent(in)    , contiguous    :: table(:)
         character(*, SK)            , intent(in)    , optional      :: header, sep
         character(*, SK)            , intent(in)    , optional      :: deliml, delimr
         character(*, SK)            , intent(inout) , optional      :: iomsg
@@ -8141,8 +8141,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableWriteUnit_TO_D1_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)                , intent(in)    , contiguous    :: table(:)
+        use pm_kind, only: IKG => IK1
+        integer(IKG)                , intent(in)    , contiguous    :: table(:)
         character(*, SK)            , intent(in)    , optional      :: header, sep
         character(*, SK)            , intent(in)    , optional      :: deliml, delimr
         character(*, SK)            , intent(inout) , optional      :: iomsg
@@ -8160,8 +8160,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableWriteUnit_TO_D1_LK5
 #endif
-        use pm_kind, only: LKC => LK5
-        logical(LKC)                , intent(in)    , contiguous    :: table(:)
+        use pm_kind, only: LKG => LK5
+        logical(LKG)                , intent(in)    , contiguous    :: table(:)
         character(*, SK)            , intent(in)    , optional      :: header, sep
         character(*, SK)            , intent(in)    , optional      :: deliml, delimr
         character(*, SK)            , intent(inout) , optional      :: iomsg
@@ -8177,8 +8177,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableWriteUnit_TO_D1_LK4
 #endif
-        use pm_kind, only: LKC => LK4
-        logical(LKC)                , intent(in)    , contiguous    :: table(:)
+        use pm_kind, only: LKG => LK4
+        logical(LKG)                , intent(in)    , contiguous    :: table(:)
         character(*, SK)            , intent(in)    , optional      :: header, sep
         character(*, SK)            , intent(in)    , optional      :: deliml, delimr
         character(*, SK)            , intent(inout) , optional      :: iomsg
@@ -8194,8 +8194,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableWriteUnit_TO_D1_LK3
 #endif
-        use pm_kind, only: LKC => LK3
-        logical(LKC)                , intent(in)    , contiguous    :: table(:)
+        use pm_kind, only: LKG => LK3
+        logical(LKG)                , intent(in)    , contiguous    :: table(:)
         character(*, SK)            , intent(in)    , optional      :: header, sep
         character(*, SK)            , intent(in)    , optional      :: deliml, delimr
         character(*, SK)            , intent(inout) , optional      :: iomsg
@@ -8211,8 +8211,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableWriteUnit_TO_D1_LK2
 #endif
-        use pm_kind, only: LKC => LK2
-        logical(LKC)                , intent(in)    , contiguous    :: table(:)
+        use pm_kind, only: LKG => LK2
+        logical(LKG)                , intent(in)    , contiguous    :: table(:)
         character(*, SK)            , intent(in)    , optional      :: header, sep
         character(*, SK)            , intent(in)    , optional      :: deliml, delimr
         character(*, SK)            , intent(inout) , optional      :: iomsg
@@ -8228,8 +8228,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableWriteUnit_TO_D1_LK1
 #endif
-        use pm_kind, only: LKC => LK1
-        logical(LKC)                , intent(in)    , contiguous    :: table(:)
+        use pm_kind, only: LKG => LK1
+        logical(LKG)                , intent(in)    , contiguous    :: table(:)
         character(*, SK)            , intent(in)    , optional      :: header, sep
         character(*, SK)            , intent(in)    , optional      :: deliml, delimr
         character(*, SK)            , intent(inout) , optional      :: iomsg
@@ -8247,8 +8247,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableWriteUnit_TO_D1_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)                , intent(in)    , contiguous    :: table(:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG)                , intent(in)    , contiguous    :: table(:)
         character(*, SK)            , intent(in)    , optional      :: header, sep
         character(*, SK)            , intent(in)    , optional      :: deliml, delimr
         character(*, SK)            , intent(inout) , optional      :: iomsg
@@ -8264,8 +8264,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableWriteUnit_TO_D1_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)                , intent(in)    , contiguous    :: table(:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG)                , intent(in)    , contiguous    :: table(:)
         character(*, SK)            , intent(in)    , optional      :: header, sep
         character(*, SK)            , intent(in)    , optional      :: deliml, delimr
         character(*, SK)            , intent(inout) , optional      :: iomsg
@@ -8281,8 +8281,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableWriteUnit_TO_D1_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)                , intent(in)    , contiguous    :: table(:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG)                , intent(in)    , contiguous    :: table(:)
         character(*, SK)            , intent(in)    , optional      :: header, sep
         character(*, SK)            , intent(in)    , optional      :: deliml, delimr
         character(*, SK)            , intent(inout) , optional      :: iomsg
@@ -8298,8 +8298,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableWriteUnit_TO_D1_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)                , intent(in)    , contiguous    :: table(:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG)                , intent(in)    , contiguous    :: table(:)
         character(*, SK)            , intent(in)    , optional      :: header, sep
         character(*, SK)            , intent(in)    , optional      :: deliml, delimr
         character(*, SK)            , intent(inout) , optional      :: iomsg
@@ -8315,8 +8315,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableWriteUnit_TO_D1_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)                , intent(in)    , contiguous    :: table(:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG)                , intent(in)    , contiguous    :: table(:)
         character(*, SK)            , intent(in)    , optional      :: header, sep
         character(*, SK)            , intent(in)    , optional      :: deliml, delimr
         character(*, SK)            , intent(inout) , optional      :: iomsg
@@ -8334,8 +8334,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableWriteUnit_TO_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)                   , intent(in)    , contiguous    :: table(:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)                   , intent(in)    , contiguous    :: table(:)
         character(*, SK)            , intent(in)    , optional      :: header, sep
         character(*, SK)            , intent(in)    , optional      :: deliml, delimr
         character(*, SK)            , intent(inout) , optional      :: iomsg
@@ -8351,8 +8351,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableWriteUnit_TO_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)                   , intent(in)    , contiguous    :: table(:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)                   , intent(in)    , contiguous    :: table(:)
         character(*, SK)            , intent(in)    , optional      :: header, sep
         character(*, SK)            , intent(in)    , optional      :: deliml, delimr
         character(*, SK)            , intent(inout) , optional      :: iomsg
@@ -8368,8 +8368,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableWriteUnit_TO_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)                   , intent(in)    , contiguous    :: table(:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)                   , intent(in)    , contiguous    :: table(:)
         character(*, SK)            , intent(in)    , optional      :: header, sep
         character(*, SK)            , intent(in)    , optional      :: deliml, delimr
         character(*, SK)            , intent(inout) , optional      :: iomsg
@@ -8385,8 +8385,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableWriteUnit_TO_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)                   , intent(in)    , contiguous    :: table(:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)                   , intent(in)    , contiguous    :: table(:)
         character(*, SK)            , intent(in)    , optional      :: header, sep
         character(*, SK)            , intent(in)    , optional      :: deliml, delimr
         character(*, SK)            , intent(inout) , optional      :: iomsg
@@ -8402,8 +8402,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableWriteUnit_TO_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)                   , intent(in)    , contiguous    :: table(:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)                   , intent(in)    , contiguous    :: table(:)
         character(*, SK)            , intent(in)    , optional      :: header, sep
         character(*, SK)            , intent(in)    , optional      :: deliml, delimr
         character(*, SK)            , intent(inout) , optional      :: iomsg
@@ -8429,8 +8429,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableWriteFile_TO_D2_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)            , intent(in)    , contiguous    :: table(:,:)
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)            , intent(in)    , contiguous    :: table(:,:)
         character(*, SK)            , intent(in)    , optional      :: file, header, sep
         character(*, SK)            , intent(in)    , optional      :: deliml, delimr
         character(*, SK)            , intent(inout) , optional      :: iomsg
@@ -8445,8 +8445,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableWriteFile_TO_D2_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)            , intent(in)    , contiguous    :: table(:,:)
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)            , intent(in)    , contiguous    :: table(:,:)
         character(*, SK)            , intent(in)    , optional      :: file, header, sep
         character(*, SK)            , intent(in)    , optional      :: deliml, delimr
         character(*, SK)            , intent(inout) , optional      :: iomsg
@@ -8461,8 +8461,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableWriteFile_TO_D2_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)            , intent(in)    , contiguous    :: table(:,:)
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)            , intent(in)    , contiguous    :: table(:,:)
         character(*, SK)            , intent(in)    , optional      :: file, header, sep
         character(*, SK)            , intent(in)    , optional      :: deliml, delimr
         character(*, SK)            , intent(inout) , optional      :: iomsg
@@ -8477,8 +8477,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableWriteFile_TO_D2_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)            , intent(in)    , contiguous    :: table(:,:)
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)            , intent(in)    , contiguous    :: table(:,:)
         character(*, SK)            , intent(in)    , optional      :: file, header, sep
         character(*, SK)            , intent(in)    , optional      :: deliml, delimr
         character(*, SK)            , intent(inout) , optional      :: iomsg
@@ -8493,8 +8493,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableWriteFile_TO_D2_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)            , intent(in)    , contiguous    :: table(:,:)
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)            , intent(in)    , contiguous    :: table(:,:)
         character(*, SK)            , intent(in)    , optional      :: file, header, sep
         character(*, SK)            , intent(in)    , optional      :: deliml, delimr
         character(*, SK)            , intent(inout) , optional      :: iomsg
@@ -8511,8 +8511,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableWriteFile_TO_D2_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)                , intent(in)    , contiguous    :: table(:,:)
+        use pm_kind, only: IKG => IK5
+        integer(IKG)                , intent(in)    , contiguous    :: table(:,:)
         character(*, SK)            , intent(in)    , optional      :: file, header, sep
         character(*, SK)            , intent(in)    , optional      :: deliml, delimr
         character(*, SK)            , intent(inout) , optional      :: iomsg
@@ -8527,8 +8527,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableWriteFile_TO_D2_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)                , intent(in)    , contiguous    :: table(:,:)
+        use pm_kind, only: IKG => IK4
+        integer(IKG)                , intent(in)    , contiguous    :: table(:,:)
         character(*, SK)            , intent(in)    , optional      :: file, header, sep
         character(*, SK)            , intent(in)    , optional      :: deliml, delimr
         character(*, SK)            , intent(inout) , optional      :: iomsg
@@ -8543,8 +8543,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableWriteFile_TO_D2_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)                , intent(in)    , contiguous    :: table(:,:)
+        use pm_kind, only: IKG => IK3
+        integer(IKG)                , intent(in)    , contiguous    :: table(:,:)
         character(*, SK)            , intent(in)    , optional      :: file, header, sep
         character(*, SK)            , intent(in)    , optional      :: deliml, delimr
         character(*, SK)            , intent(inout) , optional      :: iomsg
@@ -8559,8 +8559,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableWriteFile_TO_D2_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)                , intent(in)    , contiguous    :: table(:,:)
+        use pm_kind, only: IKG => IK2
+        integer(IKG)                , intent(in)    , contiguous    :: table(:,:)
         character(*, SK)            , intent(in)    , optional      :: file, header, sep
         character(*, SK)            , intent(in)    , optional      :: deliml, delimr
         character(*, SK)            , intent(inout) , optional      :: iomsg
@@ -8575,8 +8575,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableWriteFile_TO_D2_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)                , intent(in)    , contiguous    :: table(:,:)
+        use pm_kind, only: IKG => IK1
+        integer(IKG)                , intent(in)    , contiguous    :: table(:,:)
         character(*, SK)            , intent(in)    , optional      :: file, header, sep
         character(*, SK)            , intent(in)    , optional      :: deliml, delimr
         character(*, SK)            , intent(inout) , optional      :: iomsg
@@ -8593,8 +8593,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableWriteFile_TO_D2_LK5
 #endif
-        use pm_kind, only: LKC => LK5
-        logical(LKC)                , intent(in)    , contiguous    :: table(:,:)
+        use pm_kind, only: LKG => LK5
+        logical(LKG)                , intent(in)    , contiguous    :: table(:,:)
         character(*, SK)            , intent(in)    , optional      :: file, header, sep
         character(*, SK)            , intent(in)    , optional      :: deliml, delimr
         character(*, SK)            , intent(inout) , optional      :: iomsg
@@ -8609,8 +8609,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableWriteFile_TO_D2_LK4
 #endif
-        use pm_kind, only: LKC => LK4
-        logical(LKC)                , intent(in)    , contiguous    :: table(:,:)
+        use pm_kind, only: LKG => LK4
+        logical(LKG)                , intent(in)    , contiguous    :: table(:,:)
         character(*, SK)            , intent(in)    , optional      :: file, header, sep
         character(*, SK)            , intent(in)    , optional      :: deliml, delimr
         character(*, SK)            , intent(inout) , optional      :: iomsg
@@ -8625,8 +8625,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableWriteFile_TO_D2_LK3
 #endif
-        use pm_kind, only: LKC => LK3
-        logical(LKC)                , intent(in)    , contiguous    :: table(:,:)
+        use pm_kind, only: LKG => LK3
+        logical(LKG)                , intent(in)    , contiguous    :: table(:,:)
         character(*, SK)            , intent(in)    , optional      :: file, header, sep
         character(*, SK)            , intent(in)    , optional      :: deliml, delimr
         character(*, SK)            , intent(inout) , optional      :: iomsg
@@ -8641,8 +8641,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableWriteFile_TO_D2_LK2
 #endif
-        use pm_kind, only: LKC => LK2
-        logical(LKC)                , intent(in)    , contiguous    :: table(:,:)
+        use pm_kind, only: LKG => LK2
+        logical(LKG)                , intent(in)    , contiguous    :: table(:,:)
         character(*, SK)            , intent(in)    , optional      :: file, header, sep
         character(*, SK)            , intent(in)    , optional      :: deliml, delimr
         character(*, SK)            , intent(inout) , optional      :: iomsg
@@ -8657,8 +8657,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableWriteFile_TO_D2_LK1
 #endif
-        use pm_kind, only: LKC => LK1
-        logical(LKC)                , intent(in)    , contiguous    :: table(:,:)
+        use pm_kind, only: LKG => LK1
+        logical(LKG)                , intent(in)    , contiguous    :: table(:,:)
         character(*, SK)            , intent(in)    , optional      :: file, header, sep
         character(*, SK)            , intent(in)    , optional      :: deliml, delimr
         character(*, SK)            , intent(inout) , optional      :: iomsg
@@ -8675,8 +8675,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableWriteFile_TO_D2_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)                , intent(in)    , contiguous    :: table(:,:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG)                , intent(in)    , contiguous    :: table(:,:)
         character(*, SK)            , intent(in)    , optional      :: file, header, sep
         character(*, SK)            , intent(in)    , optional      :: deliml, delimr
         character(*, SK)            , intent(inout) , optional      :: iomsg
@@ -8691,8 +8691,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableWriteFile_TO_D2_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)                , intent(in)    , contiguous    :: table(:,:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG)                , intent(in)    , contiguous    :: table(:,:)
         character(*, SK)            , intent(in)    , optional      :: file, header, sep
         character(*, SK)            , intent(in)    , optional      :: deliml, delimr
         character(*, SK)            , intent(inout) , optional      :: iomsg
@@ -8707,8 +8707,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableWriteFile_TO_D2_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)                , intent(in)    , contiguous    :: table(:,:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG)                , intent(in)    , contiguous    :: table(:,:)
         character(*, SK)            , intent(in)    , optional      :: file, header, sep
         character(*, SK)            , intent(in)    , optional      :: deliml, delimr
         character(*, SK)            , intent(inout) , optional      :: iomsg
@@ -8723,8 +8723,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableWriteFile_TO_D2_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)                , intent(in)    , contiguous    :: table(:,:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG)                , intent(in)    , contiguous    :: table(:,:)
         character(*, SK)            , intent(in)    , optional      :: file, header, sep
         character(*, SK)            , intent(in)    , optional      :: deliml, delimr
         character(*, SK)            , intent(inout) , optional      :: iomsg
@@ -8739,8 +8739,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableWriteFile_TO_D2_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)                , intent(in)    , contiguous    :: table(:,:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG)                , intent(in)    , contiguous    :: table(:,:)
         character(*, SK)            , intent(in)    , optional      :: file, header, sep
         character(*, SK)            , intent(in)    , optional      :: deliml, delimr
         character(*, SK)            , intent(inout) , optional      :: iomsg
@@ -8757,8 +8757,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableWriteFile_TO_D2_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)                   , intent(in)    , contiguous    :: table(:,:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)                   , intent(in)    , contiguous    :: table(:,:)
         character(*, SK)            , intent(in)    , optional      :: file, header, sep
         character(*, SK)            , intent(in)    , optional      :: deliml, delimr
         character(*, SK)            , intent(inout) , optional      :: iomsg
@@ -8773,8 +8773,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableWriteFile_TO_D2_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)                   , intent(in)    , contiguous    :: table(:,:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)                   , intent(in)    , contiguous    :: table(:,:)
         character(*, SK)            , intent(in)    , optional      :: file, header, sep
         character(*, SK)            , intent(in)    , optional      :: deliml, delimr
         character(*, SK)            , intent(inout) , optional      :: iomsg
@@ -8789,8 +8789,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableWriteFile_TO_D2_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)                   , intent(in)    , contiguous    :: table(:,:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)                   , intent(in)    , contiguous    :: table(:,:)
         character(*, SK)            , intent(in)    , optional      :: file, header, sep
         character(*, SK)            , intent(in)    , optional      :: deliml, delimr
         character(*, SK)            , intent(inout) , optional      :: iomsg
@@ -8805,8 +8805,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableWriteFile_TO_D2_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)                   , intent(in)    , contiguous    :: table(:,:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)                   , intent(in)    , contiguous    :: table(:,:)
         character(*, SK)            , intent(in)    , optional      :: file, header, sep
         character(*, SK)            , intent(in)    , optional      :: deliml, delimr
         character(*, SK)            , intent(inout) , optional      :: iomsg
@@ -8821,8 +8821,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableWriteFile_TO_D2_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)                   , intent(in)    , contiguous    :: table(:,:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)                   , intent(in)    , contiguous    :: table(:,:)
         character(*, SK)            , intent(in)    , optional      :: file, header, sep
         character(*, SK)            , intent(in)    , optional      :: deliml, delimr
         character(*, SK)            , intent(inout) , optional      :: iomsg
@@ -8847,8 +8847,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableWriteUnit_TO_D2_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)            , intent(in)    , contiguous    :: table(:,:)
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)            , intent(in)    , contiguous    :: table(:,:)
         character(*, SK)            , intent(in)    , optional      :: header, sep
         character(*, SK)            , intent(in)    , optional      :: deliml, delimr
         character(*, SK)            , intent(inout) , optional      :: iomsg
@@ -8864,8 +8864,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableWriteUnit_TO_D2_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)            , intent(in)    , contiguous    :: table(:,:)
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)            , intent(in)    , contiguous    :: table(:,:)
         character(*, SK)            , intent(in)    , optional      :: header, sep
         character(*, SK)            , intent(in)    , optional      :: deliml, delimr
         character(*, SK)            , intent(inout) , optional      :: iomsg
@@ -8881,8 +8881,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableWriteUnit_TO_D2_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)            , intent(in)    , contiguous    :: table(:,:)
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)            , intent(in)    , contiguous    :: table(:,:)
         character(*, SK)            , intent(in)    , optional      :: header, sep
         character(*, SK)            , intent(in)    , optional      :: deliml, delimr
         character(*, SK)            , intent(inout) , optional      :: iomsg
@@ -8898,8 +8898,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableWriteUnit_TO_D2_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)            , intent(in)    , contiguous    :: table(:,:)
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)            , intent(in)    , contiguous    :: table(:,:)
         character(*, SK)            , intent(in)    , optional      :: header, sep
         character(*, SK)            , intent(in)    , optional      :: deliml, delimr
         character(*, SK)            , intent(inout) , optional      :: iomsg
@@ -8915,8 +8915,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableWriteUnit_TO_D2_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)            , intent(in)    , contiguous    :: table(:,:)
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)            , intent(in)    , contiguous    :: table(:,:)
         character(*, SK)            , intent(in)    , optional      :: header, sep
         character(*, SK)            , intent(in)    , optional      :: deliml, delimr
         character(*, SK)            , intent(inout) , optional      :: iomsg
@@ -8934,8 +8934,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableWriteUnit_TO_D2_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)                , intent(in)    , contiguous    :: table(:,:)
+        use pm_kind, only: IKG => IK5
+        integer(IKG)                , intent(in)    , contiguous    :: table(:,:)
         character(*, SK)            , intent(in)    , optional      :: header, sep
         character(*, SK)            , intent(in)    , optional      :: deliml, delimr
         character(*, SK)            , intent(inout) , optional      :: iomsg
@@ -8951,8 +8951,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableWriteUnit_TO_D2_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)                , intent(in)    , contiguous    :: table(:,:)
+        use pm_kind, only: IKG => IK4
+        integer(IKG)                , intent(in)    , contiguous    :: table(:,:)
         character(*, SK)            , intent(in)    , optional      :: header, sep
         character(*, SK)            , intent(in)    , optional      :: deliml, delimr
         character(*, SK)            , intent(inout) , optional      :: iomsg
@@ -8968,8 +8968,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableWriteUnit_TO_D2_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)                , intent(in)    , contiguous    :: table(:,:)
+        use pm_kind, only: IKG => IK3
+        integer(IKG)                , intent(in)    , contiguous    :: table(:,:)
         character(*, SK)            , intent(in)    , optional      :: header, sep
         character(*, SK)            , intent(in)    , optional      :: deliml, delimr
         character(*, SK)            , intent(inout) , optional      :: iomsg
@@ -8985,8 +8985,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableWriteUnit_TO_D2_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)                , intent(in)    , contiguous    :: table(:,:)
+        use pm_kind, only: IKG => IK2
+        integer(IKG)                , intent(in)    , contiguous    :: table(:,:)
         character(*, SK)            , intent(in)    , optional      :: header, sep
         character(*, SK)            , intent(in)    , optional      :: deliml, delimr
         character(*, SK)            , intent(inout) , optional      :: iomsg
@@ -9002,8 +9002,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableWriteUnit_TO_D2_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)                , intent(in)    , contiguous    :: table(:,:)
+        use pm_kind, only: IKG => IK1
+        integer(IKG)                , intent(in)    , contiguous    :: table(:,:)
         character(*, SK)            , intent(in)    , optional      :: header, sep
         character(*, SK)            , intent(in)    , optional      :: deliml, delimr
         character(*, SK)            , intent(inout) , optional      :: iomsg
@@ -9021,8 +9021,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableWriteUnit_TO_D2_LK5
 #endif
-        use pm_kind, only: LKC => LK5
-        logical(LKC)                , intent(in)    , contiguous    :: table(:,:)
+        use pm_kind, only: LKG => LK5
+        logical(LKG)                , intent(in)    , contiguous    :: table(:,:)
         character(*, SK)            , intent(in)    , optional      :: header, sep
         character(*, SK)            , intent(in)    , optional      :: deliml, delimr
         character(*, SK)            , intent(inout) , optional      :: iomsg
@@ -9038,8 +9038,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableWriteUnit_TO_D2_LK4
 #endif
-        use pm_kind, only: LKC => LK4
-        logical(LKC)                , intent(in)    , contiguous    :: table(:,:)
+        use pm_kind, only: LKG => LK4
+        logical(LKG)                , intent(in)    , contiguous    :: table(:,:)
         character(*, SK)            , intent(in)    , optional      :: header, sep
         character(*, SK)            , intent(in)    , optional      :: deliml, delimr
         character(*, SK)            , intent(inout) , optional      :: iomsg
@@ -9055,8 +9055,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableWriteUnit_TO_D2_LK3
 #endif
-        use pm_kind, only: LKC => LK3
-        logical(LKC)                , intent(in)    , contiguous    :: table(:,:)
+        use pm_kind, only: LKG => LK3
+        logical(LKG)                , intent(in)    , contiguous    :: table(:,:)
         character(*, SK)            , intent(in)    , optional      :: header, sep
         character(*, SK)            , intent(in)    , optional      :: deliml, delimr
         character(*, SK)            , intent(inout) , optional      :: iomsg
@@ -9072,8 +9072,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableWriteUnit_TO_D2_LK2
 #endif
-        use pm_kind, only: LKC => LK2
-        logical(LKC)                , intent(in)    , contiguous    :: table(:,:)
+        use pm_kind, only: LKG => LK2
+        logical(LKG)                , intent(in)    , contiguous    :: table(:,:)
         character(*, SK)            , intent(in)    , optional      :: header, sep
         character(*, SK)            , intent(in)    , optional      :: deliml, delimr
         character(*, SK)            , intent(inout) , optional      :: iomsg
@@ -9089,8 +9089,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableWriteUnit_TO_D2_LK1
 #endif
-        use pm_kind, only: LKC => LK1
-        logical(LKC)                , intent(in)    , contiguous    :: table(:,:)
+        use pm_kind, only: LKG => LK1
+        logical(LKG)                , intent(in)    , contiguous    :: table(:,:)
         character(*, SK)            , intent(in)    , optional      :: header, sep
         character(*, SK)            , intent(in)    , optional      :: deliml, delimr
         character(*, SK)            , intent(inout) , optional      :: iomsg
@@ -9108,8 +9108,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableWriteUnit_TO_D2_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)                , intent(in)    , contiguous    :: table(:,:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG)                , intent(in)    , contiguous    :: table(:,:)
         character(*, SK)            , intent(in)    , optional      :: header, sep
         character(*, SK)            , intent(in)    , optional      :: deliml, delimr
         character(*, SK)            , intent(inout) , optional      :: iomsg
@@ -9125,8 +9125,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableWriteUnit_TO_D2_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)                , intent(in)    , contiguous    :: table(:,:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG)                , intent(in)    , contiguous    :: table(:,:)
         character(*, SK)            , intent(in)    , optional      :: header, sep
         character(*, SK)            , intent(in)    , optional      :: deliml, delimr
         character(*, SK)            , intent(inout) , optional      :: iomsg
@@ -9142,8 +9142,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableWriteUnit_TO_D2_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)                , intent(in)    , contiguous    :: table(:,:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG)                , intent(in)    , contiguous    :: table(:,:)
         character(*, SK)            , intent(in)    , optional      :: header, sep
         character(*, SK)            , intent(in)    , optional      :: deliml, delimr
         character(*, SK)            , intent(inout) , optional      :: iomsg
@@ -9159,8 +9159,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableWriteUnit_TO_D2_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)                , intent(in)    , contiguous    :: table(:,:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG)                , intent(in)    , contiguous    :: table(:,:)
         character(*, SK)            , intent(in)    , optional      :: header, sep
         character(*, SK)            , intent(in)    , optional      :: deliml, delimr
         character(*, SK)            , intent(inout) , optional      :: iomsg
@@ -9176,8 +9176,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableWriteUnit_TO_D2_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)                , intent(in)    , contiguous    :: table(:,:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG)                , intent(in)    , contiguous    :: table(:,:)
         character(*, SK)            , intent(in)    , optional      :: header, sep
         character(*, SK)            , intent(in)    , optional      :: deliml, delimr
         character(*, SK)            , intent(inout) , optional      :: iomsg
@@ -9195,8 +9195,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableWriteUnit_TO_D2_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)                   , intent(in)    , contiguous    :: table(:,:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)                   , intent(in)    , contiguous    :: table(:,:)
         character(*, SK)            , intent(in)    , optional      :: header, sep
         character(*, SK)            , intent(in)    , optional      :: deliml, delimr
         character(*, SK)            , intent(inout) , optional      :: iomsg
@@ -9212,8 +9212,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableWriteUnit_TO_D2_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)                   , intent(in)    , contiguous    :: table(:,:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)                   , intent(in)    , contiguous    :: table(:,:)
         character(*, SK)            , intent(in)    , optional      :: header, sep
         character(*, SK)            , intent(in)    , optional      :: deliml, delimr
         character(*, SK)            , intent(inout) , optional      :: iomsg
@@ -9229,8 +9229,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableWriteUnit_TO_D2_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)                   , intent(in)    , contiguous    :: table(:,:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)                   , intent(in)    , contiguous    :: table(:,:)
         character(*, SK)            , intent(in)    , optional      :: header, sep
         character(*, SK)            , intent(in)    , optional      :: deliml, delimr
         character(*, SK)            , intent(inout) , optional      :: iomsg
@@ -9246,8 +9246,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableWriteUnit_TO_D2_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)                   , intent(in)    , contiguous    :: table(:,:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)                   , intent(in)    , contiguous    :: table(:,:)
         character(*, SK)            , intent(in)    , optional      :: header, sep
         character(*, SK)            , intent(in)    , optional      :: deliml, delimr
         character(*, SK)            , intent(inout) , optional      :: iomsg
@@ -9263,8 +9263,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getErrTableWriteUnit_TO_D2_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)                   , intent(in)    , contiguous    :: table(:,:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)                   , intent(in)    , contiguous    :: table(:,:)
         character(*, SK)            , intent(in)    , optional      :: header, sep
         character(*, SK)            , intent(in)    , optional      :: deliml, delimr
         character(*, SK)            , intent(inout) , optional      :: iomsg
@@ -9410,70 +9410,70 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getFieldSepFile_ID0_FDEF_XX_SK
 #endif
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
         character(*, SK)    , intent(in)                :: file
-        character(*,SKC)    , intent(in)                :: seps
-        character(*,SKC)    , intent(inout) , optional  :: iomsg
-        character(:,SKC)    , allocatable               :: sep
+        character(*,SKG)    , intent(in)                :: seps
+        character(*,SKG)    , intent(inout) , optional  :: iomsg
+        character(:,SKG)    , allocatable               :: sep
     end function
 
     module function getFieldSepUnit_ID0_FDEF_XX_SK(unit, seps, iomsg) result(sep)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getFieldSepUnit_ID0_FDEF_XX_SK
 #endif
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
         integer(IK)         , intent(in)                :: unit
-        character(*,SKC)    , intent(in)                :: seps
-        character(*,SKC)    , intent(inout) , optional  :: iomsg
-        character(:,SKC)    , allocatable               :: sep
+        character(*,SKG)    , intent(in)                :: seps
+        character(*,SKG)    , intent(inout) , optional  :: iomsg
+        character(:,SKG)    , allocatable               :: sep
     end function
 
     module function getFieldSepFile_ID0_FCSV_XX_SK(file, seps, form, iomsg) result(sep)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getFieldSepFile_ID0_FCSV_XX_SK
 #endif
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
         character(*, SK)    , intent(in)                :: file
-        character(*,SKC)    , intent(in)                :: seps
+        character(*,SKG)    , intent(in)                :: seps
         type(csv_type)      , intent(in)                :: form
-        character(*,SKC)    , intent(inout) , optional  :: iomsg
-        character(:,SKC)    , allocatable               :: sep
+        character(*,SKG)    , intent(inout) , optional  :: iomsg
+        character(:,SKG)    , allocatable               :: sep
     end function
 
     module function getFieldSepUnit_ID0_FCSV_XX_SK(unit, seps, form, iomsg) result(sep)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getFieldSepUnit_ID0_FCSV_XX_SK
 #endif
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
         integer(IK)         , intent(in)                :: unit
-        character(*,SKC)    , intent(in)                :: seps
+        character(*,SKG)    , intent(in)                :: seps
         type(csv_type)      , intent(in)                :: form
-        character(*,SKC)    , intent(inout) , optional  :: iomsg
-        character(:,SKC)    , allocatable               :: sep
+        character(*,SKG)    , intent(inout) , optional  :: iomsg
+        character(:,SKG)    , allocatable               :: sep
     end function
 
     module function getFieldSepFile_ID0_FFLD_XX_SK(file, seps, form, iomsg) result(sep)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getFieldSepFile_ID0_FFLD_XX_SK
 #endif
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
         character(*, SK)    , intent(in)                :: file
-        character(*,SKC)    , intent(in)                :: seps
+        character(*,SKG)    , intent(in)                :: seps
         type(fld_type)      , intent(in)                :: form
-        character(*,SKC)    , intent(inout) , optional  :: iomsg
-        character(:,SKC)    , allocatable               :: sep
+        character(*,SKG)    , intent(inout) , optional  :: iomsg
+        character(:,SKG)    , allocatable               :: sep
     end function
 
     module function getFieldSepUnit_ID0_FFLD_XX_SK(unit, seps, form, iomsg) result(sep)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getFieldSepUnit_ID0_FFLD_XX_SK
 #endif
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
         integer(IK)         , intent(in)                :: unit
-        character(*,SKC)    , intent(in)                :: seps
+        character(*,SKG)    , intent(in)                :: seps
         type(fld_type)      , intent(in)                :: form
-        character(*,SKC)    , intent(inout) , optional  :: iomsg
-        character(:,SKC)    , allocatable               :: sep
+        character(*,SKG)    , intent(inout) , optional  :: iomsg
+        character(:,SKG)    , allocatable               :: sep
     end function
 
     end interface
@@ -9486,11 +9486,11 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getFieldSepFile_ID0_FDEF_NF_SK
 #endif
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
         character(*, SK)    , intent(in)                :: file
-        character(*,SKC)    , intent(in)                :: seps
-        character(*,SKC)    , intent(inout) , optional  :: iomsg
-        character(:,SKC)    , allocatable               :: sep
+        character(*,SKG)    , intent(in)                :: seps
+        character(*,SKG)    , intent(inout) , optional  :: iomsg
+        character(:,SKG)    , allocatable               :: sep
         integer(IK)         , intent(out)               :: nfield
     end function
 
@@ -9498,11 +9498,11 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getFieldSepUnit_ID0_FDEF_NF_SK
 #endif
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
         integer(IK)         , intent(in)                :: unit
-        character(*,SKC)    , intent(in)                :: seps
-        character(*,SKC)    , intent(inout) , optional  :: iomsg
-        character(:,SKC)    , allocatable               :: sep
+        character(*,SKG)    , intent(in)                :: seps
+        character(*,SKG)    , intent(inout) , optional  :: iomsg
+        character(:,SKG)    , allocatable               :: sep
         integer(IK)         , intent(out)               :: nfield
     end function
 
@@ -9510,12 +9510,12 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getFieldSepFile_ID0_FCSV_NF_SK
 #endif
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
         character(*, SK)    , intent(in)                :: file
-        character(*,SKC)    , intent(in)                :: seps
+        character(*,SKG)    , intent(in)                :: seps
         type(csv_type)      , intent(in)                :: form
-        character(*,SKC)    , intent(inout) , optional  :: iomsg
-        character(:,SKC)    , allocatable               :: sep
+        character(*,SKG)    , intent(inout) , optional  :: iomsg
+        character(:,SKG)    , allocatable               :: sep
         integer(IK)         , intent(out)               :: nfield
     end function
 
@@ -9523,12 +9523,12 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getFieldSepUnit_ID0_FCSV_NF_SK
 #endif
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
         integer(IK)         , intent(in)                :: unit
-        character(*,SKC)    , intent(in)                :: seps
+        character(*,SKG)    , intent(in)                :: seps
         type(csv_type)      , intent(in)                :: form
-        character(*,SKC)    , intent(inout) , optional  :: iomsg
-        character(:,SKC)    , allocatable               :: sep
+        character(*,SKG)    , intent(inout) , optional  :: iomsg
+        character(:,SKG)    , allocatable               :: sep
         integer(IK)         , intent(out)               :: nfield
     end function
 
@@ -9536,12 +9536,12 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getFieldSepFile_ID0_FFLD_NF_SK
 #endif
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
         character(*, SK)    , intent(in)                :: file
-        character(*,SKC)    , intent(in)                :: seps
+        character(*,SKG)    , intent(in)                :: seps
         type(fld_type)      , intent(in)                :: form
-        character(*,SKC)    , intent(inout) , optional  :: iomsg
-        character(:,SKC)    , allocatable               :: sep
+        character(*,SKG)    , intent(inout) , optional  :: iomsg
+        character(:,SKG)    , allocatable               :: sep
         integer(IK)         , intent(out)               :: nfield
     end function
 
@@ -9549,12 +9549,12 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getFieldSepUnit_ID0_FFLD_NF_SK
 #endif
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
         integer(IK)         , intent(in)                :: unit
-        character(*,SKC)    , intent(in)                :: seps
+        character(*,SKG)    , intent(in)                :: seps
         type(fld_type)      , intent(in)                :: form
-        character(*,SKC)    , intent(inout) , optional  :: iomsg
-        character(:,SKC)    , allocatable               :: sep
+        character(*,SKG)    , intent(inout) , optional  :: iomsg
+        character(:,SKG)    , allocatable               :: sep
         integer(IK)         , intent(out)               :: nfield
     end function
 
@@ -9568,70 +9568,70 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getFieldSepFile_CD1_FDEF_XX_SK
 #endif
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
         character(*, SK)    , intent(in)                :: file
         type(css_type)      , intent(in)                :: seps(:)
-        character(*,SKC)    , intent(inout) , optional  :: iomsg
-        character(:,SKC)    , allocatable               :: sep
+        character(*,SKG)    , intent(inout) , optional  :: iomsg
+        character(:,SKG)    , allocatable               :: sep
     end function
 
     module function getFieldSepUnit_CD1_FDEF_XX_SK(unit, seps, iomsg) result(sep)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getFieldSepUnit_CD1_FDEF_XX_SK
 #endif
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
         integer(IK)         , intent(in)                :: unit
         type(css_type)      , intent(in)                :: seps(:)
-        character(*,SKC)    , intent(inout) , optional  :: iomsg
-        character(:,SKC)    , allocatable               :: sep
+        character(*,SKG)    , intent(inout) , optional  :: iomsg
+        character(:,SKG)    , allocatable               :: sep
     end function
 
     module function getFieldSepFile_CD1_FCSV_XX_SK(file, seps, form, iomsg) result(sep)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getFieldSepFile_CD1_FCSV_XX_SK
 #endif
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
         character(*, SK)    , intent(in)                :: file
         type(css_type)      , intent(in)                :: seps(:)
         type(csv_type)      , intent(in)                :: form
-        character(*,SKC)    , intent(inout) , optional  :: iomsg
-        character(:,SKC)    , allocatable               :: sep
+        character(*,SKG)    , intent(inout) , optional  :: iomsg
+        character(:,SKG)    , allocatable               :: sep
     end function
 
     module function getFieldSepUnit_CD1_FCSV_XX_SK(unit, seps, form, iomsg) result(sep)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getFieldSepUnit_CD1_FCSV_XX_SK
 #endif
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
         integer(IK)         , intent(in)                :: unit
         type(css_type)      , intent(in)                :: seps(:)
         type(csv_type)      , intent(in)                :: form
-        character(*,SKC)    , intent(inout) , optional  :: iomsg
-        character(:,SKC)    , allocatable               :: sep
+        character(*,SKG)    , intent(inout) , optional  :: iomsg
+        character(:,SKG)    , allocatable               :: sep
     end function
 
     module function getFieldSepFile_CD1_FFLD_XX_SK(file, seps, form, iomsg) result(sep)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getFieldSepFile_CD1_FFLD_XX_SK
 #endif
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
         character(*, SK)    , intent(in)                :: file
         type(css_type)      , intent(in)                :: seps(:)
         type(fld_type)      , intent(in)                :: form
-        character(*,SKC)    , intent(inout) , optional  :: iomsg
-        character(:,SKC)    , allocatable               :: sep
+        character(*,SKG)    , intent(inout) , optional  :: iomsg
+        character(:,SKG)    , allocatable               :: sep
     end function
 
     module function getFieldSepUnit_CD1_FFLD_XX_SK(unit, seps, form, iomsg) result(sep)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getFieldSepUnit_CD1_FFLD_XX_SK
 #endif
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
         integer(IK)         , intent(in)                :: unit
         type(css_type)      , intent(in)                :: seps(:)
         type(fld_type)      , intent(in)                :: form
-        character(*,SKC)    , intent(inout) , optional  :: iomsg
-        character(:,SKC)    , allocatable               :: sep
+        character(*,SKG)    , intent(inout) , optional  :: iomsg
+        character(:,SKG)    , allocatable               :: sep
     end function
 
     end interface
@@ -9644,11 +9644,11 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getFieldSepFile_CD1_FDEF_NF_SK
 #endif
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
         character(*, SK)    , intent(in)                :: file
         type(css_type)      , intent(in)                :: seps(:)
-        character(*,SKC)    , intent(inout) , optional  :: iomsg
-        character(:,SKC)    , allocatable               :: sep
+        character(*,SKG)    , intent(inout) , optional  :: iomsg
+        character(:,SKG)    , allocatable               :: sep
         integer(IK)         , intent(out)               :: nfield
     end function
 
@@ -9656,11 +9656,11 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getFieldSepUnit_CD1_FDEF_NF_SK
 #endif
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
         integer(IK)         , intent(in)                :: unit
         type(css_type)      , intent(in)                :: seps(:)
-        character(*,SKC)    , intent(inout) , optional  :: iomsg
-        character(:,SKC)    , allocatable               :: sep
+        character(*,SKG)    , intent(inout) , optional  :: iomsg
+        character(:,SKG)    , allocatable               :: sep
         integer(IK)         , intent(out)               :: nfield
     end function
 
@@ -9668,12 +9668,12 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getFieldSepFile_CD1_FCSV_NF_SK
 #endif
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
         character(*, SK)    , intent(in)                :: file
         type(css_type)      , intent(in)                :: seps(:)
         type(csv_type)      , intent(in)                :: form
-        character(*,SKC)    , intent(inout) , optional  :: iomsg
-        character(:,SKC)    , allocatable               :: sep
+        character(*,SKG)    , intent(inout) , optional  :: iomsg
+        character(:,SKG)    , allocatable               :: sep
         integer(IK)         , intent(out)               :: nfield
     end function
 
@@ -9681,12 +9681,12 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getFieldSepUnit_CD1_FCSV_NF_SK
 #endif
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
         integer(IK)         , intent(in)                :: unit
         type(css_type)      , intent(in)                :: seps(:)
         type(csv_type)      , intent(in)                :: form
-        character(*,SKC)    , intent(inout) , optional  :: iomsg
-        character(:,SKC)    , allocatable               :: sep
+        character(*,SKG)    , intent(inout) , optional  :: iomsg
+        character(:,SKG)    , allocatable               :: sep
         integer(IK)         , intent(out)               :: nfield
     end function
 
@@ -9694,12 +9694,12 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getFieldSepFile_CD1_FFLD_NF_SK
 #endif
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
         character(*, SK)    , intent(in)                :: file
         type(css_type)      , intent(in)                :: seps(:)
         type(fld_type)      , intent(in)                :: form
-        character(*,SKC)    , intent(inout) , optional  :: iomsg
-        character(:,SKC)    , allocatable               :: sep
+        character(*,SKG)    , intent(inout) , optional  :: iomsg
+        character(:,SKG)    , allocatable               :: sep
         integer(IK)         , intent(out)               :: nfield
     end function
 
@@ -9707,12 +9707,12 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getFieldSepUnit_CD1_FFLD_NF_SK
 #endif
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
         integer(IK)         , intent(in)                :: unit
         type(css_type)      , intent(in)                :: seps(:)
         type(fld_type)      , intent(in)                :: form
-        character(*,SKC)    , intent(inout) , optional  :: iomsg
-        character(:,SKC)    , allocatable               :: sep
+        character(*,SKG)    , intent(inout) , optional  :: iomsg
+        character(:,SKG)    , allocatable               :: sep
         integer(IK)         , intent(out)               :: nfield
     end function
 
@@ -9889,11 +9889,11 @@ module pm_io
     !>                              whose contents represent the dividing point between separate lines in the input `str` to display.<br>
     !>                              For example, if the string contains the C-style newline character \f$\ms{\n}\f$, then set \f$\ms{newline = '\\n'}\f$.<br>
     !>                              See also the documentation of the corresponding argument in [getStrWrapped](@ref pm_str::getStrWrapped).<br>
-    !>                              (**optional**, default = `new_line(SKC_"a")` where `SKC` refers to the kind of `str`.)
+    !>                              (**optional**, default = `new_line(SKG_"a")` where `SKG` refers to the kind of `str`.)
     !>  \param[in]  fill        :   The input scalar of the same type and kind as the input `str` of length type parameter `len = 1`,
     !>                              containing the value to fill the area between the content and left/right wrap margin in each line of the wrapped `str` in the display.<br>
     !>                              For more details, see the documentation of the corresponding argument in [getCentered](@ref pm_arrayCenter::getCentered).<br>
-    !>                              (**optional**, default = `SKC_" "` where `SKC` is the kind of the input argument `str`.)
+    !>                              (**optional**, default = `SKG_" "` where `SKG` is the kind of the input argument `str`.)
     !>  \param[in]  lwfill      :   The input scalar of the same type and kind as the input `str` of length type parameter `len = 1`,
     !>                              containing the value to fill the left wrap margin of each line of the wrapped `str` in the display.<br>
     !>                              For more details, see the documentation of the corresponding argument in [getCentered](@ref pm_arrayCenter::getCentered).<br>
@@ -10001,11 +10001,11 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: wrap_D0_SK5
 #endif
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
         class(wrap_type)            , intent(inout)                 :: self
-        character(*,SKC)            , intent(in)                    :: str
-        character(*,SKC)            , intent(in)    , optional      :: newline
-        character(1,SKC)            , intent(in)    , optional      :: fill, lwfill, rwfill, twfill, bwfill
+        character(*,SKG)            , intent(in)                    :: str
+        character(*,SKG)            , intent(in)    , optional      :: newline
+        character(1,SKG)            , intent(in)    , optional      :: fill, lwfill, rwfill, twfill, bwfill
         integer(IK)                 , intent(in)    , optional      :: lwsize, twsize, rwsize, bwsize
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize
         integer(IK)                 , intent(in)    , optional      :: width, unit
@@ -10018,11 +10018,11 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: wrap_D0_SK4
 #endif
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
         class(wrap_type)            , intent(inout)                 :: self
-        character(*,SKC)            , intent(in)                    :: str
-        character(*,SKC)            , intent(in)    , optional      :: newline
-        character(1,SKC)            , intent(in)    , optional      :: fill, lwfill, rwfill, twfill, bwfill
+        character(*,SKG)            , intent(in)                    :: str
+        character(*,SKG)            , intent(in)    , optional      :: newline
+        character(1,SKG)            , intent(in)    , optional      :: fill, lwfill, rwfill, twfill, bwfill
         integer(IK)                 , intent(in)    , optional      :: lwsize, twsize, rwsize, bwsize
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize
         integer(IK)                 , intent(in)    , optional      :: width, unit
@@ -10035,11 +10035,11 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: wrap_D0_SK3
 #endif
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
         class(wrap_type)            , intent(inout)                 :: self
-        character(*,SKC)            , intent(in)                    :: str
-        character(*,SKC)            , intent(in)    , optional      :: newline
-        character(1,SKC)            , intent(in)    , optional      :: fill, lwfill, rwfill, twfill, bwfill
+        character(*,SKG)            , intent(in)                    :: str
+        character(*,SKG)            , intent(in)    , optional      :: newline
+        character(1,SKG)            , intent(in)    , optional      :: fill, lwfill, rwfill, twfill, bwfill
         integer(IK)                 , intent(in)    , optional      :: lwsize, twsize, rwsize, bwsize
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize
         integer(IK)                 , intent(in)    , optional      :: width, unit
@@ -10052,11 +10052,11 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: wrap_D0_SK2
 #endif
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
         class(wrap_type)            , intent(inout)                 :: self
-        character(*,SKC)            , intent(in)                    :: str
-        character(*,SKC)            , intent(in)    , optional      :: newline
-        character(1,SKC)            , intent(in)    , optional      :: fill, lwfill, rwfill, twfill, bwfill
+        character(*,SKG)            , intent(in)                    :: str
+        character(*,SKG)            , intent(in)    , optional      :: newline
+        character(1,SKG)            , intent(in)    , optional      :: fill, lwfill, rwfill, twfill, bwfill
         integer(IK)                 , intent(in)    , optional      :: lwsize, twsize, rwsize, bwsize
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize
         integer(IK)                 , intent(in)    , optional      :: width, unit
@@ -10069,11 +10069,11 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: wrap_D0_SK1
 #endif
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
         class(wrap_type)            , intent(inout)                 :: self
-        character(*,SKC)            , intent(in)                    :: str
-        character(*,SKC)            , intent(in)    , optional      :: newline
-        character(1,SKC)            , intent(in)    , optional      :: fill, lwfill, rwfill, twfill, bwfill
+        character(*,SKG)            , intent(in)                    :: str
+        character(*,SKG)            , intent(in)    , optional      :: newline
+        character(1,SKG)            , intent(in)    , optional      :: fill, lwfill, rwfill, twfill, bwfill
         integer(IK)                 , intent(in)    , optional      :: lwsize, twsize, rwsize, bwsize
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize
         integer(IK)                 , intent(in)    , optional      :: width, unit
@@ -11740,9 +11740,9 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D0_SK5
 #endif
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
         class(display_type)         , intent(inout)                 :: self
-        character(*,SKC)            , intent(in)                    :: object
+        character(*,SKG)            , intent(in)                    :: object
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -11755,9 +11755,9 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D0_SK4
 #endif
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
         class(display_type)         , intent(inout)                 :: self
-        character(*,SKC)            , intent(in)                    :: object
+        character(*,SKG)            , intent(in)                    :: object
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -11770,9 +11770,9 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D0_SK3
 #endif
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
         class(display_type)         , intent(inout)                 :: self
-        character(*,SKC)            , intent(in)                    :: object
+        character(*,SKG)            , intent(in)                    :: object
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -11785,9 +11785,9 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D0_SK2
 #endif
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
         class(display_type)         , intent(inout)                 :: self
-        character(*,SKC)            , intent(in)                    :: object
+        character(*,SKG)            , intent(in)                    :: object
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -11800,9 +11800,9 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D0_SK1
 #endif
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
         class(display_type)         , intent(inout)                 :: self
-        character(*,SKC)            , intent(in)                    :: object
+        character(*,SKG)            , intent(in)                    :: object
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -11817,9 +11817,9 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D0_IK5
 #endif
-        use pm_kind, only: SKC => SK, IKC => IK5
+        use pm_kind, only: SKG => SK, IKG => IK5
         class(display_type)         , intent(inout)                 :: self
-        integer(IKC)                , intent(in)                    :: object
+        integer(IKG)                , intent(in)                    :: object
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -11832,9 +11832,9 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D0_IK4
 #endif
-        use pm_kind, only: SKC => SK, IKC => IK4
+        use pm_kind, only: SKG => SK, IKG => IK4
         class(display_type)         , intent(inout)                 :: self
-        integer(IKC)                , intent(in)                    :: object
+        integer(IKG)                , intent(in)                    :: object
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -11847,9 +11847,9 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D0_IK3
 #endif
-        use pm_kind, only: SKC => SK, IKC => IK3
+        use pm_kind, only: SKG => SK, IKG => IK3
         class(display_type)         , intent(inout)                 :: self
-        integer(IKC)                , intent(in)                    :: object
+        integer(IKG)                , intent(in)                    :: object
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -11862,9 +11862,9 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D0_IK2
 #endif
-        use pm_kind, only: SKC => SK, IKC => IK2
+        use pm_kind, only: SKG => SK, IKG => IK2
         class(display_type)         , intent(inout)                 :: self
-        integer(IKC)                , intent(in)                    :: object
+        integer(IKG)                , intent(in)                    :: object
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -11877,9 +11877,9 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D0_IK1
 #endif
-        use pm_kind, only: SKC => SK, IKC => IK1
+        use pm_kind, only: SKG => SK, IKG => IK1
         class(display_type)         , intent(inout)                 :: self
-        integer(IKC)                , intent(in)                    :: object
+        integer(IKG)                , intent(in)                    :: object
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -11894,9 +11894,9 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D0_LK5
 #endif
-        use pm_kind, only: SKC => SK, LKC => LK5
+        use pm_kind, only: SKG => SK, LKG => LK5
         class(display_type)         , intent(inout)                 :: self
-        logical(LKC)                , intent(in)                    :: object
+        logical(LKG)                , intent(in)                    :: object
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -11909,9 +11909,9 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D0_LK4
 #endif
-        use pm_kind, only: SKC => SK, LKC => LK4
+        use pm_kind, only: SKG => SK, LKG => LK4
         class(display_type)         , intent(inout)                 :: self
-        logical(LKC)                , intent(in)                    :: object
+        logical(LKG)                , intent(in)                    :: object
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -11924,9 +11924,9 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D0_LK3
 #endif
-        use pm_kind, only: SKC => SK, LKC => LK3
+        use pm_kind, only: SKG => SK, LKG => LK3
         class(display_type)         , intent(inout)                 :: self
-        logical(LKC)                , intent(in)                    :: object
+        logical(LKG)                , intent(in)                    :: object
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -11939,9 +11939,9 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D0_LK2
 #endif
-        use pm_kind, only: SKC => SK, LKC => LK2
+        use pm_kind, only: SKG => SK, LKG => LK2
         class(display_type)         , intent(inout)                 :: self
-        logical(LKC)                , intent(in)                    :: object
+        logical(LKG)                , intent(in)                    :: object
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -11954,9 +11954,9 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D0_LK1
 #endif
-        use pm_kind, only: SKC => SK, LKC => LK1
+        use pm_kind, only: SKG => SK, LKG => LK1
         class(display_type)         , intent(inout)                 :: self
-        logical(LKC)                , intent(in)                    :: object
+        logical(LKG)                , intent(in)                    :: object
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -11971,9 +11971,9 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D0_CK5
 #endif
-        use pm_kind, only: SKC => SK, CKC => CK5
+        use pm_kind, only: SKG => SK, CKG => CK5
         class(display_type)         , intent(inout)                 :: self
-        complex(CKC)                , intent(in)                    :: object
+        complex(CKG)                , intent(in)                    :: object
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -11986,9 +11986,9 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D0_CK4
 #endif
-        use pm_kind, only: SKC => SK, CKC => CK4
+        use pm_kind, only: SKG => SK, CKG => CK4
         class(display_type)         , intent(inout)                 :: self
-        complex(CKC)                , intent(in)                    :: object
+        complex(CKG)                , intent(in)                    :: object
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -12001,9 +12001,9 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D0_CK3
 #endif
-        use pm_kind, only: SKC => SK, CKC => CK3
+        use pm_kind, only: SKG => SK, CKG => CK3
         class(display_type)         , intent(inout)                 :: self
-        complex(CKC)                , intent(in)                    :: object
+        complex(CKG)                , intent(in)                    :: object
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -12016,9 +12016,9 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D0_CK2
 #endif
-        use pm_kind, only: SKC => SK, CKC => CK2
+        use pm_kind, only: SKG => SK, CKG => CK2
         class(display_type)         , intent(inout)                 :: self
-        complex(CKC)                , intent(in)                    :: object
+        complex(CKG)                , intent(in)                    :: object
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -12031,9 +12031,9 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D0_CK1
 #endif
-        use pm_kind, only: SKC => SK, CKC => CK1
+        use pm_kind, only: SKG => SK, CKG => CK1
         class(display_type)         , intent(inout)                 :: self
-        complex(CKC)                , intent(in)                    :: object
+        complex(CKG)                , intent(in)                    :: object
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -12048,9 +12048,9 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D0_RK5
 #endif
-        use pm_kind, only: SKC => SK, RKC => RK5
+        use pm_kind, only: SKG => SK, RKG => RK5
         class(display_type)         , intent(inout)                 :: self
-        real(RKC)                   , intent(in)                    :: object
+        real(RKG)                   , intent(in)                    :: object
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -12063,9 +12063,9 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D0_RK4
 #endif
-        use pm_kind, only: SKC => SK, RKC => RK4
+        use pm_kind, only: SKG => SK, RKG => RK4
         class(display_type)         , intent(inout)                 :: self
-        real(RKC)                   , intent(in)                    :: object
+        real(RKG)                   , intent(in)                    :: object
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -12078,9 +12078,9 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D0_RK3
 #endif
-        use pm_kind, only: SKC => SK, RKC => RK3
+        use pm_kind, only: SKG => SK, RKG => RK3
         class(display_type)         , intent(inout)                 :: self
-        real(RKC)                   , intent(in)                    :: object
+        real(RKG)                   , intent(in)                    :: object
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -12093,9 +12093,9 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D0_RK2
 #endif
-        use pm_kind, only: SKC => SK, RKC => RK2
+        use pm_kind, only: SKG => SK, RKG => RK2
         class(display_type)         , intent(inout)                 :: self
-        real(RKC)                   , intent(in)                    :: object
+        real(RKG)                   , intent(in)                    :: object
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -12108,9 +12108,9 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D0_RK1
 #endif
-        use pm_kind, only: SKC => SK, RKC => RK1
+        use pm_kind, only: SKG => SK, RKG => RK1
         class(display_type)         , intent(inout)                 :: self
-        real(RKC)                   , intent(in)                    :: object
+        real(RKG)                   , intent(in)                    :: object
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -12131,9 +12131,9 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D1_SK5
 #endif
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
         class(display_type)         , intent(inout)                 :: self
-        character(*,SKC)            , intent(in)    __CONTIGUOUS    :: object(:)
+        character(*,SKG)            , intent(in)    __CONTIGUOUS    :: object(:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -12146,9 +12146,9 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D1_SK4
 #endif
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
         class(display_type)         , intent(inout)                 :: self
-        character(*,SKC)            , intent(in)    __CONTIGUOUS    :: object(:)
+        character(*,SKG)            , intent(in)    __CONTIGUOUS    :: object(:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -12161,9 +12161,9 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D1_SK3
 #endif
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
         class(display_type)         , intent(inout)                 :: self
-        character(*,SKC)            , intent(in)    __CONTIGUOUS    :: object(:)
+        character(*,SKG)            , intent(in)    __CONTIGUOUS    :: object(:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -12176,9 +12176,9 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D1_SK2
 #endif
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
         class(display_type)         , intent(inout)                 :: self
-        character(*,SKC)            , intent(in)    __CONTIGUOUS    :: object(:)
+        character(*,SKG)            , intent(in)    __CONTIGUOUS    :: object(:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -12191,9 +12191,9 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D1_SK1
 #endif
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
         class(display_type)         , intent(inout)                 :: self
-        character(*,SKC)            , intent(in)    __CONTIGUOUS    :: object(:)
+        character(*,SKG)            , intent(in)    __CONTIGUOUS    :: object(:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -12208,9 +12208,9 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D1_IK5
 #endif
-        use pm_kind, only: SKC => SK, IKC => IK5
+        use pm_kind, only: SKG => SK, IKG => IK5
         class(display_type)         , intent(inout)                 :: self
-        integer(IKC)                , intent(in)    __CONTIGUOUS    :: object(:)
+        integer(IKG)                , intent(in)    __CONTIGUOUS    :: object(:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -12223,9 +12223,9 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D1_IK4
 #endif
-        use pm_kind, only: SKC => SK, IKC => IK4
+        use pm_kind, only: SKG => SK, IKG => IK4
         class(display_type)         , intent(inout)                 :: self
-        integer(IKC)                , intent(in)    __CONTIGUOUS    :: object(:)
+        integer(IKG)                , intent(in)    __CONTIGUOUS    :: object(:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -12238,9 +12238,9 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D1_IK3
 #endif
-        use pm_kind, only: SKC => SK, IKC => IK3
+        use pm_kind, only: SKG => SK, IKG => IK3
         class(display_type)         , intent(inout)                 :: self
-        integer(IKC)                , intent(in)    __CONTIGUOUS    :: object(:)
+        integer(IKG)                , intent(in)    __CONTIGUOUS    :: object(:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -12253,9 +12253,9 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D1_IK2
 #endif
-        use pm_kind, only: SKC => SK, IKC => IK2
+        use pm_kind, only: SKG => SK, IKG => IK2
         class(display_type)         , intent(inout)                 :: self
-        integer(IKC)                , intent(in)    __CONTIGUOUS    :: object(:)
+        integer(IKG)                , intent(in)    __CONTIGUOUS    :: object(:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -12268,9 +12268,9 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D1_IK1
 #endif
-        use pm_kind, only: SKC => SK, IKC => IK1
+        use pm_kind, only: SKG => SK, IKG => IK1
         class(display_type)         , intent(inout)                 :: self
-        integer(IKC)                , intent(in)    __CONTIGUOUS    :: object(:)
+        integer(IKG)                , intent(in)    __CONTIGUOUS    :: object(:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -12285,9 +12285,9 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D1_LK5
 #endif
-        use pm_kind, only: SKC => SK, LKC => LK5
+        use pm_kind, only: SKG => SK, LKG => LK5
         class(display_type)         , intent(inout)                 :: self
-        logical(LKC)                , intent(in)    __CONTIGUOUS    :: object(:)
+        logical(LKG)                , intent(in)    __CONTIGUOUS    :: object(:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -12300,9 +12300,9 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D1_LK4
 #endif
-        use pm_kind, only: SKC => SK, LKC => LK4
+        use pm_kind, only: SKG => SK, LKG => LK4
         class(display_type)         , intent(inout)                 :: self
-        logical(LKC)                , intent(in)    __CONTIGUOUS    :: object(:)
+        logical(LKG)                , intent(in)    __CONTIGUOUS    :: object(:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -12315,9 +12315,9 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D1_LK3
 #endif
-        use pm_kind, only: SKC => SK, LKC => LK3
+        use pm_kind, only: SKG => SK, LKG => LK3
         class(display_type)         , intent(inout)                 :: self
-        logical(LKC)                , intent(in)    __CONTIGUOUS    :: object(:)
+        logical(LKG)                , intent(in)    __CONTIGUOUS    :: object(:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -12330,9 +12330,9 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D1_LK2
 #endif
-        use pm_kind, only: SKC => SK, LKC => LK2
+        use pm_kind, only: SKG => SK, LKG => LK2
         class(display_type)         , intent(inout)                 :: self
-        logical(LKC)                , intent(in)    __CONTIGUOUS    :: object(:)
+        logical(LKG)                , intent(in)    __CONTIGUOUS    :: object(:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -12345,9 +12345,9 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D1_LK1
 #endif
-        use pm_kind, only: SKC => SK, LKC => LK1
+        use pm_kind, only: SKG => SK, LKG => LK1
         class(display_type)         , intent(inout)                 :: self
-        logical(LKC)                , intent(in)    __CONTIGUOUS    :: object(:)
+        logical(LKG)                , intent(in)    __CONTIGUOUS    :: object(:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -12362,9 +12362,9 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D1_CK5
 #endif
-        use pm_kind, only: SKC => SK, CKC => CK5
+        use pm_kind, only: SKG => SK, CKG => CK5
         class(display_type)         , intent(inout)                 :: self
-        complex(CKC)                , intent(in)    __CONTIGUOUS    :: object(:)
+        complex(CKG)                , intent(in)    __CONTIGUOUS    :: object(:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -12377,9 +12377,9 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D1_CK4
 #endif
-        use pm_kind, only: SKC => SK, CKC => CK4
+        use pm_kind, only: SKG => SK, CKG => CK4
         class(display_type)         , intent(inout)                 :: self
-        complex(CKC)                , intent(in)    __CONTIGUOUS    :: object(:)
+        complex(CKG)                , intent(in)    __CONTIGUOUS    :: object(:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -12392,9 +12392,9 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D1_CK3
 #endif
-        use pm_kind, only: SKC => SK, CKC => CK3
+        use pm_kind, only: SKG => SK, CKG => CK3
         class(display_type)         , intent(inout)                 :: self
-        complex(CKC)                , intent(in)    __CONTIGUOUS    :: object(:)
+        complex(CKG)                , intent(in)    __CONTIGUOUS    :: object(:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -12407,9 +12407,9 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D1_CK2
 #endif
-        use pm_kind, only: SKC => SK, CKC => CK2
+        use pm_kind, only: SKG => SK, CKG => CK2
         class(display_type)         , intent(inout)                 :: self
-        complex(CKC)                , intent(in)    __CONTIGUOUS    :: object(:)
+        complex(CKG)                , intent(in)    __CONTIGUOUS    :: object(:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -12422,9 +12422,9 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D1_CK1
 #endif
-        use pm_kind, only: SKC => SK, CKC => CK1
+        use pm_kind, only: SKG => SK, CKG => CK1
         class(display_type)         , intent(inout)                 :: self
-        complex(CKC)                , intent(in)    __CONTIGUOUS    :: object(:)
+        complex(CKG)                , intent(in)    __CONTIGUOUS    :: object(:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -12439,9 +12439,9 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D1_RK5
 #endif
-        use pm_kind, only: SKC => SK, RKC => RK5
+        use pm_kind, only: SKG => SK, RKG => RK5
         class(display_type)         , intent(inout)                 :: self
-        real(RKC)                   , intent(in)    __CONTIGUOUS    :: object(:)
+        real(RKG)                   , intent(in)    __CONTIGUOUS    :: object(:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -12454,9 +12454,9 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D1_RK4
 #endif
-        use pm_kind, only: SKC => SK, RKC => RK4
+        use pm_kind, only: SKG => SK, RKG => RK4
         class(display_type)         , intent(inout)                 :: self
-        real(RKC)                   , intent(in)    __CONTIGUOUS    :: object(:)
+        real(RKG)                   , intent(in)    __CONTIGUOUS    :: object(:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -12469,9 +12469,9 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D1_RK3
 #endif
-        use pm_kind, only: SKC => SK, RKC => RK3
+        use pm_kind, only: SKG => SK, RKG => RK3
         class(display_type)         , intent(inout)                 :: self
-        real(RKC)                   , intent(in)    __CONTIGUOUS    :: object(:)
+        real(RKG)                   , intent(in)    __CONTIGUOUS    :: object(:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -12484,9 +12484,9 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D1_RK2
 #endif
-        use pm_kind, only: SKC => SK, RKC => RK2
+        use pm_kind, only: SKG => SK, RKG => RK2
         class(display_type)         , intent(inout)                 :: self
-        real(RKC)                   , intent(in)    __CONTIGUOUS    :: object(:)
+        real(RKG)                   , intent(in)    __CONTIGUOUS    :: object(:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -12499,9 +12499,9 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D1_RK1
 #endif
-        use pm_kind, only: SKC => SK, RKC => RK1
+        use pm_kind, only: SKG => SK, RKG => RK1
         class(display_type)         , intent(inout)                 :: self
-        real(RKC)                   , intent(in)    __CONTIGUOUS    :: object(:)
+        real(RKG)                   , intent(in)    __CONTIGUOUS    :: object(:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -12522,9 +12522,9 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D2_SK5
 #endif
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
         class(display_type)         , intent(inout)                 :: self
-        character(*,SKC)            , intent(in)    __CONTIGUOUS    :: object(:,:)
+        character(*,SKG)            , intent(in)    __CONTIGUOUS    :: object(:,:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -12537,9 +12537,9 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D2_SK4
 #endif
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
         class(display_type)         , intent(inout)                 :: self
-        character(*,SKC)            , intent(in)    __CONTIGUOUS    :: object(:,:)
+        character(*,SKG)            , intent(in)    __CONTIGUOUS    :: object(:,:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -12552,9 +12552,9 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D2_SK3
 #endif
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
         class(display_type)         , intent(inout)                 :: self
-        character(*,SKC)            , intent(in)    __CONTIGUOUS    :: object(:,:)
+        character(*,SKG)            , intent(in)    __CONTIGUOUS    :: object(:,:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -12567,9 +12567,9 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D2_SK2
 #endif
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
         class(display_type)         , intent(inout)                 :: self
-        character(*,SKC)            , intent(in)    __CONTIGUOUS    :: object(:,:)
+        character(*,SKG)            , intent(in)    __CONTIGUOUS    :: object(:,:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -12582,9 +12582,9 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D2_SK1
 #endif
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
         class(display_type)         , intent(inout)                 :: self
-        character(*,SKC)            , intent(in)    __CONTIGUOUS    :: object(:,:)
+        character(*,SKG)            , intent(in)    __CONTIGUOUS    :: object(:,:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -12599,9 +12599,9 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D2_IK5
 #endif
-        use pm_kind, only: SKC => SK, IKC => IK5
+        use pm_kind, only: SKG => SK, IKG => IK5
         class(display_type)         , intent(inout)                 :: self
-        integer(IKC)                , intent(in)    __CONTIGUOUS    :: object(:,:)
+        integer(IKG)                , intent(in)    __CONTIGUOUS    :: object(:,:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -12614,9 +12614,9 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D2_IK4
 #endif
-        use pm_kind, only: SKC => SK, IKC => IK4
+        use pm_kind, only: SKG => SK, IKG => IK4
         class(display_type)         , intent(inout)                 :: self
-        integer(IKC)                , intent(in)    __CONTIGUOUS    :: object(:,:)
+        integer(IKG)                , intent(in)    __CONTIGUOUS    :: object(:,:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -12629,9 +12629,9 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D2_IK3
 #endif
-        use pm_kind, only: SKC => SK, IKC => IK3
+        use pm_kind, only: SKG => SK, IKG => IK3
         class(display_type)         , intent(inout)                 :: self
-        integer(IKC)                , intent(in)    __CONTIGUOUS    :: object(:,:)
+        integer(IKG)                , intent(in)    __CONTIGUOUS    :: object(:,:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -12644,9 +12644,9 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D2_IK2
 #endif
-        use pm_kind, only: SKC => SK, IKC => IK2
+        use pm_kind, only: SKG => SK, IKG => IK2
         class(display_type)         , intent(inout)                 :: self
-        integer(IKC)                , intent(in)    __CONTIGUOUS    :: object(:,:)
+        integer(IKG)                , intent(in)    __CONTIGUOUS    :: object(:,:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -12659,9 +12659,9 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D2_IK1
 #endif
-        use pm_kind, only: SKC => SK, IKC => IK1
+        use pm_kind, only: SKG => SK, IKG => IK1
         class(display_type)         , intent(inout)                 :: self
-        integer(IKC)                , intent(in)    __CONTIGUOUS    :: object(:,:)
+        integer(IKG)                , intent(in)    __CONTIGUOUS    :: object(:,:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -12676,9 +12676,9 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D2_LK5
 #endif
-        use pm_kind, only: SKC => SK, LKC => LK5
+        use pm_kind, only: SKG => SK, LKG => LK5
         class(display_type)         , intent(inout)                 :: self
-        logical(LKC)                , intent(in)    __CONTIGUOUS    :: object(:,:)
+        logical(LKG)                , intent(in)    __CONTIGUOUS    :: object(:,:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -12691,9 +12691,9 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D2_LK4
 #endif
-        use pm_kind, only: SKC => SK, LKC => LK4
+        use pm_kind, only: SKG => SK, LKG => LK4
         class(display_type)         , intent(inout)                 :: self
-        logical(LKC)                , intent(in)    __CONTIGUOUS    :: object(:,:)
+        logical(LKG)                , intent(in)    __CONTIGUOUS    :: object(:,:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -12706,9 +12706,9 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D2_LK3
 #endif
-        use pm_kind, only: SKC => SK, LKC => LK3
+        use pm_kind, only: SKG => SK, LKG => LK3
         class(display_type)         , intent(inout)                 :: self
-        logical(LKC)                , intent(in)    __CONTIGUOUS    :: object(:,:)
+        logical(LKG)                , intent(in)    __CONTIGUOUS    :: object(:,:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -12721,9 +12721,9 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D2_LK2
 #endif
-        use pm_kind, only: SKC => SK, LKC => LK2
+        use pm_kind, only: SKG => SK, LKG => LK2
         class(display_type)         , intent(inout)                 :: self
-        logical(LKC)                , intent(in)    __CONTIGUOUS    :: object(:,:)
+        logical(LKG)                , intent(in)    __CONTIGUOUS    :: object(:,:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -12736,9 +12736,9 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D2_LK1
 #endif
-        use pm_kind, only: SKC => SK, LKC => LK1
+        use pm_kind, only: SKG => SK, LKG => LK1
         class(display_type)         , intent(inout)                 :: self
-        logical(LKC)                , intent(in)    __CONTIGUOUS    :: object(:,:)
+        logical(LKG)                , intent(in)    __CONTIGUOUS    :: object(:,:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -12753,9 +12753,9 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D2_CK5
 #endif
-        use pm_kind, only: SKC => SK, CKC => CK5
+        use pm_kind, only: SKG => SK, CKG => CK5
         class(display_type)         , intent(inout)                 :: self
-        complex(CKC)                , intent(in)    __CONTIGUOUS    :: object(:,:)
+        complex(CKG)                , intent(in)    __CONTIGUOUS    :: object(:,:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -12768,9 +12768,9 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D2_CK4
 #endif
-        use pm_kind, only: SKC => SK, CKC => CK4
+        use pm_kind, only: SKG => SK, CKG => CK4
         class(display_type)         , intent(inout)                 :: self
-        complex(CKC)                , intent(in)    __CONTIGUOUS    :: object(:,:)
+        complex(CKG)                , intent(in)    __CONTIGUOUS    :: object(:,:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -12783,9 +12783,9 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D2_CK3
 #endif
-        use pm_kind, only: SKC => SK, CKC => CK3
+        use pm_kind, only: SKG => SK, CKG => CK3
         class(display_type)         , intent(inout)                 :: self
-        complex(CKC)                , intent(in)    __CONTIGUOUS    :: object(:,:)
+        complex(CKG)                , intent(in)    __CONTIGUOUS    :: object(:,:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -12798,9 +12798,9 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D2_CK2
 #endif
-        use pm_kind, only: SKC => SK, CKC => CK2
+        use pm_kind, only: SKG => SK, CKG => CK2
         class(display_type)         , intent(inout)                 :: self
-        complex(CKC)                , intent(in)    __CONTIGUOUS    :: object(:,:)
+        complex(CKG)                , intent(in)    __CONTIGUOUS    :: object(:,:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -12813,9 +12813,9 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D2_CK1
 #endif
-        use pm_kind, only: SKC => SK, CKC => CK1
+        use pm_kind, only: SKG => SK, CKG => CK1
         class(display_type)         , intent(inout)                 :: self
-        complex(CKC)                , intent(in)    __CONTIGUOUS    :: object(:,:)
+        complex(CKG)                , intent(in)    __CONTIGUOUS    :: object(:,:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -12830,9 +12830,9 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D2_RK5
 #endif
-        use pm_kind, only: SKC => SK, RKC => RK5
+        use pm_kind, only: SKG => SK, RKG => RK5
         class(display_type)         , intent(inout)                 :: self
-        real(RKC)                   , intent(in)    __CONTIGUOUS    :: object(:,:)
+        real(RKG)                   , intent(in)    __CONTIGUOUS    :: object(:,:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -12845,9 +12845,9 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D2_RK4
 #endif
-        use pm_kind, only: SKC => SK, RKC => RK4
+        use pm_kind, only: SKG => SK, RKG => RK4
         class(display_type)         , intent(inout)                 :: self
-        real(RKC)                   , intent(in)    __CONTIGUOUS    :: object(:,:)
+        real(RKG)                   , intent(in)    __CONTIGUOUS    :: object(:,:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -12860,9 +12860,9 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D2_RK3
 #endif
-        use pm_kind, only: SKC => SK, RKC => RK3
+        use pm_kind, only: SKG => SK, RKG => RK3
         class(display_type)         , intent(inout)                 :: self
-        real(RKC)                   , intent(in)    __CONTIGUOUS    :: object(:,:)
+        real(RKG)                   , intent(in)    __CONTIGUOUS    :: object(:,:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -12875,9 +12875,9 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D2_RK2
 #endif
-        use pm_kind, only: SKC => SK, RKC => RK2
+        use pm_kind, only: SKG => SK, RKG => RK2
         class(display_type)         , intent(inout)                 :: self
-        real(RKC)                   , intent(in)    __CONTIGUOUS    :: object(:,:)
+        real(RKG)                   , intent(in)    __CONTIGUOUS    :: object(:,:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -12890,9 +12890,9 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D2_RK1
 #endif
-        use pm_kind, only: SKC => SK, RKC => RK1
+        use pm_kind, only: SKG => SK, RKG => RK1
         class(display_type)         , intent(inout)                 :: self
-        real(RKC)                   , intent(in)    __CONTIGUOUS    :: object(:,:)
+        real(RKG)                   , intent(in)    __CONTIGUOUS    :: object(:,:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -12913,9 +12913,9 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D3_SK5
 #endif
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
         class(display_type)         , intent(inout)                 :: self
-        character(*,SKC)            , intent(in)    __CONTIGUOUS    :: object(:,:,:)
+        character(*,SKG)            , intent(in)    __CONTIGUOUS    :: object(:,:,:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -12928,9 +12928,9 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D3_SK4
 #endif
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
         class(display_type)         , intent(inout)                 :: self
-        character(*,SKC)            , intent(in)    __CONTIGUOUS    :: object(:,:,:)
+        character(*,SKG)            , intent(in)    __CONTIGUOUS    :: object(:,:,:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -12943,9 +12943,9 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D3_SK3
 #endif
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
         class(display_type)         , intent(inout)                 :: self
-        character(*,SKC)            , intent(in)    __CONTIGUOUS    :: object(:,:,:)
+        character(*,SKG)            , intent(in)    __CONTIGUOUS    :: object(:,:,:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -12958,9 +12958,9 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D3_SK2
 #endif
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
         class(display_type)         , intent(inout)                 :: self
-        character(*,SKC)            , intent(in)    __CONTIGUOUS    :: object(:,:,:)
+        character(*,SKG)            , intent(in)    __CONTIGUOUS    :: object(:,:,:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -12973,9 +12973,9 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D3_SK1
 #endif
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
         class(display_type)         , intent(inout)                 :: self
-        character(*,SKC)            , intent(in)    __CONTIGUOUS    :: object(:,:,:)
+        character(*,SKG)            , intent(in)    __CONTIGUOUS    :: object(:,:,:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -12990,9 +12990,9 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D3_IK5
 #endif
-        use pm_kind, only: SKC => SK, IKC => IK5
+        use pm_kind, only: SKG => SK, IKG => IK5
         class(display_type)         , intent(inout)                 :: self
-        integer(IKC)                , intent(in)    __CONTIGUOUS    :: object(:,:,:)
+        integer(IKG)                , intent(in)    __CONTIGUOUS    :: object(:,:,:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -13005,9 +13005,9 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D3_IK4
 #endif
-        use pm_kind, only: SKC => SK, IKC => IK4
+        use pm_kind, only: SKG => SK, IKG => IK4
         class(display_type)         , intent(inout)                 :: self
-        integer(IKC)                , intent(in)    __CONTIGUOUS    :: object(:,:,:)
+        integer(IKG)                , intent(in)    __CONTIGUOUS    :: object(:,:,:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -13020,9 +13020,9 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D3_IK3
 #endif
-        use pm_kind, only: SKC => SK, IKC => IK3
+        use pm_kind, only: SKG => SK, IKG => IK3
         class(display_type)         , intent(inout)                 :: self
-        integer(IKC)                , intent(in)    __CONTIGUOUS    :: object(:,:,:)
+        integer(IKG)                , intent(in)    __CONTIGUOUS    :: object(:,:,:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -13035,9 +13035,9 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D3_IK2
 #endif
-        use pm_kind, only: SKC => SK, IKC => IK2
+        use pm_kind, only: SKG => SK, IKG => IK2
         class(display_type)         , intent(inout)                 :: self
-        integer(IKC)                , intent(in)    __CONTIGUOUS    :: object(:,:,:)
+        integer(IKG)                , intent(in)    __CONTIGUOUS    :: object(:,:,:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -13050,9 +13050,9 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D3_IK1
 #endif
-        use pm_kind, only: SKC => SK, IKC => IK1
+        use pm_kind, only: SKG => SK, IKG => IK1
         class(display_type)         , intent(inout)                 :: self
-        integer(IKC)                , intent(in)    __CONTIGUOUS    :: object(:,:,:)
+        integer(IKG)                , intent(in)    __CONTIGUOUS    :: object(:,:,:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -13067,9 +13067,9 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D3_LK5
 #endif
-        use pm_kind, only: SKC => SK, LKC => LK5
+        use pm_kind, only: SKG => SK, LKG => LK5
         class(display_type)         , intent(inout)                 :: self
-        logical(LKC)                , intent(in)    __CONTIGUOUS    :: object(:,:,:)
+        logical(LKG)                , intent(in)    __CONTIGUOUS    :: object(:,:,:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -13082,9 +13082,9 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D3_LK4
 #endif
-        use pm_kind, only: SKC => SK, LKC => LK4
+        use pm_kind, only: SKG => SK, LKG => LK4
         class(display_type)         , intent(inout)                 :: self
-        logical(LKC)                , intent(in)    __CONTIGUOUS    :: object(:,:,:)
+        logical(LKG)                , intent(in)    __CONTIGUOUS    :: object(:,:,:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -13097,9 +13097,9 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D3_LK3
 #endif
-        use pm_kind, only: SKC => SK, LKC => LK3
+        use pm_kind, only: SKG => SK, LKG => LK3
         class(display_type)         , intent(inout)                 :: self
-        logical(LKC)                , intent(in)    __CONTIGUOUS    :: object(:,:,:)
+        logical(LKG)                , intent(in)    __CONTIGUOUS    :: object(:,:,:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -13112,9 +13112,9 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D3_LK2
 #endif
-        use pm_kind, only: SKC => SK, LKC => LK2
+        use pm_kind, only: SKG => SK, LKG => LK2
         class(display_type)         , intent(inout)                 :: self
-        logical(LKC)                , intent(in)    __CONTIGUOUS    :: object(:,:,:)
+        logical(LKG)                , intent(in)    __CONTIGUOUS    :: object(:,:,:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -13127,9 +13127,9 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D3_LK1
 #endif
-        use pm_kind, only: SKC => SK, LKC => LK1
+        use pm_kind, only: SKG => SK, LKG => LK1
         class(display_type)         , intent(inout)                 :: self
-        logical(LKC)                , intent(in)    __CONTIGUOUS    :: object(:,:,:)
+        logical(LKG)                , intent(in)    __CONTIGUOUS    :: object(:,:,:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -13144,9 +13144,9 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D3_CK5
 #endif
-        use pm_kind, only: SKC => SK, CKC => CK5
+        use pm_kind, only: SKG => SK, CKG => CK5
         class(display_type)         , intent(inout)                 :: self
-        complex(CKC)                , intent(in)    __CONTIGUOUS    :: object(:,:,:)
+        complex(CKG)                , intent(in)    __CONTIGUOUS    :: object(:,:,:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -13159,9 +13159,9 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D3_CK4
 #endif
-        use pm_kind, only: SKC => SK, CKC => CK4
+        use pm_kind, only: SKG => SK, CKG => CK4
         class(display_type)         , intent(inout)                 :: self
-        complex(CKC)                , intent(in)    __CONTIGUOUS    :: object(:,:,:)
+        complex(CKG)                , intent(in)    __CONTIGUOUS    :: object(:,:,:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -13174,9 +13174,9 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D3_CK3
 #endif
-        use pm_kind, only: SKC => SK, CKC => CK3
+        use pm_kind, only: SKG => SK, CKG => CK3
         class(display_type)         , intent(inout)                 :: self
-        complex(CKC)                , intent(in)    __CONTIGUOUS    :: object(:,:,:)
+        complex(CKG)                , intent(in)    __CONTIGUOUS    :: object(:,:,:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -13189,9 +13189,9 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D3_CK2
 #endif
-        use pm_kind, only: SKC => SK, CKC => CK2
+        use pm_kind, only: SKG => SK, CKG => CK2
         class(display_type)         , intent(inout)                 :: self
-        complex(CKC)                , intent(in)    __CONTIGUOUS    :: object(:,:,:)
+        complex(CKG)                , intent(in)    __CONTIGUOUS    :: object(:,:,:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -13204,9 +13204,9 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D3_CK1
 #endif
-        use pm_kind, only: SKC => SK, CKC => CK1
+        use pm_kind, only: SKG => SK, CKG => CK1
         class(display_type)         , intent(inout)                 :: self
-        complex(CKC)                , intent(in)    __CONTIGUOUS    :: object(:,:,:)
+        complex(CKG)                , intent(in)    __CONTIGUOUS    :: object(:,:,:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -13221,9 +13221,9 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D3_RK5
 #endif
-        use pm_kind, only: SKC => SK, RKC => RK5
+        use pm_kind, only: SKG => SK, RKG => RK5
         class(display_type)         , intent(inout)                 :: self
-        real(RKC)                   , intent(in)    __CONTIGUOUS    :: object(:,:,:)
+        real(RKG)                   , intent(in)    __CONTIGUOUS    :: object(:,:,:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -13236,9 +13236,9 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D3_RK4
 #endif
-        use pm_kind, only: SKC => SK, RKC => RK4
+        use pm_kind, only: SKG => SK, RKG => RK4
         class(display_type)         , intent(inout)                 :: self
-        real(RKC)                   , intent(in)    __CONTIGUOUS    :: object(:,:,:)
+        real(RKG)                   , intent(in)    __CONTIGUOUS    :: object(:,:,:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -13251,9 +13251,9 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D3_RK3
 #endif
-        use pm_kind, only: SKC => SK, RKC => RK3
+        use pm_kind, only: SKG => SK, RKG => RK3
         class(display_type)         , intent(inout)                 :: self
-        real(RKC)                   , intent(in)    __CONTIGUOUS    :: object(:,:,:)
+        real(RKG)                   , intent(in)    __CONTIGUOUS    :: object(:,:,:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -13266,9 +13266,9 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D3_RK2
 #endif
-        use pm_kind, only: SKC => SK, RKC => RK2
+        use pm_kind, only: SKG => SK, RKG => RK2
         class(display_type)         , intent(inout)                 :: self
-        real(RKC)                   , intent(in)    __CONTIGUOUS    :: object(:,:,:)
+        real(RKG)                   , intent(in)    __CONTIGUOUS    :: object(:,:,:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -13281,9 +13281,9 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D3_RK1
 #endif
-        use pm_kind, only: SKC => SK, RKC => RK1
+        use pm_kind, only: SKG => SK, RKG => RK1
         class(display_type)         , intent(inout)                 :: self
-        real(RKC)                   , intent(in)    __CONTIGUOUS    :: object(:,:,:)
+        real(RKG)                   , intent(in)    __CONTIGUOUS    :: object(:,:,:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -13310,10 +13310,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D0_PSSK5
 #endif
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
         use pm_container, only: css_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(css_pdt(SKC))             , intent(in)                    :: object
+        type(css_pdt(SKG))             , intent(in)                    :: object
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -13326,10 +13326,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D0_PSSK4
 #endif
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
         use pm_container, only: css_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(css_pdt(SKC))             , intent(in)                    :: object
+        type(css_pdt(SKG))             , intent(in)                    :: object
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -13342,10 +13342,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D0_PSSK3
 #endif
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
         use pm_container, only: css_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(css_pdt(SKC))             , intent(in)                    :: object
+        type(css_pdt(SKG))             , intent(in)                    :: object
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -13358,10 +13358,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D0_PSSK2
 #endif
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
         use pm_container, only: css_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(css_pdt(SKC))             , intent(in)                    :: object
+        type(css_pdt(SKG))             , intent(in)                    :: object
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -13374,10 +13374,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D0_PSSK1
 #endif
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
         use pm_container, only: css_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(css_pdt(SKC))             , intent(in)                    :: object
+        type(css_pdt(SKG))             , intent(in)                    :: object
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -13392,10 +13392,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D0_PSIK5
 #endif
-        use pm_kind, only: SKC => SK, IKC => IK5
+        use pm_kind, only: SKG => SK, IKG => IK5
         use pm_container, only: csi_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(csi_pdt(IKC))          , intent(in)                    :: object
+        type(csi_pdt(IKG))          , intent(in)                    :: object
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -13408,10 +13408,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D0_PSIK4
 #endif
-        use pm_kind, only: SKC => SK, IKC => IK4
+        use pm_kind, only: SKG => SK, IKG => IK4
         use pm_container, only: csi_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(csi_pdt(IKC))          , intent(in)                    :: object
+        type(csi_pdt(IKG))          , intent(in)                    :: object
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -13424,10 +13424,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D0_PSIK3
 #endif
-        use pm_kind, only: SKC => SK, IKC => IK3
+        use pm_kind, only: SKG => SK, IKG => IK3
         use pm_container, only: csi_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(csi_pdt(IKC))          , intent(in)                    :: object
+        type(csi_pdt(IKG))          , intent(in)                    :: object
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -13440,10 +13440,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D0_PSIK2
 #endif
-        use pm_kind, only: SKC => SK, IKC => IK2
+        use pm_kind, only: SKG => SK, IKG => IK2
         use pm_container, only: csi_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(csi_pdt(IKC))          , intent(in)                    :: object
+        type(csi_pdt(IKG))          , intent(in)                    :: object
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -13456,10 +13456,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D0_PSIK1
 #endif
-        use pm_kind, only: SKC => SK, IKC => IK1
+        use pm_kind, only: SKG => SK, IKG => IK1
         use pm_container, only: csi_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(csi_pdt(IKC))          , intent(in)                    :: object
+        type(csi_pdt(IKG))          , intent(in)                    :: object
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -13474,10 +13474,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D0_PSLK5
 #endif
-        use pm_kind, only: SKC => SK, LKC => LK5
+        use pm_kind, only: SKG => SK, LKG => LK5
         use pm_container, only: csl_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(csl_pdt(LKC))          , intent(in)                    :: object
+        type(csl_pdt(LKG))          , intent(in)                    :: object
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -13490,10 +13490,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D0_PSLK4
 #endif
-        use pm_kind, only: SKC => SK, LKC => LK4
+        use pm_kind, only: SKG => SK, LKG => LK4
         use pm_container, only: csl_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(csl_pdt(LKC))          , intent(in)                    :: object
+        type(csl_pdt(LKG))          , intent(in)                    :: object
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -13506,10 +13506,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D0_PSLK3
 #endif
-        use pm_kind, only: SKC => SK, LKC => LK3
+        use pm_kind, only: SKG => SK, LKG => LK3
         use pm_container, only: csl_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(csl_pdt(LKC))          , intent(in)                    :: object
+        type(csl_pdt(LKG))          , intent(in)                    :: object
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -13522,10 +13522,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D0_PSLK2
 #endif
-        use pm_kind, only: SKC => SK, LKC => LK2
+        use pm_kind, only: SKG => SK, LKG => LK2
         use pm_container, only: csl_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(csl_pdt(LKC))          , intent(in)                    :: object
+        type(csl_pdt(LKG))          , intent(in)                    :: object
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -13538,10 +13538,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D0_PSLK1
 #endif
-        use pm_kind, only: SKC => SK, LKC => LK1
+        use pm_kind, only: SKG => SK, LKG => LK1
         use pm_container, only: csl_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(csl_pdt(LKC))          , intent(in)                    :: object
+        type(csl_pdt(LKG))          , intent(in)                    :: object
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -13556,10 +13556,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D0_PSCK5
 #endif
-        use pm_kind, only: SKC => SK, CKC => CK5
+        use pm_kind, only: SKG => SK, CKG => CK5
         use pm_container, only: csc_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(csc_pdt(CKC))          , intent(in)                    :: object
+        type(csc_pdt(CKG))          , intent(in)                    :: object
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -13572,10 +13572,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D0_PSCK4
 #endif
-        use pm_kind, only: SKC => SK, CKC => CK4
+        use pm_kind, only: SKG => SK, CKG => CK4
         use pm_container, only: csc_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(csc_pdt(CKC))          , intent(in)                    :: object
+        type(csc_pdt(CKG))          , intent(in)                    :: object
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -13588,10 +13588,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D0_PSCK3
 #endif
-        use pm_kind, only: SKC => SK, CKC => CK3
+        use pm_kind, only: SKG => SK, CKG => CK3
         use pm_container, only: csc_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(csc_pdt(CKC))          , intent(in)                    :: object
+        type(csc_pdt(CKG))          , intent(in)                    :: object
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -13604,10 +13604,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D0_PSCK2
 #endif
-        use pm_kind, only: SKC => SK, CKC => CK2
+        use pm_kind, only: SKG => SK, CKG => CK2
         use pm_container, only: csc_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(csc_pdt(CKC))          , intent(in)                    :: object
+        type(csc_pdt(CKG))          , intent(in)                    :: object
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -13620,10 +13620,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D0_PSCK1
 #endif
-        use pm_kind, only: SKC => SK, CKC => CK1
+        use pm_kind, only: SKG => SK, CKG => CK1
         use pm_container, only: csc_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(csc_pdt(CKC))          , intent(in)                    :: object
+        type(csc_pdt(CKG))          , intent(in)                    :: object
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -13638,10 +13638,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D0_PSRK5
 #endif
-        use pm_kind, only: SKC => SK, RKC => RK5
+        use pm_kind, only: SKG => SK, RKG => RK5
         use pm_container, only: csr_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(csr_pdt(RKC))          , intent(in)                    :: object
+        type(csr_pdt(RKG))          , intent(in)                    :: object
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -13654,10 +13654,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D0_PSRK4
 #endif
-        use pm_kind, only: SKC => SK, RKC => RK4
+        use pm_kind, only: SKG => SK, RKG => RK4
         use pm_container, only: csr_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(csr_pdt(RKC))          , intent(in)                    :: object
+        type(csr_pdt(RKG))          , intent(in)                    :: object
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -13670,10 +13670,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D0_PSRK3
 #endif
-        use pm_kind, only: SKC => SK, RKC => RK3
+        use pm_kind, only: SKG => SK, RKG => RK3
         use pm_container, only: csr_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(csr_pdt(RKC))          , intent(in)                    :: object
+        type(csr_pdt(RKG))          , intent(in)                    :: object
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -13686,10 +13686,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D0_PSRK2
 #endif
-        use pm_kind, only: SKC => SK, RKC => RK2
+        use pm_kind, only: SKG => SK, RKG => RK2
         use pm_container, only: csr_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(csr_pdt(RKC))          , intent(in)                    :: object
+        type(csr_pdt(RKG))          , intent(in)                    :: object
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -13702,10 +13702,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D0_PSRK1
 #endif
-        use pm_kind, only: SKC => SK, RKC => RK1
+        use pm_kind, only: SKG => SK, RKG => RK1
         use pm_container, only: csr_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(csr_pdt(RKC))          , intent(in)                    :: object
+        type(csr_pdt(RKG))          , intent(in)                    :: object
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -13726,10 +13726,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D1_PSSK5
 #endif
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
         use pm_container, only: css_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(css_pdt(SKC))             , intent(in)    __CONTIGUOUS    :: object(:)
+        type(css_pdt(SKG))             , intent(in)    __CONTIGUOUS    :: object(:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -13742,10 +13742,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D1_PSSK4
 #endif
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
         use pm_container, only: css_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(css_pdt(SKC))             , intent(in)    __CONTIGUOUS    :: object(:)
+        type(css_pdt(SKG))             , intent(in)    __CONTIGUOUS    :: object(:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -13758,10 +13758,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D1_PSSK3
 #endif
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
         use pm_container, only: css_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(css_pdt(SKC))             , intent(in)    __CONTIGUOUS    :: object(:)
+        type(css_pdt(SKG))             , intent(in)    __CONTIGUOUS    :: object(:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -13774,10 +13774,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D1_PSSK2
 #endif
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
         use pm_container, only: css_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(css_pdt(SKC))             , intent(in)    __CONTIGUOUS    :: object(:)
+        type(css_pdt(SKG))             , intent(in)    __CONTIGUOUS    :: object(:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -13790,10 +13790,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D1_PSSK1
 #endif
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
         use pm_container, only: css_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(css_pdt(SKC))             , intent(in)    __CONTIGUOUS    :: object(:)
+        type(css_pdt(SKG))             , intent(in)    __CONTIGUOUS    :: object(:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -13808,10 +13808,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D1_PSIK5
 #endif
-        use pm_kind, only: SKC => SK, IKC => IK5
+        use pm_kind, only: SKG => SK, IKG => IK5
         use pm_container, only: csi_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(csi_pdt(IKC))          , intent(in)    __CONTIGUOUS    :: object(:)
+        type(csi_pdt(IKG))          , intent(in)    __CONTIGUOUS    :: object(:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -13824,10 +13824,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D1_PSIK4
 #endif
-        use pm_kind, only: SKC => SK, IKC => IK4
+        use pm_kind, only: SKG => SK, IKG => IK4
         use pm_container, only: csi_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(csi_pdt(IKC))          , intent(in)    __CONTIGUOUS    :: object(:)
+        type(csi_pdt(IKG))          , intent(in)    __CONTIGUOUS    :: object(:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -13840,10 +13840,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D1_PSIK3
 #endif
-        use pm_kind, only: SKC => SK, IKC => IK3
+        use pm_kind, only: SKG => SK, IKG => IK3
         use pm_container, only: csi_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(csi_pdt(IKC))          , intent(in)    __CONTIGUOUS    :: object(:)
+        type(csi_pdt(IKG))          , intent(in)    __CONTIGUOUS    :: object(:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -13856,10 +13856,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D1_PSIK2
 #endif
-        use pm_kind, only: SKC => SK, IKC => IK2
+        use pm_kind, only: SKG => SK, IKG => IK2
         use pm_container, only: csi_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(csi_pdt(IKC))          , intent(in)    __CONTIGUOUS    :: object(:)
+        type(csi_pdt(IKG))          , intent(in)    __CONTIGUOUS    :: object(:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -13872,10 +13872,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D1_PSIK1
 #endif
-        use pm_kind, only: SKC => SK, IKC => IK1
+        use pm_kind, only: SKG => SK, IKG => IK1
         use pm_container, only: csi_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(csi_pdt(IKC))          , intent(in)    __CONTIGUOUS    :: object(:)
+        type(csi_pdt(IKG))          , intent(in)    __CONTIGUOUS    :: object(:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -13890,10 +13890,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D1_PSLK5
 #endif
-        use pm_kind, only: SKC => SK, LKC => LK5
+        use pm_kind, only: SKG => SK, LKG => LK5
         use pm_container, only: csl_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(csl_pdt(LKC))          , intent(in)    __CONTIGUOUS    :: object(:)
+        type(csl_pdt(LKG))          , intent(in)    __CONTIGUOUS    :: object(:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -13906,10 +13906,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D1_PSLK4
 #endif
-        use pm_kind, only: SKC => SK, LKC => LK4
+        use pm_kind, only: SKG => SK, LKG => LK4
         use pm_container, only: csl_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(csl_pdt(LKC))          , intent(in)    __CONTIGUOUS    :: object(:)
+        type(csl_pdt(LKG))          , intent(in)    __CONTIGUOUS    :: object(:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -13922,10 +13922,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D1_PSLK3
 #endif
-        use pm_kind, only: SKC => SK, LKC => LK3
+        use pm_kind, only: SKG => SK, LKG => LK3
         use pm_container, only: csl_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(csl_pdt(LKC))          , intent(in)    __CONTIGUOUS    :: object(:)
+        type(csl_pdt(LKG))          , intent(in)    __CONTIGUOUS    :: object(:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -13938,10 +13938,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D1_PSLK2
 #endif
-        use pm_kind, only: SKC => SK, LKC => LK2
+        use pm_kind, only: SKG => SK, LKG => LK2
         use pm_container, only: csl_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(csl_pdt(LKC))          , intent(in)    __CONTIGUOUS    :: object(:)
+        type(csl_pdt(LKG))          , intent(in)    __CONTIGUOUS    :: object(:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -13954,10 +13954,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D1_PSLK1
 #endif
-        use pm_kind, only: SKC => SK, LKC => LK1
+        use pm_kind, only: SKG => SK, LKG => LK1
         use pm_container, only: csl_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(csl_pdt(LKC))          , intent(in)    __CONTIGUOUS    :: object(:)
+        type(csl_pdt(LKG))          , intent(in)    __CONTIGUOUS    :: object(:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -13972,10 +13972,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D1_PSCK5
 #endif
-        use pm_kind, only: SKC => SK, CKC => CK5
+        use pm_kind, only: SKG => SK, CKG => CK5
         use pm_container, only: csc_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(csc_pdt(CKC))          , intent(in)    __CONTIGUOUS    :: object(:)
+        type(csc_pdt(CKG))          , intent(in)    __CONTIGUOUS    :: object(:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -13988,10 +13988,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D1_PSCK4
 #endif
-        use pm_kind, only: SKC => SK, CKC => CK4
+        use pm_kind, only: SKG => SK, CKG => CK4
         use pm_container, only: csc_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(csc_pdt(CKC))          , intent(in)    __CONTIGUOUS    :: object(:)
+        type(csc_pdt(CKG))          , intent(in)    __CONTIGUOUS    :: object(:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -14004,10 +14004,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D1_PSCK3
 #endif
-        use pm_kind, only: SKC => SK, CKC => CK3
+        use pm_kind, only: SKG => SK, CKG => CK3
         use pm_container, only: csc_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(csc_pdt(CKC))          , intent(in)    __CONTIGUOUS    :: object(:)
+        type(csc_pdt(CKG))          , intent(in)    __CONTIGUOUS    :: object(:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -14020,10 +14020,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D1_PSCK2
 #endif
-        use pm_kind, only: SKC => SK, CKC => CK2
+        use pm_kind, only: SKG => SK, CKG => CK2
         use pm_container, only: csc_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(csc_pdt(CKC))          , intent(in)    __CONTIGUOUS    :: object(:)
+        type(csc_pdt(CKG))          , intent(in)    __CONTIGUOUS    :: object(:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -14036,10 +14036,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D1_PSCK1
 #endif
-        use pm_kind, only: SKC => SK, CKC => CK1
+        use pm_kind, only: SKG => SK, CKG => CK1
         use pm_container, only: csc_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(csc_pdt(CKC))          , intent(in)    __CONTIGUOUS    :: object(:)
+        type(csc_pdt(CKG))          , intent(in)    __CONTIGUOUS    :: object(:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -14054,10 +14054,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D1_PSRK5
 #endif
-        use pm_kind, only: SKC => SK, RKC => RK5
+        use pm_kind, only: SKG => SK, RKG => RK5
         use pm_container, only: csr_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(csr_pdt(RKC))          , intent(in)    __CONTIGUOUS    :: object(:)
+        type(csr_pdt(RKG))          , intent(in)    __CONTIGUOUS    :: object(:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -14070,10 +14070,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D1_PSRK4
 #endif
-        use pm_kind, only: SKC => SK, RKC => RK4
+        use pm_kind, only: SKG => SK, RKG => RK4
         use pm_container, only: csr_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(csr_pdt(RKC))          , intent(in)    __CONTIGUOUS    :: object(:)
+        type(csr_pdt(RKG))          , intent(in)    __CONTIGUOUS    :: object(:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -14086,10 +14086,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D1_PSRK3
 #endif
-        use pm_kind, only: SKC => SK, RKC => RK3
+        use pm_kind, only: SKG => SK, RKG => RK3
         use pm_container, only: csr_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(csr_pdt(RKC))          , intent(in)    __CONTIGUOUS    :: object(:)
+        type(csr_pdt(RKG))          , intent(in)    __CONTIGUOUS    :: object(:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -14102,10 +14102,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D1_PSRK2
 #endif
-        use pm_kind, only: SKC => SK, RKC => RK2
+        use pm_kind, only: SKG => SK, RKG => RK2
         use pm_container, only: csr_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(csr_pdt(RKC))          , intent(in)    __CONTIGUOUS    :: object(:)
+        type(csr_pdt(RKG))          , intent(in)    __CONTIGUOUS    :: object(:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -14118,10 +14118,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D1_PSRK1
 #endif
-        use pm_kind, only: SKC => SK, RKC => RK1
+        use pm_kind, only: SKG => SK, RKG => RK1
         use pm_container, only: csr_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(csr_pdt(RKC))          , intent(in)    __CONTIGUOUS    :: object(:)
+        type(csr_pdt(RKG))          , intent(in)    __CONTIGUOUS    :: object(:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -14142,10 +14142,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D2_PSSK5
 #endif
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
         use pm_container, only: css_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(css_pdt(SKC))             , intent(in)    __CONTIGUOUS    :: object(:,:)
+        type(css_pdt(SKG))             , intent(in)    __CONTIGUOUS    :: object(:,:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -14158,10 +14158,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D2_PSSK4
 #endif
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
         use pm_container, only: css_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(css_pdt(SKC))             , intent(in)    __CONTIGUOUS    :: object(:,:)
+        type(css_pdt(SKG))             , intent(in)    __CONTIGUOUS    :: object(:,:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -14174,10 +14174,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D2_PSSK3
 #endif
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
         use pm_container, only: css_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(css_pdt(SKC))             , intent(in)    __CONTIGUOUS    :: object(:,:)
+        type(css_pdt(SKG))             , intent(in)    __CONTIGUOUS    :: object(:,:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -14190,10 +14190,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D2_PSSK2
 #endif
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
         use pm_container, only: css_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(css_pdt(SKC))             , intent(in)    __CONTIGUOUS    :: object(:,:)
+        type(css_pdt(SKG))             , intent(in)    __CONTIGUOUS    :: object(:,:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -14206,10 +14206,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D2_PSSK1
 #endif
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
         use pm_container, only: css_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(css_pdt(SKC))             , intent(in)    __CONTIGUOUS    :: object(:,:)
+        type(css_pdt(SKG))             , intent(in)    __CONTIGUOUS    :: object(:,:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -14224,10 +14224,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D2_PSIK5
 #endif
-        use pm_kind, only: SKC => SK, IKC => IK5
+        use pm_kind, only: SKG => SK, IKG => IK5
         use pm_container, only: csi_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(csi_pdt(IKC))          , intent(in)    __CONTIGUOUS    :: object(:,:)
+        type(csi_pdt(IKG))          , intent(in)    __CONTIGUOUS    :: object(:,:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -14240,10 +14240,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D2_PSIK4
 #endif
-        use pm_kind, only: SKC => SK, IKC => IK4
+        use pm_kind, only: SKG => SK, IKG => IK4
         use pm_container, only: csi_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(csi_pdt(IKC))          , intent(in)    __CONTIGUOUS    :: object(:,:)
+        type(csi_pdt(IKG))          , intent(in)    __CONTIGUOUS    :: object(:,:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -14256,10 +14256,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D2_PSIK3
 #endif
-        use pm_kind, only: SKC => SK, IKC => IK3
+        use pm_kind, only: SKG => SK, IKG => IK3
         use pm_container, only: csi_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(csi_pdt(IKC))          , intent(in)    __CONTIGUOUS    :: object(:,:)
+        type(csi_pdt(IKG))          , intent(in)    __CONTIGUOUS    :: object(:,:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -14272,10 +14272,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D2_PSIK2
 #endif
-        use pm_kind, only: SKC => SK, IKC => IK2
+        use pm_kind, only: SKG => SK, IKG => IK2
         use pm_container, only: csi_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(csi_pdt(IKC))          , intent(in)    __CONTIGUOUS    :: object(:,:)
+        type(csi_pdt(IKG))          , intent(in)    __CONTIGUOUS    :: object(:,:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -14288,10 +14288,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D2_PSIK1
 #endif
-        use pm_kind, only: SKC => SK, IKC => IK1
+        use pm_kind, only: SKG => SK, IKG => IK1
         use pm_container, only: csi_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(csi_pdt(IKC))          , intent(in)    __CONTIGUOUS    :: object(:,:)
+        type(csi_pdt(IKG))          , intent(in)    __CONTIGUOUS    :: object(:,:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -14306,10 +14306,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D2_PSLK5
 #endif
-        use pm_kind, only: SKC => SK, LKC => LK5
+        use pm_kind, only: SKG => SK, LKG => LK5
         use pm_container, only: csl_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(csl_pdt(LKC))          , intent(in)    __CONTIGUOUS    :: object(:,:)
+        type(csl_pdt(LKG))          , intent(in)    __CONTIGUOUS    :: object(:,:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -14322,10 +14322,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D2_PSLK4
 #endif
-        use pm_kind, only: SKC => SK, LKC => LK4
+        use pm_kind, only: SKG => SK, LKG => LK4
         use pm_container, only: csl_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(csl_pdt(LKC))          , intent(in)    __CONTIGUOUS    :: object(:,:)
+        type(csl_pdt(LKG))          , intent(in)    __CONTIGUOUS    :: object(:,:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -14338,10 +14338,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D2_PSLK3
 #endif
-        use pm_kind, only: SKC => SK, LKC => LK3
+        use pm_kind, only: SKG => SK, LKG => LK3
         use pm_container, only: csl_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(csl_pdt(LKC))          , intent(in)    __CONTIGUOUS    :: object(:,:)
+        type(csl_pdt(LKG))          , intent(in)    __CONTIGUOUS    :: object(:,:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -14354,10 +14354,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D2_PSLK2
 #endif
-        use pm_kind, only: SKC => SK, LKC => LK2
+        use pm_kind, only: SKG => SK, LKG => LK2
         use pm_container, only: csl_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(csl_pdt(LKC))          , intent(in)    __CONTIGUOUS    :: object(:,:)
+        type(csl_pdt(LKG))          , intent(in)    __CONTIGUOUS    :: object(:,:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -14370,10 +14370,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D2_PSLK1
 #endif
-        use pm_kind, only: SKC => SK, LKC => LK1
+        use pm_kind, only: SKG => SK, LKG => LK1
         use pm_container, only: csl_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(csl_pdt(LKC))          , intent(in)    __CONTIGUOUS    :: object(:,:)
+        type(csl_pdt(LKG))          , intent(in)    __CONTIGUOUS    :: object(:,:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -14388,10 +14388,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D2_PSCK5
 #endif
-        use pm_kind, only: SKC => SK, CKC => CK5
+        use pm_kind, only: SKG => SK, CKG => CK5
         use pm_container, only: csc_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(csc_pdt(CKC))          , intent(in)    __CONTIGUOUS    :: object(:,:)
+        type(csc_pdt(CKG))          , intent(in)    __CONTIGUOUS    :: object(:,:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -14404,10 +14404,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D2_PSCK4
 #endif
-        use pm_kind, only: SKC => SK, CKC => CK4
+        use pm_kind, only: SKG => SK, CKG => CK4
         use pm_container, only: csc_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(csc_pdt(CKC))          , intent(in)    __CONTIGUOUS    :: object(:,:)
+        type(csc_pdt(CKG))          , intent(in)    __CONTIGUOUS    :: object(:,:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -14420,10 +14420,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D2_PSCK3
 #endif
-        use pm_kind, only: SKC => SK, CKC => CK3
+        use pm_kind, only: SKG => SK, CKG => CK3
         use pm_container, only: csc_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(csc_pdt(CKC))          , intent(in)    __CONTIGUOUS    :: object(:,:)
+        type(csc_pdt(CKG))          , intent(in)    __CONTIGUOUS    :: object(:,:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -14436,10 +14436,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D2_PSCK2
 #endif
-        use pm_kind, only: SKC => SK, CKC => CK2
+        use pm_kind, only: SKG => SK, CKG => CK2
         use pm_container, only: csc_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(csc_pdt(CKC))          , intent(in)    __CONTIGUOUS    :: object(:,:)
+        type(csc_pdt(CKG))          , intent(in)    __CONTIGUOUS    :: object(:,:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -14452,10 +14452,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D2_PSCK1
 #endif
-        use pm_kind, only: SKC => SK, CKC => CK1
+        use pm_kind, only: SKG => SK, CKG => CK1
         use pm_container, only: csc_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(csc_pdt(CKC))          , intent(in)    __CONTIGUOUS    :: object(:,:)
+        type(csc_pdt(CKG))          , intent(in)    __CONTIGUOUS    :: object(:,:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -14470,10 +14470,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D2_PSRK5
 #endif
-        use pm_kind, only: SKC => SK, RKC => RK5
+        use pm_kind, only: SKG => SK, RKG => RK5
         use pm_container, only: csr_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(csr_pdt(RKC))          , intent(in)    __CONTIGUOUS    :: object(:,:)
+        type(csr_pdt(RKG))          , intent(in)    __CONTIGUOUS    :: object(:,:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -14486,10 +14486,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D2_PSRK4
 #endif
-        use pm_kind, only: SKC => SK, RKC => RK4
+        use pm_kind, only: SKG => SK, RKG => RK4
         use pm_container, only: csr_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(csr_pdt(RKC))          , intent(in)    __CONTIGUOUS    :: object(:,:)
+        type(csr_pdt(RKG))          , intent(in)    __CONTIGUOUS    :: object(:,:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -14502,10 +14502,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D2_PSRK3
 #endif
-        use pm_kind, only: SKC => SK, RKC => RK3
+        use pm_kind, only: SKG => SK, RKG => RK3
         use pm_container, only: csr_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(csr_pdt(RKC))          , intent(in)    __CONTIGUOUS    :: object(:,:)
+        type(csr_pdt(RKG))          , intent(in)    __CONTIGUOUS    :: object(:,:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -14518,10 +14518,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D2_PSRK2
 #endif
-        use pm_kind, only: SKC => SK, RKC => RK2
+        use pm_kind, only: SKG => SK, RKG => RK2
         use pm_container, only: csr_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(csr_pdt(RKC))          , intent(in)    __CONTIGUOUS    :: object(:,:)
+        type(csr_pdt(RKG))          , intent(in)    __CONTIGUOUS    :: object(:,:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -14534,10 +14534,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D2_PSRK1
 #endif
-        use pm_kind, only: SKC => SK, RKC => RK1
+        use pm_kind, only: SKG => SK, RKG => RK1
         use pm_container, only: csr_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(csr_pdt(RKC))          , intent(in)    __CONTIGUOUS    :: object(:,:)
+        type(csr_pdt(RKG))          , intent(in)    __CONTIGUOUS    :: object(:,:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -14558,10 +14558,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D3_PSSK5
 #endif
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
         use pm_container, only: css_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(css_pdt(SKC))             , intent(in)    __CONTIGUOUS    :: object(:,:,:)
+        type(css_pdt(SKG))             , intent(in)    __CONTIGUOUS    :: object(:,:,:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -14574,10 +14574,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D3_PSSK4
 #endif
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
         use pm_container, only: css_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(css_pdt(SKC))             , intent(in)    __CONTIGUOUS    :: object(:,:,:)
+        type(css_pdt(SKG))             , intent(in)    __CONTIGUOUS    :: object(:,:,:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -14590,10 +14590,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D3_PSSK3
 #endif
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
         use pm_container, only: css_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(css_pdt(SKC))             , intent(in)    __CONTIGUOUS    :: object(:,:,:)
+        type(css_pdt(SKG))             , intent(in)    __CONTIGUOUS    :: object(:,:,:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -14606,10 +14606,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D3_PSSK2
 #endif
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
         use pm_container, only: css_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(css_pdt(SKC))             , intent(in)    __CONTIGUOUS    :: object(:,:,:)
+        type(css_pdt(SKG))             , intent(in)    __CONTIGUOUS    :: object(:,:,:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -14622,10 +14622,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D3_PSSK1
 #endif
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
         use pm_container, only: css_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(css_pdt(SKC))             , intent(in)    __CONTIGUOUS    :: object(:,:,:)
+        type(css_pdt(SKG))             , intent(in)    __CONTIGUOUS    :: object(:,:,:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -14640,10 +14640,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D3_PSIK5
 #endif
-        use pm_kind, only: SKC => SK, IKC => IK5
+        use pm_kind, only: SKG => SK, IKG => IK5
         use pm_container, only: csi_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(csi_pdt(IKC))          , intent(in)    __CONTIGUOUS    :: object(:,:,:)
+        type(csi_pdt(IKG))          , intent(in)    __CONTIGUOUS    :: object(:,:,:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -14656,10 +14656,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D3_PSIK4
 #endif
-        use pm_kind, only: SKC => SK, IKC => IK4
+        use pm_kind, only: SKG => SK, IKG => IK4
         use pm_container, only: csi_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(csi_pdt(IKC))          , intent(in)    __CONTIGUOUS    :: object(:,:,:)
+        type(csi_pdt(IKG))          , intent(in)    __CONTIGUOUS    :: object(:,:,:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -14672,10 +14672,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D3_PSIK3
 #endif
-        use pm_kind, only: SKC => SK, IKC => IK3
+        use pm_kind, only: SKG => SK, IKG => IK3
         use pm_container, only: csi_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(csi_pdt(IKC))          , intent(in)    __CONTIGUOUS    :: object(:,:,:)
+        type(csi_pdt(IKG))          , intent(in)    __CONTIGUOUS    :: object(:,:,:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -14688,10 +14688,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D3_PSIK2
 #endif
-        use pm_kind, only: SKC => SK, IKC => IK2
+        use pm_kind, only: SKG => SK, IKG => IK2
         use pm_container, only: csi_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(csi_pdt(IKC))          , intent(in)    __CONTIGUOUS    :: object(:,:,:)
+        type(csi_pdt(IKG))          , intent(in)    __CONTIGUOUS    :: object(:,:,:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -14704,10 +14704,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D3_PSIK1
 #endif
-        use pm_kind, only: SKC => SK, IKC => IK1
+        use pm_kind, only: SKG => SK, IKG => IK1
         use pm_container, only: csi_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(csi_pdt(IKC))          , intent(in)    __CONTIGUOUS    :: object(:,:,:)
+        type(csi_pdt(IKG))          , intent(in)    __CONTIGUOUS    :: object(:,:,:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -14722,10 +14722,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D3_PSLK5
 #endif
-        use pm_kind, only: SKC => SK, LKC => LK5
+        use pm_kind, only: SKG => SK, LKG => LK5
         use pm_container, only: csl_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(csl_pdt(LKC))          , intent(in)    __CONTIGUOUS    :: object(:,:,:)
+        type(csl_pdt(LKG))          , intent(in)    __CONTIGUOUS    :: object(:,:,:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -14738,10 +14738,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D3_PSLK4
 #endif
-        use pm_kind, only: SKC => SK, LKC => LK4
+        use pm_kind, only: SKG => SK, LKG => LK4
         use pm_container, only: csl_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(csl_pdt(LKC))          , intent(in)    __CONTIGUOUS    :: object(:,:,:)
+        type(csl_pdt(LKG))          , intent(in)    __CONTIGUOUS    :: object(:,:,:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -14754,10 +14754,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D3_PSLK3
 #endif
-        use pm_kind, only: SKC => SK, LKC => LK3
+        use pm_kind, only: SKG => SK, LKG => LK3
         use pm_container, only: csl_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(csl_pdt(LKC))          , intent(in)    __CONTIGUOUS    :: object(:,:,:)
+        type(csl_pdt(LKG))          , intent(in)    __CONTIGUOUS    :: object(:,:,:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -14770,10 +14770,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D3_PSLK2
 #endif
-        use pm_kind, only: SKC => SK, LKC => LK2
+        use pm_kind, only: SKG => SK, LKG => LK2
         use pm_container, only: csl_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(csl_pdt(LKC))          , intent(in)    __CONTIGUOUS    :: object(:,:,:)
+        type(csl_pdt(LKG))          , intent(in)    __CONTIGUOUS    :: object(:,:,:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -14786,10 +14786,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D3_PSLK1
 #endif
-        use pm_kind, only: SKC => SK, LKC => LK1
+        use pm_kind, only: SKG => SK, LKG => LK1
         use pm_container, only: csl_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(csl_pdt(LKC))          , intent(in)    __CONTIGUOUS    :: object(:,:,:)
+        type(csl_pdt(LKG))          , intent(in)    __CONTIGUOUS    :: object(:,:,:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -14804,10 +14804,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D3_PSCK5
 #endif
-        use pm_kind, only: SKC => SK, CKC => CK5
+        use pm_kind, only: SKG => SK, CKG => CK5
         use pm_container, only: csc_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(csc_pdt(CKC))          , intent(in)    __CONTIGUOUS    :: object(:,:,:)
+        type(csc_pdt(CKG))          , intent(in)    __CONTIGUOUS    :: object(:,:,:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -14820,10 +14820,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D3_PSCK4
 #endif
-        use pm_kind, only: SKC => SK, CKC => CK4
+        use pm_kind, only: SKG => SK, CKG => CK4
         use pm_container, only: csc_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(csc_pdt(CKC))          , intent(in)    __CONTIGUOUS    :: object(:,:,:)
+        type(csc_pdt(CKG))          , intent(in)    __CONTIGUOUS    :: object(:,:,:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -14836,10 +14836,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D3_PSCK3
 #endif
-        use pm_kind, only: SKC => SK, CKC => CK3
+        use pm_kind, only: SKG => SK, CKG => CK3
         use pm_container, only: csc_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(csc_pdt(CKC))          , intent(in)    __CONTIGUOUS    :: object(:,:,:)
+        type(csc_pdt(CKG))          , intent(in)    __CONTIGUOUS    :: object(:,:,:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -14852,10 +14852,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D3_PSCK2
 #endif
-        use pm_kind, only: SKC => SK, CKC => CK2
+        use pm_kind, only: SKG => SK, CKG => CK2
         use pm_container, only: csc_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(csc_pdt(CKC))          , intent(in)    __CONTIGUOUS    :: object(:,:,:)
+        type(csc_pdt(CKG))          , intent(in)    __CONTIGUOUS    :: object(:,:,:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -14868,10 +14868,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D3_PSCK1
 #endif
-        use pm_kind, only: SKC => SK, CKC => CK1
+        use pm_kind, only: SKG => SK, CKG => CK1
         use pm_container, only: csc_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(csc_pdt(CKC))          , intent(in)    __CONTIGUOUS    :: object(:,:,:)
+        type(csc_pdt(CKG))          , intent(in)    __CONTIGUOUS    :: object(:,:,:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -14886,10 +14886,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D3_PSRK5
 #endif
-        use pm_kind, only: SKC => SK, RKC => RK5
+        use pm_kind, only: SKG => SK, RKG => RK5
         use pm_container, only: csr_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(csr_pdt(RKC))          , intent(in)    __CONTIGUOUS    :: object(:,:,:)
+        type(csr_pdt(RKG))          , intent(in)    __CONTIGUOUS    :: object(:,:,:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -14902,10 +14902,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D3_PSRK4
 #endif
-        use pm_kind, only: SKC => SK, RKC => RK4
+        use pm_kind, only: SKG => SK, RKG => RK4
         use pm_container, only: csr_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(csr_pdt(RKC))          , intent(in)    __CONTIGUOUS    :: object(:,:,:)
+        type(csr_pdt(RKG))          , intent(in)    __CONTIGUOUS    :: object(:,:,:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -14918,10 +14918,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D3_PSRK3
 #endif
-        use pm_kind, only: SKC => SK, RKC => RK3
+        use pm_kind, only: SKG => SK, RKG => RK3
         use pm_container, only: csr_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(csr_pdt(RKC))          , intent(in)    __CONTIGUOUS    :: object(:,:,:)
+        type(csr_pdt(RKG))          , intent(in)    __CONTIGUOUS    :: object(:,:,:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -14934,10 +14934,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D3_PSRK2
 #endif
-        use pm_kind, only: SKC => SK, RKC => RK2
+        use pm_kind, only: SKG => SK, RKG => RK2
         use pm_container, only: csr_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(csr_pdt(RKC))          , intent(in)    __CONTIGUOUS    :: object(:,:,:)
+        type(csr_pdt(RKG))          , intent(in)    __CONTIGUOUS    :: object(:,:,:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -14950,10 +14950,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D3_PSRK1
 #endif
-        use pm_kind, only: SKC => SK, RKC => RK1
+        use pm_kind, only: SKG => SK, RKG => RK1
         use pm_container, only: csr_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(csr_pdt(RKC))          , intent(in)    __CONTIGUOUS    :: object(:,:,:)
+        type(csr_pdt(RKG))          , intent(in)    __CONTIGUOUS    :: object(:,:,:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -14978,10 +14978,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D0_PVSK5
 #endif
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
         use pm_container, only: cvs_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(cvs_pdt(SKC))          , intent(in)                    :: object
+        type(cvs_pdt(SKG))          , intent(in)                    :: object
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -14994,10 +14994,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D0_PVSK4
 #endif
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
         use pm_container, only: cvs_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(cvs_pdt(SKC))          , intent(in)                    :: object
+        type(cvs_pdt(SKG))          , intent(in)                    :: object
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -15010,10 +15010,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D0_PVSK3
 #endif
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
         use pm_container, only: cvs_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(cvs_pdt(SKC))          , intent(in)                    :: object
+        type(cvs_pdt(SKG))          , intent(in)                    :: object
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -15026,10 +15026,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D0_PVSK2
 #endif
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
         use pm_container, only: cvs_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(cvs_pdt(SKC))          , intent(in)                    :: object
+        type(cvs_pdt(SKG))          , intent(in)                    :: object
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -15042,10 +15042,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D0_PVSK1
 #endif
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
         use pm_container, only: cvs_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(cvs_pdt(SKC))          , intent(in)                    :: object
+        type(cvs_pdt(SKG))          , intent(in)                    :: object
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -15060,10 +15060,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D0_PVIK5
 #endif
-        use pm_kind, only: SKC => SK, IKC => IK5
+        use pm_kind, only: SKG => SK, IKG => IK5
         use pm_container, only: cvi_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(cvi_pdt(IKC))          , intent(in)                    :: object
+        type(cvi_pdt(IKG))          , intent(in)                    :: object
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -15076,10 +15076,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D0_PVIK4
 #endif
-        use pm_kind, only: SKC => SK, IKC => IK4
+        use pm_kind, only: SKG => SK, IKG => IK4
         use pm_container, only: cvi_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(cvi_pdt(IKC))          , intent(in)                    :: object
+        type(cvi_pdt(IKG))          , intent(in)                    :: object
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -15092,10 +15092,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D0_PVIK3
 #endif
-        use pm_kind, only: SKC => SK, IKC => IK3
+        use pm_kind, only: SKG => SK, IKG => IK3
         use pm_container, only: cvi_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(cvi_pdt(IKC))          , intent(in)                    :: object
+        type(cvi_pdt(IKG))          , intent(in)                    :: object
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -15108,10 +15108,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D0_PVIK2
 #endif
-        use pm_kind, only: SKC => SK, IKC => IK2
+        use pm_kind, only: SKG => SK, IKG => IK2
         use pm_container, only: cvi_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(cvi_pdt(IKC))          , intent(in)                    :: object
+        type(cvi_pdt(IKG))          , intent(in)                    :: object
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -15124,10 +15124,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D0_PVIK1
 #endif
-        use pm_kind, only: SKC => SK, IKC => IK1
+        use pm_kind, only: SKG => SK, IKG => IK1
         use pm_container, only: cvi_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(cvi_pdt(IKC))          , intent(in)                    :: object
+        type(cvi_pdt(IKG))          , intent(in)                    :: object
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -15142,10 +15142,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D0_PVLK5
 #endif
-        use pm_kind, only: SKC => SK, LKC => LK5
+        use pm_kind, only: SKG => SK, LKG => LK5
         use pm_container, only: cvl_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(cvl_pdt(LKC))          , intent(in)                    :: object
+        type(cvl_pdt(LKG))          , intent(in)                    :: object
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -15158,10 +15158,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D0_PVLK4
 #endif
-        use pm_kind, only: SKC => SK, LKC => LK4
+        use pm_kind, only: SKG => SK, LKG => LK4
         use pm_container, only: cvl_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(cvl_pdt(LKC))          , intent(in)                    :: object
+        type(cvl_pdt(LKG))          , intent(in)                    :: object
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -15174,10 +15174,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D0_PVLK3
 #endif
-        use pm_kind, only: SKC => SK, LKC => LK3
+        use pm_kind, only: SKG => SK, LKG => LK3
         use pm_container, only: cvl_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(cvl_pdt(LKC))          , intent(in)                    :: object
+        type(cvl_pdt(LKG))          , intent(in)                    :: object
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -15190,10 +15190,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D0_PVLK2
 #endif
-        use pm_kind, only: SKC => SK, LKC => LK2
+        use pm_kind, only: SKG => SK, LKG => LK2
         use pm_container, only: cvl_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(cvl_pdt(LKC))          , intent(in)                    :: object
+        type(cvl_pdt(LKG))          , intent(in)                    :: object
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -15206,10 +15206,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D0_PVLK1
 #endif
-        use pm_kind, only: SKC => SK, LKC => LK1
+        use pm_kind, only: SKG => SK, LKG => LK1
         use pm_container, only: cvl_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(cvl_pdt(LKC))          , intent(in)                    :: object
+        type(cvl_pdt(LKG))          , intent(in)                    :: object
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -15224,10 +15224,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D0_PVCK5
 #endif
-        use pm_kind, only: SKC => SK, CKC => CK5
+        use pm_kind, only: SKG => SK, CKG => CK5
         use pm_container, only: cvc_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(cvc_pdt(CKC))          , intent(in)                    :: object
+        type(cvc_pdt(CKG))          , intent(in)                    :: object
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -15240,10 +15240,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D0_PVCK4
 #endif
-        use pm_kind, only: SKC => SK, CKC => CK4
+        use pm_kind, only: SKG => SK, CKG => CK4
         use pm_container, only: cvc_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(cvc_pdt(CKC))          , intent(in)                    :: object
+        type(cvc_pdt(CKG))          , intent(in)                    :: object
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -15256,10 +15256,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D0_PVCK3
 #endif
-        use pm_kind, only: SKC => SK, CKC => CK3
+        use pm_kind, only: SKG => SK, CKG => CK3
         use pm_container, only: cvc_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(cvc_pdt(CKC))          , intent(in)                    :: object
+        type(cvc_pdt(CKG))          , intent(in)                    :: object
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -15272,10 +15272,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D0_PVCK2
 #endif
-        use pm_kind, only: SKC => SK, CKC => CK2
+        use pm_kind, only: SKG => SK, CKG => CK2
         use pm_container, only: cvc_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(cvc_pdt(CKC))          , intent(in)                    :: object
+        type(cvc_pdt(CKG))          , intent(in)                    :: object
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -15288,10 +15288,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D0_PVCK1
 #endif
-        use pm_kind, only: SKC => SK, CKC => CK1
+        use pm_kind, only: SKG => SK, CKG => CK1
         use pm_container, only: cvc_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(cvc_pdt(CKC))          , intent(in)                    :: object
+        type(cvc_pdt(CKG))          , intent(in)                    :: object
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -15306,10 +15306,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D0_PVRK5
 #endif
-        use pm_kind, only: SKC => SK, RKC => RK5
+        use pm_kind, only: SKG => SK, RKG => RK5
         use pm_container, only: cvr_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(cvr_pdt(RKC))          , intent(in)                    :: object
+        type(cvr_pdt(RKG))          , intent(in)                    :: object
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -15322,10 +15322,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D0_PVRK4
 #endif
-        use pm_kind, only: SKC => SK, RKC => RK4
+        use pm_kind, only: SKG => SK, RKG => RK4
         use pm_container, only: cvr_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(cvr_pdt(RKC))          , intent(in)                    :: object
+        type(cvr_pdt(RKG))          , intent(in)                    :: object
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -15338,10 +15338,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D0_PVRK3
 #endif
-        use pm_kind, only: SKC => SK, RKC => RK3
+        use pm_kind, only: SKG => SK, RKG => RK3
         use pm_container, only: cvr_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(cvr_pdt(RKC))          , intent(in)                    :: object
+        type(cvr_pdt(RKG))          , intent(in)                    :: object
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -15354,10 +15354,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D0_PVRK2
 #endif
-        use pm_kind, only: SKC => SK, RKC => RK2
+        use pm_kind, only: SKG => SK, RKG => RK2
         use pm_container, only: cvr_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(cvr_pdt(RKC))          , intent(in)                    :: object
+        type(cvr_pdt(RKG))          , intent(in)                    :: object
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -15370,10 +15370,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D0_PVRK1
 #endif
-        use pm_kind, only: SKC => SK, RKC => RK1
+        use pm_kind, only: SKG => SK, RKG => RK1
         use pm_container, only: cvr_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(cvr_pdt(RKC))          , intent(in)                    :: object
+        type(cvr_pdt(RKG))          , intent(in)                    :: object
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -15394,10 +15394,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D1_PVSK5
 #endif
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
         use pm_container, only: cvs_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(cvs_pdt(SKC))          , intent(in)    __CONTIGUOUS    :: object(:)
+        type(cvs_pdt(SKG))          , intent(in)    __CONTIGUOUS    :: object(:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -15410,10 +15410,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D1_PVSK4
 #endif
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
         use pm_container, only: cvs_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(cvs_pdt(SKC))          , intent(in)    __CONTIGUOUS    :: object(:)
+        type(cvs_pdt(SKG))          , intent(in)    __CONTIGUOUS    :: object(:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -15426,10 +15426,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D1_PVSK3
 #endif
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
         use pm_container, only: cvs_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(cvs_pdt(SKC))          , intent(in)    __CONTIGUOUS    :: object(:)
+        type(cvs_pdt(SKG))          , intent(in)    __CONTIGUOUS    :: object(:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -15442,10 +15442,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D1_PVSK2
 #endif
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
         use pm_container, only: cvs_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(cvs_pdt(SKC))          , intent(in)    __CONTIGUOUS    :: object(:)
+        type(cvs_pdt(SKG))          , intent(in)    __CONTIGUOUS    :: object(:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -15458,10 +15458,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D1_PVSK1
 #endif
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
         use pm_container, only: cvs_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(cvs_pdt(SKC))          , intent(in)    __CONTIGUOUS    :: object(:)
+        type(cvs_pdt(SKG))          , intent(in)    __CONTIGUOUS    :: object(:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -15476,10 +15476,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D1_PVIK5
 #endif
-        use pm_kind, only: SKC => SK, IKC => IK5
+        use pm_kind, only: SKG => SK, IKG => IK5
         use pm_container, only: cvi_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(cvi_pdt(IKC))          , intent(in)    __CONTIGUOUS    :: object(:)
+        type(cvi_pdt(IKG))          , intent(in)    __CONTIGUOUS    :: object(:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -15492,10 +15492,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D1_PVIK4
 #endif
-        use pm_kind, only: SKC => SK, IKC => IK4
+        use pm_kind, only: SKG => SK, IKG => IK4
         use pm_container, only: cvi_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(cvi_pdt(IKC))          , intent(in)    __CONTIGUOUS    :: object(:)
+        type(cvi_pdt(IKG))          , intent(in)    __CONTIGUOUS    :: object(:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -15508,10 +15508,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D1_PVIK3
 #endif
-        use pm_kind, only: SKC => SK, IKC => IK3
+        use pm_kind, only: SKG => SK, IKG => IK3
         use pm_container, only: cvi_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(cvi_pdt(IKC))          , intent(in)    __CONTIGUOUS    :: object(:)
+        type(cvi_pdt(IKG))          , intent(in)    __CONTIGUOUS    :: object(:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -15524,10 +15524,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D1_PVIK2
 #endif
-        use pm_kind, only: SKC => SK, IKC => IK2
+        use pm_kind, only: SKG => SK, IKG => IK2
         use pm_container, only: cvi_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(cvi_pdt(IKC))          , intent(in)    __CONTIGUOUS    :: object(:)
+        type(cvi_pdt(IKG))          , intent(in)    __CONTIGUOUS    :: object(:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -15540,10 +15540,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D1_PVIK1
 #endif
-        use pm_kind, only: SKC => SK, IKC => IK1
+        use pm_kind, only: SKG => SK, IKG => IK1
         use pm_container, only: cvi_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(cvi_pdt(IKC))          , intent(in)    __CONTIGUOUS    :: object(:)
+        type(cvi_pdt(IKG))          , intent(in)    __CONTIGUOUS    :: object(:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -15558,10 +15558,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D1_PVLK5
 #endif
-        use pm_kind, only: SKC => SK, LKC => LK5
+        use pm_kind, only: SKG => SK, LKG => LK5
         use pm_container, only: cvl_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(cvl_pdt(LKC))          , intent(in)    __CONTIGUOUS    :: object(:)
+        type(cvl_pdt(LKG))          , intent(in)    __CONTIGUOUS    :: object(:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -15574,10 +15574,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D1_PVLK4
 #endif
-        use pm_kind, only: SKC => SK, LKC => LK4
+        use pm_kind, only: SKG => SK, LKG => LK4
         use pm_container, only: cvl_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(cvl_pdt(LKC))          , intent(in)    __CONTIGUOUS    :: object(:)
+        type(cvl_pdt(LKG))          , intent(in)    __CONTIGUOUS    :: object(:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -15590,10 +15590,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D1_PVLK3
 #endif
-        use pm_kind, only: SKC => SK, LKC => LK3
+        use pm_kind, only: SKG => SK, LKG => LK3
         use pm_container, only: cvl_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(cvl_pdt(LKC))          , intent(in)    __CONTIGUOUS    :: object(:)
+        type(cvl_pdt(LKG))          , intent(in)    __CONTIGUOUS    :: object(:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -15606,10 +15606,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D1_PVLK2
 #endif
-        use pm_kind, only: SKC => SK, LKC => LK2
+        use pm_kind, only: SKG => SK, LKG => LK2
         use pm_container, only: cvl_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(cvl_pdt(LKC))          , intent(in)    __CONTIGUOUS    :: object(:)
+        type(cvl_pdt(LKG))          , intent(in)    __CONTIGUOUS    :: object(:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -15622,10 +15622,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D1_PVLK1
 #endif
-        use pm_kind, only: SKC => SK, LKC => LK1
+        use pm_kind, only: SKG => SK, LKG => LK1
         use pm_container, only: cvl_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(cvl_pdt(LKC))          , intent(in)    __CONTIGUOUS    :: object(:)
+        type(cvl_pdt(LKG))          , intent(in)    __CONTIGUOUS    :: object(:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -15640,10 +15640,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D1_PVCK5
 #endif
-        use pm_kind, only: SKC => SK, CKC => CK5
+        use pm_kind, only: SKG => SK, CKG => CK5
         use pm_container, only: cvc_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(cvc_pdt(CKC))          , intent(in)    __CONTIGUOUS    :: object(:)
+        type(cvc_pdt(CKG))          , intent(in)    __CONTIGUOUS    :: object(:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -15656,10 +15656,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D1_PVCK4
 #endif
-        use pm_kind, only: SKC => SK, CKC => CK4
+        use pm_kind, only: SKG => SK, CKG => CK4
         use pm_container, only: cvc_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(cvc_pdt(CKC))          , intent(in)    __CONTIGUOUS    :: object(:)
+        type(cvc_pdt(CKG))          , intent(in)    __CONTIGUOUS    :: object(:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -15672,10 +15672,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D1_PVCK3
 #endif
-        use pm_kind, only: SKC => SK, CKC => CK3
+        use pm_kind, only: SKG => SK, CKG => CK3
         use pm_container, only: cvc_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(cvc_pdt(CKC))          , intent(in)    __CONTIGUOUS    :: object(:)
+        type(cvc_pdt(CKG))          , intent(in)    __CONTIGUOUS    :: object(:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -15688,10 +15688,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D1_PVCK2
 #endif
-        use pm_kind, only: SKC => SK, CKC => CK2
+        use pm_kind, only: SKG => SK, CKG => CK2
         use pm_container, only: cvc_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(cvc_pdt(CKC))          , intent(in)    __CONTIGUOUS    :: object(:)
+        type(cvc_pdt(CKG))          , intent(in)    __CONTIGUOUS    :: object(:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -15704,10 +15704,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D1_PVCK1
 #endif
-        use pm_kind, only: SKC => SK, CKC => CK1
+        use pm_kind, only: SKG => SK, CKG => CK1
         use pm_container, only: cvc_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(cvc_pdt(CKC))          , intent(in)    __CONTIGUOUS    :: object(:)
+        type(cvc_pdt(CKG))          , intent(in)    __CONTIGUOUS    :: object(:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -15722,10 +15722,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D1_PVRK5
 #endif
-        use pm_kind, only: SKC => SK, RKC => RK5
+        use pm_kind, only: SKG => SK, RKG => RK5
         use pm_container, only: cvr_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(cvr_pdt(RKC))          , intent(in)    __CONTIGUOUS    :: object(:)
+        type(cvr_pdt(RKG))          , intent(in)    __CONTIGUOUS    :: object(:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -15738,10 +15738,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D1_PVRK4
 #endif
-        use pm_kind, only: SKC => SK, RKC => RK4
+        use pm_kind, only: SKG => SK, RKG => RK4
         use pm_container, only: cvr_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(cvr_pdt(RKC))          , intent(in)    __CONTIGUOUS    :: object(:)
+        type(cvr_pdt(RKG))          , intent(in)    __CONTIGUOUS    :: object(:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -15754,10 +15754,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D1_PVRK3
 #endif
-        use pm_kind, only: SKC => SK, RKC => RK3
+        use pm_kind, only: SKG => SK, RKG => RK3
         use pm_container, only: cvr_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(cvr_pdt(RKC))          , intent(in)    __CONTIGUOUS    :: object(:)
+        type(cvr_pdt(RKG))          , intent(in)    __CONTIGUOUS    :: object(:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -15770,10 +15770,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D1_PVRK2
 #endif
-        use pm_kind, only: SKC => SK, RKC => RK2
+        use pm_kind, only: SKG => SK, RKG => RK2
         use pm_container, only: cvr_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(cvr_pdt(RKC))          , intent(in)    __CONTIGUOUS    :: object(:)
+        type(cvr_pdt(RKG))          , intent(in)    __CONTIGUOUS    :: object(:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -15786,10 +15786,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D1_PVRK1
 #endif
-        use pm_kind, only: SKC => SK, RKC => RK1
+        use pm_kind, only: SKG => SK, RKG => RK1
         use pm_container, only: cvr_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(cvr_pdt(RKC))          , intent(in)    __CONTIGUOUS    :: object(:)
+        type(cvr_pdt(RKG))          , intent(in)    __CONTIGUOUS    :: object(:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -15810,10 +15810,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D2_PVSK5
 #endif
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
         use pm_container, only: cvs_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(cvs_pdt(SKC))          , intent(in)    __CONTIGUOUS    :: object(:,:)
+        type(cvs_pdt(SKG))          , intent(in)    __CONTIGUOUS    :: object(:,:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -15826,10 +15826,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D2_PVSK4
 #endif
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
         use pm_container, only: cvs_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(cvs_pdt(SKC))          , intent(in)    __CONTIGUOUS    :: object(:,:)
+        type(cvs_pdt(SKG))          , intent(in)    __CONTIGUOUS    :: object(:,:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -15842,10 +15842,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D2_PVSK3
 #endif
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
         use pm_container, only: cvs_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(cvs_pdt(SKC))          , intent(in)    __CONTIGUOUS    :: object(:,:)
+        type(cvs_pdt(SKG))          , intent(in)    __CONTIGUOUS    :: object(:,:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -15858,10 +15858,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D2_PVSK2
 #endif
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
         use pm_container, only: cvs_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(cvs_pdt(SKC))          , intent(in)    __CONTIGUOUS    :: object(:,:)
+        type(cvs_pdt(SKG))          , intent(in)    __CONTIGUOUS    :: object(:,:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -15874,10 +15874,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D2_PVSK1
 #endif
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
         use pm_container, only: cvs_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(cvs_pdt(SKC))          , intent(in)    __CONTIGUOUS    :: object(:,:)
+        type(cvs_pdt(SKG))          , intent(in)    __CONTIGUOUS    :: object(:,:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -15892,10 +15892,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D2_PVIK5
 #endif
-        use pm_kind, only: SKC => SK, IKC => IK5
+        use pm_kind, only: SKG => SK, IKG => IK5
         use pm_container, only: cvi_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(cvi_pdt(IKC))          , intent(in)    __CONTIGUOUS    :: object(:,:)
+        type(cvi_pdt(IKG))          , intent(in)    __CONTIGUOUS    :: object(:,:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -15908,10 +15908,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D2_PVIK4
 #endif
-        use pm_kind, only: SKC => SK, IKC => IK4
+        use pm_kind, only: SKG => SK, IKG => IK4
         use pm_container, only: cvi_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(cvi_pdt(IKC))          , intent(in)    __CONTIGUOUS    :: object(:,:)
+        type(cvi_pdt(IKG))          , intent(in)    __CONTIGUOUS    :: object(:,:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -15924,10 +15924,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D2_PVIK3
 #endif
-        use pm_kind, only: SKC => SK, IKC => IK3
+        use pm_kind, only: SKG => SK, IKG => IK3
         use pm_container, only: cvi_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(cvi_pdt(IKC))          , intent(in)    __CONTIGUOUS    :: object(:,:)
+        type(cvi_pdt(IKG))          , intent(in)    __CONTIGUOUS    :: object(:,:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -15940,10 +15940,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D2_PVIK2
 #endif
-        use pm_kind, only: SKC => SK, IKC => IK2
+        use pm_kind, only: SKG => SK, IKG => IK2
         use pm_container, only: cvi_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(cvi_pdt(IKC))          , intent(in)    __CONTIGUOUS    :: object(:,:)
+        type(cvi_pdt(IKG))          , intent(in)    __CONTIGUOUS    :: object(:,:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -15956,10 +15956,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D2_PVIK1
 #endif
-        use pm_kind, only: SKC => SK, IKC => IK1
+        use pm_kind, only: SKG => SK, IKG => IK1
         use pm_container, only: cvi_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(cvi_pdt(IKC))          , intent(in)    __CONTIGUOUS    :: object(:,:)
+        type(cvi_pdt(IKG))          , intent(in)    __CONTIGUOUS    :: object(:,:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -15974,10 +15974,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D2_PVLK5
 #endif
-        use pm_kind, only: SKC => SK, LKC => LK5
+        use pm_kind, only: SKG => SK, LKG => LK5
         use pm_container, only: cvl_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(cvl_pdt(LKC))          , intent(in)    __CONTIGUOUS    :: object(:,:)
+        type(cvl_pdt(LKG))          , intent(in)    __CONTIGUOUS    :: object(:,:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -15990,10 +15990,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D2_PVLK4
 #endif
-        use pm_kind, only: SKC => SK, LKC => LK4
+        use pm_kind, only: SKG => SK, LKG => LK4
         use pm_container, only: cvl_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(cvl_pdt(LKC))          , intent(in)    __CONTIGUOUS    :: object(:,:)
+        type(cvl_pdt(LKG))          , intent(in)    __CONTIGUOUS    :: object(:,:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -16006,10 +16006,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D2_PVLK3
 #endif
-        use pm_kind, only: SKC => SK, LKC => LK3
+        use pm_kind, only: SKG => SK, LKG => LK3
         use pm_container, only: cvl_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(cvl_pdt(LKC))          , intent(in)    __CONTIGUOUS    :: object(:,:)
+        type(cvl_pdt(LKG))          , intent(in)    __CONTIGUOUS    :: object(:,:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -16022,10 +16022,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D2_PVLK2
 #endif
-        use pm_kind, only: SKC => SK, LKC => LK2
+        use pm_kind, only: SKG => SK, LKG => LK2
         use pm_container, only: cvl_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(cvl_pdt(LKC))          , intent(in)    __CONTIGUOUS    :: object(:,:)
+        type(cvl_pdt(LKG))          , intent(in)    __CONTIGUOUS    :: object(:,:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -16038,10 +16038,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D2_PVLK1
 #endif
-        use pm_kind, only: SKC => SK, LKC => LK1
+        use pm_kind, only: SKG => SK, LKG => LK1
         use pm_container, only: cvl_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(cvl_pdt(LKC))          , intent(in)    __CONTIGUOUS    :: object(:,:)
+        type(cvl_pdt(LKG))          , intent(in)    __CONTIGUOUS    :: object(:,:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -16056,10 +16056,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D2_PVCK5
 #endif
-        use pm_kind, only: SKC => SK, CKC => CK5
+        use pm_kind, only: SKG => SK, CKG => CK5
         use pm_container, only: cvc_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(cvc_pdt(CKC))          , intent(in)    __CONTIGUOUS    :: object(:,:)
+        type(cvc_pdt(CKG))          , intent(in)    __CONTIGUOUS    :: object(:,:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -16072,10 +16072,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D2_PVCK4
 #endif
-        use pm_kind, only: SKC => SK, CKC => CK4
+        use pm_kind, only: SKG => SK, CKG => CK4
         use pm_container, only: cvc_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(cvc_pdt(CKC))          , intent(in)    __CONTIGUOUS    :: object(:,:)
+        type(cvc_pdt(CKG))          , intent(in)    __CONTIGUOUS    :: object(:,:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -16088,10 +16088,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D2_PVCK3
 #endif
-        use pm_kind, only: SKC => SK, CKC => CK3
+        use pm_kind, only: SKG => SK, CKG => CK3
         use pm_container, only: cvc_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(cvc_pdt(CKC))          , intent(in)    __CONTIGUOUS    :: object(:,:)
+        type(cvc_pdt(CKG))          , intent(in)    __CONTIGUOUS    :: object(:,:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -16104,10 +16104,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D2_PVCK2
 #endif
-        use pm_kind, only: SKC => SK, CKC => CK2
+        use pm_kind, only: SKG => SK, CKG => CK2
         use pm_container, only: cvc_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(cvc_pdt(CKC))          , intent(in)    __CONTIGUOUS    :: object(:,:)
+        type(cvc_pdt(CKG))          , intent(in)    __CONTIGUOUS    :: object(:,:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -16120,10 +16120,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D2_PVCK1
 #endif
-        use pm_kind, only: SKC => SK, CKC => CK1
+        use pm_kind, only: SKG => SK, CKG => CK1
         use pm_container, only: cvc_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(cvc_pdt(CKC))          , intent(in)    __CONTIGUOUS    :: object(:,:)
+        type(cvc_pdt(CKG))          , intent(in)    __CONTIGUOUS    :: object(:,:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -16138,10 +16138,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D2_PVRK5
 #endif
-        use pm_kind, only: SKC => SK, RKC => RK5
+        use pm_kind, only: SKG => SK, RKG => RK5
         use pm_container, only: cvr_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(cvr_pdt(RKC))          , intent(in)    __CONTIGUOUS    :: object(:,:)
+        type(cvr_pdt(RKG))          , intent(in)    __CONTIGUOUS    :: object(:,:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -16154,10 +16154,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D2_PVRK4
 #endif
-        use pm_kind, only: SKC => SK, RKC => RK4
+        use pm_kind, only: SKG => SK, RKG => RK4
         use pm_container, only: cvr_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(cvr_pdt(RKC))          , intent(in)    __CONTIGUOUS    :: object(:,:)
+        type(cvr_pdt(RKG))          , intent(in)    __CONTIGUOUS    :: object(:,:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -16170,10 +16170,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D2_PVRK3
 #endif
-        use pm_kind, only: SKC => SK, RKC => RK3
+        use pm_kind, only: SKG => SK, RKG => RK3
         use pm_container, only: cvr_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(cvr_pdt(RKC))          , intent(in)    __CONTIGUOUS    :: object(:,:)
+        type(cvr_pdt(RKG))          , intent(in)    __CONTIGUOUS    :: object(:,:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -16186,10 +16186,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D2_PVRK2
 #endif
-        use pm_kind, only: SKC => SK, RKC => RK2
+        use pm_kind, only: SKG => SK, RKG => RK2
         use pm_container, only: cvr_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(cvr_pdt(RKC))          , intent(in)    __CONTIGUOUS    :: object(:,:)
+        type(cvr_pdt(RKG))          , intent(in)    __CONTIGUOUS    :: object(:,:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -16202,10 +16202,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D2_PVRK1
 #endif
-        use pm_kind, only: SKC => SK, RKC => RK1
+        use pm_kind, only: SKG => SK, RKG => RK1
         use pm_container, only: cvr_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(cvr_pdt(RKC))          , intent(in)    __CONTIGUOUS    :: object(:,:)
+        type(cvr_pdt(RKG))          , intent(in)    __CONTIGUOUS    :: object(:,:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -16230,10 +16230,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D0_PMSK5
 #endif
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
         use pm_container, only: cms_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(cms_pdt(SKC))          , intent(in)                    :: object
+        type(cms_pdt(SKG))          , intent(in)                    :: object
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -16246,10 +16246,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D0_PMSK4
 #endif
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
         use pm_container, only: cms_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(cms_pdt(SKC))          , intent(in)                    :: object
+        type(cms_pdt(SKG))          , intent(in)                    :: object
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -16262,10 +16262,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D0_PMSK3
 #endif
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
         use pm_container, only: cms_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(cms_pdt(SKC))          , intent(in)                    :: object
+        type(cms_pdt(SKG))          , intent(in)                    :: object
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -16278,10 +16278,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D0_PMSK2
 #endif
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
         use pm_container, only: cms_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(cms_pdt(SKC))          , intent(in)                    :: object
+        type(cms_pdt(SKG))          , intent(in)                    :: object
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -16294,10 +16294,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D0_PMSK1
 #endif
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
         use pm_container, only: cms_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(cms_pdt(SKC))          , intent(in)                    :: object
+        type(cms_pdt(SKG))          , intent(in)                    :: object
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -16312,10 +16312,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D0_PMIK5
 #endif
-        use pm_kind, only: SKC => SK, IKC => IK5
+        use pm_kind, only: SKG => SK, IKG => IK5
         use pm_container, only: cmi_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(cmi_pdt(IKC))          , intent(in)                    :: object
+        type(cmi_pdt(IKG))          , intent(in)                    :: object
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -16328,10 +16328,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D0_PMIK4
 #endif
-        use pm_kind, only: SKC => SK, IKC => IK4
+        use pm_kind, only: SKG => SK, IKG => IK4
         use pm_container, only: cmi_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(cmi_pdt(IKC))          , intent(in)                    :: object
+        type(cmi_pdt(IKG))          , intent(in)                    :: object
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -16344,10 +16344,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D0_PMIK3
 #endif
-        use pm_kind, only: SKC => SK, IKC => IK3
+        use pm_kind, only: SKG => SK, IKG => IK3
         use pm_container, only: cmi_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(cmi_pdt(IKC))          , intent(in)                    :: object
+        type(cmi_pdt(IKG))          , intent(in)                    :: object
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -16360,10 +16360,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D0_PMIK2
 #endif
-        use pm_kind, only: SKC => SK, IKC => IK2
+        use pm_kind, only: SKG => SK, IKG => IK2
         use pm_container, only: cmi_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(cmi_pdt(IKC))          , intent(in)                    :: object
+        type(cmi_pdt(IKG))          , intent(in)                    :: object
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -16376,10 +16376,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D0_PMIK1
 #endif
-        use pm_kind, only: SKC => SK, IKC => IK1
+        use pm_kind, only: SKG => SK, IKG => IK1
         use pm_container, only: cmi_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(cmi_pdt(IKC))          , intent(in)                    :: object
+        type(cmi_pdt(IKG))          , intent(in)                    :: object
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -16394,10 +16394,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D0_PMLK5
 #endif
-        use pm_kind, only: SKC => SK, LKC => LK5
+        use pm_kind, only: SKG => SK, LKG => LK5
         use pm_container, only: cml_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(cml_pdt(LKC))          , intent(in)                    :: object
+        type(cml_pdt(LKG))          , intent(in)                    :: object
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -16410,10 +16410,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D0_PMLK4
 #endif
-        use pm_kind, only: SKC => SK, LKC => LK4
+        use pm_kind, only: SKG => SK, LKG => LK4
         use pm_container, only: cml_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(cml_pdt(LKC))          , intent(in)                    :: object
+        type(cml_pdt(LKG))          , intent(in)                    :: object
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -16426,10 +16426,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D0_PMLK3
 #endif
-        use pm_kind, only: SKC => SK, LKC => LK3
+        use pm_kind, only: SKG => SK, LKG => LK3
         use pm_container, only: cml_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(cml_pdt(LKC))          , intent(in)                    :: object
+        type(cml_pdt(LKG))          , intent(in)                    :: object
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -16442,10 +16442,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D0_PMLK2
 #endif
-        use pm_kind, only: SKC => SK, LKC => LK2
+        use pm_kind, only: SKG => SK, LKG => LK2
         use pm_container, only: cml_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(cml_pdt(LKC))          , intent(in)                    :: object
+        type(cml_pdt(LKG))          , intent(in)                    :: object
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -16458,10 +16458,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D0_PMLK1
 #endif
-        use pm_kind, only: SKC => SK, LKC => LK1
+        use pm_kind, only: SKG => SK, LKG => LK1
         use pm_container, only: cml_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(cml_pdt(LKC))          , intent(in)                    :: object
+        type(cml_pdt(LKG))          , intent(in)                    :: object
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -16476,10 +16476,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D0_PMCK5
 #endif
-        use pm_kind, only: SKC => SK, CKC => CK5
+        use pm_kind, only: SKG => SK, CKG => CK5
         use pm_container, only: cmc_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(cmc_pdt(CKC))          , intent(in)                    :: object
+        type(cmc_pdt(CKG))          , intent(in)                    :: object
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -16492,10 +16492,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D0_PMCK4
 #endif
-        use pm_kind, only: SKC => SK, CKC => CK4
+        use pm_kind, only: SKG => SK, CKG => CK4
         use pm_container, only: cmc_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(cmc_pdt(CKC))          , intent(in)                    :: object
+        type(cmc_pdt(CKG))          , intent(in)                    :: object
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -16508,10 +16508,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D0_PMCK3
 #endif
-        use pm_kind, only: SKC => SK, CKC => CK3
+        use pm_kind, only: SKG => SK, CKG => CK3
         use pm_container, only: cmc_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(cmc_pdt(CKC))          , intent(in)                    :: object
+        type(cmc_pdt(CKG))          , intent(in)                    :: object
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -16524,10 +16524,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D0_PMCK2
 #endif
-        use pm_kind, only: SKC => SK, CKC => CK2
+        use pm_kind, only: SKG => SK, CKG => CK2
         use pm_container, only: cmc_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(cmc_pdt(CKC))          , intent(in)                    :: object
+        type(cmc_pdt(CKG))          , intent(in)                    :: object
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -16540,10 +16540,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D0_PMCK1
 #endif
-        use pm_kind, only: SKC => SK, CKC => CK1
+        use pm_kind, only: SKG => SK, CKG => CK1
         use pm_container, only: cmc_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(cmc_pdt(CKC))          , intent(in)                    :: object
+        type(cmc_pdt(CKG))          , intent(in)                    :: object
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -16558,10 +16558,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D0_PMRK5
 #endif
-        use pm_kind, only: SKC => SK, RKC => RK5
+        use pm_kind, only: SKG => SK, RKG => RK5
         use pm_container, only: cmr_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(cmr_pdt(RKC))          , intent(in)                    :: object
+        type(cmr_pdt(RKG))          , intent(in)                    :: object
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -16574,10 +16574,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D0_PMRK4
 #endif
-        use pm_kind, only: SKC => SK, RKC => RK4
+        use pm_kind, only: SKG => SK, RKG => RK4
         use pm_container, only: cmr_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(cmr_pdt(RKC))          , intent(in)                    :: object
+        type(cmr_pdt(RKG))          , intent(in)                    :: object
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -16590,10 +16590,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D0_PMRK3
 #endif
-        use pm_kind, only: SKC => SK, RKC => RK3
+        use pm_kind, only: SKG => SK, RKG => RK3
         use pm_container, only: cmr_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(cmr_pdt(RKC))          , intent(in)                    :: object
+        type(cmr_pdt(RKG))          , intent(in)                    :: object
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -16606,10 +16606,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D0_PMRK2
 #endif
-        use pm_kind, only: SKC => SK, RKC => RK2
+        use pm_kind, only: SKG => SK, RKG => RK2
         use pm_container, only: cmr_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(cmr_pdt(RKC))          , intent(in)                    :: object
+        type(cmr_pdt(RKG))          , intent(in)                    :: object
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -16622,10 +16622,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D0_PMRK1
 #endif
-        use pm_kind, only: SKC => SK, RKC => RK1
+        use pm_kind, only: SKG => SK, RKG => RK1
         use pm_container, only: cmr_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(cmr_pdt(RKC))          , intent(in)                    :: object
+        type(cmr_pdt(RKG))          , intent(in)                    :: object
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -16646,10 +16646,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D1_PMSK5
 #endif
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
         use pm_container, only: cms_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(cms_pdt(SKC))          , intent(in)    __CONTIGUOUS    :: object(:)
+        type(cms_pdt(SKG))          , intent(in)    __CONTIGUOUS    :: object(:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -16662,10 +16662,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D1_PMSK4
 #endif
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
         use pm_container, only: cms_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(cms_pdt(SKC))          , intent(in)    __CONTIGUOUS    :: object(:)
+        type(cms_pdt(SKG))          , intent(in)    __CONTIGUOUS    :: object(:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -16678,10 +16678,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D1_PMSK3
 #endif
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
         use pm_container, only: cms_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(cms_pdt(SKC))          , intent(in)    __CONTIGUOUS    :: object(:)
+        type(cms_pdt(SKG))          , intent(in)    __CONTIGUOUS    :: object(:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -16694,10 +16694,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D1_PMSK2
 #endif
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
         use pm_container, only: cms_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(cms_pdt(SKC))          , intent(in)    __CONTIGUOUS    :: object(:)
+        type(cms_pdt(SKG))          , intent(in)    __CONTIGUOUS    :: object(:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -16710,10 +16710,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D1_PMSK1
 #endif
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
         use pm_container, only: cms_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(cms_pdt(SKC))          , intent(in)    __CONTIGUOUS    :: object(:)
+        type(cms_pdt(SKG))          , intent(in)    __CONTIGUOUS    :: object(:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -16728,10 +16728,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D1_PMIK5
 #endif
-        use pm_kind, only: SKC => SK, IKC => IK5
+        use pm_kind, only: SKG => SK, IKG => IK5
         use pm_container, only: cmi_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(cmi_pdt(IKC))          , intent(in)    __CONTIGUOUS    :: object(:)
+        type(cmi_pdt(IKG))          , intent(in)    __CONTIGUOUS    :: object(:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -16744,10 +16744,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D1_PMIK4
 #endif
-        use pm_kind, only: SKC => SK, IKC => IK4
+        use pm_kind, only: SKG => SK, IKG => IK4
         use pm_container, only: cmi_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(cmi_pdt(IKC))          , intent(in)    __CONTIGUOUS    :: object(:)
+        type(cmi_pdt(IKG))          , intent(in)    __CONTIGUOUS    :: object(:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -16760,10 +16760,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D1_PMIK3
 #endif
-        use pm_kind, only: SKC => SK, IKC => IK3
+        use pm_kind, only: SKG => SK, IKG => IK3
         use pm_container, only: cmi_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(cmi_pdt(IKC))          , intent(in)    __CONTIGUOUS    :: object(:)
+        type(cmi_pdt(IKG))          , intent(in)    __CONTIGUOUS    :: object(:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -16776,10 +16776,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D1_PMIK2
 #endif
-        use pm_kind, only: SKC => SK, IKC => IK2
+        use pm_kind, only: SKG => SK, IKG => IK2
         use pm_container, only: cmi_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(cmi_pdt(IKC))          , intent(in)    __CONTIGUOUS    :: object(:)
+        type(cmi_pdt(IKG))          , intent(in)    __CONTIGUOUS    :: object(:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -16792,10 +16792,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D1_PMIK1
 #endif
-        use pm_kind, only: SKC => SK, IKC => IK1
+        use pm_kind, only: SKG => SK, IKG => IK1
         use pm_container, only: cmi_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(cmi_pdt(IKC))          , intent(in)    __CONTIGUOUS    :: object(:)
+        type(cmi_pdt(IKG))          , intent(in)    __CONTIGUOUS    :: object(:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -16810,10 +16810,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D1_PMLK5
 #endif
-        use pm_kind, only: SKC => SK, LKC => LK5
+        use pm_kind, only: SKG => SK, LKG => LK5
         use pm_container, only: cml_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(cml_pdt(LKC))          , intent(in)    __CONTIGUOUS    :: object(:)
+        type(cml_pdt(LKG))          , intent(in)    __CONTIGUOUS    :: object(:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -16826,10 +16826,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D1_PMLK4
 #endif
-        use pm_kind, only: SKC => SK, LKC => LK4
+        use pm_kind, only: SKG => SK, LKG => LK4
         use pm_container, only: cml_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(cml_pdt(LKC))          , intent(in)    __CONTIGUOUS    :: object(:)
+        type(cml_pdt(LKG))          , intent(in)    __CONTIGUOUS    :: object(:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -16842,10 +16842,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D1_PMLK3
 #endif
-        use pm_kind, only: SKC => SK, LKC => LK3
+        use pm_kind, only: SKG => SK, LKG => LK3
         use pm_container, only: cml_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(cml_pdt(LKC))          , intent(in)    __CONTIGUOUS    :: object(:)
+        type(cml_pdt(LKG))          , intent(in)    __CONTIGUOUS    :: object(:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -16858,10 +16858,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D1_PMLK2
 #endif
-        use pm_kind, only: SKC => SK, LKC => LK2
+        use pm_kind, only: SKG => SK, LKG => LK2
         use pm_container, only: cml_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(cml_pdt(LKC))          , intent(in)    __CONTIGUOUS    :: object(:)
+        type(cml_pdt(LKG))          , intent(in)    __CONTIGUOUS    :: object(:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -16874,10 +16874,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D1_PMLK1
 #endif
-        use pm_kind, only: SKC => SK, LKC => LK1
+        use pm_kind, only: SKG => SK, LKG => LK1
         use pm_container, only: cml_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(cml_pdt(LKC))          , intent(in)    __CONTIGUOUS    :: object(:)
+        type(cml_pdt(LKG))          , intent(in)    __CONTIGUOUS    :: object(:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -16892,10 +16892,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D1_PMCK5
 #endif
-        use pm_kind, only: SKC => SK, CKC => CK5
+        use pm_kind, only: SKG => SK, CKG => CK5
         use pm_container, only: cmc_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(cmc_pdt(CKC))          , intent(in)    __CONTIGUOUS    :: object(:)
+        type(cmc_pdt(CKG))          , intent(in)    __CONTIGUOUS    :: object(:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -16908,10 +16908,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D1_PMCK4
 #endif
-        use pm_kind, only: SKC => SK, CKC => CK4
+        use pm_kind, only: SKG => SK, CKG => CK4
         use pm_container, only: cmc_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(cmc_pdt(CKC))          , intent(in)    __CONTIGUOUS    :: object(:)
+        type(cmc_pdt(CKG))          , intent(in)    __CONTIGUOUS    :: object(:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -16924,10 +16924,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D1_PMCK3
 #endif
-        use pm_kind, only: SKC => SK, CKC => CK3
+        use pm_kind, only: SKG => SK, CKG => CK3
         use pm_container, only: cmc_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(cmc_pdt(CKC))          , intent(in)    __CONTIGUOUS    :: object(:)
+        type(cmc_pdt(CKG))          , intent(in)    __CONTIGUOUS    :: object(:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -16940,10 +16940,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D1_PMCK2
 #endif
-        use pm_kind, only: SKC => SK, CKC => CK2
+        use pm_kind, only: SKG => SK, CKG => CK2
         use pm_container, only: cmc_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(cmc_pdt(CKC))          , intent(in)    __CONTIGUOUS    :: object(:)
+        type(cmc_pdt(CKG))          , intent(in)    __CONTIGUOUS    :: object(:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -16956,10 +16956,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D1_PMCK1
 #endif
-        use pm_kind, only: SKC => SK, CKC => CK1
+        use pm_kind, only: SKG => SK, CKG => CK1
         use pm_container, only: cmc_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(cmc_pdt(CKC))          , intent(in)    __CONTIGUOUS    :: object(:)
+        type(cmc_pdt(CKG))          , intent(in)    __CONTIGUOUS    :: object(:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -16974,10 +16974,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D1_PMRK5
 #endif
-        use pm_kind, only: SKC => SK, RKC => RK5
+        use pm_kind, only: SKG => SK, RKG => RK5
         use pm_container, only: cmr_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(cmr_pdt(RKC))          , intent(in)    __CONTIGUOUS    :: object(:)
+        type(cmr_pdt(RKG))          , intent(in)    __CONTIGUOUS    :: object(:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -16990,10 +16990,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D1_PMRK4
 #endif
-        use pm_kind, only: SKC => SK, RKC => RK4
+        use pm_kind, only: SKG => SK, RKG => RK4
         use pm_container, only: cmr_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(cmr_pdt(RKC))          , intent(in)    __CONTIGUOUS    :: object(:)
+        type(cmr_pdt(RKG))          , intent(in)    __CONTIGUOUS    :: object(:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -17006,10 +17006,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D1_PMRK3
 #endif
-        use pm_kind, only: SKC => SK, RKC => RK3
+        use pm_kind, only: SKG => SK, RKG => RK3
         use pm_container, only: cmr_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(cmr_pdt(RKC))          , intent(in)    __CONTIGUOUS    :: object(:)
+        type(cmr_pdt(RKG))          , intent(in)    __CONTIGUOUS    :: object(:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -17022,10 +17022,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D1_PMRK2
 #endif
-        use pm_kind, only: SKC => SK, RKC => RK2
+        use pm_kind, only: SKG => SK, RKG => RK2
         use pm_container, only: cmr_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(cmr_pdt(RKC))          , intent(in)    __CONTIGUOUS    :: object(:)
+        type(cmr_pdt(RKG))          , intent(in)    __CONTIGUOUS    :: object(:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -17038,10 +17038,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D1_PMRK1
 #endif
-        use pm_kind, only: SKC => SK, RKC => RK1
+        use pm_kind, only: SKG => SK, RKG => RK1
         use pm_container, only: cmr_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(cmr_pdt(RKC))          , intent(in)    __CONTIGUOUS    :: object(:)
+        type(cmr_pdt(RKG))          , intent(in)    __CONTIGUOUS    :: object(:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -17066,10 +17066,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D0_PCSK5
 #endif
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
         use pm_container, only: ccs_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(ccs_pdt(SKC))          , intent(in)                    :: object
+        type(ccs_pdt(SKG))          , intent(in)                    :: object
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -17082,10 +17082,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D0_PCSK4
 #endif
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
         use pm_container, only: ccs_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(ccs_pdt(SKC))          , intent(in)                    :: object
+        type(ccs_pdt(SKG))          , intent(in)                    :: object
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -17098,10 +17098,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D0_PCSK3
 #endif
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
         use pm_container, only: ccs_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(ccs_pdt(SKC))          , intent(in)                    :: object
+        type(ccs_pdt(SKG))          , intent(in)                    :: object
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -17114,10 +17114,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D0_PCSK2
 #endif
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
         use pm_container, only: ccs_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(ccs_pdt(SKC))          , intent(in)                    :: object
+        type(ccs_pdt(SKG))          , intent(in)                    :: object
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -17130,10 +17130,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D0_PCSK1
 #endif
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
         use pm_container, only: ccs_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(ccs_pdt(SKC))          , intent(in)                    :: object
+        type(ccs_pdt(SKG))          , intent(in)                    :: object
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -17148,10 +17148,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D0_PCIK5
 #endif
-        use pm_kind, only: SKC => SK, IKC => IK5
+        use pm_kind, only: SKG => SK, IKG => IK5
         use pm_container, only: cci_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(cci_pdt(IKC))          , intent(in)                    :: object
+        type(cci_pdt(IKG))          , intent(in)                    :: object
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -17164,10 +17164,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D0_PCIK4
 #endif
-        use pm_kind, only: SKC => SK, IKC => IK4
+        use pm_kind, only: SKG => SK, IKG => IK4
         use pm_container, only: cci_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(cci_pdt(IKC))          , intent(in)                    :: object
+        type(cci_pdt(IKG))          , intent(in)                    :: object
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -17180,10 +17180,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D0_PCIK3
 #endif
-        use pm_kind, only: SKC => SK, IKC => IK3
+        use pm_kind, only: SKG => SK, IKG => IK3
         use pm_container, only: cci_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(cci_pdt(IKC))          , intent(in)                    :: object
+        type(cci_pdt(IKG))          , intent(in)                    :: object
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -17196,10 +17196,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D0_PCIK2
 #endif
-        use pm_kind, only: SKC => SK, IKC => IK2
+        use pm_kind, only: SKG => SK, IKG => IK2
         use pm_container, only: cci_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(cci_pdt(IKC))          , intent(in)                    :: object
+        type(cci_pdt(IKG))          , intent(in)                    :: object
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -17212,10 +17212,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D0_PCIK1
 #endif
-        use pm_kind, only: SKC => SK, IKC => IK1
+        use pm_kind, only: SKG => SK, IKG => IK1
         use pm_container, only: cci_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(cci_pdt(IKC))          , intent(in)                    :: object
+        type(cci_pdt(IKG))          , intent(in)                    :: object
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -17230,10 +17230,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D0_PCLK5
 #endif
-        use pm_kind, only: SKC => SK, LKC => LK5
+        use pm_kind, only: SKG => SK, LKG => LK5
         use pm_container, only: ccl_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(ccl_pdt(LKC))          , intent(in)                    :: object
+        type(ccl_pdt(LKG))          , intent(in)                    :: object
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -17246,10 +17246,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D0_PCLK4
 #endif
-        use pm_kind, only: SKC => SK, LKC => LK4
+        use pm_kind, only: SKG => SK, LKG => LK4
         use pm_container, only: ccl_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(ccl_pdt(LKC))          , intent(in)                    :: object
+        type(ccl_pdt(LKG))          , intent(in)                    :: object
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -17262,10 +17262,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D0_PCLK3
 #endif
-        use pm_kind, only: SKC => SK, LKC => LK3
+        use pm_kind, only: SKG => SK, LKG => LK3
         use pm_container, only: ccl_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(ccl_pdt(LKC))          , intent(in)                    :: object
+        type(ccl_pdt(LKG))          , intent(in)                    :: object
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -17278,10 +17278,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D0_PCLK2
 #endif
-        use pm_kind, only: SKC => SK, LKC => LK2
+        use pm_kind, only: SKG => SK, LKG => LK2
         use pm_container, only: ccl_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(ccl_pdt(LKC))          , intent(in)                    :: object
+        type(ccl_pdt(LKG))          , intent(in)                    :: object
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -17294,10 +17294,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D0_PCLK1
 #endif
-        use pm_kind, only: SKC => SK, LKC => LK1
+        use pm_kind, only: SKG => SK, LKG => LK1
         use pm_container, only: ccl_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(ccl_pdt(LKC))          , intent(in)                    :: object
+        type(ccl_pdt(LKG))          , intent(in)                    :: object
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -17312,10 +17312,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D0_PCCK5
 #endif
-        use pm_kind, only: SKC => SK, CKC => CK5
+        use pm_kind, only: SKG => SK, CKG => CK5
         use pm_container, only: ccc_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(ccc_pdt(CKC))          , intent(in)                    :: object
+        type(ccc_pdt(CKG))          , intent(in)                    :: object
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -17328,10 +17328,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D0_PCCK4
 #endif
-        use pm_kind, only: SKC => SK, CKC => CK4
+        use pm_kind, only: SKG => SK, CKG => CK4
         use pm_container, only: ccc_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(ccc_pdt(CKC))          , intent(in)                    :: object
+        type(ccc_pdt(CKG))          , intent(in)                    :: object
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -17344,10 +17344,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D0_PCCK3
 #endif
-        use pm_kind, only: SKC => SK, CKC => CK3
+        use pm_kind, only: SKG => SK, CKG => CK3
         use pm_container, only: ccc_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(ccc_pdt(CKC))          , intent(in)                    :: object
+        type(ccc_pdt(CKG))          , intent(in)                    :: object
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -17360,10 +17360,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D0_PCCK2
 #endif
-        use pm_kind, only: SKC => SK, CKC => CK2
+        use pm_kind, only: SKG => SK, CKG => CK2
         use pm_container, only: ccc_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(ccc_pdt(CKC))          , intent(in)                    :: object
+        type(ccc_pdt(CKG))          , intent(in)                    :: object
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -17376,10 +17376,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D0_PCCK1
 #endif
-        use pm_kind, only: SKC => SK, CKC => CK1
+        use pm_kind, only: SKG => SK, CKG => CK1
         use pm_container, only: ccc_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(ccc_pdt(CKC))          , intent(in)                    :: object
+        type(ccc_pdt(CKG))          , intent(in)                    :: object
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -17394,10 +17394,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D0_PCRK5
 #endif
-        use pm_kind, only: SKC => SK, RKC => RK5
+        use pm_kind, only: SKG => SK, RKG => RK5
         use pm_container, only: ccr_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(ccr_pdt(RKC))          , intent(in)                    :: object
+        type(ccr_pdt(RKG))          , intent(in)                    :: object
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -17410,10 +17410,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D0_PCRK4
 #endif
-        use pm_kind, only: SKC => SK, RKC => RK4
+        use pm_kind, only: SKG => SK, RKG => RK4
         use pm_container, only: ccr_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(ccr_pdt(RKC))          , intent(in)                    :: object
+        type(ccr_pdt(RKG))          , intent(in)                    :: object
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -17426,10 +17426,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D0_PCRK3
 #endif
-        use pm_kind, only: SKC => SK, RKC => RK3
+        use pm_kind, only: SKG => SK, RKG => RK3
         use pm_container, only: ccr_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(ccr_pdt(RKC))          , intent(in)                    :: object
+        type(ccr_pdt(RKG))          , intent(in)                    :: object
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -17442,10 +17442,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D0_PCRK2
 #endif
-        use pm_kind, only: SKC => SK, RKC => RK2
+        use pm_kind, only: SKG => SK, RKG => RK2
         use pm_container, only: ccr_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(ccr_pdt(RKC))          , intent(in)                    :: object
+        type(ccr_pdt(RKG))          , intent(in)                    :: object
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -17458,10 +17458,10 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D0_PCRK1
 #endif
-        use pm_kind, only: SKC => SK, RKC => RK1
+        use pm_kind, only: SKG => SK, RKG => RK1
         use pm_container, only: ccr_pdt
         class(display_type)         , intent(inout)                 :: self
-        type(ccr_pdt(RKC))          , intent(in)                    :: object
+        type(ccr_pdt(RKG))          , intent(in)                    :: object
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
         character(*, SK)            , intent(in)    , optional      :: format, advance
         logical(LK)                 , intent(in)    , optional      :: sticky
@@ -17488,7 +17488,7 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D0_BSSK
 #endif
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
         use pm_container, only: css_type
         class(display_type)         , intent(inout)                 :: self
         type(css_type)        , intent(in)                    :: object
@@ -17502,7 +17502,7 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D0_BSIK
 #endif
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
         use pm_container, only: csi_type
         class(display_type)         , intent(inout)                 :: self
         type(csi_type)              , intent(in)                    :: object
@@ -17516,7 +17516,7 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D0_BSLK
 #endif
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
         use pm_container, only: csl_type
         class(display_type)         , intent(inout)                 :: self
         type(csl_type)              , intent(in)                    :: object
@@ -17530,7 +17530,7 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D0_BSCK
 #endif
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
         use pm_container, only: csc_type
         class(display_type)         , intent(inout)                 :: self
         type(csc_type)              , intent(in)                    :: object
@@ -17544,7 +17544,7 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D0_BSRK
 #endif
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
         use pm_container, only: csr_type
         class(display_type)         , intent(inout)                 :: self
         type(csr_type)              , intent(in)                    :: object
@@ -17560,7 +17560,7 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D1_BSSK
 #endif
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
         use pm_container, only: css_type
         class(display_type)         , intent(inout)                 :: self
         type(css_type)              , intent(in)    __CONTIGUOUS    :: object(:)
@@ -17574,7 +17574,7 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D1_BSIK
 #endif
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
         use pm_container, only: csi_type
         class(display_type)         , intent(inout)                 :: self
         type(csi_type)              , intent(in)    __CONTIGUOUS    :: object(:)
@@ -17588,7 +17588,7 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D1_BSLK
 #endif
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
         use pm_container, only: csl_type
         class(display_type)         , intent(inout)                 :: self
         type(csl_type)              , intent(in)    __CONTIGUOUS    :: object(:)
@@ -17602,7 +17602,7 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D1_BSCK
 #endif
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
         use pm_container, only: csc_type
         class(display_type)         , intent(inout)                 :: self
         type(csc_type)              , intent(in)    __CONTIGUOUS    :: object(:)
@@ -17616,7 +17616,7 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D1_BSRK
 #endif
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
         use pm_container, only: csr_type
         class(display_type)         , intent(inout)                 :: self
         type(csr_type)              , intent(in)    __CONTIGUOUS    :: object(:)
@@ -17632,7 +17632,7 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D2_BSSK
 #endif
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
         use pm_container, only: css_type
         class(display_type)         , intent(inout)                 :: self
         type(css_type)              , intent(in)    __CONTIGUOUS    :: object(:,:)
@@ -17646,7 +17646,7 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D2_BSIK
 #endif
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
         use pm_container, only: csi_type
         class(display_type)         , intent(inout)                 :: self
         type(csi_type)              , intent(in)    __CONTIGUOUS    :: object(:,:)
@@ -17660,7 +17660,7 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D2_BSLK
 #endif
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
         use pm_container, only: csl_type
         class(display_type)         , intent(inout)                 :: self
         type(csl_type)              , intent(in)    __CONTIGUOUS    :: object(:,:)
@@ -17674,7 +17674,7 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D2_BSCK
 #endif
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
         use pm_container, only: csc_type
         class(display_type)         , intent(inout)                 :: self
         type(csc_type)              , intent(in)    __CONTIGUOUS    :: object(:,:)
@@ -17688,7 +17688,7 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D2_BSRK
 #endif
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
         use pm_container, only: csr_type
         class(display_type)         , intent(inout)                 :: self
         type(csr_type)              , intent(in)    __CONTIGUOUS    :: object(:,:)
@@ -17704,7 +17704,7 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D3_BSSK
 #endif
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
         use pm_container, only: css_type
         class(display_type)         , intent(inout)                 :: self
         type(css_type)              , intent(in)    __CONTIGUOUS    :: object(:,:,:)
@@ -17718,7 +17718,7 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D3_BSIK
 #endif
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
         use pm_container, only: csi_type
         class(display_type)         , intent(inout)                 :: self
         type(csi_type)              , intent(in)    __CONTIGUOUS    :: object(:,:,:)
@@ -17732,7 +17732,7 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D3_BSLK
 #endif
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
         use pm_container, only: csl_type
         class(display_type)         , intent(inout)                 :: self
         type(csl_type)              , intent(in)    __CONTIGUOUS    :: object(:,:,:)
@@ -17746,7 +17746,7 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D3_BSCK
 #endif
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
         use pm_container, only: csc_type
         class(display_type)         , intent(inout)                 :: self
         type(csc_type)              , intent(in)    __CONTIGUOUS    :: object(:,:,:)
@@ -17760,7 +17760,7 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D3_BSRK
 #endif
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
         use pm_container, only: csr_type
         class(display_type)         , intent(inout)                 :: self
         type(csr_type)              , intent(in)    __CONTIGUOUS    :: object(:,:,:)
@@ -17782,7 +17782,7 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D0_BVSK
 #endif
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
         use pm_container, only: cvs_type
         class(display_type)         , intent(inout)                 :: self
         type(cvs_type)              , intent(in)                    :: object
@@ -17796,7 +17796,7 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D0_BVIK
 #endif
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
         use pm_container, only: cvi_type
         class(display_type)         , intent(inout)                 :: self
         type(cvi_type)              , intent(in)                    :: object
@@ -17810,7 +17810,7 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D0_BVLK
 #endif
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
         use pm_container, only: cvl_type
         class(display_type)         , intent(inout)                 :: self
         type(cvl_type)              , intent(in)                    :: object
@@ -17824,7 +17824,7 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D0_BVCK
 #endif
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
         use pm_container, only: cvc_type
         class(display_type)         , intent(inout)                 :: self
         type(cvc_type)              , intent(in)                    :: object
@@ -17838,7 +17838,7 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D0_BVRK
 #endif
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
         use pm_container, only: cvr_type
         class(display_type)         , intent(inout)                 :: self
         type(cvr_type)              , intent(in)                    :: object
@@ -17854,7 +17854,7 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D1_BVSK
 #endif
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
         use pm_container, only: cvs_type
         class(display_type)         , intent(inout)                 :: self
         type(cvs_type)              , intent(in)    __CONTIGUOUS    :: object(:)
@@ -17868,7 +17868,7 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D1_BVIK
 #endif
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
         use pm_container, only: cvi_type
         class(display_type)         , intent(inout)                 :: self
         type(cvi_type)              , intent(in)    __CONTIGUOUS    :: object(:)
@@ -17882,7 +17882,7 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D1_BVLK
 #endif
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
         use pm_container, only: cvl_type
         class(display_type)         , intent(inout)                 :: self
         type(cvl_type)              , intent(in)    __CONTIGUOUS    :: object(:)
@@ -17896,7 +17896,7 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D1_BVCK
 #endif
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
         use pm_container, only: cvc_type
         class(display_type)         , intent(inout)                 :: self
         type(cvc_type)              , intent(in)    __CONTIGUOUS    :: object(:)
@@ -17910,7 +17910,7 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D1_BVRK
 #endif
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
         use pm_container, only: cvr_type
         class(display_type)         , intent(inout)                 :: self
         type(cvr_type)              , intent(in)    __CONTIGUOUS    :: object(:)
@@ -17926,7 +17926,7 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D2_BVSK
 #endif
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
         use pm_container, only: cvs_type
         class(display_type)         , intent(inout)                 :: self
         type(cvs_type)              , intent(in)    __CONTIGUOUS    :: object(:,:)
@@ -17940,7 +17940,7 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D2_BVIK
 #endif
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
         use pm_container, only: cvi_type
         class(display_type)         , intent(inout)                 :: self
         type(cvi_type)              , intent(in)    __CONTIGUOUS    :: object(:,:)
@@ -17954,7 +17954,7 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D2_BVLK
 #endif
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
         use pm_container, only: cvl_type
         class(display_type)         , intent(inout)                 :: self
         type(cvl_type)              , intent(in)    __CONTIGUOUS    :: object(:,:)
@@ -17968,7 +17968,7 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D2_BVCK
 #endif
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
         use pm_container, only: cvc_type
         class(display_type)         , intent(inout)                 :: self
         type(cvc_type)              , intent(in)    __CONTIGUOUS    :: object(:,:)
@@ -17982,7 +17982,7 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D2_BVRK
 #endif
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
         use pm_container, only: cvr_type
         class(display_type)         , intent(inout)                 :: self
         type(cvr_type)              , intent(in)    __CONTIGUOUS    :: object(:,:)
@@ -18004,7 +18004,7 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D0_BMSK
 #endif
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
         use pm_container, only: cms_type
         class(display_type)         , intent(inout)                 :: self
         type(cms_type)              , intent(in)                    :: object
@@ -18018,7 +18018,7 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D0_BMIK
 #endif
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
         use pm_container, only: cmi_type
         class(display_type)         , intent(inout)                 :: self
         type(cmi_type)              , intent(in)                    :: object
@@ -18032,7 +18032,7 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D0_BMLK
 #endif
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
         use pm_container, only: cml_type
         class(display_type)         , intent(inout)                 :: self
         type(cml_type)              , intent(in)                    :: object
@@ -18046,7 +18046,7 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D0_BMCK
 #endif
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
         use pm_container, only: cmc_type
         class(display_type)         , intent(inout)                 :: self
         type(cmc_type)              , intent(in)                    :: object
@@ -18060,7 +18060,7 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D0_BMRK
 #endif
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
         use pm_container, only: cmr_type
         class(display_type)         , intent(inout)                 :: self
         type(cmr_type)              , intent(in)                    :: object
@@ -18076,7 +18076,7 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D1_BMSK
 #endif
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
         use pm_container, only: cms_type
         class(display_type)         , intent(inout)                 :: self
         type(cms_type)              , intent(in)    __CONTIGUOUS    :: object(:)
@@ -18090,7 +18090,7 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D1_BMIK
 #endif
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
         use pm_container, only: cmi_type
         class(display_type)         , intent(inout)                 :: self
         type(cmi_type)              , intent(in)    __CONTIGUOUS    :: object(:)
@@ -18104,7 +18104,7 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D1_BMLK
 #endif
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
         use pm_container, only: cml_type
         class(display_type)         , intent(inout)                 :: self
         type(cml_type)              , intent(in)    __CONTIGUOUS    :: object(:)
@@ -18118,7 +18118,7 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D1_BMCK
 #endif
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
         use pm_container, only: cmc_type
         class(display_type)         , intent(inout)                 :: self
         type(cmc_type)              , intent(in)    __CONTIGUOUS    :: object(:)
@@ -18132,7 +18132,7 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D1_BMRK
 #endif
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
         use pm_container, only: cmr_type
         class(display_type)         , intent(inout)                 :: self
         type(cmr_type)              , intent(in)    __CONTIGUOUS    :: object(:)
@@ -18154,7 +18154,7 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D0_BCSK
 #endif
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
         use pm_container, only: ccs_type
         class(display_type)         , intent(inout)                 :: self
         type(ccs_type)              , intent(in)                    :: object
@@ -18168,7 +18168,7 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D0_BCIK
 #endif
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
         use pm_container, only: cci_type
         class(display_type)         , intent(inout)                 :: self
         type(cci_type)              , intent(in)                    :: object
@@ -18182,7 +18182,7 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D0_BCLK
 #endif
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
         use pm_container, only: ccl_type
         class(display_type)         , intent(inout)                 :: self
         type(ccl_type)              , intent(in)                    :: object
@@ -18196,7 +18196,7 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D0_BCCK
 #endif
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
         use pm_container, only: ccc_type
         class(display_type)         , intent(inout)                 :: self
         type(ccc_type)              , intent(in)                    :: object
@@ -18210,7 +18210,7 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: show_D0_BCRK
 #endif
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
         use pm_container, only: ccr_type
         class(display_type)         , intent(inout)                 :: self
         type(ccr_type)              , intent(in)                    :: object
@@ -18243,7 +18243,7 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: dump_D0
 #endif
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
         class(display_type)         , intent(inout)                 :: self
         class(*)                    , intent(in)                    :: object
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
@@ -18258,7 +18258,7 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: dump_D1
 #endif
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
         class(display_type)         , intent(inout)                 :: self
         class(*)                    , intent(in)    __CONTIGUOUS    :: object(:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
@@ -18273,7 +18273,7 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: dump_D2
 #endif
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
         class(display_type)         , intent(inout)                 :: self
         class(*)                    , intent(in)    __CONTIGUOUS    :: object(:,:)
         integer(IK)                 , intent(in)    , optional      :: tmsize, bmsize, count, unit
@@ -18438,7 +18438,7 @@ module pm_io
     !>  The Fortran standard requires the specified width be non-zero in the presence of the lenexp field.<br>
     !>  The condition `ed == "g" .or. ed == "G" .or. width > 0` must hold for the corresponding input arguments.<br>
     !>  The Fortran standard requires a non-zero width (preferably, `width >= 5 + ndigit + lenexp`).<br>
-    !>  The condition `(ed /= SKC_"f" .and. ed /= SKC_"F") .or. .not.present(lenexp)` must hold for the corresponding input arguments.<br>
+    !>  The condition `(ed /= SKG_"f" .and. ed /= SKG_"F") .or. .not.present(lenexp)` must hold for the corresponding input arguments.<br>
     !>  \vericons
     !>
     !>  \pure
@@ -18503,8 +18503,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getFormat_D1_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)    , intent(in)                :: mold(:)
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)    , intent(in)                :: mold(:)
         character(*, SK)    , intent(in)    , optional  :: prefix, ed, sep, deliml, subsep, delimr
         integer(IK)         , intent(in)    , optional  :: count, subcount, width, ndigit, lenexp
         logical(LK)         , intent(in)    , optional  :: signed
@@ -18517,8 +18517,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getFormat_D1_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)    , intent(in)                :: mold(:)
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)    , intent(in)                :: mold(:)
         character(*, SK)    , intent(in)    , optional  :: prefix, ed, sep, deliml, subsep, delimr
         integer(IK)         , intent(in)    , optional  :: count, subcount, width, ndigit, lenexp
         logical(LK)         , intent(in)    , optional  :: signed
@@ -18531,8 +18531,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getFormat_D1_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)    , intent(in)                :: mold(:)
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)    , intent(in)                :: mold(:)
         character(*, SK)    , intent(in)    , optional  :: prefix, ed, sep, deliml, subsep, delimr
         integer(IK)         , intent(in)    , optional  :: count, subcount, width, ndigit, lenexp
         logical(LK)         , intent(in)    , optional  :: signed
@@ -18545,8 +18545,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getFormat_D1_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)    , intent(in)                :: mold(:)
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)    , intent(in)                :: mold(:)
         character(*, SK)    , intent(in)    , optional  :: prefix, ed, sep, deliml, subsep, delimr
         integer(IK)         , intent(in)    , optional  :: count, subcount, width, ndigit, lenexp
         logical(LK)         , intent(in)    , optional  :: signed
@@ -18559,8 +18559,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getFormat_D1_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)    , intent(in)                :: mold(:)
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)    , intent(in)                :: mold(:)
         character(*, SK)    , intent(in)    , optional  :: prefix, ed, sep, deliml, subsep, delimr
         integer(IK)         , intent(in)    , optional  :: count, subcount, width, ndigit, lenexp
         logical(LK)         , intent(in)    , optional  :: signed
@@ -18575,8 +18575,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getFormat_D1_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)        , intent(in)                :: mold(:)
+        use pm_kind, only: IKG => IK5
+        integer(IKG)        , intent(in)                :: mold(:)
         character(*, SK)    , intent(in)    , optional  :: prefix, ed, sep, deliml, subsep, delimr
         integer(IK)         , intent(in)    , optional  :: count, subcount, width, ndigit, lenexp
         logical(LK)         , intent(in)    , optional  :: signed
@@ -18589,8 +18589,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getFormat_D1_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)        , intent(in)                :: mold(:)
+        use pm_kind, only: IKG => IK4
+        integer(IKG)        , intent(in)                :: mold(:)
         character(*, SK)    , intent(in)    , optional  :: prefix, ed, sep, deliml, subsep, delimr
         integer(IK)         , intent(in)    , optional  :: count, subcount, width, ndigit, lenexp
         logical(LK)         , intent(in)    , optional  :: signed
@@ -18603,8 +18603,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getFormat_D1_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)        , intent(in)                :: mold(:)
+        use pm_kind, only: IKG => IK3
+        integer(IKG)        , intent(in)                :: mold(:)
         character(*, SK)    , intent(in)    , optional  :: prefix, ed, sep, deliml, subsep, delimr
         integer(IK)         , intent(in)    , optional  :: count, subcount, width, ndigit, lenexp
         logical(LK)         , intent(in)    , optional  :: signed
@@ -18617,8 +18617,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getFormat_D1_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)        , intent(in)                :: mold(:)
+        use pm_kind, only: IKG => IK2
+        integer(IKG)        , intent(in)                :: mold(:)
         character(*, SK)    , intent(in)    , optional  :: prefix, ed, sep, deliml, subsep, delimr
         integer(IK)         , intent(in)    , optional  :: count, subcount, width, ndigit, lenexp
         logical(LK)         , intent(in)    , optional  :: signed
@@ -18631,8 +18631,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getFormat_D1_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)        , intent(in)                :: mold(:)
+        use pm_kind, only: IKG => IK1
+        integer(IKG)        , intent(in)                :: mold(:)
         character(*, SK)    , intent(in)    , optional  :: prefix, ed, sep, deliml, subsep, delimr
         integer(IK)         , intent(in)    , optional  :: count, subcount, width, ndigit, lenexp
         logical(LK)         , intent(in)    , optional  :: signed
@@ -18647,8 +18647,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getFormat_D1_LK5
 #endif
-        use pm_kind, only: LKC => LK5
-        logical(LKC)        , intent(in)                :: mold(:)
+        use pm_kind, only: LKG => LK5
+        logical(LKG)        , intent(in)                :: mold(:)
         character(*, SK)    , intent(in)    , optional  :: prefix, ed, sep, deliml, subsep, delimr
         integer(IK)         , intent(in)    , optional  :: count, subcount, width, ndigit, lenexp
         logical(LK)         , intent(in)    , optional  :: signed
@@ -18661,8 +18661,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getFormat_D1_LK4
 #endif
-        use pm_kind, only: LKC => LK4
-        logical(LKC)        , intent(in)                :: mold(:)
+        use pm_kind, only: LKG => LK4
+        logical(LKG)        , intent(in)                :: mold(:)
         character(*, SK)    , intent(in)    , optional  :: prefix, ed, sep, deliml, subsep, delimr
         integer(IK)         , intent(in)    , optional  :: count, subcount, width, ndigit, lenexp
         logical(LK)         , intent(in)    , optional  :: signed
@@ -18675,8 +18675,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getFormat_D1_LK3
 #endif
-        use pm_kind, only: LKC => LK3
-        logical(LKC)        , intent(in)                :: mold(:)
+        use pm_kind, only: LKG => LK3
+        logical(LKG)        , intent(in)                :: mold(:)
         character(*, SK)    , intent(in)    , optional  :: prefix, ed, sep, deliml, subsep, delimr
         integer(IK)         , intent(in)    , optional  :: count, subcount, width, ndigit, lenexp
         logical(LK)         , intent(in)    , optional  :: signed
@@ -18689,8 +18689,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getFormat_D1_LK2
 #endif
-        use pm_kind, only: LKC => LK2
-        logical(LKC)        , intent(in)                :: mold(:)
+        use pm_kind, only: LKG => LK2
+        logical(LKG)        , intent(in)                :: mold(:)
         character(*, SK)    , intent(in)    , optional  :: prefix, ed, sep, deliml, subsep, delimr
         integer(IK)         , intent(in)    , optional  :: count, subcount, width, ndigit, lenexp
         logical(LK)         , intent(in)    , optional  :: signed
@@ -18703,8 +18703,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getFormat_D1_LK1
 #endif
-        use pm_kind, only: LKC => LK1
-        logical(LKC)        , intent(in)                :: mold(:)
+        use pm_kind, only: LKG => LK1
+        logical(LKG)        , intent(in)                :: mold(:)
         character(*, SK)    , intent(in)    , optional  :: prefix, ed, sep, deliml, subsep, delimr
         integer(IK)         , intent(in)    , optional  :: count, subcount, width, ndigit, lenexp
         logical(LK)         , intent(in)    , optional  :: signed
@@ -18719,8 +18719,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getFormat_D1_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)        , intent(in)                :: mold(:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG)        , intent(in)                :: mold(:)
         character(*, SK)    , intent(in)    , optional  :: prefix, ed, sep, deliml, subsep, delimr
         integer(IK)         , intent(in)    , optional  :: count, subcount, width, ndigit, lenexp
         logical(LK)         , intent(in)    , optional  :: signed
@@ -18733,8 +18733,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getFormat_D1_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)        , intent(in)                :: mold(:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG)        , intent(in)                :: mold(:)
         character(*, SK)    , intent(in)    , optional  :: prefix, ed, sep, deliml, subsep, delimr
         integer(IK)         , intent(in)    , optional  :: count, subcount, width, ndigit, lenexp
         logical(LK)         , intent(in)    , optional  :: signed
@@ -18747,8 +18747,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getFormat_D1_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)        , intent(in)                :: mold(:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG)        , intent(in)                :: mold(:)
         character(*, SK)    , intent(in)    , optional  :: prefix, ed, sep, deliml, subsep, delimr
         integer(IK)         , intent(in)    , optional  :: count, subcount, width, ndigit, lenexp
         logical(LK)         , intent(in)    , optional  :: signed
@@ -18761,8 +18761,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getFormat_D1_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)        , intent(in)                :: mold(:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG)        , intent(in)                :: mold(:)
         character(*, SK)    , intent(in)    , optional  :: prefix, ed, sep, deliml, subsep, delimr
         integer(IK)         , intent(in)    , optional  :: count, subcount, width, ndigit, lenexp
         logical(LK)         , intent(in)    , optional  :: signed
@@ -18775,8 +18775,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getFormat_D1_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)        , intent(in)                :: mold(:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG)        , intent(in)                :: mold(:)
         character(*, SK)    , intent(in)    , optional  :: prefix, ed, sep, deliml, subsep, delimr
         integer(IK)         , intent(in)    , optional  :: count, subcount, width, ndigit, lenexp
         logical(LK)         , intent(in)    , optional  :: signed
@@ -18791,8 +18791,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getFormat_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)           , intent(in)                :: mold(:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)           , intent(in)                :: mold(:)
         character(*, SK)    , intent(in)    , optional  :: prefix, ed, sep, deliml, subsep, delimr
         integer(IK)         , intent(in)    , optional  :: count, subcount, width, ndigit, lenexp
         logical(LK)         , intent(in)    , optional  :: signed
@@ -18805,8 +18805,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getFormat_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)           , intent(in)                :: mold(:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)           , intent(in)                :: mold(:)
         character(*, SK)    , intent(in)    , optional  :: prefix, ed, sep, deliml, subsep, delimr
         integer(IK)         , intent(in)    , optional  :: count, subcount, width, ndigit, lenexp
         logical(LK)         , intent(in)    , optional  :: signed
@@ -18819,8 +18819,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getFormat_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)           , intent(in)                :: mold(:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)           , intent(in)                :: mold(:)
         character(*, SK)    , intent(in)    , optional  :: prefix, ed, sep, deliml, subsep, delimr
         integer(IK)         , intent(in)    , optional  :: count, subcount, width, ndigit, lenexp
         logical(LK)         , intent(in)    , optional  :: signed
@@ -18833,8 +18833,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getFormat_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)           , intent(in)                :: mold(:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)           , intent(in)                :: mold(:)
         character(*, SK)    , intent(in)    , optional  :: prefix, ed, sep, deliml, subsep, delimr
         integer(IK)         , intent(in)    , optional  :: count, subcount, width, ndigit, lenexp
         logical(LK)         , intent(in)    , optional  :: signed
@@ -18847,8 +18847,8 @@ module pm_io
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getFormat_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)           , intent(in)                :: mold(:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)           , intent(in)                :: mold(:)
         character(*, SK)    , intent(in)    , optional  :: prefix, ed, sep, deliml, subsep, delimr
         integer(IK)         , intent(in)    , optional  :: count, subcount, width, ndigit, lenexp
         logical(LK)         , intent(in)    , optional  :: signed
@@ -18960,8 +18960,8 @@ module pm_io
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getLenFieldMin_D0_IK5
 !#endif
-!        use pm_kind, only: IKC => IK5
-!        integer(IKC)    , intent(in)    :: mold
+!        use pm_kind, only: IKG => IK5
+!        integer(IKG)    , intent(in)    :: mold
 !        integer(IK)                     :: lenField
 !    end function
 !#endif
@@ -18971,8 +18971,8 @@ module pm_io
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getLenFieldMin_D0_IK4
 !#endif
-!        use pm_kind, only: IKC => IK4
-!        integer(IKC)    , intent(in)    :: mold
+!        use pm_kind, only: IKG => IK4
+!        integer(IKG)    , intent(in)    :: mold
 !        integer(IK)                     :: lenField
 !    end function
 !#endif
@@ -18982,8 +18982,8 @@ module pm_io
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getLenFieldMin_D0_IK3
 !#endif
-!        use pm_kind, only: IKC => IK3
-!        integer(IKC)    , intent(in)    :: mold
+!        use pm_kind, only: IKG => IK3
+!        integer(IKG)    , intent(in)    :: mold
 !        integer(IK)                     :: lenField
 !    end function
 !#endif
@@ -18993,8 +18993,8 @@ module pm_io
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getLenFieldMin_D0_IK2
 !#endif
-!        use pm_kind, only: IKC => IK2
-!        integer(IKC)    , intent(in)    :: mold
+!        use pm_kind, only: IKG => IK2
+!        integer(IKG)    , intent(in)    :: mold
 !        integer(IK)                     :: lenField
 !    end function
 !#endif
@@ -19004,8 +19004,8 @@ module pm_io
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getLenFieldMin_D0_IK1
 !#endif
-!        use pm_kind, only: IKC => IK1
-!        integer(IKC)    , intent(in)    :: mold
+!        use pm_kind, only: IKG => IK1
+!        integer(IKG)    , intent(in)    :: mold
 !        integer(IK)                     :: lenField
 !    end function
 !#endif
@@ -19017,8 +19017,8 @@ module pm_io
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getLenFieldMin_D0_CK5
 !#endif
-!        use pm_kind, only: CKC => CK5
-!        complex(CKC)    , intent(in)    :: mold
+!        use pm_kind, only: CKG => CK5
+!        complex(CKG)    , intent(in)    :: mold
 !        integer(IK)                     :: lenField
 !    end function
 !#endif
@@ -19028,8 +19028,8 @@ module pm_io
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getLenFieldMin_D0_CK4
 !#endif
-!        use pm_kind, only: CKC => CK4
-!        complex(CKC)    , intent(in)    :: mold
+!        use pm_kind, only: CKG => CK4
+!        complex(CKG)    , intent(in)    :: mold
 !        integer(IK)                     :: lenField
 !    end function
 !#endif
@@ -19039,8 +19039,8 @@ module pm_io
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getLenFieldMin_D0_CK3
 !#endif
-!        use pm_kind, only: CKC => CK3
-!        complex(CKC)    , intent(in)    :: mold
+!        use pm_kind, only: CKG => CK3
+!        complex(CKG)    , intent(in)    :: mold
 !        integer(IK)                     :: lenField
 !    end function
 !#endif
@@ -19050,8 +19050,8 @@ module pm_io
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getLenFieldMin_D0_CK2
 !#endif
-!        use pm_kind, only: CKC => CK2
-!        complex(CKC)    , intent(in)    :: mold
+!        use pm_kind, only: CKG => CK2
+!        complex(CKG)    , intent(in)    :: mold
 !        integer(IK)                     :: lenField
 !    end function
 !#endif
@@ -19061,8 +19061,8 @@ module pm_io
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getLenFieldMin_D0_CK1
 !#endif
-!        use pm_kind, only: CKC => CK1
-!        complex(CKC)    , intent(in)    :: mold
+!        use pm_kind, only: CKG => CK1
+!        complex(CKG)    , intent(in)    :: mold
 !        integer(IK)                     :: lenField
 !    end function
 !#endif
@@ -19074,8 +19074,8 @@ module pm_io
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getLenFieldMin_D0_RK5
 !#endif
-!        use pm_kind, only: RKC => RK5
-!        real(RKC)       , intent(in)    :: mold
+!        use pm_kind, only: RKG => RK5
+!        real(RKG)       , intent(in)    :: mold
 !        integer(IK)                     :: lenField
 !    end function
 !#endif
@@ -19085,8 +19085,8 @@ module pm_io
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getLenFieldMin_D0_RK4
 !#endif
-!        use pm_kind, only: RKC => RK4
-!        real(RKC)       , intent(in)    :: mold
+!        use pm_kind, only: RKG => RK4
+!        real(RKG)       , intent(in)    :: mold
 !        integer(IK)                     :: lenField
 !    end function
 !#endif
@@ -19096,8 +19096,8 @@ module pm_io
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getLenFieldMin_D0_RK3
 !#endif
-!        use pm_kind, only: RKC => RK3
-!        real(RKC)       , intent(in)    :: mold
+!        use pm_kind, only: RKG => RK3
+!        real(RKG)       , intent(in)    :: mold
 !        integer(IK)                     :: lenField
 !    end function
 !#endif
@@ -19107,8 +19107,8 @@ module pm_io
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getLenFieldMin_D0_RK2
 !#endif
-!        use pm_kind, only: RKC => RK2
-!        real(RKC)       , intent(in)    :: mold
+!        use pm_kind, only: RKG => RK2
+!        real(RKG)       , intent(in)    :: mold
 !        integer(IK)                     :: lenField
 !    end function
 !#endif
@@ -19118,8 +19118,8 @@ module pm_io
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getLenFieldMin_D0_RK1
 !#endif
-!        use pm_kind, only: RKC => RK1
-!        real(RKC)       , intent(in)    :: mold
+!        use pm_kind, only: RKG => RK1
+!        real(RKG)       , intent(in)    :: mold
 !        integer(IK)                     :: lenField
 !    end function
 !#endif

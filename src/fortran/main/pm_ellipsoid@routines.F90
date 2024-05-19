@@ -61,35 +61,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getLogVolUnitBallGamm_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_ellipsoid@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getLogVolUnitBallGamm_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_ellipsoid@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getLogVolUnitBallGamm_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_ellipsoid@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getLogVolUnitBallGamm_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_ellipsoid@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getLogVolUnitBallGamm_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_ellipsoid@routines.inc.F90"
     end procedure
 #endif
@@ -122,35 +122,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setLogVolUnitBallGamm_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_ellipsoid@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setLogVolUnitBallGamm_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_ellipsoid@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setLogVolUnitBallGamm_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_ellipsoid@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setLogVolUnitBallGamm_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_ellipsoid@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setLogVolUnitBallGamm_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_ellipsoid@routines.inc.F90"
     end procedure
 #endif
@@ -173,35 +173,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setLogVolUnitBallIter_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_ellipsoid@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setLogVolUnitBallIter_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_ellipsoid@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setLogVolUnitBallIter_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_ellipsoid@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setLogVolUnitBallIter_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_ellipsoid@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setLogVolUnitBallIter_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_ellipsoid@routines.inc.F90"
     end procedure
 #endif
@@ -228,35 +228,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getLogVolEll_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_ellipsoid@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getLogVolEll_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_ellipsoid@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getLogVolEll_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_ellipsoid@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getLogVolEll_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_ellipsoid@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getLogVolEll_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_ellipsoid@routines.inc.F90"
     end procedure
 #endif
@@ -289,35 +289,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getCountMemberSphOrg_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_ellipsoid@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getCountMemberSphOrg_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_ellipsoid@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getCountMemberSphOrg_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_ellipsoid@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getCountMemberSphOrg_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_ellipsoid@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getCountMemberSphOrg_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_ellipsoid@routines.inc.F90"
     end procedure
 #endif
@@ -340,35 +340,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getCountMemberSphCen_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_ellipsoid@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getCountMemberSphCen_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_ellipsoid@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getCountMemberSphCen_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_ellipsoid@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getCountMemberSphCen_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_ellipsoid@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getCountMemberSphCen_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_ellipsoid@routines.inc.F90"
     end procedure
 #endif
@@ -403,35 +403,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getCountMemberEllOrg_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_ellipsoid@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getCountMemberEllOrg_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_ellipsoid@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getCountMemberEllOrg_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_ellipsoid@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getCountMemberEllOrg_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_ellipsoid@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getCountMemberEllOrg_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_ellipsoid@routines.inc.F90"
     end procedure
 #endif
@@ -454,35 +454,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getCountMemberEllCen_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_ellipsoid@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getCountMemberEllCen_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_ellipsoid@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getCountMemberEllCen_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_ellipsoid@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getCountMemberEllCen_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_ellipsoid@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getCountMemberEllCen_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_ellipsoid@routines.inc.F90"
     end procedure
 #endif
@@ -527,35 +527,35 @@ contains
 
 #if RK5_ENABLED
     module procedure isMemberSphOrg_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_ellipsoid@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure isMemberSphOrg_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_ellipsoid@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure isMemberSphOrg_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_ellipsoid@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure isMemberSphOrg_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_ellipsoid@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure isMemberSphOrg_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_ellipsoid@routines.inc.F90"
     end procedure
 #endif
@@ -578,35 +578,35 @@ contains
 
 #if RK5_ENABLED
     module procedure isMemberSphCen_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_ellipsoid@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure isMemberSphCen_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_ellipsoid@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure isMemberSphCen_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_ellipsoid@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure isMemberSphCen_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_ellipsoid@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure isMemberSphCen_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_ellipsoid@routines.inc.F90"
     end procedure
 #endif
@@ -641,35 +641,35 @@ contains
 
 #if RK5_ENABLED
     module procedure isMemberEllOrg_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_ellipsoid@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure isMemberEllOrg_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_ellipsoid@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure isMemberEllOrg_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_ellipsoid@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure isMemberEllOrg_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_ellipsoid@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure isMemberEllOrg_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_ellipsoid@routines.inc.F90"
     end procedure
 #endif
@@ -692,35 +692,35 @@ contains
 
 #if RK5_ENABLED
     module procedure isMemberEllCen_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_ellipsoid@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure isMemberEllCen_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_ellipsoid@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure isMemberEllCen_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_ellipsoid@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure isMemberEllCen_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_ellipsoid@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure isMemberEllCen_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_ellipsoid@routines.inc.F90"
     end procedure
 #endif

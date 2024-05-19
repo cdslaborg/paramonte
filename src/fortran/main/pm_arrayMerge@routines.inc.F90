@@ -108,20 +108,20 @@
     contains
         function isSortedEqual(lhs, rhs) result(sorted)
 #if         SK_ENABLED && D0_ENABLED
-            character(1,SKC)        , intent(in) :: lhs, rhs
+            character(1,SKG)        , intent(in) :: lhs, rhs
 #elif       SK_ENABLED && D1_ENABLED
-            character(*,SKC)        , intent(in) :: lhs, rhs
+            character(*,SKG)        , intent(in) :: lhs, rhs
 #elif       IK_ENABLED && D1_ENABLED
-            integer(IKC)            , intent(in) :: lhs, rhs
+            integer(IKG)            , intent(in) :: lhs, rhs
 #elif       LK_ENABLED && D1_ENABLED
-            logical(LKC)            , intent(in) :: lhs, rhs
+            logical(LKG)            , intent(in) :: lhs, rhs
 #elif       CK_ENABLED && D1_ENABLED
-            complex(CKC)            , intent(in) :: lhs, rhs
+            complex(CKG)            , intent(in) :: lhs, rhs
 #elif       RK_ENABLED && D1_ENABLED
-            real(RKC)               , intent(in) :: lhs, rhs
+            real(RKG)               , intent(in) :: lhs, rhs
 #elif       PSSK_ENABLED && D1_ENABLED
             use pm_container, only: css_pdt
-            type(css_pdt(SKC)), intent(in) :: lhs, rhs
+            type(css_pdt(SKG)), intent(in) :: lhs, rhs
 #elif       BSSK_ENABLED && D1_ENABLED
             use pm_container, only: css_type
             type(css_type), intent(in) :: lhs, rhs

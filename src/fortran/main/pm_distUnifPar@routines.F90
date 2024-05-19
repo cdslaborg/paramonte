@@ -60,35 +60,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getUnifCubLogPDF_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_distUnifPar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getUnifCubLogPDF_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_distUnifPar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getUnifCubLogPDF_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_distUnifPar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getUnifCubLogPDF_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_distUnifPar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getUnifCubLogPDF_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_distUnifPar@routines.inc.F90"
     end procedure
 #endif
@@ -111,35 +111,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getUnifRecLogPDF_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_distUnifPar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getUnifRecLogPDF_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_distUnifPar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getUnifRecLogPDF_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_distUnifPar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getUnifRecLogPDF_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_distUnifPar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getUnifRecLogPDF_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_distUnifPar@routines.inc.F90"
     end procedure
 #endif
@@ -162,35 +162,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getUnifParLogPDF_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_distUnifPar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getUnifParLogPDF_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_distUnifPar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getUnifParLogPDF_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_distUnifPar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getUnifParLogPDF_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_distUnifPar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getUnifParLogPDF_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_distUnifPar@routines.inc.F90"
     end procedure
 #endif
@@ -229,35 +229,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getUnifCubRandDU_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_distUnifPar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getUnifCubRandDU_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_distUnifPar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getUnifCubRandDU_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_distUnifPar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getUnifCubRandDU_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_distUnifPar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getUnifCubRandDU_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_distUnifPar@routines.inc.F90"
     end procedure
 #endif
@@ -280,35 +280,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getUnifCubRandLU_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_distUnifPar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getUnifCubRandLU_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_distUnifPar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getUnifCubRandLU_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_distUnifPar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getUnifCubRandLU_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_distUnifPar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getUnifCubRandLU_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_distUnifPar@routines.inc.F90"
     end procedure
 #endif
@@ -343,35 +343,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getUnifRecRandDU_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_distUnifPar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getUnifRecRandDU_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_distUnifPar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getUnifRecRandDU_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_distUnifPar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getUnifRecRandDU_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_distUnifPar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getUnifRecRandDU_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_distUnifPar@routines.inc.F90"
     end procedure
 #endif
@@ -394,35 +394,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getUnifRecRandLU_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_distUnifPar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getUnifRecRandLU_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_distUnifPar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getUnifRecRandLU_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_distUnifPar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getUnifRecRandLU_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_distUnifPar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getUnifRecRandLU_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_distUnifPar@routines.inc.F90"
     end procedure
 #endif
@@ -445,35 +445,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getUnifParRandDU_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_distUnifPar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getUnifParRandDU_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_distUnifPar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getUnifParRandDU_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_distUnifPar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getUnifParRandDU_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_distUnifPar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getUnifParRandDU_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_distUnifPar@routines.inc.F90"
     end procedure
 #endif
@@ -496,35 +496,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getUnifParRandLU_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_distUnifPar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getUnifParRandLU_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_distUnifPar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getUnifParRandLU_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_distUnifPar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getUnifParRandLU_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_distUnifPar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getUnifParRandLU_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_distUnifPar@routines.inc.F90"
     end procedure
 #endif
@@ -569,35 +569,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setUnifCubRandDU_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_distUnifPar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setUnifCubRandDU_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_distUnifPar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setUnifCubRandDU_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_distUnifPar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setUnifCubRandDU_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_distUnifPar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setUnifCubRandDU_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_distUnifPar@routines.inc.F90"
     end procedure
 #endif
@@ -620,35 +620,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setUnifCubRandLU_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_distUnifPar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setUnifCubRandLU_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_distUnifPar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setUnifCubRandLU_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_distUnifPar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setUnifCubRandLU_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_distUnifPar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setUnifCubRandLU_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_distUnifPar@routines.inc.F90"
     end procedure
 #endif
@@ -683,35 +683,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setUnifRecRandDU_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_distUnifPar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setUnifRecRandDU_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_distUnifPar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setUnifRecRandDU_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_distUnifPar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setUnifRecRandDU_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_distUnifPar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setUnifRecRandDU_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_distUnifPar@routines.inc.F90"
     end procedure
 #endif
@@ -734,35 +734,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setUnifRecRandLU_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_distUnifPar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setUnifRecRandLU_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_distUnifPar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setUnifRecRandLU_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_distUnifPar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setUnifRecRandLU_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_distUnifPar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setUnifRecRandLU_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_distUnifPar@routines.inc.F90"
     end procedure
 #endif
@@ -797,35 +797,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setUnifParRandDU_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_distUnifPar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setUnifParRandDU_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_distUnifPar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setUnifParRandDU_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_distUnifPar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setUnifParRandDU_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_distUnifPar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setUnifParRandDU_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_distUnifPar@routines.inc.F90"
     end procedure
 #endif
@@ -848,35 +848,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setUnifParRandLU_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_distUnifPar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setUnifParRandLU_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_distUnifPar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setUnifParRandLU_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_distUnifPar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setUnifParRandLU_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_distUnifPar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setUnifParRandLU_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_distUnifPar@routines.inc.F90"
     end procedure
 #endif

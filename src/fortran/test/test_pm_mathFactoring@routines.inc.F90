@@ -31,12 +31,12 @@
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
         integer :: i, j
-        integer(IKC), allocatable   :: IntList(:), Factoring(:)
-        integer(IKC), parameter     :: UPPER = 127_IKC
+        integer(IKG), allocatable   :: IntList(:), Factoring(:)
+        integer(IKG), parameter     :: UPPER = 127_IKG
 
         assertion = .true._LK
 
-        IntList = [2_IKC, 3_IKC, 4_IKC, (getLogUnifRand(2_IKC, UPPER), i = 1, 100)]
+        IntList = [2_IKG, 3_IKG, 4_IKG, (getLogUnifRand(2_IKG, UPPER), i = 1, 100)]
         do i = 1, 100
             Factoring = getFactoring(IntList(i))
             assertion = assertion .and. logical(product(Factoring) == IntList(i), LK)

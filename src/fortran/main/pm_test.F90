@@ -42,7 +42,7 @@
 module pm_test
 
     use pm_io, only: display_type
-    use pm_kind, only: SK, IK, LK, RKC => RK
+    use pm_kind, only: SK, IK, LK, RKG => RK
     use, intrinsic  :: iso_fortran_env, only: output_unit
     use pm_strANSI, only: bright, fcyan, fgreen, fyellow, fred, underlined, reset
     use pm_parallelism, only: image_type
@@ -311,14 +311,14 @@ contains
         use pm_io, only: TABEQV
         use pm_err, only: setAborted
         use pm_mathNumSys, only: getCountDigit
-        real(RKC) :: percentageTestPassed
+        real(RKG) :: percentageTestPassed
         character(:, SK), allocatable :: msg, color
         character(*), parameter :: format = "(*(g0,:,' '))"
         integer(IK) :: ntotal, ifail, ndigit
         if (mv_uninit) call setInitial()
         ntotal = mv_npass + mv_nfail
-        percentageTestPassed = 0._RKC
-        if (ntotal /= 0_IK) percentageTestPassed = 100_IK * mv_npass / real(ntotal, RKC)
+        percentageTestPassed = 0._RKG
+        if (ntotal /= 0_IK) percentageTestPassed = 100_IK * mv_npass / real(ntotal, RKG)
         if (mv_image%is%first) then
             msg = bright//fyellow//getStr(ntotal)//SK_" tests performed. "//reset
             if (nint(percentageTestPassed, IK) == 0_IK) then
@@ -647,7 +647,7 @@ contains
             end block
 #endif
         end do
-        call self%func%timer%wait(0.0001_RKC)
+        call self%func%timer%wait(0.0001_RKG)
         if (self%traceable .and. .not. assertion) then
             errmsg = SK_"The test assertion is FALSE."//NLC//SK_"The assertion description: "//trim(adjustl(desc_def))//NLC//traceback ! LCOV_EXCL_LINE
             call setAborted(msg = errmsg, prefix = SK_"ParaMonteTest"//self%func%name) ! LCOV_EXCL_LINE
@@ -749,37 +749,37 @@ contains
     function getLogFuncMVN(ndim,Point) result(logFunc) BIND_C
         implicit none
         integer(IK) , intent(in)        :: ndim
-        real(RKC)   , intent(in)        :: Point(ndim)
-        real(RKC)                       :: logFunc
+        real(RKG)   , intent(in)        :: Point(ndim)
+        real(RKG)                       :: logFunc
 #if     CFI_ENABLED
         value                           :: ndim
 #endif
-        real(RKC)   , parameter         :: LOG_INVERSE_SQRT_TWO_PI = log(1._RKC / sqrt(2._RKC * acos(-1._RKC)))
+        real(RKG)   , parameter         :: LOG_INVERSE_SQRT_TWO_PI = log(1._RKG / sqrt(2._RKG * acos(-1._RKG)))
 
         !block
         !    use pm_sysShell, only: sleep
         !    use pm_err, only: err_type
         !    type(err_type) :: err
-        !    call sleep(seconds=5000.e-6_RKC,err=err)
+        !    call sleep(seconds=5000.e-6_RKG,err=err)
         !end block
 
         !block
-        !    real(RKC), allocatable :: unifrnd(:,:)
+        !    real(RKG), allocatable :: unifrnd(:,:)
         !    allocate(unifrnd(200,20))
         !    call random_number(unifrnd)
-        !    logFunc = sum(unifrnd) - 0.5_RKC * sum(Point**2) - sum(unifrnd)
+        !    logFunc = sum(unifrnd) - 0.5_RKG * sum(Point**2) - sum(unifrnd)
         !    deallocate(unifrnd)
         !end block
 
-        logFunc = ndim * LOG_INVERSE_SQRT_TWO_PI - 0.5_RKC * sum(Point**2_IK)
+        logFunc = ndim * LOG_INVERSE_SQRT_TWO_PI - 0.5_RKG * sum(Point**2_IK)
 
         !block
         !    integer(IK), parameter :: nmode = 2_IK
-        !    real(RKC):: LogAmplitude(nmode), mean(nmode), invCov(nmode), logSqrtDetInvCovMat(nmode)
-        !    LogAmplitude           = [1._RKC, 1._RKC]
-        !    mean                   = [0._RKC, 7._RKC]
-        !    invCov              = [1._RKC,1._RKC]
-        !    logSqrtDetInvCovMat    = [1._RKC,1._RKC]
+        !    real(RKG):: LogAmplitude(nmode), mean(nmode), invCov(nmode), logSqrtDetInvCovMat(nmode)
+        !    LogAmplitude           = [1._RKG, 1._RKG]
+        !    mean                   = [0._RKG, 7._RKG]
+        !    invCov              = [1._RKG,1._RKG]
+        !    logSqrtDetInvCovMat    = [1._RKG,1._RKG]
         !    logFunc = getLogProbGausMix ( nmode = 2_IK &
         !                                , nd = 1_IK &
         !                                , np = 1_IK &
@@ -803,25 +803,25 @@ contains
         use pm_mathLogSumExp, only: getLogSumExp
         implicit none
         integer(IK) , intent(in)        :: ndim
-        real(RKC)   , intent(in)        :: Point(ndim)
-        real(RKC)                       :: logFunc
+        real(RKG)   , intent(in)        :: Point(ndim)
+        real(RKG)                       :: logFunc
 #if     CFI_ENABLED
         value                           :: ndim
 #endif
         integer(IK) , parameter         :: NPAR = 2_IK ! sum(Banana,gaussian) normalization factor
-        real(RKC)   , parameter         :: normfac = 0.3_RKC ! 0.6_RKC ! sum(Banana,gaussian) normalization factor
-        real(RKC)   , parameter         :: lognormfac = log(normfac) ! sum(Banana,gaussian) normalization factor
-        real(RKC)   , parameter         :: a = 0.7_RKC, b = 1.5_RKC ! parameters  of Banana function
-        real(RKC)   , parameter         :: MeanB(NPAR) = [ -5.0_RKC , 0._RKC ] ! mean vector of Banana function
-        real(RKC)   , parameter         :: MeanG(NPAR) = [  3.5_RKC , 0._RKC ] ! mean vector of Gaussian function
-        real(RKC)   , parameter         :: CovMatB(NPAR,NPAR) = reshape([0.25_RKC,0._RKC,0._RKC,0.81_RKC],shape=shape(CovMatB)) ! Covariance matrix of Banana function
-        real(RKC)   , parameter         :: CovMatG(NPAR,NPAR) = reshape([0.15_RKC,0._RKC,0._RKC,0.15_RKC],shape=shape(CovMatB)) ! Covariance matrix of Gaussian function
-        real(RKC)   , parameter         :: InvCovMatB(NPAR,NPAR) = reshape([4._RKC,0._RKC,0._RKC,1.23456790123457_RKC],shape=shape(InvCovMatB)) ! Inverse Covariance matrix of Banana function
-        real(RKC)   , parameter         :: InvCovMatG(NPAR,NPAR) = reshape([6.66666666666667_RKC,0._RKC,0._RKC,6.66666666666667_RKC],shape=shape(InvCovMatG)) ! Inverse Covariance matrix of Gaussian function
-        real(RKC)   , parameter         :: logSqrtDetInvCovB = log(sqrt(4.93827160493827_RKC)) ! Determinant of the Inverse Covariance matrix of Banana function
-        real(RKC)   , parameter         :: logSqrtDetInvCovG = log(sqrt(44.4444444444445_RKC)) ! Determinant of the Inverse Covariance matrix of Gaussian function
-        real(RKC)                       :: PointSkewed(NPAR) ! transformed parameters that transform the Gaussian to the Banana function
-        real(RKC)                       :: LogProb(2) ! logProbMVN, logProbBanana
+        real(RKG)   , parameter         :: normfac = 0.3_RKG ! 0.6_RKG ! sum(Banana,gaussian) normalization factor
+        real(RKG)   , parameter         :: lognormfac = log(normfac) ! sum(Banana,gaussian) normalization factor
+        real(RKG)   , parameter         :: a = 0.7_RKG, b = 1.5_RKG ! parameters  of Banana function
+        real(RKG)   , parameter         :: MeanB(NPAR) = [ -5.0_RKG , 0._RKG ] ! mean vector of Banana function
+        real(RKG)   , parameter         :: MeanG(NPAR) = [  3.5_RKG , 0._RKG ] ! mean vector of Gaussian function
+        real(RKG)   , parameter         :: CovMatB(NPAR,NPAR) = reshape([0.25_RKG,0._RKG,0._RKG,0.81_RKG],shape=shape(CovMatB)) ! Covariance matrix of Banana function
+        real(RKG)   , parameter         :: CovMatG(NPAR,NPAR) = reshape([0.15_RKG,0._RKG,0._RKG,0.15_RKG],shape=shape(CovMatB)) ! Covariance matrix of Gaussian function
+        real(RKG)   , parameter         :: InvCovMatB(NPAR,NPAR) = reshape([4._RKG,0._RKG,0._RKG,1.23456790123457_RKG],shape=shape(InvCovMatB)) ! Inverse Covariance matrix of Banana function
+        real(RKG)   , parameter         :: InvCovMatG(NPAR,NPAR) = reshape([6.66666666666667_RKG,0._RKG,0._RKG,6.66666666666667_RKG],shape=shape(InvCovMatG)) ! Inverse Covariance matrix of Gaussian function
+        real(RKG)   , parameter         :: logSqrtDetInvCovB = log(sqrt(4.93827160493827_RKG)) ! Determinant of the Inverse Covariance matrix of Banana function
+        real(RKG)   , parameter         :: logSqrtDetInvCovG = log(sqrt(44.4444444444445_RKG)) ! Determinant of the Inverse Covariance matrix of Gaussian function
+        real(RKG)                       :: PointSkewed(NPAR) ! transformed parameters that transform the Gaussian to the Banana function
+        real(RKG)                       :: LogProb(2) ! logProbMVN, logProbBanana
 
         PointSkewed(1) = -Point(1)
         PointSkewed(2) = +Point(2)
@@ -856,14 +856,14 @@ contains
     !>  The log(integral) of this function in the unit domain is `235.88`.
     function getLogFuncEggBox2D(ndim,Point) result(logFunc) BIND_C
         integer(IK) , intent(in)        :: ndim
-        real(RKC)   , intent(in)        :: Point(ndim)
-        real(RKC)                       :: logFunc
-        real(RKC)   , parameter         :: PI = acos(-1._RKC)
+        real(RKG)   , intent(in)        :: Point(ndim)
+        real(RKG)                       :: logFunc
+        real(RKG)   , parameter         :: PI = acos(-1._RKG)
 #if     CFI_ENABLED
         value :: ndim
 #endif
-        !logFunc = (2._RKC + cos(0.5_RKC*Point(1)) * cos(0.5_RKC*Point(2)) )**5_IK
-        logFunc = (2._RKC + cos(5_IK * PI * Point(1) - 2.5_RKC * PI) * cos(5_IK * PI * Point(2) - 2.5_RKC * PI)) ** 5.0
+        !logFunc = (2._RKG + cos(0.5_RKG*Point(1)) * cos(0.5_RKG*Point(2)) )**5_IK
+        logFunc = (2._RKG + cos(5_IK * PI * Point(1) - 2.5_RKG * PI) * cos(5_IK * PI * Point(2) - 2.5_RKG * PI)) ** 5.0
     end function getLogFuncEggBox2D
     !>  \endcond excluded
 

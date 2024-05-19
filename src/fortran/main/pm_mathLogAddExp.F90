@@ -180,9 +180,9 @@ module pm_mathLogAddExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogAddExpSeqSL_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)        , intent(in)    :: smaller, larger
-        complex(CKC)                        :: logAddExp
+        use pm_kind, only: CKG => CK5
+        complex(CKG)        , intent(in)    :: smaller, larger
+        complex(CKG)                        :: logAddExp
     end function
 #endif
 
@@ -191,9 +191,9 @@ module pm_mathLogAddExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogAddExpSeqSL_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)        , intent(in)    :: smaller, larger
-        complex(CKC)                        :: logAddExp
+        use pm_kind, only: CKG => CK4
+        complex(CKG)        , intent(in)    :: smaller, larger
+        complex(CKG)                        :: logAddExp
     end function
 #endif
 
@@ -202,9 +202,9 @@ module pm_mathLogAddExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogAddExpSeqSL_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)        , intent(in)    :: smaller, larger
-        complex(CKC)                        :: logAddExp
+        use pm_kind, only: CKG => CK3
+        complex(CKG)        , intent(in)    :: smaller, larger
+        complex(CKG)                        :: logAddExp
     end function
 #endif
 
@@ -213,9 +213,9 @@ module pm_mathLogAddExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogAddExpSeqSL_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)        , intent(in)    :: smaller, larger
-        complex(CKC)                        :: logAddExp
+        use pm_kind, only: CKG => CK2
+        complex(CKG)        , intent(in)    :: smaller, larger
+        complex(CKG)                        :: logAddExp
     end function
 #endif
 
@@ -224,9 +224,9 @@ module pm_mathLogAddExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogAddExpSeqSL_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)        , intent(in)    :: smaller, larger
-        complex(CKC)                        :: logAddExp
+        use pm_kind, only: CKG => CK1
+        complex(CKG)        , intent(in)    :: smaller, larger
+        complex(CKG)                        :: logAddExp
     end function
 #endif
 
@@ -237,9 +237,9 @@ module pm_mathLogAddExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogAddExpSeqSL_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)           , intent(in)    :: smaller, larger
-        real(RKC)                           :: logAddExp
+        use pm_kind, only: RKG => RK5
+        real(RKG)           , intent(in)    :: smaller, larger
+        real(RKG)                           :: logAddExp
     end function
 #endif
 
@@ -248,9 +248,9 @@ module pm_mathLogAddExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogAddExpSeqSL_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)           , intent(in)    :: smaller, larger
-        real(RKC)                           :: logAddExp
+        use pm_kind, only: RKG => RK4
+        real(RKG)           , intent(in)    :: smaller, larger
+        real(RKG)                           :: logAddExp
     end function
 #endif
 
@@ -259,9 +259,9 @@ module pm_mathLogAddExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogAddExpSeqSL_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)           , intent(in)    :: smaller, larger
-        real(RKC)                           :: logAddExp
+        use pm_kind, only: RKG => RK3
+        real(RKG)           , intent(in)    :: smaller, larger
+        real(RKG)                           :: logAddExp
     end function
 #endif
 
@@ -270,9 +270,9 @@ module pm_mathLogAddExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogAddExpSeqSL_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)           , intent(in)    :: smaller, larger
-        real(RKC)                           :: logAddExp
+        use pm_kind, only: RKG => RK2
+        real(RKG)           , intent(in)    :: smaller, larger
+        real(RKG)                           :: logAddExp
     end function
 #endif
 
@@ -281,9 +281,9 @@ module pm_mathLogAddExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogAddExpSeqSL_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)           , intent(in)    :: smaller, larger
-        real(RKC)                           :: logAddExp
+        use pm_kind, only: RKG => RK1
+        real(RKG)           , intent(in)    :: smaller, larger
+        real(RKG)                           :: logAddExp
     end function
 #endif
 
@@ -300,10 +300,10 @@ module pm_mathLogAddExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogAddExpSelSL_CK5
 #endif
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
         type(selection_type), intent(in)    :: control
-        complex(CKC)        , intent(in)    :: smaller, larger
-        complex(CKC)                        :: logAddExp
+        complex(CKG)        , intent(in)    :: smaller, larger
+        complex(CKG)                        :: logAddExp
     end function
 #endif
 
@@ -312,10 +312,10 @@ module pm_mathLogAddExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogAddExpSelSL_CK4
 #endif
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
         type(selection_type), intent(in)    :: control
-        complex(CKC)        , intent(in)    :: smaller, larger
-        complex(CKC)                        :: logAddExp
+        complex(CKG)        , intent(in)    :: smaller, larger
+        complex(CKG)                        :: logAddExp
     end function
 #endif
 
@@ -324,10 +324,10 @@ module pm_mathLogAddExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogAddExpSelSL_CK3
 #endif
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
         type(selection_type), intent(in)    :: control
-        complex(CKC)        , intent(in)    :: smaller, larger
-        complex(CKC)                        :: logAddExp
+        complex(CKG)        , intent(in)    :: smaller, larger
+        complex(CKG)                        :: logAddExp
     end function
 #endif
 
@@ -336,10 +336,10 @@ module pm_mathLogAddExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogAddExpSelSL_CK2
 #endif
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
         type(selection_type), intent(in)    :: control
-        complex(CKC)        , intent(in)    :: smaller, larger
-        complex(CKC)                        :: logAddExp
+        complex(CKG)        , intent(in)    :: smaller, larger
+        complex(CKG)                        :: logAddExp
     end function
 #endif
 
@@ -348,10 +348,10 @@ module pm_mathLogAddExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogAddExpSelSL_CK1
 #endif
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
         type(selection_type), intent(in)    :: control
-        complex(CKC)        , intent(in)    :: smaller, larger
-        complex(CKC)                        :: logAddExp
+        complex(CKG)        , intent(in)    :: smaller, larger
+        complex(CKG)                        :: logAddExp
     end function
 #endif
 
@@ -362,10 +362,10 @@ module pm_mathLogAddExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogAddExpSelSL_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         type(selection_type), intent(in)    :: control
-        real(RKC)           , intent(in)    :: smaller, larger
-        real(RKC)                           :: logAddExp
+        real(RKG)           , intent(in)    :: smaller, larger
+        real(RKG)                           :: logAddExp
     end function
 #endif
 
@@ -374,10 +374,10 @@ module pm_mathLogAddExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogAddExpSelSL_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         type(selection_type), intent(in)    :: control
-        real(RKC)           , intent(in)    :: smaller, larger
-        real(RKC)                           :: logAddExp
+        real(RKG)           , intent(in)    :: smaller, larger
+        real(RKG)                           :: logAddExp
     end function
 #endif
 
@@ -386,10 +386,10 @@ module pm_mathLogAddExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogAddExpSelSL_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         type(selection_type), intent(in)    :: control
-        real(RKC)           , intent(in)    :: smaller, larger
-        real(RKC)                           :: logAddExp
+        real(RKG)           , intent(in)    :: smaller, larger
+        real(RKG)                           :: logAddExp
     end function
 #endif
 
@@ -398,10 +398,10 @@ module pm_mathLogAddExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogAddExpSelSL_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         type(selection_type), intent(in)    :: control
-        real(RKC)           , intent(in)    :: smaller, larger
-        real(RKC)                           :: logAddExp
+        real(RKG)           , intent(in)    :: smaller, larger
+        real(RKG)                           :: logAddExp
     end function
 #endif
 
@@ -410,10 +410,10 @@ module pm_mathLogAddExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogAddExpSelSL_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         type(selection_type), intent(in)    :: control
-        real(RKC)           , intent(in)    :: smaller, larger
-        real(RKC)                           :: logAddExp
+        real(RKG)           , intent(in)    :: smaller, larger
+        real(RKG)                           :: logAddExp
     end function
 #endif
 
@@ -434,9 +434,9 @@ module pm_mathLogAddExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogAddExpSeqMM_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)        , intent(in)    :: minMax(2)
-        complex(CKC)                        :: logAddExp
+        use pm_kind, only: CKG => CK5
+        complex(CKG)        , intent(in)    :: minMax(2)
+        complex(CKG)                        :: logAddExp
     end function
 #endif
 
@@ -445,9 +445,9 @@ module pm_mathLogAddExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogAddExpSeqMM_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)        , intent(in)    :: minMax(2)
-        complex(CKC)                        :: logAddExp
+        use pm_kind, only: CKG => CK4
+        complex(CKG)        , intent(in)    :: minMax(2)
+        complex(CKG)                        :: logAddExp
     end function
 #endif
 
@@ -456,9 +456,9 @@ module pm_mathLogAddExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogAddExpSeqMM_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)        , intent(in)    :: minMax(2)
-        complex(CKC)                        :: logAddExp
+        use pm_kind, only: CKG => CK3
+        complex(CKG)        , intent(in)    :: minMax(2)
+        complex(CKG)                        :: logAddExp
     end function
 #endif
 
@@ -467,9 +467,9 @@ module pm_mathLogAddExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogAddExpSeqMM_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)        , intent(in)    :: minMax(2)
-        complex(CKC)                        :: logAddExp
+        use pm_kind, only: CKG => CK2
+        complex(CKG)        , intent(in)    :: minMax(2)
+        complex(CKG)                        :: logAddExp
     end function
 #endif
 
@@ -478,9 +478,9 @@ module pm_mathLogAddExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogAddExpSeqMM_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)        , intent(in)    :: minMax(2)
-        complex(CKC)                        :: logAddExp
+        use pm_kind, only: CKG => CK1
+        complex(CKG)        , intent(in)    :: minMax(2)
+        complex(CKG)                        :: logAddExp
     end function
 #endif
 
@@ -491,9 +491,9 @@ module pm_mathLogAddExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogAddExpSeqMM_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)           , intent(in)    :: minMax(2)
-        real(RKC)                           :: logAddExp
+        use pm_kind, only: RKG => RK5
+        real(RKG)           , intent(in)    :: minMax(2)
+        real(RKG)                           :: logAddExp
     end function
 #endif
 
@@ -502,9 +502,9 @@ module pm_mathLogAddExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogAddExpSeqMM_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)           , intent(in)    :: minMax(2)
-        real(RKC)                           :: logAddExp
+        use pm_kind, only: RKG => RK4
+        real(RKG)           , intent(in)    :: minMax(2)
+        real(RKG)                           :: logAddExp
     end function
 #endif
 
@@ -513,9 +513,9 @@ module pm_mathLogAddExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogAddExpSeqMM_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)           , intent(in)    :: minMax(2)
-        real(RKC)                           :: logAddExp
+        use pm_kind, only: RKG => RK3
+        real(RKG)           , intent(in)    :: minMax(2)
+        real(RKG)                           :: logAddExp
     end function
 #endif
 
@@ -524,9 +524,9 @@ module pm_mathLogAddExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogAddExpSeqMM_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)           , intent(in)    :: minMax(2)
-        real(RKC)                           :: logAddExp
+        use pm_kind, only: RKG => RK2
+        real(RKG)           , intent(in)    :: minMax(2)
+        real(RKG)                           :: logAddExp
     end function
 #endif
 
@@ -535,9 +535,9 @@ module pm_mathLogAddExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogAddExpSeqMM_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)           , intent(in)    :: minMax(2)
-        real(RKC)                           :: logAddExp
+        use pm_kind, only: RKG => RK1
+        real(RKG)           , intent(in)    :: minMax(2)
+        real(RKG)                           :: logAddExp
     end function
 #endif
 
@@ -554,10 +554,10 @@ module pm_mathLogAddExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogAddExpSelMM_CK5
 #endif
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
         type(selection_type), intent(in)    :: control
-        complex(CKC)        , intent(in)    :: minMax(2)
-        complex(CKC)                        :: logAddExp
+        complex(CKG)        , intent(in)    :: minMax(2)
+        complex(CKG)                        :: logAddExp
     end function
 #endif
 
@@ -566,10 +566,10 @@ module pm_mathLogAddExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogAddExpSelMM_CK4
 #endif
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
         type(selection_type), intent(in)    :: control
-        complex(CKC)        , intent(in)    :: minMax(2)
-        complex(CKC)                        :: logAddExp
+        complex(CKG)        , intent(in)    :: minMax(2)
+        complex(CKG)                        :: logAddExp
     end function
 #endif
 
@@ -578,10 +578,10 @@ module pm_mathLogAddExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogAddExpSelMM_CK3
 #endif
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
         type(selection_type), intent(in)    :: control
-        complex(CKC)        , intent(in)    :: minMax(2)
-        complex(CKC)                        :: logAddExp
+        complex(CKG)        , intent(in)    :: minMax(2)
+        complex(CKG)                        :: logAddExp
     end function
 #endif
 
@@ -590,10 +590,10 @@ module pm_mathLogAddExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogAddExpSelMM_CK2
 #endif
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
         type(selection_type), intent(in)    :: control
-        complex(CKC)        , intent(in)    :: minMax(2)
-        complex(CKC)                        :: logAddExp
+        complex(CKG)        , intent(in)    :: minMax(2)
+        complex(CKG)                        :: logAddExp
     end function
 #endif
 
@@ -602,10 +602,10 @@ module pm_mathLogAddExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogAddExpSelMM_CK1
 #endif
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
         type(selection_type), intent(in)    :: control
-        complex(CKC)        , intent(in)    :: minMax(2)
-        complex(CKC)                        :: logAddExp
+        complex(CKG)        , intent(in)    :: minMax(2)
+        complex(CKG)                        :: logAddExp
     end function
 #endif
 
@@ -616,10 +616,10 @@ module pm_mathLogAddExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogAddExpSelMM_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         type(selection_type), intent(in)    :: control
-        real(RKC)           , intent(in)    :: minMax(2)
-        real(RKC)                           :: logAddExp
+        real(RKG)           , intent(in)    :: minMax(2)
+        real(RKG)                           :: logAddExp
     end function
 #endif
 
@@ -628,10 +628,10 @@ module pm_mathLogAddExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogAddExpSelMM_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         type(selection_type), intent(in)    :: control
-        real(RKC)           , intent(in)    :: minMax(2)
-        real(RKC)                           :: logAddExp
+        real(RKG)           , intent(in)    :: minMax(2)
+        real(RKG)                           :: logAddExp
     end function
 #endif
 
@@ -640,10 +640,10 @@ module pm_mathLogAddExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogAddExpSelMM_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         type(selection_type), intent(in)    :: control
-        real(RKC)           , intent(in)    :: minMax(2)
-        real(RKC)                           :: logAddExp
+        real(RKG)           , intent(in)    :: minMax(2)
+        real(RKG)                           :: logAddExp
     end function
 #endif
 
@@ -652,10 +652,10 @@ module pm_mathLogAddExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogAddExpSelMM_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         type(selection_type), intent(in)    :: control
-        real(RKC)           , intent(in)    :: minMax(2)
-        real(RKC)                           :: logAddExp
+        real(RKG)           , intent(in)    :: minMax(2)
+        real(RKG)                           :: logAddExp
     end function
 #endif
 
@@ -664,10 +664,10 @@ module pm_mathLogAddExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogAddExpSelMM_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         type(selection_type), intent(in)    :: control
-        real(RKC)           , intent(in)    :: minMax(2)
-        real(RKC)                           :: logAddExp
+        real(RKG)           , intent(in)    :: minMax(2)
+        real(RKG)                           :: logAddExp
     end function
 #endif
 

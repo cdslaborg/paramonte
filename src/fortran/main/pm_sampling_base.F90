@@ -36,120 +36,120 @@
 
 module pm_sampling_base_RK5
 #if RK5_ENABLED
-    use pm_kind, only: RKC => RK5
+    use pm_kind, only: RKG => RK5
 #define pm_sampling_scio pm_sampling_scio_RK5
 #include "pm_sampling_base.imp.F90"
 #undef pm_sampling_scio
 #else
-    use pm_kind, only: RKC => RK
+    use pm_kind, only: RKG => RK
 #endif
 end module
 
 module pm_sampling_base_RK4
 #if RK4_ENABLED
-    use pm_kind, only: RKC => RK4
+    use pm_kind, only: RKG => RK4
 #define pm_sampling_scio pm_sampling_scio_RK4
 #include "pm_sampling_base.imp.F90"
 #undef pm_sampling_scio
 #else
-    use pm_kind, only: RKC => RK
+    use pm_kind, only: RKG => RK
 #endif
 end module
 
 module pm_sampling_base_RK3
 #if RK3_ENABLED
-    use pm_kind, only: RKC => RK3
+    use pm_kind, only: RKG => RK3
 #define pm_sampling_scio pm_sampling_scio_RK3
 #include "pm_sampling_base.imp.F90"
 #undef pm_sampling_scio
 #else
-    use pm_kind, only: RKC => RK
+    use pm_kind, only: RKG => RK
 #endif
 end module
 
 module pm_sampling_base_RK2
 #if RK2_ENABLED
-    use pm_kind, only: RKC => RK2
+    use pm_kind, only: RKG => RK2
 #define pm_sampling_scio pm_sampling_scio_RK2
 #include "pm_sampling_base.imp.F90"
 #undef pm_sampling_scio
 #else
-    use pm_kind, only: RKC => RK
+    use pm_kind, only: RKG => RK
 #endif
 end module
 
 module pm_sampling_base_RK1
 #if RK1_ENABLED
-    use pm_kind, only: RKC => RK1
+    use pm_kind, only: RKG => RK1
 #define pm_sampling_scio pm_sampling_scio_RK1
 #include "pm_sampling_base.imp.F90"
 #undef pm_sampling_scio
 #else
-    use pm_kind, only: RKC => RK
+    use pm_kind, only: RKG => RK
 #endif
 end module
 
 !#if RK5_ENABLED
 !module pm_sampling_base_RK5
-!    use pm_kind, only: RKC => RK5
+!    use pm_kind, only: RKG => RK5
 !#define pm_sampling_scio pm_sampling_scio_RK5
 !#include "pm_sampling_base.imp.F90"
 !#undef pm_sampling_scio
 !end module
 !#else
 !module pm_sampling_base_RK5
-!    use pm_kind, only: RKC => RK
+!    use pm_kind, only: RKG => RK
 !end module
 !#endif
 !
 !#if RK4_ENABLED
 !module pm_sampling_base_RK4
-!    use pm_kind, only: RKC => RK4
+!    use pm_kind, only: RKG => RK4
 !#define pm_sampling_scio pm_sampling_scio_RK4
 !#include "pm_sampling_base.imp.F90"
 !#undef pm_sampling_scio
 !end module
 !#else
 !module pm_sampling_base_RK4
-!    use pm_kind, only: RKC => RK
+!    use pm_kind, only: RKG => RK
 !end module
 !#endif
 !
 !#if RK3_ENABLED
 !module pm_sampling_base_RK3
-!    use pm_kind, only: RKC => RK3
+!    use pm_kind, only: RKG => RK3
 !#define pm_sampling_scio pm_sampling_scio_RK3
 !#include "pm_sampling_base.imp.F90"
 !#undef pm_sampling_scio
 !end module
 !#else
 !module pm_sampling_base_RK3
-!    use pm_kind, only: RKC => RK
+!    use pm_kind, only: RKG => RK
 !end module
 !#endif
 !
 !#if RK2_ENABLED
 !module pm_sampling_base_RK2
-!    use pm_kind, only: RKC => RK2
+!    use pm_kind, only: RKG => RK2
 !#define pm_sampling_scio pm_sampling_scio_RK2
 !#include "pm_sampling_base.imp.F90"
 !#undef pm_sampling_scio
 !end module
 !#else
 !module pm_sampling_base_RK2
-!    use pm_kind, only: RKC => RK
+!    use pm_kind, only: RKG => RK
 !end module
 !#endif
 !
 !#if RK1_ENABLED
 !module pm_sampling_base_RK1
-!    use pm_kind, only: RKC => RK1
+!    use pm_kind, only: RKG => RK1
 !#define pm_sampling_scio pm_sampling_scio_RK1
 !#include "pm_sampling_base.imp.F90"
 !#undef pm_sampling_scio
 !end module
 !#else
 !module pm_sampling_base_RK1
-!    use pm_kind, only: RKC => RK
+!    use pm_kind, only: RKG => RK
 !end module
 !#endif

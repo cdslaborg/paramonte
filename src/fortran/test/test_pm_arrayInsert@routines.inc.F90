@@ -46,17 +46,17 @@
 
 #if     setInserted_D0_SK_ENABLED
 #define ALL
-        character(:,SKC), allocatable               :: array, insertion, arrayNew, arrayNewS_ref, arrayNewV_ref
+        character(:,SKG), allocatable               :: array, insertion, arrayNew, arrayNewS_ref, arrayNewV_ref
 #elif   setInserted_D1_SK_ENABLED
-        character(2,SKC), allocatable, dimension(:) :: array, insertion, arrayNew, arrayNewS_ref, arrayNewV_ref
+        character(2,SKG), allocatable, dimension(:) :: array, insertion, arrayNew, arrayNewS_ref, arrayNewV_ref
 #elif   setInserted_D1_IK_ENABLED
-        integer(IKC)    , allocatable, dimension(:) :: array, insertion, arrayNew, arrayNewS_ref, arrayNewV_ref
+        integer(IKG)    , allocatable, dimension(:) :: array, insertion, arrayNew, arrayNewS_ref, arrayNewV_ref
 #elif   setInserted_D1_CK_ENABLED
-        complex(CKC)    , allocatable, dimension(:) :: array, insertion, arrayNew, arrayNewS_ref, arrayNewV_ref
+        complex(CKG)    , allocatable, dimension(:) :: array, insertion, arrayNew, arrayNewS_ref, arrayNewV_ref
 #elif   setInserted_D1_RK_ENABLED
-        real(RKC)       , allocatable, dimension(:) :: array, insertion, arrayNew, arrayNewS_ref, arrayNewV_ref
+        real(RKG)       , allocatable, dimension(:) :: array, insertion, arrayNew, arrayNewS_ref, arrayNewV_ref
 #elif   setInserted_D1_LK_ENABLED
-        logical(LKC)    , allocatable, dimension(:) :: array, insertion, arrayNew, arrayNewS_ref, arrayNewV_ref
+        logical(LKG)    , allocatable, dimension(:) :: array, insertion, arrayNew, arrayNewS_ref, arrayNewV_ref
 #else
 #error  "Unrecognized interface."
 #endif
@@ -99,21 +99,21 @@
 
 #if         setInserted_D0_SK_ENABLED
             insertion = " "
-            allocate(character(0,SKC) :: arrayNewV_ref, array)
+            allocate(character(0,SKG) :: arrayNewV_ref, array)
 #elif       setInserted_D1_SK_ENABLED
             insertion = [" "]
-            allocate(character(2,SKC) :: arrayNewV_ref(0), array(0))
+            allocate(character(2,SKG) :: arrayNewV_ref(0), array(0))
 #elif       setInserted_D1_IK_ENABLED
-            insertion = [1_IKC]
+            insertion = [1_IKG]
             allocate(arrayNewV_ref(0), array(0))
 #elif       setInserted_D1_CK_ENABLED
-            insertion = [1._CKC]
+            insertion = [1._CKG]
             allocate(arrayNewV_ref(0), array(0))
 #elif       setInserted_D1_RK_ENABLED
-            insertion = [1._RKC]
+            insertion = [1._RKG]
             allocate(arrayNewV_ref(0), array(0))
 #elif       setInserted_D1_LK_ENABLED
-            insertion = [.false._LKC]
+            insertion = [.false._LKG]
             allocate(arrayNewV_ref(0), array(0))
 #endif
             allocate(index(0))
@@ -130,9 +130,9 @@
             call reset()
 
 #if         setInserted_D0_SK_ENABLED
-            allocate(character(0,SKC) :: arrayNewV_ref, array, insertion)
+            allocate(character(0,SKG) :: arrayNewV_ref, array, insertion)
 #elif       setInserted_D1_SK_ENABLED
-            allocate(character(2,SKC) :: arrayNewV_ref(0), array(0), insertion(0))
+            allocate(character(2,SKG) :: arrayNewV_ref(0), array(0), insertion(0))
 #elif       setInserted_D1_IK_ENABLED
             allocate(arrayNewV_ref(0), array(0), insertion(0))
 #elif       setInserted_D1_CK_ENABLED
@@ -159,14 +159,14 @@
             array = ["AA", "AA"]
             insertion = ["XX"]
 #elif       setInserted_D1_IK_ENABLED
-            array = [1_IKC, 1_IKC]
-            insertion = [2_IKC]
+            array = [1_IKG, 1_IKG]
+            insertion = [2_IKG]
 #elif       setInserted_D1_CK_ENABLED
-            array = [(1._CKC,-1._CKC), (1._CKC,-1._CKC)]
-            insertion = [(2._CKC,-2._CKC)]
+            array = [(1._CKG,-1._CKG), (1._CKG,-1._CKG)]
+            insertion = [(2._CKG,-2._CKG)]
 #elif       setInserted_D1_RK_ENABLED
-            array = [1._RKC, 1._RKC]
-            insertion = [2._RKC]
+            array = [1._RKG, 1._RKG]
+            insertion = [2._RKG]
 #elif       setInserted_D1_LK_ENABLED
             array = [.false._LK, .false._LK]
             insertion = [.true._LK]
@@ -196,20 +196,20 @@
             arrayNewS_ref = ["XX", "AA", "XX", "AA"]
             arrayNewV_ref = ["XX", "YY", "AA", "XX", "YY", "AA"]
 #elif       setInserted_D1_IK_ENABLED
-            array = [1_IKC, 1_IKC]
-            insertion = [2_IKC, 3_IKC]
-            arrayNewS_ref = [2_IKC, 1_IKC, 2_IKC, 1_IKC]
-            arrayNewV_ref = [2_IKC, 3_IKC, 1_IKC, 2_IKC, 3_IKC, 1_IKC]
+            array = [1_IKG, 1_IKG]
+            insertion = [2_IKG, 3_IKG]
+            arrayNewS_ref = [2_IKG, 1_IKG, 2_IKG, 1_IKG]
+            arrayNewV_ref = [2_IKG, 3_IKG, 1_IKG, 2_IKG, 3_IKG, 1_IKG]
 #elif       setInserted_D1_CK_ENABLED
-            array = [(1._CKC,-1._CKC), (1._CKC,-1._CKC)]
-            insertion = [(2._CKC,-2._CKC), (3._CKC,-3._CKC)]
-            arrayNewS_ref = [(2._CKC,-2._CKC), (1._CKC,-1._CKC), (2._CKC,-2._CKC), (1._CKC,-1._CKC)]
-            arrayNewV_ref = [(2._CKC,-2._CKC), (3._CKC,-3._CKC), (1._CKC,-1._CKC), (2._CKC,-2._CKC), (3._CKC,-3._CKC), (1._CKC,-1._CKC)]
+            array = [(1._CKG,-1._CKG), (1._CKG,-1._CKG)]
+            insertion = [(2._CKG,-2._CKG), (3._CKG,-3._CKG)]
+            arrayNewS_ref = [(2._CKG,-2._CKG), (1._CKG,-1._CKG), (2._CKG,-2._CKG), (1._CKG,-1._CKG)]
+            arrayNewV_ref = [(2._CKG,-2._CKG), (3._CKG,-3._CKG), (1._CKG,-1._CKG), (2._CKG,-2._CKG), (3._CKG,-3._CKG), (1._CKG,-1._CKG)]
 #elif       setInserted_D1_RK_ENABLED
-            array = [1._RKC, 1._RKC]
-            insertion = [2._RKC, 3._RKC]
-            arrayNewS_ref = [2._RKC, 1._RKC, 2._RKC, 1._RKC]
-            arrayNewV_ref = [2._RKC, 3._RKC, 1._RKC, 2._RKC, 3._RKC, 1._RKC]
+            array = [1._RKG, 1._RKG]
+            insertion = [2._RKG, 3._RKG]
+            arrayNewS_ref = [2._RKG, 1._RKG, 2._RKG, 1._RKG]
+            arrayNewV_ref = [2._RKG, 3._RKG, 1._RKG, 2._RKG, 3._RKG, 1._RKG]
 #elif       setInserted_D1_LK_ENABLED
             array = [.false._LK, .false._LK]
             insertion = [.true._LK, .true._LK]
@@ -239,20 +239,20 @@
             arrayNewS_ref = ["XX", "AA", "XX", "AA", "XX"]
             arrayNewV_ref = ["XX", "YY", "AA", "XX", "YY", "AA", "XX", "YY"]
 #elif       setInserted_D1_IK_ENABLED
-            array = [1_IKC, 1_IKC]
-            insertion = [2_IKC, 3_IKC]
-            arrayNewS_ref = [2_IKC, 1_IKC, 2_IKC, 1_IKC, 2_IKC]
-            arrayNewV_ref = [2_IKC, 3_IKC, 1_IKC, 2_IKC, 3_IKC, 1_IKC, 2_IKC, 3_IKC]
+            array = [1_IKG, 1_IKG]
+            insertion = [2_IKG, 3_IKG]
+            arrayNewS_ref = [2_IKG, 1_IKG, 2_IKG, 1_IKG, 2_IKG]
+            arrayNewV_ref = [2_IKG, 3_IKG, 1_IKG, 2_IKG, 3_IKG, 1_IKG, 2_IKG, 3_IKG]
 #elif       setInserted_D1_CK_ENABLED
-            array = [(1._CKC,-1._CKC), (1._CKC,-1._CKC)]
-            insertion = [(2._CKC,-2._CKC), (3._CKC,-3._CKC)]
-            arrayNewS_ref = [(2._CKC,-2._CKC), (1._CKC,-1._CKC), (2._CKC,-2._CKC), (1._CKC,-1._CKC), (2._CKC,-2._CKC)]
-            arrayNewV_ref = [(2._CKC,-2._CKC), (3._CKC,-3._CKC), (1._CKC,-1._CKC), (2._CKC,-2._CKC), (3._CKC,-3._CKC), (1._CKC,-1._CKC), (2._CKC,-2._CKC), (3._CKC,-3._CKC)]
+            array = [(1._CKG,-1._CKG), (1._CKG,-1._CKG)]
+            insertion = [(2._CKG,-2._CKG), (3._CKG,-3._CKG)]
+            arrayNewS_ref = [(2._CKG,-2._CKG), (1._CKG,-1._CKG), (2._CKG,-2._CKG), (1._CKG,-1._CKG), (2._CKG,-2._CKG)]
+            arrayNewV_ref = [(2._CKG,-2._CKG), (3._CKG,-3._CKG), (1._CKG,-1._CKG), (2._CKG,-2._CKG), (3._CKG,-3._CKG), (1._CKG,-1._CKG), (2._CKG,-2._CKG), (3._CKG,-3._CKG)]
 #elif       setInserted_D1_RK_ENABLED
-            array = [1._RKC, 1._RKC]
-            insertion = [2._RKC, 3._RKC]
-            arrayNewS_ref = [2._RKC, 1._RKC, 2._RKC, 1._RKC, 2._RKC]
-            arrayNewV_ref = [2._RKC, 3._RKC, 1._RKC, 2._RKC, 3._RKC, 1._RKC, 2._RKC, 3._RKC]
+            array = [1._RKG, 1._RKG]
+            insertion = [2._RKG, 3._RKG]
+            arrayNewS_ref = [2._RKG, 1._RKG, 2._RKG, 1._RKG, 2._RKG]
+            arrayNewV_ref = [2._RKG, 3._RKG, 1._RKG, 2._RKG, 3._RKG, 1._RKG, 2._RKG, 3._RKG]
 #elif       setInserted_D1_LK_ENABLED
             array = [.false._LK, .false._LK]
             insertion = [.true._LK, .true._LK]
@@ -283,20 +283,20 @@
                 arrayNewS_ref = ["XX", "AA", "XX", "AA", "XX", "XX"]
                 arrayNewV_ref = ["XX", "YY", "AA", "XX", "YY", "AA", "XX", "YY", "XX", "YY"]
 #elif           setInserted_D1_IK_ENABLED
-                array = [1_IKC, 1_IKC]
-                insertion = [2_IKC, 3_IKC]
-                arrayNewS_ref = [2_IKC, 1_IKC, 2_IKC, 1_IKC, 2_IKC, 2_IKC]
-                arrayNewV_ref = [2_IKC, 3_IKC, 1_IKC, 2_IKC, 3_IKC, 1_IKC, 2_IKC, 3_IKC, 2_IKC, 3_IKC]
+                array = [1_IKG, 1_IKG]
+                insertion = [2_IKG, 3_IKG]
+                arrayNewS_ref = [2_IKG, 1_IKG, 2_IKG, 1_IKG, 2_IKG, 2_IKG]
+                arrayNewV_ref = [2_IKG, 3_IKG, 1_IKG, 2_IKG, 3_IKG, 1_IKG, 2_IKG, 3_IKG, 2_IKG, 3_IKG]
 #elif           setInserted_D1_CK_ENABLED
-                array = [(1._CKC,-1._CKC), (1._CKC,-1._CKC)]
-                insertion = [(2._CKC,-2._CKC), (3._CKC,-3._CKC)]
-                arrayNewS_ref = [(2._CKC,-2._CKC), (1._CKC,-1._CKC), (2._CKC,-2._CKC), (1._CKC,-1._CKC), (2._CKC,-2._CKC), (2._CKC,-2._CKC)]
-                arrayNewV_ref = [(2._CKC,-2._CKC), (3._CKC,-3._CKC), (1._CKC,-1._CKC), (2._CKC,-2._CKC), (3._CKC,-3._CKC), (1._CKC,-1._CKC), (2._CKC,-2._CKC), (3._CKC,-3._CKC), (2._CKC,-2._CKC), (3._CKC,-3._CKC)]
+                array = [(1._CKG,-1._CKG), (1._CKG,-1._CKG)]
+                insertion = [(2._CKG,-2._CKG), (3._CKG,-3._CKG)]
+                arrayNewS_ref = [(2._CKG,-2._CKG), (1._CKG,-1._CKG), (2._CKG,-2._CKG), (1._CKG,-1._CKG), (2._CKG,-2._CKG), (2._CKG,-2._CKG)]
+                arrayNewV_ref = [(2._CKG,-2._CKG), (3._CKG,-3._CKG), (1._CKG,-1._CKG), (2._CKG,-2._CKG), (3._CKG,-3._CKG), (1._CKG,-1._CKG), (2._CKG,-2._CKG), (3._CKG,-3._CKG), (2._CKG,-2._CKG), (3._CKG,-3._CKG)]
 #elif           setInserted_D1_RK_ENABLED
-                array = [1._RKC, 1._RKC]
-                insertion = [2._RKC, 3._RKC]
-                arrayNewS_ref = [2._RKC, 1._RKC, 2._RKC, 1._RKC, 2._RKC, 2._RKC]
-                arrayNewV_ref = [2._RKC, 3._RKC, 1._RKC, 2._RKC, 3._RKC, 1._RKC, 2._RKC, 3._RKC, 2._RKC, 3._RKC]
+                array = [1._RKG, 1._RKG]
+                insertion = [2._RKG, 3._RKG]
+                arrayNewS_ref = [2._RKG, 1._RKG, 2._RKG, 1._RKG, 2._RKG, 2._RKG]
+                arrayNewV_ref = [2._RKG, 3._RKG, 1._RKG, 2._RKG, 3._RKG, 1._RKG, 2._RKG, 3._RKG, 2._RKG, 3._RKG]
 #elif           setInserted_D1_LK_ENABLED
                 array = [.false._LK, .false._LK]
                 insertion = [.true._LK, .true._LK]
@@ -336,20 +336,20 @@
                 arrayNewS_ref = ["XX", "AA", "XX", "AA", "XX", "XX"]
                 arrayNewV_ref = ["XX", "YY", "AA", "XX", "YY", "AA", "XX", "YY", "XX", "YY"]
 #elif           setInserted_D1_IK_ENABLED
-                array = [1_IKC, 1_IKC]
-                insertion = [2_IKC, 3_IKC]
-                arrayNewS_ref = [2_IKC, 1_IKC, 2_IKC, 1_IKC, 2_IKC, 2_IKC]
-                arrayNewV_ref = [2_IKC, 3_IKC, 1_IKC, 2_IKC, 3_IKC, 1_IKC, 2_IKC, 3_IKC, 2_IKC, 3_IKC]
+                array = [1_IKG, 1_IKG]
+                insertion = [2_IKG, 3_IKG]
+                arrayNewS_ref = [2_IKG, 1_IKG, 2_IKG, 1_IKG, 2_IKG, 2_IKG]
+                arrayNewV_ref = [2_IKG, 3_IKG, 1_IKG, 2_IKG, 3_IKG, 1_IKG, 2_IKG, 3_IKG, 2_IKG, 3_IKG]
 #elif           setInserted_D1_CK_ENABLED
-                array = [(1._CKC,-1._CKC), (1._CKC,-1._CKC)]
-                insertion = [(2._CKC,-2._CKC), (3._CKC,-3._CKC)]
-                arrayNewS_ref = [(2._CKC,-2._CKC), (1._CKC,-1._CKC), (2._CKC,-2._CKC), (1._CKC,-1._CKC), (2._CKC,-2._CKC), (2._CKC,-2._CKC)]
-                arrayNewV_ref = [(2._CKC,-2._CKC), (3._CKC,-3._CKC), (1._CKC,-1._CKC), (2._CKC,-2._CKC), (3._CKC,-3._CKC), (1._CKC,-1._CKC), (2._CKC,-2._CKC), (3._CKC,-3._CKC), (2._CKC,-2._CKC), (3._CKC,-3._CKC)]
+                array = [(1._CKG,-1._CKG), (1._CKG,-1._CKG)]
+                insertion = [(2._CKG,-2._CKG), (3._CKG,-3._CKG)]
+                arrayNewS_ref = [(2._CKG,-2._CKG), (1._CKG,-1._CKG), (2._CKG,-2._CKG), (1._CKG,-1._CKG), (2._CKG,-2._CKG), (2._CKG,-2._CKG)]
+                arrayNewV_ref = [(2._CKG,-2._CKG), (3._CKG,-3._CKG), (1._CKG,-1._CKG), (2._CKG,-2._CKG), (3._CKG,-3._CKG), (1._CKG,-1._CKG), (2._CKG,-2._CKG), (3._CKG,-3._CKG), (2._CKG,-2._CKG), (3._CKG,-3._CKG)]
 #elif           setInserted_D1_RK_ENABLED
-                array = [1._RKC, 1._RKC]
-                insertion = [2._RKC, 3._RKC]
-                arrayNewS_ref = [2._RKC, 1._RKC, 2._RKC, 1._RKC, 2._RKC, 2._RKC]
-                arrayNewV_ref = [2._RKC, 3._RKC, 1._RKC, 2._RKC, 3._RKC, 1._RKC, 2._RKC, 3._RKC, 2._RKC, 3._RKC]
+                array = [1._RKG, 1._RKG]
+                insertion = [2._RKG, 3._RKG]
+                arrayNewS_ref = [2._RKG, 1._RKG, 2._RKG, 1._RKG, 2._RKG, 2._RKG]
+                arrayNewV_ref = [2._RKG, 3._RKG, 1._RKG, 2._RKG, 3._RKG, 1._RKG, 2._RKG, 3._RKG, 2._RKG, 3._RKG]
 #elif           setInserted_D1_LK_ENABLED
                 array = [.false._LK, .false._LK]
                 insertion = [.true._LK, .true._LK]

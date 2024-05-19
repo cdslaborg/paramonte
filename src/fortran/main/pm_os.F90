@@ -113,7 +113,7 @@ module pm_os
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isLinuxFailed
 #endif
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
         logical(LK)     , intent(out)   :: failed
         logical(LK)                     :: itis
     end function
@@ -201,7 +201,7 @@ module pm_os
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isDarwinFailed
 #endif
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
         logical(LK)     , intent(out)   :: failed
         logical(LK)                     :: itis
     end function
@@ -289,7 +289,7 @@ module pm_os
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isWindowsFailed
 #endif
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
         logical(LK)     , intent(out)   :: failed
         logical(LK)                     :: itis
     end function

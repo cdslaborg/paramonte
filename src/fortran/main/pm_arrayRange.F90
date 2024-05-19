@@ -145,9 +145,9 @@ module pm_arrayRange
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRangeUnit_D0_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(1,SKC)        , intent(in)                                        :: start, stop
-        character(abs(ichar(stop) - ichar(start)) + 1,SKC)                          :: range
+        use pm_kind, only: SKG => SK5
+        character(1,SKG)        , intent(in)                                        :: start, stop
+        character(abs(ichar(stop) - ichar(start)) + 1,SKG)                          :: range
     end function
 #endif
 
@@ -156,9 +156,9 @@ module pm_arrayRange
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRangeUnit_D0_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(1,SKC)        , intent(in)                                        :: start, stop
-        character(abs(ichar(stop) - ichar(start)) + 1,SKC)                          :: range
+        use pm_kind, only: SKG => SK4
+        character(1,SKG)        , intent(in)                                        :: start, stop
+        character(abs(ichar(stop) - ichar(start)) + 1,SKG)                          :: range
     end function
 #endif
 
@@ -167,9 +167,9 @@ module pm_arrayRange
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRangeUnit_D0_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(1,SKC)        , intent(in)                                        :: start, stop
-        character(abs(ichar(stop) - ichar(start)) + 1,SKC)                          :: range
+        use pm_kind, only: SKG => SK3
+        character(1,SKG)        , intent(in)                                        :: start, stop
+        character(abs(ichar(stop) - ichar(start)) + 1,SKG)                          :: range
     end function
 #endif
 
@@ -178,9 +178,9 @@ module pm_arrayRange
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRangeUnit_D0_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(1,SKC)        , intent(in)                                        :: start, stop
-        character(abs(ichar(stop) - ichar(start)) + 1,SKC)                          :: range
+        use pm_kind, only: SKG => SK2
+        character(1,SKG)        , intent(in)                                        :: start, stop
+        character(abs(ichar(stop) - ichar(start)) + 1,SKG)                          :: range
     end function
 #endif
 
@@ -189,9 +189,9 @@ module pm_arrayRange
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRangeUnit_D0_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(1,SKC)        , intent(in)                                        :: start, stop
-        character(abs(ichar(stop) - ichar(start)) + 1,SKC)                          :: range
+        use pm_kind, only: SKG => SK1
+        character(1,SKG)        , intent(in)                                        :: start, stop
+        character(abs(ichar(stop) - ichar(start)) + 1,SKG)                          :: range
     end function
 #endif
 
@@ -202,9 +202,9 @@ module pm_arrayRange
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRangeUnit_D1_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)            , intent(in)                                        :: start, stop
-        integer(IKC)                                                                :: range(abs(stop - start) + 1_IKC)
+        use pm_kind, only: IKG => IK5
+        integer(IKG)            , intent(in)                                        :: start, stop
+        integer(IKG)                                                                :: range(abs(stop - start) + 1_IKG)
     end function
 #endif
 
@@ -213,9 +213,9 @@ module pm_arrayRange
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRangeUnit_D1_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)            , intent(in)                                        :: start, stop
-        integer(IKC)                                                                :: range(abs(stop - start) + 1_IKC)
+        use pm_kind, only: IKG => IK4
+        integer(IKG)            , intent(in)                                        :: start, stop
+        integer(IKG)                                                                :: range(abs(stop - start) + 1_IKG)
     end function
 #endif
 
@@ -224,9 +224,9 @@ module pm_arrayRange
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRangeUnit_D1_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)            , intent(in)                                        :: start, stop
-        integer(IKC)                                                                :: range(abs(stop - start) + 1_IKC)
+        use pm_kind, only: IKG => IK3
+        integer(IKG)            , intent(in)                                        :: start, stop
+        integer(IKG)                                                                :: range(abs(stop - start) + 1_IKG)
     end function
 #endif
 
@@ -235,9 +235,9 @@ module pm_arrayRange
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRangeUnit_D1_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)            , intent(in)                                        :: start, stop
-        integer(IKC)                                                                :: range(abs(stop - start) + 1_IKC)
+        use pm_kind, only: IKG => IK2
+        integer(IKG)            , intent(in)                                        :: start, stop
+        integer(IKG)                                                                :: range(abs(stop - start) + 1_IKG)
     end function
 #endif
 
@@ -246,9 +246,9 @@ module pm_arrayRange
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRangeUnit_D1_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)            , intent(in)                                        :: start, stop
-        integer(IKC)                                                                :: range(abs(stop - start) + 1_IKC)
+        use pm_kind, only: IKG => IK1
+        integer(IKG)            , intent(in)                                        :: start, stop
+        integer(IKG)                                                                :: range(abs(stop - start) + 1_IKG)
     end function
 #endif
 
@@ -259,9 +259,9 @@ module pm_arrayRange
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRangeUnit_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)               , value                                             :: start, stop
-        real(RKC)               , allocatable                                       :: range(:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)               , value                                             :: start, stop
+        real(RKG)               , allocatable                                       :: range(:)
     end function
 #endif
 
@@ -270,9 +270,9 @@ module pm_arrayRange
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRangeUnit_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)               , value                                             :: start, stop
-        real(RKC)               , allocatable                                       :: range(:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)               , value                                             :: start, stop
+        real(RKG)               , allocatable                                       :: range(:)
     end function
 #endif
 
@@ -281,9 +281,9 @@ module pm_arrayRange
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRangeUnit_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)               , value                                             :: start, stop
-        real(RKC)               , allocatable                                       :: range(:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)               , value                                             :: start, stop
+        real(RKG)               , allocatable                                       :: range(:)
     end function
 #endif
 
@@ -292,9 +292,9 @@ module pm_arrayRange
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRangeUnit_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)               , value                                             :: start, stop
-        real(RKC)               , allocatable                                       :: range(:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)               , value                                             :: start, stop
+        real(RKG)               , allocatable                                       :: range(:)
     end function
 #endif
 
@@ -303,9 +303,9 @@ module pm_arrayRange
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRangeUnit_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)               , value                                             :: start, stop
-        real(RKC)               , allocatable                                       :: range(:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)               , value                                             :: start, stop
+        real(RKG)               , allocatable                                       :: range(:)
     end function
 #endif
 
@@ -322,10 +322,10 @@ module pm_arrayRange
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRangeStep_D0_SK5
 #endif
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
         integer(IK)             , intent(in)                                        :: step
-        character(1,SKC)        , intent(in)                                        :: start, stop
-        character(max(0, 1 + floor(real(ichar(stop) - ichar(start)) / step)),SKC)   :: range
+        character(1,SKG)        , intent(in)                                        :: start, stop
+        character(max(0, 1 + floor(real(ichar(stop) - ichar(start)) / step)),SKG)   :: range
     end function
 #endif
 
@@ -334,10 +334,10 @@ module pm_arrayRange
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRangeStep_D0_SK4
 #endif
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
         integer(IK)             , intent(in)                                        :: step
-        character(1,SKC)        , intent(in)                                        :: start, stop
-        character(max(0, 1 + floor(real(ichar(stop) - ichar(start)) / step)),SKC)   :: range
+        character(1,SKG)        , intent(in)                                        :: start, stop
+        character(max(0, 1 + floor(real(ichar(stop) - ichar(start)) / step)),SKG)   :: range
     end function
 #endif
 
@@ -346,10 +346,10 @@ module pm_arrayRange
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRangeStep_D0_SK3
 #endif
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
         integer(IK)             , intent(in)                                        :: step
-        character(1,SKC)        , intent(in)                                        :: start, stop
-        character(max(0, 1 + floor(real(ichar(stop) - ichar(start)) / step)),SKC)   :: range
+        character(1,SKG)        , intent(in)                                        :: start, stop
+        character(max(0, 1 + floor(real(ichar(stop) - ichar(start)) / step)),SKG)   :: range
     end function
 #endif
 
@@ -358,10 +358,10 @@ module pm_arrayRange
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRangeStep_D0_SK2
 #endif
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
         integer(IK)             , intent(in)                                        :: step
-        character(1,SKC)        , intent(in)                                        :: start, stop
-        character(max(0, 1 + floor(real(ichar(stop) - ichar(start)) / step)),SKC)   :: range
+        character(1,SKG)        , intent(in)                                        :: start, stop
+        character(max(0, 1 + floor(real(ichar(stop) - ichar(start)) / step)),SKG)   :: range
     end function
 #endif
 
@@ -370,10 +370,10 @@ module pm_arrayRange
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRangeStep_D0_SK1
 #endif
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
         integer(IK)             , intent(in)                                        :: step
-        character(1,SKC)        , intent(in)                                        :: start, stop
-        character(max(0, 1 + floor(real(ichar(stop) - ichar(start)) / step)),SKC)   :: range
+        character(1,SKG)        , intent(in)                                        :: start, stop
+        character(max(0, 1 + floor(real(ichar(stop) - ichar(start)) / step)),SKG)   :: range
     end function
 #endif
 
@@ -384,10 +384,10 @@ module pm_arrayRange
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRangeStep_D1_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)            , intent(in)                                        :: start, stop, step
-        integer(IKC)                                                                :: range(max(0_IKC, 1_IKC + floor(real(stop - start) / real(step), kind = IKC)))
-        ! (merge(1_IKC + (stop - start) / step, 0_IKC, (stop - start >= 0_IKC .and. step > 0_IKC) .or. (stop - start <= 0_IKC .and. step < 0_IKC)))
+        use pm_kind, only: IKG => IK5
+        integer(IKG)            , intent(in)                                        :: start, stop, step
+        integer(IKG)                                                                :: range(max(0_IKG, 1_IKG + floor(real(stop - start) / real(step), kind = IKG)))
+        ! (merge(1_IKG + (stop - start) / step, 0_IKG, (stop - start >= 0_IKG .and. step > 0_IKG) .or. (stop - start <= 0_IKG .and. step < 0_IKG)))
     end function
 #endif
 
@@ -396,9 +396,9 @@ module pm_arrayRange
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRangeStep_D1_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)            , intent(in)                                        :: start, stop, step
-        integer(IKC)                                                                :: range(max(0_IKC, 1_IKC + floor(real(stop - start) / real(step), kind = IKC)))
+        use pm_kind, only: IKG => IK4
+        integer(IKG)            , intent(in)                                        :: start, stop, step
+        integer(IKG)                                                                :: range(max(0_IKG, 1_IKG + floor(real(stop - start) / real(step), kind = IKG)))
     end function
 #endif
 
@@ -407,9 +407,9 @@ module pm_arrayRange
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRangeStep_D1_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)            , intent(in)                                        :: start, stop, step
-        integer(IKC)                                                                :: range(max(0_IKC, 1_IKC + floor(real(stop - start) / real(step), kind = IKC)))
+        use pm_kind, only: IKG => IK3
+        integer(IKG)            , intent(in)                                        :: start, stop, step
+        integer(IKG)                                                                :: range(max(0_IKG, 1_IKG + floor(real(stop - start) / real(step), kind = IKG)))
     end function
 #endif
 
@@ -418,9 +418,9 @@ module pm_arrayRange
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRangeStep_D1_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)            , intent(in)                                        :: start, stop, step
-        integer(IKC)                                                                :: range(max(0_IKC, 1_IKC + floor(real(stop - start) / real(step), kind = IKC)))
+        use pm_kind, only: IKG => IK2
+        integer(IKG)            , intent(in)                                        :: start, stop, step
+        integer(IKG)                                                                :: range(max(0_IKG, 1_IKG + floor(real(stop - start) / real(step), kind = IKG)))
     end function
 #endif
 
@@ -429,9 +429,9 @@ module pm_arrayRange
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRangeStep_D1_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)            , intent(in)                                        :: start, stop, step
-        integer(IKC)                                                                :: range(max(0_IKC, 1_IKC + floor(real(stop - start) / real(step), kind = IKC)))
+        use pm_kind, only: IKG => IK1
+        integer(IKG)            , intent(in)                                        :: start, stop, step
+        integer(IKG)                                                                :: range(max(0_IKG, 1_IKG + floor(real(stop - start) / real(step), kind = IKG)))
     end function
 #endif
 
@@ -442,9 +442,9 @@ module pm_arrayRange
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRangeStep_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)               , intent(in)                                        :: start, stop, step
-        real(RKC)                                                                   :: range(max(0_IK, 1_IK + floor((stop - start) / step, kind = IK)))
+        use pm_kind, only: RKG => RK5
+        real(RKG)               , intent(in)                                        :: start, stop, step
+        real(RKG)                                                                   :: range(max(0_IK, 1_IK + floor((stop - start) / step, kind = IK)))
     end function
 #endif
 
@@ -453,9 +453,9 @@ module pm_arrayRange
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRangeStep_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)               , intent(in)                                        :: start, stop, step
-        real(RKC)                                                                   :: range(max(0_IK, 1_IK + floor((stop - start) / step, kind = IK)))
+        use pm_kind, only: RKG => RK4
+        real(RKG)               , intent(in)                                        :: start, stop, step
+        real(RKG)                                                                   :: range(max(0_IK, 1_IK + floor((stop - start) / step, kind = IK)))
     end function
 #endif
 
@@ -464,9 +464,9 @@ module pm_arrayRange
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRangeStep_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)               , intent(in)                                        :: start, stop, step
-        real(RKC)                                                                   :: range(max(0_IK, 1_IK + floor((stop - start) / step, kind = IK)))
+        use pm_kind, only: RKG => RK3
+        real(RKG)               , intent(in)                                        :: start, stop, step
+        real(RKG)                                                                   :: range(max(0_IK, 1_IK + floor((stop - start) / step, kind = IK)))
     end function
 #endif
 
@@ -475,9 +475,9 @@ module pm_arrayRange
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRangeStep_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)               , intent(in)                                        :: start, stop, step
-        real(RKC)                                                                   :: range(max(0_IK, 1_IK + floor((stop - start) / step, kind = IK)))
+        use pm_kind, only: RKG => RK2
+        real(RKG)               , intent(in)                                        :: start, stop, step
+        real(RKG)                                                                   :: range(max(0_IK, 1_IK + floor((stop - start) / step, kind = IK)))
     end function
 #endif
 
@@ -486,9 +486,9 @@ module pm_arrayRange
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRangeStep_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)               , intent(in)                                        :: start, stop, step
-        real(RKC)                                                                   :: range(max(0_IK, 1_IK + floor((stop - start) / step, kind = IK)))
+        use pm_kind, only: RKG => RK1
+        real(RKG)               , intent(in)                                        :: start, stop, step
+        real(RKG)                                                                   :: range(max(0_IK, 1_IK + floor((stop - start) / step, kind = IK)))
     end function
 #endif
 
@@ -505,9 +505,9 @@ module pm_arrayRange
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getRangeUnit_D2_IK5
 !#endif
-!        use pm_kind, only: IKC => IK5
-!        integer(IKC)            , intent(in)                :: start(2), stop(2)
-!        integer(IKC)                                        :: range(2, max(0_IK, stop(1) - start(1) + 1_IK), max(0_IK, stop(2) - start(2) + 1_IK))
+!        use pm_kind, only: IKG => IK5
+!        integer(IKG)            , intent(in)                :: start(2), stop(2)
+!        integer(IKG)                                        :: range(2, max(0_IK, stop(1) - start(1) + 1_IK), max(0_IK, stop(2) - start(2) + 1_IK))
 !    end function
 !#endif
 !
@@ -516,9 +516,9 @@ module pm_arrayRange
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getRangeUnit_D2_IK4
 !#endif
-!        use pm_kind, only: IKC => IK4
-!        integer(IKC)            , intent(in)                :: start(2), stop(2)
-!        integer(IKC)                                        :: range(2, max(0_IK, stop(1) - start(1) + 1_IK), max(0_IK, stop(2) - start(2) + 1_IK))
+!        use pm_kind, only: IKG => IK4
+!        integer(IKG)            , intent(in)                :: start(2), stop(2)
+!        integer(IKG)                                        :: range(2, max(0_IK, stop(1) - start(1) + 1_IK), max(0_IK, stop(2) - start(2) + 1_IK))
 !    end function
 !#endif
 !
@@ -527,9 +527,9 @@ module pm_arrayRange
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getRangeUnit_D2_IK3
 !#endif
-!        use pm_kind, only: IKC => IK3
-!        integer(IKC)            , intent(in)                :: start(2), stop(2)
-!        integer(IKC)                                        :: range(2, max(0_IK, stop(1) - start(1) + 1_IK), max(0_IK, stop(2) - start(2) + 1_IK))
+!        use pm_kind, only: IKG => IK3
+!        integer(IKG)            , intent(in)                :: start(2), stop(2)
+!        integer(IKG)                                        :: range(2, max(0_IK, stop(1) - start(1) + 1_IK), max(0_IK, stop(2) - start(2) + 1_IK))
 !    end function
 !#endif
 !
@@ -538,9 +538,9 @@ module pm_arrayRange
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getRangeUnit_D2_IK2
 !#endif
-!        use pm_kind, only: IKC => IK2
-!        integer(IKC)            , intent(in)                :: start(2), stop(2)
-!        integer(IKC)                                        :: range(2, max(0_IK, stop(1) - start(1) + 1_IK), max(0_IK, stop(2) - start(2) + 1_IK))
+!        use pm_kind, only: IKG => IK2
+!        integer(IKG)            , intent(in)                :: start(2), stop(2)
+!        integer(IKG)                                        :: range(2, max(0_IK, stop(1) - start(1) + 1_IK), max(0_IK, stop(2) - start(2) + 1_IK))
 !    end function
 !#endif
 !
@@ -549,9 +549,9 @@ module pm_arrayRange
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getRangeUnit_D2_IK1
 !#endif
-!        use pm_kind, only: IKC => IK1
-!        integer(IKC)            , intent(in)                :: start(2), stop(2)
-!        integer(IKC)                                        :: range(2, max(0_IK, stop(1) - start(1) + 1_IK), max(0_IK, stop(2) - start(2) + 1_IK))
+!        use pm_kind, only: IKG => IK1
+!        integer(IKG)            , intent(in)                :: start(2), stop(2)
+!        integer(IKG)                                        :: range(2, max(0_IK, stop(1) - start(1) + 1_IK), max(0_IK, stop(2) - start(2) + 1_IK))
 !    end function
 !#endif
 !
@@ -562,10 +562,10 @@ module pm_arrayRange
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getRangeStep_D2_IK5
 !#endif
-!        use pm_kind, only: IKC => IK5
-!        integer(IKC)            , intent(in)                :: start(2), stop(2), step(2)
-!        integer(IKC)                                        :: range(2, max(0_IKC, 1_IKC + floor(real(stop(1) - start(1)) / real(step(1)), kind = IKC)), max(0_IKC, 1_IKC + floor(real(stop(2) - start(2)) / real(step(2)), kind = IKC)))
-!        ! (merge(1_IKC + (stop(1) - start(1)) / step, 0_IKC, (stop(1) - start(1) >= 0_IKC .and. step > 0_IKC) .or. (stop(1) - start(1) <= 0_IKC .and. step < 0_IKC)))
+!        use pm_kind, only: IKG => IK5
+!        integer(IKG)            , intent(in)                :: start(2), stop(2), step(2)
+!        integer(IKG)                                        :: range(2, max(0_IKG, 1_IKG + floor(real(stop(1) - start(1)) / real(step(1)), kind = IKG)), max(0_IKG, 1_IKG + floor(real(stop(2) - start(2)) / real(step(2)), kind = IKG)))
+!        ! (merge(1_IKG + (stop(1) - start(1)) / step, 0_IKG, (stop(1) - start(1) >= 0_IKG .and. step > 0_IKG) .or. (stop(1) - start(1) <= 0_IKG .and. step < 0_IKG)))
 !    end function
 !#endif
 !
@@ -574,9 +574,9 @@ module pm_arrayRange
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getRangeStep_D2_IK4
 !#endif
-!        use pm_kind, only: IKC => IK4
-!        integer(IKC)            , intent(in)                :: start(2), stop(2), step(2)
-!        integer(IKC)                                        :: range(2, max(0_IKC, 1_IKC + floor(real(stop(1) - start(1)) / real(step(1)), kind = IKC)), max(0_IKC, 1_IKC + floor(real(stop(2) - start(2)) / real(step(2)), kind = IKC)))
+!        use pm_kind, only: IKG => IK4
+!        integer(IKG)            , intent(in)                :: start(2), stop(2), step(2)
+!        integer(IKG)                                        :: range(2, max(0_IKG, 1_IKG + floor(real(stop(1) - start(1)) / real(step(1)), kind = IKG)), max(0_IKG, 1_IKG + floor(real(stop(2) - start(2)) / real(step(2)), kind = IKG)))
 !    end function
 !#endif
 !
@@ -585,9 +585,9 @@ module pm_arrayRange
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getRangeStep_D2_IK3
 !#endif
-!        use pm_kind, only: IKC => IK3
-!        integer(IKC)            , intent(in)                :: start(2), stop(2), step(2)
-!        integer(IKC)                                        :: range(2, max(0_IKC, 1_IKC + floor(real(stop(1) - start(1)) / real(step(1)), kind = IKC)), max(0_IKC, 1_IKC + floor(real(stop(2) - start(2)) / real(step(2)), kind = IKC)))
+!        use pm_kind, only: IKG => IK3
+!        integer(IKG)            , intent(in)                :: start(2), stop(2), step(2)
+!        integer(IKG)                                        :: range(2, max(0_IKG, 1_IKG + floor(real(stop(1) - start(1)) / real(step(1)), kind = IKG)), max(0_IKG, 1_IKG + floor(real(stop(2) - start(2)) / real(step(2)), kind = IKG)))
 !    end function
 !#endif
 !
@@ -596,9 +596,9 @@ module pm_arrayRange
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getRangeStep_D2_IK2
 !#endif
-!        use pm_kind, only: IKC => IK2
-!        integer(IKC)            , intent(in)                :: start(2), stop(2), step(2)
-!        integer(IKC)                                        :: range(2, max(0_IKC, 1_IKC + floor(real(stop(1) - start(1)) / real(step(1)), kind = IKC)), max(0_IKC, 1_IKC + floor(real(stop(2) - start(2)) / real(step(2)), kind = IKC)))
+!        use pm_kind, only: IKG => IK2
+!        integer(IKG)            , intent(in)                :: start(2), stop(2), step(2)
+!        integer(IKG)                                        :: range(2, max(0_IKG, 1_IKG + floor(real(stop(1) - start(1)) / real(step(1)), kind = IKG)), max(0_IKG, 1_IKG + floor(real(stop(2) - start(2)) / real(step(2)), kind = IKG)))
 !    end function
 !#endif
 !
@@ -607,9 +607,9 @@ module pm_arrayRange
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getRangeStep_D2_IK1
 !#endif
-!        use pm_kind, only: IKC => IK1
-!        integer(IKC)            , intent(in)                :: start(2), stop(2), step(2)
-!        integer(IKC)                                        :: range(2, max(0_IKC, 1_IKC + floor(real(stop(1) - start(1)) / real(step(1)), kind = IKC)), max(0_IKC, 1_IKC + floor(real(stop(2) - start(2)) / real(step(2)), kind = IKC)))
+!        use pm_kind, only: IKG => IK1
+!        integer(IKG)            , intent(in)                :: start(2), stop(2), step(2)
+!        integer(IKG)                                        :: range(2, max(0_IKG, 1_IKG + floor(real(stop(1) - start(1)) / real(step(1)), kind = IKG)), max(0_IKG, 1_IKG + floor(real(stop(2) - start(2)) / real(step(2)), kind = IKG)))
 !    end function
 !#endif
 !
@@ -705,9 +705,9 @@ module pm_arrayRange
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRangeUnit_D0_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)        , intent(out)                   :: range
-        character(1,SKC)        , intent(in)                    :: start
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)        , intent(out)                   :: range
+        character(1,SKG)        , intent(in)                    :: start
     end subroutine
 #endif
 
@@ -716,9 +716,9 @@ module pm_arrayRange
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRangeUnit_D0_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)        , intent(out)                   :: range
-        character(1,SKC)        , intent(in)                    :: start
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)        , intent(out)                   :: range
+        character(1,SKG)        , intent(in)                    :: start
     end subroutine
 #endif
 
@@ -727,9 +727,9 @@ module pm_arrayRange
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRangeUnit_D0_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)        , intent(out)                   :: range
-        character(1,SKC)        , intent(in)                    :: start
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)        , intent(out)                   :: range
+        character(1,SKG)        , intent(in)                    :: start
     end subroutine
 #endif
 
@@ -738,9 +738,9 @@ module pm_arrayRange
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRangeUnit_D0_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)        , intent(out)                   :: range
-        character(1,SKC)        , intent(in)                    :: start
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)        , intent(out)                   :: range
+        character(1,SKG)        , intent(in)                    :: start
     end subroutine
 #endif
 
@@ -749,9 +749,9 @@ module pm_arrayRange
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRangeUnit_D0_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)        , intent(out)                   :: range
-        character(1,SKC)        , intent(in)                    :: start
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)        , intent(out)                   :: range
+        character(1,SKG)        , intent(in)                    :: start
     end subroutine
 #endif
 
@@ -762,9 +762,9 @@ module pm_arrayRange
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRangeUnit_D1_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)            , intent(out)   , contiguous    :: range(:)
-        integer(IKC)            , intent(in)                    :: start
+        use pm_kind, only: IKG => IK5
+        integer(IKG)            , intent(out)   , contiguous    :: range(:)
+        integer(IKG)            , intent(in)                    :: start
     end subroutine
 #endif
 
@@ -773,9 +773,9 @@ module pm_arrayRange
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRangeUnit_D1_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)            , intent(out)   , contiguous    :: range(:)
-        integer(IKC)            , intent(in)                    :: start
+        use pm_kind, only: IKG => IK4
+        integer(IKG)            , intent(out)   , contiguous    :: range(:)
+        integer(IKG)            , intent(in)                    :: start
     end subroutine
 #endif
 
@@ -784,9 +784,9 @@ module pm_arrayRange
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRangeUnit_D1_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)            , intent(out)   , contiguous    :: range(:)
-        integer(IKC)            , intent(in)                    :: start
+        use pm_kind, only: IKG => IK3
+        integer(IKG)            , intent(out)   , contiguous    :: range(:)
+        integer(IKG)            , intent(in)                    :: start
     end subroutine
 #endif
 
@@ -795,9 +795,9 @@ module pm_arrayRange
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRangeUnit_D1_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)            , intent(out)   , contiguous    :: range(:)
-        integer(IKC)            , intent(in)                    :: start
+        use pm_kind, only: IKG => IK2
+        integer(IKG)            , intent(out)   , contiguous    :: range(:)
+        integer(IKG)            , intent(in)                    :: start
     end subroutine
 #endif
 
@@ -806,9 +806,9 @@ module pm_arrayRange
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRangeUnit_D1_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)            , intent(out)   , contiguous    :: range(:)
-        integer(IKC)            , intent(in)                    :: start
+        use pm_kind, only: IKG => IK1
+        integer(IKG)            , intent(out)   , contiguous    :: range(:)
+        integer(IKG)            , intent(in)                    :: start
     end subroutine
 #endif
 
@@ -819,9 +819,9 @@ module pm_arrayRange
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRangeUnit_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)               , intent(out)   , contiguous    :: range(:)
-        real(RKC)               , intent(in)                    :: start
+        use pm_kind, only: RKG => RK5
+        real(RKG)               , intent(out)   , contiguous    :: range(:)
+        real(RKG)               , intent(in)                    :: start
     end subroutine
 #endif
 
@@ -830,9 +830,9 @@ module pm_arrayRange
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRangeUnit_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)               , intent(out)   , contiguous    :: range(:)
-        real(RKC)               , intent(in)                    :: start
+        use pm_kind, only: RKG => RK4
+        real(RKG)               , intent(out)   , contiguous    :: range(:)
+        real(RKG)               , intent(in)                    :: start
     end subroutine
 #endif
 
@@ -841,9 +841,9 @@ module pm_arrayRange
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRangeUnit_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)               , intent(out)   , contiguous    :: range(:)
-        real(RKC)               , intent(in)                    :: start
+        use pm_kind, only: RKG => RK3
+        real(RKG)               , intent(out)   , contiguous    :: range(:)
+        real(RKG)               , intent(in)                    :: start
     end subroutine
 #endif
 
@@ -852,9 +852,9 @@ module pm_arrayRange
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRangeUnit_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)               , intent(out)   , contiguous    :: range(:)
-        real(RKC)               , intent(in)                    :: start
+        use pm_kind, only: RKG => RK2
+        real(RKG)               , intent(out)   , contiguous    :: range(:)
+        real(RKG)               , intent(in)                    :: start
     end subroutine
 #endif
 
@@ -863,9 +863,9 @@ module pm_arrayRange
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRangeUnit_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)               , intent(out)   , contiguous    :: range(:)
-        real(RKC)               , intent(in)                    :: start
+        use pm_kind, only: RKG => RK1
+        real(RKG)               , intent(out)   , contiguous    :: range(:)
+        real(RKG)               , intent(in)                    :: start
     end subroutine
 #endif
 
@@ -882,9 +882,9 @@ module pm_arrayRange
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRangeStep_D0_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)        , intent(out)                   :: range
-        character(1,SKC)        , intent(in)                    :: start
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)        , intent(out)                   :: range
+        character(1,SKG)        , intent(in)                    :: start
         integer(IK)             , intent(in)                    :: step
     end subroutine
 #endif
@@ -894,9 +894,9 @@ module pm_arrayRange
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRangeStep_D0_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)        , intent(out)                   :: range
-        character(1,SKC)        , intent(in)                    :: start
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)        , intent(out)                   :: range
+        character(1,SKG)        , intent(in)                    :: start
         integer(IK)             , intent(in)                    :: step
     end subroutine
 #endif
@@ -906,9 +906,9 @@ module pm_arrayRange
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRangeStep_D0_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)        , intent(out)                   :: range
-        character(1,SKC)        , intent(in)                    :: start
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)        , intent(out)                   :: range
+        character(1,SKG)        , intent(in)                    :: start
         integer(IK)             , intent(in)                    :: step
     end subroutine
 #endif
@@ -918,9 +918,9 @@ module pm_arrayRange
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRangeStep_D0_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)        , intent(out)                   :: range
-        character(1,SKC)        , intent(in)                    :: start
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)        , intent(out)                   :: range
+        character(1,SKG)        , intent(in)                    :: start
         integer(IK)             , intent(in)                    :: step
     end subroutine
 #endif
@@ -930,9 +930,9 @@ module pm_arrayRange
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRangeStep_D0_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)        , intent(out)                   :: range
-        character(1,SKC)        , intent(in)                    :: start
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)        , intent(out)                   :: range
+        character(1,SKG)        , intent(in)                    :: start
         integer(IK)             , intent(in)                    :: step
     end subroutine
 #endif
@@ -944,9 +944,9 @@ module pm_arrayRange
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRangeStep_D1_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)            , intent(out)   , contiguous    :: range(:)
-        integer(IKC)            , intent(in)                    :: start, step
+        use pm_kind, only: IKG => IK5
+        integer(IKG)            , intent(out)   , contiguous    :: range(:)
+        integer(IKG)            , intent(in)                    :: start, step
     end subroutine
 #endif
 
@@ -955,9 +955,9 @@ module pm_arrayRange
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRangeStep_D1_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)            , intent(out)   , contiguous    :: range(:)
-        integer(IKC)            , intent(in)                    :: start, step
+        use pm_kind, only: IKG => IK4
+        integer(IKG)            , intent(out)   , contiguous    :: range(:)
+        integer(IKG)            , intent(in)                    :: start, step
     end subroutine
 #endif
 
@@ -966,9 +966,9 @@ module pm_arrayRange
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRangeStep_D1_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)            , intent(out)   , contiguous    :: range(:)
-        integer(IKC)            , intent(in)                    :: start, step
+        use pm_kind, only: IKG => IK3
+        integer(IKG)            , intent(out)   , contiguous    :: range(:)
+        integer(IKG)            , intent(in)                    :: start, step
     end subroutine
 #endif
 
@@ -977,9 +977,9 @@ module pm_arrayRange
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRangeStep_D1_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)            , intent(out)   , contiguous    :: range(:)
-        integer(IKC)            , intent(in)                    :: start, step
+        use pm_kind, only: IKG => IK2
+        integer(IKG)            , intent(out)   , contiguous    :: range(:)
+        integer(IKG)            , intent(in)                    :: start, step
     end subroutine
 #endif
 
@@ -988,9 +988,9 @@ module pm_arrayRange
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRangeStep_D1_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)            , intent(out)   , contiguous    :: range(:)
-        integer(IKC)            , intent(in)                    :: start, step
+        use pm_kind, only: IKG => IK1
+        integer(IKG)            , intent(out)   , contiguous    :: range(:)
+        integer(IKG)            , intent(in)                    :: start, step
     end subroutine
 #endif
 
@@ -1001,9 +1001,9 @@ module pm_arrayRange
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRangeStep_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)               , intent(out)   , contiguous    :: range(:)
-        real(RKC)               , intent(in)                    :: start, step
+        use pm_kind, only: RKG => RK5
+        real(RKG)               , intent(out)   , contiguous    :: range(:)
+        real(RKG)               , intent(in)                    :: start, step
     end subroutine
 #endif
 
@@ -1012,9 +1012,9 @@ module pm_arrayRange
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRangeStep_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)               , intent(out)   , contiguous    :: range(:)
-        real(RKC)               , intent(in)                    :: start, step
+        use pm_kind, only: RKG => RK4
+        real(RKG)               , intent(out)   , contiguous    :: range(:)
+        real(RKG)               , intent(in)                    :: start, step
     end subroutine
 #endif
 
@@ -1023,9 +1023,9 @@ module pm_arrayRange
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRangeStep_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)               , intent(out)   , contiguous    :: range(:)
-        real(RKC)               , intent(in)                    :: start, step
+        use pm_kind, only: RKG => RK3
+        real(RKG)               , intent(out)   , contiguous    :: range(:)
+        real(RKG)               , intent(in)                    :: start, step
     end subroutine
 #endif
 
@@ -1034,9 +1034,9 @@ module pm_arrayRange
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRangeStep_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)               , intent(out)   , contiguous    :: range(:)
-        real(RKC)               , intent(in)                    :: start, step
+        use pm_kind, only: RKG => RK2
+        real(RKG)               , intent(out)   , contiguous    :: range(:)
+        real(RKG)               , intent(in)                    :: start, step
     end subroutine
 #endif
 
@@ -1045,9 +1045,9 @@ module pm_arrayRange
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRangeStep_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)               , intent(out)   , contiguous    :: range(:)
-        real(RKC)               , intent(in)                    :: start, step
+        use pm_kind, only: RKG => RK1
+        real(RKG)               , intent(out)   , contiguous    :: range(:)
+        real(RKG)               , intent(in)                    :: start, step
     end subroutine
 #endif
 

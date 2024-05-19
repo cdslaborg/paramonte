@@ -19,10 +19,9 @@
 
 module test_pm_processPoisson
 
-    use pm_test, only: test_type, LK
-
-    use pm_container, only: IV => cvi_pdt, RV => cvr_pdt
     use pm_processPoisson
+    use pm_test, only: test_type, LK
+    use pm_container, only: IV => cvi_type, RV => cvr_type
 
     implicit none
 

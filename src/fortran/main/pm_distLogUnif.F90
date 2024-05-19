@@ -238,9 +238,9 @@ module pm_distLogUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogUnifPDFNF_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(in)                :: logMinX, logMaxX
-        real(RKC)                               :: pdfnf
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(in)                :: logMinX, logMaxX
+        real(RKG)                               :: pdfnf
     end function
 #endif
 
@@ -249,9 +249,9 @@ module pm_distLogUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogUnifPDFNF_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(in)                :: logMinX, logMaxX
-        real(RKC)                               :: pdfnf
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(in)                :: logMinX, logMaxX
+        real(RKG)                               :: pdfnf
     end function
 #endif
 
@@ -260,9 +260,9 @@ module pm_distLogUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogUnifPDFNF_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(in)                :: logMinX, logMaxX
-        real(RKC)                               :: pdfnf
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(in)                :: logMinX, logMaxX
+        real(RKG)                               :: pdfnf
     end function
 #endif
 
@@ -271,9 +271,9 @@ module pm_distLogUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogUnifPDFNF_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(in)                :: logMinX, logMaxX
-        real(RKC)                               :: pdfnf
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(in)                :: logMinX, logMaxX
+        real(RKG)                               :: pdfnf
     end function
 #endif
 
@@ -282,9 +282,9 @@ module pm_distLogUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogUnifPDFNF_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(in)                :: logMinX, logMaxX
-        real(RKC)                               :: pdfnf
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(in)                :: logMinX, logMaxX
+        real(RKG)                               :: pdfnf
     end function
 #endif
 
@@ -363,9 +363,9 @@ module pm_distLogUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogUnifPDFMM_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(in)                :: x, minx, maxx
-        real(RKC)                               :: pdf
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(in)                :: x, minx, maxx
+        real(RKG)                               :: pdf
     end function
 #endif
 
@@ -374,9 +374,9 @@ module pm_distLogUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogUnifPDFMM_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(in)                :: x, minx, maxx
-        real(RKC)                               :: pdf
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(in)                :: x, minx, maxx
+        real(RKG)                               :: pdf
     end function
 #endif
 
@@ -385,9 +385,9 @@ module pm_distLogUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogUnifPDFMM_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(in)                :: x, minx, maxx
-        real(RKC)                               :: pdf
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(in)                :: x, minx, maxx
+        real(RKG)                               :: pdf
     end function
 #endif
 
@@ -396,9 +396,9 @@ module pm_distLogUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogUnifPDFMM_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(in)                :: x, minx, maxx
-        real(RKC)                               :: pdf
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(in)                :: x, minx, maxx
+        real(RKG)                               :: pdf
     end function
 #endif
 
@@ -407,9 +407,9 @@ module pm_distLogUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogUnifPDFMM_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(in)                :: x, minx, maxx
-        real(RKC)                               :: pdf
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(in)                :: x, minx, maxx
+        real(RKG)                               :: pdf
     end function
 #endif
 
@@ -484,9 +484,9 @@ module pm_distLogUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLogUnifPDF_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(out)                   :: pdf
-        real(RKC)   , intent(in)                    :: x, pdfnf
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(out)                   :: pdf
+        real(RKG)   , intent(in)                    :: x, pdfnf
     end subroutine
 #endif
 
@@ -495,9 +495,9 @@ module pm_distLogUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLogUnifPDF_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(out)                   :: pdf
-        real(RKC)   , intent(in)                    :: x, pdfnf
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(out)                   :: pdf
+        real(RKG)   , intent(in)                    :: x, pdfnf
     end subroutine
 #endif
 
@@ -506,9 +506,9 @@ module pm_distLogUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLogUnifPDF_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(out)                   :: pdf
-        real(RKC)   , intent(in)                    :: x, pdfnf
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(out)                   :: pdf
+        real(RKG)   , intent(in)                    :: x, pdfnf
     end subroutine
 #endif
 
@@ -517,9 +517,9 @@ module pm_distLogUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLogUnifPDF_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(out)                   :: pdf
-        real(RKC)   , intent(in)                    :: x, pdfnf
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(out)                   :: pdf
+        real(RKG)   , intent(in)                    :: x, pdfnf
     end subroutine
 #endif
 
@@ -528,9 +528,9 @@ module pm_distLogUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLogUnifPDF_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(out)                   :: pdf
-        real(RKC)   , intent(in)                    :: x, pdfnf
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(out)                   :: pdf
+        real(RKG)   , intent(in)                    :: x, pdfnf
     end subroutine
 #endif
 
@@ -608,9 +608,9 @@ module pm_distLogUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogUnifCDFLL_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(in)                :: logx, logMinX, logMaxX
-        real(RKC)                               :: cdf
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(in)                :: logx, logMinX, logMaxX
+        real(RKG)                               :: cdf
     end function
 #endif
 
@@ -619,9 +619,9 @@ module pm_distLogUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogUnifCDFLL_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(in)                :: logx, logMinX, logMaxX
-        real(RKC)                               :: cdf
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(in)                :: logx, logMinX, logMaxX
+        real(RKG)                               :: cdf
     end function
 #endif
 
@@ -630,9 +630,9 @@ module pm_distLogUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogUnifCDFLL_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(in)                :: logx, logMinX, logMaxX
-        real(RKC)                               :: cdf
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(in)                :: logx, logMinX, logMaxX
+        real(RKG)                               :: cdf
     end function
 #endif
 
@@ -641,9 +641,9 @@ module pm_distLogUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogUnifCDFLL_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(in)                :: logx, logMinX, logMaxX
-        real(RKC)                               :: cdf
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(in)                :: logx, logMinX, logMaxX
+        real(RKG)                               :: cdf
     end function
 #endif
 
@@ -652,9 +652,9 @@ module pm_distLogUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogUnifCDFLL_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(in)                :: logx, logMinX, logMaxX
-        real(RKC)                               :: cdf
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(in)                :: logx, logMinX, logMaxX
+        real(RKG)                               :: cdf
     end function
 #endif
 
@@ -735,9 +735,9 @@ module pm_distLogUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLogUnifCDFLL_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(out)                   :: cdf
-        real(RKC)   , intent(in)                    :: logx, logMinX, pdfnf
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(out)                   :: cdf
+        real(RKG)   , intent(in)                    :: logx, logMinX, pdfnf
     end subroutine
 #endif
 
@@ -746,9 +746,9 @@ module pm_distLogUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLogUnifCDFLL_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(out)                   :: cdf
-        real(RKC)   , intent(in)                    :: logx, logMinX, pdfnf
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(out)                   :: cdf
+        real(RKG)   , intent(in)                    :: logx, logMinX, pdfnf
     end subroutine
 #endif
 
@@ -757,9 +757,9 @@ module pm_distLogUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLogUnifCDFLL_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(out)                   :: cdf
-        real(RKC)   , intent(in)                    :: logx, logMinX, pdfnf
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(out)                   :: cdf
+        real(RKG)   , intent(in)                    :: logx, logMinX, pdfnf
     end subroutine
 #endif
 
@@ -768,9 +768,9 @@ module pm_distLogUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLogUnifCDFLL_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(out)                   :: cdf
-        real(RKC)   , intent(in)                    :: logx, logMinX, pdfnf
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(out)                   :: cdf
+        real(RKG)   , intent(in)                    :: logx, logMinX, pdfnf
     end subroutine
 #endif
 
@@ -779,9 +779,9 @@ module pm_distLogUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLogUnifCDFLL_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(out)                   :: cdf
-        real(RKC)   , intent(in)                    :: logx, logMinX, pdfnf
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(out)                   :: cdf
+        real(RKG)   , intent(in)                    :: logx, logMinX, pdfnf
     end subroutine
 #endif
 
@@ -863,9 +863,9 @@ module pm_distLogUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogUnifLogQuanLL_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(in)                :: cdf, logMinX, logMaxX
-        real(RKC)                               :: logx
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(in)                :: cdf, logMinX, logMaxX
+        real(RKG)                               :: logx
     end function
 #endif
 
@@ -874,9 +874,9 @@ module pm_distLogUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogUnifLogQuanLL_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(in)                :: cdf, logMinX, logMaxX
-        real(RKC)                               :: logx
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(in)                :: cdf, logMinX, logMaxX
+        real(RKG)                               :: logx
     end function
 #endif
 
@@ -885,9 +885,9 @@ module pm_distLogUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogUnifLogQuanLL_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(in)                :: cdf, logMinX, logMaxX
-        real(RKC)                               :: logx
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(in)                :: cdf, logMinX, logMaxX
+        real(RKG)                               :: logx
     end function
 #endif
 
@@ -896,9 +896,9 @@ module pm_distLogUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogUnifLogQuanLL_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(in)                :: cdf, logMinX, logMaxX
-        real(RKC)                               :: logx
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(in)                :: cdf, logMinX, logMaxX
+        real(RKG)                               :: logx
     end function
 #endif
 
@@ -907,9 +907,9 @@ module pm_distLogUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogUnifLogQuanLL_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(in)                :: cdf, logMinX, logMaxX
-        real(RKC)                               :: logx
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(in)                :: cdf, logMinX, logMaxX
+        real(RKG)                               :: logx
     end function
 #endif
 
@@ -988,9 +988,9 @@ module pm_distLogUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLogUnifLogQuanLLLP_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(out)                   :: logx
-        real(RKC)   , intent(in)                    :: cdf, logMinX, pdfnf
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(out)                   :: logx
+        real(RKG)   , intent(in)                    :: cdf, logMinX, pdfnf
     end subroutine
 #endif
 
@@ -999,9 +999,9 @@ module pm_distLogUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLogUnifLogQuanLLLP_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(out)                   :: logx
-        real(RKC)   , intent(in)                    :: cdf, logMinX, pdfnf
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(out)                   :: logx
+        real(RKG)   , intent(in)                    :: cdf, logMinX, pdfnf
     end subroutine
 #endif
 
@@ -1010,9 +1010,9 @@ module pm_distLogUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLogUnifLogQuanLLLP_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(out)                   :: logx
-        real(RKC)   , intent(in)                    :: cdf, logMinX, pdfnf
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(out)                   :: logx
+        real(RKG)   , intent(in)                    :: cdf, logMinX, pdfnf
     end subroutine
 #endif
 
@@ -1021,9 +1021,9 @@ module pm_distLogUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLogUnifLogQuanLLLP_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(out)                   :: logx
-        real(RKC)   , intent(in)                    :: cdf, logMinX, pdfnf
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(out)                   :: logx
+        real(RKG)   , intent(in)                    :: cdf, logMinX, pdfnf
     end subroutine
 #endif
 
@@ -1032,9 +1032,9 @@ module pm_distLogUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLogUnifLogQuanLLLP_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(out)                   :: logx
-        real(RKC)   , intent(in)                    :: cdf, logMinX, pdfnf
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(out)                   :: logx
+        real(RKG)   , intent(in)                    :: cdf, logMinX, pdfnf
     end subroutine
 #endif
 
@@ -1114,9 +1114,9 @@ module pm_distLogUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogUnifRandMM_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC), intent(in)                :: minx, maxx
-        integer(IKC)                            :: rand
+        use pm_kind, only: IKG => IK5
+        integer(IKG), intent(in)                :: minx, maxx
+        integer(IKG)                            :: rand
     end function
 #endif
 
@@ -1125,9 +1125,9 @@ module pm_distLogUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogUnifRandMM_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC), intent(in)                :: minx, maxx
-        integer(IKC)                            :: rand
+        use pm_kind, only: IKG => IK4
+        integer(IKG), intent(in)                :: minx, maxx
+        integer(IKG)                            :: rand
     end function
 #endif
 
@@ -1136,9 +1136,9 @@ module pm_distLogUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogUnifRandMM_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC), intent(in)                :: minx, maxx
-        integer(IKC)                            :: rand
+        use pm_kind, only: IKG => IK3
+        integer(IKG), intent(in)                :: minx, maxx
+        integer(IKG)                            :: rand
     end function
 #endif
 
@@ -1147,9 +1147,9 @@ module pm_distLogUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogUnifRandMM_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC), intent(in)                :: minx, maxx
-        integer(IKC)                            :: rand
+        use pm_kind, only: IKG => IK2
+        integer(IKG), intent(in)                :: minx, maxx
+        integer(IKG)                            :: rand
     end function
 #endif
 
@@ -1158,9 +1158,9 @@ module pm_distLogUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogUnifRandMM_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC), intent(in)                :: minx, maxx
-        integer(IKC)                            :: rand
+        use pm_kind, only: IKG => IK1
+        integer(IKG), intent(in)                :: minx, maxx
+        integer(IKG)                            :: rand
     end function
 #endif
 
@@ -1171,9 +1171,9 @@ module pm_distLogUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogUnifRandMM_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(in)                :: minx, maxx
-        real(RKC)                               :: rand
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(in)                :: minx, maxx
+        real(RKG)                               :: rand
     end function
 #endif
 
@@ -1182,9 +1182,9 @@ module pm_distLogUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogUnifRandMM_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(in)                :: minx, maxx
-        real(RKC)                               :: rand
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(in)                :: minx, maxx
+        real(RKG)                               :: rand
     end function
 #endif
 
@@ -1193,9 +1193,9 @@ module pm_distLogUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogUnifRandMM_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(in)                :: minx, maxx
-        real(RKC)                               :: rand
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(in)                :: minx, maxx
+        real(RKG)                               :: rand
     end function
 #endif
 
@@ -1204,9 +1204,9 @@ module pm_distLogUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogUnifRandMM_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(in)                :: minx, maxx
-        real(RKC)                               :: rand
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(in)                :: minx, maxx
+        real(RKG)                               :: rand
     end function
 #endif
 
@@ -1215,9 +1215,9 @@ module pm_distLogUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogUnifRandMM_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(in)                :: minx, maxx
-        real(RKC)                               :: rand
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(in)                :: minx, maxx
+        real(RKG)                               :: rand
     end function
 #endif
 
@@ -1297,9 +1297,9 @@ module pm_distLogUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLogUnifLogRandLLLP_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(out)                   :: logRand
-        real(RKC)   , intent(in)                    :: urand, logMinX, pdfnf
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(out)                   :: logRand
+        real(RKG)   , intent(in)                    :: urand, logMinX, pdfnf
     end subroutine
 #endif
 
@@ -1308,9 +1308,9 @@ module pm_distLogUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLogUnifLogRandLLLP_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(out)                   :: logRand
-        real(RKC)   , intent(in)                    :: urand, logMinX, pdfnf
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(out)                   :: logRand
+        real(RKG)   , intent(in)                    :: urand, logMinX, pdfnf
     end subroutine
 #endif
 
@@ -1319,9 +1319,9 @@ module pm_distLogUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLogUnifLogRandLLLP_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(out)                   :: logRand
-        real(RKC)   , intent(in)                    :: urand, logMinX, pdfnf
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(out)                   :: logRand
+        real(RKG)   , intent(in)                    :: urand, logMinX, pdfnf
     end subroutine
 #endif
 
@@ -1330,9 +1330,9 @@ module pm_distLogUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLogUnifLogRandLLLP_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(out)                   :: logRand
-        real(RKC)   , intent(in)                    :: urand, logMinX, pdfnf
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(out)                   :: logRand
+        real(RKG)   , intent(in)                    :: urand, logMinX, pdfnf
     end subroutine
 #endif
 
@@ -1341,9 +1341,9 @@ module pm_distLogUnif
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLogUnifLogRandLLLP_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(out)                   :: logRand
-        real(RKC)   , intent(in)                    :: urand, logMinX, pdfnf
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(out)                   :: logRand
+        real(RKG)   , intent(in)                    :: urand, logMinX, pdfnf
     end subroutine
 #endif
 

@@ -49,7 +49,7 @@
         ! Validate the input.
 
 #if     DDD_ENABLED || DIL_ENABLED
-        CHECK_ASSERTION(__LINE__, x <= 0._RKC, SK_"@setNegExpPDF(): The condition `x <= 0._RKC` must hold. x = "//getStr(x)) ! fpp
+        CHECK_ASSERTION(__LINE__, x <= 0._RKG, SK_"@setNegExpPDF(): The condition `x <= 0._RKG` must hold. x = "//getStr(x)) ! fpp
 #elif   MDD_ENABLED || MIL_ENABLED
         CHECK_ASSERTION(__LINE__, x <= mu, SK_"@setNegExpPDF(): The condition `x <= mu` must hold. x = "//getStr([x, mu])) ! fpp
 #else
@@ -57,8 +57,8 @@
 #endif
 
 #if     DIL_ENABLED || MIL_ENABLED
-        CHECK_ASSERTION(__LINE__, 0._RKC < invSigma, SK_"@setNegExpPDF(): The condition `0._RKC < invSigma` must hold. invSigma = "//getStr(invSigma)) ! fpp
-        CHECK_ASSERTION(__LINE__, abs(log(invSigma) - logInvSigma) < epsilon(0._RKC) * 10, SK_"@setNegExpPDF(): The condition `log(invSigma) == logInvSigma` must hold. invSigma, logInvSigma = "//getStr([invSigma, logInvSigma])) ! fpp
+        CHECK_ASSERTION(__LINE__, 0._RKG < invSigma, SK_"@setNegExpPDF(): The condition `0._RKG < invSigma` must hold. invSigma = "//getStr(invSigma)) ! fpp
+        CHECK_ASSERTION(__LINE__, abs(log(invSigma) - logInvSigma) < epsilon(0._RKG) * 10, SK_"@setNegExpPDF(): The condition `log(invSigma) == logInvSigma` must hold. invSigma, logInvSigma = "//getStr([invSigma, logInvSigma])) ! fpp
 #elif   !(DDD_ENABLED || MDD_ENABLED)
 #error  "Unrecognized interface."
 #endif
@@ -102,7 +102,7 @@
         ! Validate the input.
 
 #if     XDD_ENABLED || XDI_ENABLED
-        CHECK_ASSERTION(__LINE__, x <= 0._RKC, SK_"@setNegExpCDF(): The condition `x <= 0._RKC` must hold. x = "//getStr(x)) ! fpp
+        CHECK_ASSERTION(__LINE__, x <= 0._RKG, SK_"@setNegExpCDF(): The condition `x <= 0._RKG` must hold. x = "//getStr(x)) ! fpp
 #elif   XMI_ENABLED
         CHECK_ASSERTION(__LINE__, x <= mu, SK_"@setNegExpCDF(): The condition `x <= mu` must hold. x = "//getStr([x, mu])) ! fpp
 #else
@@ -110,7 +110,7 @@
 #endif
 
 #if     XDI_ENABLED || XMI_ENABLED
-        CHECK_ASSERTION(__LINE__, 0._RKC < invSigma, SK_"@setNegExpCDF(): The condition `0._RKC < invSigma` must hold. invSigma = "//getStr(invSigma)) ! fpp
+        CHECK_ASSERTION(__LINE__, 0._RKG < invSigma, SK_"@setNegExpCDF(): The condition `0._RKG < invSigma` must hold. invSigma = "//getStr(invSigma)) ! fpp
 #elif   !XDD_ENABLED
 #error  "Unrecognized interface."
 #endif
@@ -132,24 +132,24 @@
         !%%%%%%%%%%%%%%%%%%%%
 
         use pm_distUnif, only: getUnifRand
-        call setNegExpRand(rand, getUnifRand(0._RKC, 1._RKC), sigma)
+        call setNegExpRand(rand, getUnifRand(0._RKG, 1._RKG), sigma)
         if (present(mu)) rand = rand + mu
 
         !%%%%%%%%%%%%%%%%%%%%
 #elif   setNegExpRand_ENABLED
         !%%%%%%%%%%%%%%%%%%%%
 
-        CHECK_ASSERTION(__LINE__, 0._RKC < urand, SK_"@setNegExpRand(): The condition `0._RKC < urand` must hold. urand = "//getStr(urand)) ! fpp
-        CHECK_ASSERTION(__LINE__, urand <= 1._RKC, SK_"@setNegExpRand(): The condition `urand <= 1._RKC` must hold. urand = "//getStr(urand)) ! fpp
+        CHECK_ASSERTION(__LINE__, 0._RKG < urand, SK_"@setNegExpRand(): The condition `0._RKG < urand` must hold. urand = "//getStr(urand)) ! fpp
+        CHECK_ASSERTION(__LINE__, urand <= 1._RKG, SK_"@setNegExpRand(): The condition `urand <= 1._RKG` must hold. urand = "//getStr(urand)) ! fpp
 #if     USD_ENABLED || USM_ENABLED
-        CHECK_ASSERTION(__LINE__, 0._RKC < sigma, SK_"@setNegExpRand(): The condition `0._RKC < sigma` must hold. sigma = "//getStr(sigma)) ! fpp
+        CHECK_ASSERTION(__LINE__, 0._RKG < sigma, SK_"@setNegExpRand(): The condition `0._RKG < sigma` must hold. sigma = "//getStr(sigma)) ! fpp
 #endif
 #if     UDD_ENABLED
-        rand = log(1._RKC - urand)
+        rand = log(1._RKG - urand)
 #elif   USD_ENABLED
-        rand = log(1._RKC - urand) * sigma
+        rand = log(1._RKG - urand) * sigma
 #elif   USM_ENABLED
-        rand = log(1._RKC - urand) * sigma + mu
+        rand = log(1._RKG - urand) * sigma + mu
 #else
 #error  "Unrecognized interface."
 #endif

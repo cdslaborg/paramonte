@@ -90,11 +90,11 @@ end block;
 program example
 
     use pm_kind, only: SK, IK
-    use pm_kind, only: SKC => SK ! All kinds are supported.
-    use pm_kind, only: LKC => LK ! All kinds are supported.
-    use pm_kind, only: IKC => IK ! All kinds are supported.
-    use pm_kind, only: CKC => CK ! All kinds are supported.
-    use pm_kind, only: RKC => RK ! All kinds are supported.
+    use pm_kind, only: SKG => SK ! All kinds are supported.
+    use pm_kind, only: LKG => LK ! All kinds are supported.
+    use pm_kind, only: IKG => IK ! All kinds are supported.
+    use pm_kind, only: CKG => CK ! All kinds are supported.
+    use pm_kind, only: RKG => RK ! All kinds are supported.
     use pm_io, only: display_type
     use pm_arrayRebill, only: setRebilled
 
@@ -119,8 +119,8 @@ program example
 
 #define LB 2_IK
 #define UB 10_IK
-#define FILL SKC_"--"
-#define DECLARE character(2,SKC), allocatable :: array(:)
+#define FILL SKG_"--"
+#define DECLARE character(2,SKG), allocatable :: array(:)
 #define CONSTRUCT allocate(array(3:8)); array(:) = ["AA", "BB", "CC", "DD", "EE", "FF"]
 REBILL_ARRAY
 
@@ -132,8 +132,8 @@ REBILL_ARRAY
 
 #define LB 2_IK
 #define UB 10_IK
-#define FILL -3_IKC
-#define DECLARE integer(IKC), allocatable :: array(:)
+#define FILL -3_IKG
+#define DECLARE integer(IKG), allocatable :: array(:)
 #define CONSTRUCT allocate(array(3:8)); array(:) = [1, 2, 3, 4, 5, 6]
 REBILL_ARRAY
 
@@ -145,8 +145,8 @@ REBILL_ARRAY
 
 #define LB 2_IK
 #define UB 10_IK
-#define FILL .false._LKC
-#define DECLARE logical(LKC), allocatable :: array(:)
+#define FILL .false._LKG
+#define DECLARE logical(LKG), allocatable :: array(:)
 #define CONSTRUCT allocate(array(3:8)); array(:) = [.true., .true., .true., .true., .true., .true.]
 REBILL_ARRAY
 
@@ -158,8 +158,8 @@ REBILL_ARRAY
 
 #define LB 2_IK
 #define UB 10_IK
-#define FILL cmplx(-9.,-9.,CKC)
-#define DECLARE complex(CKC), allocatable :: array(:)
+#define FILL cmplx(-9.,-9.,CKG)
+#define DECLARE complex(CKG), allocatable :: array(:)
 #define CONSTRUCT allocate(array(3:8)); array(:) = [(1., -1.), (2., -2.), (3., -3.), (4., -4.), (5., -5.), (6., -6.)]
 REBILL_ARRAY
 
@@ -171,8 +171,8 @@ REBILL_ARRAY
 
 #define LB 2_IK
 #define UB 10_IK
-#define FILL -1._RKC
-#define DECLARE real(RKC), allocatable :: array(:)
+#define FILL -1._RKG
+#define DECLARE real(RKG), allocatable :: array(:)
 #define CONSTRUCT allocate(array(3:8)); array(:) = [1., 2., 3., 4., 5., 6.]
 REBILL_ARRAY
 
@@ -184,8 +184,8 @@ REBILL_ARRAY
 
 #define LB [-1_IK, -1_IK]
 #define UB [+7_IK, +7_IK]
-#define FILL SKC_"--"
-#define DECLARE character(2,SKC), allocatable :: array(:,:)
+#define FILL SKG_"--"
+#define DECLARE character(2,SKG), allocatable :: array(:,:)
 #define CONSTRUCT allocate(array(2:3,3:5)); array(:,:) = reshape(["AA", "BB", "CC", "DD", "EE", "FF"], shape = shape(array), order = [2, 1])
 REBILL_ARRAY
 
@@ -197,8 +197,8 @@ REBILL_ARRAY
 
 #define LB [-1_IK, -1_IK, 1_IK]
 #define UB [+7_IK, +7_IK, 3_IK]
-#define FILL SKC_"--"
-#define DECLARE character(2,SKC), allocatable :: array(:,:,:)
+#define FILL SKG_"--"
+#define DECLARE character(2,SKG), allocatable :: array(:,:,:)
 #define CONSTRUCT allocate(array(2:3,3:5,2:2)); array(:,:,:) = reshape(["AA", "BB", "CC", "DD", "EE", "FF"], shape = shape(array), order = [3, 2, 1])
 REBILL_ARRAY
 
@@ -210,8 +210,8 @@ REBILL_ARRAY
 
 #define LB [-1_IK, -1_IK]
 #define UB [+2_IK, +4_IK]
-#define FILL SKC_"--"
-#define DECLARE character(2,SKC), allocatable :: array(:,:)
+#define FILL SKG_"--"
+#define DECLARE character(2,SKG), allocatable :: array(:,:)
 #define CONSTRUCT allocate(array(2:3,3:5)); array(:,:) = reshape(["AA", "BB", "CC", "DD", "EE", "FF"], shape = shape(array), order = [2, 1])
 REBILL_ARRAY
 
@@ -223,8 +223,8 @@ REBILL_ARRAY
 
 #define LB [-1_IK, -1_IK]
 #define UB [+1_IK, +2_IK]
-#define FILL SKC_"--"
-#define DECLARE character(2,SKC), allocatable :: array(:,:)
+#define FILL SKG_"--"
+#define DECLARE character(2,SKG), allocatable :: array(:,:)
 #define CONSTRUCT allocate(array(2:3,3:5)); array(:,:) = reshape(["AA", "BB", "CC", "DD", "EE", "FF"], shape = shape(array), order = [2, 1])
 REBILL_ARRAY
 
@@ -245,8 +245,8 @@ REBILL_ARRAY
 #define LB -2_IK
 #define UB 10_IK
 #define LBC -2_IK
-#define FILL SKC_"--"
-#define DECLARE character(2,SKC), allocatable :: array(:)
+#define FILL SKG_"--"
+#define DECLARE character(2,SKG), allocatable :: array(:)
 #define CONSTRUCT allocate(array(3:8)); array(:) = ["AA", "BB", "CC", "DD", "EE", "FF"]
 REBILL_SHIFT_ARRAY
 
@@ -259,8 +259,8 @@ REBILL_SHIFT_ARRAY
 #define LB [+5_IK, +5_IK]
 #define UB [10_IK, 10_IK]
 #define LBC [7_IK, 7_IK]
-#define FILL SKC_"--"
-#define DECLARE character(2,SKC), allocatable :: array(:,:)
+#define FILL SKG_"--"
+#define DECLARE character(2,SKG), allocatable :: array(:,:)
 #define CONSTRUCT allocate(array(2:3,3:5)); array(:,:) = reshape(["AA", "BB", "CC", "DD", "EE", "FF"], shape = shape(array), order = [2, 1])
 REBILL_SHIFT_ARRAY
 
@@ -273,8 +273,8 @@ REBILL_SHIFT_ARRAY
 #define LB [+5_IK, +5_IK, 1_IK]
 #define UB [10_IK, 10_IK, 2_IK]
 #define LBC [7_IK, 7_IK, 2_IK]
-#define FILL SKC_"--"
-#define DECLARE character(2,SKC), allocatable :: array(:,:,:)
+#define FILL SKG_"--"
+#define DECLARE character(2,SKG), allocatable :: array(:,:,:)
 #define CONSTRUCT allocate(array(1:2,1:3,1:1)); array(:,:,:) = reshape(["AA", "BB", "CC", "DD", "EE", "FF"], shape = shape(array), order = [3, 2, 1])
 REBILL_SHIFT_ARRAY
 
@@ -287,8 +287,8 @@ REBILL_SHIFT_ARRAY
 #define LB [-1_IK, -1_IK]
 #define UB [+2_IK, +4_IK]
 #define LBC [0_IK, 0_IK]
-#define FILL SKC_"--"
-#define DECLARE character(2,SKC), allocatable :: array(:,:)
+#define FILL SKG_"--"
+#define DECLARE character(2,SKG), allocatable :: array(:,:)
 #define CONSTRUCT allocate(array(2:3,3:5)); array(:,:) = reshape(["AA", "BB", "CC", "DD", "EE", "FF"], shape = shape(array), order = [2, 1])
 REBILL_SHIFT_ARRAY
 
@@ -301,8 +301,8 @@ REBILL_SHIFT_ARRAY
 #define LB [-1_IK, -1_IK]
 #define UB [+1_IK, +2_IK]
 #define LBC [-1_IK, 1_IK]
-#define FILL SKC_"--"
-#define DECLARE character(2,SKC), allocatable :: array(:,:)
+#define FILL SKG_"--"
+#define DECLARE character(2,SKG), allocatable :: array(:,:)
 #define CONSTRUCT allocate(array(2:3,3:5)); array(:,:) = reshape(["AA", "BB", "CC", "DD", "EE", "FF"], shape = shape(array), order = [2, 1])
 REBILL_SHIFT_ARRAY
 
@@ -325,8 +325,8 @@ REBILL_SHIFT_ARRAY
 #define LBC -2_IK
 #define LBCOLD 5_IK
 #define UBCOLD 7_IK
-#define FILL SKC_"--"
-#define DECLARE character(2,SKC), allocatable :: array(:)
+#define FILL SKG_"--"
+#define DECLARE character(2,SKG), allocatable :: array(:)
 #define CONSTRUCT allocate(array(3:8)); array(:) = ["AA", "BB", "CC", "DD", "EE", "FF"]
 REBILL_SHIFT_SUBSET_ARRAY
 
@@ -341,8 +341,8 @@ REBILL_SHIFT_SUBSET_ARRAY
 #define LBC [1_IK, 3_IK]
 #define LBCOLD [2_IK, 4_IK]
 #define UBCOLD [3_IK, 5_IK]
-#define FILL SKC_"--"
-#define DECLARE character(2,SKC), allocatable :: array(:,:)
+#define FILL SKG_"--"
+#define DECLARE character(2,SKG), allocatable :: array(:,:)
 #define CONSTRUCT allocate(array(2:3,3:5)); array(:,:) = reshape(["AA", "BB", "CC", "DD", "EE", "FF"], shape = shape(array), order = [2, 1])
 REBILL_SHIFT_SUBSET_ARRAY
 
@@ -357,8 +357,8 @@ REBILL_SHIFT_SUBSET_ARRAY
 #define LBC [1_IK, 2_IK, 4_IK]
 #define LBCOLD [1_IK, 2_IK, 2_IK]
 #define UBCOLD [2_IK, 3_IK, 2_IK]
-#define FILL SKC_"--"
-#define DECLARE character(2,SKC), allocatable :: array(:,:,:)
+#define FILL SKG_"--"
+#define DECLARE character(2,SKG), allocatable :: array(:,:,:)
 #define CONSTRUCT allocate(array(1:2,1:3,1:2)); array(:,:,:) = reshape(["AA", "BB", "CC", "DD", "EE", "FF", "GG", "HH", "II", "JJ", "KK", "LL"], shape = shape(array), order = [3, 2, 1])
 REBILL_SHIFT_SUBSET_ARRAY
 

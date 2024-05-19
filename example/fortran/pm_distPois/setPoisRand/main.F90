@@ -1,7 +1,7 @@
 program example
 
     use pm_kind, only: SK, IK
-    use pm_kind, only: RKC => RKS ! all real kinds are supported.
+    use pm_kind, only: RKG => RKS ! all real kinds are supported.
     use pm_distUnif, only: xoshiro256ssw_type
     use pm_distPois, only: setPoisRand
     use pm_arraySpace, only: setLinSpace
@@ -13,12 +13,12 @@ program example
     type(xoshiro256ssw_type) :: rng
     integer(IK), parameter  :: NP = 1000_IK
     integer(IK) :: rand(NP)
-    real(RKC) :: lambda(NP)
+    real(RKG) :: lambda(NP)
 
     type(display_type) :: disp
     disp = display_type(file = "main.out.F90")
 
-    call setLinSpace(lambda, x1 = 0.1_RKC, x2 = 100._RKC)
+    call setLinSpace(lambda, x1 = 0.1_RKG, x2 = 100._RKG)
 
     call disp%skip()
     call disp%show("lambda(1)")
@@ -65,7 +65,7 @@ program example
     block
         integer(IK) :: fileUnit, i
         integer(IK) , parameter :: NP = 5000_IK
-        real(RKC)   , parameter :: lambda(4) = [.1_RKC, 1._RKC, 4._RKC, 11._RKC]
+        real(RKG)   , parameter :: lambda(4) = [.1_RKG, 1._RKG, 4._RKG, 11._RKG]
         integer(IK) :: rand(NP, 4)
         call setPoisRand(rand(:, 1), exp(-lambda(1)))
         call setPoisRand(rand(:, 2), exp(-lambda(2)))

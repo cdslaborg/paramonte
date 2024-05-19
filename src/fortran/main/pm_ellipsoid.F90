@@ -175,9 +175,9 @@ module pm_ellipsoid
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogVolUnitBallGamm_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)           , intent(in)    :: ndim
-        real(RKC)                           :: logVolUnitBall
+        use pm_kind, only: RKG => RK5
+        real(RKG)           , intent(in)    :: ndim
+        real(RKG)                           :: logVolUnitBall
     end function
 #endif
 
@@ -186,9 +186,9 @@ module pm_ellipsoid
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogVolUnitBallGamm_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)           , intent(in)    :: ndim
-        real(RKC)                           :: logVolUnitBall
+        use pm_kind, only: RKG => RK4
+        real(RKG)           , intent(in)    :: ndim
+        real(RKG)                           :: logVolUnitBall
     end function
 #endif
 
@@ -197,9 +197,9 @@ module pm_ellipsoid
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogVolUnitBallGamm_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)           , intent(in)    :: ndim
-        real(RKC)                           :: logVolUnitBall
+        use pm_kind, only: RKG => RK3
+        real(RKG)           , intent(in)    :: ndim
+        real(RKG)                           :: logVolUnitBall
     end function
 #endif
 
@@ -208,9 +208,9 @@ module pm_ellipsoid
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogVolUnitBallGamm_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)           , intent(in)    :: ndim
-        real(RKC)                           :: logVolUnitBall
+        use pm_kind, only: RKG => RK2
+        real(RKG)           , intent(in)    :: ndim
+        real(RKG)                           :: logVolUnitBall
     end function
 #endif
 
@@ -219,9 +219,9 @@ module pm_ellipsoid
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogVolUnitBallGamm_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)           , intent(in)    :: ndim
-        real(RKC)                           :: logVolUnitBall
+        use pm_kind, only: RKG => RK1
+        real(RKG)           , intent(in)    :: ndim
+        real(RKG)                           :: logVolUnitBall
     end function
 #endif
 
@@ -326,9 +326,9 @@ module pm_ellipsoid
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLogVolUnitBallGamm_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)           , intent(out)   :: logVolUnitBall
-        real(RKC)           , intent(in)    :: ndim
+        use pm_kind, only: RKG => RK5
+        real(RKG)           , intent(out)   :: logVolUnitBall
+        real(RKG)           , intent(in)    :: ndim
     end subroutine
 #endif
 
@@ -337,9 +337,9 @@ module pm_ellipsoid
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLogVolUnitBallGamm_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)           , intent(out)   :: logVolUnitBall
-        real(RKC)           , intent(in)    :: ndim
+        use pm_kind, only: RKG => RK4
+        real(RKG)           , intent(out)   :: logVolUnitBall
+        real(RKG)           , intent(in)    :: ndim
     end subroutine
 #endif
 
@@ -348,9 +348,9 @@ module pm_ellipsoid
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLogVolUnitBallGamm_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)           , intent(out)   :: logVolUnitBall
-        real(RKC)           , intent(in)    :: ndim
+        use pm_kind, only: RKG => RK3
+        real(RKG)           , intent(out)   :: logVolUnitBall
+        real(RKG)           , intent(in)    :: ndim
     end subroutine
 #endif
 
@@ -359,9 +359,9 @@ module pm_ellipsoid
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLogVolUnitBallGamm_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)           , intent(out)   :: logVolUnitBall
-        real(RKC)           , intent(in)    :: ndim
+        use pm_kind, only: RKG => RK2
+        real(RKG)           , intent(out)   :: logVolUnitBall
+        real(RKG)           , intent(in)    :: ndim
     end subroutine
 #endif
 
@@ -370,9 +370,9 @@ module pm_ellipsoid
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLogVolUnitBallGamm_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)           , intent(out)   :: logVolUnitBall
-        real(RKC)           , intent(in)    :: ndim
+        use pm_kind, only: RKG => RK1
+        real(RKG)           , intent(out)   :: logVolUnitBall
+        real(RKG)           , intent(in)    :: ndim
     end subroutine
 #endif
 
@@ -383,8 +383,8 @@ module pm_ellipsoid
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLogVolUnitBallIter_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)           , intent(out)   :: logVolUnitBall
+        use pm_kind, only: RKG => RK5
+        real(RKG)           , intent(out)   :: logVolUnitBall
         integer(IK)         , intent(in)    :: ndim
     end subroutine
 #endif
@@ -394,8 +394,8 @@ module pm_ellipsoid
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLogVolUnitBallIter_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)           , intent(out)   :: logVolUnitBall
+        use pm_kind, only: RKG => RK4
+        real(RKG)           , intent(out)   :: logVolUnitBall
         integer(IK)         , intent(in)    :: ndim
     end subroutine
 #endif
@@ -405,8 +405,8 @@ module pm_ellipsoid
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLogVolUnitBallIter_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)           , intent(out)   :: logVolUnitBall
+        use pm_kind, only: RKG => RK3
+        real(RKG)           , intent(out)   :: logVolUnitBall
         integer(IK)         , intent(in)    :: ndim
     end subroutine
 #endif
@@ -416,8 +416,8 @@ module pm_ellipsoid
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLogVolUnitBallIter_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)           , intent(out)   :: logVolUnitBall
+        use pm_kind, only: RKG => RK2
+        real(RKG)           , intent(out)   :: logVolUnitBall
         integer(IK)         , intent(in)    :: ndim
     end subroutine
 #endif
@@ -427,8 +427,8 @@ module pm_ellipsoid
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLogVolUnitBallIter_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)           , intent(out)   :: logVolUnitBall
+        use pm_kind, only: RKG => RK1
+        real(RKG)           , intent(out)   :: logVolUnitBall
         integer(IK)         , intent(in)    :: ndim
     end subroutine
 #endif
@@ -514,9 +514,9 @@ module pm_ellipsoid
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogVolEll_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(in)    , contiguous    :: gramian(:,:)
-        real(RKC)                                   :: logVolEll
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(in)    , contiguous    :: gramian(:,:)
+        real(RKG)                                   :: logVolEll
     end function
 #endif
 
@@ -525,9 +525,9 @@ module pm_ellipsoid
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogVolEll_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(in)    , contiguous    :: gramian(:,:)
-        real(RKC)                                   :: logVolEll
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(in)    , contiguous    :: gramian(:,:)
+        real(RKG)                                   :: logVolEll
     end function
 #endif
 
@@ -536,9 +536,9 @@ module pm_ellipsoid
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogVolEll_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(in)    , contiguous    :: gramian(:,:)
-        real(RKC)                                   :: logVolEll
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(in)    , contiguous    :: gramian(:,:)
+        real(RKG)                                   :: logVolEll
     end function
 #endif
 
@@ -547,9 +547,9 @@ module pm_ellipsoid
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogVolEll_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(in)    , contiguous    :: gramian(:,:)
-        real(RKC)                                   :: logVolEll
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(in)    , contiguous    :: gramian(:,:)
+        real(RKG)                                   :: logVolEll
     end function
 #endif
 
@@ -558,9 +558,9 @@ module pm_ellipsoid
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogVolEll_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(in)    , contiguous    :: gramian(:,:)
-        real(RKC)                                   :: logVolEll
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(in)    , contiguous    :: gramian(:,:)
+        real(RKG)                                   :: logVolEll
     end function
 #endif
 
@@ -661,9 +661,9 @@ module pm_ellipsoid
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isMemberSphOrg_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(in)    , contiguous    :: point(:)
-        real(RKC)   , intent(in)                    :: radius
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(in)    , contiguous    :: point(:)
+        real(RKG)   , intent(in)                    :: radius
         logical(LK)                                 :: isMember
     end function
 #endif
@@ -673,9 +673,9 @@ module pm_ellipsoid
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isMemberSphOrg_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(in)    , contiguous    :: point(:)
-        real(RKC)   , intent(in)                    :: radius
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(in)    , contiguous    :: point(:)
+        real(RKG)   , intent(in)                    :: radius
         logical(LK)                                 :: isMember
     end function
 #endif
@@ -685,9 +685,9 @@ module pm_ellipsoid
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isMemberSphOrg_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(in)    , contiguous    :: point(:)
-        real(RKC)   , intent(in)                    :: radius
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(in)    , contiguous    :: point(:)
+        real(RKG)   , intent(in)                    :: radius
         logical(LK)                                 :: isMember
     end function
 #endif
@@ -697,9 +697,9 @@ module pm_ellipsoid
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isMemberSphOrg_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(in)    , contiguous    :: point(:)
-        real(RKC)   , intent(in)                    :: radius
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(in)    , contiguous    :: point(:)
+        real(RKG)   , intent(in)                    :: radius
         logical(LK)                                 :: isMember
     end function
 #endif
@@ -709,9 +709,9 @@ module pm_ellipsoid
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isMemberSphOrg_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(in)    , contiguous    :: point(:)
-        real(RKC)   , intent(in)                    :: radius
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(in)    , contiguous    :: point(:)
+        real(RKG)   , intent(in)                    :: radius
         logical(LK)                                 :: isMember
     end function
 #endif
@@ -723,10 +723,10 @@ module pm_ellipsoid
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isMemberSphCen_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(in)    , contiguous    :: point(:)
-        real(RKC)   , intent(in)    , contiguous    :: center(:)
-        real(RKC)   , intent(in)                    :: radius
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(in)    , contiguous    :: point(:)
+        real(RKG)   , intent(in)    , contiguous    :: center(:)
+        real(RKG)   , intent(in)                    :: radius
         logical(LK)                                 :: isMember
     end function
 #endif
@@ -736,10 +736,10 @@ module pm_ellipsoid
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isMemberSphCen_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(in)    , contiguous    :: point(:)
-        real(RKC)   , intent(in)    , contiguous    :: center(:)
-        real(RKC)   , intent(in)                    :: radius
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(in)    , contiguous    :: point(:)
+        real(RKG)   , intent(in)    , contiguous    :: center(:)
+        real(RKG)   , intent(in)                    :: radius
         logical(LK)                                 :: isMember
     end function
 #endif
@@ -749,10 +749,10 @@ module pm_ellipsoid
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isMemberSphCen_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(in)    , contiguous    :: point(:)
-        real(RKC)   , intent(in)    , contiguous    :: center(:)
-        real(RKC)   , intent(in)                    :: radius
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(in)    , contiguous    :: point(:)
+        real(RKG)   , intent(in)    , contiguous    :: center(:)
+        real(RKG)   , intent(in)                    :: radius
         logical(LK)                                 :: isMember
     end function
 #endif
@@ -762,10 +762,10 @@ module pm_ellipsoid
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isMemberSphCen_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(in)    , contiguous    :: point(:)
-        real(RKC)   , intent(in)    , contiguous    :: center(:)
-        real(RKC)   , intent(in)                    :: radius
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(in)    , contiguous    :: point(:)
+        real(RKG)   , intent(in)    , contiguous    :: center(:)
+        real(RKG)   , intent(in)                    :: radius
         logical(LK)                                 :: isMember
     end function
 #endif
@@ -775,10 +775,10 @@ module pm_ellipsoid
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isMemberSphCen_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(in)    , contiguous    :: point(:)
-        real(RKC)   , intent(in)    , contiguous    :: center(:)
-        real(RKC)   , intent(in)                    :: radius
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(in)    , contiguous    :: point(:)
+        real(RKG)   , intent(in)    , contiguous    :: center(:)
+        real(RKG)   , intent(in)                    :: radius
         logical(LK)                                 :: isMember
     end function
 #endif
@@ -796,9 +796,9 @@ module pm_ellipsoid
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isMemberEllOrg_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(in)    , contiguous    :: point(:)
-        real(RKC)   , intent(in)    , contiguous    :: invGram(:,:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(in)    , contiguous    :: point(:)
+        real(RKG)   , intent(in)    , contiguous    :: invGram(:,:)
         logical(LK)                                 :: isMember
     end function
 #endif
@@ -808,9 +808,9 @@ module pm_ellipsoid
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isMemberEllOrg_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(in)    , contiguous    :: point(:)
-        real(RKC)   , intent(in)    , contiguous    :: invGram(:,:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(in)    , contiguous    :: point(:)
+        real(RKG)   , intent(in)    , contiguous    :: invGram(:,:)
         logical(LK)                                 :: isMember
     end function
 #endif
@@ -820,9 +820,9 @@ module pm_ellipsoid
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isMemberEllOrg_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(in)    , contiguous    :: point(:)
-        real(RKC)   , intent(in)    , contiguous    :: invGram(:,:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(in)    , contiguous    :: point(:)
+        real(RKG)   , intent(in)    , contiguous    :: invGram(:,:)
         logical(LK)                                 :: isMember
     end function
 #endif
@@ -832,9 +832,9 @@ module pm_ellipsoid
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isMemberEllOrg_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(in)    , contiguous    :: point(:)
-        real(RKC)   , intent(in)    , contiguous    :: invGram(:,:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(in)    , contiguous    :: point(:)
+        real(RKG)   , intent(in)    , contiguous    :: invGram(:,:)
         logical(LK)                                 :: isMember
     end function
 #endif
@@ -844,9 +844,9 @@ module pm_ellipsoid
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isMemberEllOrg_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(in)    , contiguous    :: point(:)
-        real(RKC)   , intent(in)    , contiguous    :: invGram(:,:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(in)    , contiguous    :: point(:)
+        real(RKG)   , intent(in)    , contiguous    :: invGram(:,:)
         logical(LK)                                 :: isMember
     end function
 #endif
@@ -858,10 +858,10 @@ module pm_ellipsoid
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isMemberEllCen_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(in)    , contiguous    :: point(:)
-        real(RKC)   , intent(in)    , contiguous    :: center(:)
-        real(RKC)   , intent(in)    , contiguous    :: invGram(:,:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(in)    , contiguous    :: point(:)
+        real(RKG)   , intent(in)    , contiguous    :: center(:)
+        real(RKG)   , intent(in)    , contiguous    :: invGram(:,:)
         logical(LK)                                 :: isMember
     end function
 #endif
@@ -871,10 +871,10 @@ module pm_ellipsoid
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isMemberEllCen_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(in)    , contiguous    :: point(:)
-        real(RKC)   , intent(in)    , contiguous    :: center(:)
-        real(RKC)   , intent(in)    , contiguous    :: invGram(:,:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(in)    , contiguous    :: point(:)
+        real(RKG)   , intent(in)    , contiguous    :: center(:)
+        real(RKG)   , intent(in)    , contiguous    :: invGram(:,:)
         logical(LK)                                 :: isMember
     end function
 #endif
@@ -884,10 +884,10 @@ module pm_ellipsoid
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isMemberEllCen_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(in)    , contiguous    :: point(:)
-        real(RKC)   , intent(in)    , contiguous    :: center(:)
-        real(RKC)   , intent(in)    , contiguous    :: invGram(:,:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(in)    , contiguous    :: point(:)
+        real(RKG)   , intent(in)    , contiguous    :: center(:)
+        real(RKG)   , intent(in)    , contiguous    :: invGram(:,:)
         logical(LK)                                 :: isMember
     end function
 #endif
@@ -897,10 +897,10 @@ module pm_ellipsoid
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isMemberEllCen_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(in)    , contiguous    :: point(:)
-        real(RKC)   , intent(in)    , contiguous    :: center(:)
-        real(RKC)   , intent(in)    , contiguous    :: invGram(:,:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(in)    , contiguous    :: point(:)
+        real(RKG)   , intent(in)    , contiguous    :: center(:)
+        real(RKG)   , intent(in)    , contiguous    :: invGram(:,:)
         logical(LK)                                 :: isMember
     end function
 #endif
@@ -910,10 +910,10 @@ module pm_ellipsoid
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isMemberEllCen_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(in)    , contiguous    :: point(:)
-        real(RKC)   , intent(in)    , contiguous    :: center(:)
-        real(RKC)   , intent(in)    , contiguous    :: invGram(:,:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(in)    , contiguous    :: point(:)
+        real(RKG)   , intent(in)    , contiguous    :: center(:)
+        real(RKG)   , intent(in)    , contiguous    :: invGram(:,:)
         logical(LK)                                 :: isMember
     end function
 #endif
@@ -1008,9 +1008,9 @@ module pm_ellipsoid
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountMemberSphOrg_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(in)    , contiguous    :: point(:,:)
-        real(RKC)   , intent(in)                    :: radius
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(in)    , contiguous    :: point(:,:)
+        real(RKG)   , intent(in)                    :: radius
         integer(IK)                                 :: countMemberEll
     end function
 #endif
@@ -1020,9 +1020,9 @@ module pm_ellipsoid
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountMemberSphOrg_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(in)    , contiguous    :: point(:,:)
-        real(RKC)   , intent(in)                    :: radius
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(in)    , contiguous    :: point(:,:)
+        real(RKG)   , intent(in)                    :: radius
         integer(IK)                                 :: countMemberEll
     end function
 #endif
@@ -1032,9 +1032,9 @@ module pm_ellipsoid
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountMemberSphOrg_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(in)    , contiguous    :: point(:,:)
-        real(RKC)   , intent(in)                    :: radius
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(in)    , contiguous    :: point(:,:)
+        real(RKG)   , intent(in)                    :: radius
         integer(IK)                                 :: countMemberEll
     end function
 #endif
@@ -1044,9 +1044,9 @@ module pm_ellipsoid
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountMemberSphOrg_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(in)    , contiguous    :: point(:,:)
-        real(RKC)   , intent(in)                    :: radius
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(in)    , contiguous    :: point(:,:)
+        real(RKG)   , intent(in)                    :: radius
         integer(IK)                                 :: countMemberEll
     end function
 #endif
@@ -1056,9 +1056,9 @@ module pm_ellipsoid
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountMemberSphOrg_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(in)    , contiguous    :: point(:,:)
-        real(RKC)   , intent(in)                    :: radius
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(in)    , contiguous    :: point(:,:)
+        real(RKG)   , intent(in)                    :: radius
         integer(IK)                                 :: countMemberEll
     end function
 #endif
@@ -1070,10 +1070,10 @@ module pm_ellipsoid
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountMemberSphCen_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(in)    , contiguous    :: point(:,:)
-        real(RKC)   , intent(in)    , contiguous    :: center(:)
-        real(RKC)   , intent(in)                    :: radius
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(in)    , contiguous    :: point(:,:)
+        real(RKG)   , intent(in)    , contiguous    :: center(:)
+        real(RKG)   , intent(in)                    :: radius
         integer(IK)                                 :: countMemberEll
     end function
 #endif
@@ -1083,10 +1083,10 @@ module pm_ellipsoid
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountMemberSphCen_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(in)    , contiguous    :: point(:,:)
-        real(RKC)   , intent(in)    , contiguous    :: center(:)
-        real(RKC)   , intent(in)                    :: radius
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(in)    , contiguous    :: point(:,:)
+        real(RKG)   , intent(in)    , contiguous    :: center(:)
+        real(RKG)   , intent(in)                    :: radius
         integer(IK)                                 :: countMemberEll
     end function
 #endif
@@ -1096,10 +1096,10 @@ module pm_ellipsoid
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountMemberSphCen_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(in)    , contiguous    :: point(:,:)
-        real(RKC)   , intent(in)    , contiguous    :: center(:)
-        real(RKC)   , intent(in)                    :: radius
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(in)    , contiguous    :: point(:,:)
+        real(RKG)   , intent(in)    , contiguous    :: center(:)
+        real(RKG)   , intent(in)                    :: radius
         integer(IK)                                 :: countMemberEll
     end function
 #endif
@@ -1109,10 +1109,10 @@ module pm_ellipsoid
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountMemberSphCen_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(in)    , contiguous    :: point(:,:)
-        real(RKC)   , intent(in)    , contiguous    :: center(:)
-        real(RKC)   , intent(in)                    :: radius
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(in)    , contiguous    :: point(:,:)
+        real(RKG)   , intent(in)    , contiguous    :: center(:)
+        real(RKG)   , intent(in)                    :: radius
         integer(IK)                                 :: countMemberEll
     end function
 #endif
@@ -1122,10 +1122,10 @@ module pm_ellipsoid
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountMemberSphCen_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(in)    , contiguous    :: point(:,:)
-        real(RKC)   , intent(in)    , contiguous    :: center(:)
-        real(RKC)   , intent(in)                    :: radius
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(in)    , contiguous    :: point(:,:)
+        real(RKG)   , intent(in)    , contiguous    :: center(:)
+        real(RKG)   , intent(in)                    :: radius
         integer(IK)                                 :: countMemberEll
     end function
 #endif
@@ -1143,9 +1143,9 @@ module pm_ellipsoid
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountMemberEllOrg_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(in)    , contiguous    :: point(:,:)
-        real(RKC)   , intent(in)    , contiguous    :: invGram(:,:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(in)    , contiguous    :: point(:,:)
+        real(RKG)   , intent(in)    , contiguous    :: invGram(:,:)
         integer(IK)                                 :: countMemberEll
     end function
 #endif
@@ -1155,9 +1155,9 @@ module pm_ellipsoid
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountMemberEllOrg_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(in)    , contiguous    :: point(:,:)
-        real(RKC)   , intent(in)    , contiguous    :: invGram(:,:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(in)    , contiguous    :: point(:,:)
+        real(RKG)   , intent(in)    , contiguous    :: invGram(:,:)
         integer(IK)                                 :: countMemberEll
     end function
 #endif
@@ -1167,9 +1167,9 @@ module pm_ellipsoid
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountMemberEllOrg_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(in)    , contiguous    :: point(:,:)
-        real(RKC)   , intent(in)    , contiguous    :: invGram(:,:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(in)    , contiguous    :: point(:,:)
+        real(RKG)   , intent(in)    , contiguous    :: invGram(:,:)
         integer(IK)                                 :: countMemberEll
     end function
 #endif
@@ -1179,9 +1179,9 @@ module pm_ellipsoid
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountMemberEllOrg_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(in)    , contiguous    :: point(:,:)
-        real(RKC)   , intent(in)    , contiguous    :: invGram(:,:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(in)    , contiguous    :: point(:,:)
+        real(RKG)   , intent(in)    , contiguous    :: invGram(:,:)
         integer(IK)                                 :: countMemberEll
     end function
 #endif
@@ -1191,9 +1191,9 @@ module pm_ellipsoid
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountMemberEllOrg_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(in)    , contiguous    :: point(:,:)
-        real(RKC)   , intent(in)    , contiguous    :: invGram(:,:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(in)    , contiguous    :: point(:,:)
+        real(RKG)   , intent(in)    , contiguous    :: invGram(:,:)
         integer(IK)                                 :: countMemberEll
     end function
 #endif
@@ -1205,10 +1205,10 @@ module pm_ellipsoid
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountMemberEllCen_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(in)    , contiguous    :: point(:,:)
-        real(RKC)   , intent(in)    , contiguous    :: center(:)
-        real(RKC)   , intent(in)    , contiguous    :: invGram(:,:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(in)    , contiguous    :: point(:,:)
+        real(RKG)   , intent(in)    , contiguous    :: center(:)
+        real(RKG)   , intent(in)    , contiguous    :: invGram(:,:)
         integer(IK)                                 :: countMemberEll
     end function
 #endif
@@ -1218,10 +1218,10 @@ module pm_ellipsoid
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountMemberEllCen_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(in)    , contiguous    :: point(:,:)
-        real(RKC)   , intent(in)    , contiguous    :: center(:)
-        real(RKC)   , intent(in)    , contiguous    :: invGram(:,:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(in)    , contiguous    :: point(:,:)
+        real(RKG)   , intent(in)    , contiguous    :: center(:)
+        real(RKG)   , intent(in)    , contiguous    :: invGram(:,:)
         integer(IK)                                 :: countMemberEll
     end function
 #endif
@@ -1231,10 +1231,10 @@ module pm_ellipsoid
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountMemberEllCen_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(in)    , contiguous    :: point(:,:)
-        real(RKC)   , intent(in)    , contiguous    :: center(:)
-        real(RKC)   , intent(in)    , contiguous    :: invGram(:,:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(in)    , contiguous    :: point(:,:)
+        real(RKG)   , intent(in)    , contiguous    :: center(:)
+        real(RKG)   , intent(in)    , contiguous    :: invGram(:,:)
         integer(IK)                                 :: countMemberEll
     end function
 #endif
@@ -1244,10 +1244,10 @@ module pm_ellipsoid
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountMemberEllCen_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(in)    , contiguous    :: point(:,:)
-        real(RKC)   , intent(in)    , contiguous    :: center(:)
-        real(RKC)   , intent(in)    , contiguous    :: invGram(:,:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(in)    , contiguous    :: point(:,:)
+        real(RKG)   , intent(in)    , contiguous    :: center(:)
+        real(RKG)   , intent(in)    , contiguous    :: invGram(:,:)
         integer(IK)                                 :: countMemberEll
     end function
 #endif
@@ -1257,10 +1257,10 @@ module pm_ellipsoid
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountMemberEllCen_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(in)    , contiguous    :: point(:,:)
-        real(RKC)   , intent(in)    , contiguous    :: center(:)
-        real(RKC)   , intent(in)    , contiguous    :: invGram(:,:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(in)    , contiguous    :: point(:,:)
+        real(RKG)   , intent(in)    , contiguous    :: center(:)
+        real(RKG)   , intent(in)    , contiguous    :: invGram(:,:)
         integer(IK)                                 :: countMemberEll
     end function
 #endif
@@ -1436,13 +1436,13 @@ contains
 !        use pm_matrixChol, only: setChoLow
 !        implicit none
 !        integer(IK) , intent(in)            :: ndim, np
-!        real(RKC)   , intent(in)            :: Point(ndim,np)
+!        real(RKG)   , intent(in)            :: Point(ndim,np)
 !        logical(LK) , intent(in)            :: isBounding
 !        logical(LK) , intent(out)           :: failed
 !        type(ellipsoid_type)                :: ellipsoid
 !
-!        real(RKC)                           :: scaleSqInverse
-!        real(RKC)                           :: NormedPoint(ndim,np)
+!        real(RKG)                           :: scaleSqInverse
+!        real(RKG)                           :: NormedPoint(ndim,np)
 !        integer(IK)                         :: id, ip
 !
 !        ! Compute the mean.
@@ -1516,11 +1516,11 @@ contains
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getLogLikeFitness
 !#endif
-!        use pm_kind, only: RKC
+!        use pm_kind, only: RKG
 !        implicit none
 !        integer(IK) , intent(in)    :: count
-!        real(RKC)   , intent(in)    :: logVolRatio
-!        real(RKC)                   :: logLikeFitness
+!        real(RKG)   , intent(in)    :: logVolRatio
+!        real(RKG)                   :: logLikeFitness
 !        logLikeFitness = count * (1._RK + logVolRatio - exp(logVolRatio))
 !    end function getLogLikeFitness
 !

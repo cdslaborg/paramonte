@@ -43,9 +43,9 @@
 #else
 #error  "Unrecognized interface."
 #endif
-        real(TKC) :: ecdf(size(sample, dim, IK))
-        real(TKC) :: sampleSorted(size(sample, dim, IK))
-        CHECK_ASSERTION(__LINE__, all([0._TKC <= prob .and. prob <= 1._TKC]), SK_"@getQuan(): The condition `all([0. <= prob .and. prob <= 1.])` must hold. prob = "//getStr(prob))
+        real(TKG) :: ecdf(size(sample, dim, IK))
+        real(TKG) :: sampleSorted(size(sample, dim, IK))
+        CHECK_ASSERTION(__LINE__, all([0._TKG <= prob .and. prob <= 1._TKG]), SK_"@getQuan(): The condition `all([0. <= prob .and. prob <= 1.])` must hold. prob = "//getStr(prob))
         ! Define the optional weight argument.
 #if     WNO_ENABLED
         call setECDF(ecdf)

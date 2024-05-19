@@ -202,10 +202,10 @@ module pm_distCosRaised
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCosRaisedPDF_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(in)                :: x
-        real(RKC)   , intent(in)    , optional  :: mu, sigma
-        real(RKC)                               :: pdf
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(in)                :: x
+        real(RKG)   , intent(in)    , optional  :: mu, sigma
+        real(RKG)                               :: pdf
     end function
 #endif
 
@@ -214,10 +214,10 @@ module pm_distCosRaised
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCosRaisedPDF_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(in)                :: x
-        real(RKC)   , intent(in)    , optional  :: mu, sigma
-        real(RKC)                               :: pdf
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(in)                :: x
+        real(RKG)   , intent(in)    , optional  :: mu, sigma
+        real(RKG)                               :: pdf
     end function
 #endif
 
@@ -226,10 +226,10 @@ module pm_distCosRaised
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCosRaisedPDF_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(in)                :: x
-        real(RKC)   , intent(in)    , optional  :: mu, sigma
-        real(RKC)                               :: pdf
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(in)                :: x
+        real(RKG)   , intent(in)    , optional  :: mu, sigma
+        real(RKG)                               :: pdf
     end function
 #endif
 
@@ -238,10 +238,10 @@ module pm_distCosRaised
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCosRaisedPDF_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(in)                :: x
-        real(RKC)   , intent(in)    , optional  :: mu, sigma
-        real(RKC)                               :: pdf
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(in)                :: x
+        real(RKG)   , intent(in)    , optional  :: mu, sigma
+        real(RKG)                               :: pdf
     end function
 #endif
 
@@ -250,10 +250,10 @@ module pm_distCosRaised
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCosRaisedPDF_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(in)                :: x
-        real(RKC)   , intent(in)    , optional  :: mu, sigma
-        real(RKC)                               :: pdf
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(in)                :: x
+        real(RKG)   , intent(in)    , optional  :: mu, sigma
+        real(RKG)                               :: pdf
     end function
 #endif
 
@@ -338,9 +338,9 @@ module pm_distCosRaised
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCosRaisedPDFXDD_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(out)                   :: pdf
-        real(RKC)   , intent(in)                    :: x
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(out)                   :: pdf
+        real(RKG)   , intent(in)                    :: x
     end subroutine
 #endif
 
@@ -349,9 +349,9 @@ module pm_distCosRaised
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCosRaisedPDFXDD_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(out)                   :: pdf
-        real(RKC)   , intent(in)                    :: x
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(out)                   :: pdf
+        real(RKG)   , intent(in)                    :: x
     end subroutine
 #endif
 
@@ -360,9 +360,9 @@ module pm_distCosRaised
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCosRaisedPDFXDD_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(out)                   :: pdf
-        real(RKC)   , intent(in)                    :: x
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(out)                   :: pdf
+        real(RKG)   , intent(in)                    :: x
     end subroutine
 #endif
 
@@ -371,9 +371,9 @@ module pm_distCosRaised
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCosRaisedPDFXDD_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(out)                   :: pdf
-        real(RKC)   , intent(in)                    :: x
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(out)                   :: pdf
+        real(RKG)   , intent(in)                    :: x
     end subroutine
 #endif
 
@@ -382,9 +382,9 @@ module pm_distCosRaised
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCosRaisedPDFXDD_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(out)                   :: pdf
-        real(RKC)   , intent(in)                    :: x
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(out)                   :: pdf
+        real(RKG)   , intent(in)                    :: x
     end subroutine
 #endif
 
@@ -395,9 +395,9 @@ module pm_distCosRaised
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCosRaisedPDFXMD_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(out)                   :: pdf
-        real(RKC)   , intent(in)                    :: x, mu
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(out)                   :: pdf
+        real(RKG)   , intent(in)                    :: x, mu
     end subroutine
 #endif
 
@@ -406,9 +406,9 @@ module pm_distCosRaised
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCosRaisedPDFXMD_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(out)                   :: pdf
-        real(RKC)   , intent(in)                    :: x, mu
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(out)                   :: pdf
+        real(RKG)   , intent(in)                    :: x, mu
     end subroutine
 #endif
 
@@ -417,9 +417,9 @@ module pm_distCosRaised
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCosRaisedPDFXMD_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(out)                   :: pdf
-        real(RKC)   , intent(in)                    :: x, mu
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(out)                   :: pdf
+        real(RKG)   , intent(in)                    :: x, mu
     end subroutine
 #endif
 
@@ -428,9 +428,9 @@ module pm_distCosRaised
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCosRaisedPDFXMD_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(out)                   :: pdf
-        real(RKC)   , intent(in)                    :: x, mu
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(out)                   :: pdf
+        real(RKG)   , intent(in)                    :: x, mu
     end subroutine
 #endif
 
@@ -439,9 +439,9 @@ module pm_distCosRaised
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCosRaisedPDFXMD_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(out)                   :: pdf
-        real(RKC)   , intent(in)                    :: x, mu
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(out)                   :: pdf
+        real(RKG)   , intent(in)                    :: x, mu
     end subroutine
 #endif
 
@@ -452,9 +452,9 @@ module pm_distCosRaised
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCosRaisedPDFXMI_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(out)                   :: pdf
-        real(RKC)   , intent(in)                    :: x, mu, invSigma
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(out)                   :: pdf
+        real(RKG)   , intent(in)                    :: x, mu, invSigma
     end subroutine
 #endif
 
@@ -463,9 +463,9 @@ module pm_distCosRaised
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCosRaisedPDFXMI_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(out)                   :: pdf
-        real(RKC)   , intent(in)                    :: x, mu, invSigma
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(out)                   :: pdf
+        real(RKG)   , intent(in)                    :: x, mu, invSigma
     end subroutine
 #endif
 
@@ -474,9 +474,9 @@ module pm_distCosRaised
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCosRaisedPDFXMI_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(out)                   :: pdf
-        real(RKC)   , intent(in)                    :: x, mu, invSigma
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(out)                   :: pdf
+        real(RKG)   , intent(in)                    :: x, mu, invSigma
     end subroutine
 #endif
 
@@ -485,9 +485,9 @@ module pm_distCosRaised
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCosRaisedPDFXMI_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(out)                   :: pdf
-        real(RKC)   , intent(in)                    :: x, mu, invSigma
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(out)                   :: pdf
+        real(RKG)   , intent(in)                    :: x, mu, invSigma
     end subroutine
 #endif
 
@@ -496,9 +496,9 @@ module pm_distCosRaised
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCosRaisedPDFXMI_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(out)                   :: pdf
-        real(RKC)   , intent(in)                    :: x, mu, invSigma
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(out)                   :: pdf
+        real(RKG)   , intent(in)                    :: x, mu, invSigma
     end subroutine
 #endif
 
@@ -582,10 +582,10 @@ module pm_distCosRaised
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCosRaisedCDF_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(in)                :: x
-        real(RKC)   , intent(in)    , optional  :: mu, sigma
-        real(RKC)                               :: cdf
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(in)                :: x
+        real(RKG)   , intent(in)    , optional  :: mu, sigma
+        real(RKG)                               :: cdf
     end function
 #endif
 
@@ -594,10 +594,10 @@ module pm_distCosRaised
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCosRaisedCDF_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(in)                :: x
-        real(RKC)   , intent(in)    , optional  :: mu, sigma
-        real(RKC)                               :: cdf
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(in)                :: x
+        real(RKG)   , intent(in)    , optional  :: mu, sigma
+        real(RKG)                               :: cdf
     end function
 #endif
 
@@ -606,10 +606,10 @@ module pm_distCosRaised
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCosRaisedCDF_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(in)                :: x
-        real(RKC)   , intent(in)    , optional  :: mu, sigma
-        real(RKC)                               :: cdf
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(in)                :: x
+        real(RKG)   , intent(in)    , optional  :: mu, sigma
+        real(RKG)                               :: cdf
     end function
 #endif
 
@@ -618,10 +618,10 @@ module pm_distCosRaised
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCosRaisedCDF_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(in)                :: x
-        real(RKC)   , intent(in)    , optional  :: mu, sigma
-        real(RKC)                               :: cdf
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(in)                :: x
+        real(RKG)   , intent(in)    , optional  :: mu, sigma
+        real(RKG)                               :: cdf
     end function
 #endif
 
@@ -630,10 +630,10 @@ module pm_distCosRaised
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCosRaisedCDF_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(in)                :: x
-        real(RKC)   , intent(in)    , optional  :: mu, sigma
-        real(RKC)                               :: cdf
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(in)                :: x
+        real(RKG)   , intent(in)    , optional  :: mu, sigma
+        real(RKG)                               :: cdf
     end function
 #endif
 
@@ -718,9 +718,9 @@ module pm_distCosRaised
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCosRaisedCDFXDD_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(out)                   :: cdf
-        real(RKC)   , intent(in)                    :: x
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(out)                   :: cdf
+        real(RKG)   , intent(in)                    :: x
     end subroutine
 #endif
 
@@ -729,9 +729,9 @@ module pm_distCosRaised
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCosRaisedCDFXDD_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(out)                   :: cdf
-        real(RKC)   , intent(in)                    :: x
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(out)                   :: cdf
+        real(RKG)   , intent(in)                    :: x
     end subroutine
 #endif
 
@@ -740,9 +740,9 @@ module pm_distCosRaised
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCosRaisedCDFXDD_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(out)                   :: cdf
-        real(RKC)   , intent(in)                    :: x
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(out)                   :: cdf
+        real(RKG)   , intent(in)                    :: x
     end subroutine
 #endif
 
@@ -751,9 +751,9 @@ module pm_distCosRaised
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCosRaisedCDFXDD_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(out)                   :: cdf
-        real(RKC)   , intent(in)                    :: x
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(out)                   :: cdf
+        real(RKG)   , intent(in)                    :: x
     end subroutine
 #endif
 
@@ -762,9 +762,9 @@ module pm_distCosRaised
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCosRaisedCDFXDD_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(out)                   :: cdf
-        real(RKC)   , intent(in)                    :: x
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(out)                   :: cdf
+        real(RKG)   , intent(in)                    :: x
     end subroutine
 #endif
 
@@ -775,9 +775,9 @@ module pm_distCosRaised
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCosRaisedCDFXMD_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(out)                   :: cdf
-        real(RKC)   , intent(in)                    :: x, mu
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(out)                   :: cdf
+        real(RKG)   , intent(in)                    :: x, mu
     end subroutine
 #endif
 
@@ -786,9 +786,9 @@ module pm_distCosRaised
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCosRaisedCDFXMD_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(out)                   :: cdf
-        real(RKC)   , intent(in)                    :: x, mu
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(out)                   :: cdf
+        real(RKG)   , intent(in)                    :: x, mu
     end subroutine
 #endif
 
@@ -797,9 +797,9 @@ module pm_distCosRaised
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCosRaisedCDFXMD_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(out)                   :: cdf
-        real(RKC)   , intent(in)                    :: x, mu
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(out)                   :: cdf
+        real(RKG)   , intent(in)                    :: x, mu
     end subroutine
 #endif
 
@@ -808,9 +808,9 @@ module pm_distCosRaised
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCosRaisedCDFXMD_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(out)                   :: cdf
-        real(RKC)   , intent(in)                    :: x, mu
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(out)                   :: cdf
+        real(RKG)   , intent(in)                    :: x, mu
     end subroutine
 #endif
 
@@ -819,9 +819,9 @@ module pm_distCosRaised
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCosRaisedCDFXMD_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(out)                   :: cdf
-        real(RKC)   , intent(in)                    :: x, mu
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(out)                   :: cdf
+        real(RKG)   , intent(in)                    :: x, mu
     end subroutine
 #endif
 
@@ -832,9 +832,9 @@ module pm_distCosRaised
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCosRaisedCDFXMI_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(out)                   :: cdf
-        real(RKC)   , intent(in)                    :: x, mu, invSigma
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(out)                   :: cdf
+        real(RKG)   , intent(in)                    :: x, mu, invSigma
     end subroutine
 #endif
 
@@ -843,9 +843,9 @@ module pm_distCosRaised
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCosRaisedCDFXMI_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(out)                   :: cdf
-        real(RKC)   , intent(in)                    :: x, mu, invSigma
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(out)                   :: cdf
+        real(RKG)   , intent(in)                    :: x, mu, invSigma
     end subroutine
 #endif
 
@@ -854,9 +854,9 @@ module pm_distCosRaised
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCosRaisedCDFXMI_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(out)                   :: cdf
-        real(RKC)   , intent(in)                    :: x, mu, invSigma
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(out)                   :: cdf
+        real(RKG)   , intent(in)                    :: x, mu, invSigma
     end subroutine
 #endif
 
@@ -865,9 +865,9 @@ module pm_distCosRaised
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCosRaisedCDFXMI_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(out)                   :: cdf
-        real(RKC)   , intent(in)                    :: x, mu, invSigma
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(out)                   :: cdf
+        real(RKG)   , intent(in)                    :: x, mu, invSigma
     end subroutine
 #endif
 
@@ -876,9 +876,9 @@ module pm_distCosRaised
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCosRaisedCDFXMI_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(out)                   :: cdf
-        real(RKC)   , intent(in)                    :: x, mu, invSigma
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(out)                   :: cdf
+        real(RKG)   , intent(in)                    :: x, mu, invSigma
     end subroutine
 #endif
 

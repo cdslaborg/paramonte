@@ -208,10 +208,10 @@ module pm_distGeom
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getGeomLogPMF_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         integer(IK) , intent(in)                    :: stepSuccess
-        real(RKC)   , intent(in)                    :: probSuccess
-        real(RKC)                                   :: logPMF
+        real(RKG)   , intent(in)                    :: probSuccess
+        real(RKG)                                   :: logPMF
     end function
 #endif
 
@@ -220,10 +220,10 @@ module pm_distGeom
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getGeomLogPMF_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         integer(IK) , intent(in)                    :: stepSuccess
-        real(RKC)   , intent(in)                    :: probSuccess
-        real(RKC)                                   :: logPMF
+        real(RKG)   , intent(in)                    :: probSuccess
+        real(RKG)                                   :: logPMF
     end function
 #endif
 
@@ -232,10 +232,10 @@ module pm_distGeom
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getGeomLogPMF_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         integer(IK) , intent(in)                    :: stepSuccess
-        real(RKC)   , intent(in)                    :: probSuccess
-        real(RKC)                                   :: logPMF
+        real(RKG)   , intent(in)                    :: probSuccess
+        real(RKG)                                   :: logPMF
     end function
 #endif
 
@@ -244,10 +244,10 @@ module pm_distGeom
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getGeomLogPMF_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         integer(IK) , intent(in)                    :: stepSuccess
-        real(RKC)   , intent(in)                    :: probSuccess
-        real(RKC)                                   :: logPMF
+        real(RKG)   , intent(in)                    :: probSuccess
+        real(RKG)                                   :: logPMF
     end function
 #endif
 
@@ -256,10 +256,10 @@ module pm_distGeom
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getGeomLogPMF_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         integer(IK) , intent(in)                    :: stepSuccess
-        real(RKC)   , intent(in)                    :: probSuccess
-        real(RKC)                                   :: logPMF
+        real(RKG)   , intent(in)                    :: probSuccess
+        real(RKG)                                   :: logPMF
     end function
 #endif
 
@@ -342,9 +342,9 @@ module pm_distGeom
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setGeomLogPMFDef_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(in)                    :: logProbSuccess
-        real(RKC)   , intent(out)                   :: logPMF
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(in)                    :: logProbSuccess
+        real(RKG)   , intent(out)                   :: logPMF
         integer(IK) , intent(in)                    :: stepSuccess
     end subroutine
 #endif
@@ -354,9 +354,9 @@ module pm_distGeom
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setGeomLogPMFDef_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(in)                    :: logProbSuccess
-        real(RKC)   , intent(out)                   :: logPMF
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(in)                    :: logProbSuccess
+        real(RKG)   , intent(out)                   :: logPMF
         integer(IK) , intent(in)                    :: stepSuccess
     end subroutine
 #endif
@@ -366,9 +366,9 @@ module pm_distGeom
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setGeomLogPMFDef_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(in)                    :: logProbSuccess
-        real(RKC)   , intent(out)                   :: logPMF
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(in)                    :: logProbSuccess
+        real(RKG)   , intent(out)                   :: logPMF
         integer(IK) , intent(in)                    :: stepSuccess
     end subroutine
 #endif
@@ -378,9 +378,9 @@ module pm_distGeom
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setGeomLogPMFDef_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(in)                    :: logProbSuccess
-        real(RKC)   , intent(out)                   :: logPMF
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(in)                    :: logProbSuccess
+        real(RKG)   , intent(out)                   :: logPMF
         integer(IK) , intent(in)                    :: stepSuccess
     end subroutine
 #endif
@@ -390,9 +390,9 @@ module pm_distGeom
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setGeomLogPMFDef_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(in)                    :: logProbSuccess
-        real(RKC)   , intent(out)                   :: logPMF
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(in)                    :: logProbSuccess
+        real(RKG)   , intent(out)                   :: logPMF
         integer(IK) , intent(in)                    :: stepSuccess
     end subroutine
 #endif
@@ -404,9 +404,9 @@ module pm_distGeom
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setGeomLogPMFLog_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(in)                    :: logProbSuccess, logProbFailure
-        real(RKC)   , intent(out)                   :: logPMF
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(in)                    :: logProbSuccess, logProbFailure
+        real(RKG)   , intent(out)                   :: logPMF
         integer(IK) , intent(in)                    :: stepSuccess
     end subroutine
 #endif
@@ -416,9 +416,9 @@ module pm_distGeom
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setGeomLogPMFLog_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(in)                    :: logProbSuccess, logProbFailure
-        real(RKC)   , intent(out)                   :: logPMF
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(in)                    :: logProbSuccess, logProbFailure
+        real(RKG)   , intent(out)                   :: logPMF
         integer(IK) , intent(in)                    :: stepSuccess
     end subroutine
 #endif
@@ -428,9 +428,9 @@ module pm_distGeom
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setGeomLogPMFLog_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(in)                    :: logProbSuccess, logProbFailure
-        real(RKC)   , intent(out)                   :: logPMF
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(in)                    :: logProbSuccess, logProbFailure
+        real(RKG)   , intent(out)                   :: logPMF
         integer(IK) , intent(in)                    :: stepSuccess
     end subroutine
 #endif
@@ -440,9 +440,9 @@ module pm_distGeom
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setGeomLogPMFLog_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(in)                    :: logProbSuccess, logProbFailure
-        real(RKC)   , intent(out)                   :: logPMF
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(in)                    :: logProbSuccess, logProbFailure
+        real(RKG)   , intent(out)                   :: logPMF
         integer(IK) , intent(in)                    :: stepSuccess
     end subroutine
 #endif
@@ -452,9 +452,9 @@ module pm_distGeom
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setGeomLogPMFLog_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(in)                    :: logProbSuccess, logProbFailure
-        real(RKC)   , intent(out)                   :: logPMF
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(in)                    :: logProbSuccess, logProbFailure
+        real(RKG)   , intent(out)                   :: logPMF
         integer(IK) , intent(in)                    :: stepSuccess
     end subroutine
 #endif
@@ -531,10 +531,10 @@ module pm_distGeom
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getGeomCDF_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         integer(IK) , intent(in)                    :: stepSuccess
-        real(RKC)   , intent(in)                    :: probSuccess
-        real(RKC)                                   :: cdf
+        real(RKG)   , intent(in)                    :: probSuccess
+        real(RKG)                                   :: cdf
     end function
 #endif
 
@@ -543,10 +543,10 @@ module pm_distGeom
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getGeomCDF_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         integer(IK) , intent(in)                    :: stepSuccess
-        real(RKC)   , intent(in)                    :: probSuccess
-        real(RKC)                                   :: cdf
+        real(RKG)   , intent(in)                    :: probSuccess
+        real(RKG)                                   :: cdf
     end function
 #endif
 
@@ -555,10 +555,10 @@ module pm_distGeom
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getGeomCDF_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         integer(IK) , intent(in)                    :: stepSuccess
-        real(RKC)   , intent(in)                    :: probSuccess
-        real(RKC)                                   :: cdf
+        real(RKG)   , intent(in)                    :: probSuccess
+        real(RKG)                                   :: cdf
     end function
 #endif
 
@@ -567,10 +567,10 @@ module pm_distGeom
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getGeomCDF_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         integer(IK) , intent(in)                    :: stepSuccess
-        real(RKC)   , intent(in)                    :: probSuccess
-        real(RKC)                                   :: cdf
+        real(RKG)   , intent(in)                    :: probSuccess
+        real(RKG)                                   :: cdf
     end function
 #endif
 
@@ -579,10 +579,10 @@ module pm_distGeom
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getGeomCDF_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         integer(IK) , intent(in)                    :: stepSuccess
-        real(RKC)   , intent(in)                    :: probSuccess
-        real(RKC)                                   :: cdf
+        real(RKG)   , intent(in)                    :: probSuccess
+        real(RKG)                                   :: cdf
     end function
 #endif
 
@@ -655,9 +655,9 @@ module pm_distGeom
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setGeomCDF_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(out)                   :: cdf
-        real(RKC)   , intent(in)                    :: probSuccess
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(out)                   :: cdf
+        real(RKG)   , intent(in)                    :: probSuccess
         integer(IK) , intent(in)                    :: stepSuccess
     end subroutine
 #endif
@@ -667,9 +667,9 @@ module pm_distGeom
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setGeomCDF_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(out)                   :: cdf
-        real(RKC)   , intent(in)                    :: probSuccess
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(out)                   :: cdf
+        real(RKG)   , intent(in)                    :: probSuccess
         integer(IK) , intent(in)                    :: stepSuccess
     end subroutine
 #endif
@@ -679,9 +679,9 @@ module pm_distGeom
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setGeomCDF_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(out)                   :: cdf
-        real(RKC)   , intent(in)                    :: probSuccess
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(out)                   :: cdf
+        real(RKG)   , intent(in)                    :: probSuccess
         integer(IK) , intent(in)                    :: stepSuccess
     end subroutine
 #endif
@@ -691,9 +691,9 @@ module pm_distGeom
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setGeomCDF_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(out)                   :: cdf
-        real(RKC)   , intent(in)                    :: probSuccess
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(out)                   :: cdf
+        real(RKG)   , intent(in)                    :: probSuccess
         integer(IK) , intent(in)                    :: stepSuccess
     end subroutine
 #endif
@@ -703,9 +703,9 @@ module pm_distGeom
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setGeomCDF_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(out)                   :: cdf
-        real(RKC)   , intent(in)                    :: probSuccess
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(out)                   :: cdf
+        real(RKG)   , intent(in)                    :: probSuccess
         integer(IK) , intent(in)                    :: stepSuccess
     end subroutine
 #endif
@@ -778,9 +778,9 @@ module pm_distGeom
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getGeomRand_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         integer(IK)                                 :: rand
-        real(RKC)   , intent(in)                    :: probSuccess
+        real(RKG)   , intent(in)                    :: probSuccess
     end function
 #endif
 
@@ -789,9 +789,9 @@ module pm_distGeom
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getGeomRand_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         integer(IK)                                 :: rand
-        real(RKC)   , intent(in)                    :: probSuccess
+        real(RKG)   , intent(in)                    :: probSuccess
     end function
 #endif
 
@@ -800,9 +800,9 @@ module pm_distGeom
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getGeomRand_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         integer(IK)                                 :: rand
-        real(RKC)   , intent(in)                    :: probSuccess
+        real(RKG)   , intent(in)                    :: probSuccess
     end function
 #endif
 
@@ -811,9 +811,9 @@ module pm_distGeom
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getGeomRand_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         integer(IK)                                 :: rand
-        real(RKC)   , intent(in)                    :: probSuccess
+        real(RKG)   , intent(in)                    :: probSuccess
     end function
 #endif
 
@@ -822,9 +822,9 @@ module pm_distGeom
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getGeomRand_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         integer(IK)                                 :: rand
-        real(RKC)   , intent(in)                    :: probSuccess
+        real(RKG)   , intent(in)                    :: probSuccess
     end function
 #endif
 
@@ -914,9 +914,9 @@ module pm_distGeom
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setGeomRandRNGD_D0_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         integer(IK)             , intent(out)                   :: rand
-        real(RKC)               , intent(in)                    :: logProbFailure
+        real(RKG)               , intent(in)                    :: logProbFailure
     end subroutine
 #endif
 
@@ -925,9 +925,9 @@ module pm_distGeom
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setGeomRandRNGD_D0_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         integer(IK)             , intent(out)                   :: rand
-        real(RKC)               , intent(in)                    :: logProbFailure
+        real(RKG)               , intent(in)                    :: logProbFailure
     end subroutine
 #endif
 
@@ -936,9 +936,9 @@ module pm_distGeom
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setGeomRandRNGD_D0_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         integer(IK)             , intent(out)                   :: rand
-        real(RKC)               , intent(in)                    :: logProbFailure
+        real(RKG)               , intent(in)                    :: logProbFailure
     end subroutine
 #endif
 
@@ -947,9 +947,9 @@ module pm_distGeom
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setGeomRandRNGD_D0_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         integer(IK)             , intent(out)                   :: rand
-        real(RKC)               , intent(in)                    :: logProbFailure
+        real(RKG)               , intent(in)                    :: logProbFailure
     end subroutine
 #endif
 
@@ -958,9 +958,9 @@ module pm_distGeom
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setGeomRandRNGD_D0_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         integer(IK)             , intent(out)                   :: rand
-        real(RKC)               , intent(in)                    :: logProbFailure
+        real(RKG)               , intent(in)                    :: logProbFailure
     end subroutine
 #endif
 
@@ -971,10 +971,10 @@ module pm_distGeom
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setGeomRandRNGF_D0_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         type(rngf_type)         , intent(in)                    :: rng
         integer(IK)             , intent(out)                   :: rand
-        real(RKC)               , intent(in)                    :: logProbFailure
+        real(RKG)               , intent(in)                    :: logProbFailure
     end subroutine
 #endif
 
@@ -983,10 +983,10 @@ module pm_distGeom
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setGeomRandRNGF_D0_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         type(rngf_type)         , intent(in)                    :: rng
         integer(IK)             , intent(out)                   :: rand
-        real(RKC)               , intent(in)                    :: logProbFailure
+        real(RKG)               , intent(in)                    :: logProbFailure
     end subroutine
 #endif
 
@@ -995,10 +995,10 @@ module pm_distGeom
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setGeomRandRNGF_D0_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         type(rngf_type)         , intent(in)                    :: rng
         integer(IK)             , intent(out)                   :: rand
-        real(RKC)               , intent(in)                    :: logProbFailure
+        real(RKG)               , intent(in)                    :: logProbFailure
     end subroutine
 #endif
 
@@ -1007,10 +1007,10 @@ module pm_distGeom
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setGeomRandRNGF_D0_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         type(rngf_type)         , intent(in)                    :: rng
         integer(IK)             , intent(out)                   :: rand
-        real(RKC)               , intent(in)                    :: logProbFailure
+        real(RKG)               , intent(in)                    :: logProbFailure
     end subroutine
 #endif
 
@@ -1019,10 +1019,10 @@ module pm_distGeom
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setGeomRandRNGF_D0_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         type(rngf_type)         , intent(in)                    :: rng
         integer(IK)             , intent(out)                   :: rand
-        real(RKC)               , intent(in)                    :: logProbFailure
+        real(RKG)               , intent(in)                    :: logProbFailure
     end subroutine
 #endif
 
@@ -1033,10 +1033,10 @@ module pm_distGeom
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setGeomRandRNGX_D0_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         type(xoshiro256ssw_type), intent(inout)                 :: rng
         integer(IK)             , intent(out)                   :: rand
-        real(RKC)               , intent(in)                    :: logProbFailure
+        real(RKG)               , intent(in)                    :: logProbFailure
     end subroutine
 #endif
 
@@ -1045,10 +1045,10 @@ module pm_distGeom
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setGeomRandRNGX_D0_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         type(xoshiro256ssw_type), intent(inout)                 :: rng
         integer(IK)             , intent(out)                   :: rand
-        real(RKC)               , intent(in)                    :: logProbFailure
+        real(RKG)               , intent(in)                    :: logProbFailure
     end subroutine
 #endif
 
@@ -1057,10 +1057,10 @@ module pm_distGeom
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setGeomRandRNGX_D0_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         type(xoshiro256ssw_type), intent(inout)                 :: rng
         integer(IK)             , intent(out)                   :: rand
-        real(RKC)               , intent(in)                    :: logProbFailure
+        real(RKG)               , intent(in)                    :: logProbFailure
     end subroutine
 #endif
 
@@ -1069,10 +1069,10 @@ module pm_distGeom
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setGeomRandRNGX_D0_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         type(xoshiro256ssw_type), intent(inout)                 :: rng
         integer(IK)             , intent(out)                   :: rand
-        real(RKC)               , intent(in)                    :: logProbFailure
+        real(RKG)               , intent(in)                    :: logProbFailure
     end subroutine
 #endif
 
@@ -1081,10 +1081,10 @@ module pm_distGeom
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setGeomRandRNGX_D0_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         type(xoshiro256ssw_type), intent(inout)                 :: rng
         integer(IK)             , intent(out)                   :: rand
-        real(RKC)               , intent(in)                    :: logProbFailure
+        real(RKG)               , intent(in)                    :: logProbFailure
     end subroutine
 #endif
 
@@ -1101,9 +1101,9 @@ module pm_distGeom
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setGeomRandRNGD_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         integer(IK)             , intent(out)                   :: rand(:)
-        real(RKC)               , intent(in)                    :: logProbFailure
+        real(RKG)               , intent(in)                    :: logProbFailure
     end subroutine
 #endif
 
@@ -1112,9 +1112,9 @@ module pm_distGeom
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setGeomRandRNGD_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         integer(IK)             , intent(out)                   :: rand(:)
-        real(RKC)               , intent(in)                    :: logProbFailure
+        real(RKG)               , intent(in)                    :: logProbFailure
     end subroutine
 #endif
 
@@ -1123,9 +1123,9 @@ module pm_distGeom
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setGeomRandRNGD_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         integer(IK)             , intent(out)                   :: rand(:)
-        real(RKC)               , intent(in)                    :: logProbFailure
+        real(RKG)               , intent(in)                    :: logProbFailure
     end subroutine
 #endif
 
@@ -1134,9 +1134,9 @@ module pm_distGeom
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setGeomRandRNGD_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         integer(IK)             , intent(out)                   :: rand(:)
-        real(RKC)               , intent(in)                    :: logProbFailure
+        real(RKG)               , intent(in)                    :: logProbFailure
     end subroutine
 #endif
 
@@ -1145,9 +1145,9 @@ module pm_distGeom
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setGeomRandRNGD_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         integer(IK)             , intent(out)                   :: rand(:)
-        real(RKC)               , intent(in)                    :: logProbFailure
+        real(RKG)               , intent(in)                    :: logProbFailure
     end subroutine
 #endif
 
@@ -1158,10 +1158,10 @@ module pm_distGeom
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setGeomRandRNGF_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         type(rngf_type)         , intent(in)                    :: rng
         integer(IK)             , intent(out)                   :: rand(:)
-        real(RKC)               , intent(in)                    :: logProbFailure
+        real(RKG)               , intent(in)                    :: logProbFailure
     end subroutine
 #endif
 
@@ -1170,10 +1170,10 @@ module pm_distGeom
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setGeomRandRNGF_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         type(rngf_type)         , intent(in)                    :: rng
         integer(IK)             , intent(out)                   :: rand(:)
-        real(RKC)               , intent(in)                    :: logProbFailure
+        real(RKG)               , intent(in)                    :: logProbFailure
     end subroutine
 #endif
 
@@ -1182,10 +1182,10 @@ module pm_distGeom
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setGeomRandRNGF_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         type(rngf_type)         , intent(in)                    :: rng
         integer(IK)             , intent(out)                   :: rand(:)
-        real(RKC)               , intent(in)                    :: logProbFailure
+        real(RKG)               , intent(in)                    :: logProbFailure
     end subroutine
 #endif
 
@@ -1194,10 +1194,10 @@ module pm_distGeom
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setGeomRandRNGF_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         type(rngf_type)         , intent(in)                    :: rng
         integer(IK)             , intent(out)                   :: rand(:)
-        real(RKC)               , intent(in)                    :: logProbFailure
+        real(RKG)               , intent(in)                    :: logProbFailure
     end subroutine
 #endif
 
@@ -1206,10 +1206,10 @@ module pm_distGeom
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setGeomRandRNGF_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         type(rngf_type)         , intent(in)                    :: rng
         integer(IK)             , intent(out)                   :: rand(:)
-        real(RKC)               , intent(in)                    :: logProbFailure
+        real(RKG)               , intent(in)                    :: logProbFailure
     end subroutine
 #endif
 
@@ -1220,10 +1220,10 @@ module pm_distGeom
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setGeomRandRNGX_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         type(xoshiro256ssw_type), intent(inout)                 :: rng
         integer(IK)             , intent(out)                   :: rand(:)
-        real(RKC)               , intent(in)                    :: logProbFailure
+        real(RKG)               , intent(in)                    :: logProbFailure
     end subroutine
 #endif
 
@@ -1232,10 +1232,10 @@ module pm_distGeom
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setGeomRandRNGX_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         type(xoshiro256ssw_type), intent(inout)                 :: rng
         integer(IK)             , intent(out)                   :: rand(:)
-        real(RKC)               , intent(in)                    :: logProbFailure
+        real(RKG)               , intent(in)                    :: logProbFailure
     end subroutine
 #endif
 
@@ -1244,10 +1244,10 @@ module pm_distGeom
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setGeomRandRNGX_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         type(xoshiro256ssw_type), intent(inout)                 :: rng
         integer(IK)             , intent(out)                   :: rand(:)
-        real(RKC)               , intent(in)                    :: logProbFailure
+        real(RKG)               , intent(in)                    :: logProbFailure
     end subroutine
 #endif
 
@@ -1256,10 +1256,10 @@ module pm_distGeom
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setGeomRandRNGX_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         type(xoshiro256ssw_type), intent(inout)                 :: rng
         integer(IK)             , intent(out)                   :: rand(:)
-        real(RKC)               , intent(in)                    :: logProbFailure
+        real(RKG)               , intent(in)                    :: logProbFailure
     end subroutine
 #endif
 
@@ -1268,10 +1268,10 @@ module pm_distGeom
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setGeomRandRNGX_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         type(xoshiro256ssw_type), intent(inout)                 :: rng
         integer(IK)             , intent(out)                   :: rand(:)
-        real(RKC)               , intent(in)                    :: logProbFailure
+        real(RKG)               , intent(in)                    :: logProbFailure
     end subroutine
 #endif
 

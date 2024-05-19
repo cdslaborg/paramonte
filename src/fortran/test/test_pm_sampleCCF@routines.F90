@@ -52,8 +52,9 @@ submodule (test_pm_sampleCCF) routines ! LCOV_EXCL_LINE
     use pm_sampleCov, only: setCov
     use pm_sampleShift, only: getShifted
     use pm_complexCompareAll, only: operator(<)
-    use pm_container, only: css_type, css_pdt
     use pm_arrayRank, only: getRankFractional
+    use pm_container, only: css_type
+    !use pm_container, only: css_pdt
     use pm_complexAbs, only: abs
     implicit none
 
@@ -71,35 +72,35 @@ contains
 
 #if CK5_ENABLED
     module procedure test_getCCF_CK5
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
 #include "test_pm_sampleCCF@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure test_getCCF_CK4
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
 #include "test_pm_sampleCCF@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure test_getCCF_CK3
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
 #include "test_pm_sampleCCF@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure test_getCCF_CK2
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
 #include "test_pm_sampleCCF@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure test_getCCF_CK1
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
 #include "test_pm_sampleCCF@routines.inc.F90"
     end procedure
 #endif
@@ -112,35 +113,35 @@ contains
 
 #if RK5_ENABLED
     module procedure test_getCCF_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "test_pm_sampleCCF@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure test_getCCF_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "test_pm_sampleCCF@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure test_getCCF_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "test_pm_sampleCCF@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure test_getCCF_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "test_pm_sampleCCF@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure test_getCCF_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "test_pm_sampleCCF@routines.inc.F90"
     end procedure
 #endif
@@ -161,35 +162,35 @@ contains
 
 #if CK5_ENABLED
     module procedure test_setCCF_CK5
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
 #include "test_pm_sampleCCF@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure test_setCCF_CK4
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
 #include "test_pm_sampleCCF@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure test_setCCF_CK3
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
 #include "test_pm_sampleCCF@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure test_setCCF_CK2
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
 #include "test_pm_sampleCCF@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure test_setCCF_CK1
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
 #include "test_pm_sampleCCF@routines.inc.F90"
     end procedure
 #endif
@@ -202,35 +203,35 @@ contains
 
 #if RK5_ENABLED
     module procedure test_setCCF_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "test_pm_sampleCCF@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure test_setCCF_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "test_pm_sampleCCF@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure test_setCCF_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "test_pm_sampleCCF@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure test_setCCF_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "test_pm_sampleCCF@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure test_setCCF_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "test_pm_sampleCCF@routines.inc.F90"
     end procedure
 #endif
@@ -251,35 +252,35 @@ contains
 
 #if CK5_ENABLED
     module procedure test_getACF_CK5
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
 #include "test_pm_sampleCCF@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure test_getACF_CK4
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
 #include "test_pm_sampleCCF@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure test_getACF_CK3
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
 #include "test_pm_sampleCCF@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure test_getACF_CK2
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
 #include "test_pm_sampleCCF@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure test_getACF_CK1
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
 #include "test_pm_sampleCCF@routines.inc.F90"
     end procedure
 #endif
@@ -292,35 +293,35 @@ contains
 
 #if RK5_ENABLED
     module procedure test_getACF_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "test_pm_sampleCCF@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure test_getACF_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "test_pm_sampleCCF@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure test_getACF_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "test_pm_sampleCCF@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure test_getACF_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "test_pm_sampleCCF@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure test_getACF_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "test_pm_sampleCCF@routines.inc.F90"
     end procedure
 #endif
@@ -341,35 +342,35 @@ contains
 
 #if CK5_ENABLED
     module procedure test_setACF_CK5
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
 #include "test_pm_sampleCCF@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure test_setACF_CK4
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
 #include "test_pm_sampleCCF@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure test_setACF_CK3
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
 #include "test_pm_sampleCCF@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure test_setACF_CK2
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
 #include "test_pm_sampleCCF@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure test_setACF_CK1
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
 #include "test_pm_sampleCCF@routines.inc.F90"
     end procedure
 #endif
@@ -382,35 +383,35 @@ contains
 
 #if RK5_ENABLED
     module procedure test_setACF_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "test_pm_sampleCCF@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure test_setACF_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "test_pm_sampleCCF@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure test_setACF_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "test_pm_sampleCCF@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure test_setACF_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "test_pm_sampleCCF@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure test_setACF_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "test_pm_sampleCCF@routines.inc.F90"
     end procedure
 #endif

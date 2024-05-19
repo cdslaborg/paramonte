@@ -206,10 +206,10 @@ module pm_statest
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getProbKS_WIX_D0_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         integer(IK) , intent(in)                :: weisum1
-        real(RKC)   , intent(in)                :: statKS
-        real(RKC)                               :: probKS
+        real(RKG)   , intent(in)                :: statKS
+        real(RKG)                               :: probKS
     end function
 #endif
 
@@ -218,10 +218,10 @@ module pm_statest
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getProbKS_WIX_D0_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         integer(IK) , intent(in)                :: weisum1
-        real(RKC)   , intent(in)                :: statKS
-        real(RKC)                               :: probKS
+        real(RKG)   , intent(in)                :: statKS
+        real(RKG)                               :: probKS
     end function
 #endif
 
@@ -230,10 +230,10 @@ module pm_statest
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getProbKS_WIX_D0_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         integer(IK) , intent(in)                :: weisum1
-        real(RKC)   , intent(in)                :: statKS
-        real(RKC)                               :: probKS
+        real(RKG)   , intent(in)                :: statKS
+        real(RKG)                               :: probKS
     end function
 #endif
 
@@ -242,10 +242,10 @@ module pm_statest
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getProbKS_WIX_D0_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         integer(IK) , intent(in)                :: weisum1
-        real(RKC)   , intent(in)                :: statKS
-        real(RKC)                               :: probKS
+        real(RKG)   , intent(in)                :: statKS
+        real(RKG)                               :: probKS
     end function
 #endif
 
@@ -254,10 +254,10 @@ module pm_statest
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getProbKS_WIX_D0_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         integer(IK) , intent(in)                :: weisum1
-        real(RKC)   , intent(in)                :: statKS
-        real(RKC)                               :: probKS
+        real(RKG)   , intent(in)                :: statKS
+        real(RKG)                               :: probKS
     end function
 #endif
 
@@ -274,10 +274,10 @@ module pm_statest
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getProbKS_WRX_D0_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(in)                :: weisum1, wsqsum1
-        real(RKC)   , intent(in)                :: statKS
-        real(RKC)                               :: probKS
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(in)                :: weisum1, wsqsum1
+        real(RKG)   , intent(in)                :: statKS
+        real(RKG)                               :: probKS
     end function
 #endif
 
@@ -286,10 +286,10 @@ module pm_statest
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getProbKS_WRX_D0_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(in)                :: weisum1, wsqsum1
-        real(RKC)   , intent(in)                :: statKS
-        real(RKC)                               :: probKS
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(in)                :: weisum1, wsqsum1
+        real(RKG)   , intent(in)                :: statKS
+        real(RKG)                               :: probKS
     end function
 #endif
 
@@ -298,10 +298,10 @@ module pm_statest
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getProbKS_WRX_D0_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(in)                :: weisum1, wsqsum1
-        real(RKC)   , intent(in)                :: statKS
-        real(RKC)                               :: probKS
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(in)                :: weisum1, wsqsum1
+        real(RKG)   , intent(in)                :: statKS
+        real(RKG)                               :: probKS
     end function
 #endif
 
@@ -310,10 +310,10 @@ module pm_statest
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getProbKS_WRX_D0_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(in)                :: weisum1, wsqsum1
-        real(RKC)   , intent(in)                :: statKS
-        real(RKC)                               :: probKS
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(in)                :: weisum1, wsqsum1
+        real(RKG)   , intent(in)                :: statKS
+        real(RKG)                               :: probKS
     end function
 #endif
 
@@ -322,10 +322,10 @@ module pm_statest
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getProbKS_WRX_D0_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(in)                :: weisum1, wsqsum1
-        real(RKC)   , intent(in)                :: statKS
-        real(RKC)                               :: probKS
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(in)                :: weisum1, wsqsum1
+        real(RKG)   , intent(in)                :: statKS
+        real(RKG)                               :: probKS
     end function
 #endif
 
@@ -352,11 +352,11 @@ module pm_statest
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getProbKS_WII_D0_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         integer(IK) , intent(in)                :: weisum1
         integer(IK) , intent(in)                :: weisum2
-        real(RKC)   , intent(in)                :: statKS
-        real(RKC)                               :: probKS
+        real(RKG)   , intent(in)                :: statKS
+        real(RKG)                               :: probKS
     end function
 #endif
 
@@ -365,11 +365,11 @@ module pm_statest
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getProbKS_WII_D0_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         integer(IK) , intent(in)                :: weisum1
         integer(IK) , intent(in)                :: weisum2
-        real(RKC)   , intent(in)                :: statKS
-        real(RKC)                               :: probKS
+        real(RKG)   , intent(in)                :: statKS
+        real(RKG)                               :: probKS
     end function
 #endif
 
@@ -378,11 +378,11 @@ module pm_statest
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getProbKS_WII_D0_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         integer(IK) , intent(in)                :: weisum1
         integer(IK) , intent(in)                :: weisum2
-        real(RKC)   , intent(in)                :: statKS
-        real(RKC)                               :: probKS
+        real(RKG)   , intent(in)                :: statKS
+        real(RKG)                               :: probKS
     end function
 #endif
 
@@ -391,11 +391,11 @@ module pm_statest
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getProbKS_WII_D0_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         integer(IK) , intent(in)                :: weisum1
         integer(IK) , intent(in)                :: weisum2
-        real(RKC)   , intent(in)                :: statKS
-        real(RKC)                               :: probKS
+        real(RKG)   , intent(in)                :: statKS
+        real(RKG)                               :: probKS
     end function
 #endif
 
@@ -404,11 +404,11 @@ module pm_statest
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getProbKS_WII_D0_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         integer(IK) , intent(in)                :: weisum1
         integer(IK) , intent(in)                :: weisum2
-        real(RKC)   , intent(in)                :: statKS
-        real(RKC)                               :: probKS
+        real(RKG)   , intent(in)                :: statKS
+        real(RKG)                               :: probKS
     end function
 #endif
 
@@ -425,11 +425,11 @@ module pm_statest
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getProbKS_WRI_D0_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(in)                :: weisum1, wsqsum1
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(in)                :: weisum1, wsqsum1
         integer(IK) , intent(in)                :: weisum2
-        real(RKC)   , intent(in)                :: statKS
-        real(RKC)                               :: probKS
+        real(RKG)   , intent(in)                :: statKS
+        real(RKG)                               :: probKS
     end function
 #endif
 
@@ -438,11 +438,11 @@ module pm_statest
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getProbKS_WRI_D0_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(in)                :: weisum1, wsqsum1
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(in)                :: weisum1, wsqsum1
         integer(IK) , intent(in)                :: weisum2
-        real(RKC)   , intent(in)                :: statKS
-        real(RKC)                               :: probKS
+        real(RKG)   , intent(in)                :: statKS
+        real(RKG)                               :: probKS
     end function
 #endif
 
@@ -451,11 +451,11 @@ module pm_statest
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getProbKS_WRI_D0_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(in)                :: weisum1, wsqsum1
-        real(RKC)   , intent(in)                :: weisum2
-        real(RKC)   , intent(in)                :: statKS
-        real(RKC)                               :: probKS
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(in)                :: weisum1, wsqsum1
+        real(RKG)   , intent(in)                :: weisum2
+        real(RKG)   , intent(in)                :: statKS
+        real(RKG)                               :: probKS
     end function
 #endif
 
@@ -464,11 +464,11 @@ module pm_statest
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getProbKS_WRI_D0_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(in)                :: weisum1, wsqsum1
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(in)                :: weisum1, wsqsum1
         integer(IK) , intent(in)                :: weisum2
-        real(RKC)   , intent(in)                :: statKS
-        real(RKC)                               :: probKS
+        real(RKG)   , intent(in)                :: statKS
+        real(RKG)                               :: probKS
     end function
 #endif
 
@@ -477,11 +477,11 @@ module pm_statest
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getProbKS_WRI_D0_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(in)                :: weisum1, wsqsum1
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(in)                :: weisum1, wsqsum1
         integer(IK) , intent(in)                :: weisum2
-        real(RKC)   , intent(in)                :: statKS
-        real(RKC)                               :: probKS
+        real(RKG)   , intent(in)                :: statKS
+        real(RKG)                               :: probKS
     end function
 #endif
 
@@ -498,11 +498,11 @@ module pm_statest
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getProbKS_WRR_D0_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(in)                :: weisum1, wsqsum1
-        real(RKC)   , intent(in)                :: weisum2, wsqsum2
-        real(RKC)   , intent(in)                :: statKS
-        real(RKC)                               :: probKS
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(in)                :: weisum1, wsqsum1
+        real(RKG)   , intent(in)                :: weisum2, wsqsum2
+        real(RKG)   , intent(in)                :: statKS
+        real(RKG)                               :: probKS
     end function
 #endif
 
@@ -511,11 +511,11 @@ module pm_statest
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getProbKS_WRR_D0_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(in)                :: weisum1, wsqsum1
-        real(RKC)   , intent(in)                :: weisum2, wsqsum2
-        real(RKC)   , intent(in)                :: statKS
-        real(RKC)                               :: probKS
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(in)                :: weisum1, wsqsum1
+        real(RKG)   , intent(in)                :: weisum2, wsqsum2
+        real(RKG)   , intent(in)                :: statKS
+        real(RKG)                               :: probKS
     end function
 #endif
 
@@ -524,11 +524,11 @@ module pm_statest
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getProbKS_WRR_D0_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(in)                :: weisum1, wsqsum1
-        real(RKC)   , intent(in)                :: weisum2, wsqsum2
-        real(RKC)   , intent(in)                :: statKS
-        real(RKC)                               :: probKS
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(in)                :: weisum1, wsqsum1
+        real(RKG)   , intent(in)                :: weisum2, wsqsum2
+        real(RKG)   , intent(in)                :: statKS
+        real(RKG)                               :: probKS
     end function
 #endif
 
@@ -537,11 +537,11 @@ module pm_statest
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getProbKS_WRR_D0_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(in)                :: weisum1, wsqsum1
-        real(RKC)   , intent(in)                :: weisum2, wsqsum2
-        real(RKC)   , intent(in)                :: statKS
-        real(RKC)                               :: probKS
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(in)                :: weisum1, wsqsum1
+        real(RKG)   , intent(in)                :: weisum2, wsqsum2
+        real(RKG)   , intent(in)                :: statKS
+        real(RKG)                               :: probKS
     end function
 #endif
 
@@ -550,11 +550,11 @@ module pm_statest
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getProbKS_WRR_D0_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(in)                :: weisum1, wsqsum1
-        real(RKC)   , intent(in)                :: weisum2, wsqsum2
-        real(RKC)   , intent(in)                :: statKS
-        real(RKC)                               :: probKS
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(in)                :: weisum1, wsqsum1
+        real(RKG)   , intent(in)                :: weisum2, wsqsum2
+        real(RKG)   , intent(in)                :: statKS
+        real(RKG)                               :: probKS
     end function
 #endif
 
@@ -690,11 +690,11 @@ module pm_statest
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setProbKS_WIX_D0_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         integer(IK) , intent(in)                :: weisum1
-        real(RKC)   , intent(in)                :: statKS
-        real(RKC)   , intent(out)               :: probKS
-        real(RKC)   , intent(out)               :: quanKS
+        real(RKG)   , intent(in)                :: statKS
+        real(RKG)   , intent(out)               :: probKS
+        real(RKG)   , intent(out)               :: quanKS
     end subroutine
 #endif
 
@@ -703,11 +703,11 @@ module pm_statest
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setProbKS_WIX_D0_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         integer(IK) , intent(in)                :: weisum1
-        real(RKC)   , intent(in)                :: statKS
-        real(RKC)   , intent(out)               :: probKS
-        real(RKC)   , intent(out)               :: quanKS
+        real(RKG)   , intent(in)                :: statKS
+        real(RKG)   , intent(out)               :: probKS
+        real(RKG)   , intent(out)               :: quanKS
     end subroutine
 #endif
 
@@ -716,11 +716,11 @@ module pm_statest
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setProbKS_WIX_D0_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         integer(IK) , intent(in)                :: weisum1
-        real(RKC)   , intent(in)                :: statKS
-        real(RKC)   , intent(out)               :: probKS
-        real(RKC)   , intent(out)               :: quanKS
+        real(RKG)   , intent(in)                :: statKS
+        real(RKG)   , intent(out)               :: probKS
+        real(RKG)   , intent(out)               :: quanKS
     end subroutine
 #endif
 
@@ -729,11 +729,11 @@ module pm_statest
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setProbKS_WIX_D0_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         integer(IK) , intent(in)                :: weisum1
-        real(RKC)   , intent(in)                :: statKS
-        real(RKC)   , intent(out)               :: probKS
-        real(RKC)   , intent(out)               :: quanKS
+        real(RKG)   , intent(in)                :: statKS
+        real(RKG)   , intent(out)               :: probKS
+        real(RKG)   , intent(out)               :: quanKS
     end subroutine
 #endif
 
@@ -742,11 +742,11 @@ module pm_statest
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setProbKS_WIX_D0_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         integer(IK) , intent(in)                :: weisum1
-        real(RKC)   , intent(in)                :: statKS
-        real(RKC)   , intent(out)               :: probKS
-        real(RKC)   , intent(out)               :: quanKS
+        real(RKG)   , intent(in)                :: statKS
+        real(RKG)   , intent(out)               :: probKS
+        real(RKG)   , intent(out)               :: quanKS
     end subroutine
 #endif
 
@@ -763,11 +763,11 @@ module pm_statest
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setProbKS_WRX_D0_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(in)                :: weisum1, wsqsum1
-        real(RKC)   , intent(in)                :: statKS
-        real(RKC)   , intent(out)               :: probKS
-        real(RKC)   , intent(out)               :: quanKS
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(in)                :: weisum1, wsqsum1
+        real(RKG)   , intent(in)                :: statKS
+        real(RKG)   , intent(out)               :: probKS
+        real(RKG)   , intent(out)               :: quanKS
     end subroutine
 #endif
 
@@ -776,11 +776,11 @@ module pm_statest
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setProbKS_WRX_D0_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(in)                :: weisum1, wsqsum1
-        real(RKC)   , intent(in)                :: statKS
-        real(RKC)   , intent(out)               :: probKS
-        real(RKC)   , intent(out)               :: quanKS
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(in)                :: weisum1, wsqsum1
+        real(RKG)   , intent(in)                :: statKS
+        real(RKG)   , intent(out)               :: probKS
+        real(RKG)   , intent(out)               :: quanKS
     end subroutine
 #endif
 
@@ -789,11 +789,11 @@ module pm_statest
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setProbKS_WRX_D0_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(in)                :: weisum1, wsqsum1
-        real(RKC)   , intent(in)                :: statKS
-        real(RKC)   , intent(out)               :: probKS
-        real(RKC)   , intent(out)               :: quanKS
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(in)                :: weisum1, wsqsum1
+        real(RKG)   , intent(in)                :: statKS
+        real(RKG)   , intent(out)               :: probKS
+        real(RKG)   , intent(out)               :: quanKS
     end subroutine
 #endif
 
@@ -802,11 +802,11 @@ module pm_statest
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setProbKS_WRX_D0_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(in)                :: weisum1, wsqsum1
-        real(RKC)   , intent(in)                :: statKS
-        real(RKC)   , intent(out)               :: probKS
-        real(RKC)   , intent(out)               :: quanKS
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(in)                :: weisum1, wsqsum1
+        real(RKG)   , intent(in)                :: statKS
+        real(RKG)   , intent(out)               :: probKS
+        real(RKG)   , intent(out)               :: quanKS
     end subroutine
 #endif
 
@@ -815,11 +815,11 @@ module pm_statest
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setProbKS_WRX_D0_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(in)                :: weisum1, wsqsum1
-        real(RKC)   , intent(in)                :: statKS
-        real(RKC)   , intent(out)               :: probKS
-        real(RKC)   , intent(out)               :: quanKS
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(in)                :: weisum1, wsqsum1
+        real(RKG)   , intent(in)                :: statKS
+        real(RKG)   , intent(out)               :: probKS
+        real(RKG)   , intent(out)               :: quanKS
     end subroutine
 #endif
 
@@ -846,12 +846,12 @@ module pm_statest
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setProbKS_WII_D0_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         integer(IK) , intent(in)                :: weisum1
         integer(IK) , intent(in)                :: weisum2
-        real(RKC)   , intent(in)                :: statKS
-        real(RKC)   , intent(out)               :: probKS
-        real(RKC)   , intent(out)               :: quanKS
+        real(RKG)   , intent(in)                :: statKS
+        real(RKG)   , intent(out)               :: probKS
+        real(RKG)   , intent(out)               :: quanKS
     end subroutine
 #endif
 
@@ -860,12 +860,12 @@ module pm_statest
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setProbKS_WII_D0_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         integer(IK) , intent(in)                :: weisum1
         integer(IK) , intent(in)                :: weisum2
-        real(RKC)   , intent(in)                :: statKS
-        real(RKC)   , intent(out)               :: probKS
-        real(RKC)   , intent(out)               :: quanKS
+        real(RKG)   , intent(in)                :: statKS
+        real(RKG)   , intent(out)               :: probKS
+        real(RKG)   , intent(out)               :: quanKS
     end subroutine
 #endif
 
@@ -874,12 +874,12 @@ module pm_statest
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setProbKS_WII_D0_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         integer(IK) , intent(in)                :: weisum1
         integer(IK) , intent(in)                :: weisum2
-        real(RKC)   , intent(in)                :: statKS
-        real(RKC)   , intent(out)               :: probKS
-        real(RKC)   , intent(out)               :: quanKS
+        real(RKG)   , intent(in)                :: statKS
+        real(RKG)   , intent(out)               :: probKS
+        real(RKG)   , intent(out)               :: quanKS
     end subroutine
 #endif
 
@@ -888,12 +888,12 @@ module pm_statest
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setProbKS_WII_D0_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         integer(IK) , intent(in)                :: weisum1
         integer(IK) , intent(in)                :: weisum2
-        real(RKC)   , intent(in)                :: statKS
-        real(RKC)   , intent(out)               :: probKS
-        real(RKC)   , intent(out)               :: quanKS
+        real(RKG)   , intent(in)                :: statKS
+        real(RKG)   , intent(out)               :: probKS
+        real(RKG)   , intent(out)               :: quanKS
     end subroutine
 #endif
 
@@ -902,12 +902,12 @@ module pm_statest
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setProbKS_WII_D0_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         integer(IK) , intent(in)                :: weisum1
         integer(IK) , intent(in)                :: weisum2
-        real(RKC)   , intent(in)                :: statKS
-        real(RKC)   , intent(out)               :: probKS
-        real(RKC)   , intent(out)               :: quanKS
+        real(RKG)   , intent(in)                :: statKS
+        real(RKG)   , intent(out)               :: probKS
+        real(RKG)   , intent(out)               :: quanKS
     end subroutine
 #endif
 
@@ -924,12 +924,12 @@ module pm_statest
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setProbKS_WRI_D0_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(in)                :: weisum1, wsqsum1
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(in)                :: weisum1, wsqsum1
         integer(IK) , intent(in)                :: weisum2
-        real(RKC)   , intent(in)                :: statKS
-        real(RKC)   , intent(out)               :: probKS
-        real(RKC)   , intent(out)               :: quanKS
+        real(RKG)   , intent(in)                :: statKS
+        real(RKG)   , intent(out)               :: probKS
+        real(RKG)   , intent(out)               :: quanKS
     end subroutine
 #endif
 
@@ -938,12 +938,12 @@ module pm_statest
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setProbKS_WRI_D0_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(in)                :: weisum1, wsqsum1
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(in)                :: weisum1, wsqsum1
         integer(IK) , intent(in)                :: weisum2
-        real(RKC)   , intent(in)                :: statKS
-        real(RKC)   , intent(out)               :: probKS
-        real(RKC)   , intent(out)               :: quanKS
+        real(RKG)   , intent(in)                :: statKS
+        real(RKG)   , intent(out)               :: probKS
+        real(RKG)   , intent(out)               :: quanKS
     end subroutine
 #endif
 
@@ -952,12 +952,12 @@ module pm_statest
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setProbKS_WRI_D0_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(in)                :: weisum1, wsqsum1
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(in)                :: weisum1, wsqsum1
         integer(IK) , intent(in)                :: weisum2
-        real(RKC)   , intent(in)                :: statKS
-        real(RKC)   , intent(out)               :: probKS
-        real(RKC)   , intent(out)               :: quanKS
+        real(RKG)   , intent(in)                :: statKS
+        real(RKG)   , intent(out)               :: probKS
+        real(RKG)   , intent(out)               :: quanKS
     end subroutine
 #endif
 
@@ -966,12 +966,12 @@ module pm_statest
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setProbKS_WRI_D0_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(in)                :: weisum1, wsqsum1
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(in)                :: weisum1, wsqsum1
         integer(IK) , intent(in)                :: weisum2
-        real(RKC)   , intent(in)                :: statKS
-        real(RKC)   , intent(out)               :: probKS
-        real(RKC)   , intent(out)               :: quanKS
+        real(RKG)   , intent(in)                :: statKS
+        real(RKG)   , intent(out)               :: probKS
+        real(RKG)   , intent(out)               :: quanKS
     end subroutine
 #endif
 
@@ -980,12 +980,12 @@ module pm_statest
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setProbKS_WRI_D0_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(in)                :: weisum1, wsqsum1
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(in)                :: weisum1, wsqsum1
         integer(IK) , intent(in)                :: weisum2
-        real(RKC)   , intent(in)                :: statKS
-        real(RKC)   , intent(out)               :: probKS
-        real(RKC)   , intent(out)               :: quanKS
+        real(RKG)   , intent(in)                :: statKS
+        real(RKG)   , intent(out)               :: probKS
+        real(RKG)   , intent(out)               :: quanKS
     end subroutine
 #endif
 
@@ -1002,12 +1002,12 @@ module pm_statest
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setProbKS_WRR_D0_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(in)                :: weisum1, wsqsum1
-        real(RKC)   , intent(in)                :: weisum2, wsqsum2
-        real(RKC)   , intent(in)                :: statKS
-        real(RKC)   , intent(out)               :: probKS
-        real(RKC)   , intent(out)               :: quanKS
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(in)                :: weisum1, wsqsum1
+        real(RKG)   , intent(in)                :: weisum2, wsqsum2
+        real(RKG)   , intent(in)                :: statKS
+        real(RKG)   , intent(out)               :: probKS
+        real(RKG)   , intent(out)               :: quanKS
     end subroutine
 #endif
 
@@ -1016,12 +1016,12 @@ module pm_statest
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setProbKS_WRR_D0_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(in)                :: weisum1, wsqsum1
-        real(RKC)   , intent(in)                :: weisum2, wsqsum2
-        real(RKC)   , intent(in)                :: statKS
-        real(RKC)   , intent(out)               :: probKS
-        real(RKC)   , intent(out)               :: quanKS
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(in)                :: weisum1, wsqsum1
+        real(RKG)   , intent(in)                :: weisum2, wsqsum2
+        real(RKG)   , intent(in)                :: statKS
+        real(RKG)   , intent(out)               :: probKS
+        real(RKG)   , intent(out)               :: quanKS
     end subroutine
 #endif
 
@@ -1030,12 +1030,12 @@ module pm_statest
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setProbKS_WRR_D0_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(in)                :: weisum1, wsqsum1
-        real(RKC)   , intent(in)                :: weisum2, wsqsum2
-        real(RKC)   , intent(in)                :: statKS
-        real(RKC)   , intent(out)               :: probKS
-        real(RKC)   , intent(out)               :: quanKS
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(in)                :: weisum1, wsqsum1
+        real(RKG)   , intent(in)                :: weisum2, wsqsum2
+        real(RKG)   , intent(in)                :: statKS
+        real(RKG)   , intent(out)               :: probKS
+        real(RKG)   , intent(out)               :: quanKS
     end subroutine
 #endif
 
@@ -1044,12 +1044,12 @@ module pm_statest
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setProbKS_WRR_D0_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(in)                :: weisum1, wsqsum1
-        real(RKC)   , intent(in)                :: weisum2, wsqsum2
-        real(RKC)   , intent(in)                :: statKS
-        real(RKC)   , intent(out)               :: probKS
-        real(RKC)   , intent(out)               :: quanKS
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(in)                :: weisum1, wsqsum1
+        real(RKG)   , intent(in)                :: weisum2, wsqsum2
+        real(RKG)   , intent(in)                :: statKS
+        real(RKG)   , intent(out)               :: probKS
+        real(RKG)   , intent(out)               :: quanKS
     end subroutine
 #endif
 
@@ -1058,12 +1058,12 @@ module pm_statest
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setProbKS_WRR_D0_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(in)                :: weisum1, wsqsum1
-        real(RKC)   , intent(in)                :: weisum2, wsqsum2
-        real(RKC)   , intent(in)                :: statKS
-        real(RKC)   , intent(out)               :: probKS
-        real(RKC)   , intent(out)               :: quanKS
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(in)                :: weisum1, wsqsum1
+        real(RKG)   , intent(in)                :: weisum2, wsqsum2
+        real(RKG)   , intent(in)                :: statKS
+        real(RKG)   , intent(out)               :: probKS
+        real(RKG)   , intent(out)               :: quanKS
     end subroutine
 #endif
 

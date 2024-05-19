@@ -204,9 +204,9 @@ module pm_distGamma
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getGammaLogPDFNFKD_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(in)    :: kappa
-        real(RKC)                   :: logPDFNF
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(in)    :: kappa
+        real(RKG)                   :: logPDFNF
     end function
 #endif
 
@@ -215,9 +215,9 @@ module pm_distGamma
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getGammaLogPDFNFKD_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(in)    :: kappa
-        real(RKC)                   :: logPDFNF
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(in)    :: kappa
+        real(RKG)                   :: logPDFNF
     end function
 #endif
 
@@ -226,9 +226,9 @@ module pm_distGamma
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getGammaLogPDFNFKD_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(in)    :: kappa
-        real(RKC)                   :: logPDFNF
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(in)    :: kappa
+        real(RKG)                   :: logPDFNF
     end function
 #endif
 
@@ -237,9 +237,9 @@ module pm_distGamma
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getGammaLogPDFNFKD_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(in)    :: kappa
-        real(RKC)                   :: logPDFNF
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(in)    :: kappa
+        real(RKG)                   :: logPDFNF
     end function
 #endif
 
@@ -248,9 +248,9 @@ module pm_distGamma
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getGammaLogPDFNFKD_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(in)    :: kappa
-        real(RKC)                   :: logPDFNF
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(in)    :: kappa
+        real(RKG)                   :: logPDFNF
     end function
 #endif
 
@@ -261,9 +261,9 @@ module pm_distGamma
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getGammaLogPDFNFKS_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(in)    :: kappa, invSigma
-        real(RKC)                   :: logPDFNF
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(in)    :: kappa, invSigma
+        real(RKG)                   :: logPDFNF
     end function
 #endif
 
@@ -272,9 +272,9 @@ module pm_distGamma
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getGammaLogPDFNFKS_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(in)    :: kappa, invSigma
-        real(RKC)                   :: logPDFNF
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(in)    :: kappa, invSigma
+        real(RKG)                   :: logPDFNF
     end function
 #endif
 
@@ -283,9 +283,9 @@ module pm_distGamma
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getGammaLogPDFNFKS_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(in)    :: kappa, invSigma
-        real(RKC)                   :: logPDFNF
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(in)    :: kappa, invSigma
+        real(RKG)                   :: logPDFNF
     end function
 #endif
 
@@ -294,9 +294,9 @@ module pm_distGamma
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getGammaLogPDFNFKS_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(in)    :: kappa, invSigma
-        real(RKC)                   :: logPDFNF
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(in)    :: kappa, invSigma
+        real(RKG)                   :: logPDFNF
     end function
 #endif
 
@@ -305,9 +305,9 @@ module pm_distGamma
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getGammaLogPDFNFKS_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(in)    :: kappa, invSigma
-        real(RKC)                   :: logPDFNF
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(in)    :: kappa, invSigma
+        real(RKG)                   :: logPDFNF
     end function
 #endif
 
@@ -398,10 +398,10 @@ module pm_distGamma
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getGammaLogPDF_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(in)                :: x
-        real(RKC)   , intent(in)    , optional  :: kappa, invSigma
-        real(RKC)                               :: logPDF
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(in)                :: x
+        real(RKG)   , intent(in)    , optional  :: kappa, invSigma
+        real(RKG)                               :: logPDF
     end function
 #endif
 
@@ -410,10 +410,10 @@ module pm_distGamma
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getGammaLogPDF_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(in)                :: x
-        real(RKC)   , intent(in)    , optional  :: kappa, invSigma
-        real(RKC)                               :: logPDF
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(in)                :: x
+        real(RKG)   , intent(in)    , optional  :: kappa, invSigma
+        real(RKG)                               :: logPDF
     end function
 #endif
 
@@ -422,10 +422,10 @@ module pm_distGamma
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getGammaLogPDF_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(in)                :: x
-        real(RKC)   , intent(in)    , optional  :: kappa, invSigma
-        real(RKC)                               :: logPDF
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(in)                :: x
+        real(RKG)   , intent(in)    , optional  :: kappa, invSigma
+        real(RKG)                               :: logPDF
     end function
 #endif
 
@@ -434,10 +434,10 @@ module pm_distGamma
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getGammaLogPDF_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(in)                :: x
-        real(RKC)   , intent(in)    , optional  :: kappa, invSigma
-        real(RKC)                               :: logPDF
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(in)                :: x
+        real(RKG)   , intent(in)    , optional  :: kappa, invSigma
+        real(RKG)                               :: logPDF
     end function
 #endif
 
@@ -446,10 +446,10 @@ module pm_distGamma
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getGammaLogPDF_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(in)                :: x
-        real(RKC)   , intent(in)    , optional  :: kappa, invSigma
-        real(RKC)                               :: logPDF
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(in)                :: x
+        real(RKG)   , intent(in)    , optional  :: kappa, invSigma
+        real(RKG)                               :: logPDF
     end function
 #endif
 
@@ -539,9 +539,9 @@ module pm_distGamma
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setGammaLogPDFDDD_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(out)                   :: logPDF
-        real(RKC)   , intent(in)                    :: x
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(out)                   :: logPDF
+        real(RKG)   , intent(in)                    :: x
     end subroutine
 #endif
 
@@ -550,9 +550,9 @@ module pm_distGamma
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setGammaLogPDFDDD_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(out)                   :: logPDF
-        real(RKC)   , intent(in)                    :: x
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(out)                   :: logPDF
+        real(RKG)   , intent(in)                    :: x
     end subroutine
 #endif
 
@@ -561,9 +561,9 @@ module pm_distGamma
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setGammaLogPDFDDD_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(out)                   :: logPDF
-        real(RKC)   , intent(in)                    :: x
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(out)                   :: logPDF
+        real(RKG)   , intent(in)                    :: x
     end subroutine
 #endif
 
@@ -572,9 +572,9 @@ module pm_distGamma
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setGammaLogPDFDDD_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(out)                   :: logPDF
-        real(RKC)   , intent(in)                    :: x
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(out)                   :: logPDF
+        real(RKG)   , intent(in)                    :: x
     end subroutine
 #endif
 
@@ -583,9 +583,9 @@ module pm_distGamma
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setGammaLogPDFDDD_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(out)                   :: logPDF
-        real(RKC)   , intent(in)                    :: x
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(out)                   :: logPDF
+        real(RKG)   , intent(in)                    :: x
     end subroutine
 #endif
 
@@ -596,9 +596,9 @@ module pm_distGamma
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setGammaLogPDFNKD_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(out)                   :: logPDF
-        real(RKC)   , intent(in)                    :: x, logPDFNF, kappa
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(out)                   :: logPDF
+        real(RKG)   , intent(in)                    :: x, logPDFNF, kappa
     end subroutine
 #endif
 
@@ -607,9 +607,9 @@ module pm_distGamma
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setGammaLogPDFNKD_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(out)                   :: logPDF
-        real(RKC)   , intent(in)                    :: x, logPDFNF, kappa
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(out)                   :: logPDF
+        real(RKG)   , intent(in)                    :: x, logPDFNF, kappa
     end subroutine
 #endif
 
@@ -618,9 +618,9 @@ module pm_distGamma
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setGammaLogPDFNKD_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(out)                   :: logPDF
-        real(RKC)   , intent(in)                    :: x, logPDFNF, kappa
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(out)                   :: logPDF
+        real(RKG)   , intent(in)                    :: x, logPDFNF, kappa
     end subroutine
 #endif
 
@@ -629,9 +629,9 @@ module pm_distGamma
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setGammaLogPDFNKD_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(out)                   :: logPDF
-        real(RKC)   , intent(in)                    :: x, logPDFNF, kappa
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(out)                   :: logPDF
+        real(RKG)   , intent(in)                    :: x, logPDFNF, kappa
     end subroutine
 #endif
 
@@ -640,9 +640,9 @@ module pm_distGamma
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setGammaLogPDFNKD_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(out)                   :: logPDF
-        real(RKC)   , intent(in)                    :: x, logPDFNF, kappa
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(out)                   :: logPDF
+        real(RKG)   , intent(in)                    :: x, logPDFNF, kappa
     end subroutine
 #endif
 
@@ -653,9 +653,9 @@ module pm_distGamma
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setGammaLogPDFNKS_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(out)                   :: logPDF
-        real(RKC)   , intent(in)                    :: x, logPDFNF, kappa, invSigma
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(out)                   :: logPDF
+        real(RKG)   , intent(in)                    :: x, logPDFNF, kappa, invSigma
     end subroutine
 #endif
 
@@ -664,9 +664,9 @@ module pm_distGamma
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setGammaLogPDFNKS_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(out)                   :: logPDF
-        real(RKC)   , intent(in)                    :: x, logPDFNF, kappa, invSigma
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(out)                   :: logPDF
+        real(RKG)   , intent(in)                    :: x, logPDFNF, kappa, invSigma
     end subroutine
 #endif
 
@@ -675,9 +675,9 @@ module pm_distGamma
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setGammaLogPDFNKS_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(out)                   :: logPDF
-        real(RKC)   , intent(in)                    :: x, logPDFNF, kappa, invSigma
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(out)                   :: logPDF
+        real(RKG)   , intent(in)                    :: x, logPDFNF, kappa, invSigma
     end subroutine
 #endif
 
@@ -686,9 +686,9 @@ module pm_distGamma
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setGammaLogPDFNKS_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(out)                   :: logPDF
-        real(RKC)   , intent(in)                    :: x, logPDFNF, kappa, invSigma
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(out)                   :: logPDF
+        real(RKG)   , intent(in)                    :: x, logPDFNF, kappa, invSigma
     end subroutine
 #endif
 
@@ -697,9 +697,9 @@ module pm_distGamma
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setGammaLogPDFNKS_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(out)                   :: logPDF
-        real(RKC)   , intent(in)                    :: x, logPDFNF, kappa, invSigma
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(out)                   :: logPDF
+        real(RKG)   , intent(in)                    :: x, logPDFNF, kappa, invSigma
     end subroutine
 #endif
 
@@ -787,10 +787,10 @@ module pm_distGamma
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getGammaCDF_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(in)                :: x
-        real(RKC)   , intent(in)    , optional  :: kappa, invSigma
-        real(RKC)                               :: cdf
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(in)                :: x
+        real(RKG)   , intent(in)    , optional  :: kappa, invSigma
+        real(RKG)                               :: cdf
     end function
 #endif
 
@@ -799,10 +799,10 @@ module pm_distGamma
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getGammaCDF_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(in)                :: x
-        real(RKC)   , intent(in)    , optional  :: kappa, invSigma
-        real(RKC)                               :: cdf
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(in)                :: x
+        real(RKG)   , intent(in)    , optional  :: kappa, invSigma
+        real(RKG)                               :: cdf
     end function
 #endif
 
@@ -811,10 +811,10 @@ module pm_distGamma
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getGammaCDF_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(in)                :: x
-        real(RKC)   , intent(in)    , optional  :: kappa, invSigma
-        real(RKC)                               :: cdf
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(in)                :: x
+        real(RKG)   , intent(in)    , optional  :: kappa, invSigma
+        real(RKG)                               :: cdf
     end function
 #endif
 
@@ -823,10 +823,10 @@ module pm_distGamma
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getGammaCDF_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(in)                :: x
-        real(RKC)   , intent(in)    , optional  :: kappa, invSigma
-        real(RKC)                               :: cdf
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(in)                :: x
+        real(RKG)   , intent(in)    , optional  :: kappa, invSigma
+        real(RKG)                               :: cdf
     end function
 #endif
 
@@ -835,10 +835,10 @@ module pm_distGamma
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getGammaCDF_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(in)                :: x
-        real(RKC)   , intent(in)    , optional  :: kappa, invSigma
-        real(RKC)                               :: cdf
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(in)                :: x
+        real(RKG)   , intent(in)    , optional  :: kappa, invSigma
+        real(RKG)                               :: cdf
     end function
 #endif
 
@@ -932,11 +932,11 @@ module pm_distGamma
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setGammaCDFDD_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(out)                   :: cdf
-        real(RKC)   , intent(in)                    :: x
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(out)                   :: cdf
+        real(RKG)   , intent(in)                    :: x
         integer(IK) , intent(out)                   :: info
-        real(RKC)   , intent(in)    , optional      :: tol
+        real(RKG)   , intent(in)    , optional      :: tol
     end subroutine
 #endif
 
@@ -945,11 +945,11 @@ module pm_distGamma
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setGammaCDFDD_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(out)                   :: cdf
-        real(RKC)   , intent(in)                    :: x
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(out)                   :: cdf
+        real(RKG)   , intent(in)                    :: x
         integer(IK) , intent(out)                   :: info
-        real(RKC)   , intent(in)    , optional      :: tol
+        real(RKG)   , intent(in)    , optional      :: tol
     end subroutine
 #endif
 
@@ -958,11 +958,11 @@ module pm_distGamma
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setGammaCDFDD_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(out)                   :: cdf
-        real(RKC)   , intent(in)                    :: x
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(out)                   :: cdf
+        real(RKG)   , intent(in)                    :: x
         integer(IK) , intent(out)                   :: info
-        real(RKC)   , intent(in)    , optional      :: tol
+        real(RKG)   , intent(in)    , optional      :: tol
     end subroutine
 #endif
 
@@ -971,11 +971,11 @@ module pm_distGamma
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setGammaCDFDD_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(out)                   :: cdf
-        real(RKC)   , intent(in)                    :: x
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(out)                   :: cdf
+        real(RKG)   , intent(in)                    :: x
         integer(IK) , intent(out)                   :: info
-        real(RKC)   , intent(in)    , optional      :: tol
+        real(RKG)   , intent(in)    , optional      :: tol
     end subroutine
 #endif
 
@@ -984,11 +984,11 @@ module pm_distGamma
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setGammaCDFDD_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(out)                   :: cdf
-        real(RKC)   , intent(in)                    :: x
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(out)                   :: cdf
+        real(RKG)   , intent(in)                    :: x
         integer(IK) , intent(out)                   :: info
-        real(RKC)   , intent(in)    , optional      :: tol
+        real(RKG)   , intent(in)    , optional      :: tol
     end subroutine
 #endif
 
@@ -999,11 +999,11 @@ module pm_distGamma
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setGammaCDFKD_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(out)                   :: cdf
-        real(RKC)   , intent(in)                    :: x, logGammaKappa, kappa
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(out)                   :: cdf
+        real(RKG)   , intent(in)                    :: x, logGammaKappa, kappa
         integer(IK) , intent(out)                   :: info
-        real(RKC)   , intent(in)    , optional      :: tol
+        real(RKG)   , intent(in)    , optional      :: tol
     end subroutine
 #endif
 
@@ -1012,11 +1012,11 @@ module pm_distGamma
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setGammaCDFKD_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(out)                   :: cdf
-        real(RKC)   , intent(in)                    :: x, logGammaKappa, kappa
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(out)                   :: cdf
+        real(RKG)   , intent(in)                    :: x, logGammaKappa, kappa
         integer(IK) , intent(out)                   :: info
-        real(RKC)   , intent(in)    , optional      :: tol
+        real(RKG)   , intent(in)    , optional      :: tol
     end subroutine
 #endif
 
@@ -1025,11 +1025,11 @@ module pm_distGamma
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setGammaCDFKD_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(out)                   :: cdf
-        real(RKC)   , intent(in)                    :: x, logGammaKappa, kappa
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(out)                   :: cdf
+        real(RKG)   , intent(in)                    :: x, logGammaKappa, kappa
         integer(IK) , intent(out)                   :: info
-        real(RKC)   , intent(in)    , optional      :: tol
+        real(RKG)   , intent(in)    , optional      :: tol
     end subroutine
 #endif
 
@@ -1038,11 +1038,11 @@ module pm_distGamma
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setGammaCDFKD_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(out)                   :: cdf
-        real(RKC)   , intent(in)                    :: x, logGammaKappa, kappa
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(out)                   :: cdf
+        real(RKG)   , intent(in)                    :: x, logGammaKappa, kappa
         integer(IK) , intent(out)                   :: info
-        real(RKC)   , intent(in)    , optional      :: tol
+        real(RKG)   , intent(in)    , optional      :: tol
     end subroutine
 #endif
 
@@ -1051,11 +1051,11 @@ module pm_distGamma
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setGammaCDFKD_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(out)                   :: cdf
-        real(RKC)   , intent(in)                    :: x, logGammaKappa, kappa
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(out)                   :: cdf
+        real(RKG)   , intent(in)                    :: x, logGammaKappa, kappa
         integer(IK) , intent(out)                   :: info
-        real(RKC)   , intent(in)    , optional      :: tol
+        real(RKG)   , intent(in)    , optional      :: tol
     end subroutine
 #endif
 
@@ -1066,11 +1066,11 @@ module pm_distGamma
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setGammaCDFKS_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(out)                   :: cdf
-        real(RKC)   , intent(in)                    :: x, logGammaKappa, kappa, invSigma
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(out)                   :: cdf
+        real(RKG)   , intent(in)                    :: x, logGammaKappa, kappa, invSigma
         integer(IK) , intent(out)                   :: info
-        real(RKC)   , intent(in)    , optional      :: tol
+        real(RKG)   , intent(in)    , optional      :: tol
     end subroutine
 #endif
 
@@ -1079,11 +1079,11 @@ module pm_distGamma
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setGammaCDFKS_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(out)                   :: cdf
-        real(RKC)   , intent(in)                    :: x, logGammaKappa, kappa, invSigma
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(out)                   :: cdf
+        real(RKG)   , intent(in)                    :: x, logGammaKappa, kappa, invSigma
         integer(IK) , intent(out)                   :: info
-        real(RKC)   , intent(in)    , optional      :: tol
+        real(RKG)   , intent(in)    , optional      :: tol
     end subroutine
 #endif
 
@@ -1092,11 +1092,11 @@ module pm_distGamma
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setGammaCDFKS_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(out)                   :: cdf
-        real(RKC)   , intent(in)                    :: x, logGammaKappa, kappa, invSigma
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(out)                   :: cdf
+        real(RKG)   , intent(in)                    :: x, logGammaKappa, kappa, invSigma
         integer(IK) , intent(out)                   :: info
-        real(RKC)   , intent(in)    , optional      :: tol
+        real(RKG)   , intent(in)    , optional      :: tol
     end subroutine
 #endif
 
@@ -1105,11 +1105,11 @@ module pm_distGamma
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setGammaCDFKS_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(out)                   :: cdf
-        real(RKC)   , intent(in)                    :: x, logGammaKappa, kappa, invSigma
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(out)                   :: cdf
+        real(RKG)   , intent(in)                    :: x, logGammaKappa, kappa, invSigma
         integer(IK) , intent(out)                   :: info
-        real(RKC)   , intent(in)    , optional      :: tol
+        real(RKG)   , intent(in)    , optional      :: tol
     end subroutine
 #endif
 
@@ -1118,11 +1118,11 @@ module pm_distGamma
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setGammaCDFKS_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(out)                   :: cdf
-        real(RKC)   , intent(in)                    :: x, logGammaKappa, kappa, invSigma
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(out)                   :: cdf
+        real(RKG)   , intent(in)                    :: x, logGammaKappa, kappa, invSigma
         integer(IK) , intent(out)                   :: info
-        real(RKC)   , intent(in)    , optional      :: tol
+        real(RKG)   , intent(in)    , optional      :: tol
     end subroutine
 #endif
 
@@ -1227,9 +1227,9 @@ module pm_distGamma
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setGammaRandRNGD_D0_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)               , intent(out)                   :: rand
-        real(RKC)               , intent(in)                    :: kappa, sigma
+        use pm_kind, only: RKG => RK5
+        real(RKG)               , intent(out)                   :: rand
+        real(RKG)               , intent(in)                    :: kappa, sigma
     end subroutine
 #endif
 
@@ -1238,9 +1238,9 @@ module pm_distGamma
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setGammaRandRNGD_D0_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)               , intent(out)                   :: rand
-        real(RKC)               , intent(in)                    :: kappa, sigma
+        use pm_kind, only: RKG => RK4
+        real(RKG)               , intent(out)                   :: rand
+        real(RKG)               , intent(in)                    :: kappa, sigma
     end subroutine
 #endif
 
@@ -1249,9 +1249,9 @@ module pm_distGamma
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setGammaRandRNGD_D0_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)               , intent(out)                   :: rand
-        real(RKC)               , intent(in)                    :: kappa, sigma
+        use pm_kind, only: RKG => RK3
+        real(RKG)               , intent(out)                   :: rand
+        real(RKG)               , intent(in)                    :: kappa, sigma
     end subroutine
 #endif
 
@@ -1260,9 +1260,9 @@ module pm_distGamma
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setGammaRandRNGD_D0_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)               , intent(out)                   :: rand
-        real(RKC)               , intent(in)                    :: kappa, sigma
+        use pm_kind, only: RKG => RK2
+        real(RKG)               , intent(out)                   :: rand
+        real(RKG)               , intent(in)                    :: kappa, sigma
     end subroutine
 #endif
 
@@ -1271,9 +1271,9 @@ module pm_distGamma
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setGammaRandRNGD_D0_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)               , intent(out)                   :: rand
-        real(RKC)               , intent(in)                    :: kappa, sigma
+        use pm_kind, only: RKG => RK1
+        real(RKG)               , intent(out)                   :: rand
+        real(RKG)               , intent(in)                    :: kappa, sigma
     end subroutine
 #endif
 
@@ -1284,10 +1284,10 @@ module pm_distGamma
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setGammaRandRNGF_D0_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         type(rngf_type)         , intent(in)                    :: rng
-        real(RKC)               , intent(out)                   :: rand
-        real(RKC)               , intent(in)                    :: kappa, sigma
+        real(RKG)               , intent(out)                   :: rand
+        real(RKG)               , intent(in)                    :: kappa, sigma
     end subroutine
 #endif
 
@@ -1296,10 +1296,10 @@ module pm_distGamma
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setGammaRandRNGF_D0_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         type(rngf_type)         , intent(in)                    :: rng
-        real(RKC)               , intent(out)                   :: rand
-        real(RKC)               , intent(in)                    :: kappa, sigma
+        real(RKG)               , intent(out)                   :: rand
+        real(RKG)               , intent(in)                    :: kappa, sigma
     end subroutine
 #endif
 
@@ -1308,10 +1308,10 @@ module pm_distGamma
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setGammaRandRNGF_D0_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         type(rngf_type)         , intent(in)                    :: rng
-        real(RKC)               , intent(out)                   :: rand
-        real(RKC)               , intent(in)                    :: kappa, sigma
+        real(RKG)               , intent(out)                   :: rand
+        real(RKG)               , intent(in)                    :: kappa, sigma
     end subroutine
 #endif
 
@@ -1320,10 +1320,10 @@ module pm_distGamma
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setGammaRandRNGF_D0_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         type(rngf_type)         , intent(in)                    :: rng
-        real(RKC)               , intent(out)                   :: rand
-        real(RKC)               , intent(in)                    :: kappa, sigma
+        real(RKG)               , intent(out)                   :: rand
+        real(RKG)               , intent(in)                    :: kappa, sigma
     end subroutine
 #endif
 
@@ -1332,10 +1332,10 @@ module pm_distGamma
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setGammaRandRNGF_D0_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         type(rngf_type)         , intent(in)                    :: rng
-        real(RKC)               , intent(out)                   :: rand
-        real(RKC)               , intent(in)                    :: kappa, sigma
+        real(RKG)               , intent(out)                   :: rand
+        real(RKG)               , intent(in)                    :: kappa, sigma
     end subroutine
 #endif
 
@@ -1346,10 +1346,10 @@ module pm_distGamma
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setGammaRandRNGX_D0_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         type(xoshiro256ssw_type), intent(inout)                 :: rng
-        real(RKC)               , intent(out)                   :: rand
-        real(RKC)               , intent(in)                    :: kappa, sigma
+        real(RKG)               , intent(out)                   :: rand
+        real(RKG)               , intent(in)                    :: kappa, sigma
     end subroutine
 #endif
 
@@ -1358,10 +1358,10 @@ module pm_distGamma
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setGammaRandRNGX_D0_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         type(xoshiro256ssw_type), intent(inout)                 :: rng
-        real(RKC)               , intent(out)                   :: rand
-        real(RKC)               , intent(in)                    :: kappa, sigma
+        real(RKG)               , intent(out)                   :: rand
+        real(RKG)               , intent(in)                    :: kappa, sigma
     end subroutine
 #endif
 
@@ -1370,10 +1370,10 @@ module pm_distGamma
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setGammaRandRNGX_D0_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         type(xoshiro256ssw_type), intent(inout)                 :: rng
-        real(RKC)               , intent(out)                   :: rand
-        real(RKC)               , intent(in)                    :: kappa, sigma
+        real(RKG)               , intent(out)                   :: rand
+        real(RKG)               , intent(in)                    :: kappa, sigma
     end subroutine
 #endif
 
@@ -1382,10 +1382,10 @@ module pm_distGamma
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setGammaRandRNGX_D0_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         type(xoshiro256ssw_type), intent(inout)                 :: rng
-        real(RKC)               , intent(out)                   :: rand
-        real(RKC)               , intent(in)                    :: kappa, sigma
+        real(RKG)               , intent(out)                   :: rand
+        real(RKG)               , intent(in)                    :: kappa, sigma
     end subroutine
 #endif
 
@@ -1394,10 +1394,10 @@ module pm_distGamma
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setGammaRandRNGX_D0_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         type(xoshiro256ssw_type), intent(inout)                 :: rng
-        real(RKC)               , intent(out)                   :: rand
-        real(RKC)               , intent(in)                    :: kappa, sigma
+        real(RKG)               , intent(out)                   :: rand
+        real(RKG)               , intent(in)                    :: kappa, sigma
     end subroutine
 #endif
 
@@ -1414,9 +1414,9 @@ module pm_distGamma
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setGammaRandRNGD_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)               , intent(out)                   :: rand(:)
-        real(RKC)               , intent(in)                    :: kappa, sigma
+        use pm_kind, only: RKG => RK5
+        real(RKG)               , intent(out)                   :: rand(:)
+        real(RKG)               , intent(in)                    :: kappa, sigma
     end subroutine
 #endif
 
@@ -1425,9 +1425,9 @@ module pm_distGamma
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setGammaRandRNGD_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)               , intent(out)                   :: rand(:)
-        real(RKC)               , intent(in)                    :: kappa, sigma
+        use pm_kind, only: RKG => RK4
+        real(RKG)               , intent(out)                   :: rand(:)
+        real(RKG)               , intent(in)                    :: kappa, sigma
     end subroutine
 #endif
 
@@ -1436,9 +1436,9 @@ module pm_distGamma
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setGammaRandRNGD_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)               , intent(out)                   :: rand(:)
-        real(RKC)               , intent(in)                    :: kappa, sigma
+        use pm_kind, only: RKG => RK3
+        real(RKG)               , intent(out)                   :: rand(:)
+        real(RKG)               , intent(in)                    :: kappa, sigma
     end subroutine
 #endif
 
@@ -1447,9 +1447,9 @@ module pm_distGamma
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setGammaRandRNGD_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)               , intent(out)                   :: rand(:)
-        real(RKC)               , intent(in)                    :: kappa, sigma
+        use pm_kind, only: RKG => RK2
+        real(RKG)               , intent(out)                   :: rand(:)
+        real(RKG)               , intent(in)                    :: kappa, sigma
     end subroutine
 #endif
 
@@ -1458,9 +1458,9 @@ module pm_distGamma
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setGammaRandRNGD_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)               , intent(out)                   :: rand(:)
-        real(RKC)               , intent(in)                    :: kappa, sigma
+        use pm_kind, only: RKG => RK1
+        real(RKG)               , intent(out)                   :: rand(:)
+        real(RKG)               , intent(in)                    :: kappa, sigma
     end subroutine
 #endif
 
@@ -1471,10 +1471,10 @@ module pm_distGamma
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setGammaRandRNGF_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         type(rngf_type)         , intent(in)                    :: rng
-        real(RKC)               , intent(out)                   :: rand(:)
-        real(RKC)               , intent(in)                    :: kappa, sigma
+        real(RKG)               , intent(out)                   :: rand(:)
+        real(RKG)               , intent(in)                    :: kappa, sigma
     end subroutine
 #endif
 
@@ -1483,10 +1483,10 @@ module pm_distGamma
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setGammaRandRNGF_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         type(rngf_type)         , intent(in)                    :: rng
-        real(RKC)               , intent(out)                   :: rand(:)
-        real(RKC)               , intent(in)                    :: kappa, sigma
+        real(RKG)               , intent(out)                   :: rand(:)
+        real(RKG)               , intent(in)                    :: kappa, sigma
     end subroutine
 #endif
 
@@ -1495,10 +1495,10 @@ module pm_distGamma
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setGammaRandRNGF_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         type(rngf_type)         , intent(in)                    :: rng
-        real(RKC)               , intent(out)                   :: rand(:)
-        real(RKC)               , intent(in)                    :: kappa, sigma
+        real(RKG)               , intent(out)                   :: rand(:)
+        real(RKG)               , intent(in)                    :: kappa, sigma
     end subroutine
 #endif
 
@@ -1507,10 +1507,10 @@ module pm_distGamma
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setGammaRandRNGF_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         type(rngf_type)         , intent(in)                    :: rng
-        real(RKC)               , intent(out)                   :: rand(:)
-        real(RKC)               , intent(in)                    :: kappa, sigma
+        real(RKG)               , intent(out)                   :: rand(:)
+        real(RKG)               , intent(in)                    :: kappa, sigma
     end subroutine
 #endif
 
@@ -1519,10 +1519,10 @@ module pm_distGamma
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setGammaRandRNGF_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         type(rngf_type)         , intent(in)                    :: rng
-        real(RKC)               , intent(out)                   :: rand(:)
-        real(RKC)               , intent(in)                    :: kappa, sigma
+        real(RKG)               , intent(out)                   :: rand(:)
+        real(RKG)               , intent(in)                    :: kappa, sigma
     end subroutine
 #endif
 
@@ -1533,10 +1533,10 @@ module pm_distGamma
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setGammaRandRNGX_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         type(xoshiro256ssw_type), intent(inout)                 :: rng
-        real(RKC)               , intent(out)                   :: rand(:)
-        real(RKC)               , intent(in)                    :: kappa, sigma
+        real(RKG)               , intent(out)                   :: rand(:)
+        real(RKG)               , intent(in)                    :: kappa, sigma
     end subroutine
 #endif
 
@@ -1545,10 +1545,10 @@ module pm_distGamma
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setGammaRandRNGX_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         type(xoshiro256ssw_type), intent(inout)                 :: rng
-        real(RKC)               , intent(out)                   :: rand(:)
-        real(RKC)               , intent(in)                    :: kappa, sigma
+        real(RKG)               , intent(out)                   :: rand(:)
+        real(RKG)               , intent(in)                    :: kappa, sigma
     end subroutine
 #endif
 
@@ -1557,10 +1557,10 @@ module pm_distGamma
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setGammaRandRNGX_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         type(xoshiro256ssw_type), intent(inout)                 :: rng
-        real(RKC)               , intent(out)                   :: rand(:)
-        real(RKC)               , intent(in)                    :: kappa, sigma
+        real(RKG)               , intent(out)                   :: rand(:)
+        real(RKG)               , intent(in)                    :: kappa, sigma
     end subroutine
 #endif
 
@@ -1569,10 +1569,10 @@ module pm_distGamma
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setGammaRandRNGX_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         type(xoshiro256ssw_type), intent(inout)                 :: rng
-        real(RKC)               , intent(out)                   :: rand(:)
-        real(RKC)               , intent(in)                    :: kappa, sigma
+        real(RKG)               , intent(out)                   :: rand(:)
+        real(RKG)               , intent(in)                    :: kappa, sigma
     end subroutine
 #endif
 
@@ -1581,10 +1581,10 @@ module pm_distGamma
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setGammaRandRNGX_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         type(xoshiro256ssw_type), intent(inout)                 :: rng
-        real(RKC)               , intent(out)                   :: rand(:)
-        real(RKC)               , intent(in)                    :: kappa, sigma
+        real(RKG)               , intent(out)                   :: rand(:)
+        real(RKG)               , intent(in)                    :: kappa, sigma
     end subroutine
 #endif
 

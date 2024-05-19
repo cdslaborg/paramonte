@@ -12,13 +12,13 @@ program example
     disp = display_type(file = "main.out.F90")
 
     block
-        use pm_kind, only: TKC => RKH ! all processor kinds are supported.
-        real(TKC), parameter :: noise = sqrt(epsilon(0._TKC))
-        complex(TKC), allocatable :: root(:)
-        real(TKC), allocatable :: coef(:)
+        use pm_kind, only: TKG => RKH ! all processor kinds are supported.
+        real(TKG), parameter :: noise = sqrt(epsilon(0._TKG))
+        complex(TKG), allocatable :: root(:)
+        real(TKG), allocatable :: coef(:)
         call disp%skip()
-        call disp%show("coef = [real(TKC) :: -4, 1, -4, 1]")
-                        coef = [real(TKC) :: -4, 1, -4, 1]
+        call disp%show("coef = [real(TKG) :: -4, 1, -4, 1]")
+                        coef = [real(TKG) :: -4, 1, -4, 1]
         call disp%show("root = getPolyRoot(coef)")
                         root = getPolyRoot(coef)
         call disp%show("if (size(root) == 0_IK) error stop 'no roots could be found.'")
@@ -45,12 +45,12 @@ program example
     end block
 
     block
-        use pm_kind, only: TKC => RKH ! all processor kinds are supported.
-        real(TKC), parameter :: noise = sqrt(epsilon(0._TKC))
-        complex(TKC), allocatable :: coef(:), root(:)
+        use pm_kind, only: TKG => RKH ! all processor kinds are supported.
+        real(TKG), parameter :: noise = sqrt(epsilon(0._TKG))
+        complex(TKG), allocatable :: coef(:), root(:)
         call disp%skip()
-        call disp%show("coef = cmplx([1, 3, 0, 2], -[1, 3, 0, 2], TKC)")
-                        coef = cmplx([1, 3, 0, 2], -[1, 3, 0, 2], TKC)
+        call disp%show("coef = cmplx([1, 3, 0, 2], -[1, 3, 0, 2], TKG)")
+                        coef = cmplx([1, 3, 0, 2], -[1, 3, 0, 2], TKG)
         call disp%show("root = getPolyRoot(coef)")
                         root = getPolyRoot(coef)
         call disp%show("if (size(root) == 0_IK) error stop 'no roots could be found.'")

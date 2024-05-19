@@ -56,35 +56,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setECDF_ONE_D1_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_sampleECDF@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setECDF_ONE_D1_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_sampleECDF@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setECDF_ONE_D1_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_sampleECDF@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setECDF_ONE_D1_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_sampleECDF@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setECDF_ONE_D1_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_sampleECDF@routines.inc.F90"
     end procedure
 #endif
@@ -103,35 +103,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setECDF_WIK_D1_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_sampleECDF@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setECDF_WIK_D1_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_sampleECDF@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setECDF_WIK_D1_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_sampleECDF@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setECDF_WIK_D1_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_sampleECDF@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setECDF_WIK_D1_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_sampleECDF@routines.inc.F90"
     end procedure
 #endif
@@ -150,35 +150,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setECDF_WRK_D1_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_sampleECDF@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setECDF_WRK_D1_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_sampleECDF@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setECDF_WRK_D1_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_sampleECDF@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setECDF_WRK_D1_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_sampleECDF@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setECDF_WRK_D1_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_sampleECDF@routines.inc.F90"
     end procedure
 #endif

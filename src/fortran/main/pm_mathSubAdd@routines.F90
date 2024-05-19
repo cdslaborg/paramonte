@@ -60,35 +60,35 @@ contains
 
 #if IK5_ENABLED
     module procedure getSubAddUnary_IK5
-        use pm_kind, only: IKC => IK5
+        use pm_kind, only: IKG => IK5
 #include "pm_mathSubAdd@routines.inc.F90"
     end procedure
 #endif
 
 #if IK4_ENABLED
     module procedure getSubAddUnary_IK4
-        use pm_kind, only: IKC => IK4
+        use pm_kind, only: IKG => IK4
 #include "pm_mathSubAdd@routines.inc.F90"
     end procedure
 #endif
 
 #if IK3_ENABLED
     module procedure getSubAddUnary_IK3
-        use pm_kind, only: IKC => IK3
+        use pm_kind, only: IKG => IK3
 #include "pm_mathSubAdd@routines.inc.F90"
     end procedure
 #endif
 
 #if IK2_ENABLED
     module procedure getSubAddUnary_IK2
-        use pm_kind, only: IKC => IK2
+        use pm_kind, only: IKG => IK2
 #include "pm_mathSubAdd@routines.inc.F90"
     end procedure
 #endif
 
 #if IK1_ENABLED
     module procedure getSubAddUnary_IK1
-        use pm_kind, only: IKC => IK1
+        use pm_kind, only: IKG => IK1
 #include "pm_mathSubAdd@routines.inc.F90"
     end procedure
 #endif
@@ -101,35 +101,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getSubAddUnary_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_mathSubAdd@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getSubAddUnary_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_mathSubAdd@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getSubAddUnary_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_mathSubAdd@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getSubAddUnary_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_mathSubAdd@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getSubAddUnary_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_mathSubAdd@routines.inc.F90"
     end procedure
 #endif
@@ -142,35 +142,35 @@ contains
 
 #if CK5_ENABLED
     module procedure getSubAddUnary_CK5
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
 #include "pm_mathSubAdd@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure getSubAddUnary_CK4
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
 #include "pm_mathSubAdd@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure getSubAddUnary_CK3
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
 #include "pm_mathSubAdd@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure getSubAddUnary_CK2
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
 #include "pm_mathSubAdd@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure getSubAddUnary_CK1
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
 #include "pm_mathSubAdd@routines.inc.F90"
     end procedure
 #endif
@@ -193,35 +193,35 @@ contains
 
 #if IK5_ENABLED
     module procedure getSubAddBinary_IK5
-        use pm_kind, only: IKC => IK5
+        use pm_kind, only: IKG => IK5
 #include "pm_mathSubAdd@routines.inc.F90"
     end procedure
 #endif
 
 #if IK4_ENABLED
     module procedure getSubAddBinary_IK4
-        use pm_kind, only: IKC => IK4
+        use pm_kind, only: IKG => IK4
 #include "pm_mathSubAdd@routines.inc.F90"
     end procedure
 #endif
 
 #if IK3_ENABLED
     module procedure getSubAddBinary_IK3
-        use pm_kind, only: IKC => IK3
+        use pm_kind, only: IKG => IK3
 #include "pm_mathSubAdd@routines.inc.F90"
     end procedure
 #endif
 
 #if IK2_ENABLED
     module procedure getSubAddBinary_IK2
-        use pm_kind, only: IKC => IK2
+        use pm_kind, only: IKG => IK2
 #include "pm_mathSubAdd@routines.inc.F90"
     end procedure
 #endif
 
 #if IK1_ENABLED
     module procedure getSubAddBinary_IK1
-        use pm_kind, only: IKC => IK1
+        use pm_kind, only: IKG => IK1
 #include "pm_mathSubAdd@routines.inc.F90"
     end procedure
 #endif
@@ -234,35 +234,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getSubAddBinary_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_mathSubAdd@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getSubAddBinary_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_mathSubAdd@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getSubAddBinary_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_mathSubAdd@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getSubAddBinary_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_mathSubAdd@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getSubAddBinary_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_mathSubAdd@routines.inc.F90"
     end procedure
 #endif
@@ -275,35 +275,35 @@ contains
 
 #if CK5_ENABLED
     module procedure getSubAddBinary_CK5
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
 #include "pm_mathSubAdd@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure getSubAddBinary_CK4
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
 #include "pm_mathSubAdd@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure getSubAddBinary_CK3
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
 #include "pm_mathSubAdd@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure getSubAddBinary_CK2
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
 #include "pm_mathSubAdd@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure getSubAddBinary_CK1
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
 #include "pm_mathSubAdd@routines.inc.F90"
     end procedure
 #endif

@@ -109,9 +109,9 @@ module pm_complexMinMax
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: min_D0_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC), intent(in)                        :: a1, a2
-        complex(CKC)                                    :: val
+        use pm_kind, only: CKG => CK5
+        complex(CKG), intent(in)                        :: a1, a2
+        complex(CKG)                                    :: val
     end function
 #endif
 
@@ -120,9 +120,9 @@ module pm_complexMinMax
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: min_D0_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC), intent(in)                        :: a1, a2
-        complex(CKC)                                    :: val
+        use pm_kind, only: CKG => CK4
+        complex(CKG), intent(in)                        :: a1, a2
+        complex(CKG)                                    :: val
     end function
 #endif
 
@@ -131,9 +131,9 @@ module pm_complexMinMax
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: min_D0_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC), intent(in)                        :: a1, a2
-        complex(CKC)                                    :: val
+        use pm_kind, only: CKG => CK3
+        complex(CKG), intent(in)                        :: a1, a2
+        complex(CKG)                                    :: val
     end function
 #endif
 
@@ -142,9 +142,9 @@ module pm_complexMinMax
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: min_D0_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC), intent(in)                        :: a1, a2
-        complex(CKC)                                    :: val
+        use pm_kind, only: CKG => CK2
+        complex(CKG), intent(in)                        :: a1, a2
+        complex(CKG)                                    :: val
     end function
 #endif
 
@@ -153,9 +153,9 @@ module pm_complexMinMax
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: min_D0_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC), intent(in)                        :: a1, a2
-        complex(CKC)                                    :: val
+        use pm_kind, only: CKG => CK1
+        complex(CKG), intent(in)                        :: a1, a2
+        complex(CKG)                                    :: val
     end function
 #endif
 
@@ -223,9 +223,9 @@ module pm_complexMinMax
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: max_D0_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC), intent(in)                        :: a1, a2
-        complex(CKC)                                    :: val
+        use pm_kind, only: CKG => CK5
+        complex(CKG), intent(in)                        :: a1, a2
+        complex(CKG)                                    :: val
     end function
 #endif
 
@@ -234,9 +234,9 @@ module pm_complexMinMax
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: max_D0_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC), intent(in)                        :: a1, a2
-        complex(CKC)                                    :: val
+        use pm_kind, only: CKG => CK4
+        complex(CKG), intent(in)                        :: a1, a2
+        complex(CKG)                                    :: val
     end function
 #endif
 
@@ -245,9 +245,9 @@ module pm_complexMinMax
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: max_D0_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC), intent(in)                        :: a1, a2
-        complex(CKC)                                    :: val
+        use pm_kind, only: CKG => CK3
+        complex(CKG), intent(in)                        :: a1, a2
+        complex(CKG)                                    :: val
     end function
 #endif
 
@@ -256,9 +256,9 @@ module pm_complexMinMax
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: max_D0_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC), intent(in)                        :: a1, a2
-        complex(CKC)                                    :: val
+        use pm_kind, only: CKG => CK2
+        complex(CKG), intent(in)                        :: a1, a2
+        complex(CKG)                                    :: val
     end function
 #endif
 
@@ -267,9 +267,9 @@ module pm_complexMinMax
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: max_D0_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC), intent(in)                        :: a1, a2
-        complex(CKC)                                    :: val
+        use pm_kind, only: CKG => CK1
+        complex(CKG), intent(in)                        :: a1, a2
+        complex(CKG)                                    :: val
     end function
 #endif
 
@@ -347,9 +347,9 @@ module pm_complexMinMax
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: minvalALL_D1_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC), intent(in)    __CONTIGUOUS            :: array(:)
-        complex(CKC)                                        :: val
+        use pm_kind, only: CKG => CK5
+        complex(CKG), intent(in)    __CONTIGUOUS            :: array(:)
+        complex(CKG)                                        :: val
     end function
 #endif
 
@@ -358,9 +358,9 @@ module pm_complexMinMax
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: minvalALL_D1_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC), intent(in)    __CONTIGUOUS            :: array(:)
-        complex(CKC)                                        :: val
+        use pm_kind, only: CKG => CK4
+        complex(CKG), intent(in)    __CONTIGUOUS            :: array(:)
+        complex(CKG)                                        :: val
     end function
 #endif
 
@@ -369,9 +369,9 @@ module pm_complexMinMax
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: minvalALL_D1_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC), intent(in)    __CONTIGUOUS            :: array(:)
-        complex(CKC)                                        :: val
+        use pm_kind, only: CKG => CK3
+        complex(CKG), intent(in)    __CONTIGUOUS            :: array(:)
+        complex(CKG)                                        :: val
     end function
 #endif
 
@@ -380,9 +380,9 @@ module pm_complexMinMax
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: minvalALL_D1_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC), intent(in)    __CONTIGUOUS            :: array(:)
-        complex(CKC)                                        :: val
+        use pm_kind, only: CKG => CK2
+        complex(CKG), intent(in)    __CONTIGUOUS            :: array(:)
+        complex(CKG)                                        :: val
     end function
 #endif
 
@@ -391,9 +391,9 @@ module pm_complexMinMax
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: minvalALL_D1_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC), intent(in)    __CONTIGUOUS            :: array(:)
-        complex(CKC)                                        :: val
+        use pm_kind, only: CKG => CK1
+        complex(CKG), intent(in)    __CONTIGUOUS            :: array(:)
+        complex(CKG)                                        :: val
     end function
 #endif
 
@@ -404,9 +404,9 @@ module pm_complexMinMax
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: minvalALL_D2_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC), intent(in)    , contiguous, target    :: array(:,:)
-        complex(CKC)                                        :: val
+        use pm_kind, only: CKG => CK5
+        complex(CKG), intent(in)    , contiguous, target    :: array(:,:)
+        complex(CKG)                                        :: val
     end function
 #endif
 
@@ -415,9 +415,9 @@ module pm_complexMinMax
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: minvalALL_D2_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC), intent(in)    , contiguous, target    :: array(:,:)
-        complex(CKC)                                        :: val
+        use pm_kind, only: CKG => CK4
+        complex(CKG), intent(in)    , contiguous, target    :: array(:,:)
+        complex(CKG)                                        :: val
     end function
 #endif
 
@@ -426,9 +426,9 @@ module pm_complexMinMax
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: minvalALL_D2_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC), intent(in)    , contiguous, target    :: array(:,:)
-        complex(CKC)                                        :: val
+        use pm_kind, only: CKG => CK3
+        complex(CKG), intent(in)    , contiguous, target    :: array(:,:)
+        complex(CKG)                                        :: val
     end function
 #endif
 
@@ -437,9 +437,9 @@ module pm_complexMinMax
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: minvalALL_D2_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC), intent(in)    , contiguous, target    :: array(:,:)
-        complex(CKC)                                        :: val
+        use pm_kind, only: CKG => CK2
+        complex(CKG), intent(in)    , contiguous, target    :: array(:,:)
+        complex(CKG)                                        :: val
     end function
 #endif
 
@@ -448,9 +448,9 @@ module pm_complexMinMax
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: minvalALL_D2_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC), intent(in)    , contiguous, target    :: array(:,:)
-        complex(CKC)                                        :: val
+        use pm_kind, only: CKG => CK1
+        complex(CKG), intent(in)    , contiguous, target    :: array(:,:)
+        complex(CKG)                                        :: val
     end function
 #endif
 
@@ -461,10 +461,10 @@ module pm_complexMinMax
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: minvalDIM_D1_CK5
 #endif
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
         integer(IK) , intent(in)                            :: dim
-        complex(CKC), intent(in)    __CONTIGUOUS            :: array(:)
-        complex(CKC)                                        :: val
+        complex(CKG), intent(in)    __CONTIGUOUS            :: array(:)
+        complex(CKG)                                        :: val
     end function
 #endif
 
@@ -473,10 +473,10 @@ module pm_complexMinMax
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: minvalDIM_D1_CK4
 #endif
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
         integer(IK) , intent(in)                            :: dim
-        complex(CKC), intent(in)    __CONTIGUOUS            :: array(:)
-        complex(CKC)                                        :: val
+        complex(CKG), intent(in)    __CONTIGUOUS            :: array(:)
+        complex(CKG)                                        :: val
     end function
 #endif
 
@@ -485,10 +485,10 @@ module pm_complexMinMax
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: minvalDIM_D1_CK3
 #endif
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
         integer(IK) , intent(in)                            :: dim
-        complex(CKC), intent(in)    __CONTIGUOUS            :: array(:)
-        complex(CKC)                                        :: val
+        complex(CKG), intent(in)    __CONTIGUOUS            :: array(:)
+        complex(CKG)                                        :: val
     end function
 #endif
 
@@ -497,10 +497,10 @@ module pm_complexMinMax
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: minvalDIM_D1_CK2
 #endif
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
         integer(IK) , intent(in)                            :: dim
-        complex(CKC), intent(in)    __CONTIGUOUS            :: array(:)
-        complex(CKC)                                        :: val
+        complex(CKG), intent(in)    __CONTIGUOUS            :: array(:)
+        complex(CKG)                                        :: val
     end function
 #endif
 
@@ -509,10 +509,10 @@ module pm_complexMinMax
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: minvalDIM_D1_CK1
 #endif
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
         integer(IK) , intent(in)                            :: dim
-        complex(CKC), intent(in)    __CONTIGUOUS            :: array(:)
-        complex(CKC)                                        :: val
+        complex(CKG), intent(in)    __CONTIGUOUS            :: array(:)
+        complex(CKG)                                        :: val
     end function
 #endif
 
@@ -523,10 +523,10 @@ module pm_complexMinMax
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: minvalDIM_D2_CK5
 #endif
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
         integer(IK) , intent(in)                            :: dim
-        complex(CKC), intent(in)    __CONTIGUOUS            :: array(:,:)
-        complex(CKC)                                        :: val(size(array, 3 - dim, IK))
+        complex(CKG), intent(in)    __CONTIGUOUS            :: array(:,:)
+        complex(CKG)                                        :: val(size(array, 3 - dim, IK))
     end function
 #endif
 
@@ -535,10 +535,10 @@ module pm_complexMinMax
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: minvalDIM_D2_CK4
 #endif
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
         integer(IK) , intent(in)                            :: dim
-        complex(CKC), intent(in)    __CONTIGUOUS            :: array(:,:)
-        complex(CKC)                                        :: val(size(array, 3 - dim, IK))
+        complex(CKG), intent(in)    __CONTIGUOUS            :: array(:,:)
+        complex(CKG)                                        :: val(size(array, 3 - dim, IK))
     end function
 #endif
 
@@ -547,10 +547,10 @@ module pm_complexMinMax
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: minvalDIM_D2_CK3
 #endif
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
         integer(IK) , intent(in)                            :: dim
-        complex(CKC), intent(in)    __CONTIGUOUS            :: array(:,:)
-        complex(CKC)                                        :: val(size(array, 3 - dim, IK))
+        complex(CKG), intent(in)    __CONTIGUOUS            :: array(:,:)
+        complex(CKG)                                        :: val(size(array, 3 - dim, IK))
     end function
 #endif
 
@@ -559,10 +559,10 @@ module pm_complexMinMax
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: minvalDIM_D2_CK2
 #endif
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
         integer(IK) , intent(in)                            :: dim
-        complex(CKC), intent(in)    __CONTIGUOUS            :: array(:,:)
-        complex(CKC)                                        :: val(size(array, 3 - dim, IK))
+        complex(CKG), intent(in)    __CONTIGUOUS            :: array(:,:)
+        complex(CKG)                                        :: val(size(array, 3 - dim, IK))
     end function
 #endif
 
@@ -571,10 +571,10 @@ module pm_complexMinMax
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: minvalDIM_D2_CK1
 #endif
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
         integer(IK) , intent(in)                            :: dim
-        complex(CKC), intent(in)    __CONTIGUOUS            :: array(:,:)
-        complex(CKC)                                        :: val(size(array, 3 - dim, IK))
+        complex(CKG), intent(in)    __CONTIGUOUS            :: array(:,:)
+        complex(CKG)                                        :: val(size(array, 3 - dim, IK))
     end function
 #endif
 
@@ -652,9 +652,9 @@ module pm_complexMinMax
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: maxvalALL_D1_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC), intent(in)    __CONTIGUOUS            :: array(:)
-        complex(CKC)                                        :: val
+        use pm_kind, only: CKG => CK5
+        complex(CKG), intent(in)    __CONTIGUOUS            :: array(:)
+        complex(CKG)                                        :: val
     end function
 #endif
 
@@ -663,9 +663,9 @@ module pm_complexMinMax
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: maxvalALL_D1_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC), intent(in)    __CONTIGUOUS            :: array(:)
-        complex(CKC)                                        :: val
+        use pm_kind, only: CKG => CK4
+        complex(CKG), intent(in)    __CONTIGUOUS            :: array(:)
+        complex(CKG)                                        :: val
     end function
 #endif
 
@@ -674,9 +674,9 @@ module pm_complexMinMax
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: maxvalALL_D1_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC), intent(in)    __CONTIGUOUS            :: array(:)
-        complex(CKC)                                        :: val
+        use pm_kind, only: CKG => CK3
+        complex(CKG), intent(in)    __CONTIGUOUS            :: array(:)
+        complex(CKG)                                        :: val
     end function
 #endif
 
@@ -685,9 +685,9 @@ module pm_complexMinMax
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: maxvalALL_D1_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC), intent(in)    __CONTIGUOUS            :: array(:)
-        complex(CKC)                                        :: val
+        use pm_kind, only: CKG => CK2
+        complex(CKG), intent(in)    __CONTIGUOUS            :: array(:)
+        complex(CKG)                                        :: val
     end function
 #endif
 
@@ -696,9 +696,9 @@ module pm_complexMinMax
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: maxvalALL_D1_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC), intent(in)    __CONTIGUOUS            :: array(:)
-        complex(CKC)                                        :: val
+        use pm_kind, only: CKG => CK1
+        complex(CKG), intent(in)    __CONTIGUOUS            :: array(:)
+        complex(CKG)                                        :: val
     end function
 #endif
 
@@ -709,9 +709,9 @@ module pm_complexMinMax
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: maxvalALL_D2_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC), intent(in)    , contiguous, target    :: array(:,:)
-        complex(CKC)                                        :: val
+        use pm_kind, only: CKG => CK5
+        complex(CKG), intent(in)    , contiguous, target    :: array(:,:)
+        complex(CKG)                                        :: val
     end function
 #endif
 
@@ -720,9 +720,9 @@ module pm_complexMinMax
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: maxvalALL_D2_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC), intent(in)    , contiguous, target    :: array(:,:)
-        complex(CKC)                                        :: val
+        use pm_kind, only: CKG => CK4
+        complex(CKG), intent(in)    , contiguous, target    :: array(:,:)
+        complex(CKG)                                        :: val
     end function
 #endif
 
@@ -731,9 +731,9 @@ module pm_complexMinMax
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: maxvalALL_D2_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC), intent(in)    , contiguous, target    :: array(:,:)
-        complex(CKC)                                        :: val
+        use pm_kind, only: CKG => CK3
+        complex(CKG), intent(in)    , contiguous, target    :: array(:,:)
+        complex(CKG)                                        :: val
     end function
 #endif
 
@@ -742,9 +742,9 @@ module pm_complexMinMax
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: maxvalALL_D2_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC), intent(in)    , contiguous, target    :: array(:,:)
-        complex(CKC)                                        :: val
+        use pm_kind, only: CKG => CK2
+        complex(CKG), intent(in)    , contiguous, target    :: array(:,:)
+        complex(CKG)                                        :: val
     end function
 #endif
 
@@ -753,9 +753,9 @@ module pm_complexMinMax
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: maxvalALL_D2_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC), intent(in)    , contiguous, target    :: array(:,:)
-        complex(CKC)                                        :: val
+        use pm_kind, only: CKG => CK1
+        complex(CKG), intent(in)    , contiguous, target    :: array(:,:)
+        complex(CKG)                                        :: val
     end function
 #endif
 
@@ -766,10 +766,10 @@ module pm_complexMinMax
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: maxvalDIM_D1_CK5
 #endif
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
         integer(IK) , intent(in)                            :: dim
-        complex(CKC), intent(in)    __CONTIGUOUS            :: array(:)
-        complex(CKC)                                        :: val
+        complex(CKG), intent(in)    __CONTIGUOUS            :: array(:)
+        complex(CKG)                                        :: val
     end function
 #endif
 
@@ -778,10 +778,10 @@ module pm_complexMinMax
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: maxvalDIM_D1_CK4
 #endif
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
         integer(IK) , intent(in)                            :: dim
-        complex(CKC), intent(in)    __CONTIGUOUS            :: array(:)
-        complex(CKC)                                        :: val
+        complex(CKG), intent(in)    __CONTIGUOUS            :: array(:)
+        complex(CKG)                                        :: val
     end function
 #endif
 
@@ -790,10 +790,10 @@ module pm_complexMinMax
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: maxvalDIM_D1_CK3
 #endif
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
         integer(IK) , intent(in)                            :: dim
-        complex(CKC), intent(in)    __CONTIGUOUS            :: array(:)
-        complex(CKC)                                        :: val
+        complex(CKG), intent(in)    __CONTIGUOUS            :: array(:)
+        complex(CKG)                                        :: val
     end function
 #endif
 
@@ -802,10 +802,10 @@ module pm_complexMinMax
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: maxvalDIM_D1_CK2
 #endif
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
         integer(IK) , intent(in)                            :: dim
-        complex(CKC), intent(in)    __CONTIGUOUS            :: array(:)
-        complex(CKC)                                        :: val
+        complex(CKG), intent(in)    __CONTIGUOUS            :: array(:)
+        complex(CKG)                                        :: val
     end function
 #endif
 
@@ -814,10 +814,10 @@ module pm_complexMinMax
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: maxvalDIM_D1_CK1
 #endif
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
         integer(IK) , intent(in)                            :: dim
-        complex(CKC), intent(in)    __CONTIGUOUS            :: array(:)
-        complex(CKC)                                        :: val
+        complex(CKG), intent(in)    __CONTIGUOUS            :: array(:)
+        complex(CKG)                                        :: val
     end function
 #endif
 
@@ -828,10 +828,10 @@ module pm_complexMinMax
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: maxvalDIM_D2_CK5
 #endif
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
         integer(IK) , intent(in)                            :: dim
-        complex(CKC), intent(in)    __CONTIGUOUS            :: array(:,:)
-        complex(CKC)                                        :: val(size(array, 3 - dim, IK))
+        complex(CKG), intent(in)    __CONTIGUOUS            :: array(:,:)
+        complex(CKG)                                        :: val(size(array, 3 - dim, IK))
     end function
 #endif
 
@@ -840,10 +840,10 @@ module pm_complexMinMax
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: maxvalDIM_D2_CK4
 #endif
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
         integer(IK) , intent(in)                            :: dim
-        complex(CKC), intent(in)    __CONTIGUOUS            :: array(:,:)
-        complex(CKC)                                        :: val(size(array, 3 - dim, IK))
+        complex(CKG), intent(in)    __CONTIGUOUS            :: array(:,:)
+        complex(CKG)                                        :: val(size(array, 3 - dim, IK))
     end function
 #endif
 
@@ -852,10 +852,10 @@ module pm_complexMinMax
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: maxvalDIM_D2_CK3
 #endif
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
         integer(IK) , intent(in)                            :: dim
-        complex(CKC), intent(in)    __CONTIGUOUS            :: array(:,:)
-        complex(CKC)                                        :: val(size(array, 3 - dim, IK))
+        complex(CKG), intent(in)    __CONTIGUOUS            :: array(:,:)
+        complex(CKG)                                        :: val(size(array, 3 - dim, IK))
     end function
 #endif
 
@@ -864,10 +864,10 @@ module pm_complexMinMax
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: maxvalDIM_D2_CK2
 #endif
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
         integer(IK) , intent(in)                            :: dim
-        complex(CKC), intent(in)    __CONTIGUOUS            :: array(:,:)
-        complex(CKC)                                        :: val(size(array, 3 - dim, IK))
+        complex(CKG), intent(in)    __CONTIGUOUS            :: array(:,:)
+        complex(CKG)                                        :: val(size(array, 3 - dim, IK))
     end function
 #endif
 
@@ -876,10 +876,10 @@ module pm_complexMinMax
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: maxvalDIM_D2_CK1
 #endif
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
         integer(IK) , intent(in)                            :: dim
-        complex(CKC), intent(in)    __CONTIGUOUS            :: array(:,:)
-        complex(CKC)                                        :: val(size(array, 3 - dim, IK))
+        complex(CKG), intent(in)    __CONTIGUOUS            :: array(:,:)
+        complex(CKG)                                        :: val(size(array, 3 - dim, IK))
     end function
 #endif
 
@@ -970,8 +970,8 @@ module pm_complexMinMax
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: minlocALL_D1_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC), intent(in)    __CONTIGUOUS            :: array(:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG), intent(in)    __CONTIGUOUS            :: array(:)
         integer(IK)                                         :: loc(2)
     end function
 #endif
@@ -981,8 +981,8 @@ module pm_complexMinMax
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: minlocALL_D1_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC), intent(in)    __CONTIGUOUS            :: array(:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG), intent(in)    __CONTIGUOUS            :: array(:)
         integer(IK)                                         :: loc(2)
     end function
 #endif
@@ -992,8 +992,8 @@ module pm_complexMinMax
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: minlocALL_D1_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC), intent(in)    __CONTIGUOUS            :: array(:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG), intent(in)    __CONTIGUOUS            :: array(:)
         integer(IK)                                         :: loc(2)
     end function
 #endif
@@ -1003,8 +1003,8 @@ module pm_complexMinMax
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: minlocALL_D1_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC), intent(in)    __CONTIGUOUS            :: array(:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG), intent(in)    __CONTIGUOUS            :: array(:)
         integer(IK)                                         :: loc(2)
     end function
 #endif
@@ -1014,8 +1014,8 @@ module pm_complexMinMax
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: minlocALL_D1_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC), intent(in)    __CONTIGUOUS            :: array(:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG), intent(in)    __CONTIGUOUS            :: array(:)
         integer(IK)                                         :: loc(2)
     end function
 #endif
@@ -1027,8 +1027,8 @@ module pm_complexMinMax
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: minlocALL_D2_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC), intent(in)    , contiguous, target    :: array(:,:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG), intent(in)    , contiguous, target    :: array(:,:)
         integer(IK)                                         :: loc(2)
     end function
 #endif
@@ -1038,8 +1038,8 @@ module pm_complexMinMax
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: minlocALL_D2_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC), intent(in)    , contiguous, target    :: array(:,:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG), intent(in)    , contiguous, target    :: array(:,:)
         integer(IK)                                         :: loc(2)
     end function
 #endif
@@ -1049,8 +1049,8 @@ module pm_complexMinMax
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: minlocALL_D2_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC), intent(in)    , contiguous, target    :: array(:,:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG), intent(in)    , contiguous, target    :: array(:,:)
         integer(IK)                                         :: loc(2)
     end function
 #endif
@@ -1060,8 +1060,8 @@ module pm_complexMinMax
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: minlocALL_D2_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC), intent(in)    , contiguous, target    :: array(:,:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG), intent(in)    , contiguous, target    :: array(:,:)
         integer(IK)                                         :: loc(2)
     end function
 #endif
@@ -1071,8 +1071,8 @@ module pm_complexMinMax
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: minlocALL_D2_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC), intent(in)    , contiguous, target    :: array(:,:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG), intent(in)    , contiguous, target    :: array(:,:)
         integer(IK)                                         :: loc(2)
     end function
 #endif
@@ -1084,9 +1084,9 @@ module pm_complexMinMax
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: minlocDIM_D1_CK5
 #endif
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
         integer(IK) , intent(in)                            :: dim
-        complex(CKC), intent(in)    __CONTIGUOUS            :: array(:)
+        complex(CKG), intent(in)    __CONTIGUOUS            :: array(:)
         integer(IK)                                         :: loc(2)
     end function
 #endif
@@ -1096,9 +1096,9 @@ module pm_complexMinMax
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: minlocDIM_D1_CK4
 #endif
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
         integer(IK) , intent(in)                            :: dim
-        complex(CKC), intent(in)    __CONTIGUOUS            :: array(:)
+        complex(CKG), intent(in)    __CONTIGUOUS            :: array(:)
         integer(IK)                                         :: loc(2)
     end function
 #endif
@@ -1108,9 +1108,9 @@ module pm_complexMinMax
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: minlocDIM_D1_CK3
 #endif
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
         integer(IK) , intent(in)                            :: dim
-        complex(CKC), intent(in)    __CONTIGUOUS            :: array(:)
+        complex(CKG), intent(in)    __CONTIGUOUS            :: array(:)
         integer(IK)                                         :: loc(2)
     end function
 #endif
@@ -1120,9 +1120,9 @@ module pm_complexMinMax
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: minlocDIM_D1_CK2
 #endif
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
         integer(IK) , intent(in)                            :: dim
-        complex(CKC), intent(in)    __CONTIGUOUS            :: array(:)
+        complex(CKG), intent(in)    __CONTIGUOUS            :: array(:)
         integer(IK)                                         :: loc(2)
     end function
 #endif
@@ -1132,9 +1132,9 @@ module pm_complexMinMax
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: minlocDIM_D1_CK1
 #endif
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
         integer(IK) , intent(in)                            :: dim
-        complex(CKC), intent(in)    __CONTIGUOUS            :: array(:)
+        complex(CKG), intent(in)    __CONTIGUOUS            :: array(:)
         integer(IK)                                         :: loc(2)
     end function
 #endif
@@ -1146,9 +1146,9 @@ module pm_complexMinMax
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: minlocDIM_D2_CK5
 #endif
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
         integer(IK) , intent(in)                            :: dim
-        complex(CKC), intent(in)    __CONTIGUOUS            :: array(:,:)
+        complex(CKG), intent(in)    __CONTIGUOUS            :: array(:,:)
         integer(IK)                                         :: loc(2, size(array, 3 - dim, IK))
     end function
 #endif
@@ -1158,9 +1158,9 @@ module pm_complexMinMax
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: minlocDIM_D2_CK4
 #endif
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
         integer(IK) , intent(in)                            :: dim
-        complex(CKC), intent(in)    __CONTIGUOUS            :: array(:,:)
+        complex(CKG), intent(in)    __CONTIGUOUS            :: array(:,:)
         integer(IK)                                         :: loc(2, size(array, 3 - dim, IK))
     end function
 #endif
@@ -1170,9 +1170,9 @@ module pm_complexMinMax
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: minlocDIM_D2_CK3
 #endif
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
         integer(IK) , intent(in)                            :: dim
-        complex(CKC), intent(in)    __CONTIGUOUS            :: array(:,:)
+        complex(CKG), intent(in)    __CONTIGUOUS            :: array(:,:)
         integer(IK)                                         :: loc(2, size(array, 3 - dim, IK))
     end function
 #endif
@@ -1182,9 +1182,9 @@ module pm_complexMinMax
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: minlocDIM_D2_CK2
 #endif
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
         integer(IK) , intent(in)                            :: dim
-        complex(CKC), intent(in)    __CONTIGUOUS            :: array(:,:)
+        complex(CKG), intent(in)    __CONTIGUOUS            :: array(:,:)
         integer(IK)                                         :: loc(2, size(array, 3 - dim, IK))
     end function
 #endif
@@ -1194,9 +1194,9 @@ module pm_complexMinMax
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: minlocDIM_D2_CK1
 #endif
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
         integer(IK) , intent(in)                            :: dim
-        complex(CKC), intent(in)    __CONTIGUOUS            :: array(:,:)
+        complex(CKG), intent(in)    __CONTIGUOUS            :: array(:,:)
         integer(IK)                                         :: loc(2, size(array, 3 - dim, IK))
     end function
 #endif
@@ -1288,8 +1288,8 @@ module pm_complexMinMax
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: maxlocALL_D1_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC), intent(in)    __CONTIGUOUS            :: array(:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG), intent(in)    __CONTIGUOUS            :: array(:)
         integer(IK)                                         :: loc(2)
     end function
 #endif
@@ -1299,8 +1299,8 @@ module pm_complexMinMax
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: maxlocALL_D1_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC), intent(in)    __CONTIGUOUS            :: array(:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG), intent(in)    __CONTIGUOUS            :: array(:)
         integer(IK)                                         :: loc(2)
     end function
 #endif
@@ -1310,8 +1310,8 @@ module pm_complexMinMax
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: maxlocALL_D1_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC), intent(in)    __CONTIGUOUS            :: array(:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG), intent(in)    __CONTIGUOUS            :: array(:)
         integer(IK)                                         :: loc(2)
     end function
 #endif
@@ -1321,8 +1321,8 @@ module pm_complexMinMax
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: maxlocALL_D1_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC), intent(in)    __CONTIGUOUS            :: array(:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG), intent(in)    __CONTIGUOUS            :: array(:)
         integer(IK)                                         :: loc(2)
     end function
 #endif
@@ -1332,8 +1332,8 @@ module pm_complexMinMax
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: maxlocALL_D1_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC), intent(in)    __CONTIGUOUS            :: array(:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG), intent(in)    __CONTIGUOUS            :: array(:)
         integer(IK)                                         :: loc(2)
     end function
 #endif
@@ -1345,8 +1345,8 @@ module pm_complexMinMax
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: maxlocALL_D2_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC), intent(in)    , contiguous, target    :: array(:,:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG), intent(in)    , contiguous, target    :: array(:,:)
         integer(IK)                                         :: loc(2)
     end function
 #endif
@@ -1356,8 +1356,8 @@ module pm_complexMinMax
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: maxlocALL_D2_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC), intent(in)    , contiguous, target    :: array(:,:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG), intent(in)    , contiguous, target    :: array(:,:)
         integer(IK)                                         :: loc(2)
     end function
 #endif
@@ -1367,8 +1367,8 @@ module pm_complexMinMax
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: maxlocALL_D2_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC), intent(in)    , contiguous, target    :: array(:,:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG), intent(in)    , contiguous, target    :: array(:,:)
         integer(IK)                                         :: loc(2)
     end function
 #endif
@@ -1378,8 +1378,8 @@ module pm_complexMinMax
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: maxlocALL_D2_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC), intent(in)    , contiguous, target    :: array(:,:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG), intent(in)    , contiguous, target    :: array(:,:)
         integer(IK)                                         :: loc(2)
     end function
 #endif
@@ -1389,8 +1389,8 @@ module pm_complexMinMax
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: maxlocALL_D2_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC), intent(in)    , contiguous, target    :: array(:,:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG), intent(in)    , contiguous, target    :: array(:,:)
         integer(IK)                                         :: loc(2)
     end function
 #endif
@@ -1402,9 +1402,9 @@ module pm_complexMinMax
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: maxlocDIM_D1_CK5
 #endif
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
         integer(IK) , intent(in)                            :: dim
-        complex(CKC), intent(in)    __CONTIGUOUS            :: array(:)
+        complex(CKG), intent(in)    __CONTIGUOUS            :: array(:)
         integer(IK)                                         :: loc(2)
     end function
 #endif
@@ -1414,9 +1414,9 @@ module pm_complexMinMax
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: maxlocDIM_D1_CK4
 #endif
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
         integer(IK) , intent(in)                            :: dim
-        complex(CKC), intent(in)    __CONTIGUOUS            :: array(:)
+        complex(CKG), intent(in)    __CONTIGUOUS            :: array(:)
         integer(IK)                                         :: loc(2)
     end function
 #endif
@@ -1426,9 +1426,9 @@ module pm_complexMinMax
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: maxlocDIM_D1_CK3
 #endif
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
         integer(IK) , intent(in)                            :: dim
-        complex(CKC), intent(in)    __CONTIGUOUS            :: array(:)
+        complex(CKG), intent(in)    __CONTIGUOUS            :: array(:)
         integer(IK)                                         :: loc(2)
     end function
 #endif
@@ -1438,9 +1438,9 @@ module pm_complexMinMax
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: maxlocDIM_D1_CK2
 #endif
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
         integer(IK) , intent(in)                            :: dim
-        complex(CKC), intent(in)    __CONTIGUOUS            :: array(:)
+        complex(CKG), intent(in)    __CONTIGUOUS            :: array(:)
         integer(IK)                                         :: loc(2)
     end function
 #endif
@@ -1450,9 +1450,9 @@ module pm_complexMinMax
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: maxlocDIM_D1_CK1
 #endif
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
         integer(IK) , intent(in)                            :: dim
-        complex(CKC), intent(in)    __CONTIGUOUS            :: array(:)
+        complex(CKG), intent(in)    __CONTIGUOUS            :: array(:)
         integer(IK)                                         :: loc(2)
     end function
 #endif
@@ -1464,9 +1464,9 @@ module pm_complexMinMax
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: maxlocDIM_D2_CK5
 #endif
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
         integer(IK) , intent(in)                            :: dim
-        complex(CKC), intent(in)    __CONTIGUOUS            :: array(:,:)
+        complex(CKG), intent(in)    __CONTIGUOUS            :: array(:,:)
         integer(IK)                                         :: loc(2, size(array, 3 - dim, IK))
     end function
 #endif
@@ -1476,9 +1476,9 @@ module pm_complexMinMax
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: maxlocDIM_D2_CK4
 #endif
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
         integer(IK) , intent(in)                            :: dim
-        complex(CKC), intent(in)    __CONTIGUOUS            :: array(:,:)
+        complex(CKG), intent(in)    __CONTIGUOUS            :: array(:,:)
         integer(IK)                                         :: loc(2, size(array, 3 - dim, IK))
     end function
 #endif
@@ -1488,9 +1488,9 @@ module pm_complexMinMax
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: maxlocDIM_D2_CK3
 #endif
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
         integer(IK) , intent(in)                            :: dim
-        complex(CKC), intent(in)    __CONTIGUOUS            :: array(:,:)
+        complex(CKG), intent(in)    __CONTIGUOUS            :: array(:,:)
         integer(IK)                                         :: loc(2, size(array, 3 - dim, IK))
     end function
 #endif
@@ -1500,9 +1500,9 @@ module pm_complexMinMax
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: maxlocDIM_D2_CK2
 #endif
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
         integer(IK) , intent(in)                            :: dim
-        complex(CKC), intent(in)    __CONTIGUOUS            :: array(:,:)
+        complex(CKG), intent(in)    __CONTIGUOUS            :: array(:,:)
         integer(IK)                                         :: loc(2, size(array, 3 - dim, IK))
     end function
 #endif
@@ -1512,9 +1512,9 @@ module pm_complexMinMax
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: maxlocDIM_D2_CK1
 #endif
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
         integer(IK) , intent(in)                            :: dim
-        complex(CKC), intent(in)    __CONTIGUOUS            :: array(:,:)
+        complex(CKG), intent(in)    __CONTIGUOUS            :: array(:,:)
         integer(IK)                                         :: loc(2, size(array, 3 - dim, IK))
     end function
 #endif

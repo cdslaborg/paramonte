@@ -14,12 +14,12 @@ program example
     disp = display_type(file = "main.out.F90")
 
     block
-        use pm_kind, only: TKC => CKS
-        complex(TKC), allocatable :: data(:)
-        complex(TKC), parameter :: ZERO = 0._TKC
+        use pm_kind, only: TKG => CKS
+        complex(TKG), allocatable :: data(:)
+        complex(TKG), parameter :: ZERO = 0._TKG
         call disp%skip()
-        call disp%show("data = [complex(TKC) :: (1., -6.), (2., -5.), (3., -4.), (4., -3.), (5., -2.), (6., -1.), ZERO, ZERO]")
-                        data = [complex(TKC) :: (1., -6.), (2., -5.), (3., -4.), (4., -3.), (5., -2.), (6., -1.), ZERO, ZERO]
+        call disp%show("data = [complex(TKG) :: (1., -6.), (2., -5.), (3., -4.), (4., -3.), (5., -2.), (6., -1.), ZERO, ZERO]")
+                        data = [complex(TKG) :: (1., -6.), (2., -5.), (3., -4.), (4., -3.), (5., -2.), (6., -1.), ZERO, ZERO]
         call disp%show("call setFFTF(data)")
                         call setFFTF(data)
         call disp%show("data")
@@ -33,12 +33,12 @@ program example
     end block
 
     block
-        use pm_kind, only: TKC => CKD
-        complex(TKC), allocatable :: data(:)
-        complex(TKC), parameter :: ZERO = 0._TKC
+        use pm_kind, only: TKG => CKD
+        complex(TKG), allocatable :: data(:)
+        complex(TKG), parameter :: ZERO = 0._TKG
         call disp%skip()
-        call disp%show("data = [complex(TKC) :: (1., -6.), (2., -5.), (3., -4.), (4., -3.), (5., -2.), (6., -1.), ZERO, ZERO]")
-                        data = [complex(TKC) :: (1., -6.), (2., -5.), (3., -4.), (4., -3.), (5., -2.), (6., -1.), ZERO, ZERO]
+        call disp%show("data = [complex(TKG) :: (1., -6.), (2., -5.), (3., -4.), (4., -3.), (5., -2.), (6., -1.), ZERO, ZERO]")
+                        data = [complex(TKG) :: (1., -6.), (2., -5.), (3., -4.), (4., -3.), (5., -2.), (6., -1.), ZERO, ZERO]
         call disp%show("call setFFTF(data)")
                         call setFFTF(data)
         call disp%show("data")
@@ -52,12 +52,12 @@ program example
     end block
 
     block
-        use pm_kind, only: TKC => CKH
-        complex(TKC), allocatable :: data(:)
-        complex(TKC), parameter :: ZERO = 0._TKC
+        use pm_kind, only: TKG => CKH
+        complex(TKG), allocatable :: data(:)
+        complex(TKG), parameter :: ZERO = 0._TKG
         call disp%skip()
-        call disp%show("data = [complex(TKC) :: (1., -6.), (2., -5.), (3., -4.), (4., -3.), (5., -2.), (6., -1.), ZERO, ZERO]")
-                        data = [complex(TKC) :: (1., -6.), (2., -5.), (3., -4.), (4., -3.), (5., -2.), (6., -1.), ZERO, ZERO]
+        call disp%show("data = [complex(TKG) :: (1., -6.), (2., -5.), (3., -4.), (4., -3.), (5., -2.), (6., -1.), ZERO, ZERO]")
+                        data = [complex(TKG) :: (1., -6.), (2., -5.), (3., -4.), (4., -3.), (5., -2.), (6., -1.), ZERO, ZERO]
         call disp%show("call setFFTF(data)")
                         call setFFTF(data)
         call disp%show("data")
@@ -71,12 +71,12 @@ program example
     end block
 
     block
-        use pm_kind, only: TKC => RKS
-        real(TKC), allocatable :: data(:)
-        real(TKC), parameter :: ZERO = 0._TKC
+        use pm_kind, only: TKG => RKS
+        real(TKG), allocatable :: data(:)
+        real(TKG), parameter :: ZERO = 0._TKG
         call disp%skip()
-        call disp%show("data = [real(TKC) :: 1., 2., 3., 4., 5., 6.5, ZERO, ZERO]")
-                        data = [real(TKC) :: 1., 2., 3., 4., 5., 6.5, ZERO, ZERO]
+        call disp%show("data = [real(TKG) :: 1., 2., 3., 4., 5., 6.5, ZERO, ZERO]")
+                        data = [real(TKG) :: 1., 2., 3., 4., 5., 6.5, ZERO, ZERO]
         call disp%show("call setFFTF(data)")
                         call setFFTF(data)
         call disp%show("data")
@@ -90,12 +90,12 @@ program example
     end block
 
     block
-        use pm_kind, only: TKC => RKD
-        real(TKC), allocatable :: data(:)
-        real(TKC), parameter :: ZERO = 0._TKC
+        use pm_kind, only: TKG => RKD
+        real(TKG), allocatable :: data(:)
+        real(TKG), parameter :: ZERO = 0._TKG
         call disp%skip()
-        call disp%show("data = [real(TKC) :: 1., 2., 3., 4., 5., 6.5, ZERO, ZERO]")
-                        data = [real(TKC) :: 1., 2., 3., 4., 5., 6.5, ZERO, ZERO]
+        call disp%show("data = [real(TKG) :: 1., 2., 3., 4., 5., 6.5, ZERO, ZERO]")
+                        data = [real(TKG) :: 1., 2., 3., 4., 5., 6.5, ZERO, ZERO]
         call disp%show("call setFFTF(data)")
                         call setFFTF(data)
         call disp%show("data")
@@ -109,12 +109,12 @@ program example
     end block
 
     block
-        use pm_kind, only: TKC => RKH
-        real(TKC), allocatable :: data(:)
-        real(TKC), parameter :: ZERO = 0._TKC
+        use pm_kind, only: TKG => RKH
+        real(TKG), allocatable :: data(:)
+        real(TKG), parameter :: ZERO = 0._TKG
         call disp%skip()
-        call disp%show("data = [real(TKC) :: 1., 2., 3., 4., 5., 6.5, ZERO, ZERO]")
-                        data = [real(TKC) :: 1., 2., 3., 4., 5., 6.5, ZERO, ZERO]
+        call disp%show("data = [real(TKG) :: 1., 2., 3., 4., 5., 6.5, ZERO, ZERO]")
+                        data = [real(TKG) :: 1., 2., 3., 4., 5., 6.5, ZERO, ZERO]
         call disp%show("call setFFTF(data)")
                         call setFFTF(data)
         call disp%show("data")

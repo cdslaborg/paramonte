@@ -1,7 +1,7 @@
 program example
 
     use pm_kind, only: SK, IK, LK
-    use pm_kind, only: RKC => RK ! all processor kinds are supported.
+    use pm_kind, only: RKG => RK ! all processor kinds are supported.
     use pm_io, only: display_type
     use pm_mathBeta, only: getBetaInv
     use pm_mathBeta, only: setBetaInv
@@ -14,8 +14,8 @@ program example
 
     logical(LK) :: signed
     integer(IK) :: info, infos(3)
-    real(RKC)   :: alpha, beta, betaInc, betaInv
-    real(RKC), allocatable :: alphas(:), betas(:), betaIncs(:), betaInvs(:)
+    real(RKG)   :: alpha, beta, betaInc, betaInv
+    real(RKG), allocatable :: alphas(:), betas(:), betaIncs(:), betaInvs(:)
 
     type(display_type) :: disp
     disp = display_type(file = "main.out.F90")
@@ -25,10 +25,10 @@ program example
     call disp%skip()
     call disp%show("signed")
     call disp%show( signed )
-    call disp%show("betaInc = 0.5_RKC")
-                    betaInc = 0.5_RKC
-    call disp%show("alpha = getUnifRand(0.1_RKC, 10._RKC); beta = getUnifRand(0.1_RKC, 10._RKC)")
-                    alpha = getUnifRand(0.1_RKC, 10._RKC); beta = getUnifRand(0.1_RKC, 10._RKC)
+    call disp%show("betaInc = 0.5_RKG")
+                    betaInc = 0.5_RKG
+    call disp%show("alpha = getUnifRand(0.1_RKG, 10._RKG); beta = getUnifRand(0.1_RKG, 10._RKG)")
+                    alpha = getUnifRand(0.1_RKG, 10._RKG); beta = getUnifRand(0.1_RKG, 10._RKG)
     call disp%show("[alpha, beta]")
     call disp%show( [alpha, beta] )
     call disp%show("call setBetaInv(betaInv, betaInc, alpha, beta, getLogBeta(alpha, beta), signed, info)")
@@ -44,10 +44,10 @@ program example
     call disp%skip()
     call disp%show("signed")
     call disp%show( signed )
-    call disp%show("betaInc = 0.5_RKC")
-                    betaInc = 0.5_RKC
-    call disp%show("alpha = getUnifRand(0.1_RKC, 10._RKC); beta = getUnifRand(0.1_RKC, 10._RKC)")
-                    alpha = getUnifRand(0.1_RKC, 10._RKC); beta = getUnifRand(0.1_RKC, 10._RKC)
+    call disp%show("betaInc = 0.5_RKG")
+                    betaInc = 0.5_RKG
+    call disp%show("alpha = getUnifRand(0.1_RKG, 10._RKG); beta = getUnifRand(0.1_RKG, 10._RKG)")
+                    alpha = getUnifRand(0.1_RKG, 10._RKG); beta = getUnifRand(0.1_RKG, 10._RKG)
     call disp%show("[alpha, beta]")
     call disp%show( [alpha, beta] )
     call disp%show("call setBetaInv(betaInv, betaInc, alpha, beta, getLogBeta(alpha, beta), signed, info)")
@@ -63,10 +63,10 @@ program example
     call disp%skip()
     call disp%show("signed")
     call disp%show( signed )
-    call disp%show("betaInc = 1._RKC - epsilon(1._RKC)")
-                    betaInc = 1._RKC - epsilon(1._RKC)
-    call disp%show("alpha = getUnifRand(0.1_RKC, 10._RKC); beta = getUnifRand(0.1_RKC, 10._RKC)")
-                    alpha = getUnifRand(0.1_RKC, 10._RKC); beta = getUnifRand(0.1_RKC, 10._RKC)
+    call disp%show("betaInc = 1._RKG - epsilon(1._RKG)")
+                    betaInc = 1._RKG - epsilon(1._RKG)
+    call disp%show("alpha = getUnifRand(0.1_RKG, 10._RKG); beta = getUnifRand(0.1_RKG, 10._RKG)")
+                    alpha = getUnifRand(0.1_RKG, 10._RKG); beta = getUnifRand(0.1_RKG, 10._RKG)
     call disp%show("[alpha, beta]")
     call disp%show( [alpha, beta] )
     call disp%show("call setBetaInv(betaInv, betaInc, alpha, beta, getLogBeta(alpha, beta), signed, info)")
@@ -82,10 +82,10 @@ program example
     call disp%skip()
     call disp%show("signed")
     call disp%show( signed )
-    call disp%show("betaIncs = [0._RKC, .5_RKC, 1._RKC]")
-                    betaIncs = [0._RKC, .5_RKC, 1._RKC]
-    call disp%show("alpha = getUnifRand(0.1_RKC, 10._RKC); beta = getUnifRand(0.1_RKC, 10._RKC)")
-                    alpha = getUnifRand(0.1_RKC, 10._RKC); beta = getUnifRand(0.1_RKC, 10._RKC)
+    call disp%show("betaIncs = [0._RKG, .5_RKG, 1._RKG]")
+                    betaIncs = [0._RKG, .5_RKG, 1._RKG]
+    call disp%show("alpha = getUnifRand(0.1_RKG, 10._RKG); beta = getUnifRand(0.1_RKG, 10._RKG)")
+                    alpha = getUnifRand(0.1_RKG, 10._RKG); beta = getUnifRand(0.1_RKG, 10._RKG)
     call disp%show("[alpha, beta]")
     call disp%show( [alpha, beta] )
     call disp%show("call setResized(betaInvs, size(betaIncs, 1, IK))")
@@ -103,12 +103,12 @@ program example
     call disp%skip()
     call disp%show("signed")
     call disp%show( signed )
-    call disp%show("betaIncs = [0._RKC, .5_RKC, 1._RKC]")
-                    betaIncs = [0._RKC, .5_RKC, 1._RKC]
-    call disp%show("alphas = [.1_RKC, 1._RKC, 10._RKC]")
-                    alphas = [.1_RKC, 1._RKC, 10._RKC]
-    call disp%show("beta = 3._RKC")
-                    beta = 3._RKC
+    call disp%show("betaIncs = [0._RKG, .5_RKG, 1._RKG]")
+                    betaIncs = [0._RKG, .5_RKG, 1._RKG]
+    call disp%show("alphas = [.1_RKG, 1._RKG, 10._RKG]")
+                    alphas = [.1_RKG, 1._RKG, 10._RKG]
+    call disp%show("beta = 3._RKG")
+                    beta = 3._RKG
     call disp%show("call setResized(betaInvs, size(betaIncs, 1, IK))")
                     call setResized(betaInvs, size(betaIncs, 1, IK))
     call disp%show("call setBetaInv(betaInvs, betaIncs, alphas, beta, getLogBeta(alpha, beta), signed, infos)")
@@ -117,8 +117,8 @@ program example
                     if (any(infos /= 0)) error stop 'Beta inversion failed.'
     call disp%show("betaInvs")
     call disp%show( betaInvs )
-    call disp%show("getBetaInc(betaInvs, alpha = [.1_RKC, 1._RKC, 10._RKC], beta = 3._RKC, signed = signed)")
-    call disp%show( getBetaInc(betaInvs, alpha = [.1_RKC, 1._RKC, 10._RKC], beta = 3._RKC, signed = signed) )
+    call disp%show("getBetaInc(betaInvs, alpha = [.1_RKG, 1._RKG, 10._RKG], beta = 3._RKG, signed = signed)")
+    call disp%show( getBetaInc(betaInvs, alpha = [.1_RKG, 1._RKG, 10._RKG], beta = 3._RKG, signed = signed) )
     call disp%skip()
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -127,17 +127,17 @@ program example
 
     block
 
-        use pm_kind, only: RKC => RKH, RKH
+        use pm_kind, only: RKG => RKH, RKH
         use pm_arraySpace, only: setLinSpace
         integer(IK) , parameter :: NP = 1000
-        real(RKC)   , parameter :: alpha(*) = [0.1_RKC, 10._RKC, 1._RKC, 0.1_RKC, 10._RKC], beta(*) = [0.1_RKC, 0.1_RKC, 1._RKC, 10._RKC, 10._RKC]
-        real(RKC)   :: betaInv(max(size(alpha), size(beta)))
-        real(RKC)   :: betaInvRef(size(betaInv))
-        real(RKC)   :: betaInc(NP)
+        real(RKG)   , parameter :: alpha(*) = [0.1_RKG, 10._RKG, 1._RKG, 0.1_RKG, 10._RKG], beta(*) = [0.1_RKG, 0.1_RKG, 1._RKG, 10._RKG, 10._RKG]
+        real(RKG)   :: betaInv(max(size(alpha), size(beta)))
+        real(RKG)   :: betaInvRef(size(betaInv))
+        real(RKG)   :: betaInc(NP)
         integer(IK) :: infos(size(betaInv))
         integer     :: fileUnit, i, j
 
-        call setLinSpace(betaInc, 0._RKC, 1._RKC, fopen = .true._LK, lopen = .true._LK)
+        call setLinSpace(betaInc, 0._RKG, 1._RKG, fopen = .true._LK, lopen = .true._LK)
         open(newunit = fileUnit, file = "setBetaInv.RK.txt")
         do i = 1, NP
             call setBetaInv(betaInv, betaInc(i), alpha, beta, getLogBeta(alpha, beta), signed, infos)
@@ -147,12 +147,12 @@ program example
         close(fileUnit)
 
         block
-            use pm_kind, only: RKC => RKS
+            use pm_kind, only: RKG => RKS
             character(*), parameter :: RKSTR = "RKS"
-            real(RKC) :: betaInv(max(size(alpha), size(beta)))
+            real(RKG) :: betaInv(max(size(alpha), size(beta)))
             open(newunit = fileUnit, file = "setBetaInv."//RKSTR//".abserr.txt")
             do i = 1, NP
-                call setBetaInv(betaInv, real(betaInc(i), RKC), real(alpha, RKC), real(beta, RKC), getLogBeta(real(alpha, RKC), real(beta, RKC)), signed, infos)
+                call setBetaInv(betaInv, real(betaInc(i), RKG), real(alpha, RKG), real(beta, RKG), getLogBeta(real(alpha, RKG), real(beta, RKG)), signed, infos)
                 if (any(infos /= 0)) error stop "Beta inversion failed."
                 betaInvRef = getBetaInv(betaInc(i), alpha, beta, signed = .true._LK)
                 write(fileUnit, "(*(g0,:,','))") betaInc(i), abs(betaInv - merge(1 + betaInvRef, betaInvRef, betaInvRef < 0))
@@ -161,12 +161,12 @@ program example
         end block
 
         block
-            use pm_kind, only: RKC => RKD
+            use pm_kind, only: RKG => RKD
             character(*), parameter :: RKSTR = "RKD"
-            real(RKC) :: betaInv(max(size(alpha), size(beta)))
+            real(RKG) :: betaInv(max(size(alpha), size(beta)))
             open(newunit = fileUnit, file = "setBetaInv."//RKSTR//".abserr.txt")
             do i = 1, NP
-                call setBetaInv(betaInv, real(betaInc(i), RKC), real(alpha, RKC), real(beta, RKC), getLogBeta(real(alpha, RKC), real(beta, RKC)), signed, infos)
+                call setBetaInv(betaInv, real(betaInc(i), RKG), real(alpha, RKG), real(beta, RKG), getLogBeta(real(alpha, RKG), real(beta, RKG)), signed, infos)
                 if (any(infos /= 0)) error stop "Beta inversion failed."
                 betaInvRef = getBetaInv(betaInc(i), alpha, beta, signed = .true._LK)
                 write(fileUnit, "(*(g0,:,','))") betaInc(i), abs(betaInv - merge(1 + betaInvRef, betaInvRef, betaInvRef < 0))
@@ -175,12 +175,12 @@ program example
         end block
 
         block
-            use pm_kind, only: RKC => RKH
+            use pm_kind, only: RKG => RKH
             character(*), parameter :: RKSTR = "RKH"
-            real(RKC) :: betaInv(max(size(alpha), size(beta)))
+            real(RKG) :: betaInv(max(size(alpha), size(beta)))
             open(newunit = fileUnit, file = "setBetaInv."//RKSTR//".abserr.txt")
             do i = 1, NP
-                call setBetaInv(betaInv, real(betaInc(i), RKC), real(alpha, RKC), real(beta, RKC), getLogBeta(real(alpha, RKC), real(beta, RKC)), signed, infos)
+                call setBetaInv(betaInv, real(betaInc(i), RKG), real(alpha, RKG), real(beta, RKG), getLogBeta(real(alpha, RKG), real(beta, RKG)), signed, infos)
                 if (any(infos /= 0)) error stop "Beta inversion failed."
                 betaInvRef = getBetaInv(betaInc(i), alpha, beta, signed = .true._LK)
                 write(fileUnit, "(*(g0,:,','))") betaInc(i), abs(betaInv - merge(1 + betaInvRef, betaInvRef, betaInvRef < 0))

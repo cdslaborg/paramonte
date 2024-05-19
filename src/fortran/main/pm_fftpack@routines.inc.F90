@@ -45,8 +45,8 @@
 #endif
 #if     DCX_ENABLED
         integer(IK) :: ido, ii, is, k1, l1, l2, ld, itmp
-        real(TKC), parameter :: TWO_TIMES_PI = 2.0_TKC * acos( - 1.0_TKC)
-        real(TKC) :: arg, argh, argld, fi
+        real(TKG), parameter :: TWO_TIMES_PI = 2.0_TKG * acos( - 1.0_TKG)
+        real(TKG) :: arg, argh, argld, fi
 #endif
         CHECK_ASSERTION(__LINE__, size(data, kind = IK) > 1_IK, SK_"@getFactorFFT(): The condition `size(data) > 1` must hold. size(data) = "//getStr([size(data, kind = IK)]))
         lenData = size(data, kind = IK)
@@ -85,7 +85,7 @@
         !factor(2_IK) = lenFactor
         !factor(1_IK) = lenData
 #if     DCX_ENABLED
-        argh = TWO_TIMES_PI / real(lenData, TKC)
+        argh = TWO_TIMES_PI / real(lenData, TKG)
 #if     CK_ENABLED
         i = 1_IK
         l1 = 1_IK
@@ -97,15 +97,15 @@
             itmp = ido + ido + 2_IK
             do j = 1_IK, factor(k1) - 1_IK
                 is = i
-                coef(i) = (1._TKC, 0._TKC)
-                fi = 0._TKC
+                coef(i) = (1._TKG, 0._TKG)
+                fi = 0._TKG
                 ld = ld + l1
                 argld = ld * argh
                 do ii = 4_IK, itmp, 2_IK
                     i = i + 1_IK
-                    fi = fi + 1._TKC
+                    fi = fi + 1._TKG
                     arg = fi * argld
-                    coef(i) = cmplx(cos(arg), sin(arg), TKC)
+                    coef(i) = cmplx(cos(arg), sin(arg), TKG)
                 end do
                 if (factor(k1) > 5_IK) coef(is) = coef(i)
             end do
@@ -122,12 +122,12 @@
             ido = lenData / l2
             do j = 1_IK, factor(k1) - 1_IK
                 i = is
-                fi = 0._TKC
+                fi = 0._TKG
                 ld = ld + l1
                 argld = ld * argh
                 do ii = 3_IK, ido, 2_IK
                     i = i + 2_IK
-                    fi = fi + 1._TKC
+                    fi = fi + 1._TKG
                     arg = fi * argld
                     coef(i) = sin(arg)
                     coef(i - 1_IK) = cos(arg)
@@ -215,9 +215,9 @@
 
         pure subroutine passf2(ido, l1, ix1, coef, data, work)
             integer(IK) , intent(in)                    :: ido, l1, ix1
-            complex(TKC), intent(in)    , contiguous    :: coef(2:)
-            complex(TKC), intent(in)                    :: data(ido, 2, l1)
-            complex(TKC), intent(out)                   :: work(ido, l1, 2)
+            complex(TKG), intent(in)    , contiguous    :: coef(2:)
+            complex(TKG), intent(in)                    :: data(ido, 2, l1)
+            complex(TKG), intent(out)                   :: work(ido, l1, 2)
             integer(IK) :: i, k
             if (ido > 1_IK) then
                 do k = 1_IK, l1
@@ -236,11 +236,11 @@
 
         pure subroutine passf3(ido, l1, ix1, ix2, coef, data, work)
             integer(IK) , intent(in)                    :: ido, l1, ix1, ix2
-            complex(TKC), intent(in)    , contiguous    :: coef(2:)
-            complex(TKC), intent(in)                    :: data(ido, 3, l1)
-            complex(TKC), intent(out)                   :: work(ido, l1, 3)
-            complex(TKC), parameter                     :: TAU = -cmplx(0.5_TKC, sqrt(3._TKC) / 2._TKC, TKC)
-            complex(TKC)                                :: c2, c3, d2, d3, t2
+            complex(TKG), intent(in)    , contiguous    :: coef(2:)
+            complex(TKG), intent(in)                    :: data(ido, 3, l1)
+            complex(TKG), intent(out)                   :: work(ido, l1, 3)
+            complex(TKG), parameter                     :: TAU = -cmplx(0.5_TKG, sqrt(3._TKG) / 2._TKG, TKG)
+            complex(TKG)                                :: c2, c3, d2, d3, t2
             integer(IK)                                 :: i, k
             if (ido /= 1_IK) then
                 do k = 1_IK, l1
@@ -275,10 +275,10 @@
 
         pure subroutine passf4(ido, l1, ix1, ix2, ix3, coef, data, work)
             integer(IK) , intent(in)                    :: ido, l1, ix1, ix2, ix3
-            complex(TKC), intent(in)    , contiguous    :: coef(2:)
-            complex(TKC), intent(in)                    :: data(ido, 4, l1)
-            complex(TKC), intent(out)                   :: work(ido, l1, 4)
-            complex(TKC)                                :: c2, c3, c4, t1, t2, t3, t4
+            complex(TKG), intent(in)    , contiguous    :: coef(2:)
+            complex(TKG), intent(in)                    :: data(ido, 4, l1)
+            complex(TKG), intent(out)                   :: work(ido, l1, 4)
+            complex(TKG)                                :: c2, c3, c4, t1, t2, t3, t4
             integer(IK)                                 :: i, k
             if (ido /= 1_IK) then
                 do k = 1_IK, l1
@@ -317,13 +317,13 @@
 
         PURE subroutine passf5(ido, l1, ix1, ix2, ix3, ix4, coef, data, work)
             integer(IK) , intent(in)                    :: ido, l1, ix1, ix2, ix3, ix4
-            complex(TKC), intent(in)    , contiguous    :: coef(2:)
-            complex(TKC), intent(in)                    :: data(ido, 5, l1)
-            complex(TKC), intent(out)                   :: work(ido, l1, 5)
-            real(TKC)   , parameter                     :: PI = acos( - 1._TKC)
-            complex(TKC), parameter                     :: T11 = cmplx(cos(2._TKC * PI / 5._TKC), -sin(2._TKC * PI / 5._TKC), TKC)
-            complex(TKC), parameter                     :: T12 = cmplx(cos(4._TKC * PI / 5._TKC), -sin(4._TKC * PI / 5._TKC), TKC)
-            complex(TKC)                                :: c2, c3, c4, c5, d2, d3, d4, d5, t2, t3, t4, t5
+            complex(TKG), intent(in)    , contiguous    :: coef(2:)
+            complex(TKG), intent(in)                    :: data(ido, 5, l1)
+            complex(TKG), intent(out)                   :: work(ido, l1, 5)
+            real(TKG)   , parameter                     :: PI = acos( - 1._TKG)
+            complex(TKG), parameter                     :: T11 = cmplx(cos(2._TKG * PI / 5._TKG), -sin(2._TKG * PI / 5._TKG), TKG)
+            complex(TKG), parameter                     :: T12 = cmplx(cos(4._TKG * PI / 5._TKG), -sin(4._TKG * PI / 5._TKG), TKG)
+            complex(TKG)                                :: c2, c3, c4, c5, d2, d3, d4, d5, t2, t3, t4, t5
             integer(IK)                                 :: i, k
             if (ido /= 1_IK) then
                 do k = 1_IK, l1
@@ -397,9 +397,9 @@
         pure subroutine passf(nac, ido, ip, l1, idl1, ix1, coef, data, C1, C2, work, Ch2)
             integer(IK) , intent(out)                   :: nac
             integer(IK) , intent(in)                    :: ido, ip, l1, idl1, ix1
-            complex(TKC), intent(in)    , contiguous    :: coef(2:)
-            complex(TKC), intent(inout)                 :: C1(ido,l1,ip), C2(idl1,ip)
-            complex(TKC), intent(inout)                 :: data(ido,ip,l1), work(ido,l1,ip), Ch2(idl1,ip)
+            complex(TKG), intent(in)    , contiguous    :: coef(2:)
+            complex(TKG), intent(inout)                 :: C1(ido,l1,ip), C2(idl1,ip)
+            complex(TKG), intent(inout)                 :: data(ido,ip,l1), work(ido,l1,ip), Ch2(idl1,ip)
             integer(IK) :: i, idij, idj, idl, idlj, idp, jk, inc, ipp2, ipph, j, jc, k, l, lc !, nt, idot
             !idot = ido / 2_IK
             !nt = ip * idl1 what in the world is this doing here?
@@ -582,11 +582,11 @@
 
         pure subroutine radf2(ido, l1, ix1, coef, data, work)
             integer(IK) , intent(in)                :: ido, l1, ix1
-            real(TKC)   , intent(in), contiguous    :: coef(2:)
-            real(TKC)   , intent(in)                :: data(ido, l1, 2)
-            real(TKC)   , intent(out)               :: work(ido, 2, l1)
+            real(TKG)   , intent(in), contiguous    :: coef(2:)
+            real(TKG)   , intent(in)                :: data(ido, l1, 2)
+            real(TKG)   , intent(out)               :: work(ido, 2, l1)
             integer(IK)                             :: i, ic, idp2, k
-            complex(TKC)                            :: t2
+            complex(TKG)                            :: t2
             do k = 1_IK, l1
                 work(1, 1, k) = data(1, k, 1) + data(1, k, 2)
                 work(ido, 2, k) = data(1, k, 1) - data(1, k, 2)
@@ -615,11 +615,11 @@
 
         pure subroutine radf3(ido, l1, ix1, ix2, coef, data, work)
             integer(IK) , intent(in)                :: ido, l1, ix1, ix2
-            real(TKC)   , intent(in), contiguous    :: coef(2:)
-            real(TKC)   , intent(in)                :: data(ido, l1, 3)
-            real(TKC)   , intent(out)               :: work(ido, 3, l1)
-            complex(TKC), parameter                 :: TAU = cmplx(-.5_TKC, sqrt(3._TKC) / 2._TKC, TKC)
-            complex(TKC)                            :: c2, d2, d3, t2, t3
+            real(TKG)   , intent(in), contiguous    :: coef(2:)
+            real(TKG)   , intent(in)                :: data(ido, l1, 3)
+            real(TKG)   , intent(out)               :: work(ido, 3, l1)
+            complex(TKG), parameter                 :: TAU = cmplx(-.5_TKG, sqrt(3._TKG) / 2._TKG, TKG)
+            complex(TKG)                            :: c2, d2, d3, t2, t3
             integer(IK)                             :: i, ic, idp2, k
             do k = 1_IK, l1
                 c2%re = data(1, k, 2) + data(1, k, 3)
@@ -654,11 +654,11 @@
 
         pure subroutine radf4(ido, l1, ix1, ix2, ix3, coef, data, work)
             integer(IK) , intent(in)                :: ido, l1, ix1, ix2, ix3
-            real(TKC)   , intent(in), contiguous    :: coef(2:)
-            real(TKC)   , intent(in)                :: data(ido, l1, 4)
-            real(TKC)   , intent(out)               :: work(ido, 4, l1)
-            real(TKC)   , parameter                 :: NHSQT2 = -sqrt(2._TKC) / 2._TKC
-            complex(TKC)                            :: c2, c3, c4, t1, t2, t3, t4
+            real(TKG)   , intent(in), contiguous    :: coef(2:)
+            real(TKG)   , intent(in)                :: data(ido, l1, 4)
+            real(TKG)   , intent(out)               :: work(ido, 4, l1)
+            real(TKG)   , parameter                 :: NHSQT2 = -sqrt(2._TKG) / 2._TKG
+            complex(TKG)                            :: c2, c3, c4, t1, t2, t3, t4
             integer(IK)                             :: i, ic, idp2, k
             do k = 1_IK, l1
                 t1%re = data(1, k, 2) + data(1, k, 4)
@@ -712,13 +712,13 @@
 
         pure subroutine radf5(ido, l1, ix1, ix2, ix3, ix4, coef, data, work)
             integer(IK) , intent(in)                :: ido, l1, ix1, ix2, ix3, ix4
-            real(TKC)   , intent(in), contiguous    :: coef(2:)
-            real(TKC)   , intent(in)                :: data(ido, l1, 5)
-            real(TKC)   , intent(out)               :: work(ido, 5, l1)
-            real(TKC)   , parameter                 :: PI = acos(-1._TKC)
-            complex(TKC), parameter                 :: T11 = cmplx(cos(2._TKC * PI / 5._TKC), sin(2._TKC * PI / 5._TKC), TKC)
-            complex(TKC), parameter                 :: T12 = cmplx(cos(4._TKC * PI / 5._TKC), sin(4._TKC * PI / 5._TKC), TKC)
-            complex(TKC)                            :: c2, c3, c4, c5, d2, d3, d4, d5, t2, t3, t4, t5
+            real(TKG)   , intent(in), contiguous    :: coef(2:)
+            real(TKG)   , intent(in)                :: data(ido, l1, 5)
+            real(TKG)   , intent(out)               :: work(ido, 5, l1)
+            real(TKG)   , parameter                 :: PI = acos(-1._TKG)
+            complex(TKG), parameter                 :: T11 = cmplx(cos(2._TKG * PI / 5._TKG), sin(2._TKG * PI / 5._TKG), TKG)
+            complex(TKG), parameter                 :: T12 = cmplx(cos(4._TKG * PI / 5._TKG), sin(4._TKG * PI / 5._TKG), TKG)
+            complex(TKG)                            :: c2, c3, c4, c5, d2, d3, d4, d5, t2, t3, t4, t5
             integer(IK)                             :: i, ic, idp2, k
             do k = 1_IK, l1
                 c2%re = data(1, k, 5) + data(1, k, 2)
@@ -776,14 +776,14 @@
 
         pure subroutine radfg(ido, ip, l1, idl1, ix1, coef, data, C1, C2, work, Ch2)
             integer(IK) , intent(in)                :: ido, ip, l1, idl1, ix1
-            real(TKC)   , intent(in), contiguous    :: coef(2:)
-            real(TKC)   , intent(inout)             :: C1(ido,l1,ip), C2(idl1,ip)
-            real(TKC)   , intent(inout)             :: data(ido,ip,l1), work(ido,l1,ip), Ch2(idl1,ip)
-            real(TKC)   , parameter                 :: TWO_PI = 2._TKC * acos(-1._TKC)
-            real(TKC)                               :: ar1h, ar2h, arg, dc2, dcp, ds2, dsp
+            real(TKG)   , intent(in), contiguous    :: coef(2:)
+            real(TKG)   , intent(inout)             :: C1(ido,l1,ip), C2(idl1,ip)
+            real(TKG)   , intent(inout)             :: data(ido,ip,l1), work(ido,l1,ip), Ch2(idl1,ip)
+            real(TKG)   , parameter                 :: TWO_PI = 2._TKG * acos(-1._TKG)
+            real(TKG)                               :: ar1h, ar2h, arg, dc2, dcp, ds2, dsp
             integer(IK)                             :: i, ic, idij, idp2, jk, ipp2, ipph, is, j, j2, jc, k, l, lc, nbd
-            complex(TKC)                            :: a1, a2
-            arg = TWO_PI / real(ip, TKC)
+            complex(TKG)                            :: a1, a2
+            arg = TWO_PI / real(ip, TKG)
             dcp = cos(arg)
             dsp = sin(arg)
             ipph = (ip + 1_IK) / 2_IK
@@ -855,8 +855,8 @@
                     C1(1, k, jc) = work(1, k, jc) - work(1, k, j)
                 end do
             end do
-            a1%re = 1._TKC
-            a1%im = 0._TKC
+            a1%re = 1._TKG
+            a1%im = 0._TKG
             do l = 2_IK, ipph
                 lc = ipp2 - l
                 ar1h = dcp * a1%re - dsp * a1%im
@@ -1012,10 +1012,10 @@
 
         pure subroutine passb2(ido, l1, ix1, coef, data, work)
             integer(IK) , intent(in)                    :: ido, l1, ix1
-            complex(TKC), intent(in)    , contiguous    :: coef(2:)
-            complex(TKC), intent(in)                    :: data(ido, 2, l1)
-            complex(TKC), intent(out)                   :: work(ido, l1, 2)
-            complex(TKC)                                :: t2
+            complex(TKG), intent(in)    , contiguous    :: coef(2:)
+            complex(TKG), intent(in)                    :: data(ido, 2, l1)
+            complex(TKG), intent(out)                   :: work(ido, l1, 2)
+            complex(TKG)                                :: t2
             integer(IK)                                 :: i, k
             if (ido > 1_IK) then
                 do k = 1_IK, l1
@@ -1036,11 +1036,11 @@
 
         pure subroutine passb3(ido, l1, ix1, ix2, coef, data, work)
             integer(IK) , intent(in)                    :: ido, l1, ix1, ix2
-            complex(TKC), intent(in)    , contiguous    :: coef(2:)
-            complex(TKC), intent(in)                    :: data(ido, 3, l1)
-            complex(TKC), intent(out)                   :: work(ido, l1, 3)
-            complex(TKC), parameter                     :: TAU = cmplx(-.5_TKC, sqrt(3._TKC) / 2._TKC, TKC)
-            complex(TKC)                                :: c2, c3, d2, d3, t2
+            complex(TKG), intent(in)    , contiguous    :: coef(2:)
+            complex(TKG), intent(in)                    :: data(ido, 3, l1)
+            complex(TKG), intent(out)                   :: work(ido, l1, 3)
+            complex(TKG), parameter                     :: TAU = cmplx(-.5_TKG, sqrt(3._TKG) / 2._TKG, TKG)
+            complex(TKG)                                :: c2, c3, d2, d3, t2
             integer(IK)                                 :: i, k
             if (ido /= 1_IK) then
                 do k = 1_IK, l1
@@ -1075,10 +1075,10 @@
 
         pure subroutine passb4(ido, l1, ix1, ix2, ix3, coef, data, work)
             integer(IK) , intent(in)                    :: ido, l1, ix1, ix2, ix3
-            complex(TKC), intent(in)    , contiguous    :: coef(2:)
-            complex(TKC), intent(in)                    :: data(ido, 4, l1)
-            complex(TKC), intent(out)                   :: work(ido, l1, 4)
-            complex(TKC)                                :: c2, c3, c4, t1, t2, t3, t4
+            complex(TKG), intent(in)    , contiguous    :: coef(2:)
+            complex(TKG), intent(in)                    :: data(ido, 4, l1)
+            complex(TKG), intent(out)                   :: work(ido, l1, 4)
+            complex(TKG)                                :: c2, c3, c4, t1, t2, t3, t4
             integer(IK)                                 :: i, k
             if (ido /= 1_IK) then
                 do k = 1_IK, l1
@@ -1117,13 +1117,13 @@
 
         pure subroutine passb5(ido, l1, ix1, ix2, ix3, ix4, coef, data, work)
             integer(IK) , intent(in)                    :: ido, l1, ix1, ix2, ix3, ix4
-            complex(TKC), intent(in)    , contiguous    :: coef(2:)
-            complex(TKC), intent(in)                    :: data(ido, 5, l1)
-            complex(TKC), intent(out)                   :: work(ido, l1, 5)
-            complex(TKC)                                :: c2, c3, c4, c5, d2, d3, d4, d5, t2, t3, t4, t5
-            real(TKC)   , parameter                     :: pi = acos( - 1._TKC)
-            complex(TKC), parameter                     :: T11 = cmplx(cos(2._TKC * pi / 5._TKC), sin(2._TKC * pi / 5._TKC), TKC)
-            complex(TKC), parameter                     :: T12 = cmplx(cos(4._TKC * pi / 5._TKC), sin(4._TKC * pi / 5._TKC), TKC)
+            complex(TKG), intent(in)    , contiguous    :: coef(2:)
+            complex(TKG), intent(in)                    :: data(ido, 5, l1)
+            complex(TKG), intent(out)                   :: work(ido, l1, 5)
+            complex(TKG)                                :: c2, c3, c4, c5, d2, d3, d4, d5, t2, t3, t4, t5
+            real(TKG)   , parameter                     :: pi = acos( - 1._TKG)
+            complex(TKG), parameter                     :: T11 = cmplx(cos(2._TKG * pi / 5._TKG), sin(2._TKG * pi / 5._TKG), TKG)
+            complex(TKG), parameter                     :: T12 = cmplx(cos(4._TKG * pi / 5._TKG), sin(4._TKG * pi / 5._TKG), TKG)
             integer(IK)                                 :: i, k
             if (ido /= 1_IK) then
                 do k = 1_IK, l1
@@ -1189,10 +1189,10 @@
         pure subroutine passb(nac, ido, ip, l1, idl1, ix1, coef, data, C1, C2, work, Ch2)
             integer(IK) , intent(out)                   :: nac
             integer(IK) , intent(in)                    :: ido, ip, l1, idl1, ix1
-            complex(TKC), intent(in)    , contiguous    :: coef(2:)
-            complex(TKC), intent(in)                    :: data(ido, ip, l1)
-            complex(TKC), intent(inout)                 :: C1(ido, l1, ip)
-            complex(TKC), intent(inout)                 :: work(ido, l1, ip), C2(idl1,ip), Ch2(idl1,ip)
+            complex(TKG), intent(in)    , contiguous    :: coef(2:)
+            complex(TKG), intent(in)                    :: data(ido, ip, l1)
+            complex(TKG), intent(inout)                 :: C1(ido, l1, ip)
+            complex(TKG), intent(inout)                 :: work(ido, l1, ip), C2(idl1,ip), Ch2(idl1,ip)
             integer(IK)                                 :: i, idij, idj, idl, idlj, idp, jk, inc, ipp2, ipph, j, jc, k, l, lc!, nt
             !idot = ido / 2_IK
             !nt = ip * idl1 what in the world is this doing here?
@@ -1376,11 +1376,11 @@
 
         pure subroutine radb2(ido, l1, ix1, coef, data, work)
             integer(IK) , intent(in)                :: ido, l1, ix1
-            real(TKC)   , intent(in), contiguous    :: coef(2:)
-            real(TKC)   , intent(in)                :: data(ido, 2, l1)
-            real(TKC)   , intent(out)               :: work(ido, l1, 2)
+            real(TKG)   , intent(in), contiguous    :: coef(2:)
+            real(TKG)   , intent(in)                :: data(ido, 2, l1)
+            real(TKG)   , intent(out)               :: work(ido, l1, 2)
             integer(IK)                             :: i, ic, idp2, k
-            complex(TKC)                            :: t2
+            complex(TKG)                            :: t2
             do k = 1_IK, l1
                 work(1, k, 1) = data(1, 1, k) + data(ido, 2, k)
                 work(1, k, 2) = data(1, 1, k) - data(ido, 2, k)
@@ -1409,11 +1409,11 @@
 
         pure subroutine radb3(ido, l1, ix1, ix2, coef, data, work)
             integer(IK) , intent(in)                :: ido, l1, ix1, ix2
-            real(TKC)   , intent(in), contiguous    :: coef(2:)
-            real(TKC)   , intent(in)                :: data(ido, 3, l1)
-            real(TKC)   , intent(out)               :: work(ido, l1, 3)
-            complex(TKC), parameter                 :: TAU = cmplx(-.5_TKC, sqrt(3._TKC) / 2._TKC, TKC)
-            complex(TKC)                            :: c2, c3, d2, d3, t2
+            real(TKG)   , intent(in), contiguous    :: coef(2:)
+            real(TKG)   , intent(in)                :: data(ido, 3, l1)
+            real(TKG)   , intent(out)               :: work(ido, l1, 3)
+            complex(TKG), parameter                 :: TAU = cmplx(-.5_TKG, sqrt(3._TKG) / 2._TKG, TKG)
+            complex(TKG)                            :: c2, c3, d2, d3, t2
             integer(IK)                             :: i, ic, idp2, k
             do k = 1_IK, l1
                 t2%re = data(ido, 2, k) + data(ido, 2, k)
@@ -1450,11 +1450,11 @@
 
         pure subroutine radb4(ido, l1, ix1, ix2, ix3, coef, data, work)
             integer(IK) , intent(in)                :: ido, l1, ix1, ix2, ix3
-            real(TKC)   , intent(in), contiguous    :: coef(2:)
-            real(TKC)   , intent(in)                :: data(ido, 4, l1)
-            real(TKC)   , intent(out)               :: work(ido, l1, 4)
-            real(TKC)   , parameter                 :: NSQT2 = -sqrt(2._TKC)
-            complex(TKC)                            :: c2, c3, c4, t1, t2, t3, t4
+            real(TKG)   , intent(in), contiguous    :: coef(2:)
+            real(TKG)   , intent(in)                :: data(ido, 4, l1)
+            real(TKG)   , intent(out)               :: work(ido, l1, 4)
+            real(TKG)   , parameter                 :: NSQT2 = -sqrt(2._TKG)
+            complex(TKG)                            :: c2, c3, c4, t1, t2, t3, t4
             integer(IK)                             :: i, ic, idp2, k
             do k = 1_IK, l1
                 t1%re = data(1, 1, k) - data(ido, 4, k)
@@ -1512,13 +1512,13 @@
 
         pure subroutine radb5(ido, l1, ix1, ix2, ix3, ix4, coef, data, work)
             integer(IK) , intent(in)                :: ido, l1, ix1, ix2, ix3, ix4
-            real(TKC)   , intent(in), contiguous    :: coef(2:)
-            real(TKC)   , intent(in)                :: data(ido, 5, l1)
-            real(TKC)   , intent(out)               :: work(ido, l1, 5)
-            real(TKC)   , parameter                 :: PI = acos(-1._TKC)
-            complex(TKC), parameter                 :: T11 = cmplx(cos(2._TKC * PI / 5._TKC), sin(2._TKC * PI / 5._TKC), TKC)
-            complex(TKC), parameter                 :: T12 = cmplx(cos(4._TKC * PI / 5._TKC), sin(4._TKC * PI / 5._TKC), TKC)
-            complex(TKC)                            :: c2, c3, c4, c5, d2, d3, d4, d5, t2, t3, t4, t5
+            real(TKG)   , intent(in), contiguous    :: coef(2:)
+            real(TKG)   , intent(in)                :: data(ido, 5, l1)
+            real(TKG)   , intent(out)               :: work(ido, l1, 5)
+            real(TKG)   , parameter                 :: PI = acos(-1._TKG)
+            complex(TKG), parameter                 :: T11 = cmplx(cos(2._TKG * PI / 5._TKG), sin(2._TKG * PI / 5._TKG), TKG)
+            complex(TKG), parameter                 :: T12 = cmplx(cos(4._TKG * PI / 5._TKG), sin(4._TKG * PI / 5._TKG), TKG)
+            complex(TKG)                            :: c2, c3, c4, c5, d2, d3, d4, d5, t2, t3, t4, t5
             integer(IK)                             :: i, ic, idp2, k
             do k = 1_IK, l1
                 t5%im = data(1, 3, k) + data(1, 3, k)
@@ -1580,14 +1580,14 @@
 
         pure subroutine radbg(ido, ip, l1, idl1, ix1, coef, data, C1, C2, work, Ch2)
             integer(IK) , intent(in)                :: ido, ip, l1, idl1, ix1
-            real(TKC)   , intent(in), contiguous    :: coef(2:)
-            real(TKC)   , intent(in)                :: data(ido,ip,l1)
-            real(TKC)   , intent(inout)             :: C1(ido,l1,ip)
-            real(TKC)   , intent(inout)             :: work(ido,l1,ip), C2(idl1,ip), Ch2(idl1,ip)
-            real(TKC)   , parameter                 :: TWO_PI = 2._TKC * acos(-1._TKC)
-            real(TKC)                               :: ar1h, ar2h, arg, dc2, dcp, ds2, dsp
+            real(TKG)   , intent(in), contiguous    :: coef(2:)
+            real(TKG)   , intent(in)                :: data(ido,ip,l1)
+            real(TKG)   , intent(inout)             :: C1(ido,l1,ip)
+            real(TKG)   , intent(inout)             :: work(ido,l1,ip), C2(idl1,ip), Ch2(idl1,ip)
+            real(TKG)   , parameter                 :: TWO_PI = 2._TKG * acos(-1._TKG)
+            real(TKG)                               :: ar1h, ar2h, arg, dc2, dcp, ds2, dsp
             integer(IK)                             :: i, ic, idij, idp2, jk, ipp2, ipph, is, j, j2, jc, k, l, lc, nbd
-            complex(TKC)                            :: a1, a2
+            complex(TKG)                            :: a1, a2
             arg = TWO_PI / ip
             dcp = cos(arg)
             dsp = sin(arg)
@@ -1645,8 +1645,8 @@
                     end do
                 end if
             end if
-            a1%re = 1._TKC
-            a1%im = 0._TKC
+            a1%re = 1._TKG
+            a1%im = 0._TKG
             do l = 2_IK, ipph
                 lc = ipp2 - l
                 ar1h = dcp * a1%re - dsp * a1%im
@@ -1747,9 +1747,9 @@
         !%%%%%%%%%%%%%%
 
         integer(IK) :: i
-        real(TKC) :: invLenData
+        real(TKG) :: invLenData
         call setFFTR(factor, coef, data, work, inwork)
-        invLenData = 1._TKC / real(size(data, 1, IK), TKC)
+        invLenData = 1._TKG / real(size(data, 1, IK), TKG)
         if (inwork) then
             do concurrent(i = 1 : size(data, 1, IK))
                 work(i) = work(i) * invLenData
@@ -1765,9 +1765,9 @@
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #if     CK_ENABLED
-        complex(TKC), dimension(size(data, 1, IK)) :: coef, work
+        complex(TKG), dimension(size(data, 1, IK)) :: coef, work
 #elif   RK_ENABLED
-        real(TKC), dimension(size(data, 1, IK)) :: coef, work
+        real(TKG), dimension(size(data, 1, IK)) :: coef, work
 #else
 #error  "Unrecognized interface."
 #endif
@@ -1791,8 +1791,8 @@
 !#elif   getFFTI_ENABLED
 !        block
 !            integer(IK) :: i
-!            real(TKC) :: invLenData
-!            invLenData = 1._TKC / real(size(data, 1, IK), TKC)
+!            real(TKG) :: invLenData
+!            invLenData = 1._TKG / real(size(data, 1, IK), TKG)
 !            if (inwork) then
 !                do concurrent(i = 1 : size(data, 1, IK))
 !                    fft(i) = fft(i) * invLenData

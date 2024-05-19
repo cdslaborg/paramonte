@@ -1471,11 +1471,11 @@ module pm_mathRoot
     !>                                          The following illustrates the generic interface of `getFunc()` for the above values of `method`,
     !>                                          \code{.F90}
     !>                                              function getFunc(x) result(func)
-    !>                                                  real(RKC)   , intent(in)    :: x
-    !>                                                  real(RKC)                   :: func
+    !>                                                  real(RKG)   , intent(in)    :: x
+    !>                                                  real(RKG)                   :: func
     !>                                              end function
     !>                                          \endcode
-    !>                                          where `RKC` refers to the kind of the output argument `root`.<br>
+    !>                                          where `RKG` refers to the kind of the output argument `root`.<br>
     !>                                  <li>    If the specified `method` is any of the following,
     !>                                          <ol>
     !>                                              <li>    the constant [newton](@ref pm_mathRoot::newton) or an object of type [newton_type](@ref pm_mathRoot::newton_type),<br>
@@ -1498,12 +1498,12 @@ module pm_mathRoot
     !>                                          The following illustrates the generic interface of `getFunc()` for the above values of `method`,
     !>                                          \code{.F90}
     !>                                              function getFunc(x, order) result(func)
-    !>                                                  real(RKC)   , intent(in)    :: x
+    !>                                                  real(RKG)   , intent(in)    :: x
     !>                                                  integer(IK) , intent(in)    :: order
-    !>                                                  real(RKC)                   :: func
+    !>                                                  real(RKG)                   :: func
     !>                                              end function
     !>                                          \endcode
-    !>                                          where `RKC` refers to the kind of the output argument `root`.<br>
+    !>                                          where `RKG` refers to the kind of the output argument `root`.<br>
     !>                              </ol>
     !>  \param[inout]   root    :   The input/output scalar of type `real` of kind \RKALL.<br>
     !>                              On input,<br>
@@ -1519,9 +1519,9 @@ module pm_mathRoot
     !>  \param[in]      abstol  :   The input scalar of same type and kind as the output `root`, representing the absolute tolerance used as the stopping criterion of the search.<br>
     !>                              The iterations of the specified input `method` continue until the search interval becomes smaller than `abstol` in absolute units.<br>
     !>                              Care must be taken for specifying a reasonable value for `abstol` (see the warnings below).<br>
-    !>                              If no suitable value for `abstol` is known a priori, try `abstol = epsilon(0._RKC)**.8 * (abs(lb) + abs(ub))`
-    !>                              where `RKC` refers to the kind of the output argument `root`.<br>
-    !>                              (**optional**, default = `epsilon(0._RKC)**.8 * (abs(lb) + abs(ub))`)
+    !>                              If no suitable value for `abstol` is known a priori, try `abstol = epsilon(0._RKG)**.8 * (abs(lb) + abs(ub))`
+    !>                              where `RKG` refers to the kind of the output argument `root`.<br>
+    !>                              (**optional**, default = `epsilon(0._RKG)**.8 * (abs(lb) + abs(ub))`)
     !>  \param[out]     neval   :   The output scalar argument of type `integer` of default kind \IK, containing the total number of `getFunc()` function calls made by the algorithm.<br>
     !>                              <ol>
     !>                                  <li>    A positive output `neval` implies the **successful** convergence of the algorithm to the function root after `+neval` function evaluations.<br>
@@ -1595,13 +1595,13 @@ module pm_mathRoot
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRootDef_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        procedure(real(RKC))                                :: getFunc
-        real(RKC)               , intent(in)                :: lb, ub
-        real(RKC)               , intent(in)    , optional  :: abstol
+        use pm_kind, only: RKG => RK5
+        procedure(real(RKG))                                :: getFunc
+        real(RKG)               , intent(in)                :: lb, ub
+        real(RKG)               , intent(in)    , optional  :: abstol
         integer(IK)             , intent(in)    , optional  :: niter
         integer(IK)             , intent(out)   , optional  :: neval
-        real(RKC)                                           :: root
+        real(RKG)                                           :: root
     end function
 #endif
 
@@ -1610,13 +1610,13 @@ module pm_mathRoot
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRootDef_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        procedure(real(RKC))                                :: getFunc
-        real(RKC)               , intent(in)                :: lb, ub
-        real(RKC)               , intent(in)    , optional  :: abstol
+        use pm_kind, only: RKG => RK4
+        procedure(real(RKG))                                :: getFunc
+        real(RKG)               , intent(in)                :: lb, ub
+        real(RKG)               , intent(in)    , optional  :: abstol
         integer(IK)             , intent(in)    , optional  :: niter
         integer(IK)             , intent(out)   , optional  :: neval
-        real(RKC)                                           :: root
+        real(RKG)                                           :: root
     end function
 #endif
 
@@ -1625,13 +1625,13 @@ module pm_mathRoot
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRootDef_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        procedure(real(RKC))                                :: getFunc
-        real(RKC)               , intent(in)                :: lb, ub
-        real(RKC)               , intent(in)    , optional  :: abstol
+        use pm_kind, only: RKG => RK3
+        procedure(real(RKG))                                :: getFunc
+        real(RKG)               , intent(in)                :: lb, ub
+        real(RKG)               , intent(in)    , optional  :: abstol
         integer(IK)             , intent(in)    , optional  :: niter
         integer(IK)             , intent(out)   , optional  :: neval
-        real(RKC)                                           :: root
+        real(RKG)                                           :: root
     end function
 #endif
 
@@ -1640,13 +1640,13 @@ module pm_mathRoot
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRootDef_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        procedure(real(RKC))                                :: getFunc
-        real(RKC)               , intent(in)                :: lb, ub
-        real(RKC)               , intent(in)    , optional  :: abstol
+        use pm_kind, only: RKG => RK2
+        procedure(real(RKG))                                :: getFunc
+        real(RKG)               , intent(in)                :: lb, ub
+        real(RKG)               , intent(in)    , optional  :: abstol
         integer(IK)             , intent(in)    , optional  :: niter
         integer(IK)             , intent(out)   , optional  :: neval
-        real(RKC)                                           :: root
+        real(RKG)                                           :: root
     end function
 #endif
 
@@ -1655,13 +1655,13 @@ module pm_mathRoot
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRootDef_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        procedure(real(RKC))                                :: getFunc
-        real(RKC)               , intent(in)                :: lb, ub
-        real(RKC)               , intent(in)    , optional  :: abstol
+        use pm_kind, only: RKG => RK1
+        procedure(real(RKG))                                :: getFunc
+        real(RKG)               , intent(in)                :: lb, ub
+        real(RKG)               , intent(in)    , optional  :: abstol
         integer(IK)             , intent(in)    , optional  :: niter
         integer(IK)             , intent(out)   , optional  :: neval
-        real(RKC)                                           :: root
+        real(RKG)                                           :: root
     end function
 #endif
 
@@ -1680,14 +1680,14 @@ module pm_mathRoot
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRootFalse_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        procedure(real(RKC))                                :: getFunc
+        use pm_kind, only: RKG => RK5
+        procedure(real(RKG))                                :: getFunc
         type(false_type)        , intent(in)                :: method
-        real(RKC)               , intent(in)                :: lb, ub
-        real(RKC)               , intent(in)    , optional  :: abstol
+        real(RKG)               , intent(in)                :: lb, ub
+        real(RKG)               , intent(in)    , optional  :: abstol
         integer(IK)             , intent(in)    , optional  :: niter
         integer(IK)             , intent(out)   , optional  :: neval
-        real(RKC)                                           :: root
+        real(RKG)                                           :: root
     end function
 #endif
 
@@ -1696,14 +1696,14 @@ module pm_mathRoot
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRootFalse_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        procedure(real(RKC))                                :: getFunc
+        use pm_kind, only: RKG => RK4
+        procedure(real(RKG))                                :: getFunc
         type(false_type)        , intent(in)                :: method
-        real(RKC)               , intent(in)                :: lb, ub
-        real(RKC)               , intent(in)    , optional  :: abstol
+        real(RKG)               , intent(in)                :: lb, ub
+        real(RKG)               , intent(in)    , optional  :: abstol
         integer(IK)             , intent(in)    , optional  :: niter
         integer(IK)             , intent(out)   , optional  :: neval
-        real(RKC)                                           :: root
+        real(RKG)                                           :: root
     end function
 #endif
 
@@ -1712,14 +1712,14 @@ module pm_mathRoot
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRootFalse_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        procedure(real(RKC))                                :: getFunc
+        use pm_kind, only: RKG => RK3
+        procedure(real(RKG))                                :: getFunc
         type(false_type)        , intent(in)                :: method
-        real(RKC)               , intent(in)                :: lb, ub
-        real(RKC)               , intent(in)    , optional  :: abstol
+        real(RKG)               , intent(in)                :: lb, ub
+        real(RKG)               , intent(in)    , optional  :: abstol
         integer(IK)             , intent(in)    , optional  :: niter
         integer(IK)             , intent(out)   , optional  :: neval
-        real(RKC)                                           :: root
+        real(RKG)                                           :: root
     end function
 #endif
 
@@ -1728,14 +1728,14 @@ module pm_mathRoot
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRootFalse_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        procedure(real(RKC))                                :: getFunc
+        use pm_kind, only: RKG => RK2
+        procedure(real(RKG))                                :: getFunc
         type(false_type)        , intent(in)                :: method
-        real(RKC)               , intent(in)                :: lb, ub
-        real(RKC)               , intent(in)    , optional  :: abstol
+        real(RKG)               , intent(in)                :: lb, ub
+        real(RKG)               , intent(in)    , optional  :: abstol
         integer(IK)             , intent(in)    , optional  :: niter
         integer(IK)             , intent(out)   , optional  :: neval
-        real(RKC)                                           :: root
+        real(RKG)                                           :: root
     end function
 #endif
 
@@ -1744,14 +1744,14 @@ module pm_mathRoot
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRootFalse_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        procedure(real(RKC))                                :: getFunc
+        use pm_kind, only: RKG => RK1
+        procedure(real(RKG))                                :: getFunc
         type(false_type)        , intent(in)                :: method
-        real(RKC)               , intent(in)                :: lb, ub
-        real(RKC)               , intent(in)    , optional  :: abstol
+        real(RKG)               , intent(in)                :: lb, ub
+        real(RKG)               , intent(in)    , optional  :: abstol
         integer(IK)             , intent(in)    , optional  :: niter
         integer(IK)             , intent(out)   , optional  :: neval
-        real(RKC)                                           :: root
+        real(RKG)                                           :: root
     end function
 #endif
 
@@ -1770,14 +1770,14 @@ module pm_mathRoot
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRootBisection_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        procedure(real(RKC))                                :: getFunc
+        use pm_kind, only: RKG => RK5
+        procedure(real(RKG))                                :: getFunc
         type(bisection_type)    , intent(in)                :: method
-        real(RKC)               , intent(in)                :: lb, ub
-        real(RKC)               , intent(in)    , optional  :: abstol
+        real(RKG)               , intent(in)                :: lb, ub
+        real(RKG)               , intent(in)    , optional  :: abstol
         integer(IK)             , intent(in)    , optional  :: niter
         integer(IK)             , intent(out)   , optional  :: neval
-        real(RKC)                                           :: root
+        real(RKG)                                           :: root
     end function
 #endif
 
@@ -1786,14 +1786,14 @@ module pm_mathRoot
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRootBisection_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        procedure(real(RKC))                                :: getFunc
+        use pm_kind, only: RKG => RK4
+        procedure(real(RKG))                                :: getFunc
         type(bisection_type)    , intent(in)                :: method
-        real(RKC)               , intent(in)                :: lb, ub
-        real(RKC)               , intent(in)    , optional  :: abstol
+        real(RKG)               , intent(in)                :: lb, ub
+        real(RKG)               , intent(in)    , optional  :: abstol
         integer(IK)             , intent(in)    , optional  :: niter
         integer(IK)             , intent(out)   , optional  :: neval
-        real(RKC)                                           :: root
+        real(RKG)                                           :: root
     end function
 #endif
 
@@ -1802,14 +1802,14 @@ module pm_mathRoot
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRootBisection_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        procedure(real(RKC))                                :: getFunc
+        use pm_kind, only: RKG => RK3
+        procedure(real(RKG))                                :: getFunc
         type(bisection_type)    , intent(in)                :: method
-        real(RKC)               , intent(in)                :: lb, ub
-        real(RKC)               , intent(in)    , optional  :: abstol
+        real(RKG)               , intent(in)                :: lb, ub
+        real(RKG)               , intent(in)    , optional  :: abstol
         integer(IK)             , intent(in)    , optional  :: niter
         integer(IK)             , intent(out)   , optional  :: neval
-        real(RKC)                                           :: root
+        real(RKG)                                           :: root
     end function
 #endif
 
@@ -1818,14 +1818,14 @@ module pm_mathRoot
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRootBisection_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        procedure(real(RKC))                                :: getFunc
+        use pm_kind, only: RKG => RK2
+        procedure(real(RKG))                                :: getFunc
         type(bisection_type)    , intent(in)                :: method
-        real(RKC)               , intent(in)                :: lb, ub
-        real(RKC)               , intent(in)    , optional  :: abstol
+        real(RKG)               , intent(in)                :: lb, ub
+        real(RKG)               , intent(in)    , optional  :: abstol
         integer(IK)             , intent(in)    , optional  :: niter
         integer(IK)             , intent(out)   , optional  :: neval
-        real(RKC)                                           :: root
+        real(RKG)                                           :: root
     end function
 #endif
 
@@ -1834,14 +1834,14 @@ module pm_mathRoot
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRootBisection_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        procedure(real(RKC))                                :: getFunc
+        use pm_kind, only: RKG => RK1
+        procedure(real(RKG))                                :: getFunc
         type(bisection_type)    , intent(in)                :: method
-        real(RKC)               , intent(in)                :: lb, ub
-        real(RKC)               , intent(in)    , optional  :: abstol
+        real(RKG)               , intent(in)                :: lb, ub
+        real(RKG)               , intent(in)    , optional  :: abstol
         integer(IK)             , intent(in)    , optional  :: niter
         integer(IK)             , intent(out)   , optional  :: neval
-        real(RKC)                                           :: root
+        real(RKG)                                           :: root
     end function
 #endif
 
@@ -1860,14 +1860,14 @@ module pm_mathRoot
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRootSecant_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        procedure(real(RKC))                                :: getFunc
+        use pm_kind, only: RKG => RK5
+        procedure(real(RKG))                                :: getFunc
         type(secant_type)       , intent(in)                :: method
-        real(RKC)               , intent(in)                :: lb, ub
-        real(RKC)               , intent(in)    , optional  :: abstol
+        real(RKG)               , intent(in)                :: lb, ub
+        real(RKG)               , intent(in)    , optional  :: abstol
         integer(IK)             , intent(in)    , optional  :: niter
         integer(IK)             , intent(out)   , optional  :: neval
-        real(RKC)                                           :: root
+        real(RKG)                                           :: root
     end function
 #endif
 
@@ -1876,14 +1876,14 @@ module pm_mathRoot
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRootSecant_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        procedure(real(RKC))                                :: getFunc
+        use pm_kind, only: RKG => RK4
+        procedure(real(RKG))                                :: getFunc
         type(secant_type)       , intent(in)                :: method
-        real(RKC)               , intent(in)                :: lb, ub
-        real(RKC)               , intent(in)    , optional  :: abstol
+        real(RKG)               , intent(in)                :: lb, ub
+        real(RKG)               , intent(in)    , optional  :: abstol
         integer(IK)             , intent(in)    , optional  :: niter
         integer(IK)             , intent(out)   , optional  :: neval
-        real(RKC)                                           :: root
+        real(RKG)                                           :: root
     end function
 #endif
 
@@ -1892,14 +1892,14 @@ module pm_mathRoot
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRootSecant_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        procedure(real(RKC))                                :: getFunc
+        use pm_kind, only: RKG => RK3
+        procedure(real(RKG))                                :: getFunc
         type(secant_type)       , intent(in)                :: method
-        real(RKC)               , intent(in)                :: lb, ub
-        real(RKC)               , intent(in)    , optional  :: abstol
+        real(RKG)               , intent(in)                :: lb, ub
+        real(RKG)               , intent(in)    , optional  :: abstol
         integer(IK)             , intent(in)    , optional  :: niter
         integer(IK)             , intent(out)   , optional  :: neval
-        real(RKC)                                           :: root
+        real(RKG)                                           :: root
     end function
 #endif
 
@@ -1908,14 +1908,14 @@ module pm_mathRoot
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRootSecant_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        procedure(real(RKC))                                :: getFunc
+        use pm_kind, only: RKG => RK2
+        procedure(real(RKG))                                :: getFunc
         type(secant_type)       , intent(in)                :: method
-        real(RKC)               , intent(in)                :: lb, ub
-        real(RKC)               , intent(in)    , optional  :: abstol
+        real(RKG)               , intent(in)                :: lb, ub
+        real(RKG)               , intent(in)    , optional  :: abstol
         integer(IK)             , intent(in)    , optional  :: niter
         integer(IK)             , intent(out)   , optional  :: neval
-        real(RKC)                                           :: root
+        real(RKG)                                           :: root
     end function
 #endif
 
@@ -1924,14 +1924,14 @@ module pm_mathRoot
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRootSecant_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        procedure(real(RKC))                                :: getFunc
+        use pm_kind, only: RKG => RK1
+        procedure(real(RKG))                                :: getFunc
         type(secant_type)       , intent(in)                :: method
-        real(RKC)               , intent(in)                :: lb, ub
-        real(RKC)               , intent(in)    , optional  :: abstol
+        real(RKG)               , intent(in)                :: lb, ub
+        real(RKG)               , intent(in)    , optional  :: abstol
         integer(IK)             , intent(in)    , optional  :: niter
         integer(IK)             , intent(out)   , optional  :: neval
-        real(RKC)                                           :: root
+        real(RKG)                                           :: root
     end function
 #endif
 
@@ -1950,14 +1950,14 @@ module pm_mathRoot
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRootBrent_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        procedure(real(RKC))                                :: getFunc
+        use pm_kind, only: RKG => RK5
+        procedure(real(RKG))                                :: getFunc
         type(brent_type)        , intent(in)                :: method
-        real(RKC)               , intent(in)                :: lb, ub
-        real(RKC)               , intent(in)    , optional  :: abstol
+        real(RKG)               , intent(in)                :: lb, ub
+        real(RKG)               , intent(in)    , optional  :: abstol
         integer(IK)             , intent(in)    , optional  :: niter
         integer(IK)             , intent(out)   , optional  :: neval
-        real(RKC)                                           :: root
+        real(RKG)                                           :: root
     end function
 #endif
 
@@ -1966,14 +1966,14 @@ module pm_mathRoot
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRootBrent_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        procedure(real(RKC))                                :: getFunc
+        use pm_kind, only: RKG => RK4
+        procedure(real(RKG))                                :: getFunc
         type(brent_type)        , intent(in)                :: method
-        real(RKC)               , intent(in)                :: lb, ub
-        real(RKC)               , intent(in)    , optional  :: abstol
+        real(RKG)               , intent(in)                :: lb, ub
+        real(RKG)               , intent(in)    , optional  :: abstol
         integer(IK)             , intent(in)    , optional  :: niter
         integer(IK)             , intent(out)   , optional  :: neval
-        real(RKC)                                           :: root
+        real(RKG)                                           :: root
     end function
 #endif
 
@@ -1982,14 +1982,14 @@ module pm_mathRoot
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRootBrent_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        procedure(real(RKC))                                :: getFunc
+        use pm_kind, only: RKG => RK3
+        procedure(real(RKG))                                :: getFunc
         type(brent_type)        , intent(in)                :: method
-        real(RKC)               , intent(in)                :: lb, ub
-        real(RKC)               , intent(in)    , optional  :: abstol
+        real(RKG)               , intent(in)                :: lb, ub
+        real(RKG)               , intent(in)    , optional  :: abstol
         integer(IK)             , intent(in)    , optional  :: niter
         integer(IK)             , intent(out)   , optional  :: neval
-        real(RKC)                                           :: root
+        real(RKG)                                           :: root
     end function
 #endif
 
@@ -1998,14 +1998,14 @@ module pm_mathRoot
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRootBrent_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        procedure(real(RKC))                                :: getFunc
+        use pm_kind, only: RKG => RK2
+        procedure(real(RKG))                                :: getFunc
         type(brent_type)        , intent(in)                :: method
-        real(RKC)               , intent(in)                :: lb, ub
-        real(RKC)               , intent(in)    , optional  :: abstol
+        real(RKG)               , intent(in)                :: lb, ub
+        real(RKG)               , intent(in)    , optional  :: abstol
         integer(IK)             , intent(in)    , optional  :: niter
         integer(IK)             , intent(out)   , optional  :: neval
-        real(RKC)                                           :: root
+        real(RKG)                                           :: root
     end function
 #endif
 
@@ -2014,14 +2014,14 @@ module pm_mathRoot
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRootBrent_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        procedure(real(RKC))                                :: getFunc
+        use pm_kind, only: RKG => RK1
+        procedure(real(RKG))                                :: getFunc
         type(brent_type)        , intent(in)                :: method
-        real(RKC)               , intent(in)                :: lb, ub
-        real(RKC)               , intent(in)    , optional  :: abstol
+        real(RKG)               , intent(in)                :: lb, ub
+        real(RKG)               , intent(in)    , optional  :: abstol
         integer(IK)             , intent(in)    , optional  :: niter
         integer(IK)             , intent(out)   , optional  :: neval
-        real(RKC)                                           :: root
+        real(RKG)                                           :: root
     end function
 #endif
 
@@ -2040,14 +2040,14 @@ module pm_mathRoot
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRootRidders_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        procedure(real(RKC))                                :: getFunc
+        use pm_kind, only: RKG => RK5
+        procedure(real(RKG))                                :: getFunc
         type(ridders_type)      , intent(in)                :: method
-        real(RKC)               , intent(in)                :: lb, ub
-        real(RKC)               , intent(in)    , optional  :: abstol
+        real(RKG)               , intent(in)                :: lb, ub
+        real(RKG)               , intent(in)    , optional  :: abstol
         integer(IK)             , intent(in)    , optional  :: niter
         integer(IK)             , intent(out)   , optional  :: neval
-        real(RKC)                                           :: root
+        real(RKG)                                           :: root
     end function
 #endif
 
@@ -2056,14 +2056,14 @@ module pm_mathRoot
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRootRidders_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        procedure(real(RKC))                                :: getFunc
+        use pm_kind, only: RKG => RK4
+        procedure(real(RKG))                                :: getFunc
         type(ridders_type)      , intent(in)                :: method
-        real(RKC)               , intent(in)                :: lb, ub
-        real(RKC)               , intent(in)    , optional  :: abstol
+        real(RKG)               , intent(in)                :: lb, ub
+        real(RKG)               , intent(in)    , optional  :: abstol
         integer(IK)             , intent(in)    , optional  :: niter
         integer(IK)             , intent(out)   , optional  :: neval
-        real(RKC)                                           :: root
+        real(RKG)                                           :: root
     end function
 #endif
 
@@ -2072,14 +2072,14 @@ module pm_mathRoot
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRootRidders_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        procedure(real(RKC))                                :: getFunc
+        use pm_kind, only: RKG => RK3
+        procedure(real(RKG))                                :: getFunc
         type(ridders_type)      , intent(in)                :: method
-        real(RKC)               , intent(in)                :: lb, ub
-        real(RKC)               , intent(in)    , optional  :: abstol
+        real(RKG)               , intent(in)                :: lb, ub
+        real(RKG)               , intent(in)    , optional  :: abstol
         integer(IK)             , intent(in)    , optional  :: niter
         integer(IK)             , intent(out)   , optional  :: neval
-        real(RKC)                                           :: root
+        real(RKG)                                           :: root
     end function
 #endif
 
@@ -2088,14 +2088,14 @@ module pm_mathRoot
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRootRidders_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        procedure(real(RKC))                                :: getFunc
+        use pm_kind, only: RKG => RK2
+        procedure(real(RKG))                                :: getFunc
         type(ridders_type)      , intent(in)                :: method
-        real(RKC)               , intent(in)                :: lb, ub
-        real(RKC)               , intent(in)    , optional  :: abstol
+        real(RKG)               , intent(in)                :: lb, ub
+        real(RKG)               , intent(in)    , optional  :: abstol
         integer(IK)             , intent(in)    , optional  :: niter
         integer(IK)             , intent(out)   , optional  :: neval
-        real(RKC)                                           :: root
+        real(RKG)                                           :: root
     end function
 #endif
 
@@ -2104,14 +2104,14 @@ module pm_mathRoot
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRootRidders_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        procedure(real(RKC))                                :: getFunc
+        use pm_kind, only: RKG => RK1
+        procedure(real(RKG))                                :: getFunc
         type(ridders_type)      , intent(in)                :: method
-        real(RKC)               , intent(in)                :: lb, ub
-        real(RKC)               , intent(in)    , optional  :: abstol
+        real(RKG)               , intent(in)                :: lb, ub
+        real(RKG)               , intent(in)    , optional  :: abstol
         integer(IK)             , intent(in)    , optional  :: niter
         integer(IK)             , intent(out)   , optional  :: neval
-        real(RKC)                                           :: root
+        real(RKG)                                           :: root
     end function
 #endif
 
@@ -2130,14 +2130,14 @@ module pm_mathRoot
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRootTOMS748_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        procedure(real(RKC))                                :: getFunc
+        use pm_kind, only: RKG => RK5
+        procedure(real(RKG))                                :: getFunc
         type(toms748_type)      , intent(in)                :: method
-        real(RKC)               , intent(in)                :: lb, ub
-        real(RKC)               , intent(in)    , optional  :: abstol
+        real(RKG)               , intent(in)                :: lb, ub
+        real(RKG)               , intent(in)    , optional  :: abstol
         integer(IK)             , intent(in)    , optional  :: niter
         integer(IK)             , intent(out)   , optional  :: neval
-        real(RKC)                                           :: root
+        real(RKG)                                           :: root
     end function
 #endif
 
@@ -2146,14 +2146,14 @@ module pm_mathRoot
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRootTOMS748_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        procedure(real(RKC))                                :: getFunc
+        use pm_kind, only: RKG => RK4
+        procedure(real(RKG))                                :: getFunc
         type(toms748_type)      , intent(in)                :: method
-        real(RKC)               , intent(in)                :: lb, ub
-        real(RKC)               , intent(in)    , optional  :: abstol
+        real(RKG)               , intent(in)                :: lb, ub
+        real(RKG)               , intent(in)    , optional  :: abstol
         integer(IK)             , intent(in)    , optional  :: niter
         integer(IK)             , intent(out)   , optional  :: neval
-        real(RKC)                                           :: root
+        real(RKG)                                           :: root
     end function
 #endif
 
@@ -2162,14 +2162,14 @@ module pm_mathRoot
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRootTOMS748_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        procedure(real(RKC))                                :: getFunc
+        use pm_kind, only: RKG => RK3
+        procedure(real(RKG))                                :: getFunc
         type(toms748_type)      , intent(in)                :: method
-        real(RKC)               , intent(in)                :: lb, ub
-        real(RKC)               , intent(in)    , optional  :: abstol
+        real(RKG)               , intent(in)                :: lb, ub
+        real(RKG)               , intent(in)    , optional  :: abstol
         integer(IK)             , intent(in)    , optional  :: niter
         integer(IK)             , intent(out)   , optional  :: neval
-        real(RKC)                                           :: root
+        real(RKG)                                           :: root
     end function
 #endif
 
@@ -2178,14 +2178,14 @@ module pm_mathRoot
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRootTOMS748_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        procedure(real(RKC))                                :: getFunc
+        use pm_kind, only: RKG => RK2
+        procedure(real(RKG))                                :: getFunc
         type(toms748_type)      , intent(in)                :: method
-        real(RKC)               , intent(in)                :: lb, ub
-        real(RKC)               , intent(in)    , optional  :: abstol
+        real(RKG)               , intent(in)                :: lb, ub
+        real(RKG)               , intent(in)    , optional  :: abstol
         integer(IK)             , intent(in)    , optional  :: niter
         integer(IK)             , intent(out)   , optional  :: neval
-        real(RKC)                                           :: root
+        real(RKG)                                           :: root
     end function
 #endif
 
@@ -2194,14 +2194,14 @@ module pm_mathRoot
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRootTOMS748_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        procedure(real(RKC))                                :: getFunc
+        use pm_kind, only: RKG => RK1
+        procedure(real(RKG))                                :: getFunc
         type(toms748_type)      , intent(in)                :: method
-        real(RKC)               , intent(in)                :: lb, ub
-        real(RKC)               , intent(in)    , optional  :: abstol
+        real(RKG)               , intent(in)                :: lb, ub
+        real(RKG)               , intent(in)    , optional  :: abstol
         integer(IK)             , intent(in)    , optional  :: niter
         integer(IK)             , intent(out)   , optional  :: neval
-        real(RKC)                                           :: root
+        real(RKG)                                           :: root
     end function
 #endif
 
@@ -2220,15 +2220,15 @@ module pm_mathRoot
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRootNewton_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        procedure(real(RKC))                                :: getFunc
+        use pm_kind, only: RKG => RK5
+        procedure(real(RKG))                                :: getFunc
         type(newton_type)       , intent(in)                :: method
-        real(RKC)               , intent(in)                :: lb, ub
-        real(RKC)               , intent(in)    , optional  :: abstol
+        real(RKG)               , intent(in)                :: lb, ub
+        real(RKG)               , intent(in)    , optional  :: abstol
         integer(IK)             , intent(in)    , optional  :: niter
         integer(IK)             , intent(out)   , optional  :: neval
-        real(RKC)               , intent(in)    , optional  :: init
-        real(RKC)                                           :: root
+        real(RKG)               , intent(in)    , optional  :: init
+        real(RKG)                                           :: root
     end function
 #endif
 
@@ -2237,15 +2237,15 @@ module pm_mathRoot
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRootNewton_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        procedure(real(RKC))                                :: getFunc
+        use pm_kind, only: RKG => RK4
+        procedure(real(RKG))                                :: getFunc
         type(newton_type)       , intent(in)                :: method
-        real(RKC)               , intent(in)                :: lb, ub
-        real(RKC)               , intent(in)    , optional  :: abstol
+        real(RKG)               , intent(in)                :: lb, ub
+        real(RKG)               , intent(in)    , optional  :: abstol
         integer(IK)             , intent(in)    , optional  :: niter
         integer(IK)             , intent(out)   , optional  :: neval
-        real(RKC)               , intent(in)    , optional  :: init
-        real(RKC)                                           :: root
+        real(RKG)               , intent(in)    , optional  :: init
+        real(RKG)                                           :: root
     end function
 #endif
 
@@ -2254,15 +2254,15 @@ module pm_mathRoot
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRootNewton_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        procedure(real(RKC))                                :: getFunc
+        use pm_kind, only: RKG => RK3
+        procedure(real(RKG))                                :: getFunc
         type(newton_type)       , intent(in)                :: method
-        real(RKC)               , intent(in)                :: lb, ub
-        real(RKC)               , intent(in)    , optional  :: abstol
+        real(RKG)               , intent(in)                :: lb, ub
+        real(RKG)               , intent(in)    , optional  :: abstol
         integer(IK)             , intent(in)    , optional  :: niter
         integer(IK)             , intent(out)   , optional  :: neval
-        real(RKC)               , intent(in)    , optional  :: init
-        real(RKC)                                           :: root
+        real(RKG)               , intent(in)    , optional  :: init
+        real(RKG)                                           :: root
     end function
 #endif
 
@@ -2271,15 +2271,15 @@ module pm_mathRoot
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRootNewton_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        procedure(real(RKC))                                :: getFunc
+        use pm_kind, only: RKG => RK2
+        procedure(real(RKG))                                :: getFunc
         type(newton_type)       , intent(in)                :: method
-        real(RKC)               , intent(in)                :: lb, ub
-        real(RKC)               , intent(in)    , optional  :: abstol
+        real(RKG)               , intent(in)                :: lb, ub
+        real(RKG)               , intent(in)    , optional  :: abstol
         integer(IK)             , intent(in)    , optional  :: niter
         integer(IK)             , intent(out)   , optional  :: neval
-        real(RKC)               , intent(in)    , optional  :: init
-        real(RKC)                                           :: root
+        real(RKG)               , intent(in)    , optional  :: init
+        real(RKG)                                           :: root
     end function
 #endif
 
@@ -2288,15 +2288,15 @@ module pm_mathRoot
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRootNewton_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        procedure(real(RKC))                                :: getFunc
+        use pm_kind, only: RKG => RK1
+        procedure(real(RKG))                                :: getFunc
         type(newton_type)       , intent(in)                :: method
-        real(RKC)               , intent(in)                :: lb, ub
-        real(RKC)               , intent(in)    , optional  :: abstol
+        real(RKG)               , intent(in)                :: lb, ub
+        real(RKG)               , intent(in)    , optional  :: abstol
         integer(IK)             , intent(in)    , optional  :: niter
         integer(IK)             , intent(out)   , optional  :: neval
-        real(RKC)               , intent(in)    , optional  :: init
-        real(RKC)                                           :: root
+        real(RKG)               , intent(in)    , optional  :: init
+        real(RKG)                                           :: root
     end function
 #endif
 
@@ -2315,15 +2315,15 @@ module pm_mathRoot
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRootHalley_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        procedure(real(RKC))                                :: getFunc
+        use pm_kind, only: RKG => RK5
+        procedure(real(RKG))                                :: getFunc
         type(halley_type)       , intent(in)                :: method
-        real(RKC)               , intent(in)                :: lb, ub
-        real(RKC)               , intent(in)    , optional  :: abstol
+        real(RKG)               , intent(in)                :: lb, ub
+        real(RKG)               , intent(in)    , optional  :: abstol
         integer(IK)             , intent(in)    , optional  :: niter
         integer(IK)             , intent(out)   , optional  :: neval
-        real(RKC)               , intent(in)    , optional  :: init
-        real(RKC)                                           :: root
+        real(RKG)               , intent(in)    , optional  :: init
+        real(RKG)                                           :: root
     end function
 #endif
 
@@ -2332,15 +2332,15 @@ module pm_mathRoot
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRootHalley_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        procedure(real(RKC))                                :: getFunc
+        use pm_kind, only: RKG => RK4
+        procedure(real(RKG))                                :: getFunc
         type(halley_type)       , intent(in)                :: method
-        real(RKC)               , intent(in)                :: lb, ub
-        real(RKC)               , intent(in)    , optional  :: abstol
+        real(RKG)               , intent(in)                :: lb, ub
+        real(RKG)               , intent(in)    , optional  :: abstol
         integer(IK)             , intent(in)    , optional  :: niter
         integer(IK)             , intent(out)   , optional  :: neval
-        real(RKC)               , intent(in)    , optional  :: init
-        real(RKC)                                           :: root
+        real(RKG)               , intent(in)    , optional  :: init
+        real(RKG)                                           :: root
     end function
 #endif
 
@@ -2349,15 +2349,15 @@ module pm_mathRoot
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRootHalley_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        procedure(real(RKC))                                :: getFunc
+        use pm_kind, only: RKG => RK3
+        procedure(real(RKG))                                :: getFunc
         type(halley_type)       , intent(in)                :: method
-        real(RKC)               , intent(in)                :: lb, ub
-        real(RKC)               , intent(in)    , optional  :: abstol
+        real(RKG)               , intent(in)                :: lb, ub
+        real(RKG)               , intent(in)    , optional  :: abstol
         integer(IK)             , intent(in)    , optional  :: niter
         integer(IK)             , intent(out)   , optional  :: neval
-        real(RKC)               , intent(in)    , optional  :: init
-        real(RKC)                                           :: root
+        real(RKG)               , intent(in)    , optional  :: init
+        real(RKG)                                           :: root
     end function
 #endif
 
@@ -2366,15 +2366,15 @@ module pm_mathRoot
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRootHalley_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        procedure(real(RKC))                                :: getFunc
+        use pm_kind, only: RKG => RK2
+        procedure(real(RKG))                                :: getFunc
         type(halley_type)       , intent(in)                :: method
-        real(RKC)               , intent(in)                :: lb, ub
-        real(RKC)               , intent(in)    , optional  :: abstol
+        real(RKG)               , intent(in)                :: lb, ub
+        real(RKG)               , intent(in)    , optional  :: abstol
         integer(IK)             , intent(in)    , optional  :: niter
         integer(IK)             , intent(out)   , optional  :: neval
-        real(RKC)               , intent(in)    , optional  :: init
-        real(RKC)                                           :: root
+        real(RKG)               , intent(in)    , optional  :: init
+        real(RKG)                                           :: root
     end function
 #endif
 
@@ -2383,15 +2383,15 @@ module pm_mathRoot
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRootHalley_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        procedure(real(RKC))                                :: getFunc
+        use pm_kind, only: RKG => RK1
+        procedure(real(RKG))                                :: getFunc
         type(halley_type)       , intent(in)                :: method
-        real(RKC)               , intent(in)                :: lb, ub
-        real(RKC)               , intent(in)    , optional  :: abstol
+        real(RKG)               , intent(in)                :: lb, ub
+        real(RKG)               , intent(in)    , optional  :: abstol
         integer(IK)             , intent(in)    , optional  :: niter
         integer(IK)             , intent(out)   , optional  :: neval
-        real(RKC)               , intent(in)    , optional  :: init
-        real(RKC)                                           :: root
+        real(RKG)               , intent(in)    , optional  :: init
+        real(RKG)                                           :: root
     end function
 #endif
 
@@ -2410,15 +2410,15 @@ module pm_mathRoot
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRootSchroder_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        procedure(real(RKC))                                :: getFunc
+        use pm_kind, only: RKG => RK5
+        procedure(real(RKG))                                :: getFunc
         type(schroder_type)     , intent(in)                :: method
-        real(RKC)               , intent(in)                :: lb, ub
-        real(RKC)               , intent(in)    , optional  :: abstol
+        real(RKG)               , intent(in)                :: lb, ub
+        real(RKG)               , intent(in)    , optional  :: abstol
         integer(IK)             , intent(in)    , optional  :: niter
         integer(IK)             , intent(out)   , optional  :: neval
-        real(RKC)               , intent(in)    , optional  :: init
-        real(RKC)                                           :: root
+        real(RKG)               , intent(in)    , optional  :: init
+        real(RKG)                                           :: root
     end function
 #endif
 
@@ -2427,15 +2427,15 @@ module pm_mathRoot
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRootSchroder_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        procedure(real(RKC))                                :: getFunc
+        use pm_kind, only: RKG => RK4
+        procedure(real(RKG))                                :: getFunc
         type(schroder_type)     , intent(in)                :: method
-        real(RKC)               , intent(in)                :: lb, ub
-        real(RKC)               , intent(in)    , optional  :: abstol
+        real(RKG)               , intent(in)                :: lb, ub
+        real(RKG)               , intent(in)    , optional  :: abstol
         integer(IK)             , intent(in)    , optional  :: niter
         integer(IK)             , intent(out)   , optional  :: neval
-        real(RKC)               , intent(in)    , optional  :: init
-        real(RKC)                                           :: root
+        real(RKG)               , intent(in)    , optional  :: init
+        real(RKG)                                           :: root
     end function
 #endif
 
@@ -2444,15 +2444,15 @@ module pm_mathRoot
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRootSchroder_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        procedure(real(RKC))                                :: getFunc
+        use pm_kind, only: RKG => RK3
+        procedure(real(RKG))                                :: getFunc
         type(schroder_type)     , intent(in)                :: method
-        real(RKC)               , intent(in)                :: lb, ub
-        real(RKC)               , intent(in)    , optional  :: abstol
+        real(RKG)               , intent(in)                :: lb, ub
+        real(RKG)               , intent(in)    , optional  :: abstol
         integer(IK)             , intent(in)    , optional  :: niter
         integer(IK)             , intent(out)   , optional  :: neval
-        real(RKC)               , intent(in)    , optional  :: init
-        real(RKC)                                           :: root
+        real(RKG)               , intent(in)    , optional  :: init
+        real(RKG)                                           :: root
     end function
 #endif
 
@@ -2461,15 +2461,15 @@ module pm_mathRoot
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRootSchroder_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        procedure(real(RKC))                                :: getFunc
+        use pm_kind, only: RKG => RK2
+        procedure(real(RKG))                                :: getFunc
         type(schroder_type)     , intent(in)                :: method
-        real(RKC)               , intent(in)                :: lb, ub
-        real(RKC)               , intent(in)    , optional  :: abstol
+        real(RKG)               , intent(in)                :: lb, ub
+        real(RKG)               , intent(in)    , optional  :: abstol
         integer(IK)             , intent(in)    , optional  :: niter
         integer(IK)             , intent(out)   , optional  :: neval
-        real(RKC)               , intent(in)    , optional  :: init
-        real(RKC)                                           :: root
+        real(RKG)               , intent(in)    , optional  :: init
+        real(RKG)                                           :: root
     end function
 #endif
 
@@ -2478,15 +2478,15 @@ module pm_mathRoot
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRootSchroder_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        procedure(real(RKC))                                :: getFunc
+        use pm_kind, only: RKG => RK1
+        procedure(real(RKG))                                :: getFunc
         type(schroder_type)     , intent(in)                :: method
-        real(RKC)               , intent(in)                :: lb, ub
-        real(RKC)               , intent(in)    , optional  :: abstol
+        real(RKG)               , intent(in)                :: lb, ub
+        real(RKG)               , intent(in)    , optional  :: abstol
         integer(IK)             , intent(in)    , optional  :: niter
         integer(IK)             , intent(out)   , optional  :: neval
-        real(RKC)               , intent(in)    , optional  :: init
-        real(RKC)                                           :: root
+        real(RKG)               , intent(in)    , optional  :: init
+        real(RKG)                                           :: root
     end function
 #endif
 
@@ -2549,11 +2549,11 @@ module pm_mathRoot
     !>                                          The following illustrates the generic interface of `getFunc()` for the above values of `method`,
     !>                                          \code{.F90}
     !>                                              function getFunc(x) result(func)
-    !>                                                  real(RKC)   , intent(in)    :: x
-    !>                                                  real(RKC)                   :: func
+    !>                                                  real(RKG)   , intent(in)    :: x
+    !>                                                  real(RKG)                   :: func
     !>                                              end function
     !>                                          \endcode
-    !>                                          where `RKC` refers to the kind of the output argument `root`.<br>
+    !>                                          where `RKG` refers to the kind of the output argument `root`.<br>
     !>                                  <li>    If the specified `method` is any of the following,
     !>                                          <ol>
     !>                                              <li>    the constant [newton](@ref pm_mathRoot::newton) or an object of type [newton_type](@ref pm_mathRoot::newton_type),<br>
@@ -2576,12 +2576,12 @@ module pm_mathRoot
     !>                                          The following illustrates the generic interface of `getFunc()` for the above values of `method`,
     !>                                          \code{.F90}
     !>                                              function getFunc(x, order) result(func)
-    !>                                                  real(RKC)   , intent(in)    :: x
+    !>                                                  real(RKG)   , intent(in)    :: x
     !>                                                  integer(IK) , intent(in)    :: order
-    !>                                                  real(RKC)                   :: func
+    !>                                                  real(RKG)                   :: func
     !>                                              end function
     !>                                          \endcode
-    !>                                          where `RKC` refers to the kind of the output argument `root`.<br>
+    !>                                          where `RKG` refers to the kind of the output argument `root`.<br>
     !>                              </ol>
     !>  \param[inout]   root    :   The input/output scalar of type `real` of kind \RKALL.<br>
     !>                              On input,<br>
@@ -2599,8 +2599,8 @@ module pm_mathRoot
     !>  \param[in]      abstol  :   The input scalar of same type and kind as the output `root`, representing the absolute tolerance used as the stopping criterion of the search.<br>
     !>                              The iterations of the specified input `method` continue until the search interval becomes smaller than `abstol` in absolute units.<br>
     !>                              Care must be taken for specifying a reasonable value for `abstol` (see the warnings below).<br>
-    !>                              If no suitable value for `abstol` is known a priori, try `abstol = epsilon(0._RKC)**.8 * (abs(lb) + abs(ub))`
-    !>                              where `RKC` refers to the kind of the output argument `root`.<br>
+    !>                              If no suitable value for `abstol` is known a priori, try `abstol = epsilon(0._RKG)**.8 * (abs(lb) + abs(ub))`
+    !>                              where `RKG` refers to the kind of the output argument `root`.<br>
     !>  \param[out]     neval   :   The output scalar argument of type `integer` of default kind \IK, containing the total number of `getFunc()` function calls made by the algorithm.<br>
     !>                              <ol>
     !>                                  <li>    A positive output `neval` implies the **successful** convergence of the algorithm to the function root after `+neval` function evaluations.<br>
@@ -2624,7 +2624,7 @@ module pm_mathRoot
     !>
     !>  \warning
     !>  The condition `lb < ub` must hold for the corresponding input arguments.<br>
-    !>  The condition `0._RKC < abstol` must hold for the corresponding input arguments.<br>
+    !>  The condition `0._RKG < abstol` must hold for the corresponding input arguments.<br>
     !>  The condition `abstol < (ub - lb)` must hold for the corresponding input arguments.<br>
     !>  The condition `abs(getFunc(lb), lf) < abstol` must hold for the corresponding input arguments.<br>
     !>  The condition `abs(getFunc(ub), uf) < abstol` must hold for the corresponding input arguments.<br>
@@ -2681,13 +2681,13 @@ module pm_mathRoot
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRootFalseFixed_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        procedure(real(RKC))                                :: getFunc
+        use pm_kind, only: RKG => RK5
+        procedure(real(RKG))                                :: getFunc
         type(false_type)        , intent(in)                :: method
-        real(RKC)               , intent(out)               :: root
-        real(RKC)               , value                     :: lb, ub
-        real(RKC)               , value                     :: lf, uf
-        real(RKC)               , intent(in)                :: abstol
+        real(RKG)               , intent(out)               :: root
+        real(RKG)               , value                     :: lb, ub
+        real(RKG)               , value                     :: lf, uf
+        real(RKG)               , intent(in)                :: abstol
         integer(IK)             , intent(out)               :: neval
     end subroutine
 #endif
@@ -2697,13 +2697,13 @@ module pm_mathRoot
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRootFalseFixed_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        procedure(real(RKC))                                :: getFunc
+        use pm_kind, only: RKG => RK4
+        procedure(real(RKG))                                :: getFunc
         type(false_type)        , intent(in)                :: method
-        real(RKC)               , intent(out)               :: root
-        real(RKC)               , value                     :: lb, ub
-        real(RKC)               , value                     :: lf, uf
-        real(RKC)               , intent(in)                :: abstol
+        real(RKG)               , intent(out)               :: root
+        real(RKG)               , value                     :: lb, ub
+        real(RKG)               , value                     :: lf, uf
+        real(RKG)               , intent(in)                :: abstol
         integer(IK)             , intent(out)               :: neval
     end subroutine
 #endif
@@ -2713,13 +2713,13 @@ module pm_mathRoot
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRootFalseFixed_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        procedure(real(RKC))                                :: getFunc
+        use pm_kind, only: RKG => RK3
+        procedure(real(RKG))                                :: getFunc
         type(false_type)        , intent(in)                :: method
-        real(RKC)               , intent(out)               :: root
-        real(RKC)               , value                     :: lb, ub
-        real(RKC)               , value                     :: lf, uf
-        real(RKC)               , intent(in)                :: abstol
+        real(RKG)               , intent(out)               :: root
+        real(RKG)               , value                     :: lb, ub
+        real(RKG)               , value                     :: lf, uf
+        real(RKG)               , intent(in)                :: abstol
         integer(IK)             , intent(out)               :: neval
     end subroutine
 #endif
@@ -2729,13 +2729,13 @@ module pm_mathRoot
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRootFalseFixed_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        procedure(real(RKC))                                :: getFunc
+        use pm_kind, only: RKG => RK2
+        procedure(real(RKG))                                :: getFunc
         type(false_type)        , intent(in)                :: method
-        real(RKC)               , intent(out)               :: root
-        real(RKC)               , value                     :: lb, ub
-        real(RKC)               , value                     :: lf, uf
-        real(RKC)               , intent(in)                :: abstol
+        real(RKG)               , intent(out)               :: root
+        real(RKG)               , value                     :: lb, ub
+        real(RKG)               , value                     :: lf, uf
+        real(RKG)               , intent(in)                :: abstol
         integer(IK)             , intent(out)               :: neval
     end subroutine
 #endif
@@ -2745,13 +2745,13 @@ module pm_mathRoot
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRootFalseFixed_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        procedure(real(RKC))                                :: getFunc
+        use pm_kind, only: RKG => RK1
+        procedure(real(RKG))                                :: getFunc
         type(false_type)        , intent(in)                :: method
-        real(RKC)               , intent(out)               :: root
-        real(RKC)               , value                     :: lb, ub
-        real(RKC)               , value                     :: lf, uf
-        real(RKC)               , intent(in)                :: abstol
+        real(RKG)               , intent(out)               :: root
+        real(RKG)               , value                     :: lb, ub
+        real(RKG)               , value                     :: lf, uf
+        real(RKG)               , intent(in)                :: abstol
         integer(IK)             , intent(out)               :: neval
     end subroutine
 #endif
@@ -2763,13 +2763,13 @@ module pm_mathRoot
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRootFalseNiter_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        procedure(real(RKC))                                :: getFunc
+        use pm_kind, only: RKG => RK5
+        procedure(real(RKG))                                :: getFunc
         type(false_type)        , intent(in)                :: method
-        real(RKC)               , intent(out)               :: root
-        real(RKC)               , value                     :: lb, ub
-        real(RKC)               , value                     :: lf, uf
-        real(RKC)               , intent(in)                :: abstol
+        real(RKG)               , intent(out)               :: root
+        real(RKG)               , value                     :: lb, ub
+        real(RKG)               , value                     :: lf, uf
+        real(RKG)               , intent(in)                :: abstol
         integer(IK)             , intent(out)               :: neval
         integer(IK)             , intent(in)                :: niter
     end subroutine
@@ -2780,13 +2780,13 @@ module pm_mathRoot
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRootFalseNiter_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        procedure(real(RKC))                                :: getFunc
+        use pm_kind, only: RKG => RK4
+        procedure(real(RKG))                                :: getFunc
         type(false_type)        , intent(in)                :: method
-        real(RKC)               , intent(out)               :: root
-        real(RKC)               , value                     :: lb, ub
-        real(RKC)               , value                     :: lf, uf
-        real(RKC)               , intent(in)                :: abstol
+        real(RKG)               , intent(out)               :: root
+        real(RKG)               , value                     :: lb, ub
+        real(RKG)               , value                     :: lf, uf
+        real(RKG)               , intent(in)                :: abstol
         integer(IK)             , intent(out)               :: neval
         integer(IK)             , intent(in)                :: niter
     end subroutine
@@ -2797,13 +2797,13 @@ module pm_mathRoot
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRootFalseNiter_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        procedure(real(RKC))                                :: getFunc
+        use pm_kind, only: RKG => RK3
+        procedure(real(RKG))                                :: getFunc
         type(false_type)        , intent(in)                :: method
-        real(RKC)               , intent(out)               :: root
-        real(RKC)               , value                     :: lb, ub
-        real(RKC)               , value                     :: lf, uf
-        real(RKC)               , intent(in)                :: abstol
+        real(RKG)               , intent(out)               :: root
+        real(RKG)               , value                     :: lb, ub
+        real(RKG)               , value                     :: lf, uf
+        real(RKG)               , intent(in)                :: abstol
         integer(IK)             , intent(out)               :: neval
         integer(IK)             , intent(in)                :: niter
     end subroutine
@@ -2814,13 +2814,13 @@ module pm_mathRoot
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRootFalseNiter_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        procedure(real(RKC))                                :: getFunc
+        use pm_kind, only: RKG => RK2
+        procedure(real(RKG))                                :: getFunc
         type(false_type)        , intent(in)                :: method
-        real(RKC)               , intent(out)               :: root
-        real(RKC)               , value                     :: lb, ub
-        real(RKC)               , value                     :: lf, uf
-        real(RKC)               , intent(in)                :: abstol
+        real(RKG)               , intent(out)               :: root
+        real(RKG)               , value                     :: lb, ub
+        real(RKG)               , value                     :: lf, uf
+        real(RKG)               , intent(in)                :: abstol
         integer(IK)             , intent(out)               :: neval
         integer(IK)             , intent(in)                :: niter
     end subroutine
@@ -2831,13 +2831,13 @@ module pm_mathRoot
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRootFalseNiter_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        procedure(real(RKC))                                :: getFunc
+        use pm_kind, only: RKG => RK1
+        procedure(real(RKG))                                :: getFunc
         type(false_type)        , intent(in)                :: method
-        real(RKC)               , intent(out)               :: root
-        real(RKC)               , value                     :: lb, ub
-        real(RKC)               , value                     :: lf, uf
-        real(RKC)               , intent(in)                :: abstol
+        real(RKG)               , intent(out)               :: root
+        real(RKG)               , value                     :: lb, ub
+        real(RKG)               , value                     :: lf, uf
+        real(RKG)               , intent(in)                :: abstol
         integer(IK)             , intent(out)               :: neval
         integer(IK)             , intent(in)                :: niter
     end subroutine
@@ -2858,13 +2858,13 @@ module pm_mathRoot
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRootBisectionFixed_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        procedure(real(RKC))                                :: getFunc
+        use pm_kind, only: RKG => RK5
+        procedure(real(RKG))                                :: getFunc
         type(bisection_type)    , intent(in)                :: method
-        real(RKC)               , intent(out)               :: root
-        real(RKC)               , value                     :: lb, ub
-        real(RKC)               , value                     :: lf, uf
-        real(RKC)               , intent(in)                :: abstol
+        real(RKG)               , intent(out)               :: root
+        real(RKG)               , value                     :: lb, ub
+        real(RKG)               , value                     :: lf, uf
+        real(RKG)               , intent(in)                :: abstol
         integer(IK)             , intent(out)               :: neval
     end subroutine
 #endif
@@ -2874,13 +2874,13 @@ module pm_mathRoot
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRootBisectionFixed_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        procedure(real(RKC))                                :: getFunc
+        use pm_kind, only: RKG => RK4
+        procedure(real(RKG))                                :: getFunc
         type(bisection_type)    , intent(in)                :: method
-        real(RKC)               , intent(out)               :: root
-        real(RKC)               , value                     :: lb, ub
-        real(RKC)               , value                     :: lf, uf
-        real(RKC)               , intent(in)                :: abstol
+        real(RKG)               , intent(out)               :: root
+        real(RKG)               , value                     :: lb, ub
+        real(RKG)               , value                     :: lf, uf
+        real(RKG)               , intent(in)                :: abstol
         integer(IK)             , intent(out)               :: neval
     end subroutine
 #endif
@@ -2890,13 +2890,13 @@ module pm_mathRoot
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRootBisectionFixed_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        procedure(real(RKC))                                :: getFunc
+        use pm_kind, only: RKG => RK3
+        procedure(real(RKG))                                :: getFunc
         type(bisection_type)    , intent(in)                :: method
-        real(RKC)               , intent(out)               :: root
-        real(RKC)               , value                     :: lb, ub
-        real(RKC)               , value                     :: lf, uf
-        real(RKC)               , intent(in)                :: abstol
+        real(RKG)               , intent(out)               :: root
+        real(RKG)               , value                     :: lb, ub
+        real(RKG)               , value                     :: lf, uf
+        real(RKG)               , intent(in)                :: abstol
         integer(IK)             , intent(out)               :: neval
     end subroutine
 #endif
@@ -2906,13 +2906,13 @@ module pm_mathRoot
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRootBisectionFixed_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        procedure(real(RKC))                                :: getFunc
+        use pm_kind, only: RKG => RK2
+        procedure(real(RKG))                                :: getFunc
         type(bisection_type)    , intent(in)                :: method
-        real(RKC)               , intent(out)               :: root
-        real(RKC)               , value                     :: lb, ub
-        real(RKC)               , value                     :: lf, uf
-        real(RKC)               , intent(in)                :: abstol
+        real(RKG)               , intent(out)               :: root
+        real(RKG)               , value                     :: lb, ub
+        real(RKG)               , value                     :: lf, uf
+        real(RKG)               , intent(in)                :: abstol
         integer(IK)             , intent(out)               :: neval
     end subroutine
 #endif
@@ -2922,13 +2922,13 @@ module pm_mathRoot
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRootBisectionFixed_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        procedure(real(RKC))                                :: getFunc
+        use pm_kind, only: RKG => RK1
+        procedure(real(RKG))                                :: getFunc
         type(bisection_type)    , intent(in)                :: method
-        real(RKC)               , intent(out)               :: root
-        real(RKC)               , value                     :: lb, ub
-        real(RKC)               , value                     :: lf, uf
-        real(RKC)               , intent(in)                :: abstol
+        real(RKG)               , intent(out)               :: root
+        real(RKG)               , value                     :: lb, ub
+        real(RKG)               , value                     :: lf, uf
+        real(RKG)               , intent(in)                :: abstol
         integer(IK)             , intent(out)               :: neval
     end subroutine
 #endif
@@ -2940,13 +2940,13 @@ module pm_mathRoot
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRootBisectionNiter_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        procedure(real(RKC))                                :: getFunc
+        use pm_kind, only: RKG => RK5
+        procedure(real(RKG))                                :: getFunc
         type(bisection_type)    , intent(in)                :: method
-        real(RKC)               , intent(out)               :: root
-        real(RKC)               , value                     :: lb, ub
-        real(RKC)               , value                     :: lf, uf
-        real(RKC)               , intent(in)                :: abstol
+        real(RKG)               , intent(out)               :: root
+        real(RKG)               , value                     :: lb, ub
+        real(RKG)               , value                     :: lf, uf
+        real(RKG)               , intent(in)                :: abstol
         integer(IK)             , intent(out)               :: neval
         integer(IK)             , intent(in)                :: niter
     end subroutine
@@ -2957,13 +2957,13 @@ module pm_mathRoot
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRootBisectionNiter_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        procedure(real(RKC))                                :: getFunc
+        use pm_kind, only: RKG => RK4
+        procedure(real(RKG))                                :: getFunc
         type(bisection_type)    , intent(in)                :: method
-        real(RKC)               , intent(out)               :: root
-        real(RKC)               , value                     :: lb, ub
-        real(RKC)               , value                     :: lf, uf
-        real(RKC)               , intent(in)                :: abstol
+        real(RKG)               , intent(out)               :: root
+        real(RKG)               , value                     :: lb, ub
+        real(RKG)               , value                     :: lf, uf
+        real(RKG)               , intent(in)                :: abstol
         integer(IK)             , intent(out)               :: neval
         integer(IK)             , intent(in)                :: niter
     end subroutine
@@ -2974,13 +2974,13 @@ module pm_mathRoot
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRootBisectionNiter_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        procedure(real(RKC))                                :: getFunc
+        use pm_kind, only: RKG => RK3
+        procedure(real(RKG))                                :: getFunc
         type(bisection_type)    , intent(in)                :: method
-        real(RKC)               , intent(out)               :: root
-        real(RKC)               , value                     :: lb, ub
-        real(RKC)               , value                     :: lf, uf
-        real(RKC)               , intent(in)                :: abstol
+        real(RKG)               , intent(out)               :: root
+        real(RKG)               , value                     :: lb, ub
+        real(RKG)               , value                     :: lf, uf
+        real(RKG)               , intent(in)                :: abstol
         integer(IK)             , intent(out)               :: neval
         integer(IK)             , intent(in)                :: niter
     end subroutine
@@ -2991,13 +2991,13 @@ module pm_mathRoot
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRootBisectionNiter_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        procedure(real(RKC))                                :: getFunc
+        use pm_kind, only: RKG => RK2
+        procedure(real(RKG))                                :: getFunc
         type(bisection_type)    , intent(in)                :: method
-        real(RKC)               , intent(out)               :: root
-        real(RKC)               , value                     :: lb, ub
-        real(RKC)               , value                     :: lf, uf
-        real(RKC)               , intent(in)                :: abstol
+        real(RKG)               , intent(out)               :: root
+        real(RKG)               , value                     :: lb, ub
+        real(RKG)               , value                     :: lf, uf
+        real(RKG)               , intent(in)                :: abstol
         integer(IK)             , intent(out)               :: neval
         integer(IK)             , intent(in)                :: niter
     end subroutine
@@ -3008,13 +3008,13 @@ module pm_mathRoot
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRootBisectionNiter_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        procedure(real(RKC))                                :: getFunc
+        use pm_kind, only: RKG => RK1
+        procedure(real(RKG))                                :: getFunc
         type(bisection_type)    , intent(in)                :: method
-        real(RKC)               , intent(out)               :: root
-        real(RKC)               , value                     :: lb, ub
-        real(RKC)               , value                     :: lf, uf
-        real(RKC)               , intent(in)                :: abstol
+        real(RKG)               , intent(out)               :: root
+        real(RKG)               , value                     :: lb, ub
+        real(RKG)               , value                     :: lf, uf
+        real(RKG)               , intent(in)                :: abstol
         integer(IK)             , intent(out)               :: neval
         integer(IK)             , intent(in)                :: niter
     end subroutine
@@ -3035,13 +3035,13 @@ module pm_mathRoot
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRootSecantFixed_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        procedure(real(RKC))                                :: getFunc
+        use pm_kind, only: RKG => RK5
+        procedure(real(RKG))                                :: getFunc
         type(secant_type)       , intent(in)                :: method
-        real(RKC)               , intent(out)               :: root
-        real(RKC)               , value                     :: lb, ub
-        real(RKC)               , value                     :: lf, uf
-        real(RKC)               , intent(in)                :: abstol
+        real(RKG)               , intent(out)               :: root
+        real(RKG)               , value                     :: lb, ub
+        real(RKG)               , value                     :: lf, uf
+        real(RKG)               , intent(in)                :: abstol
         integer(IK)             , intent(out)               :: neval
     end subroutine
 #endif
@@ -3051,13 +3051,13 @@ module pm_mathRoot
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRootSecantFixed_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        procedure(real(RKC))                                :: getFunc
+        use pm_kind, only: RKG => RK4
+        procedure(real(RKG))                                :: getFunc
         type(secant_type)       , intent(in)                :: method
-        real(RKC)               , intent(out)               :: root
-        real(RKC)               , value                     :: lb, ub
-        real(RKC)               , value                     :: lf, uf
-        real(RKC)               , intent(in)                :: abstol
+        real(RKG)               , intent(out)               :: root
+        real(RKG)               , value                     :: lb, ub
+        real(RKG)               , value                     :: lf, uf
+        real(RKG)               , intent(in)                :: abstol
         integer(IK)             , intent(out)               :: neval
     end subroutine
 #endif
@@ -3067,13 +3067,13 @@ module pm_mathRoot
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRootSecantFixed_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        procedure(real(RKC))                                :: getFunc
+        use pm_kind, only: RKG => RK3
+        procedure(real(RKG))                                :: getFunc
         type(secant_type)       , intent(in)                :: method
-        real(RKC)               , intent(out)               :: root
-        real(RKC)               , value                     :: lb, ub
-        real(RKC)               , value                     :: lf, uf
-        real(RKC)               , intent(in)                :: abstol
+        real(RKG)               , intent(out)               :: root
+        real(RKG)               , value                     :: lb, ub
+        real(RKG)               , value                     :: lf, uf
+        real(RKG)               , intent(in)                :: abstol
         integer(IK)             , intent(out)               :: neval
     end subroutine
 #endif
@@ -3083,13 +3083,13 @@ module pm_mathRoot
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRootSecantFixed_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        procedure(real(RKC))                                :: getFunc
+        use pm_kind, only: RKG => RK2
+        procedure(real(RKG))                                :: getFunc
         type(secant_type)       , intent(in)                :: method
-        real(RKC)               , intent(out)               :: root
-        real(RKC)               , value                     :: lb, ub
-        real(RKC)               , value                     :: lf, uf
-        real(RKC)               , intent(in)                :: abstol
+        real(RKG)               , intent(out)               :: root
+        real(RKG)               , value                     :: lb, ub
+        real(RKG)               , value                     :: lf, uf
+        real(RKG)               , intent(in)                :: abstol
         integer(IK)             , intent(out)               :: neval
     end subroutine
 #endif
@@ -3099,13 +3099,13 @@ module pm_mathRoot
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRootSecantFixed_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        procedure(real(RKC))                                :: getFunc
+        use pm_kind, only: RKG => RK1
+        procedure(real(RKG))                                :: getFunc
         type(secant_type)       , intent(in)                :: method
-        real(RKC)               , intent(out)               :: root
-        real(RKC)               , value                     :: lb, ub
-        real(RKC)               , value                     :: lf, uf
-        real(RKC)               , intent(in)                :: abstol
+        real(RKG)               , intent(out)               :: root
+        real(RKG)               , value                     :: lb, ub
+        real(RKG)               , value                     :: lf, uf
+        real(RKG)               , intent(in)                :: abstol
         integer(IK)             , intent(out)               :: neval
     end subroutine
 #endif
@@ -3117,13 +3117,13 @@ module pm_mathRoot
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRootSecantNiter_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        procedure(real(RKC))                                :: getFunc
+        use pm_kind, only: RKG => RK5
+        procedure(real(RKG))                                :: getFunc
         type(secant_type)       , intent(in)                :: method
-        real(RKC)               , intent(out)               :: root
-        real(RKC)               , value                     :: lb, ub
-        real(RKC)               , value                     :: lf, uf
-        real(RKC)               , intent(in)                :: abstol
+        real(RKG)               , intent(out)               :: root
+        real(RKG)               , value                     :: lb, ub
+        real(RKG)               , value                     :: lf, uf
+        real(RKG)               , intent(in)                :: abstol
         integer(IK)             , intent(out)               :: neval
         integer(IK)             , intent(in)                :: niter
     end subroutine
@@ -3134,13 +3134,13 @@ module pm_mathRoot
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRootSecantNiter_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        procedure(real(RKC))                                :: getFunc
+        use pm_kind, only: RKG => RK4
+        procedure(real(RKG))                                :: getFunc
         type(secant_type)       , intent(in)                :: method
-        real(RKC)               , intent(out)               :: root
-        real(RKC)               , value                     :: lb, ub
-        real(RKC)               , value                     :: lf, uf
-        real(RKC)               , intent(in)                :: abstol
+        real(RKG)               , intent(out)               :: root
+        real(RKG)               , value                     :: lb, ub
+        real(RKG)               , value                     :: lf, uf
+        real(RKG)               , intent(in)                :: abstol
         integer(IK)             , intent(out)               :: neval
         integer(IK)             , intent(in)                :: niter
     end subroutine
@@ -3151,13 +3151,13 @@ module pm_mathRoot
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRootSecantNiter_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        procedure(real(RKC))                                :: getFunc
+        use pm_kind, only: RKG => RK3
+        procedure(real(RKG))                                :: getFunc
         type(secant_type)       , intent(in)                :: method
-        real(RKC)               , intent(out)               :: root
-        real(RKC)               , value                     :: lb, ub
-        real(RKC)               , value                     :: lf, uf
-        real(RKC)               , intent(in)                :: abstol
+        real(RKG)               , intent(out)               :: root
+        real(RKG)               , value                     :: lb, ub
+        real(RKG)               , value                     :: lf, uf
+        real(RKG)               , intent(in)                :: abstol
         integer(IK)             , intent(out)               :: neval
         integer(IK)             , intent(in)                :: niter
     end subroutine
@@ -3168,13 +3168,13 @@ module pm_mathRoot
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRootSecantNiter_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        procedure(real(RKC))                                :: getFunc
+        use pm_kind, only: RKG => RK2
+        procedure(real(RKG))                                :: getFunc
         type(secant_type)       , intent(in)                :: method
-        real(RKC)               , intent(out)               :: root
-        real(RKC)               , value                     :: lb, ub
-        real(RKC)               , value                     :: lf, uf
-        real(RKC)               , intent(in)                :: abstol
+        real(RKG)               , intent(out)               :: root
+        real(RKG)               , value                     :: lb, ub
+        real(RKG)               , value                     :: lf, uf
+        real(RKG)               , intent(in)                :: abstol
         integer(IK)             , intent(out)               :: neval
         integer(IK)             , intent(in)                :: niter
     end subroutine
@@ -3185,13 +3185,13 @@ module pm_mathRoot
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRootSecantNiter_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        procedure(real(RKC))                                :: getFunc
+        use pm_kind, only: RKG => RK1
+        procedure(real(RKG))                                :: getFunc
         type(secant_type)       , intent(in)                :: method
-        real(RKC)               , intent(out)               :: root
-        real(RKC)               , value                     :: lb, ub
-        real(RKC)               , value                     :: lf, uf
-        real(RKC)               , intent(in)                :: abstol
+        real(RKG)               , intent(out)               :: root
+        real(RKG)               , value                     :: lb, ub
+        real(RKG)               , value                     :: lf, uf
+        real(RKG)               , intent(in)                :: abstol
         integer(IK)             , intent(out)               :: neval
         integer(IK)             , intent(in)                :: niter
     end subroutine
@@ -3212,13 +3212,13 @@ module pm_mathRoot
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRootBrentFixed_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        procedure(real(RKC))                                :: getFunc
+        use pm_kind, only: RKG => RK5
+        procedure(real(RKG))                                :: getFunc
         type(brent_type)        , intent(in)                :: method
-        real(RKC)               , intent(out)               :: root
-        real(RKC)               , value                     :: lb, ub
-        real(RKC)               , value                     :: lf, uf
-        real(RKC)               , intent(in)                :: abstol
+        real(RKG)               , intent(out)               :: root
+        real(RKG)               , value                     :: lb, ub
+        real(RKG)               , value                     :: lf, uf
+        real(RKG)               , intent(in)                :: abstol
         integer(IK)             , intent(out)               :: neval
     end subroutine
 #endif
@@ -3228,13 +3228,13 @@ module pm_mathRoot
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRootBrentFixed_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        procedure(real(RKC))                                :: getFunc
+        use pm_kind, only: RKG => RK4
+        procedure(real(RKG))                                :: getFunc
         type(brent_type)        , intent(in)                :: method
-        real(RKC)               , intent(out)               :: root
-        real(RKC)               , value                     :: lb, ub
-        real(RKC)               , value                     :: lf, uf
-        real(RKC)               , intent(in)                :: abstol
+        real(RKG)               , intent(out)               :: root
+        real(RKG)               , value                     :: lb, ub
+        real(RKG)               , value                     :: lf, uf
+        real(RKG)               , intent(in)                :: abstol
         integer(IK)             , intent(out)               :: neval
     end subroutine
 #endif
@@ -3244,13 +3244,13 @@ module pm_mathRoot
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRootBrentFixed_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        procedure(real(RKC))                                :: getFunc
+        use pm_kind, only: RKG => RK3
+        procedure(real(RKG))                                :: getFunc
         type(brent_type)        , intent(in)                :: method
-        real(RKC)               , intent(out)               :: root
-        real(RKC)               , value                     :: lb, ub
-        real(RKC)               , value                     :: lf, uf
-        real(RKC)               , intent(in)                :: abstol
+        real(RKG)               , intent(out)               :: root
+        real(RKG)               , value                     :: lb, ub
+        real(RKG)               , value                     :: lf, uf
+        real(RKG)               , intent(in)                :: abstol
         integer(IK)             , intent(out)               :: neval
     end subroutine
 #endif
@@ -3260,13 +3260,13 @@ module pm_mathRoot
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRootBrentFixed_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        procedure(real(RKC))                                :: getFunc
+        use pm_kind, only: RKG => RK2
+        procedure(real(RKG))                                :: getFunc
         type(brent_type)        , intent(in)                :: method
-        real(RKC)               , intent(out)               :: root
-        real(RKC)               , value                     :: lb, ub
-        real(RKC)               , value                     :: lf, uf
-        real(RKC)               , intent(in)                :: abstol
+        real(RKG)               , intent(out)               :: root
+        real(RKG)               , value                     :: lb, ub
+        real(RKG)               , value                     :: lf, uf
+        real(RKG)               , intent(in)                :: abstol
         integer(IK)             , intent(out)               :: neval
     end subroutine
 #endif
@@ -3276,13 +3276,13 @@ module pm_mathRoot
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRootBrentFixed_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        procedure(real(RKC))                                :: getFunc
+        use pm_kind, only: RKG => RK1
+        procedure(real(RKG))                                :: getFunc
         type(brent_type)        , intent(in)                :: method
-        real(RKC)               , intent(out)               :: root
-        real(RKC)               , value                     :: lb, ub
-        real(RKC)               , value                     :: lf, uf
-        real(RKC)               , intent(in)                :: abstol
+        real(RKG)               , intent(out)               :: root
+        real(RKG)               , value                     :: lb, ub
+        real(RKG)               , value                     :: lf, uf
+        real(RKG)               , intent(in)                :: abstol
         integer(IK)             , intent(out)               :: neval
     end subroutine
 #endif
@@ -3294,13 +3294,13 @@ module pm_mathRoot
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRootBrentNiter_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        procedure(real(RKC))                                :: getFunc
+        use pm_kind, only: RKG => RK5
+        procedure(real(RKG))                                :: getFunc
         type(brent_type)        , intent(in)                :: method
-        real(RKC)               , intent(out)               :: root
-        real(RKC)               , value                     :: lb, ub
-        real(RKC)               , value                     :: lf, uf
-        real(RKC)               , intent(in)                :: abstol
+        real(RKG)               , intent(out)               :: root
+        real(RKG)               , value                     :: lb, ub
+        real(RKG)               , value                     :: lf, uf
+        real(RKG)               , intent(in)                :: abstol
         integer(IK)             , intent(out)               :: neval
         integer(IK)             , intent(in)                :: niter
     end subroutine
@@ -3311,13 +3311,13 @@ module pm_mathRoot
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRootBrentNiter_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        procedure(real(RKC))                                :: getFunc
+        use pm_kind, only: RKG => RK4
+        procedure(real(RKG))                                :: getFunc
         type(brent_type)        , intent(in)                :: method
-        real(RKC)               , intent(out)               :: root
-        real(RKC)               , value                     :: lb, ub
-        real(RKC)               , value                     :: lf, uf
-        real(RKC)               , intent(in)                :: abstol
+        real(RKG)               , intent(out)               :: root
+        real(RKG)               , value                     :: lb, ub
+        real(RKG)               , value                     :: lf, uf
+        real(RKG)               , intent(in)                :: abstol
         integer(IK)             , intent(out)               :: neval
         integer(IK)             , intent(in)                :: niter
     end subroutine
@@ -3328,13 +3328,13 @@ module pm_mathRoot
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRootBrentNiter_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        procedure(real(RKC))                                :: getFunc
+        use pm_kind, only: RKG => RK3
+        procedure(real(RKG))                                :: getFunc
         type(brent_type)        , intent(in)                :: method
-        real(RKC)               , intent(out)               :: root
-        real(RKC)               , value                     :: lb, ub
-        real(RKC)               , value                     :: lf, uf
-        real(RKC)               , intent(in)                :: abstol
+        real(RKG)               , intent(out)               :: root
+        real(RKG)               , value                     :: lb, ub
+        real(RKG)               , value                     :: lf, uf
+        real(RKG)               , intent(in)                :: abstol
         integer(IK)             , intent(out)               :: neval
         integer(IK)             , intent(in)                :: niter
     end subroutine
@@ -3345,13 +3345,13 @@ module pm_mathRoot
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRootBrentNiter_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        procedure(real(RKC))                                :: getFunc
+        use pm_kind, only: RKG => RK2
+        procedure(real(RKG))                                :: getFunc
         type(brent_type)        , intent(in)                :: method
-        real(RKC)               , intent(out)               :: root
-        real(RKC)               , value                     :: lb, ub
-        real(RKC)               , value                     :: lf, uf
-        real(RKC)               , intent(in)                :: abstol
+        real(RKG)               , intent(out)               :: root
+        real(RKG)               , value                     :: lb, ub
+        real(RKG)               , value                     :: lf, uf
+        real(RKG)               , intent(in)                :: abstol
         integer(IK)             , intent(out)               :: neval
         integer(IK)             , intent(in)                :: niter
     end subroutine
@@ -3362,13 +3362,13 @@ module pm_mathRoot
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRootBrentNiter_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        procedure(real(RKC))                                :: getFunc
+        use pm_kind, only: RKG => RK1
+        procedure(real(RKG))                                :: getFunc
         type(brent_type)        , intent(in)                :: method
-        real(RKC)               , intent(out)               :: root
-        real(RKC)               , value                     :: lb, ub
-        real(RKC)               , value                     :: lf, uf
-        real(RKC)               , intent(in)                :: abstol
+        real(RKG)               , intent(out)               :: root
+        real(RKG)               , value                     :: lb, ub
+        real(RKG)               , value                     :: lf, uf
+        real(RKG)               , intent(in)                :: abstol
         integer(IK)             , intent(out)               :: neval
         integer(IK)             , intent(in)                :: niter
     end subroutine
@@ -3389,13 +3389,13 @@ module pm_mathRoot
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRootRiddersFixed_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        procedure(real(RKC))                                :: getFunc
+        use pm_kind, only: RKG => RK5
+        procedure(real(RKG))                                :: getFunc
         type(ridders_type)      , intent(in)                :: method
-        real(RKC)               , intent(out)               :: root
-        real(RKC)               , value                     :: lb, ub
-        real(RKC)               , value                     :: lf, uf
-        real(RKC)               , intent(in)                :: abstol
+        real(RKG)               , intent(out)               :: root
+        real(RKG)               , value                     :: lb, ub
+        real(RKG)               , value                     :: lf, uf
+        real(RKG)               , intent(in)                :: abstol
         integer(IK)             , intent(out)               :: neval
     end subroutine
 #endif
@@ -3405,13 +3405,13 @@ module pm_mathRoot
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRootRiddersFixed_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        procedure(real(RKC))                                :: getFunc
+        use pm_kind, only: RKG => RK4
+        procedure(real(RKG))                                :: getFunc
         type(ridders_type)      , intent(in)                :: method
-        real(RKC)               , intent(out)               :: root
-        real(RKC)               , value                     :: lb, ub
-        real(RKC)               , value                     :: lf, uf
-        real(RKC)               , intent(in)                :: abstol
+        real(RKG)               , intent(out)               :: root
+        real(RKG)               , value                     :: lb, ub
+        real(RKG)               , value                     :: lf, uf
+        real(RKG)               , intent(in)                :: abstol
         integer(IK)             , intent(out)               :: neval
     end subroutine
 #endif
@@ -3421,13 +3421,13 @@ module pm_mathRoot
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRootRiddersFixed_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        procedure(real(RKC))                                :: getFunc
+        use pm_kind, only: RKG => RK3
+        procedure(real(RKG))                                :: getFunc
         type(ridders_type)      , intent(in)                :: method
-        real(RKC)               , intent(out)               :: root
-        real(RKC)               , value                     :: lb, ub
-        real(RKC)               , value                     :: lf, uf
-        real(RKC)               , intent(in)                :: abstol
+        real(RKG)               , intent(out)               :: root
+        real(RKG)               , value                     :: lb, ub
+        real(RKG)               , value                     :: lf, uf
+        real(RKG)               , intent(in)                :: abstol
         integer(IK)             , intent(out)               :: neval
     end subroutine
 #endif
@@ -3437,13 +3437,13 @@ module pm_mathRoot
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRootRiddersFixed_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        procedure(real(RKC))                                :: getFunc
+        use pm_kind, only: RKG => RK2
+        procedure(real(RKG))                                :: getFunc
         type(ridders_type)      , intent(in)                :: method
-        real(RKC)               , intent(out)               :: root
-        real(RKC)               , value                     :: lb, ub
-        real(RKC)               , value                     :: lf, uf
-        real(RKC)               , intent(in)                :: abstol
+        real(RKG)               , intent(out)               :: root
+        real(RKG)               , value                     :: lb, ub
+        real(RKG)               , value                     :: lf, uf
+        real(RKG)               , intent(in)                :: abstol
         integer(IK)             , intent(out)               :: neval
     end subroutine
 #endif
@@ -3453,13 +3453,13 @@ module pm_mathRoot
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRootRiddersFixed_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        procedure(real(RKC))                                :: getFunc
+        use pm_kind, only: RKG => RK1
+        procedure(real(RKG))                                :: getFunc
         type(ridders_type)      , intent(in)                :: method
-        real(RKC)               , intent(out)               :: root
-        real(RKC)               , value                     :: lb, ub
-        real(RKC)               , value                     :: lf, uf
-        real(RKC)               , intent(in)                :: abstol
+        real(RKG)               , intent(out)               :: root
+        real(RKG)               , value                     :: lb, ub
+        real(RKG)               , value                     :: lf, uf
+        real(RKG)               , intent(in)                :: abstol
         integer(IK)             , intent(out)               :: neval
     end subroutine
 #endif
@@ -3471,13 +3471,13 @@ module pm_mathRoot
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRootRiddersNiter_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        procedure(real(RKC))                                :: getFunc
+        use pm_kind, only: RKG => RK5
+        procedure(real(RKG))                                :: getFunc
         type(ridders_type)      , intent(in)                :: method
-        real(RKC)               , intent(out)               :: root
-        real(RKC)               , value                     :: lb, ub
-        real(RKC)               , value                     :: lf, uf
-        real(RKC)               , intent(in)                :: abstol
+        real(RKG)               , intent(out)               :: root
+        real(RKG)               , value                     :: lb, ub
+        real(RKG)               , value                     :: lf, uf
+        real(RKG)               , intent(in)                :: abstol
         integer(IK)             , intent(out)               :: neval
         integer(IK)             , intent(in)                :: niter
     end subroutine
@@ -3488,13 +3488,13 @@ module pm_mathRoot
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRootRiddersNiter_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        procedure(real(RKC))                                :: getFunc
+        use pm_kind, only: RKG => RK4
+        procedure(real(RKG))                                :: getFunc
         type(ridders_type)      , intent(in)                :: method
-        real(RKC)               , intent(out)               :: root
-        real(RKC)               , value                     :: lb, ub
-        real(RKC)               , value                     :: lf, uf
-        real(RKC)               , intent(in)                :: abstol
+        real(RKG)               , intent(out)               :: root
+        real(RKG)               , value                     :: lb, ub
+        real(RKG)               , value                     :: lf, uf
+        real(RKG)               , intent(in)                :: abstol
         integer(IK)             , intent(out)               :: neval
         integer(IK)             , intent(in)                :: niter
     end subroutine
@@ -3505,13 +3505,13 @@ module pm_mathRoot
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRootRiddersNiter_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        procedure(real(RKC))                                :: getFunc
+        use pm_kind, only: RKG => RK3
+        procedure(real(RKG))                                :: getFunc
         type(ridders_type)      , intent(in)                :: method
-        real(RKC)               , intent(out)               :: root
-        real(RKC)               , value                     :: lb, ub
-        real(RKC)               , value                     :: lf, uf
-        real(RKC)               , intent(in)                :: abstol
+        real(RKG)               , intent(out)               :: root
+        real(RKG)               , value                     :: lb, ub
+        real(RKG)               , value                     :: lf, uf
+        real(RKG)               , intent(in)                :: abstol
         integer(IK)             , intent(out)               :: neval
         integer(IK)             , intent(in)                :: niter
     end subroutine
@@ -3522,13 +3522,13 @@ module pm_mathRoot
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRootRiddersNiter_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        procedure(real(RKC))                                :: getFunc
+        use pm_kind, only: RKG => RK2
+        procedure(real(RKG))                                :: getFunc
         type(ridders_type)      , intent(in)                :: method
-        real(RKC)               , intent(out)               :: root
-        real(RKC)               , value                     :: lb, ub
-        real(RKC)               , value                     :: lf, uf
-        real(RKC)               , intent(in)                :: abstol
+        real(RKG)               , intent(out)               :: root
+        real(RKG)               , value                     :: lb, ub
+        real(RKG)               , value                     :: lf, uf
+        real(RKG)               , intent(in)                :: abstol
         integer(IK)             , intent(out)               :: neval
         integer(IK)             , intent(in)                :: niter
     end subroutine
@@ -3539,13 +3539,13 @@ module pm_mathRoot
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRootRiddersNiter_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        procedure(real(RKC))                                :: getFunc
+        use pm_kind, only: RKG => RK1
+        procedure(real(RKG))                                :: getFunc
         type(ridders_type)      , intent(in)                :: method
-        real(RKC)               , intent(out)               :: root
-        real(RKC)               , value                     :: lb, ub
-        real(RKC)               , value                     :: lf, uf
-        real(RKC)               , intent(in)                :: abstol
+        real(RKG)               , intent(out)               :: root
+        real(RKG)               , value                     :: lb, ub
+        real(RKG)               , value                     :: lf, uf
+        real(RKG)               , intent(in)                :: abstol
         integer(IK)             , intent(out)               :: neval
         integer(IK)             , intent(in)                :: niter
     end subroutine
@@ -3566,13 +3566,13 @@ module pm_mathRoot
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRootTOMS748Fixed_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        procedure(real(RKC))                                :: getFunc
+        use pm_kind, only: RKG => RK5
+        procedure(real(RKG))                                :: getFunc
         type(toms748_type)      , intent(in)                :: method
-        real(RKC)               , intent(out)               :: root
-        real(RKC)               , value                     :: lb, ub
-        real(RKC)               , value                     :: lf, uf
-        real(RKC)               , intent(in)                :: abstol
+        real(RKG)               , intent(out)               :: root
+        real(RKG)               , value                     :: lb, ub
+        real(RKG)               , value                     :: lf, uf
+        real(RKG)               , intent(in)                :: abstol
         integer(IK)             , intent(out)               :: neval
     end subroutine
 #endif
@@ -3582,13 +3582,13 @@ module pm_mathRoot
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRootTOMS748Fixed_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        procedure(real(RKC))                                :: getFunc
+        use pm_kind, only: RKG => RK4
+        procedure(real(RKG))                                :: getFunc
         type(toms748_type)      , intent(in)                :: method
-        real(RKC)               , intent(out)               :: root
-        real(RKC)               , value                     :: lb, ub
-        real(RKC)               , value                     :: lf, uf
-        real(RKC)               , intent(in)                :: abstol
+        real(RKG)               , intent(out)               :: root
+        real(RKG)               , value                     :: lb, ub
+        real(RKG)               , value                     :: lf, uf
+        real(RKG)               , intent(in)                :: abstol
         integer(IK)             , intent(out)               :: neval
     end subroutine
 #endif
@@ -3598,13 +3598,13 @@ module pm_mathRoot
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRootTOMS748Fixed_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        procedure(real(RKC))                                :: getFunc
+        use pm_kind, only: RKG => RK3
+        procedure(real(RKG))                                :: getFunc
         type(toms748_type)      , intent(in)                :: method
-        real(RKC)               , intent(out)               :: root
-        real(RKC)               , value                     :: lb, ub
-        real(RKC)               , value                     :: lf, uf
-        real(RKC)               , intent(in)                :: abstol
+        real(RKG)               , intent(out)               :: root
+        real(RKG)               , value                     :: lb, ub
+        real(RKG)               , value                     :: lf, uf
+        real(RKG)               , intent(in)                :: abstol
         integer(IK)             , intent(out)               :: neval
     end subroutine
 #endif
@@ -3614,13 +3614,13 @@ module pm_mathRoot
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRootTOMS748Fixed_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        procedure(real(RKC))                                :: getFunc
+        use pm_kind, only: RKG => RK2
+        procedure(real(RKG))                                :: getFunc
         type(toms748_type)      , intent(in)                :: method
-        real(RKC)               , intent(out)               :: root
-        real(RKC)               , value                     :: lb, ub
-        real(RKC)               , value                     :: lf, uf
-        real(RKC)               , intent(in)                :: abstol
+        real(RKG)               , intent(out)               :: root
+        real(RKG)               , value                     :: lb, ub
+        real(RKG)               , value                     :: lf, uf
+        real(RKG)               , intent(in)                :: abstol
         integer(IK)             , intent(out)               :: neval
     end subroutine
 #endif
@@ -3630,13 +3630,13 @@ module pm_mathRoot
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRootTOMS748Fixed_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        procedure(real(RKC))                                :: getFunc
+        use pm_kind, only: RKG => RK1
+        procedure(real(RKG))                                :: getFunc
         type(toms748_type)      , intent(in)                :: method
-        real(RKC)               , intent(out)               :: root
-        real(RKC)               , value                     :: lb, ub
-        real(RKC)               , value                     :: lf, uf
-        real(RKC)               , intent(in)                :: abstol
+        real(RKG)               , intent(out)               :: root
+        real(RKG)               , value                     :: lb, ub
+        real(RKG)               , value                     :: lf, uf
+        real(RKG)               , intent(in)                :: abstol
         integer(IK)             , intent(out)               :: neval
     end subroutine
 #endif
@@ -3648,13 +3648,13 @@ module pm_mathRoot
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRootTOMS748Niter_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        procedure(real(RKC))                                :: getFunc
+        use pm_kind, only: RKG => RK5
+        procedure(real(RKG))                                :: getFunc
         type(toms748_type)      , intent(in)                :: method
-        real(RKC)               , intent(out)               :: root
-        real(RKC)               , value                     :: lb, ub
-        real(RKC)               , value                     :: lf, uf
-        real(RKC)               , intent(in)                :: abstol
+        real(RKG)               , intent(out)               :: root
+        real(RKG)               , value                     :: lb, ub
+        real(RKG)               , value                     :: lf, uf
+        real(RKG)               , intent(in)                :: abstol
         integer(IK)             , intent(out)               :: neval
         integer(IK)             , intent(in)                :: niter
     end subroutine
@@ -3665,13 +3665,13 @@ module pm_mathRoot
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRootTOMS748Niter_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        procedure(real(RKC))                                :: getFunc
+        use pm_kind, only: RKG => RK4
+        procedure(real(RKG))                                :: getFunc
         type(toms748_type)      , intent(in)                :: method
-        real(RKC)               , intent(out)               :: root
-        real(RKC)               , value                     :: lb, ub
-        real(RKC)               , value                     :: lf, uf
-        real(RKC)               , intent(in)                :: abstol
+        real(RKG)               , intent(out)               :: root
+        real(RKG)               , value                     :: lb, ub
+        real(RKG)               , value                     :: lf, uf
+        real(RKG)               , intent(in)                :: abstol
         integer(IK)             , intent(out)               :: neval
         integer(IK)             , intent(in)                :: niter
     end subroutine
@@ -3682,13 +3682,13 @@ module pm_mathRoot
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRootTOMS748Niter_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        procedure(real(RKC))                                :: getFunc
+        use pm_kind, only: RKG => RK3
+        procedure(real(RKG))                                :: getFunc
         type(toms748_type)      , intent(in)                :: method
-        real(RKC)               , intent(out)               :: root
-        real(RKC)               , value                     :: lb, ub
-        real(RKC)               , value                     :: lf, uf
-        real(RKC)               , intent(in)                :: abstol
+        real(RKG)               , intent(out)               :: root
+        real(RKG)               , value                     :: lb, ub
+        real(RKG)               , value                     :: lf, uf
+        real(RKG)               , intent(in)                :: abstol
         integer(IK)             , intent(out)               :: neval
         integer(IK)             , intent(in)                :: niter
     end subroutine
@@ -3699,13 +3699,13 @@ module pm_mathRoot
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRootTOMS748Niter_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        procedure(real(RKC))                                :: getFunc
+        use pm_kind, only: RKG => RK2
+        procedure(real(RKG))                                :: getFunc
         type(toms748_type)      , intent(in)                :: method
-        real(RKC)               , intent(out)               :: root
-        real(RKC)               , value                     :: lb, ub
-        real(RKC)               , value                     :: lf, uf
-        real(RKC)               , intent(in)                :: abstol
+        real(RKG)               , intent(out)               :: root
+        real(RKG)               , value                     :: lb, ub
+        real(RKG)               , value                     :: lf, uf
+        real(RKG)               , intent(in)                :: abstol
         integer(IK)             , intent(out)               :: neval
         integer(IK)             , intent(in)                :: niter
     end subroutine
@@ -3716,13 +3716,13 @@ module pm_mathRoot
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRootTOMS748Niter_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        procedure(real(RKC))                                :: getFunc
+        use pm_kind, only: RKG => RK1
+        procedure(real(RKG))                                :: getFunc
         type(toms748_type)      , intent(in)                :: method
-        real(RKC)               , intent(out)               :: root
-        real(RKC)               , value                     :: lb, ub
-        real(RKC)               , value                     :: lf, uf
-        real(RKC)               , intent(in)                :: abstol
+        real(RKG)               , intent(out)               :: root
+        real(RKG)               , value                     :: lb, ub
+        real(RKG)               , value                     :: lf, uf
+        real(RKG)               , intent(in)                :: abstol
         integer(IK)             , intent(out)               :: neval
         integer(IK)             , intent(in)                :: niter
     end subroutine
@@ -3743,13 +3743,13 @@ module pm_mathRoot
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRootNewtonFixed_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        procedure(real(RKC))                                :: getFunc
+        use pm_kind, only: RKG => RK5
+        procedure(real(RKG))                                :: getFunc
         type(newton_type)       , intent(in)                :: method
-        real(RKC)               , intent(inout)             :: root
-        real(RKC)               , value                     :: lb, ub
-        real(RKC)               , value                     :: lf, uf
-        real(RKC)               , intent(in)                :: abstol
+        real(RKG)               , intent(inout)             :: root
+        real(RKG)               , value                     :: lb, ub
+        real(RKG)               , value                     :: lf, uf
+        real(RKG)               , intent(in)                :: abstol
         integer(IK)             , intent(out)               :: neval
     end subroutine
 #endif
@@ -3759,13 +3759,13 @@ module pm_mathRoot
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRootNewtonFixed_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        procedure(real(RKC))                                :: getFunc
+        use pm_kind, only: RKG => RK4
+        procedure(real(RKG))                                :: getFunc
         type(newton_type)       , intent(in)                :: method
-        real(RKC)               , intent(inout)             :: root
-        real(RKC)               , value                     :: lb, ub
-        real(RKC)               , value                     :: lf, uf
-        real(RKC)               , intent(in)                :: abstol
+        real(RKG)               , intent(inout)             :: root
+        real(RKG)               , value                     :: lb, ub
+        real(RKG)               , value                     :: lf, uf
+        real(RKG)               , intent(in)                :: abstol
         integer(IK)             , intent(out)               :: neval
     end subroutine
 #endif
@@ -3775,13 +3775,13 @@ module pm_mathRoot
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRootNewtonFixed_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        procedure(real(RKC))                                :: getFunc
+        use pm_kind, only: RKG => RK3
+        procedure(real(RKG))                                :: getFunc
         type(newton_type)       , intent(in)                :: method
-        real(RKC)               , intent(inout)             :: root
-        real(RKC)               , value                     :: lb, ub
-        real(RKC)               , value                     :: lf, uf
-        real(RKC)               , intent(in)                :: abstol
+        real(RKG)               , intent(inout)             :: root
+        real(RKG)               , value                     :: lb, ub
+        real(RKG)               , value                     :: lf, uf
+        real(RKG)               , intent(in)                :: abstol
         integer(IK)             , intent(out)               :: neval
     end subroutine
 #endif
@@ -3791,13 +3791,13 @@ module pm_mathRoot
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRootNewtonFixed_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        procedure(real(RKC))                                :: getFunc
+        use pm_kind, only: RKG => RK2
+        procedure(real(RKG))                                :: getFunc
         type(newton_type)       , intent(in)                :: method
-        real(RKC)               , intent(inout)             :: root
-        real(RKC)               , value                     :: lb, ub
-        real(RKC)               , value                     :: lf, uf
-        real(RKC)               , intent(in)                :: abstol
+        real(RKG)               , intent(inout)             :: root
+        real(RKG)               , value                     :: lb, ub
+        real(RKG)               , value                     :: lf, uf
+        real(RKG)               , intent(in)                :: abstol
         integer(IK)             , intent(out)               :: neval
     end subroutine
 #endif
@@ -3807,13 +3807,13 @@ module pm_mathRoot
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRootNewtonFixed_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        procedure(real(RKC))                                :: getFunc
+        use pm_kind, only: RKG => RK1
+        procedure(real(RKG))                                :: getFunc
         type(newton_type)       , intent(in)                :: method
-        real(RKC)               , intent(inout)             :: root
-        real(RKC)               , value                     :: lb, ub
-        real(RKC)               , value                     :: lf, uf
-        real(RKC)               , intent(in)                :: abstol
+        real(RKG)               , intent(inout)             :: root
+        real(RKG)               , value                     :: lb, ub
+        real(RKG)               , value                     :: lf, uf
+        real(RKG)               , intent(in)                :: abstol
         integer(IK)             , intent(out)               :: neval
     end subroutine
 #endif
@@ -3825,13 +3825,13 @@ module pm_mathRoot
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRootNewtonNiter_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        procedure(real(RKC))                                :: getFunc
+        use pm_kind, only: RKG => RK5
+        procedure(real(RKG))                                :: getFunc
         type(newton_type)       , intent(in)                :: method
-        real(RKC)               , intent(inout)             :: root
-        real(RKC)               , value                     :: lb, ub
-        real(RKC)               , value                     :: lf, uf
-        real(RKC)               , intent(in)                :: abstol
+        real(RKG)               , intent(inout)             :: root
+        real(RKG)               , value                     :: lb, ub
+        real(RKG)               , value                     :: lf, uf
+        real(RKG)               , intent(in)                :: abstol
         integer(IK)             , intent(out)               :: neval
         integer(IK)             , intent(in)                :: niter
     end subroutine
@@ -3842,13 +3842,13 @@ module pm_mathRoot
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRootNewtonNiter_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        procedure(real(RKC))                                :: getFunc
+        use pm_kind, only: RKG => RK4
+        procedure(real(RKG))                                :: getFunc
         type(newton_type)       , intent(in)                :: method
-        real(RKC)               , intent(inout)             :: root
-        real(RKC)               , value                     :: lb, ub
-        real(RKC)               , value                     :: lf, uf
-        real(RKC)               , intent(in)                :: abstol
+        real(RKG)               , intent(inout)             :: root
+        real(RKG)               , value                     :: lb, ub
+        real(RKG)               , value                     :: lf, uf
+        real(RKG)               , intent(in)                :: abstol
         integer(IK)             , intent(out)               :: neval
         integer(IK)             , intent(in)                :: niter
     end subroutine
@@ -3859,13 +3859,13 @@ module pm_mathRoot
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRootNewtonNiter_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        procedure(real(RKC))                                :: getFunc
+        use pm_kind, only: RKG => RK3
+        procedure(real(RKG))                                :: getFunc
         type(newton_type)       , intent(in)                :: method
-        real(RKC)               , intent(inout)             :: root
-        real(RKC)               , value                     :: lb, ub
-        real(RKC)               , value                     :: lf, uf
-        real(RKC)               , intent(in)                :: abstol
+        real(RKG)               , intent(inout)             :: root
+        real(RKG)               , value                     :: lb, ub
+        real(RKG)               , value                     :: lf, uf
+        real(RKG)               , intent(in)                :: abstol
         integer(IK)             , intent(out)               :: neval
         integer(IK)             , intent(in)                :: niter
     end subroutine
@@ -3876,13 +3876,13 @@ module pm_mathRoot
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRootNewtonNiter_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        procedure(real(RKC))                                :: getFunc
+        use pm_kind, only: RKG => RK2
+        procedure(real(RKG))                                :: getFunc
         type(newton_type)       , intent(in)                :: method
-        real(RKC)               , intent(inout)             :: root
-        real(RKC)               , value                     :: lb, ub
-        real(RKC)               , value                     :: lf, uf
-        real(RKC)               , intent(in)                :: abstol
+        real(RKG)               , intent(inout)             :: root
+        real(RKG)               , value                     :: lb, ub
+        real(RKG)               , value                     :: lf, uf
+        real(RKG)               , intent(in)                :: abstol
         integer(IK)             , intent(out)               :: neval
         integer(IK)             , intent(in)                :: niter
     end subroutine
@@ -3893,13 +3893,13 @@ module pm_mathRoot
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRootNewtonNiter_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        procedure(real(RKC))                                :: getFunc
+        use pm_kind, only: RKG => RK1
+        procedure(real(RKG))                                :: getFunc
         type(newton_type)       , intent(in)                :: method
-        real(RKC)               , intent(inout)             :: root
-        real(RKC)               , value                     :: lb, ub
-        real(RKC)               , value                     :: lf, uf
-        real(RKC)               , intent(in)                :: abstol
+        real(RKG)               , intent(inout)             :: root
+        real(RKG)               , value                     :: lb, ub
+        real(RKG)               , value                     :: lf, uf
+        real(RKG)               , intent(in)                :: abstol
         integer(IK)             , intent(out)               :: neval
         integer(IK)             , intent(in)                :: niter
     end subroutine
@@ -3920,13 +3920,13 @@ module pm_mathRoot
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRootHalleyFixed_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        procedure(real(RKC))                                :: getFunc
+        use pm_kind, only: RKG => RK5
+        procedure(real(RKG))                                :: getFunc
         type(halley_type)       , intent(in)                :: method
-        real(RKC)               , intent(inout)             :: root
-        real(RKC)               , value                     :: lb, ub
-        real(RKC)               , value                     :: lf, uf
-        real(RKC)               , intent(in)                :: abstol
+        real(RKG)               , intent(inout)             :: root
+        real(RKG)               , value                     :: lb, ub
+        real(RKG)               , value                     :: lf, uf
+        real(RKG)               , intent(in)                :: abstol
         integer(IK)             , intent(out)               :: neval
     end subroutine
 #endif
@@ -3936,13 +3936,13 @@ module pm_mathRoot
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRootHalleyFixed_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        procedure(real(RKC))                                :: getFunc
+        use pm_kind, only: RKG => RK4
+        procedure(real(RKG))                                :: getFunc
         type(halley_type)       , intent(in)                :: method
-        real(RKC)               , intent(inout)             :: root
-        real(RKC)               , value                     :: lb, ub
-        real(RKC)               , value                     :: lf, uf
-        real(RKC)               , intent(in)                :: abstol
+        real(RKG)               , intent(inout)             :: root
+        real(RKG)               , value                     :: lb, ub
+        real(RKG)               , value                     :: lf, uf
+        real(RKG)               , intent(in)                :: abstol
         integer(IK)             , intent(out)               :: neval
     end subroutine
 #endif
@@ -3952,13 +3952,13 @@ module pm_mathRoot
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRootHalleyFixed_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        procedure(real(RKC))                                :: getFunc
+        use pm_kind, only: RKG => RK3
+        procedure(real(RKG))                                :: getFunc
         type(halley_type)       , intent(in)                :: method
-        real(RKC)               , intent(inout)             :: root
-        real(RKC)               , value                     :: lb, ub
-        real(RKC)               , value                     :: lf, uf
-        real(RKC)               , intent(in)                :: abstol
+        real(RKG)               , intent(inout)             :: root
+        real(RKG)               , value                     :: lb, ub
+        real(RKG)               , value                     :: lf, uf
+        real(RKG)               , intent(in)                :: abstol
         integer(IK)             , intent(out)               :: neval
     end subroutine
 #endif
@@ -3968,13 +3968,13 @@ module pm_mathRoot
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRootHalleyFixed_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        procedure(real(RKC))                                :: getFunc
+        use pm_kind, only: RKG => RK2
+        procedure(real(RKG))                                :: getFunc
         type(halley_type)       , intent(in)                :: method
-        real(RKC)               , intent(inout)             :: root
-        real(RKC)               , value                     :: lb, ub
-        real(RKC)               , value                     :: lf, uf
-        real(RKC)               , intent(in)                :: abstol
+        real(RKG)               , intent(inout)             :: root
+        real(RKG)               , value                     :: lb, ub
+        real(RKG)               , value                     :: lf, uf
+        real(RKG)               , intent(in)                :: abstol
         integer(IK)             , intent(out)               :: neval
     end subroutine
 #endif
@@ -3984,13 +3984,13 @@ module pm_mathRoot
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRootHalleyFixed_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        procedure(real(RKC))                                :: getFunc
+        use pm_kind, only: RKG => RK1
+        procedure(real(RKG))                                :: getFunc
         type(halley_type)       , intent(in)                :: method
-        real(RKC)               , intent(inout)             :: root
-        real(RKC)               , value                     :: lb, ub
-        real(RKC)               , value                     :: lf, uf
-        real(RKC)               , intent(in)                :: abstol
+        real(RKG)               , intent(inout)             :: root
+        real(RKG)               , value                     :: lb, ub
+        real(RKG)               , value                     :: lf, uf
+        real(RKG)               , intent(in)                :: abstol
         integer(IK)             , intent(out)               :: neval
     end subroutine
 #endif
@@ -4002,13 +4002,13 @@ module pm_mathRoot
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRootHalleyNiter_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        procedure(real(RKC))                                :: getFunc
+        use pm_kind, only: RKG => RK5
+        procedure(real(RKG))                                :: getFunc
         type(halley_type)       , intent(in)                :: method
-        real(RKC)               , intent(inout)             :: root
-        real(RKC)               , value                     :: lb, ub
-        real(RKC)               , value                     :: lf, uf
-        real(RKC)               , intent(in)                :: abstol
+        real(RKG)               , intent(inout)             :: root
+        real(RKG)               , value                     :: lb, ub
+        real(RKG)               , value                     :: lf, uf
+        real(RKG)               , intent(in)                :: abstol
         integer(IK)             , intent(out)               :: neval
         integer(IK)             , intent(in)                :: niter
     end subroutine
@@ -4019,13 +4019,13 @@ module pm_mathRoot
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRootHalleyNiter_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        procedure(real(RKC))                                :: getFunc
+        use pm_kind, only: RKG => RK4
+        procedure(real(RKG))                                :: getFunc
         type(halley_type)       , intent(in)                :: method
-        real(RKC)               , intent(inout)             :: root
-        real(RKC)               , value                     :: lb, ub
-        real(RKC)               , value                     :: lf, uf
-        real(RKC)               , intent(in)                :: abstol
+        real(RKG)               , intent(inout)             :: root
+        real(RKG)               , value                     :: lb, ub
+        real(RKG)               , value                     :: lf, uf
+        real(RKG)               , intent(in)                :: abstol
         integer(IK)             , intent(out)               :: neval
         integer(IK)             , intent(in)                :: niter
     end subroutine
@@ -4036,13 +4036,13 @@ module pm_mathRoot
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRootHalleyNiter_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        procedure(real(RKC))                                :: getFunc
+        use pm_kind, only: RKG => RK3
+        procedure(real(RKG))                                :: getFunc
         type(halley_type)       , intent(in)                :: method
-        real(RKC)               , intent(inout)             :: root
-        real(RKC)               , value                     :: lb, ub
-        real(RKC)               , value                     :: lf, uf
-        real(RKC)               , intent(in)                :: abstol
+        real(RKG)               , intent(inout)             :: root
+        real(RKG)               , value                     :: lb, ub
+        real(RKG)               , value                     :: lf, uf
+        real(RKG)               , intent(in)                :: abstol
         integer(IK)             , intent(out)               :: neval
         integer(IK)             , intent(in)                :: niter
     end subroutine
@@ -4053,13 +4053,13 @@ module pm_mathRoot
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRootHalleyNiter_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        procedure(real(RKC))                                :: getFunc
+        use pm_kind, only: RKG => RK2
+        procedure(real(RKG))                                :: getFunc
         type(halley_type)       , intent(in)                :: method
-        real(RKC)               , intent(inout)             :: root
-        real(RKC)               , value                     :: lb, ub
-        real(RKC)               , value                     :: lf, uf
-        real(RKC)               , intent(in)                :: abstol
+        real(RKG)               , intent(inout)             :: root
+        real(RKG)               , value                     :: lb, ub
+        real(RKG)               , value                     :: lf, uf
+        real(RKG)               , intent(in)                :: abstol
         integer(IK)             , intent(out)               :: neval
         integer(IK)             , intent(in)                :: niter
     end subroutine
@@ -4070,13 +4070,13 @@ module pm_mathRoot
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRootHalleyNiter_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        procedure(real(RKC))                                :: getFunc
+        use pm_kind, only: RKG => RK1
+        procedure(real(RKG))                                :: getFunc
         type(halley_type)       , intent(in)                :: method
-        real(RKC)               , intent(inout)             :: root
-        real(RKC)               , value                     :: lb, ub
-        real(RKC)               , value                     :: lf, uf
-        real(RKC)               , intent(in)                :: abstol
+        real(RKG)               , intent(inout)             :: root
+        real(RKG)               , value                     :: lb, ub
+        real(RKG)               , value                     :: lf, uf
+        real(RKG)               , intent(in)                :: abstol
         integer(IK)             , intent(out)               :: neval
         integer(IK)             , intent(in)                :: niter
     end subroutine
@@ -4097,13 +4097,13 @@ module pm_mathRoot
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRootSchroderFixed_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        procedure(real(RKC))                                :: getFunc
+        use pm_kind, only: RKG => RK5
+        procedure(real(RKG))                                :: getFunc
         type(schroder_type)     , intent(in)                :: method
-        real(RKC)               , intent(inout)             :: root
-        real(RKC)               , value                     :: lb, ub
-        real(RKC)               , value                     :: lf, uf
-        real(RKC)               , intent(in)                :: abstol
+        real(RKG)               , intent(inout)             :: root
+        real(RKG)               , value                     :: lb, ub
+        real(RKG)               , value                     :: lf, uf
+        real(RKG)               , intent(in)                :: abstol
         integer(IK)             , intent(out)               :: neval
     end subroutine
 #endif
@@ -4113,13 +4113,13 @@ module pm_mathRoot
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRootSchroderFixed_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        procedure(real(RKC))                                :: getFunc
+        use pm_kind, only: RKG => RK4
+        procedure(real(RKG))                                :: getFunc
         type(schroder_type)     , intent(in)                :: method
-        real(RKC)               , intent(inout)             :: root
-        real(RKC)               , value                     :: lb, ub
-        real(RKC)               , value                     :: lf, uf
-        real(RKC)               , intent(in)                :: abstol
+        real(RKG)               , intent(inout)             :: root
+        real(RKG)               , value                     :: lb, ub
+        real(RKG)               , value                     :: lf, uf
+        real(RKG)               , intent(in)                :: abstol
         integer(IK)             , intent(out)               :: neval
     end subroutine
 #endif
@@ -4129,13 +4129,13 @@ module pm_mathRoot
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRootSchroderFixed_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        procedure(real(RKC))                                :: getFunc
+        use pm_kind, only: RKG => RK3
+        procedure(real(RKG))                                :: getFunc
         type(schroder_type)     , intent(in)                :: method
-        real(RKC)               , intent(inout)             :: root
-        real(RKC)               , value                     :: lb, ub
-        real(RKC)               , value                     :: lf, uf
-        real(RKC)               , intent(in)                :: abstol
+        real(RKG)               , intent(inout)             :: root
+        real(RKG)               , value                     :: lb, ub
+        real(RKG)               , value                     :: lf, uf
+        real(RKG)               , intent(in)                :: abstol
         integer(IK)             , intent(out)               :: neval
     end subroutine
 #endif
@@ -4145,13 +4145,13 @@ module pm_mathRoot
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRootSchroderFixed_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        procedure(real(RKC))                                :: getFunc
+        use pm_kind, only: RKG => RK2
+        procedure(real(RKG))                                :: getFunc
         type(schroder_type)     , intent(in)                :: method
-        real(RKC)               , intent(inout)             :: root
-        real(RKC)               , value                     :: lb, ub
-        real(RKC)               , value                     :: lf, uf
-        real(RKC)               , intent(in)                :: abstol
+        real(RKG)               , intent(inout)             :: root
+        real(RKG)               , value                     :: lb, ub
+        real(RKG)               , value                     :: lf, uf
+        real(RKG)               , intent(in)                :: abstol
         integer(IK)             , intent(out)               :: neval
     end subroutine
 #endif
@@ -4161,13 +4161,13 @@ module pm_mathRoot
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRootSchroderFixed_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        procedure(real(RKC))                                :: getFunc
+        use pm_kind, only: RKG => RK1
+        procedure(real(RKG))                                :: getFunc
         type(schroder_type)     , intent(in)                :: method
-        real(RKC)               , intent(inout)             :: root
-        real(RKC)               , value                     :: lb, ub
-        real(RKC)               , value                     :: lf, uf
-        real(RKC)               , intent(in)                :: abstol
+        real(RKG)               , intent(inout)             :: root
+        real(RKG)               , value                     :: lb, ub
+        real(RKG)               , value                     :: lf, uf
+        real(RKG)               , intent(in)                :: abstol
         integer(IK)             , intent(out)               :: neval
     end subroutine
 #endif
@@ -4179,13 +4179,13 @@ module pm_mathRoot
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRootSchroderNiter_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        procedure(real(RKC))                                :: getFunc
+        use pm_kind, only: RKG => RK5
+        procedure(real(RKG))                                :: getFunc
         type(schroder_type)     , intent(in)                :: method
-        real(RKC)               , intent(inout)             :: root
-        real(RKC)               , value                     :: lb, ub
-        real(RKC)               , value                     :: lf, uf
-        real(RKC)               , intent(in)                :: abstol
+        real(RKG)               , intent(inout)             :: root
+        real(RKG)               , value                     :: lb, ub
+        real(RKG)               , value                     :: lf, uf
+        real(RKG)               , intent(in)                :: abstol
         integer(IK)             , intent(out)               :: neval
         integer(IK)             , intent(in)                :: niter
     end subroutine
@@ -4196,13 +4196,13 @@ module pm_mathRoot
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRootSchroderNiter_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        procedure(real(RKC))                                :: getFunc
+        use pm_kind, only: RKG => RK4
+        procedure(real(RKG))                                :: getFunc
         type(schroder_type)     , intent(in)                :: method
-        real(RKC)               , intent(inout)             :: root
-        real(RKC)               , value                     :: lb, ub
-        real(RKC)               , value                     :: lf, uf
-        real(RKC)               , intent(in)                :: abstol
+        real(RKG)               , intent(inout)             :: root
+        real(RKG)               , value                     :: lb, ub
+        real(RKG)               , value                     :: lf, uf
+        real(RKG)               , intent(in)                :: abstol
         integer(IK)             , intent(out)               :: neval
         integer(IK)             , intent(in)                :: niter
     end subroutine
@@ -4213,13 +4213,13 @@ module pm_mathRoot
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRootSchroderNiter_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        procedure(real(RKC))                                :: getFunc
+        use pm_kind, only: RKG => RK3
+        procedure(real(RKG))                                :: getFunc
         type(schroder_type)     , intent(in)                :: method
-        real(RKC)               , intent(inout)             :: root
-        real(RKC)               , value                     :: lb, ub
-        real(RKC)               , value                     :: lf, uf
-        real(RKC)               , intent(in)                :: abstol
+        real(RKG)               , intent(inout)             :: root
+        real(RKG)               , value                     :: lb, ub
+        real(RKG)               , value                     :: lf, uf
+        real(RKG)               , intent(in)                :: abstol
         integer(IK)             , intent(out)               :: neval
         integer(IK)             , intent(in)                :: niter
     end subroutine
@@ -4230,13 +4230,13 @@ module pm_mathRoot
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRootSchroderNiter_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        procedure(real(RKC))                                :: getFunc
+        use pm_kind, only: RKG => RK2
+        procedure(real(RKG))                                :: getFunc
         type(schroder_type)     , intent(in)                :: method
-        real(RKC)               , intent(inout)             :: root
-        real(RKC)               , value                     :: lb, ub
-        real(RKC)               , value                     :: lf, uf
-        real(RKC)               , intent(in)                :: abstol
+        real(RKG)               , intent(inout)             :: root
+        real(RKG)               , value                     :: lb, ub
+        real(RKG)               , value                     :: lf, uf
+        real(RKG)               , intent(in)                :: abstol
         integer(IK)             , intent(out)               :: neval
         integer(IK)             , intent(in)                :: niter
     end subroutine
@@ -4247,13 +4247,13 @@ module pm_mathRoot
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRootSchroderNiter_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        procedure(real(RKC))                                :: getFunc
+        use pm_kind, only: RKG => RK1
+        procedure(real(RKG))                                :: getFunc
         type(schroder_type)     , intent(in)                :: method
-        real(RKC)               , intent(inout)             :: root
-        real(RKC)               , value                     :: lb, ub
-        real(RKC)               , value                     :: lf, uf
-        real(RKC)               , intent(in)                :: abstol
+        real(RKG)               , intent(inout)             :: root
+        real(RKG)               , value                     :: lb, ub
+        real(RKG)               , value                     :: lf, uf
+        real(RKG)               , intent(in)                :: abstol
         integer(IK)             , intent(out)               :: neval
         integer(IK)             , intent(in)                :: niter
     end subroutine

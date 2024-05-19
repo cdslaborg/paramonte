@@ -1,21 +1,21 @@
 program example
 
     use pm_kind, only: SK, IK, LK
-    use pm_kind, only: CKC => CKS ! all processor real and complex kinds are supported.
+    use pm_kind, only: CKG => CKS ! all processor real and complex kinds are supported.
     use pm_io, only: display_type
     use pm_polynomial, only: getPolyRoot, getPolyVal
     use pm_polynomial, only: eigen, jenkins, laguerre
 
     implicit none
 
-    complex(CKC), allocatable :: coef(:), root(:)
+    complex(CKG), allocatable :: coef(:), root(:)
 
     type(display_type) :: disp
     disp = display_type(file = "main.out.F90")
 
     call disp%skip()
-    call disp%show("coef = [complex(CKC) :: -4, 1, -4, 1]")
-                    coef = [complex(CKC) :: -4, 1, -4, 1]
+    call disp%show("coef = [complex(CKG) :: -4, 1, -4, 1]")
+                    coef = [complex(CKG) :: -4, 1, -4, 1]
     call disp%show("coef")
     call disp%show( coef )
     call disp%show("root = getPolyRoot(coef%re) ! polynomial with real coefficients.")
@@ -48,8 +48,8 @@ program example
     call disp%skip()
 
     call disp%skip()
-    call disp%show("coef = [complex(CKC) :: -120, 274, -225, 85, -15, 1]")
-                    coef = [complex(CKC) :: -120, 274, -225, 85, -15, 1]
+    call disp%show("coef = [complex(CKG) :: -120, 274, -225, 85, -15, 1]")
+                    coef = [complex(CKG) :: -120, 274, -225, 85, -15, 1]
     call disp%show("coef")
     call disp%show( coef )
     call disp%show("root = getPolyRoot(coef%re) ! polynomial with real coefficients.")
@@ -82,8 +82,8 @@ program example
     call disp%skip()
 
     call disp%skip()
-    call disp%show("coef = [complex(CKC) :: 8, -8, 16, -16, 8, -8]")
-                    coef = [complex(CKC) :: 8, -8, 16, -16, 8, -8]
+    call disp%show("coef = [complex(CKG) :: 8, -8, 16, -16, 8, -8]")
+                    coef = [complex(CKG) :: 8, -8, 16, -16, 8, -8]
     call disp%show("coef")
     call disp%show( coef )
     call disp%show("root = getPolyRoot(coef%re) ! polynomial with real coefficients.")
@@ -116,8 +116,8 @@ program example
     call disp%skip()
 
     call disp%skip()
-    call disp%show("coef = [complex(CKC) :: -120, 274, -225, 85, -15, 1]")
-                    coef = [complex(CKC) :: -120, 274, -225, 85, -15, 1]
+    call disp%show("coef = [complex(CKG) :: -120, 274, -225, 85, -15, 1]")
+                    coef = [complex(CKG) :: -120, 274, -225, 85, -15, 1]
     call disp%show("coef")
     call disp%show( coef )
     call disp%show("root = getPolyRoot(coef)")

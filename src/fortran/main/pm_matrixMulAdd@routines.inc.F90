@@ -97,14 +97,14 @@ blasGEMM(transA, tranB, nrow, ncol, ndum, alpha, matA(1, 1), size(matA, 1, IK), 
 !#endif
         ! Declare constants and temporary variables.
 #if     IK_ENABLED
-#define TYPE_KIND integer(IKC)
-        integer(IKC), parameter :: ZERO = 0_IKC, ONE = 1_IKC
+#define TYPE_KIND integer(IKG)
+        integer(IKG), parameter :: ZERO = 0_IKG, ONE = 1_IKG
 #elif   CK_ENABLED
-#define TYPE_KIND complex(CKC)
-        complex(CKC), parameter :: ZERO = (0._CKC, 0._CKC), ONE = (1._CKC, 0._CKC)
+#define TYPE_KIND complex(CKG)
+        complex(CKG), parameter :: ZERO = (0._CKG, 0._CKG), ONE = (1._CKG, 0._CKG)
 #elif   RK_ENABLED
-#define TYPE_KIND real(RKC)
-        real(RKC)   , parameter :: ZERO = 0._RKC, ONE = 1._RKC
+#define TYPE_KIND real(RKG)
+        real(RKG)   , parameter :: ZERO = 0._RKG, ONE = 1._RKG
 #else
 #error  "Unrecognized interface."
 #endif

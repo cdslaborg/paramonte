@@ -54,7 +54,7 @@
         integer(IK)     , parameter :: MAX_NUM_IMAGE = (huge(0_IK) - mod(huge(0_IK), POWER_BASE)) / POWER_BASE
         integer(IK)     , parameter :: MID_NUM_IMAGE = 2**13_IK ! The number above which we switch to log-linear range.
         character(*, SK), parameter :: PROCEDURE_NAME = MODULE_NAME//SK_"@setForkJoinScaling()"
-        real(RKC)                   :: contributionImageFirst, totalRunTime, parSecTimeEffective, comSecTimeTotal
+        real(RKG)                   :: contributionImageFirst, totalRunTime, parSecTimeEffective, comSecTimeTotal
         integer(IK)                 :: lenScaling, iell
         logical(LK)                 :: maxvalFound
 
@@ -64,13 +64,13 @@
         CHECK_ASSERTION(__LINE__, 0 <= conProb .and. conProb <= 1, SK_"@setForkJoinScaling(): The condition `0. <= conProb .and. conProb <= 1.` must hold. conProb = "//getStr(conProb))
 
         totalRunTime = seqSecTime + parSecTime ! serial + parallel section runtime of the code per function call.
-        if (0._RKC < totalRunTime) then
+        if (0._RKG < totalRunTime) then
 
             if (present(scalingMinLen)) then
                 CHECK_ASSERTION(__LINE__, 0 <= scalingMinLen, SK_"@setForkJoinScaling(): The condition `0 <= scalingMinLen` must hold. scalingMinLen = "//getStr(scalingMinLen))
                 lenScaling = scalingMinLen
             else
-                lenScaling = ceiling(2._RKC / max(conProb, 0.001_RKC), IK)
+                lenScaling = ceiling(2._RKG / max(conProb, 0.001_RKG), IK)
             end if
             call setResized(scaling, lenScaling)
             call setResized(numproc, lenScaling)
@@ -78,14 +78,14 @@
             iell = 1_IK
             numproc(iell) = 1_IK
             scalingMaxLoc = iell
-            scalingMaxVal = 1._RKC
+            scalingMaxVal = 1._RKG
             scaling(iell) = scalingMaxVal
             maxvalFound = .false._LK
             loopScaling: do
                 if (numproc(iell) < MAX_NUM_IMAGE) then
                     if (iell < lenScaling) then
                         iell = iell + 1_IK
-                        if (0._RKC < comSecTime .and. numproc(iell - 1) < MID_NUM_IMAGE) then
+                        if (0._RKG < comSecTime .and. numproc(iell - 1) < MID_NUM_IMAGE) then
                             numproc(iell) = iell
                         else
                             ! Here, the scaling function is monotonically increasing.
@@ -94,10 +94,10 @@
                             numproc(iell) = numproc(iell - 1) * POWER_BASE
                         end if
                         ! compute the fraction of work done by the first image.
-                        if (0._RKC < conProb) then
+                        if (0._RKG < conProb) then
                             contributionImageFirst = exp(getGeomCyclicLogPMF(stepSuccess = 1_IK, probSuccess = conProb, period = numproc(iell)))
-                        else ! if (conProb == 0._RKC) then
-                            contributionImageFirst = 1._RKC / numproc(iell)
+                        else ! if (conProb == 0._RKG) then
+                            contributionImageFirst = 1._RKG / numproc(iell)
                         end if
                         ! effective runtime of the parallel-section of the code, when executed in parallel on iell processes.
                         parSecTimeEffective = parSecTime * contributionImageFirst

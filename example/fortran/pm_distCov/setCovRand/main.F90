@@ -27,9 +27,9 @@ program example
 
     block
 
-        use pm_kind, only: TKC => RKS ! all kinds are supported.
-        real(TKC), allocatable :: scale(:)
-        real(TKC), allocatable :: rand(:,:)
+        use pm_kind, only: TKG => RKS ! all kinds are supported.
+        real(TKG), allocatable :: scale(:)
+        real(TKG), allocatable :: rand(:,:)
         do itry = 1, 5
 
             call disp%skip()
@@ -92,9 +92,9 @@ program example
 
     block
 
-        use pm_kind, only: TKC => RKD ! all kinds are supported.
-        real(TKC), allocatable :: scale(:)
-        complex(TKC), allocatable :: rand(:,:)
+        use pm_kind, only: TKG => RKD ! all kinds are supported.
+        real(TKG), allocatable :: scale(:)
+        complex(TKG), allocatable :: rand(:,:)
         do itry = 1, 5
 
             call disp%skip()
@@ -157,9 +157,9 @@ program example
 
     block
 
-        use pm_kind, only: TKC => RKS ! all kinds are supported.
-        real(TKC), allocatable :: rand(:,:)
-        real(TKC)   :: eta, scale
+        use pm_kind, only: TKG => RKS ! all kinds are supported.
+        real(TKG), allocatable :: rand(:,:)
+        real(TKG)   :: eta, scale
         do itry = 1, 10
 
             call disp%skip()
@@ -234,16 +234,16 @@ program example
                         call setResized(rand, [ndim, ndim])
         call disp%skip()
 
-        call disp%show("call setCovRand(rngf, rand, dvine, eta = 0._TKC, scale = [(real(itry, TKC), itry = 1, ndim)])")
-                        call setCovRand(rngf, rand, dvine, eta = 0._TKC, scale = [(real(itry, TKC), itry = 1, ndim)])
+        call disp%show("call setCovRand(rngf, rand, dvine, eta = 0._TKG, scale = [(real(itry, TKG), itry = 1, ndim)])")
+                        call setCovRand(rngf, rand, dvine, eta = 0._TKG, scale = [(real(itry, TKG), itry = 1, ndim)])
         call disp%show("rand")
         call disp%show( rand )
         call disp%show("isMatClass(rand, posdefmat)")
         call disp%show( isMatClass(rand, posdefmat) )
         call disp%skip()
 
-        call disp%show("call setCovRand(rngf, rand, onion, eta = 0._TKC, scale = [(real(itry, TKC), itry = 1, ndim)])")
-                        call setCovRand(rngf, rand, onion, eta = 0._TKC, scale = [(real(itry, TKC), itry = 1, ndim)])
+        call disp%show("call setCovRand(rngf, rand, onion, eta = 0._TKG, scale = [(real(itry, TKG), itry = 1, ndim)])")
+                        call setCovRand(rngf, rand, onion, eta = 0._TKG, scale = [(real(itry, TKG), itry = 1, ndim)])
         call disp%show("onion%info")
         call disp%show( onion%info )
         call disp%show("rand")

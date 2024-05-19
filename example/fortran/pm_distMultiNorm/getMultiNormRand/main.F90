@@ -1,7 +1,7 @@
 program example
 
     use pm_kind, only: SK
-    use pm_kind, only: IK, LK, RKC => RKS ! all real kinds are supported.
+    use pm_kind, only: IK, LK, RKG => RKS ! all real kinds are supported.
     use pm_io, only: display_type
     use pm_matrixChol, only: getMatChol, uppDia
     use pm_distMultiNorm, only: getMultiNormRand
@@ -9,7 +9,7 @@ program example
 
     implicit none
 
-    real(RKC), allocatable :: mean(:), chol(:,:), rand(:)
+    real(RKG), allocatable :: mean(:), chol(:,:), rand(:)
 
     type(display_type) :: disp
     disp = display_type(file = "main.out.F90")
@@ -45,8 +45,8 @@ program example
     call disp%skip()
 
     call disp%skip()
-    call disp%show("chol = getMatChol(getCovRand(mold = 1._RKC, scale = [real(RKC) :: 1, 2]), uppDia)")
-                    chol = getMatChol(getCovRand(mold = 1._RKC, scale = [real(RKC) :: 1, 2]), uppDia)
+    call disp%show("chol = getMatChol(getCovRand(mold = 1._RKG, scale = [real(RKG) :: 1, 2]), uppDia)")
+                    chol = getMatChol(getCovRand(mold = 1._RKG, scale = [real(RKG) :: 1, 2]), uppDia)
     call disp%show("chol")
     call disp%show( chol )
     call disp%show("rand = getMultiNormRand(chol, uppDia)")
@@ -79,7 +79,7 @@ program example
     block
 
         use pm_io, only: getErrTableWrite, trans
-        real(RKC) :: rand(2, 5000)
+        real(RKG) :: rand(2, 5000)
 
         rand = getMultiNormRand(mean, size(rand, 2, IK))
         if (0 /= getErrTableWrite("getMultiNormRandMean.RK.txt", rand, trans)) error stop 'table write failed.'

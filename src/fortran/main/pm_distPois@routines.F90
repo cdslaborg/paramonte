@@ -54,35 +54,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getPoisLogPMF_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_distPois@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getPoisLogPMF_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_distPois@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getPoisLogPMF_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_distPois@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getPoisLogPMF_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_distPois@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getPoisLogPMF_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_distPois@routines.inc.F90"
     end procedure
 #endif
@@ -109,35 +109,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setPoisLogPMFDef_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_distPois@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setPoisLogPMFDef_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_distPois@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setPoisLogPMFDef_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_distPois@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setPoisLogPMFDef_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_distPois@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setPoisLogPMFDef_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_distPois@routines.inc.F90"
     end procedure
 #endif
@@ -160,35 +160,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setPoisLogPMFLog_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_distPois@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setPoisLogPMFLog_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_distPois@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setPoisLogPMFLog_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_distPois@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setPoisLogPMFLog_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_distPois@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setPoisLogPMFLog_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_distPois@routines.inc.F90"
     end procedure
 #endif
@@ -215,35 +215,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getPoisCDF_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_distPois@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getPoisCDF_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_distPois@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getPoisCDF_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_distPois@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getPoisCDF_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_distPois@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getPoisCDF_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_distPois@routines.inc.F90"
     end procedure
 #endif
@@ -270,35 +270,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setPoisCDFLog_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_distPois@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setPoisCDFLog_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_distPois@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setPoisCDFLog_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_distPois@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setPoisCDFLog_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_distPois@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setPoisCDFLog_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_distPois@routines.inc.F90"
     end procedure
 #endif
@@ -331,35 +331,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getPoisRand_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_distPois@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getPoisRand_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_distPois@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getPoisRand_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_distPois@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getPoisRand_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_distPois@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getPoisRand_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_distPois@routines.inc.F90"
     end procedure
 #endif
@@ -404,35 +404,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setPoisRandExpRNGD_D0_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_distPois@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setPoisRandExpRNGD_D0_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_distPois@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setPoisRandExpRNGD_D0_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_distPois@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setPoisRandExpRNGD_D0_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_distPois@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setPoisRandExpRNGD_D0_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_distPois@routines.inc.F90"
     end procedure
 #endif
@@ -455,35 +455,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setPoisRandExpRNGF_D0_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_distPois@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setPoisRandExpRNGF_D0_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_distPois@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setPoisRandExpRNGF_D0_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_distPois@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setPoisRandExpRNGF_D0_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_distPois@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setPoisRandExpRNGF_D0_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_distPois@routines.inc.F90"
     end procedure
 #endif
@@ -506,35 +506,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setPoisRandExpRNGX_D0_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_distPois@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setPoisRandExpRNGX_D0_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_distPois@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setPoisRandExpRNGX_D0_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_distPois@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setPoisRandExpRNGX_D0_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_distPois@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setPoisRandExpRNGX_D0_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_distPois@routines.inc.F90"
     end procedure
 #endif
@@ -569,35 +569,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setPoisRandExpRNGD_D1_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_distPois@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setPoisRandExpRNGD_D1_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_distPois@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setPoisRandExpRNGD_D1_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_distPois@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setPoisRandExpRNGD_D1_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_distPois@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setPoisRandExpRNGD_D1_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_distPois@routines.inc.F90"
     end procedure
 #endif
@@ -620,35 +620,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setPoisRandExpRNGF_D1_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_distPois@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setPoisRandExpRNGF_D1_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_distPois@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setPoisRandExpRNGF_D1_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_distPois@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setPoisRandExpRNGF_D1_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_distPois@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setPoisRandExpRNGF_D1_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_distPois@routines.inc.F90"
     end procedure
 #endif
@@ -671,35 +671,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setPoisRandExpRNGX_D1_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_distPois@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setPoisRandExpRNGX_D1_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_distPois@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setPoisRandExpRNGX_D1_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_distPois@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setPoisRandExpRNGX_D1_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_distPois@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setPoisRandExpRNGX_D1_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_distPois@routines.inc.F90"
     end procedure
 #endif
@@ -746,35 +746,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setPoisRandRejRNGD_D0_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_distPois@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setPoisRandRejRNGD_D0_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_distPois@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setPoisRandRejRNGD_D0_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_distPois@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setPoisRandRejRNGD_D0_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_distPois@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setPoisRandRejRNGD_D0_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_distPois@routines.inc.F90"
     end procedure
 #endif
@@ -797,35 +797,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setPoisRandRejRNGF_D0_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_distPois@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setPoisRandRejRNGF_D0_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_distPois@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setPoisRandRejRNGF_D0_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_distPois@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setPoisRandRejRNGF_D0_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_distPois@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setPoisRandRejRNGF_D0_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_distPois@routines.inc.F90"
     end procedure
 #endif
@@ -848,35 +848,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setPoisRandRejRNGX_D0_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_distPois@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setPoisRandRejRNGX_D0_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_distPois@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setPoisRandRejRNGX_D0_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_distPois@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setPoisRandRejRNGX_D0_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_distPois@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setPoisRandRejRNGX_D0_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_distPois@routines.inc.F90"
     end procedure
 #endif
@@ -911,35 +911,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setPoisRandRejRNGD_D1_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_distPois@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setPoisRandRejRNGD_D1_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_distPois@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setPoisRandRejRNGD_D1_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_distPois@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setPoisRandRejRNGD_D1_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_distPois@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setPoisRandRejRNGD_D1_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_distPois@routines.inc.F90"
     end procedure
 #endif
@@ -962,35 +962,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setPoisRandRejRNGF_D1_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_distPois@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setPoisRandRejRNGF_D1_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_distPois@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setPoisRandRejRNGF_D1_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_distPois@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setPoisRandRejRNGF_D1_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_distPois@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setPoisRandRejRNGF_D1_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_distPois@routines.inc.F90"
     end procedure
 #endif
@@ -1013,35 +1013,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setPoisRandRejRNGX_D1_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_distPois@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setPoisRandRejRNGX_D1_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_distPois@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setPoisRandRejRNGX_D1_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_distPois@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setPoisRandRejRNGX_D1_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_distPois@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setPoisRandRejRNGX_D1_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_distPois@routines.inc.F90"
     end procedure
 #endif

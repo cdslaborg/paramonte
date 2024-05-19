@@ -31,12 +31,12 @@ program example
     call disp%skip()
 
     block
-        use pm_kind, only: TKC => RKS ! All other real types are also supported.
+        use pm_kind, only: TKG => RKS ! All other real types are also supported.
         use pm_matrixCopy, only: setMatCopy, rdpack
         use pm_distCov, only: getCovRand
         integer(IK) :: ndim
-        real(TKC), allocatable :: cov(:,:), cor(:,:), std(:)
-        format = getFormat(mold = [0._TKC], ed = SK_"es", signed = .true._LK)
+        real(TKG), allocatable :: cov(:,:), cor(:,:), std(:)
+        format = getFormat(mold = [0._TKG], ed = SK_"es", signed = .true._LK)
         do itry = 1, ntry
             call disp%skip()
             call disp%show("ndim = getUnifRand(1, 7)")
@@ -76,8 +76,8 @@ program example
     call disp%skip()
 
     block
-        use pm_kind, only: TKC => RKS ! All other real types are also supported.
-        real(TKC), allocatable :: sample(:,:), cov(:,:), mean(:)
+        use pm_kind, only: TKG => RKS ! All other real types are also supported.
+        real(TKG), allocatable :: sample(:,:), cov(:,:), mean(:)
         integer(IK) :: ndim, nsam
         call disp%show("ndim = 2; nsam = 10")
                         ndim = 2; nsam = 10
@@ -110,13 +110,13 @@ program example
     end block
 
     block
-        use pm_kind, only: TKC => RKS ! All other real types are also supported.
-        complex(TKC), allocatable :: sample(:,:), cov(:,:), mean(:)
+        use pm_kind, only: TKG => RKS ! All other real types are also supported.
+        complex(TKG), allocatable :: sample(:,:), cov(:,:), mean(:)
         integer(IK) :: ndim, nsam
         call disp%show("ndim = 2; nsam = 10")
                         ndim = 2; nsam = 10
-        call disp%show("sample = reshape(cmplx(getUnifRand(1, 20, ndim * nsam), -getUnifRand(1, 20, ndim * nsam), TKC), shape = [ndim, nsam], order = [2, 1])")
-                        sample = reshape(cmplx(getUnifRand(1, 20, ndim * nsam), -getUnifRand(1, 20, ndim * nsam), TKC), shape = [ndim, nsam], order = [2, 1])
+        call disp%show("sample = reshape(cmplx(getUnifRand(1, 20, ndim * nsam), -getUnifRand(1, 20, ndim * nsam), TKG), shape = [ndim, nsam], order = [2, 1])")
+                        sample = reshape(cmplx(getUnifRand(1, 20, ndim * nsam), -getUnifRand(1, 20, ndim * nsam), TKG), shape = [ndim, nsam], order = [2, 1])
         call disp%show("sample")
         call disp%show( sample )
         call disp%skip()
@@ -152,12 +152,12 @@ program example
     call disp%skip()
 
     block
-        use pm_kind, only: TKC => RKS ! All other real types are also supported.
-        real(TKC) :: rweisum
+        use pm_kind, only: TKG => RKS ! All other real types are also supported.
+        real(TKG) :: rweisum
         integer(IK) :: iweisum
-        real(TKC), allocatable :: rweight(:)
+        real(TKG), allocatable :: rweight(:)
         integer(IK), allocatable :: iweight(:)
-        real(TKC), allocatable :: sample(:,:), cov(:,:), mean(:)
+        real(TKG), allocatable :: sample(:,:), cov(:,:), mean(:)
         integer(IK) :: ndim, nsam
         call disp%show("ndim = 2; nsam = 10")
                         ndim = 2; nsam = 10
@@ -242,17 +242,17 @@ program example
     end block
 
     block
-        use pm_kind, only: TKC => RKS ! All other real types are also supported.
-        real(TKC) :: rweisum
+        use pm_kind, only: TKG => RKS ! All other real types are also supported.
+        real(TKG) :: rweisum
         integer(IK) :: iweisum
-        real(TKC), allocatable :: rweight(:)
+        real(TKG), allocatable :: rweight(:)
         integer(IK), allocatable :: iweight(:)
-        complex(TKC), allocatable :: sample(:,:), cov(:,:), mean(:)
+        complex(TKG), allocatable :: sample(:,:), cov(:,:), mean(:)
         integer(IK) :: ndim, nsam
         call disp%show("ndim = 2; nsam = 10")
                         ndim = 2; nsam = 10
-        call disp%show("sample = reshape(cmplx(getUnifRand(1, 20, ndim * nsam), -getUnifRand(1, 20, ndim * nsam), TKC), shape = [ndim, nsam], order = [2, 1])")
-                        sample = reshape(cmplx(getUnifRand(1, 20, ndim * nsam), -getUnifRand(1, 20, ndim * nsam), TKC), shape = [ndim, nsam], order = [2, 1])
+        call disp%show("sample = reshape(cmplx(getUnifRand(1, 20, ndim * nsam), -getUnifRand(1, 20, ndim * nsam), TKG), shape = [ndim, nsam], order = [2, 1])")
+                        sample = reshape(cmplx(getUnifRand(1, 20, ndim * nsam), -getUnifRand(1, 20, ndim * nsam), TKG), shape = [ndim, nsam], order = [2, 1])
         call disp%show("sample")
         call disp%show( sample )
         call disp%show("call setResized(mean, ndim)")

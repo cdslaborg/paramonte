@@ -33,9 +33,9 @@
 #if     getDiv_ENABLED
 
         integer(IK)     , parameter :: NP = 5_IK
-        complex(CKC)    , parameter :: SQRT_HUGE = sqrt(huge(0._CKC)), EPS = 100 * cmplx(epsilon(0._CKC), epsilon(0._CKC), CKC)
-        complex(CKC)    , parameter :: LOWER = -SQRT_HUGE, UPPER = +SQRT_HUGE, ZERO = (0._CKC, 0._CKC)
-        complex(CKC)    :: dividend(NP,NP), divisor(NP,NP), Quotient(NP,NP), Quotient_ref(NP,NP)
+        complex(CKG)    , parameter :: SQRT_HUGE = sqrt(huge(0._CKG)), EPS = 100 * cmplx(epsilon(0._CKG), epsilon(0._CKG), CKG)
+        complex(CKG)    , parameter :: LOWER = -SQRT_HUGE, UPPER = +SQRT_HUGE, ZERO = (0._CKG, 0._CKG)
+        complex(CKG)    :: dividend(NP,NP), divisor(NP,NP), Quotient(NP,NP), Quotient_ref(NP,NP)
         integer(IK)     :: i, j, itest
 
         assertion = .true._LK
@@ -90,9 +90,9 @@
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
         pure elemental function getDiv_ref(dividend, divisor) result(quotient)
-            complex(CKC), intent(in)    :: dividend, divisor
-            complex(CKC)                :: quotient
-            real(CKC)                   :: r, d
+            complex(CKG), intent(in)    :: dividend, divisor
+            complex(CKG)                :: quotient
+            real(CKG)                   :: r, d
             if (abs(divisor%re) < abs(divisor%im)) then
                 r = divisor%re / divisor%im
                 d = divisor%im + r * divisor%re
@@ -111,7 +111,7 @@
         subroutine report(line)
             integer(IK), intent(in) :: line
             integer(IK)             :: i, j
-            complex(CKC)            :: diff
+            complex(CKG)            :: diff
             do i = 1, NP
                 do j = 1, NP
                     diff = abs(Quotient(i,j) - Quotient_ref(i,j))

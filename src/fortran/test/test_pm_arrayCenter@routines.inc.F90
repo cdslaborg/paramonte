@@ -34,7 +34,7 @@
 #define GET_LBOUND(Array) 1_IK
 #define GEN_UBOUND(Array) len(Array, kind = IK)
 #define GET_SIZE(Array) len(Array, kind = IK)
-#define ALLOC_ARRAY(Array,lb,ub) allocate(character(ub-lb+1,SKC) :: Array)
+#define ALLOC_ARRAY(Array,lb,ub) allocate(character(ub-lb+1,SKG) :: Array)
 #define GEN_UBOLD(ub) ub - lbold + 1_IK
 #define GEN_UBNEW(ub) ub - lbnew + 1_IK + getOption(0_IK,lmsize) + getOption(0_IK,rmsize)
 #define GEN_LBOLD(lb) 1_IK
@@ -54,53 +54,53 @@
 
 #if     SK_ENABLED && D0_ENABLED
 #define ALL
-        character(:,SKC), allocatable   :: Array, ArrayCentered, ArrayCentered_ref
-        character(1,SKC), parameter     :: fill = SKC_"*"
-        character(1,SKC), parameter     :: lmfill = SKC_"-"
-        character(1,SKC), parameter     :: rmfill = SKC_"+"
-        character(1,SKC), parameter     :: fill_def = fill
-        character(1,SKC), parameter     :: lmfill_def = lmfill
-        character(1,SKC), parameter     :: rmfill_def = rmfill
+        character(:,SKG), allocatable   :: Array, ArrayCentered, ArrayCentered_ref
+        character(1,SKG), parameter     :: fill = SKG_"*"
+        character(1,SKG), parameter     :: lmfill = SKG_"-"
+        character(1,SKG), parameter     :: rmfill = SKG_"+"
+        character(1,SKG), parameter     :: fill_def = fill
+        character(1,SKG), parameter     :: lmfill_def = lmfill
+        character(1,SKG), parameter     :: rmfill_def = rmfill
 #elif   SK_ENABLED && D1_ENABLED
-        character(2,SKC), dimension(:), allocatable :: Array, ArrayCentered, ArrayCentered_ref
-        character(2,SKC), parameter                 :: fill = SKC_"**"
-        character(2,SKC), parameter                 :: lmfill = SKC_"--"
-        character(2,SKC), parameter                 :: rmfill = SKC_"++"
-        character(2,SKC), parameter                 :: fill_def = fill
-        character(2,SKC), parameter                 :: lmfill_def = lmfill
-        character(2,SKC), parameter                 :: rmfill_def = rmfill
+        character(2,SKG), dimension(:), allocatable :: Array, ArrayCentered, ArrayCentered_ref
+        character(2,SKG), parameter                 :: fill = SKG_"**"
+        character(2,SKG), parameter                 :: lmfill = SKG_"--"
+        character(2,SKG), parameter                 :: rmfill = SKG_"++"
+        character(2,SKG), parameter                 :: fill_def = fill
+        character(2,SKG), parameter                 :: lmfill_def = lmfill
+        character(2,SKG), parameter                 :: rmfill_def = rmfill
 #elif   LK_ENABLED && D1_ENABLED
-        logical(LKC)    , dimension(:), allocatable :: Array, ArrayCentered, ArrayCentered_ref
-        logical(LKC)    , parameter                 :: fill = .false._LKC
-        logical(LKC)    , parameter                 :: lmfill = .false._LKC
-        logical(LKC)    , parameter                 :: rmfill = .false._LKC
-        logical(LKC)    , parameter                 :: fill_def = fill
-        logical(LKC)    , parameter                 :: lmfill_def = lmfill
-        logical(LKC)    , parameter                 :: rmfill_def = rmfill
+        logical(LKG)    , dimension(:), allocatable :: Array, ArrayCentered, ArrayCentered_ref
+        logical(LKG)    , parameter                 :: fill = .false._LKG
+        logical(LKG)    , parameter                 :: lmfill = .false._LKG
+        logical(LKG)    , parameter                 :: rmfill = .false._LKG
+        logical(LKG)    , parameter                 :: fill_def = fill
+        logical(LKG)    , parameter                 :: lmfill_def = lmfill
+        logical(LKG)    , parameter                 :: rmfill_def = rmfill
 #elif   IK_ENABLED && D1_ENABLED
-        integer(IKC)    , dimension(:), allocatable :: Array, ArrayCentered, ArrayCentered_ref
-        integer(IKC)    , parameter                 :: fill = huge(1_IKC)
-        integer(IKC)    , parameter                 :: lmfill = huge(1_IKC)
-        integer(IKC)    , parameter                 :: rmfill = huge(1_IKC)
-        integer(IKC)    , parameter                 :: fill_def = fill
-        integer(IKC)    , parameter                 :: lmfill_def = lmfill
-        integer(IKC)    , parameter                 :: rmfill_def = rmfill
+        integer(IKG)    , dimension(:), allocatable :: Array, ArrayCentered, ArrayCentered_ref
+        integer(IKG)    , parameter                 :: fill = huge(1_IKG)
+        integer(IKG)    , parameter                 :: lmfill = huge(1_IKG)
+        integer(IKG)    , parameter                 :: rmfill = huge(1_IKG)
+        integer(IKG)    , parameter                 :: fill_def = fill
+        integer(IKG)    , parameter                 :: lmfill_def = lmfill
+        integer(IKG)    , parameter                 :: rmfill_def = rmfill
 #elif   CK_ENABLED && D1_ENABLED
-        complex(CKC)    , dimension(:), allocatable :: Array, ArrayCentered, ArrayCentered_ref
-        complex(CKC)    , parameter                 :: fill = cmplx(huge(0._CKC), huge(0._CKC), kind = CKC)
-        complex(CKC)    , parameter                 :: lmfill = cmplx(huge(0._CKC), huge(0._CKC), kind = CKC)
-        complex(CKC)    , parameter                 :: rmfill = cmplx(huge(0._CKC), huge(0._CKC), kind = CKC)
-        complex(CKC)    , parameter                 :: fill_def = fill
-        complex(CKC)    , parameter                 :: lmfill_def = lmfill
-        complex(CKC)    , parameter                 :: rmfill_def = rmfill
+        complex(CKG)    , dimension(:), allocatable :: Array, ArrayCentered, ArrayCentered_ref
+        complex(CKG)    , parameter                 :: fill = cmplx(huge(0._CKG), huge(0._CKG), kind = CKG)
+        complex(CKG)    , parameter                 :: lmfill = cmplx(huge(0._CKG), huge(0._CKG), kind = CKG)
+        complex(CKG)    , parameter                 :: rmfill = cmplx(huge(0._CKG), huge(0._CKG), kind = CKG)
+        complex(CKG)    , parameter                 :: fill_def = fill
+        complex(CKG)    , parameter                 :: lmfill_def = lmfill
+        complex(CKG)    , parameter                 :: rmfill_def = rmfill
 #elif   RK_ENABLED && D1_ENABLED
-        real(RKC)       , dimension(:), allocatable :: Array, ArrayCentered, ArrayCentered_ref
-        real(RKC)       , parameter                 :: fill = huge(0._RKC)
-        real(RKC)       , parameter                 :: lmfill = huge(0._RKC)
-        real(RKC)       , parameter                 :: rmfill = huge(0._RKC)
-        real(RKC)       , parameter                 :: fill_def = fill
-        real(RKC)       , parameter                 :: lmfill_def = lmfill
-        real(RKC)       , parameter                 :: rmfill_def = rmfill
+        real(RKG)       , dimension(:), allocatable :: Array, ArrayCentered, ArrayCentered_ref
+        real(RKG)       , parameter                 :: fill = huge(0._RKG)
+        real(RKG)       , parameter                 :: lmfill = huge(0._RKG)
+        real(RKG)       , parameter                 :: rmfill = huge(0._RKG)
+        real(RKG)       , parameter                 :: fill_def = fill
+        real(RKG)       , parameter                 :: lmfill_def = lmfill
+        real(RKG)       , parameter                 :: rmfill_def = rmfill
 #else
 #error  "Unrecognized interface."
 #endif
@@ -137,17 +137,17 @@
 
             integer(IK)     , intent(in), optional  :: lmsize, rmsize
 #if         SK_ENABLED && D0_ENABLED
-            character(1,SKC), intent(in), optional  :: fill, lmfill, rmfill
+            character(1,SKG), intent(in), optional  :: fill, lmfill, rmfill
 #elif       SK_ENABLED && D1_ENABLED
-            character(2,SKC), intent(in), optional  :: fill, lmfill, rmfill
+            character(2,SKG), intent(in), optional  :: fill, lmfill, rmfill
 #elif       LK_ENABLED && D1_ENABLED
-            logical(LKC)    , intent(in), optional  :: fill, lmfill, rmfill
+            logical(LKG)    , intent(in), optional  :: fill, lmfill, rmfill
 #elif       IK_ENABLED && D1_ENABLED
-            integer(IKC)    , intent(in), optional  :: fill, lmfill, rmfill
+            integer(IKG)    , intent(in), optional  :: fill, lmfill, rmfill
 #elif       CK_ENABLED && D1_ENABLED
-            complex(CKC)    , intent(in), optional  :: fill, lmfill, rmfill
+            complex(CKG)    , intent(in), optional  :: fill, lmfill, rmfill
 #elif       RK_ENABLED && D1_ENABLED
-            real(RKC)       , intent(in), optional  :: fill, lmfill, rmfill
+            real(RKG)       , intent(in), optional  :: fill, lmfill, rmfill
 #else
 #error      "Unrecognized interface."
 #endif
@@ -181,26 +181,26 @@
             ALLOC_ARRAY(ArrayCentered,lbnew,ubnew)
             ALLOC_ARRAY(ArrayCentered_ref,lbnew,ubnew)
 #if         SK_ENABLED && D0_ENABLED
-            call setUnifRand(Array, repeat(SKC_"A", len(Array)), repeat(SKC_"Z",len(Array)))
+            call setUnifRand(Array, repeat(SKG_"A", len(Array)), repeat(SKG_"Z",len(Array)))
             ArrayCentered_ref = getRepeat(lmfill, lmsize)//Array//fill_def//getRepeat(rmfill, rmsize)
 #elif       SK_ENABLED && D1_ENABLED
-            Array(:) = [SKC_"AA", SKC_"BB", SKC_"CC"]
+            Array(:) = [SKG_"AA", SKG_"BB", SKG_"CC"]
             if (getOption(0_IK,lmsize) > 0_IK) then
                 ArrayCentered_ref(:) = [getRepeat(lmfill,lmsize), Array, fill_def, getRepeat(rmfill,rmsize)]
             else
                 ArrayCentered_ref(:) = [Array, fill_def]
             end if
 #elif       LK_ENABLED && D1_ENABLED
-            Array(:) = [.true._LKC, .true._LKC, .true._LKC]
+            Array(:) = [.true._LKG, .true._LKG, .true._LKG]
             ArrayCentered_ref(:) = [getRepeat(lmfill,lmsize), Array, fill_def, getRepeat(rmfill,rmsize)]
 #elif       IK_ENABLED && D1_ENABLED
-            Array(:) = [1_IKC, 2_IKC, 3_IKC]
+            Array(:) = [1_IKG, 2_IKG, 3_IKG]
             ArrayCentered_ref(:) = [getRepeat(lmfill,lmsize), Array, fill_def, getRepeat(rmfill,rmsize)]
 #elif       CK_ENABLED && D1_ENABLED
-            Array(:) = [(1._CKC,-1._CKC), (2._CKC,-2._CKC), (3._CKC,-3._CKC)]
+            Array(:) = [(1._CKG,-1._CKG), (2._CKG,-2._CKG), (3._CKG,-3._CKG)]
             ArrayCentered_ref(:) = [getRepeat(lmfill,lmsize), Array, fill_def, getRepeat(rmfill,rmsize)]
 #elif       RK_ENABLED && D1_ENABLED
-            Array(:) = [1._RKC, 2._RKC, 3._RKC]
+            Array(:) = [1._RKG, 2._RKG, 3._RKG]
             ArrayCentered_ref(:) = [getRepeat(lmfill,lmsize), Array, fill_def, getRepeat(rmfill,rmsize)]
 #endif
             cbeg = lbold + getOption(0_IK,lmsize) + (sizecentered - sizeold) / 2_IK
@@ -265,26 +265,26 @@
             ALLOC_ARRAY(ArrayCentered,lbnew,ubnew)
             ALLOC_ARRAY(ArrayCentered_ref,lbnew,ubnew)
 #if         SK_ENABLED && D0_ENABLED
-            call setUnifRand(Array, repeat(SKC_"A",len(Array)), repeat(SKC_"Z",len(Array)))
+            call setUnifRand(Array, repeat(SKG_"A",len(Array)), repeat(SKG_"Z",len(Array)))
             ArrayCentered_ref = getRepeat(lmfill,lmsize)//fill_def//Array//fill_def//getRepeat(rmfill,rmsize)
 #elif       SK_ENABLED && D1_ENABLED
-            Array(:) = [SKC_"AA", SKC_"BB", SKC_"CC"]
+            Array(:) = [SKG_"AA", SKG_"BB", SKG_"CC"]
             if (getOption(0_IK,lmsize) > 0_IK) then
                 ArrayCentered_ref(:) = [getRepeat(lmfill,lmsize), fill_def, Array, fill_def, getRepeat(rmfill,rmsize)]
             else
                 ArrayCentered_ref(:) = [fill_def, Array, fill_def]
             end if
 #elif       LK_ENABLED && D1_ENABLED
-            Array(:) = [.true._LKC, .true._LKC, .true._LKC]
+            Array(:) = [.true._LKG, .true._LKG, .true._LKG]
             ArrayCentered_ref(:) = [getRepeat(lmfill,lmsize), fill_def, Array, fill_def, getRepeat(rmfill,rmsize)]
 #elif       IK_ENABLED && D1_ENABLED
-            Array(:) = [1_IKC, 2_IKC, 3_IKC]
+            Array(:) = [1_IKG, 2_IKG, 3_IKG]
             ArrayCentered_ref(:) = [getRepeat(lmfill,lmsize), fill_def, Array, fill_def, getRepeat(rmfill,rmsize)]
 #elif       CK_ENABLED && D1_ENABLED
-            Array(:) = [(1._CKC,-1._CKC), (2._CKC,-2._CKC), (3._CKC,-3._CKC)]
+            Array(:) = [(1._CKG,-1._CKG), (2._CKG,-2._CKG), (3._CKG,-3._CKG)]
             ArrayCentered_ref(:) = [getRepeat(lmfill,lmsize), fill_def, Array, fill_def, getRepeat(rmfill,rmsize)]
 #elif       RK_ENABLED && D1_ENABLED
-            Array(:) = [1._RKC, 2._RKC, 3._RKC]
+            Array(:) = [1._RKG, 2._RKG, 3._RKG]
             ArrayCentered_ref(:) = [getRepeat(lmfill,lmsize), fill_def, Array, fill_def, getRepeat(rmfill,rmsize)]
 #endif
             cbeg = lbold + getOption(0_IK,lmsize) + (sizecentered - sizeold) / 2_IK
@@ -349,26 +349,26 @@
             ALLOC_ARRAY(ArrayCentered,lbnew,ubnew)
             ALLOC_ARRAY(ArrayCentered_ref,lbnew,ubnew)
 #if         SK_ENABLED && D0_ENABLED
-            call setUnifRand(Array, repeat(SKC_"A",len(Array)), repeat(SKC_"Z",len(Array)))
+            call setUnifRand(Array, repeat(SKG_"A",len(Array)), repeat(SKG_"Z",len(Array)))
             ArrayCentered_ref(lbnew:ubnew) = getRepeat(lmfill,lmsize)//Array(lbold:ubold-1)//getRepeat(rmfill,rmsize)
 #elif       SK_ENABLED && D1_ENABLED
-            Array(:) = [SKC_"AA", SKC_"BB", SKC_"CC", SKC_"DD"]
+            Array(:) = [SKG_"AA", SKG_"BB", SKG_"CC", SKG_"DD"]
             if (getOption(0_IK,lmsize) > 0_IK) then
                 ArrayCentered_ref(lbnew:ubnew) = [getRepeat(lmfill,lmsize), Array(lbold:ubold-1), getRepeat(rmfill,rmsize)]
             else
                 ArrayCentered_ref(lbnew:ubnew) = [Array(lbold:ubold-1)]
             end if
 #elif       LK_ENABLED && D1_ENABLED
-            Array(:) = [.true._LKC, .true._LKC, .true._LKC, .true._LKC]
+            Array(:) = [.true._LKG, .true._LKG, .true._LKG, .true._LKG]
             ArrayCentered_ref(lbnew:ubnew) = [getRepeat(lmfill,lmsize), Array(lbold:ubold-1), getRepeat(rmfill,rmsize)]
 #elif       IK_ENABLED && D1_ENABLED
-            Array(:) = [1_IKC, 2_IKC, 3_IKC, 4_IKC]
+            Array(:) = [1_IKG, 2_IKG, 3_IKG, 4_IKG]
             ArrayCentered_ref(lbnew:ubnew) = [getRepeat(lmfill,lmsize), Array(lbold:ubold-1), getRepeat(rmfill,rmsize)]
 #elif       CK_ENABLED && D1_ENABLED
-            Array(:) = [(1._CKC,-1._CKC), (2._CKC,-2._CKC), (3._CKC,-3._CKC), (4._CKC,-4._CKC)]
+            Array(:) = [(1._CKG,-1._CKG), (2._CKG,-2._CKG), (3._CKG,-3._CKG), (4._CKG,-4._CKG)]
             ArrayCentered_ref(lbnew:ubnew) = [getRepeat(lmfill,lmsize), Array(lbold:ubold-1), getRepeat(rmfill,rmsize)]
 #elif       RK_ENABLED && D1_ENABLED
-            Array(:) = [1._RKC, 2._RKC, 3._RKC, 4._RKC]
+            Array(:) = [1._RKG, 2._RKG, 3._RKG, 4._RKG]
             ArrayCentered_ref(lbnew:ubnew) = [getRepeat(lmfill,lmsize), Array(lbold:ubold-1), getRepeat(rmfill,rmsize)]
 #endif
             cbeg = lbold + getOption(0_IK,lmsize) + abs(sizecentered - sizeold) / 2_IK
@@ -429,26 +429,26 @@
             ALLOC_ARRAY(ArrayCentered,lbnew,ubnew)
             ALLOC_ARRAY(ArrayCentered_ref,lbnew,ubnew)
 #if         SK_ENABLED && D0_ENABLED
-            call setUnifRand(Array, repeat(SKC_"A",len(Array)), repeat(SKC_"Z",len(Array)))
+            call setUnifRand(Array, repeat(SKG_"A",len(Array)), repeat(SKG_"Z",len(Array)))
             ArrayCentered_ref(lbnew:ubnew) = getRepeat(lmfill,lmsize)//Array(lbold+1:ubold-1)//getRepeat(rmfill,rmsize)
 #elif       SK_ENABLED && D1_ENABLED
-            Array(:) = [SKC_"AA", SKC_"BB", SKC_"CC", SKC_"DD"]
+            Array(:) = [SKG_"AA", SKG_"BB", SKG_"CC", SKG_"DD"]
             if (getOption(0_IK,lmsize) > 0_IK) then
                 ArrayCentered_ref(lbnew:ubnew) = [getRepeat(lmfill,lmsize), Array(lbold+1:ubold-1), getRepeat(rmfill,rmsize)]
             else
                 ArrayCentered_ref(lbnew:ubnew) = [Array(lbold+1:ubold-1)]
             end if
 #elif       LK_ENABLED && D1_ENABLED
-            Array(:) = [.true._LKC, .true._LKC, .true._LKC]
+            Array(:) = [.true._LKG, .true._LKG, .true._LKG]
             ArrayCentered_ref(lbnew:ubnew) = [getRepeat(lmfill,lmsize), Array(lbold+1:ubold-1), getRepeat(rmfill,rmsize)]
 #elif       IK_ENABLED && D1_ENABLED
-            Array(:) = [1_IKC, 2_IKC, 3_IKC, 4_IKC]
+            Array(:) = [1_IKG, 2_IKG, 3_IKG, 4_IKG]
             ArrayCentered_ref(lbnew:ubnew) = [getRepeat(lmfill,lmsize), Array(lbold+1:ubold-1), getRepeat(rmfill,rmsize)]
 #elif       CK_ENABLED && D1_ENABLED
-            Array(:) = [(1._CKC,-1._CKC), (2._CKC,-2._CKC), (3._CKC,-3._CKC), (4._CKC,-4._CKC)]
+            Array(:) = [(1._CKG,-1._CKG), (2._CKG,-2._CKG), (3._CKG,-3._CKG), (4._CKG,-4._CKG)]
             ArrayCentered_ref(lbnew:ubnew) = [getRepeat(lmfill,lmsize), Array(lbold+1:ubold-1), getRepeat(rmfill,rmsize)]
 #elif       RK_ENABLED && D1_ENABLED
-            Array(:) = [1._RKC, 2._RKC, 3._RKC, 4._RKC]
+            Array(:) = [1._RKG, 2._RKG, 3._RKG, 4._RKG]
             ArrayCentered_ref(lbnew:ubnew) = [getRepeat(lmfill,lmsize), Array(lbold+1:ubold-1), getRepeat(rmfill,rmsize)]
 #endif
             cbeg = lbold + abs(sizecentered - sizeold) / 2_IK
@@ -510,28 +510,28 @@
 #if     SK_ENABLED && D0_ENABLED
         PURE function getRepeat(fill, count) result(Array)
             integer(IK)     , intent(in), optional  :: count
-            character(1,SKC), intent(in), optional  :: fill
-            character(:,SKC), allocatable           :: Array
-            Array = repeat(getOption(SKC_" ",fill), getOption(0_IK,count))
+            character(1,SKG), intent(in), optional  :: fill
+            character(:,SKG), allocatable           :: Array
+            Array = repeat(getOption(SKG_" ",fill), getOption(0_IK,count))
         end function
 #else
         PURE function getRepeat(fill, count) result(Array)
             integer(IK)     , intent(in), optional  :: count
 #if         SK_ENABLED && D1_ENABLED
-            character(2,SKC), intent(in), optional  :: fill
-            character(2,SKC), allocatable           :: Array(:)
+            character(2,SKG), intent(in), optional  :: fill
+            character(2,SKG), allocatable           :: Array(:)
 #elif       LK_ENABLED && D1_ENABLED
-            logical(LKC)    , intent(in), optional  :: fill
-            logical(LKC)    , allocatable           :: Array(:)
+            logical(LKG)    , intent(in), optional  :: fill
+            logical(LKG)    , allocatable           :: Array(:)
 #elif       IK_ENABLED && D1_ENABLED
-            integer(IKC)    , intent(in), optional  :: fill
-            integer(IKC)    , allocatable           :: Array(:)
+            integer(IKG)    , intent(in), optional  :: fill
+            integer(IKG)    , allocatable           :: Array(:)
 #elif       CK_ENABLED && D1_ENABLED
-            complex(CKC)    , intent(in), optional  :: fill
-            complex(CKC)    , allocatable           :: Array(:)
+            complex(CKG)    , intent(in), optional  :: fill
+            complex(CKG)    , allocatable           :: Array(:)
 #elif       RK_ENABLED && D1_ENABLED
-            real(RKC)       , intent(in), optional  :: fill
-            real(RKC)       , allocatable           :: Array(:)
+            real(RKG)       , intent(in), optional  :: fill
+            real(RKG)       , allocatable           :: Array(:)
 #else
 #error      "Unrecognized interface."
 #endif

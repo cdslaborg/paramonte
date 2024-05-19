@@ -28,34 +28,34 @@
 #if     getProbKS_ENABLED || setProbKS_ENABLED
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        real(TKC) :: ess ! effective sample size.
+        real(TKG) :: ess ! effective sample size.
 #if     getProbKS_ENABLED
-        real(TKC) :: quanKS
+        real(TKG) :: quanKS
 #endif
 #if     WIX_ENABLED
         CHECK_ASSERTION(__LINE__, 0 < weisum1, SK_"@getProbKS(): The condition `0 < weisum1` must hold. weisum1 = "//getStr(weisum1))
-        ess = sqrt(real(weisum1, TKC))
+        ess = sqrt(real(weisum1, TKG))
 #elif   WRX_ENABLED
         CHECK_ASSERTION(__LINE__, 0 < weisum1, SK_"@getProbKS(): The condition `0 < weisum1` must hold. weisum1 = "//getStr(weisum1))
         CHECK_ASSERTION(__LINE__, 0 < wsqsum1, SK_"@getProbKS(): The condition `0 < wsqsum1` must hold. wsqsum1 = "//getStr(wsqsum1))
         ess = weisum1 / sqrt(wsqsum1)
 #elif   WII_ENABLED
-        real(TKC) :: ess1, ess2
+        real(TKG) :: ess1, ess2
         CHECK_ASSERTION(__LINE__, 0 < weisum1, SK_"@getProbKS(): The condition `0 < weisum1` must hold. weisum1 = "//getStr(weisum1))
         CHECK_ASSERTION(__LINE__, 0 < weisum2, SK_"@getProbKS(): The condition `0 < weisum2` must hold. weisum2 = "//getStr(weisum2))
-        ess1 = real(weisum1, TKC)
-        ess2 = real(weisum2, TKC)
+        ess1 = real(weisum1, TKG)
+        ess2 = real(weisum2, TKG)
         ess = sqrt(ess1 * ess2 / (ess1 + ess2))
 #elif   WRI_ENABLED
-        real(TKC) :: ess1, ess2
+        real(TKG) :: ess1, ess2
         CHECK_ASSERTION(__LINE__, 0 < weisum1, SK_"@getProbKS(): The condition `0 < weisum1` must hold. weisum1 = "//getStr(weisum1))
         CHECK_ASSERTION(__LINE__, 0 < wsqsum1, SK_"@getProbKS(): The condition `0 < wsqsum1` must hold. wsqsum1 = "//getStr(wsqsum1))
         CHECK_ASSERTION(__LINE__, 0 < weisum2, SK_"@getProbKS(): The condition `0 < weisum2` must hold. weisum2 = "//getStr(weisum2))
         ess1 = weisum1**2 / wsqsum1
-        ess2 = real(weisum2, TKC)
+        ess2 = real(weisum2, TKG)
         ess = sqrt(ess1 * ess2 / (ess1 + ess2))
 #elif   WRR_ENABLED
-        real(TKC) :: ess1, ess2
+        real(TKG) :: ess1, ess2
         CHECK_ASSERTION(__LINE__, 0 < weisum1, SK_"@getProbKS(): The condition `0 < weisum1` must hold. weisum1 = "//getStr(weisum1))
         CHECK_ASSERTION(__LINE__, 0 < wsqsum1, SK_"@getProbKS(): The condition `0 < wsqsum1` must hold. wsqsum1 = "//getStr(wsqsum1))
         CHECK_ASSERTION(__LINE__, 0 < weisum2, SK_"@getProbKS(): The condition `0 < weisum2` must hold. weisum2 = "//getStr(weisum2))
@@ -67,9 +67,9 @@
 #error  "Unrecognized interface."
 #endif
         CHECK_ASSERTION(__LINE__, 0 <= statKS, SK_"@getProbKS(): The condition `0 <= statKS` must hold. statKS = "//getStr(statKS))
-        quanKS = statKS * (ess + 0.12_TKC + 0.11_TKC / ess)
+        quanKS = statKS * (ess + 0.12_TKG + 0.11_TKG / ess)
         call setKolmCDF(probKS, quanKS)
-        probKS = 1._TKC - probKS
+        probKS = 1._TKG - probKS
 #else
         !%%%%%%%%%%%%%%%%%%%%%%%%
 #error  "Unrecognized interface."

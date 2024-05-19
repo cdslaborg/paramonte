@@ -119,9 +119,9 @@ module pm_val2complex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getComplexDef_LK5
 #endif
-        use pm_kind, only: CKC => CK, LKC => LK5
-        logical(LKC)                , intent(in)                    :: val
-        complex(CKC)                                                :: conversion
+        use pm_kind, only: CKG => CK, LKG => LK5
+        logical(LKG)                , intent(in)                    :: val
+        complex(CKG)                                                :: conversion
     end function
 #endif
 
@@ -130,9 +130,9 @@ module pm_val2complex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getComplexDef_LK4
 #endif
-        use pm_kind, only: CKC => CK, LKC => LK4
-        logical(LKC)                , intent(in)                    :: val
-        complex(CKC)                                                :: conversion
+        use pm_kind, only: CKG => CK, LKG => LK4
+        logical(LKG)                , intent(in)                    :: val
+        complex(CKG)                                                :: conversion
     end function
 #endif
 
@@ -141,9 +141,9 @@ module pm_val2complex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getComplexDef_LK3
 #endif
-        use pm_kind, only: CKC => CK, LKC => LK3
-        logical(LKC)                , intent(in)                    :: val
-        complex(CKC)                                                :: conversion
+        use pm_kind, only: CKG => CK, LKG => LK3
+        logical(LKG)                , intent(in)                    :: val
+        complex(CKG)                                                :: conversion
     end function
 #endif
 
@@ -152,9 +152,9 @@ module pm_val2complex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getComplexDef_LK2
 #endif
-        use pm_kind, only: CKC => CK, LKC => LK2
-        logical(LKC)                , intent(in)                    :: val
-        complex(CKC)                                                :: conversion
+        use pm_kind, only: CKG => CK, LKG => LK2
+        logical(LKG)                , intent(in)                    :: val
+        complex(CKG)                                                :: conversion
     end function
 #endif
 
@@ -163,9 +163,9 @@ module pm_val2complex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getComplexDef_LK1
 #endif
-        use pm_kind, only: CKC => CK, LKC => LK1
-        logical(LKC)                , intent(in)                    :: val
-        complex(CKC)                                                :: conversion
+        use pm_kind, only: CKG => CK, LKG => LK1
+        logical(LKG)                , intent(in)                    :: val
+        complex(CKG)                                                :: conversion
     end function
 #endif
 
@@ -176,9 +176,9 @@ module pm_val2complex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getComplexDef_SK5
 #endif
-        use pm_kind, only: CKC => CK, SKC => SK5
-        character(*,SKC)            , intent(in)                    :: val
-        complex(CKC)                                                :: conversion
+        use pm_kind, only: CKG => CK, SKG => SK5
+        character(*,SKG)            , intent(in)                    :: val
+        complex(CKG)                                                :: conversion
     end function
 #endif
 
@@ -187,9 +187,9 @@ module pm_val2complex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getComplexDef_SK4
 #endif
-        use pm_kind, only: CKC => CK, SKC => SK4
-        character(*,SKC)            , intent(in)                    :: val
-        complex(CKC)                                                :: conversion
+        use pm_kind, only: CKG => CK, SKG => SK4
+        character(*,SKG)            , intent(in)                    :: val
+        complex(CKG)                                                :: conversion
     end function
 #endif
 
@@ -198,9 +198,9 @@ module pm_val2complex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getComplexDef_SK3
 #endif
-        use pm_kind, only: CKC => CK, SKC => SK3
-        character(*,SKC)            , intent(in)                    :: val
-        complex(CKC)                                                :: conversion
+        use pm_kind, only: CKG => CK, SKG => SK3
+        character(*,SKG)            , intent(in)                    :: val
+        complex(CKG)                                                :: conversion
     end function
 #endif
 
@@ -209,9 +209,9 @@ module pm_val2complex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getComplexDef_SK2
 #endif
-        use pm_kind, only: CKC => CK, SKC => SK2
-        character(*,SKC)            , intent(in)                    :: val
-        complex(CKC)                                                :: conversion
+        use pm_kind, only: CKG => CK, SKG => SK2
+        character(*,SKG)            , intent(in)                    :: val
+        complex(CKG)                                                :: conversion
     end function
 #endif
 
@@ -220,9 +220,9 @@ module pm_val2complex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getComplexDef_SK1
 #endif
-        use pm_kind, only: CKC => CK, SKC => SK1
-        character(*,SKC)            , intent(in)                    :: val
-        complex(CKC)                                                :: conversion
+        use pm_kind, only: CKG => CK, SKG => SK1
+        character(*,SKG)            , intent(in)                    :: val
+        complex(CKG)                                                :: conversion
     end function
 #endif
 
@@ -310,9 +310,9 @@ module pm_val2complex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setComplexDef_CK5_LK5
 #endif
-        use pm_kind, only: CKC => CK5, LKC => LK5
-        complex(CKC)                , intent(out)                   :: conversion
-        logical(LKC)                , intent(in)                    :: val
+        use pm_kind, only: CKG => CK5, LKG => LK5
+        complex(CKG)                , intent(out)                   :: conversion
+        logical(LKG)                , intent(in)                    :: val
     end subroutine
 #endif
 
@@ -321,9 +321,9 @@ module pm_val2complex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setComplexDef_CK5_LK4
 #endif
-        use pm_kind, only: CKC => CK5, LKC => LK4
-        complex(CKC)                , intent(out)                   :: conversion
-        logical(LKC)                , intent(in)                    :: val
+        use pm_kind, only: CKG => CK5, LKG => LK4
+        complex(CKG)                , intent(out)                   :: conversion
+        logical(LKG)                , intent(in)                    :: val
     end subroutine
 #endif
 
@@ -332,9 +332,9 @@ module pm_val2complex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setComplexDef_CK5_LK3
 #endif
-        use pm_kind, only: CKC => CK5, LKC => LK3
-        complex(CKC)                , intent(out)                   :: conversion
-        logical(LKC)                , intent(in)                    :: val
+        use pm_kind, only: CKG => CK5, LKG => LK3
+        complex(CKG)                , intent(out)                   :: conversion
+        logical(LKG)                , intent(in)                    :: val
     end subroutine
 #endif
 
@@ -343,9 +343,9 @@ module pm_val2complex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setComplexDef_CK5_LK2
 #endif
-        use pm_kind, only: CKC => CK5, LKC => LK2
-        complex(CKC)                , intent(out)                   :: conversion
-        logical(LKC)                , intent(in)                    :: val
+        use pm_kind, only: CKG => CK5, LKG => LK2
+        complex(CKG)                , intent(out)                   :: conversion
+        logical(LKG)                , intent(in)                    :: val
     end subroutine
 #endif
 
@@ -354,9 +354,9 @@ module pm_val2complex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setComplexDef_CK5_LK1
 #endif
-        use pm_kind, only: CKC => CK5, LKC => LK1
-        complex(CKC)                , intent(out)                   :: conversion
-        logical(LKC)                , intent(in)                    :: val
+        use pm_kind, only: CKG => CK5, LKG => LK1
+        complex(CKG)                , intent(out)                   :: conversion
+        logical(LKG)                , intent(in)                    :: val
     end subroutine
 #endif
 
@@ -367,9 +367,9 @@ module pm_val2complex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setComplexDef_CK5_SK5
 #endif
-        use pm_kind, only: CKC => CK5, SKC => SK5
-        complex(CKC)                , intent(out)                   :: conversion
-        character(*,SKC)            , intent(in)                    :: val
+        use pm_kind, only: CKG => CK5, SKG => SK5
+        complex(CKG)                , intent(out)                   :: conversion
+        character(*,SKG)            , intent(in)                    :: val
     end subroutine
 #endif
 
@@ -378,9 +378,9 @@ module pm_val2complex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setComplexDef_CK5_SK4
 #endif
-        use pm_kind, only: CKC => CK5, SKC => SK4
-        complex(CKC)                , intent(out)                   :: conversion
-        character(*,SKC)            , intent(in)                    :: val
+        use pm_kind, only: CKG => CK5, SKG => SK4
+        complex(CKG)                , intent(out)                   :: conversion
+        character(*,SKG)            , intent(in)                    :: val
     end subroutine
 #endif
 
@@ -389,9 +389,9 @@ module pm_val2complex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setComplexDef_CK5_SK3
 #endif
-        use pm_kind, only: CKC => CK5, SKC => SK3
-        complex(CKC)                , intent(out)                   :: conversion
-        character(*,SKC)            , intent(in)                    :: val
+        use pm_kind, only: CKG => CK5, SKG => SK3
+        complex(CKG)                , intent(out)                   :: conversion
+        character(*,SKG)            , intent(in)                    :: val
     end subroutine
 #endif
 
@@ -400,9 +400,9 @@ module pm_val2complex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setComplexDef_CK5_SK2
 #endif
-        use pm_kind, only: CKC => CK5, SKC => SK2
-        complex(CKC)                , intent(out)                   :: conversion
-        character(*,SKC)            , intent(in)                    :: val
+        use pm_kind, only: CKG => CK5, SKG => SK2
+        complex(CKG)                , intent(out)                   :: conversion
+        character(*,SKG)            , intent(in)                    :: val
     end subroutine
 #endif
 
@@ -411,9 +411,9 @@ module pm_val2complex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setComplexDef_CK5_SK1
 #endif
-        use pm_kind, only: CKC => CK5, SKC => SK1
-        complex(CKC)                , intent(out)                   :: conversion
-        character(*,SKC)            , intent(in)                    :: val
+        use pm_kind, only: CKG => CK5, SKG => SK1
+        complex(CKG)                , intent(out)                   :: conversion
+        character(*,SKG)            , intent(in)                    :: val
     end subroutine
 #endif
 
@@ -430,9 +430,9 @@ module pm_val2complex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setComplexDef_CK4_LK5
 #endif
-        use pm_kind, only: CKC => CK4, LKC => LK5
-        complex(CKC)                , intent(out)                   :: conversion
-        logical(LKC)                , intent(in)                    :: val
+        use pm_kind, only: CKG => CK4, LKG => LK5
+        complex(CKG)                , intent(out)                   :: conversion
+        logical(LKG)                , intent(in)                    :: val
     end subroutine
 #endif
 
@@ -441,9 +441,9 @@ module pm_val2complex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setComplexDef_CK4_LK4
 #endif
-        use pm_kind, only: CKC => CK4, LKC => LK4
-        complex(CKC)                , intent(out)                   :: conversion
-        logical(LKC)                , intent(in)                    :: val
+        use pm_kind, only: CKG => CK4, LKG => LK4
+        complex(CKG)                , intent(out)                   :: conversion
+        logical(LKG)                , intent(in)                    :: val
     end subroutine
 #endif
 
@@ -452,9 +452,9 @@ module pm_val2complex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setComplexDef_CK4_LK3
 #endif
-        use pm_kind, only: CKC => CK4, LKC => LK3
-        complex(CKC)                , intent(out)                   :: conversion
-        logical(LKC)                , intent(in)                    :: val
+        use pm_kind, only: CKG => CK4, LKG => LK3
+        complex(CKG)                , intent(out)                   :: conversion
+        logical(LKG)                , intent(in)                    :: val
     end subroutine
 #endif
 
@@ -463,9 +463,9 @@ module pm_val2complex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setComplexDef_CK4_LK2
 #endif
-        use pm_kind, only: CKC => CK4, LKC => LK2
-        complex(CKC)                , intent(out)                   :: conversion
-        logical(LKC)                , intent(in)                    :: val
+        use pm_kind, only: CKG => CK4, LKG => LK2
+        complex(CKG)                , intent(out)                   :: conversion
+        logical(LKG)                , intent(in)                    :: val
     end subroutine
 #endif
 
@@ -474,9 +474,9 @@ module pm_val2complex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setComplexDef_CK4_LK1
 #endif
-        use pm_kind, only: CKC => CK4, LKC => LK1
-        complex(CKC)                , intent(out)                   :: conversion
-        logical(LKC)                , intent(in)                    :: val
+        use pm_kind, only: CKG => CK4, LKG => LK1
+        complex(CKG)                , intent(out)                   :: conversion
+        logical(LKG)                , intent(in)                    :: val
     end subroutine
 #endif
 
@@ -487,9 +487,9 @@ module pm_val2complex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setComplexDef_CK4_SK5
 #endif
-        use pm_kind, only: CKC => CK4, SKC => SK5
-        complex(CKC)                , intent(out)                   :: conversion
-        character(*,SKC)            , intent(in)                    :: val
+        use pm_kind, only: CKG => CK4, SKG => SK5
+        complex(CKG)                , intent(out)                   :: conversion
+        character(*,SKG)            , intent(in)                    :: val
     end subroutine
 #endif
 
@@ -498,9 +498,9 @@ module pm_val2complex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setComplexDef_CK4_SK4
 #endif
-        use pm_kind, only: CKC => CK4, SKC => SK4
-        complex(CKC)                , intent(out)                   :: conversion
-        character(*,SKC)            , intent(in)                    :: val
+        use pm_kind, only: CKG => CK4, SKG => SK4
+        complex(CKG)                , intent(out)                   :: conversion
+        character(*,SKG)            , intent(in)                    :: val
     end subroutine
 #endif
 
@@ -509,9 +509,9 @@ module pm_val2complex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setComplexDef_CK4_SK3
 #endif
-        use pm_kind, only: CKC => CK4, SKC => SK3
-        complex(CKC)                , intent(out)                   :: conversion
-        character(*,SKC)            , intent(in)                    :: val
+        use pm_kind, only: CKG => CK4, SKG => SK3
+        complex(CKG)                , intent(out)                   :: conversion
+        character(*,SKG)            , intent(in)                    :: val
     end subroutine
 #endif
 
@@ -520,9 +520,9 @@ module pm_val2complex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setComplexDef_CK4_SK2
 #endif
-        use pm_kind, only: CKC => CK4, SKC => SK2
-        complex(CKC)                , intent(out)                   :: conversion
-        character(*,SKC)            , intent(in)                    :: val
+        use pm_kind, only: CKG => CK4, SKG => SK2
+        complex(CKG)                , intent(out)                   :: conversion
+        character(*,SKG)            , intent(in)                    :: val
     end subroutine
 #endif
 
@@ -531,9 +531,9 @@ module pm_val2complex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setComplexDef_CK4_SK1
 #endif
-        use pm_kind, only: CKC => CK4, SKC => SK1
-        complex(CKC)                , intent(out)                   :: conversion
-        character(*,SKC)            , intent(in)                    :: val
+        use pm_kind, only: CKG => CK4, SKG => SK1
+        complex(CKG)                , intent(out)                   :: conversion
+        character(*,SKG)            , intent(in)                    :: val
     end subroutine
 #endif
 
@@ -550,9 +550,9 @@ module pm_val2complex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setComplexDef_CK3_LK5
 #endif
-        use pm_kind, only: CKC => CK3, LKC => LK5
-        complex(CKC)                , intent(out)                   :: conversion
-        logical(LKC)                , intent(in)                    :: val
+        use pm_kind, only: CKG => CK3, LKG => LK5
+        complex(CKG)                , intent(out)                   :: conversion
+        logical(LKG)                , intent(in)                    :: val
     end subroutine
 #endif
 
@@ -561,9 +561,9 @@ module pm_val2complex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setComplexDef_CK3_LK4
 #endif
-        use pm_kind, only: CKC => CK3, LKC => LK4
-        complex(CKC)                , intent(out)                   :: conversion
-        logical(LKC)                , intent(in)                    :: val
+        use pm_kind, only: CKG => CK3, LKG => LK4
+        complex(CKG)                , intent(out)                   :: conversion
+        logical(LKG)                , intent(in)                    :: val
     end subroutine
 #endif
 
@@ -572,9 +572,9 @@ module pm_val2complex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setComplexDef_CK3_LK3
 #endif
-        use pm_kind, only: CKC => CK3, LKC => LK3
-        complex(CKC)                , intent(out)                   :: conversion
-        logical(LKC)                , intent(in)                    :: val
+        use pm_kind, only: CKG => CK3, LKG => LK3
+        complex(CKG)                , intent(out)                   :: conversion
+        logical(LKG)                , intent(in)                    :: val
     end subroutine
 #endif
 
@@ -583,9 +583,9 @@ module pm_val2complex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setComplexDef_CK3_LK2
 #endif
-        use pm_kind, only: CKC => CK3, LKC => LK2
-        complex(CKC)                , intent(out)                   :: conversion
-        logical(LKC)                , intent(in)                    :: val
+        use pm_kind, only: CKG => CK3, LKG => LK2
+        complex(CKG)                , intent(out)                   :: conversion
+        logical(LKG)                , intent(in)                    :: val
     end subroutine
 #endif
 
@@ -594,9 +594,9 @@ module pm_val2complex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setComplexDef_CK3_LK1
 #endif
-        use pm_kind, only: CKC => CK3, LKC => LK1
-        complex(CKC)                , intent(out)                   :: conversion
-        logical(LKC)                , intent(in)                    :: val
+        use pm_kind, only: CKG => CK3, LKG => LK1
+        complex(CKG)                , intent(out)                   :: conversion
+        logical(LKG)                , intent(in)                    :: val
     end subroutine
 #endif
 
@@ -607,9 +607,9 @@ module pm_val2complex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setComplexDef_CK3_SK5
 #endif
-        use pm_kind, only: CKC => CK3, SKC => SK5
-        complex(CKC)                , intent(out)                   :: conversion
-        character(*,SKC)            , intent(in)                    :: val
+        use pm_kind, only: CKG => CK3, SKG => SK5
+        complex(CKG)                , intent(out)                   :: conversion
+        character(*,SKG)            , intent(in)                    :: val
     end subroutine
 #endif
 
@@ -618,9 +618,9 @@ module pm_val2complex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setComplexDef_CK3_SK4
 #endif
-        use pm_kind, only: CKC => CK3, SKC => SK4
-        complex(CKC)                , intent(out)                   :: conversion
-        character(*,SKC)            , intent(in)                    :: val
+        use pm_kind, only: CKG => CK3, SKG => SK4
+        complex(CKG)                , intent(out)                   :: conversion
+        character(*,SKG)            , intent(in)                    :: val
     end subroutine
 #endif
 
@@ -629,9 +629,9 @@ module pm_val2complex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setComplexDef_CK3_SK3
 #endif
-        use pm_kind, only: CKC => CK3, SKC => SK3
-        complex(CKC)                , intent(out)                   :: conversion
-        character(*,SKC)            , intent(in)                    :: val
+        use pm_kind, only: CKG => CK3, SKG => SK3
+        complex(CKG)                , intent(out)                   :: conversion
+        character(*,SKG)            , intent(in)                    :: val
     end subroutine
 #endif
 
@@ -640,9 +640,9 @@ module pm_val2complex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setComplexDef_CK3_SK2
 #endif
-        use pm_kind, only: CKC => CK3, SKC => SK2
-        complex(CKC)                , intent(out)                   :: conversion
-        character(*,SKC)            , intent(in)                    :: val
+        use pm_kind, only: CKG => CK3, SKG => SK2
+        complex(CKG)                , intent(out)                   :: conversion
+        character(*,SKG)            , intent(in)                    :: val
     end subroutine
 #endif
 
@@ -651,9 +651,9 @@ module pm_val2complex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setComplexDef_CK3_SK1
 #endif
-        use pm_kind, only: CKC => CK3, SKC => SK1
-        complex(CKC)                , intent(out)                   :: conversion
-        character(*,SKC)            , intent(in)                    :: val
+        use pm_kind, only: CKG => CK3, SKG => SK1
+        complex(CKG)                , intent(out)                   :: conversion
+        character(*,SKG)            , intent(in)                    :: val
     end subroutine
 #endif
 
@@ -670,9 +670,9 @@ module pm_val2complex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setComplexDef_CK2_LK5
 #endif
-        use pm_kind, only: CKC => CK2, LKC => LK5
-        complex(CKC)                , intent(out)                   :: conversion
-        logical(LKC)                , intent(in)                    :: val
+        use pm_kind, only: CKG => CK2, LKG => LK5
+        complex(CKG)                , intent(out)                   :: conversion
+        logical(LKG)                , intent(in)                    :: val
     end subroutine
 #endif
 
@@ -681,9 +681,9 @@ module pm_val2complex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setComplexDef_CK2_LK4
 #endif
-        use pm_kind, only: CKC => CK2, LKC => LK4
-        complex(CKC)                , intent(out)                   :: conversion
-        logical(LKC)                , intent(in)                    :: val
+        use pm_kind, only: CKG => CK2, LKG => LK4
+        complex(CKG)                , intent(out)                   :: conversion
+        logical(LKG)                , intent(in)                    :: val
     end subroutine
 #endif
 
@@ -692,9 +692,9 @@ module pm_val2complex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setComplexDef_CK2_LK3
 #endif
-        use pm_kind, only: CKC => CK2, LKC => LK3
-        complex(CKC)                , intent(out)                   :: conversion
-        logical(LKC)                , intent(in)                    :: val
+        use pm_kind, only: CKG => CK2, LKG => LK3
+        complex(CKG)                , intent(out)                   :: conversion
+        logical(LKG)                , intent(in)                    :: val
     end subroutine
 #endif
 
@@ -703,9 +703,9 @@ module pm_val2complex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setComplexDef_CK2_LK2
 #endif
-        use pm_kind, only: CKC => CK2, LKC => LK2
-        complex(CKC)                , intent(out)                   :: conversion
-        logical(LKC)                , intent(in)                    :: val
+        use pm_kind, only: CKG => CK2, LKG => LK2
+        complex(CKG)                , intent(out)                   :: conversion
+        logical(LKG)                , intent(in)                    :: val
     end subroutine
 #endif
 
@@ -714,9 +714,9 @@ module pm_val2complex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setComplexDef_CK2_LK1
 #endif
-        use pm_kind, only: CKC => CK2, LKC => LK1
-        complex(CKC)                , intent(out)                   :: conversion
-        logical(LKC)                , intent(in)                    :: val
+        use pm_kind, only: CKG => CK2, LKG => LK1
+        complex(CKG)                , intent(out)                   :: conversion
+        logical(LKG)                , intent(in)                    :: val
     end subroutine
 #endif
 
@@ -727,9 +727,9 @@ module pm_val2complex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setComplexDef_CK2_SK5
 #endif
-        use pm_kind, only: CKC => CK2, SKC => SK5
-        complex(CKC)                , intent(out)                   :: conversion
-        character(*,SKC)            , intent(in)                    :: val
+        use pm_kind, only: CKG => CK2, SKG => SK5
+        complex(CKG)                , intent(out)                   :: conversion
+        character(*,SKG)            , intent(in)                    :: val
     end subroutine
 #endif
 
@@ -738,9 +738,9 @@ module pm_val2complex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setComplexDef_CK2_SK4
 #endif
-        use pm_kind, only: CKC => CK2, SKC => SK4
-        complex(CKC)                , intent(out)                   :: conversion
-        character(*,SKC)            , intent(in)                    :: val
+        use pm_kind, only: CKG => CK2, SKG => SK4
+        complex(CKG)                , intent(out)                   :: conversion
+        character(*,SKG)            , intent(in)                    :: val
     end subroutine
 #endif
 
@@ -749,9 +749,9 @@ module pm_val2complex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setComplexDef_CK2_SK3
 #endif
-        use pm_kind, only: CKC => CK2, SKC => SK3
-        complex(CKC)                , intent(out)                   :: conversion
-        character(*,SKC)            , intent(in)                    :: val
+        use pm_kind, only: CKG => CK2, SKG => SK3
+        complex(CKG)                , intent(out)                   :: conversion
+        character(*,SKG)            , intent(in)                    :: val
     end subroutine
 #endif
 
@@ -760,9 +760,9 @@ module pm_val2complex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setComplexDef_CK2_SK2
 #endif
-        use pm_kind, only: CKC => CK2, SKC => SK2
-        complex(CKC)                , intent(out)                   :: conversion
-        character(*,SKC)            , intent(in)                    :: val
+        use pm_kind, only: CKG => CK2, SKG => SK2
+        complex(CKG)                , intent(out)                   :: conversion
+        character(*,SKG)            , intent(in)                    :: val
     end subroutine
 #endif
 
@@ -771,9 +771,9 @@ module pm_val2complex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setComplexDef_CK2_SK1
 #endif
-        use pm_kind, only: CKC => CK2, SKC => SK1
-        complex(CKC)                , intent(out)                   :: conversion
-        character(*,SKC)            , intent(in)                    :: val
+        use pm_kind, only: CKG => CK2, SKG => SK1
+        complex(CKG)                , intent(out)                   :: conversion
+        character(*,SKG)            , intent(in)                    :: val
     end subroutine
 #endif
 
@@ -790,9 +790,9 @@ module pm_val2complex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setComplexDef_CK1_LK5
 #endif
-        use pm_kind, only: CKC => CK1, LKC => LK5
-        complex(CKC)                , intent(out)                   :: conversion
-        logical(LKC)                , intent(in)                    :: val
+        use pm_kind, only: CKG => CK1, LKG => LK5
+        complex(CKG)                , intent(out)                   :: conversion
+        logical(LKG)                , intent(in)                    :: val
     end subroutine
 #endif
 
@@ -801,9 +801,9 @@ module pm_val2complex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setComplexDef_CK1_LK4
 #endif
-        use pm_kind, only: CKC => CK1, LKC => LK4
-        complex(CKC)                , intent(out)                   :: conversion
-        logical(LKC)                , intent(in)                    :: val
+        use pm_kind, only: CKG => CK1, LKG => LK4
+        complex(CKG)                , intent(out)                   :: conversion
+        logical(LKG)                , intent(in)                    :: val
     end subroutine
 #endif
 
@@ -812,9 +812,9 @@ module pm_val2complex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setComplexDef_CK1_LK3
 #endif
-        use pm_kind, only: CKC => CK1, LKC => LK3
-        complex(CKC)                , intent(out)                   :: conversion
-        logical(LKC)                , intent(in)                    :: val
+        use pm_kind, only: CKG => CK1, LKG => LK3
+        complex(CKG)                , intent(out)                   :: conversion
+        logical(LKG)                , intent(in)                    :: val
     end subroutine
 #endif
 
@@ -823,9 +823,9 @@ module pm_val2complex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setComplexDef_CK1_LK2
 #endif
-        use pm_kind, only: CKC => CK1, LKC => LK2
-        complex(CKC)                , intent(out)                   :: conversion
-        logical(LKC)                , intent(in)                    :: val
+        use pm_kind, only: CKG => CK1, LKG => LK2
+        complex(CKG)                , intent(out)                   :: conversion
+        logical(LKG)                , intent(in)                    :: val
     end subroutine
 #endif
 
@@ -834,9 +834,9 @@ module pm_val2complex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setComplexDef_CK1_LK1
 #endif
-        use pm_kind, only: CKC => CK1, LKC => LK1
-        complex(CKC)                , intent(out)                   :: conversion
-        logical(LKC)                , intent(in)                    :: val
+        use pm_kind, only: CKG => CK1, LKG => LK1
+        complex(CKG)                , intent(out)                   :: conversion
+        logical(LKG)                , intent(in)                    :: val
     end subroutine
 #endif
 
@@ -847,9 +847,9 @@ module pm_val2complex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setComplexDef_CK1_SK5
 #endif
-        use pm_kind, only: CKC => CK1, SKC => SK5
-        complex(CKC)                , intent(out)                   :: conversion
-        character(*,SKC)            , intent(in)                    :: val
+        use pm_kind, only: CKG => CK1, SKG => SK5
+        complex(CKG)                , intent(out)                   :: conversion
+        character(*,SKG)            , intent(in)                    :: val
     end subroutine
 #endif
 
@@ -858,9 +858,9 @@ module pm_val2complex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setComplexDef_CK1_SK4
 #endif
-        use pm_kind, only: CKC => CK1, SKC => SK4
-        complex(CKC)                , intent(out)                   :: conversion
-        character(*,SKC)            , intent(in)                    :: val
+        use pm_kind, only: CKG => CK1, SKG => SK4
+        complex(CKG)                , intent(out)                   :: conversion
+        character(*,SKG)            , intent(in)                    :: val
     end subroutine
 #endif
 
@@ -869,9 +869,9 @@ module pm_val2complex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setComplexDef_CK1_SK3
 #endif
-        use pm_kind, only: CKC => CK1, SKC => SK3
-        complex(CKC)                , intent(out)                   :: conversion
-        character(*,SKC)            , intent(in)                    :: val
+        use pm_kind, only: CKG => CK1, SKG => SK3
+        complex(CKG)                , intent(out)                   :: conversion
+        character(*,SKG)            , intent(in)                    :: val
     end subroutine
 #endif
 
@@ -880,9 +880,9 @@ module pm_val2complex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setComplexDef_CK1_SK2
 #endif
-        use pm_kind, only: CKC => CK1, SKC => SK2
-        complex(CKC)                , intent(out)                   :: conversion
-        character(*,SKC)            , intent(in)                    :: val
+        use pm_kind, only: CKG => CK1, SKG => SK2
+        complex(CKG)                , intent(out)                   :: conversion
+        character(*,SKG)            , intent(in)                    :: val
     end subroutine
 #endif
 
@@ -891,9 +891,9 @@ module pm_val2complex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setComplexDef_CK1_SK1
 #endif
-        use pm_kind, only: CKC => CK1, SKC => SK1
-        complex(CKC)                , intent(out)                   :: conversion
-        character(*,SKC)            , intent(in)                    :: val
+        use pm_kind, only: CKG => CK1, SKG => SK1
+        complex(CKG)                , intent(out)                   :: conversion
+        character(*,SKG)            , intent(in)                    :: val
     end subroutine
 #endif
 
@@ -913,9 +913,9 @@ module pm_val2complex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setComplexIO_CK5_SK5
 #endif
-        use pm_kind, only: CKC => CK5, SKC => SK5
-        complex(CKC)                , intent(out)                   :: conversion
-        character(*,SKC)            , intent(in)                    :: val
+        use pm_kind, only: CKG => CK5, SKG => SK5
+        complex(CKG)                , intent(out)                   :: conversion
+        character(*,SKG)            , intent(in)                    :: val
         integer(IK)                 , intent(out)                   :: iostat
     end subroutine
 #endif
@@ -925,9 +925,9 @@ module pm_val2complex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setComplexIO_CK5_SK4
 #endif
-        use pm_kind, only: CKC => CK5, SKC => SK4
-        complex(CKC)                , intent(out)                   :: conversion
-        character(*,SKC)            , intent(in)                    :: val
+        use pm_kind, only: CKG => CK5, SKG => SK4
+        complex(CKG)                , intent(out)                   :: conversion
+        character(*,SKG)            , intent(in)                    :: val
         integer(IK)                 , intent(out)                   :: iostat
     end subroutine
 #endif
@@ -937,9 +937,9 @@ module pm_val2complex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setComplexIO_CK5_SK3
 #endif
-        use pm_kind, only: CKC => CK5, SKC => SK3
-        complex(CKC)                , intent(out)                   :: conversion
-        character(*,SKC)            , intent(in)                    :: val
+        use pm_kind, only: CKG => CK5, SKG => SK3
+        complex(CKG)                , intent(out)                   :: conversion
+        character(*,SKG)            , intent(in)                    :: val
         integer(IK)                 , intent(out)                   :: iostat
     end subroutine
 #endif
@@ -949,9 +949,9 @@ module pm_val2complex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setComplexIO_CK5_SK2
 #endif
-        use pm_kind, only: CKC => CK5, SKC => SK2
-        complex(CKC)                , intent(out)                   :: conversion
-        character(*,SKC)            , intent(in)                    :: val
+        use pm_kind, only: CKG => CK5, SKG => SK2
+        complex(CKG)                , intent(out)                   :: conversion
+        character(*,SKG)            , intent(in)                    :: val
         integer(IK)                 , intent(out)                   :: iostat
     end subroutine
 #endif
@@ -961,9 +961,9 @@ module pm_val2complex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setComplexIO_CK5_SK1
 #endif
-        use pm_kind, only: CKC => CK5, SKC => SK1
-        complex(CKC)                , intent(out)                   :: conversion
-        character(*,SKC)            , intent(in)                    :: val
+        use pm_kind, only: CKG => CK5, SKG => SK1
+        complex(CKG)                , intent(out)                   :: conversion
+        character(*,SKG)            , intent(in)                    :: val
         integer(IK)                 , intent(out)                   :: iostat
     end subroutine
 #endif
@@ -981,9 +981,9 @@ module pm_val2complex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setComplexIO_CK4_SK5
 #endif
-        use pm_kind, only: CKC => CK4, SKC => SK5
-        complex(CKC)                , intent(out)                   :: conversion
-        character(*,SKC)            , intent(in)                    :: val
+        use pm_kind, only: CKG => CK4, SKG => SK5
+        complex(CKG)                , intent(out)                   :: conversion
+        character(*,SKG)            , intent(in)                    :: val
         integer(IK)                 , intent(out)                   :: iostat
     end subroutine
 #endif
@@ -993,9 +993,9 @@ module pm_val2complex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setComplexIO_CK4_SK4
 #endif
-        use pm_kind, only: CKC => CK4, SKC => SK4
-        complex(CKC)                , intent(out)                   :: conversion
-        character(*,SKC)            , intent(in)                    :: val
+        use pm_kind, only: CKG => CK4, SKG => SK4
+        complex(CKG)                , intent(out)                   :: conversion
+        character(*,SKG)            , intent(in)                    :: val
         integer(IK)                 , intent(out)                   :: iostat
     end subroutine
 #endif
@@ -1005,9 +1005,9 @@ module pm_val2complex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setComplexIO_CK4_SK3
 #endif
-        use pm_kind, only: CKC => CK4, SKC => SK3
-        complex(CKC)                , intent(out)                   :: conversion
-        character(*,SKC)            , intent(in)                    :: val
+        use pm_kind, only: CKG => CK4, SKG => SK3
+        complex(CKG)                , intent(out)                   :: conversion
+        character(*,SKG)            , intent(in)                    :: val
         integer(IK)                 , intent(out)                   :: iostat
     end subroutine
 #endif
@@ -1017,9 +1017,9 @@ module pm_val2complex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setComplexIO_CK4_SK2
 #endif
-        use pm_kind, only: CKC => CK4, SKC => SK2
-        complex(CKC)                , intent(out)                   :: conversion
-        character(*,SKC)            , intent(in)                    :: val
+        use pm_kind, only: CKG => CK4, SKG => SK2
+        complex(CKG)                , intent(out)                   :: conversion
+        character(*,SKG)            , intent(in)                    :: val
         integer(IK)                 , intent(out)                   :: iostat
     end subroutine
 #endif
@@ -1029,9 +1029,9 @@ module pm_val2complex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setComplexIO_CK4_SK1
 #endif
-        use pm_kind, only: CKC => CK4, SKC => SK1
-        complex(CKC)                , intent(out)                   :: conversion
-        character(*,SKC)            , intent(in)                    :: val
+        use pm_kind, only: CKG => CK4, SKG => SK1
+        complex(CKG)                , intent(out)                   :: conversion
+        character(*,SKG)            , intent(in)                    :: val
         integer(IK)                 , intent(out)                   :: iostat
     end subroutine
 #endif
@@ -1049,9 +1049,9 @@ module pm_val2complex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setComplexIO_CK3_SK5
 #endif
-        use pm_kind, only: CKC => CK3, SKC => SK5
-        complex(CKC)                , intent(out)                   :: conversion
-        character(*,SKC)            , intent(in)                    :: val
+        use pm_kind, only: CKG => CK3, SKG => SK5
+        complex(CKG)                , intent(out)                   :: conversion
+        character(*,SKG)            , intent(in)                    :: val
         integer(IK)                 , intent(out)                   :: iostat
     end subroutine
 #endif
@@ -1061,9 +1061,9 @@ module pm_val2complex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setComplexIO_CK3_SK4
 #endif
-        use pm_kind, only: CKC => CK3, SKC => SK4
-        complex(CKC)                , intent(out)                   :: conversion
-        character(*,SKC)            , intent(in)                    :: val
+        use pm_kind, only: CKG => CK3, SKG => SK4
+        complex(CKG)                , intent(out)                   :: conversion
+        character(*,SKG)            , intent(in)                    :: val
         integer(IK)                 , intent(out)                   :: iostat
     end subroutine
 #endif
@@ -1073,9 +1073,9 @@ module pm_val2complex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setComplexIO_CK3_SK3
 #endif
-        use pm_kind, only: CKC => CK3, SKC => SK3
-        complex(CKC)                , intent(out)                   :: conversion
-        character(*,SKC)            , intent(in)                    :: val
+        use pm_kind, only: CKG => CK3, SKG => SK3
+        complex(CKG)                , intent(out)                   :: conversion
+        character(*,SKG)            , intent(in)                    :: val
         integer(IK)                 , intent(out)                   :: iostat
     end subroutine
 #endif
@@ -1085,9 +1085,9 @@ module pm_val2complex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setComplexIO_CK3_SK2
 #endif
-        use pm_kind, only: CKC => CK3, SKC => SK2
-        complex(CKC)                , intent(out)                   :: conversion
-        character(*,SKC)            , intent(in)                    :: val
+        use pm_kind, only: CKG => CK3, SKG => SK2
+        complex(CKG)                , intent(out)                   :: conversion
+        character(*,SKG)            , intent(in)                    :: val
         integer(IK)                 , intent(out)                   :: iostat
     end subroutine
 #endif
@@ -1097,9 +1097,9 @@ module pm_val2complex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setComplexIO_CK3_SK1
 #endif
-        use pm_kind, only: CKC => CK3, SKC => SK1
-        complex(CKC)                , intent(out)                   :: conversion
-        character(*,SKC)            , intent(in)                    :: val
+        use pm_kind, only: CKG => CK3, SKG => SK1
+        complex(CKG)                , intent(out)                   :: conversion
+        character(*,SKG)            , intent(in)                    :: val
         integer(IK)                 , intent(out)                   :: iostat
     end subroutine
 #endif
@@ -1117,9 +1117,9 @@ module pm_val2complex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setComplexIO_CK2_SK5
 #endif
-        use pm_kind, only: CKC => CK2, SKC => SK5
-        complex(CKC)                , intent(out)                   :: conversion
-        character(*,SKC)            , intent(in)                    :: val
+        use pm_kind, only: CKG => CK2, SKG => SK5
+        complex(CKG)                , intent(out)                   :: conversion
+        character(*,SKG)            , intent(in)                    :: val
         integer(IK)                 , intent(out)                   :: iostat
     end subroutine
 #endif
@@ -1129,9 +1129,9 @@ module pm_val2complex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setComplexIO_CK2_SK4
 #endif
-        use pm_kind, only: CKC => CK2, SKC => SK4
-        complex(CKC)                , intent(out)                   :: conversion
-        character(*,SKC)            , intent(in)                    :: val
+        use pm_kind, only: CKG => CK2, SKG => SK4
+        complex(CKG)                , intent(out)                   :: conversion
+        character(*,SKG)            , intent(in)                    :: val
         integer(IK)                 , intent(out)                   :: iostat
     end subroutine
 #endif
@@ -1141,9 +1141,9 @@ module pm_val2complex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setComplexIO_CK2_SK3
 #endif
-        use pm_kind, only: CKC => CK2, SKC => SK3
-        complex(CKC)                , intent(out)                   :: conversion
-        character(*,SKC)            , intent(in)                    :: val
+        use pm_kind, only: CKG => CK2, SKG => SK3
+        complex(CKG)                , intent(out)                   :: conversion
+        character(*,SKG)            , intent(in)                    :: val
         integer(IK)                 , intent(out)                   :: iostat
     end subroutine
 #endif
@@ -1153,9 +1153,9 @@ module pm_val2complex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setComplexIO_CK2_SK2
 #endif
-        use pm_kind, only: CKC => CK2, SKC => SK2
-        complex(CKC)                , intent(out)                   :: conversion
-        character(*,SKC)            , intent(in)                    :: val
+        use pm_kind, only: CKG => CK2, SKG => SK2
+        complex(CKG)                , intent(out)                   :: conversion
+        character(*,SKG)            , intent(in)                    :: val
         integer(IK)                 , intent(out)                   :: iostat
     end subroutine
 #endif
@@ -1165,9 +1165,9 @@ module pm_val2complex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setComplexIO_CK2_SK1
 #endif
-        use pm_kind, only: CKC => CK2, SKC => SK1
-        complex(CKC)                , intent(out)                   :: conversion
-        character(*,SKC)            , intent(in)                    :: val
+        use pm_kind, only: CKG => CK2, SKG => SK1
+        complex(CKG)                , intent(out)                   :: conversion
+        character(*,SKG)            , intent(in)                    :: val
         integer(IK)                 , intent(out)                   :: iostat
     end subroutine
 #endif
@@ -1185,9 +1185,9 @@ module pm_val2complex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setComplexIO_CK1_SK5
 #endif
-        use pm_kind, only: CKC => CK1, SKC => SK5
-        complex(CKC)                , intent(out)                   :: conversion
-        character(*,SKC)            , intent(in)                    :: val
+        use pm_kind, only: CKG => CK1, SKG => SK5
+        complex(CKG)                , intent(out)                   :: conversion
+        character(*,SKG)            , intent(in)                    :: val
         integer(IK)                 , intent(out)                   :: iostat
     end subroutine
 #endif
@@ -1197,9 +1197,9 @@ module pm_val2complex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setComplexIO_CK1_SK4
 #endif
-        use pm_kind, only: CKC => CK1, SKC => SK4
-        complex(CKC)                , intent(out)                   :: conversion
-        character(*,SKC)            , intent(in)                    :: val
+        use pm_kind, only: CKG => CK1, SKG => SK4
+        complex(CKG)                , intent(out)                   :: conversion
+        character(*,SKG)            , intent(in)                    :: val
         integer(IK)                 , intent(out)                   :: iostat
     end subroutine
 #endif
@@ -1209,9 +1209,9 @@ module pm_val2complex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setComplexIO_CK1_SK3
 #endif
-        use pm_kind, only: CKC => CK1, SKC => SK3
-        complex(CKC)                , intent(out)                   :: conversion
-        character(*,SKC)            , intent(in)                    :: val
+        use pm_kind, only: CKG => CK1, SKG => SK3
+        complex(CKG)                , intent(out)                   :: conversion
+        character(*,SKG)            , intent(in)                    :: val
         integer(IK)                 , intent(out)                   :: iostat
     end subroutine
 #endif
@@ -1221,9 +1221,9 @@ module pm_val2complex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setComplexIO_CK1_SK2
 #endif
-        use pm_kind, only: CKC => CK1, SKC => SK2
-        complex(CKC)                , intent(out)                   :: conversion
-        character(*,SKC)            , intent(in)                    :: val
+        use pm_kind, only: CKG => CK1, SKG => SK2
+        complex(CKG)                , intent(out)                   :: conversion
+        character(*,SKG)            , intent(in)                    :: val
         integer(IK)                 , intent(out)                   :: iostat
     end subroutine
 #endif
@@ -1233,9 +1233,9 @@ module pm_val2complex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setComplexIO_CK1_SK1
 #endif
-        use pm_kind, only: CKC => CK1, SKC => SK1
-        complex(CKC)                , intent(out)                   :: conversion
-        character(*,SKC)            , intent(in)                    :: val
+        use pm_kind, only: CKG => CK1, SKG => SK1
+        complex(CKG)                , intent(out)                   :: conversion
+        character(*,SKG)            , intent(in)                    :: val
         integer(IK)                 , intent(out)                   :: iostat
     end subroutine
 #endif

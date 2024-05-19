@@ -140,11 +140,11 @@ module pm_quadTest
     !>  \AmirShahmoradi, Oct 16, 2009, 11:14 AM, Michigan
     abstract interface
         function get_proc(self, x) result(func)
-            use pm_kind, only: RKC => RKH
+            use pm_kind, only: RKG => RKH
             import :: integrand_type
             class(integrand_type)   , intent(in)    :: self
-            real(RKC)               , intent(in)    :: x
-            real(RKC)                               :: func
+            real(RKG)               , intent(in)    :: x
+            real(RKG)                               :: func
         end function
     end interface
 
@@ -213,11 +213,11 @@ module pm_quadTest
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: test_isFailedQuad_RKH
 #endif
-        use pm_kind, only: RKC => RKH
+        use pm_kind, only: RKG => RKH
         use pm_io, only: display_type
         type(display_type)      , intent(inout)         :: disp
         class(integrand_type)   , intent(in)            :: integrand
-        real(RKC)               , intent(in), optional  :: abstol, reltol
+        real(RKG)               , intent(in), optional  :: abstol, reltol
     end subroutine
     end interface
 
@@ -269,11 +269,11 @@ module pm_quadTest
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: test_getQuadErr_RKH
 #endif
-        use pm_kind, only: RKC => RKH
+        use pm_kind, only: RKG => RKH
         use pm_io, only: display_type
         type(display_type)      , intent(inout)         :: disp
         class(integrand_type)   , intent(in)            :: integrand
-        real(RKC)               , intent(in), optional  :: atol, rtol
+        real(RKG)               , intent(in), optional  :: atol, rtol
         integer(IK)             , intent(in), optional  :: nintmax
     end subroutine
     end interface
@@ -339,8 +339,8 @@ module pm_quadTest
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: int1_typer
 #endif
-        use pm_kind, only: RKC => RKH
-        real(RKC), intent(in), optional :: lb, ub
+        use pm_kind, only: RKG => RKH
+        real(RKG), intent(in), optional :: lb, ub
         type(int1_type)                 :: self
     end function
     end interface
@@ -353,10 +353,10 @@ module pm_quadTest
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getInt1
 #endif
-        use pm_kind, only: RKC => RKH
+        use pm_kind, only: RKG => RKH
         class(int1_type)    , intent(in)    :: self
-        real(RKC)           , intent(in)    :: x
-        real(RKC)                           :: func
+        real(RKG)           , intent(in)    :: x
+        real(RKG)                           :: func
     end function
     end interface
 
@@ -421,8 +421,8 @@ module pm_quadTest
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: int2_typer
 #endif
-        use pm_kind, only: RKC => RKH
-        real(RKC), intent(in), optional :: a, b
+        use pm_kind, only: RKG => RKH
+        real(RKG), intent(in), optional :: a, b
         type(int2_type)                 :: self
     end function
     end interface
@@ -433,10 +433,10 @@ module pm_quadTest
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getInt2
 #endif
-        use pm_kind, only: RKC => RKH
+        use pm_kind, only: RKG => RKH
         class(int2_type)    , intent(in)    :: self
-        real(RKC)           , intent(in)    :: x
-        real(RKC)                           :: func
+        real(RKG)           , intent(in)    :: x
+        real(RKG)                           :: func
     end function
     end interface
 
@@ -497,8 +497,8 @@ module pm_quadTest
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: int3_typer
 #endif
-        use pm_kind, only: RKC => RKH
-        real(RKC), intent(in), optional :: ub
+        use pm_kind, only: RKG => RKH
+        real(RKG), intent(in), optional :: ub
         type(int3_type)                 :: self
     end function
     end interface
@@ -509,10 +509,10 @@ module pm_quadTest
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getInt3
 #endif
-        use pm_kind, only: RKC => RKH
+        use pm_kind, only: RKG => RKH
         class(int3_type)    , intent(in)    :: self
-        real(RKC)           , intent(in)    :: x
-        real(RKC)                           :: func
+        real(RKG)           , intent(in)    :: x
+        real(RKG)                           :: func
     end function
     end interface
 
@@ -566,7 +566,7 @@ module pm_quadTest
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: int4_typer
 #endif
-        use pm_kind, only: RKC => RKH
+        use pm_kind, only: RKG => RKH
         type(int4_type) :: self
     end function
     end interface
@@ -577,10 +577,10 @@ module pm_quadTest
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getInt4
 #endif
-        use pm_kind, only: RKC => RKH
+        use pm_kind, only: RKG => RKH
         class(int4_type), intent(in)    :: self
-        real(RKC)       , intent(in)    :: x
-        real(RKC)                       :: func
+        real(RKG)       , intent(in)    :: x
+        real(RKG)                       :: func
     end function
     end interface
 
@@ -645,8 +645,8 @@ module pm_quadTest
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: int5_typer
 #endif
-        use pm_kind, only: RKC => RKH
-        real(RKC), intent(in)   :: lb, ub
+        use pm_kind, only: RKG => RKH
+        real(RKG), intent(in)   :: lb, ub
         type(int5_type)         :: self
     end function
     end interface
@@ -657,10 +657,10 @@ module pm_quadTest
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getInt5
 #endif
-        use pm_kind, only: RKC => RKH
+        use pm_kind, only: RKG => RKH
         class(int5_type), intent(in)    :: self
-        real(RKC)       , intent(in)    :: x
-        real(RKC)                       :: func
+        real(RKG)       , intent(in)    :: x
+        real(RKG)                       :: func
     end function
     end interface
 
@@ -714,7 +714,7 @@ module pm_quadTest
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: int6_typer
 #endif
-        use pm_kind, only: RKC => RKH
+        use pm_kind, only: RKG => RKH
         type(int6_type) :: self
     end function
     end interface
@@ -725,10 +725,10 @@ module pm_quadTest
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getInt6
 #endif
-        use pm_kind, only: RKC => RKH
+        use pm_kind, only: RKG => RKH
         class(int6_type), intent(in)    :: self
-        real(RKC)       , intent(in)    :: x
-        real(RKC)                       :: func
+        real(RKG)       , intent(in)    :: x
+        real(RKG)                       :: func
     end function
     end interface
 
@@ -787,7 +787,7 @@ module pm_quadTest
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: int7_typer
 #endif
-        use pm_kind, only: RKC => RKH
+        use pm_kind, only: RKG => RKH
         type(int7_type) :: self
     end function
     end interface
@@ -798,10 +798,10 @@ module pm_quadTest
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getInt7
 #endif
-        use pm_kind, only: RKC => RKH
+        use pm_kind, only: RKG => RKH
         class(int7_type), intent(in)    :: self
-        real(RKC)       , intent(in)    :: x
-        real(RKC)                       :: func
+        real(RKG)       , intent(in)    :: x
+        real(RKG)                       :: func
     end function
     end interface
 
@@ -860,7 +860,7 @@ module pm_quadTest
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: int8_typer
 #endif
-        use pm_kind, only: RKC => RKH
+        use pm_kind, only: RKG => RKH
         type(int8_type) :: self
     end function
     end interface
@@ -871,10 +871,10 @@ module pm_quadTest
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getInt8
 #endif
-        use pm_kind, only: RKC => RKH
+        use pm_kind, only: RKG => RKH
         class(int8_type), intent(in)    :: self
-        real(RKC)       , intent(in)    :: x
-        real(RKC)                       :: func
+        real(RKG)       , intent(in)    :: x
+        real(RKG)                       :: func
     end function
     end interface
 
@@ -937,7 +937,7 @@ module pm_quadTest
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: int9_typer
 #endif
-        use pm_kind, only: RKC => RKH
+        use pm_kind, only: RKG => RKH
         type(int9_type) :: self
     end function
     end interface
@@ -948,10 +948,10 @@ module pm_quadTest
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getInt9
 #endif
-        use pm_kind, only: RKC => RKH
+        use pm_kind, only: RKG => RKH
         class(int9_type), intent(in)    :: self
-        real(RKC)       , intent(in)    :: x
-        real(RKC)                       :: func
+        real(RKG)       , intent(in)    :: x
+        real(RKG)                       :: func
     end function
     end interface
 
@@ -1035,8 +1035,8 @@ module pm_quadTest
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: intGamUpp_typer
 #endif
-        use pm_kind, only: RKC => RKH
-        real(RKC), intent(in), optional :: lb, ub, alpha, beta
+        use pm_kind, only: RKG => RKH
+        real(RKG), intent(in), optional :: lb, ub, alpha, beta
         type(intGamUpp_type) :: self
     end function
     end interface
@@ -1047,10 +1047,10 @@ module pm_quadTest
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getIntGamUpp
 #endif
-        use pm_kind, only: RKC => RKH
+        use pm_kind, only: RKG => RKH
         class(intGamUpp_type), intent(in) :: self
-        real(RKC), intent(in) :: x
-        real(RKC) :: func
+        real(RKG), intent(in) :: x
+        real(RKG) :: func
     end function
     end interface
 
@@ -1121,9 +1121,9 @@ module pm_quadTest
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: intSinCos_typer
 #endif
-        use pm_kind, only: RKC => RKH
+        use pm_kind, only: RKG => RKH
         integer(IK) , intent(in), optional  :: lf, uf
-        real(RKC)   , intent(in), optional  :: a, b
+        real(RKG)   , intent(in), optional  :: a, b
         type(intSinCos_type)                :: self
     end function
     end interface
@@ -1134,10 +1134,10 @@ module pm_quadTest
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getIntSinCos
 #endif
-        use pm_kind, only: RKC => RKH
+        use pm_kind, only: RKG => RKH
         class(intSinCos_type)  , intent(in) :: self
-        real(RKC)           , intent(in)    :: x
-        real(RKC)                           :: func
+        real(RKG)           , intent(in)    :: x
+        real(RKG)                           :: func
     end function
     end interface
 
@@ -1202,8 +1202,8 @@ module pm_quadTest
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: intNormPDF_typer
 #endif
-        use pm_kind, only: RKC => RKH
-        real(RKC), intent(in), optional :: lb, ub, mu, sigma
+        use pm_kind, only: RKG => RKH
+        real(RKG), intent(in), optional :: lb, ub, mu, sigma
         type(intNormPDF_type)           :: self
     end function
     end interface
@@ -1214,10 +1214,10 @@ module pm_quadTest
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getIntNormPDF
 #endif
-        use pm_kind, only: RKC => RKH
+        use pm_kind, only: RKG => RKH
         class(intNormPDF_type)  , intent(in)    :: self
-        real(RKC)               , intent(in)    :: x
-        real(RKC)                               :: func
+        real(RKG)               , intent(in)    :: x
+        real(RKG)                               :: func
     end function
     end interface
 
@@ -1283,8 +1283,8 @@ module pm_quadTest
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: intLogNormPDF_typer
 #endif
-        use pm_kind, only: RKC => RKH
-        real(RKC), intent(in), optional :: lb, ub, mu, sigma
+        use pm_kind, only: RKG => RKH
+        real(RKG), intent(in), optional :: lb, ub, mu, sigma
         type(intLogNormPDF_type)        :: self
     end function
     end interface
@@ -1295,10 +1295,10 @@ module pm_quadTest
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getIntLogNormPDF
 #endif
-        use pm_kind, only: RKC => RKH
+        use pm_kind, only: RKG => RKH
         class(intLogNormPDF_type)   , intent(in)    :: self
-        real(RKC)                   , intent(in)    :: x
-        real(RKC)                                   :: func
+        real(RKG)                   , intent(in)    :: x
+        real(RKG)                                   :: func
     end function
     end interface
 
@@ -1361,8 +1361,8 @@ module pm_quadTest
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: intGenExpGammaPDF_typer
 #endif
-        use pm_kind, only: RKC => RKH
-        real(RKC)   , intent(in), optional  :: lb, ub, kappa, invOmega, logSigma
+        use pm_kind, only: RKG => RKH
+        real(RKG)   , intent(in), optional  :: lb, ub, kappa, invOmega, logSigma
         type(intGenExpGammaPDF_type)        :: self
     end function
     end interface
@@ -1373,10 +1373,10 @@ module pm_quadTest
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getIntGenExpGammaPDF
 #endif
-        use pm_kind, only: RKC => RKH
+        use pm_kind, only: RKG => RKH
         class(intGenExpGammaPDF_type)   , intent(in)    :: self
-        real(RKC)                       , intent(in)    :: x
-        real(RKC)                                       :: func
+        real(RKG)                       , intent(in)    :: x
+        real(RKG)                                       :: func
     end function
     end interface
 
@@ -1436,7 +1436,7 @@ module pm_quadTest
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: intPentaGammaInf_typer
 #endif
-        use pm_kind, only: RKC => RKH
+        use pm_kind, only: RKG => RKH
         type(intPentaGammaInf_type) :: self
     end function
     end interface
@@ -1447,10 +1447,10 @@ module pm_quadTest
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getIntPentaGammaInf
 #endif
-        use pm_kind, only: RKC => RKH
+        use pm_kind, only: RKG => RKH
         class(intPentaGammaInf_type), intent(in)    :: self
-        real(RKC)                   , intent(in)    :: x
-        real(RKC)                                   :: func
+        real(RKG)                   , intent(in)    :: x
+        real(RKG)                                   :: func
     end function
     end interface
 
@@ -1477,7 +1477,7 @@ module pm_quadTest
     !>  \param[in]  lb      :   The input negative scalar of type `real` of kind \RKH, containing the lower limit of integration.<br>
     !>                          (**optional**, default = `0._RK`)<br>
     !>  \param[in]  ub      :   The input positive scalar of the same type and kind as `lb`, containing the upper limit of integration.<br>
-    !>                          (**optional**, default = [getInfPos(0._RKC)](@ref pm_except::getInfPos))<br>
+    !>                          (**optional**, default = [getInfPos(0._RKG)](@ref pm_except::getInfPos))<br>
     !>
     !>  \interface{intDoncker1_type}
     !>  \code{.F90}
@@ -1514,8 +1514,8 @@ module pm_quadTest
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: intDoncker1_typer
 #endif
-        use pm_kind, only: RKC => RKH
-        real(RKC), intent(in), optional :: lb, ub
+        use pm_kind, only: RKG => RKH
+        real(RKG), intent(in), optional :: lb, ub
         type(intDoncker1_type)          :: self
     end function
     end interface
@@ -1526,10 +1526,10 @@ module pm_quadTest
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getIntDoncker1
 #endif
-        use pm_kind, only: RKC => RKH
+        use pm_kind, only: RKG => RKH
         class(intDoncker1_type) , intent(in)    :: self
-        real(RKC)               , intent(in)    :: x
-        real(RKC)                               :: func
+        real(RKG)               , intent(in)    :: x
+        real(RKG)                               :: func
     end function
     end interface
 
@@ -1554,7 +1554,7 @@ module pm_quadTest
     !>  This integrand is an extension of the example discussed in Doncker et al (1976), Automatic Computation of Integrals with Singular integrand.<br>
     !>
     !>  \param[in]  lb      :   The input negative scalar of type `real` of kind \RKH, containing the lower limit of integration.<br>
-    !>                          (**optional**, default = [getInfNeg(0._RKC)](@ref pm_except::getInfNeg))<br>
+    !>                          (**optional**, default = [getInfNeg(0._RKG)](@ref pm_except::getInfNeg))<br>
     !>  \param[in]  ub      :   The input positive scalar of the same type and kind as `lb`, containing the upper limit of integration.<br>
     !>                          (**optional**, default = `0._RK`)<br>
     !>
@@ -1597,8 +1597,8 @@ module pm_quadTest
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: intDoncker2_typer
 #endif
-        use pm_kind, only: RKC => RKH
-        real(RKC), intent(in), optional :: lb, ub
+        use pm_kind, only: RKG => RKH
+        real(RKG), intent(in), optional :: lb, ub
         type(intDoncker2_type)          :: self
     end function
     end interface
@@ -1609,10 +1609,10 @@ module pm_quadTest
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getIntDoncker2
 #endif
-        use pm_kind, only: RKC => RKH
+        use pm_kind, only: RKG => RKH
         class(intDoncker2_type) , intent(in)    :: self
-        real(RKC)               , intent(in)    :: x
-        real(RKC)                               :: func
+        real(RKG)               , intent(in)    :: x
+        real(RKG)                               :: func
     end function
     end interface
 
@@ -1673,8 +1673,8 @@ module pm_quadTest
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: intCauchy1_typer
 #endif
-        use pm_kind, only: RKC => RKH
-        real(RKC)   , intent(in), optional  :: lb, ub, cs
+        use pm_kind, only: RKG => RKH
+        real(RKG)   , intent(in), optional  :: lb, ub, cs
         type(intCauchy1_type)               :: self
     end function
     end interface
@@ -1685,10 +1685,10 @@ module pm_quadTest
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getIntCauchy1
 #endif
-        use pm_kind, only: RKC => RKH
+        use pm_kind, only: RKG => RKH
         class(intCauchy1_type)  , intent(in)    :: self
-        real(RKC)               , intent(in)    :: x
-        real(RKC)                               :: func
+        real(RKG)               , intent(in)    :: x
+        real(RKG)                               :: func
     end function
     end interface
 
@@ -1769,8 +1769,8 @@ module pm_quadTest
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: intCauchy2_typer
 #endif
-        use pm_kind, only: RKC => RKH
-        real(RKC)   , intent(in), optional  :: lb, ub, cs1, cs2
+        use pm_kind, only: RKG => RKH
+        real(RKG)   , intent(in), optional  :: lb, ub, cs1, cs2
         type(intCauchy2_type)               :: self
     end function
     end interface
@@ -1781,10 +1781,10 @@ module pm_quadTest
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getIntCauchy2
 #endif
-        use pm_kind, only: RKC => RKH
+        use pm_kind, only: RKG => RKH
         class(intCauchy2_type)  , intent(in)    :: self
-        real(RKC)               , intent(in)    :: x
-        real(RKC)                               :: func
+        real(RKG)               , intent(in)    :: x
+        real(RKG)                               :: func
     end function
     end interface
 

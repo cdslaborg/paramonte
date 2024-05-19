@@ -39,17 +39,17 @@
 #if     getReversed_D0_SK_ENABLED || setReversed_D0_SK_ENABLED
 #define GET_SIZE len
 #define ALL
-        character(:,SKC), allocatable :: Array, arrayNew, ArrayNew_ref
+        character(:,SKG), allocatable :: Array, arrayNew, ArrayNew_ref
 #elif   getReversed_D1_SK_ENABLED || setReversed_D1_SK_ENABLED
-        character(2,SKC), dimension(:), allocatable :: Array, arrayNew, ArrayNew_ref
+        character(2,SKG), dimension(:), allocatable :: Array, arrayNew, ArrayNew_ref
 #elif   getReversed_D1_IK_ENABLED || setReversed_D1_IK_ENABLED
-        integer(IKC)    , dimension(:), allocatable :: Array, arrayNew, ArrayNew_ref
+        integer(IKG)    , dimension(:), allocatable :: Array, arrayNew, ArrayNew_ref
 #elif   getReversed_D1_CK_ENABLED || setReversed_D1_CK_ENABLED
-        complex(CKC)    , dimension(:), allocatable :: Array, arrayNew, ArrayNew_ref
+        complex(CKG)    , dimension(:), allocatable :: Array, arrayNew, ArrayNew_ref
 #elif   getReversed_D1_RK_ENABLED || setReversed_D1_RK_ENABLED
-        real(RKC)       , dimension(:), allocatable :: Array, arrayNew, ArrayNew_ref
+        real(RKG)       , dimension(:), allocatable :: Array, arrayNew, ArrayNew_ref
 #elif   getReversed_D1_LK_ENABLED || setReversed_D1_LK_ENABLED
-        logical(LKC)    , dimension(:), allocatable :: Array, arrayNew, ArrayNew_ref
+        logical(LKG)    , dimension(:), allocatable :: Array, arrayNew, ArrayNew_ref
 #else
 #error  "Unrecognized interface."
 #endif
@@ -90,7 +90,7 @@
             Array = ""
             ArrayNew_ref = ""
 #elif       getReversed_D1_SK_ENABLED || setReversed_D1_SK_ENABLED
-            allocate(character(2,SKC) :: Array(0), ArrayNew_ref(0))
+            allocate(character(2,SKG) :: Array(0), ArrayNew_ref(0))
 #elif       getReversed_D1_IK_ENABLED || setReversed_D1_IK_ENABLED
             allocate(Array(0), ArrayNew_ref(0))
 #elif       getReversed_D1_CK_ENABLED || setReversed_D1_CK_ENABLED
@@ -112,17 +112,17 @@
             Array = [" "]
             ArrayNew_ref = [" "]
 #elif       getReversed_D1_IK_ENABLED || setReversed_D1_IK_ENABLED
-            Array = [1_IKC]
-            ArrayNew_ref = [1_IKC]
+            Array = [1_IKG]
+            ArrayNew_ref = [1_IKG]
 #elif       getReversed_D1_CK_ENABLED || setReversed_D1_CK_ENABLED
-            Array = [(+1._CKC, -1._CKC)]
-            ArrayNew_ref = [(+1._CKC, -1._CKC)]
+            Array = [(+1._CKG, -1._CKG)]
+            ArrayNew_ref = [(+1._CKG, -1._CKG)]
 #elif       getReversed_D1_RK_ENABLED || setReversed_D1_RK_ENABLED
-            Array = [1._RKC]
-            ArrayNew_ref = [1._RKC]
+            Array = [1._RKG]
+            ArrayNew_ref = [1._RKG]
 #elif       getReversed_D1_LK_ENABLED || setReversed_D1_LK_ENABLED
-            Array = [.true._LKC]
-            ArrayNew_ref = [.true._LKC]
+            Array = [.true._LKG]
+            ArrayNew_ref = [.true._LKG]
 #endif
             call report()
             call test%assert(assertion, PROCEDURE_NAME//SK_": An array of length 1 has a reversed array of length 1.", int(__LINE__, IK))
@@ -136,16 +136,16 @@
             Array = ["AA", "BB", "CC", "DD", "EE", "  "]
             ArrayNew_ref = Array(size(Array):1:-1)
 #elif       getReversed_D1_IK_ENABLED || setReversed_D1_IK_ENABLED
-            Array = [1_IKC, 2_IKC, 3_IKC, 4_IKC, 5_IKC, 6_IKC]
+            Array = [1_IKG, 2_IKG, 3_IKG, 4_IKG, 5_IKG, 6_IKG]
             ArrayNew_ref = Array(size(Array):1:-1)
 #elif       getReversed_D1_CK_ENABLED || setReversed_D1_CK_ENABLED
-            Array = [(+1._CKC, -1._CKC), (+2._CKC, -2._CKC), (+3._CKC, -3._CKC), (+4._CKC, -4._CKC), (+5._CKC, -5._CKC), (+6._CKC, -6._CKC)]
+            Array = [(+1._CKG, -1._CKG), (+2._CKG, -2._CKG), (+3._CKG, -3._CKG), (+4._CKG, -4._CKG), (+5._CKG, -5._CKG), (+6._CKG, -6._CKG)]
             ArrayNew_ref = Array(size(Array):1:-1)
 #elif       getReversed_D1_RK_ENABLED || setReversed_D1_RK_ENABLED
-            Array = [1._RKC, 2._RKC, 3._RKC, 4._RKC, 5._RKC, 6._RKC]
+            Array = [1._RKG, 2._RKG, 3._RKG, 4._RKG, 5._RKG, 6._RKG]
             ArrayNew_ref = Array(size(Array):1:-1)
 #elif       getReversed_D1_LK_ENABLED || setReversed_D1_LK_ENABLED
-            Array = [.false._LKC, .true._LKC, .false._LKC, .true._LKC, .false._LKC, .true._LKC]
+            Array = [.false._LKG, .true._LKG, .false._LKG, .true._LKG, .false._LKG, .true._LKG]
             ArrayNew_ref = Array(size(Array):1:-1)
 #endif
             call report()

@@ -29,19 +29,19 @@ CHECK_ASSERTION(__LINE__, abs(LF - lf) < abstol, SK_"@setRoot(): The condition `
 #define CHECK_UF(UF) \
 CHECK_ASSERTION(__LINE__, abs(UF - uf) < abstol, SK_"@setRoot(): The condition `abs(getFunc(ub), uf) < abstol` must hold. ub, getFunc(ub), uf, abstol = "//getStr([ub, UF, uf, abstol]))
 #define CHECK_BRACKET \
-CHECK_ASSERTION(__LINE__, sign(lf, 1._RKC) /= sign(uf, 1._RKC), \
+CHECK_ASSERTION(__LINE__, sign(lf, 1._RKG) /= sign(uf, 1._RKG), \
 SK_"@setRoot(): The condition `sign(lf, 1.) /= sign(uf, 1.)` must hold. lf, uf = "//getStr([lf, uf])) ! fpp
 #define CHECK_LB_LT_UB \
 CHECK_ASSERTION(__LINE__, lb < ub, SK_"@setRoot(): The condition `lb < ub` must hold. lb, ub = "//getStr([lb, ub])) ! fpp
 #define CHECK_ZERO_LT_ABSTOL \
-CHECK_ASSERTION(__LINE__, 0._RKC < abstol, SK_"@setRoot(): The condition `0. < abstol` must hold. abstol = "//getStr(abstol)) ! fpp
+CHECK_ASSERTION(__LINE__, 0._RKG < abstol, SK_"@setRoot(): The condition `0. < abstol` must hold. abstol = "//getStr(abstol)) ! fpp
 #define CHECK_ABSTOL_LT_LB_UB_DIFF \
 CHECK_ASSERTION(__LINE__, abstol < ub - lb, \
 SK_"@setRoot(): The condition `abstol < ub - lb` must hold. abstol, ub, lb = "//getStr([abstol, ub, lb])) ! fpp
-        real(RKC), parameter :: EPS10 = 10 * epsilon(0._RKC)
+        real(RKG), parameter :: EPS10 = 10 * epsilon(0._RKG)
 #if     Fixed_ENABLED
 #define CHECK_ZERO_LT_NITER
-        integer(IK), parameter :: NITER = ceiling(50 * precision(0._RKC) / log10(2._RKC))
+        integer(IK), parameter :: NITER = ceiling(50 * precision(0._RKG) / log10(2._RKG))
 #elif   Niter_ENABLED
 #define CHECK_ZERO_LT_NITER \
 CHECK_ASSERTION(__LINE__, 0_IK < niter, SK_"@setRoot(): The condition `0 < niter` must hold. niter = "//getStr(niter)) ! fpp
@@ -58,12 +58,12 @@ CHECK_ASSERTION(__LINE__, 0_IK < niter, SK_"@setRoot(): The condition `0 < niter
 #elif   getRoot_ENABLED
         !%%%%%%%%%%%%%%
 
-        real(RKC)   :: abstol_def, lf, uf
+        real(RKG)   :: abstol_def, lf, uf
         integer(IK) :: neval_def
         if (present(abstol)) then
             abstol_def = abstol
         else
-            abstol_def = epsilon(0._RKC)**.8 * (abs(lb) + abs(ub))
+            abstol_def = epsilon(0._RKG)**.8 * (abs(lb) + abs(ub))
         end if
 #if     Newton_ENABLED || Halley_ENABLED || Schroder_ENABLED
         lf = getFunc(lb, 0_IK)
@@ -71,7 +71,7 @@ CHECK_ASSERTION(__LINE__, 0_IK < niter, SK_"@setRoot(): The condition `0 < niter
         if (present(init)) then
             root = init
         else
-            root = 0.5_RKC * (lb + ub)
+            root = 0.5_RKG * (lb + ub)
         end if
 #elif   False_ENABLED || Bisection_ENABLED || Secant_ENABLED || Brent_ENABLED || Ridders_ENABLED || TOMS748_ENABLED
         lf = getFunc(lb)
@@ -94,7 +94,7 @@ CHECK_ASSERTION(__LINE__, 0_IK < niter, SK_"@setRoot(): The condition `0 < niter
 #elif   setRoot_ENABLED && False_ENABLED
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        real(RKC) :: diff, interval, func
+        real(RKG) :: diff, interval, func
         if (abs(lf) <= EPS10) then
             neval = 0_IK
             root = lb
@@ -102,7 +102,7 @@ CHECK_ASSERTION(__LINE__, 0_IK < niter, SK_"@setRoot(): The condition `0 < niter
             neval = 0_IK
             root = ub
         elseif (abs(ub - lb) < abstol) then
-            root = .5_RKC * (ub + lb)
+            root = .5_RKG * (ub + lb)
             neval = 0_IK
         else
             CHECK_BRACKET
@@ -111,7 +111,7 @@ CHECK_ASSERTION(__LINE__, 0_IK < niter, SK_"@setRoot(): The condition `0 < niter
             CHECK_LF(getFunc(lb))
             CHECK_UF(getFunc(ub))
             CHECK_ABSTOL_LT_LB_UB_DIFF
-            if (0._RKC <= lf) then
+            if (0._RKG <= lf) then
                 diff = lb
                 lb = ub
                 ub = diff
@@ -123,7 +123,7 @@ CHECK_ASSERTION(__LINE__, 0_IK < niter, SK_"@setRoot(): The condition `0 < niter
             do neval = 1_IK, niter
                 root = lb + interval * lf / (lf - uf)
                 func = getFunc(root)
-                if (func < 0._RKC) then
+                if (func < 0._RKG) then
                     diff = lb - root
                     lb = root
                     lf = func
@@ -133,10 +133,10 @@ CHECK_ASSERTION(__LINE__, 0_IK < niter, SK_"@setRoot(): The condition `0 < niter
                     uf = func
                 end if
                 interval = ub - lb
-                if (abs(diff) < abstol .or. func == 0._RKC) return
+                if (abs(diff) < abstol .or. func == 0._RKG) return
             end do
             ! Error occurred.
-            root = .5_RKC * (lb + ub) ! for the sake of defining `root` on output (important for tests).
+            root = .5_RKG * (lb + ub) ! for the sake of defining `root` on output (important for tests).
             neval = -neval
         end if
 
@@ -144,7 +144,7 @@ CHECK_ASSERTION(__LINE__, 0_IK < niter, SK_"@setRoot(): The condition `0 < niter
 #elif   setRoot_ENABLED && Bisection_ENABLED
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        real(RKC) :: delta, center
+        real(RKG) :: delta, center
         if (abs(lf) <= EPS10) then
             neval = 0_IK
             root = lb
@@ -152,7 +152,7 @@ CHECK_ASSERTION(__LINE__, 0_IK < niter, SK_"@setRoot(): The condition `0 < niter
             neval = 0_IK
             root = ub
         elseif (abs(ub - lb) < abstol) then
-            root = .5_RKC * (ub + lb)
+            root = .5_RKG * (ub + lb)
             neval = 0_IK
         else
             CHECK_BRACKET
@@ -162,7 +162,7 @@ CHECK_ASSERTION(__LINE__, 0_IK < niter, SK_"@setRoot(): The condition `0 < niter
             CHECK_LF(getFunc(lb))
             CHECK_UF(getFunc(ub))
             CHECK_ABSTOL_LT_LB_UB_DIFF
-            if (lf < 0._RKC) then
+            if (lf < 0._RKG) then
                 root = lb
                 delta = ub - lb
             else
@@ -170,14 +170,14 @@ CHECK_ASSERTION(__LINE__, 0_IK < niter, SK_"@setRoot(): The condition `0 < niter
                 delta = lb - ub
             end if
             do neval = 3_IK, NITER + 2_IK
-                delta = delta * 0.5_RKC
+                delta = delta * 0.5_RKG
                 center = root + delta
                 uf = getFunc(center)
-                if (uf <= 0._RKC) root = center
-                if (abs(delta) < abstol .or. uf == 0._RKC) return
+                if (uf <= 0._RKG) root = center
+                if (abs(delta) < abstol .or. uf == 0._RKG) return
             end do
             ! Error occurred.
-            root = .5_RKC * (lb + ub) ! for the sake of defining `root` on output (important for tests).
+            root = .5_RKG * (lb + ub) ! for the sake of defining `root` on output (important for tests).
             neval = -neval
         end if
 
@@ -185,7 +185,7 @@ CHECK_ASSERTION(__LINE__, 0_IK < niter, SK_"@setRoot(): The condition `0 < niter
 #elif   setRoot_ENABLED && Secant_ENABLED
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        real(RKC) :: x, delta
+        real(RKG) :: x, delta
         if (abs(lf) <= EPS10) then
             neval = 0_IK
             root = lb
@@ -193,7 +193,7 @@ CHECK_ASSERTION(__LINE__, 0_IK < niter, SK_"@setRoot(): The condition `0 < niter
             neval = 0_IK
             root = ub
         elseif (abs(ub - lb) < abstol) then
-            root = .5_RKC * (ub + lb)
+            root = .5_RKG * (ub + lb)
             neval = 0_IK
         else
             CHECK_BRACKET
@@ -219,10 +219,10 @@ CHECK_ASSERTION(__LINE__, 0_IK < niter, SK_"@setRoot(): The condition `0 < niter
                 lf = uf
                 root = root + delta
                 uf = getFunc(root)
-                if (abs(delta) < abstol .or. uf == 0._RKC) return
+                if (abs(delta) < abstol .or. uf == 0._RKG) return
             end do
             ! Error occurred.
-            root = .5_RKC * (lb + ub) ! for the sake of defining `root` on output (important for tests).
+            root = .5_RKG * (lb + ub) ! for the sake of defining `root` on output (important for tests).
             neval = -neval
         end if
 
@@ -230,9 +230,9 @@ CHECK_ASSERTION(__LINE__, 0_IK < niter, SK_"@setRoot(): The condition `0 < niter
 #elif   setRoot_ENABLED && Brent_ENABLED
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        real(RKC)   :: halfAbsTol
-        real(RKC)   :: middle, interval, funMid, tol1, halfint, rnew, p, q, r, ratio
-        real(RKC)   , parameter :: EPS = epsilon(lb)
+        real(RKG)   :: halfAbsTol
+        real(RKG)   :: middle, interval, funMid, tol1, halfint, rnew, p, q, r, ratio
+        real(RKG)   , parameter :: EPS = epsilon(lb)
         if (abs(lf) <= EPS10) then
             neval = 0_IK
             root = lb
@@ -240,7 +240,7 @@ CHECK_ASSERTION(__LINE__, 0_IK < niter, SK_"@setRoot(): The condition `0 < niter
             neval = 0_IK
             root = ub
         elseif (abs(ub - lb) < abstol) then
-            root = .5_RKC * (ub + lb)
+            root = .5_RKG * (ub + lb)
             neval = 0_IK
         else
             CHECK_BRACKET
@@ -250,13 +250,13 @@ CHECK_ASSERTION(__LINE__, 0_IK < niter, SK_"@setRoot(): The condition `0 < niter
             CHECK_LF(getFunc(lb))
             CHECK_UF(getFunc(ub))
             CHECK_ABSTOL_LT_LB_UB_DIFF
-            halfAbsTol = 0.5_RKC * abstol
+            halfAbsTol = 0.5_RKG * abstol
             root = ub
             middle = ub
             funMid = uf
             do neval = 0, niter
                 ! adjust the search interval, if needed.
-                if ((funMid < 0._RKC .and. uf < 0._RKC) .or. (0._RKC < uf .and. 0._RKC < funMid)) then ! same sign
+                if ((funMid < 0._RKG .and. uf < 0._RKG) .or. (0._RKG < uf .and. 0._RKG < funMid)) then ! same sign
                     middle = lb
                     funMid = lf
                     interval = root - lb
@@ -270,27 +270,27 @@ CHECK_ASSERTION(__LINE__, 0_IK < niter, SK_"@setRoot(): The condition `0 < niter
                     uf = funMid
                     funMid = lf
                 end if
-                halfint = .5_RKC * (middle - root)
-                tol1 = 2._RKC * EPS * abs(root) + halfAbsTol
-                if (abs(halfint) < tol1 .or. uf == 0._RKC) return
+                halfint = .5_RKG * (middle - root)
+                tol1 = 2._RKG * EPS * abs(root) + halfAbsTol
+                if (abs(halfint) < tol1 .or. uf == 0._RKG) return
                 ! See if a bisection is needed.
                 if ((abs(rnew) >= tol1) .and. (abs(lf) > abs(uf))) then
                     ratio = uf / lf ! 50
                     if (lb /= middle) then ! Try inverse quadratic interpolation.
                         q = lf / funMid
                         r = uf / funMid
-                        p = ratio * (2._RKC * halfint * q * (q - r) - (root - lb) * (r - 1._RKC))
-                        q = (q - 1._RKC) * (r - 1._RKC) * (ratio - 1._RKC)
+                        p = ratio * (2._RKG * halfint * q * (q - r) - (root - lb) * (r - 1._RKG))
+                        q = (q - 1._RKG) * (r - 1._RKG) * (ratio - 1._RKG)
                     else ! Try linear interpolation.
-                        p = 2._RKC * halfint * ratio
-                        q = 1._RKC - ratio
+                        p = 2._RKG * halfint * ratio
+                        q = 1._RKG - ratio
                     end if
-                    if (0._RKC < p) then ! Check inbounds.
+                    if (0._RKG < p) then ! Check inbounds.
                         q = -q
                     else
                         p = -p
                     end if
-                    if (((2._RKC * p) >= (3._RKC * halfint * q - abs(tol1 * q))) .or. (p >= abs(0.5_RKC * rnew * q))) then ! Interpolation failed, use bisection.
+                    if (((2._RKG * p) >= (3._RKG * halfint * q - abs(tol1 * q))) .or. (p >= abs(0.5_RKG * rnew * q))) then ! Interpolation failed, use bisection.
                         interval = halfint
                         rnew = interval
                     else ! Accept interpolation.
@@ -307,7 +307,7 @@ CHECK_ASSERTION(__LINE__, 0_IK < niter, SK_"@setRoot(): The condition `0 < niter
                 ! Evaluate new trial root.
                 if (tol1 < abs(interval)) then
                     root = root + interval
-                elseif (0._RKC < halfint) then
+                elseif (0._RKG < halfint) then
                     root = root + tol1
                 else
                     root = root - tol1
@@ -315,7 +315,7 @@ CHECK_ASSERTION(__LINE__, 0_IK < niter, SK_"@setRoot(): The condition `0 < niter
                 uf = getFunc(root)
             end do
             ! Error occurred.
-            root = .5_RKC * (lb + root) ! for the sake of defining `root` on output (important for tests).
+            root = .5_RKG * (lb + root) ! for the sake of defining `root` on output (important for tests).
             neval = -neval
         end if
 
@@ -323,14 +323,14 @@ CHECK_ASSERTION(__LINE__, 0_IK < niter, SK_"@setRoot(): The condition `0 < niter
 #elif   setRoot_ENABLED && Ridders_ENABLED
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        real(RKC) :: halfint, rold, fold, func, multiplicity
+        real(RKG) :: halfint, rold, fold, func, multiplicity
         neval = 0_IK
         if (abs(lf) <= EPS10) then
             root = lb
         elseif (abs(uf) <= EPS10) then
             root = ub
         elseif (abs(ub - lb) < abstol) then
-            root = .5_RKC * (ub + lb)
+            root = .5_RKG * (ub + lb)
         else
             CHECK_BRACKET
             CHECK_LB_LT_UB
@@ -341,13 +341,13 @@ CHECK_ASSERTION(__LINE__, 0_IK < niter, SK_"@setRoot(): The condition `0 < niter
             CHECK_ABSTOL_LT_LB_UB_DIFF
             !rnew = huge(rold)**.66
             do
-                halfint = 0.5_RKC * (ub - lb)
+                halfint = 0.5_RKG * (ub - lb)
                 root = lb + halfint
                 func = getFunc(root)
                 neval = neval + 1_IK
                 if (niter < neval) exit
                 multiplicity = sqrt(func**2 - lf * uf)
-                if (multiplicity == 0._RKC) return ! LCOV_EXCL_LINE ! This should rarely occur.
+                if (multiplicity == 0._RKG) return ! LCOV_EXCL_LINE ! This should rarely occur.
                 rold = root
                 fold = func
                 root = rold + halfint * sign(fold, lf - uf) / multiplicity
@@ -355,7 +355,7 @@ CHECK_ASSERTION(__LINE__, 0_IK < niter, SK_"@setRoot(): The condition `0 < niter
                 func = getFunc(root)
                 neval = neval + 1_IK
                 if (niter < neval) exit
-                if (func == 0._RKC) return ! LCOV_EXCL_LINE
+                if (func == 0._RKG) return ! LCOV_EXCL_LINE
                 if (sign(fold, func) /= fold) then
                     lb = rold
                     lf = fold
@@ -375,7 +375,7 @@ CHECK_ASSERTION(__LINE__, 0_IK < niter, SK_"@setRoot(): The condition `0 < niter
             if (niter < neval) then
                 neval = -neval ! Error occurred.
             else
-                root = .5_RKC * (lb + ub)
+                root = .5_RKG * (lb + ub)
             end if
         end if
 
@@ -383,15 +383,15 @@ CHECK_ASSERTION(__LINE__, 0_IK < niter, SK_"@setRoot(): The condition `0 < niter
 #elif   setRoot_ENABLED && TOMS748_ENABLED
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        real(RKC) , parameter :: EPS5 = 5 * epsilon(0._RKC), SMALL = tiny(0._RKC) / epsilon(0._RKC) !* 32
-        real(RKC) :: rmid, rupp, fupp, rold, fold, rnew, fnew, interval
+        real(RKG) , parameter :: EPS5 = 5 * epsilon(0._RKG), SMALL = tiny(0._RKG) / epsilon(0._RKG) !* 32
+        real(RKG) :: rmid, rupp, fupp, rold, fold, rnew, fnew, interval
         neval = 0_IK
         if (abs(lf) <= EPS10) then
             root = lb
         elseif (abs(uf) <= EPS10) then
             root = ub
         elseif (abs(ub - lb) < abstol) then
-            root = .5_RKC * (ub + lb)
+            root = .5_RKG * (ub + lb)
         else
             CHECK_BRACKET
             CHECK_LB_LT_UB
@@ -400,13 +400,13 @@ CHECK_ASSERTION(__LINE__, 0_IK < niter, SK_"@setRoot(): The condition `0 < niter
             CHECK_LF(getFunc(lb))
             CHECK_UF(getFunc(ub))
             CHECK_ABSTOL_LT_LB_UB_DIFF
-            !fnew = 1.e5_RKC
-            !rnew = 1.e5_RKC
-            !fold = 1.e5_RKC
+            !fnew = 1.e5_RKG
+            !rnew = 1.e5_RKG
+            !fold = 1.e5_RKG
             blockConvergence: block
                 ! On the first step we take lb secant step.
                 rmid = lb - lf * (ub - lb) / (uf - lf)
-                if (rmid <= lb + abs(lb) * EPS5 .or. ub - abs(ub) * EPS5 <= rmid) rmid = .5_RKC * (lb + ub)
+                if (rmid <= lb + abs(lb) * EPS5 .or. ub - abs(ub) * EPS5 <= rmid) rmid = .5_RKG * (lb + ub)
                 call setBracket(getFunc, lb, ub, rmid, lf, uf, rold, fold)
                 neval = neval + 1_IK
                 ! Take a quadratic interpolation on the second step.
@@ -417,7 +417,7 @@ CHECK_ASSERTION(__LINE__, 0_IK < niter, SK_"@setRoot(): The condition `0 < niter
                 call setBracket(getFunc, lb, ub, rmid, lf, uf, rold, fold)
                 loopConvergence: do
                     interval = ub - lb
-                    if (niter < neval .or. lf == 0._RKC .or. abs(ub - lb) < abstol) exit blockConvergence
+                    if (niter < neval .or. lf == 0._RKG .or. abs(ub - lb) < abstol) exit blockConvergence
                     ! Starting with the third step taken use either quadratic or cubic interpolation.
                     ! Cubic interpolation requires that all four function values lf, uf, fold, and fnew are distinct.
                     ! Should that not be the case, take a quadratic step instead.
@@ -436,7 +436,7 @@ CHECK_ASSERTION(__LINE__, 0_IK < niter, SK_"@setRoot(): The condition `0 < niter
                     fnew = fold
                     neval = neval + 1_IK
                     call setBracket(getFunc, lb, ub, rmid, lf, uf, rold, fold)
-                    if (niter < neval .or. lf == 0._RKC .or. abs(ub - lb) < abstol) exit blockConvergence
+                    if (niter < neval .or. lf == 0._RKG .or. abs(ub - lb) < abstol) exit blockConvergence
                     ! Next interpolated step.
                     if ((abs(lf - uf) < SMALL) .or. & ! LCOV_EXCL_LINE
                         (abs(lf - fold) < SMALL) .or. & ! LCOV_EXCL_LINE
@@ -451,7 +451,7 @@ CHECK_ASSERTION(__LINE__, 0_IK < niter, SK_"@setRoot(): The condition `0 < niter
                     ! Bracket, check termination condition, and update rnew.
                     neval = neval + 1_IK
                     call setBracket(getFunc, lb, ub, rmid, lf, uf, rold, fold)
-                    if (niter < neval .or. lf == 0._RKC .or. abs(ub - lb) < abstol) exit blockConvergence
+                    if (niter < neval .or. lf == 0._RKG .or. abs(ub - lb) < abstol) exit blockConvergence
                     ! Take a double-length secant step.
                     if (abs(lf) < abs(uf)) then
                         rupp = lb
@@ -461,26 +461,26 @@ CHECK_ASSERTION(__LINE__, 0_IK < niter, SK_"@setRoot(): The condition `0 < niter
                         fupp = uf
                     end if
                     rmid = rupp - 2 * fupp * (ub - lb) / (uf - lf)
-                    if (abs(rmid - rupp) > .5_RKC * (ub - lb)) rmid = lb + .5_RKC * (ub - lb)
+                    if (abs(rmid - rupp) > .5_RKG * (ub - lb)) rmid = lb + .5_RKG * (ub - lb)
                     ! Bracket and check termination condition.
                     rnew = rold
                     fnew = fold
                     neval = neval + 1_IK
                     call setBracket(getFunc, lb, ub, rmid, lf, uf, rold, fold)
-                    if (niter < neval .or. lf == 0._RKC .or. abs(ub - lb) < abstol) exit blockConvergence
+                    if (niter < neval .or. lf == 0._RKG .or. abs(ub - lb) < abstol) exit blockConvergence
                     if (2 * (ub - lb) < interval) cycle
                     ! Take an additional bisection step due to slow convergence.
                     rnew = rold
                     fnew = fold
                     neval = neval + 1_IK
-                    call setBracket(getFunc, lb, ub, lb + .5_RKC * (ub - lb), lf, uf, rold, fold)
-                    if (niter < neval .or. lf == 0._RKC .or. abs(ub - lb) < abstol) exit blockConvergence
+                    call setBracket(getFunc, lb, ub, lb + .5_RKG * (ub - lb), lf, uf, rold, fold)
+                    if (niter < neval .or. lf == 0._RKG .or. abs(ub - lb) < abstol) exit blockConvergence
                 end do loopConvergence
             end block blockConvergence
             if (niter < neval) neval = -neval
             if (abs(lf) < EPS10) ub = lb
             if (abs(uf) < EPS10) lb = ub
-            root = .5_RKC * (ub + lb)
+            root = .5_RKG * (ub + lb)
         end if
 
     contains
@@ -491,30 +491,30 @@ CHECK_ASSERTION(__LINE__, 0_IK < niter, SK_"@setRoot(): The condition `0 < niter
             !   2.  find the new enclosing interval, either `[lb, rmid]` or `[rmid, ub]`,
             !       and set `rold` and `fold` to the point that has just been removed from the interval.
             !       In other words `rold` is the third best guess to the root.
-            real(RKC) , parameter :: EPS2 = 2 * epsilon(0._RKC)
-            real(RKC), intent(inout) :: lb, ub, lf, uf
-            real(RKC), intent(out) :: rold, fold
-            procedure(real(RKC)) :: getFunc
-            real(RKC), value :: rmid
-            real(RKC) :: fmid
+            real(RKG) , parameter :: EPS2 = 2 * epsilon(0._RKG)
+            real(RKG), intent(inout) :: lb, ub, lf, uf
+            real(RKG), intent(out) :: rold, fold
+            procedure(real(RKG)) :: getFunc
+            real(RKG), value :: rmid
+            real(RKG) :: fmid
             ! Adjust the location of `rmid` accordingly if the `[lb, ub]` is small, or `rmid` is too close to one interval end.
             if (ub - lb < 2 * EPS2 * lb) then
-                rmid = lb + .5_RKC * (ub - lb)
+                rmid = lb + .5_RKG * (ub - lb)
             elseif (rmid <= lb + abs(lb) * EPS2) then
                 rmid = lb + abs(lb) * EPS2
             elseif (ub - abs(ub) * EPS2 <= rmid) then
                 rmid = ub - abs(ub) * EPS2
             end if
             fmid = getFunc(rmid)
-            if (fmid == 0._RKC) then
-                rold = 0._RKC
-                fold = 0._RKC
-                lf = 0._RKC
+            if (fmid == 0._RKG) then
+                rold = 0._RKG
+                fold = 0._RKG
+                lf = 0._RKG
                 lb = rmid
                 return
             end if
             ! Update the interval.
-            if ((lf < 0._RKC .and. 0._RKC < fmid) .or. (fmid < 0._RKC .and. 0._RKC < lf)) then
+            if ((lf < 0._RKG .and. 0._RKG < fmid) .or. (fmid < 0._RKG .and. 0._RKG < lf)) then
                 rold = ub
                 fold = uf
                 ub = rmid
@@ -534,24 +534,24 @@ CHECK_ASSERTION(__LINE__, 0_IK < niter, SK_"@setRoot(): The condition `0 < niter
         ! Start by obtaining the coefficients of the quadratic polynomial.
         ! Compute division without undue over/under-flow.
         pure subroutine setPolIntQuad(rmid, lb, ub, rold, lf, uf, fold, nstep)
-            real(RKC), parameter :: HUGE_RKC = huge(0._RKC)
-            real(RKC), intent(in) :: lb, ub, rold, lf, uf, fold
+            real(RKG), parameter :: HUGE_RKG = huge(0._RKG)
+            real(RKG), intent(in) :: lb, ub, rold, lf, uf, fold
             integer(IK), intent(in) :: nstep
-            real(RKC), intent(out) :: rmid
+            real(RKG), intent(out) :: rmid
             integer(IK) :: istep
-            real(RKC) :: ratio1, ratio2, numer, denom, divres
+            real(RKG) :: ratio1, ratio2, numer, denom, divres
 #define SET_DIV(DIVRES,NUMER,DENOM,OFLOW) \
-if (abs(DENOM) < 1._RKC) then; if (abs((DENOM) * HUGE_RKC) <= abs(NUMER)) then; \
+if (abs(DENOM) < 1._RKG) then; if (abs((DENOM) * HUGE_RKG) <= abs(NUMER)) then; \
 DIVRES = OFLOW; else; DIVRES = (NUMER) / (DENOM); end if; else; DIVRES = (NUMER) / (DENOM); end if;
-            SET_DIV(ratio1,uf - lf,ub - lb,HUGE_RKC)
-            SET_DIV(ratio2,fold - uf,rold - ub,HUGE_RKC)
-            SET_DIV(ratio2,ratio2 - ratio1,rold - lb,0._RKC)
-            if (ratio2 == 0._RKC) then ! Failed to determine coefficients. Try a secant step.
+            SET_DIV(ratio1,uf - lf,ub - lb,HUGE_RKG)
+            SET_DIV(ratio2,fold - uf,rold - ub,HUGE_RKG)
+            SET_DIV(ratio2,ratio2 - ratio1,rold - lb,0._RKG)
+            if (ratio2 == 0._RKG) then ! Failed to determine coefficients. Try a secant step.
                 call setPolIntSecant(rmid, lb, ub, lf, uf)
                 return
             end if
             ! Determine the starting point of the Newton steps.
-            if ((ratio2 < 0._RKC .and. lf < 0._RKC) .or. (0._RKC < ratio2 .and. 0._RKC < lf)) then
+            if ((ratio2 < 0._RKG .and. lf < 0._RKG) .or. (0._RKG < ratio2 .and. 0._RKG < lf)) then
                 rmid = lb
             else
                 rmid = ub
@@ -572,19 +572,19 @@ DIVRES = OFLOW; else; DIVRES = (NUMER) / (DENOM); end if; else; DIVRES = (NUMER)
        ! This interpolation is needed when at least one other form of interpolation has already failed,
        ! implying that the function is unlikely to be smooth with a root near `lb` or `ub`.
         pure subroutine setPolIntSecant(rmid, lb, ub, lf, uf)
-            real(RKC), intent(in) :: lb, ub, lf, uf
-            real(RKC), intent(out) :: rmid
+            real(RKG), intent(in) :: lb, ub, lf, uf
+            real(RKG), intent(out) :: rmid
            rmid = lb - lf * (ub - lb) / (uf - lf)
-           if (rmid <= lb + abs(lb) * EPS5 .or. ub - abs(ub) * EPS5 <= rmid) rmid = .5_RKC * (lb + ub)
+           if (rmid <= lb + abs(lb) * EPS5 .or. ub - abs(ub) * EPS5 <= rmid) rmid = .5_RKG * (lb + ub)
         end subroutine
 
         ! Use inverse cubic interpolation of getFunc(x) at points `[lb, ub, rold, rnew]` to obtain an approximate root of getFunc(x).
         ! `rold` and `rnew` lie out of `[lb, ub]` and are the third and forth best approximations to the root that we have found so far.
         ! Fall back to quadratic interpolation in case of an erroneous result out of `[lb, ub]`.
         pure subroutine setPolIntCubic(rmid, lb, ub, rold, rnew, lf, uf, fold, fnew)
-            real(RKC), intent(in) :: lb, ub, rold, rnew, lf, uf, fold, fnew
-            real(RKC), intent(out) :: rmid
-            real(RKC) :: q11, q21, q31, d21, d31, q22, q32, d32, q33
+            real(RKG), intent(in) :: lb, ub, rold, rnew, lf, uf, fold, fnew
+            real(RKG), intent(out) :: rmid
+            real(RKG) :: q11, q21, q31, d21, d31, q22, q32, d32, q33
             q11 = (rold - rnew) * fold / (fnew - fold)
             q21 = (ub - rold) * uf / (fold - uf)
             q31 = (lb - ub) * lf / (uf - lf)
@@ -604,14 +604,14 @@ DIVRES = OFLOW; else; DIVRES = (NUMER) / (DENOM); end if; else; DIVRES = (NUMER)
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
         integer(IK) :: iter
-        real(RKC) :: func, grad, interval, func2grad, temp
+        real(RKG) :: func, grad, interval, func2grad, temp
         neval = 0_IK
         if (abs(lf) <= EPS10) then
             root = lb
         elseif (abs(uf) <= EPS10) then
             root = ub
         elseif (abs(ub - lb) < abstol) then
-            root = .5_RKC * (ub + lb)
+            root = .5_RKG * (ub + lb)
         else
             CHECK_BRACKET
             CHECK_LB_LT_UB
@@ -620,8 +620,8 @@ DIVRES = OFLOW; else; DIVRES = (NUMER) / (DENOM); end if; else; DIVRES = (NUMER)
             CHECK_LF(getFunc(lb, 0_IK))
             CHECK_UF(getFunc(ub, 0_IK))
             CHECK_ABSTOL_LT_LB_UB_DIFF
-            if (root <= lb .or. ub <= root) root = .5_RKC * (lb + ub)
-            if (0._RKC <= lf) then
+            if (root <= lb .or. ub <= root) root = .5_RKG * (lb + ub)
+            if (0._RKG <= lf) then
                 root = lb
                 lb = ub
                 ub = root
@@ -633,9 +633,9 @@ DIVRES = OFLOW; else; DIVRES = (NUMER) / (DENOM); end if; else; DIVRES = (NUMER)
             do iter = 1, niter
                 neval = neval + 1_IK
                 grad = getFunc(root, 1_IK)
-                if (0._RKC < ((root - ub) * grad - func) * ((root - lb) * grad - func) .or. abs(interval * grad) < abs(2._RKC * func)) then
+                if (0._RKG < ((root - ub) * grad - func) * ((root - lb) * grad - func) .or. abs(interval * grad) < abs(2._RKG * func)) then
                     interval = func2grad
-                    func2grad = .5_RKC * (ub - lb)
+                    func2grad = .5_RKG * (ub - lb)
                     root = lb + func2grad
                     if (lb == root) return
                 else
@@ -648,14 +648,14 @@ DIVRES = OFLOW; else; DIVRES = (NUMER) / (DENOM); end if; else; DIVRES = (NUMER)
                 if (abs(func2grad) < abstol) return
                 neval = neval + 1_IK
                 func = getFunc(root, 0_IK)
-                if (func < 0._RKC) then
+                if (func < 0._RKG) then
                     lb = root
                 else
                     ub = root
                 end if
             end do
             ! Error occurred.
-            root = .5_RKC * (lb + ub) ! for the sake of defining `root` on output (important for tests).
+            root = .5_RKG * (lb + ub) ! for the sake of defining `root` on output (important for tests).
             neval = -neval
         end if
 
@@ -664,14 +664,14 @@ DIVRES = OFLOW; else; DIVRES = (NUMER) / (DENOM); end if; else; DIVRES = (NUMER)
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
         logical(LK) :: out_of_bounds_sentry, varset
-        real(RKC) :: func, grad, hess, rold, fold, fmax, fmin, delta, delta1, delta2, temp, diff, ratio
+        real(RKG) :: func, grad, hess, rold, fold, fmax, fmin, delta, delta1, delta2, temp, diff, ratio
         neval = 0_IK
         if (abs(lf) <= EPS10) then
             root = lb
         elseif (abs(uf) <= EPS10) then
             root = ub
         elseif (abs(ub - lb) < abstol) then
-            root = .5_RKC * (ub + lb)
+            root = .5_RKG * (ub + lb)
         else
             CHECK_BRACKET
             CHECK_LB_LT_UB
@@ -681,13 +681,13 @@ DIVRES = OFLOW; else; DIVRES = (NUMER) / (DENOM); end if; else; DIVRES = (NUMER)
             CHECK_UF(getFunc(ub, 0_IK))
             CHECK_ABSTOL_LT_LB_UB_DIFF
             !print *, "lb, root, ub", lb, root, ub
-            if (root <= lb .or. ub <= root) root = .5_RKC * (lb + ub)
+            if (root <= lb .or. ub <= root) root = .5_RKG * (lb + ub)
             out_of_bounds_sentry = .false._LK
             delta = huge(delta)
-            fmax = 0._RKC
-            fmin = 0._RKC
+            fmax = 0._RKG
+            fmin = 0._RKG
             rold = root
-            func = 0._RKC
+            func = 0._RKG
             delta1 = delta
             delta2 = delta
             neval = 0_IK
@@ -700,9 +700,9 @@ DIVRES = OFLOW; else; DIVRES = (NUMER) / (DENOM); end if; else; DIVRES = (NUMER)
                 func = getFunc(root, 0_IK)
                 grad = getFunc(root, 1_IK)
                 hess = getFunc(root, 2_IK)
-                if (func == 0._RKC) return
-                if (grad == 0._RKC) then ! Handle zero derivative and hessian.
-                    if (fold == 0._RKC) then
+                if (func == 0._RKG) return
+                if (grad == 0._RKG) then ! Handle zero derivative and hessian.
+                    if (fold == 0._RKG) then
                         ! First iteration: pretend that we had a previous one at either `lb` or `ub`.
                         if (root == lb) then
                             rold = ub
@@ -714,25 +714,25 @@ DIVRES = OFLOW; else; DIVRES = (NUMER) / (DENOM); end if; else; DIVRES = (NUMER)
                         fold = getFunc(rold, 0_IK)
                         delta = rold - root
                     end if
-                    if ((fold < 0._RKC .and. 0._RKC < func) .or. (func < 0._RKC .and. 0._RKC < fold)) then
+                    if ((fold < 0._RKG .and. 0._RKG < func) .or. (func < 0._RKG .and. 0._RKG < fold)) then
                         ! Crossed over. Move in opposite direction to last step.
-                        if (delta < 0._RKC) then
-                            delta = .5_RKC * (root - lb)
+                        if (delta < 0._RKG) then
+                            delta = .5_RKG * (root - lb)
                         else
-                            delta = .5_RKC * (root - ub)
+                            delta = .5_RKG * (root - ub)
                         end if
                     else ! Move in same direction as last step.
-                        if (delta < 0._RKC) then
-                            delta = .5_RKC * (root - ub)
+                        if (delta < 0._RKG) then
+                            delta = .5_RKG * (root - ub)
                         else
-                            delta = .5_RKC * (root - lb)
+                            delta = .5_RKG * (root - lb)
                         end if
                     end if
-                elseif (hess /= 0._RKC) then
+                elseif (hess /= 0._RKG) then
 #if                 Halley_ENABLED || Schroder_ENABLED
                     ratio = 2 * func
                     temp = 2 * grad - func * (hess / grad)
-                    varset = abs(temp) < 1._RKC
+                    varset = abs(temp) < 1._RKG
                     if (varset) then
                         varset = abs(temp) * huge(temp) <= abs(ratio)
                         if (varset) delta = func / grad ! Possible overflow, use Newton step.
@@ -742,13 +742,13 @@ DIVRES = OFLOW; else; DIVRES = (NUMER) / (DENOM); end if; else; DIVRES = (NUMER)
                     ! The Schroder stepper appears unstable for certain class of test problems where the Halley method does.
                     ! For now, Schroder is switched to Halley, but the origins of this instability must be explored.
                     ratio = func / grad
-                    varset = root /= 0._RKC
+                    varset = root /= 0._RKG
                     if (varset) then
-                        varset = abs(ratio / root) < 0.1_RKC
+                        varset = abs(ratio / root) < 0.1_RKG
                         if (varset) then
                             delta = ratio + (hess / (2 * grad)) * ratio**2
                             ! Fall back to Newton iteration if hess contribution is larger than grad.
-                            varset = 0._RKC <= delta * ratio
+                            varset = 0._RKG <= delta * ratio
                         end if
                     end if
                     ! Fall back to Newton iteration.
@@ -756,46 +756,46 @@ DIVRES = OFLOW; else; DIVRES = (NUMER) / (DENOM); end if; else; DIVRES = (NUMER)
 #else
 #error              "Unrecognized interface."
 #endif
-                    if (delta * grad / func < 0._RKC) then
+                    if (delta * grad / func < 0._RKG) then
                         ! The Newton and Halley steps disagree about which way we should move,
                         ! likely due to cancelation error in the calculation of the Halley step,
                         ! or else the derivatives are so small that their values are basically trash.
                         ! Move in the direction indicated by a Newton step, but by no more than twice the
                         ! current rold value, otherwise the search can jump out of bounds.
                         delta = func / grad
-                        if (2 * abs(rold) < abs(delta)) delta = sign(2._RKC, delta) * abs(rold)
+                        if (2 * abs(rold) < abs(delta)) delta = sign(2._RKG, delta) * abs(rold)
                     end if
                 else
                     delta = func / grad
                 end if
                 temp = abs(delta / delta2)
-                if (0.8_RKC < temp .and. temp < 2._RKC) then
+                if (0.8_RKG < temp .and. temp < 2._RKG) then
                     ! The last two steps did not converge.
-                    if (0._RKC < delta) then
-                        delta = .5_RKC * (root - lb)
+                    if (0._RKG < delta) then
+                        delta = .5_RKG * (root - lb)
                     else
-                        delta = .5_RKC * (root - ub)
+                        delta = .5_RKG * (root - ub)
                     end if
-                    if (root /= 0._RKC .and. root < abs(delta)) delta = sign(.9_RKC, delta) * abs(root) ! protect against huge jumps.
+                    if (root /= 0._RKG .and. root < abs(delta)) delta = sign(.9_RKG, delta) * abs(root) ! protect against huge jumps.
                     ! reset delta2 so that this branch will *not* be taken on the next iteration.
-                    delta1 = delta * 3._RKC
+                    delta1 = delta * 3._RKG
                     delta2 = delta1
                 end if
                 rold = root
                 root = root - delta
                 ! Check for out of bounds step.
                 if (root < lb) then
-                    varset = abs(lb) < 1._RKC .and. 1._RKC < abs(root)
+                    varset = abs(lb) < 1._RKG .and. 1._RKG < abs(root)
                     if (varset) then
                         varset = huge(root) / abs(root) < abs(lb)
-                        if (varset) diff = 1000._RKC
+                        if (varset) diff = 1000._RKG
                     end if
                     if (.not. varset) then
-                        varset = abs(lb) < 1._RKC
+                        varset = abs(lb) < 1._RKG
                         if (varset) then
                             varset = huge(lb) * abs(lb) < abs(root)
                             if (varset) then
-                                if (lb < 0._RKC .neqv. root < 0._RKC) then
+                                if (lb < 0._RKG .neqv. root < 0._RKG) then
                                     diff = -huge(diff)
                                 else
                                     diff = +huge(diff)
@@ -804,14 +804,14 @@ DIVRES = OFLOW; else; DIVRES = (NUMER) / (DENOM); end if; else; DIVRES = (NUMER)
                         end if
                         if (.not. varset) diff = root / lb
                     end if
-                    if (abs(diff) < 1._RKC) diff = 1 / diff
-                    if (0._RKC < diff .and. diff < 3._RKC .and. .not. out_of_bounds_sentry) then
+                    if (abs(diff) < 1._RKG) diff = 1 / diff
+                    if (0._RKG < diff .and. diff < 3._RKG .and. .not. out_of_bounds_sentry) then
                         ! Only a small out of bounds step, lets assume that the root is probably approximately at `lb`.
                         out_of_bounds_sentry = .true. ! only take this branch once!
-                        delta = 0.99_RKC * (rold - lb)
+                        delta = 0.99_RKG * (rold - lb)
                         root = rold - delta
                     else
-                        root = .5_RKC * (lb + ub)
+                        root = .5_RKG * (lb + ub)
                         if (abs(lb - ub) < 2 * spacing(root)) return
                         call setBracketTowardMin(delta, getFunc, rold, func, lb, ub, neval, niter)
                         if (niter < neval) exit
@@ -820,20 +820,20 @@ DIVRES = OFLOW; else; DIVRES = (NUMER) / (DENOM); end if; else; DIVRES = (NUMER)
                         cycle
                     end if
                 elseif (ub < root) then
-                    varset = abs(ub) < 1._RKC .and. 1._RKC < abs(root)
+                    varset = abs(ub) < 1._RKG .and. 1._RKG < abs(root)
                     if (varset) then
                         varset = huge(root) / abs(root) < abs(ub)
-                        if (varset) diff = 1000._RKC
+                        if (varset) diff = 1000._RKG
                     end if
                     if (.not. varset) diff = root / ub
-                    if (abs(diff) < 1._RKC) diff = 1._RKC / diff
-                    if (0._RKC < diff .and. diff < 3._RKC .and. .not. out_of_bounds_sentry) then
+                    if (abs(diff) < 1._RKG) diff = 1._RKG / diff
+                    if (0._RKG < diff .and. diff < 3._RKG .and. .not. out_of_bounds_sentry) then
                         ! Only a small out of bounds step, assume that the root is approximately at `lb`.
                         out_of_bounds_sentry = .true. ! Take this branch only once.
-                        delta = 0.99_RKC * (rold - ub)
+                        delta = 0.99_RKG * (rold - ub)
                         root = rold - delta
                     else
-                        root = .5_RKC * (lb + ub)
+                        root = .5_RKG * (lb + ub)
                         if (abs(lb - ub) < 2 * spacing(root)) return
                         call setBracketTowardMax(delta, getFunc, rold, func, lb, ub, neval, niter)
                         if (niter < neval) exit
@@ -843,7 +843,7 @@ DIVRES = OFLOW; else; DIVRES = (NUMER) / (DENOM); end if; else; DIVRES = (NUMER)
                     end if
                 end if
                 ! update brackets:
-                if (0._RKC < delta) then
+                if (0._RKG < delta) then
                     ub = rold
                     fmax = func
                 else
@@ -851,11 +851,11 @@ DIVRES = OFLOW; else; DIVRES = (NUMER) / (DENOM); end if; else; DIVRES = (NUMER)
                     fmin = func
                 end if
                 ! Sanity check that we bracket the rold:
-                if (0._RKC < fmax * fmin) exit ! no root, possibly a minimum around root.
+                if (0._RKG < fmax * fmin) exit ! no root, possibly a minimum around root.
                 if (abs(delta) < abs(root * abstol)) return
             end do
             ! Error occurred.
-            root = .5_RKC * (lb + ub) ! for the sake of defining `root` on output (important for tests).
+            root = .5_RKG * (lb + ub) ! for the sake of defining `root` on output (important for tests).
             neval = -neval
         end if
 
@@ -863,20 +863,20 @@ DIVRES = OFLOW; else; DIVRES = (NUMER) / (DENOM); end if; else; DIVRES = (NUMER)
 
         subroutine setBracketTowardMax(delta, getFunc, rold, func, lb, ub, neval, niter)
             ! Move rold towards ub until we bracket the root, updating `lb` and `ub` on the fly.
-            real(RKC), intent(inout) :: rold, lb, ub
+            real(RKG), intent(inout) :: rold, lb, ub
             integer(IK), intent(inout) :: neval
             integer(IK), intent(in) :: niter
-            real(RKC), intent(out) :: delta
-            procedure(real(RKC)) :: getFunc
-            real(RKC), intent(in) :: func
-            real(RKC) :: guess0, funcurrent
+            real(RKG), intent(out) :: delta
+            procedure(real(RKG)) :: getFunc
+            real(RKG), intent(in) :: func
+            real(RKG) :: guess0, funcurrent
             integer(IK) :: multiplier
             multiplier = 2_IK
             funcurrent = func
             guess0 = rold
             if (abs(lb) < abs(ub)) then
                 loopSearch1: do
-                    if (funcurrent < 0._RKC .neqv. func < 0._RKC) exit loopSearch1
+                    if (funcurrent < 0._RKG .neqv. func < 0._RKG) exit loopSearch1
                     lb = rold
                     rold = rold * multiplier
                     if (ub < rold) then
@@ -891,7 +891,7 @@ DIVRES = OFLOW; else; DIVRES = (NUMER) / (DENOM); end if; else; DIVRES = (NUMER)
                 end do loopSearch1
             else ! If `lb` and `ub` are negative, divide to head towards `ub`.
                 loopSearch2: do
-                    if (funcurrent < 0._RKC .neqv. func < 0._RKC) exit loopSearch2
+                    if (funcurrent < 0._RKG .neqv. func < 0._RKG) exit loopSearch2
                     lb = rold
                     rold = rold / multiplier
                     if (ub < rold) then
@@ -913,25 +913,25 @@ DIVRES = OFLOW; else; DIVRES = (NUMER) / (DENOM); end if; else; DIVRES = (NUMER)
                     return
                 end if
             end if
-            delta = guess0 - .5_RKC * (lb + ub)
+            delta = guess0 - .5_RKG * (lb + ub)
         end subroutine
 
         subroutine setBracketTowardMin(delta, getFunc, rold, func, lb, ub, neval, niter)
             ! Move rold towards lb until we bracket the root, updating `lb` and `ub` on the fly.
-            real(RKC), intent(inout) :: rold, lb, ub
+            real(RKG), intent(inout) :: rold, lb, ub
             integer(IK), intent(inout) :: neval
             integer(IK), intent(in) :: niter
-            real(RKC), intent(out) :: delta
-            procedure(real(RKC)) :: getFunc
-            real(RKC), intent(in) :: func
-            real(RKC) :: guess0, funcurrent
+            real(RKG), intent(out) :: delta
+            procedure(real(RKG)) :: getFunc
+            real(RKG), intent(in) :: func
+            real(RKG) :: guess0, funcurrent
             integer(IK) :: multiplier
             multiplier = 2_IK
             funcurrent = func
             guess0 = rold
             if (abs(lb) < abs(ub)) then
                 loopSearch1: do
-                    if (funcurrent < 0._RKC .neqv. func < 0._RKC) exit loopSearch1
+                    if (funcurrent < 0._RKG .neqv. func < 0._RKG) exit loopSearch1
                     ub = rold
                     rold = rold / multiplier
                     if (rold < lb) then
@@ -946,7 +946,7 @@ DIVRES = OFLOW; else; DIVRES = (NUMER) / (DENOM); end if; else; DIVRES = (NUMER)
                 end do loopSearch1
             else ! If `lb` and `ub` are negative, multiply to head towards `lb`.
                 loopSearch2: do
-                    if (funcurrent < 0._RKC .neqv. func < 0._RKC) exit loopSearch2
+                    if (funcurrent < 0._RKG .neqv. func < 0._RKG) exit loopSearch2
                     ub = rold
                     rold = rold * multiplier
                     if (rold < lb) then
@@ -968,7 +968,7 @@ DIVRES = OFLOW; else; DIVRES = (NUMER) / (DENOM); end if; else; DIVRES = (NUMER)
                     return
                 end if
             end if
-            delta = guess0 - .5_RKC * (lb + ub)
+            delta = guess0 - .5_RKG * (lb + ub)
         end subroutine
 
 #else

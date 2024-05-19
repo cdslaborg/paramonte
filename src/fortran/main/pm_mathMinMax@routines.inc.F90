@@ -54,15 +54,15 @@
         !%%%%%%%%%%%%%%%%
 
 #if     SK_ENABLED
-        character(max(len(a,IK),len(b,IK)),SKC) :: tmp
+        character(max(len(a,IK),len(b,IK)),SKG) :: tmp
 #elif   IK_ENABLED
-        integer(IKC) :: tmp
+        integer(IKG) :: tmp
 #elif   LK_ENABLED
-        logical(LKC) :: tmp
+        logical(LKG) :: tmp
 #elif   CK_ENABLED
-        complex(CKC) :: tmp
+        complex(CKG) :: tmp
 #elif   RK_ENABLED
-        real(RKC) :: tmp
+        real(RKG) :: tmp
 #elif   !getMinMax_ENABLED
 #error  "Unrecognized interface."
 #endif

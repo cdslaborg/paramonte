@@ -41,29 +41,29 @@
 #if     SK_ENABLED && D0_ENABLED
 #define ALL
         use pm_str, only: getCharSeq, getCharVec
-        character(:,SKC), allocatable   :: From, To, To_ref
-        character(1,SKC), parameter     :: low = SKC_"a"
-        character(1,SKC), parameter     :: upp = SKC_"z"
+        character(:,SKG), allocatable   :: From, To, To_ref
+        character(1,SKG), parameter     :: low = SKG_"a"
+        character(1,SKG), parameter     :: upp = SKG_"z"
 #elif   SK_ENABLED && D1_ENABLED
-        character(2,SKC), dimension(:), allocatable :: From, To, To_ref
-        character(2,SKC), parameter                 :: low = SKC_"aa"
-        character(2,SKC), parameter                 :: upp = SKC_"zz"
+        character(2,SKG), dimension(:), allocatable :: From, To, To_ref
+        character(2,SKG), parameter                 :: low = SKG_"aa"
+        character(2,SKG), parameter                 :: upp = SKG_"zz"
 #elif   IK_ENABLED && D1_ENABLED
-        integer(IKC)    , dimension(:), allocatable :: From, To, To_ref
-        integer(IKC)    , parameter                 :: low = -huge(1_IKC)
-        integer(IKC)    , parameter                 :: upp = +huge(1_IKC)
+        integer(IKG)    , dimension(:), allocatable :: From, To, To_ref
+        integer(IKG)    , parameter                 :: low = -huge(1_IKG)
+        integer(IKG)    , parameter                 :: upp = +huge(1_IKG)
 #elif   LK_ENABLED && D1_ENABLED
-        logical(LKC)    , dimension(:), allocatable :: From, To, To_ref
-        logical(LKC)    , parameter                 :: low = .false._LKC
-        logical(LKC)    , parameter                 :: upp = .true._LKC
+        logical(LKG)    , dimension(:), allocatable :: From, To, To_ref
+        logical(LKG)    , parameter                 :: low = .false._LKG
+        logical(LKG)    , parameter                 :: upp = .true._LKG
 #elif   CK_ENABLED && D1_ENABLED
-        complex(CKC)    , dimension(:), allocatable :: From, To, To_ref
-        complex(CKC)    , parameter                 :: low = -cmplx(huge(0._CKC), huge(0._CKC), kind = CKC)
-        complex(CKC)    , parameter                 :: upp = +cmplx(huge(0._CKC), huge(0._CKC), kind = CKC)
+        complex(CKG)    , dimension(:), allocatable :: From, To, To_ref
+        complex(CKG)    , parameter                 :: low = -cmplx(huge(0._CKG), huge(0._CKG), kind = CKG)
+        complex(CKG)    , parameter                 :: upp = +cmplx(huge(0._CKG), huge(0._CKG), kind = CKG)
 #elif   RK_ENABLED && D1_ENABLED
-        real(RKC)       , dimension(:), allocatable :: From, To, To_ref
-        real(RKC)       , parameter                 :: low = -huge(0._RKC)
-        real(RKC)       , parameter                 :: upp = +huge(0._RKC)
+        real(RKG)       , dimension(:), allocatable :: From, To, To_ref
+        real(RKG)       , parameter                 :: low = -huge(0._RKG)
+        real(RKG)       , parameter                 :: upp = +huge(0._RKG)
 #else
 #error  "Unrecognized interface."
 #endif

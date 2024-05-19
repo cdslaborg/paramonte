@@ -58,35 +58,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getFisherFDD_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_mathFisher@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getFisherFDD_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_mathFisher@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getFisherFDD_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_mathFisher@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getFisherFDD_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_mathFisher@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getFisherFDD_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_mathFisher@routines.inc.F90"
     end procedure
 #endif
@@ -109,35 +109,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getFisherFLU_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_mathFisher@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getFisherFLU_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_mathFisher@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getFisherFLU_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_mathFisher@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getFisherFLU_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_mathFisher@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getFisherFLU_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_mathFisher@routines.inc.F90"
     end procedure
 #endif
@@ -170,35 +170,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getFisherInvFDD_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_mathFisher@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getFisherInvFDD_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_mathFisher@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getFisherInvFDD_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_mathFisher@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getFisherInvFDD_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_mathFisher@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getFisherInvFDD_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_mathFisher@routines.inc.F90"
     end procedure
 #endif
@@ -221,35 +221,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getFisherInvFLU_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_mathFisher@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getFisherInvFLU_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_mathFisher@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getFisherInvFLU_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_mathFisher@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getFisherInvFLU_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_mathFisher@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getFisherInvFLU_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_mathFisher@routines.inc.F90"
     end procedure
 #endif

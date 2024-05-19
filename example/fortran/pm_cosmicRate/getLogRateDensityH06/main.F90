@@ -1,6 +1,6 @@
 program example
 
-    use pm_kind, only: SK, IK, LK, RKC => RKD
+    use pm_kind, only: SK, IK, LK, RKG => RKD
     use pm_cosmicRate, only: getLogRateDensityH06
     use pm_arraySpace, only: getLinSpace
     use pm_io, only: display_type
@@ -8,7 +8,7 @@ program example
     implicit none
 
     type(display_type) :: disp
-    real(RKC) :: redshift = 5.5_RKC
+    real(RKG) :: redshift = 5.5_RKG
     disp = display_type(file = "main.out.F90")
 
     call disp%skip()
@@ -29,12 +29,12 @@ program example
     block
         use pm_cosmology, only: getVolComDiffNormed
         integer(IK) :: fileUnit, i
-        real(RKC) :: maxRateFormLGRB, maxRateDensityFormLGRB
-        real(RKC), allocatable :: zplus1(:), logzplus1(:), rateFormLGRB(:), rateDensityFormLGRB(:)
-        logzplus1 = getLinSpace(0.01_RKC, log(13._RKC), 500_IK)
+        real(RKG) :: maxRateFormLGRB, maxRateDensityFormLGRB
+        real(RKG), allocatable :: zplus1(:), logzplus1(:), rateFormLGRB(:), rateDensityFormLGRB(:)
+        logzplus1 = getLinSpace(0.01_RKG, log(13._RKG), 500_IK)
         zplus1 = exp(logzplus1)
         rateDensityFormLGRB = exp(getLogRateDensityH06(logzplus1))
-        rateFormLGRB = rateDensityFormLGRB * getVolComDiffNormed(zplus1, reltol = sqrt(epsilon(0._RKC)))
+        rateFormLGRB = rateDensityFormLGRB * getVolComDiffNormed(zplus1, reltol = sqrt(epsilon(0._RKG)))
         maxRateDensityFormLGRB = maxval(rateDensityFormLGRB)
         maxRateFormLGRB = maxval(rateFormLGRB)
         open(newunit = fileUnit, file = "getLogRateDensityH06.csv")
@@ -55,7 +55,7 @@ program example
         sampler%outputFileName = "./zdistH06"
         sampler%outputStatus = "retry"
         sampler%domainAxisName = ["redshift"]
-        sampler%domainCubeLimitLower = [0._RKC]
+        sampler%domainCubeLimitLower = [0._RKG]
         sampler%outputSampleSize = 2500
         sampler%outputChainSize = 5000
         sampler%proposalStart = [3]
@@ -67,11 +67,11 @@ contains
 
     recursive function getLogFunc(redshift) result(logRateDensity)
         use pm_cosmology, only: getVolComDiffNormed
-        real(RKC), intent(in), contiguous :: redshift(:)
-        real(RKC) :: logRateDensity
-        real(RKC) :: zplus1
+        real(RKG), intent(in), contiguous :: redshift(:)
+        real(RKG) :: logRateDensity
+        real(RKG) :: zplus1
         zplus1 = redshift(1) + 1
-        logRateDensity = getLogRateDensityH06(log(zplus1)) + log(getVolComDiffNormed(zplus1, reltol = sqrt(epsilon(0._RKC))))
+        logRateDensity = getLogRateDensityH06(log(zplus1)) + log(getVolComDiffNormed(zplus1, reltol = sqrt(epsilon(0._RKG))))
     end function
 
 end program example

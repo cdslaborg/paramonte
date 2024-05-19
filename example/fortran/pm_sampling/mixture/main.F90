@@ -1,11 +1,11 @@
 module auxil_mod
 
-    use pm_kind, only: RKC => RKD ! All real kinds are supported.
+    use pm_kind, only: RKG => RKD ! All real kinds are supported.
 
     implicit none
 
-    real(RKC), parameter :: EPS = sqrt(epsilon(0._RKC))
-    real(RKC), parameter :: LARGE = sqrt(huge(0._RKC))
+    real(RKG), parameter :: EPS = sqrt(epsilon(0._RKG))
+    real(RKG), parameter :: LARGE = sqrt(huge(0._RKG))
 
 end module auxil_mod
 
@@ -13,7 +13,7 @@ end module auxil_mod
 
 module data_mod
 
-    use auxil_mod, only: RKC
+    use auxil_mod, only: RKG
     use pm_kind, only: IK
     implicit none
 
@@ -24,11 +24,11 @@ module data_mod
     end type
 
     type, extends(obs_type) :: univ_type
-        real(RKC) :: val
+        real(RKG) :: val
     end type
 
     type, extends(univ_type) :: posuniv_type
-        real(RKC) :: log
+        real(RKG) :: log
     end type
 
     interface posuniv_type
@@ -36,7 +36,7 @@ module data_mod
     end interface
 
     type stat_type
-        real(RKC) :: lim(2)
+        real(RKG) :: lim(2)
     end type
 
     type :: data_type
@@ -52,7 +52,7 @@ module data_mod
 contains
 
     function posuniv_typer(val) result(self)
-        real(RKC), intent(in), contiguous :: val(:)
+        real(RKG), intent(in), contiguous :: val(:)
         type(posuniv_type), allocatable :: self(:)
         integer(IK) :: iobs
         allocate(self(size(val)))
@@ -78,13 +78,13 @@ end module data_mod
 module domain_mod
 
     !use pm_container, only: css_type
-    use auxil_mod, only: RKC
+    use auxil_mod, only: RKG
     use pm_kind, only: SK
     implicit none
 
     type :: domain_type
-        real(RKC), allocatable :: lower(:)
-        real(RKC), allocatable :: upper(:)
+        real(RKG), allocatable :: lower(:)
+        real(RKG), allocatable :: upper(:)
         !type(css_type), allocatable :: names(:)
         character(63, SK), allocatable :: names(:)
     end type
@@ -98,12 +98,12 @@ module model_mod
     use pm_kind, only: SK, IK
     use data_mod, only: obs_type
     use domain_mod, only: domain_type
-    use auxil_mod, only: RKC
+    use auxil_mod, only: RKG
     implicit none
 
     type, abstract :: model_type
         type(domain_type) :: domain
-        !real(RKC), allocatable :: param(:)
+        !real(RKG), allocatable :: param(:)
         integer(IK) :: npar
     contains
         procedure(getParam_proc), deferred :: getParam
@@ -121,20 +121,20 @@ module model_mod
 
     abstract interface
         function getParam_proc(self) result(param)
-            import :: RKC, model_type
+            import :: RKG, model_type
             class(model_type), intent(in) :: self
-            real(RKC) :: param(self%npar)
+            real(RKG) :: param(self%npar)
         end function
         subroutine setParam_proc(self, param)
-            import :: RKC, model_type
+            import :: RKG, model_type
             class(model_type), intent(inout) :: self
-            real(RKC), intent(in), contiguous :: param(:)
+            real(RKG), intent(in), contiguous :: param(:)
         end subroutine
         impure elemental function getLogPDF_proc(self, obs) result(logPDF)
-            import :: RKC, model_type, obs_type
+            import :: RKG, model_type, obs_type
             class(model_type), intent(in) :: self
             class(obs_type), intent(in) :: obs
-            real(RKC) :: logPDF
+            real(RKG) :: logPDF
         end function
     end interface
 
@@ -153,11 +153,11 @@ end module model_mod
 module lognorm_mod
 
     use model_mod, only: domain_type, model_type, IK
-    use auxil_mod, only: RKC, LARGE
+    use auxil_mod, only: RKG, LARGE
     implicit none
 
     type, extends(model_type) :: lognorm_type
-        real(RKC), private :: avg, invstd, loginvstd
+        real(RKG), private :: avg, invstd, loginvstd
     contains
         procedure :: getParam, setParam, getLogPDF
     end type
@@ -169,7 +169,7 @@ module lognorm_mod
 contains
 
     function lognorm_typer(param, domain) result(self)
-        real(RKC), intent(in), contiguous, optional :: param(:)
+        real(RKG), intent(in), contiguous, optional :: param(:)
         type(domain_type), intent(in), optional :: domain
         type(lognorm_type) :: self
         self%npar = 2
@@ -184,7 +184,7 @@ contains
     subroutine setParam(self, param)
         use pm_kind, only: SK, IK
         class(lognorm_type), intent(inout) :: self
-        real(RKC), intent(in), contiguous :: param(:)
+        real(RKG), intent(in), contiguous :: param(:)
         if (size(param) /= self%npar) error stop "`lognorm_type%setParam()` takes a vector of two parameters representing `avg` and `logstd`."
         self%invstd = exp(-param(2))
         self%loginvstd = -param(2)
@@ -193,7 +193,7 @@ contains
 
     function getParam(self) result(param)
         class(lognorm_type), intent(in) :: self
-        real(RKC) :: param(self%npar)
+        real(RKG) :: param(self%npar)
         param = [self%avg, -self%loginvstd]
     end function
 
@@ -202,7 +202,7 @@ contains
         use data_mod, only: obs_type, posuniv_type
         class(lognorm_type), intent(in) :: self
         class(obs_type), intent(in):: obs
-        real(RKC) :: logPDF
+        real(RKG) :: logPDF
         select type (obs)
         type is (posuniv_type)
             call setNormLogPDF(logPDF, obs%log, mu = self%avg, invSigma = self%invstd, logInvSigma = self%loginvstd)
@@ -217,12 +217,12 @@ end module lognorm_mod
 
 module flatPoweto_mod
 
-    use auxil_mod, only: RKC, LARGE
+    use auxil_mod, only: RKG, LARGE
     use model_mod, only: domain_type, model_type
     implicit none
 
     type, extends(model_type) :: flatPoweto_type
-        real(RKC), private :: logbreak, alpha, break, alphap1, logPDFNF, limx(2), loglimx(2)
+        real(RKG), private :: logbreak, alpha, break, alphap1, logPDFNF, limx(2), loglimx(2)
     contains
         procedure, pass :: getParam, setParam, getLogPDF
     end type
@@ -234,9 +234,9 @@ module flatPoweto_mod
 contains
 
     function flatPoweto_typer(limx, param, domain) result(self)
-        real(RKC), intent(in), contiguous, optional :: param(:)
+        real(RKG), intent(in), contiguous, optional :: param(:)
         type(domain_type), intent(in), optional :: domain
-        real(RKC), intent(in), contiguous :: limx(:)
+        real(RKG), intent(in), contiguous :: limx(:)
         character(:), allocatable :: msg
         type(flatPoweto_type) :: self
         self%npar = 2
@@ -252,7 +252,7 @@ contains
 
     function getParam(self) result(param)
         class(flatPoweto_type), intent(in) :: self
-        real(RKC) :: param(self%npar)
+        real(RKG) :: param(self%npar)
         param = [self%logbreak, self%alpha]
     end function
 
@@ -262,25 +262,25 @@ contains
         use pm_mathMinMax, only: getMinMax
         use pm_mathLogAddExp, only: getLogAddExp
         use pm_mathLogSubExp, only: getLogSubExp
-        real(RKC), intent(in), contiguous :: param(:)
+        real(RKG), intent(in), contiguous :: param(:)
         class(flatPoweto_type), intent(inout) :: self
-        real(RKC) :: logModelInt1, logModelInt2, small, large
+        real(RKG) :: logModelInt1, logModelInt2, small, large
         if (size(param) /= self%npar) error stop "`lognorm_type%setParam()` takes a vector of two parameters representing `avg` and `logstd`."
         self%alpha = param(2)
         self%logbreak = param(1)
         self%alphap1 = self%alpha + 1
         self%break = exp(self%logbreak)
         logModelInt1 = log(self%break - self%limx(1))
-        if (self%alphap1 < 0._RKC) then
+        if (self%alphap1 < 0._RKG) then
             logModelInt2 = -log(-self%alphap1)
             large = self%alphap1 * self%logbreak
             small = self%alphap1 * self%loglimx(2)
-        elseif (0._RKC < self%alphap1) then
+        elseif (0._RKG < self%alphap1) then
             logModelInt2 = -log(self%alphap1)
             small = self%alphap1 * self%logbreak
             large = self%alphap1 * self%loglimx(2)
         else
-            logModelInt2 = 0._RKC
+            logModelInt2 = 0._RKG
             small = self%logbreak
             large = self%loglimx(2)
         end if
@@ -292,7 +292,7 @@ contains
         use data_mod, only: obs_type, posuniv_type
         class(flatPoweto_type), intent(in) :: self
         class(obs_type), intent(in) :: obs
-        real(RKC) :: logPDF
+        real(RKG) :: logPDF
         select type (obs)
         type is (posuniv_type)
             if (obs%log < self%logbreak) then
@@ -312,12 +312,12 @@ end module flatPoweto_mod
 
 module flatPowetoTapered_mod
 
-    use auxil_mod, only: RKC, LARGE
+    use auxil_mod, only: RKG, LARGE
     use model_mod, only: domain_type, model_type
     implicit none
 
     type, extends(model_type) :: flatPowetoTapered_type
-        real(RKC), private  :: logbreak, alpha, beta, break, alphap1, logPDFNF, limx(2), loglimx(2)
+        real(RKG), private  :: logbreak, alpha, beta, break, alphap1, logPDFNF, limx(2), loglimx(2)
     contains
         procedure, private :: getLogUDF
         procedure :: getParam, setParam, getLogPDF
@@ -330,9 +330,9 @@ module flatPowetoTapered_mod
 contains
 
     function flatPowetoTapered_typer(limx, param, domain) result(self)
-        real(RKC), intent(in), contiguous, optional :: param(:)
+        real(RKG), intent(in), contiguous, optional :: param(:)
         type(domain_type), intent(in), optional :: domain
-        real(RKC), intent(in), contiguous :: limx(:)
+        real(RKG), intent(in), contiguous :: limx(:)
         type(flatPowetoTapered_type) :: self
         self%npar = 3
         self%limx = limx
@@ -347,7 +347,7 @@ contains
 
     function getParam(self) result(param)
         class(flatPowetoTapered_type), intent(in) :: self
-        real(RKC) :: param(self%npar)
+        real(RKG) :: param(self%npar)
         param = [self%logbreak, self%alpha, self%beta]
     end function
 
@@ -358,8 +358,8 @@ contains
         use pm_mathLogAddExp, only: getLogAddExp
         use pm_quadPack, only: isFailedQuad, getQuadErr, weps
         class(flatPowetoTapered_type), intent(inout) :: self
-        real(RKC), intent(in), contiguous :: param(:)
-        real(RKC) :: logModelInt1, logModelInt2, logNF
+        real(RKG), intent(in), contiguous :: param(:)
+        real(RKG) :: logModelInt1, logModelInt2, logNF
         character(255, SK) :: msg
         logical(LK) :: failed
         if (size(param) /= self%npar) error stop "`flatPowetoFlatPowetoTapered_type` takes a vector of three parameters"&
@@ -377,8 +377,8 @@ contains
         self%logPDFNF = -getLogAddExp(getMinMax(logModelInt1, logModelInt2))
     contains
         function getDensity(logx) result(density)
-            real(RKC), intent(in) :: logx
-            real(RKC) :: density
+            real(RKG), intent(in) :: logx
+            real(RKG) :: density
             density = exp(self%getLogUDF(logx, exp(logx)) - logNF)
         end function
     end subroutine
@@ -387,7 +387,7 @@ contains
         use data_mod, only: obs_type, posuniv_type
         class(flatPowetoTapered_type), intent(in) :: self
         class(obs_type), intent(in):: obs
-        real(RKC) :: logPDF
+        real(RKG) :: logPDF
         select type (obs)
         type is (posuniv_type)
             if (obs%log < self%logbreak) then
@@ -403,8 +403,8 @@ contains
 
     pure elemental function getLogUDF(self, logx, x) result(logUDF)
         class(flatPowetoTapered_type), intent(in) :: self
-        real(RKC), intent(in) :: logx, x
-        real(RKC) :: logUDF
+        real(RKG), intent(in) :: logx, x
+        real(RKG) :: logUDF
         logUDF = self%alphap1 * logx - self%alpha * self%logbreak - self%beta * (x - self%break)
     end function
 
@@ -419,14 +419,14 @@ module mixture_mod
     use pm_mathLogAddExp, only: getLogAddExp
     use pm_mathLogSumExp, only: getLogSumExp
     use model_mod, only: domain_type, model_type, con_type
-    use auxil_mod, only: RKC, EPS, LARGE
+    use auxil_mod, only: RKG, EPS, LARGE
     use data_mod, only: obs_type
     use pm_kind, only: SK, IK
     implicit none
 
     type, extends(model_type) :: mixture_type
         type(con_type), allocatable :: comp(:)
-        real(RKC), allocatable :: logfrac(:)
+        real(RKG), allocatable :: logfrac(:)
         integer(IK), private :: ncomp
     contains
         procedure :: getParam, setParam, getLogPDF
@@ -440,7 +440,7 @@ contains
 
     function mixture_typer(comp, param) result(self)
         type(con_type), intent(in), contiguous :: comp(:)
-        real(RKC), intent(in), contiguous, optional :: param(:)
+        real(RKG), intent(in), contiguous, optional :: param(:)
         character(:, SK), allocatable :: prefix
         integer(IK) :: icomp, lpar, upar, ipar
         type(mixture_type) :: self
@@ -470,16 +470,16 @@ contains
     subroutine setParam(self, param)
         use pm_mathFisher, only: getFisherInv
         class(mixture_type), intent(inout) :: self
-        real(RKC), intent(in), contiguous :: param(:)
+        real(RKG), intent(in), contiguous :: param(:)
         integer(IK) :: icomp, lpar, upar
-        real(RKC) :: sumfrac, mixfrac
+        real(RKG) :: sumfrac, mixfrac
         if (size(param) /= self%npar) error stop "@mixture_type%setParam(): The condition `size(param) == self%npar` must hold. size(param), self%npar = "//getStr([size(param), self%npar])
         lpar = 0
         sumfrac = 0
         do icomp = 1, self%ncomp - 1
             upar = lpar + self%comp(icomp)%model%npar
             call self%comp(icomp)%model%setParam(param(lpar + 1 : upar))
-            mixfrac = getFisherInv(param(upar + 1), 0._RKC, 1._RKC)
+            mixfrac = getFisherInv(param(upar + 1), 0._RKG, 1._RKG)
             self%logfrac(icomp) = log(mixfrac)
             sumfrac = sumfrac + mixfrac
             lpar = upar + 1
@@ -493,17 +493,17 @@ contains
         use pm_mathFisher, only: getFisher
         class(mixture_type), intent(in) :: self
         integer(IK) :: icomp, lpar, upar
-        real(RKC) :: param(self%npar)
-        param = [(self%comp(icomp)%model%getParam(), getFisher(exp(self%logfrac(icomp)), 0._RKC, 1._RKC), icomp = 1, self%ncomp - 1), self%comp(self%ncomp)%model%getParam()]
+        real(RKG) :: param(self%npar)
+        param = [(self%comp(icomp)%model%getParam(), getFisher(exp(self%logfrac(icomp)), 0._RKG, 1._RKG), icomp = 1, self%ncomp - 1), self%comp(self%ncomp)%model%getParam()]
     end function
 
     impure elemental function getLogPDF(self, obs) result(logPDF)
         class(mixture_type), intent(in) :: self
-        real(RKC) :: logPDFS(self%ncomp), maxLogPDF
+        real(RKG) :: logPDFS(self%ncomp), maxLogPDF
         class(obs_type), intent(in) :: obs
-        real(RKC) :: logPDF
+        real(RKG) :: logPDF
         integer(IK) :: icomp
-        maxLogPDF = -huge(0._RKC)
+        maxLogPDF = -huge(0._RKG)
         do icomp = 1, self%ncomp
             logPDFS(icomp) = self%logfrac(icomp) + self%comp(icomp)%model%getLogPDF(obs)
             maxLogPDF = max(maxLogPDF, logPDFS(icomp))
@@ -517,7 +517,7 @@ end module mixture_mod
 
 module fit_mod
 
-    use auxil_mod, only: RKC
+    use auxil_mod, only: RKG
     use pm_sampling, only: sampler_type
     use pm_sampling, only: paradram_type
     use model_mod, only: model_type
@@ -528,12 +528,12 @@ module fit_mod
     public :: fit_type, paradram_type
 
     type :: best_type
-        real(RKC) :: loglike
-        real(RKC), allocatable :: param(:) ! best fit model parameters.
+        real(RKG) :: loglike
+        real(RKG), allocatable :: param(:) ! best fit model parameters.
     end type
 
     type :: fit_type
-        real(RKC) :: bic
+        real(RKG) :: bic
         type(best_type) :: best
         type(data_type) :: data
         class(model_type), allocatable :: model
@@ -594,8 +594,8 @@ contains
 
             integer(IK) :: stat, ibest!, offset = 1
             type(css_type), allocatable :: path(:)
-            real(RKC), allocatable :: logx(:), logPDF(:)
-            real(RKC), allocatable :: table(:,:), state(:)
+            real(RKG), allocatable :: logx(:), logPDF(:)
+            real(RKG), allocatable :: table(:,:), state(:)
 
             write(*, "(A)") "Searching for files: "//self%sampler%outputFileName//SK_"*"
             path = glob(self%sampler%outputFileName//SK_"*")
@@ -606,15 +606,15 @@ contains
             ibest = maxloc(table(:, 1), dim = 1_IK)
             self%best%loglike = table(ibest, 1)
             self%best%param = table(ibest, 2:)
-            self%bic = self%model%npar * log(real(self%data%nobs, RKC)) - 2 * self%best%loglike
+            self%bic = self%model%npar * log(real(self%data%nobs, RKG)) - 2 * self%best%loglike
 
         end block
 
     contains
 
         function getLogLike(param) result(logLike)
-            real(RKC), intent(in), contiguous :: param(:)
-            real(RKC) :: logLike
+            real(RKG), intent(in), contiguous :: param(:)
+            real(RKG) :: logLike
             call self%model%setParam(param)
             loglike = sum(self%model%getLogPDF(self%data%obs))
         end function
@@ -630,7 +630,7 @@ program example
     use pm_kind, only: SK, IK
     use fit_mod, only: fit_type
     use model_mod, only: con_type
-    use auxil_mod, only: RKC, LARGE
+    use auxil_mod, only: RKG, LARGE
     use lognorm_mod, only: lognorm_type
     use mixture_mod, only: mixture_type
     use pm_sampling, only: paradram_type
@@ -652,7 +652,7 @@ program example
 
     block
         use pm_io, only: getErrTableRead
-        real(RKC), allocatable :: table(:,:)
+        real(RKG), allocatable :: table(:,:)
         character(255, SK) :: iomsg
         stat = getErrTableRead("data.csv", table, roff = 1_IK, iomsg = iomsg)
         if (stat /= 0) error stop "Failed to read data: "//trim(iomsg)
@@ -670,8 +670,8 @@ program example
         if (imodel == 1) then
             sampler%outputFileName = "./mixLogNormLogNorm"
             sampler%proposalStart = [-.2, 0.4, .4, 3.6, -0.2]
-            sampler%domainCubeLimitLower = [real(RKC) :: -LARGE, -LARGE, -LARGE, log(3.), -LARGE]
-            sampler%domainCubeLimitUpper = [real(RKC) :: log(3.), +LARGE, +LARGE, +LARGE, +LARGE]
+            sampler%domainCubeLimitLower = [real(RKG) :: -LARGE, -LARGE, -LARGE, log(3.), -LARGE]
+            sampler%domainCubeLimitUpper = [real(RKG) :: log(3.), +LARGE, +LARGE, +LARGE, +LARGE]
             !sampler%proposalScale = "0.1 * gelman"
             sampler%proposalCov = reshape   ( &
                                             [  1.6E-2, 5.5E-3, 4.1E-3, 3.9E-3,-2.5E-3 &
@@ -706,7 +706,7 @@ program example
             fit = fit_type(data, mixture_type([con_type(flatPoweto_type(data%stat%lim)), con_type(lognorm_type())]), sampler)
         else
             sampler%outputFileName = "./logNorm"
-            fit = fit_type(data, lognorm_type([real(RKC) :: 1, 1]), sampler)
+            fit = fit_type(data, lognorm_type([real(RKG) :: 1, 1]), sampler)
         end if
 
         call fit%run()

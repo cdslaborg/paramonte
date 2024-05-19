@@ -44,35 +44,35 @@ contains
 
 #if CK5_ENABLED
     module procedure test_getLinSpace_CK5
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
 #include "test_pm_arraySpace@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure test_getLinSpace_CK4
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
 #include "test_pm_arraySpace@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure test_getLinSpace_CK3
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
 #include "test_pm_arraySpace@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure test_getLinSpace_CK2
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
 #include "test_pm_arraySpace@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure test_getLinSpace_CK1
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
 #include "test_pm_arraySpace@routines.inc.F90"
     end procedure
 #endif
@@ -85,35 +85,35 @@ contains
 
 #if RK5_ENABLED
     module procedure test_getLinSpace_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "test_pm_arraySpace@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure test_getLinSpace_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "test_pm_arraySpace@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure test_getLinSpace_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "test_pm_arraySpace@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure test_getLinSpace_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "test_pm_arraySpace@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure test_getLinSpace_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "test_pm_arraySpace@routines.inc.F90"
     end procedure
 #endif
@@ -134,35 +134,35 @@ contains
 
 #if CK5_ENABLED
     module procedure test_setLinSpace_CK5
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
 #include "test_pm_arraySpace@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure test_setLinSpace_CK4
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
 #include "test_pm_arraySpace@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure test_setLinSpace_CK3
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
 #include "test_pm_arraySpace@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure test_setLinSpace_CK2
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
 #include "test_pm_arraySpace@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure test_setLinSpace_CK1
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
 #include "test_pm_arraySpace@routines.inc.F90"
     end procedure
 #endif
@@ -175,35 +175,35 @@ contains
 
 #if RK5_ENABLED
     module procedure test_setLinSpace_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "test_pm_arraySpace@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure test_setLinSpace_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "test_pm_arraySpace@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure test_setLinSpace_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "test_pm_arraySpace@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure test_setLinSpace_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "test_pm_arraySpace@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure test_setLinSpace_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "test_pm_arraySpace@routines.inc.F90"
     end procedure
 #endif
@@ -224,35 +224,35 @@ contains
 
 #if CK5_ENABLED
     module procedure test_getLogSpace_CK5
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
 #include "test_pm_arraySpace@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure test_getLogSpace_CK4
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
 #include "test_pm_arraySpace@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure test_getLogSpace_CK3
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
 #include "test_pm_arraySpace@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure test_getLogSpace_CK2
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
 #include "test_pm_arraySpace@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure test_getLogSpace_CK1
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
 #include "test_pm_arraySpace@routines.inc.F90"
     end procedure
 #endif
@@ -265,35 +265,35 @@ contains
 
 #if RK5_ENABLED
     module procedure test_getLogSpace_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "test_pm_arraySpace@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure test_getLogSpace_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "test_pm_arraySpace@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure test_getLogSpace_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "test_pm_arraySpace@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure test_getLogSpace_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "test_pm_arraySpace@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure test_getLogSpace_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "test_pm_arraySpace@routines.inc.F90"
     end procedure
 #endif
@@ -314,35 +314,35 @@ contains
 
 #if CK5_ENABLED
     module procedure test_setLogSpace_CK5
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
 #include "test_pm_arraySpace@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure test_setLogSpace_CK4
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
 #include "test_pm_arraySpace@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure test_setLogSpace_CK3
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
 #include "test_pm_arraySpace@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure test_setLogSpace_CK2
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
 #include "test_pm_arraySpace@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure test_setLogSpace_CK1
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
 #include "test_pm_arraySpace@routines.inc.F90"
     end procedure
 #endif
@@ -355,35 +355,35 @@ contains
 
 #if RK5_ENABLED
     module procedure test_setLogSpace_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "test_pm_arraySpace@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure test_setLogSpace_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "test_pm_arraySpace@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure test_setLogSpace_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "test_pm_arraySpace@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure test_setLogSpace_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "test_pm_arraySpace@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure test_setLogSpace_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "test_pm_arraySpace@routines.inc.F90"
     end procedure
 #endif

@@ -25,32 +25,32 @@
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #if     Seq_ENABLED && CK_ENABLED
-        complex(CKC) :: y, z
+        complex(CKG) :: y, z
 #elif   Seq_ENABLED && RK_ENABLED
-        real(RKC) :: y, z
+        real(RKG) :: y, z
 !#elif   Sel_ENABLED && CK_ENABLED
 !        use pm_complexCompareAll, only: operator(<)
-!        complex(CKC) :: absX
+!        complex(CKG) :: absX
 !#elif   Sel_ENABLED && RK_ENABLED
-!        real(RKC) :: absX
+!        real(RKG) :: absX
 #else
 #error  "Unrecognized interface."
 #endif
 #if     CK_ENABLED
-        complex(CKC), parameter :: ONE = cmplx(1._CKC, 0._CKC, CKC)
-        complex(CKC), parameter :: ZERO = cmplx(0._CKC, 0._CKC, CKC)
-        complex(CKC), parameter :: EPSX = cmplx(epsilon(0._CKC), epsilon(0._CKC), CKC)
-        complex(CKC), parameter :: TINYX = cmplx(tiny(0._CKC), tiny(0._CKC), CKC)
+        complex(CKG), parameter :: ONE = cmplx(1._CKG, 0._CKG, CKG)
+        complex(CKG), parameter :: ZERO = cmplx(0._CKG, 0._CKG, CKG)
+        complex(CKG), parameter :: EPSX = cmplx(epsilon(0._CKG), epsilon(0._CKG), CKG)
+        complex(CKG), parameter :: TINYX = cmplx(tiny(0._CKG), tiny(0._CKG), CKG)
 !#define GET_REAL(x) x%re
 #elif   RK_ENABLED
-        real(RKC)   , parameter :: ONE = 1._RKC, ZERO = 0._RKC, EPSX = epsilon(x), TINYX = tiny(x)
+        real(RKG)   , parameter :: ONE = 1._RKG, ZERO = 0._RKG, EPSX = epsilon(x), TINYX = tiny(x)
 !#define GET_REAL(x) x
 #else
 #error  "Unrecognized interface."
 #endif
-        integer , parameter :: TKC = kind(x) ! This kind current.
-        CHECK_ASSERTION(__LINE__, real(x, TKC) > -1._TKC, SK_"@getLog1p(): The condition `real(x) > -1.` must hold. x = "//getStr(x))
-        CHECK_ASSERTION(__LINE__, real(x, TKC) < huge(0._TKC), SK_"@getLog1p(): The condition `real(x) <= huge(x)` must hold. x = "//getStr(x))
+        integer , parameter :: TKG = kind(x) ! type kind generic.
+        CHECK_ASSERTION(__LINE__, real(x, TKG) > -1._TKG, SK_"@getLog1p(): The condition `real(x) > -1.` must hold. x = "//getStr(x))
+        CHECK_ASSERTION(__LINE__, real(x, TKG) < huge(0._TKG), SK_"@getLog1p(): The condition `real(x) <= huge(x)` must hold. x = "//getStr(x))
 #if     Seq_ENABLED
         y = ONE + x
         z = y - ONE
@@ -59,10 +59,10 @@
 !        !absRealX = abs(GET_REAL(x))
 !        absX = abs(x)
 !        ! Is this really needed? any number smaller than tiny? Yes: zero
-!        ! if (absRealX < tiny(0._TKC)) then
+!        ! if (absRealX < tiny(0._TKG)) then
 !        if (absX < TINYX) then
 !            log1p = ZERO
-!        !elseif (absRealX < epsilon(0._TKC)) then
+!        !elseif (absRealX < epsilon(0._TKG)) then
 !        elseif (absX < EPSX) then
 !            log1p = getLog1p(x)
 !        else

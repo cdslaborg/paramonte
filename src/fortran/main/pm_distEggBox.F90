@@ -120,10 +120,10 @@ module pm_distEggBox
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getEggBoxLogUDFDDAZ_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(in)    , contiguous            :: X(:)
-        real(RKC)   , intent(in)                , optional  :: alpha, zeta
-        real(RKC)                                           :: logUDF
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(in)    , contiguous            :: X(:)
+        real(RKG)   , intent(in)                , optional  :: alpha, zeta
+        real(RKG)                                           :: logUDF
     end function
 #endif
 
@@ -132,10 +132,10 @@ module pm_distEggBox
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getEggBoxLogUDFDDAZ_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(in)    , contiguous            :: X(:)
-        real(RKC)   , intent(in)                , optional  :: alpha, zeta
-        real(RKC)                                           :: logUDF
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(in)    , contiguous            :: X(:)
+        real(RKG)   , intent(in)                , optional  :: alpha, zeta
+        real(RKG)                                           :: logUDF
     end function
 #endif
 
@@ -144,10 +144,10 @@ module pm_distEggBox
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getEggBoxLogUDFDDAZ_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(in)    , contiguous            :: X(:)
-        real(RKC)   , intent(in)                , optional  :: alpha, zeta
-        real(RKC)                                           :: logUDF
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(in)    , contiguous            :: X(:)
+        real(RKG)   , intent(in)                , optional  :: alpha, zeta
+        real(RKG)                                           :: logUDF
     end function
 #endif
 
@@ -156,10 +156,10 @@ module pm_distEggBox
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getEggBoxLogUDFDDAZ_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(in)    , contiguous            :: X(:)
-        real(RKC)   , intent(in)                , optional  :: alpha, zeta
-        real(RKC)                                           :: logUDF
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(in)    , contiguous            :: X(:)
+        real(RKG)   , intent(in)                , optional  :: alpha, zeta
+        real(RKG)                                           :: logUDF
     end function
 #endif
 
@@ -168,10 +168,10 @@ module pm_distEggBox
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getEggBoxLogUDFDDAZ_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(in)    , contiguous            :: X(:)
-        real(RKC)   , intent(in)                , optional  :: alpha, zeta
-        real(RKC)                                           :: logUDF
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(in)    , contiguous            :: X(:)
+        real(RKG)   , intent(in)                , optional  :: alpha, zeta
+        real(RKG)                                           :: logUDF
     end function
 #endif
 
@@ -182,10 +182,10 @@ module pm_distEggBox
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getEggBoxLogUDFMSAZ_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(in)    , contiguous            :: X(:), mu(:), sigma(:)
-        real(RKC)   , intent(in)                , optional  :: alpha, zeta
-        real(RKC)                                           :: logUDF
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(in)    , contiguous            :: X(:), mu(:), sigma(:)
+        real(RKG)   , intent(in)                , optional  :: alpha, zeta
+        real(RKG)                                           :: logUDF
     end function
 #endif
 
@@ -194,10 +194,10 @@ module pm_distEggBox
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getEggBoxLogUDFMSAZ_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(in)    , contiguous            :: X(:), mu(:), sigma(:)
-        real(RKC)   , intent(in)                , optional  :: alpha, zeta
-        real(RKC)                                           :: logUDF
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(in)    , contiguous            :: X(:), mu(:), sigma(:)
+        real(RKG)   , intent(in)                , optional  :: alpha, zeta
+        real(RKG)                                           :: logUDF
     end function
 #endif
 
@@ -206,10 +206,10 @@ module pm_distEggBox
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getEggBoxLogUDFMSAZ_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(in)    , contiguous            :: X(:), mu(:), sigma(:)
-        real(RKC)   , intent(in)                , optional  :: alpha, zeta
-        real(RKC)                                           :: logUDF
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(in)    , contiguous            :: X(:), mu(:), sigma(:)
+        real(RKG)   , intent(in)                , optional  :: alpha, zeta
+        real(RKG)                                           :: logUDF
     end function
 #endif
 
@@ -218,10 +218,10 @@ module pm_distEggBox
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getEggBoxLogUDFMSAZ_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(in)    , contiguous            :: X(:), mu(:), sigma(:)
-        real(RKC)   , intent(in)                , optional  :: alpha, zeta
-        real(RKC)                                           :: logUDF
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(in)    , contiguous            :: X(:), mu(:), sigma(:)
+        real(RKG)   , intent(in)                , optional  :: alpha, zeta
+        real(RKG)                                           :: logUDF
     end function
 #endif
 
@@ -230,10 +230,10 @@ module pm_distEggBox
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getEggBoxLogUDFMSAZ_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(in)    , contiguous            :: X(:), mu(:), sigma(:)
-        real(RKC)   , intent(in)                , optional  :: alpha, zeta
-        real(RKC)                                           :: logUDF
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(in)    , contiguous            :: X(:), mu(:), sigma(:)
+        real(RKG)   , intent(in)                , optional  :: alpha, zeta
+        real(RKG)                                           :: logUDF
     end function
 #endif
 

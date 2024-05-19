@@ -76,35 +76,35 @@ contains
 
 #if CK5_ENABLED
     module procedure isMatClassPosDefFulRDP_CK5
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
 #include "pm_matrixClass@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure isMatClassPosDefFulRDP_CK4
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
 #include "pm_matrixClass@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure isMatClassPosDefFulRDP_CK3
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
 #include "pm_matrixClass@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure isMatClassPosDefFulRDP_CK2
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
 #include "pm_matrixClass@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure isMatClassPosDefFulRDP_CK1
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
 #include "pm_matrixClass@routines.inc.F90"
     end procedure
 #endif
@@ -117,35 +117,35 @@ contains
 
 #if RK5_ENABLED
     module procedure isMatClassPosDefFulRDP_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_matrixClass@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure isMatClassPosDefFulRDP_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_matrixClass@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure isMatClassPosDefFulRDP_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_matrixClass@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure isMatClassPosDefFulRDP_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_matrixClass@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure isMatClassPosDefFulRDP_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_matrixClass@routines.inc.F90"
     end procedure
 #endif
@@ -168,35 +168,35 @@ contains
 
 #if CK5_ENABLED
     module procedure isMatClassPosDefUppRDP_CK5
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
 #include "pm_matrixClass@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure isMatClassPosDefUppRDP_CK4
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
 #include "pm_matrixClass@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure isMatClassPosDefUppRDP_CK3
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
 #include "pm_matrixClass@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure isMatClassPosDefUppRDP_CK2
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
 #include "pm_matrixClass@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure isMatClassPosDefUppRDP_CK1
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
 #include "pm_matrixClass@routines.inc.F90"
     end procedure
 #endif
@@ -209,35 +209,35 @@ contains
 
 #if RK5_ENABLED
     module procedure isMatClassPosDefUppRDP_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_matrixClass@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure isMatClassPosDefUppRDP_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_matrixClass@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure isMatClassPosDefUppRDP_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_matrixClass@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure isMatClassPosDefUppRDP_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_matrixClass@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure isMatClassPosDefUppRDP_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_matrixClass@routines.inc.F90"
     end procedure
 #endif
@@ -260,35 +260,35 @@ contains
 
 #if CK5_ENABLED
     module procedure isMatClassPosDefLowRDP_CK5
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
 #include "pm_matrixClass@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure isMatClassPosDefLowRDP_CK4
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
 #include "pm_matrixClass@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure isMatClassPosDefLowRDP_CK3
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
 #include "pm_matrixClass@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure isMatClassPosDefLowRDP_CK2
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
 #include "pm_matrixClass@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure isMatClassPosDefLowRDP_CK1
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
 #include "pm_matrixClass@routines.inc.F90"
     end procedure
 #endif
@@ -301,35 +301,35 @@ contains
 
 #if RK5_ENABLED
     module procedure isMatClassPosDefLowRDP_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_matrixClass@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure isMatClassPosDefLowRDP_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_matrixClass@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure isMatClassPosDefLowRDP_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_matrixClass@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure isMatClassPosDefLowRDP_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_matrixClass@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure isMatClassPosDefLowRDP_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_matrixClass@routines.inc.F90"
     end procedure
 #endif
@@ -364,35 +364,35 @@ contains
 
 #if CK5_ENABLED
     module procedure isMatClassPosDefUppRFP_CK5
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
 #include "pm_matrixClass@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure isMatClassPosDefUppRFP_CK4
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
 #include "pm_matrixClass@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure isMatClassPosDefUppRFP_CK3
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
 #include "pm_matrixClass@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure isMatClassPosDefUppRFP_CK2
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
 #include "pm_matrixClass@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure isMatClassPosDefUppRFP_CK1
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
 #include "pm_matrixClass@routines.inc.F90"
     end procedure
 #endif
@@ -405,35 +405,35 @@ contains
 
 #if RK5_ENABLED
     module procedure isMatClassPosDefUppRFP_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_matrixClass@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure isMatClassPosDefUppRFP_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_matrixClass@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure isMatClassPosDefUppRFP_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_matrixClass@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure isMatClassPosDefUppRFP_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_matrixClass@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure isMatClassPosDefUppRFP_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_matrixClass@routines.inc.F90"
     end procedure
 #endif
@@ -456,35 +456,35 @@ contains
 
 #if CK5_ENABLED
     module procedure isMatClassPosDefLowRFP_CK5
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
 #include "pm_matrixClass@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure isMatClassPosDefLowRFP_CK4
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
 #include "pm_matrixClass@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure isMatClassPosDefLowRFP_CK3
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
 #include "pm_matrixClass@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure isMatClassPosDefLowRFP_CK2
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
 #include "pm_matrixClass@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure isMatClassPosDefLowRFP_CK1
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
 #include "pm_matrixClass@routines.inc.F90"
     end procedure
 #endif
@@ -497,35 +497,35 @@ contains
 
 #if RK5_ENABLED
     module procedure isMatClassPosDefLowRFP_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_matrixClass@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure isMatClassPosDefLowRFP_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_matrixClass@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure isMatClassPosDefLowRFP_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_matrixClass@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure isMatClassPosDefLowRFP_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_matrixClass@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure isMatClassPosDefLowRFP_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_matrixClass@routines.inc.F90"
     end procedure
 #endif
@@ -560,35 +560,35 @@ contains
 
 #if SK5_ENABLED
     module procedure isMatClassSymm_SK5
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
 #include "pm_matrixClass@routines.inc.F90"
     end procedure
 #endif
 
 #if SK4_ENABLED
     module procedure isMatClassSymm_SK4
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
 #include "pm_matrixClass@routines.inc.F90"
     end procedure
 #endif
 
 #if SK3_ENABLED
     module procedure isMatClassSymm_SK3
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
 #include "pm_matrixClass@routines.inc.F90"
     end procedure
 #endif
 
 #if SK2_ENABLED
     module procedure isMatClassSymm_SK2
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
 #include "pm_matrixClass@routines.inc.F90"
     end procedure
 #endif
 
 #if SK1_ENABLED
     module procedure isMatClassSymm_SK1
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
 #include "pm_matrixClass@routines.inc.F90"
     end procedure
 #endif
@@ -601,35 +601,35 @@ contains
 
 #if IK5_ENABLED
     module procedure isMatClassSymm_IK5
-        use pm_kind, only: IKC => IK5
+        use pm_kind, only: IKG => IK5
 #include "pm_matrixClass@routines.inc.F90"
     end procedure
 #endif
 
 #if IK4_ENABLED
     module procedure isMatClassSymm_IK4
-        use pm_kind, only: IKC => IK4
+        use pm_kind, only: IKG => IK4
 #include "pm_matrixClass@routines.inc.F90"
     end procedure
 #endif
 
 #if IK3_ENABLED
     module procedure isMatClassSymm_IK3
-        use pm_kind, only: IKC => IK3
+        use pm_kind, only: IKG => IK3
 #include "pm_matrixClass@routines.inc.F90"
     end procedure
 #endif
 
 #if IK2_ENABLED
     module procedure isMatClassSymm_IK2
-        use pm_kind, only: IKC => IK2
+        use pm_kind, only: IKG => IK2
 #include "pm_matrixClass@routines.inc.F90"
     end procedure
 #endif
 
 #if IK1_ENABLED
     module procedure isMatClassSymm_IK1
-        use pm_kind, only: IKC => IK1
+        use pm_kind, only: IKG => IK1
 #include "pm_matrixClass@routines.inc.F90"
     end procedure
 #endif
@@ -642,35 +642,35 @@ contains
 
 #if LK5_ENABLED
     module procedure isMatClassSymm_LK5
-        use pm_kind, only: LKC => LK5
+        use pm_kind, only: LKG => LK5
 #include "pm_matrixClass@routines.inc.F90"
     end procedure
 #endif
 
 #if LK4_ENABLED
     module procedure isMatClassSymm_LK4
-        use pm_kind, only: LKC => LK4
+        use pm_kind, only: LKG => LK4
 #include "pm_matrixClass@routines.inc.F90"
     end procedure
 #endif
 
 #if LK3_ENABLED
     module procedure isMatClassSymm_LK3
-        use pm_kind, only: LKC => LK3
+        use pm_kind, only: LKG => LK3
 #include "pm_matrixClass@routines.inc.F90"
     end procedure
 #endif
 
 #if LK2_ENABLED
     module procedure isMatClassSymm_LK2
-        use pm_kind, only: LKC => LK2
+        use pm_kind, only: LKG => LK2
 #include "pm_matrixClass@routines.inc.F90"
     end procedure
 #endif
 
 #if LK1_ENABLED
     module procedure isMatClassSymm_LK1
-        use pm_kind, only: LKC => LK1
+        use pm_kind, only: LKG => LK1
 #include "pm_matrixClass@routines.inc.F90"
     end procedure
 #endif
@@ -683,35 +683,35 @@ contains
 
 #if CK5_ENABLED
     module procedure isMatClassSymm_CK5
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
 #include "pm_matrixClass@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure isMatClassSymm_CK4
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
 #include "pm_matrixClass@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure isMatClassSymm_CK3
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
 #include "pm_matrixClass@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure isMatClassSymm_CK2
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
 #include "pm_matrixClass@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure isMatClassSymm_CK1
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
 #include "pm_matrixClass@routines.inc.F90"
     end procedure
 #endif
@@ -724,35 +724,35 @@ contains
 
 #if RK5_ENABLED
     module procedure isMatClassSymm_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_matrixClass@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure isMatClassSymm_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_matrixClass@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure isMatClassSymm_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_matrixClass@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure isMatClassSymm_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_matrixClass@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure isMatClassSymm_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_matrixClass@routines.inc.F90"
     end procedure
 #endif
@@ -775,35 +775,35 @@ contains
 
 #if SK5_ENABLED
     module procedure isMatClassHerm_SK5
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
 #include "pm_matrixClass@routines.inc.F90"
     end procedure
 #endif
 
 #if SK4_ENABLED
     module procedure isMatClassHerm_SK4
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
 #include "pm_matrixClass@routines.inc.F90"
     end procedure
 #endif
 
 #if SK3_ENABLED
     module procedure isMatClassHerm_SK3
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
 #include "pm_matrixClass@routines.inc.F90"
     end procedure
 #endif
 
 #if SK2_ENABLED
     module procedure isMatClassHerm_SK2
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
 #include "pm_matrixClass@routines.inc.F90"
     end procedure
 #endif
 
 #if SK1_ENABLED
     module procedure isMatClassHerm_SK1
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
 #include "pm_matrixClass@routines.inc.F90"
     end procedure
 #endif
@@ -816,35 +816,35 @@ contains
 
 #if IK5_ENABLED
     module procedure isMatClassHerm_IK5
-        use pm_kind, only: IKC => IK5
+        use pm_kind, only: IKG => IK5
 #include "pm_matrixClass@routines.inc.F90"
     end procedure
 #endif
 
 #if IK4_ENABLED
     module procedure isMatClassHerm_IK4
-        use pm_kind, only: IKC => IK4
+        use pm_kind, only: IKG => IK4
 #include "pm_matrixClass@routines.inc.F90"
     end procedure
 #endif
 
 #if IK3_ENABLED
     module procedure isMatClassHerm_IK3
-        use pm_kind, only: IKC => IK3
+        use pm_kind, only: IKG => IK3
 #include "pm_matrixClass@routines.inc.F90"
     end procedure
 #endif
 
 #if IK2_ENABLED
     module procedure isMatClassHerm_IK2
-        use pm_kind, only: IKC => IK2
+        use pm_kind, only: IKG => IK2
 #include "pm_matrixClass@routines.inc.F90"
     end procedure
 #endif
 
 #if IK1_ENABLED
     module procedure isMatClassHerm_IK1
-        use pm_kind, only: IKC => IK1
+        use pm_kind, only: IKG => IK1
 #include "pm_matrixClass@routines.inc.F90"
     end procedure
 #endif
@@ -857,35 +857,35 @@ contains
 
 #if LK5_ENABLED
     module procedure isMatClassHerm_LK5
-        use pm_kind, only: LKC => LK5
+        use pm_kind, only: LKG => LK5
 #include "pm_matrixClass@routines.inc.F90"
     end procedure
 #endif
 
 #if LK4_ENABLED
     module procedure isMatClassHerm_LK4
-        use pm_kind, only: LKC => LK4
+        use pm_kind, only: LKG => LK4
 #include "pm_matrixClass@routines.inc.F90"
     end procedure
 #endif
 
 #if LK3_ENABLED
     module procedure isMatClassHerm_LK3
-        use pm_kind, only: LKC => LK3
+        use pm_kind, only: LKG => LK3
 #include "pm_matrixClass@routines.inc.F90"
     end procedure
 #endif
 
 #if LK2_ENABLED
     module procedure isMatClassHerm_LK2
-        use pm_kind, only: LKC => LK2
+        use pm_kind, only: LKG => LK2
 #include "pm_matrixClass@routines.inc.F90"
     end procedure
 #endif
 
 #if LK1_ENABLED
     module procedure isMatClassHerm_LK1
-        use pm_kind, only: LKC => LK1
+        use pm_kind, only: LKG => LK1
 #include "pm_matrixClass@routines.inc.F90"
     end procedure
 #endif
@@ -898,35 +898,35 @@ contains
 
 #if CK5_ENABLED
     module procedure isMatClassHerm_CK5
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
 #include "pm_matrixClass@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure isMatClassHerm_CK4
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
 #include "pm_matrixClass@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure isMatClassHerm_CK3
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
 #include "pm_matrixClass@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure isMatClassHerm_CK2
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
 #include "pm_matrixClass@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure isMatClassHerm_CK1
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
 #include "pm_matrixClass@routines.inc.F90"
     end procedure
 #endif
@@ -939,35 +939,35 @@ contains
 
 #if RK5_ENABLED
     module procedure isMatClassHerm_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_matrixClass@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure isMatClassHerm_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_matrixClass@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure isMatClassHerm_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_matrixClass@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure isMatClassHerm_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_matrixClass@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure isMatClassHerm_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_matrixClass@routines.inc.F90"
     end procedure
 #endif

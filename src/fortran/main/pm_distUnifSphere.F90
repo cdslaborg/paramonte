@@ -238,10 +238,10 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifSphereLogPDF_D0_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         integer(IK) , intent(in)                            :: ndim
-        real(RKC)   , intent(in)                            :: logRadius
-        real(RKC)                                           :: logPDF
+        real(RKG)   , intent(in)                            :: logRadius
+        real(RKG)                                           :: logPDF
     end function
 #endif
 
@@ -250,10 +250,10 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifSphereLogPDF_D0_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         integer(IK) , intent(in)                            :: ndim
-        real(RKC)   , intent(in)                            :: logRadius
-        real(RKC)                                           :: logPDF
+        real(RKG)   , intent(in)                            :: logRadius
+        real(RKG)                                           :: logPDF
     end function
 #endif
 
@@ -262,10 +262,10 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifSphereLogPDF_D0_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         integer(IK) , intent(in)                            :: ndim
-        real(RKC)   , intent(in)                            :: logRadius
-        real(RKC)                                           :: logPDF
+        real(RKG)   , intent(in)                            :: logRadius
+        real(RKG)                                           :: logPDF
     end function
 #endif
 
@@ -274,10 +274,10 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifSphereLogPDF_D0_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         integer(IK) , intent(in)                            :: ndim
-        real(RKC)   , intent(in)                            :: logRadius
-        real(RKC)                                           :: logPDF
+        real(RKG)   , intent(in)                            :: logRadius
+        real(RKG)                                           :: logPDF
     end function
 #endif
 
@@ -286,10 +286,10 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifSphereLogPDF_D0_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         integer(IK) , intent(in)                            :: ndim
-        real(RKC)   , intent(in)                            :: logRadius
-        real(RKC)                                           :: logPDF
+        real(RKG)   , intent(in)                            :: logRadius
+        real(RKG)                                           :: logPDF
     end function
 #endif
 
@@ -419,9 +419,9 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUSR_RNGD_AM_DC_XXX_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)               , intent(in)    , contiguous    :: mean(:)
-        real(RKC)                                               :: rand(size(mean, 1, IK))
+        use pm_kind, only: RKG => RK5
+        real(RKG)               , intent(in)    , contiguous    :: mean(:)
+        real(RKG)                                               :: rand(size(mean, 1, IK))
     end function
 #endif
 
@@ -430,9 +430,9 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUSR_RNGD_AM_DC_XXX_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)               , intent(in)    , contiguous    :: mean(:)
-        real(RKC)                                               :: rand(size(mean, 1, IK))
+        use pm_kind, only: RKG => RK4
+        real(RKG)               , intent(in)    , contiguous    :: mean(:)
+        real(RKG)                                               :: rand(size(mean, 1, IK))
     end function
 #endif
 
@@ -441,9 +441,9 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUSR_RNGD_AM_DC_XXX_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)               , intent(in)    , contiguous    :: mean(:)
-        real(RKC)                                               :: rand(size(mean, 1, IK))
+        use pm_kind, only: RKG => RK3
+        real(RKG)               , intent(in)    , contiguous    :: mean(:)
+        real(RKG)                                               :: rand(size(mean, 1, IK))
     end function
 #endif
 
@@ -452,9 +452,9 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUSR_RNGD_AM_DC_XXX_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)               , intent(in)    , contiguous    :: mean(:)
-        real(RKC)                                               :: rand(size(mean, 1, IK))
+        use pm_kind, only: RKG => RK2
+        real(RKG)               , intent(in)    , contiguous    :: mean(:)
+        real(RKG)                                               :: rand(size(mean, 1, IK))
     end function
 #endif
 
@@ -463,9 +463,9 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUSR_RNGD_AM_DC_XXX_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)               , intent(in)    , contiguous    :: mean(:)
-        real(RKC)                                               :: rand(size(mean, 1, IK))
+        use pm_kind, only: RKG => RK1
+        real(RKG)               , intent(in)    , contiguous    :: mean(:)
+        real(RKG)                                               :: rand(size(mean, 1, IK))
     end function
 #endif
 
@@ -476,10 +476,10 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUSR_RNGD_DM_AC_UXD_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         type(uppDia_type)       , intent(in)                    :: subset
-        real(RKC)               , intent(in)    , contiguous    :: chol(:,:)
-        real(RKC)                                               :: rand(size(chol, 1, IK))
+        real(RKG)               , intent(in)    , contiguous    :: chol(:,:)
+        real(RKG)                                               :: rand(size(chol, 1, IK))
     end function
 #endif
 
@@ -488,10 +488,10 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUSR_RNGD_DM_AC_UXD_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         type(uppDia_type)       , intent(in)                    :: subset
-        real(RKC)               , intent(in)    , contiguous    :: chol(:,:)
-        real(RKC)                                               :: rand(size(chol, 1, IK))
+        real(RKG)               , intent(in)    , contiguous    :: chol(:,:)
+        real(RKG)                                               :: rand(size(chol, 1, IK))
     end function
 #endif
 
@@ -500,10 +500,10 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUSR_RNGD_DM_AC_UXD_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         type(uppDia_type)       , intent(in)                    :: subset
-        real(RKC)               , intent(in)    , contiguous    :: chol(:,:)
-        real(RKC)                                               :: rand(size(chol, 1, IK))
+        real(RKG)               , intent(in)    , contiguous    :: chol(:,:)
+        real(RKG)                                               :: rand(size(chol, 1, IK))
     end function
 #endif
 
@@ -512,10 +512,10 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUSR_RNGD_DM_AC_UXD_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         type(uppDia_type)       , intent(in)                    :: subset
-        real(RKC)               , intent(in)    , contiguous    :: chol(:,:)
-        real(RKC)                                               :: rand(size(chol, 1, IK))
+        real(RKG)               , intent(in)    , contiguous    :: chol(:,:)
+        real(RKG)                                               :: rand(size(chol, 1, IK))
     end function
 #endif
 
@@ -524,10 +524,10 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUSR_RNGD_DM_AC_UXD_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         type(uppDia_type)       , intent(in)                    :: subset
-        real(RKC)               , intent(in)    , contiguous    :: chol(:,:)
-        real(RKC)                                               :: rand(size(chol, 1, IK))
+        real(RKG)               , intent(in)    , contiguous    :: chol(:,:)
+        real(RKG)                                               :: rand(size(chol, 1, IK))
     end function
 #endif
 
@@ -538,10 +538,10 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUSR_RNGD_DM_AC_XLD_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         type(lowDia_type)       , intent(in)                    :: subset
-        real(RKC)               , intent(in)    , contiguous    :: chol(:,:)
-        real(RKC)                                               :: rand(size(chol, 1, IK))
+        real(RKG)               , intent(in)    , contiguous    :: chol(:,:)
+        real(RKG)                                               :: rand(size(chol, 1, IK))
     end function
 #endif
 
@@ -550,10 +550,10 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUSR_RNGD_DM_AC_XLD_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         type(lowDia_type)       , intent(in)                    :: subset
-        real(RKC)               , intent(in)    , contiguous    :: chol(:,:)
-        real(RKC)                                               :: rand(size(chol, 1, IK))
+        real(RKG)               , intent(in)    , contiguous    :: chol(:,:)
+        real(RKG)                                               :: rand(size(chol, 1, IK))
     end function
 #endif
 
@@ -562,10 +562,10 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUSR_RNGD_DM_AC_XLD_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         type(lowDia_type)       , intent(in)                    :: subset
-        real(RKC)               , intent(in)    , contiguous    :: chol(:,:)
-        real(RKC)                                               :: rand(size(chol, 1, IK))
+        real(RKG)               , intent(in)    , contiguous    :: chol(:,:)
+        real(RKG)                                               :: rand(size(chol, 1, IK))
     end function
 #endif
 
@@ -574,10 +574,10 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUSR_RNGD_DM_AC_XLD_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         type(lowDia_type)       , intent(in)                    :: subset
-        real(RKC)               , intent(in)    , contiguous    :: chol(:,:)
-        real(RKC)                                               :: rand(size(chol, 1, IK))
+        real(RKG)               , intent(in)    , contiguous    :: chol(:,:)
+        real(RKG)                                               :: rand(size(chol, 1, IK))
     end function
 #endif
 
@@ -586,10 +586,10 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUSR_RNGD_DM_AC_XLD_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         type(lowDia_type)       , intent(in)                    :: subset
-        real(RKC)               , intent(in)    , contiguous    :: chol(:,:)
-        real(RKC)                                               :: rand(size(chol, 1, IK))
+        real(RKG)               , intent(in)    , contiguous    :: chol(:,:)
+        real(RKG)                                               :: rand(size(chol, 1, IK))
     end function
 #endif
 
@@ -600,10 +600,10 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUSR_RNGD_AM_AC_UXD_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         type(uppDia_type)       , intent(in)                    :: subset
-        real(RKC)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
-        real(RKC)                                               :: rand(size(chol, 1, IK))
+        real(RKG)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
+        real(RKG)                                               :: rand(size(chol, 1, IK))
     end function
 #endif
 
@@ -612,10 +612,10 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUSR_RNGD_AM_AC_UXD_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         type(uppDia_type)       , intent(in)                    :: subset
-        real(RKC)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
-        real(RKC)                                               :: rand(size(chol, 1, IK))
+        real(RKG)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
+        real(RKG)                                               :: rand(size(chol, 1, IK))
     end function
 #endif
 
@@ -624,10 +624,10 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUSR_RNGD_AM_AC_UXD_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         type(uppDia_type)       , intent(in)                    :: subset
-        real(RKC)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
-        real(RKC)                                               :: rand(size(chol, 1, IK))
+        real(RKG)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
+        real(RKG)                                               :: rand(size(chol, 1, IK))
     end function
 #endif
 
@@ -636,10 +636,10 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUSR_RNGD_AM_AC_UXD_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         type(uppDia_type)       , intent(in)                    :: subset
-        real(RKC)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
-        real(RKC)                                               :: rand(size(chol, 1, IK))
+        real(RKG)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
+        real(RKG)                                               :: rand(size(chol, 1, IK))
     end function
 #endif
 
@@ -648,10 +648,10 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUSR_RNGD_AM_AC_UXD_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         type(uppDia_type)       , intent(in)                    :: subset
-        real(RKC)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
-        real(RKC)                                               :: rand(size(chol, 1, IK))
+        real(RKG)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
+        real(RKG)                                               :: rand(size(chol, 1, IK))
     end function
 #endif
 
@@ -662,10 +662,10 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUSR_RNGD_AM_AC_XLD_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         type(lowDia_type)       , intent(in)                    :: subset
-        real(RKC)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
-        real(RKC)                                               :: rand(size(chol, 1, IK))
+        real(RKG)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
+        real(RKG)                                               :: rand(size(chol, 1, IK))
     end function
 #endif
 
@@ -674,10 +674,10 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUSR_RNGD_AM_AC_XLD_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         type(lowDia_type)       , intent(in)                    :: subset
-        real(RKC)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
-        real(RKC)                                               :: rand(size(chol, 1, IK))
+        real(RKG)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
+        real(RKG)                                               :: rand(size(chol, 1, IK))
     end function
 #endif
 
@@ -686,10 +686,10 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUSR_RNGD_AM_AC_XLD_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         type(lowDia_type)       , intent(in)                    :: subset
-        real(RKC)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
-        real(RKC)                                               :: rand(size(chol, 1, IK))
+        real(RKG)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
+        real(RKG)                                               :: rand(size(chol, 1, IK))
     end function
 #endif
 
@@ -698,10 +698,10 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUSR_RNGD_AM_AC_XLD_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         type(lowDia_type)       , intent(in)                    :: subset
-        real(RKC)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
-        real(RKC)                                               :: rand(size(chol, 1, IK))
+        real(RKG)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
+        real(RKG)                                               :: rand(size(chol, 1, IK))
     end function
 #endif
 
@@ -710,10 +710,10 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUSR_RNGD_AM_AC_XLD_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         type(lowDia_type)       , intent(in)                    :: subset
-        real(RKC)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
-        real(RKC)                                               :: rand(size(chol, 1, IK))
+        real(RKG)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
+        real(RKG)                                               :: rand(size(chol, 1, IK))
     end function
 #endif
 
@@ -732,10 +732,10 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUSR_RNGF_AM_DC_XXX_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         type(rngf_type)         , intent(in)                    :: rng
-        real(RKC)               , intent(in)    , contiguous    :: mean(:)
-        real(RKC)                                               :: rand(size(mean, 1, IK))
+        real(RKG)               , intent(in)    , contiguous    :: mean(:)
+        real(RKG)                                               :: rand(size(mean, 1, IK))
     end function
 #endif
 
@@ -744,10 +744,10 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUSR_RNGF_AM_DC_XXX_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         type(rngf_type)         , intent(in)                    :: rng
-        real(RKC)               , intent(in)    , contiguous    :: mean(:)
-        real(RKC)                                               :: rand(size(mean, 1, IK))
+        real(RKG)               , intent(in)    , contiguous    :: mean(:)
+        real(RKG)                                               :: rand(size(mean, 1, IK))
     end function
 #endif
 
@@ -756,10 +756,10 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUSR_RNGF_AM_DC_XXX_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         type(rngf_type)         , intent(in)                    :: rng
-        real(RKC)               , intent(in)    , contiguous    :: mean(:)
-        real(RKC)                                               :: rand(size(mean, 1, IK))
+        real(RKG)               , intent(in)    , contiguous    :: mean(:)
+        real(RKG)                                               :: rand(size(mean, 1, IK))
     end function
 #endif
 
@@ -768,10 +768,10 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUSR_RNGF_AM_DC_XXX_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         type(rngf_type)         , intent(in)                    :: rng
-        real(RKC)               , intent(in)    , contiguous    :: mean(:)
-        real(RKC)                                               :: rand(size(mean, 1, IK))
+        real(RKG)               , intent(in)    , contiguous    :: mean(:)
+        real(RKG)                                               :: rand(size(mean, 1, IK))
     end function
 #endif
 
@@ -780,10 +780,10 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUSR_RNGF_AM_DC_XXX_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         type(rngf_type)         , intent(in)                    :: rng
-        real(RKC)               , intent(in)    , contiguous    :: mean(:)
-        real(RKC)                                               :: rand(size(mean, 1, IK))
+        real(RKG)               , intent(in)    , contiguous    :: mean(:)
+        real(RKG)                                               :: rand(size(mean, 1, IK))
     end function
 #endif
 
@@ -794,11 +794,11 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUSR_RNGF_DM_AC_UXD_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         type(rngf_type)         , intent(in)                    :: rng
         type(uppDia_type)       , intent(in)                    :: subset
-        real(RKC)               , intent(in)    , contiguous    :: chol(:,:)
-        real(RKC)                                               :: rand(size(chol, 1, IK))
+        real(RKG)               , intent(in)    , contiguous    :: chol(:,:)
+        real(RKG)                                               :: rand(size(chol, 1, IK))
     end function
 #endif
 
@@ -807,11 +807,11 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUSR_RNGF_DM_AC_UXD_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         type(rngf_type)         , intent(in)                    :: rng
         type(uppDia_type)       , intent(in)                    :: subset
-        real(RKC)               , intent(in)    , contiguous    :: chol(:,:)
-        real(RKC)                                               :: rand(size(chol, 1, IK))
+        real(RKG)               , intent(in)    , contiguous    :: chol(:,:)
+        real(RKG)                                               :: rand(size(chol, 1, IK))
     end function
 #endif
 
@@ -820,11 +820,11 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUSR_RNGF_DM_AC_UXD_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         type(rngf_type)         , intent(in)                    :: rng
         type(uppDia_type)       , intent(in)                    :: subset
-        real(RKC)               , intent(in)    , contiguous    :: chol(:,:)
-        real(RKC)                                               :: rand(size(chol, 1, IK))
+        real(RKG)               , intent(in)    , contiguous    :: chol(:,:)
+        real(RKG)                                               :: rand(size(chol, 1, IK))
     end function
 #endif
 
@@ -833,11 +833,11 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUSR_RNGF_DM_AC_UXD_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         type(rngf_type)         , intent(in)                    :: rng
         type(uppDia_type)       , intent(in)                    :: subset
-        real(RKC)               , intent(in)    , contiguous    :: chol(:,:)
-        real(RKC)                                               :: rand(size(chol, 1, IK))
+        real(RKG)               , intent(in)    , contiguous    :: chol(:,:)
+        real(RKG)                                               :: rand(size(chol, 1, IK))
     end function
 #endif
 
@@ -846,11 +846,11 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUSR_RNGF_DM_AC_UXD_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         type(rngf_type)         , intent(in)                    :: rng
         type(uppDia_type)       , intent(in)                    :: subset
-        real(RKC)               , intent(in)    , contiguous    :: chol(:,:)
-        real(RKC)                                               :: rand(size(chol, 1, IK))
+        real(RKG)               , intent(in)    , contiguous    :: chol(:,:)
+        real(RKG)                                               :: rand(size(chol, 1, IK))
     end function
 #endif
 
@@ -861,11 +861,11 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUSR_RNGF_DM_AC_XLD_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         type(rngf_type)         , intent(in)                    :: rng
         type(lowDia_type)       , intent(in)                    :: subset
-        real(RKC)               , intent(in)    , contiguous    :: chol(:,:)
-        real(RKC)                                               :: rand(size(chol, 1, IK))
+        real(RKG)               , intent(in)    , contiguous    :: chol(:,:)
+        real(RKG)                                               :: rand(size(chol, 1, IK))
     end function
 #endif
 
@@ -874,11 +874,11 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUSR_RNGF_DM_AC_XLD_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         type(rngf_type)         , intent(in)                    :: rng
         type(lowDia_type)       , intent(in)                    :: subset
-        real(RKC)               , intent(in)    , contiguous    :: chol(:,:)
-        real(RKC)                                               :: rand(size(chol, 1, IK))
+        real(RKG)               , intent(in)    , contiguous    :: chol(:,:)
+        real(RKG)                                               :: rand(size(chol, 1, IK))
     end function
 #endif
 
@@ -887,11 +887,11 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUSR_RNGF_DM_AC_XLD_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         type(rngf_type)         , intent(in)                    :: rng
         type(lowDia_type)       , intent(in)                    :: subset
-        real(RKC)               , intent(in)    , contiguous    :: chol(:,:)
-        real(RKC)                                               :: rand(size(chol, 1, IK))
+        real(RKG)               , intent(in)    , contiguous    :: chol(:,:)
+        real(RKG)                                               :: rand(size(chol, 1, IK))
     end function
 #endif
 
@@ -900,11 +900,11 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUSR_RNGF_DM_AC_XLD_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         type(rngf_type)         , intent(in)                    :: rng
         type(lowDia_type)       , intent(in)                    :: subset
-        real(RKC)               , intent(in)    , contiguous    :: chol(:,:)
-        real(RKC)                                               :: rand(size(chol, 1, IK))
+        real(RKG)               , intent(in)    , contiguous    :: chol(:,:)
+        real(RKG)                                               :: rand(size(chol, 1, IK))
     end function
 #endif
 
@@ -913,11 +913,11 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUSR_RNGF_DM_AC_XLD_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         type(rngf_type)         , intent(in)                    :: rng
         type(lowDia_type)       , intent(in)                    :: subset
-        real(RKC)               , intent(in)    , contiguous    :: chol(:,:)
-        real(RKC)                                               :: rand(size(chol, 1, IK))
+        real(RKG)               , intent(in)    , contiguous    :: chol(:,:)
+        real(RKG)                                               :: rand(size(chol, 1, IK))
     end function
 #endif
 
@@ -928,11 +928,11 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUSR_RNGF_AM_AC_UXD_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         type(rngf_type)         , intent(in)                    :: rng
         type(uppDia_type)       , intent(in)                    :: subset
-        real(RKC)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
-        real(RKC)                                               :: rand(size(chol, 1, IK))
+        real(RKG)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
+        real(RKG)                                               :: rand(size(chol, 1, IK))
     end function
 #endif
 
@@ -941,11 +941,11 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUSR_RNGF_AM_AC_UXD_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         type(rngf_type)         , intent(in)                    :: rng
         type(uppDia_type)       , intent(in)                    :: subset
-        real(RKC)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
-        real(RKC)                                               :: rand(size(chol, 1, IK))
+        real(RKG)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
+        real(RKG)                                               :: rand(size(chol, 1, IK))
     end function
 #endif
 
@@ -954,11 +954,11 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUSR_RNGF_AM_AC_UXD_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         type(rngf_type)         , intent(in)                    :: rng
         type(uppDia_type)       , intent(in)                    :: subset
-        real(RKC)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
-        real(RKC)                                               :: rand(size(chol, 1, IK))
+        real(RKG)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
+        real(RKG)                                               :: rand(size(chol, 1, IK))
     end function
 #endif
 
@@ -967,11 +967,11 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUSR_RNGF_AM_AC_UXD_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         type(rngf_type)         , intent(in)                    :: rng
         type(uppDia_type)       , intent(in)                    :: subset
-        real(RKC)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
-        real(RKC)                                               :: rand(size(chol, 1, IK))
+        real(RKG)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
+        real(RKG)                                               :: rand(size(chol, 1, IK))
     end function
 #endif
 
@@ -980,11 +980,11 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUSR_RNGF_AM_AC_UXD_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         type(rngf_type)         , intent(in)                    :: rng
         type(uppDia_type)       , intent(in)                    :: subset
-        real(RKC)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
-        real(RKC)                                               :: rand(size(chol, 1, IK))
+        real(RKG)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
+        real(RKG)                                               :: rand(size(chol, 1, IK))
     end function
 #endif
 
@@ -995,11 +995,11 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUSR_RNGF_AM_AC_XLD_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         type(rngf_type)         , intent(in)                    :: rng
         type(lowDia_type)       , intent(in)                    :: subset
-        real(RKC)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
-        real(RKC)                                               :: rand(size(chol, 1, IK))
+        real(RKG)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
+        real(RKG)                                               :: rand(size(chol, 1, IK))
     end function
 #endif
 
@@ -1008,11 +1008,11 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUSR_RNGF_AM_AC_XLD_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         type(rngf_type)         , intent(in)                    :: rng
         type(lowDia_type)       , intent(in)                    :: subset
-        real(RKC)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
-        real(RKC)                                               :: rand(size(chol, 1, IK))
+        real(RKG)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
+        real(RKG)                                               :: rand(size(chol, 1, IK))
     end function
 #endif
 
@@ -1021,11 +1021,11 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUSR_RNGF_AM_AC_XLD_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         type(rngf_type)         , intent(in)                    :: rng
         type(lowDia_type)       , intent(in)                    :: subset
-        real(RKC)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
-        real(RKC)                                               :: rand(size(chol, 1, IK))
+        real(RKG)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
+        real(RKG)                                               :: rand(size(chol, 1, IK))
     end function
 #endif
 
@@ -1034,11 +1034,11 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUSR_RNGF_AM_AC_XLD_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         type(rngf_type)         , intent(in)                    :: rng
         type(lowDia_type)       , intent(in)                    :: subset
-        real(RKC)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
-        real(RKC)                                               :: rand(size(chol, 1, IK))
+        real(RKG)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
+        real(RKG)                                               :: rand(size(chol, 1, IK))
     end function
 #endif
 
@@ -1047,11 +1047,11 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUSR_RNGF_AM_AC_XLD_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         type(rngf_type)         , intent(in)                    :: rng
         type(lowDia_type)       , intent(in)                    :: subset
-        real(RKC)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
-        real(RKC)                                               :: rand(size(chol, 1, IK))
+        real(RKG)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
+        real(RKG)                                               :: rand(size(chol, 1, IK))
     end function
 #endif
 
@@ -1070,10 +1070,10 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUSR_RNGX_AM_DC_XXX_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         type(xoshiro256ssw_type), intent(inout)                 :: rng
-        real(RKC)               , intent(in)    , contiguous    :: mean(:)
-        real(RKC)                                               :: rand(size(mean, 1, IK))
+        real(RKG)               , intent(in)    , contiguous    :: mean(:)
+        real(RKG)                                               :: rand(size(mean, 1, IK))
     end function
 #endif
 
@@ -1082,10 +1082,10 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUSR_RNGX_AM_DC_XXX_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         type(xoshiro256ssw_type), intent(inout)                 :: rng
-        real(RKC)               , intent(in)    , contiguous    :: mean(:)
-        real(RKC)                                               :: rand(size(mean, 1, IK))
+        real(RKG)               , intent(in)    , contiguous    :: mean(:)
+        real(RKG)                                               :: rand(size(mean, 1, IK))
     end function
 #endif
 
@@ -1094,10 +1094,10 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUSR_RNGX_AM_DC_XXX_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         type(xoshiro256ssw_type), intent(inout)                 :: rng
-        real(RKC)               , intent(in)    , contiguous    :: mean(:)
-        real(RKC)                                               :: rand(size(mean, 1, IK))
+        real(RKG)               , intent(in)    , contiguous    :: mean(:)
+        real(RKG)                                               :: rand(size(mean, 1, IK))
     end function
 #endif
 
@@ -1106,10 +1106,10 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUSR_RNGX_AM_DC_XXX_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         type(xoshiro256ssw_type), intent(inout)                 :: rng
-        real(RKC)               , intent(in)    , contiguous    :: mean(:)
-        real(RKC)                                               :: rand(size(mean, 1, IK))
+        real(RKG)               , intent(in)    , contiguous    :: mean(:)
+        real(RKG)                                               :: rand(size(mean, 1, IK))
     end function
 #endif
 
@@ -1118,10 +1118,10 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUSR_RNGX_AM_DC_XXX_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         type(xoshiro256ssw_type), intent(inout)                 :: rng
-        real(RKC)               , intent(in)    , contiguous    :: mean(:)
-        real(RKC)                                               :: rand(size(mean, 1, IK))
+        real(RKG)               , intent(in)    , contiguous    :: mean(:)
+        real(RKG)                                               :: rand(size(mean, 1, IK))
     end function
 #endif
 
@@ -1132,11 +1132,11 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUSR_RNGX_DM_AC_UXD_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         type(xoshiro256ssw_type), intent(inout)                 :: rng
         type(uppDia_type)       , intent(in)                    :: subset
-        real(RKC)               , intent(in)    , contiguous    :: chol(:,:)
-        real(RKC)                                               :: rand(size(chol, 1, IK))
+        real(RKG)               , intent(in)    , contiguous    :: chol(:,:)
+        real(RKG)                                               :: rand(size(chol, 1, IK))
     end function
 #endif
 
@@ -1145,11 +1145,11 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUSR_RNGX_DM_AC_UXD_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         type(xoshiro256ssw_type), intent(inout)                 :: rng
         type(uppDia_type)       , intent(in)                    :: subset
-        real(RKC)               , intent(in)    , contiguous    :: chol(:,:)
-        real(RKC)                                               :: rand(size(chol, 1, IK))
+        real(RKG)               , intent(in)    , contiguous    :: chol(:,:)
+        real(RKG)                                               :: rand(size(chol, 1, IK))
     end function
 #endif
 
@@ -1158,11 +1158,11 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUSR_RNGX_DM_AC_UXD_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         type(xoshiro256ssw_type), intent(inout)                 :: rng
         type(uppDia_type)       , intent(in)                    :: subset
-        real(RKC)               , intent(in)    , contiguous    :: chol(:,:)
-        real(RKC)                                               :: rand(size(chol, 1, IK))
+        real(RKG)               , intent(in)    , contiguous    :: chol(:,:)
+        real(RKG)                                               :: rand(size(chol, 1, IK))
     end function
 #endif
 
@@ -1171,11 +1171,11 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUSR_RNGX_DM_AC_UXD_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         type(xoshiro256ssw_type), intent(inout)                 :: rng
         type(uppDia_type)       , intent(in)                    :: subset
-        real(RKC)               , intent(in)    , contiguous    :: chol(:,:)
-        real(RKC)                                               :: rand(size(chol, 1, IK))
+        real(RKG)               , intent(in)    , contiguous    :: chol(:,:)
+        real(RKG)                                               :: rand(size(chol, 1, IK))
     end function
 #endif
 
@@ -1184,11 +1184,11 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUSR_RNGX_DM_AC_UXD_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         type(xoshiro256ssw_type), intent(inout)                 :: rng
         type(uppDia_type)       , intent(in)                    :: subset
-        real(RKC)               , intent(in)    , contiguous    :: chol(:,:)
-        real(RKC)                                               :: rand(size(chol, 1, IK))
+        real(RKG)               , intent(in)    , contiguous    :: chol(:,:)
+        real(RKG)                                               :: rand(size(chol, 1, IK))
     end function
 #endif
 
@@ -1199,11 +1199,11 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUSR_RNGX_DM_AC_XLD_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         type(xoshiro256ssw_type), intent(inout)                 :: rng
         type(lowDia_type)       , intent(in)                    :: subset
-        real(RKC)               , intent(in)    , contiguous    :: chol(:,:)
-        real(RKC)                                               :: rand(size(chol, 1, IK))
+        real(RKG)               , intent(in)    , contiguous    :: chol(:,:)
+        real(RKG)                                               :: rand(size(chol, 1, IK))
     end function
 #endif
 
@@ -1212,11 +1212,11 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUSR_RNGX_DM_AC_XLD_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         type(xoshiro256ssw_type), intent(inout)                 :: rng
         type(lowDia_type)       , intent(in)                    :: subset
-        real(RKC)               , intent(in)    , contiguous    :: chol(:,:)
-        real(RKC)                                               :: rand(size(chol, 1, IK))
+        real(RKG)               , intent(in)    , contiguous    :: chol(:,:)
+        real(RKG)                                               :: rand(size(chol, 1, IK))
     end function
 #endif
 
@@ -1225,11 +1225,11 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUSR_RNGX_DM_AC_XLD_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         type(xoshiro256ssw_type), intent(inout)                 :: rng
         type(lowDia_type)       , intent(in)                    :: subset
-        real(RKC)               , intent(in)    , contiguous    :: chol(:,:)
-        real(RKC)                                               :: rand(size(chol, 1, IK))
+        real(RKG)               , intent(in)    , contiguous    :: chol(:,:)
+        real(RKG)                                               :: rand(size(chol, 1, IK))
     end function
 #endif
 
@@ -1238,11 +1238,11 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUSR_RNGX_DM_AC_XLD_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         type(xoshiro256ssw_type), intent(inout)                 :: rng
         type(lowDia_type)       , intent(in)                    :: subset
-        real(RKC)               , intent(in)    , contiguous    :: chol(:,:)
-        real(RKC)                                               :: rand(size(chol, 1, IK))
+        real(RKG)               , intent(in)    , contiguous    :: chol(:,:)
+        real(RKG)                                               :: rand(size(chol, 1, IK))
     end function
 #endif
 
@@ -1251,11 +1251,11 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUSR_RNGX_DM_AC_XLD_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         type(xoshiro256ssw_type), intent(inout)                 :: rng
         type(lowDia_type)       , intent(in)                    :: subset
-        real(RKC)               , intent(in)    , contiguous    :: chol(:,:)
-        real(RKC)                                               :: rand(size(chol, 1, IK))
+        real(RKG)               , intent(in)    , contiguous    :: chol(:,:)
+        real(RKG)                                               :: rand(size(chol, 1, IK))
     end function
 #endif
 
@@ -1266,11 +1266,11 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUSR_RNGX_AM_AC_UXD_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         type(xoshiro256ssw_type), intent(inout)                 :: rng
         type(uppDia_type)       , intent(in)                    :: subset
-        real(RKC)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
-        real(RKC)                                               :: rand(size(chol, 1, IK))
+        real(RKG)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
+        real(RKG)                                               :: rand(size(chol, 1, IK))
     end function
 #endif
 
@@ -1279,11 +1279,11 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUSR_RNGX_AM_AC_UXD_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         type(xoshiro256ssw_type), intent(inout)                 :: rng
         type(uppDia_type)       , intent(in)                    :: subset
-        real(RKC)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
-        real(RKC)                                               :: rand(size(chol, 1, IK))
+        real(RKG)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
+        real(RKG)                                               :: rand(size(chol, 1, IK))
     end function
 #endif
 
@@ -1292,11 +1292,11 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUSR_RNGX_AM_AC_UXD_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         type(xoshiro256ssw_type), intent(inout)                 :: rng
         type(uppDia_type)       , intent(in)                    :: subset
-        real(RKC)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
-        real(RKC)                                               :: rand(size(chol, 1, IK))
+        real(RKG)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
+        real(RKG)                                               :: rand(size(chol, 1, IK))
     end function
 #endif
 
@@ -1305,11 +1305,11 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUSR_RNGX_AM_AC_UXD_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         type(xoshiro256ssw_type), intent(inout)                 :: rng
         type(uppDia_type)       , intent(in)                    :: subset
-        real(RKC)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
-        real(RKC)                                               :: rand(size(chol, 1, IK))
+        real(RKG)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
+        real(RKG)                                               :: rand(size(chol, 1, IK))
     end function
 #endif
 
@@ -1318,11 +1318,11 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUSR_RNGX_AM_AC_UXD_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         type(xoshiro256ssw_type), intent(inout)                 :: rng
         type(uppDia_type)       , intent(in)                    :: subset
-        real(RKC)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
-        real(RKC)                                               :: rand(size(chol, 1, IK))
+        real(RKG)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
+        real(RKG)                                               :: rand(size(chol, 1, IK))
     end function
 #endif
 
@@ -1333,11 +1333,11 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUSR_RNGX_AM_AC_XLD_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         type(xoshiro256ssw_type), intent(inout)                 :: rng
         type(lowDia_type)       , intent(in)                    :: subset
-        real(RKC)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
-        real(RKC)                                               :: rand(size(chol, 1, IK))
+        real(RKG)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
+        real(RKG)                                               :: rand(size(chol, 1, IK))
     end function
 #endif
 
@@ -1346,11 +1346,11 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUSR_RNGX_AM_AC_XLD_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         type(xoshiro256ssw_type), intent(inout)                 :: rng
         type(lowDia_type)       , intent(in)                    :: subset
-        real(RKC)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
-        real(RKC)                                               :: rand(size(chol, 1, IK))
+        real(RKG)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
+        real(RKG)                                               :: rand(size(chol, 1, IK))
     end function
 #endif
 
@@ -1359,11 +1359,11 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUSR_RNGX_AM_AC_XLD_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         type(xoshiro256ssw_type), intent(inout)                 :: rng
         type(lowDia_type)       , intent(in)                    :: subset
-        real(RKC)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
-        real(RKC)                                               :: rand(size(chol, 1, IK))
+        real(RKG)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
+        real(RKG)                                               :: rand(size(chol, 1, IK))
     end function
 #endif
 
@@ -1372,11 +1372,11 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUSR_RNGX_AM_AC_XLD_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         type(xoshiro256ssw_type), intent(inout)                 :: rng
         type(lowDia_type)       , intent(in)                    :: subset
-        real(RKC)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
-        real(RKC)                                               :: rand(size(chol, 1, IK))
+        real(RKG)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
+        real(RKG)                                               :: rand(size(chol, 1, IK))
     end function
 #endif
 
@@ -1385,11 +1385,11 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUSR_RNGX_AM_AC_XLD_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         type(xoshiro256ssw_type), intent(inout)                 :: rng
         type(lowDia_type)       , intent(in)                    :: subset
-        real(RKC)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
-        real(RKC)                                               :: rand(size(chol, 1, IK))
+        real(RKG)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
+        real(RKG)                                               :: rand(size(chol, 1, IK))
     end function
 #endif
 
@@ -1408,10 +1408,10 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUSR_RNGD_AM_DC_XXX_D2_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         integer(IK)             , intent(in)                    :: nsam
-        real(RKC)               , intent(in)    , contiguous    :: mean(:)
-        real(RKC)                                               :: rand(size(mean, 1, IK), nsam)
+        real(RKG)               , intent(in)    , contiguous    :: mean(:)
+        real(RKG)                                               :: rand(size(mean, 1, IK), nsam)
     end function
 #endif
 
@@ -1420,10 +1420,10 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUSR_RNGD_AM_DC_XXX_D2_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         integer(IK)             , intent(in)                    :: nsam
-        real(RKC)               , intent(in)    , contiguous    :: mean(:)
-        real(RKC)                                               :: rand(size(mean, 1, IK), nsam)
+        real(RKG)               , intent(in)    , contiguous    :: mean(:)
+        real(RKG)                                               :: rand(size(mean, 1, IK), nsam)
     end function
 #endif
 
@@ -1432,10 +1432,10 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUSR_RNGD_AM_DC_XXX_D2_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         integer(IK)             , intent(in)                    :: nsam
-        real(RKC)               , intent(in)    , contiguous    :: mean(:)
-        real(RKC)                                               :: rand(size(mean, 1, IK), nsam)
+        real(RKG)               , intent(in)    , contiguous    :: mean(:)
+        real(RKG)                                               :: rand(size(mean, 1, IK), nsam)
     end function
 #endif
 
@@ -1444,10 +1444,10 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUSR_RNGD_AM_DC_XXX_D2_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         integer(IK)             , intent(in)                    :: nsam
-        real(RKC)               , intent(in)    , contiguous    :: mean(:)
-        real(RKC)                                               :: rand(size(mean, 1, IK), nsam)
+        real(RKG)               , intent(in)    , contiguous    :: mean(:)
+        real(RKG)                                               :: rand(size(mean, 1, IK), nsam)
     end function
 #endif
 
@@ -1456,10 +1456,10 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUSR_RNGD_AM_DC_XXX_D2_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         integer(IK)             , intent(in)                    :: nsam
-        real(RKC)               , intent(in)    , contiguous    :: mean(:)
-        real(RKC)                                               :: rand(size(mean, 1, IK), nsam)
+        real(RKG)               , intent(in)    , contiguous    :: mean(:)
+        real(RKG)                                               :: rand(size(mean, 1, IK), nsam)
     end function
 #endif
 
@@ -1470,11 +1470,11 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUSR_RNGD_DM_AC_UXD_D2_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         integer(IK)             , intent(in)                    :: nsam
         type(uppDia_type)       , intent(in)                    :: subset
-        real(RKC)               , intent(in)    , contiguous    :: chol(:,:)
-        real(RKC)                                               :: rand(size(chol, 1, IK), nsam)
+        real(RKG)               , intent(in)    , contiguous    :: chol(:,:)
+        real(RKG)                                               :: rand(size(chol, 1, IK), nsam)
     end function
 #endif
 
@@ -1483,11 +1483,11 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUSR_RNGD_DM_AC_UXD_D2_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         integer(IK)             , intent(in)                    :: nsam
         type(uppDia_type)       , intent(in)                    :: subset
-        real(RKC)               , intent(in)    , contiguous    :: chol(:,:)
-        real(RKC)                                               :: rand(size(chol, 1, IK), nsam)
+        real(RKG)               , intent(in)    , contiguous    :: chol(:,:)
+        real(RKG)                                               :: rand(size(chol, 1, IK), nsam)
     end function
 #endif
 
@@ -1496,11 +1496,11 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUSR_RNGD_DM_AC_UXD_D2_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         integer(IK)             , intent(in)                    :: nsam
         type(uppDia_type)       , intent(in)                    :: subset
-        real(RKC)               , intent(in)    , contiguous    :: chol(:,:)
-        real(RKC)                                               :: rand(size(chol, 1, IK), nsam)
+        real(RKG)               , intent(in)    , contiguous    :: chol(:,:)
+        real(RKG)                                               :: rand(size(chol, 1, IK), nsam)
     end function
 #endif
 
@@ -1509,11 +1509,11 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUSR_RNGD_DM_AC_UXD_D2_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         integer(IK)             , intent(in)                    :: nsam
         type(uppDia_type)       , intent(in)                    :: subset
-        real(RKC)               , intent(in)    , contiguous    :: chol(:,:)
-        real(RKC)                                               :: rand(size(chol, 1, IK), nsam)
+        real(RKG)               , intent(in)    , contiguous    :: chol(:,:)
+        real(RKG)                                               :: rand(size(chol, 1, IK), nsam)
     end function
 #endif
 
@@ -1522,11 +1522,11 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUSR_RNGD_DM_AC_UXD_D2_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         integer(IK)             , intent(in)                    :: nsam
         type(uppDia_type)       , intent(in)                    :: subset
-        real(RKC)               , intent(in)    , contiguous    :: chol(:,:)
-        real(RKC)                                               :: rand(size(chol, 1, IK), nsam)
+        real(RKG)               , intent(in)    , contiguous    :: chol(:,:)
+        real(RKG)                                               :: rand(size(chol, 1, IK), nsam)
     end function
 #endif
 
@@ -1537,11 +1537,11 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUSR_RNGD_DM_AC_XLD_D2_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         integer(IK)             , intent(in)                    :: nsam
         type(lowDia_type)       , intent(in)                    :: subset
-        real(RKC)               , intent(in)    , contiguous    :: chol(:,:)
-        real(RKC)                                               :: rand(size(chol, 1, IK), nsam)
+        real(RKG)               , intent(in)    , contiguous    :: chol(:,:)
+        real(RKG)                                               :: rand(size(chol, 1, IK), nsam)
     end function
 #endif
 
@@ -1550,11 +1550,11 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUSR_RNGD_DM_AC_XLD_D2_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         integer(IK)             , intent(in)                    :: nsam
         type(lowDia_type)       , intent(in)                    :: subset
-        real(RKC)               , intent(in)    , contiguous    :: chol(:,:)
-        real(RKC)                                               :: rand(size(chol, 1, IK), nsam)
+        real(RKG)               , intent(in)    , contiguous    :: chol(:,:)
+        real(RKG)                                               :: rand(size(chol, 1, IK), nsam)
     end function
 #endif
 
@@ -1563,11 +1563,11 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUSR_RNGD_DM_AC_XLD_D2_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         integer(IK)             , intent(in)                    :: nsam
         type(lowDia_type)       , intent(in)                    :: subset
-        real(RKC)               , intent(in)    , contiguous    :: chol(:,:)
-        real(RKC)                                               :: rand(size(chol, 1, IK), nsam)
+        real(RKG)               , intent(in)    , contiguous    :: chol(:,:)
+        real(RKG)                                               :: rand(size(chol, 1, IK), nsam)
     end function
 #endif
 
@@ -1576,11 +1576,11 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUSR_RNGD_DM_AC_XLD_D2_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         integer(IK)             , intent(in)                    :: nsam
         type(lowDia_type)       , intent(in)                    :: subset
-        real(RKC)               , intent(in)    , contiguous    :: chol(:,:)
-        real(RKC)                                               :: rand(size(chol, 1, IK), nsam)
+        real(RKG)               , intent(in)    , contiguous    :: chol(:,:)
+        real(RKG)                                               :: rand(size(chol, 1, IK), nsam)
     end function
 #endif
 
@@ -1589,11 +1589,11 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUSR_RNGD_DM_AC_XLD_D2_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         integer(IK)             , intent(in)                    :: nsam
         type(lowDia_type)       , intent(in)                    :: subset
-        real(RKC)               , intent(in)    , contiguous    :: chol(:,:)
-        real(RKC)                                               :: rand(size(chol, 1, IK), nsam)
+        real(RKG)               , intent(in)    , contiguous    :: chol(:,:)
+        real(RKG)                                               :: rand(size(chol, 1, IK), nsam)
     end function
 #endif
 
@@ -1604,11 +1604,11 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUSR_RNGD_AM_AC_UXD_D2_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         integer(IK)             , intent(in)                    :: nsam
         type(uppDia_type)       , intent(in)                    :: subset
-        real(RKC)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
-        real(RKC)                                               :: rand(size(chol, 1, IK), nsam)
+        real(RKG)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
+        real(RKG)                                               :: rand(size(chol, 1, IK), nsam)
     end function
 #endif
 
@@ -1617,11 +1617,11 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUSR_RNGD_AM_AC_UXD_D2_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         integer(IK)             , intent(in)                    :: nsam
         type(uppDia_type)       , intent(in)                    :: subset
-        real(RKC)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
-        real(RKC)                                               :: rand(size(chol, 1, IK), nsam)
+        real(RKG)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
+        real(RKG)                                               :: rand(size(chol, 1, IK), nsam)
     end function
 #endif
 
@@ -1630,11 +1630,11 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUSR_RNGD_AM_AC_UXD_D2_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         integer(IK)             , intent(in)                    :: nsam
         type(uppDia_type)       , intent(in)                    :: subset
-        real(RKC)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
-        real(RKC)                                               :: rand(size(chol, 1, IK), nsam)
+        real(RKG)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
+        real(RKG)                                               :: rand(size(chol, 1, IK), nsam)
     end function
 #endif
 
@@ -1643,11 +1643,11 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUSR_RNGD_AM_AC_UXD_D2_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         integer(IK)             , intent(in)                    :: nsam
         type(uppDia_type)       , intent(in)                    :: subset
-        real(RKC)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
-        real(RKC)                                               :: rand(size(chol, 1, IK), nsam)
+        real(RKG)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
+        real(RKG)                                               :: rand(size(chol, 1, IK), nsam)
     end function
 #endif
 
@@ -1656,11 +1656,11 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUSR_RNGD_AM_AC_UXD_D2_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         integer(IK)             , intent(in)                    :: nsam
         type(uppDia_type)       , intent(in)                    :: subset
-        real(RKC)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
-        real(RKC)                                               :: rand(size(chol, 1, IK), nsam)
+        real(RKG)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
+        real(RKG)                                               :: rand(size(chol, 1, IK), nsam)
     end function
 #endif
 
@@ -1671,11 +1671,11 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUSR_RNGD_AM_AC_XLD_D2_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         integer(IK)             , intent(in)                    :: nsam
         type(lowDia_type)       , intent(in)                    :: subset
-        real(RKC)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
-        real(RKC)                                               :: rand(size(chol, 1, IK), nsam)
+        real(RKG)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
+        real(RKG)                                               :: rand(size(chol, 1, IK), nsam)
     end function
 #endif
 
@@ -1684,11 +1684,11 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUSR_RNGD_AM_AC_XLD_D2_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         integer(IK)             , intent(in)                    :: nsam
         type(lowDia_type)       , intent(in)                    :: subset
-        real(RKC)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
-        real(RKC)                                               :: rand(size(chol, 1, IK), nsam)
+        real(RKG)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
+        real(RKG)                                               :: rand(size(chol, 1, IK), nsam)
     end function
 #endif
 
@@ -1697,11 +1697,11 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUSR_RNGD_AM_AC_XLD_D2_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         integer(IK)             , intent(in)                    :: nsam
         type(lowDia_type)       , intent(in)                    :: subset
-        real(RKC)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
-        real(RKC)                                               :: rand(size(chol, 1, IK), nsam)
+        real(RKG)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
+        real(RKG)                                               :: rand(size(chol, 1, IK), nsam)
     end function
 #endif
 
@@ -1710,11 +1710,11 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUSR_RNGD_AM_AC_XLD_D2_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         integer(IK)             , intent(in)                    :: nsam
         type(lowDia_type)       , intent(in)                    :: subset
-        real(RKC)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
-        real(RKC)                                               :: rand(size(chol, 1, IK), nsam)
+        real(RKG)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
+        real(RKG)                                               :: rand(size(chol, 1, IK), nsam)
     end function
 #endif
 
@@ -1723,11 +1723,11 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUSR_RNGD_AM_AC_XLD_D2_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         integer(IK)             , intent(in)                    :: nsam
         type(lowDia_type)       , intent(in)                    :: subset
-        real(RKC)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
-        real(RKC)                                               :: rand(size(chol, 1, IK), nsam)
+        real(RKG)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
+        real(RKG)                                               :: rand(size(chol, 1, IK), nsam)
     end function
 #endif
 
@@ -1746,11 +1746,11 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUSR_RNGF_AM_DC_XXX_D2_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         type(rngf_type)         , intent(in)                    :: rng
         integer(IK)             , intent(in)                    :: nsam
-        real(RKC)               , intent(in)    , contiguous    :: mean(:)
-        real(RKC)                                               :: rand(size(mean, 1, IK), nsam)
+        real(RKG)               , intent(in)    , contiguous    :: mean(:)
+        real(RKG)                                               :: rand(size(mean, 1, IK), nsam)
     end function
 #endif
 
@@ -1759,11 +1759,11 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUSR_RNGF_AM_DC_XXX_D2_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         type(rngf_type)         , intent(in)                    :: rng
         integer(IK)             , intent(in)                    :: nsam
-        real(RKC)               , intent(in)    , contiguous    :: mean(:)
-        real(RKC)                                               :: rand(size(mean, 1, IK), nsam)
+        real(RKG)               , intent(in)    , contiguous    :: mean(:)
+        real(RKG)                                               :: rand(size(mean, 1, IK), nsam)
     end function
 #endif
 
@@ -1772,11 +1772,11 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUSR_RNGF_AM_DC_XXX_D2_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         type(rngf_type)         , intent(in)                    :: rng
         integer(IK)             , intent(in)                    :: nsam
-        real(RKC)               , intent(in)    , contiguous    :: mean(:)
-        real(RKC)                                               :: rand(size(mean, 1, IK), nsam)
+        real(RKG)               , intent(in)    , contiguous    :: mean(:)
+        real(RKG)                                               :: rand(size(mean, 1, IK), nsam)
     end function
 #endif
 
@@ -1785,11 +1785,11 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUSR_RNGF_AM_DC_XXX_D2_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         type(rngf_type)         , intent(in)                    :: rng
         integer(IK)             , intent(in)                    :: nsam
-        real(RKC)               , intent(in)    , contiguous    :: mean(:)
-        real(RKC)                                               :: rand(size(mean, 1, IK), nsam)
+        real(RKG)               , intent(in)    , contiguous    :: mean(:)
+        real(RKG)                                               :: rand(size(mean, 1, IK), nsam)
     end function
 #endif
 
@@ -1798,11 +1798,11 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUSR_RNGF_AM_DC_XXX_D2_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         type(rngf_type)         , intent(in)                    :: rng
         integer(IK)             , intent(in)                    :: nsam
-        real(RKC)               , intent(in)    , contiguous    :: mean(:)
-        real(RKC)                                               :: rand(size(mean, 1, IK), nsam)
+        real(RKG)               , intent(in)    , contiguous    :: mean(:)
+        real(RKG)                                               :: rand(size(mean, 1, IK), nsam)
     end function
 #endif
 
@@ -1813,12 +1813,12 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUSR_RNGF_DM_AC_UXD_D2_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         type(rngf_type)         , intent(in)                    :: rng
         integer(IK)             , intent(in)                    :: nsam
         type(uppDia_type)       , intent(in)                    :: subset
-        real(RKC)               , intent(in)    , contiguous    :: chol(:,:)
-        real(RKC)                                               :: rand(size(chol, 1, IK), nsam)
+        real(RKG)               , intent(in)    , contiguous    :: chol(:,:)
+        real(RKG)                                               :: rand(size(chol, 1, IK), nsam)
     end function
 #endif
 
@@ -1827,12 +1827,12 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUSR_RNGF_DM_AC_UXD_D2_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         type(rngf_type)         , intent(in)                    :: rng
         integer(IK)             , intent(in)                    :: nsam
         type(uppDia_type)       , intent(in)                    :: subset
-        real(RKC)               , intent(in)    , contiguous    :: chol(:,:)
-        real(RKC)                                               :: rand(size(chol, 1, IK), nsam)
+        real(RKG)               , intent(in)    , contiguous    :: chol(:,:)
+        real(RKG)                                               :: rand(size(chol, 1, IK), nsam)
     end function
 #endif
 
@@ -1841,12 +1841,12 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUSR_RNGF_DM_AC_UXD_D2_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         type(rngf_type)         , intent(in)                    :: rng
         integer(IK)             , intent(in)                    :: nsam
         type(uppDia_type)       , intent(in)                    :: subset
-        real(RKC)               , intent(in)    , contiguous    :: chol(:,:)
-        real(RKC)                                               :: rand(size(chol, 1, IK), nsam)
+        real(RKG)               , intent(in)    , contiguous    :: chol(:,:)
+        real(RKG)                                               :: rand(size(chol, 1, IK), nsam)
     end function
 #endif
 
@@ -1855,12 +1855,12 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUSR_RNGF_DM_AC_UXD_D2_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         type(rngf_type)         , intent(in)                    :: rng
         integer(IK)             , intent(in)                    :: nsam
         type(uppDia_type)       , intent(in)                    :: subset
-        real(RKC)               , intent(in)    , contiguous    :: chol(:,:)
-        real(RKC)                                               :: rand(size(chol, 1, IK), nsam)
+        real(RKG)               , intent(in)    , contiguous    :: chol(:,:)
+        real(RKG)                                               :: rand(size(chol, 1, IK), nsam)
     end function
 #endif
 
@@ -1869,12 +1869,12 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUSR_RNGF_DM_AC_UXD_D2_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         type(rngf_type)         , intent(in)                    :: rng
         integer(IK)             , intent(in)                    :: nsam
         type(uppDia_type)       , intent(in)                    :: subset
-        real(RKC)               , intent(in)    , contiguous    :: chol(:,:)
-        real(RKC)                                               :: rand(size(chol, 1, IK), nsam)
+        real(RKG)               , intent(in)    , contiguous    :: chol(:,:)
+        real(RKG)                                               :: rand(size(chol, 1, IK), nsam)
     end function
 #endif
 
@@ -1885,12 +1885,12 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUSR_RNGF_DM_AC_XLD_D2_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         type(rngf_type)         , intent(in)                    :: rng
         integer(IK)             , intent(in)                    :: nsam
         type(lowDia_type)       , intent(in)                    :: subset
-        real(RKC)               , intent(in)    , contiguous    :: chol(:,:)
-        real(RKC)                                               :: rand(size(chol, 1, IK), nsam)
+        real(RKG)               , intent(in)    , contiguous    :: chol(:,:)
+        real(RKG)                                               :: rand(size(chol, 1, IK), nsam)
     end function
 #endif
 
@@ -1899,12 +1899,12 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUSR_RNGF_DM_AC_XLD_D2_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         type(rngf_type)         , intent(in)                    :: rng
         integer(IK)             , intent(in)                    :: nsam
         type(lowDia_type)       , intent(in)                    :: subset
-        real(RKC)               , intent(in)    , contiguous    :: chol(:,:)
-        real(RKC)                                               :: rand(size(chol, 1, IK), nsam)
+        real(RKG)               , intent(in)    , contiguous    :: chol(:,:)
+        real(RKG)                                               :: rand(size(chol, 1, IK), nsam)
     end function
 #endif
 
@@ -1913,12 +1913,12 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUSR_RNGF_DM_AC_XLD_D2_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         type(rngf_type)         , intent(in)                    :: rng
         integer(IK)             , intent(in)                    :: nsam
         type(lowDia_type)       , intent(in)                    :: subset
-        real(RKC)               , intent(in)    , contiguous    :: chol(:,:)
-        real(RKC)                                               :: rand(size(chol, 1, IK), nsam)
+        real(RKG)               , intent(in)    , contiguous    :: chol(:,:)
+        real(RKG)                                               :: rand(size(chol, 1, IK), nsam)
     end function
 #endif
 
@@ -1927,12 +1927,12 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUSR_RNGF_DM_AC_XLD_D2_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         type(rngf_type)         , intent(in)                    :: rng
         integer(IK)             , intent(in)                    :: nsam
         type(lowDia_type)       , intent(in)                    :: subset
-        real(RKC)               , intent(in)    , contiguous    :: chol(:,:)
-        real(RKC)                                               :: rand(size(chol, 1, IK), nsam)
+        real(RKG)               , intent(in)    , contiguous    :: chol(:,:)
+        real(RKG)                                               :: rand(size(chol, 1, IK), nsam)
     end function
 #endif
 
@@ -1941,12 +1941,12 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUSR_RNGF_DM_AC_XLD_D2_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         type(rngf_type)         , intent(in)                    :: rng
         integer(IK)             , intent(in)                    :: nsam
         type(lowDia_type)       , intent(in)                    :: subset
-        real(RKC)               , intent(in)    , contiguous    :: chol(:,:)
-        real(RKC)                                               :: rand(size(chol, 1, IK), nsam)
+        real(RKG)               , intent(in)    , contiguous    :: chol(:,:)
+        real(RKG)                                               :: rand(size(chol, 1, IK), nsam)
     end function
 #endif
 
@@ -1957,12 +1957,12 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUSR_RNGF_AM_AC_UXD_D2_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         type(rngf_type)         , intent(in)                    :: rng
         integer(IK)             , intent(in)                    :: nsam
         type(uppDia_type)       , intent(in)                    :: subset
-        real(RKC)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
-        real(RKC)                                               :: rand(size(chol, 1, IK), nsam)
+        real(RKG)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
+        real(RKG)                                               :: rand(size(chol, 1, IK), nsam)
     end function
 #endif
 
@@ -1971,12 +1971,12 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUSR_RNGF_AM_AC_UXD_D2_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         type(rngf_type)         , intent(in)                    :: rng
         integer(IK)             , intent(in)                    :: nsam
         type(uppDia_type)       , intent(in)                    :: subset
-        real(RKC)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
-        real(RKC)                                               :: rand(size(chol, 1, IK), nsam)
+        real(RKG)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
+        real(RKG)                                               :: rand(size(chol, 1, IK), nsam)
     end function
 #endif
 
@@ -1985,12 +1985,12 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUSR_RNGF_AM_AC_UXD_D2_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         type(rngf_type)         , intent(in)                    :: rng
         integer(IK)             , intent(in)                    :: nsam
         type(uppDia_type)       , intent(in)                    :: subset
-        real(RKC)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
-        real(RKC)                                               :: rand(size(chol, 1, IK), nsam)
+        real(RKG)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
+        real(RKG)                                               :: rand(size(chol, 1, IK), nsam)
     end function
 #endif
 
@@ -1999,12 +1999,12 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUSR_RNGF_AM_AC_UXD_D2_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         type(rngf_type)         , intent(in)                    :: rng
         integer(IK)             , intent(in)                    :: nsam
         type(uppDia_type)       , intent(in)                    :: subset
-        real(RKC)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
-        real(RKC)                                               :: rand(size(chol, 1, IK), nsam)
+        real(RKG)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
+        real(RKG)                                               :: rand(size(chol, 1, IK), nsam)
     end function
 #endif
 
@@ -2013,12 +2013,12 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUSR_RNGF_AM_AC_UXD_D2_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         type(rngf_type)         , intent(in)                    :: rng
         integer(IK)             , intent(in)                    :: nsam
         type(uppDia_type)       , intent(in)                    :: subset
-        real(RKC)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
-        real(RKC)                                               :: rand(size(chol, 1, IK), nsam)
+        real(RKG)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
+        real(RKG)                                               :: rand(size(chol, 1, IK), nsam)
     end function
 #endif
 
@@ -2029,12 +2029,12 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUSR_RNGF_AM_AC_XLD_D2_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         type(rngf_type)         , intent(in)                    :: rng
         integer(IK)             , intent(in)                    :: nsam
         type(lowDia_type)       , intent(in)                    :: subset
-        real(RKC)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
-        real(RKC)                                               :: rand(size(chol, 1, IK), nsam)
+        real(RKG)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
+        real(RKG)                                               :: rand(size(chol, 1, IK), nsam)
     end function
 #endif
 
@@ -2043,12 +2043,12 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUSR_RNGF_AM_AC_XLD_D2_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         type(rngf_type)         , intent(in)                    :: rng
         integer(IK)             , intent(in)                    :: nsam
         type(lowDia_type)       , intent(in)                    :: subset
-        real(RKC)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
-        real(RKC)                                               :: rand(size(chol, 1, IK), nsam)
+        real(RKG)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
+        real(RKG)                                               :: rand(size(chol, 1, IK), nsam)
     end function
 #endif
 
@@ -2057,12 +2057,12 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUSR_RNGF_AM_AC_XLD_D2_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         type(rngf_type)         , intent(in)                    :: rng
         integer(IK)             , intent(in)                    :: nsam
         type(lowDia_type)       , intent(in)                    :: subset
-        real(RKC)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
-        real(RKC)                                               :: rand(size(chol, 1, IK), nsam)
+        real(RKG)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
+        real(RKG)                                               :: rand(size(chol, 1, IK), nsam)
     end function
 #endif
 
@@ -2071,12 +2071,12 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUSR_RNGF_AM_AC_XLD_D2_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         type(rngf_type)         , intent(in)                    :: rng
         integer(IK)             , intent(in)                    :: nsam
         type(lowDia_type)       , intent(in)                    :: subset
-        real(RKC)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
-        real(RKC)                                               :: rand(size(chol, 1, IK), nsam)
+        real(RKG)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
+        real(RKG)                                               :: rand(size(chol, 1, IK), nsam)
     end function
 #endif
 
@@ -2085,12 +2085,12 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUSR_RNGF_AM_AC_XLD_D2_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         type(rngf_type)         , intent(in)                    :: rng
         integer(IK)             , intent(in)                    :: nsam
         type(lowDia_type)       , intent(in)                    :: subset
-        real(RKC)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
-        real(RKC)                                               :: rand(size(chol, 1, IK), nsam)
+        real(RKG)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
+        real(RKG)                                               :: rand(size(chol, 1, IK), nsam)
     end function
 #endif
 
@@ -2109,11 +2109,11 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUSR_RNGX_AM_DC_XXX_D2_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         type(xoshiro256ssw_type), intent(inout)                 :: rng
         integer(IK)             , intent(in)                    :: nsam
-        real(RKC)               , intent(in)    , contiguous    :: mean(:)
-        real(RKC)                                               :: rand(size(mean, 1, IK), nsam)
+        real(RKG)               , intent(in)    , contiguous    :: mean(:)
+        real(RKG)                                               :: rand(size(mean, 1, IK), nsam)
     end function
 #endif
 
@@ -2122,11 +2122,11 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUSR_RNGX_AM_DC_XXX_D2_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         type(xoshiro256ssw_type), intent(inout)                 :: rng
         integer(IK)             , intent(in)                    :: nsam
-        real(RKC)               , intent(in)    , contiguous    :: mean(:)
-        real(RKC)                                               :: rand(size(mean, 1, IK), nsam)
+        real(RKG)               , intent(in)    , contiguous    :: mean(:)
+        real(RKG)                                               :: rand(size(mean, 1, IK), nsam)
     end function
 #endif
 
@@ -2135,11 +2135,11 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUSR_RNGX_AM_DC_XXX_D2_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         type(xoshiro256ssw_type), intent(inout)                 :: rng
         integer(IK)             , intent(in)                    :: nsam
-        real(RKC)               , intent(in)    , contiguous    :: mean(:)
-        real(RKC)                                               :: rand(size(mean, 1, IK), nsam)
+        real(RKG)               , intent(in)    , contiguous    :: mean(:)
+        real(RKG)                                               :: rand(size(mean, 1, IK), nsam)
     end function
 #endif
 
@@ -2148,11 +2148,11 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUSR_RNGX_AM_DC_XXX_D2_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         type(xoshiro256ssw_type), intent(inout)                 :: rng
         integer(IK)             , intent(in)                    :: nsam
-        real(RKC)               , intent(in)    , contiguous    :: mean(:)
-        real(RKC)                                               :: rand(size(mean, 1, IK), nsam)
+        real(RKG)               , intent(in)    , contiguous    :: mean(:)
+        real(RKG)                                               :: rand(size(mean, 1, IK), nsam)
     end function
 #endif
 
@@ -2161,11 +2161,11 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUSR_RNGX_AM_DC_XXX_D2_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         type(xoshiro256ssw_type), intent(inout)                 :: rng
         integer(IK)             , intent(in)                    :: nsam
-        real(RKC)               , intent(in)    , contiguous    :: mean(:)
-        real(RKC)                                               :: rand(size(mean, 1, IK), nsam)
+        real(RKG)               , intent(in)    , contiguous    :: mean(:)
+        real(RKG)                                               :: rand(size(mean, 1, IK), nsam)
     end function
 #endif
 
@@ -2176,12 +2176,12 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUSR_RNGX_DM_AC_UXD_D2_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         type(xoshiro256ssw_type), intent(inout)                 :: rng
         integer(IK)             , intent(in)                    :: nsam
         type(uppDia_type)       , intent(in)                    :: subset
-        real(RKC)               , intent(in)    , contiguous    :: chol(:,:)
-        real(RKC)                                               :: rand(size(chol, 1, IK), nsam)
+        real(RKG)               , intent(in)    , contiguous    :: chol(:,:)
+        real(RKG)                                               :: rand(size(chol, 1, IK), nsam)
     end function
 #endif
 
@@ -2190,12 +2190,12 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUSR_RNGX_DM_AC_UXD_D2_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         type(xoshiro256ssw_type), intent(inout)                 :: rng
         integer(IK)             , intent(in)                    :: nsam
         type(uppDia_type)       , intent(in)                    :: subset
-        real(RKC)               , intent(in)    , contiguous    :: chol(:,:)
-        real(RKC)                                               :: rand(size(chol, 1, IK), nsam)
+        real(RKG)               , intent(in)    , contiguous    :: chol(:,:)
+        real(RKG)                                               :: rand(size(chol, 1, IK), nsam)
     end function
 #endif
 
@@ -2204,12 +2204,12 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUSR_RNGX_DM_AC_UXD_D2_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         type(xoshiro256ssw_type), intent(inout)                 :: rng
         integer(IK)             , intent(in)                    :: nsam
         type(uppDia_type)       , intent(in)                    :: subset
-        real(RKC)               , intent(in)    , contiguous    :: chol(:,:)
-        real(RKC)                                               :: rand(size(chol, 1, IK), nsam)
+        real(RKG)               , intent(in)    , contiguous    :: chol(:,:)
+        real(RKG)                                               :: rand(size(chol, 1, IK), nsam)
     end function
 #endif
 
@@ -2218,12 +2218,12 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUSR_RNGX_DM_AC_UXD_D2_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         type(xoshiro256ssw_type), intent(inout)                 :: rng
         integer(IK)             , intent(in)                    :: nsam
         type(uppDia_type)       , intent(in)                    :: subset
-        real(RKC)               , intent(in)    , contiguous    :: chol(:,:)
-        real(RKC)                                               :: rand(size(chol, 1, IK), nsam)
+        real(RKG)               , intent(in)    , contiguous    :: chol(:,:)
+        real(RKG)                                               :: rand(size(chol, 1, IK), nsam)
     end function
 #endif
 
@@ -2232,12 +2232,12 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUSR_RNGX_DM_AC_UXD_D2_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         type(xoshiro256ssw_type), intent(inout)                 :: rng
         integer(IK)             , intent(in)                    :: nsam
         type(uppDia_type)       , intent(in)                    :: subset
-        real(RKC)               , intent(in)    , contiguous    :: chol(:,:)
-        real(RKC)                                               :: rand(size(chol, 1, IK), nsam)
+        real(RKG)               , intent(in)    , contiguous    :: chol(:,:)
+        real(RKG)                                               :: rand(size(chol, 1, IK), nsam)
     end function
 #endif
 
@@ -2248,12 +2248,12 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUSR_RNGX_DM_AC_XLD_D2_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         type(xoshiro256ssw_type), intent(inout)                 :: rng
         integer(IK)             , intent(in)                    :: nsam
         type(lowDia_type)       , intent(in)                    :: subset
-        real(RKC)               , intent(in)    , contiguous    :: chol(:,:)
-        real(RKC)                                               :: rand(size(chol, 1, IK), nsam)
+        real(RKG)               , intent(in)    , contiguous    :: chol(:,:)
+        real(RKG)                                               :: rand(size(chol, 1, IK), nsam)
     end function
 #endif
 
@@ -2262,12 +2262,12 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUSR_RNGX_DM_AC_XLD_D2_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         type(xoshiro256ssw_type), intent(inout)                 :: rng
         integer(IK)             , intent(in)                    :: nsam
         type(lowDia_type)       , intent(in)                    :: subset
-        real(RKC)               , intent(in)    , contiguous    :: chol(:,:)
-        real(RKC)                                               :: rand(size(chol, 1, IK), nsam)
+        real(RKG)               , intent(in)    , contiguous    :: chol(:,:)
+        real(RKG)                                               :: rand(size(chol, 1, IK), nsam)
     end function
 #endif
 
@@ -2276,12 +2276,12 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUSR_RNGX_DM_AC_XLD_D2_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         type(xoshiro256ssw_type), intent(inout)                 :: rng
         integer(IK)             , intent(in)                    :: nsam
         type(lowDia_type)       , intent(in)                    :: subset
-        real(RKC)               , intent(in)    , contiguous    :: chol(:,:)
-        real(RKC)                                               :: rand(size(chol, 1, IK), nsam)
+        real(RKG)               , intent(in)    , contiguous    :: chol(:,:)
+        real(RKG)                                               :: rand(size(chol, 1, IK), nsam)
     end function
 #endif
 
@@ -2290,12 +2290,12 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUSR_RNGX_DM_AC_XLD_D2_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         type(xoshiro256ssw_type), intent(inout)                 :: rng
         integer(IK)             , intent(in)                    :: nsam
         type(lowDia_type)       , intent(in)                    :: subset
-        real(RKC)               , intent(in)    , contiguous    :: chol(:,:)
-        real(RKC)                                               :: rand(size(chol, 1, IK), nsam)
+        real(RKG)               , intent(in)    , contiguous    :: chol(:,:)
+        real(RKG)                                               :: rand(size(chol, 1, IK), nsam)
     end function
 #endif
 
@@ -2304,12 +2304,12 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUSR_RNGX_DM_AC_XLD_D2_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         type(xoshiro256ssw_type), intent(inout)                 :: rng
         integer(IK)             , intent(in)                    :: nsam
         type(lowDia_type)       , intent(in)                    :: subset
-        real(RKC)               , intent(in)    , contiguous    :: chol(:,:)
-        real(RKC)                                               :: rand(size(chol, 1, IK), nsam)
+        real(RKG)               , intent(in)    , contiguous    :: chol(:,:)
+        real(RKG)                                               :: rand(size(chol, 1, IK), nsam)
     end function
 #endif
 
@@ -2320,12 +2320,12 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUSR_RNGX_AM_AC_UXD_D2_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         type(xoshiro256ssw_type), intent(inout)                 :: rng
         integer(IK)             , intent(in)                    :: nsam
         type(uppDia_type)       , intent(in)                    :: subset
-        real(RKC)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
-        real(RKC)                                               :: rand(size(chol, 1, IK), nsam)
+        real(RKG)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
+        real(RKG)                                               :: rand(size(chol, 1, IK), nsam)
     end function
 #endif
 
@@ -2334,12 +2334,12 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUSR_RNGX_AM_AC_UXD_D2_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         type(xoshiro256ssw_type), intent(inout)                 :: rng
         integer(IK)             , intent(in)                    :: nsam
         type(uppDia_type)       , intent(in)                    :: subset
-        real(RKC)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
-        real(RKC)                                               :: rand(size(chol, 1, IK), nsam)
+        real(RKG)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
+        real(RKG)                                               :: rand(size(chol, 1, IK), nsam)
     end function
 #endif
 
@@ -2348,12 +2348,12 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUSR_RNGX_AM_AC_UXD_D2_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         type(xoshiro256ssw_type), intent(inout)                 :: rng
         integer(IK)             , intent(in)                    :: nsam
         type(uppDia_type)       , intent(in)                    :: subset
-        real(RKC)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
-        real(RKC)                                               :: rand(size(chol, 1, IK), nsam)
+        real(RKG)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
+        real(RKG)                                               :: rand(size(chol, 1, IK), nsam)
     end function
 #endif
 
@@ -2362,12 +2362,12 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUSR_RNGX_AM_AC_UXD_D2_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         type(xoshiro256ssw_type), intent(inout)                 :: rng
         integer(IK)             , intent(in)                    :: nsam
         type(uppDia_type)       , intent(in)                    :: subset
-        real(RKC)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
-        real(RKC)                                               :: rand(size(chol, 1, IK), nsam)
+        real(RKG)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
+        real(RKG)                                               :: rand(size(chol, 1, IK), nsam)
     end function
 #endif
 
@@ -2376,12 +2376,12 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUSR_RNGX_AM_AC_UXD_D2_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         type(xoshiro256ssw_type), intent(inout)                 :: rng
         integer(IK)             , intent(in)                    :: nsam
         type(uppDia_type)       , intent(in)                    :: subset
-        real(RKC)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
-        real(RKC)                                               :: rand(size(chol, 1, IK), nsam)
+        real(RKG)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
+        real(RKG)                                               :: rand(size(chol, 1, IK), nsam)
     end function
 #endif
 
@@ -2392,12 +2392,12 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUSR_RNGX_AM_AC_XLD_D2_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         type(xoshiro256ssw_type), intent(inout)                 :: rng
         integer(IK)             , intent(in)                    :: nsam
         type(lowDia_type)       , intent(in)                    :: subset
-        real(RKC)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
-        real(RKC)                                               :: rand(size(chol, 1, IK), nsam)
+        real(RKG)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
+        real(RKG)                                               :: rand(size(chol, 1, IK), nsam)
     end function
 #endif
 
@@ -2406,12 +2406,12 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUSR_RNGX_AM_AC_XLD_D2_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         type(xoshiro256ssw_type), intent(inout)                 :: rng
         integer(IK)             , intent(in)                    :: nsam
         type(lowDia_type)       , intent(in)                    :: subset
-        real(RKC)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
-        real(RKC)                                               :: rand(size(chol, 1, IK), nsam)
+        real(RKG)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
+        real(RKG)                                               :: rand(size(chol, 1, IK), nsam)
     end function
 #endif
 
@@ -2420,12 +2420,12 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUSR_RNGX_AM_AC_XLD_D2_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         type(xoshiro256ssw_type), intent(inout)                 :: rng
         integer(IK)             , intent(in)                    :: nsam
         type(lowDia_type)       , intent(in)                    :: subset
-        real(RKC)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
-        real(RKC)                                               :: rand(size(chol, 1, IK), nsam)
+        real(RKG)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
+        real(RKG)                                               :: rand(size(chol, 1, IK), nsam)
     end function
 #endif
 
@@ -2434,12 +2434,12 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUSR_RNGX_AM_AC_XLD_D2_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         type(xoshiro256ssw_type), intent(inout)                 :: rng
         integer(IK)             , intent(in)                    :: nsam
         type(lowDia_type)       , intent(in)                    :: subset
-        real(RKC)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
-        real(RKC)                                               :: rand(size(chol, 1, IK), nsam)
+        real(RKG)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
+        real(RKG)                                               :: rand(size(chol, 1, IK), nsam)
     end function
 #endif
 
@@ -2448,12 +2448,12 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUSR_RNGX_AM_AC_XLD_D2_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         type(xoshiro256ssw_type), intent(inout)                 :: rng
         integer(IK)             , intent(in)                    :: nsam
         type(lowDia_type)       , intent(in)                    :: subset
-        real(RKC)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
-        real(RKC)                                               :: rand(size(chol, 1, IK), nsam)
+        real(RKG)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
+        real(RKG)                                               :: rand(size(chol, 1, IK), nsam)
     end function
 #endif
 
@@ -2582,8 +2582,8 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUSR_RNGD_DM_DC_XXX_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)               , intent(out)   , contiguous    :: rand(:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)               , intent(out)   , contiguous    :: rand(:)
     end subroutine
 #endif
 
@@ -2592,8 +2592,8 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUSR_RNGD_DM_DC_XXX_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)               , intent(out)   , contiguous    :: rand(:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)               , intent(out)   , contiguous    :: rand(:)
     end subroutine
 #endif
 
@@ -2602,8 +2602,8 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUSR_RNGD_DM_DC_XXX_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)               , intent(out)   , contiguous    :: rand(:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)               , intent(out)   , contiguous    :: rand(:)
     end subroutine
 #endif
 
@@ -2612,8 +2612,8 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUSR_RNGD_DM_DC_XXX_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)               , intent(out)   , contiguous    :: rand(:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)               , intent(out)   , contiguous    :: rand(:)
     end subroutine
 #endif
 
@@ -2622,8 +2622,8 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUSR_RNGD_DM_DC_XXX_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)               , intent(out)   , contiguous    :: rand(:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)               , intent(out)   , contiguous    :: rand(:)
     end subroutine
 #endif
 
@@ -2634,9 +2634,9 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUSR_RNGD_AM_DC_XXX_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)               , intent(out)   , contiguous    :: rand(:)
-        real(RKC)               , intent(in)    , contiguous    :: mean(:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)               , intent(out)   , contiguous    :: rand(:)
+        real(RKG)               , intent(in)    , contiguous    :: mean(:)
     end subroutine
 #endif
 
@@ -2645,9 +2645,9 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUSR_RNGD_AM_DC_XXX_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)               , intent(out)   , contiguous    :: rand(:)
-        real(RKC)               , intent(in)    , contiguous    :: mean(:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)               , intent(out)   , contiguous    :: rand(:)
+        real(RKG)               , intent(in)    , contiguous    :: mean(:)
     end subroutine
 #endif
 
@@ -2656,9 +2656,9 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUSR_RNGD_AM_DC_XXX_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)               , intent(out)   , contiguous    :: rand(:)
-        real(RKC)               , intent(in)    , contiguous    :: mean(:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)               , intent(out)   , contiguous    :: rand(:)
+        real(RKG)               , intent(in)    , contiguous    :: mean(:)
     end subroutine
 #endif
 
@@ -2667,9 +2667,9 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUSR_RNGD_AM_DC_XXX_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)               , intent(out)   , contiguous    :: rand(:)
-        real(RKC)               , intent(in)    , contiguous    :: mean(:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)               , intent(out)   , contiguous    :: rand(:)
+        real(RKG)               , intent(in)    , contiguous    :: mean(:)
     end subroutine
 #endif
 
@@ -2678,9 +2678,9 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUSR_RNGD_AM_DC_XXX_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)               , intent(out)   , contiguous    :: rand(:)
-        real(RKC)               , intent(in)    , contiguous    :: mean(:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)               , intent(out)   , contiguous    :: rand(:)
+        real(RKG)               , intent(in)    , contiguous    :: mean(:)
     end subroutine
 #endif
 
@@ -2691,9 +2691,9 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUSR_RNGD_DM_AC_UXD_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)               , intent(out)   , contiguous    :: rand(:)
-        real(RKC)               , intent(in)    , contiguous    :: chol(:,:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)               , intent(out)   , contiguous    :: rand(:)
+        real(RKG)               , intent(in)    , contiguous    :: chol(:,:)
         type(uppDia_type)       , intent(in)                    :: subset
     end subroutine
 #endif
@@ -2703,9 +2703,9 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUSR_RNGD_DM_AC_UXD_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)               , intent(out)   , contiguous    :: rand(:)
-        real(RKC)               , intent(in)    , contiguous    :: chol(:,:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)               , intent(out)   , contiguous    :: rand(:)
+        real(RKG)               , intent(in)    , contiguous    :: chol(:,:)
         type(uppDia_type)       , intent(in)                    :: subset
     end subroutine
 #endif
@@ -2715,9 +2715,9 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUSR_RNGD_DM_AC_UXD_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)               , intent(out)   , contiguous    :: rand(:)
-        real(RKC)               , intent(in)    , contiguous    :: chol(:,:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)               , intent(out)   , contiguous    :: rand(:)
+        real(RKG)               , intent(in)    , contiguous    :: chol(:,:)
         type(uppDia_type)       , intent(in)                    :: subset
     end subroutine
 #endif
@@ -2727,9 +2727,9 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUSR_RNGD_DM_AC_UXD_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)               , intent(out)   , contiguous    :: rand(:)
-        real(RKC)               , intent(in)    , contiguous    :: chol(:,:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)               , intent(out)   , contiguous    :: rand(:)
+        real(RKG)               , intent(in)    , contiguous    :: chol(:,:)
         type(uppDia_type)       , intent(in)                    :: subset
     end subroutine
 #endif
@@ -2739,9 +2739,9 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUSR_RNGD_DM_AC_UXD_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)               , intent(out)   , contiguous    :: rand(:)
-        real(RKC)               , intent(in)    , contiguous    :: chol(:,:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)               , intent(out)   , contiguous    :: rand(:)
+        real(RKG)               , intent(in)    , contiguous    :: chol(:,:)
         type(uppDia_type)       , intent(in)                    :: subset
     end subroutine
 #endif
@@ -2753,9 +2753,9 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUSR_RNGD_DM_AC_XLD_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)               , intent(out)   , contiguous    :: rand(:)
-        real(RKC)               , intent(in)    , contiguous    :: chol(:,:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)               , intent(out)   , contiguous    :: rand(:)
+        real(RKG)               , intent(in)    , contiguous    :: chol(:,:)
         type(lowDia_type)       , intent(in)                    :: subset
     end subroutine
 #endif
@@ -2765,9 +2765,9 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUSR_RNGD_DM_AC_XLD_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)               , intent(out)   , contiguous    :: rand(:)
-        real(RKC)               , intent(in)    , contiguous    :: chol(:,:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)               , intent(out)   , contiguous    :: rand(:)
+        real(RKG)               , intent(in)    , contiguous    :: chol(:,:)
         type(lowDia_type)       , intent(in)                    :: subset
     end subroutine
 #endif
@@ -2777,9 +2777,9 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUSR_RNGD_DM_AC_XLD_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)               , intent(out)   , contiguous    :: rand(:)
-        real(RKC)               , intent(in)    , contiguous    :: chol(:,:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)               , intent(out)   , contiguous    :: rand(:)
+        real(RKG)               , intent(in)    , contiguous    :: chol(:,:)
         type(lowDia_type)       , intent(in)                    :: subset
     end subroutine
 #endif
@@ -2789,9 +2789,9 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUSR_RNGD_DM_AC_XLD_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)               , intent(out)   , contiguous    :: rand(:)
-        real(RKC)               , intent(in)    , contiguous    :: chol(:,:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)               , intent(out)   , contiguous    :: rand(:)
+        real(RKG)               , intent(in)    , contiguous    :: chol(:,:)
         type(lowDia_type)       , intent(in)                    :: subset
     end subroutine
 #endif
@@ -2801,9 +2801,9 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUSR_RNGD_DM_AC_XLD_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)               , intent(out)   , contiguous    :: rand(:)
-        real(RKC)               , intent(in)    , contiguous    :: chol(:,:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)               , intent(out)   , contiguous    :: rand(:)
+        real(RKG)               , intent(in)    , contiguous    :: chol(:,:)
         type(lowDia_type)       , intent(in)                    :: subset
     end subroutine
 #endif
@@ -2815,9 +2815,9 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUSR_RNGD_AM_AC_UXD_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)               , intent(out)   , contiguous    :: rand(:)
-        real(RKC)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)               , intent(out)   , contiguous    :: rand(:)
+        real(RKG)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
         type(uppDia_type)       , intent(in)                    :: subset
     end subroutine
 #endif
@@ -2827,9 +2827,9 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUSR_RNGD_AM_AC_UXD_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)               , intent(out)   , contiguous    :: rand(:)
-        real(RKC)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)               , intent(out)   , contiguous    :: rand(:)
+        real(RKG)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
         type(uppDia_type)       , intent(in)                    :: subset
     end subroutine
 #endif
@@ -2839,9 +2839,9 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUSR_RNGD_AM_AC_UXD_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)               , intent(out)   , contiguous    :: rand(:)
-        real(RKC)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)               , intent(out)   , contiguous    :: rand(:)
+        real(RKG)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
         type(uppDia_type)       , intent(in)                    :: subset
     end subroutine
 #endif
@@ -2851,9 +2851,9 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUSR_RNGD_AM_AC_UXD_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)               , intent(out)   , contiguous    :: rand(:)
-        real(RKC)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)               , intent(out)   , contiguous    :: rand(:)
+        real(RKG)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
         type(uppDia_type)       , intent(in)                    :: subset
     end subroutine
 #endif
@@ -2863,9 +2863,9 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUSR_RNGD_AM_AC_UXD_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)               , intent(out)   , contiguous    :: rand(:)
-        real(RKC)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)               , intent(out)   , contiguous    :: rand(:)
+        real(RKG)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
         type(uppDia_type)       , intent(in)                    :: subset
     end subroutine
 #endif
@@ -2877,9 +2877,9 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUSR_RNGD_AM_AC_XLD_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)               , intent(out)   , contiguous    :: rand(:)
-        real(RKC)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)               , intent(out)   , contiguous    :: rand(:)
+        real(RKG)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
         type(lowDia_type)       , intent(in)                    :: subset
     end subroutine
 #endif
@@ -2889,9 +2889,9 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUSR_RNGD_AM_AC_XLD_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)               , intent(out)   , contiguous    :: rand(:)
-        real(RKC)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)               , intent(out)   , contiguous    :: rand(:)
+        real(RKG)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
         type(lowDia_type)       , intent(in)                    :: subset
     end subroutine
 #endif
@@ -2901,9 +2901,9 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUSR_RNGD_AM_AC_XLD_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)               , intent(out)   , contiguous    :: rand(:)
-        real(RKC)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)               , intent(out)   , contiguous    :: rand(:)
+        real(RKG)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
         type(lowDia_type)       , intent(in)                    :: subset
     end subroutine
 #endif
@@ -2913,9 +2913,9 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUSR_RNGD_AM_AC_XLD_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)               , intent(out)   , contiguous    :: rand(:)
-        real(RKC)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)               , intent(out)   , contiguous    :: rand(:)
+        real(RKG)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
         type(lowDia_type)       , intent(in)                    :: subset
     end subroutine
 #endif
@@ -2925,9 +2925,9 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUSR_RNGD_AM_AC_XLD_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)               , intent(out)   , contiguous    :: rand(:)
-        real(RKC)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)               , intent(out)   , contiguous    :: rand(:)
+        real(RKG)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
         type(lowDia_type)       , intent(in)                    :: subset
     end subroutine
 #endif
@@ -2947,9 +2947,9 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUSR_RNGF_DM_DC_XXX_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         type(rngf_type)         , intent(in)                    :: rng
-        real(RKC)               , intent(out)   , contiguous    :: rand(:)
+        real(RKG)               , intent(out)   , contiguous    :: rand(:)
     end subroutine
 #endif
 
@@ -2958,9 +2958,9 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUSR_RNGF_DM_DC_XXX_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         type(rngf_type)         , intent(in)                    :: rng
-        real(RKC)               , intent(out)   , contiguous    :: rand(:)
+        real(RKG)               , intent(out)   , contiguous    :: rand(:)
     end subroutine
 #endif
 
@@ -2969,9 +2969,9 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUSR_RNGF_DM_DC_XXX_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         type(rngf_type)         , intent(in)                    :: rng
-        real(RKC)               , intent(out)   , contiguous    :: rand(:)
+        real(RKG)               , intent(out)   , contiguous    :: rand(:)
     end subroutine
 #endif
 
@@ -2980,9 +2980,9 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUSR_RNGF_DM_DC_XXX_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         type(rngf_type)         , intent(in)                    :: rng
-        real(RKC)               , intent(out)   , contiguous    :: rand(:)
+        real(RKG)               , intent(out)   , contiguous    :: rand(:)
     end subroutine
 #endif
 
@@ -2991,9 +2991,9 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUSR_RNGF_DM_DC_XXX_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         type(rngf_type)         , intent(in)                    :: rng
-        real(RKC)               , intent(out)   , contiguous    :: rand(:)
+        real(RKG)               , intent(out)   , contiguous    :: rand(:)
     end subroutine
 #endif
 
@@ -3004,10 +3004,10 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUSR_RNGF_AM_DC_XXX_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         type(rngf_type)         , intent(in)                    :: rng
-        real(RKC)               , intent(out)   , contiguous    :: rand(:)
-        real(RKC)               , intent(in)    , contiguous    :: mean(:)
+        real(RKG)               , intent(out)   , contiguous    :: rand(:)
+        real(RKG)               , intent(in)    , contiguous    :: mean(:)
     end subroutine
 #endif
 
@@ -3016,10 +3016,10 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUSR_RNGF_AM_DC_XXX_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         type(rngf_type)         , intent(in)                    :: rng
-        real(RKC)               , intent(out)   , contiguous    :: rand(:)
-        real(RKC)               , intent(in)    , contiguous    :: mean(:)
+        real(RKG)               , intent(out)   , contiguous    :: rand(:)
+        real(RKG)               , intent(in)    , contiguous    :: mean(:)
     end subroutine
 #endif
 
@@ -3028,10 +3028,10 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUSR_RNGF_AM_DC_XXX_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         type(rngf_type)         , intent(in)                    :: rng
-        real(RKC)               , intent(out)   , contiguous    :: rand(:)
-        real(RKC)               , intent(in)    , contiguous    :: mean(:)
+        real(RKG)               , intent(out)   , contiguous    :: rand(:)
+        real(RKG)               , intent(in)    , contiguous    :: mean(:)
     end subroutine
 #endif
 
@@ -3040,10 +3040,10 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUSR_RNGF_AM_DC_XXX_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         type(rngf_type)         , intent(in)                    :: rng
-        real(RKC)               , intent(out)   , contiguous    :: rand(:)
-        real(RKC)               , intent(in)    , contiguous    :: mean(:)
+        real(RKG)               , intent(out)   , contiguous    :: rand(:)
+        real(RKG)               , intent(in)    , contiguous    :: mean(:)
     end subroutine
 #endif
 
@@ -3052,10 +3052,10 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUSR_RNGF_AM_DC_XXX_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         type(rngf_type)         , intent(in)                    :: rng
-        real(RKC)               , intent(out)   , contiguous    :: rand(:)
-        real(RKC)               , intent(in)    , contiguous    :: mean(:)
+        real(RKG)               , intent(out)   , contiguous    :: rand(:)
+        real(RKG)               , intent(in)    , contiguous    :: mean(:)
     end subroutine
 #endif
 
@@ -3066,10 +3066,10 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUSR_RNGF_DM_AC_UXD_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         type(rngf_type)         , intent(in)                    :: rng
-        real(RKC)               , intent(out)   , contiguous    :: rand(:)
-        real(RKC)               , intent(in)    , contiguous    :: chol(:,:)
+        real(RKG)               , intent(out)   , contiguous    :: rand(:)
+        real(RKG)               , intent(in)    , contiguous    :: chol(:,:)
         type(uppDia_type)       , intent(in)                    :: subset
     end subroutine
 #endif
@@ -3079,10 +3079,10 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUSR_RNGF_DM_AC_UXD_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         type(rngf_type)         , intent(in)                    :: rng
-        real(RKC)               , intent(out)   , contiguous    :: rand(:)
-        real(RKC)               , intent(in)    , contiguous    :: chol(:,:)
+        real(RKG)               , intent(out)   , contiguous    :: rand(:)
+        real(RKG)               , intent(in)    , contiguous    :: chol(:,:)
         type(uppDia_type)       , intent(in)                    :: subset
     end subroutine
 #endif
@@ -3092,10 +3092,10 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUSR_RNGF_DM_AC_UXD_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         type(rngf_type)         , intent(in)                    :: rng
-        real(RKC)               , intent(out)   , contiguous    :: rand(:)
-        real(RKC)               , intent(in)    , contiguous    :: chol(:,:)
+        real(RKG)               , intent(out)   , contiguous    :: rand(:)
+        real(RKG)               , intent(in)    , contiguous    :: chol(:,:)
         type(uppDia_type)       , intent(in)                    :: subset
     end subroutine
 #endif
@@ -3105,10 +3105,10 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUSR_RNGF_DM_AC_UXD_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         type(rngf_type)         , intent(in)                    :: rng
-        real(RKC)               , intent(out)   , contiguous    :: rand(:)
-        real(RKC)               , intent(in)    , contiguous    :: chol(:,:)
+        real(RKG)               , intent(out)   , contiguous    :: rand(:)
+        real(RKG)               , intent(in)    , contiguous    :: chol(:,:)
         type(uppDia_type)       , intent(in)                    :: subset
     end subroutine
 #endif
@@ -3118,10 +3118,10 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUSR_RNGF_DM_AC_UXD_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         type(rngf_type)         , intent(in)                    :: rng
-        real(RKC)               , intent(out)   , contiguous    :: rand(:)
-        real(RKC)               , intent(in)    , contiguous    :: chol(:,:)
+        real(RKG)               , intent(out)   , contiguous    :: rand(:)
+        real(RKG)               , intent(in)    , contiguous    :: chol(:,:)
         type(uppDia_type)       , intent(in)                    :: subset
     end subroutine
 #endif
@@ -3133,10 +3133,10 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUSR_RNGF_DM_AC_XLD_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         type(rngf_type)         , intent(in)                    :: rng
-        real(RKC)               , intent(out)   , contiguous    :: rand(:)
-        real(RKC)               , intent(in)    , contiguous    :: chol(:,:)
+        real(RKG)               , intent(out)   , contiguous    :: rand(:)
+        real(RKG)               , intent(in)    , contiguous    :: chol(:,:)
         type(lowDia_type)       , intent(in)                    :: subset
     end subroutine
 #endif
@@ -3146,10 +3146,10 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUSR_RNGF_DM_AC_XLD_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         type(rngf_type)         , intent(in)                    :: rng
-        real(RKC)               , intent(out)   , contiguous    :: rand(:)
-        real(RKC)               , intent(in)    , contiguous    :: chol(:,:)
+        real(RKG)               , intent(out)   , contiguous    :: rand(:)
+        real(RKG)               , intent(in)    , contiguous    :: chol(:,:)
         type(lowDia_type)       , intent(in)                    :: subset
     end subroutine
 #endif
@@ -3159,10 +3159,10 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUSR_RNGF_DM_AC_XLD_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         type(rngf_type)         , intent(in)                    :: rng
-        real(RKC)               , intent(out)   , contiguous    :: rand(:)
-        real(RKC)               , intent(in)    , contiguous    :: chol(:,:)
+        real(RKG)               , intent(out)   , contiguous    :: rand(:)
+        real(RKG)               , intent(in)    , contiguous    :: chol(:,:)
         type(lowDia_type)       , intent(in)                    :: subset
     end subroutine
 #endif
@@ -3172,10 +3172,10 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUSR_RNGF_DM_AC_XLD_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         type(rngf_type)         , intent(in)                    :: rng
-        real(RKC)               , intent(out)   , contiguous    :: rand(:)
-        real(RKC)               , intent(in)    , contiguous    :: chol(:,:)
+        real(RKG)               , intent(out)   , contiguous    :: rand(:)
+        real(RKG)               , intent(in)    , contiguous    :: chol(:,:)
         type(lowDia_type)       , intent(in)                    :: subset
     end subroutine
 #endif
@@ -3185,10 +3185,10 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUSR_RNGF_DM_AC_XLD_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         type(rngf_type)         , intent(in)                    :: rng
-        real(RKC)               , intent(out)   , contiguous    :: rand(:)
-        real(RKC)               , intent(in)    , contiguous    :: chol(:,:)
+        real(RKG)               , intent(out)   , contiguous    :: rand(:)
+        real(RKG)               , intent(in)    , contiguous    :: chol(:,:)
         type(lowDia_type)       , intent(in)                    :: subset
     end subroutine
 #endif
@@ -3200,10 +3200,10 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUSR_RNGF_AM_AC_UXD_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         type(rngf_type)         , intent(in)                    :: rng
-        real(RKC)               , intent(out)   , contiguous    :: rand(:)
-        real(RKC)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
+        real(RKG)               , intent(out)   , contiguous    :: rand(:)
+        real(RKG)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
         type(uppDia_type)       , intent(in)                    :: subset
     end subroutine
 #endif
@@ -3213,10 +3213,10 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUSR_RNGF_AM_AC_UXD_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         type(rngf_type)         , intent(in)                    :: rng
-        real(RKC)               , intent(out)   , contiguous    :: rand(:)
-        real(RKC)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
+        real(RKG)               , intent(out)   , contiguous    :: rand(:)
+        real(RKG)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
         type(uppDia_type)       , intent(in)                    :: subset
     end subroutine
 #endif
@@ -3226,10 +3226,10 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUSR_RNGF_AM_AC_UXD_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         type(rngf_type)         , intent(in)                    :: rng
-        real(RKC)               , intent(out)   , contiguous    :: rand(:)
-        real(RKC)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
+        real(RKG)               , intent(out)   , contiguous    :: rand(:)
+        real(RKG)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
         type(uppDia_type)       , intent(in)                    :: subset
     end subroutine
 #endif
@@ -3239,10 +3239,10 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUSR_RNGF_AM_AC_UXD_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         type(rngf_type)         , intent(in)                    :: rng
-        real(RKC)               , intent(out)   , contiguous    :: rand(:)
-        real(RKC)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
+        real(RKG)               , intent(out)   , contiguous    :: rand(:)
+        real(RKG)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
         type(uppDia_type)       , intent(in)                    :: subset
     end subroutine
 #endif
@@ -3252,10 +3252,10 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUSR_RNGF_AM_AC_UXD_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         type(rngf_type)         , intent(in)                    :: rng
-        real(RKC)               , intent(out)   , contiguous    :: rand(:)
-        real(RKC)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
+        real(RKG)               , intent(out)   , contiguous    :: rand(:)
+        real(RKG)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
         type(uppDia_type)       , intent(in)                    :: subset
     end subroutine
 #endif
@@ -3267,10 +3267,10 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUSR_RNGF_AM_AC_XLD_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         type(rngf_type)         , intent(in)                    :: rng
-        real(RKC)               , intent(out)   , contiguous    :: rand(:)
-        real(RKC)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
+        real(RKG)               , intent(out)   , contiguous    :: rand(:)
+        real(RKG)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
         type(lowDia_type)       , intent(in)                    :: subset
     end subroutine
 #endif
@@ -3280,10 +3280,10 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUSR_RNGF_AM_AC_XLD_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         type(rngf_type)         , intent(in)                    :: rng
-        real(RKC)               , intent(out)   , contiguous    :: rand(:)
-        real(RKC)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
+        real(RKG)               , intent(out)   , contiguous    :: rand(:)
+        real(RKG)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
         type(lowDia_type)       , intent(in)                    :: subset
     end subroutine
 #endif
@@ -3293,10 +3293,10 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUSR_RNGF_AM_AC_XLD_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         type(rngf_type)         , intent(in)                    :: rng
-        real(RKC)               , intent(out)   , contiguous    :: rand(:)
-        real(RKC)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
+        real(RKG)               , intent(out)   , contiguous    :: rand(:)
+        real(RKG)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
         type(lowDia_type)       , intent(in)                    :: subset
     end subroutine
 #endif
@@ -3306,10 +3306,10 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUSR_RNGF_AM_AC_XLD_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         type(rngf_type)         , intent(in)                    :: rng
-        real(RKC)               , intent(out)   , contiguous    :: rand(:)
-        real(RKC)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
+        real(RKG)               , intent(out)   , contiguous    :: rand(:)
+        real(RKG)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
         type(lowDia_type)       , intent(in)                    :: subset
     end subroutine
 #endif
@@ -3319,10 +3319,10 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUSR_RNGF_AM_AC_XLD_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         type(rngf_type)         , intent(in)                    :: rng
-        real(RKC)               , intent(out)   , contiguous    :: rand(:)
-        real(RKC)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
+        real(RKG)               , intent(out)   , contiguous    :: rand(:)
+        real(RKG)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
         type(lowDia_type)       , intent(in)                    :: subset
     end subroutine
 #endif
@@ -3342,9 +3342,9 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUSR_RNGX_DM_DC_XXX_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         type(xoshiro256ssw_type), intent(inout)                 :: rng
-        real(RKC)               , intent(out)   , contiguous    :: rand(:)
+        real(RKG)               , intent(out)   , contiguous    :: rand(:)
     end subroutine
 #endif
 
@@ -3353,9 +3353,9 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUSR_RNGX_DM_DC_XXX_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         type(xoshiro256ssw_type), intent(inout)                 :: rng
-        real(RKC)               , intent(out)   , contiguous    :: rand(:)
+        real(RKG)               , intent(out)   , contiguous    :: rand(:)
     end subroutine
 #endif
 
@@ -3364,9 +3364,9 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUSR_RNGX_DM_DC_XXX_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         type(xoshiro256ssw_type), intent(inout)                 :: rng
-        real(RKC)               , intent(out)   , contiguous    :: rand(:)
+        real(RKG)               , intent(out)   , contiguous    :: rand(:)
     end subroutine
 #endif
 
@@ -3375,9 +3375,9 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUSR_RNGX_DM_DC_XXX_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         type(xoshiro256ssw_type), intent(inout)                 :: rng
-        real(RKC)               , intent(out)   , contiguous    :: rand(:)
+        real(RKG)               , intent(out)   , contiguous    :: rand(:)
     end subroutine
 #endif
 
@@ -3386,9 +3386,9 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUSR_RNGX_DM_DC_XXX_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         type(xoshiro256ssw_type), intent(inout)                 :: rng
-        real(RKC)               , intent(out)   , contiguous    :: rand(:)
+        real(RKG)               , intent(out)   , contiguous    :: rand(:)
     end subroutine
 #endif
 
@@ -3399,10 +3399,10 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUSR_RNGX_AM_DC_XXX_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         type(xoshiro256ssw_type), intent(inout)                 :: rng
-        real(RKC)               , intent(out)   , contiguous    :: rand(:)
-        real(RKC)               , intent(in)    , contiguous    :: mean(:)
+        real(RKG)               , intent(out)   , contiguous    :: rand(:)
+        real(RKG)               , intent(in)    , contiguous    :: mean(:)
     end subroutine
 #endif
 
@@ -3411,10 +3411,10 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUSR_RNGX_AM_DC_XXX_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         type(xoshiro256ssw_type), intent(inout)                 :: rng
-        real(RKC)               , intent(out)   , contiguous    :: rand(:)
-        real(RKC)               , intent(in)    , contiguous    :: mean(:)
+        real(RKG)               , intent(out)   , contiguous    :: rand(:)
+        real(RKG)               , intent(in)    , contiguous    :: mean(:)
     end subroutine
 #endif
 
@@ -3423,10 +3423,10 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUSR_RNGX_AM_DC_XXX_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         type(xoshiro256ssw_type), intent(inout)                 :: rng
-        real(RKC)               , intent(out)   , contiguous    :: rand(:)
-        real(RKC)               , intent(in)    , contiguous    :: mean(:)
+        real(RKG)               , intent(out)   , contiguous    :: rand(:)
+        real(RKG)               , intent(in)    , contiguous    :: mean(:)
     end subroutine
 #endif
 
@@ -3435,10 +3435,10 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUSR_RNGX_AM_DC_XXX_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         type(xoshiro256ssw_type), intent(inout)                 :: rng
-        real(RKC)               , intent(out)   , contiguous    :: rand(:)
-        real(RKC)               , intent(in)    , contiguous    :: mean(:)
+        real(RKG)               , intent(out)   , contiguous    :: rand(:)
+        real(RKG)               , intent(in)    , contiguous    :: mean(:)
     end subroutine
 #endif
 
@@ -3447,10 +3447,10 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUSR_RNGX_AM_DC_XXX_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         type(xoshiro256ssw_type), intent(inout)                 :: rng
-        real(RKC)               , intent(out)   , contiguous    :: rand(:)
-        real(RKC)               , intent(in)    , contiguous    :: mean(:)
+        real(RKG)               , intent(out)   , contiguous    :: rand(:)
+        real(RKG)               , intent(in)    , contiguous    :: mean(:)
     end subroutine
 #endif
 
@@ -3461,10 +3461,10 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUSR_RNGX_DM_AC_UXD_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         type(xoshiro256ssw_type), intent(inout)                 :: rng
-        real(RKC)               , intent(out)   , contiguous    :: rand(:)
-        real(RKC)               , intent(in)    , contiguous    :: chol(:,:)
+        real(RKG)               , intent(out)   , contiguous    :: rand(:)
+        real(RKG)               , intent(in)    , contiguous    :: chol(:,:)
         type(uppDia_type)       , intent(in)                    :: subset
     end subroutine
 #endif
@@ -3474,10 +3474,10 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUSR_RNGX_DM_AC_UXD_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         type(xoshiro256ssw_type), intent(inout)                 :: rng
-        real(RKC)               , intent(out)   , contiguous    :: rand(:)
-        real(RKC)               , intent(in)    , contiguous    :: chol(:,:)
+        real(RKG)               , intent(out)   , contiguous    :: rand(:)
+        real(RKG)               , intent(in)    , contiguous    :: chol(:,:)
         type(uppDia_type)       , intent(in)                    :: subset
     end subroutine
 #endif
@@ -3487,10 +3487,10 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUSR_RNGX_DM_AC_UXD_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         type(xoshiro256ssw_type), intent(inout)                 :: rng
-        real(RKC)               , intent(out)   , contiguous    :: rand(:)
-        real(RKC)               , intent(in)    , contiguous    :: chol(:,:)
+        real(RKG)               , intent(out)   , contiguous    :: rand(:)
+        real(RKG)               , intent(in)    , contiguous    :: chol(:,:)
         type(uppDia_type)       , intent(in)                    :: subset
     end subroutine
 #endif
@@ -3500,10 +3500,10 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUSR_RNGX_DM_AC_UXD_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         type(xoshiro256ssw_type), intent(inout)                 :: rng
-        real(RKC)               , intent(out)   , contiguous    :: rand(:)
-        real(RKC)               , intent(in)    , contiguous    :: chol(:,:)
+        real(RKG)               , intent(out)   , contiguous    :: rand(:)
+        real(RKG)               , intent(in)    , contiguous    :: chol(:,:)
         type(uppDia_type)       , intent(in)                    :: subset
     end subroutine
 #endif
@@ -3513,10 +3513,10 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUSR_RNGX_DM_AC_UXD_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         type(xoshiro256ssw_type), intent(inout)                 :: rng
-        real(RKC)               , intent(out)   , contiguous    :: rand(:)
-        real(RKC)               , intent(in)    , contiguous    :: chol(:,:)
+        real(RKG)               , intent(out)   , contiguous    :: rand(:)
+        real(RKG)               , intent(in)    , contiguous    :: chol(:,:)
         type(uppDia_type)       , intent(in)                    :: subset
     end subroutine
 #endif
@@ -3528,10 +3528,10 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUSR_RNGX_DM_AC_XLD_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         type(xoshiro256ssw_type), intent(inout)                 :: rng
-        real(RKC)               , intent(out)   , contiguous    :: rand(:)
-        real(RKC)               , intent(in)    , contiguous    :: chol(:,:)
+        real(RKG)               , intent(out)   , contiguous    :: rand(:)
+        real(RKG)               , intent(in)    , contiguous    :: chol(:,:)
         type(lowDia_type)       , intent(in)                    :: subset
     end subroutine
 #endif
@@ -3541,10 +3541,10 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUSR_RNGX_DM_AC_XLD_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         type(xoshiro256ssw_type), intent(inout)                 :: rng
-        real(RKC)               , intent(out)   , contiguous    :: rand(:)
-        real(RKC)               , intent(in)    , contiguous    :: chol(:,:)
+        real(RKG)               , intent(out)   , contiguous    :: rand(:)
+        real(RKG)               , intent(in)    , contiguous    :: chol(:,:)
         type(lowDia_type)       , intent(in)                    :: subset
     end subroutine
 #endif
@@ -3554,10 +3554,10 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUSR_RNGX_DM_AC_XLD_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         type(xoshiro256ssw_type), intent(inout)                 :: rng
-        real(RKC)               , intent(out)   , contiguous    :: rand(:)
-        real(RKC)               , intent(in)    , contiguous    :: chol(:,:)
+        real(RKG)               , intent(out)   , contiguous    :: rand(:)
+        real(RKG)               , intent(in)    , contiguous    :: chol(:,:)
         type(lowDia_type)       , intent(in)                    :: subset
     end subroutine
 #endif
@@ -3567,10 +3567,10 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUSR_RNGX_DM_AC_XLD_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         type(xoshiro256ssw_type), intent(inout)                 :: rng
-        real(RKC)               , intent(out)   , contiguous    :: rand(:)
-        real(RKC)               , intent(in)    , contiguous    :: chol(:,:)
+        real(RKG)               , intent(out)   , contiguous    :: rand(:)
+        real(RKG)               , intent(in)    , contiguous    :: chol(:,:)
         type(lowDia_type)       , intent(in)                    :: subset
     end subroutine
 #endif
@@ -3580,10 +3580,10 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUSR_RNGX_DM_AC_XLD_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         type(xoshiro256ssw_type), intent(inout)                 :: rng
-        real(RKC)               , intent(out)   , contiguous    :: rand(:)
-        real(RKC)               , intent(in)    , contiguous    :: chol(:,:)
+        real(RKG)               , intent(out)   , contiguous    :: rand(:)
+        real(RKG)               , intent(in)    , contiguous    :: chol(:,:)
         type(lowDia_type)       , intent(in)                    :: subset
     end subroutine
 #endif
@@ -3595,10 +3595,10 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUSR_RNGX_AM_AC_UXD_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         type(xoshiro256ssw_type), intent(inout)                 :: rng
-        real(RKC)               , intent(out)   , contiguous    :: rand(:)
-        real(RKC)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
+        real(RKG)               , intent(out)   , contiguous    :: rand(:)
+        real(RKG)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
         type(uppDia_type)       , intent(in)                    :: subset
     end subroutine
 #endif
@@ -3608,10 +3608,10 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUSR_RNGX_AM_AC_UXD_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         type(xoshiro256ssw_type), intent(inout)                 :: rng
-        real(RKC)               , intent(out)   , contiguous    :: rand(:)
-        real(RKC)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
+        real(RKG)               , intent(out)   , contiguous    :: rand(:)
+        real(RKG)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
         type(uppDia_type)       , intent(in)                    :: subset
     end subroutine
 #endif
@@ -3621,10 +3621,10 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUSR_RNGX_AM_AC_UXD_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         type(xoshiro256ssw_type), intent(inout)                 :: rng
-        real(RKC)               , intent(out)   , contiguous    :: rand(:)
-        real(RKC)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
+        real(RKG)               , intent(out)   , contiguous    :: rand(:)
+        real(RKG)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
         type(uppDia_type)       , intent(in)                    :: subset
     end subroutine
 #endif
@@ -3634,10 +3634,10 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUSR_RNGX_AM_AC_UXD_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         type(xoshiro256ssw_type), intent(inout)                 :: rng
-        real(RKC)               , intent(out)   , contiguous    :: rand(:)
-        real(RKC)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
+        real(RKG)               , intent(out)   , contiguous    :: rand(:)
+        real(RKG)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
         type(uppDia_type)       , intent(in)                    :: subset
     end subroutine
 #endif
@@ -3647,10 +3647,10 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUSR_RNGX_AM_AC_UXD_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         type(xoshiro256ssw_type), intent(inout)                 :: rng
-        real(RKC)               , intent(out)   , contiguous    :: rand(:)
-        real(RKC)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
+        real(RKG)               , intent(out)   , contiguous    :: rand(:)
+        real(RKG)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
         type(uppDia_type)       , intent(in)                    :: subset
     end subroutine
 #endif
@@ -3662,10 +3662,10 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUSR_RNGX_AM_AC_XLD_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         type(xoshiro256ssw_type), intent(inout)                 :: rng
-        real(RKC)               , intent(out)   , contiguous    :: rand(:)
-        real(RKC)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
+        real(RKG)               , intent(out)   , contiguous    :: rand(:)
+        real(RKG)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
         type(lowDia_type)       , intent(in)                    :: subset
     end subroutine
 #endif
@@ -3675,10 +3675,10 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUSR_RNGX_AM_AC_XLD_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         type(xoshiro256ssw_type), intent(inout)                 :: rng
-        real(RKC)               , intent(out)   , contiguous    :: rand(:)
-        real(RKC)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
+        real(RKG)               , intent(out)   , contiguous    :: rand(:)
+        real(RKG)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
         type(lowDia_type)       , intent(in)                    :: subset
     end subroutine
 #endif
@@ -3688,10 +3688,10 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUSR_RNGX_AM_AC_XLD_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         type(xoshiro256ssw_type), intent(inout)                 :: rng
-        real(RKC)               , intent(out)   , contiguous    :: rand(:)
-        real(RKC)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
+        real(RKG)               , intent(out)   , contiguous    :: rand(:)
+        real(RKG)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
         type(lowDia_type)       , intent(in)                    :: subset
     end subroutine
 #endif
@@ -3701,10 +3701,10 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUSR_RNGX_AM_AC_XLD_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         type(xoshiro256ssw_type), intent(inout)                 :: rng
-        real(RKC)               , intent(out)   , contiguous    :: rand(:)
-        real(RKC)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
+        real(RKG)               , intent(out)   , contiguous    :: rand(:)
+        real(RKG)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
         type(lowDia_type)       , intent(in)                    :: subset
     end subroutine
 #endif
@@ -3714,10 +3714,10 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUSR_RNGX_AM_AC_XLD_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         type(xoshiro256ssw_type), intent(inout)                 :: rng
-        real(RKC)               , intent(out)   , contiguous    :: rand(:)
-        real(RKC)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
+        real(RKG)               , intent(out)   , contiguous    :: rand(:)
+        real(RKG)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
         type(lowDia_type)       , intent(in)                    :: subset
     end subroutine
 #endif
@@ -3737,8 +3737,8 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUSR_RNGD_DM_DC_XXX_D2_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)               , intent(out)   , contiguous    :: rand(:,:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)               , intent(out)   , contiguous    :: rand(:,:)
     end subroutine
 #endif
 
@@ -3747,8 +3747,8 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUSR_RNGD_DM_DC_XXX_D2_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)               , intent(out)   , contiguous    :: rand(:,:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)               , intent(out)   , contiguous    :: rand(:,:)
     end subroutine
 #endif
 
@@ -3757,8 +3757,8 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUSR_RNGD_DM_DC_XXX_D2_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)               , intent(out)   , contiguous    :: rand(:,:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)               , intent(out)   , contiguous    :: rand(:,:)
     end subroutine
 #endif
 
@@ -3767,8 +3767,8 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUSR_RNGD_DM_DC_XXX_D2_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)               , intent(out)   , contiguous    :: rand(:,:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)               , intent(out)   , contiguous    :: rand(:,:)
     end subroutine
 #endif
 
@@ -3777,8 +3777,8 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUSR_RNGD_DM_DC_XXX_D2_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)               , intent(out)   , contiguous    :: rand(:,:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)               , intent(out)   , contiguous    :: rand(:,:)
     end subroutine
 #endif
 
@@ -3789,9 +3789,9 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUSR_RNGD_AM_DC_XXX_D2_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)               , intent(out)   , contiguous    :: rand(:,:)
-        real(RKC)               , intent(in)    , contiguous    :: mean(:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)               , intent(out)   , contiguous    :: rand(:,:)
+        real(RKG)               , intent(in)    , contiguous    :: mean(:)
     end subroutine
 #endif
 
@@ -3800,9 +3800,9 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUSR_RNGD_AM_DC_XXX_D2_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)               , intent(out)   , contiguous    :: rand(:,:)
-        real(RKC)               , intent(in)    , contiguous    :: mean(:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)               , intent(out)   , contiguous    :: rand(:,:)
+        real(RKG)               , intent(in)    , contiguous    :: mean(:)
     end subroutine
 #endif
 
@@ -3811,9 +3811,9 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUSR_RNGD_AM_DC_XXX_D2_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)               , intent(out)   , contiguous    :: rand(:,:)
-        real(RKC)               , intent(in)    , contiguous    :: mean(:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)               , intent(out)   , contiguous    :: rand(:,:)
+        real(RKG)               , intent(in)    , contiguous    :: mean(:)
     end subroutine
 #endif
 
@@ -3822,9 +3822,9 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUSR_RNGD_AM_DC_XXX_D2_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)               , intent(out)   , contiguous    :: rand(:,:)
-        real(RKC)               , intent(in)    , contiguous    :: mean(:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)               , intent(out)   , contiguous    :: rand(:,:)
+        real(RKG)               , intent(in)    , contiguous    :: mean(:)
     end subroutine
 #endif
 
@@ -3833,9 +3833,9 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUSR_RNGD_AM_DC_XXX_D2_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)               , intent(out)   , contiguous    :: rand(:,:)
-        real(RKC)               , intent(in)    , contiguous    :: mean(:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)               , intent(out)   , contiguous    :: rand(:,:)
+        real(RKG)               , intent(in)    , contiguous    :: mean(:)
     end subroutine
 #endif
 
@@ -3846,9 +3846,9 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUSR_RNGD_DM_AC_UXD_D2_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)               , intent(out)   , contiguous    :: rand(:,:)
-        real(RKC)               , intent(in)    , contiguous    :: chol(:,:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)               , intent(out)   , contiguous    :: rand(:,:)
+        real(RKG)               , intent(in)    , contiguous    :: chol(:,:)
         type(uppDia_type)       , intent(in)                    :: subset
     end subroutine
 #endif
@@ -3858,9 +3858,9 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUSR_RNGD_DM_AC_UXD_D2_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)               , intent(out)   , contiguous    :: rand(:,:)
-        real(RKC)               , intent(in)    , contiguous    :: chol(:,:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)               , intent(out)   , contiguous    :: rand(:,:)
+        real(RKG)               , intent(in)    , contiguous    :: chol(:,:)
         type(uppDia_type)       , intent(in)                    :: subset
     end subroutine
 #endif
@@ -3870,9 +3870,9 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUSR_RNGD_DM_AC_UXD_D2_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)               , intent(out)   , contiguous    :: rand(:,:)
-        real(RKC)               , intent(in)    , contiguous    :: chol(:,:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)               , intent(out)   , contiguous    :: rand(:,:)
+        real(RKG)               , intent(in)    , contiguous    :: chol(:,:)
         type(uppDia_type)       , intent(in)                    :: subset
     end subroutine
 #endif
@@ -3882,9 +3882,9 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUSR_RNGD_DM_AC_UXD_D2_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)               , intent(out)   , contiguous    :: rand(:,:)
-        real(RKC)               , intent(in)    , contiguous    :: chol(:,:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)               , intent(out)   , contiguous    :: rand(:,:)
+        real(RKG)               , intent(in)    , contiguous    :: chol(:,:)
         type(uppDia_type)       , intent(in)                    :: subset
     end subroutine
 #endif
@@ -3894,9 +3894,9 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUSR_RNGD_DM_AC_UXD_D2_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)               , intent(out)   , contiguous    :: rand(:,:)
-        real(RKC)               , intent(in)    , contiguous    :: chol(:,:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)               , intent(out)   , contiguous    :: rand(:,:)
+        real(RKG)               , intent(in)    , contiguous    :: chol(:,:)
         type(uppDia_type)       , intent(in)                    :: subset
     end subroutine
 #endif
@@ -3908,9 +3908,9 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUSR_RNGD_DM_AC_XLD_D2_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)               , intent(out)   , contiguous    :: rand(:,:)
-        real(RKC)               , intent(in)    , contiguous    :: chol(:,:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)               , intent(out)   , contiguous    :: rand(:,:)
+        real(RKG)               , intent(in)    , contiguous    :: chol(:,:)
         type(lowDia_type)       , intent(in)                    :: subset
     end subroutine
 #endif
@@ -3920,9 +3920,9 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUSR_RNGD_DM_AC_XLD_D2_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)               , intent(out)   , contiguous    :: rand(:,:)
-        real(RKC)               , intent(in)    , contiguous    :: chol(:,:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)               , intent(out)   , contiguous    :: rand(:,:)
+        real(RKG)               , intent(in)    , contiguous    :: chol(:,:)
         type(lowDia_type)       , intent(in)                    :: subset
     end subroutine
 #endif
@@ -3932,9 +3932,9 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUSR_RNGD_DM_AC_XLD_D2_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)               , intent(out)   , contiguous    :: rand(:,:)
-        real(RKC)               , intent(in)    , contiguous    :: chol(:,:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)               , intent(out)   , contiguous    :: rand(:,:)
+        real(RKG)               , intent(in)    , contiguous    :: chol(:,:)
         type(lowDia_type)       , intent(in)                    :: subset
     end subroutine
 #endif
@@ -3944,9 +3944,9 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUSR_RNGD_DM_AC_XLD_D2_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)               , intent(out)   , contiguous    :: rand(:,:)
-        real(RKC)               , intent(in)    , contiguous    :: chol(:,:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)               , intent(out)   , contiguous    :: rand(:,:)
+        real(RKG)               , intent(in)    , contiguous    :: chol(:,:)
         type(lowDia_type)       , intent(in)                    :: subset
     end subroutine
 #endif
@@ -3956,9 +3956,9 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUSR_RNGD_DM_AC_XLD_D2_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)               , intent(out)   , contiguous    :: rand(:,:)
-        real(RKC)               , intent(in)    , contiguous    :: chol(:,:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)               , intent(out)   , contiguous    :: rand(:,:)
+        real(RKG)               , intent(in)    , contiguous    :: chol(:,:)
         type(lowDia_type)       , intent(in)                    :: subset
     end subroutine
 #endif
@@ -3970,9 +3970,9 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUSR_RNGD_AM_AC_UXD_D2_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)               , intent(out)   , contiguous    :: rand(:,:)
-        real(RKC)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)               , intent(out)   , contiguous    :: rand(:,:)
+        real(RKG)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
         type(uppDia_type)       , intent(in)                    :: subset
     end subroutine
 #endif
@@ -3982,9 +3982,9 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUSR_RNGD_AM_AC_UXD_D2_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)               , intent(out)   , contiguous    :: rand(:,:)
-        real(RKC)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)               , intent(out)   , contiguous    :: rand(:,:)
+        real(RKG)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
         type(uppDia_type)       , intent(in)                    :: subset
     end subroutine
 #endif
@@ -3994,9 +3994,9 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUSR_RNGD_AM_AC_UXD_D2_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)               , intent(out)   , contiguous    :: rand(:,:)
-        real(RKC)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)               , intent(out)   , contiguous    :: rand(:,:)
+        real(RKG)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
         type(uppDia_type)       , intent(in)                    :: subset
     end subroutine
 #endif
@@ -4006,9 +4006,9 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUSR_RNGD_AM_AC_UXD_D2_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)               , intent(out)   , contiguous    :: rand(:,:)
-        real(RKC)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)               , intent(out)   , contiguous    :: rand(:,:)
+        real(RKG)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
         type(uppDia_type)       , intent(in)                    :: subset
     end subroutine
 #endif
@@ -4018,9 +4018,9 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUSR_RNGD_AM_AC_UXD_D2_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)               , intent(out)   , contiguous    :: rand(:,:)
-        real(RKC)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)               , intent(out)   , contiguous    :: rand(:,:)
+        real(RKG)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
         type(uppDia_type)       , intent(in)                    :: subset
     end subroutine
 #endif
@@ -4032,9 +4032,9 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUSR_RNGD_AM_AC_XLD_D2_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)               , intent(out)   , contiguous    :: rand(:,:)
-        real(RKC)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)               , intent(out)   , contiguous    :: rand(:,:)
+        real(RKG)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
         type(lowDia_type)       , intent(in)                    :: subset
     end subroutine
 #endif
@@ -4044,9 +4044,9 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUSR_RNGD_AM_AC_XLD_D2_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)               , intent(out)   , contiguous    :: rand(:,:)
-        real(RKC)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)               , intent(out)   , contiguous    :: rand(:,:)
+        real(RKG)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
         type(lowDia_type)       , intent(in)                    :: subset
     end subroutine
 #endif
@@ -4056,9 +4056,9 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUSR_RNGD_AM_AC_XLD_D2_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)               , intent(out)   , contiguous    :: rand(:,:)
-        real(RKC)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)               , intent(out)   , contiguous    :: rand(:,:)
+        real(RKG)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
         type(lowDia_type)       , intent(in)                    :: subset
     end subroutine
 #endif
@@ -4068,9 +4068,9 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUSR_RNGD_AM_AC_XLD_D2_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)               , intent(out)   , contiguous    :: rand(:,:)
-        real(RKC)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)               , intent(out)   , contiguous    :: rand(:,:)
+        real(RKG)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
         type(lowDia_type)       , intent(in)                    :: subset
     end subroutine
 #endif
@@ -4080,9 +4080,9 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUSR_RNGD_AM_AC_XLD_D2_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)               , intent(out)   , contiguous    :: rand(:,:)
-        real(RKC)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)               , intent(out)   , contiguous    :: rand(:,:)
+        real(RKG)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
         type(lowDia_type)       , intent(in)                    :: subset
     end subroutine
 #endif
@@ -4102,9 +4102,9 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUSR_RNGF_DM_DC_XXX_D2_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         type(rngf_type)         , intent(in)                    :: rng
-        real(RKC)               , intent(out)   , contiguous    :: rand(:,:)
+        real(RKG)               , intent(out)   , contiguous    :: rand(:,:)
     end subroutine
 #endif
 
@@ -4113,9 +4113,9 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUSR_RNGF_DM_DC_XXX_D2_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         type(rngf_type)         , intent(in)                    :: rng
-        real(RKC)               , intent(out)   , contiguous    :: rand(:,:)
+        real(RKG)               , intent(out)   , contiguous    :: rand(:,:)
     end subroutine
 #endif
 
@@ -4124,9 +4124,9 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUSR_RNGF_DM_DC_XXX_D2_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         type(rngf_type)         , intent(in)                    :: rng
-        real(RKC)               , intent(out)   , contiguous    :: rand(:,:)
+        real(RKG)               , intent(out)   , contiguous    :: rand(:,:)
     end subroutine
 #endif
 
@@ -4135,9 +4135,9 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUSR_RNGF_DM_DC_XXX_D2_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         type(rngf_type)         , intent(in)                    :: rng
-        real(RKC)               , intent(out)   , contiguous    :: rand(:,:)
+        real(RKG)               , intent(out)   , contiguous    :: rand(:,:)
     end subroutine
 #endif
 
@@ -4146,9 +4146,9 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUSR_RNGF_DM_DC_XXX_D2_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         type(rngf_type)         , intent(in)                    :: rng
-        real(RKC)               , intent(out)   , contiguous    :: rand(:,:)
+        real(RKG)               , intent(out)   , contiguous    :: rand(:,:)
     end subroutine
 #endif
 
@@ -4159,10 +4159,10 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUSR_RNGF_AM_DC_XXX_D2_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         type(rngf_type)         , intent(in)                    :: rng
-        real(RKC)               , intent(out)   , contiguous    :: rand(:,:)
-        real(RKC)               , intent(in)    , contiguous    :: mean(:)
+        real(RKG)               , intent(out)   , contiguous    :: rand(:,:)
+        real(RKG)               , intent(in)    , contiguous    :: mean(:)
     end subroutine
 #endif
 
@@ -4171,10 +4171,10 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUSR_RNGF_AM_DC_XXX_D2_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         type(rngf_type)         , intent(in)                    :: rng
-        real(RKC)               , intent(out)   , contiguous    :: rand(:,:)
-        real(RKC)               , intent(in)    , contiguous    :: mean(:)
+        real(RKG)               , intent(out)   , contiguous    :: rand(:,:)
+        real(RKG)               , intent(in)    , contiguous    :: mean(:)
     end subroutine
 #endif
 
@@ -4183,10 +4183,10 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUSR_RNGF_AM_DC_XXX_D2_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         type(rngf_type)         , intent(in)                    :: rng
-        real(RKC)               , intent(out)   , contiguous    :: rand(:,:)
-        real(RKC)               , intent(in)    , contiguous    :: mean(:)
+        real(RKG)               , intent(out)   , contiguous    :: rand(:,:)
+        real(RKG)               , intent(in)    , contiguous    :: mean(:)
     end subroutine
 #endif
 
@@ -4195,10 +4195,10 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUSR_RNGF_AM_DC_XXX_D2_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         type(rngf_type)         , intent(in)                    :: rng
-        real(RKC)               , intent(out)   , contiguous    :: rand(:,:)
-        real(RKC)               , intent(in)    , contiguous    :: mean(:)
+        real(RKG)               , intent(out)   , contiguous    :: rand(:,:)
+        real(RKG)               , intent(in)    , contiguous    :: mean(:)
     end subroutine
 #endif
 
@@ -4207,10 +4207,10 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUSR_RNGF_AM_DC_XXX_D2_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         type(rngf_type)         , intent(in)                    :: rng
-        real(RKC)               , intent(out)   , contiguous    :: rand(:,:)
-        real(RKC)               , intent(in)    , contiguous    :: mean(:)
+        real(RKG)               , intent(out)   , contiguous    :: rand(:,:)
+        real(RKG)               , intent(in)    , contiguous    :: mean(:)
     end subroutine
 #endif
 
@@ -4221,10 +4221,10 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUSR_RNGF_DM_AC_UXD_D2_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         type(rngf_type)         , intent(in)                    :: rng
-        real(RKC)               , intent(out)   , contiguous    :: rand(:,:)
-        real(RKC)               , intent(in)    , contiguous    :: chol(:,:)
+        real(RKG)               , intent(out)   , contiguous    :: rand(:,:)
+        real(RKG)               , intent(in)    , contiguous    :: chol(:,:)
         type(uppDia_type)       , intent(in)                    :: subset
     end subroutine
 #endif
@@ -4234,10 +4234,10 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUSR_RNGF_DM_AC_UXD_D2_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         type(rngf_type)         , intent(in)                    :: rng
-        real(RKC)               , intent(out)   , contiguous    :: rand(:,:)
-        real(RKC)               , intent(in)    , contiguous    :: chol(:,:)
+        real(RKG)               , intent(out)   , contiguous    :: rand(:,:)
+        real(RKG)               , intent(in)    , contiguous    :: chol(:,:)
         type(uppDia_type)       , intent(in)                    :: subset
     end subroutine
 #endif
@@ -4247,10 +4247,10 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUSR_RNGF_DM_AC_UXD_D2_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         type(rngf_type)         , intent(in)                    :: rng
-        real(RKC)               , intent(out)   , contiguous    :: rand(:,:)
-        real(RKC)               , intent(in)    , contiguous    :: chol(:,:)
+        real(RKG)               , intent(out)   , contiguous    :: rand(:,:)
+        real(RKG)               , intent(in)    , contiguous    :: chol(:,:)
         type(uppDia_type)       , intent(in)                    :: subset
     end subroutine
 #endif
@@ -4260,10 +4260,10 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUSR_RNGF_DM_AC_UXD_D2_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         type(rngf_type)         , intent(in)                    :: rng
-        real(RKC)               , intent(out)   , contiguous    :: rand(:,:)
-        real(RKC)               , intent(in)    , contiguous    :: chol(:,:)
+        real(RKG)               , intent(out)   , contiguous    :: rand(:,:)
+        real(RKG)               , intent(in)    , contiguous    :: chol(:,:)
         type(uppDia_type)       , intent(in)                    :: subset
     end subroutine
 #endif
@@ -4273,10 +4273,10 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUSR_RNGF_DM_AC_UXD_D2_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         type(rngf_type)         , intent(in)                    :: rng
-        real(RKC)               , intent(out)   , contiguous    :: rand(:,:)
-        real(RKC)               , intent(in)    , contiguous    :: chol(:,:)
+        real(RKG)               , intent(out)   , contiguous    :: rand(:,:)
+        real(RKG)               , intent(in)    , contiguous    :: chol(:,:)
         type(uppDia_type)       , intent(in)                    :: subset
     end subroutine
 #endif
@@ -4288,10 +4288,10 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUSR_RNGF_DM_AC_XLD_D2_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         type(rngf_type)         , intent(in)                    :: rng
-        real(RKC)               , intent(out)   , contiguous    :: rand(:,:)
-        real(RKC)               , intent(in)    , contiguous    :: chol(:,:)
+        real(RKG)               , intent(out)   , contiguous    :: rand(:,:)
+        real(RKG)               , intent(in)    , contiguous    :: chol(:,:)
         type(lowDia_type)       , intent(in)                    :: subset
     end subroutine
 #endif
@@ -4301,10 +4301,10 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUSR_RNGF_DM_AC_XLD_D2_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         type(rngf_type)         , intent(in)                    :: rng
-        real(RKC)               , intent(out)   , contiguous    :: rand(:,:)
-        real(RKC)               , intent(in)    , contiguous    :: chol(:,:)
+        real(RKG)               , intent(out)   , contiguous    :: rand(:,:)
+        real(RKG)               , intent(in)    , contiguous    :: chol(:,:)
         type(lowDia_type)       , intent(in)                    :: subset
     end subroutine
 #endif
@@ -4314,10 +4314,10 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUSR_RNGF_DM_AC_XLD_D2_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         type(rngf_type)         , intent(in)                    :: rng
-        real(RKC)               , intent(out)   , contiguous    :: rand(:,:)
-        real(RKC)               , intent(in)    , contiguous    :: chol(:,:)
+        real(RKG)               , intent(out)   , contiguous    :: rand(:,:)
+        real(RKG)               , intent(in)    , contiguous    :: chol(:,:)
         type(lowDia_type)       , intent(in)                    :: subset
     end subroutine
 #endif
@@ -4327,10 +4327,10 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUSR_RNGF_DM_AC_XLD_D2_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         type(rngf_type)         , intent(in)                    :: rng
-        real(RKC)               , intent(out)   , contiguous    :: rand(:,:)
-        real(RKC)               , intent(in)    , contiguous    :: chol(:,:)
+        real(RKG)               , intent(out)   , contiguous    :: rand(:,:)
+        real(RKG)               , intent(in)    , contiguous    :: chol(:,:)
         type(lowDia_type)       , intent(in)                    :: subset
     end subroutine
 #endif
@@ -4340,10 +4340,10 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUSR_RNGF_DM_AC_XLD_D2_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         type(rngf_type)         , intent(in)                    :: rng
-        real(RKC)               , intent(out)   , contiguous    :: rand(:,:)
-        real(RKC)               , intent(in)    , contiguous    :: chol(:,:)
+        real(RKG)               , intent(out)   , contiguous    :: rand(:,:)
+        real(RKG)               , intent(in)    , contiguous    :: chol(:,:)
         type(lowDia_type)       , intent(in)                    :: subset
     end subroutine
 #endif
@@ -4355,10 +4355,10 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUSR_RNGF_AM_AC_UXD_D2_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         type(rngf_type)         , intent(in)                    :: rng
-        real(RKC)               , intent(out)   , contiguous    :: rand(:,:)
-        real(RKC)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
+        real(RKG)               , intent(out)   , contiguous    :: rand(:,:)
+        real(RKG)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
         type(uppDia_type)       , intent(in)                    :: subset
     end subroutine
 #endif
@@ -4368,10 +4368,10 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUSR_RNGF_AM_AC_UXD_D2_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         type(rngf_type)         , intent(in)                    :: rng
-        real(RKC)               , intent(out)   , contiguous    :: rand(:,:)
-        real(RKC)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
+        real(RKG)               , intent(out)   , contiguous    :: rand(:,:)
+        real(RKG)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
         type(uppDia_type)       , intent(in)                    :: subset
     end subroutine
 #endif
@@ -4381,10 +4381,10 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUSR_RNGF_AM_AC_UXD_D2_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         type(rngf_type)         , intent(in)                    :: rng
-        real(RKC)               , intent(out)   , contiguous    :: rand(:,:)
-        real(RKC)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
+        real(RKG)               , intent(out)   , contiguous    :: rand(:,:)
+        real(RKG)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
         type(uppDia_type)       , intent(in)                    :: subset
     end subroutine
 #endif
@@ -4394,10 +4394,10 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUSR_RNGF_AM_AC_UXD_D2_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         type(rngf_type)         , intent(in)                    :: rng
-        real(RKC)               , intent(out)   , contiguous    :: rand(:,:)
-        real(RKC)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
+        real(RKG)               , intent(out)   , contiguous    :: rand(:,:)
+        real(RKG)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
         type(uppDia_type)       , intent(in)                    :: subset
     end subroutine
 #endif
@@ -4407,10 +4407,10 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUSR_RNGF_AM_AC_UXD_D2_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         type(rngf_type)         , intent(in)                    :: rng
-        real(RKC)               , intent(out)   , contiguous    :: rand(:,:)
-        real(RKC)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
+        real(RKG)               , intent(out)   , contiguous    :: rand(:,:)
+        real(RKG)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
         type(uppDia_type)       , intent(in)                    :: subset
     end subroutine
 #endif
@@ -4422,10 +4422,10 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUSR_RNGF_AM_AC_XLD_D2_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         type(rngf_type)         , intent(in)                    :: rng
-        real(RKC)               , intent(out)   , contiguous    :: rand(:,:)
-        real(RKC)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
+        real(RKG)               , intent(out)   , contiguous    :: rand(:,:)
+        real(RKG)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
         type(lowDia_type)       , intent(in)                    :: subset
     end subroutine
 #endif
@@ -4435,10 +4435,10 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUSR_RNGF_AM_AC_XLD_D2_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         type(rngf_type)         , intent(in)                    :: rng
-        real(RKC)               , intent(out)   , contiguous    :: rand(:,:)
-        real(RKC)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
+        real(RKG)               , intent(out)   , contiguous    :: rand(:,:)
+        real(RKG)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
         type(lowDia_type)       , intent(in)                    :: subset
     end subroutine
 #endif
@@ -4448,10 +4448,10 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUSR_RNGF_AM_AC_XLD_D2_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         type(rngf_type)         , intent(in)                    :: rng
-        real(RKC)               , intent(out)   , contiguous    :: rand(:,:)
-        real(RKC)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
+        real(RKG)               , intent(out)   , contiguous    :: rand(:,:)
+        real(RKG)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
         type(lowDia_type)       , intent(in)                    :: subset
     end subroutine
 #endif
@@ -4461,10 +4461,10 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUSR_RNGF_AM_AC_XLD_D2_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         type(rngf_type)         , intent(in)                    :: rng
-        real(RKC)               , intent(out)   , contiguous    :: rand(:,:)
-        real(RKC)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
+        real(RKG)               , intent(out)   , contiguous    :: rand(:,:)
+        real(RKG)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
         type(lowDia_type)       , intent(in)                    :: subset
     end subroutine
 #endif
@@ -4474,10 +4474,10 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUSR_RNGF_AM_AC_XLD_D2_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         type(rngf_type)         , intent(in)                    :: rng
-        real(RKC)               , intent(out)   , contiguous    :: rand(:,:)
-        real(RKC)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
+        real(RKG)               , intent(out)   , contiguous    :: rand(:,:)
+        real(RKG)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
         type(lowDia_type)       , intent(in)                    :: subset
     end subroutine
 #endif
@@ -4497,9 +4497,9 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUSR_RNGX_DM_DC_XXX_D2_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         type(xoshiro256ssw_type), intent(inout)                 :: rng
-        real(RKC)               , intent(out)   , contiguous    :: rand(:,:)
+        real(RKG)               , intent(out)   , contiguous    :: rand(:,:)
     end subroutine
 #endif
 
@@ -4508,9 +4508,9 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUSR_RNGX_DM_DC_XXX_D2_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         type(xoshiro256ssw_type), intent(inout)                 :: rng
-        real(RKC)               , intent(out)   , contiguous    :: rand(:,:)
+        real(RKG)               , intent(out)   , contiguous    :: rand(:,:)
     end subroutine
 #endif
 
@@ -4519,9 +4519,9 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUSR_RNGX_DM_DC_XXX_D2_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         type(xoshiro256ssw_type), intent(inout)                 :: rng
-        real(RKC)               , intent(out)   , contiguous    :: rand(:,:)
+        real(RKG)               , intent(out)   , contiguous    :: rand(:,:)
     end subroutine
 #endif
 
@@ -4530,9 +4530,9 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUSR_RNGX_DM_DC_XXX_D2_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         type(xoshiro256ssw_type), intent(inout)                 :: rng
-        real(RKC)               , intent(out)   , contiguous    :: rand(:,:)
+        real(RKG)               , intent(out)   , contiguous    :: rand(:,:)
     end subroutine
 #endif
 
@@ -4541,9 +4541,9 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUSR_RNGX_DM_DC_XXX_D2_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         type(xoshiro256ssw_type), intent(inout)                 :: rng
-        real(RKC)               , intent(out)   , contiguous    :: rand(:,:)
+        real(RKG)               , intent(out)   , contiguous    :: rand(:,:)
     end subroutine
 #endif
 
@@ -4554,10 +4554,10 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUSR_RNGX_AM_DC_XXX_D2_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         type(xoshiro256ssw_type), intent(inout)                 :: rng
-        real(RKC)               , intent(out)   , contiguous    :: rand(:,:)
-        real(RKC)               , intent(in)    , contiguous    :: mean(:)
+        real(RKG)               , intent(out)   , contiguous    :: rand(:,:)
+        real(RKG)               , intent(in)    , contiguous    :: mean(:)
     end subroutine
 #endif
 
@@ -4566,10 +4566,10 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUSR_RNGX_AM_DC_XXX_D2_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         type(xoshiro256ssw_type), intent(inout)                 :: rng
-        real(RKC)               , intent(out)   , contiguous    :: rand(:,:)
-        real(RKC)               , intent(in)    , contiguous    :: mean(:)
+        real(RKG)               , intent(out)   , contiguous    :: rand(:,:)
+        real(RKG)               , intent(in)    , contiguous    :: mean(:)
     end subroutine
 #endif
 
@@ -4578,10 +4578,10 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUSR_RNGX_AM_DC_XXX_D2_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         type(xoshiro256ssw_type), intent(inout)                 :: rng
-        real(RKC)               , intent(out)   , contiguous    :: rand(:,:)
-        real(RKC)               , intent(in)    , contiguous    :: mean(:)
+        real(RKG)               , intent(out)   , contiguous    :: rand(:,:)
+        real(RKG)               , intent(in)    , contiguous    :: mean(:)
     end subroutine
 #endif
 
@@ -4590,10 +4590,10 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUSR_RNGX_AM_DC_XXX_D2_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         type(xoshiro256ssw_type), intent(inout)                 :: rng
-        real(RKC)               , intent(out)   , contiguous    :: rand(:,:)
-        real(RKC)               , intent(in)    , contiguous    :: mean(:)
+        real(RKG)               , intent(out)   , contiguous    :: rand(:,:)
+        real(RKG)               , intent(in)    , contiguous    :: mean(:)
     end subroutine
 #endif
 
@@ -4602,10 +4602,10 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUSR_RNGX_AM_DC_XXX_D2_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         type(xoshiro256ssw_type), intent(inout)                 :: rng
-        real(RKC)               , intent(out)   , contiguous    :: rand(:,:)
-        real(RKC)               , intent(in)    , contiguous    :: mean(:)
+        real(RKG)               , intent(out)   , contiguous    :: rand(:,:)
+        real(RKG)               , intent(in)    , contiguous    :: mean(:)
     end subroutine
 #endif
 
@@ -4616,10 +4616,10 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUSR_RNGX_DM_AC_UXD_D2_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         type(xoshiro256ssw_type), intent(inout)                 :: rng
-        real(RKC)               , intent(out)   , contiguous    :: rand(:,:)
-        real(RKC)               , intent(in)    , contiguous    :: chol(:,:)
+        real(RKG)               , intent(out)   , contiguous    :: rand(:,:)
+        real(RKG)               , intent(in)    , contiguous    :: chol(:,:)
         type(uppDia_type)       , intent(in)                    :: subset
     end subroutine
 #endif
@@ -4629,10 +4629,10 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUSR_RNGX_DM_AC_UXD_D2_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         type(xoshiro256ssw_type), intent(inout)                 :: rng
-        real(RKC)               , intent(out)   , contiguous    :: rand(:,:)
-        real(RKC)               , intent(in)    , contiguous    :: chol(:,:)
+        real(RKG)               , intent(out)   , contiguous    :: rand(:,:)
+        real(RKG)               , intent(in)    , contiguous    :: chol(:,:)
         type(uppDia_type)       , intent(in)                    :: subset
     end subroutine
 #endif
@@ -4642,10 +4642,10 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUSR_RNGX_DM_AC_UXD_D2_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         type(xoshiro256ssw_type), intent(inout)                 :: rng
-        real(RKC)               , intent(out)   , contiguous    :: rand(:,:)
-        real(RKC)               , intent(in)    , contiguous    :: chol(:,:)
+        real(RKG)               , intent(out)   , contiguous    :: rand(:,:)
+        real(RKG)               , intent(in)    , contiguous    :: chol(:,:)
         type(uppDia_type)       , intent(in)                    :: subset
     end subroutine
 #endif
@@ -4655,10 +4655,10 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUSR_RNGX_DM_AC_UXD_D2_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         type(xoshiro256ssw_type), intent(inout)                 :: rng
-        real(RKC)               , intent(out)   , contiguous    :: rand(:,:)
-        real(RKC)               , intent(in)    , contiguous    :: chol(:,:)
+        real(RKG)               , intent(out)   , contiguous    :: rand(:,:)
+        real(RKG)               , intent(in)    , contiguous    :: chol(:,:)
         type(uppDia_type)       , intent(in)                    :: subset
     end subroutine
 #endif
@@ -4668,10 +4668,10 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUSR_RNGX_DM_AC_UXD_D2_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         type(xoshiro256ssw_type), intent(inout)                 :: rng
-        real(RKC)               , intent(out)   , contiguous    :: rand(:,:)
-        real(RKC)               , intent(in)    , contiguous    :: chol(:,:)
+        real(RKG)               , intent(out)   , contiguous    :: rand(:,:)
+        real(RKG)               , intent(in)    , contiguous    :: chol(:,:)
         type(uppDia_type)       , intent(in)                    :: subset
     end subroutine
 #endif
@@ -4683,10 +4683,10 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUSR_RNGX_DM_AC_XLD_D2_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         type(xoshiro256ssw_type), intent(inout)                 :: rng
-        real(RKC)               , intent(out)   , contiguous    :: rand(:,:)
-        real(RKC)               , intent(in)    , contiguous    :: chol(:,:)
+        real(RKG)               , intent(out)   , contiguous    :: rand(:,:)
+        real(RKG)               , intent(in)    , contiguous    :: chol(:,:)
         type(lowDia_type)       , intent(in)                    :: subset
     end subroutine
 #endif
@@ -4696,10 +4696,10 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUSR_RNGX_DM_AC_XLD_D2_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         type(xoshiro256ssw_type), intent(inout)                 :: rng
-        real(RKC)               , intent(out)   , contiguous    :: rand(:,:)
-        real(RKC)               , intent(in)    , contiguous    :: chol(:,:)
+        real(RKG)               , intent(out)   , contiguous    :: rand(:,:)
+        real(RKG)               , intent(in)    , contiguous    :: chol(:,:)
         type(lowDia_type)       , intent(in)                    :: subset
     end subroutine
 #endif
@@ -4709,10 +4709,10 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUSR_RNGX_DM_AC_XLD_D2_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         type(xoshiro256ssw_type), intent(inout)                 :: rng
-        real(RKC)               , intent(out)   , contiguous    :: rand(:,:)
-        real(RKC)               , intent(in)    , contiguous    :: chol(:,:)
+        real(RKG)               , intent(out)   , contiguous    :: rand(:,:)
+        real(RKG)               , intent(in)    , contiguous    :: chol(:,:)
         type(lowDia_type)       , intent(in)                    :: subset
     end subroutine
 #endif
@@ -4722,10 +4722,10 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUSR_RNGX_DM_AC_XLD_D2_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         type(xoshiro256ssw_type), intent(inout)                 :: rng
-        real(RKC)               , intent(out)   , contiguous    :: rand(:,:)
-        real(RKC)               , intent(in)    , contiguous    :: chol(:,:)
+        real(RKG)               , intent(out)   , contiguous    :: rand(:,:)
+        real(RKG)               , intent(in)    , contiguous    :: chol(:,:)
         type(lowDia_type)       , intent(in)                    :: subset
     end subroutine
 #endif
@@ -4735,10 +4735,10 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUSR_RNGX_DM_AC_XLD_D2_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         type(xoshiro256ssw_type), intent(inout)                 :: rng
-        real(RKC)               , intent(out)   , contiguous    :: rand(:,:)
-        real(RKC)               , intent(in)    , contiguous    :: chol(:,:)
+        real(RKG)               , intent(out)   , contiguous    :: rand(:,:)
+        real(RKG)               , intent(in)    , contiguous    :: chol(:,:)
         type(lowDia_type)       , intent(in)                    :: subset
     end subroutine
 #endif
@@ -4750,10 +4750,10 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUSR_RNGX_AM_AC_UXD_D2_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         type(xoshiro256ssw_type), intent(inout)                 :: rng
-        real(RKC)               , intent(out)   , contiguous    :: rand(:,:)
-        real(RKC)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
+        real(RKG)               , intent(out)   , contiguous    :: rand(:,:)
+        real(RKG)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
         type(uppDia_type)       , intent(in)                    :: subset
     end subroutine
 #endif
@@ -4763,10 +4763,10 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUSR_RNGX_AM_AC_UXD_D2_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         type(xoshiro256ssw_type), intent(inout)                 :: rng
-        real(RKC)               , intent(out)   , contiguous    :: rand(:,:)
-        real(RKC)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
+        real(RKG)               , intent(out)   , contiguous    :: rand(:,:)
+        real(RKG)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
         type(uppDia_type)       , intent(in)                    :: subset
     end subroutine
 #endif
@@ -4776,10 +4776,10 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUSR_RNGX_AM_AC_UXD_D2_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         type(xoshiro256ssw_type), intent(inout)                 :: rng
-        real(RKC)               , intent(out)   , contiguous    :: rand(:,:)
-        real(RKC)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
+        real(RKG)               , intent(out)   , contiguous    :: rand(:,:)
+        real(RKG)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
         type(uppDia_type)       , intent(in)                    :: subset
     end subroutine
 #endif
@@ -4789,10 +4789,10 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUSR_RNGX_AM_AC_UXD_D2_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         type(xoshiro256ssw_type), intent(inout)                 :: rng
-        real(RKC)               , intent(out)   , contiguous    :: rand(:,:)
-        real(RKC)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
+        real(RKG)               , intent(out)   , contiguous    :: rand(:,:)
+        real(RKG)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
         type(uppDia_type)       , intent(in)                    :: subset
     end subroutine
 #endif
@@ -4802,10 +4802,10 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUSR_RNGX_AM_AC_UXD_D2_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         type(xoshiro256ssw_type), intent(inout)                 :: rng
-        real(RKC)               , intent(out)   , contiguous    :: rand(:,:)
-        real(RKC)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
+        real(RKG)               , intent(out)   , contiguous    :: rand(:,:)
+        real(RKG)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
         type(uppDia_type)       , intent(in)                    :: subset
     end subroutine
 #endif
@@ -4817,10 +4817,10 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUSR_RNGX_AM_AC_XLD_D2_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         type(xoshiro256ssw_type), intent(inout)                 :: rng
-        real(RKC)               , intent(out)   , contiguous    :: rand(:,:)
-        real(RKC)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
+        real(RKG)               , intent(out)   , contiguous    :: rand(:,:)
+        real(RKG)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
         type(lowDia_type)       , intent(in)                    :: subset
     end subroutine
 #endif
@@ -4830,10 +4830,10 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUSR_RNGX_AM_AC_XLD_D2_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         type(xoshiro256ssw_type), intent(inout)                 :: rng
-        real(RKC)               , intent(out)   , contiguous    :: rand(:,:)
-        real(RKC)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
+        real(RKG)               , intent(out)   , contiguous    :: rand(:,:)
+        real(RKG)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
         type(lowDia_type)       , intent(in)                    :: subset
     end subroutine
 #endif
@@ -4843,10 +4843,10 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUSR_RNGX_AM_AC_XLD_D2_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         type(xoshiro256ssw_type), intent(inout)                 :: rng
-        real(RKC)               , intent(out)   , contiguous    :: rand(:,:)
-        real(RKC)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
+        real(RKG)               , intent(out)   , contiguous    :: rand(:,:)
+        real(RKG)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
         type(lowDia_type)       , intent(in)                    :: subset
     end subroutine
 #endif
@@ -4856,10 +4856,10 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUSR_RNGX_AM_AC_XLD_D2_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         type(xoshiro256ssw_type), intent(inout)                 :: rng
-        real(RKC)               , intent(out)   , contiguous    :: rand(:,:)
-        real(RKC)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
+        real(RKG)               , intent(out)   , contiguous    :: rand(:,:)
+        real(RKG)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
         type(lowDia_type)       , intent(in)                    :: subset
     end subroutine
 #endif
@@ -4869,10 +4869,10 @@ module pm_distUnifSphere
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUSR_RNGX_AM_AC_XLD_D2_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         type(xoshiro256ssw_type), intent(inout)                 :: rng
-        real(RKC)               , intent(out)   , contiguous    :: rand(:,:)
-        real(RKC)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
+        real(RKG)               , intent(out)   , contiguous    :: rand(:,:)
+        real(RKG)               , intent(in)    , contiguous    :: mean(:), chol(:,:)
         type(lowDia_type)       , intent(in)                    :: subset
     end subroutine
 #endif

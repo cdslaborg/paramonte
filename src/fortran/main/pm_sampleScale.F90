@@ -204,10 +204,10 @@ module pm_sampleScale
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getScaled_ARK_ONO_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)           , intent(in), contiguous    :: sample(:)
-        real(RKC)           , intent(in)                :: amount
-        real(RKC)                                       :: sampleScaled(size(sample, 1, IK))
+        use pm_kind, only: RKG => RK5
+        real(RKG)           , intent(in), contiguous    :: sample(:)
+        real(RKG)           , intent(in)                :: amount
+        real(RKG)                                       :: sampleScaled(size(sample, 1, IK))
     end function
 #endif
 
@@ -216,10 +216,10 @@ module pm_sampleScale
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getScaled_ARK_ONO_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)           , intent(in), contiguous    :: sample(:)
-        real(RKC)           , intent(in)                :: amount
-        real(RKC)                                       :: sampleScaled(size(sample, 1, IK))
+        use pm_kind, only: RKG => RK4
+        real(RKG)           , intent(in), contiguous    :: sample(:)
+        real(RKG)           , intent(in)                :: amount
+        real(RKG)                                       :: sampleScaled(size(sample, 1, IK))
     end function
 #endif
 
@@ -228,10 +228,10 @@ module pm_sampleScale
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getScaled_ARK_ONO_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)           , intent(in), contiguous    :: sample(:)
-        real(RKC)           , intent(in)                :: amount
-        real(RKC)                                       :: sampleScaled(size(sample, 1, IK))
+        use pm_kind, only: RKG => RK3
+        real(RKG)           , intent(in), contiguous    :: sample(:)
+        real(RKG)           , intent(in)                :: amount
+        real(RKG)                                       :: sampleScaled(size(sample, 1, IK))
     end function
 #endif
 
@@ -240,10 +240,10 @@ module pm_sampleScale
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getScaled_ARK_ONO_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)           , intent(in), contiguous    :: sample(:)
-        real(RKC)           , intent(in)                :: amount
-        real(RKC)                                       :: sampleScaled(size(sample, 1, IK))
+        use pm_kind, only: RKG => RK2
+        real(RKG)           , intent(in), contiguous    :: sample(:)
+        real(RKG)           , intent(in)                :: amount
+        real(RKG)                                       :: sampleScaled(size(sample, 1, IK))
     end function
 #endif
 
@@ -252,10 +252,10 @@ module pm_sampleScale
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getScaled_ARK_ONO_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)           , intent(in), contiguous    :: sample(:)
-        real(RKC)           , intent(in)                :: amount
-        real(RKC)                                       :: sampleScaled(size(sample, 1, IK))
+        use pm_kind, only: RKG => RK1
+        real(RKG)           , intent(in), contiguous    :: sample(:)
+        real(RKG)           , intent(in)                :: amount
+        real(RKG)                                       :: sampleScaled(size(sample, 1, IK))
     end function
 #endif
 
@@ -266,11 +266,11 @@ module pm_sampleScale
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getScaled_ARK_ONO_D2_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)           , intent(in), contiguous    :: sample(:,:)
-        real(RKC)           , intent(in), contiguous    :: amount(:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)           , intent(in), contiguous    :: sample(:,:)
+        real(RKG)           , intent(in), contiguous    :: amount(:)
         integer(IK)         , intent(in)                :: dim
-        real(RKC)                                       :: sampleScaled(size(sample, 1, IK), size(sample, 2, IK))
+        real(RKG)                                       :: sampleScaled(size(sample, 1, IK), size(sample, 2, IK))
     end function
 #endif
 
@@ -279,11 +279,11 @@ module pm_sampleScale
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getScaled_ARK_ONO_D2_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)           , intent(in), contiguous    :: sample(:,:)
-        real(RKC)           , intent(in), contiguous    :: amount(:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)           , intent(in), contiguous    :: sample(:,:)
+        real(RKG)           , intent(in), contiguous    :: amount(:)
         integer(IK)         , intent(in)                :: dim
-        real(RKC)                                       :: sampleScaled(size(sample, 1, IK), size(sample, 2, IK))
+        real(RKG)                                       :: sampleScaled(size(sample, 1, IK), size(sample, 2, IK))
     end function
 #endif
 
@@ -292,11 +292,11 @@ module pm_sampleScale
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getScaled_ARK_ONO_D2_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)           , intent(in), contiguous    :: sample(:,:)
-        real(RKC)           , intent(in), contiguous    :: amount(:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)           , intent(in), contiguous    :: sample(:,:)
+        real(RKG)           , intent(in), contiguous    :: amount(:)
         integer(IK)         , intent(in)                :: dim
-        real(RKC)                                       :: sampleScaled(size(sample, 1, IK), size(sample, 2, IK))
+        real(RKG)                                       :: sampleScaled(size(sample, 1, IK), size(sample, 2, IK))
     end function
 #endif
 
@@ -305,11 +305,11 @@ module pm_sampleScale
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getScaled_ARK_ONO_D2_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)           , intent(in), contiguous    :: sample(:,:)
-        real(RKC)           , intent(in), contiguous    :: amount(:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)           , intent(in), contiguous    :: sample(:,:)
+        real(RKG)           , intent(in), contiguous    :: amount(:)
         integer(IK)         , intent(in)                :: dim
-        real(RKC)                                       :: sampleScaled(size(sample, 1, IK), size(sample, 2, IK))
+        real(RKG)                                       :: sampleScaled(size(sample, 1, IK), size(sample, 2, IK))
     end function
 #endif
 
@@ -318,11 +318,11 @@ module pm_sampleScale
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getScaled_ARK_ONO_D2_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)           , intent(in), contiguous    :: sample(:,:)
-        real(RKC)           , intent(in), contiguous    :: amount(:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)           , intent(in), contiguous    :: sample(:,:)
+        real(RKG)           , intent(in), contiguous    :: amount(:)
         integer(IK)         , intent(in)                :: dim
-        real(RKC)                                       :: sampleScaled(size(sample, 1, IK), size(sample, 2, IK))
+        real(RKG)                                       :: sampleScaled(size(sample, 1, IK), size(sample, 2, IK))
     end function
 #endif
 
@@ -333,12 +333,12 @@ module pm_sampleScale
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getScaled_ARK_OTH_D2_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)           , intent(in), contiguous    :: sample(:,:)
-        real(RKC)           , intent(in), contiguous    :: amount(:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)           , intent(in), contiguous    :: sample(:,:)
+        real(RKG)           , intent(in), contiguous    :: amount(:)
         integer(IK)         , intent(in)                :: dim
         type(transHerm_type), intent(in)                :: operation
-        real(RKC)                                       :: sampleScaled(size(sample, 2, IK), size(sample, 1, IK))
+        real(RKG)                                       :: sampleScaled(size(sample, 2, IK), size(sample, 1, IK))
     end function
 #endif
 
@@ -347,12 +347,12 @@ module pm_sampleScale
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getScaled_ARK_OTH_D2_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)           , intent(in), contiguous    :: sample(:,:)
-        real(RKC)           , intent(in), contiguous    :: amount(:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)           , intent(in), contiguous    :: sample(:,:)
+        real(RKG)           , intent(in), contiguous    :: amount(:)
         integer(IK)         , intent(in)                :: dim
         type(transHerm_type), intent(in)                :: operation
-        real(RKC)                                       :: sampleScaled(size(sample, 2, IK), size(sample, 1, IK))
+        real(RKG)                                       :: sampleScaled(size(sample, 2, IK), size(sample, 1, IK))
     end function
 #endif
 
@@ -361,12 +361,12 @@ module pm_sampleScale
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getScaled_ARK_OTH_D2_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)           , intent(in), contiguous    :: sample(:,:)
-        real(RKC)           , intent(in), contiguous    :: amount(:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)           , intent(in), contiguous    :: sample(:,:)
+        real(RKG)           , intent(in), contiguous    :: amount(:)
         integer(IK)         , intent(in)                :: dim
         type(transHerm_type), intent(in)                :: operation
-        real(RKC)                                       :: sampleScaled(size(sample, 2, IK), size(sample, 1, IK))
+        real(RKG)                                       :: sampleScaled(size(sample, 2, IK), size(sample, 1, IK))
     end function
 #endif
 
@@ -375,12 +375,12 @@ module pm_sampleScale
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getScaled_ARK_OTH_D2_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)           , intent(in), contiguous    :: sample(:,:)
-        real(RKC)           , intent(in), contiguous    :: amount(:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)           , intent(in), contiguous    :: sample(:,:)
+        real(RKG)           , intent(in), contiguous    :: amount(:)
         integer(IK)         , intent(in)                :: dim
         type(transHerm_type), intent(in)                :: operation
-        real(RKC)                                       :: sampleScaled(size(sample, 2, IK), size(sample, 1, IK))
+        real(RKG)                                       :: sampleScaled(size(sample, 2, IK), size(sample, 1, IK))
     end function
 #endif
 
@@ -389,12 +389,12 @@ module pm_sampleScale
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getScaled_ARK_OTH_D2_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)           , intent(in), contiguous    :: sample(:,:)
-        real(RKC)           , intent(in), contiguous    :: amount(:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)           , intent(in), contiguous    :: sample(:,:)
+        real(RKG)           , intent(in), contiguous    :: amount(:)
         integer(IK)         , intent(in)                :: dim
         type(transHerm_type), intent(in)                :: operation
-        real(RKC)                                       :: sampleScaled(size(sample, 2, IK), size(sample, 1, IK))
+        real(RKG)                                       :: sampleScaled(size(sample, 2, IK), size(sample, 1, IK))
     end function
 #endif
 
@@ -413,10 +413,10 @@ module pm_sampleScale
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getScaled_ACK_ONO_D1_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)        , intent(in), contiguous    :: sample(:)
-        complex(CKC)        , intent(in)                :: amount
-        complex(CKC)                                    :: sampleScaled(size(sample, 1, IK))
+        use pm_kind, only: CKG => CK5
+        complex(CKG)        , intent(in), contiguous    :: sample(:)
+        complex(CKG)        , intent(in)                :: amount
+        complex(CKG)                                    :: sampleScaled(size(sample, 1, IK))
     end function
 #endif
 
@@ -425,10 +425,10 @@ module pm_sampleScale
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getScaled_ACK_ONO_D1_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)        , intent(in), contiguous    :: sample(:)
-        complex(CKC)        , intent(in)                :: amount
-        complex(CKC)                                    :: sampleScaled(size(sample, 1, IK))
+        use pm_kind, only: CKG => CK4
+        complex(CKG)        , intent(in), contiguous    :: sample(:)
+        complex(CKG)        , intent(in)                :: amount
+        complex(CKG)                                    :: sampleScaled(size(sample, 1, IK))
     end function
 #endif
 
@@ -437,10 +437,10 @@ module pm_sampleScale
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getScaled_ACK_ONO_D1_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)        , intent(in), contiguous    :: sample(:)
-        complex(CKC)        , intent(in)                :: amount
-        complex(CKC)                                    :: sampleScaled(size(sample, 1, IK))
+        use pm_kind, only: CKG => CK3
+        complex(CKG)        , intent(in), contiguous    :: sample(:)
+        complex(CKG)        , intent(in)                :: amount
+        complex(CKG)                                    :: sampleScaled(size(sample, 1, IK))
     end function
 #endif
 
@@ -449,10 +449,10 @@ module pm_sampleScale
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getScaled_ACK_ONO_D1_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)        , intent(in), contiguous    :: sample(:)
-        complex(CKC)        , intent(in)                :: amount
-        complex(CKC)                                    :: sampleScaled(size(sample, 1, IK))
+        use pm_kind, only: CKG => CK2
+        complex(CKG)        , intent(in), contiguous    :: sample(:)
+        complex(CKG)        , intent(in)                :: amount
+        complex(CKG)                                    :: sampleScaled(size(sample, 1, IK))
     end function
 #endif
 
@@ -461,10 +461,10 @@ module pm_sampleScale
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getScaled_ACK_ONO_D1_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)        , intent(in), contiguous    :: sample(:)
-        complex(CKC)        , intent(in)                :: amount
-        complex(CKC)                                    :: sampleScaled(size(sample, 1, IK))
+        use pm_kind, only: CKG => CK1
+        complex(CKG)        , intent(in), contiguous    :: sample(:)
+        complex(CKG)        , intent(in)                :: amount
+        complex(CKG)                                    :: sampleScaled(size(sample, 1, IK))
     end function
 #endif
 
@@ -475,11 +475,11 @@ module pm_sampleScale
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getScaled_ACK_ONO_D2_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)        , intent(in), contiguous    :: sample(:,:)
-        complex(CKC)        , intent(in), contiguous    :: amount(:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG)        , intent(in), contiguous    :: sample(:,:)
+        complex(CKG)        , intent(in), contiguous    :: amount(:)
         integer(IK)         , intent(in)                :: dim
-        complex(CKC)                                    :: sampleScaled(size(sample, 1, IK), size(sample, 2, IK))
+        complex(CKG)                                    :: sampleScaled(size(sample, 1, IK), size(sample, 2, IK))
     end function
 #endif
 
@@ -488,11 +488,11 @@ module pm_sampleScale
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getScaled_ACK_ONO_D2_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)        , intent(in), contiguous    :: sample(:,:)
-        complex(CKC)        , intent(in), contiguous    :: amount(:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG)        , intent(in), contiguous    :: sample(:,:)
+        complex(CKG)        , intent(in), contiguous    :: amount(:)
         integer(IK)         , intent(in)                :: dim
-        complex(CKC)                                    :: sampleScaled(size(sample, 1, IK), size(sample, 2, IK))
+        complex(CKG)                                    :: sampleScaled(size(sample, 1, IK), size(sample, 2, IK))
     end function
 #endif
 
@@ -501,11 +501,11 @@ module pm_sampleScale
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getScaled_ACK_ONO_D2_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)        , intent(in), contiguous    :: sample(:,:)
-        complex(CKC)        , intent(in), contiguous    :: amount(:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG)        , intent(in), contiguous    :: sample(:,:)
+        complex(CKG)        , intent(in), contiguous    :: amount(:)
         integer(IK)         , intent(in)                :: dim
-        complex(CKC)                                    :: sampleScaled(size(sample, 1, IK), size(sample, 2, IK))
+        complex(CKG)                                    :: sampleScaled(size(sample, 1, IK), size(sample, 2, IK))
     end function
 #endif
 
@@ -514,11 +514,11 @@ module pm_sampleScale
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getScaled_ACK_ONO_D2_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)        , intent(in), contiguous    :: sample(:,:)
-        complex(CKC)        , intent(in), contiguous    :: amount(:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG)        , intent(in), contiguous    :: sample(:,:)
+        complex(CKG)        , intent(in), contiguous    :: amount(:)
         integer(IK)         , intent(in)                :: dim
-        complex(CKC)                                    :: sampleScaled(size(sample, 1, IK), size(sample, 2, IK))
+        complex(CKG)                                    :: sampleScaled(size(sample, 1, IK), size(sample, 2, IK))
     end function
 #endif
 
@@ -527,11 +527,11 @@ module pm_sampleScale
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getScaled_ACK_ONO_D2_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)        , intent(in), contiguous    :: sample(:,:)
-        complex(CKC)        , intent(in), contiguous    :: amount(:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG)        , intent(in), contiguous    :: sample(:,:)
+        complex(CKG)        , intent(in), contiguous    :: amount(:)
         integer(IK)         , intent(in)                :: dim
-        complex(CKC)                                    :: sampleScaled(size(sample, 1, IK), size(sample, 2, IK))
+        complex(CKG)                                    :: sampleScaled(size(sample, 1, IK), size(sample, 2, IK))
     end function
 #endif
 
@@ -542,12 +542,12 @@ module pm_sampleScale
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getScaled_ACK_OTH_D2_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)        , intent(in), contiguous    :: sample(:,:)
-        complex(CKC)        , intent(in), contiguous    :: amount(:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG)        , intent(in), contiguous    :: sample(:,:)
+        complex(CKG)        , intent(in), contiguous    :: amount(:)
         integer(IK)         , intent(in)                :: dim
         type(transHerm_type), intent(in)                :: operation
-        complex(CKC)                                    :: sampleScaled(size(sample, 2, IK), size(sample, 1, IK))
+        complex(CKG)                                    :: sampleScaled(size(sample, 2, IK), size(sample, 1, IK))
     end function
 #endif
 
@@ -556,12 +556,12 @@ module pm_sampleScale
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getScaled_ACK_OTH_D2_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)        , intent(in), contiguous    :: sample(:,:)
-        complex(CKC)        , intent(in), contiguous    :: amount(:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG)        , intent(in), contiguous    :: sample(:,:)
+        complex(CKG)        , intent(in), contiguous    :: amount(:)
         integer(IK)         , intent(in)                :: dim
         type(transHerm_type), intent(in)                :: operation
-        complex(CKC)                                    :: sampleScaled(size(sample, 2, IK), size(sample, 1, IK))
+        complex(CKG)                                    :: sampleScaled(size(sample, 2, IK), size(sample, 1, IK))
     end function
 #endif
 
@@ -570,12 +570,12 @@ module pm_sampleScale
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getScaled_ACK_OTH_D2_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)        , intent(in), contiguous    :: sample(:,:)
-        complex(CKC)        , intent(in), contiguous    :: amount(:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG)        , intent(in), contiguous    :: sample(:,:)
+        complex(CKG)        , intent(in), contiguous    :: amount(:)
         integer(IK)         , intent(in)                :: dim
         type(transHerm_type), intent(in)                :: operation
-        complex(CKC)                                    :: sampleScaled(size(sample, 2, IK), size(sample, 1, IK))
+        complex(CKG)                                    :: sampleScaled(size(sample, 2, IK), size(sample, 1, IK))
     end function
 #endif
 
@@ -584,12 +584,12 @@ module pm_sampleScale
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getScaled_ACK_OTH_D2_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)        , intent(in), contiguous    :: sample(:,:)
-        complex(CKC)        , intent(in), contiguous    :: amount(:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG)        , intent(in), contiguous    :: sample(:,:)
+        complex(CKG)        , intent(in), contiguous    :: amount(:)
         integer(IK)         , intent(in)                :: dim
         type(transHerm_type), intent(in)                :: operation
-        complex(CKC)                                    :: sampleScaled(size(sample, 2, IK), size(sample, 1, IK))
+        complex(CKG)                                    :: sampleScaled(size(sample, 2, IK), size(sample, 1, IK))
     end function
 #endif
 
@@ -598,12 +598,12 @@ module pm_sampleScale
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getScaled_ACK_OTH_D2_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)        , intent(in), contiguous    :: sample(:,:)
-        complex(CKC)        , intent(in), contiguous    :: amount(:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG)        , intent(in), contiguous    :: sample(:,:)
+        complex(CKG)        , intent(in), contiguous    :: amount(:)
         integer(IK)         , intent(in)                :: dim
         type(transHerm_type), intent(in)                :: operation
-        complex(CKC)                                    :: sampleScaled(size(sample, 2, IK), size(sample, 1, IK))
+        complex(CKG)                                    :: sampleScaled(size(sample, 2, IK), size(sample, 1, IK))
     end function
 #endif
 
@@ -622,10 +622,10 @@ module pm_sampleScale
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getScaled_ARK_ONO_D1_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)        , intent(in), contiguous    :: sample(:)
-        real(CKC)           , intent(in)                :: amount
-        complex(CKC)                                    :: sampleScaled(size(sample, 1, IK))
+        use pm_kind, only: CKG => CK5
+        complex(CKG)        , intent(in), contiguous    :: sample(:)
+        real(CKG)           , intent(in)                :: amount
+        complex(CKG)                                    :: sampleScaled(size(sample, 1, IK))
     end function
 #endif
 
@@ -634,10 +634,10 @@ module pm_sampleScale
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getScaled_ARK_ONO_D1_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)        , intent(in), contiguous    :: sample(:)
-        real(CKC)           , intent(in)                :: amount
-        complex(CKC)                                    :: sampleScaled(size(sample, 1, IK))
+        use pm_kind, only: CKG => CK4
+        complex(CKG)        , intent(in), contiguous    :: sample(:)
+        real(CKG)           , intent(in)                :: amount
+        complex(CKG)                                    :: sampleScaled(size(sample, 1, IK))
     end function
 #endif
 
@@ -646,10 +646,10 @@ module pm_sampleScale
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getScaled_ARK_ONO_D1_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)        , intent(in), contiguous    :: sample(:)
-        real(CKC)           , intent(in)                :: amount
-        complex(CKC)                                    :: sampleScaled(size(sample, 1, IK))
+        use pm_kind, only: CKG => CK3
+        complex(CKG)        , intent(in), contiguous    :: sample(:)
+        real(CKG)           , intent(in)                :: amount
+        complex(CKG)                                    :: sampleScaled(size(sample, 1, IK))
     end function
 #endif
 
@@ -658,10 +658,10 @@ module pm_sampleScale
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getScaled_ARK_ONO_D1_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)        , intent(in), contiguous    :: sample(:)
-        real(CKC)           , intent(in)                :: amount
-        complex(CKC)                                    :: sampleScaled(size(sample, 1, IK))
+        use pm_kind, only: CKG => CK2
+        complex(CKG)        , intent(in), contiguous    :: sample(:)
+        real(CKG)           , intent(in)                :: amount
+        complex(CKG)                                    :: sampleScaled(size(sample, 1, IK))
     end function
 #endif
 
@@ -670,10 +670,10 @@ module pm_sampleScale
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getScaled_ARK_ONO_D1_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)        , intent(in), contiguous    :: sample(:)
-        real(CKC)           , intent(in)                :: amount
-        complex(CKC)                                    :: sampleScaled(size(sample, 1, IK))
+        use pm_kind, only: CKG => CK1
+        complex(CKG)        , intent(in), contiguous    :: sample(:)
+        real(CKG)           , intent(in)                :: amount
+        complex(CKG)                                    :: sampleScaled(size(sample, 1, IK))
     end function
 #endif
 
@@ -684,11 +684,11 @@ module pm_sampleScale
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getScaled_ARK_ONO_D2_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)        , intent(in), contiguous    :: sample(:,:)
-        real(CKC)           , intent(in), contiguous    :: amount(:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG)        , intent(in), contiguous    :: sample(:,:)
+        real(CKG)           , intent(in), contiguous    :: amount(:)
         integer(IK)         , intent(in)                :: dim
-        complex(CKC)                                    :: sampleScaled(size(sample, 1, IK), size(sample, 2, IK))
+        complex(CKG)                                    :: sampleScaled(size(sample, 1, IK), size(sample, 2, IK))
     end function
 #endif
 
@@ -697,11 +697,11 @@ module pm_sampleScale
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getScaled_ARK_ONO_D2_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)        , intent(in), contiguous    :: sample(:,:)
-        real(CKC)           , intent(in), contiguous    :: amount(:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG)        , intent(in), contiguous    :: sample(:,:)
+        real(CKG)           , intent(in), contiguous    :: amount(:)
         integer(IK)         , intent(in)                :: dim
-        complex(CKC)                                    :: sampleScaled(size(sample, 1, IK), size(sample, 2, IK))
+        complex(CKG)                                    :: sampleScaled(size(sample, 1, IK), size(sample, 2, IK))
     end function
 #endif
 
@@ -710,11 +710,11 @@ module pm_sampleScale
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getScaled_ARK_ONO_D2_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)        , intent(in), contiguous    :: sample(:,:)
-        real(CKC)           , intent(in), contiguous    :: amount(:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG)        , intent(in), contiguous    :: sample(:,:)
+        real(CKG)           , intent(in), contiguous    :: amount(:)
         integer(IK)         , intent(in)                :: dim
-        complex(CKC)                                    :: sampleScaled(size(sample, 1, IK), size(sample, 2, IK))
+        complex(CKG)                                    :: sampleScaled(size(sample, 1, IK), size(sample, 2, IK))
     end function
 #endif
 
@@ -723,11 +723,11 @@ module pm_sampleScale
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getScaled_ARK_ONO_D2_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)        , intent(in), contiguous    :: sample(:,:)
-        real(CKC)           , intent(in), contiguous    :: amount(:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG)        , intent(in), contiguous    :: sample(:,:)
+        real(CKG)           , intent(in), contiguous    :: amount(:)
         integer(IK)         , intent(in)                :: dim
-        complex(CKC)                                    :: sampleScaled(size(sample, 1, IK), size(sample, 2, IK))
+        complex(CKG)                                    :: sampleScaled(size(sample, 1, IK), size(sample, 2, IK))
     end function
 #endif
 
@@ -736,11 +736,11 @@ module pm_sampleScale
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getScaled_ARK_ONO_D2_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)        , intent(in), contiguous    :: sample(:,:)
-        real(CKC)           , intent(in), contiguous    :: amount(:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG)        , intent(in), contiguous    :: sample(:,:)
+        real(CKG)           , intent(in), contiguous    :: amount(:)
         integer(IK)         , intent(in)                :: dim
-        complex(CKC)                                    :: sampleScaled(size(sample, 1, IK), size(sample, 2, IK))
+        complex(CKG)                                    :: sampleScaled(size(sample, 1, IK), size(sample, 2, IK))
     end function
 #endif
 
@@ -751,12 +751,12 @@ module pm_sampleScale
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getScaled_ARK_OTH_D2_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)        , intent(in), contiguous    :: sample(:,:)
-        real(CKC)           , intent(in), contiguous    :: amount(:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG)        , intent(in), contiguous    :: sample(:,:)
+        real(CKG)           , intent(in), contiguous    :: amount(:)
         integer(IK)         , intent(in)                :: dim
         type(transHerm_type), intent(in)                :: operation
-        complex(CKC)                                    :: sampleScaled(size(sample, 2, IK), size(sample, 1, IK))
+        complex(CKG)                                    :: sampleScaled(size(sample, 2, IK), size(sample, 1, IK))
     end function
 #endif
 
@@ -765,12 +765,12 @@ module pm_sampleScale
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getScaled_ARK_OTH_D2_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)        , intent(in), contiguous    :: sample(:,:)
-        real(CKC)           , intent(in), contiguous    :: amount(:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG)        , intent(in), contiguous    :: sample(:,:)
+        real(CKG)           , intent(in), contiguous    :: amount(:)
         integer(IK)         , intent(in)                :: dim
         type(transHerm_type), intent(in)                :: operation
-        complex(CKC)                                    :: sampleScaled(size(sample, 2, IK), size(sample, 1, IK))
+        complex(CKG)                                    :: sampleScaled(size(sample, 2, IK), size(sample, 1, IK))
     end function
 #endif
 
@@ -779,12 +779,12 @@ module pm_sampleScale
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getScaled_ARK_OTH_D2_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)        , intent(in), contiguous    :: sample(:,:)
-        real(CKC)           , intent(in), contiguous    :: amount(:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG)        , intent(in), contiguous    :: sample(:,:)
+        real(CKG)           , intent(in), contiguous    :: amount(:)
         integer(IK)         , intent(in)                :: dim
         type(transHerm_type), intent(in)                :: operation
-        complex(CKC)                                    :: sampleScaled(size(sample, 2, IK), size(sample, 1, IK))
+        complex(CKG)                                    :: sampleScaled(size(sample, 2, IK), size(sample, 1, IK))
     end function
 #endif
 
@@ -793,12 +793,12 @@ module pm_sampleScale
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getScaled_ARK_OTH_D2_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)        , intent(in), contiguous    :: sample(:,:)
-        real(CKC)           , intent(in), contiguous    :: amount(:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG)        , intent(in), contiguous    :: sample(:,:)
+        real(CKG)           , intent(in), contiguous    :: amount(:)
         integer(IK)         , intent(in)                :: dim
         type(transHerm_type), intent(in)                :: operation
-        complex(CKC)                                    :: sampleScaled(size(sample, 2, IK), size(sample, 1, IK))
+        complex(CKG)                                    :: sampleScaled(size(sample, 2, IK), size(sample, 1, IK))
     end function
 #endif
 
@@ -807,12 +807,12 @@ module pm_sampleScale
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getScaled_ARK_OTH_D2_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)        , intent(in), contiguous    :: sample(:,:)
-        real(CKC)           , intent(in), contiguous    :: amount(:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG)        , intent(in), contiguous    :: sample(:,:)
+        real(CKG)           , intent(in), contiguous    :: amount(:)
         integer(IK)         , intent(in)                :: dim
         type(transHerm_type), intent(in)                :: operation
-        complex(CKC)                                    :: sampleScaled(size(sample, 2, IK), size(sample, 1, IK))
+        complex(CKG)                                    :: sampleScaled(size(sample, 2, IK), size(sample, 1, IK))
     end function
 #endif
 
@@ -921,9 +921,9 @@ module pm_sampleScale
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setScaled_ARK_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)           , intent(inout) , contiguous    :: sample(:)
-        real(RKC)           , intent(in)                    :: amount
+        use pm_kind, only: RKG => RK4
+        real(RKG)           , intent(inout) , contiguous    :: sample(:)
+        real(RKG)           , intent(in)                    :: amount
     end subroutine
 #endif
 
@@ -932,9 +932,9 @@ module pm_sampleScale
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setScaled_ARK_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)           , intent(inout) , contiguous    :: sample(:)
-        real(RKC)           , intent(in)                    :: amount
+        use pm_kind, only: RKG => RK4
+        real(RKG)           , intent(inout) , contiguous    :: sample(:)
+        real(RKG)           , intent(in)                    :: amount
     end subroutine
 #endif
 
@@ -943,9 +943,9 @@ module pm_sampleScale
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setScaled_ARK_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)           , intent(inout) , contiguous    :: sample(:)
-        real(RKC)           , intent(in)                    :: amount
+        use pm_kind, only: RKG => RK3
+        real(RKG)           , intent(inout) , contiguous    :: sample(:)
+        real(RKG)           , intent(in)                    :: amount
     end subroutine
 #endif
 
@@ -954,9 +954,9 @@ module pm_sampleScale
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setScaled_ARK_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)           , intent(inout) , contiguous    :: sample(:)
-        real(RKC)           , intent(in)                    :: amount
+        use pm_kind, only: RKG => RK2
+        real(RKG)           , intent(inout) , contiguous    :: sample(:)
+        real(RKG)           , intent(in)                    :: amount
     end subroutine
 #endif
 
@@ -965,9 +965,9 @@ module pm_sampleScale
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setScaled_ARK_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)           , intent(inout) , contiguous    :: sample(:)
-        real(RKC)           , intent(in)                    :: amount
+        use pm_kind, only: RKG => RK1
+        real(RKG)           , intent(inout) , contiguous    :: sample(:)
+        real(RKG)           , intent(in)                    :: amount
     end subroutine
 #endif
 
@@ -978,10 +978,10 @@ module pm_sampleScale
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setScaled_ARK_D2_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         integer(IK)         , intent(in)                    :: dim
-        real(RKC)           , intent(in)    , contiguous    :: amount(:)
-        real(RKC)           , intent(inout) , contiguous    :: sample(:,:)
+        real(RKG)           , intent(in)    , contiguous    :: amount(:)
+        real(RKG)           , intent(inout) , contiguous    :: sample(:,:)
     end subroutine
 #endif
 
@@ -990,10 +990,10 @@ module pm_sampleScale
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setScaled_ARK_D2_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         integer(IK)         , intent(in)                    :: dim
-        real(RKC)           , intent(in)    , contiguous    :: amount(:)
-        real(RKC)           , intent(inout) , contiguous    :: sample(:,:)
+        real(RKG)           , intent(in)    , contiguous    :: amount(:)
+        real(RKG)           , intent(inout) , contiguous    :: sample(:,:)
     end subroutine
 #endif
 
@@ -1002,10 +1002,10 @@ module pm_sampleScale
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setScaled_ARK_D2_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         integer(IK)         , intent(in)                    :: dim
-        real(RKC)           , intent(in)    , contiguous    :: amount(:)
-        real(RKC)           , intent(inout) , contiguous    :: sample(:,:)
+        real(RKG)           , intent(in)    , contiguous    :: amount(:)
+        real(RKG)           , intent(inout) , contiguous    :: sample(:,:)
     end subroutine
 #endif
 
@@ -1014,10 +1014,10 @@ module pm_sampleScale
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setScaled_ARK_D2_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         integer(IK)         , intent(in)                    :: dim
-        real(RKC)           , intent(in)    , contiguous    :: amount(:)
-        real(RKC)           , intent(inout) , contiguous    :: sample(:,:)
+        real(RKG)           , intent(in)    , contiguous    :: amount(:)
+        real(RKG)           , intent(inout) , contiguous    :: sample(:,:)
     end subroutine
 #endif
 
@@ -1026,10 +1026,10 @@ module pm_sampleScale
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setScaled_ARK_D2_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         integer(IK)         , intent(in)                    :: dim
-        real(RKC)           , intent(in)    , contiguous    :: amount(:)
-        real(RKC)           , intent(inout) , contiguous    :: sample(:,:)
+        real(RKG)           , intent(in)    , contiguous    :: amount(:)
+        real(RKG)           , intent(inout) , contiguous    :: sample(:,:)
     end subroutine
 #endif
 
@@ -1048,9 +1048,9 @@ module pm_sampleScale
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setScaled_ARK_D1_CK5
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)        , intent(inout) , contiguous    :: sample(:)
-        real(CKC)           , intent(in)                    :: amount
+        use pm_kind, only: CKG => CK4
+        complex(CKG)        , intent(inout) , contiguous    :: sample(:)
+        real(CKG)           , intent(in)                    :: amount
     end subroutine
 #endif
 
@@ -1059,9 +1059,9 @@ module pm_sampleScale
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setScaled_ARK_D1_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)        , intent(inout) , contiguous    :: sample(:)
-        real(CKC)           , intent(in)                    :: amount
+        use pm_kind, only: CKG => CK4
+        complex(CKG)        , intent(inout) , contiguous    :: sample(:)
+        real(CKG)           , intent(in)                    :: amount
     end subroutine
 #endif
 
@@ -1070,9 +1070,9 @@ module pm_sampleScale
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setScaled_ARK_D1_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)        , intent(inout) , contiguous    :: sample(:)
-        real(CKC)           , intent(in)                    :: amount
+        use pm_kind, only: CKG => CK3
+        complex(CKG)        , intent(inout) , contiguous    :: sample(:)
+        real(CKG)           , intent(in)                    :: amount
     end subroutine
 #endif
 
@@ -1081,9 +1081,9 @@ module pm_sampleScale
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setScaled_ARK_D1_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)        , intent(inout) , contiguous    :: sample(:)
-        real(CKC)           , intent(in)                    :: amount
+        use pm_kind, only: CKG => CK2
+        complex(CKG)        , intent(inout) , contiguous    :: sample(:)
+        real(CKG)           , intent(in)                    :: amount
     end subroutine
 #endif
 
@@ -1092,9 +1092,9 @@ module pm_sampleScale
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setScaled_ARK_D1_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)        , intent(inout) , contiguous    :: sample(:)
-        real(CKC)           , intent(in)                    :: amount
+        use pm_kind, only: CKG => CK1
+        complex(CKG)        , intent(inout) , contiguous    :: sample(:)
+        real(CKG)           , intent(in)                    :: amount
     end subroutine
 #endif
 
@@ -1105,10 +1105,10 @@ module pm_sampleScale
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setScaled_ARK_D2_CK5
 #endif
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
         integer(IK)         , intent(in)                    :: dim
-        real(CKC)           , intent(in)    , contiguous    :: amount(:)
-        complex(CKC)        , intent(inout) , contiguous    :: sample(:,:)
+        real(CKG)           , intent(in)    , contiguous    :: amount(:)
+        complex(CKG)        , intent(inout) , contiguous    :: sample(:,:)
     end subroutine
 #endif
 
@@ -1117,10 +1117,10 @@ module pm_sampleScale
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setScaled_ARK_D2_CK4
 #endif
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
         integer(IK)         , intent(in)                    :: dim
-        real(CKC)           , intent(in)    , contiguous    :: amount(:)
-        complex(CKC)        , intent(inout) , contiguous    :: sample(:,:)
+        real(CKG)           , intent(in)    , contiguous    :: amount(:)
+        complex(CKG)        , intent(inout) , contiguous    :: sample(:,:)
     end subroutine
 #endif
 
@@ -1129,10 +1129,10 @@ module pm_sampleScale
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setScaled_ARK_D2_CK3
 #endif
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
         integer(IK)         , intent(in)                    :: dim
-        real(CKC)           , intent(in)    , contiguous    :: amount(:)
-        complex(CKC)        , intent(inout) , contiguous    :: sample(:,:)
+        real(CKG)           , intent(in)    , contiguous    :: amount(:)
+        complex(CKG)        , intent(inout) , contiguous    :: sample(:,:)
     end subroutine
 #endif
 
@@ -1141,10 +1141,10 @@ module pm_sampleScale
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setScaled_ARK_D2_CK2
 #endif
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
         integer(IK)         , intent(in)                    :: dim
-        real(CKC)           , intent(in)    , contiguous    :: amount(:)
-        complex(CKC)        , intent(inout) , contiguous    :: sample(:,:)
+        real(CKG)           , intent(in)    , contiguous    :: amount(:)
+        complex(CKG)        , intent(inout) , contiguous    :: sample(:,:)
     end subroutine
 #endif
 
@@ -1153,10 +1153,10 @@ module pm_sampleScale
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setScaled_ARK_D2_CK1
 #endif
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
         integer(IK)         , intent(in)                    :: dim
-        real(CKC)           , intent(in)    , contiguous    :: amount(:)
-        complex(CKC)        , intent(inout) , contiguous    :: sample(:,:)
+        real(CKG)           , intent(in)    , contiguous    :: amount(:)
+        complex(CKG)        , intent(inout) , contiguous    :: sample(:,:)
     end subroutine
 #endif
 
@@ -1175,9 +1175,9 @@ module pm_sampleScale
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setScaled_ACK_D1_CK5
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)        , intent(inout) , contiguous    :: sample(:)
-        complex(CKC)        , intent(in)                    :: amount
+        use pm_kind, only: CKG => CK4
+        complex(CKG)        , intent(inout) , contiguous    :: sample(:)
+        complex(CKG)        , intent(in)                    :: amount
     end subroutine
 #endif
 
@@ -1186,9 +1186,9 @@ module pm_sampleScale
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setScaled_ACK_D1_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)        , intent(inout) , contiguous    :: sample(:)
-        complex(CKC)        , intent(in)                    :: amount
+        use pm_kind, only: CKG => CK4
+        complex(CKG)        , intent(inout) , contiguous    :: sample(:)
+        complex(CKG)        , intent(in)                    :: amount
     end subroutine
 #endif
 
@@ -1197,9 +1197,9 @@ module pm_sampleScale
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setScaled_ACK_D1_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)        , intent(inout) , contiguous    :: sample(:)
-        complex(CKC)        , intent(in)                    :: amount
+        use pm_kind, only: CKG => CK3
+        complex(CKG)        , intent(inout) , contiguous    :: sample(:)
+        complex(CKG)        , intent(in)                    :: amount
     end subroutine
 #endif
 
@@ -1208,9 +1208,9 @@ module pm_sampleScale
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setScaled_ACK_D1_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)        , intent(inout) , contiguous    :: sample(:)
-        complex(CKC)        , intent(in)                    :: amount
+        use pm_kind, only: CKG => CK2
+        complex(CKG)        , intent(inout) , contiguous    :: sample(:)
+        complex(CKG)        , intent(in)                    :: amount
     end subroutine
 #endif
 
@@ -1219,9 +1219,9 @@ module pm_sampleScale
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setScaled_ACK_D1_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)        , intent(inout) , contiguous    :: sample(:)
-        complex(CKC)        , intent(in)                    :: amount
+        use pm_kind, only: CKG => CK1
+        complex(CKG)        , intent(inout) , contiguous    :: sample(:)
+        complex(CKG)        , intent(in)                    :: amount
     end subroutine
 #endif
 
@@ -1232,10 +1232,10 @@ module pm_sampleScale
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setScaled_ACK_D2_CK5
 #endif
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
         integer(IK)         , intent(in)                    :: dim
-        complex(CKC)        , intent(in)    , contiguous    :: amount(:)
-        complex(CKC)        , intent(inout) , contiguous    :: sample(:,:)
+        complex(CKG)        , intent(in)    , contiguous    :: amount(:)
+        complex(CKG)        , intent(inout) , contiguous    :: sample(:,:)
     end subroutine
 #endif
 
@@ -1244,10 +1244,10 @@ module pm_sampleScale
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setScaled_ACK_D2_CK4
 #endif
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
         integer(IK)         , intent(in)                    :: dim
-        complex(CKC)        , intent(in)    , contiguous    :: amount(:)
-        complex(CKC)        , intent(inout) , contiguous    :: sample(:,:)
+        complex(CKG)        , intent(in)    , contiguous    :: amount(:)
+        complex(CKG)        , intent(inout) , contiguous    :: sample(:,:)
     end subroutine
 #endif
 
@@ -1256,10 +1256,10 @@ module pm_sampleScale
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setScaled_ACK_D2_CK3
 #endif
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
         integer(IK)         , intent(in)                    :: dim
-        complex(CKC)        , intent(in)    , contiguous    :: amount(:)
-        complex(CKC)        , intent(inout) , contiguous    :: sample(:,:)
+        complex(CKG)        , intent(in)    , contiguous    :: amount(:)
+        complex(CKG)        , intent(inout) , contiguous    :: sample(:,:)
     end subroutine
 #endif
 
@@ -1268,10 +1268,10 @@ module pm_sampleScale
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setScaled_ACK_D2_CK2
 #endif
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
         integer(IK)         , intent(in)                    :: dim
-        complex(CKC)        , intent(in)    , contiguous    :: amount(:)
-        complex(CKC)        , intent(inout) , contiguous    :: sample(:,:)
+        complex(CKG)        , intent(in)    , contiguous    :: amount(:)
+        complex(CKG)        , intent(inout) , contiguous    :: sample(:,:)
     end subroutine
 #endif
 
@@ -1280,10 +1280,10 @@ module pm_sampleScale
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setScaled_ACK_D2_CK1
 #endif
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
         integer(IK)         , intent(in)                    :: dim
-        complex(CKC)        , intent(in)    , contiguous    :: amount(:)
-        complex(CKC)        , intent(inout) , contiguous    :: sample(:,:)
+        complex(CKG)        , intent(in)    , contiguous    :: amount(:)
+        complex(CKG)        , intent(inout) , contiguous    :: sample(:,:)
     end subroutine
 #endif
 

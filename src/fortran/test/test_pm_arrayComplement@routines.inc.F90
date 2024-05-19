@@ -30,18 +30,18 @@
 
         character(*, SK), parameter :: PROCEDURE_NAME = "@getComplementRange()"
 
-        integer(IKC)                :: start, stop, step
-        integer(IKC), allocatable   :: setA(:), setB(:), Complement(:), Complement_ref(:)
+        integer(IKG)                :: start, stop, step
+        integer(IKG), allocatable   :: setA(:), setB(:), Complement(:), Complement_ref(:)
 
         assertion = .true.
 
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        setA = [integer(IKC) ::]
-        Complement_ref = [integer(IKC) ::]
-        start = 2_IKC
-        stop = 1_IKC
-        step = 1_IKC
+        setA = [integer(IKG) ::]
+        Complement_ref = [integer(IKG) ::]
+        start = 2_IKG
+        stop = 1_IKG
+        step = 1_IKG
 
         Complement = getComplementRange(setA, start, stop, step)
         call report(int(__LINE__, IK))
@@ -61,11 +61,11 @@
 
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        setA = int([-1,2,0,4,5], IKC)
-        Complement_ref = [integer(IKC) ::]
-        start = 5_IKC
-        stop = 2_IKC
-        step = 1_IKC
+        setA = int([-1,2,0,4,5], IKG)
+        Complement_ref = [integer(IKG) ::]
+        start = 5_IKG
+        stop = 2_IKG
+        step = 1_IKG
 
         Complement = getComplementRange(setA, start, stop, step)
         call report(int(__LINE__, IK))
@@ -85,10 +85,10 @@
 
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        start = -2_IKC
-        stop = 5_IKC
-        step = 1_IKC
-        setA = [integer(IKC) ::]
+        start = -2_IKG
+        stop = 5_IKG
+        step = 1_IKG
+        setA = [integer(IKG) ::]
         Complement_ref = getRange(start, stop, step)
 
         Complement = getComplementRange(setA, start, stop, step)
@@ -109,11 +109,11 @@
 
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        setA = int([-1,2,0,4,5], IKC)
-        Complement_ref = int([-2,1,3], IKC)
-        start = -2_IKC
-        stop = 5_IKC
-        step = 1_IKC
+        setA = int([-1,2,0,4,5], IKG)
+        Complement_ref = int([-2,1,3], IKG)
+        start = -2_IKG
+        stop = 5_IKG
+        step = 1_IKG
 
         Complement = getComplementRange(setA, start, stop, step)
         call report(int(__LINE__, IK))
@@ -133,11 +133,11 @@
 
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        setA = int([-1,2,0,4,5], IKC)
-        Complement_ref = int([-2,1,3,6], IKC)
-        start = -2_IKC
-        stop = 6_IKC
-        step = 1_IKC
+        setA = int([-1,2,0,4,5], IKG)
+        Complement_ref = int([-2,1,3,6], IKG)
+        start = -2_IKG
+        stop = 6_IKG
+        step = 1_IKG
 
         Complement = getComplementRange(setA, start, stop, step)
         call report(int(__LINE__, IK))
@@ -157,11 +157,11 @@
 
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        setA = int([-1,2,0,4,5], IKC)
-        Complement_ref = int([-2,6], IKC)
-        start = -2_IKC
-        stop = 6_IKC
-        step = 2_IKC
+        setA = int([-1,2,0,4,5], IKG)
+        Complement_ref = int([-2,6], IKG)
+        start = -2_IKG
+        stop = 6_IKG
+        step = 2_IKG
 
         Complement = getComplementRange(setA, start, stop, step)
         call report(int(__LINE__, IK))
@@ -181,11 +181,11 @@
 
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        setA = int([-1,2,0,4,5], IKC)
-        Complement_ref = int([7, 1, -2], IKC)
-        start = 7_IKC
-        stop = -2_IKC
-        step = -3_IKC
+        setA = int([-1,2,0,4,5], IKG)
+        Complement_ref = int([7, 1, -2], IKG)
+        start = 7_IKG
+        stop = -2_IKG
+        step = -3_IKG
 
         Complement = getComplementRange(setA, start, stop, step)
         call report(int(__LINE__, IK))
@@ -205,11 +205,11 @@
 
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        setA = int([-1,2,0,4,6], IKC)
-        Complement_ref = int([1, 3, 5], IKC)
-        start = 0_IKC
-        stop = 5_IKC
-        step = 1_IKC
+        setA = int([-1,2,0,4,6], IKG)
+        Complement_ref = int([1, 3, 5], IKG)
+        start = 0_IKG
+        stop = 5_IKG
+        step = 1_IKG
 
         Complement = getComplementRange(setA, start, stop, step)
         call report(int(__LINE__, IK))
@@ -229,11 +229,11 @@
 
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        setA = int([-1,2,0,4,6], IKC); setA = setA(size(setA):1:-1)
-        Complement_ref = int([1, 3, 5], IKC)
-        start = 0_IKC
-        stop = 5_IKC
-        step = 1_IKC
+        setA = int([-1,2,0,4,6], IKG); setA = setA(size(setA):1:-1)
+        Complement_ref = int([1, 3, 5], IKG)
+        start = 0_IKG
+        stop = 5_IKG
+        step = 1_IKG
 
         Complement = getComplementRange(setA, start, stop, step)
         call report(int(__LINE__, IK))
@@ -253,11 +253,11 @@
 
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        setA = int([-1,2,0,4,6], IKC); setA = setA(size(setA):1:-1)
-        Complement_ref = [integer(IKC)::]
-        start = 0_IKC
-        stop = 6_IKC
-        step = 2_IKC
+        setA = int([-1,2,0,4,6], IKG); setA = setA(size(setA):1:-1)
+        Complement_ref = [integer(IKG)::]
+        start = 0_IKG
+        stop = 6_IKG
+        step = 2_IKG
 
         Complement = getComplementRange(setA, start, stop, step)
         call report(int(__LINE__, IK))
@@ -282,13 +282,13 @@
             integer(IK) :: i
             do i = 1, 255_IK
 
-                start = getUnifRand(-53_IKC, 53_IKC)
-                stop = getUnifRand(-53_IKC, 53_IKC)
+                start = getUnifRand(-53_IKG, 53_IKG)
+                stop = getUnifRand(-53_IKG, 53_IKG)
                 do
-                    step = getUnifRand(-53_IKC, 53_IKC)
-                    if (step /= 0_IKC) exit
+                    step = getUnifRand(-53_IKG, 53_IKG)
+                    if (step /= 0_IKG) exit
                 end do
-                setA = getUnifRand(-53_IKC, 53_IKC, getUnifRand(0_IK, 126_IK))
+                setA = getUnifRand(-53_IKG, 53_IKG, getUnifRand(0_IK, 126_IK))
                 setB = getRange(start, stop, step)
                 Complement_ref = getComplement(setA, setB)
 
@@ -302,7 +302,7 @@
                 call report(int(__LINE__, IK))
 
                 call setSorted(setA)
-                if (step < 0_IKC) setA = setA(size(setA):1:-1)
+                if (step < 0_IKG) setA = setA(size(setA):1:-1)
 
                 Complement = getComplementRange(setA, start, stop, step, sorted = .true._LK, unique = .false._LK)
                 call report(int(__LINE__, IK))
@@ -383,17 +383,17 @@
 
 #if     getComplement_D0_SK_ENABLED || setComplement_D0_SK_ENABLED
 #define ALL
-        character(:,SKC), allocatable :: setA, setB, Complement, Complement_ref
+        character(:,SKG), allocatable :: setA, setB, Complement, Complement_ref
 #elif   getComplement_D1_SK_ENABLED || setComplement_D1_SK_ENABLED
-        character(2,SKC), dimension(:), allocatable :: setA, setB, Complement, Complement_ref
+        character(2,SKG), dimension(:), allocatable :: setA, setB, Complement, Complement_ref
 #elif   getComplement_D1_IK_ENABLED || setComplement_D1_IK_ENABLED
-        integer(IKC)    , dimension(:), allocatable :: setA, setB, Complement, Complement_ref
+        integer(IKG)    , dimension(:), allocatable :: setA, setB, Complement, Complement_ref
 #elif   getComplement_D1_LK_ENABLED || setComplement_D1_LK_ENABLED
-        logical(LKC)    , dimension(:), allocatable :: setA, setB, Complement, Complement_ref
+        logical(LKG)    , dimension(:), allocatable :: setA, setB, Complement, Complement_ref
 #elif   getComplement_D1_CK_ENABLED || setComplement_D1_CK_ENABLED
-        complex(CKC)    , dimension(:), allocatable :: setA, setB, Complement, Complement_ref
+        complex(CKG)    , dimension(:), allocatable :: setA, setB, Complement, Complement_ref
 #elif   getComplement_D1_RK_ENABLED || setComplement_D1_RK_ENABLED
-        real(RKC)       , dimension(:), allocatable :: setA, setB, Complement, Complement_ref
+        real(RKG)       , dimension(:), allocatable :: setA, setB, Complement, Complement_ref
 #else
 #error  "Unrecognized interface."
 #endif
@@ -423,7 +423,7 @@
             setB = ""
             Complement_ref = ""
 #elif       getComplement_D1_SK_ENABLED
-            allocate(character(2,SKC) :: setA(0), Complement_ref(0), setB(0))
+            allocate(character(2,SKG) :: setA(0), Complement_ref(0), setB(0))
 #elif       setComplement_D1_SK_ENABLED
             allocate(setA(0), Complement_ref(0), setB(0))
 #elif       getComplement_D1_IK_ENABLED || setComplement_D1_IK_ENABLED
@@ -455,20 +455,20 @@
             setB = ["AA", "BB", "CC", "DD"]
             allocate(Complement_ref(0))
 #elif       getComplement_D1_IK_ENABLED || setComplement_D1_IK_ENABLED
-            setA = int([1, 2, 3, 4], IKC)
-            setB = int([1, 2, 3, 4], IKC)
+            setA = int([1, 2, 3, 4], IKG)
+            setB = int([1, 2, 3, 4], IKG)
             allocate(Complement_ref(0))
 #elif       getComplement_D1_LK_ENABLED || setComplement_D1_LK_ENABLED
-            setA = logical([.true., .true., .false., .false.], LKC)
-            setB = logical([.true., .true., .false., .false.], LKC)
+            setA = logical([.true., .true., .false., .false.], LKG)
+            setB = logical([.true., .true., .false., .false.], LKG)
             allocate(Complement_ref(0))
 #elif       getComplement_D1_CK_ENABLED || setComplement_D1_CK_ENABLED
-            setA = cmplx([1, 2, 3, 4], kind = CKC)
-            setB = cmplx([1, 2, 3, 4], kind = CKC)
+            setA = cmplx([1, 2, 3, 4], kind = CKG)
+            setB = cmplx([1, 2, 3, 4], kind = CKG)
             allocate(Complement_ref(0))
 #elif       getComplement_D1_RK_ENABLED || setComplement_D1_RK_ENABLED
-            setA = real([1, 2, 3, 4], RKC)
-            setB = real([1, 2, 3, 4], RKC)
+            setA = real([1, 2, 3, 4], RKG)
+            setB = real([1, 2, 3, 4], RKG)
             allocate(Complement_ref(0))
 #endif
 
@@ -492,16 +492,16 @@
             allocate(setB(0))
 #elif       getComplement_D1_IK_ENABLED || setComplement_D1_IK_ENABLED
             allocate(setB(0))
-            setA = int([1, 2, 3, 4], IKC)
+            setA = int([1, 2, 3, 4], IKG)
 #elif       getComplement_D1_LK_ENABLED || setComplement_D1_LK_ENABLED
             allocate(setB(0))
-            setA = logical([.true., .true., .false., .false.], LKC)
+            setA = logical([.true., .true., .false., .false.], LKG)
 #elif       getComplement_D1_CK_ENABLED || setComplement_D1_CK_ENABLED
             allocate(setB(0))
-            setA = cmplx([1, 2, 3, 4], kind = CKC)
+            setA = cmplx([1, 2, 3, 4], kind = CKG)
 #elif       getComplement_D1_RK_ENABLED || setComplement_D1_RK_ENABLED
             allocate(setB(0))
-            setA = real([1, 2, 3, 4], RKC)
+            setA = real([1, 2, 3, 4], RKG)
 #endif
             Complement_ref = setB
 
@@ -525,16 +525,16 @@
             setB = ["AA", "BB", "CC", "DD"]
 #elif       getComplement_D1_IK_ENABLED || setComplement_D1_IK_ENABLED
             allocate(setA(0))
-            setB = int([1, 2, 3, 4], IKC)
+            setB = int([1, 2, 3, 4], IKG)
 #elif       getComplement_D1_LK_ENABLED || setComplement_D1_LK_ENABLED
             allocate(setA(0))
-            setB = logical([.true., .true., .false., .false.], LKC)
+            setB = logical([.true., .true., .false., .false.], LKG)
 #elif       getComplement_D1_CK_ENABLED || setComplement_D1_CK_ENABLED
             allocate(setA(0))
-            setB = cmplx([1, 2, 3, 4], kind = CKC)
+            setB = cmplx([1, 2, 3, 4], kind = CKG)
 #elif       getComplement_D1_RK_ENABLED || setComplement_D1_RK_ENABLED
             allocate(setA(0))
-            setB = real([1, 2, 3, 4], RKC)
+            setB = real([1, 2, 3, 4], RKG)
 #endif
             Complement_ref = setB
 
@@ -559,20 +559,20 @@
             setB = ["AA", "BB", "CC", "DD", "EE"]
             Complement_ref = setB(size(setB):size(setB))
 #elif       getComplement_D1_IK_ENABLED || setComplement_D1_IK_ENABLED
-            setA = int([1, 2, 3, 4], IKC)
-            setB = int([1, 2, 3, 4, 5], IKC)
+            setA = int([1, 2, 3, 4], IKG)
+            setB = int([1, 2, 3, 4, 5], IKG)
             Complement_ref = setB(size(setB):size(setB))
 #elif       getComplement_D1_LK_ENABLED || setComplement_D1_LK_ENABLED
-            setA = logical([.true., .true., .false., .false.], LKC)
-            setB = logical([.true., .true., .false., .false., .false.], LKC)
-            Complement_ref = [logical(LKC)::]
+            setA = logical([.true., .true., .false., .false.], LKG)
+            setB = logical([.true., .true., .false., .false., .false.], LKG)
+            Complement_ref = [logical(LKG)::]
 #elif       getComplement_D1_CK_ENABLED || setComplement_D1_CK_ENABLED
-            setA = cmplx([1, 2, 3, 4], kind = CKC)
-            setB = cmplx([1, 2, 3, 4, 5], kind = CKC)
+            setA = cmplx([1, 2, 3, 4], kind = CKG)
+            setB = cmplx([1, 2, 3, 4, 5], kind = CKG)
             Complement_ref = setB(size(setB):size(setB))
 #elif       getComplement_D1_RK_ENABLED || setComplement_D1_RK_ENABLED
-            setA = real([1, 2, 3, 4], RKC)
-            setB = real([1, 2, 3, 4, 5], RKC)
+            setA = real([1, 2, 3, 4], RKG)
+            setB = real([1, 2, 3, 4, 5], RKG)
             Complement_ref = setB(size(setB):size(setB))
 #endif
 
@@ -597,20 +597,20 @@
             setB = ["!!", "AA", "BB", "CC", "DD"]
             Complement_ref = setB(1:1)
 #elif       getComplement_D1_IK_ENABLED || setComplement_D1_IK_ENABLED
-            setA = int([1, 2, 3, 4], IKC)
-            setB = int([0, 1, 2, 3, 4], IKC)
+            setA = int([1, 2, 3, 4], IKG)
+            setB = int([0, 1, 2, 3, 4], IKG)
             Complement_ref = setB(1:1)
 #elif       getComplement_D1_LK_ENABLED || setComplement_D1_LK_ENABLED
-            setA = logical([.true.], LKC)
-            setB = logical([.true., .false.], LKC)
-            Complement_ref = logical([.false.], LKC)
+            setA = logical([.true.], LKG)
+            setB = logical([.true., .false.], LKG)
+            Complement_ref = logical([.false.], LKG)
 #elif       getComplement_D1_CK_ENABLED || setComplement_D1_CK_ENABLED
-            setA = cmplx([1, 2, 3, 4], kind = CKC)
-            setB = cmplx([0, 1, 2, 3, 4], kind = CKC)
+            setA = cmplx([1, 2, 3, 4], kind = CKG)
+            setB = cmplx([0, 1, 2, 3, 4], kind = CKG)
             Complement_ref = setB(1:1)
 #elif       getComplement_D1_RK_ENABLED || setComplement_D1_RK_ENABLED
-            setA = real([1, 2, 3, 4], RKC)
-            setB = real([0, 1, 2, 3, 4], RKC)
+            setA = real([1, 2, 3, 4], RKG)
+            setB = real([0, 1, 2, 3, 4], RKG)
             Complement_ref = setB(1:1)
 #endif
 
@@ -633,21 +633,21 @@
             setB = ["!!", "AA", "??", "BB", "CC", "DD", "EE", "EE"]
             Complement_ref = ["!!", "??", "EE", "EE"]
 #elif       getComplement_D1_IK_ENABLED || setComplement_D1_IK_ENABLED
-            setA = int([1, 2, 3, 4], IKC)
-            setB = int([0, 2, 1, 3, 4, 5, 6, 6], IKC)
-            Complement_ref = int([0, 5, 6, 6], IKC)
+            setA = int([1, 2, 3, 4], IKG)
+            setB = int([0, 2, 1, 3, 4, 5, 6, 6], IKG)
+            Complement_ref = int([0, 5, 6, 6], IKG)
 #elif       getComplement_D1_LK_ENABLED || setComplement_D1_LK_ENABLED
-            setA = logical([.true.], LKC)
-            setB = logical([.true., .true., .false., .false., .false.], LKC)
-            Complement_ref = logical([.false., .false., .false.], LKC)
+            setA = logical([.true.], LKG)
+            setB = logical([.true., .true., .false., .false., .false.], LKG)
+            Complement_ref = logical([.false., .false., .false.], LKG)
 #elif       getComplement_D1_CK_ENABLED || setComplement_D1_CK_ENABLED
-            setA = cmplx([1, 2, 3, 4], kind = CKC)
-            setB = cmplx([0, 2, 1, 3, 4, 5, 6, 6], kind = CKC)
-            Complement_ref = cmplx([0, 5, 6, 6], kind = CKC)
+            setA = cmplx([1, 2, 3, 4], kind = CKG)
+            setB = cmplx([0, 2, 1, 3, 4, 5, 6, 6], kind = CKG)
+            Complement_ref = cmplx([0, 5, 6, 6], kind = CKG)
 #elif       getComplement_D1_RK_ENABLED || setComplement_D1_RK_ENABLED
-            setA = real([1, 2, 3, 4], RKC)
-            setB = real([0, 2, 1, 3, 4, 5, 6, 6], RKC)
-            Complement_ref = real([0, 5, 6, 6], kind = RKC)
+            setA = real([1, 2, 3, 4], RKG)
+            setB = real([0, 2, 1, 3, 4, 5, 6, 6], RKG)
+            Complement_ref = real([0, 5, 6, 6], kind = RKG)
 #endif
 
             call report(iseq)
@@ -675,17 +675,17 @@
         function iseq(elementA, elementB) result(equivalent)
             logical(LK) :: equivalent
 #if         getComplement_D0_SK_ENABLED || setComplement_D0_SK_ENABLED
-            character(*,SKC), intent(in) :: elementA, elementB
+            character(*,SKG), intent(in) :: elementA, elementB
 #elif       getComplement_D1_SK_ENABLED || setComplement_D1_SK_ENABLED
-            character(*,SKC), intent(in) :: elementA, elementB
+            character(*,SKG), intent(in) :: elementA, elementB
 #elif       getComplement_D1_IK_ENABLED || setComplement_D1_IK_ENABLED
-            integer(IKC)    , intent(in) :: elementA, elementB
+            integer(IKG)    , intent(in) :: elementA, elementB
 #elif       getComplement_D1_LK_ENABLED || setComplement_D1_LK_ENABLED
-            logical(LKC)    , intent(in) :: elementA, elementB
+            logical(LKG)    , intent(in) :: elementA, elementB
 #elif       getComplement_D1_CK_ENABLED || setComplement_D1_CK_ENABLED
-            complex(CKC)    , intent(in) :: elementA, elementB
+            complex(CKG)    , intent(in) :: elementA, elementB
 #elif       getComplement_D1_RK_ENABLED || setComplement_D1_RK_ENABLED
-            real(RKC)       , intent(in) :: elementA, elementB
+            real(RKG)       , intent(in) :: elementA, elementB
 #endif
             equivalent = elementA IS_EQUAL elementB
         end function

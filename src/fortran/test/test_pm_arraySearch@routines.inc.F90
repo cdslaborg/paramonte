@@ -43,23 +43,23 @@
         character(*, SK), parameter :: PROCEDURE_NAME = "@getBin()"
 
 #if     SK_ENABLED && D0_ENABLED
-        character(:,SKC)              , allocatable :: Array
-        character(:,SKC)              , allocatable :: value
+        character(:,SKG)              , allocatable :: Array
+        character(:,SKG)              , allocatable :: value
 #elif   SK_ENABLED && D1_ENABLED
-        character(2,SKC), dimension(:), allocatable :: Array
-        character(2,SKC)                            :: value
+        character(2,SKG), dimension(:), allocatable :: Array
+        character(2,SKG)                            :: value
 #elif   IK_ENABLED && D1_ENABLED
-        integer(IKC)    , dimension(:), allocatable :: Array
-        integer(IKC)                                :: value
+        integer(IKG)    , dimension(:), allocatable :: Array
+        integer(IKG)                                :: value
 #elif   LK_ENABLED && D1_ENABLED
-        logical(LKC)    , dimension(:), allocatable :: Array
-        logical(LKC)                                :: value
+        logical(LKG)    , dimension(:), allocatable :: Array
+        logical(LKG)                                :: value
 #elif   CK_ENABLED && D1_ENABLED
-        complex(CKC)    , dimension(:), allocatable :: Array
-        complex(CKC)                                :: value
+        complex(CKG)    , dimension(:), allocatable :: Array
+        complex(CKG)                                :: value
 #elif   RK_ENABLED && D1_ENABLED
-        real(RKC)       , dimension(:), allocatable :: Array
-        real(RKC)                                   :: value
+        real(RKG)       , dimension(:), allocatable :: Array
+        real(RKG)                                   :: value
 #else
 #error  "Unrecognized interface."
 #endif
@@ -82,15 +82,15 @@
         function isLess(value, segment) result(less)
             use pm_complexCompareLex, only: operator(<)
 #if         SK_ENABLED && D0_ENABLED || SK_ENABLED && D1_ENABLED
-            character(*,SKC), intent(in) :: value, segment
+            character(*,SKG), intent(in) :: value, segment
 #elif       IK_ENABLED && D1_ENABLED
-            integer(IKC)    , intent(in) :: value, segment
+            integer(IKG)    , intent(in) :: value, segment
 #elif       CK_ENABLED && D1_ENABLED
-            complex(CKC)    , intent(in) :: value, segment
+            complex(CKG)    , intent(in) :: value, segment
 #elif       RK_ENABLED && D1_ENABLED
-            real(RKC)       , intent(in) :: value, segment
+            real(RKG)       , intent(in) :: value, segment
 #elif       LK_ENABLED && D1_ENABLED
-            logical(LKC)    , intent(in) :: value, segment
+            logical(LKG)    , intent(in) :: value, segment
 #endif
             logical(LK) :: less
             less = value < segment
@@ -114,20 +114,20 @@
             call reset()
 
 #if         SK_ENABLED && D0_ENABLED
-            Array = SKC_"abcdefgh"
-            value = SKC_" "
+            Array = SKG_"abcdefgh"
+            value = SKG_" "
 #elif       SK_ENABLED && D1_ENABLED
             Array = ["aa", "bb", "cc", "dd", "ee", "ff", "gg", "hh"]
             value = "  "
 #elif       IK_ENABLED && D1_ENABLED
-            Array = int([1,2,3,4,5,6,7,8], kind = IKC)
-            value = 0_IKC
+            Array = int([1,2,3,4,5,6,7,8], kind = IKG)
+            value = 0_IKG
 #elif       CK_ENABLED && D1_ENABLED
-            Array = cmplx([1,2,3,4,5,6,7,8], [1,2,3,4,5,6,7,8], kind = CKC)
-            value = cmplx(0, kind = CKC)
+            Array = cmplx([1,2,3,4,5,6,7,8], [1,2,3,4,5,6,7,8], kind = CKG)
+            value = cmplx(0, kind = CKG)
 #elif       RK_ENABLED && D1_ENABLED
-            Array = real([1,2,3,4,5,6,7,8], kind = RKC)
-            value = 0._RKC
+            Array = real([1,2,3,4,5,6,7,8], kind = RKG)
+            value = 0._RKG
 #endif
             index_ref = 0_IK
 
@@ -145,14 +145,14 @@
             Array = ["aa", "cc", "ee", "gg", "ii", "kk", "mm", "oo"]
             value = "aa"
 #elif       IK_ENABLED && D1_ENABLED
-            Array = int([1,2,4,6,8,10,12,14], kind = IKC)
-            value = 1_IKC
+            Array = int([1,2,4,6,8,10,12,14], kind = IKG)
+            value = 1_IKG
 #elif       CK_ENABLED && D1_ENABLED
-            Array = cmplx([1,2,4,6,8,10,12,14], -[1,2,4,6,8,10,12,14], kind = CKC)
-            value = cmplx(1, -1, kind = CKC)
+            Array = cmplx([1,2,4,6,8,10,12,14], -[1,2,4,6,8,10,12,14], kind = CKG)
+            value = cmplx(1, -1, kind = CKG)
 #elif       RK_ENABLED && D1_ENABLED
-            Array = real([1,2,4,6,8,10,12,14], kind = RKC)
-            value = 1._RKC
+            Array = real([1,2,4,6,8,10,12,14], kind = RKG)
+            value = 1._RKG
 #endif
             index_ref = 1_IK
 
@@ -170,14 +170,14 @@
             Array = ["aa", "cc", "ee", "gg", "ii", "kk", "mm", "oo"]
             value = "bb"
 #elif       IK_ENABLED && D1_ENABLED
-            Array = int([0,2,4,6,8,10,12,14], kind = IKC)
-            value = 1_IKC
+            Array = int([0,2,4,6,8,10,12,14], kind = IKG)
+            value = 1_IKG
 #elif       CK_ENABLED && D1_ENABLED
-            Array = cmplx([0,2,4,6,8,10,12,14], -[0,2,4,6,8,10,12,14], kind = CKC)
-            value = cmplx(1, 5, kind = CKC)
+            Array = cmplx([0,2,4,6,8,10,12,14], -[0,2,4,6,8,10,12,14], kind = CKG)
+            value = cmplx(1, 5, kind = CKG)
 #elif       RK_ENABLED && D1_ENABLED
-            Array = real([0,2,4,6,8,10,12,14], kind = RKC)
-            value = 1._RKC
+            Array = real([0,2,4,6,8,10,12,14], kind = RKG)
+            value = 1._RKG
 #endif
             index_ref = 1_IK
 
@@ -195,14 +195,14 @@
             Array = ["aa", "cc", "ee", "gg", "ii", "kk", "mm", "oo"]
             value = "cc"
 #elif       IK_ENABLED && D1_ENABLED
-            Array = int([0,2,4,6,8,10,12,14], kind = IKC)
-            value = 2_IKC
+            Array = int([0,2,4,6,8,10,12,14], kind = IKG)
+            value = 2_IKG
 #elif       CK_ENABLED && D1_ENABLED
-            Array = cmplx([0,2,4,6,8,10,12,14], -[0,2,4,6,8,10,12,14], kind = CKC)
-            value = cmplx(2, 2, kind = CKC)
+            Array = cmplx([0,2,4,6,8,10,12,14], -[0,2,4,6,8,10,12,14], kind = CKG)
+            value = cmplx(2, 2, kind = CKG)
 #elif       RK_ENABLED && D1_ENABLED
-            Array = real([0,2,4,6,8,10,12,14], kind = RKC)
-            value = 2._RKC
+            Array = real([0,2,4,6,8,10,12,14], kind = RKG)
+            value = 2._RKG
 #endif
             index_ref = 2_IK
 
@@ -220,14 +220,14 @@
             Array = ["aa", "cc", "ee", "gg", "ii", "kk", "mm"]
             value = "cc"
 #elif       IK_ENABLED && D1_ENABLED
-            Array = int([0,2,4,6,8,10,12], kind = IKC)
-            value = 2_IKC
+            Array = int([0,2,4,6,8,10,12], kind = IKG)
+            value = 2_IKG
 #elif       CK_ENABLED && D1_ENABLED
-            Array = cmplx([0,2,4,6,8,10,12], -[0,2,4,6,8,10,12], kind = CKC)
-            value = cmplx(2, -2, kind = CKC)
+            Array = cmplx([0,2,4,6,8,10,12], -[0,2,4,6,8,10,12], kind = CKG)
+            value = cmplx(2, -2, kind = CKG)
 #elif       RK_ENABLED && D1_ENABLED
-            Array = real([0,2,4,6,8,10,12], kind = RKC)
-            value = 2._RKC
+            Array = real([0,2,4,6,8,10,12], kind = RKG)
+            value = 2._RKG
 #endif
             index_ref = 2_IK
 
@@ -245,14 +245,14 @@
             Array = ["aa", "cc", "ee", "gg", "ii", "kk", "mm"]
             value = "kk"
 #elif       IK_ENABLED && D1_ENABLED
-            Array = int([0,2,4,6,8,10,12], kind = IKC)
-            value = 10_IKC
+            Array = int([0,2,4,6,8,10,12], kind = IKG)
+            value = 10_IKG
 #elif       CK_ENABLED && D1_ENABLED
-            Array = cmplx([0,2,4,6,8,10,12], -[0,2,4,6,8,10,12], kind = CKC)
-            value = cmplx(10, -2, kind = CKC)
+            Array = cmplx([0,2,4,6,8,10,12], -[0,2,4,6,8,10,12], kind = CKG)
+            value = cmplx(10, -2, kind = CKG)
 #elif       RK_ENABLED && D1_ENABLED
-            Array = real([0,2,4,6,8,10,12], kind = RKC)
-            value = 10._RKC
+            Array = real([0,2,4,6,8,10,12], kind = RKG)
+            value = 10._RKG
 #endif
             index_ref = 6_IK
 
@@ -270,14 +270,14 @@
             Array = ["aa", "cc", "ee", "gg", "ii", "kk", "mm", "oo"]
             value = "oo"
 #elif       IK_ENABLED && D1_ENABLED
-            Array = int([0,2,4,6,8,10,12,14], kind = IKC)
-            value = 14_IKC
+            Array = int([0,2,4,6,8,10,12,14], kind = IKG)
+            value = 14_IKG
 #elif       CK_ENABLED && D1_ENABLED
-            Array = cmplx([0,2,4,6,8,10,12,14], -[0,2,4,6,8,10,12,14], kind = CKC)
-            value = cmplx(14, 3, kind = CKC)
+            Array = cmplx([0,2,4,6,8,10,12,14], -[0,2,4,6,8,10,12,14], kind = CKG)
+            value = cmplx(14, 3, kind = CKG)
 #elif       RK_ENABLED && D1_ENABLED
-            Array = real([0,2,4,6,8,10,12,14], kind = RKC)
-            value = 14._RKC
+            Array = real([0,2,4,6,8,10,12,14], kind = RKG)
+            value = 14._RKG
 #endif
             index_ref = GET_SIZE(Array, kind = IK)
 
@@ -295,14 +295,14 @@
             Array = ["aa", "cc", "ee", "gg", "ii", "kk", "mm", "oo"]
             value = "oz"
 #elif       IK_ENABLED && D1_ENABLED
-            Array = int([0,2,4,6,8,10,12,14], kind = IKC)
-            value = 20_IKC
+            Array = int([0,2,4,6,8,10,12,14], kind = IKG)
+            value = 20_IKG
 #elif       CK_ENABLED && D1_ENABLED
-            Array = cmplx([0,2,4,6,8,10,12,14], [0,2,4,6,8,10,12,14]**2, kind = CKC)
-            value = cmplx(20, -5, kind = CKC)
+            Array = cmplx([0,2,4,6,8,10,12,14], [0,2,4,6,8,10,12,14]**2, kind = CKG)
+            value = cmplx(20, -5, kind = CKG)
 #elif       RK_ENABLED && D1_ENABLED
-            Array = real([0,2,4,6,8,10,12,14], kind = RKC)
-            value = 20._RKC
+            Array = real([0,2,4,6,8,10,12,14], kind = RKG)
+            value = 20._RKG
 #endif
             index_ref = GET_SIZE(Array, kind = IK)
 

@@ -52,35 +52,35 @@ contains
 
 #if SK5_ENABLED
     module procedure alleq_SK5
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
 #include "pm_str@routines.inc.F90"
     end procedure
 #endif
 
 #if SK4_ENABLED
     module procedure alleq_SK4
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
 #include "pm_str@routines.inc.F90"
     end procedure
 #endif
 
 #if SK3_ENABLED
     module procedure alleq_SK3
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
 #include "pm_str@routines.inc.F90"
     end procedure
 #endif
 
 #if SK2_ENABLED
     module procedure alleq_SK2
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
 #include "pm_str@routines.inc.F90"
     end procedure
 #endif
 
 #if SK1_ENABLED
     module procedure alleq_SK1
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
 #include "pm_str@routines.inc.F90"
     end procedure
 #endif
@@ -101,35 +101,35 @@ contains
 
 #if SK5_ENABLED
     module procedure isEndedWith_SK5
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
 #include "pm_str@routines.inc.F90"
     end procedure
 #endif
 
 #if SK4_ENABLED
     module procedure isEndedWith_SK4
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
 #include "pm_str@routines.inc.F90"
     end procedure
 #endif
 
 #if SK3_ENABLED
     module procedure isEndedWith_SK3
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
 #include "pm_str@routines.inc.F90"
     end procedure
 #endif
 
 #if SK2_ENABLED
     module procedure isEndedWith_SK2
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
 #include "pm_str@routines.inc.F90"
     end procedure
 #endif
 
 #if SK1_ENABLED
     module procedure isEndedWith_SK1
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
 #include "pm_str@routines.inc.F90"
     end procedure
 #endif
@@ -143,35 +143,35 @@ contains
 
 #if SK5_ENABLED
     module procedure isEndedWith_PSSK5
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
 #include "pm_str@routines.inc.F90"
     end procedure
 #endif
 
 #if SK4_ENABLED
     module procedure isEndedWith_PSSK4
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
 #include "pm_str@routines.inc.F90"
     end procedure
 #endif
 
 #if SK3_ENABLED
     module procedure isEndedWith_PSSK3
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
 #include "pm_str@routines.inc.F90"
     end procedure
 #endif
 
 #if SK2_ENABLED
     module procedure isEndedWith_PSSK2
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
 #include "pm_str@routines.inc.F90"
     end procedure
 #endif
 
 #if SK1_ENABLED
     module procedure isEndedWith_PSSK1
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
 #include "pm_str@routines.inc.F90"
     end procedure
 #endif
@@ -184,7 +184,7 @@ contains
 
 #define BSSK_ENABLED 1
     module procedure isEndedWith_BSSK
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
 #include "pm_str@routines.inc.F90"
     end procedure
 #undef BSSK_ENABLED
@@ -209,35 +209,35 @@ contains
 
 #if SK5_ENABLED
     module procedure getMinLocNoMask_SK5
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
 #include "pm_str@routines.inc.F90"
     end procedure
 #endif
 
 #if SK4_ENABLED
     module procedure getMinLocNoMask_SK4
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
 #include "pm_str@routines.inc.F90"
     end procedure
 #endif
 
 #if SK3_ENABLED
     module procedure getMinLocNoMask_SK3
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
 #include "pm_str@routines.inc.F90"
     end procedure
 #endif
 
 #if SK2_ENABLED
     module procedure getMinLocNoMask_SK2
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
 #include "pm_str@routines.inc.F90"
     end procedure
 #endif
 
 #if SK1_ENABLED
     module procedure getMinLocNoMask_SK1
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
 #include "pm_str@routines.inc.F90"
     end procedure
 #endif
@@ -260,35 +260,35 @@ contains
 
 #if SK5_ENABLED
     module procedure getMinLocMasked_SK5
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
 #include "pm_str@routines.inc.F90"
     end procedure
 #endif
 
 #if SK4_ENABLED
     module procedure getMinLocMasked_SK4
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
 #include "pm_str@routines.inc.F90"
     end procedure
 #endif
 
 #if SK3_ENABLED
     module procedure getMinLocMasked_SK3
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
 #include "pm_str@routines.inc.F90"
     end procedure
 #endif
 
 #if SK2_ENABLED
     module procedure getMinLocMasked_SK2
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
 #include "pm_str@routines.inc.F90"
     end procedure
 #endif
 
 #if SK1_ENABLED
     module procedure getMinLocMasked_SK1
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
 #include "pm_str@routines.inc.F90"
     end procedure
 #endif
@@ -321,35 +321,35 @@ contains
 
 #if SK5_ENABLED
     module procedure getMaxLocNoMask_SK5
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
 #include "pm_str@routines.inc.F90"
     end procedure
 #endif
 
 #if SK4_ENABLED
     module procedure getMaxLocNoMask_SK4
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
 #include "pm_str@routines.inc.F90"
     end procedure
 #endif
 
 #if SK3_ENABLED
     module procedure getMaxLocNoMask_SK3
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
 #include "pm_str@routines.inc.F90"
     end procedure
 #endif
 
 #if SK2_ENABLED
     module procedure getMaxLocNoMask_SK2
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
 #include "pm_str@routines.inc.F90"
     end procedure
 #endif
 
 #if SK1_ENABLED
     module procedure getMaxLocNoMask_SK1
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
 #include "pm_str@routines.inc.F90"
     end procedure
 #endif
@@ -372,35 +372,35 @@ contains
 
 #if SK5_ENABLED
     module procedure getMaxLocMasked_SK5
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
 #include "pm_str@routines.inc.F90"
     end procedure
 #endif
 
 #if SK4_ENABLED
     module procedure getMaxLocMasked_SK4
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
 #include "pm_str@routines.inc.F90"
     end procedure
 #endif
 
 #if SK3_ENABLED
     module procedure getMaxLocMasked_SK3
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
 #include "pm_str@routines.inc.F90"
     end procedure
 #endif
 
 #if SK2_ENABLED
     module procedure getMaxLocMasked_SK2
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
 #include "pm_str@routines.inc.F90"
     end procedure
 #endif
 
 #if SK1_ENABLED
     module procedure getMaxLocMasked_SK1
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
 #include "pm_str@routines.inc.F90"
     end procedure
 #endif
@@ -433,35 +433,35 @@ contains
 
 #if SK5_ENABLED
     module procedure getMinValNoMask_SK5
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
 #include "pm_str@routines.inc.F90"
     end procedure
 #endif
 
 #if SK4_ENABLED
     module procedure getMinValNoMask_SK4
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
 #include "pm_str@routines.inc.F90"
     end procedure
 #endif
 
 #if SK3_ENABLED
     module procedure getMinValNoMask_SK3
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
 #include "pm_str@routines.inc.F90"
     end procedure
 #endif
 
 #if SK2_ENABLED
     module procedure getMinValNoMask_SK2
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
 #include "pm_str@routines.inc.F90"
     end procedure
 #endif
 
 #if SK1_ENABLED
     module procedure getMinValNoMask_SK1
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
 #include "pm_str@routines.inc.F90"
     end procedure
 #endif
@@ -484,35 +484,35 @@ contains
 
 #if SK5_ENABLED
     module procedure getMinValMasked_SK5
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
 #include "pm_str@routines.inc.F90"
     end procedure
 #endif
 
 #if SK4_ENABLED
     module procedure getMinValMasked_SK4
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
 #include "pm_str@routines.inc.F90"
     end procedure
 #endif
 
 #if SK3_ENABLED
     module procedure getMinValMasked_SK3
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
 #include "pm_str@routines.inc.F90"
     end procedure
 #endif
 
 #if SK2_ENABLED
     module procedure getMinValMasked_SK2
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
 #include "pm_str@routines.inc.F90"
     end procedure
 #endif
 
 #if SK1_ENABLED
     module procedure getMinValMasked_SK1
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
 #include "pm_str@routines.inc.F90"
     end procedure
 #endif
@@ -545,35 +545,35 @@ contains
 
 #if SK5_ENABLED
     module procedure getMaxValNoMask_SK5
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
 #include "pm_str@routines.inc.F90"
     end procedure
 #endif
 
 #if SK4_ENABLED
     module procedure getMaxValNoMask_SK4
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
 #include "pm_str@routines.inc.F90"
     end procedure
 #endif
 
 #if SK3_ENABLED
     module procedure getMaxValNoMask_SK3
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
 #include "pm_str@routines.inc.F90"
     end procedure
 #endif
 
 #if SK2_ENABLED
     module procedure getMaxValNoMask_SK2
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
 #include "pm_str@routines.inc.F90"
     end procedure
 #endif
 
 #if SK1_ENABLED
     module procedure getMaxValNoMask_SK1
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
 #include "pm_str@routines.inc.F90"
     end procedure
 #endif
@@ -596,35 +596,35 @@ contains
 
 #if SK5_ENABLED
     module procedure getMaxValMasked_SK5
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
 #include "pm_str@routines.inc.F90"
     end procedure
 #endif
 
 #if SK4_ENABLED
     module procedure getMaxValMasked_SK4
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
 #include "pm_str@routines.inc.F90"
     end procedure
 #endif
 
 #if SK3_ENABLED
     module procedure getMaxValMasked_SK3
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
 #include "pm_str@routines.inc.F90"
     end procedure
 #endif
 
 #if SK2_ENABLED
     module procedure getMaxValMasked_SK2
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
 #include "pm_str@routines.inc.F90"
     end procedure
 #endif
 
 #if SK1_ENABLED
     module procedure getMaxValMasked_SK1
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
 #include "pm_str@routines.inc.F90"
     end procedure
 #endif
@@ -651,35 +651,35 @@ contains
 
 #if SK5_ENABLED
     module procedure getCharSeq_SK5
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
 #include "pm_str@routines.inc.F90"
     end procedure
 #endif
 
 #if SK4_ENABLED
     module procedure getCharSeq_SK4
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
 #include "pm_str@routines.inc.F90"
     end procedure
 #endif
 
 #if SK3_ENABLED
     module procedure getCharSeq_SK3
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
 #include "pm_str@routines.inc.F90"
     end procedure
 #endif
 
 #if SK2_ENABLED
     module procedure getCharSeq_SK2
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
 #include "pm_str@routines.inc.F90"
     end procedure
 #endif
 
 #if SK1_ENABLED
     module procedure getCharSeq_SK1
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
 #include "pm_str@routines.inc.F90"
     end procedure
 #endif
@@ -700,35 +700,35 @@ contains
 
 #if SK5_ENABLED
     module procedure getCharVec_SK5
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
 #include "pm_str@routines.inc.F90"
     end procedure
 #endif
 
 #if SK4_ENABLED
     module procedure getCharVec_SK4
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
 #include "pm_str@routines.inc.F90"
     end procedure
 #endif
 
 #if SK3_ENABLED
     module procedure getCharVec_SK3
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
 #include "pm_str@routines.inc.F90"
     end procedure
 #endif
 
 #if SK2_ENABLED
     module procedure getCharVec_SK2
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
 #include "pm_str@routines.inc.F90"
     end procedure
 #endif
 
 #if SK1_ENABLED
     module procedure getCharVec_SK1
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
 #include "pm_str@routines.inc.F90"
     end procedure
 #endif
@@ -749,35 +749,35 @@ contains
 
 #if SK5_ENABLED
     module procedure getTrimmedTZ_SK5
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
 #include "pm_str@routines.inc.F90"
     end procedure
 #endif
 
 #if SK4_ENABLED
     module procedure getTrimmedTZ_SK4
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
 #include "pm_str@routines.inc.F90"
     end procedure
 #endif
 
 #if SK3_ENABLED
     module procedure getTrimmedTZ_SK3
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
 #include "pm_str@routines.inc.F90"
     end procedure
 #endif
 
 #if SK2_ENABLED
     module procedure getTrimmedTZ_SK2
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
 #include "pm_str@routines.inc.F90"
     end procedure
 #endif
 
 #if SK1_ENABLED
     module procedure getTrimmedTZ_SK1
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
 #include "pm_str@routines.inc.F90"
     end procedure
 #endif
@@ -798,35 +798,35 @@ contains
 
 #if SK5_ENABLED
     module procedure getStrWrapped_SK5
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
 #include "pm_str@routines.inc.F90"
     end procedure
 #endif
 
 #if SK4_ENABLED
     module procedure getStrWrapped_SK4
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
 #include "pm_str@routines.inc.F90"
     end procedure
 #endif
 
 #if SK3_ENABLED
     module procedure getStrWrapped_SK3
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
 #include "pm_str@routines.inc.F90"
     end procedure
 #endif
 
 #if SK2_ENABLED
     module procedure getStrWrapped_SK2
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
 #include "pm_str@routines.inc.F90"
     end procedure
 #endif
 
 #if SK1_ENABLED
     module procedure getStrWrapped_SK1
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
 #include "pm_str@routines.inc.F90"
     end procedure
 #endif
@@ -847,35 +847,35 @@ contains
 
 #if SK5_ENABLED
     module procedure getLenIndent_SK5
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
 #include "pm_str@routines.inc.F90"
     end procedure
 #endif
 
 #if SK4_ENABLED
     module procedure getLenIndent_SK4
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
 #include "pm_str@routines.inc.F90"
     end procedure
 #endif
 
 #if SK3_ENABLED
     module procedure getLenIndent_SK3
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
 #include "pm_str@routines.inc.F90"
     end procedure
 #endif
 
 #if SK2_ENABLED
     module procedure getLenIndent_SK2
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
 #include "pm_str@routines.inc.F90"
     end procedure
 #endif
 
 #if SK1_ENABLED
     module procedure getLenIndent_SK1
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
 #include "pm_str@routines.inc.F90"
     end procedure
 #endif
@@ -902,35 +902,35 @@ contains
 !
 !#if SK5_ENABLED
 !    module procedure getStrWrappedList_SK5
-!        use pm_kind, only: SKC => SK5
+!        use pm_kind, only: SKG => SK5
 !#include "pm_str@routines.inc.F90"
 !    end procedure
 !#endif
 !
 !#if SK4_ENABLED
 !    module procedure getStrWrappedList_SK4
-!        use pm_kind, only: SKC => SK4
+!        use pm_kind, only: SKG => SK4
 !#include "pm_str@routines.inc.F90"
 !    end procedure
 !#endif
 !
 !#if SK3_ENABLED
 !    module procedure getStrWrappedList_SK3
-!        use pm_kind, only: SKC => SK3
+!        use pm_kind, only: SKG => SK3
 !#include "pm_str@routines.inc.F90"
 !    end procedure
 !#endif
 !
 !#if SK2_ENABLED
 !    module procedure getStrWrappedList_SK2
-!        use pm_kind, only: SKC => SK2
+!        use pm_kind, only: SKG => SK2
 !#include "pm_str@routines.inc.F90"
 !    end procedure
 !#endif
 !
 !#if SK1_ENABLED
 !    module procedure getStrWrappedList_SK1
-!        use pm_kind, only: SKC => SK1
+!        use pm_kind, only: SKG => SK1
 !#include "pm_str@routines.inc.F90"
 !    end procedure
 !#endif

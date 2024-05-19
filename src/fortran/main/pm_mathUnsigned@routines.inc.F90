@@ -25,15 +25,15 @@
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #if     uadd_ENABLED && IK_ENABLED
-        integer(IKC) :: aa, bb
-        integer(IKC), parameter :: HUGE_IKC = huge(0_IKC) !, SIGNBITLOC = bit_size(a) - 1_IKC
-        CHECK_ASSERTION(__LINE__, 0_IKC <= a, SK_"@getFactoring(): The condition `0 <= a` must hold for corresponding input arguments. a = "//getStr(a))
-        CHECK_ASSERTION(__LINE__, 0_IKC <= b, SK_"@getFactoring(): The condition `0 <= b` must hold for corresponding input arguments. b = "//getStr(b))
-        if (HUGE_IKC - a < b) then ! overflowed.
+        integer(IKG) :: aa, bb
+        integer(IKG), parameter :: HUGE_IKG = huge(0_IKG) !, SIGNBITLOC = bit_size(a) - 1_IKG
+        CHECK_ASSERTION(__LINE__, 0_IKG <= a, SK_"@getFactoring(): The condition `0 <= a` must hold for corresponding input arguments. a = "//getStr(a))
+        CHECK_ASSERTION(__LINE__, 0_IKG <= b, SK_"@getFactoring(): The condition `0 <= b` must hold for corresponding input arguments. b = "//getStr(b))
+        if (HUGE_IKG - a < b) then ! overflowed.
             !aa = ibset(a, SIGNBITLOC)
             !bb = ibset(b, SIGNBITLOC)
-            aa = a - HUGE_IKC - 1_IKC
-            bb = b - HUGE_IKC - 1_IKC
+            aa = a - HUGE_IKG - 1_IKG
+            bb = b - HUGE_IKG - 1_IKG
             sum = aa + bb
         else
             sum = a + b

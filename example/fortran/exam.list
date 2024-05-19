@@ -614,7 +614,7 @@ pm_sampleWeight/setReweight
 pm_sampling/attributes
 pm_sampling/getErrSampling
 pm_sampling/himmelblau
-pm_sampling/mixture
+!pm_sampling/mixture
 pm_sampling/mvn
 pm_sampling/quadratic
 pm_sampling/runParaDRAM

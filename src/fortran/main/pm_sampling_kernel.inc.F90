@@ -34,19 +34,19 @@
             !   For now, we accept this risk as the odds of mixed endianness on the existing contemporary supercomputers is low.
             !   This may, however, need a more robust solution in the future.
             !   One possible solution might be to build an appropriate real data type using the MPI intrinsic `mpi_type_create_struct()`.
-            integer             , parameter     :: NBRK = c_sizeof(0._RKC) ! Number of bytes in the current real kind.
+            integer             , parameter     :: NBRK = c_sizeof(0._RKG) ! Number of bytes in the current real kind.
 #if         OMP_ENABLED && (MATLAB_ENABLED || PYTHON_ENABLED || R_ENABLED)
-            real(RKC)                           :: mold
+            real(RKG)                           :: mold
 #elif       OMP_ENABLED
             integer(IK)         , parameter     :: CACHELINE = 128_IK * 8_IK
-            integer(IK)         , parameter     :: REAL_SIZE = storage_size(0._RKC)
+            integer(IK)         , parameter     :: REAL_SIZE = storage_size(0._RKG)
             integer(IK)         , parameter     :: JUMP = 1_IK + CACHELINE / REAL_SIZE
-            real(RKC)                           :: logFuncState(JUMP, spec%image%count)
+            real(RKG)                           :: logFuncState(JUMP, spec%image%count)
 #endif
             character(*, SK)    , parameter     :: PROCEDURE_NAME = MODULE_NAME//SK_"@getErrKernelRun()"
             integer(IK)         , parameter     :: CHAIN_RESTART_OFFSET = 2_IK
-            real(RKC)                           :: sumAccrAccRejDel ! sum(accr since start) for accepted/rejected/delayed proposals: used to figure out the average acceptance ratio for the entire chain.
-            real(RKC)                           :: sumAccrAccRej    ! sum(accr since start) for accepted/rejected proposals: used to figure out the average acceptance ratio for the entire chain.
+            real(RKG)                           :: sumAccrAccRejDel ! sum(accr since start) for accepted/rejected/delayed proposals: used to figure out the average acceptance ratio for the entire chain.
+            real(RKG)                           :: sumAccrAccRej    ! sum(accr since start) for accepted/rejected proposals: used to figure out the average acceptance ratio for the entire chain.
             integer             , allocatable   :: pos(:)
             integer                             :: ndimp1
             integer(IK)                         :: ndim
@@ -57,15 +57,15 @@
             integer(IK)                         :: lastStateWeight                                      ! This is used for passing the most recent verbose chain segment to the adaptive updater of the sampler
             integer(IK)                         :: currentStateWeight                                   ! counter for SampleWeight, used only in restart mode
             integer(IK)                         :: numFunCallAcceptedPlusOne                            ! counter for SampleWeight, used only in restart mode
-            real(RKC)                           :: meanAccRateSinceStart                                ! used for restart file read. xxx \todo: this could be merged with stat%cfc%meanAcceptanceRate.
-            real(RKC)                           :: logFuncDiff                                          ! The difference between the log of the old and the new states. Used to avoid underflow.
+            real(RKG)                           :: meanAccRateSinceStart                                ! used for restart file read. xxx \todo: this could be merged with stat%cfc%meanAcceptanceRate.
+            real(RKG)                           :: logFuncDiff                                          ! The difference between the log of the old and the new states. Used to avoid underflow.
             integer(IK)                         :: dumint
             logical(LK)                         :: proposalAdaptationGreedyEnabled
             integer(IK)                         :: proposalAdaptationLen
             logical(LK)                         :: proposalAdaptationSampleUsed
             integer(IK)                         :: acceptedRejectedDelayedUnusedRestartMode
-           !real(RKC)                           :: proposalAdaptationDummy
-            real(RKC)           , allocatable   :: proposalAdaptation(:)
+           !real(RKG)                           :: proposalAdaptationDummy
+            real(RKG)           , allocatable   :: proposalAdaptation(:)
             integer                             :: imageStartID, imageEndID, imageID ! This must be default integer, at least for MPI.
 #if         OMP_ENABLED
 #define     CO_LOGFUNCSTATE(I,J,K)co_logFuncState(I,J,K)
@@ -73,31 +73,31 @@
 #define     GET_ELL(X,I)X(I)
 #define     SET_CONOMP(X)X
             integer                             :: co_proposalFound_samplerUpdateOccurred(2)            ! merging these scalars would reduce the MPI communication overhead cost: co_proposalFound, co_samplerUpdateOccurred, co_counterDRS, 0 means false, 1 means true
-            real(RKC)                           :: maxLogFuncRejectedProposal(spec%image%count)         ! used in delayed rejection sampling.
-            real(RKC)                           :: unifrnd(spec%image%count)                            ! used for random number generation.
-            real(RKC)           , allocatable   :: co_logFuncState(:,:,:)                               ! (0 : ndim, 1 : njob, -1 : proposalDelayedRejectionCount), -1 is the current accepted state.
-            real(RKC)           , allocatable   :: co_accr(:,:)                                         ! (1 : njob, -1 : proposalDelayedRejectionCount)
+            real(RKG)                           :: maxLogFuncRejectedProposal(spec%image%count)         ! used in delayed rejection sampling.
+            real(RKG)                           :: unifrnd(spec%image%count)                            ! used for random number generation.
+            real(RKG)           , allocatable   :: co_logFuncState(:,:,:)                               ! (0 : ndim, 1 : njob, -1 : proposalDelayedRejectionCount), -1 is the current accepted state.
+            real(RKG)           , allocatable   :: co_accr(:,:)                                         ! (1 : njob, -1 : proposalDelayedRejectionCount)
 #else
 #define     CO_LOGFUNCSTATE(I,J,K)co_logFuncState(I,K)
 #define     CO_ACCR(I,J)co_accr(J)
 #define     GET_ELL(X,I)X
 #define     SET_CONOMP(X)
-            real(RKC)                           :: maxLogFuncRejectedProposal                           ! used in delayed rejection sampling.
-            real(RKC)                           :: unifrnd                                              ! used for random number generation.
+            real(RKG)                           :: maxLogFuncRejectedProposal                           ! used in delayed rejection sampling.
+            real(RKG)                           :: unifrnd                                              ! used for random number generation.
 #if         CAF_ENABLED
             integer             , save          :: co_proposalFound_samplerUpdateOccurred(2)[*]         ! merging these scalars would reduce the MPI communication overhead cost: co_proposalFound, co_samplerUpdateOccurred, co_counterDRS, 0 means false, 1 means true.
-            real(RKC)           , allocatable   :: co_logFuncState(:,:)[:]                              ! (0 : ndim, -1 : proposalDelayedRejectionCount), -1 is the current accepted state.
-            real(RKC)           , allocatable   :: co_accr(:)[:]                                        ! (1 : njob, -1 : proposalDelayedRejectionCount)
+            real(RKG)           , allocatable   :: co_logFuncState(:,:)[:]                              ! (0 : ndim, -1 : proposalDelayedRejectionCount), -1 is the current accepted state.
+            real(RKG)           , allocatable   :: co_accr(:)[:]                                        ! (1 : njob, -1 : proposalDelayedRejectionCount)
 #else
             integer                             :: co_proposalFound_samplerUpdateOccurred(2)            ! merging these scalars would reduce the MPI communication overhead cost: co_proposalFound, co_samplerUpdateOccurred, co_counterDRS, 0 means false, 1 means true
-            real(RKC)           , allocatable   :: co_logFuncState(:,:)                                 ! (0 : ndim, -1 : proposalDelayedRejectionCount), -1 is the current accepted state.
-            real(RKC)           , allocatable   :: co_accr(:)                                           ! (1 : njob, -1 : proposalDelayedRejectionCount)
+            real(RKG)           , allocatable   :: co_logFuncState(:,:)                                 ! (0 : ndim, -1 : proposalDelayedRejectionCount), -1 is the current accepted state.
+            real(RKG)           , allocatable   :: co_accr(:)                                           ! (1 : njob, -1 : proposalDelayedRejectionCount)
 #endif
 #if         CAF_ENABLED || MPI_ENABLED
 #if         MPI_ENABLED
             integer                             :: proposalDelayedRejectionCountPlusTwo
             integer                             :: proposalFoundSinglChainModeReduced                   ! the reduced value by summing proposalFoundSinglChainModeReduced over all images.
-            real(RKC)           , allocatable   :: accrMat(:,:)                                         ! matrix of size (-1:spec%proposalDelayedRejectionCount%val,1:spec%image%count).
+            real(RKG)           , allocatable   :: accrMat(:,:)                                         ! matrix of size (-1:spec%proposalDelayedRejectionCount%val,1:spec%image%count).
             integer                             :: ierrMPI
 #endif
             integer                             :: proposalFoundSinglChainMode                          ! used in singleChain delayed rejection. zero if the proposal is not accepted. 1 if the proposal is accepted.
@@ -123,31 +123,31 @@
             allocate(CO_LOGFUNCSTATE(0 : ndim, 1 : spec%image%count, -1 : spec%proposalDelayedRejectionCount%val))
             allocate(CO_ACCR(1 : spec%image%count, -1 : spec%proposalDelayedRejectionCount%val)) ! the negative element will contain counterDRS.
 #endif
-            CO_ACCR(:, 0) = 1._RKC ! initial acceptance rate for the first zeroth DR stage.
-            CO_ACCR(:, -1) = 0._RKC ! the real-valued counterDRS, indicating the initial delayed rejection stage at which the first point is sampled.
-            CO_ACCR(:, 1 : spec%proposalDelayedRejectionCount%val) = 0._RKC ! indicates the very first proposal acceptance on image 1.
+            CO_ACCR(:, 0) = 1._RKG ! initial acceptance rate for the first zeroth DR stage.
+            CO_ACCR(:, -1) = 0._RKG ! the real-valued counterDRS, indicating the initial delayed rejection stage at which the first point is sampled.
+            CO_ACCR(:, 1 : spec%proposalDelayedRejectionCount%val) = 0._RKG ! indicates the very first proposal acceptance on image 1.
 #if         MPI_ENABLED
             if (allocated(accrMat)) deallocate(accrMat)
             allocate(accrMat(-1 : spec%proposalDelayedRejectionCount%val, 1 : spec%image%count)) ! the negative element will contain counterDRS.
-            accrMat = 0._RKC ! -huge(1._RKC) ! debug
-            accrMat(0, 1 : spec%image%count) = 1._RKC ! initial acceptance rate for the first zeroth DR stage.
+            accrMat = 0._RKG ! -huge(1._RKG) ! debug
+            accrMat(0, 1 : spec%image%count) = 1._RKG ! initial acceptance rate for the first zeroth DR stage.
             proposalDelayedRejectionCountPlusTwo = (spec%proposalDelayedRejectionCount%val + 2) * NBRK
             !proposalDelayedRejectionCountPlusTwo = spec%proposalDelayedRejectionCount%val + 2
 #endif
             if (proposal%delRejEnabled) then
                 stat%numFunCallAcceptedRejectedDelayed = 0_IK ! Markov Chain counter
-                sumAccrAccRejDel = 0._RKC ! sum of acceptance rate
+                sumAccrAccRejDel = 0._RKG ! sum of acceptance rate
             end if
-            ! proposalAdaptation = 0._RKC ! needed for the first output.
+            ! proposalAdaptation = 0._RKG ! needed for the first output.
             proposalAdaptationSampleUsed = .true._LK ! needed to set up lastStateWeight and numFunCallAcceptedLastAdaptation for the first accepted proposal.
-            sumAccrAccRej = 0._RKC ! sum of acceptance rate.
+            sumAccrAccRej = 0._RKG ! sum of acceptance rate.
             counterPAC = 0_IK ! counter for pproposalAdaptationCount.
             counterPAP = 0_IK ! counter for proposalAdaptationPeriod.
             stat%numFunCallAccepted = 0_IK ! Markov Chain acceptance counter.
             stat%numFunCallAcceptedRejected = 0_IK ! Markov Chain counter
             numFunCallAcceptedLastAdaptation = 0_IK
             lastStateWeight = -huge(lastStateWeight)
-            meanAccRateSinceStart = 1._RKC ! needed for the first restart output in fresh run.
+            meanAccRateSinceStart = 1._RKG ! needed for the first restart output in fresh run.
 
             proposalAdaptationLen = 100_IK
             blockNewDryRun: if (spec%run%is%new) then
@@ -357,7 +357,7 @@
                                 stat%numFunCallAccepted = stat%numFunCallAccepted + 1_IK
                                 stat%cfc%processID(stat%numFunCallAccepted) = imageID
                                 stat%cfc%delayedRejectionStage(stat%numFunCallAccepted) = counterDRS
-                                stat%cfc%proposalAdaptation(stat%numFunCallAccepted) = 0._RKC
+                                stat%cfc%proposalAdaptation(stat%numFunCallAccepted) = 0._RKG
                                 stat%cfc%sampleWeight(stat%numFunCallAccepted) = 0_IK
                                 stat%cfc%sampleLogFunc(stat%numFunCallAccepted) = CO_LOGFUNCSTATE(0, imageID, -1)
                                 stat%cfc%sampleState(1 : ndim, stat%numFunCallAccepted) = CO_LOGFUNCSTATE(1 : ndim, imageID, -1)
@@ -370,8 +370,8 @@
                                     call writeCFC(spec, stat, proposalAdaptation)
                                     spec%run%is%dry = .not. spec%run%is%new
                                     stat%cfc%sampleWeight(numFunCallAcceptedPlusOne) = 0_IK
-                                    sumAccrAccRej = stat%cfc%meanAcceptanceRate(stat%numFunCallAccepted) * real(stat%numFunCallAcceptedRejected, RKC)
-                                    if (proposal%delRejEnabled) sumAccrAccRejDel = stat%cfc%meanAcceptanceRate(stat%numFunCallAccepted) * real(stat%numFunCallAcceptedRejectedDelayed, RKC)
+                                    sumAccrAccRej = stat%cfc%meanAcceptanceRate(stat%numFunCallAccepted) * real(stat%numFunCallAcceptedRejected, RKG)
+                                    if (proposal%delRejEnabled) sumAccrAccRejDel = stat%cfc%meanAcceptanceRate(stat%numFunCallAccepted) * real(stat%numFunCallAcceptedRejectedDelayed, RKG)
                                 end if
                                 stat%numFunCallAccepted = numFunCallAcceptedPlusOne
                                 numFunCallAcceptedPlusOne = stat%numFunCallAccepted + 1_IK
@@ -409,7 +409,7 @@
                             stat%numFunCallAcceptedRejectedDelayed = stat%numFunCallAcceptedRejectedDelayed + counterDRS + 1_IK
                         end if
                         if (spec%run%is%new) then ! these are used for adaptive proposal updating, so they have to be set on every accepted or rejected iteration (excluding delayed rejections)
-                            stat%cfc%meanAcceptanceRate(stat%numFunCallAccepted) = sumAccrAccRej / real(stat%numFunCallAcceptedRejected,kind=RKC)
+                            stat%cfc%meanAcceptanceRate(stat%numFunCallAccepted) = sumAccrAccRej / real(stat%numFunCallAcceptedRejected,kind=RKG)
                             stat%cfc%sampleWeight(stat%numFunCallAccepted) = stat%cfc%sampleWeight(stat%numFunCallAccepted) + 1_IK
                             if (proposalAdaptationLen < stat%cfc%sampleWeight(stat%numFunCallAccepted)) then
                                 proposalAdaptationLen = 2_IK * proposalAdaptationLen
@@ -436,7 +436,7 @@
                                 call writeCFC(spec, stat, proposalAdaptation)
                                 flush(spec%chainFile%unit)
                             end if
-                            call reportProgress(spec, stat, timeLeft = 0._RKD) ! timeElapsed = stat%timer%time() - stat%timer%start, timeLeft = 0._RKC
+                            call reportProgress(spec, stat, timeLeft = 0._RKD) ! timeElapsed = stat%timer%time() - stat%timer%start, timeLeft = 0._RKG
                             SET_PARALLEL(exit loopOverImages)
                         end if blockLastSample
 
@@ -473,7 +473,7 @@
                             stat%cfc%sampleWeight(stat%numFunCallAccepted) = dumint   ! needed for the restart mode, not needed in the fresh run, but is not worth fencing it.
                             if (stat%numFunCallAccepted == numFunCallAcceptedLastAdaptation) then
                                 !proposalAdaptation = proposalAdaptation + proposalAdaptationDummy ! this is the worst-case upper-bound
-                                stat%cfc%proposalAdaptation(stat%numFunCallAccepted) = min(1._RKC, stat%cfc%proposalAdaptation(stat%numFunCallAccepted) + proposalAdaptation(dumint)) ! this is the worst-case upper-bound
+                                stat%cfc%proposalAdaptation(stat%numFunCallAccepted) = min(1._RKG, stat%cfc%proposalAdaptation(stat%numFunCallAccepted) + proposalAdaptation(dumint)) ! this is the worst-case upper-bound
                             else
                                 !proposalAdaptation = proposalAdaptationDummy
                                 stat%cfc%proposalAdaptation(stat%numFunCallAccepted) = proposalAdaptation(dumint)
@@ -485,9 +485,9 @@
                             end if
                             counterPAP = 0_IK
                             counterPAC = counterPAC + 1_IK
-                            !if (counterPAC==spec%proposalAdaptationCount%val) proposalAdaptation = 0._RKC
+                            !if (counterPAC==spec%proposalAdaptationCount%val) proposalAdaptation = 0._RKG
                         else blockSamplerAdaptation
-                            proposalAdaptation(stat%cfc%sampleWeight(stat%numFunCallAccepted)) = 0._RKC
+                            proposalAdaptation(stat%cfc%sampleWeight(stat%numFunCallAccepted)) = 0._RKG
                         end if blockSamplerAdaptation
 
                         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -586,8 +586,8 @@
                 end if
 #endif
                 if (co_proposalFound_samplerUpdateOccurred(1) == -1) exit loopMarkovChain   ! we are done: co_missionAccomplished = .true._LK
-                CO_ACCR(:, -1) = -1._RKC ! counterDRS at which new proposal is accepted. This null initialization is essential for all serial and parallel modes.
-                maxLogFuncRejectedProposal = -huge(maxLogFuncRejectedProposal) * .1_RKC
+                CO_ACCR(:, -1) = -1._RKG ! counterDRS at which new proposal is accepted. This null initialization is essential for all serial and parallel modes.
+                maxLogFuncRejectedProposal = -huge(maxLogFuncRejectedProposal) * .1_RKG
 
                 ! This CAFMPI_SINGLCHAIN_ENABLED preprocessing avoids unnecessary communication in serial or multichain-parallel modes.
 
@@ -657,7 +657,7 @@
             if (spec%image%is%leader) then
                 block
                     integer(IK) :: i
-                    if (0.999999_RKC < spec%proposalAdaptationBurnin%val) then
+                    if (0.999999_RKG < spec%proposalAdaptationBurnin%val) then
                         stat%burninLocDRAM%compact = 1_IK
                         stat%burninLocDRAM%verbose = 1_IK
                     else
@@ -681,7 +681,7 @@
             ! LCOV_EXCL_START
             ! multichain parallelism should never happen for serial, concurrent, or openmp applications.
             SET_PARALLEL(if (spec%parallelism%is%multiChain) then)
-                stat%avgCommPerFunCall = 0._RKC
+                stat%avgCommPerFunCall = 0._RKG
                 stat%numFunCallAcceptedRejectedDelayedUnused = stat%numFunCallAcceptedRejectedDelayed
                 dumint = stat%numFunCallAcceptedRejectedDelayedUnused - acceptedRejectedDelayedUnusedRestartMode ! this is needed to avoid division-by-zero undefined behavior
                 if (dumint /= 0_IK) stat%avgTimePerFunCall = stat%avgTimePerFunCall / dumint

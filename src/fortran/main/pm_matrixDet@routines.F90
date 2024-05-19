@@ -55,35 +55,35 @@ contains
 
 #if CK5_ENABLED
     module procedure getMatDet_CK5
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
 #include "pm_matrixDet@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure getMatDet_CK4
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
 #include "pm_matrixDet@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure getMatDet_CK3
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
 #include "pm_matrixDet@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure getMatDet_CK2
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
 #include "pm_matrixDet@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure getMatDet_CK1
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
 #include "pm_matrixDet@routines.inc.F90"
     end procedure
 #endif
@@ -96,35 +96,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getMatDet_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_matrixDet@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getMatDet_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_matrixDet@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getMatDet_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_matrixDet@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getMatDet_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_matrixDet@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getMatDet_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_matrixDet@routines.inc.F90"
     end procedure
 #endif
@@ -145,35 +145,35 @@ contains
 
 #if CK5_ENABLED
     module procedure setMatDet_CK5
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
 #include "pm_matrixDet@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure setMatDet_CK4
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
 #include "pm_matrixDet@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure setMatDet_CK3
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
 #include "pm_matrixDet@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure setMatDet_CK2
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
 #include "pm_matrixDet@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure setMatDet_CK1
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
 #include "pm_matrixDet@routines.inc.F90"
     end procedure
 #endif
@@ -186,35 +186,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setMatDet_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_matrixDet@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setMatDet_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_matrixDet@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setMatDet_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_matrixDet@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setMatDet_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_matrixDet@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setMatDet_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_matrixDet@routines.inc.F90"
     end procedure
 #endif
@@ -235,35 +235,35 @@ contains
 
 #if CK5_ENABLED
     module procedure getMatDetSqrt_CK5
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
 #include "pm_matrixDet@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure getMatDetSqrt_CK4
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
 #include "pm_matrixDet@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure getMatDetSqrt_CK3
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
 #include "pm_matrixDet@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure getMatDetSqrt_CK2
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
 #include "pm_matrixDet@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure getMatDetSqrt_CK1
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
 #include "pm_matrixDet@routines.inc.F90"
     end procedure
 #endif
@@ -276,35 +276,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getMatDetSqrt_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_matrixDet@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getMatDetSqrt_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_matrixDet@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getMatDetSqrt_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_matrixDet@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getMatDetSqrt_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_matrixDet@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getMatDetSqrt_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_matrixDet@routines.inc.F90"
     end procedure
 #endif
@@ -337,35 +337,35 @@ contains
 
 #if CK5_ENABLED
     module procedure setMatDetSqrt_UXD_ONO_CK5
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
 #include "pm_matrixDet@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure setMatDetSqrt_UXD_ONO_CK4
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
 #include "pm_matrixDet@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure setMatDetSqrt_UXD_ONO_CK3
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
 #include "pm_matrixDet@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure setMatDetSqrt_UXD_ONO_CK2
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
 #include "pm_matrixDet@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure setMatDetSqrt_UXD_ONO_CK1
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
 #include "pm_matrixDet@routines.inc.F90"
     end procedure
 #endif
@@ -378,35 +378,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setMatDetSqrt_UXD_ONO_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_matrixDet@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setMatDetSqrt_UXD_ONO_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_matrixDet@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setMatDetSqrt_UXD_ONO_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_matrixDet@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setMatDetSqrt_UXD_ONO_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_matrixDet@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setMatDetSqrt_UXD_ONO_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_matrixDet@routines.inc.F90"
     end procedure
 #endif
@@ -429,35 +429,35 @@ contains
 
 #if CK5_ENABLED
     module procedure setMatDetSqrt_XLD_ONO_CK5
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
 #include "pm_matrixDet@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure setMatDetSqrt_XLD_ONO_CK4
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
 #include "pm_matrixDet@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure setMatDetSqrt_XLD_ONO_CK3
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
 #include "pm_matrixDet@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure setMatDetSqrt_XLD_ONO_CK2
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
 #include "pm_matrixDet@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure setMatDetSqrt_XLD_ONO_CK1
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
 #include "pm_matrixDet@routines.inc.F90"
     end procedure
 #endif
@@ -470,35 +470,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setMatDetSqrt_XLD_ONO_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_matrixDet@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setMatDetSqrt_XLD_ONO_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_matrixDet@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setMatDetSqrt_XLD_ONO_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_matrixDet@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setMatDetSqrt_XLD_ONO_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_matrixDet@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setMatDetSqrt_XLD_ONO_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_matrixDet@routines.inc.F90"
     end procedure
 #endif
@@ -533,35 +533,35 @@ contains
 
 #if CK5_ENABLED
     module procedure setMatDetSqrt_UXD_OTH_CK5
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
 #include "pm_matrixDet@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure setMatDetSqrt_UXD_OTH_CK4
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
 #include "pm_matrixDet@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure setMatDetSqrt_UXD_OTH_CK3
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
 #include "pm_matrixDet@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure setMatDetSqrt_UXD_OTH_CK2
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
 #include "pm_matrixDet@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure setMatDetSqrt_UXD_OTH_CK1
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
 #include "pm_matrixDet@routines.inc.F90"
     end procedure
 #endif
@@ -574,35 +574,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setMatDetSqrt_UXD_OTH_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_matrixDet@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setMatDetSqrt_UXD_OTH_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_matrixDet@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setMatDetSqrt_UXD_OTH_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_matrixDet@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setMatDetSqrt_UXD_OTH_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_matrixDet@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setMatDetSqrt_UXD_OTH_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_matrixDet@routines.inc.F90"
     end procedure
 #endif
@@ -625,35 +625,35 @@ contains
 
 #if CK5_ENABLED
     module procedure setMatDetSqrt_XLD_OTH_CK5
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
 #include "pm_matrixDet@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure setMatDetSqrt_XLD_OTH_CK4
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
 #include "pm_matrixDet@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure setMatDetSqrt_XLD_OTH_CK3
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
 #include "pm_matrixDet@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure setMatDetSqrt_XLD_OTH_CK2
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
 #include "pm_matrixDet@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure setMatDetSqrt_XLD_OTH_CK1
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
 #include "pm_matrixDet@routines.inc.F90"
     end procedure
 #endif
@@ -666,35 +666,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setMatDetSqrt_XLD_OTH_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_matrixDet@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setMatDetSqrt_XLD_OTH_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_matrixDet@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setMatDetSqrt_XLD_OTH_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_matrixDet@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setMatDetSqrt_XLD_OTH_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_matrixDet@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setMatDetSqrt_XLD_OTH_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_matrixDet@routines.inc.F90"
     end procedure
 #endif
@@ -727,35 +727,35 @@ contains
 
 #if CK5_ENABLED
     module procedure getMatDetSqrtLog_CK5
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
 #include "pm_matrixDet@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure getMatDetSqrtLog_CK4
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
 #include "pm_matrixDet@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure getMatDetSqrtLog_CK3
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
 #include "pm_matrixDet@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure getMatDetSqrtLog_CK2
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
 #include "pm_matrixDet@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure getMatDetSqrtLog_CK1
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
 #include "pm_matrixDet@routines.inc.F90"
     end procedure
 #endif
@@ -768,35 +768,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getMatDetSqrtLog_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_matrixDet@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getMatDetSqrtLog_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_matrixDet@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getMatDetSqrtLog_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_matrixDet@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getMatDetSqrtLog_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_matrixDet@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getMatDetSqrtLog_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_matrixDet@routines.inc.F90"
     end procedure
 #endif
@@ -829,35 +829,35 @@ contains
 
 #if CK5_ENABLED
     module procedure setMatDetSqrtLog_UXD_ONO_CK5
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
 #include "pm_matrixDet@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure setMatDetSqrtLog_UXD_ONO_CK4
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
 #include "pm_matrixDet@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure setMatDetSqrtLog_UXD_ONO_CK3
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
 #include "pm_matrixDet@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure setMatDetSqrtLog_UXD_ONO_CK2
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
 #include "pm_matrixDet@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure setMatDetSqrtLog_UXD_ONO_CK1
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
 #include "pm_matrixDet@routines.inc.F90"
     end procedure
 #endif
@@ -870,35 +870,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setMatDetSqrtLog_UXD_ONO_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_matrixDet@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setMatDetSqrtLog_UXD_ONO_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_matrixDet@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setMatDetSqrtLog_UXD_ONO_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_matrixDet@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setMatDetSqrtLog_UXD_ONO_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_matrixDet@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setMatDetSqrtLog_UXD_ONO_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_matrixDet@routines.inc.F90"
     end procedure
 #endif
@@ -921,35 +921,35 @@ contains
 
 #if CK5_ENABLED
     module procedure setMatDetSqrtLog_XLD_ONO_CK5
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
 #include "pm_matrixDet@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure setMatDetSqrtLog_XLD_ONO_CK4
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
 #include "pm_matrixDet@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure setMatDetSqrtLog_XLD_ONO_CK3
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
 #include "pm_matrixDet@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure setMatDetSqrtLog_XLD_ONO_CK2
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
 #include "pm_matrixDet@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure setMatDetSqrtLog_XLD_ONO_CK1
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
 #include "pm_matrixDet@routines.inc.F90"
     end procedure
 #endif
@@ -962,35 +962,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setMatDetSqrtLog_XLD_ONO_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_matrixDet@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setMatDetSqrtLog_XLD_ONO_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_matrixDet@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setMatDetSqrtLog_XLD_ONO_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_matrixDet@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setMatDetSqrtLog_XLD_ONO_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_matrixDet@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setMatDetSqrtLog_XLD_ONO_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_matrixDet@routines.inc.F90"
     end procedure
 #endif
@@ -1025,35 +1025,35 @@ contains
 
 #if CK5_ENABLED
     module procedure setMatDetSqrtLog_UXD_OTH_CK5
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
 #include "pm_matrixDet@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure setMatDetSqrtLog_UXD_OTH_CK4
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
 #include "pm_matrixDet@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure setMatDetSqrtLog_UXD_OTH_CK3
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
 #include "pm_matrixDet@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure setMatDetSqrtLog_UXD_OTH_CK2
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
 #include "pm_matrixDet@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure setMatDetSqrtLog_UXD_OTH_CK1
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
 #include "pm_matrixDet@routines.inc.F90"
     end procedure
 #endif
@@ -1066,35 +1066,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setMatDetSqrtLog_UXD_OTH_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_matrixDet@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setMatDetSqrtLog_UXD_OTH_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_matrixDet@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setMatDetSqrtLog_UXD_OTH_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_matrixDet@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setMatDetSqrtLog_UXD_OTH_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_matrixDet@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setMatDetSqrtLog_UXD_OTH_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_matrixDet@routines.inc.F90"
     end procedure
 #endif
@@ -1117,35 +1117,35 @@ contains
 
 #if CK5_ENABLED
     module procedure setMatDetSqrtLog_XLD_OTH_CK5
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
 #include "pm_matrixDet@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure setMatDetSqrtLog_XLD_OTH_CK4
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
 #include "pm_matrixDet@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure setMatDetSqrtLog_XLD_OTH_CK3
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
 #include "pm_matrixDet@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure setMatDetSqrtLog_XLD_OTH_CK2
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
 #include "pm_matrixDet@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure setMatDetSqrtLog_XLD_OTH_CK1
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
 #include "pm_matrixDet@routines.inc.F90"
     end procedure
 #endif
@@ -1158,35 +1158,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setMatDetSqrtLog_XLD_OTH_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_matrixDet@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setMatDetSqrtLog_XLD_OTH_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_matrixDet@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setMatDetSqrtLog_XLD_OTH_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_matrixDet@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setMatDetSqrtLog_XLD_OTH_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_matrixDet@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setMatDetSqrtLog_XLD_OTH_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_matrixDet@routines.inc.F90"
     end procedure
 #endif

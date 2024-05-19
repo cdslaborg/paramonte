@@ -34,7 +34,7 @@ contains
 #if IK4_ENABLED
     module procedure test_getInt64_LK_1
         use pm_val2int, only: getInt => getInt64
-        use pm_kind, only: IKC => IK4
+        use pm_kind, only: IKG => IK4
 #define test_getInt64_LK_ENABLED 1
 #include "test_pm_val2int@routines.inc.F90"
 #undef test_getInt64_LK_ENABLED
@@ -42,7 +42,7 @@ contains
 
     module procedure test_getInt64_SK_1
         use pm_val2int, only: getInt => getInt64
-        use pm_kind, only: IKC => IK4
+        use pm_kind, only: IKG => IK4
 #define test_getInt64_SK_ENABLED 1
 #include "test_pm_val2int@routines.inc.F90"
 #undef test_getInt64_SK_ENABLED
@@ -54,7 +54,7 @@ contains
 #if IK3_ENABLED
     module procedure test_getInt32_LK_1
         use pm_val2int, only: getInt => getInt32
-        use pm_kind, only: IKC => IK3
+        use pm_kind, only: IKG => IK3
 #define test_getInt32_LK_ENABLED 1
 #include "test_pm_val2int@routines.inc.F90"
 #undef test_getInt32_LK_ENABLED
@@ -62,7 +62,7 @@ contains
 
     module procedure test_getInt32_SK_1
         use pm_val2int, only: getInt => getInt32
-        use pm_kind, only: IKC => IK3
+        use pm_kind, only: IKG => IK3
 #define test_getInt32_SK_ENABLED 1
 #include "test_pm_val2int@routines.inc.F90"
 #undef test_getInt32_SK_ENABLED
@@ -74,7 +74,7 @@ contains
 #if IK2_ENABLED
     module procedure test_getInt16_LK_1
         use pm_val2int, only: getInt => getInt16
-        use pm_kind, only: IKC => IK2
+        use pm_kind, only: IKG => IK2
 #define test_getInt16_LK_ENABLED 1
 #include "test_pm_val2int@routines.inc.F90"
 #undef test_getInt16_LK_ENABLED
@@ -82,7 +82,7 @@ contains
 
     module procedure test_getInt16_SK_1
         use pm_val2int, only: getInt => getInt16
-        use pm_kind, only: IKC => IK2
+        use pm_kind, only: IKG => IK2
 #define test_getInt16_SK_ENABLED 1
 #include "test_pm_val2int@routines.inc.F90"
 #undef test_getInt16_SK_ENABLED
@@ -94,7 +94,7 @@ contains
 #if IK1_ENABLED
     module procedure test_getInt8_LK_1
         use pm_val2int, only: getInt => getInt8
-        use pm_kind, only: IKC => IK1
+        use pm_kind, only: IKG => IK1
 #define test_getInt8_LK_ENABLED 1
 #include "test_pm_val2int@routines.inc.F90"
 #undef test_getInt8_LK_ENABLED
@@ -102,7 +102,7 @@ contains
 
     module procedure test_getInt8_SK_1
         use pm_val2int, only: getInt => getInt8
-        use pm_kind, only: IKC => IK1
+        use pm_kind, only: IKG => IK1
 #define test_getInt8_SK_ENABLED 1
 #include "test_pm_val2int@routines.inc.F90"
 #undef test_getInt8_SK_ENABLED
@@ -112,7 +112,7 @@ contains
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     module procedure test_getInt_LK_1
-        use pm_kind, only: IKC => IK
+        use pm_kind, only: IKG => IK
         use pm_val2int, only: getInt
 #define test_getInt_LK_ENABLED 1
 #include "test_pm_val2int@routines.inc.F90"
@@ -120,7 +120,7 @@ contains
     end procedure
 
     module procedure test_getInt_SK_1
-        use pm_kind, only: IKC => IK
+        use pm_kind, only: IKG => IK
         use pm_val2int, only: getInt
 #define test_getInt_SK_ENABLED 1
 #include "test_pm_val2int@routines.inc.F90"

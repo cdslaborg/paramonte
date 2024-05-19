@@ -35,17 +35,17 @@
         ! Declare the temporary array.
 #if     Old_ENABLED
 #if     SK_ENABLED && D0_ENABLED
-        character(:,SKC), allocatable :: arrayNew
+        character(:,SKG), allocatable :: arrayNew
 #elif   SK_ENABLED && D1_ENABLED
-        character(len(array, IK),SKC), allocatable :: arrayNew(:)
+        character(len(array, IK),SKG), allocatable :: arrayNew(:)
 #elif   IK_ENABLED && D1_ENABLED
-        integer(IKC), allocatable :: arrayNew(:)
+        integer(IKG), allocatable :: arrayNew(:)
 #elif   LK_ENABLED && D1_ENABLED
-        logical(LKC), allocatable :: arrayNew(:)
+        logical(LKG), allocatable :: arrayNew(:)
 #elif   CK_ENABLED && D1_ENABLED
-        complex(CKC), allocatable :: arrayNew(:)
+        complex(CKG), allocatable :: arrayNew(:)
 #elif   RK_ENABLED && D1_ENABLED
-        real(RKC), allocatable :: arrayNew(:)
+        real(RKG), allocatable :: arrayNew(:)
 #else
 #error  "Unrecognized interface."
 #endif

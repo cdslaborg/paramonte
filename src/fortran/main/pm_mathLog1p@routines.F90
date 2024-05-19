@@ -58,35 +58,35 @@ contains
 
 #if CK5_ENABLED
     module procedure getLog1pSeq_CK5
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
 #include "pm_mathLog1p@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure getLog1pSeq_CK4
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
 #include "pm_mathLog1p@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure getLog1pSeq_CK3
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
 #include "pm_mathLog1p@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure getLog1pSeq_CK2
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
 #include "pm_mathLog1p@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure getLog1pSeq_CK1
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
 #include "pm_mathLog1p@routines.inc.F90"
     end procedure
 #endif
@@ -99,35 +99,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getLog1pSeq_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_mathLog1p@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getLog1pSeq_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_mathLog1p@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getLog1pSeq_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_mathLog1p@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getLog1pSeq_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_mathLog1p@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getLog1pSeq_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_mathLog1p@routines.inc.F90"
     end procedure
 #endif
@@ -150,35 +150,35 @@ contains
 !
 !#if CK5_ENABLED
 !    module procedure getLog1pSel_CK5
-!        use pm_kind, only: CKC => CK5
+!        use pm_kind, only: CKG => CK5
 !#include "pm_mathLog1p@routines.inc.F90"
 !    end procedure
 !#endif
 !
 !#if CK4_ENABLED
 !    module procedure getLog1pSel_CK4
-!        use pm_kind, only: CKC => CK4
+!        use pm_kind, only: CKG => CK4
 !#include "pm_mathLog1p@routines.inc.F90"
 !    end procedure
 !#endif
 !
 !#if CK3_ENABLED
 !    module procedure getLog1pSel_CK3
-!        use pm_kind, only: CKC => CK3
+!        use pm_kind, only: CKG => CK3
 !#include "pm_mathLog1p@routines.inc.F90"
 !    end procedure
 !#endif
 !
 !#if CK2_ENABLED
 !    module procedure getLog1pSel_CK2
-!        use pm_kind, only: CKC => CK2
+!        use pm_kind, only: CKG => CK2
 !#include "pm_mathLog1p@routines.inc.F90"
 !    end procedure
 !#endif
 !
 !#if CK1_ENABLED
 !    module procedure getLog1pSel_CK1
-!        use pm_kind, only: CKC => CK1
+!        use pm_kind, only: CKG => CK1
 !#include "pm_mathLog1p@routines.inc.F90"
 !    end procedure
 !#endif
@@ -191,35 +191,35 @@ contains
 !
 !#if RK5_ENABLED
 !    module procedure getLog1pSel_RK5
-!        use pm_kind, only: RKC => RK5
+!        use pm_kind, only: RKG => RK5
 !#include "pm_mathLog1p@routines.inc.F90"
 !    end procedure
 !#endif
 !
 !#if RK4_ENABLED
 !    module procedure getLog1pSel_RK4
-!        use pm_kind, only: RKC => RK4
+!        use pm_kind, only: RKG => RK4
 !#include "pm_mathLog1p@routines.inc.F90"
 !    end procedure
 !#endif
 !
 !#if RK3_ENABLED
 !    module procedure getLog1pSel_RK3
-!        use pm_kind, only: RKC => RK3
+!        use pm_kind, only: RKG => RK3
 !#include "pm_mathLog1p@routines.inc.F90"
 !    end procedure
 !#endif
 !
 !#if RK2_ENABLED
 !    module procedure getLog1pSel_RK2
-!        use pm_kind, only: RKC => RK2
+!        use pm_kind, only: RKG => RK2
 !#include "pm_mathLog1p@routines.inc.F90"
 !    end procedure
 !#endif
 !
 !#if RK1_ENABLED
 !    module procedure getLog1pSel_RK1
-!        use pm_kind, only: RKC => RK1
+!        use pm_kind, only: RKG => RK1
 !#include "pm_mathLog1p@routines.inc.F90"
 !    end procedure
 !#endif

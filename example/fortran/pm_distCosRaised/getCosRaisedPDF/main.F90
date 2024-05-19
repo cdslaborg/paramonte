@@ -1,7 +1,7 @@
 program example
 
     use pm_kind, only: SK, IK
-    use pm_kind, only: RKC => RK ! all real kinds are supported.
+    use pm_kind, only: RKG => RK ! all real kinds are supported.
     use pm_arrayMembership, only: operator(.inrange.)
     use pm_mathSubAdd, only: operator(.subadd.)
     use pm_distCosRaised, only: getCosRaisedPDF
@@ -13,7 +13,7 @@ program example
     implicit none
 
     integer(IK), parameter  :: NP = 5_IK
-    real(RKC), dimension(NP) :: mu, sigma, PDF
+    real(RKG), dimension(NP) :: mu, sigma, PDF
 
     type(display_type) :: disp
     disp = display_type(file = "main.out.F90")
@@ -24,19 +24,19 @@ program example
     call disp%show("!%%%%%%%%%%%%%%%%%%")
     call disp%skip()
 
-    call setLinSpace(mu, x1 = -5._RKC, x2 = +5._RKC)
-    call setLogSpace(sigma, logx1 = log(0.1_RKC), logx2 = log(10._RKC))
+    call setLinSpace(mu, x1 = -5._RKG, x2 = +5._RKG)
+    call setLogSpace(sigma, logx1 = log(0.1_RKG), logx2 = log(10._RKG))
 
     call disp%skip()
-    call disp%show("PDF(1) = getCosRaisedPDF(0._RKC)")
-                    PDF(1) = getCosRaisedPDF(0._RKC)
+    call disp%show("PDF(1) = getCosRaisedPDF(0._RKG)")
+                    PDF(1) = getCosRaisedPDF(0._RKG)
     call disp%show("PDF(1)")
     call disp%show( PDF(1) )
     call disp%skip()
 
     call disp%skip()
-    call disp%show("PDF(1:5) = getCosRaisedPDF([real(RKC) :: -1., -.5, 0., .5, 1.])")
-                    PDF(1:5) = getCosRaisedPDF([real(RKC) :: -1., -.5, 0., .5, 1.])
+    call disp%show("PDF(1:5) = getCosRaisedPDF([real(RKG) :: -1., -.5, 0., .5, 1.])")
+                    PDF(1:5) = getCosRaisedPDF([real(RKG) :: -1., -.5, 0., .5, 1.])
     call disp%show("PDF(1:5)")
     call disp%show( PDF(1:5) )
     call disp%skip()
@@ -65,8 +65,8 @@ program example
     call disp%skip()
     call disp%show("sigma(1)")
     call disp%show( sigma(1) )
-    call disp%show("PDF(1) = getCosRaisedPDF(0._RKC, sigma = sigma(1))")
-                    PDF(1) = getCosRaisedPDF(0._RKC, sigma = sigma(1))
+    call disp%show("PDF(1) = getCosRaisedPDF(0._RKG, sigma = sigma(1))")
+                    PDF(1) = getCosRaisedPDF(0._RKG, sigma = sigma(1))
     call disp%show("PDF(1)")
     call disp%show( PDF(1) )
     call disp%skip()
@@ -145,17 +145,17 @@ program example
 
     block
         integer(IK) :: fileUnit, i, j
-        real(RKC) :: point(1000), PDF(4), mu(4), sigma(4)
+        real(RKG) :: point(1000), PDF(4), mu(4), sigma(4)
         open(newunit = fileUnit, file = "getCosRaisedPDF.RK.txt")
-        call setLinSpace(point, x1 = -4._RKC, x2 = +4._RKC)
-        sigma = [+3._RKC, +1._RKC, +.3_RKC, 1._RKC]
-        mu = [+0._RKC, +0._RKC, +0._RKC, -2._RKC]
+        call setLinSpace(point, x1 = -4._RKG, x2 = +4._RKG)
+        sigma = [+3._RKG, +1._RKG, +.3_RKG, 1._RKG]
+        mu = [+0._RKG, +0._RKG, +0._RKG, -2._RKG]
         do i = 1, size(point)
             do j = 1, size(PDF)
                 if(point(i) .inrange. (mu(j) .subadd. sigma(j))) then
                     PDF(j) = getCosRaisedPDF(point(i), mu(j), sigma(j))
                 else
-                    PDF(j) = 0._RKC
+                    PDF(j) = 0._RKG
                 end if
             end do
             write(fileUnit,"(5(g0,:,' '))") point(i), PDF

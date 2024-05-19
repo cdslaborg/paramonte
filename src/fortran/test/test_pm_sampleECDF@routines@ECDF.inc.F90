@@ -85,8 +85,8 @@
         real(RK)                    :: Lower(np)
         real(RK)                    :: Upper(np)
 #if setECDF_D1_IK_ENABLED
-        integer(IKC), parameter     :: Sample_ref(np) = int(SampleOrg, kind = IKC) * huge(0_IKC)
-        integer(IKC)                :: Sample(np)
+        integer(IKG), parameter     :: Sample_ref(np) = int(SampleOrg, kind = IKG) * huge(0_IKG)
+        integer(IKG)                :: Sample(np)
 #elif setECDF_D1_RK_ENABLED
         real(RK)    , parameter     :: Sample_ref(np) = real(SampleOrg, kind = RK) * huge(0._RK)
         real(RK)                    :: Sample(np)

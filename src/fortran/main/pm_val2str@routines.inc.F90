@@ -106,7 +106,7 @@
                         str = str//SEP//val(i)%val
                     end do
                 else
-                    str = SKC_""
+                    str = SKG_""
                 end if
                 CHECK_ASSERTION(__LINE__, len(str, IK) <= length, SK_"@getStr(): The condition `len(str) <= length` must hold. len(str), length = "//getStr([len(str, IK), length]))
             end if
@@ -139,7 +139,7 @@
                     str = str//SEP//val(i)%val
                 end do
             else
-                str = SKC_""
+                str = SKG_""
             end if
         end if
 
@@ -178,7 +178,7 @@
                         end do
                     end do
                 else
-                    str = SKC_""
+                    str = SKG_""
                 end if
                 CHECK_ASSERTION(__LINE__, len(str, IK) <= length, SK_"@getStr(): The condition `len(str) <= length` must hold. len(str), length = "//getStr([len(str, IK), length]))
             end if
@@ -218,7 +218,7 @@
                     end do
                 end do
             else
-                str = SKC_""
+                str = SKG_""
             end if
         end if
 
@@ -470,7 +470,7 @@ CHECK_ASSERTION(LINE, len(str, IK) >= length, SK_"@setStr(): The condition `len(
 #elif       !setStr_ENABLED
 #error      "Unrecognized interface."
 #endif
-            character(*,SKC), intent(in)                    :: ValVec(*)
+            character(*,SKG), intent(in)                    :: ValVec(*)
             integer(IK)                                     :: i, iend, sizeVal, lenVal, startpos
             sizeVal = size(val, kind = IK)
             lenVal = len(val, kind = IK)
@@ -482,7 +482,7 @@ CHECK_ASSERTION(LINE, len(str, IK) >= length, SK_"@setStr(): The condition `len(
             end if
 #endif
             do endpos = lenVal, 1_IK, -1_IK
-                if (ValVec(1)(endpos:endpos) /= SKC_" ") exit
+                if (ValVec(1)(endpos:endpos) /= SKG_" ") exit
             end do
             str(1:endpos) = ValVec(1)(1:endpos)
             do i = 2_IK, sizeVal
@@ -490,7 +490,7 @@ CHECK_ASSERTION(LINE, len(str, IK) >= length, SK_"@setStr(): The condition `len(
                 endpos = endpos + SEPLEN
                 str(startpos : endpos) = SEP
                 do iend = lenVal, 1_IK, -1_IK
-                    if (ValVec(i)(iend:iend) /= SKC_" ") exit
+                    if (ValVec(i)(iend:iend) /= SKG_" ") exit
                 end do
                 startpos = endpos + 1_IK
                 endpos = endpos + iend
@@ -517,7 +517,7 @@ CHECK_ASSERTION(LINE, len(str, IK) >= length, SK_"@setStr(): The condition `len(
 #elif       !setStr_ENABLED
 #error      "Unrecognized interface."
 #endif
-            logical(LKC)    , intent(in)                    :: ValVec(*)
+            logical(LKG)    , intent(in)                    :: ValVec(*)
             integer(IK)                                     :: lenStr, sizeVal, i, startpos
             sizeVal = size(val, kind = IK)
             lenStr = count(val, kind = IK)

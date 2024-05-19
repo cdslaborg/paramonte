@@ -25,13 +25,13 @@
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #if     CK_ENABLED
-        complex(TKC), parameter :: ZERO = (0._TKC, 0._TKC), ONE = (1._TKC, 0._TKC)
-#define TYPE_KIND complex(TKC)
+        complex(TKG), parameter :: ZERO = (0._TKG, 0._TKG), ONE = (1._TKG, 0._TKG)
+#define TYPE_KIND complex(TKG)
 #define GET_CONJG(X) conjg(X)
 #define GET_RE(x) x%re
 #elif   RK_ENABLED
-        real(TKC), parameter :: ZERO = 0._TKC, ONE = 1._TKC
-#define TYPE_KIND real(TKC)
+        real(TKG), parameter :: ZERO = 0._TKG, ONE = 1._TKG
+#define TYPE_KIND real(TKG)
 #define GET_CONJG(X) X
 #define GET_RE(x) x
 #else
@@ -41,11 +41,11 @@
 #if     setChoLow_ENABLED
         !%%%%%%%%%%%%%%%%
 
-        real(TKC) :: summ
+        real(TKG) :: summ
         integer(IK) :: idim
         do idim = 1_IK, ndim
             summ = mat(idim,idim) - dot_product(mat(idim,1:idim-1), mat(idim,1:idim-1))
-            if (0._TKC < summ) then
+            if (0._TKG < summ) then
                 dia(idim) = sqrt(summ)
                 mat(idim+1:ndim,idim) = (mat(idim,idim+1:ndim) - matmul(mat(idim+1:ndim,1:idim-1), mat(idim,1:idim-1))) / dia(idim)
             else
@@ -89,7 +89,7 @@
 #elif   setMatChol_ENABLED && ANI_ENABLED
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        real(TKC) :: summ
+        real(TKG) :: summ
         integer(IK) :: irow
 #if     IMP_ENABLED
         integer(IK) :: ndim
@@ -117,16 +117,16 @@
 #endif
         do info = 1_IK, ndim
 #if         ONO_ENABLED
-            summ = real(mat(info, info), TKC) - real(dot_product(GETMAT(chol, info, 1 : info - 1), GETMAT(chol, info, 1 : info - 1)), TKC)
+            summ = real(mat(info, info), TKG) - real(dot_product(GETMAT(chol, info, 1 : info - 1), GETMAT(chol, info, 1 : info - 1)), TKG)
 #elif       OTH_ENABLED
-            summ = real(mat(info, info), TKC) - real(dot_product(GETMAT(chol, 1 : info - 1, info), GETMAT(chol, 1 : info - 1, info)), TKC)
+            summ = real(mat(info, info), TKG) - real(dot_product(GETMAT(chol, 1 : info - 1, info), GETMAT(chol, 1 : info - 1, info)), TKG)
 #else
 #error      "Unrecognized interface."
 #endif
-            if (0._TKC < summ) then
+            if (0._TKG < summ) then
                 summ = sqrt(summ)
                 chol(info, info) = summ
-                summ = 1._TKC / summ
+                summ = 1._TKG / summ
 #if             ONO_ENABLED
                 !GETMAT(chol, info + 1 : ndim, info) = (GETMAT(mat, info + 1 : ndim, info) - GET_MATMUL(GET_CONJG(GETMAT(chol, info + 1 : ndim, 1 : info - 1)),GETMAT(chol, info, 1 : info - 1))) * summ
                 do irow = info + 1, ndim

@@ -86,19 +86,19 @@
 #elif   setCovRand_ENABLED && GRAM_ENABLED
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        real(TKC) :: normfac
-        real(TKC), parameter :: EPS = 2 * sqrt(epsilon(0._TKC))
+        real(TKG) :: normfac
+        real(TKG), parameter :: EPS = 2 * sqrt(epsilon(0._TKG))
         ! Define the output kind.
 #if     CK_ENABLED
-#define TYPE_OF_RAND complex(TKC)
+#define TYPE_OF_RAND complex(TKG)
 #define GET_CONJG(X)conjg(X)
 #define GET_RE(X)X%re
-        complex(TKC), parameter :: LB = -cmplx(1._TKC, 1._TKC, TKC), UB = cmplx(1._TKC, 1._TKC, TKC), ZERO = (0._TKC, 0._TKC), ONE = (1._TKC, 0._TKC)
+        complex(TKG), parameter :: LB = -cmplx(1._TKG, 1._TKG, TKG), UB = cmplx(1._TKG, 1._TKG, TKG), ZERO = (0._TKG, 0._TKG), ONE = (1._TKG, 0._TKG)
 #elif   RK_ENABLED
 #define GET_RE(X)X
 #define GET_CONJG(X)X
-#define TYPE_OF_RAND real(TKC)
-        real(TKC), parameter :: LB = -1._TKC, UB = 1._TKC, ZERO = 0._TKC, ONE = 1._TKC
+#define TYPE_OF_RAND real(TKG)
+        real(TKG), parameter :: LB = -1._TKG, UB = 1._TKG, ZERO = 0._TKG, ONE = 1._TKG
 #else
 #error  "Unrecognized interface."
 #endif
@@ -108,12 +108,12 @@
 #define GET_SCALED(X)X
 #elif   S0_ENABLED
 #define GET_SCALED(X)X * scaledSq
-        real(TKC) :: scaledSq
+        real(TKG) :: scaledSq
         scaledSq = scale**2
-        CHECK_ASSERTION(__LINE__, 0._TKC < scale, SK_"@setCovRand(): The condition `0. < scale` must hold. scale = "//getStr(scale))
+        CHECK_ASSERTION(__LINE__, 0._TKG < scale, SK_"@setCovRand(): The condition `0. < scale` must hold. scale = "//getStr(scale))
 #elif   S1_ENABLED
 #define GET_SCALED(X)X * scale(idim) * scale(jdim)
-        CHECK_ASSERTION(__LINE__, all([0._TKC < scale]), SK_"@setCovRand(): The condition `all([0. < scale])` must hold. scale = "//getStr(scale))
+        CHECK_ASSERTION(__LINE__, all([0._TKG < scale]), SK_"@setCovRand(): The condition `all([0. < scale])` must hold. scale = "//getStr(scale))
         CHECK_ASSERTION(__LINE__, size(scale, 1, IK) == size(rand, 1, IK), SK_"@setCovRand(): The condition `size(scale) == size(rand, 1, IK)` must hold. size(scale), shape(rand) = "//getStr([size(scale, 1, IK), shape(rand, IK)]))
 #else
 #error  "Unrecognized interface."
@@ -124,11 +124,11 @@
         do idim = 1, ndim
             do
                 call setUnifRand(rng, upper(1 : ndim, idim), LB, UB)
-                normfac = real(sqrt(dot_product(upper(1 : ndim, idim), upper(1 : ndim, idim))), TKC) ! \todo: The performance of this expression can be improved by replacing `dot_product` with `absq()`.
+                normfac = real(sqrt(dot_product(upper(1 : ndim, idim), upper(1 : ndim, idim))), TKG) ! \todo: The performance of this expression can be improved by replacing `dot_product` with `absq()`.
                 if (ZERO == normfac) cycle
                 exit
             end do
-            normfac = 1._TKC / normfac
+            normfac = 1._TKG / normfac
             upper(1 : ndim, idim) = upper(1 : ndim, idim) * normfac
         end do
         rand = matmul(transpose(GET_CONJG(upper)), upper)
@@ -174,15 +174,15 @@
 !#else
 !#error  "Unrecognized interface."
 !#endif
-        real(TKC) :: beta
+        real(TKG) :: beta
         integer(IK) :: ndim, idim, jdim, kdim
         ! Set the scale
 #if     SD_ENABLED
-        real(TKC), parameter :: scaleSq = 1._TKC
+        real(TKG), parameter :: scaleSq = 1._TKG
 #define GET_SCALED(x, i, j)
 #else
 #if     S0_ENABLED
-        real(TKC) :: scaleSq
+        real(TKG) :: scaleSq
         scaleSq = scale * scale
 #define GET_SCALED(x, i, j) x = x * scaleSq
 #elif   S1_ENABLED
@@ -191,46 +191,46 @@
 #else
 #error  "Unrecognized interface."
 #endif
-        CHECK_ASSERTION(__LINE__, all([0._TKC < scale]), SK_"@setCovRand(): The condition `all([0. < scale])` must hold. scale = "//getStr(scale))
+        CHECK_ASSERTION(__LINE__, all([0._TKG < scale]), SK_"@setCovRand(): The condition `all([0. < scale])` must hold. scale = "//getStr(scale))
 #endif
-        CHECK_ASSERTION(__LINE__, 0._TKC <= eta, SK_"@setCovRand(): The condition `0. <= eta` must hold. eta = "//getStr(eta))
+        CHECK_ASSERTION(__LINE__, 0._TKG <= eta, SK_"@setCovRand(): The condition `0. <= eta` must hold. eta = "//getStr(eta))
        !CHECK_ASSERTION(__LINE__, 0_IK < size(rand, 1, IK), SK_"@setCovRand(): The condition `0 < size(rand, 1)` must hold. shape(rand) = "//getStr(shape(rand)))
         CHECK_ASSERTION(__LINE__, size(rand, 1, IK) == size(rand, 2, IK), SK_"@setCovRand(): The condition `size(rand, 1) <= size(rand, 2)` must hold. shape(rand) = "//getStr(shape(rand)))
         ndim = size(rand, 1, IK)
         if (1_IK < ndim) then
 #if         ONION_ENABLED
-            beta = eta + 0.5_TKC * ndim
+            beta = eta + 0.5_TKG * ndim
             block
                 integer(IK) :: kdimp1
-                real(TKC) :: brand, ssnrandInv, chol(ndim - 1, ndim - 1), wrand(ndim - 1) ! sphere rv.
+                real(TKG) :: brand, ssnrandInv, chol(ndim - 1, ndim - 1), wrand(ndim - 1) ! sphere rv.
                 do
                     call setBetaRand(rng, brand, beta, beta)
-                    if (0._TKC < brand .and. brand < 1._TKC) exit
+                    if (0._TKG < brand .and. brand < 1._TKG) exit
                 end do
-                rand(1, 1) = 1._TKC
-                rand(2, 2) = 1._TKC
-                rand(1, 2) = 2._TKC * brand - 1._TKC
+                rand(1, 1) = 1._TKG
+                rand(2, 2) = 1._TKG
+                rand(1, 2) = 2._TKG * brand - 1._TKG
                 do kdim = 2_IK, ndim - 1_IK
                     call setNormRand(rng, wrand(1 : kdim))
-                    ssnrandInv = 1._TKC / norm2(wrand(1 : kdim)) ! `wrand(1 : kdim) * ssnrandInv` would be a uniform random point on the surface of the kdim-sphere.
-                    beta = beta - 0.5_TKC
+                    ssnrandInv = 1._TKG / norm2(wrand(1 : kdim)) ! `wrand(1 : kdim) * ssnrandInv` would be a uniform random point on the surface of the kdim-sphere.
+                    beta = beta - 0.5_TKG
                     do
-                        call setBetaRand(rng, brand, 0.5_TKC * kdim, beta)
-                        if (0._TKC < brand .and. brand < 1._TKC) exit
+                        call setBetaRand(rng, brand, 0.5_TKG * kdim, beta)
+                        if (0._TKG < brand .and. brand < 1._TKG) exit
                     end do
                     ssnrandInv = ssnrandInv * sqrt(brand)
                     call setMatChol(rand, uppDia, method%info, chol, nothing, kdim, 0_IK, 0_IK, 0_IK, 0_IK)
                     if (method%info /= 0_IK) return
                     ! Compute z = cholow * wrand.
                     kdimp1 = kdim + 1
-                    rand(1 : kdim, kdimp1) = 0._TKC
+                    rand(1 : kdim, kdimp1) = 0._TKG
                     do jdim = 1, kdim
                         rand(jdim, kdimp1) = rand(jdim, kdimp1) + chol(jdim, jdim) * wrand(jdim) * ssnrandInv
                         do idim = jdim + 1, kdim
                             rand(idim, kdimp1) = rand(idim, kdimp1) + rand(idim, jdim) * rand(jdim, kdimp1)
                         end do
                     end do
-                    rand(kdimp1, kdimp1) = 1._TKC
+                    rand(kdimp1, kdimp1) = 1._TKG
                     !block
                         !use pm_io, only: display_type
                         !type(display_type) :: disp
@@ -264,12 +264,12 @@
                 !call disp%skip
             !end block
 #elif       DVINE_ENABLED
-            beta = eta + 0.5_TKC * (ndim + 1_IK)
+            beta = eta + 0.5_TKG * (ndim + 1_IK)
             block
-                real(TKC) :: parCorMat(size(rand, 1, IK), size(rand, 1, IK))
-                parCorMat = 0._TKC
+                real(TKG) :: parCorMat(size(rand, 1, IK), size(rand, 1, IK))
+                parCorMat = 0._TKG
                 do kdim = 1_IK, ndim - 1_IK
-                    beta = beta - 0.5_TKC
+                    beta = beta - 0.5_TKG
 #if                 SD_ENABLED || S0_ENABLED
                     rand(kdim, kdim) = scaleSq
 #elif               S1_ENABLED
@@ -278,13 +278,13 @@
                     do idim = kdim + 1_IK, ndim
                         loopSensibleBeta: do
                             call setBetaRand(rng, parCorMat(kdim, idim), beta, beta)
-                            if (0._TKC < parCorMat(kdim, idim) .and. parCorMat(kdim, idim) < 1._TKC) then
-                                parCorMat(kdim, idim) = 2 * parCorMat(kdim, idim) - 1._TKC ! Linearly shift to the range (-1, 1).
+                            if (0._TKG < parCorMat(kdim, idim) .and. parCorMat(kdim, idim) < 1._TKG) then
+                                parCorMat(kdim, idim) = 2 * parCorMat(kdim, idim) - 1._TKG ! Linearly shift to the range (-1, 1).
                                 ! Convert the partial correlations to full correlation.
                                 rand(GET_INDEX(kdim, idim)) = parCorMat(kdim, idim)
                                 do jdim = kdim - 1_IK, 1_IK, -1_IK
                                     rand(GET_INDEX(kdim, idim)) = parCorMat(jdim, idim) * parCorMat(jdim, kdim) + & ! LCOV_EXCL_LINE
-                                    rand(GET_INDEX(kdim, idim)) * sqrt((1._TKC - parCorMat(jdim, idim)**2) * (1._TKC - parCorMat(jdim, kdim)**2))
+                                    rand(GET_INDEX(kdim, idim)) * sqrt((1._TKG - parCorMat(jdim, idim)**2) * (1._TKG - parCorMat(jdim, kdim)**2))
                                 end do
                                 GET_SCALED(rand(GET_INDEX(kdim, idim)), idim, kdim)
                                 rand(GET_INDEX(idim, kdim)) = rand(GET_INDEX(kdim, idim))

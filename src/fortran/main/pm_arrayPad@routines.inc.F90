@@ -54,17 +54,17 @@
 #if     setPadded_ENABLED
         integer(IK) :: stat
 #if     SK_ENABLED && D0_ENABLED
-        character(:,SKC), allocatable :: arrayPadded
+        character(:,SKG), allocatable :: arrayPadded
 #elif   SK_ENABLED && D1_ENABLED
-        character(len(array,IK),SKC), allocatable :: arrayPadded(:)
+        character(len(array,IK),SKG), allocatable :: arrayPadded(:)
 #elif   IK_ENABLED && D1_ENABLED
-        integer(IKC), allocatable :: arrayPadded(:)
+        integer(IKG), allocatable :: arrayPadded(:)
 #elif   LK_ENABLED && D1_ENABLED
-        logical(LKC), allocatable :: arrayPadded(:)
+        logical(LKG), allocatable :: arrayPadded(:)
 #elif   CK_ENABLED && D1_ENABLED
-        complex(CKC), allocatable :: arrayPadded(:)
+        complex(CKG), allocatable :: arrayPadded(:)
 #elif   RK_ENABLED && D1_ENABLED
-        real(RKC), allocatable :: arrayPadded(:)
+        real(RKG), allocatable :: arrayPadded(:)
 #else
 #error  "Unrecognized interface."
 #endif
@@ -115,9 +115,9 @@
 #if     setPadded_ENABLED
         if (present(failed)) then
 #if         SK_ENABLED && D0_ENABLED
-            allocate(character(lenarrayPaddedMinusOne + 1_IK, SKC) :: arrayPadded, stat = stat)
+            allocate(character(lenarrayPaddedMinusOne + 1_IK, SKG) :: arrayPadded, stat = stat)
 #elif       SK_ENABLED && D1_ENABLED
-            allocate(character(len(array,IK),SKC) :: arrayPadded(lb : lb + lenarrayPaddedMinusOne), stat = stat)
+            allocate(character(len(array,IK),SKG) :: arrayPadded(lb : lb + lenarrayPaddedMinusOne), stat = stat)
 #else
             allocate(arrayPadded(lb : lb + lenarrayPaddedMinusOne), stat = stat)
 #endif
@@ -125,9 +125,9 @@
             if (failed) return ! LCOV_EXCL_LINE
         else
 #if         SK_ENABLED && D0_ENABLED
-            allocate(character(lenarrayPaddedMinusOne + 1_IK, SKC) :: arrayPadded)
+            allocate(character(lenarrayPaddedMinusOne + 1_IK, SKG) :: arrayPadded)
 #elif       SK_ENABLED && D1_ENABLED
-            allocate(character(len(array,IK),SKC) :: arrayPadded(lb : lb + lenarrayPaddedMinusOne))
+            allocate(character(len(array,IK),SKG) :: arrayPadded(lb : lb + lenarrayPaddedMinusOne))
 #else
             allocate(arrayPadded(lb : lb + lenarrayPaddedMinusOne))
 #endif

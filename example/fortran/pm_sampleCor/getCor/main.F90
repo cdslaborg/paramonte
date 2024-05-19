@@ -33,8 +33,8 @@ program example
     call disp%skip()
 
     block
-        use pm_kind, only: TKC => RKS ! All other real types are also supported.
-        real(TKC), allocatable :: cov(:,:), cor(:,:), std(:)
+        use pm_kind, only: TKG => RKS ! All other real types are also supported.
+        real(TKG), allocatable :: cov(:,:), cor(:,:), std(:)
         integer(IK) :: ndim
         do itry = 1, 10
             call disp%skip()
@@ -46,8 +46,8 @@ program example
                             std = getUnifRand(1, ndim, ndim)
             call disp%show("std")
             call disp%show( std )
-            call disp%show("cov = getCovRand(1._TKC, std)")
-                            cov = getCovRand(1._TKC, std)
+            call disp%show("cov = getCovRand(1._TKG, std)")
+                            cov = getCovRand(1._TKG, std)
             call disp%show("cov")
             call disp%show( cov )
             call disp%show("cor = getCor(cov, uppDia)")
@@ -83,10 +83,10 @@ program example
     call disp%skip()
 
     block
-        use pm_kind, only: TKC => RKS ! All other real types are also supported.
+        use pm_kind, only: TKG => RKS ! All other real types are also supported.
         integer(IK) :: ndim, nsam, dim
-        real(TKC), allocatable :: sample(:,:), cor(:,:), mean(:)
-        format = getFormat(mold = [0._TKC], ed = SK_"es", signed = .true._LK)
+        real(TKG), allocatable :: sample(:,:), cor(:,:), mean(:)
+        format = getFormat(mold = [0._TKG], ed = SK_"es", signed = .true._LK)
         call disp%show("ndim = 2; nsam = 10; dim = 2")
                         ndim = 2; nsam = 10; dim = 2
         call disp%show("sample = reshape(getUnifRand(1, 20, ndim * nsam), shape = [ndim, nsam], order = [2, 1])")
@@ -130,14 +130,14 @@ program example
 
     block
         use pm_arrayVerbose, only: getVerbose
-        use pm_kind, only: TKC => RKS ! All other real types are also supported.
+        use pm_kind, only: TKG => RKS ! All other real types are also supported.
         integer(IK), allocatable :: iweight(:)
-        real(TKC), allocatable :: rweight(:)
-        real(TKC) :: rweisum
+        real(TKG), allocatable :: rweight(:)
+        real(TKG) :: rweisum
         integer(IK) :: iweisum
         integer(IK) :: ndim, nsam, dim
-        real(TKC), allocatable :: sample(:,:), cor(:,:), mean(:)
-        format = getFormat(mold = [0._TKC], ed = SK_"es", signed = .true._LK)
+        real(TKG), allocatable :: sample(:,:), cor(:,:), mean(:)
+        format = getFormat(mold = [0._TKG], ed = SK_"es", signed = .true._LK)
         call disp%show("ndim = 2; nsam = 10; dim = 2")
                         ndim = 2; nsam = 10; dim = 2
         call disp%show("sample = reshape(getUnifRand(1, 20, ndim * nsam), shape = [ndim, nsam], order = [2, 1])")

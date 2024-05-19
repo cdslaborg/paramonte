@@ -71,35 +71,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getQR_Clos_EM_NM_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_quadRomb@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getQR_Clos_EM_NM_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_quadRomb@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getQR_Clos_EM_NM_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_quadRomb@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getQR_Clos_EM_NM_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_quadRomb@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getQR_Clos_EM_NM_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_quadRomb@routines.inc.F90"
     end procedure
 #endif
@@ -134,35 +134,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getQR_Clos_EP_NM_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_quadRomb@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getQR_Clos_EP_NM_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_quadRomb@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getQR_Clos_EP_NM_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_quadRomb@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getQR_Clos_EP_NM_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_quadRomb@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getQR_Clos_EP_NM_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_quadRomb@routines.inc.F90"
     end procedure
 #endif
@@ -197,35 +197,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getQR_Clos_EP_NP_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_quadRomb@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getQR_Clos_EP_NP_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_quadRomb@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getQR_Clos_EP_NP_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_quadRomb@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getQR_Clos_EP_NP_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_quadRomb@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getQR_Clos_EP_NP_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_quadRomb@routines.inc.F90"
     end procedure
 #endif
@@ -272,35 +272,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getQR_Open_EM_NM_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_quadRomb@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getQR_Open_EM_NM_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_quadRomb@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getQR_Open_EM_NM_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_quadRomb@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getQR_Open_EM_NM_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_quadRomb@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getQR_Open_EM_NM_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_quadRomb@routines.inc.F90"
     end procedure
 #endif
@@ -335,35 +335,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getQR_Open_EP_NM_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_quadRomb@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getQR_Open_EP_NM_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_quadRomb@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getQR_Open_EP_NM_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_quadRomb@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getQR_Open_EP_NM_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_quadRomb@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getQR_Open_EP_NM_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_quadRomb@routines.inc.F90"
     end procedure
 #endif
@@ -398,35 +398,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getQR_Open_EP_NP_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_quadRomb@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getQR_Open_EP_NP_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_quadRomb@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getQR_Open_EP_NP_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_quadRomb@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getQR_Open_EP_NP_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_quadRomb@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getQR_Open_EP_NP_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_quadRomb@routines.inc.F90"
     end procedure
 #endif
@@ -473,35 +473,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getQR_PWRL_EM_NM_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_quadRomb@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getQR_PWRL_EM_NM_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_quadRomb@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getQR_PWRL_EM_NM_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_quadRomb@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getQR_PWRL_EM_NM_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_quadRomb@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getQR_PWRL_EM_NM_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_quadRomb@routines.inc.F90"
     end procedure
 #endif
@@ -536,35 +536,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getQR_PWRL_EP_NM_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_quadRomb@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getQR_PWRL_EP_NM_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_quadRomb@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getQR_PWRL_EP_NM_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_quadRomb@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getQR_PWRL_EP_NM_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_quadRomb@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getQR_PWRL_EP_NM_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_quadRomb@routines.inc.F90"
     end procedure
 #endif
@@ -599,35 +599,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getQR_PWRL_EP_NP_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_quadRomb@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getQR_PWRL_EP_NP_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_quadRomb@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getQR_PWRL_EP_NP_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_quadRomb@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getQR_PWRL_EP_NP_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_quadRomb@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getQR_PWRL_EP_NP_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_quadRomb@routines.inc.F90"
     end procedure
 #endif
@@ -674,35 +674,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getQR_NEXP_EM_NM_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_quadRomb@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getQR_NEXP_EM_NM_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_quadRomb@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getQR_NEXP_EM_NM_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_quadRomb@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getQR_NEXP_EM_NM_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_quadRomb@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getQR_NEXP_EM_NM_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_quadRomb@routines.inc.F90"
     end procedure
 #endif
@@ -737,35 +737,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getQR_NEXP_EP_NM_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_quadRomb@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getQR_NEXP_EP_NM_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_quadRomb@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getQR_NEXP_EP_NM_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_quadRomb@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getQR_NEXP_EP_NM_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_quadRomb@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getQR_NEXP_EP_NM_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_quadRomb@routines.inc.F90"
     end procedure
 #endif
@@ -800,35 +800,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getQR_NEXP_EP_NP_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_quadRomb@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getQR_NEXP_EP_NP_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_quadRomb@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getQR_NEXP_EP_NP_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_quadRomb@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getQR_NEXP_EP_NP_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_quadRomb@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getQR_NEXP_EP_NP_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_quadRomb@routines.inc.F90"
     end procedure
 #endif
@@ -875,35 +875,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getQR_PEXP_EM_NM_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_quadRomb@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getQR_PEXP_EM_NM_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_quadRomb@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getQR_PEXP_EM_NM_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_quadRomb@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getQR_PEXP_EM_NM_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_quadRomb@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getQR_PEXP_EM_NM_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_quadRomb@routines.inc.F90"
     end procedure
 #endif
@@ -938,35 +938,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getQR_PEXP_EP_NM_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_quadRomb@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getQR_PEXP_EP_NM_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_quadRomb@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getQR_PEXP_EP_NM_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_quadRomb@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getQR_PEXP_EP_NM_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_quadRomb@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getQR_PEXP_EP_NM_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_quadRomb@routines.inc.F90"
     end procedure
 #endif
@@ -1001,35 +1001,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getQR_PEXP_EP_NP_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_quadRomb@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getQR_PEXP_EP_NP_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_quadRomb@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getQR_PEXP_EP_NP_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_quadRomb@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getQR_PEXP_EP_NP_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_quadRomb@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getQR_PEXP_EP_NP_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_quadRomb@routines.inc.F90"
     end procedure
 #endif
@@ -1076,35 +1076,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getQR_LBIS_EM_NM_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_quadRomb@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getQR_LBIS_EM_NM_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_quadRomb@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getQR_LBIS_EM_NM_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_quadRomb@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getQR_LBIS_EM_NM_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_quadRomb@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getQR_LBIS_EM_NM_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_quadRomb@routines.inc.F90"
     end procedure
 #endif
@@ -1139,35 +1139,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getQR_LBIS_EP_NM_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_quadRomb@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getQR_LBIS_EP_NM_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_quadRomb@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getQR_LBIS_EP_NM_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_quadRomb@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getQR_LBIS_EP_NM_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_quadRomb@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getQR_LBIS_EP_NM_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_quadRomb@routines.inc.F90"
     end procedure
 #endif
@@ -1202,35 +1202,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getQR_LBIS_EP_NP_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_quadRomb@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getQR_LBIS_EP_NP_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_quadRomb@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getQR_LBIS_EP_NP_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_quadRomb@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getQR_LBIS_EP_NP_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_quadRomb@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getQR_LBIS_EP_NP_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_quadRomb@routines.inc.F90"
     end procedure
 #endif
@@ -1277,35 +1277,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getQR_UBIS_EM_NM_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_quadRomb@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getQR_UBIS_EM_NM_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_quadRomb@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getQR_UBIS_EM_NM_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_quadRomb@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getQR_UBIS_EM_NM_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_quadRomb@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getQR_UBIS_EM_NM_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_quadRomb@routines.inc.F90"
     end procedure
 #endif
@@ -1340,35 +1340,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getQR_UBIS_EP_NM_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_quadRomb@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getQR_UBIS_EP_NM_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_quadRomb@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getQR_UBIS_EP_NM_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_quadRomb@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getQR_UBIS_EP_NM_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_quadRomb@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getQR_UBIS_EP_NM_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_quadRomb@routines.inc.F90"
     end procedure
 #endif
@@ -1403,35 +1403,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getQR_UBIS_EP_NP_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_quadRomb@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getQR_UBIS_EP_NP_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_quadRomb@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getQR_UBIS_EP_NP_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_quadRomb@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getQR_UBIS_EP_NP_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_quadRomb@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getQR_UBIS_EP_NP_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_quadRomb@routines.inc.F90"
     end procedure
 #endif

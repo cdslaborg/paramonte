@@ -185,12 +185,12 @@ module pm_mathCumPropExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCumPropExpDef_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)               , intent(in), contiguous    :: array(:)
-        real(RKC)               , intent(in)                :: maxArray
+        use pm_kind, only: RKG => RK5
+        real(RKG)               , intent(in), contiguous    :: array(:)
+        real(RKG)               , intent(in)                :: maxArray
         class(direction_type)   , intent(in), optional      :: direction
         class(action_type)      , intent(in), optional      :: action
-        real(RKC)                                           :: cumPropExp(size(array, 1, IK))
+        real(RKG)                                           :: cumPropExp(size(array, 1, IK))
     end function
 #endif
 
@@ -199,12 +199,12 @@ module pm_mathCumPropExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCumPropExpDef_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)               , intent(in), contiguous    :: array(:)
-        real(RKC)               , intent(in)                :: maxArray
+        use pm_kind, only: RKG => RK4
+        real(RKG)               , intent(in), contiguous    :: array(:)
+        real(RKG)               , intent(in)                :: maxArray
         class(direction_type)   , intent(in), optional      :: direction
         class(action_type)      , intent(in), optional      :: action
-        real(RKC)                                           :: cumPropExp(size(array, 1, IK))
+        real(RKG)                                           :: cumPropExp(size(array, 1, IK))
     end function
 #endif
 
@@ -213,12 +213,12 @@ module pm_mathCumPropExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCumPropExpDef_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)               , intent(in), contiguous    :: array(:)
-        real(RKC)               , intent(in)                :: maxArray
+        use pm_kind, only: RKG => RK3
+        real(RKG)               , intent(in), contiguous    :: array(:)
+        real(RKG)               , intent(in)                :: maxArray
         class(direction_type)   , intent(in), optional      :: direction
         class(action_type)      , intent(in), optional      :: action
-        real(RKC)                                           :: cumPropExp(size(array, 1, IK))
+        real(RKG)                                           :: cumPropExp(size(array, 1, IK))
     end function
 #endif
 
@@ -227,12 +227,12 @@ module pm_mathCumPropExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCumPropExpDef_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)               , intent(in), contiguous    :: array(:)
-        real(RKC)               , intent(in)                :: maxArray
+        use pm_kind, only: RKG => RK2
+        real(RKG)               , intent(in), contiguous    :: array(:)
+        real(RKG)               , intent(in)                :: maxArray
         class(direction_type)   , intent(in), optional      :: direction
         class(action_type)      , intent(in), optional      :: action
-        real(RKC)                                           :: cumPropExp(size(array, 1, IK))
+        real(RKG)                                           :: cumPropExp(size(array, 1, IK))
     end function
 #endif
 
@@ -241,12 +241,12 @@ module pm_mathCumPropExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCumPropExpDef_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)               , intent(in), contiguous    :: array(:)
-        real(RKC)               , intent(in)                :: maxArray
+        use pm_kind, only: RKG => RK1
+        real(RKG)               , intent(in), contiguous    :: array(:)
+        real(RKG)               , intent(in)                :: maxArray
         class(direction_type)   , intent(in), optional      :: direction
         class(action_type)      , intent(in), optional      :: action
-        real(RKC)                                           :: cumPropExp(size(array, 1, IK))
+        real(RKG)                                           :: cumPropExp(size(array, 1, IK))
     end function
 #endif
 
@@ -257,13 +257,13 @@ module pm_mathCumPropExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCumPropExpSel_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)               , intent(in), contiguous    :: array(:)
-        real(RKC)               , intent(in)                :: maxArray
+        use pm_kind, only: RKG => RK5
+        real(RKG)               , intent(in), contiguous    :: array(:)
+        real(RKG)               , intent(in)                :: maxArray
         type(selection_type)    , intent(in)                :: control
         class(direction_type)   , intent(in), optional      :: direction
         class(action_type)      , intent(in), optional      :: action
-        real(RKC)                                           :: cumPropExp(size(array, 1, IK))
+        real(RKG)                                           :: cumPropExp(size(array, 1, IK))
     end function
 #endif
 
@@ -272,13 +272,13 @@ module pm_mathCumPropExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCumPropExpSel_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)               , intent(in), contiguous    :: array(:)
-        real(RKC)               , intent(in)                :: maxArray
+        use pm_kind, only: RKG => RK4
+        real(RKG)               , intent(in), contiguous    :: array(:)
+        real(RKG)               , intent(in)                :: maxArray
         type(selection_type)    , intent(in)                :: control
         class(direction_type)   , intent(in), optional      :: direction
         class(action_type)      , intent(in), optional      :: action
-        real(RKC)                                           :: cumPropExp(size(array, 1, IK))
+        real(RKG)                                           :: cumPropExp(size(array, 1, IK))
     end function
 #endif
 
@@ -287,13 +287,13 @@ module pm_mathCumPropExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCumPropExpSel_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)               , intent(in), contiguous    :: array(:)
-        real(RKC)               , intent(in)                :: maxArray
+        use pm_kind, only: RKG => RK3
+        real(RKG)               , intent(in), contiguous    :: array(:)
+        real(RKG)               , intent(in)                :: maxArray
         type(selection_type)    , intent(in)                :: control
         class(direction_type)   , intent(in), optional      :: direction
         class(action_type)      , intent(in), optional      :: action
-        real(RKC)                                           :: cumPropExp(size(array, 1, IK))
+        real(RKG)                                           :: cumPropExp(size(array, 1, IK))
     end function
 #endif
 
@@ -302,13 +302,13 @@ module pm_mathCumPropExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCumPropExpSel_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)               , intent(in), contiguous    :: array(:)
-        real(RKC)               , intent(in)                :: maxArray
+        use pm_kind, only: RKG => RK2
+        real(RKG)               , intent(in), contiguous    :: array(:)
+        real(RKG)               , intent(in)                :: maxArray
         type(selection_type)    , intent(in)                :: control
         class(direction_type)   , intent(in), optional      :: direction
         class(action_type)      , intent(in), optional      :: action
-        real(RKC)                                           :: cumPropExp(size(array, 1, IK))
+        real(RKG)                                           :: cumPropExp(size(array, 1, IK))
     end function
 #endif
 
@@ -317,13 +317,13 @@ module pm_mathCumPropExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCumPropExpSel_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)               , intent(in), contiguous    :: array(:)
-        real(RKC)               , intent(in)                :: maxArray
+        use pm_kind, only: RKG => RK1
+        real(RKG)               , intent(in), contiguous    :: array(:)
+        real(RKG)               , intent(in)                :: maxArray
         type(selection_type)    , intent(in)                :: control
         class(direction_type)   , intent(in), optional      :: direction
         class(action_type)      , intent(in), optional      :: action
-        real(RKC)                                           :: cumPropExp(size(array, 1, IK))
+        real(RKG)                                           :: cumPropExp(size(array, 1, IK))
     end function
 #endif
 
@@ -334,13 +334,13 @@ module pm_mathCumPropExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCumPropExpSeq_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)               , intent(in), contiguous    :: array(:)
-        real(RKC)               , intent(in)                :: maxArray
+        use pm_kind, only: RKG => RK5
+        real(RKG)               , intent(in), contiguous    :: array(:)
+        real(RKG)               , intent(in)                :: maxArray
         type(sequence_type)     , intent(in)                :: control
         class(direction_type)   , intent(in), optional      :: direction
         class(action_type)      , intent(in), optional      :: action
-        real(RKC)                                           :: cumPropExp(size(array, 1, IK))
+        real(RKG)                                           :: cumPropExp(size(array, 1, IK))
     end function
 #endif
 
@@ -349,13 +349,13 @@ module pm_mathCumPropExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCumPropExpSeq_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)               , intent(in), contiguous    :: array(:)
-        real(RKC)               , intent(in)                :: maxArray
+        use pm_kind, only: RKG => RK4
+        real(RKG)               , intent(in), contiguous    :: array(:)
+        real(RKG)               , intent(in)                :: maxArray
         type(sequence_type)     , intent(in)                :: control
         class(direction_type)   , intent(in), optional      :: direction
         class(action_type)      , intent(in), optional      :: action
-        real(RKC)                                           :: cumPropExp(size(array, 1, IK))
+        real(RKG)                                           :: cumPropExp(size(array, 1, IK))
     end function
 #endif
 
@@ -364,13 +364,13 @@ module pm_mathCumPropExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCumPropExpSeq_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)               , intent(in), contiguous    :: array(:)
-        real(RKC)               , intent(in)                :: maxArray
+        use pm_kind, only: RKG => RK3
+        real(RKG)               , intent(in), contiguous    :: array(:)
+        real(RKG)               , intent(in)                :: maxArray
         type(sequence_type)     , intent(in)                :: control
         class(direction_type)   , intent(in), optional      :: direction
         class(action_type)      , intent(in), optional      :: action
-        real(RKC)                                           :: cumPropExp(size(array, 1, IK))
+        real(RKG)                                           :: cumPropExp(size(array, 1, IK))
     end function
 #endif
 
@@ -379,13 +379,13 @@ module pm_mathCumPropExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCumPropExpSeq_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)               , intent(in), contiguous    :: array(:)
-        real(RKC)               , intent(in)                :: maxArray
+        use pm_kind, only: RKG => RK2
+        real(RKG)               , intent(in), contiguous    :: array(:)
+        real(RKG)               , intent(in)                :: maxArray
         type(sequence_type)     , intent(in)                :: control
         class(direction_type)   , intent(in), optional      :: direction
         class(action_type)      , intent(in), optional      :: action
-        real(RKC)                                           :: cumPropExp(size(array, 1, IK))
+        real(RKG)                                           :: cumPropExp(size(array, 1, IK))
     end function
 #endif
 
@@ -394,13 +394,13 @@ module pm_mathCumPropExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCumPropExpSeq_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)               , intent(in), contiguous    :: array(:)
-        real(RKC)               , intent(in)                :: maxArray
+        use pm_kind, only: RKG => RK1
+        real(RKG)               , intent(in), contiguous    :: array(:)
+        real(RKG)               , intent(in)                :: maxArray
         type(sequence_type)     , intent(in)                :: control
         class(direction_type)   , intent(in), optional      :: direction
         class(action_type)      , intent(in), optional      :: action
-        real(RKC)                                           :: cumPropExp(size(array, 1, IK))
+        real(RKG)                                           :: cumPropExp(size(array, 1, IK))
     end function
 #endif
 
@@ -575,9 +575,9 @@ module pm_mathCumPropExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumPropExpSeqOldDefDef_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)           , intent(inout) , contiguous    :: array(:)
-        real(RKC)           , intent(in)                    :: maxArray
+        use pm_kind, only: RKG => RK5
+        real(RKG)           , intent(inout) , contiguous    :: array(:)
+        real(RKG)           , intent(in)                    :: maxArray
         type(sequence_type) , intent(in)                    :: control
     end subroutine
 #endif
@@ -587,9 +587,9 @@ module pm_mathCumPropExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumPropExpSeqOldDefDef_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)           , intent(inout) , contiguous    :: array(:)
-        real(RKC)           , intent(in)                    :: maxArray
+        use pm_kind, only: RKG => RK4
+        real(RKG)           , intent(inout) , contiguous    :: array(:)
+        real(RKG)           , intent(in)                    :: maxArray
         type(sequence_type) , intent(in)                    :: control
     end subroutine
 #endif
@@ -599,9 +599,9 @@ module pm_mathCumPropExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumPropExpSeqOldDefDef_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)           , intent(inout) , contiguous    :: array(:)
-        real(RKC)           , intent(in)                    :: maxArray
+        use pm_kind, only: RKG => RK3
+        real(RKG)           , intent(inout) , contiguous    :: array(:)
+        real(RKG)           , intent(in)                    :: maxArray
         type(sequence_type) , intent(in)                    :: control
     end subroutine
 #endif
@@ -611,9 +611,9 @@ module pm_mathCumPropExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumPropExpSeqOldDefDef_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)           , intent(inout) , contiguous    :: array(:)
-        real(RKC)           , intent(in)                    :: maxArray
+        use pm_kind, only: RKG => RK2
+        real(RKG)           , intent(inout) , contiguous    :: array(:)
+        real(RKG)           , intent(in)                    :: maxArray
         type(sequence_type) , intent(in)                    :: control
     end subroutine
 #endif
@@ -623,9 +623,9 @@ module pm_mathCumPropExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumPropExpSeqOldDefDef_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)           , intent(inout) , contiguous    :: array(:)
-        real(RKC)           , intent(in)                    :: maxArray
+        use pm_kind, only: RKG => RK1
+        real(RKG)           , intent(inout) , contiguous    :: array(:)
+        real(RKG)           , intent(in)                    :: maxArray
         type(sequence_type) , intent(in)                    :: control
     end subroutine
 #endif
@@ -637,10 +637,10 @@ module pm_mathCumPropExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumPropExpSeqNewDefDef_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)           , intent(out)   , contiguous    :: cumPropExp(:)
-        real(RKC)           , intent(in)    , contiguous    :: array(:)
-        real(RKC)           , intent(in)                    :: maxArray
+        use pm_kind, only: RKG => RK5
+        real(RKG)           , intent(out)   , contiguous    :: cumPropExp(:)
+        real(RKG)           , intent(in)    , contiguous    :: array(:)
+        real(RKG)           , intent(in)                    :: maxArray
         type(sequence_type) , intent(in)                    :: control
     end subroutine
 #endif
@@ -650,10 +650,10 @@ module pm_mathCumPropExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumPropExpSeqNewDefDef_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)           , intent(out)   , contiguous    :: cumPropExp(:)
-        real(RKC)           , intent(in)    , contiguous    :: array(:)
-        real(RKC)           , intent(in)                    :: maxArray
+        use pm_kind, only: RKG => RK4
+        real(RKG)           , intent(out)   , contiguous    :: cumPropExp(:)
+        real(RKG)           , intent(in)    , contiguous    :: array(:)
+        real(RKG)           , intent(in)                    :: maxArray
         type(sequence_type) , intent(in)                    :: control
     end subroutine
 #endif
@@ -663,10 +663,10 @@ module pm_mathCumPropExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumPropExpSeqNewDefDef_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)           , intent(out)   , contiguous    :: cumPropExp(:)
-        real(RKC)           , intent(in)    , contiguous    :: array(:)
-        real(RKC)           , intent(in)                    :: maxArray
+        use pm_kind, only: RKG => RK3
+        real(RKG)           , intent(out)   , contiguous    :: cumPropExp(:)
+        real(RKG)           , intent(in)    , contiguous    :: array(:)
+        real(RKG)           , intent(in)                    :: maxArray
         type(sequence_type) , intent(in)                    :: control
     end subroutine
 #endif
@@ -676,10 +676,10 @@ module pm_mathCumPropExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumPropExpSeqNewDefDef_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)           , intent(out)   , contiguous    :: cumPropExp(:)
-        real(RKC)           , intent(in)    , contiguous    :: array(:)
-        real(RKC)           , intent(in)                    :: maxArray
+        use pm_kind, only: RKG => RK2
+        real(RKG)           , intent(out)   , contiguous    :: cumPropExp(:)
+        real(RKG)           , intent(in)    , contiguous    :: array(:)
+        real(RKG)           , intent(in)                    :: maxArray
         type(sequence_type) , intent(in)                    :: control
     end subroutine
 #endif
@@ -689,10 +689,10 @@ module pm_mathCumPropExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumPropExpSeqNewDefDef_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)           , intent(out)   , contiguous    :: cumPropExp(:)
-        real(RKC)           , intent(in)    , contiguous    :: array(:)
-        real(RKC)           , intent(in)                    :: maxArray
+        use pm_kind, only: RKG => RK1
+        real(RKG)           , intent(out)   , contiguous    :: cumPropExp(:)
+        real(RKG)           , intent(in)    , contiguous    :: array(:)
+        real(RKG)           , intent(in)                    :: maxArray
         type(sequence_type) , intent(in)                    :: control
     end subroutine
 #endif
@@ -712,9 +712,9 @@ module pm_mathCumPropExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumPropExpSeqOldForNon_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)           , intent(inout) , contiguous    :: array(:)
-        real(RKC)           , intent(in)                    :: maxArray
+        use pm_kind, only: RKG => RK5
+        real(RKG)           , intent(inout) , contiguous    :: array(:)
+        real(RKG)           , intent(in)                    :: maxArray
         type(forward_type)  , intent(in)                    :: direction
         type(nothing_type)  , intent(in)                    :: action
         type(sequence_type) , intent(in)                    :: control
@@ -726,9 +726,9 @@ module pm_mathCumPropExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumPropExpSeqOldForNon_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)           , intent(inout) , contiguous    :: array(:)
-        real(RKC)           , intent(in)                    :: maxArray
+        use pm_kind, only: RKG => RK4
+        real(RKG)           , intent(inout) , contiguous    :: array(:)
+        real(RKG)           , intent(in)                    :: maxArray
         type(forward_type)  , intent(in)                    :: direction
         type(nothing_type)  , intent(in)                    :: action
         type(sequence_type) , intent(in)                    :: control
@@ -740,9 +740,9 @@ module pm_mathCumPropExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumPropExpSeqOldForNon_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)           , intent(inout) , contiguous    :: array(:)
-        real(RKC)           , intent(in)                    :: maxArray
+        use pm_kind, only: RKG => RK3
+        real(RKG)           , intent(inout) , contiguous    :: array(:)
+        real(RKG)           , intent(in)                    :: maxArray
         type(forward_type)  , intent(in)                    :: direction
         type(nothing_type)  , intent(in)                    :: action
         type(sequence_type) , intent(in)                    :: control
@@ -754,9 +754,9 @@ module pm_mathCumPropExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumPropExpSeqOldForNon_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)           , intent(inout) , contiguous    :: array(:)
-        real(RKC)           , intent(in)                    :: maxArray
+        use pm_kind, only: RKG => RK2
+        real(RKG)           , intent(inout) , contiguous    :: array(:)
+        real(RKG)           , intent(in)                    :: maxArray
         type(forward_type)  , intent(in)                    :: direction
         type(nothing_type)  , intent(in)                    :: action
         type(sequence_type) , intent(in)                    :: control
@@ -768,9 +768,9 @@ module pm_mathCumPropExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumPropExpSeqOldForNon_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)           , intent(inout) , contiguous    :: array(:)
-        real(RKC)           , intent(in)                    :: maxArray
+        use pm_kind, only: RKG => RK1
+        real(RKG)           , intent(inout) , contiguous    :: array(:)
+        real(RKG)           , intent(in)                    :: maxArray
         type(forward_type)  , intent(in)                    :: direction
         type(nothing_type)  , intent(in)                    :: action
         type(sequence_type) , intent(in)                    :: control
@@ -784,9 +784,9 @@ module pm_mathCumPropExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumPropExpSeqOldForRev_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)           , intent(inout) , contiguous    :: array(:)
-        real(RKC)           , intent(in)                    :: maxArray
+        use pm_kind, only: RKG => RK5
+        real(RKG)           , intent(inout) , contiguous    :: array(:)
+        real(RKG)           , intent(in)                    :: maxArray
         type(forward_type)  , intent(in)                    :: direction
         type(reverse_type)  , intent(in)                    :: action
         type(sequence_type) , intent(in)                    :: control
@@ -798,9 +798,9 @@ module pm_mathCumPropExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumPropExpSeqOldForRev_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)           , intent(inout) , contiguous    :: array(:)
-        real(RKC)           , intent(in)                    :: maxArray
+        use pm_kind, only: RKG => RK4
+        real(RKG)           , intent(inout) , contiguous    :: array(:)
+        real(RKG)           , intent(in)                    :: maxArray
         type(forward_type)  , intent(in)                    :: direction
         type(reverse_type)  , intent(in)                    :: action
         type(sequence_type) , intent(in)                    :: control
@@ -812,9 +812,9 @@ module pm_mathCumPropExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumPropExpSeqOldForRev_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)           , intent(inout) , contiguous    :: array(:)
-        real(RKC)           , intent(in)                    :: maxArray
+        use pm_kind, only: RKG => RK3
+        real(RKG)           , intent(inout) , contiguous    :: array(:)
+        real(RKG)           , intent(in)                    :: maxArray
         type(forward_type)  , intent(in)                    :: direction
         type(reverse_type)  , intent(in)                    :: action
         type(sequence_type) , intent(in)                    :: control
@@ -826,9 +826,9 @@ module pm_mathCumPropExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumPropExpSeqOldForRev_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)           , intent(inout) , contiguous    :: array(:)
-        real(RKC)           , intent(in)                    :: maxArray
+        use pm_kind, only: RKG => RK2
+        real(RKG)           , intent(inout) , contiguous    :: array(:)
+        real(RKG)           , intent(in)                    :: maxArray
         type(forward_type)  , intent(in)                    :: direction
         type(reverse_type)  , intent(in)                    :: action
         type(sequence_type) , intent(in)                    :: control
@@ -840,9 +840,9 @@ module pm_mathCumPropExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumPropExpSeqOldForRev_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)           , intent(inout) , contiguous    :: array(:)
-        real(RKC)           , intent(in)                    :: maxArray
+        use pm_kind, only: RKG => RK1
+        real(RKG)           , intent(inout) , contiguous    :: array(:)
+        real(RKG)           , intent(in)                    :: maxArray
         type(forward_type)  , intent(in)                    :: direction
         type(reverse_type)  , intent(in)                    :: action
         type(sequence_type) , intent(in)                    :: control
@@ -864,9 +864,9 @@ module pm_mathCumPropExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumPropExpSeqOldBacNon_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)           , intent(inout) , contiguous    :: array(:)
-        real(RKC)           , intent(in)                    :: maxArray
+        use pm_kind, only: RKG => RK5
+        real(RKG)           , intent(inout) , contiguous    :: array(:)
+        real(RKG)           , intent(in)                    :: maxArray
         type(backward_type) , intent(in)                    :: direction
         type(nothing_type)  , intent(in)                    :: action
         type(sequence_type) , intent(in)                    :: control
@@ -878,9 +878,9 @@ module pm_mathCumPropExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumPropExpSeqOldBacNon_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)           , intent(inout) , contiguous    :: array(:)
-        real(RKC)           , intent(in)                    :: maxArray
+        use pm_kind, only: RKG => RK4
+        real(RKG)           , intent(inout) , contiguous    :: array(:)
+        real(RKG)           , intent(in)                    :: maxArray
         type(backward_type) , intent(in)                    :: direction
         type(nothing_type)  , intent(in)                    :: action
         type(sequence_type) , intent(in)                    :: control
@@ -892,9 +892,9 @@ module pm_mathCumPropExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumPropExpSeqOldBacNon_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)           , intent(inout) , contiguous    :: array(:)
-        real(RKC)           , intent(in)                    :: maxArray
+        use pm_kind, only: RKG => RK3
+        real(RKG)           , intent(inout) , contiguous    :: array(:)
+        real(RKG)           , intent(in)                    :: maxArray
         type(backward_type) , intent(in)                    :: direction
         type(nothing_type)  , intent(in)                    :: action
         type(sequence_type) , intent(in)                    :: control
@@ -906,9 +906,9 @@ module pm_mathCumPropExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumPropExpSeqOldBacNon_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)           , intent(inout) , contiguous    :: array(:)
-        real(RKC)           , intent(in)                    :: maxArray
+        use pm_kind, only: RKG => RK2
+        real(RKG)           , intent(inout) , contiguous    :: array(:)
+        real(RKG)           , intent(in)                    :: maxArray
         type(backward_type) , intent(in)                    :: direction
         type(nothing_type)  , intent(in)                    :: action
         type(sequence_type) , intent(in)                    :: control
@@ -920,9 +920,9 @@ module pm_mathCumPropExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumPropExpSeqOldBacNon_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)           , intent(inout) , contiguous    :: array(:)
-        real(RKC)           , intent(in)                    :: maxArray
+        use pm_kind, only: RKG => RK1
+        real(RKG)           , intent(inout) , contiguous    :: array(:)
+        real(RKG)           , intent(in)                    :: maxArray
         type(backward_type) , intent(in)                    :: direction
         type(nothing_type)  , intent(in)                    :: action
         type(sequence_type) , intent(in)                    :: control
@@ -936,9 +936,9 @@ module pm_mathCumPropExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumPropExpSeqOldBacRev_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)           , intent(inout) , contiguous    :: array(:)
-        real(RKC)           , intent(in)                    :: maxArray
+        use pm_kind, only: RKG => RK5
+        real(RKG)           , intent(inout) , contiguous    :: array(:)
+        real(RKG)           , intent(in)                    :: maxArray
         type(backward_type) , intent(in)                    :: direction
         type(reverse_type)  , intent(in)                    :: action
         type(sequence_type) , intent(in)                    :: control
@@ -950,9 +950,9 @@ module pm_mathCumPropExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumPropExpSeqOldBacRev_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)           , intent(inout) , contiguous    :: array(:)
-        real(RKC)           , intent(in)                    :: maxArray
+        use pm_kind, only: RKG => RK4
+        real(RKG)           , intent(inout) , contiguous    :: array(:)
+        real(RKG)           , intent(in)                    :: maxArray
         type(backward_type) , intent(in)                    :: direction
         type(reverse_type)  , intent(in)                    :: action
         type(sequence_type) , intent(in)                    :: control
@@ -964,9 +964,9 @@ module pm_mathCumPropExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumPropExpSeqOldBacRev_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)           , intent(inout) , contiguous    :: array(:)
-        real(RKC)           , intent(in)                    :: maxArray
+        use pm_kind, only: RKG => RK3
+        real(RKG)           , intent(inout) , contiguous    :: array(:)
+        real(RKG)           , intent(in)                    :: maxArray
         type(backward_type) , intent(in)                    :: direction
         type(reverse_type)  , intent(in)                    :: action
         type(sequence_type) , intent(in)                    :: control
@@ -978,9 +978,9 @@ module pm_mathCumPropExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumPropExpSeqOldBacRev_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)           , intent(inout) , contiguous    :: array(:)
-        real(RKC)           , intent(in)                    :: maxArray
+        use pm_kind, only: RKG => RK2
+        real(RKG)           , intent(inout) , contiguous    :: array(:)
+        real(RKG)           , intent(in)                    :: maxArray
         type(backward_type) , intent(in)                    :: direction
         type(reverse_type)  , intent(in)                    :: action
         type(sequence_type) , intent(in)                    :: control
@@ -992,9 +992,9 @@ module pm_mathCumPropExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumPropExpSeqOldBacRev_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)           , intent(inout) , contiguous    :: array(:)
-        real(RKC)           , intent(in)                    :: maxArray
+        use pm_kind, only: RKG => RK1
+        real(RKG)           , intent(inout) , contiguous    :: array(:)
+        real(RKG)           , intent(in)                    :: maxArray
         type(backward_type) , intent(in)                    :: direction
         type(reverse_type)  , intent(in)                    :: action
         type(sequence_type) , intent(in)                    :: control
@@ -1016,10 +1016,10 @@ module pm_mathCumPropExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumPropExpSeqNewForNon_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)           , intent(out)   , contiguous    :: cumPropExp(:)
-        real(RKC)           , intent(in)    , contiguous    :: array(:)
-        real(RKC)           , intent(in)                    :: maxArray
+        use pm_kind, only: RKG => RK5
+        real(RKG)           , intent(out)   , contiguous    :: cumPropExp(:)
+        real(RKG)           , intent(in)    , contiguous    :: array(:)
+        real(RKG)           , intent(in)                    :: maxArray
         type(forward_type)  , intent(in)                    :: direction
         type(nothing_type)  , intent(in)                    :: action
         type(sequence_type) , intent(in)                    :: control
@@ -1031,10 +1031,10 @@ module pm_mathCumPropExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumPropExpSeqNewForNon_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)           , intent(out)   , contiguous    :: cumPropExp(:)
-        real(RKC)           , intent(in)    , contiguous    :: array(:)
-        real(RKC)           , intent(in)                    :: maxArray
+        use pm_kind, only: RKG => RK4
+        real(RKG)           , intent(out)   , contiguous    :: cumPropExp(:)
+        real(RKG)           , intent(in)    , contiguous    :: array(:)
+        real(RKG)           , intent(in)                    :: maxArray
         type(forward_type)  , intent(in)                    :: direction
         type(nothing_type)  , intent(in)                    :: action
         type(sequence_type) , intent(in)                    :: control
@@ -1046,10 +1046,10 @@ module pm_mathCumPropExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumPropExpSeqNewForNon_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)           , intent(out)   , contiguous    :: cumPropExp(:)
-        real(RKC)           , intent(in)    , contiguous    :: array(:)
-        real(RKC)           , intent(in)                    :: maxArray
+        use pm_kind, only: RKG => RK3
+        real(RKG)           , intent(out)   , contiguous    :: cumPropExp(:)
+        real(RKG)           , intent(in)    , contiguous    :: array(:)
+        real(RKG)           , intent(in)                    :: maxArray
         type(forward_type)  , intent(in)                    :: direction
         type(nothing_type)  , intent(in)                    :: action
         type(sequence_type) , intent(in)                    :: control
@@ -1061,10 +1061,10 @@ module pm_mathCumPropExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumPropExpSeqNewForNon_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)           , intent(out)   , contiguous    :: cumPropExp(:)
-        real(RKC)           , intent(in)    , contiguous    :: array(:)
-        real(RKC)           , intent(in)                    :: maxArray
+        use pm_kind, only: RKG => RK2
+        real(RKG)           , intent(out)   , contiguous    :: cumPropExp(:)
+        real(RKG)           , intent(in)    , contiguous    :: array(:)
+        real(RKG)           , intent(in)                    :: maxArray
         type(forward_type)  , intent(in)                    :: direction
         type(nothing_type)  , intent(in)                    :: action
         type(sequence_type) , intent(in)                    :: control
@@ -1076,10 +1076,10 @@ module pm_mathCumPropExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumPropExpSeqNewForNon_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)           , intent(out)   , contiguous    :: cumPropExp(:)
-        real(RKC)           , intent(in)    , contiguous    :: array(:)
-        real(RKC)           , intent(in)                    :: maxArray
+        use pm_kind, only: RKG => RK1
+        real(RKG)           , intent(out)   , contiguous    :: cumPropExp(:)
+        real(RKG)           , intent(in)    , contiguous    :: array(:)
+        real(RKG)           , intent(in)                    :: maxArray
         type(forward_type)  , intent(in)                    :: direction
         type(nothing_type)  , intent(in)                    :: action
         type(sequence_type) , intent(in)                    :: control
@@ -1093,10 +1093,10 @@ module pm_mathCumPropExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumPropExpSeqNewForRev_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)           , intent(out)   , contiguous    :: cumPropExp(:)
-        real(RKC)           , intent(in)    , contiguous    :: array(:)
-        real(RKC)           , intent(in)                    :: maxArray
+        use pm_kind, only: RKG => RK5
+        real(RKG)           , intent(out)   , contiguous    :: cumPropExp(:)
+        real(RKG)           , intent(in)    , contiguous    :: array(:)
+        real(RKG)           , intent(in)                    :: maxArray
         type(forward_type)  , intent(in)                    :: direction
         type(reverse_type)  , intent(in)                    :: action
         type(sequence_type) , intent(in)                    :: control
@@ -1108,10 +1108,10 @@ module pm_mathCumPropExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumPropExpSeqNewForRev_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)           , intent(out)   , contiguous    :: cumPropExp(:)
-        real(RKC)           , intent(in)    , contiguous    :: array(:)
-        real(RKC)           , intent(in)                    :: maxArray
+        use pm_kind, only: RKG => RK4
+        real(RKG)           , intent(out)   , contiguous    :: cumPropExp(:)
+        real(RKG)           , intent(in)    , contiguous    :: array(:)
+        real(RKG)           , intent(in)                    :: maxArray
         type(forward_type)  , intent(in)                    :: direction
         type(reverse_type)  , intent(in)                    :: action
         type(sequence_type) , intent(in)                    :: control
@@ -1123,10 +1123,10 @@ module pm_mathCumPropExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumPropExpSeqNewForRev_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)           , intent(out)   , contiguous    :: cumPropExp(:)
-        real(RKC)           , intent(in)    , contiguous    :: array(:)
-        real(RKC)           , intent(in)                    :: maxArray
+        use pm_kind, only: RKG => RK3
+        real(RKG)           , intent(out)   , contiguous    :: cumPropExp(:)
+        real(RKG)           , intent(in)    , contiguous    :: array(:)
+        real(RKG)           , intent(in)                    :: maxArray
         type(forward_type)  , intent(in)                    :: direction
         type(reverse_type)  , intent(in)                    :: action
         type(sequence_type) , intent(in)                    :: control
@@ -1138,10 +1138,10 @@ module pm_mathCumPropExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumPropExpSeqNewForRev_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)           , intent(out)   , contiguous    :: cumPropExp(:)
-        real(RKC)           , intent(in)    , contiguous    :: array(:)
-        real(RKC)           , intent(in)                    :: maxArray
+        use pm_kind, only: RKG => RK2
+        real(RKG)           , intent(out)   , contiguous    :: cumPropExp(:)
+        real(RKG)           , intent(in)    , contiguous    :: array(:)
+        real(RKG)           , intent(in)                    :: maxArray
         type(forward_type)  , intent(in)                    :: direction
         type(reverse_type)  , intent(in)                    :: action
         type(sequence_type) , intent(in)                    :: control
@@ -1153,10 +1153,10 @@ module pm_mathCumPropExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumPropExpSeqNewForRev_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)           , intent(out)   , contiguous    :: cumPropExp(:)
-        real(RKC)           , intent(in)    , contiguous    :: array(:)
-        real(RKC)           , intent(in)                    :: maxArray
+        use pm_kind, only: RKG => RK1
+        real(RKG)           , intent(out)   , contiguous    :: cumPropExp(:)
+        real(RKG)           , intent(in)    , contiguous    :: array(:)
+        real(RKG)           , intent(in)                    :: maxArray
         type(forward_type)  , intent(in)                    :: direction
         type(reverse_type)  , intent(in)                    :: action
         type(sequence_type) , intent(in)                    :: control
@@ -1178,10 +1178,10 @@ module pm_mathCumPropExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumPropExpSeqNewBacNon_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)           , intent(out)   , contiguous    :: cumPropExp(:)
-        real(RKC)           , intent(in)    , contiguous    :: array(:)
-        real(RKC)           , intent(in)                    :: maxArray
+        use pm_kind, only: RKG => RK5
+        real(RKG)           , intent(out)   , contiguous    :: cumPropExp(:)
+        real(RKG)           , intent(in)    , contiguous    :: array(:)
+        real(RKG)           , intent(in)                    :: maxArray
         type(backward_type) , intent(in)                    :: direction
         type(nothing_type)  , intent(in)                    :: action
         type(sequence_type) , intent(in)                    :: control
@@ -1193,10 +1193,10 @@ module pm_mathCumPropExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumPropExpSeqNewBacNon_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)           , intent(out)   , contiguous    :: cumPropExp(:)
-        real(RKC)           , intent(in)    , contiguous    :: array(:)
-        real(RKC)           , intent(in)                    :: maxArray
+        use pm_kind, only: RKG => RK4
+        real(RKG)           , intent(out)   , contiguous    :: cumPropExp(:)
+        real(RKG)           , intent(in)    , contiguous    :: array(:)
+        real(RKG)           , intent(in)                    :: maxArray
         type(backward_type) , intent(in)                    :: direction
         type(nothing_type)  , intent(in)                    :: action
         type(sequence_type) , intent(in)                    :: control
@@ -1208,10 +1208,10 @@ module pm_mathCumPropExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumPropExpSeqNewBacNon_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)           , intent(out)   , contiguous    :: cumPropExp(:)
-        real(RKC)           , intent(in)    , contiguous    :: array(:)
-        real(RKC)           , intent(in)                    :: maxArray
+        use pm_kind, only: RKG => RK3
+        real(RKG)           , intent(out)   , contiguous    :: cumPropExp(:)
+        real(RKG)           , intent(in)    , contiguous    :: array(:)
+        real(RKG)           , intent(in)                    :: maxArray
         type(backward_type) , intent(in)                    :: direction
         type(nothing_type)  , intent(in)                    :: action
         type(sequence_type) , intent(in)                    :: control
@@ -1223,10 +1223,10 @@ module pm_mathCumPropExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumPropExpSeqNewBacNon_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)           , intent(out)   , contiguous    :: cumPropExp(:)
-        real(RKC)           , intent(in)    , contiguous    :: array(:)
-        real(RKC)           , intent(in)                    :: maxArray
+        use pm_kind, only: RKG => RK2
+        real(RKG)           , intent(out)   , contiguous    :: cumPropExp(:)
+        real(RKG)           , intent(in)    , contiguous    :: array(:)
+        real(RKG)           , intent(in)                    :: maxArray
         type(backward_type) , intent(in)                    :: direction
         type(nothing_type)  , intent(in)                    :: action
         type(sequence_type) , intent(in)                    :: control
@@ -1238,10 +1238,10 @@ module pm_mathCumPropExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumPropExpSeqNewBacNon_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)           , intent(out)   , contiguous    :: cumPropExp(:)
-        real(RKC)           , intent(in)    , contiguous    :: array(:)
-        real(RKC)           , intent(in)                    :: maxArray
+        use pm_kind, only: RKG => RK1
+        real(RKG)           , intent(out)   , contiguous    :: cumPropExp(:)
+        real(RKG)           , intent(in)    , contiguous    :: array(:)
+        real(RKG)           , intent(in)                    :: maxArray
         type(backward_type) , intent(in)                    :: direction
         type(nothing_type)  , intent(in)                    :: action
         type(sequence_type) , intent(in)                    :: control
@@ -1255,10 +1255,10 @@ module pm_mathCumPropExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumPropExpSeqNewBacRev_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)           , intent(out)   , contiguous    :: cumPropExp(:)
-        real(RKC)           , intent(in)    , contiguous    :: array(:)
-        real(RKC)           , intent(in)                    :: maxArray
+        use pm_kind, only: RKG => RK5
+        real(RKG)           , intent(out)   , contiguous    :: cumPropExp(:)
+        real(RKG)           , intent(in)    , contiguous    :: array(:)
+        real(RKG)           , intent(in)                    :: maxArray
         type(backward_type) , intent(in)                    :: direction
         type(reverse_type)  , intent(in)                    :: action
         type(sequence_type) , intent(in)                    :: control
@@ -1270,10 +1270,10 @@ module pm_mathCumPropExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumPropExpSeqNewBacRev_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)           , intent(out)   , contiguous    :: cumPropExp(:)
-        real(RKC)           , intent(in)    , contiguous    :: array(:)
-        real(RKC)           , intent(in)                    :: maxArray
+        use pm_kind, only: RKG => RK4
+        real(RKG)           , intent(out)   , contiguous    :: cumPropExp(:)
+        real(RKG)           , intent(in)    , contiguous    :: array(:)
+        real(RKG)           , intent(in)                    :: maxArray
         type(backward_type) , intent(in)                    :: direction
         type(reverse_type)  , intent(in)                    :: action
         type(sequence_type) , intent(in)                    :: control
@@ -1285,10 +1285,10 @@ module pm_mathCumPropExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumPropExpSeqNewBacRev_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)           , intent(out)   , contiguous    :: cumPropExp(:)
-        real(RKC)           , intent(in)    , contiguous    :: array(:)
-        real(RKC)           , intent(in)                    :: maxArray
+        use pm_kind, only: RKG => RK3
+        real(RKG)           , intent(out)   , contiguous    :: cumPropExp(:)
+        real(RKG)           , intent(in)    , contiguous    :: array(:)
+        real(RKG)           , intent(in)                    :: maxArray
         type(backward_type) , intent(in)                    :: direction
         type(reverse_type)  , intent(in)                    :: action
         type(sequence_type) , intent(in)                    :: control
@@ -1300,10 +1300,10 @@ module pm_mathCumPropExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumPropExpSeqNewBacRev_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)           , intent(out)   , contiguous    :: cumPropExp(:)
-        real(RKC)           , intent(in)    , contiguous    :: array(:)
-        real(RKC)           , intent(in)                    :: maxArray
+        use pm_kind, only: RKG => RK2
+        real(RKG)           , intent(out)   , contiguous    :: cumPropExp(:)
+        real(RKG)           , intent(in)    , contiguous    :: array(:)
+        real(RKG)           , intent(in)                    :: maxArray
         type(backward_type) , intent(in)                    :: direction
         type(reverse_type)  , intent(in)                    :: action
         type(sequence_type) , intent(in)                    :: control
@@ -1315,10 +1315,10 @@ module pm_mathCumPropExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumPropExpSeqNewBacRev_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)           , intent(out)   , contiguous    :: cumPropExp(:)
-        real(RKC)           , intent(in)    , contiguous    :: array(:)
-        real(RKC)           , intent(in)                    :: maxArray
+        use pm_kind, only: RKG => RK1
+        real(RKG)           , intent(out)   , contiguous    :: cumPropExp(:)
+        real(RKG)           , intent(in)    , contiguous    :: array(:)
+        real(RKG)           , intent(in)                    :: maxArray
         type(backward_type) , intent(in)                    :: direction
         type(reverse_type)  , intent(in)                    :: action
         type(sequence_type) , intent(in)                    :: control
@@ -1342,9 +1342,9 @@ module pm_mathCumPropExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumPropExpSelOldDefDef_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)           , intent(inout) , contiguous    :: array(:)
-        real(RKC)           , intent(in)                    :: maxArray
+        use pm_kind, only: RKG => RK5
+        real(RKG)           , intent(inout) , contiguous    :: array(:)
+        real(RKG)           , intent(in)                    :: maxArray
         type(selection_type), intent(in)                    :: control
     end subroutine
 #endif
@@ -1354,9 +1354,9 @@ module pm_mathCumPropExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumPropExpSelOldDefDef_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)           , intent(inout) , contiguous    :: array(:)
-        real(RKC)           , intent(in)                    :: maxArray
+        use pm_kind, only: RKG => RK4
+        real(RKG)           , intent(inout) , contiguous    :: array(:)
+        real(RKG)           , intent(in)                    :: maxArray
         type(selection_type), intent(in)                    :: control
     end subroutine
 #endif
@@ -1366,9 +1366,9 @@ module pm_mathCumPropExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumPropExpSelOldDefDef_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)           , intent(inout) , contiguous    :: array(:)
-        real(RKC)           , intent(in)                    :: maxArray
+        use pm_kind, only: RKG => RK3
+        real(RKG)           , intent(inout) , contiguous    :: array(:)
+        real(RKG)           , intent(in)                    :: maxArray
         type(selection_type), intent(in)                    :: control
     end subroutine
 #endif
@@ -1378,9 +1378,9 @@ module pm_mathCumPropExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumPropExpSelOldDefDef_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)           , intent(inout) , contiguous    :: array(:)
-        real(RKC)           , intent(in)                    :: maxArray
+        use pm_kind, only: RKG => RK2
+        real(RKG)           , intent(inout) , contiguous    :: array(:)
+        real(RKG)           , intent(in)                    :: maxArray
         type(selection_type), intent(in)                    :: control
     end subroutine
 #endif
@@ -1390,9 +1390,9 @@ module pm_mathCumPropExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumPropExpSelOldDefDef_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)           , intent(inout) , contiguous    :: array(:)
-        real(RKC)           , intent(in)                    :: maxArray
+        use pm_kind, only: RKG => RK1
+        real(RKG)           , intent(inout) , contiguous    :: array(:)
+        real(RKG)           , intent(in)                    :: maxArray
         type(selection_type), intent(in)                    :: control
     end subroutine
 #endif
@@ -1404,10 +1404,10 @@ module pm_mathCumPropExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumPropExpSelNewDefDef_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)           , intent(out)   , contiguous    :: cumPropExp(:)
-        real(RKC)           , intent(in)    , contiguous    :: array(:)
-        real(RKC)           , intent(in)                    :: maxArray
+        use pm_kind, only: RKG => RK5
+        real(RKG)           , intent(out)   , contiguous    :: cumPropExp(:)
+        real(RKG)           , intent(in)    , contiguous    :: array(:)
+        real(RKG)           , intent(in)                    :: maxArray
         type(selection_type), intent(in)                    :: control
     end subroutine
 #endif
@@ -1417,10 +1417,10 @@ module pm_mathCumPropExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumPropExpSelNewDefDef_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)           , intent(out)   , contiguous    :: cumPropExp(:)
-        real(RKC)           , intent(in)    , contiguous    :: array(:)
-        real(RKC)           , intent(in)                    :: maxArray
+        use pm_kind, only: RKG => RK4
+        real(RKG)           , intent(out)   , contiguous    :: cumPropExp(:)
+        real(RKG)           , intent(in)    , contiguous    :: array(:)
+        real(RKG)           , intent(in)                    :: maxArray
         type(selection_type), intent(in)                    :: control
     end subroutine
 #endif
@@ -1430,10 +1430,10 @@ module pm_mathCumPropExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumPropExpSelNewDefDef_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)           , intent(out)   , contiguous    :: cumPropExp(:)
-        real(RKC)           , intent(in)    , contiguous    :: array(:)
-        real(RKC)           , intent(in)                    :: maxArray
+        use pm_kind, only: RKG => RK3
+        real(RKG)           , intent(out)   , contiguous    :: cumPropExp(:)
+        real(RKG)           , intent(in)    , contiguous    :: array(:)
+        real(RKG)           , intent(in)                    :: maxArray
         type(selection_type), intent(in)                    :: control
     end subroutine
 #endif
@@ -1443,10 +1443,10 @@ module pm_mathCumPropExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumPropExpSelNewDefDef_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)           , intent(out)   , contiguous    :: cumPropExp(:)
-        real(RKC)           , intent(in)    , contiguous    :: array(:)
-        real(RKC)           , intent(in)                    :: maxArray
+        use pm_kind, only: RKG => RK2
+        real(RKG)           , intent(out)   , contiguous    :: cumPropExp(:)
+        real(RKG)           , intent(in)    , contiguous    :: array(:)
+        real(RKG)           , intent(in)                    :: maxArray
         type(selection_type), intent(in)                    :: control
     end subroutine
 #endif
@@ -1456,10 +1456,10 @@ module pm_mathCumPropExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumPropExpSelNewDefDef_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)           , intent(out)   , contiguous    :: cumPropExp(:)
-        real(RKC)           , intent(in)    , contiguous    :: array(:)
-        real(RKC)           , intent(in)                    :: maxArray
+        use pm_kind, only: RKG => RK1
+        real(RKG)           , intent(out)   , contiguous    :: cumPropExp(:)
+        real(RKG)           , intent(in)    , contiguous    :: array(:)
+        real(RKG)           , intent(in)                    :: maxArray
         type(selection_type), intent(in)                    :: control
     end subroutine
 #endif
@@ -1479,9 +1479,9 @@ module pm_mathCumPropExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumPropExpSelOldForNon_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)           , intent(inout) , contiguous    :: array(:)
-        real(RKC)           , intent(in)                    :: maxArray
+        use pm_kind, only: RKG => RK5
+        real(RKG)           , intent(inout) , contiguous    :: array(:)
+        real(RKG)           , intent(in)                    :: maxArray
         type(forward_type)  , intent(in)                    :: direction
         type(nothing_type)  , intent(in)                    :: action
         type(selection_type), intent(in)                    :: control
@@ -1493,9 +1493,9 @@ module pm_mathCumPropExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumPropExpSelOldForNon_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)           , intent(inout) , contiguous    :: array(:)
-        real(RKC)           , intent(in)                    :: maxArray
+        use pm_kind, only: RKG => RK4
+        real(RKG)           , intent(inout) , contiguous    :: array(:)
+        real(RKG)           , intent(in)                    :: maxArray
         type(forward_type)  , intent(in)                    :: direction
         type(nothing_type)  , intent(in)                    :: action
         type(selection_type), intent(in)                    :: control
@@ -1507,9 +1507,9 @@ module pm_mathCumPropExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumPropExpSelOldForNon_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)           , intent(inout) , contiguous    :: array(:)
-        real(RKC)           , intent(in)                    :: maxArray
+        use pm_kind, only: RKG => RK3
+        real(RKG)           , intent(inout) , contiguous    :: array(:)
+        real(RKG)           , intent(in)                    :: maxArray
         type(forward_type)  , intent(in)                    :: direction
         type(nothing_type)  , intent(in)                    :: action
         type(selection_type), intent(in)                    :: control
@@ -1521,9 +1521,9 @@ module pm_mathCumPropExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumPropExpSelOldForNon_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)           , intent(inout) , contiguous    :: array(:)
-        real(RKC)           , intent(in)                    :: maxArray
+        use pm_kind, only: RKG => RK2
+        real(RKG)           , intent(inout) , contiguous    :: array(:)
+        real(RKG)           , intent(in)                    :: maxArray
         type(forward_type)  , intent(in)                    :: direction
         type(nothing_type)  , intent(in)                    :: action
         type(selection_type), intent(in)                    :: control
@@ -1535,9 +1535,9 @@ module pm_mathCumPropExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumPropExpSelOldForNon_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)           , intent(inout) , contiguous    :: array(:)
-        real(RKC)           , intent(in)                    :: maxArray
+        use pm_kind, only: RKG => RK1
+        real(RKG)           , intent(inout) , contiguous    :: array(:)
+        real(RKG)           , intent(in)                    :: maxArray
         type(forward_type)  , intent(in)                    :: direction
         type(nothing_type)  , intent(in)                    :: action
         type(selection_type), intent(in)                    :: control
@@ -1551,9 +1551,9 @@ module pm_mathCumPropExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumPropExpSelOldForRev_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)           , intent(inout) , contiguous    :: array(:)
-        real(RKC)           , intent(in)                    :: maxArray
+        use pm_kind, only: RKG => RK5
+        real(RKG)           , intent(inout) , contiguous    :: array(:)
+        real(RKG)           , intent(in)                    :: maxArray
         type(forward_type)  , intent(in)                    :: direction
         type(reverse_type)  , intent(in)                    :: action
         type(selection_type), intent(in)                    :: control
@@ -1565,9 +1565,9 @@ module pm_mathCumPropExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumPropExpSelOldForRev_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)           , intent(inout) , contiguous    :: array(:)
-        real(RKC)           , intent(in)                    :: maxArray
+        use pm_kind, only: RKG => RK4
+        real(RKG)           , intent(inout) , contiguous    :: array(:)
+        real(RKG)           , intent(in)                    :: maxArray
         type(forward_type)  , intent(in)                    :: direction
         type(reverse_type)  , intent(in)                    :: action
         type(selection_type), intent(in)                    :: control
@@ -1579,9 +1579,9 @@ module pm_mathCumPropExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumPropExpSelOldForRev_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)           , intent(inout) , contiguous    :: array(:)
-        real(RKC)           , intent(in)                    :: maxArray
+        use pm_kind, only: RKG => RK3
+        real(RKG)           , intent(inout) , contiguous    :: array(:)
+        real(RKG)           , intent(in)                    :: maxArray
         type(forward_type)  , intent(in)                    :: direction
         type(reverse_type)  , intent(in)                    :: action
         type(selection_type), intent(in)                    :: control
@@ -1593,9 +1593,9 @@ module pm_mathCumPropExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumPropExpSelOldForRev_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)           , intent(inout) , contiguous    :: array(:)
-        real(RKC)           , intent(in)                    :: maxArray
+        use pm_kind, only: RKG => RK2
+        real(RKG)           , intent(inout) , contiguous    :: array(:)
+        real(RKG)           , intent(in)                    :: maxArray
         type(forward_type)  , intent(in)                    :: direction
         type(reverse_type)  , intent(in)                    :: action
         type(selection_type), intent(in)                    :: control
@@ -1607,9 +1607,9 @@ module pm_mathCumPropExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumPropExpSelOldForRev_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)           , intent(inout) , contiguous    :: array(:)
-        real(RKC)           , intent(in)                    :: maxArray
+        use pm_kind, only: RKG => RK1
+        real(RKG)           , intent(inout) , contiguous    :: array(:)
+        real(RKG)           , intent(in)                    :: maxArray
         type(forward_type)  , intent(in)                    :: direction
         type(reverse_type)  , intent(in)                    :: action
         type(selection_type), intent(in)                    :: control
@@ -1631,9 +1631,9 @@ module pm_mathCumPropExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumPropExpSelOldBacNon_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)           , intent(inout) , contiguous    :: array(:)
-        real(RKC)           , intent(in)                    :: maxArray
+        use pm_kind, only: RKG => RK5
+        real(RKG)           , intent(inout) , contiguous    :: array(:)
+        real(RKG)           , intent(in)                    :: maxArray
         type(backward_type) , intent(in)                    :: direction
         type(nothing_type)  , intent(in)                    :: action
         type(selection_type), intent(in)                    :: control
@@ -1645,9 +1645,9 @@ module pm_mathCumPropExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumPropExpSelOldBacNon_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)           , intent(inout) , contiguous    :: array(:)
-        real(RKC)           , intent(in)                    :: maxArray
+        use pm_kind, only: RKG => RK4
+        real(RKG)           , intent(inout) , contiguous    :: array(:)
+        real(RKG)           , intent(in)                    :: maxArray
         type(backward_type) , intent(in)                    :: direction
         type(nothing_type)  , intent(in)                    :: action
         type(selection_type), intent(in)                    :: control
@@ -1659,9 +1659,9 @@ module pm_mathCumPropExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumPropExpSelOldBacNon_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)           , intent(inout) , contiguous    :: array(:)
-        real(RKC)           , intent(in)                    :: maxArray
+        use pm_kind, only: RKG => RK3
+        real(RKG)           , intent(inout) , contiguous    :: array(:)
+        real(RKG)           , intent(in)                    :: maxArray
         type(backward_type) , intent(in)                    :: direction
         type(nothing_type)  , intent(in)                    :: action
         type(selection_type), intent(in)                    :: control
@@ -1673,9 +1673,9 @@ module pm_mathCumPropExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumPropExpSelOldBacNon_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)           , intent(inout) , contiguous    :: array(:)
-        real(RKC)           , intent(in)                    :: maxArray
+        use pm_kind, only: RKG => RK2
+        real(RKG)           , intent(inout) , contiguous    :: array(:)
+        real(RKG)           , intent(in)                    :: maxArray
         type(backward_type) , intent(in)                    :: direction
         type(nothing_type)  , intent(in)                    :: action
         type(selection_type), intent(in)                    :: control
@@ -1687,9 +1687,9 @@ module pm_mathCumPropExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumPropExpSelOldBacNon_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)           , intent(inout) , contiguous    :: array(:)
-        real(RKC)           , intent(in)                    :: maxArray
+        use pm_kind, only: RKG => RK1
+        real(RKG)           , intent(inout) , contiguous    :: array(:)
+        real(RKG)           , intent(in)                    :: maxArray
         type(backward_type) , intent(in)                    :: direction
         type(nothing_type)  , intent(in)                    :: action
         type(selection_type), intent(in)                    :: control
@@ -1703,9 +1703,9 @@ module pm_mathCumPropExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumPropExpSelOldBacRev_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)           , intent(inout) , contiguous    :: array(:)
-        real(RKC)           , intent(in)                    :: maxArray
+        use pm_kind, only: RKG => RK5
+        real(RKG)           , intent(inout) , contiguous    :: array(:)
+        real(RKG)           , intent(in)                    :: maxArray
         type(backward_type) , intent(in)                    :: direction
         type(reverse_type)  , intent(in)                    :: action
         type(selection_type), intent(in)                    :: control
@@ -1717,9 +1717,9 @@ module pm_mathCumPropExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumPropExpSelOldBacRev_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)           , intent(inout) , contiguous    :: array(:)
-        real(RKC)           , intent(in)                    :: maxArray
+        use pm_kind, only: RKG => RK4
+        real(RKG)           , intent(inout) , contiguous    :: array(:)
+        real(RKG)           , intent(in)                    :: maxArray
         type(backward_type) , intent(in)                    :: direction
         type(reverse_type)  , intent(in)                    :: action
         type(selection_type), intent(in)                    :: control
@@ -1731,9 +1731,9 @@ module pm_mathCumPropExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumPropExpSelOldBacRev_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)           , intent(inout) , contiguous    :: array(:)
-        real(RKC)           , intent(in)                    :: maxArray
+        use pm_kind, only: RKG => RK3
+        real(RKG)           , intent(inout) , contiguous    :: array(:)
+        real(RKG)           , intent(in)                    :: maxArray
         type(backward_type) , intent(in)                    :: direction
         type(reverse_type)  , intent(in)                    :: action
         type(selection_type), intent(in)                    :: control
@@ -1745,9 +1745,9 @@ module pm_mathCumPropExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumPropExpSelOldBacRev_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)           , intent(inout) , contiguous    :: array(:)
-        real(RKC)           , intent(in)                    :: maxArray
+        use pm_kind, only: RKG => RK2
+        real(RKG)           , intent(inout) , contiguous    :: array(:)
+        real(RKG)           , intent(in)                    :: maxArray
         type(backward_type) , intent(in)                    :: direction
         type(reverse_type)  , intent(in)                    :: action
         type(selection_type), intent(in)                    :: control
@@ -1759,9 +1759,9 @@ module pm_mathCumPropExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumPropExpSelOldBacRev_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)           , intent(inout) , contiguous    :: array(:)
-        real(RKC)           , intent(in)                    :: maxArray
+        use pm_kind, only: RKG => RK1
+        real(RKG)           , intent(inout) , contiguous    :: array(:)
+        real(RKG)           , intent(in)                    :: maxArray
         type(backward_type) , intent(in)                    :: direction
         type(reverse_type)  , intent(in)                    :: action
         type(selection_type), intent(in)                    :: control
@@ -1783,10 +1783,10 @@ module pm_mathCumPropExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumPropExpSelNewForNon_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)           , intent(out)   , contiguous    :: cumPropExp(:)
-        real(RKC)           , intent(in)    , contiguous    :: array(:)
-        real(RKC)           , intent(in)                    :: maxArray
+        use pm_kind, only: RKG => RK5
+        real(RKG)           , intent(out)   , contiguous    :: cumPropExp(:)
+        real(RKG)           , intent(in)    , contiguous    :: array(:)
+        real(RKG)           , intent(in)                    :: maxArray
         type(forward_type)  , intent(in)                    :: direction
         type(nothing_type)  , intent(in)                    :: action
         type(selection_type), intent(in)                    :: control
@@ -1798,10 +1798,10 @@ module pm_mathCumPropExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumPropExpSelNewForNon_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)           , intent(out)   , contiguous    :: cumPropExp(:)
-        real(RKC)           , intent(in)    , contiguous    :: array(:)
-        real(RKC)           , intent(in)                    :: maxArray
+        use pm_kind, only: RKG => RK4
+        real(RKG)           , intent(out)   , contiguous    :: cumPropExp(:)
+        real(RKG)           , intent(in)    , contiguous    :: array(:)
+        real(RKG)           , intent(in)                    :: maxArray
         type(forward_type)  , intent(in)                    :: direction
         type(nothing_type)  , intent(in)                    :: action
         type(selection_type), intent(in)                    :: control
@@ -1813,10 +1813,10 @@ module pm_mathCumPropExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumPropExpSelNewForNon_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)           , intent(out)   , contiguous    :: cumPropExp(:)
-        real(RKC)           , intent(in)    , contiguous    :: array(:)
-        real(RKC)           , intent(in)                    :: maxArray
+        use pm_kind, only: RKG => RK3
+        real(RKG)           , intent(out)   , contiguous    :: cumPropExp(:)
+        real(RKG)           , intent(in)    , contiguous    :: array(:)
+        real(RKG)           , intent(in)                    :: maxArray
         type(forward_type)  , intent(in)                    :: direction
         type(nothing_type)  , intent(in)                    :: action
         type(selection_type), intent(in)                    :: control
@@ -1828,10 +1828,10 @@ module pm_mathCumPropExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumPropExpSelNewForNon_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)           , intent(out)   , contiguous    :: cumPropExp(:)
-        real(RKC)           , intent(in)    , contiguous    :: array(:)
-        real(RKC)           , intent(in)                    :: maxArray
+        use pm_kind, only: RKG => RK2
+        real(RKG)           , intent(out)   , contiguous    :: cumPropExp(:)
+        real(RKG)           , intent(in)    , contiguous    :: array(:)
+        real(RKG)           , intent(in)                    :: maxArray
         type(forward_type)  , intent(in)                    :: direction
         type(nothing_type)  , intent(in)                    :: action
         type(selection_type), intent(in)                    :: control
@@ -1843,10 +1843,10 @@ module pm_mathCumPropExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumPropExpSelNewForNon_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)           , intent(out)   , contiguous    :: cumPropExp(:)
-        real(RKC)           , intent(in)    , contiguous    :: array(:)
-        real(RKC)           , intent(in)                    :: maxArray
+        use pm_kind, only: RKG => RK1
+        real(RKG)           , intent(out)   , contiguous    :: cumPropExp(:)
+        real(RKG)           , intent(in)    , contiguous    :: array(:)
+        real(RKG)           , intent(in)                    :: maxArray
         type(forward_type)  , intent(in)                    :: direction
         type(nothing_type)  , intent(in)                    :: action
         type(selection_type), intent(in)                    :: control
@@ -1860,10 +1860,10 @@ module pm_mathCumPropExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumPropExpSelNewForRev_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)           , intent(out)   , contiguous    :: cumPropExp(:)
-        real(RKC)           , intent(in)    , contiguous    :: array(:)
-        real(RKC)           , intent(in)                    :: maxArray
+        use pm_kind, only: RKG => RK5
+        real(RKG)           , intent(out)   , contiguous    :: cumPropExp(:)
+        real(RKG)           , intent(in)    , contiguous    :: array(:)
+        real(RKG)           , intent(in)                    :: maxArray
         type(forward_type)  , intent(in)                    :: direction
         type(reverse_type)  , intent(in)                    :: action
         type(selection_type), intent(in)                    :: control
@@ -1875,10 +1875,10 @@ module pm_mathCumPropExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumPropExpSelNewForRev_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)           , intent(out)   , contiguous    :: cumPropExp(:)
-        real(RKC)           , intent(in)    , contiguous    :: array(:)
-        real(RKC)           , intent(in)                    :: maxArray
+        use pm_kind, only: RKG => RK4
+        real(RKG)           , intent(out)   , contiguous    :: cumPropExp(:)
+        real(RKG)           , intent(in)    , contiguous    :: array(:)
+        real(RKG)           , intent(in)                    :: maxArray
         type(forward_type)  , intent(in)                    :: direction
         type(reverse_type)  , intent(in)                    :: action
         type(selection_type), intent(in)                    :: control
@@ -1890,10 +1890,10 @@ module pm_mathCumPropExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumPropExpSelNewForRev_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)           , intent(out)   , contiguous    :: cumPropExp(:)
-        real(RKC)           , intent(in)    , contiguous    :: array(:)
-        real(RKC)           , intent(in)                    :: maxArray
+        use pm_kind, only: RKG => RK3
+        real(RKG)           , intent(out)   , contiguous    :: cumPropExp(:)
+        real(RKG)           , intent(in)    , contiguous    :: array(:)
+        real(RKG)           , intent(in)                    :: maxArray
         type(forward_type)  , intent(in)                    :: direction
         type(reverse_type)  , intent(in)                    :: action
         type(selection_type), intent(in)                    :: control
@@ -1905,10 +1905,10 @@ module pm_mathCumPropExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumPropExpSelNewForRev_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)           , intent(out)   , contiguous    :: cumPropExp(:)
-        real(RKC)           , intent(in)    , contiguous    :: array(:)
-        real(RKC)           , intent(in)                    :: maxArray
+        use pm_kind, only: RKG => RK2
+        real(RKG)           , intent(out)   , contiguous    :: cumPropExp(:)
+        real(RKG)           , intent(in)    , contiguous    :: array(:)
+        real(RKG)           , intent(in)                    :: maxArray
         type(forward_type)  , intent(in)                    :: direction
         type(reverse_type)  , intent(in)                    :: action
         type(selection_type), intent(in)                    :: control
@@ -1920,10 +1920,10 @@ module pm_mathCumPropExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumPropExpSelNewForRev_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)           , intent(out)   , contiguous    :: cumPropExp(:)
-        real(RKC)           , intent(in)    , contiguous    :: array(:)
-        real(RKC)           , intent(in)                    :: maxArray
+        use pm_kind, only: RKG => RK1
+        real(RKG)           , intent(out)   , contiguous    :: cumPropExp(:)
+        real(RKG)           , intent(in)    , contiguous    :: array(:)
+        real(RKG)           , intent(in)                    :: maxArray
         type(forward_type)  , intent(in)                    :: direction
         type(reverse_type)  , intent(in)                    :: action
         type(selection_type), intent(in)                    :: control
@@ -1945,10 +1945,10 @@ module pm_mathCumPropExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumPropExpSelNewBacNon_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)           , intent(out)   , contiguous    :: cumPropExp(:)
-        real(RKC)           , intent(in)    , contiguous    :: array(:)
-        real(RKC)           , intent(in)                    :: maxArray
+        use pm_kind, only: RKG => RK5
+        real(RKG)           , intent(out)   , contiguous    :: cumPropExp(:)
+        real(RKG)           , intent(in)    , contiguous    :: array(:)
+        real(RKG)           , intent(in)                    :: maxArray
         type(backward_type) , intent(in)                    :: direction
         type(nothing_type)  , intent(in)                    :: action
         type(selection_type), intent(in)                    :: control
@@ -1960,10 +1960,10 @@ module pm_mathCumPropExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumPropExpSelNewBacNon_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)           , intent(out)   , contiguous    :: cumPropExp(:)
-        real(RKC)           , intent(in)    , contiguous    :: array(:)
-        real(RKC)           , intent(in)                    :: maxArray
+        use pm_kind, only: RKG => RK4
+        real(RKG)           , intent(out)   , contiguous    :: cumPropExp(:)
+        real(RKG)           , intent(in)    , contiguous    :: array(:)
+        real(RKG)           , intent(in)                    :: maxArray
         type(backward_type) , intent(in)                    :: direction
         type(nothing_type)  , intent(in)                    :: action
         type(selection_type), intent(in)                    :: control
@@ -1975,10 +1975,10 @@ module pm_mathCumPropExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumPropExpSelNewBacNon_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)           , intent(out)   , contiguous    :: cumPropExp(:)
-        real(RKC)           , intent(in)    , contiguous    :: array(:)
-        real(RKC)           , intent(in)                    :: maxArray
+        use pm_kind, only: RKG => RK3
+        real(RKG)           , intent(out)   , contiguous    :: cumPropExp(:)
+        real(RKG)           , intent(in)    , contiguous    :: array(:)
+        real(RKG)           , intent(in)                    :: maxArray
         type(backward_type) , intent(in)                    :: direction
         type(nothing_type)  , intent(in)                    :: action
         type(selection_type), intent(in)                    :: control
@@ -1990,10 +1990,10 @@ module pm_mathCumPropExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumPropExpSelNewBacNon_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)           , intent(out)   , contiguous    :: cumPropExp(:)
-        real(RKC)           , intent(in)    , contiguous    :: array(:)
-        real(RKC)           , intent(in)                    :: maxArray
+        use pm_kind, only: RKG => RK2
+        real(RKG)           , intent(out)   , contiguous    :: cumPropExp(:)
+        real(RKG)           , intent(in)    , contiguous    :: array(:)
+        real(RKG)           , intent(in)                    :: maxArray
         type(backward_type) , intent(in)                    :: direction
         type(nothing_type)  , intent(in)                    :: action
         type(selection_type), intent(in)                    :: control
@@ -2005,10 +2005,10 @@ module pm_mathCumPropExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumPropExpSelNewBacNon_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)           , intent(out)   , contiguous    :: cumPropExp(:)
-        real(RKC)           , intent(in)    , contiguous    :: array(:)
-        real(RKC)           , intent(in)                    :: maxArray
+        use pm_kind, only: RKG => RK1
+        real(RKG)           , intent(out)   , contiguous    :: cumPropExp(:)
+        real(RKG)           , intent(in)    , contiguous    :: array(:)
+        real(RKG)           , intent(in)                    :: maxArray
         type(backward_type) , intent(in)                    :: direction
         type(nothing_type)  , intent(in)                    :: action
         type(selection_type), intent(in)                    :: control
@@ -2022,10 +2022,10 @@ module pm_mathCumPropExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumPropExpSelNewBacRev_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)           , intent(out)   , contiguous    :: cumPropExp(:)
-        real(RKC)           , intent(in)    , contiguous    :: array(:)
-        real(RKC)           , intent(in)                    :: maxArray
+        use pm_kind, only: RKG => RK5
+        real(RKG)           , intent(out)   , contiguous    :: cumPropExp(:)
+        real(RKG)           , intent(in)    , contiguous    :: array(:)
+        real(RKG)           , intent(in)                    :: maxArray
         type(backward_type) , intent(in)                    :: direction
         type(reverse_type)  , intent(in)                    :: action
         type(selection_type), intent(in)                    :: control
@@ -2037,10 +2037,10 @@ module pm_mathCumPropExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumPropExpSelNewBacRev_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)           , intent(out)   , contiguous    :: cumPropExp(:)
-        real(RKC)           , intent(in)    , contiguous    :: array(:)
-        real(RKC)           , intent(in)                    :: maxArray
+        use pm_kind, only: RKG => RK4
+        real(RKG)           , intent(out)   , contiguous    :: cumPropExp(:)
+        real(RKG)           , intent(in)    , contiguous    :: array(:)
+        real(RKG)           , intent(in)                    :: maxArray
         type(backward_type) , intent(in)                    :: direction
         type(reverse_type)  , intent(in)                    :: action
         type(selection_type), intent(in)                    :: control
@@ -2052,10 +2052,10 @@ module pm_mathCumPropExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumPropExpSelNewBacRev_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)           , intent(out)   , contiguous    :: cumPropExp(:)
-        real(RKC)           , intent(in)    , contiguous    :: array(:)
-        real(RKC)           , intent(in)                    :: maxArray
+        use pm_kind, only: RKG => RK3
+        real(RKG)           , intent(out)   , contiguous    :: cumPropExp(:)
+        real(RKG)           , intent(in)    , contiguous    :: array(:)
+        real(RKG)           , intent(in)                    :: maxArray
         type(backward_type) , intent(in)                    :: direction
         type(reverse_type)  , intent(in)                    :: action
         type(selection_type), intent(in)                    :: control
@@ -2067,10 +2067,10 @@ module pm_mathCumPropExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumPropExpSelNewBacRev_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)           , intent(out)   , contiguous    :: cumPropExp(:)
-        real(RKC)           , intent(in)    , contiguous    :: array(:)
-        real(RKC)           , intent(in)                    :: maxArray
+        use pm_kind, only: RKG => RK2
+        real(RKG)           , intent(out)   , contiguous    :: cumPropExp(:)
+        real(RKG)           , intent(in)    , contiguous    :: array(:)
+        real(RKG)           , intent(in)                    :: maxArray
         type(backward_type) , intent(in)                    :: direction
         type(reverse_type)  , intent(in)                    :: action
         type(selection_type), intent(in)                    :: control
@@ -2082,10 +2082,10 @@ module pm_mathCumPropExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCumPropExpSelNewBacRev_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)           , intent(out)   , contiguous    :: cumPropExp(:)
-        real(RKC)           , intent(in)    , contiguous    :: array(:)
-        real(RKC)           , intent(in)                    :: maxArray
+        use pm_kind, only: RKG => RK1
+        real(RKG)           , intent(out)   , contiguous    :: cumPropExp(:)
+        real(RKG)           , intent(in)    , contiguous    :: array(:)
+        real(RKG)           , intent(in)                    :: maxArray
         type(backward_type) , intent(in)                    :: direction
         type(reverse_type)  , intent(in)                    :: action
         type(selection_type), intent(in)                    :: control
@@ -2129,17 +2129,17 @@ contains
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCumPropExp_RK
 #endif
-        use pm_kind, only: RKC => RK
-        real(RKC)   , parameter     :: LOGTINY_RK = log(tiny(0._RKC))
+        use pm_kind, only: RKG => RK
+        real(RKG)   , parameter     :: LOGTINY_RK = log(tiny(0._RKG))
         integer(IK) , intent(in)    :: lenArray
-        real(RKC)   , intent(in)    :: array(lenArray)
-        real(RKC)   , intent(in)    :: maxArray
-        real(RKC)                   :: cumPropExp(lenArray)
-        real(RKC)                   :: cumPropExpInv
+        real(RKG)   , intent(in)    :: array(lenArray)
+        real(RKG)   , intent(in)    :: maxArray
+        real(RKG)                   :: cumPropExp(lenArray)
+        real(RKG)                   :: cumPropExpInv
         integer(IK)                 :: i
         cumPropExp(1) = array(1) - maxArray
         if (cumPropExp(1) < LOGTINY_RK) then
-            cumPropExp(1) = 0._RKC
+            cumPropExp(1) = 0._RKG
         else
             cumPropExp(1) = exp(cumPropExp(1))
         end if
@@ -2151,7 +2151,7 @@ contains
                 cumPropExp(i) = cumPropExp(i-1) + exp(cumPropExp(i))
             end if
         end do
-        cumPropExpInv = 1._RKC / cumPropExp(lenArray)
+        cumPropExpInv = 1._RKG / cumPropExp(lenArray)
         cumPropExp = cumPropExp * cumPropExpInv
     end function
 

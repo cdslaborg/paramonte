@@ -51,23 +51,23 @@
 
         character(*, SK), parameter :: PROCEDURE_NAME = "@isUnique()"
 #if     SK_ENABLED && D0_ENABLED
-        character(:,SKC), allocatable :: array
-        character(1,SKC), parameter :: lb = "a", ub = "i"
+        character(:,SKG), allocatable :: array
+        character(1,SKG), parameter :: lb = "a", ub = "i"
 #elif   SK_ENABLED && D1_ENABLED
-        character(2,SKC), dimension(:), allocatable :: array
-        character(2,SKC), parameter :: lb = "aa", ub = "ii"
+        character(2,SKG), dimension(:), allocatable :: array
+        character(2,SKG), parameter :: lb = "aa", ub = "ii"
 #elif   IK_ENABLED && D1_ENABLED
-        integer(IKC)    , dimension(:), allocatable :: array
-        integer(IKC)    , parameter :: lb = 0, ub = 9
+        integer(IKG)    , dimension(:), allocatable :: array
+        integer(IKG)    , parameter :: lb = 0, ub = 9
 #elif   LK_ENABLED && D1_ENABLED
-        logical(LKC)    , dimension(:), allocatable :: array
-        logical(LKC)    , parameter :: lb = .false., ub = .true.
+        logical(LKG)    , dimension(:), allocatable :: array
+        logical(LKG)    , parameter :: lb = .false., ub = .true.
 #elif   CK_ENABLED && D1_ENABLED
-        complex(CKC)    , dimension(:), allocatable :: array
-        complex(CKC)    , parameter :: lb = (0., -9.), ub = (+9., 0.)
+        complex(CKG)    , dimension(:), allocatable :: array
+        complex(CKG)    , parameter :: lb = (0., -9.), ub = (+9., 0.)
 #elif   RK_ENABLED && D1_ENABLED
-        real(RKC)       , dimension(:), allocatable :: array
-        real(RKC)       , parameter :: lb = 0., ub = 9.
+        real(RKG)       , dimension(:), allocatable :: array
+        real(RKG)       , parameter :: lb = 0., ub = 9.
 #else
 #error  "Unrecognized interface."
 #endif
@@ -137,23 +137,23 @@
 
         character(*, SK), parameter :: PROCEDURE_NAME = "@isUniqueAll()"
 #if     SK_ENABLED && D0_ENABLED
-        character(:,SKC), allocatable :: array
-        character(1,SKC), parameter :: lb = "a", ub = "i"
+        character(:,SKG), allocatable :: array
+        character(1,SKG), parameter :: lb = "a", ub = "i"
 #elif   SK_ENABLED && D1_ENABLED
-        character(2,SKC), dimension(:), allocatable :: array
-        character(2,SKC), parameter :: lb = "aa", ub = "ii"
+        character(2,SKG), dimension(:), allocatable :: array
+        character(2,SKG), parameter :: lb = "aa", ub = "ii"
 #elif   IK_ENABLED && D1_ENABLED
-        integer(IKC)    , dimension(:), allocatable :: array
-        integer(IKC)    , parameter :: lb = 0, ub = 9
+        integer(IKG)    , dimension(:), allocatable :: array
+        integer(IKG)    , parameter :: lb = 0, ub = 9
 #elif   LK_ENABLED && D1_ENABLED
-        logical(LKC)    , dimension(:), allocatable :: array
-        logical(LKC)    , parameter :: lb = .false., ub = .true.
+        logical(LKG)    , dimension(:), allocatable :: array
+        logical(LKG)    , parameter :: lb = .false., ub = .true.
 #elif   CK_ENABLED && D1_ENABLED
-        complex(CKC)    , dimension(:), allocatable :: array
-        complex(CKC)    , parameter :: lb = (0., -9.), ub = (+9., 0.)
+        complex(CKG)    , dimension(:), allocatable :: array
+        complex(CKG)    , parameter :: lb = (0., -9.), ub = (+9., 0.)
 #elif   RK_ENABLED && D1_ENABLED
-        real(RKC)       , dimension(:), allocatable :: array
-        real(RKC)       , parameter :: lb = 0., ub = 9.
+        real(RKG)       , dimension(:), allocatable :: array
+        real(RKG)       , parameter :: lb = 0., ub = 9.
 #else
 #error  "Unrecognized interface."
 #endif
@@ -211,23 +211,23 @@
 
         character(*, SK), parameter :: PROCEDURE_NAME = "@isUniqueAny()"
 #if     SK_ENABLED && D0_ENABLED
-        character(:,SKC), allocatable :: array
-        character(1,SKC), parameter :: lb = "a", ub = "i"
+        character(:,SKG), allocatable :: array
+        character(1,SKG), parameter :: lb = "a", ub = "i"
 #elif   SK_ENABLED && D1_ENABLED
-        character(2,SKC), dimension(:), allocatable :: array
-        character(2,SKC), parameter :: lb = "aa", ub = "ii"
+        character(2,SKG), dimension(:), allocatable :: array
+        character(2,SKG), parameter :: lb = "aa", ub = "ii"
 #elif   IK_ENABLED && D1_ENABLED
-        integer(IKC)    , dimension(:), allocatable :: array
-        integer(IKC)    , parameter :: lb = 0, ub = 9
+        integer(IKG)    , dimension(:), allocatable :: array
+        integer(IKG)    , parameter :: lb = 0, ub = 9
 #elif   LK_ENABLED && D1_ENABLED
-        logical(LKC)    , dimension(:), allocatable :: array
-        logical(LKC)    , parameter :: lb = .false., ub = .true.
+        logical(LKG)    , dimension(:), allocatable :: array
+        logical(LKG)    , parameter :: lb = .false., ub = .true.
 #elif   CK_ENABLED && D1_ENABLED
-        complex(CKC)    , dimension(:), allocatable :: array
-        complex(CKC)    , parameter :: lb = (0., -9.), ub = (+9., 0.)
+        complex(CKG)    , dimension(:), allocatable :: array
+        complex(CKG)    , parameter :: lb = (0., -9.), ub = (+9., 0.)
 #elif   RK_ENABLED && D1_ENABLED
-        real(RKC)       , dimension(:), allocatable :: array
-        real(RKC)       , parameter :: lb = 0., ub = 9.
+        real(RKG)       , dimension(:), allocatable :: array
+        real(RKG)       , parameter :: lb = 0., ub = 9.
 #else
 #error  "Unrecognized interface."
 #endif
@@ -294,19 +294,19 @@
 
 #if     SK_ENABLED && D0_ENABLED
 #define ALL
-        character(:,SKC), allocatable :: array, unique, unique_ref
+        character(:,SKG), allocatable :: array, unique, unique_ref
 #elif   SK_ENABLED && D1_ENABLED && getUnique_ENABLED
-        character(:,SKC), dimension(:), allocatable :: array, unique, unique_ref
+        character(:,SKG), dimension(:), allocatable :: array, unique, unique_ref
 #elif   SK_ENABLED && D1_ENABLED && setUnique_ENABLED
-        character(2,SKC), dimension(:), allocatable :: array, unique, unique_ref
+        character(2,SKG), dimension(:), allocatable :: array, unique, unique_ref
 #elif   IK_ENABLED && D1_ENABLED
-        integer(IKC)    , dimension(:), allocatable :: array, unique, unique_ref
+        integer(IKG)    , dimension(:), allocatable :: array, unique, unique_ref
 #elif   LK_ENABLED && D1_ENABLED
-        logical(LKC)    , dimension(:), allocatable :: array, unique, unique_ref
+        logical(LKG)    , dimension(:), allocatable :: array, unique, unique_ref
 #elif   CK_ENABLED && D1_ENABLED
-        complex(CKC)    , dimension(:), allocatable :: array, unique, unique_ref
+        complex(CKG)    , dimension(:), allocatable :: array, unique, unique_ref
 #elif   RK_ENABLED && D1_ENABLED
-        real(RKC)       , dimension(:), allocatable :: array, unique, unique_ref
+        real(RKG)       , dimension(:), allocatable :: array, unique, unique_ref
 #else
 #error  "Unrecognized interface."
 #endif
@@ -384,7 +384,7 @@
             array = ""
             unique_ref = ""
 #elif       SK_ENABLED && D1_ENABLED && getUnique_ENABLED
-            allocate(character(2,SKC) :: array(0), unique_ref(0))
+            allocate(character(2,SKG) :: array(0), unique_ref(0))
 #elif       SK_ENABLED && D1_ENABLED && setUnique_ENABLED
             allocate(array(0), unique_ref(0))
 #elif       IK_ENABLED && D1_ENABLED
@@ -407,23 +407,23 @@
             !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #if         SK_ENABLED && D0_ENABLED
-            array = SKC_" "
-            unique_ref = SKC_" "
+            array = SKG_" "
+            unique_ref = SKG_" "
 #elif       SK_ENABLED && D1_ENABLED
-            array = [character(2,SKC) :: " "]
-            unique_ref = [character(2,SKC) :: " "]
+            array = [character(2,SKG) :: " "]
+            unique_ref = [character(2,SKG) :: " "]
 #elif       IK_ENABLED && D1_ENABLED
-            array = [1_IKC]
-            unique_ref = [1_IKC]
+            array = [1_IKG]
+            unique_ref = [1_IKG]
 #elif       LK_ENABLED && D1_ENABLED
-            array = [logical(LKC) :: .false.]
-            unique_ref = [logical(LKC) :: .false.]
+            array = [logical(LKG) :: .false.]
+            unique_ref = [logical(LKG) :: .false.]
 #elif       CK_ENABLED && D1_ENABLED
-            array = [(+1._CKC, -1._CKC)]
-            unique_ref = [(+1._CKC, -1._CKC)]
+            array = [(+1._CKG, -1._CKG)]
+            unique_ref = [(+1._CKG, -1._CKG)]
 #elif       RK_ENABLED && D1_ENABLED
-            array = [1._RKC]
-            unique_ref = [1._RKC]
+            array = [1._RKG]
+            unique_ref = [1._RKG]
 #endif
 
 #if         getUnique_ENABLED
@@ -439,17 +439,17 @@
             !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #if         SK_ENABLED && D0_ENABLED
-            array = SKC_"  "
+            array = SKG_"  "
 #elif       SK_ENABLED && D1_ENABLED
-            array = [character(2,SKC) :: " ", " "]
+            array = [character(2,SKG) :: " ", " "]
 #elif       IK_ENABLED && D1_ENABLED
-            array = [1_IKC, 1_IKC]
+            array = [1_IKG, 1_IKG]
 #elif       LK_ENABLED && D1_ENABLED
-            array = [logical(LKC) :: .false., .false.]
+            array = [logical(LKG) :: .false., .false.]
 #elif       CK_ENABLED && D1_ENABLED
-            array = [complex(CKC) :: (+1._CKC, -1._CKC), (+1._CKC, -1._CKC)]
+            array = [complex(CKG) :: (+1._CKG, -1._CKG), (+1._CKG, -1._CKG)]
 #elif       RK_ENABLED && D1_ENABLED
-            array = [real(RKC) :: 1._RKC, 1._RKC]
+            array = [real(RKG) :: 1._RKG, 1._RKG]
 #endif
 
             unique_ref = array(GET_INDEX(1))
@@ -466,23 +466,23 @@
             !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #if         SK_ENABLED && D0_ENABLED
-            array = SKC_"ABaB "
-            unique_ref = SKC_"ABa "
+            array = SKG_"ABaB "
+            unique_ref = SKG_"ABa "
 #elif       SK_ENABLED && D1_ENABLED
-            array = [character(2,SKC) :: "A", "B", "a", "B", " "]
-            unique_ref = [character(2,SKC) :: "A", "B", "a", " "]
+            array = [character(2,SKG) :: "A", "B", "a", "B", " "]
+            unique_ref = [character(2,SKG) :: "A", "B", "a", " "]
 #elif       IK_ENABLED && D1_ENABLED
-            array = [1_IKC, 2_IKC, 0_IKC, 2_IKC, -1_IKC]
-            unique_ref = [1_IKC, 2_IKC, 0_IKC, -1_IKC]
+            array = [1_IKG, 2_IKG, 0_IKG, 2_IKG, -1_IKG]
+            unique_ref = [1_IKG, 2_IKG, 0_IKG, -1_IKG]
 #elif       LK_ENABLED && D1_ENABLED
-            array = [logical(LKC) :: .false., .false., .true., .false.]
-            unique_ref = [logical(LKC) :: .false., .true.]
+            array = [logical(LKG) :: .false., .false., .true., .false.]
+            unique_ref = [logical(LKG) :: .false., .true.]
 #elif       CK_ENABLED && D1_ENABLED
-            array = [(+1._CKC, -1._CKC), (+2._CKC, -2._CKC), (+0._CKC, 0._CKC), (+2._CKC, -2._CKC), (-1._CKC, +1._CKC)]
-            unique_ref = [(+1._CKC, -1._CKC), (+2._CKC, -2._CKC), (+0._CKC, 0._CKC), (-1._CKC, +1._CKC)]
+            array = [(+1._CKG, -1._CKG), (+2._CKG, -2._CKG), (+0._CKG, 0._CKG), (+2._CKG, -2._CKG), (-1._CKG, +1._CKG)]
+            unique_ref = [(+1._CKG, -1._CKG), (+2._CKG, -2._CKG), (+0._CKG, 0._CKG), (-1._CKG, +1._CKG)]
 #elif       RK_ENABLED && D1_ENABLED
-            array = [1._RKC, 2._RKC, 0._RKC, 2._RKC, -1._RKC]
-            unique_ref = [1._RKC, 2._RKC, 0._RKC, -1._RKC]
+            array = [1._RKG, 2._RKG, 0._RKG, 2._RKG, -1._RKG]
+            unique_ref = [1._RKG, 2._RKG, 0._RKG, -1._RKG]
 #endif
 
 #if         getUnique_ENABLED
@@ -529,13 +529,13 @@
 #elif       SK_ENABLED && D1_ENABLED
             array = ["A", "B", "a", "X", " "]
 #elif       IK_ENABLED && D1_ENABLED
-            array = [1_IKC, 2_IKC, 0_IKC, -1_IKC, -2_IKC]
+            array = [1_IKG, 2_IKG, 0_IKG, -1_IKG, -2_IKG]
 #elif       LK_ENABLED && D1_ENABLED
-            array = [logical(LKC) :: .true., .false.]
+            array = [logical(LKG) :: .true., .false.]
 #elif       CK_ENABLED && D1_ENABLED
-            array = [(+1._CKC, -1._CKC), (+0._CKC, 0._CKC), (+2._CKC, -2._CKC), (-1._CKC, +1._CKC), (-2._CKC, +2._CKC)]
+            array = [(+1._CKG, -1._CKG), (+0._CKG, 0._CKG), (+2._CKG, -2._CKG), (-1._CKG, +1._CKG), (-2._CKG, +2._CKG)]
 #elif       RK_ENABLED && D1_ENABLED
-            array = [1._RKC, 0._RKC, 2._RKC, -1._RKC, -2._RKC]
+            array = [1._RKG, 0._RKG, 2._RKG, -1._RKG, -2._RKG]
 #endif
 
             unique_ref = array
@@ -746,17 +746,17 @@
 
         pure function iseq(element1, element2) result(equivalent)
 #if         SK_ENABLED && D0_ENABLED
-            character(1,SKC), intent(in) :: element1, element2
+            character(1,SKG), intent(in) :: element1, element2
 #elif       SK_ENABLED && D1_ENABLED
-            character(*,SKC), intent(in) :: element1, element2
+            character(*,SKG), intent(in) :: element1, element2
 #elif       IK_ENABLED && D1_ENABLED
-            integer(IKC)    , intent(in) :: element1, element2
+            integer(IKG)    , intent(in) :: element1, element2
 #elif       LK_ENABLED && D1_ENABLED
-            logical(LKC)    , intent(in) :: element1, element2
+            logical(LKG)    , intent(in) :: element1, element2
 #elif       CK_ENABLED && D1_ENABLED
-            complex(CKC)    , intent(in) :: element1, element2
+            complex(CKG)    , intent(in) :: element1, element2
 #elif       RK_ENABLED && D1_ENABLED
-            real(RKC)       , intent(in) :: element1, element2
+            real(RKG)       , intent(in) :: element1, element2
 #endif
             logical(LK) :: equivalent
             equivalent = element1 IS_EQUAL element2

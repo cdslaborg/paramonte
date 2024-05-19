@@ -168,8 +168,8 @@ module pm_str
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: alleq_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC), intent(in)                :: str1, str2
+        use pm_kind, only: SKG => SK5
+        character(*,SKG), intent(in)                :: str1, str2
         logical(LK)                                 :: allEqual
     end function
 #endif
@@ -179,8 +179,8 @@ module pm_str
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: alleq_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC), intent(in)                :: str1, str2
+        use pm_kind, only: SKG => SK4
+        character(*,SKG), intent(in)                :: str1, str2
         logical(LK)                                 :: allEqual
     end function
 #endif
@@ -190,8 +190,8 @@ module pm_str
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: alleq_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC), intent(in)                :: str1, str2
+        use pm_kind, only: SKG => SK3
+        character(*,SKG), intent(in)                :: str1, str2
         logical(LK)                                 :: allEqual
     end function
 #endif
@@ -201,8 +201,8 @@ module pm_str
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: alleq_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC), intent(in)                :: str1, str2
+        use pm_kind, only: SKG => SK2
+        character(*,SKG), intent(in)                :: str1, str2
         logical(LK)                                 :: allEqual
     end function
 #endif
@@ -212,8 +212,8 @@ module pm_str
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: alleq_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC), intent(in)                :: str1, str2
+        use pm_kind, only: SKG => SK1
+        character(*,SKG), intent(in)                :: str1, str2
         logical(LK)                                 :: allEqual
     end function
 #endif
@@ -300,8 +300,8 @@ module pm_str
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isEndedWith_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)    , intent(in)            :: str, suffix
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)    , intent(in)            :: str, suffix
         logical(LK)                                 :: endedWith
     end function
 #endif
@@ -311,8 +311,8 @@ module pm_str
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isEndedWith_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)    , intent(in)            :: str, suffix
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)    , intent(in)            :: str, suffix
         logical(LK)                                 :: endedWith
     end function
 #endif
@@ -322,8 +322,8 @@ module pm_str
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isEndedWith_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)    , intent(in)            :: str, suffix
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)    , intent(in)            :: str, suffix
         logical(LK)                                 :: endedWith
     end function
 #endif
@@ -333,8 +333,8 @@ module pm_str
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isEndedWith_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)    , intent(in)            :: str, suffix
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)    , intent(in)            :: str, suffix
         logical(LK)                                 :: endedWith
     end function
 #endif
@@ -344,8 +344,8 @@ module pm_str
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isEndedWith_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)    , intent(in)            :: str, suffix
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)    , intent(in)            :: str, suffix
         logical(LK)                                 :: endedWith
     end function
 #endif
@@ -359,8 +359,8 @@ module pm_str
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isEndedWith_PSSK5
 #endif
-        use pm_kind, only: SKC => SK5
-        type(css_pdt(SKC))  , intent(in)            :: str, suffix
+        use pm_kind, only: SKG => SK5
+        type(css_pdt(SKG))  , intent(in)            :: str, suffix
         logical(LK)                                 :: endedWith
     end function
 #endif
@@ -370,8 +370,8 @@ module pm_str
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isEndedWith_PSSK4
 #endif
-        use pm_kind, only: SKC => SK4
-        type(css_pdt(SKC))  , intent(in)            :: str, suffix
+        use pm_kind, only: SKG => SK4
+        type(css_pdt(SKG))  , intent(in)            :: str, suffix
         logical(LK)                                 :: endedWith
     end function
 #endif
@@ -381,8 +381,8 @@ module pm_str
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isEndedWith_PSSK3
 #endif
-        use pm_kind, only: SKC => SK3
-        type(css_pdt(SKC))  , intent(in)            :: str, suffix
+        use pm_kind, only: SKG => SK3
+        type(css_pdt(SKG))  , intent(in)            :: str, suffix
         logical(LK)                                 :: endedWith
     end function
 #endif
@@ -392,8 +392,8 @@ module pm_str
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isEndedWith_PSSK2
 #endif
-        use pm_kind, only: SKC => SK2
-        type(css_pdt(SKC))  , intent(in)            :: str, suffix
+        use pm_kind, only: SKG => SK2
+        type(css_pdt(SKG))  , intent(in)            :: str, suffix
         logical(LK)                                 :: endedWith
     end function
 #endif
@@ -403,8 +403,8 @@ module pm_str
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isEndedWith_PSSK1
 #endif
-        use pm_kind, only: SKC => SK1
-        type(css_pdt(SKC))  , intent(in)            :: str, suffix
+        use pm_kind, only: SKG => SK1
+        type(css_pdt(SKG))  , intent(in)            :: str, suffix
         logical(LK)                                 :: endedWith
     end function
 #endif
@@ -418,7 +418,7 @@ module pm_str
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isEndedWith_BSSK
 #endif
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
         type(css_type)      , intent(in)            :: str, suffix
         logical(LK)                                 :: endedWith
     end function
@@ -499,8 +499,8 @@ module pm_str
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMinLocNoMask_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC), intent(in)                :: str
+        use pm_kind, only: SKG => SK5
+        character(*,SKG), intent(in)                :: str
         logical(LK)     , intent(in), optional      :: back
         integer(IK)                                 :: minLoc
     end function
@@ -511,8 +511,8 @@ module pm_str
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMinLocNoMask_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC), intent(in)                :: str
+        use pm_kind, only: SKG => SK4
+        character(*,SKG), intent(in)                :: str
         logical(LK)     , intent(in), optional      :: back
         integer(IK)                                 :: minLoc
     end function
@@ -523,8 +523,8 @@ module pm_str
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMinLocNoMask_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC), intent(in)                :: str
+        use pm_kind, only: SKG => SK3
+        character(*,SKG), intent(in)                :: str
         logical(LK)     , intent(in), optional      :: back
         integer(IK)                                 :: minLoc
     end function
@@ -535,8 +535,8 @@ module pm_str
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMinLocNoMask_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC), intent(in)                :: str
+        use pm_kind, only: SKG => SK2
+        character(*,SKG), intent(in)                :: str
         logical(LK)     , intent(in), optional      :: back
         integer(IK)                                 :: minLoc
     end function
@@ -547,8 +547,8 @@ module pm_str
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMinLocNoMask_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC), intent(in)                :: str
+        use pm_kind, only: SKG => SK1
+        character(*,SKG), intent(in)                :: str
         logical(LK)     , intent(in), optional      :: back
         integer(IK)                                 :: minLoc
     end function
@@ -561,8 +561,8 @@ module pm_str
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMinLocMasked_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC), intent(in)                :: str
+        use pm_kind, only: SKG => SK5
+        character(*,SKG), intent(in)                :: str
         logical(LK)     , intent(in), contiguous    :: mask(:)
         logical(LK)     , intent(in), optional      :: back
         integer(IK)                                 :: minLoc
@@ -574,8 +574,8 @@ module pm_str
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMinLocMasked_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC), intent(in)                :: str
+        use pm_kind, only: SKG => SK4
+        character(*,SKG), intent(in)                :: str
         logical(LK)     , intent(in), contiguous    :: mask(:)
         logical(LK)     , intent(in), optional      :: back
         integer(IK)                                 :: minLoc
@@ -587,8 +587,8 @@ module pm_str
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMinLocMasked_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC), intent(in)                :: str
+        use pm_kind, only: SKG => SK3
+        character(*,SKG), intent(in)                :: str
         logical(LK)     , intent(in), contiguous    :: mask(:)
         logical(LK)     , intent(in), optional      :: back
         integer(IK)                                 :: minLoc
@@ -600,8 +600,8 @@ module pm_str
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMinLocMasked_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC), intent(in)                :: str
+        use pm_kind, only: SKG => SK2
+        character(*,SKG), intent(in)                :: str
         logical(LK)     , intent(in), contiguous    :: mask(:)
         logical(LK)     , intent(in), optional      :: back
         integer(IK)                                 :: minLoc
@@ -613,8 +613,8 @@ module pm_str
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMinLocMasked_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC), intent(in)                :: str
+        use pm_kind, only: SKG => SK1
+        character(*,SKG), intent(in)                :: str
         logical(LK)     , intent(in), contiguous    :: mask(:)
         logical(LK)     , intent(in), optional      :: back
         integer(IK)                                 :: minLoc
@@ -697,8 +697,8 @@ module pm_str
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMaxLocNoMask_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC), intent(in)                :: str
+        use pm_kind, only: SKG => SK5
+        character(*,SKG), intent(in)                :: str
         logical(LK)     , intent(in), optional      :: back
         integer(IK)                                 :: maxLoc
     end function
@@ -709,8 +709,8 @@ module pm_str
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMaxLocNoMask_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC), intent(in)                :: str
+        use pm_kind, only: SKG => SK4
+        character(*,SKG), intent(in)                :: str
         logical(LK)     , intent(in), optional      :: back
         integer(IK)                                 :: maxLoc
     end function
@@ -721,8 +721,8 @@ module pm_str
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMaxLocNoMask_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC), intent(in)                :: str
+        use pm_kind, only: SKG => SK3
+        character(*,SKG), intent(in)                :: str
         logical(LK)     , intent(in), optional      :: back
         integer(IK)                                 :: maxLoc
     end function
@@ -733,8 +733,8 @@ module pm_str
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMaxLocNoMask_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC), intent(in)                :: str
+        use pm_kind, only: SKG => SK2
+        character(*,SKG), intent(in)                :: str
         logical(LK)     , intent(in), optional      :: back
         integer(IK)                                 :: maxLoc
     end function
@@ -745,8 +745,8 @@ module pm_str
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMaxLocNoMask_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC), intent(in)                :: str
+        use pm_kind, only: SKG => SK1
+        character(*,SKG), intent(in)                :: str
         logical(LK)     , intent(in), optional      :: back
         integer(IK)                                 :: maxLoc
     end function
@@ -759,8 +759,8 @@ module pm_str
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMaxLocMasked_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC), intent(in)                :: str
+        use pm_kind, only: SKG => SK5
+        character(*,SKG), intent(in)                :: str
         logical(LK)     , intent(in), contiguous    :: mask(:)
         logical(LK)     , intent(in), optional      :: back
         integer(IK)                                 :: maxLoc
@@ -772,8 +772,8 @@ module pm_str
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMaxLocMasked_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC), intent(in)                :: str
+        use pm_kind, only: SKG => SK4
+        character(*,SKG), intent(in)                :: str
         logical(LK)     , intent(in), contiguous    :: mask(:)
         logical(LK)     , intent(in), optional      :: back
         integer(IK)                                 :: maxLoc
@@ -785,8 +785,8 @@ module pm_str
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMaxLocMasked_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC), intent(in)                :: str
+        use pm_kind, only: SKG => SK3
+        character(*,SKG), intent(in)                :: str
         logical(LK)     , intent(in), contiguous    :: mask(:)
         logical(LK)     , intent(in), optional      :: back
         integer(IK)                                 :: maxLoc
@@ -798,8 +798,8 @@ module pm_str
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMaxLocMasked_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC), intent(in)                :: str
+        use pm_kind, only: SKG => SK2
+        character(*,SKG), intent(in)                :: str
         logical(LK)     , intent(in), contiguous    :: mask(:)
         logical(LK)     , intent(in), optional      :: back
         integer(IK)                                 :: maxLoc
@@ -811,8 +811,8 @@ module pm_str
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMaxLocMasked_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC), intent(in)                :: str
+        use pm_kind, only: SKG => SK1
+        character(*,SKG), intent(in)                :: str
         logical(LK)     , intent(in), contiguous    :: mask(:)
         logical(LK)     , intent(in), optional      :: back
         integer(IK)                                 :: maxLoc
@@ -895,9 +895,9 @@ module pm_str
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMinValNoMask_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC), intent(in)                :: str
-        character(1,SKC)                            :: minVal
+        use pm_kind, only: SKG => SK5
+        character(*,SKG), intent(in)                :: str
+        character(1,SKG)                            :: minVal
     end function
 #endif
 
@@ -906,9 +906,9 @@ module pm_str
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMinValNoMask_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC), intent(in)                :: str
-        character(1,SKC)                            :: minVal
+        use pm_kind, only: SKG => SK4
+        character(*,SKG), intent(in)                :: str
+        character(1,SKG)                            :: minVal
     end function
 #endif
 
@@ -917,9 +917,9 @@ module pm_str
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMinValNoMask_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC), intent(in)                :: str
-        character(1,SKC)                            :: minVal
+        use pm_kind, only: SKG => SK3
+        character(*,SKG), intent(in)                :: str
+        character(1,SKG)                            :: minVal
     end function
 #endif
 
@@ -928,9 +928,9 @@ module pm_str
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMinValNoMask_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC), intent(in)                :: str
-        character(1,SKC)                            :: minVal
+        use pm_kind, only: SKG => SK2
+        character(*,SKG), intent(in)                :: str
+        character(1,SKG)                            :: minVal
     end function
 #endif
 
@@ -939,9 +939,9 @@ module pm_str
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMinValNoMask_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC), intent(in)                :: str
-        character(1,SKC)                            :: minVal
+        use pm_kind, only: SKG => SK1
+        character(*,SKG), intent(in)                :: str
+        character(1,SKG)                            :: minVal
     end function
 #endif
 
@@ -952,10 +952,10 @@ module pm_str
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMinValMasked_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC), intent(in)                :: str
+        use pm_kind, only: SKG => SK5
+        character(*,SKG), intent(in)                :: str
         logical(LK)     , intent(in), contiguous    :: mask(:)
-        character(1,SKC)                            :: minVal
+        character(1,SKG)                            :: minVal
     end function
 #endif
 
@@ -964,10 +964,10 @@ module pm_str
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMinValMasked_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC), intent(in)                :: str
+        use pm_kind, only: SKG => SK4
+        character(*,SKG), intent(in)                :: str
         logical(LK)     , intent(in), contiguous    :: mask(:)
-        character(1,SKC)                            :: minVal
+        character(1,SKG)                            :: minVal
     end function
 #endif
 
@@ -976,10 +976,10 @@ module pm_str
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMinValMasked_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC), intent(in)                :: str
+        use pm_kind, only: SKG => SK3
+        character(*,SKG), intent(in)                :: str
         logical(LK)     , intent(in), contiguous    :: mask(:)
-        character(1,SKC)                            :: minVal
+        character(1,SKG)                            :: minVal
     end function
 #endif
 
@@ -988,10 +988,10 @@ module pm_str
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMinValMasked_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC), intent(in)                :: str
+        use pm_kind, only: SKG => SK2
+        character(*,SKG), intent(in)                :: str
         logical(LK)     , intent(in), contiguous    :: mask(:)
-        character(1,SKC)                            :: minVal
+        character(1,SKG)                            :: minVal
     end function
 #endif
 
@@ -1000,10 +1000,10 @@ module pm_str
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMinValMasked_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC), intent(in)                :: str
+        use pm_kind, only: SKG => SK1
+        character(*,SKG), intent(in)                :: str
         logical(LK)     , intent(in), contiguous    :: mask(:)
-        character(1,SKC)                            :: minVal
+        character(1,SKG)                            :: minVal
     end function
 #endif
 
@@ -1083,9 +1083,9 @@ module pm_str
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMaxValNoMask_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC), intent(in)                :: str
-        character(1,SKC)                            :: maxVal
+        use pm_kind, only: SKG => SK5
+        character(*,SKG), intent(in)                :: str
+        character(1,SKG)                            :: maxVal
     end function
 #endif
 
@@ -1094,9 +1094,9 @@ module pm_str
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMaxValNoMask_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC), intent(in)                :: str
-        character(1,SKC)                            :: maxVal
+        use pm_kind, only: SKG => SK4
+        character(*,SKG), intent(in)                :: str
+        character(1,SKG)                            :: maxVal
     end function
 #endif
 
@@ -1105,9 +1105,9 @@ module pm_str
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMaxValNoMask_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC), intent(in)                :: str
-        character(1,SKC)                            :: maxVal
+        use pm_kind, only: SKG => SK3
+        character(*,SKG), intent(in)                :: str
+        character(1,SKG)                            :: maxVal
     end function
 #endif
 
@@ -1116,9 +1116,9 @@ module pm_str
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMaxValNoMask_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC), intent(in)                :: str
-        character(1,SKC)                            :: maxVal
+        use pm_kind, only: SKG => SK2
+        character(*,SKG), intent(in)                :: str
+        character(1,SKG)                            :: maxVal
     end function
 #endif
 
@@ -1127,9 +1127,9 @@ module pm_str
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMaxValNoMask_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC), intent(in)                :: str
-        character(1,SKC)                            :: maxVal
+        use pm_kind, only: SKG => SK1
+        character(*,SKG), intent(in)                :: str
+        character(1,SKG)                            :: maxVal
     end function
 #endif
 
@@ -1140,10 +1140,10 @@ module pm_str
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMaxValMasked_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC), intent(in)                :: str
+        use pm_kind, only: SKG => SK5
+        character(*,SKG), intent(in)                :: str
         logical(LK)     , intent(in), contiguous    :: mask(:)
-        character(1,SKC)                            :: maxVal
+        character(1,SKG)                            :: maxVal
     end function
 #endif
 
@@ -1152,10 +1152,10 @@ module pm_str
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMaxValMasked_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC), intent(in)                :: str
+        use pm_kind, only: SKG => SK4
+        character(*,SKG), intent(in)                :: str
         logical(LK)     , intent(in), contiguous    :: mask(:)
-        character(1,SKC)                            :: maxVal
+        character(1,SKG)                            :: maxVal
     end function
 #endif
 
@@ -1164,10 +1164,10 @@ module pm_str
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMaxValMasked_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC), intent(in)                :: str
+        use pm_kind, only: SKG => SK3
+        character(*,SKG), intent(in)                :: str
         logical(LK)     , intent(in), contiguous    :: mask(:)
-        character(1,SKC)                            :: maxVal
+        character(1,SKG)                            :: maxVal
     end function
 #endif
 
@@ -1176,10 +1176,10 @@ module pm_str
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMaxValMasked_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC), intent(in)                :: str
+        use pm_kind, only: SKG => SK2
+        character(*,SKG), intent(in)                :: str
         logical(LK)     , intent(in), contiguous    :: mask(:)
-        character(1,SKC)                            :: maxVal
+        character(1,SKG)                            :: maxVal
     end function
 #endif
 
@@ -1188,10 +1188,10 @@ module pm_str
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMaxValMasked_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC), intent(in)                :: str
+        use pm_kind, only: SKG => SK1
+        character(*,SKG), intent(in)                :: str
         logical(LK)     , intent(in), contiguous    :: mask(:)
-        character(1,SKC)                            :: maxVal
+        character(1,SKG)                            :: maxVal
     end function
 #endif
 
@@ -1248,9 +1248,9 @@ module pm_str
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCharVec_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC), intent(in)                :: str
-        character(1,SKC)                            :: charVec(len(str, IK))
+        use pm_kind, only: SKG => SK5
+        character(*,SKG), intent(in)                :: str
+        character(1,SKG)                            :: charVec(len(str, IK))
     end function
 #endif
 
@@ -1259,9 +1259,9 @@ module pm_str
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCharVec_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC), intent(in)                :: str
-        character(1,SKC)                            :: charVec(len(str, IK))
+        use pm_kind, only: SKG => SK4
+        character(*,SKG), intent(in)                :: str
+        character(1,SKG)                            :: charVec(len(str, IK))
     end function
 #endif
 
@@ -1270,9 +1270,9 @@ module pm_str
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCharVec_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC), intent(in)                :: str
-        character(1,SKC)                            :: charVec(len(str, IK))
+        use pm_kind, only: SKG => SK3
+        character(*,SKG), intent(in)                :: str
+        character(1,SKG)                            :: charVec(len(str, IK))
     end function
 #endif
 
@@ -1281,9 +1281,9 @@ module pm_str
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCharVec_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC), intent(in)                :: str
-        character(1,SKC)                            :: charVec(len(str, IK))
+        use pm_kind, only: SKG => SK2
+        character(*,SKG), intent(in)                :: str
+        character(1,SKG)                            :: charVec(len(str, IK))
     end function
 #endif
 
@@ -1292,9 +1292,9 @@ module pm_str
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCharVec_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC), intent(in)                :: str
-        character(1,SKC)                            :: charVec(len(str, IK))
+        use pm_kind, only: SKG => SK1
+        character(*,SKG), intent(in)                :: str
+        character(1,SKG)                            :: charVec(len(str, IK))
     end function
 #endif
 
@@ -1353,9 +1353,9 @@ module pm_str
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCharSeq_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(1,SKC), intent(in), contiguous    :: charVec(:)
-        character(size(charVec,1,IK),SKC)           :: str
+        use pm_kind, only: SKG => SK5
+        character(1,SKG), intent(in), contiguous    :: charVec(:)
+        character(size(charVec,1,IK),SKG)           :: str
     end function
 #endif
 
@@ -1364,9 +1364,9 @@ module pm_str
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCharSeq_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(1,SKC), intent(in), contiguous    :: charVec(:)
-        character(size(charVec,1,IK),SKC)           :: str
+        use pm_kind, only: SKG => SK4
+        character(1,SKG), intent(in), contiguous    :: charVec(:)
+        character(size(charVec,1,IK),SKG)           :: str
     end function
 #endif
 
@@ -1375,9 +1375,9 @@ module pm_str
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCharSeq_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(1,SKC), intent(in), contiguous    :: charVec(:)
-        character(size(charVec,1,IK),SKC)           :: str
+        use pm_kind, only: SKG => SK3
+        character(1,SKG), intent(in), contiguous    :: charVec(:)
+        character(size(charVec,1,IK),SKG)           :: str
     end function
 #endif
 
@@ -1386,9 +1386,9 @@ module pm_str
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCharSeq_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(1,SKC), intent(in), contiguous    :: charVec(:)
-        character(size(charVec,1,IK),SKC)           :: str
+        use pm_kind, only: SKG => SK2
+        character(1,SKG), intent(in), contiguous    :: charVec(:)
+        character(size(charVec,1,IK),SKG)           :: str
     end function
 #endif
 
@@ -1397,9 +1397,9 @@ module pm_str
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCharSeq_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(1,SKC), intent(in), contiguous    :: charVec(:)
-        character(size(charVec,1,IK),SKC)           :: str
+        use pm_kind, only: SKG => SK1
+        character(1,SKG), intent(in), contiguous    :: charVec(:)
+        character(size(charVec,1,IK),SKG)           :: str
     end function
 #endif
 
@@ -1455,9 +1455,9 @@ module pm_str
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getTrimmedTZ_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC), intent(in)                    :: str
-        character(:,SKC)                , allocatable   :: strt
+        use pm_kind, only: SKG => SK5
+        character(*,SKG), intent(in)                    :: str
+        character(:,SKG)                , allocatable   :: strt
     end function
 #endif
 
@@ -1466,9 +1466,9 @@ module pm_str
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getTrimmedTZ_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC), intent(in)                    :: str
-        character(:,SKC)                , allocatable   :: strt
+        use pm_kind, only: SKG => SK4
+        character(*,SKG), intent(in)                    :: str
+        character(:,SKG)                , allocatable   :: strt
     end function
 #endif
 
@@ -1477,9 +1477,9 @@ module pm_str
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getTrimmedTZ_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC), intent(in)                    :: str
-        character(:,SKC)                , allocatable   :: strt
+        use pm_kind, only: SKG => SK3
+        character(*,SKG), intent(in)                    :: str
+        character(:,SKG)                , allocatable   :: strt
     end function
 #endif
 
@@ -1488,9 +1488,9 @@ module pm_str
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getTrimmedTZ_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC), intent(in)                    :: str
-        character(:,SKC)                , allocatable   :: strt
+        use pm_kind, only: SKG => SK2
+        character(*,SKG), intent(in)                    :: str
+        character(:,SKG)                , allocatable   :: strt
     end function
 #endif
 
@@ -1499,9 +1499,9 @@ module pm_str
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getTrimmedTZ_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC), intent(in)                    :: str
-        character(:,SKC)                , allocatable   :: strt
+        use pm_kind, only: SKG => SK1
+        character(*,SKG), intent(in)                    :: str
+        character(:,SKG)                , allocatable   :: strt
     end function
 #endif
 
@@ -1543,7 +1543,7 @@ module pm_str
     !>                              The presence of two adjacent `newline` subsrtings signals the beginning of a new paragraph.<br>
     !>                              In such a case, the indentation of the new paragraph will be computed afresh by couting the
     !>                              number of repetitions of the input `indent` pattern at the beginning of the new paragraph.<br>
-    !>                              (**optional**, default = `new_line(SKC_"a")` where `SKC` refers to the kind of `str`.)
+    !>                              (**optional**, default = `new_line(SKG_"a")` where `SKG` refers to the kind of `str`.)
     !>  \param[in]  linefeed    :   The input scalar of the same type and kind as the input `str` of arbitrary length type parameter,
     !>                              whose contents represent the linefeed to use for dividing `str` into separate wrapped lines.<br>
     !>                              Each line that is to be wrapped will end with a `linefeed`.<br>
@@ -1623,11 +1623,11 @@ module pm_str
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getStrWrapped_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)            , intent(in)                    :: str
-        character(*,SKC)            , intent(in)    , optional      :: prefix, indent, break, newline, linefeed
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)            , intent(in)                    :: str
+        character(*,SKG)            , intent(in)    , optional      :: prefix, indent, break, newline, linefeed
         integer(IK)                 , intent(in)    , optional      :: width, maxwidth
-        character(:,SKC)                            , allocatable   :: strWrapped
+        character(:,SKG)                            , allocatable   :: strWrapped
     end function
 #endif
 
@@ -1636,11 +1636,11 @@ module pm_str
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getStrWrapped_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)            , intent(in)                    :: str
-        character(*,SKC)            , intent(in)    , optional      :: prefix, indent, break, newline, linefeed
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)            , intent(in)                    :: str
+        character(*,SKG)            , intent(in)    , optional      :: prefix, indent, break, newline, linefeed
         integer(IK)                 , intent(in)    , optional      :: width, maxwidth
-        character(:,SKC)                            , allocatable   :: strWrapped
+        character(:,SKG)                            , allocatable   :: strWrapped
     end function
 #endif
 
@@ -1649,11 +1649,11 @@ module pm_str
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getStrWrapped_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)            , intent(in)                    :: str
-        character(*,SKC)            , intent(in)    , optional      :: prefix, indent, break, newline, linefeed
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)            , intent(in)                    :: str
+        character(*,SKG)            , intent(in)    , optional      :: prefix, indent, break, newline, linefeed
         integer(IK)                 , intent(in)    , optional      :: width, maxwidth
-        character(:,SKC)                            , allocatable   :: strWrapped
+        character(:,SKG)                            , allocatable   :: strWrapped
     end function
 #endif
 
@@ -1662,11 +1662,11 @@ module pm_str
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getStrWrapped_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)            , intent(in)                    :: str
-        character(*,SKC)            , intent(in)    , optional      :: prefix, indent, break, newline, linefeed
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)            , intent(in)                    :: str
+        character(*,SKG)            , intent(in)    , optional      :: prefix, indent, break, newline, linefeed
         integer(IK)                 , intent(in)    , optional      :: width, maxwidth
-        character(:,SKC)                            , allocatable   :: strWrapped
+        character(:,SKG)                            , allocatable   :: strWrapped
     end function
 #endif
 
@@ -1675,11 +1675,11 @@ module pm_str
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getStrWrapped_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)            , intent(in)                    :: str
-        character(*,SKC)            , intent(in)    , optional      :: prefix, indent, break, newline, linefeed
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)            , intent(in)                    :: str
+        character(*,SKG)            , intent(in)    , optional      :: prefix, indent, break, newline, linefeed
         integer(IK)                 , intent(in)    , optional      :: width, maxwidth
-        character(:,SKC)                            , allocatable   :: strWrapped
+        character(:,SKG)                            , allocatable   :: strWrapped
     end function
 #endif
 
@@ -1752,8 +1752,8 @@ module pm_str
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLenIndent_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)            , intent(in)                    :: str, pattern
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)            , intent(in)                    :: str, pattern
         integer(IK)                                                 :: lenIndent
     end function
 #endif
@@ -1763,8 +1763,8 @@ module pm_str
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLenIndent_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)            , intent(in)                    :: str, pattern
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)            , intent(in)                    :: str, pattern
         integer(IK)                                                 :: lenIndent
     end function
 #endif
@@ -1774,8 +1774,8 @@ module pm_str
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLenIndent_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)            , intent(in)                    :: str, pattern
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)            , intent(in)                    :: str, pattern
         integer(IK)                                                 :: lenIndent
     end function
 #endif
@@ -1785,8 +1785,8 @@ module pm_str
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLenIndent_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)            , intent(in)                    :: str, pattern
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)            , intent(in)                    :: str, pattern
         integer(IK)                                                 :: lenIndent
     end function
 #endif
@@ -1796,8 +1796,8 @@ module pm_str
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLenIndent_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)            , intent(in)                    :: str, pattern
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)            , intent(in)                    :: str, pattern
         integer(IK)                                                 :: lenIndent
     end function
 #endif
@@ -1816,7 +1816,7 @@ module pm_str
 !   >  \param[in]  prefix      :   The input scalar of the same type and kind as the input `str` of arbitrary length type parameter,
 !   >                              whose contents will be prefixed to each new line (including the first line) before an indentation occurs.<br>
 !   >                              Note that `prefix` does **not** count toward filling the specified `width` or `maxwidth` of each wrapped line.<br>
-!   >                              (**optional**, default = `SKC_""`)
+!   >                              (**optional**, default = `SKG_""`)
 !   >  \param[in]  indent      :   The input scalar of the same type and kind as the input `str` of arbitrary length type parameter,
 !   >                              whose contents are the set of characters to search for at the beginning of the input `str` representing the indentation.<br>
 !   >                              If specified as a non-empty input argument, then all wrappings of `str` will be indented with as many instances of `indent`
@@ -1835,7 +1835,7 @@ module pm_str
 !   >  \param[in]  newline    :   The input scalar of the same type and kind as the input `str` of arbitrary length type parameter.<br>
 !   >                              Upon encountering a pattern that matches `newline`, the pattern will be removed and a new line will be created
 !   >                              starting with `prefix//indent` followed by the rest of the `str` that appears immediately after `newline`.<br>
-!   >                              (**optional**, default = `new_line(SKC_" ")`)
+!   >                              (**optional**, default = `new_line(SKG_" ")`)
 !   >  \param[in]  width       :   The input scalar of type `integer` of default kind \IK, representing the length of each line in the
 !   >                              output wrapping, **with the possibility of word overflows**.<br>
 !   !>                             If a word overflows the specified input line width,
@@ -1906,11 +1906,11 @@ module pm_str
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getStrWrappedList_SK5
 !#endif
-!        use pm_kind, only: SKC => SK5
-!        character(*,SKC)            , intent(in)                    :: str
-!        character(*,SKC)            , intent(in)    , optional      :: prefix, indent, break, newline
+!        use pm_kind, only: SKG => SK5
+!        character(*,SKG)            , intent(in)                    :: str
+!        character(*,SKG)            , intent(in)    , optional      :: prefix, indent, break, newline
 !        integer(IK)                 , intent(in)    , optional      :: width, maxwidth
-!        type(css_pdt(SKC))                       , allocatable   :: List(:)
+!        type(css_pdt(SKG))                       , allocatable   :: List(:)
 !    end function
 !#endif
 !
@@ -1919,11 +1919,11 @@ module pm_str
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getStrWrappedList_SK4
 !#endif
-!        use pm_kind, only: SKC => SK4
-!        character(*,SKC)            , intent(in)                    :: str
-!        character(*,SKC)            , intent(in)    , optional      :: prefix, indent, break, newline
+!        use pm_kind, only: SKG => SK4
+!        character(*,SKG)            , intent(in)                    :: str
+!        character(*,SKG)            , intent(in)    , optional      :: prefix, indent, break, newline
 !        integer(IK)                 , intent(in)    , optional      :: width, maxwidth
-!        type(css_pdt(SKC))                       , allocatable   :: List(:)
+!        type(css_pdt(SKG))                       , allocatable   :: List(:)
 !    end function
 !#endif
 !
@@ -1932,11 +1932,11 @@ module pm_str
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getStrWrappedList_SK3
 !#endif
-!        use pm_kind, only: SKC => SK3
-!        character(*,SKC)            , intent(in)                    :: str
-!        character(*,SKC)            , intent(in)    , optional      :: prefix, indent, break, newline
+!        use pm_kind, only: SKG => SK3
+!        character(*,SKG)            , intent(in)                    :: str
+!        character(*,SKG)            , intent(in)    , optional      :: prefix, indent, break, newline
 !        integer(IK)                 , intent(in)    , optional      :: width, maxwidth
-!        type(css_pdt(SKC))                       , allocatable   :: List(:)
+!        type(css_pdt(SKG))                       , allocatable   :: List(:)
 !    end function
 !#endif
 !
@@ -1945,11 +1945,11 @@ module pm_str
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getStrWrappedList_SK2
 !#endif
-!        use pm_kind, only: SKC => SK2
-!        character(*,SKC)            , intent(in)                    :: str
-!        character(*,SKC)            , intent(in)    , optional      :: prefix, indent, break, newline
+!        use pm_kind, only: SKG => SK2
+!        character(*,SKG)            , intent(in)                    :: str
+!        character(*,SKG)            , intent(in)    , optional      :: prefix, indent, break, newline
 !        integer(IK)                 , intent(in)    , optional      :: width, maxwidth
-!        type(css_pdt(SKC))                       , allocatable   :: List(:)
+!        type(css_pdt(SKG))                       , allocatable   :: List(:)
 !    end function
 !#endif
 !
@@ -1958,11 +1958,11 @@ module pm_str
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getStrWrappedList_SK1
 !#endif
-!        use pm_kind, only: SKC => SK1
-!        character(*,SKC)            , intent(in)                    :: str
-!        character(*,SKC)            , intent(in)    , optional      :: prefix, indent, break, newline
+!        use pm_kind, only: SKG => SK1
+!        character(*,SKG)            , intent(in)                    :: str
+!        character(*,SKG)            , intent(in)    , optional      :: prefix, indent, break, newline
 !        integer(IK)                 , intent(in)    , optional      :: width, maxwidth
-!        type(css_pdt(SKC))                       , allocatable   :: List(:)
+!        type(css_pdt(SKG))                       , allocatable   :: List(:)
 !    end function
 !#endif
 !

@@ -1,7 +1,7 @@
 program example
 
     use pm_kind, only: SK, IK, RK
-    use pm_kind, only: TKC => RKS ! All other real types are also supported.
+    use pm_kind, only: TKG => RKS ! All other real types are also supported.
     use pm_sampleVar, only: getVar
     use pm_sampleMean, only: getMean
     use pm_sampleVar, only: getVarMerged
@@ -27,8 +27,8 @@ program example
     call disp%skip()
 
     block
-        real(TKC) :: mean(1:nsam), var(0:nsam), varMerged
-        real(TKC), allocatable :: sample(:)
+        real(TKG) :: mean(1:nsam), var(0:nsam), varMerged
+        real(TKG), allocatable :: sample(:)
         do itry = 1, ntry
             call disp%skip()
             call disp%show("lb(1) = 1; ub(1) = getUnifRand(2, 7)")
@@ -61,8 +61,8 @@ program example
                                 var(isam) = getVar(sample(lb(isam):ub(isam)))
                                 mean(isam) = getMean(sample(lb(isam):ub(isam)))
                             end do
-            call disp%show("varMerged = getVarMerged(var(2), var(1), mean(1) - mean(2), ub(1) / real(ub(2), TKC))")
-                            varMerged = getVarMerged(var(2), var(1), mean(1) - mean(2), ub(1) / real(ub(2), TKC))
+            call disp%show("varMerged = getVarMerged(var(2), var(1), mean(1) - mean(2), ub(1) / real(ub(2), TKG))")
+                            varMerged = getVarMerged(var(2), var(1), mean(1) - mean(2), ub(1) / real(ub(2), TKG))
             call disp%show("varMerged")
             call disp%show( varMerged )
             call disp%show("var(0) ! reference")
@@ -78,8 +78,8 @@ program example
     call disp%skip()
 
     block
-        real(TKC) :: mean(1:nsam), var(0:nsam), varMerged
-        real(TKC), allocatable :: sample(:)
+        real(TKG) :: mean(1:nsam), var(0:nsam), varMerged
+        real(TKG), allocatable :: sample(:)
         do itry = 1, ntry
             call disp%skip()
             call disp%show("lb(1) = 1; ub(1) = getUnifRand(2, 7)")
@@ -116,8 +116,8 @@ program example
                                 var(isam) = getVar(sample(lb(isam):ub(isam)), iweight(lb(isam):ub(isam)))
                                 mean(isam) = getMean(sample(lb(isam):ub(isam)), iweight(lb(isam):ub(isam)))
                             end do
-            call disp%show("varMerged = getVarMerged(var(2), var(1), mean(1) - mean(2), real(sum(iweight(:ub(1))), TKC) / real(sum(iweight), TKC))")
-                            varMerged = getVarMerged(var(2), var(1), mean(1) - mean(2), real(sum(iweight(:ub(1))), TKC) / real(sum(iweight), TKC))
+            call disp%show("varMerged = getVarMerged(var(2), var(1), mean(1) - mean(2), real(sum(iweight(:ub(1))), TKG) / real(sum(iweight), TKG))")
+                            varMerged = getVarMerged(var(2), var(1), mean(1) - mean(2), real(sum(iweight(:ub(1))), TKG) / real(sum(iweight), TKG))
             call disp%show("varMerged")
             call disp%show( varMerged )
             call disp%show("var(0) ! reference")
@@ -133,8 +133,8 @@ program example
     call disp%skip()
 
     block
-        real(TKC) :: mean(1:nsam), var(0:nsam), varMerged
-        real(TKC), allocatable :: sample(:), rweight(:)
+        real(TKG) :: mean(1:nsam), var(0:nsam), varMerged
+        real(TKG), allocatable :: sample(:), rweight(:)
         do itry = 1, ntry
             call disp%skip()
             call disp%show("lb(1) = 1; ub(1) = getUnifRand(2, 7)")
@@ -171,8 +171,8 @@ program example
                                 var(isam) = getVar(sample(lb(isam):ub(isam)), rweight(lb(isam):ub(isam)))
                                 mean(isam) = getMean(sample(lb(isam):ub(isam)), rweight(lb(isam):ub(isam)))
                             end do
-            call disp%show("varMerged = getVarMerged(var(2), var(1), mean(1) - mean(2), real(sum(rweight(:ub(1))), TKC) / real(sum(rweight), TKC))")
-                            varMerged = getVarMerged(var(2), var(1), mean(1) - mean(2), real(sum(rweight(:ub(1))), TKC) / real(sum(rweight), TKC))
+            call disp%show("varMerged = getVarMerged(var(2), var(1), mean(1) - mean(2), real(sum(rweight(:ub(1))), TKG) / real(sum(rweight), TKG))")
+                            varMerged = getVarMerged(var(2), var(1), mean(1) - mean(2), real(sum(rweight(:ub(1))), TKG) / real(sum(rweight), TKG))
             call disp%show("varMerged")
             call disp%show( varMerged )
             call disp%show("var(0) ! reference")
@@ -188,8 +188,8 @@ program example
     call disp%skip()
 
     block
-        real(TKC), allocatable :: mean(:,:), var(:,:), varMerged(:)
-        real(TKC), allocatable :: sample(:,:)
+        real(TKG), allocatable :: mean(:,:), var(:,:), varMerged(:)
+        real(TKG), allocatable :: sample(:,:)
         do itry = 1, ntry
             call disp%skip()
             call disp%show("dim = 2; lb(1) = 1; ub(1) = getUnifRand(2, 7)")
@@ -230,8 +230,8 @@ program example
                                 var(:,isam) = getVar(sample(:,lb(isam):ub(isam)), dim)
                                 mean(:,isam) = getMean(sample(:,lb(isam):ub(isam)), dim)
                             end do
-            call disp%show("varMerged = getVarMerged(var(:,2), var(:,1), mean(:,1) - mean(:,2), real(ub(1), TKC) / real(ub(2), TKC))")
-                            varMerged = getVarMerged(var(:,2), var(:,1), mean(:,1) - mean(:,2), real(ub(1), TKC) / real(ub(2), TKC))
+            call disp%show("varMerged = getVarMerged(var(:,2), var(:,1), mean(:,1) - mean(:,2), real(ub(1), TKG) / real(ub(2), TKG))")
+                            varMerged = getVarMerged(var(:,2), var(:,1), mean(:,1) - mean(:,2), real(ub(1), TKG) / real(ub(2), TKG))
             call disp%show("varMerged")
             call disp%show( varMerged )
             call disp%show("var(:,0) ! reference")
@@ -247,8 +247,8 @@ program example
     call disp%skip()
 
     block
-        real(TKC), allocatable :: mean(:,:), var(:,:), varMerged(:)
-        real(TKC), allocatable :: sample(:,:)
+        real(TKG), allocatable :: mean(:,:), var(:,:), varMerged(:)
+        real(TKG), allocatable :: sample(:,:)
         do itry = 1, ntry
             call disp%skip()
             call disp%show("dim = 2; lb(1) = 1; ub(1) = getUnifRand(2, 7)")
@@ -293,8 +293,8 @@ program example
                                 var(:,isam) = getVar(sample(:,lb(isam):ub(isam)), 2_IK, iweight(lb(isam):ub(isam)))
                                 mean(:,isam) = getMean(sample(:,lb(isam):ub(isam)), 2_IK, iweight(lb(isam):ub(isam)))
                             end do
-            call disp%show("varMerged = getVarMerged(var(:,2), var(:,1), mean(:,1) - mean(:,2), real(sum(iweight(:ub(1))), TKC) / real(sum(iweight), TKC))")
-                            varMerged = getVarMerged(var(:,2), var(:,1), mean(:,1) - mean(:,2), real(sum(iweight(:ub(1))), TKC) / real(sum(iweight), TKC))
+            call disp%show("varMerged = getVarMerged(var(:,2), var(:,1), mean(:,1) - mean(:,2), real(sum(iweight(:ub(1))), TKG) / real(sum(iweight), TKG))")
+                            varMerged = getVarMerged(var(:,2), var(:,1), mean(:,1) - mean(:,2), real(sum(iweight(:ub(1))), TKG) / real(sum(iweight), TKG))
             call disp%show("varMerged")
             call disp%show( varMerged )
             call disp%show("var(:,0) ! reference")
@@ -310,8 +310,8 @@ program example
     call disp%skip()
 
     block
-        real(TKC), allocatable :: sample(:,:), mean(:,:)
-        real(TKC), allocatable :: rweight(:), var(:,:), varMerged(:)
+        real(TKG), allocatable :: sample(:,:), mean(:,:)
+        real(TKG), allocatable :: rweight(:), var(:,:), varMerged(:)
         do itry = 1, ntry
             call disp%skip()
             call disp%show("dim = 2; lb(1) = 1; ub(1) = getUnifRand(2, 7)")
@@ -356,8 +356,8 @@ program example
                                 var(:,isam) = getVar(sample(:,lb(isam):ub(isam)), 2_IK, rweight(lb(isam):ub(isam)))
                                 mean(:,isam) = getMean(sample(:,lb(isam):ub(isam)), 2_IK, rweight(lb(isam):ub(isam)))
                             end do
-            call disp%show("varMerged = getVarMerged(var(:,2), var(:,1), mean(:,1) - mean(:,2), real(sum(rweight(:ub(1))), TKC) / real(sum(rweight), TKC))")
-                            varMerged = getVarMerged(var(:,2), var(:,1), mean(:,1) - mean(:,2), real(sum(rweight(:ub(1))), TKC) / real(sum(rweight), TKC))
+            call disp%show("varMerged = getVarMerged(var(:,2), var(:,1), mean(:,1) - mean(:,2), real(sum(rweight(:ub(1))), TKG) / real(sum(rweight), TKG))")
+                            varMerged = getVarMerged(var(:,2), var(:,1), mean(:,1) - mean(:,2), real(sum(rweight(:ub(1))), TKG) / real(sum(rweight), TKG))
             call disp%show("varMerged")
             call disp%show( varMerged )
             call disp%show("var(:,0) ! reference")

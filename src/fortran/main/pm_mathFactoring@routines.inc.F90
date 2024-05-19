@@ -27,21 +27,21 @@
 #if     getFactoring_IK_ENABLED
         use pm_arrayResize, only: setResized
         integer(IK)     :: count, csize
-        integer(IKC)    :: halfn, divisor
-        CHECK_ASSERTION(__LINE__, 1_IKC < posint, \
+        integer(IKG)    :: halfn, divisor
+        CHECK_ASSERTION(__LINE__, 1_IKG < posint, \
         SK_"@getFactoring(): The condition `1 < posint` must hold for corresponding input arguments. posint = "//getStr(posint))
         csize = 15_IK
         allocate(Factoring(csize))
         count = 0_IK
         do ! first remove all factors of 2.
-            halfn = posint / 2_IKC
-            if (halfn * 2_IKC /= posint) exit
+            halfn = posint / 2_IKG
+            if (halfn * 2_IKG /= posint) exit
             count = count + 1_IK
             if (csize < count) then
                 csize = csize * 2_IK
                 call setResized(Factoring, csize)
             end if
-            Factoring(count) = 2_IKC
+            Factoring(count) = 2_IKG
             posint = halfn
         end do
         ! Find the odd factors.
@@ -50,7 +50,7 @@
             !   \todo This algorithm can be improved.
             if (divisor > posint) exit ! If a factor is too large, we are done.
             do  ! Try the current factor repeatedly, until all is taken out.
-                if (mod(posint, divisor) /= 0_IKC .or. posint == 1_IKC)  exit
+                if (mod(posint, divisor) /= 0_IKG .or. posint == 1_IKG)  exit
                 count = count + 1_IK
                 if (csize < count) then
                     csize = csize * 2_IK
@@ -59,7 +59,7 @@
                 Factoring(count) = divisor
                 posint = posint / divisor ! Remove the current factor from `posint`.
             end do
-            divisor = divisor + 2_IKC ! Move to next odd number.
+            divisor = divisor + 2_IKG ! Move to next odd number.
         end do
         Factoring = Factoring(1:count)
 #else

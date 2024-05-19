@@ -92,9 +92,9 @@ module pm_complexAbs
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: abs_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC), intent(in)                :: val
-        complex(CKC)                            :: absval
+        use pm_kind, only: CKG => CK5
+        complex(CKG), intent(in)                :: val
+        complex(CKG)                            :: absval
     end function
 #endif
 
@@ -103,9 +103,9 @@ module pm_complexAbs
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: abs_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC), intent(in)                :: val
-        complex(CKC)                            :: absval
+        use pm_kind, only: CKG => CK4
+        complex(CKG), intent(in)                :: val
+        complex(CKG)                            :: absval
     end function
 #endif
 
@@ -114,9 +114,9 @@ module pm_complexAbs
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: abs_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC), intent(in)                :: val
-        complex(CKC)                            :: absval
+        use pm_kind, only: CKG => CK3
+        complex(CKG), intent(in)                :: val
+        complex(CKG)                            :: absval
     end function
 #endif
 
@@ -125,9 +125,9 @@ module pm_complexAbs
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: abs_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC), intent(in)                :: val
-        complex(CKC)                            :: absval
+        use pm_kind, only: CKG => CK2
+        complex(CKG), intent(in)                :: val
+        complex(CKG)                            :: absval
     end function
 #endif
 
@@ -136,9 +136,9 @@ module pm_complexAbs
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: abs_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC), intent(in)                :: val
-        complex(CKC)                            :: absval
+        use pm_kind, only: CKG => CK1
+        complex(CKG), intent(in)                :: val
+        complex(CKG)                            :: absval
     end function
 #endif
 

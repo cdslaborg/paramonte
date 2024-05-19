@@ -159,9 +159,9 @@ module pm_mathFisher
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getFisherFDD_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(in)    :: val
-        real(RKC)                   :: fisherz
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(in)    :: val
+        real(RKG)                   :: fisherz
     end function
 #endif
 
@@ -170,9 +170,9 @@ module pm_mathFisher
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getFisherFDD_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(in)    :: val
-        real(RKC)                   :: fisherz
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(in)    :: val
+        real(RKG)                   :: fisherz
     end function
 #endif
 
@@ -181,9 +181,9 @@ module pm_mathFisher
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getFisherFDD_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(in)    :: val
-        real(RKC)                   :: fisherz
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(in)    :: val
+        real(RKG)                   :: fisherz
     end function
 #endif
 
@@ -192,9 +192,9 @@ module pm_mathFisher
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getFisherFDD_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(in)    :: val
-        real(RKC)                   :: fisherz
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(in)    :: val
+        real(RKG)                   :: fisherz
     end function
 #endif
 
@@ -203,9 +203,9 @@ module pm_mathFisher
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getFisherFDD_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(in)    :: val
-        real(RKC)                   :: fisherz
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(in)    :: val
+        real(RKG)                   :: fisherz
     end function
 #endif
 
@@ -216,9 +216,9 @@ module pm_mathFisher
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getFisherFLU_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(in)    :: val, lb, ub
-        real(RKC)                   :: fisherz
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(in)    :: val, lb, ub
+        real(RKG)                   :: fisherz
     end function
 #endif
 
@@ -227,9 +227,9 @@ module pm_mathFisher
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getFisherFLU_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(in)    :: val, lb, ub
-        real(RKC)                   :: fisherz
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(in)    :: val, lb, ub
+        real(RKG)                   :: fisherz
     end function
 #endif
 
@@ -238,9 +238,9 @@ module pm_mathFisher
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getFisherFLU_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(in)    :: val, lb, ub
-        real(RKC)                   :: fisherz
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(in)    :: val, lb, ub
+        real(RKG)                   :: fisherz
     end function
 #endif
 
@@ -249,9 +249,9 @@ module pm_mathFisher
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getFisherFLU_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(in)    :: val, lb, ub
-        real(RKC)                   :: fisherz
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(in)    :: val, lb, ub
+        real(RKG)                   :: fisherz
     end function
 #endif
 
@@ -260,9 +260,9 @@ module pm_mathFisher
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getFisherFLU_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(in)    :: val, lb, ub
-        real(RKC)                   :: fisherz
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(in)    :: val, lb, ub
+        real(RKG)                   :: fisherz
     end function
 #endif
 
@@ -341,9 +341,9 @@ module pm_mathFisher
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getFisherInvFDD_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(in)    :: fisherz
-        real(RKC)                   :: val
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(in)    :: fisherz
+        real(RKG)                   :: val
     end function
 #endif
 
@@ -352,9 +352,9 @@ module pm_mathFisher
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getFisherInvFDD_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(in)    :: fisherz
-        real(RKC)                   :: val
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(in)    :: fisherz
+        real(RKG)                   :: val
     end function
 #endif
 
@@ -363,9 +363,9 @@ module pm_mathFisher
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getFisherInvFDD_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(in)    :: fisherz
-        real(RKC)                   :: val
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(in)    :: fisherz
+        real(RKG)                   :: val
     end function
 #endif
 
@@ -374,9 +374,9 @@ module pm_mathFisher
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getFisherInvFDD_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(in)    :: fisherz
-        real(RKC)                   :: val
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(in)    :: fisherz
+        real(RKG)                   :: val
     end function
 #endif
 
@@ -385,9 +385,9 @@ module pm_mathFisher
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getFisherInvFDD_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(in)    :: fisherz
-        real(RKC)                   :: val
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(in)    :: fisherz
+        real(RKG)                   :: val
     end function
 #endif
 
@@ -398,9 +398,9 @@ module pm_mathFisher
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getFisherInvFLU_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(in)    :: fisherz, lb, ub
-        real(RKC)                   :: val
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(in)    :: fisherz, lb, ub
+        real(RKG)                   :: val
     end function
 #endif
 
@@ -409,9 +409,9 @@ module pm_mathFisher
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getFisherInvFLU_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(in)    :: fisherz, lb, ub
-        real(RKC)                   :: val
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(in)    :: fisherz, lb, ub
+        real(RKG)                   :: val
     end function
 #endif
 
@@ -420,9 +420,9 @@ module pm_mathFisher
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getFisherInvFLU_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(in)    :: fisherz, lb, ub
-        real(RKC)                   :: val
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(in)    :: fisherz, lb, ub
+        real(RKG)                   :: val
     end function
 #endif
 
@@ -431,9 +431,9 @@ module pm_mathFisher
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getFisherInvFLU_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(in)    :: fisherz, lb, ub
-        real(RKC)                   :: val
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(in)    :: fisherz, lb, ub
+        real(RKG)                   :: val
     end function
 #endif
 
@@ -442,9 +442,9 @@ module pm_mathFisher
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getFisherInvFLU_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(in)    :: fisherz, lb, ub
-        real(RKC)                   :: val
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(in)    :: fisherz, lb, ub
+        real(RKG)                   :: val
     end function
 #endif
 

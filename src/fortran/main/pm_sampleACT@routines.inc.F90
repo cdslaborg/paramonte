@@ -64,11 +64,11 @@
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
         integer(IK) :: batchSize, lenseq, weisum
-        real(TKC), allocatable :: batchMean(:)
-        real(TKC) :: batchSizeInv, avgSeq, sumDiffSq, varBatchMean, avgBatchMean
+        real(TKG), allocatable :: batchMean(:)
+        real(TKG) :: batchSizeInv, avgSeq, sumDiffSq, varBatchMean, avgBatchMean
         integer(IK) :: nbatch, ibatch, seqLenEffective
 #if     WTI_ENABLED
-        real(TKC) :: diffSq
+        real(TKG) :: diffSq
         integer(IK) :: cumSumWei(size(seq, 1, IK)), currentBatchEndLoc, iseq, iseqVerbose
         lenseq = size(seq, 1, IK)
         call setCumSum(cumSumWei, weight)
@@ -89,10 +89,10 @@
 
         ! Compute batch size and count.
 
-        act = 1._TKC
+        act = 1._TKG
         batchSize = method%size
         if (batchSize == 0_IK) batchSize = int(real(weisum)**real(2./3.), IK)
-        batchSizeInv = 1._TKC / real(batchSize, TKC)
+        batchSizeInv = 1._TKG / real(batchSize, TKG)
         nbatch = weisum / batchSize
         CHECK_ASSERTION(__LINE__, 0_IK < batchSize, SK_"@getACT(): The condition `0 < method%size` must hold. method%size = "//getStr(batchSize))
         if (nbatch < 2_IK) then
@@ -111,14 +111,14 @@
 
         ! Compute the Batch means vector and mean of the whole (weighted) sequence.
 
-        sumDiffSq = 0._TKC
-        avgSeq = 0._TKC
+        sumDiffSq = 0._TKG
+        avgSeq = 0._TKG
 #if     WTI_ENABLED
         iseq = 1
         ibatch = 1
         iseqVerbose = 0
         currentBatchEndLoc = batchSize
-        batchMean(ibatch) = 0._TKC
+        batchMean(ibatch) = 0._TKG
         loopOverWeight: do
             iseqVerbose = iseqVerbose + 1
             if (cumSumWei(iseq) < iseqVerbose) iseq = iseq + 1
@@ -127,12 +127,12 @@
                 if (seqLenEffective < iseqVerbose) exit loopOverWeight  ! condition equivalent to currentBatchEndLoc == seqLenEffective.
                 currentBatchEndLoc = currentBatchEndLoc + batchSize
                 ibatch = ibatch + 1
-                batchMean(ibatch) = 0._TKC
+                batchMean(ibatch) = 0._TKG
             end if
             batchMean(ibatch) = batchMean(ibatch) + seq(iseq)
         end do loopOverWeight
         batchMean = batchMean * batchSizeInv
-        avgSeq = avgSeq / real(seqLenEffective, TKC) ! whole sequence mean.
+        avgSeq = avgSeq / real(seqLenEffective, TKG) ! whole sequence mean.
         ! compute whole sequence variance.
         iseq = 1
         iseqVerbose = 0
@@ -156,19 +156,19 @@
             batchMean(ibatch) = batchMean(ibatch) * batchSizeInv
             iseqBeg = iseqEnd + 1_IK
         end do
-        avgSeq = avgSeq / real(seqLenEffective, TKC) ! whole sequence mean.
+        avgSeq = avgSeq / real(seqLenEffective, TKG) ! whole sequence mean.
         sumDiffSq = sum((seq(1 : seqLenEffective) - avgSeq)**2) ! whole sequence variance.
 
 #else
 #error  "Unrecognized interface."
 #endif
-        avgBatchMean = sum(batchMean) / real(nbatch, TKC) ! batch means
-        varBatchMean = sum((batchMean - avgBatchMean)**2) / real(nbatch - 1, TKC) ! batch variances
+        avgBatchMean = sum(batchMean) / real(nbatch, TKG) ! batch means
+        varBatchMean = sum((batchMean - avgBatchMean)**2) / real(nbatch - 1, TKG) ! batch variances
         !act = varBatchMean * seqLenEffective * (seqLenEffective - 1) / sumDiffSq
         !act = batchSize * varBatchMean * (seqLenEffective - 1) / sumDiffSq
-        act = varBatchMean * seqLenEffective * (seqLenEffective - 1) / sumDiffSq / real(nbatch, TKC)
+        act = varBatchMean * seqLenEffective * (seqLenEffective - 1) / sumDiffSq / real(nbatch, TKG)
         !print *, avgSeq, sumDiffSq
-        !print *, sum(batchMean) / real(nbatch, TKC), varBatchMean
+        !print *, sum(batchMean) / real(nbatch, TKG), varBatchMean
         !print *, nbatch, batchSize
         !print *, act
 
@@ -176,7 +176,7 @@
 #elif   getACT_ENABLED && D1_ENABLED && (CSD_ENABLED || CSM_ENABLED)
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        real(TKC) :: mean, sample(size(seq, 1, IK))
+        real(TKG) :: mean, sample(size(seq, 1, IK))
         integer(IK) :: lenseq, weisum
         lenseq = size(seq, 1, IK)
         CHECK_ASSERTION(__LINE__, 1 < lenseq, SK_"@getACT(): The condition `0 < size(seq)` must hold. size(seq) = "//getStr(lenseq))
@@ -188,11 +188,11 @@
         CHECK_ASSERTION(__LINE__, size(weight, 1, IK) == size(seq, 1, IK), SK_"@getACT(): The condition `size(weight) == size(seq)` must hold. size(weight), size(seq) = "//getStr([size(weight, 1, IK), size(seq, 1, IK)]))
         weisum = sum(weight)
         sample = getVerbose(seq, weight, weisum)
-        mean = sum(sample * weight) / real(weisum, TKC)
+        mean = sum(sample * weight) / real(weisum, TKG)
         sample = sample - mean
 #elif   ONE_ENABLED
         weisum = size(seq, 1, IK)
-        mean = sum(seq) / real(weisum, TKC)
+        mean = sum(seq) / real(weisum, TKG)
         sample = seq - mean
 #else
 #error  "Unrecognized interface."
@@ -200,13 +200,13 @@
 #if     CSD_ENABLED
         block
             integer(IK) :: i
-            real(TKC) :: signif
-            signif = real(method%signif, TKC)
+            real(TKG) :: signif
+            signif = real(method%signif, TKG)
             CHECK_ASSERTION(__LINE__, 0 <= method%signif, SK_"@getACT(): The condition `0 <= method%signif` must hold. method%signif = "//getStr(signif))
             sample = getACF(sample, norm = stdscale)
             ! For autocorrelation, under the assumption of a completely random series, the ACF standard error reduces to `sqrt(1 / ndata)`.
-            act = 0._TKC
-            signif = signif * sqrt(1._TKC / weisum)
+            act = 0._TKG
+            signif = signif * sqrt(1._TKG / weisum)
             do i = 1, size(sample, 1, IK)
                 if (sample(i) < signif) exit
                 act = act + sample(i)

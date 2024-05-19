@@ -3,7 +3,7 @@ program benchmark
 
     use pm_bench, only: bench_type
     use pm_arraySpace, only: getLinSpace
-    use pm_kind, only: IK, LK, RKC => RKD, RK, SK
+    use pm_kind, only: IK, LK, RKG => RKD, RK, SK
     use iso_fortran_env, only: error_unit
 
     implicit none
@@ -12,9 +12,9 @@ program benchmark
     integer(IK)                         :: iarr                 !<  The array size counter.
     integer(IK)                         :: fileUnit             !<  The output file unit for benchmark results.
     integer(IK) , parameter             :: NBENCH = 2_IK        !<  The number of benchmark procedures.
-    real(RKC)                           :: dummySum = 0._RKC    !<  The dummy computation to prevent the compiler from aggressive optimizations.
-    real(RKC)   , allocatable           :: X(:)                 !<  The benchmark value.
-    real(RKC)                           :: onemexp              !<  The cumulative proportion of the exponential of the `X(:)`.
+    real(RKG)                           :: dummySum = 0._RKG    !<  The dummy computation to prevent the compiler from aggressive optimizations.
+    real(RKG)   , allocatable           :: X(:)                 !<  The benchmark value.
+    real(RKG)                           :: onemexp              !<  The cumulative proportion of the exponential of the `X(:)`.
     type(bench_type)                    :: bench(NBENCH)        !<  The Benchmark array.
     logical(LK)                         :: underflowEnabled     !<  The logical flag indicating whether an array with many instances of underflow should be generated.
 

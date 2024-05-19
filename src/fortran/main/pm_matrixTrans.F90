@@ -777,8 +777,8 @@ module pm_matrixTrans
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatTransSymmOldFix_SK5
 #endif
-        use pm_kind, only: LK, SKC => SK5
-        character(*,SKC)    , intent(inout) :: source(:,:)
+        use pm_kind, only: LK, SKG => SK5
+        character(*,SKG)    , intent(inout) :: source(:,:)
     end subroutine
 #endif
 
@@ -787,8 +787,8 @@ module pm_matrixTrans
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatTransSymmOldFix_SK4
 #endif
-        use pm_kind, only: LK, SKC => SK4
-        character(*,SKC)    , intent(inout) :: source(:,:)
+        use pm_kind, only: LK, SKG => SK4
+        character(*,SKG)    , intent(inout) :: source(:,:)
     end subroutine
 #endif
 
@@ -797,8 +797,8 @@ module pm_matrixTrans
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatTransSymmOldFix_SK3
 #endif
-        use pm_kind, only: LK, SKC => SK3
-        character(*,SKC)    , intent(inout) :: source(:,:)
+        use pm_kind, only: LK, SKG => SK3
+        character(*,SKG)    , intent(inout) :: source(:,:)
     end subroutine
 #endif
 
@@ -807,8 +807,8 @@ module pm_matrixTrans
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatTransSymmOldFix_SK2
 #endif
-        use pm_kind, only: LK, SKC => SK2
-        character(*,SKC)    , intent(inout) :: source(:,:)
+        use pm_kind, only: LK, SKG => SK2
+        character(*,SKG)    , intent(inout) :: source(:,:)
     end subroutine
 #endif
 
@@ -817,8 +817,8 @@ module pm_matrixTrans
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatTransSymmOldFix_SK1
 #endif
-        use pm_kind, only: LK, SKC => SK1
-        character(*,SKC)    , intent(inout) :: source(:,:)
+        use pm_kind, only: LK, SKG => SK1
+        character(*,SKG)    , intent(inout) :: source(:,:)
     end subroutine
 #endif
 
@@ -829,8 +829,8 @@ module pm_matrixTrans
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatTransSymmOldFix_IK5
 #endif
-        use pm_kind, only: LK, IKC => IK5
-        integer(IKC)        , intent(inout) :: source(:,:)
+        use pm_kind, only: LK, IKG => IK5
+        integer(IKG)        , intent(inout) :: source(:,:)
     end subroutine
 #endif
 
@@ -839,8 +839,8 @@ module pm_matrixTrans
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatTransSymmOldFix_IK4
 #endif
-        use pm_kind, only: LK, IKC => IK4
-        integer(IKC)        , intent(inout) :: source(:,:)
+        use pm_kind, only: LK, IKG => IK4
+        integer(IKG)        , intent(inout) :: source(:,:)
     end subroutine
 #endif
 
@@ -849,8 +849,8 @@ module pm_matrixTrans
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatTransSymmOldFix_IK3
 #endif
-        use pm_kind, only: LK, IKC => IK3
-        integer(IKC)        , intent(inout) :: source(:,:)
+        use pm_kind, only: LK, IKG => IK3
+        integer(IKG)        , intent(inout) :: source(:,:)
     end subroutine
 #endif
 
@@ -859,8 +859,8 @@ module pm_matrixTrans
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatTransSymmOldFix_IK2
 #endif
-        use pm_kind, only: LK, IKC => IK2
-        integer(IKC)        , intent(inout) :: source(:,:)
+        use pm_kind, only: LK, IKG => IK2
+        integer(IKG)        , intent(inout) :: source(:,:)
     end subroutine
 #endif
 
@@ -869,8 +869,8 @@ module pm_matrixTrans
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatTransSymmOldFix_IK1
 #endif
-        use pm_kind, only: LK, IKC => IK1
-        integer(IKC)        , intent(inout) :: source(:,:)
+        use pm_kind, only: LK, IKG => IK1
+        integer(IKG)        , intent(inout) :: source(:,:)
     end subroutine
 #endif
 
@@ -881,8 +881,8 @@ module pm_matrixTrans
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatTransSymmOldFix_LK5
 #endif
-        use pm_kind, only: LK, LKC => LK5
-        logical(LKC)        , intent(inout) :: source(:,:)
+        use pm_kind, only: LK, LKG => LK5
+        logical(LKG)        , intent(inout) :: source(:,:)
     end subroutine
 #endif
 
@@ -891,8 +891,8 @@ module pm_matrixTrans
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatTransSymmOldFix_LK4
 #endif
-        use pm_kind, only: LK, LKC => LK4
-        logical(LKC)        , intent(inout) :: source(:,:)
+        use pm_kind, only: LK, LKG => LK4
+        logical(LKG)        , intent(inout) :: source(:,:)
     end subroutine
 #endif
 
@@ -901,8 +901,8 @@ module pm_matrixTrans
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatTransSymmOldFix_LK3
 #endif
-        use pm_kind, only: LK, LKC => LK3
-        logical(LKC)        , intent(inout) :: source(:,:)
+        use pm_kind, only: LK, LKG => LK3
+        logical(LKG)        , intent(inout) :: source(:,:)
     end subroutine
 #endif
 
@@ -911,8 +911,8 @@ module pm_matrixTrans
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatTransSymmOldFix_LK2
 #endif
-        use pm_kind, only: LK, LKC => LK2
-        logical(LKC)        , intent(inout) :: source(:,:)
+        use pm_kind, only: LK, LKG => LK2
+        logical(LKG)        , intent(inout) :: source(:,:)
     end subroutine
 #endif
 
@@ -921,8 +921,8 @@ module pm_matrixTrans
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatTransSymmOldFix_LK1
 #endif
-        use pm_kind, only: LK, LKC => LK1
-        logical(LKC)        , intent(inout) :: source(:,:)
+        use pm_kind, only: LK, LKG => LK1
+        logical(LKG)        , intent(inout) :: source(:,:)
     end subroutine
 #endif
 
@@ -933,8 +933,8 @@ module pm_matrixTrans
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatTransSymmOldFix_CK5
 #endif
-        use pm_kind, only: LK, CKC => CK5
-        complex(CKC)        , intent(inout) :: source(:,:)
+        use pm_kind, only: LK, CKG => CK5
+        complex(CKG)        , intent(inout) :: source(:,:)
     end subroutine
 #endif
 
@@ -943,8 +943,8 @@ module pm_matrixTrans
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatTransSymmOldFix_CK4
 #endif
-        use pm_kind, only: LK, CKC => CK4
-        complex(CKC)        , intent(inout) :: source(:,:)
+        use pm_kind, only: LK, CKG => CK4
+        complex(CKG)        , intent(inout) :: source(:,:)
     end subroutine
 #endif
 
@@ -953,8 +953,8 @@ module pm_matrixTrans
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatTransSymmOldFix_CK3
 #endif
-        use pm_kind, only: LK, CKC => CK3
-        complex(CKC)        , intent(inout) :: source(:,:)
+        use pm_kind, only: LK, CKG => CK3
+        complex(CKG)        , intent(inout) :: source(:,:)
     end subroutine
 #endif
 
@@ -963,8 +963,8 @@ module pm_matrixTrans
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatTransSymmOldFix_CK2
 #endif
-        use pm_kind, only: LK, CKC => CK2
-        complex(CKC)        , intent(inout) :: source(:,:)
+        use pm_kind, only: LK, CKG => CK2
+        complex(CKG)        , intent(inout) :: source(:,:)
     end subroutine
 #endif
 
@@ -973,8 +973,8 @@ module pm_matrixTrans
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatTransSymmOldFix_CK1
 #endif
-        use pm_kind, only: LK, CKC => CK1
-        complex(CKC)        , intent(inout) :: source(:,:)
+        use pm_kind, only: LK, CKG => CK1
+        complex(CKG)        , intent(inout) :: source(:,:)
     end subroutine
 #endif
 
@@ -985,8 +985,8 @@ module pm_matrixTrans
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatTransSymmOldFix_RK5
 #endif
-        use pm_kind, only: LK, RKC => RK5
-        real(RKC)           , intent(inout) :: source(:,:)
+        use pm_kind, only: LK, RKG => RK5
+        real(RKG)           , intent(inout) :: source(:,:)
     end subroutine
 #endif
 
@@ -995,8 +995,8 @@ module pm_matrixTrans
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatTransSymmOldFix_RK4
 #endif
-        use pm_kind, only: LK, RKC => RK4
-        real(RKC)           , intent(inout) :: source(:,:)
+        use pm_kind, only: LK, RKG => RK4
+        real(RKG)           , intent(inout) :: source(:,:)
     end subroutine
 #endif
 
@@ -1005,8 +1005,8 @@ module pm_matrixTrans
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatTransSymmOldFix_RK3
 #endif
-        use pm_kind, only: LK, RKC => RK3
-        real(RKC)           , intent(inout) :: source(:,:)
+        use pm_kind, only: LK, RKG => RK3
+        real(RKG)           , intent(inout) :: source(:,:)
     end subroutine
 #endif
 
@@ -1015,8 +1015,8 @@ module pm_matrixTrans
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatTransSymmOldFix_RK2
 #endif
-        use pm_kind, only: LK, RKC => RK2
-        real(RKC)           , intent(inout) :: source(:,:)
+        use pm_kind, only: LK, RKG => RK2
+        real(RKG)           , intent(inout) :: source(:,:)
     end subroutine
 #endif
 
@@ -1025,8 +1025,8 @@ module pm_matrixTrans
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatTransSymmOldFix_RK1
 #endif
-        use pm_kind, only: LK, RKC => RK1
-        real(RKC)           , intent(inout) :: source(:,:)
+        use pm_kind, only: LK, RKG => RK1
+        real(RKG)           , intent(inout) :: source(:,:)
     end subroutine
 #endif
 
@@ -1043,9 +1043,9 @@ module pm_matrixTrans
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatTransSymmNewFix_SK5
 #endif
-        use pm_kind, only: LK, SKC => SK5
-        character(*,SKC)    , intent(in)    :: source(:,:)
-        character(*,SKC)    , intent(out)   :: destin(:,:)
+        use pm_kind, only: LK, SKG => SK5
+        character(*,SKG)    , intent(in)    :: source(:,:)
+        character(*,SKG)    , intent(out)   :: destin(:,:)
     end subroutine
 #endif
 
@@ -1054,9 +1054,9 @@ module pm_matrixTrans
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatTransSymmNewFix_SK4
 #endif
-        use pm_kind, only: LK, SKC => SK4
-        character(*,SKC)    , intent(in)    :: source(:,:)
-        character(*,SKC)    , intent(out)   :: destin(:,:)
+        use pm_kind, only: LK, SKG => SK4
+        character(*,SKG)    , intent(in)    :: source(:,:)
+        character(*,SKG)    , intent(out)   :: destin(:,:)
     end subroutine
 #endif
 
@@ -1065,9 +1065,9 @@ module pm_matrixTrans
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatTransSymmNewFix_SK3
 #endif
-        use pm_kind, only: LK, SKC => SK3
-        character(*,SKC)    , intent(in)    :: source(:,:)
-        character(*,SKC)    , intent(out)   :: destin(:,:)
+        use pm_kind, only: LK, SKG => SK3
+        character(*,SKG)    , intent(in)    :: source(:,:)
+        character(*,SKG)    , intent(out)   :: destin(:,:)
     end subroutine
 #endif
 
@@ -1076,9 +1076,9 @@ module pm_matrixTrans
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatTransSymmNewFix_SK2
 #endif
-        use pm_kind, only: LK, SKC => SK2
-        character(*,SKC)    , intent(in)    :: source(:,:)
-        character(*,SKC)    , intent(out)   :: destin(:,:)
+        use pm_kind, only: LK, SKG => SK2
+        character(*,SKG)    , intent(in)    :: source(:,:)
+        character(*,SKG)    , intent(out)   :: destin(:,:)
     end subroutine
 #endif
 
@@ -1087,9 +1087,9 @@ module pm_matrixTrans
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatTransSymmNewFix_SK1
 #endif
-        use pm_kind, only: LK, SKC => SK1
-        character(*,SKC)    , intent(in)    :: source(:,:)
-        character(*,SKC)    , intent(out)   :: destin(:,:)
+        use pm_kind, only: LK, SKG => SK1
+        character(*,SKG)    , intent(in)    :: source(:,:)
+        character(*,SKG)    , intent(out)   :: destin(:,:)
     end subroutine
 #endif
 
@@ -1100,9 +1100,9 @@ module pm_matrixTrans
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatTransSymmNewFix_IK5
 #endif
-        use pm_kind, only: LK, IKC => IK5
-        integer(IKC)        , intent(in)    :: source(:,:)
-        integer(IKC)        , intent(out)   :: destin(:,:)
+        use pm_kind, only: LK, IKG => IK5
+        integer(IKG)        , intent(in)    :: source(:,:)
+        integer(IKG)        , intent(out)   :: destin(:,:)
     end subroutine
 #endif
 
@@ -1111,9 +1111,9 @@ module pm_matrixTrans
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatTransSymmNewFix_IK4
 #endif
-        use pm_kind, only: LK, IKC => IK4
-        integer(IKC)        , intent(in)    :: source(:,:)
-        integer(IKC)        , intent(out)   :: destin(:,:)
+        use pm_kind, only: LK, IKG => IK4
+        integer(IKG)        , intent(in)    :: source(:,:)
+        integer(IKG)        , intent(out)   :: destin(:,:)
     end subroutine
 #endif
 
@@ -1122,9 +1122,9 @@ module pm_matrixTrans
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatTransSymmNewFix_IK3
 #endif
-        use pm_kind, only: LK, IKC => IK3
-        integer(IKC)        , intent(in)    :: source(:,:)
-        integer(IKC)        , intent(out)   :: destin(:,:)
+        use pm_kind, only: LK, IKG => IK3
+        integer(IKG)        , intent(in)    :: source(:,:)
+        integer(IKG)        , intent(out)   :: destin(:,:)
     end subroutine
 #endif
 
@@ -1133,9 +1133,9 @@ module pm_matrixTrans
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatTransSymmNewFix_IK2
 #endif
-        use pm_kind, only: LK, IKC => IK2
-        integer(IKC)        , intent(in)    :: source(:,:)
-        integer(IKC)        , intent(out)   :: destin(:,:)
+        use pm_kind, only: LK, IKG => IK2
+        integer(IKG)        , intent(in)    :: source(:,:)
+        integer(IKG)        , intent(out)   :: destin(:,:)
     end subroutine
 #endif
 
@@ -1144,9 +1144,9 @@ module pm_matrixTrans
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatTransSymmNewFix_IK1
 #endif
-        use pm_kind, only: LK, IKC => IK1
-        integer(IKC)        , intent(in)    :: source(:,:)
-        integer(IKC)        , intent(out)   :: destin(:,:)
+        use pm_kind, only: LK, IKG => IK1
+        integer(IKG)        , intent(in)    :: source(:,:)
+        integer(IKG)        , intent(out)   :: destin(:,:)
     end subroutine
 #endif
 
@@ -1157,9 +1157,9 @@ module pm_matrixTrans
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatTransSymmNewFix_LK5
 #endif
-        use pm_kind, only: LK, LKC => LK5
-        logical(LKC)        , intent(in)    :: source(:,:)
-        logical(LKC)        , intent(out)   :: destin(:,:)
+        use pm_kind, only: LK, LKG => LK5
+        logical(LKG)        , intent(in)    :: source(:,:)
+        logical(LKG)        , intent(out)   :: destin(:,:)
     end subroutine
 #endif
 
@@ -1168,9 +1168,9 @@ module pm_matrixTrans
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatTransSymmNewFix_LK4
 #endif
-        use pm_kind, only: LK, LKC => LK4
-        logical(LKC)        , intent(in)    :: source(:,:)
-        logical(LKC)        , intent(out)   :: destin(:,:)
+        use pm_kind, only: LK, LKG => LK4
+        logical(LKG)        , intent(in)    :: source(:,:)
+        logical(LKG)        , intent(out)   :: destin(:,:)
     end subroutine
 #endif
 
@@ -1179,9 +1179,9 @@ module pm_matrixTrans
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatTransSymmNewFix_LK3
 #endif
-        use pm_kind, only: LK, LKC => LK3
-        logical(LKC)        , intent(in)    :: source(:,:)
-        logical(LKC)        , intent(out)   :: destin(:,:)
+        use pm_kind, only: LK, LKG => LK3
+        logical(LKG)        , intent(in)    :: source(:,:)
+        logical(LKG)        , intent(out)   :: destin(:,:)
     end subroutine
 #endif
 
@@ -1190,9 +1190,9 @@ module pm_matrixTrans
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatTransSymmNewFix_LK2
 #endif
-        use pm_kind, only: LK, LKC => LK2
-        logical(LKC)        , intent(in)    :: source(:,:)
-        logical(LKC)        , intent(out)   :: destin(:,:)
+        use pm_kind, only: LK, LKG => LK2
+        logical(LKG)        , intent(in)    :: source(:,:)
+        logical(LKG)        , intent(out)   :: destin(:,:)
     end subroutine
 #endif
 
@@ -1201,9 +1201,9 @@ module pm_matrixTrans
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatTransSymmNewFix_LK1
 #endif
-        use pm_kind, only: LK, LKC => LK1
-        logical(LKC)        , intent(in)    :: source(:,:)
-        logical(LKC)        , intent(out)   :: destin(:,:)
+        use pm_kind, only: LK, LKG => LK1
+        logical(LKG)        , intent(in)    :: source(:,:)
+        logical(LKG)        , intent(out)   :: destin(:,:)
     end subroutine
 #endif
 
@@ -1214,9 +1214,9 @@ module pm_matrixTrans
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatTransSymmNewFix_CK5
 #endif
-        use pm_kind, only: LK, CKC => CK5
-        complex(CKC)        , intent(in)    :: source(:,:)
-        complex(CKC)        , intent(out)   :: destin(:,:)
+        use pm_kind, only: LK, CKG => CK5
+        complex(CKG)        , intent(in)    :: source(:,:)
+        complex(CKG)        , intent(out)   :: destin(:,:)
     end subroutine
 #endif
 
@@ -1225,9 +1225,9 @@ module pm_matrixTrans
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatTransSymmNewFix_CK4
 #endif
-        use pm_kind, only: LK, CKC => CK4
-        complex(CKC)        , intent(in)    :: source(:,:)
-        complex(CKC)        , intent(out)   :: destin(:,:)
+        use pm_kind, only: LK, CKG => CK4
+        complex(CKG)        , intent(in)    :: source(:,:)
+        complex(CKG)        , intent(out)   :: destin(:,:)
     end subroutine
 #endif
 
@@ -1236,9 +1236,9 @@ module pm_matrixTrans
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatTransSymmNewFix_CK3
 #endif
-        use pm_kind, only: LK, CKC => CK3
-        complex(CKC)        , intent(in)    :: source(:,:)
-        complex(CKC)        , intent(out)   :: destin(:,:)
+        use pm_kind, only: LK, CKG => CK3
+        complex(CKG)        , intent(in)    :: source(:,:)
+        complex(CKG)        , intent(out)   :: destin(:,:)
     end subroutine
 #endif
 
@@ -1247,9 +1247,9 @@ module pm_matrixTrans
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatTransSymmNewFix_CK2
 #endif
-        use pm_kind, only: LK, CKC => CK2
-        complex(CKC)        , intent(in)    :: source(:,:)
-        complex(CKC)        , intent(out)   :: destin(:,:)
+        use pm_kind, only: LK, CKG => CK2
+        complex(CKG)        , intent(in)    :: source(:,:)
+        complex(CKG)        , intent(out)   :: destin(:,:)
     end subroutine
 #endif
 
@@ -1258,9 +1258,9 @@ module pm_matrixTrans
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatTransSymmNewFix_CK1
 #endif
-        use pm_kind, only: LK, CKC => CK1
-        complex(CKC)        , intent(in)    :: source(:,:)
-        complex(CKC)        , intent(out)   :: destin(:,:)
+        use pm_kind, only: LK, CKG => CK1
+        complex(CKG)        , intent(in)    :: source(:,:)
+        complex(CKG)        , intent(out)   :: destin(:,:)
     end subroutine
 #endif
 
@@ -1271,9 +1271,9 @@ module pm_matrixTrans
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatTransSymmNewFix_RK5
 #endif
-        use pm_kind, only: LK, RKC => RK5
-        real(RKC)           , intent(in)    :: source(:,:)
-        real(RKC)           , intent(out)   :: destin(:,:)
+        use pm_kind, only: LK, RKG => RK5
+        real(RKG)           , intent(in)    :: source(:,:)
+        real(RKG)           , intent(out)   :: destin(:,:)
     end subroutine
 #endif
 
@@ -1282,9 +1282,9 @@ module pm_matrixTrans
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatTransSymmNewFix_RK4
 #endif
-        use pm_kind, only: LK, RKC => RK4
-        real(RKC)           , intent(in)    :: source(:,:)
-        real(RKC)           , intent(out)   :: destin(:,:)
+        use pm_kind, only: LK, RKG => RK4
+        real(RKG)           , intent(in)    :: source(:,:)
+        real(RKG)           , intent(out)   :: destin(:,:)
     end subroutine
 #endif
 
@@ -1293,9 +1293,9 @@ module pm_matrixTrans
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatTransSymmNewFix_RK3
 #endif
-        use pm_kind, only: LK, RKC => RK3
-        real(RKC)           , intent(in)    :: source(:,:)
-        real(RKC)           , intent(out)   :: destin(:,:)
+        use pm_kind, only: LK, RKG => RK3
+        real(RKG)           , intent(in)    :: source(:,:)
+        real(RKG)           , intent(out)   :: destin(:,:)
     end subroutine
 #endif
 
@@ -1304,9 +1304,9 @@ module pm_matrixTrans
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatTransSymmNewFix_RK2
 #endif
-        use pm_kind, only: LK, RKC => RK2
-        real(RKC)           , intent(in)    :: source(:,:)
-        real(RKC)           , intent(out)   :: destin(:,:)
+        use pm_kind, only: LK, RKG => RK2
+        real(RKG)           , intent(in)    :: source(:,:)
+        real(RKG)           , intent(out)   :: destin(:,:)
     end subroutine
 #endif
 
@@ -1315,9 +1315,9 @@ module pm_matrixTrans
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatTransSymmNewFix_RK1
 #endif
-        use pm_kind, only: LK, RKC => RK1
-        real(RKC)           , intent(in)    :: source(:,:)
-        real(RKC)           , intent(out)   :: destin(:,:)
+        use pm_kind, only: LK, RKG => RK1
+        real(RKG)           , intent(in)    :: source(:,:)
+        real(RKG)           , intent(out)   :: destin(:,:)
     end subroutine
 #endif
 
@@ -1340,8 +1340,8 @@ module pm_matrixTrans
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatTransHermOldFix_CK5
 #endif
-        use pm_kind, only: LK, CKC => CK5
-        complex(CKC)        , intent(inout) :: source(:,:)
+        use pm_kind, only: LK, CKG => CK5
+        complex(CKG)        , intent(inout) :: source(:,:)
         type(transHerm_type), intent(in)    :: operation
     end subroutine
 #endif
@@ -1351,8 +1351,8 @@ module pm_matrixTrans
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatTransHermOldFix_CK4
 #endif
-        use pm_kind, only: LK, CKC => CK4
-        complex(CKC)        , intent(inout) :: source(:,:)
+        use pm_kind, only: LK, CKG => CK4
+        complex(CKG)        , intent(inout) :: source(:,:)
         type(transHerm_type), intent(in)    :: operation
     end subroutine
 #endif
@@ -1362,8 +1362,8 @@ module pm_matrixTrans
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatTransHermOldFix_CK3
 #endif
-        use pm_kind, only: LK, CKC => CK3
-        complex(CKC)        , intent(inout) :: source(:,:)
+        use pm_kind, only: LK, CKG => CK3
+        complex(CKG)        , intent(inout) :: source(:,:)
         type(transHerm_type), intent(in)    :: operation
     end subroutine
 #endif
@@ -1373,8 +1373,8 @@ module pm_matrixTrans
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatTransHermOldFix_CK2
 #endif
-        use pm_kind, only: LK, CKC => CK2
-        complex(CKC)        , intent(inout) :: source(:,:)
+        use pm_kind, only: LK, CKG => CK2
+        complex(CKG)        , intent(inout) :: source(:,:)
         type(transHerm_type), intent(in)    :: operation
     end subroutine
 #endif
@@ -1384,8 +1384,8 @@ module pm_matrixTrans
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatTransHermOldFix_CK1
 #endif
-        use pm_kind, only: LK, CKC => CK1
-        complex(CKC)        , intent(inout) :: source(:,:)
+        use pm_kind, only: LK, CKG => CK1
+        complex(CKG)        , intent(inout) :: source(:,:)
         type(transHerm_type), intent(in)    :: operation
     end subroutine
 #endif
@@ -1397,9 +1397,9 @@ module pm_matrixTrans
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatTransHermNewFix_CK5
 #endif
-        use pm_kind, only: LK, CKC => CK5
-        complex(CKC)        , intent(in)    :: source(:,:)
-        complex(CKC)        , intent(out)   :: destin(:,:)
+        use pm_kind, only: LK, CKG => CK5
+        complex(CKG)        , intent(in)    :: source(:,:)
+        complex(CKG)        , intent(out)   :: destin(:,:)
         type(transHerm_type), intent(in)    :: operation
     end subroutine
 #endif
@@ -1409,9 +1409,9 @@ module pm_matrixTrans
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatTransHermNewFix_CK4
 #endif
-        use pm_kind, only: LK, CKC => CK4
-        complex(CKC)        , intent(in)    :: source(:,:)
-        complex(CKC)        , intent(out)   :: destin(:,:)
+        use pm_kind, only: LK, CKG => CK4
+        complex(CKG)        , intent(in)    :: source(:,:)
+        complex(CKG)        , intent(out)   :: destin(:,:)
         type(transHerm_type), intent(in)    :: operation
     end subroutine
 #endif
@@ -1421,9 +1421,9 @@ module pm_matrixTrans
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatTransHermNewFix_CK3
 #endif
-        use pm_kind, only: LK, CKC => CK3
-        complex(CKC)        , intent(in)    :: source(:,:)
-        complex(CKC)        , intent(out)   :: destin(:,:)
+        use pm_kind, only: LK, CKG => CK3
+        complex(CKG)        , intent(in)    :: source(:,:)
+        complex(CKG)        , intent(out)   :: destin(:,:)
         type(transHerm_type), intent(in)    :: operation
     end subroutine
 #endif
@@ -1433,9 +1433,9 @@ module pm_matrixTrans
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatTransHermNewFix_CK2
 #endif
-        use pm_kind, only: LK, CKC => CK2
-        complex(CKC)        , intent(in)    :: source(:,:)
-        complex(CKC)        , intent(out)   :: destin(:,:)
+        use pm_kind, only: LK, CKG => CK2
+        complex(CKG)        , intent(in)    :: source(:,:)
+        complex(CKG)        , intent(out)   :: destin(:,:)
         type(transHerm_type), intent(in)    :: operation
     end subroutine
 #endif
@@ -1445,9 +1445,9 @@ module pm_matrixTrans
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatTransHermNewFix_CK1
 #endif
-        use pm_kind, only: LK, CKC => CK1
-        complex(CKC)        , intent(in)    :: source(:,:)
-        complex(CKC)        , intent(out)   :: destin(:,:)
+        use pm_kind, only: LK, CKG => CK1
+        complex(CKG)        , intent(in)    :: source(:,:)
+        complex(CKG)        , intent(out)   :: destin(:,:)
         type(transHerm_type), intent(in)    :: operation
     end subroutine
 #endif
@@ -1472,8 +1472,8 @@ module pm_matrixTrans
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatTransSymmOldArb_SK5
 #endif
-        use pm_kind, only: LK, SKC => SK5
-        character(*,SKC)    , intent(inout) :: source(:,:)
+        use pm_kind, only: LK, SKG => SK5
+        character(*,SKG)    , intent(inout) :: source(:,:)
         integer(IK)         , intent(in)    :: bsize
     end subroutine
 #endif
@@ -1483,8 +1483,8 @@ module pm_matrixTrans
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatTransSymmOldArb_SK4
 #endif
-        use pm_kind, only: LK, SKC => SK4
-        character(*,SKC)    , intent(inout) :: source(:,:)
+        use pm_kind, only: LK, SKG => SK4
+        character(*,SKG)    , intent(inout) :: source(:,:)
         integer(IK)         , intent(in)    :: bsize
     end subroutine
 #endif
@@ -1494,8 +1494,8 @@ module pm_matrixTrans
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatTransSymmOldArb_SK3
 #endif
-        use pm_kind, only: LK, SKC => SK3
-        character(*,SKC)    , intent(inout) :: source(:,:)
+        use pm_kind, only: LK, SKG => SK3
+        character(*,SKG)    , intent(inout) :: source(:,:)
         integer(IK)         , intent(in)    :: bsize
     end subroutine
 #endif
@@ -1505,8 +1505,8 @@ module pm_matrixTrans
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatTransSymmOldArb_SK2
 #endif
-        use pm_kind, only: LK, SKC => SK2
-        character(*,SKC)    , intent(inout) :: source(:,:)
+        use pm_kind, only: LK, SKG => SK2
+        character(*,SKG)    , intent(inout) :: source(:,:)
         integer(IK)         , intent(in)    :: bsize
     end subroutine
 #endif
@@ -1516,8 +1516,8 @@ module pm_matrixTrans
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatTransSymmOldArb_SK1
 #endif
-        use pm_kind, only: LK, SKC => SK1
-        character(*,SKC)    , intent(inout) :: source(:,:)
+        use pm_kind, only: LK, SKG => SK1
+        character(*,SKG)    , intent(inout) :: source(:,:)
         integer(IK)         , intent(in)    :: bsize
     end subroutine
 #endif
@@ -1529,8 +1529,8 @@ module pm_matrixTrans
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatTransSymmOldArb_IK5
 #endif
-        use pm_kind, only: LK, IKC => IK5
-        integer(IKC)        , intent(inout) :: source(:,:)
+        use pm_kind, only: LK, IKG => IK5
+        integer(IKG)        , intent(inout) :: source(:,:)
         integer(IK)         , intent(in)    :: bsize
     end subroutine
 #endif
@@ -1540,8 +1540,8 @@ module pm_matrixTrans
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatTransSymmOldArb_IK4
 #endif
-        use pm_kind, only: LK, IKC => IK4
-        integer(IKC)        , intent(inout) :: source(:,:)
+        use pm_kind, only: LK, IKG => IK4
+        integer(IKG)        , intent(inout) :: source(:,:)
         integer(IK)         , intent(in)    :: bsize
     end subroutine
 #endif
@@ -1551,8 +1551,8 @@ module pm_matrixTrans
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatTransSymmOldArb_IK3
 #endif
-        use pm_kind, only: LK, IKC => IK3
-        integer(IKC)        , intent(inout) :: source(:,:)
+        use pm_kind, only: LK, IKG => IK3
+        integer(IKG)        , intent(inout) :: source(:,:)
         integer(IK)         , intent(in)    :: bsize
     end subroutine
 #endif
@@ -1562,8 +1562,8 @@ module pm_matrixTrans
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatTransSymmOldArb_IK2
 #endif
-        use pm_kind, only: LK, IKC => IK2
-        integer(IKC)        , intent(inout) :: source(:,:)
+        use pm_kind, only: LK, IKG => IK2
+        integer(IKG)        , intent(inout) :: source(:,:)
         integer(IK)         , intent(in)    :: bsize
     end subroutine
 #endif
@@ -1573,8 +1573,8 @@ module pm_matrixTrans
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatTransSymmOldArb_IK1
 #endif
-        use pm_kind, only: LK, IKC => IK1
-        integer(IKC)        , intent(inout) :: source(:,:)
+        use pm_kind, only: LK, IKG => IK1
+        integer(IKG)        , intent(inout) :: source(:,:)
         integer(IK)         , intent(in)    :: bsize
     end subroutine
 #endif
@@ -1586,8 +1586,8 @@ module pm_matrixTrans
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatTransSymmOldArb_LK5
 #endif
-        use pm_kind, only: LK, LKC => LK5
-        logical(LKC)        , intent(inout) :: source(:,:)
+        use pm_kind, only: LK, LKG => LK5
+        logical(LKG)        , intent(inout) :: source(:,:)
         integer(IK)         , intent(in)    :: bsize
     end subroutine
 #endif
@@ -1597,8 +1597,8 @@ module pm_matrixTrans
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatTransSymmOldArb_LK4
 #endif
-        use pm_kind, only: LK, LKC => LK4
-        logical(LKC)        , intent(inout) :: source(:,:)
+        use pm_kind, only: LK, LKG => LK4
+        logical(LKG)        , intent(inout) :: source(:,:)
         integer(IK)         , intent(in)    :: bsize
     end subroutine
 #endif
@@ -1608,8 +1608,8 @@ module pm_matrixTrans
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatTransSymmOldArb_LK3
 #endif
-        use pm_kind, only: LK, LKC => LK3
-        logical(LKC)        , intent(inout) :: source(:,:)
+        use pm_kind, only: LK, LKG => LK3
+        logical(LKG)        , intent(inout) :: source(:,:)
         integer(IK)         , intent(in)    :: bsize
     end subroutine
 #endif
@@ -1619,8 +1619,8 @@ module pm_matrixTrans
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatTransSymmOldArb_LK2
 #endif
-        use pm_kind, only: LK, LKC => LK2
-        logical(LKC)        , intent(inout) :: source(:,:)
+        use pm_kind, only: LK, LKG => LK2
+        logical(LKG)        , intent(inout) :: source(:,:)
         integer(IK)         , intent(in)    :: bsize
     end subroutine
 #endif
@@ -1630,8 +1630,8 @@ module pm_matrixTrans
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatTransSymmOldArb_LK1
 #endif
-        use pm_kind, only: LK, LKC => LK1
-        logical(LKC)        , intent(inout) :: source(:,:)
+        use pm_kind, only: LK, LKG => LK1
+        logical(LKG)        , intent(inout) :: source(:,:)
         integer(IK)         , intent(in)    :: bsize
     end subroutine
 #endif
@@ -1643,8 +1643,8 @@ module pm_matrixTrans
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatTransSymmOldArb_CK5
 #endif
-        use pm_kind, only: LK, CKC => CK5
-        complex(CKC)        , intent(inout) :: source(:,:)
+        use pm_kind, only: LK, CKG => CK5
+        complex(CKG)        , intent(inout) :: source(:,:)
         integer(IK)         , intent(in)    :: bsize
     end subroutine
 #endif
@@ -1654,8 +1654,8 @@ module pm_matrixTrans
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatTransSymmOldArb_CK4
 #endif
-        use pm_kind, only: LK, CKC => CK4
-        complex(CKC)        , intent(inout) :: source(:,:)
+        use pm_kind, only: LK, CKG => CK4
+        complex(CKG)        , intent(inout) :: source(:,:)
         integer(IK)         , intent(in)    :: bsize
     end subroutine
 #endif
@@ -1665,8 +1665,8 @@ module pm_matrixTrans
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatTransSymmOldArb_CK3
 #endif
-        use pm_kind, only: LK, CKC => CK3
-        complex(CKC)        , intent(inout) :: source(:,:)
+        use pm_kind, only: LK, CKG => CK3
+        complex(CKG)        , intent(inout) :: source(:,:)
         integer(IK)         , intent(in)    :: bsize
     end subroutine
 #endif
@@ -1676,8 +1676,8 @@ module pm_matrixTrans
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatTransSymmOldArb_CK2
 #endif
-        use pm_kind, only: LK, CKC => CK2
-        complex(CKC)        , intent(inout) :: source(:,:)
+        use pm_kind, only: LK, CKG => CK2
+        complex(CKG)        , intent(inout) :: source(:,:)
         integer(IK)         , intent(in)    :: bsize
     end subroutine
 #endif
@@ -1687,8 +1687,8 @@ module pm_matrixTrans
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatTransSymmOldArb_CK1
 #endif
-        use pm_kind, only: LK, CKC => CK1
-        complex(CKC)        , intent(inout) :: source(:,:)
+        use pm_kind, only: LK, CKG => CK1
+        complex(CKG)        , intent(inout) :: source(:,:)
         integer(IK)         , intent(in)    :: bsize
     end subroutine
 #endif
@@ -1700,8 +1700,8 @@ module pm_matrixTrans
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatTransSymmOldArb_RK5
 #endif
-        use pm_kind, only: LK, RKC => RK5
-        real(RKC)           , intent(inout) :: source(:,:)
+        use pm_kind, only: LK, RKG => RK5
+        real(RKG)           , intent(inout) :: source(:,:)
         integer(IK)         , intent(in)    :: bsize
     end subroutine
 #endif
@@ -1711,8 +1711,8 @@ module pm_matrixTrans
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatTransSymmOldArb_RK4
 #endif
-        use pm_kind, only: LK, RKC => RK4
-        real(RKC)           , intent(inout) :: source(:,:)
+        use pm_kind, only: LK, RKG => RK4
+        real(RKG)           , intent(inout) :: source(:,:)
         integer(IK)         , intent(in)    :: bsize
     end subroutine
 #endif
@@ -1722,8 +1722,8 @@ module pm_matrixTrans
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatTransSymmOldArb_RK3
 #endif
-        use pm_kind, only: LK, RKC => RK3
-        real(RKC)           , intent(inout) :: source(:,:)
+        use pm_kind, only: LK, RKG => RK3
+        real(RKG)           , intent(inout) :: source(:,:)
         integer(IK)         , intent(in)    :: bsize
     end subroutine
 #endif
@@ -1733,8 +1733,8 @@ module pm_matrixTrans
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatTransSymmOldArb_RK2
 #endif
-        use pm_kind, only: LK, RKC => RK2
-        real(RKC)           , intent(inout) :: source(:,:)
+        use pm_kind, only: LK, RKG => RK2
+        real(RKG)           , intent(inout) :: source(:,:)
         integer(IK)         , intent(in)    :: bsize
     end subroutine
 #endif
@@ -1744,8 +1744,8 @@ module pm_matrixTrans
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatTransSymmOldArb_RK1
 #endif
-        use pm_kind, only: LK, RKC => RK1
-        real(RKC)           , intent(inout) :: source(:,:)
+        use pm_kind, only: LK, RKG => RK1
+        real(RKG)           , intent(inout) :: source(:,:)
         integer(IK)         , intent(in)    :: bsize
     end subroutine
 #endif
@@ -1763,9 +1763,9 @@ module pm_matrixTrans
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatTransSymmNewArb_SK5
 #endif
-        use pm_kind, only: LK, SKC => SK5
-        character(*,SKC)    , intent(in)    :: source(:,:)
-        character(*,SKC)    , intent(out)   :: destin(:,:)
+        use pm_kind, only: LK, SKG => SK5
+        character(*,SKG)    , intent(in)    :: source(:,:)
+        character(*,SKG)    , intent(out)   :: destin(:,:)
         integer(IK)         , intent(in)    :: bsize
     end subroutine
 #endif
@@ -1775,9 +1775,9 @@ module pm_matrixTrans
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatTransSymmNewArb_SK4
 #endif
-        use pm_kind, only: LK, SKC => SK4
-        character(*,SKC)    , intent(in)    :: source(:,:)
-        character(*,SKC)    , intent(out)   :: destin(:,:)
+        use pm_kind, only: LK, SKG => SK4
+        character(*,SKG)    , intent(in)    :: source(:,:)
+        character(*,SKG)    , intent(out)   :: destin(:,:)
         integer(IK)         , intent(in)    :: bsize
     end subroutine
 #endif
@@ -1787,9 +1787,9 @@ module pm_matrixTrans
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatTransSymmNewArb_SK3
 #endif
-        use pm_kind, only: LK, SKC => SK3
-        character(*,SKC)    , intent(in)    :: source(:,:)
-        character(*,SKC)    , intent(out)   :: destin(:,:)
+        use pm_kind, only: LK, SKG => SK3
+        character(*,SKG)    , intent(in)    :: source(:,:)
+        character(*,SKG)    , intent(out)   :: destin(:,:)
         integer(IK)         , intent(in)    :: bsize
     end subroutine
 #endif
@@ -1799,9 +1799,9 @@ module pm_matrixTrans
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatTransSymmNewArb_SK2
 #endif
-        use pm_kind, only: LK, SKC => SK2
-        character(*,SKC)    , intent(in)    :: source(:,:)
-        character(*,SKC)    , intent(out)   :: destin(:,:)
+        use pm_kind, only: LK, SKG => SK2
+        character(*,SKG)    , intent(in)    :: source(:,:)
+        character(*,SKG)    , intent(out)   :: destin(:,:)
         integer(IK)         , intent(in)    :: bsize
     end subroutine
 #endif
@@ -1811,9 +1811,9 @@ module pm_matrixTrans
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatTransSymmNewArb_SK1
 #endif
-        use pm_kind, only: LK, SKC => SK1
-        character(*,SKC)    , intent(in)    :: source(:,:)
-        character(*,SKC)    , intent(out)   :: destin(:,:)
+        use pm_kind, only: LK, SKG => SK1
+        character(*,SKG)    , intent(in)    :: source(:,:)
+        character(*,SKG)    , intent(out)   :: destin(:,:)
         integer(IK)         , intent(in)    :: bsize
     end subroutine
 #endif
@@ -1825,9 +1825,9 @@ module pm_matrixTrans
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatTransSymmNewArb_IK5
 #endif
-        use pm_kind, only: LK, IKC => IK5
-        integer(IKC)        , intent(in)    :: source(:,:)
-        integer(IKC)        , intent(out)   :: destin(:,:)
+        use pm_kind, only: LK, IKG => IK5
+        integer(IKG)        , intent(in)    :: source(:,:)
+        integer(IKG)        , intent(out)   :: destin(:,:)
         integer(IK)         , intent(in)    :: bsize
     end subroutine
 #endif
@@ -1837,9 +1837,9 @@ module pm_matrixTrans
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatTransSymmNewArb_IK4
 #endif
-        use pm_kind, only: LK, IKC => IK4
-        integer(IKC)        , intent(in)    :: source(:,:)
-        integer(IKC)        , intent(out)   :: destin(:,:)
+        use pm_kind, only: LK, IKG => IK4
+        integer(IKG)        , intent(in)    :: source(:,:)
+        integer(IKG)        , intent(out)   :: destin(:,:)
         integer(IK)         , intent(in)    :: bsize
     end subroutine
 #endif
@@ -1849,9 +1849,9 @@ module pm_matrixTrans
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatTransSymmNewArb_IK3
 #endif
-        use pm_kind, only: LK, IKC => IK3
-        integer(IKC)        , intent(in)    :: source(:,:)
-        integer(IKC)        , intent(out)   :: destin(:,:)
+        use pm_kind, only: LK, IKG => IK3
+        integer(IKG)        , intent(in)    :: source(:,:)
+        integer(IKG)        , intent(out)   :: destin(:,:)
         integer(IK)         , intent(in)    :: bsize
     end subroutine
 #endif
@@ -1861,9 +1861,9 @@ module pm_matrixTrans
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatTransSymmNewArb_IK2
 #endif
-        use pm_kind, only: LK, IKC => IK2
-        integer(IKC)        , intent(in)    :: source(:,:)
-        integer(IKC)        , intent(out)   :: destin(:,:)
+        use pm_kind, only: LK, IKG => IK2
+        integer(IKG)        , intent(in)    :: source(:,:)
+        integer(IKG)        , intent(out)   :: destin(:,:)
         integer(IK)         , intent(in)    :: bsize
     end subroutine
 #endif
@@ -1873,9 +1873,9 @@ module pm_matrixTrans
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatTransSymmNewArb_IK1
 #endif
-        use pm_kind, only: LK, IKC => IK1
-        integer(IKC)        , intent(in)    :: source(:,:)
-        integer(IKC)        , intent(out)   :: destin(:,:)
+        use pm_kind, only: LK, IKG => IK1
+        integer(IKG)        , intent(in)    :: source(:,:)
+        integer(IKG)        , intent(out)   :: destin(:,:)
         integer(IK)         , intent(in)    :: bsize
     end subroutine
 #endif
@@ -1887,9 +1887,9 @@ module pm_matrixTrans
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatTransSymmNewArb_LK5
 #endif
-        use pm_kind, only: LK, LKC => LK5
-        logical(LKC)        , intent(in)    :: source(:,:)
-        logical(LKC)        , intent(out)   :: destin(:,:)
+        use pm_kind, only: LK, LKG => LK5
+        logical(LKG)        , intent(in)    :: source(:,:)
+        logical(LKG)        , intent(out)   :: destin(:,:)
         integer(IK)         , intent(in)    :: bsize
     end subroutine
 #endif
@@ -1899,9 +1899,9 @@ module pm_matrixTrans
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatTransSymmNewArb_LK4
 #endif
-        use pm_kind, only: LK, LKC => LK4
-        logical(LKC)        , intent(in)    :: source(:,:)
-        logical(LKC)        , intent(out)   :: destin(:,:)
+        use pm_kind, only: LK, LKG => LK4
+        logical(LKG)        , intent(in)    :: source(:,:)
+        logical(LKG)        , intent(out)   :: destin(:,:)
         integer(IK)         , intent(in)    :: bsize
     end subroutine
 #endif
@@ -1911,9 +1911,9 @@ module pm_matrixTrans
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatTransSymmNewArb_LK3
 #endif
-        use pm_kind, only: LK, LKC => LK3
-        logical(LKC)        , intent(in)    :: source(:,:)
-        logical(LKC)        , intent(out)   :: destin(:,:)
+        use pm_kind, only: LK, LKG => LK3
+        logical(LKG)        , intent(in)    :: source(:,:)
+        logical(LKG)        , intent(out)   :: destin(:,:)
         integer(IK)         , intent(in)    :: bsize
     end subroutine
 #endif
@@ -1923,9 +1923,9 @@ module pm_matrixTrans
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatTransSymmNewArb_LK2
 #endif
-        use pm_kind, only: LK, LKC => LK2
-        logical(LKC)        , intent(in)    :: source(:,:)
-        logical(LKC)        , intent(out)   :: destin(:,:)
+        use pm_kind, only: LK, LKG => LK2
+        logical(LKG)        , intent(in)    :: source(:,:)
+        logical(LKG)        , intent(out)   :: destin(:,:)
         integer(IK)         , intent(in)    :: bsize
     end subroutine
 #endif
@@ -1935,9 +1935,9 @@ module pm_matrixTrans
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatTransSymmNewArb_LK1
 #endif
-        use pm_kind, only: LK, LKC => LK1
-        logical(LKC)        , intent(in)    :: source(:,:)
-        logical(LKC)        , intent(out)   :: destin(:,:)
+        use pm_kind, only: LK, LKG => LK1
+        logical(LKG)        , intent(in)    :: source(:,:)
+        logical(LKG)        , intent(out)   :: destin(:,:)
         integer(IK)         , intent(in)    :: bsize
     end subroutine
 #endif
@@ -1949,9 +1949,9 @@ module pm_matrixTrans
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatTransSymmNewArb_CK5
 #endif
-        use pm_kind, only: LK, CKC => CK5
-        complex(CKC)        , intent(in)    :: source(:,:)
-        complex(CKC)        , intent(out)   :: destin(:,:)
+        use pm_kind, only: LK, CKG => CK5
+        complex(CKG)        , intent(in)    :: source(:,:)
+        complex(CKG)        , intent(out)   :: destin(:,:)
         integer(IK)         , intent(in)    :: bsize
     end subroutine
 #endif
@@ -1961,9 +1961,9 @@ module pm_matrixTrans
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatTransSymmNewArb_CK4
 #endif
-        use pm_kind, only: LK, CKC => CK4
-        complex(CKC)        , intent(in)    :: source(:,:)
-        complex(CKC)        , intent(out)   :: destin(:,:)
+        use pm_kind, only: LK, CKG => CK4
+        complex(CKG)        , intent(in)    :: source(:,:)
+        complex(CKG)        , intent(out)   :: destin(:,:)
         integer(IK)         , intent(in)    :: bsize
     end subroutine
 #endif
@@ -1973,9 +1973,9 @@ module pm_matrixTrans
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatTransSymmNewArb_CK3
 #endif
-        use pm_kind, only: LK, CKC => CK3
-        complex(CKC)        , intent(in)    :: source(:,:)
-        complex(CKC)        , intent(out)   :: destin(:,:)
+        use pm_kind, only: LK, CKG => CK3
+        complex(CKG)        , intent(in)    :: source(:,:)
+        complex(CKG)        , intent(out)   :: destin(:,:)
         integer(IK)         , intent(in)    :: bsize
     end subroutine
 #endif
@@ -1985,9 +1985,9 @@ module pm_matrixTrans
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatTransSymmNewArb_CK2
 #endif
-        use pm_kind, only: LK, CKC => CK2
-        complex(CKC)        , intent(in)    :: source(:,:)
-        complex(CKC)        , intent(out)   :: destin(:,:)
+        use pm_kind, only: LK, CKG => CK2
+        complex(CKG)        , intent(in)    :: source(:,:)
+        complex(CKG)        , intent(out)   :: destin(:,:)
         integer(IK)         , intent(in)    :: bsize
     end subroutine
 #endif
@@ -1997,9 +1997,9 @@ module pm_matrixTrans
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatTransSymmNewArb_CK1
 #endif
-        use pm_kind, only: LK, CKC => CK1
-        complex(CKC)        , intent(in)    :: source(:,:)
-        complex(CKC)        , intent(out)   :: destin(:,:)
+        use pm_kind, only: LK, CKG => CK1
+        complex(CKG)        , intent(in)    :: source(:,:)
+        complex(CKG)        , intent(out)   :: destin(:,:)
         integer(IK)         , intent(in)    :: bsize
     end subroutine
 #endif
@@ -2011,9 +2011,9 @@ module pm_matrixTrans
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatTransSymmNewArb_RK5
 #endif
-        use pm_kind, only: LK, RKC => RK5
-        real(RKC)           , intent(in)    :: source(:,:)
-        real(RKC)           , intent(out)   :: destin(:,:)
+        use pm_kind, only: LK, RKG => RK5
+        real(RKG)           , intent(in)    :: source(:,:)
+        real(RKG)           , intent(out)   :: destin(:,:)
         integer(IK)         , intent(in)    :: bsize
     end subroutine
 #endif
@@ -2023,9 +2023,9 @@ module pm_matrixTrans
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatTransSymmNewArb_RK4
 #endif
-        use pm_kind, only: LK, RKC => RK4
-        real(RKC)           , intent(in)    :: source(:,:)
-        real(RKC)           , intent(out)   :: destin(:,:)
+        use pm_kind, only: LK, RKG => RK4
+        real(RKG)           , intent(in)    :: source(:,:)
+        real(RKG)           , intent(out)   :: destin(:,:)
         integer(IK)         , intent(in)    :: bsize
     end subroutine
 #endif
@@ -2035,9 +2035,9 @@ module pm_matrixTrans
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatTransSymmNewArb_RK3
 #endif
-        use pm_kind, only: LK, RKC => RK3
-        real(RKC)           , intent(in)    :: source(:,:)
-        real(RKC)           , intent(out)   :: destin(:,:)
+        use pm_kind, only: LK, RKG => RK3
+        real(RKG)           , intent(in)    :: source(:,:)
+        real(RKG)           , intent(out)   :: destin(:,:)
         integer(IK)         , intent(in)    :: bsize
     end subroutine
 #endif
@@ -2047,9 +2047,9 @@ module pm_matrixTrans
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatTransSymmNewArb_RK2
 #endif
-        use pm_kind, only: LK, RKC => RK2
-        real(RKC)           , intent(in)    :: source(:,:)
-        real(RKC)           , intent(out)   :: destin(:,:)
+        use pm_kind, only: LK, RKG => RK2
+        real(RKG)           , intent(in)    :: source(:,:)
+        real(RKG)           , intent(out)   :: destin(:,:)
         integer(IK)         , intent(in)    :: bsize
     end subroutine
 #endif
@@ -2059,9 +2059,9 @@ module pm_matrixTrans
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatTransSymmNewArb_RK1
 #endif
-        use pm_kind, only: LK, RKC => RK1
-        real(RKC)           , intent(in)    :: source(:,:)
-        real(RKC)           , intent(out)   :: destin(:,:)
+        use pm_kind, only: LK, RKG => RK1
+        real(RKG)           , intent(in)    :: source(:,:)
+        real(RKG)           , intent(out)   :: destin(:,:)
         integer(IK)         , intent(in)    :: bsize
     end subroutine
 #endif
@@ -2086,8 +2086,8 @@ module pm_matrixTrans
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatTransHermOldArb_CK5
 #endif
-        use pm_kind, only: LK, CKC => CK5
-        complex(CKC)        , intent(inout) :: source(:,:)
+        use pm_kind, only: LK, CKG => CK5
+        complex(CKG)        , intent(inout) :: source(:,:)
         type(transHerm_type), intent(in)    :: operation
         integer(IK)         , intent(in)    :: bsize
     end subroutine
@@ -2098,8 +2098,8 @@ module pm_matrixTrans
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatTransHermOldArb_CK4
 #endif
-        use pm_kind, only: LK, CKC => CK4
-        complex(CKC)        , intent(inout) :: source(:,:)
+        use pm_kind, only: LK, CKG => CK4
+        complex(CKG)        , intent(inout) :: source(:,:)
         type(transHerm_type), intent(in)    :: operation
         integer(IK)         , intent(in)    :: bsize
     end subroutine
@@ -2110,8 +2110,8 @@ module pm_matrixTrans
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatTransHermOldArb_CK3
 #endif
-        use pm_kind, only: LK, CKC => CK3
-        complex(CKC)        , intent(inout) :: source(:,:)
+        use pm_kind, only: LK, CKG => CK3
+        complex(CKG)        , intent(inout) :: source(:,:)
         type(transHerm_type), intent(in)    :: operation
         integer(IK)         , intent(in)    :: bsize
     end subroutine
@@ -2122,8 +2122,8 @@ module pm_matrixTrans
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatTransHermOldArb_CK2
 #endif
-        use pm_kind, only: LK, CKC => CK2
-        complex(CKC)        , intent(inout) :: source(:,:)
+        use pm_kind, only: LK, CKG => CK2
+        complex(CKG)        , intent(inout) :: source(:,:)
         type(transHerm_type), intent(in)    :: operation
         integer(IK)         , intent(in)    :: bsize
     end subroutine
@@ -2134,8 +2134,8 @@ module pm_matrixTrans
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatTransHermOldArb_CK1
 #endif
-        use pm_kind, only: LK, CKC => CK1
-        complex(CKC)        , intent(inout) :: source(:,:)
+        use pm_kind, only: LK, CKG => CK1
+        complex(CKG)        , intent(inout) :: source(:,:)
         type(transHerm_type), intent(in)    :: operation
         integer(IK)         , intent(in)    :: bsize
     end subroutine
@@ -2148,9 +2148,9 @@ module pm_matrixTrans
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatTransHermNewArb_CK5
 #endif
-        use pm_kind, only: LK, CKC => CK5
-        complex(CKC)        , intent(in)    :: source(:,:)
-        complex(CKC)        , intent(out)   :: destin(:,:)
+        use pm_kind, only: LK, CKG => CK5
+        complex(CKG)        , intent(in)    :: source(:,:)
+        complex(CKG)        , intent(out)   :: destin(:,:)
         type(transHerm_type), intent(in)    :: operation
         integer(IK)         , intent(in)    :: bsize
     end subroutine
@@ -2161,9 +2161,9 @@ module pm_matrixTrans
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatTransHermNewArb_CK4
 #endif
-        use pm_kind, only: LK, CKC => CK4
-        complex(CKC)        , intent(in)    :: source(:,:)
-        complex(CKC)        , intent(out)   :: destin(:,:)
+        use pm_kind, only: LK, CKG => CK4
+        complex(CKG)        , intent(in)    :: source(:,:)
+        complex(CKG)        , intent(out)   :: destin(:,:)
         type(transHerm_type), intent(in)    :: operation
         integer(IK)         , intent(in)    :: bsize
     end subroutine
@@ -2174,9 +2174,9 @@ module pm_matrixTrans
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatTransHermNewArb_CK3
 #endif
-        use pm_kind, only: LK, CKC => CK3
-        complex(CKC)        , intent(in)    :: source(:,:)
-        complex(CKC)        , intent(out)   :: destin(:,:)
+        use pm_kind, only: LK, CKG => CK3
+        complex(CKG)        , intent(in)    :: source(:,:)
+        complex(CKG)        , intent(out)   :: destin(:,:)
         type(transHerm_type), intent(in)    :: operation
         integer(IK)         , intent(in)    :: bsize
     end subroutine
@@ -2187,9 +2187,9 @@ module pm_matrixTrans
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatTransHermNewArb_CK2
 #endif
-        use pm_kind, only: LK, CKC => CK2
-        complex(CKC)        , intent(in)    :: source(:,:)
-        complex(CKC)        , intent(out)   :: destin(:,:)
+        use pm_kind, only: LK, CKG => CK2
+        complex(CKG)        , intent(in)    :: source(:,:)
+        complex(CKG)        , intent(out)   :: destin(:,:)
         type(transHerm_type), intent(in)    :: operation
         integer(IK)         , intent(in)    :: bsize
     end subroutine
@@ -2200,9 +2200,9 @@ module pm_matrixTrans
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatTransHermNewArb_CK1
 #endif
-        use pm_kind, only: LK, CKC => CK1
-        complex(CKC)        , intent(in)    :: source(:,:)
-        complex(CKC)        , intent(out)   :: destin(:,:)
+        use pm_kind, only: LK, CKG => CK1
+        complex(CKG)        , intent(in)    :: source(:,:)
+        complex(CKG)        , intent(out)   :: destin(:,:)
         type(transHerm_type), intent(in)    :: operation
         integer(IK)         , intent(in)    :: bsize
     end subroutine

@@ -32,25 +32,25 @@
 #endif
         use pm_math1mexp, only: get1mexp
 #if     Sel_ENABLED && CK_ENABLED
-        complex(CKC) :: logRatio
+        complex(CKG) :: logRatio
 #define GET_REAL(x) x%re
 #elif   Sel_ENABLED && RK_ENABLED
-        real(RKC) :: logRatio
+        real(RKG) :: logRatio
 #define GET_REAL(x) x
 #elif   !Seq_ENABLED
 #error  "Unrecognized interface."
 #endif
-        integer, parameter :: TKC = kind(logSubExp) ! This kind current.
-        real(TKC), parameter :: LOGTINY = log(tiny(0._TKC))
-        CHECK_ASSERTION(__LINE__, real(smaller, TKC) < real(larger, TKC), \
+        integer, parameter :: TKG = kind(logSubExp) ! type kind generic.
+        real(TKG), parameter :: LOGTINY = log(tiny(0._TKG))
+        CHECK_ASSERTION(__LINE__, real(smaller, TKG) < real(larger, TKG), \
         SK_"@getLogSubExp(): The condition `real(smaller) < real(larger)` must hold. smaller, larger = "//getStr([smaller, larger]))
 #if     Seq_ENABLED
-        logSubExp = larger + log(get1mexp(smaller - larger)) ! log(1._TKC - exp(smaller - larger))
-        !logSubExp = larger + log(1._TKC - exp(smaller - larger))
+        logSubExp = larger + log(get1mexp(smaller - larger)) ! log(1._TKG - exp(smaller - larger))
+        !logSubExp = larger + log(1._TKG - exp(smaller - larger))
 #elif   Sel_ENABLED
         logSubExp = larger
         logRatio = smaller - larger
-        if (GET_REAL(logRatio) > LOGTINY) logSubExp = logSubExp + log(get1mexp(logRatio)) ! log(1._TKC - exp(logRatio))
+        if (GET_REAL(logRatio) > LOGTINY) logSubExp = logSubExp + log(get1mexp(logRatio)) ! log(1._TKG - exp(logRatio))
 #else
 #error  "Unrecognized interface."
 #endif

@@ -175,9 +175,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatTrace_DEF_XXX_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)        , intent(in)                    :: mat(:,:)
-        integer(IKC)                                        :: trace
+        use pm_kind, only: IKG => IK5
+        integer(IKG)        , intent(in)                    :: mat(:,:)
+        integer(IKG)                                        :: trace
     end function
 #endif
 
@@ -186,9 +186,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatTrace_DEF_XXX_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)        , intent(in)                    :: mat(:,:)
-        integer(IKC)                                        :: trace
+        use pm_kind, only: IKG => IK4
+        integer(IKG)        , intent(in)                    :: mat(:,:)
+        integer(IKG)                                        :: trace
     end function
 #endif
 
@@ -197,9 +197,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatTrace_DEF_XXX_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)        , intent(in)                    :: mat(:,:)
-        integer(IKC)                                        :: trace
+        use pm_kind, only: IKG => IK3
+        integer(IKG)        , intent(in)                    :: mat(:,:)
+        integer(IKG)                                        :: trace
     end function
 #endif
 
@@ -208,9 +208,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatTrace_DEF_XXX_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)        , intent(in)                    :: mat(:,:)
-        integer(IKC)                                        :: trace
+        use pm_kind, only: IKG => IK2
+        integer(IKG)        , intent(in)                    :: mat(:,:)
+        integer(IKG)                                        :: trace
     end function
 #endif
 
@@ -219,9 +219,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatTrace_DEF_XXX_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)        , intent(in)                    :: mat(:,:)
-        integer(IKC)                                        :: trace
+        use pm_kind, only: IKG => IK1
+        integer(IKG)        , intent(in)                    :: mat(:,:)
+        integer(IKG)                                        :: trace
     end function
 #endif
 
@@ -232,9 +232,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatTrace_DEF_XXX_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)        , intent(in)                    :: mat(:,:)
-        complex(CKC)                                        :: trace
+        use pm_kind, only: CKG => CK5
+        complex(CKG)        , intent(in)                    :: mat(:,:)
+        complex(CKG)                                        :: trace
     end function
 #endif
 
@@ -243,9 +243,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatTrace_DEF_XXX_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)        , intent(in)                    :: mat(:,:)
-        complex(CKC)                                        :: trace
+        use pm_kind, only: CKG => CK4
+        complex(CKG)        , intent(in)                    :: mat(:,:)
+        complex(CKG)                                        :: trace
     end function
 #endif
 
@@ -254,9 +254,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatTrace_DEF_XXX_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)        , intent(in)                    :: mat(:,:)
-        complex(CKC)                                        :: trace
+        use pm_kind, only: CKG => CK3
+        complex(CKG)        , intent(in)                    :: mat(:,:)
+        complex(CKG)                                        :: trace
     end function
 #endif
 
@@ -265,9 +265,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatTrace_DEF_XXX_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)        , intent(in)                    :: mat(:,:)
-        complex(CKC)                                        :: trace
+        use pm_kind, only: CKG => CK2
+        complex(CKG)        , intent(in)                    :: mat(:,:)
+        complex(CKG)                                        :: trace
     end function
 #endif
 
@@ -276,9 +276,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatTrace_DEF_XXX_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)        , intent(in)                    :: mat(:,:)
-        complex(CKC)                                        :: trace
+        use pm_kind, only: CKG => CK1
+        complex(CKG)        , intent(in)                    :: mat(:,:)
+        complex(CKG)                                        :: trace
     end function
 #endif
 
@@ -289,9 +289,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatTrace_DEF_XXX_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)           , intent(in)                    :: mat(:,:)
-        real(RKC)                                           :: trace
+        use pm_kind, only: RKG => RK5
+        real(RKG)           , intent(in)                    :: mat(:,:)
+        real(RKG)                                           :: trace
     end function
 #endif
 
@@ -300,9 +300,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatTrace_DEF_XXX_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)           , intent(in)                    :: mat(:,:)
-        real(RKC)                                           :: trace
+        use pm_kind, only: RKG => RK4
+        real(RKG)           , intent(in)                    :: mat(:,:)
+        real(RKG)                                           :: trace
     end function
 #endif
 
@@ -311,9 +311,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatTrace_DEF_XXX_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)           , intent(in)                    :: mat(:,:)
-        real(RKC)                                           :: trace
+        use pm_kind, only: RKG => RK3
+        real(RKG)           , intent(in)                    :: mat(:,:)
+        real(RKG)                                           :: trace
     end function
 #endif
 
@@ -322,9 +322,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatTrace_DEF_XXX_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)           , intent(in)                    :: mat(:,:)
-        real(RKC)                                           :: trace
+        use pm_kind, only: RKG => RK2
+        real(RKG)           , intent(in)                    :: mat(:,:)
+        real(RKG)                                           :: trace
     end function
 #endif
 
@@ -333,9 +333,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatTrace_DEF_XXX_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)           , intent(in)                    :: mat(:,:)
-        real(RKC)                                           :: trace
+        use pm_kind, only: RKG => RK1
+        real(RKG)           , intent(in)                    :: mat(:,:)
+        real(RKG)                                           :: trace
     end function
 #endif
 
@@ -356,10 +356,10 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatTrace_RDP_XXX_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)        , intent(in)                    :: mat(:,:)
+        use pm_kind, only: IKG => IK5
+        integer(IKG)        , intent(in)                    :: mat(:,:)
         type(rdpack_type)   , intent(in)                    :: pack
-        integer(IKC)                                        :: trace
+        integer(IKG)                                        :: trace
     end function
 #endif
 
@@ -368,10 +368,10 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatTrace_RDP_XXX_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)        , intent(in)                    :: mat(:,:)
+        use pm_kind, only: IKG => IK4
+        integer(IKG)        , intent(in)                    :: mat(:,:)
         type(rdpack_type)   , intent(in)                    :: pack
-        integer(IKC)                                        :: trace
+        integer(IKG)                                        :: trace
     end function
 #endif
 
@@ -380,10 +380,10 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatTrace_RDP_XXX_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)        , intent(in)                    :: mat(:,:)
+        use pm_kind, only: IKG => IK3
+        integer(IKG)        , intent(in)                    :: mat(:,:)
         type(rdpack_type)   , intent(in)                    :: pack
-        integer(IKC)                                        :: trace
+        integer(IKG)                                        :: trace
     end function
 #endif
 
@@ -392,10 +392,10 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatTrace_RDP_XXX_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)        , intent(in)                    :: mat(:,:)
+        use pm_kind, only: IKG => IK2
+        integer(IKG)        , intent(in)                    :: mat(:,:)
         type(rdpack_type)   , intent(in)                    :: pack
-        integer(IKC)                                        :: trace
+        integer(IKG)                                        :: trace
     end function
 #endif
 
@@ -404,10 +404,10 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatTrace_RDP_XXX_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)        , intent(in)                    :: mat(:,:)
+        use pm_kind, only: IKG => IK1
+        integer(IKG)        , intent(in)                    :: mat(:,:)
         type(rdpack_type)   , intent(in)                    :: pack
-        integer(IKC)                                        :: trace
+        integer(IKG)                                        :: trace
     end function
 #endif
 
@@ -418,10 +418,10 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatTrace_RDP_XXX_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)        , intent(in)                    :: mat(:,:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG)        , intent(in)                    :: mat(:,:)
         type(rdpack_type)   , intent(in)                    :: pack
-        complex(CKC)                                        :: trace
+        complex(CKG)                                        :: trace
     end function
 #endif
 
@@ -430,10 +430,10 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatTrace_RDP_XXX_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)        , intent(in)                    :: mat(:,:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG)        , intent(in)                    :: mat(:,:)
         type(rdpack_type)   , intent(in)                    :: pack
-        complex(CKC)                                        :: trace
+        complex(CKG)                                        :: trace
     end function
 #endif
 
@@ -442,10 +442,10 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatTrace_RDP_XXX_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)        , intent(in)                    :: mat(:,:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG)        , intent(in)                    :: mat(:,:)
         type(rdpack_type)   , intent(in)                    :: pack
-        complex(CKC)                                        :: trace
+        complex(CKG)                                        :: trace
     end function
 #endif
 
@@ -454,10 +454,10 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatTrace_RDP_XXX_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)        , intent(in)                    :: mat(:,:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG)        , intent(in)                    :: mat(:,:)
         type(rdpack_type)   , intent(in)                    :: pack
-        complex(CKC)                                        :: trace
+        complex(CKG)                                        :: trace
     end function
 #endif
 
@@ -466,10 +466,10 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatTrace_RDP_XXX_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)        , intent(in)                    :: mat(:,:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG)        , intent(in)                    :: mat(:,:)
         type(rdpack_type)   , intent(in)                    :: pack
-        complex(CKC)                                        :: trace
+        complex(CKG)                                        :: trace
     end function
 #endif
 
@@ -480,9 +480,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatTrace_RDP_XXX_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)           , intent(in)                    :: mat(:,:)
-        real(RKC)                                           :: trace
+        use pm_kind, only: RKG => RK5
+        real(RKG)           , intent(in)                    :: mat(:,:)
+        real(RKG)                                           :: trace
         type(rdpack_type)   , intent(in)                    :: pack
     end function
 #endif
@@ -492,10 +492,10 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatTrace_RDP_XXX_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)           , intent(in)                    :: mat(:,:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)           , intent(in)                    :: mat(:,:)
         type(rdpack_type)   , intent(in)                    :: pack
-        real(RKC)                                           :: trace
+        real(RKG)                                           :: trace
     end function
 #endif
 
@@ -504,10 +504,10 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatTrace_RDP_XXX_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)           , intent(in)                    :: mat(:,:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)           , intent(in)                    :: mat(:,:)
         type(rdpack_type)   , intent(in)                    :: pack
-        real(RKC)                                           :: trace
+        real(RKG)                                           :: trace
     end function
 #endif
 
@@ -516,10 +516,10 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatTrace_RDP_XXX_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)           , intent(in)                    :: mat(:,:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)           , intent(in)                    :: mat(:,:)
         type(rdpack_type)   , intent(in)                    :: pack
-        real(RKC)                                           :: trace
+        real(RKG)                                           :: trace
     end function
 #endif
 
@@ -528,10 +528,10 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatTrace_RDP_XXX_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)           , intent(in)                    :: mat(:,:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)           , intent(in)                    :: mat(:,:)
         type(rdpack_type)   , intent(in)                    :: pack
-        real(RKC)                                           :: trace
+        real(RKG)                                           :: trace
     end function
 #endif
 
@@ -552,9 +552,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatTrace_RFP_UXD_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)                                        :: trace
-        integer(IKC)        , intent(in)                    :: mat(:,:)
+        use pm_kind, only: IKG => IK5
+        integer(IKG)                                        :: trace
+        integer(IKG)        , intent(in)                    :: mat(:,:)
         type(rfpack_type)   , intent(in)                    :: pack
         type(uppDia_type)   , intent(in)                    :: subset
     end function
@@ -565,9 +565,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatTrace_RFP_UXD_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)                                        :: trace
-        integer(IKC)        , intent(in)                    :: mat(:,:)
+        use pm_kind, only: IKG => IK4
+        integer(IKG)                                        :: trace
+        integer(IKG)        , intent(in)                    :: mat(:,:)
         type(rfpack_type)   , intent(in)                    :: pack
         type(uppDia_type)   , intent(in)                    :: subset
     end function
@@ -578,9 +578,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatTrace_RFP_UXD_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)                                        :: trace
-        integer(IKC)        , intent(in)                    :: mat(:,:)
+        use pm_kind, only: IKG => IK3
+        integer(IKG)                                        :: trace
+        integer(IKG)        , intent(in)                    :: mat(:,:)
         type(rfpack_type)   , intent(in)                    :: pack
         type(uppDia_type)   , intent(in)                    :: subset
     end function
@@ -591,9 +591,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatTrace_RFP_UXD_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)                                        :: trace
-        integer(IKC)        , intent(in)                    :: mat(:,:)
+        use pm_kind, only: IKG => IK2
+        integer(IKG)                                        :: trace
+        integer(IKG)        , intent(in)                    :: mat(:,:)
         type(rfpack_type)   , intent(in)                    :: pack
         type(uppDia_type)   , intent(in)                    :: subset
     end function
@@ -604,9 +604,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatTrace_RFP_UXD_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)                                        :: trace
-        integer(IKC)        , intent(in)                    :: mat(:,:)
+        use pm_kind, only: IKG => IK1
+        integer(IKG)                                        :: trace
+        integer(IKG)        , intent(in)                    :: mat(:,:)
         type(rfpack_type)   , intent(in)                    :: pack
         type(uppDia_type)   , intent(in)                    :: subset
     end function
@@ -619,9 +619,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatTrace_RFP_UXD_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)                                        :: trace
-        complex(CKC)        , intent(in)                    :: mat(:,:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG)                                        :: trace
+        complex(CKG)        , intent(in)                    :: mat(:,:)
         type(rfpack_type)   , intent(in)                    :: pack
         type(uppDia_type)   , intent(in)                    :: subset
     end function
@@ -632,9 +632,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatTrace_RFP_UXD_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)                                        :: trace
-        complex(CKC)        , intent(in)                    :: mat(:,:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG)                                        :: trace
+        complex(CKG)        , intent(in)                    :: mat(:,:)
         type(rfpack_type)   , intent(in)                    :: pack
         type(uppDia_type)   , intent(in)                    :: subset
     end function
@@ -645,9 +645,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatTrace_RFP_UXD_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)                                        :: trace
-        complex(CKC)        , intent(in)                    :: mat(:,:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG)                                        :: trace
+        complex(CKG)        , intent(in)                    :: mat(:,:)
         type(rfpack_type)   , intent(in)                    :: pack
         type(uppDia_type)   , intent(in)                    :: subset
     end function
@@ -658,9 +658,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatTrace_RFP_UXD_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)                                        :: trace
-        complex(CKC)        , intent(in)                    :: mat(:,:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG)                                        :: trace
+        complex(CKG)        , intent(in)                    :: mat(:,:)
         type(rfpack_type)   , intent(in)                    :: pack
         type(uppDia_type)   , intent(in)                    :: subset
     end function
@@ -671,9 +671,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatTrace_RFP_UXD_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)                                        :: trace
-        complex(CKC)        , intent(in)                    :: mat(:,:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG)                                        :: trace
+        complex(CKG)        , intent(in)                    :: mat(:,:)
         type(rfpack_type)   , intent(in)                    :: pack
         type(uppDia_type)   , intent(in)                    :: subset
     end function
@@ -686,9 +686,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatTrace_RFP_UXD_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)                                           :: trace
-        real(RKC)           , intent(in)                    :: mat(:,:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)                                           :: trace
+        real(RKG)           , intent(in)                    :: mat(:,:)
         type(rfpack_type)   , intent(in)                    :: pack
         type(uppDia_type)   , intent(in)                    :: subset
     end function
@@ -699,9 +699,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatTrace_RFP_UXD_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)                                           :: trace
-        real(RKC)           , intent(in)                    :: mat(:,:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)                                           :: trace
+        real(RKG)           , intent(in)                    :: mat(:,:)
         type(rfpack_type)   , intent(in)                    :: pack
         type(uppDia_type)   , intent(in)                    :: subset
     end function
@@ -712,9 +712,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatTrace_RFP_UXD_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)                                           :: trace
-        real(RKC)           , intent(in)                    :: mat(:,:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)                                           :: trace
+        real(RKG)           , intent(in)                    :: mat(:,:)
         type(rfpack_type)   , intent(in)                    :: pack
         type(uppDia_type)   , intent(in)                    :: subset
     end function
@@ -725,9 +725,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatTrace_RFP_UXD_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)                                           :: trace
-        real(RKC)           , intent(in)                    :: mat(:,:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)                                           :: trace
+        real(RKG)           , intent(in)                    :: mat(:,:)
         type(rfpack_type)   , intent(in)                    :: pack
         type(uppDia_type)   , intent(in)                    :: subset
     end function
@@ -738,9 +738,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatTrace_RFP_UXD_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)                                           :: trace
-        real(RKC)           , intent(in)                    :: mat(:,:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)                                           :: trace
+        real(RKG)           , intent(in)                    :: mat(:,:)
         type(rfpack_type)   , intent(in)                    :: pack
         type(uppDia_type)   , intent(in)                    :: subset
     end function
@@ -759,9 +759,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatTrace_RFP_XLD_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)                                        :: trace
-        integer(IKC)        , intent(in)                    :: mat(:,:)
+        use pm_kind, only: IKG => IK5
+        integer(IKG)                                        :: trace
+        integer(IKG)        , intent(in)                    :: mat(:,:)
         type(rfpack_type)   , intent(in)                    :: pack
         type(lowDia_type)   , intent(in)                    :: subset
     end function
@@ -772,9 +772,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatTrace_RFP_XLD_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)                                        :: trace
-        integer(IKC)        , intent(in)                    :: mat(:,:)
+        use pm_kind, only: IKG => IK4
+        integer(IKG)                                        :: trace
+        integer(IKG)        , intent(in)                    :: mat(:,:)
         type(rfpack_type)   , intent(in)                    :: pack
         type(lowDia_type)   , intent(in)                    :: subset
     end function
@@ -785,9 +785,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatTrace_RFP_XLD_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)                                        :: trace
-        integer(IKC)        , intent(in)                    :: mat(:,:)
+        use pm_kind, only: IKG => IK3
+        integer(IKG)                                        :: trace
+        integer(IKG)        , intent(in)                    :: mat(:,:)
         type(rfpack_type)   , intent(in)                    :: pack
         type(lowDia_type)   , intent(in)                    :: subset
     end function
@@ -798,9 +798,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatTrace_RFP_XLD_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)                                        :: trace
-        integer(IKC)        , intent(in)                    :: mat(:,:)
+        use pm_kind, only: IKG => IK2
+        integer(IKG)                                        :: trace
+        integer(IKG)        , intent(in)                    :: mat(:,:)
         type(rfpack_type)   , intent(in)                    :: pack
         type(lowDia_type)   , intent(in)                    :: subset
     end function
@@ -811,9 +811,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatTrace_RFP_XLD_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)                                        :: trace
-        integer(IKC)        , intent(in)                    :: mat(:,:)
+        use pm_kind, only: IKG => IK1
+        integer(IKG)                                        :: trace
+        integer(IKG)        , intent(in)                    :: mat(:,:)
         type(rfpack_type)   , intent(in)                    :: pack
         type(lowDia_type)   , intent(in)                    :: subset
     end function
@@ -826,9 +826,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatTrace_RFP_XLD_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)                                        :: trace
-        complex(CKC)        , intent(in)                    :: mat(:,:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG)                                        :: trace
+        complex(CKG)        , intent(in)                    :: mat(:,:)
         type(rfpack_type)   , intent(in)                    :: pack
         type(lowDia_type)   , intent(in)                    :: subset
     end function
@@ -839,9 +839,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatTrace_RFP_XLD_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)                                        :: trace
-        complex(CKC)        , intent(in)                    :: mat(:,:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG)                                        :: trace
+        complex(CKG)        , intent(in)                    :: mat(:,:)
         type(rfpack_type)   , intent(in)                    :: pack
         type(lowDia_type)   , intent(in)                    :: subset
     end function
@@ -852,9 +852,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatTrace_RFP_XLD_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)                                        :: trace
-        complex(CKC)        , intent(in)                    :: mat(:,:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG)                                        :: trace
+        complex(CKG)        , intent(in)                    :: mat(:,:)
         type(rfpack_type)   , intent(in)                    :: pack
         type(lowDia_type)   , intent(in)                    :: subset
     end function
@@ -865,9 +865,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatTrace_RFP_XLD_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)                                        :: trace
-        complex(CKC)        , intent(in)                    :: mat(:,:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG)                                        :: trace
+        complex(CKG)        , intent(in)                    :: mat(:,:)
         type(rfpack_type)   , intent(in)                    :: pack
         type(lowDia_type)   , intent(in)                    :: subset
     end function
@@ -878,9 +878,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatTrace_RFP_XLD_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)                                        :: trace
-        complex(CKC)        , intent(in)                    :: mat(:,:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG)                                        :: trace
+        complex(CKG)        , intent(in)                    :: mat(:,:)
         type(rfpack_type)   , intent(in)                    :: pack
         type(lowDia_type)   , intent(in)                    :: subset
     end function
@@ -893,9 +893,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatTrace_RFP_XLD_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)                                           :: trace
-        real(RKC)           , intent(in)                    :: mat(:,:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)                                           :: trace
+        real(RKG)           , intent(in)                    :: mat(:,:)
         type(rfpack_type)   , intent(in)                    :: pack
         type(lowDia_type)   , intent(in)                    :: subset
     end function
@@ -906,9 +906,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatTrace_RFP_XLD_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)                                           :: trace
-        real(RKC)           , intent(in)                    :: mat(:,:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)                                           :: trace
+        real(RKG)           , intent(in)                    :: mat(:,:)
         type(rfpack_type)   , intent(in)                    :: pack
         type(lowDia_type)   , intent(in)                    :: subset
     end function
@@ -919,9 +919,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatTrace_RFP_XLD_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)                                           :: trace
-        real(RKC)           , intent(in)                    :: mat(:,:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)                                           :: trace
+        real(RKG)           , intent(in)                    :: mat(:,:)
         type(rfpack_type)   , intent(in)                    :: pack
         type(lowDia_type)   , intent(in)                    :: subset
     end function
@@ -932,9 +932,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatTrace_RFP_XLD_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)                                           :: trace
-        real(RKC)           , intent(in)                    :: mat(:,:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)                                           :: trace
+        real(RKG)           , intent(in)                    :: mat(:,:)
         type(rfpack_type)   , intent(in)                    :: pack
         type(lowDia_type)   , intent(in)                    :: subset
     end function
@@ -945,9 +945,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatTrace_RFP_XLD_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)                                           :: trace
-        real(RKC)           , intent(in)                    :: mat(:,:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)                                           :: trace
+        real(RKG)           , intent(in)                    :: mat(:,:)
         type(rfpack_type)   , intent(in)                    :: pack
         type(lowDia_type)   , intent(in)                    :: subset
     end function
@@ -970,9 +970,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatTrace_LFP_UXD_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)                                        :: trace
-        integer(IKC)        , intent(in)                    :: mat(:)
+        use pm_kind, only: IKG => IK5
+        integer(IKG)                                        :: trace
+        integer(IKG)        , intent(in)                    :: mat(:)
         type(lfpack_type)   , intent(in)                    :: pack
         type(uppDia_type)   , intent(in)                    :: subset
     end function
@@ -983,9 +983,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatTrace_LFP_UXD_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)                                        :: trace
-        integer(IKC)        , intent(in)                    :: mat(:)
+        use pm_kind, only: IKG => IK4
+        integer(IKG)                                        :: trace
+        integer(IKG)        , intent(in)                    :: mat(:)
         type(lfpack_type)   , intent(in)                    :: pack
         type(uppDia_type)   , intent(in)                    :: subset
     end function
@@ -996,9 +996,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatTrace_LFP_UXD_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)                                        :: trace
-        integer(IKC)        , intent(in)                    :: mat(:)
+        use pm_kind, only: IKG => IK3
+        integer(IKG)                                        :: trace
+        integer(IKG)        , intent(in)                    :: mat(:)
         type(lfpack_type)   , intent(in)                    :: pack
         type(uppDia_type)   , intent(in)                    :: subset
     end function
@@ -1009,9 +1009,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatTrace_LFP_UXD_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)                                        :: trace
-        integer(IKC)        , intent(in)                    :: mat(:)
+        use pm_kind, only: IKG => IK2
+        integer(IKG)                                        :: trace
+        integer(IKG)        , intent(in)                    :: mat(:)
         type(lfpack_type)   , intent(in)                    :: pack
         type(uppDia_type)   , intent(in)                    :: subset
     end function
@@ -1022,9 +1022,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatTrace_LFP_UXD_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)                                        :: trace
-        integer(IKC)        , intent(in)                    :: mat(:)
+        use pm_kind, only: IKG => IK1
+        integer(IKG)                                        :: trace
+        integer(IKG)        , intent(in)                    :: mat(:)
         type(lfpack_type)   , intent(in)                    :: pack
         type(uppDia_type)   , intent(in)                    :: subset
     end function
@@ -1037,9 +1037,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatTrace_LFP_UXD_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)                                        :: trace
-        complex(CKC)        , intent(in)                    :: mat(:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG)                                        :: trace
+        complex(CKG)        , intent(in)                    :: mat(:)
         type(lfpack_type)   , intent(in)                    :: pack
         type(uppDia_type)   , intent(in)                    :: subset
     end function
@@ -1050,9 +1050,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatTrace_LFP_UXD_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)                                        :: trace
-        complex(CKC)        , intent(in)                    :: mat(:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG)                                        :: trace
+        complex(CKG)        , intent(in)                    :: mat(:)
         type(lfpack_type)   , intent(in)                    :: pack
         type(uppDia_type)   , intent(in)                    :: subset
     end function
@@ -1063,9 +1063,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatTrace_LFP_UXD_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)                                        :: trace
-        complex(CKC)        , intent(in)                    :: mat(:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG)                                        :: trace
+        complex(CKG)        , intent(in)                    :: mat(:)
         type(lfpack_type)   , intent(in)                    :: pack
         type(uppDia_type)   , intent(in)                    :: subset
     end function
@@ -1076,9 +1076,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatTrace_LFP_UXD_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)                                        :: trace
-        complex(CKC)        , intent(in)                    :: mat(:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG)                                        :: trace
+        complex(CKG)        , intent(in)                    :: mat(:)
         type(lfpack_type)   , intent(in)                    :: pack
         type(uppDia_type)   , intent(in)                    :: subset
     end function
@@ -1089,9 +1089,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatTrace_LFP_UXD_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)                                        :: trace
-        complex(CKC)        , intent(in)                    :: mat(:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG)                                        :: trace
+        complex(CKG)        , intent(in)                    :: mat(:)
         type(lfpack_type)   , intent(in)                    :: pack
         type(uppDia_type)   , intent(in)                    :: subset
     end function
@@ -1104,9 +1104,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatTrace_LFP_UXD_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)                                           :: trace
-        real(RKC)           , intent(in)                    :: mat(:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)                                           :: trace
+        real(RKG)           , intent(in)                    :: mat(:)
         type(lfpack_type)   , intent(in)                    :: pack
         type(uppDia_type)   , intent(in)                    :: subset
     end function
@@ -1117,9 +1117,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatTrace_LFP_UXD_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)                                           :: trace
-        real(RKC)           , intent(in)                    :: mat(:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)                                           :: trace
+        real(RKG)           , intent(in)                    :: mat(:)
         type(lfpack_type)   , intent(in)                    :: pack
         type(uppDia_type)   , intent(in)                    :: subset
     end function
@@ -1130,9 +1130,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatTrace_LFP_UXD_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)                                           :: trace
-        real(RKC)           , intent(in)                    :: mat(:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)                                           :: trace
+        real(RKG)           , intent(in)                    :: mat(:)
         type(lfpack_type)   , intent(in)                    :: pack
         type(uppDia_type)   , intent(in)                    :: subset
     end function
@@ -1143,9 +1143,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatTrace_LFP_UXD_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)                                           :: trace
-        real(RKC)           , intent(in)                    :: mat(:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)                                           :: trace
+        real(RKG)           , intent(in)                    :: mat(:)
         type(lfpack_type)   , intent(in)                    :: pack
         type(uppDia_type)   , intent(in)                    :: subset
     end function
@@ -1156,9 +1156,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatTrace_LFP_UXD_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)                                           :: trace
-        real(RKC)           , intent(in)                    :: mat(:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)                                           :: trace
+        real(RKG)           , intent(in)                    :: mat(:)
         type(lfpack_type)   , intent(in)                    :: pack
         type(uppDia_type)   , intent(in)                    :: subset
     end function
@@ -1177,9 +1177,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatTrace_LFP_XLD_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)                                        :: trace
-        integer(IKC)        , intent(in)                    :: mat(:)
+        use pm_kind, only: IKG => IK5
+        integer(IKG)                                        :: trace
+        integer(IKG)        , intent(in)                    :: mat(:)
         type(lfpack_type)   , intent(in)                    :: pack
         type(lowDia_type)   , intent(in)                    :: subset
     end function
@@ -1190,9 +1190,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatTrace_LFP_XLD_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)                                        :: trace
-        integer(IKC)        , intent(in)                    :: mat(:)
+        use pm_kind, only: IKG => IK4
+        integer(IKG)                                        :: trace
+        integer(IKG)        , intent(in)                    :: mat(:)
         type(lfpack_type)   , intent(in)                    :: pack
         type(lowDia_type)   , intent(in)                    :: subset
     end function
@@ -1203,9 +1203,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatTrace_LFP_XLD_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)                                        :: trace
-        integer(IKC)        , intent(in)                    :: mat(:)
+        use pm_kind, only: IKG => IK3
+        integer(IKG)                                        :: trace
+        integer(IKG)        , intent(in)                    :: mat(:)
         type(lfpack_type)   , intent(in)                    :: pack
         type(lowDia_type)   , intent(in)                    :: subset
     end function
@@ -1216,9 +1216,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatTrace_LFP_XLD_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)                                        :: trace
-        integer(IKC)        , intent(in)                    :: mat(:)
+        use pm_kind, only: IKG => IK2
+        integer(IKG)                                        :: trace
+        integer(IKG)        , intent(in)                    :: mat(:)
         type(lfpack_type)   , intent(in)                    :: pack
         type(lowDia_type)   , intent(in)                    :: subset
     end function
@@ -1229,9 +1229,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatTrace_LFP_XLD_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)                                        :: trace
-        integer(IKC)        , intent(in)                    :: mat(:)
+        use pm_kind, only: IKG => IK1
+        integer(IKG)                                        :: trace
+        integer(IKG)        , intent(in)                    :: mat(:)
         type(lfpack_type)   , intent(in)                    :: pack
         type(lowDia_type)   , intent(in)                    :: subset
     end function
@@ -1244,9 +1244,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatTrace_LFP_XLD_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)                                        :: trace
-        complex(CKC)        , intent(in)                    :: mat(:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG)                                        :: trace
+        complex(CKG)        , intent(in)                    :: mat(:)
         type(lfpack_type)   , intent(in)                    :: pack
         type(lowDia_type)   , intent(in)                    :: subset
     end function
@@ -1257,9 +1257,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatTrace_LFP_XLD_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)                                        :: trace
-        complex(CKC)        , intent(in)                    :: mat(:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG)                                        :: trace
+        complex(CKG)        , intent(in)                    :: mat(:)
         type(lfpack_type)   , intent(in)                    :: pack
         type(lowDia_type)   , intent(in)                    :: subset
     end function
@@ -1270,9 +1270,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatTrace_LFP_XLD_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)                                        :: trace
-        complex(CKC)        , intent(in)                    :: mat(:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG)                                        :: trace
+        complex(CKG)        , intent(in)                    :: mat(:)
         type(lfpack_type)   , intent(in)                    :: pack
         type(lowDia_type)   , intent(in)                    :: subset
     end function
@@ -1283,9 +1283,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatTrace_LFP_XLD_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)                                        :: trace
-        complex(CKC)        , intent(in)                    :: mat(:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG)                                        :: trace
+        complex(CKG)        , intent(in)                    :: mat(:)
         type(lfpack_type)   , intent(in)                    :: pack
         type(lowDia_type)   , intent(in)                    :: subset
     end function
@@ -1296,9 +1296,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatTrace_LFP_XLD_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)                                        :: trace
-        complex(CKC)        , intent(in)                    :: mat(:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG)                                        :: trace
+        complex(CKG)        , intent(in)                    :: mat(:)
         type(lfpack_type)   , intent(in)                    :: pack
         type(lowDia_type)   , intent(in)                    :: subset
     end function
@@ -1311,9 +1311,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatTrace_LFP_XLD_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)                                           :: trace
-        real(RKC)           , intent(in)                    :: mat(:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)                                           :: trace
+        real(RKG)           , intent(in)                    :: mat(:)
         type(lfpack_type)   , intent(in)                    :: pack
         type(lowDia_type)   , intent(in)                    :: subset
     end function
@@ -1324,9 +1324,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatTrace_LFP_XLD_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)                                           :: trace
-        real(RKC)           , intent(in)                    :: mat(:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)                                           :: trace
+        real(RKG)           , intent(in)                    :: mat(:)
         type(lfpack_type)   , intent(in)                    :: pack
         type(lowDia_type)   , intent(in)                    :: subset
     end function
@@ -1337,9 +1337,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatTrace_LFP_XLD_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)                                           :: trace
-        real(RKC)           , intent(in)                    :: mat(:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)                                           :: trace
+        real(RKG)           , intent(in)                    :: mat(:)
         type(lfpack_type)   , intent(in)                    :: pack
         type(lowDia_type)   , intent(in)                    :: subset
     end function
@@ -1350,9 +1350,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatTrace_LFP_XLD_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)                                           :: trace
-        real(RKC)           , intent(in)                    :: mat(:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)                                           :: trace
+        real(RKG)           , intent(in)                    :: mat(:)
         type(lfpack_type)   , intent(in)                    :: pack
         type(lowDia_type)   , intent(in)                    :: subset
     end function
@@ -1363,9 +1363,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatTrace_LFP_XLD_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)                                           :: trace
-        real(RKC)           , intent(in)                    :: mat(:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)                                           :: trace
+        real(RKG)           , intent(in)                    :: mat(:)
         type(lfpack_type)   , intent(in)                    :: pack
         type(lowDia_type)   , intent(in)                    :: subset
     end function
@@ -1479,9 +1479,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatMulTrace_DEF_XXX_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)        , intent(in)                    :: mat(:,:)
-        integer(IKC)                                        :: mulTrace
+        use pm_kind, only: IKG => IK5
+        integer(IKG)        , intent(in)                    :: mat(:,:)
+        integer(IKG)                                        :: mulTrace
     end function
 #endif
 
@@ -1490,9 +1490,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatMulTrace_DEF_XXX_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)        , intent(in)                    :: mat(:,:)
-        integer(IKC)                                        :: mulTrace
+        use pm_kind, only: IKG => IK4
+        integer(IKG)        , intent(in)                    :: mat(:,:)
+        integer(IKG)                                        :: mulTrace
     end function
 #endif
 
@@ -1501,9 +1501,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatMulTrace_DEF_XXX_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)        , intent(in)                    :: mat(:,:)
-        integer(IKC)                                        :: mulTrace
+        use pm_kind, only: IKG => IK3
+        integer(IKG)        , intent(in)                    :: mat(:,:)
+        integer(IKG)                                        :: mulTrace
     end function
 #endif
 
@@ -1512,9 +1512,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatMulTrace_DEF_XXX_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)        , intent(in)                    :: mat(:,:)
-        integer(IKC)                                        :: mulTrace
+        use pm_kind, only: IKG => IK2
+        integer(IKG)        , intent(in)                    :: mat(:,:)
+        integer(IKG)                                        :: mulTrace
     end function
 #endif
 
@@ -1523,9 +1523,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatMulTrace_DEF_XXX_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)        , intent(in)                    :: mat(:,:)
-        integer(IKC)                                        :: mulTrace
+        use pm_kind, only: IKG => IK1
+        integer(IKG)        , intent(in)                    :: mat(:,:)
+        integer(IKG)                                        :: mulTrace
     end function
 #endif
 
@@ -1536,9 +1536,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatMulTrace_DEF_XXX_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)        , intent(in)                    :: mat(:,:)
-        complex(CKC)                                        :: mulTrace
+        use pm_kind, only: CKG => CK5
+        complex(CKG)        , intent(in)                    :: mat(:,:)
+        complex(CKG)                                        :: mulTrace
     end function
 #endif
 
@@ -1547,9 +1547,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatMulTrace_DEF_XXX_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)        , intent(in)                    :: mat(:,:)
-        complex(CKC)                                        :: mulTrace
+        use pm_kind, only: CKG => CK4
+        complex(CKG)        , intent(in)                    :: mat(:,:)
+        complex(CKG)                                        :: mulTrace
     end function
 #endif
 
@@ -1558,9 +1558,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatMulTrace_DEF_XXX_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)        , intent(in)                    :: mat(:,:)
-        complex(CKC)                                        :: mulTrace
+        use pm_kind, only: CKG => CK3
+        complex(CKG)        , intent(in)                    :: mat(:,:)
+        complex(CKG)                                        :: mulTrace
     end function
 #endif
 
@@ -1569,9 +1569,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatMulTrace_DEF_XXX_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)        , intent(in)                    :: mat(:,:)
-        complex(CKC)                                        :: mulTrace
+        use pm_kind, only: CKG => CK2
+        complex(CKG)        , intent(in)                    :: mat(:,:)
+        complex(CKG)                                        :: mulTrace
     end function
 #endif
 
@@ -1580,9 +1580,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatMulTrace_DEF_XXX_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)        , intent(in)                    :: mat(:,:)
-        complex(CKC)                                        :: mulTrace
+        use pm_kind, only: CKG => CK1
+        complex(CKG)        , intent(in)                    :: mat(:,:)
+        complex(CKG)                                        :: mulTrace
     end function
 #endif
 
@@ -1593,9 +1593,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatMulTrace_DEF_XXX_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)           , intent(in)                    :: mat(:,:)
-        real(RKC)                                           :: mulTrace
+        use pm_kind, only: RKG => RK5
+        real(RKG)           , intent(in)                    :: mat(:,:)
+        real(RKG)                                           :: mulTrace
     end function
 #endif
 
@@ -1604,9 +1604,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatMulTrace_DEF_XXX_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)           , intent(in)                    :: mat(:,:)
-        real(RKC)                                           :: mulTrace
+        use pm_kind, only: RKG => RK4
+        real(RKG)           , intent(in)                    :: mat(:,:)
+        real(RKG)                                           :: mulTrace
     end function
 #endif
 
@@ -1615,9 +1615,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatMulTrace_DEF_XXX_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)           , intent(in)                    :: mat(:,:)
-        real(RKC)                                           :: mulTrace
+        use pm_kind, only: RKG => RK3
+        real(RKG)           , intent(in)                    :: mat(:,:)
+        real(RKG)                                           :: mulTrace
     end function
 #endif
 
@@ -1626,9 +1626,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatMulTrace_DEF_XXX_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)           , intent(in)                    :: mat(:,:)
-        real(RKC)                                           :: mulTrace
+        use pm_kind, only: RKG => RK2
+        real(RKG)           , intent(in)                    :: mat(:,:)
+        real(RKG)                                           :: mulTrace
     end function
 #endif
 
@@ -1637,9 +1637,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatMulTrace_DEF_XXX_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)           , intent(in)                    :: mat(:,:)
-        real(RKC)                                           :: mulTrace
+        use pm_kind, only: RKG => RK1
+        real(RKG)           , intent(in)                    :: mat(:,:)
+        real(RKG)                                           :: mulTrace
     end function
 #endif
 
@@ -1660,10 +1660,10 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatMulTrace_RDP_XXX_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)        , intent(in)                    :: mat(:,:)
+        use pm_kind, only: IKG => IK5
+        integer(IKG)        , intent(in)                    :: mat(:,:)
         type(rdpack_type)   , intent(in)                    :: pack
-        integer(IKC)                                        :: mulTrace
+        integer(IKG)                                        :: mulTrace
     end function
 #endif
 
@@ -1672,10 +1672,10 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatMulTrace_RDP_XXX_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)        , intent(in)                    :: mat(:,:)
+        use pm_kind, only: IKG => IK4
+        integer(IKG)        , intent(in)                    :: mat(:,:)
         type(rdpack_type)   , intent(in)                    :: pack
-        integer(IKC)                                        :: mulTrace
+        integer(IKG)                                        :: mulTrace
     end function
 #endif
 
@@ -1684,10 +1684,10 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatMulTrace_RDP_XXX_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)        , intent(in)                    :: mat(:,:)
+        use pm_kind, only: IKG => IK3
+        integer(IKG)        , intent(in)                    :: mat(:,:)
         type(rdpack_type)   , intent(in)                    :: pack
-        integer(IKC)                                        :: mulTrace
+        integer(IKG)                                        :: mulTrace
     end function
 #endif
 
@@ -1696,10 +1696,10 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatMulTrace_RDP_XXX_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)        , intent(in)                    :: mat(:,:)
+        use pm_kind, only: IKG => IK2
+        integer(IKG)        , intent(in)                    :: mat(:,:)
         type(rdpack_type)   , intent(in)                    :: pack
-        integer(IKC)                                        :: mulTrace
+        integer(IKG)                                        :: mulTrace
     end function
 #endif
 
@@ -1708,10 +1708,10 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatMulTrace_RDP_XXX_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)        , intent(in)                    :: mat(:,:)
+        use pm_kind, only: IKG => IK1
+        integer(IKG)        , intent(in)                    :: mat(:,:)
         type(rdpack_type)   , intent(in)                    :: pack
-        integer(IKC)                                        :: mulTrace
+        integer(IKG)                                        :: mulTrace
     end function
 #endif
 
@@ -1722,10 +1722,10 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatMulTrace_RDP_XXX_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)        , intent(in)                    :: mat(:,:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG)        , intent(in)                    :: mat(:,:)
         type(rdpack_type)   , intent(in)                    :: pack
-        complex(CKC)                                        :: mulTrace
+        complex(CKG)                                        :: mulTrace
     end function
 #endif
 
@@ -1734,10 +1734,10 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatMulTrace_RDP_XXX_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)        , intent(in)                    :: mat(:,:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG)        , intent(in)                    :: mat(:,:)
         type(rdpack_type)   , intent(in)                    :: pack
-        complex(CKC)                                        :: mulTrace
+        complex(CKG)                                        :: mulTrace
     end function
 #endif
 
@@ -1746,10 +1746,10 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatMulTrace_RDP_XXX_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)        , intent(in)                    :: mat(:,:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG)        , intent(in)                    :: mat(:,:)
         type(rdpack_type)   , intent(in)                    :: pack
-        complex(CKC)                                        :: mulTrace
+        complex(CKG)                                        :: mulTrace
     end function
 #endif
 
@@ -1758,10 +1758,10 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatMulTrace_RDP_XXX_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)        , intent(in)                    :: mat(:,:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG)        , intent(in)                    :: mat(:,:)
         type(rdpack_type)   , intent(in)                    :: pack
-        complex(CKC)                                        :: mulTrace
+        complex(CKG)                                        :: mulTrace
     end function
 #endif
 
@@ -1770,10 +1770,10 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatMulTrace_RDP_XXX_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)        , intent(in)                    :: mat(:,:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG)        , intent(in)                    :: mat(:,:)
         type(rdpack_type)   , intent(in)                    :: pack
-        complex(CKC)                                        :: mulTrace
+        complex(CKG)                                        :: mulTrace
     end function
 #endif
 
@@ -1784,9 +1784,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatMulTrace_RDP_XXX_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)           , intent(in)                    :: mat(:,:)
-        real(RKC)                                           :: mulTrace
+        use pm_kind, only: RKG => RK5
+        real(RKG)           , intent(in)                    :: mat(:,:)
+        real(RKG)                                           :: mulTrace
         type(rdpack_type)   , intent(in)                    :: pack
     end function
 #endif
@@ -1796,10 +1796,10 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatMulTrace_RDP_XXX_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)           , intent(in)                    :: mat(:,:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)           , intent(in)                    :: mat(:,:)
         type(rdpack_type)   , intent(in)                    :: pack
-        real(RKC)                                           :: mulTrace
+        real(RKG)                                           :: mulTrace
     end function
 #endif
 
@@ -1808,10 +1808,10 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatMulTrace_RDP_XXX_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)           , intent(in)                    :: mat(:,:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)           , intent(in)                    :: mat(:,:)
         type(rdpack_type)   , intent(in)                    :: pack
-        real(RKC)                                           :: mulTrace
+        real(RKG)                                           :: mulTrace
     end function
 #endif
 
@@ -1820,10 +1820,10 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatMulTrace_RDP_XXX_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)           , intent(in)                    :: mat(:,:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)           , intent(in)                    :: mat(:,:)
         type(rdpack_type)   , intent(in)                    :: pack
-        real(RKC)                                           :: mulTrace
+        real(RKG)                                           :: mulTrace
     end function
 #endif
 
@@ -1832,10 +1832,10 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatMulTrace_RDP_XXX_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)           , intent(in)                    :: mat(:,:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)           , intent(in)                    :: mat(:,:)
         type(rdpack_type)   , intent(in)                    :: pack
-        real(RKC)                                           :: mulTrace
+        real(RKG)                                           :: mulTrace
     end function
 #endif
 
@@ -1856,9 +1856,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatMulTrace_RFP_UXD_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)                                        :: mulTrace
-        integer(IKC)        , intent(in)                    :: mat(:,:)
+        use pm_kind, only: IKG => IK5
+        integer(IKG)                                        :: mulTrace
+        integer(IKG)        , intent(in)                    :: mat(:,:)
         type(rfpack_type)   , intent(in)                    :: pack
         type(uppDia_type)   , intent(in)                    :: subset
     end function
@@ -1869,9 +1869,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatMulTrace_RFP_UXD_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)                                        :: mulTrace
-        integer(IKC)        , intent(in)                    :: mat(:,:)
+        use pm_kind, only: IKG => IK4
+        integer(IKG)                                        :: mulTrace
+        integer(IKG)        , intent(in)                    :: mat(:,:)
         type(rfpack_type)   , intent(in)                    :: pack
         type(uppDia_type)   , intent(in)                    :: subset
     end function
@@ -1882,9 +1882,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatMulTrace_RFP_UXD_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)                                        :: mulTrace
-        integer(IKC)        , intent(in)                    :: mat(:,:)
+        use pm_kind, only: IKG => IK3
+        integer(IKG)                                        :: mulTrace
+        integer(IKG)        , intent(in)                    :: mat(:,:)
         type(rfpack_type)   , intent(in)                    :: pack
         type(uppDia_type)   , intent(in)                    :: subset
     end function
@@ -1895,9 +1895,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatMulTrace_RFP_UXD_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)                                        :: mulTrace
-        integer(IKC)        , intent(in)                    :: mat(:,:)
+        use pm_kind, only: IKG => IK2
+        integer(IKG)                                        :: mulTrace
+        integer(IKG)        , intent(in)                    :: mat(:,:)
         type(rfpack_type)   , intent(in)                    :: pack
         type(uppDia_type)   , intent(in)                    :: subset
     end function
@@ -1908,9 +1908,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatMulTrace_RFP_UXD_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)                                        :: mulTrace
-        integer(IKC)        , intent(in)                    :: mat(:,:)
+        use pm_kind, only: IKG => IK1
+        integer(IKG)                                        :: mulTrace
+        integer(IKG)        , intent(in)                    :: mat(:,:)
         type(rfpack_type)   , intent(in)                    :: pack
         type(uppDia_type)   , intent(in)                    :: subset
     end function
@@ -1923,9 +1923,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatMulTrace_RFP_UXD_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)                                        :: mulTrace
-        complex(CKC)        , intent(in)                    :: mat(:,:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG)                                        :: mulTrace
+        complex(CKG)        , intent(in)                    :: mat(:,:)
         type(rfpack_type)   , intent(in)                    :: pack
         type(uppDia_type)   , intent(in)                    :: subset
     end function
@@ -1936,9 +1936,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatMulTrace_RFP_UXD_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)                                        :: mulTrace
-        complex(CKC)        , intent(in)                    :: mat(:,:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG)                                        :: mulTrace
+        complex(CKG)        , intent(in)                    :: mat(:,:)
         type(rfpack_type)   , intent(in)                    :: pack
         type(uppDia_type)   , intent(in)                    :: subset
     end function
@@ -1949,9 +1949,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatMulTrace_RFP_UXD_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)                                        :: mulTrace
-        complex(CKC)        , intent(in)                    :: mat(:,:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG)                                        :: mulTrace
+        complex(CKG)        , intent(in)                    :: mat(:,:)
         type(rfpack_type)   , intent(in)                    :: pack
         type(uppDia_type)   , intent(in)                    :: subset
     end function
@@ -1962,9 +1962,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatMulTrace_RFP_UXD_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)                                        :: mulTrace
-        complex(CKC)        , intent(in)                    :: mat(:,:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG)                                        :: mulTrace
+        complex(CKG)        , intent(in)                    :: mat(:,:)
         type(rfpack_type)   , intent(in)                    :: pack
         type(uppDia_type)   , intent(in)                    :: subset
     end function
@@ -1975,9 +1975,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatMulTrace_RFP_UXD_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)                                        :: mulTrace
-        complex(CKC)        , intent(in)                    :: mat(:,:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG)                                        :: mulTrace
+        complex(CKG)        , intent(in)                    :: mat(:,:)
         type(rfpack_type)   , intent(in)                    :: pack
         type(uppDia_type)   , intent(in)                    :: subset
     end function
@@ -1990,9 +1990,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatMulTrace_RFP_UXD_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)                                           :: mulTrace
-        real(RKC)           , intent(in)                    :: mat(:,:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)                                           :: mulTrace
+        real(RKG)           , intent(in)                    :: mat(:,:)
         type(rfpack_type)   , intent(in)                    :: pack
         type(uppDia_type)   , intent(in)                    :: subset
     end function
@@ -2003,9 +2003,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatMulTrace_RFP_UXD_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)                                           :: mulTrace
-        real(RKC)           , intent(in)                    :: mat(:,:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)                                           :: mulTrace
+        real(RKG)           , intent(in)                    :: mat(:,:)
         type(rfpack_type)   , intent(in)                    :: pack
         type(uppDia_type)   , intent(in)                    :: subset
     end function
@@ -2016,9 +2016,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatMulTrace_RFP_UXD_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)                                           :: mulTrace
-        real(RKC)           , intent(in)                    :: mat(:,:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)                                           :: mulTrace
+        real(RKG)           , intent(in)                    :: mat(:,:)
         type(rfpack_type)   , intent(in)                    :: pack
         type(uppDia_type)   , intent(in)                    :: subset
     end function
@@ -2029,9 +2029,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatMulTrace_RFP_UXD_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)                                           :: mulTrace
-        real(RKC)           , intent(in)                    :: mat(:,:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)                                           :: mulTrace
+        real(RKG)           , intent(in)                    :: mat(:,:)
         type(rfpack_type)   , intent(in)                    :: pack
         type(uppDia_type)   , intent(in)                    :: subset
     end function
@@ -2042,9 +2042,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatMulTrace_RFP_UXD_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)                                           :: mulTrace
-        real(RKC)           , intent(in)                    :: mat(:,:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)                                           :: mulTrace
+        real(RKG)           , intent(in)                    :: mat(:,:)
         type(rfpack_type)   , intent(in)                    :: pack
         type(uppDia_type)   , intent(in)                    :: subset
     end function
@@ -2063,9 +2063,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatMulTrace_RFP_XLD_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)                                        :: mulTrace
-        integer(IKC)        , intent(in)                    :: mat(:,:)
+        use pm_kind, only: IKG => IK5
+        integer(IKG)                                        :: mulTrace
+        integer(IKG)        , intent(in)                    :: mat(:,:)
         type(rfpack_type)   , intent(in)                    :: pack
         type(lowDia_type)   , intent(in)                    :: subset
     end function
@@ -2076,9 +2076,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatMulTrace_RFP_XLD_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)                                        :: mulTrace
-        integer(IKC)        , intent(in)                    :: mat(:,:)
+        use pm_kind, only: IKG => IK4
+        integer(IKG)                                        :: mulTrace
+        integer(IKG)        , intent(in)                    :: mat(:,:)
         type(rfpack_type)   , intent(in)                    :: pack
         type(lowDia_type)   , intent(in)                    :: subset
     end function
@@ -2089,9 +2089,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatMulTrace_RFP_XLD_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)                                        :: mulTrace
-        integer(IKC)        , intent(in)                    :: mat(:,:)
+        use pm_kind, only: IKG => IK3
+        integer(IKG)                                        :: mulTrace
+        integer(IKG)        , intent(in)                    :: mat(:,:)
         type(rfpack_type)   , intent(in)                    :: pack
         type(lowDia_type)   , intent(in)                    :: subset
     end function
@@ -2102,9 +2102,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatMulTrace_RFP_XLD_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)                                        :: mulTrace
-        integer(IKC)        , intent(in)                    :: mat(:,:)
+        use pm_kind, only: IKG => IK2
+        integer(IKG)                                        :: mulTrace
+        integer(IKG)        , intent(in)                    :: mat(:,:)
         type(rfpack_type)   , intent(in)                    :: pack
         type(lowDia_type)   , intent(in)                    :: subset
     end function
@@ -2115,9 +2115,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatMulTrace_RFP_XLD_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)                                        :: mulTrace
-        integer(IKC)        , intent(in)                    :: mat(:,:)
+        use pm_kind, only: IKG => IK1
+        integer(IKG)                                        :: mulTrace
+        integer(IKG)        , intent(in)                    :: mat(:,:)
         type(rfpack_type)   , intent(in)                    :: pack
         type(lowDia_type)   , intent(in)                    :: subset
     end function
@@ -2130,9 +2130,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatMulTrace_RFP_XLD_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)                                        :: mulTrace
-        complex(CKC)        , intent(in)                    :: mat(:,:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG)                                        :: mulTrace
+        complex(CKG)        , intent(in)                    :: mat(:,:)
         type(rfpack_type)   , intent(in)                    :: pack
         type(lowDia_type)   , intent(in)                    :: subset
     end function
@@ -2143,9 +2143,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatMulTrace_RFP_XLD_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)                                        :: mulTrace
-        complex(CKC)        , intent(in)                    :: mat(:,:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG)                                        :: mulTrace
+        complex(CKG)        , intent(in)                    :: mat(:,:)
         type(rfpack_type)   , intent(in)                    :: pack
         type(lowDia_type)   , intent(in)                    :: subset
     end function
@@ -2156,9 +2156,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatMulTrace_RFP_XLD_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)                                        :: mulTrace
-        complex(CKC)        , intent(in)                    :: mat(:,:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG)                                        :: mulTrace
+        complex(CKG)        , intent(in)                    :: mat(:,:)
         type(rfpack_type)   , intent(in)                    :: pack
         type(lowDia_type)   , intent(in)                    :: subset
     end function
@@ -2169,9 +2169,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatMulTrace_RFP_XLD_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)                                        :: mulTrace
-        complex(CKC)        , intent(in)                    :: mat(:,:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG)                                        :: mulTrace
+        complex(CKG)        , intent(in)                    :: mat(:,:)
         type(rfpack_type)   , intent(in)                    :: pack
         type(lowDia_type)   , intent(in)                    :: subset
     end function
@@ -2182,9 +2182,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatMulTrace_RFP_XLD_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)                                        :: mulTrace
-        complex(CKC)        , intent(in)                    :: mat(:,:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG)                                        :: mulTrace
+        complex(CKG)        , intent(in)                    :: mat(:,:)
         type(rfpack_type)   , intent(in)                    :: pack
         type(lowDia_type)   , intent(in)                    :: subset
     end function
@@ -2197,9 +2197,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatMulTrace_RFP_XLD_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)                                           :: mulTrace
-        real(RKC)           , intent(in)                    :: mat(:,:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)                                           :: mulTrace
+        real(RKG)           , intent(in)                    :: mat(:,:)
         type(rfpack_type)   , intent(in)                    :: pack
         type(lowDia_type)   , intent(in)                    :: subset
     end function
@@ -2210,9 +2210,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatMulTrace_RFP_XLD_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)                                           :: mulTrace
-        real(RKC)           , intent(in)                    :: mat(:,:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)                                           :: mulTrace
+        real(RKG)           , intent(in)                    :: mat(:,:)
         type(rfpack_type)   , intent(in)                    :: pack
         type(lowDia_type)   , intent(in)                    :: subset
     end function
@@ -2223,9 +2223,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatMulTrace_RFP_XLD_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)                                           :: mulTrace
-        real(RKC)           , intent(in)                    :: mat(:,:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)                                           :: mulTrace
+        real(RKG)           , intent(in)                    :: mat(:,:)
         type(rfpack_type)   , intent(in)                    :: pack
         type(lowDia_type)   , intent(in)                    :: subset
     end function
@@ -2236,9 +2236,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatMulTrace_RFP_XLD_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)                                           :: mulTrace
-        real(RKC)           , intent(in)                    :: mat(:,:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)                                           :: mulTrace
+        real(RKG)           , intent(in)                    :: mat(:,:)
         type(rfpack_type)   , intent(in)                    :: pack
         type(lowDia_type)   , intent(in)                    :: subset
     end function
@@ -2249,9 +2249,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatMulTrace_RFP_XLD_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)                                           :: mulTrace
-        real(RKC)           , intent(in)                    :: mat(:,:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)                                           :: mulTrace
+        real(RKG)           , intent(in)                    :: mat(:,:)
         type(rfpack_type)   , intent(in)                    :: pack
         type(lowDia_type)   , intent(in)                    :: subset
     end function
@@ -2274,9 +2274,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatMulTrace_LFP_UXD_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)                                        :: mulTrace
-        integer(IKC)        , intent(in)                    :: mat(:)
+        use pm_kind, only: IKG => IK5
+        integer(IKG)                                        :: mulTrace
+        integer(IKG)        , intent(in)                    :: mat(:)
         type(lfpack_type)   , intent(in)                    :: pack
         type(uppDia_type)   , intent(in)                    :: subset
     end function
@@ -2287,9 +2287,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatMulTrace_LFP_UXD_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)                                        :: mulTrace
-        integer(IKC)        , intent(in)                    :: mat(:)
+        use pm_kind, only: IKG => IK4
+        integer(IKG)                                        :: mulTrace
+        integer(IKG)        , intent(in)                    :: mat(:)
         type(lfpack_type)   , intent(in)                    :: pack
         type(uppDia_type)   , intent(in)                    :: subset
     end function
@@ -2300,9 +2300,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatMulTrace_LFP_UXD_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)                                        :: mulTrace
-        integer(IKC)        , intent(in)                    :: mat(:)
+        use pm_kind, only: IKG => IK3
+        integer(IKG)                                        :: mulTrace
+        integer(IKG)        , intent(in)                    :: mat(:)
         type(lfpack_type)   , intent(in)                    :: pack
         type(uppDia_type)   , intent(in)                    :: subset
     end function
@@ -2313,9 +2313,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatMulTrace_LFP_UXD_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)                                        :: mulTrace
-        integer(IKC)        , intent(in)                    :: mat(:)
+        use pm_kind, only: IKG => IK2
+        integer(IKG)                                        :: mulTrace
+        integer(IKG)        , intent(in)                    :: mat(:)
         type(lfpack_type)   , intent(in)                    :: pack
         type(uppDia_type)   , intent(in)                    :: subset
     end function
@@ -2326,9 +2326,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatMulTrace_LFP_UXD_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)                                        :: mulTrace
-        integer(IKC)        , intent(in)                    :: mat(:)
+        use pm_kind, only: IKG => IK1
+        integer(IKG)                                        :: mulTrace
+        integer(IKG)        , intent(in)                    :: mat(:)
         type(lfpack_type)   , intent(in)                    :: pack
         type(uppDia_type)   , intent(in)                    :: subset
     end function
@@ -2341,9 +2341,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatMulTrace_LFP_UXD_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)                                        :: mulTrace
-        complex(CKC)        , intent(in)                    :: mat(:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG)                                        :: mulTrace
+        complex(CKG)        , intent(in)                    :: mat(:)
         type(lfpack_type)   , intent(in)                    :: pack
         type(uppDia_type)   , intent(in)                    :: subset
     end function
@@ -2354,9 +2354,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatMulTrace_LFP_UXD_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)                                        :: mulTrace
-        complex(CKC)        , intent(in)                    :: mat(:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG)                                        :: mulTrace
+        complex(CKG)        , intent(in)                    :: mat(:)
         type(lfpack_type)   , intent(in)                    :: pack
         type(uppDia_type)   , intent(in)                    :: subset
     end function
@@ -2367,9 +2367,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatMulTrace_LFP_UXD_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)                                        :: mulTrace
-        complex(CKC)        , intent(in)                    :: mat(:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG)                                        :: mulTrace
+        complex(CKG)        , intent(in)                    :: mat(:)
         type(lfpack_type)   , intent(in)                    :: pack
         type(uppDia_type)   , intent(in)                    :: subset
     end function
@@ -2380,9 +2380,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatMulTrace_LFP_UXD_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)                                        :: mulTrace
-        complex(CKC)        , intent(in)                    :: mat(:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG)                                        :: mulTrace
+        complex(CKG)        , intent(in)                    :: mat(:)
         type(lfpack_type)   , intent(in)                    :: pack
         type(uppDia_type)   , intent(in)                    :: subset
     end function
@@ -2393,9 +2393,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatMulTrace_LFP_UXD_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)                                        :: mulTrace
-        complex(CKC)        , intent(in)                    :: mat(:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG)                                        :: mulTrace
+        complex(CKG)        , intent(in)                    :: mat(:)
         type(lfpack_type)   , intent(in)                    :: pack
         type(uppDia_type)   , intent(in)                    :: subset
     end function
@@ -2408,9 +2408,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatMulTrace_LFP_UXD_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)                                           :: mulTrace
-        real(RKC)           , intent(in)                    :: mat(:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)                                           :: mulTrace
+        real(RKG)           , intent(in)                    :: mat(:)
         type(lfpack_type)   , intent(in)                    :: pack
         type(uppDia_type)   , intent(in)                    :: subset
     end function
@@ -2421,9 +2421,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatMulTrace_LFP_UXD_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)                                           :: mulTrace
-        real(RKC)           , intent(in)                    :: mat(:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)                                           :: mulTrace
+        real(RKG)           , intent(in)                    :: mat(:)
         type(lfpack_type)   , intent(in)                    :: pack
         type(uppDia_type)   , intent(in)                    :: subset
     end function
@@ -2434,9 +2434,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatMulTrace_LFP_UXD_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)                                           :: mulTrace
-        real(RKC)           , intent(in)                    :: mat(:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)                                           :: mulTrace
+        real(RKG)           , intent(in)                    :: mat(:)
         type(lfpack_type)   , intent(in)                    :: pack
         type(uppDia_type)   , intent(in)                    :: subset
     end function
@@ -2447,9 +2447,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatMulTrace_LFP_UXD_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)                                           :: mulTrace
-        real(RKC)           , intent(in)                    :: mat(:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)                                           :: mulTrace
+        real(RKG)           , intent(in)                    :: mat(:)
         type(lfpack_type)   , intent(in)                    :: pack
         type(uppDia_type)   , intent(in)                    :: subset
     end function
@@ -2460,9 +2460,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatMulTrace_LFP_UXD_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)                                           :: mulTrace
-        real(RKC)           , intent(in)                    :: mat(:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)                                           :: mulTrace
+        real(RKG)           , intent(in)                    :: mat(:)
         type(lfpack_type)   , intent(in)                    :: pack
         type(uppDia_type)   , intent(in)                    :: subset
     end function
@@ -2481,9 +2481,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatMulTrace_LFP_XLD_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)                                        :: mulTrace
-        integer(IKC)        , intent(in)                    :: mat(:)
+        use pm_kind, only: IKG => IK5
+        integer(IKG)                                        :: mulTrace
+        integer(IKG)        , intent(in)                    :: mat(:)
         type(lfpack_type)   , intent(in)                    :: pack
         type(lowDia_type)   , intent(in)                    :: subset
     end function
@@ -2494,9 +2494,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatMulTrace_LFP_XLD_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)                                        :: mulTrace
-        integer(IKC)        , intent(in)                    :: mat(:)
+        use pm_kind, only: IKG => IK4
+        integer(IKG)                                        :: mulTrace
+        integer(IKG)        , intent(in)                    :: mat(:)
         type(lfpack_type)   , intent(in)                    :: pack
         type(lowDia_type)   , intent(in)                    :: subset
     end function
@@ -2507,9 +2507,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatMulTrace_LFP_XLD_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)                                        :: mulTrace
-        integer(IKC)        , intent(in)                    :: mat(:)
+        use pm_kind, only: IKG => IK3
+        integer(IKG)                                        :: mulTrace
+        integer(IKG)        , intent(in)                    :: mat(:)
         type(lfpack_type)   , intent(in)                    :: pack
         type(lowDia_type)   , intent(in)                    :: subset
     end function
@@ -2520,9 +2520,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatMulTrace_LFP_XLD_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)                                        :: mulTrace
-        integer(IKC)        , intent(in)                    :: mat(:)
+        use pm_kind, only: IKG => IK2
+        integer(IKG)                                        :: mulTrace
+        integer(IKG)        , intent(in)                    :: mat(:)
         type(lfpack_type)   , intent(in)                    :: pack
         type(lowDia_type)   , intent(in)                    :: subset
     end function
@@ -2533,9 +2533,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatMulTrace_LFP_XLD_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)                                        :: mulTrace
-        integer(IKC)        , intent(in)                    :: mat(:)
+        use pm_kind, only: IKG => IK1
+        integer(IKG)                                        :: mulTrace
+        integer(IKG)        , intent(in)                    :: mat(:)
         type(lfpack_type)   , intent(in)                    :: pack
         type(lowDia_type)   , intent(in)                    :: subset
     end function
@@ -2548,9 +2548,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatMulTrace_LFP_XLD_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)                                        :: mulTrace
-        complex(CKC)        , intent(in)                    :: mat(:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG)                                        :: mulTrace
+        complex(CKG)        , intent(in)                    :: mat(:)
         type(lfpack_type)   , intent(in)                    :: pack
         type(lowDia_type)   , intent(in)                    :: subset
     end function
@@ -2561,9 +2561,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatMulTrace_LFP_XLD_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)                                        :: mulTrace
-        complex(CKC)        , intent(in)                    :: mat(:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG)                                        :: mulTrace
+        complex(CKG)        , intent(in)                    :: mat(:)
         type(lfpack_type)   , intent(in)                    :: pack
         type(lowDia_type)   , intent(in)                    :: subset
     end function
@@ -2574,9 +2574,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatMulTrace_LFP_XLD_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)                                        :: mulTrace
-        complex(CKC)        , intent(in)                    :: mat(:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG)                                        :: mulTrace
+        complex(CKG)        , intent(in)                    :: mat(:)
         type(lfpack_type)   , intent(in)                    :: pack
         type(lowDia_type)   , intent(in)                    :: subset
     end function
@@ -2587,9 +2587,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatMulTrace_LFP_XLD_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)                                        :: mulTrace
-        complex(CKC)        , intent(in)                    :: mat(:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG)                                        :: mulTrace
+        complex(CKG)        , intent(in)                    :: mat(:)
         type(lfpack_type)   , intent(in)                    :: pack
         type(lowDia_type)   , intent(in)                    :: subset
     end function
@@ -2600,9 +2600,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatMulTrace_LFP_XLD_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)                                        :: mulTrace
-        complex(CKC)        , intent(in)                    :: mat(:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG)                                        :: mulTrace
+        complex(CKG)        , intent(in)                    :: mat(:)
         type(lfpack_type)   , intent(in)                    :: pack
         type(lowDia_type)   , intent(in)                    :: subset
     end function
@@ -2615,9 +2615,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatMulTrace_LFP_XLD_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)                                           :: mulTrace
-        real(RKC)           , intent(in)                    :: mat(:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)                                           :: mulTrace
+        real(RKG)           , intent(in)                    :: mat(:)
         type(lfpack_type)   , intent(in)                    :: pack
         type(lowDia_type)   , intent(in)                    :: subset
     end function
@@ -2628,9 +2628,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatMulTrace_LFP_XLD_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)                                           :: mulTrace
-        real(RKC)           , intent(in)                    :: mat(:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)                                           :: mulTrace
+        real(RKG)           , intent(in)                    :: mat(:)
         type(lfpack_type)   , intent(in)                    :: pack
         type(lowDia_type)   , intent(in)                    :: subset
     end function
@@ -2641,9 +2641,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatMulTrace_LFP_XLD_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)                                           :: mulTrace
-        real(RKC)           , intent(in)                    :: mat(:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)                                           :: mulTrace
+        real(RKG)           , intent(in)                    :: mat(:)
         type(lfpack_type)   , intent(in)                    :: pack
         type(lowDia_type)   , intent(in)                    :: subset
     end function
@@ -2654,9 +2654,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatMulTrace_LFP_XLD_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)                                           :: mulTrace
-        real(RKC)           , intent(in)                    :: mat(:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)                                           :: mulTrace
+        real(RKG)           , intent(in)                    :: mat(:)
         type(lfpack_type)   , intent(in)                    :: pack
         type(lowDia_type)   , intent(in)                    :: subset
     end function
@@ -2667,9 +2667,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatMulTrace_LFP_XLD_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)                                           :: mulTrace
-        real(RKC)           , intent(in)                    :: mat(:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)                                           :: mulTrace
+        real(RKG)           , intent(in)                    :: mat(:)
         type(lfpack_type)   , intent(in)                    :: pack
         type(lowDia_type)   , intent(in)                    :: subset
     end function
@@ -2783,8 +2783,8 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatMulTraceLog_DEF_XXX_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)        , intent(in)                    :: mat(:,:)
+        use pm_kind, only: IKG => IK5
+        integer(IKG)        , intent(in)                    :: mat(:,:)
         real(RKD)                                           :: logMulTrace
     end function
 #endif
@@ -2794,8 +2794,8 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatMulTraceLog_DEF_XXX_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)        , intent(in)                    :: mat(:,:)
+        use pm_kind, only: IKG => IK4
+        integer(IKG)        , intent(in)                    :: mat(:,:)
         real(RKD)                                           :: logMulTrace
     end function
 #endif
@@ -2805,8 +2805,8 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatMulTraceLog_DEF_XXX_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)        , intent(in)                    :: mat(:,:)
+        use pm_kind, only: IKG => IK3
+        integer(IKG)        , intent(in)                    :: mat(:,:)
         real(RKD)                                           :: logMulTrace
     end function
 #endif
@@ -2816,8 +2816,8 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatMulTraceLog_DEF_XXX_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)        , intent(in)                    :: mat(:,:)
+        use pm_kind, only: IKG => IK2
+        integer(IKG)        , intent(in)                    :: mat(:,:)
         real(RKD)                                           :: logMulTrace
     end function
 #endif
@@ -2827,8 +2827,8 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatMulTraceLog_DEF_XXX_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)        , intent(in)                    :: mat(:,:)
+        use pm_kind, only: IKG => IK1
+        integer(IKG)        , intent(in)                    :: mat(:,:)
         real(RKD)                                           :: logMulTrace
     end function
 #endif
@@ -2840,9 +2840,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatMulTraceLog_DEF_XXX_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)        , intent(in)                    :: mat(:,:)
-        complex(CKC)                                        :: logMulTrace
+        use pm_kind, only: CKG => CK5
+        complex(CKG)        , intent(in)                    :: mat(:,:)
+        complex(CKG)                                        :: logMulTrace
     end function
 #endif
 
@@ -2851,9 +2851,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatMulTraceLog_DEF_XXX_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)        , intent(in)                    :: mat(:,:)
-        complex(CKC)                                        :: logMulTrace
+        use pm_kind, only: CKG => CK4
+        complex(CKG)        , intent(in)                    :: mat(:,:)
+        complex(CKG)                                        :: logMulTrace
     end function
 #endif
 
@@ -2862,9 +2862,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatMulTraceLog_DEF_XXX_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)        , intent(in)                    :: mat(:,:)
-        complex(CKC)                                        :: logMulTrace
+        use pm_kind, only: CKG => CK3
+        complex(CKG)        , intent(in)                    :: mat(:,:)
+        complex(CKG)                                        :: logMulTrace
     end function
 #endif
 
@@ -2873,9 +2873,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatMulTraceLog_DEF_XXX_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)        , intent(in)                    :: mat(:,:)
-        complex(CKC)                                        :: logMulTrace
+        use pm_kind, only: CKG => CK2
+        complex(CKG)        , intent(in)                    :: mat(:,:)
+        complex(CKG)                                        :: logMulTrace
     end function
 #endif
 
@@ -2884,9 +2884,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatMulTraceLog_DEF_XXX_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)        , intent(in)                    :: mat(:,:)
-        complex(CKC)                                        :: logMulTrace
+        use pm_kind, only: CKG => CK1
+        complex(CKG)        , intent(in)                    :: mat(:,:)
+        complex(CKG)                                        :: logMulTrace
     end function
 #endif
 
@@ -2897,9 +2897,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatMulTraceLog_DEF_XXX_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)           , intent(in)                    :: mat(:,:)
-        real(RKC)                                           :: logMulTrace
+        use pm_kind, only: RKG => RK5
+        real(RKG)           , intent(in)                    :: mat(:,:)
+        real(RKG)                                           :: logMulTrace
     end function
 #endif
 
@@ -2908,9 +2908,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatMulTraceLog_DEF_XXX_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)           , intent(in)                    :: mat(:,:)
-        real(RKC)                                           :: logMulTrace
+        use pm_kind, only: RKG => RK4
+        real(RKG)           , intent(in)                    :: mat(:,:)
+        real(RKG)                                           :: logMulTrace
     end function
 #endif
 
@@ -2919,9 +2919,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatMulTraceLog_DEF_XXX_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)           , intent(in)                    :: mat(:,:)
-        real(RKC)                                           :: logMulTrace
+        use pm_kind, only: RKG => RK3
+        real(RKG)           , intent(in)                    :: mat(:,:)
+        real(RKG)                                           :: logMulTrace
     end function
 #endif
 
@@ -2930,9 +2930,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatMulTraceLog_DEF_XXX_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)           , intent(in)                    :: mat(:,:)
-        real(RKC)                                           :: logMulTrace
+        use pm_kind, only: RKG => RK2
+        real(RKG)           , intent(in)                    :: mat(:,:)
+        real(RKG)                                           :: logMulTrace
     end function
 #endif
 
@@ -2941,9 +2941,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatMulTraceLog_DEF_XXX_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)           , intent(in)                    :: mat(:,:)
-        real(RKC)                                           :: logMulTrace
+        use pm_kind, only: RKG => RK1
+        real(RKG)           , intent(in)                    :: mat(:,:)
+        real(RKG)                                           :: logMulTrace
     end function
 #endif
 
@@ -2964,8 +2964,8 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatMulTraceLog_RDP_XXX_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)        , intent(in)                    :: mat(:,:)
+        use pm_kind, only: IKG => IK5
+        integer(IKG)        , intent(in)                    :: mat(:,:)
         type(rdpack_type)   , intent(in)                    :: pack
         real(RKD)                                           :: logMulTrace
     end function
@@ -2976,8 +2976,8 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatMulTraceLog_RDP_XXX_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)        , intent(in)                    :: mat(:,:)
+        use pm_kind, only: IKG => IK4
+        integer(IKG)        , intent(in)                    :: mat(:,:)
         type(rdpack_type)   , intent(in)                    :: pack
         real(RKD)                                           :: logMulTrace
     end function
@@ -2988,8 +2988,8 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatMulTraceLog_RDP_XXX_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)        , intent(in)                    :: mat(:,:)
+        use pm_kind, only: IKG => IK3
+        integer(IKG)        , intent(in)                    :: mat(:,:)
         type(rdpack_type)   , intent(in)                    :: pack
         real(RKD)                                           :: logMulTrace
     end function
@@ -3000,8 +3000,8 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatMulTraceLog_RDP_XXX_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)        , intent(in)                    :: mat(:,:)
+        use pm_kind, only: IKG => IK2
+        integer(IKG)        , intent(in)                    :: mat(:,:)
         type(rdpack_type)   , intent(in)                    :: pack
         real(RKD)                                           :: logMulTrace
     end function
@@ -3012,8 +3012,8 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatMulTraceLog_RDP_XXX_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)        , intent(in)                    :: mat(:,:)
+        use pm_kind, only: IKG => IK1
+        integer(IKG)        , intent(in)                    :: mat(:,:)
         type(rdpack_type)   , intent(in)                    :: pack
         real(RKD)                                           :: logMulTrace
     end function
@@ -3026,10 +3026,10 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatMulTraceLog_RDP_XXX_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)        , intent(in)                    :: mat(:,:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG)        , intent(in)                    :: mat(:,:)
         type(rdpack_type)   , intent(in)                    :: pack
-        complex(CKC)                                        :: logMulTrace
+        complex(CKG)                                        :: logMulTrace
     end function
 #endif
 
@@ -3038,10 +3038,10 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatMulTraceLog_RDP_XXX_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)        , intent(in)                    :: mat(:,:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG)        , intent(in)                    :: mat(:,:)
         type(rdpack_type)   , intent(in)                    :: pack
-        complex(CKC)                                        :: logMulTrace
+        complex(CKG)                                        :: logMulTrace
     end function
 #endif
 
@@ -3050,10 +3050,10 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatMulTraceLog_RDP_XXX_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)        , intent(in)                    :: mat(:,:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG)        , intent(in)                    :: mat(:,:)
         type(rdpack_type)   , intent(in)                    :: pack
-        complex(CKC)                                        :: logMulTrace
+        complex(CKG)                                        :: logMulTrace
     end function
 #endif
 
@@ -3062,10 +3062,10 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatMulTraceLog_RDP_XXX_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)        , intent(in)                    :: mat(:,:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG)        , intent(in)                    :: mat(:,:)
         type(rdpack_type)   , intent(in)                    :: pack
-        complex(CKC)                                        :: logMulTrace
+        complex(CKG)                                        :: logMulTrace
     end function
 #endif
 
@@ -3074,10 +3074,10 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatMulTraceLog_RDP_XXX_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)        , intent(in)                    :: mat(:,:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG)        , intent(in)                    :: mat(:,:)
         type(rdpack_type)   , intent(in)                    :: pack
-        complex(CKC)                                        :: logMulTrace
+        complex(CKG)                                        :: logMulTrace
     end function
 #endif
 
@@ -3088,9 +3088,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatMulTraceLog_RDP_XXX_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)           , intent(in)                    :: mat(:,:)
-        real(RKC)                                           :: logMulTrace
+        use pm_kind, only: RKG => RK5
+        real(RKG)           , intent(in)                    :: mat(:,:)
+        real(RKG)                                           :: logMulTrace
         type(rdpack_type)   , intent(in)                    :: pack
     end function
 #endif
@@ -3100,10 +3100,10 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatMulTraceLog_RDP_XXX_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)           , intent(in)                    :: mat(:,:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)           , intent(in)                    :: mat(:,:)
         type(rdpack_type)   , intent(in)                    :: pack
-        real(RKC)                                           :: logMulTrace
+        real(RKG)                                           :: logMulTrace
     end function
 #endif
 
@@ -3112,10 +3112,10 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatMulTraceLog_RDP_XXX_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)           , intent(in)                    :: mat(:,:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)           , intent(in)                    :: mat(:,:)
         type(rdpack_type)   , intent(in)                    :: pack
-        real(RKC)                                           :: logMulTrace
+        real(RKG)                                           :: logMulTrace
     end function
 #endif
 
@@ -3124,10 +3124,10 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatMulTraceLog_RDP_XXX_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)           , intent(in)                    :: mat(:,:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)           , intent(in)                    :: mat(:,:)
         type(rdpack_type)   , intent(in)                    :: pack
-        real(RKC)                                           :: logMulTrace
+        real(RKG)                                           :: logMulTrace
     end function
 #endif
 
@@ -3136,10 +3136,10 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatMulTraceLog_RDP_XXX_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)           , intent(in)                    :: mat(:,:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)           , intent(in)                    :: mat(:,:)
         type(rdpack_type)   , intent(in)                    :: pack
-        real(RKC)                                           :: logMulTrace
+        real(RKG)                                           :: logMulTrace
     end function
 #endif
 
@@ -3160,9 +3160,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatMulTraceLog_RFP_UXD_IK5
 #endif
-        use pm_kind, only: IKC => IK5
+        use pm_kind, only: IKG => IK5
         real(RKD)                                           :: logMulTrace
-        integer(IKC)        , intent(in)                    :: mat(:,:)
+        integer(IKG)        , intent(in)                    :: mat(:,:)
         type(rfpack_type)   , intent(in)                    :: pack
         type(uppDia_type)   , intent(in)                    :: subset
     end function
@@ -3173,9 +3173,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatMulTraceLog_RFP_UXD_IK4
 #endif
-        use pm_kind, only: IKC => IK4
+        use pm_kind, only: IKG => IK4
         real(RKD)                                           :: logMulTrace
-        integer(IKC)        , intent(in)                    :: mat(:,:)
+        integer(IKG)        , intent(in)                    :: mat(:,:)
         type(rfpack_type)   , intent(in)                    :: pack
         type(uppDia_type)   , intent(in)                    :: subset
     end function
@@ -3186,9 +3186,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatMulTraceLog_RFP_UXD_IK3
 #endif
-        use pm_kind, only: IKC => IK3
+        use pm_kind, only: IKG => IK3
         real(RKD)                                           :: logMulTrace
-        integer(IKC)        , intent(in)                    :: mat(:,:)
+        integer(IKG)        , intent(in)                    :: mat(:,:)
         type(rfpack_type)   , intent(in)                    :: pack
         type(uppDia_type)   , intent(in)                    :: subset
     end function
@@ -3199,9 +3199,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatMulTraceLog_RFP_UXD_IK2
 #endif
-        use pm_kind, only: IKC => IK2
+        use pm_kind, only: IKG => IK2
         real(RKD)                                           :: logMulTrace
-        integer(IKC)        , intent(in)                    :: mat(:,:)
+        integer(IKG)        , intent(in)                    :: mat(:,:)
         type(rfpack_type)   , intent(in)                    :: pack
         type(uppDia_type)   , intent(in)                    :: subset
     end function
@@ -3212,9 +3212,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatMulTraceLog_RFP_UXD_IK1
 #endif
-        use pm_kind, only: IKC => IK1
+        use pm_kind, only: IKG => IK1
         real(RKD)                                           :: logMulTrace
-        integer(IKC)        , intent(in)                    :: mat(:,:)
+        integer(IKG)        , intent(in)                    :: mat(:,:)
         type(rfpack_type)   , intent(in)                    :: pack
         type(uppDia_type)   , intent(in)                    :: subset
     end function
@@ -3227,9 +3227,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatMulTraceLog_RFP_UXD_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)                                        :: logMulTrace
-        complex(CKC)        , intent(in)                    :: mat(:,:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG)                                        :: logMulTrace
+        complex(CKG)        , intent(in)                    :: mat(:,:)
         type(rfpack_type)   , intent(in)                    :: pack
         type(uppDia_type)   , intent(in)                    :: subset
     end function
@@ -3240,9 +3240,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatMulTraceLog_RFP_UXD_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)                                        :: logMulTrace
-        complex(CKC)        , intent(in)                    :: mat(:,:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG)                                        :: logMulTrace
+        complex(CKG)        , intent(in)                    :: mat(:,:)
         type(rfpack_type)   , intent(in)                    :: pack
         type(uppDia_type)   , intent(in)                    :: subset
     end function
@@ -3253,9 +3253,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatMulTraceLog_RFP_UXD_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)                                        :: logMulTrace
-        complex(CKC)        , intent(in)                    :: mat(:,:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG)                                        :: logMulTrace
+        complex(CKG)        , intent(in)                    :: mat(:,:)
         type(rfpack_type)   , intent(in)                    :: pack
         type(uppDia_type)   , intent(in)                    :: subset
     end function
@@ -3266,9 +3266,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatMulTraceLog_RFP_UXD_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)                                        :: logMulTrace
-        complex(CKC)        , intent(in)                    :: mat(:,:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG)                                        :: logMulTrace
+        complex(CKG)        , intent(in)                    :: mat(:,:)
         type(rfpack_type)   , intent(in)                    :: pack
         type(uppDia_type)   , intent(in)                    :: subset
     end function
@@ -3279,9 +3279,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatMulTraceLog_RFP_UXD_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)                                        :: logMulTrace
-        complex(CKC)        , intent(in)                    :: mat(:,:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG)                                        :: logMulTrace
+        complex(CKG)        , intent(in)                    :: mat(:,:)
         type(rfpack_type)   , intent(in)                    :: pack
         type(uppDia_type)   , intent(in)                    :: subset
     end function
@@ -3294,9 +3294,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatMulTraceLog_RFP_UXD_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)                                           :: logMulTrace
-        real(RKC)           , intent(in)                    :: mat(:,:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)                                           :: logMulTrace
+        real(RKG)           , intent(in)                    :: mat(:,:)
         type(rfpack_type)   , intent(in)                    :: pack
         type(uppDia_type)   , intent(in)                    :: subset
     end function
@@ -3307,9 +3307,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatMulTraceLog_RFP_UXD_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)                                           :: logMulTrace
-        real(RKC)           , intent(in)                    :: mat(:,:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)                                           :: logMulTrace
+        real(RKG)           , intent(in)                    :: mat(:,:)
         type(rfpack_type)   , intent(in)                    :: pack
         type(uppDia_type)   , intent(in)                    :: subset
     end function
@@ -3320,9 +3320,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatMulTraceLog_RFP_UXD_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)                                           :: logMulTrace
-        real(RKC)           , intent(in)                    :: mat(:,:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)                                           :: logMulTrace
+        real(RKG)           , intent(in)                    :: mat(:,:)
         type(rfpack_type)   , intent(in)                    :: pack
         type(uppDia_type)   , intent(in)                    :: subset
     end function
@@ -3333,9 +3333,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatMulTraceLog_RFP_UXD_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)                                           :: logMulTrace
-        real(RKC)           , intent(in)                    :: mat(:,:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)                                           :: logMulTrace
+        real(RKG)           , intent(in)                    :: mat(:,:)
         type(rfpack_type)   , intent(in)                    :: pack
         type(uppDia_type)   , intent(in)                    :: subset
     end function
@@ -3346,9 +3346,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatMulTraceLog_RFP_UXD_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)                                           :: logMulTrace
-        real(RKC)           , intent(in)                    :: mat(:,:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)                                           :: logMulTrace
+        real(RKG)           , intent(in)                    :: mat(:,:)
         type(rfpack_type)   , intent(in)                    :: pack
         type(uppDia_type)   , intent(in)                    :: subset
     end function
@@ -3367,9 +3367,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatMulTraceLog_RFP_XLD_IK5
 #endif
-        use pm_kind, only: IKC => IK5
+        use pm_kind, only: IKG => IK5
         real(RKD)                                           :: logMulTrace
-        integer(IKC)        , intent(in)                    :: mat(:,:)
+        integer(IKG)        , intent(in)                    :: mat(:,:)
         type(rfpack_type)   , intent(in)                    :: pack
         type(lowDia_type)   , intent(in)                    :: subset
     end function
@@ -3380,9 +3380,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatMulTraceLog_RFP_XLD_IK4
 #endif
-        use pm_kind, only: IKC => IK4
+        use pm_kind, only: IKG => IK4
         real(RKD)                                           :: logMulTrace
-        integer(IKC)        , intent(in)                    :: mat(:,:)
+        integer(IKG)        , intent(in)                    :: mat(:,:)
         type(rfpack_type)   , intent(in)                    :: pack
         type(lowDia_type)   , intent(in)                    :: subset
     end function
@@ -3393,9 +3393,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatMulTraceLog_RFP_XLD_IK3
 #endif
-        use pm_kind, only: IKC => IK3
+        use pm_kind, only: IKG => IK3
         real(RKD)                                           :: logMulTrace
-        integer(IKC)        , intent(in)                    :: mat(:,:)
+        integer(IKG)        , intent(in)                    :: mat(:,:)
         type(rfpack_type)   , intent(in)                    :: pack
         type(lowDia_type)   , intent(in)                    :: subset
     end function
@@ -3406,9 +3406,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatMulTraceLog_RFP_XLD_IK2
 #endif
-        use pm_kind, only: IKC => IK2
+        use pm_kind, only: IKG => IK2
         real(RKD)                                           :: logMulTrace
-        integer(IKC)        , intent(in)                    :: mat(:,:)
+        integer(IKG)        , intent(in)                    :: mat(:,:)
         type(rfpack_type)   , intent(in)                    :: pack
         type(lowDia_type)   , intent(in)                    :: subset
     end function
@@ -3419,9 +3419,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatMulTraceLog_RFP_XLD_IK1
 #endif
-        use pm_kind, only: IKC => IK1
+        use pm_kind, only: IKG => IK1
         real(RKD)                                           :: logMulTrace
-        integer(IKC)        , intent(in)                    :: mat(:,:)
+        integer(IKG)        , intent(in)                    :: mat(:,:)
         type(rfpack_type)   , intent(in)                    :: pack
         type(lowDia_type)   , intent(in)                    :: subset
     end function
@@ -3434,9 +3434,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatMulTraceLog_RFP_XLD_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)                                        :: logMulTrace
-        complex(CKC)        , intent(in)                    :: mat(:,:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG)                                        :: logMulTrace
+        complex(CKG)        , intent(in)                    :: mat(:,:)
         type(rfpack_type)   , intent(in)                    :: pack
         type(lowDia_type)   , intent(in)                    :: subset
     end function
@@ -3447,9 +3447,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatMulTraceLog_RFP_XLD_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)                                        :: logMulTrace
-        complex(CKC)        , intent(in)                    :: mat(:,:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG)                                        :: logMulTrace
+        complex(CKG)        , intent(in)                    :: mat(:,:)
         type(rfpack_type)   , intent(in)                    :: pack
         type(lowDia_type)   , intent(in)                    :: subset
     end function
@@ -3460,9 +3460,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatMulTraceLog_RFP_XLD_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)                                        :: logMulTrace
-        complex(CKC)        , intent(in)                    :: mat(:,:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG)                                        :: logMulTrace
+        complex(CKG)        , intent(in)                    :: mat(:,:)
         type(rfpack_type)   , intent(in)                    :: pack
         type(lowDia_type)   , intent(in)                    :: subset
     end function
@@ -3473,9 +3473,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatMulTraceLog_RFP_XLD_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)                                        :: logMulTrace
-        complex(CKC)        , intent(in)                    :: mat(:,:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG)                                        :: logMulTrace
+        complex(CKG)        , intent(in)                    :: mat(:,:)
         type(rfpack_type)   , intent(in)                    :: pack
         type(lowDia_type)   , intent(in)                    :: subset
     end function
@@ -3486,9 +3486,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatMulTraceLog_RFP_XLD_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)                                        :: logMulTrace
-        complex(CKC)        , intent(in)                    :: mat(:,:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG)                                        :: logMulTrace
+        complex(CKG)        , intent(in)                    :: mat(:,:)
         type(rfpack_type)   , intent(in)                    :: pack
         type(lowDia_type)   , intent(in)                    :: subset
     end function
@@ -3501,9 +3501,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatMulTraceLog_RFP_XLD_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)                                           :: logMulTrace
-        real(RKC)           , intent(in)                    :: mat(:,:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)                                           :: logMulTrace
+        real(RKG)           , intent(in)                    :: mat(:,:)
         type(rfpack_type)   , intent(in)                    :: pack
         type(lowDia_type)   , intent(in)                    :: subset
     end function
@@ -3514,9 +3514,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatMulTraceLog_RFP_XLD_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)                                           :: logMulTrace
-        real(RKC)           , intent(in)                    :: mat(:,:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)                                           :: logMulTrace
+        real(RKG)           , intent(in)                    :: mat(:,:)
         type(rfpack_type)   , intent(in)                    :: pack
         type(lowDia_type)   , intent(in)                    :: subset
     end function
@@ -3527,9 +3527,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatMulTraceLog_RFP_XLD_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)                                           :: logMulTrace
-        real(RKC)           , intent(in)                    :: mat(:,:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)                                           :: logMulTrace
+        real(RKG)           , intent(in)                    :: mat(:,:)
         type(rfpack_type)   , intent(in)                    :: pack
         type(lowDia_type)   , intent(in)                    :: subset
     end function
@@ -3540,9 +3540,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatMulTraceLog_RFP_XLD_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)                                           :: logMulTrace
-        real(RKC)           , intent(in)                    :: mat(:,:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)                                           :: logMulTrace
+        real(RKG)           , intent(in)                    :: mat(:,:)
         type(rfpack_type)   , intent(in)                    :: pack
         type(lowDia_type)   , intent(in)                    :: subset
     end function
@@ -3553,9 +3553,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatMulTraceLog_RFP_XLD_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)                                           :: logMulTrace
-        real(RKC)           , intent(in)                    :: mat(:,:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)                                           :: logMulTrace
+        real(RKG)           , intent(in)                    :: mat(:,:)
         type(rfpack_type)   , intent(in)                    :: pack
         type(lowDia_type)   , intent(in)                    :: subset
     end function
@@ -3578,9 +3578,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatMulTraceLog_LFP_UXD_IK5
 #endif
-        use pm_kind, only: IKC => IK5
+        use pm_kind, only: IKG => IK5
         real(RKD)                                           :: logMulTrace
-        integer(IKC)        , intent(in)                    :: mat(:)
+        integer(IKG)        , intent(in)                    :: mat(:)
         type(lfpack_type)   , intent(in)                    :: pack
         type(uppDia_type)   , intent(in)                    :: subset
     end function
@@ -3591,9 +3591,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatMulTraceLog_LFP_UXD_IK4
 #endif
-        use pm_kind, only: IKC => IK4
+        use pm_kind, only: IKG => IK4
         real(RKD)                                           :: logMulTrace
-        integer(IKC)        , intent(in)                    :: mat(:)
+        integer(IKG)        , intent(in)                    :: mat(:)
         type(lfpack_type)   , intent(in)                    :: pack
         type(uppDia_type)   , intent(in)                    :: subset
     end function
@@ -3604,9 +3604,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatMulTraceLog_LFP_UXD_IK3
 #endif
-        use pm_kind, only: IKC => IK3
+        use pm_kind, only: IKG => IK3
         real(RKD)                                           :: logMulTrace
-        integer(IKC)        , intent(in)                    :: mat(:)
+        integer(IKG)        , intent(in)                    :: mat(:)
         type(lfpack_type)   , intent(in)                    :: pack
         type(uppDia_type)   , intent(in)                    :: subset
     end function
@@ -3617,9 +3617,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatMulTraceLog_LFP_UXD_IK2
 #endif
-        use pm_kind, only: IKC => IK2
+        use pm_kind, only: IKG => IK2
         real(RKD)                                           :: logMulTrace
-        integer(IKC)        , intent(in)                    :: mat(:)
+        integer(IKG)        , intent(in)                    :: mat(:)
         type(lfpack_type)   , intent(in)                    :: pack
         type(uppDia_type)   , intent(in)                    :: subset
     end function
@@ -3630,9 +3630,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatMulTraceLog_LFP_UXD_IK1
 #endif
-        use pm_kind, only: IKC => IK1
+        use pm_kind, only: IKG => IK1
         real(RKD)                                           :: logMulTrace
-        integer(IKC)        , intent(in)                    :: mat(:)
+        integer(IKG)        , intent(in)                    :: mat(:)
         type(lfpack_type)   , intent(in)                    :: pack
         type(uppDia_type)   , intent(in)                    :: subset
     end function
@@ -3645,9 +3645,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatMulTraceLog_LFP_UXD_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)                                        :: logMulTrace
-        complex(CKC)        , intent(in)                    :: mat(:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG)                                        :: logMulTrace
+        complex(CKG)        , intent(in)                    :: mat(:)
         type(lfpack_type)   , intent(in)                    :: pack
         type(uppDia_type)   , intent(in)                    :: subset
     end function
@@ -3658,9 +3658,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatMulTraceLog_LFP_UXD_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)                                        :: logMulTrace
-        complex(CKC)        , intent(in)                    :: mat(:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG)                                        :: logMulTrace
+        complex(CKG)        , intent(in)                    :: mat(:)
         type(lfpack_type)   , intent(in)                    :: pack
         type(uppDia_type)   , intent(in)                    :: subset
     end function
@@ -3671,9 +3671,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatMulTraceLog_LFP_UXD_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)                                        :: logMulTrace
-        complex(CKC)        , intent(in)                    :: mat(:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG)                                        :: logMulTrace
+        complex(CKG)        , intent(in)                    :: mat(:)
         type(lfpack_type)   , intent(in)                    :: pack
         type(uppDia_type)   , intent(in)                    :: subset
     end function
@@ -3684,9 +3684,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatMulTraceLog_LFP_UXD_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)                                        :: logMulTrace
-        complex(CKC)        , intent(in)                    :: mat(:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG)                                        :: logMulTrace
+        complex(CKG)        , intent(in)                    :: mat(:)
         type(lfpack_type)   , intent(in)                    :: pack
         type(uppDia_type)   , intent(in)                    :: subset
     end function
@@ -3697,9 +3697,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatMulTraceLog_LFP_UXD_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)                                        :: logMulTrace
-        complex(CKC)        , intent(in)                    :: mat(:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG)                                        :: logMulTrace
+        complex(CKG)        , intent(in)                    :: mat(:)
         type(lfpack_type)   , intent(in)                    :: pack
         type(uppDia_type)   , intent(in)                    :: subset
     end function
@@ -3712,9 +3712,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatMulTraceLog_LFP_UXD_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)                                           :: logMulTrace
-        real(RKC)           , intent(in)                    :: mat(:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)                                           :: logMulTrace
+        real(RKG)           , intent(in)                    :: mat(:)
         type(lfpack_type)   , intent(in)                    :: pack
         type(uppDia_type)   , intent(in)                    :: subset
     end function
@@ -3725,9 +3725,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatMulTraceLog_LFP_UXD_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)                                           :: logMulTrace
-        real(RKC)           , intent(in)                    :: mat(:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)                                           :: logMulTrace
+        real(RKG)           , intent(in)                    :: mat(:)
         type(lfpack_type)   , intent(in)                    :: pack
         type(uppDia_type)   , intent(in)                    :: subset
     end function
@@ -3738,9 +3738,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatMulTraceLog_LFP_UXD_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)                                           :: logMulTrace
-        real(RKC)           , intent(in)                    :: mat(:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)                                           :: logMulTrace
+        real(RKG)           , intent(in)                    :: mat(:)
         type(lfpack_type)   , intent(in)                    :: pack
         type(uppDia_type)   , intent(in)                    :: subset
     end function
@@ -3751,9 +3751,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatMulTraceLog_LFP_UXD_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)                                           :: logMulTrace
-        real(RKC)           , intent(in)                    :: mat(:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)                                           :: logMulTrace
+        real(RKG)           , intent(in)                    :: mat(:)
         type(lfpack_type)   , intent(in)                    :: pack
         type(uppDia_type)   , intent(in)                    :: subset
     end function
@@ -3764,9 +3764,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatMulTraceLog_LFP_UXD_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)                                           :: logMulTrace
-        real(RKC)           , intent(in)                    :: mat(:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)                                           :: logMulTrace
+        real(RKG)           , intent(in)                    :: mat(:)
         type(lfpack_type)   , intent(in)                    :: pack
         type(uppDia_type)   , intent(in)                    :: subset
     end function
@@ -3785,9 +3785,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatMulTraceLog_LFP_XLD_IK5
 #endif
-        use pm_kind, only: IKC => IK5
+        use pm_kind, only: IKG => IK5
         real(RKD)                                           :: logMulTrace
-        integer(IKC)        , intent(in)                    :: mat(:)
+        integer(IKG)        , intent(in)                    :: mat(:)
         type(lfpack_type)   , intent(in)                    :: pack
         type(lowDia_type)   , intent(in)                    :: subset
     end function
@@ -3798,9 +3798,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatMulTraceLog_LFP_XLD_IK4
 #endif
-        use pm_kind, only: IKC => IK4
+        use pm_kind, only: IKG => IK4
         real(RKD)                                           :: logMulTrace
-        integer(IKC)        , intent(in)                    :: mat(:)
+        integer(IKG)        , intent(in)                    :: mat(:)
         type(lfpack_type)   , intent(in)                    :: pack
         type(lowDia_type)   , intent(in)                    :: subset
     end function
@@ -3811,9 +3811,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatMulTraceLog_LFP_XLD_IK3
 #endif
-        use pm_kind, only: IKC => IK3
+        use pm_kind, only: IKG => IK3
         real(RKD)                                           :: logMulTrace
-        integer(IKC)        , intent(in)                    :: mat(:)
+        integer(IKG)        , intent(in)                    :: mat(:)
         type(lfpack_type)   , intent(in)                    :: pack
         type(lowDia_type)   , intent(in)                    :: subset
     end function
@@ -3824,9 +3824,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatMulTraceLog_LFP_XLD_IK2
 #endif
-        use pm_kind, only: IKC => IK2
+        use pm_kind, only: IKG => IK2
         real(RKD)                                           :: logMulTrace
-        integer(IKC)        , intent(in)                    :: mat(:)
+        integer(IKG)        , intent(in)                    :: mat(:)
         type(lfpack_type)   , intent(in)                    :: pack
         type(lowDia_type)   , intent(in)                    :: subset
     end function
@@ -3837,9 +3837,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatMulTraceLog_LFP_XLD_IK1
 #endif
-        use pm_kind, only: IKC => IK1
+        use pm_kind, only: IKG => IK1
         real(RKD)                                           :: logMulTrace
-        integer(IKC)        , intent(in)                    :: mat(:)
+        integer(IKG)        , intent(in)                    :: mat(:)
         type(lfpack_type)   , intent(in)                    :: pack
         type(lowDia_type)   , intent(in)                    :: subset
     end function
@@ -3852,9 +3852,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatMulTraceLog_LFP_XLD_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)                                        :: logMulTrace
-        complex(CKC)        , intent(in)                    :: mat(:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG)                                        :: logMulTrace
+        complex(CKG)        , intent(in)                    :: mat(:)
         type(lfpack_type)   , intent(in)                    :: pack
         type(lowDia_type)   , intent(in)                    :: subset
     end function
@@ -3865,9 +3865,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatMulTraceLog_LFP_XLD_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)                                        :: logMulTrace
-        complex(CKC)        , intent(in)                    :: mat(:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG)                                        :: logMulTrace
+        complex(CKG)        , intent(in)                    :: mat(:)
         type(lfpack_type)   , intent(in)                    :: pack
         type(lowDia_type)   , intent(in)                    :: subset
     end function
@@ -3878,9 +3878,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatMulTraceLog_LFP_XLD_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)                                        :: logMulTrace
-        complex(CKC)        , intent(in)                    :: mat(:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG)                                        :: logMulTrace
+        complex(CKG)        , intent(in)                    :: mat(:)
         type(lfpack_type)   , intent(in)                    :: pack
         type(lowDia_type)   , intent(in)                    :: subset
     end function
@@ -3891,9 +3891,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatMulTraceLog_LFP_XLD_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)                                        :: logMulTrace
-        complex(CKC)        , intent(in)                    :: mat(:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG)                                        :: logMulTrace
+        complex(CKG)        , intent(in)                    :: mat(:)
         type(lfpack_type)   , intent(in)                    :: pack
         type(lowDia_type)   , intent(in)                    :: subset
     end function
@@ -3904,9 +3904,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatMulTraceLog_LFP_XLD_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)                                        :: logMulTrace
-        complex(CKC)        , intent(in)                    :: mat(:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG)                                        :: logMulTrace
+        complex(CKG)        , intent(in)                    :: mat(:)
         type(lfpack_type)   , intent(in)                    :: pack
         type(lowDia_type)   , intent(in)                    :: subset
     end function
@@ -3919,9 +3919,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatMulTraceLog_LFP_XLD_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)                                           :: logMulTrace
-        real(RKC)           , intent(in)                    :: mat(:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)                                           :: logMulTrace
+        real(RKG)           , intent(in)                    :: mat(:)
         type(lfpack_type)   , intent(in)                    :: pack
         type(lowDia_type)   , intent(in)                    :: subset
     end function
@@ -3932,9 +3932,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatMulTraceLog_LFP_XLD_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)                                           :: logMulTrace
-        real(RKC)           , intent(in)                    :: mat(:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)                                           :: logMulTrace
+        real(RKG)           , intent(in)                    :: mat(:)
         type(lfpack_type)   , intent(in)                    :: pack
         type(lowDia_type)   , intent(in)                    :: subset
     end function
@@ -3945,9 +3945,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatMulTraceLog_LFP_XLD_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)                                           :: logMulTrace
-        real(RKC)           , intent(in)                    :: mat(:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)                                           :: logMulTrace
+        real(RKG)           , intent(in)                    :: mat(:)
         type(lfpack_type)   , intent(in)                    :: pack
         type(lowDia_type)   , intent(in)                    :: subset
     end function
@@ -3958,9 +3958,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatMulTraceLog_LFP_XLD_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)                                           :: logMulTrace
-        real(RKC)           , intent(in)                    :: mat(:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)                                           :: logMulTrace
+        real(RKG)           , intent(in)                    :: mat(:)
         type(lfpack_type)   , intent(in)                    :: pack
         type(lowDia_type)   , intent(in)                    :: subset
     end function
@@ -3971,9 +3971,9 @@ module pm_matrixTrace
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatMulTraceLog_LFP_XLD_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)                                           :: logMulTrace
-        real(RKC)           , intent(in)                    :: mat(:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)                                           :: logMulTrace
+        real(RKG)           , intent(in)                    :: mat(:)
         type(lfpack_type)   , intent(in)                    :: pack
         type(lowDia_type)   , intent(in)                    :: subset
     end function

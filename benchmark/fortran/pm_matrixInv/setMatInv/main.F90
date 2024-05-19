@@ -1,7 +1,7 @@
 ! Test the performance of Cholesky factorization computation using an assumed-shape interface vs. explicit-shape interface.
 program benchmark
 
-    use pm_kind, only: IK, LK, RKC => RKD, SK
+    use pm_kind, only: IK, LK, RKG => RKD, SK
     use pm_matrixCopy, only: setMatCopy, rdpack, uppDia, lowDia, transHerm
     use pm_distUnif, only: rngx_type => xoshiro256ssw_type
     use pm_arrayResize, only: setResized
@@ -16,11 +16,11 @@ program benchmark
     integer(IK)                         :: fileUnit             !<  The output file unit for benchmark results.
     integer(IK)     , parameter         :: NARR = 10_IK         !<  The number of benchmark array sizes.
     integer(IK)     , allocatable       :: rperm(:)             !<  The permutation vector for LUP factorization.
-    real(RKC)       , allocatable       :: mat(:,:), inv(:,:)   !<  The positive-definite matrix.
+    real(RKG)       , allocatable       :: mat(:,:), inv(:,:)   !<  The positive-definite matrix.
     type(bench_type), allocatable       :: bench(:)             !<  The Benchmark array.
     integer(IK)     , parameter         :: nsim = 2**NARR       !<  The maximum number of calculation repeats.
     integer(IK)                         :: rank                 !<  The benchmarking array size.
-    real(RKC)                           :: dumm
+    real(RKG)                           :: dumm
     type(rngx_type)                     :: rngx
 
     rngx = rngx_type()
@@ -40,14 +40,14 @@ program benchmark
 
         write(fileUnit, "(*(g0,:,','))") "rank", (bench(i)%name, i = 1, size(bench))
 
-        dumm = 0._RKC
+        dumm = 0._RKG
         loopOverMatrixSize: do iarr = 1, NARR
 
             rank = 2**iarr
             ntry = nsim / rank
             call setResized(rperm, rank)
             call setResized(inv, [rank, rank])
-            mat = getUnifRand(1._RKC, 2._RKC, rank, rank + 1_IK)
+            mat = getUnifRand(1._RKG, 2._RKG, rank, rank + 1_IK)
             write(*,"(*(g0,:,' '))") "Benchmarking setMatInv() algorithms with array size", rank, ntry
 
             do i = 1, size(bench)
@@ -76,14 +76,14 @@ contains
     subroutine setMatrix()
         !integer(IK) :: i
         !call random_number(mat)
-        !mat = mat * 1.e-4_RKC
+        !mat = mat * 1.e-4_RKG
         !do i = 1, size(mat, dim = 1, kind = IK)
-        !    mat(i,i+1) = 1._RKC
+        !    mat(i,i+1) = 1._RKG
         !end do
         !use pm_distCov, only: setCovRand
         !call setCovRand(rngx, mat(:,2:rank+1)) ! causes numeric overflow for large matrix ranks.
         use pm_matrixInit, only: setMatInit, uppLowDia
-        call setMatInit(mat(:,2:rank+1), uppLowDia, 0._RKC, 0._RKC, 1._RKC)
+        call setMatInit(mat(:,2:rank+1), uppLowDia, 0._RKG, 0._RKG, 1._RKG)
         dumm = dumm - mat(rank, rank) - mat(rank-1, rank-1)
     end subroutine
 

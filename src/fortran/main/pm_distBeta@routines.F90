@@ -58,35 +58,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getBetaPDF_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_distBeta@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getBetaPDF_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_distBeta@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getBetaPDF_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_distBeta@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getBetaPDF_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_distBeta@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getBetaPDF_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_distBeta@routines.inc.F90"
     end procedure
 #endif
@@ -117,35 +117,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getBetaLogPDFD_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_distBeta@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getBetaLogPDFD_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_distBeta@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getBetaLogPDFD_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_distBeta@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getBetaLogPDFD_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_distBeta@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getBetaLogPDFD_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_distBeta@routines.inc.F90"
     end procedure
 #endif
@@ -168,35 +168,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getBetaLogPDFL_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_distBeta@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getBetaLogPDFL_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_distBeta@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getBetaLogPDFL_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_distBeta@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getBetaLogPDFL_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_distBeta@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getBetaLogPDFL_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_distBeta@routines.inc.F90"
     end procedure
 #endif
@@ -229,35 +229,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setBetaLogPDFD_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_distBeta@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setBetaLogPDFD_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_distBeta@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setBetaLogPDFD_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_distBeta@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setBetaLogPDFD_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_distBeta@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setBetaLogPDFD_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_distBeta@routines.inc.F90"
     end procedure
 #endif
@@ -280,35 +280,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setBetaLogPDFL_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_distBeta@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setBetaLogPDFL_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_distBeta@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setBetaLogPDFL_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_distBeta@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setBetaLogPDFL_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_distBeta@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setBetaLogPDFL_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_distBeta@routines.inc.F90"
     end procedure
 #endif
@@ -339,35 +339,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getBetaCDF_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_distBeta@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getBetaCDF_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_distBeta@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getBetaCDF_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_distBeta@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getBetaCDF_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_distBeta@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getBetaCDF_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_distBeta@routines.inc.F90"
     end procedure
 #endif
@@ -396,35 +396,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setBetaCDF_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_distBeta@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setBetaCDF_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_distBeta@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setBetaCDF_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_distBeta@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setBetaCDF_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_distBeta@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setBetaCDF_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_distBeta@routines.inc.F90"
     end procedure
 #endif
@@ -461,35 +461,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setBetaRandRNGD_D0_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_distBeta@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setBetaRandRNGD_D0_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_distBeta@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setBetaRandRNGD_D0_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_distBeta@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setBetaRandRNGD_D0_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_distBeta@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setBetaRandRNGD_D0_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_distBeta@routines.inc.F90"
     end procedure
 #endif
@@ -512,35 +512,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setBetaRandRNGF_D0_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_distBeta@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setBetaRandRNGF_D0_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_distBeta@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setBetaRandRNGF_D0_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_distBeta@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setBetaRandRNGF_D0_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_distBeta@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setBetaRandRNGF_D0_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_distBeta@routines.inc.F90"
     end procedure
 #endif
@@ -563,35 +563,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setBetaRandRNGX_D0_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_distBeta@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setBetaRandRNGX_D0_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_distBeta@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setBetaRandRNGX_D0_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_distBeta@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setBetaRandRNGX_D0_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_distBeta@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setBetaRandRNGX_D0_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_distBeta@routines.inc.F90"
     end procedure
 #endif
@@ -626,35 +626,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setBetaRandRNGD_D1_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_distBeta@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setBetaRandRNGD_D1_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_distBeta@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setBetaRandRNGD_D1_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_distBeta@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setBetaRandRNGD_D1_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_distBeta@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setBetaRandRNGD_D1_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_distBeta@routines.inc.F90"
     end procedure
 #endif
@@ -677,35 +677,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setBetaRandRNGF_D1_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_distBeta@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setBetaRandRNGF_D1_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_distBeta@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setBetaRandRNGF_D1_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_distBeta@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setBetaRandRNGF_D1_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_distBeta@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setBetaRandRNGF_D1_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_distBeta@routines.inc.F90"
     end procedure
 #endif
@@ -728,35 +728,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setBetaRandRNGX_D1_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_distBeta@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setBetaRandRNGX_D1_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_distBeta@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setBetaRandRNGX_D1_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_distBeta@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setBetaRandRNGX_D1_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_distBeta@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setBetaRandRNGX_D1_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_distBeta@routines.inc.F90"
     end procedure
 #endif

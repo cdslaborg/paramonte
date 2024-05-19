@@ -53,24 +53,24 @@
         integer :: itest
         ! Declare objects.
 #if     D0_ENABLED
-        character(1,SKC)                :: halo
-        character(:,SKC), allocatable   :: Array, array_ref, Core
+        character(1,SKG)                :: halo
+        character(:,SKG), allocatable   :: Array, array_ref, Core
 #else
 #if     SK_ENABLED
-        character(2,SKC)                :: halo
-        character(2,SKC), allocatable   :: &
+        character(2,SKG)                :: halo
+        character(2,SKG), allocatable   :: &
 #elif   IK_ENABLED
-        integer(IKC)                    :: halo
-        integer(IKC)    , allocatable   :: &
+        integer(IKG)                    :: halo
+        integer(IKG)    , allocatable   :: &
 #elif   LK_ENABLED
-        logical(LKC)                    :: halo
-        logical(LKC)    , allocatable   :: &
+        logical(LKG)                    :: halo
+        logical(LKG)    , allocatable   :: &
 #elif   CK_ENABLED
-        complex(CKC)                    :: halo
-        complex(CKC)    , allocatable   :: &
+        complex(CKG)                    :: halo
+        complex(CKG)    , allocatable   :: &
 #elif   RK_ENABLED
-        real(RKC)                       :: halo
-        real(RKC)       , allocatable   :: &
+        real(RKG)                       :: halo
+        real(RKG)       , allocatable   :: &
 #else
 #error "Unrecognized interface."
 #endif
@@ -94,7 +94,7 @@
             call setUnifRand(Csize, 0_IK, Asize)
             ! Allocate `Array`.
 #if         D0_ENABLED
-            allocate(character(Asize,SKC) :: array_ref, Array)
+            allocate(character(Asize,SKG) :: array_ref, Array)
             array_ref(:) = repeat(halo, Asize)
 #elif       D1_ENABLED
             allocate(array_ref(Asize), Array(Asize), source = halo)
@@ -107,7 +107,7 @@
 #endif
             ! Allocate `Core`.
 #if         Arr_ENABLED && D0_ENABLED
-            allocate(character(Csize,SKC) :: Core)
+            allocate(character(Csize,SKG) :: Core)
 #elif       Arr_ENABLED && D1_ENABLED
             allocate(Core(Csize))
 #elif       Arr_ENABLED && D2_ENABLED
@@ -142,7 +142,7 @@
             call setUnifRand(Csize, 0_IK, Asize)
             ! Allocate `Array`.
 #if         D0_ENABLED
-            allocate(character(Asize,SKC) :: array_ref, Array)
+            allocate(character(Asize,SKG) :: array_ref, Array)
             array_ref(:) = repeat(halo, Asize)
 #elif       D1_ENABLED
             allocate(array_ref(Asize), Array(Asize), source = halo)
@@ -155,7 +155,7 @@
 #endif
             ! Allocate `Core`.
 #if         Arr_ENABLED && D0_ENABLED
-            allocate(character(Csize,SKC) :: Core)
+            allocate(character(Csize,SKG) :: Core)
 #elif       Arr_ENABLED && D1_ENABLED
             allocate(Core(Csize))
 #elif       Arr_ENABLED && D2_ENABLED

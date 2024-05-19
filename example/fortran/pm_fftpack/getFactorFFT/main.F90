@@ -14,13 +14,13 @@ program example
     disp = display_type(file = "main.out.F90")
 
     block
-        use pm_kind, only: TKC => CKS
-        complex(TKC), allocatable :: coef(:)
+        use pm_kind, only: TKG => CKS
+        complex(TKG), allocatable :: coef(:)
         call disp%skip()
         call disp%show("allocate(coef(13))")
                         allocate(coef(13))
-        call disp%show("factor = getfactorFFT(getFilled((0._TKC, 0._TKC), size(coef, 1, IK)), coef)")
-                        factor = getfactorFFT(getFilled((0._TKC, 0._TKC), size(coef, 1, IK)), coef)
+        call disp%show("factor = getfactorFFT(getFilled((0._TKG, 0._TKG), size(coef, 1, IK)), coef)")
+                        factor = getfactorFFT(getFilled((0._TKG, 0._TKG), size(coef, 1, IK)), coef)
         call disp%show("factor")
         call disp%show( factor )
         call disp%show("coef")
@@ -31,13 +31,13 @@ program example
     end block
 
     block
-        use pm_kind, only: TKC => RKS
-        real(TKC), allocatable :: coef(:)
+        use pm_kind, only: TKG => RKS
+        real(TKG), allocatable :: coef(:)
         call disp%skip()
         call disp%show("allocate(coef(13))")
                         allocate(coef(13))
-        call disp%show("factor = getfactorFFT(getFilled(0._TKC, size(coef, 1, IK)), coef)")
-                        factor = getfactorFFT(getFilled(0._TKC, size(coef, 1, IK)), coef)
+        call disp%show("factor = getfactorFFT(getFilled(0._TKG, size(coef, 1, IK)), coef)")
+                        factor = getfactorFFT(getFilled(0._TKG, size(coef, 1, IK)), coef)
         call disp%show("factor")
         call disp%show( factor )
         call disp%show("coef")
@@ -48,13 +48,13 @@ program example
     end block
 
     block
-        use pm_kind, only: TKC => RKS
-        real(TKC), allocatable :: coef(:)
+        use pm_kind, only: TKG => RKS
+        real(TKG), allocatable :: coef(:)
         call disp%skip()
         call disp%show("allocate(coef(273))")
                         allocate(coef(273))
-        call disp%show("factor = getfactorFFT(getFilled(0._TKC, size(coef, 1, IK)), coef)")
-                        factor = getfactorFFT(getFilled(0._TKC, size(coef, 1, IK)), coef)
+        call disp%show("factor = getfactorFFT(getFilled(0._TKG, size(coef, 1, IK)), coef)")
+                        factor = getfactorFFT(getFilled(0._TKG, size(coef, 1, IK)), coef)
         call disp%show("factor")
         call disp%show( factor )
         call disp%show("coef")

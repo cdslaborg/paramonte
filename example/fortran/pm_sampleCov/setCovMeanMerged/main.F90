@@ -1,7 +1,7 @@
 program example
 
     use pm_kind, only: SK, IK
-    use pm_kind, only: TKC => RKS ! All other real types are also supported.
+    use pm_kind, only: TKG => RKS ! All other real types are also supported.
     use pm_sampleCov, only: getCov
     use pm_sampleMean, only: getMean
     use pm_sampleCov, only: uppDia, lowDia
@@ -28,8 +28,8 @@ program example
     call disp%skip()
 
     block
-        real(TKC), allocatable :: mean(:,:), cov(:,:,:), meanMerged(:), covMerged(:,:)
-        real(TKC), allocatable :: sample(:,:)
+        real(TKG), allocatable :: mean(:,:), cov(:,:,:), meanMerged(:), covMerged(:,:)
+        real(TKG), allocatable :: sample(:,:)
         do itry = 1, ntry
             call disp%skip()
             call disp%show("dim = 2; lb(1) = 1; ub(1) = getUnifRand(2, 7)")
@@ -76,16 +76,16 @@ program example
                                 cov(:,:,isam) = getCov(sample(:,lb(isam):ub(isam)), dim)
                                 mean(:,isam) = getMean(sample(:,lb(isam):ub(isam)), dim)
                             end do
-            call disp%show("call setCovMeanMerged(covMerged, meanMerged, cov(:,:,2), mean(:,2), cov(:,:,1), mean(:,1), real(ub(1), TKC) / real(ub(2), TKC), uppDia)")
-                            call setCovMeanMerged(covMerged, meanMerged, cov(:,:,2), mean(:,2), cov(:,:,1), mean(:,1), real(ub(1), TKC) / real(ub(2), TKC), uppDia)
+            call disp%show("call setCovMeanMerged(covMerged, meanMerged, cov(:,:,2), mean(:,2), cov(:,:,1), mean(:,1), real(ub(1), TKG) / real(ub(2), TKG), uppDia)")
+                            call setCovMeanMerged(covMerged, meanMerged, cov(:,:,2), mean(:,2), cov(:,:,1), mean(:,1), real(ub(1), TKG) / real(ub(2), TKG), uppDia)
             call disp%show("covMerged")
             call disp%show( covMerged )
-            call disp%show("call setCovMeanMerged(covMerged, meanMerged, cov(:,:,2), mean(:,2), cov(:,:,1), mean(:,1), real(ub(1), TKC) / real(ub(2), TKC), lowDia)")
-                            call setCovMeanMerged(covMerged, meanMerged, cov(:,:,2), mean(:,2), cov(:,:,1), mean(:,1), real(ub(1), TKC) / real(ub(2), TKC), lowDia)
+            call disp%show("call setCovMeanMerged(covMerged, meanMerged, cov(:,:,2), mean(:,2), cov(:,:,1), mean(:,1), real(ub(1), TKG) / real(ub(2), TKG), lowDia)")
+                            call setCovMeanMerged(covMerged, meanMerged, cov(:,:,2), mean(:,2), cov(:,:,1), mean(:,1), real(ub(1), TKG) / real(ub(2), TKG), lowDia)
             call disp%show("covMerged")
             call disp%show( covMerged )
-            call disp%show("call setCovMeanMerged(cov(:,:,2), mean(:,2), cov(:,:,1), mean(:,1), real(ub(1), TKC) / real(ub(2), TKC), uppDia)")
-                            call setCovMeanMerged(cov(:,:,2), mean(:,2), cov(:,:,1), mean(:,1), real(ub(1), TKC) / real(ub(2), TKC), uppDia)
+            call disp%show("call setCovMeanMerged(cov(:,:,2), mean(:,2), cov(:,:,1), mean(:,1), real(ub(1), TKG) / real(ub(2), TKG), uppDia)")
+                            call setCovMeanMerged(cov(:,:,2), mean(:,2), cov(:,:,1), mean(:,1), real(ub(1), TKG) / real(ub(2), TKG), uppDia)
             call disp%show("cov(:,:,2)")
             call disp%show( cov(:,:,2) )
             call disp%show("cov(:,:,0) ! reference")
@@ -101,8 +101,8 @@ program example
     call disp%skip()
 
     block
-        real(TKC), allocatable :: mean(:,:), cov(:,:,:), meanMerged(:), covMerged(:,:)
-        real(TKC), allocatable :: sample(:,:)
+        real(TKG), allocatable :: mean(:,:), cov(:,:,:), meanMerged(:), covMerged(:,:)
+        real(TKG), allocatable :: sample(:,:)
         do itry = 1, ntry
             call disp%skip()
             call disp%show("dim = 2; lb(1) = 1; ub(1) = getUnifRand(2, 7)")
@@ -153,16 +153,16 @@ program example
                                 cov(:,:,isam) = getCov(sample(:,lb(isam):ub(isam)), dim, iweight(lb(isam):ub(isam)))
                                 mean(:,isam) = getMean(sample(:,lb(isam):ub(isam)), dim, iweight(lb(isam):ub(isam)))
                             end do
-            call disp%show("call setCovMeanMerged(covMerged, meanMerged, cov(:,:,2), mean(:,2), cov(:,:,1), mean(:,1), real(sum(iweight(:ub(1))), TKC) / real(sum(iweight), TKC), uppDia)")
-                            call setCovMeanMerged(covMerged, meanMerged, cov(:,:,2), mean(:,2), cov(:,:,1), mean(:,1), real(sum(iweight(:ub(1))), TKC) / real(sum(iweight), TKC), uppDia)
+            call disp%show("call setCovMeanMerged(covMerged, meanMerged, cov(:,:,2), mean(:,2), cov(:,:,1), mean(:,1), real(sum(iweight(:ub(1))), TKG) / real(sum(iweight), TKG), uppDia)")
+                            call setCovMeanMerged(covMerged, meanMerged, cov(:,:,2), mean(:,2), cov(:,:,1), mean(:,1), real(sum(iweight(:ub(1))), TKG) / real(sum(iweight), TKG), uppDia)
             call disp%show("covMerged")
             call disp%show( covMerged )
-            call disp%show("call setCovMeanMerged(covMerged, meanMerged, cov(:,:,2), mean(:,2), cov(:,:,1), mean(:,1), real(sum(iweight(:ub(1))), TKC) / real(sum(iweight), TKC), lowDia)")
-                            call setCovMeanMerged(covMerged, meanMerged, cov(:,:,2), mean(:,2), cov(:,:,1), mean(:,1), real(sum(iweight(:ub(1))), TKC) / real(sum(iweight), TKC), lowDia)
+            call disp%show("call setCovMeanMerged(covMerged, meanMerged, cov(:,:,2), mean(:,2), cov(:,:,1), mean(:,1), real(sum(iweight(:ub(1))), TKG) / real(sum(iweight), TKG), lowDia)")
+                            call setCovMeanMerged(covMerged, meanMerged, cov(:,:,2), mean(:,2), cov(:,:,1), mean(:,1), real(sum(iweight(:ub(1))), TKG) / real(sum(iweight), TKG), lowDia)
             call disp%show("covMerged")
             call disp%show( covMerged )
-            call disp%show("call setCovMeanMerged(cov(:,:,2), mean(:,2), cov(:,:,1), mean(:,1), real(sum(iweight(:ub(1))), TKC) / real(sum(iweight), TKC), uppDia)")
-                            call setCovMeanMerged(cov(:,:,2), mean(:,2), cov(:,:,1), mean(:,1), real(sum(iweight(:ub(1))), TKC) / real(sum(iweight), TKC), uppDia)
+            call disp%show("call setCovMeanMerged(cov(:,:,2), mean(:,2), cov(:,:,1), mean(:,1), real(sum(iweight(:ub(1))), TKG) / real(sum(iweight), TKG), uppDia)")
+                            call setCovMeanMerged(cov(:,:,2), mean(:,2), cov(:,:,1), mean(:,1), real(sum(iweight(:ub(1))), TKG) / real(sum(iweight), TKG), uppDia)
             call disp%show("cov(:,:,2)")
             call disp%show( cov(:,:,2) )
             call disp%show("cov(:,:,0) ! reference")
@@ -178,9 +178,9 @@ program example
     call disp%skip()
 
     block
-        real(TKC), allocatable :: mean(:,:), cov(:,:,:), meanMerged(:), covMerged(:,:)
-        real(TKC), allocatable :: sample(:,:)
-        real(TKC), allocatable :: rweight(:)
+        real(TKG), allocatable :: mean(:,:), cov(:,:,:), meanMerged(:), covMerged(:,:)
+        real(TKG), allocatable :: sample(:,:)
+        real(TKG), allocatable :: rweight(:)
         do itry = 1, ntry
             call disp%skip()
             call disp%show("dim = 2; lb(1) = 1; ub(1) = getUnifRand(2, 7)")
@@ -231,16 +231,16 @@ program example
                                 cov(:,:,isam) = getCov(sample(:,lb(isam):ub(isam)), 2_IK, rweight(lb(isam):ub(isam)))
                                 mean(:,isam) = getMean(sample(:,lb(isam):ub(isam)), 2_IK, rweight(lb(isam):ub(isam)))
                             end do
-            call disp%show("call setCovMeanMerged(covMerged, meanMerged, cov(:,:,2), mean(:,2), cov(:,:,1), mean(:,1), real(sum(rweight(:ub(1))), TKC) / real(sum(rweight), TKC), uppDia)")
-                            call setCovMeanMerged(covMerged, meanMerged, cov(:,:,2), mean(:,2), cov(:,:,1), mean(:,1), real(sum(rweight(:ub(1))), TKC) / real(sum(rweight), TKC), uppDia)
+            call disp%show("call setCovMeanMerged(covMerged, meanMerged, cov(:,:,2), mean(:,2), cov(:,:,1), mean(:,1), real(sum(rweight(:ub(1))), TKG) / real(sum(rweight), TKG), uppDia)")
+                            call setCovMeanMerged(covMerged, meanMerged, cov(:,:,2), mean(:,2), cov(:,:,1), mean(:,1), real(sum(rweight(:ub(1))), TKG) / real(sum(rweight), TKG), uppDia)
             call disp%show("covMerged")
             call disp%show( covMerged )
-            call disp%show("call setCovMeanMerged(covMerged, meanMerged, cov(:,:,2), mean(:,2), cov(:,:,1), mean(:,1), real(sum(rweight(:ub(1))), TKC) / real(sum(rweight), TKC), lowDia)")
-                            call setCovMeanMerged(covMerged, meanMerged, cov(:,:,2), mean(:,2), cov(:,:,1), mean(:,1), real(sum(rweight(:ub(1))), TKC) / real(sum(rweight), TKC), lowDia)
+            call disp%show("call setCovMeanMerged(covMerged, meanMerged, cov(:,:,2), mean(:,2), cov(:,:,1), mean(:,1), real(sum(rweight(:ub(1))), TKG) / real(sum(rweight), TKG), lowDia)")
+                            call setCovMeanMerged(covMerged, meanMerged, cov(:,:,2), mean(:,2), cov(:,:,1), mean(:,1), real(sum(rweight(:ub(1))), TKG) / real(sum(rweight), TKG), lowDia)
             call disp%show("covMerged")
             call disp%show( covMerged )
-            call disp%show("call setCovMeanMerged(cov(:,:,2), mean(:,2), cov(:,:,1), mean(:,1), real(sum(rweight(:ub(1))), TKC) / real(sum(rweight), TKC), uppDia)")
-                            call setCovMeanMerged(cov(:,:,2), mean(:,2), cov(:,:,1), mean(:,1), real(sum(rweight(:ub(1))), TKC) / real(sum(rweight), TKC), uppDia)
+            call disp%show("call setCovMeanMerged(cov(:,:,2), mean(:,2), cov(:,:,1), mean(:,1), real(sum(rweight(:ub(1))), TKG) / real(sum(rweight), TKG), uppDia)")
+                            call setCovMeanMerged(cov(:,:,2), mean(:,2), cov(:,:,1), mean(:,1), real(sum(rweight(:ub(1))), TKG) / real(sum(rweight), TKG), uppDia)
             call disp%show("cov(:,:,2)")
             call disp%show( cov(:,:,2) )
             call disp%show("cov(:,:,0) ! reference")

@@ -2,7 +2,7 @@
 program benchmark
 
     use iso_fortran_env, only: error_unit
-    use pm_kind, only: IK, LK, RKC => RK, RK, SK
+    use pm_kind, only: IK, LK, RKG => RK, RK, SK
     use pm_arraySpace, only: setLogSpace
     use pm_bench, only: bench_type
 
@@ -13,19 +13,19 @@ program benchmark
     integer(IK)                         :: fileUnit                         !<  The output file unit for benchmark results.
     integer(IK)     , parameter         :: NPNT = 20_IK                     !<  The number of benchmark points.
     integer(IK)     , parameter         :: NBENCH = 2_IK                    !<  The number of benchmark procedures.
-    real(RKC)       , parameter         :: kappa = 1._RKC                   !<  The kappa parameter of the Gamma function.
-    real(RKC)       , parameter         :: logGammaKappa = log_gamma(kappa) !<  The log_gamma(kappa).
-   !real(RKC)       , parameter         :: TOL = 1000 * epsilon(0._RKC)     !<  The tolerance.
-    real(RKC)                           :: Point(NPNT)                      !<  The benchmark array.
-    real(RKC)                           :: dummy = 0._RKC                   !<  The dummy computation to prevent the compiler from doing aggressive optimizations.
-    real(RKC)                           :: gammaInc                         !<  The incomplete gamma function.
+    real(RKG)       , parameter         :: kappa = 1._RKG                   !<  The kappa parameter of the Gamma function.
+    real(RKG)       , parameter         :: logGammaKappa = log_gamma(kappa) !<  The log_gamma(kappa).
+   !real(RKG)       , parameter         :: TOL = 1000 * epsilon(0._RKG)     !<  The tolerance.
+    real(RKG)                           :: Point(NPNT)                      !<  The benchmark array.
+    real(RKG)                           :: dummy = 0._RKG                   !<  The dummy computation to prevent the compiler from doing aggressive optimizations.
+    real(RKG)                           :: gammaInc                         !<  The incomplete gamma function.
     integer(IK)                         :: info                           !<  The logical convergence failure check.
     type(bench_type)                    :: bench(NBENCH)                    !<  The Benchmark array.
 
     bench(1) = bench_type(name = SK_"setGammaIncLowSeries", exec = setGammaIncLowSeries , overhead = setOverhead)
     bench(2) = bench_type(name = SK_"setGammaIncUppContFrac", exec = setGammaIncUppContFrac , overhead = setOverhead)
 
-    call setLogSpace(Point, logx1 = log(0.04_RKC), logx2 = log(100._RKC))
+    call setLogSpace(Point, logx1 = log(0.04_RKG), logx2 = log(100._RKG))
 
 
     write(*,"(*(g0,:,' '))")

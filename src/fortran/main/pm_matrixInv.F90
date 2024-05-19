@@ -368,9 +368,9 @@ module pm_matrixInv
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatInvDef_IMP_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)        , intent(in)    , contiguous    :: mat(:,:)
-        complex(CKC)                                        :: inv(size(mat, 1, IK), size(mat, 2, IK))
+        use pm_kind, only: CKG => CK5
+        complex(CKG)        , intent(in)    , contiguous    :: mat(:,:)
+        complex(CKG)                                        :: inv(size(mat, 1, IK), size(mat, 2, IK))
     end function
 #endif
 
@@ -379,9 +379,9 @@ module pm_matrixInv
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatInvDef_IMP_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)        , intent(in)    , contiguous    :: mat(:,:)
-        complex(CKC)                                        :: inv(size(mat, 1, IK), size(mat, 2, IK))
+        use pm_kind, only: CKG => CK4
+        complex(CKG)        , intent(in)    , contiguous    :: mat(:,:)
+        complex(CKG)                                        :: inv(size(mat, 1, IK), size(mat, 2, IK))
     end function
 #endif
 
@@ -390,9 +390,9 @@ module pm_matrixInv
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatInvDef_IMP_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)        , intent(in)    , contiguous    :: mat(:,:)
-        complex(CKC)                                        :: inv(size(mat, 1, IK), size(mat, 2, IK))
+        use pm_kind, only: CKG => CK3
+        complex(CKG)        , intent(in)    , contiguous    :: mat(:,:)
+        complex(CKG)                                        :: inv(size(mat, 1, IK), size(mat, 2, IK))
     end function
 #endif
 
@@ -401,9 +401,9 @@ module pm_matrixInv
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatInvDef_IMP_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)        , intent(in)    , contiguous    :: mat(:,:)
-        complex(CKC)                                        :: inv(size(mat, 1, IK), size(mat, 2, IK))
+        use pm_kind, only: CKG => CK2
+        complex(CKG)        , intent(in)    , contiguous    :: mat(:,:)
+        complex(CKG)                                        :: inv(size(mat, 1, IK), size(mat, 2, IK))
     end function
 #endif
 
@@ -412,9 +412,9 @@ module pm_matrixInv
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatInvDef_IMP_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)        , intent(in)    , contiguous    :: mat(:,:)
-        complex(CKC)                                        :: inv(size(mat, 1, IK), size(mat, 2, IK))
+        use pm_kind, only: CKG => CK1
+        complex(CKG)        , intent(in)    , contiguous    :: mat(:,:)
+        complex(CKG)                                        :: inv(size(mat, 1, IK), size(mat, 2, IK))
     end function
 #endif
 
@@ -425,9 +425,9 @@ module pm_matrixInv
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatInvDef_IMP_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)           , intent(in)    , contiguous    :: mat(:,:)
-        real(RKC)                                           :: inv(size(mat, 1, IK), size(mat, 2, IK))
+        use pm_kind, only: RKG => RK5
+        real(RKG)           , intent(in)    , contiguous    :: mat(:,:)
+        real(RKG)                                           :: inv(size(mat, 1, IK), size(mat, 2, IK))
     end function
 #endif
 
@@ -436,9 +436,9 @@ module pm_matrixInv
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatInvDef_IMP_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)           , intent(in)    , contiguous    :: mat(:,:)
-        real(RKC)                                           :: inv(size(mat, 1, IK), size(mat, 2, IK))
+        use pm_kind, only: RKG => RK4
+        real(RKG)           , intent(in)    , contiguous    :: mat(:,:)
+        real(RKG)                                           :: inv(size(mat, 1, IK), size(mat, 2, IK))
     end function
 #endif
 
@@ -447,9 +447,9 @@ module pm_matrixInv
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatInvDef_IMP_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)           , intent(in)    , contiguous    :: mat(:,:)
-        real(RKC)                                           :: inv(size(mat, 1, IK), size(mat, 2, IK))
+        use pm_kind, only: RKG => RK3
+        real(RKG)           , intent(in)    , contiguous    :: mat(:,:)
+        real(RKG)                                           :: inv(size(mat, 1, IK), size(mat, 2, IK))
     end function
 #endif
 
@@ -458,9 +458,9 @@ module pm_matrixInv
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatInvDef_IMP_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)           , intent(in)    , contiguous    :: mat(:,:)
-        real(RKC)                                           :: inv(size(mat, 1, IK), size(mat, 2, IK))
+        use pm_kind, only: RKG => RK2
+        real(RKG)           , intent(in)    , contiguous    :: mat(:,:)
+        real(RKG)                                           :: inv(size(mat, 1, IK), size(mat, 2, IK))
     end function
 #endif
 
@@ -469,9 +469,9 @@ module pm_matrixInv
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatInvDef_IMP_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)           , intent(in)    , contiguous    :: mat(:,:)
-        real(RKC)                                           :: inv(size(mat, 1, IK), size(mat, 2, IK))
+        use pm_kind, only: RKG => RK1
+        real(RKG)           , intent(in)    , contiguous    :: mat(:,:)
+        real(RKG)                                           :: inv(size(mat, 1, IK), size(mat, 2, IK))
     end function
 #endif
 
@@ -490,10 +490,10 @@ module pm_matrixInv
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatInvDet_IMP_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)        , intent(in)    , contiguous    :: mat(:,:)
-        complex(CKC)        , intent(out)                   :: auxil
-        complex(CKC)                                        :: inv(size(mat, 1, IK), size(mat, 2, IK))
+        use pm_kind, only: CKG => CK5
+        complex(CKG)        , intent(in)    , contiguous    :: mat(:,:)
+        complex(CKG)        , intent(out)                   :: auxil
+        complex(CKG)                                        :: inv(size(mat, 1, IK), size(mat, 2, IK))
     end function
 #endif
 
@@ -502,10 +502,10 @@ module pm_matrixInv
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatInvDet_IMP_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)        , intent(in)    , contiguous    :: mat(:,:)
-        complex(CKC)        , intent(out)                   :: auxil
-        complex(CKC)                                        :: inv(size(mat, 1, IK), size(mat, 2, IK))
+        use pm_kind, only: CKG => CK4
+        complex(CKG)        , intent(in)    , contiguous    :: mat(:,:)
+        complex(CKG)        , intent(out)                   :: auxil
+        complex(CKG)                                        :: inv(size(mat, 1, IK), size(mat, 2, IK))
     end function
 #endif
 
@@ -514,10 +514,10 @@ module pm_matrixInv
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatInvDet_IMP_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)        , intent(in)    , contiguous    :: mat(:,:)
-        complex(CKC)        , intent(out)                   :: auxil
-        complex(CKC)                                        :: inv(size(mat, 1, IK), size(mat, 2, IK))
+        use pm_kind, only: CKG => CK3
+        complex(CKG)        , intent(in)    , contiguous    :: mat(:,:)
+        complex(CKG)        , intent(out)                   :: auxil
+        complex(CKG)                                        :: inv(size(mat, 1, IK), size(mat, 2, IK))
     end function
 #endif
 
@@ -526,10 +526,10 @@ module pm_matrixInv
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatInvDet_IMP_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)        , intent(in)    , contiguous    :: mat(:,:)
-        complex(CKC)        , intent(out)                   :: auxil
-        complex(CKC)                                        :: inv(size(mat, 1, IK), size(mat, 2, IK))
+        use pm_kind, only: CKG => CK2
+        complex(CKG)        , intent(in)    , contiguous    :: mat(:,:)
+        complex(CKG)        , intent(out)                   :: auxil
+        complex(CKG)                                        :: inv(size(mat, 1, IK), size(mat, 2, IK))
     end function
 #endif
 
@@ -538,10 +538,10 @@ module pm_matrixInv
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatInvDet_IMP_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)        , intent(in)    , contiguous    :: mat(:,:)
-        complex(CKC)        , intent(out)                   :: auxil
-        complex(CKC)                                        :: inv(size(mat, 1, IK), size(mat, 2, IK))
+        use pm_kind, only: CKG => CK1
+        complex(CKG)        , intent(in)    , contiguous    :: mat(:,:)
+        complex(CKG)        , intent(out)                   :: auxil
+        complex(CKG)                                        :: inv(size(mat, 1, IK), size(mat, 2, IK))
     end function
 #endif
 
@@ -552,10 +552,10 @@ module pm_matrixInv
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatInvDet_IMP_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)           , intent(in)    , contiguous    :: mat(:,:)
-        real(RKC)           , intent(out)                   :: auxil
-        real(RKC)                                           :: inv(size(mat, 1, IK), size(mat, 2, IK))
+        use pm_kind, only: RKG => RK5
+        real(RKG)           , intent(in)    , contiguous    :: mat(:,:)
+        real(RKG)           , intent(out)                   :: auxil
+        real(RKG)                                           :: inv(size(mat, 1, IK), size(mat, 2, IK))
     end function
 #endif
 
@@ -564,10 +564,10 @@ module pm_matrixInv
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatInvDet_IMP_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)           , intent(in)    , contiguous    :: mat(:,:)
-        real(RKC)           , intent(out)                   :: auxil
-        real(RKC)                                           :: inv(size(mat, 1, IK), size(mat, 2, IK))
+        use pm_kind, only: RKG => RK4
+        real(RKG)           , intent(in)    , contiguous    :: mat(:,:)
+        real(RKG)           , intent(out)                   :: auxil
+        real(RKG)                                           :: inv(size(mat, 1, IK), size(mat, 2, IK))
     end function
 #endif
 
@@ -576,10 +576,10 @@ module pm_matrixInv
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatInvDet_IMP_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)           , intent(in)    , contiguous    :: mat(:,:)
-        real(RKC)           , intent(out)                   :: auxil
-        real(RKC)                                           :: inv(size(mat, 1, IK), size(mat, 2, IK))
+        use pm_kind, only: RKG => RK3
+        real(RKG)           , intent(in)    , contiguous    :: mat(:,:)
+        real(RKG)           , intent(out)                   :: auxil
+        real(RKG)                                           :: inv(size(mat, 1, IK), size(mat, 2, IK))
     end function
 #endif
 
@@ -588,10 +588,10 @@ module pm_matrixInv
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatInvDet_IMP_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)           , intent(in)    , contiguous    :: mat(:,:)
-        real(RKC)           , intent(out)                   :: auxil
-        real(RKC)                                           :: inv(size(mat, 1, IK), size(mat, 2, IK))
+        use pm_kind, only: RKG => RK2
+        real(RKG)           , intent(in)    , contiguous    :: mat(:,:)
+        real(RKG)           , intent(out)                   :: auxil
+        real(RKG)                                           :: inv(size(mat, 1, IK), size(mat, 2, IK))
     end function
 #endif
 
@@ -600,10 +600,10 @@ module pm_matrixInv
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatInvDet_IMP_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)           , intent(in)    , contiguous    :: mat(:,:)
-        real(RKC)           , intent(out)                   :: auxil
-        real(RKC)                                           :: inv(size(mat, 1, IK), size(mat, 2, IK))
+        use pm_kind, only: RKG => RK1
+        real(RKG)           , intent(in)    , contiguous    :: mat(:,:)
+        real(RKG)           , intent(out)                   :: auxil
+        real(RKG)                                           :: inv(size(mat, 1, IK), size(mat, 2, IK))
     end function
 #endif
 
@@ -622,9 +622,9 @@ module pm_matrixInv
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatInvInf_IMP_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)        , intent(in)    , contiguous    :: mat(:,:)
-        complex(CKC)                                        :: inv(size(mat, 1, IK), size(mat, 2, IK))
+        use pm_kind, only: CKG => CK5
+        complex(CKG)        , intent(in)    , contiguous    :: mat(:,:)
+        complex(CKG)                                        :: inv(size(mat, 1, IK), size(mat, 2, IK))
         integer(IK)         , intent(out)                   :: auxil
     end function
 #endif
@@ -634,9 +634,9 @@ module pm_matrixInv
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatInvInf_IMP_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)        , intent(in)    , contiguous    :: mat(:,:)
-        complex(CKC)                                        :: inv(size(mat, 1, IK), size(mat, 2, IK))
+        use pm_kind, only: CKG => CK4
+        complex(CKG)        , intent(in)    , contiguous    :: mat(:,:)
+        complex(CKG)                                        :: inv(size(mat, 1, IK), size(mat, 2, IK))
         integer(IK)         , intent(out)                   :: auxil
     end function
 #endif
@@ -646,9 +646,9 @@ module pm_matrixInv
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatInvInf_IMP_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)        , intent(in)    , contiguous    :: mat(:,:)
-        complex(CKC)                                        :: inv(size(mat, 1, IK), size(mat, 2, IK))
+        use pm_kind, only: CKG => CK3
+        complex(CKG)        , intent(in)    , contiguous    :: mat(:,:)
+        complex(CKG)                                        :: inv(size(mat, 1, IK), size(mat, 2, IK))
         integer(IK)         , intent(out)                   :: auxil
     end function
 #endif
@@ -658,9 +658,9 @@ module pm_matrixInv
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatInvInf_IMP_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)        , intent(in)    , contiguous    :: mat(:,:)
-        complex(CKC)                                        :: inv(size(mat, 1, IK), size(mat, 2, IK))
+        use pm_kind, only: CKG => CK2
+        complex(CKG)        , intent(in)    , contiguous    :: mat(:,:)
+        complex(CKG)                                        :: inv(size(mat, 1, IK), size(mat, 2, IK))
         integer(IK)         , intent(out)                   :: auxil
     end function
 #endif
@@ -670,9 +670,9 @@ module pm_matrixInv
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatInvInf_IMP_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)        , intent(in)    , contiguous    :: mat(:,:)
-        complex(CKC)                                        :: inv(size(mat, 1, IK), size(mat, 2, IK))
+        use pm_kind, only: CKG => CK1
+        complex(CKG)        , intent(in)    , contiguous    :: mat(:,:)
+        complex(CKG)                                        :: inv(size(mat, 1, IK), size(mat, 2, IK))
         integer(IK)         , intent(out)                   :: auxil
     end function
 #endif
@@ -684,9 +684,9 @@ module pm_matrixInv
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatInvInf_IMP_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)           , intent(in)    , contiguous    :: mat(:,:)
-        real(RKC)                                           :: inv(size(mat, 1, IK), size(mat, 2, IK))
+        use pm_kind, only: RKG => RK5
+        real(RKG)           , intent(in)    , contiguous    :: mat(:,:)
+        real(RKG)                                           :: inv(size(mat, 1, IK), size(mat, 2, IK))
         integer(IK)         , intent(out)                   :: auxil
     end function
 #endif
@@ -696,9 +696,9 @@ module pm_matrixInv
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatInvInf_IMP_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)           , intent(in)    , contiguous    :: mat(:,:)
-        real(RKC)                                           :: inv(size(mat, 1, IK), size(mat, 2, IK))
+        use pm_kind, only: RKG => RK4
+        real(RKG)           , intent(in)    , contiguous    :: mat(:,:)
+        real(RKG)                                           :: inv(size(mat, 1, IK), size(mat, 2, IK))
         integer(IK)         , intent(out)                   :: auxil
     end function
 #endif
@@ -708,9 +708,9 @@ module pm_matrixInv
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatInvInf_IMP_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)           , intent(in)    , contiguous    :: mat(:,:)
-        real(RKC)                                           :: inv(size(mat, 1, IK), size(mat, 2, IK))
+        use pm_kind, only: RKG => RK3
+        real(RKG)           , intent(in)    , contiguous    :: mat(:,:)
+        real(RKG)                                           :: inv(size(mat, 1, IK), size(mat, 2, IK))
         integer(IK)         , intent(out)                   :: auxil
     end function
 #endif
@@ -720,9 +720,9 @@ module pm_matrixInv
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatInvInf_IMP_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)           , intent(in)    , contiguous    :: mat(:,:)
-        real(RKC)                                           :: inv(size(mat, 1, IK), size(mat, 2, IK))
+        use pm_kind, only: RKG => RK2
+        real(RKG)           , intent(in)    , contiguous    :: mat(:,:)
+        real(RKG)                                           :: inv(size(mat, 1, IK), size(mat, 2, IK))
         integer(IK)         , intent(out)                   :: auxil
     end function
 #endif
@@ -732,9 +732,9 @@ module pm_matrixInv
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatInvInf_IMP_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)           , intent(in)    , contiguous    :: mat(:,:)
-        real(RKC)                                           :: inv(size(mat, 1, IK), size(mat, 2, IK))
+        use pm_kind, only: RKG => RK1
+        real(RKG)           , intent(in)    , contiguous    :: mat(:,:)
+        real(RKG)                                           :: inv(size(mat, 1, IK), size(mat, 2, IK))
         integer(IK)         , intent(out)                   :: auxil
     end function
 #endif
@@ -754,9 +754,9 @@ module pm_matrixInv
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatInvCUD_IMP_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)        , intent(in)    , contiguous    :: mat(:,:)
-        complex(CKC)                                        :: inv(size(mat, 1, IK), size(mat, 2, IK))
+        use pm_kind, only: CKG => CK5
+        complex(CKG)        , intent(in)    , contiguous    :: mat(:,:)
+        complex(CKG)                                        :: inv(size(mat, 1, IK), size(mat, 2, IK))
         type(upperDiag_type), intent(in)                    :: auxil
     end function
 #endif
@@ -766,9 +766,9 @@ module pm_matrixInv
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatInvCUD_IMP_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)        , intent(in)    , contiguous    :: mat(:,:)
-        complex(CKC)                                        :: inv(size(mat, 1, IK), size(mat, 2, IK))
+        use pm_kind, only: CKG => CK4
+        complex(CKG)        , intent(in)    , contiguous    :: mat(:,:)
+        complex(CKG)                                        :: inv(size(mat, 1, IK), size(mat, 2, IK))
         type(upperDiag_type), intent(in)                    :: auxil
     end function
 #endif
@@ -778,9 +778,9 @@ module pm_matrixInv
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatInvCUD_IMP_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)        , intent(in)    , contiguous    :: mat(:,:)
-        complex(CKC)                                        :: inv(size(mat, 1, IK), size(mat, 2, IK))
+        use pm_kind, only: CKG => CK3
+        complex(CKG)        , intent(in)    , contiguous    :: mat(:,:)
+        complex(CKG)                                        :: inv(size(mat, 1, IK), size(mat, 2, IK))
         type(upperDiag_type), intent(in)                    :: auxil
     end function
 #endif
@@ -790,9 +790,9 @@ module pm_matrixInv
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatInvCUD_IMP_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)        , intent(in)    , contiguous    :: mat(:,:)
-        complex(CKC)                                        :: inv(size(mat, 1, IK), size(mat, 2, IK))
+        use pm_kind, only: CKG => CK2
+        complex(CKG)        , intent(in)    , contiguous    :: mat(:,:)
+        complex(CKG)                                        :: inv(size(mat, 1, IK), size(mat, 2, IK))
         type(upperDiag_type), intent(in)                    :: auxil
     end function
 #endif
@@ -802,9 +802,9 @@ module pm_matrixInv
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatInvCUD_IMP_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)        , intent(in)    , contiguous    :: mat(:,:)
-        complex(CKC)                                        :: inv(size(mat, 1, IK), size(mat, 2, IK))
+        use pm_kind, only: CKG => CK1
+        complex(CKG)        , intent(in)    , contiguous    :: mat(:,:)
+        complex(CKG)                                        :: inv(size(mat, 1, IK), size(mat, 2, IK))
         type(upperDiag_type), intent(in)                    :: auxil
     end function
 #endif
@@ -816,9 +816,9 @@ module pm_matrixInv
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatInvCUD_IMP_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)           , intent(in)    , contiguous    :: mat(:,:)
-        real(RKC)                                           :: inv(size(mat, 1, IK), size(mat, 2, IK))
+        use pm_kind, only: RKG => RK5
+        real(RKG)           , intent(in)    , contiguous    :: mat(:,:)
+        real(RKG)                                           :: inv(size(mat, 1, IK), size(mat, 2, IK))
         type(upperDiag_type), intent(in)                    :: auxil
     end function
 #endif
@@ -828,9 +828,9 @@ module pm_matrixInv
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatInvCUD_IMP_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)           , intent(in)    , contiguous    :: mat(:,:)
-        real(RKC)                                           :: inv(size(mat, 1, IK), size(mat, 2, IK))
+        use pm_kind, only: RKG => RK4
+        real(RKG)           , intent(in)    , contiguous    :: mat(:,:)
+        real(RKG)                                           :: inv(size(mat, 1, IK), size(mat, 2, IK))
         type(upperDiag_type), intent(in)                    :: auxil
     end function
 #endif
@@ -840,9 +840,9 @@ module pm_matrixInv
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatInvCUD_IMP_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)           , intent(in)    , contiguous    :: mat(:,:)
-        real(RKC)                                           :: inv(size(mat, 1, IK), size(mat, 2, IK))
+        use pm_kind, only: RKG => RK3
+        real(RKG)           , intent(in)    , contiguous    :: mat(:,:)
+        real(RKG)                                           :: inv(size(mat, 1, IK), size(mat, 2, IK))
         type(upperDiag_type), intent(in)                    :: auxil
     end function
 #endif
@@ -852,9 +852,9 @@ module pm_matrixInv
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatInvCUD_IMP_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)           , intent(in)    , contiguous    :: mat(:,:)
-        real(RKC)                                           :: inv(size(mat, 1, IK), size(mat, 2, IK))
+        use pm_kind, only: RKG => RK2
+        real(RKG)           , intent(in)    , contiguous    :: mat(:,:)
+        real(RKG)                                           :: inv(size(mat, 1, IK), size(mat, 2, IK))
         type(upperDiag_type), intent(in)                    :: auxil
     end function
 #endif
@@ -864,9 +864,9 @@ module pm_matrixInv
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatInvCUD_IMP_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)           , intent(in)    , contiguous    :: mat(:,:)
-        real(RKC)                                           :: inv(size(mat, 1, IK), size(mat, 2, IK))
+        use pm_kind, only: RKG => RK1
+        real(RKG)           , intent(in)    , contiguous    :: mat(:,:)
+        real(RKG)                                           :: inv(size(mat, 1, IK), size(mat, 2, IK))
         type(upperDiag_type), intent(in)                    :: auxil
     end function
 #endif
@@ -886,9 +886,9 @@ module pm_matrixInv
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatInvCLD_IMP_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)        , intent(in)    , contiguous    :: mat(:,:)
-        complex(CKC)                                        :: inv(size(mat, 1, IK), size(mat, 2, IK))
+        use pm_kind, only: CKG => CK5
+        complex(CKG)        , intent(in)    , contiguous    :: mat(:,:)
+        complex(CKG)                                        :: inv(size(mat, 1, IK), size(mat, 2, IK))
         type(lowerDiag_type), intent(in)                    :: auxil
     end function
 #endif
@@ -898,9 +898,9 @@ module pm_matrixInv
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatInvCLD_IMP_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)        , intent(in)    , contiguous    :: mat(:,:)
-        complex(CKC)                                        :: inv(size(mat, 1, IK), size(mat, 2, IK))
+        use pm_kind, only: CKG => CK4
+        complex(CKG)        , intent(in)    , contiguous    :: mat(:,:)
+        complex(CKG)                                        :: inv(size(mat, 1, IK), size(mat, 2, IK))
         type(lowerDiag_type), intent(in)                    :: auxil
     end function
 #endif
@@ -910,9 +910,9 @@ module pm_matrixInv
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatInvCLD_IMP_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)        , intent(in)    , contiguous    :: mat(:,:)
-        complex(CKC)                                        :: inv(size(mat, 1, IK), size(mat, 2, IK))
+        use pm_kind, only: CKG => CK3
+        complex(CKG)        , intent(in)    , contiguous    :: mat(:,:)
+        complex(CKG)                                        :: inv(size(mat, 1, IK), size(mat, 2, IK))
         type(lowerDiag_type), intent(in)                    :: auxil
     end function
 #endif
@@ -922,9 +922,9 @@ module pm_matrixInv
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatInvCLD_IMP_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)        , intent(in)    , contiguous    :: mat(:,:)
-        complex(CKC)                                        :: inv(size(mat, 1, IK), size(mat, 2, IK))
+        use pm_kind, only: CKG => CK2
+        complex(CKG)        , intent(in)    , contiguous    :: mat(:,:)
+        complex(CKG)                                        :: inv(size(mat, 1, IK), size(mat, 2, IK))
         type(lowerDiag_type), intent(in)                    :: auxil
     end function
 #endif
@@ -934,9 +934,9 @@ module pm_matrixInv
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatInvCLD_IMP_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)        , intent(in)    , contiguous    :: mat(:,:)
-        complex(CKC)                                        :: inv(size(mat, 1, IK), size(mat, 2, IK))
+        use pm_kind, only: CKG => CK1
+        complex(CKG)        , intent(in)    , contiguous    :: mat(:,:)
+        complex(CKG)                                        :: inv(size(mat, 1, IK), size(mat, 2, IK))
         type(lowerDiag_type), intent(in)                    :: auxil
     end function
 #endif
@@ -948,9 +948,9 @@ module pm_matrixInv
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatInvCLD_IMP_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)           , intent(in)    , contiguous    :: mat(:,:)
-        real(RKC)                                           :: inv(size(mat, 1, IK), size(mat, 2, IK))
+        use pm_kind, only: RKG => RK5
+        real(RKG)           , intent(in)    , contiguous    :: mat(:,:)
+        real(RKG)                                           :: inv(size(mat, 1, IK), size(mat, 2, IK))
         type(lowerDiag_type), intent(in)                    :: auxil
     end function
 #endif
@@ -960,9 +960,9 @@ module pm_matrixInv
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatInvCLD_IMP_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)           , intent(in)    , contiguous    :: mat(:,:)
-        real(RKC)                                           :: inv(size(mat, 1, IK), size(mat, 2, IK))
+        use pm_kind, only: RKG => RK4
+        real(RKG)           , intent(in)    , contiguous    :: mat(:,:)
+        real(RKG)                                           :: inv(size(mat, 1, IK), size(mat, 2, IK))
         type(lowerDiag_type), intent(in)                    :: auxil
     end function
 #endif
@@ -972,9 +972,9 @@ module pm_matrixInv
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatInvCLD_IMP_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)           , intent(in)    , contiguous    :: mat(:,:)
-        real(RKC)                                           :: inv(size(mat, 1, IK), size(mat, 2, IK))
+        use pm_kind, only: RKG => RK3
+        real(RKG)           , intent(in)    , contiguous    :: mat(:,:)
+        real(RKG)                                           :: inv(size(mat, 1, IK), size(mat, 2, IK))
         type(lowerDiag_type), intent(in)                    :: auxil
     end function
 #endif
@@ -984,9 +984,9 @@ module pm_matrixInv
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatInvCLD_IMP_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)           , intent(in)    , contiguous    :: mat(:,:)
-        real(RKC)                                           :: inv(size(mat, 1, IK), size(mat, 2, IK))
+        use pm_kind, only: RKG => RK2
+        real(RKG)           , intent(in)    , contiguous    :: mat(:,:)
+        real(RKG)                                           :: inv(size(mat, 1, IK), size(mat, 2, IK))
         type(lowerDiag_type), intent(in)                    :: auxil
     end function
 #endif
@@ -996,9 +996,9 @@ module pm_matrixInv
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatInvCLD_IMP_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)           , intent(in)    , contiguous    :: mat(:,:)
-        real(RKC)                                           :: inv(size(mat, 1, IK), size(mat, 2, IK))
+        use pm_kind, only: RKG => RK1
+        real(RKG)           , intent(in)    , contiguous    :: mat(:,:)
+        real(RKG)                                           :: inv(size(mat, 1, IK), size(mat, 2, IK))
         type(lowerDiag_type), intent(in)                    :: auxil
     end function
 #endif
@@ -1018,9 +1018,9 @@ module pm_matrixInv
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatInvCUU_IMP_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)        , intent(in)    , contiguous    :: mat(:,:)
-        complex(CKC)                                        :: inv(size(mat, 1, IK), size(mat, 2, IK))
+        use pm_kind, only: CKG => CK5
+        complex(CKG)        , intent(in)    , contiguous    :: mat(:,:)
+        complex(CKG)                                        :: inv(size(mat, 1, IK), size(mat, 2, IK))
         type(upperUnit_type), intent(in)                    :: auxil
     end function
 #endif
@@ -1030,9 +1030,9 @@ module pm_matrixInv
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatInvCUU_IMP_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)        , intent(in)    , contiguous    :: mat(:,:)
-        complex(CKC)                                        :: inv(size(mat, 1, IK), size(mat, 2, IK))
+        use pm_kind, only: CKG => CK4
+        complex(CKG)        , intent(in)    , contiguous    :: mat(:,:)
+        complex(CKG)                                        :: inv(size(mat, 1, IK), size(mat, 2, IK))
         type(upperUnit_type), intent(in)                    :: auxil
     end function
 #endif
@@ -1042,9 +1042,9 @@ module pm_matrixInv
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatInvCUU_IMP_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)        , intent(in)    , contiguous    :: mat(:,:)
-        complex(CKC)                                        :: inv(size(mat, 1, IK), size(mat, 2, IK))
+        use pm_kind, only: CKG => CK3
+        complex(CKG)        , intent(in)    , contiguous    :: mat(:,:)
+        complex(CKG)                                        :: inv(size(mat, 1, IK), size(mat, 2, IK))
         type(upperUnit_type), intent(in)                    :: auxil
     end function
 #endif
@@ -1054,9 +1054,9 @@ module pm_matrixInv
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatInvCUU_IMP_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)        , intent(in)    , contiguous    :: mat(:,:)
-        complex(CKC)                                        :: inv(size(mat, 1, IK), size(mat, 2, IK))
+        use pm_kind, only: CKG => CK2
+        complex(CKG)        , intent(in)    , contiguous    :: mat(:,:)
+        complex(CKG)                                        :: inv(size(mat, 1, IK), size(mat, 2, IK))
         type(upperUnit_type), intent(in)                    :: auxil
     end function
 #endif
@@ -1066,9 +1066,9 @@ module pm_matrixInv
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatInvCUU_IMP_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)        , intent(in)    , contiguous    :: mat(:,:)
-        complex(CKC)                                        :: inv(size(mat, 1, IK), size(mat, 2, IK))
+        use pm_kind, only: CKG => CK1
+        complex(CKG)        , intent(in)    , contiguous    :: mat(:,:)
+        complex(CKG)                                        :: inv(size(mat, 1, IK), size(mat, 2, IK))
         type(upperUnit_type), intent(in)                    :: auxil
     end function
 #endif
@@ -1080,9 +1080,9 @@ module pm_matrixInv
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatInvCUU_IMP_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)           , intent(in)    , contiguous    :: mat(:,:)
-        real(RKC)                                           :: inv(size(mat, 1, IK), size(mat, 2, IK))
+        use pm_kind, only: RKG => RK5
+        real(RKG)           , intent(in)    , contiguous    :: mat(:,:)
+        real(RKG)                                           :: inv(size(mat, 1, IK), size(mat, 2, IK))
         type(upperUnit_type), intent(in)                    :: auxil
     end function
 #endif
@@ -1092,9 +1092,9 @@ module pm_matrixInv
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatInvCUU_IMP_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)           , intent(in)    , contiguous    :: mat(:,:)
-        real(RKC)                                           :: inv(size(mat, 1, IK), size(mat, 2, IK))
+        use pm_kind, only: RKG => RK4
+        real(RKG)           , intent(in)    , contiguous    :: mat(:,:)
+        real(RKG)                                           :: inv(size(mat, 1, IK), size(mat, 2, IK))
         type(upperUnit_type), intent(in)                    :: auxil
     end function
 #endif
@@ -1104,9 +1104,9 @@ module pm_matrixInv
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatInvCUU_IMP_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)           , intent(in)    , contiguous    :: mat(:,:)
-        real(RKC)                                           :: inv(size(mat, 1, IK), size(mat, 2, IK))
+        use pm_kind, only: RKG => RK3
+        real(RKG)           , intent(in)    , contiguous    :: mat(:,:)
+        real(RKG)                                           :: inv(size(mat, 1, IK), size(mat, 2, IK))
         type(upperUnit_type), intent(in)                    :: auxil
     end function
 #endif
@@ -1116,9 +1116,9 @@ module pm_matrixInv
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatInvCUU_IMP_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)           , intent(in)    , contiguous    :: mat(:,:)
-        real(RKC)                                           :: inv(size(mat, 1, IK), size(mat, 2, IK))
+        use pm_kind, only: RKG => RK2
+        real(RKG)           , intent(in)    , contiguous    :: mat(:,:)
+        real(RKG)                                           :: inv(size(mat, 1, IK), size(mat, 2, IK))
         type(upperUnit_type), intent(in)                    :: auxil
     end function
 #endif
@@ -1128,9 +1128,9 @@ module pm_matrixInv
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatInvCUU_IMP_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)           , intent(in)    , contiguous    :: mat(:,:)
-        real(RKC)                                           :: inv(size(mat, 1, IK), size(mat, 2, IK))
+        use pm_kind, only: RKG => RK1
+        real(RKG)           , intent(in)    , contiguous    :: mat(:,:)
+        real(RKG)                                           :: inv(size(mat, 1, IK), size(mat, 2, IK))
         type(upperUnit_type), intent(in)                    :: auxil
     end function
 #endif
@@ -1150,9 +1150,9 @@ module pm_matrixInv
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatInvCLU_IMP_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)        , intent(in)    , contiguous    :: mat(:,:)
-        complex(CKC)                                        :: inv(size(mat, 1, IK), size(mat, 2, IK))
+        use pm_kind, only: CKG => CK5
+        complex(CKG)        , intent(in)    , contiguous    :: mat(:,:)
+        complex(CKG)                                        :: inv(size(mat, 1, IK), size(mat, 2, IK))
         type(lowerUnit_type), intent(in)                    :: auxil
     end function
 #endif
@@ -1162,9 +1162,9 @@ module pm_matrixInv
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatInvCLU_IMP_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)        , intent(in)    , contiguous    :: mat(:,:)
-        complex(CKC)                                        :: inv(size(mat, 1, IK), size(mat, 2, IK))
+        use pm_kind, only: CKG => CK4
+        complex(CKG)        , intent(in)    , contiguous    :: mat(:,:)
+        complex(CKG)                                        :: inv(size(mat, 1, IK), size(mat, 2, IK))
         type(lowerUnit_type), intent(in)                    :: auxil
     end function
 #endif
@@ -1174,9 +1174,9 @@ module pm_matrixInv
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatInvCLU_IMP_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)        , intent(in)    , contiguous    :: mat(:,:)
-        complex(CKC)                                        :: inv(size(mat, 1, IK), size(mat, 2, IK))
+        use pm_kind, only: CKG => CK3
+        complex(CKG)        , intent(in)    , contiguous    :: mat(:,:)
+        complex(CKG)                                        :: inv(size(mat, 1, IK), size(mat, 2, IK))
         type(lowerUnit_type), intent(in)                    :: auxil
     end function
 #endif
@@ -1186,9 +1186,9 @@ module pm_matrixInv
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatInvCLU_IMP_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)        , intent(in)    , contiguous    :: mat(:,:)
-        complex(CKC)                                        :: inv(size(mat, 1, IK), size(mat, 2, IK))
+        use pm_kind, only: CKG => CK2
+        complex(CKG)        , intent(in)    , contiguous    :: mat(:,:)
+        complex(CKG)                                        :: inv(size(mat, 1, IK), size(mat, 2, IK))
         type(lowerUnit_type), intent(in)                    :: auxil
     end function
 #endif
@@ -1198,9 +1198,9 @@ module pm_matrixInv
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatInvCLU_IMP_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)        , intent(in)    , contiguous    :: mat(:,:)
-        complex(CKC)                                        :: inv(size(mat, 1, IK), size(mat, 2, IK))
+        use pm_kind, only: CKG => CK1
+        complex(CKG)        , intent(in)    , contiguous    :: mat(:,:)
+        complex(CKG)                                        :: inv(size(mat, 1, IK), size(mat, 2, IK))
         type(lowerUnit_type), intent(in)                    :: auxil
     end function
 #endif
@@ -1212,9 +1212,9 @@ module pm_matrixInv
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatInvCLU_IMP_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)           , intent(in)    , contiguous    :: mat(:,:)
-        real(RKC)                                           :: inv(size(mat, 1, IK), size(mat, 2, IK))
+        use pm_kind, only: RKG => RK5
+        real(RKG)           , intent(in)    , contiguous    :: mat(:,:)
+        real(RKG)                                           :: inv(size(mat, 1, IK), size(mat, 2, IK))
         type(lowerUnit_type), intent(in)                    :: auxil
     end function
 #endif
@@ -1224,9 +1224,9 @@ module pm_matrixInv
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatInvCLU_IMP_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)           , intent(in)    , contiguous    :: mat(:,:)
-        real(RKC)                                           :: inv(size(mat, 1, IK), size(mat, 2, IK))
+        use pm_kind, only: RKG => RK4
+        real(RKG)           , intent(in)    , contiguous    :: mat(:,:)
+        real(RKG)                                           :: inv(size(mat, 1, IK), size(mat, 2, IK))
         type(lowerUnit_type), intent(in)                    :: auxil
     end function
 #endif
@@ -1236,9 +1236,9 @@ module pm_matrixInv
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatInvCLU_IMP_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)           , intent(in)    , contiguous    :: mat(:,:)
-        real(RKC)                                           :: inv(size(mat, 1, IK), size(mat, 2, IK))
+        use pm_kind, only: RKG => RK3
+        real(RKG)           , intent(in)    , contiguous    :: mat(:,:)
+        real(RKG)                                           :: inv(size(mat, 1, IK), size(mat, 2, IK))
         type(lowerUnit_type), intent(in)                    :: auxil
     end function
 #endif
@@ -1248,9 +1248,9 @@ module pm_matrixInv
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatInvCLU_IMP_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)           , intent(in)    , contiguous    :: mat(:,:)
-        real(RKC)                                           :: inv(size(mat, 1, IK), size(mat, 2, IK))
+        use pm_kind, only: RKG => RK2
+        real(RKG)           , intent(in)    , contiguous    :: mat(:,:)
+        real(RKG)                                           :: inv(size(mat, 1, IK), size(mat, 2, IK))
         type(lowerUnit_type), intent(in)                    :: auxil
     end function
 #endif
@@ -1260,9 +1260,9 @@ module pm_matrixInv
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatInvCLU_IMP_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)           , intent(in)    , contiguous    :: mat(:,:)
-        real(RKC)                                           :: inv(size(mat, 1, IK), size(mat, 2, IK))
+        use pm_kind, only: RKG => RK1
+        real(RKG)           , intent(in)    , contiguous    :: mat(:,:)
+        real(RKG)                                           :: inv(size(mat, 1, IK), size(mat, 2, IK))
         type(lowerUnit_type), intent(in)                    :: auxil
     end function
 #endif
@@ -1282,9 +1282,9 @@ module pm_matrixInv
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatInvLUP_IMP_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)        , intent(in)    , contiguous    :: mat(:,:)
-        complex(CKC)                                        :: inv(size(mat, 1, IK), size(mat, 2, IK))
+        use pm_kind, only: CKG => CK5
+        complex(CKG)        , intent(in)    , contiguous    :: mat(:,:)
+        complex(CKG)                                        :: inv(size(mat, 1, IK), size(mat, 2, IK))
         integer(IK)         , intent(in)    , contiguous    :: auxil(:)
     end function
 #endif
@@ -1294,9 +1294,9 @@ module pm_matrixInv
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatInvLUP_IMP_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)        , intent(in)    , contiguous    :: mat(:,:)
-        complex(CKC)                                        :: inv(size(mat, 1, IK), size(mat, 2, IK))
+        use pm_kind, only: CKG => CK4
+        complex(CKG)        , intent(in)    , contiguous    :: mat(:,:)
+        complex(CKG)                                        :: inv(size(mat, 1, IK), size(mat, 2, IK))
         integer(IK)         , intent(in)    , contiguous    :: auxil(:)
     end function
 #endif
@@ -1306,9 +1306,9 @@ module pm_matrixInv
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatInvLUP_IMP_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)        , intent(in)    , contiguous    :: mat(:,:)
-        complex(CKC)                                        :: inv(size(mat, 1, IK), size(mat, 2, IK))
+        use pm_kind, only: CKG => CK3
+        complex(CKG)        , intent(in)    , contiguous    :: mat(:,:)
+        complex(CKG)                                        :: inv(size(mat, 1, IK), size(mat, 2, IK))
         integer(IK)         , intent(in)    , contiguous    :: auxil(:)
     end function
 #endif
@@ -1318,9 +1318,9 @@ module pm_matrixInv
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatInvLUP_IMP_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)        , intent(in)    , contiguous    :: mat(:,:)
-        complex(CKC)                                        :: inv(size(mat, 1, IK), size(mat, 2, IK))
+        use pm_kind, only: CKG => CK2
+        complex(CKG)        , intent(in)    , contiguous    :: mat(:,:)
+        complex(CKG)                                        :: inv(size(mat, 1, IK), size(mat, 2, IK))
         integer(IK)         , intent(in)    , contiguous    :: auxil(:)
     end function
 #endif
@@ -1330,9 +1330,9 @@ module pm_matrixInv
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatInvLUP_IMP_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)        , intent(in)    , contiguous    :: mat(:,:)
-        complex(CKC)                                        :: inv(size(mat, 1, IK), size(mat, 2, IK))
+        use pm_kind, only: CKG => CK1
+        complex(CKG)        , intent(in)    , contiguous    :: mat(:,:)
+        complex(CKG)                                        :: inv(size(mat, 1, IK), size(mat, 2, IK))
         integer(IK)         , intent(in)    , contiguous    :: auxil(:)
     end function
 #endif
@@ -1344,9 +1344,9 @@ module pm_matrixInv
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatInvLUP_IMP_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)           , intent(in)    , contiguous    :: mat(:,:)
-        real(RKC)                                           :: inv(size(mat, 1, IK), size(mat, 2, IK))
+        use pm_kind, only: RKG => RK5
+        real(RKG)           , intent(in)    , contiguous    :: mat(:,:)
+        real(RKG)                                           :: inv(size(mat, 1, IK), size(mat, 2, IK))
         integer(IK)         , intent(in)    , contiguous    :: auxil(:)
     end function
 #endif
@@ -1356,9 +1356,9 @@ module pm_matrixInv
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatInvLUP_IMP_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)           , intent(in)    , contiguous    :: mat(:,:)
-        real(RKC)                                           :: inv(size(mat, 1, IK), size(mat, 2, IK))
+        use pm_kind, only: RKG => RK4
+        real(RKG)           , intent(in)    , contiguous    :: mat(:,:)
+        real(RKG)                                           :: inv(size(mat, 1, IK), size(mat, 2, IK))
         integer(IK)         , intent(in)    , contiguous    :: auxil(:)
     end function
 #endif
@@ -1368,9 +1368,9 @@ module pm_matrixInv
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatInvLUP_IMP_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)           , intent(in)    , contiguous    :: mat(:,:)
-        real(RKC)                                           :: inv(size(mat, 1, IK), size(mat, 2, IK))
+        use pm_kind, only: RKG => RK3
+        real(RKG)           , intent(in)    , contiguous    :: mat(:,:)
+        real(RKG)                                           :: inv(size(mat, 1, IK), size(mat, 2, IK))
         integer(IK)         , intent(in)    , contiguous    :: auxil(:)
     end function
 #endif
@@ -1380,9 +1380,9 @@ module pm_matrixInv
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatInvLUP_IMP_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)           , intent(in)    , contiguous    :: mat(:,:)
-        real(RKC)                                           :: inv(size(mat, 1, IK), size(mat, 2, IK))
+        use pm_kind, only: RKG => RK2
+        real(RKG)           , intent(in)    , contiguous    :: mat(:,:)
+        real(RKG)                                           :: inv(size(mat, 1, IK), size(mat, 2, IK))
         integer(IK)         , intent(in)    , contiguous    :: auxil(:)
     end function
 #endif
@@ -1392,9 +1392,9 @@ module pm_matrixInv
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatInvLUP_IMP_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)           , intent(in)    , contiguous    :: mat(:,:)
-        real(RKC)                                           :: inv(size(mat, 1, IK), size(mat, 2, IK))
+        use pm_kind, only: RKG => RK1
+        real(RKG)           , intent(in)    , contiguous    :: mat(:,:)
+        real(RKG)                                           :: inv(size(mat, 1, IK), size(mat, 2, IK))
         integer(IK)         , intent(in)    , contiguous    :: auxil(:)
     end function
 #endif
@@ -1414,9 +1414,9 @@ module pm_matrixInv
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatInvCCU_IMP_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)        , intent(in)    , contiguous    :: mat(:,:)
-        complex(CKC)                                        :: inv(size(mat, 1, IK), size(mat, 2, IK))
+        use pm_kind, only: CKG => CK5
+        complex(CKG)        , intent(in)    , contiguous    :: mat(:,:)
+        complex(CKG)                                        :: inv(size(mat, 1, IK), size(mat, 2, IK))
         type(choUpp_type)   , intent(in)                    :: auxil
     end function
 #endif
@@ -1426,9 +1426,9 @@ module pm_matrixInv
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatInvCCU_IMP_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)        , intent(in)    , contiguous    :: mat(:,:)
-        complex(CKC)                                        :: inv(size(mat, 1, IK), size(mat, 2, IK))
+        use pm_kind, only: CKG => CK4
+        complex(CKG)        , intent(in)    , contiguous    :: mat(:,:)
+        complex(CKG)                                        :: inv(size(mat, 1, IK), size(mat, 2, IK))
         type(choUpp_type)   , intent(in)                    :: auxil
     end function
 #endif
@@ -1438,9 +1438,9 @@ module pm_matrixInv
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatInvCCU_IMP_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)        , intent(in)    , contiguous    :: mat(:,:)
-        complex(CKC)                                        :: inv(size(mat, 1, IK), size(mat, 2, IK))
+        use pm_kind, only: CKG => CK3
+        complex(CKG)        , intent(in)    , contiguous    :: mat(:,:)
+        complex(CKG)                                        :: inv(size(mat, 1, IK), size(mat, 2, IK))
         type(choUpp_type)   , intent(in)                    :: auxil
     end function
 #endif
@@ -1450,9 +1450,9 @@ module pm_matrixInv
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatInvCCU_IMP_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)        , intent(in)    , contiguous    :: mat(:,:)
-        complex(CKC)                                        :: inv(size(mat, 1, IK), size(mat, 2, IK))
+        use pm_kind, only: CKG => CK2
+        complex(CKG)        , intent(in)    , contiguous    :: mat(:,:)
+        complex(CKG)                                        :: inv(size(mat, 1, IK), size(mat, 2, IK))
         type(choUpp_type)   , intent(in)                    :: auxil
     end function
 #endif
@@ -1462,9 +1462,9 @@ module pm_matrixInv
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatInvCCU_IMP_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)        , intent(in)    , contiguous    :: mat(:,:)
-        complex(CKC)                                        :: inv(size(mat, 1, IK), size(mat, 2, IK))
+        use pm_kind, only: CKG => CK1
+        complex(CKG)        , intent(in)    , contiguous    :: mat(:,:)
+        complex(CKG)                                        :: inv(size(mat, 1, IK), size(mat, 2, IK))
         type(choUpp_type)   , intent(in)                    :: auxil
     end function
 #endif
@@ -1476,9 +1476,9 @@ module pm_matrixInv
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatInvCCU_IMP_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)           , intent(in)    , contiguous    :: mat(:,:)
-        real(RKC)                                           :: inv(size(mat, 1, IK), size(mat, 2, IK))
+        use pm_kind, only: RKG => RK5
+        real(RKG)           , intent(in)    , contiguous    :: mat(:,:)
+        real(RKG)                                           :: inv(size(mat, 1, IK), size(mat, 2, IK))
         type(choUpp_type)   , intent(in)                    :: auxil
     end function
 #endif
@@ -1488,9 +1488,9 @@ module pm_matrixInv
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatInvCCU_IMP_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)           , intent(in)    , contiguous    :: mat(:,:)
-        real(RKC)                                           :: inv(size(mat, 1, IK), size(mat, 2, IK))
+        use pm_kind, only: RKG => RK4
+        real(RKG)           , intent(in)    , contiguous    :: mat(:,:)
+        real(RKG)                                           :: inv(size(mat, 1, IK), size(mat, 2, IK))
         type(choUpp_type)   , intent(in)                    :: auxil
     end function
 #endif
@@ -1500,9 +1500,9 @@ module pm_matrixInv
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatInvCCU_IMP_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)           , intent(in)    , contiguous    :: mat(:,:)
-        real(RKC)                                           :: inv(size(mat, 1, IK), size(mat, 2, IK))
+        use pm_kind, only: RKG => RK3
+        real(RKG)           , intent(in)    , contiguous    :: mat(:,:)
+        real(RKG)                                           :: inv(size(mat, 1, IK), size(mat, 2, IK))
         type(choUpp_type)   , intent(in)                    :: auxil
     end function
 #endif
@@ -1512,9 +1512,9 @@ module pm_matrixInv
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatInvCCU_IMP_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)           , intent(in)    , contiguous    :: mat(:,:)
-        real(RKC)                                           :: inv(size(mat, 1, IK), size(mat, 2, IK))
+        use pm_kind, only: RKG => RK2
+        real(RKG)           , intent(in)    , contiguous    :: mat(:,:)
+        real(RKG)                                           :: inv(size(mat, 1, IK), size(mat, 2, IK))
         type(choUpp_type)   , intent(in)                    :: auxil
     end function
 #endif
@@ -1524,9 +1524,9 @@ module pm_matrixInv
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatInvCCU_IMP_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)           , intent(in)    , contiguous    :: mat(:,:)
-        real(RKC)                                           :: inv(size(mat, 1, IK), size(mat, 2, IK))
+        use pm_kind, only: RKG => RK1
+        real(RKG)           , intent(in)    , contiguous    :: mat(:,:)
+        real(RKG)                                           :: inv(size(mat, 1, IK), size(mat, 2, IK))
         type(choUpp_type)   , intent(in)                    :: auxil
     end function
 #endif
@@ -1546,9 +1546,9 @@ module pm_matrixInv
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatInvCCL_IMP_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)        , intent(in)    , contiguous    :: mat(:,:)
-        complex(CKC)                                        :: inv(size(mat, 1, IK), size(mat, 2, IK))
+        use pm_kind, only: CKG => CK5
+        complex(CKG)        , intent(in)    , contiguous    :: mat(:,:)
+        complex(CKG)                                        :: inv(size(mat, 1, IK), size(mat, 2, IK))
         type(choLow_type)   , intent(in)                    :: auxil
     end function
 #endif
@@ -1558,9 +1558,9 @@ module pm_matrixInv
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatInvCCL_IMP_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)        , intent(in)    , contiguous    :: mat(:,:)
-        complex(CKC)                                        :: inv(size(mat, 1, IK), size(mat, 2, IK))
+        use pm_kind, only: CKG => CK4
+        complex(CKG)        , intent(in)    , contiguous    :: mat(:,:)
+        complex(CKG)                                        :: inv(size(mat, 1, IK), size(mat, 2, IK))
         type(choLow_type)   , intent(in)                    :: auxil
     end function
 #endif
@@ -1570,9 +1570,9 @@ module pm_matrixInv
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatInvCCL_IMP_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)        , intent(in)    , contiguous    :: mat(:,:)
-        complex(CKC)                                        :: inv(size(mat, 1, IK), size(mat, 2, IK))
+        use pm_kind, only: CKG => CK3
+        complex(CKG)        , intent(in)    , contiguous    :: mat(:,:)
+        complex(CKG)                                        :: inv(size(mat, 1, IK), size(mat, 2, IK))
         type(choLow_type)   , intent(in)                    :: auxil
     end function
 #endif
@@ -1582,9 +1582,9 @@ module pm_matrixInv
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatInvCCL_IMP_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)        , intent(in)    , contiguous    :: mat(:,:)
-        complex(CKC)                                        :: inv(size(mat, 1, IK), size(mat, 2, IK))
+        use pm_kind, only: CKG => CK2
+        complex(CKG)        , intent(in)    , contiguous    :: mat(:,:)
+        complex(CKG)                                        :: inv(size(mat, 1, IK), size(mat, 2, IK))
         type(choLow_type)   , intent(in)                    :: auxil
     end function
 #endif
@@ -1594,9 +1594,9 @@ module pm_matrixInv
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatInvCCL_IMP_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)        , intent(in)    , contiguous    :: mat(:,:)
-        complex(CKC)                                        :: inv(size(mat, 1, IK), size(mat, 2, IK))
+        use pm_kind, only: CKG => CK1
+        complex(CKG)        , intent(in)    , contiguous    :: mat(:,:)
+        complex(CKG)                                        :: inv(size(mat, 1, IK), size(mat, 2, IK))
         type(choLow_type)   , intent(in)                    :: auxil
     end function
 #endif
@@ -1608,9 +1608,9 @@ module pm_matrixInv
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatInvCCL_IMP_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)           , intent(in)    , contiguous    :: mat(:,:)
-        real(RKC)                                           :: inv(size(mat, 1, IK), size(mat, 2, IK))
+        use pm_kind, only: RKG => RK5
+        real(RKG)           , intent(in)    , contiguous    :: mat(:,:)
+        real(RKG)                                           :: inv(size(mat, 1, IK), size(mat, 2, IK))
         type(choLow_type)   , intent(in)                    :: auxil
     end function
 #endif
@@ -1620,9 +1620,9 @@ module pm_matrixInv
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatInvCCL_IMP_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)           , intent(in)    , contiguous    :: mat(:,:)
-        real(RKC)                                           :: inv(size(mat, 1, IK), size(mat, 2, IK))
+        use pm_kind, only: RKG => RK4
+        real(RKG)           , intent(in)    , contiguous    :: mat(:,:)
+        real(RKG)                                           :: inv(size(mat, 1, IK), size(mat, 2, IK))
         type(choLow_type)   , intent(in)                    :: auxil
     end function
 #endif
@@ -1632,9 +1632,9 @@ module pm_matrixInv
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatInvCCL_IMP_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)           , intent(in)    , contiguous    :: mat(:,:)
-        real(RKC)                                           :: inv(size(mat, 1, IK), size(mat, 2, IK))
+        use pm_kind, only: RKG => RK3
+        real(RKG)           , intent(in)    , contiguous    :: mat(:,:)
+        real(RKG)                                           :: inv(size(mat, 1, IK), size(mat, 2, IK))
         type(choLow_type)   , intent(in)                    :: auxil
     end function
 #endif
@@ -1644,9 +1644,9 @@ module pm_matrixInv
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatInvCCL_IMP_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)           , intent(in)    , contiguous    :: mat(:,:)
-        real(RKC)                                           :: inv(size(mat, 1, IK), size(mat, 2, IK))
+        use pm_kind, only: RKG => RK2
+        real(RKG)           , intent(in)    , contiguous    :: mat(:,:)
+        real(RKG)                                           :: inv(size(mat, 1, IK), size(mat, 2, IK))
         type(choLow_type)   , intent(in)                    :: auxil
     end function
 #endif
@@ -1656,9 +1656,9 @@ module pm_matrixInv
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatInvCCL_IMP_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)           , intent(in)    , contiguous    :: mat(:,:)
-        real(RKC)                                           :: inv(size(mat, 1, IK), size(mat, 2, IK))
+        use pm_kind, only: RKG => RK1
+        real(RKG)           , intent(in)    , contiguous    :: mat(:,:)
+        real(RKG)                                           :: inv(size(mat, 1, IK), size(mat, 2, IK))
         type(choLow_type)   , intent(in)                    :: auxil
     end function
 #endif
@@ -1792,9 +1792,9 @@ module pm_matrixInv
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatInvCUD_IMP_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)        , intent(inout) , contiguous    :: inv(:,:)
-        complex(CKC)        , intent(in)    , contiguous    :: mat(:,:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG)        , intent(inout) , contiguous    :: inv(:,:)
+        complex(CKG)        , intent(in)    , contiguous    :: mat(:,:)
         type(upperDiag_type), intent(in)                    :: auxil
     end subroutine
 #endif
@@ -1804,9 +1804,9 @@ module pm_matrixInv
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatInvCUD_IMP_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)        , intent(inout) , contiguous    :: inv(:,:)
-        complex(CKC)        , intent(in)    , contiguous    :: mat(:,:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG)        , intent(inout) , contiguous    :: inv(:,:)
+        complex(CKG)        , intent(in)    , contiguous    :: mat(:,:)
         type(upperDiag_type), intent(in)                    :: auxil
     end subroutine
 #endif
@@ -1816,9 +1816,9 @@ module pm_matrixInv
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatInvCUD_IMP_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)        , intent(inout) , contiguous    :: inv(:,:)
-        complex(CKC)        , intent(in)    , contiguous    :: mat(:,:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG)        , intent(inout) , contiguous    :: inv(:,:)
+        complex(CKG)        , intent(in)    , contiguous    :: mat(:,:)
         type(upperDiag_type), intent(in)                    :: auxil
     end subroutine
 #endif
@@ -1828,9 +1828,9 @@ module pm_matrixInv
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatInvCUD_IMP_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)        , intent(inout) , contiguous    :: inv(:,:)
-        complex(CKC)        , intent(in)    , contiguous    :: mat(:,:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG)        , intent(inout) , contiguous    :: inv(:,:)
+        complex(CKG)        , intent(in)    , contiguous    :: mat(:,:)
         type(upperDiag_type), intent(in)                    :: auxil
     end subroutine
 #endif
@@ -1840,9 +1840,9 @@ module pm_matrixInv
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatInvCUD_IMP_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)        , intent(inout) , contiguous    :: inv(:,:)
-        complex(CKC)        , intent(in)    , contiguous    :: mat(:,:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG)        , intent(inout) , contiguous    :: inv(:,:)
+        complex(CKG)        , intent(in)    , contiguous    :: mat(:,:)
         type(upperDiag_type), intent(in)                    :: auxil
     end subroutine
 #endif
@@ -1854,9 +1854,9 @@ module pm_matrixInv
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatInvCUD_IMP_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)           , intent(inout) , contiguous    :: inv(:,:)
-        real(RKC)           , intent(in)    , contiguous    :: mat(:,:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)           , intent(inout) , contiguous    :: inv(:,:)
+        real(RKG)           , intent(in)    , contiguous    :: mat(:,:)
         type(upperDiag_type), intent(in)                    :: auxil
     end subroutine
 #endif
@@ -1866,9 +1866,9 @@ module pm_matrixInv
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatInvCUD_IMP_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)           , intent(inout) , contiguous    :: inv(:,:)
-        real(RKC)           , intent(in)    , contiguous    :: mat(:,:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)           , intent(inout) , contiguous    :: inv(:,:)
+        real(RKG)           , intent(in)    , contiguous    :: mat(:,:)
         type(upperDiag_type), intent(in)                    :: auxil
     end subroutine
 #endif
@@ -1878,9 +1878,9 @@ module pm_matrixInv
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatInvCUD_IMP_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)           , intent(inout) , contiguous    :: inv(:,:)
-        real(RKC)           , intent(in)    , contiguous    :: mat(:,:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)           , intent(inout) , contiguous    :: inv(:,:)
+        real(RKG)           , intent(in)    , contiguous    :: mat(:,:)
         type(upperDiag_type), intent(in)                    :: auxil
     end subroutine
 #endif
@@ -1890,9 +1890,9 @@ module pm_matrixInv
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatInvCUD_IMP_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)           , intent(inout) , contiguous    :: inv(:,:)
-        real(RKC)           , intent(in)    , contiguous    :: mat(:,:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)           , intent(inout) , contiguous    :: inv(:,:)
+        real(RKG)           , intent(in)    , contiguous    :: mat(:,:)
         type(upperDiag_type), intent(in)                    :: auxil
     end subroutine
 #endif
@@ -1902,9 +1902,9 @@ module pm_matrixInv
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatInvCUD_IMP_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)           , intent(inout) , contiguous    :: inv(:,:)
-        real(RKC)           , intent(in)    , contiguous    :: mat(:,:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)           , intent(inout) , contiguous    :: inv(:,:)
+        real(RKG)           , intent(in)    , contiguous    :: mat(:,:)
         type(upperDiag_type), intent(in)                    :: auxil
     end subroutine
 #endif
@@ -1924,9 +1924,9 @@ module pm_matrixInv
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatInvCLD_IMP_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)        , intent(inout) , contiguous    :: inv(:,:)
-        complex(CKC)        , intent(in)    , contiguous    :: mat(:,:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG)        , intent(inout) , contiguous    :: inv(:,:)
+        complex(CKG)        , intent(in)    , contiguous    :: mat(:,:)
         type(lowerDiag_type), intent(in)                    :: auxil
     end subroutine
 #endif
@@ -1936,9 +1936,9 @@ module pm_matrixInv
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatInvCLD_IMP_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)        , intent(inout) , contiguous    :: inv(:,:)
-        complex(CKC)        , intent(in)    , contiguous    :: mat(:,:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG)        , intent(inout) , contiguous    :: inv(:,:)
+        complex(CKG)        , intent(in)    , contiguous    :: mat(:,:)
         type(lowerDiag_type), intent(in)                    :: auxil
     end subroutine
 #endif
@@ -1948,9 +1948,9 @@ module pm_matrixInv
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatInvCLD_IMP_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)        , intent(inout) , contiguous    :: inv(:,:)
-        complex(CKC)        , intent(in)    , contiguous    :: mat(:,:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG)        , intent(inout) , contiguous    :: inv(:,:)
+        complex(CKG)        , intent(in)    , contiguous    :: mat(:,:)
         type(lowerDiag_type), intent(in)                    :: auxil
     end subroutine
 #endif
@@ -1960,9 +1960,9 @@ module pm_matrixInv
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatInvCLD_IMP_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)        , intent(inout) , contiguous    :: inv(:,:)
-        complex(CKC)        , intent(in)    , contiguous    :: mat(:,:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG)        , intent(inout) , contiguous    :: inv(:,:)
+        complex(CKG)        , intent(in)    , contiguous    :: mat(:,:)
         type(lowerDiag_type), intent(in)                    :: auxil
     end subroutine
 #endif
@@ -1972,9 +1972,9 @@ module pm_matrixInv
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatInvCLD_IMP_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)        , intent(inout) , contiguous    :: inv(:,:)
-        complex(CKC)        , intent(in)    , contiguous    :: mat(:,:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG)        , intent(inout) , contiguous    :: inv(:,:)
+        complex(CKG)        , intent(in)    , contiguous    :: mat(:,:)
         type(lowerDiag_type), intent(in)                    :: auxil
     end subroutine
 #endif
@@ -1986,9 +1986,9 @@ module pm_matrixInv
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatInvCLD_IMP_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)           , intent(inout) , contiguous    :: inv(:,:)
-        real(RKC)           , intent(in)    , contiguous    :: mat(:,:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)           , intent(inout) , contiguous    :: inv(:,:)
+        real(RKG)           , intent(in)    , contiguous    :: mat(:,:)
         type(lowerDiag_type), intent(in)                    :: auxil
     end subroutine
 #endif
@@ -1998,9 +1998,9 @@ module pm_matrixInv
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatInvCLD_IMP_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)           , intent(inout) , contiguous    :: inv(:,:)
-        real(RKC)           , intent(in)    , contiguous    :: mat(:,:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)           , intent(inout) , contiguous    :: inv(:,:)
+        real(RKG)           , intent(in)    , contiguous    :: mat(:,:)
         type(lowerDiag_type), intent(in)                    :: auxil
     end subroutine
 #endif
@@ -2010,9 +2010,9 @@ module pm_matrixInv
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatInvCLD_IMP_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)           , intent(inout) , contiguous    :: inv(:,:)
-        real(RKC)           , intent(in)    , contiguous    :: mat(:,:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)           , intent(inout) , contiguous    :: inv(:,:)
+        real(RKG)           , intent(in)    , contiguous    :: mat(:,:)
         type(lowerDiag_type), intent(in)                    :: auxil
     end subroutine
 #endif
@@ -2022,9 +2022,9 @@ module pm_matrixInv
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatInvCLD_IMP_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)           , intent(inout) , contiguous    :: inv(:,:)
-        real(RKC)           , intent(in)    , contiguous    :: mat(:,:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)           , intent(inout) , contiguous    :: inv(:,:)
+        real(RKG)           , intent(in)    , contiguous    :: mat(:,:)
         type(lowerDiag_type), intent(in)                    :: auxil
     end subroutine
 #endif
@@ -2034,9 +2034,9 @@ module pm_matrixInv
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatInvCLD_IMP_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)           , intent(inout) , contiguous    :: inv(:,:)
-        real(RKC)           , intent(in)    , contiguous    :: mat(:,:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)           , intent(inout) , contiguous    :: inv(:,:)
+        real(RKG)           , intent(in)    , contiguous    :: mat(:,:)
         type(lowerDiag_type), intent(in)                    :: auxil
     end subroutine
 #endif
@@ -2056,9 +2056,9 @@ module pm_matrixInv
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatInvCUU_IMP_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)        , intent(inout) , contiguous    :: inv(:,:)
-        complex(CKC)        , intent(in)    , contiguous    :: mat(:,:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG)        , intent(inout) , contiguous    :: inv(:,:)
+        complex(CKG)        , intent(in)    , contiguous    :: mat(:,:)
         type(upperUnit_type), intent(in)                    :: auxil
     end subroutine
 #endif
@@ -2068,9 +2068,9 @@ module pm_matrixInv
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatInvCUU_IMP_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)        , intent(inout) , contiguous    :: inv(:,:)
-        complex(CKC)        , intent(in)    , contiguous    :: mat(:,:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG)        , intent(inout) , contiguous    :: inv(:,:)
+        complex(CKG)        , intent(in)    , contiguous    :: mat(:,:)
         type(upperUnit_type), intent(in)                    :: auxil
     end subroutine
 #endif
@@ -2080,9 +2080,9 @@ module pm_matrixInv
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatInvCUU_IMP_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)        , intent(inout) , contiguous    :: inv(:,:)
-        complex(CKC)        , intent(in)    , contiguous    :: mat(:,:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG)        , intent(inout) , contiguous    :: inv(:,:)
+        complex(CKG)        , intent(in)    , contiguous    :: mat(:,:)
         type(upperUnit_type), intent(in)                    :: auxil
     end subroutine
 #endif
@@ -2092,9 +2092,9 @@ module pm_matrixInv
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatInvCUU_IMP_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)        , intent(inout) , contiguous    :: inv(:,:)
-        complex(CKC)        , intent(in)    , contiguous    :: mat(:,:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG)        , intent(inout) , contiguous    :: inv(:,:)
+        complex(CKG)        , intent(in)    , contiguous    :: mat(:,:)
         type(upperUnit_type), intent(in)                    :: auxil
     end subroutine
 #endif
@@ -2104,9 +2104,9 @@ module pm_matrixInv
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatInvCUU_IMP_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)        , intent(inout) , contiguous    :: inv(:,:)
-        complex(CKC)        , intent(in)    , contiguous    :: mat(:,:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG)        , intent(inout) , contiguous    :: inv(:,:)
+        complex(CKG)        , intent(in)    , contiguous    :: mat(:,:)
         type(upperUnit_type), intent(in)                    :: auxil
     end subroutine
 #endif
@@ -2118,9 +2118,9 @@ module pm_matrixInv
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatInvCUU_IMP_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)           , intent(inout) , contiguous    :: inv(:,:)
-        real(RKC)           , intent(in)    , contiguous    :: mat(:,:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)           , intent(inout) , contiguous    :: inv(:,:)
+        real(RKG)           , intent(in)    , contiguous    :: mat(:,:)
         type(upperUnit_type), intent(in)                    :: auxil
     end subroutine
 #endif
@@ -2130,9 +2130,9 @@ module pm_matrixInv
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatInvCUU_IMP_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)           , intent(inout) , contiguous    :: inv(:,:)
-        real(RKC)           , intent(in)    , contiguous    :: mat(:,:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)           , intent(inout) , contiguous    :: inv(:,:)
+        real(RKG)           , intent(in)    , contiguous    :: mat(:,:)
         type(upperUnit_type), intent(in)                    :: auxil
     end subroutine
 #endif
@@ -2142,9 +2142,9 @@ module pm_matrixInv
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatInvCUU_IMP_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)           , intent(inout) , contiguous    :: inv(:,:)
-        real(RKC)           , intent(in)    , contiguous    :: mat(:,:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)           , intent(inout) , contiguous    :: inv(:,:)
+        real(RKG)           , intent(in)    , contiguous    :: mat(:,:)
         type(upperUnit_type), intent(in)                    :: auxil
     end subroutine
 #endif
@@ -2154,9 +2154,9 @@ module pm_matrixInv
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatInvCUU_IMP_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)           , intent(inout) , contiguous    :: inv(:,:)
-        real(RKC)           , intent(in)    , contiguous    :: mat(:,:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)           , intent(inout) , contiguous    :: inv(:,:)
+        real(RKG)           , intent(in)    , contiguous    :: mat(:,:)
         type(upperUnit_type), intent(in)                    :: auxil
     end subroutine
 #endif
@@ -2166,9 +2166,9 @@ module pm_matrixInv
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatInvCUU_IMP_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)           , intent(inout) , contiguous    :: inv(:,:)
-        real(RKC)           , intent(in)    , contiguous    :: mat(:,:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)           , intent(inout) , contiguous    :: inv(:,:)
+        real(RKG)           , intent(in)    , contiguous    :: mat(:,:)
         type(upperUnit_type), intent(in)                    :: auxil
     end subroutine
 #endif
@@ -2188,9 +2188,9 @@ module pm_matrixInv
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatInvCLU_IMP_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)        , intent(inout) , contiguous    :: inv(:,:)
-        complex(CKC)        , intent(in)    , contiguous    :: mat(:,:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG)        , intent(inout) , contiguous    :: inv(:,:)
+        complex(CKG)        , intent(in)    , contiguous    :: mat(:,:)
         type(lowerUnit_type), intent(in)                    :: auxil
     end subroutine
 #endif
@@ -2200,9 +2200,9 @@ module pm_matrixInv
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatInvCLU_IMP_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)        , intent(inout) , contiguous    :: inv(:,:)
-        complex(CKC)        , intent(in)    , contiguous    :: mat(:,:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG)        , intent(inout) , contiguous    :: inv(:,:)
+        complex(CKG)        , intent(in)    , contiguous    :: mat(:,:)
         type(lowerUnit_type), intent(in)                    :: auxil
     end subroutine
 #endif
@@ -2212,9 +2212,9 @@ module pm_matrixInv
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatInvCLU_IMP_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)        , intent(inout) , contiguous    :: inv(:,:)
-        complex(CKC)        , intent(in)    , contiguous    :: mat(:,:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG)        , intent(inout) , contiguous    :: inv(:,:)
+        complex(CKG)        , intent(in)    , contiguous    :: mat(:,:)
         type(lowerUnit_type), intent(in)                    :: auxil
     end subroutine
 #endif
@@ -2224,9 +2224,9 @@ module pm_matrixInv
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatInvCLU_IMP_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)        , intent(inout) , contiguous    :: inv(:,:)
-        complex(CKC)        , intent(in)    , contiguous    :: mat(:,:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG)        , intent(inout) , contiguous    :: inv(:,:)
+        complex(CKG)        , intent(in)    , contiguous    :: mat(:,:)
         type(lowerUnit_type), intent(in)                    :: auxil
     end subroutine
 #endif
@@ -2236,9 +2236,9 @@ module pm_matrixInv
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatInvCLU_IMP_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)        , intent(inout) , contiguous    :: inv(:,:)
-        complex(CKC)        , intent(in)    , contiguous    :: mat(:,:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG)        , intent(inout) , contiguous    :: inv(:,:)
+        complex(CKG)        , intent(in)    , contiguous    :: mat(:,:)
         type(lowerUnit_type), intent(in)                    :: auxil
     end subroutine
 #endif
@@ -2250,9 +2250,9 @@ module pm_matrixInv
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatInvCLU_IMP_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)           , intent(inout) , contiguous    :: inv(:,:)
-        real(RKC)           , intent(in)    , contiguous    :: mat(:,:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)           , intent(inout) , contiguous    :: inv(:,:)
+        real(RKG)           , intent(in)    , contiguous    :: mat(:,:)
         type(lowerUnit_type), intent(in)                    :: auxil
     end subroutine
 #endif
@@ -2262,9 +2262,9 @@ module pm_matrixInv
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatInvCLU_IMP_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)           , intent(inout) , contiguous    :: inv(:,:)
-        real(RKC)           , intent(in)    , contiguous    :: mat(:,:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)           , intent(inout) , contiguous    :: inv(:,:)
+        real(RKG)           , intent(in)    , contiguous    :: mat(:,:)
         type(lowerUnit_type), intent(in)                    :: auxil
     end subroutine
 #endif
@@ -2274,9 +2274,9 @@ module pm_matrixInv
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatInvCLU_IMP_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)           , intent(inout) , contiguous    :: inv(:,:)
-        real(RKC)           , intent(in)    , contiguous    :: mat(:,:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)           , intent(inout) , contiguous    :: inv(:,:)
+        real(RKG)           , intent(in)    , contiguous    :: mat(:,:)
         type(lowerUnit_type), intent(in)                    :: auxil
     end subroutine
 #endif
@@ -2286,9 +2286,9 @@ module pm_matrixInv
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatInvCLU_IMP_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)           , intent(inout) , contiguous    :: inv(:,:)
-        real(RKC)           , intent(in)    , contiguous    :: mat(:,:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)           , intent(inout) , contiguous    :: inv(:,:)
+        real(RKG)           , intent(in)    , contiguous    :: mat(:,:)
         type(lowerUnit_type), intent(in)                    :: auxil
     end subroutine
 #endif
@@ -2298,9 +2298,9 @@ module pm_matrixInv
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatInvCLU_IMP_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)           , intent(inout) , contiguous    :: inv(:,:)
-        real(RKC)           , intent(in)    , contiguous    :: mat(:,:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)           , intent(inout) , contiguous    :: inv(:,:)
+        real(RKG)           , intent(in)    , contiguous    :: mat(:,:)
         type(lowerUnit_type), intent(in)                    :: auxil
     end subroutine
 #endif
@@ -2320,9 +2320,9 @@ module pm_matrixInv
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatInvLUP_IMP_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)        , intent(out)   , contiguous    :: inv(:,:)
-        complex(CKC)        , intent(in)    , contiguous    :: mat(:,:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG)        , intent(out)   , contiguous    :: inv(:,:)
+        complex(CKG)        , intent(in)    , contiguous    :: mat(:,:)
         integer(IK)         , intent(in)    , contiguous    :: auxil(:)
     end subroutine
 #endif
@@ -2332,9 +2332,9 @@ module pm_matrixInv
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatInvLUP_IMP_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)        , intent(out)   , contiguous    :: inv(:,:)
-        complex(CKC)        , intent(in)    , contiguous    :: mat(:,:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG)        , intent(out)   , contiguous    :: inv(:,:)
+        complex(CKG)        , intent(in)    , contiguous    :: mat(:,:)
         integer(IK)         , intent(in)    , contiguous    :: auxil(:)
     end subroutine
 #endif
@@ -2344,9 +2344,9 @@ module pm_matrixInv
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatInvLUP_IMP_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)        , intent(out)   , contiguous    :: inv(:,:)
-        complex(CKC)        , intent(in)    , contiguous    :: mat(:,:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG)        , intent(out)   , contiguous    :: inv(:,:)
+        complex(CKG)        , intent(in)    , contiguous    :: mat(:,:)
         integer(IK)         , intent(in)    , contiguous    :: auxil(:)
     end subroutine
 #endif
@@ -2356,9 +2356,9 @@ module pm_matrixInv
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatInvLUP_IMP_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)        , intent(out)   , contiguous    :: inv(:,:)
-        complex(CKC)        , intent(in)    , contiguous    :: mat(:,:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG)        , intent(out)   , contiguous    :: inv(:,:)
+        complex(CKG)        , intent(in)    , contiguous    :: mat(:,:)
         integer(IK)         , intent(in)    , contiguous    :: auxil(:)
     end subroutine
 #endif
@@ -2368,9 +2368,9 @@ module pm_matrixInv
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatInvLUP_IMP_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)        , intent(out)   , contiguous    :: inv(:,:)
-        complex(CKC)        , intent(in)    , contiguous    :: mat(:,:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG)        , intent(out)   , contiguous    :: inv(:,:)
+        complex(CKG)        , intent(in)    , contiguous    :: mat(:,:)
         integer(IK)         , intent(in)    , contiguous    :: auxil(:)
     end subroutine
 #endif
@@ -2382,9 +2382,9 @@ module pm_matrixInv
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatInvLUP_IMP_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)           , intent(out)   , contiguous    :: inv(:,:)
-        real(RKC)           , intent(in)    , contiguous    :: mat(:,:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)           , intent(out)   , contiguous    :: inv(:,:)
+        real(RKG)           , intent(in)    , contiguous    :: mat(:,:)
         integer(IK)         , intent(in)    , contiguous    :: auxil(:)
     end subroutine
 #endif
@@ -2394,9 +2394,9 @@ module pm_matrixInv
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatInvLUP_IMP_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)           , intent(out)   , contiguous    :: inv(:,:)
-        real(RKC)           , intent(in)    , contiguous    :: mat(:,:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)           , intent(out)   , contiguous    :: inv(:,:)
+        real(RKG)           , intent(in)    , contiguous    :: mat(:,:)
         integer(IK)         , intent(in)    , contiguous    :: auxil(:)
     end subroutine
 #endif
@@ -2406,9 +2406,9 @@ module pm_matrixInv
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatInvLUP_IMP_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)           , intent(out)   , contiguous    :: inv(:,:)
-        real(RKC)           , intent(in)    , contiguous    :: mat(:,:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)           , intent(out)   , contiguous    :: inv(:,:)
+        real(RKG)           , intent(in)    , contiguous    :: mat(:,:)
         integer(IK)         , intent(in)    , contiguous    :: auxil(:)
     end subroutine
 #endif
@@ -2418,9 +2418,9 @@ module pm_matrixInv
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatInvLUP_IMP_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)           , intent(out)   , contiguous    :: inv(:,:)
-        real(RKC)           , intent(in)    , contiguous    :: mat(:,:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)           , intent(out)   , contiguous    :: inv(:,:)
+        real(RKG)           , intent(in)    , contiguous    :: mat(:,:)
         integer(IK)         , intent(in)    , contiguous    :: auxil(:)
     end subroutine
 #endif
@@ -2430,9 +2430,9 @@ module pm_matrixInv
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatInvLUP_IMP_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)           , intent(out)   , contiguous    :: inv(:,:)
-        real(RKC)           , intent(in)    , contiguous    :: mat(:,:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)           , intent(out)   , contiguous    :: inv(:,:)
+        real(RKG)           , intent(in)    , contiguous    :: mat(:,:)
         integer(IK)         , intent(in)    , contiguous    :: auxil(:)
     end subroutine
 #endif
@@ -2452,9 +2452,9 @@ module pm_matrixInv
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatInvCCU_FUL_IMP_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)        , intent(out)   , contiguous    :: inv(:,:)
-        complex(CKC)        , intent(in)    , contiguous    :: mat(:,:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG)        , intent(out)   , contiguous    :: inv(:,:)
+        complex(CKG)        , intent(in)    , contiguous    :: mat(:,:)
         type(choUpp_type)   , intent(in)                    :: auxil
     end subroutine
 #endif
@@ -2464,9 +2464,9 @@ module pm_matrixInv
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatInvCCU_FUL_IMP_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)        , intent(out)   , contiguous    :: inv(:,:)
-        complex(CKC)        , intent(in)    , contiguous    :: mat(:,:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG)        , intent(out)   , contiguous    :: inv(:,:)
+        complex(CKG)        , intent(in)    , contiguous    :: mat(:,:)
         type(choUpp_type)   , intent(in)                    :: auxil
     end subroutine
 #endif
@@ -2476,9 +2476,9 @@ module pm_matrixInv
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatInvCCU_FUL_IMP_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)        , intent(out)   , contiguous    :: inv(:,:)
-        complex(CKC)        , intent(in)    , contiguous    :: mat(:,:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG)        , intent(out)   , contiguous    :: inv(:,:)
+        complex(CKG)        , intent(in)    , contiguous    :: mat(:,:)
         type(choUpp_type)   , intent(in)                    :: auxil
     end subroutine
 #endif
@@ -2488,9 +2488,9 @@ module pm_matrixInv
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatInvCCU_FUL_IMP_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)        , intent(out)   , contiguous    :: inv(:,:)
-        complex(CKC)        , intent(in)    , contiguous    :: mat(:,:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG)        , intent(out)   , contiguous    :: inv(:,:)
+        complex(CKG)        , intent(in)    , contiguous    :: mat(:,:)
         type(choUpp_type)   , intent(in)                    :: auxil
     end subroutine
 #endif
@@ -2500,9 +2500,9 @@ module pm_matrixInv
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatInvCCU_FUL_IMP_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)        , intent(out)   , contiguous    :: inv(:,:)
-        complex(CKC)        , intent(in)    , contiguous    :: mat(:,:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG)        , intent(out)   , contiguous    :: inv(:,:)
+        complex(CKG)        , intent(in)    , contiguous    :: mat(:,:)
         type(choUpp_type)   , intent(in)                    :: auxil
     end subroutine
 #endif
@@ -2514,9 +2514,9 @@ module pm_matrixInv
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatInvCCU_FUL_IMP_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)           , intent(out)   , contiguous    :: inv(:,:)
-        real(RKC)           , intent(in)    , contiguous    :: mat(:,:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)           , intent(out)   , contiguous    :: inv(:,:)
+        real(RKG)           , intent(in)    , contiguous    :: mat(:,:)
         type(choUpp_type)   , intent(in)                    :: auxil
     end subroutine
 #endif
@@ -2526,9 +2526,9 @@ module pm_matrixInv
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatInvCCU_FUL_IMP_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)           , intent(out)   , contiguous    :: inv(:,:)
-        real(RKC)           , intent(in)    , contiguous    :: mat(:,:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)           , intent(out)   , contiguous    :: inv(:,:)
+        real(RKG)           , intent(in)    , contiguous    :: mat(:,:)
         type(choUpp_type)   , intent(in)                    :: auxil
     end subroutine
 #endif
@@ -2538,9 +2538,9 @@ module pm_matrixInv
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatInvCCU_FUL_IMP_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)           , intent(out)   , contiguous    :: inv(:,:)
-        real(RKC)           , intent(in)    , contiguous    :: mat(:,:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)           , intent(out)   , contiguous    :: inv(:,:)
+        real(RKG)           , intent(in)    , contiguous    :: mat(:,:)
         type(choUpp_type)   , intent(in)                    :: auxil
     end subroutine
 #endif
@@ -2550,9 +2550,9 @@ module pm_matrixInv
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatInvCCU_FUL_IMP_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)           , intent(out)   , contiguous    :: inv(:,:)
-        real(RKC)           , intent(in)    , contiguous    :: mat(:,:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)           , intent(out)   , contiguous    :: inv(:,:)
+        real(RKG)           , intent(in)    , contiguous    :: mat(:,:)
         type(choUpp_type)   , intent(in)                    :: auxil
     end subroutine
 #endif
@@ -2562,9 +2562,9 @@ module pm_matrixInv
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatInvCCU_FUL_IMP_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)           , intent(out)   , contiguous    :: inv(:,:)
-        real(RKC)           , intent(in)    , contiguous    :: mat(:,:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)           , intent(out)   , contiguous    :: inv(:,:)
+        real(RKG)           , intent(in)    , contiguous    :: mat(:,:)
         type(choUpp_type)   , intent(in)                    :: auxil
     end subroutine
 #endif
@@ -2584,9 +2584,9 @@ module pm_matrixInv
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatInvCCL_FUL_IMP_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)        , intent(out)   , contiguous    :: inv(:,:)
-        complex(CKC)        , intent(in)    , contiguous    :: mat(:,:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG)        , intent(out)   , contiguous    :: inv(:,:)
+        complex(CKG)        , intent(in)    , contiguous    :: mat(:,:)
         type(choLow_type)   , intent(in)                    :: auxil
     end subroutine
 #endif
@@ -2596,9 +2596,9 @@ module pm_matrixInv
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatInvCCL_FUL_IMP_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)        , intent(out)   , contiguous    :: inv(:,:)
-        complex(CKC)        , intent(in)    , contiguous    :: mat(:,:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG)        , intent(out)   , contiguous    :: inv(:,:)
+        complex(CKG)        , intent(in)    , contiguous    :: mat(:,:)
         type(choLow_type)   , intent(in)                    :: auxil
     end subroutine
 #endif
@@ -2608,9 +2608,9 @@ module pm_matrixInv
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatInvCCL_FUL_IMP_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)        , intent(out)   , contiguous    :: inv(:,:)
-        complex(CKC)        , intent(in)    , contiguous    :: mat(:,:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG)        , intent(out)   , contiguous    :: inv(:,:)
+        complex(CKG)        , intent(in)    , contiguous    :: mat(:,:)
         type(choLow_type)   , intent(in)                    :: auxil
     end subroutine
 #endif
@@ -2620,9 +2620,9 @@ module pm_matrixInv
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatInvCCL_FUL_IMP_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)        , intent(out)   , contiguous    :: inv(:,:)
-        complex(CKC)        , intent(in)    , contiguous    :: mat(:,:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG)        , intent(out)   , contiguous    :: inv(:,:)
+        complex(CKG)        , intent(in)    , contiguous    :: mat(:,:)
         type(choLow_type)   , intent(in)                    :: auxil
     end subroutine
 #endif
@@ -2632,9 +2632,9 @@ module pm_matrixInv
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatInvCCL_FUL_IMP_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)        , intent(out)   , contiguous    :: inv(:,:)
-        complex(CKC)        , intent(in)    , contiguous    :: mat(:,:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG)        , intent(out)   , contiguous    :: inv(:,:)
+        complex(CKG)        , intent(in)    , contiguous    :: mat(:,:)
         type(choLow_type)   , intent(in)                    :: auxil
     end subroutine
 #endif
@@ -2646,9 +2646,9 @@ module pm_matrixInv
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatInvCCL_FUL_IMP_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)           , intent(out)   , contiguous    :: inv(:,:)
-        real(RKC)           , intent(in)    , contiguous    :: mat(:,:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)           , intent(out)   , contiguous    :: inv(:,:)
+        real(RKG)           , intent(in)    , contiguous    :: mat(:,:)
         type(choLow_type)   , intent(in)                    :: auxil
     end subroutine
 #endif
@@ -2658,9 +2658,9 @@ module pm_matrixInv
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatInvCCL_FUL_IMP_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)           , intent(out)   , contiguous    :: inv(:,:)
-        real(RKC)           , intent(in)    , contiguous    :: mat(:,:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)           , intent(out)   , contiguous    :: inv(:,:)
+        real(RKG)           , intent(in)    , contiguous    :: mat(:,:)
         type(choLow_type)   , intent(in)                    :: auxil
     end subroutine
 #endif
@@ -2670,9 +2670,9 @@ module pm_matrixInv
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatInvCCL_FUL_IMP_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)           , intent(out)   , contiguous    :: inv(:,:)
-        real(RKC)           , intent(in)    , contiguous    :: mat(:,:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)           , intent(out)   , contiguous    :: inv(:,:)
+        real(RKG)           , intent(in)    , contiguous    :: mat(:,:)
         type(choLow_type)   , intent(in)                    :: auxil
     end subroutine
 #endif
@@ -2682,9 +2682,9 @@ module pm_matrixInv
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatInvCCL_FUL_IMP_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)           , intent(out)   , contiguous    :: inv(:,:)
-        real(RKC)           , intent(in)    , contiguous    :: mat(:,:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)           , intent(out)   , contiguous    :: inv(:,:)
+        real(RKG)           , intent(in)    , contiguous    :: mat(:,:)
         type(choLow_type)   , intent(in)                    :: auxil
     end subroutine
 #endif
@@ -2694,9 +2694,9 @@ module pm_matrixInv
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatInvCCL_FUL_IMP_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)           , intent(out)   , contiguous    :: inv(:,:)
-        real(RKC)           , intent(in)    , contiguous    :: mat(:,:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)           , intent(out)   , contiguous    :: inv(:,:)
+        real(RKG)           , intent(in)    , contiguous    :: mat(:,:)
         type(choLow_type)   , intent(in)                    :: auxil
     end subroutine
 #endif
@@ -2716,9 +2716,9 @@ module pm_matrixInv
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatInvCCU_XLD_IMP_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)        , intent(inout) , contiguous    :: inv(:,:)
-        complex(CKC)        , intent(in)    , contiguous    :: mat(:,:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG)        , intent(inout) , contiguous    :: inv(:,:)
+        complex(CKG)        , intent(in)    , contiguous    :: mat(:,:)
         type(choUpp_type)   , intent(in)                    :: auxil
         type(lowDia_type)   , intent(in)                    :: subset
     end subroutine
@@ -2729,9 +2729,9 @@ module pm_matrixInv
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatInvCCU_XLD_IMP_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)        , intent(inout) , contiguous    :: inv(:,:)
-        complex(CKC)        , intent(in)    , contiguous    :: mat(:,:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG)        , intent(inout) , contiguous    :: inv(:,:)
+        complex(CKG)        , intent(in)    , contiguous    :: mat(:,:)
         type(choUpp_type)   , intent(in)                    :: auxil
         type(lowDia_type)   , intent(in)                    :: subset
     end subroutine
@@ -2742,9 +2742,9 @@ module pm_matrixInv
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatInvCCU_XLD_IMP_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)        , intent(inout) , contiguous    :: inv(:,:)
-        complex(CKC)        , intent(in)    , contiguous    :: mat(:,:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG)        , intent(inout) , contiguous    :: inv(:,:)
+        complex(CKG)        , intent(in)    , contiguous    :: mat(:,:)
         type(choUpp_type)   , intent(in)                    :: auxil
         type(lowDia_type)   , intent(in)                    :: subset
     end subroutine
@@ -2755,9 +2755,9 @@ module pm_matrixInv
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatInvCCU_XLD_IMP_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)        , intent(inout) , contiguous    :: inv(:,:)
-        complex(CKC)        , intent(in)    , contiguous    :: mat(:,:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG)        , intent(inout) , contiguous    :: inv(:,:)
+        complex(CKG)        , intent(in)    , contiguous    :: mat(:,:)
         type(choUpp_type)   , intent(in)                    :: auxil
         type(lowDia_type)   , intent(in)                    :: subset
     end subroutine
@@ -2768,9 +2768,9 @@ module pm_matrixInv
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatInvCCU_XLD_IMP_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)        , intent(inout) , contiguous    :: inv(:,:)
-        complex(CKC)        , intent(in)    , contiguous    :: mat(:,:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG)        , intent(inout) , contiguous    :: inv(:,:)
+        complex(CKG)        , intent(in)    , contiguous    :: mat(:,:)
         type(choUpp_type)   , intent(in)                    :: auxil
         type(lowDia_type)   , intent(in)                    :: subset
     end subroutine
@@ -2783,9 +2783,9 @@ module pm_matrixInv
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatInvCCU_XLD_IMP_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)           , intent(inout) , contiguous    :: inv(:,:)
-        real(RKC)           , intent(in)    , contiguous    :: mat(:,:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)           , intent(inout) , contiguous    :: inv(:,:)
+        real(RKG)           , intent(in)    , contiguous    :: mat(:,:)
         type(choUpp_type)   , intent(in)                    :: auxil
         type(lowDia_type)   , intent(in)                    :: subset
     end subroutine
@@ -2796,9 +2796,9 @@ module pm_matrixInv
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatInvCCU_XLD_IMP_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)           , intent(inout) , contiguous    :: inv(:,:)
-        real(RKC)           , intent(in)    , contiguous    :: mat(:,:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)           , intent(inout) , contiguous    :: inv(:,:)
+        real(RKG)           , intent(in)    , contiguous    :: mat(:,:)
         type(choUpp_type)   , intent(in)                    :: auxil
         type(lowDia_type)   , intent(in)                    :: subset
     end subroutine
@@ -2809,9 +2809,9 @@ module pm_matrixInv
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatInvCCU_XLD_IMP_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)           , intent(inout) , contiguous    :: inv(:,:)
-        real(RKC)           , intent(in)    , contiguous    :: mat(:,:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)           , intent(inout) , contiguous    :: inv(:,:)
+        real(RKG)           , intent(in)    , contiguous    :: mat(:,:)
         type(choUpp_type)   , intent(in)                    :: auxil
         type(lowDia_type)   , intent(in)                    :: subset
     end subroutine
@@ -2822,9 +2822,9 @@ module pm_matrixInv
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatInvCCU_XLD_IMP_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)           , intent(inout) , contiguous    :: inv(:,:)
-        real(RKC)           , intent(in)    , contiguous    :: mat(:,:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)           , intent(inout) , contiguous    :: inv(:,:)
+        real(RKG)           , intent(in)    , contiguous    :: mat(:,:)
         type(choUpp_type)   , intent(in)                    :: auxil
         type(lowDia_type)   , intent(in)                    :: subset
     end subroutine
@@ -2835,9 +2835,9 @@ module pm_matrixInv
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatInvCCU_XLD_IMP_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)           , intent(inout) , contiguous    :: inv(:,:)
-        real(RKC)           , intent(in)    , contiguous    :: mat(:,:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)           , intent(inout) , contiguous    :: inv(:,:)
+        real(RKG)           , intent(in)    , contiguous    :: mat(:,:)
         type(choUpp_type)   , intent(in)                    :: auxil
         type(lowDia_type)   , intent(in)                    :: subset
     end subroutine
@@ -2858,9 +2858,9 @@ module pm_matrixInv
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatInvCCL_XLD_IMP_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)        , intent(inout) , contiguous    :: inv(:,:)
-        complex(CKC)        , intent(in)    , contiguous    :: mat(:,:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG)        , intent(inout) , contiguous    :: inv(:,:)
+        complex(CKG)        , intent(in)    , contiguous    :: mat(:,:)
         type(choLow_type)   , intent(in)                    :: auxil
         type(lowDia_type)   , intent(in)                    :: subset
     end subroutine
@@ -2871,9 +2871,9 @@ module pm_matrixInv
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatInvCCL_XLD_IMP_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)        , intent(inout) , contiguous    :: inv(:,:)
-        complex(CKC)        , intent(in)    , contiguous    :: mat(:,:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG)        , intent(inout) , contiguous    :: inv(:,:)
+        complex(CKG)        , intent(in)    , contiguous    :: mat(:,:)
         type(choLow_type)   , intent(in)                    :: auxil
         type(lowDia_type)   , intent(in)                    :: subset
     end subroutine
@@ -2884,9 +2884,9 @@ module pm_matrixInv
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatInvCCL_XLD_IMP_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)        , intent(inout) , contiguous    :: inv(:,:)
-        complex(CKC)        , intent(in)    , contiguous    :: mat(:,:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG)        , intent(inout) , contiguous    :: inv(:,:)
+        complex(CKG)        , intent(in)    , contiguous    :: mat(:,:)
         type(choLow_type)   , intent(in)                    :: auxil
         type(lowDia_type)   , intent(in)                    :: subset
     end subroutine
@@ -2897,9 +2897,9 @@ module pm_matrixInv
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatInvCCL_XLD_IMP_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)        , intent(inout) , contiguous    :: inv(:,:)
-        complex(CKC)        , intent(in)    , contiguous    :: mat(:,:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG)        , intent(inout) , contiguous    :: inv(:,:)
+        complex(CKG)        , intent(in)    , contiguous    :: mat(:,:)
         type(choLow_type)   , intent(in)                    :: auxil
         type(lowDia_type)   , intent(in)                    :: subset
     end subroutine
@@ -2910,9 +2910,9 @@ module pm_matrixInv
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatInvCCL_XLD_IMP_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)        , intent(inout) , contiguous    :: inv(:,:)
-        complex(CKC)        , intent(in)    , contiguous    :: mat(:,:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG)        , intent(inout) , contiguous    :: inv(:,:)
+        complex(CKG)        , intent(in)    , contiguous    :: mat(:,:)
         type(choLow_type)   , intent(in)                    :: auxil
         type(lowDia_type)   , intent(in)                    :: subset
     end subroutine
@@ -2925,9 +2925,9 @@ module pm_matrixInv
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatInvCCL_XLD_IMP_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)           , intent(inout) , contiguous    :: inv(:,:)
-        real(RKC)           , intent(in)    , contiguous    :: mat(:,:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)           , intent(inout) , contiguous    :: inv(:,:)
+        real(RKG)           , intent(in)    , contiguous    :: mat(:,:)
         type(choLow_type)   , intent(in)                    :: auxil
         type(lowDia_type)   , intent(in)                    :: subset
     end subroutine
@@ -2938,9 +2938,9 @@ module pm_matrixInv
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatInvCCL_XLD_IMP_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)           , intent(inout) , contiguous    :: inv(:,:)
-        real(RKC)           , intent(in)    , contiguous    :: mat(:,:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)           , intent(inout) , contiguous    :: inv(:,:)
+        real(RKG)           , intent(in)    , contiguous    :: mat(:,:)
         type(choLow_type)   , intent(in)                    :: auxil
         type(lowDia_type)   , intent(in)                    :: subset
     end subroutine
@@ -2951,9 +2951,9 @@ module pm_matrixInv
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatInvCCL_XLD_IMP_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)           , intent(inout) , contiguous    :: inv(:,:)
-        real(RKC)           , intent(in)    , contiguous    :: mat(:,:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)           , intent(inout) , contiguous    :: inv(:,:)
+        real(RKG)           , intent(in)    , contiguous    :: mat(:,:)
         type(choLow_type)   , intent(in)                    :: auxil
         type(lowDia_type)   , intent(in)                    :: subset
     end subroutine
@@ -2964,9 +2964,9 @@ module pm_matrixInv
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatInvCCL_XLD_IMP_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)           , intent(inout) , contiguous    :: inv(:,:)
-        real(RKC)           , intent(in)    , contiguous    :: mat(:,:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)           , intent(inout) , contiguous    :: inv(:,:)
+        real(RKG)           , intent(in)    , contiguous    :: mat(:,:)
         type(choLow_type)   , intent(in)                    :: auxil
         type(lowDia_type)   , intent(in)                    :: subset
     end subroutine
@@ -2977,9 +2977,9 @@ module pm_matrixInv
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatInvCCL_XLD_IMP_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)           , intent(inout) , contiguous    :: inv(:,:)
-        real(RKC)           , intent(in)    , contiguous    :: mat(:,:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)           , intent(inout) , contiguous    :: inv(:,:)
+        real(RKG)           , intent(in)    , contiguous    :: mat(:,:)
         type(choLow_type)   , intent(in)                    :: auxil
         type(lowDia_type)   , intent(in)                    :: subset
     end subroutine
@@ -3000,9 +3000,9 @@ module pm_matrixInv
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatInvCCU_UXD_IMP_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)        , intent(inout) , contiguous    :: inv(:,:)
-        complex(CKC)        , intent(in)    , contiguous    :: mat(:,:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG)        , intent(inout) , contiguous    :: inv(:,:)
+        complex(CKG)        , intent(in)    , contiguous    :: mat(:,:)
         type(choUpp_type)   , intent(in)                    :: auxil
         type(uppDia_type)   , intent(in)                    :: subset
     end subroutine
@@ -3013,9 +3013,9 @@ module pm_matrixInv
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatInvCCU_UXD_IMP_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)        , intent(inout) , contiguous    :: inv(:,:)
-        complex(CKC)        , intent(in)    , contiguous    :: mat(:,:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG)        , intent(inout) , contiguous    :: inv(:,:)
+        complex(CKG)        , intent(in)    , contiguous    :: mat(:,:)
         type(choUpp_type)   , intent(in)                    :: auxil
         type(uppDia_type)   , intent(in)                    :: subset
     end subroutine
@@ -3026,9 +3026,9 @@ module pm_matrixInv
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatInvCCU_UXD_IMP_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)        , intent(inout) , contiguous    :: inv(:,:)
-        complex(CKC)        , intent(in)    , contiguous    :: mat(:,:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG)        , intent(inout) , contiguous    :: inv(:,:)
+        complex(CKG)        , intent(in)    , contiguous    :: mat(:,:)
         type(choUpp_type)   , intent(in)                    :: auxil
         type(uppDia_type)   , intent(in)                    :: subset
     end subroutine
@@ -3039,9 +3039,9 @@ module pm_matrixInv
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatInvCCU_UXD_IMP_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)        , intent(inout) , contiguous    :: inv(:,:)
-        complex(CKC)        , intent(in)    , contiguous    :: mat(:,:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG)        , intent(inout) , contiguous    :: inv(:,:)
+        complex(CKG)        , intent(in)    , contiguous    :: mat(:,:)
         type(choUpp_type)   , intent(in)                    :: auxil
         type(uppDia_type)   , intent(in)                    :: subset
     end subroutine
@@ -3052,9 +3052,9 @@ module pm_matrixInv
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatInvCCU_UXD_IMP_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)        , intent(inout) , contiguous    :: inv(:,:)
-        complex(CKC)        , intent(in)    , contiguous    :: mat(:,:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG)        , intent(inout) , contiguous    :: inv(:,:)
+        complex(CKG)        , intent(in)    , contiguous    :: mat(:,:)
         type(choUpp_type)   , intent(in)                    :: auxil
         type(uppDia_type)   , intent(in)                    :: subset
     end subroutine
@@ -3067,9 +3067,9 @@ module pm_matrixInv
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatInvCCU_UXD_IMP_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)           , intent(inout) , contiguous    :: inv(:,:)
-        real(RKC)           , intent(in)    , contiguous    :: mat(:,:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)           , intent(inout) , contiguous    :: inv(:,:)
+        real(RKG)           , intent(in)    , contiguous    :: mat(:,:)
         type(choUpp_type)   , intent(in)                    :: auxil
         type(uppDia_type)   , intent(in)                    :: subset
     end subroutine
@@ -3080,9 +3080,9 @@ module pm_matrixInv
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatInvCCU_UXD_IMP_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)           , intent(inout) , contiguous    :: inv(:,:)
-        real(RKC)           , intent(in)    , contiguous    :: mat(:,:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)           , intent(inout) , contiguous    :: inv(:,:)
+        real(RKG)           , intent(in)    , contiguous    :: mat(:,:)
         type(choUpp_type)   , intent(in)                    :: auxil
         type(uppDia_type)   , intent(in)                    :: subset
     end subroutine
@@ -3093,9 +3093,9 @@ module pm_matrixInv
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatInvCCU_UXD_IMP_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)           , intent(inout) , contiguous    :: inv(:,:)
-        real(RKC)           , intent(in)    , contiguous    :: mat(:,:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)           , intent(inout) , contiguous    :: inv(:,:)
+        real(RKG)           , intent(in)    , contiguous    :: mat(:,:)
         type(choUpp_type)   , intent(in)                    :: auxil
         type(uppDia_type)   , intent(in)                    :: subset
     end subroutine
@@ -3106,9 +3106,9 @@ module pm_matrixInv
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatInvCCU_UXD_IMP_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)           , intent(inout) , contiguous    :: inv(:,:)
-        real(RKC)           , intent(in)    , contiguous    :: mat(:,:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)           , intent(inout) , contiguous    :: inv(:,:)
+        real(RKG)           , intent(in)    , contiguous    :: mat(:,:)
         type(choUpp_type)   , intent(in)                    :: auxil
         type(uppDia_type)   , intent(in)                    :: subset
     end subroutine
@@ -3119,9 +3119,9 @@ module pm_matrixInv
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatInvCCU_UXD_IMP_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)           , intent(inout) , contiguous    :: inv(:,:)
-        real(RKC)           , intent(in)    , contiguous    :: mat(:,:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)           , intent(inout) , contiguous    :: inv(:,:)
+        real(RKG)           , intent(in)    , contiguous    :: mat(:,:)
         type(choUpp_type)   , intent(in)                    :: auxil
         type(uppDia_type)   , intent(in)                    :: subset
     end subroutine
@@ -3142,9 +3142,9 @@ module pm_matrixInv
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatInvCCL_UXD_IMP_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)        , intent(inout) , contiguous    :: inv(:,:)
-        complex(CKC)        , intent(in)    , contiguous    :: mat(:,:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG)        , intent(inout) , contiguous    :: inv(:,:)
+        complex(CKG)        , intent(in)    , contiguous    :: mat(:,:)
         type(choLow_type)   , intent(in)                    :: auxil
         type(uppDia_type)   , intent(in)                    :: subset
     end subroutine
@@ -3155,9 +3155,9 @@ module pm_matrixInv
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatInvCCL_UXD_IMP_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)        , intent(inout) , contiguous    :: inv(:,:)
-        complex(CKC)        , intent(in)    , contiguous    :: mat(:,:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG)        , intent(inout) , contiguous    :: inv(:,:)
+        complex(CKG)        , intent(in)    , contiguous    :: mat(:,:)
         type(choLow_type)   , intent(in)                    :: auxil
         type(uppDia_type)   , intent(in)                    :: subset
     end subroutine
@@ -3168,9 +3168,9 @@ module pm_matrixInv
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatInvCCL_UXD_IMP_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)        , intent(inout) , contiguous    :: inv(:,:)
-        complex(CKC)        , intent(in)    , contiguous    :: mat(:,:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG)        , intent(inout) , contiguous    :: inv(:,:)
+        complex(CKG)        , intent(in)    , contiguous    :: mat(:,:)
         type(choLow_type)   , intent(in)                    :: auxil
         type(uppDia_type)   , intent(in)                    :: subset
     end subroutine
@@ -3181,9 +3181,9 @@ module pm_matrixInv
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatInvCCL_UXD_IMP_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)        , intent(inout) , contiguous    :: inv(:,:)
-        complex(CKC)        , intent(in)    , contiguous    :: mat(:,:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG)        , intent(inout) , contiguous    :: inv(:,:)
+        complex(CKG)        , intent(in)    , contiguous    :: mat(:,:)
         type(choLow_type)   , intent(in)                    :: auxil
         type(uppDia_type)   , intent(in)                    :: subset
     end subroutine
@@ -3194,9 +3194,9 @@ module pm_matrixInv
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatInvCCL_UXD_IMP_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)        , intent(inout) , contiguous    :: inv(:,:)
-        complex(CKC)        , intent(in)    , contiguous    :: mat(:,:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG)        , intent(inout) , contiguous    :: inv(:,:)
+        complex(CKG)        , intent(in)    , contiguous    :: mat(:,:)
         type(choLow_type)   , intent(in)                    :: auxil
         type(uppDia_type)   , intent(in)                    :: subset
     end subroutine
@@ -3209,9 +3209,9 @@ module pm_matrixInv
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatInvCCL_UXD_IMP_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)           , intent(inout) , contiguous    :: inv(:,:)
-        real(RKC)           , intent(in)    , contiguous    :: mat(:,:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)           , intent(inout) , contiguous    :: inv(:,:)
+        real(RKG)           , intent(in)    , contiguous    :: mat(:,:)
         type(choLow_type)   , intent(in)                    :: auxil
         type(uppDia_type)   , intent(in)                    :: subset
     end subroutine
@@ -3222,9 +3222,9 @@ module pm_matrixInv
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatInvCCL_UXD_IMP_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)           , intent(inout) , contiguous    :: inv(:,:)
-        real(RKC)           , intent(in)    , contiguous    :: mat(:,:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)           , intent(inout) , contiguous    :: inv(:,:)
+        real(RKG)           , intent(in)    , contiguous    :: mat(:,:)
         type(choLow_type)   , intent(in)                    :: auxil
         type(uppDia_type)   , intent(in)                    :: subset
     end subroutine
@@ -3235,9 +3235,9 @@ module pm_matrixInv
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatInvCCL_UXD_IMP_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)           , intent(inout) , contiguous    :: inv(:,:)
-        real(RKC)           , intent(in)    , contiguous    :: mat(:,:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)           , intent(inout) , contiguous    :: inv(:,:)
+        real(RKG)           , intent(in)    , contiguous    :: mat(:,:)
         type(choLow_type)   , intent(in)                    :: auxil
         type(uppDia_type)   , intent(in)                    :: subset
     end subroutine
@@ -3248,9 +3248,9 @@ module pm_matrixInv
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatInvCCL_UXD_IMP_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)           , intent(inout) , contiguous    :: inv(:,:)
-        real(RKC)           , intent(in)    , contiguous    :: mat(:,:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)           , intent(inout) , contiguous    :: inv(:,:)
+        real(RKG)           , intent(in)    , contiguous    :: mat(:,:)
         type(choLow_type)   , intent(in)                    :: auxil
         type(uppDia_type)   , intent(in)                    :: subset
     end subroutine
@@ -3261,9 +3261,9 @@ module pm_matrixInv
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatInvCCL_UXD_IMP_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)           , intent(inout) , contiguous    :: inv(:,:)
-        real(RKC)           , intent(in)    , contiguous    :: mat(:,:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)           , intent(inout) , contiguous    :: inv(:,:)
+        real(RKG)           , intent(in)    , contiguous    :: mat(:,:)
         type(choLow_type)   , intent(in)                    :: auxil
         type(uppDia_type)   , intent(in)                    :: subset
     end subroutine

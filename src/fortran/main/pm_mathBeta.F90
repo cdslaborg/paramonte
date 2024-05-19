@@ -150,9 +150,9 @@ module pm_mathBeta
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogBeta_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(in)    :: alpha, beta
-        real(RKC)                   :: logFuncBeta
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(in)    :: alpha, beta
+        real(RKG)                   :: logFuncBeta
     end function
 #endif
 
@@ -161,9 +161,9 @@ module pm_mathBeta
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogBeta_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(in)    :: alpha, beta
-        real(RKC)                   :: logFuncBeta
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(in)    :: alpha, beta
+        real(RKG)                   :: logFuncBeta
     end function
 #endif
 
@@ -172,9 +172,9 @@ module pm_mathBeta
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogBeta_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(in)    :: alpha, beta
-        real(RKC)                   :: logFuncBeta
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(in)    :: alpha, beta
+        real(RKG)                   :: logFuncBeta
     end function
 #endif
 
@@ -183,9 +183,9 @@ module pm_mathBeta
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogBeta_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(in)    :: alpha, beta
-        real(RKC)                   :: logFuncBeta
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(in)    :: alpha, beta
+        real(RKG)                   :: logFuncBeta
     end function
 #endif
 
@@ -194,9 +194,9 @@ module pm_mathBeta
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogBeta_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(in)    :: alpha, beta
-        real(RKC)                   :: logFuncBeta
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(in)    :: alpha, beta
+        real(RKG)                   :: logFuncBeta
     end function
 #endif
 
@@ -286,9 +286,9 @@ module pm_mathBeta
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getBetaInc_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)                               :: betaInc
-        real(RKC)   , intent(in)                :: x, alpha, beta
+        use pm_kind, only: RKG => RK5
+        real(RKG)                               :: betaInc
+        real(RKG)   , intent(in)                :: x, alpha, beta
         logical(LK) , intent(in)    , optional  :: signed
     end function
 #endif
@@ -298,9 +298,9 @@ module pm_mathBeta
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getBetaInc_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)                               :: betaInc
-        real(RKC)   , intent(in)                :: x, alpha, beta
+        use pm_kind, only: RKG => RK4
+        real(RKG)                               :: betaInc
+        real(RKG)   , intent(in)                :: x, alpha, beta
         logical(LK) , intent(in)    , optional  :: signed
     end function
 #endif
@@ -310,9 +310,9 @@ module pm_mathBeta
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getBetaInc_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)                               :: betaInc
-        real(RKC)   , intent(in)                :: x, alpha, beta
+        use pm_kind, only: RKG => RK3
+        real(RKG)                               :: betaInc
+        real(RKG)   , intent(in)                :: x, alpha, beta
         logical(LK) , intent(in)    , optional  :: signed
     end function
 #endif
@@ -322,9 +322,9 @@ module pm_mathBeta
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getBetaInc_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)                               :: betaInc
-        real(RKC)   , intent(in)                :: x, alpha, beta
+        use pm_kind, only: RKG => RK2
+        real(RKG)                               :: betaInc
+        real(RKG)   , intent(in)                :: x, alpha, beta
         logical(LK) , intent(in)    , optional  :: signed
     end function
 #endif
@@ -334,9 +334,9 @@ module pm_mathBeta
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getBetaInc_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)                               :: betaInc
-        real(RKC)   , intent(in)                :: x, alpha, beta
+        use pm_kind, only: RKG => RK1
+        real(RKG)                               :: betaInc
+        real(RKG)   , intent(in)                :: x, alpha, beta
         logical(LK) , intent(in)    , optional  :: signed
     end function
 #endif
@@ -453,10 +453,10 @@ module pm_mathBeta
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setBetaIncDef_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)       , intent(out)               :: betaInc
-        real(RKC)       , intent(in)                :: logFuncBeta
-        real(RKC)       , value                     :: x, alpha, beta
+        use pm_kind, only: RKG => RK5
+        real(RKG)       , intent(out)               :: betaInc
+        real(RKG)       , intent(in)                :: logFuncBeta
+        real(RKG)       , value                     :: x, alpha, beta
         logical(LK)     , intent(in)                :: signed
         integer(IK)     , intent(out)               :: info
     end subroutine
@@ -467,10 +467,10 @@ module pm_mathBeta
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setBetaIncDef_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)       , intent(out)               :: betaInc
-        real(RKC)       , intent(in)                :: logFuncBeta
-        real(RKC)       , value                     :: x, alpha, beta
+        use pm_kind, only: RKG => RK4
+        real(RKG)       , intent(out)               :: betaInc
+        real(RKG)       , intent(in)                :: logFuncBeta
+        real(RKG)       , value                     :: x, alpha, beta
         logical(LK)     , intent(in)                :: signed
         integer(IK)     , intent(out)               :: info
     end subroutine
@@ -481,10 +481,10 @@ module pm_mathBeta
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setBetaIncDef_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)       , intent(out)               :: betaInc
-        real(RKC)       , intent(in)                :: logFuncBeta
-        real(RKC)       , value                     :: x, alpha, beta
+        use pm_kind, only: RKG => RK3
+        real(RKG)       , intent(out)               :: betaInc
+        real(RKG)       , intent(in)                :: logFuncBeta
+        real(RKG)       , value                     :: x, alpha, beta
         logical(LK)     , intent(in)                :: signed
         integer(IK)     , intent(out)               :: info
     end subroutine
@@ -495,10 +495,10 @@ module pm_mathBeta
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setBetaIncDef_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)       , intent(out)               :: betaInc
-        real(RKC)       , intent(in)                :: logFuncBeta
-        real(RKC)       , value                     :: x, alpha, beta
+        use pm_kind, only: RKG => RK2
+        real(RKG)       , intent(out)               :: betaInc
+        real(RKG)       , intent(in)                :: logFuncBeta
+        real(RKG)       , value                     :: x, alpha, beta
         logical(LK)     , intent(in)                :: signed
         integer(IK)     , intent(out)               :: info
     end subroutine
@@ -509,10 +509,10 @@ module pm_mathBeta
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setBetaIncDef_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)       , intent(out)               :: betaInc
-        real(RKC)       , intent(in)                :: logFuncBeta
-        real(RKC)       , value                     :: x, alpha, beta
+        use pm_kind, only: RKG => RK1
+        real(RKG)       , intent(out)               :: betaInc
+        real(RKG)       , intent(in)                :: logFuncBeta
+        real(RKG)       , value                     :: x, alpha, beta
         logical(LK)     , intent(in)                :: signed
         integer(IK)     , intent(out)               :: info
     end subroutine
@@ -525,11 +525,11 @@ module pm_mathBeta
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setBetaIncGK21_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)       , intent(out)               :: betaInc
-        real(RKC)       , intent(in)                :: logFuncBeta
-        real(RKC)       , value                     :: x, alpha, beta
-        real(RKC)       , intent(in)                :: reltol
+        use pm_kind, only: RKG => RK5
+        real(RKG)       , intent(out)               :: betaInc
+        real(RKG)       , intent(in)                :: logFuncBeta
+        real(RKG)       , value                     :: x, alpha, beta
+        real(RKG)       , intent(in)                :: reltol
         logical(LK)     , intent(in)                :: signed
         integer(IK)     , intent(out)               :: info
     end subroutine
@@ -540,11 +540,11 @@ module pm_mathBeta
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setBetaIncGK21_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)       , intent(out)               :: betaInc
-        real(RKC)       , intent(in)                :: logFuncBeta
-        real(RKC)       , value                     :: x, alpha, beta
-        real(RKC)       , intent(in)                :: reltol
+        use pm_kind, only: RKG => RK4
+        real(RKG)       , intent(out)               :: betaInc
+        real(RKG)       , intent(in)                :: logFuncBeta
+        real(RKG)       , value                     :: x, alpha, beta
+        real(RKG)       , intent(in)                :: reltol
         logical(LK)     , intent(in)                :: signed
         integer(IK)     , intent(out)               :: info
     end subroutine
@@ -555,11 +555,11 @@ module pm_mathBeta
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setBetaIncGK21_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)       , intent(out)               :: betaInc
-        real(RKC)       , intent(in)                :: logFuncBeta
-        real(RKC)       , value                     :: x, alpha, beta
-        real(RKC)       , intent(in)                :: reltol
+        use pm_kind, only: RKG => RK3
+        real(RKG)       , intent(out)               :: betaInc
+        real(RKG)       , intent(in)                :: logFuncBeta
+        real(RKG)       , value                     :: x, alpha, beta
+        real(RKG)       , intent(in)                :: reltol
         logical(LK)     , intent(in)                :: signed
         integer(IK)     , intent(out)               :: info
     end subroutine
@@ -570,11 +570,11 @@ module pm_mathBeta
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setBetaIncGK21_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)       , intent(out)               :: betaInc
-        real(RKC)       , intent(in)                :: logFuncBeta
-        real(RKC)       , value                     :: x, alpha, beta
-        real(RKC)       , intent(in)                :: reltol
+        use pm_kind, only: RKG => RK2
+        real(RKG)       , intent(out)               :: betaInc
+        real(RKG)       , intent(in)                :: logFuncBeta
+        real(RKG)       , value                     :: x, alpha, beta
+        real(RKG)       , intent(in)                :: reltol
         logical(LK)     , intent(in)                :: signed
         integer(IK)     , intent(out)               :: info
     end subroutine
@@ -585,11 +585,11 @@ module pm_mathBeta
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setBetaIncGK21_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)       , intent(out)               :: betaInc
-        real(RKC)       , intent(in)                :: logFuncBeta
-        real(RKC)       , value                     :: x, alpha, beta
-        real(RKC)       , intent(in)                :: reltol
+        use pm_kind, only: RKG => RK1
+        real(RKG)       , intent(out)               :: betaInc
+        real(RKG)       , intent(in)                :: logFuncBeta
+        real(RKG)       , value                     :: x, alpha, beta
+        real(RKG)       , intent(in)                :: reltol
         logical(LK)     , intent(in)                :: signed
         integer(IK)     , intent(out)               :: info
     end subroutine
@@ -684,9 +684,9 @@ module pm_mathBeta
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getBetaInv_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)                                   :: betaInv
-        real(RKC)       , intent(in)                :: betaInc, alpha, beta
+        use pm_kind, only: RKG => RK5
+        real(RKG)                                   :: betaInv
+        real(RKG)       , intent(in)                :: betaInc, alpha, beta
         logical(LK)     , intent(in)    , optional  :: signed
     end function
 #endif
@@ -696,9 +696,9 @@ module pm_mathBeta
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getBetaInv_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)                                   :: betaInv
-        real(RKC)       , intent(in)                :: betaInc, alpha, beta
+        use pm_kind, only: RKG => RK4
+        real(RKG)                                   :: betaInv
+        real(RKG)       , intent(in)                :: betaInc, alpha, beta
         logical(LK)     , intent(in)    , optional  :: signed
     end function
 #endif
@@ -708,9 +708,9 @@ module pm_mathBeta
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getBetaInv_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)                                   :: betaInv
-        real(RKC)       , intent(in)                :: betaInc, alpha, beta
+        use pm_kind, only: RKG => RK3
+        real(RKG)                                   :: betaInv
+        real(RKG)       , intent(in)                :: betaInc, alpha, beta
         logical(LK)     , intent(in)    , optional  :: signed
     end function
 #endif
@@ -720,9 +720,9 @@ module pm_mathBeta
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getBetaInv_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)                                   :: betaInv
-        real(RKC)       , intent(in)                :: betaInc, alpha, beta
+        use pm_kind, only: RKG => RK2
+        real(RKG)                                   :: betaInv
+        real(RKG)       , intent(in)                :: betaInc, alpha, beta
         logical(LK)     , intent(in)    , optional  :: signed
     end function
 #endif
@@ -732,9 +732,9 @@ module pm_mathBeta
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getBetaInv_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)                                   :: betaInv
-        real(RKC)       , intent(in)                :: betaInc, alpha, beta
+        use pm_kind, only: RKG => RK1
+        real(RKG)                                   :: betaInv
+        real(RKG)       , intent(in)                :: betaInc, alpha, beta
         logical(LK)     , intent(in)    , optional  :: signed
     end function
 #endif
@@ -833,9 +833,9 @@ module pm_mathBeta
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setBetaInv_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)       , intent(out)               :: betaInv
-        real(RKC)       , value                     :: betaInc, alpha, beta, logFuncBeta
+        use pm_kind, only: RKG => RK5
+        real(RKG)       , intent(out)               :: betaInv
+        real(RKG)       , value                     :: betaInc, alpha, beta, logFuncBeta
         logical(LK)     , intent(in)                :: signed
         integer(IK)     , intent(out)               :: info
     end subroutine
@@ -846,9 +846,9 @@ module pm_mathBeta
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setBetaInv_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)       , intent(out)               :: betaInv
-        real(RKC)       , value                     :: betaInc, alpha, beta, logFuncBeta
+        use pm_kind, only: RKG => RK4
+        real(RKG)       , intent(out)               :: betaInv
+        real(RKG)       , value                     :: betaInc, alpha, beta, logFuncBeta
         logical(LK)     , intent(in)                :: signed
         integer(IK)     , intent(out)               :: info
     end subroutine
@@ -859,9 +859,9 @@ module pm_mathBeta
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setBetaInv_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)       , intent(out)               :: betaInv
-        real(RKC)       , value                     :: betaInc, alpha, beta, logFuncBeta
+        use pm_kind, only: RKG => RK3
+        real(RKG)       , intent(out)               :: betaInv
+        real(RKG)       , value                     :: betaInc, alpha, beta, logFuncBeta
         logical(LK)     , intent(in)                :: signed
         integer(IK)     , intent(out)               :: info
     end subroutine
@@ -872,9 +872,9 @@ module pm_mathBeta
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setBetaInv_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)       , intent(out)               :: betaInv
-        real(RKC)       , value                     :: betaInc, alpha, beta, logFuncBeta
+        use pm_kind, only: RKG => RK2
+        real(RKG)       , intent(out)               :: betaInv
+        real(RKG)       , value                     :: betaInc, alpha, beta, logFuncBeta
         logical(LK)     , intent(in)                :: signed
         integer(IK)     , intent(out)               :: info
     end subroutine
@@ -885,9 +885,9 @@ module pm_mathBeta
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setBetaInv_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)       , intent(out)               :: betaInv
-        real(RKC)       , value                     :: betaInc, alpha, beta, logFuncBeta
+        use pm_kind, only: RKG => RK1
+        real(RKG)       , intent(out)               :: betaInv
+        real(RKG)       , value                     :: betaInc, alpha, beta, logFuncBeta
         logical(LK)     , intent(in)                :: signed
         integer(IK)     , intent(out)               :: info
     end subroutine

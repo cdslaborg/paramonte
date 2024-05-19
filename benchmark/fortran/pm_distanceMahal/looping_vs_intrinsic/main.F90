@@ -2,7 +2,7 @@ program benchmark
 
     use pm_bench, only: bench_type
     use iso_fortran_env, only: error_unit
-    use pm_kind, only: IK, RKC => RK, RK, SK
+    use pm_kind, only: IK, RKG => RK, RK, SK
     use pm_distUnif, only: getUnifRand
 
     implicit none
@@ -11,10 +11,10 @@ program benchmark
     integer(IK)                         :: i, isim, nsim                        !<  The procedure benchmark counter.
     integer(IK)                         :: rank, irank                          !<  The matrix rank and its counter.
     integer(IK)     , parameter         :: NRANK = 10_IK                        !<  The number of benchmark ranks.
-    real(RKC)                           :: dummySum = 0._RKC                    !<  The dummy computation to prevent the compiler from doing aggressive optimizations.
-    real(RKC)                           :: dummyOne = 0._RKC                    !<  The dummy result.
-    real(RKC)                           :: dummyTwo = 0._RKC                    !<  The dummy result.
-    real(RKC)       , allocatable       :: matA(:,:), matB(:)                   !<  The matrix.
+    real(RKG)                           :: dummySum = 0._RKG                    !<  The dummy computation to prevent the compiler from doing aggressive optimizations.
+    real(RKG)                           :: dummyOne = 0._RKG                    !<  The dummy result.
+    real(RKG)                           :: dummyTwo = 0._RKG                    !<  The dummy result.
+    real(RKG)       , allocatable       :: matA(:,:), matB(:)                   !<  The matrix.
     type(bench_type), allocatable       :: bench(:)                             !<  The Benchmark array.
 
     bench = [ bench_type(name = SK_"loop_and_dotp", exec = loop_and_dotp, overhead = setOverhead) &
@@ -29,8 +29,8 @@ program benchmark
 
             rank = 2_IK**irank
             nsim = nint(2.**NRANK / rank)
-            matB = getUnifRand(0._RKC, 1._RKC, rank)
-            matA = getUnifRand(0._RKC, 1._RKC, rank, rank)
+            matB = getUnifRand(0._RKG, 1._RKG, rank)
+            matA = getUnifRand(0._RKG, 1._RKG, rank, rank)
 
             write(*,"(*(g0,:,' '))") "Benchmarking with rank", rank
 
@@ -65,7 +65,7 @@ contains
     subroutine loop_and_dotp()
         integer(IK) :: i, sizeB
         sizeB = size(matB, 1, IK)
-        dummyOne = 0._RKC
+        dummyOne = 0._RKG
         do isim = 1, nsim
             do i = 1, sizeB
                 dummyOne = dummyOne + matB(i) * dot_product(matB, matA(1:sizeB, i))

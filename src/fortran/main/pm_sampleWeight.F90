@@ -380,10 +380,10 @@ module pm_sampleWeight
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getReweight_IK_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)        , intent(in)    , contiguous    :: weight(:)
-        integer(IKC)        , intent(in)                    :: skip
-        integer(IKC)                                        :: reweight(size(weight, 1, IK))
+        use pm_kind, only: IKG => IK5
+        integer(IKG)        , intent(in)    , contiguous    :: weight(:)
+        integer(IKG)        , intent(in)                    :: skip
+        integer(IKG)                                        :: reweight(size(weight, 1, IK))
     end function
 #endif
 
@@ -392,10 +392,10 @@ module pm_sampleWeight
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getReweight_IK_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)        , intent(in)    , contiguous    :: weight(:)
-        integer(IKC)        , intent(in)                    :: skip
-        integer(IKC)                                        :: reweight(size(weight, 1, IK))
+        use pm_kind, only: IKG => IK4
+        integer(IKG)        , intent(in)    , contiguous    :: weight(:)
+        integer(IKG)        , intent(in)                    :: skip
+        integer(IKG)                                        :: reweight(size(weight, 1, IK))
     end function
 #endif
 
@@ -404,10 +404,10 @@ module pm_sampleWeight
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getReweight_IK_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)        , intent(in)    , contiguous    :: weight(:)
-        integer(IKC)        , intent(in)                    :: skip
-        integer(IKC)                                        :: reweight(size(weight, 1, IK))
+        use pm_kind, only: IKG => IK3
+        integer(IKG)        , intent(in)    , contiguous    :: weight(:)
+        integer(IKG)        , intent(in)                    :: skip
+        integer(IKG)                                        :: reweight(size(weight, 1, IK))
     end function
 #endif
 
@@ -416,10 +416,10 @@ module pm_sampleWeight
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getReweight_IK_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)        , intent(in)    , contiguous    :: weight(:)
-        integer(IKC)        , intent(in)                    :: skip
-        integer(IKC)                                        :: reweight(size(weight, 1, IK))
+        use pm_kind, only: IKG => IK2
+        integer(IKG)        , intent(in)    , contiguous    :: weight(:)
+        integer(IKG)        , intent(in)                    :: skip
+        integer(IKG)                                        :: reweight(size(weight, 1, IK))
     end function
 #endif
 
@@ -428,10 +428,10 @@ module pm_sampleWeight
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getReweight_IK_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)        , intent(in)    , contiguous    :: weight(:)
-        integer(IKC)        , intent(in)                    :: skip
-        integer(IKC)                                        :: reweight(size(weight, 1, IK))
+        use pm_kind, only: IKG => IK1
+        integer(IKG)        , intent(in)    , contiguous    :: weight(:)
+        integer(IKG)        , intent(in)                    :: skip
+        integer(IKG)                                        :: reweight(size(weight, 1, IK))
     end function
 #endif
 
@@ -442,10 +442,10 @@ module pm_sampleWeight
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getReweight_RK_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)           , intent(in)    , contiguous    :: weight(:)
-        real(RKC)           , intent(in)                    :: skip
-        real(RKC)                                           :: reweight(size(weight, 1, IK))
+        use pm_kind, only: RKG => RK5
+        real(RKG)           , intent(in)    , contiguous    :: weight(:)
+        real(RKG)           , intent(in)                    :: skip
+        real(RKG)                                           :: reweight(size(weight, 1, IK))
     end function
 #endif
 
@@ -454,10 +454,10 @@ module pm_sampleWeight
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getReweight_RK_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)           , intent(in)    , contiguous    :: weight(:)
-        real(RKC)           , intent(in)                    :: skip
-        real(RKC)                                           :: reweight(size(weight, 1, IK))
+        use pm_kind, only: RKG => RK4
+        real(RKG)           , intent(in)    , contiguous    :: weight(:)
+        real(RKG)           , intent(in)                    :: skip
+        real(RKG)                                           :: reweight(size(weight, 1, IK))
     end function
 #endif
 
@@ -466,10 +466,10 @@ module pm_sampleWeight
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getReweight_RK_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)           , intent(in)    , contiguous    :: weight(:)
-        real(RKC)           , intent(in)                    :: skip
-        real(RKC)                                           :: reweight(size(weight, 1, IK))
+        use pm_kind, only: RKG => RK3
+        real(RKG)           , intent(in)    , contiguous    :: weight(:)
+        real(RKG)           , intent(in)                    :: skip
+        real(RKG)                                           :: reweight(size(weight, 1, IK))
     end function
 #endif
 
@@ -478,10 +478,10 @@ module pm_sampleWeight
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getReweight_RK_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)           , intent(in)    , contiguous    :: weight(:)
-        real(RKC)           , intent(in)                    :: skip
-        real(RKC)                                           :: reweight(size(weight, 1, IK))
+        use pm_kind, only: RKG => RK2
+        real(RKG)           , intent(in)    , contiguous    :: weight(:)
+        real(RKG)           , intent(in)                    :: skip
+        real(RKG)                                           :: reweight(size(weight, 1, IK))
     end function
 #endif
 
@@ -490,10 +490,10 @@ module pm_sampleWeight
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getReweight_RK_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)           , intent(in)    , contiguous    :: weight(:)
-        real(RKC)           , intent(in)                    :: skip
-        real(RKC)                                           :: reweight(size(weight, 1, IK))
+        use pm_kind, only: RKG => RK1
+        real(RKG)           , intent(in)    , contiguous    :: weight(:)
+        real(RKG)           , intent(in)                    :: skip
+        real(RKG)                                           :: reweight(size(weight, 1, IK))
     end function
 #endif
 
@@ -504,9 +504,9 @@ module pm_sampleWeight
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getReweight_IK_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         integer(IK)         , intent(in)    , contiguous    :: weight(:)
-        real(RKC)           , intent(in)                    :: skip
+        real(RKG)           , intent(in)                    :: skip
         integer(IK)                                         :: reweight(size(weight, 1, IK))
     end function
 #endif
@@ -516,9 +516,9 @@ module pm_sampleWeight
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getReweight_IK_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         integer(IK)         , intent(in)    , contiguous    :: weight(:)
-        real(RKC)           , intent(in)                    :: skip
+        real(RKG)           , intent(in)                    :: skip
         integer(IK)                                         :: reweight(size(weight, 1, IK))
     end function
 #endif
@@ -528,9 +528,9 @@ module pm_sampleWeight
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getReweight_IK_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         integer(IK)         , intent(in)    , contiguous    :: weight(:)
-        real(RKC)           , intent(in)                    :: skip
+        real(RKG)           , intent(in)                    :: skip
         integer(IK)                                         :: reweight(size(weight, 1, IK))
     end function
 #endif
@@ -540,9 +540,9 @@ module pm_sampleWeight
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getReweight_IK_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         integer(IK)         , intent(in)    , contiguous    :: weight(:)
-        real(RKC)           , intent(in)                    :: skip
+        real(RKG)           , intent(in)                    :: skip
         integer(IK)                                         :: reweight(size(weight, 1, IK))
     end function
 #endif
@@ -552,9 +552,9 @@ module pm_sampleWeight
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getReweight_IK_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         integer(IK)         , intent(in)    , contiguous    :: weight(:)
-        real(RKC)           , intent(in)                    :: skip
+        real(RKG)           , intent(in)                    :: skip
         integer(IK)                                         :: reweight(size(weight, 1, IK))
     end function
 #endif
@@ -646,10 +646,10 @@ module pm_sampleWeight
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setReweight_IK_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)        , intent(inout) , contiguous    :: weight(:)
-        integer(IKC)        , intent(in)                    :: skip
-        integer(IKC)                                        :: reweight(size(weight, 1, IK))
+        use pm_kind, only: IKG => IK5
+        integer(IKG)        , intent(inout) , contiguous    :: weight(:)
+        integer(IKG)        , intent(in)                    :: skip
+        integer(IKG)                                        :: reweight(size(weight, 1, IK))
     end subroutine
 #endif
 
@@ -658,10 +658,10 @@ module pm_sampleWeight
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setReweight_IK_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)        , intent(inout) , contiguous    :: weight(:)
-        integer(IKC)        , intent(in)                    :: skip
-        integer(IKC)                                        :: reweight(size(weight, 1, IK))
+        use pm_kind, only: IKG => IK4
+        integer(IKG)        , intent(inout) , contiguous    :: weight(:)
+        integer(IKG)        , intent(in)                    :: skip
+        integer(IKG)                                        :: reweight(size(weight, 1, IK))
     end subroutine
 #endif
 
@@ -670,10 +670,10 @@ module pm_sampleWeight
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setReweight_IK_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)        , intent(inout) , contiguous    :: weight(:)
-        integer(IKC)        , intent(in)                    :: skip
-        integer(IKC)                                        :: reweight(size(weight, 1, IK))
+        use pm_kind, only: IKG => IK3
+        integer(IKG)        , intent(inout) , contiguous    :: weight(:)
+        integer(IKG)        , intent(in)                    :: skip
+        integer(IKG)                                        :: reweight(size(weight, 1, IK))
     end subroutine
 #endif
 
@@ -682,10 +682,10 @@ module pm_sampleWeight
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setReweight_IK_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)        , intent(inout) , contiguous    :: weight(:)
-        integer(IKC)        , intent(in)                    :: skip
-        integer(IKC)                                        :: reweight(size(weight, 1, IK))
+        use pm_kind, only: IKG => IK2
+        integer(IKG)        , intent(inout) , contiguous    :: weight(:)
+        integer(IKG)        , intent(in)                    :: skip
+        integer(IKG)                                        :: reweight(size(weight, 1, IK))
     end subroutine
 #endif
 
@@ -694,10 +694,10 @@ module pm_sampleWeight
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setReweight_IK_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)        , intent(inout) , contiguous    :: weight(:)
-        integer(IKC)        , intent(in)                    :: skip
-        integer(IKC)                                        :: reweight(size(weight, 1, IK))
+        use pm_kind, only: IKG => IK1
+        integer(IKG)        , intent(inout) , contiguous    :: weight(:)
+        integer(IKG)        , intent(in)                    :: skip
+        integer(IKG)                                        :: reweight(size(weight, 1, IK))
     end subroutine
 #endif
 
@@ -708,9 +708,9 @@ module pm_sampleWeight
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setReweight_RK_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)           , intent(inout) , contiguous    :: weight(:)
-        real(RKC)           , intent(in)                    :: skip
+        use pm_kind, only: RKG => RK5
+        real(RKG)           , intent(inout) , contiguous    :: weight(:)
+        real(RKG)           , intent(in)                    :: skip
     end subroutine
 #endif
 
@@ -719,9 +719,9 @@ module pm_sampleWeight
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setReweight_RK_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)           , intent(inout) , contiguous    :: weight(:)
-        real(RKC)           , intent(in)                    :: skip
+        use pm_kind, only: RKG => RK4
+        real(RKG)           , intent(inout) , contiguous    :: weight(:)
+        real(RKG)           , intent(in)                    :: skip
     end subroutine
 #endif
 
@@ -730,9 +730,9 @@ module pm_sampleWeight
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setReweight_RK_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)           , intent(inout) , contiguous    :: weight(:)
-        real(RKC)           , intent(in)                    :: skip
+        use pm_kind, only: RKG => RK3
+        real(RKG)           , intent(inout) , contiguous    :: weight(:)
+        real(RKG)           , intent(in)                    :: skip
     end subroutine
 #endif
 
@@ -741,9 +741,9 @@ module pm_sampleWeight
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setReweight_RK_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)           , intent(inout) , contiguous    :: weight(:)
-        real(RKC)           , intent(in)                    :: skip
+        use pm_kind, only: RKG => RK2
+        real(RKG)           , intent(inout) , contiguous    :: weight(:)
+        real(RKG)           , intent(in)                    :: skip
     end subroutine
 #endif
 
@@ -752,9 +752,9 @@ module pm_sampleWeight
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setReweight_RK_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)           , intent(inout) , contiguous    :: weight(:)
-        real(RKC)           , intent(in)                    :: skip
+        use pm_kind, only: RKG => RK1
+        real(RKG)           , intent(inout) , contiguous    :: weight(:)
+        real(RKG)           , intent(in)                    :: skip
     end subroutine
 #endif
 
@@ -765,9 +765,9 @@ module pm_sampleWeight
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setReweight_IK_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         integer(IK)         , intent(inout) , contiguous    :: weight(:)
-        real(RKC)           , intent(in)                    :: skip
+        real(RKG)           , intent(in)                    :: skip
     end subroutine
 #endif
 
@@ -776,9 +776,9 @@ module pm_sampleWeight
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setReweight_IK_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         integer(IK)         , intent(inout) , contiguous    :: weight(:)
-        real(RKC)           , intent(in)                    :: skip
+        real(RKG)           , intent(in)                    :: skip
     end subroutine
 #endif
 
@@ -787,9 +787,9 @@ module pm_sampleWeight
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setReweight_IK_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         integer(IK)         , intent(inout) , contiguous    :: weight(:)
-        real(RKC)           , intent(in)                    :: skip
+        real(RKG)           , intent(in)                    :: skip
     end subroutine
 #endif
 
@@ -798,9 +798,9 @@ module pm_sampleWeight
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setReweight_IK_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         integer(IK)         , intent(inout) , contiguous    :: weight(:)
-        real(RKC)           , intent(in)                    :: skip
+        real(RKG)           , intent(in)                    :: skip
     end subroutine
 #endif
 
@@ -809,9 +809,9 @@ module pm_sampleWeight
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setReweight_IK_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         integer(IK)         , intent(inout) , contiguous    :: weight(:)
-        real(RKC)           , intent(in)                    :: skip
+        real(RKG)           , intent(in)                    :: skip
     end subroutine
 #endif
 

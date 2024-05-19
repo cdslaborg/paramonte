@@ -1,7 +1,7 @@
 program example
 
     use pm_kind, only: SK, IK, LK
-    use pm_kind, only: SKC => SK, IKC => IKS, LKC => LK, RKC => RKS, CKC => CKS ! all processor types and kinds are supported.
+    use pm_kind, only: SKG => SK, IKG => IKS, LKG => LK, RKG => RKS, CKG => CKS ! all processor types and kinds are supported.
     use pm_matrixCopy, only: getMatCopy, transSymm, transHerm
     use pm_matrixCopy, only: dia, lowDia, uppDia, uppLow
     use pm_matrixCopy, only: rdpack, lfpack, rfpack
@@ -17,7 +17,7 @@ program example
     type(display_type)  :: disp
     disp = display_type(file = "main.out.F90")
 
-    cform = getFormat([cmplx(0., 0., CKC)], ed = SK_'f', ndigit = 1_IK, signed = .true.)
+    cform = getFormat([cmplx(0., 0., CKG)], ed = SK_'f', ndigit = 1_IK, signed = .true.)
 
     call disp%skip()
     call disp%show("!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
@@ -27,12 +27,12 @@ program example
 
     block
 
-        character(2,SKC) :: source(10,10), destin(10,10)
-        character(2,SKC), parameter :: EMPTY = SKC_"  "
+        character(2,SKG) :: source(10,10), destin(10,10)
+        character(2,SKG), parameter :: EMPTY = SKG_"  "
 
         call disp%skip()
-        call disp%show("call setUnifRand(source, SKC_'AA', SKC_'ZZ')")
-                        call setUnifRand(source, SKC_'AA', SKC_'ZZ')
+        call disp%show("call setUnifRand(source, SKG_'AA', SKG_'ZZ')")
+                        call setUnifRand(source, SKG_'AA', SKG_'ZZ')
         call disp%show("source")
         call disp%show( source , deliml = SK_"""" )
         call disp%show("destin = EMPTY")
@@ -632,8 +632,8 @@ program example
 
 
         call disp%skip()
-        call disp%show("call setUnifRand(source, SKC_'AA', SKC_'ZZ')")
-                        call setUnifRand(source, SKC_'AA', SKC_'ZZ')
+        call disp%show("call setUnifRand(source, SKG_'AA', SKG_'ZZ')")
+                        call setUnifRand(source, SKG_'AA', SKG_'ZZ')
         call disp%show("source")
         call disp%show( source , deliml = SK_"""" )
 
@@ -835,12 +835,12 @@ program example
 
     block
 
-        complex(CKC) :: source(5,5), destin(5,5)
-        complex(CKC), parameter :: NONE = (0._CKC, 0._CKC)
+        complex(CKG) :: source(5,5), destin(5,5)
+        complex(CKG), parameter :: NONE = (0._CKG, 0._CKG)
 
         call disp%skip()
-        call disp%show("source = cmplx(getUnifRand(1, 9, size(source,1,IK), size(source,2,IK)), getUnifRand(1, 9, size(source,1,IK), size(source,2,IK)), CKC)")
-                        source = cmplx(getUnifRand(1, 9, size(source,1,IK), size(source,2,IK)), getUnifRand(1, 9, size(source,1,IK), size(source,2,IK)), CKC)
+        call disp%show("source = cmplx(getUnifRand(1, 9, size(source,1,IK), size(source,2,IK)), getUnifRand(1, 9, size(source,1,IK), size(source,2,IK)), CKG)")
+                        source = cmplx(getUnifRand(1, 9, size(source,1,IK), size(source,2,IK)), getUnifRand(1, 9, size(source,1,IK), size(source,2,IK)), CKG)
         call disp%show("source")
         call disp%show( source , format = cform )
 
@@ -1035,13 +1035,13 @@ program example
     block
 
         integer(IK), parameter :: ndim = 10
-        character(2,SKC), parameter :: EMPTY = SKC_"  "
-        character(2,SKC) :: source((ndim + 1) * ndim / 2), destin(ndim, ndim)
-        character(2,SKC), allocatable :: desnew(:)
+        character(2,SKG), parameter :: EMPTY = SKG_"  "
+        character(2,SKG) :: source((ndim + 1) * ndim / 2), destin(ndim, ndim)
+        character(2,SKG), allocatable :: desnew(:)
 
         call disp%skip()
-        call disp%show("call setUnifRand(source, SKC_'AA', SKC_'ZZ')")
-                        call setUnifRand(source, SKC_'AA', SKC_'ZZ')
+        call disp%show("call setUnifRand(source, SKG_'AA', SKG_'ZZ')")
+                        call setUnifRand(source, SKG_'AA', SKG_'ZZ')
         call disp%show("source")
         call disp%show( source , deliml = SK_"""" )
 
@@ -1073,8 +1073,8 @@ program example
 
 
         call disp%skip()
-        call disp%show("call setUnifRand(source, SKC_'AA', SKC_'ZZ')")
-                        call setUnifRand(source, SKC_'AA', SKC_'ZZ')
+        call disp%show("call setUnifRand(source, SKG_'AA', SKG_'ZZ')")
+                        call setUnifRand(source, SKG_'AA', SKG_'ZZ')
         call disp%show("source")
         call disp%show( source , deliml = SK_"""" )
 
@@ -1118,13 +1118,13 @@ program example
     block
 
         integer(IK), parameter :: ndim = 10
-        character(2,SKC), parameter :: EMPTY = SKC_"  "
-        character(2,SKC) :: source((ndim + 1) * ndim / 2), destin(ndim, ndim)
-        character(2,SKC), allocatable :: desnew(:)
+        character(2,SKG), parameter :: EMPTY = SKG_"  "
+        character(2,SKG) :: source((ndim + 1) * ndim / 2), destin(ndim, ndim)
+        character(2,SKG), allocatable :: desnew(:)
 
         call disp%skip()
-        call disp%show("call setUnifRand(source, SKC_'AA', SKC_'ZZ')")
-                        call setUnifRand(source, SKC_'AA', SKC_'ZZ')
+        call disp%show("call setUnifRand(source, SKG_'AA', SKG_'ZZ')")
+                        call setUnifRand(source, SKG_'AA', SKG_'ZZ')
         call disp%show("source")
         call disp%show( source , deliml = SK_"""" )
         call disp%show("destin = EMPTY")
@@ -1142,8 +1142,8 @@ program example
         call disp%skip()
 
         call disp%skip()
-        call disp%show("call setUnifRand(source, SKC_'AA', SKC_'ZZ')")
-                        call setUnifRand(source, SKC_'AA', SKC_'ZZ')
+        call disp%show("call setUnifRand(source, SKG_'AA', SKG_'ZZ')")
+                        call setUnifRand(source, SKG_'AA', SKG_'ZZ')
         call disp%show("source")
         call disp%show( source , deliml = SK_"""" )
         call disp%show("destin = EMPTY")
@@ -1162,8 +1162,8 @@ program example
 
 
         call disp%skip()
-        call disp%show("call setUnifRand(source, SKC_'AA', SKC_'ZZ')")
-                        call setUnifRand(source, SKC_'AA', SKC_'ZZ')
+        call disp%show("call setUnifRand(source, SKG_'AA', SKG_'ZZ')")
+                        call setUnifRand(source, SKG_'AA', SKG_'ZZ')
         call disp%show("source")
         call disp%show( source , deliml = SK_"""" )
 
@@ -1212,13 +1212,13 @@ program example
 
     block
 
-        character(2,SKC) :: source(10,10), destin(10,10)
-        character(2,SKC), parameter :: EMPTY = SKC_"  "
-        character(2,SKC), allocatable :: desnew(:,:)
+        character(2,SKG) :: source(10,10), destin(10,10)
+        character(2,SKG), parameter :: EMPTY = SKG_"  "
+        character(2,SKG), allocatable :: desnew(:,:)
 
         call disp%skip()
-        call disp%show("call setUnifRand(source, SKC_'AA', SKC_'ZZ')")
-                        call setUnifRand(source, SKC_'AA', SKC_'ZZ')
+        call disp%show("call setUnifRand(source, SKG_'AA', SKG_'ZZ')")
+                        call setUnifRand(source, SKG_'AA', SKG_'ZZ')
         call disp%show("source")
         call disp%show( source , deliml = SK_"""" )
         call disp%show("destin = EMPTY")
@@ -1238,8 +1238,8 @@ program example
         call disp%skip()
 
         call disp%skip()
-        call disp%show("call setUnifRand(source, SKC_'AA', SKC_'ZZ')")
-                        call setUnifRand(source, SKC_'AA', SKC_'ZZ')
+        call disp%show("call setUnifRand(source, SKG_'AA', SKG_'ZZ')")
+                        call setUnifRand(source, SKG_'AA', SKG_'ZZ')
         call disp%show("source")
         call disp%show( source , deliml = SK_"""" )
         call disp%show("destin = EMPTY")

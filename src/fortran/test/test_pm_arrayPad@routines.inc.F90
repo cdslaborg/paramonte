@@ -60,41 +60,41 @@
 
 #if     SK_ENABLED && D0_ENABLED
 #define ALL
-        character(:,SKC), allocatable   :: Array, arrayPadded
-        character(1,SKC), parameter     :: lpfill = SKC_"/"
-        character(1,SKC), parameter     :: rpfill = SKC_"*"
-        character(1,SKC), parameter     :: lmfill = SKC_"-"
-        character(1,SKC), parameter     :: rmfill = SKC_"+"
+        character(:,SKG), allocatable   :: Array, arrayPadded
+        character(1,SKG), parameter     :: lpfill = SKG_"/"
+        character(1,SKG), parameter     :: rpfill = SKG_"*"
+        character(1,SKG), parameter     :: lmfill = SKG_"-"
+        character(1,SKG), parameter     :: rmfill = SKG_"+"
 #elif   SK_ENABLED && D1_ENABLED
-        character(2,SKC), dimension(:), allocatable :: Array, arrayPadded
-        character(2,SKC), parameter                 :: lpfill = SKC_"//"
-        character(2,SKC), parameter                 :: rpfill = SKC_"**"
-        character(2,SKC), parameter                 :: lmfill = SKC_"--"
-        character(2,SKC), parameter                 :: rmfill = SKC_"++"
+        character(2,SKG), dimension(:), allocatable :: Array, arrayPadded
+        character(2,SKG), parameter                 :: lpfill = SKG_"//"
+        character(2,SKG), parameter                 :: rpfill = SKG_"**"
+        character(2,SKG), parameter                 :: lmfill = SKG_"--"
+        character(2,SKG), parameter                 :: rmfill = SKG_"++"
 #elif   IK_ENABLED && D1_ENABLED
-        integer(IKC)    , dimension(:), allocatable :: Array, arrayPadded
-        integer(IKC)    , parameter                 :: lpfill = huge(1_IKC)
-        integer(IKC)    , parameter                 :: rpfill = huge(1_IKC)
-        integer(IKC)    , parameter                 :: lmfill = huge(1_IKC)
-        integer(IKC)    , parameter                 :: rmfill = huge(1_IKC)
+        integer(IKG)    , dimension(:), allocatable :: Array, arrayPadded
+        integer(IKG)    , parameter                 :: lpfill = huge(1_IKG)
+        integer(IKG)    , parameter                 :: rpfill = huge(1_IKG)
+        integer(IKG)    , parameter                 :: lmfill = huge(1_IKG)
+        integer(IKG)    , parameter                 :: rmfill = huge(1_IKG)
 #elif   LK_ENABLED && D1_ENABLED
-        logical(LKC)    , dimension(:), allocatable :: Array, arrayPadded
-        logical(LKC)    , parameter                 :: lpfill = .false._LKC
-        logical(LKC)    , parameter                 :: rpfill = .false._LKC
-        logical(LKC)    , parameter                 :: lmfill = .false._LKC
-        logical(LKC)    , parameter                 :: rmfill = .false._LKC
+        logical(LKG)    , dimension(:), allocatable :: Array, arrayPadded
+        logical(LKG)    , parameter                 :: lpfill = .false._LKG
+        logical(LKG)    , parameter                 :: rpfill = .false._LKG
+        logical(LKG)    , parameter                 :: lmfill = .false._LKG
+        logical(LKG)    , parameter                 :: rmfill = .false._LKG
 #elif   CK_ENABLED && D1_ENABLED
-        complex(CKC)    , dimension(:), allocatable :: Array, arrayPadded
-        complex(CKC)    , parameter                 :: lpfill = cmplx(huge(0._CKC), huge(0._CKC), kind = CKC)
-        complex(CKC)    , parameter                 :: rpfill = cmplx(huge(0._CKC), huge(0._CKC), kind = CKC)
-        complex(CKC)    , parameter                 :: lmfill = cmplx(huge(0._CKC), huge(0._CKC), kind = CKC)
-        complex(CKC)    , parameter                 :: rmfill = cmplx(huge(0._CKC), huge(0._CKC), kind = CKC)
+        complex(CKG)    , dimension(:), allocatable :: Array, arrayPadded
+        complex(CKG)    , parameter                 :: lpfill = cmplx(huge(0._CKG), huge(0._CKG), kind = CKG)
+        complex(CKG)    , parameter                 :: rpfill = cmplx(huge(0._CKG), huge(0._CKG), kind = CKG)
+        complex(CKG)    , parameter                 :: lmfill = cmplx(huge(0._CKG), huge(0._CKG), kind = CKG)
+        complex(CKG)    , parameter                 :: rmfill = cmplx(huge(0._CKG), huge(0._CKG), kind = CKG)
 #elif   RK_ENABLED && D1_ENABLED
-        real(RKC)       , dimension(:), allocatable :: Array, arrayPadded
-        real(RKC)       , parameter                 :: lpfill = huge(0._RKC)
-        real(RKC)       , parameter                 :: rpfill = huge(0._RKC)
-        real(RKC)       , parameter                 :: lmfill = huge(0._RKC)
-        real(RKC)       , parameter                 :: rmfill = huge(0._RKC)
+        real(RKG)       , dimension(:), allocatable :: Array, arrayPadded
+        real(RKG)       , parameter                 :: lpfill = huge(0._RKG)
+        real(RKG)       , parameter                 :: rpfill = huge(0._RKG)
+        real(RKG)       , parameter                 :: lmfill = huge(0._RKG)
+        real(RKG)       , parameter                 :: rmfill = huge(0._RKG)
 #else
 #error  "Unrecognized interface."
 #endif
@@ -162,23 +162,23 @@
             integer(IK)     , intent(in), optional  :: lmsize, rmsize
             logical(LK)                 , optional  :: failed
 #if         SK_ENABLED && D0_ENABLED
-            character(1,SKC), intent(in)            :: lpfill, rpfill
-            character(1,SKC), intent(in), optional  :: lmfill, rmfill
+            character(1,SKG), intent(in)            :: lpfill, rpfill
+            character(1,SKG), intent(in), optional  :: lmfill, rmfill
 #elif       SK_ENABLED && D1_ENABLED
-            character(2,SKC), intent(in)            :: lpfill, rpfill
-            character(2,SKC), intent(in), optional  :: lmfill, rmfill
+            character(2,SKG), intent(in)            :: lpfill, rpfill
+            character(2,SKG), intent(in), optional  :: lmfill, rmfill
 #elif       IK_ENABLED && D1_ENABLED
-            integer(IKC)    , intent(in)            :: lpfill, rpfill
-            integer(IKC)    , intent(in), optional  :: lmfill, rmfill
+            integer(IKG)    , intent(in)            :: lpfill, rpfill
+            integer(IKG)    , intent(in), optional  :: lmfill, rmfill
 #elif       LK_ENABLED && D1_ENABLED
-            logical(LKC)    , intent(in)            :: lpfill, rpfill
-            logical(LKC)    , intent(in), optional  :: lmfill, rmfill
+            logical(LKG)    , intent(in)            :: lpfill, rpfill
+            logical(LKG)    , intent(in), optional  :: lmfill, rmfill
 #elif       CK_ENABLED && D1_ENABLED
-            complex(CKC)    , intent(in)            :: lpfill, rpfill
-            complex(CKC)    , intent(in), optional  :: lmfill, rmfill
+            complex(CKG)    , intent(in)            :: lpfill, rpfill
+            complex(CKG)    , intent(in), optional  :: lmfill, rmfill
 #elif       RK_ENABLED && D1_ENABLED
-            real(RKC)       , intent(in)            :: lpfill, rpfill
-            real(RKC)       , intent(in), optional  :: lmfill, rmfill
+            real(RKG)       , intent(in)            :: lpfill, rpfill
+            real(RKG)       , intent(in), optional  :: lmfill, rmfill
 #else
 #error      "Unrecognized interface."
 #endif
@@ -224,21 +224,21 @@
             ubc%new = ubp - rpsize
 
 #if         SK_ENABLED && D0_ENABLED
-            allocate(character(sizeOld,SKC) :: Array)
-            call setUnifRand(Array, repeat(SKC_"A",len(Array)), repeat(SKC_"Z",len(Array)))
+            allocate(character(sizeOld,SKG) :: Array)
+            call setUnifRand(Array, repeat(SKG_"A",len(Array)), repeat(SKG_"Z",len(Array)))
             arrayPadded = genRepeat(lmsize_def,lmfill)//genRepeat(lpsize,lpfill)//Array//genRepeat(rpsize,rpfill)//genRepeat(rmsize_def,rmfill)
 #else
             allocate(Array(lb%old : ub%old))
 #if         SK_ENABLED && D1_ENABLED
-            call setUnifRand(Array, SKC_"AA", SKC_"ZZ")
+            call setUnifRand(Array, SKG_"AA", SKG_"ZZ")
 #elif       IK_ENABLED && D1_ENABLED
-            call setUnifRand(Array, -100_IKC, +100_IKC)
+            call setUnifRand(Array, -100_IKG, +100_IKG)
 #elif       LK_ENABLED && D1_ENABLED
             call setUnifRand(Array)
 #elif       CK_ENABLED && D1_ENABLED
-            call setUnifRand(Array, (-100._CKC,-500._CKC), (+100._CKC,+500._CKC))
+            call setUnifRand(Array, (-100._CKG,-500._CKG), (+100._CKG,+500._CKG))
 #elif       RK_ENABLED && D1_ENABLED
-            call setUnifRand(Array, -100._RKC, +100._RKC)
+            call setUnifRand(Array, -100._RKG, +100._RKG)
 #endif
             allocate(arrayPadded(lb%new : ub%new))
             !>  \bug
@@ -318,25 +318,25 @@
         pure function genRepeat(count,fill) result(Array)
             integer(IK)     , intent(in)            :: count
 #if         SK_ENABLED && D0_ENABLED
-            character(1,SKC), intent(in), optional  :: fill
-            character(count,SKC)                    :: Array
+            character(1,SKG), intent(in), optional  :: fill
+            character(count,SKG)                    :: Array
             if (present(fill)) Array(:) = repeat(fill, count)
 #else
 #if         SK_ENABLED && D1_ENABLED
-            character(2,SKC), intent(in), optional  :: fill
-            character(2,SKC) :: Array(count)
+            character(2,SKG), intent(in), optional  :: fill
+            character(2,SKG) :: Array(count)
 #elif       IK_ENABLED && D1_ENABLED
-            integer(IKC)    , intent(in), optional  :: fill
-            integer(IKC)                            :: Array(count)
+            integer(IKG)    , intent(in), optional  :: fill
+            integer(IKG)                            :: Array(count)
 #elif       LK_ENABLED && D1_ENABLED
-            logical(LKC)    , intent(in), optional  :: fill
-            logical(LKC)                            :: Array(count)
+            logical(LKG)    , intent(in), optional  :: fill
+            logical(LKG)                            :: Array(count)
 #elif       CK_ENABLED && D1_ENABLED
-            complex(CKC)    , intent(in), optional  :: fill
-            complex(CKC)                            :: Array(count)
+            complex(CKG)    , intent(in), optional  :: fill
+            complex(CKG)                            :: Array(count)
 #elif       RK_ENABLED && D1_ENABLED
-            real(RKC)       , intent(in), optional  :: fill
-            real(RKC)                               :: Array(count)
+            real(RKG)       , intent(in), optional  :: fill
+            real(RKG)                               :: Array(count)
 #else
 #error      "Unrecognized interface."
 #endif
@@ -403,29 +403,29 @@
 
 #if     SK_ENABLED && D0_ENABLED
 #define ALL
-        character(:,SKC), allocatable   :: Array, arrayPadded
-        character(1,SKC), parameter     :: lpfill = SKC_"/"
-        character(1,SKC), parameter     :: lmfill = SKC_"-"
+        character(:,SKG), allocatable   :: Array, arrayPadded
+        character(1,SKG), parameter     :: lpfill = SKG_"/"
+        character(1,SKG), parameter     :: lmfill = SKG_"-"
 #elif   SK_ENABLED && D1_ENABLED
-        character(2,SKC), dimension(:), allocatable :: Array, arrayPadded
-        character(2,SKC), parameter                 :: lpfill = SKC_"//"
-        character(2,SKC), parameter                 :: lmfill = SKC_"--"
+        character(2,SKG), dimension(:), allocatable :: Array, arrayPadded
+        character(2,SKG), parameter                 :: lpfill = SKG_"//"
+        character(2,SKG), parameter                 :: lmfill = SKG_"--"
 #elif   IK_ENABLED && D1_ENABLED
-        integer(IKC)    , dimension(:), allocatable :: Array, arrayPadded
-        integer(IKC)    , parameter                 :: lpfill = huge(1_IKC)
-        integer(IKC)    , parameter                 :: lmfill = huge(1_IKC)
+        integer(IKG)    , dimension(:), allocatable :: Array, arrayPadded
+        integer(IKG)    , parameter                 :: lpfill = huge(1_IKG)
+        integer(IKG)    , parameter                 :: lmfill = huge(1_IKG)
 #elif   LK_ENABLED && D1_ENABLED
-        logical(LKC)    , dimension(:), allocatable :: Array, arrayPadded
-        logical(LKC)    , parameter                 :: lpfill = .false._LKC
-        logical(LKC)    , parameter                 :: lmfill = .false._LKC
+        logical(LKG)    , dimension(:), allocatable :: Array, arrayPadded
+        logical(LKG)    , parameter                 :: lpfill = .false._LKG
+        logical(LKG)    , parameter                 :: lmfill = .false._LKG
 #elif   CK_ENABLED && D1_ENABLED
-        complex(CKC)    , dimension(:), allocatable :: Array, arrayPadded
-        complex(CKC)    , parameter                 :: lpfill = cmplx(huge(0._CKC), huge(0._CKC), kind = CKC)
-        complex(CKC)    , parameter                 :: lmfill = cmplx(huge(0._CKC), huge(0._CKC), kind = CKC)
+        complex(CKG)    , dimension(:), allocatable :: Array, arrayPadded
+        complex(CKG)    , parameter                 :: lpfill = cmplx(huge(0._CKG), huge(0._CKG), kind = CKG)
+        complex(CKG)    , parameter                 :: lmfill = cmplx(huge(0._CKG), huge(0._CKG), kind = CKG)
 #elif   RK_ENABLED && D1_ENABLED
-        real(RKC)       , dimension(:), allocatable :: Array, arrayPadded
-        real(RKC)       , parameter                 :: lpfill = huge(0._RKC)
-        real(RKC)       , parameter                 :: lmfill = huge(0._RKC)
+        real(RKG)       , dimension(:), allocatable :: Array, arrayPadded
+        real(RKG)       , parameter                 :: lpfill = huge(0._RKG)
+        real(RKG)       , parameter                 :: lmfill = huge(0._RKG)
 #else
 #error  "Unrecognized interface."
 #endif
@@ -476,23 +476,23 @@
             integer(IK)     , intent(in), optional  :: lmsize
             logical(LK)                 , optional  :: failed
 #if         SK_ENABLED && D0_ENABLED
-            character(1,SKC), intent(in)            :: lpfill
-            character(1,SKC), intent(in), optional  :: lmfill
+            character(1,SKG), intent(in)            :: lpfill
+            character(1,SKG), intent(in), optional  :: lmfill
 #elif       SK_ENABLED && D1_ENABLED
-            character(2,SKC), intent(in)            :: lpfill
-            character(2,SKC), intent(in), optional  :: lmfill
+            character(2,SKG), intent(in)            :: lpfill
+            character(2,SKG), intent(in), optional  :: lmfill
 #elif       IK_ENABLED && D1_ENABLED
-            integer(IKC)    , intent(in)            :: lpfill
-            integer(IKC)    , intent(in), optional  :: lmfill
+            integer(IKG)    , intent(in)            :: lpfill
+            integer(IKG)    , intent(in), optional  :: lmfill
 #elif       LK_ENABLED && D1_ENABLED
-            logical(LKC)    , intent(in)            :: lpfill
-            logical(LKC)    , intent(in), optional  :: lmfill
+            logical(LKG)    , intent(in)            :: lpfill
+            logical(LKG)    , intent(in), optional  :: lmfill
 #elif       CK_ENABLED && D1_ENABLED
-            complex(CKC)    , intent(in)            :: lpfill
-            complex(CKC)    , intent(in), optional  :: lmfill
+            complex(CKG)    , intent(in)            :: lpfill
+            complex(CKG)    , intent(in), optional  :: lmfill
 #elif       RK_ENABLED && D1_ENABLED
-            real(RKC)        , intent(in)            :: lpfill
-            real(RKC)        , intent(in), optional  :: lmfill
+            real(RKG)        , intent(in)            :: lpfill
+            real(RKG)        , intent(in), optional  :: lmfill
 #else
 #error      "Unrecognized interface."
 #endif
@@ -533,21 +533,21 @@
             ubc%new = ubp
 
 #if         SK_ENABLED && D0_ENABLED
-            allocate(character(sizeOld,SKC) :: Array)
-            call setUnifRand(Array, repeat(SKC_"A",len(Array)), repeat(SKC_"Z",len(Array)))
+            allocate(character(sizeOld,SKG) :: Array)
+            call setUnifRand(Array, repeat(SKG_"A",len(Array)), repeat(SKG_"Z",len(Array)))
             arrayPadded = genRepeat(lmsize_def,lmfill)//genRepeat(lpsize,lpfill)//Array
 #else
             allocate(Array(lb%old : ub%old))
 #if         SK_ENABLED && D1_ENABLED
-            call setUnifRand(Array, SKC_"AA", SKC_"ZZ")
+            call setUnifRand(Array, SKG_"AA", SKG_"ZZ")
 #elif       LK_ENABLED && D1_ENABLED
             call setUnifRand(Array)
 #elif       IK_ENABLED && D1_ENABLED
-            call setUnifRand(Array, -100_IKC, +100_IKC)
+            call setUnifRand(Array, -100_IKG, +100_IKG)
 #elif       CK_ENABLED && D1_ENABLED
-            call setUnifRand(Array, (-100._CKC,-500._CKC), (+100._CKC,+500._CKC))
+            call setUnifRand(Array, (-100._CKG,-500._CKG), (+100._CKG,+500._CKG))
 #elif       RK_ENABLED && D1_ENABLED
-            call setUnifRand(Array, -100._RKC, +100._RKC)
+            call setUnifRand(Array, -100._RKG, +100._RKG)
 #endif
             allocate(arrayPadded(lb%new : ub%new))
             !>  \bug
@@ -617,25 +617,25 @@
         pure function genRepeat(count,fill) result(Array)
             integer(IK)     , intent(in)            :: count
 #if         SK_ENABLED && D0_ENABLED
-            character(1,SKC), intent(in), optional  :: fill
-            character(count,SKC) :: Array
+            character(1,SKG), intent(in), optional  :: fill
+            character(count,SKG) :: Array
             if (present(fill)) Array(:) = repeat(fill, count)
 #else
 #if         SK_ENABLED && D1_ENABLED
-            character(2,SKC), intent(in), optional  :: fill
-            character(2,SKC) :: Array(count)
+            character(2,SKG), intent(in), optional  :: fill
+            character(2,SKG) :: Array(count)
 #elif       LK_ENABLED && D1_ENABLED
-            logical(LKC)    , intent(in), optional  :: fill
-            logical(LKC)                            :: Array(count)
+            logical(LKG)    , intent(in), optional  :: fill
+            logical(LKG)                            :: Array(count)
 #elif       IK_ENABLED && D1_ENABLED
-            integer(IKC)    , intent(in), optional  :: fill
-            integer(IKC)                            :: Array(count)
+            integer(IKG)    , intent(in), optional  :: fill
+            integer(IKG)                            :: Array(count)
 #elif       CK_ENABLED && D1_ENABLED
-            complex(CKC)    , intent(in), optional  :: fill
-            complex(CKC)                            :: Array(count)
+            complex(CKG)    , intent(in), optional  :: fill
+            complex(CKG)                            :: Array(count)
 #elif       RK_ENABLED && D1_ENABLED
-            real(RKC)       , intent(in), optional  :: fill
-            real(RKC)                               :: Array(count)
+            real(RKG)       , intent(in), optional  :: fill
+            real(RKG)                               :: Array(count)
 #else
 #error      "Unrecognized interface."
 #endif
@@ -702,29 +702,29 @@
 
 #if     SK_ENABLED && D0_ENABLED
 #define ALL
-        character(:,SKC), allocatable   :: Array, arrayPadded
-        character(1,SKC), parameter     :: rpfill = SKC_"/"
-        character(1,SKC), parameter     :: rmfill = SKC_"-"
+        character(:,SKG), allocatable   :: Array, arrayPadded
+        character(1,SKG), parameter     :: rpfill = SKG_"/"
+        character(1,SKG), parameter     :: rmfill = SKG_"-"
 #elif   SK_ENABLED && D1_ENABLED
-        character(2,SKC), dimension(:), allocatable :: Array, arrayPadded
-        character(2,SKC), parameter                 :: rpfill = SKC_"//"
-        character(2,SKC), parameter                 :: rmfill = SKC_"--"
+        character(2,SKG), dimension(:), allocatable :: Array, arrayPadded
+        character(2,SKG), parameter                 :: rpfill = SKG_"//"
+        character(2,SKG), parameter                 :: rmfill = SKG_"--"
 #elif   IK_ENABLED && D1_ENABLED
-        integer(IKC)    , dimension(:), allocatable :: Array, arrayPadded
-        integer(IKC)    , parameter                 :: rpfill = huge(1_IKC)
-        integer(IKC)    , parameter                 :: rmfill = huge(1_IKC)
+        integer(IKG)    , dimension(:), allocatable :: Array, arrayPadded
+        integer(IKG)    , parameter                 :: rpfill = huge(1_IKG)
+        integer(IKG)    , parameter                 :: rmfill = huge(1_IKG)
 #elif   LK_ENABLED && D1_ENABLED
-        logical(LKC)    , dimension(:), allocatable :: Array, arrayPadded
-        logical(LKC)    , parameter                 :: rpfill = .false._LKC
-        logical(LKC)    , parameter                 :: rmfill = .false._LKC
+        logical(LKG)    , dimension(:), allocatable :: Array, arrayPadded
+        logical(LKG)    , parameter                 :: rpfill = .false._LKG
+        logical(LKG)    , parameter                 :: rmfill = .false._LKG
 #elif   CK_ENABLED && D1_ENABLED
-        complex(CKC)    , dimension(:), allocatable :: Array, arrayPadded
-        complex(CKC)    , parameter                 :: rpfill = cmplx(huge(0._CKC), huge(0._CKC), kind = CKC)
-        complex(CKC)    , parameter                 :: rmfill = cmplx(huge(0._CKC), huge(0._CKC), kind = CKC)
+        complex(CKG)    , dimension(:), allocatable :: Array, arrayPadded
+        complex(CKG)    , parameter                 :: rpfill = cmplx(huge(0._CKG), huge(0._CKG), kind = CKG)
+        complex(CKG)    , parameter                 :: rmfill = cmplx(huge(0._CKG), huge(0._CKG), kind = CKG)
 #elif   RK_ENABLED && D1_ENABLED
-        real(RKC)       , dimension(:), allocatable :: Array, arrayPadded
-        real(RKC)       , parameter                 :: rpfill = huge(0._RKC)
-        real(RKC)       , parameter                 :: rmfill = huge(0._RKC)
+        real(RKG)       , dimension(:), allocatable :: Array, arrayPadded
+        real(RKG)       , parameter                 :: rpfill = huge(0._RKG)
+        real(RKG)       , parameter                 :: rmfill = huge(0._RKG)
 #else
 #error  "Unrecognized interface."
 #endif
@@ -775,23 +775,23 @@
             integer(IK)     , intent(in), optional  :: rmsize
             logical(LK)                 , optional  :: failed
 #if         SK_ENABLED && D0_ENABLED
-            character(1,SKC), intent(in)            :: rpfill
-            character(1,SKC), intent(in), optional  :: rmfill
+            character(1,SKG), intent(in)            :: rpfill
+            character(1,SKG), intent(in), optional  :: rmfill
 #elif       SK_ENABLED && D1_ENABLED
-            character(2,SKC), intent(in)            :: rpfill
-            character(2,SKC), intent(in), optional  :: rmfill
+            character(2,SKG), intent(in)            :: rpfill
+            character(2,SKG), intent(in), optional  :: rmfill
 #elif       IK_ENABLED && D1_ENABLED
-            integer(IKC)    , intent(in)            :: rpfill
-            integer(IKC)    , intent(in), optional  :: rmfill
+            integer(IKG)    , intent(in)            :: rpfill
+            integer(IKG)    , intent(in), optional  :: rmfill
 #elif       LK_ENABLED && D1_ENABLED
-            logical(LKC)    , intent(in)            :: rpfill
-            logical(LKC)    , intent(in), optional  :: rmfill
+            logical(LKG)    , intent(in)            :: rpfill
+            logical(LKG)    , intent(in), optional  :: rmfill
 #elif       CK_ENABLED && D1_ENABLED
-            complex(CKC)    , intent(in)            :: rpfill
-            complex(CKC)    , intent(in), optional  :: rmfill
+            complex(CKG)    , intent(in)            :: rpfill
+            complex(CKG)    , intent(in), optional  :: rmfill
 #elif       RK_ENABLED && D1_ENABLED
-            real(RKC)       , intent(in)            :: rpfill
-            real(RKC)       , intent(in), optional  :: rmfill
+            real(RKG)       , intent(in)            :: rpfill
+            real(RKG)       , intent(in), optional  :: rmfill
 #else
 #error      "Unrecognized interface."
 #endif
@@ -832,21 +832,21 @@
             ubc%new = ubp - rpsize
 
 #if         SK_ENABLED && D0_ENABLED
-            allocate(character(sizeOld,SKC) :: Array)
-            call setUnifRand(Array, repeat(SKC_"A",len(Array,IK)), repeat(SKC_"Z",len(Array,IK)))
+            allocate(character(sizeOld,SKG) :: Array)
+            call setUnifRand(Array, repeat(SKG_"A",len(Array,IK)), repeat(SKG_"Z",len(Array,IK)))
             arrayPadded = Array//genRepeat(rpsize,rpfill)//genRepeat(rmsize_def,rmfill)
 #else
             allocate(Array(lb%old : ub%old))
 #if         SK_ENABLED && D1_ENABLED
-            call setUnifRand(Array, SKC_"AA", SKC_"ZZ")
+            call setUnifRand(Array, SKG_"AA", SKG_"ZZ")
 #elif       LK_ENABLED && D1_ENABLED
             call setUnifRand(Array)
 #elif       IK_ENABLED && D1_ENABLED
-            call setUnifRand(Array, -100_IKC, +100_IKC)
+            call setUnifRand(Array, -100_IKG, +100_IKG)
 #elif       CK_ENABLED && D1_ENABLED
-            call setUnifRand(Array, (-100._CKC,-500._CKC), (+100._CKC,+500._CKC))
+            call setUnifRand(Array, (-100._CKG,-500._CKG), (+100._CKG,+500._CKG))
 #elif       RK_ENABLED && D1_ENABLED
-            call setUnifRand(Array, -100._RKC, +100._RKC)
+            call setUnifRand(Array, -100._RKG, +100._RKG)
 #endif
             allocate(arrayPadded(lb%new : ub%new))
             !>  \bug
@@ -916,25 +916,25 @@
         pure function genRepeat(count,fill) result(Array)
             integer(IK)     , intent(in)            :: count
 #if         SK_ENABLED && D0_ENABLED
-            character(1,SKC), intent(in), optional  :: fill
-            character(count,SKC) :: Array
+            character(1,SKG), intent(in), optional  :: fill
+            character(count,SKG) :: Array
             if (present(fill)) Array(:) = repeat(fill, count)
 #else
 #if         SK_ENABLED && D1_ENABLED
-            character(2,SKC), intent(in), optional  :: fill
-            character(2,SKC) :: Array(count)
+            character(2,SKG), intent(in), optional  :: fill
+            character(2,SKG) :: Array(count)
 #elif       LK_ENABLED && D1_ENABLED
-            logical(LKC)    , intent(in), optional  :: fill
-            logical(LKC)                            :: Array(count)
+            logical(LKG)    , intent(in), optional  :: fill
+            logical(LKG)                            :: Array(count)
 #elif       IK_ENABLED && D1_ENABLED
-            integer(IKC)    , intent(in), optional  :: fill
-            integer(IKC)                            :: Array(count)
+            integer(IKG)    , intent(in), optional  :: fill
+            integer(IKG)                            :: Array(count)
 #elif       CK_ENABLED && D1_ENABLED
-            complex(CKC)    , intent(in), optional  :: fill
-            complex(CKC)                            :: Array(count)
+            complex(CKG)    , intent(in), optional  :: fill
+            complex(CKG)                            :: Array(count)
 #elif       RK_ENABLED && D1_ENABLED
-            real(RKC)       , intent(in), optional  :: fill
-            real(RKC)                               :: Array(count)
+            real(RKG)       , intent(in), optional  :: fill
+            real(RKG)                               :: Array(count)
 #else
 #error      "Unrecognized interface."
 #endif

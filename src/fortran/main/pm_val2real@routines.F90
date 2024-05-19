@@ -58,35 +58,35 @@ contains
 
 #if SK5_ENABLED
     module procedure getRealDef_SK5
-        use pm_kind, only: RKC => RK, SKC => SK5
+        use pm_kind, only: RKG => RK, SKG => SK5
 #include "pm_val2real@routines.inc.F90"
     end procedure
 #endif
 
 #if SK4_ENABLED
     module procedure getRealDef_SK4
-        use pm_kind, only: RKC => RK, SKC => SK4
+        use pm_kind, only: RKG => RK, SKG => SK4
 #include "pm_val2real@routines.inc.F90"
     end procedure
 #endif
 
 #if SK3_ENABLED
     module procedure getRealDef_SK3
-        use pm_kind, only: RKC => RK, SKC => SK3
+        use pm_kind, only: RKG => RK, SKG => SK3
 #include "pm_val2real@routines.inc.F90"
     end procedure
 #endif
 
 #if SK2_ENABLED
     module procedure getRealDef_SK2
-        use pm_kind, only: RKC => RK, SKC => SK2
+        use pm_kind, only: RKG => RK, SKG => SK2
 #include "pm_val2real@routines.inc.F90"
     end procedure
 #endif
 
 #if SK1_ENABLED
     module procedure getRealDef_SK1
-        use pm_kind, only: RKC => RK, SKC => SK1
+        use pm_kind, only: RKG => RK, SKG => SK1
 #include "pm_val2real@routines.inc.F90"
     end procedure
 #endif
@@ -99,35 +99,35 @@ contains
 
 #if LK5_ENABLED
     module procedure getRealDef_LK5
-        use pm_kind, only: RKC => RK, LKC => LK5
+        use pm_kind, only: RKG => RK, LKG => LK5
 #include "pm_val2real@routines.inc.F90"
     end procedure
 #endif
 
 #if LK4_ENABLED
     module procedure getRealDef_LK4
-        use pm_kind, only: RKC => RK, LKC => LK4
+        use pm_kind, only: RKG => RK, LKG => LK4
 #include "pm_val2real@routines.inc.F90"
     end procedure
 #endif
 
 #if LK3_ENABLED
     module procedure getRealDef_LK3
-        use pm_kind, only: RKC => RK, LKC => LK3
+        use pm_kind, only: RKG => RK, LKG => LK3
 #include "pm_val2real@routines.inc.F90"
     end procedure
 #endif
 
 #if LK2_ENABLED
     module procedure getRealDef_LK2
-        use pm_kind, only: RKC => RK, LKC => LK2
+        use pm_kind, only: RKG => RK, LKG => LK2
 #include "pm_val2real@routines.inc.F90"
     end procedure
 #endif
 
 #if LK1_ENABLED
     module procedure getRealDef_LK1
-        use pm_kind, only: RKC => RK, LKC => LK1
+        use pm_kind, only: RKG => RK, LKG => LK1
 #include "pm_val2real@routines.inc.F90"
     end procedure
 #endif
@@ -164,35 +164,35 @@ contains
 
 #if RK5_ENABLED && SK5_ENABLED
     module procedure setRealErr_RK5_SK5
-        use pm_kind, only: RKC => RK5, SKC => SK5
+        use pm_kind, only: RKG => RK5, SKG => SK5
 #include "pm_val2real@routines.inc.F90"
     end procedure
 #endif
 
 #if RK5_ENABLED && SK4_ENABLED
     module procedure setRealErr_RK5_SK4
-        use pm_kind, only: RKC => RK5, SKC => SK4
+        use pm_kind, only: RKG => RK5, SKG => SK4
 #include "pm_val2real@routines.inc.F90"
     end procedure
 #endif
 
 #if RK5_ENABLED && SK3_ENABLED
     module procedure setRealErr_RK5_SK3
-        use pm_kind, only: RKC => RK5, SKC => SK3
+        use pm_kind, only: RKG => RK5, SKG => SK3
 #include "pm_val2real@routines.inc.F90"
     end procedure
 #endif
 
 #if RK5_ENABLED && SK2_ENABLED
     module procedure setRealErr_RK5_SK2
-        use pm_kind, only: RKC => RK5, SKC => SK2
+        use pm_kind, only: RKG => RK5, SKG => SK2
 #include "pm_val2real@routines.inc.F90"
     end procedure
 #endif
 
 #if RK5_ENABLED && SK1_ENABLED
     module procedure setRealErr_RK5_SK1
-        use pm_kind, only: RKC => RK5, SKC => SK1
+        use pm_kind, only: RKG => RK5, SKG => SK1
 #include "pm_val2real@routines.inc.F90"
     end procedure
 #endif
@@ -201,35 +201,35 @@ contains
 
 #if RK4_ENABLED && SK5_ENABLED
     module procedure setRealErr_RK4_SK5
-        use pm_kind, only: RKC => RK4, SKC => SK5
+        use pm_kind, only: RKG => RK4, SKG => SK5
 #include "pm_val2real@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED && SK4_ENABLED
     module procedure setRealErr_RK4_SK4
-        use pm_kind, only: RKC => RK4, SKC => SK4
+        use pm_kind, only: RKG => RK4, SKG => SK4
 #include "pm_val2real@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED && SK3_ENABLED
     module procedure setRealErr_RK4_SK3
-        use pm_kind, only: RKC => RK4, SKC => SK3
+        use pm_kind, only: RKG => RK4, SKG => SK3
 #include "pm_val2real@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED && SK2_ENABLED
     module procedure setRealErr_RK4_SK2
-        use pm_kind, only: RKC => RK4, SKC => SK2
+        use pm_kind, only: RKG => RK4, SKG => SK2
 #include "pm_val2real@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED && SK1_ENABLED
     module procedure setRealErr_RK4_SK1
-        use pm_kind, only: RKC => RK4, SKC => SK1
+        use pm_kind, only: RKG => RK4, SKG => SK1
 #include "pm_val2real@routines.inc.F90"
     end procedure
 #endif
@@ -238,35 +238,35 @@ contains
 
 #if RK3_ENABLED && SK5_ENABLED
     module procedure setRealErr_RK3_SK5
-        use pm_kind, only: RKC => RK3, SKC => SK5
+        use pm_kind, only: RKG => RK3, SKG => SK5
 #include "pm_val2real@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED && SK4_ENABLED
     module procedure setRealErr_RK3_SK4
-        use pm_kind, only: RKC => RK3, SKC => SK4
+        use pm_kind, only: RKG => RK3, SKG => SK4
 #include "pm_val2real@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED && SK3_ENABLED
     module procedure setRealErr_RK3_SK3
-        use pm_kind, only: RKC => RK3, SKC => SK3
+        use pm_kind, only: RKG => RK3, SKG => SK3
 #include "pm_val2real@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED && SK2_ENABLED
     module procedure setRealErr_RK3_SK2
-        use pm_kind, only: RKC => RK3, SKC => SK2
+        use pm_kind, only: RKG => RK3, SKG => SK2
 #include "pm_val2real@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED && SK1_ENABLED
     module procedure setRealErr_RK3_SK1
-        use pm_kind, only: RKC => RK3, SKC => SK1
+        use pm_kind, only: RKG => RK3, SKG => SK1
 #include "pm_val2real@routines.inc.F90"
     end procedure
 #endif
@@ -275,35 +275,35 @@ contains
 
 #if RK2_ENABLED && SK5_ENABLED
     module procedure setRealErr_RK2_SK5
-        use pm_kind, only: RKC => RK2, SKC => SK5
+        use pm_kind, only: RKG => RK2, SKG => SK5
 #include "pm_val2real@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED && SK4_ENABLED
     module procedure setRealErr_RK2_SK4
-        use pm_kind, only: RKC => RK2, SKC => SK4
+        use pm_kind, only: RKG => RK2, SKG => SK4
 #include "pm_val2real@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED && SK3_ENABLED
     module procedure setRealErr_RK2_SK3
-        use pm_kind, only: RKC => RK2, SKC => SK3
+        use pm_kind, only: RKG => RK2, SKG => SK3
 #include "pm_val2real@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED && SK2_ENABLED
     module procedure setRealErr_RK2_SK2
-        use pm_kind, only: RKC => RK2, SKC => SK2
+        use pm_kind, only: RKG => RK2, SKG => SK2
 #include "pm_val2real@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED && SK1_ENABLED
     module procedure setRealErr_RK2_SK1
-        use pm_kind, only: RKC => RK2, SKC => SK1
+        use pm_kind, only: RKG => RK2, SKG => SK1
 #include "pm_val2real@routines.inc.F90"
     end procedure
 #endif
@@ -312,35 +312,35 @@ contains
 
 #if RK1_ENABLED && SK5_ENABLED
     module procedure setRealErr_RK1_SK5
-        use pm_kind, only: RKC => RK1, SKC => SK5
+        use pm_kind, only: RKG => RK1, SKG => SK5
 #include "pm_val2real@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED && SK4_ENABLED
     module procedure setRealErr_RK1_SK4
-        use pm_kind, only: RKC => RK1, SKC => SK4
+        use pm_kind, only: RKG => RK1, SKG => SK4
 #include "pm_val2real@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED && SK3_ENABLED
     module procedure setRealErr_RK1_SK3
-        use pm_kind, only: RKC => RK1, SKC => SK3
+        use pm_kind, only: RKG => RK1, SKG => SK3
 #include "pm_val2real@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED && SK2_ENABLED
     module procedure setRealErr_RK1_SK2
-        use pm_kind, only: RKC => RK1, SKC => SK2
+        use pm_kind, only: RKG => RK1, SKG => SK2
 #include "pm_val2real@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED && SK1_ENABLED
     module procedure setRealErr_RK1_SK1
-        use pm_kind, only: RKC => RK1, SKC => SK1
+        use pm_kind, only: RKG => RK1, SKG => SK1
 #include "pm_val2real@routines.inc.F90"
     end procedure
 #endif
@@ -371,35 +371,35 @@ contains
 
 #if RK5_ENABLED && SK5_ENABLED
     module procedure setRealDef_RK5_SK5
-        use pm_kind, only: RKC => RK5, SKC => SK5
+        use pm_kind, only: RKG => RK5, SKG => SK5
 #include "pm_val2real@routines.inc.F90"
     end procedure
 #endif
 
 #if RK5_ENABLED && SK4_ENABLED
     module procedure setRealDef_RK5_SK4
-        use pm_kind, only: RKC => RK5, SKC => SK4
+        use pm_kind, only: RKG => RK5, SKG => SK4
 #include "pm_val2real@routines.inc.F90"
     end procedure
 #endif
 
 #if RK5_ENABLED && SK3_ENABLED
     module procedure setRealDef_RK5_SK3
-        use pm_kind, only: RKC => RK5, SKC => SK3
+        use pm_kind, only: RKG => RK5, SKG => SK3
 #include "pm_val2real@routines.inc.F90"
     end procedure
 #endif
 
 #if RK5_ENABLED && SK2_ENABLED
     module procedure setRealDef_RK5_SK2
-        use pm_kind, only: RKC => RK5, SKC => SK2
+        use pm_kind, only: RKG => RK5, SKG => SK2
 #include "pm_val2real@routines.inc.F90"
     end procedure
 #endif
 
 #if RK5_ENABLED && SK1_ENABLED
     module procedure setRealDef_RK5_SK1
-        use pm_kind, only: RKC => RK5, SKC => SK1
+        use pm_kind, only: RKG => RK5, SKG => SK1
 #include "pm_val2real@routines.inc.F90"
     end procedure
 #endif
@@ -408,35 +408,35 @@ contains
 
 #if RK4_ENABLED && SK5_ENABLED
     module procedure setRealDef_RK4_SK5
-        use pm_kind, only: RKC => RK4, SKC => SK5
+        use pm_kind, only: RKG => RK4, SKG => SK5
 #include "pm_val2real@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED && SK4_ENABLED
     module procedure setRealDef_RK4_SK4
-        use pm_kind, only: RKC => RK4, SKC => SK4
+        use pm_kind, only: RKG => RK4, SKG => SK4
 #include "pm_val2real@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED && SK3_ENABLED
     module procedure setRealDef_RK4_SK3
-        use pm_kind, only: RKC => RK4, SKC => SK3
+        use pm_kind, only: RKG => RK4, SKG => SK3
 #include "pm_val2real@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED && SK2_ENABLED
     module procedure setRealDef_RK4_SK2
-        use pm_kind, only: RKC => RK4, SKC => SK2
+        use pm_kind, only: RKG => RK4, SKG => SK2
 #include "pm_val2real@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED && SK1_ENABLED
     module procedure setRealDef_RK4_SK1
-        use pm_kind, only: RKC => RK4, SKC => SK1
+        use pm_kind, only: RKG => RK4, SKG => SK1
 #include "pm_val2real@routines.inc.F90"
     end procedure
 #endif
@@ -445,35 +445,35 @@ contains
 
 #if RK3_ENABLED && SK5_ENABLED
     module procedure setRealDef_RK3_SK5
-        use pm_kind, only: RKC => RK3, SKC => SK5
+        use pm_kind, only: RKG => RK3, SKG => SK5
 #include "pm_val2real@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED && SK4_ENABLED
     module procedure setRealDef_RK3_SK4
-        use pm_kind, only: RKC => RK3, SKC => SK4
+        use pm_kind, only: RKG => RK3, SKG => SK4
 #include "pm_val2real@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED && SK3_ENABLED
     module procedure setRealDef_RK3_SK3
-        use pm_kind, only: RKC => RK3, SKC => SK3
+        use pm_kind, only: RKG => RK3, SKG => SK3
 #include "pm_val2real@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED && SK2_ENABLED
     module procedure setRealDef_RK3_SK2
-        use pm_kind, only: RKC => RK3, SKC => SK2
+        use pm_kind, only: RKG => RK3, SKG => SK2
 #include "pm_val2real@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED && SK1_ENABLED
     module procedure setRealDef_RK3_SK1
-        use pm_kind, only: RKC => RK3, SKC => SK1
+        use pm_kind, only: RKG => RK3, SKG => SK1
 #include "pm_val2real@routines.inc.F90"
     end procedure
 #endif
@@ -482,35 +482,35 @@ contains
 
 #if RK2_ENABLED && SK5_ENABLED
     module procedure setRealDef_RK2_SK5
-        use pm_kind, only: RKC => RK2, SKC => SK5
+        use pm_kind, only: RKG => RK2, SKG => SK5
 #include "pm_val2real@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED && SK4_ENABLED
     module procedure setRealDef_RK2_SK4
-        use pm_kind, only: RKC => RK2, SKC => SK4
+        use pm_kind, only: RKG => RK2, SKG => SK4
 #include "pm_val2real@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED && SK3_ENABLED
     module procedure setRealDef_RK2_SK3
-        use pm_kind, only: RKC => RK2, SKC => SK3
+        use pm_kind, only: RKG => RK2, SKG => SK3
 #include "pm_val2real@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED && SK2_ENABLED
     module procedure setRealDef_RK2_SK2
-        use pm_kind, only: RKC => RK2, SKC => SK2
+        use pm_kind, only: RKG => RK2, SKG => SK2
 #include "pm_val2real@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED && SK1_ENABLED
     module procedure setRealDef_RK2_SK1
-        use pm_kind, only: RKC => RK2, SKC => SK1
+        use pm_kind, only: RKG => RK2, SKG => SK1
 #include "pm_val2real@routines.inc.F90"
     end procedure
 #endif
@@ -519,35 +519,35 @@ contains
 
 #if RK1_ENABLED && SK5_ENABLED
     module procedure setRealDef_RK1_SK5
-        use pm_kind, only: RKC => RK1, SKC => SK5
+        use pm_kind, only: RKG => RK1, SKG => SK5
 #include "pm_val2real@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED && SK4_ENABLED
     module procedure setRealDef_RK1_SK4
-        use pm_kind, only: RKC => RK1, SKC => SK4
+        use pm_kind, only: RKG => RK1, SKG => SK4
 #include "pm_val2real@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED && SK3_ENABLED
     module procedure setRealDef_RK1_SK3
-        use pm_kind, only: RKC => RK1, SKC => SK3
+        use pm_kind, only: RKG => RK1, SKG => SK3
 #include "pm_val2real@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED && SK2_ENABLED
     module procedure setRealDef_RK1_SK2
-        use pm_kind, only: RKC => RK1, SKC => SK2
+        use pm_kind, only: RKG => RK1, SKG => SK2
 #include "pm_val2real@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED && SK1_ENABLED
     module procedure setRealDef_RK1_SK1
-        use pm_kind, only: RKC => RK1, SKC => SK1
+        use pm_kind, only: RKG => RK1, SKG => SK1
 #include "pm_val2real@routines.inc.F90"
     end procedure
 #endif
@@ -566,35 +566,35 @@ contains
 
 #if RK5_ENABLED && LK5_ENABLED
     module procedure setRealDef_RK5_LK5
-        use pm_kind, only: RKC => RK5, LKC => LK5
+        use pm_kind, only: RKG => RK5, LKG => LK5
 #include "pm_val2real@routines.inc.F90"
     end procedure
 #endif
 
 #if RK5_ENABLED && LK4_ENABLED
     module procedure setRealDef_RK5_LK4
-        use pm_kind, only: RKC => RK5, LKC => LK4
+        use pm_kind, only: RKG => RK5, LKG => LK4
 #include "pm_val2real@routines.inc.F90"
     end procedure
 #endif
 
 #if RK5_ENABLED && LK3_ENABLED
     module procedure setRealDef_RK5_LK3
-        use pm_kind, only: RKC => RK5, LKC => LK3
+        use pm_kind, only: RKG => RK5, LKG => LK3
 #include "pm_val2real@routines.inc.F90"
     end procedure
 #endif
 
 #if RK5_ENABLED && LK2_ENABLED
     module procedure setRealDef_RK5_LK2
-        use pm_kind, only: RKC => RK5, LKC => LK2
+        use pm_kind, only: RKG => RK5, LKG => LK2
 #include "pm_val2real@routines.inc.F90"
     end procedure
 #endif
 
 #if RK5_ENABLED && LK1_ENABLED
     module procedure setRealDef_RK5_LK1
-        use pm_kind, only: RKC => RK5, LKC => LK1
+        use pm_kind, only: RKG => RK5, LKG => LK1
 #include "pm_val2real@routines.inc.F90"
     end procedure
 #endif
@@ -603,35 +603,35 @@ contains
 
 #if RK4_ENABLED && LK5_ENABLED
     module procedure setRealDef_RK4_LK5
-        use pm_kind, only: RKC => RK4, LKC => LK5
+        use pm_kind, only: RKG => RK4, LKG => LK5
 #include "pm_val2real@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED && LK4_ENABLED
     module procedure setRealDef_RK4_LK4
-        use pm_kind, only: RKC => RK4, LKC => LK4
+        use pm_kind, only: RKG => RK4, LKG => LK4
 #include "pm_val2real@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED && LK3_ENABLED
     module procedure setRealDef_RK4_LK3
-        use pm_kind, only: RKC => RK4, LKC => LK3
+        use pm_kind, only: RKG => RK4, LKG => LK3
 #include "pm_val2real@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED && LK2_ENABLED
     module procedure setRealDef_RK4_LK2
-        use pm_kind, only: RKC => RK4, LKC => LK2
+        use pm_kind, only: RKG => RK4, LKG => LK2
 #include "pm_val2real@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED && LK1_ENABLED
     module procedure setRealDef_RK4_LK1
-        use pm_kind, only: RKC => RK4, LKC => LK1
+        use pm_kind, only: RKG => RK4, LKG => LK1
 #include "pm_val2real@routines.inc.F90"
     end procedure
 #endif
@@ -640,35 +640,35 @@ contains
 
 #if RK3_ENABLED && LK5_ENABLED
     module procedure setRealDef_RK3_LK5
-        use pm_kind, only: RKC => RK3, LKC => LK5
+        use pm_kind, only: RKG => RK3, LKG => LK5
 #include "pm_val2real@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED && LK4_ENABLED
     module procedure setRealDef_RK3_LK4
-        use pm_kind, only: RKC => RK3, LKC => LK4
+        use pm_kind, only: RKG => RK3, LKG => LK4
 #include "pm_val2real@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED && LK3_ENABLED
     module procedure setRealDef_RK3_LK3
-        use pm_kind, only: RKC => RK3, LKC => LK3
+        use pm_kind, only: RKG => RK3, LKG => LK3
 #include "pm_val2real@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED && LK2_ENABLED
     module procedure setRealDef_RK3_LK2
-        use pm_kind, only: RKC => RK3, LKC => LK2
+        use pm_kind, only: RKG => RK3, LKG => LK2
 #include "pm_val2real@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED && LK1_ENABLED
     module procedure setRealDef_RK3_LK1
-        use pm_kind, only: RKC => RK3, LKC => LK1
+        use pm_kind, only: RKG => RK3, LKG => LK1
 #include "pm_val2real@routines.inc.F90"
     end procedure
 #endif
@@ -677,35 +677,35 @@ contains
 
 #if RK2_ENABLED && LK5_ENABLED
     module procedure setRealDef_RK2_LK5
-        use pm_kind, only: RKC => RK2, LKC => LK5
+        use pm_kind, only: RKG => RK2, LKG => LK5
 #include "pm_val2real@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED && LK4_ENABLED
     module procedure setRealDef_RK2_LK4
-        use pm_kind, only: RKC => RK2, LKC => LK4
+        use pm_kind, only: RKG => RK2, LKG => LK4
 #include "pm_val2real@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED && LK3_ENABLED
     module procedure setRealDef_RK2_LK3
-        use pm_kind, only: RKC => RK2, LKC => LK3
+        use pm_kind, only: RKG => RK2, LKG => LK3
 #include "pm_val2real@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED && LK2_ENABLED
     module procedure setRealDef_RK2_LK2
-        use pm_kind, only: RKC => RK2, LKC => LK2
+        use pm_kind, only: RKG => RK2, LKG => LK2
 #include "pm_val2real@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED && LK1_ENABLED
     module procedure setRealDef_RK2_LK1
-        use pm_kind, only: RKC => RK2, LKC => LK1
+        use pm_kind, only: RKG => RK2, LKG => LK1
 #include "pm_val2real@routines.inc.F90"
     end procedure
 #endif
@@ -714,35 +714,35 @@ contains
 
 #if RK1_ENABLED && LK5_ENABLED
     module procedure setRealDef_RK1_LK5
-        use pm_kind, only: RKC => RK1, LKC => LK5
+        use pm_kind, only: RKG => RK1, LKG => LK5
 #include "pm_val2real@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED && LK4_ENABLED
     module procedure setRealDef_RK1_LK4
-        use pm_kind, only: RKC => RK1, LKC => LK4
+        use pm_kind, only: RKG => RK1, LKG => LK4
 #include "pm_val2real@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED && LK3_ENABLED
     module procedure setRealDef_RK1_LK3
-        use pm_kind, only: RKC => RK1, LKC => LK3
+        use pm_kind, only: RKG => RK1, LKG => LK3
 #include "pm_val2real@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED && LK2_ENABLED
     module procedure setRealDef_RK1_LK2
-        use pm_kind, only: RKC => RK1, LKC => LK2
+        use pm_kind, only: RKG => RK1, LKG => LK2
 #include "pm_val2real@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED && LK1_ENABLED
     module procedure setRealDef_RK1_LK1
-        use pm_kind, only: RKC => RK1, LKC => LK1
+        use pm_kind, only: RKG => RK1, LKG => LK1
 #include "pm_val2real@routines.inc.F90"
     end procedure
 #endif

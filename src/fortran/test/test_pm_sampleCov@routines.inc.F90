@@ -24,16 +24,16 @@
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        real(TKC), parameter :: rtol = epsilon(1._TKC) * 100
+        real(TKG), parameter :: rtol = epsilon(1._TKG) * 100
         ! Define the sample type.
 #if     CK_ENABLED
 #define GET_CONJG(X)conjg(X)
-#define TYPE_OF_SAMPLE complex(TKC)
-        complex(TKC), parameter :: ZERO = (0._TKC, 0._TKC), ONE = (1._TKC, 1._TKC), TWO = 2 * (1._TKC, 1._TKC), ctol = (rtol, rtol), RONE = (1._TKC, 0._TKC)
+#define TYPE_OF_SAMPLE complex(TKG)
+        complex(TKG), parameter :: ZERO = (0._TKG, 0._TKG), ONE = (1._TKG, 1._TKG), TWO = 2 * (1._TKG, 1._TKG), ctol = (rtol, rtol), RONE = (1._TKG, 0._TKG)
 #elif   RK_ENABLED
 #define GET_CONJG(X)X
-#define TYPE_OF_SAMPLE real(TKC)
-        real(TKC), parameter :: ZERO = 0._TKC, ONE = 1._TKC, RONE = 1._TKC, TWO = 2._TKC, ctol = rtol
+#define TYPE_OF_SAMPLE real(TKG)
+        real(TKG), parameter :: ZERO = 0._TKG, ONE = 1._TKG, RONE = 1._TKG, TWO = 2._TKG, ctol = rtol
 #else
 #error  "Unrecognized interface."
 #endif
@@ -41,15 +41,15 @@
 #if     getCov_ENABLED
         !%%%%%%%%%%%%%
 
-        real(TKC) :: rweisqs
-        real(TKC) :: rweisum
+        real(TKG) :: rweisqs
+        real(TKG) :: rweisum
         integer(IK) :: iweisum
-        real(TKC), allocatable :: rweight(:)
+        real(TKG), allocatable :: rweight(:)
         integer(IK), allocatable :: iweight(:)
         integer(IK) :: itry, nsam, ndim, dim
         TYPE_OF_SAMPLE, allocatable :: sample(:,:), mean(:), meang(:)
         TYPE_OF_SAMPLE, allocatable :: cov(:,:), cor(:,:), cov_ref(:,:), cdiff(:,:)
-        real(TKC), allocatable :: std(:)
+        real(TKG), allocatable :: std(:)
         assertion = .true._LK
 
         do itry = 1, 50
@@ -61,7 +61,7 @@
                 type(lowDia_type), parameter :: subsetr = lowDia_type()
                 ndim = getUnifRand(1_IK, 5_IK)
                 cov_ref = getFilled(ZERO, ndim, ndim)
-                std = getUnifRand(1._TKC, 2._TKC, ndim)
+                std = getUnifRand(1._TKG, 2._TKG, ndim)
                 cor = getUnifRand(-ONE, ONE, ndim, ndim)
                 call setMatInit(cor, getSubSymm(subsetr), ZERO, RONE)
                 call setCov(cov_ref, subsetr, cor, subsetr, std)
@@ -79,7 +79,7 @@
                 type(uppDia_type), parameter :: subsetr = uppDia_type()
                 ndim = getUnifRand(1_IK, 5_IK)
                 cov_ref = getFilled(ZERO, ndim, ndim)
-                std = getUnifRand(1._TKC, 2._TKC, ndim)
+                std = getUnifRand(1._TKG, 2._TKG, ndim)
                 cor = getUnifRand(-ONE, ONE, ndim, ndim)
                 call setMatInit(cor, getSubSymm(subsetr), ZERO, RONE)
                 call setCov(cov_ref, subsetr, cor, subsetr, std)
@@ -108,7 +108,7 @@
                     sample = getUnifRand(ONE, TWO, nsam, ndim)
                     meang = sample(1,:)
                 end if
-                rweight = getUnifRand(1._TKC, 9._TKC, nsam)
+                rweight = getUnifRand(1._TKG, 9._TKG, nsam)
                 iweight = getUnifRand(1_IK, 9_IK, nsam)
                 rweisqs = sum(rweight**2)
 
@@ -120,7 +120,7 @@
                 call report(__LINE__, SK_"integer-weighted")
 
                 cov = getCov(sample, dim, iweight, fweight_type())
-                cov_ref = cov_ref * getVarCorrection(real(iweisum, TKC))
+                cov_ref = cov_ref * getVarCorrection(real(iweisum, TKG))
                 call report(__LINE__, SK_"integer-weighted")
 
                 ! real weighted
@@ -142,7 +142,7 @@
                 call report(__LINE__, SK_"unweighted")
 
                 cov = getCov(sample, dim, rweight_type())
-                cov_ref = cov_ref * getVarCorrection(real(nsam, TKC))
+                cov_ref = cov_ref * getVarCorrection(real(nsam, TKG))
                 call report(__LINE__, SK_"unweighted")
 
             end block
@@ -156,7 +156,7 @@
                 mean = getFilled(ZERO, ndim)
                 cov_ref = getFilled(ZERO, ndim, ndim)
                 sample = getUnifRand(ONE, TWO, nsam, ndim)
-                rweight = getUnifRand(1._TKC, 9._TKC, nsam)
+                rweight = getUnifRand(1._TKG, 9._TKG, nsam)
                 iweight = getUnifRand(1_IK, 9_IK, nsam)
                 rweisqs = sum(rweight**2)
                 meang = sample(1,:)
@@ -168,7 +168,7 @@
                 call report(__LINE__, SK_"integer-weighted")
 
                 cov = getCov(sample(:,1), sample(:,2), iweight, fweight_type())
-                cov_ref = cov_ref * getVarCorrection(real(iweisum, TKC))
+                cov_ref = cov_ref * getVarCorrection(real(iweisum, TKG))
                 call report(__LINE__, SK_"integer-weighted")
 
                 ! real weighted
@@ -188,7 +188,7 @@
                 call report(__LINE__, SK_"unweighted")
 
                 cov = getCov(sample(:,1), sample(:,2), rweight_type())
-                cov_ref = cov_ref * getVarCorrection(real(nsam, TKC))
+                cov_ref = cov_ref * getVarCorrection(real(nsam, TKG))
                 call report(__LINE__, SK_"unweighted")
 
             end block
@@ -258,14 +258,14 @@
 #elif   setCov_ENABLED
         !%%%%%%%%%%%%%
 
-        real(TKC) :: rweisum
+        real(TKG) :: rweisum
         integer(IK) :: iweisum
-        real(TKC), allocatable :: rweight(:)
+        real(TKG), allocatable :: rweight(:)
         integer(IK), allocatable :: iweight(:)
         integer(IK) :: itry, nsam, ndim, dim
         TYPE_OF_SAMPLE, allocatable :: sample(:,:), mean(:)
         TYPE_OF_SAMPLE, allocatable :: cov(:,:), cor(:,:), cov_ref(:,:), cdiff(:,:)
-        real(TKC), allocatable :: std(:)
+        real(TKG), allocatable :: std(:)
         assertion = .true._LK
 
         do itry = 1, 50
@@ -276,7 +276,7 @@
 
                 type(lowDia_type), parameter :: subsetr = lowDia_type()
                 ndim = getUnifRand(1_IK, 5_IK)
-                std = getUnifRand(1._TKC, 2._TKC, ndim)
+                std = getUnifRand(1._TKG, 2._TKG, ndim)
                 cor = getUnifRand(-ONE, ONE, ndim, ndim)
                 call setMatInit(cor, getSubSymm(subsetr), ZERO, RONE)
 
@@ -298,7 +298,7 @@
 
                 type(uppDia_type), parameter :: subsetr = uppDia_type()
                 ndim = getUnifRand(1_IK, 5_IK)
-                std = getUnifRand(1._TKC, 2._TKC, ndim)
+                std = getUnifRand(1._TKG, 2._TKG, ndim)
                 cor = getUnifRand(-ONE, ONE, ndim, ndim)
                 call setMatInit(cor, getSubSymm(subsetr), ZERO, RONE)
 
@@ -328,7 +328,7 @@
                 else
                     sample = getUnifRand(ONE, TWO, nsam, ndim)
                 end if
-                rweight = getUnifRand(1._TKC, 9._TKC, nsam)
+                rweight = getUnifRand(1._TKG, 9._TKG, nsam)
                 iweight = getUnifRand(1_IK, 9_IK, nsam)
                 iweisum = sum(iweight)
                 rweisum = sum(rweight)
@@ -336,7 +336,7 @@
                 ! integer weighted
 
                 mean = getMean(sample, dim, iweight)
-                cov_ref = getCovRef(mean, sample, dim, real(iweight, TKC))
+                cov_ref = getCovRef(mean, sample, dim, real(iweight, TKG))
 
                 cov = getFilled(ZERO, ndim, ndim)
                 call setCov(cov, subset, mean, sample, dim, iweight, iweisum)
@@ -386,7 +386,7 @@
                 else
                     sample = getUnifRand(ONE, TWO, nsam, ndim)
                 end if
-                rweight = getUnifRand(1._TKC, 9._TKC, nsam)
+                rweight = getUnifRand(1._TKG, 9._TKG, nsam)
                 iweight = getUnifRand(1_IK, 9_IK, nsam)
                 iweisum = sum(iweight)
                 rweisum = sum(rweight)
@@ -394,7 +394,7 @@
                 ! integer weighted
 
                 mean = getMean(sample, dim, iweight)
-                cov_ref = getCovRef(mean, sample, dim, real(iweight, TKC))
+                cov_ref = getCovRef(mean, sample, dim, real(iweight, TKG))
 
                 cov = getFilled(ZERO, ndim, ndim)
                 call setCov(cov, subset, mean, sample, dim, iweight, iweisum)
@@ -442,7 +442,7 @@
                 mean = getFilled(ZERO, ndim)
                 cov_ref = getFilled(ZERO, ndim, ndim)
                 sample = getUnifRand(ONE, TWO, nsam, ndim)
-                rweight = getUnifRand(1._TKC, 9._TKC, nsam)
+                rweight = getUnifRand(1._TKG, 9._TKG, nsam)
                 iweight = getUnifRand(1_IK, 9_IK, nsam)
                 iweisum = sum(iweight)
                 rweisum = sum(rweight)
@@ -450,7 +450,7 @@
                 ! integer weighted
 
                 mean = getMean(sample, dim, iweight)
-                cov_ref = getCovRef(mean, sample, dim, real(iweight, TKC))
+                cov_ref = getCovRef(mean, sample, dim, real(iweight, TKG))
 
                 cov = getFilled(ZERO, ndim, ndim)
                 call setCov(cov, mean, sample(:,1), sample(:,2), iweight, iweisum)
@@ -511,7 +511,7 @@
 
         pure function getCFC(cor, subsetr, std) result(cov)
             class(*), intent(in) :: subsetr
-            real(TKC), intent(in) :: std(:)
+            real(TKG), intent(in) :: std(:)
             TYPE_OF_SAMPLE, intent(in) :: cor(:,:)
             TYPE_OF_SAMPLE :: cov(size(cor, 1, IK), size(cor, 2, IK))
             integer(IK) :: idim, jdim, ndim
@@ -558,16 +558,16 @@
 
         PURE function getCovRef(mean, sample, dim, weight) result(cov)
             integer(IK), intent(in) :: dim
-            real(TKC), intent(in), optional :: weight(:)
+            real(TKG), intent(in), optional :: weight(:)
             TYPE_OF_SAMPLE, intent(in), contiguous :: sample(:,:), mean(:)
             TYPE_OF_SAMPLE :: cov(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
             TYPE_OF_SAMPLE :: sampleShifted(size(sample, 1, IK), size(sample, 2, IK))
             integer(IK) :: idim, jdim, ndim
-            real(TKC) :: normfac
+            real(TKG) :: normfac
             ndim = size(sample, 3 - dim, IK)
             sampleShifted = getShifted(sample, dim, -mean)
             if (present(weight)) then
-                normfac = 1._TKC / sum(weight)
+                normfac = 1._TKG / sum(weight)
                 if (dim == 2) then
                     do jdim = 1, ndim
                         do idim = 1, ndim
@@ -582,7 +582,7 @@
                     end do
                 end if
             else
-                normfac = 1._TKC / size(sample, dim, IK)
+                normfac = 1._TKG / size(sample, dim, IK)
                 if (dim == 2) then
                     do jdim = 1, ndim
                         do idim = 1, ndim
@@ -631,9 +631,9 @@
 #elif   setCovMean_ENABLED
         !%%%%%%%%%%%%%%%%%
 
-        real(TKC) :: rweisum, rweisum_ref
+        real(TKG) :: rweisum, rweisum_ref
         integer(IK) :: iweisum, iweisum_ref
-        real(TKC), allocatable :: rweight(:)
+        real(TKG), allocatable :: rweight(:)
         integer(IK), allocatable :: iweight(:)
         integer(IK) :: itry, nsam, ndim, dim
         TYPE_OF_SAMPLE, allocatable :: sample(:,:), mean(:), meang(:), mean_ref(:), mdiff(:)
@@ -658,7 +658,7 @@
                     sample = getUnifRand(ONE, TWO, nsam, ndim)
                     meang = sample(1,:)
                 end if
-                rweight = getUnifRand(1._TKC, 9._TKC, nsam)
+                rweight = getUnifRand(1._TKG, 9._TKG, nsam)
                 iweight = getUnifRand(1_IK, 9_IK, nsam)
                 iweisum_ref = sum(iweight)
                 rweisum_ref = sum(rweight)
@@ -673,7 +673,7 @@
                 mean = getFilled(ZERO, ndim)
                 cov = getFilled(ZERO, ndim, ndim)
                 call setCovMean(cov, subset, mean, sample, dim, iweight, iweisum, meang)
-                call setAssertedSum(__LINE__, SK_"integer-weighted", real(iweisum, TKC), real(iweisum_ref, TKC))
+                call setAssertedSum(__LINE__, SK_"integer-weighted", real(iweisum, TKG), real(iweisum_ref, TKG))
                 call setAssertedCov(__LINE__, SK_"integer-weighted", subset)
                 call setAssertedAvg(__LINE__, SK_"integer-weighted")
 
@@ -716,7 +716,7 @@
                     sample = getUnifRand(ONE, TWO, nsam, ndim)
                     meang = sample(1,:)
                 end if
-                rweight = getUnifRand(1._TKC, 9._TKC, nsam)
+                rweight = getUnifRand(1._TKG, 9._TKG, nsam)
                 iweight = getUnifRand(1_IK, 9_IK, nsam)
                 iweisum_ref = sum(iweight)
                 rweisum_ref = sum(rweight)
@@ -731,7 +731,7 @@
                 mean = getFilled(ZERO, ndim)
                 cov = getFilled(ZERO, ndim, ndim)
                 call setCovMean(cov, subset, mean, sample, dim, iweight, iweisum, meang)
-                call setAssertedSum(__LINE__, SK_"integer-weighted", real(iweisum, TKC), real(iweisum_ref, TKC))
+                call setAssertedSum(__LINE__, SK_"integer-weighted", real(iweisum, TKG), real(iweisum_ref, TKG))
                 call setAssertedCov(__LINE__, SK_"integer-weighted", subset)
                 call setAssertedAvg(__LINE__, SK_"integer-weighted")
 
@@ -769,7 +769,7 @@
                 ndim = 2_IK
                 sample = getUnifRand(ONE, TWO, nsam, ndim)
                 meang = sample(1,:)
-                rweight = getUnifRand(1._TKC, 9._TKC, nsam)
+                rweight = getUnifRand(1._TKG, 9._TKG, nsam)
                 iweight = getUnifRand(1_IK, 9_IK, nsam)
                 iweisum_ref = sum(iweight)
                 rweisum_ref = sum(rweight)
@@ -784,7 +784,7 @@
                 mean = getFilled(ZERO, ndim)
                 cov = getFilled(ZERO, ndim, ndim)
                 call setCovMean(cov, mean, sample(:,1), sample(:,2), iweight, iweisum, meang)
-                call setAssertedSum(__LINE__, SK_"integer-weighted", real(iweisum, TKC), real(iweisum_ref, TKC))
+                call setAssertedSum(__LINE__, SK_"integer-weighted", real(iweisum, TKG), real(iweisum_ref, TKG))
                 call setAssertedCov(__LINE__, SK_"integer-weighted", subset)
                 call setAssertedAvg(__LINE__, SK_"integer-weighted")
 
@@ -818,7 +818,7 @@
     contains
 
         subroutine setAssertedSum(line, this, weisum, weisum_ref)
-            real(TKC), intent(in) :: weisum, weisum_ref
+            real(TKG), intent(in) :: weisum, weisum_ref
             character(*, SK), intent(in) :: this
             integer, intent(in) :: line
             assertion = assertion .and. abs(weisum - weisum_ref) < rtol * weisum_ref
@@ -890,7 +890,7 @@
 #elif   getCovMerged_ENABLED || setCovMerged_ENABLED
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        real(TKC) :: fracA
+        real(TKG) :: fracA
         integer(IK) :: itry, ndim, dim
         integer(IK) :: nsam, nsamA, nsamB
         TYPE_OF_SAMPLE, allocatable :: sample(:,:), meanDiff(:)
@@ -903,7 +903,7 @@
             nsamA = getUnifRand(2_IK, 5_IK)
             nsamB = getUnifRand(2_IK, 5_IK)
             nsam = nsamA + nsamB
-            fracA = real(nsamA, TKC) / real(nsam, TKC)
+            fracA = real(nsamA, TKG) / real(nsam, TKG)
 
             ! test D2 interface.
 
@@ -1005,7 +1005,7 @@
 #elif   setCovMeanMerged_ENABLED
         !%%%%%%%%%%%%%%%%%%%%%%%
 
-        real(TKC) :: fracA
+        real(TKG) :: fracA
         integer(IK) :: itry, ndim, dim
         integer(IK) :: nsam, nsamA, nsamB
         TYPE_OF_SAMPLE, allocatable :: sample(:,:), mean(:), mean_ref(:), meanA(:), meanB(:), mdiff(:)
@@ -1018,7 +1018,7 @@
             nsamA = getUnifRand(2_IK, 5_IK)
             nsamB = getUnifRand(2_IK, 5_IK)
             nsam = nsamA + nsamB
-            fracA = real(nsamA, TKC) / real(nsam, TKC)
+            fracA = real(nsamA, TKG) / real(nsam, TKG)
 
             ! test D2 interface.
 

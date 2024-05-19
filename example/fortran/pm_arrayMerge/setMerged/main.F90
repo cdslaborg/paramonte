@@ -22,8 +22,8 @@ program example
     call disp%skip()
 
     block
-        use pm_kind, only: TKC => SK ! All kinds are supported.
-        character(:,TKC), allocatable :: sortedArray1, sortedArray2, sortedMerger
+        use pm_kind, only: TKG => SK ! All kinds are supported.
+        character(:,TKG), allocatable :: sortedArray1, sortedArray2, sortedMerger
         integer(IK) :: len1, len2
         call disp%skip()
         call disp%show("len1 = getUnifRand(0_IK, 5_IK); len2 = getUnifRand(0_IK, 5_IK)")
@@ -54,8 +54,8 @@ program example
     call disp%skip()
 
     block
-        use pm_kind, only: TKC => IK ! All kinds are supported.
-        integer(TKC), allocatable :: sortedArray1(:), sortedArray2(:), sortedMerger(:)
+        use pm_kind, only: TKG => IK ! All kinds are supported.
+        integer(TKG), allocatable :: sortedArray1(:), sortedArray2(:), sortedMerger(:)
         integer(IK) :: len1, len2
         call disp%skip()
         call disp%show("len1 = getUnifRand(0_IK, 5_IK); len2 = getUnifRand(0_IK, 5_IK)")
@@ -86,8 +86,8 @@ program example
     call disp%skip()
 
     block
-        use pm_kind, only: TKC => IK ! All kinds are supported.
-        real(TKC), allocatable :: sortedArray1(:), sortedArray2(:), sortedMerger(:)
+        use pm_kind, only: TKG => IK ! All kinds are supported.
+        real(TKG), allocatable :: sortedArray1(:), sortedArray2(:), sortedMerger(:)
         integer(IK) :: len1, len2
         call disp%skip()
         call disp%show("len1 = getUnifRand(0_IK, 5_IK); len2 = getUnifRand(0_IK, 5_IK)")

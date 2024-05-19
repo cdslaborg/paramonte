@@ -140,7 +140,7 @@ module pm_sysInfo
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: kernelis_typerFailed
 #endif
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
         logical(LK)     , intent(out)       :: failed
         type(kernelis_type)                 :: kernelis
     end function
@@ -149,9 +149,9 @@ module pm_sysInfo
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: kernelis_typerFailedMsg
 #endif
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
         logical(LK)     , intent(out)       :: failed
-        character(*,SKC), intent(inout)     :: errmsg
+        character(*,SKG), intent(inout)     :: errmsg
         type(kernelis_type)                 :: kernelis
     end function
 
@@ -262,7 +262,7 @@ module pm_sysInfo
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: kernel_typerFailed
 #endif
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
         logical(LK)     , intent(out)       :: failed
         type(kernel_type)                   :: kernel
     end function
@@ -271,9 +271,9 @@ module pm_sysInfo
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: kernel_typerFailedMsg
 #endif
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
         logical(LK)     , intent(out)       :: failed
-        character(*,SKC), intent(inout)     :: errmsg
+        character(*,SKG), intent(inout)     :: errmsg
         type(kernel_type)                   :: kernel
     end function
 
@@ -349,27 +349,27 @@ module pm_sysInfo
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getSysInfo
 #endif
-        use pm_kind, only: SKC => SK
-        character(:,SKC)                , allocatable   :: sysInfo
+        use pm_kind, only: SKG => SK
+        character(:,SKG)                , allocatable   :: sysInfo
     end function
 
     module function getSysInfoFailed(failed) result(sysInfo)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getSysInfoFailed
 #endif
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
         logical(LK)     , intent(out)                   :: failed
-        character(:,SKC)                , allocatable   :: sysInfo
+        character(:,SKG)                , allocatable   :: sysInfo
     end function
 
     module function getSysInfoFailedMsg(failed, errmsg) result(sysInfo)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getSysInfoFailedMsg
 #endif
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
         logical(LK)     , intent(out)                   :: failed
-        character(*,SKC), intent(inout)                 :: errmsg
-        character(:,SKC)                , allocatable   :: sysInfo
+        character(*,SKG), intent(inout)                 :: errmsg
+        character(:,SKG)                , allocatable   :: sysInfo
     end function
 
     end interface
@@ -446,7 +446,7 @@ module pm_sysInfo
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isKernelWindowsFailed
 #endif
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
         logical(LK)     , intent(out)   :: failed
         logical(LK)                     :: itis
     end function
@@ -534,7 +534,7 @@ module pm_sysInfo
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isKernelDarwinFailed
 #endif
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
         logical(LK)     , intent(out)   :: failed
         logical(LK)                     :: itis
     end function
@@ -622,7 +622,7 @@ module pm_sysInfo
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isKernelLinuxFailed
 #endif
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
         logical(LK)     , intent(out)   :: failed
         logical(LK)                     :: itis
     end function

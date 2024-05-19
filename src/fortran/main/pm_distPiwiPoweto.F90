@@ -185,9 +185,9 @@ module pm_distPiwiPoweto
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPiwiPowetoLogPDFNFALD_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(in)    , contiguous    :: alpha(:), logLimX(:)
-        real(RKC)                                   :: logPDFNF(size(alpha, kind = IK))
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(in)    , contiguous    :: alpha(:), logLimX(:)
+        real(RKG)                                   :: logPDFNF(size(alpha, kind = IK))
     end function
 #endif
 
@@ -196,9 +196,9 @@ module pm_distPiwiPoweto
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPiwiPowetoLogPDFNFALD_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(in)    , contiguous    :: alpha(:), logLimX(:)
-        real(RKC)                                   :: logPDFNF(size(alpha, kind = IK))
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(in)    , contiguous    :: alpha(:), logLimX(:)
+        real(RKG)                                   :: logPDFNF(size(alpha, kind = IK))
     end function
 #endif
 
@@ -207,9 +207,9 @@ module pm_distPiwiPoweto
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPiwiPowetoLogPDFNFALD_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(in)    , contiguous    :: alpha(:), logLimX(:)
-        real(RKC)                                   :: logPDFNF(size(alpha, kind = IK))
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(in)    , contiguous    :: alpha(:), logLimX(:)
+        real(RKG)                                   :: logPDFNF(size(alpha, kind = IK))
     end function
 #endif
 
@@ -218,9 +218,9 @@ module pm_distPiwiPoweto
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPiwiPowetoLogPDFNFALD_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(in)    , contiguous    :: alpha(:), logLimX(:)
-        real(RKC)                                   :: logPDFNF(size(alpha, kind = IK))
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(in)    , contiguous    :: alpha(:), logLimX(:)
+        real(RKG)                                   :: logPDFNF(size(alpha, kind = IK))
     end function
 #endif
 
@@ -229,9 +229,9 @@ module pm_distPiwiPoweto
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPiwiPowetoLogPDFNFALD_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(in)    , contiguous    :: alpha(:), logLimX(:)
-        real(RKC)                                   :: logPDFNF(size(alpha, kind = IK))
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(in)    , contiguous    :: alpha(:), logLimX(:)
+        real(RKG)                                   :: logPDFNF(size(alpha, kind = IK))
     end function
 #endif
 
@@ -242,10 +242,10 @@ module pm_distPiwiPoweto
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPiwiPowetoLogPDFNFALC_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(in)    , contiguous    :: alpha(:), logLimX(:)
-        real(RKC)   , intent(out)   , contiguous    :: cumSumArea(:)
-        real(RKC)                                   :: logPDFNF(size(alpha, kind = IK))
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(in)    , contiguous    :: alpha(:), logLimX(:)
+        real(RKG)   , intent(out)   , contiguous    :: cumSumArea(:)
+        real(RKG)                                   :: logPDFNF(size(alpha, kind = IK))
     end function
 #endif
 
@@ -254,10 +254,10 @@ module pm_distPiwiPoweto
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPiwiPowetoLogPDFNFALC_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(in)    , contiguous    :: alpha(:), logLimX(:)
-        real(RKC)   , intent(out)   , contiguous    :: cumSumArea(:)
-        real(RKC)                                   :: logPDFNF(size(alpha, kind = IK))
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(in)    , contiguous    :: alpha(:), logLimX(:)
+        real(RKG)   , intent(out)   , contiguous    :: cumSumArea(:)
+        real(RKG)                                   :: logPDFNF(size(alpha, kind = IK))
     end function
 #endif
 
@@ -266,10 +266,10 @@ module pm_distPiwiPoweto
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPiwiPowetoLogPDFNFALC_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(in)    , contiguous    :: alpha(:), logLimX(:)
-        real(RKC)   , intent(out)   , contiguous    :: cumSumArea(:)
-        real(RKC)                                   :: logPDFNF(size(alpha, kind = IK))
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(in)    , contiguous    :: alpha(:), logLimX(:)
+        real(RKG)   , intent(out)   , contiguous    :: cumSumArea(:)
+        real(RKG)                                   :: logPDFNF(size(alpha, kind = IK))
     end function
 #endif
 
@@ -278,10 +278,10 @@ module pm_distPiwiPoweto
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPiwiPowetoLogPDFNFALC_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(in)    , contiguous    :: alpha(:), logLimX(:)
-        real(RKC)   , intent(out)   , contiguous    :: cumSumArea(:)
-        real(RKC)                                   :: logPDFNF(size(alpha, kind = IK))
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(in)    , contiguous    :: alpha(:), logLimX(:)
+        real(RKG)   , intent(out)   , contiguous    :: cumSumArea(:)
+        real(RKG)                                   :: logPDFNF(size(alpha, kind = IK))
     end function
 #endif
 
@@ -290,10 +290,10 @@ module pm_distPiwiPoweto
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPiwiPowetoLogPDFNFALC_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(in)    , contiguous    :: alpha(:), logLimX(:)
-        real(RKC)   , intent(out)   , contiguous    :: cumSumArea(:)
-        real(RKC)                                   :: logPDFNF(size(alpha, kind = IK))
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(in)    , contiguous    :: alpha(:), logLimX(:)
+        real(RKG)   , intent(out)   , contiguous    :: cumSumArea(:)
+        real(RKG)                                   :: logPDFNF(size(alpha, kind = IK))
     end function
 #endif
 
@@ -377,12 +377,12 @@ module pm_distPiwiPoweto
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPiwiPowetoLogPDF_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(in)                            :: logx
-        real(RKC)   , intent(in)    , contiguous            :: logLimX(:)
-        real(RKC)   , intent(in)    , contiguous            :: alpha(:)
-        real(RKC)   , intent(in)    , contiguous, optional  :: logPDFNF(:)
-        real(RKC)                                           :: logPDF
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(in)                            :: logx
+        real(RKG)   , intent(in)    , contiguous            :: logLimX(:)
+        real(RKG)   , intent(in)    , contiguous            :: alpha(:)
+        real(RKG)   , intent(in)    , contiguous, optional  :: logPDFNF(:)
+        real(RKG)                                           :: logPDF
     end function
 #endif
 
@@ -391,12 +391,12 @@ module pm_distPiwiPoweto
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPiwiPowetoLogPDF_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(in)                            :: logx
-        real(RKC)   , intent(in)    , contiguous            :: logLimX(:)
-        real(RKC)   , intent(in)    , contiguous            :: alpha(:)
-        real(RKC)   , intent(in)    , contiguous, optional  :: logPDFNF(:)
-        real(RKC)                                           :: logPDF
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(in)                            :: logx
+        real(RKG)   , intent(in)    , contiguous            :: logLimX(:)
+        real(RKG)   , intent(in)    , contiguous            :: alpha(:)
+        real(RKG)   , intent(in)    , contiguous, optional  :: logPDFNF(:)
+        real(RKG)                                           :: logPDF
     end function
 #endif
 
@@ -405,12 +405,12 @@ module pm_distPiwiPoweto
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPiwiPowetoLogPDF_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(in)                            :: logx
-        real(RKC)   , intent(in)    , contiguous            :: logLimX(:)
-        real(RKC)   , intent(in)    , contiguous            :: alpha(:)
-        real(RKC)   , intent(in)    , contiguous, optional  :: logPDFNF(:)
-        real(RKC)                                           :: logPDF
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(in)                            :: logx
+        real(RKG)   , intent(in)    , contiguous            :: logLimX(:)
+        real(RKG)   , intent(in)    , contiguous            :: alpha(:)
+        real(RKG)   , intent(in)    , contiguous, optional  :: logPDFNF(:)
+        real(RKG)                                           :: logPDF
     end function
 #endif
 
@@ -419,12 +419,12 @@ module pm_distPiwiPoweto
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPiwiPowetoLogPDF_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(in)                            :: logx
-        real(RKC)   , intent(in)    , contiguous            :: logLimX(:)
-        real(RKC)   , intent(in)    , contiguous            :: alpha(:)
-        real(RKC)   , intent(in)    , contiguous, optional  :: logPDFNF(:)
-        real(RKC)                                           :: logPDF
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(in)                            :: logx
+        real(RKG)   , intent(in)    , contiguous            :: logLimX(:)
+        real(RKG)   , intent(in)    , contiguous            :: alpha(:)
+        real(RKG)   , intent(in)    , contiguous, optional  :: logPDFNF(:)
+        real(RKG)                                           :: logPDF
     end function
 #endif
 
@@ -433,12 +433,12 @@ module pm_distPiwiPoweto
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPiwiPowetoLogPDF_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(in)                            :: logx
-        real(RKC)   , intent(in)    , contiguous            :: logLimX(:)
-        real(RKC)   , intent(in)    , contiguous            :: alpha(:)
-        real(RKC)   , intent(in)    , contiguous, optional  :: logPDFNF(:)
-        real(RKC)                                           :: logPDF
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(in)                            :: logx
+        real(RKG)   , intent(in)    , contiguous            :: logLimX(:)
+        real(RKG)   , intent(in)    , contiguous            :: alpha(:)
+        real(RKG)   , intent(in)    , contiguous, optional  :: logPDFNF(:)
+        real(RKG)                                           :: logPDF
     end function
 #endif
 
@@ -520,12 +520,12 @@ module pm_distPiwiPoweto
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPiwiPowetoLogPDFALL_D0_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(out)                           :: logPDF
-        real(RKC)   , intent(in)                            :: logx
-        real(RKC)   , intent(in)    , contiguous            :: logLimX(:)
-        real(RKC)   , intent(in)    , contiguous            :: alpha(:)
-        real(RKC)   , intent(in)    , contiguous            :: logPDFNF(:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(out)                           :: logPDF
+        real(RKG)   , intent(in)                            :: logx
+        real(RKG)   , intent(in)    , contiguous            :: logLimX(:)
+        real(RKG)   , intent(in)    , contiguous            :: alpha(:)
+        real(RKG)   , intent(in)    , contiguous            :: logPDFNF(:)
     end subroutine
 #endif
 
@@ -534,12 +534,12 @@ module pm_distPiwiPoweto
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPiwiPowetoLogPDFALL_D0_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(out)                           :: logPDF
-        real(RKC)   , intent(in)                            :: logx
-        real(RKC)   , intent(in)    , contiguous            :: logLimX(:)
-        real(RKC)   , intent(in)    , contiguous            :: alpha(:)
-        real(RKC)   , intent(in)    , contiguous            :: logPDFNF(:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(out)                           :: logPDF
+        real(RKG)   , intent(in)                            :: logx
+        real(RKG)   , intent(in)    , contiguous            :: logLimX(:)
+        real(RKG)   , intent(in)    , contiguous            :: alpha(:)
+        real(RKG)   , intent(in)    , contiguous            :: logPDFNF(:)
     end subroutine
 #endif
 
@@ -548,12 +548,12 @@ module pm_distPiwiPoweto
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPiwiPowetoLogPDFALL_D0_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(out)                           :: logPDF
-        real(RKC)   , intent(in)                            :: logx
-        real(RKC)   , intent(in)    , contiguous            :: logLimX(:)
-        real(RKC)   , intent(in)    , contiguous            :: alpha(:)
-        real(RKC)   , intent(in)    , contiguous            :: logPDFNF(:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(out)                           :: logPDF
+        real(RKG)   , intent(in)                            :: logx
+        real(RKG)   , intent(in)    , contiguous            :: logLimX(:)
+        real(RKG)   , intent(in)    , contiguous            :: alpha(:)
+        real(RKG)   , intent(in)    , contiguous            :: logPDFNF(:)
     end subroutine
 #endif
 
@@ -562,12 +562,12 @@ module pm_distPiwiPoweto
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPiwiPowetoLogPDFALL_D0_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(out)                           :: logPDF
-        real(RKC)   , intent(in)                            :: logx
-        real(RKC)   , intent(in)    , contiguous            :: logLimX(:)
-        real(RKC)   , intent(in)    , contiguous            :: alpha(:)
-        real(RKC)   , intent(in)    , contiguous            :: logPDFNF(:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(out)                           :: logPDF
+        real(RKG)   , intent(in)                            :: logx
+        real(RKG)   , intent(in)    , contiguous            :: logLimX(:)
+        real(RKG)   , intent(in)    , contiguous            :: alpha(:)
+        real(RKG)   , intent(in)    , contiguous            :: logPDFNF(:)
     end subroutine
 #endif
 
@@ -576,12 +576,12 @@ module pm_distPiwiPoweto
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPiwiPowetoLogPDFALL_D0_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(out)                           :: logPDF
-        real(RKC)   , intent(in)                            :: logx
-        real(RKC)   , intent(in)    , contiguous            :: logLimX(:)
-        real(RKC)   , intent(in)    , contiguous            :: alpha(:)
-        real(RKC)   , intent(in)    , contiguous            :: logPDFNF(:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(out)                           :: logPDF
+        real(RKG)   , intent(in)                            :: logx
+        real(RKG)   , intent(in)    , contiguous            :: logLimX(:)
+        real(RKG)   , intent(in)    , contiguous            :: alpha(:)
+        real(RKG)   , intent(in)    , contiguous            :: logPDFNF(:)
     end subroutine
 #endif
 
@@ -592,11 +592,11 @@ module pm_distPiwiPoweto
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPiwiPowetoLogPDFBAN_D0_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(out)                           :: logPDF
-        real(RKC)   , intent(in)                            :: logx
-        real(RKC)   , intent(in)    , contiguous            :: alpha(:)
-        real(RKC)   , intent(in)    , contiguous            :: logPDFNF(:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(out)                           :: logPDF
+        real(RKG)   , intent(in)                            :: logx
+        real(RKG)   , intent(in)    , contiguous            :: alpha(:)
+        real(RKG)   , intent(in)    , contiguous            :: logPDFNF(:)
         integer(IK) , intent(in)                            :: bin
     end subroutine
 #endif
@@ -606,11 +606,11 @@ module pm_distPiwiPoweto
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPiwiPowetoLogPDFBAN_D0_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(out)                           :: logPDF
-        real(RKC)   , intent(in)                            :: logx
-        real(RKC)   , intent(in)    , contiguous            :: alpha(:)
-        real(RKC)   , intent(in)    , contiguous            :: logPDFNF(:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(out)                           :: logPDF
+        real(RKG)   , intent(in)                            :: logx
+        real(RKG)   , intent(in)    , contiguous            :: alpha(:)
+        real(RKG)   , intent(in)    , contiguous            :: logPDFNF(:)
         integer(IK) , intent(in)                            :: bin
     end subroutine
 #endif
@@ -620,11 +620,11 @@ module pm_distPiwiPoweto
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPiwiPowetoLogPDFBAN_D0_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(out)                           :: logPDF
-        real(RKC)   , intent(in)                            :: logx
-        real(RKC)   , intent(in)    , contiguous            :: alpha(:)
-        real(RKC)   , intent(in)    , contiguous            :: logPDFNF(:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(out)                           :: logPDF
+        real(RKG)   , intent(in)                            :: logx
+        real(RKG)   , intent(in)    , contiguous            :: alpha(:)
+        real(RKG)   , intent(in)    , contiguous            :: logPDFNF(:)
         integer(IK) , intent(in)                            :: bin
     end subroutine
 #endif
@@ -634,11 +634,11 @@ module pm_distPiwiPoweto
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPiwiPowetoLogPDFBAN_D0_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(out)                           :: logPDF
-        real(RKC)   , intent(in)                            :: logx
-        real(RKC)   , intent(in)    , contiguous            :: alpha(:)
-        real(RKC)   , intent(in)    , contiguous            :: logPDFNF(:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(out)                           :: logPDF
+        real(RKG)   , intent(in)                            :: logx
+        real(RKG)   , intent(in)    , contiguous            :: alpha(:)
+        real(RKG)   , intent(in)    , contiguous            :: logPDFNF(:)
         integer(IK) , intent(in)                            :: bin
     end subroutine
 #endif
@@ -648,11 +648,11 @@ module pm_distPiwiPoweto
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPiwiPowetoLogPDFBAN_D0_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(out)                           :: logPDF
-        real(RKC)   , intent(in)                            :: logx
-        real(RKC)   , intent(in)    , contiguous            :: alpha(:)
-        real(RKC)   , intent(in)    , contiguous            :: logPDFNF(:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(out)                           :: logPDF
+        real(RKG)   , intent(in)                            :: logx
+        real(RKG)   , intent(in)    , contiguous            :: alpha(:)
+        real(RKG)   , intent(in)    , contiguous            :: logPDFNF(:)
         integer(IK) , intent(in)                            :: bin
     end subroutine
 #endif
@@ -748,11 +748,11 @@ module pm_distPiwiPoweto
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPiwiPowetoCDFALDD_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(in)                            :: logx
-        real(RKC)   , intent(in)    , contiguous            :: alpha(:)
-        real(RKC)   , intent(in)    , contiguous            :: logLimX(:)
-        real(RKC)                                           :: cdf
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(in)                            :: logx
+        real(RKG)   , intent(in)    , contiguous            :: alpha(:)
+        real(RKG)   , intent(in)    , contiguous            :: logLimX(:)
+        real(RKG)                                           :: cdf
     end function
 #endif
 
@@ -761,11 +761,11 @@ module pm_distPiwiPoweto
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPiwiPowetoCDFALDD_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(in)                            :: logx
-        real(RKC)   , intent(in)    , contiguous            :: alpha(:)
-        real(RKC)   , intent(in)    , contiguous            :: logLimX(:)
-        real(RKC)                                           :: cdf
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(in)                            :: logx
+        real(RKG)   , intent(in)    , contiguous            :: alpha(:)
+        real(RKG)   , intent(in)    , contiguous            :: logLimX(:)
+        real(RKG)                                           :: cdf
     end function
 #endif
 
@@ -774,11 +774,11 @@ module pm_distPiwiPoweto
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPiwiPowetoCDFALDD_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(in)                            :: logx
-        real(RKC)   , intent(in)    , contiguous            :: alpha(:)
-        real(RKC)   , intent(in)    , contiguous            :: logLimX(:)
-        real(RKC)                                           :: cdf
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(in)                            :: logx
+        real(RKG)   , intent(in)    , contiguous            :: alpha(:)
+        real(RKG)   , intent(in)    , contiguous            :: logLimX(:)
+        real(RKG)                                           :: cdf
     end function
 #endif
 
@@ -787,11 +787,11 @@ module pm_distPiwiPoweto
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPiwiPowetoCDFALDD_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(in)                            :: logx
-        real(RKC)   , intent(in)    , contiguous            :: alpha(:)
-        real(RKC)   , intent(in)    , contiguous            :: logLimX(:)
-        real(RKC)                                           :: cdf
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(in)                            :: logx
+        real(RKG)   , intent(in)    , contiguous            :: alpha(:)
+        real(RKG)   , intent(in)    , contiguous            :: logLimX(:)
+        real(RKG)                                           :: cdf
     end function
 #endif
 
@@ -800,11 +800,11 @@ module pm_distPiwiPoweto
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPiwiPowetoCDFALDD_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(in)                            :: logx
-        real(RKC)   , intent(in)    , contiguous            :: alpha(:)
-        real(RKC)   , intent(in)    , contiguous            :: logLimX(:)
-        real(RKC)                                           :: cdf
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(in)                            :: logx
+        real(RKG)   , intent(in)    , contiguous            :: alpha(:)
+        real(RKG)   , intent(in)    , contiguous            :: logLimX(:)
+        real(RKG)                                           :: cdf
     end function
 #endif
 
@@ -815,13 +815,13 @@ module pm_distPiwiPoweto
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPiwiPowetoCDFALLC_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(in)                            :: logx
-        real(RKC)   , intent(in)    , contiguous            :: alpha(:)
-        real(RKC)   , intent(in)    , contiguous            :: logLimX(:)
-        real(RKC)   , intent(in)    , contiguous            :: logPDFNF(:)
-        real(RKC)   , intent(in)    , contiguous            :: cumSumArea(:)
-        real(RKC)                                           :: cdf
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(in)                            :: logx
+        real(RKG)   , intent(in)    , contiguous            :: alpha(:)
+        real(RKG)   , intent(in)    , contiguous            :: logLimX(:)
+        real(RKG)   , intent(in)    , contiguous            :: logPDFNF(:)
+        real(RKG)   , intent(in)    , contiguous            :: cumSumArea(:)
+        real(RKG)                                           :: cdf
     end function
 #endif
 
@@ -830,13 +830,13 @@ module pm_distPiwiPoweto
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPiwiPowetoCDFALLC_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(in)                            :: logx
-        real(RKC)   , intent(in)    , contiguous            :: alpha(:)
-        real(RKC)   , intent(in)    , contiguous            :: logLimX(:)
-        real(RKC)   , intent(in)    , contiguous            :: logPDFNF(:)
-        real(RKC)   , intent(in)    , contiguous            :: cumSumArea(:)
-        real(RKC)                                           :: cdf
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(in)                            :: logx
+        real(RKG)   , intent(in)    , contiguous            :: alpha(:)
+        real(RKG)   , intent(in)    , contiguous            :: logLimX(:)
+        real(RKG)   , intent(in)    , contiguous            :: logPDFNF(:)
+        real(RKG)   , intent(in)    , contiguous            :: cumSumArea(:)
+        real(RKG)                                           :: cdf
     end function
 #endif
 
@@ -845,13 +845,13 @@ module pm_distPiwiPoweto
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPiwiPowetoCDFALLC_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(in)                            :: logx
-        real(RKC)   , intent(in)    , contiguous            :: alpha(:)
-        real(RKC)   , intent(in)    , contiguous            :: logLimX(:)
-        real(RKC)   , intent(in)    , contiguous            :: logPDFNF(:)
-        real(RKC)   , intent(in)    , contiguous            :: cumSumArea(:)
-        real(RKC)                                           :: cdf
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(in)                            :: logx
+        real(RKG)   , intent(in)    , contiguous            :: alpha(:)
+        real(RKG)   , intent(in)    , contiguous            :: logLimX(:)
+        real(RKG)   , intent(in)    , contiguous            :: logPDFNF(:)
+        real(RKG)   , intent(in)    , contiguous            :: cumSumArea(:)
+        real(RKG)                                           :: cdf
     end function
 #endif
 
@@ -860,13 +860,13 @@ module pm_distPiwiPoweto
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPiwiPowetoCDFALLC_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(in)                            :: logx
-        real(RKC)   , intent(in)    , contiguous            :: alpha(:)
-        real(RKC)   , intent(in)    , contiguous            :: logLimX(:)
-        real(RKC)   , intent(in)    , contiguous            :: logPDFNF(:)
-        real(RKC)   , intent(in)    , contiguous            :: cumSumArea(:)
-        real(RKC)                                           :: cdf
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(in)                            :: logx
+        real(RKG)   , intent(in)    , contiguous            :: alpha(:)
+        real(RKG)   , intent(in)    , contiguous            :: logLimX(:)
+        real(RKG)   , intent(in)    , contiguous            :: logPDFNF(:)
+        real(RKG)   , intent(in)    , contiguous            :: cumSumArea(:)
+        real(RKG)                                           :: cdf
     end function
 #endif
 
@@ -875,13 +875,13 @@ module pm_distPiwiPoweto
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPiwiPowetoCDFALLC_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(in)                            :: logx
-        real(RKC)   , intent(in)    , contiguous            :: alpha(:)
-        real(RKC)   , intent(in)    , contiguous            :: logLimX(:)
-        real(RKC)   , intent(in)    , contiguous            :: logPDFNF(:)
-        real(RKC)   , intent(in)    , contiguous            :: cumSumArea(:)
-        real(RKC)                                           :: cdf
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(in)                            :: logx
+        real(RKG)   , intent(in)    , contiguous            :: alpha(:)
+        real(RKG)   , intent(in)    , contiguous            :: logLimX(:)
+        real(RKG)   , intent(in)    , contiguous            :: logPDFNF(:)
+        real(RKG)   , intent(in)    , contiguous            :: cumSumArea(:)
+        real(RKG)                                           :: cdf
     end function
 #endif
 
@@ -973,13 +973,13 @@ module pm_distPiwiPoweto
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPiwiPowetoCDFMAN_D0_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(out)                           :: cdf
-        real(RKC)   , intent(in)                            :: logx
-        real(RKC)   , intent(in)    , contiguous            :: alpha(:)
-        real(RKC)   , intent(in)    , contiguous            :: logLimX(:)
-        real(RKC)   , intent(in)    , contiguous            :: logPDFNF(:)
-        real(RKC)   , intent(in)    , contiguous            :: cumSumArea(:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(out)                           :: cdf
+        real(RKG)   , intent(in)                            :: logx
+        real(RKG)   , intent(in)    , contiguous            :: alpha(:)
+        real(RKG)   , intent(in)    , contiguous            :: logLimX(:)
+        real(RKG)   , intent(in)    , contiguous            :: logPDFNF(:)
+        real(RKG)   , intent(in)    , contiguous            :: cumSumArea(:)
     end subroutine
 #endif
 
@@ -988,13 +988,13 @@ module pm_distPiwiPoweto
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPiwiPowetoCDFMAN_D0_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(out)                           :: cdf
-        real(RKC)   , intent(in)                            :: logx
-        real(RKC)   , intent(in)    , contiguous            :: alpha(:)
-        real(RKC)   , intent(in)    , contiguous            :: logLimX(:)
-        real(RKC)   , intent(in)    , contiguous            :: logPDFNF(:)
-        real(RKC)   , intent(in)    , contiguous            :: cumSumArea(:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(out)                           :: cdf
+        real(RKG)   , intent(in)                            :: logx
+        real(RKG)   , intent(in)    , contiguous            :: alpha(:)
+        real(RKG)   , intent(in)    , contiguous            :: logLimX(:)
+        real(RKG)   , intent(in)    , contiguous            :: logPDFNF(:)
+        real(RKG)   , intent(in)    , contiguous            :: cumSumArea(:)
     end subroutine
 #endif
 
@@ -1003,13 +1003,13 @@ module pm_distPiwiPoweto
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPiwiPowetoCDFMAN_D0_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(out)                           :: cdf
-        real(RKC)   , intent(in)                            :: logx
-        real(RKC)   , intent(in)    , contiguous            :: alpha(:)
-        real(RKC)   , intent(in)    , contiguous            :: logLimX(:)
-        real(RKC)   , intent(in)    , contiguous            :: logPDFNF(:)
-        real(RKC)   , intent(in)    , contiguous            :: cumSumArea(:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(out)                           :: cdf
+        real(RKG)   , intent(in)                            :: logx
+        real(RKG)   , intent(in)    , contiguous            :: alpha(:)
+        real(RKG)   , intent(in)    , contiguous            :: logLimX(:)
+        real(RKG)   , intent(in)    , contiguous            :: logPDFNF(:)
+        real(RKG)   , intent(in)    , contiguous            :: cumSumArea(:)
     end subroutine
 #endif
 
@@ -1018,13 +1018,13 @@ module pm_distPiwiPoweto
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPiwiPowetoCDFMAN_D0_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(out)                           :: cdf
-        real(RKC)   , intent(in)                            :: logx
-        real(RKC)   , intent(in)    , contiguous            :: alpha(:)
-        real(RKC)   , intent(in)    , contiguous            :: logLimX(:)
-        real(RKC)   , intent(in)    , contiguous            :: logPDFNF(:)
-        real(RKC)   , intent(in)    , contiguous            :: cumSumArea(:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(out)                           :: cdf
+        real(RKG)   , intent(in)                            :: logx
+        real(RKG)   , intent(in)    , contiguous            :: alpha(:)
+        real(RKG)   , intent(in)    , contiguous            :: logLimX(:)
+        real(RKG)   , intent(in)    , contiguous            :: logPDFNF(:)
+        real(RKG)   , intent(in)    , contiguous            :: cumSumArea(:)
     end subroutine
 #endif
 
@@ -1033,13 +1033,13 @@ module pm_distPiwiPoweto
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPiwiPowetoCDFMAN_D0_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(out)                           :: cdf
-        real(RKC)   , intent(in)                            :: logx
-        real(RKC)   , intent(in)    , contiguous            :: alpha(:)
-        real(RKC)   , intent(in)    , contiguous            :: logLimX(:)
-        real(RKC)   , intent(in)    , contiguous            :: logPDFNF(:)
-        real(RKC)   , intent(in)    , contiguous            :: cumSumArea(:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(out)                           :: cdf
+        real(RKG)   , intent(in)                            :: logx
+        real(RKG)   , intent(in)    , contiguous            :: alpha(:)
+        real(RKG)   , intent(in)    , contiguous            :: logLimX(:)
+        real(RKG)   , intent(in)    , contiguous            :: logPDFNF(:)
+        real(RKG)   , intent(in)    , contiguous            :: cumSumArea(:)
     end subroutine
 #endif
 
@@ -1050,13 +1050,13 @@ module pm_distPiwiPoweto
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPiwiPowetoCDFBAN_D0_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(out)                           :: cdf
-        real(RKC)   , intent(in)                            :: logx
-        real(RKC)   , intent(in)    , contiguous            :: alpha(:)
-        real(RKC)   , intent(in)    , contiguous            :: logLimX(:)
-        real(RKC)   , intent(in)    , contiguous            :: logPDFNF(:)
-        real(RKC)   , intent(in)    , contiguous            :: cumSumArea(:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(out)                           :: cdf
+        real(RKG)   , intent(in)                            :: logx
+        real(RKG)   , intent(in)    , contiguous            :: alpha(:)
+        real(RKG)   , intent(in)    , contiguous            :: logLimX(:)
+        real(RKG)   , intent(in)    , contiguous            :: logPDFNF(:)
+        real(RKG)   , intent(in)    , contiguous            :: cumSumArea(:)
         integer(IK) , intent(in)                            :: bin
     end subroutine
 #endif
@@ -1066,13 +1066,13 @@ module pm_distPiwiPoweto
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPiwiPowetoCDFBAN_D0_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(out)                           :: cdf
-        real(RKC)   , intent(in)                            :: logx
-        real(RKC)   , intent(in)    , contiguous            :: alpha(:)
-        real(RKC)   , intent(in)    , contiguous            :: logLimX(:)
-        real(RKC)   , intent(in)    , contiguous            :: logPDFNF(:)
-        real(RKC)   , intent(in)    , contiguous            :: cumSumArea(:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(out)                           :: cdf
+        real(RKG)   , intent(in)                            :: logx
+        real(RKG)   , intent(in)    , contiguous            :: alpha(:)
+        real(RKG)   , intent(in)    , contiguous            :: logLimX(:)
+        real(RKG)   , intent(in)    , contiguous            :: logPDFNF(:)
+        real(RKG)   , intent(in)    , contiguous            :: cumSumArea(:)
         integer(IK) , intent(in)                            :: bin
     end subroutine
 #endif
@@ -1082,13 +1082,13 @@ module pm_distPiwiPoweto
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPiwiPowetoCDFBAN_D0_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(out)                           :: cdf
-        real(RKC)   , intent(in)                            :: logx
-        real(RKC)   , intent(in)    , contiguous            :: alpha(:)
-        real(RKC)   , intent(in)    , contiguous            :: logLimX(:)
-        real(RKC)   , intent(in)    , contiguous            :: logPDFNF(:)
-        real(RKC)   , intent(in)    , contiguous            :: cumSumArea(:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(out)                           :: cdf
+        real(RKG)   , intent(in)                            :: logx
+        real(RKG)   , intent(in)    , contiguous            :: alpha(:)
+        real(RKG)   , intent(in)    , contiguous            :: logLimX(:)
+        real(RKG)   , intent(in)    , contiguous            :: logPDFNF(:)
+        real(RKG)   , intent(in)    , contiguous            :: cumSumArea(:)
         integer(IK) , intent(in)                            :: bin
     end subroutine
 #endif
@@ -1098,13 +1098,13 @@ module pm_distPiwiPoweto
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPiwiPowetoCDFBAN_D0_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(out)                           :: cdf
-        real(RKC)   , intent(in)                            :: logx
-        real(RKC)   , intent(in)    , contiguous            :: alpha(:)
-        real(RKC)   , intent(in)    , contiguous            :: logLimX(:)
-        real(RKC)   , intent(in)    , contiguous            :: logPDFNF(:)
-        real(RKC)   , intent(in)    , contiguous            :: cumSumArea(:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(out)                           :: cdf
+        real(RKG)   , intent(in)                            :: logx
+        real(RKG)   , intent(in)    , contiguous            :: alpha(:)
+        real(RKG)   , intent(in)    , contiguous            :: logLimX(:)
+        real(RKG)   , intent(in)    , contiguous            :: logPDFNF(:)
+        real(RKG)   , intent(in)    , contiguous            :: cumSumArea(:)
         integer(IK) , intent(in)                            :: bin
     end subroutine
 #endif
@@ -1114,13 +1114,13 @@ module pm_distPiwiPoweto
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPiwiPowetoCDFBAN_D0_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(out)                           :: cdf
-        real(RKC)   , intent(in)                            :: logx
-        real(RKC)   , intent(in)    , contiguous            :: alpha(:)
-        real(RKC)   , intent(in)    , contiguous            :: logLimX(:)
-        real(RKC)   , intent(in)    , contiguous            :: logPDFNF(:)
-        real(RKC)   , intent(in)    , contiguous            :: cumSumArea(:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(out)                           :: cdf
+        real(RKG)   , intent(in)                            :: logx
+        real(RKG)   , intent(in)    , contiguous            :: alpha(:)
+        real(RKG)   , intent(in)    , contiguous            :: logLimX(:)
+        real(RKG)   , intent(in)    , contiguous            :: logPDFNF(:)
+        real(RKG)   , intent(in)    , contiguous            :: cumSumArea(:)
         integer(IK) , intent(in)                            :: bin
     end subroutine
 #endif

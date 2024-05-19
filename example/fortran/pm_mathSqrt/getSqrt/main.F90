@@ -1,6 +1,6 @@
 program example
 
-    use pm_kind, only: IKC => IKS ! any integer kind is supported.
+    use pm_kind, only: IKG => IKS ! any integer kind is supported.
     use pm_kind, only: SK, IK, LK, RKD
     use pm_io, only: display_type
     use pm_distLogUnif, only: getLogUnifRand
@@ -10,7 +10,7 @@ program example
     implicit none
 
     integer(IK) :: i
-    integer(IKC) :: posint, intSqrt
+    integer(IKG) :: posint, intSqrt
 
     type(display_type) :: disp
     disp = display_type(file = "main.out.F90")
@@ -30,7 +30,7 @@ program example
         call disp%skip()
     end do
 
-    do posint = huge(0_IKC), huge(0_IKC) - 10_IKC, -1_IKC
+    do posint = huge(0_IKG), huge(0_IKG) - 10_IKG, -1_IKG
         call disp%skip()
         call disp%show("posint")
         call disp%show( posint )
@@ -43,7 +43,7 @@ program example
         call disp%skip()
     end do
 
-    do posint = 0_IKC, 10_IKC
+    do posint = 0_IKG, 10_IKG
         call disp%skip()
         call disp%show("posint")
         call disp%show( posint )

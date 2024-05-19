@@ -42,19 +42,19 @@
         integer(IK) :: i
 
 #if     getMerged_D0_SK_ENABLED || setMerged_D0_SK_ENABLED
-        character(:,SKC), allocatable   :: SortedArray1, SortedArray2, SortedMergedArray, SortedMergedArray_ref
+        character(:,SKG), allocatable   :: SortedArray1, SortedArray2, SortedMergedArray, SortedMergedArray_ref
 #elif   getMerged_D1_SK_ENABLED || setMerged_D1_SK_ENABLED
-        character(2,SKC), allocatable   :: SortedArray1(:), SortedArray2(:), SortedMergedArray(:), SortedMergedArray_ref(:)
+        character(2,SKG), allocatable   :: SortedArray1(:), SortedArray2(:), SortedMergedArray(:), SortedMergedArray_ref(:)
 #elif   getMerged_D1_IK_ENABLED || setMerged_D1_IK_ENABLED
-        integer(IKC)    , allocatable   :: SortedArray1(:), SortedArray2(:), SortedMergedArray(:), SortedMergedArray_ref(:)
+        integer(IKG)    , allocatable   :: SortedArray1(:), SortedArray2(:), SortedMergedArray(:), SortedMergedArray_ref(:)
 #elif   getMerged_D1_LK_ENABLED || setMerged_D1_LK_ENABLED
-        logical(LKC)    , allocatable   :: SortedArray1(:), SortedArray2(:), SortedMergedArray(:), SortedMergedArray_ref(:)
+        logical(LKG)    , allocatable   :: SortedArray1(:), SortedArray2(:), SortedMergedArray(:), SortedMergedArray_ref(:)
 #elif   getMerged_D1_CK_ENABLED || setMerged_D1_CK_ENABLED
-        complex(CKC)    , allocatable   :: SortedArray1(:), SortedArray2(:), SortedMergedArray(:), SortedMergedArray_ref(:)
+        complex(CKG)    , allocatable   :: SortedArray1(:), SortedArray2(:), SortedMergedArray(:), SortedMergedArray_ref(:)
 #elif   getMerged_D1_RK_ENABLED || setMerged_D1_RK_ENABLED
-        real(RKC)       , allocatable   :: SortedArray1(:), SortedArray2(:), SortedMergedArray(:), SortedMergedArray_ref(:)
+        real(RKG)       , allocatable   :: SortedArray1(:), SortedArray2(:), SortedMergedArray(:), SortedMergedArray_ref(:)
 #elif   getMerged_D1_PSSK_ENABLED || setMerged_D1_PSSK_ENABLED
-        type(strc(SKC)) , allocatable   :: SortedArray1(:), SortedArray2(:), SortedMergedArray(:), SortedMergedArray_ref(:)
+        type(strc(SKG)) , allocatable   :: SortedArray1(:), SortedArray2(:), SortedMergedArray(:), SortedMergedArray_ref(:)
 #else
 #error  "Unrecognized Interface."
 #endif
@@ -70,13 +70,13 @@
 
         call reset()
 #if     getMerged_D1_IK_ENABLED || setMerged_D1_IK_ENABLED
-        SortedArray1 = int([1, 2], kind = IKC)
-        SortedArray2 = int([-1], kind = IKC)
-        SortedMergedArray_ref = int([-1, 1, 2], IKC)
+        SortedArray1 = int([1, 2], kind = IKG)
+        SortedArray2 = int([-1], kind = IKG)
+        SortedMergedArray_ref = int([-1, 1, 2], IKG)
 #elif   getMerged_D1_RK_ENABLED || setMerged_D1_RK_ENABLED
-        SortedArray1 = [1._RKC, 2._RKC]
-        SortedArray2 = [-1._RKC]
-        SortedMergedArray_ref = [-1._RKC, 1._RKC, 2._RKC]
+        SortedArray1 = [1._RKG, 2._RKG]
+        SortedArray2 = [-1._RKG]
+        SortedMergedArray_ref = [-1._RKG, 1._RKG, 2._RKG]
 #endif
         call report(int(__LINE__, IK))
         call test%assert(assertion, SK_"The procedure must be able to merge-sort two input contiguous sorted arrays of rank 1 where all elements of array2 are smaller than elements of array1.", int(__LINE__, IK))
@@ -87,13 +87,13 @@
         call reset()
 
 #if     getMerged_D1_IK_ENABLED || setMerged_D1_IK_ENABLED
-        SortedArray1 = [1_IKC, 4_IKC]
-        SortedArray2 = [2_IKC, 3_IKC]
-        SortedMergedArray_ref = [1_IKC, 2_IKC, 3_IKC, 4_IKC]
+        SortedArray1 = [1_IKG, 4_IKG]
+        SortedArray2 = [2_IKG, 3_IKG]
+        SortedMergedArray_ref = [1_IKG, 2_IKG, 3_IKG, 4_IKG]
 #elif   getMerged_D1_RK_ENABLED || setMerged_D1_RK_ENABLED
-        SortedArray1 = [1._RKC, 4._RKC]
-        SortedArray2 = [2._RKC, 3._RKC]
-        SortedMergedArray_ref = [1._RKC, 2._RKC, 3._RKC, 4._RKC]
+        SortedArray1 = [1._RKG, 4._RKG]
+        SortedArray2 = [2._RKG, 3._RKG]
+        SortedMergedArray_ref = [1._RKG, 2._RKG, 3._RKG, 4._RKG]
 #endif
         call report(int(__LINE__, IK))
         call test%assert(assertion, SK_"The procedure must be able to merge-sort two input contiguous sorted arrays of rank 1 where all elements of array2 are between elements of array1.", int(__LINE__, IK))
@@ -103,13 +103,13 @@
         call reset()
 
 #if     getMerged_D1_IK_ENABLED || setMerged_D1_IK_ENABLED
-        SortedArray1 = [1_IKC, 4_IKC, 10_IKC]
-        SortedArray2 = [-2_IKC, 3_IKC, 7_IKC, 11_IKC]
-        SortedMergedArray_ref = [-2_IKC, 1_IKC, 3_IKC, 4_IKC, 7_IKC, 10_IKC, 11_IKC]
+        SortedArray1 = [1_IKG, 4_IKG, 10_IKG]
+        SortedArray2 = [-2_IKG, 3_IKG, 7_IKG, 11_IKG]
+        SortedMergedArray_ref = [-2_IKG, 1_IKG, 3_IKG, 4_IKG, 7_IKG, 10_IKG, 11_IKG]
 #elif   getMerged_D1_RK_ENABLED || setMerged_D1_RK_ENABLED
-        SortedArray1 = [1._RKC, 4._RKC, 10._RKC]
-        SortedArray2 = [-2._RKC, 3._RKC, 7._RKC, 11._RKC]
-        SortedMergedArray_ref = [-2._RKC, 1._RKC, 3._RKC, 4._RKC, 7._RKC, 10._RKC, 11._RKC]
+        SortedArray1 = [1._RKG, 4._RKG, 10._RKG]
+        SortedArray2 = [-2._RKG, 3._RKG, 7._RKG, 11._RKG]
+        SortedMergedArray_ref = [-2._RKG, 1._RKG, 3._RKG, 4._RKG, 7._RKG, 10._RKG, 11._RKG]
 #endif
         call report(int(__LINE__, IK))
         call test%assert(assertion, SK_"The procedure must be able to merge-sort two input arbitrarily-sized and valued contiguous sorted arrays of rank 1.", int(__LINE__, IK))
@@ -121,10 +121,10 @@
         if (allocated(SortedArray1)) deallocate(SortedArray1) ! LCOV_EXCL_LINE
         allocate(SortedArray1(0))
 #if     getMerged_D1_IK_ENABLED || setMerged_D1_IK_ENABLED
-        SortedArray2 = [-2_IKC, 3_IKC, 7_IKC, 11_IKC]
+        SortedArray2 = [-2_IKG, 3_IKG, 7_IKG, 11_IKG]
         SortedMergedArray_ref = SortedArray2
 #elif   getMerged_D1_RK_ENABLED || setMerged_D1_RK_ENABLED
-        SortedArray2 = [-2._RKC, 3._RKC, 7._RKC, 11._RKC]
+        SortedArray2 = [-2._RKG, 3._RKG, 7._RKG, 11._RKG]
         SortedMergedArray_ref = SortedArray2
 #endif
         call report(int(__LINE__, IK))
@@ -137,10 +137,10 @@
         if (allocated(SortedArray2)) deallocate(SortedArray2) ! LCOV_EXCL_LINE
         allocate(SortedArray2(0))
 #if     getMerged_D1_IK_ENABLED || setMerged_D1_IK_ENABLED
-        SortedArray1 = [-2_IKC, 3_IKC, 7_IKC, 11_IKC]
+        SortedArray1 = [-2_IKG, 3_IKG, 7_IKG, 11_IKG]
         SortedMergedArray_ref = SortedArray1
 #elif   getMerged_D1_RK_ENABLED || setMerged_D1_RK_ENABLED
-        SortedArray1 = [-2._RKC, 3._RKC, 7._RKC, 11._RKC]
+        SortedArray1 = [-2._RKG, 3._RKG, 7._RKG, 11._RKG]
         SortedMergedArray_ref = SortedArray1
 #endif
         call report(int(__LINE__, IK))
@@ -153,10 +153,10 @@
         if (allocated(SortedArray2)) deallocate(SortedArray2) ! LCOV_EXCL_LINE
         allocate(SortedArray2(0))
 #if     getMerged_D1_IK_ENABLED || setMerged_D1_IK_ENABLED
-        SortedArray1 = [-2_IKC, 3_IKC, 7_IKC, 11_IKC]
+        SortedArray1 = [-2_IKG, 3_IKG, 7_IKG, 11_IKG]
         SortedMergedArray_ref = SortedArray1
 #elif   getMerged_D1_RK_ENABLED || setMerged_D1_RK_ENABLED
-        SortedArray1 = [-2._RKC, 3._RKC, 7._RKC, 11._RKC]
+        SortedArray1 = [-2._RKG, 3._RKG, 7._RKG, 11._RKG]
         SortedMergedArray_ref = SortedArray1
 #endif
         call report(int(__LINE__, IK))
@@ -182,8 +182,8 @@
             do i = 1, 200
                 call reset()
 #if             getMerged_D0_SK_ENABLED || setMerged_D0_SK_ENABLED
-                allocate(character(getUnifRand(0, 10),SKC) :: SortedArray1)
-                allocate(character(getUnifRand(0, 10),SKC) :: SortedArray2)
+                allocate(character(getUnifRand(0, 10),SKG) :: SortedArray1)
+                allocate(character(getUnifRand(0, 10),SKG) :: SortedArray2)
                 call setUnifRand(SortedArray1)
                 call setUnifRand(SortedArray2)
                 SortedMergedArray_ref = SortedArray1//SortedArray2
@@ -235,22 +235,22 @@
 
         function isSorted(lhs, rhs) result(sorted)
 #if         getMerged_D0_SK_ENABLED || setMerged_D0_SK_ENABLED
-            character(1,SKC)        , intent(in) :: lhs, rhs
+            character(1,SKG)        , intent(in) :: lhs, rhs
 #elif       getMerged_D1_SK_ENABLED || setMerged_D1_SK_ENABLED
-            character(*,SKC)        , intent(in) :: lhs, rhs
+            character(*,SKG)        , intent(in) :: lhs, rhs
 #elif       getMerged_D1_IK_ENABLED || setMerged_D1_IK_ENABLED
-            integer(IKC)            , intent(in) :: lhs, rhs
+            integer(IKG)            , intent(in) :: lhs, rhs
 #elif       getMerged_D1_LK_ENABLED || setMerged_D1_LK_ENABLED
             use pm_logicalCompare, only: operator(>)
-            logical(LKC)            , intent(in) :: lhs, rhs
+            logical(LKG)            , intent(in) :: lhs, rhs
 #elif       getMerged_D1_CK_ENABLED || setMerged_D1_CK_ENABLED
             use pm_complexCompareLex, only: operator(>)
-            complex(CKC)            , intent(in) :: lhs, rhs
+            complex(CKG)            , intent(in) :: lhs, rhs
 #elif       getMerged_D1_RK_ENABLED || setMerged_D1_RK_ENABLED
-            real(RKC)               , intent(in) :: lhs, rhs
+            real(RKG)               , intent(in) :: lhs, rhs
 #elif       getMerged_D1_PSSK_ENABLED || setMerged_D1_PSSK_ENABLED
             use pm_container, only: css_pdt, operator(>)
-            type(css_pdt(SKC)) , intent(in) :: lhs, rhs
+            type(css_pdt(SKG)) , intent(in) :: lhs, rhs
 #else
 #error      "Unrecognized interface."
 #endif
@@ -282,7 +282,7 @@
 #elif       setMerged_ENABLED
             if (allocated(SortedMergedArray)) deallocate(SortedMergedArray)
 #if         getMerged_D0_SK_ENABLED || setMerged_D0_SK_ENABLED
-            allocate(character(len(SortedMergedArray_ref),SKC) :: SortedMergedArray)
+            allocate(character(len(SortedMergedArray_ref),SKG) :: SortedMergedArray)
 #else
             allocate(SortedMergedArray, mold = SortedMergedArray_ref)
 #endif

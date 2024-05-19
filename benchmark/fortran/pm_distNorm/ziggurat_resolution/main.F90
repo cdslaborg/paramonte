@@ -1,7 +1,7 @@
 ! Test the overhead of calling `setNormRand()` vs. Fortran intrinsic procedure `random_number()`.
 program benchmark
 
-    use pm_kind, only: IK, RK, RKC => RK, SK
+    use pm_kind, only: IK, RK, RKG => RK, SK
     use pm_distNorm, only: xoshiro256ssw_type
     use pm_distNorm, only: setNormRand
     use pm_distNorm, only: getZigNorm
@@ -15,9 +15,9 @@ program benchmark
     integer(IK)                         :: fileUnit         !<  The output file unit for benchmark results.
     integer(IK)         , parameter     :: NSET = 13_IK     !<  The number of ziggurat sets.
     integer(IK)         , parameter     :: NSIM = 10000_IK  !<  The number of ziggurat sets.
-    real(RKC)           , allocatable   :: zig(:,:)         !<  The ziggurat set.
-    real(RKC)                           :: rand(NSIM)       !<  The Random vector.
-    real(RKC)                           :: dummy = 0._RKC   !<  The dummy computation to prevent aggressive optimizations.
+    real(RKG)           , allocatable   :: zig(:,:)         !<  The ziggurat set.
+    real(RKG)                           :: rand(NSIM)       !<  The Random vector.
+    real(RKG)                           :: dummy = 0._RKG   !<  The dummy computation to prevent aggressive optimizations.
     type(bench_type)    , allocatable   :: bench(:)
     type(xoshiro256ssw_type)            :: rng
 

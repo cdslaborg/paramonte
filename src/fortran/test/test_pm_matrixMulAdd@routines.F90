@@ -51,35 +51,35 @@ contains
 
 #if IK5_ENABLED
     module procedure test_setMatMulAdd_IK5
-        use pm_kind, only: IKC => IK5
+        use pm_kind, only: IKG => IK5
 #include "test_pm_matrixMulAdd@routines.inc.F90"
     end procedure
 #endif
 
 #if IK4_ENABLED
     module procedure test_setMatMulAdd_IK4
-        use pm_kind, only: IKC => IK4
+        use pm_kind, only: IKG => IK4
 #include "test_pm_matrixMulAdd@routines.inc.F90"
     end procedure
 #endif
 
 #if IK3_ENABLED
     module procedure test_setMatMulAdd_IK3
-        use pm_kind, only: IKC => IK3
+        use pm_kind, only: IKG => IK3
 #include "test_pm_matrixMulAdd@routines.inc.F90"
     end procedure
 #endif
 
 #if IK2_ENABLED
     module procedure test_setMatMulAdd_IK2
-        use pm_kind, only: IKC => IK2
+        use pm_kind, only: IKG => IK2
 #include "test_pm_matrixMulAdd@routines.inc.F90"
     end procedure
 #endif
 
 #if IK1_ENABLED
     module procedure test_setMatMulAdd_IK1
-        use pm_kind, only: IKC => IK1
+        use pm_kind, only: IKG => IK1
 #include "test_pm_matrixMulAdd@routines.inc.F90"
     end procedure
 #endif
@@ -92,35 +92,35 @@ contains
 
 #if CK5_ENABLED
     module procedure test_setMatMulAdd_CK5
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
 #include "test_pm_matrixMulAdd@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure test_setMatMulAdd_CK4
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
 #include "test_pm_matrixMulAdd@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure test_setMatMulAdd_CK3
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
 #include "test_pm_matrixMulAdd@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure test_setMatMulAdd_CK2
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
 #include "test_pm_matrixMulAdd@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure test_setMatMulAdd_CK1
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
 #include "test_pm_matrixMulAdd@routines.inc.F90"
     end procedure
 #endif
@@ -133,35 +133,35 @@ contains
 
 #if RK5_ENABLED
     module procedure test_setMatMulAdd_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "test_pm_matrixMulAdd@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure test_setMatMulAdd_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "test_pm_matrixMulAdd@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure test_setMatMulAdd_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "test_pm_matrixMulAdd@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure test_setMatMulAdd_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "test_pm_matrixMulAdd@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure test_setMatMulAdd_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "test_pm_matrixMulAdd@routines.inc.F90"
     end procedure
 #endif

@@ -28,14 +28,14 @@
 #error  "Unrecognized interface."
 #endif
 #if     Bin_ENABLED || Def_ENABLED
-        integer(IKC) :: middle, upper
-        integer(IKC) , parameter :: maxIntSqrt = floor(sqrt(real(huge(0_IKC), RKB)), IKC)
-        CHECK_ASSERTION(__LINE__, 0_IKC <= posint, SK_"@getSqrt(): The condition `0 <= posint` must hold. posint = "//getStr(posint))
-        upper = min(maxIntSqrt, posint) + 1_IKC ! Avoid possible overflow.
-        intSqrt = 0_IKC
+        integer(IKG) :: middle, upper
+        integer(IKG) , parameter :: maxIntSqrt = floor(sqrt(real(huge(0_IKG), RKB)), IKG)
+        CHECK_ASSERTION(__LINE__, 0_IKG <= posint, SK_"@getSqrt(): The condition `0 <= posint` must hold. posint = "//getStr(posint))
+        upper = min(maxIntSqrt, posint) + 1_IKG ! Avoid possible overflow.
+        intSqrt = 0_IKG
         do
-            if (upper - intSqrt == 1_IKC) return
-            middle = (intSqrt + upper) / 2_IKC
+            if (upper - intSqrt == 1_IKG) return
+            middle = (intSqrt + upper) / 2_IKG
             if (middle * middle <= posint) then
                 intSqrt = middle
             else
@@ -45,18 +45,18 @@
 #elif   Lin_ENABLED
         ! linear search, ascending, using addition.
         ! (intSqrt + 1)^2 = intSqrt^2 + 2L + 1 = intSqrt^2 + 1 + \sum _{i = 1}^intSqrt 2
-        integer(IKC) :: a, d
-        integer(IKC) , parameter :: huge_IKC = huge(0_IKC)
-        CHECK_ASSERTION(__LINE__, 0_IKC <= posint, SK_"@getSqrt(): The condition `0 <= posint` must hold. posint = "//getStr(posint))
-        intSqrt = 0_IKC
-        a = 1_IKC
-        d = 3_IKC
+        integer(IKG) :: a, d
+        integer(IKG) , parameter :: huge_IKG = huge(0_IKG)
+        CHECK_ASSERTION(__LINE__, 0_IKG <= posint, SK_"@getSqrt(): The condition `0 <= posint` must hold. posint = "//getStr(posint))
+        intSqrt = 0_IKG
+        a = 1_IKG
+        d = 3_IKG
         do
             if (posint < a) return
-            if (huge_IKC - a < d) return
-            a = a + d ! (a + 1_IKC) ** 2_IKC
-            d = d + 2_IKC
-            intSqrt = intSqrt + 1_IKC
+            if (huge_IKG - a < d) return
+            a = a + d ! (a + 1_IKG) ** 2_IKG
+            d = d + 2_IKG
+            intSqrt = intSqrt + 1_IKG
         end do
 #else
         !%%%%%%%%%%%%%%%%%%%%%%%%

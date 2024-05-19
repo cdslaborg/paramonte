@@ -27,12 +27,12 @@
         ! Define the conjugation rule.
 #if     CK_ENABLED
 #define GET_CONJG(X)conjg(X)
-#define TYPE_OF_SAMPLE complex(TKC)
-        complex(TKC), parameter :: ZERO = 0._TKC, ONE = (1._TKC, 1._TKC), tol = cmplx(epsilon(1._TKC), epsilon(1._TKC), TKC) * 10
+#define TYPE_OF_SAMPLE complex(TKG)
+        complex(TKG), parameter :: ZERO = 0._TKG, ONE = (1._TKG, 1._TKG), tol = cmplx(epsilon(1._TKG), epsilon(1._TKG), TKG) * 10
 #elif   RK_ENABLED
 #define GET_CONJG(X)X
-#define TYPE_OF_SAMPLE real(TKC)
-        real(TKC), parameter :: ZERO = 0._TKC, ONE = 1._TKC, tol = epsilon(1._TKC) * 10
+#define TYPE_OF_SAMPLE real(TKG)
+        real(TKG), parameter :: ZERO = 0._TKG, ONE = 1._TKG, tol = epsilon(1._TKG) * 10
 #else
 #error  "Unrecognized interface."
 #endif
@@ -53,7 +53,7 @@
             else
                 sample = getUnifRand(-ONE, ONE, nsam, ndim)
             end if
-            amount = getUnifRand(0._TKC, 1._TKC, ndim)
+            amount = getUnifRand(0._TKG, 1._TKG, ndim)
             isd1 = ndim == 1 .and. dim == 1 .and. getUnifRand()
             sampleShifted = sample
 #if         getShifted_ENABLED

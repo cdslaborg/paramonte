@@ -15,8 +15,8 @@ program example
     disp = display_type(file = "main.out.F90")
 
     block
-        use pm_kind, only: SKC => SK
-        character(2,SKC), allocatable :: table(:,:)
+        use pm_kind, only: SKG => SK
+        character(2,SKG), allocatable :: table(:,:)
         call disp%skip
         call disp%show("table = getUnifRand('aa', 'zz', 3_IK, 6_IK)")
                         table = getUnifRand('aa', 'zz', 3_IK, 6_IK)
@@ -32,8 +32,8 @@ program example
     end block
 
     block
-        use pm_kind, only: IKC => IK
-        integer(IKC), allocatable :: table(:,:)
+        use pm_kind, only: IKG => IK
+        integer(IKG), allocatable :: table(:,:)
         call disp%skip
         call disp%show("table = getUnifRand(-1, 1, 4_IK, 2_IK)")
                         table = getUnifRand(-1, 1, 4_IK, 2_IK)
@@ -53,8 +53,8 @@ program example
     end block
 
     block
-        use pm_kind, only: LKC => LK
-        logical(LKC), allocatable :: table(:,:)
+        use pm_kind, only: LKG => LK
+        logical(LKG), allocatable :: table(:,:)
         call disp%skip
         call disp%show("table = getUnifRand(.false., .true., 4_IK, 2_IK)")
                         table = getUnifRand(.false., .true., 4_IK, 2_IK)
@@ -74,8 +74,8 @@ program example
     end block
 
     block
-        use pm_kind, only: CKC => CKS
-        complex(CKC), allocatable :: table(:,:)
+        use pm_kind, only: CKG => CKS
+        complex(CKG), allocatable :: table(:,:)
         call disp%skip
         call disp%show("table = getUnifRand((-1., -1.), (+1., +1.), 4_IK, 2_IK)")
                         table = getUnifRand((-1., -1.), (+1., +1.), 4_IK, 2_IK)
@@ -95,8 +95,8 @@ program example
     end block
 
     block
-        use pm_kind, only: RKC => RKS
-        real(RKC), allocatable :: table(:,:)
+        use pm_kind, only: RKG => RKS
+        real(RKG), allocatable :: table(:,:)
         call disp%skip
         call disp%show("table = getUnifRand(-1, 1, 4_IK, 2_IK)")
                         table = getUnifRand(-1, 1, 4_IK, 2_IK)

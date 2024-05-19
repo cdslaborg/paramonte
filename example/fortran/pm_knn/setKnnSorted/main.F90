@@ -20,17 +20,17 @@ program example
     call disp%skip()
 
     block
-        use pm_kind, only: RKC => RKS ! all processor kinds are supported.
+        use pm_kind, only: RKG => RKS ! all processor kinds are supported.
         integer(IK), allocatable :: rank(:,:)
-        real(RKC), allocatable :: dismat(:,:), point(:,:)
+        real(RKG), allocatable :: dismat(:,:), point(:,:)
         do itry = 1, ntry
             call disp%skip()
             call disp%show("nref = getUnifRand(1, 3); npnt = getUnifRand(5, 7)")
                             nref = getUnifRand(1, 3); npnt = getUnifRand(5, 7)
             call disp%show("[nref, npnt]")
             call disp%show( [nref, npnt] )
-            call disp%show("point = getUnifRand(1._RKC, 2._RKC, nref, npnt)")
-                            point = getUnifRand(1._RKC, 2._RKC, nref, npnt)
+            call disp%show("point = getUnifRand(1._RKG, 2._RKG, nref, npnt)")
+                            point = getUnifRand(1._RKG, 2._RKG, nref, npnt)
             call disp%show("point")
             call disp%show( point )
             call disp%show("dismat = getDisMatEuclid(point)")

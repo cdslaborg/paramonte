@@ -127,9 +127,9 @@ module pm_mathMinMax
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMinMaxIndi_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)                        , intent(in)                :: a, b
-        character(max(len(a,IK),len(b,IK)),SKC)                             :: minMax(2)
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)                        , intent(in)                :: a, b
+        character(max(len(a,IK),len(b,IK)),SKG)                             :: minMax(2)
     end function
 #endif
 
@@ -138,9 +138,9 @@ module pm_mathMinMax
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMinMaxIndi_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)                        , intent(in)                :: a, b
-        character(max(len(a,IK),len(b,IK)),SKC)                             :: minMax(2)
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)                        , intent(in)                :: a, b
+        character(max(len(a,IK),len(b,IK)),SKG)                             :: minMax(2)
     end function
 #endif
 
@@ -149,9 +149,9 @@ module pm_mathMinMax
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMinMaxIndi_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)                        , intent(in)                :: a, b
-        character(max(len(a,IK),len(b,IK)),SKC)                             :: minMax(2)
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)                        , intent(in)                :: a, b
+        character(max(len(a,IK),len(b,IK)),SKG)                             :: minMax(2)
     end function
 #endif
 
@@ -160,9 +160,9 @@ module pm_mathMinMax
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMinMaxIndi_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)                        , intent(in)                :: a, b
-        character(max(len(a,IK),len(b,IK)),SKC)                             :: minMax(2)
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)                        , intent(in)                :: a, b
+        character(max(len(a,IK),len(b,IK)),SKG)                             :: minMax(2)
     end function
 #endif
 
@@ -171,9 +171,9 @@ module pm_mathMinMax
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMinMaxIndi_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)                        , intent(in)                :: a, b
-        character(max(len(a,IK),len(b,IK)),SKC)                             :: minMax(2)
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)                        , intent(in)                :: a, b
+        character(max(len(a,IK),len(b,IK)),SKG)                             :: minMax(2)
     end function
 #endif
 
@@ -184,9 +184,9 @@ module pm_mathMinMax
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMinMaxIndi_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)                            , intent(in)                :: a, b
-        integer(IKC)                                                        :: minMax(2)
+        use pm_kind, only: IKG => IK5
+        integer(IKG)                            , intent(in)                :: a, b
+        integer(IKG)                                                        :: minMax(2)
     end function
 #endif
 
@@ -195,9 +195,9 @@ module pm_mathMinMax
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMinMaxIndi_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)                            , intent(in)                :: a, b
-        integer(IKC)                                                        :: minMax(2)
+        use pm_kind, only: IKG => IK4
+        integer(IKG)                            , intent(in)                :: a, b
+        integer(IKG)                                                        :: minMax(2)
     end function
 #endif
 
@@ -206,9 +206,9 @@ module pm_mathMinMax
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMinMaxIndi_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)                            , intent(in)                :: a, b
-        integer(IKC)                                                        :: minMax(2)
+        use pm_kind, only: IKG => IK3
+        integer(IKG)                            , intent(in)                :: a, b
+        integer(IKG)                                                        :: minMax(2)
     end function
 #endif
 
@@ -217,9 +217,9 @@ module pm_mathMinMax
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMinMaxIndi_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)                            , intent(in)                :: a, b
-        integer(IKC)                                                        :: minMax(2)
+        use pm_kind, only: IKG => IK2
+        integer(IKG)                            , intent(in)                :: a, b
+        integer(IKG)                                                        :: minMax(2)
     end function
 #endif
 
@@ -228,9 +228,9 @@ module pm_mathMinMax
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMinMaxIndi_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)                            , intent(in)                :: a, b
-        integer(IKC)                                                        :: minMax(2)
+        use pm_kind, only: IKG => IK1
+        integer(IKG)                            , intent(in)                :: a, b
+        integer(IKG)                                                        :: minMax(2)
     end function
 #endif
 
@@ -241,9 +241,9 @@ module pm_mathMinMax
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMinMaxIndi_LK5
 #endif
-        use pm_kind, only: LKC => LK5
-        logical(LKC)                            , intent(in)                :: a, b
-        logical(LKC)                                                        :: minMax(2)
+        use pm_kind, only: LKG => LK5
+        logical(LKG)                            , intent(in)                :: a, b
+        logical(LKG)                                                        :: minMax(2)
     end function
 #endif
 
@@ -252,9 +252,9 @@ module pm_mathMinMax
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMinMaxIndi_LK4
 #endif
-        use pm_kind, only: LKC => LK4
-        logical(LKC)                            , intent(in)                :: a, b
-        logical(LKC)                                                        :: minMax(2)
+        use pm_kind, only: LKG => LK4
+        logical(LKG)                            , intent(in)                :: a, b
+        logical(LKG)                                                        :: minMax(2)
     end function
 #endif
 
@@ -263,9 +263,9 @@ module pm_mathMinMax
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMinMaxIndi_LK3
 #endif
-        use pm_kind, only: LKC => LK3
-        logical(LKC)                            , intent(in)                :: a, b
-        logical(LKC)                                                        :: minMax(2)
+        use pm_kind, only: LKG => LK3
+        logical(LKG)                            , intent(in)                :: a, b
+        logical(LKG)                                                        :: minMax(2)
     end function
 #endif
 
@@ -274,9 +274,9 @@ module pm_mathMinMax
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMinMaxIndi_LK2
 #endif
-        use pm_kind, only: LKC => LK2
-        logical(LKC)                            , intent(in)                :: a, b
-        logical(LKC)                                                        :: minMax(2)
+        use pm_kind, only: LKG => LK2
+        logical(LKG)                            , intent(in)                :: a, b
+        logical(LKG)                                                        :: minMax(2)
     end function
 #endif
 
@@ -285,9 +285,9 @@ module pm_mathMinMax
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMinMaxIndi_LK1
 #endif
-        use pm_kind, only: LKC => LK1
-        logical(LKC)                            , intent(in)                :: a, b
-        logical(LKC)                                                        :: minMax(2)
+        use pm_kind, only: LKG => LK1
+        logical(LKG)                            , intent(in)                :: a, b
+        logical(LKG)                                                        :: minMax(2)
     end function
 #endif
 
@@ -298,9 +298,9 @@ module pm_mathMinMax
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMinMaxIndi_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)                            , intent(in)                :: a, b
-        complex(CKC)                                                        :: minMax(2)
+        use pm_kind, only: CKG => CK5
+        complex(CKG)                            , intent(in)                :: a, b
+        complex(CKG)                                                        :: minMax(2)
     end function
 #endif
 
@@ -309,9 +309,9 @@ module pm_mathMinMax
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMinMaxIndi_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)                            , intent(in)                :: a, b
-        complex(CKC)                                                        :: minMax(2)
+        use pm_kind, only: CKG => CK4
+        complex(CKG)                            , intent(in)                :: a, b
+        complex(CKG)                                                        :: minMax(2)
     end function
 #endif
 
@@ -320,9 +320,9 @@ module pm_mathMinMax
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMinMaxIndi_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)                            , intent(in)                :: a, b
-        complex(CKC)                                                        :: minMax(2)
+        use pm_kind, only: CKG => CK3
+        complex(CKG)                            , intent(in)                :: a, b
+        complex(CKG)                                                        :: minMax(2)
     end function
 #endif
 
@@ -331,9 +331,9 @@ module pm_mathMinMax
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMinMaxIndi_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)                            , intent(in)                :: a, b
-        complex(CKC)                                                        :: minMax(2)
+        use pm_kind, only: CKG => CK2
+        complex(CKG)                            , intent(in)                :: a, b
+        complex(CKG)                                                        :: minMax(2)
     end function
 #endif
 
@@ -342,9 +342,9 @@ module pm_mathMinMax
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMinMaxIndi_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)                            , intent(in)                :: a, b
-        complex(CKC)                                                        :: minMax(2)
+        use pm_kind, only: CKG => CK1
+        complex(CKG)                            , intent(in)                :: a, b
+        complex(CKG)                                                        :: minMax(2)
     end function
 #endif
 
@@ -355,9 +355,9 @@ module pm_mathMinMax
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMinMaxIndi_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)                               , intent(in)                :: a, b
-        real(RKC)                                                           :: minMax(2)
+        use pm_kind, only: RKG => RK5
+        real(RKG)                               , intent(in)                :: a, b
+        real(RKG)                                                           :: minMax(2)
     end function
 #endif
 
@@ -366,9 +366,9 @@ module pm_mathMinMax
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMinMaxIndi_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)                               , intent(in)                :: a, b
-        real(RKC)                                                           :: minMax(2)
+        use pm_kind, only: RKG => RK4
+        real(RKG)                               , intent(in)                :: a, b
+        real(RKG)                                                           :: minMax(2)
     end function
 #endif
 
@@ -377,9 +377,9 @@ module pm_mathMinMax
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMinMaxIndi_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)                               , intent(in)                :: a, b
-        real(RKC)                                                           :: minMax(2)
+        use pm_kind, only: RKG => RK3
+        real(RKG)                               , intent(in)                :: a, b
+        real(RKG)                                                           :: minMax(2)
     end function
 #endif
 
@@ -388,9 +388,9 @@ module pm_mathMinMax
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMinMaxIndi_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)                               , intent(in)                :: a, b
-        real(RKC)                                                           :: minMax(2)
+        use pm_kind, only: RKG => RK2
+        real(RKG)                               , intent(in)                :: a, b
+        real(RKG)                                                           :: minMax(2)
     end function
 #endif
 
@@ -399,9 +399,9 @@ module pm_mathMinMax
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMinMaxIndi_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)                               , intent(in)                :: a, b
-        real(RKC)                                                           :: minMax(2)
+        use pm_kind, only: RKG => RK1
+        real(RKG)                               , intent(in)                :: a, b
+        real(RKG)                                                           :: minMax(2)
     end function
 #endif
 
@@ -418,9 +418,9 @@ module pm_mathMinMax
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMinMaxPair_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)                        , intent(in)                :: pair(2)
-        character(len(pair,IK),SKC)                                         :: minMax(2)
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)                        , intent(in)                :: pair(2)
+        character(len(pair,IK),SKG)                                         :: minMax(2)
     end function
 #endif
 
@@ -429,9 +429,9 @@ module pm_mathMinMax
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMinMaxPair_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)                        , intent(in)                :: pair(2)
-        character(len(pair,IK),SKC)                                         :: minMax(2)
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)                        , intent(in)                :: pair(2)
+        character(len(pair,IK),SKG)                                         :: minMax(2)
     end function
 #endif
 
@@ -440,9 +440,9 @@ module pm_mathMinMax
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMinMaxPair_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)                        , intent(in)                :: pair(2)
-        character(len(pair,IK),SKC)                                         :: minMax(2)
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)                        , intent(in)                :: pair(2)
+        character(len(pair,IK),SKG)                                         :: minMax(2)
     end function
 #endif
 
@@ -451,9 +451,9 @@ module pm_mathMinMax
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMinMaxPair_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)                        , intent(in)                :: pair(2)
-        character(len(pair,IK),SKC)                                         :: minMax(2)
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)                        , intent(in)                :: pair(2)
+        character(len(pair,IK),SKG)                                         :: minMax(2)
     end function
 #endif
 
@@ -462,9 +462,9 @@ module pm_mathMinMax
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMinMaxPair_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)                        , intent(in)                :: pair(2)
-        character(len(pair,IK),SKC)                                         :: minMax(2)
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)                        , intent(in)                :: pair(2)
+        character(len(pair,IK),SKG)                                         :: minMax(2)
     end function
 #endif
 
@@ -475,9 +475,9 @@ module pm_mathMinMax
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMinMaxPair_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)                            , intent(in)                :: pair(2)
-        integer(IKC)                                                        :: minMax(2)
+        use pm_kind, only: IKG => IK5
+        integer(IKG)                            , intent(in)                :: pair(2)
+        integer(IKG)                                                        :: minMax(2)
     end function
 #endif
 
@@ -486,9 +486,9 @@ module pm_mathMinMax
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMinMaxPair_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)                            , intent(in)                :: pair(2)
-        integer(IKC)                                                        :: minMax(2)
+        use pm_kind, only: IKG => IK4
+        integer(IKG)                            , intent(in)                :: pair(2)
+        integer(IKG)                                                        :: minMax(2)
     end function
 #endif
 
@@ -497,9 +497,9 @@ module pm_mathMinMax
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMinMaxPair_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)                            , intent(in)                :: pair(2)
-        integer(IKC)                                                        :: minMax(2)
+        use pm_kind, only: IKG => IK3
+        integer(IKG)                            , intent(in)                :: pair(2)
+        integer(IKG)                                                        :: minMax(2)
     end function
 #endif
 
@@ -508,9 +508,9 @@ module pm_mathMinMax
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMinMaxPair_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)                            , intent(in)                :: pair(2)
-        integer(IKC)                                                        :: minMax(2)
+        use pm_kind, only: IKG => IK2
+        integer(IKG)                            , intent(in)                :: pair(2)
+        integer(IKG)                                                        :: minMax(2)
     end function
 #endif
 
@@ -519,9 +519,9 @@ module pm_mathMinMax
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMinMaxPair_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)                            , intent(in)                :: pair(2)
-        integer(IKC)                                                        :: minMax(2)
+        use pm_kind, only: IKG => IK1
+        integer(IKG)                            , intent(in)                :: pair(2)
+        integer(IKG)                                                        :: minMax(2)
     end function
 #endif
 
@@ -532,9 +532,9 @@ module pm_mathMinMax
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMinMaxPair_LK5
 #endif
-        use pm_kind, only: LKC => LK5
-        logical(LKC)                            , intent(in)                :: pair(2)
-        logical(LKC)                                                        :: minMax(2)
+        use pm_kind, only: LKG => LK5
+        logical(LKG)                            , intent(in)                :: pair(2)
+        logical(LKG)                                                        :: minMax(2)
     end function
 #endif
 
@@ -543,9 +543,9 @@ module pm_mathMinMax
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMinMaxPair_LK4
 #endif
-        use pm_kind, only: LKC => LK4
-        logical(LKC)                            , intent(in)                :: pair(2)
-        logical(LKC)                                                        :: minMax(2)
+        use pm_kind, only: LKG => LK4
+        logical(LKG)                            , intent(in)                :: pair(2)
+        logical(LKG)                                                        :: minMax(2)
     end function
 #endif
 
@@ -554,9 +554,9 @@ module pm_mathMinMax
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMinMaxPair_LK3
 #endif
-        use pm_kind, only: LKC => LK3
-        logical(LKC)                            , intent(in)                :: pair(2)
-        logical(LKC)                                                        :: minMax(2)
+        use pm_kind, only: LKG => LK3
+        logical(LKG)                            , intent(in)                :: pair(2)
+        logical(LKG)                                                        :: minMax(2)
     end function
 #endif
 
@@ -565,9 +565,9 @@ module pm_mathMinMax
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMinMaxPair_LK2
 #endif
-        use pm_kind, only: LKC => LK2
-        logical(LKC)                            , intent(in)                :: pair(2)
-        logical(LKC)                                                        :: minMax(2)
+        use pm_kind, only: LKG => LK2
+        logical(LKG)                            , intent(in)                :: pair(2)
+        logical(LKG)                                                        :: minMax(2)
     end function
 #endif
 
@@ -576,9 +576,9 @@ module pm_mathMinMax
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMinMaxPair_LK1
 #endif
-        use pm_kind, only: LKC => LK1
-        logical(LKC)                            , intent(in)                :: pair(2)
-        logical(LKC)                                                        :: minMax(2)
+        use pm_kind, only: LKG => LK1
+        logical(LKG)                            , intent(in)                :: pair(2)
+        logical(LKG)                                                        :: minMax(2)
     end function
 #endif
 
@@ -589,9 +589,9 @@ module pm_mathMinMax
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMinMaxPair_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)                            , intent(in)                :: pair(2)
-        complex(CKC)                                                        :: minMax(2)
+        use pm_kind, only: CKG => CK5
+        complex(CKG)                            , intent(in)                :: pair(2)
+        complex(CKG)                                                        :: minMax(2)
     end function
 #endif
 
@@ -600,9 +600,9 @@ module pm_mathMinMax
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMinMaxPair_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)                            , intent(in)                :: pair(2)
-        complex(CKC)                                                        :: minMax(2)
+        use pm_kind, only: CKG => CK4
+        complex(CKG)                            , intent(in)                :: pair(2)
+        complex(CKG)                                                        :: minMax(2)
     end function
 #endif
 
@@ -611,9 +611,9 @@ module pm_mathMinMax
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMinMaxPair_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)                            , intent(in)                :: pair(2)
-        complex(CKC)                                                        :: minMax(2)
+        use pm_kind, only: CKG => CK3
+        complex(CKG)                            , intent(in)                :: pair(2)
+        complex(CKG)                                                        :: minMax(2)
     end function
 #endif
 
@@ -622,9 +622,9 @@ module pm_mathMinMax
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMinMaxPair_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)                            , intent(in)                :: pair(2)
-        complex(CKC)                                                        :: minMax(2)
+        use pm_kind, only: CKG => CK2
+        complex(CKG)                            , intent(in)                :: pair(2)
+        complex(CKG)                                                        :: minMax(2)
     end function
 #endif
 
@@ -633,9 +633,9 @@ module pm_mathMinMax
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMinMaxPair_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)                            , intent(in)                :: pair(2)
-        complex(CKC)                                                        :: minMax(2)
+        use pm_kind, only: CKG => CK1
+        complex(CKG)                            , intent(in)                :: pair(2)
+        complex(CKG)                                                        :: minMax(2)
     end function
 #endif
 
@@ -646,9 +646,9 @@ module pm_mathMinMax
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMinMaxPair_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)                               , intent(in)                :: pair(2)
-        real(RKC)                                                           :: minMax(2)
+        use pm_kind, only: RKG => RK5
+        real(RKG)                               , intent(in)                :: pair(2)
+        real(RKG)                                                           :: minMax(2)
     end function
 #endif
 
@@ -657,9 +657,9 @@ module pm_mathMinMax
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMinMaxPair_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)                               , intent(in)                :: pair(2)
-        real(RKC)                                                           :: minMax(2)
+        use pm_kind, only: RKG => RK4
+        real(RKG)                               , intent(in)                :: pair(2)
+        real(RKG)                                                           :: minMax(2)
     end function
 #endif
 
@@ -668,9 +668,9 @@ module pm_mathMinMax
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMinMaxPair_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)                               , intent(in)                :: pair(2)
-        real(RKC)                                                           :: minMax(2)
+        use pm_kind, only: RKG => RK3
+        real(RKG)                               , intent(in)                :: pair(2)
+        real(RKG)                                                           :: minMax(2)
     end function
 #endif
 
@@ -679,9 +679,9 @@ module pm_mathMinMax
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMinMaxPair_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)                               , intent(in)                :: pair(2)
-        real(RKC)                                                           :: minMax(2)
+        use pm_kind, only: RKG => RK2
+        real(RKG)                               , intent(in)                :: pair(2)
+        real(RKG)                                                           :: minMax(2)
     end function
 #endif
 
@@ -690,9 +690,9 @@ module pm_mathMinMax
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMinMaxPair_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)                               , intent(in)                :: pair(2)
-        real(RKC)                                                           :: minMax(2)
+        use pm_kind, only: RKG => RK1
+        real(RKG)                               , intent(in)                :: pair(2)
+        real(RKG)                                                           :: minMax(2)
     end function
 #endif
 
@@ -799,8 +799,8 @@ module pm_mathMinMax
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMinMaxIndi_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)                        , intent(inout)             :: a, b
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)                        , intent(inout)             :: a, b
     end subroutine
 #endif
 
@@ -809,8 +809,8 @@ module pm_mathMinMax
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMinMaxIndi_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)                        , intent(inout)             :: a, b
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)                        , intent(inout)             :: a, b
     end subroutine
 #endif
 
@@ -819,8 +819,8 @@ module pm_mathMinMax
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMinMaxIndi_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)                        , intent(inout)             :: a, b
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)                        , intent(inout)             :: a, b
     end subroutine
 #endif
 
@@ -829,8 +829,8 @@ module pm_mathMinMax
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMinMaxIndi_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)                        , intent(inout)             :: a, b
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)                        , intent(inout)             :: a, b
     end subroutine
 #endif
 
@@ -839,8 +839,8 @@ module pm_mathMinMax
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMinMaxIndi_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)                        , intent(inout)             :: a, b
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)                        , intent(inout)             :: a, b
     end subroutine
 #endif
 
@@ -851,8 +851,8 @@ module pm_mathMinMax
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMinMaxIndi_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)                            , intent(inout)             :: a, b
+        use pm_kind, only: IKG => IK5
+        integer(IKG)                            , intent(inout)             :: a, b
     end subroutine
 #endif
 
@@ -861,8 +861,8 @@ module pm_mathMinMax
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMinMaxIndi_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)                            , intent(inout)             :: a, b
+        use pm_kind, only: IKG => IK4
+        integer(IKG)                            , intent(inout)             :: a, b
     end subroutine
 #endif
 
@@ -871,8 +871,8 @@ module pm_mathMinMax
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMinMaxIndi_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)                            , intent(inout)             :: a, b
+        use pm_kind, only: IKG => IK3
+        integer(IKG)                            , intent(inout)             :: a, b
     end subroutine
 #endif
 
@@ -881,8 +881,8 @@ module pm_mathMinMax
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMinMaxIndi_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)                            , intent(inout)             :: a, b
+        use pm_kind, only: IKG => IK2
+        integer(IKG)                            , intent(inout)             :: a, b
     end subroutine
 #endif
 
@@ -891,8 +891,8 @@ module pm_mathMinMax
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMinMaxIndi_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)                            , intent(inout)             :: a, b
+        use pm_kind, only: IKG => IK1
+        integer(IKG)                            , intent(inout)             :: a, b
     end subroutine
 #endif
 
@@ -903,8 +903,8 @@ module pm_mathMinMax
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMinMaxIndi_LK5
 #endif
-        use pm_kind, only: LKC => LK5
-        logical(LKC)                            , intent(inout)             :: a, b
+        use pm_kind, only: LKG => LK5
+        logical(LKG)                            , intent(inout)             :: a, b
     end subroutine
 #endif
 
@@ -913,8 +913,8 @@ module pm_mathMinMax
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMinMaxIndi_LK4
 #endif
-        use pm_kind, only: LKC => LK4
-        logical(LKC)                            , intent(inout)             :: a, b
+        use pm_kind, only: LKG => LK4
+        logical(LKG)                            , intent(inout)             :: a, b
     end subroutine
 #endif
 
@@ -923,8 +923,8 @@ module pm_mathMinMax
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMinMaxIndi_LK3
 #endif
-        use pm_kind, only: LKC => LK3
-        logical(LKC)                            , intent(inout)             :: a, b
+        use pm_kind, only: LKG => LK3
+        logical(LKG)                            , intent(inout)             :: a, b
     end subroutine
 #endif
 
@@ -933,8 +933,8 @@ module pm_mathMinMax
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMinMaxIndi_LK2
 #endif
-        use pm_kind, only: LKC => LK2
-        logical(LKC)                            , intent(inout)             :: a, b
+        use pm_kind, only: LKG => LK2
+        logical(LKG)                            , intent(inout)             :: a, b
     end subroutine
 #endif
 
@@ -943,8 +943,8 @@ module pm_mathMinMax
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMinMaxIndi_LK1
 #endif
-        use pm_kind, only: LKC => LK1
-        logical(LKC)                            , intent(inout)             :: a, b
+        use pm_kind, only: LKG => LK1
+        logical(LKG)                            , intent(inout)             :: a, b
     end subroutine
 #endif
 
@@ -955,8 +955,8 @@ module pm_mathMinMax
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMinMaxIndi_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)                            , intent(inout)             :: a, b
+        use pm_kind, only: CKG => CK5
+        complex(CKG)                            , intent(inout)             :: a, b
     end subroutine
 #endif
 
@@ -965,8 +965,8 @@ module pm_mathMinMax
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMinMaxIndi_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)                            , intent(inout)             :: a, b
+        use pm_kind, only: CKG => CK4
+        complex(CKG)                            , intent(inout)             :: a, b
     end subroutine
 #endif
 
@@ -975,8 +975,8 @@ module pm_mathMinMax
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMinMaxIndi_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)                            , intent(inout)             :: a, b
+        use pm_kind, only: CKG => CK3
+        complex(CKG)                            , intent(inout)             :: a, b
     end subroutine
 #endif
 
@@ -985,8 +985,8 @@ module pm_mathMinMax
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMinMaxIndi_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)                            , intent(inout)             :: a, b
+        use pm_kind, only: CKG => CK2
+        complex(CKG)                            , intent(inout)             :: a, b
     end subroutine
 #endif
 
@@ -995,8 +995,8 @@ module pm_mathMinMax
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMinMaxIndi_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)                            , intent(inout)             :: a, b
+        use pm_kind, only: CKG => CK1
+        complex(CKG)                            , intent(inout)             :: a, b
     end subroutine
 #endif
 
@@ -1007,8 +1007,8 @@ module pm_mathMinMax
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMinMaxIndi_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)                               , intent(inout)             :: a, b
+        use pm_kind, only: RKG => RK5
+        real(RKG)                               , intent(inout)             :: a, b
     end subroutine
 #endif
 
@@ -1017,8 +1017,8 @@ module pm_mathMinMax
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMinMaxIndi_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)                               , intent(inout)             :: a, b
+        use pm_kind, only: RKG => RK4
+        real(RKG)                               , intent(inout)             :: a, b
     end subroutine
 #endif
 
@@ -1027,8 +1027,8 @@ module pm_mathMinMax
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMinMaxIndi_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)                               , intent(inout)             :: a, b
+        use pm_kind, only: RKG => RK3
+        real(RKG)                               , intent(inout)             :: a, b
     end subroutine
 #endif
 
@@ -1037,8 +1037,8 @@ module pm_mathMinMax
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMinMaxIndi_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)                               , intent(inout)             :: a, b
+        use pm_kind, only: RKG => RK2
+        real(RKG)                               , intent(inout)             :: a, b
     end subroutine
 #endif
 
@@ -1047,8 +1047,8 @@ module pm_mathMinMax
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMinMaxIndi_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)                               , intent(inout)             :: a, b
+        use pm_kind, only: RKG => RK1
+        real(RKG)                               , intent(inout)             :: a, b
     end subroutine
 #endif
 
@@ -1065,8 +1065,8 @@ module pm_mathMinMax
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMinMaxPair_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)                        , intent(inout)             :: pair(2)
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)                        , intent(inout)             :: pair(2)
     end subroutine
 #endif
 
@@ -1075,8 +1075,8 @@ module pm_mathMinMax
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMinMaxPair_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)                        , intent(inout)             :: pair(2)
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)                        , intent(inout)             :: pair(2)
     end subroutine
 #endif
 
@@ -1085,8 +1085,8 @@ module pm_mathMinMax
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMinMaxPair_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)                        , intent(inout)             :: pair(2)
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)                        , intent(inout)             :: pair(2)
     end subroutine
 #endif
 
@@ -1095,8 +1095,8 @@ module pm_mathMinMax
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMinMaxPair_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)                        , intent(inout)             :: pair(2)
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)                        , intent(inout)             :: pair(2)
     end subroutine
 #endif
 
@@ -1105,8 +1105,8 @@ module pm_mathMinMax
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMinMaxPair_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)                        , intent(inout)             :: pair(2)
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)                        , intent(inout)             :: pair(2)
     end subroutine
 #endif
 
@@ -1117,8 +1117,8 @@ module pm_mathMinMax
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMinMaxPair_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)                            , intent(inout)             :: pair(2)
+        use pm_kind, only: IKG => IK5
+        integer(IKG)                            , intent(inout)             :: pair(2)
     end subroutine
 #endif
 
@@ -1127,8 +1127,8 @@ module pm_mathMinMax
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMinMaxPair_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)                            , intent(inout)             :: pair(2)
+        use pm_kind, only: IKG => IK4
+        integer(IKG)                            , intent(inout)             :: pair(2)
     end subroutine
 #endif
 
@@ -1137,8 +1137,8 @@ module pm_mathMinMax
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMinMaxPair_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)                            , intent(inout)             :: pair(2)
+        use pm_kind, only: IKG => IK3
+        integer(IKG)                            , intent(inout)             :: pair(2)
     end subroutine
 #endif
 
@@ -1147,8 +1147,8 @@ module pm_mathMinMax
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMinMaxPair_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)                            , intent(inout)             :: pair(2)
+        use pm_kind, only: IKG => IK2
+        integer(IKG)                            , intent(inout)             :: pair(2)
     end subroutine
 #endif
 
@@ -1157,8 +1157,8 @@ module pm_mathMinMax
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMinMaxPair_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)                            , intent(inout)             :: pair(2)
+        use pm_kind, only: IKG => IK1
+        integer(IKG)                            , intent(inout)             :: pair(2)
     end subroutine
 #endif
 
@@ -1169,8 +1169,8 @@ module pm_mathMinMax
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMinMaxPair_LK5
 #endif
-        use pm_kind, only: LKC => LK5
-        logical(LKC)                            , intent(inout)             :: pair(2)
+        use pm_kind, only: LKG => LK5
+        logical(LKG)                            , intent(inout)             :: pair(2)
     end subroutine
 #endif
 
@@ -1179,8 +1179,8 @@ module pm_mathMinMax
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMinMaxPair_LK4
 #endif
-        use pm_kind, only: LKC => LK4
-        logical(LKC)                            , intent(inout)             :: pair(2)
+        use pm_kind, only: LKG => LK4
+        logical(LKG)                            , intent(inout)             :: pair(2)
     end subroutine
 #endif
 
@@ -1189,8 +1189,8 @@ module pm_mathMinMax
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMinMaxPair_LK3
 #endif
-        use pm_kind, only: LKC => LK3
-        logical(LKC)                            , intent(inout)             :: pair(2)
+        use pm_kind, only: LKG => LK3
+        logical(LKG)                            , intent(inout)             :: pair(2)
     end subroutine
 #endif
 
@@ -1199,8 +1199,8 @@ module pm_mathMinMax
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMinMaxPair_LK2
 #endif
-        use pm_kind, only: LKC => LK2
-        logical(LKC)                            , intent(inout)             :: pair(2)
+        use pm_kind, only: LKG => LK2
+        logical(LKG)                            , intent(inout)             :: pair(2)
     end subroutine
 #endif
 
@@ -1209,8 +1209,8 @@ module pm_mathMinMax
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMinMaxPair_LK1
 #endif
-        use pm_kind, only: LKC => LK1
-        logical(LKC)                            , intent(inout)             :: pair(2)
+        use pm_kind, only: LKG => LK1
+        logical(LKG)                            , intent(inout)             :: pair(2)
     end subroutine
 #endif
 
@@ -1221,8 +1221,8 @@ module pm_mathMinMax
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMinMaxPair_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)                            , intent(inout)             :: pair(2)
+        use pm_kind, only: CKG => CK5
+        complex(CKG)                            , intent(inout)             :: pair(2)
     end subroutine
 #endif
 
@@ -1231,8 +1231,8 @@ module pm_mathMinMax
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMinMaxPair_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)                            , intent(inout)             :: pair(2)
+        use pm_kind, only: CKG => CK4
+        complex(CKG)                            , intent(inout)             :: pair(2)
     end subroutine
 #endif
 
@@ -1241,8 +1241,8 @@ module pm_mathMinMax
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMinMaxPair_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)                            , intent(inout)             :: pair(2)
+        use pm_kind, only: CKG => CK3
+        complex(CKG)                            , intent(inout)             :: pair(2)
     end subroutine
 #endif
 
@@ -1251,8 +1251,8 @@ module pm_mathMinMax
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMinMaxPair_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)                            , intent(inout)             :: pair(2)
+        use pm_kind, only: CKG => CK2
+        complex(CKG)                            , intent(inout)             :: pair(2)
     end subroutine
 #endif
 
@@ -1261,8 +1261,8 @@ module pm_mathMinMax
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMinMaxPair_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)                            , intent(inout)             :: pair(2)
+        use pm_kind, only: CKG => CK1
+        complex(CKG)                            , intent(inout)             :: pair(2)
     end subroutine
 #endif
 
@@ -1273,8 +1273,8 @@ module pm_mathMinMax
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMinMaxPair_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)                               , intent(inout)             :: pair(2)
+        use pm_kind, only: RKG => RK5
+        real(RKG)                               , intent(inout)             :: pair(2)
     end subroutine
 #endif
 
@@ -1283,8 +1283,8 @@ module pm_mathMinMax
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMinMaxPair_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)                               , intent(inout)             :: pair(2)
+        use pm_kind, only: RKG => RK4
+        real(RKG)                               , intent(inout)             :: pair(2)
     end subroutine
 #endif
 
@@ -1293,8 +1293,8 @@ module pm_mathMinMax
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMinMaxPair_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)                               , intent(inout)             :: pair(2)
+        use pm_kind, only: RKG => RK3
+        real(RKG)                               , intent(inout)             :: pair(2)
     end subroutine
 #endif
 
@@ -1303,8 +1303,8 @@ module pm_mathMinMax
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMinMaxPair_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)                               , intent(inout)             :: pair(2)
+        use pm_kind, only: RKG => RK2
+        real(RKG)                               , intent(inout)             :: pair(2)
     end subroutine
 #endif
 
@@ -1313,8 +1313,8 @@ module pm_mathMinMax
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMinMaxPair_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)                               , intent(inout)             :: pair(2)
+        use pm_kind, only: RKG => RK1
+        real(RKG)                               , intent(inout)             :: pair(2)
     end subroutine
 #endif
 

@@ -60,35 +60,35 @@ contains
 
 #if IK5_ENABLED
     module procedure getSqrtDef_IK5
-        use pm_kind, only: IKC => IK5
+        use pm_kind, only: IKG => IK5
 #include "pm_mathSqrt@routines.inc.F90"
     end procedure
 #endif
 
 #if IK4_ENABLED
     module procedure getSqrtDef_IK4
-        use pm_kind, only: IKC => IK4
+        use pm_kind, only: IKG => IK4
 #include "pm_mathSqrt@routines.inc.F90"
     end procedure
 #endif
 
 #if IK3_ENABLED
     module procedure getSqrtDef_IK3
-        use pm_kind, only: IKC => IK3
+        use pm_kind, only: IKG => IK3
 #include "pm_mathSqrt@routines.inc.F90"
     end procedure
 #endif
 
 #if IK2_ENABLED
     module procedure getSqrtDef_IK2
-        use pm_kind, only: IKC => IK2
+        use pm_kind, only: IKG => IK2
 #include "pm_mathSqrt@routines.inc.F90"
     end procedure
 #endif
 
 #if IK1_ENABLED
     module procedure getSqrtDef_IK1
-        use pm_kind, only: IKC => IK1
+        use pm_kind, only: IKG => IK1
 #include "pm_mathSqrt@routines.inc.F90"
     end procedure
 #endif
@@ -111,35 +111,35 @@ contains
 
 #if IK5_ENABLED
     module procedure getSqrtBin_IK5
-        use pm_kind, only: IKC => IK5
+        use pm_kind, only: IKG => IK5
 #include "pm_mathSqrt@routines.inc.F90"
     end procedure
 #endif
 
 #if IK4_ENABLED
     module procedure getSqrtBin_IK4
-        use pm_kind, only: IKC => IK4
+        use pm_kind, only: IKG => IK4
 #include "pm_mathSqrt@routines.inc.F90"
     end procedure
 #endif
 
 #if IK3_ENABLED
     module procedure getSqrtBin_IK3
-        use pm_kind, only: IKC => IK3
+        use pm_kind, only: IKG => IK3
 #include "pm_mathSqrt@routines.inc.F90"
     end procedure
 #endif
 
 #if IK2_ENABLED
     module procedure getSqrtBin_IK2
-        use pm_kind, only: IKC => IK2
+        use pm_kind, only: IKG => IK2
 #include "pm_mathSqrt@routines.inc.F90"
     end procedure
 #endif
 
 #if IK1_ENABLED
     module procedure getSqrtBin_IK1
-        use pm_kind, only: IKC => IK1
+        use pm_kind, only: IKG => IK1
 #include "pm_mathSqrt@routines.inc.F90"
     end procedure
 #endif
@@ -162,35 +162,35 @@ contains
 
 #if IK5_ENABLED
     module procedure getSqrtLin_IK5
-        use pm_kind, only: IKC => IK5
+        use pm_kind, only: IKG => IK5
 #include "pm_mathSqrt@routines.inc.F90"
     end procedure
 #endif
 
 #if IK4_ENABLED
     module procedure getSqrtLin_IK4
-        use pm_kind, only: IKC => IK4
+        use pm_kind, only: IKG => IK4
 #include "pm_mathSqrt@routines.inc.F90"
     end procedure
 #endif
 
 #if IK3_ENABLED
     module procedure getSqrtLin_IK3
-        use pm_kind, only: IKC => IK3
+        use pm_kind, only: IKG => IK3
 #include "pm_mathSqrt@routines.inc.F90"
     end procedure
 #endif
 
 #if IK2_ENABLED
     module procedure getSqrtLin_IK2
-        use pm_kind, only: IKC => IK2
+        use pm_kind, only: IKG => IK2
 #include "pm_mathSqrt@routines.inc.F90"
     end procedure
 #endif
 
 #if IK1_ENABLED
     module procedure getSqrtLin_IK1
-        use pm_kind, only: IKC => IK1
+        use pm_kind, only: IKG => IK1
 #include "pm_mathSqrt@routines.inc.F90"
     end procedure
 #endif

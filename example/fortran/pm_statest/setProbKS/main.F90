@@ -26,11 +26,11 @@ program example
     call disp%skip()
 
     block
-        use pm_kind, only: TKC => RKS ! all other real kinds are also supported.
+        use pm_kind, only: TKG => RKS ! all other real kinds are also supported.
         integer(IK), allocatable :: iweight1(:)
-        real(TKC), allocatable :: rweight1(:)
-        real(TKC), allocatable :: sample1(:)
-        real(TKC) :: probKS, quanKS, statKS
+        real(TKG), allocatable :: rweight1(:)
+        real(TKG), allocatable :: sample1(:)
+        real(TKG) :: probKS, quanKS, statKS
         do itry = 1, ntry
             call disp%show("nsam1 = getUnifRand(1, 10)")
                             nsam1 = getUnifRand(1, 10)
@@ -80,11 +80,11 @@ program example
     call disp%skip()
 
     block
-        use pm_kind, only: TKC => RKS ! all other real kinds are also supported.
+        use pm_kind, only: TKG => RKS ! all other real kinds are also supported.
         integer(IK), allocatable :: iweight1(:)
-        real(TKC), allocatable :: rweight1(:)
-        real(TKC), allocatable :: sample1(:)
-        real(TKC) :: probKS, quanKS, statKS
+        real(TKG), allocatable :: rweight1(:)
+        real(TKG), allocatable :: sample1(:)
+        real(TKG) :: probKS, quanKS, statKS
         do itry = 1, ntry
             call disp%show("nsam1 = getUnifRand(5, 10)")
                             nsam1 = getUnifRand(5, 10)
@@ -134,11 +134,11 @@ program example
     call disp%skip()
 
     block
-        use pm_kind, only: TKC => RKS ! all other real kinds are also supported.
+        use pm_kind, only: TKG => RKS ! all other real kinds are also supported.
         integer(IK), allocatable :: iweight1(:), iweight2(:)
-        real(TKC), allocatable :: rweight1(:), rweight2(:)
-        real(TKC), allocatable :: sample1(:), sample2(:)
-        real(TKC) :: probKS, quanKS, statKS
+        real(TKG), allocatable :: rweight1(:), rweight2(:)
+        real(TKG), allocatable :: sample1(:), sample2(:)
+        real(TKG) :: probKS, quanKS, statKS
         do itry = 1, ntry
             call disp%show("nsam1 = getUnifRand(1, 10); nsam2 = getUnifRand(1, 10)")
                             nsam1 = getUnifRand(1, 10); nsam2 = getUnifRand(1, 10)
@@ -216,17 +216,17 @@ contains
 
     function getNormCDF_RKS(x) result(cdf)
         use pm_distNorm, only: getNormCDF
-        use pm_kind, only: RKC => RKS
-        real(RKC), intent(in) :: x
-        real(RKC) :: cdf
+        use pm_kind, only: RKG => RKS
+        real(RKG), intent(in) :: x
+        real(RKG) :: cdf
         cdf = getNormCDF(x)
     end function
 
     function getUnifCDF_RKS(x) result(cdf)
         use pm_distUnif, only: getUnifCDF
-        use pm_kind, only: RKC => RKS
-        real(RKC), intent(in) :: x
-        real(RKC) :: cdf
+        use pm_kind, only: RKG => RKS
+        real(RKG), intent(in) :: x
+        real(RKG) :: cdf
         cdf = getUnifCDF(x)
     end function
 

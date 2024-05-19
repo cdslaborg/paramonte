@@ -31,45 +31,45 @@
 
 module pm_sampling_scio_RK5
 #if RK5_ENABLED
-    use pm_kind, only: RKC => RK5
+    use pm_kind, only: RKG => RK5
 #include "pm_sampling_scio.imp.F90"
 #else
-    use pm_kind, only: RKC => RK
+    use pm_kind, only: RKG => RK
 #endif
 end module
 
 module pm_sampling_scio_RK4
 #if RK4_ENABLED
-    use pm_kind, only: RKC => RK4
+    use pm_kind, only: RKG => RK4
 #include "pm_sampling_scio.imp.F90"
 #else
-    use pm_kind, only: RKC => RK
+    use pm_kind, only: RKG => RK
 #endif
 end module
 
 module pm_sampling_scio_RK3
 #if RK3_ENABLED
-    use pm_kind, only: RKC => RK3
+    use pm_kind, only: RKG => RK3
 #include "pm_sampling_scio.imp.F90"
 #else
-    use pm_kind, only: RKC => RK
+    use pm_kind, only: RKG => RK
 #endif
 end module
 
 module pm_sampling_scio_RK2
 #if RK2_ENABLED
-    use pm_kind, only: RKC => RK2
+    use pm_kind, only: RKG => RK2
 #include "pm_sampling_scio.imp.F90"
 #else
-    use pm_kind, only: RKC => RK
+    use pm_kind, only: RKG => RK
 #endif
 end module
 
 module pm_sampling_scio_RK1
 #if RK1_ENABLED
-    use pm_kind, only: RKC => RK1
+    use pm_kind, only: RKG => RK1
 #include "pm_sampling_scio.imp.F90"
 #else
-    use pm_kind, only: RKC => RK
+    use pm_kind, only: RKG => RK
 #endif
 end module

@@ -1,7 +1,7 @@
 program example
 
     use pm_kind, only: SK, IK, LK
-    use pm_kind, only: RKC => RKS ! all other real kinds are also supported.
+    use pm_kind, only: RKG => RKS ! all other real kinds are also supported.
     use pm_io, only: display_type
     use pm_distUnif, only: getUnifRand
     use pm_arrayResize, only: setResized
@@ -11,7 +11,7 @@ program example
     implicit none
 
     integer(IK) :: ndim, nsam, ncls
-    real(RKC)   , allocatable  :: sample(:,:), center(:,:), disq(:)
+    real(RKG)   , allocatable  :: sample(:,:), center(:,:), disq(:)
     integer(IK) , allocatable  :: membership(:)
     type(display_type) :: disp
 

@@ -31,7 +31,7 @@
 
         integer(IK) :: ipnt, nref, npnt
 #if     Kth_ENABLED
-        real(TKC) :: selection
+        real(TKG) :: selection
         CHECK_ASSERTION(__LINE__, 0_IK < k .and. k <= size(distance, 1, IK), SK_"@setKnnSorted(): The condition `0 < k .and. k <= size(distance, 1)` must hold. k, shape(distance) = "//getStr([k, shape(distance, IK)]))
 #elif   Ind_ENABLED
         CHECK_ASSERTION(__LINE__, all(shape(distance) == shape(rank)), SK_"@setKnnSorted(): The condition `all(shape(distance, IK) == shape(rank, IK))` must hold. shape(distance), shape(rank) = "//getStr([shape(distance), shape(rank)]))

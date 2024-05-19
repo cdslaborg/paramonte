@@ -1,7 +1,7 @@
 program example
 
     use pm_kind, only: SK, IK, LK
-    use pm_kind, only: RKC => RKH ! all processor kinds are supported.
+    use pm_kind, only: RKG => RKH ! all processor kinds are supported.
     use pm_io, only: display_type
     use pm_distBand, only: setBandMean
     use pm_distBand, only: getBandEbreak
@@ -15,18 +15,18 @@ program example
 
     block
 
-        use pm_kind, only: RKC => RKD
-        real(RKC) :: mean, fluence, lbnew, ubnew, lb, ub, alpha, beta, ebreak
+        use pm_kind, only: RKG => RKD
+        real(RKG) :: mean, fluence, lbnew, ubnew, lb, ub, alpha, beta, ebreak
 
         call disp%skip()
-        call disp%show("fluence = 2.044544e-07_RKC; lbnew = 50._RKC; ubnew = 300._RKC; lb = 50._RKC; ub = 300._RKC; alpha = -9.469590e-01_RKC; beta = -3.722981_RKC; ebreak = getBandEbreak(alpha, beta, 1.928073e+02_RKC);")
-                        fluence = 2.044544e-07_RKC; lbnew = 50._RKC; ubnew = 300._RKC; lb = 50._RKC; ub = 300._RKC; alpha = -9.469590e-01_RKC; beta = -3.722981_RKC; ebreak = getBandEbreak(alpha, beta, 1.928073e+02_RKC);
+        call disp%show("fluence = 2.044544e-07_RKG; lbnew = 50._RKG; ubnew = 300._RKG; lb = 50._RKG; ub = 300._RKG; alpha = -9.469590e-01_RKG; beta = -3.722981_RKG; ebreak = getBandEbreak(alpha, beta, 1.928073e+02_RKG);")
+                        fluence = 2.044544e-07_RKG; lbnew = 50._RKG; ubnew = 300._RKG; lb = 50._RKG; ub = 300._RKG; alpha = -9.469590e-01_RKG; beta = -3.722981_RKG; ebreak = getBandEbreak(alpha, beta, 1.928073e+02_RKG);
         call disp%show("call setBandMean(mean, lb, ub, alpha, beta, ebreak, info)")
                         call setBandMean(mean, lb, ub, alpha, beta, ebreak, info)
         call disp%show("if (info < 0) error stop")
                         if (info < 0) error stop
-        call disp%show("real(ERGS2KEV * fluence / mean, RKC) ! photon fluence 1.084876")
-        call disp%show( real(ERGS2KEV * fluence / mean, RKC) )
+        call disp%show("real(ERGS2KEV * fluence / mean, RKG) ! photon fluence 1.084876")
+        call disp%show( real(ERGS2KEV * fluence / mean, RKG) )
         call disp%skip()
 
     end block

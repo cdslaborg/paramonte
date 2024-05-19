@@ -113,9 +113,9 @@ module pm_val2logical
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogicalDef_SK5
 #endif
-        use pm_kind, only: LKC => LK, SKC => SK5
-        character(*,SKC)            , intent(in)                    :: val
-        logical(LKC)                                                :: conversion
+        use pm_kind, only: LKG => LK, SKG => SK5
+        character(*,SKG)            , intent(in)                    :: val
+        logical(LKG)                                                :: conversion
     end function
 #endif
 
@@ -124,9 +124,9 @@ module pm_val2logical
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogicalDef_SK4
 #endif
-        use pm_kind, only: LKC => LK, SKC => SK4
-        character(*,SKC)            , intent(in)                    :: val
-        logical(LKC)                                                :: conversion
+        use pm_kind, only: LKG => LK, SKG => SK4
+        character(*,SKG)            , intent(in)                    :: val
+        logical(LKG)                                                :: conversion
     end function
 #endif
 
@@ -135,9 +135,9 @@ module pm_val2logical
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogicalDef_SK3
 #endif
-        use pm_kind, only: LKC => LK, SKC => SK3
-        character(*,SKC)            , intent(in)                    :: val
-        logical(LKC)                                                :: conversion
+        use pm_kind, only: LKG => LK, SKG => SK3
+        character(*,SKG)            , intent(in)                    :: val
+        logical(LKG)                                                :: conversion
     end function
 #endif
 
@@ -146,9 +146,9 @@ module pm_val2logical
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogicalDef_SK2
 #endif
-        use pm_kind, only: LKC => LK, SKC => SK2
-        character(*,SKC)            , intent(in)                    :: val
-        logical(LKC)                                                :: conversion
+        use pm_kind, only: LKG => LK, SKG => SK2
+        character(*,SKG)            , intent(in)                    :: val
+        logical(LKG)                                                :: conversion
     end function
 #endif
 
@@ -157,9 +157,9 @@ module pm_val2logical
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogicalDef_SK1
 #endif
-        use pm_kind, only: LKC => LK, SKC => SK1
-        character(*,SKC)            , intent(in)                    :: val
-        logical(LKC)                                                :: conversion
+        use pm_kind, only: LKG => LK, SKG => SK1
+        character(*,SKG)            , intent(in)                    :: val
+        logical(LKG)                                                :: conversion
     end function
 #endif
 
@@ -247,9 +247,9 @@ module pm_val2logical
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLogicalDef_LK5_SK5
 #endif
-        use pm_kind, only: LKC => LK5, SKC => SK5
-        logical(LKC)                , intent(out)                   :: conversion
-        character(*,SKC)            , intent(in)                    :: val
+        use pm_kind, only: LKG => LK5, SKG => SK5
+        logical(LKG)                , intent(out)                   :: conversion
+        character(*,SKG)            , intent(in)                    :: val
     end subroutine
 #endif
 
@@ -258,9 +258,9 @@ module pm_val2logical
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLogicalDef_LK5_SK4
 #endif
-        use pm_kind, only: LKC => LK5, SKC => SK4
-        logical(LKC)                , intent(out)                   :: conversion
-        character(*,SKC)            , intent(in)                    :: val
+        use pm_kind, only: LKG => LK5, SKG => SK4
+        logical(LKG)                , intent(out)                   :: conversion
+        character(*,SKG)            , intent(in)                    :: val
     end subroutine
 #endif
 
@@ -269,9 +269,9 @@ module pm_val2logical
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLogicalDef_LK5_SK3
 #endif
-        use pm_kind, only: LKC => LK5, SKC => SK3
-        logical(LKC)                , intent(out)                   :: conversion
-        character(*,SKC)            , intent(in)                    :: val
+        use pm_kind, only: LKG => LK5, SKG => SK3
+        logical(LKG)                , intent(out)                   :: conversion
+        character(*,SKG)            , intent(in)                    :: val
     end subroutine
 #endif
 
@@ -280,9 +280,9 @@ module pm_val2logical
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLogicalDef_LK5_SK2
 #endif
-        use pm_kind, only: LKC => LK5, SKC => SK2
-        logical(LKC)                , intent(out)                   :: conversion
-        character(*,SKC)            , intent(in)                    :: val
+        use pm_kind, only: LKG => LK5, SKG => SK2
+        logical(LKG)                , intent(out)                   :: conversion
+        character(*,SKG)            , intent(in)                    :: val
     end subroutine
 #endif
 
@@ -291,9 +291,9 @@ module pm_val2logical
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLogicalDef_LK5_SK1
 #endif
-        use pm_kind, only: LKC => LK5, SKC => SK1
-        logical(LKC)                , intent(out)                   :: conversion
-        character(*,SKC)            , intent(in)                    :: val
+        use pm_kind, only: LKG => LK5, SKG => SK1
+        logical(LKG)                , intent(out)                   :: conversion
+        character(*,SKG)            , intent(in)                    :: val
     end subroutine
 #endif
 
@@ -310,9 +310,9 @@ module pm_val2logical
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLogicalDef_LK4_SK5
 #endif
-        use pm_kind, only: LKC => LK4, SKC => SK5
-        logical(LKC)                , intent(out)                   :: conversion
-        character(*,SKC)            , intent(in)                    :: val
+        use pm_kind, only: LKG => LK4, SKG => SK5
+        logical(LKG)                , intent(out)                   :: conversion
+        character(*,SKG)            , intent(in)                    :: val
     end subroutine
 #endif
 
@@ -321,9 +321,9 @@ module pm_val2logical
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLogicalDef_LK4_SK4
 #endif
-        use pm_kind, only: LKC => LK4, SKC => SK4
-        logical(LKC)                , intent(out)                   :: conversion
-        character(*,SKC)            , intent(in)                    :: val
+        use pm_kind, only: LKG => LK4, SKG => SK4
+        logical(LKG)                , intent(out)                   :: conversion
+        character(*,SKG)            , intent(in)                    :: val
     end subroutine
 #endif
 
@@ -332,9 +332,9 @@ module pm_val2logical
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLogicalDef_LK4_SK3
 #endif
-        use pm_kind, only: LKC => LK4, SKC => SK3
-        logical(LKC)                , intent(out)                   :: conversion
-        character(*,SKC)            , intent(in)                    :: val
+        use pm_kind, only: LKG => LK4, SKG => SK3
+        logical(LKG)                , intent(out)                   :: conversion
+        character(*,SKG)            , intent(in)                    :: val
     end subroutine
 #endif
 
@@ -343,9 +343,9 @@ module pm_val2logical
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLogicalDef_LK4_SK2
 #endif
-        use pm_kind, only: LKC => LK4, SKC => SK2
-        logical(LKC)                , intent(out)                   :: conversion
-        character(*,SKC)            , intent(in)                    :: val
+        use pm_kind, only: LKG => LK4, SKG => SK2
+        logical(LKG)                , intent(out)                   :: conversion
+        character(*,SKG)            , intent(in)                    :: val
     end subroutine
 #endif
 
@@ -354,9 +354,9 @@ module pm_val2logical
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLogicalDef_LK4_SK1
 #endif
-        use pm_kind, only: LKC => LK4, SKC => SK1
-        logical(LKC)                , intent(out)                   :: conversion
-        character(*,SKC)            , intent(in)                    :: val
+        use pm_kind, only: LKG => LK4, SKG => SK1
+        logical(LKG)                , intent(out)                   :: conversion
+        character(*,SKG)            , intent(in)                    :: val
     end subroutine
 #endif
 
@@ -373,9 +373,9 @@ module pm_val2logical
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLogicalDef_LK3_SK5
 #endif
-        use pm_kind, only: LKC => LK3, SKC => SK5
-        logical(LKC)                , intent(out)                   :: conversion
-        character(*,SKC)            , intent(in)                    :: val
+        use pm_kind, only: LKG => LK3, SKG => SK5
+        logical(LKG)                , intent(out)                   :: conversion
+        character(*,SKG)            , intent(in)                    :: val
     end subroutine
 #endif
 
@@ -384,9 +384,9 @@ module pm_val2logical
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLogicalDef_LK3_SK4
 #endif
-        use pm_kind, only: LKC => LK3, SKC => SK4
-        logical(LKC)                , intent(out)                   :: conversion
-        character(*,SKC)            , intent(in)                    :: val
+        use pm_kind, only: LKG => LK3, SKG => SK4
+        logical(LKG)                , intent(out)                   :: conversion
+        character(*,SKG)            , intent(in)                    :: val
     end subroutine
 #endif
 
@@ -395,9 +395,9 @@ module pm_val2logical
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLogicalDef_LK3_SK3
 #endif
-        use pm_kind, only: LKC => LK3, SKC => SK3
-        logical(LKC)                , intent(out)                   :: conversion
-        character(*,SKC)            , intent(in)                    :: val
+        use pm_kind, only: LKG => LK3, SKG => SK3
+        logical(LKG)                , intent(out)                   :: conversion
+        character(*,SKG)            , intent(in)                    :: val
     end subroutine
 #endif
 
@@ -406,9 +406,9 @@ module pm_val2logical
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLogicalDef_LK3_SK2
 #endif
-        use pm_kind, only: LKC => LK3, SKC => SK2
-        logical(LKC)                , intent(out)                   :: conversion
-        character(*,SKC)            , intent(in)                    :: val
+        use pm_kind, only: LKG => LK3, SKG => SK2
+        logical(LKG)                , intent(out)                   :: conversion
+        character(*,SKG)            , intent(in)                    :: val
     end subroutine
 #endif
 
@@ -417,9 +417,9 @@ module pm_val2logical
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLogicalDef_LK3_SK1
 #endif
-        use pm_kind, only: LKC => LK3, SKC => SK1
-        logical(LKC)                , intent(out)                   :: conversion
-        character(*,SKC)            , intent(in)                    :: val
+        use pm_kind, only: LKG => LK3, SKG => SK1
+        logical(LKG)                , intent(out)                   :: conversion
+        character(*,SKG)            , intent(in)                    :: val
     end subroutine
 #endif
 
@@ -436,9 +436,9 @@ module pm_val2logical
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLogicalDef_LK2_SK5
 #endif
-        use pm_kind, only: LKC => LK2, SKC => SK5
-        logical(LKC)                , intent(out)                   :: conversion
-        character(*,SKC)            , intent(in)                    :: val
+        use pm_kind, only: LKG => LK2, SKG => SK5
+        logical(LKG)                , intent(out)                   :: conversion
+        character(*,SKG)            , intent(in)                    :: val
     end subroutine
 #endif
 
@@ -447,9 +447,9 @@ module pm_val2logical
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLogicalDef_LK2_SK4
 #endif
-        use pm_kind, only: LKC => LK2, SKC => SK4
-        logical(LKC)                , intent(out)                   :: conversion
-        character(*,SKC)            , intent(in)                    :: val
+        use pm_kind, only: LKG => LK2, SKG => SK4
+        logical(LKG)                , intent(out)                   :: conversion
+        character(*,SKG)            , intent(in)                    :: val
     end subroutine
 #endif
 
@@ -458,9 +458,9 @@ module pm_val2logical
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLogicalDef_LK2_SK3
 #endif
-        use pm_kind, only: LKC => LK2, SKC => SK3
-        logical(LKC)                , intent(out)                   :: conversion
-        character(*,SKC)            , intent(in)                    :: val
+        use pm_kind, only: LKG => LK2, SKG => SK3
+        logical(LKG)                , intent(out)                   :: conversion
+        character(*,SKG)            , intent(in)                    :: val
     end subroutine
 #endif
 
@@ -469,9 +469,9 @@ module pm_val2logical
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLogicalDef_LK2_SK2
 #endif
-        use pm_kind, only: LKC => LK2, SKC => SK2
-        logical(LKC)                , intent(out)                   :: conversion
-        character(*,SKC)            , intent(in)                    :: val
+        use pm_kind, only: LKG => LK2, SKG => SK2
+        logical(LKG)                , intent(out)                   :: conversion
+        character(*,SKG)            , intent(in)                    :: val
     end subroutine
 #endif
 
@@ -480,9 +480,9 @@ module pm_val2logical
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLogicalDef_LK2_SK1
 #endif
-        use pm_kind, only: LKC => LK2, SKC => SK1
-        logical(LKC)                , intent(out)                   :: conversion
-        character(*,SKC)            , intent(in)                    :: val
+        use pm_kind, only: LKG => LK2, SKG => SK1
+        logical(LKG)                , intent(out)                   :: conversion
+        character(*,SKG)            , intent(in)                    :: val
     end subroutine
 #endif
 
@@ -499,9 +499,9 @@ module pm_val2logical
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLogicalDef_LK1_SK5
 #endif
-        use pm_kind, only: LKC => LK1, SKC => SK5
-        logical(LKC)                , intent(out)                   :: conversion
-        character(*,SKC)            , intent(in)                    :: val
+        use pm_kind, only: LKG => LK1, SKG => SK5
+        logical(LKG)                , intent(out)                   :: conversion
+        character(*,SKG)            , intent(in)                    :: val
     end subroutine
 #endif
 
@@ -510,9 +510,9 @@ module pm_val2logical
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLogicalDef_LK1_SK4
 #endif
-        use pm_kind, only: LKC => LK1, SKC => SK4
-        logical(LKC)                , intent(out)                   :: conversion
-        character(*,SKC)            , intent(in)                    :: val
+        use pm_kind, only: LKG => LK1, SKG => SK4
+        logical(LKG)                , intent(out)                   :: conversion
+        character(*,SKG)            , intent(in)                    :: val
     end subroutine
 #endif
 
@@ -521,9 +521,9 @@ module pm_val2logical
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLogicalDef_LK1_SK3
 #endif
-        use pm_kind, only: LKC => LK1, SKC => SK3
-        logical(LKC)                , intent(out)                   :: conversion
-        character(*,SKC)            , intent(in)                    :: val
+        use pm_kind, only: LKG => LK1, SKG => SK3
+        logical(LKG)                , intent(out)                   :: conversion
+        character(*,SKG)            , intent(in)                    :: val
     end subroutine
 #endif
 
@@ -532,9 +532,9 @@ module pm_val2logical
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLogicalDef_LK1_SK2
 #endif
-        use pm_kind, only: LKC => LK1, SKC => SK2
-        logical(LKC)                , intent(out)                   :: conversion
-        character(*,SKC)            , intent(in)                    :: val
+        use pm_kind, only: LKG => LK1, SKG => SK2
+        logical(LKG)                , intent(out)                   :: conversion
+        character(*,SKG)            , intent(in)                    :: val
     end subroutine
 #endif
 
@@ -543,9 +543,9 @@ module pm_val2logical
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLogicalDef_LK1_SK1
 #endif
-        use pm_kind, only: LKC => LK1, SKC => SK1
-        logical(LKC)                , intent(out)                   :: conversion
-        character(*,SKC)            , intent(in)                    :: val
+        use pm_kind, only: LKG => LK1, SKG => SK1
+        logical(LKG)                , intent(out)                   :: conversion
+        character(*,SKG)            , intent(in)                    :: val
     end subroutine
 #endif
 
@@ -565,9 +565,9 @@ module pm_val2logical
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLogicalErr_LK5_SK5
 #endif
-        use pm_kind, only: LKC => LK5, SKC => SK5
-        logical(LKC)                , intent(out)                   :: conversion
-        character(*,SKC)            , intent(in)                    :: val
+        use pm_kind, only: LKG => LK5, SKG => SK5
+        logical(LKG)                , intent(out)                   :: conversion
+        character(*,SKG)            , intent(in)                    :: val
         integer(IK)                 , intent(out)                   :: iostat
     end subroutine
 #endif
@@ -577,9 +577,9 @@ module pm_val2logical
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLogicalErr_LK5_SK4
 #endif
-        use pm_kind, only: LKC => LK5, SKC => SK4
-        logical(LKC)                , intent(out)                   :: conversion
-        character(*,SKC)            , intent(in)                    :: val
+        use pm_kind, only: LKG => LK5, SKG => SK4
+        logical(LKG)                , intent(out)                   :: conversion
+        character(*,SKG)            , intent(in)                    :: val
         integer(IK)                 , intent(out)                   :: iostat
     end subroutine
 #endif
@@ -589,9 +589,9 @@ module pm_val2logical
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLogicalErr_LK5_SK3
 #endif
-        use pm_kind, only: LKC => LK5, SKC => SK3
-        logical(LKC)                , intent(out)                   :: conversion
-        character(*,SKC)            , intent(in)                    :: val
+        use pm_kind, only: LKG => LK5, SKG => SK3
+        logical(LKG)                , intent(out)                   :: conversion
+        character(*,SKG)            , intent(in)                    :: val
         integer(IK)                 , intent(out)                   :: iostat
     end subroutine
 #endif
@@ -601,9 +601,9 @@ module pm_val2logical
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLogicalErr_LK5_SK2
 #endif
-        use pm_kind, only: LKC => LK5, SKC => SK2
-        logical(LKC)                , intent(out)                   :: conversion
-        character(*,SKC)            , intent(in)                    :: val
+        use pm_kind, only: LKG => LK5, SKG => SK2
+        logical(LKG)                , intent(out)                   :: conversion
+        character(*,SKG)            , intent(in)                    :: val
         integer(IK)                 , intent(out)                   :: iostat
     end subroutine
 #endif
@@ -613,9 +613,9 @@ module pm_val2logical
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLogicalErr_LK5_SK1
 #endif
-        use pm_kind, only: LKC => LK5, SKC => SK1
-        logical(LKC)                , intent(out)                   :: conversion
-        character(*,SKC)            , intent(in)                    :: val
+        use pm_kind, only: LKG => LK5, SKG => SK1
+        logical(LKG)                , intent(out)                   :: conversion
+        character(*,SKG)            , intent(in)                    :: val
         integer(IK)                 , intent(out)                   :: iostat
     end subroutine
 #endif
@@ -633,9 +633,9 @@ module pm_val2logical
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLogicalErr_LK4_SK5
 #endif
-        use pm_kind, only: LKC => LK4, SKC => SK5
-        logical(LKC)                , intent(out)                   :: conversion
-        character(*,SKC)            , intent(in)                    :: val
+        use pm_kind, only: LKG => LK4, SKG => SK5
+        logical(LKG)                , intent(out)                   :: conversion
+        character(*,SKG)            , intent(in)                    :: val
         integer(IK)                 , intent(out)                   :: iostat
     end subroutine
 #endif
@@ -645,9 +645,9 @@ module pm_val2logical
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLogicalErr_LK4_SK4
 #endif
-        use pm_kind, only: LKC => LK4, SKC => SK4
-        logical(LKC)                , intent(out)                   :: conversion
-        character(*,SKC)            , intent(in)                    :: val
+        use pm_kind, only: LKG => LK4, SKG => SK4
+        logical(LKG)                , intent(out)                   :: conversion
+        character(*,SKG)            , intent(in)                    :: val
         integer(IK)                 , intent(out)                   :: iostat
     end subroutine
 #endif
@@ -657,9 +657,9 @@ module pm_val2logical
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLogicalErr_LK4_SK3
 #endif
-        use pm_kind, only: LKC => LK4, SKC => SK3
-        logical(LKC)                , intent(out)                   :: conversion
-        character(*,SKC)            , intent(in)                    :: val
+        use pm_kind, only: LKG => LK4, SKG => SK3
+        logical(LKG)                , intent(out)                   :: conversion
+        character(*,SKG)            , intent(in)                    :: val
         integer(IK)                 , intent(out)                   :: iostat
     end subroutine
 #endif
@@ -669,9 +669,9 @@ module pm_val2logical
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLogicalErr_LK4_SK2
 #endif
-        use pm_kind, only: LKC => LK4, SKC => SK2
-        logical(LKC)                , intent(out)                   :: conversion
-        character(*,SKC)            , intent(in)                    :: val
+        use pm_kind, only: LKG => LK4, SKG => SK2
+        logical(LKG)                , intent(out)                   :: conversion
+        character(*,SKG)            , intent(in)                    :: val
         integer(IK)                 , intent(out)                   :: iostat
     end subroutine
 #endif
@@ -681,9 +681,9 @@ module pm_val2logical
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLogicalErr_LK4_SK1
 #endif
-        use pm_kind, only: LKC => LK4, SKC => SK1
-        logical(LKC)                , intent(out)                   :: conversion
-        character(*,SKC)            , intent(in)                    :: val
+        use pm_kind, only: LKG => LK4, SKG => SK1
+        logical(LKG)                , intent(out)                   :: conversion
+        character(*,SKG)            , intent(in)                    :: val
         integer(IK)                 , intent(out)                   :: iostat
     end subroutine
 #endif
@@ -701,9 +701,9 @@ module pm_val2logical
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLogicalErr_LK3_SK5
 #endif
-        use pm_kind, only: LKC => LK3, SKC => SK5
-        logical(LKC)                , intent(out)                   :: conversion
-        character(*,SKC)            , intent(in)                    :: val
+        use pm_kind, only: LKG => LK3, SKG => SK5
+        logical(LKG)                , intent(out)                   :: conversion
+        character(*,SKG)            , intent(in)                    :: val
         integer(IK)                 , intent(out)                   :: iostat
     end subroutine
 #endif
@@ -713,9 +713,9 @@ module pm_val2logical
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLogicalErr_LK3_SK4
 #endif
-        use pm_kind, only: LKC => LK3, SKC => SK4
-        logical(LKC)                , intent(out)                   :: conversion
-        character(*,SKC)            , intent(in)                    :: val
+        use pm_kind, only: LKG => LK3, SKG => SK4
+        logical(LKG)                , intent(out)                   :: conversion
+        character(*,SKG)            , intent(in)                    :: val
         integer(IK)                 , intent(out)                   :: iostat
     end subroutine
 #endif
@@ -725,9 +725,9 @@ module pm_val2logical
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLogicalErr_LK3_SK3
 #endif
-        use pm_kind, only: LKC => LK3, SKC => SK3
-        logical(LKC)                , intent(out)                   :: conversion
-        character(*,SKC)            , intent(in)                    :: val
+        use pm_kind, only: LKG => LK3, SKG => SK3
+        logical(LKG)                , intent(out)                   :: conversion
+        character(*,SKG)            , intent(in)                    :: val
         integer(IK)                 , intent(out)                   :: iostat
     end subroutine
 #endif
@@ -737,9 +737,9 @@ module pm_val2logical
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLogicalErr_LK3_SK2
 #endif
-        use pm_kind, only: LKC => LK3, SKC => SK2
-        logical(LKC)                , intent(out)                   :: conversion
-        character(*,SKC)            , intent(in)                    :: val
+        use pm_kind, only: LKG => LK3, SKG => SK2
+        logical(LKG)                , intent(out)                   :: conversion
+        character(*,SKG)            , intent(in)                    :: val
         integer(IK)                 , intent(out)                   :: iostat
     end subroutine
 #endif
@@ -749,9 +749,9 @@ module pm_val2logical
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLogicalErr_LK3_SK1
 #endif
-        use pm_kind, only: LKC => LK3, SKC => SK1
-        logical(LKC)                , intent(out)                   :: conversion
-        character(*,SKC)            , intent(in)                    :: val
+        use pm_kind, only: LKG => LK3, SKG => SK1
+        logical(LKG)                , intent(out)                   :: conversion
+        character(*,SKG)            , intent(in)                    :: val
         integer(IK)                 , intent(out)                   :: iostat
     end subroutine
 #endif
@@ -769,9 +769,9 @@ module pm_val2logical
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLogicalErr_LK2_SK5
 #endif
-        use pm_kind, only: LKC => LK2, SKC => SK5
-        logical(LKC)                , intent(out)                   :: conversion
-        character(*,SKC)            , intent(in)                    :: val
+        use pm_kind, only: LKG => LK2, SKG => SK5
+        logical(LKG)                , intent(out)                   :: conversion
+        character(*,SKG)            , intent(in)                    :: val
         integer(IK)                 , intent(out)                   :: iostat
     end subroutine
 #endif
@@ -781,9 +781,9 @@ module pm_val2logical
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLogicalErr_LK2_SK4
 #endif
-        use pm_kind, only: LKC => LK2, SKC => SK4
-        logical(LKC)                , intent(out)                   :: conversion
-        character(*,SKC)            , intent(in)                    :: val
+        use pm_kind, only: LKG => LK2, SKG => SK4
+        logical(LKG)                , intent(out)                   :: conversion
+        character(*,SKG)            , intent(in)                    :: val
         integer(IK)                 , intent(out)                   :: iostat
     end subroutine
 #endif
@@ -793,9 +793,9 @@ module pm_val2logical
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLogicalErr_LK2_SK3
 #endif
-        use pm_kind, only: LKC => LK2, SKC => SK3
-        logical(LKC)                , intent(out)                   :: conversion
-        character(*,SKC)            , intent(in)                    :: val
+        use pm_kind, only: LKG => LK2, SKG => SK3
+        logical(LKG)                , intent(out)                   :: conversion
+        character(*,SKG)            , intent(in)                    :: val
         integer(IK)                 , intent(out)                   :: iostat
     end subroutine
 #endif
@@ -805,9 +805,9 @@ module pm_val2logical
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLogicalErr_LK2_SK2
 #endif
-        use pm_kind, only: LKC => LK2, SKC => SK2
-        logical(LKC)                , intent(out)                   :: conversion
-        character(*,SKC)            , intent(in)                    :: val
+        use pm_kind, only: LKG => LK2, SKG => SK2
+        logical(LKG)                , intent(out)                   :: conversion
+        character(*,SKG)            , intent(in)                    :: val
         integer(IK)                 , intent(out)                   :: iostat
     end subroutine
 #endif
@@ -817,9 +817,9 @@ module pm_val2logical
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLogicalErr_LK2_SK1
 #endif
-        use pm_kind, only: LKC => LK2, SKC => SK1
-        logical(LKC)                , intent(out)                   :: conversion
-        character(*,SKC)            , intent(in)                    :: val
+        use pm_kind, only: LKG => LK2, SKG => SK1
+        logical(LKG)                , intent(out)                   :: conversion
+        character(*,SKG)            , intent(in)                    :: val
         integer(IK)                 , intent(out)                   :: iostat
     end subroutine
 #endif
@@ -837,9 +837,9 @@ module pm_val2logical
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLogicalErr_LK1_SK5
 #endif
-        use pm_kind, only: LKC => LK1, SKC => SK5
-        logical(LKC)                , intent(out)                   :: conversion
-        character(*,SKC)            , intent(in)                    :: val
+        use pm_kind, only: LKG => LK1, SKG => SK5
+        logical(LKG)                , intent(out)                   :: conversion
+        character(*,SKG)            , intent(in)                    :: val
         integer(IK)                 , intent(out)                   :: iostat
     end subroutine
 #endif
@@ -849,9 +849,9 @@ module pm_val2logical
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLogicalErr_LK1_SK4
 #endif
-        use pm_kind, only: LKC => LK1, SKC => SK4
-        logical(LKC)                , intent(out)                   :: conversion
-        character(*,SKC)            , intent(in)                    :: val
+        use pm_kind, only: LKG => LK1, SKG => SK4
+        logical(LKG)                , intent(out)                   :: conversion
+        character(*,SKG)            , intent(in)                    :: val
         integer(IK)                 , intent(out)                   :: iostat
     end subroutine
 #endif
@@ -861,9 +861,9 @@ module pm_val2logical
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLogicalErr_LK1_SK3
 #endif
-        use pm_kind, only: LKC => LK1, SKC => SK3
-        logical(LKC)                , intent(out)                   :: conversion
-        character(*,SKC)            , intent(in)                    :: val
+        use pm_kind, only: LKG => LK1, SKG => SK3
+        logical(LKG)                , intent(out)                   :: conversion
+        character(*,SKG)            , intent(in)                    :: val
         integer(IK)                 , intent(out)                   :: iostat
     end subroutine
 #endif
@@ -873,9 +873,9 @@ module pm_val2logical
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLogicalErr_LK1_SK2
 #endif
-        use pm_kind, only: LKC => LK1, SKC => SK2
-        logical(LKC)                , intent(out)                   :: conversion
-        character(*,SKC)            , intent(in)                    :: val
+        use pm_kind, only: LKG => LK1, SKG => SK2
+        logical(LKG)                , intent(out)                   :: conversion
+        character(*,SKG)            , intent(in)                    :: val
         integer(IK)                 , intent(out)                   :: iostat
     end subroutine
 #endif
@@ -885,9 +885,9 @@ module pm_val2logical
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLogicalErr_LK1_SK1
 #endif
-        use pm_kind, only: LKC => LK1, SKC => SK1
-        logical(LKC)                , intent(out)                   :: conversion
-        character(*,SKC)            , intent(in)                    :: val
+        use pm_kind, only: LKG => LK1, SKG => SK1
+        logical(LKG)                , intent(out)                   :: conversion
+        character(*,SKG)            , intent(in)                    :: val
         integer(IK)                 , intent(out)                   :: iostat
     end subroutine
 #endif

@@ -48,17 +48,17 @@ CHECK_ASSERTION(__LINE__, len(a, IK) == len(b, IK), SK_"@setSwapped(): The condi
         ! Define the place holder.
 #if     !(BLAS_ENABLED && DISPATCH_ENABLED)
 #if     SK_ENABLED && D0_ENABLED
-        character(1,SKC) :: tmp
+        character(1,SKG) :: tmp
 #elif   SK_ENABLED && D1_ENABLED
-        character(len(a,IK),SKC) :: tmp
+        character(len(a,IK),SKG) :: tmp
 #elif   IK_ENABLED
-        integer(IKC)    :: tmp
+        integer(IKG)    :: tmp
 #elif   LK_ENABLED
-        logical(LKC)    :: tmp
+        logical(LKG)    :: tmp
 #elif   CK_ENABLED
-        complex(CKC)    :: tmp
+        complex(CKG)    :: tmp
 #elif   RK_ENABLED
-        real(RKC)       :: tmp
+        real(RKG)       :: tmp
 #else
 #error  "Unrecognized interface."
 #endif

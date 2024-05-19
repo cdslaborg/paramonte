@@ -29,9 +29,9 @@
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #if     PD_ENABLED
-        real(RKC)   :: urand
+        real(RKG)   :: urand
 #elif   PS_ENABLED
-        real(RKC)   :: urand(size)
+        real(RKG)   :: urand(size)
 #else
 #error  "Unrecognized interface."
 #endif
@@ -42,22 +42,22 @@
 #elif   setBernRand_ENABLED && RUP_ENABLED
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        CHECK_ASSERTION(__LINE__, 0._RKC <= p .and. p <= 1._RKC, SK_": The condition `0. <= p .and. p <= 1.` must hold. p = "//getStr(p)) ! fpp
-        CHECK_ASSERTION(__LINE__, 0._RKC <= urand .and. urand < 1._RKC, SK_": The condition `0. <= urand .and. urand < 1.` must hold. urand = "//getStr(urand)) ! fpp
+        CHECK_ASSERTION(__LINE__, 0._RKG <= p .and. p <= 1._RKG, SK_": The condition `0. <= p .and. p <= 1.` must hold. p = "//getStr(p)) ! fpp
+        CHECK_ASSERTION(__LINE__, 0._RKG <= urand .and. urand < 1._RKG, SK_": The condition `0. <= urand .and. urand < 1.` must hold. urand = "//getStr(urand)) ! fpp
 
 #if     IK_ENABLED
         if (urand < p) then
-            rand = 1_IKC
+            rand = 1_IKG
         else
-            rand = 0_IKC
+            rand = 0_IKG
         end if
 #elif   LK_ENABLED
-        rand = logical(urand < p, kind = LKC)
+        rand = logical(urand < p, kind = LKG)
 #elif   RK_ENABLED
         if (urand < p) then
-            rand = 1._RKC
+            rand = 1._RKG
         else
-            rand = 0._RKC
+            rand = 0._RKG
         end if
 #else
 #error  "Unrecognized interface."

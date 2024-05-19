@@ -192,10 +192,10 @@ module pm_arrayComplement
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getComplementRandomDefCom_D0_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)        , intent(in)                :: setA
-        character(*,SKC)        , intent(in)                :: setB
-        character(:,SKC)                    , allocatable   :: complement
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)        , intent(in)                :: setA
+        character(*,SKG)        , intent(in)                :: setB
+        character(:,SKG)                    , allocatable   :: complement
     end function
 #endif
 
@@ -204,10 +204,10 @@ module pm_arrayComplement
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getComplementRandomDefCom_D0_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)        , intent(in)                :: setA
-        character(*,SKC)        , intent(in)                :: setB
-        character(:,SKC)                    , allocatable   :: complement
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)        , intent(in)                :: setA
+        character(*,SKG)        , intent(in)                :: setB
+        character(:,SKG)                    , allocatable   :: complement
     end function
 #endif
 
@@ -216,10 +216,10 @@ module pm_arrayComplement
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getComplementRandomDefCom_D0_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)        , intent(in)                :: setA
-        character(*,SKC)        , intent(in)                :: setB
-        character(:,SKC)                    , allocatable   :: complement
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)        , intent(in)                :: setA
+        character(*,SKG)        , intent(in)                :: setB
+        character(:,SKG)                    , allocatable   :: complement
     end function
 #endif
 
@@ -228,10 +228,10 @@ module pm_arrayComplement
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getComplementRandomDefCom_D0_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)        , intent(in)                :: setA
-        character(*,SKC)        , intent(in)                :: setB
-        character(:,SKC)                    , allocatable   :: complement
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)        , intent(in)                :: setA
+        character(*,SKG)        , intent(in)                :: setB
+        character(:,SKG)                    , allocatable   :: complement
     end function
 #endif
 
@@ -240,10 +240,10 @@ module pm_arrayComplement
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getComplementRandomDefCom_D0_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)        , intent(in)                :: setA
-        character(*,SKC)        , intent(in)                :: setB
-        character(:,SKC)                    , allocatable   :: complement
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)        , intent(in)                :: setA
+        character(*,SKG)        , intent(in)                :: setB
+        character(:,SKG)                    , allocatable   :: complement
     end function
 #endif
 
@@ -254,10 +254,10 @@ module pm_arrayComplement
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getComplementRandomDefCom_D1_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)        , intent(in), contiguous    :: setA(:)
-        character(*,SKC)        , intent(in), contiguous    :: setB(:)
-        character(LEN_STR,SKC)              , allocatable   :: complement(:)
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)        , intent(in), contiguous    :: setA(:)
+        character(*,SKG)        , intent(in), contiguous    :: setB(:)
+        character(LEN_STR,SKG)              , allocatable   :: complement(:)
     end function
 #endif
 
@@ -266,10 +266,10 @@ module pm_arrayComplement
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getComplementRandomDefCom_D1_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)        , intent(in), contiguous    :: setA(:)
-        character(*,SKC)        , intent(in), contiguous    :: setB(:)
-        character(LEN_STR,SKC)              , allocatable   :: complement(:)
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)        , intent(in), contiguous    :: setA(:)
+        character(*,SKG)        , intent(in), contiguous    :: setB(:)
+        character(LEN_STR,SKG)              , allocatable   :: complement(:)
     end function
 #endif
 
@@ -278,10 +278,10 @@ module pm_arrayComplement
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getComplementRandomDefCom_D1_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)        , intent(in), contiguous    :: setA(:)
-        character(*,SKC)        , intent(in), contiguous    :: setB(:)
-        character(LEN_STR,SKC)              , allocatable   :: complement(:)
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)        , intent(in), contiguous    :: setA(:)
+        character(*,SKG)        , intent(in), contiguous    :: setB(:)
+        character(LEN_STR,SKG)              , allocatable   :: complement(:)
     end function
 #endif
 
@@ -290,10 +290,10 @@ module pm_arrayComplement
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getComplementRandomDefCom_D1_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)        , intent(in), contiguous    :: setA(:)
-        character(*,SKC)        , intent(in), contiguous    :: setB(:)
-        character(LEN_STR,SKC)              , allocatable   :: complement(:)
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)        , intent(in), contiguous    :: setA(:)
+        character(*,SKG)        , intent(in), contiguous    :: setB(:)
+        character(LEN_STR,SKG)              , allocatable   :: complement(:)
     end function
 #endif
 
@@ -302,10 +302,10 @@ module pm_arrayComplement
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getComplementRandomDefCom_D1_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)        , intent(in), contiguous    :: setA(:)
-        character(*,SKC)        , intent(in), contiguous    :: setB(:)
-        character(LEN_STR,SKC)              , allocatable   :: complement(:)
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)        , intent(in), contiguous    :: setA(:)
+        character(*,SKG)        , intent(in), contiguous    :: setB(:)
+        character(LEN_STR,SKG)              , allocatable   :: complement(:)
     end function
 #endif
 
@@ -316,10 +316,10 @@ module pm_arrayComplement
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getComplementRandomDefCom_D1_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)            , intent(in), contiguous    :: setA(:)
-        integer(IKC)            , intent(in), contiguous    :: setB(:)
-        integer(IKC)                        , allocatable   :: complement(:)
+        use pm_kind, only: IKG => IK5
+        integer(IKG)            , intent(in), contiguous    :: setA(:)
+        integer(IKG)            , intent(in), contiguous    :: setB(:)
+        integer(IKG)                        , allocatable   :: complement(:)
     end function
 #endif
 
@@ -328,10 +328,10 @@ module pm_arrayComplement
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getComplementRandomDefCom_D1_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)            , intent(in), contiguous    :: setA(:)
-        integer(IKC)            , intent(in), contiguous    :: setB(:)
-        integer(IKC)                        , allocatable   :: complement(:)
+        use pm_kind, only: IKG => IK4
+        integer(IKG)            , intent(in), contiguous    :: setA(:)
+        integer(IKG)            , intent(in), contiguous    :: setB(:)
+        integer(IKG)                        , allocatable   :: complement(:)
     end function
 #endif
 
@@ -340,10 +340,10 @@ module pm_arrayComplement
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getComplementRandomDefCom_D1_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)            , intent(in), contiguous    :: setA(:)
-        integer(IKC)            , intent(in), contiguous    :: setB(:)
-        integer(IKC)                        , allocatable   :: complement(:)
+        use pm_kind, only: IKG => IK3
+        integer(IKG)            , intent(in), contiguous    :: setA(:)
+        integer(IKG)            , intent(in), contiguous    :: setB(:)
+        integer(IKG)                        , allocatable   :: complement(:)
     end function
 #endif
 
@@ -352,10 +352,10 @@ module pm_arrayComplement
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getComplementRandomDefCom_D1_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)            , intent(in), contiguous    :: setA(:)
-        integer(IKC)            , intent(in), contiguous    :: setB(:)
-        integer(IKC)                        , allocatable   :: complement(:)
+        use pm_kind, only: IKG => IK2
+        integer(IKG)            , intent(in), contiguous    :: setA(:)
+        integer(IKG)            , intent(in), contiguous    :: setB(:)
+        integer(IKG)                        , allocatable   :: complement(:)
     end function
 #endif
 
@@ -364,10 +364,10 @@ module pm_arrayComplement
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getComplementRandomDefCom_D1_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)            , intent(in), contiguous    :: setA(:)
-        integer(IKC)            , intent(in), contiguous    :: setB(:)
-        integer(IKC)                        , allocatable   :: complement(:)
+        use pm_kind, only: IKG => IK1
+        integer(IKG)            , intent(in), contiguous    :: setA(:)
+        integer(IKG)            , intent(in), contiguous    :: setB(:)
+        integer(IKG)                        , allocatable   :: complement(:)
     end function
 #endif
 
@@ -378,10 +378,10 @@ module pm_arrayComplement
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getComplementRandomDefCom_D1_LK5
 #endif
-        use pm_kind, only: LKC => LK5
-        logical(LKC)            , intent(in), contiguous    :: setA(:)
-        logical(LKC)            , intent(in), contiguous    :: setB(:)
-        logical(LKC)                        , allocatable   :: complement(:)
+        use pm_kind, only: LKG => LK5
+        logical(LKG)            , intent(in), contiguous    :: setA(:)
+        logical(LKG)            , intent(in), contiguous    :: setB(:)
+        logical(LKG)                        , allocatable   :: complement(:)
     end function
 #endif
 
@@ -390,10 +390,10 @@ module pm_arrayComplement
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getComplementRandomDefCom_D1_LK4
 #endif
-        use pm_kind, only: LKC => LK4
-        logical(LKC)            , intent(in), contiguous    :: setA(:)
-        logical(LKC)            , intent(in), contiguous    :: setB(:)
-        logical(LKC)                        , allocatable   :: complement(:)
+        use pm_kind, only: LKG => LK4
+        logical(LKG)            , intent(in), contiguous    :: setA(:)
+        logical(LKG)            , intent(in), contiguous    :: setB(:)
+        logical(LKG)                        , allocatable   :: complement(:)
     end function
 #endif
 
@@ -402,10 +402,10 @@ module pm_arrayComplement
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getComplementRandomDefCom_D1_LK3
 #endif
-        use pm_kind, only: LKC => LK3
-        logical(LKC)            , intent(in), contiguous    :: setA(:)
-        logical(LKC)            , intent(in), contiguous    :: setB(:)
-        logical(LKC)                        , allocatable   :: complement(:)
+        use pm_kind, only: LKG => LK3
+        logical(LKG)            , intent(in), contiguous    :: setA(:)
+        logical(LKG)            , intent(in), contiguous    :: setB(:)
+        logical(LKG)                        , allocatable   :: complement(:)
     end function
 #endif
 
@@ -414,10 +414,10 @@ module pm_arrayComplement
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getComplementRandomDefCom_D1_LK2
 #endif
-        use pm_kind, only: LKC => LK2
-        logical(LKC)            , intent(in), contiguous    :: setA(:)
-        logical(LKC)            , intent(in), contiguous    :: setB(:)
-        logical(LKC)                        , allocatable   :: complement(:)
+        use pm_kind, only: LKG => LK2
+        logical(LKG)            , intent(in), contiguous    :: setA(:)
+        logical(LKG)            , intent(in), contiguous    :: setB(:)
+        logical(LKG)                        , allocatable   :: complement(:)
     end function
 #endif
 
@@ -426,10 +426,10 @@ module pm_arrayComplement
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getComplementRandomDefCom_D1_LK1
 #endif
-        use pm_kind, only: LKC => LK1
-        logical(LKC)            , intent(in), contiguous    :: setA(:)
-        logical(LKC)            , intent(in), contiguous    :: setB(:)
-        logical(LKC)                        , allocatable   :: complement(:)
+        use pm_kind, only: LKG => LK1
+        logical(LKG)            , intent(in), contiguous    :: setA(:)
+        logical(LKG)            , intent(in), contiguous    :: setB(:)
+        logical(LKG)                        , allocatable   :: complement(:)
     end function
 #endif
 
@@ -440,10 +440,10 @@ module pm_arrayComplement
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getComplementRandomDefCom_D1_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)            , intent(in), contiguous    :: setA(:)
-        complex(CKC)            , intent(in), contiguous    :: setB(:)
-        complex(CKC)                        , allocatable   :: complement(:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG)            , intent(in), contiguous    :: setA(:)
+        complex(CKG)            , intent(in), contiguous    :: setB(:)
+        complex(CKG)                        , allocatable   :: complement(:)
     end function
 #endif
 
@@ -452,10 +452,10 @@ module pm_arrayComplement
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getComplementRandomDefCom_D1_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)            , intent(in), contiguous    :: setA(:)
-        complex(CKC)            , intent(in), contiguous    :: setB(:)
-        complex(CKC)                        , allocatable   :: complement(:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG)            , intent(in), contiguous    :: setA(:)
+        complex(CKG)            , intent(in), contiguous    :: setB(:)
+        complex(CKG)                        , allocatable   :: complement(:)
     end function
 #endif
 
@@ -464,10 +464,10 @@ module pm_arrayComplement
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getComplementRandomDefCom_D1_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)            , intent(in), contiguous    :: setA(:)
-        complex(CKC)            , intent(in), contiguous    :: setB(:)
-        complex(CKC)                        , allocatable   :: complement(:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG)            , intent(in), contiguous    :: setA(:)
+        complex(CKG)            , intent(in), contiguous    :: setB(:)
+        complex(CKG)                        , allocatable   :: complement(:)
     end function
 #endif
 
@@ -476,10 +476,10 @@ module pm_arrayComplement
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getComplementRandomDefCom_D1_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)            , intent(in), contiguous    :: setA(:)
-        complex(CKC)            , intent(in), contiguous    :: setB(:)
-        complex(CKC)                        , allocatable   :: complement(:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG)            , intent(in), contiguous    :: setA(:)
+        complex(CKG)            , intent(in), contiguous    :: setB(:)
+        complex(CKG)                        , allocatable   :: complement(:)
     end function
 #endif
 
@@ -488,10 +488,10 @@ module pm_arrayComplement
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getComplementRandomDefCom_D1_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)            , intent(in), contiguous    :: setA(:)
-        complex(CKC)            , intent(in), contiguous    :: setB(:)
-        complex(CKC)                        , allocatable   :: complement(:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG)            , intent(in), contiguous    :: setA(:)
+        complex(CKG)            , intent(in), contiguous    :: setB(:)
+        complex(CKG)                        , allocatable   :: complement(:)
     end function
 #endif
 
@@ -502,10 +502,10 @@ module pm_arrayComplement
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getComplementRandomDefCom_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)               , intent(in), contiguous    :: setA(:)
-        real(RKC)               , intent(in), contiguous    :: setB(:)
-        real(RKC)                           , allocatable   :: complement(:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)               , intent(in), contiguous    :: setA(:)
+        real(RKG)               , intent(in), contiguous    :: setB(:)
+        real(RKG)                           , allocatable   :: complement(:)
     end function
 #endif
 
@@ -514,10 +514,10 @@ module pm_arrayComplement
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getComplementRandomDefCom_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)               , intent(in), contiguous    :: setA(:)
-        real(RKC)               , intent(in), contiguous    :: setB(:)
-        real(RKC)                           , allocatable   :: complement(:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)               , intent(in), contiguous    :: setA(:)
+        real(RKG)               , intent(in), contiguous    :: setB(:)
+        real(RKG)                           , allocatable   :: complement(:)
     end function
 #endif
 
@@ -526,10 +526,10 @@ module pm_arrayComplement
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getComplementRandomDefCom_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)               , intent(in), contiguous    :: setA(:)
-        real(RKC)               , intent(in), contiguous    :: setB(:)
-        real(RKC)                           , allocatable   :: complement(:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)               , intent(in), contiguous    :: setA(:)
+        real(RKG)               , intent(in), contiguous    :: setB(:)
+        real(RKG)                           , allocatable   :: complement(:)
     end function
 #endif
 
@@ -538,10 +538,10 @@ module pm_arrayComplement
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getComplementRandomDefCom_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)               , intent(in), contiguous    :: setA(:)
-        real(RKC)               , intent(in), contiguous    :: setB(:)
-        real(RKC)                           , allocatable   :: complement(:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)               , intent(in), contiguous    :: setA(:)
+        real(RKG)               , intent(in), contiguous    :: setB(:)
+        real(RKG)                           , allocatable   :: complement(:)
     end function
 #endif
 
@@ -550,10 +550,10 @@ module pm_arrayComplement
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getComplementRandomDefCom_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)               , intent(in), contiguous    :: setA(:)
-        real(RKC)               , intent(in), contiguous    :: setB(:)
-        real(RKC)                           , allocatable   :: complement(:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)               , intent(in), contiguous    :: setA(:)
+        real(RKG)               , intent(in), contiguous    :: setB(:)
+        real(RKG)                           , allocatable   :: complement(:)
     end function
 #endif
 
@@ -570,11 +570,11 @@ module pm_arrayComplement
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getComplementRandomCusCom_D0_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)        , intent(in)                :: setA
-        character(*,SKC)        , intent(in)                :: setB
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)        , intent(in)                :: setA
+        character(*,SKG)        , intent(in)                :: setB
         procedure(logical(LK))                              :: iseq
-        character(:,SKC)                    , allocatable   :: complement
+        character(:,SKG)                    , allocatable   :: complement
     end function
 #endif
 
@@ -583,11 +583,11 @@ module pm_arrayComplement
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getComplementRandomCusCom_D0_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)        , intent(in)                :: setA
-        character(*,SKC)        , intent(in)                :: setB
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)        , intent(in)                :: setA
+        character(*,SKG)        , intent(in)                :: setB
         procedure(logical(LK))                              :: iseq
-        character(:,SKC)                    , allocatable   :: complement
+        character(:,SKG)                    , allocatable   :: complement
     end function
 #endif
 
@@ -596,11 +596,11 @@ module pm_arrayComplement
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getComplementRandomCusCom_D0_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)        , intent(in)                :: setA
-        character(*,SKC)        , intent(in)                :: setB
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)        , intent(in)                :: setA
+        character(*,SKG)        , intent(in)                :: setB
         procedure(logical(LK))                              :: iseq
-        character(:,SKC)                    , allocatable   :: complement
+        character(:,SKG)                    , allocatable   :: complement
     end function
 #endif
 
@@ -609,11 +609,11 @@ module pm_arrayComplement
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getComplementRandomCusCom_D0_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)        , intent(in)                :: setA
-        character(*,SKC)        , intent(in)                :: setB
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)        , intent(in)                :: setA
+        character(*,SKG)        , intent(in)                :: setB
         procedure(logical(LK))                              :: iseq
-        character(:,SKC)                    , allocatable   :: complement
+        character(:,SKG)                    , allocatable   :: complement
     end function
 #endif
 
@@ -622,11 +622,11 @@ module pm_arrayComplement
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getComplementRandomCusCom_D0_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)        , intent(in)                :: setA
-        character(*,SKC)        , intent(in)                :: setB
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)        , intent(in)                :: setA
+        character(*,SKG)        , intent(in)                :: setB
         procedure(logical(LK))                              :: iseq
-        character(:,SKC)                    , allocatable   :: complement
+        character(:,SKG)                    , allocatable   :: complement
     end function
 #endif
 
@@ -637,11 +637,11 @@ module pm_arrayComplement
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getComplementRandomCusCom_D1_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)        , intent(in), contiguous    :: setA(:)
-        character(*,SKC)        , intent(in), contiguous    :: setB(:)
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)        , intent(in), contiguous    :: setA(:)
+        character(*,SKG)        , intent(in), contiguous    :: setB(:)
         procedure(logical(LK))                              :: iseq
-        character(LEN_STR,SKC)              , allocatable   :: complement(:)
+        character(LEN_STR,SKG)              , allocatable   :: complement(:)
     end function
 #endif
 
@@ -650,11 +650,11 @@ module pm_arrayComplement
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getComplementRandomCusCom_D1_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)        , intent(in), contiguous    :: setA(:)
-        character(*,SKC)        , intent(in), contiguous    :: setB(:)
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)        , intent(in), contiguous    :: setA(:)
+        character(*,SKG)        , intent(in), contiguous    :: setB(:)
         procedure(logical(LK))                              :: iseq
-        character(LEN_STR,SKC)              , allocatable   :: complement(:)
+        character(LEN_STR,SKG)              , allocatable   :: complement(:)
     end function
 #endif
 
@@ -663,11 +663,11 @@ module pm_arrayComplement
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getComplementRandomCusCom_D1_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)        , intent(in), contiguous    :: setA(:)
-        character(*,SKC)        , intent(in), contiguous    :: setB(:)
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)        , intent(in), contiguous    :: setA(:)
+        character(*,SKG)        , intent(in), contiguous    :: setB(:)
         procedure(logical(LK))                              :: iseq
-        character(LEN_STR,SKC)              , allocatable   :: complement(:)
+        character(LEN_STR,SKG)              , allocatable   :: complement(:)
     end function
 #endif
 
@@ -676,11 +676,11 @@ module pm_arrayComplement
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getComplementRandomCusCom_D1_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)        , intent(in), contiguous    :: setA(:)
-        character(*,SKC)        , intent(in), contiguous    :: setB(:)
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)        , intent(in), contiguous    :: setA(:)
+        character(*,SKG)        , intent(in), contiguous    :: setB(:)
         procedure(logical(LK))                              :: iseq
-        character(LEN_STR,SKC)              , allocatable   :: complement(:)
+        character(LEN_STR,SKG)              , allocatable   :: complement(:)
     end function
 #endif
 
@@ -689,11 +689,11 @@ module pm_arrayComplement
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getComplementRandomCusCom_D1_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)        , intent(in), contiguous    :: setA(:)
-        character(*,SKC)        , intent(in), contiguous    :: setB(:)
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)        , intent(in), contiguous    :: setA(:)
+        character(*,SKG)        , intent(in), contiguous    :: setB(:)
         procedure(logical(LK))                              :: iseq
-        character(LEN_STR,SKC)              , allocatable   :: complement(:)
+        character(LEN_STR,SKG)              , allocatable   :: complement(:)
     end function
 #endif
 
@@ -704,11 +704,11 @@ module pm_arrayComplement
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getComplementRandomCusCom_D1_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)            , intent(in), contiguous    :: setA(:)
-        integer(IKC)            , intent(in), contiguous    :: setB(:)
+        use pm_kind, only: IKG => IK5
+        integer(IKG)            , intent(in), contiguous    :: setA(:)
+        integer(IKG)            , intent(in), contiguous    :: setB(:)
         procedure(logical(LK))                              :: iseq
-        integer(IKC)                        , allocatable   :: complement(:)
+        integer(IKG)                        , allocatable   :: complement(:)
     end function
 #endif
 
@@ -717,11 +717,11 @@ module pm_arrayComplement
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getComplementRandomCusCom_D1_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)            , intent(in), contiguous    :: setA(:)
-        integer(IKC)            , intent(in), contiguous    :: setB(:)
+        use pm_kind, only: IKG => IK4
+        integer(IKG)            , intent(in), contiguous    :: setA(:)
+        integer(IKG)            , intent(in), contiguous    :: setB(:)
         procedure(logical(LK))                              :: iseq
-        integer(IKC)                        , allocatable   :: complement(:)
+        integer(IKG)                        , allocatable   :: complement(:)
     end function
 #endif
 
@@ -730,11 +730,11 @@ module pm_arrayComplement
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getComplementRandomCusCom_D1_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)            , intent(in), contiguous    :: setA(:)
-        integer(IKC)            , intent(in), contiguous    :: setB(:)
+        use pm_kind, only: IKG => IK3
+        integer(IKG)            , intent(in), contiguous    :: setA(:)
+        integer(IKG)            , intent(in), contiguous    :: setB(:)
         procedure(logical(LK))                              :: iseq
-        integer(IKC)                        , allocatable   :: complement(:)
+        integer(IKG)                        , allocatable   :: complement(:)
     end function
 #endif
 
@@ -743,11 +743,11 @@ module pm_arrayComplement
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getComplementRandomCusCom_D1_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)            , intent(in), contiguous    :: setA(:)
-        integer(IKC)            , intent(in), contiguous    :: setB(:)
+        use pm_kind, only: IKG => IK2
+        integer(IKG)            , intent(in), contiguous    :: setA(:)
+        integer(IKG)            , intent(in), contiguous    :: setB(:)
         procedure(logical(LK))                              :: iseq
-        integer(IKC)                        , allocatable   :: complement(:)
+        integer(IKG)                        , allocatable   :: complement(:)
     end function
 #endif
 
@@ -756,11 +756,11 @@ module pm_arrayComplement
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getComplementRandomCusCom_D1_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)            , intent(in), contiguous    :: setA(:)
-        integer(IKC)            , intent(in), contiguous    :: setB(:)
+        use pm_kind, only: IKG => IK1
+        integer(IKG)            , intent(in), contiguous    :: setA(:)
+        integer(IKG)            , intent(in), contiguous    :: setB(:)
         procedure(logical(LK))                              :: iseq
-        integer(IKC)                        , allocatable   :: complement(:)
+        integer(IKG)                        , allocatable   :: complement(:)
     end function
 #endif
 
@@ -771,11 +771,11 @@ module pm_arrayComplement
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getComplementRandomCusCom_D1_LK5
 #endif
-        use pm_kind, only: LKC => LK5
-        logical(LKC)            , intent(in), contiguous    :: setA(:)
-        logical(LKC)            , intent(in), contiguous    :: setB(:)
+        use pm_kind, only: LKG => LK5
+        logical(LKG)            , intent(in), contiguous    :: setA(:)
+        logical(LKG)            , intent(in), contiguous    :: setB(:)
         procedure(logical(LK))                              :: iseq
-        logical(LKC)                        , allocatable   :: complement(:)
+        logical(LKG)                        , allocatable   :: complement(:)
     end function
 #endif
 
@@ -784,11 +784,11 @@ module pm_arrayComplement
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getComplementRandomCusCom_D1_LK4
 #endif
-        use pm_kind, only: LKC => LK4
-        logical(LKC)            , intent(in), contiguous    :: setA(:)
-        logical(LKC)            , intent(in), contiguous    :: setB(:)
+        use pm_kind, only: LKG => LK4
+        logical(LKG)            , intent(in), contiguous    :: setA(:)
+        logical(LKG)            , intent(in), contiguous    :: setB(:)
         procedure(logical(LK))                              :: iseq
-        logical(LKC)                        , allocatable   :: complement(:)
+        logical(LKG)                        , allocatable   :: complement(:)
     end function
 #endif
 
@@ -797,11 +797,11 @@ module pm_arrayComplement
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getComplementRandomCusCom_D1_LK3
 #endif
-        use pm_kind, only: LKC => LK3
-        logical(LKC)            , intent(in), contiguous    :: setA(:)
-        logical(LKC)            , intent(in), contiguous    :: setB(:)
+        use pm_kind, only: LKG => LK3
+        logical(LKG)            , intent(in), contiguous    :: setA(:)
+        logical(LKG)            , intent(in), contiguous    :: setB(:)
         procedure(logical(LK))                              :: iseq
-        logical(LKC)                        , allocatable   :: complement(:)
+        logical(LKG)                        , allocatable   :: complement(:)
     end function
 #endif
 
@@ -810,11 +810,11 @@ module pm_arrayComplement
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getComplementRandomCusCom_D1_LK2
 #endif
-        use pm_kind, only: LKC => LK2
-        logical(LKC)            , intent(in), contiguous    :: setA(:)
-        logical(LKC)            , intent(in), contiguous    :: setB(:)
+        use pm_kind, only: LKG => LK2
+        logical(LKG)            , intent(in), contiguous    :: setA(:)
+        logical(LKG)            , intent(in), contiguous    :: setB(:)
         procedure(logical(LK))                              :: iseq
-        logical(LKC)                        , allocatable   :: complement(:)
+        logical(LKG)                        , allocatable   :: complement(:)
     end function
 #endif
 
@@ -823,11 +823,11 @@ module pm_arrayComplement
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getComplementRandomCusCom_D1_LK1
 #endif
-        use pm_kind, only: LKC => LK1
-        logical(LKC)            , intent(in), contiguous    :: setA(:)
-        logical(LKC)            , intent(in), contiguous    :: setB(:)
+        use pm_kind, only: LKG => LK1
+        logical(LKG)            , intent(in), contiguous    :: setA(:)
+        logical(LKG)            , intent(in), contiguous    :: setB(:)
         procedure(logical(LK))                              :: iseq
-        logical(LKC)                        , allocatable   :: complement(:)
+        logical(LKG)                        , allocatable   :: complement(:)
     end function
 #endif
 
@@ -838,11 +838,11 @@ module pm_arrayComplement
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getComplementRandomCusCom_D1_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)            , intent(in), contiguous    :: setA(:)
-        complex(CKC)            , intent(in), contiguous    :: setB(:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG)            , intent(in), contiguous    :: setA(:)
+        complex(CKG)            , intent(in), contiguous    :: setB(:)
         procedure(logical(LK))                              :: iseq
-        complex(CKC)                        , allocatable   :: complement(:)
+        complex(CKG)                        , allocatable   :: complement(:)
     end function
 #endif
 
@@ -851,11 +851,11 @@ module pm_arrayComplement
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getComplementRandomCusCom_D1_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)            , intent(in), contiguous    :: setA(:)
-        complex(CKC)            , intent(in), contiguous    :: setB(:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG)            , intent(in), contiguous    :: setA(:)
+        complex(CKG)            , intent(in), contiguous    :: setB(:)
         procedure(logical(LK))                              :: iseq
-        complex(CKC)                        , allocatable   :: complement(:)
+        complex(CKG)                        , allocatable   :: complement(:)
     end function
 #endif
 
@@ -864,11 +864,11 @@ module pm_arrayComplement
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getComplementRandomCusCom_D1_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)            , intent(in), contiguous    :: setA(:)
-        complex(CKC)            , intent(in), contiguous    :: setB(:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG)            , intent(in), contiguous    :: setA(:)
+        complex(CKG)            , intent(in), contiguous    :: setB(:)
         procedure(logical(LK))                              :: iseq
-        complex(CKC)                        , allocatable   :: complement(:)
+        complex(CKG)                        , allocatable   :: complement(:)
     end function
 #endif
 
@@ -877,11 +877,11 @@ module pm_arrayComplement
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getComplementRandomCusCom_D1_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)            , intent(in), contiguous    :: setA(:)
-        complex(CKC)            , intent(in), contiguous    :: setB(:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG)            , intent(in), contiguous    :: setA(:)
+        complex(CKG)            , intent(in), contiguous    :: setB(:)
         procedure(logical(LK))                              :: iseq
-        complex(CKC)                        , allocatable   :: complement(:)
+        complex(CKG)                        , allocatable   :: complement(:)
     end function
 #endif
 
@@ -890,11 +890,11 @@ module pm_arrayComplement
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getComplementRandomCusCom_D1_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)            , intent(in), contiguous    :: setA(:)
-        complex(CKC)            , intent(in), contiguous    :: setB(:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG)            , intent(in), contiguous    :: setA(:)
+        complex(CKG)            , intent(in), contiguous    :: setB(:)
         procedure(logical(LK))                              :: iseq
-        complex(CKC)                        , allocatable   :: complement(:)
+        complex(CKG)                        , allocatable   :: complement(:)
     end function
 #endif
 
@@ -905,11 +905,11 @@ module pm_arrayComplement
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getComplementRandomCusCom_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)               , intent(in), contiguous    :: setA(:)
-        real(RKC)               , intent(in), contiguous    :: setB(:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)               , intent(in), contiguous    :: setA(:)
+        real(RKG)               , intent(in), contiguous    :: setB(:)
         procedure(logical(LK))                              :: iseq
-        real(RKC)                           , allocatable   :: complement(:)
+        real(RKG)                           , allocatable   :: complement(:)
     end function
 #endif
 
@@ -918,11 +918,11 @@ module pm_arrayComplement
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getComplementRandomCusCom_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)               , intent(in), contiguous    :: setA(:)
-        real(RKC)               , intent(in), contiguous    :: setB(:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)               , intent(in), contiguous    :: setA(:)
+        real(RKG)               , intent(in), contiguous    :: setB(:)
         procedure(logical(LK))                              :: iseq
-        real(RKC)                           , allocatable   :: complement(:)
+        real(RKG)                           , allocatable   :: complement(:)
     end function
 #endif
 
@@ -931,11 +931,11 @@ module pm_arrayComplement
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getComplementRandomCusCom_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)               , intent(in), contiguous    :: setA(:)
-        real(RKC)               , intent(in), contiguous    :: setB(:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)               , intent(in), contiguous    :: setA(:)
+        real(RKG)               , intent(in), contiguous    :: setB(:)
         procedure(logical(LK))                              :: iseq
-        real(RKC)                           , allocatable   :: complement(:)
+        real(RKG)                           , allocatable   :: complement(:)
     end function
 #endif
 
@@ -944,11 +944,11 @@ module pm_arrayComplement
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getComplementRandomCusCom_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)               , intent(in), contiguous    :: setA(:)
-        real(RKC)               , intent(in), contiguous    :: setB(:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)               , intent(in), contiguous    :: setA(:)
+        real(RKG)               , intent(in), contiguous    :: setB(:)
         procedure(logical(LK))                              :: iseq
-        real(RKC)                           , allocatable   :: complement(:)
+        real(RKG)                           , allocatable   :: complement(:)
     end function
 #endif
 
@@ -957,11 +957,11 @@ module pm_arrayComplement
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getComplementRandomCusCom_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)               , intent(in), contiguous    :: setA(:)
-        real(RKC)               , intent(in), contiguous    :: setB(:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)               , intent(in), contiguous    :: setA(:)
+        real(RKG)               , intent(in), contiguous    :: setB(:)
         procedure(logical(LK))                              :: iseq
-        real(RKC)                           , allocatable   :: complement(:)
+        real(RKG)                           , allocatable   :: complement(:)
     end function
 #endif
 
@@ -981,11 +981,11 @@ module pm_arrayComplement
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getComplementSortedDefCom_D0_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)        , intent(in)                :: setA
-        character(*,SKC)        , intent(in)                :: setB
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)        , intent(in)                :: setA
+        character(*,SKG)        , intent(in)                :: setB
         logical(LK)             , intent(in)                :: sorted, unique
-        character(:,SKC)                    , allocatable   :: complement
+        character(:,SKG)                    , allocatable   :: complement
     end function
 #endif
 
@@ -994,11 +994,11 @@ module pm_arrayComplement
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getComplementSortedDefCom_D0_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)        , intent(in)                :: setA
-        character(*,SKC)        , intent(in)                :: setB
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)        , intent(in)                :: setA
+        character(*,SKG)        , intent(in)                :: setB
         logical(LK)             , intent(in)                :: sorted, unique
-        character(:,SKC)                    , allocatable   :: complement
+        character(:,SKG)                    , allocatable   :: complement
     end function
 #endif
 
@@ -1007,11 +1007,11 @@ module pm_arrayComplement
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getComplementSortedDefCom_D0_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)        , intent(in)                :: setA
-        character(*,SKC)        , intent(in)                :: setB
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)        , intent(in)                :: setA
+        character(*,SKG)        , intent(in)                :: setB
         logical(LK)             , intent(in)                :: sorted, unique
-        character(:,SKC)                    , allocatable   :: complement
+        character(:,SKG)                    , allocatable   :: complement
     end function
 #endif
 
@@ -1020,11 +1020,11 @@ module pm_arrayComplement
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getComplementSortedDefCom_D0_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)        , intent(in)                :: setA
-        character(*,SKC)        , intent(in)                :: setB
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)        , intent(in)                :: setA
+        character(*,SKG)        , intent(in)                :: setB
         logical(LK)             , intent(in)                :: sorted, unique
-        character(:,SKC)                    , allocatable   :: complement
+        character(:,SKG)                    , allocatable   :: complement
     end function
 #endif
 
@@ -1033,11 +1033,11 @@ module pm_arrayComplement
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getComplementSortedDefCom_D0_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)        , intent(in)                :: setA
-        character(*,SKC)        , intent(in)                :: setB
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)        , intent(in)                :: setA
+        character(*,SKG)        , intent(in)                :: setB
         logical(LK)             , intent(in)                :: sorted, unique
-        character(:,SKC)                    , allocatable   :: complement
+        character(:,SKG)                    , allocatable   :: complement
     end function
 #endif
 
@@ -1048,11 +1048,11 @@ module pm_arrayComplement
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getComplementSortedDefCom_D1_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)        , intent(in), contiguous    :: setA(:)
-        character(*,SKC)        , intent(in), contiguous    :: setB(:)
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)        , intent(in), contiguous    :: setA(:)
+        character(*,SKG)        , intent(in), contiguous    :: setB(:)
         logical(LK)             , intent(in)                :: sorted, unique
-        character(LEN_STR,SKC)              , allocatable   :: complement(:)
+        character(LEN_STR,SKG)              , allocatable   :: complement(:)
     end function
 #endif
 
@@ -1061,11 +1061,11 @@ module pm_arrayComplement
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getComplementSortedDefCom_D1_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)        , intent(in), contiguous    :: setA(:)
-        character(*,SKC)        , intent(in), contiguous    :: setB(:)
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)        , intent(in), contiguous    :: setA(:)
+        character(*,SKG)        , intent(in), contiguous    :: setB(:)
         logical(LK)             , intent(in)                :: sorted, unique
-        character(LEN_STR,SKC)              , allocatable   :: complement(:)
+        character(LEN_STR,SKG)              , allocatable   :: complement(:)
     end function
 #endif
 
@@ -1074,11 +1074,11 @@ module pm_arrayComplement
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getComplementSortedDefCom_D1_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)        , intent(in), contiguous    :: setA(:)
-        character(*,SKC)        , intent(in), contiguous    :: setB(:)
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)        , intent(in), contiguous    :: setA(:)
+        character(*,SKG)        , intent(in), contiguous    :: setB(:)
         logical(LK)             , intent(in)                :: sorted, unique
-        character(LEN_STR,SKC)              , allocatable   :: complement(:)
+        character(LEN_STR,SKG)              , allocatable   :: complement(:)
     end function
 #endif
 
@@ -1087,11 +1087,11 @@ module pm_arrayComplement
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getComplementSortedDefCom_D1_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)        , intent(in), contiguous    :: setA(:)
-        character(*,SKC)        , intent(in), contiguous    :: setB(:)
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)        , intent(in), contiguous    :: setA(:)
+        character(*,SKG)        , intent(in), contiguous    :: setB(:)
         logical(LK)             , intent(in)                :: sorted, unique
-        character(LEN_STR,SKC)              , allocatable   :: complement(:)
+        character(LEN_STR,SKG)              , allocatable   :: complement(:)
     end function
 #endif
 
@@ -1100,11 +1100,11 @@ module pm_arrayComplement
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getComplementSortedDefCom_D1_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)        , intent(in), contiguous    :: setA(:)
-        character(*,SKC)        , intent(in), contiguous    :: setB(:)
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)        , intent(in), contiguous    :: setA(:)
+        character(*,SKG)        , intent(in), contiguous    :: setB(:)
         logical(LK)             , intent(in)                :: sorted, unique
-        character(LEN_STR,SKC)              , allocatable   :: complement(:)
+        character(LEN_STR,SKG)              , allocatable   :: complement(:)
     end function
 #endif
 
@@ -1115,11 +1115,11 @@ module pm_arrayComplement
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getComplementSortedDefCom_D1_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)            , intent(in), contiguous    :: setA(:)
-        integer(IKC)            , intent(in), contiguous    :: setB(:)
+        use pm_kind, only: IKG => IK5
+        integer(IKG)            , intent(in), contiguous    :: setA(:)
+        integer(IKG)            , intent(in), contiguous    :: setB(:)
         logical(LK)             , intent(in)                :: sorted, unique
-        integer(IKC)                        , allocatable   :: complement(:)
+        integer(IKG)                        , allocatable   :: complement(:)
     end function
 #endif
 
@@ -1128,11 +1128,11 @@ module pm_arrayComplement
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getComplementSortedDefCom_D1_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)            , intent(in), contiguous    :: setA(:)
-        integer(IKC)            , intent(in), contiguous    :: setB(:)
+        use pm_kind, only: IKG => IK4
+        integer(IKG)            , intent(in), contiguous    :: setA(:)
+        integer(IKG)            , intent(in), contiguous    :: setB(:)
         logical(LK)             , intent(in)                :: sorted, unique
-        integer(IKC)                        , allocatable   :: complement(:)
+        integer(IKG)                        , allocatable   :: complement(:)
     end function
 #endif
 
@@ -1141,12 +1141,12 @@ module pm_arrayComplement
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getComplementSortedDefCom_D1_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)            , intent(in), contiguous    :: setA(:)
-        integer(IKC)            , intent(in), contiguous    :: setB(:)
+        use pm_kind, only: IKG => IK3
+        integer(IKG)            , intent(in), contiguous    :: setA(:)
+        integer(IKG)            , intent(in), contiguous    :: setB(:)
         logical(LK)             , intent(in)                :: sorted
         logical(LK)             , intent(in)                :: unique
-        integer(IKC)                        , allocatable   :: complement(:)
+        integer(IKG)                        , allocatable   :: complement(:)
     end function
 #endif
 
@@ -1155,12 +1155,12 @@ module pm_arrayComplement
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getComplementSortedDefCom_D1_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)            , intent(in), contiguous    :: setA(:)
-        integer(IKC)            , intent(in), contiguous    :: setB(:)
+        use pm_kind, only: IKG => IK2
+        integer(IKG)            , intent(in), contiguous    :: setA(:)
+        integer(IKG)            , intent(in), contiguous    :: setB(:)
         logical(LK)             , intent(in)                :: sorted
         logical(LK)             , intent(in)                :: unique
-        integer(IKC)                        , allocatable   :: complement(:)
+        integer(IKG)                        , allocatable   :: complement(:)
     end function
 #endif
 
@@ -1169,12 +1169,12 @@ module pm_arrayComplement
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getComplementSortedDefCom_D1_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)            , intent(in), contiguous    :: setA(:)
-        integer(IKC)            , intent(in), contiguous    :: setB(:)
+        use pm_kind, only: IKG => IK1
+        integer(IKG)            , intent(in), contiguous    :: setA(:)
+        integer(IKG)            , intent(in), contiguous    :: setB(:)
         logical(LK)             , intent(in)                :: sorted
         logical(LK)             , intent(in)                :: unique
-        integer(IKC)                        , allocatable   :: complement(:)
+        integer(IKG)                        , allocatable   :: complement(:)
     end function
 #endif
 
@@ -1185,11 +1185,11 @@ module pm_arrayComplement
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getComplementSortedDefCom_D1_LK5
 #endif
-        use pm_kind, only: LKC => LK5
-        logical(LKC)            , intent(in), contiguous    :: setA(:)
-        logical(LKC)            , intent(in), contiguous    :: setB(:)
+        use pm_kind, only: LKG => LK5
+        logical(LKG)            , intent(in), contiguous    :: setA(:)
+        logical(LKG)            , intent(in), contiguous    :: setB(:)
         logical(LK)             , intent(in)                :: sorted, unique
-        logical(LKC)                        , allocatable   :: complement(:)
+        logical(LKG)                        , allocatable   :: complement(:)
     end function
 #endif
 
@@ -1198,11 +1198,11 @@ module pm_arrayComplement
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getComplementSortedDefCom_D1_LK4
 #endif
-        use pm_kind, only: LKC => LK4
-        logical(LKC)            , intent(in), contiguous    :: setA(:)
-        logical(LKC)            , intent(in), contiguous    :: setB(:)
+        use pm_kind, only: LKG => LK4
+        logical(LKG)            , intent(in), contiguous    :: setA(:)
+        logical(LKG)            , intent(in), contiguous    :: setB(:)
         logical(LK)             , intent(in)                :: sorted, unique
-        logical(LKC)                        , allocatable   :: complement(:)
+        logical(LKG)                        , allocatable   :: complement(:)
     end function
 #endif
 
@@ -1211,12 +1211,12 @@ module pm_arrayComplement
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getComplementSortedDefCom_D1_LK3
 #endif
-        use pm_kind, only: LKC => LK3
-        logical(LKC)            , intent(in), contiguous    :: setA(:)
-        logical(LKC)            , intent(in), contiguous    :: setB(:)
+        use pm_kind, only: LKG => LK3
+        logical(LKG)            , intent(in), contiguous    :: setA(:)
+        logical(LKG)            , intent(in), contiguous    :: setB(:)
         logical(LK)             , intent(in)                :: sorted
         logical(LK)             , intent(in)                :: unique
-        logical(LKC)                        , allocatable   :: complement(:)
+        logical(LKG)                        , allocatable   :: complement(:)
     end function
 #endif
 
@@ -1225,12 +1225,12 @@ module pm_arrayComplement
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getComplementSortedDefCom_D1_LK2
 #endif
-        use pm_kind, only: LKC => LK2
-        logical(LKC)            , intent(in), contiguous    :: setA(:)
-        logical(LKC)            , intent(in), contiguous    :: setB(:)
+        use pm_kind, only: LKG => LK2
+        logical(LKG)            , intent(in), contiguous    :: setA(:)
+        logical(LKG)            , intent(in), contiguous    :: setB(:)
         logical(LK)             , intent(in)                :: sorted
         logical(LK)             , intent(in)                :: unique
-        logical(LKC)                        , allocatable   :: complement(:)
+        logical(LKG)                        , allocatable   :: complement(:)
     end function
 #endif
 
@@ -1239,12 +1239,12 @@ module pm_arrayComplement
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getComplementSortedDefCom_D1_LK1
 #endif
-        use pm_kind, only: LKC => LK1
-        logical(LKC)            , intent(in), contiguous    :: setA(:)
-        logical(LKC)            , intent(in), contiguous    :: setB(:)
+        use pm_kind, only: LKG => LK1
+        logical(LKG)            , intent(in), contiguous    :: setA(:)
+        logical(LKG)            , intent(in), contiguous    :: setB(:)
         logical(LK)             , intent(in)                :: sorted
         logical(LK)             , intent(in)                :: unique
-        logical(LKC)                        , allocatable   :: complement(:)
+        logical(LKG)                        , allocatable   :: complement(:)
     end function
 #endif
 
@@ -1255,12 +1255,12 @@ module pm_arrayComplement
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getComplementSortedDefCom_D1_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)            , intent(in), contiguous    :: setA(:)
-        complex(CKC)            , intent(in), contiguous    :: setB(:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG)            , intent(in), contiguous    :: setA(:)
+        complex(CKG)            , intent(in), contiguous    :: setB(:)
         logical(LK)             , intent(in)                :: sorted
         logical(LK)             , intent(in)                :: unique
-        complex(CKC)                        , allocatable   :: complement(:)
+        complex(CKG)                        , allocatable   :: complement(:)
     end function
 #endif
 
@@ -1269,12 +1269,12 @@ module pm_arrayComplement
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getComplementSortedDefCom_D1_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)            , intent(in), contiguous    :: setA(:)
-        complex(CKC)            , intent(in), contiguous    :: setB(:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG)            , intent(in), contiguous    :: setA(:)
+        complex(CKG)            , intent(in), contiguous    :: setB(:)
         logical(LK)             , intent(in)                :: sorted
         logical(LK)             , intent(in)                :: unique
-        complex(CKC)                        , allocatable   :: complement(:)
+        complex(CKG)                        , allocatable   :: complement(:)
     end function
 #endif
 
@@ -1283,12 +1283,12 @@ module pm_arrayComplement
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getComplementSortedDefCom_D1_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)            , intent(in), contiguous    :: setA(:)
-        complex(CKC)            , intent(in), contiguous    :: setB(:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG)            , intent(in), contiguous    :: setA(:)
+        complex(CKG)            , intent(in), contiguous    :: setB(:)
         logical(LK)             , intent(in)                :: sorted
         logical(LK)             , intent(in)                :: unique
-        complex(CKC)                        , allocatable   :: complement(:)
+        complex(CKG)                        , allocatable   :: complement(:)
     end function
 #endif
 
@@ -1297,12 +1297,12 @@ module pm_arrayComplement
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getComplementSortedDefCom_D1_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)            , intent(in), contiguous    :: setA(:)
-        complex(CKC)            , intent(in), contiguous    :: setB(:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG)            , intent(in), contiguous    :: setA(:)
+        complex(CKG)            , intent(in), contiguous    :: setB(:)
         logical(LK)             , intent(in)                :: sorted
         logical(LK)             , intent(in)                :: unique
-        complex(CKC)                        , allocatable   :: complement(:)
+        complex(CKG)                        , allocatable   :: complement(:)
     end function
 #endif
 
@@ -1311,12 +1311,12 @@ module pm_arrayComplement
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getComplementSortedDefCom_D1_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)            , intent(in), contiguous    :: setA(:)
-        complex(CKC)            , intent(in), contiguous    :: setB(:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG)            , intent(in), contiguous    :: setA(:)
+        complex(CKG)            , intent(in), contiguous    :: setB(:)
         logical(LK)             , intent(in)                :: sorted
         logical(LK)             , intent(in)                :: unique
-        complex(CKC)                        , allocatable   :: complement(:)
+        complex(CKG)                        , allocatable   :: complement(:)
     end function
 #endif
 
@@ -1327,12 +1327,12 @@ module pm_arrayComplement
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getComplementSortedDefCom_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)               , intent(in), contiguous    :: setA(:)
-        real(RKC)               , intent(in), contiguous    :: setB(:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)               , intent(in), contiguous    :: setA(:)
+        real(RKG)               , intent(in), contiguous    :: setB(:)
         logical(LK)             , intent(in)                :: sorted
         logical(LK)             , intent(in)                :: unique
-        real(RKC)                           , allocatable   :: complement(:)
+        real(RKG)                           , allocatable   :: complement(:)
     end function
 #endif
 
@@ -1341,12 +1341,12 @@ module pm_arrayComplement
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getComplementSortedDefCom_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)               , intent(in), contiguous    :: setA(:)
-        real(RKC)               , intent(in), contiguous    :: setB(:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)               , intent(in), contiguous    :: setA(:)
+        real(RKG)               , intent(in), contiguous    :: setB(:)
         logical(LK)             , intent(in)                :: sorted
         logical(LK)             , intent(in)                :: unique
-        real(RKC)                           , allocatable   :: complement(:)
+        real(RKG)                           , allocatable   :: complement(:)
     end function
 #endif
 
@@ -1355,12 +1355,12 @@ module pm_arrayComplement
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getComplementSortedDefCom_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)               , intent(in), contiguous    :: setA(:)
-        real(RKC)               , intent(in), contiguous    :: setB(:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)               , intent(in), contiguous    :: setA(:)
+        real(RKG)               , intent(in), contiguous    :: setB(:)
         logical(LK)             , intent(in)                :: sorted
         logical(LK)             , intent(in)                :: unique
-        real(RKC)                           , allocatable   :: complement(:)
+        real(RKG)                           , allocatable   :: complement(:)
     end function
 #endif
 
@@ -1369,12 +1369,12 @@ module pm_arrayComplement
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getComplementSortedDefCom_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)               , intent(in), contiguous    :: setA(:)
-        real(RKC)               , intent(in), contiguous    :: setB(:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)               , intent(in), contiguous    :: setA(:)
+        real(RKG)               , intent(in), contiguous    :: setB(:)
         logical(LK)             , intent(in)                :: sorted
         logical(LK)             , intent(in)                :: unique
-        real(RKC)                           , allocatable   :: complement(:)
+        real(RKG)                           , allocatable   :: complement(:)
     end function
 #endif
 
@@ -1383,12 +1383,12 @@ module pm_arrayComplement
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getComplementSortedDefCom_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)               , intent(in), contiguous    :: setA(:)
-        real(RKC)               , intent(in), contiguous    :: setB(:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)               , intent(in), contiguous    :: setA(:)
+        real(RKG)               , intent(in), contiguous    :: setB(:)
         logical(LK)             , intent(in)                :: sorted
         logical(LK)             , intent(in)                :: unique
-        real(RKC)                           , allocatable   :: complement(:)
+        real(RKG)                           , allocatable   :: complement(:)
     end function
 #endif
 
@@ -1405,12 +1405,12 @@ module pm_arrayComplement
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getComplementSortedCusCom_D0_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)        , intent(in)                :: setA
-        character(*,SKC)        , intent(in)                :: setB
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)        , intent(in)                :: setA
+        character(*,SKG)        , intent(in)                :: setB
         logical(LK)             , intent(in)                :: sorted, unique
         procedure(logical(LK))                              :: iseq
-        character(:,SKC)                    , allocatable   :: complement
+        character(:,SKG)                    , allocatable   :: complement
     end function
 #endif
 
@@ -1419,12 +1419,12 @@ module pm_arrayComplement
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getComplementSortedCusCom_D0_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)        , intent(in)                :: setA
-        character(*,SKC)        , intent(in)                :: setB
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)        , intent(in)                :: setA
+        character(*,SKG)        , intent(in)                :: setB
         logical(LK)             , intent(in)                :: sorted, unique
         procedure(logical(LK))                              :: iseq
-        character(:,SKC)                    , allocatable   :: complement
+        character(:,SKG)                    , allocatable   :: complement
     end function
 #endif
 
@@ -1433,12 +1433,12 @@ module pm_arrayComplement
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getComplementSortedCusCom_D0_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)        , intent(in)                :: setA
-        character(*,SKC)        , intent(in)                :: setB
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)        , intent(in)                :: setA
+        character(*,SKG)        , intent(in)                :: setB
         logical(LK)             , intent(in)                :: sorted, unique
         procedure(logical(LK))                              :: iseq
-        character(:,SKC)                    , allocatable   :: complement
+        character(:,SKG)                    , allocatable   :: complement
     end function
 #endif
 
@@ -1447,12 +1447,12 @@ module pm_arrayComplement
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getComplementSortedCusCom_D0_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)        , intent(in)                :: setA
-        character(*,SKC)        , intent(in)                :: setB
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)        , intent(in)                :: setA
+        character(*,SKG)        , intent(in)                :: setB
         logical(LK)             , intent(in)                :: sorted, unique
         procedure(logical(LK))                              :: iseq
-        character(:,SKC)                    , allocatable   :: complement
+        character(:,SKG)                    , allocatable   :: complement
     end function
 #endif
 
@@ -1461,13 +1461,13 @@ module pm_arrayComplement
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getComplementSortedCusCom_D0_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)        , intent(in)                :: setA
-        character(*,SKC)        , intent(in)                :: setB
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)        , intent(in)                :: setA
+        character(*,SKG)        , intent(in)                :: setB
         logical(LK)             , intent(in)                :: sorted
         logical(LK)             , intent(in)                :: unique
         procedure(logical(LK))                              :: iseq
-        character(:,SKC)                    , allocatable   :: complement
+        character(:,SKG)                    , allocatable   :: complement
     end function
 #endif
 
@@ -1478,13 +1478,13 @@ module pm_arrayComplement
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getComplementSortedCusCom_D1_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)        , intent(in), contiguous    :: setA(:)
-        character(*,SKC)        , intent(in), contiguous    :: setB(:)
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)        , intent(in), contiguous    :: setA(:)
+        character(*,SKG)        , intent(in), contiguous    :: setB(:)
         logical(LK)             , intent(in)                :: sorted
         logical(LK)             , intent(in)                :: unique
         procedure(logical(LK))                              :: iseq
-        character(LEN_STR,SKC)              , allocatable   :: complement(:)
+        character(LEN_STR,SKG)              , allocatable   :: complement(:)
     end function
 #endif
 
@@ -1493,13 +1493,13 @@ module pm_arrayComplement
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getComplementSortedCusCom_D1_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)        , intent(in), contiguous    :: setA(:)
-        character(*,SKC)        , intent(in), contiguous    :: setB(:)
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)        , intent(in), contiguous    :: setA(:)
+        character(*,SKG)        , intent(in), contiguous    :: setB(:)
         logical(LK)             , intent(in)                :: sorted
         logical(LK)             , intent(in)                :: unique
         procedure(logical(LK))                              :: iseq
-        character(LEN_STR,SKC)              , allocatable   :: complement(:)
+        character(LEN_STR,SKG)              , allocatable   :: complement(:)
     end function
 #endif
 
@@ -1508,13 +1508,13 @@ module pm_arrayComplement
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getComplementSortedCusCom_D1_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)        , intent(in), contiguous    :: setA(:)
-        character(*,SKC)        , intent(in), contiguous    :: setB(:)
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)        , intent(in), contiguous    :: setA(:)
+        character(*,SKG)        , intent(in), contiguous    :: setB(:)
         logical(LK)             , intent(in)                :: sorted
         logical(LK)             , intent(in)                :: unique
         procedure(logical(LK))                              :: iseq
-        character(LEN_STR,SKC)              , allocatable   :: complement(:)
+        character(LEN_STR,SKG)              , allocatable   :: complement(:)
     end function
 #endif
 
@@ -1523,13 +1523,13 @@ module pm_arrayComplement
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getComplementSortedCusCom_D1_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)        , intent(in), contiguous    :: setA(:)
-        character(*,SKC)        , intent(in), contiguous    :: setB(:)
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)        , intent(in), contiguous    :: setA(:)
+        character(*,SKG)        , intent(in), contiguous    :: setB(:)
         logical(LK)             , intent(in)                :: sorted
         logical(LK)             , intent(in)                :: unique
         procedure(logical(LK))                              :: iseq
-        character(LEN_STR,SKC)              , allocatable   :: complement(:)
+        character(LEN_STR,SKG)              , allocatable   :: complement(:)
     end function
 #endif
 
@@ -1538,13 +1538,13 @@ module pm_arrayComplement
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getComplementSortedCusCom_D1_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)        , intent(in), contiguous    :: setA(:)
-        character(*,SKC)        , intent(in), contiguous    :: setB(:)
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)        , intent(in), contiguous    :: setA(:)
+        character(*,SKG)        , intent(in), contiguous    :: setB(:)
         logical(LK)             , intent(in)                :: sorted
         logical(LK)             , intent(in)                :: unique
         procedure(logical(LK))                              :: iseq
-        character(LEN_STR,SKC)              , allocatable   :: complement(:)
+        character(LEN_STR,SKG)              , allocatable   :: complement(:)
     end function
 #endif
 
@@ -1555,13 +1555,13 @@ module pm_arrayComplement
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getComplementSortedCusCom_D1_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)            , intent(in), contiguous    :: setA(:)
-        integer(IKC)            , intent(in), contiguous    :: setB(:)
+        use pm_kind, only: IKG => IK5
+        integer(IKG)            , intent(in), contiguous    :: setA(:)
+        integer(IKG)            , intent(in), contiguous    :: setB(:)
         logical(LK)             , intent(in)                :: sorted
         logical(LK)             , intent(in)                :: unique
         procedure(logical(LK))                              :: iseq
-        integer(IKC)                        , allocatable   :: complement(:)
+        integer(IKG)                        , allocatable   :: complement(:)
     end function
 #endif
 
@@ -1570,13 +1570,13 @@ module pm_arrayComplement
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getComplementSortedCusCom_D1_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)            , intent(in), contiguous    :: setA(:)
-        integer(IKC)            , intent(in), contiguous    :: setB(:)
+        use pm_kind, only: IKG => IK4
+        integer(IKG)            , intent(in), contiguous    :: setA(:)
+        integer(IKG)            , intent(in), contiguous    :: setB(:)
         logical(LK)             , intent(in)                :: sorted
         logical(LK)             , intent(in)                :: unique
         procedure(logical(LK))                              :: iseq
-        integer(IKC)                        , allocatable   :: complement(:)
+        integer(IKG)                        , allocatable   :: complement(:)
     end function
 #endif
 
@@ -1585,13 +1585,13 @@ module pm_arrayComplement
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getComplementSortedCusCom_D1_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)            , intent(in), contiguous    :: setA(:)
-        integer(IKC)            , intent(in), contiguous    :: setB(:)
+        use pm_kind, only: IKG => IK3
+        integer(IKG)            , intent(in), contiguous    :: setA(:)
+        integer(IKG)            , intent(in), contiguous    :: setB(:)
         logical(LK)             , intent(in)                :: sorted
         logical(LK)             , intent(in)                :: unique
         procedure(logical(LK))                              :: iseq
-        integer(IKC)                        , allocatable   :: complement(:)
+        integer(IKG)                        , allocatable   :: complement(:)
     end function
 #endif
 
@@ -1600,13 +1600,13 @@ module pm_arrayComplement
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getComplementSortedCusCom_D1_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)            , intent(in), contiguous    :: setA(:)
-        integer(IKC)            , intent(in), contiguous    :: setB(:)
+        use pm_kind, only: IKG => IK2
+        integer(IKG)            , intent(in), contiguous    :: setA(:)
+        integer(IKG)            , intent(in), contiguous    :: setB(:)
         logical(LK)             , intent(in)                :: sorted
         logical(LK)             , intent(in)                :: unique
         procedure(logical(LK))                              :: iseq
-        integer(IKC)                        , allocatable   :: complement(:)
+        integer(IKG)                        , allocatable   :: complement(:)
     end function
 #endif
 
@@ -1615,13 +1615,13 @@ module pm_arrayComplement
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getComplementSortedCusCom_D1_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)            , intent(in), contiguous    :: setA(:)
-        integer(IKC)            , intent(in), contiguous    :: setB(:)
+        use pm_kind, only: IKG => IK1
+        integer(IKG)            , intent(in), contiguous    :: setA(:)
+        integer(IKG)            , intent(in), contiguous    :: setB(:)
         logical(LK)             , intent(in)                :: sorted
         logical(LK)             , intent(in)                :: unique
         procedure(logical(LK))                              :: iseq
-        integer(IKC)                        , allocatable   :: complement(:)
+        integer(IKG)                        , allocatable   :: complement(:)
     end function
 #endif
 
@@ -1632,13 +1632,13 @@ module pm_arrayComplement
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getComplementSortedCusCom_D1_LK5
 #endif
-        use pm_kind, only: LKC => LK5
-        logical(LKC)            , intent(in), contiguous    :: setA(:)
-        logical(LKC)            , intent(in), contiguous    :: setB(:)
+        use pm_kind, only: LKG => LK5
+        logical(LKG)            , intent(in), contiguous    :: setA(:)
+        logical(LKG)            , intent(in), contiguous    :: setB(:)
         logical(LK)             , intent(in)                :: sorted
         logical(LK)             , intent(in)                :: unique
         procedure(logical(LK))                              :: iseq
-        logical(LKC)                        , allocatable   :: complement(:)
+        logical(LKG)                        , allocatable   :: complement(:)
     end function
 #endif
 
@@ -1647,13 +1647,13 @@ module pm_arrayComplement
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getComplementSortedCusCom_D1_LK4
 #endif
-        use pm_kind, only: LKC => LK4
-        logical(LKC)            , intent(in), contiguous    :: setA(:)
-        logical(LKC)            , intent(in), contiguous    :: setB(:)
+        use pm_kind, only: LKG => LK4
+        logical(LKG)            , intent(in), contiguous    :: setA(:)
+        logical(LKG)            , intent(in), contiguous    :: setB(:)
         logical(LK)             , intent(in)                :: sorted
         logical(LK)             , intent(in)                :: unique
         procedure(logical(LK))                              :: iseq
-        logical(LKC)                        , allocatable   :: complement(:)
+        logical(LKG)                        , allocatable   :: complement(:)
     end function
 #endif
 
@@ -1662,13 +1662,13 @@ module pm_arrayComplement
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getComplementSortedCusCom_D1_LK3
 #endif
-        use pm_kind, only: LKC => LK3
-        logical(LKC)            , intent(in), contiguous    :: setA(:)
-        logical(LKC)            , intent(in), contiguous    :: setB(:)
+        use pm_kind, only: LKG => LK3
+        logical(LKG)            , intent(in), contiguous    :: setA(:)
+        logical(LKG)            , intent(in), contiguous    :: setB(:)
         logical(LK)             , intent(in)                :: sorted
         logical(LK)             , intent(in)                :: unique
         procedure(logical(LK))                              :: iseq
-        logical(LKC)                        , allocatable   :: complement(:)
+        logical(LKG)                        , allocatable   :: complement(:)
     end function
 #endif
 
@@ -1677,13 +1677,13 @@ module pm_arrayComplement
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getComplementSortedCusCom_D1_LK2
 #endif
-        use pm_kind, only: LKC => LK2
-        logical(LKC)            , intent(in), contiguous    :: setA(:)
-        logical(LKC)            , intent(in), contiguous    :: setB(:)
+        use pm_kind, only: LKG => LK2
+        logical(LKG)            , intent(in), contiguous    :: setA(:)
+        logical(LKG)            , intent(in), contiguous    :: setB(:)
         logical(LK)             , intent(in)                :: sorted
         logical(LK)             , intent(in)                :: unique
         procedure(logical(LK))                              :: iseq
-        logical(LKC)                        , allocatable   :: complement(:)
+        logical(LKG)                        , allocatable   :: complement(:)
     end function
 #endif
 
@@ -1692,13 +1692,13 @@ module pm_arrayComplement
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getComplementSortedCusCom_D1_LK1
 #endif
-        use pm_kind, only: LKC => LK1
-        logical(LKC)            , intent(in), contiguous    :: setA(:)
-        logical(LKC)            , intent(in), contiguous    :: setB(:)
+        use pm_kind, only: LKG => LK1
+        logical(LKG)            , intent(in), contiguous    :: setA(:)
+        logical(LKG)            , intent(in), contiguous    :: setB(:)
         logical(LK)             , intent(in)                :: sorted
         logical(LK)             , intent(in)                :: unique
         procedure(logical(LK))                              :: iseq
-        logical(LKC)                        , allocatable   :: complement(:)
+        logical(LKG)                        , allocatable   :: complement(:)
     end function
 #endif
 
@@ -1709,13 +1709,13 @@ module pm_arrayComplement
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getComplementSortedCusCom_D1_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)            , intent(in), contiguous    :: setA(:)
-        complex(CKC)            , intent(in), contiguous    :: setB(:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG)            , intent(in), contiguous    :: setA(:)
+        complex(CKG)            , intent(in), contiguous    :: setB(:)
         logical(LK)             , intent(in)                :: sorted
         logical(LK)             , intent(in)                :: unique
         procedure(logical(LK))                              :: iseq
-        complex(CKC)                        , allocatable   :: complement(:)
+        complex(CKG)                        , allocatable   :: complement(:)
     end function
 #endif
 
@@ -1724,13 +1724,13 @@ module pm_arrayComplement
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getComplementSortedCusCom_D1_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)            , intent(in), contiguous    :: setA(:)
-        complex(CKC)            , intent(in), contiguous    :: setB(:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG)            , intent(in), contiguous    :: setA(:)
+        complex(CKG)            , intent(in), contiguous    :: setB(:)
         logical(LK)             , intent(in)                :: sorted
         logical(LK)             , intent(in)                :: unique
         procedure(logical(LK))                              :: iseq
-        complex(CKC)                        , allocatable   :: complement(:)
+        complex(CKG)                        , allocatable   :: complement(:)
     end function
 #endif
 
@@ -1739,13 +1739,13 @@ module pm_arrayComplement
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getComplementSortedCusCom_D1_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)            , intent(in), contiguous    :: setA(:)
-        complex(CKC)            , intent(in), contiguous    :: setB(:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG)            , intent(in), contiguous    :: setA(:)
+        complex(CKG)            , intent(in), contiguous    :: setB(:)
         logical(LK)             , intent(in)                :: sorted
         logical(LK)             , intent(in)                :: unique
         procedure(logical(LK))                              :: iseq
-        complex(CKC)                        , allocatable   :: complement(:)
+        complex(CKG)                        , allocatable   :: complement(:)
     end function
 #endif
 
@@ -1754,13 +1754,13 @@ module pm_arrayComplement
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getComplementSortedCusCom_D1_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)            , intent(in), contiguous    :: setA(:)
-        complex(CKC)            , intent(in), contiguous    :: setB(:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG)            , intent(in), contiguous    :: setA(:)
+        complex(CKG)            , intent(in), contiguous    :: setB(:)
         logical(LK)             , intent(in)                :: sorted
         logical(LK)             , intent(in)                :: unique
         procedure(logical(LK))                              :: iseq
-        complex(CKC)                        , allocatable   :: complement(:)
+        complex(CKG)                        , allocatable   :: complement(:)
     end function
 #endif
 
@@ -1769,13 +1769,13 @@ module pm_arrayComplement
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getComplementSortedCusCom_D1_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)            , intent(in), contiguous    :: setA(:)
-        complex(CKC)            , intent(in), contiguous    :: setB(:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG)            , intent(in), contiguous    :: setA(:)
+        complex(CKG)            , intent(in), contiguous    :: setB(:)
         logical(LK)             , intent(in)                :: sorted
         logical(LK)             , intent(in)                :: unique
         procedure(logical(LK))                              :: iseq
-        complex(CKC)                        , allocatable   :: complement(:)
+        complex(CKG)                        , allocatable   :: complement(:)
     end function
 #endif
 
@@ -1786,13 +1786,13 @@ module pm_arrayComplement
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getComplementSortedCusCom_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)               , intent(in), contiguous    :: setA(:)
-        real(RKC)               , intent(in), contiguous    :: setB(:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)               , intent(in), contiguous    :: setA(:)
+        real(RKG)               , intent(in), contiguous    :: setB(:)
         logical(LK)             , intent(in)                :: sorted
         logical(LK)             , intent(in)                :: unique
         procedure(logical(LK))                              :: iseq
-        real(RKC)                           , allocatable   :: complement(:)
+        real(RKG)                           , allocatable   :: complement(:)
     end function
 #endif
 
@@ -1801,13 +1801,13 @@ module pm_arrayComplement
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getComplementSortedCusCom_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)               , intent(in), contiguous    :: setA(:)
-        real(RKC)               , intent(in), contiguous    :: setB(:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)               , intent(in), contiguous    :: setA(:)
+        real(RKG)               , intent(in), contiguous    :: setB(:)
         logical(LK)             , intent(in)                :: sorted
         logical(LK)             , intent(in)                :: unique
         procedure(logical(LK))                              :: iseq
-        real(RKC)                           , allocatable   :: complement(:)
+        real(RKG)                           , allocatable   :: complement(:)
     end function
 #endif
 
@@ -1816,13 +1816,13 @@ module pm_arrayComplement
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getComplementSortedCusCom_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)               , intent(in), contiguous    :: setA(:)
-        real(RKC)               , intent(in), contiguous    :: setB(:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)               , intent(in), contiguous    :: setA(:)
+        real(RKG)               , intent(in), contiguous    :: setB(:)
         logical(LK)             , intent(in)                :: sorted
         logical(LK)             , intent(in)                :: unique
         procedure(logical(LK))                              :: iseq
-        real(RKC)                           , allocatable   :: complement(:)
+        real(RKG)                           , allocatable   :: complement(:)
     end function
 #endif
 
@@ -1831,13 +1831,13 @@ module pm_arrayComplement
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getComplementSortedCusCom_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)               , intent(in), contiguous    :: setA(:)
-        real(RKC)               , intent(in), contiguous    :: setB(:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)               , intent(in), contiguous    :: setA(:)
+        real(RKG)               , intent(in), contiguous    :: setB(:)
         logical(LK)             , intent(in)                :: sorted
         logical(LK)             , intent(in)                :: unique
         procedure(logical(LK))                              :: iseq
-        real(RKC)                           , allocatable   :: complement(:)
+        real(RKG)                           , allocatable   :: complement(:)
     end function
 #endif
 
@@ -1846,13 +1846,13 @@ module pm_arrayComplement
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getComplementSortedCusCom_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)               , intent(in), contiguous    :: setA(:)
-        real(RKC)               , intent(in), contiguous    :: setB(:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)               , intent(in), contiguous    :: setA(:)
+        real(RKG)               , intent(in), contiguous    :: setB(:)
         logical(LK)             , intent(in)                :: sorted
         logical(LK)             , intent(in)                :: unique
         procedure(logical(LK))                              :: iseq
-        real(RKC)                           , allocatable   :: complement(:)
+        real(RKG)                           , allocatable   :: complement(:)
     end function
 #endif
 
@@ -1952,10 +1952,10 @@ module pm_arrayComplement
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCompRangeRandom_D1_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)            , intent(in), contiguous    :: setA(:)
-        integer(IKC)            , intent(in)                :: start, stop, step
-        integer(IKC)                        , allocatable   :: complement(:)
+        use pm_kind, only: IKG => IK5
+        integer(IKG)            , intent(in), contiguous    :: setA(:)
+        integer(IKG)            , intent(in)                :: start, stop, step
+        integer(IKG)                        , allocatable   :: complement(:)
     end function
 #endif
 
@@ -1964,10 +1964,10 @@ module pm_arrayComplement
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCompRangeRandom_D1_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)            , intent(in), contiguous    :: setA(:)
-        integer(IKC)            , intent(in)                :: start, stop, step
-        integer(IKC)                        , allocatable   :: complement(:)
+        use pm_kind, only: IKG => IK4
+        integer(IKG)            , intent(in), contiguous    :: setA(:)
+        integer(IKG)            , intent(in)                :: start, stop, step
+        integer(IKG)                        , allocatable   :: complement(:)
     end function
 #endif
 
@@ -1976,10 +1976,10 @@ module pm_arrayComplement
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCompRangeRandom_D1_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)            , intent(in), contiguous    :: setA(:)
-        integer(IKC)            , intent(in)                :: start, stop, step
-        integer(IKC)                        , allocatable   :: complement(:)
+        use pm_kind, only: IKG => IK3
+        integer(IKG)            , intent(in), contiguous    :: setA(:)
+        integer(IKG)            , intent(in)                :: start, stop, step
+        integer(IKG)                        , allocatable   :: complement(:)
     end function
 #endif
 
@@ -1988,10 +1988,10 @@ module pm_arrayComplement
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCompRangeRandom_D1_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)            , intent(in), contiguous    :: setA(:)
-        integer(IKC)            , intent(in)                :: start, stop, step
-        integer(IKC)                        , allocatable   :: complement(:)
+        use pm_kind, only: IKG => IK2
+        integer(IKG)            , intent(in), contiguous    :: setA(:)
+        integer(IKG)            , intent(in)                :: start, stop, step
+        integer(IKG)                        , allocatable   :: complement(:)
     end function
 #endif
 
@@ -2000,10 +2000,10 @@ module pm_arrayComplement
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCompRangeRandom_D1_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)            , intent(in), contiguous    :: setA(:)
-        integer(IKC)            , intent(in)                :: start, stop, step
-        integer(IKC)                        , allocatable   :: complement(:)
+        use pm_kind, only: IKG => IK1
+        integer(IKG)            , intent(in), contiguous    :: setA(:)
+        integer(IKG)            , intent(in)                :: start, stop, step
+        integer(IKG)                        , allocatable   :: complement(:)
     end function
 #endif
 
@@ -2020,12 +2020,12 @@ module pm_arrayComplement
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCompRangeSorted_D1_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)            , intent(in), contiguous    :: setA(:)
-        integer(IKC)            , intent(in)                :: start, stop, step
+        use pm_kind, only: IKG => IK5
+        integer(IKG)            , intent(in), contiguous    :: setA(:)
+        integer(IKG)            , intent(in)                :: start, stop, step
         logical(LK)             , intent(in)                :: sorted
         logical(LK)             , intent(in)                :: unique
-        integer(IKC)                        , allocatable   :: complement(:)
+        integer(IKG)                        , allocatable   :: complement(:)
     end function
 #endif
 
@@ -2034,12 +2034,12 @@ module pm_arrayComplement
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCompRangeSorted_D1_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)            , intent(in), contiguous    :: setA(:)
-        integer(IKC)            , intent(in)                :: start, stop, step
+        use pm_kind, only: IKG => IK4
+        integer(IKG)            , intent(in), contiguous    :: setA(:)
+        integer(IKG)            , intent(in)                :: start, stop, step
         logical(LK)             , intent(in)                :: sorted
         logical(LK)             , intent(in)                :: unique
-        integer(IKC)                        , allocatable   :: complement(:)
+        integer(IKG)                        , allocatable   :: complement(:)
     end function
 #endif
 
@@ -2048,12 +2048,12 @@ module pm_arrayComplement
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCompRangeSorted_D1_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)            , intent(in), contiguous    :: setA(:)
-        integer(IKC)            , intent(in)                :: start, stop, step
+        use pm_kind, only: IKG => IK3
+        integer(IKG)            , intent(in), contiguous    :: setA(:)
+        integer(IKG)            , intent(in)                :: start, stop, step
         logical(LK)             , intent(in)                :: sorted
         logical(LK)             , intent(in)                :: unique
-        integer(IKC)                        , allocatable   :: complement(:)
+        integer(IKG)                        , allocatable   :: complement(:)
     end function
 #endif
 
@@ -2062,12 +2062,12 @@ module pm_arrayComplement
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCompRangeSorted_D1_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)            , intent(in), contiguous    :: setA(:)
-        integer(IKC)            , intent(in)                :: start, stop, step
+        use pm_kind, only: IKG => IK2
+        integer(IKG)            , intent(in), contiguous    :: setA(:)
+        integer(IKG)            , intent(in)                :: start, stop, step
         logical(LK)             , intent(in)                :: sorted
         logical(LK)             , intent(in)                :: unique
-        integer(IKC)                        , allocatable   :: complement(:)
+        integer(IKG)                        , allocatable   :: complement(:)
     end function
 #endif
 
@@ -2076,12 +2076,12 @@ module pm_arrayComplement
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCompRangeSorted_D1_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)            , intent(in), contiguous    :: setA(:)
-        integer(IKC)            , intent(in)                :: start, stop, step
+        use pm_kind, only: IKG => IK1
+        integer(IKG)            , intent(in), contiguous    :: setA(:)
+        integer(IKG)            , intent(in)                :: start, stop, step
         logical(LK)             , intent(in)                :: sorted
         logical(LK)             , intent(in)                :: unique
-        integer(IKC)                        , allocatable   :: complement(:)
+        integer(IKG)                        , allocatable   :: complement(:)
     end function
 #endif
 

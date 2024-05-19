@@ -32,10 +32,10 @@ program example
     call disp%skip()
 
     block
-        use pm_kind, only: TKC => RKS ! All other real types are also supported.
+        use pm_kind, only: TKG => RKS ! All other real types are also supported.
         integer(IK), allocatable :: lag(:)
-        real(TKC), allocatable :: f(:), g(:)
-        real(TKC), allocatable :: range(:), ccf(:)
+        real(TKG), allocatable :: f(:), g(:)
+        real(TKG), allocatable :: range(:), ccf(:)
         call disp%skip()
         call disp%show("nsam = 41; shift = nsam")
                         nsam = 41; shift = nsam
@@ -65,21 +65,21 @@ program example
         call disp%show( ccf )
         call disp%show("if (0 /= getErrTableWrite(SK_'getCCF.crd.sin.cos.RK.txt', reshape([range, f, g], [nsam, 3_IK]), header = SK_'crd,f,g')) error stop 'ccf outputting failed.'")
                         if (0 /= getErrTableWrite(SK_'getCCF.crd.sin.cos.RK.txt', reshape([range, f, g], [nsam, 3_IK]), header = SK_'crd,f,g')) error stop 'ccf outputting failed.'
-        call disp%show("if (0 /= getErrTableWrite(SK_'getCCF.ccf.sin.cos.RK.txt', reshape([real(lag, TKC), ccf], [size(lag), 2]), header = SK_'lag,ccf')) error stop 'ccf outputting failed.'")
-                        if (0 /= getErrTableWrite(SK_'getCCF.ccf.sin.cos.RK.txt', reshape([real(lag, TKC), ccf], [size(lag), 2]), header = SK_'lag,ccf')) error stop 'ccf outputting failed.'
+        call disp%show("if (0 /= getErrTableWrite(SK_'getCCF.ccf.sin.cos.RK.txt', reshape([real(lag, TKG), ccf], [size(lag), 2]), header = SK_'lag,ccf')) error stop 'ccf outputting failed.'")
+                        if (0 /= getErrTableWrite(SK_'getCCF.ccf.sin.cos.RK.txt', reshape([real(lag, TKG), ccf], [size(lag), 2]), header = SK_'lag,ccf')) error stop 'ccf outputting failed.'
         call disp%skip()
     end block
 
     block
-        use pm_kind, only: TKC => RKS ! All other real types are also supported.
-        complex(TKC), allocatable :: f(:), g(:)
-        complex(TKC), allocatable :: range(:), ccf(:)
+        use pm_kind, only: TKG => RKS ! All other real types are also supported.
+        complex(TKG), allocatable :: f(:), g(:)
+        complex(TKG), allocatable :: range(:), ccf(:)
         format = getFormat(deliml = '', subsep = SK_'', delimr = 'i', subcount = 2_IK, signed = .true._LK)
         call disp%skip()
         call disp%show("nsam = 41; shift = nsam")
                         nsam = 41; shift = nsam
-        call disp%show("range = cmplx(getLinSpace(-10., 10., nsam), getLinSpace(10., -10., nsam), TKC)")
-                        range = cmplx(getLinSpace(-10., 10., nsam), getLinSpace(10., -10., nsam), TKC)
+        call disp%show("range = cmplx(getLinSpace(-10., 10., nsam), getLinSpace(10., -10., nsam), TKG)")
+                        range = cmplx(getLinSpace(-10., 10., nsam), getLinSpace(10., -10., nsam), TKG)
         call disp%show("f = sin(range)")
                         f = sin(range)
         call disp%show("f")

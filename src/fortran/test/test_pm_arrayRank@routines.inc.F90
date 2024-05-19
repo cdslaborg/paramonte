@@ -69,26 +69,26 @@
 #endif
         integer(IK) :: itest, maxLenArray
 #if     SK_ENABLED && D0_ENABLED
-        character(:,SKC), allocatable :: array, lower, upper
-        lower = SKC_"a"; upper = SKC_"z"
+        character(:,SKG), allocatable :: array, lower, upper
+        lower = SKG_"a"; upper = SKG_"z"
 #elif   SK_ENABLED && D1_ENABLED
-        character(:,SKC), allocatable :: array(:), lower, upper
-        lower = SKC_"aa"; upper = SKC_"zz"
+        character(:,SKG), allocatable :: array(:), lower, upper
+        lower = SKG_"aa"; upper = SKG_"zz"
 #elif   IK_ENABLED && D1_ENABLED
-        integer(IKC)    , allocatable :: array(:), lower, upper
-        lower = 0_IKC; upper = 9_IKC
+        integer(IKG)    , allocatable :: array(:), lower, upper
+        lower = 0_IKG; upper = 9_IKG
 #elif   LK_ENABLED && D1_ENABLED
-        logical(LKC)    , allocatable :: array(:), lower, upper
-        lower = .false._LKC; upper = .true._LKC
+        logical(LKG)    , allocatable :: array(:), lower, upper
+        lower = .false._LKG; upper = .true._LKG
 #elif   CK_ENABLED && D1_ENABLED
-        complex(CKC)    , allocatable :: array(:), lower, upper
-        lower = -(1._CKC, 1._CKC); upper = (1._CKC, 1._CKC)
+        complex(CKG)    , allocatable :: array(:), lower, upper
+        lower = -(1._CKG, 1._CKG); upper = (1._CKG, 1._CKG)
 #elif   RK_ENABLED && D1_ENABLED
-        real(RKC)       , allocatable :: array(:), lower, upper
-        lower = 0._RKC; upper = 1._RKC
+        real(RKG)       , allocatable :: array(:), lower, upper
+        lower = 0._RKG; upper = 1._RKG
 #elif   PSSK_ENABLED && D1_ENABLED
-        type(strc(SKC)) , allocatable :: array(:), lower, upper
-        lower = strc(SKC_"a"); upper = strc(SKC_"zzz")
+        type(strc(SKG)) , allocatable :: array(:), lower, upper
+        lower = strc(SKG_"a"); upper = strc(SKG_"zzz")
 #else
 #error  "Unrecognized Interface."
 #endif
@@ -106,17 +106,17 @@
 
             call reset()
 #if         SK_ENABLED && D0_ENABLED
-            array = SKC_""
+            array = SKG_""
 #elif       SK_ENABLED && D1_ENABLED
-            array = [character(2,SKC) ::]
+            array = [character(2,SKG) ::]
 #elif       IK_ENABLED && D1_ENABLED
-            array = [integer(IKC) ::]
+            array = [integer(IKG) ::]
 #elif       LK_ENABLED && D1_ENABLED
-            array = [logical(LKC) ::]
+            array = [logical(LKG) ::]
 #elif       CK_ENABLED && D1_ENABLED
-            array = [complex(CKC) ::]
+            array = [complex(CKG) ::]
 #elif       RK_ENABLED && D1_ENABLED
-            array = [real(RKC) ::]
+            array = [real(RKG) ::]
 #elif       PSSK_ENABLED && D1_ENABLED
 #else
 #error      "Unrecognized Interface."
@@ -128,17 +128,17 @@
 
             call reset()
 #if         SK_ENABLED && D0_ENABLED
-            array = SKC_"1122"
+            array = SKG_"1122"
 #elif       SK_ENABLED && D1_ENABLED
-            array = [character(2,SKC) :: "1", "1", "2", "2"]
+            array = [character(2,SKG) :: "1", "1", "2", "2"]
 #elif       IK_ENABLED && D1_ENABLED
-            array = [integer(IKC) :: 1, 1, 2, 2]
+            array = [integer(IKG) :: 1, 1, 2, 2]
 #elif       LK_ENABLED && D1_ENABLED
-            array = [logical(LKC) :: .false., .false., .true., .true.]
+            array = [logical(LKG) :: .false., .false., .true., .true.]
 #elif       CK_ENABLED && D1_ENABLED
-            array = [complex(CKC) :: (1., -1.), (1., -1.), (2., -2.), (2., -2.)]
+            array = [complex(CKG) :: (1., -1.), (1., -1.), (2., -2.), (2., -2.)]
 #elif       RK_ENABLED && D1_ENABLED
-            array = [real(RKC) :: 1., 1., 2., 2.]
+            array = [real(RKG) :: 1., 1., 2., 2.]
 #else
 #error      "Unrecognized Interface."
 #endif
@@ -166,17 +166,17 @@
 
             call reset()
 #if         SK_ENABLED && D0_ENABLED
-            array = SKC_"123454"
+            array = SKG_"123454"
 #elif       SK_ENABLED && D1_ENABLED
-            array = [character(2,SKC) :: "1", "2", "3", "4", "5", "4"]
+            array = [character(2,SKG) :: "1", "2", "3", "4", "5", "4"]
 #elif       IK_ENABLED && D1_ENABLED
-            array = [integer(IKC) :: 1, 2, 3, 4, 5, 4]
+            array = [integer(IKG) :: 1, 2, 3, 4, 5, 4]
 #elif       LK_ENABLED && D1_ENABLED
-            array = [logical(LKC) :: .false., .false., .true., .true., .false., .true.]
+            array = [logical(LKG) :: .false., .false., .true., .true., .false., .true.]
 #elif       CK_ENABLED && D1_ENABLED
-            array = [complex(CKC) :: (1., -1.), (2., -2.), (3., -3.), (4., -4.), (5., -5.), (4., -4.)]
+            array = [complex(CKG) :: (1., -1.), (2., -2.), (3., -3.), (4., -4.), (5., -5.), (4., -4.)]
 #elif       RK_ENABLED && D1_ENABLED
-            array = [real(RKC) :: 1., 2., 3., 4., 5., 4.]
+            array = [real(RKG) :: 1., 2., 3., 4., 5., 4.]
 #else
 #error      "Unrecognized Interface."
 #endif
@@ -210,19 +210,19 @@
             procedure(logical(LK))  , optional  :: isSorted
             logical(LK) :: isSortedPresent
 #if         SK_ENABLED && D0_ENABLED
-            character(*,SKC) :: array
+            character(*,SKG) :: array
 #elif       SK_ENABLED && D1_ENABLED
-            character(*,SKC), contiguous :: array(:)
+            character(*,SKG), contiguous :: array(:)
 #elif       IK_ENABLED && D1_ENABLED
-            integer(IKC), contiguous :: array(:)
+            integer(IKG), contiguous :: array(:)
 #elif       LK_ENABLED && D1_ENABLED
-            logical(LKC), contiguous :: array(:)
+            logical(LKG), contiguous :: array(:)
 #elif       CK_ENABLED && D1_ENABLED
-            complex(CKC), contiguous :: array(:)
+            complex(CKG), contiguous :: array(:)
 #elif       RK_ENABLED && D1_ENABLED
-            real(RKC), contiguous :: array(:)
+            real(RKG), contiguous :: array(:)
 #elif       PSSK_ENABLED && D1_ENABLED
-            type(strc(SKC)), contiguous :: array(:)
+            type(strc(SKG)), contiguous :: array(:)
 #else
 #error      "Unrecognized Interface."
 #endif
@@ -394,19 +394,19 @@
         PURE function isSorted(a, b) result(sorted)
             logical(LK) :: sorted
 #if         SK_ENABLED && D0_ENABLED
-            character(1,SKC), intent(in) :: a, b
+            character(1,SKG), intent(in) :: a, b
 #elif       SK_ENABLED && D1_ENABLED
-            character(*,SKC), intent(in) :: a, b
+            character(*,SKG), intent(in) :: a, b
 #elif       IK_ENABLED && D1_ENABLED
-            integer(IKC)    , intent(in) :: a, b
+            integer(IKG)    , intent(in) :: a, b
 #elif       LK_ENABLED && D1_ENABLED
-            logical(LKC)    , intent(in) :: a, b
+            logical(LKG)    , intent(in) :: a, b
 #elif       CK_ENABLED && D1_ENABLED
-            complex(CKC)    , intent(in) :: a, b
+            complex(CKG)    , intent(in) :: a, b
 #elif       RK_ENABLED && D1_ENABLED
-            real(RKC)       , intent(in) :: a, b
+            real(RKG)       , intent(in) :: a, b
 #elif       PSSK_ENABLED && D1_ENABLED
-            type(strc(SKC)) , intent(in) :: a, b
+            type(strc(SKG)) , intent(in) :: a, b
 #else
 #error      "Unrecognized Interface."
 #endif

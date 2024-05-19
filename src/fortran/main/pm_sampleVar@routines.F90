@@ -61,35 +61,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getVarCorrectionFreq_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getVarCorrectionFreq_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getVarCorrectionFreq_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getVarCorrectionFreq_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getVarCorrectionFreq_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
@@ -112,35 +112,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getVarCorrectionReli_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getVarCorrectionReli_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getVarCorrectionReli_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getVarCorrectionReli_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getVarCorrectionReli_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
@@ -186,35 +186,35 @@ contains
 
 #if CK5_ENABLED
     module procedure getVarALL_WNO_D1_CK5
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure getVarALL_WNO_D1_CK4
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure getVarALL_WNO_D1_CK3
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure getVarALL_WNO_D1_CK2
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure getVarALL_WNO_D1_CK1
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
@@ -227,35 +227,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getVarALL_WNO_D1_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getVarALL_WNO_D1_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getVarALL_WNO_D1_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getVarALL_WNO_D1_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getVarALL_WNO_D1_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
@@ -278,35 +278,35 @@ contains
 
 #if CK5_ENABLED
     module procedure getVarALL_WNO_D2_CK5
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure getVarALL_WNO_D2_CK4
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure getVarALL_WNO_D2_CK3
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure getVarALL_WNO_D2_CK2
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure getVarALL_WNO_D2_CK1
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
@@ -319,35 +319,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getVarALL_WNO_D2_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getVarALL_WNO_D2_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getVarALL_WNO_D2_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getVarALL_WNO_D2_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getVarALL_WNO_D2_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
@@ -382,35 +382,35 @@ contains
 
 #if CK5_ENABLED
     module procedure getVarALL_WTI_D1_CK5
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure getVarALL_WTI_D1_CK4
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure getVarALL_WTI_D1_CK3
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure getVarALL_WTI_D1_CK2
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure getVarALL_WTI_D1_CK1
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
@@ -423,35 +423,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getVarALL_WTI_D1_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getVarALL_WTI_D1_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getVarALL_WTI_D1_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getVarALL_WTI_D1_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getVarALL_WTI_D1_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
@@ -474,35 +474,35 @@ contains
 
 #if CK5_ENABLED
     module procedure getVarALL_WTI_D2_CK5
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure getVarALL_WTI_D2_CK4
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure getVarALL_WTI_D2_CK3
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure getVarALL_WTI_D2_CK2
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure getVarALL_WTI_D2_CK1
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
@@ -515,35 +515,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getVarALL_WTI_D2_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getVarALL_WTI_D2_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getVarALL_WTI_D2_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getVarALL_WTI_D2_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getVarALL_WTI_D2_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
@@ -578,35 +578,35 @@ contains
 
 #if CK5_ENABLED
     module procedure getVarALL_WTR_D1_CK5
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure getVarALL_WTR_D1_CK4
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure getVarALL_WTR_D1_CK3
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure getVarALL_WTR_D1_CK2
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure getVarALL_WTR_D1_CK1
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
@@ -619,35 +619,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getVarALL_WTR_D1_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getVarALL_WTR_D1_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getVarALL_WTR_D1_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getVarALL_WTR_D1_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getVarALL_WTR_D1_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
@@ -670,35 +670,35 @@ contains
 
 #if CK5_ENABLED
     module procedure getVarALL_WTR_D2_CK5
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure getVarALL_WTR_D2_CK4
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure getVarALL_WTR_D2_CK3
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure getVarALL_WTR_D2_CK2
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure getVarALL_WTR_D2_CK1
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
@@ -711,35 +711,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getVarALL_WTR_D2_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getVarALL_WTR_D2_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getVarALL_WTR_D2_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getVarALL_WTR_D2_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getVarALL_WTR_D2_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
@@ -799,35 +799,35 @@ contains
 
 #if CK5_ENABLED
     module procedure getVarDIM_WNO_D1_CK5
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure getVarDIM_WNO_D1_CK4
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure getVarDIM_WNO_D1_CK3
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure getVarDIM_WNO_D1_CK2
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure getVarDIM_WNO_D1_CK1
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
@@ -840,35 +840,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getVarDIM_WNO_D1_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getVarDIM_WNO_D1_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getVarDIM_WNO_D1_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getVarDIM_WNO_D1_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getVarDIM_WNO_D1_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
@@ -891,35 +891,35 @@ contains
 
 #if CK5_ENABLED
     module procedure getVarDIM_WNO_D2_CK5
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure getVarDIM_WNO_D2_CK4
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure getVarDIM_WNO_D2_CK3
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure getVarDIM_WNO_D2_CK2
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure getVarDIM_WNO_D2_CK1
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
@@ -932,35 +932,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getVarDIM_WNO_D2_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getVarDIM_WNO_D2_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getVarDIM_WNO_D2_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getVarDIM_WNO_D2_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getVarDIM_WNO_D2_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
@@ -995,35 +995,35 @@ contains
 
 #if CK5_ENABLED
     module procedure getVarDIM_WTI_D1_CK5
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure getVarDIM_WTI_D1_CK4
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure getVarDIM_WTI_D1_CK3
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure getVarDIM_WTI_D1_CK2
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure getVarDIM_WTI_D1_CK1
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
@@ -1036,35 +1036,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getVarDIM_WTI_D1_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getVarDIM_WTI_D1_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getVarDIM_WTI_D1_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getVarDIM_WTI_D1_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getVarDIM_WTI_D1_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
@@ -1087,35 +1087,35 @@ contains
 
 #if CK5_ENABLED
     module procedure getVarDIM_WTI_D2_CK5
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure getVarDIM_WTI_D2_CK4
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure getVarDIM_WTI_D2_CK3
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure getVarDIM_WTI_D2_CK2
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure getVarDIM_WTI_D2_CK1
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
@@ -1128,35 +1128,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getVarDIM_WTI_D2_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getVarDIM_WTI_D2_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getVarDIM_WTI_D2_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getVarDIM_WTI_D2_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getVarDIM_WTI_D2_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
@@ -1191,35 +1191,35 @@ contains
 
 #if CK5_ENABLED
     module procedure getVarDIM_WTR_D1_CK5
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure getVarDIM_WTR_D1_CK4
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure getVarDIM_WTR_D1_CK3
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure getVarDIM_WTR_D1_CK2
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure getVarDIM_WTR_D1_CK1
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
@@ -1232,35 +1232,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getVarDIM_WTR_D1_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getVarDIM_WTR_D1_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getVarDIM_WTR_D1_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getVarDIM_WTR_D1_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getVarDIM_WTR_D1_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
@@ -1283,35 +1283,35 @@ contains
 
 #if CK5_ENABLED
     module procedure getVarDIM_WTR_D2_CK5
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure getVarDIM_WTR_D2_CK4
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure getVarDIM_WTR_D2_CK3
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure getVarDIM_WTR_D2_CK2
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure getVarDIM_WTR_D2_CK1
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
@@ -1324,35 +1324,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getVarDIM_WTR_D2_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getVarDIM_WTR_D2_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getVarDIM_WTR_D2_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getVarDIM_WTR_D2_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getVarDIM_WTR_D2_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
@@ -1418,35 +1418,35 @@ contains
 
 #if CK5_ENABLED
     module procedure setVarAvgALL_WNO_D1_CK5
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure setVarAvgALL_WNO_D1_CK4
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure setVarAvgALL_WNO_D1_CK3
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure setVarAvgALL_WNO_D1_CK2
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure setVarAvgALL_WNO_D1_CK1
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
@@ -1459,35 +1459,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setVarAvgALL_WNO_D1_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setVarAvgALL_WNO_D1_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setVarAvgALL_WNO_D1_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setVarAvgALL_WNO_D1_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setVarAvgALL_WNO_D1_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
@@ -1510,35 +1510,35 @@ contains
 
 #if CK5_ENABLED
     module procedure setVarAvgALL_WNO_D2_CK5
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure setVarAvgALL_WNO_D2_CK4
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure setVarAvgALL_WNO_D2_CK3
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure setVarAvgALL_WNO_D2_CK2
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure setVarAvgALL_WNO_D2_CK1
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
@@ -1551,35 +1551,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setVarAvgALL_WNO_D2_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setVarAvgALL_WNO_D2_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setVarAvgALL_WNO_D2_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setVarAvgALL_WNO_D2_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setVarAvgALL_WNO_D2_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
@@ -1614,35 +1614,35 @@ contains
 
 #if CK5_ENABLED
     module procedure setVarAvgALL_WTI_D1_CK5
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure setVarAvgALL_WTI_D1_CK4
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure setVarAvgALL_WTI_D1_CK3
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure setVarAvgALL_WTI_D1_CK2
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure setVarAvgALL_WTI_D1_CK1
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
@@ -1655,35 +1655,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setVarAvgALL_WTI_D1_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setVarAvgALL_WTI_D1_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setVarAvgALL_WTI_D1_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setVarAvgALL_WTI_D1_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setVarAvgALL_WTI_D1_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
@@ -1706,35 +1706,35 @@ contains
 
 #if CK5_ENABLED
     module procedure setVarAvgALL_WTI_D2_CK5
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure setVarAvgALL_WTI_D2_CK4
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure setVarAvgALL_WTI_D2_CK3
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure setVarAvgALL_WTI_D2_CK2
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure setVarAvgALL_WTI_D2_CK1
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
@@ -1747,35 +1747,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setVarAvgALL_WTI_D2_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setVarAvgALL_WTI_D2_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setVarAvgALL_WTI_D2_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setVarAvgALL_WTI_D2_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setVarAvgALL_WTI_D2_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
@@ -1810,35 +1810,35 @@ contains
 
 #if CK5_ENABLED
     module procedure setVarAvgALL_WTR_D1_CK5
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure setVarAvgALL_WTR_D1_CK4
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure setVarAvgALL_WTR_D1_CK3
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure setVarAvgALL_WTR_D1_CK2
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure setVarAvgALL_WTR_D1_CK1
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
@@ -1851,35 +1851,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setVarAvgALL_WTR_D1_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setVarAvgALL_WTR_D1_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setVarAvgALL_WTR_D1_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setVarAvgALL_WTR_D1_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setVarAvgALL_WTR_D1_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
@@ -1902,35 +1902,35 @@ contains
 
 #if CK5_ENABLED
     module procedure setVarAvgALL_WTR_D2_CK5
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure setVarAvgALL_WTR_D2_CK4
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure setVarAvgALL_WTR_D2_CK3
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure setVarAvgALL_WTR_D2_CK2
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure setVarAvgALL_WTR_D2_CK1
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
@@ -1943,35 +1943,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setVarAvgALL_WTR_D2_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setVarAvgALL_WTR_D2_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setVarAvgALL_WTR_D2_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setVarAvgALL_WTR_D2_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setVarAvgALL_WTR_D2_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
@@ -2018,35 +2018,35 @@ contains
 
 #if CK5_ENABLED
     module procedure setVarOrgALL_WNO_D1_CK5
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure setVarOrgALL_WNO_D1_CK4
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure setVarOrgALL_WNO_D1_CK3
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure setVarOrgALL_WNO_D1_CK2
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure setVarOrgALL_WNO_D1_CK1
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
@@ -2059,35 +2059,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setVarOrgALL_WNO_D1_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setVarOrgALL_WNO_D1_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setVarOrgALL_WNO_D1_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setVarOrgALL_WNO_D1_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setVarOrgALL_WNO_D1_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
@@ -2110,35 +2110,35 @@ contains
 
 #if CK5_ENABLED
     module procedure setVarOrgALL_WNO_D2_CK5
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure setVarOrgALL_WNO_D2_CK4
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure setVarOrgALL_WNO_D2_CK3
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure setVarOrgALL_WNO_D2_CK2
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure setVarOrgALL_WNO_D2_CK1
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
@@ -2151,35 +2151,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setVarOrgALL_WNO_D2_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setVarOrgALL_WNO_D2_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setVarOrgALL_WNO_D2_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setVarOrgALL_WNO_D2_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setVarOrgALL_WNO_D2_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
@@ -2214,35 +2214,35 @@ contains
 
 #if CK5_ENABLED
     module procedure setVarOrgALL_WTI_D1_CK5
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure setVarOrgALL_WTI_D1_CK4
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure setVarOrgALL_WTI_D1_CK3
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure setVarOrgALL_WTI_D1_CK2
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure setVarOrgALL_WTI_D1_CK1
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
@@ -2255,35 +2255,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setVarOrgALL_WTI_D1_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setVarOrgALL_WTI_D1_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setVarOrgALL_WTI_D1_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setVarOrgALL_WTI_D1_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setVarOrgALL_WTI_D1_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
@@ -2306,35 +2306,35 @@ contains
 
 #if CK5_ENABLED
     module procedure setVarOrgALL_WTI_D2_CK5
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure setVarOrgALL_WTI_D2_CK4
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure setVarOrgALL_WTI_D2_CK3
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure setVarOrgALL_WTI_D2_CK2
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure setVarOrgALL_WTI_D2_CK1
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
@@ -2347,35 +2347,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setVarOrgALL_WTI_D2_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setVarOrgALL_WTI_D2_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setVarOrgALL_WTI_D2_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setVarOrgALL_WTI_D2_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setVarOrgALL_WTI_D2_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
@@ -2410,35 +2410,35 @@ contains
 
 #if CK5_ENABLED
     module procedure setVarOrgALL_WTR_D1_CK5
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure setVarOrgALL_WTR_D1_CK4
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure setVarOrgALL_WTR_D1_CK3
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure setVarOrgALL_WTR_D1_CK2
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure setVarOrgALL_WTR_D1_CK1
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
@@ -2451,35 +2451,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setVarOrgALL_WTR_D1_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setVarOrgALL_WTR_D1_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setVarOrgALL_WTR_D1_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setVarOrgALL_WTR_D1_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setVarOrgALL_WTR_D1_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
@@ -2502,35 +2502,35 @@ contains
 
 #if CK5_ENABLED
     module procedure setVarOrgALL_WTR_D2_CK5
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure setVarOrgALL_WTR_D2_CK4
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure setVarOrgALL_WTR_D2_CK3
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure setVarOrgALL_WTR_D2_CK2
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure setVarOrgALL_WTR_D2_CK1
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
@@ -2543,35 +2543,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setVarOrgALL_WTR_D2_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setVarOrgALL_WTR_D2_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setVarOrgALL_WTR_D2_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setVarOrgALL_WTR_D2_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setVarOrgALL_WTR_D2_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
@@ -2643,35 +2643,35 @@ contains
 
 #if CK5_ENABLED
     module procedure setVarAvgDIM_WNO_D1_CK5
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure setVarAvgDIM_WNO_D1_CK4
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure setVarAvgDIM_WNO_D1_CK3
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure setVarAvgDIM_WNO_D1_CK2
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure setVarAvgDIM_WNO_D1_CK1
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
@@ -2684,35 +2684,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setVarAvgDIM_WNO_D1_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setVarAvgDIM_WNO_D1_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setVarAvgDIM_WNO_D1_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setVarAvgDIM_WNO_D1_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setVarAvgDIM_WNO_D1_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
@@ -2735,35 +2735,35 @@ contains
 
 #if CK5_ENABLED
     module procedure setVarAvgDIM_WNO_D2_CK5
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure setVarAvgDIM_WNO_D2_CK4
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure setVarAvgDIM_WNO_D2_CK3
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure setVarAvgDIM_WNO_D2_CK2
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure setVarAvgDIM_WNO_D2_CK1
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
@@ -2776,35 +2776,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setVarAvgDIM_WNO_D2_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setVarAvgDIM_WNO_D2_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setVarAvgDIM_WNO_D2_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setVarAvgDIM_WNO_D2_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setVarAvgDIM_WNO_D2_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
@@ -2839,35 +2839,35 @@ contains
 
 #if CK5_ENABLED
     module procedure setVarAvgDIM_WTI_D1_CK5
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure setVarAvgDIM_WTI_D1_CK4
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure setVarAvgDIM_WTI_D1_CK3
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure setVarAvgDIM_WTI_D1_CK2
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure setVarAvgDIM_WTI_D1_CK1
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
@@ -2880,35 +2880,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setVarAvgDIM_WTI_D1_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setVarAvgDIM_WTI_D1_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setVarAvgDIM_WTI_D1_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setVarAvgDIM_WTI_D1_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setVarAvgDIM_WTI_D1_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
@@ -2931,35 +2931,35 @@ contains
 
 #if CK5_ENABLED
     module procedure setVarAvgDIM_WTI_D2_CK5
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure setVarAvgDIM_WTI_D2_CK4
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure setVarAvgDIM_WTI_D2_CK3
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure setVarAvgDIM_WTI_D2_CK2
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure setVarAvgDIM_WTI_D2_CK1
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
@@ -2972,35 +2972,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setVarAvgDIM_WTI_D2_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setVarAvgDIM_WTI_D2_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setVarAvgDIM_WTI_D2_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setVarAvgDIM_WTI_D2_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setVarAvgDIM_WTI_D2_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
@@ -3035,35 +3035,35 @@ contains
 
 #if CK5_ENABLED
     module procedure setVarAvgDIM_WTR_D1_CK5
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure setVarAvgDIM_WTR_D1_CK4
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure setVarAvgDIM_WTR_D1_CK3
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure setVarAvgDIM_WTR_D1_CK2
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure setVarAvgDIM_WTR_D1_CK1
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
@@ -3076,35 +3076,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setVarAvgDIM_WTR_D1_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setVarAvgDIM_WTR_D1_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setVarAvgDIM_WTR_D1_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setVarAvgDIM_WTR_D1_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setVarAvgDIM_WTR_D1_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
@@ -3127,35 +3127,35 @@ contains
 
 #if CK5_ENABLED
     module procedure setVarAvgDIM_WTR_D2_CK5
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure setVarAvgDIM_WTR_D2_CK4
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure setVarAvgDIM_WTR_D2_CK3
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure setVarAvgDIM_WTR_D2_CK2
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure setVarAvgDIM_WTR_D2_CK1
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
@@ -3168,35 +3168,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setVarAvgDIM_WTR_D2_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setVarAvgDIM_WTR_D2_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setVarAvgDIM_WTR_D2_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setVarAvgDIM_WTR_D2_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setVarAvgDIM_WTR_D2_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
@@ -3243,35 +3243,35 @@ contains
 
 #if CK5_ENABLED
     module procedure setVarOrgDIM_WNO_D1_CK5
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure setVarOrgDIM_WNO_D1_CK4
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure setVarOrgDIM_WNO_D1_CK3
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure setVarOrgDIM_WNO_D1_CK2
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure setVarOrgDIM_WNO_D1_CK1
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
@@ -3284,35 +3284,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setVarOrgDIM_WNO_D1_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setVarOrgDIM_WNO_D1_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setVarOrgDIM_WNO_D1_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setVarOrgDIM_WNO_D1_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setVarOrgDIM_WNO_D1_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
@@ -3335,35 +3335,35 @@ contains
 
 #if CK5_ENABLED
     module procedure setVarOrgDIM_WNO_D2_CK5
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure setVarOrgDIM_WNO_D2_CK4
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure setVarOrgDIM_WNO_D2_CK3
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure setVarOrgDIM_WNO_D2_CK2
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure setVarOrgDIM_WNO_D2_CK1
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
@@ -3376,35 +3376,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setVarOrgDIM_WNO_D2_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setVarOrgDIM_WNO_D2_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setVarOrgDIM_WNO_D2_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setVarOrgDIM_WNO_D2_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setVarOrgDIM_WNO_D2_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
@@ -3439,35 +3439,35 @@ contains
 
 #if CK5_ENABLED
     module procedure setVarOrgDIM_WTI_D1_CK5
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure setVarOrgDIM_WTI_D1_CK4
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure setVarOrgDIM_WTI_D1_CK3
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure setVarOrgDIM_WTI_D1_CK2
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure setVarOrgDIM_WTI_D1_CK1
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
@@ -3480,35 +3480,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setVarOrgDIM_WTI_D1_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setVarOrgDIM_WTI_D1_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setVarOrgDIM_WTI_D1_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setVarOrgDIM_WTI_D1_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setVarOrgDIM_WTI_D1_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
@@ -3531,35 +3531,35 @@ contains
 
 #if CK5_ENABLED
     module procedure setVarOrgDIM_WTI_D2_CK5
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure setVarOrgDIM_WTI_D2_CK4
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure setVarOrgDIM_WTI_D2_CK3
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure setVarOrgDIM_WTI_D2_CK2
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure setVarOrgDIM_WTI_D2_CK1
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
@@ -3572,35 +3572,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setVarOrgDIM_WTI_D2_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setVarOrgDIM_WTI_D2_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setVarOrgDIM_WTI_D2_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setVarOrgDIM_WTI_D2_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setVarOrgDIM_WTI_D2_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
@@ -3635,35 +3635,35 @@ contains
 
 #if CK5_ENABLED
     module procedure setVarOrgDIM_WTR_D1_CK5
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure setVarOrgDIM_WTR_D1_CK4
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure setVarOrgDIM_WTR_D1_CK3
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure setVarOrgDIM_WTR_D1_CK2
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure setVarOrgDIM_WTR_D1_CK1
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
@@ -3676,35 +3676,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setVarOrgDIM_WTR_D1_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setVarOrgDIM_WTR_D1_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setVarOrgDIM_WTR_D1_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setVarOrgDIM_WTR_D1_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setVarOrgDIM_WTR_D1_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
@@ -3727,35 +3727,35 @@ contains
 
 #if CK5_ENABLED
     module procedure setVarOrgDIM_WTR_D2_CK5
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure setVarOrgDIM_WTR_D2_CK4
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure setVarOrgDIM_WTR_D2_CK3
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure setVarOrgDIM_WTR_D2_CK2
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure setVarOrgDIM_WTR_D2_CK1
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
@@ -3768,35 +3768,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setVarOrgDIM_WTR_D2_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setVarOrgDIM_WTR_D2_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setVarOrgDIM_WTR_D2_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setVarOrgDIM_WTR_D2_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setVarOrgDIM_WTR_D2_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
@@ -3868,35 +3868,35 @@ contains
 
 #if CK5_ENABLED
     module procedure setVarMeanALL_WNODD_D1_CK5
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure setVarMeanALL_WNODD_D1_CK4
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure setVarMeanALL_WNODD_D1_CK3
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure setVarMeanALL_WNODD_D1_CK2
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure setVarMeanALL_WNODD_D1_CK1
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
@@ -3909,35 +3909,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setVarMeanALL_WNODD_D1_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setVarMeanALL_WNODD_D1_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setVarMeanALL_WNODD_D1_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setVarMeanALL_WNODD_D1_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setVarMeanALL_WNODD_D1_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
@@ -3960,35 +3960,35 @@ contains
 
 #if CK5_ENABLED
     module procedure setVarMeanALL_WNODD_D2_CK5
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure setVarMeanALL_WNODD_D2_CK4
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure setVarMeanALL_WNODD_D2_CK3
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure setVarMeanALL_WNODD_D2_CK2
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure setVarMeanALL_WNODD_D2_CK1
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
@@ -4001,35 +4001,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setVarMeanALL_WNODD_D2_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setVarMeanALL_WNODD_D2_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setVarMeanALL_WNODD_D2_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setVarMeanALL_WNODD_D2_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setVarMeanALL_WNODD_D2_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
@@ -4076,35 +4076,35 @@ contains
 
 #if CK5_ENABLED
     module procedure setVarMeanALL_WTISD_D1_CK5
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure setVarMeanALL_WTISD_D1_CK4
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure setVarMeanALL_WTISD_D1_CK3
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure setVarMeanALL_WTISD_D1_CK2
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure setVarMeanALL_WTISD_D1_CK1
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
@@ -4117,35 +4117,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setVarMeanALL_WTISD_D1_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setVarMeanALL_WTISD_D1_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setVarMeanALL_WTISD_D1_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setVarMeanALL_WTISD_D1_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setVarMeanALL_WTISD_D1_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
@@ -4168,35 +4168,35 @@ contains
 
 #if CK5_ENABLED
     module procedure setVarMeanALL_WTISD_D2_CK5
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure setVarMeanALL_WTISD_D2_CK4
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure setVarMeanALL_WTISD_D2_CK3
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure setVarMeanALL_WTISD_D2_CK2
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure setVarMeanALL_WTISD_D2_CK1
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
@@ -4209,35 +4209,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setVarMeanALL_WTISD_D2_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setVarMeanALL_WTISD_D2_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setVarMeanALL_WTISD_D2_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setVarMeanALL_WTISD_D2_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setVarMeanALL_WTISD_D2_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
@@ -4284,35 +4284,35 @@ contains
 
 #if CK5_ENABLED
     module procedure setVarMeanALL_WTRSD_D1_CK5
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure setVarMeanALL_WTRSD_D1_CK4
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure setVarMeanALL_WTRSD_D1_CK3
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure setVarMeanALL_WTRSD_D1_CK2
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure setVarMeanALL_WTRSD_D1_CK1
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
@@ -4325,35 +4325,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setVarMeanALL_WTRSD_D1_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setVarMeanALL_WTRSD_D1_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setVarMeanALL_WTRSD_D1_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setVarMeanALL_WTRSD_D1_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setVarMeanALL_WTRSD_D1_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
@@ -4376,35 +4376,35 @@ contains
 
 #if CK5_ENABLED
     module procedure setVarMeanALL_WTRSD_D2_CK5
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure setVarMeanALL_WTRSD_D2_CK4
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure setVarMeanALL_WTRSD_D2_CK3
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure setVarMeanALL_WTRSD_D2_CK2
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure setVarMeanALL_WTRSD_D2_CK1
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
@@ -4417,35 +4417,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setVarMeanALL_WTRSD_D2_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setVarMeanALL_WTRSD_D2_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setVarMeanALL_WTRSD_D2_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setVarMeanALL_WTRSD_D2_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setVarMeanALL_WTRSD_D2_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
@@ -4517,35 +4517,35 @@ contains
 
 #if CK5_ENABLED
     module procedure setVarMeanDIM_WNODD_D1_CK5
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure setVarMeanDIM_WNODD_D1_CK4
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure setVarMeanDIM_WNODD_D1_CK3
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure setVarMeanDIM_WNODD_D1_CK2
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure setVarMeanDIM_WNODD_D1_CK1
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
@@ -4558,35 +4558,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setVarMeanDIM_WNODD_D1_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setVarMeanDIM_WNODD_D1_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setVarMeanDIM_WNODD_D1_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setVarMeanDIM_WNODD_D1_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setVarMeanDIM_WNODD_D1_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
@@ -4609,35 +4609,35 @@ contains
 
 #if CK5_ENABLED
     module procedure setVarMeanDIM_WNODD_D2_CK5
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure setVarMeanDIM_WNODD_D2_CK4
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure setVarMeanDIM_WNODD_D2_CK3
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure setVarMeanDIM_WNODD_D2_CK2
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure setVarMeanDIM_WNODD_D2_CK1
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
@@ -4650,35 +4650,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setVarMeanDIM_WNODD_D2_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setVarMeanDIM_WNODD_D2_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setVarMeanDIM_WNODD_D2_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setVarMeanDIM_WNODD_D2_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setVarMeanDIM_WNODD_D2_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
@@ -4725,35 +4725,35 @@ contains
 
 #if CK5_ENABLED
     module procedure setVarMeanDIM_WTISD_D1_CK5
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure setVarMeanDIM_WTISD_D1_CK4
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure setVarMeanDIM_WTISD_D1_CK3
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure setVarMeanDIM_WTISD_D1_CK2
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure setVarMeanDIM_WTISD_D1_CK1
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
@@ -4766,35 +4766,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setVarMeanDIM_WTISD_D1_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setVarMeanDIM_WTISD_D1_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setVarMeanDIM_WTISD_D1_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setVarMeanDIM_WTISD_D1_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setVarMeanDIM_WTISD_D1_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
@@ -4817,35 +4817,35 @@ contains
 
 #if CK5_ENABLED
     module procedure setVarMeanDIM_WTISD_D2_CK5
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure setVarMeanDIM_WTISD_D2_CK4
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure setVarMeanDIM_WTISD_D2_CK3
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure setVarMeanDIM_WTISD_D2_CK2
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure setVarMeanDIM_WTISD_D2_CK1
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
@@ -4858,35 +4858,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setVarMeanDIM_WTISD_D2_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setVarMeanDIM_WTISD_D2_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setVarMeanDIM_WTISD_D2_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setVarMeanDIM_WTISD_D2_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setVarMeanDIM_WTISD_D2_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
@@ -4933,35 +4933,35 @@ contains
 
 #if CK5_ENABLED
     module procedure setVarMeanDIM_WTRSD_D1_CK5
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure setVarMeanDIM_WTRSD_D1_CK4
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure setVarMeanDIM_WTRSD_D1_CK3
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure setVarMeanDIM_WTRSD_D1_CK2
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure setVarMeanDIM_WTRSD_D1_CK1
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
@@ -4974,35 +4974,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setVarMeanDIM_WTRSD_D1_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setVarMeanDIM_WTRSD_D1_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setVarMeanDIM_WTRSD_D1_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setVarMeanDIM_WTRSD_D1_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setVarMeanDIM_WTRSD_D1_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
@@ -5025,35 +5025,35 @@ contains
 
 #if CK5_ENABLED
     module procedure setVarMeanDIM_WTRSD_D2_CK5
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure setVarMeanDIM_WTRSD_D2_CK4
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure setVarMeanDIM_WTRSD_D2_CK3
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure setVarMeanDIM_WTRSD_D2_CK2
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure setVarMeanDIM_WTRSD_D2_CK1
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
@@ -5066,35 +5066,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setVarMeanDIM_WTRSD_D2_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setVarMeanDIM_WTRSD_D2_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setVarMeanDIM_WTRSD_D2_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setVarMeanDIM_WTRSD_D2_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setVarMeanDIM_WTRSD_D2_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
@@ -5154,35 +5154,35 @@ contains
 
 #if CK5_ENABLED
     module procedure getVarMergedNew_D0_CK5
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure getVarMergedNew_D0_CK4
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure getVarMergedNew_D0_CK3
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure getVarMergedNew_D0_CK2
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure getVarMergedNew_D0_CK1
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
@@ -5195,35 +5195,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getVarMergedNew_D0_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getVarMergedNew_D0_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getVarMergedNew_D0_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getVarMergedNew_D0_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getVarMergedNew_D0_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
@@ -5246,35 +5246,35 @@ contains
 
 #if CK5_ENABLED
     module procedure getVarMergedNew_D1_CK5
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure getVarMergedNew_D1_CK4
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure getVarMergedNew_D1_CK3
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure getVarMergedNew_D1_CK2
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure getVarMergedNew_D1_CK1
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
@@ -5287,35 +5287,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getVarMergedNew_D1_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getVarMergedNew_D1_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getVarMergedNew_D1_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getVarMergedNew_D1_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getVarMergedNew_D1_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
@@ -5363,35 +5363,35 @@ contains
 
 #if CK5_ENABLED
     module procedure setVarMergedNew_D0_CK5
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure setVarMergedNew_D0_CK4
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure setVarMergedNew_D0_CK3
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure setVarMergedNew_D0_CK2
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure setVarMergedNew_D0_CK1
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
@@ -5404,35 +5404,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setVarMergedNew_D0_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setVarMergedNew_D0_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setVarMergedNew_D0_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setVarMergedNew_D0_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setVarMergedNew_D0_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
@@ -5455,35 +5455,35 @@ contains
 
 #if CK5_ENABLED
     module procedure setVarMergedNew_D1_CK5
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure setVarMergedNew_D1_CK4
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure setVarMergedNew_D1_CK3
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure setVarMergedNew_D1_CK2
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure setVarMergedNew_D1_CK1
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
@@ -5496,35 +5496,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setVarMergedNew_D1_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setVarMergedNew_D1_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setVarMergedNew_D1_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setVarMergedNew_D1_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setVarMergedNew_D1_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
@@ -5559,35 +5559,35 @@ contains
 
 #if CK5_ENABLED
     module procedure setVarMergedOld_D0_CK5
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure setVarMergedOld_D0_CK4
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure setVarMergedOld_D0_CK3
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure setVarMergedOld_D0_CK2
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure setVarMergedOld_D0_CK1
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
@@ -5600,35 +5600,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setVarMergedOld_D0_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setVarMergedOld_D0_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setVarMergedOld_D0_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setVarMergedOld_D0_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setVarMergedOld_D0_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
@@ -5651,35 +5651,35 @@ contains
 
 #if CK5_ENABLED
     module procedure setVarMergedOld_D1_CK5
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure setVarMergedOld_D1_CK4
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure setVarMergedOld_D1_CK3
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure setVarMergedOld_D1_CK2
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure setVarMergedOld_D1_CK1
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
@@ -5692,35 +5692,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setVarMergedOld_D1_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setVarMergedOld_D1_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setVarMergedOld_D1_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setVarMergedOld_D1_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setVarMergedOld_D1_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
@@ -5768,35 +5768,35 @@ contains
 
 #if CK5_ENABLED
     module procedure setVarMeanMergedNew_D0_CK5
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure setVarMeanMergedNew_D0_CK4
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure setVarMeanMergedNew_D0_CK3
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure setVarMeanMergedNew_D0_CK2
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure setVarMeanMergedNew_D0_CK1
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
@@ -5809,35 +5809,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setVarMeanMergedNew_D0_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setVarMeanMergedNew_D0_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setVarMeanMergedNew_D0_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setVarMeanMergedNew_D0_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setVarMeanMergedNew_D0_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
@@ -5860,35 +5860,35 @@ contains
 
 #if CK5_ENABLED
     module procedure setVarMeanMergedNew_D1_CK5
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure setVarMeanMergedNew_D1_CK4
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure setVarMeanMergedNew_D1_CK3
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure setVarMeanMergedNew_D1_CK2
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure setVarMeanMergedNew_D1_CK1
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
@@ -5901,35 +5901,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setVarMeanMergedNew_D1_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setVarMeanMergedNew_D1_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setVarMeanMergedNew_D1_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setVarMeanMergedNew_D1_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setVarMeanMergedNew_D1_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
@@ -5964,35 +5964,35 @@ contains
 
 #if CK5_ENABLED
     module procedure setVarMeanMergedOld_D0_CK5
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure setVarMeanMergedOld_D0_CK4
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure setVarMeanMergedOld_D0_CK3
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure setVarMeanMergedOld_D0_CK2
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure setVarMeanMergedOld_D0_CK1
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
@@ -6005,35 +6005,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setVarMeanMergedOld_D0_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setVarMeanMergedOld_D0_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setVarMeanMergedOld_D0_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setVarMeanMergedOld_D0_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setVarMeanMergedOld_D0_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
@@ -6056,35 +6056,35 @@ contains
 
 #if CK5_ENABLED
     module procedure setVarMeanMergedOld_D1_CK5
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure setVarMeanMergedOld_D1_CK4
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure setVarMeanMergedOld_D1_CK3
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure setVarMeanMergedOld_D1_CK2
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure setVarMeanMergedOld_D1_CK1
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
@@ -6097,35 +6097,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setVarMeanMergedOld_D1_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setVarMeanMergedOld_D1_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setVarMeanMergedOld_D1_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setVarMeanMergedOld_D1_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setVarMeanMergedOld_D1_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_sampleVar@routines.inc.F90"
     end procedure
 #endif

@@ -157,8 +157,8 @@ module pm_optimization
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isBracketMax_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)           , intent(in)                :: xmax, xlow, xupp, fmax, flow, fupp
+        use pm_kind, only: RKG => RK5
+        real(RKG)           , intent(in)                :: xmax, xlow, xupp, fmax, flow, fupp
         logical(LK)                                     :: bracketed
     end function
 #endif
@@ -168,8 +168,8 @@ module pm_optimization
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isBracketMax_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)           , intent(in)                :: xmax, xlow, xupp, fmax, flow, fupp
+        use pm_kind, only: RKG => RK4
+        real(RKG)           , intent(in)                :: xmax, xlow, xupp, fmax, flow, fupp
         logical(LK)                                     :: bracketed
     end function
 #endif
@@ -179,8 +179,8 @@ module pm_optimization
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isBracketMax_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)           , intent(in)                :: xmax, xlow, xupp, fmax, flow, fupp
+        use pm_kind, only: RKG => RK3
+        real(RKG)           , intent(in)                :: xmax, xlow, xupp, fmax, flow, fupp
         logical(LK)                                     :: bracketed
     end function
 #endif
@@ -190,8 +190,8 @@ module pm_optimization
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isBracketMax_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)           , intent(in)                :: xmax, xlow, xupp, fmax, flow, fupp
+        use pm_kind, only: RKG => RK2
+        real(RKG)           , intent(in)                :: xmax, xlow, xupp, fmax, flow, fupp
         logical(LK)                                     :: bracketed
     end function
 #endif
@@ -201,8 +201,8 @@ module pm_optimization
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isBracketMax_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)           , intent(in)                :: xmax, xlow, xupp, fmax, flow, fupp
+        use pm_kind, only: RKG => RK1
+        real(RKG)           , intent(in)                :: xmax, xlow, xupp, fmax, flow, fupp
         logical(LK)                                     :: bracketed
     end function
 #endif
@@ -282,8 +282,8 @@ module pm_optimization
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isBracketMin_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)           , intent(in)                :: xmin, xlow, xupp, fmin, flow, fupp
+        use pm_kind, only: RKG => RK5
+        real(RKG)           , intent(in)                :: xmin, xlow, xupp, fmin, flow, fupp
         logical(LK)                                     :: bracketed
     end function
 #endif
@@ -293,8 +293,8 @@ module pm_optimization
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isBracketMin_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)           , intent(in)                :: xmin, xlow, xupp, fmin, flow, fupp
+        use pm_kind, only: RKG => RK4
+        real(RKG)           , intent(in)                :: xmin, xlow, xupp, fmin, flow, fupp
         logical(LK)                                     :: bracketed
     end function
 #endif
@@ -304,8 +304,8 @@ module pm_optimization
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isBracketMin_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)           , intent(in)                :: xmin, xlow, xupp, fmin, flow, fupp
+        use pm_kind, only: RKG => RK3
+        real(RKG)           , intent(in)                :: xmin, xlow, xupp, fmin, flow, fupp
         logical(LK)                                     :: bracketed
     end function
 #endif
@@ -315,8 +315,8 @@ module pm_optimization
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isBracketMin_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)           , intent(in)                :: xmin, xlow, xupp, fmin, flow, fupp
+        use pm_kind, only: RKG => RK2
+        real(RKG)           , intent(in)                :: xmin, xlow, xupp, fmin, flow, fupp
         logical(LK)                                     :: bracketed
     end function
 #endif
@@ -326,8 +326,8 @@ module pm_optimization
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isBracketMin_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)           , intent(in)                :: xmin, xlow, xupp, fmin, flow, fupp
+        use pm_kind, only: RKG => RK1
+        real(RKG)           , intent(in)                :: xmin, xlow, xupp, fmin, flow, fupp
         logical(LK)                                     :: bracketed
     end function
 #endif
@@ -362,11 +362,11 @@ module pm_optimization
     !>                              The following demonstrates the interface of `getFunc`,
     !>                              \code{.F90}
     !>                                  function getFunc(x) result(func)
-    !>                                      real(RKC), intent(in) :: x
-    !>                                      real(RKC) :: func
+    !>                                      real(RKG), intent(in) :: x
+    !>                                      real(RKG) :: func
     !>                                  end function
     !>                              \endcode
-    !>                              where `RKC` can refer to any `real` type kind parameter \RKALL supported by the library.<br>
+    !>                              where `RKG` can refer to any `real` type kind parameter \RKALL supported by the library.<br>
     !>  \param[inout]   niter   :   The input/output positive scalar of type `integer` of default kind \IK containing
     !>                              the **maximum** number of allowed iterations in the algorithm in search of the bracket.<br>
     !>                              On output,
@@ -439,12 +439,12 @@ module pm_optimization
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setBracketMax_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        procedure(real(RKC))                            :: getFunc
+        use pm_kind, only: RKG => RK5
+        procedure(real(RKG))                            :: getFunc
         integer(IK)         , intent(inout)             :: niter
-        real(RKC)           , intent(inout)             :: xlow, xupp
-        real(RKC)           , intent(out)               :: xmax, fmax
-        real(RKC)           , intent(out)   , optional  :: flow, fupp
+        real(RKG)           , intent(inout)             :: xlow, xupp
+        real(RKG)           , intent(out)               :: xmax, fmax
+        real(RKG)           , intent(out)   , optional  :: flow, fupp
     end subroutine
 #endif
 
@@ -453,12 +453,12 @@ module pm_optimization
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setBracketMax_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        procedure(real(RKC))                            :: getFunc
+        use pm_kind, only: RKG => RK4
+        procedure(real(RKG))                            :: getFunc
         integer(IK)         , intent(inout)             :: niter
-        real(RKC)           , intent(inout)             :: xlow, xupp
-        real(RKC)           , intent(out)               :: xmax, fmax
-        real(RKC)           , intent(out)   , optional  :: flow, fupp
+        real(RKG)           , intent(inout)             :: xlow, xupp
+        real(RKG)           , intent(out)               :: xmax, fmax
+        real(RKG)           , intent(out)   , optional  :: flow, fupp
     end subroutine
 #endif
 
@@ -467,12 +467,12 @@ module pm_optimization
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setBracketMax_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        procedure(real(RKC))                            :: getFunc
+        use pm_kind, only: RKG => RK3
+        procedure(real(RKG))                            :: getFunc
         integer(IK)         , intent(inout)             :: niter
-        real(RKC)           , intent(inout)             :: xlow, xupp
-        real(RKC)           , intent(out)               :: xmax, fmax
-        real(RKC)           , intent(out)   , optional  :: flow, fupp
+        real(RKG)           , intent(inout)             :: xlow, xupp
+        real(RKG)           , intent(out)               :: xmax, fmax
+        real(RKG)           , intent(out)   , optional  :: flow, fupp
     end subroutine
 #endif
 
@@ -481,12 +481,12 @@ module pm_optimization
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setBracketMax_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        procedure(real(RKC))                            :: getFunc
+        use pm_kind, only: RKG => RK2
+        procedure(real(RKG))                            :: getFunc
         integer(IK)         , intent(inout)             :: niter
-        real(RKC)           , intent(inout)             :: xlow, xupp
-        real(RKC)           , intent(out)               :: xmax, fmax
-        real(RKC)           , intent(out)   , optional  :: flow, fupp
+        real(RKG)           , intent(inout)             :: xlow, xupp
+        real(RKG)           , intent(out)               :: xmax, fmax
+        real(RKG)           , intent(out)   , optional  :: flow, fupp
     end subroutine
 #endif
 
@@ -495,12 +495,12 @@ module pm_optimization
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setBracketMax_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        procedure(real(RKC))                            :: getFunc
+        use pm_kind, only: RKG => RK1
+        procedure(real(RKG))                            :: getFunc
         integer(IK)         , intent(inout)             :: niter
-        real(RKC)           , intent(inout)             :: xlow, xupp
-        real(RKC)           , intent(out)               :: xmax, fmax
-        real(RKC)           , intent(out)   , optional  :: flow, fupp
+        real(RKG)           , intent(inout)             :: xlow, xupp
+        real(RKG)           , intent(out)               :: xmax, fmax
+        real(RKG)           , intent(out)   , optional  :: flow, fupp
     end subroutine
 #endif
 
@@ -534,11 +534,11 @@ module pm_optimization
     !>                              The following demonstrates the interface of `getFunc`,
     !>                              \code{.F90}
     !>                                  function getFunc(x) result(func)
-    !>                                      real(RKC), intent(in) :: x
-    !>                                      real(RKC) :: func
+    !>                                      real(RKG), intent(in) :: x
+    !>                                      real(RKG) :: func
     !>                                  end function
     !>                              \endcode
-    !>                              where `RKC` can refer to any `real` type kind parameter \RKALL supported by the library.<br>
+    !>                              where `RKG` can refer to any `real` type kind parameter \RKALL supported by the library.<br>
     !>  \param[inout]   niter   :   The input/output positive scalar of type `integer` of default kind \IK containing
     !>                              the **maximum** number of allowed iterations in the algorithm in search of the bracket.<br>
     !>                              On output,
@@ -611,12 +611,12 @@ module pm_optimization
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setBracketMin_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        procedure(real(RKC))                            :: getFunc
+        use pm_kind, only: RKG => RK5
+        procedure(real(RKG))                            :: getFunc
         integer(IK)         , intent(inout)             :: niter
-        real(RKC)           , intent(inout)             :: xlow, xupp
-        real(RKC)           , intent(out)               :: xmin, fmin
-        real(RKC)           , intent(out)   , optional  :: flow, fupp
+        real(RKG)           , intent(inout)             :: xlow, xupp
+        real(RKG)           , intent(out)               :: xmin, fmin
+        real(RKG)           , intent(out)   , optional  :: flow, fupp
     end subroutine
 #endif
 
@@ -625,12 +625,12 @@ module pm_optimization
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setBracketMin_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        procedure(real(RKC))                            :: getFunc
+        use pm_kind, only: RKG => RK4
+        procedure(real(RKG))                            :: getFunc
         integer(IK)         , intent(inout)             :: niter
-        real(RKC)           , intent(inout)             :: xlow, xupp
-        real(RKC)           , intent(out)               :: xmin, fmin
-        real(RKC)           , intent(out)   , optional  :: flow, fupp
+        real(RKG)           , intent(inout)             :: xlow, xupp
+        real(RKG)           , intent(out)               :: xmin, fmin
+        real(RKG)           , intent(out)   , optional  :: flow, fupp
     end subroutine
 #endif
 
@@ -639,12 +639,12 @@ module pm_optimization
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setBracketMin_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        procedure(real(RKC))                            :: getFunc
+        use pm_kind, only: RKG => RK3
+        procedure(real(RKG))                            :: getFunc
         integer(IK)         , intent(inout)             :: niter
-        real(RKC)           , intent(inout)             :: xlow, xupp
-        real(RKC)           , intent(out)               :: xmin, fmin
-        real(RKC)           , intent(out)   , optional  :: flow, fupp
+        real(RKG)           , intent(inout)             :: xlow, xupp
+        real(RKG)           , intent(out)               :: xmin, fmin
+        real(RKG)           , intent(out)   , optional  :: flow, fupp
     end subroutine
 #endif
 
@@ -653,12 +653,12 @@ module pm_optimization
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setBracketMin_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        procedure(real(RKC))                            :: getFunc
+        use pm_kind, only: RKG => RK2
+        procedure(real(RKG))                            :: getFunc
         integer(IK)         , intent(inout)             :: niter
-        real(RKC)           , intent(inout)             :: xlow, xupp
-        real(RKC)           , intent(out)               :: xmin, fmin
-        real(RKC)           , intent(out)   , optional  :: flow, fupp
+        real(RKG)           , intent(inout)             :: xlow, xupp
+        real(RKG)           , intent(out)               :: xmin, fmin
+        real(RKG)           , intent(out)   , optional  :: flow, fupp
     end subroutine
 #endif
 
@@ -667,12 +667,12 @@ module pm_optimization
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setBracketMin_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        procedure(real(RKC))                            :: getFunc
+        use pm_kind, only: RKG => RK1
+        procedure(real(RKG))                            :: getFunc
         integer(IK)         , intent(inout)             :: niter
-        real(RKC)           , intent(inout)             :: xlow, xupp
-        real(RKC)           , intent(out)               :: xmin, fmin
-        real(RKC)           , intent(out)   , optional  :: flow, fupp
+        real(RKG)           , intent(inout)             :: xlow, xupp
+        real(RKG)           , intent(out)               :: xmin, fmin
+        real(RKG)           , intent(out)   , optional  :: flow, fupp
     end subroutine
 #endif
 
@@ -694,11 +694,11 @@ module pm_optimization
     !>                              The following demonstrates the interface of `getFunc`,
     !>                              \code{.F90}
     !>                                  function getFunc(x) result(func)
-    !>                                      real(RKC), intent(in) :: x
-    !>                                      real(RKC) :: func
+    !>                                      real(RKG), intent(in) :: x
+    !>                                      real(RKG) :: func
     !>                                  end function
     !>                              \endcode
-    !>                              where `RKC` can refer to any `real` type kind parameter \RKALL supported by the library.<br>
+    !>                              where `RKG` can refer to any `real` type kind parameter \RKALL supported by the library.<br>
     !>  \param[in]      xlow    :   The input scalar of the same type and kind as the output argument `xmin`,
     !>                              containing the lower bound of the search interval for the function minimum abscissa.<br>
     !>                              The condition `xlow < xmin .and. getFunc(xmin) < getFunc(xlow)` must hold for the corresponding input arguments.<br>
@@ -774,12 +774,12 @@ module pm_optimization
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMinBrent_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        procedure(real(RKC))                            :: getFunc
+        use pm_kind, only: RKG => RK5
+        procedure(real(RKG))                            :: getFunc
         integer(IK)         , intent(inout) , optional  :: niter
-        real(RKC)           , intent(in)    , optional  :: xlow, xupp, tol
-        real(RKC)           , intent(out)   , optional  :: fmin
-        real(RKC)                                       :: xmin
+        real(RKG)           , intent(in)    , optional  :: xlow, xupp, tol
+        real(RKG)           , intent(out)   , optional  :: fmin
+        real(RKG)                                       :: xmin
     end function
 #endif
 
@@ -788,12 +788,12 @@ module pm_optimization
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMinBrent_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        procedure(real(RKC))                            :: getFunc
+        use pm_kind, only: RKG => RK4
+        procedure(real(RKG))                            :: getFunc
         integer(IK)         , intent(inout) , optional  :: niter
-        real(RKC)           , intent(in)    , optional  :: xlow, xupp, tol
-        real(RKC)           , intent(out)   , optional  :: fmin
-        real(RKC)                                       :: xmin
+        real(RKG)           , intent(in)    , optional  :: xlow, xupp, tol
+        real(RKG)           , intent(out)   , optional  :: fmin
+        real(RKG)                                       :: xmin
     end function
 #endif
 
@@ -802,12 +802,12 @@ module pm_optimization
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMinBrent_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        procedure(real(RKC))                            :: getFunc
+        use pm_kind, only: RKG => RK3
+        procedure(real(RKG))                            :: getFunc
         integer(IK)         , intent(inout) , optional  :: niter
-        real(RKC)           , intent(in)    , optional  :: xlow, xupp, tol
-        real(RKC)           , intent(out)   , optional  :: fmin
-        real(RKC)                                       :: xmin
+        real(RKG)           , intent(in)    , optional  :: xlow, xupp, tol
+        real(RKG)           , intent(out)   , optional  :: fmin
+        real(RKG)                                       :: xmin
     end function
 #endif
 
@@ -816,12 +816,12 @@ module pm_optimization
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMinBrent_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        procedure(real(RKC))                            :: getFunc
+        use pm_kind, only: RKG => RK2
+        procedure(real(RKG))                            :: getFunc
         integer(IK)         , intent(inout) , optional  :: niter
-        real(RKC)           , intent(in)    , optional  :: xlow, xupp, tol
-        real(RKC)           , intent(out)   , optional  :: fmin
-        real(RKC)                                       :: xmin
+        real(RKG)           , intent(in)    , optional  :: xlow, xupp, tol
+        real(RKG)           , intent(out)   , optional  :: fmin
+        real(RKG)                                       :: xmin
     end function
 #endif
 
@@ -830,12 +830,12 @@ module pm_optimization
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMinBrent_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        procedure(real(RKC))                            :: getFunc
+        use pm_kind, only: RKG => RK1
+        procedure(real(RKG))                            :: getFunc
         integer(IK)         , intent(inout) , optional  :: niter
-        real(RKC)           , intent(in)    , optional  :: xlow, xupp, tol
-        real(RKC)           , intent(out)   , optional  :: fmin
-        real(RKC)                                       :: xmin
+        real(RKG)           , intent(in)    , optional  :: xlow, xupp, tol
+        real(RKG)           , intent(out)   , optional  :: fmin
+        real(RKG)                                       :: xmin
     end function
 #endif
 
@@ -857,11 +857,11 @@ module pm_optimization
     !>                              The following demonstrates the interface of `getFunc`,
     !>                              \code{.F90}
     !>                                  function getFunc(x) result(func)
-    !>                                      real(RKC), intent(in) :: x
-    !>                                      real(RKC) :: func
+    !>                                      real(RKG), intent(in) :: x
+    !>                                      real(RKG) :: func
     !>                                  end function
     !>                              \endcode
-    !>                              where `RKC` can refer to any `real` type kind parameter \RKALL supported by the library.<br>
+    !>                              where `RKG` can refer to any `real` type kind parameter \RKALL supported by the library.<br>
     !>  \param[inout]   xmin    :   The input/output scalar of type `real` of kind \RKALL.<br>
     !>                              <ol>
     !>                                  <li>    On input, it must contain the initial best guess abscissa at the function minimum.<br>
@@ -883,7 +883,7 @@ module pm_optimization
     !>  \param[in]      tol     :   The input positive scalar of the same type and kind as the input/output argument `xmin`,
     !>                              containing the minimum distance that a new function evaluation point `xmin` can have from any previously evaluated point.<br>
     !>                              Values smaller than the suggestion below might lead to algorithm failure due to roundoff error accumulation.<br>
-    !>                              A reasonable choice is `tol = sqrt(epsilon(1._RKC))`.<br>
+    !>                              A reasonable choice is `tol = sqrt(epsilon(1._RKG))`.<br>
     !>  \param[inout]   niter   :   The input/output positive scalar of type `integer` of default kind \IK containing
     !>                              the **maximum** number of allowed iterations in the algorithm in search of the minimum.<br>
     !>                              On output,
@@ -941,10 +941,10 @@ module pm_optimization
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMinBrent_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        procedure(real(RKC))                            :: getFunc
-        real(RKC)           , value                     :: xlow, xupp, tol
-        real(RKC)           , intent(inout)             :: fmin, xmin
+        use pm_kind, only: RKG => RK5
+        procedure(real(RKG))                            :: getFunc
+        real(RKG)           , value                     :: xlow, xupp, tol
+        real(RKG)           , intent(inout)             :: fmin, xmin
         integer(IK)         , intent(inout)             :: niter
     end subroutine
 #endif
@@ -954,10 +954,10 @@ module pm_optimization
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMinBrent_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        procedure(real(RKC))                            :: getFunc
-        real(RKC)           , value                     :: xlow, xupp, tol
-        real(RKC)           , intent(inout)             :: fmin, xmin
+        use pm_kind, only: RKG => RK4
+        procedure(real(RKG))                            :: getFunc
+        real(RKG)           , value                     :: xlow, xupp, tol
+        real(RKG)           , intent(inout)             :: fmin, xmin
         integer(IK)         , intent(inout)             :: niter
     end subroutine
 #endif
@@ -967,10 +967,10 @@ module pm_optimization
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMinBrent_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        procedure(real(RKC))                            :: getFunc
-        real(RKC)           , value                     :: xlow, xupp, tol
-        real(RKC)           , intent(inout)             :: fmin, xmin
+        use pm_kind, only: RKG => RK3
+        procedure(real(RKG))                            :: getFunc
+        real(RKG)           , value                     :: xlow, xupp, tol
+        real(RKG)           , intent(inout)             :: fmin, xmin
         integer(IK)         , intent(inout)             :: niter
     end subroutine
 #endif
@@ -980,10 +980,10 @@ module pm_optimization
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMinBrent_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        procedure(real(RKC))                            :: getFunc
-        real(RKC)           , value                     :: xlow, xupp, tol
-        real(RKC)           , intent(inout)             :: fmin, xmin
+        use pm_kind, only: RKG => RK2
+        procedure(real(RKG))                            :: getFunc
+        real(RKG)           , value                     :: xlow, xupp, tol
+        real(RKG)           , intent(inout)             :: fmin, xmin
         integer(IK)         , intent(inout)             :: niter
     end subroutine
 #endif
@@ -993,10 +993,10 @@ module pm_optimization
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMinBrent_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        procedure(real(RKC))                            :: getFunc
-        real(RKC)           , value                     :: xlow, xupp, tol
-        real(RKC)           , intent(inout)             :: fmin, xmin
+        use pm_kind, only: RKG => RK1
+        procedure(real(RKG))                            :: getFunc
+        real(RKG)           , value                     :: xlow, xupp, tol
+        real(RKG)           , intent(inout)             :: fmin, xmin
         integer(IK)         , intent(inout)             :: niter
     end subroutine
 #endif
@@ -1019,11 +1019,11 @@ module pm_optimization
     !>                              The following demonstrates the interface of `getFunc`,
     !>                              \code{.F90}
     !>                                  function getFunc(x) result(func)
-    !>                                      real(RKC), intent(in) :: x(ndim)
-    !>                                      real(RKC) :: func
+    !>                                      real(RKG), intent(in) :: x(ndim)
+    !>                                      real(RKG) :: func
     !>                                  end function
     !>                              \endcode
-    !>                              where `RKC` can refer to any `real` type kind parameter \RKALL supported by the library.<br>
+    !>                              where `RKG` can refer to any `real` type kind parameter \RKALL supported by the library.<br>
     !>  \param[inout]   xmin    :   The input/output vector of size `ndim` of type `real` of kind \RKALL.<br>
     !>                              <ol>
     !>                                  <li>    On input, it must contain the initial best guess abscissa at the function minimum.<br>
@@ -1038,7 +1038,7 @@ module pm_optimization
     !>  \param[in]      tol     :   The input positive scalar of the same type and kind as the input/output argument `xmin`,
     !>                              containing the minimum distance that a new function evaluation point `xmin` can have from any previously evaluated point.<br>
     !>                              Values smaller than the suggestion below might lead to algorithm failure due to roundoff error accumulation.<br>
-    !>                              (**optional**, default = `sqrt(epsilon(1._RKC))`).<br>
+    !>                              (**optional**, default = `sqrt(epsilon(1._RKG))`).<br>
     !>  \param[in]      niter   :   The input positive scalar of type `integer` of default kind \IK containing
     !>                              the **maximum** number of allowed iterations at every step of the algorithm in search of a univariate minimum along a specific direction.<br>
     !>                              (**optional**, default = `int(100 * precision(xmin) / 53.)`.)
@@ -1095,11 +1095,11 @@ module pm_optimization
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isFailedMinPowell_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        procedure(real(RKC))                                            :: getFunc
-        real(RKC)           , intent(inout) , contiguous                :: xmin(:)
-        real(RKC)           , intent(inout) , optional                  :: fmin
-        real(RKC)           , intent(in)    , optional                  :: tol
+        use pm_kind, only: RKG => RK5
+        procedure(real(RKG))                                            :: getFunc
+        real(RKG)           , intent(inout) , contiguous                :: xmin(:)
+        real(RKG)           , intent(inout) , optional                  :: fmin
+        real(RKG)           , intent(in)    , optional                  :: tol
         integer(IK)         , intent(in)    , optional                  :: niter
         logical(LK)                                                     :: failed
     end function
@@ -1110,11 +1110,11 @@ module pm_optimization
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isFailedMinPowell_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        procedure(real(RKC))                                            :: getFunc
-        real(RKC)           , intent(inout) , contiguous                :: xmin(:)
-        real(RKC)           , intent(inout) , optional                  :: fmin
-        real(RKC)           , intent(in)    , optional                  :: tol
+        use pm_kind, only: RKG => RK4
+        procedure(real(RKG))                                            :: getFunc
+        real(RKG)           , intent(inout) , contiguous                :: xmin(:)
+        real(RKG)           , intent(inout) , optional                  :: fmin
+        real(RKG)           , intent(in)    , optional                  :: tol
         integer(IK)         , intent(in)    , optional                  :: niter
         logical(LK)                                                     :: failed
     end function
@@ -1125,11 +1125,11 @@ module pm_optimization
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isFailedMinPowell_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        procedure(real(RKC))                                            :: getFunc
-        real(RKC)           , intent(inout) , contiguous                :: xmin(:)
-        real(RKC)           , intent(inout) , optional                  :: fmin
-        real(RKC)           , intent(in)    , optional                  :: tol
+        use pm_kind, only: RKG => RK3
+        procedure(real(RKG))                                            :: getFunc
+        real(RKG)           , intent(inout) , contiguous                :: xmin(:)
+        real(RKG)           , intent(inout) , optional                  :: fmin
+        real(RKG)           , intent(in)    , optional                  :: tol
         integer(IK)         , intent(in)    , optional                  :: niter
         logical(LK)                                                     :: failed
     end function
@@ -1140,11 +1140,11 @@ module pm_optimization
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isFailedMinPowell_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        procedure(real(RKC))                                            :: getFunc
-        real(RKC)           , intent(inout) , contiguous                :: xmin(:)
-        real(RKC)           , intent(inout) , optional                  :: fmin
-        real(RKC)           , intent(in)    , optional                  :: tol
+        use pm_kind, only: RKG => RK2
+        procedure(real(RKG))                                            :: getFunc
+        real(RKG)           , intent(inout) , contiguous                :: xmin(:)
+        real(RKG)           , intent(inout) , optional                  :: fmin
+        real(RKG)           , intent(in)    , optional                  :: tol
         integer(IK)         , intent(in)    , optional                  :: niter
         logical(LK)                                                     :: failed
     end function
@@ -1155,11 +1155,11 @@ module pm_optimization
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isFailedMinPowell_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        procedure(real(RKC))                                            :: getFunc
-        real(RKC)           , intent(inout) , contiguous                :: xmin(:)
-        real(RKC)           , intent(inout) , optional                  :: fmin
-        real(RKC)           , intent(in)    , optional                  :: tol
+        use pm_kind, only: RKG => RK1
+        procedure(real(RKG))                                            :: getFunc
+        real(RKG)           , intent(inout) , contiguous                :: xmin(:)
+        real(RKG)           , intent(inout) , optional                  :: fmin
+        real(RKG)           , intent(in)    , optional                  :: tol
         integer(IK)         , intent(in)    , optional                  :: niter
         logical(LK)                                                     :: failed
     end function
@@ -1183,11 +1183,11 @@ module pm_optimization
     !>                              The following demonstrates the interface of `getFunc`,
     !>                              \code{.F90}
     !>                                  function getFunc(x) result(func)
-    !>                                      real(RKC), intent(in) :: x(ndim)
-    !>                                      real(RKC) :: func
+    !>                                      real(RKG), intent(in) :: x(ndim)
+    !>                                      real(RKG) :: func
     !>                                  end function
     !>                              \endcode
-    !>                              where `RKC` can refer to any `real` type kind parameter \RKALL supported by the library.<br>
+    !>                              where `RKG` can refer to any `real` type kind parameter \RKALL supported by the library.<br>
     !>  \param[inout]   xmin    :   The input/output vector of size `ndim` of type `real` of kind \RKALL.<br>
     !>                              <ol>
     !>                                  <li>    On input, it must contain the initial best guess abscissa at the function minimum.<br>
@@ -1206,7 +1206,7 @@ module pm_optimization
     !>  \param[in]      tol     :   The input positive scalar of the same type and kind as the input/output argument `xmin`,
     !>                              containing the minimum distance that a new function evaluation point `xmin` can have from any previously evaluated point.<br>
     !>                              Values smaller than the suggestion below might lead to algorithm failure due to roundoff error accumulation.<br>
-    !>                              A reasonable choice is `tol = sqrt(epsilon(1._RKC))`.<br>
+    !>                              A reasonable choice is `tol = sqrt(epsilon(1._RKG))`.<br>
     !>  \param[inout]   niter   :   The input/output positive scalar of type `integer` of default kind \IK containing
     !>                              the **maximum** number of allowed iterations at every step of the algorithm in search of a univariate minimum along a specific direction.<br>
     !>                              On output,
@@ -1263,11 +1263,11 @@ module pm_optimization
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMinPowell_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        procedure(real(RKC))                                :: getFunc
-        real(RKC)           , intent(inout) , contiguous    :: xmin(:), dirset(:,:)
-        real(RKC)           , intent(inout)                 :: fmin
-        real(RKC)           , intent(in)                    :: tol
+        use pm_kind, only: RKG => RK5
+        procedure(real(RKG))                                :: getFunc
+        real(RKG)           , intent(inout) , contiguous    :: xmin(:), dirset(:,:)
+        real(RKG)           , intent(inout)                 :: fmin
+        real(RKG)           , intent(in)                    :: tol
         integer(IK)         , intent(inout)                 :: niter
     end subroutine
 #endif
@@ -1277,11 +1277,11 @@ module pm_optimization
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMinPowell_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        procedure(real(RKC))                                :: getFunc
-        real(RKC)           , intent(inout) , contiguous    :: xmin(:), dirset(:,:)
-        real(RKC)           , intent(inout)                 :: fmin
-        real(RKC)           , intent(in)                    :: tol
+        use pm_kind, only: RKG => RK4
+        procedure(real(RKG))                                :: getFunc
+        real(RKG)           , intent(inout) , contiguous    :: xmin(:), dirset(:,:)
+        real(RKG)           , intent(inout)                 :: fmin
+        real(RKG)           , intent(in)                    :: tol
         integer(IK)         , intent(inout)                 :: niter
     end subroutine
 #endif
@@ -1291,11 +1291,11 @@ module pm_optimization
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMinPowell_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        procedure(real(RKC))                                :: getFunc
-        real(RKC)           , intent(inout) , contiguous    :: xmin(:), dirset(:,:)
-        real(RKC)           , intent(inout)                 :: fmin
-        real(RKC)           , intent(in)                    :: tol
+        use pm_kind, only: RKG => RK3
+        procedure(real(RKG))                                :: getFunc
+        real(RKG)           , intent(inout) , contiguous    :: xmin(:), dirset(:,:)
+        real(RKG)           , intent(inout)                 :: fmin
+        real(RKG)           , intent(in)                    :: tol
         integer(IK)         , intent(inout)                 :: niter
     end subroutine
 #endif
@@ -1305,11 +1305,11 @@ module pm_optimization
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMinPowell_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        procedure(real(RKC))                                :: getFunc
-        real(RKC)           , intent(inout) , contiguous    :: xmin(:), dirset(:,:)
-        real(RKC)           , intent(inout)                 :: fmin
-        real(RKC)           , intent(in)                    :: tol
+        use pm_kind, only: RKG => RK2
+        procedure(real(RKG))                                :: getFunc
+        real(RKG)           , intent(inout) , contiguous    :: xmin(:), dirset(:,:)
+        real(RKG)           , intent(inout)                 :: fmin
+        real(RKG)           , intent(in)                    :: tol
         integer(IK)         , intent(inout)                 :: niter
     end subroutine
 #endif
@@ -1319,11 +1319,11 @@ module pm_optimization
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMinPowell_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        procedure(real(RKC))                                :: getFunc
-        real(RKC)           , intent(inout) , contiguous    :: xmin(:), dirset(:,:)
-        real(RKC)           , intent(inout)                 :: fmin
-        real(RKC)           , intent(in)                    :: tol
+        use pm_kind, only: RKG => RK1
+        procedure(real(RKG))                                :: getFunc
+        real(RKG)           , intent(inout) , contiguous    :: xmin(:), dirset(:,:)
+        real(RKG)           , intent(inout)                 :: fmin
+        real(RKG)           , intent(in)                    :: tol
         integer(IK)         , intent(inout)                 :: niter
     end subroutine
 #endif

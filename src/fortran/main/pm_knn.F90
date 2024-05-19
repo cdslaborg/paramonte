@@ -187,8 +187,8 @@ module pm_knn
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setKnnSortedVal_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)           , intent(inout) , contiguous    :: distance(:,:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)           , intent(inout) , contiguous    :: distance(:,:)
     end subroutine
 #endif
 
@@ -197,8 +197,8 @@ module pm_knn
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setKnnSortedVal_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)           , intent(inout) , contiguous    :: distance(:,:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)           , intent(inout) , contiguous    :: distance(:,:)
     end subroutine
 #endif
 
@@ -207,8 +207,8 @@ module pm_knn
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setKnnSortedVal_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)           , intent(inout) , contiguous    :: distance(:,:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)           , intent(inout) , contiguous    :: distance(:,:)
     end subroutine
 #endif
 
@@ -217,8 +217,8 @@ module pm_knn
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setKnnSortedVal_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)           , intent(inout) , contiguous    :: distance(:,:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)           , intent(inout) , contiguous    :: distance(:,:)
     end subroutine
 #endif
 
@@ -227,8 +227,8 @@ module pm_knn
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setKnnSortedVal_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)           , intent(inout) , contiguous    :: distance(:,:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)           , intent(inout) , contiguous    :: distance(:,:)
     end subroutine
 #endif
 
@@ -239,8 +239,8 @@ module pm_knn
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setKnnSortedKth_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)           , intent(inout) , contiguous    :: distance(:,:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)           , intent(inout) , contiguous    :: distance(:,:)
         integer(IK)         , intent(in)                    :: k
     end subroutine
 #endif
@@ -250,8 +250,8 @@ module pm_knn
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setKnnSortedKth_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)           , intent(inout) , contiguous    :: distance(:,:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)           , intent(inout) , contiguous    :: distance(:,:)
         integer(IK)         , intent(in)                    :: k
     end subroutine
 #endif
@@ -261,8 +261,8 @@ module pm_knn
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setKnnSortedKth_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)           , intent(inout) , contiguous    :: distance(:,:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)           , intent(inout) , contiguous    :: distance(:,:)
         integer(IK)         , intent(in)                    :: k
     end subroutine
 #endif
@@ -272,8 +272,8 @@ module pm_knn
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setKnnSortedKth_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)           , intent(inout) , contiguous    :: distance(:,:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)           , intent(inout) , contiguous    :: distance(:,:)
         integer(IK)         , intent(in)                    :: k
     end subroutine
 #endif
@@ -283,8 +283,8 @@ module pm_knn
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setKnnSortedKth_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)           , intent(inout) , contiguous    :: distance(:,:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)           , intent(inout) , contiguous    :: distance(:,:)
         integer(IK)         , intent(in)                    :: k
     end subroutine
 #endif
@@ -296,8 +296,8 @@ module pm_knn
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setKnnSortedInd_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)           , intent(in)    , contiguous    :: distance(:,:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)           , intent(in)    , contiguous    :: distance(:,:)
         integer(IK)         , intent(out)   , contiguous    :: rank(:,:)
     end subroutine
 #endif
@@ -307,8 +307,8 @@ module pm_knn
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setKnnSortedInd_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)           , intent(in)    , contiguous    :: distance(:,:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)           , intent(in)    , contiguous    :: distance(:,:)
         integer(IK)         , intent(out)   , contiguous    :: rank(:,:)
     end subroutine
 #endif
@@ -318,8 +318,8 @@ module pm_knn
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setKnnSortedInd_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)           , intent(in)    , contiguous    :: distance(:,:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)           , intent(in)    , contiguous    :: distance(:,:)
         integer(IK)         , intent(out)   , contiguous    :: rank(:,:)
     end subroutine
 #endif
@@ -329,8 +329,8 @@ module pm_knn
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setKnnSortedInd_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)           , intent(in)    , contiguous    :: distance(:,:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)           , intent(in)    , contiguous    :: distance(:,:)
         integer(IK)         , intent(out)   , contiguous    :: rank(:,:)
     end subroutine
 #endif
@@ -340,8 +340,8 @@ module pm_knn
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setKnnSortedInd_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)           , intent(in)    , contiguous    :: distance(:,:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)           , intent(in)    , contiguous    :: distance(:,:)
         integer(IK)         , intent(out)   , contiguous    :: rank(:,:)
     end subroutine
 #endif

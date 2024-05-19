@@ -24,7 +24,7 @@
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        real(RKC)   , parameter :: ZERO = 0._RKC, ONE = 1._RKC, TWO = 2._RKC, PI = acos(-1._RKC)
+        real(RKG)   , parameter :: ZERO = 0._RKG, ONE = 1._RKG, TWO = 2._RKG, PI = acos(-1._RKG)
         ! Define `X`
 #if     DDAZ_ENABLED
 #define NORMEDX X

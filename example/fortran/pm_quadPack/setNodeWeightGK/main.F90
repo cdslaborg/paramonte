@@ -1,6 +1,6 @@
 program example
 
-    use pm_kind, only: SK, IK, RKC => RKH ! testing with highest real precision available. all other real kinds are also supported.
+    use pm_kind, only: SK, IK, RKG => RKH ! testing with highest real precision available. all other real kinds are also supported.
     use pm_quadpack, only: nodeK15, weightK15, weightG7
     use pm_quadpack, only: nodeK21, weightK21, weightG10
     use pm_quadpack, only: nodeK31, weightK31, weightG15
@@ -13,8 +13,8 @@ program example
     implicit none
 
     integer(IK) , parameter     :: MAX_NPG = 30_IK  !   MAXimum Number of Points in the Gauss quadrature rule considered in this example.
-    real(RKC)                   :: nodeK(MAX_NPG+1), weightK(MAX_NPG+1), weightG(MAX_NPG+1)
-    real(RKC)   , allocatable   :: refNodeK(:), refWeightK(:), refWeightG(:)
+    real(RKG)                   :: nodeK(MAX_NPG+1), weightK(MAX_NPG+1), weightG(MAX_NPG+1)
+    real(RKG)   , allocatable   :: refNodeK(:), refWeightK(:), refWeightG(:)
 
     type(display_type) :: disp
     disp = display_type(file = "main.out.F90")
@@ -25,9 +25,9 @@ program example
     call disp%show("!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
     call disp%skip()
 
-    refWeightG = real(weightG7, RKC)
-    refWeightK = real(weightK15, RKC)
-    refNodeK = real(nodeK15, RKC)
+    refWeightG = real(weightG7, RKG)
+    refWeightK = real(weightK15, RKG)
+    refNodeK = real(nodeK15, RKG)
     call setNodeWeight(npg = 7)
 
     call disp%skip()
@@ -36,9 +36,9 @@ program example
     call disp%show("!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
     call disp%skip()
 
-    refWeightG = real(weightG10, RKC)
-    refWeightK = real(weightK21, RKC)
-    refNodeK = real(nodeK21, RKC)
+    refWeightG = real(weightG10, RKG)
+    refWeightK = real(weightK21, RKG)
+    refNodeK = real(nodeK21, RKG)
     call setNodeWeight(npg = 10)
 
     call disp%skip()
@@ -47,9 +47,9 @@ program example
     call disp%show("!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
     call disp%skip()
 
-    refWeightG = real(weightG15, RKC)
-    refWeightK = real(weightK31, RKC)
-    refNodeK = real(nodeK31, RKC)
+    refWeightG = real(weightG15, RKG)
+    refWeightK = real(weightK31, RKG)
+    refNodeK = real(nodeK31, RKG)
     call setNodeWeight(npg = 15)
 
     call disp%skip()
@@ -58,9 +58,9 @@ program example
     call disp%show("!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
     call disp%skip()
 
-    refWeightG = real(weightG20, RKC)
-    refWeightK = real(weightK41, RKC)
-    refNodeK = real(nodeK41, RKC)
+    refWeightG = real(weightG20, RKG)
+    refWeightK = real(weightK41, RKG)
+    refNodeK = real(nodeK41, RKG)
     call setNodeWeight(npg = 20)
 
     call disp%skip()
@@ -69,9 +69,9 @@ program example
     call disp%show("!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
     call disp%skip()
 
-    refWeightG = real(weightG25, RKC)
-    refWeightK = real(weightK51, RKC)
-    refNodeK = real(nodeK51, RKC)
+    refWeightG = real(weightG25, RKG)
+    refWeightK = real(weightK51, RKG)
+    refNodeK = real(nodeK51, RKG)
     call setNodeWeight(npg = 25)
 
     call disp%skip()
@@ -80,9 +80,9 @@ program example
     call disp%show("!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
     call disp%skip()
 
-    refWeightG = real(weightG30, RKC)
-    refWeightK = real(weightK61, RKC)
-    refNodeK = real(nodeK61, RKC)
+    refWeightG = real(weightG30, RKG)
+    refWeightK = real(weightK61, RKG)
+    refNodeK = real(nodeK61, RKG)
     call setNodeWeight(npg = 30)
 
 contains

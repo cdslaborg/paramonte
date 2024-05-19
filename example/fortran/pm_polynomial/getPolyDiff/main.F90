@@ -15,8 +15,8 @@ program example
     disp = display_type(file = "main.out.F90")
 
     block
-        use pm_kind, only: TKC => RKS ! all processor real and complex kinds are supported.
-        real(TKC), allocatable :: coef(:), diff(:)
+        use pm_kind, only: TKG => RKS ! all processor real and complex kinds are supported.
+        real(TKG), allocatable :: coef(:), diff(:)
         do itry = 1, ntry
             call disp%show("degree = getUnifRand(0, 9_IK)")
                             degree = getUnifRand(0, 9_IK)
@@ -44,15 +44,15 @@ program example
     end block
 
     block
-        use pm_kind, only: TKC => RKS ! all processor real and complex kinds are supported.
-        complex(TKC), allocatable :: coef(:), diff(:)
+        use pm_kind, only: TKG => RKS ! all processor real and complex kinds are supported.
+        complex(TKG), allocatable :: coef(:), diff(:)
         do itry = 1, ntry
             call disp%show("degree = getUnifRand(0, 9_IK)")
                             degree = getUnifRand(0, 9_IK)
             call disp%show("degree")
             call disp%show( degree )
-            call disp%show("coef = cmplx(getUnifRand(-9, 9, degree), getUnifRand(-9, 9, degree), TKC)")
-                            coef = cmplx(getUnifRand(-9, 9, degree), getUnifRand(-9, 9, degree), TKC)
+            call disp%show("coef = cmplx(getUnifRand(-9, 9, degree), getUnifRand(-9, 9, degree), TKG)")
+                            coef = cmplx(getUnifRand(-9, 9, degree), getUnifRand(-9, 9, degree), TKG)
             call disp%show("coef")
             call disp%show( coef )
             call disp%show("getPolyStr(coef)")

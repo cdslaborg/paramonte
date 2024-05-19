@@ -1,21 +1,21 @@
 program example
 
     use pm_kind, only: SK, IK, LK, RKH
-    use pm_kind, only: RKC => RKS ! all processor kinds are supported.
+    use pm_kind, only: RKG => RKS ! all processor kinds are supported.
     use pm_io, only: display_type
     use pm_distanceEuclid, only: getDisEuclid, euclid, euclidu, euclidsq
 
     implicit none
 
     type(display_type) :: disp
-    complex(RKC)                :: z
-    real(RKC)   , allocatable   :: point(:)
-    real(RKC)   , allocatable   :: ref(:)
+    complex(RKG)                :: z
+    real(RKG)   , allocatable   :: point(:)
+    real(RKG)   , allocatable   :: ref(:)
     disp = display_type(file = "main.out.F90")
 
     call disp%skip()
-    call disp%show("point = [real(RKC) :: 1, 3, 2]")
-                    point = [real(RKC) :: 1, 3, 2]
+    call disp%show("point = [real(RKG) :: 1, 3, 2]")
+                    point = [real(RKG) :: 1, 3, 2]
     call disp%show("point")
     call disp%show( point )
     call disp%show("[getDisEuclid(point), getDisEuclid(point(1), point(2), point(3))]") ! norm2(point), 
@@ -23,8 +23,8 @@ program example
     call disp%skip()
 
     call disp%skip()
-    call disp%show("point = [real(RKC) :: 1, 1, 1] * huge(0._RKC) / 10")
-                    point = [real(RKC) :: 1, 1, 1] * huge(0._RKC) / 10
+    call disp%show("point = [real(RKG) :: 1, 1, 1] * huge(0._RKG) / 10")
+                    point = [real(RKG) :: 1, 1, 1] * huge(0._RKG) / 10
     call disp%show("point")
     call disp%show( point )
     call disp%show("[getDisEuclid(point), getDisEuclid(point(1), point(2), point(3))]   !, sqrt(dot_product(point, point)) norm2(point), ! Note that GNU gfortran `norm2()` respects robustness, while Intel ifort does not.")
@@ -32,8 +32,8 @@ program example
     call disp%skip()
 
     call disp%skip()
-    call disp%show("z = (1._RKC, -1._RKC) * huge(0._RKC) / 10")
-                    z = (1._RKC, -1._RKC) * huge(0._RKC) / 10
+    call disp%show("z = (1._RKG, -1._RKG) * huge(0._RKG) / 10")
+                    z = (1._RKG, -1._RKG) * huge(0._RKG) / 10
     call disp%show("point")
     call disp%show( point )
     call disp%show("[hypot(z%re, z%im), abs(z), getDisEuclid([z%re, z%im])] ! norm2([z%re, z%im]), Note that GNU gfortran `norm2()` respects robustness, while Intel ifort does not.")
@@ -47,10 +47,10 @@ program example
     call disp%skip()
 
     call disp%skip()
-    call disp%show("point = [real(RKC) :: 1, 0, 5, 2]")
-                    point = [real(RKC) :: 1, 0, 5, 2]
-    call disp%show("ref = [real(RKC) :: 2, 1, 3, 0]")
-                    ref = [real(RKC) :: 2, 1, 3, 0]
+    call disp%show("point = [real(RKG) :: 1, 0, 5, 2]")
+                    point = [real(RKG) :: 1, 0, 5, 2]
+    call disp%show("ref = [real(RKG) :: 2, 1, 3, 0]")
+                    ref = [real(RKG) :: 2, 1, 3, 0]
     call disp%show("point")
     call disp%show( point )
     call disp%show("[getDisEuclid(point - ref), getDisEuclid(point, ref)]") ! norm2(point - ref), 
@@ -64,14 +64,14 @@ program example
     call disp%skip()
 
     block
-        real(RKC), allocatable :: point(:,:), ref(:,:), distance(:,:)
+        real(RKG), allocatable :: point(:,:), ref(:,:), distance(:,:)
         call disp%skip()
-        call disp%show("point = reshape([real(RKC) :: 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 1], shape = [3, 5])")
-                        point = reshape([real(RKC) :: 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 1], shape = [3, 5])
+        call disp%show("point = reshape([real(RKG) :: 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 1], shape = [3, 5])")
+                        point = reshape([real(RKG) :: 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 1], shape = [3, 5])
         call disp%show("point")
         call disp%show( point )
-        call disp%show("ref = reshape([real(RKC) :: -1, -1, -1, 1, 1, 1], shape = [3, 2]) ! two reference points.")
-                        ref = reshape([real(RKC) :: -1, -1, -1, 1, 1, 1], shape = [3, 2])
+        call disp%show("ref = reshape([real(RKG) :: -1, -1, -1, 1, 1, 1], shape = [3, 2]) ! two reference points.")
+                        ref = reshape([real(RKG) :: -1, -1, -1, 1, 1, 1], shape = [3, 2])
         call disp%show("ref")
         call disp%show( ref )
         call disp%show("distance = getDisEuclid(point, ref)")

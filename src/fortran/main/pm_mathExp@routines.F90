@@ -58,35 +58,35 @@ contains
 
 #if IK5_ENABLED
     module procedure isIntPowArb_IK5
-        use pm_kind, only: IKC => IK5
+        use pm_kind, only: IKG => IK5
 #include "pm_mathExp@routines.inc.F90"
     end procedure
 #endif
 
 #if IK4_ENABLED
     module procedure isIntPowArb_IK4
-        use pm_kind, only: IKC => IK4
+        use pm_kind, only: IKG => IK4
 #include "pm_mathExp@routines.inc.F90"
     end procedure
 #endif
 
 #if IK3_ENABLED
     module procedure isIntPowArb_IK3
-        use pm_kind, only: IKC => IK3
+        use pm_kind, only: IKG => IK3
 #include "pm_mathExp@routines.inc.F90"
     end procedure
 #endif
 
 #if IK2_ENABLED
     module procedure isIntPowArb_IK2
-        use pm_kind, only: IKC => IK2
+        use pm_kind, only: IKG => IK2
 #include "pm_mathExp@routines.inc.F90"
     end procedure
 #endif
 
 #if IK1_ENABLED
     module procedure isIntPowArb_IK1
-        use pm_kind, only: IKC => IK1
+        use pm_kind, only: IKG => IK1
 #include "pm_mathExp@routines.inc.F90"
     end procedure
 #endif
@@ -109,35 +109,35 @@ contains
 
 #if IK5_ENABLED
     module procedure isIntPowDef_IK5
-        use pm_kind, only: IKC => IK5
+        use pm_kind, only: IKG => IK5
 #include "pm_mathExp@routines.inc.F90"
     end procedure
 #endif
 
 #if IK4_ENABLED
     module procedure isIntPowDef_IK4
-        use pm_kind, only: IKC => IK4
+        use pm_kind, only: IKG => IK4
 #include "pm_mathExp@routines.inc.F90"
     end procedure
 #endif
 
 #if IK3_ENABLED
     module procedure isIntPowDef_IK3
-        use pm_kind, only: IKC => IK3
+        use pm_kind, only: IKG => IK3
 #include "pm_mathExp@routines.inc.F90"
     end procedure
 #endif
 
 #if IK2_ENABLED
     module procedure isIntPowDef_IK2
-        use pm_kind, only: IKC => IK2
+        use pm_kind, only: IKG => IK2
 #include "pm_mathExp@routines.inc.F90"
     end procedure
 #endif
 
 #if IK1_ENABLED
     module procedure isIntPowDef_IK1
-        use pm_kind, only: IKC => IK1
+        use pm_kind, only: IKG => IK1
 #include "pm_mathExp@routines.inc.F90"
     end procedure
 #endif
@@ -164,35 +164,35 @@ contains
 
 #if IK5_ENABLED
     module procedure getExpNext_IK5
-        use pm_kind, only: IKC => IK5
+        use pm_kind, only: IKG => IK5
 #include "pm_mathExp@routines.inc.F90"
     end procedure
 #endif
 
 #if IK4_ENABLED
     module procedure getExpNext_IK4
-        use pm_kind, only: IKC => IK4
+        use pm_kind, only: IKG => IK4
 #include "pm_mathExp@routines.inc.F90"
     end procedure
 #endif
 
 #if IK3_ENABLED
     module procedure getExpNext_IK3
-        use pm_kind, only: IKC => IK3
+        use pm_kind, only: IKG => IK3
 #include "pm_mathExp@routines.inc.F90"
     end procedure
 #endif
 
 #if IK2_ENABLED
     module procedure getExpNext_IK2
-        use pm_kind, only: IKC => IK2
+        use pm_kind, only: IKG => IK2
 #include "pm_mathExp@routines.inc.F90"
     end procedure
 #endif
 
 #if IK1_ENABLED
     module procedure getExpNext_IK1
-        use pm_kind, only: IKC => IK1
+        use pm_kind, only: IKG => IK1
 #include "pm_mathExp@routines.inc.F90"
     end procedure
 #endif
@@ -205,35 +205,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getExpNext_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_mathExp@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getExpNext_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_mathExp@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getExpNext_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_mathExp@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getExpNext_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_mathExp@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getExpNext_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_mathExp@routines.inc.F90"
     end procedure
 #endif
@@ -254,35 +254,35 @@ contains
 
 #if IK5_ENABLED
     module procedure getExpPrev_IK5
-        use pm_kind, only: IKC => IK5
+        use pm_kind, only: IKG => IK5
 #include "pm_mathExp@routines.inc.F90"
     end procedure
 #endif
 
 #if IK4_ENABLED
     module procedure getExpPrev_IK4
-        use pm_kind, only: IKC => IK4
+        use pm_kind, only: IKG => IK4
 #include "pm_mathExp@routines.inc.F90"
     end procedure
 #endif
 
 #if IK3_ENABLED
     module procedure getExpPrev_IK3
-        use pm_kind, only: IKC => IK3
+        use pm_kind, only: IKG => IK3
 #include "pm_mathExp@routines.inc.F90"
     end procedure
 #endif
 
 #if IK2_ENABLED
     module procedure getExpPrev_IK2
-        use pm_kind, only: IKC => IK2
+        use pm_kind, only: IKG => IK2
 #include "pm_mathExp@routines.inc.F90"
     end procedure
 #endif
 
 #if IK1_ENABLED
     module procedure getExpPrev_IK1
-        use pm_kind, only: IKC => IK1
+        use pm_kind, only: IKG => IK1
 #include "pm_mathExp@routines.inc.F90"
     end procedure
 #endif
@@ -295,35 +295,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getExpPrev_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_mathExp@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getExpPrev_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_mathExp@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getExpPrev_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_mathExp@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getExpPrev_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_mathExp@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getExpPrev_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_mathExp@routines.inc.F90"
     end procedure
 #endif

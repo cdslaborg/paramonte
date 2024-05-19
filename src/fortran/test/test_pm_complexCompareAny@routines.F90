@@ -41,35 +41,35 @@ contains
 
 #if CK5_ENABLED
     module procedure test_isanyless_CK5_1
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
 #include "test_pm_complexCompareAny@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure test_isanyless_CK4_1
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
 #include "test_pm_complexCompareAny@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure test_isanyless_CK3_1
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
 #include "test_pm_complexCompareAny@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure test_isanyless_CK2_1
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
 #include "test_pm_complexCompareAny@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure test_isanyless_CK1_1
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
 #include "test_pm_complexCompareAny@routines.inc.F90"
     end procedure
 #endif
@@ -90,35 +90,35 @@ contains
 
 #if CK5_ENABLED
     module procedure test_isanyleq_CK5_1
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
 #include "test_pm_complexCompareAny@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure test_isanyleq_CK4_1
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
 #include "test_pm_complexCompareAny@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure test_isanyleq_CK3_1
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
 #include "test_pm_complexCompareAny@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure test_isanyleq_CK2_1
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
 #include "test_pm_complexCompareAny@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure test_isanyleq_CK1_1
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
 #include "test_pm_complexCompareAny@routines.inc.F90"
     end procedure
 #endif
@@ -139,35 +139,35 @@ contains
 
 #if CK5_ENABLED
     module procedure test_isanyneq_CK5_1
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
 #include "test_pm_complexCompareAny@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure test_isanyneq_CK4_1
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
 #include "test_pm_complexCompareAny@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure test_isanyneq_CK3_1
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
 #include "test_pm_complexCompareAny@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure test_isanyneq_CK2_1
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
 #include "test_pm_complexCompareAny@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure test_isanyneq_CK1_1
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
 #include "test_pm_complexCompareAny@routines.inc.F90"
     end procedure
 #endif
@@ -188,35 +188,35 @@ contains
 
 #if CK5_ENABLED
     module procedure test_isanyeq_CK5_1
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
 #include "test_pm_complexCompareAny@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure test_isanyeq_CK4_1
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
 #include "test_pm_complexCompareAny@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure test_isanyeq_CK3_1
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
 #include "test_pm_complexCompareAny@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure test_isanyeq_CK2_1
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
 #include "test_pm_complexCompareAny@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure test_isanyeq_CK1_1
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
 #include "test_pm_complexCompareAny@routines.inc.F90"
     end procedure
 #endif
@@ -237,35 +237,35 @@ contains
 
 #if CK5_ENABLED
     module procedure test_isanymeq_CK5_1
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
 #include "test_pm_complexCompareAny@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure test_isanymeq_CK4_1
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
 #include "test_pm_complexCompareAny@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure test_isanymeq_CK3_1
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
 #include "test_pm_complexCompareAny@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure test_isanymeq_CK2_1
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
 #include "test_pm_complexCompareAny@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure test_isanymeq_CK1_1
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
 #include "test_pm_complexCompareAny@routines.inc.F90"
     end procedure
 #endif
@@ -286,35 +286,35 @@ contains
 
 #if CK5_ENABLED
     module procedure test_isanymore_CK5_1
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
 #include "test_pm_complexCompareAny@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure test_isanymore_CK4_1
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
 #include "test_pm_complexCompareAny@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure test_isanymore_CK3_1
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
 #include "test_pm_complexCompareAny@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure test_isanymore_CK2_1
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
 #include "test_pm_complexCompareAny@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure test_isanymore_CK1_1
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
 #include "test_pm_complexCompareAny@routines.inc.F90"
     end procedure
 #endif

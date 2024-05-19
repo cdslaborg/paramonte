@@ -222,9 +222,9 @@ module pm_matrixDet
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatDet_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)        , intent(in), contiguous    :: mat(:,:)
-        complex(CKC)                                    :: det
+        use pm_kind, only: CKG => CK5
+        complex(CKG)        , intent(in), contiguous    :: mat(:,:)
+        complex(CKG)                                    :: det
     end function
 #endif
 
@@ -233,9 +233,9 @@ module pm_matrixDet
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatDet_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)        , intent(in), contiguous    :: mat(:,:)
-        complex(CKC)                                    :: det
+        use pm_kind, only: CKG => CK4
+        complex(CKG)        , intent(in), contiguous    :: mat(:,:)
+        complex(CKG)                                    :: det
     end function
 #endif
 
@@ -244,9 +244,9 @@ module pm_matrixDet
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatDet_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)        , intent(in), contiguous    :: mat(:,:)
-        complex(CKC)                                    :: det
+        use pm_kind, only: CKG => CK3
+        complex(CKG)        , intent(in), contiguous    :: mat(:,:)
+        complex(CKG)                                    :: det
     end function
 #endif
 
@@ -255,9 +255,9 @@ module pm_matrixDet
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatDet_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)        , intent(in), contiguous    :: mat(:,:)
-        complex(CKC)                                    :: det
+        use pm_kind, only: CKG => CK2
+        complex(CKG)        , intent(in), contiguous    :: mat(:,:)
+        complex(CKG)                                    :: det
     end function
 #endif
 
@@ -266,9 +266,9 @@ module pm_matrixDet
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatDet_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)        , intent(in), contiguous    :: mat(:,:)
-        complex(CKC)                                    :: det
+        use pm_kind, only: CKG => CK1
+        complex(CKG)        , intent(in), contiguous    :: mat(:,:)
+        complex(CKG)                                    :: det
     end function
 #endif
 
@@ -279,9 +279,9 @@ module pm_matrixDet
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatDet_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)           , intent(in), contiguous    :: mat(:,:)
-        real(RKC)                                       :: det
+        use pm_kind, only: RKG => RK5
+        real(RKG)           , intent(in), contiguous    :: mat(:,:)
+        real(RKG)                                       :: det
     end function
 #endif
 
@@ -290,9 +290,9 @@ module pm_matrixDet
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatDet_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)           , intent(in), contiguous    :: mat(:,:)
-        real(RKC)                                       :: det
+        use pm_kind, only: RKG => RK4
+        real(RKG)           , intent(in), contiguous    :: mat(:,:)
+        real(RKG)                                       :: det
     end function
 #endif
 
@@ -301,9 +301,9 @@ module pm_matrixDet
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatDet_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)           , intent(in), contiguous    :: mat(:,:)
-        real(RKC)                                       :: det
+        use pm_kind, only: RKG => RK3
+        real(RKG)           , intent(in), contiguous    :: mat(:,:)
+        real(RKG)                                       :: det
     end function
 #endif
 
@@ -312,9 +312,9 @@ module pm_matrixDet
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatDet_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)           , intent(in), contiguous    :: mat(:,:)
-        real(RKC)                                       :: det
+        use pm_kind, only: RKG => RK2
+        real(RKG)           , intent(in), contiguous    :: mat(:,:)
+        real(RKG)                                       :: det
     end function
 #endif
 
@@ -323,9 +323,9 @@ module pm_matrixDet
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatDet_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)           , intent(in), contiguous    :: mat(:,:)
-        real(RKC)                                       :: det
+        use pm_kind, only: RKG => RK1
+        real(RKG)           , intent(in), contiguous    :: mat(:,:)
+        real(RKG)                                       :: det
     end function
 #endif
 
@@ -401,9 +401,9 @@ module pm_matrixDet
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatDet_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)        , intent(inout) , contiguous    :: mat(:,:)
-        complex(CKC)        , intent(out)                   :: det
+        use pm_kind, only: CKG => CK5
+        complex(CKG)        , intent(inout) , contiguous    :: mat(:,:)
+        complex(CKG)        , intent(out)                   :: det
         integer(IK)         , intent(out)                   :: info
     end subroutine
 #endif
@@ -413,9 +413,9 @@ module pm_matrixDet
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatDet_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)        , intent(inout) , contiguous    :: mat(:,:)
-        complex(CKC)        , intent(out)                   :: det
+        use pm_kind, only: CKG => CK4
+        complex(CKG)        , intent(inout) , contiguous    :: mat(:,:)
+        complex(CKG)        , intent(out)                   :: det
         integer(IK)         , intent(out)                   :: info
     end subroutine
 #endif
@@ -425,9 +425,9 @@ module pm_matrixDet
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatDet_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)        , intent(inout) , contiguous    :: mat(:,:)
-        complex(CKC)        , intent(out)                   :: det
+        use pm_kind, only: CKG => CK3
+        complex(CKG)        , intent(inout) , contiguous    :: mat(:,:)
+        complex(CKG)        , intent(out)                   :: det
         integer(IK)         , intent(out)                   :: info
     end subroutine
 #endif
@@ -437,9 +437,9 @@ module pm_matrixDet
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatDet_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)        , intent(inout) , contiguous    :: mat(:,:)
-        complex(CKC)        , intent(out)                   :: det
+        use pm_kind, only: CKG => CK2
+        complex(CKG)        , intent(inout) , contiguous    :: mat(:,:)
+        complex(CKG)        , intent(out)                   :: det
         integer(IK)         , intent(out)                   :: info
     end subroutine
 #endif
@@ -449,9 +449,9 @@ module pm_matrixDet
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatDet_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)        , intent(inout) , contiguous    :: mat(:,:)
-        complex(CKC)        , intent(out)                   :: det
+        use pm_kind, only: CKG => CK1
+        complex(CKG)        , intent(inout) , contiguous    :: mat(:,:)
+        complex(CKG)        , intent(out)                   :: det
         integer(IK)         , intent(out)                   :: info
     end subroutine
 #endif
@@ -463,9 +463,9 @@ module pm_matrixDet
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatDet_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)           , intent(inout) , contiguous    :: mat(:,:)
-        real(RKC)           , intent(out)                   :: det
+        use pm_kind, only: RKG => RK5
+        real(RKG)           , intent(inout) , contiguous    :: mat(:,:)
+        real(RKG)           , intent(out)                   :: det
         integer(IK)         , intent(out)                   :: info
     end subroutine
 #endif
@@ -475,9 +475,9 @@ module pm_matrixDet
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatDet_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)           , intent(inout) , contiguous    :: mat(:,:)
-        real(RKC)           , intent(out)                   :: det
+        use pm_kind, only: RKG => RK4
+        real(RKG)           , intent(inout) , contiguous    :: mat(:,:)
+        real(RKG)           , intent(out)                   :: det
         integer(IK)         , intent(out)                   :: info
     end subroutine
 #endif
@@ -487,9 +487,9 @@ module pm_matrixDet
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatDet_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)           , intent(inout) , contiguous    :: mat(:,:)
-        real(RKC)           , intent(out)                   :: det
+        use pm_kind, only: RKG => RK3
+        real(RKG)           , intent(inout) , contiguous    :: mat(:,:)
+        real(RKG)           , intent(out)                   :: det
         integer(IK)         , intent(out)                   :: info
     end subroutine
 #endif
@@ -499,9 +499,9 @@ module pm_matrixDet
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatDet_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)           , intent(inout) , contiguous    :: mat(:,:)
-        real(RKC)           , intent(out)                   :: det
+        use pm_kind, only: RKG => RK2
+        real(RKG)           , intent(inout) , contiguous    :: mat(:,:)
+        real(RKG)           , intent(out)                   :: det
         integer(IK)         , intent(out)                   :: info
     end subroutine
 #endif
@@ -511,9 +511,9 @@ module pm_matrixDet
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatDet_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)           , intent(inout) , contiguous    :: mat(:,:)
-        real(RKC)           , intent(out)                   :: det
+        use pm_kind, only: RKG => RK1
+        real(RKG)           , intent(inout) , contiguous    :: mat(:,:)
+        real(RKG)           , intent(out)                   :: det
         integer(IK)         , intent(out)                   :: info
     end subroutine
 #endif
@@ -606,10 +606,10 @@ module pm_matrixDet
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatDetSqrt_CK5
 #endif
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
         class(subset_type)  , intent(in), optional      :: subset
-        complex(CKC)        , intent(in), contiguous    :: mat(:,:)
-        real(CKC)                                       :: detSqrt
+        complex(CKG)        , intent(in), contiguous    :: mat(:,:)
+        real(CKG)                                       :: detSqrt
     end function
 #endif
 
@@ -618,10 +618,10 @@ module pm_matrixDet
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatDetSqrt_CK4
 #endif
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
         class(subset_type)  , intent(in), optional      :: subset
-        complex(CKC)        , intent(in), contiguous    :: mat(:,:)
-        real(CKC)                                       :: detSqrt
+        complex(CKG)        , intent(in), contiguous    :: mat(:,:)
+        real(CKG)                                       :: detSqrt
     end function
 #endif
 
@@ -630,10 +630,10 @@ module pm_matrixDet
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatDetSqrt_CK3
 #endif
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
         class(subset_type)  , intent(in), optional      :: subset
-        complex(CKC)        , intent(in), contiguous    :: mat(:,:)
-        real(CKC)                                       :: detSqrt
+        complex(CKG)        , intent(in), contiguous    :: mat(:,:)
+        real(CKG)                                       :: detSqrt
     end function
 #endif
 
@@ -642,10 +642,10 @@ module pm_matrixDet
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatDetSqrt_CK2
 #endif
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
         class(subset_type)  , intent(in), optional      :: subset
-        complex(CKC)        , intent(in), contiguous    :: mat(:,:)
-        real(CKC)                                       :: detSqrt
+        complex(CKG)        , intent(in), contiguous    :: mat(:,:)
+        real(CKG)                                       :: detSqrt
     end function
 #endif
 
@@ -654,10 +654,10 @@ module pm_matrixDet
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatDetSqrt_CK1
 #endif
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
         class(subset_type)  , intent(in), optional      :: subset
-        complex(CKC)        , intent(in), contiguous    :: mat(:,:)
-        real(CKC)                                       :: detSqrt
+        complex(CKG)        , intent(in), contiguous    :: mat(:,:)
+        real(CKG)                                       :: detSqrt
     end function
 #endif
 
@@ -668,10 +668,10 @@ module pm_matrixDet
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatDetSqrt_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         class(subset_type)  , intent(in), optional      :: subset
-        real(RKC)           , intent(in), contiguous    :: mat(:,:)
-        real(RKC)                                       :: detSqrt
+        real(RKG)           , intent(in), contiguous    :: mat(:,:)
+        real(RKG)                                       :: detSqrt
     end function
 #endif
 
@@ -680,10 +680,10 @@ module pm_matrixDet
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatDetSqrt_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         class(subset_type)  , intent(in), optional      :: subset
-        real(RKC)           , intent(in), contiguous    :: mat(:,:)
-        real(RKC)                                       :: detSqrt
+        real(RKG)           , intent(in), contiguous    :: mat(:,:)
+        real(RKG)                                       :: detSqrt
     end function
 #endif
 
@@ -692,10 +692,10 @@ module pm_matrixDet
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatDetSqrt_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         class(subset_type)  , intent(in), optional      :: subset
-        real(RKC)           , intent(in), contiguous    :: mat(:,:)
-        real(RKC)                                       :: detSqrt
+        real(RKG)           , intent(in), contiguous    :: mat(:,:)
+        real(RKG)                                       :: detSqrt
     end function
 #endif
 
@@ -704,10 +704,10 @@ module pm_matrixDet
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatDetSqrt_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         class(subset_type)  , intent(in), optional      :: subset
-        real(RKC)           , intent(in), contiguous    :: mat(:,:)
-        real(RKC)                                       :: detSqrt
+        real(RKG)           , intent(in), contiguous    :: mat(:,:)
+        real(RKG)                                       :: detSqrt
     end function
 #endif
 
@@ -716,10 +716,10 @@ module pm_matrixDet
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatDetSqrt_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         class(subset_type)  , intent(in), optional      :: subset
-        real(RKC)           , intent(in), contiguous    :: mat(:,:)
-        real(RKC)                                       :: detSqrt
+        real(RKG)           , intent(in), contiguous    :: mat(:,:)
+        real(RKG)                                       :: detSqrt
     end function
 #endif
 
@@ -828,12 +828,12 @@ module pm_matrixDet
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatDetSqrt_UXD_ONO_CK5
 #endif
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
         type(uppDia_type)   , intent(in)                    :: subset
         type(nothing_type)  , intent(in)                    :: operation
-        complex(CKC)        , intent(in)    , contiguous    :: mat(:,:)
-        complex(CKC)        , intent(inout) , contiguous    :: chol(:,:)
-        real(CKC)           , intent(out)                   :: detSqrt
+        complex(CKG)        , intent(in)    , contiguous    :: mat(:,:)
+        complex(CKG)        , intent(inout) , contiguous    :: chol(:,:)
+        real(CKG)           , intent(out)                   :: detSqrt
         integer(IK)         , intent(out)                   :: info
     end subroutine
 #endif
@@ -843,12 +843,12 @@ module pm_matrixDet
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatDetSqrt_UXD_ONO_CK4
 #endif
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
         type(uppDia_type)   , intent(in)                    :: subset
         type(nothing_type)  , intent(in)                    :: operation
-        complex(CKC)        , intent(in)    , contiguous    :: mat(:,:)
-        complex(CKC)        , intent(inout) , contiguous    :: chol(:,:)
-        real(CKC)           , intent(out)                   :: detSqrt
+        complex(CKG)        , intent(in)    , contiguous    :: mat(:,:)
+        complex(CKG)        , intent(inout) , contiguous    :: chol(:,:)
+        real(CKG)           , intent(out)                   :: detSqrt
         integer(IK)         , intent(out)                   :: info
     end subroutine
 #endif
@@ -858,12 +858,12 @@ module pm_matrixDet
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatDetSqrt_UXD_ONO_CK3
 #endif
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
         type(uppDia_type)   , intent(in)                    :: subset
         type(nothing_type)  , intent(in)                    :: operation
-        complex(CKC)        , intent(in)    , contiguous    :: mat(:,:)
-        complex(CKC)        , intent(inout) , contiguous    :: chol(:,:)
-        real(CKC)           , intent(out)                   :: detSqrt
+        complex(CKG)        , intent(in)    , contiguous    :: mat(:,:)
+        complex(CKG)        , intent(inout) , contiguous    :: chol(:,:)
+        real(CKG)           , intent(out)                   :: detSqrt
         integer(IK)         , intent(out)                   :: info
     end subroutine
 #endif
@@ -873,12 +873,12 @@ module pm_matrixDet
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatDetSqrt_UXD_ONO_CK2
 #endif
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
         type(uppDia_type)   , intent(in)                    :: subset
         type(nothing_type)  , intent(in)                    :: operation
-        complex(CKC)        , intent(in)    , contiguous    :: mat(:,:)
-        complex(CKC)        , intent(inout) , contiguous    :: chol(:,:)
-        real(CKC)           , intent(out)                   :: detSqrt
+        complex(CKG)        , intent(in)    , contiguous    :: mat(:,:)
+        complex(CKG)        , intent(inout) , contiguous    :: chol(:,:)
+        real(CKG)           , intent(out)                   :: detSqrt
         integer(IK)         , intent(out)                   :: info
     end subroutine
 #endif
@@ -888,12 +888,12 @@ module pm_matrixDet
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatDetSqrt_UXD_ONO_CK1
 #endif
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
         type(uppDia_type)   , intent(in)                    :: subset
         type(nothing_type)  , intent(in)                    :: operation
-        complex(CKC)        , intent(in)    , contiguous    :: mat(:,:)
-        complex(CKC)        , intent(inout) , contiguous    :: chol(:,:)
-        real(CKC)           , intent(out)                   :: detSqrt
+        complex(CKG)        , intent(in)    , contiguous    :: mat(:,:)
+        complex(CKG)        , intent(inout) , contiguous    :: chol(:,:)
+        real(CKG)           , intent(out)                   :: detSqrt
         integer(IK)         , intent(out)                   :: info
     end subroutine
 #endif
@@ -905,12 +905,12 @@ module pm_matrixDet
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatDetSqrt_UXD_ONO_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         type(uppDia_type)   , intent(in)                    :: subset
         type(nothing_type)  , intent(in)                    :: operation
-        real(RKC)           , intent(in)    , contiguous    :: mat(:,:)
-        real(RKC)           , intent(inout) , contiguous    :: chol(:,:)
-        real(RKC)           , intent(out)                   :: detSqrt
+        real(RKG)           , intent(in)    , contiguous    :: mat(:,:)
+        real(RKG)           , intent(inout) , contiguous    :: chol(:,:)
+        real(RKG)           , intent(out)                   :: detSqrt
         integer(IK)         , intent(out)                   :: info
     end subroutine
 #endif
@@ -920,12 +920,12 @@ module pm_matrixDet
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatDetSqrt_UXD_ONO_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         type(uppDia_type)   , intent(in)                    :: subset
         type(nothing_type)  , intent(in)                    :: operation
-        real(RKC)           , intent(in)    , contiguous    :: mat(:,:)
-        real(RKC)           , intent(inout) , contiguous    :: chol(:,:)
-        real(RKC)           , intent(out)                   :: detSqrt
+        real(RKG)           , intent(in)    , contiguous    :: mat(:,:)
+        real(RKG)           , intent(inout) , contiguous    :: chol(:,:)
+        real(RKG)           , intent(out)                   :: detSqrt
         integer(IK)         , intent(out)                   :: info
     end subroutine
 #endif
@@ -935,12 +935,12 @@ module pm_matrixDet
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatDetSqrt_UXD_ONO_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         type(uppDia_type)   , intent(in)                    :: subset
         type(nothing_type)  , intent(in)                    :: operation
-        real(RKC)           , intent(in)    , contiguous    :: mat(:,:)
-        real(RKC)           , intent(inout) , contiguous    :: chol(:,:)
-        real(RKC)           , intent(out)                   :: detSqrt
+        real(RKG)           , intent(in)    , contiguous    :: mat(:,:)
+        real(RKG)           , intent(inout) , contiguous    :: chol(:,:)
+        real(RKG)           , intent(out)                   :: detSqrt
         integer(IK)         , intent(out)                   :: info
     end subroutine
 #endif
@@ -950,12 +950,12 @@ module pm_matrixDet
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatDetSqrt_UXD_ONO_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         type(uppDia_type)   , intent(in)                    :: subset
         type(nothing_type)  , intent(in)                    :: operation
-        real(RKC)           , intent(in)    , contiguous    :: mat(:,:)
-        real(RKC)           , intent(inout) , contiguous    :: chol(:,:)
-        real(RKC)           , intent(out)                   :: detSqrt
+        real(RKG)           , intent(in)    , contiguous    :: mat(:,:)
+        real(RKG)           , intent(inout) , contiguous    :: chol(:,:)
+        real(RKG)           , intent(out)                   :: detSqrt
         integer(IK)         , intent(out)                   :: info
     end subroutine
 #endif
@@ -965,12 +965,12 @@ module pm_matrixDet
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatDetSqrt_UXD_ONO_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         type(uppDia_type)   , intent(in)                    :: subset
         type(nothing_type)  , intent(in)                    :: operation
-        real(RKC)           , intent(in)    , contiguous    :: mat(:,:)
-        real(RKC)           , intent(inout) , contiguous    :: chol(:,:)
-        real(RKC)           , intent(out)                   :: detSqrt
+        real(RKG)           , intent(in)    , contiguous    :: mat(:,:)
+        real(RKG)           , intent(inout) , contiguous    :: chol(:,:)
+        real(RKG)           , intent(out)                   :: detSqrt
         integer(IK)         , intent(out)                   :: info
     end subroutine
 #endif
@@ -982,12 +982,12 @@ module pm_matrixDet
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatDetSqrt_XLD_ONO_CK5
 #endif
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
         type(lowDia_type)   , intent(in)                    :: subset
         type(nothing_type)  , intent(in)                    :: operation
-        complex(CKC)        , intent(in)    , contiguous    :: mat(:,:)
-        complex(CKC)        , intent(inout) , contiguous    :: chol(:,:)
-        real(CKC)           , intent(out)                   :: detSqrt
+        complex(CKG)        , intent(in)    , contiguous    :: mat(:,:)
+        complex(CKG)        , intent(inout) , contiguous    :: chol(:,:)
+        real(CKG)           , intent(out)                   :: detSqrt
         integer(IK)         , intent(out)                   :: info
     end subroutine
 #endif
@@ -997,12 +997,12 @@ module pm_matrixDet
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatDetSqrt_XLD_ONO_CK4
 #endif
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
         type(lowDia_type)   , intent(in)                    :: subset
         type(nothing_type)  , intent(in)                    :: operation
-        complex(CKC)        , intent(in)    , contiguous    :: mat(:,:)
-        complex(CKC)        , intent(inout) , contiguous    :: chol(:,:)
-        real(CKC)           , intent(out)                   :: detSqrt
+        complex(CKG)        , intent(in)    , contiguous    :: mat(:,:)
+        complex(CKG)        , intent(inout) , contiguous    :: chol(:,:)
+        real(CKG)           , intent(out)                   :: detSqrt
         integer(IK)         , intent(out)                   :: info
     end subroutine
 #endif
@@ -1012,12 +1012,12 @@ module pm_matrixDet
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatDetSqrt_XLD_ONO_CK3
 #endif
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
         type(lowDia_type)   , intent(in)                    :: subset
         type(nothing_type)  , intent(in)                    :: operation
-        complex(CKC)        , intent(in)    , contiguous    :: mat(:,:)
-        complex(CKC)        , intent(inout) , contiguous    :: chol(:,:)
-        real(CKC)           , intent(out)                   :: detSqrt
+        complex(CKG)        , intent(in)    , contiguous    :: mat(:,:)
+        complex(CKG)        , intent(inout) , contiguous    :: chol(:,:)
+        real(CKG)           , intent(out)                   :: detSqrt
         integer(IK)         , intent(out)                   :: info
     end subroutine
 #endif
@@ -1027,12 +1027,12 @@ module pm_matrixDet
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatDetSqrt_XLD_ONO_CK2
 #endif
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
         type(lowDia_type)   , intent(in)                    :: subset
         type(nothing_type)  , intent(in)                    :: operation
-        complex(CKC)        , intent(in)    , contiguous    :: mat(:,:)
-        complex(CKC)        , intent(inout) , contiguous    :: chol(:,:)
-        real(CKC)           , intent(out)                   :: detSqrt
+        complex(CKG)        , intent(in)    , contiguous    :: mat(:,:)
+        complex(CKG)        , intent(inout) , contiguous    :: chol(:,:)
+        real(CKG)           , intent(out)                   :: detSqrt
         integer(IK)         , intent(out)                   :: info
     end subroutine
 #endif
@@ -1042,12 +1042,12 @@ module pm_matrixDet
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatDetSqrt_XLD_ONO_CK1
 #endif
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
         type(lowDia_type)   , intent(in)                    :: subset
         type(nothing_type)  , intent(in)                    :: operation
-        complex(CKC)        , intent(in)    , contiguous    :: mat(:,:)
-        complex(CKC)        , intent(inout) , contiguous    :: chol(:,:)
-        real(CKC)           , intent(out)                   :: detSqrt
+        complex(CKG)        , intent(in)    , contiguous    :: mat(:,:)
+        complex(CKG)        , intent(inout) , contiguous    :: chol(:,:)
+        real(CKG)           , intent(out)                   :: detSqrt
         integer(IK)         , intent(out)                   :: info
     end subroutine
 #endif
@@ -1059,12 +1059,12 @@ module pm_matrixDet
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatDetSqrt_XLD_ONO_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         type(lowDia_type)   , intent(in)                    :: subset
         type(nothing_type)  , intent(in)                    :: operation
-        real(RKC)           , intent(in)    , contiguous    :: mat(:,:)
-        real(RKC)           , intent(inout) , contiguous    :: chol(:,:)
-        real(RKC)           , intent(out)                   :: detSqrt
+        real(RKG)           , intent(in)    , contiguous    :: mat(:,:)
+        real(RKG)           , intent(inout) , contiguous    :: chol(:,:)
+        real(RKG)           , intent(out)                   :: detSqrt
         integer(IK)         , intent(out)                   :: info
     end subroutine
 #endif
@@ -1074,12 +1074,12 @@ module pm_matrixDet
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatDetSqrt_XLD_ONO_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         type(lowDia_type)   , intent(in)                    :: subset
         type(nothing_type)  , intent(in)                    :: operation
-        real(RKC)           , intent(in)    , contiguous    :: mat(:,:)
-        real(RKC)           , intent(inout) , contiguous    :: chol(:,:)
-        real(RKC)           , intent(out)                   :: detSqrt
+        real(RKG)           , intent(in)    , contiguous    :: mat(:,:)
+        real(RKG)           , intent(inout) , contiguous    :: chol(:,:)
+        real(RKG)           , intent(out)                   :: detSqrt
         integer(IK)         , intent(out)                   :: info
     end subroutine
 #endif
@@ -1089,12 +1089,12 @@ module pm_matrixDet
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatDetSqrt_XLD_ONO_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         type(lowDia_type)   , intent(in)                    :: subset
         type(nothing_type)  , intent(in)                    :: operation
-        real(RKC)           , intent(in)    , contiguous    :: mat(:,:)
-        real(RKC)           , intent(inout) , contiguous    :: chol(:,:)
-        real(RKC)           , intent(out)                   :: detSqrt
+        real(RKG)           , intent(in)    , contiguous    :: mat(:,:)
+        real(RKG)           , intent(inout) , contiguous    :: chol(:,:)
+        real(RKG)           , intent(out)                   :: detSqrt
         integer(IK)         , intent(out)                   :: info
     end subroutine
 #endif
@@ -1104,12 +1104,12 @@ module pm_matrixDet
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatDetSqrt_XLD_ONO_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         type(lowDia_type)   , intent(in)                    :: subset
         type(nothing_type)  , intent(in)                    :: operation
-        real(RKC)           , intent(in)    , contiguous    :: mat(:,:)
-        real(RKC)           , intent(inout) , contiguous    :: chol(:,:)
-        real(RKC)           , intent(out)                   :: detSqrt
+        real(RKG)           , intent(in)    , contiguous    :: mat(:,:)
+        real(RKG)           , intent(inout) , contiguous    :: chol(:,:)
+        real(RKG)           , intent(out)                   :: detSqrt
         integer(IK)         , intent(out)                   :: info
     end subroutine
 #endif
@@ -1119,12 +1119,12 @@ module pm_matrixDet
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatDetSqrt_XLD_ONO_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         type(lowDia_type)   , intent(in)                    :: subset
         type(nothing_type)  , intent(in)                    :: operation
-        real(RKC)           , intent(in)    , contiguous    :: mat(:,:)
-        real(RKC)           , intent(inout) , contiguous    :: chol(:,:)
-        real(RKC)           , intent(out)                   :: detSqrt
+        real(RKG)           , intent(in)    , contiguous    :: mat(:,:)
+        real(RKG)           , intent(inout) , contiguous    :: chol(:,:)
+        real(RKG)           , intent(out)                   :: detSqrt
         integer(IK)         , intent(out)                   :: info
     end subroutine
 #endif
@@ -1144,12 +1144,12 @@ module pm_matrixDet
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatDetSqrt_UXD_OTH_CK5
 #endif
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
         type(uppDia_type)   , intent(in)                    :: subset
         type(transHerm_type), intent(in)                    :: operation
-        complex(CKC)        , intent(in)    , contiguous    :: mat(:,:)
-        complex(CKC)        , intent(inout) , contiguous    :: chol(:,:)
-        real(CKC)           , intent(out)                   :: detSqrt
+        complex(CKG)        , intent(in)    , contiguous    :: mat(:,:)
+        complex(CKG)        , intent(inout) , contiguous    :: chol(:,:)
+        real(CKG)           , intent(out)                   :: detSqrt
         integer(IK)         , intent(out)                   :: info
     end subroutine
 #endif
@@ -1159,12 +1159,12 @@ module pm_matrixDet
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatDetSqrt_UXD_OTH_CK4
 #endif
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
         type(uppDia_type)   , intent(in)                    :: subset
         type(transHerm_type), intent(in)                    :: operation
-        complex(CKC)        , intent(in)    , contiguous    :: mat(:,:)
-        complex(CKC)        , intent(inout) , contiguous    :: chol(:,:)
-        real(CKC)           , intent(out)                   :: detSqrt
+        complex(CKG)        , intent(in)    , contiguous    :: mat(:,:)
+        complex(CKG)        , intent(inout) , contiguous    :: chol(:,:)
+        real(CKG)           , intent(out)                   :: detSqrt
         integer(IK)         , intent(out)                   :: info
     end subroutine
 #endif
@@ -1174,12 +1174,12 @@ module pm_matrixDet
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatDetSqrt_UXD_OTH_CK3
 #endif
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
         type(uppDia_type)   , intent(in)                    :: subset
         type(transHerm_type), intent(in)                    :: operation
-        complex(CKC)        , intent(in)    , contiguous    :: mat(:,:)
-        complex(CKC)        , intent(inout) , contiguous    :: chol(:,:)
-        real(CKC)           , intent(out)                   :: detSqrt
+        complex(CKG)        , intent(in)    , contiguous    :: mat(:,:)
+        complex(CKG)        , intent(inout) , contiguous    :: chol(:,:)
+        real(CKG)           , intent(out)                   :: detSqrt
         integer(IK)         , intent(out)                   :: info
     end subroutine
 #endif
@@ -1189,12 +1189,12 @@ module pm_matrixDet
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatDetSqrt_UXD_OTH_CK2
 #endif
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
         type(uppDia_type)   , intent(in)                    :: subset
         type(transHerm_type), intent(in)                    :: operation
-        complex(CKC)        , intent(in)    , contiguous    :: mat(:,:)
-        complex(CKC)        , intent(inout) , contiguous    :: chol(:,:)
-        real(CKC)           , intent(out)                   :: detSqrt
+        complex(CKG)        , intent(in)    , contiguous    :: mat(:,:)
+        complex(CKG)        , intent(inout) , contiguous    :: chol(:,:)
+        real(CKG)           , intent(out)                   :: detSqrt
         integer(IK)         , intent(out)                   :: info
     end subroutine
 #endif
@@ -1204,12 +1204,12 @@ module pm_matrixDet
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatDetSqrt_UXD_OTH_CK1
 #endif
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
         type(uppDia_type)   , intent(in)                    :: subset
         type(transHerm_type), intent(in)                    :: operation
-        complex(CKC)        , intent(in)    , contiguous    :: mat(:,:)
-        complex(CKC)        , intent(inout) , contiguous    :: chol(:,:)
-        real(CKC)           , intent(out)                   :: detSqrt
+        complex(CKG)        , intent(in)    , contiguous    :: mat(:,:)
+        complex(CKG)        , intent(inout) , contiguous    :: chol(:,:)
+        real(CKG)           , intent(out)                   :: detSqrt
         integer(IK)         , intent(out)                   :: info
     end subroutine
 #endif
@@ -1221,12 +1221,12 @@ module pm_matrixDet
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatDetSqrt_UXD_OTH_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         type(uppDia_type)   , intent(in)                    :: subset
         type(transHerm_type), intent(in)                    :: operation
-        real(RKC)           , intent(in)    , contiguous    :: mat(:,:)
-        real(RKC)           , intent(inout) , contiguous    :: chol(:,:)
-        real(RKC)           , intent(out)                   :: detSqrt
+        real(RKG)           , intent(in)    , contiguous    :: mat(:,:)
+        real(RKG)           , intent(inout) , contiguous    :: chol(:,:)
+        real(RKG)           , intent(out)                   :: detSqrt
         integer(IK)         , intent(out)                   :: info
     end subroutine
 #endif
@@ -1236,12 +1236,12 @@ module pm_matrixDet
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatDetSqrt_UXD_OTH_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         type(uppDia_type)   , intent(in)                    :: subset
         type(transHerm_type), intent(in)                    :: operation
-        real(RKC)           , intent(in)    , contiguous    :: mat(:,:)
-        real(RKC)           , intent(inout) , contiguous    :: chol(:,:)
-        real(RKC)           , intent(out)                   :: detSqrt
+        real(RKG)           , intent(in)    , contiguous    :: mat(:,:)
+        real(RKG)           , intent(inout) , contiguous    :: chol(:,:)
+        real(RKG)           , intent(out)                   :: detSqrt
         integer(IK)         , intent(out)                   :: info
     end subroutine
 #endif
@@ -1251,12 +1251,12 @@ module pm_matrixDet
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatDetSqrt_UXD_OTH_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         type(uppDia_type)   , intent(in)                    :: subset
         type(transHerm_type), intent(in)                    :: operation
-        real(RKC)           , intent(in)    , contiguous    :: mat(:,:)
-        real(RKC)           , intent(inout) , contiguous    :: chol(:,:)
-        real(RKC)           , intent(out)                   :: detSqrt
+        real(RKG)           , intent(in)    , contiguous    :: mat(:,:)
+        real(RKG)           , intent(inout) , contiguous    :: chol(:,:)
+        real(RKG)           , intent(out)                   :: detSqrt
         integer(IK)         , intent(out)                   :: info
     end subroutine
 #endif
@@ -1266,12 +1266,12 @@ module pm_matrixDet
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatDetSqrt_UXD_OTH_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         type(uppDia_type)   , intent(in)                    :: subset
         type(transHerm_type), intent(in)                    :: operation
-        real(RKC)           , intent(in)    , contiguous    :: mat(:,:)
-        real(RKC)           , intent(inout) , contiguous    :: chol(:,:)
-        real(RKC)           , intent(out)                   :: detSqrt
+        real(RKG)           , intent(in)    , contiguous    :: mat(:,:)
+        real(RKG)           , intent(inout) , contiguous    :: chol(:,:)
+        real(RKG)           , intent(out)                   :: detSqrt
         integer(IK)         , intent(out)                   :: info
     end subroutine
 #endif
@@ -1281,12 +1281,12 @@ module pm_matrixDet
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatDetSqrt_UXD_OTH_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         type(uppDia_type)   , intent(in)                    :: subset
         type(transHerm_type), intent(in)                    :: operation
-        real(RKC)           , intent(in)    , contiguous    :: mat(:,:)
-        real(RKC)           , intent(inout) , contiguous    :: chol(:,:)
-        real(RKC)           , intent(out)                   :: detSqrt
+        real(RKG)           , intent(in)    , contiguous    :: mat(:,:)
+        real(RKG)           , intent(inout) , contiguous    :: chol(:,:)
+        real(RKG)           , intent(out)                   :: detSqrt
         integer(IK)         , intent(out)                   :: info
     end subroutine
 #endif
@@ -1298,12 +1298,12 @@ module pm_matrixDet
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatDetSqrt_XLD_OTH_CK5
 #endif
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
         type(lowDia_type)   , intent(in)                    :: subset
         type(transHerm_type), intent(in)                    :: operation
-        complex(CKC)        , intent(in)    , contiguous    :: mat(:,:)
-        complex(CKC)        , intent(inout) , contiguous    :: chol(:,:)
-        real(CKC)           , intent(out)                   :: detSqrt
+        complex(CKG)        , intent(in)    , contiguous    :: mat(:,:)
+        complex(CKG)        , intent(inout) , contiguous    :: chol(:,:)
+        real(CKG)           , intent(out)                   :: detSqrt
         integer(IK)         , intent(out)                   :: info
     end subroutine
 #endif
@@ -1313,12 +1313,12 @@ module pm_matrixDet
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatDetSqrt_XLD_OTH_CK4
 #endif
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
         type(lowDia_type)   , intent(in)                    :: subset
         type(transHerm_type), intent(in)                    :: operation
-        complex(CKC)        , intent(in)    , contiguous    :: mat(:,:)
-        complex(CKC)        , intent(inout) , contiguous    :: chol(:,:)
-        real(CKC)           , intent(out)                   :: detSqrt
+        complex(CKG)        , intent(in)    , contiguous    :: mat(:,:)
+        complex(CKG)        , intent(inout) , contiguous    :: chol(:,:)
+        real(CKG)           , intent(out)                   :: detSqrt
         integer(IK)         , intent(out)                   :: info
     end subroutine
 #endif
@@ -1328,12 +1328,12 @@ module pm_matrixDet
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatDetSqrt_XLD_OTH_CK3
 #endif
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
         type(lowDia_type)   , intent(in)                    :: subset
         type(transHerm_type), intent(in)                    :: operation
-        complex(CKC)        , intent(in)    , contiguous    :: mat(:,:)
-        complex(CKC)        , intent(inout) , contiguous    :: chol(:,:)
-        real(CKC)           , intent(out)                   :: detSqrt
+        complex(CKG)        , intent(in)    , contiguous    :: mat(:,:)
+        complex(CKG)        , intent(inout) , contiguous    :: chol(:,:)
+        real(CKG)           , intent(out)                   :: detSqrt
         integer(IK)         , intent(out)                   :: info
     end subroutine
 #endif
@@ -1343,12 +1343,12 @@ module pm_matrixDet
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatDetSqrt_XLD_OTH_CK2
 #endif
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
         type(lowDia_type)   , intent(in)                    :: subset
         type(transHerm_type), intent(in)                    :: operation
-        complex(CKC)        , intent(in)    , contiguous    :: mat(:,:)
-        complex(CKC)        , intent(inout) , contiguous    :: chol(:,:)
-        real(CKC)           , intent(out)                   :: detSqrt
+        complex(CKG)        , intent(in)    , contiguous    :: mat(:,:)
+        complex(CKG)        , intent(inout) , contiguous    :: chol(:,:)
+        real(CKG)           , intent(out)                   :: detSqrt
         integer(IK)         , intent(out)                   :: info
     end subroutine
 #endif
@@ -1358,12 +1358,12 @@ module pm_matrixDet
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatDetSqrt_XLD_OTH_CK1
 #endif
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
         type(lowDia_type)   , intent(in)                    :: subset
         type(transHerm_type), intent(in)                    :: operation
-        complex(CKC)        , intent(in)    , contiguous    :: mat(:,:)
-        complex(CKC)        , intent(inout) , contiguous    :: chol(:,:)
-        real(CKC)           , intent(out)                   :: detSqrt
+        complex(CKG)        , intent(in)    , contiguous    :: mat(:,:)
+        complex(CKG)        , intent(inout) , contiguous    :: chol(:,:)
+        real(CKG)           , intent(out)                   :: detSqrt
         integer(IK)         , intent(out)                   :: info
     end subroutine
 #endif
@@ -1375,12 +1375,12 @@ module pm_matrixDet
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatDetSqrt_XLD_OTH_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         type(lowDia_type)   , intent(in)                    :: subset
         type(transHerm_type), intent(in)                    :: operation
-        real(RKC)           , intent(in)    , contiguous    :: mat(:,:)
-        real(RKC)           , intent(inout) , contiguous    :: chol(:,:)
-        real(RKC)           , intent(out)                   :: detSqrt
+        real(RKG)           , intent(in)    , contiguous    :: mat(:,:)
+        real(RKG)           , intent(inout) , contiguous    :: chol(:,:)
+        real(RKG)           , intent(out)                   :: detSqrt
         integer(IK)         , intent(out)                   :: info
     end subroutine
 #endif
@@ -1390,12 +1390,12 @@ module pm_matrixDet
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatDetSqrt_XLD_OTH_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         type(lowDia_type)   , intent(in)                    :: subset
         type(transHerm_type), intent(in)                    :: operation
-        real(RKC)           , intent(in)    , contiguous    :: mat(:,:)
-        real(RKC)           , intent(inout) , contiguous    :: chol(:,:)
-        real(RKC)           , intent(out)                   :: detSqrt
+        real(RKG)           , intent(in)    , contiguous    :: mat(:,:)
+        real(RKG)           , intent(inout) , contiguous    :: chol(:,:)
+        real(RKG)           , intent(out)                   :: detSqrt
         integer(IK)         , intent(out)                   :: info
     end subroutine
 #endif
@@ -1405,12 +1405,12 @@ module pm_matrixDet
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatDetSqrt_XLD_OTH_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         type(lowDia_type)   , intent(in)                    :: subset
         type(transHerm_type), intent(in)                    :: operation
-        real(RKC)           , intent(in)    , contiguous    :: mat(:,:)
-        real(RKC)           , intent(inout) , contiguous    :: chol(:,:)
-        real(RKC)           , intent(out)                   :: detSqrt
+        real(RKG)           , intent(in)    , contiguous    :: mat(:,:)
+        real(RKG)           , intent(inout) , contiguous    :: chol(:,:)
+        real(RKG)           , intent(out)                   :: detSqrt
         integer(IK)         , intent(out)                   :: info
     end subroutine
 #endif
@@ -1420,12 +1420,12 @@ module pm_matrixDet
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatDetSqrt_XLD_OTH_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         type(lowDia_type)   , intent(in)                    :: subset
         type(transHerm_type), intent(in)                    :: operation
-        real(RKC)           , intent(in)    , contiguous    :: mat(:,:)
-        real(RKC)           , intent(inout) , contiguous    :: chol(:,:)
-        real(RKC)           , intent(out)                   :: detSqrt
+        real(RKG)           , intent(in)    , contiguous    :: mat(:,:)
+        real(RKG)           , intent(inout) , contiguous    :: chol(:,:)
+        real(RKG)           , intent(out)                   :: detSqrt
         integer(IK)         , intent(out)                   :: info
     end subroutine
 #endif
@@ -1435,12 +1435,12 @@ module pm_matrixDet
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatDetSqrt_XLD_OTH_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         type(lowDia_type)   , intent(in)                    :: subset
         type(transHerm_type), intent(in)                    :: operation
-        real(RKC)           , intent(in)    , contiguous    :: mat(:,:)
-        real(RKC)           , intent(inout) , contiguous    :: chol(:,:)
-        real(RKC)           , intent(out)                   :: detSqrt
+        real(RKG)           , intent(in)    , contiguous    :: mat(:,:)
+        real(RKG)           , intent(inout) , contiguous    :: chol(:,:)
+        real(RKG)           , intent(out)                   :: detSqrt
         integer(IK)         , intent(out)                   :: info
     end subroutine
 #endif
@@ -1531,10 +1531,10 @@ module pm_matrixDet
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatDetSqrtLog_CK5
 #endif
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
         class(subset_type)  , intent(in), optional      :: subset
-        complex(CKC)        , intent(in), contiguous    :: mat(:,:)
-        real(CKC)                                       :: detSqrtLog
+        complex(CKG)        , intent(in), contiguous    :: mat(:,:)
+        real(CKG)                                       :: detSqrtLog
     end function
 #endif
 
@@ -1543,10 +1543,10 @@ module pm_matrixDet
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatDetSqrtLog_CK4
 #endif
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
         class(subset_type)  , intent(in), optional      :: subset
-        complex(CKC)        , intent(in), contiguous    :: mat(:,:)
-        real(CKC)                                       :: detSqrtLog
+        complex(CKG)        , intent(in), contiguous    :: mat(:,:)
+        real(CKG)                                       :: detSqrtLog
     end function
 #endif
 
@@ -1555,10 +1555,10 @@ module pm_matrixDet
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatDetSqrtLog_CK3
 #endif
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
         class(subset_type)  , intent(in), optional      :: subset
-        complex(CKC)        , intent(in), contiguous    :: mat(:,:)
-        real(CKC)                                       :: detSqrtLog
+        complex(CKG)        , intent(in), contiguous    :: mat(:,:)
+        real(CKG)                                       :: detSqrtLog
     end function
 #endif
 
@@ -1567,10 +1567,10 @@ module pm_matrixDet
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatDetSqrtLog_CK2
 #endif
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
         class(subset_type)  , intent(in), optional      :: subset
-        complex(CKC)        , intent(in), contiguous    :: mat(:,:)
-        real(CKC)                                       :: detSqrtLog
+        complex(CKG)        , intent(in), contiguous    :: mat(:,:)
+        real(CKG)                                       :: detSqrtLog
     end function
 #endif
 
@@ -1579,10 +1579,10 @@ module pm_matrixDet
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatDetSqrtLog_CK1
 #endif
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
         class(subset_type)  , intent(in), optional      :: subset
-        complex(CKC)        , intent(in), contiguous    :: mat(:,:)
-        real(CKC)                                       :: detSqrtLog
+        complex(CKG)        , intent(in), contiguous    :: mat(:,:)
+        real(CKG)                                       :: detSqrtLog
     end function
 #endif
 
@@ -1593,10 +1593,10 @@ module pm_matrixDet
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatDetSqrtLog_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         class(subset_type)  , intent(in), optional      :: subset
-        real(RKC)           , intent(in), contiguous    :: mat(:,:)
-        real(RKC)                                       :: detSqrtLog
+        real(RKG)           , intent(in), contiguous    :: mat(:,:)
+        real(RKG)                                       :: detSqrtLog
     end function
 #endif
 
@@ -1605,10 +1605,10 @@ module pm_matrixDet
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatDetSqrtLog_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         class(subset_type)  , intent(in), optional      :: subset
-        real(RKC)           , intent(in), contiguous    :: mat(:,:)
-        real(RKC)                                       :: detSqrtLog
+        real(RKG)           , intent(in), contiguous    :: mat(:,:)
+        real(RKG)                                       :: detSqrtLog
     end function
 #endif
 
@@ -1617,10 +1617,10 @@ module pm_matrixDet
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatDetSqrtLog_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         class(subset_type)  , intent(in), optional      :: subset
-        real(RKC)           , intent(in), contiguous    :: mat(:,:)
-        real(RKC)                                       :: detSqrtLog
+        real(RKG)           , intent(in), contiguous    :: mat(:,:)
+        real(RKG)                                       :: detSqrtLog
     end function
 #endif
 
@@ -1629,10 +1629,10 @@ module pm_matrixDet
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatDetSqrtLog_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         class(subset_type)  , intent(in), optional      :: subset
-        real(RKC)           , intent(in), contiguous    :: mat(:,:)
-        real(RKC)                                       :: detSqrtLog
+        real(RKG)           , intent(in), contiguous    :: mat(:,:)
+        real(RKG)                                       :: detSqrtLog
     end function
 #endif
 
@@ -1641,10 +1641,10 @@ module pm_matrixDet
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatDetSqrtLog_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         class(subset_type)  , intent(in), optional      :: subset
-        real(RKC)           , intent(in), contiguous    :: mat(:,:)
-        real(RKC)                                       :: detSqrtLog
+        real(RKG)           , intent(in), contiguous    :: mat(:,:)
+        real(RKG)                                       :: detSqrtLog
     end function
 #endif
 
@@ -1753,12 +1753,12 @@ module pm_matrixDet
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatDetSqrtLog_UXD_ONO_CK5
 #endif
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
         type(uppDia_type)   , intent(in)                    :: subset
         type(nothing_type)  , intent(in)                    :: operation
-        complex(CKC)        , intent(in)    , contiguous    :: mat(:,:)
-        complex(CKC)        , intent(inout) , contiguous    :: chol(:,:)
-        real(CKC)           , intent(out)                   :: detSqrtLog
+        complex(CKG)        , intent(in)    , contiguous    :: mat(:,:)
+        complex(CKG)        , intent(inout) , contiguous    :: chol(:,:)
+        real(CKG)           , intent(out)                   :: detSqrtLog
         integer(IK)         , intent(out)                   :: info
     end subroutine
 #endif
@@ -1768,12 +1768,12 @@ module pm_matrixDet
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatDetSqrtLog_UXD_ONO_CK4
 #endif
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
         type(uppDia_type)   , intent(in)                    :: subset
         type(nothing_type)  , intent(in)                    :: operation
-        complex(CKC)        , intent(in)    , contiguous    :: mat(:,:)
-        complex(CKC)        , intent(inout) , contiguous    :: chol(:,:)
-        real(CKC)           , intent(out)                   :: detSqrtLog
+        complex(CKG)        , intent(in)    , contiguous    :: mat(:,:)
+        complex(CKG)        , intent(inout) , contiguous    :: chol(:,:)
+        real(CKG)           , intent(out)                   :: detSqrtLog
         integer(IK)         , intent(out)                   :: info
     end subroutine
 #endif
@@ -1783,12 +1783,12 @@ module pm_matrixDet
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatDetSqrtLog_UXD_ONO_CK3
 #endif
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
         type(uppDia_type)   , intent(in)                    :: subset
         type(nothing_type)  , intent(in)                    :: operation
-        complex(CKC)        , intent(in)    , contiguous    :: mat(:,:)
-        complex(CKC)        , intent(inout) , contiguous    :: chol(:,:)
-        real(CKC)           , intent(out)                   :: detSqrtLog
+        complex(CKG)        , intent(in)    , contiguous    :: mat(:,:)
+        complex(CKG)        , intent(inout) , contiguous    :: chol(:,:)
+        real(CKG)           , intent(out)                   :: detSqrtLog
         integer(IK)         , intent(out)                   :: info
     end subroutine
 #endif
@@ -1798,12 +1798,12 @@ module pm_matrixDet
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatDetSqrtLog_UXD_ONO_CK2
 #endif
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
         type(uppDia_type)   , intent(in)                    :: subset
         type(nothing_type)  , intent(in)                    :: operation
-        complex(CKC)        , intent(in)    , contiguous    :: mat(:,:)
-        complex(CKC)        , intent(inout) , contiguous    :: chol(:,:)
-        real(CKC)           , intent(out)                   :: detSqrtLog
+        complex(CKG)        , intent(in)    , contiguous    :: mat(:,:)
+        complex(CKG)        , intent(inout) , contiguous    :: chol(:,:)
+        real(CKG)           , intent(out)                   :: detSqrtLog
         integer(IK)         , intent(out)                   :: info
     end subroutine
 #endif
@@ -1813,12 +1813,12 @@ module pm_matrixDet
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatDetSqrtLog_UXD_ONO_CK1
 #endif
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
         type(uppDia_type)   , intent(in)                    :: subset
         type(nothing_type)  , intent(in)                    :: operation
-        complex(CKC)        , intent(in)    , contiguous    :: mat(:,:)
-        complex(CKC)        , intent(inout) , contiguous    :: chol(:,:)
-        real(CKC)           , intent(out)                   :: detSqrtLog
+        complex(CKG)        , intent(in)    , contiguous    :: mat(:,:)
+        complex(CKG)        , intent(inout) , contiguous    :: chol(:,:)
+        real(CKG)           , intent(out)                   :: detSqrtLog
         integer(IK)         , intent(out)                   :: info
     end subroutine
 #endif
@@ -1830,12 +1830,12 @@ module pm_matrixDet
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatDetSqrtLog_UXD_ONO_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         type(uppDia_type)   , intent(in)                    :: subset
         type(nothing_type)  , intent(in)                    :: operation
-        real(RKC)           , intent(in)    , contiguous    :: mat(:,:)
-        real(RKC)           , intent(inout) , contiguous    :: chol(:,:)
-        real(RKC)           , intent(out)                   :: detSqrtLog
+        real(RKG)           , intent(in)    , contiguous    :: mat(:,:)
+        real(RKG)           , intent(inout) , contiguous    :: chol(:,:)
+        real(RKG)           , intent(out)                   :: detSqrtLog
         integer(IK)         , intent(out)                   :: info
     end subroutine
 #endif
@@ -1845,12 +1845,12 @@ module pm_matrixDet
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatDetSqrtLog_UXD_ONO_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         type(uppDia_type)   , intent(in)                    :: subset
         type(nothing_type)  , intent(in)                    :: operation
-        real(RKC)           , intent(in)    , contiguous    :: mat(:,:)
-        real(RKC)           , intent(inout) , contiguous    :: chol(:,:)
-        real(RKC)           , intent(out)                   :: detSqrtLog
+        real(RKG)           , intent(in)    , contiguous    :: mat(:,:)
+        real(RKG)           , intent(inout) , contiguous    :: chol(:,:)
+        real(RKG)           , intent(out)                   :: detSqrtLog
         integer(IK)         , intent(out)                   :: info
     end subroutine
 #endif
@@ -1860,12 +1860,12 @@ module pm_matrixDet
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatDetSqrtLog_UXD_ONO_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         type(uppDia_type)   , intent(in)                    :: subset
         type(nothing_type)  , intent(in)                    :: operation
-        real(RKC)           , intent(in)    , contiguous    :: mat(:,:)
-        real(RKC)           , intent(inout) , contiguous    :: chol(:,:)
-        real(RKC)           , intent(out)                   :: detSqrtLog
+        real(RKG)           , intent(in)    , contiguous    :: mat(:,:)
+        real(RKG)           , intent(inout) , contiguous    :: chol(:,:)
+        real(RKG)           , intent(out)                   :: detSqrtLog
         integer(IK)         , intent(out)                   :: info
     end subroutine
 #endif
@@ -1875,12 +1875,12 @@ module pm_matrixDet
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatDetSqrtLog_UXD_ONO_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         type(uppDia_type)   , intent(in)                    :: subset
         type(nothing_type)  , intent(in)                    :: operation
-        real(RKC)           , intent(in)    , contiguous    :: mat(:,:)
-        real(RKC)           , intent(inout) , contiguous    :: chol(:,:)
-        real(RKC)           , intent(out)                   :: detSqrtLog
+        real(RKG)           , intent(in)    , contiguous    :: mat(:,:)
+        real(RKG)           , intent(inout) , contiguous    :: chol(:,:)
+        real(RKG)           , intent(out)                   :: detSqrtLog
         integer(IK)         , intent(out)                   :: info
     end subroutine
 #endif
@@ -1890,12 +1890,12 @@ module pm_matrixDet
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatDetSqrtLog_UXD_ONO_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         type(uppDia_type)   , intent(in)                    :: subset
         type(nothing_type)  , intent(in)                    :: operation
-        real(RKC)           , intent(in)    , contiguous    :: mat(:,:)
-        real(RKC)           , intent(inout) , contiguous    :: chol(:,:)
-        real(RKC)           , intent(out)                   :: detSqrtLog
+        real(RKG)           , intent(in)    , contiguous    :: mat(:,:)
+        real(RKG)           , intent(inout) , contiguous    :: chol(:,:)
+        real(RKG)           , intent(out)                   :: detSqrtLog
         integer(IK)         , intent(out)                   :: info
     end subroutine
 #endif
@@ -1907,12 +1907,12 @@ module pm_matrixDet
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatDetSqrtLog_XLD_ONO_CK5
 #endif
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
         type(lowDia_type)   , intent(in)                    :: subset
         type(nothing_type)  , intent(in)                    :: operation
-        complex(CKC)        , intent(in)    , contiguous    :: mat(:,:)
-        complex(CKC)        , intent(inout) , contiguous    :: chol(:,:)
-        real(CKC)           , intent(out)                   :: detSqrtLog
+        complex(CKG)        , intent(in)    , contiguous    :: mat(:,:)
+        complex(CKG)        , intent(inout) , contiguous    :: chol(:,:)
+        real(CKG)           , intent(out)                   :: detSqrtLog
         integer(IK)         , intent(out)                   :: info
     end subroutine
 #endif
@@ -1922,12 +1922,12 @@ module pm_matrixDet
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatDetSqrtLog_XLD_ONO_CK4
 #endif
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
         type(lowDia_type)   , intent(in)                    :: subset
         type(nothing_type)  , intent(in)                    :: operation
-        complex(CKC)        , intent(in)    , contiguous    :: mat(:,:)
-        complex(CKC)        , intent(inout) , contiguous    :: chol(:,:)
-        real(CKC)           , intent(out)                   :: detSqrtLog
+        complex(CKG)        , intent(in)    , contiguous    :: mat(:,:)
+        complex(CKG)        , intent(inout) , contiguous    :: chol(:,:)
+        real(CKG)           , intent(out)                   :: detSqrtLog
         integer(IK)         , intent(out)                   :: info
     end subroutine
 #endif
@@ -1937,12 +1937,12 @@ module pm_matrixDet
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatDetSqrtLog_XLD_ONO_CK3
 #endif
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
         type(lowDia_type)   , intent(in)                    :: subset
         type(nothing_type)  , intent(in)                    :: operation
-        complex(CKC)        , intent(in)    , contiguous    :: mat(:,:)
-        complex(CKC)        , intent(inout) , contiguous    :: chol(:,:)
-        real(CKC)           , intent(out)                   :: detSqrtLog
+        complex(CKG)        , intent(in)    , contiguous    :: mat(:,:)
+        complex(CKG)        , intent(inout) , contiguous    :: chol(:,:)
+        real(CKG)           , intent(out)                   :: detSqrtLog
         integer(IK)         , intent(out)                   :: info
     end subroutine
 #endif
@@ -1952,12 +1952,12 @@ module pm_matrixDet
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatDetSqrtLog_XLD_ONO_CK2
 #endif
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
         type(lowDia_type)   , intent(in)                    :: subset
         type(nothing_type)  , intent(in)                    :: operation
-        complex(CKC)        , intent(in)    , contiguous    :: mat(:,:)
-        complex(CKC)        , intent(inout) , contiguous    :: chol(:,:)
-        real(CKC)           , intent(out)                   :: detSqrtLog
+        complex(CKG)        , intent(in)    , contiguous    :: mat(:,:)
+        complex(CKG)        , intent(inout) , contiguous    :: chol(:,:)
+        real(CKG)           , intent(out)                   :: detSqrtLog
         integer(IK)         , intent(out)                   :: info
     end subroutine
 #endif
@@ -1967,12 +1967,12 @@ module pm_matrixDet
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatDetSqrtLog_XLD_ONO_CK1
 #endif
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
         type(lowDia_type)   , intent(in)                    :: subset
         type(nothing_type)  , intent(in)                    :: operation
-        complex(CKC)        , intent(in)    , contiguous    :: mat(:,:)
-        complex(CKC)        , intent(inout) , contiguous    :: chol(:,:)
-        real(CKC)           , intent(out)                   :: detSqrtLog
+        complex(CKG)        , intent(in)    , contiguous    :: mat(:,:)
+        complex(CKG)        , intent(inout) , contiguous    :: chol(:,:)
+        real(CKG)           , intent(out)                   :: detSqrtLog
         integer(IK)         , intent(out)                   :: info
     end subroutine
 #endif
@@ -1984,12 +1984,12 @@ module pm_matrixDet
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatDetSqrtLog_XLD_ONO_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         type(lowDia_type)   , intent(in)                    :: subset
         type(nothing_type)  , intent(in)                    :: operation
-        real(RKC)           , intent(in)    , contiguous    :: mat(:,:)
-        real(RKC)           , intent(inout) , contiguous    :: chol(:,:)
-        real(RKC)           , intent(out)                   :: detSqrtLog
+        real(RKG)           , intent(in)    , contiguous    :: mat(:,:)
+        real(RKG)           , intent(inout) , contiguous    :: chol(:,:)
+        real(RKG)           , intent(out)                   :: detSqrtLog
         integer(IK)         , intent(out)                   :: info
     end subroutine
 #endif
@@ -1999,12 +1999,12 @@ module pm_matrixDet
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatDetSqrtLog_XLD_ONO_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         type(lowDia_type)   , intent(in)                    :: subset
         type(nothing_type)  , intent(in)                    :: operation
-        real(RKC)           , intent(in)    , contiguous    :: mat(:,:)
-        real(RKC)           , intent(inout) , contiguous    :: chol(:,:)
-        real(RKC)           , intent(out)                   :: detSqrtLog
+        real(RKG)           , intent(in)    , contiguous    :: mat(:,:)
+        real(RKG)           , intent(inout) , contiguous    :: chol(:,:)
+        real(RKG)           , intent(out)                   :: detSqrtLog
         integer(IK)         , intent(out)                   :: info
     end subroutine
 #endif
@@ -2014,12 +2014,12 @@ module pm_matrixDet
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatDetSqrtLog_XLD_ONO_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         type(lowDia_type)   , intent(in)                    :: subset
         type(nothing_type)  , intent(in)                    :: operation
-        real(RKC)           , intent(in)    , contiguous    :: mat(:,:)
-        real(RKC)           , intent(inout) , contiguous    :: chol(:,:)
-        real(RKC)           , intent(out)                   :: detSqrtLog
+        real(RKG)           , intent(in)    , contiguous    :: mat(:,:)
+        real(RKG)           , intent(inout) , contiguous    :: chol(:,:)
+        real(RKG)           , intent(out)                   :: detSqrtLog
         integer(IK)         , intent(out)                   :: info
     end subroutine
 #endif
@@ -2029,12 +2029,12 @@ module pm_matrixDet
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatDetSqrtLog_XLD_ONO_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         type(lowDia_type)   , intent(in)                    :: subset
         type(nothing_type)  , intent(in)                    :: operation
-        real(RKC)           , intent(in)    , contiguous    :: mat(:,:)
-        real(RKC)           , intent(inout) , contiguous    :: chol(:,:)
-        real(RKC)           , intent(out)                   :: detSqrtLog
+        real(RKG)           , intent(in)    , contiguous    :: mat(:,:)
+        real(RKG)           , intent(inout) , contiguous    :: chol(:,:)
+        real(RKG)           , intent(out)                   :: detSqrtLog
         integer(IK)         , intent(out)                   :: info
     end subroutine
 #endif
@@ -2044,12 +2044,12 @@ module pm_matrixDet
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatDetSqrtLog_XLD_ONO_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         type(lowDia_type)   , intent(in)                    :: subset
         type(nothing_type)  , intent(in)                    :: operation
-        real(RKC)           , intent(in)    , contiguous    :: mat(:,:)
-        real(RKC)           , intent(inout) , contiguous    :: chol(:,:)
-        real(RKC)           , intent(out)                   :: detSqrtLog
+        real(RKG)           , intent(in)    , contiguous    :: mat(:,:)
+        real(RKG)           , intent(inout) , contiguous    :: chol(:,:)
+        real(RKG)           , intent(out)                   :: detSqrtLog
         integer(IK)         , intent(out)                   :: info
     end subroutine
 #endif
@@ -2069,12 +2069,12 @@ module pm_matrixDet
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatDetSqrtLog_UXD_OTH_CK5
 #endif
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
         type(uppDia_type)   , intent(in)                    :: subset
         type(transHerm_type), intent(in)                    :: operation
-        complex(CKC)        , intent(in)    , contiguous    :: mat(:,:)
-        complex(CKC)        , intent(inout) , contiguous    :: chol(:,:)
-        real(CKC)           , intent(out)                   :: detSqrtLog
+        complex(CKG)        , intent(in)    , contiguous    :: mat(:,:)
+        complex(CKG)        , intent(inout) , contiguous    :: chol(:,:)
+        real(CKG)           , intent(out)                   :: detSqrtLog
         integer(IK)         , intent(out)                   :: info
     end subroutine
 #endif
@@ -2084,12 +2084,12 @@ module pm_matrixDet
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatDetSqrtLog_UXD_OTH_CK4
 #endif
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
         type(uppDia_type)   , intent(in)                    :: subset
         type(transHerm_type), intent(in)                    :: operation
-        complex(CKC)        , intent(in)    , contiguous    :: mat(:,:)
-        complex(CKC)        , intent(inout) , contiguous    :: chol(:,:)
-        real(CKC)           , intent(out)                   :: detSqrtLog
+        complex(CKG)        , intent(in)    , contiguous    :: mat(:,:)
+        complex(CKG)        , intent(inout) , contiguous    :: chol(:,:)
+        real(CKG)           , intent(out)                   :: detSqrtLog
         integer(IK)         , intent(out)                   :: info
     end subroutine
 #endif
@@ -2099,12 +2099,12 @@ module pm_matrixDet
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatDetSqrtLog_UXD_OTH_CK3
 #endif
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
         type(uppDia_type)   , intent(in)                    :: subset
         type(transHerm_type), intent(in)                    :: operation
-        complex(CKC)        , intent(in)    , contiguous    :: mat(:,:)
-        complex(CKC)        , intent(inout) , contiguous    :: chol(:,:)
-        real(CKC)           , intent(out)                   :: detSqrtLog
+        complex(CKG)        , intent(in)    , contiguous    :: mat(:,:)
+        complex(CKG)        , intent(inout) , contiguous    :: chol(:,:)
+        real(CKG)           , intent(out)                   :: detSqrtLog
         integer(IK)         , intent(out)                   :: info
     end subroutine
 #endif
@@ -2114,12 +2114,12 @@ module pm_matrixDet
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatDetSqrtLog_UXD_OTH_CK2
 #endif
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
         type(uppDia_type)   , intent(in)                    :: subset
         type(transHerm_type), intent(in)                    :: operation
-        complex(CKC)        , intent(in)    , contiguous    :: mat(:,:)
-        complex(CKC)        , intent(inout) , contiguous    :: chol(:,:)
-        real(CKC)           , intent(out)                   :: detSqrtLog
+        complex(CKG)        , intent(in)    , contiguous    :: mat(:,:)
+        complex(CKG)        , intent(inout) , contiguous    :: chol(:,:)
+        real(CKG)           , intent(out)                   :: detSqrtLog
         integer(IK)         , intent(out)                   :: info
     end subroutine
 #endif
@@ -2129,12 +2129,12 @@ module pm_matrixDet
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatDetSqrtLog_UXD_OTH_CK1
 #endif
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
         type(uppDia_type)   , intent(in)                    :: subset
         type(transHerm_type), intent(in)                    :: operation
-        complex(CKC)        , intent(in)    , contiguous    :: mat(:,:)
-        complex(CKC)        , intent(inout) , contiguous    :: chol(:,:)
-        real(CKC)           , intent(out)                   :: detSqrtLog
+        complex(CKG)        , intent(in)    , contiguous    :: mat(:,:)
+        complex(CKG)        , intent(inout) , contiguous    :: chol(:,:)
+        real(CKG)           , intent(out)                   :: detSqrtLog
         integer(IK)         , intent(out)                   :: info
     end subroutine
 #endif
@@ -2146,12 +2146,12 @@ module pm_matrixDet
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatDetSqrtLog_UXD_OTH_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         type(uppDia_type)   , intent(in)                    :: subset
         type(transHerm_type), intent(in)                    :: operation
-        real(RKC)           , intent(in)    , contiguous    :: mat(:,:)
-        real(RKC)           , intent(inout) , contiguous    :: chol(:,:)
-        real(RKC)           , intent(out)                   :: detSqrtLog
+        real(RKG)           , intent(in)    , contiguous    :: mat(:,:)
+        real(RKG)           , intent(inout) , contiguous    :: chol(:,:)
+        real(RKG)           , intent(out)                   :: detSqrtLog
         integer(IK)         , intent(out)                   :: info
     end subroutine
 #endif
@@ -2161,12 +2161,12 @@ module pm_matrixDet
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatDetSqrtLog_UXD_OTH_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         type(uppDia_type)   , intent(in)                    :: subset
         type(transHerm_type), intent(in)                    :: operation
-        real(RKC)           , intent(in)    , contiguous    :: mat(:,:)
-        real(RKC)           , intent(inout) , contiguous    :: chol(:,:)
-        real(RKC)           , intent(out)                   :: detSqrtLog
+        real(RKG)           , intent(in)    , contiguous    :: mat(:,:)
+        real(RKG)           , intent(inout) , contiguous    :: chol(:,:)
+        real(RKG)           , intent(out)                   :: detSqrtLog
         integer(IK)         , intent(out)                   :: info
     end subroutine
 #endif
@@ -2176,12 +2176,12 @@ module pm_matrixDet
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatDetSqrtLog_UXD_OTH_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         type(uppDia_type)   , intent(in)                    :: subset
         type(transHerm_type), intent(in)                    :: operation
-        real(RKC)           , intent(in)    , contiguous    :: mat(:,:)
-        real(RKC)           , intent(inout) , contiguous    :: chol(:,:)
-        real(RKC)           , intent(out)                   :: detSqrtLog
+        real(RKG)           , intent(in)    , contiguous    :: mat(:,:)
+        real(RKG)           , intent(inout) , contiguous    :: chol(:,:)
+        real(RKG)           , intent(out)                   :: detSqrtLog
         integer(IK)         , intent(out)                   :: info
     end subroutine
 #endif
@@ -2191,12 +2191,12 @@ module pm_matrixDet
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatDetSqrtLog_UXD_OTH_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         type(uppDia_type)   , intent(in)                    :: subset
         type(transHerm_type), intent(in)                    :: operation
-        real(RKC)           , intent(in)    , contiguous    :: mat(:,:)
-        real(RKC)           , intent(inout) , contiguous    :: chol(:,:)
-        real(RKC)           , intent(out)                   :: detSqrtLog
+        real(RKG)           , intent(in)    , contiguous    :: mat(:,:)
+        real(RKG)           , intent(inout) , contiguous    :: chol(:,:)
+        real(RKG)           , intent(out)                   :: detSqrtLog
         integer(IK)         , intent(out)                   :: info
     end subroutine
 #endif
@@ -2206,12 +2206,12 @@ module pm_matrixDet
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatDetSqrtLog_UXD_OTH_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         type(uppDia_type)   , intent(in)                    :: subset
         type(transHerm_type), intent(in)                    :: operation
-        real(RKC)           , intent(in)    , contiguous    :: mat(:,:)
-        real(RKC)           , intent(inout) , contiguous    :: chol(:,:)
-        real(RKC)           , intent(out)                   :: detSqrtLog
+        real(RKG)           , intent(in)    , contiguous    :: mat(:,:)
+        real(RKG)           , intent(inout) , contiguous    :: chol(:,:)
+        real(RKG)           , intent(out)                   :: detSqrtLog
         integer(IK)         , intent(out)                   :: info
     end subroutine
 #endif
@@ -2223,12 +2223,12 @@ module pm_matrixDet
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatDetSqrtLog_XLD_OTH_CK5
 #endif
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
         type(lowDia_type)   , intent(in)                    :: subset
         type(transHerm_type), intent(in)                    :: operation
-        complex(CKC)        , intent(in)    , contiguous    :: mat(:,:)
-        complex(CKC)        , intent(inout) , contiguous    :: chol(:,:)
-        real(CKC)           , intent(out)                   :: detSqrtLog
+        complex(CKG)        , intent(in)    , contiguous    :: mat(:,:)
+        complex(CKG)        , intent(inout) , contiguous    :: chol(:,:)
+        real(CKG)           , intent(out)                   :: detSqrtLog
         integer(IK)         , intent(out)                   :: info
     end subroutine
 #endif
@@ -2238,12 +2238,12 @@ module pm_matrixDet
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatDetSqrtLog_XLD_OTH_CK4
 #endif
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
         type(lowDia_type)   , intent(in)                    :: subset
         type(transHerm_type), intent(in)                    :: operation
-        complex(CKC)        , intent(in)    , contiguous    :: mat(:,:)
-        complex(CKC)        , intent(inout) , contiguous    :: chol(:,:)
-        real(CKC)           , intent(out)                   :: detSqrtLog
+        complex(CKG)        , intent(in)    , contiguous    :: mat(:,:)
+        complex(CKG)        , intent(inout) , contiguous    :: chol(:,:)
+        real(CKG)           , intent(out)                   :: detSqrtLog
         integer(IK)         , intent(out)                   :: info
     end subroutine
 #endif
@@ -2253,12 +2253,12 @@ module pm_matrixDet
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatDetSqrtLog_XLD_OTH_CK3
 #endif
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
         type(lowDia_type)   , intent(in)                    :: subset
         type(transHerm_type), intent(in)                    :: operation
-        complex(CKC)        , intent(in)    , contiguous    :: mat(:,:)
-        complex(CKC)        , intent(inout) , contiguous    :: chol(:,:)
-        real(CKC)           , intent(out)                   :: detSqrtLog
+        complex(CKG)        , intent(in)    , contiguous    :: mat(:,:)
+        complex(CKG)        , intent(inout) , contiguous    :: chol(:,:)
+        real(CKG)           , intent(out)                   :: detSqrtLog
         integer(IK)         , intent(out)                   :: info
     end subroutine
 #endif
@@ -2268,12 +2268,12 @@ module pm_matrixDet
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatDetSqrtLog_XLD_OTH_CK2
 #endif
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
         type(lowDia_type)   , intent(in)                    :: subset
         type(transHerm_type), intent(in)                    :: operation
-        complex(CKC)        , intent(in)    , contiguous    :: mat(:,:)
-        complex(CKC)        , intent(inout) , contiguous    :: chol(:,:)
-        real(CKC)           , intent(out)                   :: detSqrtLog
+        complex(CKG)        , intent(in)    , contiguous    :: mat(:,:)
+        complex(CKG)        , intent(inout) , contiguous    :: chol(:,:)
+        real(CKG)           , intent(out)                   :: detSqrtLog
         integer(IK)         , intent(out)                   :: info
     end subroutine
 #endif
@@ -2283,12 +2283,12 @@ module pm_matrixDet
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatDetSqrtLog_XLD_OTH_CK1
 #endif
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
         type(lowDia_type)   , intent(in)                    :: subset
         type(transHerm_type), intent(in)                    :: operation
-        complex(CKC)        , intent(in)    , contiguous    :: mat(:,:)
-        complex(CKC)        , intent(inout) , contiguous    :: chol(:,:)
-        real(CKC)           , intent(out)                   :: detSqrtLog
+        complex(CKG)        , intent(in)    , contiguous    :: mat(:,:)
+        complex(CKG)        , intent(inout) , contiguous    :: chol(:,:)
+        real(CKG)           , intent(out)                   :: detSqrtLog
         integer(IK)         , intent(out)                   :: info
     end subroutine
 #endif
@@ -2300,12 +2300,12 @@ module pm_matrixDet
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatDetSqrtLog_XLD_OTH_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         type(lowDia_type)   , intent(in)                    :: subset
         type(transHerm_type), intent(in)                    :: operation
-        real(RKC)           , intent(in)    , contiguous    :: mat(:,:)
-        real(RKC)           , intent(inout) , contiguous    :: chol(:,:)
-        real(RKC)           , intent(out)                   :: detSqrtLog
+        real(RKG)           , intent(in)    , contiguous    :: mat(:,:)
+        real(RKG)           , intent(inout) , contiguous    :: chol(:,:)
+        real(RKG)           , intent(out)                   :: detSqrtLog
         integer(IK)         , intent(out)                   :: info
     end subroutine
 #endif
@@ -2315,12 +2315,12 @@ module pm_matrixDet
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatDetSqrtLog_XLD_OTH_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         type(lowDia_type)   , intent(in)                    :: subset
         type(transHerm_type), intent(in)                    :: operation
-        real(RKC)           , intent(in)    , contiguous    :: mat(:,:)
-        real(RKC)           , intent(inout) , contiguous    :: chol(:,:)
-        real(RKC)           , intent(out)                   :: detSqrtLog
+        real(RKG)           , intent(in)    , contiguous    :: mat(:,:)
+        real(RKG)           , intent(inout) , contiguous    :: chol(:,:)
+        real(RKG)           , intent(out)                   :: detSqrtLog
         integer(IK)         , intent(out)                   :: info
     end subroutine
 #endif
@@ -2330,12 +2330,12 @@ module pm_matrixDet
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatDetSqrtLog_XLD_OTH_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         type(lowDia_type)   , intent(in)                    :: subset
         type(transHerm_type), intent(in)                    :: operation
-        real(RKC)           , intent(in)    , contiguous    :: mat(:,:)
-        real(RKC)           , intent(inout) , contiguous    :: chol(:,:)
-        real(RKC)           , intent(out)                   :: detSqrtLog
+        real(RKG)           , intent(in)    , contiguous    :: mat(:,:)
+        real(RKG)           , intent(inout) , contiguous    :: chol(:,:)
+        real(RKG)           , intent(out)                   :: detSqrtLog
         integer(IK)         , intent(out)                   :: info
     end subroutine
 #endif
@@ -2345,12 +2345,12 @@ module pm_matrixDet
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatDetSqrtLog_XLD_OTH_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         type(lowDia_type)   , intent(in)                    :: subset
         type(transHerm_type), intent(in)                    :: operation
-        real(RKC)           , intent(in)    , contiguous    :: mat(:,:)
-        real(RKC)           , intent(inout) , contiguous    :: chol(:,:)
-        real(RKC)           , intent(out)                   :: detSqrtLog
+        real(RKG)           , intent(in)    , contiguous    :: mat(:,:)
+        real(RKG)           , intent(inout) , contiguous    :: chol(:,:)
+        real(RKG)           , intent(out)                   :: detSqrtLog
         integer(IK)         , intent(out)                   :: info
     end subroutine
 #endif
@@ -2360,12 +2360,12 @@ module pm_matrixDet
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMatDetSqrtLog_XLD_OTH_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         type(lowDia_type)   , intent(in)                    :: subset
         type(transHerm_type), intent(in)                    :: operation
-        real(RKC)           , intent(in)    , contiguous    :: mat(:,:)
-        real(RKC)           , intent(inout) , contiguous    :: chol(:,:)
-        real(RKC)           , intent(out)                   :: detSqrtLog
+        real(RKG)           , intent(in)    , contiguous    :: mat(:,:)
+        real(RKG)           , intent(inout) , contiguous    :: chol(:,:)
+        real(RKG)           , intent(out)                   :: detSqrtLog
         integer(IK)         , intent(out)                   :: info
     end subroutine
 #endif

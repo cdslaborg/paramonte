@@ -20,17 +20,17 @@ program example
     call disp%skip()
 
     block
-        use pm_kind, only: TKC => RKH
-        real(TKC), allocatable :: mat(:,:)
-        real(TKC) :: det
+        use pm_kind, only: TKG => RKH
+        real(TKG), allocatable :: mat(:,:)
+        real(TKG) :: det
         do itry = 1, ntry
             call disp%skip()
             call disp%show("ndim = getUnifRand(1, 9)")
                             ndim = getUnifRand(1, 9)
             call disp%show("ndim")
             call disp%show( ndim )
-            call disp%show("mat = getUnifRand(1._TKC, 2._TKC, ndim, ndim)")
-                            mat = getUnifRand(1._TKC, 2._TKC, ndim, ndim)
+            call disp%show("mat = getUnifRand(1._TKG, 2._TKG, ndim, ndim)")
+                            mat = getUnifRand(1._TKG, 2._TKG, ndim, ndim)
             call disp%show("mat")
             call disp%show( mat )
             call disp%show("det = getMatDet(mat)")
@@ -44,15 +44,15 @@ program example
     end block
 
     block
-        use pm_kind, only: TKC => CKH
-        complex(TKC), allocatable :: mat(:,:)
-        real(TKC) :: det
+        use pm_kind, only: TKG => CKH
+        complex(TKG), allocatable :: mat(:,:)
+        real(TKG) :: det
         do itry = 1, ntry
             call disp%skip()
             call disp%show("ndim = getUnifRand(1, 9)")
                             ndim = getUnifRand(1, 9)
-            call disp%show("mat = getUnifRand((1._TKC, 1._TKC), (2._TKC, 2._TKC), ndim, ndim)")
-                            mat = getUnifRand((1._TKC, 1._TKC), (2._TKC, 2._TKC), ndim, ndim)
+            call disp%show("mat = getUnifRand((1._TKG, 1._TKG), (2._TKG, 2._TKG), ndim, ndim)")
+                            mat = getUnifRand((1._TKG, 1._TKG), (2._TKG, 2._TKG), ndim, ndim)
             call disp%show("mat")
             call disp%show( mat )
             call disp%show("det = getMatDet(mat)")

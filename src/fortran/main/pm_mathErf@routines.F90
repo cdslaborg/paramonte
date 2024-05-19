@@ -56,35 +56,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getErfInv_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_mathErf@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getErfInv_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_mathErf@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getErfInv_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_mathErf@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getErfInv_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_mathErf@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getErfInv_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_mathErf@routines.inc.F90"
     end procedure
 #endif
@@ -113,35 +113,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setErfInv_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_mathErf@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setErfInv_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_mathErf@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setErfInv_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_mathErf@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setErfInv_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_mathErf@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setErfInv_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_mathErf@routines.inc.F90"
     end procedure
 #endif

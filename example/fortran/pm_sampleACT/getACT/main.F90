@@ -23,9 +23,9 @@ program example
     call disp%skip()
 
     block
-        use pm_kind, only: TKC => RKS ! All other real types are also supported.
-        real(TKC), allocatable :: table(:,:)
-        real(TKC) :: act
+        use pm_kind, only: TKG => RKS ! All other real types are also supported.
+        real(TKG), allocatable :: table(:,:)
+        real(TKG) :: act
         call disp%skip()
         call disp%show("if (0 /= getErrTableRead(SK_'duluth.txt', table, sep = TAB, roff = 1_IK)) error stop 'table read failed.'")
                         if (0 /= getErrTableRead(SK_'duluth.txt', table, sep = TAB, roff = 1_IK)) error stop 'table read failed.'
@@ -73,11 +73,11 @@ program example
         use pm_arrayResize, only: setResized
         use pm_io, only: getErrTableWrite, trans
         use pm_arrayRange, only: getRange
-        use pm_kind, only: TKC => RKS ! All other real types are also supported.
+        use pm_kind, only: TKG => RKS ! All other real types are also supported.
         character(:, SK), allocatable :: header
         integer(IK), allocatable :: sbatch(:)
-        real(TKC), allocatable :: output(:,:)
-        real(TKC), allocatable :: table(:,:)
+        real(TKG), allocatable :: output(:,:)
+        real(TKG), allocatable :: table(:,:)
         integer(IK) :: ibatch
         if (0 /= getErrTableRead(SK_'duluth.txt', table, header, sep = TAB)) error stop 'table read failed.'
         sbatch = getRange(2_IK, size(table, 1, IK) / 2_IK)

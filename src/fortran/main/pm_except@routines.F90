@@ -56,35 +56,35 @@ contains
 
 #if IK5_ENABLED
     module procedure isAddOutflow_IK5
-        use pm_kind, only: IKC => IK5
+        use pm_kind, only: IKG => IK5
 #include "pm_except@routines.inc.F90"
     end procedure
 #endif
 
 #if IK4_ENABLED
     module procedure isAddOutflow_IK4
-        use pm_kind, only: IKC => IK4
+        use pm_kind, only: IKG => IK4
 #include "pm_except@routines.inc.F90"
     end procedure
 #endif
 
 #if IK3_ENABLED
     module procedure isAddOutflow_IK3
-        use pm_kind, only: IKC => IK3
+        use pm_kind, only: IKG => IK3
 #include "pm_except@routines.inc.F90"
     end procedure
 #endif
 
 #if IK2_ENABLED
     module procedure isAddOutflow_IK2
-        use pm_kind, only: IKC => IK2
+        use pm_kind, only: IKG => IK2
 #include "pm_except@routines.inc.F90"
     end procedure
 #endif
 
 #if IK1_ENABLED
     module procedure isAddOutflow_IK1
-        use pm_kind, only: IKC => IK1
+        use pm_kind, only: IKG => IK1
 #include "pm_except@routines.inc.F90"
     end procedure
 #endif
@@ -97,35 +97,35 @@ contains
 
 #if CK5_ENABLED
     module procedure isAddOutflow_CK5
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
 #include "pm_except@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure isAddOutflow_CK4
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
 #include "pm_except@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure isAddOutflow_CK3
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
 #include "pm_except@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure isAddOutflow_CK2
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
 #include "pm_except@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure isAddOutflow_CK1
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
 #include "pm_except@routines.inc.F90"
     end procedure
 #endif
@@ -138,35 +138,35 @@ contains
 
 #if RK5_ENABLED
     module procedure isAddOutflow_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_except@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure isAddOutflow_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_except@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure isAddOutflow_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_except@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure isAddOutflow_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_except@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure isAddOutflow_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_except@routines.inc.F90"
     end procedure
 #endif
@@ -187,35 +187,35 @@ contains
 
 #if IK5_ENABLED
     module procedure isAddOutflowNeg_IK5
-        use pm_kind, only: IKC => IK5
+        use pm_kind, only: IKG => IK5
 #include "pm_except@routines.inc.F90"
     end procedure
 #endif
 
 #if IK4_ENABLED
     module procedure isAddOutflowNeg_IK4
-        use pm_kind, only: IKC => IK4
+        use pm_kind, only: IKG => IK4
 #include "pm_except@routines.inc.F90"
     end procedure
 #endif
 
 #if IK3_ENABLED
     module procedure isAddOutflowNeg_IK3
-        use pm_kind, only: IKC => IK3
+        use pm_kind, only: IKG => IK3
 #include "pm_except@routines.inc.F90"
     end procedure
 #endif
 
 #if IK2_ENABLED
     module procedure isAddOutflowNeg_IK2
-        use pm_kind, only: IKC => IK2
+        use pm_kind, only: IKG => IK2
 #include "pm_except@routines.inc.F90"
     end procedure
 #endif
 
 #if IK1_ENABLED
     module procedure isAddOutflowNeg_IK1
-        use pm_kind, only: IKC => IK1
+        use pm_kind, only: IKG => IK1
 #include "pm_except@routines.inc.F90"
     end procedure
 #endif
@@ -228,35 +228,35 @@ contains
 
 #if CK5_ENABLED
     module procedure isAddOutflowNeg_CK5
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
 #include "pm_except@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure isAddOutflowNeg_CK4
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
 #include "pm_except@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure isAddOutflowNeg_CK3
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
 #include "pm_except@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure isAddOutflowNeg_CK2
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
 #include "pm_except@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure isAddOutflowNeg_CK1
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
 #include "pm_except@routines.inc.F90"
     end procedure
 #endif
@@ -269,35 +269,35 @@ contains
 
 #if RK5_ENABLED
     module procedure isAddOutflowNeg_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_except@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure isAddOutflowNeg_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_except@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure isAddOutflowNeg_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_except@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure isAddOutflowNeg_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_except@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure isAddOutflowNeg_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_except@routines.inc.F90"
     end procedure
 #endif
@@ -318,35 +318,35 @@ contains
 
 #if IK5_ENABLED
     module procedure isAddOutflowPos_IK5
-        use pm_kind, only: IKC => IK5
+        use pm_kind, only: IKG => IK5
 #include "pm_except@routines.inc.F90"
     end procedure
 #endif
 
 #if IK4_ENABLED
     module procedure isAddOutflowPos_IK4
-        use pm_kind, only: IKC => IK4
+        use pm_kind, only: IKG => IK4
 #include "pm_except@routines.inc.F90"
     end procedure
 #endif
 
 #if IK3_ENABLED
     module procedure isAddOutflowPos_IK3
-        use pm_kind, only: IKC => IK3
+        use pm_kind, only: IKG => IK3
 #include "pm_except@routines.inc.F90"
     end procedure
 #endif
 
 #if IK2_ENABLED
     module procedure isAddOutflowPos_IK2
-        use pm_kind, only: IKC => IK2
+        use pm_kind, only: IKG => IK2
 #include "pm_except@routines.inc.F90"
     end procedure
 #endif
 
 #if IK1_ENABLED
     module procedure isAddOutflowPos_IK1
-        use pm_kind, only: IKC => IK1
+        use pm_kind, only: IKG => IK1
 #include "pm_except@routines.inc.F90"
     end procedure
 #endif
@@ -359,35 +359,35 @@ contains
 
 #if CK5_ENABLED
     module procedure isAddOutflowPos_CK5
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
 #include "pm_except@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure isAddOutflowPos_CK4
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
 #include "pm_except@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure isAddOutflowPos_CK3
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
 #include "pm_except@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure isAddOutflowPos_CK2
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
 #include "pm_except@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure isAddOutflowPos_CK1
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
 #include "pm_except@routines.inc.F90"
     end procedure
 #endif
@@ -400,35 +400,35 @@ contains
 
 #if RK5_ENABLED
     module procedure isAddOutflowPos_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_except@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure isAddOutflowPos_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_except@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure isAddOutflowPos_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_except@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure isAddOutflowPos_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_except@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure isAddOutflowPos_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_except@routines.inc.F90"
     end procedure
 #endif
@@ -449,35 +449,35 @@ contains
 
 #if RK5_ENABLED
     module procedure isInf_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_except@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure isInf_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_except@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure isInf_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_except@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure isInf_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_except@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure isInf_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_except@routines.inc.F90"
     end procedure
 #endif
@@ -490,35 +490,35 @@ contains
 
 #if CK5_ENABLED
     module procedure isInf_CK5
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
 #include "pm_except@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure isInf_CK4
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
 #include "pm_except@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure isInf_CK3
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
 #include "pm_except@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure isInf_CK2
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
 #include "pm_except@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure isInf_CK1
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
 #include "pm_except@routines.inc.F90"
     end procedure
 #endif
@@ -539,35 +539,35 @@ contains
 
 #if RK5_ENABLED
     module procedure isInfPos_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_except@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure isInfPos_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_except@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure isInfPos_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_except@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure isInfPos_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_except@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure isInfPos_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_except@routines.inc.F90"
     end procedure
 #endif
@@ -580,35 +580,35 @@ contains
 
 #if CK5_ENABLED
     module procedure isInfPos_CK5
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
 #include "pm_except@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure isInfPos_CK4
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
 #include "pm_except@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure isInfPos_CK3
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
 #include "pm_except@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure isInfPos_CK2
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
 #include "pm_except@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure isInfPos_CK1
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
 #include "pm_except@routines.inc.F90"
     end procedure
 #endif
@@ -629,35 +629,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getInfPos_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_except@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getInfPos_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_except@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getInfPos_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_except@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getInfPos_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_except@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getInfPos_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_except@routines.inc.F90"
     end procedure
 #endif
@@ -670,35 +670,35 @@ contains
 
 #if CK5_ENABLED
     module procedure getInfPos_CK5
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
 #include "pm_except@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure getInfPos_CK4
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
 #include "pm_except@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure getInfPos_CK3
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
 #include "pm_except@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure getInfPos_CK2
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
 #include "pm_except@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure getInfPos_CK1
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
 #include "pm_except@routines.inc.F90"
     end procedure
 #endif
@@ -719,35 +719,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setInfPos_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_except@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setInfPos_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_except@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setInfPos_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_except@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setInfPos_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_except@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setInfPos_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_except@routines.inc.F90"
     end procedure
 #endif
@@ -760,35 +760,35 @@ contains
 
 #if CK5_ENABLED
     module procedure setInfPos_CK5
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
 #include "pm_except@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure setInfPos_CK4
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
 #include "pm_except@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure setInfPos_CK3
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
 #include "pm_except@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure setInfPos_CK2
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
 #include "pm_except@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure setInfPos_CK1
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
 #include "pm_except@routines.inc.F90"
     end procedure
 #endif
@@ -809,35 +809,35 @@ contains
 
 #if RK5_ENABLED
     module procedure isInfNeg_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_except@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure isInfNeg_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_except@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure isInfNeg_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_except@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure isInfNeg_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_except@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure isInfNeg_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_except@routines.inc.F90"
     end procedure
 #endif
@@ -850,35 +850,35 @@ contains
 
 #if CK5_ENABLED
     module procedure isInfNeg_CK5
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
 #include "pm_except@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure isInfNeg_CK4
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
 #include "pm_except@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure isInfNeg_CK3
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
 #include "pm_except@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure isInfNeg_CK2
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
 #include "pm_except@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure isInfNeg_CK1
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
 #include "pm_except@routines.inc.F90"
     end procedure
 #endif
@@ -899,35 +899,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getInfNeg_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_except@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getInfNeg_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_except@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getInfNeg_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_except@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getInfNeg_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_except@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getInfNeg_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_except@routines.inc.F90"
     end procedure
 #endif
@@ -940,35 +940,35 @@ contains
 
 #if CK5_ENABLED
     module procedure getInfNeg_CK5
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
 #include "pm_except@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure getInfNeg_CK4
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
 #include "pm_except@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure getInfNeg_CK3
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
 #include "pm_except@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure getInfNeg_CK2
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
 #include "pm_except@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure getInfNeg_CK1
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
 #include "pm_except@routines.inc.F90"
     end procedure
 #endif
@@ -989,35 +989,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setInfNeg_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_except@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setInfNeg_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_except@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setInfNeg_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_except@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setInfNeg_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_except@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setInfNeg_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_except@routines.inc.F90"
     end procedure
 #endif
@@ -1030,35 +1030,35 @@ contains
 
 #if CK5_ENABLED
     module procedure setInfNeg_CK5
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
 #include "pm_except@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure setInfNeg_CK4
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
 #include "pm_except@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure setInfNeg_CK3
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
 #include "pm_except@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure setInfNeg_CK2
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
 #include "pm_except@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure setInfNeg_CK1
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
 #include "pm_except@routines.inc.F90"
     end procedure
 #endif
@@ -1085,35 +1085,35 @@ contains
 
 #if CK5_ENABLED
     module procedure isNANIEEE_CK5
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
 #include "pm_except@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure isNANIEEE_CK4
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
 #include "pm_except@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure isNANIEEE_CK3
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
 #include "pm_except@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure isNANIEEE_CK2
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
 #include "pm_except@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure isNANIEEE_CK1
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
 #include "pm_except@routines.inc.F90"
     end procedure
 #endif
@@ -1126,35 +1126,35 @@ contains
 
 #if RK5_ENABLED
     module procedure isNANIEEE_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_except@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure isNANIEEE_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_except@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure isNANIEEE_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_except@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure isNANIEEE_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_except@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure isNANIEEE_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_except@routines.inc.F90"
     end procedure
 #endif
@@ -1177,35 +1177,35 @@ contains
 
 #if CK5_ENABLED
     module procedure isNANXNEQ_CK5
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
 #include "pm_except@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure isNANXNEQ_CK4
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
 #include "pm_except@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure isNANXNEQ_CK3
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
 #include "pm_except@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure isNANXNEQ_CK2
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
 #include "pm_except@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure isNANXNEQ_CK1
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
 #include "pm_except@routines.inc.F90"
     end procedure
 #endif
@@ -1218,35 +1218,35 @@ contains
 
 #if RK5_ENABLED
     module procedure isNANXNEQ_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_except@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure isNANXNEQ_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_except@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure isNANXNEQ_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_except@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure isNANXNEQ_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_except@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure isNANXNEQ_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_except@routines.inc.F90"
     end procedure
 #endif
@@ -1273,35 +1273,35 @@ contains
 
 #if CK5_ENABLED
     module procedure getNAN_CK5
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
 #include "pm_except@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure getNAN_CK4
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
 #include "pm_except@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure getNAN_CK3
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
 #include "pm_except@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure getNAN_CK2
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
 #include "pm_except@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure getNAN_CK1
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
 #include "pm_except@routines.inc.F90"
     end procedure
 #endif
@@ -1314,35 +1314,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getNAN_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_except@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getNAN_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_except@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getNAN_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_except@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getNAN_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_except@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getNAN_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_except@routines.inc.F90"
     end procedure
 #endif
@@ -1363,35 +1363,35 @@ contains
 
 #if CK5_ENABLED
     module procedure setNAN_CK5
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
 #include "pm_except@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure setNAN_CK4
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
 #include "pm_except@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure setNAN_CK3
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
 #include "pm_except@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure setNAN_CK2
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
 #include "pm_except@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure setNAN_CK1
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
 #include "pm_except@routines.inc.F90"
     end procedure
 #endif
@@ -1404,35 +1404,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setNAN_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_except@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setNAN_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_except@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setNAN_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_except@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setNAN_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_except@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setNAN_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_except@routines.inc.F90"
     end procedure
 #endif

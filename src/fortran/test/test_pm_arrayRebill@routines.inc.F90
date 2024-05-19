@@ -26,7 +26,7 @@
 
         ! Bypass gfortran bug 10-12.
 #if     setRebilled_D1_SK_ENABLED || setRebilled_D2_SK_ENABLED || setRebilled_D3_SK_ENABLED
-#define TYPE_KIND character(2,SKC) ::
+#define TYPE_KIND character(2,SKG) ::
 #else
 #define TYPE_KIND
 #endif
@@ -55,22 +55,22 @@
 #endif
 
 #if     setRebilled_D1_SK_ENABLED || setRebilled_D2_SK_ENABLED || setRebilled_D3_SK_ENABLED
-        character(2,SKC), allocatable   :: SET_DIM(array), SET_DIM(arrayInit), SET_DIM(array_ref)
-        character(2,SKC), parameter     :: fill = SKC_"--", lower = SKC_"aa", upper = SKC_"zz"
+        character(2,SKG), allocatable   :: SET_DIM(array), SET_DIM(arrayInit), SET_DIM(array_ref)
+        character(2,SKG), parameter     :: fill = SKG_"--", lower = SKG_"aa", upper = SKG_"zz"
 #elif   setRebilled_D1_IK_ENABLED || setRebilled_D2_IK_ENABLED || setRebilled_D3_IK_ENABLED
-        integer(IKC)    , allocatable   :: SET_DIM(array), SET_DIM(arrayInit), SET_DIM(array_ref)
-        integer(IKC)    , parameter     :: fill = huge(0_IKC), lower = -huge(0_IKC), upper = huge(0_IKC)
+        integer(IKG)    , allocatable   :: SET_DIM(array), SET_DIM(arrayInit), SET_DIM(array_ref)
+        integer(IKG)    , parameter     :: fill = huge(0_IKG), lower = -huge(0_IKG), upper = huge(0_IKG)
 #elif   setRebilled_D1_LK_ENABLED || setRebilled_D2_LK_ENABLED || setRebilled_D3_LK_ENABLED
-        logical(LKC)    , allocatable   :: SET_DIM(array), SET_DIM(arrayInit), SET_DIM(array_ref)
-        logical(LKC)    , parameter     :: fill = .false._LKC, lower = .false._LKC, upper = .true._LKC
+        logical(LKG)    , allocatable   :: SET_DIM(array), SET_DIM(arrayInit), SET_DIM(array_ref)
+        logical(LKG)    , parameter     :: fill = .false._LKG, lower = .false._LKG, upper = .true._LKG
 #elif   setRebilled_D1_CK_ENABLED || setRebilled_D2_CK_ENABLED || setRebilled_D3_CK_ENABLED
-        complex(CKC)    , allocatable   :: SET_DIM(array), SET_DIM(arrayInit), SET_DIM(array_ref)
-        complex(CKC)    , parameter     :: fill = cmplx(huge(0._CKC), huge(0._CKC), kind = CKC)
-        complex(CKC)    , parameter     :: lower = -fill, upper = fill
+        complex(CKG)    , allocatable   :: SET_DIM(array), SET_DIM(arrayInit), SET_DIM(array_ref)
+        complex(CKG)    , parameter     :: fill = cmplx(huge(0._CKG), huge(0._CKG), kind = CKG)
+        complex(CKG)    , parameter     :: lower = -fill, upper = fill
 #elif   setRebilled_D1_RK_ENABLED || setRebilled_D2_RK_ENABLED || setRebilled_D3_RK_ENABLED
-        real(RKC)       , allocatable   :: SET_DIM(array), SET_DIM(arrayInit), SET_DIM(array_ref)
-        real(RKC)       , parameter     :: fill = huge(0._RKC)
-        real(RKC)       , parameter     :: lower = -fill, upper = fill
+        real(RKG)       , allocatable   :: SET_DIM(array), SET_DIM(arrayInit), SET_DIM(array_ref)
+        real(RKG)       , parameter     :: fill = huge(0._RKG)
+        real(RKG)       , parameter     :: lower = -fill, upper = fill
 #else
 #error  "Unrecognized interface."
 #endif

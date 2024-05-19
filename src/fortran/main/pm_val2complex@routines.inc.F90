@@ -26,9 +26,9 @@
 
 #if     LK_ENABLED
         if (val) then
-            conversion = (1._CKC, 1._CKC)
+            conversion = (1._CKG, 1._CKG)
         else
-            conversion = (0._CKC, 0._CKC)
+            conversion = (0._CKG, 0._CKG)
         end if
 #elif   SK_ENABLED
 #if     Def_ENABLED
@@ -46,7 +46,7 @@
 #elif   Err_ENABLED
         read(val, *, iostat = iostat) conversion%re
 #endif
-        conversion%im = 0._CKC
+        conversion%im = 0._CKG
 #else
 #error  "Unrecognized interface."
 #endif

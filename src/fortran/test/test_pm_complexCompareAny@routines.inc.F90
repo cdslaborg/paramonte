@@ -57,8 +57,8 @@
         integer(IK)     , parameter :: NP = 5_IK
         integer(IK)     :: i, j
         logical(LK)     :: result(NP,NP), result_def(NP,NP)
-        complex(CKC)    :: mat1(NP,NP)
-        complex(CKC)    :: mat2(NP,NP)
+        complex(CKG)    :: mat1(NP,NP)
+        complex(CKG)    :: mat2(NP,NP)
 
         assertion = .true._LK
 

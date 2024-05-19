@@ -216,10 +216,10 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setChoLow_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         integer(IK), intent(in)    :: ndim
-        real(RKC)  , intent(inout) :: mat(ndim,ndim)
-        real(RKC)  , intent(out)   :: dia(ndim)
+        real(RKG)  , intent(inout) :: mat(ndim,ndim)
+        real(RKG)  , intent(out)   :: dia(ndim)
     end subroutine
 #endif
 
@@ -228,10 +228,10 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setChoLow_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         integer(IK), intent(in)    :: ndim
-        real(RKC)  , intent(inout) :: mat(ndim,ndim)
-        real(RKC)  , intent(out)   :: dia(ndim)
+        real(RKG)  , intent(inout) :: mat(ndim,ndim)
+        real(RKG)  , intent(out)   :: dia(ndim)
     end subroutine
 #endif
 
@@ -240,10 +240,10 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setChoLow_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         integer(IK), intent(in)    :: ndim
-        real(RKC)  , intent(inout) :: mat(ndim,ndim)
-        real(RKC)  , intent(out)   :: dia(ndim)
+        real(RKG)  , intent(inout) :: mat(ndim,ndim)
+        real(RKG)  , intent(out)   :: dia(ndim)
     end subroutine
 #endif
 
@@ -252,10 +252,10 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setChoLow_RK2
 #endif
-        use pm_kind, only: IK, RKC => RK2
+        use pm_kind, only: IK, RKG => RK2
         integer(IK), intent(in)    :: ndim
-        real(RKC)  , intent(inout) :: mat(ndim,ndim)
-        real(RKC)  , intent(out)   :: dia(ndim)
+        real(RKG)  , intent(inout) :: mat(ndim,ndim)
+        real(RKG)  , intent(out)   :: dia(ndim)
     end subroutine
 #endif
 
@@ -264,10 +264,10 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setChoLow_RK1
 #endif
-        use pm_kind, only: IK, RKC => RK1
+        use pm_kind, only: IK, RKG => RK1
         integer(IK), intent(in)    :: ndim
-        real(RKC)  , intent(inout) :: mat(ndim,ndim)
-        real(RKC)  , intent(out)   :: dia(ndim)
+        real(RKG)  , intent(inout) :: mat(ndim,ndim)
+        real(RKG)  , intent(out)   :: dia(ndim)
     end subroutine
 #endif
 
@@ -379,11 +379,11 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatChol_UXD_CK5
 #endif
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
         class(*)                , intent(in)    , optional      :: operation
         type(uppDia_type)       , intent(in)                    :: subset
-        complex(CKC)            , intent(in)                    :: mat(:,:)
-        complex(CKC)                                            :: chol(size(mat, 1, IK), size(mat, 2, IK))
+        complex(CKG)            , intent(in)                    :: mat(:,:)
+        complex(CKG)                                            :: chol(size(mat, 1, IK), size(mat, 2, IK))
     end function
 #endif
 
@@ -392,11 +392,11 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatChol_UXD_CK4
 #endif
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
         class(*)                , intent(in)    , optional      :: operation
         type(uppDia_type)       , intent(in)                    :: subset
-        complex(CKC)            , intent(in)                    :: mat(:,:)
-        complex(CKC)                                            :: chol(size(mat, 1, IK), size(mat, 2, IK))
+        complex(CKG)            , intent(in)                    :: mat(:,:)
+        complex(CKG)                                            :: chol(size(mat, 1, IK), size(mat, 2, IK))
     end function
 #endif
 
@@ -405,11 +405,11 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatChol_UXD_CK3
 #endif
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
         class(*)                , intent(in)    , optional      :: operation
         type(uppDia_type)       , intent(in)                    :: subset
-        complex(CKC)            , intent(in)                    :: mat(:,:)
-        complex(CKC)                                            :: chol(size(mat, 1, IK), size(mat, 2, IK))
+        complex(CKG)            , intent(in)                    :: mat(:,:)
+        complex(CKG)                                            :: chol(size(mat, 1, IK), size(mat, 2, IK))
     end function
 #endif
 
@@ -418,11 +418,11 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatChol_UXD_CK2
 #endif
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
         class(*)                , intent(in)    , optional      :: operation
         type(uppDia_type)       , intent(in)                    :: subset
-        complex(CKC)            , intent(in)                    :: mat(:,:)
-        complex(CKC)                                            :: chol(size(mat, 1, IK), size(mat, 2, IK))
+        complex(CKG)            , intent(in)                    :: mat(:,:)
+        complex(CKG)                                            :: chol(size(mat, 1, IK), size(mat, 2, IK))
     end function
 #endif
 
@@ -431,11 +431,11 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatChol_UXD_CK1
 #endif
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
         class(*)                , intent(in)    , optional      :: operation
         type(uppDia_type)       , intent(in)                    :: subset
-        complex(CKC)            , intent(in)                    :: mat(:,:)
-        complex(CKC)                                            :: chol(size(mat, 1, IK), size(mat, 2, IK))
+        complex(CKG)            , intent(in)                    :: mat(:,:)
+        complex(CKG)                                            :: chol(size(mat, 1, IK), size(mat, 2, IK))
     end function
 #endif
 
@@ -446,11 +446,11 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatChol_UXD_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         class(*)                , intent(in)    , optional      :: operation
         type(uppDia_type)       , intent(in)                    :: subset
-        real(RKC)               , intent(in)                    :: mat(:,:)
-        real(RKC)                                               :: chol(size(mat, 1, IK), size(mat, 2, IK))
+        real(RKG)               , intent(in)                    :: mat(:,:)
+        real(RKG)                                               :: chol(size(mat, 1, IK), size(mat, 2, IK))
     end function
 #endif
 
@@ -459,11 +459,11 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatChol_UXD_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         class(*)                , intent(in)    , optional      :: operation
         type(uppDia_type)       , intent(in)                    :: subset
-        real(RKC)               , intent(in)                    :: mat(:,:)
-        real(RKC)                                               :: chol(size(mat, 1, IK), size(mat, 2, IK))
+        real(RKG)               , intent(in)                    :: mat(:,:)
+        real(RKG)                                               :: chol(size(mat, 1, IK), size(mat, 2, IK))
     end function
 #endif
 
@@ -472,11 +472,11 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatChol_UXD_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         class(*)                , intent(in)    , optional      :: operation
         type(uppDia_type)       , intent(in)                    :: subset
-        real(RKC)               , intent(in)                    :: mat(:,:)
-        real(RKC)                                               :: chol(size(mat, 1, IK), size(mat, 2, IK))
+        real(RKG)               , intent(in)                    :: mat(:,:)
+        real(RKG)                                               :: chol(size(mat, 1, IK), size(mat, 2, IK))
     end function
 #endif
 
@@ -485,11 +485,11 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatChol_UXD_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         class(*)                , intent(in)    , optional      :: operation
         type(uppDia_type)       , intent(in)                    :: subset
-        real(RKC)               , intent(in)                    :: mat(:,:)
-        real(RKC)                                               :: chol(size(mat, 1, IK), size(mat, 2, IK))
+        real(RKG)               , intent(in)                    :: mat(:,:)
+        real(RKG)                                               :: chol(size(mat, 1, IK), size(mat, 2, IK))
     end function
 #endif
 
@@ -498,11 +498,11 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatChol_UXD_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         class(*)                , intent(in)    , optional      :: operation
         type(uppDia_type)       , intent(in)                    :: subset
-        real(RKC)               , intent(in)                    :: mat(:,:)
-        real(RKC)                                               :: chol(size(mat, 1, IK), size(mat, 2, IK))
+        real(RKG)               , intent(in)                    :: mat(:,:)
+        real(RKG)                                               :: chol(size(mat, 1, IK), size(mat, 2, IK))
     end function
 #endif
 
@@ -529,11 +529,11 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatChol_XLD_CK5
 #endif
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
         class(*)                , intent(in)    , optional      :: operation
         type(lowDia_type)       , intent(in)                    :: subset
-        complex(CKC)            , intent(in)                    :: mat(:,:)
-        complex(CKC)                                            :: chol(size(mat, 1, IK), size(mat, 2, IK))
+        complex(CKG)            , intent(in)                    :: mat(:,:)
+        complex(CKG)                                            :: chol(size(mat, 1, IK), size(mat, 2, IK))
     end function
 #endif
 
@@ -542,11 +542,11 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatChol_XLD_CK4
 #endif
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
         class(*)                , intent(in)    , optional      :: operation
         type(lowDia_type)       , intent(in)                    :: subset
-        complex(CKC)            , intent(in)                    :: mat(:,:)
-        complex(CKC)                                            :: chol(size(mat, 1, IK), size(mat, 2, IK))
+        complex(CKG)            , intent(in)                    :: mat(:,:)
+        complex(CKG)                                            :: chol(size(mat, 1, IK), size(mat, 2, IK))
     end function
 #endif
 
@@ -555,11 +555,11 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatChol_XLD_CK3
 #endif
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
         class(*)                , intent(in)    , optional      :: operation
         type(lowDia_type)       , intent(in)                    :: subset
-        complex(CKC)            , intent(in)                    :: mat(:,:)
-        complex(CKC)                                            :: chol(size(mat, 1, IK), size(mat, 2, IK))
+        complex(CKG)            , intent(in)                    :: mat(:,:)
+        complex(CKG)                                            :: chol(size(mat, 1, IK), size(mat, 2, IK))
     end function
 #endif
 
@@ -568,11 +568,11 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatChol_XLD_CK2
 #endif
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
         class(*)                , intent(in)    , optional      :: operation
         type(lowDia_type)       , intent(in)                    :: subset
-        complex(CKC)            , intent(in)                    :: mat(:,:)
-        complex(CKC)                                            :: chol(size(mat, 1, IK), size(mat, 2, IK))
+        complex(CKG)            , intent(in)                    :: mat(:,:)
+        complex(CKG)                                            :: chol(size(mat, 1, IK), size(mat, 2, IK))
     end function
 #endif
 
@@ -581,11 +581,11 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatChol_XLD_CK1
 #endif
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
         class(*)                , intent(in)    , optional      :: operation
         type(lowDia_type)       , intent(in)                    :: subset
-        complex(CKC)            , intent(in)                    :: mat(:,:)
-        complex(CKC)                                            :: chol(size(mat, 1, IK), size(mat, 2, IK))
+        complex(CKG)            , intent(in)                    :: mat(:,:)
+        complex(CKG)                                            :: chol(size(mat, 1, IK), size(mat, 2, IK))
     end function
 #endif
 
@@ -596,11 +596,11 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatChol_XLD_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         class(*)                , intent(in)    , optional      :: operation
         type(lowDia_type)       , intent(in)                    :: subset
-        real(RKC)               , intent(in)                    :: mat(:,:)
-        real(RKC)                                               :: chol(size(mat, 1, IK), size(mat, 2, IK))
+        real(RKG)               , intent(in)                    :: mat(:,:)
+        real(RKG)                                               :: chol(size(mat, 1, IK), size(mat, 2, IK))
     end function
 #endif
 
@@ -609,11 +609,11 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatChol_XLD_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         class(*)                , intent(in)    , optional      :: operation
         type(lowDia_type)       , intent(in)                    :: subset
-        real(RKC)               , intent(in)                    :: mat(:,:)
-        real(RKC)                                               :: chol(size(mat, 1, IK), size(mat, 2, IK))
+        real(RKG)               , intent(in)                    :: mat(:,:)
+        real(RKG)                                               :: chol(size(mat, 1, IK), size(mat, 2, IK))
     end function
 #endif
 
@@ -622,11 +622,11 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatChol_XLD_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         class(*)                , intent(in)    , optional      :: operation
         type(lowDia_type)       , intent(in)                    :: subset
-        real(RKC)               , intent(in)                    :: mat(:,:)
-        real(RKC)                                               :: chol(size(mat, 1, IK), size(mat, 2, IK))
+        real(RKG)               , intent(in)                    :: mat(:,:)
+        real(RKG)                                               :: chol(size(mat, 1, IK), size(mat, 2, IK))
     end function
 #endif
 
@@ -635,11 +635,11 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatChol_XLD_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         class(*)                , intent(in)    , optional      :: operation
         type(lowDia_type)       , intent(in)                    :: subset
-        real(RKC)               , intent(in)                    :: mat(:,:)
-        real(RKC)                                               :: chol(size(mat, 1, IK), size(mat, 2, IK))
+        real(RKG)               , intent(in)                    :: mat(:,:)
+        real(RKG)                                               :: chol(size(mat, 1, IK), size(mat, 2, IK))
     end function
 #endif
 
@@ -648,11 +648,11 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatChol_XLD_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         class(*)                , intent(in)    , optional      :: operation
         type(lowDia_type)       , intent(in)                    :: subset
-        real(RKC)               , intent(in)                    :: mat(:,:)
-        real(RKC)                                               :: chol(size(mat, 1, IK), size(mat, 2, IK))
+        real(RKG)               , intent(in)                    :: mat(:,:)
+        real(RKG)                                               :: chol(size(mat, 1, IK), size(mat, 2, IK))
     end function
 #endif
 
@@ -838,9 +838,9 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMC_IMP_AXX_UXD_ONO_CK5
 #endif
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
         integer(IK)         , intent(out)                   :: info
-        complex(CKC)        , intent(inout) , contiguous    :: mat(:,:)
+        complex(CKG)        , intent(inout) , contiguous    :: mat(:,:)
         type(uppDia_type)   , intent(in)                    :: subset
     end subroutine
 #endif
@@ -850,9 +850,9 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMC_IMP_AXX_UXD_ONO_CK4
 #endif
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
         integer(IK)         , intent(out)                   :: info
-        complex(CKC)        , intent(inout) , contiguous    :: mat(:,:)
+        complex(CKG)        , intent(inout) , contiguous    :: mat(:,:)
         type(uppDia_type)   , intent(in)                    :: subset
     end subroutine
 #endif
@@ -862,9 +862,9 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMC_IMP_AXX_UXD_ONO_CK3
 #endif
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
         integer(IK)         , intent(out)                   :: info
-        complex(CKC)        , intent(inout) , contiguous    :: mat(:,:)
+        complex(CKG)        , intent(inout) , contiguous    :: mat(:,:)
         type(uppDia_type)   , intent(in)                    :: subset
     end subroutine
 #endif
@@ -874,9 +874,9 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMC_IMP_AXX_UXD_ONO_CK2
 #endif
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
         integer(IK)         , intent(out)                   :: info
-        complex(CKC)        , intent(inout) , contiguous    :: mat(:,:)
+        complex(CKG)        , intent(inout) , contiguous    :: mat(:,:)
         type(uppDia_type)   , intent(in)                    :: subset
     end subroutine
 #endif
@@ -886,9 +886,9 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMC_IMP_AXX_UXD_ONO_CK1
 #endif
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
         integer(IK)         , intent(out)                   :: info
-        complex(CKC)        , intent(inout) , contiguous    :: mat(:,:)
+        complex(CKG)        , intent(inout) , contiguous    :: mat(:,:)
         type(uppDia_type)   , intent(in)                    :: subset
     end subroutine
 #endif
@@ -900,9 +900,9 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMC_IMP_AXX_UXD_ONO_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         integer(IK)         , intent(out)                   :: info
-        real(RKC)           , intent(inout) , contiguous    :: mat(:,:)
+        real(RKG)           , intent(inout) , contiguous    :: mat(:,:)
         type(uppDia_type)   , intent(in)                    :: subset
     end subroutine
 #endif
@@ -912,9 +912,9 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMC_IMP_AXX_UXD_ONO_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         integer(IK)         , intent(out)                   :: info
-        real(RKC)           , intent(inout) , contiguous    :: mat(:,:)
+        real(RKG)           , intent(inout) , contiguous    :: mat(:,:)
         type(uppDia_type)   , intent(in)                    :: subset
     end subroutine
 #endif
@@ -924,9 +924,9 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMC_IMP_AXX_UXD_ONO_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         integer(IK)         , intent(out)                   :: info
-        real(RKC)           , intent(inout) , contiguous    :: mat(:,:)
+        real(RKG)           , intent(inout) , contiguous    :: mat(:,:)
         type(uppDia_type)   , intent(in)                    :: subset
     end subroutine
 #endif
@@ -936,9 +936,9 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMC_IMP_AXX_UXD_ONO_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         integer(IK)         , intent(out)                   :: info
-        real(RKC)           , intent(inout) , contiguous    :: mat(:,:)
+        real(RKG)           , intent(inout) , contiguous    :: mat(:,:)
         type(uppDia_type)   , intent(in)                    :: subset
     end subroutine
 #endif
@@ -948,9 +948,9 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMC_IMP_AXX_UXD_ONO_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         integer(IK)         , intent(out)                   :: info
-        real(RKC)           , intent(inout) , contiguous    :: mat(:,:)
+        real(RKG)           , intent(inout) , contiguous    :: mat(:,:)
         type(uppDia_type)   , intent(in)                    :: subset
     end subroutine
 #endif
@@ -968,9 +968,9 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMC_IMP_AXX_XLD_ONO_CK5
 #endif
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
         integer(IK)         , intent(out)                   :: info
-        complex(CKC)        , intent(inout) , contiguous    :: mat(:,:)
+        complex(CKG)        , intent(inout) , contiguous    :: mat(:,:)
         type(lowDia_type)   , intent(in)                    :: subset
     end subroutine
 #endif
@@ -980,9 +980,9 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMC_IMP_AXX_XLD_ONO_CK4
 #endif
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
         integer(IK)         , intent(out)                   :: info
-        complex(CKC)        , intent(inout) , contiguous    :: mat(:,:)
+        complex(CKG)        , intent(inout) , contiguous    :: mat(:,:)
         type(lowDia_type)   , intent(in)                    :: subset
     end subroutine
 #endif
@@ -992,9 +992,9 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMC_IMP_AXX_XLD_ONO_CK3
 #endif
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
         integer(IK)         , intent(out)                   :: info
-        complex(CKC)        , intent(inout) , contiguous    :: mat(:,:)
+        complex(CKG)        , intent(inout) , contiguous    :: mat(:,:)
         type(lowDia_type)   , intent(in)                    :: subset
     end subroutine
 #endif
@@ -1004,9 +1004,9 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMC_IMP_AXX_XLD_ONO_CK2
 #endif
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
         integer(IK)         , intent(out)                   :: info
-        complex(CKC)        , intent(inout) , contiguous    :: mat(:,:)
+        complex(CKG)        , intent(inout) , contiguous    :: mat(:,:)
         type(lowDia_type)   , intent(in)                    :: subset
     end subroutine
 #endif
@@ -1016,9 +1016,9 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMC_IMP_AXX_XLD_ONO_CK1
 #endif
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
         integer(IK)         , intent(out)                   :: info
-        complex(CKC)        , intent(inout) , contiguous    :: mat(:,:)
+        complex(CKG)        , intent(inout) , contiguous    :: mat(:,:)
         type(lowDia_type)   , intent(in)                    :: subset
     end subroutine
 #endif
@@ -1030,9 +1030,9 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMC_IMP_AXX_XLD_ONO_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         integer(IK)         , intent(out)                   :: info
-        real(RKC)           , intent(inout) , contiguous    :: mat(:,:)
+        real(RKG)           , intent(inout) , contiguous    :: mat(:,:)
         type(lowDia_type)   , intent(in)                    :: subset
     end subroutine
 #endif
@@ -1042,9 +1042,9 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMC_IMP_AXX_XLD_ONO_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         integer(IK)         , intent(out)                   :: info
-        real(RKC)           , intent(inout) , contiguous    :: mat(:,:)
+        real(RKG)           , intent(inout) , contiguous    :: mat(:,:)
         type(lowDia_type)   , intent(in)                    :: subset
     end subroutine
 #endif
@@ -1054,9 +1054,9 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMC_IMP_AXX_XLD_ONO_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         integer(IK)         , intent(out)                   :: info
-        real(RKC)           , intent(inout) , contiguous    :: mat(:,:)
+        real(RKG)           , intent(inout) , contiguous    :: mat(:,:)
         type(lowDia_type)   , intent(in)                    :: subset
     end subroutine
 #endif
@@ -1066,9 +1066,9 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMC_IMP_AXX_XLD_ONO_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         integer(IK)         , intent(out)                   :: info
-        real(RKC)           , intent(inout) , contiguous    :: mat(:,:)
+        real(RKG)           , intent(inout) , contiguous    :: mat(:,:)
         type(lowDia_type)   , intent(in)                    :: subset
     end subroutine
 #endif
@@ -1078,9 +1078,9 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMC_IMP_AXX_XLD_ONO_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         integer(IK)         , intent(out)                   :: info
-        real(RKC)           , intent(inout) , contiguous    :: mat(:,:)
+        real(RKG)           , intent(inout) , contiguous    :: mat(:,:)
         type(lowDia_type)   , intent(in)                    :: subset
     end subroutine
 #endif
@@ -1108,10 +1108,10 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMC_IMP_ANI_UXD_ONO_CK5
 #endif
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
         integer(IK)         , intent(out)                   :: info
-        complex(CKC)        , intent(in)    , contiguous    :: mat(:,:)
-        complex(CKC)        , intent(inout) , contiguous    :: chol(:,:)
+        complex(CKG)        , intent(in)    , contiguous    :: mat(:,:)
+        complex(CKG)        , intent(inout) , contiguous    :: chol(:,:)
         type(nothing_type)  , intent(in)                    :: operation
         type(uppDia_type)   , intent(in)                    :: subset
     end subroutine
@@ -1122,10 +1122,10 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMC_IMP_ANI_UXD_ONO_CK4
 #endif
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
         integer(IK)         , intent(out)                   :: info
-        complex(CKC)        , intent(in)    , contiguous    :: mat(:,:)
-        complex(CKC)        , intent(inout) , contiguous    :: chol(:,:)
+        complex(CKG)        , intent(in)    , contiguous    :: mat(:,:)
+        complex(CKG)        , intent(inout) , contiguous    :: chol(:,:)
         type(nothing_type)  , intent(in)                    :: operation
         type(uppDia_type)   , intent(in)                    :: subset
     end subroutine
@@ -1136,10 +1136,10 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMC_IMP_ANI_UXD_ONO_CK3
 #endif
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
         integer(IK)         , intent(out)                   :: info
-        complex(CKC)        , intent(in)    , contiguous    :: mat(:,:)
-        complex(CKC)        , intent(inout) , contiguous    :: chol(:,:)
+        complex(CKG)        , intent(in)    , contiguous    :: mat(:,:)
+        complex(CKG)        , intent(inout) , contiguous    :: chol(:,:)
         type(nothing_type)  , intent(in)                    :: operation
         type(uppDia_type)   , intent(in)                    :: subset
     end subroutine
@@ -1150,10 +1150,10 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMC_IMP_ANI_UXD_ONO_CK2
 #endif
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
         integer(IK)         , intent(out)                   :: info
-        complex(CKC)        , intent(in)    , contiguous    :: mat(:,:)
-        complex(CKC)        , intent(inout) , contiguous    :: chol(:,:)
+        complex(CKG)        , intent(in)    , contiguous    :: mat(:,:)
+        complex(CKG)        , intent(inout) , contiguous    :: chol(:,:)
         type(nothing_type)  , intent(in)                    :: operation
         type(uppDia_type)   , intent(in)                    :: subset
     end subroutine
@@ -1164,10 +1164,10 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMC_IMP_ANI_UXD_ONO_CK1
 #endif
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
         integer(IK)         , intent(out)                   :: info
-        complex(CKC)        , intent(in)    , contiguous    :: mat(:,:)
-        complex(CKC)        , intent(inout) , contiguous    :: chol(:,:)
+        complex(CKG)        , intent(in)    , contiguous    :: mat(:,:)
+        complex(CKG)        , intent(inout) , contiguous    :: chol(:,:)
         type(nothing_type)  , intent(in)                    :: operation
         type(uppDia_type)   , intent(in)                    :: subset
     end subroutine
@@ -1180,10 +1180,10 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMC_IMP_ANI_UXD_ONO_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         integer(IK)         , intent(out)                   :: info
-        real(RKC)           , intent(in)    , contiguous    :: mat(:,:)
-        real(RKC)           , intent(inout) , contiguous    :: chol(:,:)
+        real(RKG)           , intent(in)    , contiguous    :: mat(:,:)
+        real(RKG)           , intent(inout) , contiguous    :: chol(:,:)
         type(nothing_type)  , intent(in)                    :: operation
         type(uppDia_type)   , intent(in)                    :: subset
     end subroutine
@@ -1194,10 +1194,10 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMC_IMP_ANI_UXD_ONO_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         integer(IK)         , intent(out)                   :: info
-        real(RKC)           , intent(in)    , contiguous    :: mat(:,:)
-        real(RKC)           , intent(inout) , contiguous    :: chol(:,:)
+        real(RKG)           , intent(in)    , contiguous    :: mat(:,:)
+        real(RKG)           , intent(inout) , contiguous    :: chol(:,:)
         type(nothing_type)  , intent(in)                    :: operation
         type(uppDia_type)   , intent(in)                    :: subset
     end subroutine
@@ -1208,10 +1208,10 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMC_IMP_ANI_UXD_ONO_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         integer(IK)         , intent(out)                   :: info
-        real(RKC)           , intent(in)    , contiguous    :: mat(:,:)
-        real(RKC)           , intent(inout) , contiguous    :: chol(:,:)
+        real(RKG)           , intent(in)    , contiguous    :: mat(:,:)
+        real(RKG)           , intent(inout) , contiguous    :: chol(:,:)
         type(nothing_type)  , intent(in)                    :: operation
         type(uppDia_type)   , intent(in)                    :: subset
     end subroutine
@@ -1222,10 +1222,10 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMC_IMP_ANI_UXD_ONO_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         integer(IK)         , intent(out)                   :: info
-        real(RKC)           , intent(in)    , contiguous    :: mat(:,:)
-        real(RKC)           , intent(inout) , contiguous    :: chol(:,:)
+        real(RKG)           , intent(in)    , contiguous    :: mat(:,:)
+        real(RKG)           , intent(inout) , contiguous    :: chol(:,:)
         type(nothing_type)  , intent(in)                    :: operation
         type(uppDia_type)   , intent(in)                    :: subset
     end subroutine
@@ -1236,10 +1236,10 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMC_IMP_ANI_UXD_ONO_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         integer(IK)         , intent(out)                   :: info
-        real(RKC)           , intent(in)    , contiguous    :: mat(:,:)
-        real(RKC)           , intent(inout) , contiguous    :: chol(:,:)
+        real(RKG)           , intent(in)    , contiguous    :: mat(:,:)
+        real(RKG)           , intent(inout) , contiguous    :: chol(:,:)
         type(nothing_type)  , intent(in)                    :: operation
         type(uppDia_type)   , intent(in)                    :: subset
     end subroutine
@@ -1258,10 +1258,10 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMC_IMP_ANI_XLD_ONO_CK5
 #endif
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
         integer(IK)         , intent(out)                   :: info
-        complex(CKC)        , intent(in)    , contiguous    :: mat(:,:)
-        complex(CKC)        , intent(inout) , contiguous    :: chol(:,:)
+        complex(CKG)        , intent(in)    , contiguous    :: mat(:,:)
+        complex(CKG)        , intent(inout) , contiguous    :: chol(:,:)
         type(nothing_type)  , intent(in)                    :: operation
         type(lowDia_type)   , intent(in)                    :: subset
     end subroutine
@@ -1272,10 +1272,10 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMC_IMP_ANI_XLD_ONO_CK4
 #endif
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
         integer(IK)         , intent(out)                   :: info
-        complex(CKC)        , intent(in)    , contiguous    :: mat(:,:)
-        complex(CKC)        , intent(inout) , contiguous    :: chol(:,:)
+        complex(CKG)        , intent(in)    , contiguous    :: mat(:,:)
+        complex(CKG)        , intent(inout) , contiguous    :: chol(:,:)
         type(nothing_type)  , intent(in)                    :: operation
         type(lowDia_type)   , intent(in)                    :: subset
     end subroutine
@@ -1286,10 +1286,10 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMC_IMP_ANI_XLD_ONO_CK3
 #endif
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
         integer(IK)         , intent(out)                   :: info
-        complex(CKC)        , intent(in)    , contiguous    :: mat(:,:)
-        complex(CKC)        , intent(inout) , contiguous    :: chol(:,:)
+        complex(CKG)        , intent(in)    , contiguous    :: mat(:,:)
+        complex(CKG)        , intent(inout) , contiguous    :: chol(:,:)
         type(nothing_type)  , intent(in)                    :: operation
         type(lowDia_type)   , intent(in)                    :: subset
     end subroutine
@@ -1300,10 +1300,10 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMC_IMP_ANI_XLD_ONO_CK2
 #endif
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
         integer(IK)         , intent(out)                   :: info
-        complex(CKC)        , intent(in)    , contiguous    :: mat(:,:)
-        complex(CKC)        , intent(inout) , contiguous    :: chol(:,:)
+        complex(CKG)        , intent(in)    , contiguous    :: mat(:,:)
+        complex(CKG)        , intent(inout) , contiguous    :: chol(:,:)
         type(nothing_type)  , intent(in)                    :: operation
         type(lowDia_type)   , intent(in)                    :: subset
     end subroutine
@@ -1314,10 +1314,10 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMC_IMP_ANI_XLD_ONO_CK1
 #endif
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
         integer(IK)         , intent(out)                   :: info
-        complex(CKC)        , intent(in)    , contiguous    :: mat(:,:)
-        complex(CKC)        , intent(inout) , contiguous    :: chol(:,:)
+        complex(CKG)        , intent(in)    , contiguous    :: mat(:,:)
+        complex(CKG)        , intent(inout) , contiguous    :: chol(:,:)
         type(nothing_type)  , intent(in)                    :: operation
         type(lowDia_type)   , intent(in)                    :: subset
     end subroutine
@@ -1330,10 +1330,10 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMC_IMP_ANI_XLD_ONO_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         integer(IK)         , intent(out)                   :: info
-        real(RKC)           , intent(in)    , contiguous    :: mat(:,:)
-        real(RKC)           , intent(inout) , contiguous    :: chol(:,:)
+        real(RKG)           , intent(in)    , contiguous    :: mat(:,:)
+        real(RKG)           , intent(inout) , contiguous    :: chol(:,:)
         type(nothing_type)  , intent(in)                    :: operation
         type(lowDia_type)   , intent(in)                    :: subset
     end subroutine
@@ -1344,10 +1344,10 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMC_IMP_ANI_XLD_ONO_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         integer(IK)         , intent(out)                   :: info
-        real(RKC)           , intent(in)    , contiguous    :: mat(:,:)
-        real(RKC)           , intent(inout) , contiguous    :: chol(:,:)
+        real(RKG)           , intent(in)    , contiguous    :: mat(:,:)
+        real(RKG)           , intent(inout) , contiguous    :: chol(:,:)
         type(nothing_type)  , intent(in)                    :: operation
         type(lowDia_type)   , intent(in)                    :: subset
     end subroutine
@@ -1358,10 +1358,10 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMC_IMP_ANI_XLD_ONO_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         integer(IK)         , intent(out)                   :: info
-        real(RKC)           , intent(in)    , contiguous    :: mat(:,:)
-        real(RKC)           , intent(inout) , contiguous    :: chol(:,:)
+        real(RKG)           , intent(in)    , contiguous    :: mat(:,:)
+        real(RKG)           , intent(inout) , contiguous    :: chol(:,:)
         type(nothing_type)  , intent(in)                    :: operation
         type(lowDia_type)   , intent(in)                    :: subset
     end subroutine
@@ -1372,10 +1372,10 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMC_IMP_ANI_XLD_ONO_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         integer(IK)         , intent(out)                   :: info
-        real(RKC)           , intent(in)    , contiguous    :: mat(:,:)
-        real(RKC)           , intent(inout) , contiguous    :: chol(:,:)
+        real(RKG)           , intent(in)    , contiguous    :: mat(:,:)
+        real(RKG)           , intent(inout) , contiguous    :: chol(:,:)
         type(nothing_type)  , intent(in)                    :: operation
         type(lowDia_type)   , intent(in)                    :: subset
     end subroutine
@@ -1386,10 +1386,10 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMC_IMP_ANI_XLD_ONO_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         integer(IK)         , intent(out)                   :: info
-        real(RKC)           , intent(in)    , contiguous    :: mat(:,:)
-        real(RKC)           , intent(inout) , contiguous    :: chol(:,:)
+        real(RKG)           , intent(in)    , contiguous    :: mat(:,:)
+        real(RKG)           , intent(inout) , contiguous    :: chol(:,:)
         type(nothing_type)  , intent(in)                    :: operation
         type(lowDia_type)   , intent(in)                    :: subset
     end subroutine
@@ -1418,10 +1418,10 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMC_IMP_ANI_UXD_OTH_CK5
 #endif
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
         integer(IK)         , intent(out)                   :: info
-        complex(CKC)        , intent(in)    , contiguous    :: mat(:,:)
-        complex(CKC)        , intent(inout) , contiguous    :: chol(:,:)
+        complex(CKG)        , intent(in)    , contiguous    :: mat(:,:)
+        complex(CKG)        , intent(inout) , contiguous    :: chol(:,:)
         type(transHerm_type), intent(in)                    :: operation
         type(uppDia_type)   , intent(in)                    :: subset
     end subroutine
@@ -1432,10 +1432,10 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMC_IMP_ANI_UXD_OTH_CK4
 #endif
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
         integer(IK)         , intent(out)                   :: info
-        complex(CKC)        , intent(in)    , contiguous    :: mat(:,:)
-        complex(CKC)        , intent(inout) , contiguous    :: chol(:,:)
+        complex(CKG)        , intent(in)    , contiguous    :: mat(:,:)
+        complex(CKG)        , intent(inout) , contiguous    :: chol(:,:)
         type(transHerm_type), intent(in)                    :: operation
         type(uppDia_type)   , intent(in)                    :: subset
     end subroutine
@@ -1446,10 +1446,10 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMC_IMP_ANI_UXD_OTH_CK3
 #endif
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
         integer(IK)         , intent(out)                   :: info
-        complex(CKC)        , intent(in)    , contiguous    :: mat(:,:)
-        complex(CKC)        , intent(inout) , contiguous    :: chol(:,:)
+        complex(CKG)        , intent(in)    , contiguous    :: mat(:,:)
+        complex(CKG)        , intent(inout) , contiguous    :: chol(:,:)
         type(transHerm_type), intent(in)                    :: operation
         type(uppDia_type)   , intent(in)                    :: subset
     end subroutine
@@ -1460,10 +1460,10 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMC_IMP_ANI_UXD_OTH_CK2
 #endif
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
         integer(IK)         , intent(out)                   :: info
-        complex(CKC)        , intent(in)    , contiguous    :: mat(:,:)
-        complex(CKC)        , intent(inout) , contiguous    :: chol(:,:)
+        complex(CKG)        , intent(in)    , contiguous    :: mat(:,:)
+        complex(CKG)        , intent(inout) , contiguous    :: chol(:,:)
         type(transHerm_type), intent(in)                    :: operation
         type(uppDia_type)   , intent(in)                    :: subset
     end subroutine
@@ -1474,10 +1474,10 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMC_IMP_ANI_UXD_OTH_CK1
 #endif
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
         integer(IK)         , intent(out)                   :: info
-        complex(CKC)        , intent(in)    , contiguous    :: mat(:,:)
-        complex(CKC)        , intent(inout) , contiguous    :: chol(:,:)
+        complex(CKG)        , intent(in)    , contiguous    :: mat(:,:)
+        complex(CKG)        , intent(inout) , contiguous    :: chol(:,:)
         type(transHerm_type), intent(in)                    :: operation
         type(uppDia_type)   , intent(in)                    :: subset
     end subroutine
@@ -1490,10 +1490,10 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMC_IMP_ANI_UXD_OTH_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         integer(IK)         , intent(out)                   :: info
-        real(RKC)           , intent(in)    , contiguous    :: mat(:,:)
-        real(RKC)           , intent(inout) , contiguous    :: chol(:,:)
+        real(RKG)           , intent(in)    , contiguous    :: mat(:,:)
+        real(RKG)           , intent(inout) , contiguous    :: chol(:,:)
         type(transHerm_type), intent(in)                    :: operation
         type(uppDia_type)   , intent(in)                    :: subset
     end subroutine
@@ -1504,10 +1504,10 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMC_IMP_ANI_UXD_OTH_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         integer(IK)         , intent(out)                   :: info
-        real(RKC)           , intent(in)    , contiguous    :: mat(:,:)
-        real(RKC)           , intent(inout) , contiguous    :: chol(:,:)
+        real(RKG)           , intent(in)    , contiguous    :: mat(:,:)
+        real(RKG)           , intent(inout) , contiguous    :: chol(:,:)
         type(transHerm_type), intent(in)                    :: operation
         type(uppDia_type)   , intent(in)                    :: subset
     end subroutine
@@ -1518,10 +1518,10 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMC_IMP_ANI_UXD_OTH_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         integer(IK)         , intent(out)                   :: info
-        real(RKC)           , intent(in)    , contiguous    :: mat(:,:)
-        real(RKC)           , intent(inout) , contiguous    :: chol(:,:)
+        real(RKG)           , intent(in)    , contiguous    :: mat(:,:)
+        real(RKG)           , intent(inout) , contiguous    :: chol(:,:)
         type(transHerm_type), intent(in)                    :: operation
         type(uppDia_type)   , intent(in)                    :: subset
     end subroutine
@@ -1532,10 +1532,10 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMC_IMP_ANI_UXD_OTH_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         integer(IK)         , intent(out)                   :: info
-        real(RKC)           , intent(in)    , contiguous    :: mat(:,:)
-        real(RKC)           , intent(inout) , contiguous    :: chol(:,:)
+        real(RKG)           , intent(in)    , contiguous    :: mat(:,:)
+        real(RKG)           , intent(inout) , contiguous    :: chol(:,:)
         type(transHerm_type), intent(in)                    :: operation
         type(uppDia_type)   , intent(in)                    :: subset
     end subroutine
@@ -1546,10 +1546,10 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMC_IMP_ANI_UXD_OTH_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         integer(IK)         , intent(out)                   :: info
-        real(RKC)           , intent(in)    , contiguous    :: mat(:,:)
-        real(RKC)           , intent(inout) , contiguous    :: chol(:,:)
+        real(RKG)           , intent(in)    , contiguous    :: mat(:,:)
+        real(RKG)           , intent(inout) , contiguous    :: chol(:,:)
         type(transHerm_type), intent(in)                    :: operation
         type(uppDia_type)   , intent(in)                    :: subset
     end subroutine
@@ -1568,10 +1568,10 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMC_IMP_ANI_XLD_OTH_CK5
 #endif
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
         integer(IK)         , intent(out)                   :: info
-        complex(CKC)        , intent(in)    , contiguous    :: mat(:,:)
-        complex(CKC)        , intent(inout) , contiguous    :: chol(:,:)
+        complex(CKG)        , intent(in)    , contiguous    :: mat(:,:)
+        complex(CKG)        , intent(inout) , contiguous    :: chol(:,:)
         type(transHerm_type), intent(in)                    :: operation
         type(lowDia_type)   , intent(in)                    :: subset
     end subroutine
@@ -1582,10 +1582,10 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMC_IMP_ANI_XLD_OTH_CK4
 #endif
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
         integer(IK)         , intent(out)                   :: info
-        complex(CKC)        , intent(in)    , contiguous    :: mat(:,:)
-        complex(CKC)        , intent(inout) , contiguous    :: chol(:,:)
+        complex(CKG)        , intent(in)    , contiguous    :: mat(:,:)
+        complex(CKG)        , intent(inout) , contiguous    :: chol(:,:)
         type(transHerm_type), intent(in)                    :: operation
         type(lowDia_type)   , intent(in)                    :: subset
     end subroutine
@@ -1596,10 +1596,10 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMC_IMP_ANI_XLD_OTH_CK3
 #endif
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
         integer(IK)         , intent(out)                   :: info
-        complex(CKC)        , intent(in)    , contiguous    :: mat(:,:)
-        complex(CKC)        , intent(inout) , contiguous    :: chol(:,:)
+        complex(CKG)        , intent(in)    , contiguous    :: mat(:,:)
+        complex(CKG)        , intent(inout) , contiguous    :: chol(:,:)
         type(transHerm_type), intent(in)                    :: operation
         type(lowDia_type)   , intent(in)                    :: subset
     end subroutine
@@ -1610,10 +1610,10 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMC_IMP_ANI_XLD_OTH_CK2
 #endif
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
         integer(IK)         , intent(out)                   :: info
-        complex(CKC)        , intent(in)    , contiguous    :: mat(:,:)
-        complex(CKC)        , intent(inout) , contiguous    :: chol(:,:)
+        complex(CKG)        , intent(in)    , contiguous    :: mat(:,:)
+        complex(CKG)        , intent(inout) , contiguous    :: chol(:,:)
         type(transHerm_type), intent(in)                    :: operation
         type(lowDia_type)   , intent(in)                    :: subset
     end subroutine
@@ -1624,10 +1624,10 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMC_IMP_ANI_XLD_OTH_CK1
 #endif
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
         integer(IK)         , intent(out)                   :: info
-        complex(CKC)        , intent(in)    , contiguous    :: mat(:,:)
-        complex(CKC)        , intent(inout) , contiguous    :: chol(:,:)
+        complex(CKG)        , intent(in)    , contiguous    :: mat(:,:)
+        complex(CKG)        , intent(inout) , contiguous    :: chol(:,:)
         type(transHerm_type), intent(in)                    :: operation
         type(lowDia_type)   , intent(in)                    :: subset
     end subroutine
@@ -1640,10 +1640,10 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMC_IMP_ANI_XLD_OTH_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         integer(IK)         , intent(out)                   :: info
-        real(RKC)           , intent(in)    , contiguous    :: mat(:,:)
-        real(RKC)           , intent(inout) , contiguous    :: chol(:,:)
+        real(RKG)           , intent(in)    , contiguous    :: mat(:,:)
+        real(RKG)           , intent(inout) , contiguous    :: chol(:,:)
         type(transHerm_type), intent(in)                    :: operation
         type(lowDia_type)   , intent(in)                    :: subset
     end subroutine
@@ -1654,10 +1654,10 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMC_IMP_ANI_XLD_OTH_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         integer(IK)         , intent(out)                   :: info
-        real(RKC)           , intent(in)    , contiguous    :: mat(:,:)
-        real(RKC)           , intent(inout) , contiguous    :: chol(:,:)
+        real(RKG)           , intent(in)    , contiguous    :: mat(:,:)
+        real(RKG)           , intent(inout) , contiguous    :: chol(:,:)
         type(transHerm_type), intent(in)                    :: operation
         type(lowDia_type)   , intent(in)                    :: subset
     end subroutine
@@ -1668,10 +1668,10 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMC_IMP_ANI_XLD_OTH_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         integer(IK)         , intent(out)                   :: info
-        real(RKC)           , intent(in)    , contiguous    :: mat(:,:)
-        real(RKC)           , intent(inout) , contiguous    :: chol(:,:)
+        real(RKG)           , intent(in)    , contiguous    :: mat(:,:)
+        real(RKG)           , intent(inout) , contiguous    :: chol(:,:)
         type(transHerm_type), intent(in)                    :: operation
         type(lowDia_type)   , intent(in)                    :: subset
     end subroutine
@@ -1682,10 +1682,10 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMC_IMP_ANI_XLD_OTH_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         integer(IK)         , intent(out)                   :: info
-        real(RKC)           , intent(in)    , contiguous    :: mat(:,:)
-        real(RKC)           , intent(inout) , contiguous    :: chol(:,:)
+        real(RKG)           , intent(in)    , contiguous    :: mat(:,:)
+        real(RKG)           , intent(inout) , contiguous    :: chol(:,:)
         type(transHerm_type), intent(in)                    :: operation
         type(lowDia_type)   , intent(in)                    :: subset
     end subroutine
@@ -1696,10 +1696,10 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMC_IMP_ANI_XLD_OTH_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         integer(IK)         , intent(out)                   :: info
-        real(RKC)           , intent(in)    , contiguous    :: mat(:,:)
-        real(RKC)           , intent(inout) , contiguous    :: chol(:,:)
+        real(RKG)           , intent(in)    , contiguous    :: mat(:,:)
+        real(RKG)           , intent(inout) , contiguous    :: chol(:,:)
         type(transHerm_type), intent(in)                    :: operation
         type(lowDia_type)   , intent(in)                    :: subset
     end subroutine
@@ -1728,9 +1728,9 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMC_IMP_ABI_UXD_ONO_CK5
 #endif
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
         integer(IK)         , intent(out)                   :: info
-        complex(CKC)        , intent(inout) , contiguous    :: mat(:,:)
+        complex(CKG)        , intent(inout) , contiguous    :: mat(:,:)
         type(uppDia_type)   , intent(in)                    :: subset
         type(iteration_type), intent(in)                    :: control
         integer(IK)         , intent(in)    , optional      :: bdim
@@ -1742,9 +1742,9 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMC_IMP_ABI_UXD_ONO_CK4
 #endif
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
         integer(IK)         , intent(out)                   :: info
-        complex(CKC)        , intent(inout) , contiguous    :: mat(:,:)
+        complex(CKG)        , intent(inout) , contiguous    :: mat(:,:)
         type(uppDia_type)   , intent(in)                    :: subset
         type(iteration_type), intent(in)                    :: control
         integer(IK)         , intent(in)    , optional      :: bdim
@@ -1756,9 +1756,9 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMC_IMP_ABI_UXD_ONO_CK3
 #endif
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
         integer(IK)         , intent(out)                   :: info
-        complex(CKC)        , intent(inout) , contiguous    :: mat(:,:)
+        complex(CKG)        , intent(inout) , contiguous    :: mat(:,:)
         type(uppDia_type)   , intent(in)                    :: subset
         type(iteration_type), intent(in)                    :: control
         integer(IK)         , intent(in)    , optional      :: bdim
@@ -1770,9 +1770,9 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMC_IMP_ABI_UXD_ONO_CK2
 #endif
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
         integer(IK)         , intent(out)                   :: info
-        complex(CKC)        , intent(inout) , contiguous    :: mat(:,:)
+        complex(CKG)        , intent(inout) , contiguous    :: mat(:,:)
         type(uppDia_type)   , intent(in)                    :: subset
         type(iteration_type), intent(in)                    :: control
         integer(IK)         , intent(in)    , optional      :: bdim
@@ -1784,9 +1784,9 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMC_IMP_ABI_UXD_ONO_CK1
 #endif
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
         integer(IK)         , intent(out)                   :: info
-        complex(CKC)        , intent(inout) , contiguous    :: mat(:,:)
+        complex(CKG)        , intent(inout) , contiguous    :: mat(:,:)
         type(uppDia_type)   , intent(in)                    :: subset
         type(iteration_type), intent(in)                    :: control
         integer(IK)         , intent(in)    , optional      :: bdim
@@ -1800,9 +1800,9 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMC_IMP_ABI_UXD_ONO_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         integer(IK)         , intent(out)                   :: info
-        real(RKC)           , intent(inout) , contiguous    :: mat(:,:)
+        real(RKG)           , intent(inout) , contiguous    :: mat(:,:)
         type(uppDia_type)   , intent(in)                    :: subset
         type(iteration_type), intent(in)                    :: control
         integer(IK)         , intent(in)    , optional      :: bdim
@@ -1814,9 +1814,9 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMC_IMP_ABI_UXD_ONO_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         integer(IK)         , intent(out)                   :: info
-        real(RKC)           , intent(inout) , contiguous    :: mat(:,:)
+        real(RKG)           , intent(inout) , contiguous    :: mat(:,:)
         type(uppDia_type)   , intent(in)                    :: subset
         type(iteration_type), intent(in)                    :: control
         integer(IK)         , intent(in)    , optional      :: bdim
@@ -1828,9 +1828,9 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMC_IMP_ABI_UXD_ONO_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         integer(IK)         , intent(out)                   :: info
-        real(RKC)           , intent(inout) , contiguous    :: mat(:,:)
+        real(RKG)           , intent(inout) , contiguous    :: mat(:,:)
         type(uppDia_type)   , intent(in)                    :: subset
         type(iteration_type), intent(in)                    :: control
         integer(IK)         , intent(in)    , optional      :: bdim
@@ -1842,9 +1842,9 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMC_IMP_ABI_UXD_ONO_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         integer(IK)         , intent(out)                   :: info
-        real(RKC)           , intent(inout) , contiguous    :: mat(:,:)
+        real(RKG)           , intent(inout) , contiguous    :: mat(:,:)
         type(uppDia_type)   , intent(in)                    :: subset
         type(iteration_type), intent(in)                    :: control
         integer(IK)         , intent(in)    , optional      :: bdim
@@ -1856,9 +1856,9 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMC_IMP_ABI_UXD_ONO_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         integer(IK)         , intent(out)                   :: info
-        real(RKC)           , intent(inout) , contiguous    :: mat(:,:)
+        real(RKG)           , intent(inout) , contiguous    :: mat(:,:)
         type(uppDia_type)   , intent(in)                    :: subset
         type(iteration_type), intent(in)                    :: control
         integer(IK)         , intent(in)    , optional      :: bdim
@@ -1878,9 +1878,9 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMC_IMP_ABI_XLD_ONO_CK5
 #endif
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
         integer(IK)         , intent(out)                   :: info
-        complex(CKC)        , intent(inout) , contiguous    :: mat(:,:)
+        complex(CKG)        , intent(inout) , contiguous    :: mat(:,:)
         type(lowDia_type)   , intent(in)                    :: subset
         type(iteration_type), intent(in)                    :: control
         integer(IK)         , intent(in)    , optional      :: bdim
@@ -1892,9 +1892,9 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMC_IMP_ABI_XLD_ONO_CK4
 #endif
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
         integer(IK)         , intent(out)                   :: info
-        complex(CKC)        , intent(inout) , contiguous    :: mat(:,:)
+        complex(CKG)        , intent(inout) , contiguous    :: mat(:,:)
         type(lowDia_type)   , intent(in)                    :: subset
         type(iteration_type), intent(in)                    :: control
         integer(IK)         , intent(in)    , optional      :: bdim
@@ -1906,9 +1906,9 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMC_IMP_ABI_XLD_ONO_CK3
 #endif
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
         integer(IK)         , intent(out)                   :: info
-        complex(CKC)        , intent(inout) , contiguous    :: mat(:,:)
+        complex(CKG)        , intent(inout) , contiguous    :: mat(:,:)
         type(lowDia_type)   , intent(in)                    :: subset
         type(iteration_type), intent(in)                    :: control
         integer(IK)         , intent(in)    , optional      :: bdim
@@ -1920,9 +1920,9 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMC_IMP_ABI_XLD_ONO_CK2
 #endif
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
         integer(IK)         , intent(out)                   :: info
-        complex(CKC)        , intent(inout) , contiguous    :: mat(:,:)
+        complex(CKG)        , intent(inout) , contiguous    :: mat(:,:)
         type(lowDia_type)   , intent(in)                    :: subset
         type(iteration_type), intent(in)                    :: control
         integer(IK)         , intent(in)    , optional      :: bdim
@@ -1934,9 +1934,9 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMC_IMP_ABI_XLD_ONO_CK1
 #endif
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
         integer(IK)         , intent(out)                   :: info
-        complex(CKC)        , intent(inout) , contiguous    :: mat(:,:)
+        complex(CKG)        , intent(inout) , contiguous    :: mat(:,:)
         type(lowDia_type)   , intent(in)                    :: subset
         type(iteration_type), intent(in)                    :: control
         integer(IK)         , intent(in)    , optional      :: bdim
@@ -1950,9 +1950,9 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMC_IMP_ABI_XLD_ONO_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         integer(IK)         , intent(out)                   :: info
-        real(RKC)           , intent(inout) , contiguous    :: mat(:,:)
+        real(RKG)           , intent(inout) , contiguous    :: mat(:,:)
         type(lowDia_type)   , intent(in)                    :: subset
         type(iteration_type), intent(in)                    :: control
         integer(IK)         , intent(in)    , optional      :: bdim
@@ -1964,9 +1964,9 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMC_IMP_ABI_XLD_ONO_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         integer(IK)         , intent(out)                   :: info
-        real(RKC)           , intent(inout) , contiguous    :: mat(:,:)
+        real(RKG)           , intent(inout) , contiguous    :: mat(:,:)
         type(lowDia_type)   , intent(in)                    :: subset
         type(iteration_type), intent(in)                    :: control
         integer(IK)         , intent(in)    , optional      :: bdim
@@ -1978,9 +1978,9 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMC_IMP_ABI_XLD_ONO_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         integer(IK)         , intent(out)                   :: info
-        real(RKC)           , intent(inout) , contiguous    :: mat(:,:)
+        real(RKG)           , intent(inout) , contiguous    :: mat(:,:)
         type(lowDia_type)   , intent(in)                    :: subset
         type(iteration_type), intent(in)                    :: control
         integer(IK)         , intent(in)    , optional      :: bdim
@@ -1992,9 +1992,9 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMC_IMP_ABI_XLD_ONO_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         integer(IK)         , intent(out)                   :: info
-        real(RKC)           , intent(inout) , contiguous    :: mat(:,:)
+        real(RKG)           , intent(inout) , contiguous    :: mat(:,:)
         type(lowDia_type)   , intent(in)                    :: subset
         type(iteration_type), intent(in)                    :: control
         integer(IK)         , intent(in)    , optional      :: bdim
@@ -2006,9 +2006,9 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMC_IMP_ABI_XLD_ONO_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         integer(IK)         , intent(out)                   :: info
-        real(RKC)           , intent(inout) , contiguous    :: mat(:,:)
+        real(RKG)           , intent(inout) , contiguous    :: mat(:,:)
         type(lowDia_type)   , intent(in)                    :: subset
         type(iteration_type), intent(in)                    :: control
         integer(IK)         , intent(in)    , optional      :: bdim
@@ -2038,9 +2038,9 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMC_IMP_ABR_UXD_ONO_CK5
 #endif
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
         integer(IK)         , intent(out)                   :: info
-        complex(CKC)        , intent(inout) , contiguous    :: mat(:,:)
+        complex(CKG)        , intent(inout) , contiguous    :: mat(:,:)
         type(uppDia_type)   , intent(in)                    :: subset
         type(recursion_type), intent(in)                    :: control
     end subroutine
@@ -2051,9 +2051,9 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMC_IMP_ABR_UXD_ONO_CK4
 #endif
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
         integer(IK)         , intent(out)                   :: info
-        complex(CKC)        , intent(inout) , contiguous    :: mat(:,:)
+        complex(CKG)        , intent(inout) , contiguous    :: mat(:,:)
         type(uppDia_type)   , intent(in)                    :: subset
         type(recursion_type), intent(in)                    :: control
     end subroutine
@@ -2064,9 +2064,9 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMC_IMP_ABR_UXD_ONO_CK3
 #endif
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
         integer(IK)         , intent(out)                   :: info
-        complex(CKC)        , intent(inout) , contiguous    :: mat(:,:)
+        complex(CKG)        , intent(inout) , contiguous    :: mat(:,:)
         type(uppDia_type)   , intent(in)                    :: subset
         type(recursion_type), intent(in)                    :: control
     end subroutine
@@ -2077,9 +2077,9 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMC_IMP_ABR_UXD_ONO_CK2
 #endif
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
         integer(IK)         , intent(out)                   :: info
-        complex(CKC)        , intent(inout) , contiguous    :: mat(:,:)
+        complex(CKG)        , intent(inout) , contiguous    :: mat(:,:)
         type(uppDia_type)   , intent(in)                    :: subset
         type(recursion_type), intent(in)                    :: control
     end subroutine
@@ -2090,9 +2090,9 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMC_IMP_ABR_UXD_ONO_CK1
 #endif
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
         integer(IK)         , intent(out)                   :: info
-        complex(CKC)        , intent(inout) , contiguous    :: mat(:,:)
+        complex(CKG)        , intent(inout) , contiguous    :: mat(:,:)
         type(uppDia_type)   , intent(in)                    :: subset
         type(recursion_type), intent(in)                    :: control
     end subroutine
@@ -2105,9 +2105,9 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMC_IMP_ABR_UXD_ONO_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         integer(IK)         , intent(out)                   :: info
-        real(RKC)           , intent(inout) , contiguous    :: mat(:,:)
+        real(RKG)           , intent(inout) , contiguous    :: mat(:,:)
         type(uppDia_type)   , intent(in)                    :: subset
         type(recursion_type), intent(in)                    :: control
     end subroutine
@@ -2118,9 +2118,9 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMC_IMP_ABR_UXD_ONO_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         integer(IK)         , intent(out)                   :: info
-        real(RKC)           , intent(inout) , contiguous    :: mat(:,:)
+        real(RKG)           , intent(inout) , contiguous    :: mat(:,:)
         type(uppDia_type)   , intent(in)                    :: subset
         type(recursion_type), intent(in)                    :: control
     end subroutine
@@ -2131,9 +2131,9 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMC_IMP_ABR_UXD_ONO_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         integer(IK)         , intent(out)                   :: info
-        real(RKC)           , intent(inout) , contiguous    :: mat(:,:)
+        real(RKG)           , intent(inout) , contiguous    :: mat(:,:)
         type(uppDia_type)   , intent(in)                    :: subset
         type(recursion_type), intent(in)                    :: control
     end subroutine
@@ -2144,9 +2144,9 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMC_IMP_ABR_UXD_ONO_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         integer(IK)         , intent(out)                   :: info
-        real(RKC)           , intent(inout) , contiguous    :: mat(:,:)
+        real(RKG)           , intent(inout) , contiguous    :: mat(:,:)
         type(uppDia_type)   , intent(in)                    :: subset
         type(recursion_type), intent(in)                    :: control
     end subroutine
@@ -2157,9 +2157,9 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMC_IMP_ABR_UXD_ONO_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         integer(IK)         , intent(out)                   :: info
-        real(RKC)           , intent(inout) , contiguous    :: mat(:,:)
+        real(RKG)           , intent(inout) , contiguous    :: mat(:,:)
         type(uppDia_type)   , intent(in)                    :: subset
         type(recursion_type), intent(in)                    :: control
     end subroutine
@@ -2178,9 +2178,9 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMC_IMP_ABR_XLD_ONO_CK5
 #endif
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
         integer(IK)         , intent(out)                   :: info
-        complex(CKC)        , intent(inout) , contiguous    :: mat(:,:)
+        complex(CKG)        , intent(inout) , contiguous    :: mat(:,:)
         type(lowDia_type)   , intent(in)                    :: subset
         type(recursion_type), intent(in)                    :: control
     end subroutine
@@ -2191,9 +2191,9 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMC_IMP_ABR_XLD_ONO_CK4
 #endif
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
         integer(IK)         , intent(out)                   :: info
-        complex(CKC)        , intent(inout) , contiguous    :: mat(:,:)
+        complex(CKG)        , intent(inout) , contiguous    :: mat(:,:)
         type(lowDia_type)   , intent(in)                    :: subset
         type(recursion_type), intent(in)                    :: control
     end subroutine
@@ -2204,9 +2204,9 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMC_IMP_ABR_XLD_ONO_CK3
 #endif
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
         integer(IK)         , intent(out)                   :: info
-        complex(CKC)        , intent(inout) , contiguous    :: mat(:,:)
+        complex(CKG)        , intent(inout) , contiguous    :: mat(:,:)
         type(lowDia_type)   , intent(in)                    :: subset
         type(recursion_type), intent(in)                    :: control
     end subroutine
@@ -2217,9 +2217,9 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMC_IMP_ABR_XLD_ONO_CK2
 #endif
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
         integer(IK)         , intent(out)                   :: info
-        complex(CKC)        , intent(inout) , contiguous    :: mat(:,:)
+        complex(CKG)        , intent(inout) , contiguous    :: mat(:,:)
         type(lowDia_type)   , intent(in)                    :: subset
         type(recursion_type), intent(in)                    :: control
     end subroutine
@@ -2230,9 +2230,9 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMC_IMP_ABR_XLD_ONO_CK1
 #endif
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
         integer(IK)         , intent(out)                   :: info
-        complex(CKC)        , intent(inout) , contiguous    :: mat(:,:)
+        complex(CKG)        , intent(inout) , contiguous    :: mat(:,:)
         type(lowDia_type)   , intent(in)                    :: subset
         type(recursion_type), intent(in)                    :: control
     end subroutine
@@ -2245,9 +2245,9 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMC_IMP_ABR_XLD_ONO_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         integer(IK)         , intent(out)                   :: info
-        real(RKC)           , intent(inout) , contiguous    :: mat(:,:)
+        real(RKG)           , intent(inout) , contiguous    :: mat(:,:)
         type(lowDia_type)   , intent(in)                    :: subset
         type(recursion_type), intent(in)                    :: control
     end subroutine
@@ -2258,9 +2258,9 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMC_IMP_ABR_XLD_ONO_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         integer(IK)         , intent(out)                   :: info
-        real(RKC)           , intent(inout) , contiguous    :: mat(:,:)
+        real(RKG)           , intent(inout) , contiguous    :: mat(:,:)
         type(lowDia_type)   , intent(in)                    :: subset
         type(recursion_type), intent(in)                    :: control
     end subroutine
@@ -2271,9 +2271,9 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMC_IMP_ABR_XLD_ONO_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         integer(IK)         , intent(out)                   :: info
-        real(RKC)           , intent(inout) , contiguous    :: mat(:,:)
+        real(RKG)           , intent(inout) , contiguous    :: mat(:,:)
         type(lowDia_type)   , intent(in)                    :: subset
         type(recursion_type), intent(in)                    :: control
     end subroutine
@@ -2284,9 +2284,9 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMC_IMP_ABR_XLD_ONO_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         integer(IK)         , intent(out)                   :: info
-        real(RKC)           , intent(inout) , contiguous    :: mat(:,:)
+        real(RKG)           , intent(inout) , contiguous    :: mat(:,:)
         type(lowDia_type)   , intent(in)                    :: subset
         type(recursion_type), intent(in)                    :: control
     end subroutine
@@ -2297,9 +2297,9 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMC_IMP_ABR_XLD_ONO_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         integer(IK)         , intent(out)                   :: info
-        real(RKC)           , intent(inout) , contiguous    :: mat(:,:)
+        real(RKG)           , intent(inout) , contiguous    :: mat(:,:)
         type(lowDia_type)   , intent(in)                    :: subset
         type(recursion_type), intent(in)                    :: control
     end subroutine
@@ -2328,10 +2328,10 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMC_EXP_AXX_UXD_ONO_CK5
 #endif
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
         integer(IK)         , intent(out)                   :: info
         integer(IK)         , intent(in)                    :: ndim, roff, coff
-        complex(CKC)        , intent(inout) , contiguous    :: mat(1 - roff :, 1 - coff :)
+        complex(CKG)        , intent(inout) , contiguous    :: mat(1 - roff :, 1 - coff :)
         type(uppDia_type)   , intent(in)                    :: subset
     end subroutine
 #endif
@@ -2341,10 +2341,10 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMC_EXP_AXX_UXD_ONO_CK4
 #endif
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
         integer(IK)         , intent(out)                   :: info
         integer(IK)         , intent(in)                    :: ndim, roff, coff
-        complex(CKC)        , intent(inout) , contiguous    :: mat(1 - roff :, 1 - coff :)
+        complex(CKG)        , intent(inout) , contiguous    :: mat(1 - roff :, 1 - coff :)
         type(uppDia_type)   , intent(in)                    :: subset
     end subroutine
 #endif
@@ -2354,10 +2354,10 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMC_EXP_AXX_UXD_ONO_CK3
 #endif
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
         integer(IK)         , intent(out)                   :: info
         integer(IK)         , intent(in)                    :: ndim, roff, coff
-        complex(CKC)        , intent(inout) , contiguous    :: mat(1 - roff :, 1 - coff :)
+        complex(CKG)        , intent(inout) , contiguous    :: mat(1 - roff :, 1 - coff :)
         type(uppDia_type)   , intent(in)                    :: subset
     end subroutine
 #endif
@@ -2367,10 +2367,10 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMC_EXP_AXX_UXD_ONO_CK2
 #endif
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
         integer(IK)         , intent(out)                   :: info
         integer(IK)         , intent(in)                    :: ndim, roff, coff
-        complex(CKC)        , intent(inout) , contiguous    :: mat(1 - roff :, 1 - coff :)
+        complex(CKG)        , intent(inout) , contiguous    :: mat(1 - roff :, 1 - coff :)
         type(uppDia_type)   , intent(in)                    :: subset
     end subroutine
 #endif
@@ -2380,10 +2380,10 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMC_EXP_AXX_UXD_ONO_CK1
 #endif
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
         integer(IK)         , intent(out)                   :: info
         integer(IK)         , intent(in)                    :: ndim, roff, coff
-        complex(CKC)        , intent(inout) , contiguous    :: mat(1 - roff :, 1 - coff :)
+        complex(CKG)        , intent(inout) , contiguous    :: mat(1 - roff :, 1 - coff :)
         type(uppDia_type)   , intent(in)                    :: subset
     end subroutine
 #endif
@@ -2395,10 +2395,10 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMC_EXP_AXX_UXD_ONO_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         integer(IK)         , intent(out)                   :: info
         integer(IK)         , intent(in)                    :: ndim, roff, coff
-        real(RKC)           , intent(inout) , contiguous    :: mat(1 - roff :, 1 - coff :)
+        real(RKG)           , intent(inout) , contiguous    :: mat(1 - roff :, 1 - coff :)
         type(uppDia_type)   , intent(in)                    :: subset
     end subroutine
 #endif
@@ -2408,10 +2408,10 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMC_EXP_AXX_UXD_ONO_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         integer(IK)         , intent(out)                   :: info
         integer(IK)         , intent(in)                    :: ndim, roff, coff
-        real(RKC)           , intent(inout) , contiguous    :: mat(1 - roff :, 1 - coff :)
+        real(RKG)           , intent(inout) , contiguous    :: mat(1 - roff :, 1 - coff :)
         type(uppDia_type)   , intent(in)                    :: subset
     end subroutine
 #endif
@@ -2421,10 +2421,10 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMC_EXP_AXX_UXD_ONO_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         integer(IK)         , intent(out)                   :: info
         integer(IK)         , intent(in)                    :: ndim, roff, coff
-        real(RKC)           , intent(inout) , contiguous    :: mat(1 - roff :, 1 - coff :)
+        real(RKG)           , intent(inout) , contiguous    :: mat(1 - roff :, 1 - coff :)
         type(uppDia_type)   , intent(in)                    :: subset
     end subroutine
 #endif
@@ -2434,10 +2434,10 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMC_EXP_AXX_UXD_ONO_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         integer(IK)         , intent(out)                   :: info
         integer(IK)         , intent(in)                    :: ndim, roff, coff
-        real(RKC)           , intent(inout) , contiguous    :: mat(1 - roff :, 1 - coff :)
+        real(RKG)           , intent(inout) , contiguous    :: mat(1 - roff :, 1 - coff :)
         type(uppDia_type)   , intent(in)                    :: subset
     end subroutine
 #endif
@@ -2447,10 +2447,10 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMC_EXP_AXX_UXD_ONO_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         integer(IK)         , intent(out)                   :: info
         integer(IK)         , intent(in)                    :: ndim, roff, coff
-        real(RKC)           , intent(inout) , contiguous    :: mat(1 - roff :, 1 - coff :)
+        real(RKG)           , intent(inout) , contiguous    :: mat(1 - roff :, 1 - coff :)
         type(uppDia_type)   , intent(in)                    :: subset
     end subroutine
 #endif
@@ -2468,10 +2468,10 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMC_EXP_AXX_XLD_ONO_CK5
 #endif
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
         integer(IK)         , intent(out)                   :: info
         integer(IK)         , intent(in)                    :: ndim, roff, coff
-        complex(CKC)        , intent(inout) , contiguous    :: mat(1 - roff :, 1 - coff :)
+        complex(CKG)        , intent(inout) , contiguous    :: mat(1 - roff :, 1 - coff :)
         type(lowDia_type)   , intent(in)                    :: subset
     end subroutine
 #endif
@@ -2481,10 +2481,10 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMC_EXP_AXX_XLD_ONO_CK4
 #endif
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
         integer(IK)         , intent(out)                   :: info
         integer(IK)         , intent(in)                    :: ndim, roff, coff
-        complex(CKC)        , intent(inout) , contiguous    :: mat(1 - roff :, 1 - coff :)
+        complex(CKG)        , intent(inout) , contiguous    :: mat(1 - roff :, 1 - coff :)
         type(lowDia_type)   , intent(in)                    :: subset
     end subroutine
 #endif
@@ -2494,10 +2494,10 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMC_EXP_AXX_XLD_ONO_CK3
 #endif
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
         integer(IK)         , intent(out)                   :: info
         integer(IK)         , intent(in)                    :: ndim, roff, coff
-        complex(CKC)        , intent(inout) , contiguous    :: mat(1 - roff :, 1 - coff :)
+        complex(CKG)        , intent(inout) , contiguous    :: mat(1 - roff :, 1 - coff :)
         type(lowDia_type)   , intent(in)                    :: subset
     end subroutine
 #endif
@@ -2507,10 +2507,10 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMC_EXP_AXX_XLD_ONO_CK2
 #endif
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
         integer(IK)         , intent(out)                   :: info
         integer(IK)         , intent(in)                    :: ndim, roff, coff
-        complex(CKC)        , intent(inout) , contiguous    :: mat(1 - roff :, 1 - coff :)
+        complex(CKG)        , intent(inout) , contiguous    :: mat(1 - roff :, 1 - coff :)
         type(lowDia_type)   , intent(in)                    :: subset
     end subroutine
 #endif
@@ -2520,10 +2520,10 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMC_EXP_AXX_XLD_ONO_CK1
 #endif
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
         integer(IK)         , intent(out)                   :: info
         integer(IK)         , intent(in)                    :: ndim, roff, coff
-        complex(CKC)        , intent(inout) , contiguous    :: mat(1 - roff :, 1 - coff :)
+        complex(CKG)        , intent(inout) , contiguous    :: mat(1 - roff :, 1 - coff :)
         type(lowDia_type)   , intent(in)                    :: subset
     end subroutine
 #endif
@@ -2535,10 +2535,10 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMC_EXP_AXX_XLD_ONO_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         integer(IK)         , intent(out)                   :: info
         integer(IK)         , intent(in)                    :: ndim, roff, coff
-        real(RKC)           , intent(inout) , contiguous    :: mat(1 - roff :, 1 - coff :)
+        real(RKG)           , intent(inout) , contiguous    :: mat(1 - roff :, 1 - coff :)
         type(lowDia_type)   , intent(in)                    :: subset
     end subroutine
 #endif
@@ -2548,10 +2548,10 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMC_EXP_AXX_XLD_ONO_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         integer(IK)         , intent(out)                   :: info
         integer(IK)         , intent(in)                    :: ndim, roff, coff
-        real(RKC)           , intent(inout) , contiguous    :: mat(1 - roff :, 1 - coff :)
+        real(RKG)           , intent(inout) , contiguous    :: mat(1 - roff :, 1 - coff :)
         type(lowDia_type)   , intent(in)                    :: subset
     end subroutine
 #endif
@@ -2561,10 +2561,10 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMC_EXP_AXX_XLD_ONO_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         integer(IK)         , intent(out)                   :: info
         integer(IK)         , intent(in)                    :: ndim, roff, coff
-        real(RKC)           , intent(inout) , contiguous    :: mat(1 - roff :, 1 - coff :)
+        real(RKG)           , intent(inout) , contiguous    :: mat(1 - roff :, 1 - coff :)
         type(lowDia_type)   , intent(in)                    :: subset
     end subroutine
 #endif
@@ -2574,10 +2574,10 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMC_EXP_AXX_XLD_ONO_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         integer(IK)         , intent(out)                   :: info
         integer(IK)         , intent(in)                    :: ndim, roff, coff
-        real(RKC)           , intent(inout) , contiguous    :: mat(1 - roff :, 1 - coff :)
+        real(RKG)           , intent(inout) , contiguous    :: mat(1 - roff :, 1 - coff :)
         type(lowDia_type)   , intent(in)                    :: subset
     end subroutine
 #endif
@@ -2587,10 +2587,10 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMC_EXP_AXX_XLD_ONO_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         integer(IK)         , intent(out)                   :: info
         integer(IK)         , intent(in)                    :: ndim, roff, coff
-        real(RKC)           , intent(inout) , contiguous    :: mat(1 - roff :, 1 - coff :)
+        real(RKG)           , intent(inout) , contiguous    :: mat(1 - roff :, 1 - coff :)
         type(lowDia_type)   , intent(in)                    :: subset
     end subroutine
 #endif
@@ -2618,11 +2618,11 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMC_EXP_ANI_UXD_ONO_CK5
 #endif
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
         integer(IK)         , intent(out)                   :: info
         integer(IK)         , intent(in)                    :: ndim, roff, coff, rofc, cofc
-        complex(CKC)        , intent(in)    , contiguous    :: mat(1 - roff :, 1 - coff :)
-        complex(CKC)        , intent(inout) , contiguous    :: chol(1 - rofc :, 1 - cofc :)
+        complex(CKG)        , intent(in)    , contiguous    :: mat(1 - roff :, 1 - coff :)
+        complex(CKG)        , intent(inout) , contiguous    :: chol(1 - rofc :, 1 - cofc :)
         type(nothing_type)  , intent(in)                    :: operation
         type(uppDia_type)   , intent(in)                    :: subset
     end subroutine
@@ -2633,11 +2633,11 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMC_EXP_ANI_UXD_ONO_CK4
 #endif
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
         integer(IK)         , intent(out)                   :: info
         integer(IK)         , intent(in)                    :: ndim, roff, coff, rofc, cofc
-        complex(CKC)        , intent(in)    , contiguous    :: mat(1 - roff :, 1 - coff :)
-        complex(CKC)        , intent(inout) , contiguous    :: chol(1 - rofc :, 1 - cofc :)
+        complex(CKG)        , intent(in)    , contiguous    :: mat(1 - roff :, 1 - coff :)
+        complex(CKG)        , intent(inout) , contiguous    :: chol(1 - rofc :, 1 - cofc :)
         type(nothing_type)  , intent(in)                    :: operation
         type(uppDia_type)   , intent(in)                    :: subset
     end subroutine
@@ -2648,11 +2648,11 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMC_EXP_ANI_UXD_ONO_CK3
 #endif
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
         integer(IK)         , intent(out)                   :: info
         integer(IK)         , intent(in)                    :: ndim, roff, coff, rofc, cofc
-        complex(CKC)        , intent(in)    , contiguous    :: mat(1 - roff :, 1 - coff :)
-        complex(CKC)        , intent(inout) , contiguous    :: chol(1 - rofc :, 1 - cofc :)
+        complex(CKG)        , intent(in)    , contiguous    :: mat(1 - roff :, 1 - coff :)
+        complex(CKG)        , intent(inout) , contiguous    :: chol(1 - rofc :, 1 - cofc :)
         type(nothing_type)  , intent(in)                    :: operation
         type(uppDia_type)   , intent(in)                    :: subset
     end subroutine
@@ -2663,11 +2663,11 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMC_EXP_ANI_UXD_ONO_CK2
 #endif
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
         integer(IK)         , intent(out)                   :: info
         integer(IK)         , intent(in)                    :: ndim, roff, coff, rofc, cofc
-        complex(CKC)        , intent(in)    , contiguous    :: mat(1 - roff :, 1 - coff :)
-        complex(CKC)        , intent(inout) , contiguous    :: chol(1 - rofc :, 1 - cofc :)
+        complex(CKG)        , intent(in)    , contiguous    :: mat(1 - roff :, 1 - coff :)
+        complex(CKG)        , intent(inout) , contiguous    :: chol(1 - rofc :, 1 - cofc :)
         type(nothing_type)  , intent(in)                    :: operation
         type(uppDia_type)   , intent(in)                    :: subset
     end subroutine
@@ -2678,11 +2678,11 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMC_EXP_ANI_UXD_ONO_CK1
 #endif
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
         integer(IK)         , intent(out)                   :: info
         integer(IK)         , intent(in)                    :: ndim, roff, coff, rofc, cofc
-        complex(CKC)        , intent(in)    , contiguous    :: mat(1 - roff :, 1 - coff :)
-        complex(CKC)        , intent(inout) , contiguous    :: chol(1 - rofc :, 1 - cofc :)
+        complex(CKG)        , intent(in)    , contiguous    :: mat(1 - roff :, 1 - coff :)
+        complex(CKG)        , intent(inout) , contiguous    :: chol(1 - rofc :, 1 - cofc :)
         type(nothing_type)  , intent(in)                    :: operation
         type(uppDia_type)   , intent(in)                    :: subset
     end subroutine
@@ -2695,11 +2695,11 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMC_EXP_ANI_UXD_ONO_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         integer(IK)         , intent(out)                   :: info
         integer(IK)         , intent(in)                    :: ndim, roff, coff, rofc, cofc
-        real(RKC)           , intent(in)    , contiguous    :: mat(1 - roff :, 1 - coff :)
-        real(RKC)           , intent(inout) , contiguous    :: chol(1 - rofc :, 1 - cofc :)
+        real(RKG)           , intent(in)    , contiguous    :: mat(1 - roff :, 1 - coff :)
+        real(RKG)           , intent(inout) , contiguous    :: chol(1 - rofc :, 1 - cofc :)
         type(nothing_type)  , intent(in)                    :: operation
         type(uppDia_type)   , intent(in)                    :: subset
     end subroutine
@@ -2710,11 +2710,11 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMC_EXP_ANI_UXD_ONO_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         integer(IK)         , intent(out)                   :: info
         integer(IK)         , intent(in)                    :: ndim, roff, coff, rofc, cofc
-        real(RKC)           , intent(in)    , contiguous    :: mat(1 - roff :, 1 - coff :)
-        real(RKC)           , intent(inout) , contiguous    :: chol(1 - rofc :, 1 - cofc :)
+        real(RKG)           , intent(in)    , contiguous    :: mat(1 - roff :, 1 - coff :)
+        real(RKG)           , intent(inout) , contiguous    :: chol(1 - rofc :, 1 - cofc :)
         type(nothing_type)  , intent(in)                    :: operation
         type(uppDia_type)   , intent(in)                    :: subset
     end subroutine
@@ -2725,11 +2725,11 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMC_EXP_ANI_UXD_ONO_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         integer(IK)         , intent(out)                   :: info
         integer(IK)         , intent(in)                    :: ndim, roff, coff, rofc, cofc
-        real(RKC)           , intent(in)    , contiguous    :: mat(1 - roff :, 1 - coff :)
-        real(RKC)           , intent(inout) , contiguous    :: chol(1 - rofc :, 1 - cofc :)
+        real(RKG)           , intent(in)    , contiguous    :: mat(1 - roff :, 1 - coff :)
+        real(RKG)           , intent(inout) , contiguous    :: chol(1 - rofc :, 1 - cofc :)
         type(nothing_type)  , intent(in)                    :: operation
         type(uppDia_type)   , intent(in)                    :: subset
     end subroutine
@@ -2740,11 +2740,11 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMC_EXP_ANI_UXD_ONO_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         integer(IK)         , intent(out)                   :: info
         integer(IK)         , intent(in)                    :: ndim, roff, coff, rofc, cofc
-        real(RKC)           , intent(in)    , contiguous    :: mat(1 - roff :, 1 - coff :)
-        real(RKC)           , intent(inout) , contiguous    :: chol(1 - rofc :, 1 - cofc :)
+        real(RKG)           , intent(in)    , contiguous    :: mat(1 - roff :, 1 - coff :)
+        real(RKG)           , intent(inout) , contiguous    :: chol(1 - rofc :, 1 - cofc :)
         type(nothing_type)  , intent(in)                    :: operation
         type(uppDia_type)   , intent(in)                    :: subset
     end subroutine
@@ -2755,11 +2755,11 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMC_EXP_ANI_UXD_ONO_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         integer(IK)         , intent(out)                   :: info
         integer(IK)         , intent(in)                    :: ndim, roff, coff, rofc, cofc
-        real(RKC)           , intent(in)    , contiguous    :: mat(1 - roff :, 1 - coff :)
-        real(RKC)           , intent(inout) , contiguous    :: chol(1 - rofc :, 1 - cofc :)
+        real(RKG)           , intent(in)    , contiguous    :: mat(1 - roff :, 1 - coff :)
+        real(RKG)           , intent(inout) , contiguous    :: chol(1 - rofc :, 1 - cofc :)
         type(nothing_type)  , intent(in)                    :: operation
         type(uppDia_type)   , intent(in)                    :: subset
     end subroutine
@@ -2778,11 +2778,11 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMC_EXP_ANI_XLD_ONO_CK5
 #endif
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
         integer(IK)         , intent(out)                   :: info
         integer(IK)         , intent(in)                    :: ndim, roff, coff, rofc, cofc
-        complex(CKC)        , intent(in)    , contiguous    :: mat(1 - roff :, 1 - coff :)
-        complex(CKC)        , intent(inout) , contiguous    :: chol(1 - rofc :, 1 - cofc :)
+        complex(CKG)        , intent(in)    , contiguous    :: mat(1 - roff :, 1 - coff :)
+        complex(CKG)        , intent(inout) , contiguous    :: chol(1 - rofc :, 1 - cofc :)
         type(nothing_type)  , intent(in)                    :: operation
         type(lowDia_type)   , intent(in)                    :: subset
     end subroutine
@@ -2793,11 +2793,11 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMC_EXP_ANI_XLD_ONO_CK4
 #endif
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
         integer(IK)         , intent(out)                   :: info
         integer(IK)         , intent(in)                    :: ndim, roff, coff, rofc, cofc
-        complex(CKC)        , intent(in)    , contiguous    :: mat(1 - roff :, 1 - coff :)
-        complex(CKC)        , intent(inout) , contiguous    :: chol(1 - rofc :, 1 - cofc :)
+        complex(CKG)        , intent(in)    , contiguous    :: mat(1 - roff :, 1 - coff :)
+        complex(CKG)        , intent(inout) , contiguous    :: chol(1 - rofc :, 1 - cofc :)
         type(nothing_type)  , intent(in)                    :: operation
         type(lowDia_type)   , intent(in)                    :: subset
     end subroutine
@@ -2808,11 +2808,11 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMC_EXP_ANI_XLD_ONO_CK3
 #endif
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
         integer(IK)         , intent(out)                   :: info
         integer(IK)         , intent(in)                    :: ndim, roff, coff, rofc, cofc
-        complex(CKC)        , intent(in)    , contiguous    :: mat(1 - roff :, 1 - coff :)
-        complex(CKC)        , intent(inout) , contiguous    :: chol(1 - rofc :, 1 - cofc :)
+        complex(CKG)        , intent(in)    , contiguous    :: mat(1 - roff :, 1 - coff :)
+        complex(CKG)        , intent(inout) , contiguous    :: chol(1 - rofc :, 1 - cofc :)
         type(nothing_type)  , intent(in)                    :: operation
         type(lowDia_type)   , intent(in)                    :: subset
     end subroutine
@@ -2823,11 +2823,11 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMC_EXP_ANI_XLD_ONO_CK2
 #endif
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
         integer(IK)         , intent(out)                   :: info
         integer(IK)         , intent(in)                    :: ndim, roff, coff, rofc, cofc
-        complex(CKC)        , intent(in)    , contiguous    :: mat(1 - roff :, 1 - coff :)
-        complex(CKC)        , intent(inout) , contiguous    :: chol(1 - rofc :, 1 - cofc :)
+        complex(CKG)        , intent(in)    , contiguous    :: mat(1 - roff :, 1 - coff :)
+        complex(CKG)        , intent(inout) , contiguous    :: chol(1 - rofc :, 1 - cofc :)
         type(nothing_type)  , intent(in)                    :: operation
         type(lowDia_type)   , intent(in)                    :: subset
     end subroutine
@@ -2838,11 +2838,11 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMC_EXP_ANI_XLD_ONO_CK1
 #endif
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
         integer(IK)         , intent(out)                   :: info
         integer(IK)         , intent(in)                    :: ndim, roff, coff, rofc, cofc
-        complex(CKC)        , intent(in)    , contiguous    :: mat(1 - roff :, 1 - coff :)
-        complex(CKC)        , intent(inout) , contiguous    :: chol(1 - rofc :, 1 - cofc :)
+        complex(CKG)        , intent(in)    , contiguous    :: mat(1 - roff :, 1 - coff :)
+        complex(CKG)        , intent(inout) , contiguous    :: chol(1 - rofc :, 1 - cofc :)
         type(nothing_type)  , intent(in)                    :: operation
         type(lowDia_type)   , intent(in)                    :: subset
     end subroutine
@@ -2855,11 +2855,11 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMC_EXP_ANI_XLD_ONO_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         integer(IK)         , intent(out)                   :: info
         integer(IK)         , intent(in)                    :: ndim, roff, coff, rofc, cofc
-        real(RKC)           , intent(in)    , contiguous    :: mat(1 - roff :, 1 - coff :)
-        real(RKC)           , intent(inout) , contiguous    :: chol(1 - rofc :, 1 - cofc :)
+        real(RKG)           , intent(in)    , contiguous    :: mat(1 - roff :, 1 - coff :)
+        real(RKG)           , intent(inout) , contiguous    :: chol(1 - rofc :, 1 - cofc :)
         type(nothing_type)  , intent(in)                    :: operation
         type(lowDia_type)   , intent(in)                    :: subset
     end subroutine
@@ -2870,11 +2870,11 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMC_EXP_ANI_XLD_ONO_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         integer(IK)         , intent(out)                   :: info
         integer(IK)         , intent(in)                    :: ndim, roff, coff, rofc, cofc
-        real(RKC)           , intent(in)    , contiguous    :: mat(1 - roff :, 1 - coff :)
-        real(RKC)           , intent(inout) , contiguous    :: chol(1 - rofc :, 1 - cofc :)
+        real(RKG)           , intent(in)    , contiguous    :: mat(1 - roff :, 1 - coff :)
+        real(RKG)           , intent(inout) , contiguous    :: chol(1 - rofc :, 1 - cofc :)
         type(nothing_type)  , intent(in)                    :: operation
         type(lowDia_type)   , intent(in)                    :: subset
     end subroutine
@@ -2885,11 +2885,11 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMC_EXP_ANI_XLD_ONO_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         integer(IK)         , intent(out)                   :: info
         integer(IK)         , intent(in)                    :: ndim, roff, coff, rofc, cofc
-        real(RKC)           , intent(in)    , contiguous    :: mat(1 - roff :, 1 - coff :)
-        real(RKC)           , intent(inout) , contiguous    :: chol(1 - rofc :, 1 - cofc :)
+        real(RKG)           , intent(in)    , contiguous    :: mat(1 - roff :, 1 - coff :)
+        real(RKG)           , intent(inout) , contiguous    :: chol(1 - rofc :, 1 - cofc :)
         type(nothing_type)  , intent(in)                    :: operation
         type(lowDia_type)   , intent(in)                    :: subset
     end subroutine
@@ -2900,11 +2900,11 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMC_EXP_ANI_XLD_ONO_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         integer(IK)         , intent(out)                   :: info
         integer(IK)         , intent(in)                    :: ndim, roff, coff, rofc, cofc
-        real(RKC)           , intent(in)    , contiguous    :: mat(1 - roff :, 1 - coff :)
-        real(RKC)           , intent(inout) , contiguous    :: chol(1 - rofc :, 1 - cofc :)
+        real(RKG)           , intent(in)    , contiguous    :: mat(1 - roff :, 1 - coff :)
+        real(RKG)           , intent(inout) , contiguous    :: chol(1 - rofc :, 1 - cofc :)
         type(nothing_type)  , intent(in)                    :: operation
         type(lowDia_type)   , intent(in)                    :: subset
     end subroutine
@@ -2915,11 +2915,11 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMC_EXP_ANI_XLD_ONO_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         integer(IK)         , intent(out)                   :: info
         integer(IK)         , intent(in)                    :: ndim, roff, coff, rofc, cofc
-        real(RKC)           , intent(in)    , contiguous    :: mat(1 - roff :, 1 - coff :)
-        real(RKC)           , intent(inout) , contiguous    :: chol(1 - rofc :, 1 - cofc :)
+        real(RKG)           , intent(in)    , contiguous    :: mat(1 - roff :, 1 - coff :)
+        real(RKG)           , intent(inout) , contiguous    :: chol(1 - rofc :, 1 - cofc :)
         type(nothing_type)  , intent(in)                    :: operation
         type(lowDia_type)   , intent(in)                    :: subset
     end subroutine
@@ -2948,11 +2948,11 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMC_EXP_ANI_UXD_OTH_CK5
 #endif
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
         integer(IK)         , intent(out)                   :: info
         integer(IK)         , intent(in)                    :: ndim, roff, coff, rofc, cofc
-        complex(CKC)        , intent(in)    , contiguous    :: mat(1 - roff :, 1 - coff :)
-        complex(CKC)        , intent(inout) , contiguous    :: chol(1 - rofc :, 1 - cofc :)
+        complex(CKG)        , intent(in)    , contiguous    :: mat(1 - roff :, 1 - coff :)
+        complex(CKG)        , intent(inout) , contiguous    :: chol(1 - rofc :, 1 - cofc :)
         type(transHerm_type), intent(in)                    :: operation
         type(uppDia_type)   , intent(in)                    :: subset
     end subroutine
@@ -2963,11 +2963,11 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMC_EXP_ANI_UXD_OTH_CK4
 #endif
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
         integer(IK)         , intent(out)                   :: info
         integer(IK)         , intent(in)                    :: ndim, roff, coff, rofc, cofc
-        complex(CKC)        , intent(in)    , contiguous    :: mat(1 - roff :, 1 - coff :)
-        complex(CKC)        , intent(inout) , contiguous    :: chol(1 - rofc :, 1 - cofc :)
+        complex(CKG)        , intent(in)    , contiguous    :: mat(1 - roff :, 1 - coff :)
+        complex(CKG)        , intent(inout) , contiguous    :: chol(1 - rofc :, 1 - cofc :)
         type(transHerm_type), intent(in)                    :: operation
         type(uppDia_type)   , intent(in)                    :: subset
     end subroutine
@@ -2978,11 +2978,11 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMC_EXP_ANI_UXD_OTH_CK3
 #endif
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
         integer(IK)         , intent(out)                   :: info
         integer(IK)         , intent(in)                    :: ndim, roff, coff, rofc, cofc
-        complex(CKC)        , intent(in)    , contiguous    :: mat(1 - roff :, 1 - coff :)
-        complex(CKC)        , intent(inout) , contiguous    :: chol(1 - rofc :, 1 - cofc :)
+        complex(CKG)        , intent(in)    , contiguous    :: mat(1 - roff :, 1 - coff :)
+        complex(CKG)        , intent(inout) , contiguous    :: chol(1 - rofc :, 1 - cofc :)
         type(transHerm_type), intent(in)                    :: operation
         type(uppDia_type)   , intent(in)                    :: subset
     end subroutine
@@ -2993,11 +2993,11 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMC_EXP_ANI_UXD_OTH_CK2
 #endif
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
         integer(IK)         , intent(out)                   :: info
         integer(IK)         , intent(in)                    :: ndim, roff, coff, rofc, cofc
-        complex(CKC)        , intent(in)    , contiguous    :: mat(1 - roff :, 1 - coff :)
-        complex(CKC)        , intent(inout) , contiguous    :: chol(1 - rofc :, 1 - cofc :)
+        complex(CKG)        , intent(in)    , contiguous    :: mat(1 - roff :, 1 - coff :)
+        complex(CKG)        , intent(inout) , contiguous    :: chol(1 - rofc :, 1 - cofc :)
         type(transHerm_type), intent(in)                    :: operation
         type(uppDia_type)   , intent(in)                    :: subset
     end subroutine
@@ -3008,11 +3008,11 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMC_EXP_ANI_UXD_OTH_CK1
 #endif
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
         integer(IK)         , intent(out)                   :: info
         integer(IK)         , intent(in)                    :: ndim, roff, coff, rofc, cofc
-        complex(CKC)        , intent(in)    , contiguous    :: mat(1 - roff :, 1 - coff :)
-        complex(CKC)        , intent(inout) , contiguous    :: chol(1 - rofc :, 1 - cofc :)
+        complex(CKG)        , intent(in)    , contiguous    :: mat(1 - roff :, 1 - coff :)
+        complex(CKG)        , intent(inout) , contiguous    :: chol(1 - rofc :, 1 - cofc :)
         type(transHerm_type), intent(in)                    :: operation
         type(uppDia_type)   , intent(in)                    :: subset
     end subroutine
@@ -3025,11 +3025,11 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMC_EXP_ANI_UXD_OTH_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         integer(IK)         , intent(out)                   :: info
         integer(IK)         , intent(in)                    :: ndim, roff, coff, rofc, cofc
-        real(RKC)           , intent(in)    , contiguous    :: mat(1 - roff :, 1 - coff :)
-        real(RKC)           , intent(inout) , contiguous    :: chol(1 - rofc :, 1 - cofc :)
+        real(RKG)           , intent(in)    , contiguous    :: mat(1 - roff :, 1 - coff :)
+        real(RKG)           , intent(inout) , contiguous    :: chol(1 - rofc :, 1 - cofc :)
         type(transHerm_type), intent(in)                    :: operation
         type(uppDia_type)   , intent(in)                    :: subset
     end subroutine
@@ -3040,11 +3040,11 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMC_EXP_ANI_UXD_OTH_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         integer(IK)         , intent(out)                   :: info
         integer(IK)         , intent(in)                    :: ndim, roff, coff, rofc, cofc
-        real(RKC)           , intent(in)    , contiguous    :: mat(1 - roff :, 1 - coff :)
-        real(RKC)           , intent(inout) , contiguous    :: chol(1 - rofc :, 1 - cofc :)
+        real(RKG)           , intent(in)    , contiguous    :: mat(1 - roff :, 1 - coff :)
+        real(RKG)           , intent(inout) , contiguous    :: chol(1 - rofc :, 1 - cofc :)
         type(transHerm_type), intent(in)                    :: operation
         type(uppDia_type)   , intent(in)                    :: subset
     end subroutine
@@ -3055,11 +3055,11 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMC_EXP_ANI_UXD_OTH_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         integer(IK)         , intent(out)                   :: info
         integer(IK)         , intent(in)                    :: ndim, roff, coff, rofc, cofc
-        real(RKC)           , intent(in)    , contiguous    :: mat(1 - roff :, 1 - coff :)
-        real(RKC)           , intent(inout) , contiguous    :: chol(1 - rofc :, 1 - cofc :)
+        real(RKG)           , intent(in)    , contiguous    :: mat(1 - roff :, 1 - coff :)
+        real(RKG)           , intent(inout) , contiguous    :: chol(1 - rofc :, 1 - cofc :)
         type(transHerm_type), intent(in)                    :: operation
         type(uppDia_type)   , intent(in)                    :: subset
     end subroutine
@@ -3070,11 +3070,11 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMC_EXP_ANI_UXD_OTH_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         integer(IK)         , intent(out)                   :: info
         integer(IK)         , intent(in)                    :: ndim, roff, coff, rofc, cofc
-        real(RKC)           , intent(in)    , contiguous    :: mat(1 - roff :, 1 - coff :)
-        real(RKC)           , intent(inout) , contiguous    :: chol(1 - rofc :, 1 - cofc :)
+        real(RKG)           , intent(in)    , contiguous    :: mat(1 - roff :, 1 - coff :)
+        real(RKG)           , intent(inout) , contiguous    :: chol(1 - rofc :, 1 - cofc :)
         type(transHerm_type), intent(in)                    :: operation
         type(uppDia_type)   , intent(in)                    :: subset
     end subroutine
@@ -3085,11 +3085,11 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMC_EXP_ANI_UXD_OTH_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         integer(IK)         , intent(out)                   :: info
         integer(IK)         , intent(in)                    :: ndim, roff, coff, rofc, cofc
-        real(RKC)           , intent(in)    , contiguous    :: mat(1 - roff :, 1 - coff :)
-        real(RKC)           , intent(inout) , contiguous    :: chol(1 - rofc :, 1 - cofc :)
+        real(RKG)           , intent(in)    , contiguous    :: mat(1 - roff :, 1 - coff :)
+        real(RKG)           , intent(inout) , contiguous    :: chol(1 - rofc :, 1 - cofc :)
         type(transHerm_type), intent(in)                    :: operation
         type(uppDia_type)   , intent(in)                    :: subset
     end subroutine
@@ -3108,11 +3108,11 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMC_EXP_ANI_XLD_OTH_CK5
 #endif
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
         integer(IK)         , intent(out)                   :: info
         integer(IK)         , intent(in)                    :: ndim, roff, coff, rofc, cofc
-        complex(CKC)        , intent(in)    , contiguous    :: mat(1 - roff :, 1 - coff :)
-        complex(CKC)        , intent(inout) , contiguous    :: chol(1 - rofc :, 1 - cofc :)
+        complex(CKG)        , intent(in)    , contiguous    :: mat(1 - roff :, 1 - coff :)
+        complex(CKG)        , intent(inout) , contiguous    :: chol(1 - rofc :, 1 - cofc :)
         type(transHerm_type), intent(in)                    :: operation
         type(lowDia_type)   , intent(in)                    :: subset
     end subroutine
@@ -3123,11 +3123,11 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMC_EXP_ANI_XLD_OTH_CK4
 #endif
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
         integer(IK)         , intent(out)                   :: info
         integer(IK)         , intent(in)                    :: ndim, roff, coff, rofc, cofc
-        complex(CKC)        , intent(in)    , contiguous    :: mat(1 - roff :, 1 - coff :)
-        complex(CKC)        , intent(inout) , contiguous    :: chol(1 - rofc :, 1 - cofc :)
+        complex(CKG)        , intent(in)    , contiguous    :: mat(1 - roff :, 1 - coff :)
+        complex(CKG)        , intent(inout) , contiguous    :: chol(1 - rofc :, 1 - cofc :)
         type(transHerm_type), intent(in)                    :: operation
         type(lowDia_type)   , intent(in)                    :: subset
     end subroutine
@@ -3138,11 +3138,11 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMC_EXP_ANI_XLD_OTH_CK3
 #endif
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
         integer(IK)         , intent(out)                   :: info
         integer(IK)         , intent(in)                    :: ndim, roff, coff, rofc, cofc
-        complex(CKC)        , intent(in)    , contiguous    :: mat(1 - roff :, 1 - coff :)
-        complex(CKC)        , intent(inout) , contiguous    :: chol(1 - rofc :, 1 - cofc :)
+        complex(CKG)        , intent(in)    , contiguous    :: mat(1 - roff :, 1 - coff :)
+        complex(CKG)        , intent(inout) , contiguous    :: chol(1 - rofc :, 1 - cofc :)
         type(transHerm_type), intent(in)                    :: operation
         type(lowDia_type)   , intent(in)                    :: subset
     end subroutine
@@ -3153,11 +3153,11 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMC_EXP_ANI_XLD_OTH_CK2
 #endif
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
         integer(IK)         , intent(out)                   :: info
         integer(IK)         , intent(in)                    :: ndim, roff, coff, rofc, cofc
-        complex(CKC)        , intent(in)    , contiguous    :: mat(1 - roff :, 1 - coff :)
-        complex(CKC)        , intent(inout) , contiguous    :: chol(1 - rofc :, 1 - cofc :)
+        complex(CKG)        , intent(in)    , contiguous    :: mat(1 - roff :, 1 - coff :)
+        complex(CKG)        , intent(inout) , contiguous    :: chol(1 - rofc :, 1 - cofc :)
         type(transHerm_type), intent(in)                    :: operation
         type(lowDia_type)   , intent(in)                    :: subset
     end subroutine
@@ -3168,11 +3168,11 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMC_EXP_ANI_XLD_OTH_CK1
 #endif
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
         integer(IK)         , intent(out)                   :: info
         integer(IK)         , intent(in)                    :: ndim, roff, coff, rofc, cofc
-        complex(CKC)        , intent(in)    , contiguous    :: mat(1 - roff :, 1 - coff :)
-        complex(CKC)        , intent(inout) , contiguous    :: chol(1 - rofc :, 1 - cofc :)
+        complex(CKG)        , intent(in)    , contiguous    :: mat(1 - roff :, 1 - coff :)
+        complex(CKG)        , intent(inout) , contiguous    :: chol(1 - rofc :, 1 - cofc :)
         type(transHerm_type), intent(in)                    :: operation
         type(lowDia_type)   , intent(in)                    :: subset
     end subroutine
@@ -3185,11 +3185,11 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMC_EXP_ANI_XLD_OTH_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         integer(IK)         , intent(out)                   :: info
         integer(IK)         , intent(in)                    :: ndim, roff, coff, rofc, cofc
-        real(RKC)           , intent(in)    , contiguous    :: mat(1 - roff :, 1 - coff :)
-        real(RKC)           , intent(inout) , contiguous    :: chol(1 - rofc :, 1 - cofc :)
+        real(RKG)           , intent(in)    , contiguous    :: mat(1 - roff :, 1 - coff :)
+        real(RKG)           , intent(inout) , contiguous    :: chol(1 - rofc :, 1 - cofc :)
         type(transHerm_type), intent(in)                    :: operation
         type(lowDia_type)   , intent(in)                    :: subset
     end subroutine
@@ -3200,11 +3200,11 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMC_EXP_ANI_XLD_OTH_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         integer(IK)         , intent(out)                   :: info
         integer(IK)         , intent(in)                    :: ndim, roff, coff, rofc, cofc
-        real(RKC)           , intent(in)    , contiguous    :: mat(1 - roff :, 1 - coff :)
-        real(RKC)           , intent(inout) , contiguous    :: chol(1 - rofc :, 1 - cofc :)
+        real(RKG)           , intent(in)    , contiguous    :: mat(1 - roff :, 1 - coff :)
+        real(RKG)           , intent(inout) , contiguous    :: chol(1 - rofc :, 1 - cofc :)
         type(transHerm_type), intent(in)                    :: operation
         type(lowDia_type)   , intent(in)                    :: subset
     end subroutine
@@ -3215,11 +3215,11 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMC_EXP_ANI_XLD_OTH_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         integer(IK)         , intent(out)                   :: info
         integer(IK)         , intent(in)                    :: ndim, roff, coff, rofc, cofc
-        real(RKC)           , intent(in)    , contiguous    :: mat(1 - roff :, 1 - coff :)
-        real(RKC)           , intent(inout) , contiguous    :: chol(1 - rofc :, 1 - cofc :)
+        real(RKG)           , intent(in)    , contiguous    :: mat(1 - roff :, 1 - coff :)
+        real(RKG)           , intent(inout) , contiguous    :: chol(1 - rofc :, 1 - cofc :)
         type(transHerm_type), intent(in)                    :: operation
         type(lowDia_type)   , intent(in)                    :: subset
     end subroutine
@@ -3230,11 +3230,11 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMC_EXP_ANI_XLD_OTH_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         integer(IK)         , intent(out)                   :: info
         integer(IK)         , intent(in)                    :: ndim, roff, coff, rofc, cofc
-        real(RKC)           , intent(in)    , contiguous    :: mat(1 - roff :, 1 - coff :)
-        real(RKC)           , intent(inout) , contiguous    :: chol(1 - rofc :, 1 - cofc :)
+        real(RKG)           , intent(in)    , contiguous    :: mat(1 - roff :, 1 - coff :)
+        real(RKG)           , intent(inout) , contiguous    :: chol(1 - rofc :, 1 - cofc :)
         type(transHerm_type), intent(in)                    :: operation
         type(lowDia_type)   , intent(in)                    :: subset
     end subroutine
@@ -3245,11 +3245,11 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMC_EXP_ANI_XLD_OTH_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         integer(IK)         , intent(out)                   :: info
         integer(IK)         , intent(in)                    :: ndim, roff, coff, rofc, cofc
-        real(RKC)           , intent(in)    , contiguous    :: mat(1 - roff :, 1 - coff :)
-        real(RKC)           , intent(inout) , contiguous    :: chol(1 - rofc :, 1 - cofc :)
+        real(RKG)           , intent(in)    , contiguous    :: mat(1 - roff :, 1 - coff :)
+        real(RKG)           , intent(inout) , contiguous    :: chol(1 - rofc :, 1 - cofc :)
         type(transHerm_type), intent(in)                    :: operation
         type(lowDia_type)   , intent(in)                    :: subset
     end subroutine
@@ -3278,10 +3278,10 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMC_EXP_ABI_UXD_ONO_CK5
 #endif
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
         integer(IK)         , intent(out)                   :: info
         integer(IK)         , intent(in)                    :: ndim, roff, coff
-        complex(CKC)        , intent(inout) , contiguous    :: mat(1 - roff :, 1 - coff :)
+        complex(CKG)        , intent(inout) , contiguous    :: mat(1 - roff :, 1 - coff :)
         type(uppDia_type)   , intent(in)                    :: subset
         type(iteration_type), intent(in)                    :: control
         integer(IK)         , intent(in)    , optional      :: bdim
@@ -3293,10 +3293,10 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMC_EXP_ABI_UXD_ONO_CK4
 #endif
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
         integer(IK)         , intent(out)                   :: info
         integer(IK)         , intent(in)                    :: ndim, roff, coff
-        complex(CKC)        , intent(inout) , contiguous    :: mat(1 - roff :, 1 - coff :)
+        complex(CKG)        , intent(inout) , contiguous    :: mat(1 - roff :, 1 - coff :)
         type(uppDia_type)   , intent(in)                    :: subset
         type(iteration_type), intent(in)                    :: control
         integer(IK)         , intent(in)    , optional      :: bdim
@@ -3308,10 +3308,10 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMC_EXP_ABI_UXD_ONO_CK3
 #endif
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
         integer(IK)         , intent(out)                   :: info
         integer(IK)         , intent(in)                    :: ndim, roff, coff
-        complex(CKC)        , intent(inout) , contiguous    :: mat(1 - roff :, 1 - coff :)
+        complex(CKG)        , intent(inout) , contiguous    :: mat(1 - roff :, 1 - coff :)
         type(uppDia_type)   , intent(in)                    :: subset
         type(iteration_type), intent(in)                    :: control
         integer(IK)         , intent(in)    , optional      :: bdim
@@ -3323,10 +3323,10 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMC_EXP_ABI_UXD_ONO_CK2
 #endif
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
         integer(IK)         , intent(out)                   :: info
         integer(IK)         , intent(in)                    :: ndim, roff, coff
-        complex(CKC)        , intent(inout) , contiguous    :: mat(1 - roff :, 1 - coff :)
+        complex(CKG)        , intent(inout) , contiguous    :: mat(1 - roff :, 1 - coff :)
         type(uppDia_type)   , intent(in)                    :: subset
         type(iteration_type), intent(in)                    :: control
         integer(IK)         , intent(in)    , optional      :: bdim
@@ -3338,10 +3338,10 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMC_EXP_ABI_UXD_ONO_CK1
 #endif
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
         integer(IK)         , intent(out)                   :: info
         integer(IK)         , intent(in)                    :: ndim, roff, coff
-        complex(CKC)        , intent(inout) , contiguous    :: mat(1 - roff :, 1 - coff :)
+        complex(CKG)        , intent(inout) , contiguous    :: mat(1 - roff :, 1 - coff :)
         type(uppDia_type)   , intent(in)                    :: subset
         type(iteration_type), intent(in)                    :: control
         integer(IK)         , intent(in)    , optional      :: bdim
@@ -3355,10 +3355,10 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMC_EXP_ABI_UXD_ONO_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         integer(IK)         , intent(out)                   :: info
         integer(IK)         , intent(in)                    :: ndim, roff, coff
-        real(RKC)           , intent(inout) , contiguous    :: mat(1 - roff :, 1 - coff :)
+        real(RKG)           , intent(inout) , contiguous    :: mat(1 - roff :, 1 - coff :)
         type(uppDia_type)   , intent(in)                    :: subset
         type(iteration_type), intent(in)                    :: control
         integer(IK)         , intent(in)    , optional      :: bdim
@@ -3370,10 +3370,10 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMC_EXP_ABI_UXD_ONO_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         integer(IK)         , intent(out)                   :: info
         integer(IK)         , intent(in)                    :: ndim, roff, coff
-        real(RKC)           , intent(inout) , contiguous    :: mat(1 - roff :, 1 - coff :)
+        real(RKG)           , intent(inout) , contiguous    :: mat(1 - roff :, 1 - coff :)
         type(uppDia_type)   , intent(in)                    :: subset
         type(iteration_type), intent(in)                    :: control
         integer(IK)         , intent(in)    , optional      :: bdim
@@ -3385,10 +3385,10 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMC_EXP_ABI_UXD_ONO_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         integer(IK)         , intent(out)                   :: info
         integer(IK)         , intent(in)                    :: ndim, roff, coff
-        real(RKC)           , intent(inout) , contiguous    :: mat(1 - roff :, 1 - coff :)
+        real(RKG)           , intent(inout) , contiguous    :: mat(1 - roff :, 1 - coff :)
         type(uppDia_type)   , intent(in)                    :: subset
         type(iteration_type), intent(in)                    :: control
         integer(IK)         , intent(in)    , optional      :: bdim
@@ -3400,10 +3400,10 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMC_EXP_ABI_UXD_ONO_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         integer(IK)         , intent(out)                   :: info
         integer(IK)         , intent(in)                    :: ndim, roff, coff
-        real(RKC)           , intent(inout) , contiguous    :: mat(1 - roff :, 1 - coff :)
+        real(RKG)           , intent(inout) , contiguous    :: mat(1 - roff :, 1 - coff :)
         type(uppDia_type)   , intent(in)                    :: subset
         type(iteration_type), intent(in)                    :: control
         integer(IK)         , intent(in)    , optional      :: bdim
@@ -3415,10 +3415,10 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMC_EXP_ABI_UXD_ONO_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         integer(IK)         , intent(out)                   :: info
         integer(IK)         , intent(in)                    :: ndim, roff, coff
-        real(RKC)           , intent(inout) , contiguous    :: mat(1 - roff :, 1 - coff :)
+        real(RKG)           , intent(inout) , contiguous    :: mat(1 - roff :, 1 - coff :)
         type(uppDia_type)   , intent(in)                    :: subset
         type(iteration_type), intent(in)                    :: control
         integer(IK)         , intent(in)    , optional      :: bdim
@@ -3438,10 +3438,10 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMC_EXP_ABI_XLD_ONO_CK5
 #endif
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
         integer(IK)         , intent(out)                   :: info
         integer(IK)         , intent(in)                    :: ndim, roff, coff
-        complex(CKC)        , intent(inout) , contiguous    :: mat(1 - roff :, 1 - coff :)
+        complex(CKG)        , intent(inout) , contiguous    :: mat(1 - roff :, 1 - coff :)
         type(lowDia_type)   , intent(in)                    :: subset
         type(iteration_type), intent(in)                    :: control
         integer(IK)         , intent(in)    , optional      :: bdim
@@ -3453,10 +3453,10 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMC_EXP_ABI_XLD_ONO_CK4
 #endif
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
         integer(IK)         , intent(out)                   :: info
         integer(IK)         , intent(in)                    :: ndim, roff, coff
-        complex(CKC)        , intent(inout) , contiguous    :: mat(1 - roff :, 1 - coff :)
+        complex(CKG)        , intent(inout) , contiguous    :: mat(1 - roff :, 1 - coff :)
         type(lowDia_type)   , intent(in)                    :: subset
         type(iteration_type), intent(in)                    :: control
         integer(IK)         , intent(in)    , optional      :: bdim
@@ -3468,10 +3468,10 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMC_EXP_ABI_XLD_ONO_CK3
 #endif
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
         integer(IK)         , intent(out)                   :: info
         integer(IK)         , intent(in)                    :: ndim, roff, coff
-        complex(CKC)        , intent(inout) , contiguous    :: mat(1 - roff :, 1 - coff :)
+        complex(CKG)        , intent(inout) , contiguous    :: mat(1 - roff :, 1 - coff :)
         type(lowDia_type)   , intent(in)                    :: subset
         type(iteration_type), intent(in)                    :: control
         integer(IK)         , intent(in)    , optional      :: bdim
@@ -3483,10 +3483,10 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMC_EXP_ABI_XLD_ONO_CK2
 #endif
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
         integer(IK)         , intent(out)                   :: info
         integer(IK)         , intent(in)                    :: ndim, roff, coff
-        complex(CKC)        , intent(inout) , contiguous    :: mat(1 - roff :, 1 - coff :)
+        complex(CKG)        , intent(inout) , contiguous    :: mat(1 - roff :, 1 - coff :)
         type(lowDia_type)   , intent(in)                    :: subset
         type(iteration_type), intent(in)                    :: control
         integer(IK)         , intent(in)    , optional      :: bdim
@@ -3498,10 +3498,10 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMC_EXP_ABI_XLD_ONO_CK1
 #endif
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
         integer(IK)         , intent(out)                   :: info
         integer(IK)         , intent(in)                    :: ndim, roff, coff
-        complex(CKC)        , intent(inout) , contiguous    :: mat(1 - roff :, 1 - coff :)
+        complex(CKG)        , intent(inout) , contiguous    :: mat(1 - roff :, 1 - coff :)
         type(lowDia_type)   , intent(in)                    :: subset
         type(iteration_type), intent(in)                    :: control
         integer(IK)         , intent(in)    , optional      :: bdim
@@ -3515,10 +3515,10 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMC_EXP_ABI_XLD_ONO_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         integer(IK)         , intent(out)                   :: info
         integer(IK)         , intent(in)                    :: ndim, roff, coff
-        real(RKC)           , intent(inout) , contiguous    :: mat(1 - roff :, 1 - coff :)
+        real(RKG)           , intent(inout) , contiguous    :: mat(1 - roff :, 1 - coff :)
         type(lowDia_type)   , intent(in)                    :: subset
         type(iteration_type), intent(in)                    :: control
         integer(IK)         , intent(in)    , optional      :: bdim
@@ -3530,10 +3530,10 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMC_EXP_ABI_XLD_ONO_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         integer(IK)         , intent(out)                   :: info
         integer(IK)         , intent(in)                    :: ndim, roff, coff
-        real(RKC)           , intent(inout) , contiguous    :: mat(1 - roff :, 1 - coff :)
+        real(RKG)           , intent(inout) , contiguous    :: mat(1 - roff :, 1 - coff :)
         type(lowDia_type)   , intent(in)                    :: subset
         type(iteration_type), intent(in)                    :: control
         integer(IK)         , intent(in)    , optional      :: bdim
@@ -3545,10 +3545,10 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMC_EXP_ABI_XLD_ONO_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         integer(IK)         , intent(out)                   :: info
         integer(IK)         , intent(in)                    :: ndim, roff, coff
-        real(RKC)           , intent(inout) , contiguous    :: mat(1 - roff :, 1 - coff :)
+        real(RKG)           , intent(inout) , contiguous    :: mat(1 - roff :, 1 - coff :)
         type(lowDia_type)   , intent(in)                    :: subset
         type(iteration_type), intent(in)                    :: control
         integer(IK)         , intent(in)    , optional      :: bdim
@@ -3560,10 +3560,10 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMC_EXP_ABI_XLD_ONO_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         integer(IK)         , intent(out)                   :: info
         integer(IK)         , intent(in)                    :: ndim, roff, coff
-        real(RKC)           , intent(inout) , contiguous    :: mat(1 - roff :, 1 - coff :)
+        real(RKG)           , intent(inout) , contiguous    :: mat(1 - roff :, 1 - coff :)
         type(lowDia_type)   , intent(in)                    :: subset
         type(iteration_type), intent(in)                    :: control
         integer(IK)         , intent(in)    , optional      :: bdim
@@ -3575,10 +3575,10 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMC_EXP_ABI_XLD_ONO_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         integer(IK)         , intent(out)                   :: info
         integer(IK)         , intent(in)                    :: ndim, roff, coff
-        real(RKC)           , intent(inout) , contiguous    :: mat(1 - roff :, 1 - coff :)
+        real(RKG)           , intent(inout) , contiguous    :: mat(1 - roff :, 1 - coff :)
         type(lowDia_type)   , intent(in)                    :: subset
         type(iteration_type), intent(in)                    :: control
         integer(IK)         , intent(in)    , optional      :: bdim
@@ -3608,10 +3608,10 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMC_EXP_ABR_UXD_ONO_CK5
 #endif
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
         integer(IK)         , intent(out)                   :: info
         integer(IK)         , intent(in)                    :: ndim, roff, coff
-        complex(CKC)        , intent(inout) , contiguous    :: mat(1 - roff :, 1 - coff :)
+        complex(CKG)        , intent(inout) , contiguous    :: mat(1 - roff :, 1 - coff :)
         type(uppDia_type)   , intent(in)                    :: subset
         type(recursion_type), intent(in)                    :: control
     end subroutine
@@ -3622,10 +3622,10 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMC_EXP_ABR_UXD_ONO_CK4
 #endif
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
         integer(IK)         , intent(out)                   :: info
         integer(IK)         , intent(in)                    :: ndim, roff, coff
-        complex(CKC)        , intent(inout) , contiguous    :: mat(1 - roff :, 1 - coff :)
+        complex(CKG)        , intent(inout) , contiguous    :: mat(1 - roff :, 1 - coff :)
         type(uppDia_type)   , intent(in)                    :: subset
         type(recursion_type), intent(in)                    :: control
     end subroutine
@@ -3636,10 +3636,10 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMC_EXP_ABR_UXD_ONO_CK3
 #endif
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
         integer(IK)         , intent(out)                   :: info
         integer(IK)         , intent(in)                    :: ndim, roff, coff
-        complex(CKC)        , intent(inout) , contiguous    :: mat(1 - roff :, 1 - coff :)
+        complex(CKG)        , intent(inout) , contiguous    :: mat(1 - roff :, 1 - coff :)
         type(uppDia_type)   , intent(in)                    :: subset
         type(recursion_type), intent(in)                    :: control
     end subroutine
@@ -3650,10 +3650,10 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMC_EXP_ABR_UXD_ONO_CK2
 #endif
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
         integer(IK)         , intent(out)                   :: info
         integer(IK)         , intent(in)                    :: ndim, roff, coff
-        complex(CKC)        , intent(inout) , contiguous    :: mat(1 - roff :, 1 - coff :)
+        complex(CKG)        , intent(inout) , contiguous    :: mat(1 - roff :, 1 - coff :)
         type(uppDia_type)   , intent(in)                    :: subset
         type(recursion_type), intent(in)                    :: control
     end subroutine
@@ -3664,10 +3664,10 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMC_EXP_ABR_UXD_ONO_CK1
 #endif
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
         integer(IK)         , intent(out)                   :: info
         integer(IK)         , intent(in)                    :: ndim, roff, coff
-        complex(CKC)        , intent(inout) , contiguous    :: mat(1 - roff :, 1 - coff :)
+        complex(CKG)        , intent(inout) , contiguous    :: mat(1 - roff :, 1 - coff :)
         type(uppDia_type)   , intent(in)                    :: subset
         type(recursion_type), intent(in)                    :: control
     end subroutine
@@ -3680,10 +3680,10 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMC_EXP_ABR_UXD_ONO_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         integer(IK)         , intent(out)                   :: info
         integer(IK)         , intent(in)                    :: ndim, roff, coff
-        real(RKC)           , intent(inout) , contiguous    :: mat(1 - roff :, 1 - coff :)
+        real(RKG)           , intent(inout) , contiguous    :: mat(1 - roff :, 1 - coff :)
         type(uppDia_type)   , intent(in)                    :: subset
         type(recursion_type), intent(in)                    :: control
     end subroutine
@@ -3694,10 +3694,10 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMC_EXP_ABR_UXD_ONO_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         integer(IK)         , intent(out)                   :: info
         integer(IK)         , intent(in)                    :: ndim, roff, coff
-        real(RKC)           , intent(inout) , contiguous    :: mat(1 - roff :, 1 - coff :)
+        real(RKG)           , intent(inout) , contiguous    :: mat(1 - roff :, 1 - coff :)
         type(uppDia_type)   , intent(in)                    :: subset
         type(recursion_type), intent(in)                    :: control
     end subroutine
@@ -3708,10 +3708,10 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMC_EXP_ABR_UXD_ONO_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         integer(IK)         , intent(out)                   :: info
         integer(IK)         , intent(in)                    :: ndim, roff, coff
-        real(RKC)           , intent(inout) , contiguous    :: mat(1 - roff :, 1 - coff :)
+        real(RKG)           , intent(inout) , contiguous    :: mat(1 - roff :, 1 - coff :)
         type(uppDia_type)   , intent(in)                    :: subset
         type(recursion_type), intent(in)                    :: control
     end subroutine
@@ -3722,10 +3722,10 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMC_EXP_ABR_UXD_ONO_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         integer(IK)         , intent(out)                   :: info
         integer(IK)         , intent(in)                    :: ndim, roff, coff
-        real(RKC)           , intent(inout) , contiguous    :: mat(1 - roff :, 1 - coff :)
+        real(RKG)           , intent(inout) , contiguous    :: mat(1 - roff :, 1 - coff :)
         type(uppDia_type)   , intent(in)                    :: subset
         type(recursion_type), intent(in)                    :: control
     end subroutine
@@ -3736,10 +3736,10 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMC_EXP_ABR_UXD_ONO_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         integer(IK)         , intent(out)                   :: info
         integer(IK)         , intent(in)                    :: ndim, roff, coff
-        real(RKC)           , intent(inout) , contiguous    :: mat(1 - roff :, 1 - coff :)
+        real(RKG)           , intent(inout) , contiguous    :: mat(1 - roff :, 1 - coff :)
         type(uppDia_type)   , intent(in)                    :: subset
         type(recursion_type), intent(in)                    :: control
     end subroutine
@@ -3758,10 +3758,10 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMC_EXP_ABR_XLD_ONO_CK5
 #endif
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
         integer(IK)         , intent(out)                   :: info
         integer(IK)         , intent(in)                    :: ndim, roff, coff
-        complex(CKC)        , intent(inout) , contiguous    :: mat(1 - roff :, 1 - coff :)
+        complex(CKG)        , intent(inout) , contiguous    :: mat(1 - roff :, 1 - coff :)
         type(lowDia_type)   , intent(in)                    :: subset
         type(recursion_type), intent(in)                    :: control
     end subroutine
@@ -3772,10 +3772,10 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMC_EXP_ABR_XLD_ONO_CK4
 #endif
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
         integer(IK)         , intent(out)                   :: info
         integer(IK)         , intent(in)                    :: ndim, roff, coff
-        complex(CKC)        , intent(inout) , contiguous    :: mat(1 - roff :, 1 - coff :)
+        complex(CKG)        , intent(inout) , contiguous    :: mat(1 - roff :, 1 - coff :)
         type(lowDia_type)   , intent(in)                    :: subset
         type(recursion_type), intent(in)                    :: control
     end subroutine
@@ -3786,10 +3786,10 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMC_EXP_ABR_XLD_ONO_CK3
 #endif
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
         integer(IK)         , intent(out)                   :: info
         integer(IK)         , intent(in)                    :: ndim, roff, coff
-        complex(CKC)        , intent(inout) , contiguous    :: mat(1 - roff :, 1 - coff :)
+        complex(CKG)        , intent(inout) , contiguous    :: mat(1 - roff :, 1 - coff :)
         type(lowDia_type)   , intent(in)                    :: subset
         type(recursion_type), intent(in)                    :: control
     end subroutine
@@ -3800,10 +3800,10 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMC_EXP_ABR_XLD_ONO_CK2
 #endif
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
         integer(IK)         , intent(out)                   :: info
         integer(IK)         , intent(in)                    :: ndim, roff, coff
-        complex(CKC)        , intent(inout) , contiguous    :: mat(1 - roff :, 1 - coff :)
+        complex(CKG)        , intent(inout) , contiguous    :: mat(1 - roff :, 1 - coff :)
         type(lowDia_type)   , intent(in)                    :: subset
         type(recursion_type), intent(in)                    :: control
     end subroutine
@@ -3814,10 +3814,10 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMC_EXP_ABR_XLD_ONO_CK1
 #endif
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
         integer(IK)         , intent(out)                   :: info
         integer(IK)         , intent(in)                    :: ndim, roff, coff
-        complex(CKC)        , intent(inout) , contiguous    :: mat(1 - roff :, 1 - coff :)
+        complex(CKG)        , intent(inout) , contiguous    :: mat(1 - roff :, 1 - coff :)
         type(lowDia_type)   , intent(in)                    :: subset
         type(recursion_type), intent(in)                    :: control
     end subroutine
@@ -3830,10 +3830,10 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMC_EXP_ABR_XLD_ONO_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         integer(IK)         , intent(out)                   :: info
         integer(IK)         , intent(in)                    :: ndim, roff, coff
-        real(RKC)           , intent(inout) , contiguous    :: mat(1 - roff :, 1 - coff :)
+        real(RKG)           , intent(inout) , contiguous    :: mat(1 - roff :, 1 - coff :)
         type(lowDia_type)   , intent(in)                    :: subset
         type(recursion_type), intent(in)                    :: control
     end subroutine
@@ -3844,10 +3844,10 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMC_EXP_ABR_XLD_ONO_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         integer(IK)         , intent(out)                   :: info
         integer(IK)         , intent(in)                    :: ndim, roff, coff
-        real(RKC)           , intent(inout) , contiguous    :: mat(1 - roff :, 1 - coff :)
+        real(RKG)           , intent(inout) , contiguous    :: mat(1 - roff :, 1 - coff :)
         type(lowDia_type)   , intent(in)                    :: subset
         type(recursion_type), intent(in)                    :: control
     end subroutine
@@ -3858,10 +3858,10 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMC_EXP_ABR_XLD_ONO_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         integer(IK)         , intent(out)                   :: info
         integer(IK)         , intent(in)                    :: ndim, roff, coff
-        real(RKC)           , intent(inout) , contiguous    :: mat(1 - roff :, 1 - coff :)
+        real(RKG)           , intent(inout) , contiguous    :: mat(1 - roff :, 1 - coff :)
         type(lowDia_type)   , intent(in)                    :: subset
         type(recursion_type), intent(in)                    :: control
     end subroutine
@@ -3872,10 +3872,10 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMC_EXP_ABR_XLD_ONO_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         integer(IK)         , intent(out)                   :: info
         integer(IK)         , intent(in)                    :: ndim, roff, coff
-        real(RKC)           , intent(inout) , contiguous    :: mat(1 - roff :, 1 - coff :)
+        real(RKG)           , intent(inout) , contiguous    :: mat(1 - roff :, 1 - coff :)
         type(lowDia_type)   , intent(in)                    :: subset
         type(recursion_type), intent(in)                    :: control
     end subroutine
@@ -3886,10 +3886,10 @@ module pm_matrixChol
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMC_EXP_ABR_XLD_ONO_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         integer(IK)         , intent(out)                   :: info
         integer(IK)         , intent(in)                    :: ndim, roff, coff
-        real(RKC)           , intent(inout) , contiguous    :: mat(1 - roff :, 1 - coff :)
+        real(RKG)           , intent(inout) , contiguous    :: mat(1 - roff :, 1 - coff :)
         type(lowDia_type)   , intent(in)                    :: subset
         type(recursion_type), intent(in)                    :: control
     end subroutine
@@ -3943,9 +3943,9 @@ module pm_matrixChol
 !        use pm_kind, only: RK, IK
 !        implicit none
 !        integer(IK), intent(in)    :: ndim
-!        real(RKC)  , intent(inout) :: ChoUppCovLow(ndim,ndim) ! Upper triangle + diagonal is input matrix, lower is output.
-!        real(RKC)  , intent(out)   :: dia(ndim)
-!        real(RKC)                  :: summ
+!        real(RKG)  , intent(inout) :: ChoUppCovLow(ndim,ndim) ! Upper triangle + diagonal is input matrix, lower is output.
+!        real(RKG)  , intent(out)   :: dia(ndim)
+!        real(RKG)                  :: summ
 !        integer(IK)                :: i
 !        do i=1,ndim
 !            summ = ChoUppCovLow(i,i) - dot_product(ChoUppCovLow(1:i-1,i),ChoUppCovLow(1:i-1,i))

@@ -42,35 +42,35 @@ contains
 
 #if IK5_ENABLED
     module procedure test_getFactoring_IK5_1
-        use pm_kind, only: IKC => IK5
+        use pm_kind, only: IKG => IK5
 #include "test_pm_mathFactoring@routines.inc.F90"
     end procedure
 #endif
 
 #if IK4_ENABLED
     module procedure test_getFactoring_IK4_1
-        use pm_kind, only: IKC => IK4
+        use pm_kind, only: IKG => IK4
 #include "test_pm_mathFactoring@routines.inc.F90"
     end procedure
 #endif
 
 #if IK3_ENABLED
     module procedure test_getFactoring_IK3_1
-        use pm_kind, only: IKC => IK3
+        use pm_kind, only: IKG => IK3
 #include "test_pm_mathFactoring@routines.inc.F90"
     end procedure
 #endif
 
 #if IK2_ENABLED
     module procedure test_getFactoring_IK2_1
-        use pm_kind, only: IKC => IK2
+        use pm_kind, only: IKG => IK2
 #include "test_pm_mathFactoring@routines.inc.F90"
     end procedure
 #endif
 
 #if IK1_ENABLED
     module procedure test_getFactoring_IK1_1
-        use pm_kind, only: IKC => IK1
+        use pm_kind, only: IKG => IK1
 #include "test_pm_mathFactoring@routines.inc.F90"
     end procedure
 #endif

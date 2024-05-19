@@ -45,35 +45,35 @@ contains
 
 #if CK5_ENABLED
     module procedure test_isClose_CK5_1
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
 #include "test_pm_mathCompare@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure test_isClose_CK4_1
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
 #include "test_pm_mathCompare@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure test_isClose_CK3_1
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
 #include "test_pm_mathCompare@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure test_isClose_CK2_1
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
 #include "test_pm_mathCompare@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure test_isClose_CK1_1
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
 #include "test_pm_mathCompare@routines.inc.F90"
     end procedure
 #endif
@@ -86,35 +86,35 @@ contains
 
 #if RK5_ENABLED
     module procedure test_isClose_RK5_1
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "test_pm_mathCompare@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure test_isClose_RK4_1
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "test_pm_mathCompare@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure test_isClose_RK3_1
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "test_pm_mathCompare@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure test_isClose_RK2_1
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "test_pm_mathCompare@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure test_isClose_RK1_1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "test_pm_mathCompare@routines.inc.F90"
     end procedure
 #endif

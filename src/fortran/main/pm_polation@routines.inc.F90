@@ -72,11 +72,11 @@ CHECK_ASSERTION(__LINE__, minval(crdx, 1) <= queryx .and. queryx <= maxval(crdx,
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #if     MNPLD_ENABLED
-        real(RKC) :: relerr
+        real(RKG) :: relerr
 #elif   !MNPLE_ENABLED
 #error  "Unrecognized interface."
 #endif
-        real(RKC) :: diff, difX, correctionC(size(crdx, kind = IK)), correctionD(size(crdx, kind = IK))
+        real(RKG) :: diff, difX, correctionC(size(crdx, kind = IK)), correctionD(size(crdx, kind = IK))
         integer(IK) :: i, level, ns
         integer(IK) :: lenx
         lenx = size(crdx, kind = IK)
@@ -118,7 +118,7 @@ CHECK_ASSERTION(__LINE__, minval(crdx, 1) <= queryx .and. queryx <= maxval(crdx,
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
         integer(IK) :: ibin
-        real(RKC) :: const, slope
+        real(RKG) :: const, slope
         CHECK_CRDX_LEN(PROC_NAME)
         CHECK_ASSERTION(__LINE__, isAscendingAll(crdx), PROC_NAME//SK_": The condition `isAscendingAll(crdx)` must hold. crdx = "//getStr(crdx))
 #if     setInterp_ENABLED
@@ -137,7 +137,7 @@ CHECK_ASSERTION(__LINE__, minval(crdx, 1) <= queryx .and. queryx <= maxval(crdx,
 #error  "Unrecognized interface."
 #endif
         if (crdx(ibin) /= queryx) then
-            const = 1._RKC / (crdx(ibin) - crdx(ibin + 1))
+            const = 1._RKG / (crdx(ibin) - crdx(ibin + 1))
             slope = -const * func(ibin + 1)
             const = +const * func(ibin)
             POLATION = const * (queryx - crdx(ibin + 1)) + slope * (queryx - crdx(ibin))
@@ -169,7 +169,7 @@ CHECK_ASSERTION(__LINE__, minval(crdx, 1) <= queryx .and. queryx <= maxval(crdx,
         if (crdx(ibin) /= queryx) then
             ! ibin cannot be the last element of `crdx`, unless `queryx` is out of the range covered by `crdx`.
 #if         MEAN_ENABLED
-            POLATION = .5_RKC * (func(ibin) + func(ibin + 1))
+            POLATION = .5_RKG * (func(ibin) + func(ibin + 1))
 #elif       NEAR_ENABLED
             if (queryx - crdx(ibin) < crdx(ibin + 1) - queryx) then
                 POLATION = func(ibin)

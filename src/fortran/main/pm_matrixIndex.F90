@@ -180,28 +180,28 @@ module pm_matrixIndex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatIndex_D0_LFP_RDP_UXD_AIO
 #endif
-        use pm_kind, only: IKC => IK
+        use pm_kind, only: IKG => IK
         type(lfpack_type)   , intent(in)                    :: dpack
         type(rdpack_type)   , intent(in)                    :: spack
         type(uppDia_type)   , intent(in)                    :: subset
-        integer(IKC)        , intent(in)                    :: sindex(2)
-        integer(IKC)        , intent(in)                    :: shape(2)
-        integer(IKC)        , intent(in)    , optional      :: doff
-        integer(IKC)                                        :: dindex
+        integer(IKG)        , intent(in)                    :: sindex(2)
+        integer(IKG)        , intent(in)                    :: shape(2)
+        integer(IKG)        , intent(in)    , optional      :: doff
+        integer(IKG)                                        :: dindex
     end function
 
     PURE module function getMatIndex_D0_LFP_RDP_XLD_AIO(dpack, spack, sindex, subset, shape, doff) result(dindex)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatIndex_D0_LFP_RDP_XLD_AIO
 #endif
-        use pm_kind, only: IKC => IK
+        use pm_kind, only: IKG => IK
         type(lfpack_type)   , intent(in)                    :: dpack
         type(rdpack_type)   , intent(in)                    :: spack
         type(lowDia_type)   , intent(in)                    :: subset
-        integer(IKC)        , intent(in)                    :: sindex(2)
-        integer(IKC)        , intent(in)                    :: shape(2)
-        integer(IKC)        , intent(in)    , optional      :: doff
-        integer(IKC)                                        :: dindex
+        integer(IKG)        , intent(in)                    :: sindex(2)
+        integer(IKG)        , intent(in)                    :: shape(2)
+        integer(IKG)        , intent(in)    , optional      :: doff
+        integer(IKG)                                        :: dindex
     end function
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -210,28 +210,28 @@ module pm_matrixIndex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatIndex_D0_RDP_LFP_UXD_AIO
 #endif
-        use pm_kind, only: IKC => IK
+        use pm_kind, only: IKG => IK
         type(rdpack_type)   , intent(in)                    :: dpack
         type(lfpack_type)   , intent(in)                    :: spack
         type(uppDia_type)   , intent(in)                    :: subset
-        integer(IKC)        , intent(in)                    :: sindex
-        integer(IKC)        , intent(in)                    :: shape(2)
-        integer(IKC)        , intent(in)    , optional      :: doff
-        integer(IKC)                                        :: dindex(2)
+        integer(IKG)        , intent(in)                    :: sindex
+        integer(IKG)        , intent(in)                    :: shape(2)
+        integer(IKG)        , intent(in)    , optional      :: doff
+        integer(IKG)                                        :: dindex(2)
     end function
 
     PURE module function getMatIndex_D0_RDP_LFP_XLD_AIO(dpack, spack, sindex, subset, shape, doff) result(dindex)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatIndex_D0_RDP_LFP_XLD_AIO
 #endif
-        use pm_kind, only: IKC => IK
+        use pm_kind, only: IKG => IK
         type(rdpack_type)   , intent(in)                    :: dpack
         type(lfpack_type)   , intent(in)                    :: spack
         type(lowDia_type)   , intent(in)                    :: subset
-        integer(IKC)        , intent(in)                    :: sindex
-        integer(IKC)        , intent(in)                    :: shape(2)
-        integer(IKC)        , intent(in)    , optional      :: doff
-        integer(IKC)                                        :: dindex(2)
+        integer(IKG)        , intent(in)                    :: sindex
+        integer(IKG)        , intent(in)                    :: shape(2)
+        integer(IKG)        , intent(in)    , optional      :: doff
+        integer(IKG)                                        :: dindex(2)
     end function
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -246,26 +246,26 @@ module pm_matrixIndex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatIndex_D0_RFP_RDP_UXD_AIO
 #endif
-        use pm_kind, only: IKC => IK
+        use pm_kind, only: IKG => IK
         type(rfpack_type)   , intent(in)                    :: dpack
         type(rdpack_type)   , intent(in)                    :: spack
         type(uppDia_type)   , intent(in)                    :: subset
-        integer(IKC)        , intent(in)                    :: sindex(2)
-        integer(IKC)        , intent(in)                    :: shape(2)
-        integer(IKC)                                        :: dindex(2)
+        integer(IKG)        , intent(in)                    :: sindex(2)
+        integer(IKG)        , intent(in)                    :: shape(2)
+        integer(IKG)                                        :: dindex(2)
     end function
 
     PURE module function getMatIndex_D0_RFP_RDP_XLD_AIO(dpack, spack, sindex, subset, shape) result(dindex)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatIndex_D0_RFP_RDP_XLD_AIO
 #endif
-        use pm_kind, only: IKC => IK
+        use pm_kind, only: IKG => IK
         type(rfpack_type)   , intent(in)                    :: dpack
         type(rdpack_type)   , intent(in)                    :: spack
         type(lowDia_type)   , intent(in)                    :: subset
-        integer(IKC)        , intent(in)                    :: sindex(2)
-        integer(IKC)        , intent(in)                    :: shape(2)
-        integer(IKC)                                        :: dindex(2)
+        integer(IKG)        , intent(in)                    :: sindex(2)
+        integer(IKG)        , intent(in)                    :: shape(2)
+        integer(IKG)                                        :: dindex(2)
     end function
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -274,26 +274,26 @@ module pm_matrixIndex
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatIndex_D0_RDP_RFP_UXD_AIO
 #endif
-        use pm_kind, only: IKC => IK
+        use pm_kind, only: IKG => IK
         type(rdpack_type)   , intent(in)                    :: dpack
         type(rfpack_type)   , intent(in)                    :: spack
         type(uppDia_type)   , intent(in)                    :: subset
-        integer(IKC)        , intent(in)                    :: sindex(2)
-        integer(IKC)        , intent(in)                    :: shape(2)
-        integer(IKC)                                        :: dindex(2)
+        integer(IKG)        , intent(in)                    :: sindex(2)
+        integer(IKG)        , intent(in)                    :: shape(2)
+        integer(IKG)                                        :: dindex(2)
     end function
 
     PURE module function getMatIndex_D0_RDP_RFP_XLD_AIO(dpack, spack, sindex, subset, shape) result(dindex)
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMatIndex_D0_RDP_RFP_XLD_AIO
 #endif
-        use pm_kind, only: IKC => IK
+        use pm_kind, only: IKG => IK
         type(rdpack_type)   , intent(in)                    :: dpack
         type(rfpack_type)   , intent(in)                    :: spack
         type(lowDia_type)   , intent(in)                    :: subset
-        integer(IKC)        , intent(in)                    :: sindex(2)
-        integer(IKC)        , intent(in)                    :: shape(2)
-        integer(IKC)                                        :: dindex(2)
+        integer(IKG)        , intent(in)                    :: sindex(2)
+        integer(IKG)        , intent(in)                    :: shape(2)
+        integer(IKG)                                        :: dindex(2)
     end function
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

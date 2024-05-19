@@ -195,9 +195,9 @@ module pm_distKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getKolmPDF_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(in)                :: x
-        real(RKC)                               :: pdf
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(in)                :: x
+        real(RKG)                               :: pdf
     end function
 #endif
 
@@ -206,9 +206,9 @@ module pm_distKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getKolmPDF_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(in)                :: x
-        real(RKC)                               :: pdf
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(in)                :: x
+        real(RKG)                               :: pdf
     end function
 #endif
 
@@ -217,9 +217,9 @@ module pm_distKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getKolmPDF_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(in)                :: x
-        real(RKC)                               :: pdf
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(in)                :: x
+        real(RKG)                               :: pdf
     end function
 #endif
 
@@ -228,9 +228,9 @@ module pm_distKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getKolmPDF_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(in)                :: x
-        real(RKC)                               :: pdf
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(in)                :: x
+        real(RKG)                               :: pdf
     end function
 #endif
 
@@ -239,9 +239,9 @@ module pm_distKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getKolmPDF_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(in)                :: x
-        real(RKC)                               :: pdf
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(in)                :: x
+        real(RKG)                               :: pdf
     end function
 #endif
 
@@ -316,9 +316,9 @@ module pm_distKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setKolmPDF_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(out)                   :: pdf
-        real(RKC)   , intent(in)                    :: x
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(out)                   :: pdf
+        real(RKG)   , intent(in)                    :: x
     end subroutine
 #endif
 
@@ -327,9 +327,9 @@ module pm_distKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setKolmPDF_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(out)                   :: pdf
-        real(RKC)   , intent(in)                    :: x
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(out)                   :: pdf
+        real(RKG)   , intent(in)                    :: x
     end subroutine
 #endif
 
@@ -338,9 +338,9 @@ module pm_distKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setKolmPDF_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(out)                   :: pdf
-        real(RKC)   , intent(in)                    :: x
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(out)                   :: pdf
+        real(RKG)   , intent(in)                    :: x
     end subroutine
 #endif
 
@@ -349,9 +349,9 @@ module pm_distKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setKolmPDF_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(out)                   :: pdf
-        real(RKC)   , intent(in)                    :: x
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(out)                   :: pdf
+        real(RKG)   , intent(in)                    :: x
     end subroutine
 #endif
 
@@ -360,9 +360,9 @@ module pm_distKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setKolmPDF_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(out)                   :: pdf
-        real(RKC)   , intent(in)                    :: x
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(out)                   :: pdf
+        real(RKG)   , intent(in)                    :: x
     end subroutine
 #endif
 
@@ -438,9 +438,9 @@ module pm_distKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getKolmCDF_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(in)                :: x
-        real(RKC)                               :: cdf
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(in)                :: x
+        real(RKG)                               :: cdf
     end function
 #endif
 
@@ -449,9 +449,9 @@ module pm_distKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getKolmCDF_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(in)                :: x
-        real(RKC)                               :: cdf
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(in)                :: x
+        real(RKG)                               :: cdf
     end function
 #endif
 
@@ -460,9 +460,9 @@ module pm_distKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getKolmCDF_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(in)                :: x
-        real(RKC)                               :: cdf
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(in)                :: x
+        real(RKG)                               :: cdf
     end function
 #endif
 
@@ -471,9 +471,9 @@ module pm_distKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getKolmCDF_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(in)                :: x
-        real(RKC)                               :: cdf
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(in)                :: x
+        real(RKG)                               :: cdf
     end function
 #endif
 
@@ -482,9 +482,9 @@ module pm_distKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getKolmCDF_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(in)                :: x
-        real(RKC)                               :: cdf
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(in)                :: x
+        real(RKG)                               :: cdf
     end function
 #endif
 
@@ -559,9 +559,9 @@ module pm_distKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setKolmCDF_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(out)                   :: cdf
-        real(RKC)   , intent(in)                    :: x
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(out)                   :: cdf
+        real(RKG)   , intent(in)                    :: x
     end subroutine
 #endif
 
@@ -570,9 +570,9 @@ module pm_distKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setKolmCDF_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(out)                   :: cdf
-        real(RKC)   , intent(in)                    :: x
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(out)                   :: cdf
+        real(RKG)   , intent(in)                    :: x
     end subroutine
 #endif
 
@@ -581,9 +581,9 @@ module pm_distKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setKolmCDF_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(out)                   :: cdf
-        real(RKC)   , intent(in)                    :: x
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(out)                   :: cdf
+        real(RKG)   , intent(in)                    :: x
     end subroutine
 #endif
 
@@ -592,9 +592,9 @@ module pm_distKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setKolmCDF_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(out)                   :: cdf
-        real(RKC)   , intent(in)                    :: x
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(out)                   :: cdf
+        real(RKG)   , intent(in)                    :: x
     end subroutine
 #endif
 
@@ -603,9 +603,9 @@ module pm_distKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setKolmCDF_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(out)                   :: cdf
-        real(RKC)   , intent(in)                    :: x
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(out)                   :: cdf
+        real(RKG)   , intent(in)                    :: x
     end subroutine
 #endif
 
@@ -681,9 +681,9 @@ module pm_distKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getKolmQuan_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(in)                :: cdf
-        real(RKC)                               :: quan
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(in)                :: cdf
+        real(RKG)                               :: quan
     end function
 #endif
 
@@ -692,9 +692,9 @@ module pm_distKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getKolmQuan_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(in)                :: cdf
-        real(RKC)                               :: quan
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(in)                :: cdf
+        real(RKG)                               :: quan
     end function
 #endif
 
@@ -703,9 +703,9 @@ module pm_distKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getKolmQuan_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(in)                :: cdf
-        real(RKC)                               :: quan
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(in)                :: cdf
+        real(RKG)                               :: quan
     end function
 #endif
 
@@ -714,9 +714,9 @@ module pm_distKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getKolmQuan_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(in)                :: cdf
-        real(RKC)                               :: quan
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(in)                :: cdf
+        real(RKG)                               :: quan
     end function
 #endif
 
@@ -725,9 +725,9 @@ module pm_distKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getKolmQuan_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(in)                :: cdf
-        real(RKC)                               :: quan
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(in)                :: cdf
+        real(RKG)                               :: quan
     end function
 #endif
 
@@ -798,9 +798,9 @@ module pm_distKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setKolmQuan_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(out)                   :: quan
-        real(RKC)   , intent(in)                    :: cdf
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(out)                   :: quan
+        real(RKG)   , intent(in)                    :: cdf
     end subroutine
 #endif
 
@@ -809,9 +809,9 @@ module pm_distKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setKolmQuan_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(out)                   :: quan
-        real(RKC)   , intent(in)                    :: cdf
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(out)                   :: quan
+        real(RKG)   , intent(in)                    :: cdf
     end subroutine
 #endif
 
@@ -820,9 +820,9 @@ module pm_distKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setKolmQuan_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(out)                   :: quan
-        real(RKC)   , intent(in)                    :: cdf
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(out)                   :: quan
+        real(RKG)   , intent(in)                    :: cdf
     end subroutine
 #endif
 
@@ -831,9 +831,9 @@ module pm_distKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setKolmQuan_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(out)                   :: quan
-        real(RKC)   , intent(in)                    :: cdf
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(out)                   :: quan
+        real(RKG)   , intent(in)                    :: cdf
     end subroutine
 #endif
 
@@ -842,9 +842,9 @@ module pm_distKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setKolmQuan_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(out)                   :: quan
-        real(RKC)   , intent(in)                    :: cdf
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(out)                   :: quan
+        real(RKG)   , intent(in)                    :: cdf
     end subroutine
 #endif
 
@@ -921,9 +921,9 @@ module pm_distKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getKolmRand_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(in)                :: unif
-        real(RKC)                               :: rand
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(in)                :: unif
+        real(RKG)                               :: rand
     end function
 #endif
 
@@ -932,9 +932,9 @@ module pm_distKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getKolmRand_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(in)                :: unif
-        real(RKC)                               :: rand
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(in)                :: unif
+        real(RKG)                               :: rand
     end function
 #endif
 
@@ -943,9 +943,9 @@ module pm_distKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getKolmRand_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(in)                :: unif
-        real(RKC)                               :: rand
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(in)                :: unif
+        real(RKG)                               :: rand
     end function
 #endif
 
@@ -954,9 +954,9 @@ module pm_distKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getKolmRand_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(in)                :: unif
-        real(RKC)                               :: rand
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(in)                :: unif
+        real(RKG)                               :: rand
     end function
 #endif
 
@@ -965,9 +965,9 @@ module pm_distKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getKolmRand_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(in)                :: unif
-        real(RKC)                               :: rand
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(in)                :: unif
+        real(RKG)                               :: rand
     end function
 #endif
 
@@ -1043,9 +1043,9 @@ module pm_distKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setKolmRand_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(out)                   :: rand
-        real(RKC)   , intent(in)                    :: unif
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(out)                   :: rand
+        real(RKG)   , intent(in)                    :: unif
     end subroutine
 #endif
 
@@ -1054,9 +1054,9 @@ module pm_distKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setKolmRand_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(out)                   :: rand
-        real(RKC)   , intent(in)                    :: unif
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(out)                   :: rand
+        real(RKG)   , intent(in)                    :: unif
     end subroutine
 #endif
 
@@ -1065,9 +1065,9 @@ module pm_distKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setKolmRand_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(out)                   :: rand
-        real(RKC)   , intent(in)                    :: unif
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(out)                   :: rand
+        real(RKG)   , intent(in)                    :: unif
     end subroutine
 #endif
 
@@ -1076,9 +1076,9 @@ module pm_distKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setKolmRand_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(out)                   :: rand
-        real(RKC)   , intent(in)                    :: unif
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(out)                   :: rand
+        real(RKG)   , intent(in)                    :: unif
     end subroutine
 #endif
 
@@ -1087,9 +1087,9 @@ module pm_distKolm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setKolmRand_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(out)                   :: rand
-        real(RKC)   , intent(in)                    :: unif
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(out)                   :: rand
+        real(RKG)   , intent(in)                    :: unif
     end subroutine
 #endif
 

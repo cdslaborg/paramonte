@@ -256,9 +256,9 @@ module pm_fftnr
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getFFTF_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC), intent(in)    , contiguous    :: data(:)
-        complex(CKC)                                :: fft(2**ceiling(log(real(size(data, 1, IK), RKB)) / log(2._RKB)))
+        use pm_kind, only: CKG => CK5
+        complex(CKG), intent(in)    , contiguous    :: data(:)
+        complex(CKG)                                :: fft(2**ceiling(log(real(size(data, 1, IK), RKB)) / log(2._RKB)))
     end function
 #endif
 
@@ -267,9 +267,9 @@ module pm_fftnr
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getFFTF_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC), intent(in)    , contiguous    :: data(:)
-        complex(CKC)                                :: fft(2**ceiling(log(real(size(data, 1, IK), RKB)) / log(2._RKB)))
+        use pm_kind, only: CKG => CK4
+        complex(CKG), intent(in)    , contiguous    :: data(:)
+        complex(CKG)                                :: fft(2**ceiling(log(real(size(data, 1, IK), RKB)) / log(2._RKB)))
     end function
 #endif
 
@@ -278,9 +278,9 @@ module pm_fftnr
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getFFTF_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC), intent(in)    , contiguous    :: data(:)
-        complex(CKC)                                :: fft(2**ceiling(log(real(size(data, 1, IK), RKB)) / log(2._RKB)))
+        use pm_kind, only: CKG => CK3
+        complex(CKG), intent(in)    , contiguous    :: data(:)
+        complex(CKG)                                :: fft(2**ceiling(log(real(size(data, 1, IK), RKB)) / log(2._RKB)))
     end function
 #endif
 
@@ -289,9 +289,9 @@ module pm_fftnr
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getFFTF_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC), intent(in)    , contiguous    :: data(:)
-        complex(CKC)                                :: fft(2**ceiling(log(real(size(data, 1, IK), RKB)) / log(2._RKB)))
+        use pm_kind, only: CKG => CK2
+        complex(CKG), intent(in)    , contiguous    :: data(:)
+        complex(CKG)                                :: fft(2**ceiling(log(real(size(data, 1, IK), RKB)) / log(2._RKB)))
     end function
 #endif
 
@@ -300,9 +300,9 @@ module pm_fftnr
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getFFTF_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC), intent(in)    , contiguous    :: data(:)
-        complex(CKC)                                :: fft(2**ceiling(log(real(size(data, 1, IK), RKB)) / log(2._RKB)))
+        use pm_kind, only: CKG => CK1
+        complex(CKG), intent(in)    , contiguous    :: data(:)
+        complex(CKG)                                :: fft(2**ceiling(log(real(size(data, 1, IK), RKB)) / log(2._RKB)))
     end function
 #endif
 
@@ -313,9 +313,9 @@ module pm_fftnr
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getFFTF_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(in)    , contiguous    :: data(:)
-        real(RKC)                                   :: fft(2**ceiling(log(real(size(data, 1, IK), RKB)) / log(2._RKB)))
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(in)    , contiguous    :: data(:)
+        real(RKG)                                   :: fft(2**ceiling(log(real(size(data, 1, IK), RKB)) / log(2._RKB)))
     end function
 #endif
 
@@ -324,9 +324,9 @@ module pm_fftnr
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getFFTF_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(in)    , contiguous    :: data(:)
-        real(RKC)                                   :: fft(2**ceiling(log(real(size(data, 1, IK), RKB)) / log(2._RKB)))
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(in)    , contiguous    :: data(:)
+        real(RKG)                                   :: fft(2**ceiling(log(real(size(data, 1, IK), RKB)) / log(2._RKB)))
     end function
 #endif
 
@@ -335,9 +335,9 @@ module pm_fftnr
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getFFTF_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(in)    , contiguous    :: data(:)
-        real(RKC)                                   :: fft(2**ceiling(log(real(size(data, 1, IK), RKB)) / log(2._RKB)))
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(in)    , contiguous    :: data(:)
+        real(RKG)                                   :: fft(2**ceiling(log(real(size(data, 1, IK), RKB)) / log(2._RKB)))
     end function
 #endif
 
@@ -346,9 +346,9 @@ module pm_fftnr
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getFFTF_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(in)    , contiguous    :: data(:)
-        real(RKC)                                   :: fft(2**ceiling(log(real(size(data, 1, IK), RKB)) / log(2._RKB)))
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(in)    , contiguous    :: data(:)
+        real(RKG)                                   :: fft(2**ceiling(log(real(size(data, 1, IK), RKB)) / log(2._RKB)))
     end function
 #endif
 
@@ -357,9 +357,9 @@ module pm_fftnr
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getFFTF_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(in)    , contiguous    :: data(:)
-        real(RKC)                                   :: fft(2**ceiling(log(real(size(data, 1, IK), RKB)) / log(2._RKB)))
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(in)    , contiguous    :: data(:)
+        real(RKG)                                   :: fft(2**ceiling(log(real(size(data, 1, IK), RKB)) / log(2._RKB)))
     end function
 #endif
 
@@ -434,9 +434,9 @@ module pm_fftnr
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getFFTI_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC), intent(in)    , contiguous    :: data(:)
-        complex(CKC)                                :: fft(2**ceiling(log(real(size(data, 1, IK), RKB)) / log(2._RKB)))
+        use pm_kind, only: CKG => CK5
+        complex(CKG), intent(in)    , contiguous    :: data(:)
+        complex(CKG)                                :: fft(2**ceiling(log(real(size(data, 1, IK), RKB)) / log(2._RKB)))
     end function
 #endif
 
@@ -445,9 +445,9 @@ module pm_fftnr
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getFFTI_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC), intent(in)    , contiguous    :: data(:)
-        complex(CKC)                                :: fft(2**ceiling(log(real(size(data, 1, IK), RKB)) / log(2._RKB)))
+        use pm_kind, only: CKG => CK4
+        complex(CKG), intent(in)    , contiguous    :: data(:)
+        complex(CKG)                                :: fft(2**ceiling(log(real(size(data, 1, IK), RKB)) / log(2._RKB)))
     end function
 #endif
 
@@ -456,9 +456,9 @@ module pm_fftnr
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getFFTI_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC), intent(in)    , contiguous    :: data(:)
-        complex(CKC)                                :: fft(2**ceiling(log(real(size(data, 1, IK), RKB)) / log(2._RKB)))
+        use pm_kind, only: CKG => CK3
+        complex(CKG), intent(in)    , contiguous    :: data(:)
+        complex(CKG)                                :: fft(2**ceiling(log(real(size(data, 1, IK), RKB)) / log(2._RKB)))
     end function
 #endif
 
@@ -467,9 +467,9 @@ module pm_fftnr
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getFFTI_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC), intent(in)    , contiguous    :: data(:)
-        complex(CKC)                                :: fft(2**ceiling(log(real(size(data, 1, IK), RKB)) / log(2._RKB)))
+        use pm_kind, only: CKG => CK2
+        complex(CKG), intent(in)    , contiguous    :: data(:)
+        complex(CKG)                                :: fft(2**ceiling(log(real(size(data, 1, IK), RKB)) / log(2._RKB)))
     end function
 #endif
 
@@ -478,9 +478,9 @@ module pm_fftnr
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getFFTI_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC), intent(in)    , contiguous    :: data(:)
-        complex(CKC)                                :: fft(2**ceiling(log(real(size(data, 1, IK), RKB)) / log(2._RKB)))
+        use pm_kind, only: CKG => CK1
+        complex(CKG), intent(in)    , contiguous    :: data(:)
+        complex(CKG)                                :: fft(2**ceiling(log(real(size(data, 1, IK), RKB)) / log(2._RKB)))
     end function
 #endif
 
@@ -491,9 +491,9 @@ module pm_fftnr
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getFFTI_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(in)    , contiguous    :: data(:)
-        real(RKC)                                   :: fft(2**ceiling(log(real(size(data, 1, IK), RKB)) / log(2._RKB)))
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(in)    , contiguous    :: data(:)
+        real(RKG)                                   :: fft(2**ceiling(log(real(size(data, 1, IK), RKB)) / log(2._RKB)))
     end function
 #endif
 
@@ -502,9 +502,9 @@ module pm_fftnr
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getFFTI_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(in)    , contiguous    :: data(:)
-        real(RKC)                                   :: fft(2**ceiling(log(real(size(data, 1, IK), RKB)) / log(2._RKB)))
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(in)    , contiguous    :: data(:)
+        real(RKG)                                   :: fft(2**ceiling(log(real(size(data, 1, IK), RKB)) / log(2._RKB)))
     end function
 #endif
 
@@ -513,9 +513,9 @@ module pm_fftnr
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getFFTI_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(in)    , contiguous    :: data(:)
-        real(RKC)                                   :: fft(2**ceiling(log(real(size(data, 1, IK), RKB)) / log(2._RKB)))
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(in)    , contiguous    :: data(:)
+        real(RKG)                                   :: fft(2**ceiling(log(real(size(data, 1, IK), RKB)) / log(2._RKB)))
     end function
 #endif
 
@@ -524,9 +524,9 @@ module pm_fftnr
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getFFTI_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(in)    , contiguous    :: data(:)
-        real(RKC)                                   :: fft(2**ceiling(log(real(size(data, 1, IK), RKB)) / log(2._RKB)))
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(in)    , contiguous    :: data(:)
+        real(RKG)                                   :: fft(2**ceiling(log(real(size(data, 1, IK), RKB)) / log(2._RKB)))
     end function
 #endif
 
@@ -535,9 +535,9 @@ module pm_fftnr
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getFFTI_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(in)    , contiguous    :: data(:)
-        real(RKC)                                   :: fft(2**ceiling(log(real(size(data, 1, IK), RKB)) / log(2._RKB)))
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(in)    , contiguous    :: data(:)
+        real(RKG)                                   :: fft(2**ceiling(log(real(size(data, 1, IK), RKB)) / log(2._RKB)))
     end function
 #endif
 
@@ -617,9 +617,9 @@ module pm_fftnr
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getFFTR_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC), intent(in)    , contiguous    :: data(:)
-        complex(CKC)                                :: fft(2**ceiling(log(real(size(data, 1, IK), RKB)) / log(2._RKB)))
+        use pm_kind, only: CKG => CK5
+        complex(CKG), intent(in)    , contiguous    :: data(:)
+        complex(CKG)                                :: fft(2**ceiling(log(real(size(data, 1, IK), RKB)) / log(2._RKB)))
     end function
 #endif
 
@@ -628,9 +628,9 @@ module pm_fftnr
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getFFTR_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC), intent(in)    , contiguous    :: data(:)
-        complex(CKC)                                :: fft(2**ceiling(log(real(size(data, 1, IK), RKB)) / log(2._RKB)))
+        use pm_kind, only: CKG => CK4
+        complex(CKG), intent(in)    , contiguous    :: data(:)
+        complex(CKG)                                :: fft(2**ceiling(log(real(size(data, 1, IK), RKB)) / log(2._RKB)))
     end function
 #endif
 
@@ -639,9 +639,9 @@ module pm_fftnr
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getFFTR_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC), intent(in)    , contiguous    :: data(:)
-        complex(CKC)                                :: fft(2**ceiling(log(real(size(data, 1, IK), RKB)) / log(2._RKB)))
+        use pm_kind, only: CKG => CK3
+        complex(CKG), intent(in)    , contiguous    :: data(:)
+        complex(CKG)                                :: fft(2**ceiling(log(real(size(data, 1, IK), RKB)) / log(2._RKB)))
     end function
 #endif
 
@@ -650,9 +650,9 @@ module pm_fftnr
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getFFTR_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC), intent(in)    , contiguous    :: data(:)
-        complex(CKC)                                :: fft(2**ceiling(log(real(size(data, 1, IK), RKB)) / log(2._RKB)))
+        use pm_kind, only: CKG => CK2
+        complex(CKG), intent(in)    , contiguous    :: data(:)
+        complex(CKG)                                :: fft(2**ceiling(log(real(size(data, 1, IK), RKB)) / log(2._RKB)))
     end function
 #endif
 
@@ -661,9 +661,9 @@ module pm_fftnr
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getFFTR_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC), intent(in)    , contiguous    :: data(:)
-        complex(CKC)                                :: fft(2**ceiling(log(real(size(data, 1, IK), RKB)) / log(2._RKB)))
+        use pm_kind, only: CKG => CK1
+        complex(CKG), intent(in)    , contiguous    :: data(:)
+        complex(CKG)                                :: fft(2**ceiling(log(real(size(data, 1, IK), RKB)) / log(2._RKB)))
     end function
 #endif
 
@@ -674,9 +674,9 @@ module pm_fftnr
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getFFTR_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(in)    , contiguous    :: data(:)
-        real(RKC)                                   :: fft(2**ceiling(log(real(size(data, 1, IK), RKB)) / log(2._RKB)))
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(in)    , contiguous    :: data(:)
+        real(RKG)                                   :: fft(2**ceiling(log(real(size(data, 1, IK), RKB)) / log(2._RKB)))
     end function
 #endif
 
@@ -685,9 +685,9 @@ module pm_fftnr
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getFFTR_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(in)    , contiguous    :: data(:)
-        real(RKC)                                   :: fft(2**ceiling(log(real(size(data, 1, IK), RKB)) / log(2._RKB)))
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(in)    , contiguous    :: data(:)
+        real(RKG)                                   :: fft(2**ceiling(log(real(size(data, 1, IK), RKB)) / log(2._RKB)))
     end function
 #endif
 
@@ -696,9 +696,9 @@ module pm_fftnr
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getFFTR_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(in)    , contiguous    :: data(:)
-        real(RKC)                                   :: fft(2**ceiling(log(real(size(data, 1, IK), RKB)) / log(2._RKB)))
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(in)    , contiguous    :: data(:)
+        real(RKG)                                   :: fft(2**ceiling(log(real(size(data, 1, IK), RKB)) / log(2._RKB)))
     end function
 #endif
 
@@ -707,9 +707,9 @@ module pm_fftnr
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getFFTR_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(in)    , contiguous    :: data(:)
-        real(RKC)                                   :: fft(2**ceiling(log(real(size(data, 1, IK), RKB)) / log(2._RKB)))
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(in)    , contiguous    :: data(:)
+        real(RKG)                                   :: fft(2**ceiling(log(real(size(data, 1, IK), RKB)) / log(2._RKB)))
     end function
 #endif
 
@@ -718,9 +718,9 @@ module pm_fftnr
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getFFTR_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(in)    , contiguous    :: data(:)
-        real(RKC)                                   :: fft(2**ceiling(log(real(size(data, 1, IK), RKB)) / log(2._RKB)))
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(in)    , contiguous    :: data(:)
+        real(RKG)                                   :: fft(2**ceiling(log(real(size(data, 1, IK), RKB)) / log(2._RKB)))
     end function
 #endif
 
@@ -789,8 +789,8 @@ module pm_fftnr
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setFFTF_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC), intent(inout) , contiguous    :: data(:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG), intent(inout) , contiguous    :: data(:)
     end subroutine
 #endif
 
@@ -799,8 +799,8 @@ module pm_fftnr
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setFFTF_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC), intent(inout) , contiguous    :: data(:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG), intent(inout) , contiguous    :: data(:)
     end subroutine
 #endif
 
@@ -809,8 +809,8 @@ module pm_fftnr
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setFFTF_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC), intent(inout) , contiguous    :: data(:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG), intent(inout) , contiguous    :: data(:)
     end subroutine
 #endif
 
@@ -819,8 +819,8 @@ module pm_fftnr
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setFFTF_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC), intent(inout) , contiguous    :: data(:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG), intent(inout) , contiguous    :: data(:)
     end subroutine
 #endif
 
@@ -829,8 +829,8 @@ module pm_fftnr
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setFFTF_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC), intent(inout) , contiguous    :: data(:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG), intent(inout) , contiguous    :: data(:)
     end subroutine
 #endif
 
@@ -841,8 +841,8 @@ module pm_fftnr
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setFFTF_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(inout) , contiguous    :: data(:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(inout) , contiguous    :: data(:)
     end subroutine
 #endif
 
@@ -851,8 +851,8 @@ module pm_fftnr
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setFFTF_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(inout) , contiguous    :: data(:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(inout) , contiguous    :: data(:)
     end subroutine
 #endif
 
@@ -861,8 +861,8 @@ module pm_fftnr
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setFFTF_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(inout) , contiguous    :: data(:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(inout) , contiguous    :: data(:)
     end subroutine
 #endif
 
@@ -871,8 +871,8 @@ module pm_fftnr
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setFFTF_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(inout) , contiguous    :: data(:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(inout) , contiguous    :: data(:)
     end subroutine
 #endif
 
@@ -881,8 +881,8 @@ module pm_fftnr
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setFFTF_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(inout) , contiguous    :: data(:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(inout) , contiguous    :: data(:)
     end subroutine
 #endif
 
@@ -951,8 +951,8 @@ module pm_fftnr
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setFFTI_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC), intent(inout) , contiguous    :: data(:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG), intent(inout) , contiguous    :: data(:)
     end subroutine
 #endif
 
@@ -961,8 +961,8 @@ module pm_fftnr
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setFFTI_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC), intent(inout) , contiguous    :: data(:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG), intent(inout) , contiguous    :: data(:)
     end subroutine
 #endif
 
@@ -971,8 +971,8 @@ module pm_fftnr
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setFFTI_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC), intent(inout) , contiguous    :: data(:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG), intent(inout) , contiguous    :: data(:)
     end subroutine
 #endif
 
@@ -981,8 +981,8 @@ module pm_fftnr
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setFFTI_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC), intent(inout) , contiguous    :: data(:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG), intent(inout) , contiguous    :: data(:)
     end subroutine
 #endif
 
@@ -991,8 +991,8 @@ module pm_fftnr
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setFFTI_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC), intent(inout) , contiguous    :: data(:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG), intent(inout) , contiguous    :: data(:)
     end subroutine
 #endif
 
@@ -1003,8 +1003,8 @@ module pm_fftnr
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setFFTI_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(inout) , contiguous    :: data(:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(inout) , contiguous    :: data(:)
     end subroutine
 #endif
 
@@ -1013,8 +1013,8 @@ module pm_fftnr
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setFFTI_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(inout) , contiguous    :: data(:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(inout) , contiguous    :: data(:)
     end subroutine
 #endif
 
@@ -1023,8 +1023,8 @@ module pm_fftnr
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setFFTI_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(inout) , contiguous    :: data(:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(inout) , contiguous    :: data(:)
     end subroutine
 #endif
 
@@ -1033,8 +1033,8 @@ module pm_fftnr
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setFFTI_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(inout) , contiguous    :: data(:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(inout) , contiguous    :: data(:)
     end subroutine
 #endif
 
@@ -1043,8 +1043,8 @@ module pm_fftnr
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setFFTI_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(inout) , contiguous    :: data(:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(inout) , contiguous    :: data(:)
     end subroutine
 #endif
 
@@ -1113,8 +1113,8 @@ module pm_fftnr
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setFFTR_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC), intent(inout) , contiguous    :: data(:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG), intent(inout) , contiguous    :: data(:)
     end subroutine
 #endif
 
@@ -1123,8 +1123,8 @@ module pm_fftnr
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setFFTR_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC), intent(inout) , contiguous    :: data(:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG), intent(inout) , contiguous    :: data(:)
     end subroutine
 #endif
 
@@ -1133,8 +1133,8 @@ module pm_fftnr
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setFFTR_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC), intent(inout) , contiguous    :: data(:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG), intent(inout) , contiguous    :: data(:)
     end subroutine
 #endif
 
@@ -1143,8 +1143,8 @@ module pm_fftnr
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setFFTR_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC), intent(inout) , contiguous    :: data(:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG), intent(inout) , contiguous    :: data(:)
     end subroutine
 #endif
 
@@ -1153,8 +1153,8 @@ module pm_fftnr
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setFFTR_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC), intent(inout) , contiguous    :: data(:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG), intent(inout) , contiguous    :: data(:)
     end subroutine
 #endif
 
@@ -1165,8 +1165,8 @@ module pm_fftnr
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setFFTR_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(inout) , contiguous    :: data(:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(inout) , contiguous    :: data(:)
     end subroutine
 #endif
 
@@ -1175,8 +1175,8 @@ module pm_fftnr
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setFFTR_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(inout) , contiguous    :: data(:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(inout) , contiguous    :: data(:)
     end subroutine
 #endif
 
@@ -1185,8 +1185,8 @@ module pm_fftnr
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setFFTR_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(inout) , contiguous    :: data(:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(inout) , contiguous    :: data(:)
     end subroutine
 #endif
 
@@ -1195,8 +1195,8 @@ module pm_fftnr
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setFFTR_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(inout) , contiguous    :: data(:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(inout) , contiguous    :: data(:)
     end subroutine
 #endif
 
@@ -1205,8 +1205,8 @@ module pm_fftnr
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setFFTR_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(inout) , contiguous    :: data(:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(inout) , contiguous    :: data(:)
     end subroutine
 #endif
 

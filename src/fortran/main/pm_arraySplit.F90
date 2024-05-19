@@ -325,11 +325,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixDefComDefIns_D0_D0_SK5
 !#endif
-!        use pm_kind, only: SKC => SK5
+!        use pm_kind, only: SKG => SK5
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        character(*,SKC)            , intent(in)                    :: array
-!        character(*,SKC)            , intent(in)                    :: sep
+!        character(*,SKG)            , intent(in)                    :: array
+!        character(*,SKG)            , intent(in)                    :: sep
 !        logical(LK)                 , intent(in)    , optional      :: keep
 !    end subroutine
 !#endif
@@ -339,11 +339,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixDefComDefIns_D0_D0_SK4
 !#endif
-!        use pm_kind, only: SKC => SK4
+!        use pm_kind, only: SKG => SK4
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        character(*,SKC)            , intent(in)                    :: array
-!        character(*,SKC)            , intent(in)                    :: sep
+!        character(*,SKG)            , intent(in)                    :: array
+!        character(*,SKG)            , intent(in)                    :: sep
 !        logical(LK)                 , intent(in)    , optional      :: keep
 !    end subroutine
 !#endif
@@ -353,11 +353,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixDefComDefIns_D0_D0_SK3
 !#endif
-!        use pm_kind, only: SKC => SK3
+!        use pm_kind, only: SKG => SK3
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        character(*,SKC)            , intent(in)                    :: array
-!        character(*,SKC)            , intent(in)                    :: sep
+!        character(*,SKG)            , intent(in)                    :: array
+!        character(*,SKG)            , intent(in)                    :: sep
 !        logical(LK)                 , intent(in)    , optional      :: keep
 !    end subroutine
 !#endif
@@ -367,11 +367,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixDefComDefIns_D0_D0_SK2
 !#endif
-!        use pm_kind, only: SKC => SK2
+!        use pm_kind, only: SKG => SK2
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        character(*,SKC)            , intent(in)                    :: array
-!        character(*,SKC)            , intent(in)                    :: sep
+!        character(*,SKG)            , intent(in)                    :: array
+!        character(*,SKG)            , intent(in)                    :: sep
 !        logical(LK)                 , intent(in)    , optional      :: keep
 !    end subroutine
 !#endif
@@ -381,11 +381,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixDefComDefIns_D0_D0_SK1
 !#endif
-!        use pm_kind, only: SKC => SK1
+!        use pm_kind, only: SKG => SK1
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        character(*,SKC)            , intent(in)                    :: array
-!        character(*,SKC)            , intent(in)                    :: sep
+!        character(*,SKG)            , intent(in)                    :: array
+!        character(*,SKG)            , intent(in)                    :: sep
 !        logical(LK)                 , intent(in)    , optional      :: keep
 !    end subroutine
 !#endif
@@ -397,11 +397,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixDefComDefIns_D1_D0_SK5
 !#endif
-!        use pm_kind, only: SKC => SK5
+!        use pm_kind, only: SKG => SK5
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
-!        character(*,SKC)            , intent(in)                    :: sep
+!        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
+!        character(*,SKG)            , intent(in)                    :: sep
 !        logical(LK)                 , intent(in)    , optional      :: keep
 !    end subroutine
 !#endif
@@ -411,11 +411,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixDefComDefIns_D1_D0_SK4
 !#endif
-!        use pm_kind, only: SKC => SK4
+!        use pm_kind, only: SKG => SK4
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
-!        character(*,SKC)            , intent(in)                    :: sep
+!        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
+!        character(*,SKG)            , intent(in)                    :: sep
 !        logical(LK)                 , intent(in)    , optional      :: keep
 !    end subroutine
 !#endif
@@ -425,11 +425,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixDefComDefIns_D1_D0_SK3
 !#endif
-!        use pm_kind, only: SKC => SK3
+!        use pm_kind, only: SKG => SK3
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
-!        character(*,SKC)            , intent(in)                    :: sep
+!        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
+!        character(*,SKG)            , intent(in)                    :: sep
 !        logical(LK)                 , intent(in)    , optional      :: keep
 !    end subroutine
 !#endif
@@ -439,11 +439,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixDefComDefIns_D1_D0_SK2
 !#endif
-!        use pm_kind, only: SKC => SK2
+!        use pm_kind, only: SKG => SK2
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
-!        character(*,SKC)            , intent(in)                    :: sep
+!        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
+!        character(*,SKG)            , intent(in)                    :: sep
 !        logical(LK)                 , intent(in)    , optional      :: keep
 !    end subroutine
 !#endif
@@ -453,11 +453,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixDefComDefIns_D1_D0_SK1
 !#endif
-!        use pm_kind, only: SKC => SK1
+!        use pm_kind, only: SKG => SK1
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
-!        character(*,SKC)            , intent(in)                    :: sep
+!        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
+!        character(*,SKG)            , intent(in)                    :: sep
 !        logical(LK)                 , intent(in)    , optional      :: keep
 !    end subroutine
 !#endif
@@ -469,11 +469,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixDefComDefIns_D1_D0_IK5
 !#endif
-!        use pm_kind, only: IKC => IK5
+!        use pm_kind, only: IKG => IK5
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        integer(IKC)                , intent(in)    , contiguous    :: array(:)
-!        integer(IKC)                , intent(in)                    :: sep
+!        integer(IKG)                , intent(in)    , contiguous    :: array(:)
+!        integer(IKG)                , intent(in)                    :: sep
 !        logical(LK)                 , intent(in)    , optional      :: keep
 !    end subroutine
 !#endif
@@ -483,11 +483,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixDefComDefIns_D1_D0_IK4
 !#endif
-!        use pm_kind, only: IKC => IK4
+!        use pm_kind, only: IKG => IK4
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        integer(IKC)                , intent(in)    , contiguous    :: array(:)
-!        integer(IKC)                , intent(in)                    :: sep
+!        integer(IKG)                , intent(in)    , contiguous    :: array(:)
+!        integer(IKG)                , intent(in)                    :: sep
 !        logical(LK)                 , intent(in)    , optional      :: keep
 !    end subroutine
 !#endif
@@ -497,11 +497,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixDefComDefIns_D1_D0_IK3
 !#endif
-!        use pm_kind, only: IKC => IK3
+!        use pm_kind, only: IKG => IK3
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        integer(IKC)                , intent(in)    , contiguous    :: array(:)
-!        integer(IKC)                , intent(in)                    :: sep
+!        integer(IKG)                , intent(in)    , contiguous    :: array(:)
+!        integer(IKG)                , intent(in)                    :: sep
 !        logical(LK)                 , intent(in)    , optional      :: keep
 !    end subroutine
 !#endif
@@ -511,11 +511,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixDefComDefIns_D1_D0_IK2
 !#endif
-!        use pm_kind, only: IKC => IK2
+!        use pm_kind, only: IKG => IK2
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        integer(IKC)                , intent(in)    , contiguous    :: array(:)
-!        integer(IKC)                , intent(in)                    :: sep
+!        integer(IKG)                , intent(in)    , contiguous    :: array(:)
+!        integer(IKG)                , intent(in)                    :: sep
 !        logical(LK)                 , intent(in)    , optional      :: keep
 !    end subroutine
 !#endif
@@ -525,11 +525,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixDefComDefIns_D1_D0_IK1
 !#endif
-!        use pm_kind, only: IKC => IK1
+!        use pm_kind, only: IKG => IK1
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        integer(IKC)                , intent(in)    , contiguous    :: array(:)
-!        integer(IKC)                , intent(in)                    :: sep
+!        integer(IKG)                , intent(in)    , contiguous    :: array(:)
+!        integer(IKG)                , intent(in)                    :: sep
 !        logical(LK)                 , intent(in)    , optional      :: keep
 !    end subroutine
 !#endif
@@ -541,11 +541,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixDefComDefIns_D1_D0_LK5
 !#endif
-!        use pm_kind, only: LKC => LK5
+!        use pm_kind, only: LKG => LK5
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        logical(LKC)                , intent(in)    , contiguous    :: array(:)
-!        logical(LKC)                , intent(in)                    :: sep
+!        logical(LKG)                , intent(in)    , contiguous    :: array(:)
+!        logical(LKG)                , intent(in)                    :: sep
 !        logical(LK)                 , intent(in)    , optional      :: keep
 !    end subroutine
 !#endif
@@ -555,11 +555,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixDefComDefIns_D1_D0_LK4
 !#endif
-!        use pm_kind, only: LKC => LK4
+!        use pm_kind, only: LKG => LK4
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        logical(LKC)                , intent(in)    , contiguous    :: array(:)
-!        logical(LKC)                , intent(in)                    :: sep
+!        logical(LKG)                , intent(in)    , contiguous    :: array(:)
+!        logical(LKG)                , intent(in)                    :: sep
 !        logical(LK)                 , intent(in)    , optional      :: keep
 !    end subroutine
 !#endif
@@ -569,11 +569,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixDefComDefIns_D1_D0_LK3
 !#endif
-!        use pm_kind, only: LKC => LK3
+!        use pm_kind, only: LKG => LK3
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        logical(LKC)                , intent(in)    , contiguous    :: array(:)
-!        logical(LKC)                , intent(in)                    :: sep
+!        logical(LKG)                , intent(in)    , contiguous    :: array(:)
+!        logical(LKG)                , intent(in)                    :: sep
 !        logical(LK)                 , intent(in)    , optional      :: keep
 !    end subroutine
 !#endif
@@ -583,11 +583,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixDefComDefIns_D1_D0_LK2
 !#endif
-!        use pm_kind, only: LKC => LK2
+!        use pm_kind, only: LKG => LK2
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        logical(LKC)                , intent(in)    , contiguous    :: array(:)
-!        logical(LKC)                , intent(in)                    :: sep
+!        logical(LKG)                , intent(in)    , contiguous    :: array(:)
+!        logical(LKG)                , intent(in)                    :: sep
 !        logical(LK)                 , intent(in)    , optional      :: keep
 !    end subroutine
 !#endif
@@ -597,11 +597,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixDefComDefIns_D1_D0_LK1
 !#endif
-!        use pm_kind, only: LKC => LK1
+!        use pm_kind, only: LKG => LK1
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        logical(LKC)                , intent(in)    , contiguous    :: array(:)
-!        logical(LKC)                , intent(in)                    :: sep
+!        logical(LKG)                , intent(in)    , contiguous    :: array(:)
+!        logical(LKG)                , intent(in)                    :: sep
 !        logical(LK)                 , intent(in)    , optional      :: keep
 !    end subroutine
 !#endif
@@ -613,11 +613,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixDefComDefIns_D1_D0_CK5
 !#endif
-!        use pm_kind, only: CKC => CK5
+!        use pm_kind, only: CKG => CK5
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        complex(CKC)                , intent(in)    , contiguous    :: array(:)
-!        complex(CKC)                , intent(in)                    :: sep
+!        complex(CKG)                , intent(in)    , contiguous    :: array(:)
+!        complex(CKG)                , intent(in)                    :: sep
 !        logical(LK)                 , intent(in)    , optional      :: keep
 !    end subroutine
 !#endif
@@ -627,11 +627,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixDefComDefIns_D1_D0_CK4
 !#endif
-!        use pm_kind, only: CKC => CK4
+!        use pm_kind, only: CKG => CK4
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        complex(CKC)                , intent(in)    , contiguous    :: array(:)
-!        complex(CKC)                , intent(in)                    :: sep
+!        complex(CKG)                , intent(in)    , contiguous    :: array(:)
+!        complex(CKG)                , intent(in)                    :: sep
 !        logical(LK)                 , intent(in)    , optional      :: keep
 !    end subroutine
 !#endif
@@ -641,11 +641,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixDefComDefIns_D1_D0_CK3
 !#endif
-!        use pm_kind, only: CKC => CK3
+!        use pm_kind, only: CKG => CK3
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        complex(CKC)                , intent(in)    , contiguous    :: array(:)
-!        complex(CKC)                , intent(in)                    :: sep
+!        complex(CKG)                , intent(in)    , contiguous    :: array(:)
+!        complex(CKG)                , intent(in)                    :: sep
 !        logical(LK)                 , intent(in)    , optional      :: keep
 !    end subroutine
 !#endif
@@ -655,11 +655,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixDefComDefIns_D1_D0_CK2
 !#endif
-!        use pm_kind, only: CKC => CK2
+!        use pm_kind, only: CKG => CK2
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        complex(CKC)                , intent(in)    , contiguous    :: array(:)
-!        complex(CKC)                , intent(in)                    :: sep
+!        complex(CKG)                , intent(in)    , contiguous    :: array(:)
+!        complex(CKG)                , intent(in)                    :: sep
 !        logical(LK)                 , intent(in)    , optional      :: keep
 !    end subroutine
 !#endif
@@ -669,11 +669,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixDefComDefIns_D1_D0_CK1
 !#endif
-!        use pm_kind, only: CKC => CK1
+!        use pm_kind, only: CKG => CK1
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        complex(CKC)                , intent(in)    , contiguous    :: array(:)
-!        complex(CKC)                , intent(in)                    :: sep
+!        complex(CKG)                , intent(in)    , contiguous    :: array(:)
+!        complex(CKG)                , intent(in)                    :: sep
 !        logical(LK)                 , intent(in)    , optional      :: keep
 !    end subroutine
 !#endif
@@ -685,11 +685,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixDefComDefIns_D1_D0_RK5
 !#endif
-!        use pm_kind, only: RKC => RK5
+!        use pm_kind, only: RKG => RK5
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        real(RKC)                   , intent(in)    , contiguous    :: array(:)
-!        real(RKC)                   , intent(in)                    :: sep
+!        real(RKG)                   , intent(in)    , contiguous    :: array(:)
+!        real(RKG)                   , intent(in)                    :: sep
 !        logical(LK)                 , intent(in)    , optional      :: keep
 !    end subroutine
 !#endif
@@ -699,11 +699,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixDefComDefIns_D1_D0_RK4
 !#endif
-!        use pm_kind, only: RKC => RK4
+!        use pm_kind, only: RKG => RK4
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        real(RKC)                   , intent(in)    , contiguous    :: array(:)
-!        real(RKC)                   , intent(in)                    :: sep
+!        real(RKG)                   , intent(in)    , contiguous    :: array(:)
+!        real(RKG)                   , intent(in)                    :: sep
 !        logical(LK)                 , intent(in)    , optional      :: keep
 !    end subroutine
 !#endif
@@ -713,11 +713,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixDefComDefIns_D1_D0_RK3
 !#endif
-!        use pm_kind, only: RKC => RK3
+!        use pm_kind, only: RKG => RK3
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        real(RKC)                   , intent(in)    , contiguous    :: array(:)
-!        real(RKC)                   , intent(in)                    :: sep
+!        real(RKG)                   , intent(in)    , contiguous    :: array(:)
+!        real(RKG)                   , intent(in)                    :: sep
 !        logical(LK)                 , intent(in)    , optional      :: keep
 !    end subroutine
 !#endif
@@ -727,11 +727,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixDefComDefIns_D1_D0_RK2
 !#endif
-!        use pm_kind, only: RKC => RK2
+!        use pm_kind, only: RKG => RK2
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        real(RKC)                   , intent(in)    , contiguous    :: array(:)
-!        real(RKC)                   , intent(in)                    :: sep
+!        real(RKG)                   , intent(in)    , contiguous    :: array(:)
+!        real(RKG)                   , intent(in)                    :: sep
 !        logical(LK)                 , intent(in)    , optional      :: keep
 !    end subroutine
 !#endif
@@ -741,11 +741,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixDefComDefIns_D1_D0_RK1
 !#endif
-!        use pm_kind, only: RKC => RK1
+!        use pm_kind, only: RKG => RK1
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        real(RKC)                   , intent(in)    , contiguous    :: array(:)
-!        real(RKC)                   , intent(in)                    :: sep
+!        real(RKG)                   , intent(in)    , contiguous    :: array(:)
+!        real(RKG)                   , intent(in)                    :: sep
 !        logical(LK)                 , intent(in)    , optional      :: keep
 !    end subroutine
 !#endif
@@ -763,11 +763,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixCusComDefIns_D0_D0_SK5
 !#endif
-!        use pm_kind, only: SKC => SK5
+!        use pm_kind, only: SKG => SK5
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        character(*,SKC)            , intent(in)                    :: array
-!        character(*,SKC)            , intent(in)                    :: sep
+!        character(*,SKG)            , intent(in)                    :: array
+!        character(*,SKG)            , intent(in)                    :: sep
 !        procedure(logical(LK))                                      :: iseq
 !        logical(LK)                 , intent(in)    , optional      :: keep
 !    end subroutine
@@ -778,11 +778,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixCusComDefIns_D0_D0_SK4
 !#endif
-!        use pm_kind, only: SKC => SK4
+!        use pm_kind, only: SKG => SK4
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        character(*,SKC)            , intent(in)                    :: array
-!        character(*,SKC)            , intent(in)                    :: sep
+!        character(*,SKG)            , intent(in)                    :: array
+!        character(*,SKG)            , intent(in)                    :: sep
 !        procedure(logical(LK))                                      :: iseq
 !        logical(LK)                 , intent(in)    , optional      :: keep
 !    end subroutine
@@ -793,11 +793,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixCusComDefIns_D0_D0_SK3
 !#endif
-!        use pm_kind, only: SKC => SK3
+!        use pm_kind, only: SKG => SK3
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        character(*,SKC)            , intent(in)                    :: array
-!        character(*,SKC)            , intent(in)                    :: sep
+!        character(*,SKG)            , intent(in)                    :: array
+!        character(*,SKG)            , intent(in)                    :: sep
 !        procedure(logical(LK))                                      :: iseq
 !        logical(LK)                 , intent(in)    , optional      :: keep
 !    end subroutine
@@ -808,11 +808,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixCusComDefIns_D0_D0_SK2
 !#endif
-!        use pm_kind, only: SKC => SK2
+!        use pm_kind, only: SKG => SK2
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        character(*,SKC)            , intent(in)                    :: array
-!        character(*,SKC)            , intent(in)                    :: sep
+!        character(*,SKG)            , intent(in)                    :: array
+!        character(*,SKG)            , intent(in)                    :: sep
 !        procedure(logical(LK))                                      :: iseq
 !        logical(LK)                 , intent(in)    , optional      :: keep
 !    end subroutine
@@ -823,11 +823,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixCusComDefIns_D0_D0_SK1
 !#endif
-!        use pm_kind, only: SKC => SK1
+!        use pm_kind, only: SKG => SK1
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        character(*,SKC)            , intent(in)                    :: array
-!        character(*,SKC)            , intent(in)                    :: sep
+!        character(*,SKG)            , intent(in)                    :: array
+!        character(*,SKG)            , intent(in)                    :: sep
 !        procedure(logical(LK))                                      :: iseq
 !        logical(LK)                 , intent(in)    , optional      :: keep
 !    end subroutine
@@ -840,11 +840,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixCusComDefIns_D1_D0_SK5
 !#endif
-!        use pm_kind, only: SKC => SK5
+!        use pm_kind, only: SKG => SK5
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
-!        character(*,SKC)            , intent(in)                    :: sep
+!        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
+!        character(*,SKG)            , intent(in)                    :: sep
 !        procedure(logical(LK))                                      :: iseq
 !        logical(LK)                 , intent(in)    , optional      :: keep
 !    end subroutine
@@ -855,11 +855,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixCusComDefIns_D1_D0_SK4
 !#endif
-!        use pm_kind, only: SKC => SK4
+!        use pm_kind, only: SKG => SK4
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
-!        character(*,SKC)            , intent(in)                    :: sep
+!        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
+!        character(*,SKG)            , intent(in)                    :: sep
 !        procedure(logical(LK))                                      :: iseq
 !        logical(LK)                 , intent(in)    , optional      :: keep
 !    end subroutine
@@ -870,11 +870,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixCusComDefIns_D1_D0_SK3
 !#endif
-!        use pm_kind, only: SKC => SK3
+!        use pm_kind, only: SKG => SK3
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
-!        character(*,SKC)            , intent(in)                    :: sep
+!        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
+!        character(*,SKG)            , intent(in)                    :: sep
 !        procedure(logical(LK))                                      :: iseq
 !        logical(LK)                 , intent(in)    , optional      :: keep
 !    end subroutine
@@ -885,11 +885,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixCusComDefIns_D1_D0_SK2
 !#endif
-!        use pm_kind, only: SKC => SK2
+!        use pm_kind, only: SKG => SK2
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
-!        character(*,SKC)            , intent(in)                    :: sep
+!        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
+!        character(*,SKG)            , intent(in)                    :: sep
 !        procedure(logical(LK))                                      :: iseq
 !        logical(LK)                 , intent(in)    , optional      :: keep
 !    end subroutine
@@ -900,11 +900,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixCusComDefIns_D1_D0_SK1
 !#endif
-!        use pm_kind, only: SKC => SK1
+!        use pm_kind, only: SKG => SK1
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
-!        character(*,SKC)            , intent(in)                    :: sep
+!        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
+!        character(*,SKG)            , intent(in)                    :: sep
 !        procedure(logical(LK))                                      :: iseq
 !        logical(LK)                 , intent(in)    , optional      :: keep
 !    end subroutine
@@ -917,11 +917,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixCusComDefIns_D1_D0_IK5
 !#endif
-!        use pm_kind, only: IKC => IK5
+!        use pm_kind, only: IKG => IK5
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        integer(IKC)                , intent(in)    , contiguous    :: array(:)
-!        integer(IKC)                , intent(in)                    :: sep
+!        integer(IKG)                , intent(in)    , contiguous    :: array(:)
+!        integer(IKG)                , intent(in)                    :: sep
 !        procedure(logical(LK))                                      :: iseq
 !        logical(LK)                 , intent(in)    , optional      :: keep
 !    end subroutine
@@ -932,11 +932,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixCusComDefIns_D1_D0_IK4
 !#endif
-!        use pm_kind, only: IKC => IK4
+!        use pm_kind, only: IKG => IK4
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        integer(IKC)                , intent(in)    , contiguous    :: array(:)
-!        integer(IKC)                , intent(in)                    :: sep
+!        integer(IKG)                , intent(in)    , contiguous    :: array(:)
+!        integer(IKG)                , intent(in)                    :: sep
 !        procedure(logical(LK))                                      :: iseq
 !        logical(LK)                 , intent(in)    , optional      :: keep
 !    end subroutine
@@ -947,11 +947,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixCusComDefIns_D1_D0_IK3
 !#endif
-!        use pm_kind, only: IKC => IK3
+!        use pm_kind, only: IKG => IK3
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        integer(IKC)                , intent(in)    , contiguous    :: array(:)
-!        integer(IKC)                , intent(in)                    :: sep
+!        integer(IKG)                , intent(in)    , contiguous    :: array(:)
+!        integer(IKG)                , intent(in)                    :: sep
 !        procedure(logical(LK))                                      :: iseq
 !        logical(LK)                 , intent(in)    , optional      :: keep
 !    end subroutine
@@ -962,11 +962,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixCusComDefIns_D1_D0_IK2
 !#endif
-!        use pm_kind, only: IKC => IK2
+!        use pm_kind, only: IKG => IK2
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        integer(IKC)                , intent(in)    , contiguous    :: array(:)
-!        integer(IKC)                , intent(in)                    :: sep
+!        integer(IKG)                , intent(in)    , contiguous    :: array(:)
+!        integer(IKG)                , intent(in)                    :: sep
 !        procedure(logical(LK))                                      :: iseq
 !        logical(LK)                 , intent(in)    , optional      :: keep
 !    end subroutine
@@ -977,11 +977,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixCusComDefIns_D1_D0_IK1
 !#endif
-!        use pm_kind, only: IKC => IK1
+!        use pm_kind, only: IKG => IK1
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        integer(IKC)                , intent(in)    , contiguous    :: array(:)
-!        integer(IKC)                , intent(in)                    :: sep
+!        integer(IKG)                , intent(in)    , contiguous    :: array(:)
+!        integer(IKG)                , intent(in)                    :: sep
 !        procedure(logical(LK))                                      :: iseq
 !        logical(LK)                 , intent(in)    , optional      :: keep
 !    end subroutine
@@ -994,11 +994,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixCusComDefIns_D1_D0_LK5
 !#endif
-!        use pm_kind, only: LKC => LK5
+!        use pm_kind, only: LKG => LK5
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        logical(LKC)                , intent(in)    , contiguous    :: array(:)
-!        logical(LKC)                , intent(in)                    :: sep
+!        logical(LKG)                , intent(in)    , contiguous    :: array(:)
+!        logical(LKG)                , intent(in)                    :: sep
 !        procedure(logical(LK))                                      :: iseq
 !        logical(LK)                 , intent(in)    , optional      :: keep
 !    end subroutine
@@ -1009,11 +1009,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixCusComDefIns_D1_D0_LK4
 !#endif
-!        use pm_kind, only: LKC => LK4
+!        use pm_kind, only: LKG => LK4
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        logical(LKC)                , intent(in)    , contiguous    :: array(:)
-!        logical(LKC)                , intent(in)                    :: sep
+!        logical(LKG)                , intent(in)    , contiguous    :: array(:)
+!        logical(LKG)                , intent(in)                    :: sep
 !        procedure(logical(LK))                                      :: iseq
 !        logical(LK)                 , intent(in)    , optional      :: keep
 !    end subroutine
@@ -1024,11 +1024,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixCusComDefIns_D1_D0_LK3
 !#endif
-!        use pm_kind, only: LKC => LK3
+!        use pm_kind, only: LKG => LK3
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        logical(LKC)                , intent(in)    , contiguous    :: array(:)
-!        logical(LKC)                , intent(in)                    :: sep
+!        logical(LKG)                , intent(in)    , contiguous    :: array(:)
+!        logical(LKG)                , intent(in)                    :: sep
 !        procedure(logical(LK))                                      :: iseq
 !        logical(LK)                 , intent(in)    , optional      :: keep
 !    end subroutine
@@ -1039,11 +1039,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixCusComDefIns_D1_D0_LK2
 !#endif
-!        use pm_kind, only: LKC => LK2
+!        use pm_kind, only: LKG => LK2
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        logical(LKC)                , intent(in)    , contiguous    :: array(:)
-!        logical(LKC)                , intent(in)                    :: sep
+!        logical(LKG)                , intent(in)    , contiguous    :: array(:)
+!        logical(LKG)                , intent(in)                    :: sep
 !        procedure(logical(LK))                                      :: iseq
 !        logical(LK)                 , intent(in)    , optional      :: keep
 !    end subroutine
@@ -1054,11 +1054,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixCusComDefIns_D1_D0_LK1
 !#endif
-!        use pm_kind, only: LKC => LK1
+!        use pm_kind, only: LKG => LK1
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        logical(LKC)                , intent(in)    , contiguous    :: array(:)
-!        logical(LKC)                , intent(in)                    :: sep
+!        logical(LKG)                , intent(in)    , contiguous    :: array(:)
+!        logical(LKG)                , intent(in)                    :: sep
 !        procedure(logical(LK))                                      :: iseq
 !        logical(LK)                 , intent(in)    , optional      :: keep
 !    end subroutine
@@ -1071,11 +1071,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixCusComDefIns_D1_D0_CK5
 !#endif
-!        use pm_kind, only: CKC => CK5
+!        use pm_kind, only: CKG => CK5
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        complex(CKC)                , intent(in)    , contiguous    :: array(:)
-!        complex(CKC)                , intent(in)                    :: sep
+!        complex(CKG)                , intent(in)    , contiguous    :: array(:)
+!        complex(CKG)                , intent(in)                    :: sep
 !        procedure(logical(LK))                                      :: iseq
 !        logical(LK)                 , intent(in)    , optional      :: keep
 !    end subroutine
@@ -1086,11 +1086,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixCusComDefIns_D1_D0_CK4
 !#endif
-!        use pm_kind, only: CKC => CK4
+!        use pm_kind, only: CKG => CK4
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        complex(CKC)                , intent(in)    , contiguous    :: array(:)
-!        complex(CKC)                , intent(in)                    :: sep
+!        complex(CKG)                , intent(in)    , contiguous    :: array(:)
+!        complex(CKG)                , intent(in)                    :: sep
 !        procedure(logical(LK))                                      :: iseq
 !        logical(LK)                 , intent(in)    , optional      :: keep
 !    end subroutine
@@ -1101,11 +1101,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixCusComDefIns_D1_D0_CK3
 !#endif
-!        use pm_kind, only: CKC => CK3
+!        use pm_kind, only: CKG => CK3
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        complex(CKC)                , intent(in)    , contiguous    :: array(:)
-!        complex(CKC)                , intent(in)                    :: sep
+!        complex(CKG)                , intent(in)    , contiguous    :: array(:)
+!        complex(CKG)                , intent(in)                    :: sep
 !        procedure(logical(LK))                                      :: iseq
 !        logical(LK)                 , intent(in)    , optional      :: keep
 !    end subroutine
@@ -1116,11 +1116,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixCusComDefIns_D1_D0_CK2
 !#endif
-!        use pm_kind, only: CKC => CK2
+!        use pm_kind, only: CKG => CK2
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        complex(CKC)                , intent(in)    , contiguous    :: array(:)
-!        complex(CKC)                , intent(in)                    :: sep
+!        complex(CKG)                , intent(in)    , contiguous    :: array(:)
+!        complex(CKG)                , intent(in)                    :: sep
 !        procedure(logical(LK))                                      :: iseq
 !        logical(LK)                 , intent(in)    , optional      :: keep
 !    end subroutine
@@ -1131,11 +1131,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixCusComDefIns_D1_D0_CK1
 !#endif
-!        use pm_kind, only: CKC => CK1
+!        use pm_kind, only: CKG => CK1
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        complex(CKC)                , intent(in)    , contiguous    :: array(:)
-!        complex(CKC)                , intent(in)                    :: sep
+!        complex(CKG)                , intent(in)    , contiguous    :: array(:)
+!        complex(CKG)                , intent(in)                    :: sep
 !        procedure(logical(LK))                                      :: iseq
 !        logical(LK)                 , intent(in)    , optional      :: keep
 !    end subroutine
@@ -1148,11 +1148,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixCusComDefIns_D1_D0_RK5
 !#endif
-!        use pm_kind, only: RKC => RK5
+!        use pm_kind, only: RKG => RK5
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        real(RKC)                   , intent(in)    , contiguous    :: array(:)
-!        real(RKC)                   , intent(in)                    :: sep
+!        real(RKG)                   , intent(in)    , contiguous    :: array(:)
+!        real(RKG)                   , intent(in)                    :: sep
 !        procedure(logical(LK))                                      :: iseq
 !        logical(LK)                 , intent(in)    , optional      :: keep
 !    end subroutine
@@ -1163,11 +1163,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixCusComDefIns_D1_D0_RK4
 !#endif
-!        use pm_kind, only: RKC => RK4
+!        use pm_kind, only: RKG => RK4
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        real(RKC)                   , intent(in)    , contiguous    :: array(:)
-!        real(RKC)                   , intent(in)                    :: sep
+!        real(RKG)                   , intent(in)    , contiguous    :: array(:)
+!        real(RKG)                   , intent(in)                    :: sep
 !        procedure(logical(LK))                                      :: iseq
 !        logical(LK)                 , intent(in)    , optional      :: keep
 !    end subroutine
@@ -1178,11 +1178,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixCusComDefIns_D1_D0_RK3
 !#endif
-!        use pm_kind, only: RKC => RK3
+!        use pm_kind, only: RKG => RK3
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        real(RKC)                   , intent(in)    , contiguous    :: array(:)
-!        real(RKC)                   , intent(in)                    :: sep
+!        real(RKG)                   , intent(in)    , contiguous    :: array(:)
+!        real(RKG)                   , intent(in)                    :: sep
 !        procedure(logical(LK))                                      :: iseq
 !        logical(LK)                 , intent(in)    , optional      :: keep
 !    end subroutine
@@ -1193,11 +1193,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixCusComDefIns_D1_D0_RK2
 !#endif
-!        use pm_kind, only: RKC => RK2
+!        use pm_kind, only: RKG => RK2
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        real(RKC)                   , intent(in)    , contiguous    :: array(:)
-!        real(RKC)                   , intent(in)                    :: sep
+!        real(RKG)                   , intent(in)    , contiguous    :: array(:)
+!        real(RKG)                   , intent(in)                    :: sep
 !        procedure(logical(LK))                                      :: iseq
 !        logical(LK)                 , intent(in)    , optional      :: keep
 !    end subroutine
@@ -1208,11 +1208,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixCusComDefIns_D1_D0_RK1
 !#endif
-!        use pm_kind, only: RKC => RK1
+!        use pm_kind, only: RKG => RK1
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        real(RKC)                   , intent(in)    , contiguous    :: array(:)
-!        real(RKC)                   , intent(in)                    :: sep
+!        real(RKG)                   , intent(in)    , contiguous    :: array(:)
+!        real(RKG)                   , intent(in)                    :: sep
 !        procedure(logical(LK))                                      :: iseq
 !        logical(LK)                 , intent(in)    , optional      :: keep
 !    end subroutine
@@ -1231,11 +1231,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixDefComCusIns_D0_D0_SK5
 !#endif
-!        use pm_kind, only: SKC => SK5
+!        use pm_kind, only: SKG => SK5
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        character(*,SKC)            , intent(in)                    :: array
-!        character(*,SKC)            , intent(in)                    :: sep
+!        character(*,SKG)            , intent(in)                    :: array
+!        character(*,SKG)            , intent(in)                    :: sep
 !        integer(IK)                 , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)                 , intent(in)    , optional      :: sorted
 !        logical(LK)                 , intent(in)    , optional      :: unique
@@ -1248,11 +1248,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixDefComCusIns_D0_D0_SK4
 !#endif
-!        use pm_kind, only: SKC => SK4
+!        use pm_kind, only: SKG => SK4
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        character(*,SKC)            , intent(in)                    :: array
-!        character(*,SKC)            , intent(in)                    :: sep
+!        character(*,SKG)            , intent(in)                    :: array
+!        character(*,SKG)            , intent(in)                    :: sep
 !        integer(IK)                 , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)                 , intent(in)    , optional      :: sorted
 !        logical(LK)                 , intent(in)    , optional      :: unique
@@ -1265,11 +1265,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixDefComCusIns_D0_D0_SK3
 !#endif
-!        use pm_kind, only: SKC => SK3
+!        use pm_kind, only: SKG => SK3
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        character(*,SKC)            , intent(in)                    :: array
-!        character(*,SKC)            , intent(in)                    :: sep
+!        character(*,SKG)            , intent(in)                    :: array
+!        character(*,SKG)            , intent(in)                    :: sep
 !        integer(IK)                 , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)                 , intent(in)    , optional      :: sorted
 !        logical(LK)                 , intent(in)    , optional      :: unique
@@ -1282,11 +1282,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixDefComCusIns_D0_D0_SK2
 !#endif
-!        use pm_kind, only: SKC => SK2
+!        use pm_kind, only: SKG => SK2
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        character(*,SKC)            , intent(in)                    :: array
-!        character(*,SKC)            , intent(in)                    :: sep
+!        character(*,SKG)            , intent(in)                    :: array
+!        character(*,SKG)            , intent(in)                    :: sep
 !        integer(IK)                 , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)                 , intent(in)    , optional      :: sorted
 !        logical(LK)                 , intent(in)    , optional      :: unique
@@ -1299,11 +1299,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixDefComCusIns_D0_D0_SK1
 !#endif
-!        use pm_kind, only: SKC => SK1
+!        use pm_kind, only: SKG => SK1
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        character(*,SKC)            , intent(in)                    :: array
-!        character(*,SKC)            , intent(in)                    :: sep
+!        character(*,SKG)            , intent(in)                    :: array
+!        character(*,SKG)            , intent(in)                    :: sep
 !        integer(IK)                 , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)                 , intent(in)    , optional      :: sorted
 !        logical(LK)                 , intent(in)    , optional      :: unique
@@ -1318,11 +1318,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixDefComCusIns_D1_D0_SK5
 !#endif
-!        use pm_kind, only: SKC => SK5
+!        use pm_kind, only: SKG => SK5
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
-!        character(*,SKC)            , intent(in)                    :: sep
+!        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
+!        character(*,SKG)            , intent(in)                    :: sep
 !        integer(IK)                 , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)                 , intent(in)    , optional      :: sorted
 !        logical(LK)                 , intent(in)    , optional      :: unique
@@ -1335,11 +1335,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixDefComCusIns_D1_D0_SK4
 !#endif
-!        use pm_kind, only: SKC => SK4
+!        use pm_kind, only: SKG => SK4
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
-!        character(*,SKC)            , intent(in)                    :: sep
+!        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
+!        character(*,SKG)            , intent(in)                    :: sep
 !        integer(IK)                 , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)                 , intent(in)    , optional      :: sorted
 !        logical(LK)                 , intent(in)    , optional      :: unique
@@ -1352,11 +1352,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixDefComCusIns_D1_D0_SK3
 !#endif
-!        use pm_kind, only: SKC => SK3
+!        use pm_kind, only: SKG => SK3
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
-!        character(*,SKC)            , intent(in)                    :: sep
+!        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
+!        character(*,SKG)            , intent(in)                    :: sep
 !        integer(IK)                 , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)                 , intent(in)    , optional      :: sorted
 !        logical(LK)                 , intent(in)    , optional      :: unique
@@ -1369,11 +1369,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixDefComCusIns_D1_D0_SK2
 !#endif
-!        use pm_kind, only: SKC => SK2
+!        use pm_kind, only: SKG => SK2
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
-!        character(*,SKC)            , intent(in)                    :: sep
+!        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
+!        character(*,SKG)            , intent(in)                    :: sep
 !        integer(IK)                 , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)                 , intent(in)    , optional      :: sorted
 !        logical(LK)                 , intent(in)    , optional      :: unique
@@ -1386,11 +1386,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixDefComCusIns_D1_D0_SK1
 !#endif
-!        use pm_kind, only: SKC => SK1
+!        use pm_kind, only: SKG => SK1
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
-!        character(*,SKC)            , intent(in)                    :: sep
+!        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
+!        character(*,SKG)            , intent(in)                    :: sep
 !        integer(IK)                 , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)                 , intent(in)    , optional      :: sorted
 !        logical(LK)                 , intent(in)    , optional      :: unique
@@ -1405,11 +1405,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixDefComCusIns_D1_D0_IK5
 !#endif
-!        use pm_kind, only: IKC => IK5
+!        use pm_kind, only: IKG => IK5
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        integer(IKC)                , intent(in)    , contiguous    :: array(:)
-!        integer(IKC)                , intent(in)                    :: sep
+!        integer(IKG)                , intent(in)    , contiguous    :: array(:)
+!        integer(IKG)                , intent(in)                    :: sep
 !        integer(IK)                 , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)                 , intent(in)    , optional      :: sorted
 !        logical(LK)                 , intent(in)    , optional      :: unique
@@ -1422,11 +1422,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixDefComCusIns_D1_D0_IK4
 !#endif
-!        use pm_kind, only: IKC => IK4
+!        use pm_kind, only: IKG => IK4
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        integer(IKC)                , intent(in)    , contiguous    :: array(:)
-!        integer(IKC)                , intent(in)                    :: sep
+!        integer(IKG)                , intent(in)    , contiguous    :: array(:)
+!        integer(IKG)                , intent(in)                    :: sep
 !        integer(IK)                 , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)                 , intent(in)    , optional      :: sorted
 !        logical(LK)                 , intent(in)    , optional      :: unique
@@ -1439,11 +1439,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixDefComCusIns_D1_D0_IK3
 !#endif
-!        use pm_kind, only: IKC => IK3
+!        use pm_kind, only: IKG => IK3
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        integer(IKC)                , intent(in)    , contiguous    :: array(:)
-!        integer(IKC)                , intent(in)                    :: sep
+!        integer(IKG)                , intent(in)    , contiguous    :: array(:)
+!        integer(IKG)                , intent(in)                    :: sep
 !        integer(IK)                 , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)                 , intent(in)    , optional      :: sorted
 !        logical(LK)                 , intent(in)    , optional      :: unique
@@ -1456,11 +1456,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixDefComCusIns_D1_D0_IK2
 !#endif
-!        use pm_kind, only: IKC => IK2
+!        use pm_kind, only: IKG => IK2
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        integer(IKC)                , intent(in)    , contiguous    :: array(:)
-!        integer(IKC)                , intent(in)                    :: sep
+!        integer(IKG)                , intent(in)    , contiguous    :: array(:)
+!        integer(IKG)                , intent(in)                    :: sep
 !        integer(IK)                 , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)                 , intent(in)    , optional      :: sorted
 !        logical(LK)                 , intent(in)    , optional      :: unique
@@ -1473,11 +1473,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixDefComCusIns_D1_D0_IK1
 !#endif
-!        use pm_kind, only: IKC => IK1
+!        use pm_kind, only: IKG => IK1
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        integer(IKC)                , intent(in)    , contiguous    :: array(:)
-!        integer(IKC)                , intent(in)                    :: sep
+!        integer(IKG)                , intent(in)    , contiguous    :: array(:)
+!        integer(IKG)                , intent(in)                    :: sep
 !        integer(IK)                 , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)                 , intent(in)    , optional      :: sorted
 !        logical(LK)                 , intent(in)    , optional      :: unique
@@ -1492,11 +1492,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixDefComCusIns_D1_D0_LK5
 !#endif
-!        use pm_kind, only: LKC => LK5
+!        use pm_kind, only: LKG => LK5
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        logical(LKC)                , intent(in)    , contiguous    :: array(:)
-!        logical(LKC)                , intent(in)                    :: sep
+!        logical(LKG)                , intent(in)    , contiguous    :: array(:)
+!        logical(LKG)                , intent(in)                    :: sep
 !        integer(IK)                 , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)                 , intent(in)    , optional      :: sorted
 !        logical(LK)                 , intent(in)    , optional      :: unique
@@ -1509,11 +1509,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixDefComCusIns_D1_D0_LK4
 !#endif
-!        use pm_kind, only: LKC => LK4
+!        use pm_kind, only: LKG => LK4
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        logical(LKC)                , intent(in)    , contiguous    :: array(:)
-!        logical(LKC)                , intent(in)                    :: sep
+!        logical(LKG)                , intent(in)    , contiguous    :: array(:)
+!        logical(LKG)                , intent(in)                    :: sep
 !        integer(IK)                 , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)                 , intent(in)    , optional      :: sorted
 !        logical(LK)                 , intent(in)    , optional      :: unique
@@ -1526,11 +1526,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixDefComCusIns_D1_D0_LK3
 !#endif
-!        use pm_kind, only: LKC => LK3
+!        use pm_kind, only: LKG => LK3
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        logical(LKC)                , intent(in)    , contiguous    :: array(:)
-!        logical(LKC)                , intent(in)                    :: sep
+!        logical(LKG)                , intent(in)    , contiguous    :: array(:)
+!        logical(LKG)                , intent(in)                    :: sep
 !        integer(IK)                 , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)                 , intent(in)    , optional      :: sorted
 !        logical(LK)                 , intent(in)    , optional      :: unique
@@ -1543,11 +1543,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixDefComCusIns_D1_D0_LK2
 !#endif
-!        use pm_kind, only: LKC => LK2
+!        use pm_kind, only: LKG => LK2
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        logical(LKC)                , intent(in)    , contiguous    :: array(:)
-!        logical(LKC)                , intent(in)                    :: sep
+!        logical(LKG)                , intent(in)    , contiguous    :: array(:)
+!        logical(LKG)                , intent(in)                    :: sep
 !        integer(IK)                 , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)                 , intent(in)    , optional      :: sorted
 !        logical(LK)                 , intent(in)    , optional      :: unique
@@ -1560,11 +1560,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixDefComCusIns_D1_D0_LK1
 !#endif
-!        use pm_kind, only: LKC => LK1
+!        use pm_kind, only: LKG => LK1
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        logical(LKC)                , intent(in)    , contiguous    :: array(:)
-!        logical(LKC)                , intent(in)                    :: sep
+!        logical(LKG)                , intent(in)    , contiguous    :: array(:)
+!        logical(LKG)                , intent(in)                    :: sep
 !        integer(IK)                 , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)                 , intent(in)    , optional      :: sorted
 !        logical(LK)                 , intent(in)    , optional      :: unique
@@ -1579,11 +1579,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixDefComCusIns_D1_D0_CK5
 !#endif
-!        use pm_kind, only: CKC => CK5
+!        use pm_kind, only: CKG => CK5
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        complex(CKC)                , intent(in)    , contiguous    :: array(:)
-!        complex(CKC)                , intent(in)                    :: sep
+!        complex(CKG)                , intent(in)    , contiguous    :: array(:)
+!        complex(CKG)                , intent(in)                    :: sep
 !        integer(IK)                 , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)                 , intent(in)    , optional      :: sorted
 !        logical(LK)                 , intent(in)    , optional      :: unique
@@ -1596,11 +1596,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixDefComCusIns_D1_D0_CK4
 !#endif
-!        use pm_kind, only: CKC => CK4
+!        use pm_kind, only: CKG => CK4
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        complex(CKC)                , intent(in)    , contiguous    :: array(:)
-!        complex(CKC)                , intent(in)                    :: sep
+!        complex(CKG)                , intent(in)    , contiguous    :: array(:)
+!        complex(CKG)                , intent(in)                    :: sep
 !        integer(IK)                 , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)                 , intent(in)    , optional      :: sorted
 !        logical(LK)                 , intent(in)    , optional      :: unique
@@ -1613,11 +1613,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixDefComCusIns_D1_D0_CK3
 !#endif
-!        use pm_kind, only: CKC => CK3
+!        use pm_kind, only: CKG => CK3
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        complex(CKC)                , intent(in)    , contiguous    :: array(:)
-!        complex(CKC)                , intent(in)                    :: sep
+!        complex(CKG)                , intent(in)    , contiguous    :: array(:)
+!        complex(CKG)                , intent(in)                    :: sep
 !        integer(IK)                 , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)                 , intent(in)    , optional      :: sorted
 !        logical(LK)                 , intent(in)    , optional      :: unique
@@ -1630,11 +1630,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixDefComCusIns_D1_D0_CK2
 !#endif
-!        use pm_kind, only: CKC => CK2
+!        use pm_kind, only: CKG => CK2
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        complex(CKC)                , intent(in)    , contiguous    :: array(:)
-!        complex(CKC)                , intent(in)                    :: sep
+!        complex(CKG)                , intent(in)    , contiguous    :: array(:)
+!        complex(CKG)                , intent(in)                    :: sep
 !        integer(IK)                 , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)                 , intent(in)    , optional      :: sorted
 !        logical(LK)                 , intent(in)    , optional      :: unique
@@ -1647,11 +1647,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixDefComCusIns_D1_D0_CK1
 !#endif
-!        use pm_kind, only: CKC => CK1
+!        use pm_kind, only: CKG => CK1
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        complex(CKC)                , intent(in)    , contiguous    :: array(:)
-!        complex(CKC)                , intent(in)                    :: sep
+!        complex(CKG)                , intent(in)    , contiguous    :: array(:)
+!        complex(CKG)                , intent(in)                    :: sep
 !        integer(IK)                 , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)                 , intent(in)    , optional      :: sorted
 !        logical(LK)                 , intent(in)    , optional      :: unique
@@ -1666,11 +1666,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixDefComCusIns_D1_D0_RK5
 !#endif
-!        use pm_kind, only: RKC => RK5
+!        use pm_kind, only: RKG => RK5
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        real(RKC)                   , intent(in)    , contiguous    :: array(:)
-!        real(RKC)                   , intent(in)                    :: sep
+!        real(RKG)                   , intent(in)    , contiguous    :: array(:)
+!        real(RKG)                   , intent(in)                    :: sep
 !        integer(IK)                 , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)                 , intent(in)    , optional      :: sorted
 !        logical(LK)                 , intent(in)    , optional      :: unique
@@ -1683,11 +1683,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixDefComCusIns_D1_D0_RK4
 !#endif
-!        use pm_kind, only: RKC => RK4
+!        use pm_kind, only: RKG => RK4
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        real(RKC)                   , intent(in)    , contiguous    :: array(:)
-!        real(RKC)                   , intent(in)                    :: sep
+!        real(RKG)                   , intent(in)    , contiguous    :: array(:)
+!        real(RKG)                   , intent(in)                    :: sep
 !        integer(IK)                 , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)                 , intent(in)    , optional      :: sorted
 !        logical(LK)                 , intent(in)    , optional      :: unique
@@ -1700,11 +1700,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixDefComCusIns_D1_D0_RK3
 !#endif
-!        use pm_kind, only: RKC => RK3
+!        use pm_kind, only: RKG => RK3
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        real(RKC)                   , intent(in)    , contiguous    :: array(:)
-!        real(RKC)                   , intent(in)                    :: sep
+!        real(RKG)                   , intent(in)    , contiguous    :: array(:)
+!        real(RKG)                   , intent(in)                    :: sep
 !        integer(IK)                 , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)                 , intent(in)    , optional      :: sorted
 !        logical(LK)                 , intent(in)    , optional      :: unique
@@ -1717,11 +1717,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixDefComCusIns_D1_D0_RK2
 !#endif
-!        use pm_kind, only: RKC => RK2
+!        use pm_kind, only: RKG => RK2
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        real(RKC)                   , intent(in)    , contiguous    :: array(:)
-!        real(RKC)                   , intent(in)                    :: sep
+!        real(RKG)                   , intent(in)    , contiguous    :: array(:)
+!        real(RKG)                   , intent(in)                    :: sep
 !        integer(IK)                 , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)                 , intent(in)    , optional      :: sorted
 !        logical(LK)                 , intent(in)    , optional      :: unique
@@ -1734,11 +1734,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixDefComCusIns_D1_D0_RK1
 !#endif
-!        use pm_kind, only: RKC => RK1
+!        use pm_kind, only: RKG => RK1
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        real(RKC)                   , intent(in)    , contiguous    :: array(:)
-!        real(RKC)                   , intent(in)                    :: sep
+!        real(RKG)                   , intent(in)    , contiguous    :: array(:)
+!        real(RKG)                   , intent(in)                    :: sep
 !        integer(IK)                 , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)                 , intent(in)    , optional      :: sorted
 !        logical(LK)                 , intent(in)    , optional      :: unique
@@ -1759,11 +1759,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixCusComCusIns_D0_D0_SK5
 !#endif
-!        use pm_kind, only: SKC => SK5
+!        use pm_kind, only: SKG => SK5
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        character(*,SKC)            , intent(in)                    :: array
-!        character(*,SKC)            , intent(in)                    :: sep
+!        character(*,SKG)            , intent(in)                    :: array
+!        character(*,SKG)            , intent(in)                    :: sep
 !        procedure(logical(LK))                                      :: iseq
 !        integer(IK)                 , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)                 , intent(in)    , optional      :: sorted
@@ -1777,11 +1777,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixCusComCusIns_D0_D0_SK4
 !#endif
-!        use pm_kind, only: SKC => SK4
+!        use pm_kind, only: SKG => SK4
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        character(*,SKC)            , intent(in)                    :: array
-!        character(*,SKC)            , intent(in)                    :: sep
+!        character(*,SKG)            , intent(in)                    :: array
+!        character(*,SKG)            , intent(in)                    :: sep
 !        procedure(logical(LK))                                      :: iseq
 !        integer(IK)                 , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)                 , intent(in)    , optional      :: sorted
@@ -1795,11 +1795,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixCusComCusIns_D0_D0_SK3
 !#endif
-!        use pm_kind, only: SKC => SK3
+!        use pm_kind, only: SKG => SK3
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        character(*,SKC)            , intent(in)                    :: array
-!        character(*,SKC)            , intent(in)                    :: sep
+!        character(*,SKG)            , intent(in)                    :: array
+!        character(*,SKG)            , intent(in)                    :: sep
 !        procedure(logical(LK))                                      :: iseq
 !        integer(IK)                 , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)                 , intent(in)    , optional      :: sorted
@@ -1813,11 +1813,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixCusComCusIns_D0_D0_SK2
 !#endif
-!        use pm_kind, only: SKC => SK2
+!        use pm_kind, only: SKG => SK2
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        character(*,SKC)            , intent(in)                    :: array
-!        character(*,SKC)            , intent(in)                    :: sep
+!        character(*,SKG)            , intent(in)                    :: array
+!        character(*,SKG)            , intent(in)                    :: sep
 !        procedure(logical(LK))                                      :: iseq
 !        integer(IK)                 , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)                 , intent(in)    , optional      :: sorted
@@ -1831,11 +1831,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixCusComCusIns_D0_D0_SK1
 !#endif
-!        use pm_kind, only: SKC => SK1
+!        use pm_kind, only: SKG => SK1
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        character(*,SKC)            , intent(in)                    :: array
-!        character(*,SKC)            , intent(in)                    :: sep
+!        character(*,SKG)            , intent(in)                    :: array
+!        character(*,SKG)            , intent(in)                    :: sep
 !        procedure(logical(LK))                                      :: iseq
 !        integer(IK)                 , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)                 , intent(in)    , optional      :: sorted
@@ -1851,11 +1851,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixCusComCusIns_D1_D0_SK5
 !#endif
-!        use pm_kind, only: SKC => SK5
+!        use pm_kind, only: SKG => SK5
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
-!        character(*,SKC)            , intent(in)                    :: sep
+!        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
+!        character(*,SKG)            , intent(in)                    :: sep
 !        procedure(logical(LK))                                      :: iseq
 !        integer(IK)                 , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)                 , intent(in)    , optional      :: sorted
@@ -1869,11 +1869,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixCusComCusIns_D1_D0_SK4
 !#endif
-!        use pm_kind, only: SKC => SK4
+!        use pm_kind, only: SKG => SK4
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
-!        character(*,SKC)            , intent(in)                    :: sep
+!        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
+!        character(*,SKG)            , intent(in)                    :: sep
 !        procedure(logical(LK))                                      :: iseq
 !        integer(IK)                 , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)                 , intent(in)    , optional      :: sorted
@@ -1887,11 +1887,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixCusComCusIns_D1_D0_SK3
 !#endif
-!        use pm_kind, only: SKC => SK3
+!        use pm_kind, only: SKG => SK3
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
-!        character(*,SKC)            , intent(in)                    :: sep
+!        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
+!        character(*,SKG)            , intent(in)                    :: sep
 !        procedure(logical(LK))                                      :: iseq
 !        integer(IK)                 , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)                 , intent(in)    , optional      :: sorted
@@ -1905,11 +1905,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixCusComCusIns_D1_D0_SK2
 !#endif
-!        use pm_kind, only: SKC => SK2
+!        use pm_kind, only: SKG => SK2
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
-!        character(*,SKC)            , intent(in)                    :: sep
+!        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
+!        character(*,SKG)            , intent(in)                    :: sep
 !        procedure(logical(LK))                                      :: iseq
 !        integer(IK)                 , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)                 , intent(in)    , optional      :: sorted
@@ -1923,11 +1923,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixCusComCusIns_D1_D0_SK1
 !#endif
-!        use pm_kind, only: SKC => SK1
+!        use pm_kind, only: SKG => SK1
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
-!        character(*,SKC)            , intent(in)                    :: sep
+!        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
+!        character(*,SKG)            , intent(in)                    :: sep
 !        procedure(logical(LK))                                      :: iseq
 !        integer(IK)                 , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)                 , intent(in)    , optional      :: sorted
@@ -1943,11 +1943,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixCusComCusIns_D1_D0_IK5
 !#endif
-!        use pm_kind, only: IKC => IK5
+!        use pm_kind, only: IKG => IK5
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        integer(IKC)                , intent(in)    , contiguous    :: array(:)
-!        integer(IKC)                , intent(in)                    :: sep
+!        integer(IKG)                , intent(in)    , contiguous    :: array(:)
+!        integer(IKG)                , intent(in)                    :: sep
 !        procedure(logical(LK))                                      :: iseq
 !        integer(IK)                 , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)                 , intent(in)    , optional      :: sorted
@@ -1961,11 +1961,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixCusComCusIns_D1_D0_IK4
 !#endif
-!        use pm_kind, only: IKC => IK4
+!        use pm_kind, only: IKG => IK4
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        integer(IKC)                , intent(in)    , contiguous    :: array(:)
-!        integer(IKC)                , intent(in)                    :: sep
+!        integer(IKG)                , intent(in)    , contiguous    :: array(:)
+!        integer(IKG)                , intent(in)                    :: sep
 !        procedure(logical(LK))                                      :: iseq
 !        integer(IK)                 , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)                 , intent(in)    , optional      :: sorted
@@ -1979,11 +1979,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixCusComCusIns_D1_D0_IK3
 !#endif
-!        use pm_kind, only: IKC => IK3
+!        use pm_kind, only: IKG => IK3
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        integer(IKC)                , intent(in)    , contiguous    :: array(:)
-!        integer(IKC)                , intent(in)                    :: sep
+!        integer(IKG)                , intent(in)    , contiguous    :: array(:)
+!        integer(IKG)                , intent(in)                    :: sep
 !        procedure(logical(LK))                                      :: iseq
 !        integer(IK)                 , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)                 , intent(in)    , optional      :: sorted
@@ -1997,11 +1997,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixCusComCusIns_D1_D0_IK2
 !#endif
-!        use pm_kind, only: IKC => IK2
+!        use pm_kind, only: IKG => IK2
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        integer(IKC)                , intent(in)    , contiguous    :: array(:)
-!        integer(IKC)                , intent(in)                    :: sep
+!        integer(IKG)                , intent(in)    , contiguous    :: array(:)
+!        integer(IKG)                , intent(in)                    :: sep
 !        procedure(logical(LK))                                      :: iseq
 !        integer(IK)                 , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)                 , intent(in)    , optional      :: sorted
@@ -2015,11 +2015,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixCusComCusIns_D1_D0_IK1
 !#endif
-!        use pm_kind, only: IKC => IK1
+!        use pm_kind, only: IKG => IK1
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        integer(IKC)                , intent(in)    , contiguous    :: array(:)
-!        integer(IKC)                , intent(in)                    :: sep
+!        integer(IKG)                , intent(in)    , contiguous    :: array(:)
+!        integer(IKG)                , intent(in)                    :: sep
 !        procedure(logical(LK))                                      :: iseq
 !        integer(IK)                 , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)                 , intent(in)    , optional      :: sorted
@@ -2035,11 +2035,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixCusComCusIns_D1_D0_LK5
 !#endif
-!        use pm_kind, only: LKC => LK5
+!        use pm_kind, only: LKG => LK5
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        logical(LKC)                , intent(in)    , contiguous    :: array(:)
-!        logical(LKC)                , intent(in)                    :: sep
+!        logical(LKG)                , intent(in)    , contiguous    :: array(:)
+!        logical(LKG)                , intent(in)                    :: sep
 !        procedure(logical(LK))                                      :: iseq
 !        integer(IK)                 , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)                 , intent(in)    , optional      :: sorted
@@ -2053,11 +2053,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixCusComCusIns_D1_D0_LK4
 !#endif
-!        use pm_kind, only: LKC => LK4
+!        use pm_kind, only: LKG => LK4
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        logical(LKC)                , intent(in)    , contiguous    :: array(:)
-!        logical(LKC)                , intent(in)                    :: sep
+!        logical(LKG)                , intent(in)    , contiguous    :: array(:)
+!        logical(LKG)                , intent(in)                    :: sep
 !        procedure(logical(LK))                                      :: iseq
 !        integer(IK)                 , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)                 , intent(in)    , optional      :: sorted
@@ -2071,11 +2071,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixCusComCusIns_D1_D0_LK3
 !#endif
-!        use pm_kind, only: LKC => LK3
+!        use pm_kind, only: LKG => LK3
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        logical(LKC)                , intent(in)    , contiguous    :: array(:)
-!        logical(LKC)                , intent(in)                    :: sep
+!        logical(LKG)                , intent(in)    , contiguous    :: array(:)
+!        logical(LKG)                , intent(in)                    :: sep
 !        procedure(logical(LK))                                      :: iseq
 !        integer(IK)                 , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)                 , intent(in)    , optional      :: sorted
@@ -2089,11 +2089,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixCusComCusIns_D1_D0_LK2
 !#endif
-!        use pm_kind, only: LKC => LK2
+!        use pm_kind, only: LKG => LK2
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        logical(LKC)                , intent(in)    , contiguous    :: array(:)
-!        logical(LKC)                , intent(in)                    :: sep
+!        logical(LKG)                , intent(in)    , contiguous    :: array(:)
+!        logical(LKG)                , intent(in)                    :: sep
 !        procedure(logical(LK))                                      :: iseq
 !        integer(IK)                 , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)                 , intent(in)    , optional      :: sorted
@@ -2107,11 +2107,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixCusComCusIns_D1_D0_LK1
 !#endif
-!        use pm_kind, only: LKC => LK1
+!        use pm_kind, only: LKG => LK1
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        logical(LKC)                , intent(in)    , contiguous    :: array(:)
-!        logical(LKC)                , intent(in)                    :: sep
+!        logical(LKG)                , intent(in)    , contiguous    :: array(:)
+!        logical(LKG)                , intent(in)                    :: sep
 !        procedure(logical(LK))                                      :: iseq
 !        integer(IK)                 , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)                 , intent(in)    , optional      :: sorted
@@ -2127,11 +2127,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixCusComCusIns_D1_D0_CK5
 !#endif
-!        use pm_kind, only: CKC => CK5
+!        use pm_kind, only: CKG => CK5
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        complex(CKC)                , intent(in)    , contiguous    :: array(:)
-!        complex(CKC)                , intent(in)                    :: sep
+!        complex(CKG)                , intent(in)    , contiguous    :: array(:)
+!        complex(CKG)                , intent(in)                    :: sep
 !        procedure(logical(LK))                                      :: iseq
 !        integer(IK)                 , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)                 , intent(in)    , optional      :: sorted
@@ -2145,11 +2145,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixCusComCusIns_D1_D0_CK4
 !#endif
-!        use pm_kind, only: CKC => CK4
+!        use pm_kind, only: CKG => CK4
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        complex(CKC)                , intent(in)    , contiguous    :: array(:)
-!        complex(CKC)                , intent(in)                    :: sep
+!        complex(CKG)                , intent(in)    , contiguous    :: array(:)
+!        complex(CKG)                , intent(in)                    :: sep
 !        procedure(logical(LK))                                      :: iseq
 !        integer(IK)                 , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)                 , intent(in)    , optional      :: sorted
@@ -2163,11 +2163,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixCusComCusIns_D1_D0_CK3
 !#endif
-!        use pm_kind, only: CKC => CK3
+!        use pm_kind, only: CKG => CK3
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        complex(CKC)                , intent(in)    , contiguous    :: array(:)
-!        complex(CKC)                , intent(in)                    :: sep
+!        complex(CKG)                , intent(in)    , contiguous    :: array(:)
+!        complex(CKG)                , intent(in)                    :: sep
 !        procedure(logical(LK))                                      :: iseq
 !        integer(IK)                 , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)                 , intent(in)    , optional      :: sorted
@@ -2181,11 +2181,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixCusComCusIns_D1_D0_CK2
 !#endif
-!        use pm_kind, only: CKC => CK2
+!        use pm_kind, only: CKG => CK2
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        complex(CKC)                , intent(in)    , contiguous    :: array(:)
-!        complex(CKC)                , intent(in)                    :: sep
+!        complex(CKG)                , intent(in)    , contiguous    :: array(:)
+!        complex(CKG)                , intent(in)                    :: sep
 !        procedure(logical(LK))                                      :: iseq
 !        integer(IK)                 , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)                 , intent(in)    , optional      :: sorted
@@ -2199,11 +2199,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixCusComCusIns_D1_D0_CK1
 !#endif
-!        use pm_kind, only: CKC => CK1
+!        use pm_kind, only: CKG => CK1
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        complex(CKC)                , intent(in)    , contiguous    :: array(:)
-!        complex(CKC)                , intent(in)                    :: sep
+!        complex(CKG)                , intent(in)    , contiguous    :: array(:)
+!        complex(CKG)                , intent(in)                    :: sep
 !        procedure(logical(LK))                                      :: iseq
 !        integer(IK)                 , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)                 , intent(in)    , optional      :: sorted
@@ -2219,11 +2219,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixCusComCusIns_D1_D0_RK5
 !#endif
-!        use pm_kind, only: RKC => RK5
+!        use pm_kind, only: RKG => RK5
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        real(RKC)                   , intent(in)    , contiguous    :: array(:)
-!        real(RKC)                   , intent(in)                    :: sep
+!        real(RKG)                   , intent(in)    , contiguous    :: array(:)
+!        real(RKG)                   , intent(in)                    :: sep
 !        procedure(logical(LK))                                      :: iseq
 !        integer(IK)                 , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)                 , intent(in)    , optional      :: sorted
@@ -2237,11 +2237,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixCusComCusIns_D1_D0_RK4
 !#endif
-!        use pm_kind, only: RKC => RK4
+!        use pm_kind, only: RKG => RK4
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        real(RKC)                   , intent(in)    , contiguous    :: array(:)
-!        real(RKC)                   , intent(in)                    :: sep
+!        real(RKG)                   , intent(in)    , contiguous    :: array(:)
+!        real(RKG)                   , intent(in)                    :: sep
 !        procedure(logical(LK))                                      :: iseq
 !        integer(IK)                 , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)                 , intent(in)    , optional      :: sorted
@@ -2255,11 +2255,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixCusComCusIns_D1_D0_RK3
 !#endif
-!        use pm_kind, only: RKC => RK3
+!        use pm_kind, only: RKG => RK3
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        real(RKC)                   , intent(in)    , contiguous    :: array(:)
-!        real(RKC)                   , intent(in)                    :: sep
+!        real(RKG)                   , intent(in)    , contiguous    :: array(:)
+!        real(RKG)                   , intent(in)                    :: sep
 !        procedure(logical(LK))                                      :: iseq
 !        integer(IK)                 , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)                 , intent(in)    , optional      :: sorted
@@ -2273,11 +2273,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixCusComCusIns_D1_D0_RK2
 !#endif
-!        use pm_kind, only: RKC => RK2
+!        use pm_kind, only: RKG => RK2
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        real(RKC)                   , intent(in)    , contiguous    :: array(:)
-!        real(RKC)                   , intent(in)                    :: sep
+!        real(RKG)                   , intent(in)    , contiguous    :: array(:)
+!        real(RKG)                   , intent(in)                    :: sep
 !        procedure(logical(LK))                                      :: iseq
 !        integer(IK)                 , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)                 , intent(in)    , optional      :: sorted
@@ -2291,11 +2291,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixCusComCusIns_D1_D0_RK1
 !#endif
-!        use pm_kind, only: RKC => RK1
+!        use pm_kind, only: RKG => RK1
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        real(RKC)                   , intent(in)    , contiguous    :: array(:)
-!        real(RKC)                   , intent(in)                    :: sep
+!        real(RKG)                   , intent(in)    , contiguous    :: array(:)
+!        real(RKG)                   , intent(in)                    :: sep
 !        procedure(logical(LK))                                      :: iseq
 !        integer(IK)                 , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)                 , intent(in)    , optional      :: sorted
@@ -2317,11 +2317,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixDefComDefIns_D1_D1_SK5
 !#endif
-!        use pm_kind, only: SKC => SK5
+!        use pm_kind, only: SKG => SK5
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
-!        character(*,SKC)            , intent(in)    , contiguous    :: sep(:)
+!        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
+!        character(*,SKG)            , intent(in)    , contiguous    :: sep(:)
 !        logical(LK)                 , intent(in)    , optional      :: keep
 !    end subroutine
 !#endif
@@ -2331,11 +2331,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixDefComDefIns_D1_D1_SK4
 !#endif
-!        use pm_kind, only: SKC => SK4
+!        use pm_kind, only: SKG => SK4
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
-!        character(*,SKC)            , intent(in)    , contiguous    :: sep(:)
+!        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
+!        character(*,SKG)            , intent(in)    , contiguous    :: sep(:)
 !        logical(LK)                 , intent(in)    , optional      :: keep
 !    end subroutine
 !#endif
@@ -2345,11 +2345,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixDefComDefIns_D1_D1_SK3
 !#endif
-!        use pm_kind, only: SKC => SK3
+!        use pm_kind, only: SKG => SK3
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
-!        character(*,SKC)            , intent(in)    , contiguous    :: sep(:)
+!        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
+!        character(*,SKG)            , intent(in)    , contiguous    :: sep(:)
 !        logical(LK)                 , intent(in)    , optional      :: keep
 !    end subroutine
 !#endif
@@ -2359,11 +2359,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixDefComDefIns_D1_D1_SK2
 !#endif
-!        use pm_kind, only: SKC => SK2
+!        use pm_kind, only: SKG => SK2
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
-!        character(*,SKC)            , intent(in)    , contiguous    :: sep(:)
+!        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
+!        character(*,SKG)            , intent(in)    , contiguous    :: sep(:)
 !        logical(LK)                 , intent(in)    , optional      :: keep
 !    end subroutine
 !#endif
@@ -2373,11 +2373,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixDefComDefIns_D1_D1_SK1
 !#endif
-!        use pm_kind, only: SKC => SK1
+!        use pm_kind, only: SKG => SK1
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
-!        character(*,SKC)            , intent(in)    , contiguous    :: sep(:)
+!        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
+!        character(*,SKG)            , intent(in)    , contiguous    :: sep(:)
 !        logical(LK)                 , intent(in)    , optional      :: keep
 !    end subroutine
 !#endif
@@ -2389,11 +2389,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixDefComDefIns_D1_D1_IK5
 !#endif
-!        use pm_kind, only: IKC => IK5
+!        use pm_kind, only: IKG => IK5
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        integer(IKC)                , intent(in)    , contiguous    :: array(:)
-!        integer(IKC)                , intent(in)    , contiguous    :: sep(:)
+!        integer(IKG)                , intent(in)    , contiguous    :: array(:)
+!        integer(IKG)                , intent(in)    , contiguous    :: sep(:)
 !        logical(LK)                 , intent(in)    , optional      :: keep
 !    end subroutine
 !#endif
@@ -2403,11 +2403,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixDefComDefIns_D1_D1_IK4
 !#endif
-!        use pm_kind, only: IKC => IK4
+!        use pm_kind, only: IKG => IK4
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        integer(IKC)                , intent(in)    , contiguous    :: array(:)
-!        integer(IKC)                , intent(in)    , contiguous    :: sep(:)
+!        integer(IKG)                , intent(in)    , contiguous    :: array(:)
+!        integer(IKG)                , intent(in)    , contiguous    :: sep(:)
 !        logical(LK)                 , intent(in)    , optional      :: keep
 !    end subroutine
 !#endif
@@ -2417,11 +2417,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixDefComDefIns_D1_D1_IK3
 !#endif
-!        use pm_kind, only: IKC => IK3
+!        use pm_kind, only: IKG => IK3
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        integer(IKC)                , intent(in)    , contiguous    :: array(:)
-!        integer(IKC)                , intent(in)    , contiguous    :: sep(:)
+!        integer(IKG)                , intent(in)    , contiguous    :: array(:)
+!        integer(IKG)                , intent(in)    , contiguous    :: sep(:)
 !        logical(LK)                 , intent(in)    , optional      :: keep
 !    end subroutine
 !#endif
@@ -2431,11 +2431,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixDefComDefIns_D1_D1_IK2
 !#endif
-!        use pm_kind, only: IKC => IK2
+!        use pm_kind, only: IKG => IK2
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        integer(IKC)                , intent(in)    , contiguous    :: array(:)
-!        integer(IKC)                , intent(in)    , contiguous    :: sep(:)
+!        integer(IKG)                , intent(in)    , contiguous    :: array(:)
+!        integer(IKG)                , intent(in)    , contiguous    :: sep(:)
 !        logical(LK)                 , intent(in)    , optional      :: keep
 !    end subroutine
 !#endif
@@ -2445,11 +2445,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixDefComDefIns_D1_D1_IK1
 !#endif
-!        use pm_kind, only: IKC => IK1
+!        use pm_kind, only: IKG => IK1
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        integer(IKC)                , intent(in)    , contiguous    :: array(:)
-!        integer(IKC)                , intent(in)    , contiguous    :: sep(:)
+!        integer(IKG)                , intent(in)    , contiguous    :: array(:)
+!        integer(IKG)                , intent(in)    , contiguous    :: sep(:)
 !        logical(LK)                 , intent(in)    , optional      :: keep
 !    end subroutine
 !#endif
@@ -2461,11 +2461,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixDefComDefIns_D1_D1_LK5
 !#endif
-!        use pm_kind, only: LKC => LK5
+!        use pm_kind, only: LKG => LK5
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        logical(LKC)                , intent(in)    , contiguous    :: array(:)
-!        logical(LKC)                , intent(in)    , contiguous    :: sep(:)
+!        logical(LKG)                , intent(in)    , contiguous    :: array(:)
+!        logical(LKG)                , intent(in)    , contiguous    :: sep(:)
 !        logical(LK)                 , intent(in)    , optional      :: keep
 !    end subroutine
 !#endif
@@ -2475,11 +2475,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixDefComDefIns_D1_D1_LK4
 !#endif
-!        use pm_kind, only: LKC => LK4
+!        use pm_kind, only: LKG => LK4
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        logical(LKC)                , intent(in)    , contiguous    :: array(:)
-!        logical(LKC)                , intent(in)    , contiguous    :: sep(:)
+!        logical(LKG)                , intent(in)    , contiguous    :: array(:)
+!        logical(LKG)                , intent(in)    , contiguous    :: sep(:)
 !        logical(LK)                 , intent(in)    , optional      :: keep
 !    end subroutine
 !#endif
@@ -2489,11 +2489,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixDefComDefIns_D1_D1_LK3
 !#endif
-!        use pm_kind, only: LKC => LK3
+!        use pm_kind, only: LKG => LK3
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        logical(LKC)                , intent(in)    , contiguous    :: array(:)
-!        logical(LKC)                , intent(in)    , contiguous    :: sep(:)
+!        logical(LKG)                , intent(in)    , contiguous    :: array(:)
+!        logical(LKG)                , intent(in)    , contiguous    :: sep(:)
 !        logical(LK)                 , intent(in)    , optional      :: keep
 !    end subroutine
 !#endif
@@ -2503,11 +2503,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixDefComDefIns_D1_D1_LK2
 !#endif
-!        use pm_kind, only: LKC => LK2
+!        use pm_kind, only: LKG => LK2
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        logical(LKC)                , intent(in)    , contiguous    :: array(:)
-!        logical(LKC)                , intent(in)    , contiguous    :: sep(:)
+!        logical(LKG)                , intent(in)    , contiguous    :: array(:)
+!        logical(LKG)                , intent(in)    , contiguous    :: sep(:)
 !        logical(LK)                 , intent(in)    , optional      :: keep
 !    end subroutine
 !#endif
@@ -2517,11 +2517,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixDefComDefIns_D1_D1_LK1
 !#endif
-!        use pm_kind, only: LKC => LK1
+!        use pm_kind, only: LKG => LK1
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        logical(LKC)                , intent(in)    , contiguous    :: array(:)
-!        logical(LKC)                , intent(in)    , contiguous    :: sep(:)
+!        logical(LKG)                , intent(in)    , contiguous    :: array(:)
+!        logical(LKG)                , intent(in)    , contiguous    :: sep(:)
 !        logical(LK)                 , intent(in)    , optional      :: keep
 !    end subroutine
 !#endif
@@ -2533,11 +2533,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixDefComDefIns_D1_D1_CK5
 !#endif
-!        use pm_kind, only: CKC => CK5
+!        use pm_kind, only: CKG => CK5
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        complex(CKC)                , intent(in)    , contiguous    :: array(:)
-!        complex(CKC)                , intent(in)    , contiguous    :: sep(:)
+!        complex(CKG)                , intent(in)    , contiguous    :: array(:)
+!        complex(CKG)                , intent(in)    , contiguous    :: sep(:)
 !        logical(LK)                 , intent(in)    , optional      :: keep
 !    end subroutine
 !#endif
@@ -2547,11 +2547,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixDefComDefIns_D1_D1_CK4
 !#endif
-!        use pm_kind, only: CKC => CK4
+!        use pm_kind, only: CKG => CK4
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        complex(CKC)                , intent(in)    , contiguous    :: array(:)
-!        complex(CKC)                , intent(in)    , contiguous    :: sep(:)
+!        complex(CKG)                , intent(in)    , contiguous    :: array(:)
+!        complex(CKG)                , intent(in)    , contiguous    :: sep(:)
 !        logical(LK)                 , intent(in)    , optional      :: keep
 !    end subroutine
 !#endif
@@ -2561,11 +2561,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixDefComDefIns_D1_D1_CK3
 !#endif
-!        use pm_kind, only: CKC => CK3
+!        use pm_kind, only: CKG => CK3
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        complex(CKC)                , intent(in)    , contiguous    :: array(:)
-!        complex(CKC)                , intent(in)    , contiguous    :: sep(:)
+!        complex(CKG)                , intent(in)    , contiguous    :: array(:)
+!        complex(CKG)                , intent(in)    , contiguous    :: sep(:)
 !        logical(LK)                 , intent(in)    , optional      :: keep
 !    end subroutine
 !#endif
@@ -2575,11 +2575,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixDefComDefIns_D1_D1_CK2
 !#endif
-!        use pm_kind, only: CKC => CK2
+!        use pm_kind, only: CKG => CK2
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        complex(CKC)                , intent(in)    , contiguous    :: array(:)
-!        complex(CKC)                , intent(in)    , contiguous    :: sep(:)
+!        complex(CKG)                , intent(in)    , contiguous    :: array(:)
+!        complex(CKG)                , intent(in)    , contiguous    :: sep(:)
 !        logical(LK)                 , intent(in)    , optional      :: keep
 !    end subroutine
 !#endif
@@ -2589,11 +2589,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixDefComDefIns_D1_D1_CK1
 !#endif
-!        use pm_kind, only: CKC => CK1
+!        use pm_kind, only: CKG => CK1
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        complex(CKC)                , intent(in)    , contiguous    :: array(:)
-!        complex(CKC)                , intent(in)    , contiguous    :: sep(:)
+!        complex(CKG)                , intent(in)    , contiguous    :: array(:)
+!        complex(CKG)                , intent(in)    , contiguous    :: sep(:)
 !        logical(LK)                 , intent(in)    , optional      :: keep
 !    end subroutine
 !#endif
@@ -2605,11 +2605,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixDefComDefIns_D1_D1_RK5
 !#endif
-!        use pm_kind, only: RKC => RK5
+!        use pm_kind, only: RKG => RK5
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        real(RKC)                   , intent(in)    , contiguous    :: array(:)
-!        real(RKC)                   , intent(in)    , contiguous    :: sep(:)
+!        real(RKG)                   , intent(in)    , contiguous    :: array(:)
+!        real(RKG)                   , intent(in)    , contiguous    :: sep(:)
 !        logical(LK)                 , intent(in)    , optional      :: keep
 !    end subroutine
 !#endif
@@ -2619,11 +2619,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixDefComDefIns_D1_D1_RK4
 !#endif
-!        use pm_kind, only: RKC => RK4
+!        use pm_kind, only: RKG => RK4
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        real(RKC)                   , intent(in)    , contiguous    :: array(:)
-!        real(RKC)                   , intent(in)    , contiguous    :: sep(:)
+!        real(RKG)                   , intent(in)    , contiguous    :: array(:)
+!        real(RKG)                   , intent(in)    , contiguous    :: sep(:)
 !        logical(LK)                 , intent(in)    , optional      :: keep
 !    end subroutine
 !#endif
@@ -2633,11 +2633,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixDefComDefIns_D1_D1_RK3
 !#endif
-!        use pm_kind, only: RKC => RK3
+!        use pm_kind, only: RKG => RK3
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        real(RKC)                   , intent(in)    , contiguous    :: array(:)
-!        real(RKC)                   , intent(in)    , contiguous    :: sep(:)
+!        real(RKG)                   , intent(in)    , contiguous    :: array(:)
+!        real(RKG)                   , intent(in)    , contiguous    :: sep(:)
 !        logical(LK)                 , intent(in)    , optional      :: keep
 !    end subroutine
 !#endif
@@ -2647,11 +2647,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixDefComDefIns_D1_D1_RK2
 !#endif
-!        use pm_kind, only: RKC => RK2
+!        use pm_kind, only: RKG => RK2
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        real(RKC)                   , intent(in)    , contiguous    :: array(:)
-!        real(RKC)                   , intent(in)    , contiguous    :: sep(:)
+!        real(RKG)                   , intent(in)    , contiguous    :: array(:)
+!        real(RKG)                   , intent(in)    , contiguous    :: sep(:)
 !        logical(LK)                 , intent(in)    , optional      :: keep
 !    end subroutine
 !#endif
@@ -2661,11 +2661,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixDefComDefIns_D1_D1_RK1
 !#endif
-!        use pm_kind, only: RKC => RK1
+!        use pm_kind, only: RKG => RK1
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        real(RKC)                   , intent(in)    , contiguous    :: array(:)
-!        real(RKC)                   , intent(in)    , contiguous    :: sep(:)
+!        real(RKG)                   , intent(in)    , contiguous    :: array(:)
+!        real(RKG)                   , intent(in)    , contiguous    :: sep(:)
 !        logical(LK)                 , intent(in)    , optional      :: keep
 !    end subroutine
 !#endif
@@ -2683,11 +2683,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixCusComDefIns_D1_D1_SK5
 !#endif
-!        use pm_kind, only: SKC => SK5
+!        use pm_kind, only: SKG => SK5
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
-!        character(*,SKC)            , intent(in)    , contiguous    :: sep(:)
+!        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
+!        character(*,SKG)            , intent(in)    , contiguous    :: sep(:)
 !        procedure(logical(LK))                                      :: iseq
 !        logical(LK)                 , intent(in)    , optional      :: keep
 !    end subroutine
@@ -2698,11 +2698,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixCusComDefIns_D1_D1_SK4
 !#endif
-!        use pm_kind, only: SKC => SK4
+!        use pm_kind, only: SKG => SK4
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
-!        character(*,SKC)            , intent(in)    , contiguous    :: sep(:)
+!        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
+!        character(*,SKG)            , intent(in)    , contiguous    :: sep(:)
 !        procedure(logical(LK))                                      :: iseq
 !        logical(LK)                 , intent(in)    , optional      :: keep
 !    end subroutine
@@ -2713,11 +2713,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixCusComDefIns_D1_D1_SK3
 !#endif
-!        use pm_kind, only: SKC => SK3
+!        use pm_kind, only: SKG => SK3
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
-!        character(*,SKC)            , intent(in)    , contiguous    :: sep(:)
+!        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
+!        character(*,SKG)            , intent(in)    , contiguous    :: sep(:)
 !        procedure(logical(LK))                                      :: iseq
 !        logical(LK)                 , intent(in)    , optional      :: keep
 !    end subroutine
@@ -2728,11 +2728,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixCusComDefIns_D1_D1_SK2
 !#endif
-!        use pm_kind, only: SKC => SK2
+!        use pm_kind, only: SKG => SK2
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
-!        character(*,SKC)            , intent(in)    , contiguous    :: sep(:)
+!        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
+!        character(*,SKG)            , intent(in)    , contiguous    :: sep(:)
 !        procedure(logical(LK))                                      :: iseq
 !        logical(LK)                 , intent(in)    , optional      :: keep
 !    end subroutine
@@ -2743,11 +2743,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixCusComDefIns_D1_D1_SK1
 !#endif
-!        use pm_kind, only: SKC => SK1
+!        use pm_kind, only: SKG => SK1
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
-!        character(*,SKC)            , intent(in)    , contiguous    :: sep(:)
+!        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
+!        character(*,SKG)            , intent(in)    , contiguous    :: sep(:)
 !        procedure(logical(LK))                                      :: iseq
 !        logical(LK)                 , intent(in)    , optional      :: keep
 !    end subroutine
@@ -2760,11 +2760,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixCusComDefIns_D1_D1_IK5
 !#endif
-!        use pm_kind, only: IKC => IK5
+!        use pm_kind, only: IKG => IK5
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        integer(IKC)                , intent(in)    , contiguous    :: array(:)
-!        integer(IKC)                , intent(in)    , contiguous    :: sep(:)
+!        integer(IKG)                , intent(in)    , contiguous    :: array(:)
+!        integer(IKG)                , intent(in)    , contiguous    :: sep(:)
 !        procedure(logical(LK))                                      :: iseq
 !        logical(LK)                 , intent(in)    , optional      :: keep
 !    end subroutine
@@ -2775,11 +2775,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixCusComDefIns_D1_D1_IK4
 !#endif
-!        use pm_kind, only: IKC => IK4
+!        use pm_kind, only: IKG => IK4
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        integer(IKC)                , intent(in)    , contiguous    :: array(:)
-!        integer(IKC)                , intent(in)    , contiguous    :: sep(:)
+!        integer(IKG)                , intent(in)    , contiguous    :: array(:)
+!        integer(IKG)                , intent(in)    , contiguous    :: sep(:)
 !        procedure(logical(LK))                                      :: iseq
 !        logical(LK)                 , intent(in)    , optional      :: keep
 !    end subroutine
@@ -2790,11 +2790,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixCusComDefIns_D1_D1_IK3
 !#endif
-!        use pm_kind, only: IKC => IK3
+!        use pm_kind, only: IKG => IK3
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        integer(IKC)                , intent(in)    , contiguous    :: array(:)
-!        integer(IKC)                , intent(in)    , contiguous    :: sep(:)
+!        integer(IKG)                , intent(in)    , contiguous    :: array(:)
+!        integer(IKG)                , intent(in)    , contiguous    :: sep(:)
 !        procedure(logical(LK))                                      :: iseq
 !        logical(LK)                 , intent(in)    , optional      :: keep
 !    end subroutine
@@ -2805,11 +2805,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixCusComDefIns_D1_D1_IK2
 !#endif
-!        use pm_kind, only: IKC => IK2
+!        use pm_kind, only: IKG => IK2
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        integer(IKC)                , intent(in)    , contiguous    :: array(:)
-!        integer(IKC)                , intent(in)    , contiguous    :: sep(:)
+!        integer(IKG)                , intent(in)    , contiguous    :: array(:)
+!        integer(IKG)                , intent(in)    , contiguous    :: sep(:)
 !        procedure(logical(LK))                                      :: iseq
 !        logical(LK)                 , intent(in)    , optional      :: keep
 !    end subroutine
@@ -2820,11 +2820,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixCusComDefIns_D1_D1_IK1
 !#endif
-!        use pm_kind, only: IKC => IK1
+!        use pm_kind, only: IKG => IK1
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        integer(IKC)                , intent(in)    , contiguous    :: array(:)
-!        integer(IKC)                , intent(in)    , contiguous    :: sep(:)
+!        integer(IKG)                , intent(in)    , contiguous    :: array(:)
+!        integer(IKG)                , intent(in)    , contiguous    :: sep(:)
 !        procedure(logical(LK))                                      :: iseq
 !        logical(LK)                 , intent(in)    , optional      :: keep
 !    end subroutine
@@ -2837,11 +2837,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixCusComDefIns_D1_D1_LK5
 !#endif
-!        use pm_kind, only: LKC => LK5
+!        use pm_kind, only: LKG => LK5
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        logical(LKC)                , intent(in)    , contiguous    :: array(:)
-!        logical(LKC)                , intent(in)    , contiguous    :: sep(:)
+!        logical(LKG)                , intent(in)    , contiguous    :: array(:)
+!        logical(LKG)                , intent(in)    , contiguous    :: sep(:)
 !        procedure(logical(LK))                                      :: iseq
 !        logical(LK)                 , intent(in)    , optional      :: keep
 !    end subroutine
@@ -2852,11 +2852,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixCusComDefIns_D1_D1_LK4
 !#endif
-!        use pm_kind, only: LKC => LK4
+!        use pm_kind, only: LKG => LK4
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        logical(LKC)                , intent(in)    , contiguous    :: array(:)
-!        logical(LKC)                , intent(in)    , contiguous    :: sep(:)
+!        logical(LKG)                , intent(in)    , contiguous    :: array(:)
+!        logical(LKG)                , intent(in)    , contiguous    :: sep(:)
 !        procedure(logical(LK))                                      :: iseq
 !        logical(LK)                 , intent(in)    , optional      :: keep
 !    end subroutine
@@ -2867,11 +2867,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixCusComDefIns_D1_D1_LK3
 !#endif
-!        use pm_kind, only: LKC => LK3
+!        use pm_kind, only: LKG => LK3
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        logical(LKC)                , intent(in)    , contiguous    :: array(:)
-!        logical(LKC)                , intent(in)    , contiguous    :: sep(:)
+!        logical(LKG)                , intent(in)    , contiguous    :: array(:)
+!        logical(LKG)                , intent(in)    , contiguous    :: sep(:)
 !        procedure(logical(LK))                                      :: iseq
 !        logical(LK)                 , intent(in)    , optional      :: keep
 !    end subroutine
@@ -2882,11 +2882,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixCusComDefIns_D1_D1_LK2
 !#endif
-!        use pm_kind, only: LKC => LK2
+!        use pm_kind, only: LKG => LK2
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        logical(LKC)                , intent(in)    , contiguous    :: array(:)
-!        logical(LKC)                , intent(in)    , contiguous    :: sep(:)
+!        logical(LKG)                , intent(in)    , contiguous    :: array(:)
+!        logical(LKG)                , intent(in)    , contiguous    :: sep(:)
 !        procedure(logical(LK))                                      :: iseq
 !        logical(LK)                 , intent(in)    , optional      :: keep
 !    end subroutine
@@ -2897,11 +2897,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixCusComDefIns_D1_D1_LK1
 !#endif
-!        use pm_kind, only: LKC => LK1
+!        use pm_kind, only: LKG => LK1
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        logical(LKC)                , intent(in)    , contiguous    :: array(:)
-!        logical(LKC)                , intent(in)    , contiguous    :: sep(:)
+!        logical(LKG)                , intent(in)    , contiguous    :: array(:)
+!        logical(LKG)                , intent(in)    , contiguous    :: sep(:)
 !        procedure(logical(LK))                                      :: iseq
 !        logical(LK)                 , intent(in)    , optional      :: keep
 !    end subroutine
@@ -2914,11 +2914,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixCusComDefIns_D1_D1_CK5
 !#endif
-!        use pm_kind, only: CKC => CK5
+!        use pm_kind, only: CKG => CK5
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        complex(CKC)                , intent(in)    , contiguous    :: array(:)
-!        complex(CKC)                , intent(in)    , contiguous    :: sep(:)
+!        complex(CKG)                , intent(in)    , contiguous    :: array(:)
+!        complex(CKG)                , intent(in)    , contiguous    :: sep(:)
 !        procedure(logical(LK))                                      :: iseq
 !        logical(LK)                 , intent(in)    , optional      :: keep
 !    end subroutine
@@ -2929,11 +2929,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixCusComDefIns_D1_D1_CK4
 !#endif
-!        use pm_kind, only: CKC => CK4
+!        use pm_kind, only: CKG => CK4
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        complex(CKC)                , intent(in)    , contiguous    :: array(:)
-!        complex(CKC)                , intent(in)    , contiguous    :: sep(:)
+!        complex(CKG)                , intent(in)    , contiguous    :: array(:)
+!        complex(CKG)                , intent(in)    , contiguous    :: sep(:)
 !        procedure(logical(LK))                                      :: iseq
 !        logical(LK)                 , intent(in)    , optional      :: keep
 !    end subroutine
@@ -2944,11 +2944,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixCusComDefIns_D1_D1_CK3
 !#endif
-!        use pm_kind, only: CKC => CK3
+!        use pm_kind, only: CKG => CK3
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        complex(CKC)                , intent(in)    , contiguous    :: array(:)
-!        complex(CKC)                , intent(in)    , contiguous    :: sep(:)
+!        complex(CKG)                , intent(in)    , contiguous    :: array(:)
+!        complex(CKG)                , intent(in)    , contiguous    :: sep(:)
 !        procedure(logical(LK))                                      :: iseq
 !        logical(LK)                 , intent(in)    , optional      :: keep
 !    end subroutine
@@ -2959,11 +2959,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixCusComDefIns_D1_D1_CK2
 !#endif
-!        use pm_kind, only: CKC => CK2
+!        use pm_kind, only: CKG => CK2
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        complex(CKC)                , intent(in)    , contiguous    :: array(:)
-!        complex(CKC)                , intent(in)    , contiguous    :: sep(:)
+!        complex(CKG)                , intent(in)    , contiguous    :: array(:)
+!        complex(CKG)                , intent(in)    , contiguous    :: sep(:)
 !        procedure(logical(LK))                                      :: iseq
 !        logical(LK)                 , intent(in)    , optional      :: keep
 !    end subroutine
@@ -2974,11 +2974,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixCusComDefIns_D1_D1_CK1
 !#endif
-!        use pm_kind, only: CKC => CK1
+!        use pm_kind, only: CKG => CK1
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        complex(CKC)                , intent(in)    , contiguous    :: array(:)
-!        complex(CKC)                , intent(in)    , contiguous    :: sep(:)
+!        complex(CKG)                , intent(in)    , contiguous    :: array(:)
+!        complex(CKG)                , intent(in)    , contiguous    :: sep(:)
 !        procedure(logical(LK))                                      :: iseq
 !        logical(LK)                 , intent(in)    , optional      :: keep
 !    end subroutine
@@ -2991,11 +2991,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixCusComDefIns_D1_D1_RK5
 !#endif
-!        use pm_kind, only: RKC => RK5
+!        use pm_kind, only: RKG => RK5
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        real(RKC)                   , intent(in)    , contiguous    :: array(:)
-!        real(RKC)                   , intent(in)    , contiguous    :: sep(:)
+!        real(RKG)                   , intent(in)    , contiguous    :: array(:)
+!        real(RKG)                   , intent(in)    , contiguous    :: sep(:)
 !        procedure(logical(LK))                                      :: iseq
 !        logical(LK)                 , intent(in)    , optional      :: keep
 !    end subroutine
@@ -3006,11 +3006,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixCusComDefIns_D1_D1_RK4
 !#endif
-!        use pm_kind, only: RKC => RK4
+!        use pm_kind, only: RKG => RK4
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        real(RKC)                   , intent(in)    , contiguous    :: array(:)
-!        real(RKC)                   , intent(in)    , contiguous    :: sep(:)
+!        real(RKG)                   , intent(in)    , contiguous    :: array(:)
+!        real(RKG)                   , intent(in)    , contiguous    :: sep(:)
 !        procedure(logical(LK))                                      :: iseq
 !        logical(LK)                 , intent(in)    , optional      :: keep
 !    end subroutine
@@ -3021,11 +3021,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixCusComDefIns_D1_D1_RK3
 !#endif
-!        use pm_kind, only: RKC => RK3
+!        use pm_kind, only: RKG => RK3
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        real(RKC)                   , intent(in)    , contiguous    :: array(:)
-!        real(RKC)                   , intent(in)    , contiguous    :: sep(:)
+!        real(RKG)                   , intent(in)    , contiguous    :: array(:)
+!        real(RKG)                   , intent(in)    , contiguous    :: sep(:)
 !        procedure(logical(LK))                                      :: iseq
 !        logical(LK)                 , intent(in)    , optional      :: keep
 !    end subroutine
@@ -3036,11 +3036,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixCusComDefIns_D1_D1_RK2
 !#endif
-!        use pm_kind, only: RKC => RK2
+!        use pm_kind, only: RKG => RK2
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        real(RKC)                   , intent(in)    , contiguous    :: array(:)
-!        real(RKC)                   , intent(in)    , contiguous    :: sep(:)
+!        real(RKG)                   , intent(in)    , contiguous    :: array(:)
+!        real(RKG)                   , intent(in)    , contiguous    :: sep(:)
 !        procedure(logical(LK))                                      :: iseq
 !        logical(LK)                 , intent(in)    , optional      :: keep
 !    end subroutine
@@ -3051,11 +3051,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixCusComDefIns_D1_D1_RK1
 !#endif
-!        use pm_kind, only: RKC => RK1
+!        use pm_kind, only: RKG => RK1
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        real(RKC)                   , intent(in)    , contiguous    :: array(:)
-!        real(RKC)                   , intent(in)    , contiguous    :: sep(:)
+!        real(RKG)                   , intent(in)    , contiguous    :: array(:)
+!        real(RKG)                   , intent(in)    , contiguous    :: sep(:)
 !        procedure(logical(LK))                                      :: iseq
 !        logical(LK)                 , intent(in)    , optional      :: keep
 !    end subroutine
@@ -3074,11 +3074,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixDefComCusIns_D1_D1_SK5
 !#endif
-!        use pm_kind, only: SKC => SK5
+!        use pm_kind, only: SKG => SK5
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
-!        character(*,SKC)            , intent(in)    , contiguous    :: sep(:)
+!        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
+!        character(*,SKG)            , intent(in)    , contiguous    :: sep(:)
 !        integer(IK)                 , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)                 , intent(in)    , optional      :: sorted
 !        logical(LK)                 , intent(in)    , optional      :: unique
@@ -3091,11 +3091,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixDefComCusIns_D1_D1_SK4
 !#endif
-!        use pm_kind, only: SKC => SK4
+!        use pm_kind, only: SKG => SK4
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
-!        character(*,SKC)            , intent(in)    , contiguous    :: sep(:)
+!        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
+!        character(*,SKG)            , intent(in)    , contiguous    :: sep(:)
 !        integer(IK)                 , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)                 , intent(in)    , optional      :: sorted
 !        logical(LK)                 , intent(in)    , optional      :: unique
@@ -3108,11 +3108,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixDefComCusIns_D1_D1_SK3
 !#endif
-!        use pm_kind, only: SKC => SK3
+!        use pm_kind, only: SKG => SK3
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
-!        character(*,SKC)            , intent(in)    , contiguous    :: sep(:)
+!        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
+!        character(*,SKG)            , intent(in)    , contiguous    :: sep(:)
 !        integer(IK)                 , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)                 , intent(in)    , optional      :: sorted
 !        logical(LK)                 , intent(in)    , optional      :: unique
@@ -3125,11 +3125,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixDefComCusIns_D1_D1_SK2
 !#endif
-!        use pm_kind, only: SKC => SK2
+!        use pm_kind, only: SKG => SK2
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
-!        character(*,SKC)            , intent(in)    , contiguous    :: sep(:)
+!        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
+!        character(*,SKG)            , intent(in)    , contiguous    :: sep(:)
 !        integer(IK)                 , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)                 , intent(in)    , optional      :: sorted
 !        logical(LK)                 , intent(in)    , optional      :: unique
@@ -3142,11 +3142,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixDefComCusIns_D1_D1_SK1
 !#endif
-!        use pm_kind, only: SKC => SK1
+!        use pm_kind, only: SKG => SK1
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
-!        character(*,SKC)            , intent(in)    , contiguous    :: sep(:)
+!        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
+!        character(*,SKG)            , intent(in)    , contiguous    :: sep(:)
 !        integer(IK)                 , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)                 , intent(in)    , optional      :: sorted
 !        logical(LK)                 , intent(in)    , optional      :: unique
@@ -3161,11 +3161,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixDefComCusIns_D1_D1_IK5
 !#endif
-!        use pm_kind, only: IKC => IK5
+!        use pm_kind, only: IKG => IK5
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        integer(IKC)                , intent(in)    , contiguous    :: array(:)
-!        integer(IKC)                , intent(in)    , contiguous    :: sep(:)
+!        integer(IKG)                , intent(in)    , contiguous    :: array(:)
+!        integer(IKG)                , intent(in)    , contiguous    :: sep(:)
 !        integer(IK)                 , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)                 , intent(in)    , optional      :: sorted
 !        logical(LK)                 , intent(in)    , optional      :: unique
@@ -3178,11 +3178,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixDefComCusIns_D1_D1_IK4
 !#endif
-!        use pm_kind, only: IKC => IK4
+!        use pm_kind, only: IKG => IK4
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        integer(IKC)                , intent(in)    , contiguous    :: array(:)
-!        integer(IKC)                , intent(in)    , contiguous    :: sep(:)
+!        integer(IKG)                , intent(in)    , contiguous    :: array(:)
+!        integer(IKG)                , intent(in)    , contiguous    :: sep(:)
 !        integer(IK)                 , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)                 , intent(in)    , optional      :: sorted
 !        logical(LK)                 , intent(in)    , optional      :: unique
@@ -3195,11 +3195,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixDefComCusIns_D1_D1_IK3
 !#endif
-!        use pm_kind, only: IKC => IK3
+!        use pm_kind, only: IKG => IK3
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        integer(IKC)                , intent(in)    , contiguous    :: array(:)
-!        integer(IKC)                , intent(in)    , contiguous    :: sep(:)
+!        integer(IKG)                , intent(in)    , contiguous    :: array(:)
+!        integer(IKG)                , intent(in)    , contiguous    :: sep(:)
 !        integer(IK)                 , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)                 , intent(in)    , optional      :: sorted
 !        logical(LK)                 , intent(in)    , optional      :: unique
@@ -3212,11 +3212,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixDefComCusIns_D1_D1_IK2
 !#endif
-!        use pm_kind, only: IKC => IK2
+!        use pm_kind, only: IKG => IK2
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        integer(IKC)                , intent(in)    , contiguous    :: array(:)
-!        integer(IKC)                , intent(in)    , contiguous    :: sep(:)
+!        integer(IKG)                , intent(in)    , contiguous    :: array(:)
+!        integer(IKG)                , intent(in)    , contiguous    :: sep(:)
 !        integer(IK)                 , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)                 , intent(in)    , optional      :: sorted
 !        logical(LK)                 , intent(in)    , optional      :: unique
@@ -3229,11 +3229,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixDefComCusIns_D1_D1_IK1
 !#endif
-!        use pm_kind, only: IKC => IK1
+!        use pm_kind, only: IKG => IK1
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        integer(IKC)                , intent(in)    , contiguous    :: array(:)
-!        integer(IKC)                , intent(in)    , contiguous    :: sep(:)
+!        integer(IKG)                , intent(in)    , contiguous    :: array(:)
+!        integer(IKG)                , intent(in)    , contiguous    :: sep(:)
 !        integer(IK)                 , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)                 , intent(in)    , optional      :: sorted
 !        logical(LK)                 , intent(in)    , optional      :: unique
@@ -3248,11 +3248,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixDefComCusIns_D1_D1_LK5
 !#endif
-!        use pm_kind, only: LKC => LK5
+!        use pm_kind, only: LKG => LK5
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        logical(LKC)                , intent(in)    , contiguous    :: array(:)
-!        logical(LKC)                , intent(in)    , contiguous    :: sep(:)
+!        logical(LKG)                , intent(in)    , contiguous    :: array(:)
+!        logical(LKG)                , intent(in)    , contiguous    :: sep(:)
 !        integer(IK)                 , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)                 , intent(in)    , optional      :: sorted
 !        logical(LK)                 , intent(in)    , optional      :: unique
@@ -3265,11 +3265,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixDefComCusIns_D1_D1_LK4
 !#endif
-!        use pm_kind, only: LKC => LK4
+!        use pm_kind, only: LKG => LK4
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        logical(LKC)                , intent(in)    , contiguous    :: array(:)
-!        logical(LKC)                , intent(in)    , contiguous    :: sep(:)
+!        logical(LKG)                , intent(in)    , contiguous    :: array(:)
+!        logical(LKG)                , intent(in)    , contiguous    :: sep(:)
 !        integer(IK)                 , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)                 , intent(in)    , optional      :: sorted
 !        logical(LK)                 , intent(in)    , optional      :: unique
@@ -3282,11 +3282,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixDefComCusIns_D1_D1_LK3
 !#endif
-!        use pm_kind, only: LKC => LK3
+!        use pm_kind, only: LKG => LK3
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        logical(LKC)                , intent(in)    , contiguous    :: array(:)
-!        logical(LKC)                , intent(in)    , contiguous    :: sep(:)
+!        logical(LKG)                , intent(in)    , contiguous    :: array(:)
+!        logical(LKG)                , intent(in)    , contiguous    :: sep(:)
 !        integer(IK)                 , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)                 , intent(in)    , optional      :: sorted
 !        logical(LK)                 , intent(in)    , optional      :: unique
@@ -3299,11 +3299,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixDefComCusIns_D1_D1_LK2
 !#endif
-!        use pm_kind, only: LKC => LK2
+!        use pm_kind, only: LKG => LK2
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        logical(LKC)                , intent(in)    , contiguous    :: array(:)
-!        logical(LKC)                , intent(in)    , contiguous    :: sep(:)
+!        logical(LKG)                , intent(in)    , contiguous    :: array(:)
+!        logical(LKG)                , intent(in)    , contiguous    :: sep(:)
 !        integer(IK)                 , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)                 , intent(in)    , optional      :: sorted
 !        logical(LK)                 , intent(in)    , optional      :: unique
@@ -3316,11 +3316,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixDefComCusIns_D1_D1_LK1
 !#endif
-!        use pm_kind, only: LKC => LK1
+!        use pm_kind, only: LKG => LK1
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        logical(LKC)                , intent(in)    , contiguous    :: array(:)
-!        logical(LKC)                , intent(in)    , contiguous    :: sep(:)
+!        logical(LKG)                , intent(in)    , contiguous    :: array(:)
+!        logical(LKG)                , intent(in)    , contiguous    :: sep(:)
 !        integer(IK)                 , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)                 , intent(in)    , optional      :: sorted
 !        logical(LK)                 , intent(in)    , optional      :: unique
@@ -3335,11 +3335,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixDefComCusIns_D1_D1_CK5
 !#endif
-!        use pm_kind, only: CKC => CK5
+!        use pm_kind, only: CKG => CK5
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        complex(CKC)                , intent(in)    , contiguous    :: array(:)
-!        complex(CKC)                , intent(in)    , contiguous    :: sep(:)
+!        complex(CKG)                , intent(in)    , contiguous    :: array(:)
+!        complex(CKG)                , intent(in)    , contiguous    :: sep(:)
 !        integer(IK)                 , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)                 , intent(in)    , optional      :: sorted
 !        logical(LK)                 , intent(in)    , optional      :: unique
@@ -3352,11 +3352,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixDefComCusIns_D1_D1_CK4
 !#endif
-!        use pm_kind, only: CKC => CK4
+!        use pm_kind, only: CKG => CK4
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        complex(CKC)                , intent(in)    , contiguous    :: array(:)
-!        complex(CKC)                , intent(in)    , contiguous    :: sep(:)
+!        complex(CKG)                , intent(in)    , contiguous    :: array(:)
+!        complex(CKG)                , intent(in)    , contiguous    :: sep(:)
 !        integer(IK)                 , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)                 , intent(in)    , optional      :: sorted
 !        logical(LK)                 , intent(in)    , optional      :: unique
@@ -3369,11 +3369,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixDefComCusIns_D1_D1_CK3
 !#endif
-!        use pm_kind, only: CKC => CK3
+!        use pm_kind, only: CKG => CK3
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        complex(CKC)                , intent(in)    , contiguous    :: array(:)
-!        complex(CKC)                , intent(in)    , contiguous    :: sep(:)
+!        complex(CKG)                , intent(in)    , contiguous    :: array(:)
+!        complex(CKG)                , intent(in)    , contiguous    :: sep(:)
 !        integer(IK)                 , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)                 , intent(in)    , optional      :: sorted
 !        logical(LK)                 , intent(in)    , optional      :: unique
@@ -3386,11 +3386,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixDefComCusIns_D1_D1_CK2
 !#endif
-!        use pm_kind, only: CKC => CK2
+!        use pm_kind, only: CKG => CK2
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        complex(CKC)                , intent(in)    , contiguous    :: array(:)
-!        complex(CKC)                , intent(in)    , contiguous    :: sep(:)
+!        complex(CKG)                , intent(in)    , contiguous    :: array(:)
+!        complex(CKG)                , intent(in)    , contiguous    :: sep(:)
 !        integer(IK)                 , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)                 , intent(in)    , optional      :: sorted
 !        logical(LK)                 , intent(in)    , optional      :: unique
@@ -3403,11 +3403,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixDefComCusIns_D1_D1_CK1
 !#endif
-!        use pm_kind, only: CKC => CK1
+!        use pm_kind, only: CKG => CK1
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        complex(CKC)                , intent(in)    , contiguous    :: array(:)
-!        complex(CKC)                , intent(in)    , contiguous    :: sep(:)
+!        complex(CKG)                , intent(in)    , contiguous    :: array(:)
+!        complex(CKG)                , intent(in)    , contiguous    :: sep(:)
 !        integer(IK)                 , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)                 , intent(in)    , optional      :: sorted
 !        logical(LK)                 , intent(in)    , optional      :: unique
@@ -3422,11 +3422,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixDefComCusIns_D1_D1_RK5
 !#endif
-!        use pm_kind, only: RKC => RK5
+!        use pm_kind, only: RKG => RK5
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        real(RKC)                   , intent(in)    , contiguous    :: array(:)
-!        real(RKC)                   , intent(in)    , contiguous    :: sep(:)
+!        real(RKG)                   , intent(in)    , contiguous    :: array(:)
+!        real(RKG)                   , intent(in)    , contiguous    :: sep(:)
 !        integer(IK)                 , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)                 , intent(in)    , optional      :: sorted
 !        logical(LK)                 , intent(in)    , optional      :: unique
@@ -3439,11 +3439,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixDefComCusIns_D1_D1_RK4
 !#endif
-!        use pm_kind, only: RKC => RK4
+!        use pm_kind, only: RKG => RK4
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        real(RKC)                   , intent(in)    , contiguous    :: array(:)
-!        real(RKC)                   , intent(in)    , contiguous    :: sep(:)
+!        real(RKG)                   , intent(in)    , contiguous    :: array(:)
+!        real(RKG)                   , intent(in)    , contiguous    :: sep(:)
 !        integer(IK)                 , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)                 , intent(in)    , optional      :: sorted
 !        logical(LK)                 , intent(in)    , optional      :: unique
@@ -3456,11 +3456,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixDefComCusIns_D1_D1_RK3
 !#endif
-!        use pm_kind, only: RKC => RK3
+!        use pm_kind, only: RKG => RK3
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        real(RKC)                   , intent(in)    , contiguous    :: array(:)
-!        real(RKC)                   , intent(in)    , contiguous    :: sep(:)
+!        real(RKG)                   , intent(in)    , contiguous    :: array(:)
+!        real(RKG)                   , intent(in)    , contiguous    :: sep(:)
 !        integer(IK)                 , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)                 , intent(in)    , optional      :: sorted
 !        logical(LK)                 , intent(in)    , optional      :: unique
@@ -3473,11 +3473,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixDefComCusIns_D1_D1_RK2
 !#endif
-!        use pm_kind, only: RKC => RK2
+!        use pm_kind, only: RKG => RK2
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        real(RKC)                   , intent(in)    , contiguous    :: array(:)
-!        real(RKC)                   , intent(in)    , contiguous    :: sep(:)
+!        real(RKG)                   , intent(in)    , contiguous    :: array(:)
+!        real(RKG)                   , intent(in)    , contiguous    :: sep(:)
 !        integer(IK)                 , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)                 , intent(in)    , optional      :: sorted
 !        logical(LK)                 , intent(in)    , optional      :: unique
@@ -3490,11 +3490,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixDefComCusIns_D1_D1_RK1
 !#endif
-!        use pm_kind, only: RKC => RK1
+!        use pm_kind, only: RKG => RK1
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        real(RKC)                   , intent(in)    , contiguous    :: array(:)
-!        real(RKC)                   , intent(in)    , contiguous    :: sep(:)
+!        real(RKG)                   , intent(in)    , contiguous    :: array(:)
+!        real(RKG)                   , intent(in)    , contiguous    :: sep(:)
 !        integer(IK)                 , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)                 , intent(in)    , optional      :: sorted
 !        logical(LK)                 , intent(in)    , optional      :: unique
@@ -3515,11 +3515,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixCusComCusIns_D1_D1_SK5
 !#endif
-!        use pm_kind, only: SKC => SK5
+!        use pm_kind, only: SKG => SK5
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
-!        character(*,SKC)            , intent(in)    , contiguous    :: sep(:)
+!        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
+!        character(*,SKG)            , intent(in)    , contiguous    :: sep(:)
 !        procedure(logical(LK))                                      :: iseq
 !        integer(IK)                 , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)                 , intent(in)    , optional      :: sorted
@@ -3533,11 +3533,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixCusComCusIns_D1_D1_SK4
 !#endif
-!        use pm_kind, only: SKC => SK4
+!        use pm_kind, only: SKG => SK4
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
-!        character(*,SKC)            , intent(in)    , contiguous    :: sep(:)
+!        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
+!        character(*,SKG)            , intent(in)    , contiguous    :: sep(:)
 !        procedure(logical(LK))                                      :: iseq
 !        integer(IK)                 , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)                 , intent(in)    , optional      :: sorted
@@ -3551,11 +3551,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixCusComCusIns_D1_D1_SK3
 !#endif
-!        use pm_kind, only: SKC => SK3
+!        use pm_kind, only: SKG => SK3
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
-!        character(*,SKC)            , intent(in)    , contiguous    :: sep(:)
+!        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
+!        character(*,SKG)            , intent(in)    , contiguous    :: sep(:)
 !        procedure(logical(LK))                                      :: iseq
 !        integer(IK)                 , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)                 , intent(in)    , optional      :: sorted
@@ -3569,11 +3569,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixCusComCusIns_D1_D1_SK2
 !#endif
-!        use pm_kind, only: SKC => SK2
+!        use pm_kind, only: SKG => SK2
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
-!        character(*,SKC)            , intent(in)    , contiguous    :: sep(:)
+!        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
+!        character(*,SKG)            , intent(in)    , contiguous    :: sep(:)
 !        procedure(logical(LK))                                      :: iseq
 !        integer(IK)                 , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)                 , intent(in)    , optional      :: sorted
@@ -3587,11 +3587,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixCusComCusIns_D1_D1_SK1
 !#endif
-!        use pm_kind, only: SKC => SK1
+!        use pm_kind, only: SKG => SK1
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
-!        character(*,SKC)            , intent(in)    , contiguous    :: sep(:)
+!        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
+!        character(*,SKG)            , intent(in)    , contiguous    :: sep(:)
 !        procedure(logical(LK))                                      :: iseq
 !        integer(IK)                 , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)                 , intent(in)    , optional      :: sorted
@@ -3607,11 +3607,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixCusComCusIns_D1_D1_IK5
 !#endif
-!        use pm_kind, only: IKC => IK5
+!        use pm_kind, only: IKG => IK5
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        integer(IKC)                , intent(in)    , contiguous    :: array(:)
-!        integer(IKC)                , intent(in)    , contiguous    :: sep(:)
+!        integer(IKG)                , intent(in)    , contiguous    :: array(:)
+!        integer(IKG)                , intent(in)    , contiguous    :: sep(:)
 !        procedure(logical(LK))                                      :: iseq
 !        integer(IK)                 , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)                 , intent(in)    , optional      :: sorted
@@ -3625,11 +3625,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixCusComCusIns_D1_D1_IK4
 !#endif
-!        use pm_kind, only: IKC => IK4
+!        use pm_kind, only: IKG => IK4
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        integer(IKC)                , intent(in)    , contiguous    :: array(:)
-!        integer(IKC)                , intent(in)    , contiguous    :: sep(:)
+!        integer(IKG)                , intent(in)    , contiguous    :: array(:)
+!        integer(IKG)                , intent(in)    , contiguous    :: sep(:)
 !        procedure(logical(LK))                                      :: iseq
 !        integer(IK)                 , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)                 , intent(in)    , optional      :: sorted
@@ -3643,11 +3643,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixCusComCusIns_D1_D1_IK3
 !#endif
-!        use pm_kind, only: IKC => IK3
+!        use pm_kind, only: IKG => IK3
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        integer(IKC)                , intent(in)    , contiguous    :: array(:)
-!        integer(IKC)                , intent(in)    , contiguous    :: sep(:)
+!        integer(IKG)                , intent(in)    , contiguous    :: array(:)
+!        integer(IKG)                , intent(in)    , contiguous    :: sep(:)
 !        procedure(logical(LK))                                      :: iseq
 !        integer(IK)                 , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)                 , intent(in)    , optional      :: sorted
@@ -3661,11 +3661,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixCusComCusIns_D1_D1_IK2
 !#endif
-!        use pm_kind, only: IKC => IK2
+!        use pm_kind, only: IKG => IK2
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        integer(IKC)                , intent(in)    , contiguous    :: array(:)
-!        integer(IKC)                , intent(in)    , contiguous    :: sep(:)
+!        integer(IKG)                , intent(in)    , contiguous    :: array(:)
+!        integer(IKG)                , intent(in)    , contiguous    :: sep(:)
 !        procedure(logical(LK))                                      :: iseq
 !        integer(IK)                 , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)                 , intent(in)    , optional      :: sorted
@@ -3679,11 +3679,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixCusComCusIns_D1_D1_IK1
 !#endif
-!        use pm_kind, only: IKC => IK1
+!        use pm_kind, only: IKG => IK1
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        integer(IKC)                , intent(in)    , contiguous    :: array(:)
-!        integer(IKC)                , intent(in)    , contiguous    :: sep(:)
+!        integer(IKG)                , intent(in)    , contiguous    :: array(:)
+!        integer(IKG)                , intent(in)    , contiguous    :: sep(:)
 !        procedure(logical(LK))                                      :: iseq
 !        integer(IK)                 , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)                 , intent(in)    , optional      :: sorted
@@ -3699,11 +3699,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixCusComCusIns_D1_D1_LK5
 !#endif
-!        use pm_kind, only: LKC => LK5
+!        use pm_kind, only: LKG => LK5
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        logical(LKC)                , intent(in)    , contiguous    :: array(:)
-!        logical(LKC)                , intent(in)    , contiguous    :: sep(:)
+!        logical(LKG)                , intent(in)    , contiguous    :: array(:)
+!        logical(LKG)                , intent(in)    , contiguous    :: sep(:)
 !        procedure(logical(LK))                                      :: iseq
 !        integer(IK)                 , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)                 , intent(in)    , optional      :: sorted
@@ -3717,11 +3717,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixCusComCusIns_D1_D1_LK4
 !#endif
-!        use pm_kind, only: LKC => LK4
+!        use pm_kind, only: LKG => LK4
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        logical(LKC)                , intent(in)    , contiguous    :: array(:)
-!        logical(LKC)                , intent(in)    , contiguous    :: sep(:)
+!        logical(LKG)                , intent(in)    , contiguous    :: array(:)
+!        logical(LKG)                , intent(in)    , contiguous    :: sep(:)
 !        procedure(logical(LK))                                      :: iseq
 !        integer(IK)                 , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)                 , intent(in)    , optional      :: sorted
@@ -3735,11 +3735,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixCusComCusIns_D1_D1_LK3
 !#endif
-!        use pm_kind, only: LKC => LK3
+!        use pm_kind, only: LKG => LK3
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        logical(LKC)                , intent(in)    , contiguous    :: array(:)
-!        logical(LKC)                , intent(in)    , contiguous    :: sep(:)
+!        logical(LKG)                , intent(in)    , contiguous    :: array(:)
+!        logical(LKG)                , intent(in)    , contiguous    :: sep(:)
 !        procedure(logical(LK))                                      :: iseq
 !        integer(IK)                 , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)                 , intent(in)    , optional      :: sorted
@@ -3753,11 +3753,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixCusComCusIns_D1_D1_LK2
 !#endif
-!        use pm_kind, only: LKC => LK2
+!        use pm_kind, only: LKG => LK2
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        logical(LKC)                , intent(in)    , contiguous    :: array(:)
-!        logical(LKC)                , intent(in)    , contiguous    :: sep(:)
+!        logical(LKG)                , intent(in)    , contiguous    :: array(:)
+!        logical(LKG)                , intent(in)    , contiguous    :: sep(:)
 !        procedure(logical(LK))                                      :: iseq
 !        integer(IK)                 , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)                 , intent(in)    , optional      :: sorted
@@ -3771,11 +3771,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixCusComCusIns_D1_D1_LK1
 !#endif
-!        use pm_kind, only: LKC => LK1
+!        use pm_kind, only: LKG => LK1
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        logical(LKC)                , intent(in)    , contiguous    :: array(:)
-!        logical(LKC)                , intent(in)    , contiguous    :: sep(:)
+!        logical(LKG)                , intent(in)    , contiguous    :: array(:)
+!        logical(LKG)                , intent(in)    , contiguous    :: sep(:)
 !        procedure(logical(LK))                                      :: iseq
 !        integer(IK)                 , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)                 , intent(in)    , optional      :: sorted
@@ -3791,11 +3791,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixCusComCusIns_D1_D1_CK5
 !#endif
-!        use pm_kind, only: CKC => CK5
+!        use pm_kind, only: CKG => CK5
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        complex(CKC)                , intent(in)    , contiguous    :: array(:)
-!        complex(CKC)                , intent(in)    , contiguous    :: sep(:)
+!        complex(CKG)                , intent(in)    , contiguous    :: array(:)
+!        complex(CKG)                , intent(in)    , contiguous    :: sep(:)
 !        procedure(logical(LK))                                      :: iseq
 !        integer(IK)                 , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)                 , intent(in)    , optional      :: sorted
@@ -3809,11 +3809,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixCusComCusIns_D1_D1_CK4
 !#endif
-!        use pm_kind, only: CKC => CK4
+!        use pm_kind, only: CKG => CK4
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        complex(CKC)                , intent(in)    , contiguous    :: array(:)
-!        complex(CKC)                , intent(in)    , contiguous    :: sep(:)
+!        complex(CKG)                , intent(in)    , contiguous    :: array(:)
+!        complex(CKG)                , intent(in)    , contiguous    :: sep(:)
 !        procedure(logical(LK))                                      :: iseq
 !        integer(IK)                 , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)                 , intent(in)    , optional      :: sorted
@@ -3827,11 +3827,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixCusComCusIns_D1_D1_CK3
 !#endif
-!        use pm_kind, only: CKC => CK3
+!        use pm_kind, only: CKG => CK3
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        complex(CKC)                , intent(in)    , contiguous    :: array(:)
-!        complex(CKC)                , intent(in)    , contiguous    :: sep(:)
+!        complex(CKG)                , intent(in)    , contiguous    :: array(:)
+!        complex(CKG)                , intent(in)    , contiguous    :: sep(:)
 !        procedure(logical(LK))                                      :: iseq
 !        integer(IK)                 , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)                 , intent(in)    , optional      :: sorted
@@ -3845,11 +3845,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixCusComCusIns_D1_D1_CK2
 !#endif
-!        use pm_kind, only: CKC => CK2
+!        use pm_kind, only: CKG => CK2
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        complex(CKC)                , intent(in)    , contiguous    :: array(:)
-!        complex(CKC)                , intent(in)    , contiguous    :: sep(:)
+!        complex(CKG)                , intent(in)    , contiguous    :: array(:)
+!        complex(CKG)                , intent(in)    , contiguous    :: sep(:)
 !        procedure(logical(LK))                                      :: iseq
 !        integer(IK)                 , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)                 , intent(in)    , optional      :: sorted
@@ -3863,11 +3863,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixCusComCusIns_D1_D1_CK1
 !#endif
-!        use pm_kind, only: CKC => CK1
+!        use pm_kind, only: CKG => CK1
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        complex(CKC)                , intent(in)    , contiguous    :: array(:)
-!        complex(CKC)                , intent(in)    , contiguous    :: sep(:)
+!        complex(CKG)                , intent(in)    , contiguous    :: array(:)
+!        complex(CKG)                , intent(in)    , contiguous    :: sep(:)
 !        procedure(logical(LK))                                      :: iseq
 !        integer(IK)                 , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)                 , intent(in)    , optional      :: sorted
@@ -3883,11 +3883,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixCusComCusIns_D1_D1_RK5
 !#endif
-!        use pm_kind, only: RKC => RK5
+!        use pm_kind, only: RKG => RK5
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        real(RKC)                   , intent(in)    , contiguous    :: array(:)
-!        real(RKC)                   , intent(in)    , contiguous    :: sep(:)
+!        real(RKG)                   , intent(in)    , contiguous    :: array(:)
+!        real(RKG)                   , intent(in)    , contiguous    :: sep(:)
 !        procedure(logical(LK))                                      :: iseq
 !        integer(IK)                 , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)                 , intent(in)    , optional      :: sorted
@@ -3901,11 +3901,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixCusComCusIns_D1_D1_RK4
 !#endif
-!        use pm_kind, only: RKC => RK4
+!        use pm_kind, only: RKG => RK4
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        real(RKC)                   , intent(in)    , contiguous    :: array(:)
-!        real(RKC)                   , intent(in)    , contiguous    :: sep(:)
+!        real(RKG)                   , intent(in)    , contiguous    :: array(:)
+!        real(RKG)                   , intent(in)    , contiguous    :: sep(:)
 !        procedure(logical(LK))                                      :: iseq
 !        integer(IK)                 , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)                 , intent(in)    , optional      :: sorted
@@ -3919,11 +3919,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixCusComCusIns_D1_D1_RK3
 !#endif
-!        use pm_kind, only: RKC => RK3
+!        use pm_kind, only: RKG => RK3
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        real(RKC)                   , intent(in)    , contiguous    :: array(:)
-!        real(RKC)                   , intent(in)    , contiguous    :: sep(:)
+!        real(RKG)                   , intent(in)    , contiguous    :: array(:)
+!        real(RKG)                   , intent(in)    , contiguous    :: sep(:)
 !        procedure(logical(LK))                                      :: iseq
 !        integer(IK)                 , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)                 , intent(in)    , optional      :: sorted
@@ -3937,11 +3937,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixCusComCusIns_D1_D1_RK2
 !#endif
-!        use pm_kind, only: RKC => RK2
+!        use pm_kind, only: RKG => RK2
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        real(RKC)                   , intent(in)    , contiguous    :: array(:)
-!        real(RKC)                   , intent(in)    , contiguous    :: sep(:)
+!        real(RKG)                   , intent(in)    , contiguous    :: array(:)
+!        real(RKG)                   , intent(in)    , contiguous    :: sep(:)
 !        procedure(logical(LK))                                      :: iseq
 !        integer(IK)                 , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)                 , intent(in)    , optional      :: sorted
@@ -3955,11 +3955,11 @@ module pm_arraySplit
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setSplitFixCusComCusIns_D1_D1_RK1
 !#endif
-!        use pm_kind, only: RKC => RK1
+!        use pm_kind, only: RKG => RK1
 !        integer(IK)                 , intent(out)   , contiguous    :: field(:)
 !        integer(IK)                 , intent(out)                   :: nsplit
-!        real(RKC)                   , intent(in)    , contiguous    :: array(:)
-!        real(RKC)                   , intent(in)    , contiguous    :: sep(:)
+!        real(RKG)                   , intent(in)    , contiguous    :: array(:)
+!        real(RKG)                   , intent(in)    , contiguous    :: sep(:)
 !        procedure(logical(LK))                                      :: iseq
 !        integer(IK)                 , intent(in)    , contiguous    :: instance(:)
 !        logical(LK)                 , intent(in)    , optional      :: sorted
@@ -3995,10 +3995,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndDefComDefIns_D0_D0_SK5
 #endif
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        character(*,SKC)            , intent(in)                    :: array
-        character(*,SKC)            , intent(in)                    :: sep
+        character(*,SKG)            , intent(in)                    :: array
+        character(*,SKG)            , intent(in)                    :: sep
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
 #endif
@@ -4008,10 +4008,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndDefComDefIns_D0_D0_SK4
 #endif
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        character(*,SKC)            , intent(in)                    :: array
-        character(*,SKC)            , intent(in)                    :: sep
+        character(*,SKG)            , intent(in)                    :: array
+        character(*,SKG)            , intent(in)                    :: sep
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
 #endif
@@ -4021,10 +4021,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndDefComDefIns_D0_D0_SK3
 #endif
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        character(*,SKC)            , intent(in)                    :: array
-        character(*,SKC)            , intent(in)                    :: sep
+        character(*,SKG)            , intent(in)                    :: array
+        character(*,SKG)            , intent(in)                    :: sep
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
 #endif
@@ -4034,10 +4034,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndDefComDefIns_D0_D0_SK2
 #endif
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        character(*,SKC)            , intent(in)                    :: array
-        character(*,SKC)            , intent(in)                    :: sep
+        character(*,SKG)            , intent(in)                    :: array
+        character(*,SKG)            , intent(in)                    :: sep
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
 #endif
@@ -4047,10 +4047,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndDefComDefIns_D0_D0_SK1
 #endif
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        character(*,SKC)            , intent(in)                    :: array
-        character(*,SKC)            , intent(in)                    :: sep
+        character(*,SKG)            , intent(in)                    :: array
+        character(*,SKG)            , intent(in)                    :: sep
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
 #endif
@@ -4062,10 +4062,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndDefComDefIns_D1_D0_SK5
 #endif
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
-        character(*,SKC)            , intent(in)                    :: sep
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
+        character(*,SKG)            , intent(in)                    :: sep
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
 #endif
@@ -4075,10 +4075,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndDefComDefIns_D1_D0_SK4
 #endif
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
-        character(*,SKC)            , intent(in)                    :: sep
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
+        character(*,SKG)            , intent(in)                    :: sep
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
 #endif
@@ -4088,10 +4088,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndDefComDefIns_D1_D0_SK3
 #endif
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
-        character(*,SKC)            , intent(in)                    :: sep
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
+        character(*,SKG)            , intent(in)                    :: sep
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
 #endif
@@ -4101,10 +4101,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndDefComDefIns_D1_D0_SK2
 #endif
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
-        character(*,SKC)            , intent(in)                    :: sep
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
+        character(*,SKG)            , intent(in)                    :: sep
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
 #endif
@@ -4114,10 +4114,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndDefComDefIns_D1_D0_SK1
 #endif
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
-        character(*,SKC)            , intent(in)                    :: sep
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
+        character(*,SKG)            , intent(in)                    :: sep
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
 #endif
@@ -4129,10 +4129,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndDefComDefIns_D1_D0_IK5
 #endif
-        use pm_kind, only: IKC => IK5
+        use pm_kind, only: IKG => IK5
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
-        integer(IKC)                , intent(in)                    :: sep
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
+        integer(IKG)                , intent(in)                    :: sep
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
 #endif
@@ -4142,10 +4142,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndDefComDefIns_D1_D0_IK4
 #endif
-        use pm_kind, only: IKC => IK4
+        use pm_kind, only: IKG => IK4
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
-        integer(IKC)                , intent(in)                    :: sep
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
+        integer(IKG)                , intent(in)                    :: sep
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
 #endif
@@ -4155,10 +4155,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndDefComDefIns_D1_D0_IK3
 #endif
-        use pm_kind, only: IKC => IK3
+        use pm_kind, only: IKG => IK3
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
-        integer(IKC)                , intent(in)                    :: sep
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
+        integer(IKG)                , intent(in)                    :: sep
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
 #endif
@@ -4168,10 +4168,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndDefComDefIns_D1_D0_IK2
 #endif
-        use pm_kind, only: IKC => IK2
+        use pm_kind, only: IKG => IK2
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
-        integer(IKC)                , intent(in)                    :: sep
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
+        integer(IKG)                , intent(in)                    :: sep
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
 #endif
@@ -4181,10 +4181,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndDefComDefIns_D1_D0_IK1
 #endif
-        use pm_kind, only: IKC => IK1
+        use pm_kind, only: IKG => IK1
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
-        integer(IKC)                , intent(in)                    :: sep
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
+        integer(IKG)                , intent(in)                    :: sep
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
 #endif
@@ -4196,10 +4196,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndDefComDefIns_D1_D0_LK5
 #endif
-        use pm_kind, only: LKC => LK5
+        use pm_kind, only: LKG => LK5
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
-        logical(LKC)                , intent(in)                    :: sep
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
+        logical(LKG)                , intent(in)                    :: sep
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
 #endif
@@ -4209,10 +4209,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndDefComDefIns_D1_D0_LK4
 #endif
-        use pm_kind, only: LKC => LK4
+        use pm_kind, only: LKG => LK4
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
-        logical(LKC)                , intent(in)                    :: sep
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
+        logical(LKG)                , intent(in)                    :: sep
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
 #endif
@@ -4222,10 +4222,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndDefComDefIns_D1_D0_LK3
 #endif
-        use pm_kind, only: LKC => LK3
+        use pm_kind, only: LKG => LK3
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
-        logical(LKC)                , intent(in)                    :: sep
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
+        logical(LKG)                , intent(in)                    :: sep
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
 #endif
@@ -4235,10 +4235,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndDefComDefIns_D1_D0_LK2
 #endif
-        use pm_kind, only: LKC => LK2
+        use pm_kind, only: LKG => LK2
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
-        logical(LKC)                , intent(in)                    :: sep
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
+        logical(LKG)                , intent(in)                    :: sep
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
 #endif
@@ -4248,10 +4248,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndDefComDefIns_D1_D0_LK1
 #endif
-        use pm_kind, only: LKC => LK1
+        use pm_kind, only: LKG => LK1
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
-        logical(LKC)                , intent(in)                    :: sep
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
+        logical(LKG)                , intent(in)                    :: sep
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
 #endif
@@ -4263,10 +4263,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndDefComDefIns_D1_D0_CK5
 #endif
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
-        complex(CKC)                , intent(in)                    :: sep
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
+        complex(CKG)                , intent(in)                    :: sep
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
 #endif
@@ -4276,10 +4276,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndDefComDefIns_D1_D0_CK4
 #endif
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
-        complex(CKC)                , intent(in)                    :: sep
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
+        complex(CKG)                , intent(in)                    :: sep
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
 #endif
@@ -4289,10 +4289,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndDefComDefIns_D1_D0_CK3
 #endif
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
-        complex(CKC)                , intent(in)                    :: sep
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
+        complex(CKG)                , intent(in)                    :: sep
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
 #endif
@@ -4302,10 +4302,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndDefComDefIns_D1_D0_CK2
 #endif
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
-        complex(CKC)                , intent(in)                    :: sep
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
+        complex(CKG)                , intent(in)                    :: sep
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
 #endif
@@ -4315,10 +4315,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndDefComDefIns_D1_D0_CK1
 #endif
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
-        complex(CKC)                , intent(in)                    :: sep
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
+        complex(CKG)                , intent(in)                    :: sep
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
 #endif
@@ -4330,10 +4330,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndDefComDefIns_D1_D0_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
-        real(RKC)                   , intent(in)                    :: sep
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
+        real(RKG)                   , intent(in)                    :: sep
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
 #endif
@@ -4343,10 +4343,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndDefComDefIns_D1_D0_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
-        real(RKC)                   , intent(in)                    :: sep
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
+        real(RKG)                   , intent(in)                    :: sep
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
 #endif
@@ -4356,10 +4356,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndDefComDefIns_D1_D0_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
-        real(RKC)                   , intent(in)                    :: sep
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
+        real(RKG)                   , intent(in)                    :: sep
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
 #endif
@@ -4369,10 +4369,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndDefComDefIns_D1_D0_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
-        real(RKC)                   , intent(in)                    :: sep
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
+        real(RKG)                   , intent(in)                    :: sep
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
 #endif
@@ -4382,10 +4382,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndDefComDefIns_D1_D0_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
-        real(RKC)                   , intent(in)                    :: sep
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
+        real(RKG)                   , intent(in)                    :: sep
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
 #endif
@@ -4403,10 +4403,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndCusComDefIns_D0_D0_SK5
 #endif
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        character(*,SKC)            , intent(in)                    :: array
-        character(*,SKC)            , intent(in)                    :: sep
+        character(*,SKG)            , intent(in)                    :: array
+        character(*,SKG)            , intent(in)                    :: sep
         procedure(logical(LK))                                      :: iseq
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
@@ -4417,10 +4417,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndCusComDefIns_D0_D0_SK4
 #endif
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        character(*,SKC)            , intent(in)                    :: array
-        character(*,SKC)            , intent(in)                    :: sep
+        character(*,SKG)            , intent(in)                    :: array
+        character(*,SKG)            , intent(in)                    :: sep
         procedure(logical(LK))                                      :: iseq
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
@@ -4431,10 +4431,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndCusComDefIns_D0_D0_SK3
 #endif
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        character(*,SKC)            , intent(in)                    :: array
-        character(*,SKC)            , intent(in)                    :: sep
+        character(*,SKG)            , intent(in)                    :: array
+        character(*,SKG)            , intent(in)                    :: sep
         procedure(logical(LK))                                      :: iseq
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
@@ -4445,10 +4445,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndCusComDefIns_D0_D0_SK2
 #endif
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        character(*,SKC)            , intent(in)                    :: array
-        character(*,SKC)            , intent(in)                    :: sep
+        character(*,SKG)            , intent(in)                    :: array
+        character(*,SKG)            , intent(in)                    :: sep
         procedure(logical(LK))                                      :: iseq
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
@@ -4459,10 +4459,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndCusComDefIns_D0_D0_SK1
 #endif
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        character(*,SKC)            , intent(in)                    :: array
-        character(*,SKC)            , intent(in)                    :: sep
+        character(*,SKG)            , intent(in)                    :: array
+        character(*,SKG)            , intent(in)                    :: sep
         procedure(logical(LK))                                      :: iseq
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
@@ -4475,10 +4475,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndCusComDefIns_D1_D0_SK5
 #endif
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
-        character(*,SKC)            , intent(in)                    :: sep
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
+        character(*,SKG)            , intent(in)                    :: sep
         procedure(logical(LK))                                      :: iseq
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
@@ -4489,10 +4489,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndCusComDefIns_D1_D0_SK4
 #endif
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
-        character(*,SKC)            , intent(in)                    :: sep
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
+        character(*,SKG)            , intent(in)                    :: sep
         procedure(logical(LK))                                      :: iseq
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
@@ -4503,10 +4503,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndCusComDefIns_D1_D0_SK3
 #endif
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
-        character(*,SKC)            , intent(in)                    :: sep
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
+        character(*,SKG)            , intent(in)                    :: sep
         procedure(logical(LK))                                      :: iseq
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
@@ -4517,10 +4517,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndCusComDefIns_D1_D0_SK2
 #endif
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
-        character(*,SKC)            , intent(in)                    :: sep
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
+        character(*,SKG)            , intent(in)                    :: sep
         procedure(logical(LK))                                      :: iseq
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
@@ -4531,10 +4531,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndCusComDefIns_D1_D0_SK1
 #endif
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
-        character(*,SKC)            , intent(in)                    :: sep
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
+        character(*,SKG)            , intent(in)                    :: sep
         procedure(logical(LK))                                      :: iseq
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
@@ -4547,10 +4547,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndCusComDefIns_D1_D0_IK5
 #endif
-        use pm_kind, only: IKC => IK5
+        use pm_kind, only: IKG => IK5
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
-        integer(IKC)                , intent(in)                    :: sep
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
+        integer(IKG)                , intent(in)                    :: sep
         procedure(logical(LK))                                      :: iseq
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
@@ -4561,10 +4561,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndCusComDefIns_D1_D0_IK4
 #endif
-        use pm_kind, only: IKC => IK4
+        use pm_kind, only: IKG => IK4
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
-        integer(IKC)                , intent(in)                    :: sep
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
+        integer(IKG)                , intent(in)                    :: sep
         procedure(logical(LK))                                      :: iseq
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
@@ -4575,10 +4575,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndCusComDefIns_D1_D0_IK3
 #endif
-        use pm_kind, only: IKC => IK3
+        use pm_kind, only: IKG => IK3
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
-        integer(IKC)                , intent(in)                    :: sep
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
+        integer(IKG)                , intent(in)                    :: sep
         procedure(logical(LK))                                      :: iseq
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
@@ -4589,10 +4589,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndCusComDefIns_D1_D0_IK2
 #endif
-        use pm_kind, only: IKC => IK2
+        use pm_kind, only: IKG => IK2
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
-        integer(IKC)                , intent(in)                    :: sep
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
+        integer(IKG)                , intent(in)                    :: sep
         procedure(logical(LK))                                      :: iseq
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
@@ -4603,10 +4603,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndCusComDefIns_D1_D0_IK1
 #endif
-        use pm_kind, only: IKC => IK1
+        use pm_kind, only: IKG => IK1
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
-        integer(IKC)                , intent(in)                    :: sep
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
+        integer(IKG)                , intent(in)                    :: sep
         procedure(logical(LK))                                      :: iseq
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
@@ -4619,10 +4619,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndCusComDefIns_D1_D0_LK5
 #endif
-        use pm_kind, only: LKC => LK5
+        use pm_kind, only: LKG => LK5
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
-        logical(LKC)                , intent(in)                    :: sep
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
+        logical(LKG)                , intent(in)                    :: sep
         procedure(logical(LK))                                      :: iseq
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
@@ -4633,10 +4633,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndCusComDefIns_D1_D0_LK4
 #endif
-        use pm_kind, only: LKC => LK4
+        use pm_kind, only: LKG => LK4
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
-        logical(LKC)                , intent(in)                    :: sep
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
+        logical(LKG)                , intent(in)                    :: sep
         procedure(logical(LK))                                      :: iseq
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
@@ -4647,10 +4647,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndCusComDefIns_D1_D0_LK3
 #endif
-        use pm_kind, only: LKC => LK3
+        use pm_kind, only: LKG => LK3
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
-        logical(LKC)                , intent(in)                    :: sep
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
+        logical(LKG)                , intent(in)                    :: sep
         procedure(logical(LK))                                      :: iseq
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
@@ -4661,10 +4661,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndCusComDefIns_D1_D0_LK2
 #endif
-        use pm_kind, only: LKC => LK2
+        use pm_kind, only: LKG => LK2
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
-        logical(LKC)                , intent(in)                    :: sep
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
+        logical(LKG)                , intent(in)                    :: sep
         procedure(logical(LK))                                      :: iseq
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
@@ -4675,10 +4675,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndCusComDefIns_D1_D0_LK1
 #endif
-        use pm_kind, only: LKC => LK1
+        use pm_kind, only: LKG => LK1
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
-        logical(LKC)                , intent(in)                    :: sep
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
+        logical(LKG)                , intent(in)                    :: sep
         procedure(logical(LK))                                      :: iseq
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
@@ -4691,10 +4691,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndCusComDefIns_D1_D0_CK5
 #endif
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
-        complex(CKC)                , intent(in)                    :: sep
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
+        complex(CKG)                , intent(in)                    :: sep
         procedure(logical(LK))                                      :: iseq
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
@@ -4705,10 +4705,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndCusComDefIns_D1_D0_CK4
 #endif
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
-        complex(CKC)                , intent(in)                    :: sep
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
+        complex(CKG)                , intent(in)                    :: sep
         procedure(logical(LK))                                      :: iseq
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
@@ -4719,10 +4719,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndCusComDefIns_D1_D0_CK3
 #endif
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
-        complex(CKC)                , intent(in)                    :: sep
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
+        complex(CKG)                , intent(in)                    :: sep
         procedure(logical(LK))                                      :: iseq
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
@@ -4733,10 +4733,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndCusComDefIns_D1_D0_CK2
 #endif
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
-        complex(CKC)                , intent(in)                    :: sep
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
+        complex(CKG)                , intent(in)                    :: sep
         procedure(logical(LK))                                      :: iseq
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
@@ -4747,10 +4747,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndCusComDefIns_D1_D0_CK1
 #endif
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
-        complex(CKC)                , intent(in)                    :: sep
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
+        complex(CKG)                , intent(in)                    :: sep
         procedure(logical(LK))                                      :: iseq
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
@@ -4763,10 +4763,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndCusComDefIns_D1_D0_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
-        real(RKC)                   , intent(in)                    :: sep
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
+        real(RKG)                   , intent(in)                    :: sep
         procedure(logical(LK))                                      :: iseq
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
@@ -4777,10 +4777,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndCusComDefIns_D1_D0_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
-        real(RKC)                   , intent(in)                    :: sep
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
+        real(RKG)                   , intent(in)                    :: sep
         procedure(logical(LK))                                      :: iseq
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
@@ -4791,10 +4791,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndCusComDefIns_D1_D0_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
-        real(RKC)                   , intent(in)                    :: sep
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
+        real(RKG)                   , intent(in)                    :: sep
         procedure(logical(LK))                                      :: iseq
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
@@ -4805,10 +4805,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndCusComDefIns_D1_D0_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
-        real(RKC)                   , intent(in)                    :: sep
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
+        real(RKG)                   , intent(in)                    :: sep
         procedure(logical(LK))                                      :: iseq
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
@@ -4819,10 +4819,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndCusComDefIns_D1_D0_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
-        real(RKC)                   , intent(in)                    :: sep
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
+        real(RKG)                   , intent(in)                    :: sep
         procedure(logical(LK))                                      :: iseq
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
@@ -4841,10 +4841,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndDefComCusIns_D0_D0_SK5
 #endif
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        character(*,SKC)            , intent(in)                    :: array
-        character(*,SKC)            , intent(in)                    :: sep
+        character(*,SKG)            , intent(in)                    :: array
+        character(*,SKG)            , intent(in)                    :: sep
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
         logical(LK)                 , intent(in)    , optional      :: unique
@@ -4857,10 +4857,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndDefComCusIns_D0_D0_SK4
 #endif
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        character(*,SKC)            , intent(in)                    :: array
-        character(*,SKC)            , intent(in)                    :: sep
+        character(*,SKG)            , intent(in)                    :: array
+        character(*,SKG)            , intent(in)                    :: sep
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
         logical(LK)                 , intent(in)    , optional      :: unique
@@ -4873,10 +4873,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndDefComCusIns_D0_D0_SK3
 #endif
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        character(*,SKC)            , intent(in)                    :: array
-        character(*,SKC)            , intent(in)                    :: sep
+        character(*,SKG)            , intent(in)                    :: array
+        character(*,SKG)            , intent(in)                    :: sep
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
         logical(LK)                 , intent(in)    , optional      :: unique
@@ -4889,10 +4889,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndDefComCusIns_D0_D0_SK2
 #endif
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        character(*,SKC)            , intent(in)                    :: array
-        character(*,SKC)            , intent(in)                    :: sep
+        character(*,SKG)            , intent(in)                    :: array
+        character(*,SKG)            , intent(in)                    :: sep
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
         logical(LK)                 , intent(in)    , optional      :: unique
@@ -4905,10 +4905,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndDefComCusIns_D0_D0_SK1
 #endif
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        character(*,SKC)            , intent(in)                    :: array
-        character(*,SKC)            , intent(in)                    :: sep
+        character(*,SKG)            , intent(in)                    :: array
+        character(*,SKG)            , intent(in)                    :: sep
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
         logical(LK)                 , intent(in)    , optional      :: unique
@@ -4923,10 +4923,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndDefComCusIns_D1_D0_SK5
 #endif
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
-        character(*,SKC)            , intent(in)                    :: sep
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
+        character(*,SKG)            , intent(in)                    :: sep
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
         logical(LK)                 , intent(in)    , optional      :: unique
@@ -4939,10 +4939,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndDefComCusIns_D1_D0_SK4
 #endif
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
-        character(*,SKC)            , intent(in)                    :: sep
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
+        character(*,SKG)            , intent(in)                    :: sep
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
         logical(LK)                 , intent(in)    , optional      :: unique
@@ -4955,10 +4955,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndDefComCusIns_D1_D0_SK3
 #endif
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
-        character(*,SKC)            , intent(in)                    :: sep
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
+        character(*,SKG)            , intent(in)                    :: sep
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
         logical(LK)                 , intent(in)    , optional      :: unique
@@ -4971,10 +4971,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndDefComCusIns_D1_D0_SK2
 #endif
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
-        character(*,SKC)            , intent(in)                    :: sep
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
+        character(*,SKG)            , intent(in)                    :: sep
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
         logical(LK)                 , intent(in)    , optional      :: unique
@@ -4987,10 +4987,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndDefComCusIns_D1_D0_SK1
 #endif
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
-        character(*,SKC)            , intent(in)                    :: sep
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
+        character(*,SKG)            , intent(in)                    :: sep
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
         logical(LK)                 , intent(in)    , optional      :: unique
@@ -5005,10 +5005,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndDefComCusIns_D1_D0_IK5
 #endif
-        use pm_kind, only: IKC => IK5
+        use pm_kind, only: IKG => IK5
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
-        integer(IKC)                , intent(in)                    :: sep
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
+        integer(IKG)                , intent(in)                    :: sep
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
         logical(LK)                 , intent(in)    , optional      :: unique
@@ -5021,10 +5021,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndDefComCusIns_D1_D0_IK4
 #endif
-        use pm_kind, only: IKC => IK4
+        use pm_kind, only: IKG => IK4
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
-        integer(IKC)                , intent(in)                    :: sep
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
+        integer(IKG)                , intent(in)                    :: sep
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
         logical(LK)                 , intent(in)    , optional      :: unique
@@ -5037,10 +5037,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndDefComCusIns_D1_D0_IK3
 #endif
-        use pm_kind, only: IKC => IK3
+        use pm_kind, only: IKG => IK3
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
-        integer(IKC)                , intent(in)                    :: sep
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
+        integer(IKG)                , intent(in)                    :: sep
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
         logical(LK)                 , intent(in)    , optional      :: unique
@@ -5053,10 +5053,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndDefComCusIns_D1_D0_IK2
 #endif
-        use pm_kind, only: IKC => IK2
+        use pm_kind, only: IKG => IK2
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
-        integer(IKC)                , intent(in)                    :: sep
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
+        integer(IKG)                , intent(in)                    :: sep
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
         logical(LK)                 , intent(in)    , optional      :: unique
@@ -5069,10 +5069,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndDefComCusIns_D1_D0_IK1
 #endif
-        use pm_kind, only: IKC => IK1
+        use pm_kind, only: IKG => IK1
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
-        integer(IKC)                , intent(in)                    :: sep
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
+        integer(IKG)                , intent(in)                    :: sep
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
         logical(LK)                 , intent(in)    , optional      :: unique
@@ -5087,10 +5087,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndDefComCusIns_D1_D0_LK5
 #endif
-        use pm_kind, only: LKC => LK5
+        use pm_kind, only: LKG => LK5
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
-        logical(LKC)                , intent(in)                    :: sep
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
+        logical(LKG)                , intent(in)                    :: sep
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
         logical(LK)                 , intent(in)    , optional      :: unique
@@ -5103,10 +5103,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndDefComCusIns_D1_D0_LK4
 #endif
-        use pm_kind, only: LKC => LK4
+        use pm_kind, only: LKG => LK4
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
-        logical(LKC)                , intent(in)                    :: sep
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
+        logical(LKG)                , intent(in)                    :: sep
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
         logical(LK)                 , intent(in)    , optional      :: unique
@@ -5119,10 +5119,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndDefComCusIns_D1_D0_LK3
 #endif
-        use pm_kind, only: LKC => LK3
+        use pm_kind, only: LKG => LK3
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
-        logical(LKC)                , intent(in)                    :: sep
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
+        logical(LKG)                , intent(in)                    :: sep
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
         logical(LK)                 , intent(in)    , optional      :: unique
@@ -5135,10 +5135,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndDefComCusIns_D1_D0_LK2
 #endif
-        use pm_kind, only: LKC => LK2
+        use pm_kind, only: LKG => LK2
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
-        logical(LKC)                , intent(in)                    :: sep
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
+        logical(LKG)                , intent(in)                    :: sep
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
         logical(LK)                 , intent(in)    , optional      :: unique
@@ -5151,10 +5151,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndDefComCusIns_D1_D0_LK1
 #endif
-        use pm_kind, only: LKC => LK1
+        use pm_kind, only: LKG => LK1
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
-        logical(LKC)                , intent(in)                    :: sep
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
+        logical(LKG)                , intent(in)                    :: sep
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
         logical(LK)                 , intent(in)    , optional      :: unique
@@ -5169,10 +5169,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndDefComCusIns_D1_D0_CK5
 #endif
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
-        complex(CKC)                , intent(in)                    :: sep
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
+        complex(CKG)                , intent(in)                    :: sep
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
         logical(LK)                 , intent(in)    , optional      :: unique
@@ -5185,10 +5185,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndDefComCusIns_D1_D0_CK4
 #endif
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
-        complex(CKC)                , intent(in)                    :: sep
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
+        complex(CKG)                , intent(in)                    :: sep
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
         logical(LK)                 , intent(in)    , optional      :: unique
@@ -5201,10 +5201,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndDefComCusIns_D1_D0_CK3
 #endif
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
-        complex(CKC)                , intent(in)                    :: sep
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
+        complex(CKG)                , intent(in)                    :: sep
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
         logical(LK)                 , intent(in)    , optional      :: unique
@@ -5217,10 +5217,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndDefComCusIns_D1_D0_CK2
 #endif
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
-        complex(CKC)                , intent(in)                    :: sep
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
+        complex(CKG)                , intent(in)                    :: sep
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
         logical(LK)                 , intent(in)    , optional      :: unique
@@ -5233,10 +5233,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndDefComCusIns_D1_D0_CK1
 #endif
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
-        complex(CKC)                , intent(in)                    :: sep
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
+        complex(CKG)                , intent(in)                    :: sep
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
         logical(LK)                 , intent(in)    , optional      :: unique
@@ -5251,10 +5251,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndDefComCusIns_D1_D0_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
-        real(RKC)                   , intent(in)                    :: sep
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
+        real(RKG)                   , intent(in)                    :: sep
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
         logical(LK)                 , intent(in)    , optional      :: unique
@@ -5267,10 +5267,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndDefComCusIns_D1_D0_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
-        real(RKC)                   , intent(in)                    :: sep
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
+        real(RKG)                   , intent(in)                    :: sep
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
         logical(LK)                 , intent(in)    , optional      :: unique
@@ -5283,10 +5283,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndDefComCusIns_D1_D0_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
-        real(RKC)                   , intent(in)                    :: sep
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
+        real(RKG)                   , intent(in)                    :: sep
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
         logical(LK)                 , intent(in)    , optional      :: unique
@@ -5299,10 +5299,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndDefComCusIns_D1_D0_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
-        real(RKC)                   , intent(in)                    :: sep
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
+        real(RKG)                   , intent(in)                    :: sep
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
         logical(LK)                 , intent(in)    , optional      :: unique
@@ -5315,10 +5315,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndDefComCusIns_D1_D0_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
-        real(RKC)                   , intent(in)                    :: sep
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
+        real(RKG)                   , intent(in)                    :: sep
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
         logical(LK)                 , intent(in)    , optional      :: unique
@@ -5339,10 +5339,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndCusComCusIns_D0_D0_SK5
 #endif
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        character(*,SKC)            , intent(in)                    :: array
-        character(*,SKC)            , intent(in)                    :: sep
+        character(*,SKG)            , intent(in)                    :: array
+        character(*,SKG)            , intent(in)                    :: sep
         procedure(logical(LK))                                      :: iseq
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
@@ -5356,10 +5356,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndCusComCusIns_D0_D0_SK4
 #endif
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        character(*,SKC)            , intent(in)                    :: array
-        character(*,SKC)            , intent(in)                    :: sep
+        character(*,SKG)            , intent(in)                    :: array
+        character(*,SKG)            , intent(in)                    :: sep
         procedure(logical(LK))                                      :: iseq
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
@@ -5373,10 +5373,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndCusComCusIns_D0_D0_SK3
 #endif
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        character(*,SKC)            , intent(in)                    :: array
-        character(*,SKC)            , intent(in)                    :: sep
+        character(*,SKG)            , intent(in)                    :: array
+        character(*,SKG)            , intent(in)                    :: sep
         procedure(logical(LK))                                      :: iseq
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
@@ -5390,10 +5390,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndCusComCusIns_D0_D0_SK2
 #endif
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        character(*,SKC)            , intent(in)                    :: array
-        character(*,SKC)            , intent(in)                    :: sep
+        character(*,SKG)            , intent(in)                    :: array
+        character(*,SKG)            , intent(in)                    :: sep
         procedure(logical(LK))                                      :: iseq
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
@@ -5407,10 +5407,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndCusComCusIns_D0_D0_SK1
 #endif
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        character(*,SKC)            , intent(in)                    :: array
-        character(*,SKC)            , intent(in)                    :: sep
+        character(*,SKG)            , intent(in)                    :: array
+        character(*,SKG)            , intent(in)                    :: sep
         procedure(logical(LK))                                      :: iseq
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
@@ -5426,10 +5426,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndCusComCusIns_D1_D0_SK5
 #endif
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
-        character(*,SKC)            , intent(in)                    :: sep
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
+        character(*,SKG)            , intent(in)                    :: sep
         procedure(logical(LK))                                      :: iseq
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
@@ -5443,10 +5443,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndCusComCusIns_D1_D0_SK4
 #endif
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
-        character(*,SKC)            , intent(in)                    :: sep
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
+        character(*,SKG)            , intent(in)                    :: sep
         procedure(logical(LK))                                      :: iseq
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
@@ -5460,10 +5460,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndCusComCusIns_D1_D0_SK3
 #endif
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
-        character(*,SKC)            , intent(in)                    :: sep
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
+        character(*,SKG)            , intent(in)                    :: sep
         procedure(logical(LK))                                      :: iseq
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
@@ -5477,10 +5477,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndCusComCusIns_D1_D0_SK2
 #endif
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
-        character(*,SKC)            , intent(in)                    :: sep
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
+        character(*,SKG)            , intent(in)                    :: sep
         procedure(logical(LK))                                      :: iseq
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
@@ -5494,10 +5494,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndCusComCusIns_D1_D0_SK1
 #endif
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
-        character(*,SKC)            , intent(in)                    :: sep
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
+        character(*,SKG)            , intent(in)                    :: sep
         procedure(logical(LK))                                      :: iseq
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
@@ -5513,10 +5513,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndCusComCusIns_D1_D0_IK5
 #endif
-        use pm_kind, only: IKC => IK5
+        use pm_kind, only: IKG => IK5
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
-        integer(IKC)                , intent(in)                    :: sep
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
+        integer(IKG)                , intent(in)                    :: sep
         procedure(logical(LK))                                      :: iseq
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
@@ -5530,10 +5530,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndCusComCusIns_D1_D0_IK4
 #endif
-        use pm_kind, only: IKC => IK4
+        use pm_kind, only: IKG => IK4
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
-        integer(IKC)                , intent(in)                    :: sep
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
+        integer(IKG)                , intent(in)                    :: sep
         procedure(logical(LK))                                      :: iseq
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
@@ -5547,10 +5547,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndCusComCusIns_D1_D0_IK3
 #endif
-        use pm_kind, only: IKC => IK3
+        use pm_kind, only: IKG => IK3
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
-        integer(IKC)                , intent(in)                    :: sep
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
+        integer(IKG)                , intent(in)                    :: sep
         procedure(logical(LK))                                      :: iseq
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
@@ -5564,10 +5564,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndCusComCusIns_D1_D0_IK2
 #endif
-        use pm_kind, only: IKC => IK2
+        use pm_kind, only: IKG => IK2
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
-        integer(IKC)                , intent(in)                    :: sep
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
+        integer(IKG)                , intent(in)                    :: sep
         procedure(logical(LK))                                      :: iseq
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
@@ -5581,10 +5581,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndCusComCusIns_D1_D0_IK1
 #endif
-        use pm_kind, only: IKC => IK1
+        use pm_kind, only: IKG => IK1
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
-        integer(IKC)                , intent(in)                    :: sep
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
+        integer(IKG)                , intent(in)                    :: sep
         procedure(logical(LK))                                      :: iseq
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
@@ -5600,10 +5600,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndCusComCusIns_D1_D0_LK5
 #endif
-        use pm_kind, only: LKC => LK5
+        use pm_kind, only: LKG => LK5
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
-        logical(LKC)                , intent(in)                    :: sep
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
+        logical(LKG)                , intent(in)                    :: sep
         procedure(logical(LK))                                      :: iseq
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
@@ -5617,10 +5617,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndCusComCusIns_D1_D0_LK4
 #endif
-        use pm_kind, only: LKC => LK4
+        use pm_kind, only: LKG => LK4
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
-        logical(LKC)                , intent(in)                    :: sep
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
+        logical(LKG)                , intent(in)                    :: sep
         procedure(logical(LK))                                      :: iseq
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
@@ -5634,10 +5634,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndCusComCusIns_D1_D0_LK3
 #endif
-        use pm_kind, only: LKC => LK3
+        use pm_kind, only: LKG => LK3
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
-        logical(LKC)                , intent(in)                    :: sep
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
+        logical(LKG)                , intent(in)                    :: sep
         procedure(logical(LK))                                      :: iseq
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
@@ -5651,10 +5651,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndCusComCusIns_D1_D0_LK2
 #endif
-        use pm_kind, only: LKC => LK2
+        use pm_kind, only: LKG => LK2
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
-        logical(LKC)                , intent(in)                    :: sep
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
+        logical(LKG)                , intent(in)                    :: sep
         procedure(logical(LK))                                      :: iseq
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
@@ -5668,10 +5668,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndCusComCusIns_D1_D0_LK1
 #endif
-        use pm_kind, only: LKC => LK1
+        use pm_kind, only: LKG => LK1
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
-        logical(LKC)                , intent(in)                    :: sep
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
+        logical(LKG)                , intent(in)                    :: sep
         procedure(logical(LK))                                      :: iseq
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
@@ -5687,10 +5687,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndCusComCusIns_D1_D0_CK5
 #endif
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
-        complex(CKC)                , intent(in)                    :: sep
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
+        complex(CKG)                , intent(in)                    :: sep
         procedure(logical(LK))                                      :: iseq
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
@@ -5704,10 +5704,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndCusComCusIns_D1_D0_CK4
 #endif
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
-        complex(CKC)                , intent(in)                    :: sep
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
+        complex(CKG)                , intent(in)                    :: sep
         procedure(logical(LK))                                      :: iseq
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
@@ -5721,10 +5721,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndCusComCusIns_D1_D0_CK3
 #endif
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
-        complex(CKC)                , intent(in)                    :: sep
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
+        complex(CKG)                , intent(in)                    :: sep
         procedure(logical(LK))                                      :: iseq
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
@@ -5738,10 +5738,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndCusComCusIns_D1_D0_CK2
 #endif
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
-        complex(CKC)                , intent(in)                    :: sep
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
+        complex(CKG)                , intent(in)                    :: sep
         procedure(logical(LK))                                      :: iseq
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
@@ -5755,10 +5755,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndCusComCusIns_D1_D0_CK1
 #endif
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
-        complex(CKC)                , intent(in)                    :: sep
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
+        complex(CKG)                , intent(in)                    :: sep
         procedure(logical(LK))                                      :: iseq
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
@@ -5774,10 +5774,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndCusComCusIns_D1_D0_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
-        real(RKC)                   , intent(in)                    :: sep
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
+        real(RKG)                   , intent(in)                    :: sep
         procedure(logical(LK))                                      :: iseq
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
@@ -5791,10 +5791,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndCusComCusIns_D1_D0_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
-        real(RKC)                   , intent(in)                    :: sep
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
+        real(RKG)                   , intent(in)                    :: sep
         procedure(logical(LK))                                      :: iseq
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
@@ -5808,10 +5808,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndCusComCusIns_D1_D0_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
-        real(RKC)                   , intent(in)                    :: sep
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
+        real(RKG)                   , intent(in)                    :: sep
         procedure(logical(LK))                                      :: iseq
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
@@ -5825,10 +5825,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndCusComCusIns_D1_D0_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
-        real(RKC)                   , intent(in)                    :: sep
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
+        real(RKG)                   , intent(in)                    :: sep
         procedure(logical(LK))                                      :: iseq
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
@@ -5842,10 +5842,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndCusComCusIns_D1_D0_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
-        real(RKC)                   , intent(in)                    :: sep
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
+        real(RKG)                   , intent(in)                    :: sep
         procedure(logical(LK))                                      :: iseq
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
@@ -5867,10 +5867,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndDefComDefIns_D1_D1_SK5
 #endif
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
-        character(*,SKC)            , intent(in)    , contiguous    :: sep(:)
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
+        character(*,SKG)            , intent(in)    , contiguous    :: sep(:)
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
 #endif
@@ -5880,10 +5880,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndDefComDefIns_D1_D1_SK4
 #endif
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
-        character(*,SKC)            , intent(in)    , contiguous    :: sep(:)
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
+        character(*,SKG)            , intent(in)    , contiguous    :: sep(:)
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
 #endif
@@ -5893,10 +5893,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndDefComDefIns_D1_D1_SK3
 #endif
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
-        character(*,SKC)            , intent(in)    , contiguous    :: sep(:)
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
+        character(*,SKG)            , intent(in)    , contiguous    :: sep(:)
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
 #endif
@@ -5906,10 +5906,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndDefComDefIns_D1_D1_SK2
 #endif
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
-        character(*,SKC)            , intent(in)    , contiguous    :: sep(:)
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
+        character(*,SKG)            , intent(in)    , contiguous    :: sep(:)
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
 #endif
@@ -5919,10 +5919,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndDefComDefIns_D1_D1_SK1
 #endif
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
-        character(*,SKC)            , intent(in)    , contiguous    :: sep(:)
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
+        character(*,SKG)            , intent(in)    , contiguous    :: sep(:)
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
 #endif
@@ -5934,10 +5934,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndDefComDefIns_D1_D1_IK5
 #endif
-        use pm_kind, only: IKC => IK5
+        use pm_kind, only: IKG => IK5
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
-        integer(IKC)                , intent(in)    , contiguous    :: sep(:)
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
+        integer(IKG)                , intent(in)    , contiguous    :: sep(:)
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
 #endif
@@ -5947,10 +5947,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndDefComDefIns_D1_D1_IK4
 #endif
-        use pm_kind, only: IKC => IK4
+        use pm_kind, only: IKG => IK4
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
-        integer(IKC)                , intent(in)    , contiguous    :: sep(:)
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
+        integer(IKG)                , intent(in)    , contiguous    :: sep(:)
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
 #endif
@@ -5960,10 +5960,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndDefComDefIns_D1_D1_IK3
 #endif
-        use pm_kind, only: IKC => IK3
+        use pm_kind, only: IKG => IK3
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
-        integer(IKC)                , intent(in)    , contiguous    :: sep(:)
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
+        integer(IKG)                , intent(in)    , contiguous    :: sep(:)
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
 #endif
@@ -5973,10 +5973,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndDefComDefIns_D1_D1_IK2
 #endif
-        use pm_kind, only: IKC => IK2
+        use pm_kind, only: IKG => IK2
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
-        integer(IKC)                , intent(in)    , contiguous    :: sep(:)
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
+        integer(IKG)                , intent(in)    , contiguous    :: sep(:)
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
 #endif
@@ -5986,10 +5986,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndDefComDefIns_D1_D1_IK1
 #endif
-        use pm_kind, only: IKC => IK1
+        use pm_kind, only: IKG => IK1
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
-        integer(IKC)                , intent(in)    , contiguous    :: sep(:)
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
+        integer(IKG)                , intent(in)    , contiguous    :: sep(:)
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
 #endif
@@ -6001,10 +6001,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndDefComDefIns_D1_D1_LK5
 #endif
-        use pm_kind, only: LKC => LK5
+        use pm_kind, only: LKG => LK5
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
-        logical(LKC)                , intent(in)    , contiguous    :: sep(:)
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
+        logical(LKG)                , intent(in)    , contiguous    :: sep(:)
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
 #endif
@@ -6014,10 +6014,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndDefComDefIns_D1_D1_LK4
 #endif
-        use pm_kind, only: LKC => LK4
+        use pm_kind, only: LKG => LK4
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
-        logical(LKC)                , intent(in)    , contiguous    :: sep(:)
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
+        logical(LKG)                , intent(in)    , contiguous    :: sep(:)
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
 #endif
@@ -6027,10 +6027,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndDefComDefIns_D1_D1_LK3
 #endif
-        use pm_kind, only: LKC => LK3
+        use pm_kind, only: LKG => LK3
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
-        logical(LKC)                , intent(in)    , contiguous    :: sep(:)
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
+        logical(LKG)                , intent(in)    , contiguous    :: sep(:)
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
 #endif
@@ -6040,10 +6040,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndDefComDefIns_D1_D1_LK2
 #endif
-        use pm_kind, only: LKC => LK2
+        use pm_kind, only: LKG => LK2
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
-        logical(LKC)                , intent(in)    , contiguous    :: sep(:)
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
+        logical(LKG)                , intent(in)    , contiguous    :: sep(:)
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
 #endif
@@ -6053,10 +6053,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndDefComDefIns_D1_D1_LK1
 #endif
-        use pm_kind, only: LKC => LK1
+        use pm_kind, only: LKG => LK1
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
-        logical(LKC)                , intent(in)    , contiguous    :: sep(:)
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
+        logical(LKG)                , intent(in)    , contiguous    :: sep(:)
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
 #endif
@@ -6068,10 +6068,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndDefComDefIns_D1_D1_CK5
 #endif
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
-        complex(CKC)                , intent(in)    , contiguous    :: sep(:)
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
+        complex(CKG)                , intent(in)    , contiguous    :: sep(:)
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
 #endif
@@ -6081,10 +6081,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndDefComDefIns_D1_D1_CK4
 #endif
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
-        complex(CKC)                , intent(in)    , contiguous    :: sep(:)
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
+        complex(CKG)                , intent(in)    , contiguous    :: sep(:)
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
 #endif
@@ -6094,10 +6094,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndDefComDefIns_D1_D1_CK3
 #endif
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
-        complex(CKC)                , intent(in)    , contiguous    :: sep(:)
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
+        complex(CKG)                , intent(in)    , contiguous    :: sep(:)
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
 #endif
@@ -6107,10 +6107,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndDefComDefIns_D1_D1_CK2
 #endif
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
-        complex(CKC)                , intent(in)    , contiguous    :: sep(:)
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
+        complex(CKG)                , intent(in)    , contiguous    :: sep(:)
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
 #endif
@@ -6120,10 +6120,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndDefComDefIns_D1_D1_CK1
 #endif
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
-        complex(CKC)                , intent(in)    , contiguous    :: sep(:)
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
+        complex(CKG)                , intent(in)    , contiguous    :: sep(:)
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
 #endif
@@ -6135,10 +6135,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndDefComDefIns_D1_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
-        real(RKC)                   , intent(in)    , contiguous    :: sep(:)
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
+        real(RKG)                   , intent(in)    , contiguous    :: sep(:)
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
 #endif
@@ -6148,10 +6148,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndDefComDefIns_D1_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
-        real(RKC)                   , intent(in)    , contiguous    :: sep(:)
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
+        real(RKG)                   , intent(in)    , contiguous    :: sep(:)
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
 #endif
@@ -6161,10 +6161,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndDefComDefIns_D1_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
-        real(RKC)                   , intent(in)    , contiguous    :: sep(:)
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
+        real(RKG)                   , intent(in)    , contiguous    :: sep(:)
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
 #endif
@@ -6174,10 +6174,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndDefComDefIns_D1_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
-        real(RKC)                   , intent(in)    , contiguous    :: sep(:)
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
+        real(RKG)                   , intent(in)    , contiguous    :: sep(:)
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
 #endif
@@ -6187,10 +6187,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndDefComDefIns_D1_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
-        real(RKC)                   , intent(in)    , contiguous    :: sep(:)
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
+        real(RKG)                   , intent(in)    , contiguous    :: sep(:)
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
 #endif
@@ -6208,10 +6208,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndCusComDefIns_D1_D1_SK5
 #endif
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
-        character(*,SKC)            , intent(in)    , contiguous    :: sep(:)
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
+        character(*,SKG)            , intent(in)    , contiguous    :: sep(:)
         procedure(logical(LK))                                      :: iseq
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
@@ -6222,10 +6222,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndCusComDefIns_D1_D1_SK4
 #endif
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
-        character(*,SKC)            , intent(in)    , contiguous    :: sep(:)
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
+        character(*,SKG)            , intent(in)    , contiguous    :: sep(:)
         procedure(logical(LK))                                      :: iseq
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
@@ -6236,10 +6236,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndCusComDefIns_D1_D1_SK3
 #endif
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
-        character(*,SKC)            , intent(in)    , contiguous    :: sep(:)
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
+        character(*,SKG)            , intent(in)    , contiguous    :: sep(:)
         procedure(logical(LK))                                      :: iseq
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
@@ -6250,10 +6250,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndCusComDefIns_D1_D1_SK2
 #endif
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
-        character(*,SKC)            , intent(in)    , contiguous    :: sep(:)
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
+        character(*,SKG)            , intent(in)    , contiguous    :: sep(:)
         procedure(logical(LK))                                      :: iseq
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
@@ -6264,10 +6264,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndCusComDefIns_D1_D1_SK1
 #endif
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
-        character(*,SKC)            , intent(in)    , contiguous    :: sep(:)
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
+        character(*,SKG)            , intent(in)    , contiguous    :: sep(:)
         procedure(logical(LK))                                      :: iseq
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
@@ -6280,10 +6280,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndCusComDefIns_D1_D1_IK5
 #endif
-        use pm_kind, only: IKC => IK5
+        use pm_kind, only: IKG => IK5
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
-        integer(IKC)                , intent(in)    , contiguous    :: sep(:)
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
+        integer(IKG)                , intent(in)    , contiguous    :: sep(:)
         procedure(logical(LK))                                      :: iseq
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
@@ -6294,10 +6294,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndCusComDefIns_D1_D1_IK4
 #endif
-        use pm_kind, only: IKC => IK4
+        use pm_kind, only: IKG => IK4
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
-        integer(IKC)                , intent(in)    , contiguous    :: sep(:)
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
+        integer(IKG)                , intent(in)    , contiguous    :: sep(:)
         procedure(logical(LK))                                      :: iseq
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
@@ -6308,10 +6308,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndCusComDefIns_D1_D1_IK3
 #endif
-        use pm_kind, only: IKC => IK3
+        use pm_kind, only: IKG => IK3
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
-        integer(IKC)                , intent(in)    , contiguous    :: sep(:)
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
+        integer(IKG)                , intent(in)    , contiguous    :: sep(:)
         procedure(logical(LK))                                      :: iseq
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
@@ -6322,10 +6322,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndCusComDefIns_D1_D1_IK2
 #endif
-        use pm_kind, only: IKC => IK2
+        use pm_kind, only: IKG => IK2
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
-        integer(IKC)                , intent(in)    , contiguous    :: sep(:)
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
+        integer(IKG)                , intent(in)    , contiguous    :: sep(:)
         procedure(logical(LK))                                      :: iseq
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
@@ -6336,10 +6336,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndCusComDefIns_D1_D1_IK1
 #endif
-        use pm_kind, only: IKC => IK1
+        use pm_kind, only: IKG => IK1
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
-        integer(IKC)                , intent(in)    , contiguous    :: sep(:)
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
+        integer(IKG)                , intent(in)    , contiguous    :: sep(:)
         procedure(logical(LK))                                      :: iseq
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
@@ -6352,10 +6352,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndCusComDefIns_D1_D1_LK5
 #endif
-        use pm_kind, only: LKC => LK5
+        use pm_kind, only: LKG => LK5
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
-        logical(LKC)                , intent(in)    , contiguous    :: sep(:)
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
+        logical(LKG)                , intent(in)    , contiguous    :: sep(:)
         procedure(logical(LK))                                      :: iseq
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
@@ -6366,10 +6366,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndCusComDefIns_D1_D1_LK4
 #endif
-        use pm_kind, only: LKC => LK4
+        use pm_kind, only: LKG => LK4
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
-        logical(LKC)                , intent(in)    , contiguous    :: sep(:)
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
+        logical(LKG)                , intent(in)    , contiguous    :: sep(:)
         procedure(logical(LK))                                      :: iseq
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
@@ -6380,10 +6380,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndCusComDefIns_D1_D1_LK3
 #endif
-        use pm_kind, only: LKC => LK3
+        use pm_kind, only: LKG => LK3
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
-        logical(LKC)                , intent(in)    , contiguous    :: sep(:)
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
+        logical(LKG)                , intent(in)    , contiguous    :: sep(:)
         procedure(logical(LK))                                      :: iseq
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
@@ -6394,10 +6394,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndCusComDefIns_D1_D1_LK2
 #endif
-        use pm_kind, only: LKC => LK2
+        use pm_kind, only: LKG => LK2
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
-        logical(LKC)                , intent(in)    , contiguous    :: sep(:)
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
+        logical(LKG)                , intent(in)    , contiguous    :: sep(:)
         procedure(logical(LK))                                      :: iseq
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
@@ -6408,10 +6408,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndCusComDefIns_D1_D1_LK1
 #endif
-        use pm_kind, only: LKC => LK1
+        use pm_kind, only: LKG => LK1
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
-        logical(LKC)                , intent(in)    , contiguous    :: sep(:)
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
+        logical(LKG)                , intent(in)    , contiguous    :: sep(:)
         procedure(logical(LK))                                      :: iseq
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
@@ -6424,10 +6424,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndCusComDefIns_D1_D1_CK5
 #endif
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
-        complex(CKC)                , intent(in)    , contiguous    :: sep(:)
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
+        complex(CKG)                , intent(in)    , contiguous    :: sep(:)
         procedure(logical(LK))                                      :: iseq
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
@@ -6438,10 +6438,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndCusComDefIns_D1_D1_CK4
 #endif
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
-        complex(CKC)                , intent(in)    , contiguous    :: sep(:)
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
+        complex(CKG)                , intent(in)    , contiguous    :: sep(:)
         procedure(logical(LK))                                      :: iseq
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
@@ -6452,10 +6452,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndCusComDefIns_D1_D1_CK3
 #endif
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
-        complex(CKC)                , intent(in)    , contiguous    :: sep(:)
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
+        complex(CKG)                , intent(in)    , contiguous    :: sep(:)
         procedure(logical(LK))                                      :: iseq
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
@@ -6466,10 +6466,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndCusComDefIns_D1_D1_CK2
 #endif
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
-        complex(CKC)                , intent(in)    , contiguous    :: sep(:)
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
+        complex(CKG)                , intent(in)    , contiguous    :: sep(:)
         procedure(logical(LK))                                      :: iseq
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
@@ -6480,10 +6480,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndCusComDefIns_D1_D1_CK1
 #endif
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
-        complex(CKC)                , intent(in)    , contiguous    :: sep(:)
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
+        complex(CKG)                , intent(in)    , contiguous    :: sep(:)
         procedure(logical(LK))                                      :: iseq
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
@@ -6496,10 +6496,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndCusComDefIns_D1_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
-        real(RKC)                   , intent(in)    , contiguous    :: sep(:)
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
+        real(RKG)                   , intent(in)    , contiguous    :: sep(:)
         procedure(logical(LK))                                      :: iseq
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
@@ -6510,10 +6510,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndCusComDefIns_D1_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
-        real(RKC)                   , intent(in)    , contiguous    :: sep(:)
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
+        real(RKG)                   , intent(in)    , contiguous    :: sep(:)
         procedure(logical(LK))                                      :: iseq
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
@@ -6524,10 +6524,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndCusComDefIns_D1_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
-        real(RKC)                   , intent(in)    , contiguous    :: sep(:)
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
+        real(RKG)                   , intent(in)    , contiguous    :: sep(:)
         procedure(logical(LK))                                      :: iseq
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
@@ -6538,10 +6538,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndCusComDefIns_D1_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
-        real(RKC)                   , intent(in)    , contiguous    :: sep(:)
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
+        real(RKG)                   , intent(in)    , contiguous    :: sep(:)
         procedure(logical(LK))                                      :: iseq
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
@@ -6552,10 +6552,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndCusComDefIns_D1_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
-        real(RKC)                   , intent(in)    , contiguous    :: sep(:)
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
+        real(RKG)                   , intent(in)    , contiguous    :: sep(:)
         procedure(logical(LK))                                      :: iseq
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
@@ -6574,10 +6574,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndDefComCusIns_D1_D1_SK5
 #endif
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
-        character(*,SKC)            , intent(in)    , contiguous    :: sep(:)
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
+        character(*,SKG)            , intent(in)    , contiguous    :: sep(:)
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
         logical(LK)                 , intent(in)    , optional      :: unique
@@ -6590,10 +6590,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndDefComCusIns_D1_D1_SK4
 #endif
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
-        character(*,SKC)            , intent(in)    , contiguous    :: sep(:)
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
+        character(*,SKG)            , intent(in)    , contiguous    :: sep(:)
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
         logical(LK)                 , intent(in)    , optional      :: unique
@@ -6606,10 +6606,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndDefComCusIns_D1_D1_SK3
 #endif
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
-        character(*,SKC)            , intent(in)    , contiguous    :: sep(:)
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
+        character(*,SKG)            , intent(in)    , contiguous    :: sep(:)
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
         logical(LK)                 , intent(in)    , optional      :: unique
@@ -6622,10 +6622,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndDefComCusIns_D1_D1_SK2
 #endif
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
-        character(*,SKC)            , intent(in)    , contiguous    :: sep(:)
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
+        character(*,SKG)            , intent(in)    , contiguous    :: sep(:)
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
         logical(LK)                 , intent(in)    , optional      :: unique
@@ -6638,10 +6638,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndDefComCusIns_D1_D1_SK1
 #endif
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
-        character(*,SKC)            , intent(in)    , contiguous    :: sep(:)
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
+        character(*,SKG)            , intent(in)    , contiguous    :: sep(:)
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
         logical(LK)                 , intent(in)    , optional      :: unique
@@ -6656,10 +6656,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndDefComCusIns_D1_D1_IK5
 #endif
-        use pm_kind, only: IKC => IK5
+        use pm_kind, only: IKG => IK5
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
-        integer(IKC)                , intent(in)    , contiguous    :: sep(:)
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
+        integer(IKG)                , intent(in)    , contiguous    :: sep(:)
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
         logical(LK)                 , intent(in)    , optional      :: unique
@@ -6672,10 +6672,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndDefComCusIns_D1_D1_IK4
 #endif
-        use pm_kind, only: IKC => IK4
+        use pm_kind, only: IKG => IK4
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
-        integer(IKC)                , intent(in)    , contiguous    :: sep(:)
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
+        integer(IKG)                , intent(in)    , contiguous    :: sep(:)
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
         logical(LK)                 , intent(in)    , optional      :: unique
@@ -6688,10 +6688,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndDefComCusIns_D1_D1_IK3
 #endif
-        use pm_kind, only: IKC => IK3
+        use pm_kind, only: IKG => IK3
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
-        integer(IKC)                , intent(in)    , contiguous    :: sep(:)
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
+        integer(IKG)                , intent(in)    , contiguous    :: sep(:)
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
         logical(LK)                 , intent(in)    , optional      :: unique
@@ -6704,10 +6704,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndDefComCusIns_D1_D1_IK2
 #endif
-        use pm_kind, only: IKC => IK2
+        use pm_kind, only: IKG => IK2
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
-        integer(IKC)                , intent(in)    , contiguous    :: sep(:)
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
+        integer(IKG)                , intent(in)    , contiguous    :: sep(:)
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
         logical(LK)                 , intent(in)    , optional      :: unique
@@ -6720,10 +6720,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndDefComCusIns_D1_D1_IK1
 #endif
-        use pm_kind, only: IKC => IK1
+        use pm_kind, only: IKG => IK1
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
-        integer(IKC)                , intent(in)    , contiguous    :: sep(:)
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
+        integer(IKG)                , intent(in)    , contiguous    :: sep(:)
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
         logical(LK)                 , intent(in)    , optional      :: unique
@@ -6738,10 +6738,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndDefComCusIns_D1_D1_LK5
 #endif
-        use pm_kind, only: LKC => LK5
+        use pm_kind, only: LKG => LK5
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
-        logical(LKC)                , intent(in)    , contiguous    :: sep(:)
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
+        logical(LKG)                , intent(in)    , contiguous    :: sep(:)
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
         logical(LK)                 , intent(in)    , optional      :: unique
@@ -6754,10 +6754,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndDefComCusIns_D1_D1_LK4
 #endif
-        use pm_kind, only: LKC => LK4
+        use pm_kind, only: LKG => LK4
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
-        logical(LKC)                , intent(in)    , contiguous    :: sep(:)
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
+        logical(LKG)                , intent(in)    , contiguous    :: sep(:)
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
         logical(LK)                 , intent(in)    , optional      :: unique
@@ -6770,10 +6770,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndDefComCusIns_D1_D1_LK3
 #endif
-        use pm_kind, only: LKC => LK3
+        use pm_kind, only: LKG => LK3
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
-        logical(LKC)                , intent(in)    , contiguous    :: sep(:)
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
+        logical(LKG)                , intent(in)    , contiguous    :: sep(:)
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
         logical(LK)                 , intent(in)    , optional      :: unique
@@ -6786,10 +6786,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndDefComCusIns_D1_D1_LK2
 #endif
-        use pm_kind, only: LKC => LK2
+        use pm_kind, only: LKG => LK2
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
-        logical(LKC)                , intent(in)    , contiguous    :: sep(:)
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
+        logical(LKG)                , intent(in)    , contiguous    :: sep(:)
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
         logical(LK)                 , intent(in)    , optional      :: unique
@@ -6802,10 +6802,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndDefComCusIns_D1_D1_LK1
 #endif
-        use pm_kind, only: LKC => LK1
+        use pm_kind, only: LKG => LK1
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
-        logical(LKC)                , intent(in)    , contiguous    :: sep(:)
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
+        logical(LKG)                , intent(in)    , contiguous    :: sep(:)
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
         logical(LK)                 , intent(in)    , optional      :: unique
@@ -6820,10 +6820,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndDefComCusIns_D1_D1_CK5
 #endif
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
-        complex(CKC)                , intent(in)    , contiguous    :: sep(:)
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
+        complex(CKG)                , intent(in)    , contiguous    :: sep(:)
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
         logical(LK)                 , intent(in)    , optional      :: unique
@@ -6836,10 +6836,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndDefComCusIns_D1_D1_CK4
 #endif
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
-        complex(CKC)                , intent(in)    , contiguous    :: sep(:)
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
+        complex(CKG)                , intent(in)    , contiguous    :: sep(:)
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
         logical(LK)                 , intent(in)    , optional      :: unique
@@ -6852,10 +6852,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndDefComCusIns_D1_D1_CK3
 #endif
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
-        complex(CKC)                , intent(in)    , contiguous    :: sep(:)
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
+        complex(CKG)                , intent(in)    , contiguous    :: sep(:)
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
         logical(LK)                 , intent(in)    , optional      :: unique
@@ -6868,10 +6868,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndDefComCusIns_D1_D1_CK2
 #endif
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
-        complex(CKC)                , intent(in)    , contiguous    :: sep(:)
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
+        complex(CKG)                , intent(in)    , contiguous    :: sep(:)
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
         logical(LK)                 , intent(in)    , optional      :: unique
@@ -6884,10 +6884,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndDefComCusIns_D1_D1_CK1
 #endif
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
-        complex(CKC)                , intent(in)    , contiguous    :: sep(:)
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
+        complex(CKG)                , intent(in)    , contiguous    :: sep(:)
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
         logical(LK)                 , intent(in)    , optional      :: unique
@@ -6902,10 +6902,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndDefComCusIns_D1_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
-        real(RKC)                   , intent(in)    , contiguous    :: sep(:)
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
+        real(RKG)                   , intent(in)    , contiguous    :: sep(:)
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
         logical(LK)                 , intent(in)    , optional      :: unique
@@ -6918,10 +6918,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndDefComCusIns_D1_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
-        real(RKC)                   , intent(in)    , contiguous    :: sep(:)
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
+        real(RKG)                   , intent(in)    , contiguous    :: sep(:)
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
         logical(LK)                 , intent(in)    , optional      :: unique
@@ -6934,10 +6934,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndDefComCusIns_D1_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
-        real(RKC)                   , intent(in)    , contiguous    :: sep(:)
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
+        real(RKG)                   , intent(in)    , contiguous    :: sep(:)
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
         logical(LK)                 , intent(in)    , optional      :: unique
@@ -6950,10 +6950,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndDefComCusIns_D1_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
-        real(RKC)                   , intent(in)    , contiguous    :: sep(:)
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
+        real(RKG)                   , intent(in)    , contiguous    :: sep(:)
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
         logical(LK)                 , intent(in)    , optional      :: unique
@@ -6966,10 +6966,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndDefComCusIns_D1_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
-        real(RKC)                   , intent(in)    , contiguous    :: sep(:)
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
+        real(RKG)                   , intent(in)    , contiguous    :: sep(:)
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
         logical(LK)                 , intent(in)    , optional      :: unique
@@ -6990,10 +6990,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndCusComCusIns_D1_D1_SK5
 #endif
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
-        character(*,SKC)            , intent(in)    , contiguous    :: sep(:)
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
+        character(*,SKG)            , intent(in)    , contiguous    :: sep(:)
         procedure(logical(LK))                                      :: iseq
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
@@ -7007,10 +7007,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndCusComCusIns_D1_D1_SK4
 #endif
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
-        character(*,SKC)            , intent(in)    , contiguous    :: sep(:)
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
+        character(*,SKG)            , intent(in)    , contiguous    :: sep(:)
         procedure(logical(LK))                                      :: iseq
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
@@ -7024,10 +7024,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndCusComCusIns_D1_D1_SK3
 #endif
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
-        character(*,SKC)            , intent(in)    , contiguous    :: sep(:)
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
+        character(*,SKG)            , intent(in)    , contiguous    :: sep(:)
         procedure(logical(LK))                                      :: iseq
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
@@ -7041,10 +7041,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndCusComCusIns_D1_D1_SK2
 #endif
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
-        character(*,SKC)            , intent(in)    , contiguous    :: sep(:)
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
+        character(*,SKG)            , intent(in)    , contiguous    :: sep(:)
         procedure(logical(LK))                                      :: iseq
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
@@ -7058,10 +7058,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndCusComCusIns_D1_D1_SK1
 #endif
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
-        character(*,SKC)            , intent(in)    , contiguous    :: sep(:)
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
+        character(*,SKG)            , intent(in)    , contiguous    :: sep(:)
         procedure(logical(LK))                                      :: iseq
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
@@ -7077,10 +7077,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndCusComCusIns_D1_D1_IK5
 #endif
-        use pm_kind, only: IKC => IK5
+        use pm_kind, only: IKG => IK5
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
-        integer(IKC)                , intent(in)    , contiguous    :: sep(:)
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
+        integer(IKG)                , intent(in)    , contiguous    :: sep(:)
         procedure(logical(LK))                                      :: iseq
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
@@ -7094,10 +7094,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndCusComCusIns_D1_D1_IK4
 #endif
-        use pm_kind, only: IKC => IK4
+        use pm_kind, only: IKG => IK4
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
-        integer(IKC)                , intent(in)    , contiguous    :: sep(:)
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
+        integer(IKG)                , intent(in)    , contiguous    :: sep(:)
         procedure(logical(LK))                                      :: iseq
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
@@ -7111,10 +7111,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndCusComCusIns_D1_D1_IK3
 #endif
-        use pm_kind, only: IKC => IK3
+        use pm_kind, only: IKG => IK3
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
-        integer(IKC)                , intent(in)    , contiguous    :: sep(:)
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
+        integer(IKG)                , intent(in)    , contiguous    :: sep(:)
         procedure(logical(LK))                                      :: iseq
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
@@ -7128,10 +7128,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndCusComCusIns_D1_D1_IK2
 #endif
-        use pm_kind, only: IKC => IK2
+        use pm_kind, only: IKG => IK2
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
-        integer(IKC)                , intent(in)    , contiguous    :: sep(:)
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
+        integer(IKG)                , intent(in)    , contiguous    :: sep(:)
         procedure(logical(LK))                                      :: iseq
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
@@ -7145,10 +7145,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndCusComCusIns_D1_D1_IK1
 #endif
-        use pm_kind, only: IKC => IK1
+        use pm_kind, only: IKG => IK1
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
-        integer(IKC)                , intent(in)    , contiguous    :: sep(:)
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
+        integer(IKG)                , intent(in)    , contiguous    :: sep(:)
         procedure(logical(LK))                                      :: iseq
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
@@ -7164,10 +7164,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndCusComCusIns_D1_D1_LK5
 #endif
-        use pm_kind, only: LKC => LK5
+        use pm_kind, only: LKG => LK5
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
-        logical(LKC)                , intent(in)    , contiguous    :: sep(:)
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
+        logical(LKG)                , intent(in)    , contiguous    :: sep(:)
         procedure(logical(LK))                                      :: iseq
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
@@ -7181,10 +7181,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndCusComCusIns_D1_D1_LK4
 #endif
-        use pm_kind, only: LKC => LK4
+        use pm_kind, only: LKG => LK4
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
-        logical(LKC)                , intent(in)    , contiguous    :: sep(:)
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
+        logical(LKG)                , intent(in)    , contiguous    :: sep(:)
         procedure(logical(LK))                                      :: iseq
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
@@ -7198,10 +7198,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndCusComCusIns_D1_D1_LK3
 #endif
-        use pm_kind, only: LKC => LK3
+        use pm_kind, only: LKG => LK3
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
-        logical(LKC)                , intent(in)    , contiguous    :: sep(:)
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
+        logical(LKG)                , intent(in)    , contiguous    :: sep(:)
         procedure(logical(LK))                                      :: iseq
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
@@ -7215,10 +7215,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndCusComCusIns_D1_D1_LK2
 #endif
-        use pm_kind, only: LKC => LK2
+        use pm_kind, only: LKG => LK2
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
-        logical(LKC)                , intent(in)    , contiguous    :: sep(:)
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
+        logical(LKG)                , intent(in)    , contiguous    :: sep(:)
         procedure(logical(LK))                                      :: iseq
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
@@ -7232,10 +7232,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndCusComCusIns_D1_D1_LK1
 #endif
-        use pm_kind, only: LKC => LK1
+        use pm_kind, only: LKG => LK1
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
-        logical(LKC)                , intent(in)    , contiguous    :: sep(:)
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
+        logical(LKG)                , intent(in)    , contiguous    :: sep(:)
         procedure(logical(LK))                                      :: iseq
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
@@ -7251,10 +7251,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndCusComCusIns_D1_D1_CK5
 #endif
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
-        complex(CKC)                , intent(in)    , contiguous    :: sep(:)
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
+        complex(CKG)                , intent(in)    , contiguous    :: sep(:)
         procedure(logical(LK))                                      :: iseq
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
@@ -7268,10 +7268,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndCusComCusIns_D1_D1_CK4
 #endif
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
-        complex(CKC)                , intent(in)    , contiguous    :: sep(:)
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
+        complex(CKG)                , intent(in)    , contiguous    :: sep(:)
         procedure(logical(LK))                                      :: iseq
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
@@ -7285,10 +7285,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndCusComCusIns_D1_D1_CK3
 #endif
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
-        complex(CKC)                , intent(in)    , contiguous    :: sep(:)
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
+        complex(CKG)                , intent(in)    , contiguous    :: sep(:)
         procedure(logical(LK))                                      :: iseq
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
@@ -7302,10 +7302,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndCusComCusIns_D1_D1_CK2
 #endif
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
-        complex(CKC)                , intent(in)    , contiguous    :: sep(:)
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
+        complex(CKG)                , intent(in)    , contiguous    :: sep(:)
         procedure(logical(LK))                                      :: iseq
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
@@ -7319,10 +7319,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndCusComCusIns_D1_D1_CK1
 #endif
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
-        complex(CKC)                , intent(in)    , contiguous    :: sep(:)
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
+        complex(CKG)                , intent(in)    , contiguous    :: sep(:)
         procedure(logical(LK))                                      :: iseq
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
@@ -7338,10 +7338,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndCusComCusIns_D1_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
-        real(RKC)                   , intent(in)    , contiguous    :: sep(:)
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
+        real(RKG)                   , intent(in)    , contiguous    :: sep(:)
         procedure(logical(LK))                                      :: iseq
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
@@ -7355,10 +7355,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndCusComCusIns_D1_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
-        real(RKC)                   , intent(in)    , contiguous    :: sep(:)
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
+        real(RKG)                   , intent(in)    , contiguous    :: sep(:)
         procedure(logical(LK))                                      :: iseq
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
@@ -7372,10 +7372,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndCusComCusIns_D1_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
-        real(RKC)                   , intent(in)    , contiguous    :: sep(:)
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
+        real(RKG)                   , intent(in)    , contiguous    :: sep(:)
         procedure(logical(LK))                                      :: iseq
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
@@ -7389,10 +7389,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndCusComCusIns_D1_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
-        real(RKC)                   , intent(in)    , contiguous    :: sep(:)
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
+        real(RKG)                   , intent(in)    , contiguous    :: sep(:)
         procedure(logical(LK))                                      :: iseq
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
@@ -7406,10 +7406,10 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitIndCusComCusIns_D1_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         integer(IK)                 , intent(out)   , allocatable   :: field(:,:)
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
-        real(RKC)                   , intent(in)    , contiguous    :: sep(:)
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
+        real(RKG)                   , intent(in)    , contiguous    :: sep(:)
         procedure(logical(LK))                                      :: iseq
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
@@ -7442,11 +7442,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConDefComDefIns_D0_D0_SK5
 #endif
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))          , intent(out)   , allocatable   :: field(:)
-        character(*,SKC)            , intent(in)                    :: array
-        character(*,SKC)            , intent(in)                    :: sep
+        type(css_pdt(SKG))          , intent(out)   , allocatable   :: field(:)
+        character(*,SKG)            , intent(in)                    :: array
+        character(*,SKG)            , intent(in)                    :: sep
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
 #endif
@@ -7456,11 +7456,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConDefComDefIns_D0_D0_SK4
 #endif
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))          , intent(out)   , allocatable   :: field(:)
-        character(*,SKC)            , intent(in)                    :: array
-        character(*,SKC)            , intent(in)                    :: sep
+        type(css_pdt(SKG))          , intent(out)   , allocatable   :: field(:)
+        character(*,SKG)            , intent(in)                    :: array
+        character(*,SKG)            , intent(in)                    :: sep
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
 #endif
@@ -7470,11 +7470,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConDefComDefIns_D0_D0_SK3
 #endif
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))          , intent(out)   , allocatable   :: field(:)
-        character(*,SKC)            , intent(in)                    :: array
-        character(*,SKC)            , intent(in)                    :: sep
+        type(css_pdt(SKG))          , intent(out)   , allocatable   :: field(:)
+        character(*,SKG)            , intent(in)                    :: array
+        character(*,SKG)            , intent(in)                    :: sep
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
 #endif
@@ -7484,11 +7484,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConDefComDefIns_D0_D0_SK2
 #endif
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))          , intent(out)   , allocatable   :: field(:)
-        character(*,SKC)            , intent(in)                    :: array
-        character(*,SKC)            , intent(in)                    :: sep
+        type(css_pdt(SKG))          , intent(out)   , allocatable   :: field(:)
+        character(*,SKG)            , intent(in)                    :: array
+        character(*,SKG)            , intent(in)                    :: sep
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
 #endif
@@ -7498,11 +7498,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConDefComDefIns_D0_D0_SK1
 #endif
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))          , intent(out)   , allocatable   :: field(:)
-        character(*,SKC)            , intent(in)                    :: array
-        character(*,SKC)            , intent(in)                    :: sep
+        type(css_pdt(SKG))          , intent(out)   , allocatable   :: field(:)
+        character(*,SKG)            , intent(in)                    :: array
+        character(*,SKG)            , intent(in)                    :: sep
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
 #endif
@@ -7514,11 +7514,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConDefComDefIns_D1_D0_SK5
 #endif
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
         use pm_container, only: cvs_pdt
-        type(cvs_pdt(SKC))          , intent(out)   , allocatable   :: field(:)
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
-        character(*,SKC)            , intent(in)                    :: sep
+        type(cvs_pdt(SKG))          , intent(out)   , allocatable   :: field(:)
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
+        character(*,SKG)            , intent(in)                    :: sep
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
 #endif
@@ -7528,11 +7528,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConDefComDefIns_D1_D0_SK4
 #endif
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
         use pm_container, only: cvs_pdt
-        type(cvs_pdt(SKC))          , intent(out)   , allocatable   :: field(:)
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
-        character(*,SKC)            , intent(in)                    :: sep
+        type(cvs_pdt(SKG))          , intent(out)   , allocatable   :: field(:)
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
+        character(*,SKG)            , intent(in)                    :: sep
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
 #endif
@@ -7542,11 +7542,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConDefComDefIns_D1_D0_SK3
 #endif
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
         use pm_container, only: cvs_pdt
-        type(cvs_pdt(SKC))          , intent(out)   , allocatable   :: field(:)
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
-        character(*,SKC)            , intent(in)                    :: sep
+        type(cvs_pdt(SKG))          , intent(out)   , allocatable   :: field(:)
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
+        character(*,SKG)            , intent(in)                    :: sep
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
 #endif
@@ -7556,11 +7556,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConDefComDefIns_D1_D0_SK2
 #endif
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
         use pm_container, only: cvs_pdt
-        type(cvs_pdt(SKC))          , intent(out)   , allocatable   :: field(:)
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
-        character(*,SKC)            , intent(in)                    :: sep
+        type(cvs_pdt(SKG))          , intent(out)   , allocatable   :: field(:)
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
+        character(*,SKG)            , intent(in)                    :: sep
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
 #endif
@@ -7570,11 +7570,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConDefComDefIns_D1_D0_SK1
 #endif
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
         use pm_container, only: cvs_pdt
-        type(cvs_pdt(SKC))          , intent(out)   , allocatable   :: field(:)
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
-        character(*,SKC)            , intent(in)                    :: sep
+        type(cvs_pdt(SKG))          , intent(out)   , allocatable   :: field(:)
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
+        character(*,SKG)            , intent(in)                    :: sep
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
 #endif
@@ -7586,11 +7586,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConDefComDefIns_D1_D0_IK5
 #endif
-        use pm_kind, only: IKC => IK5
+        use pm_kind, only: IKG => IK5
         use pm_container, only: cvi_pdt
-        type(cvi_pdt(IKC))          , intent(out)   , allocatable   :: field(:)
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
-        integer(IKC)                , intent(in)                    :: sep
+        type(cvi_pdt(IKG))          , intent(out)   , allocatable   :: field(:)
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
+        integer(IKG)                , intent(in)                    :: sep
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
 #endif
@@ -7600,11 +7600,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConDefComDefIns_D1_D0_IK4
 #endif
-        use pm_kind, only: IKC => IK4
+        use pm_kind, only: IKG => IK4
         use pm_container, only: cvi_pdt
-        type(cvi_pdt(IKC))          , intent(out)   , allocatable   :: field(:)
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
-        integer(IKC)                , intent(in)                    :: sep
+        type(cvi_pdt(IKG))          , intent(out)   , allocatable   :: field(:)
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
+        integer(IKG)                , intent(in)                    :: sep
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
 #endif
@@ -7614,11 +7614,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConDefComDefIns_D1_D0_IK3
 #endif
-        use pm_kind, only: IKC => IK3
+        use pm_kind, only: IKG => IK3
         use pm_container, only: cvi_pdt
-        type(cvi_pdt(IKC))          , intent(out)   , allocatable   :: field(:)
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
-        integer(IKC)                , intent(in)                    :: sep
+        type(cvi_pdt(IKG))          , intent(out)   , allocatable   :: field(:)
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
+        integer(IKG)                , intent(in)                    :: sep
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
 #endif
@@ -7628,11 +7628,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConDefComDefIns_D1_D0_IK2
 #endif
-        use pm_kind, only: IKC => IK2
+        use pm_kind, only: IKG => IK2
         use pm_container, only: cvi_pdt
-        type(cvi_pdt(IKC))          , intent(out)   , allocatable   :: field(:)
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
-        integer(IKC)                , intent(in)                    :: sep
+        type(cvi_pdt(IKG))          , intent(out)   , allocatable   :: field(:)
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
+        integer(IKG)                , intent(in)                    :: sep
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
 #endif
@@ -7642,11 +7642,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConDefComDefIns_D1_D0_IK1
 #endif
-        use pm_kind, only: IKC => IK1
+        use pm_kind, only: IKG => IK1
         use pm_container, only: cvi_pdt
-        type(cvi_pdt(IKC))          , intent(out)   , allocatable   :: field(:)
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
-        integer(IKC)                , intent(in)                    :: sep
+        type(cvi_pdt(IKG))          , intent(out)   , allocatable   :: field(:)
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
+        integer(IKG)                , intent(in)                    :: sep
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
 #endif
@@ -7658,11 +7658,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConDefComDefIns_D1_D0_LK5
 #endif
-        use pm_kind, only: LKC => LK5
+        use pm_kind, only: LKG => LK5
         use pm_container, only: cvl_pdt
-        type(cvl_pdt(LKC))          , intent(out)   , allocatable   :: field(:)
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
-        logical(LKC)                , intent(in)                    :: sep
+        type(cvl_pdt(LKG))          , intent(out)   , allocatable   :: field(:)
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
+        logical(LKG)                , intent(in)                    :: sep
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
 #endif
@@ -7672,11 +7672,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConDefComDefIns_D1_D0_LK4
 #endif
-        use pm_kind, only: LKC => LK4
+        use pm_kind, only: LKG => LK4
         use pm_container, only: cvl_pdt
-        type(cvl_pdt(LKC))          , intent(out)   , allocatable   :: field(:)
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
-        logical(LKC)                , intent(in)                    :: sep
+        type(cvl_pdt(LKG))          , intent(out)   , allocatable   :: field(:)
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
+        logical(LKG)                , intent(in)                    :: sep
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
 #endif
@@ -7686,11 +7686,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConDefComDefIns_D1_D0_LK3
 #endif
-        use pm_kind, only: LKC => LK3
+        use pm_kind, only: LKG => LK3
         use pm_container, only: cvl_pdt
-        type(cvl_pdt(LKC))          , intent(out)   , allocatable   :: field(:)
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
-        logical(LKC)                , intent(in)                    :: sep
+        type(cvl_pdt(LKG))          , intent(out)   , allocatable   :: field(:)
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
+        logical(LKG)                , intent(in)                    :: sep
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
 #endif
@@ -7700,11 +7700,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConDefComDefIns_D1_D0_LK2
 #endif
-        use pm_kind, only: LKC => LK2
+        use pm_kind, only: LKG => LK2
         use pm_container, only: cvl_pdt
-        type(cvl_pdt(LKC))          , intent(out)   , allocatable   :: field(:)
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
-        logical(LKC)                , intent(in)                    :: sep
+        type(cvl_pdt(LKG))          , intent(out)   , allocatable   :: field(:)
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
+        logical(LKG)                , intent(in)                    :: sep
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
 #endif
@@ -7714,11 +7714,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConDefComDefIns_D1_D0_LK1
 #endif
-        use pm_kind, only: LKC => LK1
+        use pm_kind, only: LKG => LK1
         use pm_container, only: cvl_pdt
-        type(cvl_pdt(LKC))          , intent(out)   , allocatable   :: field(:)
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
-        logical(LKC)                , intent(in)                    :: sep
+        type(cvl_pdt(LKG))          , intent(out)   , allocatable   :: field(:)
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
+        logical(LKG)                , intent(in)                    :: sep
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
 #endif
@@ -7730,11 +7730,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConDefComDefIns_D1_D0_CK5
 #endif
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
         use pm_container, only: cvc_pdt
-        type(cvc_pdt(CKC))          , intent(out)   , allocatable   :: field(:)
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
-        complex(CKC)                , intent(in)                    :: sep
+        type(cvc_pdt(CKG))          , intent(out)   , allocatable   :: field(:)
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
+        complex(CKG)                , intent(in)                    :: sep
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
 #endif
@@ -7744,11 +7744,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConDefComDefIns_D1_D0_CK4
 #endif
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
         use pm_container, only: cvc_pdt
-        type(cvc_pdt(CKC))          , intent(out)   , allocatable   :: field(:)
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
-        complex(CKC)                , intent(in)                    :: sep
+        type(cvc_pdt(CKG))          , intent(out)   , allocatable   :: field(:)
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
+        complex(CKG)                , intent(in)                    :: sep
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
 #endif
@@ -7758,11 +7758,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConDefComDefIns_D1_D0_CK3
 #endif
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
         use pm_container, only: cvc_pdt
-        type(cvc_pdt(CKC))          , intent(out)   , allocatable   :: field(:)
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
-        complex(CKC)                , intent(in)                    :: sep
+        type(cvc_pdt(CKG))          , intent(out)   , allocatable   :: field(:)
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
+        complex(CKG)                , intent(in)                    :: sep
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
 #endif
@@ -7772,11 +7772,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConDefComDefIns_D1_D0_CK2
 #endif
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
         use pm_container, only: cvc_pdt
-        type(cvc_pdt(CKC))          , intent(out)   , allocatable   :: field(:)
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
-        complex(CKC)                , intent(in)                    :: sep
+        type(cvc_pdt(CKG))          , intent(out)   , allocatable   :: field(:)
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
+        complex(CKG)                , intent(in)                    :: sep
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
 #endif
@@ -7786,11 +7786,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConDefComDefIns_D1_D0_CK1
 #endif
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
         use pm_container, only: cvc_pdt
-        type(cvc_pdt(CKC))          , intent(out)   , allocatable   :: field(:)
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
-        complex(CKC)                , intent(in)                    :: sep
+        type(cvc_pdt(CKG))          , intent(out)   , allocatable   :: field(:)
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
+        complex(CKG)                , intent(in)                    :: sep
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
 #endif
@@ -7802,11 +7802,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConDefComDefIns_D1_D0_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         use pm_container, only: cvr_pdt
-        type(cvr_pdt(RKC))          , intent(out)   , allocatable   :: field(:)
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
-        real(RKC)                   , intent(in)                    :: sep
+        type(cvr_pdt(RKG))          , intent(out)   , allocatable   :: field(:)
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
+        real(RKG)                   , intent(in)                    :: sep
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
 #endif
@@ -7816,11 +7816,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConDefComDefIns_D1_D0_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         use pm_container, only: cvr_pdt
-        type(cvr_pdt(RKC))          , intent(out)   , allocatable   :: field(:)
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
-        real(RKC)                   , intent(in)                    :: sep
+        type(cvr_pdt(RKG))          , intent(out)   , allocatable   :: field(:)
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
+        real(RKG)                   , intent(in)                    :: sep
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
 #endif
@@ -7830,11 +7830,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConDefComDefIns_D1_D0_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         use pm_container, only: cvr_pdt
-        type(cvr_pdt(RKC))          , intent(out)   , allocatable   :: field(:)
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
-        real(RKC)                   , intent(in)                    :: sep
+        type(cvr_pdt(RKG))          , intent(out)   , allocatable   :: field(:)
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
+        real(RKG)                   , intent(in)                    :: sep
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
 #endif
@@ -7844,11 +7844,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConDefComDefIns_D1_D0_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         use pm_container, only: cvr_pdt
-        type(cvr_pdt(RKC))          , intent(out)   , allocatable   :: field(:)
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
-        real(RKC)                   , intent(in)                    :: sep
+        type(cvr_pdt(RKG))          , intent(out)   , allocatable   :: field(:)
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
+        real(RKG)                   , intent(in)                    :: sep
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
 #endif
@@ -7858,11 +7858,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConDefComDefIns_D1_D0_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         use pm_container, only: cvr_pdt
-        type(cvr_pdt(RKC))          , intent(out)   , allocatable   :: field(:)
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
-        real(RKC)                   , intent(in)                    :: sep
+        type(cvr_pdt(RKG))          , intent(out)   , allocatable   :: field(:)
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
+        real(RKG)                   , intent(in)                    :: sep
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
 #endif
@@ -7880,11 +7880,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConCusComDefIns_D0_D0_SK5
 #endif
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))          , intent(out)   , allocatable   :: field(:)
-        character(*,SKC)            , intent(in)                    :: array
-        character(*,SKC)            , intent(in)                    :: sep
+        type(css_pdt(SKG))          , intent(out)   , allocatable   :: field(:)
+        character(*,SKG)            , intent(in)                    :: array
+        character(*,SKG)            , intent(in)                    :: sep
         procedure(logical(LK))                                      :: iseq
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
@@ -7895,11 +7895,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConCusComDefIns_D0_D0_SK4
 #endif
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))          , intent(out)   , allocatable   :: field(:)
-        character(*,SKC)            , intent(in)                    :: array
-        character(*,SKC)            , intent(in)                    :: sep
+        type(css_pdt(SKG))          , intent(out)   , allocatable   :: field(:)
+        character(*,SKG)            , intent(in)                    :: array
+        character(*,SKG)            , intent(in)                    :: sep
         procedure(logical(LK))                                      :: iseq
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
@@ -7910,11 +7910,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConCusComDefIns_D0_D0_SK3
 #endif
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))          , intent(out)   , allocatable   :: field(:)
-        character(*,SKC)            , intent(in)                    :: array
-        character(*,SKC)            , intent(in)                    :: sep
+        type(css_pdt(SKG))          , intent(out)   , allocatable   :: field(:)
+        character(*,SKG)            , intent(in)                    :: array
+        character(*,SKG)            , intent(in)                    :: sep
         procedure(logical(LK))                                      :: iseq
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
@@ -7925,11 +7925,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConCusComDefIns_D0_D0_SK2
 #endif
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))          , intent(out)   , allocatable   :: field(:)
-        character(*,SKC)            , intent(in)                    :: array
-        character(*,SKC)            , intent(in)                    :: sep
+        type(css_pdt(SKG))          , intent(out)   , allocatable   :: field(:)
+        character(*,SKG)            , intent(in)                    :: array
+        character(*,SKG)            , intent(in)                    :: sep
         procedure(logical(LK))                                      :: iseq
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
@@ -7940,11 +7940,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConCusComDefIns_D0_D0_SK1
 #endif
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))          , intent(out)   , allocatable   :: field(:)
-        character(*,SKC)            , intent(in)                    :: array
-        character(*,SKC)            , intent(in)                    :: sep
+        type(css_pdt(SKG))          , intent(out)   , allocatable   :: field(:)
+        character(*,SKG)            , intent(in)                    :: array
+        character(*,SKG)            , intent(in)                    :: sep
         procedure(logical(LK))                                      :: iseq
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
@@ -7957,11 +7957,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConCusComDefIns_D1_D0_SK5
 #endif
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
         use pm_container, only: cvs_pdt
-        type(cvs_pdt(SKC))          , intent(out)   , allocatable   :: field(:)
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
-        character(*,SKC)            , intent(in)                    :: sep
+        type(cvs_pdt(SKG))          , intent(out)   , allocatable   :: field(:)
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
+        character(*,SKG)            , intent(in)                    :: sep
         procedure(logical(LK))                                      :: iseq
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
@@ -7972,11 +7972,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConCusComDefIns_D1_D0_SK4
 #endif
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
         use pm_container, only: cvs_pdt
-        type(cvs_pdt(SKC))          , intent(out)   , allocatable   :: field(:)
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
-        character(*,SKC)            , intent(in)                    :: sep
+        type(cvs_pdt(SKG))          , intent(out)   , allocatable   :: field(:)
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
+        character(*,SKG)            , intent(in)                    :: sep
         procedure(logical(LK))                                      :: iseq
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
@@ -7987,11 +7987,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConCusComDefIns_D1_D0_SK3
 #endif
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
         use pm_container, only: cvs_pdt
-        type(cvs_pdt(SKC))          , intent(out)   , allocatable   :: field(:)
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
-        character(*,SKC)            , intent(in)                    :: sep
+        type(cvs_pdt(SKG))          , intent(out)   , allocatable   :: field(:)
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
+        character(*,SKG)            , intent(in)                    :: sep
         procedure(logical(LK))                                      :: iseq
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
@@ -8002,11 +8002,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConCusComDefIns_D1_D0_SK2
 #endif
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
         use pm_container, only: cvs_pdt
-        type(cvs_pdt(SKC))          , intent(out)   , allocatable   :: field(:)
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
-        character(*,SKC)            , intent(in)                    :: sep
+        type(cvs_pdt(SKG))          , intent(out)   , allocatable   :: field(:)
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
+        character(*,SKG)            , intent(in)                    :: sep
         procedure(logical(LK))                                      :: iseq
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
@@ -8017,11 +8017,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConCusComDefIns_D1_D0_SK1
 #endif
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
         use pm_container, only: cvs_pdt
-        type(cvs_pdt(SKC))          , intent(out)   , allocatable   :: field(:)
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
-        character(*,SKC)            , intent(in)                    :: sep
+        type(cvs_pdt(SKG))          , intent(out)   , allocatable   :: field(:)
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
+        character(*,SKG)            , intent(in)                    :: sep
         procedure(logical(LK))                                      :: iseq
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
@@ -8034,11 +8034,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConCusComDefIns_D1_D0_IK5
 #endif
-        use pm_kind, only: IKC => IK5
+        use pm_kind, only: IKG => IK5
         use pm_container, only: cvi_pdt
-        type(cvi_pdt(IKC))          , intent(out)   , allocatable   :: field(:)
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
-        integer(IKC)                , intent(in)                    :: sep
+        type(cvi_pdt(IKG))          , intent(out)   , allocatable   :: field(:)
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
+        integer(IKG)                , intent(in)                    :: sep
         procedure(logical(LK))                                      :: iseq
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
@@ -8049,11 +8049,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConCusComDefIns_D1_D0_IK4
 #endif
-        use pm_kind, only: IKC => IK4
+        use pm_kind, only: IKG => IK4
         use pm_container, only: cvi_pdt
-        type(cvi_pdt(IKC))          , intent(out)   , allocatable   :: field(:)
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
-        integer(IKC)                , intent(in)                    :: sep
+        type(cvi_pdt(IKG))          , intent(out)   , allocatable   :: field(:)
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
+        integer(IKG)                , intent(in)                    :: sep
         procedure(logical(LK))                                      :: iseq
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
@@ -8064,11 +8064,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConCusComDefIns_D1_D0_IK3
 #endif
-        use pm_kind, only: IKC => IK3
+        use pm_kind, only: IKG => IK3
         use pm_container, only: cvi_pdt
-        type(cvi_pdt(IKC))          , intent(out)   , allocatable   :: field(:)
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
-        integer(IKC)                , intent(in)                    :: sep
+        type(cvi_pdt(IKG))          , intent(out)   , allocatable   :: field(:)
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
+        integer(IKG)                , intent(in)                    :: sep
         procedure(logical(LK))                                      :: iseq
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
@@ -8079,11 +8079,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConCusComDefIns_D1_D0_IK2
 #endif
-        use pm_kind, only: IKC => IK2
+        use pm_kind, only: IKG => IK2
         use pm_container, only: cvi_pdt
-        type(cvi_pdt(IKC))          , intent(out)   , allocatable   :: field(:)
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
-        integer(IKC)                , intent(in)                    :: sep
+        type(cvi_pdt(IKG))          , intent(out)   , allocatable   :: field(:)
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
+        integer(IKG)                , intent(in)                    :: sep
         procedure(logical(LK))                                      :: iseq
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
@@ -8094,11 +8094,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConCusComDefIns_D1_D0_IK1
 #endif
-        use pm_kind, only: IKC => IK1
+        use pm_kind, only: IKG => IK1
         use pm_container, only: cvi_pdt
-        type(cvi_pdt(IKC))          , intent(out)   , allocatable   :: field(:)
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
-        integer(IKC)                , intent(in)                    :: sep
+        type(cvi_pdt(IKG))          , intent(out)   , allocatable   :: field(:)
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
+        integer(IKG)                , intent(in)                    :: sep
         procedure(logical(LK))                                      :: iseq
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
@@ -8111,11 +8111,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConCusComDefIns_D1_D0_LK5
 #endif
-        use pm_kind, only: LKC => LK5
+        use pm_kind, only: LKG => LK5
         use pm_container, only: cvl_pdt
-        type(cvl_pdt(LKC))          , intent(out)   , allocatable   :: field(:)
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
-        logical(LKC)                , intent(in)                    :: sep
+        type(cvl_pdt(LKG))          , intent(out)   , allocatable   :: field(:)
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
+        logical(LKG)                , intent(in)                    :: sep
         procedure(logical(LK))                                      :: iseq
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
@@ -8126,11 +8126,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConCusComDefIns_D1_D0_LK4
 #endif
-        use pm_kind, only: LKC => LK4
+        use pm_kind, only: LKG => LK4
         use pm_container, only: cvl_pdt
-        type(cvl_pdt(LKC))          , intent(out)   , allocatable   :: field(:)
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
-        logical(LKC)                , intent(in)                    :: sep
+        type(cvl_pdt(LKG))          , intent(out)   , allocatable   :: field(:)
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
+        logical(LKG)                , intent(in)                    :: sep
         procedure(logical(LK))                                      :: iseq
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
@@ -8141,11 +8141,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConCusComDefIns_D1_D0_LK3
 #endif
-        use pm_kind, only: LKC => LK3
+        use pm_kind, only: LKG => LK3
         use pm_container, only: cvl_pdt
-        type(cvl_pdt(LKC))          , intent(out)   , allocatable   :: field(:)
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
-        logical(LKC)                , intent(in)                    :: sep
+        type(cvl_pdt(LKG))          , intent(out)   , allocatable   :: field(:)
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
+        logical(LKG)                , intent(in)                    :: sep
         procedure(logical(LK))                                      :: iseq
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
@@ -8156,11 +8156,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConCusComDefIns_D1_D0_LK2
 #endif
-        use pm_kind, only: LKC => LK2
+        use pm_kind, only: LKG => LK2
         use pm_container, only: cvl_pdt
-        type(cvl_pdt(LKC))          , intent(out)   , allocatable   :: field(:)
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
-        logical(LKC)                , intent(in)                    :: sep
+        type(cvl_pdt(LKG))          , intent(out)   , allocatable   :: field(:)
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
+        logical(LKG)                , intent(in)                    :: sep
         procedure(logical(LK))                                      :: iseq
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
@@ -8171,11 +8171,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConCusComDefIns_D1_D0_LK1
 #endif
-        use pm_kind, only: LKC => LK1
+        use pm_kind, only: LKG => LK1
         use pm_container, only: cvl_pdt
-        type(cvl_pdt(LKC))          , intent(out)   , allocatable   :: field(:)
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
-        logical(LKC)                , intent(in)                    :: sep
+        type(cvl_pdt(LKG))          , intent(out)   , allocatable   :: field(:)
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
+        logical(LKG)                , intent(in)                    :: sep
         procedure(logical(LK))                                      :: iseq
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
@@ -8188,11 +8188,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConCusComDefIns_D1_D0_CK5
 #endif
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
         use pm_container, only: cvc_pdt
-        type(cvc_pdt(CKC))          , intent(out)   , allocatable   :: field(:)
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
-        complex(CKC)                , intent(in)                    :: sep
+        type(cvc_pdt(CKG))          , intent(out)   , allocatable   :: field(:)
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
+        complex(CKG)                , intent(in)                    :: sep
         procedure(logical(LK))                                      :: iseq
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
@@ -8203,11 +8203,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConCusComDefIns_D1_D0_CK4
 #endif
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
         use pm_container, only: cvc_pdt
-        type(cvc_pdt(CKC))          , intent(out)   , allocatable   :: field(:)
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
-        complex(CKC)                , intent(in)                    :: sep
+        type(cvc_pdt(CKG))          , intent(out)   , allocatable   :: field(:)
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
+        complex(CKG)                , intent(in)                    :: sep
         procedure(logical(LK))                                      :: iseq
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
@@ -8218,11 +8218,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConCusComDefIns_D1_D0_CK3
 #endif
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
         use pm_container, only: cvc_pdt
-        type(cvc_pdt(CKC))          , intent(out)   , allocatable   :: field(:)
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
-        complex(CKC)                , intent(in)                    :: sep
+        type(cvc_pdt(CKG))          , intent(out)   , allocatable   :: field(:)
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
+        complex(CKG)                , intent(in)                    :: sep
         procedure(logical(LK))                                      :: iseq
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
@@ -8233,11 +8233,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConCusComDefIns_D1_D0_CK2
 #endif
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
         use pm_container, only: cvc_pdt
-        type(cvc_pdt(CKC))          , intent(out)   , allocatable   :: field(:)
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
-        complex(CKC)                , intent(in)                    :: sep
+        type(cvc_pdt(CKG))          , intent(out)   , allocatable   :: field(:)
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
+        complex(CKG)                , intent(in)                    :: sep
         procedure(logical(LK))                                      :: iseq
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
@@ -8248,11 +8248,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConCusComDefIns_D1_D0_CK1
 #endif
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
         use pm_container, only: cvc_pdt
-        type(cvc_pdt(CKC))          , intent(out)   , allocatable   :: field(:)
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
-        complex(CKC)                , intent(in)                    :: sep
+        type(cvc_pdt(CKG))          , intent(out)   , allocatable   :: field(:)
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
+        complex(CKG)                , intent(in)                    :: sep
         procedure(logical(LK))                                      :: iseq
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
@@ -8265,11 +8265,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConCusComDefIns_D1_D0_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         use pm_container, only: cvr_pdt
-        type(cvr_pdt(RKC))          , intent(out)   , allocatable   :: field(:)
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
-        real(RKC)                   , intent(in)                    :: sep
+        type(cvr_pdt(RKG))          , intent(out)   , allocatable   :: field(:)
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
+        real(RKG)                   , intent(in)                    :: sep
         procedure(logical(LK))                                      :: iseq
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
@@ -8280,11 +8280,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConCusComDefIns_D1_D0_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         use pm_container, only: cvr_pdt
-        type(cvr_pdt(RKC))          , intent(out)   , allocatable   :: field(:)
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
-        real(RKC)                   , intent(in)                    :: sep
+        type(cvr_pdt(RKG))          , intent(out)   , allocatable   :: field(:)
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
+        real(RKG)                   , intent(in)                    :: sep
         procedure(logical(LK))                                      :: iseq
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
@@ -8295,11 +8295,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConCusComDefIns_D1_D0_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         use pm_container, only: cvr_pdt
-        type(cvr_pdt(RKC))          , intent(out)   , allocatable   :: field(:)
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
-        real(RKC)                   , intent(in)                    :: sep
+        type(cvr_pdt(RKG))          , intent(out)   , allocatable   :: field(:)
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
+        real(RKG)                   , intent(in)                    :: sep
         procedure(logical(LK))                                      :: iseq
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
@@ -8310,11 +8310,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConCusComDefIns_D1_D0_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         use pm_container, only: cvr_pdt
-        type(cvr_pdt(RKC))          , intent(out)   , allocatable   :: field(:)
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
-        real(RKC)                   , intent(in)                    :: sep
+        type(cvr_pdt(RKG))          , intent(out)   , allocatable   :: field(:)
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
+        real(RKG)                   , intent(in)                    :: sep
         procedure(logical(LK))                                      :: iseq
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
@@ -8325,11 +8325,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConCusComDefIns_D1_D0_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         use pm_container, only: cvr_pdt
-        type(cvr_pdt(RKC))          , intent(out)   , allocatable   :: field(:)
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
-        real(RKC)                   , intent(in)                    :: sep
+        type(cvr_pdt(RKG))          , intent(out)   , allocatable   :: field(:)
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
+        real(RKG)                   , intent(in)                    :: sep
         procedure(logical(LK))                                      :: iseq
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
@@ -8348,11 +8348,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConDefComCusIns_D0_D0_SK5
 #endif
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))          , intent(out)   , allocatable   :: field(:)
-        character(*,SKC)            , intent(in)                    :: array
-        character(*,SKC)            , intent(in)                    :: sep
+        type(css_pdt(SKG))          , intent(out)   , allocatable   :: field(:)
+        character(*,SKG)            , intent(in)                    :: array
+        character(*,SKG)            , intent(in)                    :: sep
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
         logical(LK)                 , intent(in)    , optional      :: unique
@@ -8365,11 +8365,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConDefComCusIns_D0_D0_SK4
 #endif
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))          , intent(out)   , allocatable   :: field(:)
-        character(*,SKC)            , intent(in)                    :: array
-        character(*,SKC)            , intent(in)                    :: sep
+        type(css_pdt(SKG))          , intent(out)   , allocatable   :: field(:)
+        character(*,SKG)            , intent(in)                    :: array
+        character(*,SKG)            , intent(in)                    :: sep
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
         logical(LK)                 , intent(in)    , optional      :: unique
@@ -8382,11 +8382,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConDefComCusIns_D0_D0_SK3
 #endif
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))          , intent(out)   , allocatable   :: field(:)
-        character(*,SKC)            , intent(in)                    :: array
-        character(*,SKC)            , intent(in)                    :: sep
+        type(css_pdt(SKG))          , intent(out)   , allocatable   :: field(:)
+        character(*,SKG)            , intent(in)                    :: array
+        character(*,SKG)            , intent(in)                    :: sep
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
         logical(LK)                 , intent(in)    , optional      :: unique
@@ -8399,11 +8399,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConDefComCusIns_D0_D0_SK2
 #endif
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))          , intent(out)   , allocatable   :: field(:)
-        character(*,SKC)            , intent(in)                    :: array
-        character(*,SKC)            , intent(in)                    :: sep
+        type(css_pdt(SKG))          , intent(out)   , allocatable   :: field(:)
+        character(*,SKG)            , intent(in)                    :: array
+        character(*,SKG)            , intent(in)                    :: sep
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
         logical(LK)                 , intent(in)    , optional      :: unique
@@ -8416,11 +8416,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConDefComCusIns_D0_D0_SK1
 #endif
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))          , intent(out)   , allocatable   :: field(:)
-        character(*,SKC)            , intent(in)                    :: array
-        character(*,SKC)            , intent(in)                    :: sep
+        type(css_pdt(SKG))          , intent(out)   , allocatable   :: field(:)
+        character(*,SKG)            , intent(in)                    :: array
+        character(*,SKG)            , intent(in)                    :: sep
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
         logical(LK)                 , intent(in)    , optional      :: unique
@@ -8435,11 +8435,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConDefComCusIns_D1_D0_SK5
 #endif
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
         use pm_container, only: cvs_pdt
-        type(cvs_pdt(SKC))          , intent(out)   , allocatable   :: field(:)
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
-        character(*,SKC)            , intent(in)                    :: sep
+        type(cvs_pdt(SKG))          , intent(out)   , allocatable   :: field(:)
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
+        character(*,SKG)            , intent(in)                    :: sep
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
         logical(LK)                 , intent(in)    , optional      :: unique
@@ -8452,11 +8452,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConDefComCusIns_D1_D0_SK4
 #endif
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
         use pm_container, only: cvs_pdt
-        type(cvs_pdt(SKC))          , intent(out)   , allocatable   :: field(:)
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
-        character(*,SKC)            , intent(in)                    :: sep
+        type(cvs_pdt(SKG))          , intent(out)   , allocatable   :: field(:)
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
+        character(*,SKG)            , intent(in)                    :: sep
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
         logical(LK)                 , intent(in)    , optional      :: unique
@@ -8469,11 +8469,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConDefComCusIns_D1_D0_SK3
 #endif
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
         use pm_container, only: cvs_pdt
-        type(cvs_pdt(SKC))          , intent(out)   , allocatable   :: field(:)
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
-        character(*,SKC)            , intent(in)                    :: sep
+        type(cvs_pdt(SKG))          , intent(out)   , allocatable   :: field(:)
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
+        character(*,SKG)            , intent(in)                    :: sep
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
         logical(LK)                 , intent(in)    , optional      :: unique
@@ -8486,11 +8486,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConDefComCusIns_D1_D0_SK2
 #endif
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
         use pm_container, only: cvs_pdt
-        type(cvs_pdt(SKC))          , intent(out)   , allocatable   :: field(:)
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
-        character(*,SKC)            , intent(in)                    :: sep
+        type(cvs_pdt(SKG))          , intent(out)   , allocatable   :: field(:)
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
+        character(*,SKG)            , intent(in)                    :: sep
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
         logical(LK)                 , intent(in)    , optional      :: unique
@@ -8503,11 +8503,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConDefComCusIns_D1_D0_SK1
 #endif
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
         use pm_container, only: cvs_pdt
-        type(cvs_pdt(SKC))          , intent(out)   , allocatable   :: field(:)
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
-        character(*,SKC)            , intent(in)                    :: sep
+        type(cvs_pdt(SKG))          , intent(out)   , allocatable   :: field(:)
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
+        character(*,SKG)            , intent(in)                    :: sep
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
         logical(LK)                 , intent(in)    , optional      :: unique
@@ -8522,11 +8522,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConDefComCusIns_D1_D0_IK5
 #endif
-        use pm_kind, only: IKC => IK5
+        use pm_kind, only: IKG => IK5
         use pm_container, only: cvi_pdt
-        type(cvi_pdt(IKC))          , intent(out)   , allocatable   :: field(:)
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
-        integer(IKC)                , intent(in)                    :: sep
+        type(cvi_pdt(IKG))          , intent(out)   , allocatable   :: field(:)
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
+        integer(IKG)                , intent(in)                    :: sep
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
         logical(LK)                 , intent(in)    , optional      :: unique
@@ -8539,11 +8539,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConDefComCusIns_D1_D0_IK4
 #endif
-        use pm_kind, only: IKC => IK4
+        use pm_kind, only: IKG => IK4
         use pm_container, only: cvi_pdt
-        type(cvi_pdt(IKC))          , intent(out)   , allocatable   :: field(:)
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
-        integer(IKC)                , intent(in)                    :: sep
+        type(cvi_pdt(IKG))          , intent(out)   , allocatable   :: field(:)
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
+        integer(IKG)                , intent(in)                    :: sep
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
         logical(LK)                 , intent(in)    , optional      :: unique
@@ -8556,11 +8556,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConDefComCusIns_D1_D0_IK3
 #endif
-        use pm_kind, only: IKC => IK3
+        use pm_kind, only: IKG => IK3
         use pm_container, only: cvi_pdt
-        type(cvi_pdt(IKC))          , intent(out)   , allocatable   :: field(:)
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
-        integer(IKC)                , intent(in)                    :: sep
+        type(cvi_pdt(IKG))          , intent(out)   , allocatable   :: field(:)
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
+        integer(IKG)                , intent(in)                    :: sep
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
         logical(LK)                 , intent(in)    , optional      :: unique
@@ -8573,11 +8573,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConDefComCusIns_D1_D0_IK2
 #endif
-        use pm_kind, only: IKC => IK2
+        use pm_kind, only: IKG => IK2
         use pm_container, only: cvi_pdt
-        type(cvi_pdt(IKC))          , intent(out)   , allocatable   :: field(:)
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
-        integer(IKC)                , intent(in)                    :: sep
+        type(cvi_pdt(IKG))          , intent(out)   , allocatable   :: field(:)
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
+        integer(IKG)                , intent(in)                    :: sep
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
         logical(LK)                 , intent(in)    , optional      :: unique
@@ -8590,11 +8590,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConDefComCusIns_D1_D0_IK1
 #endif
-        use pm_kind, only: IKC => IK1
+        use pm_kind, only: IKG => IK1
         use pm_container, only: cvi_pdt
-        type(cvi_pdt(IKC))          , intent(out)   , allocatable   :: field(:)
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
-        integer(IKC)                , intent(in)                    :: sep
+        type(cvi_pdt(IKG))          , intent(out)   , allocatable   :: field(:)
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
+        integer(IKG)                , intent(in)                    :: sep
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
         logical(LK)                 , intent(in)    , optional      :: unique
@@ -8609,11 +8609,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConDefComCusIns_D1_D0_LK5
 #endif
-        use pm_kind, only: LKC => LK5
+        use pm_kind, only: LKG => LK5
         use pm_container, only: cvl_pdt
-        type(cvl_pdt(LKC))          , intent(out)   , allocatable   :: field(:)
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
-        logical(LKC)                , intent(in)                    :: sep
+        type(cvl_pdt(LKG))          , intent(out)   , allocatable   :: field(:)
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
+        logical(LKG)                , intent(in)                    :: sep
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
         logical(LK)                 , intent(in)    , optional      :: unique
@@ -8626,11 +8626,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConDefComCusIns_D1_D0_LK4
 #endif
-        use pm_kind, only: LKC => LK4
+        use pm_kind, only: LKG => LK4
         use pm_container, only: cvl_pdt
-        type(cvl_pdt(LKC))          , intent(out)   , allocatable   :: field(:)
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
-        logical(LKC)                , intent(in)                    :: sep
+        type(cvl_pdt(LKG))          , intent(out)   , allocatable   :: field(:)
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
+        logical(LKG)                , intent(in)                    :: sep
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
         logical(LK)                 , intent(in)    , optional      :: unique
@@ -8643,11 +8643,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConDefComCusIns_D1_D0_LK3
 #endif
-        use pm_kind, only: LKC => LK3
+        use pm_kind, only: LKG => LK3
         use pm_container, only: cvl_pdt
-        type(cvl_pdt(LKC))          , intent(out)   , allocatable   :: field(:)
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
-        logical(LKC)                , intent(in)                    :: sep
+        type(cvl_pdt(LKG))          , intent(out)   , allocatable   :: field(:)
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
+        logical(LKG)                , intent(in)                    :: sep
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
         logical(LK)                 , intent(in)    , optional      :: unique
@@ -8660,11 +8660,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConDefComCusIns_D1_D0_LK2
 #endif
-        use pm_kind, only: LKC => LK2
+        use pm_kind, only: LKG => LK2
         use pm_container, only: cvl_pdt
-        type(cvl_pdt(LKC))          , intent(out)   , allocatable   :: field(:)
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
-        logical(LKC)                , intent(in)                    :: sep
+        type(cvl_pdt(LKG))          , intent(out)   , allocatable   :: field(:)
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
+        logical(LKG)                , intent(in)                    :: sep
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
         logical(LK)                 , intent(in)    , optional      :: unique
@@ -8677,11 +8677,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConDefComCusIns_D1_D0_LK1
 #endif
-        use pm_kind, only: LKC => LK1
+        use pm_kind, only: LKG => LK1
         use pm_container, only: cvl_pdt
-        type(cvl_pdt(LKC))          , intent(out)   , allocatable   :: field(:)
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
-        logical(LKC)                , intent(in)                    :: sep
+        type(cvl_pdt(LKG))          , intent(out)   , allocatable   :: field(:)
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
+        logical(LKG)                , intent(in)                    :: sep
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
         logical(LK)                 , intent(in)    , optional      :: unique
@@ -8696,11 +8696,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConDefComCusIns_D1_D0_CK5
 #endif
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
         use pm_container, only: cvc_pdt
-        type(cvc_pdt(CKC))          , intent(out)   , allocatable   :: field(:)
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
-        complex(CKC)                , intent(in)                    :: sep
+        type(cvc_pdt(CKG))          , intent(out)   , allocatable   :: field(:)
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
+        complex(CKG)                , intent(in)                    :: sep
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
         logical(LK)                 , intent(in)    , optional      :: unique
@@ -8713,11 +8713,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConDefComCusIns_D1_D0_CK4
 #endif
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
         use pm_container, only: cvc_pdt
-        type(cvc_pdt(CKC))          , intent(out)   , allocatable   :: field(:)
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
-        complex(CKC)                , intent(in)                    :: sep
+        type(cvc_pdt(CKG))          , intent(out)   , allocatable   :: field(:)
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
+        complex(CKG)                , intent(in)                    :: sep
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
         logical(LK)                 , intent(in)    , optional      :: unique
@@ -8730,11 +8730,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConDefComCusIns_D1_D0_CK3
 #endif
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
         use pm_container, only: cvc_pdt
-        type(cvc_pdt(CKC))          , intent(out)   , allocatable   :: field(:)
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
-        complex(CKC)                , intent(in)                    :: sep
+        type(cvc_pdt(CKG))          , intent(out)   , allocatable   :: field(:)
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
+        complex(CKG)                , intent(in)                    :: sep
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
         logical(LK)                 , intent(in)    , optional      :: unique
@@ -8747,11 +8747,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConDefComCusIns_D1_D0_CK2
 #endif
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
         use pm_container, only: cvc_pdt
-        type(cvc_pdt(CKC))          , intent(out)   , allocatable   :: field(:)
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
-        complex(CKC)                , intent(in)                    :: sep
+        type(cvc_pdt(CKG))          , intent(out)   , allocatable   :: field(:)
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
+        complex(CKG)                , intent(in)                    :: sep
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
         logical(LK)                 , intent(in)    , optional      :: unique
@@ -8764,11 +8764,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConDefComCusIns_D1_D0_CK1
 #endif
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
         use pm_container, only: cvc_pdt
-        type(cvc_pdt(CKC))          , intent(out)   , allocatable   :: field(:)
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
-        complex(CKC)                , intent(in)                    :: sep
+        type(cvc_pdt(CKG))          , intent(out)   , allocatable   :: field(:)
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
+        complex(CKG)                , intent(in)                    :: sep
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
         logical(LK)                 , intent(in)    , optional      :: unique
@@ -8783,11 +8783,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConDefComCusIns_D1_D0_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         use pm_container, only: cvr_pdt
-        type(cvr_pdt(RKC))          , intent(out)   , allocatable   :: field(:)
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
-        real(RKC)                   , intent(in)                    :: sep
+        type(cvr_pdt(RKG))          , intent(out)   , allocatable   :: field(:)
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
+        real(RKG)                   , intent(in)                    :: sep
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
         logical(LK)                 , intent(in)    , optional      :: unique
@@ -8800,11 +8800,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConDefComCusIns_D1_D0_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         use pm_container, only: cvr_pdt
-        type(cvr_pdt(RKC))          , intent(out)   , allocatable   :: field(:)
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
-        real(RKC)                   , intent(in)                    :: sep
+        type(cvr_pdt(RKG))          , intent(out)   , allocatable   :: field(:)
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
+        real(RKG)                   , intent(in)                    :: sep
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
         logical(LK)                 , intent(in)    , optional      :: unique
@@ -8817,11 +8817,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConDefComCusIns_D1_D0_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         use pm_container, only: cvr_pdt
-        type(cvr_pdt(RKC))          , intent(out)   , allocatable   :: field(:)
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
-        real(RKC)                   , intent(in)                    :: sep
+        type(cvr_pdt(RKG))          , intent(out)   , allocatable   :: field(:)
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
+        real(RKG)                   , intent(in)                    :: sep
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
         logical(LK)                 , intent(in)    , optional      :: unique
@@ -8834,11 +8834,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConDefComCusIns_D1_D0_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         use pm_container, only: cvr_pdt
-        type(cvr_pdt(RKC))          , intent(out)   , allocatable   :: field(:)
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
-        real(RKC)                   , intent(in)                    :: sep
+        type(cvr_pdt(RKG))          , intent(out)   , allocatable   :: field(:)
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
+        real(RKG)                   , intent(in)                    :: sep
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
         logical(LK)                 , intent(in)    , optional      :: unique
@@ -8851,11 +8851,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConDefComCusIns_D1_D0_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         use pm_container, only: cvr_pdt
-        type(cvr_pdt(RKC))          , intent(out)   , allocatable   :: field(:)
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
-        real(RKC)                   , intent(in)                    :: sep
+        type(cvr_pdt(RKG))          , intent(out)   , allocatable   :: field(:)
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
+        real(RKG)                   , intent(in)                    :: sep
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
         logical(LK)                 , intent(in)    , optional      :: unique
@@ -8876,11 +8876,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConCusComCusIns_D0_D0_SK5
 #endif
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))          , intent(out)   , allocatable   :: field(:)
-        character(*,SKC)            , intent(in)                    :: array
-        character(*,SKC)            , intent(in)                    :: sep
+        type(css_pdt(SKG))          , intent(out)   , allocatable   :: field(:)
+        character(*,SKG)            , intent(in)                    :: array
+        character(*,SKG)            , intent(in)                    :: sep
         procedure(logical(LK))                                      :: iseq
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
@@ -8894,11 +8894,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConCusComCusIns_D0_D0_SK4
 #endif
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))          , intent(out)   , allocatable   :: field(:)
-        character(*,SKC)            , intent(in)                    :: array
-        character(*,SKC)            , intent(in)                    :: sep
+        type(css_pdt(SKG))          , intent(out)   , allocatable   :: field(:)
+        character(*,SKG)            , intent(in)                    :: array
+        character(*,SKG)            , intent(in)                    :: sep
         procedure(logical(LK))                                      :: iseq
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
@@ -8912,11 +8912,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConCusComCusIns_D0_D0_SK3
 #endif
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))          , intent(out)   , allocatable   :: field(:)
-        character(*,SKC)            , intent(in)                    :: array
-        character(*,SKC)            , intent(in)                    :: sep
+        type(css_pdt(SKG))          , intent(out)   , allocatable   :: field(:)
+        character(*,SKG)            , intent(in)                    :: array
+        character(*,SKG)            , intent(in)                    :: sep
         procedure(logical(LK))                                      :: iseq
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
@@ -8930,11 +8930,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConCusComCusIns_D0_D0_SK2
 #endif
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))          , intent(out)   , allocatable   :: field(:)
-        character(*,SKC)            , intent(in)                    :: array
-        character(*,SKC)            , intent(in)                    :: sep
+        type(css_pdt(SKG))          , intent(out)   , allocatable   :: field(:)
+        character(*,SKG)            , intent(in)                    :: array
+        character(*,SKG)            , intent(in)                    :: sep
         procedure(logical(LK))                                      :: iseq
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
@@ -8948,11 +8948,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConCusComCusIns_D0_D0_SK1
 #endif
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))          , intent(out)   , allocatable   :: field(:)
-        character(*,SKC)            , intent(in)                    :: array
-        character(*,SKC)            , intent(in)                    :: sep
+        type(css_pdt(SKG))          , intent(out)   , allocatable   :: field(:)
+        character(*,SKG)            , intent(in)                    :: array
+        character(*,SKG)            , intent(in)                    :: sep
         procedure(logical(LK))                                      :: iseq
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
@@ -8968,11 +8968,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConCusComCusIns_D1_D0_SK5
 #endif
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
         use pm_container, only: cvs_pdt
-        type(cvs_pdt(SKC))          , intent(out)   , allocatable   :: field(:)
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
-        character(*,SKC)            , intent(in)                    :: sep
+        type(cvs_pdt(SKG))          , intent(out)   , allocatable   :: field(:)
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
+        character(*,SKG)            , intent(in)                    :: sep
         procedure(logical(LK))                                      :: iseq
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
@@ -8986,11 +8986,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConCusComCusIns_D1_D0_SK4
 #endif
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
         use pm_container, only: cvs_pdt
-        type(cvs_pdt(SKC))          , intent(out)   , allocatable   :: field(:)
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
-        character(*,SKC)            , intent(in)                    :: sep
+        type(cvs_pdt(SKG))          , intent(out)   , allocatable   :: field(:)
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
+        character(*,SKG)            , intent(in)                    :: sep
         procedure(logical(LK))                                      :: iseq
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
@@ -9004,11 +9004,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConCusComCusIns_D1_D0_SK3
 #endif
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
         use pm_container, only: cvs_pdt
-        type(cvs_pdt(SKC))          , intent(out)   , allocatable   :: field(:)
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
-        character(*,SKC)            , intent(in)                    :: sep
+        type(cvs_pdt(SKG))          , intent(out)   , allocatable   :: field(:)
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
+        character(*,SKG)            , intent(in)                    :: sep
         procedure(logical(LK))                                      :: iseq
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
@@ -9022,11 +9022,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConCusComCusIns_D1_D0_SK2
 #endif
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
         use pm_container, only: cvs_pdt
-        type(cvs_pdt(SKC))          , intent(out)   , allocatable   :: field(:)
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
-        character(*,SKC)            , intent(in)                    :: sep
+        type(cvs_pdt(SKG))          , intent(out)   , allocatable   :: field(:)
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
+        character(*,SKG)            , intent(in)                    :: sep
         procedure(logical(LK))                                      :: iseq
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
@@ -9040,11 +9040,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConCusComCusIns_D1_D0_SK1
 #endif
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
         use pm_container, only: cvs_pdt
-        type(cvs_pdt(SKC))          , intent(out)   , allocatable   :: field(:)
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
-        character(*,SKC)            , intent(in)                    :: sep
+        type(cvs_pdt(SKG))          , intent(out)   , allocatable   :: field(:)
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
+        character(*,SKG)            , intent(in)                    :: sep
         procedure(logical(LK))                                      :: iseq
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
@@ -9060,11 +9060,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConCusComCusIns_D1_D0_IK5
 #endif
-        use pm_kind, only: IKC => IK5
+        use pm_kind, only: IKG => IK5
         use pm_container, only: cvi_pdt
-        type(cvi_pdt(IKC))          , intent(out)   , allocatable   :: field(:)
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
-        integer(IKC)                , intent(in)                    :: sep
+        type(cvi_pdt(IKG))          , intent(out)   , allocatable   :: field(:)
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
+        integer(IKG)                , intent(in)                    :: sep
         procedure(logical(LK))                                      :: iseq
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
@@ -9078,11 +9078,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConCusComCusIns_D1_D0_IK4
 #endif
-        use pm_kind, only: IKC => IK4
+        use pm_kind, only: IKG => IK4
         use pm_container, only: cvi_pdt
-        type(cvi_pdt(IKC))          , intent(out)   , allocatable   :: field(:)
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
-        integer(IKC)                , intent(in)                    :: sep
+        type(cvi_pdt(IKG))          , intent(out)   , allocatable   :: field(:)
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
+        integer(IKG)                , intent(in)                    :: sep
         procedure(logical(LK))                                      :: iseq
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
@@ -9096,11 +9096,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConCusComCusIns_D1_D0_IK3
 #endif
-        use pm_kind, only: IKC => IK3
+        use pm_kind, only: IKG => IK3
         use pm_container, only: cvi_pdt
-        type(cvi_pdt(IKC))          , intent(out)   , allocatable   :: field(:)
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
-        integer(IKC)                , intent(in)                    :: sep
+        type(cvi_pdt(IKG))          , intent(out)   , allocatable   :: field(:)
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
+        integer(IKG)                , intent(in)                    :: sep
         procedure(logical(LK))                                      :: iseq
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
@@ -9114,11 +9114,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConCusComCusIns_D1_D0_IK2
 #endif
-        use pm_kind, only: IKC => IK2
+        use pm_kind, only: IKG => IK2
         use pm_container, only: cvi_pdt
-        type(cvi_pdt(IKC))          , intent(out)   , allocatable   :: field(:)
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
-        integer(IKC)                , intent(in)                    :: sep
+        type(cvi_pdt(IKG))          , intent(out)   , allocatable   :: field(:)
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
+        integer(IKG)                , intent(in)                    :: sep
         procedure(logical(LK))                                      :: iseq
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
@@ -9132,11 +9132,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConCusComCusIns_D1_D0_IK1
 #endif
-        use pm_kind, only: IKC => IK1
+        use pm_kind, only: IKG => IK1
         use pm_container, only: cvi_pdt
-        type(cvi_pdt(IKC))          , intent(out)   , allocatable   :: field(:)
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
-        integer(IKC)                , intent(in)                    :: sep
+        type(cvi_pdt(IKG))          , intent(out)   , allocatable   :: field(:)
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
+        integer(IKG)                , intent(in)                    :: sep
         procedure(logical(LK))                                      :: iseq
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
@@ -9152,11 +9152,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConCusComCusIns_D1_D0_LK5
 #endif
-        use pm_kind, only: LKC => LK5
+        use pm_kind, only: LKG => LK5
         use pm_container, only: cvl_pdt
-        type(cvl_pdt(LKC))          , intent(out)   , allocatable   :: field(:)
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
-        logical(LKC)                , intent(in)                    :: sep
+        type(cvl_pdt(LKG))          , intent(out)   , allocatable   :: field(:)
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
+        logical(LKG)                , intent(in)                    :: sep
         procedure(logical(LK))                                      :: iseq
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
@@ -9170,11 +9170,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConCusComCusIns_D1_D0_LK4
 #endif
-        use pm_kind, only: LKC => LK4
+        use pm_kind, only: LKG => LK4
         use pm_container, only: cvl_pdt
-        type(cvl_pdt(LKC))          , intent(out)   , allocatable   :: field(:)
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
-        logical(LKC)                , intent(in)                    :: sep
+        type(cvl_pdt(LKG))          , intent(out)   , allocatable   :: field(:)
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
+        logical(LKG)                , intent(in)                    :: sep
         procedure(logical(LK))                                      :: iseq
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
@@ -9188,11 +9188,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConCusComCusIns_D1_D0_LK3
 #endif
-        use pm_kind, only: LKC => LK3
+        use pm_kind, only: LKG => LK3
         use pm_container, only: cvl_pdt
-        type(cvl_pdt(LKC))          , intent(out)   , allocatable   :: field(:)
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
-        logical(LKC)                , intent(in)                    :: sep
+        type(cvl_pdt(LKG))          , intent(out)   , allocatable   :: field(:)
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
+        logical(LKG)                , intent(in)                    :: sep
         procedure(logical(LK))                                      :: iseq
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
@@ -9206,11 +9206,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConCusComCusIns_D1_D0_LK2
 #endif
-        use pm_kind, only: LKC => LK2
+        use pm_kind, only: LKG => LK2
         use pm_container, only: cvl_pdt
-        type(cvl_pdt(LKC))          , intent(out)   , allocatable   :: field(:)
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
-        logical(LKC)                , intent(in)                    :: sep
+        type(cvl_pdt(LKG))          , intent(out)   , allocatable   :: field(:)
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
+        logical(LKG)                , intent(in)                    :: sep
         procedure(logical(LK))                                      :: iseq
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
@@ -9224,11 +9224,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConCusComCusIns_D1_D0_LK1
 #endif
-        use pm_kind, only: LKC => LK1
+        use pm_kind, only: LKG => LK1
         use pm_container, only: cvl_pdt
-        type(cvl_pdt(LKC))          , intent(out)   , allocatable   :: field(:)
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
-        logical(LKC)                , intent(in)                    :: sep
+        type(cvl_pdt(LKG))          , intent(out)   , allocatable   :: field(:)
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
+        logical(LKG)                , intent(in)                    :: sep
         procedure(logical(LK))                                      :: iseq
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
@@ -9244,11 +9244,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConCusComCusIns_D1_D0_CK5
 #endif
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
         use pm_container, only: cvc_pdt
-        type(cvc_pdt(CKC))          , intent(out)   , allocatable   :: field(:)
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
-        complex(CKC)                , intent(in)                    :: sep
+        type(cvc_pdt(CKG))          , intent(out)   , allocatable   :: field(:)
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
+        complex(CKG)                , intent(in)                    :: sep
         procedure(logical(LK))                                      :: iseq
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
@@ -9262,11 +9262,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConCusComCusIns_D1_D0_CK4
 #endif
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
         use pm_container, only: cvc_pdt
-        type(cvc_pdt(CKC))          , intent(out)   , allocatable   :: field(:)
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
-        complex(CKC)                , intent(in)                    :: sep
+        type(cvc_pdt(CKG))          , intent(out)   , allocatable   :: field(:)
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
+        complex(CKG)                , intent(in)                    :: sep
         procedure(logical(LK))                                      :: iseq
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
@@ -9280,11 +9280,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConCusComCusIns_D1_D0_CK3
 #endif
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
         use pm_container, only: cvc_pdt
-        type(cvc_pdt(CKC))          , intent(out)   , allocatable   :: field(:)
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
-        complex(CKC)                , intent(in)                    :: sep
+        type(cvc_pdt(CKG))          , intent(out)   , allocatable   :: field(:)
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
+        complex(CKG)                , intent(in)                    :: sep
         procedure(logical(LK))                                      :: iseq
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
@@ -9298,11 +9298,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConCusComCusIns_D1_D0_CK2
 #endif
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
         use pm_container, only: cvc_pdt
-        type(cvc_pdt(CKC))          , intent(out)   , allocatable   :: field(:)
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
-        complex(CKC)                , intent(in)                    :: sep
+        type(cvc_pdt(CKG))          , intent(out)   , allocatable   :: field(:)
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
+        complex(CKG)                , intent(in)                    :: sep
         procedure(logical(LK))                                      :: iseq
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
@@ -9316,11 +9316,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConCusComCusIns_D1_D0_CK1
 #endif
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
         use pm_container, only: cvc_pdt
-        type(cvc_pdt(CKC))          , intent(out)   , allocatable   :: field(:)
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
-        complex(CKC)                , intent(in)                    :: sep
+        type(cvc_pdt(CKG))          , intent(out)   , allocatable   :: field(:)
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
+        complex(CKG)                , intent(in)                    :: sep
         procedure(logical(LK))                                      :: iseq
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
@@ -9336,11 +9336,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConCusComCusIns_D1_D0_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         use pm_container, only: cvr_pdt
-        type(cvr_pdt(RKC))          , intent(out)   , allocatable   :: field(:)
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
-        real(RKC)                   , intent(in)                    :: sep
+        type(cvr_pdt(RKG))          , intent(out)   , allocatable   :: field(:)
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
+        real(RKG)                   , intent(in)                    :: sep
         procedure(logical(LK))                                      :: iseq
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
@@ -9354,11 +9354,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConCusComCusIns_D1_D0_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         use pm_container, only: cvr_pdt
-        type(cvr_pdt(RKC))          , intent(out)   , allocatable   :: field(:)
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
-        real(RKC)                   , intent(in)                    :: sep
+        type(cvr_pdt(RKG))          , intent(out)   , allocatable   :: field(:)
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
+        real(RKG)                   , intent(in)                    :: sep
         procedure(logical(LK))                                      :: iseq
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
@@ -9372,11 +9372,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConCusComCusIns_D1_D0_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         use pm_container, only: cvr_pdt
-        type(cvr_pdt(RKC))          , intent(out)   , allocatable   :: field(:)
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
-        real(RKC)                   , intent(in)                    :: sep
+        type(cvr_pdt(RKG))          , intent(out)   , allocatable   :: field(:)
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
+        real(RKG)                   , intent(in)                    :: sep
         procedure(logical(LK))                                      :: iseq
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
@@ -9390,11 +9390,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConCusComCusIns_D1_D0_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         use pm_container, only: cvr_pdt
-        type(cvr_pdt(RKC))          , intent(out)   , allocatable   :: field(:)
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
-        real(RKC)                   , intent(in)                    :: sep
+        type(cvr_pdt(RKG))          , intent(out)   , allocatable   :: field(:)
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
+        real(RKG)                   , intent(in)                    :: sep
         procedure(logical(LK))                                      :: iseq
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
@@ -9408,11 +9408,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConCusComCusIns_D1_D0_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         use pm_container, only: cvr_pdt
-        type(cvr_pdt(RKC))          , intent(out)   , allocatable   :: field(:)
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
-        real(RKC)                   , intent(in)                    :: sep
+        type(cvr_pdt(RKG))          , intent(out)   , allocatable   :: field(:)
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
+        real(RKG)                   , intent(in)                    :: sep
         procedure(logical(LK))                                      :: iseq
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
@@ -9434,11 +9434,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConDefComDefIns_D1_D1_SK5
 #endif
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
         use pm_container, only: cvs_pdt
-        type(cvs_pdt(SKC))          , intent(out)   , allocatable   :: field(:)
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
-        character(*,SKC)            , intent(in)    , contiguous    :: sep(:)
+        type(cvs_pdt(SKG))          , intent(out)   , allocatable   :: field(:)
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
+        character(*,SKG)            , intent(in)    , contiguous    :: sep(:)
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
 #endif
@@ -9448,11 +9448,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConDefComDefIns_D1_D1_SK4
 #endif
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
         use pm_container, only: cvs_pdt
-        type(cvs_pdt(SKC))          , intent(out)   , allocatable   :: field(:)
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
-        character(*,SKC)            , intent(in)    , contiguous    :: sep(:)
+        type(cvs_pdt(SKG))          , intent(out)   , allocatable   :: field(:)
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
+        character(*,SKG)            , intent(in)    , contiguous    :: sep(:)
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
 #endif
@@ -9462,11 +9462,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConDefComDefIns_D1_D1_SK3
 #endif
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
         use pm_container, only: cvs_pdt
-        type(cvs_pdt(SKC))          , intent(out)   , allocatable   :: field(:)
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
-        character(*,SKC)            , intent(in)    , contiguous    :: sep(:)
+        type(cvs_pdt(SKG))          , intent(out)   , allocatable   :: field(:)
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
+        character(*,SKG)            , intent(in)    , contiguous    :: sep(:)
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
 #endif
@@ -9476,11 +9476,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConDefComDefIns_D1_D1_SK2
 #endif
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
         use pm_container, only: cvs_pdt
-        type(cvs_pdt(SKC))          , intent(out)   , allocatable   :: field(:)
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
-        character(*,SKC)            , intent(in)    , contiguous    :: sep(:)
+        type(cvs_pdt(SKG))          , intent(out)   , allocatable   :: field(:)
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
+        character(*,SKG)            , intent(in)    , contiguous    :: sep(:)
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
 #endif
@@ -9490,11 +9490,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConDefComDefIns_D1_D1_SK1
 #endif
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
         use pm_container, only: cvs_pdt
-        type(cvs_pdt(SKC))          , intent(out)   , allocatable   :: field(:)
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
-        character(*,SKC)            , intent(in)    , contiguous    :: sep(:)
+        type(cvs_pdt(SKG))          , intent(out)   , allocatable   :: field(:)
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
+        character(*,SKG)            , intent(in)    , contiguous    :: sep(:)
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
 #endif
@@ -9506,11 +9506,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConDefComDefIns_D1_D1_IK5
 #endif
-        use pm_kind, only: IKC => IK5
+        use pm_kind, only: IKG => IK5
         use pm_container, only: cvi_pdt
-        type(cvi_pdt(IKC))          , intent(out)   , allocatable   :: field(:)
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
-        integer(IKC)                , intent(in)    , contiguous    :: sep(:)
+        type(cvi_pdt(IKG))          , intent(out)   , allocatable   :: field(:)
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
+        integer(IKG)                , intent(in)    , contiguous    :: sep(:)
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
 #endif
@@ -9520,11 +9520,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConDefComDefIns_D1_D1_IK4
 #endif
-        use pm_kind, only: IKC => IK4
+        use pm_kind, only: IKG => IK4
         use pm_container, only: cvi_pdt
-        type(cvi_pdt(IKC))          , intent(out)   , allocatable   :: field(:)
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
-        integer(IKC)                , intent(in)    , contiguous    :: sep(:)
+        type(cvi_pdt(IKG))          , intent(out)   , allocatable   :: field(:)
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
+        integer(IKG)                , intent(in)    , contiguous    :: sep(:)
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
 #endif
@@ -9534,11 +9534,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConDefComDefIns_D1_D1_IK3
 #endif
-        use pm_kind, only: IKC => IK3
+        use pm_kind, only: IKG => IK3
         use pm_container, only: cvi_pdt
-        type(cvi_pdt(IKC))          , intent(out)   , allocatable   :: field(:)
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
-        integer(IKC)                , intent(in)    , contiguous    :: sep(:)
+        type(cvi_pdt(IKG))          , intent(out)   , allocatable   :: field(:)
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
+        integer(IKG)                , intent(in)    , contiguous    :: sep(:)
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
 #endif
@@ -9548,11 +9548,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConDefComDefIns_D1_D1_IK2
 #endif
-        use pm_kind, only: IKC => IK2
+        use pm_kind, only: IKG => IK2
         use pm_container, only: cvi_pdt
-        type(cvi_pdt(IKC))          , intent(out)   , allocatable   :: field(:)
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
-        integer(IKC)                , intent(in)    , contiguous    :: sep(:)
+        type(cvi_pdt(IKG))          , intent(out)   , allocatable   :: field(:)
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
+        integer(IKG)                , intent(in)    , contiguous    :: sep(:)
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
 #endif
@@ -9562,11 +9562,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConDefComDefIns_D1_D1_IK1
 #endif
-        use pm_kind, only: IKC => IK1
+        use pm_kind, only: IKG => IK1
         use pm_container, only: cvi_pdt
-        type(cvi_pdt(IKC))          , intent(out)   , allocatable   :: field(:)
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
-        integer(IKC)                , intent(in)    , contiguous    :: sep(:)
+        type(cvi_pdt(IKG))          , intent(out)   , allocatable   :: field(:)
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
+        integer(IKG)                , intent(in)    , contiguous    :: sep(:)
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
 #endif
@@ -9578,11 +9578,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConDefComDefIns_D1_D1_LK5
 #endif
-        use pm_kind, only: LKC => LK5
+        use pm_kind, only: LKG => LK5
         use pm_container, only: cvl_pdt
-        type(cvl_pdt(LKC))          , intent(out)   , allocatable   :: field(:)
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
-        logical(LKC)                , intent(in)    , contiguous    :: sep(:)
+        type(cvl_pdt(LKG))          , intent(out)   , allocatable   :: field(:)
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
+        logical(LKG)                , intent(in)    , contiguous    :: sep(:)
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
 #endif
@@ -9592,11 +9592,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConDefComDefIns_D1_D1_LK4
 #endif
-        use pm_kind, only: LKC => LK4
+        use pm_kind, only: LKG => LK4
         use pm_container, only: cvl_pdt
-        type(cvl_pdt(LKC))          , intent(out)   , allocatable   :: field(:)
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
-        logical(LKC)                , intent(in)    , contiguous    :: sep(:)
+        type(cvl_pdt(LKG))          , intent(out)   , allocatable   :: field(:)
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
+        logical(LKG)                , intent(in)    , contiguous    :: sep(:)
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
 #endif
@@ -9606,11 +9606,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConDefComDefIns_D1_D1_LK3
 #endif
-        use pm_kind, only: LKC => LK3
+        use pm_kind, only: LKG => LK3
         use pm_container, only: cvl_pdt
-        type(cvl_pdt(LKC))          , intent(out)   , allocatable   :: field(:)
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
-        logical(LKC)                , intent(in)    , contiguous    :: sep(:)
+        type(cvl_pdt(LKG))          , intent(out)   , allocatable   :: field(:)
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
+        logical(LKG)                , intent(in)    , contiguous    :: sep(:)
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
 #endif
@@ -9620,11 +9620,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConDefComDefIns_D1_D1_LK2
 #endif
-        use pm_kind, only: LKC => LK2
+        use pm_kind, only: LKG => LK2
         use pm_container, only: cvl_pdt
-        type(cvl_pdt(LKC))          , intent(out)   , allocatable   :: field(:)
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
-        logical(LKC)                , intent(in)    , contiguous    :: sep(:)
+        type(cvl_pdt(LKG))          , intent(out)   , allocatable   :: field(:)
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
+        logical(LKG)                , intent(in)    , contiguous    :: sep(:)
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
 #endif
@@ -9634,11 +9634,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConDefComDefIns_D1_D1_LK1
 #endif
-        use pm_kind, only: LKC => LK1
+        use pm_kind, only: LKG => LK1
         use pm_container, only: cvl_pdt
-        type(cvl_pdt(LKC))          , intent(out)   , allocatable   :: field(:)
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
-        logical(LKC)                , intent(in)    , contiguous    :: sep(:)
+        type(cvl_pdt(LKG))          , intent(out)   , allocatable   :: field(:)
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
+        logical(LKG)                , intent(in)    , contiguous    :: sep(:)
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
 #endif
@@ -9650,11 +9650,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConDefComDefIns_D1_D1_CK5
 #endif
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
         use pm_container, only: cvc_pdt
-        type(cvc_pdt(CKC))          , intent(out)   , allocatable   :: field(:)
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
-        complex(CKC)                , intent(in)    , contiguous    :: sep(:)
+        type(cvc_pdt(CKG))          , intent(out)   , allocatable   :: field(:)
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
+        complex(CKG)                , intent(in)    , contiguous    :: sep(:)
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
 #endif
@@ -9664,11 +9664,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConDefComDefIns_D1_D1_CK4
 #endif
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
         use pm_container, only: cvc_pdt
-        type(cvc_pdt(CKC))          , intent(out)   , allocatable   :: field(:)
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
-        complex(CKC)                , intent(in)    , contiguous    :: sep(:)
+        type(cvc_pdt(CKG))          , intent(out)   , allocatable   :: field(:)
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
+        complex(CKG)                , intent(in)    , contiguous    :: sep(:)
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
 #endif
@@ -9678,11 +9678,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConDefComDefIns_D1_D1_CK3
 #endif
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
         use pm_container, only: cvc_pdt
-        type(cvc_pdt(CKC))          , intent(out)   , allocatable   :: field(:)
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
-        complex(CKC)                , intent(in)    , contiguous    :: sep(:)
+        type(cvc_pdt(CKG))          , intent(out)   , allocatable   :: field(:)
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
+        complex(CKG)                , intent(in)    , contiguous    :: sep(:)
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
 #endif
@@ -9692,11 +9692,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConDefComDefIns_D1_D1_CK2
 #endif
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
         use pm_container, only: cvc_pdt
-        type(cvc_pdt(CKC))          , intent(out)   , allocatable   :: field(:)
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
-        complex(CKC)                , intent(in)    , contiguous    :: sep(:)
+        type(cvc_pdt(CKG))          , intent(out)   , allocatable   :: field(:)
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
+        complex(CKG)                , intent(in)    , contiguous    :: sep(:)
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
 #endif
@@ -9706,11 +9706,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConDefComDefIns_D1_D1_CK1
 #endif
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
         use pm_container, only: cvc_pdt
-        type(cvc_pdt(CKC))          , intent(out)   , allocatable   :: field(:)
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
-        complex(CKC)                , intent(in)    , contiguous    :: sep(:)
+        type(cvc_pdt(CKG))          , intent(out)   , allocatable   :: field(:)
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
+        complex(CKG)                , intent(in)    , contiguous    :: sep(:)
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
 #endif
@@ -9722,11 +9722,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConDefComDefIns_D1_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         use pm_container, only: cvr_pdt
-        type(cvr_pdt(RKC))          , intent(out)   , allocatable   :: field(:)
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
-        real(RKC)                   , intent(in)    , contiguous    :: sep(:)
+        type(cvr_pdt(RKG))          , intent(out)   , allocatable   :: field(:)
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
+        real(RKG)                   , intent(in)    , contiguous    :: sep(:)
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
 #endif
@@ -9736,11 +9736,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConDefComDefIns_D1_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         use pm_container, only: cvr_pdt
-        type(cvr_pdt(RKC))          , intent(out)   , allocatable   :: field(:)
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
-        real(RKC)                   , intent(in)    , contiguous    :: sep(:)
+        type(cvr_pdt(RKG))          , intent(out)   , allocatable   :: field(:)
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
+        real(RKG)                   , intent(in)    , contiguous    :: sep(:)
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
 #endif
@@ -9750,11 +9750,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConDefComDefIns_D1_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         use pm_container, only: cvr_pdt
-        type(cvr_pdt(RKC))          , intent(out)   , allocatable   :: field(:)
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
-        real(RKC)                   , intent(in)    , contiguous    :: sep(:)
+        type(cvr_pdt(RKG))          , intent(out)   , allocatable   :: field(:)
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
+        real(RKG)                   , intent(in)    , contiguous    :: sep(:)
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
 #endif
@@ -9764,11 +9764,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConDefComDefIns_D1_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         use pm_container, only: cvr_pdt
-        type(cvr_pdt(RKC))          , intent(out)   , allocatable   :: field(:)
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
-        real(RKC)                   , intent(in)    , contiguous    :: sep(:)
+        type(cvr_pdt(RKG))          , intent(out)   , allocatable   :: field(:)
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
+        real(RKG)                   , intent(in)    , contiguous    :: sep(:)
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
 #endif
@@ -9778,11 +9778,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConDefComDefIns_D1_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         use pm_container, only: cvr_pdt
-        type(cvr_pdt(RKC))          , intent(out)   , allocatable   :: field(:)
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
-        real(RKC)                   , intent(in)    , contiguous    :: sep(:)
+        type(cvr_pdt(RKG))          , intent(out)   , allocatable   :: field(:)
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
+        real(RKG)                   , intent(in)    , contiguous    :: sep(:)
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
 #endif
@@ -9800,11 +9800,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConCusComDefIns_D1_D1_SK5
 #endif
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
         use pm_container, only: cvs_pdt
-        type(cvs_pdt(SKC))          , intent(out)   , allocatable   :: field(:)
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
-        character(*,SKC)            , intent(in)    , contiguous    :: sep(:)
+        type(cvs_pdt(SKG))          , intent(out)   , allocatable   :: field(:)
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
+        character(*,SKG)            , intent(in)    , contiguous    :: sep(:)
         procedure(logical(LK))                                      :: iseq
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
@@ -9815,11 +9815,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConCusComDefIns_D1_D1_SK4
 #endif
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
         use pm_container, only: cvs_pdt
-        type(cvs_pdt(SKC))          , intent(out)   , allocatable   :: field(:)
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
-        character(*,SKC)            , intent(in)    , contiguous    :: sep(:)
+        type(cvs_pdt(SKG))          , intent(out)   , allocatable   :: field(:)
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
+        character(*,SKG)            , intent(in)    , contiguous    :: sep(:)
         procedure(logical(LK))                                      :: iseq
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
@@ -9830,11 +9830,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConCusComDefIns_D1_D1_SK3
 #endif
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
         use pm_container, only: cvs_pdt
-        type(cvs_pdt(SKC))          , intent(out)   , allocatable   :: field(:)
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
-        character(*,SKC)            , intent(in)    , contiguous    :: sep(:)
+        type(cvs_pdt(SKG))          , intent(out)   , allocatable   :: field(:)
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
+        character(*,SKG)            , intent(in)    , contiguous    :: sep(:)
         procedure(logical(LK))                                      :: iseq
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
@@ -9845,11 +9845,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConCusComDefIns_D1_D1_SK2
 #endif
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
         use pm_container, only: cvs_pdt
-        type(cvs_pdt(SKC))          , intent(out)   , allocatable   :: field(:)
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
-        character(*,SKC)            , intent(in)    , contiguous    :: sep(:)
+        type(cvs_pdt(SKG))          , intent(out)   , allocatable   :: field(:)
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
+        character(*,SKG)            , intent(in)    , contiguous    :: sep(:)
         procedure(logical(LK))                                      :: iseq
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
@@ -9860,11 +9860,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConCusComDefIns_D1_D1_SK1
 #endif
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
         use pm_container, only: cvs_pdt
-        type(cvs_pdt(SKC))          , intent(out)   , allocatable   :: field(:)
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
-        character(*,SKC)            , intent(in)    , contiguous    :: sep(:)
+        type(cvs_pdt(SKG))          , intent(out)   , allocatable   :: field(:)
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
+        character(*,SKG)            , intent(in)    , contiguous    :: sep(:)
         procedure(logical(LK))                                      :: iseq
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
@@ -9877,11 +9877,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConCusComDefIns_D1_D1_IK5
 #endif
-        use pm_kind, only: IKC => IK5
+        use pm_kind, only: IKG => IK5
         use pm_container, only: cvi_pdt
-        type(cvi_pdt(IKC))          , intent(out)   , allocatable   :: field(:)
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
-        integer(IKC)                , intent(in)    , contiguous    :: sep(:)
+        type(cvi_pdt(IKG))          , intent(out)   , allocatable   :: field(:)
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
+        integer(IKG)                , intent(in)    , contiguous    :: sep(:)
         procedure(logical(LK))                                      :: iseq
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
@@ -9892,11 +9892,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConCusComDefIns_D1_D1_IK4
 #endif
-        use pm_kind, only: IKC => IK4
+        use pm_kind, only: IKG => IK4
         use pm_container, only: cvi_pdt
-        type(cvi_pdt(IKC))          , intent(out)   , allocatable   :: field(:)
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
-        integer(IKC)                , intent(in)    , contiguous    :: sep(:)
+        type(cvi_pdt(IKG))          , intent(out)   , allocatable   :: field(:)
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
+        integer(IKG)                , intent(in)    , contiguous    :: sep(:)
         procedure(logical(LK))                                      :: iseq
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
@@ -9907,11 +9907,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConCusComDefIns_D1_D1_IK3
 #endif
-        use pm_kind, only: IKC => IK3
+        use pm_kind, only: IKG => IK3
         use pm_container, only: cvi_pdt
-        type(cvi_pdt(IKC))          , intent(out)   , allocatable   :: field(:)
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
-        integer(IKC)                , intent(in)    , contiguous    :: sep(:)
+        type(cvi_pdt(IKG))          , intent(out)   , allocatable   :: field(:)
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
+        integer(IKG)                , intent(in)    , contiguous    :: sep(:)
         procedure(logical(LK))                                      :: iseq
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
@@ -9922,11 +9922,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConCusComDefIns_D1_D1_IK2
 #endif
-        use pm_kind, only: IKC => IK2
+        use pm_kind, only: IKG => IK2
         use pm_container, only: cvi_pdt
-        type(cvi_pdt(IKC))          , intent(out)   , allocatable   :: field(:)
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
-        integer(IKC)                , intent(in)    , contiguous    :: sep(:)
+        type(cvi_pdt(IKG))          , intent(out)   , allocatable   :: field(:)
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
+        integer(IKG)                , intent(in)    , contiguous    :: sep(:)
         procedure(logical(LK))                                      :: iseq
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
@@ -9937,11 +9937,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConCusComDefIns_D1_D1_IK1
 #endif
-        use pm_kind, only: IKC => IK1
+        use pm_kind, only: IKG => IK1
         use pm_container, only: cvi_pdt
-        type(cvi_pdt(IKC))          , intent(out)   , allocatable   :: field(:)
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
-        integer(IKC)                , intent(in)    , contiguous    :: sep(:)
+        type(cvi_pdt(IKG))          , intent(out)   , allocatable   :: field(:)
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
+        integer(IKG)                , intent(in)    , contiguous    :: sep(:)
         procedure(logical(LK))                                      :: iseq
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
@@ -9954,11 +9954,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConCusComDefIns_D1_D1_LK5
 #endif
-        use pm_kind, only: LKC => LK5
+        use pm_kind, only: LKG => LK5
         use pm_container, only: cvl_pdt
-        type(cvl_pdt(LKC))          , intent(out)   , allocatable   :: field(:)
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
-        logical(LKC)                , intent(in)    , contiguous    :: sep(:)
+        type(cvl_pdt(LKG))          , intent(out)   , allocatable   :: field(:)
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
+        logical(LKG)                , intent(in)    , contiguous    :: sep(:)
         procedure(logical(LK))                                      :: iseq
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
@@ -9969,11 +9969,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConCusComDefIns_D1_D1_LK4
 #endif
-        use pm_kind, only: LKC => LK4
+        use pm_kind, only: LKG => LK4
         use pm_container, only: cvl_pdt
-        type(cvl_pdt(LKC))          , intent(out)   , allocatable   :: field(:)
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
-        logical(LKC)                , intent(in)    , contiguous    :: sep(:)
+        type(cvl_pdt(LKG))          , intent(out)   , allocatable   :: field(:)
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
+        logical(LKG)                , intent(in)    , contiguous    :: sep(:)
         procedure(logical(LK))                                      :: iseq
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
@@ -9984,11 +9984,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConCusComDefIns_D1_D1_LK3
 #endif
-        use pm_kind, only: LKC => LK3
+        use pm_kind, only: LKG => LK3
         use pm_container, only: cvl_pdt
-        type(cvl_pdt(LKC))          , intent(out)   , allocatable   :: field(:)
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
-        logical(LKC)                , intent(in)    , contiguous    :: sep(:)
+        type(cvl_pdt(LKG))          , intent(out)   , allocatable   :: field(:)
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
+        logical(LKG)                , intent(in)    , contiguous    :: sep(:)
         procedure(logical(LK))                                      :: iseq
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
@@ -9999,11 +9999,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConCusComDefIns_D1_D1_LK2
 #endif
-        use pm_kind, only: LKC => LK2
+        use pm_kind, only: LKG => LK2
         use pm_container, only: cvl_pdt
-        type(cvl_pdt(LKC))          , intent(out)   , allocatable   :: field(:)
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
-        logical(LKC)                , intent(in)    , contiguous    :: sep(:)
+        type(cvl_pdt(LKG))          , intent(out)   , allocatable   :: field(:)
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
+        logical(LKG)                , intent(in)    , contiguous    :: sep(:)
         procedure(logical(LK))                                      :: iseq
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
@@ -10014,11 +10014,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConCusComDefIns_D1_D1_LK1
 #endif
-        use pm_kind, only: LKC => LK1
+        use pm_kind, only: LKG => LK1
         use pm_container, only: cvl_pdt
-        type(cvl_pdt(LKC))          , intent(out)   , allocatable   :: field(:)
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
-        logical(LKC)                , intent(in)    , contiguous    :: sep(:)
+        type(cvl_pdt(LKG))          , intent(out)   , allocatable   :: field(:)
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
+        logical(LKG)                , intent(in)    , contiguous    :: sep(:)
         procedure(logical(LK))                                      :: iseq
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
@@ -10031,11 +10031,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConCusComDefIns_D1_D1_CK5
 #endif
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
         use pm_container, only: cvc_pdt
-        type(cvc_pdt(CKC))          , intent(out)   , allocatable   :: field(:)
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
-        complex(CKC)                , intent(in)    , contiguous    :: sep(:)
+        type(cvc_pdt(CKG))          , intent(out)   , allocatable   :: field(:)
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
+        complex(CKG)                , intent(in)    , contiguous    :: sep(:)
         procedure(logical(LK))                                      :: iseq
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
@@ -10046,11 +10046,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConCusComDefIns_D1_D1_CK4
 #endif
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
         use pm_container, only: cvc_pdt
-        type(cvc_pdt(CKC))          , intent(out)   , allocatable   :: field(:)
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
-        complex(CKC)                , intent(in)    , contiguous    :: sep(:)
+        type(cvc_pdt(CKG))          , intent(out)   , allocatable   :: field(:)
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
+        complex(CKG)                , intent(in)    , contiguous    :: sep(:)
         procedure(logical(LK))                                      :: iseq
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
@@ -10061,11 +10061,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConCusComDefIns_D1_D1_CK3
 #endif
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
         use pm_container, only: cvc_pdt
-        type(cvc_pdt(CKC))          , intent(out)   , allocatable   :: field(:)
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
-        complex(CKC)                , intent(in)    , contiguous    :: sep(:)
+        type(cvc_pdt(CKG))          , intent(out)   , allocatable   :: field(:)
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
+        complex(CKG)                , intent(in)    , contiguous    :: sep(:)
         procedure(logical(LK))                                      :: iseq
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
@@ -10076,11 +10076,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConCusComDefIns_D1_D1_CK2
 #endif
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
         use pm_container, only: cvc_pdt
-        type(cvc_pdt(CKC))          , intent(out)   , allocatable   :: field(:)
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
-        complex(CKC)                , intent(in)    , contiguous    :: sep(:)
+        type(cvc_pdt(CKG))          , intent(out)   , allocatable   :: field(:)
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
+        complex(CKG)                , intent(in)    , contiguous    :: sep(:)
         procedure(logical(LK))                                      :: iseq
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
@@ -10091,11 +10091,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConCusComDefIns_D1_D1_CK1
 #endif
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
         use pm_container, only: cvc_pdt
-        type(cvc_pdt(CKC))          , intent(out)   , allocatable   :: field(:)
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
-        complex(CKC)                , intent(in)    , contiguous    :: sep(:)
+        type(cvc_pdt(CKG))          , intent(out)   , allocatable   :: field(:)
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
+        complex(CKG)                , intent(in)    , contiguous    :: sep(:)
         procedure(logical(LK))                                      :: iseq
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
@@ -10108,11 +10108,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConCusComDefIns_D1_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         use pm_container, only: cvr_pdt
-        type(cvr_pdt(RKC))          , intent(out)   , allocatable   :: field(:)
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
-        real(RKC)                   , intent(in)    , contiguous    :: sep(:)
+        type(cvr_pdt(RKG))          , intent(out)   , allocatable   :: field(:)
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
+        real(RKG)                   , intent(in)    , contiguous    :: sep(:)
         procedure(logical(LK))                                      :: iseq
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
@@ -10123,11 +10123,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConCusComDefIns_D1_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         use pm_container, only: cvr_pdt
-        type(cvr_pdt(RKC))          , intent(out)   , allocatable   :: field(:)
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
-        real(RKC)                   , intent(in)    , contiguous    :: sep(:)
+        type(cvr_pdt(RKG))          , intent(out)   , allocatable   :: field(:)
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
+        real(RKG)                   , intent(in)    , contiguous    :: sep(:)
         procedure(logical(LK))                                      :: iseq
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
@@ -10138,11 +10138,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConCusComDefIns_D1_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         use pm_container, only: cvr_pdt
-        type(cvr_pdt(RKC))          , intent(out)   , allocatable   :: field(:)
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
-        real(RKC)                   , intent(in)    , contiguous    :: sep(:)
+        type(cvr_pdt(RKG))          , intent(out)   , allocatable   :: field(:)
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
+        real(RKG)                   , intent(in)    , contiguous    :: sep(:)
         procedure(logical(LK))                                      :: iseq
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
@@ -10153,11 +10153,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConCusComDefIns_D1_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         use pm_container, only: cvr_pdt
-        type(cvr_pdt(RKC))          , intent(out)   , allocatable   :: field(:)
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
-        real(RKC)                   , intent(in)    , contiguous    :: sep(:)
+        type(cvr_pdt(RKG))          , intent(out)   , allocatable   :: field(:)
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
+        real(RKG)                   , intent(in)    , contiguous    :: sep(:)
         procedure(logical(LK))                                      :: iseq
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
@@ -10168,11 +10168,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConCusComDefIns_D1_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         use pm_container, only: cvr_pdt
-        type(cvr_pdt(RKC))          , intent(out)   , allocatable   :: field(:)
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
-        real(RKC)                   , intent(in)    , contiguous    :: sep(:)
+        type(cvr_pdt(RKG))          , intent(out)   , allocatable   :: field(:)
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
+        real(RKG)                   , intent(in)    , contiguous    :: sep(:)
         procedure(logical(LK))                                      :: iseq
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
@@ -10191,11 +10191,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConDefComCusIns_D1_D1_SK5
 #endif
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
         use pm_container, only: cvs_pdt
-        type(cvs_pdt(SKC))          , intent(out)   , allocatable   :: field(:)
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
-        character(*,SKC)            , intent(in)    , contiguous    :: sep(:)
+        type(cvs_pdt(SKG))          , intent(out)   , allocatable   :: field(:)
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
+        character(*,SKG)            , intent(in)    , contiguous    :: sep(:)
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
         logical(LK)                 , intent(in)    , optional      :: unique
@@ -10208,11 +10208,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConDefComCusIns_D1_D1_SK4
 #endif
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
         use pm_container, only: cvs_pdt
-        type(cvs_pdt(SKC))          , intent(out)   , allocatable   :: field(:)
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
-        character(*,SKC)            , intent(in)    , contiguous    :: sep(:)
+        type(cvs_pdt(SKG))          , intent(out)   , allocatable   :: field(:)
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
+        character(*,SKG)            , intent(in)    , contiguous    :: sep(:)
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
         logical(LK)                 , intent(in)    , optional      :: unique
@@ -10225,11 +10225,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConDefComCusIns_D1_D1_SK3
 #endif
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
         use pm_container, only: cvs_pdt
-        type(cvs_pdt(SKC))          , intent(out)   , allocatable   :: field(:)
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
-        character(*,SKC)            , intent(in)    , contiguous    :: sep(:)
+        type(cvs_pdt(SKG))          , intent(out)   , allocatable   :: field(:)
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
+        character(*,SKG)            , intent(in)    , contiguous    :: sep(:)
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
         logical(LK)                 , intent(in)    , optional      :: unique
@@ -10242,11 +10242,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConDefComCusIns_D1_D1_SK2
 #endif
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
         use pm_container, only: cvs_pdt
-        type(cvs_pdt(SKC))          , intent(out)   , allocatable   :: field(:)
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
-        character(*,SKC)            , intent(in)    , contiguous    :: sep(:)
+        type(cvs_pdt(SKG))          , intent(out)   , allocatable   :: field(:)
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
+        character(*,SKG)            , intent(in)    , contiguous    :: sep(:)
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
         logical(LK)                 , intent(in)    , optional      :: unique
@@ -10259,11 +10259,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConDefComCusIns_D1_D1_SK1
 #endif
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
         use pm_container, only: cvs_pdt
-        type(cvs_pdt(SKC))          , intent(out)   , allocatable   :: field(:)
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
-        character(*,SKC)            , intent(in)    , contiguous    :: sep(:)
+        type(cvs_pdt(SKG))          , intent(out)   , allocatable   :: field(:)
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
+        character(*,SKG)            , intent(in)    , contiguous    :: sep(:)
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
         logical(LK)                 , intent(in)    , optional      :: unique
@@ -10278,11 +10278,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConDefComCusIns_D1_D1_IK5
 #endif
-        use pm_kind, only: IKC => IK5
+        use pm_kind, only: IKG => IK5
         use pm_container, only: cvi_pdt
-        type(cvi_pdt(IKC))          , intent(out)   , allocatable   :: field(:)
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
-        integer(IKC)                , intent(in)    , contiguous    :: sep(:)
+        type(cvi_pdt(IKG))          , intent(out)   , allocatable   :: field(:)
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
+        integer(IKG)                , intent(in)    , contiguous    :: sep(:)
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
         logical(LK)                 , intent(in)    , optional      :: unique
@@ -10295,11 +10295,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConDefComCusIns_D1_D1_IK4
 #endif
-        use pm_kind, only: IKC => IK4
+        use pm_kind, only: IKG => IK4
         use pm_container, only: cvi_pdt
-        type(cvi_pdt(IKC))          , intent(out)   , allocatable   :: field(:)
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
-        integer(IKC)                , intent(in)    , contiguous    :: sep(:)
+        type(cvi_pdt(IKG))          , intent(out)   , allocatable   :: field(:)
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
+        integer(IKG)                , intent(in)    , contiguous    :: sep(:)
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
         logical(LK)                 , intent(in)    , optional      :: unique
@@ -10312,11 +10312,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConDefComCusIns_D1_D1_IK3
 #endif
-        use pm_kind, only: IKC => IK3
+        use pm_kind, only: IKG => IK3
         use pm_container, only: cvi_pdt
-        type(cvi_pdt(IKC))          , intent(out)   , allocatable   :: field(:)
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
-        integer(IKC)                , intent(in)    , contiguous    :: sep(:)
+        type(cvi_pdt(IKG))          , intent(out)   , allocatable   :: field(:)
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
+        integer(IKG)                , intent(in)    , contiguous    :: sep(:)
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
         logical(LK)                 , intent(in)    , optional      :: unique
@@ -10329,11 +10329,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConDefComCusIns_D1_D1_IK2
 #endif
-        use pm_kind, only: IKC => IK2
+        use pm_kind, only: IKG => IK2
         use pm_container, only: cvi_pdt
-        type(cvi_pdt(IKC))          , intent(out)   , allocatable   :: field(:)
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
-        integer(IKC)                , intent(in)    , contiguous    :: sep(:)
+        type(cvi_pdt(IKG))          , intent(out)   , allocatable   :: field(:)
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
+        integer(IKG)                , intent(in)    , contiguous    :: sep(:)
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
         logical(LK)                 , intent(in)    , optional      :: unique
@@ -10346,11 +10346,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConDefComCusIns_D1_D1_IK1
 #endif
-        use pm_kind, only: IKC => IK1
+        use pm_kind, only: IKG => IK1
         use pm_container, only: cvi_pdt
-        type(cvi_pdt(IKC))          , intent(out)   , allocatable   :: field(:)
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
-        integer(IKC)                , intent(in)    , contiguous    :: sep(:)
+        type(cvi_pdt(IKG))          , intent(out)   , allocatable   :: field(:)
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
+        integer(IKG)                , intent(in)    , contiguous    :: sep(:)
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
         logical(LK)                 , intent(in)    , optional      :: unique
@@ -10365,11 +10365,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConDefComCusIns_D1_D1_LK5
 #endif
-        use pm_kind, only: LKC => LK5
+        use pm_kind, only: LKG => LK5
         use pm_container, only: cvl_pdt
-        type(cvl_pdt(LKC))          , intent(out)   , allocatable   :: field(:)
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
-        logical(LKC)                , intent(in)    , contiguous    :: sep(:)
+        type(cvl_pdt(LKG))          , intent(out)   , allocatable   :: field(:)
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
+        logical(LKG)                , intent(in)    , contiguous    :: sep(:)
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
         logical(LK)                 , intent(in)    , optional      :: unique
@@ -10382,11 +10382,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConDefComCusIns_D1_D1_LK4
 #endif
-        use pm_kind, only: LKC => LK4
+        use pm_kind, only: LKG => LK4
         use pm_container, only: cvl_pdt
-        type(cvl_pdt(LKC))          , intent(out)   , allocatable   :: field(:)
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
-        logical(LKC)                , intent(in)    , contiguous    :: sep(:)
+        type(cvl_pdt(LKG))          , intent(out)   , allocatable   :: field(:)
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
+        logical(LKG)                , intent(in)    , contiguous    :: sep(:)
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
         logical(LK)                 , intent(in)    , optional      :: unique
@@ -10399,11 +10399,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConDefComCusIns_D1_D1_LK3
 #endif
-        use pm_kind, only: LKC => LK3
+        use pm_kind, only: LKG => LK3
         use pm_container, only: cvl_pdt
-        type(cvl_pdt(LKC))          , intent(out)   , allocatable   :: field(:)
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
-        logical(LKC)                , intent(in)    , contiguous    :: sep(:)
+        type(cvl_pdt(LKG))          , intent(out)   , allocatable   :: field(:)
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
+        logical(LKG)                , intent(in)    , contiguous    :: sep(:)
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
         logical(LK)                 , intent(in)    , optional      :: unique
@@ -10416,11 +10416,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConDefComCusIns_D1_D1_LK2
 #endif
-        use pm_kind, only: LKC => LK2
+        use pm_kind, only: LKG => LK2
         use pm_container, only: cvl_pdt
-        type(cvl_pdt(LKC))          , intent(out)   , allocatable   :: field(:)
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
-        logical(LKC)                , intent(in)    , contiguous    :: sep(:)
+        type(cvl_pdt(LKG))          , intent(out)   , allocatable   :: field(:)
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
+        logical(LKG)                , intent(in)    , contiguous    :: sep(:)
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
         logical(LK)                 , intent(in)    , optional      :: unique
@@ -10433,11 +10433,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConDefComCusIns_D1_D1_LK1
 #endif
-        use pm_kind, only: LKC => LK1
+        use pm_kind, only: LKG => LK1
         use pm_container, only: cvl_pdt
-        type(cvl_pdt(LKC))          , intent(out)   , allocatable   :: field(:)
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
-        logical(LKC)                , intent(in)    , contiguous    :: sep(:)
+        type(cvl_pdt(LKG))          , intent(out)   , allocatable   :: field(:)
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
+        logical(LKG)                , intent(in)    , contiguous    :: sep(:)
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
         logical(LK)                 , intent(in)    , optional      :: unique
@@ -10452,11 +10452,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConDefComCusIns_D1_D1_CK5
 #endif
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
         use pm_container, only: cvc_pdt
-        type(cvc_pdt(CKC))          , intent(out)   , allocatable   :: field(:)
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
-        complex(CKC)                , intent(in)    , contiguous    :: sep(:)
+        type(cvc_pdt(CKG))          , intent(out)   , allocatable   :: field(:)
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
+        complex(CKG)                , intent(in)    , contiguous    :: sep(:)
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
         logical(LK)                 , intent(in)    , optional      :: unique
@@ -10469,11 +10469,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConDefComCusIns_D1_D1_CK4
 #endif
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
         use pm_container, only: cvc_pdt
-        type(cvc_pdt(CKC))          , intent(out)   , allocatable   :: field(:)
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
-        complex(CKC)                , intent(in)    , contiguous    :: sep(:)
+        type(cvc_pdt(CKG))          , intent(out)   , allocatable   :: field(:)
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
+        complex(CKG)                , intent(in)    , contiguous    :: sep(:)
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
         logical(LK)                 , intent(in)    , optional      :: unique
@@ -10486,11 +10486,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConDefComCusIns_D1_D1_CK3
 #endif
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
         use pm_container, only: cvc_pdt
-        type(cvc_pdt(CKC))          , intent(out)   , allocatable   :: field(:)
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
-        complex(CKC)                , intent(in)    , contiguous    :: sep(:)
+        type(cvc_pdt(CKG))          , intent(out)   , allocatable   :: field(:)
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
+        complex(CKG)                , intent(in)    , contiguous    :: sep(:)
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
         logical(LK)                 , intent(in)    , optional      :: unique
@@ -10503,11 +10503,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConDefComCusIns_D1_D1_CK2
 #endif
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
         use pm_container, only: cvc_pdt
-        type(cvc_pdt(CKC))          , intent(out)   , allocatable   :: field(:)
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
-        complex(CKC)                , intent(in)    , contiguous    :: sep(:)
+        type(cvc_pdt(CKG))          , intent(out)   , allocatable   :: field(:)
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
+        complex(CKG)                , intent(in)    , contiguous    :: sep(:)
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
         logical(LK)                 , intent(in)    , optional      :: unique
@@ -10520,11 +10520,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConDefComCusIns_D1_D1_CK1
 #endif
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
         use pm_container, only: cvc_pdt
-        type(cvc_pdt(CKC))          , intent(out)   , allocatable   :: field(:)
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
-        complex(CKC)                , intent(in)    , contiguous    :: sep(:)
+        type(cvc_pdt(CKG))          , intent(out)   , allocatable   :: field(:)
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
+        complex(CKG)                , intent(in)    , contiguous    :: sep(:)
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
         logical(LK)                 , intent(in)    , optional      :: unique
@@ -10539,11 +10539,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConDefComCusIns_D1_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         use pm_container, only: cvr_pdt
-        type(cvr_pdt(RKC))          , intent(out)   , allocatable   :: field(:)
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
-        real(RKC)                   , intent(in)    , contiguous    :: sep(:)
+        type(cvr_pdt(RKG))          , intent(out)   , allocatable   :: field(:)
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
+        real(RKG)                   , intent(in)    , contiguous    :: sep(:)
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
         logical(LK)                 , intent(in)    , optional      :: unique
@@ -10556,11 +10556,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConDefComCusIns_D1_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         use pm_container, only: cvr_pdt
-        type(cvr_pdt(RKC))          , intent(out)   , allocatable   :: field(:)
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
-        real(RKC)                   , intent(in)    , contiguous    :: sep(:)
+        type(cvr_pdt(RKG))          , intent(out)   , allocatable   :: field(:)
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
+        real(RKG)                   , intent(in)    , contiguous    :: sep(:)
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
         logical(LK)                 , intent(in)    , optional      :: unique
@@ -10573,11 +10573,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConDefComCusIns_D1_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         use pm_container, only: cvr_pdt
-        type(cvr_pdt(RKC))          , intent(out)   , allocatable   :: field(:)
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
-        real(RKC)                   , intent(in)    , contiguous    :: sep(:)
+        type(cvr_pdt(RKG))          , intent(out)   , allocatable   :: field(:)
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
+        real(RKG)                   , intent(in)    , contiguous    :: sep(:)
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
         logical(LK)                 , intent(in)    , optional      :: unique
@@ -10590,11 +10590,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConDefComCusIns_D1_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         use pm_container, only: cvr_pdt
-        type(cvr_pdt(RKC))          , intent(out)   , allocatable   :: field(:)
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
-        real(RKC)                   , intent(in)    , contiguous    :: sep(:)
+        type(cvr_pdt(RKG))          , intent(out)   , allocatable   :: field(:)
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
+        real(RKG)                   , intent(in)    , contiguous    :: sep(:)
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
         logical(LK)                 , intent(in)    , optional      :: unique
@@ -10607,11 +10607,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConDefComCusIns_D1_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         use pm_container, only: cvr_pdt
-        type(cvr_pdt(RKC))          , intent(out)   , allocatable   :: field(:)
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
-        real(RKC)                   , intent(in)    , contiguous    :: sep(:)
+        type(cvr_pdt(RKG))          , intent(out)   , allocatable   :: field(:)
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
+        real(RKG)                   , intent(in)    , contiguous    :: sep(:)
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
         logical(LK)                 , intent(in)    , optional      :: unique
@@ -10632,11 +10632,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConCusComCusIns_D1_D1_SK5
 #endif
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
         use pm_container, only: cvs_pdt
-        type(cvs_pdt(SKC))          , intent(out)   , allocatable   :: field(:)
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
-        character(*,SKC)            , intent(in)    , contiguous    :: sep(:)
+        type(cvs_pdt(SKG))          , intent(out)   , allocatable   :: field(:)
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
+        character(*,SKG)            , intent(in)    , contiguous    :: sep(:)
         procedure(logical(LK))                                      :: iseq
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
@@ -10650,11 +10650,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConCusComCusIns_D1_D1_SK4
 #endif
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
         use pm_container, only: cvs_pdt
-        type(cvs_pdt(SKC))          , intent(out)   , allocatable   :: field(:)
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
-        character(*,SKC)            , intent(in)    , contiguous    :: sep(:)
+        type(cvs_pdt(SKG))          , intent(out)   , allocatable   :: field(:)
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
+        character(*,SKG)            , intent(in)    , contiguous    :: sep(:)
         procedure(logical(LK))                                      :: iseq
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
@@ -10668,11 +10668,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConCusComCusIns_D1_D1_SK3
 #endif
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
         use pm_container, only: cvs_pdt
-        type(cvs_pdt(SKC))          , intent(out)   , allocatable   :: field(:)
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
-        character(*,SKC)            , intent(in)    , contiguous    :: sep(:)
+        type(cvs_pdt(SKG))          , intent(out)   , allocatable   :: field(:)
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
+        character(*,SKG)            , intent(in)    , contiguous    :: sep(:)
         procedure(logical(LK))                                      :: iseq
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
@@ -10686,11 +10686,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConCusComCusIns_D1_D1_SK2
 #endif
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
         use pm_container, only: cvs_pdt
-        type(cvs_pdt(SKC))          , intent(out)   , allocatable   :: field(:)
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
-        character(*,SKC)            , intent(in)    , contiguous    :: sep(:)
+        type(cvs_pdt(SKG))          , intent(out)   , allocatable   :: field(:)
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
+        character(*,SKG)            , intent(in)    , contiguous    :: sep(:)
         procedure(logical(LK))                                      :: iseq
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
@@ -10704,11 +10704,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConCusComCusIns_D1_D1_SK1
 #endif
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
         use pm_container, only: cvs_pdt
-        type(cvs_pdt(SKC))          , intent(out)   , allocatable   :: field(:)
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
-        character(*,SKC)            , intent(in)    , contiguous    :: sep(:)
+        type(cvs_pdt(SKG))          , intent(out)   , allocatable   :: field(:)
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
+        character(*,SKG)            , intent(in)    , contiguous    :: sep(:)
         procedure(logical(LK))                                      :: iseq
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
@@ -10724,11 +10724,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConCusComCusIns_D1_D1_IK5
 #endif
-        use pm_kind, only: IKC => IK5
+        use pm_kind, only: IKG => IK5
         use pm_container, only: cvi_pdt
-        type(cvi_pdt(IKC))          , intent(out)   , allocatable   :: field(:)
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
-        integer(IKC)                , intent(in)    , contiguous    :: sep(:)
+        type(cvi_pdt(IKG))          , intent(out)   , allocatable   :: field(:)
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
+        integer(IKG)                , intent(in)    , contiguous    :: sep(:)
         procedure(logical(LK))                                      :: iseq
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
@@ -10742,11 +10742,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConCusComCusIns_D1_D1_IK4
 #endif
-        use pm_kind, only: IKC => IK4
+        use pm_kind, only: IKG => IK4
         use pm_container, only: cvi_pdt
-        type(cvi_pdt(IKC))          , intent(out)   , allocatable   :: field(:)
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
-        integer(IKC)                , intent(in)    , contiguous    :: sep(:)
+        type(cvi_pdt(IKG))          , intent(out)   , allocatable   :: field(:)
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
+        integer(IKG)                , intent(in)    , contiguous    :: sep(:)
         procedure(logical(LK))                                      :: iseq
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
@@ -10760,11 +10760,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConCusComCusIns_D1_D1_IK3
 #endif
-        use pm_kind, only: IKC => IK3
+        use pm_kind, only: IKG => IK3
         use pm_container, only: cvi_pdt
-        type(cvi_pdt(IKC))          , intent(out)   , allocatable   :: field(:)
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
-        integer(IKC)                , intent(in)    , contiguous    :: sep(:)
+        type(cvi_pdt(IKG))          , intent(out)   , allocatable   :: field(:)
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
+        integer(IKG)                , intent(in)    , contiguous    :: sep(:)
         procedure(logical(LK))                                      :: iseq
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
@@ -10778,11 +10778,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConCusComCusIns_D1_D1_IK2
 #endif
-        use pm_kind, only: IKC => IK2
+        use pm_kind, only: IKG => IK2
         use pm_container, only: cvi_pdt
-        type(cvi_pdt(IKC))          , intent(out)   , allocatable   :: field(:)
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
-        integer(IKC)                , intent(in)    , contiguous    :: sep(:)
+        type(cvi_pdt(IKG))          , intent(out)   , allocatable   :: field(:)
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
+        integer(IKG)                , intent(in)    , contiguous    :: sep(:)
         procedure(logical(LK))                                      :: iseq
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
@@ -10796,11 +10796,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConCusComCusIns_D1_D1_IK1
 #endif
-        use pm_kind, only: IKC => IK1
+        use pm_kind, only: IKG => IK1
         use pm_container, only: cvi_pdt
-        type(cvi_pdt(IKC))          , intent(out)   , allocatable   :: field(:)
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
-        integer(IKC)                , intent(in)    , contiguous    :: sep(:)
+        type(cvi_pdt(IKG))          , intent(out)   , allocatable   :: field(:)
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
+        integer(IKG)                , intent(in)    , contiguous    :: sep(:)
         procedure(logical(LK))                                      :: iseq
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
@@ -10816,11 +10816,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConCusComCusIns_D1_D1_LK5
 #endif
-        use pm_kind, only: LKC => LK5
+        use pm_kind, only: LKG => LK5
         use pm_container, only: cvl_pdt
-        type(cvl_pdt(LKC))          , intent(out)   , allocatable   :: field(:)
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
-        logical(LKC)                , intent(in)    , contiguous    :: sep(:)
+        type(cvl_pdt(LKG))          , intent(out)   , allocatable   :: field(:)
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
+        logical(LKG)                , intent(in)    , contiguous    :: sep(:)
         procedure(logical(LK))                                      :: iseq
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
@@ -10834,11 +10834,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConCusComCusIns_D1_D1_LK4
 #endif
-        use pm_kind, only: LKC => LK4
+        use pm_kind, only: LKG => LK4
         use pm_container, only: cvl_pdt
-        type(cvl_pdt(LKC))          , intent(out)   , allocatable   :: field(:)
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
-        logical(LKC)                , intent(in)    , contiguous    :: sep(:)
+        type(cvl_pdt(LKG))          , intent(out)   , allocatable   :: field(:)
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
+        logical(LKG)                , intent(in)    , contiguous    :: sep(:)
         procedure(logical(LK))                                      :: iseq
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
@@ -10852,11 +10852,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConCusComCusIns_D1_D1_LK3
 #endif
-        use pm_kind, only: LKC => LK3
+        use pm_kind, only: LKG => LK3
         use pm_container, only: cvl_pdt
-        type(cvl_pdt(LKC))          , intent(out)   , allocatable   :: field(:)
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
-        logical(LKC)                , intent(in)    , contiguous    :: sep(:)
+        type(cvl_pdt(LKG))          , intent(out)   , allocatable   :: field(:)
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
+        logical(LKG)                , intent(in)    , contiguous    :: sep(:)
         procedure(logical(LK))                                      :: iseq
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
@@ -10870,11 +10870,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConCusComCusIns_D1_D1_LK2
 #endif
-        use pm_kind, only: LKC => LK2
+        use pm_kind, only: LKG => LK2
         use pm_container, only: cvl_pdt
-        type(cvl_pdt(LKC))          , intent(out)   , allocatable   :: field(:)
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
-        logical(LKC)                , intent(in)    , contiguous    :: sep(:)
+        type(cvl_pdt(LKG))          , intent(out)   , allocatable   :: field(:)
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
+        logical(LKG)                , intent(in)    , contiguous    :: sep(:)
         procedure(logical(LK))                                      :: iseq
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
@@ -10888,11 +10888,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConCusComCusIns_D1_D1_LK1
 #endif
-        use pm_kind, only: LKC => LK1
+        use pm_kind, only: LKG => LK1
         use pm_container, only: cvl_pdt
-        type(cvl_pdt(LKC))          , intent(out)   , allocatable   :: field(:)
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
-        logical(LKC)                , intent(in)    , contiguous    :: sep(:)
+        type(cvl_pdt(LKG))          , intent(out)   , allocatable   :: field(:)
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
+        logical(LKG)                , intent(in)    , contiguous    :: sep(:)
         procedure(logical(LK))                                      :: iseq
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
@@ -10908,11 +10908,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConCusComCusIns_D1_D1_CK5
 #endif
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
         use pm_container, only: cvc_pdt
-        type(cvc_pdt(CKC))          , intent(out)   , allocatable   :: field(:)
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
-        complex(CKC)                , intent(in)    , contiguous    :: sep(:)
+        type(cvc_pdt(CKG))          , intent(out)   , allocatable   :: field(:)
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
+        complex(CKG)                , intent(in)    , contiguous    :: sep(:)
         procedure(logical(LK))                                      :: iseq
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
@@ -10926,11 +10926,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConCusComCusIns_D1_D1_CK4
 #endif
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
         use pm_container, only: cvc_pdt
-        type(cvc_pdt(CKC))          , intent(out)   , allocatable   :: field(:)
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
-        complex(CKC)                , intent(in)    , contiguous    :: sep(:)
+        type(cvc_pdt(CKG))          , intent(out)   , allocatable   :: field(:)
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
+        complex(CKG)                , intent(in)    , contiguous    :: sep(:)
         procedure(logical(LK))                                      :: iseq
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
@@ -10944,11 +10944,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConCusComCusIns_D1_D1_CK3
 #endif
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
         use pm_container, only: cvc_pdt
-        type(cvc_pdt(CKC))          , intent(out)   , allocatable   :: field(:)
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
-        complex(CKC)                , intent(in)    , contiguous    :: sep(:)
+        type(cvc_pdt(CKG))          , intent(out)   , allocatable   :: field(:)
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
+        complex(CKG)                , intent(in)    , contiguous    :: sep(:)
         procedure(logical(LK))                                      :: iseq
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
@@ -10962,11 +10962,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConCusComCusIns_D1_D1_CK2
 #endif
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
         use pm_container, only: cvc_pdt
-        type(cvc_pdt(CKC))          , intent(out)   , allocatable   :: field(:)
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
-        complex(CKC)                , intent(in)    , contiguous    :: sep(:)
+        type(cvc_pdt(CKG))          , intent(out)   , allocatable   :: field(:)
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
+        complex(CKG)                , intent(in)    , contiguous    :: sep(:)
         procedure(logical(LK))                                      :: iseq
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
@@ -10980,11 +10980,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConCusComCusIns_D1_D1_CK1
 #endif
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
         use pm_container, only: cvc_pdt
-        type(cvc_pdt(CKC))          , intent(out)   , allocatable   :: field(:)
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
-        complex(CKC)                , intent(in)    , contiguous    :: sep(:)
+        type(cvc_pdt(CKG))          , intent(out)   , allocatable   :: field(:)
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
+        complex(CKG)                , intent(in)    , contiguous    :: sep(:)
         procedure(logical(LK))                                      :: iseq
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
@@ -11000,11 +11000,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConCusComCusIns_D1_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         use pm_container, only: cvr_pdt
-        type(cvr_pdt(RKC))          , intent(out)   , allocatable   :: field(:)
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
-        real(RKC)                   , intent(in)    , contiguous    :: sep(:)
+        type(cvr_pdt(RKG))          , intent(out)   , allocatable   :: field(:)
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
+        real(RKG)                   , intent(in)    , contiguous    :: sep(:)
         procedure(logical(LK))                                      :: iseq
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
@@ -11018,11 +11018,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConCusComCusIns_D1_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         use pm_container, only: cvr_pdt
-        type(cvr_pdt(RKC))          , intent(out)   , allocatable   :: field(:)
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
-        real(RKC)                   , intent(in)    , contiguous    :: sep(:)
+        type(cvr_pdt(RKG))          , intent(out)   , allocatable   :: field(:)
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
+        real(RKG)                   , intent(in)    , contiguous    :: sep(:)
         procedure(logical(LK))                                      :: iseq
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
@@ -11036,11 +11036,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConCusComCusIns_D1_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         use pm_container, only: cvr_pdt
-        type(cvr_pdt(RKC))          , intent(out)   , allocatable   :: field(:)
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
-        real(RKC)                   , intent(in)    , contiguous    :: sep(:)
+        type(cvr_pdt(RKG))          , intent(out)   , allocatable   :: field(:)
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
+        real(RKG)                   , intent(in)    , contiguous    :: sep(:)
         procedure(logical(LK))                                      :: iseq
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
@@ -11054,11 +11054,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConCusComCusIns_D1_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         use pm_container, only: cvr_pdt
-        type(cvr_pdt(RKC))          , intent(out)   , allocatable   :: field(:)
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
-        real(RKC)                   , intent(in)    , contiguous    :: sep(:)
+        type(cvr_pdt(RKG))          , intent(out)   , allocatable   :: field(:)
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
+        real(RKG)                   , intent(in)    , contiguous    :: sep(:)
         procedure(logical(LK))                                      :: iseq
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
@@ -11072,11 +11072,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitConCusComCusIns_D1_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         use pm_container, only: cvr_pdt
-        type(cvr_pdt(RKC))          , intent(out)   , allocatable   :: field(:)
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
-        real(RKC)                   , intent(in)    , contiguous    :: sep(:)
+        type(cvr_pdt(RKG))          , intent(out)   , allocatable   :: field(:)
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
+        real(RKG)                   , intent(in)    , contiguous    :: sep(:)
         procedure(logical(LK))                                      :: iseq
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
@@ -11105,11 +11105,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitBoxDefComDefIns_D0_D0_SK
 #endif
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
         use pm_container, only: css_type
         type(css_type)              , intent(out)   , allocatable   :: field(:)
-        character(*,SKC)            , intent(in)                    :: array
-        character(*,SKC)            , intent(in)                    :: sep
+        character(*,SKG)            , intent(in)                    :: array
+        character(*,SKG)            , intent(in)                    :: sep
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
 
@@ -11119,11 +11119,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitBoxDefComDefIns_D1_D0_SK
 #endif
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
         use pm_container, only: cvs_type
         type(cvs_type)              , intent(out)   , allocatable   :: field(:)
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
-        character(*,SKC)            , intent(in)                    :: sep
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
+        character(*,SKG)            , intent(in)                    :: sep
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
 
@@ -11133,11 +11133,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitBoxDefComDefIns_D1_D0_IK
 #endif
-        use pm_kind, only: IKC => IK
+        use pm_kind, only: IKG => IK
         use pm_container, only: cvi_type
         type(cvi_type)              , intent(out)   , allocatable   :: field(:)
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
-        integer(IKC)                , intent(in)                    :: sep
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
+        integer(IKG)                , intent(in)                    :: sep
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
 
@@ -11147,11 +11147,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitBoxDefComDefIns_D1_D0_LK
 #endif
-        use pm_kind, only: LKC => LK
+        use pm_kind, only: LKG => LK
         use pm_container, only: cvl_type
         type(cvl_type)              , intent(out)   , allocatable   :: field(:)
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
-        logical(LKC)                , intent(in)                    :: sep
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
+        logical(LKG)                , intent(in)                    :: sep
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
 
@@ -11161,11 +11161,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitBoxDefComDefIns_D1_D0_CK
 #endif
-        use pm_kind, only: CKC => CK
+        use pm_kind, only: CKG => CK
         use pm_container, only: cvc_type
         type(cvc_type)              , intent(out)   , allocatable   :: field(:)
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
-        complex(CKC)                , intent(in)                    :: sep
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
+        complex(CKG)                , intent(in)                    :: sep
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
 
@@ -11175,11 +11175,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitBoxDefComDefIns_D1_D0_RK
 #endif
-        use pm_kind, only: RKC => RK
+        use pm_kind, only: RKG => RK
         use pm_container, only: cvr_type
         type(cvr_type)              , intent(out)   , allocatable   :: field(:)
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
-        real(RKC)                   , intent(in)                    :: sep
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
+        real(RKG)                   , intent(in)                    :: sep
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
 
@@ -11195,11 +11195,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitBoxCusComDefIns_D0_D0_SK
 #endif
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
         use pm_container, only: css_type
         type(css_type)              , intent(out)   , allocatable   :: field(:)
-        character(*,SKC)            , intent(in)                    :: array
-        character(*,SKC)            , intent(in)                    :: sep
+        character(*,SKG)            , intent(in)                    :: array
+        character(*,SKG)            , intent(in)                    :: sep
         procedure(logical(LK))                                      :: iseq
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
@@ -11210,11 +11210,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitBoxCusComDefIns_D1_D0_SK
 #endif
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
         use pm_container, only: cvs_type
         type(cvs_type)              , intent(out)   , allocatable   :: field(:)
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
-        character(*,SKC)            , intent(in)                    :: sep
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
+        character(*,SKG)            , intent(in)                    :: sep
         procedure(logical(LK))                                      :: iseq
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
@@ -11225,11 +11225,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitBoxCusComDefIns_D1_D0_IK
 #endif
-        use pm_kind, only: IKC => IK
+        use pm_kind, only: IKG => IK
         use pm_container, only: cvi_type
         type(cvi_type)              , intent(out)   , allocatable   :: field(:)
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
-        integer(IKC)                , intent(in)                    :: sep
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
+        integer(IKG)                , intent(in)                    :: sep
         procedure(logical(LK))                                      :: iseq
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
@@ -11240,11 +11240,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitBoxCusComDefIns_D1_D0_LK
 #endif
-        use pm_kind, only: LKC => LK
+        use pm_kind, only: LKG => LK
         use pm_container, only: cvl_type
         type(cvl_type)              , intent(out)   , allocatable   :: field(:)
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
-        logical(LKC)                , intent(in)                    :: sep
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
+        logical(LKG)                , intent(in)                    :: sep
         procedure(logical(LK))                                      :: iseq
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
@@ -11255,11 +11255,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitBoxCusComDefIns_D1_D0_CK
 #endif
-        use pm_kind, only: CKC => CK
+        use pm_kind, only: CKG => CK
         use pm_container, only: cvc_type
         type(cvc_type)              , intent(out)   , allocatable   :: field(:)
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
-        complex(CKC)                , intent(in)                    :: sep
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
+        complex(CKG)                , intent(in)                    :: sep
         procedure(logical(LK))                                      :: iseq
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
@@ -11270,11 +11270,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitBoxCusComDefIns_D1_D0_RK
 #endif
-        use pm_kind, only: RKC => RK
+        use pm_kind, only: RKG => RK
         use pm_container, only: cvr_type
         type(cvr_type)              , intent(out)   , allocatable   :: field(:)
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
-        real(RKC)                   , intent(in)                    :: sep
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
+        real(RKG)                   , intent(in)                    :: sep
         procedure(logical(LK))                                      :: iseq
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
@@ -11291,11 +11291,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitBoxDefComCusIns_D0_D0_SK
 #endif
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
         use pm_container, only: css_type
         type(css_type)              , intent(out)   , allocatable   :: field(:)
-        character(*,SKC)            , intent(in)                    :: array
-        character(*,SKC)            , intent(in)                    :: sep
+        character(*,SKG)            , intent(in)                    :: array
+        character(*,SKG)            , intent(in)                    :: sep
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
         logical(LK)                 , intent(in)    , optional      :: unique
@@ -11308,11 +11308,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitBoxDefComCusIns_D1_D0_SK
 #endif
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
         use pm_container, only: cvs_type
         type(cvs_type)              , intent(out)   , allocatable   :: field(:)
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
-        character(*,SKC)            , intent(in)                    :: sep
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
+        character(*,SKG)            , intent(in)                    :: sep
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
         logical(LK)                 , intent(in)    , optional      :: unique
@@ -11325,11 +11325,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitBoxDefComCusIns_D1_D0_IK
 #endif
-        use pm_kind, only: IKC => IK
+        use pm_kind, only: IKG => IK
         use pm_container, only: cvi_type
         type(cvi_type)              , intent(out)   , allocatable   :: field(:)
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
-        integer(IKC)                , intent(in)                    :: sep
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
+        integer(IKG)                , intent(in)                    :: sep
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
         logical(LK)                 , intent(in)    , optional      :: unique
@@ -11342,11 +11342,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitBoxDefComCusIns_D1_D0_LK
 #endif
-        use pm_kind, only: LKC => LK
+        use pm_kind, only: LKG => LK
         use pm_container, only: cvl_type
         type(cvl_type)              , intent(out)   , allocatable   :: field(:)
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
-        logical(LKC)                , intent(in)                    :: sep
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
+        logical(LKG)                , intent(in)                    :: sep
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
         logical(LK)                 , intent(in)    , optional      :: unique
@@ -11359,11 +11359,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitBoxDefComCusIns_D1_D0_CK
 #endif
-        use pm_kind, only: CKC => CK
+        use pm_kind, only: CKG => CK
         use pm_container, only: cvc_type
         type(cvc_type)              , intent(out)   , allocatable   :: field(:)
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
-        complex(CKC)                , intent(in)                    :: sep
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
+        complex(CKG)                , intent(in)                    :: sep
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
         logical(LK)                 , intent(in)    , optional      :: unique
@@ -11376,11 +11376,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitBoxDefComCusIns_D1_D0_RK
 #endif
-        use pm_kind, only: RKC => RK
+        use pm_kind, only: RKG => RK
         use pm_container, only: cvr_type
         type(cvr_type)              , intent(out)   , allocatable   :: field(:)
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
-        real(RKC)                   , intent(in)                    :: sep
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
+        real(RKG)                   , intent(in)                    :: sep
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
         logical(LK)                 , intent(in)    , optional      :: unique
@@ -11399,11 +11399,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitBoxCusComCusIns_D0_D0_SK
 #endif
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
         use pm_container, only: css_type
         type(css_type)              , intent(out)   , allocatable   :: field(:)
-        character(*,SKC)            , intent(in)                    :: array
-        character(*,SKC)            , intent(in)                    :: sep
+        character(*,SKG)            , intent(in)                    :: array
+        character(*,SKG)            , intent(in)                    :: sep
         procedure(logical(LK))                                      :: iseq
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
@@ -11417,11 +11417,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitBoxCusComCusIns_D1_D0_SK
 #endif
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
         use pm_container, only: cvs_type
         type(cvs_type)              , intent(out)   , allocatable   :: field(:)
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
-        character(*,SKC)            , intent(in)                    :: sep
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
+        character(*,SKG)            , intent(in)                    :: sep
         procedure(logical(LK))                                      :: iseq
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
@@ -11435,11 +11435,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitBoxCusComCusIns_D1_D0_IK
 #endif
-        use pm_kind, only: IKC => IK
+        use pm_kind, only: IKG => IK
         use pm_container, only: cvi_type
         type(cvi_type)              , intent(out)   , allocatable   :: field(:)
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
-        integer(IKC)                , intent(in)                    :: sep
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
+        integer(IKG)                , intent(in)                    :: sep
         procedure(logical(LK))                                      :: iseq
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
@@ -11453,11 +11453,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitBoxCusComCusIns_D1_D0_LK
 #endif
-        use pm_kind, only: LKC => LK
+        use pm_kind, only: LKG => LK
         use pm_container, only: cvl_type
         type(cvl_type)              , intent(out)   , allocatable   :: field(:)
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
-        logical(LKC)                , intent(in)                    :: sep
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
+        logical(LKG)                , intent(in)                    :: sep
         procedure(logical(LK))                                      :: iseq
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
@@ -11471,11 +11471,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitBoxCusComCusIns_D1_D0_CK
 #endif
-        use pm_kind, only: CKC => CK
+        use pm_kind, only: CKG => CK
         use pm_container, only: cvc_type
         type(cvc_type)              , intent(out)   , allocatable   :: field(:)
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
-        complex(CKC)                , intent(in)                    :: sep
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
+        complex(CKG)                , intent(in)                    :: sep
         procedure(logical(LK))                                      :: iseq
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
@@ -11489,11 +11489,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitBoxCusComCusIns_D1_D0_RK
 #endif
-        use pm_kind, only: RKC => RK
+        use pm_kind, only: RKG => RK
         use pm_container, only: cvr_type
         type(cvr_type)              , intent(out)   , allocatable   :: field(:)
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
-        real(RKC)                   , intent(in)                    :: sep
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
+        real(RKG)                   , intent(in)                    :: sep
         procedure(logical(LK))                                      :: iseq
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
@@ -11513,11 +11513,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitBoxDefComDefIns_D1_D1_SK
 #endif
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
         use pm_container, only: cvs_type
         type(cvs_type)              , intent(out)   , allocatable   :: field(:)
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
-        character(*,SKC)            , intent(in)    , contiguous    :: sep(:)
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
+        character(*,SKG)            , intent(in)    , contiguous    :: sep(:)
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
 
@@ -11527,11 +11527,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitBoxDefComDefIns_D1_D1_IK
 #endif
-        use pm_kind, only: IKC => IK
+        use pm_kind, only: IKG => IK
         use pm_container, only: cvi_type
         type(cvi_type)              , intent(out)   , allocatable   :: field(:)
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
-        integer(IKC)                , intent(in)    , contiguous    :: sep(:)
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
+        integer(IKG)                , intent(in)    , contiguous    :: sep(:)
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
 
@@ -11541,11 +11541,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitBoxDefComDefIns_D1_D1_LK
 #endif
-        use pm_kind, only: LKC => LK
+        use pm_kind, only: LKG => LK
         use pm_container, only: cvl_type
         type(cvl_type)              , intent(out)   , allocatable   :: field(:)
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
-        logical(LKC)                , intent(in)    , contiguous    :: sep(:)
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
+        logical(LKG)                , intent(in)    , contiguous    :: sep(:)
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
 
@@ -11555,11 +11555,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitBoxDefComDefIns_D1_D1_CK
 #endif
-        use pm_kind, only: CKC => CK
+        use pm_kind, only: CKG => CK
         use pm_container, only: cvc_type
         type(cvc_type)              , intent(out)   , allocatable   :: field(:)
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
-        complex(CKC)                , intent(in)    , contiguous    :: sep(:)
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
+        complex(CKG)                , intent(in)    , contiguous    :: sep(:)
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
 
@@ -11569,11 +11569,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitBoxDefComDefIns_D1_D1_RK
 #endif
-        use pm_kind, only: RKC => RK
+        use pm_kind, only: RKG => RK
         use pm_container, only: cvr_type
         type(cvr_type)              , intent(out)   , allocatable   :: field(:)
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
-        real(RKC)                   , intent(in)    , contiguous    :: sep(:)
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
+        real(RKG)                   , intent(in)    , contiguous    :: sep(:)
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
 
@@ -11589,11 +11589,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitBoxCusComDefIns_D1_D1_SK
 #endif
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
         use pm_container, only: cvs_type
         type(cvs_type)              , intent(out)   , allocatable   :: field(:)
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
-        character(*,SKC)            , intent(in)    , contiguous    :: sep(:)
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
+        character(*,SKG)            , intent(in)    , contiguous    :: sep(:)
         procedure(logical(LK))                                      :: iseq
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
@@ -11604,11 +11604,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitBoxCusComDefIns_D1_D1_IK
 #endif
-        use pm_kind, only: IKC => IK
+        use pm_kind, only: IKG => IK
         use pm_container, only: cvi_type
         type(cvi_type)              , intent(out)   , allocatable   :: field(:)
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
-        integer(IKC)                , intent(in)    , contiguous    :: sep(:)
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
+        integer(IKG)                , intent(in)    , contiguous    :: sep(:)
         procedure(logical(LK))                                      :: iseq
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
@@ -11619,11 +11619,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitBoxCusComDefIns_D1_D1_LK
 #endif
-        use pm_kind, only: LKC => LK
+        use pm_kind, only: LKG => LK
         use pm_container, only: cvl_type
         type(cvl_type)              , intent(out)   , allocatable   :: field(:)
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
-        logical(LKC)                , intent(in)    , contiguous    :: sep(:)
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
+        logical(LKG)                , intent(in)    , contiguous    :: sep(:)
         procedure(logical(LK))                                      :: iseq
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
@@ -11634,11 +11634,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitBoxCusComDefIns_D1_D1_CK
 #endif
-        use pm_kind, only: CKC => CK
+        use pm_kind, only: CKG => CK
         use pm_container, only: cvc_type
         type(cvc_type)              , intent(out)   , allocatable   :: field(:)
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
-        complex(CKC)                , intent(in)    , contiguous    :: sep(:)
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
+        complex(CKG)                , intent(in)    , contiguous    :: sep(:)
         procedure(logical(LK))                                      :: iseq
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
@@ -11649,11 +11649,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitBoxCusComDefIns_D1_D1_RK
 #endif
-        use pm_kind, only: RKC => RK
+        use pm_kind, only: RKG => RK
         use pm_container, only: cvr_type
         type(cvr_type)              , intent(out)   , allocatable   :: field(:)
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
-        real(RKC)                   , intent(in)    , contiguous    :: sep(:)
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
+        real(RKG)                   , intent(in)    , contiguous    :: sep(:)
         procedure(logical(LK))                                      :: iseq
         logical(LK)                 , intent(in)    , optional      :: keep
     end subroutine
@@ -11670,11 +11670,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitBoxDefComCusIns_D1_D1_SK
 #endif
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
         use pm_container, only: cvs_type
         type(cvs_type)              , intent(out)   , allocatable   :: field(:)
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
-        character(*,SKC)            , intent(in)    , contiguous    :: sep(:)
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
+        character(*,SKG)            , intent(in)    , contiguous    :: sep(:)
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
         logical(LK)                 , intent(in)    , optional      :: unique
@@ -11687,11 +11687,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitBoxDefComCusIns_D1_D1_IK
 #endif
-        use pm_kind, only: IKC => IK
+        use pm_kind, only: IKG => IK
         use pm_container, only: cvi_type
         type(cvi_type)              , intent(out)   , allocatable   :: field(:)
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
-        integer(IKC)                , intent(in)    , contiguous    :: sep(:)
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
+        integer(IKG)                , intent(in)    , contiguous    :: sep(:)
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
         logical(LK)                 , intent(in)    , optional      :: unique
@@ -11704,11 +11704,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitBoxDefComCusIns_D1_D1_LK
 #endif
-        use pm_kind, only: LKC => LK
+        use pm_kind, only: LKG => LK
         use pm_container, only: cvl_type
         type(cvl_type)              , intent(out)   , allocatable   :: field(:)
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
-        logical(LKC)                , intent(in)    , contiguous    :: sep(:)
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
+        logical(LKG)                , intent(in)    , contiguous    :: sep(:)
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
         logical(LK)                 , intent(in)    , optional      :: unique
@@ -11721,11 +11721,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitBoxDefComCusIns_D1_D1_CK
 #endif
-        use pm_kind, only: CKC => CK
+        use pm_kind, only: CKG => CK
         use pm_container, only: cvc_type
         type(cvc_type)              , intent(out)   , allocatable   :: field(:)
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
-        complex(CKC)                , intent(in)    , contiguous    :: sep(:)
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
+        complex(CKG)                , intent(in)    , contiguous    :: sep(:)
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
         logical(LK)                 , intent(in)    , optional      :: unique
@@ -11738,11 +11738,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitBoxDefComCusIns_D1_D1_RK
 #endif
-        use pm_kind, only: RKC => RK
+        use pm_kind, only: RKG => RK
         use pm_container, only: cvr_type
         type(cvr_type)              , intent(out)   , allocatable   :: field(:)
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
-        real(RKC)                   , intent(in)    , contiguous    :: sep(:)
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
+        real(RKG)                   , intent(in)    , contiguous    :: sep(:)
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
         logical(LK)                 , intent(in)    , optional      :: unique
@@ -11761,11 +11761,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitBoxCusComCusIns_D1_D1_SK
 #endif
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
         use pm_container, only: cvs_type
         type(cvs_type)              , intent(out)   , allocatable   :: field(:)
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
-        character(*,SKC)            , intent(in)    , contiguous    :: sep(:)
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
+        character(*,SKG)            , intent(in)    , contiguous    :: sep(:)
         procedure(logical(LK))                                      :: iseq
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
@@ -11779,11 +11779,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitBoxCusComCusIns_D1_D1_IK
 #endif
-        use pm_kind, only: IKC => IK
+        use pm_kind, only: IKG => IK
         use pm_container, only: cvi_type
         type(cvi_type)              , intent(out)   , allocatable   :: field(:)
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
-        integer(IKC)                , intent(in)    , contiguous    :: sep(:)
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
+        integer(IKG)                , intent(in)    , contiguous    :: sep(:)
         procedure(logical(LK))                                      :: iseq
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
@@ -11797,11 +11797,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitBoxCusComCusIns_D1_D1_LK
 #endif
-        use pm_kind, only: LKC => LK
+        use pm_kind, only: LKG => LK
         use pm_container, only: cvl_type
         type(cvl_type)              , intent(out)   , allocatable   :: field(:)
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
-        logical(LKC)                , intent(in)    , contiguous    :: sep(:)
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
+        logical(LKG)                , intent(in)    , contiguous    :: sep(:)
         procedure(logical(LK))                                      :: iseq
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
@@ -11815,11 +11815,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitBoxCusComCusIns_D1_D1_CK
 #endif
-        use pm_kind, only: CKC => CK
+        use pm_kind, only: CKG => CK
         use pm_container, only: cvc_type
         type(cvc_type)              , intent(out)   , allocatable   :: field(:)
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
-        complex(CKC)                , intent(in)    , contiguous    :: sep(:)
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
+        complex(CKG)                , intent(in)    , contiguous    :: sep(:)
         procedure(logical(LK))                                      :: iseq
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted
@@ -11833,11 +11833,11 @@ module pm_arraySplit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSplitBoxCusComCusIns_D1_D1_RK
 #endif
-        use pm_kind, only: RKC => RK
+        use pm_kind, only: RKG => RK
         use pm_container, only: cvr_type
         type(cvr_type)              , intent(out)   , allocatable   :: field(:)
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
-        real(RKC)                   , intent(in)    , contiguous    :: sep(:)
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
+        real(RKG)                   , intent(in)    , contiguous    :: sep(:)
         procedure(logical(LK))                                      :: iseq
         integer(IK)                 , intent(in)    , contiguous    :: instance(:)
         logical(LK)                 , intent(in)    , optional      :: sorted

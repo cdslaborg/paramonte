@@ -27,17 +27,17 @@
         ! Define the temporary new array for cases where the result is to be returned in the input array.
 #if     setRemoved_ENABLED
 #if     SK_ENABLED && D0_D0_ENABLED
-        character(:,SKC)            , allocatable :: ArrayRemoved
+        character(:,SKG)            , allocatable :: ArrayRemoved
 #elif   SK_ENABLED && (D1_D0_ENABLED || D1_D1_ENABLED)
-        character(len(array,IK),SKC), allocatable :: ArrayRemoved(:)
+        character(len(array,IK),SKG), allocatable :: ArrayRemoved(:)
 #elif   IK_ENABLED && (D1_D0_ENABLED || D1_D1_ENABLED)
-        integer(IKC)                , allocatable :: ArrayRemoved(:)
+        integer(IKG)                , allocatable :: ArrayRemoved(:)
 #elif   LK_ENABLED && (D1_D0_ENABLED || D1_D1_ENABLED)
-        logical(LKC)                , allocatable :: ArrayRemoved(:)
+        logical(LKG)                , allocatable :: ArrayRemoved(:)
 #elif   CK_ENABLED && (D1_D0_ENABLED || D1_D1_ENABLED)
-        complex(CKC)                , allocatable :: ArrayRemoved(:)
+        complex(CKG)                , allocatable :: ArrayRemoved(:)
 #elif   RK_ENABLED && (D1_D0_ENABLED || D1_D1_ENABLED)
-        real(RKC)                   , allocatable :: ArrayRemoved(:)
+        real(RKG)                   , allocatable :: ArrayRemoved(:)
 #else
 #error  "Unrecognized interface."
 #endif
@@ -214,12 +214,12 @@
                 !CusIns_ENABLED
                 lenArrayRemoved = lenArray - lenDOP * lenPattern
 #if             SK_ENABLED && D0_D0_ENABLED
-                allocate(character(lenArrayRemoved,SKC) :: ArrayRemoved)
+                allocate(character(lenArrayRemoved,SKG) :: ArrayRemoved)
 #elif           SK_ENABLED && (D1_D0_ENABLED || D1_D1_ENABLED) && getRemoved_ENABLED
                 ! \bug
                 ! An Intel ifort compiler bug as of version 2021.4 prevents
                 ! the merging of the following allocation with the one after.
-                allocate(character(len(array),SKC) :: ArrayRemoved(lenArrayRemoved))
+                allocate(character(len(array),SKG) :: ArrayRemoved(lenArrayRemoved))
 #else
                 allocate(ArrayRemoved(offset + 1_IK : offset + lenArrayRemoved))
 #endif
@@ -252,9 +252,9 @@
 #endif
            ) then
 #if             SK_ENABLED && D0_D0_ENABLED
-                allocate(character(0,SKC) :: ArrayRemoved)
+                allocate(character(0,SKG) :: ArrayRemoved)
 #elif           SK_ENABLED && (D1_D0_ENABLED || D1_D1_ENABLED)
-                allocate(character(len(array),SKC) :: ArrayRemoved(0))
+                allocate(character(len(array),SKG) :: ArrayRemoved(0))
 #else
                 allocate(ArrayRemoved(0))
 #endif

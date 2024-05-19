@@ -27,9 +27,9 @@
         !%%%%%%%%%%%%%%%%%%%%%%
 
         if (present(mu) .and. present(sigma)) then
-            call setCosRaisedPDF(pdf, x, mu, 1._TKC / sigma)
+            call setCosRaisedPDF(pdf, x, mu, 1._TKG / sigma)
         elseif (present(sigma)) then
-            call setCosRaisedPDF(pdf, x, 0._TKC, 1._TKC / sigma)
+            call setCosRaisedPDF(pdf, x, 0._TKG, 1._TKG / sigma)
         elseif (present(mu)) then
             call setCosRaisedPDF(pdf, x, mu)
         else
@@ -40,29 +40,29 @@
 #elif   setCosRaisedPDF_ENABLED
         !%%%%%%%%%%%%%%%%%%%%%%
 
-        real(TKC), parameter :: PI = acos(-1._TKC)
+        real(TKG), parameter :: PI = acos(-1._TKG)
 #if     XMD_ENABLED || XDD_ENABLED
-        real(TKC), parameter :: invSigma = 1._TKC
+        real(TKG), parameter :: invSigma = 1._TKG
 #if     XDD_ENABLED
-        real(TKC), parameter :: mu = 0._TKC
+        real(TKG), parameter :: mu = 0._TKG
 #endif
 #elif   XMI_ENABLED
-        CHECK_ASSERTION(__LINE__, 0._TKC < invSigma, SK_"@setCosRaisedPDF(): The condition `0. < invSigma` must hold. invSigma = "//getStr(invSigma))
+        CHECK_ASSERTION(__LINE__, 0._TKG < invSigma, SK_"@setCosRaisedPDF(): The condition `0. < invSigma` must hold. invSigma = "//getStr(invSigma))
 #else
 #error  "Unrecognized interface."
 #endif
-        CHECK_ASSERTION(__LINE__, x <= mu + 1._TKC / invSigma, SK_"@getCosRaisedPDF(): The condition `x <= mu + 1. / invSigma` must hold. x, mu, invSigma = "//getStr([x, mu, invSigma]))
-        CHECK_ASSERTION(__LINE__, x >= mu - 1._TKC / invSigma, SK_"@getCosRaisedPDF(): The condition `x >= mu - 1. / invSigma` must hold. x, mu, invSigma = "//getStr([x, mu, invSigma]))
-        pdf = 0.5_TKC * invSigma * (1._TKC + cos(PI * invSigma * (x - mu)))
+        CHECK_ASSERTION(__LINE__, x <= mu + 1._TKG / invSigma, SK_"@getCosRaisedPDF(): The condition `x <= mu + 1. / invSigma` must hold. x, mu, invSigma = "//getStr([x, mu, invSigma]))
+        CHECK_ASSERTION(__LINE__, x >= mu - 1._TKG / invSigma, SK_"@getCosRaisedPDF(): The condition `x >= mu - 1. / invSigma` must hold. x, mu, invSigma = "//getStr([x, mu, invSigma]))
+        pdf = 0.5_TKG * invSigma * (1._TKG + cos(PI * invSigma * (x - mu)))
 
         !%%%%%%%%%%%%%%%%%%%%%%
 #elif   getCosRaisedCDF_ENABLED
         !%%%%%%%%%%%%%%%%%%%%%%
 
         if (present(mu) .and. present(sigma)) then
-            call setCosRaisedCDF(cdf, x, mu, 1._TKC / sigma)
+            call setCosRaisedCDF(cdf, x, mu, 1._TKG / sigma)
         elseif (present(sigma)) then
-            call setCosRaisedCDF(cdf, x, 0._TKC, 1._TKC / sigma)
+            call setCosRaisedCDF(cdf, x, 0._TKG, 1._TKG / sigma)
         elseif (present(mu)) then
             call setCosRaisedCDF(cdf, x, mu)
         else
@@ -73,23 +73,23 @@
 #elif   setCosRaisedCDF_ENABLED
         !%%%%%%%%%%%%%%%%%%%%%%
 
-        real(TKC) :: stanx
-        real(TKC), parameter :: PI = acos(-1._TKC)
-        real(TKC), parameter :: INV_PI = 1._TKC / PI
+        real(TKG) :: stanx
+        real(TKG), parameter :: PI = acos(-1._TKG)
+        real(TKG), parameter :: INV_PI = 1._TKG / PI
 #if     XMD_ENABLED || XDD_ENABLED
-        real(TKC), parameter :: invSigma = 1._TKC
+        real(TKG), parameter :: invSigma = 1._TKG
 #if     XDD_ENABLED
-        real(TKC), parameter :: mu = 0._TKC
+        real(TKG), parameter :: mu = 0._TKG
 #endif
 #elif   XMI_ENABLED
-        CHECK_ASSERTION(__LINE__, 0._TKC < invSigma, SK_"@setCosRaisedCDF(): The condition `0. < invSigma` must hold. invSigma = "//getStr(invSigma))
+        CHECK_ASSERTION(__LINE__, 0._TKG < invSigma, SK_"@setCosRaisedCDF(): The condition `0. < invSigma` must hold. invSigma = "//getStr(invSigma))
 #else
 #error  "Unrecognized interface."
 #endif
-        CHECK_ASSERTION(__LINE__, x <= mu + 1._TKC / invSigma, SK_"@getCosRaisedCDF(): The condition `x <= mu + 1. / invSigma` must hold. x, mu, invSigma = "//getStr([x, mu, invSigma]))
-        CHECK_ASSERTION(__LINE__, x >= mu - 1._TKC / invSigma, SK_"@getCosRaisedCDF(): The condition `x >= mu - 1. / invSigma` must hold. x, mu, invSigma = "//getStr([x, mu, invSigma]))
+        CHECK_ASSERTION(__LINE__, x <= mu + 1._TKG / invSigma, SK_"@getCosRaisedCDF(): The condition `x <= mu + 1. / invSigma` must hold. x, mu, invSigma = "//getStr([x, mu, invSigma]))
+        CHECK_ASSERTION(__LINE__, x >= mu - 1._TKG / invSigma, SK_"@getCosRaisedCDF(): The condition `x >= mu - 1. / invSigma` must hold. x, mu, invSigma = "//getStr([x, mu, invSigma]))
         stanx = (x - mu) * invSigma
-        cdf = 0.5_TKC * (1._TKC + stanx + sin(stanx * PI) * INV_PI)
+        cdf = 0.5_TKG * (1._TKG + stanx + sin(stanx * PI) * INV_PI)
 #else
         !%%%%%%%%%%%%%%%%%%%%%%%%
 #error  "Unrecognized interface."

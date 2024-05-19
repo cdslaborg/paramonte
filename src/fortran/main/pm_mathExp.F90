@@ -119,9 +119,9 @@ module pm_mathExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isIntPowArb_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC), intent(in)            :: absx
-        integer(IKC), intent(in)            :: base
+        use pm_kind, only: IKG => IK5
+        integer(IKG), intent(in)            :: absx
+        integer(IKG), intent(in)            :: base
         logical(LK)                         :: powisint
     end function
 #endif
@@ -131,9 +131,9 @@ module pm_mathExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isIntPowArb_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC), intent(in)            :: absx
-        integer(IKC), intent(in)            :: base
+        use pm_kind, only: IKG => IK4
+        integer(IKG), intent(in)            :: absx
+        integer(IKG), intent(in)            :: base
         logical(LK)                         :: powisint
     end function
 #endif
@@ -143,9 +143,9 @@ module pm_mathExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isIntPowArb_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC), intent(in)            :: absx
-        integer(IKC), intent(in)            :: base
+        use pm_kind, only: IKG => IK3
+        integer(IKG), intent(in)            :: absx
+        integer(IKG), intent(in)            :: base
         logical(LK)                         :: powisint
     end function
 #endif
@@ -155,9 +155,9 @@ module pm_mathExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isIntPowArb_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC), intent(in)            :: absx
-        integer(IKC), intent(in)            :: base
+        use pm_kind, only: IKG => IK2
+        integer(IKG), intent(in)            :: absx
+        integer(IKG), intent(in)            :: base
         logical(LK)                         :: powisint
     end function
 #endif
@@ -167,9 +167,9 @@ module pm_mathExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isIntPowArb_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC), intent(in)            :: absx
-        integer(IKC), intent(in)            :: base
+        use pm_kind, only: IKG => IK1
+        integer(IKG), intent(in)            :: absx
+        integer(IKG), intent(in)            :: base
         logical(LK)                         :: powisint
     end function
 #endif
@@ -181,8 +181,8 @@ module pm_mathExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isIntPowDef_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC), intent(in)            :: absx
+        use pm_kind, only: IKG => IK5
+        integer(IKG), intent(in)            :: absx
         logical(LK)                         :: powisint
     end function
 #endif
@@ -192,8 +192,8 @@ module pm_mathExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isIntPowDef_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC), intent(in)            :: absx
+        use pm_kind, only: IKG => IK4
+        integer(IKG), intent(in)            :: absx
         logical(LK)                         :: powisint
     end function
 #endif
@@ -203,8 +203,8 @@ module pm_mathExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isIntPowDef_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC), intent(in)            :: absx
+        use pm_kind, only: IKG => IK3
+        integer(IKG), intent(in)            :: absx
         logical(LK)                         :: powisint
     end function
 #endif
@@ -214,8 +214,8 @@ module pm_mathExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isIntPowDef_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC), intent(in)            :: absx
+        use pm_kind, only: IKG => IK2
+        integer(IKG), intent(in)            :: absx
         logical(LK)                         :: powisint
     end function
 #endif
@@ -225,8 +225,8 @@ module pm_mathExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isIntPowDef_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC), intent(in)            :: absx
+        use pm_kind, only: IKG => IK1
+        integer(IKG), intent(in)            :: absx
         logical(LK)                         :: powisint
     end function
 #endif
@@ -315,10 +315,10 @@ module pm_mathExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getExpNext_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC), intent(in)            :: absx
-        integer(IKC), intent(in), optional  :: base
-        integer(IKC)                        :: expNext
+        use pm_kind, only: IKG => IK5
+        integer(IKG), intent(in)            :: absx
+        integer(IKG), intent(in), optional  :: base
+        integer(IKG)                        :: expNext
     end function
 #endif
 
@@ -327,10 +327,10 @@ module pm_mathExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getExpNext_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC), intent(in)            :: absx
-        integer(IKC), intent(in), optional  :: base
-        integer(IKC)                        :: expNext
+        use pm_kind, only: IKG => IK4
+        integer(IKG), intent(in)            :: absx
+        integer(IKG), intent(in), optional  :: base
+        integer(IKG)                        :: expNext
     end function
 #endif
 
@@ -339,10 +339,10 @@ module pm_mathExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getExpNext_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC), intent(in)            :: absx
-        integer(IKC), intent(in), optional  :: base
-        integer(IKC)                        :: expNext
+        use pm_kind, only: IKG => IK3
+        integer(IKG), intent(in)            :: absx
+        integer(IKG), intent(in), optional  :: base
+        integer(IKG)                        :: expNext
     end function
 #endif
 
@@ -351,10 +351,10 @@ module pm_mathExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getExpNext_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC), intent(in)            :: absx
-        integer(IKC), intent(in), optional  :: base
-        integer(IKC)                        :: expNext
+        use pm_kind, only: IKG => IK2
+        integer(IKG), intent(in)            :: absx
+        integer(IKG), intent(in), optional  :: base
+        integer(IKG)                        :: expNext
     end function
 #endif
 
@@ -363,10 +363,10 @@ module pm_mathExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getExpNext_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC), intent(in)            :: absx
-        integer(IKC), intent(in), optional  :: base
-        integer(IKC)                        :: expNext
+        use pm_kind, only: IKG => IK1
+        integer(IKG), intent(in)            :: absx
+        integer(IKG), intent(in), optional  :: base
+        integer(IKG)                        :: expNext
     end function
 #endif
 
@@ -377,9 +377,9 @@ module pm_mathExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getExpNext_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(in)            :: absx
-        real(RKC)   , intent(in), optional  :: base
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(in)            :: absx
+        real(RKG)   , intent(in), optional  :: base
         integer(IK)                         :: expNext
     end function
 #endif
@@ -389,9 +389,9 @@ module pm_mathExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getExpNext_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(in)            :: absx
-        real(RKC)   , intent(in), optional  :: base
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(in)            :: absx
+        real(RKG)   , intent(in), optional  :: base
         integer(IK)                         :: expNext
     end function
 #endif
@@ -401,9 +401,9 @@ module pm_mathExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getExpNext_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(in)            :: absx
-        real(RKC)   , intent(in), optional  :: base
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(in)            :: absx
+        real(RKG)   , intent(in), optional  :: base
         integer(IK)                         :: expNext
     end function
 #endif
@@ -413,9 +413,9 @@ module pm_mathExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getExpNext_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(in)            :: absx
-        real(RKC)   , intent(in), optional  :: base
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(in)            :: absx
+        real(RKG)   , intent(in), optional  :: base
         integer(IK)                         :: expNext
     end function
 #endif
@@ -425,9 +425,9 @@ module pm_mathExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getExpNext_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(in)            :: absx
-        real(RKC)   , intent(in), optional  :: base
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(in)            :: absx
+        real(RKG)   , intent(in), optional  :: base
         integer(IK)                         :: expNext
     end function
 #endif
@@ -516,10 +516,10 @@ module pm_mathExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getExpPrev_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC), intent(in)            :: absx
-        integer(IKC), intent(in), optional  :: base
-        integer(IKC)                        :: expPrev
+        use pm_kind, only: IKG => IK5
+        integer(IKG), intent(in)            :: absx
+        integer(IKG), intent(in), optional  :: base
+        integer(IKG)                        :: expPrev
     end function
 #endif
 
@@ -528,10 +528,10 @@ module pm_mathExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getExpPrev_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC), intent(in)            :: absx
-        integer(IKC), intent(in), optional  :: base
-        integer(IKC)                        :: expPrev
+        use pm_kind, only: IKG => IK4
+        integer(IKG), intent(in)            :: absx
+        integer(IKG), intent(in), optional  :: base
+        integer(IKG)                        :: expPrev
     end function
 #endif
 
@@ -540,10 +540,10 @@ module pm_mathExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getExpPrev_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC), intent(in)            :: absx
-        integer(IKC), intent(in), optional  :: base
-        integer(IKC)                        :: expPrev
+        use pm_kind, only: IKG => IK3
+        integer(IKG), intent(in)            :: absx
+        integer(IKG), intent(in), optional  :: base
+        integer(IKG)                        :: expPrev
     end function
 #endif
 
@@ -552,10 +552,10 @@ module pm_mathExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getExpPrev_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC), intent(in)            :: absx
-        integer(IKC), intent(in), optional  :: base
-        integer(IKC)                        :: expPrev
+        use pm_kind, only: IKG => IK2
+        integer(IKG), intent(in)            :: absx
+        integer(IKG), intent(in), optional  :: base
+        integer(IKG)                        :: expPrev
     end function
 #endif
 
@@ -564,10 +564,10 @@ module pm_mathExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getExpPrev_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC), intent(in)            :: absx
-        integer(IKC), intent(in), optional  :: base
-        integer(IKC)                        :: expPrev
+        use pm_kind, only: IKG => IK1
+        integer(IKG), intent(in)            :: absx
+        integer(IKG), intent(in), optional  :: base
+        integer(IKG)                        :: expPrev
     end function
 #endif
 
@@ -578,9 +578,9 @@ module pm_mathExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getExpPrev_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(in)            :: absx
-        real(RKC)   , intent(in), optional  :: base
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(in)            :: absx
+        real(RKG)   , intent(in), optional  :: base
         integer(IK)                         :: expPrev
     end function
 #endif
@@ -590,9 +590,9 @@ module pm_mathExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getExpPrev_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(in)            :: absx
-        real(RKC)   , intent(in), optional  :: base
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(in)            :: absx
+        real(RKG)   , intent(in), optional  :: base
         integer(IK)                         :: expPrev
     end function
 #endif
@@ -602,9 +602,9 @@ module pm_mathExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getExpPrev_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(in)            :: absx
-        real(RKC)   , intent(in), optional  :: base
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(in)            :: absx
+        real(RKG)   , intent(in), optional  :: base
         integer(IK)                         :: expPrev
     end function
 #endif
@@ -614,9 +614,9 @@ module pm_mathExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getExpPrev_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(in)            :: absx
-        real(RKC)   , intent(in), optional  :: base
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(in)            :: absx
+        real(RKG)   , intent(in), optional  :: base
         integer(IK)                         :: expPrev
     end function
 #endif
@@ -626,9 +626,9 @@ module pm_mathExp
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getExpPrev_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(in)            :: absx
-        real(RKC)   , intent(in), optional  :: base
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(in)            :: absx
+        real(RKG)   , intent(in), optional  :: base
         integer(IK)                         :: expPrev
     end function
 #endif

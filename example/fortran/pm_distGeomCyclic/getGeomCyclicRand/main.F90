@@ -1,7 +1,7 @@
 program example
 
     use pm_kind, only: SK, IK
-    use pm_kind, only: RKC => RKS ! all real kinds are supported.
+    use pm_kind, only: RKG => RKS ! all real kinds are supported.
     use pm_distGeomCyclic, only: getGeomCyclicRand
     use pm_arraySpace, only: setLinSpace
     use pm_arraySpace, only: setLogSpace
@@ -11,12 +11,12 @@ program example
 
     integer(IK), parameter  :: NP = 1000_IK
     integer(IK) :: rand(NP)
-    real(RKC) :: probSuccess(NP)
+    real(RKG) :: probSuccess(NP)
 
     type(display_type) :: disp
     disp = display_type(file = "main.out.F90")
 
-    call setLinSpace(probSuccess, x1 = 0.001_RKC, x2 = 1._RKC)
+    call setLinSpace(probSuccess, x1 = 0.001_RKG, x2 = 1._RKG)
 
     call disp%skip()
     call disp%show("probSuccess(1)")
@@ -63,7 +63,7 @@ program example
         integer :: fileUnit, i
         open(newunit = fileUnit, file = "getGeomCyclicRand.IK.txt")
         do i = 1, 5000
-            rand = getGeomCyclicRand([.05_RKC, .25_RKC, .05_RKC, .25_RKC], period = [10_IK, 10_IK, 10000_IK, 10000_IK])
+            rand = getGeomCyclicRand([.05_RKG, .25_RKG, .05_RKG, .25_RKG], period = [10_IK, 10_IK, 10000_IK, 10000_IK])
             write(fileUnit, "(*(g0,:,','))" ) rand
         end do
         close(fileUnit)

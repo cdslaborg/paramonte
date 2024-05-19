@@ -376,9 +376,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDefBorDefCom_D0_D0_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)        , intent(in)                :: array
-        character(*,SKC)        , intent(in)                :: pattern
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)        , intent(in)                :: array
+        character(*,SKG)        , intent(in)                :: pattern
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                                         :: count
     end function
@@ -389,9 +389,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDefBorDefCom_D0_D0_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)        , intent(in)                :: array
-        character(*,SKC)        , intent(in)                :: pattern
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)        , intent(in)                :: array
+        character(*,SKG)        , intent(in)                :: pattern
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                                         :: count
     end function
@@ -402,9 +402,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDefBorDefCom_D0_D0_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)        , intent(in)                :: array
-        character(*,SKC)        , intent(in)                :: pattern
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)        , intent(in)                :: array
+        character(*,SKG)        , intent(in)                :: pattern
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                                         :: count
     end function
@@ -415,9 +415,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDefBorDefCom_D0_D0_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)        , intent(in)                :: array
-        character(*,SKC)        , intent(in)                :: pattern
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)        , intent(in)                :: array
+        character(*,SKG)        , intent(in)                :: pattern
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                                         :: count
     end function
@@ -428,9 +428,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDefBorDefCom_D0_D0_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)        , intent(in)                :: array
-        character(*,SKC)        , intent(in)                :: pattern
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)        , intent(in)                :: array
+        character(*,SKG)        , intent(in)                :: pattern
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                                         :: count
     end function
@@ -449,9 +449,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDefBorCusCom_D0_D0_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)        , intent(in)                :: array
-        character(*,SKC)        , intent(in)                :: pattern
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)        , intent(in)                :: array
+        character(*,SKG)        , intent(in)                :: pattern
         procedure(logical(LK))                              :: iseq
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                                         :: count
@@ -463,9 +463,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDefBorCusCom_D0_D0_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)        , intent(in)                :: array
-        character(*,SKC)        , intent(in)                :: pattern
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)        , intent(in)                :: array
+        character(*,SKG)        , intent(in)                :: pattern
         procedure(logical(LK))                              :: iseq
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                                         :: count
@@ -477,9 +477,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDefBorCusCom_D0_D0_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)        , intent(in)                :: array
-        character(*,SKC)        , intent(in)                :: pattern
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)        , intent(in)                :: array
+        character(*,SKG)        , intent(in)                :: pattern
         procedure(logical(LK))                              :: iseq
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                                         :: count
@@ -491,9 +491,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDefBorCusCom_D0_D0_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)        , intent(in)                :: array
-        character(*,SKC)        , intent(in)                :: pattern
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)        , intent(in)                :: array
+        character(*,SKG)        , intent(in)                :: pattern
         procedure(logical(LK))                              :: iseq
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                                         :: count
@@ -505,9 +505,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDefBorCusCom_D0_D0_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)        , intent(in)                :: array
-        character(*,SKC)        , intent(in)                :: pattern
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)        , intent(in)                :: array
+        character(*,SKG)        , intent(in)                :: pattern
         procedure(logical(LK))                              :: iseq
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                                         :: count
@@ -537,9 +537,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDefBorDefCom_D1_D0_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)        , intent(in), contiguous    :: array(:)
-        character(*,SKC)        , intent(in)                :: pattern
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)        , intent(in), contiguous    :: array(:)
+        character(*,SKG)        , intent(in)                :: pattern
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                                         :: count
     end function
@@ -550,9 +550,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDefBorDefCom_D1_D0_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)        , intent(in), contiguous    :: array(:)
-        character(*,SKC)        , intent(in)                :: pattern
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)        , intent(in), contiguous    :: array(:)
+        character(*,SKG)        , intent(in)                :: pattern
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                                         :: count
     end function
@@ -563,9 +563,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDefBorDefCom_D1_D0_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)        , intent(in), contiguous    :: array(:)
-        character(*,SKC)        , intent(in)                :: pattern
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)        , intent(in), contiguous    :: array(:)
+        character(*,SKG)        , intent(in)                :: pattern
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                                         :: count
     end function
@@ -576,9 +576,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDefBorDefCom_D1_D0_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)        , intent(in), contiguous    :: array(:)
-        character(*,SKC)        , intent(in)                :: pattern
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)        , intent(in), contiguous    :: array(:)
+        character(*,SKG)        , intent(in)                :: pattern
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                                         :: count
     end function
@@ -589,9 +589,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDefBorDefCom_D1_D0_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)        , intent(in), contiguous    :: array(:)
-        character(*,SKC)        , intent(in)                :: pattern
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)        , intent(in), contiguous    :: array(:)
+        character(*,SKG)        , intent(in)                :: pattern
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                                         :: count
     end function
@@ -604,9 +604,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDefBorDefCom_D1_D0_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)            , intent(in), contiguous    :: array(:)
-        integer(IKC)            , intent(in)                :: pattern
+        use pm_kind, only: IKG => IK5
+        integer(IKG)            , intent(in), contiguous    :: array(:)
+        integer(IKG)            , intent(in)                :: pattern
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                                         :: count
     end function
@@ -617,9 +617,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDefBorDefCom_D1_D0_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)            , intent(in), contiguous    :: array(:)
-        integer(IKC)            , intent(in)                :: pattern
+        use pm_kind, only: IKG => IK4
+        integer(IKG)            , intent(in), contiguous    :: array(:)
+        integer(IKG)            , intent(in)                :: pattern
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                                         :: count
     end function
@@ -630,9 +630,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDefBorDefCom_D1_D0_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)            , intent(in), contiguous    :: array(:)
-        integer(IKC)            , intent(in)                :: pattern
+        use pm_kind, only: IKG => IK3
+        integer(IKG)            , intent(in), contiguous    :: array(:)
+        integer(IKG)            , intent(in)                :: pattern
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                                         :: count
     end function
@@ -643,9 +643,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDefBorDefCom_D1_D0_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)            , intent(in), contiguous    :: array(:)
-        integer(IKC)            , intent(in)                :: pattern
+        use pm_kind, only: IKG => IK2
+        integer(IKG)            , intent(in), contiguous    :: array(:)
+        integer(IKG)            , intent(in)                :: pattern
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                                         :: count
     end function
@@ -656,9 +656,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDefBorDefCom_D1_D0_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)            , intent(in), contiguous    :: array(:)
-        integer(IKC)            , intent(in)                :: pattern
+        use pm_kind, only: IKG => IK1
+        integer(IKG)            , intent(in), contiguous    :: array(:)
+        integer(IKG)            , intent(in)                :: pattern
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                                         :: count
     end function
@@ -671,9 +671,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDefBorDefCom_D1_D0_LK5
 #endif
-        use pm_kind, only: LKC => LK5
-        logical(LKC)            , intent(in), contiguous    :: array(:)
-        logical(LKC)            , intent(in)                :: pattern
+        use pm_kind, only: LKG => LK5
+        logical(LKG)            , intent(in), contiguous    :: array(:)
+        logical(LKG)            , intent(in)                :: pattern
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                                         :: count
     end function
@@ -684,9 +684,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDefBorDefCom_D1_D0_LK4
 #endif
-        use pm_kind, only: LKC => LK4
-        logical(LKC)            , intent(in), contiguous    :: array(:)
-        logical(LKC)            , intent(in)                :: pattern
+        use pm_kind, only: LKG => LK4
+        logical(LKG)            , intent(in), contiguous    :: array(:)
+        logical(LKG)            , intent(in)                :: pattern
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                                         :: count
     end function
@@ -697,9 +697,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDefBorDefCom_D1_D0_LK3
 #endif
-        use pm_kind, only: LKC => LK3
-        logical(LKC)            , intent(in), contiguous    :: array(:)
-        logical(LKC)            , intent(in)                :: pattern
+        use pm_kind, only: LKG => LK3
+        logical(LKG)            , intent(in), contiguous    :: array(:)
+        logical(LKG)            , intent(in)                :: pattern
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                                         :: count
     end function
@@ -710,9 +710,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDefBorDefCom_D1_D0_LK2
 #endif
-        use pm_kind, only: LKC => LK2
-        logical(LKC)            , intent(in), contiguous    :: array(:)
-        logical(LKC)            , intent(in)                :: pattern
+        use pm_kind, only: LKG => LK2
+        logical(LKG)            , intent(in), contiguous    :: array(:)
+        logical(LKG)            , intent(in)                :: pattern
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                                         :: count
     end function
@@ -723,9 +723,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDefBorDefCom_D1_D0_LK1
 #endif
-        use pm_kind, only: LKC => LK1
-        logical(LKC)            , intent(in), contiguous    :: array(:)
-        logical(LKC)            , intent(in)                :: pattern
+        use pm_kind, only: LKG => LK1
+        logical(LKG)            , intent(in), contiguous    :: array(:)
+        logical(LKG)            , intent(in)                :: pattern
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                                         :: count
     end function
@@ -738,9 +738,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDefBorDefCom_D1_D0_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)            , intent(in), contiguous    :: array(:)
-        complex(CKC)            , intent(in)                :: pattern
+        use pm_kind, only: CKG => CK5
+        complex(CKG)            , intent(in), contiguous    :: array(:)
+        complex(CKG)            , intent(in)                :: pattern
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                                         :: count
     end function
@@ -751,9 +751,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDefBorDefCom_D1_D0_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)            , intent(in), contiguous    :: array(:)
-        complex(CKC)            , intent(in)                :: pattern
+        use pm_kind, only: CKG => CK4
+        complex(CKG)            , intent(in), contiguous    :: array(:)
+        complex(CKG)            , intent(in)                :: pattern
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                                         :: count
     end function
@@ -764,9 +764,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDefBorDefCom_D1_D0_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)            , intent(in), contiguous    :: array(:)
-        complex(CKC)            , intent(in)                :: pattern
+        use pm_kind, only: CKG => CK3
+        complex(CKG)            , intent(in), contiguous    :: array(:)
+        complex(CKG)            , intent(in)                :: pattern
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                                         :: count
     end function
@@ -777,9 +777,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDefBorDefCom_D1_D0_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)            , intent(in), contiguous    :: array(:)
-        complex(CKC)            , intent(in)                :: pattern
+        use pm_kind, only: CKG => CK2
+        complex(CKG)            , intent(in), contiguous    :: array(:)
+        complex(CKG)            , intent(in)                :: pattern
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                                         :: count
     end function
@@ -790,9 +790,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDefBorDefCom_D1_D0_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)            , intent(in), contiguous    :: array(:)
-        complex(CKC)            , intent(in)                :: pattern
+        use pm_kind, only: CKG => CK1
+        complex(CKG)            , intent(in), contiguous    :: array(:)
+        complex(CKG)            , intent(in)                :: pattern
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                                         :: count
     end function
@@ -805,9 +805,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDefBorDefCom_D1_D0_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)               , intent(in), contiguous    :: array(:)
-        real(RKC)               , intent(in)                :: pattern
+        use pm_kind, only: RKG => RK5
+        real(RKG)               , intent(in), contiguous    :: array(:)
+        real(RKG)               , intent(in)                :: pattern
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                                         :: count
     end function
@@ -818,9 +818,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDefBorDefCom_D1_D0_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)               , intent(in), contiguous    :: array(:)
-        real(RKC)               , intent(in)                :: pattern
+        use pm_kind, only: RKG => RK4
+        real(RKG)               , intent(in), contiguous    :: array(:)
+        real(RKG)               , intent(in)                :: pattern
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                                         :: count
     end function
@@ -831,9 +831,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDefBorDefCom_D1_D0_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)               , intent(in), contiguous    :: array(:)
-        real(RKC)               , intent(in)                :: pattern
+        use pm_kind, only: RKG => RK3
+        real(RKG)               , intent(in), contiguous    :: array(:)
+        real(RKG)               , intent(in)                :: pattern
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                                         :: count
     end function
@@ -844,9 +844,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDefBorDefCom_D1_D0_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)               , intent(in), contiguous    :: array(:)
-        real(RKC)               , intent(in)                :: pattern
+        use pm_kind, only: RKG => RK2
+        real(RKG)               , intent(in), contiguous    :: array(:)
+        real(RKG)               , intent(in)                :: pattern
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                                         :: count
     end function
@@ -857,9 +857,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDefBorDefCom_D1_D0_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)               , intent(in), contiguous    :: array(:)
-        real(RKC)               , intent(in)                :: pattern
+        use pm_kind, only: RKG => RK1
+        real(RKG)               , intent(in), contiguous    :: array(:)
+        real(RKG)               , intent(in)                :: pattern
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                                         :: count
     end function
@@ -878,9 +878,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDefBorCusCom_D1_D0_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)        , intent(in), contiguous    :: array(:)
-        character(*,SKC)        , intent(in)                :: pattern
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)        , intent(in), contiguous    :: array(:)
+        character(*,SKG)        , intent(in)                :: pattern
         procedure(logical(LK))                              :: iseq
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                                         :: count
@@ -892,9 +892,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDefBorCusCom_D1_D0_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)        , intent(in), contiguous    :: array(:)
-        character(*,SKC)        , intent(in)                :: pattern
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)        , intent(in), contiguous    :: array(:)
+        character(*,SKG)        , intent(in)                :: pattern
         procedure(logical(LK))                              :: iseq
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                                         :: count
@@ -906,9 +906,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDefBorCusCom_D1_D0_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)        , intent(in), contiguous    :: array(:)
-        character(*,SKC)        , intent(in)                :: pattern
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)        , intent(in), contiguous    :: array(:)
+        character(*,SKG)        , intent(in)                :: pattern
         procedure(logical(LK))                              :: iseq
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                                         :: count
@@ -920,9 +920,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDefBorCusCom_D1_D0_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)        , intent(in), contiguous    :: array(:)
-        character(*,SKC)        , intent(in)                :: pattern
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)        , intent(in), contiguous    :: array(:)
+        character(*,SKG)        , intent(in)                :: pattern
         procedure(logical(LK))                              :: iseq
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                                         :: count
@@ -934,9 +934,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDefBorCusCom_D1_D0_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)        , intent(in), contiguous    :: array(:)
-        character(*,SKC)        , intent(in)                :: pattern
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)        , intent(in), contiguous    :: array(:)
+        character(*,SKG)        , intent(in)                :: pattern
         procedure(logical(LK))                              :: iseq
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                                         :: count
@@ -950,9 +950,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDefBorCusCom_D1_D0_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)            , intent(in), contiguous    :: array(:)
-        integer(IKC)            , intent(in)                :: pattern
+        use pm_kind, only: IKG => IK5
+        integer(IKG)            , intent(in), contiguous    :: array(:)
+        integer(IKG)            , intent(in)                :: pattern
         procedure(logical(LK))                              :: iseq
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                                         :: count
@@ -964,9 +964,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDefBorCusCom_D1_D0_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)            , intent(in), contiguous    :: array(:)
-        integer(IKC)            , intent(in)                :: pattern
+        use pm_kind, only: IKG => IK4
+        integer(IKG)            , intent(in), contiguous    :: array(:)
+        integer(IKG)            , intent(in)                :: pattern
         procedure(logical(LK))                              :: iseq
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                                         :: count
@@ -978,9 +978,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDefBorCusCom_D1_D0_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)            , intent(in), contiguous    :: array(:)
-        integer(IKC)            , intent(in)                :: pattern
+        use pm_kind, only: IKG => IK3
+        integer(IKG)            , intent(in), contiguous    :: array(:)
+        integer(IKG)            , intent(in)                :: pattern
         procedure(logical(LK))                              :: iseq
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                                         :: count
@@ -992,9 +992,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDefBorCusCom_D1_D0_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)            , intent(in), contiguous    :: array(:)
-        integer(IKC)            , intent(in)                :: pattern
+        use pm_kind, only: IKG => IK2
+        integer(IKG)            , intent(in), contiguous    :: array(:)
+        integer(IKG)            , intent(in)                :: pattern
         procedure(logical(LK))                              :: iseq
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                                         :: count
@@ -1006,9 +1006,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDefBorCusCom_D1_D0_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)            , intent(in), contiguous    :: array(:)
-        integer(IKC)            , intent(in)                :: pattern
+        use pm_kind, only: IKG => IK1
+        integer(IKG)            , intent(in), contiguous    :: array(:)
+        integer(IKG)            , intent(in)                :: pattern
         procedure(logical(LK))                              :: iseq
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                                         :: count
@@ -1022,9 +1022,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDefBorCusCom_D1_D0_LK5
 #endif
-        use pm_kind, only: LKC => LK5
-        logical(LKC)            , intent(in), contiguous    :: array(:)
-        logical(LKC)            , intent(in)                :: pattern
+        use pm_kind, only: LKG => LK5
+        logical(LKG)            , intent(in), contiguous    :: array(:)
+        logical(LKG)            , intent(in)                :: pattern
         procedure(logical(LK))                              :: iseq
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                                         :: count
@@ -1036,9 +1036,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDefBorCusCom_D1_D0_LK4
 #endif
-        use pm_kind, only: LKC => LK4
-        logical(LKC)            , intent(in), contiguous    :: array(:)
-        logical(LKC)            , intent(in)                :: pattern
+        use pm_kind, only: LKG => LK4
+        logical(LKG)            , intent(in), contiguous    :: array(:)
+        logical(LKG)            , intent(in)                :: pattern
         procedure(logical(LK))                              :: iseq
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                                         :: count
@@ -1050,9 +1050,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDefBorCusCom_D1_D0_LK3
 #endif
-        use pm_kind, only: LKC => LK3
-        logical(LKC)            , intent(in), contiguous    :: array(:)
-        logical(LKC)            , intent(in)                :: pattern
+        use pm_kind, only: LKG => LK3
+        logical(LKG)            , intent(in), contiguous    :: array(:)
+        logical(LKG)            , intent(in)                :: pattern
         procedure(logical(LK))                              :: iseq
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                                         :: count
@@ -1064,9 +1064,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDefBorCusCom_D1_D0_LK2
 #endif
-        use pm_kind, only: LKC => LK2
-        logical(LKC)            , intent(in), contiguous    :: array(:)
-        logical(LKC)            , intent(in)                :: pattern
+        use pm_kind, only: LKG => LK2
+        logical(LKG)            , intent(in), contiguous    :: array(:)
+        logical(LKG)            , intent(in)                :: pattern
         procedure(logical(LK))                              :: iseq
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                                         :: count
@@ -1078,9 +1078,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDefBorCusCom_D1_D0_LK1
 #endif
-        use pm_kind, only: LKC => LK1
-        logical(LKC)            , intent(in), contiguous    :: array(:)
-        logical(LKC)            , intent(in)                :: pattern
+        use pm_kind, only: LKG => LK1
+        logical(LKG)            , intent(in), contiguous    :: array(:)
+        logical(LKG)            , intent(in)                :: pattern
         procedure(logical(LK))                              :: iseq
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                                         :: count
@@ -1094,9 +1094,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDefBorCusCom_D1_D0_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)            , intent(in), contiguous    :: array(:)
-        complex(CKC)            , intent(in)                :: pattern
+        use pm_kind, only: CKG => CK5
+        complex(CKG)            , intent(in), contiguous    :: array(:)
+        complex(CKG)            , intent(in)                :: pattern
         procedure(logical(LK))                              :: iseq
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                                         :: count
@@ -1108,9 +1108,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDefBorCusCom_D1_D0_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)            , intent(in), contiguous    :: array(:)
-        complex(CKC)            , intent(in)                :: pattern
+        use pm_kind, only: CKG => CK4
+        complex(CKG)            , intent(in), contiguous    :: array(:)
+        complex(CKG)            , intent(in)                :: pattern
         procedure(logical(LK))                              :: iseq
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                                         :: count
@@ -1122,9 +1122,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDefBorCusCom_D1_D0_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)            , intent(in), contiguous    :: array(:)
-        complex(CKC)            , intent(in)                :: pattern
+        use pm_kind, only: CKG => CK3
+        complex(CKG)            , intent(in), contiguous    :: array(:)
+        complex(CKG)            , intent(in)                :: pattern
         procedure(logical(LK))                              :: iseq
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                                         :: count
@@ -1136,9 +1136,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDefBorCusCom_D1_D0_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)            , intent(in), contiguous    :: array(:)
-        complex(CKC)            , intent(in)                :: pattern
+        use pm_kind, only: CKG => CK2
+        complex(CKG)            , intent(in), contiguous    :: array(:)
+        complex(CKG)            , intent(in)                :: pattern
         procedure(logical(LK))                              :: iseq
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                                         :: count
@@ -1150,9 +1150,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDefBorCusCom_D1_D0_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)            , intent(in), contiguous    :: array(:)
-        complex(CKC)            , intent(in)                :: pattern
+        use pm_kind, only: CKG => CK1
+        complex(CKG)            , intent(in), contiguous    :: array(:)
+        complex(CKG)            , intent(in)                :: pattern
         procedure(logical(LK))                              :: iseq
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                                         :: count
@@ -1166,9 +1166,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDefBorCusCom_D1_D0_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)               , intent(in), contiguous    :: array(:)
-        real(RKC)               , intent(in)                :: pattern
+        use pm_kind, only: RKG => RK5
+        real(RKG)               , intent(in), contiguous    :: array(:)
+        real(RKG)               , intent(in)                :: pattern
         procedure(logical(LK))                              :: iseq
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                                         :: count
@@ -1180,9 +1180,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDefBorCusCom_D1_D0_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)               , intent(in), contiguous    :: array(:)
-        real(RKC)               , intent(in)                :: pattern
+        use pm_kind, only: RKG => RK4
+        real(RKG)               , intent(in), contiguous    :: array(:)
+        real(RKG)               , intent(in)                :: pattern
         procedure(logical(LK))                              :: iseq
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                                         :: count
@@ -1194,9 +1194,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDefBorCusCom_D1_D0_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)               , intent(in), contiguous    :: array(:)
-        real(RKC)               , intent(in)                :: pattern
+        use pm_kind, only: RKG => RK3
+        real(RKG)               , intent(in), contiguous    :: array(:)
+        real(RKG)               , intent(in)                :: pattern
         procedure(logical(LK))                              :: iseq
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                                         :: count
@@ -1208,9 +1208,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDefBorCusCom_D1_D0_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)               , intent(in), contiguous    :: array(:)
-        real(RKC)               , intent(in)                :: pattern
+        use pm_kind, only: RKG => RK2
+        real(RKG)               , intent(in), contiguous    :: array(:)
+        real(RKG)               , intent(in)                :: pattern
         procedure(logical(LK))                              :: iseq
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                                         :: count
@@ -1222,9 +1222,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDefBorCusCom_D1_D0_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)               , intent(in), contiguous    :: array(:)
-        real(RKC)               , intent(in)                :: pattern
+        use pm_kind, only: RKG => RK1
+        real(RKG)               , intent(in), contiguous    :: array(:)
+        real(RKG)               , intent(in)                :: pattern
         procedure(logical(LK))                              :: iseq
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                                         :: count
@@ -1254,9 +1254,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDefBorDefCom_D1_D1_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)        , intent(in), contiguous    :: array(:)
-        character(*,SKC)        , intent(in), contiguous    :: pattern(:)
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)        , intent(in), contiguous    :: array(:)
+        character(*,SKG)        , intent(in), contiguous    :: pattern(:)
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                                         :: count
     end function
@@ -1267,9 +1267,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDefBorDefCom_D1_D1_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)        , intent(in), contiguous    :: array(:)
-        character(*,SKC)        , intent(in), contiguous    :: pattern(:)
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)        , intent(in), contiguous    :: array(:)
+        character(*,SKG)        , intent(in), contiguous    :: pattern(:)
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                                         :: count
     end function
@@ -1280,9 +1280,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDefBorDefCom_D1_D1_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)        , intent(in), contiguous    :: array(:)
-        character(*,SKC)        , intent(in), contiguous    :: pattern(:)
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)        , intent(in), contiguous    :: array(:)
+        character(*,SKG)        , intent(in), contiguous    :: pattern(:)
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                                         :: count
     end function
@@ -1293,9 +1293,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDefBorDefCom_D1_D1_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)        , intent(in), contiguous    :: array(:)
-        character(*,SKC)        , intent(in), contiguous    :: pattern(:)
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)        , intent(in), contiguous    :: array(:)
+        character(*,SKG)        , intent(in), contiguous    :: pattern(:)
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                                         :: count
     end function
@@ -1306,9 +1306,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDefBorDefCom_D1_D1_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)        , intent(in), contiguous    :: array(:)
-        character(*,SKC)        , intent(in), contiguous    :: pattern(:)
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)        , intent(in), contiguous    :: array(:)
+        character(*,SKG)        , intent(in), contiguous    :: pattern(:)
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                                         :: count
     end function
@@ -1321,9 +1321,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDefBorDefCom_D1_D1_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)            , intent(in), contiguous    :: array(:)
-        integer(IKC)            , intent(in), contiguous    :: pattern(:)
+        use pm_kind, only: IKG => IK5
+        integer(IKG)            , intent(in), contiguous    :: array(:)
+        integer(IKG)            , intent(in), contiguous    :: pattern(:)
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                                         :: count
     end function
@@ -1334,9 +1334,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDefBorDefCom_D1_D1_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)            , intent(in), contiguous    :: array(:)
-        integer(IKC)            , intent(in), contiguous    :: pattern(:)
+        use pm_kind, only: IKG => IK4
+        integer(IKG)            , intent(in), contiguous    :: array(:)
+        integer(IKG)            , intent(in), contiguous    :: pattern(:)
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                                         :: count
     end function
@@ -1347,9 +1347,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDefBorDefCom_D1_D1_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)            , intent(in), contiguous    :: array(:)
-        integer(IKC)            , intent(in), contiguous    :: pattern(:)
+        use pm_kind, only: IKG => IK3
+        integer(IKG)            , intent(in), contiguous    :: array(:)
+        integer(IKG)            , intent(in), contiguous    :: pattern(:)
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                                         :: count
     end function
@@ -1360,9 +1360,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDefBorDefCom_D1_D1_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)            , intent(in), contiguous    :: array(:)
-        integer(IKC)            , intent(in), contiguous    :: pattern(:)
+        use pm_kind, only: IKG => IK2
+        integer(IKG)            , intent(in), contiguous    :: array(:)
+        integer(IKG)            , intent(in), contiguous    :: pattern(:)
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                                         :: count
     end function
@@ -1373,9 +1373,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDefBorDefCom_D1_D1_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)            , intent(in), contiguous    :: array(:)
-        integer(IKC)            , intent(in), contiguous    :: pattern(:)
+        use pm_kind, only: IKG => IK1
+        integer(IKG)            , intent(in), contiguous    :: array(:)
+        integer(IKG)            , intent(in), contiguous    :: pattern(:)
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                                         :: count
     end function
@@ -1388,9 +1388,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDefBorDefCom_D1_D1_LK5
 #endif
-        use pm_kind, only: LKC => LK5
-        logical(LKC)            , intent(in), contiguous    :: array(:)
-        logical(LKC)            , intent(in), contiguous    :: pattern(:)
+        use pm_kind, only: LKG => LK5
+        logical(LKG)            , intent(in), contiguous    :: array(:)
+        logical(LKG)            , intent(in), contiguous    :: pattern(:)
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                                         :: count
     end function
@@ -1401,9 +1401,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDefBorDefCom_D1_D1_LK4
 #endif
-        use pm_kind, only: LKC => LK4
-        logical(LKC)            , intent(in), contiguous    :: array(:)
-        logical(LKC)            , intent(in), contiguous    :: pattern(:)
+        use pm_kind, only: LKG => LK4
+        logical(LKG)            , intent(in), contiguous    :: array(:)
+        logical(LKG)            , intent(in), contiguous    :: pattern(:)
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                                         :: count
     end function
@@ -1414,9 +1414,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDefBorDefCom_D1_D1_LK3
 #endif
-        use pm_kind, only: LKC => LK3
-        logical(LKC)            , intent(in), contiguous    :: array(:)
-        logical(LKC)            , intent(in), contiguous    :: pattern(:)
+        use pm_kind, only: LKG => LK3
+        logical(LKG)            , intent(in), contiguous    :: array(:)
+        logical(LKG)            , intent(in), contiguous    :: pattern(:)
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                                         :: count
     end function
@@ -1427,9 +1427,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDefBorDefCom_D1_D1_LK2
 #endif
-        use pm_kind, only: LKC => LK2
-        logical(LKC)            , intent(in), contiguous    :: array(:)
-        logical(LKC)            , intent(in), contiguous    :: pattern(:)
+        use pm_kind, only: LKG => LK2
+        logical(LKG)            , intent(in), contiguous    :: array(:)
+        logical(LKG)            , intent(in), contiguous    :: pattern(:)
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                                         :: count
     end function
@@ -1440,9 +1440,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDefBorDefCom_D1_D1_LK1
 #endif
-        use pm_kind, only: LKC => LK1
-        logical(LKC)            , intent(in), contiguous    :: array(:)
-        logical(LKC)            , intent(in), contiguous    :: pattern(:)
+        use pm_kind, only: LKG => LK1
+        logical(LKG)            , intent(in), contiguous    :: array(:)
+        logical(LKG)            , intent(in), contiguous    :: pattern(:)
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                                         :: count
     end function
@@ -1455,9 +1455,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDefBorDefCom_D1_D1_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)            , intent(in), contiguous    :: array(:)
-        complex(CKC)            , intent(in), contiguous    :: pattern(:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG)            , intent(in), contiguous    :: array(:)
+        complex(CKG)            , intent(in), contiguous    :: pattern(:)
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                                         :: count
     end function
@@ -1468,9 +1468,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDefBorDefCom_D1_D1_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)            , intent(in), contiguous    :: array(:)
-        complex(CKC)            , intent(in), contiguous    :: pattern(:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG)            , intent(in), contiguous    :: array(:)
+        complex(CKG)            , intent(in), contiguous    :: pattern(:)
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                                         :: count
     end function
@@ -1481,9 +1481,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDefBorDefCom_D1_D1_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)            , intent(in), contiguous    :: array(:)
-        complex(CKC)            , intent(in), contiguous    :: pattern(:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG)            , intent(in), contiguous    :: array(:)
+        complex(CKG)            , intent(in), contiguous    :: pattern(:)
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                                         :: count
     end function
@@ -1494,9 +1494,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDefBorDefCom_D1_D1_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)            , intent(in), contiguous    :: array(:)
-        complex(CKC)            , intent(in), contiguous    :: pattern(:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG)            , intent(in), contiguous    :: array(:)
+        complex(CKG)            , intent(in), contiguous    :: pattern(:)
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                                         :: count
     end function
@@ -1507,9 +1507,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDefBorDefCom_D1_D1_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)            , intent(in), contiguous    :: array(:)
-        complex(CKC)            , intent(in), contiguous    :: pattern(:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG)            , intent(in), contiguous    :: array(:)
+        complex(CKG)            , intent(in), contiguous    :: pattern(:)
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                                         :: count
     end function
@@ -1522,9 +1522,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDefBorDefCom_D1_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)               , intent(in), contiguous    :: array(:)
-        real(RKC)               , intent(in), contiguous    :: pattern(:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)               , intent(in), contiguous    :: array(:)
+        real(RKG)               , intent(in), contiguous    :: pattern(:)
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                                         :: count
     end function
@@ -1535,9 +1535,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDefBorDefCom_D1_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)               , intent(in), contiguous    :: array(:)
-        real(RKC)               , intent(in), contiguous    :: pattern(:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)               , intent(in), contiguous    :: array(:)
+        real(RKG)               , intent(in), contiguous    :: pattern(:)
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                                         :: count
     end function
@@ -1548,9 +1548,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDefBorDefCom_D1_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)               , intent(in), contiguous    :: array(:)
-        real(RKC)               , intent(in), contiguous    :: pattern(:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)               , intent(in), contiguous    :: array(:)
+        real(RKG)               , intent(in), contiguous    :: pattern(:)
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                                         :: count
     end function
@@ -1561,9 +1561,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDefBorDefCom_D1_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)               , intent(in), contiguous    :: array(:)
-        real(RKC)               , intent(in), contiguous    :: pattern(:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)               , intent(in), contiguous    :: array(:)
+        real(RKG)               , intent(in), contiguous    :: pattern(:)
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                                         :: count
     end function
@@ -1574,9 +1574,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDefBorDefCom_D1_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)               , intent(in), contiguous    :: array(:)
-        real(RKC)               , intent(in), contiguous    :: pattern(:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)               , intent(in), contiguous    :: array(:)
+        real(RKG)               , intent(in), contiguous    :: pattern(:)
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                                         :: count
     end function
@@ -1595,9 +1595,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDefBorCusCom_D1_D1_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)        , intent(in), contiguous    :: array(:)
-        character(*,SKC)        , intent(in), contiguous    :: pattern(:)
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)        , intent(in), contiguous    :: array(:)
+        character(*,SKG)        , intent(in), contiguous    :: pattern(:)
         procedure(logical(LK))                              :: iseq
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                                         :: count
@@ -1609,9 +1609,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDefBorCusCom_D1_D1_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)        , intent(in), contiguous    :: array(:)
-        character(*,SKC)        , intent(in), contiguous    :: pattern(:)
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)        , intent(in), contiguous    :: array(:)
+        character(*,SKG)        , intent(in), contiguous    :: pattern(:)
         procedure(logical(LK))                              :: iseq
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                                         :: count
@@ -1623,9 +1623,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDefBorCusCom_D1_D1_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)        , intent(in), contiguous    :: array(:)
-        character(*,SKC)        , intent(in), contiguous    :: pattern(:)
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)        , intent(in), contiguous    :: array(:)
+        character(*,SKG)        , intent(in), contiguous    :: pattern(:)
         procedure(logical(LK))                              :: iseq
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                                         :: count
@@ -1637,9 +1637,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDefBorCusCom_D1_D1_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)        , intent(in), contiguous    :: array(:)
-        character(*,SKC)        , intent(in), contiguous    :: pattern(:)
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)        , intent(in), contiguous    :: array(:)
+        character(*,SKG)        , intent(in), contiguous    :: pattern(:)
         procedure(logical(LK))                              :: iseq
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                                         :: count
@@ -1651,9 +1651,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDefBorCusCom_D1_D1_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)        , intent(in), contiguous    :: array(:)
-        character(*,SKC)        , intent(in), contiguous    :: pattern(:)
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)        , intent(in), contiguous    :: array(:)
+        character(*,SKG)        , intent(in), contiguous    :: pattern(:)
         procedure(logical(LK))                              :: iseq
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                                         :: count
@@ -1667,9 +1667,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDefBorCusCom_D1_D1_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)            , intent(in), contiguous    :: array(:)
-        integer(IKC)            , intent(in), contiguous    :: pattern(:)
+        use pm_kind, only: IKG => IK5
+        integer(IKG)            , intent(in), contiguous    :: array(:)
+        integer(IKG)            , intent(in), contiguous    :: pattern(:)
         procedure(logical(LK))                              :: iseq
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                                         :: count
@@ -1681,9 +1681,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDefBorCusCom_D1_D1_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)            , intent(in), contiguous    :: array(:)
-        integer(IKC)            , intent(in), contiguous    :: pattern(:)
+        use pm_kind, only: IKG => IK4
+        integer(IKG)            , intent(in), contiguous    :: array(:)
+        integer(IKG)            , intent(in), contiguous    :: pattern(:)
         procedure(logical(LK))                              :: iseq
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                                         :: count
@@ -1695,9 +1695,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDefBorCusCom_D1_D1_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)            , intent(in), contiguous    :: array(:)
-        integer(IKC)            , intent(in), contiguous    :: pattern(:)
+        use pm_kind, only: IKG => IK3
+        integer(IKG)            , intent(in), contiguous    :: array(:)
+        integer(IKG)            , intent(in), contiguous    :: pattern(:)
         procedure(logical(LK))                              :: iseq
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                                         :: count
@@ -1709,9 +1709,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDefBorCusCom_D1_D1_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)            , intent(in), contiguous    :: array(:)
-        integer(IKC)            , intent(in), contiguous    :: pattern(:)
+        use pm_kind, only: IKG => IK2
+        integer(IKG)            , intent(in), contiguous    :: array(:)
+        integer(IKG)            , intent(in), contiguous    :: pattern(:)
         procedure(logical(LK))                              :: iseq
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                                         :: count
@@ -1723,9 +1723,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDefBorCusCom_D1_D1_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)            , intent(in), contiguous    :: array(:)
-        integer(IKC)            , intent(in), contiguous    :: pattern(:)
+        use pm_kind, only: IKG => IK1
+        integer(IKG)            , intent(in), contiguous    :: array(:)
+        integer(IKG)            , intent(in), contiguous    :: pattern(:)
         procedure(logical(LK))                              :: iseq
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                                         :: count
@@ -1739,9 +1739,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDefBorCusCom_D1_D1_LK5
 #endif
-        use pm_kind, only: LKC => LK5
-        logical(LKC)            , intent(in), contiguous    :: array(:)
-        logical(LKC)            , intent(in), contiguous    :: pattern(:)
+        use pm_kind, only: LKG => LK5
+        logical(LKG)            , intent(in), contiguous    :: array(:)
+        logical(LKG)            , intent(in), contiguous    :: pattern(:)
         procedure(logical(LK))                              :: iseq
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                                         :: count
@@ -1753,9 +1753,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDefBorCusCom_D1_D1_LK4
 #endif
-        use pm_kind, only: LKC => LK4
-        logical(LKC)            , intent(in), contiguous    :: array(:)
-        logical(LKC)            , intent(in), contiguous    :: pattern(:)
+        use pm_kind, only: LKG => LK4
+        logical(LKG)            , intent(in), contiguous    :: array(:)
+        logical(LKG)            , intent(in), contiguous    :: pattern(:)
         procedure(logical(LK))                              :: iseq
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                                         :: count
@@ -1767,9 +1767,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDefBorCusCom_D1_D1_LK3
 #endif
-        use pm_kind, only: LKC => LK3
-        logical(LKC)            , intent(in), contiguous    :: array(:)
-        logical(LKC)            , intent(in), contiguous    :: pattern(:)
+        use pm_kind, only: LKG => LK3
+        logical(LKG)            , intent(in), contiguous    :: array(:)
+        logical(LKG)            , intent(in), contiguous    :: pattern(:)
         procedure(logical(LK))                              :: iseq
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                                         :: count
@@ -1781,9 +1781,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDefBorCusCom_D1_D1_LK2
 #endif
-        use pm_kind, only: LKC => LK2
-        logical(LKC)            , intent(in), contiguous    :: array(:)
-        logical(LKC)            , intent(in), contiguous    :: pattern(:)
+        use pm_kind, only: LKG => LK2
+        logical(LKG)            , intent(in), contiguous    :: array(:)
+        logical(LKG)            , intent(in), contiguous    :: pattern(:)
         procedure(logical(LK))                              :: iseq
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                                         :: count
@@ -1795,9 +1795,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDefBorCusCom_D1_D1_LK1
 #endif
-        use pm_kind, only: LKC => LK1
-        logical(LKC)            , intent(in), contiguous    :: array(:)
-        logical(LKC)            , intent(in), contiguous    :: pattern(:)
+        use pm_kind, only: LKG => LK1
+        logical(LKG)            , intent(in), contiguous    :: array(:)
+        logical(LKG)            , intent(in), contiguous    :: pattern(:)
         procedure(logical(LK))                              :: iseq
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                                         :: count
@@ -1811,9 +1811,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDefBorCusCom_D1_D1_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)            , intent(in), contiguous    :: array(:)
-        complex(CKC)            , intent(in), contiguous    :: pattern(:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG)            , intent(in), contiguous    :: array(:)
+        complex(CKG)            , intent(in), contiguous    :: pattern(:)
         procedure(logical(LK))                              :: iseq
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                                         :: count
@@ -1825,9 +1825,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDefBorCusCom_D1_D1_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)            , intent(in), contiguous    :: array(:)
-        complex(CKC)            , intent(in), contiguous    :: pattern(:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG)            , intent(in), contiguous    :: array(:)
+        complex(CKG)            , intent(in), contiguous    :: pattern(:)
         procedure(logical(LK))                              :: iseq
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                                         :: count
@@ -1839,9 +1839,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDefBorCusCom_D1_D1_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)            , intent(in), contiguous    :: array(:)
-        complex(CKC)            , intent(in), contiguous    :: pattern(:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG)            , intent(in), contiguous    :: array(:)
+        complex(CKG)            , intent(in), contiguous    :: pattern(:)
         procedure(logical(LK))                              :: iseq
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                                         :: count
@@ -1853,9 +1853,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDefBorCusCom_D1_D1_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)            , intent(in), contiguous    :: array(:)
-        complex(CKC)            , intent(in), contiguous    :: pattern(:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG)            , intent(in), contiguous    :: array(:)
+        complex(CKG)            , intent(in), contiguous    :: pattern(:)
         procedure(logical(LK))                              :: iseq
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                                         :: count
@@ -1867,9 +1867,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDefBorCusCom_D1_D1_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)            , intent(in), contiguous    :: array(:)
-        complex(CKC)            , intent(in), contiguous    :: pattern(:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG)            , intent(in), contiguous    :: array(:)
+        complex(CKG)            , intent(in), contiguous    :: pattern(:)
         procedure(logical(LK))                              :: iseq
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                                         :: count
@@ -1883,9 +1883,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDefBorCusCom_D1_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)               , intent(in), contiguous    :: array(:)
-        real(RKC)               , intent(in), contiguous    :: pattern(:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)               , intent(in), contiguous    :: array(:)
+        real(RKG)               , intent(in), contiguous    :: pattern(:)
         procedure(logical(LK))                              :: iseq
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                                         :: count
@@ -1897,9 +1897,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDefBorCusCom_D1_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)               , intent(in), contiguous    :: array(:)
-        real(RKC)               , intent(in), contiguous    :: pattern(:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)               , intent(in), contiguous    :: array(:)
+        real(RKG)               , intent(in), contiguous    :: pattern(:)
         procedure(logical(LK))                              :: iseq
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                                         :: count
@@ -1911,9 +1911,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDefBorCusCom_D1_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)               , intent(in), contiguous    :: array(:)
-        real(RKC)               , intent(in), contiguous    :: pattern(:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)               , intent(in), contiguous    :: array(:)
+        real(RKG)               , intent(in), contiguous    :: pattern(:)
         procedure(logical(LK))                              :: iseq
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                                         :: count
@@ -1925,9 +1925,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDefBorCusCom_D1_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)               , intent(in), contiguous    :: array(:)
-        real(RKC)               , intent(in), contiguous    :: pattern(:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)               , intent(in), contiguous    :: array(:)
+        real(RKG)               , intent(in), contiguous    :: pattern(:)
         procedure(logical(LK))                              :: iseq
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                                         :: count
@@ -1939,9 +1939,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDefBorCusCom_D1_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)               , intent(in), contiguous    :: array(:)
-        real(RKC)               , intent(in), contiguous    :: pattern(:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)               , intent(in), contiguous    :: array(:)
+        real(RKG)               , intent(in), contiguous    :: pattern(:)
         procedure(logical(LK))                              :: iseq
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                                         :: count
@@ -1971,9 +1971,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDisBorDefCom_D0_D0_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)        , intent(in)                :: array
-        character(*,SKC)        , intent(in)                :: pattern
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)        , intent(in)                :: array
+        character(*,SKG)        , intent(in)                :: pattern
         type(discrete_type)     , intent(in)                :: border
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                                         :: count
@@ -1985,9 +1985,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDisBorDefCom_D0_D0_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)        , intent(in)                :: array
-        character(*,SKC)        , intent(in)                :: pattern
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)        , intent(in)                :: array
+        character(*,SKG)        , intent(in)                :: pattern
         type(discrete_type)     , intent(in)                :: border
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                                         :: count
@@ -1999,9 +1999,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDisBorDefCom_D0_D0_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)        , intent(in)                :: array
-        character(*,SKC)        , intent(in)                :: pattern
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)        , intent(in)                :: array
+        character(*,SKG)        , intent(in)                :: pattern
         type(discrete_type)     , intent(in)                :: border
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                                         :: count
@@ -2013,9 +2013,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDisBorDefCom_D0_D0_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)        , intent(in)                :: array
-        character(*,SKC)        , intent(in)                :: pattern
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)        , intent(in)                :: array
+        character(*,SKG)        , intent(in)                :: pattern
         type(discrete_type)     , intent(in)                :: border
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                                         :: count
@@ -2027,9 +2027,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDisBorDefCom_D0_D0_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)        , intent(in)                :: array
-        character(*,SKC)        , intent(in)                :: pattern
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)        , intent(in)                :: array
+        character(*,SKG)        , intent(in)                :: pattern
         type(discrete_type)     , intent(in)                :: border
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                                         :: count
@@ -2049,9 +2049,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDisBorCusCom_D0_D0_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)        , intent(in)                :: array
-        character(*,SKC)        , intent(in)                :: pattern
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)        , intent(in)                :: array
+        character(*,SKG)        , intent(in)                :: pattern
         procedure(logical(LK))                              :: iseq
         type(discrete_type)     , intent(in)                :: border
         integer(IK)             , intent(in), optional      :: blindness
@@ -2064,9 +2064,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDisBorCusCom_D0_D0_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)        , intent(in)                :: array
-        character(*,SKC)        , intent(in)                :: pattern
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)        , intent(in)                :: array
+        character(*,SKG)        , intent(in)                :: pattern
         procedure(logical(LK))                              :: iseq
         type(discrete_type)     , intent(in)                :: border
         integer(IK)             , intent(in), optional      :: blindness
@@ -2079,9 +2079,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDisBorCusCom_D0_D0_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)        , intent(in)                :: array
-        character(*,SKC)        , intent(in)                :: pattern
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)        , intent(in)                :: array
+        character(*,SKG)        , intent(in)                :: pattern
         procedure(logical(LK))                              :: iseq
         type(discrete_type)     , intent(in)                :: border
         integer(IK)             , intent(in), optional      :: blindness
@@ -2094,9 +2094,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDisBorCusCom_D0_D0_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)        , intent(in)                :: array
-        character(*,SKC)        , intent(in)                :: pattern
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)        , intent(in)                :: array
+        character(*,SKG)        , intent(in)                :: pattern
         procedure(logical(LK))                              :: iseq
         type(discrete_type)     , intent(in)                :: border
         integer(IK)             , intent(in), optional      :: blindness
@@ -2109,9 +2109,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDisBorCusCom_D0_D0_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)        , intent(in)                :: array
-        character(*,SKC)        , intent(in)                :: pattern
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)        , intent(in)                :: array
+        character(*,SKG)        , intent(in)                :: pattern
         procedure(logical(LK))                              :: iseq
         type(discrete_type)     , intent(in)                :: border
         integer(IK)             , intent(in), optional      :: blindness
@@ -2142,9 +2142,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDisBorDefCom_D1_D0_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)        , intent(in), contiguous    :: array(:)
-        character(*,SKC)        , intent(in)                :: pattern
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)        , intent(in), contiguous    :: array(:)
+        character(*,SKG)        , intent(in)                :: pattern
         type(discrete_type)     , intent(in)                :: border
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                                         :: count
@@ -2156,9 +2156,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDisBorDefCom_D1_D0_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)        , intent(in), contiguous    :: array(:)
-        character(*,SKC)        , intent(in)                :: pattern
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)        , intent(in), contiguous    :: array(:)
+        character(*,SKG)        , intent(in)                :: pattern
         type(discrete_type)     , intent(in)                :: border
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                                         :: count
@@ -2170,9 +2170,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDisBorDefCom_D1_D0_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)        , intent(in), contiguous    :: array(:)
-        character(*,SKC)        , intent(in)                :: pattern
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)        , intent(in), contiguous    :: array(:)
+        character(*,SKG)        , intent(in)                :: pattern
         type(discrete_type)     , intent(in)                :: border
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                                         :: count
@@ -2184,9 +2184,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDisBorDefCom_D1_D0_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)        , intent(in), contiguous    :: array(:)
-        character(*,SKC)        , intent(in)                :: pattern
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)        , intent(in), contiguous    :: array(:)
+        character(*,SKG)        , intent(in)                :: pattern
         type(discrete_type)     , intent(in)                :: border
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                                         :: count
@@ -2198,9 +2198,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDisBorDefCom_D1_D0_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)        , intent(in), contiguous    :: array(:)
-        character(*,SKC)        , intent(in)                :: pattern
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)        , intent(in), contiguous    :: array(:)
+        character(*,SKG)        , intent(in)                :: pattern
         type(discrete_type)     , intent(in)                :: border
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                                         :: count
@@ -2214,9 +2214,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDisBorDefCom_D1_D0_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)            , intent(in), contiguous    :: array(:)
-        integer(IKC)            , intent(in)                :: pattern
+        use pm_kind, only: IKG => IK5
+        integer(IKG)            , intent(in), contiguous    :: array(:)
+        integer(IKG)            , intent(in)                :: pattern
         type(discrete_type)     , intent(in)                :: border
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                                         :: count
@@ -2228,9 +2228,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDisBorDefCom_D1_D0_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)            , intent(in), contiguous    :: array(:)
-        integer(IKC)            , intent(in)                :: pattern
+        use pm_kind, only: IKG => IK4
+        integer(IKG)            , intent(in), contiguous    :: array(:)
+        integer(IKG)            , intent(in)                :: pattern
         type(discrete_type)     , intent(in)                :: border
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                                         :: count
@@ -2242,9 +2242,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDisBorDefCom_D1_D0_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)            , intent(in), contiguous    :: array(:)
-        integer(IKC)            , intent(in)                :: pattern
+        use pm_kind, only: IKG => IK3
+        integer(IKG)            , intent(in), contiguous    :: array(:)
+        integer(IKG)            , intent(in)                :: pattern
         type(discrete_type)     , intent(in)                :: border
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                                         :: count
@@ -2256,9 +2256,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDisBorDefCom_D1_D0_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)            , intent(in), contiguous    :: array(:)
-        integer(IKC)            , intent(in)                :: pattern
+        use pm_kind, only: IKG => IK2
+        integer(IKG)            , intent(in), contiguous    :: array(:)
+        integer(IKG)            , intent(in)                :: pattern
         type(discrete_type)     , intent(in)                :: border
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                                         :: count
@@ -2270,9 +2270,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDisBorDefCom_D1_D0_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)            , intent(in), contiguous    :: array(:)
-        integer(IKC)            , intent(in)                :: pattern
+        use pm_kind, only: IKG => IK1
+        integer(IKG)            , intent(in), contiguous    :: array(:)
+        integer(IKG)            , intent(in)                :: pattern
         type(discrete_type)     , intent(in)                :: border
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                                         :: count
@@ -2286,9 +2286,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDisBorDefCom_D1_D0_LK5
 #endif
-        use pm_kind, only: LKC => LK5
-        logical(LKC)            , intent(in), contiguous    :: array(:)
-        logical(LKC)            , intent(in)                :: pattern
+        use pm_kind, only: LKG => LK5
+        logical(LKG)            , intent(in), contiguous    :: array(:)
+        logical(LKG)            , intent(in)                :: pattern
         type(discrete_type)     , intent(in)                :: border
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                                         :: count
@@ -2300,9 +2300,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDisBorDefCom_D1_D0_LK4
 #endif
-        use pm_kind, only: LKC => LK4
-        logical(LKC)            , intent(in), contiguous    :: array(:)
-        logical(LKC)            , intent(in)                :: pattern
+        use pm_kind, only: LKG => LK4
+        logical(LKG)            , intent(in), contiguous    :: array(:)
+        logical(LKG)            , intent(in)                :: pattern
         type(discrete_type)     , intent(in)                :: border
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                                         :: count
@@ -2314,9 +2314,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDisBorDefCom_D1_D0_LK3
 #endif
-        use pm_kind, only: LKC => LK3
-        logical(LKC)            , intent(in), contiguous    :: array(:)
-        logical(LKC)            , intent(in)                :: pattern
+        use pm_kind, only: LKG => LK3
+        logical(LKG)            , intent(in), contiguous    :: array(:)
+        logical(LKG)            , intent(in)                :: pattern
         type(discrete_type)     , intent(in)                :: border
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                                         :: count
@@ -2328,9 +2328,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDisBorDefCom_D1_D0_LK2
 #endif
-        use pm_kind, only: LKC => LK2
-        logical(LKC)            , intent(in), contiguous    :: array(:)
-        logical(LKC)            , intent(in)                :: pattern
+        use pm_kind, only: LKG => LK2
+        logical(LKG)            , intent(in), contiguous    :: array(:)
+        logical(LKG)            , intent(in)                :: pattern
         type(discrete_type)     , intent(in)                :: border
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                                         :: count
@@ -2342,9 +2342,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDisBorDefCom_D1_D0_LK1
 #endif
-        use pm_kind, only: LKC => LK1
-        logical(LKC)            , intent(in), contiguous    :: array(:)
-        logical(LKC)            , intent(in)                :: pattern
+        use pm_kind, only: LKG => LK1
+        logical(LKG)            , intent(in), contiguous    :: array(:)
+        logical(LKG)            , intent(in)                :: pattern
         type(discrete_type)     , intent(in)                :: border
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                                         :: count
@@ -2358,9 +2358,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDisBorDefCom_D1_D0_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)            , intent(in), contiguous    :: array(:)
-        complex(CKC)            , intent(in)                :: pattern
+        use pm_kind, only: CKG => CK5
+        complex(CKG)            , intent(in), contiguous    :: array(:)
+        complex(CKG)            , intent(in)                :: pattern
         type(discrete_type)     , intent(in)                :: border
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                                         :: count
@@ -2372,9 +2372,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDisBorDefCom_D1_D0_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)            , intent(in), contiguous    :: array(:)
-        complex(CKC)            , intent(in)                :: pattern
+        use pm_kind, only: CKG => CK4
+        complex(CKG)            , intent(in), contiguous    :: array(:)
+        complex(CKG)            , intent(in)                :: pattern
         type(discrete_type)     , intent(in)                :: border
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                                         :: count
@@ -2386,9 +2386,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDisBorDefCom_D1_D0_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)            , intent(in), contiguous    :: array(:)
-        complex(CKC)            , intent(in)                :: pattern
+        use pm_kind, only: CKG => CK3
+        complex(CKG)            , intent(in), contiguous    :: array(:)
+        complex(CKG)            , intent(in)                :: pattern
         type(discrete_type)     , intent(in)                :: border
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                                         :: count
@@ -2400,9 +2400,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDisBorDefCom_D1_D0_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)            , intent(in), contiguous    :: array(:)
-        complex(CKC)            , intent(in)                :: pattern
+        use pm_kind, only: CKG => CK2
+        complex(CKG)            , intent(in), contiguous    :: array(:)
+        complex(CKG)            , intent(in)                :: pattern
         type(discrete_type)     , intent(in)                :: border
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                                         :: count
@@ -2414,9 +2414,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDisBorDefCom_D1_D0_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)            , intent(in), contiguous    :: array(:)
-        complex(CKC)            , intent(in)                :: pattern
+        use pm_kind, only: CKG => CK1
+        complex(CKG)            , intent(in), contiguous    :: array(:)
+        complex(CKG)            , intent(in)                :: pattern
         type(discrete_type)     , intent(in)                :: border
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                                         :: count
@@ -2430,9 +2430,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDisBorDefCom_D1_D0_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)               , intent(in), contiguous    :: array(:)
-        real(RKC)               , intent(in)                :: pattern
+        use pm_kind, only: RKG => RK5
+        real(RKG)               , intent(in), contiguous    :: array(:)
+        real(RKG)               , intent(in)                :: pattern
         type(discrete_type)     , intent(in)                :: border
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                                         :: count
@@ -2444,9 +2444,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDisBorDefCom_D1_D0_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)               , intent(in), contiguous    :: array(:)
-        real(RKC)               , intent(in)                :: pattern
+        use pm_kind, only: RKG => RK4
+        real(RKG)               , intent(in), contiguous    :: array(:)
+        real(RKG)               , intent(in)                :: pattern
         type(discrete_type)     , intent(in)                :: border
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                                         :: count
@@ -2458,9 +2458,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDisBorDefCom_D1_D0_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)               , intent(in), contiguous    :: array(:)
-        real(RKC)               , intent(in)                :: pattern
+        use pm_kind, only: RKG => RK3
+        real(RKG)               , intent(in), contiguous    :: array(:)
+        real(RKG)               , intent(in)                :: pattern
         type(discrete_type)     , intent(in)                :: border
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                                         :: count
@@ -2472,9 +2472,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDisBorDefCom_D1_D0_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)               , intent(in), contiguous    :: array(:)
-        real(RKC)               , intent(in)                :: pattern
+        use pm_kind, only: RKG => RK2
+        real(RKG)               , intent(in), contiguous    :: array(:)
+        real(RKG)               , intent(in)                :: pattern
         type(discrete_type)     , intent(in)                :: border
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                                         :: count
@@ -2486,9 +2486,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDisBorDefCom_D1_D0_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)               , intent(in), contiguous    :: array(:)
-        real(RKC)               , intent(in)                :: pattern
+        use pm_kind, only: RKG => RK1
+        real(RKG)               , intent(in), contiguous    :: array(:)
+        real(RKG)               , intent(in)                :: pattern
         type(discrete_type)     , intent(in)                :: border
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                                         :: count
@@ -2508,9 +2508,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDisBorCusCom_D1_D0_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)        , intent(in), contiguous    :: array(:)
-        character(*,SKC)        , intent(in)                :: pattern
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)        , intent(in), contiguous    :: array(:)
+        character(*,SKG)        , intent(in)                :: pattern
         procedure(logical(LK))                              :: iseq
         type(discrete_type)     , intent(in)                :: border
         integer(IK)             , intent(in), optional      :: blindness
@@ -2523,9 +2523,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDisBorCusCom_D1_D0_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)        , intent(in), contiguous    :: array(:)
-        character(*,SKC)        , intent(in)                :: pattern
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)        , intent(in), contiguous    :: array(:)
+        character(*,SKG)        , intent(in)                :: pattern
         procedure(logical(LK))                              :: iseq
         type(discrete_type)     , intent(in)                :: border
         integer(IK)             , intent(in), optional      :: blindness
@@ -2538,9 +2538,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDisBorCusCom_D1_D0_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)        , intent(in), contiguous    :: array(:)
-        character(*,SKC)        , intent(in)                :: pattern
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)        , intent(in), contiguous    :: array(:)
+        character(*,SKG)        , intent(in)                :: pattern
         procedure(logical(LK))                              :: iseq
         type(discrete_type)     , intent(in)                :: border
         integer(IK)             , intent(in), optional      :: blindness
@@ -2553,9 +2553,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDisBorCusCom_D1_D0_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)        , intent(in), contiguous    :: array(:)
-        character(*,SKC)        , intent(in)                :: pattern
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)        , intent(in), contiguous    :: array(:)
+        character(*,SKG)        , intent(in)                :: pattern
         procedure(logical(LK))                              :: iseq
         type(discrete_type)     , intent(in)                :: border
         integer(IK)             , intent(in), optional      :: blindness
@@ -2568,9 +2568,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDisBorCusCom_D1_D0_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)        , intent(in), contiguous    :: array(:)
-        character(*,SKC)        , intent(in)                :: pattern
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)        , intent(in), contiguous    :: array(:)
+        character(*,SKG)        , intent(in)                :: pattern
         procedure(logical(LK))                              :: iseq
         type(discrete_type)     , intent(in)                :: border
         integer(IK)             , intent(in), optional      :: blindness
@@ -2585,9 +2585,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDisBorCusCom_D1_D0_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)            , intent(in), contiguous    :: array(:)
-        integer(IKC)            , intent(in)                :: pattern
+        use pm_kind, only: IKG => IK5
+        integer(IKG)            , intent(in), contiguous    :: array(:)
+        integer(IKG)            , intent(in)                :: pattern
         procedure(logical(LK))                              :: iseq
         type(discrete_type)     , intent(in)                :: border
         integer(IK)             , intent(in), optional      :: blindness
@@ -2600,9 +2600,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDisBorCusCom_D1_D0_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)            , intent(in), contiguous    :: array(:)
-        integer(IKC)            , intent(in)                :: pattern
+        use pm_kind, only: IKG => IK4
+        integer(IKG)            , intent(in), contiguous    :: array(:)
+        integer(IKG)            , intent(in)                :: pattern
         procedure(logical(LK))                              :: iseq
         type(discrete_type)     , intent(in)                :: border
         integer(IK)             , intent(in), optional      :: blindness
@@ -2615,9 +2615,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDisBorCusCom_D1_D0_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)            , intent(in), contiguous    :: array(:)
-        integer(IKC)            , intent(in)                :: pattern
+        use pm_kind, only: IKG => IK3
+        integer(IKG)            , intent(in), contiguous    :: array(:)
+        integer(IKG)            , intent(in)                :: pattern
         procedure(logical(LK))                              :: iseq
         type(discrete_type)     , intent(in)                :: border
         integer(IK)             , intent(in), optional      :: blindness
@@ -2630,9 +2630,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDisBorCusCom_D1_D0_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)            , intent(in), contiguous    :: array(:)
-        integer(IKC)            , intent(in)                :: pattern
+        use pm_kind, only: IKG => IK2
+        integer(IKG)            , intent(in), contiguous    :: array(:)
+        integer(IKG)            , intent(in)                :: pattern
         procedure(logical(LK))                              :: iseq
         type(discrete_type)     , intent(in)                :: border
         integer(IK)             , intent(in), optional      :: blindness
@@ -2645,9 +2645,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDisBorCusCom_D1_D0_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)            , intent(in), contiguous    :: array(:)
-        integer(IKC)            , intent(in)                :: pattern
+        use pm_kind, only: IKG => IK1
+        integer(IKG)            , intent(in), contiguous    :: array(:)
+        integer(IKG)            , intent(in)                :: pattern
         procedure(logical(LK))                              :: iseq
         type(discrete_type)     , intent(in)                :: border
         integer(IK)             , intent(in), optional      :: blindness
@@ -2662,9 +2662,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDisBorCusCom_D1_D0_LK5
 #endif
-        use pm_kind, only: LKC => LK5
-        logical(LKC)            , intent(in), contiguous    :: array(:)
-        logical(LKC)            , intent(in)                :: pattern
+        use pm_kind, only: LKG => LK5
+        logical(LKG)            , intent(in), contiguous    :: array(:)
+        logical(LKG)            , intent(in)                :: pattern
         procedure(logical(LK))                              :: iseq
         type(discrete_type)     , intent(in)                :: border
         integer(IK)             , intent(in), optional      :: blindness
@@ -2677,9 +2677,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDisBorCusCom_D1_D0_LK4
 #endif
-        use pm_kind, only: LKC => LK4
-        logical(LKC)            , intent(in), contiguous    :: array(:)
-        logical(LKC)            , intent(in)                :: pattern
+        use pm_kind, only: LKG => LK4
+        logical(LKG)            , intent(in), contiguous    :: array(:)
+        logical(LKG)            , intent(in)                :: pattern
         procedure(logical(LK))                              :: iseq
         type(discrete_type)     , intent(in)                :: border
         integer(IK)             , intent(in), optional      :: blindness
@@ -2692,9 +2692,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDisBorCusCom_D1_D0_LK3
 #endif
-        use pm_kind, only: LKC => LK3
-        logical(LKC)            , intent(in), contiguous    :: array(:)
-        logical(LKC)            , intent(in)                :: pattern
+        use pm_kind, only: LKG => LK3
+        logical(LKG)            , intent(in), contiguous    :: array(:)
+        logical(LKG)            , intent(in)                :: pattern
         procedure(logical(LK))                              :: iseq
         type(discrete_type)     , intent(in)                :: border
         integer(IK)             , intent(in), optional      :: blindness
@@ -2707,9 +2707,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDisBorCusCom_D1_D0_LK2
 #endif
-        use pm_kind, only: LKC => LK2
-        logical(LKC)            , intent(in), contiguous    :: array(:)
-        logical(LKC)            , intent(in)                :: pattern
+        use pm_kind, only: LKG => LK2
+        logical(LKG)            , intent(in), contiguous    :: array(:)
+        logical(LKG)            , intent(in)                :: pattern
         procedure(logical(LK))                              :: iseq
         type(discrete_type)     , intent(in)                :: border
         integer(IK)             , intent(in), optional      :: blindness
@@ -2722,9 +2722,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDisBorCusCom_D1_D0_LK1
 #endif
-        use pm_kind, only: LKC => LK1
-        logical(LKC)            , intent(in), contiguous    :: array(:)
-        logical(LKC)            , intent(in)                :: pattern
+        use pm_kind, only: LKG => LK1
+        logical(LKG)            , intent(in), contiguous    :: array(:)
+        logical(LKG)            , intent(in)                :: pattern
         procedure(logical(LK))                              :: iseq
         type(discrete_type)     , intent(in)                :: border
         integer(IK)             , intent(in), optional      :: blindness
@@ -2739,9 +2739,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDisBorCusCom_D1_D0_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)            , intent(in), contiguous    :: array(:)
-        complex(CKC)            , intent(in)                :: pattern
+        use pm_kind, only: CKG => CK5
+        complex(CKG)            , intent(in), contiguous    :: array(:)
+        complex(CKG)            , intent(in)                :: pattern
         procedure(logical(LK))                              :: iseq
         type(discrete_type)     , intent(in)                :: border
         integer(IK)             , intent(in), optional      :: blindness
@@ -2754,9 +2754,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDisBorCusCom_D1_D0_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)            , intent(in), contiguous    :: array(:)
-        complex(CKC)            , intent(in)                :: pattern
+        use pm_kind, only: CKG => CK4
+        complex(CKG)            , intent(in), contiguous    :: array(:)
+        complex(CKG)            , intent(in)                :: pattern
         procedure(logical(LK))                              :: iseq
         type(discrete_type)     , intent(in)                :: border
         integer(IK)             , intent(in), optional      :: blindness
@@ -2769,9 +2769,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDisBorCusCom_D1_D0_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)            , intent(in), contiguous    :: array(:)
-        complex(CKC)            , intent(in)                :: pattern
+        use pm_kind, only: CKG => CK3
+        complex(CKG)            , intent(in), contiguous    :: array(:)
+        complex(CKG)            , intent(in)                :: pattern
         procedure(logical(LK))                              :: iseq
         type(discrete_type)     , intent(in)                :: border
         integer(IK)             , intent(in), optional      :: blindness
@@ -2784,9 +2784,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDisBorCusCom_D1_D0_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)            , intent(in), contiguous    :: array(:)
-        complex(CKC)            , intent(in)                :: pattern
+        use pm_kind, only: CKG => CK2
+        complex(CKG)            , intent(in), contiguous    :: array(:)
+        complex(CKG)            , intent(in)                :: pattern
         procedure(logical(LK))                              :: iseq
         type(discrete_type)     , intent(in)                :: border
         integer(IK)             , intent(in), optional      :: blindness
@@ -2799,9 +2799,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDisBorCusCom_D1_D0_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)            , intent(in), contiguous    :: array(:)
-        complex(CKC)            , intent(in)                :: pattern
+        use pm_kind, only: CKG => CK1
+        complex(CKG)            , intent(in), contiguous    :: array(:)
+        complex(CKG)            , intent(in)                :: pattern
         procedure(logical(LK))                              :: iseq
         type(discrete_type)     , intent(in)                :: border
         integer(IK)             , intent(in), optional      :: blindness
@@ -2816,9 +2816,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDisBorCusCom_D1_D0_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)               , intent(in), contiguous    :: array(:)
-        real(RKC)               , intent(in)                :: pattern
+        use pm_kind, only: RKG => RK5
+        real(RKG)               , intent(in), contiguous    :: array(:)
+        real(RKG)               , intent(in)                :: pattern
         procedure(logical(LK))                              :: iseq
         type(discrete_type)     , intent(in)                :: border
         integer(IK)             , intent(in), optional      :: blindness
@@ -2831,9 +2831,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDisBorCusCom_D1_D0_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)               , intent(in), contiguous    :: array(:)
-        real(RKC)               , intent(in)                :: pattern
+        use pm_kind, only: RKG => RK4
+        real(RKG)               , intent(in), contiguous    :: array(:)
+        real(RKG)               , intent(in)                :: pattern
         procedure(logical(LK))                              :: iseq
         type(discrete_type)     , intent(in)                :: border
         integer(IK)             , intent(in), optional      :: blindness
@@ -2846,9 +2846,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDisBorCusCom_D1_D0_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)               , intent(in), contiguous    :: array(:)
-        real(RKC)               , intent(in)                :: pattern
+        use pm_kind, only: RKG => RK3
+        real(RKG)               , intent(in), contiguous    :: array(:)
+        real(RKG)               , intent(in)                :: pattern
         procedure(logical(LK))                              :: iseq
         type(discrete_type)     , intent(in)                :: border
         integer(IK)             , intent(in), optional      :: blindness
@@ -2861,9 +2861,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDisBorCusCom_D1_D0_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)               , intent(in), contiguous    :: array(:)
-        real(RKC)               , intent(in)                :: pattern
+        use pm_kind, only: RKG => RK2
+        real(RKG)               , intent(in), contiguous    :: array(:)
+        real(RKG)               , intent(in)                :: pattern
         procedure(logical(LK))                              :: iseq
         type(discrete_type)     , intent(in)                :: border
         integer(IK)             , intent(in), optional      :: blindness
@@ -2876,9 +2876,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDisBorCusCom_D1_D0_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)               , intent(in), contiguous    :: array(:)
-        real(RKC)               , intent(in)                :: pattern
+        use pm_kind, only: RKG => RK1
+        real(RKG)               , intent(in), contiguous    :: array(:)
+        real(RKG)               , intent(in)                :: pattern
         procedure(logical(LK))                              :: iseq
         type(discrete_type)     , intent(in)                :: border
         integer(IK)             , intent(in), optional      :: blindness
@@ -2909,9 +2909,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDisBorDefCom_D1_D1_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)        , intent(in), contiguous    :: array(:)
-        character(*,SKC)        , intent(in), contiguous    :: pattern(:)
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)        , intent(in), contiguous    :: array(:)
+        character(*,SKG)        , intent(in), contiguous    :: pattern(:)
         type(discrete_type)     , intent(in)                :: border
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                                         :: count
@@ -2923,9 +2923,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDisBorDefCom_D1_D1_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)        , intent(in), contiguous    :: array(:)
-        character(*,SKC)        , intent(in), contiguous    :: pattern(:)
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)        , intent(in), contiguous    :: array(:)
+        character(*,SKG)        , intent(in), contiguous    :: pattern(:)
         type(discrete_type)     , intent(in)                :: border
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                                         :: count
@@ -2937,9 +2937,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDisBorDefCom_D1_D1_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)        , intent(in), contiguous    :: array(:)
-        character(*,SKC)        , intent(in), contiguous    :: pattern(:)
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)        , intent(in), contiguous    :: array(:)
+        character(*,SKG)        , intent(in), contiguous    :: pattern(:)
         type(discrete_type)     , intent(in)                :: border
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                                         :: count
@@ -2951,9 +2951,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDisBorDefCom_D1_D1_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)        , intent(in), contiguous    :: array(:)
-        character(*,SKC)        , intent(in), contiguous    :: pattern(:)
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)        , intent(in), contiguous    :: array(:)
+        character(*,SKG)        , intent(in), contiguous    :: pattern(:)
         type(discrete_type)     , intent(in)                :: border
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                                         :: count
@@ -2965,9 +2965,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDisBorDefCom_D1_D1_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)        , intent(in), contiguous    :: array(:)
-        character(*,SKC)        , intent(in), contiguous    :: pattern(:)
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)        , intent(in), contiguous    :: array(:)
+        character(*,SKG)        , intent(in), contiguous    :: pattern(:)
         type(discrete_type)     , intent(in)                :: border
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                                         :: count
@@ -2981,9 +2981,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDisBorDefCom_D1_D1_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)            , intent(in), contiguous    :: array(:)
-        integer(IKC)            , intent(in), contiguous    :: pattern(:)
+        use pm_kind, only: IKG => IK5
+        integer(IKG)            , intent(in), contiguous    :: array(:)
+        integer(IKG)            , intent(in), contiguous    :: pattern(:)
         type(discrete_type)     , intent(in)                :: border
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                                         :: count
@@ -2995,9 +2995,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDisBorDefCom_D1_D1_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)            , intent(in), contiguous    :: array(:)
-        integer(IKC)            , intent(in), contiguous    :: pattern(:)
+        use pm_kind, only: IKG => IK4
+        integer(IKG)            , intent(in), contiguous    :: array(:)
+        integer(IKG)            , intent(in), contiguous    :: pattern(:)
         type(discrete_type)     , intent(in)                :: border
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                                         :: count
@@ -3009,9 +3009,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDisBorDefCom_D1_D1_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)            , intent(in), contiguous    :: array(:)
-        integer(IKC)            , intent(in), contiguous    :: pattern(:)
+        use pm_kind, only: IKG => IK3
+        integer(IKG)            , intent(in), contiguous    :: array(:)
+        integer(IKG)            , intent(in), contiguous    :: pattern(:)
         type(discrete_type)     , intent(in)                :: border
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                                         :: count
@@ -3023,9 +3023,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDisBorDefCom_D1_D1_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)            , intent(in), contiguous    :: array(:)
-        integer(IKC)            , intent(in), contiguous    :: pattern(:)
+        use pm_kind, only: IKG => IK2
+        integer(IKG)            , intent(in), contiguous    :: array(:)
+        integer(IKG)            , intent(in), contiguous    :: pattern(:)
         type(discrete_type)     , intent(in)                :: border
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                                         :: count
@@ -3037,9 +3037,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDisBorDefCom_D1_D1_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)            , intent(in), contiguous    :: array(:)
-        integer(IKC)            , intent(in), contiguous    :: pattern(:)
+        use pm_kind, only: IKG => IK1
+        integer(IKG)            , intent(in), contiguous    :: array(:)
+        integer(IKG)            , intent(in), contiguous    :: pattern(:)
         type(discrete_type)     , intent(in)                :: border
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                                         :: count
@@ -3053,9 +3053,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDisBorDefCom_D1_D1_LK5
 #endif
-        use pm_kind, only: LKC => LK5
-        logical(LKC)            , intent(in), contiguous    :: array(:)
-        logical(LKC)            , intent(in), contiguous    :: pattern(:)
+        use pm_kind, only: LKG => LK5
+        logical(LKG)            , intent(in), contiguous    :: array(:)
+        logical(LKG)            , intent(in), contiguous    :: pattern(:)
         type(discrete_type)     , intent(in)                :: border
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                                         :: count
@@ -3067,9 +3067,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDisBorDefCom_D1_D1_LK4
 #endif
-        use pm_kind, only: LKC => LK4
-        logical(LKC)            , intent(in), contiguous    :: array(:)
-        logical(LKC)            , intent(in), contiguous    :: pattern(:)
+        use pm_kind, only: LKG => LK4
+        logical(LKG)            , intent(in), contiguous    :: array(:)
+        logical(LKG)            , intent(in), contiguous    :: pattern(:)
         type(discrete_type)     , intent(in)                :: border
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                                         :: count
@@ -3081,9 +3081,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDisBorDefCom_D1_D1_LK3
 #endif
-        use pm_kind, only: LKC => LK3
-        logical(LKC)            , intent(in), contiguous    :: array(:)
-        logical(LKC)            , intent(in), contiguous    :: pattern(:)
+        use pm_kind, only: LKG => LK3
+        logical(LKG)            , intent(in), contiguous    :: array(:)
+        logical(LKG)            , intent(in), contiguous    :: pattern(:)
         type(discrete_type)     , intent(in)                :: border
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                                         :: count
@@ -3095,9 +3095,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDisBorDefCom_D1_D1_LK2
 #endif
-        use pm_kind, only: LKC => LK2
-        logical(LKC)            , intent(in), contiguous    :: array(:)
-        logical(LKC)            , intent(in), contiguous    :: pattern(:)
+        use pm_kind, only: LKG => LK2
+        logical(LKG)            , intent(in), contiguous    :: array(:)
+        logical(LKG)            , intent(in), contiguous    :: pattern(:)
         type(discrete_type)     , intent(in)                :: border
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                                         :: count
@@ -3109,9 +3109,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDisBorDefCom_D1_D1_LK1
 #endif
-        use pm_kind, only: LKC => LK1
-        logical(LKC)            , intent(in), contiguous    :: array(:)
-        logical(LKC)            , intent(in), contiguous    :: pattern(:)
+        use pm_kind, only: LKG => LK1
+        logical(LKG)            , intent(in), contiguous    :: array(:)
+        logical(LKG)            , intent(in), contiguous    :: pattern(:)
         type(discrete_type)     , intent(in)                :: border
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                                         :: count
@@ -3125,9 +3125,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDisBorDefCom_D1_D1_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)            , intent(in), contiguous    :: array(:)
-        complex(CKC)            , intent(in), contiguous    :: pattern(:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG)            , intent(in), contiguous    :: array(:)
+        complex(CKG)            , intent(in), contiguous    :: pattern(:)
         type(discrete_type)     , intent(in)                :: border
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                                         :: count
@@ -3139,9 +3139,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDisBorDefCom_D1_D1_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)            , intent(in), contiguous    :: array(:)
-        complex(CKC)            , intent(in), contiguous    :: pattern(:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG)            , intent(in), contiguous    :: array(:)
+        complex(CKG)            , intent(in), contiguous    :: pattern(:)
         type(discrete_type)     , intent(in)                :: border
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                                         :: count
@@ -3153,9 +3153,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDisBorDefCom_D1_D1_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)            , intent(in), contiguous    :: array(:)
-        complex(CKC)            , intent(in), contiguous    :: pattern(:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG)            , intent(in), contiguous    :: array(:)
+        complex(CKG)            , intent(in), contiguous    :: pattern(:)
         type(discrete_type)     , intent(in)                :: border
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                                         :: count
@@ -3167,9 +3167,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDisBorDefCom_D1_D1_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)            , intent(in), contiguous    :: array(:)
-        complex(CKC)            , intent(in), contiguous    :: pattern(:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG)            , intent(in), contiguous    :: array(:)
+        complex(CKG)            , intent(in), contiguous    :: pattern(:)
         type(discrete_type)     , intent(in)                :: border
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                                         :: count
@@ -3181,9 +3181,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDisBorDefCom_D1_D1_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)            , intent(in), contiguous    :: array(:)
-        complex(CKC)            , intent(in), contiguous    :: pattern(:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG)            , intent(in), contiguous    :: array(:)
+        complex(CKG)            , intent(in), contiguous    :: pattern(:)
         type(discrete_type)     , intent(in)                :: border
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                                         :: count
@@ -3197,9 +3197,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDisBorDefCom_D1_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)               , intent(in), contiguous    :: array(:)
-        real(RKC)               , intent(in), contiguous    :: pattern(:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)               , intent(in), contiguous    :: array(:)
+        real(RKG)               , intent(in), contiguous    :: pattern(:)
         type(discrete_type)     , intent(in)                :: border
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                                         :: count
@@ -3211,9 +3211,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDisBorDefCom_D1_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)               , intent(in), contiguous    :: array(:)
-        real(RKC)               , intent(in), contiguous    :: pattern(:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)               , intent(in), contiguous    :: array(:)
+        real(RKG)               , intent(in), contiguous    :: pattern(:)
         type(discrete_type)     , intent(in)                :: border
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                                         :: count
@@ -3225,9 +3225,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDisBorDefCom_D1_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)               , intent(in), contiguous    :: array(:)
-        real(RKC)               , intent(in), contiguous    :: pattern(:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)               , intent(in), contiguous    :: array(:)
+        real(RKG)               , intent(in), contiguous    :: pattern(:)
         type(discrete_type)     , intent(in)                :: border
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                                         :: count
@@ -3239,9 +3239,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDisBorDefCom_D1_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)               , intent(in), contiguous    :: array(:)
-        real(RKC)               , intent(in), contiguous    :: pattern(:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)               , intent(in), contiguous    :: array(:)
+        real(RKG)               , intent(in), contiguous    :: pattern(:)
         type(discrete_type)     , intent(in)                :: border
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                                         :: count
@@ -3253,9 +3253,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDisBorDefCom_D1_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)               , intent(in), contiguous    :: array(:)
-        real(RKC)               , intent(in), contiguous    :: pattern(:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)               , intent(in), contiguous    :: array(:)
+        real(RKG)               , intent(in), contiguous    :: pattern(:)
         type(discrete_type)     , intent(in)                :: border
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                                         :: count
@@ -3275,9 +3275,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDisBorCusCom_D1_D1_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)        , intent(in), contiguous    :: array(:)
-        character(*,SKC)        , intent(in), contiguous    :: pattern(:)
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)        , intent(in), contiguous    :: array(:)
+        character(*,SKG)        , intent(in), contiguous    :: pattern(:)
         procedure(logical(LK))                              :: iseq
         type(discrete_type)     , intent(in)                :: border
         integer(IK)             , intent(in), optional      :: blindness
@@ -3290,9 +3290,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDisBorCusCom_D1_D1_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)        , intent(in), contiguous    :: array(:)
-        character(*,SKC)        , intent(in), contiguous    :: pattern(:)
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)        , intent(in), contiguous    :: array(:)
+        character(*,SKG)        , intent(in), contiguous    :: pattern(:)
         procedure(logical(LK))                              :: iseq
         type(discrete_type)     , intent(in)                :: border
         integer(IK)             , intent(in), optional      :: blindness
@@ -3305,9 +3305,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDisBorCusCom_D1_D1_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)        , intent(in), contiguous    :: array(:)
-        character(*,SKC)        , intent(in), contiguous    :: pattern(:)
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)        , intent(in), contiguous    :: array(:)
+        character(*,SKG)        , intent(in), contiguous    :: pattern(:)
         procedure(logical(LK))                              :: iseq
         type(discrete_type)     , intent(in)                :: border
         integer(IK)             , intent(in), optional      :: blindness
@@ -3320,9 +3320,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDisBorCusCom_D1_D1_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)        , intent(in), contiguous    :: array(:)
-        character(*,SKC)        , intent(in), contiguous    :: pattern(:)
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)        , intent(in), contiguous    :: array(:)
+        character(*,SKG)        , intent(in), contiguous    :: pattern(:)
         procedure(logical(LK))                              :: iseq
         type(discrete_type)     , intent(in)                :: border
         integer(IK)             , intent(in), optional      :: blindness
@@ -3335,9 +3335,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDisBorCusCom_D1_D1_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)        , intent(in), contiguous    :: array(:)
-        character(*,SKC)        , intent(in), contiguous    :: pattern(:)
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)        , intent(in), contiguous    :: array(:)
+        character(*,SKG)        , intent(in), contiguous    :: pattern(:)
         procedure(logical(LK))                              :: iseq
         type(discrete_type)     , intent(in)                :: border
         integer(IK)             , intent(in), optional      :: blindness
@@ -3352,9 +3352,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDisBorCusCom_D1_D1_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)            , intent(in), contiguous    :: array(:)
-        integer(IKC)            , intent(in), contiguous    :: pattern(:)
+        use pm_kind, only: IKG => IK5
+        integer(IKG)            , intent(in), contiguous    :: array(:)
+        integer(IKG)            , intent(in), contiguous    :: pattern(:)
         procedure(logical(LK))                              :: iseq
         type(discrete_type)     , intent(in)                :: border
         integer(IK)             , intent(in), optional      :: blindness
@@ -3367,9 +3367,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDisBorCusCom_D1_D1_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)            , intent(in), contiguous    :: array(:)
-        integer(IKC)            , intent(in), contiguous    :: pattern(:)
+        use pm_kind, only: IKG => IK4
+        integer(IKG)            , intent(in), contiguous    :: array(:)
+        integer(IKG)            , intent(in), contiguous    :: pattern(:)
         procedure(logical(LK))                              :: iseq
         type(discrete_type)     , intent(in)                :: border
         integer(IK)             , intent(in), optional      :: blindness
@@ -3382,9 +3382,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDisBorCusCom_D1_D1_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)            , intent(in), contiguous    :: array(:)
-        integer(IKC)            , intent(in), contiguous    :: pattern(:)
+        use pm_kind, only: IKG => IK3
+        integer(IKG)            , intent(in), contiguous    :: array(:)
+        integer(IKG)            , intent(in), contiguous    :: pattern(:)
         procedure(logical(LK))                              :: iseq
         type(discrete_type)     , intent(in)                :: border
         integer(IK)             , intent(in), optional      :: blindness
@@ -3397,9 +3397,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDisBorCusCom_D1_D1_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)            , intent(in), contiguous    :: array(:)
-        integer(IKC)            , intent(in), contiguous    :: pattern(:)
+        use pm_kind, only: IKG => IK2
+        integer(IKG)            , intent(in), contiguous    :: array(:)
+        integer(IKG)            , intent(in), contiguous    :: pattern(:)
         procedure(logical(LK))                              :: iseq
         type(discrete_type)     , intent(in)                :: border
         integer(IK)             , intent(in), optional      :: blindness
@@ -3412,9 +3412,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDisBorCusCom_D1_D1_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)            , intent(in), contiguous    :: array(:)
-        integer(IKC)            , intent(in), contiguous    :: pattern(:)
+        use pm_kind, only: IKG => IK1
+        integer(IKG)            , intent(in), contiguous    :: array(:)
+        integer(IKG)            , intent(in), contiguous    :: pattern(:)
         procedure(logical(LK))                              :: iseq
         type(discrete_type)     , intent(in)                :: border
         integer(IK)             , intent(in), optional      :: blindness
@@ -3429,9 +3429,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDisBorCusCom_D1_D1_LK5
 #endif
-        use pm_kind, only: LKC => LK5
-        logical(LKC)            , intent(in), contiguous    :: array(:)
-        logical(LKC)            , intent(in), contiguous    :: pattern(:)
+        use pm_kind, only: LKG => LK5
+        logical(LKG)            , intent(in), contiguous    :: array(:)
+        logical(LKG)            , intent(in), contiguous    :: pattern(:)
         procedure(logical(LK))                              :: iseq
         type(discrete_type)     , intent(in)                :: border
         integer(IK)             , intent(in), optional      :: blindness
@@ -3444,9 +3444,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDisBorCusCom_D1_D1_LK4
 #endif
-        use pm_kind, only: LKC => LK4
-        logical(LKC)            , intent(in), contiguous    :: array(:)
-        logical(LKC)            , intent(in), contiguous    :: pattern(:)
+        use pm_kind, only: LKG => LK4
+        logical(LKG)            , intent(in), contiguous    :: array(:)
+        logical(LKG)            , intent(in), contiguous    :: pattern(:)
         procedure(logical(LK))                              :: iseq
         type(discrete_type)     , intent(in)                :: border
         integer(IK)             , intent(in), optional      :: blindness
@@ -3459,9 +3459,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDisBorCusCom_D1_D1_LK3
 #endif
-        use pm_kind, only: LKC => LK3
-        logical(LKC)            , intent(in), contiguous    :: array(:)
-        logical(LKC)            , intent(in), contiguous    :: pattern(:)
+        use pm_kind, only: LKG => LK3
+        logical(LKG)            , intent(in), contiguous    :: array(:)
+        logical(LKG)            , intent(in), contiguous    :: pattern(:)
         procedure(logical(LK))                              :: iseq
         type(discrete_type)     , intent(in)                :: border
         integer(IK)             , intent(in), optional      :: blindness
@@ -3474,9 +3474,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDisBorCusCom_D1_D1_LK2
 #endif
-        use pm_kind, only: LKC => LK2
-        logical(LKC)            , intent(in), contiguous    :: array(:)
-        logical(LKC)            , intent(in), contiguous    :: pattern(:)
+        use pm_kind, only: LKG => LK2
+        logical(LKG)            , intent(in), contiguous    :: array(:)
+        logical(LKG)            , intent(in), contiguous    :: pattern(:)
         procedure(logical(LK))                              :: iseq
         type(discrete_type)     , intent(in)                :: border
         integer(IK)             , intent(in), optional      :: blindness
@@ -3489,9 +3489,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDisBorCusCom_D1_D1_LK1
 #endif
-        use pm_kind, only: LKC => LK1
-        logical(LKC)            , intent(in), contiguous    :: array(:)
-        logical(LKC)            , intent(in), contiguous    :: pattern(:)
+        use pm_kind, only: LKG => LK1
+        logical(LKG)            , intent(in), contiguous    :: array(:)
+        logical(LKG)            , intent(in), contiguous    :: pattern(:)
         procedure(logical(LK))                              :: iseq
         type(discrete_type)     , intent(in)                :: border
         integer(IK)             , intent(in), optional      :: blindness
@@ -3506,9 +3506,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDisBorCusCom_D1_D1_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)            , intent(in), contiguous    :: array(:)
-        complex(CKC)            , intent(in), contiguous    :: pattern(:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG)            , intent(in), contiguous    :: array(:)
+        complex(CKG)            , intent(in), contiguous    :: pattern(:)
         procedure(logical(LK))                              :: iseq
         type(discrete_type)     , intent(in)                :: border
         integer(IK)             , intent(in), optional      :: blindness
@@ -3521,9 +3521,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDisBorCusCom_D1_D1_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)            , intent(in), contiguous    :: array(:)
-        complex(CKC)            , intent(in), contiguous    :: pattern(:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG)            , intent(in), contiguous    :: array(:)
+        complex(CKG)            , intent(in), contiguous    :: pattern(:)
         procedure(logical(LK))                              :: iseq
         type(discrete_type)     , intent(in)                :: border
         integer(IK)             , intent(in), optional      :: blindness
@@ -3536,9 +3536,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDisBorCusCom_D1_D1_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)            , intent(in), contiguous    :: array(:)
-        complex(CKC)            , intent(in), contiguous    :: pattern(:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG)            , intent(in), contiguous    :: array(:)
+        complex(CKG)            , intent(in), contiguous    :: pattern(:)
         procedure(logical(LK))                              :: iseq
         type(discrete_type)     , intent(in)                :: border
         integer(IK)             , intent(in), optional      :: blindness
@@ -3551,9 +3551,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDisBorCusCom_D1_D1_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)            , intent(in), contiguous    :: array(:)
-        complex(CKC)            , intent(in), contiguous    :: pattern(:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG)            , intent(in), contiguous    :: array(:)
+        complex(CKG)            , intent(in), contiguous    :: pattern(:)
         procedure(logical(LK))                              :: iseq
         type(discrete_type)     , intent(in)                :: border
         integer(IK)             , intent(in), optional      :: blindness
@@ -3566,9 +3566,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDisBorCusCom_D1_D1_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)            , intent(in), contiguous    :: array(:)
-        complex(CKC)            , intent(in), contiguous    :: pattern(:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG)            , intent(in), contiguous    :: array(:)
+        complex(CKG)            , intent(in), contiguous    :: pattern(:)
         procedure(logical(LK))                              :: iseq
         type(discrete_type)     , intent(in)                :: border
         integer(IK)             , intent(in), optional      :: blindness
@@ -3583,9 +3583,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDisBorCusCom_D1_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)               , intent(in), contiguous    :: array(:)
-        real(RKC)               , intent(in), contiguous    :: pattern(:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)               , intent(in), contiguous    :: array(:)
+        real(RKG)               , intent(in), contiguous    :: pattern(:)
         procedure(logical(LK))                              :: iseq
         type(discrete_type)     , intent(in)                :: border
         integer(IK)             , intent(in), optional      :: blindness
@@ -3598,9 +3598,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDisBorCusCom_D1_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)               , intent(in), contiguous    :: array(:)
-        real(RKC)               , intent(in), contiguous    :: pattern(:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)               , intent(in), contiguous    :: array(:)
+        real(RKG)               , intent(in), contiguous    :: pattern(:)
         procedure(logical(LK))                              :: iseq
         type(discrete_type)     , intent(in)                :: border
         integer(IK)             , intent(in), optional      :: blindness
@@ -3613,9 +3613,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDisBorCusCom_D1_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)               , intent(in), contiguous    :: array(:)
-        real(RKC)               , intent(in), contiguous    :: pattern(:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)               , intent(in), contiguous    :: array(:)
+        real(RKG)               , intent(in), contiguous    :: pattern(:)
         procedure(logical(LK))                              :: iseq
         type(discrete_type)     , intent(in)                :: border
         integer(IK)             , intent(in), optional      :: blindness
@@ -3628,9 +3628,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDisBorCusCom_D1_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)               , intent(in), contiguous    :: array(:)
-        real(RKC)               , intent(in), contiguous    :: pattern(:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)               , intent(in), contiguous    :: array(:)
+        real(RKG)               , intent(in), contiguous    :: pattern(:)
         procedure(logical(LK))                              :: iseq
         type(discrete_type)     , intent(in)                :: border
         integer(IK)             , intent(in), optional      :: blindness
@@ -3643,9 +3643,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountLocDisBorCusCom_D1_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)               , intent(in), contiguous    :: array(:)
-        real(RKC)               , intent(in), contiguous    :: pattern(:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)               , intent(in), contiguous    :: array(:)
+        real(RKG)               , intent(in), contiguous    :: pattern(:)
         procedure(logical(LK))                              :: iseq
         type(discrete_type)     , intent(in)                :: border
         integer(IK)             , intent(in), optional      :: blindness
@@ -3949,9 +3949,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocDefComDefIns_D0_D0_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)        , intent(in)                :: array
-        character(*,SKC)        , intent(in)                :: pattern
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)        , intent(in)                :: array
+        character(*,SKG)        , intent(in)                :: pattern
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                         , allocatable   :: loc(:)
     end function
@@ -3962,9 +3962,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocDefComDefIns_D0_D0_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)        , intent(in)                :: array
-        character(*,SKC)        , intent(in)                :: pattern
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)        , intent(in)                :: array
+        character(*,SKG)        , intent(in)                :: pattern
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                         , allocatable   :: loc(:)
     end function
@@ -3975,9 +3975,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocDefComDefIns_D0_D0_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)        , intent(in)                :: array
-        character(*,SKC)        , intent(in)                :: pattern
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)        , intent(in)                :: array
+        character(*,SKG)        , intent(in)                :: pattern
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                         , allocatable   :: loc(:)
     end function
@@ -3988,9 +3988,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocDefComDefIns_D0_D0_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)        , intent(in)                :: array
-        character(*,SKC)        , intent(in)                :: pattern
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)        , intent(in)                :: array
+        character(*,SKG)        , intent(in)                :: pattern
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                         , allocatable   :: loc(:)
     end function
@@ -4001,9 +4001,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocDefComDefIns_D0_D0_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)        , intent(in)                :: array
-        character(*,SKC)        , intent(in)                :: pattern
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)        , intent(in)                :: array
+        character(*,SKG)        , intent(in)                :: pattern
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                         , allocatable   :: loc(:)
     end function
@@ -4022,9 +4022,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocCusComDefIns_D0_D0_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)        , intent(in)                :: array
-        character(*,SKC)        , intent(in)                :: pattern
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)        , intent(in)                :: array
+        character(*,SKG)        , intent(in)                :: pattern
         procedure(logical(LK))                              :: iseq
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                         , allocatable   :: loc(:)
@@ -4036,9 +4036,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocCusComDefIns_D0_D0_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)        , intent(in)                :: array
-        character(*,SKC)        , intent(in)                :: pattern
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)        , intent(in)                :: array
+        character(*,SKG)        , intent(in)                :: pattern
         procedure(logical(LK))                              :: iseq
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                         , allocatable   :: loc(:)
@@ -4050,9 +4050,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocCusComDefIns_D0_D0_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)        , intent(in)                :: array
-        character(*,SKC)        , intent(in)                :: pattern
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)        , intent(in)                :: array
+        character(*,SKG)        , intent(in)                :: pattern
         procedure(logical(LK))                              :: iseq
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                         , allocatable   :: loc(:)
@@ -4064,9 +4064,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocCusComDefIns_D0_D0_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)        , intent(in)                :: array
-        character(*,SKC)        , intent(in)                :: pattern
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)        , intent(in)                :: array
+        character(*,SKG)        , intent(in)                :: pattern
         procedure(logical(LK))                              :: iseq
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                         , allocatable   :: loc(:)
@@ -4078,9 +4078,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocCusComDefIns_D0_D0_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)        , intent(in)                :: array
-        character(*,SKC)        , intent(in)                :: pattern
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)        , intent(in)                :: array
+        character(*,SKG)        , intent(in)                :: pattern
         procedure(logical(LK))                              :: iseq
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                         , allocatable   :: loc(:)
@@ -4100,9 +4100,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocDefComCusIns_D0_D0_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)        , intent(in)                :: array
-        character(*,SKC)        , intent(in)                :: pattern
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)        , intent(in)                :: array
+        character(*,SKG)        , intent(in)                :: pattern
         integer(IK)             , intent(in), contiguous    :: instance(:)
         logical(LK)             , intent(in), optional      :: sorted
         logical(LK)             , intent(in), optional      :: positive
@@ -4116,9 +4116,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocDefComCusIns_D0_D0_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)        , intent(in)                :: array
-        character(*,SKC)        , intent(in)                :: pattern
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)        , intent(in)                :: array
+        character(*,SKG)        , intent(in)                :: pattern
         integer(IK)             , intent(in), contiguous    :: instance(:)
         logical(LK)             , intent(in), optional      :: sorted
         logical(LK)             , intent(in), optional      :: positive
@@ -4132,9 +4132,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocDefComCusIns_D0_D0_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)        , intent(in)                :: array
-        character(*,SKC)        , intent(in)                :: pattern
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)        , intent(in)                :: array
+        character(*,SKG)        , intent(in)                :: pattern
         integer(IK)             , intent(in), contiguous    :: instance(:)
         logical(LK)             , intent(in), optional      :: sorted
         logical(LK)             , intent(in), optional      :: positive
@@ -4148,9 +4148,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocDefComCusIns_D0_D0_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)        , intent(in)                :: array
-        character(*,SKC)        , intent(in)                :: pattern
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)        , intent(in)                :: array
+        character(*,SKG)        , intent(in)                :: pattern
         integer(IK)             , intent(in), contiguous    :: instance(:)
         logical(LK)             , intent(in), optional      :: sorted
         logical(LK)             , intent(in), optional      :: positive
@@ -4164,9 +4164,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocDefComCusIns_D0_D0_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)        , intent(in)                :: array
-        character(*,SKC)        , intent(in)                :: pattern
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)        , intent(in)                :: array
+        character(*,SKG)        , intent(in)                :: pattern
         integer(IK)             , intent(in), contiguous    :: instance(:)
         logical(LK)             , intent(in), optional      :: sorted
         logical(LK)             , intent(in), optional      :: positive
@@ -4188,9 +4188,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocCusComCusIns_D0_D0_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)        , intent(in)                :: array
-        character(*,SKC)        , intent(in)                :: pattern
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)        , intent(in)                :: array
+        character(*,SKG)        , intent(in)                :: pattern
         procedure(logical(LK))                              :: iseq
         integer(IK)             , intent(in), contiguous    :: instance(:)
         logical(LK)             , intent(in), optional      :: sorted
@@ -4205,9 +4205,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocCusComCusIns_D0_D0_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)        , intent(in)                :: array
-        character(*,SKC)        , intent(in)                :: pattern
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)        , intent(in)                :: array
+        character(*,SKG)        , intent(in)                :: pattern
         procedure(logical(LK))                              :: iseq
         integer(IK)             , intent(in), contiguous    :: instance(:)
         logical(LK)             , intent(in), optional      :: sorted
@@ -4222,9 +4222,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocCusComCusIns_D0_D0_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)        , intent(in)                :: array
-        character(*,SKC)        , intent(in)                :: pattern
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)        , intent(in)                :: array
+        character(*,SKG)        , intent(in)                :: pattern
         procedure(logical(LK))                              :: iseq
         integer(IK)             , intent(in), contiguous    :: instance(:)
         logical(LK)             , intent(in), optional      :: sorted
@@ -4239,9 +4239,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocCusComCusIns_D0_D0_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)        , intent(in)                :: array
-        character(*,SKC)        , intent(in)                :: pattern
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)        , intent(in)                :: array
+        character(*,SKG)        , intent(in)                :: pattern
         procedure(logical(LK))                              :: iseq
         integer(IK)             , intent(in), contiguous    :: instance(:)
         logical(LK)             , intent(in), optional      :: sorted
@@ -4256,9 +4256,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocCusComCusIns_D0_D0_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)        , intent(in)                :: array
-        character(*,SKC)        , intent(in)                :: pattern
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)        , intent(in)                :: array
+        character(*,SKG)        , intent(in)                :: pattern
         procedure(logical(LK))                              :: iseq
         integer(IK)             , intent(in), contiguous    :: instance(:)
         logical(LK)             , intent(in), optional      :: sorted
@@ -4291,9 +4291,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocDefComDefIns_D1_D0_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)        , intent(in), contiguous    :: array(:)
-        character(*,SKC)        , intent(in)                :: pattern
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)        , intent(in), contiguous    :: array(:)
+        character(*,SKG)        , intent(in)                :: pattern
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                         , allocatable   :: loc(:)
     end function
@@ -4304,9 +4304,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocDefComDefIns_D1_D0_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)        , intent(in), contiguous    :: array(:)
-        character(*,SKC)        , intent(in)                :: pattern
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)        , intent(in), contiguous    :: array(:)
+        character(*,SKG)        , intent(in)                :: pattern
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                         , allocatable   :: loc(:)
     end function
@@ -4317,9 +4317,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocDefComDefIns_D1_D0_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)        , intent(in), contiguous    :: array(:)
-        character(*,SKC)        , intent(in)                :: pattern
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)        , intent(in), contiguous    :: array(:)
+        character(*,SKG)        , intent(in)                :: pattern
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                         , allocatable   :: loc(:)
     end function
@@ -4330,9 +4330,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocDefComDefIns_D1_D0_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)        , intent(in), contiguous    :: array(:)
-        character(*,SKC)        , intent(in)                :: pattern
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)        , intent(in), contiguous    :: array(:)
+        character(*,SKG)        , intent(in)                :: pattern
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                         , allocatable   :: loc(:)
     end function
@@ -4343,9 +4343,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocDefComDefIns_D1_D0_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)        , intent(in), contiguous    :: array(:)
-        character(*,SKC)        , intent(in)                :: pattern
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)        , intent(in), contiguous    :: array(:)
+        character(*,SKG)        , intent(in)                :: pattern
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                         , allocatable   :: loc(:)
     end function
@@ -4358,9 +4358,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocDefComDefIns_D1_D0_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)            , intent(in), contiguous    :: array(:)
-        integer(IKC)            , intent(in)                :: pattern
+        use pm_kind, only: IKG => IK5
+        integer(IKG)            , intent(in), contiguous    :: array(:)
+        integer(IKG)            , intent(in)                :: pattern
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                         , allocatable   :: loc(:)
     end function
@@ -4371,9 +4371,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocDefComDefIns_D1_D0_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)            , intent(in), contiguous    :: array(:)
-        integer(IKC)            , intent(in)                :: pattern
+        use pm_kind, only: IKG => IK4
+        integer(IKG)            , intent(in), contiguous    :: array(:)
+        integer(IKG)            , intent(in)                :: pattern
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                         , allocatable   :: loc(:)
     end function
@@ -4384,9 +4384,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocDefComDefIns_D1_D0_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)            , intent(in), contiguous    :: array(:)
-        integer(IKC)            , intent(in)                :: pattern
+        use pm_kind, only: IKG => IK3
+        integer(IKG)            , intent(in), contiguous    :: array(:)
+        integer(IKG)            , intent(in)                :: pattern
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                         , allocatable   :: loc(:)
     end function
@@ -4397,9 +4397,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocDefComDefIns_D1_D0_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)            , intent(in), contiguous    :: array(:)
-        integer(IKC)            , intent(in)                :: pattern
+        use pm_kind, only: IKG => IK2
+        integer(IKG)            , intent(in), contiguous    :: array(:)
+        integer(IKG)            , intent(in)                :: pattern
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                         , allocatable   :: loc(:)
     end function
@@ -4410,9 +4410,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocDefComDefIns_D1_D0_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)            , intent(in), contiguous    :: array(:)
-        integer(IKC)            , intent(in)                :: pattern
+        use pm_kind, only: IKG => IK1
+        integer(IKG)            , intent(in), contiguous    :: array(:)
+        integer(IKG)            , intent(in)                :: pattern
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                         , allocatable   :: loc(:)
     end function
@@ -4425,9 +4425,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocDefComDefIns_D1_D0_LK5
 #endif
-        use pm_kind, only: LKC => LK5
-        logical(LKC)            , intent(in), contiguous    :: array(:)
-        logical(LKC)            , intent(in)                :: pattern
+        use pm_kind, only: LKG => LK5
+        logical(LKG)            , intent(in), contiguous    :: array(:)
+        logical(LKG)            , intent(in)                :: pattern
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                         , allocatable   :: loc(:)
     end function
@@ -4438,9 +4438,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocDefComDefIns_D1_D0_LK4
 #endif
-        use pm_kind, only: LKC => LK4
-        logical(LKC)            , intent(in), contiguous    :: array(:)
-        logical(LKC)            , intent(in)                :: pattern
+        use pm_kind, only: LKG => LK4
+        logical(LKG)            , intent(in), contiguous    :: array(:)
+        logical(LKG)            , intent(in)                :: pattern
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                         , allocatable   :: loc(:)
     end function
@@ -4451,9 +4451,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocDefComDefIns_D1_D0_LK3
 #endif
-        use pm_kind, only: LKC => LK3
-        logical(LKC)            , intent(in), contiguous    :: array(:)
-        logical(LKC)            , intent(in)                :: pattern
+        use pm_kind, only: LKG => LK3
+        logical(LKG)            , intent(in), contiguous    :: array(:)
+        logical(LKG)            , intent(in)                :: pattern
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                         , allocatable   :: loc(:)
     end function
@@ -4464,9 +4464,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocDefComDefIns_D1_D0_LK2
 #endif
-        use pm_kind, only: LKC => LK2
-        logical(LKC)            , intent(in), contiguous    :: array(:)
-        logical(LKC)            , intent(in)                :: pattern
+        use pm_kind, only: LKG => LK2
+        logical(LKG)            , intent(in), contiguous    :: array(:)
+        logical(LKG)            , intent(in)                :: pattern
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                         , allocatable   :: loc(:)
     end function
@@ -4477,9 +4477,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocDefComDefIns_D1_D0_LK1
 #endif
-        use pm_kind, only: LKC => LK1
-        logical(LKC)            , intent(in), contiguous    :: array(:)
-        logical(LKC)            , intent(in)                :: pattern
+        use pm_kind, only: LKG => LK1
+        logical(LKG)            , intent(in), contiguous    :: array(:)
+        logical(LKG)            , intent(in)                :: pattern
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                         , allocatable   :: loc(:)
     end function
@@ -4492,9 +4492,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocDefComDefIns_D1_D0_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)            , intent(in), contiguous    :: array(:)
-        complex(CKC)            , intent(in)                :: pattern
+        use pm_kind, only: CKG => CK5
+        complex(CKG)            , intent(in), contiguous    :: array(:)
+        complex(CKG)            , intent(in)                :: pattern
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                         , allocatable   :: loc(:)
     end function
@@ -4505,9 +4505,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocDefComDefIns_D1_D0_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)            , intent(in), contiguous    :: array(:)
-        complex(CKC)            , intent(in)                :: pattern
+        use pm_kind, only: CKG => CK4
+        complex(CKG)            , intent(in), contiguous    :: array(:)
+        complex(CKG)            , intent(in)                :: pattern
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                         , allocatable   :: loc(:)
     end function
@@ -4518,9 +4518,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocDefComDefIns_D1_D0_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)            , intent(in), contiguous    :: array(:)
-        complex(CKC)            , intent(in)                :: pattern
+        use pm_kind, only: CKG => CK3
+        complex(CKG)            , intent(in), contiguous    :: array(:)
+        complex(CKG)            , intent(in)                :: pattern
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                         , allocatable   :: loc(:)
     end function
@@ -4531,9 +4531,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocDefComDefIns_D1_D0_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)            , intent(in), contiguous    :: array(:)
-        complex(CKC)            , intent(in)                :: pattern
+        use pm_kind, only: CKG => CK2
+        complex(CKG)            , intent(in), contiguous    :: array(:)
+        complex(CKG)            , intent(in)                :: pattern
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                         , allocatable   :: loc(:)
     end function
@@ -4544,9 +4544,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocDefComDefIns_D1_D0_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)            , intent(in), contiguous    :: array(:)
-        complex(CKC)            , intent(in)                :: pattern
+        use pm_kind, only: CKG => CK1
+        complex(CKG)            , intent(in), contiguous    :: array(:)
+        complex(CKG)            , intent(in)                :: pattern
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                         , allocatable   :: loc(:)
     end function
@@ -4559,9 +4559,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocDefComDefIns_D1_D0_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)               , intent(in), contiguous    :: array(:)
-        real(RKC)               , intent(in)                :: pattern
+        use pm_kind, only: RKG => RK5
+        real(RKG)               , intent(in), contiguous    :: array(:)
+        real(RKG)               , intent(in)                :: pattern
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                         , allocatable   :: loc(:)
     end function
@@ -4572,9 +4572,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocDefComDefIns_D1_D0_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)               , intent(in), contiguous    :: array(:)
-        real(RKC)               , intent(in)                :: pattern
+        use pm_kind, only: RKG => RK4
+        real(RKG)               , intent(in), contiguous    :: array(:)
+        real(RKG)               , intent(in)                :: pattern
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                         , allocatable   :: loc(:)
     end function
@@ -4585,9 +4585,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocDefComDefIns_D1_D0_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)               , intent(in), contiguous    :: array(:)
-        real(RKC)               , intent(in)                :: pattern
+        use pm_kind, only: RKG => RK3
+        real(RKG)               , intent(in), contiguous    :: array(:)
+        real(RKG)               , intent(in)                :: pattern
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                         , allocatable   :: loc(:)
     end function
@@ -4598,9 +4598,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocDefComDefIns_D1_D0_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)               , intent(in), contiguous    :: array(:)
-        real(RKC)               , intent(in)                :: pattern
+        use pm_kind, only: RKG => RK2
+        real(RKG)               , intent(in), contiguous    :: array(:)
+        real(RKG)               , intent(in)                :: pattern
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                         , allocatable   :: loc(:)
     end function
@@ -4611,9 +4611,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocDefComDefIns_D1_D0_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)               , intent(in), contiguous    :: array(:)
-        real(RKC)               , intent(in)                :: pattern
+        use pm_kind, only: RKG => RK1
+        real(RKG)               , intent(in), contiguous    :: array(:)
+        real(RKG)               , intent(in)                :: pattern
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                         , allocatable   :: loc(:)
     end function
@@ -4632,9 +4632,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocCusComDefIns_D1_D0_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)        , intent(in), contiguous    :: array(:)
-        character(*,SKC)        , intent(in)                :: pattern
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)        , intent(in), contiguous    :: array(:)
+        character(*,SKG)        , intent(in)                :: pattern
         procedure(logical(LK))                              :: iseq
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                         , allocatable   :: loc(:)
@@ -4646,9 +4646,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocCusComDefIns_D1_D0_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)        , intent(in), contiguous    :: array(:)
-        character(*,SKC)        , intent(in)                :: pattern
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)        , intent(in), contiguous    :: array(:)
+        character(*,SKG)        , intent(in)                :: pattern
         procedure(logical(LK))                              :: iseq
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                         , allocatable   :: loc(:)
@@ -4660,9 +4660,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocCusComDefIns_D1_D0_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)        , intent(in), contiguous    :: array(:)
-        character(*,SKC)        , intent(in)                :: pattern
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)        , intent(in), contiguous    :: array(:)
+        character(*,SKG)        , intent(in)                :: pattern
         procedure(logical(LK))                              :: iseq
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                         , allocatable   :: loc(:)
@@ -4674,9 +4674,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocCusComDefIns_D1_D0_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)        , intent(in), contiguous    :: array(:)
-        character(*,SKC)        , intent(in)                :: pattern
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)        , intent(in), contiguous    :: array(:)
+        character(*,SKG)        , intent(in)                :: pattern
         procedure(logical(LK))                              :: iseq
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                         , allocatable   :: loc(:)
@@ -4688,9 +4688,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocCusComDefIns_D1_D0_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)        , intent(in), contiguous    :: array(:)
-        character(*,SKC)        , intent(in)                :: pattern
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)        , intent(in), contiguous    :: array(:)
+        character(*,SKG)        , intent(in)                :: pattern
         procedure(logical(LK))                              :: iseq
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                         , allocatable   :: loc(:)
@@ -4704,9 +4704,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocCusComDefIns_D1_D0_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)            , intent(in), contiguous    :: array(:)
-        integer(IKC)            , intent(in)                :: pattern
+        use pm_kind, only: IKG => IK5
+        integer(IKG)            , intent(in), contiguous    :: array(:)
+        integer(IKG)            , intent(in)                :: pattern
         procedure(logical(LK))                              :: iseq
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                         , allocatable   :: loc(:)
@@ -4718,9 +4718,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocCusComDefIns_D1_D0_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)            , intent(in), contiguous    :: array(:)
-        integer(IKC)            , intent(in)                :: pattern
+        use pm_kind, only: IKG => IK4
+        integer(IKG)            , intent(in), contiguous    :: array(:)
+        integer(IKG)            , intent(in)                :: pattern
         procedure(logical(LK))                              :: iseq
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                         , allocatable   :: loc(:)
@@ -4732,9 +4732,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocCusComDefIns_D1_D0_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)            , intent(in), contiguous    :: array(:)
-        integer(IKC)            , intent(in)                :: pattern
+        use pm_kind, only: IKG => IK3
+        integer(IKG)            , intent(in), contiguous    :: array(:)
+        integer(IKG)            , intent(in)                :: pattern
         procedure(logical(LK))                              :: iseq
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                         , allocatable   :: loc(:)
@@ -4746,9 +4746,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocCusComDefIns_D1_D0_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)            , intent(in), contiguous    :: array(:)
-        integer(IKC)            , intent(in)                :: pattern
+        use pm_kind, only: IKG => IK2
+        integer(IKG)            , intent(in), contiguous    :: array(:)
+        integer(IKG)            , intent(in)                :: pattern
         procedure(logical(LK))                              :: iseq
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                         , allocatable   :: loc(:)
@@ -4760,9 +4760,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocCusComDefIns_D1_D0_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)            , intent(in), contiguous    :: array(:)
-        integer(IKC)            , intent(in)                :: pattern
+        use pm_kind, only: IKG => IK1
+        integer(IKG)            , intent(in), contiguous    :: array(:)
+        integer(IKG)            , intent(in)                :: pattern
         procedure(logical(LK))                              :: iseq
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                         , allocatable   :: loc(:)
@@ -4776,9 +4776,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocCusComDefIns_D1_D0_LK5
 #endif
-        use pm_kind, only: LKC => LK5
-        logical(LKC)            , intent(in), contiguous    :: array(:)
-        logical(LKC)            , intent(in)                :: pattern
+        use pm_kind, only: LKG => LK5
+        logical(LKG)            , intent(in), contiguous    :: array(:)
+        logical(LKG)            , intent(in)                :: pattern
         procedure(logical(LK))                              :: iseq
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                         , allocatable   :: loc(:)
@@ -4790,9 +4790,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocCusComDefIns_D1_D0_LK4
 #endif
-        use pm_kind, only: LKC => LK4
-        logical(LKC)            , intent(in), contiguous    :: array(:)
-        logical(LKC)            , intent(in)                :: pattern
+        use pm_kind, only: LKG => LK4
+        logical(LKG)            , intent(in), contiguous    :: array(:)
+        logical(LKG)            , intent(in)                :: pattern
         procedure(logical(LK))                              :: iseq
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                         , allocatable   :: loc(:)
@@ -4804,9 +4804,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocCusComDefIns_D1_D0_LK3
 #endif
-        use pm_kind, only: LKC => LK3
-        logical(LKC)            , intent(in), contiguous    :: array(:)
-        logical(LKC)            , intent(in)                :: pattern
+        use pm_kind, only: LKG => LK3
+        logical(LKG)            , intent(in), contiguous    :: array(:)
+        logical(LKG)            , intent(in)                :: pattern
         procedure(logical(LK))                              :: iseq
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                         , allocatable   :: loc(:)
@@ -4818,9 +4818,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocCusComDefIns_D1_D0_LK2
 #endif
-        use pm_kind, only: LKC => LK2
-        logical(LKC)            , intent(in), contiguous    :: array(:)
-        logical(LKC)            , intent(in)                :: pattern
+        use pm_kind, only: LKG => LK2
+        logical(LKG)            , intent(in), contiguous    :: array(:)
+        logical(LKG)            , intent(in)                :: pattern
         procedure(logical(LK))                              :: iseq
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                         , allocatable   :: loc(:)
@@ -4832,9 +4832,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocCusComDefIns_D1_D0_LK1
 #endif
-        use pm_kind, only: LKC => LK1
-        logical(LKC)            , intent(in), contiguous    :: array(:)
-        logical(LKC)            , intent(in)                :: pattern
+        use pm_kind, only: LKG => LK1
+        logical(LKG)            , intent(in), contiguous    :: array(:)
+        logical(LKG)            , intent(in)                :: pattern
         procedure(logical(LK))                              :: iseq
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                         , allocatable   :: loc(:)
@@ -4848,9 +4848,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocCusComDefIns_D1_D0_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)            , intent(in), contiguous    :: array(:)
-        complex(CKC)            , intent(in)                :: pattern
+        use pm_kind, only: CKG => CK5
+        complex(CKG)            , intent(in), contiguous    :: array(:)
+        complex(CKG)            , intent(in)                :: pattern
         procedure(logical(LK))                              :: iseq
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                         , allocatable   :: loc(:)
@@ -4862,9 +4862,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocCusComDefIns_D1_D0_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)            , intent(in), contiguous    :: array(:)
-        complex(CKC)            , intent(in)                :: pattern
+        use pm_kind, only: CKG => CK4
+        complex(CKG)            , intent(in), contiguous    :: array(:)
+        complex(CKG)            , intent(in)                :: pattern
         procedure(logical(LK))                              :: iseq
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                         , allocatable   :: loc(:)
@@ -4876,9 +4876,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocCusComDefIns_D1_D0_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)            , intent(in), contiguous    :: array(:)
-        complex(CKC)            , intent(in)                :: pattern
+        use pm_kind, only: CKG => CK3
+        complex(CKG)            , intent(in), contiguous    :: array(:)
+        complex(CKG)            , intent(in)                :: pattern
         procedure(logical(LK))                              :: iseq
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                         , allocatable   :: loc(:)
@@ -4890,9 +4890,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocCusComDefIns_D1_D0_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)            , intent(in), contiguous    :: array(:)
-        complex(CKC)            , intent(in)                :: pattern
+        use pm_kind, only: CKG => CK2
+        complex(CKG)            , intent(in), contiguous    :: array(:)
+        complex(CKG)            , intent(in)                :: pattern
         procedure(logical(LK))                              :: iseq
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                         , allocatable   :: loc(:)
@@ -4904,9 +4904,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocCusComDefIns_D1_D0_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)            , intent(in), contiguous    :: array(:)
-        complex(CKC)            , intent(in)                :: pattern
+        use pm_kind, only: CKG => CK1
+        complex(CKG)            , intent(in), contiguous    :: array(:)
+        complex(CKG)            , intent(in)                :: pattern
         procedure(logical(LK))                              :: iseq
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                         , allocatable   :: loc(:)
@@ -4920,9 +4920,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocCusComDefIns_D1_D0_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)               , intent(in), contiguous    :: array(:)
-        real(RKC)               , intent(in)                :: pattern
+        use pm_kind, only: RKG => RK5
+        real(RKG)               , intent(in), contiguous    :: array(:)
+        real(RKG)               , intent(in)                :: pattern
         procedure(logical(LK))                              :: iseq
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                         , allocatable   :: loc(:)
@@ -4934,9 +4934,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocCusComDefIns_D1_D0_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)               , intent(in), contiguous    :: array(:)
-        real(RKC)               , intent(in)                :: pattern
+        use pm_kind, only: RKG => RK4
+        real(RKG)               , intent(in), contiguous    :: array(:)
+        real(RKG)               , intent(in)                :: pattern
         procedure(logical(LK))                              :: iseq
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                         , allocatable   :: loc(:)
@@ -4948,9 +4948,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocCusComDefIns_D1_D0_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)               , intent(in), contiguous    :: array(:)
-        real(RKC)               , intent(in)                :: pattern
+        use pm_kind, only: RKG => RK3
+        real(RKG)               , intent(in), contiguous    :: array(:)
+        real(RKG)               , intent(in)                :: pattern
         procedure(logical(LK))                              :: iseq
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                         , allocatable   :: loc(:)
@@ -4962,9 +4962,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocCusComDefIns_D1_D0_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)               , intent(in), contiguous    :: array(:)
-        real(RKC)               , intent(in)                :: pattern
+        use pm_kind, only: RKG => RK2
+        real(RKG)               , intent(in), contiguous    :: array(:)
+        real(RKG)               , intent(in)                :: pattern
         procedure(logical(LK))                              :: iseq
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                         , allocatable   :: loc(:)
@@ -4976,9 +4976,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocCusComDefIns_D1_D0_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)               , intent(in), contiguous    :: array(:)
-        real(RKC)               , intent(in)                :: pattern
+        use pm_kind, only: RKG => RK1
+        real(RKG)               , intent(in), contiguous    :: array(:)
+        real(RKG)               , intent(in)                :: pattern
         procedure(logical(LK))                              :: iseq
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                         , allocatable   :: loc(:)
@@ -4998,9 +4998,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocDefComCusIns_D1_D0_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)        , intent(in), contiguous    :: array(:)
-        character(*,SKC)        , intent(in)                :: pattern
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)        , intent(in), contiguous    :: array(:)
+        character(*,SKG)        , intent(in)                :: pattern
         integer(IK)             , intent(in), contiguous    :: instance(:)
         logical(LK)             , intent(in), optional      :: sorted
         logical(LK)             , intent(in), optional      :: positive
@@ -5014,9 +5014,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocDefComCusIns_D1_D0_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)        , intent(in), contiguous    :: array(:)
-        character(*,SKC)        , intent(in)                :: pattern
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)        , intent(in), contiguous    :: array(:)
+        character(*,SKG)        , intent(in)                :: pattern
         integer(IK)             , intent(in), contiguous    :: instance(:)
         logical(LK)             , intent(in), optional      :: sorted
         logical(LK)             , intent(in), optional      :: positive
@@ -5030,9 +5030,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocDefComCusIns_D1_D0_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)        , intent(in), contiguous    :: array(:)
-        character(*,SKC)        , intent(in)                :: pattern
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)        , intent(in), contiguous    :: array(:)
+        character(*,SKG)        , intent(in)                :: pattern
         integer(IK)             , intent(in), contiguous    :: instance(:)
         logical(LK)             , intent(in), optional      :: sorted
         logical(LK)             , intent(in), optional      :: positive
@@ -5046,9 +5046,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocDefComCusIns_D1_D0_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)        , intent(in), contiguous    :: array(:)
-        character(*,SKC)        , intent(in)                :: pattern
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)        , intent(in), contiguous    :: array(:)
+        character(*,SKG)        , intent(in)                :: pattern
         integer(IK)             , intent(in), contiguous    :: instance(:)
         logical(LK)             , intent(in), optional      :: sorted
         logical(LK)             , intent(in), optional      :: positive
@@ -5062,9 +5062,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocDefComCusIns_D1_D0_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)        , intent(in), contiguous    :: array(:)
-        character(*,SKC)        , intent(in)                :: pattern
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)        , intent(in), contiguous    :: array(:)
+        character(*,SKG)        , intent(in)                :: pattern
         integer(IK)             , intent(in), contiguous    :: instance(:)
         logical(LK)             , intent(in), optional      :: sorted
         logical(LK)             , intent(in), optional      :: positive
@@ -5080,9 +5080,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocDefComCusIns_D1_D0_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)            , intent(in), contiguous    :: array(:)
-        integer(IKC)            , intent(in)                :: pattern
+        use pm_kind, only: IKG => IK5
+        integer(IKG)            , intent(in), contiguous    :: array(:)
+        integer(IKG)            , intent(in)                :: pattern
         integer(IK)             , intent(in), contiguous    :: instance(:)
         logical(LK)             , intent(in), optional      :: sorted
         logical(LK)             , intent(in), optional      :: positive
@@ -5096,9 +5096,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocDefComCusIns_D1_D0_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)            , intent(in), contiguous    :: array(:)
-        integer(IKC)            , intent(in)                :: pattern
+        use pm_kind, only: IKG => IK4
+        integer(IKG)            , intent(in), contiguous    :: array(:)
+        integer(IKG)            , intent(in)                :: pattern
         integer(IK)             , intent(in), contiguous    :: instance(:)
         logical(LK)             , intent(in), optional      :: sorted
         logical(LK)             , intent(in), optional      :: positive
@@ -5112,9 +5112,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocDefComCusIns_D1_D0_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)            , intent(in), contiguous    :: array(:)
-        integer(IKC)            , intent(in)                :: pattern
+        use pm_kind, only: IKG => IK3
+        integer(IKG)            , intent(in), contiguous    :: array(:)
+        integer(IKG)            , intent(in)                :: pattern
         integer(IK)             , intent(in), contiguous    :: instance(:)
         logical(LK)             , intent(in), optional      :: sorted
         logical(LK)             , intent(in), optional      :: positive
@@ -5128,9 +5128,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocDefComCusIns_D1_D0_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)            , intent(in), contiguous    :: array(:)
-        integer(IKC)            , intent(in)                :: pattern
+        use pm_kind, only: IKG => IK2
+        integer(IKG)            , intent(in), contiguous    :: array(:)
+        integer(IKG)            , intent(in)                :: pattern
         integer(IK)             , intent(in), contiguous    :: instance(:)
         logical(LK)             , intent(in), optional      :: sorted
         logical(LK)             , intent(in), optional      :: positive
@@ -5144,9 +5144,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocDefComCusIns_D1_D0_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)            , intent(in), contiguous    :: array(:)
-        integer(IKC)            , intent(in)                :: pattern
+        use pm_kind, only: IKG => IK1
+        integer(IKG)            , intent(in), contiguous    :: array(:)
+        integer(IKG)            , intent(in)                :: pattern
         integer(IK)             , intent(in), contiguous    :: instance(:)
         logical(LK)             , intent(in), optional      :: sorted
         logical(LK)             , intent(in), optional      :: positive
@@ -5162,9 +5162,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocDefComCusIns_D1_D0_LK5
 #endif
-        use pm_kind, only: LKC => LK5
-        logical(LKC)            , intent(in), contiguous    :: array(:)
-        logical(LKC)            , intent(in)                :: pattern
+        use pm_kind, only: LKG => LK5
+        logical(LKG)            , intent(in), contiguous    :: array(:)
+        logical(LKG)            , intent(in)                :: pattern
         integer(IK)             , intent(in), contiguous    :: instance(:)
         logical(LK)             , intent(in), optional      :: sorted
         logical(LK)             , intent(in), optional      :: positive
@@ -5178,9 +5178,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocDefComCusIns_D1_D0_LK4
 #endif
-        use pm_kind, only: LKC => LK4
-        logical(LKC)            , intent(in), contiguous    :: array(:)
-        logical(LKC)            , intent(in)                :: pattern
+        use pm_kind, only: LKG => LK4
+        logical(LKG)            , intent(in), contiguous    :: array(:)
+        logical(LKG)            , intent(in)                :: pattern
         integer(IK)             , intent(in), contiguous    :: instance(:)
         logical(LK)             , intent(in), optional      :: sorted
         logical(LK)             , intent(in), optional      :: positive
@@ -5194,9 +5194,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocDefComCusIns_D1_D0_LK3
 #endif
-        use pm_kind, only: LKC => LK3
-        logical(LKC)            , intent(in), contiguous    :: array(:)
-        logical(LKC)            , intent(in)                :: pattern
+        use pm_kind, only: LKG => LK3
+        logical(LKG)            , intent(in), contiguous    :: array(:)
+        logical(LKG)            , intent(in)                :: pattern
         integer(IK)             , intent(in), contiguous    :: instance(:)
         logical(LK)             , intent(in), optional      :: sorted
         logical(LK)             , intent(in), optional      :: positive
@@ -5210,9 +5210,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocDefComCusIns_D1_D0_LK2
 #endif
-        use pm_kind, only: LKC => LK2
-        logical(LKC)            , intent(in), contiguous    :: array(:)
-        logical(LKC)            , intent(in)                :: pattern
+        use pm_kind, only: LKG => LK2
+        logical(LKG)            , intent(in), contiguous    :: array(:)
+        logical(LKG)            , intent(in)                :: pattern
         integer(IK)             , intent(in), contiguous    :: instance(:)
         logical(LK)             , intent(in), optional      :: sorted
         logical(LK)             , intent(in), optional      :: positive
@@ -5226,9 +5226,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocDefComCusIns_D1_D0_LK1
 #endif
-        use pm_kind, only: LKC => LK1
-        logical(LKC)            , intent(in), contiguous    :: array(:)
-        logical(LKC)            , intent(in)                :: pattern
+        use pm_kind, only: LKG => LK1
+        logical(LKG)            , intent(in), contiguous    :: array(:)
+        logical(LKG)            , intent(in)                :: pattern
         integer(IK)             , intent(in), contiguous    :: instance(:)
         logical(LK)             , intent(in), optional      :: sorted
         logical(LK)             , intent(in), optional      :: positive
@@ -5244,9 +5244,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocDefComCusIns_D1_D0_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)            , intent(in), contiguous    :: array(:)
-        complex(CKC)            , intent(in)                :: pattern
+        use pm_kind, only: CKG => CK5
+        complex(CKG)            , intent(in), contiguous    :: array(:)
+        complex(CKG)            , intent(in)                :: pattern
         integer(IK)             , intent(in), contiguous    :: instance(:)
         logical(LK)             , intent(in), optional      :: sorted
         logical(LK)             , intent(in), optional      :: positive
@@ -5260,9 +5260,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocDefComCusIns_D1_D0_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)            , intent(in), contiguous    :: array(:)
-        complex(CKC)            , intent(in)                :: pattern
+        use pm_kind, only: CKG => CK4
+        complex(CKG)            , intent(in), contiguous    :: array(:)
+        complex(CKG)            , intent(in)                :: pattern
         integer(IK)             , intent(in), contiguous    :: instance(:)
         logical(LK)             , intent(in), optional      :: sorted
         logical(LK)             , intent(in), optional      :: positive
@@ -5276,9 +5276,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocDefComCusIns_D1_D0_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)            , intent(in), contiguous    :: array(:)
-        complex(CKC)            , intent(in)                :: pattern
+        use pm_kind, only: CKG => CK3
+        complex(CKG)            , intent(in), contiguous    :: array(:)
+        complex(CKG)            , intent(in)                :: pattern
         integer(IK)             , intent(in), contiguous    :: instance(:)
         logical(LK)             , intent(in), optional      :: sorted
         logical(LK)             , intent(in), optional      :: positive
@@ -5292,9 +5292,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocDefComCusIns_D1_D0_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)            , intent(in), contiguous    :: array(:)
-        complex(CKC)            , intent(in)                :: pattern
+        use pm_kind, only: CKG => CK2
+        complex(CKG)            , intent(in), contiguous    :: array(:)
+        complex(CKG)            , intent(in)                :: pattern
         integer(IK)             , intent(in), contiguous    :: instance(:)
         logical(LK)             , intent(in), optional      :: sorted
         logical(LK)             , intent(in), optional      :: positive
@@ -5308,9 +5308,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocDefComCusIns_D1_D0_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)            , intent(in), contiguous    :: array(:)
-        complex(CKC)            , intent(in)                :: pattern
+        use pm_kind, only: CKG => CK1
+        complex(CKG)            , intent(in), contiguous    :: array(:)
+        complex(CKG)            , intent(in)                :: pattern
         integer(IK)             , intent(in), contiguous    :: instance(:)
         logical(LK)             , intent(in), optional      :: sorted
         logical(LK)             , intent(in), optional      :: positive
@@ -5326,9 +5326,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocDefComCusIns_D1_D0_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)               , intent(in), contiguous    :: array(:)
-        real(RKC)               , intent(in)                :: pattern
+        use pm_kind, only: RKG => RK5
+        real(RKG)               , intent(in), contiguous    :: array(:)
+        real(RKG)               , intent(in)                :: pattern
         integer(IK)             , intent(in), contiguous    :: instance(:)
         logical(LK)             , intent(in), optional      :: sorted
         logical(LK)             , intent(in), optional      :: positive
@@ -5342,9 +5342,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocDefComCusIns_D1_D0_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)               , intent(in), contiguous    :: array(:)
-        real(RKC)               , intent(in)                :: pattern
+        use pm_kind, only: RKG => RK4
+        real(RKG)               , intent(in), contiguous    :: array(:)
+        real(RKG)               , intent(in)                :: pattern
         integer(IK)             , intent(in), contiguous    :: instance(:)
         logical(LK)             , intent(in), optional      :: sorted
         logical(LK)             , intent(in), optional      :: positive
@@ -5358,9 +5358,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocDefComCusIns_D1_D0_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)               , intent(in), contiguous    :: array(:)
-        real(RKC)               , intent(in)                :: pattern
+        use pm_kind, only: RKG => RK3
+        real(RKG)               , intent(in), contiguous    :: array(:)
+        real(RKG)               , intent(in)                :: pattern
         integer(IK)             , intent(in), contiguous    :: instance(:)
         logical(LK)             , intent(in), optional      :: sorted
         logical(LK)             , intent(in), optional      :: positive
@@ -5374,9 +5374,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocDefComCusIns_D1_D0_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)               , intent(in), contiguous    :: array(:)
-        real(RKC)               , intent(in)                :: pattern
+        use pm_kind, only: RKG => RK2
+        real(RKG)               , intent(in), contiguous    :: array(:)
+        real(RKG)               , intent(in)                :: pattern
         integer(IK)             , intent(in), contiguous    :: instance(:)
         logical(LK)             , intent(in), optional      :: sorted
         logical(LK)             , intent(in), optional      :: positive
@@ -5390,9 +5390,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocDefComCusIns_D1_D0_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)               , intent(in), contiguous    :: array(:)
-        real(RKC)               , intent(in)                :: pattern
+        use pm_kind, only: RKG => RK1
+        real(RKG)               , intent(in), contiguous    :: array(:)
+        real(RKG)               , intent(in)                :: pattern
         integer(IK)             , intent(in), contiguous    :: instance(:)
         logical(LK)             , intent(in), optional      :: sorted
         logical(LK)             , intent(in), optional      :: positive
@@ -5414,9 +5414,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocCusComCusIns_D1_D0_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)        , intent(in), contiguous    :: array(:)
-        character(*,SKC)        , intent(in)                :: pattern
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)        , intent(in), contiguous    :: array(:)
+        character(*,SKG)        , intent(in)                :: pattern
         procedure(logical(LK))                              :: iseq
         integer(IK)             , intent(in), contiguous    :: instance(:)
         logical(LK)             , intent(in), optional      :: sorted
@@ -5431,9 +5431,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocCusComCusIns_D1_D0_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)        , intent(in), contiguous    :: array(:)
-        character(*,SKC)        , intent(in)                :: pattern
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)        , intent(in), contiguous    :: array(:)
+        character(*,SKG)        , intent(in)                :: pattern
         procedure(logical(LK))                              :: iseq
         integer(IK)             , intent(in), contiguous    :: instance(:)
         logical(LK)             , intent(in), optional      :: sorted
@@ -5448,9 +5448,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocCusComCusIns_D1_D0_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)        , intent(in), contiguous    :: array(:)
-        character(*,SKC)        , intent(in)                :: pattern
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)        , intent(in), contiguous    :: array(:)
+        character(*,SKG)        , intent(in)                :: pattern
         procedure(logical(LK))                              :: iseq
         integer(IK)             , intent(in), contiguous    :: instance(:)
         logical(LK)             , intent(in), optional      :: sorted
@@ -5465,9 +5465,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocCusComCusIns_D1_D0_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)        , intent(in), contiguous    :: array(:)
-        character(*,SKC)        , intent(in)                :: pattern
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)        , intent(in), contiguous    :: array(:)
+        character(*,SKG)        , intent(in)                :: pattern
         procedure(logical(LK))                              :: iseq
         integer(IK)             , intent(in), contiguous    :: instance(:)
         logical(LK)             , intent(in), optional      :: sorted
@@ -5482,9 +5482,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocCusComCusIns_D1_D0_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)        , intent(in), contiguous    :: array(:)
-        character(*,SKC)        , intent(in)                :: pattern
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)        , intent(in), contiguous    :: array(:)
+        character(*,SKG)        , intent(in)                :: pattern
         procedure(logical(LK))                              :: iseq
         integer(IK)             , intent(in), contiguous    :: instance(:)
         logical(LK)             , intent(in), optional      :: sorted
@@ -5501,9 +5501,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocCusComCusIns_D1_D0_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)            , intent(in), contiguous    :: array(:)
-        integer(IKC)            , intent(in)                :: pattern
+        use pm_kind, only: IKG => IK5
+        integer(IKG)            , intent(in), contiguous    :: array(:)
+        integer(IKG)            , intent(in)                :: pattern
         procedure(logical(LK))                              :: iseq
         integer(IK)             , intent(in), contiguous    :: instance(:)
         logical(LK)             , intent(in), optional      :: sorted
@@ -5518,9 +5518,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocCusComCusIns_D1_D0_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)            , intent(in), contiguous    :: array(:)
-        integer(IKC)            , intent(in)                :: pattern
+        use pm_kind, only: IKG => IK4
+        integer(IKG)            , intent(in), contiguous    :: array(:)
+        integer(IKG)            , intent(in)                :: pattern
         procedure(logical(LK))                              :: iseq
         integer(IK)             , intent(in), contiguous    :: instance(:)
         logical(LK)             , intent(in), optional      :: sorted
@@ -5535,9 +5535,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocCusComCusIns_D1_D0_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)            , intent(in), contiguous    :: array(:)
-        integer(IKC)            , intent(in)                :: pattern
+        use pm_kind, only: IKG => IK3
+        integer(IKG)            , intent(in), contiguous    :: array(:)
+        integer(IKG)            , intent(in)                :: pattern
         procedure(logical(LK))                              :: iseq
         integer(IK)             , intent(in), contiguous    :: instance(:)
         logical(LK)             , intent(in), optional      :: sorted
@@ -5552,9 +5552,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocCusComCusIns_D1_D0_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)            , intent(in), contiguous    :: array(:)
-        integer(IKC)            , intent(in)                :: pattern
+        use pm_kind, only: IKG => IK2
+        integer(IKG)            , intent(in), contiguous    :: array(:)
+        integer(IKG)            , intent(in)                :: pattern
         procedure(logical(LK))                              :: iseq
         integer(IK)             , intent(in), contiguous    :: instance(:)
         logical(LK)             , intent(in), optional      :: sorted
@@ -5569,9 +5569,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocCusComCusIns_D1_D0_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)            , intent(in), contiguous    :: array(:)
-        integer(IKC)            , intent(in)                :: pattern
+        use pm_kind, only: IKG => IK1
+        integer(IKG)            , intent(in), contiguous    :: array(:)
+        integer(IKG)            , intent(in)                :: pattern
         procedure(logical(LK))                              :: iseq
         integer(IK)             , intent(in), contiguous    :: instance(:)
         logical(LK)             , intent(in), optional      :: sorted
@@ -5588,9 +5588,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocCusComCusIns_D1_D0_LK5
 #endif
-        use pm_kind, only: LKC => LK5
-        logical(LKC)            , intent(in), contiguous    :: array(:)
-        logical(LKC)            , intent(in)                :: pattern
+        use pm_kind, only: LKG => LK5
+        logical(LKG)            , intent(in), contiguous    :: array(:)
+        logical(LKG)            , intent(in)                :: pattern
         procedure(logical(LK))                              :: iseq
         integer(IK)             , intent(in), contiguous    :: instance(:)
         logical(LK)             , intent(in), optional      :: sorted
@@ -5605,9 +5605,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocCusComCusIns_D1_D0_LK4
 #endif
-        use pm_kind, only: LKC => LK4
-        logical(LKC)            , intent(in), contiguous    :: array(:)
-        logical(LKC)            , intent(in)                :: pattern
+        use pm_kind, only: LKG => LK4
+        logical(LKG)            , intent(in), contiguous    :: array(:)
+        logical(LKG)            , intent(in)                :: pattern
         procedure(logical(LK))                              :: iseq
         integer(IK)             , intent(in), contiguous    :: instance(:)
         logical(LK)             , intent(in), optional      :: sorted
@@ -5622,9 +5622,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocCusComCusIns_D1_D0_LK3
 #endif
-        use pm_kind, only: LKC => LK3
-        logical(LKC)            , intent(in), contiguous    :: array(:)
-        logical(LKC)            , intent(in)                :: pattern
+        use pm_kind, only: LKG => LK3
+        logical(LKG)            , intent(in), contiguous    :: array(:)
+        logical(LKG)            , intent(in)                :: pattern
         procedure(logical(LK))                              :: iseq
         integer(IK)             , intent(in), contiguous    :: instance(:)
         logical(LK)             , intent(in), optional      :: sorted
@@ -5639,9 +5639,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocCusComCusIns_D1_D0_LK2
 #endif
-        use pm_kind, only: LKC => LK2
-        logical(LKC)            , intent(in), contiguous    :: array(:)
-        logical(LKC)            , intent(in)                :: pattern
+        use pm_kind, only: LKG => LK2
+        logical(LKG)            , intent(in), contiguous    :: array(:)
+        logical(LKG)            , intent(in)                :: pattern
         procedure(logical(LK))                              :: iseq
         integer(IK)             , intent(in), contiguous    :: instance(:)
         logical(LK)             , intent(in), optional      :: sorted
@@ -5656,9 +5656,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocCusComCusIns_D1_D0_LK1
 #endif
-        use pm_kind, only: LKC => LK1
-        logical(LKC)            , intent(in), contiguous    :: array(:)
-        logical(LKC)            , intent(in)                :: pattern
+        use pm_kind, only: LKG => LK1
+        logical(LKG)            , intent(in), contiguous    :: array(:)
+        logical(LKG)            , intent(in)                :: pattern
         procedure(logical(LK))                              :: iseq
         integer(IK)             , intent(in), contiguous    :: instance(:)
         logical(LK)             , intent(in), optional      :: sorted
@@ -5675,9 +5675,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocCusComCusIns_D1_D0_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)            , intent(in), contiguous    :: array(:)
-        complex(CKC)            , intent(in)                :: pattern
+        use pm_kind, only: CKG => CK5
+        complex(CKG)            , intent(in), contiguous    :: array(:)
+        complex(CKG)            , intent(in)                :: pattern
         procedure(logical(LK))                              :: iseq
         integer(IK)             , intent(in), contiguous    :: instance(:)
         logical(LK)             , intent(in), optional      :: sorted
@@ -5692,9 +5692,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocCusComCusIns_D1_D0_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)            , intent(in), contiguous    :: array(:)
-        complex(CKC)            , intent(in)                :: pattern
+        use pm_kind, only: CKG => CK4
+        complex(CKG)            , intent(in), contiguous    :: array(:)
+        complex(CKG)            , intent(in)                :: pattern
         procedure(logical(LK))                              :: iseq
         integer(IK)             , intent(in), contiguous    :: instance(:)
         logical(LK)             , intent(in), optional      :: sorted
@@ -5709,9 +5709,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocCusComCusIns_D1_D0_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)            , intent(in), contiguous    :: array(:)
-        complex(CKC)            , intent(in)                :: pattern
+        use pm_kind, only: CKG => CK3
+        complex(CKG)            , intent(in), contiguous    :: array(:)
+        complex(CKG)            , intent(in)                :: pattern
         procedure(logical(LK))                              :: iseq
         integer(IK)             , intent(in), contiguous    :: instance(:)
         logical(LK)             , intent(in), optional      :: sorted
@@ -5726,9 +5726,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocCusComCusIns_D1_D0_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)            , intent(in), contiguous    :: array(:)
-        complex(CKC)            , intent(in)                :: pattern
+        use pm_kind, only: CKG => CK2
+        complex(CKG)            , intent(in), contiguous    :: array(:)
+        complex(CKG)            , intent(in)                :: pattern
         procedure(logical(LK))                              :: iseq
         integer(IK)             , intent(in), contiguous    :: instance(:)
         logical(LK)             , intent(in), optional      :: sorted
@@ -5743,9 +5743,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocCusComCusIns_D1_D0_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)            , intent(in), contiguous    :: array(:)
-        complex(CKC)            , intent(in)                :: pattern
+        use pm_kind, only: CKG => CK1
+        complex(CKG)            , intent(in), contiguous    :: array(:)
+        complex(CKG)            , intent(in)                :: pattern
         procedure(logical(LK))                              :: iseq
         integer(IK)             , intent(in), contiguous    :: instance(:)
         logical(LK)             , intent(in), optional      :: sorted
@@ -5762,9 +5762,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocCusComCusIns_D1_D0_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)               , intent(in), contiguous    :: array(:)
-        real(RKC)               , intent(in)                :: pattern
+        use pm_kind, only: RKG => RK5
+        real(RKG)               , intent(in), contiguous    :: array(:)
+        real(RKG)               , intent(in)                :: pattern
         procedure(logical(LK))                              :: iseq
         integer(IK)             , intent(in), contiguous    :: instance(:)
         logical(LK)             , intent(in), optional      :: sorted
@@ -5779,9 +5779,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocCusComCusIns_D1_D0_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)               , intent(in), contiguous    :: array(:)
-        real(RKC)               , intent(in)                :: pattern
+        use pm_kind, only: RKG => RK4
+        real(RKG)               , intent(in), contiguous    :: array(:)
+        real(RKG)               , intent(in)                :: pattern
         procedure(logical(LK))                              :: iseq
         integer(IK)             , intent(in), contiguous    :: instance(:)
         logical(LK)             , intent(in), optional      :: sorted
@@ -5796,9 +5796,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocCusComCusIns_D1_D0_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)               , intent(in), contiguous    :: array(:)
-        real(RKC)               , intent(in)                :: pattern
+        use pm_kind, only: RKG => RK3
+        real(RKG)               , intent(in), contiguous    :: array(:)
+        real(RKG)               , intent(in)                :: pattern
         procedure(logical(LK))                              :: iseq
         integer(IK)             , intent(in), contiguous    :: instance(:)
         logical(LK)             , intent(in), optional      :: sorted
@@ -5813,9 +5813,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocCusComCusIns_D1_D0_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)               , intent(in), contiguous    :: array(:)
-        real(RKC)               , intent(in)                :: pattern
+        use pm_kind, only: RKG => RK2
+        real(RKG)               , intent(in), contiguous    :: array(:)
+        real(RKG)               , intent(in)                :: pattern
         procedure(logical(LK))                              :: iseq
         integer(IK)             , intent(in), contiguous    :: instance(:)
         logical(LK)             , intent(in), optional      :: sorted
@@ -5830,9 +5830,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocCusComCusIns_D1_D0_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)               , intent(in), contiguous    :: array(:)
-        real(RKC)               , intent(in)                :: pattern
+        use pm_kind, only: RKG => RK1
+        real(RKG)               , intent(in), contiguous    :: array(:)
+        real(RKG)               , intent(in)                :: pattern
         procedure(logical(LK))                              :: iseq
         integer(IK)             , intent(in), contiguous    :: instance(:)
         logical(LK)             , intent(in), optional      :: sorted
@@ -5865,9 +5865,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocDefComDefIns_D1_D1_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)        , intent(in), contiguous    :: array(:)
-        character(*,SKC)        , intent(in), contiguous    :: pattern(:)
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)        , intent(in), contiguous    :: array(:)
+        character(*,SKG)        , intent(in), contiguous    :: pattern(:)
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                         , allocatable   :: loc(:)
     end function
@@ -5878,9 +5878,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocDefComDefIns_D1_D1_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)        , intent(in), contiguous    :: array(:)
-        character(*,SKC)        , intent(in), contiguous    :: pattern(:)
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)        , intent(in), contiguous    :: array(:)
+        character(*,SKG)        , intent(in), contiguous    :: pattern(:)
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                         , allocatable   :: loc(:)
     end function
@@ -5891,9 +5891,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocDefComDefIns_D1_D1_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)        , intent(in), contiguous    :: array(:)
-        character(*,SKC)        , intent(in), contiguous    :: pattern(:)
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)        , intent(in), contiguous    :: array(:)
+        character(*,SKG)        , intent(in), contiguous    :: pattern(:)
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                         , allocatable   :: loc(:)
     end function
@@ -5904,9 +5904,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocDefComDefIns_D1_D1_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)        , intent(in), contiguous    :: array(:)
-        character(*,SKC)        , intent(in), contiguous    :: pattern(:)
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)        , intent(in), contiguous    :: array(:)
+        character(*,SKG)        , intent(in), contiguous    :: pattern(:)
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                         , allocatable   :: loc(:)
     end function
@@ -5917,9 +5917,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocDefComDefIns_D1_D1_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)        , intent(in), contiguous    :: array(:)
-        character(*,SKC)        , intent(in), contiguous    :: pattern(:)
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)        , intent(in), contiguous    :: array(:)
+        character(*,SKG)        , intent(in), contiguous    :: pattern(:)
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                         , allocatable   :: loc(:)
     end function
@@ -5932,9 +5932,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocDefComDefIns_D1_D1_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)            , intent(in), contiguous    :: array(:)
-        integer(IKC)            , intent(in), contiguous    :: pattern(:)
+        use pm_kind, only: IKG => IK5
+        integer(IKG)            , intent(in), contiguous    :: array(:)
+        integer(IKG)            , intent(in), contiguous    :: pattern(:)
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                         , allocatable   :: loc(:)
     end function
@@ -5945,9 +5945,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocDefComDefIns_D1_D1_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)            , intent(in), contiguous    :: array(:)
-        integer(IKC)            , intent(in), contiguous    :: pattern(:)
+        use pm_kind, only: IKG => IK4
+        integer(IKG)            , intent(in), contiguous    :: array(:)
+        integer(IKG)            , intent(in), contiguous    :: pattern(:)
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                         , allocatable   :: loc(:)
     end function
@@ -5958,9 +5958,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocDefComDefIns_D1_D1_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)            , intent(in), contiguous    :: array(:)
-        integer(IKC)            , intent(in), contiguous    :: pattern(:)
+        use pm_kind, only: IKG => IK3
+        integer(IKG)            , intent(in), contiguous    :: array(:)
+        integer(IKG)            , intent(in), contiguous    :: pattern(:)
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                         , allocatable   :: loc(:)
     end function
@@ -5971,9 +5971,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocDefComDefIns_D1_D1_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)            , intent(in), contiguous    :: array(:)
-        integer(IKC)            , intent(in), contiguous    :: pattern(:)
+        use pm_kind, only: IKG => IK2
+        integer(IKG)            , intent(in), contiguous    :: array(:)
+        integer(IKG)            , intent(in), contiguous    :: pattern(:)
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                         , allocatable   :: loc(:)
     end function
@@ -5984,9 +5984,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocDefComDefIns_D1_D1_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)            , intent(in), contiguous    :: array(:)
-        integer(IKC)            , intent(in), contiguous    :: pattern(:)
+        use pm_kind, only: IKG => IK1
+        integer(IKG)            , intent(in), contiguous    :: array(:)
+        integer(IKG)            , intent(in), contiguous    :: pattern(:)
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                         , allocatable   :: loc(:)
     end function
@@ -5999,9 +5999,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocDefComDefIns_D1_D1_LK5
 #endif
-        use pm_kind, only: LKC => LK5
-        logical(LKC)            , intent(in), contiguous    :: array(:)
-        logical(LKC)            , intent(in), contiguous    :: pattern(:)
+        use pm_kind, only: LKG => LK5
+        logical(LKG)            , intent(in), contiguous    :: array(:)
+        logical(LKG)            , intent(in), contiguous    :: pattern(:)
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                         , allocatable   :: loc(:)
     end function
@@ -6012,9 +6012,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocDefComDefIns_D1_D1_LK4
 #endif
-        use pm_kind, only: LKC => LK4
-        logical(LKC)            , intent(in), contiguous    :: array(:)
-        logical(LKC)            , intent(in), contiguous    :: pattern(:)
+        use pm_kind, only: LKG => LK4
+        logical(LKG)            , intent(in), contiguous    :: array(:)
+        logical(LKG)            , intent(in), contiguous    :: pattern(:)
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                         , allocatable   :: loc(:)
     end function
@@ -6025,9 +6025,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocDefComDefIns_D1_D1_LK3
 #endif
-        use pm_kind, only: LKC => LK3
-        logical(LKC)            , intent(in), contiguous    :: array(:)
-        logical(LKC)            , intent(in), contiguous    :: pattern(:)
+        use pm_kind, only: LKG => LK3
+        logical(LKG)            , intent(in), contiguous    :: array(:)
+        logical(LKG)            , intent(in), contiguous    :: pattern(:)
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                         , allocatable   :: loc(:)
     end function
@@ -6038,9 +6038,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocDefComDefIns_D1_D1_LK2
 #endif
-        use pm_kind, only: LKC => LK2
-        logical(LKC)            , intent(in), contiguous    :: array(:)
-        logical(LKC)            , intent(in), contiguous    :: pattern(:)
+        use pm_kind, only: LKG => LK2
+        logical(LKG)            , intent(in), contiguous    :: array(:)
+        logical(LKG)            , intent(in), contiguous    :: pattern(:)
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                         , allocatable   :: loc(:)
     end function
@@ -6051,9 +6051,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocDefComDefIns_D1_D1_LK1
 #endif
-        use pm_kind, only: LKC => LK1
-        logical(LKC)            , intent(in), contiguous    :: array(:)
-        logical(LKC)            , intent(in), contiguous    :: pattern(:)
+        use pm_kind, only: LKG => LK1
+        logical(LKG)            , intent(in), contiguous    :: array(:)
+        logical(LKG)            , intent(in), contiguous    :: pattern(:)
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                         , allocatable   :: loc(:)
     end function
@@ -6066,9 +6066,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocDefComDefIns_D1_D1_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)            , intent(in), contiguous    :: array(:)
-        complex(CKC)            , intent(in), contiguous    :: pattern(:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG)            , intent(in), contiguous    :: array(:)
+        complex(CKG)            , intent(in), contiguous    :: pattern(:)
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                         , allocatable   :: loc(:)
     end function
@@ -6079,9 +6079,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocDefComDefIns_D1_D1_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)            , intent(in), contiguous    :: array(:)
-        complex(CKC)            , intent(in), contiguous    :: pattern(:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG)            , intent(in), contiguous    :: array(:)
+        complex(CKG)            , intent(in), contiguous    :: pattern(:)
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                         , allocatable   :: loc(:)
     end function
@@ -6092,9 +6092,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocDefComDefIns_D1_D1_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)            , intent(in), contiguous    :: array(:)
-        complex(CKC)            , intent(in), contiguous    :: pattern(:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG)            , intent(in), contiguous    :: array(:)
+        complex(CKG)            , intent(in), contiguous    :: pattern(:)
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                         , allocatable   :: loc(:)
     end function
@@ -6105,9 +6105,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocDefComDefIns_D1_D1_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)            , intent(in), contiguous    :: array(:)
-        complex(CKC)            , intent(in), contiguous    :: pattern(:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG)            , intent(in), contiguous    :: array(:)
+        complex(CKG)            , intent(in), contiguous    :: pattern(:)
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                         , allocatable   :: loc(:)
     end function
@@ -6118,9 +6118,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocDefComDefIns_D1_D1_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)            , intent(in), contiguous    :: array(:)
-        complex(CKC)            , intent(in), contiguous    :: pattern(:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG)            , intent(in), contiguous    :: array(:)
+        complex(CKG)            , intent(in), contiguous    :: pattern(:)
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                         , allocatable   :: loc(:)
     end function
@@ -6133,9 +6133,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocDefComDefIns_D1_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)               , intent(in), contiguous    :: array(:)
-        real(RKC)               , intent(in), contiguous    :: pattern(:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)               , intent(in), contiguous    :: array(:)
+        real(RKG)               , intent(in), contiguous    :: pattern(:)
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                         , allocatable   :: loc(:)
     end function
@@ -6146,9 +6146,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocDefComDefIns_D1_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)               , intent(in), contiguous    :: array(:)
-        real(RKC)               , intent(in), contiguous    :: pattern(:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)               , intent(in), contiguous    :: array(:)
+        real(RKG)               , intent(in), contiguous    :: pattern(:)
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                         , allocatable   :: loc(:)
     end function
@@ -6159,9 +6159,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocDefComDefIns_D1_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)               , intent(in), contiguous    :: array(:)
-        real(RKC)               , intent(in), contiguous    :: pattern(:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)               , intent(in), contiguous    :: array(:)
+        real(RKG)               , intent(in), contiguous    :: pattern(:)
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                         , allocatable   :: loc(:)
     end function
@@ -6172,9 +6172,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocDefComDefIns_D1_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)               , intent(in), contiguous    :: array(:)
-        real(RKC)               , intent(in), contiguous    :: pattern(:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)               , intent(in), contiguous    :: array(:)
+        real(RKG)               , intent(in), contiguous    :: pattern(:)
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                         , allocatable   :: loc(:)
     end function
@@ -6185,9 +6185,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocDefComDefIns_D1_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)               , intent(in), contiguous    :: array(:)
-        real(RKC)               , intent(in), contiguous    :: pattern(:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)               , intent(in), contiguous    :: array(:)
+        real(RKG)               , intent(in), contiguous    :: pattern(:)
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                         , allocatable   :: loc(:)
     end function
@@ -6206,9 +6206,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocCusComDefIns_D1_D1_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)        , intent(in), contiguous    :: array(:)
-        character(*,SKC)        , intent(in), contiguous    :: pattern(:)
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)        , intent(in), contiguous    :: array(:)
+        character(*,SKG)        , intent(in), contiguous    :: pattern(:)
         procedure(logical(LK))                              :: iseq
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                         , allocatable   :: loc(:)
@@ -6220,9 +6220,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocCusComDefIns_D1_D1_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)        , intent(in), contiguous    :: array(:)
-        character(*,SKC)        , intent(in), contiguous    :: pattern(:)
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)        , intent(in), contiguous    :: array(:)
+        character(*,SKG)        , intent(in), contiguous    :: pattern(:)
         procedure(logical(LK))                              :: iseq
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                         , allocatable   :: loc(:)
@@ -6234,9 +6234,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocCusComDefIns_D1_D1_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)        , intent(in), contiguous    :: array(:)
-        character(*,SKC)        , intent(in), contiguous    :: pattern(:)
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)        , intent(in), contiguous    :: array(:)
+        character(*,SKG)        , intent(in), contiguous    :: pattern(:)
         procedure(logical(LK))                              :: iseq
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                         , allocatable   :: loc(:)
@@ -6248,9 +6248,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocCusComDefIns_D1_D1_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)        , intent(in), contiguous    :: array(:)
-        character(*,SKC)        , intent(in), contiguous    :: pattern(:)
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)        , intent(in), contiguous    :: array(:)
+        character(*,SKG)        , intent(in), contiguous    :: pattern(:)
         procedure(logical(LK))                              :: iseq
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                         , allocatable   :: loc(:)
@@ -6262,9 +6262,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocCusComDefIns_D1_D1_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)        , intent(in), contiguous    :: array(:)
-        character(*,SKC)        , intent(in), contiguous    :: pattern(:)
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)        , intent(in), contiguous    :: array(:)
+        character(*,SKG)        , intent(in), contiguous    :: pattern(:)
         procedure(logical(LK))                              :: iseq
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                         , allocatable   :: loc(:)
@@ -6278,9 +6278,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocCusComDefIns_D1_D1_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)            , intent(in), contiguous    :: array(:)
-        integer(IKC)            , intent(in), contiguous    :: pattern(:)
+        use pm_kind, only: IKG => IK5
+        integer(IKG)            , intent(in), contiguous    :: array(:)
+        integer(IKG)            , intent(in), contiguous    :: pattern(:)
         procedure(logical(LK))                              :: iseq
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                         , allocatable   :: loc(:)
@@ -6292,9 +6292,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocCusComDefIns_D1_D1_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)            , intent(in), contiguous    :: array(:)
-        integer(IKC)            , intent(in), contiguous    :: pattern(:)
+        use pm_kind, only: IKG => IK4
+        integer(IKG)            , intent(in), contiguous    :: array(:)
+        integer(IKG)            , intent(in), contiguous    :: pattern(:)
         procedure(logical(LK))                              :: iseq
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                         , allocatable   :: loc(:)
@@ -6306,9 +6306,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocCusComDefIns_D1_D1_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)            , intent(in), contiguous    :: array(:)
-        integer(IKC)            , intent(in), contiguous    :: pattern(:)
+        use pm_kind, only: IKG => IK3
+        integer(IKG)            , intent(in), contiguous    :: array(:)
+        integer(IKG)            , intent(in), contiguous    :: pattern(:)
         procedure(logical(LK))                              :: iseq
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                         , allocatable   :: loc(:)
@@ -6320,9 +6320,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocCusComDefIns_D1_D1_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)            , intent(in), contiguous    :: array(:)
-        integer(IKC)            , intent(in), contiguous    :: pattern(:)
+        use pm_kind, only: IKG => IK2
+        integer(IKG)            , intent(in), contiguous    :: array(:)
+        integer(IKG)            , intent(in), contiguous    :: pattern(:)
         procedure(logical(LK))                              :: iseq
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                         , allocatable   :: loc(:)
@@ -6334,9 +6334,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocCusComDefIns_D1_D1_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)            , intent(in), contiguous    :: array(:)
-        integer(IKC)            , intent(in), contiguous    :: pattern(:)
+        use pm_kind, only: IKG => IK1
+        integer(IKG)            , intent(in), contiguous    :: array(:)
+        integer(IKG)            , intent(in), contiguous    :: pattern(:)
         procedure(logical(LK))                              :: iseq
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                         , allocatable   :: loc(:)
@@ -6350,9 +6350,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocCusComDefIns_D1_D1_LK5
 #endif
-        use pm_kind, only: LKC => LK5
-        logical(LKC)            , intent(in), contiguous    :: array(:)
-        logical(LKC)            , intent(in), contiguous    :: pattern(:)
+        use pm_kind, only: LKG => LK5
+        logical(LKG)            , intent(in), contiguous    :: array(:)
+        logical(LKG)            , intent(in), contiguous    :: pattern(:)
         procedure(logical(LK))                              :: iseq
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                         , allocatable   :: loc(:)
@@ -6364,9 +6364,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocCusComDefIns_D1_D1_LK4
 #endif
-        use pm_kind, only: LKC => LK4
-        logical(LKC)            , intent(in), contiguous    :: array(:)
-        logical(LKC)            , intent(in), contiguous    :: pattern(:)
+        use pm_kind, only: LKG => LK4
+        logical(LKG)            , intent(in), contiguous    :: array(:)
+        logical(LKG)            , intent(in), contiguous    :: pattern(:)
         procedure(logical(LK))                              :: iseq
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                         , allocatable   :: loc(:)
@@ -6378,9 +6378,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocCusComDefIns_D1_D1_LK3
 #endif
-        use pm_kind, only: LKC => LK3
-        logical(LKC)            , intent(in), contiguous    :: array(:)
-        logical(LKC)            , intent(in), contiguous    :: pattern(:)
+        use pm_kind, only: LKG => LK3
+        logical(LKG)            , intent(in), contiguous    :: array(:)
+        logical(LKG)            , intent(in), contiguous    :: pattern(:)
         procedure(logical(LK))                              :: iseq
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                         , allocatable   :: loc(:)
@@ -6392,9 +6392,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocCusComDefIns_D1_D1_LK2
 #endif
-        use pm_kind, only: LKC => LK2
-        logical(LKC)            , intent(in), contiguous    :: array(:)
-        logical(LKC)            , intent(in), contiguous    :: pattern(:)
+        use pm_kind, only: LKG => LK2
+        logical(LKG)            , intent(in), contiguous    :: array(:)
+        logical(LKG)            , intent(in), contiguous    :: pattern(:)
         procedure(logical(LK))                              :: iseq
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                         , allocatable   :: loc(:)
@@ -6406,9 +6406,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocCusComDefIns_D1_D1_LK1
 #endif
-        use pm_kind, only: LKC => LK1
-        logical(LKC)            , intent(in), contiguous    :: array(:)
-        logical(LKC)            , intent(in), contiguous    :: pattern(:)
+        use pm_kind, only: LKG => LK1
+        logical(LKG)            , intent(in), contiguous    :: array(:)
+        logical(LKG)            , intent(in), contiguous    :: pattern(:)
         procedure(logical(LK))                              :: iseq
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                         , allocatable   :: loc(:)
@@ -6422,9 +6422,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocCusComDefIns_D1_D1_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)            , intent(in), contiguous    :: array(:)
-        complex(CKC)            , intent(in), contiguous    :: pattern(:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG)            , intent(in), contiguous    :: array(:)
+        complex(CKG)            , intent(in), contiguous    :: pattern(:)
         procedure(logical(LK))                              :: iseq
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                         , allocatable   :: loc(:)
@@ -6436,9 +6436,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocCusComDefIns_D1_D1_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)            , intent(in), contiguous    :: array(:)
-        complex(CKC)            , intent(in), contiguous    :: pattern(:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG)            , intent(in), contiguous    :: array(:)
+        complex(CKG)            , intent(in), contiguous    :: pattern(:)
         procedure(logical(LK))                              :: iseq
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                         , allocatable   :: loc(:)
@@ -6450,9 +6450,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocCusComDefIns_D1_D1_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)            , intent(in), contiguous    :: array(:)
-        complex(CKC)            , intent(in), contiguous    :: pattern(:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG)            , intent(in), contiguous    :: array(:)
+        complex(CKG)            , intent(in), contiguous    :: pattern(:)
         procedure(logical(LK))                              :: iseq
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                         , allocatable   :: loc(:)
@@ -6464,9 +6464,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocCusComDefIns_D1_D1_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)            , intent(in), contiguous    :: array(:)
-        complex(CKC)            , intent(in), contiguous    :: pattern(:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG)            , intent(in), contiguous    :: array(:)
+        complex(CKG)            , intent(in), contiguous    :: pattern(:)
         procedure(logical(LK))                              :: iseq
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                         , allocatable   :: loc(:)
@@ -6478,9 +6478,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocCusComDefIns_D1_D1_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)            , intent(in), contiguous    :: array(:)
-        complex(CKC)            , intent(in), contiguous    :: pattern(:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG)            , intent(in), contiguous    :: array(:)
+        complex(CKG)            , intent(in), contiguous    :: pattern(:)
         procedure(logical(LK))                              :: iseq
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                         , allocatable   :: loc(:)
@@ -6494,9 +6494,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocCusComDefIns_D1_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)               , intent(in), contiguous    :: array(:)
-        real(RKC)               , intent(in), contiguous    :: pattern(:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)               , intent(in), contiguous    :: array(:)
+        real(RKG)               , intent(in), contiguous    :: pattern(:)
         procedure(logical(LK))                              :: iseq
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                         , allocatable   :: loc(:)
@@ -6508,9 +6508,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocCusComDefIns_D1_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)               , intent(in), contiguous    :: array(:)
-        real(RKC)               , intent(in), contiguous    :: pattern(:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)               , intent(in), contiguous    :: array(:)
+        real(RKG)               , intent(in), contiguous    :: pattern(:)
         procedure(logical(LK))                              :: iseq
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                         , allocatable   :: loc(:)
@@ -6522,9 +6522,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocCusComDefIns_D1_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)               , intent(in), contiguous    :: array(:)
-        real(RKC)               , intent(in), contiguous    :: pattern(:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)               , intent(in), contiguous    :: array(:)
+        real(RKG)               , intent(in), contiguous    :: pattern(:)
         procedure(logical(LK))                              :: iseq
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                         , allocatable   :: loc(:)
@@ -6536,9 +6536,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocCusComDefIns_D1_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)               , intent(in), contiguous    :: array(:)
-        real(RKC)               , intent(in), contiguous    :: pattern(:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)               , intent(in), contiguous    :: array(:)
+        real(RKG)               , intent(in), contiguous    :: pattern(:)
         procedure(logical(LK))                              :: iseq
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                         , allocatable   :: loc(:)
@@ -6550,9 +6550,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocCusComDefIns_D1_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)               , intent(in), contiguous    :: array(:)
-        real(RKC)               , intent(in), contiguous    :: pattern(:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)               , intent(in), contiguous    :: array(:)
+        real(RKG)               , intent(in), contiguous    :: pattern(:)
         procedure(logical(LK))                              :: iseq
         integer(IK)             , intent(in), optional      :: blindness
         integer(IK)                         , allocatable   :: loc(:)
@@ -6572,9 +6572,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocDefComCusIns_D1_D1_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)        , intent(in), contiguous    :: array(:)
-        character(*,SKC)        , intent(in), contiguous    :: pattern(:)
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)        , intent(in), contiguous    :: array(:)
+        character(*,SKG)        , intent(in), contiguous    :: pattern(:)
         integer(IK)             , intent(in), contiguous    :: instance(:)
         logical(LK)             , intent(in), optional      :: sorted
         logical(LK)             , intent(in), optional      :: positive
@@ -6588,9 +6588,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocDefComCusIns_D1_D1_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)        , intent(in), contiguous    :: array(:)
-        character(*,SKC)        , intent(in), contiguous    :: pattern(:)
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)        , intent(in), contiguous    :: array(:)
+        character(*,SKG)        , intent(in), contiguous    :: pattern(:)
         integer(IK)             , intent(in), contiguous    :: instance(:)
         logical(LK)             , intent(in), optional      :: sorted
         logical(LK)             , intent(in), optional      :: positive
@@ -6604,9 +6604,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocDefComCusIns_D1_D1_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)        , intent(in), contiguous    :: array(:)
-        character(*,SKC)        , intent(in), contiguous    :: pattern(:)
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)        , intent(in), contiguous    :: array(:)
+        character(*,SKG)        , intent(in), contiguous    :: pattern(:)
         integer(IK)             , intent(in), contiguous    :: instance(:)
         logical(LK)             , intent(in), optional      :: sorted
         logical(LK)             , intent(in), optional      :: positive
@@ -6620,9 +6620,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocDefComCusIns_D1_D1_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)        , intent(in), contiguous    :: array(:)
-        character(*,SKC)        , intent(in), contiguous    :: pattern(:)
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)        , intent(in), contiguous    :: array(:)
+        character(*,SKG)        , intent(in), contiguous    :: pattern(:)
         integer(IK)             , intent(in), contiguous    :: instance(:)
         logical(LK)             , intent(in), optional      :: sorted
         logical(LK)             , intent(in), optional      :: positive
@@ -6636,9 +6636,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocDefComCusIns_D1_D1_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)        , intent(in), contiguous    :: array(:)
-        character(*,SKC)        , intent(in), contiguous    :: pattern(:)
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)        , intent(in), contiguous    :: array(:)
+        character(*,SKG)        , intent(in), contiguous    :: pattern(:)
         integer(IK)             , intent(in), contiguous    :: instance(:)
         logical(LK)             , intent(in), optional      :: sorted
         logical(LK)             , intent(in), optional      :: positive
@@ -6654,9 +6654,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocDefComCusIns_D1_D1_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)            , intent(in), contiguous    :: array(:)
-        integer(IKC)            , intent(in), contiguous    :: pattern(:)
+        use pm_kind, only: IKG => IK5
+        integer(IKG)            , intent(in), contiguous    :: array(:)
+        integer(IKG)            , intent(in), contiguous    :: pattern(:)
         integer(IK)             , intent(in), contiguous    :: instance(:)
         logical(LK)             , intent(in), optional      :: sorted
         logical(LK)             , intent(in), optional      :: positive
@@ -6670,9 +6670,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocDefComCusIns_D1_D1_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)            , intent(in), contiguous    :: array(:)
-        integer(IKC)            , intent(in), contiguous    :: pattern(:)
+        use pm_kind, only: IKG => IK4
+        integer(IKG)            , intent(in), contiguous    :: array(:)
+        integer(IKG)            , intent(in), contiguous    :: pattern(:)
         integer(IK)             , intent(in), contiguous    :: instance(:)
         logical(LK)             , intent(in), optional      :: sorted
         logical(LK)             , intent(in), optional      :: positive
@@ -6686,9 +6686,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocDefComCusIns_D1_D1_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)            , intent(in), contiguous    :: array(:)
-        integer(IKC)            , intent(in), contiguous    :: pattern(:)
+        use pm_kind, only: IKG => IK3
+        integer(IKG)            , intent(in), contiguous    :: array(:)
+        integer(IKG)            , intent(in), contiguous    :: pattern(:)
         integer(IK)             , intent(in), contiguous    :: instance(:)
         logical(LK)             , intent(in), optional      :: sorted
         logical(LK)             , intent(in), optional      :: positive
@@ -6702,9 +6702,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocDefComCusIns_D1_D1_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)            , intent(in), contiguous    :: array(:)
-        integer(IKC)            , intent(in), contiguous    :: pattern(:)
+        use pm_kind, only: IKG => IK2
+        integer(IKG)            , intent(in), contiguous    :: array(:)
+        integer(IKG)            , intent(in), contiguous    :: pattern(:)
         integer(IK)             , intent(in), contiguous    :: instance(:)
         logical(LK)             , intent(in), optional      :: sorted
         logical(LK)             , intent(in), optional      :: positive
@@ -6718,9 +6718,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocDefComCusIns_D1_D1_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)            , intent(in), contiguous    :: array(:)
-        integer(IKC)            , intent(in), contiguous    :: pattern(:)
+        use pm_kind, only: IKG => IK1
+        integer(IKG)            , intent(in), contiguous    :: array(:)
+        integer(IKG)            , intent(in), contiguous    :: pattern(:)
         integer(IK)             , intent(in), contiguous    :: instance(:)
         logical(LK)             , intent(in), optional      :: sorted
         logical(LK)             , intent(in), optional      :: positive
@@ -6736,9 +6736,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocDefComCusIns_D1_D1_LK5
 #endif
-        use pm_kind, only: LKC => LK5
-        logical(LKC)            , intent(in), contiguous    :: array(:)
-        logical(LKC)            , intent(in), contiguous    :: pattern(:)
+        use pm_kind, only: LKG => LK5
+        logical(LKG)            , intent(in), contiguous    :: array(:)
+        logical(LKG)            , intent(in), contiguous    :: pattern(:)
         integer(IK)             , intent(in), contiguous    :: instance(:)
         logical(LK)             , intent(in), optional      :: sorted
         logical(LK)             , intent(in), optional      :: positive
@@ -6752,9 +6752,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocDefComCusIns_D1_D1_LK4
 #endif
-        use pm_kind, only: LKC => LK4
-        logical(LKC)            , intent(in), contiguous    :: array(:)
-        logical(LKC)            , intent(in), contiguous    :: pattern(:)
+        use pm_kind, only: LKG => LK4
+        logical(LKG)            , intent(in), contiguous    :: array(:)
+        logical(LKG)            , intent(in), contiguous    :: pattern(:)
         integer(IK)             , intent(in), contiguous    :: instance(:)
         logical(LK)             , intent(in), optional      :: sorted
         logical(LK)             , intent(in), optional      :: positive
@@ -6768,9 +6768,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocDefComCusIns_D1_D1_LK3
 #endif
-        use pm_kind, only: LKC => LK3
-        logical(LKC)            , intent(in), contiguous    :: array(:)
-        logical(LKC)            , intent(in), contiguous    :: pattern(:)
+        use pm_kind, only: LKG => LK3
+        logical(LKG)            , intent(in), contiguous    :: array(:)
+        logical(LKG)            , intent(in), contiguous    :: pattern(:)
         integer(IK)             , intent(in), contiguous    :: instance(:)
         logical(LK)             , intent(in), optional      :: sorted
         logical(LK)             , intent(in), optional      :: positive
@@ -6784,9 +6784,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocDefComCusIns_D1_D1_LK2
 #endif
-        use pm_kind, only: LKC => LK2
-        logical(LKC)            , intent(in), contiguous    :: array(:)
-        logical(LKC)            , intent(in), contiguous    :: pattern(:)
+        use pm_kind, only: LKG => LK2
+        logical(LKG)            , intent(in), contiguous    :: array(:)
+        logical(LKG)            , intent(in), contiguous    :: pattern(:)
         integer(IK)             , intent(in), contiguous    :: instance(:)
         logical(LK)             , intent(in), optional      :: sorted
         logical(LK)             , intent(in), optional      :: positive
@@ -6800,9 +6800,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocDefComCusIns_D1_D1_LK1
 #endif
-        use pm_kind, only: LKC => LK1
-        logical(LKC)            , intent(in), contiguous    :: array(:)
-        logical(LKC)            , intent(in), contiguous    :: pattern(:)
+        use pm_kind, only: LKG => LK1
+        logical(LKG)            , intent(in), contiguous    :: array(:)
+        logical(LKG)            , intent(in), contiguous    :: pattern(:)
         integer(IK)             , intent(in), contiguous    :: instance(:)
         logical(LK)             , intent(in), optional      :: sorted
         logical(LK)             , intent(in), optional      :: positive
@@ -6818,9 +6818,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocDefComCusIns_D1_D1_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)            , intent(in), contiguous    :: array(:)
-        complex(CKC)            , intent(in), contiguous    :: pattern(:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG)            , intent(in), contiguous    :: array(:)
+        complex(CKG)            , intent(in), contiguous    :: pattern(:)
         integer(IK)             , intent(in), contiguous    :: instance(:)
         logical(LK)             , intent(in), optional      :: sorted
         logical(LK)             , intent(in), optional      :: positive
@@ -6834,9 +6834,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocDefComCusIns_D1_D1_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)            , intent(in), contiguous    :: array(:)
-        complex(CKC)            , intent(in), contiguous    :: pattern(:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG)            , intent(in), contiguous    :: array(:)
+        complex(CKG)            , intent(in), contiguous    :: pattern(:)
         integer(IK)             , intent(in), contiguous    :: instance(:)
         logical(LK)             , intent(in), optional      :: sorted
         logical(LK)             , intent(in), optional      :: positive
@@ -6850,9 +6850,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocDefComCusIns_D1_D1_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)            , intent(in), contiguous    :: array(:)
-        complex(CKC)            , intent(in), contiguous    :: pattern(:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG)            , intent(in), contiguous    :: array(:)
+        complex(CKG)            , intent(in), contiguous    :: pattern(:)
         integer(IK)             , intent(in), contiguous    :: instance(:)
         logical(LK)             , intent(in), optional      :: sorted
         logical(LK)             , intent(in), optional      :: positive
@@ -6866,9 +6866,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocDefComCusIns_D1_D1_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)            , intent(in), contiguous    :: array(:)
-        complex(CKC)            , intent(in), contiguous    :: pattern(:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG)            , intent(in), contiguous    :: array(:)
+        complex(CKG)            , intent(in), contiguous    :: pattern(:)
         integer(IK)             , intent(in), contiguous    :: instance(:)
         logical(LK)             , intent(in), optional      :: sorted
         logical(LK)             , intent(in), optional      :: positive
@@ -6882,9 +6882,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocDefComCusIns_D1_D1_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)            , intent(in), contiguous    :: array(:)
-        complex(CKC)            , intent(in), contiguous    :: pattern(:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG)            , intent(in), contiguous    :: array(:)
+        complex(CKG)            , intent(in), contiguous    :: pattern(:)
         integer(IK)             , intent(in), contiguous    :: instance(:)
         logical(LK)             , intent(in), optional      :: sorted
         logical(LK)             , intent(in), optional      :: positive
@@ -6900,9 +6900,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocDefComCusIns_D1_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)               , intent(in), contiguous    :: array(:)
-        real(RKC)               , intent(in), contiguous    :: pattern(:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)               , intent(in), contiguous    :: array(:)
+        real(RKG)               , intent(in), contiguous    :: pattern(:)
         integer(IK)             , intent(in), contiguous    :: instance(:)
         logical(LK)             , intent(in), optional      :: sorted
         logical(LK)             , intent(in), optional      :: positive
@@ -6916,9 +6916,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocDefComCusIns_D1_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)               , intent(in), contiguous    :: array(:)
-        real(RKC)               , intent(in), contiguous    :: pattern(:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)               , intent(in), contiguous    :: array(:)
+        real(RKG)               , intent(in), contiguous    :: pattern(:)
         integer(IK)             , intent(in), contiguous    :: instance(:)
         logical(LK)             , intent(in), optional      :: sorted
         logical(LK)             , intent(in), optional      :: positive
@@ -6932,9 +6932,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocDefComCusIns_D1_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)               , intent(in), contiguous    :: array(:)
-        real(RKC)               , intent(in), contiguous    :: pattern(:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)               , intent(in), contiguous    :: array(:)
+        real(RKG)               , intent(in), contiguous    :: pattern(:)
         integer(IK)             , intent(in), contiguous    :: instance(:)
         logical(LK)             , intent(in), optional      :: sorted
         logical(LK)             , intent(in), optional      :: positive
@@ -6948,9 +6948,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocDefComCusIns_D1_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)               , intent(in), contiguous    :: array(:)
-        real(RKC)               , intent(in), contiguous    :: pattern(:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)               , intent(in), contiguous    :: array(:)
+        real(RKG)               , intent(in), contiguous    :: pattern(:)
         integer(IK)             , intent(in), contiguous    :: instance(:)
         logical(LK)             , intent(in), optional      :: sorted
         logical(LK)             , intent(in), optional      :: positive
@@ -6964,9 +6964,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocDefComCusIns_D1_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)               , intent(in), contiguous    :: array(:)
-        real(RKC)               , intent(in), contiguous    :: pattern(:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)               , intent(in), contiguous    :: array(:)
+        real(RKG)               , intent(in), contiguous    :: pattern(:)
         integer(IK)             , intent(in), contiguous    :: instance(:)
         logical(LK)             , intent(in), optional      :: sorted
         logical(LK)             , intent(in), optional      :: positive
@@ -6988,9 +6988,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocCusComCusIns_D1_D1_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)        , intent(in), contiguous    :: array(:)
-        character(*,SKC)        , intent(in), contiguous    :: pattern(:)
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)        , intent(in), contiguous    :: array(:)
+        character(*,SKG)        , intent(in), contiguous    :: pattern(:)
         procedure(logical(LK))                              :: iseq
         integer(IK)             , intent(in), contiguous    :: instance(:)
         logical(LK)             , intent(in), optional      :: sorted
@@ -7005,9 +7005,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocCusComCusIns_D1_D1_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)        , intent(in), contiguous    :: array(:)
-        character(*,SKC)        , intent(in), contiguous    :: pattern(:)
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)        , intent(in), contiguous    :: array(:)
+        character(*,SKG)        , intent(in), contiguous    :: pattern(:)
         procedure(logical(LK))                              :: iseq
         integer(IK)             , intent(in), contiguous    :: instance(:)
         logical(LK)             , intent(in), optional      :: sorted
@@ -7022,9 +7022,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocCusComCusIns_D1_D1_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)        , intent(in), contiguous    :: array(:)
-        character(*,SKC)        , intent(in), contiguous    :: pattern(:)
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)        , intent(in), contiguous    :: array(:)
+        character(*,SKG)        , intent(in), contiguous    :: pattern(:)
         procedure(logical(LK))                              :: iseq
         integer(IK)             , intent(in), contiguous    :: instance(:)
         logical(LK)             , intent(in), optional      :: sorted
@@ -7039,9 +7039,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocCusComCusIns_D1_D1_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)        , intent(in), contiguous    :: array(:)
-        character(*,SKC)        , intent(in), contiguous    :: pattern(:)
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)        , intent(in), contiguous    :: array(:)
+        character(*,SKG)        , intent(in), contiguous    :: pattern(:)
         procedure(logical(LK))                              :: iseq
         integer(IK)             , intent(in), contiguous    :: instance(:)
         logical(LK)             , intent(in), optional      :: sorted
@@ -7056,9 +7056,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocCusComCusIns_D1_D1_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)        , intent(in), contiguous    :: array(:)
-        character(*,SKC)        , intent(in), contiguous    :: pattern(:)
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)        , intent(in), contiguous    :: array(:)
+        character(*,SKG)        , intent(in), contiguous    :: pattern(:)
         procedure(logical(LK))                              :: iseq
         integer(IK)             , intent(in), contiguous    :: instance(:)
         logical(LK)             , intent(in), optional      :: sorted
@@ -7075,9 +7075,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocCusComCusIns_D1_D1_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)            , intent(in), contiguous    :: array(:)
-        integer(IKC)            , intent(in), contiguous    :: pattern(:)
+        use pm_kind, only: IKG => IK5
+        integer(IKG)            , intent(in), contiguous    :: array(:)
+        integer(IKG)            , intent(in), contiguous    :: pattern(:)
         procedure(logical(LK))                              :: iseq
         integer(IK)             , intent(in), contiguous    :: instance(:)
         logical(LK)             , intent(in), optional      :: sorted
@@ -7092,9 +7092,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocCusComCusIns_D1_D1_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)            , intent(in), contiguous    :: array(:)
-        integer(IKC)            , intent(in), contiguous    :: pattern(:)
+        use pm_kind, only: IKG => IK4
+        integer(IKG)            , intent(in), contiguous    :: array(:)
+        integer(IKG)            , intent(in), contiguous    :: pattern(:)
         procedure(logical(LK))                              :: iseq
         integer(IK)             , intent(in), contiguous    :: instance(:)
         logical(LK)             , intent(in), optional      :: sorted
@@ -7109,9 +7109,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocCusComCusIns_D1_D1_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)            , intent(in), contiguous    :: array(:)
-        integer(IKC)            , intent(in), contiguous    :: pattern(:)
+        use pm_kind, only: IKG => IK3
+        integer(IKG)            , intent(in), contiguous    :: array(:)
+        integer(IKG)            , intent(in), contiguous    :: pattern(:)
         procedure(logical(LK))                              :: iseq
         integer(IK)             , intent(in), contiguous    :: instance(:)
         logical(LK)             , intent(in), optional      :: sorted
@@ -7126,9 +7126,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocCusComCusIns_D1_D1_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)            , intent(in), contiguous    :: array(:)
-        integer(IKC)            , intent(in), contiguous    :: pattern(:)
+        use pm_kind, only: IKG => IK2
+        integer(IKG)            , intent(in), contiguous    :: array(:)
+        integer(IKG)            , intent(in), contiguous    :: pattern(:)
         procedure(logical(LK))                              :: iseq
         integer(IK)             , intent(in), contiguous    :: instance(:)
         logical(LK)             , intent(in), optional      :: sorted
@@ -7143,9 +7143,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocCusComCusIns_D1_D1_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)            , intent(in), contiguous    :: array(:)
-        integer(IKC)            , intent(in), contiguous    :: pattern(:)
+        use pm_kind, only: IKG => IK1
+        integer(IKG)            , intent(in), contiguous    :: array(:)
+        integer(IKG)            , intent(in), contiguous    :: pattern(:)
         procedure(logical(LK))                              :: iseq
         integer(IK)             , intent(in), contiguous    :: instance(:)
         logical(LK)             , intent(in), optional      :: sorted
@@ -7162,9 +7162,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocCusComCusIns_D1_D1_LK5
 #endif
-        use pm_kind, only: LKC => LK5
-        logical(LKC)            , intent(in), contiguous    :: array(:)
-        logical(LKC)            , intent(in), contiguous    :: pattern(:)
+        use pm_kind, only: LKG => LK5
+        logical(LKG)            , intent(in), contiguous    :: array(:)
+        logical(LKG)            , intent(in), contiguous    :: pattern(:)
         procedure(logical(LK))                              :: iseq
         integer(IK)             , intent(in), contiguous    :: instance(:)
         logical(LK)             , intent(in), optional      :: sorted
@@ -7179,9 +7179,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocCusComCusIns_D1_D1_LK4
 #endif
-        use pm_kind, only: LKC => LK4
-        logical(LKC)            , intent(in), contiguous    :: array(:)
-        logical(LKC)            , intent(in), contiguous    :: pattern(:)
+        use pm_kind, only: LKG => LK4
+        logical(LKG)            , intent(in), contiguous    :: array(:)
+        logical(LKG)            , intent(in), contiguous    :: pattern(:)
         procedure(logical(LK))                              :: iseq
         integer(IK)             , intent(in), contiguous    :: instance(:)
         logical(LK)             , intent(in), optional      :: sorted
@@ -7196,9 +7196,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocCusComCusIns_D1_D1_LK3
 #endif
-        use pm_kind, only: LKC => LK3
-        logical(LKC)            , intent(in), contiguous    :: array(:)
-        logical(LKC)            , intent(in), contiguous    :: pattern(:)
+        use pm_kind, only: LKG => LK3
+        logical(LKG)            , intent(in), contiguous    :: array(:)
+        logical(LKG)            , intent(in), contiguous    :: pattern(:)
         procedure(logical(LK))                              :: iseq
         integer(IK)             , intent(in), contiguous    :: instance(:)
         logical(LK)             , intent(in), optional      :: sorted
@@ -7213,9 +7213,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocCusComCusIns_D1_D1_LK2
 #endif
-        use pm_kind, only: LKC => LK2
-        logical(LKC)            , intent(in), contiguous    :: array(:)
-        logical(LKC)            , intent(in), contiguous    :: pattern(:)
+        use pm_kind, only: LKG => LK2
+        logical(LKG)            , intent(in), contiguous    :: array(:)
+        logical(LKG)            , intent(in), contiguous    :: pattern(:)
         procedure(logical(LK))                              :: iseq
         integer(IK)             , intent(in), contiguous    :: instance(:)
         logical(LK)             , intent(in), optional      :: sorted
@@ -7230,9 +7230,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocCusComCusIns_D1_D1_LK1
 #endif
-        use pm_kind, only: LKC => LK1
-        logical(LKC)            , intent(in), contiguous    :: array(:)
-        logical(LKC)            , intent(in), contiguous    :: pattern(:)
+        use pm_kind, only: LKG => LK1
+        logical(LKG)            , intent(in), contiguous    :: array(:)
+        logical(LKG)            , intent(in), contiguous    :: pattern(:)
         procedure(logical(LK))                              :: iseq
         integer(IK)             , intent(in), contiguous    :: instance(:)
         logical(LK)             , intent(in), optional      :: sorted
@@ -7249,9 +7249,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocCusComCusIns_D1_D1_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)            , intent(in), contiguous    :: array(:)
-        complex(CKC)            , intent(in), contiguous    :: pattern(:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG)            , intent(in), contiguous    :: array(:)
+        complex(CKG)            , intent(in), contiguous    :: pattern(:)
         procedure(logical(LK))                              :: iseq
         integer(IK)             , intent(in), contiguous    :: instance(:)
         logical(LK)             , intent(in), optional      :: sorted
@@ -7266,9 +7266,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocCusComCusIns_D1_D1_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)            , intent(in), contiguous    :: array(:)
-        complex(CKC)            , intent(in), contiguous    :: pattern(:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG)            , intent(in), contiguous    :: array(:)
+        complex(CKG)            , intent(in), contiguous    :: pattern(:)
         procedure(logical(LK))                              :: iseq
         integer(IK)             , intent(in), contiguous    :: instance(:)
         logical(LK)             , intent(in), optional      :: sorted
@@ -7283,9 +7283,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocCusComCusIns_D1_D1_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)            , intent(in), contiguous    :: array(:)
-        complex(CKC)            , intent(in), contiguous    :: pattern(:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG)            , intent(in), contiguous    :: array(:)
+        complex(CKG)            , intent(in), contiguous    :: pattern(:)
         procedure(logical(LK))                              :: iseq
         integer(IK)             , intent(in), contiguous    :: instance(:)
         logical(LK)             , intent(in), optional      :: sorted
@@ -7300,9 +7300,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocCusComCusIns_D1_D1_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)            , intent(in), contiguous    :: array(:)
-        complex(CKC)            , intent(in), contiguous    :: pattern(:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG)            , intent(in), contiguous    :: array(:)
+        complex(CKG)            , intent(in), contiguous    :: pattern(:)
         procedure(logical(LK))                              :: iseq
         integer(IK)             , intent(in), contiguous    :: instance(:)
         logical(LK)             , intent(in), optional      :: sorted
@@ -7317,9 +7317,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocCusComCusIns_D1_D1_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)            , intent(in), contiguous    :: array(:)
-        complex(CKC)            , intent(in), contiguous    :: pattern(:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG)            , intent(in), contiguous    :: array(:)
+        complex(CKG)            , intent(in), contiguous    :: pattern(:)
         procedure(logical(LK))                              :: iseq
         integer(IK)             , intent(in), contiguous    :: instance(:)
         logical(LK)             , intent(in), optional      :: sorted
@@ -7336,9 +7336,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocCusComCusIns_D1_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)               , intent(in), contiguous    :: array(:)
-        real(RKC)               , intent(in), contiguous    :: pattern(:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)               , intent(in), contiguous    :: array(:)
+        real(RKG)               , intent(in), contiguous    :: pattern(:)
         procedure(logical(LK))                              :: iseq
         integer(IK)             , intent(in), contiguous    :: instance(:)
         logical(LK)             , intent(in), optional      :: sorted
@@ -7353,9 +7353,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocCusComCusIns_D1_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)               , intent(in), contiguous    :: array(:)
-        real(RKC)               , intent(in), contiguous    :: pattern(:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)               , intent(in), contiguous    :: array(:)
+        real(RKG)               , intent(in), contiguous    :: pattern(:)
         procedure(logical(LK))                              :: iseq
         integer(IK)             , intent(in), contiguous    :: instance(:)
         logical(LK)             , intent(in), optional      :: sorted
@@ -7370,9 +7370,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocCusComCusIns_D1_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)               , intent(in), contiguous    :: array(:)
-        real(RKC)               , intent(in), contiguous    :: pattern(:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)               , intent(in), contiguous    :: array(:)
+        real(RKG)               , intent(in), contiguous    :: pattern(:)
         procedure(logical(LK))                              :: iseq
         integer(IK)             , intent(in), contiguous    :: instance(:)
         logical(LK)             , intent(in), optional      :: sorted
@@ -7387,9 +7387,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocCusComCusIns_D1_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)               , intent(in), contiguous    :: array(:)
-        real(RKC)               , intent(in), contiguous    :: pattern(:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)               , intent(in), contiguous    :: array(:)
+        real(RKG)               , intent(in), contiguous    :: pattern(:)
         procedure(logical(LK))                              :: iseq
         integer(IK)             , intent(in), contiguous    :: instance(:)
         logical(LK)             , intent(in), optional      :: sorted
@@ -7404,9 +7404,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLocCusComCusIns_D1_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)               , intent(in), contiguous    :: array(:)
-        real(RKC)               , intent(in), contiguous    :: pattern(:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)               , intent(in), contiguous    :: array(:)
+        real(RKG)               , intent(in), contiguous    :: pattern(:)
         procedure(logical(LK))                              :: iseq
         integer(IK)             , intent(in), contiguous    :: instance(:)
         logical(LK)             , intent(in), optional      :: sorted
@@ -7634,9 +7634,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocDefComDefIns_D0_D0_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)        , intent(in)                    :: array
-        character(*,SKC)        , intent(in)                    :: pattern
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)        , intent(in)                    :: array
+        character(*,SKG)        , intent(in)                    :: pattern
         integer(IK)             , intent(in)    , optional      :: blindness
         integer(IK)             , intent(inout) , allocatable   :: loc(:)
         integer(IK)             , intent(out)                   :: nloc
@@ -7648,9 +7648,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocDefComDefIns_D0_D0_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)        , intent(in)                    :: array
-        character(*,SKC)        , intent(in)                    :: pattern
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)        , intent(in)                    :: array
+        character(*,SKG)        , intent(in)                    :: pattern
         integer(IK)             , intent(in)    , optional      :: blindness
         integer(IK)             , intent(inout) , allocatable   :: loc(:)
         integer(IK)             , intent(out)                   :: nloc
@@ -7662,9 +7662,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocDefComDefIns_D0_D0_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)        , intent(in)                    :: array
-        character(*,SKC)        , intent(in)                    :: pattern
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)        , intent(in)                    :: array
+        character(*,SKG)        , intent(in)                    :: pattern
         integer(IK)             , intent(in)    , optional      :: blindness
         integer(IK)             , intent(inout) , allocatable   :: loc(:)
         integer(IK)             , intent(out)                   :: nloc
@@ -7676,9 +7676,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocDefComDefIns_D0_D0_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)        , intent(in)                    :: array
-        character(*,SKC)        , intent(in)                    :: pattern
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)        , intent(in)                    :: array
+        character(*,SKG)        , intent(in)                    :: pattern
         integer(IK)             , intent(in)    , optional      :: blindness
         integer(IK)             , intent(inout) , allocatable   :: loc(:)
         integer(IK)             , intent(out)                   :: nloc
@@ -7690,9 +7690,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocDefComDefIns_D0_D0_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)        , intent(in)                    :: array
-        character(*,SKC)        , intent(in)                    :: pattern
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)        , intent(in)                    :: array
+        character(*,SKG)        , intent(in)                    :: pattern
         integer(IK)             , intent(in)    , optional      :: blindness
         integer(IK)             , intent(inout) , allocatable   :: loc(:)
         integer(IK)             , intent(out)                   :: nloc
@@ -7712,9 +7712,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocCusComDefIns_D0_D0_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)        , intent(in)                    :: array
-        character(*,SKC)        , intent(in)                    :: pattern
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)        , intent(in)                    :: array
+        character(*,SKG)        , intent(in)                    :: pattern
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , optional      :: blindness
         integer(IK)             , intent(inout) , allocatable   :: loc(:)
@@ -7727,9 +7727,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocCusComDefIns_D0_D0_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)        , intent(in)                    :: array
-        character(*,SKC)        , intent(in)                    :: pattern
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)        , intent(in)                    :: array
+        character(*,SKG)        , intent(in)                    :: pattern
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , optional      :: blindness
         integer(IK)             , intent(inout) , allocatable   :: loc(:)
@@ -7742,9 +7742,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocCusComDefIns_D0_D0_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)        , intent(in)                    :: array
-        character(*,SKC)        , intent(in)                    :: pattern
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)        , intent(in)                    :: array
+        character(*,SKG)        , intent(in)                    :: pattern
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , optional      :: blindness
         integer(IK)             , intent(inout) , allocatable   :: loc(:)
@@ -7757,9 +7757,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocCusComDefIns_D0_D0_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)        , intent(in)                    :: array
-        character(*,SKC)        , intent(in)                    :: pattern
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)        , intent(in)                    :: array
+        character(*,SKG)        , intent(in)                    :: pattern
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , optional      :: blindness
         integer(IK)             , intent(inout) , allocatable   :: loc(:)
@@ -7772,9 +7772,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocCusComDefIns_D0_D0_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)        , intent(in)                    :: array
-        character(*,SKC)        , intent(in)                    :: pattern
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)        , intent(in)                    :: array
+        character(*,SKG)        , intent(in)                    :: pattern
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , optional      :: blindness
         integer(IK)             , intent(inout) , allocatable   :: loc(:)
@@ -7795,9 +7795,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocDefComCusIns_D0_D0_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)        , intent(in)                    :: array
-        character(*,SKC)        , intent(in)                    :: pattern
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)        , intent(in)                    :: array
+        character(*,SKG)        , intent(in)                    :: pattern
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)                    :: sorted
         logical(LK)             , intent(in)                    :: positive
@@ -7812,9 +7812,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocDefComCusIns_D0_D0_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)        , intent(in)                    :: array
-        character(*,SKC)        , intent(in)                    :: pattern
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)        , intent(in)                    :: array
+        character(*,SKG)        , intent(in)                    :: pattern
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)                    :: sorted
         logical(LK)             , intent(in)                    :: positive
@@ -7829,9 +7829,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocDefComCusIns_D0_D0_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)        , intent(in)                    :: array
-        character(*,SKC)        , intent(in)                    :: pattern
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)        , intent(in)                    :: array
+        character(*,SKG)        , intent(in)                    :: pattern
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)                    :: sorted
         logical(LK)             , intent(in)                    :: positive
@@ -7846,9 +7846,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocDefComCusIns_D0_D0_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)        , intent(in)                    :: array
-        character(*,SKC)        , intent(in)                    :: pattern
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)        , intent(in)                    :: array
+        character(*,SKG)        , intent(in)                    :: pattern
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)                    :: sorted
         logical(LK)             , intent(in)                    :: positive
@@ -7863,9 +7863,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocDefComCusIns_D0_D0_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)        , intent(in)                    :: array
-        character(*,SKC)        , intent(in)                    :: pattern
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)        , intent(in)                    :: array
+        character(*,SKG)        , intent(in)                    :: pattern
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)                    :: sorted
         logical(LK)             , intent(in)                    :: positive
@@ -7888,9 +7888,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocCusComCusIns_D0_D0_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)        , intent(in)                    :: array
-        character(*,SKC)        , intent(in)                    :: pattern
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)        , intent(in)                    :: array
+        character(*,SKG)        , intent(in)                    :: pattern
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)                    :: sorted
@@ -7906,9 +7906,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocCusComCusIns_D0_D0_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)        , intent(in)                    :: array
-        character(*,SKC)        , intent(in)                    :: pattern
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)        , intent(in)                    :: array
+        character(*,SKG)        , intent(in)                    :: pattern
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)                    :: sorted
@@ -7924,9 +7924,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocCusComCusIns_D0_D0_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)        , intent(in)                    :: array
-        character(*,SKC)        , intent(in)                    :: pattern
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)        , intent(in)                    :: array
+        character(*,SKG)        , intent(in)                    :: pattern
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)                    :: sorted
@@ -7942,9 +7942,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocCusComCusIns_D0_D0_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)        , intent(in)                    :: array
-        character(*,SKC)        , intent(in)                    :: pattern
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)        , intent(in)                    :: array
+        character(*,SKG)        , intent(in)                    :: pattern
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)                    :: sorted
@@ -7960,9 +7960,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocCusComCusIns_D0_D0_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)        , intent(in)                    :: array
-        character(*,SKC)        , intent(in)                    :: pattern
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)        , intent(in)                    :: array
+        character(*,SKG)        , intent(in)                    :: pattern
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)                    :: sorted
@@ -7996,9 +7996,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocDefComDefIns_D1_D0_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)        , intent(in)    , contiguous    :: array(:)
-        character(*,SKC)        , intent(in)                    :: pattern
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)        , intent(in)    , contiguous    :: array(:)
+        character(*,SKG)        , intent(in)                    :: pattern
         integer(IK)             , intent(in)    , optional      :: blindness
         integer(IK)             , intent(inout) , allocatable   :: loc(:)
         integer(IK)             , intent(out)                   :: nloc
@@ -8010,9 +8010,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocDefComDefIns_D1_D0_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)        , intent(in)    , contiguous    :: array(:)
-        character(*,SKC)        , intent(in)                    :: pattern
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)        , intent(in)    , contiguous    :: array(:)
+        character(*,SKG)        , intent(in)                    :: pattern
         integer(IK)             , intent(in)    , optional      :: blindness
         integer(IK)             , intent(inout) , allocatable   :: loc(:)
         integer(IK)             , intent(out)                   :: nloc
@@ -8024,9 +8024,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocDefComDefIns_D1_D0_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)        , intent(in)    , contiguous    :: array(:)
-        character(*,SKC)        , intent(in)                    :: pattern
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)        , intent(in)    , contiguous    :: array(:)
+        character(*,SKG)        , intent(in)                    :: pattern
         integer(IK)             , intent(in)    , optional      :: blindness
         integer(IK)             , intent(inout) , allocatable   :: loc(:)
         integer(IK)             , intent(out)                   :: nloc
@@ -8038,9 +8038,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocDefComDefIns_D1_D0_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)        , intent(in)    , contiguous    :: array(:)
-        character(*,SKC)        , intent(in)                    :: pattern
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)        , intent(in)    , contiguous    :: array(:)
+        character(*,SKG)        , intent(in)                    :: pattern
         integer(IK)             , intent(in)    , optional      :: blindness
         integer(IK)             , intent(inout) , allocatable   :: loc(:)
         integer(IK)             , intent(out)                   :: nloc
@@ -8052,9 +8052,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocDefComDefIns_D1_D0_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)        , intent(in)    , contiguous    :: array(:)
-        character(*,SKC)        , intent(in)                    :: pattern
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)        , intent(in)    , contiguous    :: array(:)
+        character(*,SKG)        , intent(in)                    :: pattern
         integer(IK)             , intent(in)    , optional      :: blindness
         integer(IK)             , intent(inout) , allocatable   :: loc(:)
         integer(IK)             , intent(out)                   :: nloc
@@ -8068,9 +8068,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocDefComDefIns_D1_D0_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)            , intent(in)    , contiguous    :: array(:)
-        integer(IKC)            , intent(in)                    :: pattern
+        use pm_kind, only: IKG => IK5
+        integer(IKG)            , intent(in)    , contiguous    :: array(:)
+        integer(IKG)            , intent(in)                    :: pattern
         integer(IK)             , intent(in)    , optional      :: blindness
         integer(IK)             , intent(inout) , allocatable   :: loc(:)
         integer(IK)             , intent(out)                   :: nloc
@@ -8082,9 +8082,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocDefComDefIns_D1_D0_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)            , intent(in)    , contiguous    :: array(:)
-        integer(IKC)            , intent(in)                    :: pattern
+        use pm_kind, only: IKG => IK4
+        integer(IKG)            , intent(in)    , contiguous    :: array(:)
+        integer(IKG)            , intent(in)                    :: pattern
         integer(IK)             , intent(in)    , optional      :: blindness
         integer(IK)             , intent(inout) , allocatable   :: loc(:)
         integer(IK)             , intent(out)                   :: nloc
@@ -8096,9 +8096,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocDefComDefIns_D1_D0_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)            , intent(in)    , contiguous    :: array(:)
-        integer(IKC)            , intent(in)                    :: pattern
+        use pm_kind, only: IKG => IK3
+        integer(IKG)            , intent(in)    , contiguous    :: array(:)
+        integer(IKG)            , intent(in)                    :: pattern
         integer(IK)             , intent(in)    , optional      :: blindness
         integer(IK)             , intent(inout) , allocatable   :: loc(:)
         integer(IK)             , intent(out)                   :: nloc
@@ -8110,9 +8110,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocDefComDefIns_D1_D0_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)            , intent(in)    , contiguous    :: array(:)
-        integer(IKC)            , intent(in)                    :: pattern
+        use pm_kind, only: IKG => IK2
+        integer(IKG)            , intent(in)    , contiguous    :: array(:)
+        integer(IKG)            , intent(in)                    :: pattern
         integer(IK)             , intent(in)    , optional      :: blindness
         integer(IK)             , intent(inout) , allocatable   :: loc(:)
         integer(IK)             , intent(out)                   :: nloc
@@ -8124,9 +8124,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocDefComDefIns_D1_D0_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)            , intent(in)    , contiguous    :: array(:)
-        integer(IKC)            , intent(in)                    :: pattern
+        use pm_kind, only: IKG => IK1
+        integer(IKG)            , intent(in)    , contiguous    :: array(:)
+        integer(IKG)            , intent(in)                    :: pattern
         integer(IK)             , intent(in)    , optional      :: blindness
         integer(IK)             , intent(inout) , allocatable   :: loc(:)
         integer(IK)             , intent(out)                   :: nloc
@@ -8140,9 +8140,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocDefComDefIns_D1_D0_LK5
 #endif
-        use pm_kind, only: LKC => LK5
-        logical(LKC)            , intent(in)    , contiguous    :: array(:)
-        logical(LKC)            , intent(in)                    :: pattern
+        use pm_kind, only: LKG => LK5
+        logical(LKG)            , intent(in)    , contiguous    :: array(:)
+        logical(LKG)            , intent(in)                    :: pattern
         integer(IK)             , intent(in)    , optional      :: blindness
         integer(IK)             , intent(inout) , allocatable   :: loc(:)
         integer(IK)             , intent(out)                   :: nloc
@@ -8154,9 +8154,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocDefComDefIns_D1_D0_LK4
 #endif
-        use pm_kind, only: LKC => LK4
-        logical(LKC)            , intent(in)    , contiguous    :: array(:)
-        logical(LKC)            , intent(in)                    :: pattern
+        use pm_kind, only: LKG => LK4
+        logical(LKG)            , intent(in)    , contiguous    :: array(:)
+        logical(LKG)            , intent(in)                    :: pattern
         integer(IK)             , intent(in)    , optional      :: blindness
         integer(IK)             , intent(inout) , allocatable   :: loc(:)
         integer(IK)             , intent(out)                   :: nloc
@@ -8168,9 +8168,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocDefComDefIns_D1_D0_LK3
 #endif
-        use pm_kind, only: LKC => LK3
-        logical(LKC)            , intent(in)    , contiguous    :: array(:)
-        logical(LKC)            , intent(in)                    :: pattern
+        use pm_kind, only: LKG => LK3
+        logical(LKG)            , intent(in)    , contiguous    :: array(:)
+        logical(LKG)            , intent(in)                    :: pattern
         integer(IK)             , intent(in)    , optional      :: blindness
         integer(IK)             , intent(inout) , allocatable   :: loc(:)
         integer(IK)             , intent(out)                   :: nloc
@@ -8182,9 +8182,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocDefComDefIns_D1_D0_LK2
 #endif
-        use pm_kind, only: LKC => LK2
-        logical(LKC)            , intent(in)    , contiguous    :: array(:)
-        logical(LKC)            , intent(in)                    :: pattern
+        use pm_kind, only: LKG => LK2
+        logical(LKG)            , intent(in)    , contiguous    :: array(:)
+        logical(LKG)            , intent(in)                    :: pattern
         integer(IK)             , intent(in)    , optional      :: blindness
         integer(IK)             , intent(inout) , allocatable   :: loc(:)
         integer(IK)             , intent(out)                   :: nloc
@@ -8196,9 +8196,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocDefComDefIns_D1_D0_LK1
 #endif
-        use pm_kind, only: LKC => LK1
-        logical(LKC)            , intent(in)    , contiguous    :: array(:)
-        logical(LKC)            , intent(in)                    :: pattern
+        use pm_kind, only: LKG => LK1
+        logical(LKG)            , intent(in)    , contiguous    :: array(:)
+        logical(LKG)            , intent(in)                    :: pattern
         integer(IK)             , intent(in)    , optional      :: blindness
         integer(IK)             , intent(inout) , allocatable   :: loc(:)
         integer(IK)             , intent(out)                   :: nloc
@@ -8212,9 +8212,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocDefComDefIns_D1_D0_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)            , intent(in)    , contiguous    :: array(:)
-        complex(CKC)            , intent(in)                    :: pattern
+        use pm_kind, only: CKG => CK5
+        complex(CKG)            , intent(in)    , contiguous    :: array(:)
+        complex(CKG)            , intent(in)                    :: pattern
         integer(IK)             , intent(in)    , optional      :: blindness
         integer(IK)             , intent(inout) , allocatable   :: loc(:)
         integer(IK)             , intent(out)                   :: nloc
@@ -8226,9 +8226,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocDefComDefIns_D1_D0_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)            , intent(in)    , contiguous    :: array(:)
-        complex(CKC)            , intent(in)                    :: pattern
+        use pm_kind, only: CKG => CK4
+        complex(CKG)            , intent(in)    , contiguous    :: array(:)
+        complex(CKG)            , intent(in)                    :: pattern
         integer(IK)             , intent(in)    , optional      :: blindness
         integer(IK)             , intent(inout) , allocatable   :: loc(:)
         integer(IK)             , intent(out)                   :: nloc
@@ -8240,9 +8240,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocDefComDefIns_D1_D0_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)            , intent(in)    , contiguous    :: array(:)
-        complex(CKC)            , intent(in)                    :: pattern
+        use pm_kind, only: CKG => CK3
+        complex(CKG)            , intent(in)    , contiguous    :: array(:)
+        complex(CKG)            , intent(in)                    :: pattern
         integer(IK)             , intent(in)    , optional      :: blindness
         integer(IK)             , intent(inout) , allocatable   :: loc(:)
         integer(IK)             , intent(out)                   :: nloc
@@ -8254,9 +8254,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocDefComDefIns_D1_D0_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)            , intent(in)    , contiguous    :: array(:)
-        complex(CKC)            , intent(in)                    :: pattern
+        use pm_kind, only: CKG => CK2
+        complex(CKG)            , intent(in)    , contiguous    :: array(:)
+        complex(CKG)            , intent(in)                    :: pattern
         integer(IK)             , intent(in)    , optional      :: blindness
         integer(IK)             , intent(inout) , allocatable   :: loc(:)
         integer(IK)             , intent(out)                   :: nloc
@@ -8268,9 +8268,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocDefComDefIns_D1_D0_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)            , intent(in)    , contiguous    :: array(:)
-        complex(CKC)            , intent(in)                    :: pattern
+        use pm_kind, only: CKG => CK1
+        complex(CKG)            , intent(in)    , contiguous    :: array(:)
+        complex(CKG)            , intent(in)                    :: pattern
         integer(IK)             , intent(in)    , optional      :: blindness
         integer(IK)             , intent(inout) , allocatable   :: loc(:)
         integer(IK)             , intent(out)                   :: nloc
@@ -8284,9 +8284,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocDefComDefIns_D1_D0_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)               , intent(in)    , contiguous    :: array(:)
-        real(RKC)               , intent(in)                    :: pattern
+        use pm_kind, only: RKG => RK5
+        real(RKG)               , intent(in)    , contiguous    :: array(:)
+        real(RKG)               , intent(in)                    :: pattern
         integer(IK)             , intent(in)    , optional      :: blindness
         integer(IK)             , intent(inout) , allocatable   :: loc(:)
         integer(IK)             , intent(out)                   :: nloc
@@ -8298,9 +8298,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocDefComDefIns_D1_D0_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)               , intent(in)    , contiguous    :: array(:)
-        real(RKC)               , intent(in)                    :: pattern
+        use pm_kind, only: RKG => RK4
+        real(RKG)               , intent(in)    , contiguous    :: array(:)
+        real(RKG)               , intent(in)                    :: pattern
         integer(IK)             , intent(in)    , optional      :: blindness
         integer(IK)             , intent(inout) , allocatable   :: loc(:)
         integer(IK)             , intent(out)                   :: nloc
@@ -8312,9 +8312,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocDefComDefIns_D1_D0_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)               , intent(in)    , contiguous    :: array(:)
-        real(RKC)               , intent(in)                    :: pattern
+        use pm_kind, only: RKG => RK3
+        real(RKG)               , intent(in)    , contiguous    :: array(:)
+        real(RKG)               , intent(in)                    :: pattern
         integer(IK)             , intent(in)    , optional      :: blindness
         integer(IK)             , intent(inout) , allocatable   :: loc(:)
         integer(IK)             , intent(out)                   :: nloc
@@ -8326,9 +8326,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocDefComDefIns_D1_D0_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)               , intent(in)    , contiguous    :: array(:)
-        real(RKC)               , intent(in)                    :: pattern
+        use pm_kind, only: RKG => RK2
+        real(RKG)               , intent(in)    , contiguous    :: array(:)
+        real(RKG)               , intent(in)                    :: pattern
         integer(IK)             , intent(in)    , optional      :: blindness
         integer(IK)             , intent(inout) , allocatable   :: loc(:)
         integer(IK)             , intent(out)                   :: nloc
@@ -8340,9 +8340,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocDefComDefIns_D1_D0_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)               , intent(in)    , contiguous    :: array(:)
-        real(RKC)               , intent(in)                    :: pattern
+        use pm_kind, only: RKG => RK1
+        real(RKG)               , intent(in)    , contiguous    :: array(:)
+        real(RKG)               , intent(in)                    :: pattern
         integer(IK)             , intent(in)    , optional      :: blindness
         integer(IK)             , intent(inout) , allocatable   :: loc(:)
         integer(IK)             , intent(out)                   :: nloc
@@ -8362,9 +8362,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocCusComDefIns_D1_D0_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)        , intent(in)    , contiguous    :: array(:)
-        character(*,SKC)        , intent(in)                    :: pattern
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)        , intent(in)    , contiguous    :: array(:)
+        character(*,SKG)        , intent(in)                    :: pattern
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , optional      :: blindness
         integer(IK)             , intent(inout) , allocatable   :: loc(:)
@@ -8377,9 +8377,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocCusComDefIns_D1_D0_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)        , intent(in)    , contiguous    :: array(:)
-        character(*,SKC)        , intent(in)                    :: pattern
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)        , intent(in)    , contiguous    :: array(:)
+        character(*,SKG)        , intent(in)                    :: pattern
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , optional      :: blindness
         integer(IK)             , intent(inout) , allocatable   :: loc(:)
@@ -8392,9 +8392,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocCusComDefIns_D1_D0_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)        , intent(in)    , contiguous    :: array(:)
-        character(*,SKC)        , intent(in)                    :: pattern
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)        , intent(in)    , contiguous    :: array(:)
+        character(*,SKG)        , intent(in)                    :: pattern
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , optional      :: blindness
         integer(IK)             , intent(inout) , allocatable   :: loc(:)
@@ -8407,9 +8407,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocCusComDefIns_D1_D0_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)        , intent(in)    , contiguous    :: array(:)
-        character(*,SKC)        , intent(in)                    :: pattern
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)        , intent(in)    , contiguous    :: array(:)
+        character(*,SKG)        , intent(in)                    :: pattern
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , optional      :: blindness
         integer(IK)             , intent(inout) , allocatable   :: loc(:)
@@ -8422,9 +8422,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocCusComDefIns_D1_D0_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)        , intent(in)    , contiguous    :: array(:)
-        character(*,SKC)        , intent(in)                    :: pattern
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)        , intent(in)    , contiguous    :: array(:)
+        character(*,SKG)        , intent(in)                    :: pattern
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , optional      :: blindness
         integer(IK)             , intent(inout) , allocatable   :: loc(:)
@@ -8439,9 +8439,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocCusComDefIns_D1_D0_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)            , intent(in)    , contiguous    :: array(:)
-        integer(IKC)            , intent(in)                    :: pattern
+        use pm_kind, only: IKG => IK5
+        integer(IKG)            , intent(in)    , contiguous    :: array(:)
+        integer(IKG)            , intent(in)                    :: pattern
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , optional      :: blindness
         integer(IK)             , intent(inout) , allocatable   :: loc(:)
@@ -8454,9 +8454,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocCusComDefIns_D1_D0_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)            , intent(in)    , contiguous    :: array(:)
-        integer(IKC)            , intent(in)                    :: pattern
+        use pm_kind, only: IKG => IK4
+        integer(IKG)            , intent(in)    , contiguous    :: array(:)
+        integer(IKG)            , intent(in)                    :: pattern
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , optional      :: blindness
         integer(IK)             , intent(inout) , allocatable   :: loc(:)
@@ -8469,9 +8469,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocCusComDefIns_D1_D0_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)            , intent(in)    , contiguous    :: array(:)
-        integer(IKC)            , intent(in)                    :: pattern
+        use pm_kind, only: IKG => IK3
+        integer(IKG)            , intent(in)    , contiguous    :: array(:)
+        integer(IKG)            , intent(in)                    :: pattern
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , optional      :: blindness
         integer(IK)             , intent(inout) , allocatable   :: loc(:)
@@ -8484,9 +8484,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocCusComDefIns_D1_D0_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)            , intent(in)    , contiguous    :: array(:)
-        integer(IKC)            , intent(in)                    :: pattern
+        use pm_kind, only: IKG => IK2
+        integer(IKG)            , intent(in)    , contiguous    :: array(:)
+        integer(IKG)            , intent(in)                    :: pattern
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , optional      :: blindness
         integer(IK)             , intent(inout) , allocatable   :: loc(:)
@@ -8499,9 +8499,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocCusComDefIns_D1_D0_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)            , intent(in)    , contiguous    :: array(:)
-        integer(IKC)            , intent(in)                    :: pattern
+        use pm_kind, only: IKG => IK1
+        integer(IKG)            , intent(in)    , contiguous    :: array(:)
+        integer(IKG)            , intent(in)                    :: pattern
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , optional      :: blindness
         integer(IK)             , intent(inout) , allocatable   :: loc(:)
@@ -8516,9 +8516,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocCusComDefIns_D1_D0_LK5
 #endif
-        use pm_kind, only: LKC => LK5
-        logical(LKC)            , intent(in)    , contiguous    :: array(:)
-        logical(LKC)            , intent(in)                    :: pattern
+        use pm_kind, only: LKG => LK5
+        logical(LKG)            , intent(in)    , contiguous    :: array(:)
+        logical(LKG)            , intent(in)                    :: pattern
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , optional      :: blindness
         integer(IK)             , intent(inout) , allocatable   :: loc(:)
@@ -8531,9 +8531,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocCusComDefIns_D1_D0_LK4
 #endif
-        use pm_kind, only: LKC => LK4
-        logical(LKC)            , intent(in)    , contiguous    :: array(:)
-        logical(LKC)            , intent(in)                    :: pattern
+        use pm_kind, only: LKG => LK4
+        logical(LKG)            , intent(in)    , contiguous    :: array(:)
+        logical(LKG)            , intent(in)                    :: pattern
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , optional      :: blindness
         integer(IK)             , intent(inout) , allocatable   :: loc(:)
@@ -8546,9 +8546,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocCusComDefIns_D1_D0_LK3
 #endif
-        use pm_kind, only: LKC => LK3
-        logical(LKC)            , intent(in)    , contiguous    :: array(:)
-        logical(LKC)            , intent(in)                    :: pattern
+        use pm_kind, only: LKG => LK3
+        logical(LKG)            , intent(in)    , contiguous    :: array(:)
+        logical(LKG)            , intent(in)                    :: pattern
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , optional      :: blindness
         integer(IK)             , intent(inout) , allocatable   :: loc(:)
@@ -8561,9 +8561,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocCusComDefIns_D1_D0_LK2
 #endif
-        use pm_kind, only: LKC => LK2
-        logical(LKC)            , intent(in)    , contiguous    :: array(:)
-        logical(LKC)            , intent(in)                    :: pattern
+        use pm_kind, only: LKG => LK2
+        logical(LKG)            , intent(in)    , contiguous    :: array(:)
+        logical(LKG)            , intent(in)                    :: pattern
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , optional      :: blindness
         integer(IK)             , intent(inout) , allocatable   :: loc(:)
@@ -8576,9 +8576,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocCusComDefIns_D1_D0_LK1
 #endif
-        use pm_kind, only: LKC => LK1
-        logical(LKC)            , intent(in)    , contiguous    :: array(:)
-        logical(LKC)            , intent(in)                    :: pattern
+        use pm_kind, only: LKG => LK1
+        logical(LKG)            , intent(in)    , contiguous    :: array(:)
+        logical(LKG)            , intent(in)                    :: pattern
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , optional      :: blindness
         integer(IK)             , intent(inout) , allocatable   :: loc(:)
@@ -8593,9 +8593,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocCusComDefIns_D1_D0_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)            , intent(in)    , contiguous    :: array(:)
-        complex(CKC)            , intent(in)                    :: pattern
+        use pm_kind, only: CKG => CK5
+        complex(CKG)            , intent(in)    , contiguous    :: array(:)
+        complex(CKG)            , intent(in)                    :: pattern
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , optional      :: blindness
         integer(IK)             , intent(inout) , allocatable   :: loc(:)
@@ -8608,9 +8608,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocCusComDefIns_D1_D0_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)            , intent(in)    , contiguous    :: array(:)
-        complex(CKC)            , intent(in)                    :: pattern
+        use pm_kind, only: CKG => CK4
+        complex(CKG)            , intent(in)    , contiguous    :: array(:)
+        complex(CKG)            , intent(in)                    :: pattern
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , optional      :: blindness
         integer(IK)             , intent(inout) , allocatable   :: loc(:)
@@ -8623,9 +8623,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocCusComDefIns_D1_D0_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)            , intent(in)    , contiguous    :: array(:)
-        complex(CKC)            , intent(in)                    :: pattern
+        use pm_kind, only: CKG => CK3
+        complex(CKG)            , intent(in)    , contiguous    :: array(:)
+        complex(CKG)            , intent(in)                    :: pattern
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , optional      :: blindness
         integer(IK)             , intent(inout) , allocatable   :: loc(:)
@@ -8638,9 +8638,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocCusComDefIns_D1_D0_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)            , intent(in)    , contiguous    :: array(:)
-        complex(CKC)            , intent(in)                    :: pattern
+        use pm_kind, only: CKG => CK2
+        complex(CKG)            , intent(in)    , contiguous    :: array(:)
+        complex(CKG)            , intent(in)                    :: pattern
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , optional      :: blindness
         integer(IK)             , intent(inout) , allocatable   :: loc(:)
@@ -8653,9 +8653,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocCusComDefIns_D1_D0_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)            , intent(in)    , contiguous    :: array(:)
-        complex(CKC)            , intent(in)                    :: pattern
+        use pm_kind, only: CKG => CK1
+        complex(CKG)            , intent(in)    , contiguous    :: array(:)
+        complex(CKG)            , intent(in)                    :: pattern
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , optional      :: blindness
         integer(IK)             , intent(inout) , allocatable   :: loc(:)
@@ -8670,9 +8670,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocCusComDefIns_D1_D0_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)               , intent(in)    , contiguous    :: array(:)
-        real(RKC)               , intent(in)                    :: pattern
+        use pm_kind, only: RKG => RK5
+        real(RKG)               , intent(in)    , contiguous    :: array(:)
+        real(RKG)               , intent(in)                    :: pattern
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , optional      :: blindness
         integer(IK)             , intent(inout) , allocatable   :: loc(:)
@@ -8685,9 +8685,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocCusComDefIns_D1_D0_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)               , intent(in)    , contiguous    :: array(:)
-        real(RKC)               , intent(in)                    :: pattern
+        use pm_kind, only: RKG => RK4
+        real(RKG)               , intent(in)    , contiguous    :: array(:)
+        real(RKG)               , intent(in)                    :: pattern
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , optional      :: blindness
         integer(IK)             , intent(inout) , allocatable   :: loc(:)
@@ -8700,9 +8700,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocCusComDefIns_D1_D0_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)               , intent(in)    , contiguous    :: array(:)
-        real(RKC)               , intent(in)                    :: pattern
+        use pm_kind, only: RKG => RK3
+        real(RKG)               , intent(in)    , contiguous    :: array(:)
+        real(RKG)               , intent(in)                    :: pattern
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , optional      :: blindness
         integer(IK)             , intent(inout) , allocatable   :: loc(:)
@@ -8715,9 +8715,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocCusComDefIns_D1_D0_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)               , intent(in)    , contiguous    :: array(:)
-        real(RKC)               , intent(in)                    :: pattern
+        use pm_kind, only: RKG => RK2
+        real(RKG)               , intent(in)    , contiguous    :: array(:)
+        real(RKG)               , intent(in)                    :: pattern
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , optional      :: blindness
         integer(IK)             , intent(inout) , allocatable   :: loc(:)
@@ -8730,9 +8730,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocCusComDefIns_D1_D0_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)               , intent(in)    , contiguous    :: array(:)
-        real(RKC)               , intent(in)                    :: pattern
+        use pm_kind, only: RKG => RK1
+        real(RKG)               , intent(in)    , contiguous    :: array(:)
+        real(RKG)               , intent(in)                    :: pattern
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , optional      :: blindness
         integer(IK)             , intent(inout) , allocatable   :: loc(:)
@@ -8753,9 +8753,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocDefComCusIns_D1_D0_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)        , intent(in)    , contiguous    :: array(:)
-        character(*,SKC)        , intent(in)                    :: pattern
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)        , intent(in)    , contiguous    :: array(:)
+        character(*,SKG)        , intent(in)                    :: pattern
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)                    :: sorted
         logical(LK)             , intent(in)                    :: positive
@@ -8770,9 +8770,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocDefComCusIns_D1_D0_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)        , intent(in)    , contiguous    :: array(:)
-        character(*,SKC)        , intent(in)                    :: pattern
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)        , intent(in)    , contiguous    :: array(:)
+        character(*,SKG)        , intent(in)                    :: pattern
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)                    :: sorted
         logical(LK)             , intent(in)                    :: positive
@@ -8787,9 +8787,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocDefComCusIns_D1_D0_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)        , intent(in)    , contiguous    :: array(:)
-        character(*,SKC)        , intent(in)                    :: pattern
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)        , intent(in)    , contiguous    :: array(:)
+        character(*,SKG)        , intent(in)                    :: pattern
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)                    :: sorted
         logical(LK)             , intent(in)                    :: positive
@@ -8804,9 +8804,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocDefComCusIns_D1_D0_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)        , intent(in)    , contiguous    :: array(:)
-        character(*,SKC)        , intent(in)                    :: pattern
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)        , intent(in)    , contiguous    :: array(:)
+        character(*,SKG)        , intent(in)                    :: pattern
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)                    :: sorted
         logical(LK)             , intent(in)                    :: positive
@@ -8821,9 +8821,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocDefComCusIns_D1_D0_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)        , intent(in)    , contiguous    :: array(:)
-        character(*,SKC)        , intent(in)                    :: pattern
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)        , intent(in)    , contiguous    :: array(:)
+        character(*,SKG)        , intent(in)                    :: pattern
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)                    :: sorted
         logical(LK)             , intent(in)                    :: positive
@@ -8840,9 +8840,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocDefComCusIns_D1_D0_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)            , intent(in)    , contiguous    :: array(:)
-        integer(IKC)            , intent(in)                    :: pattern
+        use pm_kind, only: IKG => IK5
+        integer(IKG)            , intent(in)    , contiguous    :: array(:)
+        integer(IKG)            , intent(in)                    :: pattern
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)                    :: sorted
         logical(LK)             , intent(in)                    :: positive
@@ -8857,9 +8857,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocDefComCusIns_D1_D0_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)            , intent(in)    , contiguous    :: array(:)
-        integer(IKC)            , intent(in)                    :: pattern
+        use pm_kind, only: IKG => IK4
+        integer(IKG)            , intent(in)    , contiguous    :: array(:)
+        integer(IKG)            , intent(in)                    :: pattern
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)                    :: sorted
         logical(LK)             , intent(in)                    :: positive
@@ -8874,9 +8874,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocDefComCusIns_D1_D0_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)            , intent(in)    , contiguous    :: array(:)
-        integer(IKC)            , intent(in)                    :: pattern
+        use pm_kind, only: IKG => IK3
+        integer(IKG)            , intent(in)    , contiguous    :: array(:)
+        integer(IKG)            , intent(in)                    :: pattern
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)                    :: sorted
         logical(LK)             , intent(in)                    :: positive
@@ -8891,9 +8891,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocDefComCusIns_D1_D0_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)            , intent(in)    , contiguous    :: array(:)
-        integer(IKC)            , intent(in)                    :: pattern
+        use pm_kind, only: IKG => IK2
+        integer(IKG)            , intent(in)    , contiguous    :: array(:)
+        integer(IKG)            , intent(in)                    :: pattern
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)                    :: sorted
         logical(LK)             , intent(in)                    :: positive
@@ -8908,9 +8908,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocDefComCusIns_D1_D0_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)            , intent(in)    , contiguous    :: array(:)
-        integer(IKC)            , intent(in)                    :: pattern
+        use pm_kind, only: IKG => IK1
+        integer(IKG)            , intent(in)    , contiguous    :: array(:)
+        integer(IKG)            , intent(in)                    :: pattern
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)                    :: sorted
         logical(LK)             , intent(in)                    :: positive
@@ -8927,9 +8927,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocDefComCusIns_D1_D0_LK5
 #endif
-        use pm_kind, only: LKC => LK5
-        logical(LKC)            , intent(in)    , contiguous    :: array(:)
-        logical(LKC)            , intent(in)                    :: pattern
+        use pm_kind, only: LKG => LK5
+        logical(LKG)            , intent(in)    , contiguous    :: array(:)
+        logical(LKG)            , intent(in)                    :: pattern
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)                    :: sorted
         logical(LK)             , intent(in)                    :: positive
@@ -8944,9 +8944,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocDefComCusIns_D1_D0_LK4
 #endif
-        use pm_kind, only: LKC => LK4
-        logical(LKC)            , intent(in)    , contiguous    :: array(:)
-        logical(LKC)            , intent(in)                    :: pattern
+        use pm_kind, only: LKG => LK4
+        logical(LKG)            , intent(in)    , contiguous    :: array(:)
+        logical(LKG)            , intent(in)                    :: pattern
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)                    :: sorted
         logical(LK)             , intent(in)                    :: positive
@@ -8961,9 +8961,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocDefComCusIns_D1_D0_LK3
 #endif
-        use pm_kind, only: LKC => LK3
-        logical(LKC)            , intent(in)    , contiguous    :: array(:)
-        logical(LKC)            , intent(in)                    :: pattern
+        use pm_kind, only: LKG => LK3
+        logical(LKG)            , intent(in)    , contiguous    :: array(:)
+        logical(LKG)            , intent(in)                    :: pattern
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)                    :: sorted
         logical(LK)             , intent(in)                    :: positive
@@ -8978,9 +8978,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocDefComCusIns_D1_D0_LK2
 #endif
-        use pm_kind, only: LKC => LK2
-        logical(LKC)            , intent(in)    , contiguous    :: array(:)
-        logical(LKC)            , intent(in)                    :: pattern
+        use pm_kind, only: LKG => LK2
+        logical(LKG)            , intent(in)    , contiguous    :: array(:)
+        logical(LKG)            , intent(in)                    :: pattern
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)                    :: sorted
         logical(LK)             , intent(in)                    :: positive
@@ -8995,9 +8995,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocDefComCusIns_D1_D0_LK1
 #endif
-        use pm_kind, only: LKC => LK1
-        logical(LKC)            , intent(in)    , contiguous    :: array(:)
-        logical(LKC)            , intent(in)                    :: pattern
+        use pm_kind, only: LKG => LK1
+        logical(LKG)            , intent(in)    , contiguous    :: array(:)
+        logical(LKG)            , intent(in)                    :: pattern
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)                    :: sorted
         logical(LK)             , intent(in)                    :: positive
@@ -9014,9 +9014,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocDefComCusIns_D1_D0_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)            , intent(in)    , contiguous    :: array(:)
-        complex(CKC)            , intent(in)                    :: pattern
+        use pm_kind, only: CKG => CK5
+        complex(CKG)            , intent(in)    , contiguous    :: array(:)
+        complex(CKG)            , intent(in)                    :: pattern
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)                    :: sorted
         logical(LK)             , intent(in)                    :: positive
@@ -9031,9 +9031,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocDefComCusIns_D1_D0_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)            , intent(in)    , contiguous    :: array(:)
-        complex(CKC)            , intent(in)                    :: pattern
+        use pm_kind, only: CKG => CK4
+        complex(CKG)            , intent(in)    , contiguous    :: array(:)
+        complex(CKG)            , intent(in)                    :: pattern
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)                    :: sorted
         logical(LK)             , intent(in)                    :: positive
@@ -9048,9 +9048,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocDefComCusIns_D1_D0_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)            , intent(in)    , contiguous    :: array(:)
-        complex(CKC)            , intent(in)                    :: pattern
+        use pm_kind, only: CKG => CK3
+        complex(CKG)            , intent(in)    , contiguous    :: array(:)
+        complex(CKG)            , intent(in)                    :: pattern
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)                    :: sorted
         logical(LK)             , intent(in)                    :: positive
@@ -9065,9 +9065,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocDefComCusIns_D1_D0_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)            , intent(in)    , contiguous    :: array(:)
-        complex(CKC)            , intent(in)                    :: pattern
+        use pm_kind, only: CKG => CK2
+        complex(CKG)            , intent(in)    , contiguous    :: array(:)
+        complex(CKG)            , intent(in)                    :: pattern
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)                    :: sorted
         logical(LK)             , intent(in)                    :: positive
@@ -9082,9 +9082,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocDefComCusIns_D1_D0_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)            , intent(in)    , contiguous    :: array(:)
-        complex(CKC)            , intent(in)                    :: pattern
+        use pm_kind, only: CKG => CK1
+        complex(CKG)            , intent(in)    , contiguous    :: array(:)
+        complex(CKG)            , intent(in)                    :: pattern
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)                    :: sorted
         logical(LK)             , intent(in)                    :: positive
@@ -9101,9 +9101,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocDefComCusIns_D1_D0_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)               , intent(in)    , contiguous    :: array(:)
-        real(RKC)               , intent(in)                    :: pattern
+        use pm_kind, only: RKG => RK5
+        real(RKG)               , intent(in)    , contiguous    :: array(:)
+        real(RKG)               , intent(in)                    :: pattern
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)                    :: sorted
         logical(LK)             , intent(in)                    :: positive
@@ -9118,9 +9118,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocDefComCusIns_D1_D0_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)               , intent(in)    , contiguous    :: array(:)
-        real(RKC)               , intent(in)                    :: pattern
+        use pm_kind, only: RKG => RK4
+        real(RKG)               , intent(in)    , contiguous    :: array(:)
+        real(RKG)               , intent(in)                    :: pattern
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)                    :: sorted
         logical(LK)             , intent(in)                    :: positive
@@ -9135,9 +9135,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocDefComCusIns_D1_D0_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)               , intent(in)    , contiguous    :: array(:)
-        real(RKC)               , intent(in)                    :: pattern
+        use pm_kind, only: RKG => RK3
+        real(RKG)               , intent(in)    , contiguous    :: array(:)
+        real(RKG)               , intent(in)                    :: pattern
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)                    :: sorted
         logical(LK)             , intent(in)                    :: positive
@@ -9152,9 +9152,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocDefComCusIns_D1_D0_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)               , intent(in)    , contiguous    :: array(:)
-        real(RKC)               , intent(in)                    :: pattern
+        use pm_kind, only: RKG => RK2
+        real(RKG)               , intent(in)    , contiguous    :: array(:)
+        real(RKG)               , intent(in)                    :: pattern
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)                    :: sorted
         logical(LK)             , intent(in)                    :: positive
@@ -9169,9 +9169,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocDefComCusIns_D1_D0_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)               , intent(in)    , contiguous    :: array(:)
-        real(RKC)               , intent(in)                    :: pattern
+        use pm_kind, only: RKG => RK1
+        real(RKG)               , intent(in)    , contiguous    :: array(:)
+        real(RKG)               , intent(in)                    :: pattern
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)                    :: sorted
         logical(LK)             , intent(in)                    :: positive
@@ -9194,9 +9194,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocCusComCusIns_D1_D0_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)        , intent(in)    , contiguous    :: array(:)
-        character(*,SKC)        , intent(in)                    :: pattern
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)        , intent(in)    , contiguous    :: array(:)
+        character(*,SKG)        , intent(in)                    :: pattern
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)                    :: sorted
@@ -9212,9 +9212,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocCusComCusIns_D1_D0_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)        , intent(in)    , contiguous    :: array(:)
-        character(*,SKC)        , intent(in)                    :: pattern
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)        , intent(in)    , contiguous    :: array(:)
+        character(*,SKG)        , intent(in)                    :: pattern
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)                    :: sorted
@@ -9230,9 +9230,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocCusComCusIns_D1_D0_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)        , intent(in)    , contiguous    :: array(:)
-        character(*,SKC)        , intent(in)                    :: pattern
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)        , intent(in)    , contiguous    :: array(:)
+        character(*,SKG)        , intent(in)                    :: pattern
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)                    :: sorted
@@ -9248,9 +9248,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocCusComCusIns_D1_D0_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)        , intent(in)    , contiguous    :: array(:)
-        character(*,SKC)        , intent(in)                    :: pattern
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)        , intent(in)    , contiguous    :: array(:)
+        character(*,SKG)        , intent(in)                    :: pattern
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)                    :: sorted
@@ -9266,9 +9266,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocCusComCusIns_D1_D0_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)        , intent(in)    , contiguous    :: array(:)
-        character(*,SKC)        , intent(in)                    :: pattern
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)        , intent(in)    , contiguous    :: array(:)
+        character(*,SKG)        , intent(in)                    :: pattern
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)                    :: sorted
@@ -9286,9 +9286,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocCusComCusIns_D1_D0_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)            , intent(in)    , contiguous    :: array(:)
-        integer(IKC)            , intent(in)                    :: pattern
+        use pm_kind, only: IKG => IK5
+        integer(IKG)            , intent(in)    , contiguous    :: array(:)
+        integer(IKG)            , intent(in)                    :: pattern
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)                    :: sorted
@@ -9304,9 +9304,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocCusComCusIns_D1_D0_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)            , intent(in)    , contiguous    :: array(:)
-        integer(IKC)            , intent(in)                    :: pattern
+        use pm_kind, only: IKG => IK4
+        integer(IKG)            , intent(in)    , contiguous    :: array(:)
+        integer(IKG)            , intent(in)                    :: pattern
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)                    :: sorted
@@ -9322,9 +9322,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocCusComCusIns_D1_D0_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)            , intent(in)    , contiguous    :: array(:)
-        integer(IKC)            , intent(in)                    :: pattern
+        use pm_kind, only: IKG => IK3
+        integer(IKG)            , intent(in)    , contiguous    :: array(:)
+        integer(IKG)            , intent(in)                    :: pattern
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)                    :: sorted
@@ -9340,9 +9340,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocCusComCusIns_D1_D0_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)            , intent(in)    , contiguous    :: array(:)
-        integer(IKC)            , intent(in)                    :: pattern
+        use pm_kind, only: IKG => IK2
+        integer(IKG)            , intent(in)    , contiguous    :: array(:)
+        integer(IKG)            , intent(in)                    :: pattern
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)                    :: sorted
@@ -9358,9 +9358,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocCusComCusIns_D1_D0_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)            , intent(in)    , contiguous    :: array(:)
-        integer(IKC)            , intent(in)                    :: pattern
+        use pm_kind, only: IKG => IK1
+        integer(IKG)            , intent(in)    , contiguous    :: array(:)
+        integer(IKG)            , intent(in)                    :: pattern
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)                    :: sorted
@@ -9378,9 +9378,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocCusComCusIns_D1_D0_LK5
 #endif
-        use pm_kind, only: LKC => LK5
-        logical(LKC)            , intent(in)    , contiguous    :: array(:)
-        logical(LKC)            , intent(in)                    :: pattern
+        use pm_kind, only: LKG => LK5
+        logical(LKG)            , intent(in)    , contiguous    :: array(:)
+        logical(LKG)            , intent(in)                    :: pattern
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)                    :: sorted
@@ -9396,9 +9396,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocCusComCusIns_D1_D0_LK4
 #endif
-        use pm_kind, only: LKC => LK4
-        logical(LKC)            , intent(in)    , contiguous    :: array(:)
-        logical(LKC)            , intent(in)                    :: pattern
+        use pm_kind, only: LKG => LK4
+        logical(LKG)            , intent(in)    , contiguous    :: array(:)
+        logical(LKG)            , intent(in)                    :: pattern
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)                    :: sorted
@@ -9414,9 +9414,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocCusComCusIns_D1_D0_LK3
 #endif
-        use pm_kind, only: LKC => LK3
-        logical(LKC)            , intent(in)    , contiguous    :: array(:)
-        logical(LKC)            , intent(in)                    :: pattern
+        use pm_kind, only: LKG => LK3
+        logical(LKG)            , intent(in)    , contiguous    :: array(:)
+        logical(LKG)            , intent(in)                    :: pattern
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)                    :: sorted
@@ -9432,9 +9432,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocCusComCusIns_D1_D0_LK2
 #endif
-        use pm_kind, only: LKC => LK2
-        logical(LKC)            , intent(in)    , contiguous    :: array(:)
-        logical(LKC)            , intent(in)                    :: pattern
+        use pm_kind, only: LKG => LK2
+        logical(LKG)            , intent(in)    , contiguous    :: array(:)
+        logical(LKG)            , intent(in)                    :: pattern
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)                    :: sorted
@@ -9450,9 +9450,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocCusComCusIns_D1_D0_LK1
 #endif
-        use pm_kind, only: LKC => LK1
-        logical(LKC)            , intent(in)    , contiguous    :: array(:)
-        logical(LKC)            , intent(in)                    :: pattern
+        use pm_kind, only: LKG => LK1
+        logical(LKG)            , intent(in)    , contiguous    :: array(:)
+        logical(LKG)            , intent(in)                    :: pattern
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)                    :: sorted
@@ -9470,9 +9470,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocCusComCusIns_D1_D0_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)            , intent(in)    , contiguous    :: array(:)
-        complex(CKC)            , intent(in)                    :: pattern
+        use pm_kind, only: CKG => CK5
+        complex(CKG)            , intent(in)    , contiguous    :: array(:)
+        complex(CKG)            , intent(in)                    :: pattern
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)                    :: sorted
@@ -9488,9 +9488,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocCusComCusIns_D1_D0_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)            , intent(in)    , contiguous    :: array(:)
-        complex(CKC)            , intent(in)                    :: pattern
+        use pm_kind, only: CKG => CK4
+        complex(CKG)            , intent(in)    , contiguous    :: array(:)
+        complex(CKG)            , intent(in)                    :: pattern
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)                    :: sorted
@@ -9506,9 +9506,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocCusComCusIns_D1_D0_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)            , intent(in)    , contiguous    :: array(:)
-        complex(CKC)            , intent(in)                    :: pattern
+        use pm_kind, only: CKG => CK3
+        complex(CKG)            , intent(in)    , contiguous    :: array(:)
+        complex(CKG)            , intent(in)                    :: pattern
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)                    :: sorted
@@ -9524,9 +9524,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocCusComCusIns_D1_D0_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)            , intent(in)    , contiguous    :: array(:)
-        complex(CKC)            , intent(in)                    :: pattern
+        use pm_kind, only: CKG => CK2
+        complex(CKG)            , intent(in)    , contiguous    :: array(:)
+        complex(CKG)            , intent(in)                    :: pattern
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)                    :: sorted
@@ -9542,9 +9542,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocCusComCusIns_D1_D0_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)            , intent(in)    , contiguous    :: array(:)
-        complex(CKC)            , intent(in)                    :: pattern
+        use pm_kind, only: CKG => CK1
+        complex(CKG)            , intent(in)    , contiguous    :: array(:)
+        complex(CKG)            , intent(in)                    :: pattern
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)                    :: sorted
@@ -9562,9 +9562,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocCusComCusIns_D1_D0_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)               , intent(in)    , contiguous    :: array(:)
-        real(RKC)               , intent(in)                    :: pattern
+        use pm_kind, only: RKG => RK5
+        real(RKG)               , intent(in)    , contiguous    :: array(:)
+        real(RKG)               , intent(in)                    :: pattern
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)                    :: sorted
@@ -9580,9 +9580,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocCusComCusIns_D1_D0_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)               , intent(in)    , contiguous    :: array(:)
-        real(RKC)               , intent(in)                    :: pattern
+        use pm_kind, only: RKG => RK4
+        real(RKG)               , intent(in)    , contiguous    :: array(:)
+        real(RKG)               , intent(in)                    :: pattern
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)                    :: sorted
@@ -9598,9 +9598,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocCusComCusIns_D1_D0_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)               , intent(in)    , contiguous    :: array(:)
-        real(RKC)               , intent(in)                    :: pattern
+        use pm_kind, only: RKG => RK3
+        real(RKG)               , intent(in)    , contiguous    :: array(:)
+        real(RKG)               , intent(in)                    :: pattern
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)                    :: sorted
@@ -9616,9 +9616,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocCusComCusIns_D1_D0_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)               , intent(in)    , contiguous    :: array(:)
-        real(RKC)               , intent(in)                    :: pattern
+        use pm_kind, only: RKG => RK2
+        real(RKG)               , intent(in)    , contiguous    :: array(:)
+        real(RKG)               , intent(in)                    :: pattern
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)                    :: sorted
@@ -9634,9 +9634,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocCusComCusIns_D1_D0_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)               , intent(in)    , contiguous    :: array(:)
-        real(RKC)               , intent(in)                    :: pattern
+        use pm_kind, only: RKG => RK1
+        real(RKG)               , intent(in)    , contiguous    :: array(:)
+        real(RKG)               , intent(in)                    :: pattern
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)                    :: sorted
@@ -9670,9 +9670,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocDefComDefIns_D1_D1_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)        , intent(in)    , contiguous    :: array(:)
-        character(*,SKC)        , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)        , intent(in)    , contiguous    :: array(:)
+        character(*,SKG)        , intent(in)    , contiguous    :: pattern(:)
         integer(IK)             , intent(in)    , optional      :: blindness
         integer(IK)             , intent(inout) , allocatable   :: loc(:)
         integer(IK)             , intent(out)                   :: nloc
@@ -9684,9 +9684,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocDefComDefIns_D1_D1_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)        , intent(in)    , contiguous    :: array(:)
-        character(*,SKC)        , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)        , intent(in)    , contiguous    :: array(:)
+        character(*,SKG)        , intent(in)    , contiguous    :: pattern(:)
         integer(IK)             , intent(in)    , optional      :: blindness
         integer(IK)             , intent(inout) , allocatable   :: loc(:)
         integer(IK)             , intent(out)                   :: nloc
@@ -9698,9 +9698,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocDefComDefIns_D1_D1_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)        , intent(in)    , contiguous    :: array(:)
-        character(*,SKC)        , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)        , intent(in)    , contiguous    :: array(:)
+        character(*,SKG)        , intent(in)    , contiguous    :: pattern(:)
         integer(IK)             , intent(in)    , optional      :: blindness
         integer(IK)             , intent(inout) , allocatable   :: loc(:)
         integer(IK)             , intent(out)                   :: nloc
@@ -9712,9 +9712,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocDefComDefIns_D1_D1_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)        , intent(in)    , contiguous    :: array(:)
-        character(*,SKC)        , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)        , intent(in)    , contiguous    :: array(:)
+        character(*,SKG)        , intent(in)    , contiguous    :: pattern(:)
         integer(IK)             , intent(in)    , optional      :: blindness
         integer(IK)             , intent(inout) , allocatable   :: loc(:)
         integer(IK)             , intent(out)                   :: nloc
@@ -9726,9 +9726,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocDefComDefIns_D1_D1_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)        , intent(in)    , contiguous    :: array(:)
-        character(*,SKC)        , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)        , intent(in)    , contiguous    :: array(:)
+        character(*,SKG)        , intent(in)    , contiguous    :: pattern(:)
         integer(IK)             , intent(in)    , optional      :: blindness
         integer(IK)             , intent(inout) , allocatable   :: loc(:)
         integer(IK)             , intent(out)                   :: nloc
@@ -9742,9 +9742,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocDefComDefIns_D1_D1_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)            , intent(in)    , contiguous    :: array(:)
-        integer(IKC)            , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: IKG => IK5
+        integer(IKG)            , intent(in)    , contiguous    :: array(:)
+        integer(IKG)            , intent(in)    , contiguous    :: pattern(:)
         integer(IK)             , intent(in)    , optional      :: blindness
         integer(IK)             , intent(inout) , allocatable   :: loc(:)
         integer(IK)             , intent(out)                   :: nloc
@@ -9756,9 +9756,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocDefComDefIns_D1_D1_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)            , intent(in)    , contiguous    :: array(:)
-        integer(IKC)            , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: IKG => IK4
+        integer(IKG)            , intent(in)    , contiguous    :: array(:)
+        integer(IKG)            , intent(in)    , contiguous    :: pattern(:)
         integer(IK)             , intent(in)    , optional      :: blindness
         integer(IK)             , intent(inout) , allocatable   :: loc(:)
         integer(IK)             , intent(out)                   :: nloc
@@ -9770,9 +9770,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocDefComDefIns_D1_D1_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)            , intent(in)    , contiguous    :: array(:)
-        integer(IKC)            , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: IKG => IK3
+        integer(IKG)            , intent(in)    , contiguous    :: array(:)
+        integer(IKG)            , intent(in)    , contiguous    :: pattern(:)
         integer(IK)             , intent(in)    , optional      :: blindness
         integer(IK)             , intent(inout) , allocatable   :: loc(:)
         integer(IK)             , intent(out)                   :: nloc
@@ -9784,9 +9784,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocDefComDefIns_D1_D1_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)            , intent(in)    , contiguous    :: array(:)
-        integer(IKC)            , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: IKG => IK2
+        integer(IKG)            , intent(in)    , contiguous    :: array(:)
+        integer(IKG)            , intent(in)    , contiguous    :: pattern(:)
         integer(IK)             , intent(in)    , optional      :: blindness
         integer(IK)             , intent(inout) , allocatable   :: loc(:)
         integer(IK)             , intent(out)                   :: nloc
@@ -9798,9 +9798,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocDefComDefIns_D1_D1_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)            , intent(in)    , contiguous    :: array(:)
-        integer(IKC)            , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: IKG => IK1
+        integer(IKG)            , intent(in)    , contiguous    :: array(:)
+        integer(IKG)            , intent(in)    , contiguous    :: pattern(:)
         integer(IK)             , intent(in)    , optional      :: blindness
         integer(IK)             , intent(inout) , allocatable   :: loc(:)
         integer(IK)             , intent(out)                   :: nloc
@@ -9814,9 +9814,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocDefComDefIns_D1_D1_LK5
 #endif
-        use pm_kind, only: LKC => LK5
-        logical(LKC)            , intent(in)    , contiguous    :: array(:)
-        logical(LKC)            , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: LKG => LK5
+        logical(LKG)            , intent(in)    , contiguous    :: array(:)
+        logical(LKG)            , intent(in)    , contiguous    :: pattern(:)
         integer(IK)             , intent(in)    , optional      :: blindness
         integer(IK)             , intent(inout) , allocatable   :: loc(:)
         integer(IK)             , intent(out)                   :: nloc
@@ -9828,9 +9828,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocDefComDefIns_D1_D1_LK4
 #endif
-        use pm_kind, only: LKC => LK4
-        logical(LKC)            , intent(in)    , contiguous    :: array(:)
-        logical(LKC)            , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: LKG => LK4
+        logical(LKG)            , intent(in)    , contiguous    :: array(:)
+        logical(LKG)            , intent(in)    , contiguous    :: pattern(:)
         integer(IK)             , intent(in)    , optional      :: blindness
         integer(IK)             , intent(inout) , allocatable   :: loc(:)
         integer(IK)             , intent(out)                   :: nloc
@@ -9842,9 +9842,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocDefComDefIns_D1_D1_LK3
 #endif
-        use pm_kind, only: LKC => LK3
-        logical(LKC)            , intent(in)    , contiguous    :: array(:)
-        logical(LKC)            , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: LKG => LK3
+        logical(LKG)            , intent(in)    , contiguous    :: array(:)
+        logical(LKG)            , intent(in)    , contiguous    :: pattern(:)
         integer(IK)             , intent(in)    , optional      :: blindness
         integer(IK)             , intent(inout) , allocatable   :: loc(:)
         integer(IK)             , intent(out)                   :: nloc
@@ -9856,9 +9856,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocDefComDefIns_D1_D1_LK2
 #endif
-        use pm_kind, only: LKC => LK2
-        logical(LKC)            , intent(in)    , contiguous    :: array(:)
-        logical(LKC)            , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: LKG => LK2
+        logical(LKG)            , intent(in)    , contiguous    :: array(:)
+        logical(LKG)            , intent(in)    , contiguous    :: pattern(:)
         integer(IK)             , intent(in)    , optional      :: blindness
         integer(IK)             , intent(inout) , allocatable   :: loc(:)
         integer(IK)             , intent(out)                   :: nloc
@@ -9870,9 +9870,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocDefComDefIns_D1_D1_LK1
 #endif
-        use pm_kind, only: LKC => LK1
-        logical(LKC)            , intent(in)    , contiguous    :: array(:)
-        logical(LKC)            , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: LKG => LK1
+        logical(LKG)            , intent(in)    , contiguous    :: array(:)
+        logical(LKG)            , intent(in)    , contiguous    :: pattern(:)
         integer(IK)             , intent(in)    , optional      :: blindness
         integer(IK)             , intent(inout) , allocatable   :: loc(:)
         integer(IK)             , intent(out)                   :: nloc
@@ -9886,9 +9886,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocDefComDefIns_D1_D1_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)            , intent(in)    , contiguous    :: array(:)
-        complex(CKC)            , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG)            , intent(in)    , contiguous    :: array(:)
+        complex(CKG)            , intent(in)    , contiguous    :: pattern(:)
         integer(IK)             , intent(in)    , optional      :: blindness
         integer(IK)             , intent(inout) , allocatable   :: loc(:)
         integer(IK)             , intent(out)                   :: nloc
@@ -9900,9 +9900,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocDefComDefIns_D1_D1_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)            , intent(in)    , contiguous    :: array(:)
-        complex(CKC)            , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG)            , intent(in)    , contiguous    :: array(:)
+        complex(CKG)            , intent(in)    , contiguous    :: pattern(:)
         integer(IK)             , intent(in)    , optional      :: blindness
         integer(IK)             , intent(inout) , allocatable   :: loc(:)
         integer(IK)             , intent(out)                   :: nloc
@@ -9914,9 +9914,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocDefComDefIns_D1_D1_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)            , intent(in)    , contiguous    :: array(:)
-        complex(CKC)            , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG)            , intent(in)    , contiguous    :: array(:)
+        complex(CKG)            , intent(in)    , contiguous    :: pattern(:)
         integer(IK)             , intent(in)    , optional      :: blindness
         integer(IK)             , intent(inout) , allocatable   :: loc(:)
         integer(IK)             , intent(out)                   :: nloc
@@ -9928,9 +9928,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocDefComDefIns_D1_D1_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)            , intent(in)    , contiguous    :: array(:)
-        complex(CKC)            , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG)            , intent(in)    , contiguous    :: array(:)
+        complex(CKG)            , intent(in)    , contiguous    :: pattern(:)
         integer(IK)             , intent(in)    , optional      :: blindness
         integer(IK)             , intent(inout) , allocatable   :: loc(:)
         integer(IK)             , intent(out)                   :: nloc
@@ -9942,9 +9942,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocDefComDefIns_D1_D1_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)            , intent(in)    , contiguous    :: array(:)
-        complex(CKC)            , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG)            , intent(in)    , contiguous    :: array(:)
+        complex(CKG)            , intent(in)    , contiguous    :: pattern(:)
         integer(IK)             , intent(in)    , optional      :: blindness
         integer(IK)             , intent(inout) , allocatable   :: loc(:)
         integer(IK)             , intent(out)                   :: nloc
@@ -9958,9 +9958,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocDefComDefIns_D1_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)               , intent(in)    , contiguous    :: array(:)
-        real(RKC)               , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)               , intent(in)    , contiguous    :: array(:)
+        real(RKG)               , intent(in)    , contiguous    :: pattern(:)
         integer(IK)             , intent(in)    , optional      :: blindness
         integer(IK)             , intent(inout) , allocatable   :: loc(:)
         integer(IK)             , intent(out)                   :: nloc
@@ -9972,9 +9972,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocDefComDefIns_D1_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)               , intent(in)    , contiguous    :: array(:)
-        real(RKC)               , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)               , intent(in)    , contiguous    :: array(:)
+        real(RKG)               , intent(in)    , contiguous    :: pattern(:)
         integer(IK)             , intent(in)    , optional      :: blindness
         integer(IK)             , intent(inout) , allocatable   :: loc(:)
         integer(IK)             , intent(out)                   :: nloc
@@ -9986,9 +9986,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocDefComDefIns_D1_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)               , intent(in)    , contiguous    :: array(:)
-        real(RKC)               , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)               , intent(in)    , contiguous    :: array(:)
+        real(RKG)               , intent(in)    , contiguous    :: pattern(:)
         integer(IK)             , intent(in)    , optional      :: blindness
         integer(IK)             , intent(inout) , allocatable   :: loc(:)
         integer(IK)             , intent(out)                   :: nloc
@@ -10000,9 +10000,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocDefComDefIns_D1_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)               , intent(in)    , contiguous    :: array(:)
-        real(RKC)               , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)               , intent(in)    , contiguous    :: array(:)
+        real(RKG)               , intent(in)    , contiguous    :: pattern(:)
         integer(IK)             , intent(in)    , optional      :: blindness
         integer(IK)             , intent(inout) , allocatable   :: loc(:)
         integer(IK)             , intent(out)                   :: nloc
@@ -10014,9 +10014,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocDefComDefIns_D1_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)               , intent(in)    , contiguous    :: array(:)
-        real(RKC)               , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)               , intent(in)    , contiguous    :: array(:)
+        real(RKG)               , intent(in)    , contiguous    :: pattern(:)
         integer(IK)             , intent(in)    , optional      :: blindness
         integer(IK)             , intent(inout) , allocatable   :: loc(:)
         integer(IK)             , intent(out)                   :: nloc
@@ -10036,9 +10036,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocCusComDefIns_D1_D1_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)        , intent(in)    , contiguous    :: array(:)
-        character(*,SKC)        , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)        , intent(in)    , contiguous    :: array(:)
+        character(*,SKG)        , intent(in)    , contiguous    :: pattern(:)
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , optional      :: blindness
         integer(IK)             , intent(inout) , allocatable   :: loc(:)
@@ -10051,9 +10051,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocCusComDefIns_D1_D1_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)        , intent(in)    , contiguous    :: array(:)
-        character(*,SKC)        , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)        , intent(in)    , contiguous    :: array(:)
+        character(*,SKG)        , intent(in)    , contiguous    :: pattern(:)
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , optional      :: blindness
         integer(IK)             , intent(inout) , allocatable   :: loc(:)
@@ -10066,9 +10066,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocCusComDefIns_D1_D1_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)        , intent(in)    , contiguous    :: array(:)
-        character(*,SKC)        , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)        , intent(in)    , contiguous    :: array(:)
+        character(*,SKG)        , intent(in)    , contiguous    :: pattern(:)
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , optional      :: blindness
         integer(IK)             , intent(inout) , allocatable   :: loc(:)
@@ -10081,9 +10081,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocCusComDefIns_D1_D1_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)        , intent(in)    , contiguous    :: array(:)
-        character(*,SKC)        , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)        , intent(in)    , contiguous    :: array(:)
+        character(*,SKG)        , intent(in)    , contiguous    :: pattern(:)
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , optional      :: blindness
         integer(IK)             , intent(inout) , allocatable   :: loc(:)
@@ -10096,9 +10096,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocCusComDefIns_D1_D1_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)        , intent(in)    , contiguous    :: array(:)
-        character(*,SKC)        , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)        , intent(in)    , contiguous    :: array(:)
+        character(*,SKG)        , intent(in)    , contiguous    :: pattern(:)
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , optional      :: blindness
         integer(IK)             , intent(inout) , allocatable   :: loc(:)
@@ -10113,9 +10113,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocCusComDefIns_D1_D1_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)            , intent(in)    , contiguous    :: array(:)
-        integer(IKC)            , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: IKG => IK5
+        integer(IKG)            , intent(in)    , contiguous    :: array(:)
+        integer(IKG)            , intent(in)    , contiguous    :: pattern(:)
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , optional      :: blindness
         integer(IK)             , intent(inout) , allocatable   :: loc(:)
@@ -10128,9 +10128,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocCusComDefIns_D1_D1_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)            , intent(in)    , contiguous    :: array(:)
-        integer(IKC)            , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: IKG => IK4
+        integer(IKG)            , intent(in)    , contiguous    :: array(:)
+        integer(IKG)            , intent(in)    , contiguous    :: pattern(:)
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , optional      :: blindness
         integer(IK)             , intent(inout) , allocatable   :: loc(:)
@@ -10143,9 +10143,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocCusComDefIns_D1_D1_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)            , intent(in)    , contiguous    :: array(:)
-        integer(IKC)            , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: IKG => IK3
+        integer(IKG)            , intent(in)    , contiguous    :: array(:)
+        integer(IKG)            , intent(in)    , contiguous    :: pattern(:)
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , optional      :: blindness
         integer(IK)             , intent(inout) , allocatable   :: loc(:)
@@ -10158,9 +10158,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocCusComDefIns_D1_D1_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)            , intent(in)    , contiguous    :: array(:)
-        integer(IKC)            , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: IKG => IK2
+        integer(IKG)            , intent(in)    , contiguous    :: array(:)
+        integer(IKG)            , intent(in)    , contiguous    :: pattern(:)
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , optional      :: blindness
         integer(IK)             , intent(inout) , allocatable   :: loc(:)
@@ -10173,9 +10173,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocCusComDefIns_D1_D1_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)            , intent(in)    , contiguous    :: array(:)
-        integer(IKC)            , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: IKG => IK1
+        integer(IKG)            , intent(in)    , contiguous    :: array(:)
+        integer(IKG)            , intent(in)    , contiguous    :: pattern(:)
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , optional      :: blindness
         integer(IK)             , intent(inout) , allocatable   :: loc(:)
@@ -10190,9 +10190,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocCusComDefIns_D1_D1_LK5
 #endif
-        use pm_kind, only: LKC => LK5
-        logical(LKC)            , intent(in)    , contiguous    :: array(:)
-        logical(LKC)            , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: LKG => LK5
+        logical(LKG)            , intent(in)    , contiguous    :: array(:)
+        logical(LKG)            , intent(in)    , contiguous    :: pattern(:)
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , optional      :: blindness
         integer(IK)             , intent(inout) , allocatable   :: loc(:)
@@ -10205,9 +10205,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocCusComDefIns_D1_D1_LK4
 #endif
-        use pm_kind, only: LKC => LK4
-        logical(LKC)            , intent(in)    , contiguous    :: array(:)
-        logical(LKC)            , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: LKG => LK4
+        logical(LKG)            , intent(in)    , contiguous    :: array(:)
+        logical(LKG)            , intent(in)    , contiguous    :: pattern(:)
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , optional      :: blindness
         integer(IK)             , intent(inout) , allocatable   :: loc(:)
@@ -10220,9 +10220,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocCusComDefIns_D1_D1_LK3
 #endif
-        use pm_kind, only: LKC => LK3
-        logical(LKC)            , intent(in)    , contiguous    :: array(:)
-        logical(LKC)            , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: LKG => LK3
+        logical(LKG)            , intent(in)    , contiguous    :: array(:)
+        logical(LKG)            , intent(in)    , contiguous    :: pattern(:)
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , optional      :: blindness
         integer(IK)             , intent(inout) , allocatable   :: loc(:)
@@ -10235,9 +10235,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocCusComDefIns_D1_D1_LK2
 #endif
-        use pm_kind, only: LKC => LK2
-        logical(LKC)            , intent(in)    , contiguous    :: array(:)
-        logical(LKC)            , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: LKG => LK2
+        logical(LKG)            , intent(in)    , contiguous    :: array(:)
+        logical(LKG)            , intent(in)    , contiguous    :: pattern(:)
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , optional      :: blindness
         integer(IK)             , intent(inout) , allocatable   :: loc(:)
@@ -10250,9 +10250,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocCusComDefIns_D1_D1_LK1
 #endif
-        use pm_kind, only: LKC => LK1
-        logical(LKC)            , intent(in)    , contiguous    :: array(:)
-        logical(LKC)            , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: LKG => LK1
+        logical(LKG)            , intent(in)    , contiguous    :: array(:)
+        logical(LKG)            , intent(in)    , contiguous    :: pattern(:)
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , optional      :: blindness
         integer(IK)             , intent(inout) , allocatable   :: loc(:)
@@ -10267,9 +10267,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocCusComDefIns_D1_D1_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)            , intent(in)    , contiguous    :: array(:)
-        complex(CKC)            , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG)            , intent(in)    , contiguous    :: array(:)
+        complex(CKG)            , intent(in)    , contiguous    :: pattern(:)
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , optional      :: blindness
         integer(IK)             , intent(inout) , allocatable   :: loc(:)
@@ -10282,9 +10282,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocCusComDefIns_D1_D1_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)            , intent(in)    , contiguous    :: array(:)
-        complex(CKC)            , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG)            , intent(in)    , contiguous    :: array(:)
+        complex(CKG)            , intent(in)    , contiguous    :: pattern(:)
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , optional      :: blindness
         integer(IK)             , intent(inout) , allocatable   :: loc(:)
@@ -10297,9 +10297,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocCusComDefIns_D1_D1_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)            , intent(in)    , contiguous    :: array(:)
-        complex(CKC)            , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG)            , intent(in)    , contiguous    :: array(:)
+        complex(CKG)            , intent(in)    , contiguous    :: pattern(:)
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , optional      :: blindness
         integer(IK)             , intent(inout) , allocatable   :: loc(:)
@@ -10312,9 +10312,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocCusComDefIns_D1_D1_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)            , intent(in)    , contiguous    :: array(:)
-        complex(CKC)            , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG)            , intent(in)    , contiguous    :: array(:)
+        complex(CKG)            , intent(in)    , contiguous    :: pattern(:)
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , optional      :: blindness
         integer(IK)             , intent(inout) , allocatable   :: loc(:)
@@ -10327,9 +10327,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocCusComDefIns_D1_D1_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)            , intent(in)    , contiguous    :: array(:)
-        complex(CKC)            , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG)            , intent(in)    , contiguous    :: array(:)
+        complex(CKG)            , intent(in)    , contiguous    :: pattern(:)
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , optional      :: blindness
         integer(IK)             , intent(inout) , allocatable   :: loc(:)
@@ -10344,9 +10344,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocCusComDefIns_D1_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)               , intent(in)    , contiguous    :: array(:)
-        real(RKC)               , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)               , intent(in)    , contiguous    :: array(:)
+        real(RKG)               , intent(in)    , contiguous    :: pattern(:)
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , optional      :: blindness
         integer(IK)             , intent(inout) , allocatable   :: loc(:)
@@ -10359,9 +10359,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocCusComDefIns_D1_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)               , intent(in)    , contiguous    :: array(:)
-        real(RKC)               , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)               , intent(in)    , contiguous    :: array(:)
+        real(RKG)               , intent(in)    , contiguous    :: pattern(:)
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , optional      :: blindness
         integer(IK)             , intent(inout) , allocatable   :: loc(:)
@@ -10374,9 +10374,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocCusComDefIns_D1_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)               , intent(in)    , contiguous    :: array(:)
-        real(RKC)               , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)               , intent(in)    , contiguous    :: array(:)
+        real(RKG)               , intent(in)    , contiguous    :: pattern(:)
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , optional      :: blindness
         integer(IK)             , intent(inout) , allocatable   :: loc(:)
@@ -10389,9 +10389,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocCusComDefIns_D1_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)               , intent(in)    , contiguous    :: array(:)
-        real(RKC)               , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)               , intent(in)    , contiguous    :: array(:)
+        real(RKG)               , intent(in)    , contiguous    :: pattern(:)
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , optional      :: blindness
         integer(IK)             , intent(inout) , allocatable   :: loc(:)
@@ -10404,9 +10404,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocCusComDefIns_D1_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)               , intent(in)    , contiguous    :: array(:)
-        real(RKC)               , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)               , intent(in)    , contiguous    :: array(:)
+        real(RKG)               , intent(in)    , contiguous    :: pattern(:)
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , optional      :: blindness
         integer(IK)             , intent(inout) , allocatable   :: loc(:)
@@ -10427,9 +10427,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocDefComCusIns_D1_D1_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)        , intent(in)    , contiguous    :: array(:)
-        character(*,SKC)        , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)        , intent(in)    , contiguous    :: array(:)
+        character(*,SKG)        , intent(in)    , contiguous    :: pattern(:)
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)                    :: sorted
         logical(LK)             , intent(in)                    :: positive
@@ -10444,9 +10444,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocDefComCusIns_D1_D1_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)        , intent(in)    , contiguous    :: array(:)
-        character(*,SKC)        , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)        , intent(in)    , contiguous    :: array(:)
+        character(*,SKG)        , intent(in)    , contiguous    :: pattern(:)
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)                    :: sorted
         logical(LK)             , intent(in)                    :: positive
@@ -10461,9 +10461,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocDefComCusIns_D1_D1_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)        , intent(in)    , contiguous    :: array(:)
-        character(*,SKC)        , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)        , intent(in)    , contiguous    :: array(:)
+        character(*,SKG)        , intent(in)    , contiguous    :: pattern(:)
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)                    :: sorted
         logical(LK)             , intent(in)                    :: positive
@@ -10478,9 +10478,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocDefComCusIns_D1_D1_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)        , intent(in)    , contiguous    :: array(:)
-        character(*,SKC)        , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)        , intent(in)    , contiguous    :: array(:)
+        character(*,SKG)        , intent(in)    , contiguous    :: pattern(:)
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)                    :: sorted
         logical(LK)             , intent(in)                    :: positive
@@ -10495,9 +10495,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocDefComCusIns_D1_D1_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)        , intent(in)    , contiguous    :: array(:)
-        character(*,SKC)        , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)        , intent(in)    , contiguous    :: array(:)
+        character(*,SKG)        , intent(in)    , contiguous    :: pattern(:)
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)                    :: sorted
         logical(LK)             , intent(in)                    :: positive
@@ -10514,9 +10514,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocDefComCusIns_D1_D1_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)            , intent(in)    , contiguous    :: array(:)
-        integer(IKC)            , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: IKG => IK5
+        integer(IKG)            , intent(in)    , contiguous    :: array(:)
+        integer(IKG)            , intent(in)    , contiguous    :: pattern(:)
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)                    :: sorted
         logical(LK)             , intent(in)                    :: positive
@@ -10531,9 +10531,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocDefComCusIns_D1_D1_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)            , intent(in)    , contiguous    :: array(:)
-        integer(IKC)            , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: IKG => IK4
+        integer(IKG)            , intent(in)    , contiguous    :: array(:)
+        integer(IKG)            , intent(in)    , contiguous    :: pattern(:)
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)                    :: sorted
         logical(LK)             , intent(in)                    :: positive
@@ -10548,9 +10548,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocDefComCusIns_D1_D1_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)            , intent(in)    , contiguous    :: array(:)
-        integer(IKC)            , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: IKG => IK3
+        integer(IKG)            , intent(in)    , contiguous    :: array(:)
+        integer(IKG)            , intent(in)    , contiguous    :: pattern(:)
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)                    :: sorted
         logical(LK)             , intent(in)                    :: positive
@@ -10565,9 +10565,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocDefComCusIns_D1_D1_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)            , intent(in)    , contiguous    :: array(:)
-        integer(IKC)            , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: IKG => IK2
+        integer(IKG)            , intent(in)    , contiguous    :: array(:)
+        integer(IKG)            , intent(in)    , contiguous    :: pattern(:)
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)                    :: sorted
         logical(LK)             , intent(in)                    :: positive
@@ -10582,9 +10582,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocDefComCusIns_D1_D1_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)            , intent(in)    , contiguous    :: array(:)
-        integer(IKC)            , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: IKG => IK1
+        integer(IKG)            , intent(in)    , contiguous    :: array(:)
+        integer(IKG)            , intent(in)    , contiguous    :: pattern(:)
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)                    :: sorted
         logical(LK)             , intent(in)                    :: positive
@@ -10601,9 +10601,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocDefComCusIns_D1_D1_LK5
 #endif
-        use pm_kind, only: LKC => LK5
-        logical(LKC)            , intent(in)    , contiguous    :: array(:)
-        logical(LKC)            , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: LKG => LK5
+        logical(LKG)            , intent(in)    , contiguous    :: array(:)
+        logical(LKG)            , intent(in)    , contiguous    :: pattern(:)
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)                    :: sorted
         logical(LK)             , intent(in)                    :: positive
@@ -10618,9 +10618,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocDefComCusIns_D1_D1_LK4
 #endif
-        use pm_kind, only: LKC => LK4
-        logical(LKC)            , intent(in)    , contiguous    :: array(:)
-        logical(LKC)            , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: LKG => LK4
+        logical(LKG)            , intent(in)    , contiguous    :: array(:)
+        logical(LKG)            , intent(in)    , contiguous    :: pattern(:)
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)                    :: sorted
         logical(LK)             , intent(in)                    :: positive
@@ -10635,9 +10635,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocDefComCusIns_D1_D1_LK3
 #endif
-        use pm_kind, only: LKC => LK3
-        logical(LKC)            , intent(in)    , contiguous    :: array(:)
-        logical(LKC)            , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: LKG => LK3
+        logical(LKG)            , intent(in)    , contiguous    :: array(:)
+        logical(LKG)            , intent(in)    , contiguous    :: pattern(:)
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)                    :: sorted
         logical(LK)             , intent(in)                    :: positive
@@ -10652,9 +10652,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocDefComCusIns_D1_D1_LK2
 #endif
-        use pm_kind, only: LKC => LK2
-        logical(LKC)            , intent(in)    , contiguous    :: array(:)
-        logical(LKC)            , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: LKG => LK2
+        logical(LKG)            , intent(in)    , contiguous    :: array(:)
+        logical(LKG)            , intent(in)    , contiguous    :: pattern(:)
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)                    :: sorted
         logical(LK)             , intent(in)                    :: positive
@@ -10669,9 +10669,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocDefComCusIns_D1_D1_LK1
 #endif
-        use pm_kind, only: LKC => LK1
-        logical(LKC)            , intent(in)    , contiguous    :: array(:)
-        logical(LKC)            , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: LKG => LK1
+        logical(LKG)            , intent(in)    , contiguous    :: array(:)
+        logical(LKG)            , intent(in)    , contiguous    :: pattern(:)
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)                    :: sorted
         logical(LK)             , intent(in)                    :: positive
@@ -10688,9 +10688,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocDefComCusIns_D1_D1_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)            , intent(in)    , contiguous    :: array(:)
-        complex(CKC)            , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG)            , intent(in)    , contiguous    :: array(:)
+        complex(CKG)            , intent(in)    , contiguous    :: pattern(:)
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)                    :: sorted
         logical(LK)             , intent(in)                    :: positive
@@ -10705,9 +10705,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocDefComCusIns_D1_D1_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)            , intent(in)    , contiguous    :: array(:)
-        complex(CKC)            , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG)            , intent(in)    , contiguous    :: array(:)
+        complex(CKG)            , intent(in)    , contiguous    :: pattern(:)
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)                    :: sorted
         logical(LK)             , intent(in)                    :: positive
@@ -10722,9 +10722,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocDefComCusIns_D1_D1_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)            , intent(in)    , contiguous    :: array(:)
-        complex(CKC)            , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG)            , intent(in)    , contiguous    :: array(:)
+        complex(CKG)            , intent(in)    , contiguous    :: pattern(:)
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)                    :: sorted
         logical(LK)             , intent(in)                    :: positive
@@ -10739,9 +10739,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocDefComCusIns_D1_D1_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)            , intent(in)    , contiguous    :: array(:)
-        complex(CKC)            , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG)            , intent(in)    , contiguous    :: array(:)
+        complex(CKG)            , intent(in)    , contiguous    :: pattern(:)
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)                    :: sorted
         logical(LK)             , intent(in)                    :: positive
@@ -10756,9 +10756,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocDefComCusIns_D1_D1_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)            , intent(in)    , contiguous    :: array(:)
-        complex(CKC)            , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG)            , intent(in)    , contiguous    :: array(:)
+        complex(CKG)            , intent(in)    , contiguous    :: pattern(:)
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)                    :: sorted
         logical(LK)             , intent(in)                    :: positive
@@ -10775,9 +10775,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocDefComCusIns_D1_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)               , intent(in)    , contiguous    :: array(:)
-        real(RKC)               , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)               , intent(in)    , contiguous    :: array(:)
+        real(RKG)               , intent(in)    , contiguous    :: pattern(:)
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)                    :: sorted
         logical(LK)             , intent(in)                    :: positive
@@ -10792,9 +10792,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocDefComCusIns_D1_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)               , intent(in)    , contiguous    :: array(:)
-        real(RKC)               , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)               , intent(in)    , contiguous    :: array(:)
+        real(RKG)               , intent(in)    , contiguous    :: pattern(:)
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)                    :: sorted
         logical(LK)             , intent(in)                    :: positive
@@ -10809,9 +10809,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocDefComCusIns_D1_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)               , intent(in)    , contiguous    :: array(:)
-        real(RKC)               , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)               , intent(in)    , contiguous    :: array(:)
+        real(RKG)               , intent(in)    , contiguous    :: pattern(:)
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)                    :: sorted
         logical(LK)             , intent(in)                    :: positive
@@ -10826,9 +10826,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocDefComCusIns_D1_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)               , intent(in)    , contiguous    :: array(:)
-        real(RKC)               , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)               , intent(in)    , contiguous    :: array(:)
+        real(RKG)               , intent(in)    , contiguous    :: pattern(:)
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)                    :: sorted
         logical(LK)             , intent(in)                    :: positive
@@ -10843,9 +10843,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocDefComCusIns_D1_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)               , intent(in)    , contiguous    :: array(:)
-        real(RKC)               , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)               , intent(in)    , contiguous    :: array(:)
+        real(RKG)               , intent(in)    , contiguous    :: pattern(:)
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)                    :: sorted
         logical(LK)             , intent(in)                    :: positive
@@ -10868,9 +10868,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocCusComCusIns_D1_D1_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)        , intent(in)    , contiguous    :: array(:)
-        character(*,SKC)        , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)        , intent(in)    , contiguous    :: array(:)
+        character(*,SKG)        , intent(in)    , contiguous    :: pattern(:)
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)                    :: sorted
@@ -10886,9 +10886,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocCusComCusIns_D1_D1_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)        , intent(in)    , contiguous    :: array(:)
-        character(*,SKC)        , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)        , intent(in)    , contiguous    :: array(:)
+        character(*,SKG)        , intent(in)    , contiguous    :: pattern(:)
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)                    :: sorted
@@ -10904,9 +10904,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocCusComCusIns_D1_D1_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)        , intent(in)    , contiguous    :: array(:)
-        character(*,SKC)        , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)        , intent(in)    , contiguous    :: array(:)
+        character(*,SKG)        , intent(in)    , contiguous    :: pattern(:)
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)                    :: sorted
@@ -10922,9 +10922,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocCusComCusIns_D1_D1_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)        , intent(in)    , contiguous    :: array(:)
-        character(*,SKC)        , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)        , intent(in)    , contiguous    :: array(:)
+        character(*,SKG)        , intent(in)    , contiguous    :: pattern(:)
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)                    :: sorted
@@ -10940,9 +10940,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocCusComCusIns_D1_D1_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)        , intent(in)    , contiguous    :: array(:)
-        character(*,SKC)        , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)        , intent(in)    , contiguous    :: array(:)
+        character(*,SKG)        , intent(in)    , contiguous    :: pattern(:)
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)                    :: sorted
@@ -10960,9 +10960,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocCusComCusIns_D1_D1_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)            , intent(in)    , contiguous    :: array(:)
-        integer(IKC)            , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: IKG => IK5
+        integer(IKG)            , intent(in)    , contiguous    :: array(:)
+        integer(IKG)            , intent(in)    , contiguous    :: pattern(:)
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)                    :: sorted
@@ -10978,9 +10978,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocCusComCusIns_D1_D1_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)            , intent(in)    , contiguous    :: array(:)
-        integer(IKC)            , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: IKG => IK4
+        integer(IKG)            , intent(in)    , contiguous    :: array(:)
+        integer(IKG)            , intent(in)    , contiguous    :: pattern(:)
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)                    :: sorted
@@ -10996,9 +10996,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocCusComCusIns_D1_D1_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)            , intent(in)    , contiguous    :: array(:)
-        integer(IKC)            , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: IKG => IK3
+        integer(IKG)            , intent(in)    , contiguous    :: array(:)
+        integer(IKG)            , intent(in)    , contiguous    :: pattern(:)
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)                    :: sorted
@@ -11014,9 +11014,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocCusComCusIns_D1_D1_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)            , intent(in)    , contiguous    :: array(:)
-        integer(IKC)            , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: IKG => IK2
+        integer(IKG)            , intent(in)    , contiguous    :: array(:)
+        integer(IKG)            , intent(in)    , contiguous    :: pattern(:)
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)                    :: sorted
@@ -11032,9 +11032,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocCusComCusIns_D1_D1_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)            , intent(in)    , contiguous    :: array(:)
-        integer(IKC)            , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: IKG => IK1
+        integer(IKG)            , intent(in)    , contiguous    :: array(:)
+        integer(IKG)            , intent(in)    , contiguous    :: pattern(:)
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)                    :: sorted
@@ -11052,9 +11052,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocCusComCusIns_D1_D1_LK5
 #endif
-        use pm_kind, only: LKC => LK5
-        logical(LKC)            , intent(in)    , contiguous    :: array(:)
-        logical(LKC)            , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: LKG => LK5
+        logical(LKG)            , intent(in)    , contiguous    :: array(:)
+        logical(LKG)            , intent(in)    , contiguous    :: pattern(:)
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)                    :: sorted
@@ -11070,9 +11070,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocCusComCusIns_D1_D1_LK4
 #endif
-        use pm_kind, only: LKC => LK4
-        logical(LKC)            , intent(in)    , contiguous    :: array(:)
-        logical(LKC)            , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: LKG => LK4
+        logical(LKG)            , intent(in)    , contiguous    :: array(:)
+        logical(LKG)            , intent(in)    , contiguous    :: pattern(:)
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)                    :: sorted
@@ -11088,9 +11088,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocCusComCusIns_D1_D1_LK3
 #endif
-        use pm_kind, only: LKC => LK3
-        logical(LKC)            , intent(in)    , contiguous    :: array(:)
-        logical(LKC)            , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: LKG => LK3
+        logical(LKG)            , intent(in)    , contiguous    :: array(:)
+        logical(LKG)            , intent(in)    , contiguous    :: pattern(:)
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)                    :: sorted
@@ -11106,9 +11106,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocCusComCusIns_D1_D1_LK2
 #endif
-        use pm_kind, only: LKC => LK2
-        logical(LKC)            , intent(in)    , contiguous    :: array(:)
-        logical(LKC)            , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: LKG => LK2
+        logical(LKG)            , intent(in)    , contiguous    :: array(:)
+        logical(LKG)            , intent(in)    , contiguous    :: pattern(:)
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)                    :: sorted
@@ -11124,9 +11124,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocCusComCusIns_D1_D1_LK1
 #endif
-        use pm_kind, only: LKC => LK1
-        logical(LKC)            , intent(in)    , contiguous    :: array(:)
-        logical(LKC)            , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: LKG => LK1
+        logical(LKG)            , intent(in)    , contiguous    :: array(:)
+        logical(LKG)            , intent(in)    , contiguous    :: pattern(:)
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)                    :: sorted
@@ -11144,9 +11144,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocCusComCusIns_D1_D1_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)            , intent(in)    , contiguous    :: array(:)
-        complex(CKC)            , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG)            , intent(in)    , contiguous    :: array(:)
+        complex(CKG)            , intent(in)    , contiguous    :: pattern(:)
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)                    :: sorted
@@ -11162,9 +11162,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocCusComCusIns_D1_D1_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)            , intent(in)    , contiguous    :: array(:)
-        complex(CKC)            , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG)            , intent(in)    , contiguous    :: array(:)
+        complex(CKG)            , intent(in)    , contiguous    :: pattern(:)
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)                    :: sorted
@@ -11180,9 +11180,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocCusComCusIns_D1_D1_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)            , intent(in)    , contiguous    :: array(:)
-        complex(CKC)            , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG)            , intent(in)    , contiguous    :: array(:)
+        complex(CKG)            , intent(in)    , contiguous    :: pattern(:)
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)                    :: sorted
@@ -11198,9 +11198,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocCusComCusIns_D1_D1_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)            , intent(in)    , contiguous    :: array(:)
-        complex(CKC)            , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG)            , intent(in)    , contiguous    :: array(:)
+        complex(CKG)            , intent(in)    , contiguous    :: pattern(:)
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)                    :: sorted
@@ -11216,9 +11216,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocCusComCusIns_D1_D1_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)            , intent(in)    , contiguous    :: array(:)
-        complex(CKC)            , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG)            , intent(in)    , contiguous    :: array(:)
+        complex(CKG)            , intent(in)    , contiguous    :: pattern(:)
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)                    :: sorted
@@ -11236,9 +11236,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocCusComCusIns_D1_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)               , intent(in)    , contiguous    :: array(:)
-        real(RKC)               , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)               , intent(in)    , contiguous    :: array(:)
+        real(RKG)               , intent(in)    , contiguous    :: pattern(:)
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)                    :: sorted
@@ -11254,9 +11254,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocCusComCusIns_D1_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)               , intent(in)    , contiguous    :: array(:)
-        real(RKC)               , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)               , intent(in)    , contiguous    :: array(:)
+        real(RKG)               , intent(in)    , contiguous    :: pattern(:)
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)                    :: sorted
@@ -11272,9 +11272,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocCusComCusIns_D1_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)               , intent(in)    , contiguous    :: array(:)
-        real(RKC)               , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)               , intent(in)    , contiguous    :: array(:)
+        real(RKG)               , intent(in)    , contiguous    :: pattern(:)
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)                    :: sorted
@@ -11290,9 +11290,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocCusComCusIns_D1_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)               , intent(in)    , contiguous    :: array(:)
-        real(RKC)               , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)               , intent(in)    , contiguous    :: array(:)
+        real(RKG)               , intent(in)    , contiguous    :: pattern(:)
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)                    :: sorted
@@ -11308,9 +11308,9 @@ module pm_arrayFind
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setLocCusComCusIns_D1_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)               , intent(in)    , contiguous    :: array(:)
-        real(RKC)               , intent(in)    , contiguous    :: pattern(:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)               , intent(in)    , contiguous    :: array(:)
+        real(RKG)               , intent(in)    , contiguous    :: pattern(:)
         procedure(logical(LK))                                  :: iseq
         integer(IK)             , intent(in)    , contiguous    :: instance(:)
         logical(LK)             , intent(in)                    :: sorted

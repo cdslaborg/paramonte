@@ -118,8 +118,8 @@ module pm_except
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isAddOutflow_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)    , intent(in)        :: a, b
+        use pm_kind, only: IKG => IK5
+        integer(IKG)    , intent(in)        :: a, b
         logical(LK)                         :: outflow
     end function
 #endif
@@ -129,8 +129,8 @@ module pm_except
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isAddOutflow_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)    , intent(in)        :: a, b
+        use pm_kind, only: IKG => IK4
+        integer(IKG)    , intent(in)        :: a, b
         logical(LK)                         :: outflow
     end function
 #endif
@@ -140,8 +140,8 @@ module pm_except
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isAddOutflow_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)    , intent(in)        :: a, b
+        use pm_kind, only: IKG => IK3
+        integer(IKG)    , intent(in)        :: a, b
         logical(LK)                         :: outflow
     end function
 #endif
@@ -151,8 +151,8 @@ module pm_except
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isAddOutflow_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)    , intent(in)        :: a, b
+        use pm_kind, only: IKG => IK2
+        integer(IKG)    , intent(in)        :: a, b
         logical(LK)                         :: outflow
     end function
 #endif
@@ -162,8 +162,8 @@ module pm_except
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isAddOutflow_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)    , intent(in)        :: a, b
+        use pm_kind, only: IKG => IK1
+        integer(IKG)    , intent(in)        :: a, b
         logical(LK)                         :: outflow
     end function
 #endif
@@ -175,8 +175,8 @@ module pm_except
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isAddOutflow_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)    , intent(in)        :: a, b
+        use pm_kind, only: CKG => CK5
+        complex(CKG)    , intent(in)        :: a, b
         logical(LK)                         :: outflow
     end function
 #endif
@@ -186,8 +186,8 @@ module pm_except
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isAddOutflow_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)    , intent(in)        :: a, b
+        use pm_kind, only: CKG => CK4
+        complex(CKG)    , intent(in)        :: a, b
         logical(LK)                         :: outflow
     end function
 #endif
@@ -197,8 +197,8 @@ module pm_except
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isAddOutflow_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)    , intent(in)        :: a, b
+        use pm_kind, only: CKG => CK3
+        complex(CKG)    , intent(in)        :: a, b
         logical(LK)                         :: outflow
     end function
 #endif
@@ -208,8 +208,8 @@ module pm_except
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isAddOutflow_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)    , intent(in)        :: a, b
+        use pm_kind, only: CKG => CK2
+        complex(CKG)    , intent(in)        :: a, b
         logical(LK)                         :: outflow
     end function
 #endif
@@ -219,8 +219,8 @@ module pm_except
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isAddOutflow_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)    , intent(in)        :: a, b
+        use pm_kind, only: CKG => CK1
+        complex(CKG)    , intent(in)        :: a, b
         logical(LK)                         :: outflow
     end function
 #endif
@@ -232,8 +232,8 @@ module pm_except
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isAddOutflow_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)       , intent(in)        :: a, b
+        use pm_kind, only: RKG => RK5
+        real(RKG)       , intent(in)        :: a, b
         logical(LK)                         :: outflow
     end function
 #endif
@@ -243,8 +243,8 @@ module pm_except
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isAddOutflow_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)       , intent(in)        :: a, b
+        use pm_kind, only: RKG => RK4
+        real(RKG)       , intent(in)        :: a, b
         logical(LK)                         :: outflow
     end function
 #endif
@@ -254,8 +254,8 @@ module pm_except
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isAddOutflow_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)       , intent(in)        :: a, b
+        use pm_kind, only: RKG => RK3
+        real(RKG)       , intent(in)        :: a, b
         logical(LK)                         :: outflow
     end function
 #endif
@@ -265,8 +265,8 @@ module pm_except
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isAddOutflow_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)       , intent(in)        :: a, b
+        use pm_kind, only: RKG => RK2
+        real(RKG)       , intent(in)        :: a, b
         logical(LK)                         :: outflow
     end function
 #endif
@@ -276,8 +276,8 @@ module pm_except
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isAddOutflow_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)       , intent(in)        :: a, b
+        use pm_kind, only: RKG => RK1
+        real(RKG)       , intent(in)        :: a, b
         logical(LK)                         :: outflow
     end function
 #endif
@@ -353,8 +353,8 @@ module pm_except
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isAddOutflowNeg_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)    , intent(in)        :: a, b
+        use pm_kind, only: IKG => IK5
+        integer(IKG)    , intent(in)        :: a, b
         logical(LK)                         :: outflow
     end function
 #endif
@@ -364,8 +364,8 @@ module pm_except
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isAddOutflowNeg_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)    , intent(in)        :: a, b
+        use pm_kind, only: IKG => IK4
+        integer(IKG)    , intent(in)        :: a, b
         logical(LK)                         :: outflow
     end function
 #endif
@@ -375,8 +375,8 @@ module pm_except
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isAddOutflowNeg_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)    , intent(in)        :: a, b
+        use pm_kind, only: IKG => IK3
+        integer(IKG)    , intent(in)        :: a, b
         logical(LK)                         :: outflow
     end function
 #endif
@@ -386,8 +386,8 @@ module pm_except
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isAddOutflowNeg_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)    , intent(in)        :: a, b
+        use pm_kind, only: IKG => IK2
+        integer(IKG)    , intent(in)        :: a, b
         logical(LK)                         :: outflow
     end function
 #endif
@@ -397,8 +397,8 @@ module pm_except
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isAddOutflowNeg_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)    , intent(in)        :: a, b
+        use pm_kind, only: IKG => IK1
+        integer(IKG)    , intent(in)        :: a, b
         logical(LK)                         :: outflow
     end function
 #endif
@@ -410,8 +410,8 @@ module pm_except
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isAddOutflowNeg_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)    , intent(in)        :: a, b
+        use pm_kind, only: CKG => CK5
+        complex(CKG)    , intent(in)        :: a, b
         logical(LK)                         :: outflow
     end function
 #endif
@@ -421,8 +421,8 @@ module pm_except
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isAddOutflowNeg_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)    , intent(in)        :: a, b
+        use pm_kind, only: CKG => CK4
+        complex(CKG)    , intent(in)        :: a, b
         logical(LK)                         :: outflow
     end function
 #endif
@@ -432,8 +432,8 @@ module pm_except
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isAddOutflowNeg_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)    , intent(in)        :: a, b
+        use pm_kind, only: CKG => CK3
+        complex(CKG)    , intent(in)        :: a, b
         logical(LK)                         :: outflow
     end function
 #endif
@@ -443,8 +443,8 @@ module pm_except
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isAddOutflowNeg_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)    , intent(in)        :: a, b
+        use pm_kind, only: CKG => CK2
+        complex(CKG)    , intent(in)        :: a, b
         logical(LK)                         :: outflow
     end function
 #endif
@@ -454,8 +454,8 @@ module pm_except
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isAddOutflowNeg_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)    , intent(in)        :: a, b
+        use pm_kind, only: CKG => CK1
+        complex(CKG)    , intent(in)        :: a, b
         logical(LK)                         :: outflow
     end function
 #endif
@@ -467,8 +467,8 @@ module pm_except
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isAddOutflowNeg_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)       , intent(in)        :: a, b
+        use pm_kind, only: RKG => RK5
+        real(RKG)       , intent(in)        :: a, b
         logical(LK)                         :: outflow
     end function
 #endif
@@ -478,8 +478,8 @@ module pm_except
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isAddOutflowNeg_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)       , intent(in)        :: a, b
+        use pm_kind, only: RKG => RK4
+        real(RKG)       , intent(in)        :: a, b
         logical(LK)                         :: outflow
     end function
 #endif
@@ -489,8 +489,8 @@ module pm_except
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isAddOutflowNeg_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)       , intent(in)        :: a, b
+        use pm_kind, only: RKG => RK3
+        real(RKG)       , intent(in)        :: a, b
         logical(LK)                         :: outflow
     end function
 #endif
@@ -500,8 +500,8 @@ module pm_except
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isAddOutflowNeg_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)       , intent(in)        :: a, b
+        use pm_kind, only: RKG => RK2
+        real(RKG)       , intent(in)        :: a, b
         logical(LK)                         :: outflow
     end function
 #endif
@@ -511,8 +511,8 @@ module pm_except
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isAddOutflowNeg_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)       , intent(in)        :: a, b
+        use pm_kind, only: RKG => RK1
+        real(RKG)       , intent(in)        :: a, b
         logical(LK)                         :: outflow
     end function
 #endif
@@ -588,8 +588,8 @@ module pm_except
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isAddOutflowPos_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)    , intent(in)        :: a, b
+        use pm_kind, only: IKG => IK5
+        integer(IKG)    , intent(in)        :: a, b
         logical(LK)                         :: outflow
     end function
 #endif
@@ -599,8 +599,8 @@ module pm_except
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isAddOutflowPos_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)    , intent(in)        :: a, b
+        use pm_kind, only: IKG => IK4
+        integer(IKG)    , intent(in)        :: a, b
         logical(LK)                         :: outflow
     end function
 #endif
@@ -610,8 +610,8 @@ module pm_except
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isAddOutflowPos_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)    , intent(in)        :: a, b
+        use pm_kind, only: IKG => IK3
+        integer(IKG)    , intent(in)        :: a, b
         logical(LK)                         :: outflow
     end function
 #endif
@@ -621,8 +621,8 @@ module pm_except
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isAddOutflowPos_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)    , intent(in)        :: a, b
+        use pm_kind, only: IKG => IK2
+        integer(IKG)    , intent(in)        :: a, b
         logical(LK)                         :: outflow
     end function
 #endif
@@ -632,8 +632,8 @@ module pm_except
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isAddOutflowPos_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)    , intent(in)        :: a, b
+        use pm_kind, only: IKG => IK1
+        integer(IKG)    , intent(in)        :: a, b
         logical(LK)                         :: outflow
     end function
 #endif
@@ -645,8 +645,8 @@ module pm_except
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isAddOutflowPos_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)    , intent(in)        :: a, b
+        use pm_kind, only: CKG => CK5
+        complex(CKG)    , intent(in)        :: a, b
         logical(LK)                         :: outflow
     end function
 #endif
@@ -656,8 +656,8 @@ module pm_except
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isAddOutflowPos_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)    , intent(in)        :: a, b
+        use pm_kind, only: CKG => CK4
+        complex(CKG)    , intent(in)        :: a, b
         logical(LK)                         :: outflow
     end function
 #endif
@@ -667,8 +667,8 @@ module pm_except
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isAddOutflowPos_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)    , intent(in)        :: a, b
+        use pm_kind, only: CKG => CK3
+        complex(CKG)    , intent(in)        :: a, b
         logical(LK)                         :: outflow
     end function
 #endif
@@ -678,8 +678,8 @@ module pm_except
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isAddOutflowPos_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)    , intent(in)        :: a, b
+        use pm_kind, only: CKG => CK2
+        complex(CKG)    , intent(in)        :: a, b
         logical(LK)                         :: outflow
     end function
 #endif
@@ -689,8 +689,8 @@ module pm_except
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isAddOutflowPos_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)    , intent(in)        :: a, b
+        use pm_kind, only: CKG => CK1
+        complex(CKG)    , intent(in)        :: a, b
         logical(LK)                         :: outflow
     end function
 #endif
@@ -702,8 +702,8 @@ module pm_except
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isAddOutflowPos_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)       , intent(in)        :: a, b
+        use pm_kind, only: RKG => RK5
+        real(RKG)       , intent(in)        :: a, b
         logical(LK)                         :: outflow
     end function
 #endif
@@ -713,8 +713,8 @@ module pm_except
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isAddOutflowPos_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)       , intent(in)        :: a, b
+        use pm_kind, only: RKG => RK4
+        real(RKG)       , intent(in)        :: a, b
         logical(LK)                         :: outflow
     end function
 #endif
@@ -724,8 +724,8 @@ module pm_except
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isAddOutflowPos_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)       , intent(in)        :: a, b
+        use pm_kind, only: RKG => RK3
+        real(RKG)       , intent(in)        :: a, b
         logical(LK)                         :: outflow
     end function
 #endif
@@ -735,8 +735,8 @@ module pm_except
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isAddOutflowPos_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)       , intent(in)        :: a, b
+        use pm_kind, only: RKG => RK2
+        real(RKG)       , intent(in)        :: a, b
         logical(LK)                         :: outflow
     end function
 #endif
@@ -746,8 +746,8 @@ module pm_except
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isAddOutflowPos_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)       , intent(in)        :: a, b
+        use pm_kind, only: RKG => RK1
+        real(RKG)       , intent(in)        :: a, b
         logical(LK)                         :: outflow
     end function
 #endif
@@ -829,8 +829,8 @@ module pm_except
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isInf_RK5
 #endif
-        use pm_kind, only: LK, RKC => RK5
-        real(RKC)   , intent(in)    :: x
+        use pm_kind, only: LK, RKG => RK5
+        real(RKG)   , intent(in)    :: x
         logical(LK)                 :: inf
     end function
 #endif
@@ -840,8 +840,8 @@ module pm_except
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isInf_RK4
 #endif
-        use pm_kind, only: LK, RKC => RK4
-        real(RKC)   , intent(in)    :: x
+        use pm_kind, only: LK, RKG => RK4
+        real(RKG)   , intent(in)    :: x
         logical(LK)                 :: inf
     end function
 #endif
@@ -851,8 +851,8 @@ module pm_except
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isInf_RK3
 #endif
-        use pm_kind, only: LK, RKC => RK3
-        real(RKC)   , intent(in)    :: x
+        use pm_kind, only: LK, RKG => RK3
+        real(RKG)   , intent(in)    :: x
         logical(LK)                 :: inf
     end function
 #endif
@@ -862,8 +862,8 @@ module pm_except
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isInf_RK2
 #endif
-        use pm_kind, only: LK, RKC => RK2
-        real(RKC)   , intent(in)    :: x
+        use pm_kind, only: LK, RKG => RK2
+        real(RKG)   , intent(in)    :: x
         logical(LK)                 :: inf
     end function
 #endif
@@ -873,8 +873,8 @@ module pm_except
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isInf_RK1
 #endif
-        use pm_kind, only: LK, RKC => RK1
-        real(RKC)   , intent(in)    :: x
+        use pm_kind, only: LK, RKG => RK1
+        real(RKG)   , intent(in)    :: x
         logical(LK)                 :: inf
     end function
 #endif
@@ -886,8 +886,8 @@ module pm_except
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isInf_CK5
 #endif
-        use pm_kind, only: LK, CKC => CK5
-        complex(CKC), intent(in)    :: x
+        use pm_kind, only: LK, CKG => CK5
+        complex(CKG), intent(in)    :: x
         logical(LK)                 :: inf
     end function
 #endif
@@ -897,8 +897,8 @@ module pm_except
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isInf_CK4
 #endif
-        use pm_kind, only: LK, CKC => CK4
-        complex(CKC), intent(in)    :: x
+        use pm_kind, only: LK, CKG => CK4
+        complex(CKG), intent(in)    :: x
         logical(LK)                 :: inf
     end function
 #endif
@@ -908,8 +908,8 @@ module pm_except
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isInf_CK3
 #endif
-        use pm_kind, only: LK, CKC => CK3
-        complex(CKC), intent(in)    :: x
+        use pm_kind, only: LK, CKG => CK3
+        complex(CKG), intent(in)    :: x
         logical(LK)                 :: inf
     end function
 #endif
@@ -919,8 +919,8 @@ module pm_except
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isInf_CK2
 #endif
-        use pm_kind, only: LK, CKC => CK2
-        complex(CKC), intent(in)    :: x
+        use pm_kind, only: LK, CKG => CK2
+        complex(CKG), intent(in)    :: x
         logical(LK)                 :: inf
     end function
 #endif
@@ -930,8 +930,8 @@ module pm_except
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isInf_CK1
 #endif
-        use pm_kind, only: LK, CKC => CK1
-        complex(CKC), intent(in)    :: x
+        use pm_kind, only: LK, CKG => CK1
+        complex(CKG), intent(in)    :: x
         logical(LK)                 :: inf
     end function
 #endif
@@ -1017,8 +1017,8 @@ module pm_except
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isInfPos_RK5
 #endif
-        use pm_kind, only: LK, RKC => RK5
-        real(RKC)   , intent(in)    :: x
+        use pm_kind, only: LK, RKG => RK5
+        real(RKG)   , intent(in)    :: x
         logical(LK)                 :: infPos
     end function
 #endif
@@ -1028,8 +1028,8 @@ module pm_except
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isInfPos_RK4
 #endif
-        use pm_kind, only: LK, RKC => RK4
-        real(RKC)   , intent(in)    :: x
+        use pm_kind, only: LK, RKG => RK4
+        real(RKG)   , intent(in)    :: x
         logical(LK)                 :: infPos
     end function
 #endif
@@ -1039,8 +1039,8 @@ module pm_except
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isInfPos_RK3
 #endif
-        use pm_kind, only: LK, RKC => RK3
-        real(RKC)   , intent(in)    :: x
+        use pm_kind, only: LK, RKG => RK3
+        real(RKG)   , intent(in)    :: x
         logical(LK)                 :: infPos
     end function
 #endif
@@ -1050,8 +1050,8 @@ module pm_except
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isInfPos_RK2
 #endif
-        use pm_kind, only: LK, RKC => RK2
-        real(RKC)   , intent(in)    :: x
+        use pm_kind, only: LK, RKG => RK2
+        real(RKG)   , intent(in)    :: x
         logical(LK)                 :: infPos
     end function
 #endif
@@ -1061,8 +1061,8 @@ module pm_except
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isInfPos_RK1
 #endif
-        use pm_kind, only: LK, RKC => RK1
-        real(RKC)   , intent(in)    :: x
+        use pm_kind, only: LK, RKG => RK1
+        real(RKG)   , intent(in)    :: x
         logical(LK)                 :: infPos
     end function
 #endif
@@ -1074,8 +1074,8 @@ module pm_except
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isInfPos_CK5
 #endif
-        use pm_kind, only: LK, CKC => CK5
-        complex(CKC), intent(in)    :: x
+        use pm_kind, only: LK, CKG => CK5
+        complex(CKG), intent(in)    :: x
         logical(LK)                 :: infPos
     end function
 #endif
@@ -1085,8 +1085,8 @@ module pm_except
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isInfPos_CK4
 #endif
-        use pm_kind, only: LK, CKC => CK4
-        complex(CKC), intent(in)    :: x
+        use pm_kind, only: LK, CKG => CK4
+        complex(CKG), intent(in)    :: x
         logical(LK)                 :: infPos
     end function
 #endif
@@ -1096,8 +1096,8 @@ module pm_except
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isInfPos_CK3
 #endif
-        use pm_kind, only: LK, CKC => CK3
-        complex(CKC), intent(in)    :: x
+        use pm_kind, only: LK, CKG => CK3
+        complex(CKG), intent(in)    :: x
         logical(LK)                 :: infPos
     end function
 #endif
@@ -1107,8 +1107,8 @@ module pm_except
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isInfPos_CK2
 #endif
-        use pm_kind, only: LK, CKC => CK2
-        complex(CKC), intent(in)    :: x
+        use pm_kind, only: LK, CKG => CK2
+        complex(CKG), intent(in)    :: x
         logical(LK)                 :: infPos
     end function
 #endif
@@ -1118,8 +1118,8 @@ module pm_except
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isInfPos_CK1
 #endif
-        use pm_kind, only: LK, CKC => CK1
-        complex(CKC), intent(in)    :: x
+        use pm_kind, only: LK, CKG => CK1
+        complex(CKG), intent(in)    :: x
         logical(LK)                 :: infPos
     end function
 #endif
@@ -1195,9 +1195,9 @@ module pm_except
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getInfPos_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC), intent(in)    :: mold
-        complex(CKC)                :: infPos
+        use pm_kind, only: CKG => CK5
+        complex(CKG), intent(in)    :: mold
+        complex(CKG)                :: infPos
     end function
 #endif
 
@@ -1206,9 +1206,9 @@ module pm_except
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getInfPos_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC), intent(in)    :: mold
-        complex(CKC)                :: infPos
+        use pm_kind, only: CKG => CK4
+        complex(CKG), intent(in)    :: mold
+        complex(CKG)                :: infPos
     end function
 #endif
 
@@ -1217,9 +1217,9 @@ module pm_except
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getInfPos_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC), intent(in)    :: mold
-        complex(CKC)                :: infPos
+        use pm_kind, only: CKG => CK3
+        complex(CKG), intent(in)    :: mold
+        complex(CKG)                :: infPos
     end function
 #endif
 
@@ -1228,9 +1228,9 @@ module pm_except
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getInfPos_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC), intent(in)    :: mold
-        complex(CKC)                :: infPos
+        use pm_kind, only: CKG => CK2
+        complex(CKG), intent(in)    :: mold
+        complex(CKG)                :: infPos
     end function
 #endif
 
@@ -1239,9 +1239,9 @@ module pm_except
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getInfPos_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC), intent(in)    :: mold
-        complex(CKC)                :: infPos
+        use pm_kind, only: CKG => CK1
+        complex(CKG), intent(in)    :: mold
+        complex(CKG)                :: infPos
     end function
 #endif
 
@@ -1252,9 +1252,9 @@ module pm_except
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getInfPos_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(in)    :: mold
-        real(RKC)                   :: infPos
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(in)    :: mold
+        real(RKG)                   :: infPos
     end function
 #endif
 
@@ -1263,9 +1263,9 @@ module pm_except
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getInfPos_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(in)    :: mold
-        real(RKC)                   :: infPos
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(in)    :: mold
+        real(RKG)                   :: infPos
     end function
 #endif
 
@@ -1274,9 +1274,9 @@ module pm_except
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getInfPos_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(in)    :: mold
-        real(RKC)                   :: infPos
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(in)    :: mold
+        real(RKG)                   :: infPos
     end function
 #endif
 
@@ -1285,9 +1285,9 @@ module pm_except
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getInfPos_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(in)    :: mold
-        real(RKC)                   :: infPos
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(in)    :: mold
+        real(RKG)                   :: infPos
     end function
 #endif
 
@@ -1296,9 +1296,9 @@ module pm_except
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getInfPos_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(in)    :: mold
-        real(RKC)                   :: infPos
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(in)    :: mold
+        real(RKG)                   :: infPos
     end function
 #endif
 
@@ -1369,8 +1369,8 @@ module pm_except
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setInfPos_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC), intent(out)   :: infPos
+        use pm_kind, only: CKG => CK5
+        complex(CKG), intent(out)   :: infPos
     end subroutine
 #endif
 
@@ -1379,8 +1379,8 @@ module pm_except
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setInfPos_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC), intent(out)   :: infPos
+        use pm_kind, only: CKG => CK4
+        complex(CKG), intent(out)   :: infPos
     end subroutine
 #endif
 
@@ -1389,8 +1389,8 @@ module pm_except
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setInfPos_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC), intent(out)   :: infPos
+        use pm_kind, only: CKG => CK3
+        complex(CKG), intent(out)   :: infPos
     end subroutine
 #endif
 
@@ -1399,8 +1399,8 @@ module pm_except
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setInfPos_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC), intent(out)   :: infPos
+        use pm_kind, only: CKG => CK2
+        complex(CKG), intent(out)   :: infPos
     end subroutine
 #endif
 
@@ -1409,8 +1409,8 @@ module pm_except
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setInfPos_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC), intent(out)   :: infPos
+        use pm_kind, only: CKG => CK1
+        complex(CKG), intent(out)   :: infPos
     end subroutine
 #endif
 
@@ -1421,8 +1421,8 @@ module pm_except
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setInfPos_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(out)   :: infPos
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(out)   :: infPos
     end subroutine
 #endif
 
@@ -1431,8 +1431,8 @@ module pm_except
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setInfPos_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(out)   :: infPos
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(out)   :: infPos
     end subroutine
 #endif
 
@@ -1441,8 +1441,8 @@ module pm_except
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setInfPos_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(out)   :: infPos
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(out)   :: infPos
     end subroutine
 #endif
 
@@ -1451,8 +1451,8 @@ module pm_except
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setInfPos_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(out)   :: infPos
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(out)   :: infPos
     end subroutine
 #endif
 
@@ -1461,8 +1461,8 @@ module pm_except
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setInfPos_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(out)   :: infPos
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(out)   :: infPos
     end subroutine
 #endif
 
@@ -1547,8 +1547,8 @@ module pm_except
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isInfNeg_CK5
 #endif
-        use pm_kind, only: LK, CKC => CK5
-        complex(CKC), intent(in)    :: x
+        use pm_kind, only: LK, CKG => CK5
+        complex(CKG), intent(in)    :: x
         logical(LK)                 :: infNeg
     end function
 #endif
@@ -1558,8 +1558,8 @@ module pm_except
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isInfNeg_CK4
 #endif
-        use pm_kind, only: LK, CKC => CK4
-        complex(CKC), intent(in)    :: x
+        use pm_kind, only: LK, CKG => CK4
+        complex(CKG), intent(in)    :: x
         logical(LK)                 :: infNeg
     end function
 #endif
@@ -1569,8 +1569,8 @@ module pm_except
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isInfNeg_CK3
 #endif
-        use pm_kind, only: LK, CKC => CK3
-        complex(CKC), intent(in)    :: x
+        use pm_kind, only: LK, CKG => CK3
+        complex(CKG), intent(in)    :: x
         logical(LK)                 :: infNeg
     end function
 #endif
@@ -1580,8 +1580,8 @@ module pm_except
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isInfNeg_CK2
 #endif
-        use pm_kind, only: LK, CKC => CK2
-        complex(CKC), intent(in)    :: x
+        use pm_kind, only: LK, CKG => CK2
+        complex(CKG), intent(in)    :: x
         logical(LK)                 :: infNeg
     end function
 #endif
@@ -1591,8 +1591,8 @@ module pm_except
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isInfNeg_CK1
 #endif
-        use pm_kind, only: LK, CKC => CK1
-        complex(CKC), intent(in)    :: x
+        use pm_kind, only: LK, CKG => CK1
+        complex(CKG), intent(in)    :: x
         logical(LK)                 :: infNeg
     end function
 #endif
@@ -1604,8 +1604,8 @@ module pm_except
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isInfNeg_RK5
 #endif
-        use pm_kind, only: LK, RKC => RK5
-        real(RKC)   , intent(in)    :: x
+        use pm_kind, only: LK, RKG => RK5
+        real(RKG)   , intent(in)    :: x
         logical(LK)                 :: infNeg
     end function
 #endif
@@ -1615,8 +1615,8 @@ module pm_except
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isInfNeg_RK4
 #endif
-        use pm_kind, only: LK, RKC => RK4
-        real(RKC)   , intent(in)    :: x
+        use pm_kind, only: LK, RKG => RK4
+        real(RKG)   , intent(in)    :: x
         logical(LK)                 :: infNeg
     end function
 #endif
@@ -1626,8 +1626,8 @@ module pm_except
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isInfNeg_RK3
 #endif
-        use pm_kind, only: LK, RKC => RK3
-        real(RKC)   , intent(in)    :: x
+        use pm_kind, only: LK, RKG => RK3
+        real(RKG)   , intent(in)    :: x
         logical(LK)                 :: infNeg
     end function
 #endif
@@ -1637,8 +1637,8 @@ module pm_except
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isInfNeg_RK2
 #endif
-        use pm_kind, only: LK, RKC => RK2
-        real(RKC)   , intent(in)    :: x
+        use pm_kind, only: LK, RKG => RK2
+        real(RKG)   , intent(in)    :: x
         logical(LK)                 :: infNeg
     end function
 #endif
@@ -1648,8 +1648,8 @@ module pm_except
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isInfNeg_RK1
 #endif
-        use pm_kind, only: LK, RKC => RK1
-        real(RKC)   , intent(in)    :: x
+        use pm_kind, only: LK, RKG => RK1
+        real(RKG)   , intent(in)    :: x
         logical(LK)                 :: infNeg
     end function
 #endif
@@ -1725,9 +1725,9 @@ module pm_except
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getInfNeg_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC), intent(in)    :: mold
-        complex(CKC)                :: infNeg
+        use pm_kind, only: CKG => CK5
+        complex(CKG), intent(in)    :: mold
+        complex(CKG)                :: infNeg
     end function
 #endif
 
@@ -1736,9 +1736,9 @@ module pm_except
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getInfNeg_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC), intent(in)    :: mold
-        complex(CKC)                :: infNeg
+        use pm_kind, only: CKG => CK4
+        complex(CKG), intent(in)    :: mold
+        complex(CKG)                :: infNeg
     end function
 #endif
 
@@ -1747,9 +1747,9 @@ module pm_except
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getInfNeg_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC), intent(in)    :: mold
-        complex(CKC)                :: infNeg
+        use pm_kind, only: CKG => CK3
+        complex(CKG), intent(in)    :: mold
+        complex(CKG)                :: infNeg
     end function
 #endif
 
@@ -1758,9 +1758,9 @@ module pm_except
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getInfNeg_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC), intent(in)    :: mold
-        complex(CKC)                :: infNeg
+        use pm_kind, only: CKG => CK2
+        complex(CKG), intent(in)    :: mold
+        complex(CKG)                :: infNeg
     end function
 #endif
 
@@ -1769,9 +1769,9 @@ module pm_except
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getInfNeg_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC), intent(in)    :: mold
-        complex(CKC)                :: infNeg
+        use pm_kind, only: CKG => CK1
+        complex(CKG), intent(in)    :: mold
+        complex(CKG)                :: infNeg
     end function
 #endif
 
@@ -1782,9 +1782,9 @@ module pm_except
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getInfNeg_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(in)    :: mold
-        real(RKC)                   :: infNeg
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(in)    :: mold
+        real(RKG)                   :: infNeg
     end function
 #endif
 
@@ -1793,9 +1793,9 @@ module pm_except
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getInfNeg_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(in)    :: mold
-        real(RKC)                   :: infNeg
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(in)    :: mold
+        real(RKG)                   :: infNeg
     end function
 #endif
 
@@ -1804,9 +1804,9 @@ module pm_except
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getInfNeg_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(in)    :: mold
-        real(RKC)                   :: infNeg
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(in)    :: mold
+        real(RKG)                   :: infNeg
     end function
 #endif
 
@@ -1815,9 +1815,9 @@ module pm_except
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getInfNeg_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(in)    :: mold
-        real(RKC)                   :: infNeg
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(in)    :: mold
+        real(RKG)                   :: infNeg
     end function
 #endif
 
@@ -1826,9 +1826,9 @@ module pm_except
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getInfNeg_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(in)    :: mold
-        real(RKC)                   :: infNeg
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(in)    :: mold
+        real(RKG)                   :: infNeg
     end function
 #endif
 
@@ -1899,8 +1899,8 @@ module pm_except
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setInfNeg_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC), intent(out)   :: infNeg
+        use pm_kind, only: CKG => CK5
+        complex(CKG), intent(out)   :: infNeg
     end subroutine
 #endif
 
@@ -1909,8 +1909,8 @@ module pm_except
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setInfNeg_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC), intent(out)   :: infNeg
+        use pm_kind, only: CKG => CK4
+        complex(CKG), intent(out)   :: infNeg
     end subroutine
 #endif
 
@@ -1919,8 +1919,8 @@ module pm_except
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setInfNeg_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC), intent(out)   :: infNeg
+        use pm_kind, only: CKG => CK3
+        complex(CKG), intent(out)   :: infNeg
     end subroutine
 #endif
 
@@ -1929,8 +1929,8 @@ module pm_except
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setInfNeg_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC), intent(out)   :: infNeg
+        use pm_kind, only: CKG => CK2
+        complex(CKG), intent(out)   :: infNeg
     end subroutine
 #endif
 
@@ -1939,8 +1939,8 @@ module pm_except
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setInfNeg_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC), intent(out)   :: infNeg
+        use pm_kind, only: CKG => CK1
+        complex(CKG), intent(out)   :: infNeg
     end subroutine
 #endif
 
@@ -1951,8 +1951,8 @@ module pm_except
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setInfNeg_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(out)   :: infNeg
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(out)   :: infNeg
     end subroutine
 #endif
 
@@ -1961,8 +1961,8 @@ module pm_except
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setInfNeg_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(out)   :: infNeg
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(out)   :: infNeg
     end subroutine
 #endif
 
@@ -1971,8 +1971,8 @@ module pm_except
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setInfNeg_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(out)   :: infNeg
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(out)   :: infNeg
     end subroutine
 #endif
 
@@ -1981,8 +1981,8 @@ module pm_except
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setInfNeg_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(out)   :: infNeg
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(out)   :: infNeg
     end subroutine
 #endif
 
@@ -1991,8 +1991,8 @@ module pm_except
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setInfNeg_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(out)   :: infNeg
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(out)   :: infNeg
     end subroutine
 #endif
 
@@ -2113,8 +2113,8 @@ module pm_except
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isNANIEEE_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC), intent(in)    :: x
+        use pm_kind, only: CKG => CK5
+        complex(CKG), intent(in)    :: x
         logical(LK)                 :: isNotANumber
     end function
 #endif
@@ -2124,8 +2124,8 @@ module pm_except
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isNANIEEE_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC), intent(in)    :: x
+        use pm_kind, only: CKG => CK4
+        complex(CKG), intent(in)    :: x
         logical(LK)                 :: isNotANumber
     end function
 #endif
@@ -2135,8 +2135,8 @@ module pm_except
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isNANIEEE_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC), intent(in)    :: x
+        use pm_kind, only: CKG => CK3
+        complex(CKG), intent(in)    :: x
         logical(LK)                 :: isNotANumber
     end function
 #endif
@@ -2146,8 +2146,8 @@ module pm_except
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isNANIEEE_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC), intent(in)    :: x
+        use pm_kind, only: CKG => CK2
+        complex(CKG), intent(in)    :: x
         logical(LK)                 :: isNotANumber
     end function
 #endif
@@ -2157,8 +2157,8 @@ module pm_except
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isNANIEEE_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC), intent(in)    :: x
+        use pm_kind, only: CKG => CK1
+        complex(CKG), intent(in)    :: x
         logical(LK)                 :: isNotANumber
     end function
 #endif
@@ -2170,8 +2170,8 @@ module pm_except
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isNANIEEE_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(in)    :: x
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(in)    :: x
         logical(LK)                 :: isNotANumber
     end function
 #endif
@@ -2181,8 +2181,8 @@ module pm_except
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isNANIEEE_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(in)    :: x
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(in)    :: x
         logical(LK)                 :: isNotANumber
     end function
 #endif
@@ -2192,8 +2192,8 @@ module pm_except
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isNANIEEE_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(in)    :: x
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(in)    :: x
         logical(LK)                 :: isNotANumber
     end function
 #endif
@@ -2203,8 +2203,8 @@ module pm_except
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isNANIEEE_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(in)    :: x
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(in)    :: x
         logical(LK)                 :: isNotANumber
     end function
 #endif
@@ -2214,8 +2214,8 @@ module pm_except
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isNANIEEE_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(in)    :: x
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(in)    :: x
         logical(LK)                 :: isNotANumber
     end function
 #endif
@@ -2233,8 +2233,8 @@ module pm_except
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isNANXNEQ_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC), intent(in)    :: x, xcopy
+        use pm_kind, only: CKG => CK5
+        complex(CKG), intent(in)    :: x, xcopy
         logical(LK)                 :: isNotANumber
     end function
 #endif
@@ -2244,8 +2244,8 @@ module pm_except
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isNANXNEQ_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC), intent(in)    :: x, xcopy
+        use pm_kind, only: CKG => CK4
+        complex(CKG), intent(in)    :: x, xcopy
         logical(LK)                 :: isNotANumber
     end function
 #endif
@@ -2255,8 +2255,8 @@ module pm_except
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isNANXNEQ_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC), intent(in)    :: x, xcopy
+        use pm_kind, only: CKG => CK3
+        complex(CKG), intent(in)    :: x, xcopy
         logical(LK)                 :: isNotANumber
     end function
 #endif
@@ -2266,8 +2266,8 @@ module pm_except
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isNANXNEQ_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC), intent(in)    :: x, xcopy
+        use pm_kind, only: CKG => CK2
+        complex(CKG), intent(in)    :: x, xcopy
         logical(LK)                 :: isNotANumber
     end function
 #endif
@@ -2277,8 +2277,8 @@ module pm_except
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isNANXNEQ_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC), intent(in)    :: x, xcopy
+        use pm_kind, only: CKG => CK1
+        complex(CKG), intent(in)    :: x, xcopy
         logical(LK)                 :: isNotANumber
     end function
 #endif
@@ -2290,8 +2290,8 @@ module pm_except
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isNANXNEQ_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(in)    :: x, xcopy
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(in)    :: x, xcopy
         logical(LK)                 :: isNotANumber
     end function
 #endif
@@ -2301,8 +2301,8 @@ module pm_except
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isNANXNEQ_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(in)    :: x, xcopy
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(in)    :: x, xcopy
         logical(LK)                 :: isNotANumber
     end function
 #endif
@@ -2312,8 +2312,8 @@ module pm_except
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isNANXNEQ_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(in)    :: x, xcopy
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(in)    :: x, xcopy
         logical(LK)                 :: isNotANumber
     end function
 #endif
@@ -2323,8 +2323,8 @@ module pm_except
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isNANXNEQ_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(in)    :: x, xcopy
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(in)    :: x, xcopy
         logical(LK)                 :: isNotANumber
     end function
 #endif
@@ -2334,8 +2334,8 @@ module pm_except
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isNANXNEQ_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(in)    :: x, xcopy
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(in)    :: x, xcopy
         logical(LK)                 :: isNotANumber
     end function
 #endif
@@ -2420,9 +2420,9 @@ module pm_except
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getNAN_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC), intent(in)    :: mold
-        complex(CKC)                :: nan
+        use pm_kind, only: CKG => CK5
+        complex(CKG), intent(in)    :: mold
+        complex(CKG)                :: nan
     end function
 #endif
 
@@ -2431,9 +2431,9 @@ module pm_except
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getNAN_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC), intent(in)    :: mold
-        complex(CKC)                :: nan
+        use pm_kind, only: CKG => CK4
+        complex(CKG), intent(in)    :: mold
+        complex(CKG)                :: nan
     end function
 #endif
 
@@ -2442,9 +2442,9 @@ module pm_except
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getNAN_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC), intent(in)    :: mold
-        complex(CKC)                :: nan
+        use pm_kind, only: CKG => CK3
+        complex(CKG), intent(in)    :: mold
+        complex(CKG)                :: nan
     end function
 #endif
 
@@ -2453,9 +2453,9 @@ module pm_except
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getNAN_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC), intent(in)    :: mold
-        complex(CKC)                :: nan
+        use pm_kind, only: CKG => CK2
+        complex(CKG), intent(in)    :: mold
+        complex(CKG)                :: nan
     end function
 #endif
 
@@ -2464,9 +2464,9 @@ module pm_except
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getNAN_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC), intent(in)    :: mold
-        complex(CKC)                :: nan
+        use pm_kind, only: CKG => CK1
+        complex(CKG), intent(in)    :: mold
+        complex(CKG)                :: nan
     end function
 #endif
 
@@ -2477,9 +2477,9 @@ module pm_except
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getNAN_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(in)    :: mold
-        real(RKC)                   :: nan
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(in)    :: mold
+        real(RKG)                   :: nan
     end function
 #endif
 
@@ -2488,9 +2488,9 @@ module pm_except
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getNAN_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(in)    :: mold
-        real(RKC)                   :: nan
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(in)    :: mold
+        real(RKG)                   :: nan
     end function
 #endif
 
@@ -2499,9 +2499,9 @@ module pm_except
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getNAN_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(in)    :: mold
-        real(RKC)                   :: nan
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(in)    :: mold
+        real(RKG)                   :: nan
     end function
 #endif
 
@@ -2510,9 +2510,9 @@ module pm_except
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getNAN_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(in)    :: mold
-        real(RKC)                   :: nan
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(in)    :: mold
+        real(RKG)                   :: nan
     end function
 #endif
 
@@ -2521,9 +2521,9 @@ module pm_except
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getNAN_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(in)    :: mold
-        real(RKC)                   :: nan
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(in)    :: mold
+        real(RKG)                   :: nan
     end function
 #endif
 
@@ -2599,8 +2599,8 @@ module pm_except
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setNAN_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC), intent(out)   :: nan
+        use pm_kind, only: CKG => CK5
+        complex(CKG), intent(out)   :: nan
     end subroutine
 #endif
 
@@ -2609,8 +2609,8 @@ module pm_except
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setNAN_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC), intent(out)   :: nan
+        use pm_kind, only: CKG => CK4
+        complex(CKG), intent(out)   :: nan
     end subroutine
 #endif
 
@@ -2619,8 +2619,8 @@ module pm_except
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setNAN_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC), intent(out)   :: nan
+        use pm_kind, only: CKG => CK3
+        complex(CKG), intent(out)   :: nan
     end subroutine
 #endif
 
@@ -2629,8 +2629,8 @@ module pm_except
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setNAN_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC), intent(out)   :: nan
+        use pm_kind, only: CKG => CK2
+        complex(CKG), intent(out)   :: nan
     end subroutine
 #endif
 
@@ -2639,8 +2639,8 @@ module pm_except
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setNAN_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC), intent(out)   :: nan
+        use pm_kind, only: CKG => CK1
+        complex(CKG), intent(out)   :: nan
     end subroutine
 #endif
 
@@ -2651,8 +2651,8 @@ module pm_except
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setNAN_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(out)   :: nan
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(out)   :: nan
     end subroutine
 #endif
 
@@ -2661,8 +2661,8 @@ module pm_except
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setNAN_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(out)   :: nan
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(out)   :: nan
     end subroutine
 #endif
 
@@ -2671,8 +2671,8 @@ module pm_except
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setNAN_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(out)   :: nan
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(out)   :: nan
     end subroutine
 #endif
 
@@ -2681,8 +2681,8 @@ module pm_except
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setNAN_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(out)   :: nan
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(out)   :: nan
     end subroutine
 #endif
 
@@ -2691,8 +2691,8 @@ module pm_except
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setNAN_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(out)   :: nan
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(out)   :: nan
     end subroutine
 #endif
 

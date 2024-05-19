@@ -46,35 +46,35 @@ contains
 
 #if SK5_ENABLED
     module procedure test_getRange_SK5
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
 #include "test_pm_arrayRange@routines.inc.F90"
     end procedure
 #endif
 
 #if SK4_ENABLED
     module procedure test_getRange_SK4
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
 #include "test_pm_arrayRange@routines.inc.F90"
     end procedure
 #endif
 
 #if SK3_ENABLED
     module procedure test_getRange_SK3
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
 #include "test_pm_arrayRange@routines.inc.F90"
     end procedure
 #endif
 
 #if SK2_ENABLED
     module procedure test_getRange_SK2
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
 #include "test_pm_arrayRange@routines.inc.F90"
     end procedure
 #endif
 
 #if SK1_ENABLED
     module procedure test_getRange_SK1
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
 #include "test_pm_arrayRange@routines.inc.F90"
     end procedure
 #endif
@@ -87,35 +87,35 @@ contains
 
 #if IK5_ENABLED
     module procedure test_getRange_IK5
-        use pm_kind, only: IKC => IK5
+        use pm_kind, only: IKG => IK5
 #include "test_pm_arrayRange@routines.inc.F90"
     end procedure
 #endif
 
 #if IK4_ENABLED
     module procedure test_getRange_IK4
-        use pm_kind, only: IKC => IK4
+        use pm_kind, only: IKG => IK4
 #include "test_pm_arrayRange@routines.inc.F90"
     end procedure
 #endif
 
 #if IK3_ENABLED
     module procedure test_getRange_IK3
-        use pm_kind, only: IKC => IK3
+        use pm_kind, only: IKG => IK3
 #include "test_pm_arrayRange@routines.inc.F90"
     end procedure
 #endif
 
 #if IK2_ENABLED
     module procedure test_getRange_IK2
-        use pm_kind, only: IKC => IK2
+        use pm_kind, only: IKG => IK2
 #include "test_pm_arrayRange@routines.inc.F90"
     end procedure
 #endif
 
 #if IK1_ENABLED
     module procedure test_getRange_IK1
-        use pm_kind, only: IKC => IK1
+        use pm_kind, only: IKG => IK1
 #include "test_pm_arrayRange@routines.inc.F90"
     end procedure
 #endif
@@ -128,35 +128,35 @@ contains
 
 #if RK5_ENABLED
     module procedure test_getRange_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "test_pm_arrayRange@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure test_getRange_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "test_pm_arrayRange@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure test_getRange_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "test_pm_arrayRange@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure test_getRange_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "test_pm_arrayRange@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure test_getRange_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "test_pm_arrayRange@routines.inc.F90"
     end procedure
 #endif
@@ -177,35 +177,35 @@ contains
 
 #if SK5_ENABLED
     module procedure test_setRange_SK5
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
 #include "test_pm_arrayRange@routines.inc.F90"
     end procedure
 #endif
 
 #if SK4_ENABLED
     module procedure test_setRange_SK4
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
 #include "test_pm_arrayRange@routines.inc.F90"
     end procedure
 #endif
 
 #if SK3_ENABLED
     module procedure test_setRange_SK3
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
 #include "test_pm_arrayRange@routines.inc.F90"
     end procedure
 #endif
 
 #if SK2_ENABLED
     module procedure test_setRange_SK2
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
 #include "test_pm_arrayRange@routines.inc.F90"
     end procedure
 #endif
 
 #if SK1_ENABLED
     module procedure test_setRange_SK1
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
 #include "test_pm_arrayRange@routines.inc.F90"
     end procedure
 #endif
@@ -218,35 +218,35 @@ contains
 
 #if IK5_ENABLED
     module procedure test_setRange_IK5
-        use pm_kind, only: IKC => IK5
+        use pm_kind, only: IKG => IK5
 #include "test_pm_arrayRange@routines.inc.F90"
     end procedure
 #endif
 
 #if IK4_ENABLED
     module procedure test_setRange_IK4
-        use pm_kind, only: IKC => IK4
+        use pm_kind, only: IKG => IK4
 #include "test_pm_arrayRange@routines.inc.F90"
     end procedure
 #endif
 
 #if IK3_ENABLED
     module procedure test_setRange_IK3
-        use pm_kind, only: IKC => IK3
+        use pm_kind, only: IKG => IK3
 #include "test_pm_arrayRange@routines.inc.F90"
     end procedure
 #endif
 
 #if IK2_ENABLED
     module procedure test_setRange_IK2
-        use pm_kind, only: IKC => IK2
+        use pm_kind, only: IKG => IK2
 #include "test_pm_arrayRange@routines.inc.F90"
     end procedure
 #endif
 
 #if IK1_ENABLED
     module procedure test_setRange_IK1
-        use pm_kind, only: IKC => IK1
+        use pm_kind, only: IKG => IK1
 #include "test_pm_arrayRange@routines.inc.F90"
     end procedure
 #endif
@@ -259,35 +259,35 @@ contains
 
 #if RK5_ENABLED
     module procedure test_setRange_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "test_pm_arrayRange@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure test_setRange_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "test_pm_arrayRange@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure test_setRange_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "test_pm_arrayRange@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure test_setRange_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "test_pm_arrayRange@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure test_setRange_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "test_pm_arrayRange@routines.inc.F90"
     end procedure
 #endif

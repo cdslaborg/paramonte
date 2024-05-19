@@ -217,10 +217,10 @@ module pm_distUnifPar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifCubLogPDF_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         integer(IK) , intent(in)                            :: ndim
-        real(RKC)   , intent(in)                            :: logLenEdge
-        real(RKC)                                           :: logPDF
+        real(RKG)   , intent(in)                            :: logLenEdge
+        real(RKG)                                           :: logPDF
     end function
 #endif
 
@@ -229,10 +229,10 @@ module pm_distUnifPar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifCubLogPDF_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         integer(IK) , intent(in)                            :: ndim
-        real(RKC)   , intent(in)                            :: logLenEdge
-        real(RKC)                                           :: logPDF
+        real(RKG)   , intent(in)                            :: logLenEdge
+        real(RKG)                                           :: logPDF
     end function
 #endif
 
@@ -241,10 +241,10 @@ module pm_distUnifPar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifCubLogPDF_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         integer(IK) , intent(in)                            :: ndim
-        real(RKC)   , intent(in)                            :: logLenEdge
-        real(RKC)                                           :: logPDF
+        real(RKG)   , intent(in)                            :: logLenEdge
+        real(RKG)                                           :: logPDF
     end function
 #endif
 
@@ -253,10 +253,10 @@ module pm_distUnifPar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifCubLogPDF_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         integer(IK) , intent(in)                            :: ndim
-        real(RKC)   , intent(in)                            :: logLenEdge
-        real(RKC)                                           :: logPDF
+        real(RKG)   , intent(in)                            :: logLenEdge
+        real(RKG)                                           :: logPDF
     end function
 #endif
 
@@ -265,10 +265,10 @@ module pm_distUnifPar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifCubLogPDF_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         integer(IK) , intent(in)                            :: ndim
-        real(RKC)   , intent(in)                            :: logLenEdge
-        real(RKC)                                           :: logPDF
+        real(RKG)   , intent(in)                            :: logLenEdge
+        real(RKG)                                           :: logPDF
     end function
 #endif
 
@@ -279,9 +279,9 @@ module pm_distUnifPar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRecLogPDF_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(in)    , contiguous            :: logLenEdge(:)
-        real(RKC)                                           :: logPDF
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(in)    , contiguous            :: logLenEdge(:)
+        real(RKG)                                           :: logPDF
     end function
 #endif
 
@@ -290,9 +290,9 @@ module pm_distUnifPar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRecLogPDF_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(in)    , contiguous            :: logLenEdge(:)
-        real(RKC)                                           :: logPDF
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(in)    , contiguous            :: logLenEdge(:)
+        real(RKG)                                           :: logPDF
     end function
 #endif
 
@@ -301,9 +301,9 @@ module pm_distUnifPar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRecLogPDF_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(in)    , contiguous            :: logLenEdge(:)
-        real(RKC)                                           :: logPDF
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(in)    , contiguous            :: logLenEdge(:)
+        real(RKG)                                           :: logPDF
     end function
 #endif
 
@@ -312,9 +312,9 @@ module pm_distUnifPar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRecLogPDF_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(in)    , contiguous            :: logLenEdge(:)
-        real(RKC)                                           :: logPDF
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(in)    , contiguous            :: logLenEdge(:)
+        real(RKG)                                           :: logPDF
     end function
 #endif
 
@@ -323,9 +323,9 @@ module pm_distUnifPar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRecLogPDF_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(in)    , contiguous            :: logLenEdge(:)
-        real(RKC)                                           :: logPDF
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(in)    , contiguous            :: logLenEdge(:)
+        real(RKG)                                           :: logPDF
     end function
 #endif
 
@@ -336,9 +336,9 @@ module pm_distUnifPar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifParLogPDF_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(in)    , contiguous            :: repmat(:,:)
-        real(RKC)                                           :: logPDF
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(in)    , contiguous            :: repmat(:,:)
+        real(RKG)                                           :: logPDF
     end function
 #endif
 
@@ -347,9 +347,9 @@ module pm_distUnifPar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifParLogPDF_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(in)    , contiguous            :: repmat(:,:)
-        real(RKC)                                           :: logPDF
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(in)    , contiguous            :: repmat(:,:)
+        real(RKG)                                           :: logPDF
     end function
 #endif
 
@@ -358,9 +358,9 @@ module pm_distUnifPar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifParLogPDF_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(in)    , contiguous            :: repmat(:,:)
-        real(RKC)                                           :: logPDF
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(in)    , contiguous            :: repmat(:,:)
+        real(RKG)                                           :: logPDF
     end function
 #endif
 
@@ -369,9 +369,9 @@ module pm_distUnifPar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifParLogPDF_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(in)    , contiguous            :: repmat(:,:)
-        real(RKC)                                           :: logPDF
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(in)    , contiguous            :: repmat(:,:)
+        real(RKG)                                           :: logPDF
     end function
 #endif
 
@@ -380,9 +380,9 @@ module pm_distUnifPar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifParLogPDF_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(in)    , contiguous            :: repmat(:,:)
-        real(RKC)                                           :: logPDF
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(in)    , contiguous            :: repmat(:,:)
+        real(RKG)                                           :: logPDF
     end function
 #endif
 
@@ -476,10 +476,10 @@ module pm_distUnifPar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifCubRandDU_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         integer(IK) , intent(in)                            :: ndim
-        real(RKC)   , intent(in)                            :: ub
-        real(RKC)                                           :: rand(ndim)
+        real(RKG)   , intent(in)                            :: ub
+        real(RKG)                                           :: rand(ndim)
     end function
 #endif
 
@@ -488,10 +488,10 @@ module pm_distUnifPar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifCubRandDU_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         integer(IK) , intent(in)                            :: ndim
-        real(RKC)   , intent(in)                            :: ub
-        real(RKC)                                           :: rand(ndim)
+        real(RKG)   , intent(in)                            :: ub
+        real(RKG)                                           :: rand(ndim)
     end function
 #endif
 
@@ -500,10 +500,10 @@ module pm_distUnifPar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifCubRandDU_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         integer(IK) , intent(in)                            :: ndim
-        real(RKC)   , intent(in)                            :: ub
-        real(RKC)                                           :: rand(ndim)
+        real(RKG)   , intent(in)                            :: ub
+        real(RKG)                                           :: rand(ndim)
     end function
 #endif
 
@@ -512,10 +512,10 @@ module pm_distUnifPar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifCubRandDU_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         integer(IK) , intent(in)                            :: ndim
-        real(RKC)   , intent(in)                            :: ub
-        real(RKC)                                           :: rand(ndim)
+        real(RKG)   , intent(in)                            :: ub
+        real(RKG)                                           :: rand(ndim)
     end function
 #endif
 
@@ -524,10 +524,10 @@ module pm_distUnifPar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifCubRandDU_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         integer(IK) , intent(in)                            :: ndim
-        real(RKC)   , intent(in)                            :: ub
-        real(RKC)                                           :: rand(ndim)
+        real(RKG)   , intent(in)                            :: ub
+        real(RKG)                                           :: rand(ndim)
     end function
 #endif
 
@@ -538,10 +538,10 @@ module pm_distUnifPar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifCubRandLU_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         integer(IK) , intent(in)                            :: ndim
-        real(RKC)   , intent(in)                            :: lb, ub
-        real(RKC)                                           :: rand(ndim)
+        real(RKG)   , intent(in)                            :: lb, ub
+        real(RKG)                                           :: rand(ndim)
     end function
 #endif
 
@@ -550,10 +550,10 @@ module pm_distUnifPar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifCubRandLU_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         integer(IK) , intent(in)                            :: ndim
-        real(RKC)   , intent(in)                            :: lb, ub
-        real(RKC)                                           :: rand(ndim)
+        real(RKG)   , intent(in)                            :: lb, ub
+        real(RKG)                                           :: rand(ndim)
     end function
 #endif
 
@@ -562,10 +562,10 @@ module pm_distUnifPar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifCubRandLU_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         integer(IK) , intent(in)                            :: ndim
-        real(RKC)   , intent(in)                            :: lb, ub
-        real(RKC)                                           :: rand(ndim)
+        real(RKG)   , intent(in)                            :: lb, ub
+        real(RKG)                                           :: rand(ndim)
     end function
 #endif
 
@@ -574,10 +574,10 @@ module pm_distUnifPar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifCubRandLU_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         integer(IK) , intent(in)                            :: ndim
-        real(RKC)   , intent(in)                            :: lb, ub
-        real(RKC)                                           :: rand(ndim)
+        real(RKG)   , intent(in)                            :: lb, ub
+        real(RKG)                                           :: rand(ndim)
     end function
 #endif
 
@@ -586,10 +586,10 @@ module pm_distUnifPar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifCubRandLU_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         integer(IK) , intent(in)                            :: ndim
-        real(RKC)   , intent(in)                            :: lb, ub
-        real(RKC)                                           :: rand(ndim)
+        real(RKG)   , intent(in)                            :: lb, ub
+        real(RKG)                                           :: rand(ndim)
     end function
 #endif
 
@@ -600,9 +600,9 @@ module pm_distUnifPar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRecRandDU_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(in)    , contiguous            :: ub(:)
-        real(RKC)                                           :: rand(size(ub, 1, IK))
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(in)    , contiguous            :: ub(:)
+        real(RKG)                                           :: rand(size(ub, 1, IK))
     end function
 #endif
 
@@ -611,9 +611,9 @@ module pm_distUnifPar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRecRandDU_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(in)    , contiguous            :: ub(:)
-        real(RKC)                                           :: rand(size(ub, 1, IK))
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(in)    , contiguous            :: ub(:)
+        real(RKG)                                           :: rand(size(ub, 1, IK))
     end function
 #endif
 
@@ -622,9 +622,9 @@ module pm_distUnifPar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRecRandDU_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(in)    , contiguous            :: ub(:)
-        real(RKC)                                           :: rand(size(ub, 1, IK))
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(in)    , contiguous            :: ub(:)
+        real(RKG)                                           :: rand(size(ub, 1, IK))
     end function
 #endif
 
@@ -633,9 +633,9 @@ module pm_distUnifPar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRecRandDU_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(in)    , contiguous            :: ub(:)
-        real(RKC)                                           :: rand(size(ub, 1, IK))
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(in)    , contiguous            :: ub(:)
+        real(RKG)                                           :: rand(size(ub, 1, IK))
     end function
 #endif
 
@@ -644,9 +644,9 @@ module pm_distUnifPar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRecRandDU_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(in)    , contiguous            :: ub(:)
-        real(RKC)                                           :: rand(size(ub, 1, IK))
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(in)    , contiguous            :: ub(:)
+        real(RKG)                                           :: rand(size(ub, 1, IK))
     end function
 #endif
 
@@ -657,9 +657,9 @@ module pm_distUnifPar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRecRandLU_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(in)    , contiguous            :: lb(:), ub(:)
-        real(RKC)                                           :: rand(size(ub, 1, IK))
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(in)    , contiguous            :: lb(:), ub(:)
+        real(RKG)                                           :: rand(size(ub, 1, IK))
     end function
 #endif
 
@@ -668,9 +668,9 @@ module pm_distUnifPar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRecRandLU_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(in)    , contiguous            :: lb(:), ub(:)
-        real(RKC)                                           :: rand(size(ub, 1, IK))
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(in)    , contiguous            :: lb(:), ub(:)
+        real(RKG)                                           :: rand(size(ub, 1, IK))
     end function
 #endif
 
@@ -679,9 +679,9 @@ module pm_distUnifPar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRecRandLU_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(in)    , contiguous            :: lb(:), ub(:)
-        real(RKC)                                           :: rand(size(ub, 1, IK))
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(in)    , contiguous            :: lb(:), ub(:)
+        real(RKG)                                           :: rand(size(ub, 1, IK))
     end function
 #endif
 
@@ -690,9 +690,9 @@ module pm_distUnifPar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRecRandLU_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(in)    , contiguous            :: lb(:), ub(:)
-        real(RKC)                                           :: rand(size(ub, 1, IK))
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(in)    , contiguous            :: lb(:), ub(:)
+        real(RKG)                                           :: rand(size(ub, 1, IK))
     end function
 #endif
 
@@ -701,9 +701,9 @@ module pm_distUnifPar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifRecRandLU_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(in)    , contiguous            :: lb(:), ub(:)
-        real(RKC)                                           :: rand(size(ub, 1, IK))
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(in)    , contiguous            :: lb(:), ub(:)
+        real(RKG)                                           :: rand(size(ub, 1, IK))
     end function
 #endif
 
@@ -714,9 +714,9 @@ module pm_distUnifPar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifParRandDU_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(in)    , contiguous            :: ub(:,:)
-        real(RKC)                                           :: rand(size(ub, 1, IK))
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(in)    , contiguous            :: ub(:,:)
+        real(RKG)                                           :: rand(size(ub, 1, IK))
     end function
 #endif
 
@@ -725,9 +725,9 @@ module pm_distUnifPar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifParRandDU_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(in)    , contiguous            :: ub(:,:)
-        real(RKC)                                           :: rand(size(ub, 1, IK))
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(in)    , contiguous            :: ub(:,:)
+        real(RKG)                                           :: rand(size(ub, 1, IK))
     end function
 #endif
 
@@ -736,9 +736,9 @@ module pm_distUnifPar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifParRandDU_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(in)    , contiguous            :: ub(:,:)
-        real(RKC)                                           :: rand(size(ub, 1, IK))
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(in)    , contiguous            :: ub(:,:)
+        real(RKG)                                           :: rand(size(ub, 1, IK))
     end function
 #endif
 
@@ -747,9 +747,9 @@ module pm_distUnifPar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifParRandDU_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(in)    , contiguous            :: ub(:,:)
-        real(RKC)                                           :: rand(size(ub, 1, IK))
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(in)    , contiguous            :: ub(:,:)
+        real(RKG)                                           :: rand(size(ub, 1, IK))
     end function
 #endif
 
@@ -758,9 +758,9 @@ module pm_distUnifPar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifParRandDU_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(in)    , contiguous            :: ub(:,:)
-        real(RKC)                                           :: rand(size(ub, 1, IK))
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(in)    , contiguous            :: ub(:,:)
+        real(RKG)                                           :: rand(size(ub, 1, IK))
     end function
 #endif
 
@@ -771,9 +771,9 @@ module pm_distUnifPar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifParRandLU_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(in)    , contiguous            :: lb(:), ub(:,:)
-        real(RKC)                                           :: rand(size(ub, 1, IK))
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(in)    , contiguous            :: lb(:), ub(:,:)
+        real(RKG)                                           :: rand(size(ub, 1, IK))
     end function
 #endif
 
@@ -782,9 +782,9 @@ module pm_distUnifPar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifParRandLU_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(in)    , contiguous            :: lb(:), ub(:,:)
-        real(RKC)                                           :: rand(size(ub, 1, IK))
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(in)    , contiguous            :: lb(:), ub(:,:)
+        real(RKG)                                           :: rand(size(ub, 1, IK))
     end function
 #endif
 
@@ -793,9 +793,9 @@ module pm_distUnifPar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifParRandLU_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(in)    , contiguous            :: lb(:), ub(:,:)
-        real(RKC)                                           :: rand(size(ub, 1, IK))
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(in)    , contiguous            :: lb(:), ub(:,:)
+        real(RKG)                                           :: rand(size(ub, 1, IK))
     end function
 #endif
 
@@ -804,9 +804,9 @@ module pm_distUnifPar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifParRandLU_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(in)    , contiguous            :: lb(:), ub(:,:)
-        real(RKC)                                           :: rand(size(ub, 1, IK))
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(in)    , contiguous            :: lb(:), ub(:,:)
+        real(RKG)                                           :: rand(size(ub, 1, IK))
     end function
 #endif
 
@@ -815,9 +815,9 @@ module pm_distUnifPar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getUnifParRandLU_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(in)    , contiguous            :: lb(:), ub(:,:)
-        real(RKC)                                           :: rand(size(ub, 1, IK))
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(in)    , contiguous            :: lb(:), ub(:,:)
+        real(RKG)                                           :: rand(size(ub, 1, IK))
     end function
 #endif
 
@@ -926,9 +926,9 @@ module pm_distUnifPar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCubRandDU_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(inout) , contiguous            :: rand(:)
-        real(RKC)   , intent(in)                            :: ub
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(inout) , contiguous            :: rand(:)
+        real(RKG)   , intent(in)                            :: ub
     end subroutine
 #endif
 
@@ -937,9 +937,9 @@ module pm_distUnifPar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCubRandDU_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(inout) , contiguous            :: rand(:)
-        real(RKC)   , intent(in)                            :: ub
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(inout) , contiguous            :: rand(:)
+        real(RKG)   , intent(in)                            :: ub
     end subroutine
 #endif
 
@@ -948,9 +948,9 @@ module pm_distUnifPar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCubRandDU_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(inout) , contiguous            :: rand(:)
-        real(RKC)   , intent(in)                            :: ub
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(inout) , contiguous            :: rand(:)
+        real(RKG)   , intent(in)                            :: ub
     end subroutine
 #endif
 
@@ -959,9 +959,9 @@ module pm_distUnifPar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCubRandDU_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(inout) , contiguous            :: rand(:)
-        real(RKC)   , intent(in)                            :: ub
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(inout) , contiguous            :: rand(:)
+        real(RKG)   , intent(in)                            :: ub
     end subroutine
 #endif
 
@@ -970,9 +970,9 @@ module pm_distUnifPar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCubRandDU_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(inout) , contiguous            :: rand(:)
-        real(RKC)   , intent(in)                            :: ub
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(inout) , contiguous            :: rand(:)
+        real(RKG)   , intent(in)                            :: ub
     end subroutine
 #endif
 
@@ -983,9 +983,9 @@ module pm_distUnifPar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCubRandLU_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(inout) , contiguous            :: rand(:)
-        real(RKC)   , intent(in)                            :: lb, ub
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(inout) , contiguous            :: rand(:)
+        real(RKG)   , intent(in)                            :: lb, ub
     end subroutine
 #endif
 
@@ -994,9 +994,9 @@ module pm_distUnifPar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCubRandLU_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(inout) , contiguous            :: rand(:)
-        real(RKC)   , intent(in)                            :: lb, ub
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(inout) , contiguous            :: rand(:)
+        real(RKG)   , intent(in)                            :: lb, ub
     end subroutine
 #endif
 
@@ -1005,9 +1005,9 @@ module pm_distUnifPar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCubRandLU_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(inout) , contiguous            :: rand(:)
-        real(RKC)   , intent(in)                            :: lb, ub
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(inout) , contiguous            :: rand(:)
+        real(RKG)   , intent(in)                            :: lb, ub
     end subroutine
 #endif
 
@@ -1016,9 +1016,9 @@ module pm_distUnifPar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCubRandLU_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(inout) , contiguous            :: rand(:)
-        real(RKC)   , intent(in)                            :: lb, ub
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(inout) , contiguous            :: rand(:)
+        real(RKG)   , intent(in)                            :: lb, ub
     end subroutine
 #endif
 
@@ -1027,9 +1027,9 @@ module pm_distUnifPar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifCubRandLU_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(inout) , contiguous            :: rand(:)
-        real(RKC)   , intent(in)                            :: lb, ub
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(inout) , contiguous            :: rand(:)
+        real(RKG)   , intent(in)                            :: lb, ub
     end subroutine
 #endif
 
@@ -1040,9 +1040,9 @@ module pm_distUnifPar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRecRandDU_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(inout) , contiguous            :: rand(:)
-        real(RKC)   , intent(in)    , contiguous            :: ub(:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(inout) , contiguous            :: rand(:)
+        real(RKG)   , intent(in)    , contiguous            :: ub(:)
     end subroutine
 #endif
 
@@ -1051,9 +1051,9 @@ module pm_distUnifPar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRecRandDU_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(inout) , contiguous            :: rand(:)
-        real(RKC)   , intent(in)    , contiguous            :: ub(:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(inout) , contiguous            :: rand(:)
+        real(RKG)   , intent(in)    , contiguous            :: ub(:)
     end subroutine
 #endif
 
@@ -1062,9 +1062,9 @@ module pm_distUnifPar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRecRandDU_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(inout) , contiguous            :: rand(:)
-        real(RKC)   , intent(in)    , contiguous            :: ub(:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(inout) , contiguous            :: rand(:)
+        real(RKG)   , intent(in)    , contiguous            :: ub(:)
     end subroutine
 #endif
 
@@ -1073,9 +1073,9 @@ module pm_distUnifPar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRecRandDU_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(inout) , contiguous            :: rand(:)
-        real(RKC)   , intent(in)    , contiguous            :: ub(:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(inout) , contiguous            :: rand(:)
+        real(RKG)   , intent(in)    , contiguous            :: ub(:)
     end subroutine
 #endif
 
@@ -1084,9 +1084,9 @@ module pm_distUnifPar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRecRandDU_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(inout) , contiguous            :: rand(:)
-        real(RKC)   , intent(in)    , contiguous            :: ub(:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(inout) , contiguous            :: rand(:)
+        real(RKG)   , intent(in)    , contiguous            :: ub(:)
     end subroutine
 #endif
 
@@ -1097,9 +1097,9 @@ module pm_distUnifPar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRecRandLU_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(inout) , contiguous            :: rand(:)
-        real(RKC)   , intent(in)    , contiguous            :: lb(:), ub(:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(inout) , contiguous            :: rand(:)
+        real(RKG)   , intent(in)    , contiguous            :: lb(:), ub(:)
     end subroutine
 #endif
 
@@ -1108,9 +1108,9 @@ module pm_distUnifPar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRecRandLU_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(inout) , contiguous            :: rand(:)
-        real(RKC)   , intent(in)    , contiguous            :: lb(:), ub(:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(inout) , contiguous            :: rand(:)
+        real(RKG)   , intent(in)    , contiguous            :: lb(:), ub(:)
     end subroutine
 #endif
 
@@ -1119,9 +1119,9 @@ module pm_distUnifPar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRecRandLU_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(inout) , contiguous            :: rand(:)
-        real(RKC)   , intent(in)    , contiguous            :: lb(:), ub(:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(inout) , contiguous            :: rand(:)
+        real(RKG)   , intent(in)    , contiguous            :: lb(:), ub(:)
     end subroutine
 #endif
 
@@ -1130,9 +1130,9 @@ module pm_distUnifPar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRecRandLU_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(inout) , contiguous            :: rand(:)
-        real(RKC)   , intent(in)    , contiguous            :: lb(:), ub(:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(inout) , contiguous            :: rand(:)
+        real(RKG)   , intent(in)    , contiguous            :: lb(:), ub(:)
     end subroutine
 #endif
 
@@ -1141,9 +1141,9 @@ module pm_distUnifPar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifRecRandLU_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(inout) , contiguous            :: rand(:)
-        real(RKC)   , intent(in)    , contiguous            :: lb(:), ub(:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(inout) , contiguous            :: rand(:)
+        real(RKG)   , intent(in)    , contiguous            :: lb(:), ub(:)
     end subroutine
 #endif
 
@@ -1154,9 +1154,9 @@ module pm_distUnifPar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifParRandDU_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(inout) , contiguous            :: rand(:)
-        real(RKC)   , intent(in)    , contiguous            :: ub(:,:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(inout) , contiguous            :: rand(:)
+        real(RKG)   , intent(in)    , contiguous            :: ub(:,:)
     end subroutine
 #endif
 
@@ -1165,9 +1165,9 @@ module pm_distUnifPar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifParRandDU_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(inout) , contiguous            :: rand(:)
-        real(RKC)   , intent(in)    , contiguous            :: ub(:,:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(inout) , contiguous            :: rand(:)
+        real(RKG)   , intent(in)    , contiguous            :: ub(:,:)
     end subroutine
 #endif
 
@@ -1176,9 +1176,9 @@ module pm_distUnifPar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifParRandDU_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(inout) , contiguous            :: rand(:)
-        real(RKC)   , intent(in)    , contiguous            :: ub(:,:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(inout) , contiguous            :: rand(:)
+        real(RKG)   , intent(in)    , contiguous            :: ub(:,:)
     end subroutine
 #endif
 
@@ -1187,9 +1187,9 @@ module pm_distUnifPar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifParRandDU_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(inout) , contiguous            :: rand(:)
-        real(RKC)   , intent(in)    , contiguous            :: ub(:,:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(inout) , contiguous            :: rand(:)
+        real(RKG)   , intent(in)    , contiguous            :: ub(:,:)
     end subroutine
 #endif
 
@@ -1198,9 +1198,9 @@ module pm_distUnifPar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifParRandDU_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(inout) , contiguous            :: rand(:)
-        real(RKC)   , intent(in)    , contiguous            :: ub(:,:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(inout) , contiguous            :: rand(:)
+        real(RKG)   , intent(in)    , contiguous            :: ub(:,:)
     end subroutine
 #endif
 
@@ -1211,9 +1211,9 @@ module pm_distUnifPar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifParRandLU_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(inout) , contiguous            :: rand(:)
-        real(RKC)   , intent(in)    , contiguous            :: lb(:), ub(:,:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(inout) , contiguous            :: rand(:)
+        real(RKG)   , intent(in)    , contiguous            :: lb(:), ub(:,:)
     end subroutine
 #endif
 
@@ -1222,9 +1222,9 @@ module pm_distUnifPar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifParRandLU_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(inout) , contiguous            :: rand(:)
-        real(RKC)   , intent(in)    , contiguous            :: lb(:), ub(:,:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(inout) , contiguous            :: rand(:)
+        real(RKG)   , intent(in)    , contiguous            :: lb(:), ub(:,:)
     end subroutine
 #endif
 
@@ -1233,9 +1233,9 @@ module pm_distUnifPar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifParRandLU_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(inout) , contiguous            :: rand(:)
-        real(RKC)   , intent(in)    , contiguous            :: lb(:), ub(:,:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(inout) , contiguous            :: rand(:)
+        real(RKG)   , intent(in)    , contiguous            :: lb(:), ub(:,:)
     end subroutine
 #endif
 
@@ -1244,9 +1244,9 @@ module pm_distUnifPar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifParRandLU_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(inout) , contiguous            :: rand(:)
-        real(RKC)   , intent(in)    , contiguous            :: lb(:), ub(:,:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(inout) , contiguous            :: rand(:)
+        real(RKG)   , intent(in)    , contiguous            :: lb(:), ub(:,:)
     end subroutine
 #endif
 
@@ -1255,9 +1255,9 @@ module pm_distUnifPar
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setUnifParRandLU_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(inout) , contiguous            :: rand(:)
-        real(RKC)   , intent(in)    , contiguous            :: lb(:), ub(:,:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(inout) , contiguous            :: rand(:)
+        real(RKG)   , intent(in)    , contiguous            :: lb(:), ub(:,:)
     end subroutine
 #endif
 

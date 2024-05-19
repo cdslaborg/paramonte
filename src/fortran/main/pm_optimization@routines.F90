@@ -54,35 +54,35 @@ contains
 
 #if RK5_ENABLED
     module procedure isBracketMax_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_optimization@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure isBracketMax_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_optimization@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure isBracketMax_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_optimization@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure isBracketMax_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_optimization@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure isBracketMax_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_optimization@routines.inc.F90"
     end procedure
 #endif
@@ -103,35 +103,35 @@ contains
 
 #if RK5_ENABLED
     module procedure isBracketMin_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_optimization@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure isBracketMin_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_optimization@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure isBracketMin_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_optimization@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure isBracketMin_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_optimization@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure isBracketMin_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_optimization@routines.inc.F90"
     end procedure
 #endif
@@ -152,35 +152,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setBracketMax_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_optimization@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setBracketMax_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_optimization@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setBracketMax_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_optimization@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setBracketMax_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_optimization@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setBracketMax_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_optimization@routines.inc.F90"
     end procedure
 #endif
@@ -201,35 +201,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setBracketMin_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_optimization@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setBracketMin_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_optimization@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setBracketMin_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_optimization@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setBracketMin_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_optimization@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setBracketMin_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_optimization@routines.inc.F90"
     end procedure
 #endif
@@ -250,35 +250,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getMinBrent_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_optimization@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getMinBrent_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_optimization@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getMinBrent_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_optimization@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getMinBrent_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_optimization@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getMinBrent_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_optimization@routines.inc.F90"
     end procedure
 #endif
@@ -299,35 +299,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setMinBrent_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_optimization@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setMinBrent_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_optimization@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setMinBrent_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_optimization@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setMinBrent_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_optimization@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setMinBrent_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_optimization@routines.inc.F90"
     end procedure
 #endif
@@ -348,35 +348,35 @@ contains
 
 #if RK5_ENABLED
     module procedure isFailedMinPowell_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_optimization@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure isFailedMinPowell_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_optimization@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure isFailedMinPowell_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_optimization@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure isFailedMinPowell_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_optimization@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure isFailedMinPowell_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_optimization@routines.inc.F90"
     end procedure
 #endif
@@ -397,35 +397,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setMinPowell_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_optimization@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setMinPowell_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_optimization@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setMinPowell_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_optimization@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setMinPowell_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_optimization@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setMinPowell_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_optimization@routines.inc.F90"
     end procedure
 #endif

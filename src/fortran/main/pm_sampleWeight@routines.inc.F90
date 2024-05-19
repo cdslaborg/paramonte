@@ -25,9 +25,9 @@
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #if     IK_ENABLED
-#define TYPE_OF_SKIP integer(IKC)
+#define TYPE_OF_SKIP integer(IKG)
 #elif   RK_ENABLED || IK_RK_ENABLED
-#define TYPE_OF_SKIP real(RKC)
+#define TYPE_OF_SKIP real(RKG)
 #else
 #error  "Unrecognized interface."
 #endif
@@ -47,16 +47,16 @@
         current = 0
         CHECK_ASSERTION(__LINE__, 0 < skip, SK_": The condition `0 < skip` must hold. skip = "//getStr(skip))
         loopOverWeight: do isam = 1, size(weight, 1, IK)
-            if (0_IKC < weight(isam)) then
+            if (0_IKG < weight(isam)) then
                 current = current + weight(isam)
-                weight(isam) = 0_IKC
+                weight(isam) = 0_IKG
                 loopOverElement: do
                     if (current < skip) exit loopOverElement
-                    weight(isam) = weight(isam) + 1_IKC
+                    weight(isam) = weight(isam) + 1_IKG
                     current = current - skip
                 end do loopOverElement
             else
-                weight(isam) = 0_IKC
+                weight(isam) = 0_IKG
             end if
         end do loopOverWeight
 
@@ -69,16 +69,16 @@
         current = 0
         CHECK_ASSERTION(__LINE__, 0 < skip, SK_": The condition `0 < skip` must hold. skip = "//getStr(skip))
         loopOverWeight: do isam = 1, size(weight, 1, IK)
-            if (0._RKC < weight(isam)) then
+            if (0._RKG < weight(isam)) then
                 current = current + weight(isam)
-                weight(isam) = 0._RKC
+                weight(isam) = 0._RKG
                 loopOverElement: do
                     if (current < skip) exit loopOverElement
-                    weight(isam) = weight(isam) + 1._RKC
+                    weight(isam) = weight(isam) + 1._RKG
                     current = current - skip
                 end do loopOverElement
             else
-                weight(isam) = 0._RKC
+                weight(isam) = 0._RKG
             end if
         end do loopOverWeight
 #else

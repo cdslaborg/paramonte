@@ -37,13 +37,13 @@ program example
     end block
 
     block
-        use pm_kind, only: IKC => IKS
-        integer(IKC) :: rand, lb, ub
+        use pm_kind, only: IKG => IKS
+        integer(IKG) :: rand, lb, ub
         do itry = 1, ntry
-        call disp%show("digits(0_IKC)")
-        call disp%show( digits(0_IKC) )
-        call disp%show("lb = -3_IKC; ub = 5_IKC")
-                        lb = -3_IKC; ub = 5_IKC
+        call disp%show("digits(0_IKG)")
+        call disp%show( digits(0_IKG) )
+        call disp%show("lb = -3_IKG; ub = 5_IKG")
+                        lb = -3_IKG; ub = 5_IKG
         call disp%show("rand = getUnifRand(rng, lb, ub)")
                         rand = getUnifRand(rng, lb, ub)
         call disp%show("[lb, rand, ub]")
@@ -55,13 +55,13 @@ program example
     end block
 
     block
-        use pm_kind, only: IKC => IKL
-        integer(IKC) :: rand, lb, ub
+        use pm_kind, only: IKG => IKL
+        integer(IKG) :: rand, lb, ub
         do itry = 1, ntry
-        call disp%show("digits(0_IKC)")
-        call disp%show( digits(0_IKC) )
-        call disp%show("lb = -huge(0_IKC); ub = huge(0_IKC) / 2_IKC")
-                        lb = -huge(0_IKC); ub = huge(0_IKC) / 2_IKC
+        call disp%show("digits(0_IKG)")
+        call disp%show( digits(0_IKG) )
+        call disp%show("lb = -huge(0_IKG); ub = huge(0_IKG) / 2_IKG")
+                        lb = -huge(0_IKG); ub = huge(0_IKG) / 2_IKG
         call disp%show("rand = getUnifRand(rng, lb, ub)")
                         rand = getUnifRand(rng, lb, ub)
         call disp%show("[lb, rand, ub]")
@@ -120,10 +120,10 @@ program example
     end block
 
     block
-        use pm_kind, only: RKC => RKH
-        real(RKC) :: rand, lb, ub
-        call disp%show("lb = 2._RKC; ub = lb + spacing(lb)")
-                        lb = 2._RKC; ub = lb + spacing(lb)
+        use pm_kind, only: RKG => RKH
+        real(RKG) :: rand, lb, ub
+        call disp%show("lb = 2._RKG; ub = lb + spacing(lb)")
+                        lb = 2._RKG; ub = lb + spacing(lb)
         do itry = 1, ntry
         call disp%show("call setUnifRand(rng, rand, lb, ub)")
                         call setUnifRand(rng, rand, lb, ub)

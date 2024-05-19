@@ -34,7 +34,7 @@
 #else
 #error  "Unrecognized interface."
 #endif
-        integer(IKC)    , allocatable   :: Conversion(:), Conversion_ref(:)
+        integer(IKG)    , allocatable   :: Conversion(:), Conversion_ref(:)
 
         integer(IK) :: i
 
@@ -70,11 +70,11 @@
 
 #if     test_SK_ENABLED
         val = [character(20,SK) :: "1", "12", "123"]
-        Conversion_ref = int([1, 12, 123], kind = IKC)
+        Conversion_ref = int([1, 12, 123], kind = IKG)
         allocate(iostat(size(Conversion_ref)))
 #elif   test_LK_ENABLED
         val = [logical(LK) :: .false., .true., .false._LK]
-        Conversion_ref = [0_IKC, 1_IKC, 0_IKC]
+        Conversion_ref = [0_IKG, 1_IKG, 0_IKG]
 #endif
         allocate(Conversion(size(Conversion_ref)))
 
@@ -109,11 +109,11 @@
 
 #if     test_SK_ENABLED
         val = [character(20,SK) :: "1, paramonte", "12, paramonte", "123, paramonte"]
-        Conversion_ref = int([1, 12, 123], kind = IKC)
+        Conversion_ref = int([1, 12, 123], kind = IKG)
         allocate(iostat(size(val)))
 #elif   test_LK_ENABLED
         val = [logical(LK) :: .false., .true., .false., .true., .false._LK]
-        Conversion_ref = [0_IKC, 1_IKC, 0_IKC, 1_IKC, 0_IKC]
+        Conversion_ref = [0_IKG, 1_IKG, 0_IKG, 1_IKG, 0_IKG]
 #endif
 
         allocate(Conversion(size(val)))

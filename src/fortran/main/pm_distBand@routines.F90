@@ -57,35 +57,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getBandEpeak_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_distBand@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getBandEpeak_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_distBand@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getBandEpeak_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_distBand@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getBandEpeak_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_distBand@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getBandEpeak_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_distBand@routines.inc.F90"
     end procedure
 #endif
@@ -106,35 +106,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getBandEbreak_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_distBand@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getBandEbreak_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_distBand@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getBandEbreak_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_distBand@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getBandEbreak_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_distBand@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getBandEbreak_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_distBand@routines.inc.F90"
     end procedure
 #endif
@@ -155,35 +155,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getBandZeta_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_distBand@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getBandZeta_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_distBand@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getBandZeta_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_distBand@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getBandZeta_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_distBand@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getBandZeta_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_distBand@routines.inc.F90"
     end procedure
 #endif
@@ -210,35 +210,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getBandUDF_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_distBand@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getBandUDF_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_distBand@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getBandUDF_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_distBand@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getBandUDF_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_distBand@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getBandUDF_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_distBand@routines.inc.F90"
     end procedure
 #endif
@@ -271,35 +271,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setBandUCDF_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_distBand@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setBandUCDF_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_distBand@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setBandUCDF_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_distBand@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setBandUCDF_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_distBand@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setBandUCDF_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_distBand@routines.inc.F90"
     end procedure
 #endif
@@ -332,35 +332,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setBandMeanDef_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_distBand@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setBandMeanDef_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_distBand@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setBandMeanDef_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_distBand@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setBandMeanDef_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_distBand@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setBandMeanDef_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_distBand@routines.inc.F90"
     end procedure
 #endif
@@ -383,35 +383,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setBandMeanNew_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_distBand@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setBandMeanNew_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_distBand@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setBandMeanNew_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_distBand@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setBandMeanNew_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_distBand@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setBandMeanNew_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_distBand@routines.inc.F90"
     end procedure
 #endif
@@ -450,35 +450,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setBandPhotonFromEnergyOldB_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_distBand@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setBandPhotonFromEnergyOldB_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_distBand@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setBandPhotonFromEnergyOldB_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_distBand@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setBandPhotonFromEnergyOldB_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_distBand@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setBandPhotonFromEnergyOldB_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_distBand@routines.inc.F90"
     end procedure
 #endif
@@ -501,35 +501,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setBandPhotonFromEnergyNewB_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_distBand@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setBandPhotonFromEnergyNewB_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_distBand@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setBandPhotonFromEnergyNewB_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_distBand@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setBandPhotonFromEnergyNewB_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_distBand@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setBandPhotonFromEnergyNewB_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_distBand@routines.inc.F90"
     end procedure
 #endif
@@ -564,35 +564,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setBandPhotonFromPhotonNewB_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_distBand@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setBandPhotonFromPhotonNewB_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_distBand@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setBandPhotonFromPhotonNewB_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_distBand@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setBandPhotonFromPhotonNewB_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_distBand@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setBandPhotonFromPhotonNewB_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_distBand@routines.inc.F90"
     end procedure
 #endif
@@ -637,35 +637,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setBandEnergyFromPhotonOldB_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_distBand@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setBandEnergyFromPhotonOldB_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_distBand@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setBandEnergyFromPhotonOldB_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_distBand@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setBandEnergyFromPhotonOldB_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_distBand@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setBandEnergyFromPhotonOldB_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_distBand@routines.inc.F90"
     end procedure
 #endif
@@ -688,35 +688,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setBandEnergyFromPhotonNewB_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_distBand@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setBandEnergyFromPhotonNewB_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_distBand@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setBandEnergyFromPhotonNewB_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_distBand@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setBandEnergyFromPhotonNewB_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_distBand@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setBandEnergyFromPhotonNewB_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_distBand@routines.inc.F90"
     end procedure
 #endif
@@ -751,35 +751,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setBandEnergyFromEnergyNewB_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_distBand@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setBandEnergyFromEnergyNewB_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_distBand@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setBandEnergyFromEnergyNewB_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_distBand@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setBandEnergyFromEnergyNewB_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_distBand@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setBandEnergyFromEnergyNewB_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_distBand@routines.inc.F90"
     end procedure
 #endif

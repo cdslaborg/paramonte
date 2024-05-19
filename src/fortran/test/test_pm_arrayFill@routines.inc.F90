@@ -30,20 +30,20 @@
 #define IS_EQUAL ==
 #endif
 #if     SK_ENABLED
-        character(2,SKC), allocatable   :: vector(:), matrix(:,:), cuboid(:,:,:)
-        character(2,SKC), parameter     :: fill = SKC_"**"
+        character(2,SKG), allocatable   :: vector(:), matrix(:,:), cuboid(:,:,:)
+        character(2,SKG), parameter     :: fill = SKG_"**"
 #elif   LK_ENABLED
-        logical(LKC)    , allocatable   :: vector(:), matrix(:,:), cuboid(:,:,:)
-        logical(LKC)    , parameter     :: fill = .false._LKC
+        logical(LKG)    , allocatable   :: vector(:), matrix(:,:), cuboid(:,:,:)
+        logical(LKG)    , parameter     :: fill = .false._LKG
 #elif   IK_ENABLED
-        integer(IKC)    , allocatable   :: vector(:), matrix(:,:), cuboid(:,:,:)
-        integer(IKC)    , parameter     :: fill = huge(1_IKC)
+        integer(IKG)    , allocatable   :: vector(:), matrix(:,:), cuboid(:,:,:)
+        integer(IKG)    , parameter     :: fill = huge(1_IKG)
 #elif   CK_ENABLED
-        complex(CKC)    , allocatable   :: vector(:), matrix(:,:), cuboid(:,:,:)
-        complex(CKC)    , parameter     :: fill = cmplx(huge(0._CKC), huge(0._CKC), kind = CKC)
+        complex(CKG)    , allocatable   :: vector(:), matrix(:,:), cuboid(:,:,:)
+        complex(CKG)    , parameter     :: fill = cmplx(huge(0._CKG), huge(0._CKG), kind = CKG)
 #elif   RK_ENABLED
-        real(RKC)       , allocatable   :: vector(:), matrix(:,:), cuboid(:,:,:)
-        real(RKC)       , parameter     :: fill = huge(0._RKC)
+        real(RKG)       , allocatable   :: vector(:), matrix(:,:), cuboid(:,:,:)
+        real(RKG)       , parameter     :: fill = huge(0._RKG)
 #else
 #error  "Unrecognized interface."
 #endif

@@ -775,10 +775,10 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCFC_RULD_VUXD_CK5
 #endif
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
         type(uppDia_type)   , intent(in)                            :: subsetv
-        complex(TKC)        , intent(in)    , contiguous            :: cov(:,:)
-        complex(TKC)                                                :: cor(size(cov, 1, IK), size(cov, 2, IK))
+        complex(TKG)        , intent(in)    , contiguous            :: cov(:,:)
+        complex(TKG)                                                :: cor(size(cov, 1, IK), size(cov, 2, IK))
     end function
 #endif
 
@@ -787,10 +787,10 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCFC_RULD_VUXD_CK4
 #endif
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
         type(uppDia_type)   , intent(in)                            :: subsetv
-        complex(TKC)        , intent(in)    , contiguous            :: cov(:,:)
-        complex(TKC)                                                :: cor(size(cov, 1, IK), size(cov, 2, IK))
+        complex(TKG)        , intent(in)    , contiguous            :: cov(:,:)
+        complex(TKG)                                                :: cor(size(cov, 1, IK), size(cov, 2, IK))
     end function
 #endif
 
@@ -799,10 +799,10 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCFC_RULD_VUXD_CK3
 #endif
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
         type(uppDia_type)   , intent(in)                            :: subsetv
-        complex(TKC)        , intent(in)    , contiguous            :: cov(:,:)
-        complex(TKC)                                                :: cor(size(cov, 1, IK), size(cov, 2, IK))
+        complex(TKG)        , intent(in)    , contiguous            :: cov(:,:)
+        complex(TKG)                                                :: cor(size(cov, 1, IK), size(cov, 2, IK))
     end function
 #endif
 
@@ -811,10 +811,10 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCFC_RULD_VUXD_CK2
 #endif
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
         type(uppDia_type)   , intent(in)                            :: subsetv
-        complex(TKC)        , intent(in)    , contiguous            :: cov(:,:)
-        complex(TKC)                                                :: cor(size(cov, 1, IK), size(cov, 2, IK))
+        complex(TKG)        , intent(in)    , contiguous            :: cov(:,:)
+        complex(TKG)                                                :: cor(size(cov, 1, IK), size(cov, 2, IK))
     end function
 #endif
 
@@ -823,10 +823,10 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCFC_RULD_VUXD_CK1
 #endif
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
         type(uppDia_type)   , intent(in)                            :: subsetv
-        complex(TKC)        , intent(in)    , contiguous            :: cov(:,:)
-        complex(TKC)                                                :: cor(size(cov, 1, IK), size(cov, 2, IK))
+        complex(TKG)        , intent(in)    , contiguous            :: cov(:,:)
+        complex(TKG)                                                :: cor(size(cov, 1, IK), size(cov, 2, IK))
     end function
 #endif
 
@@ -837,10 +837,10 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCFC_RULD_VUXD_RK5
 #endif
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
         type(uppDia_type)   , intent(in)                            :: subsetv
-        real(TKC)           , intent(in)    , contiguous            :: cov(:,:)
-        real(TKC)                                                   :: cor(size(cov, 1, IK), size(cov, 2, IK))
+        real(TKG)           , intent(in)    , contiguous            :: cov(:,:)
+        real(TKG)                                                   :: cor(size(cov, 1, IK), size(cov, 2, IK))
     end function
 #endif
 
@@ -849,10 +849,10 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCFC_RULD_VUXD_RK4
 #endif
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
         type(uppDia_type)   , intent(in)                            :: subsetv
-        real(TKC)           , intent(in)    , contiguous            :: cov(:,:)
-        real(TKC)                                                   :: cor(size(cov, 1, IK), size(cov, 2, IK))
+        real(TKG)           , intent(in)    , contiguous            :: cov(:,:)
+        real(TKG)                                                   :: cor(size(cov, 1, IK), size(cov, 2, IK))
     end function
 #endif
 
@@ -861,10 +861,10 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCFC_RULD_VUXD_RK3
 #endif
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
         type(uppDia_type)   , intent(in)                            :: subsetv
-        real(TKC)           , intent(in)    , contiguous            :: cov(:,:)
-        real(TKC)                                                   :: cor(size(cov, 1, IK), size(cov, 2, IK))
+        real(TKG)           , intent(in)    , contiguous            :: cov(:,:)
+        real(TKG)                                                   :: cor(size(cov, 1, IK), size(cov, 2, IK))
     end function
 #endif
 
@@ -873,10 +873,10 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCFC_RULD_VUXD_RK2
 #endif
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
         type(uppDia_type)   , intent(in)                            :: subsetv
-        real(TKC)           , intent(in)    , contiguous            :: cov(:,:)
-        real(TKC)                                                   :: cor(size(cov, 1, IK), size(cov, 2, IK))
+        real(TKG)           , intent(in)    , contiguous            :: cov(:,:)
+        real(TKG)                                                   :: cor(size(cov, 1, IK), size(cov, 2, IK))
     end function
 #endif
 
@@ -885,10 +885,10 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCFC_RULD_VUXD_RK1
 #endif
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
         type(uppDia_type)   , intent(in)                            :: subsetv
-        real(TKC)           , intent(in)    , contiguous            :: cov(:,:)
-        real(TKC)                                                   :: cor(size(cov, 1, IK), size(cov, 2, IK))
+        real(TKG)           , intent(in)    , contiguous            :: cov(:,:)
+        real(TKG)                                                   :: cor(size(cov, 1, IK), size(cov, 2, IK))
     end function
 #endif
 
@@ -905,10 +905,10 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCFC_RULD_VXLD_CK5
 #endif
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
         type(lowDia_type)   , intent(in)                            :: subsetv
-        complex(TKC)        , intent(in)    , contiguous            :: cov(:,:)
-        complex(TKC)                                                :: cor(size(cov, 1, IK), size(cov, 2, IK))
+        complex(TKG)        , intent(in)    , contiguous            :: cov(:,:)
+        complex(TKG)                                                :: cor(size(cov, 1, IK), size(cov, 2, IK))
     end function
 #endif
 
@@ -917,10 +917,10 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCFC_RULD_VXLD_CK4
 #endif
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
         type(lowDia_type)   , intent(in)                            :: subsetv
-        complex(TKC)        , intent(in)    , contiguous            :: cov(:,:)
-        complex(TKC)                                                :: cor(size(cov, 1, IK), size(cov, 2, IK))
+        complex(TKG)        , intent(in)    , contiguous            :: cov(:,:)
+        complex(TKG)                                                :: cor(size(cov, 1, IK), size(cov, 2, IK))
     end function
 #endif
 
@@ -929,10 +929,10 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCFC_RULD_VXLD_CK3
 #endif
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
         type(lowDia_type)   , intent(in)                            :: subsetv
-        complex(TKC)        , intent(in)    , contiguous            :: cov(:,:)
-        complex(TKC)                                                :: cor(size(cov, 1, IK), size(cov, 2, IK))
+        complex(TKG)        , intent(in)    , contiguous            :: cov(:,:)
+        complex(TKG)                                                :: cor(size(cov, 1, IK), size(cov, 2, IK))
     end function
 #endif
 
@@ -941,10 +941,10 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCFC_RULD_VXLD_CK2
 #endif
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
         type(lowDia_type)   , intent(in)                            :: subsetv
-        complex(TKC)        , intent(in)    , contiguous            :: cov(:,:)
-        complex(TKC)                                                :: cor(size(cov, 1, IK), size(cov, 2, IK))
+        complex(TKG)        , intent(in)    , contiguous            :: cov(:,:)
+        complex(TKG)                                                :: cor(size(cov, 1, IK), size(cov, 2, IK))
     end function
 #endif
 
@@ -953,10 +953,10 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCFC_RULD_VXLD_CK1
 #endif
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
         type(lowDia_type)   , intent(in)                            :: subsetv
-        complex(TKC)        , intent(in)    , contiguous            :: cov(:,:)
-        complex(TKC)                                                :: cor(size(cov, 1, IK), size(cov, 2, IK))
+        complex(TKG)        , intent(in)    , contiguous            :: cov(:,:)
+        complex(TKG)                                                :: cor(size(cov, 1, IK), size(cov, 2, IK))
     end function
 #endif
 
@@ -967,10 +967,10 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCFC_RULD_VXLD_RK5
 #endif
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
         type(lowDia_type)   , intent(in)                            :: subsetv
-        real(TKC)           , intent(in)    , contiguous            :: cov(:,:)
-        real(TKC)                                                   :: cor(size(cov, 1, IK), size(cov, 2, IK))
+        real(TKG)           , intent(in)    , contiguous            :: cov(:,:)
+        real(TKG)                                                   :: cor(size(cov, 1, IK), size(cov, 2, IK))
     end function
 #endif
 
@@ -979,10 +979,10 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCFC_RULD_VXLD_RK4
 #endif
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
         type(lowDia_type)   , intent(in)                            :: subsetv
-        real(TKC)           , intent(in)    , contiguous            :: cov(:,:)
-        real(TKC)                                                   :: cor(size(cov, 1, IK), size(cov, 2, IK))
+        real(TKG)           , intent(in)    , contiguous            :: cov(:,:)
+        real(TKG)                                                   :: cor(size(cov, 1, IK), size(cov, 2, IK))
     end function
 #endif
 
@@ -991,10 +991,10 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCFC_RULD_VXLD_RK3
 #endif
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
         type(lowDia_type)   , intent(in)                            :: subsetv
-        real(TKC)           , intent(in)    , contiguous            :: cov(:,:)
-        real(TKC)                                                   :: cor(size(cov, 1, IK), size(cov, 2, IK))
+        real(TKG)           , intent(in)    , contiguous            :: cov(:,:)
+        real(TKG)                                                   :: cor(size(cov, 1, IK), size(cov, 2, IK))
     end function
 #endif
 
@@ -1003,10 +1003,10 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCFC_RULD_VXLD_RK2
 #endif
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
         type(lowDia_type)   , intent(in)                            :: subsetv
-        real(TKC)           , intent(in)    , contiguous            :: cov(:,:)
-        real(TKC)                                                   :: cor(size(cov, 1, IK), size(cov, 2, IK))
+        real(TKG)           , intent(in)    , contiguous            :: cov(:,:)
+        real(TKG)                                                   :: cor(size(cov, 1, IK), size(cov, 2, IK))
     end function
 #endif
 
@@ -1015,10 +1015,10 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCFC_RULD_VXLD_RK1
 #endif
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
         type(lowDia_type)   , intent(in)                            :: subsetv
-        real(TKC)           , intent(in)    , contiguous            :: cov(:,:)
-        real(TKC)                                                   :: cor(size(cov, 1, IK), size(cov, 2, IK))
+        real(TKG)           , intent(in)    , contiguous            :: cov(:,:)
+        real(TKG)                                                   :: cor(size(cov, 1, IK), size(cov, 2, IK))
     end function
 #endif
 
@@ -1035,11 +1035,11 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCFC_RULD_VUXX_CK5
 #endif
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
         type(upp_type)      , intent(in)                            :: subsetv
-        real(TKC)           , intent(in)    , contiguous            :: stdinv(:)
-        complex(TKC)        , intent(in)    , contiguous            :: cov(:,:)
-        complex(TKC)                                                :: cor(size(cov, 1, IK), size(cov, 2, IK))
+        real(TKG)           , intent(in)    , contiguous            :: stdinv(:)
+        complex(TKG)        , intent(in)    , contiguous            :: cov(:,:)
+        complex(TKG)                                                :: cor(size(cov, 1, IK), size(cov, 2, IK))
     end function
 #endif
 
@@ -1048,11 +1048,11 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCFC_RULD_VUXX_CK4
 #endif
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
         type(upp_type)      , intent(in)                            :: subsetv
-        real(TKC)           , intent(in)    , contiguous            :: stdinv(:)
-        complex(TKC)        , intent(in)    , contiguous            :: cov(:,:)
-        complex(TKC)                                                :: cor(size(cov, 1, IK), size(cov, 2, IK))
+        real(TKG)           , intent(in)    , contiguous            :: stdinv(:)
+        complex(TKG)        , intent(in)    , contiguous            :: cov(:,:)
+        complex(TKG)                                                :: cor(size(cov, 1, IK), size(cov, 2, IK))
     end function
 #endif
 
@@ -1061,11 +1061,11 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCFC_RULD_VUXX_CK3
 #endif
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
         type(upp_type)      , intent(in)                            :: subsetv
-        real(TKC)           , intent(in)    , contiguous            :: stdinv(:)
-        complex(TKC)        , intent(in)    , contiguous            :: cov(:,:)
-        complex(TKC)                                                :: cor(size(cov, 1, IK), size(cov, 2, IK))
+        real(TKG)           , intent(in)    , contiguous            :: stdinv(:)
+        complex(TKG)        , intent(in)    , contiguous            :: cov(:,:)
+        complex(TKG)                                                :: cor(size(cov, 1, IK), size(cov, 2, IK))
     end function
 #endif
 
@@ -1074,11 +1074,11 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCFC_RULD_VUXX_CK2
 #endif
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
         type(upp_type)      , intent(in)                            :: subsetv
-        real(TKC)           , intent(in)    , contiguous            :: stdinv(:)
-        complex(TKC)        , intent(in)    , contiguous            :: cov(:,:)
-        complex(TKC)                                                :: cor(size(cov, 1, IK), size(cov, 2, IK))
+        real(TKG)           , intent(in)    , contiguous            :: stdinv(:)
+        complex(TKG)        , intent(in)    , contiguous            :: cov(:,:)
+        complex(TKG)                                                :: cor(size(cov, 1, IK), size(cov, 2, IK))
     end function
 #endif
 
@@ -1087,11 +1087,11 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCFC_RULD_VUXX_CK1
 #endif
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
         type(upp_type)      , intent(in)                            :: subsetv
-        real(TKC)           , intent(in)    , contiguous            :: stdinv(:)
-        complex(TKC)        , intent(in)    , contiguous            :: cov(:,:)
-        complex(TKC)                                                :: cor(size(cov, 1, IK), size(cov, 2, IK))
+        real(TKG)           , intent(in)    , contiguous            :: stdinv(:)
+        complex(TKG)        , intent(in)    , contiguous            :: cov(:,:)
+        complex(TKG)                                                :: cor(size(cov, 1, IK), size(cov, 2, IK))
     end function
 #endif
 
@@ -1102,11 +1102,11 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCFC_RULD_VUXX_RK5
 #endif
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
         type(upp_type)      , intent(in)                            :: subsetv
-        real(TKC)           , intent(in)    , contiguous            :: stdinv(:)
-        real(TKC)           , intent(in)    , contiguous            :: cov(:,:)
-        real(TKC)                                                   :: cor(size(cov, 1, IK), size(cov, 2, IK))
+        real(TKG)           , intent(in)    , contiguous            :: stdinv(:)
+        real(TKG)           , intent(in)    , contiguous            :: cov(:,:)
+        real(TKG)                                                   :: cor(size(cov, 1, IK), size(cov, 2, IK))
     end function
 #endif
 
@@ -1115,11 +1115,11 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCFC_RULD_VUXX_RK4
 #endif
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
         type(upp_type)      , intent(in)                            :: subsetv
-        real(TKC)           , intent(in)    , contiguous            :: stdinv(:)
-        real(TKC)           , intent(in)    , contiguous            :: cov(:,:)
-        real(TKC)                                                   :: cor(size(cov, 1, IK), size(cov, 2, IK))
+        real(TKG)           , intent(in)    , contiguous            :: stdinv(:)
+        real(TKG)           , intent(in)    , contiguous            :: cov(:,:)
+        real(TKG)                                                   :: cor(size(cov, 1, IK), size(cov, 2, IK))
     end function
 #endif
 
@@ -1128,11 +1128,11 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCFC_RULD_VUXX_RK3
 #endif
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
         type(upp_type)      , intent(in)                            :: subsetv
-        real(TKC)           , intent(in)    , contiguous            :: stdinv(:)
-        real(TKC)           , intent(in)    , contiguous            :: cov(:,:)
-        real(TKC)                                                   :: cor(size(cov, 1, IK), size(cov, 2, IK))
+        real(TKG)           , intent(in)    , contiguous            :: stdinv(:)
+        real(TKG)           , intent(in)    , contiguous            :: cov(:,:)
+        real(TKG)                                                   :: cor(size(cov, 1, IK), size(cov, 2, IK))
     end function
 #endif
 
@@ -1141,11 +1141,11 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCFC_RULD_VUXX_RK2
 #endif
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
         type(upp_type)      , intent(in)                            :: subsetv
-        real(TKC)           , intent(in)    , contiguous            :: stdinv(:)
-        real(TKC)           , intent(in)    , contiguous            :: cov(:,:)
-        real(TKC)                                                   :: cor(size(cov, 1, IK), size(cov, 2, IK))
+        real(TKG)           , intent(in)    , contiguous            :: stdinv(:)
+        real(TKG)           , intent(in)    , contiguous            :: cov(:,:)
+        real(TKG)                                                   :: cor(size(cov, 1, IK), size(cov, 2, IK))
     end function
 #endif
 
@@ -1154,11 +1154,11 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCFC_RULD_VUXX_RK1
 #endif
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
         type(upp_type)      , intent(in)                            :: subsetv
-        real(TKC)           , intent(in)    , contiguous            :: stdinv(:)
-        real(TKC)           , intent(in)    , contiguous            :: cov(:,:)
-        real(TKC)                                                   :: cor(size(cov, 1, IK), size(cov, 2, IK))
+        real(TKG)           , intent(in)    , contiguous            :: stdinv(:)
+        real(TKG)           , intent(in)    , contiguous            :: cov(:,:)
+        real(TKG)                                                   :: cor(size(cov, 1, IK), size(cov, 2, IK))
     end function
 #endif
 
@@ -1175,11 +1175,11 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCFC_RULD_VXLX_CK5
 #endif
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
         type(low_type)      , intent(in)                            :: subsetv
-        real(TKC)           , intent(in)    , contiguous            :: stdinv(:)
-        complex(TKC)        , intent(in)    , contiguous            :: cov(:,:)
-        complex(TKC)                                                :: cor(size(cov, 1, IK), size(cov, 2, IK))
+        real(TKG)           , intent(in)    , contiguous            :: stdinv(:)
+        complex(TKG)        , intent(in)    , contiguous            :: cov(:,:)
+        complex(TKG)                                                :: cor(size(cov, 1, IK), size(cov, 2, IK))
     end function
 #endif
 
@@ -1188,11 +1188,11 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCFC_RULD_VXLX_CK4
 #endif
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
         type(low_type)      , intent(in)                            :: subsetv
-        real(TKC)           , intent(in)    , contiguous            :: stdinv(:)
-        complex(TKC)        , intent(in)    , contiguous            :: cov(:,:)
-        complex(TKC)                                                :: cor(size(cov, 1, IK), size(cov, 2, IK))
+        real(TKG)           , intent(in)    , contiguous            :: stdinv(:)
+        complex(TKG)        , intent(in)    , contiguous            :: cov(:,:)
+        complex(TKG)                                                :: cor(size(cov, 1, IK), size(cov, 2, IK))
     end function
 #endif
 
@@ -1201,11 +1201,11 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCFC_RULD_VXLX_CK3
 #endif
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
         type(low_type)      , intent(in)                            :: subsetv
-        real(TKC)           , intent(in)    , contiguous            :: stdinv(:)
-        complex(TKC)        , intent(in)    , contiguous            :: cov(:,:)
-        complex(TKC)                                                :: cor(size(cov, 1, IK), size(cov, 2, IK))
+        real(TKG)           , intent(in)    , contiguous            :: stdinv(:)
+        complex(TKG)        , intent(in)    , contiguous            :: cov(:,:)
+        complex(TKG)                                                :: cor(size(cov, 1, IK), size(cov, 2, IK))
     end function
 #endif
 
@@ -1214,11 +1214,11 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCFC_RULD_VXLX_CK2
 #endif
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
         type(low_type)      , intent(in)                            :: subsetv
-        real(TKC)           , intent(in)    , contiguous            :: stdinv(:)
-        complex(TKC)        , intent(in)    , contiguous            :: cov(:,:)
-        complex(TKC)                                                :: cor(size(cov, 1, IK), size(cov, 2, IK))
+        real(TKG)           , intent(in)    , contiguous            :: stdinv(:)
+        complex(TKG)        , intent(in)    , contiguous            :: cov(:,:)
+        complex(TKG)                                                :: cor(size(cov, 1, IK), size(cov, 2, IK))
     end function
 #endif
 
@@ -1227,11 +1227,11 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCFC_RULD_VXLX_CK1
 #endif
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
         type(low_type)      , intent(in)                            :: subsetv
-        real(TKC)           , intent(in)    , contiguous            :: stdinv(:)
-        complex(TKC)        , intent(in)    , contiguous            :: cov(:,:)
-        complex(TKC)                                                :: cor(size(cov, 1, IK), size(cov, 2, IK))
+        real(TKG)           , intent(in)    , contiguous            :: stdinv(:)
+        complex(TKG)        , intent(in)    , contiguous            :: cov(:,:)
+        complex(TKG)                                                :: cor(size(cov, 1, IK), size(cov, 2, IK))
     end function
 #endif
 
@@ -1242,11 +1242,11 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCFC_RULD_VXLX_RK5
 #endif
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
         type(low_type)      , intent(in)                            :: subsetv
-        real(TKC)           , intent(in)    , contiguous            :: stdinv(:)
-        real(TKC)           , intent(in)    , contiguous            :: cov(:,:)
-        real(TKC)                                                   :: cor(size(cov, 1, IK), size(cov, 2, IK))
+        real(TKG)           , intent(in)    , contiguous            :: stdinv(:)
+        real(TKG)           , intent(in)    , contiguous            :: cov(:,:)
+        real(TKG)                                                   :: cor(size(cov, 1, IK), size(cov, 2, IK))
     end function
 #endif
 
@@ -1255,11 +1255,11 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCFC_RULD_VXLX_RK4
 #endif
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
         type(low_type)      , intent(in)                            :: subsetv
-        real(TKC)           , intent(in)    , contiguous            :: stdinv(:)
-        real(TKC)           , intent(in)    , contiguous            :: cov(:,:)
-        real(TKC)                                                   :: cor(size(cov, 1, IK), size(cov, 2, IK))
+        real(TKG)           , intent(in)    , contiguous            :: stdinv(:)
+        real(TKG)           , intent(in)    , contiguous            :: cov(:,:)
+        real(TKG)                                                   :: cor(size(cov, 1, IK), size(cov, 2, IK))
     end function
 #endif
 
@@ -1268,11 +1268,11 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCFC_RULD_VXLX_RK3
 #endif
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
         type(low_type)      , intent(in)                            :: subsetv
-        real(TKC)           , intent(in)    , contiguous            :: stdinv(:)
-        real(TKC)           , intent(in)    , contiguous            :: cov(:,:)
-        real(TKC)                                                   :: cor(size(cov, 1, IK), size(cov, 2, IK))
+        real(TKG)           , intent(in)    , contiguous            :: stdinv(:)
+        real(TKG)           , intent(in)    , contiguous            :: cov(:,:)
+        real(TKG)                                                   :: cor(size(cov, 1, IK), size(cov, 2, IK))
     end function
 #endif
 
@@ -1281,11 +1281,11 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCFC_RULD_VXLX_RK2
 #endif
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
         type(low_type)      , intent(in)                            :: subsetv
-        real(TKC)           , intent(in)    , contiguous            :: stdinv(:)
-        real(TKC)           , intent(in)    , contiguous            :: cov(:,:)
-        real(TKC)                                                   :: cor(size(cov, 1, IK), size(cov, 2, IK))
+        real(TKG)           , intent(in)    , contiguous            :: stdinv(:)
+        real(TKG)           , intent(in)    , contiguous            :: cov(:,:)
+        real(TKG)                                                   :: cor(size(cov, 1, IK), size(cov, 2, IK))
     end function
 #endif
 
@@ -1294,11 +1294,11 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCFC_RULD_VXLX_RK1
 #endif
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
         type(low_type)      , intent(in)                            :: subsetv
-        real(TKC)           , intent(in)    , contiguous            :: stdinv(:)
-        real(TKC)           , intent(in)    , contiguous            :: cov(:,:)
-        real(TKC)                                                   :: cor(size(cov, 1, IK), size(cov, 2, IK))
+        real(TKG)           , intent(in)    , contiguous            :: stdinv(:)
+        real(TKG)           , intent(in)    , contiguous            :: cov(:,:)
+        real(TKG)                                                   :: cor(size(cov, 1, IK), size(cov, 2, IK))
     end function
 #endif
 
@@ -1323,9 +1323,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPrsWNO_XY_CK5
 #endif
-        use pm_kind, only: TKC => CK5
-        complex(TKC)            , intent(in)    , contiguous            :: x(:), y(:)
-        complex(TKC)                                                    :: cor
+        use pm_kind, only: TKG => CK5
+        complex(TKG)            , intent(in)    , contiguous            :: x(:), y(:)
+        complex(TKG)                                                    :: cor
     end function
 #endif
 
@@ -1334,9 +1334,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPrsWNO_XY_CK4
 #endif
-        use pm_kind, only: TKC => CK4
-        complex(TKC)            , intent(in)    , contiguous            :: x(:), y(:)
-        complex(TKC)                                                    :: cor
+        use pm_kind, only: TKG => CK4
+        complex(TKG)            , intent(in)    , contiguous            :: x(:), y(:)
+        complex(TKG)                                                    :: cor
     end function
 #endif
 
@@ -1345,9 +1345,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPrsWNO_XY_CK3
 #endif
-        use pm_kind, only: TKC => CK3
-        complex(TKC)            , intent(in)    , contiguous            :: x(:), y(:)
-        complex(TKC)                                                    :: cor
+        use pm_kind, only: TKG => CK3
+        complex(TKG)            , intent(in)    , contiguous            :: x(:), y(:)
+        complex(TKG)                                                    :: cor
     end function
 #endif
 
@@ -1356,9 +1356,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPrsWNO_XY_CK2
 #endif
-        use pm_kind, only: TKC => CK2
-        complex(TKC)            , intent(in)    , contiguous            :: x(:), y(:)
-        complex(TKC)                                                    :: cor
+        use pm_kind, only: TKG => CK2
+        complex(TKG)            , intent(in)    , contiguous            :: x(:), y(:)
+        complex(TKG)                                                    :: cor
     end function
 #endif
 
@@ -1367,9 +1367,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPrsWNO_XY_CK1
 #endif
-        use pm_kind, only: TKC => CK1
-        complex(TKC)            , intent(in)    , contiguous            :: x(:), y(:)
-        complex(TKC)                                                    :: cor
+        use pm_kind, only: TKG => CK1
+        complex(TKG)            , intent(in)    , contiguous            :: x(:), y(:)
+        complex(TKG)                                                    :: cor
     end function
 #endif
 
@@ -1380,9 +1380,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPrsWNO_XY_RK5
 #endif
-        use pm_kind, only: TKC => RK5
-        real(TKC)               , intent(in)    , contiguous            :: x(:), y(:)
-        real(TKC)                                                       :: cor
+        use pm_kind, only: TKG => RK5
+        real(TKG)               , intent(in)    , contiguous            :: x(:), y(:)
+        real(TKG)                                                       :: cor
     end function
 #endif
 
@@ -1391,9 +1391,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPrsWNO_XY_RK4
 #endif
-        use pm_kind, only: TKC => RK4
-        real(TKC)               , intent(in)    , contiguous            :: x(:), y(:)
-        real(TKC)                                                       :: cor
+        use pm_kind, only: TKG => RK4
+        real(TKG)               , intent(in)    , contiguous            :: x(:), y(:)
+        real(TKG)                                                       :: cor
     end function
 #endif
 
@@ -1402,9 +1402,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPrsWNO_XY_RK3
 #endif
-        use pm_kind, only: TKC => RK3
-        real(TKC)               , intent(in)    , contiguous            :: x(:), y(:)
-        real(TKC)                                                       :: cor
+        use pm_kind, only: TKG => RK3
+        real(TKG)               , intent(in)    , contiguous            :: x(:), y(:)
+        real(TKG)                                                       :: cor
     end function
 #endif
 
@@ -1413,9 +1413,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPrsWNO_XY_RK2
 #endif
-        use pm_kind, only: TKC => RK2
-        real(TKC)               , intent(in)    , contiguous            :: x(:), y(:)
-        real(TKC)                                                       :: cor
+        use pm_kind, only: TKG => RK2
+        real(TKG)               , intent(in)    , contiguous            :: x(:), y(:)
+        real(TKG)                                                       :: cor
     end function
 #endif
 
@@ -1424,9 +1424,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPrsWNO_XY_RK1
 #endif
-        use pm_kind, only: TKC => RK1
-        real(TKC)               , intent(in)    , contiguous            :: x(:), y(:)
-        real(TKC)                                                       :: cor
+        use pm_kind, only: TKG => RK1
+        real(TKG)               , intent(in)    , contiguous            :: x(:), y(:)
+        real(TKG)                                                       :: cor
     end function
 #endif
 
@@ -1445,10 +1445,10 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPrsWTI_XY_CK5
 #endif
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
         integer(IK)             , intent(in)    , contiguous            :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous            :: x(:), y(:)
-        complex(TKC)                                                    :: cor
+        complex(TKG)            , intent(in)    , contiguous            :: x(:), y(:)
+        complex(TKG)                                                    :: cor
     end function
 #endif
 
@@ -1457,10 +1457,10 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPrsWTI_XY_CK4
 #endif
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
         integer(IK)             , intent(in)    , contiguous            :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous            :: x(:), y(:)
-        complex(TKC)                                                    :: cor
+        complex(TKG)            , intent(in)    , contiguous            :: x(:), y(:)
+        complex(TKG)                                                    :: cor
     end function
 #endif
 
@@ -1469,10 +1469,10 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPrsWTI_XY_CK3
 #endif
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
         integer(IK)             , intent(in)    , contiguous            :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous            :: x(:), y(:)
-        complex(TKC)                                                    :: cor
+        complex(TKG)            , intent(in)    , contiguous            :: x(:), y(:)
+        complex(TKG)                                                    :: cor
     end function
 #endif
 
@@ -1481,10 +1481,10 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPrsWTI_XY_CK2
 #endif
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
         integer(IK)             , intent(in)    , contiguous            :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous            :: x(:), y(:)
-        complex(TKC)                                                    :: cor
+        complex(TKG)            , intent(in)    , contiguous            :: x(:), y(:)
+        complex(TKG)                                                    :: cor
     end function
 #endif
 
@@ -1493,10 +1493,10 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPrsWTI_XY_CK1
 #endif
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
         integer(IK)             , intent(in)    , contiguous            :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous            :: x(:), y(:)
-        complex(TKC)                                                    :: cor
+        complex(TKG)            , intent(in)    , contiguous            :: x(:), y(:)
+        complex(TKG)                                                    :: cor
     end function
 #endif
 
@@ -1507,10 +1507,10 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPrsWTI_XY_RK5
 #endif
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
         integer(IK)             , intent(in)    , contiguous            :: weight(:)
-        real(TKC)               , intent(in)    , contiguous            :: x(:), y(:)
-        real(TKC)                                                       :: cor
+        real(TKG)               , intent(in)    , contiguous            :: x(:), y(:)
+        real(TKG)                                                       :: cor
     end function
 #endif
 
@@ -1519,10 +1519,10 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPrsWTI_XY_RK4
 #endif
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
         integer(IK)             , intent(in)    , contiguous            :: weight(:)
-        real(TKC)               , intent(in)    , contiguous            :: x(:), y(:)
-        real(TKC)                                                       :: cor
+        real(TKG)               , intent(in)    , contiguous            :: x(:), y(:)
+        real(TKG)                                                       :: cor
     end function
 #endif
 
@@ -1531,10 +1531,10 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPrsWTI_XY_RK3
 #endif
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
         integer(IK)             , intent(in)    , contiguous            :: weight(:)
-        real(TKC)               , intent(in)    , contiguous            :: x(:), y(:)
-        real(TKC)                                                       :: cor
+        real(TKG)               , intent(in)    , contiguous            :: x(:), y(:)
+        real(TKG)                                                       :: cor
     end function
 #endif
 
@@ -1543,10 +1543,10 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPrsWTI_XY_RK2
 #endif
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
         integer(IK)             , intent(in)    , contiguous            :: weight(:)
-        real(TKC)               , intent(in)    , contiguous            :: x(:), y(:)
-        real(TKC)                                                       :: cor
+        real(TKG)               , intent(in)    , contiguous            :: x(:), y(:)
+        real(TKG)                                                       :: cor
     end function
 #endif
 
@@ -1555,10 +1555,10 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPrsWTI_XY_RK1
 #endif
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
         integer(IK)             , intent(in)    , contiguous            :: weight(:)
-        real(TKC)               , intent(in)    , contiguous            :: x(:), y(:)
-        real(TKC)                                                       :: cor
+        real(TKG)               , intent(in)    , contiguous            :: x(:), y(:)
+        real(TKG)                                                       :: cor
     end function
 #endif
 
@@ -1577,10 +1577,10 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPrsWTR_XY_CK5
 #endif
-        use pm_kind, only: TKC => CK5
-        real(TKC)               , intent(in)    , contiguous            :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous            :: x(:), y(:)
-        complex(TKC)                                                    :: cor
+        use pm_kind, only: TKG => CK5
+        real(TKG)               , intent(in)    , contiguous            :: weight(:)
+        complex(TKG)            , intent(in)    , contiguous            :: x(:), y(:)
+        complex(TKG)                                                    :: cor
     end function
 #endif
 
@@ -1589,10 +1589,10 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPrsWTR_XY_CK4
 #endif
-        use pm_kind, only: TKC => CK4
-        real(TKC)               , intent(in)    , contiguous            :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous            :: x(:), y(:)
-        complex(TKC)                                                    :: cor
+        use pm_kind, only: TKG => CK4
+        real(TKG)               , intent(in)    , contiguous            :: weight(:)
+        complex(TKG)            , intent(in)    , contiguous            :: x(:), y(:)
+        complex(TKG)                                                    :: cor
     end function
 #endif
 
@@ -1601,10 +1601,10 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPrsWTR_XY_CK3
 #endif
-        use pm_kind, only: TKC => CK3
-        real(TKC)               , intent(in)    , contiguous            :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous            :: x(:), y(:)
-        complex(TKC)                                                    :: cor
+        use pm_kind, only: TKG => CK3
+        real(TKG)               , intent(in)    , contiguous            :: weight(:)
+        complex(TKG)            , intent(in)    , contiguous            :: x(:), y(:)
+        complex(TKG)                                                    :: cor
     end function
 #endif
 
@@ -1613,10 +1613,10 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPrsWTR_XY_CK2
 #endif
-        use pm_kind, only: TKC => CK2
-        real(TKC)               , intent(in)    , contiguous            :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous            :: x(:), y(:)
-        complex(TKC)                                                    :: cor
+        use pm_kind, only: TKG => CK2
+        real(TKG)               , intent(in)    , contiguous            :: weight(:)
+        complex(TKG)            , intent(in)    , contiguous            :: x(:), y(:)
+        complex(TKG)                                                    :: cor
     end function
 #endif
 
@@ -1625,10 +1625,10 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPrsWTR_XY_CK1
 #endif
-        use pm_kind, only: TKC => CK1
-        real(TKC)               , intent(in)    , contiguous            :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous            :: x(:), y(:)
-        complex(TKC)                                                    :: cor
+        use pm_kind, only: TKG => CK1
+        real(TKG)               , intent(in)    , contiguous            :: weight(:)
+        complex(TKG)            , intent(in)    , contiguous            :: x(:), y(:)
+        complex(TKG)                                                    :: cor
     end function
 #endif
 
@@ -1639,10 +1639,10 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPrsWTR_XY_RK5
 #endif
-        use pm_kind, only: TKC => RK5
-        real(TKC)               , intent(in)    , contiguous            :: weight(:)
-        real(TKC)               , intent(in)    , contiguous            :: x(:), y(:)
-        real(TKC)                                                       :: cor
+        use pm_kind, only: TKG => RK5
+        real(TKG)               , intent(in)    , contiguous            :: weight(:)
+        real(TKG)               , intent(in)    , contiguous            :: x(:), y(:)
+        real(TKG)                                                       :: cor
     end function
 #endif
 
@@ -1651,10 +1651,10 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPrsWTR_XY_RK4
 #endif
-        use pm_kind, only: TKC => RK4
-        real(TKC)               , intent(in)    , contiguous            :: weight(:)
-        real(TKC)               , intent(in)    , contiguous            :: x(:), y(:)
-        real(TKC)                                                       :: cor
+        use pm_kind, only: TKG => RK4
+        real(TKG)               , intent(in)    , contiguous            :: weight(:)
+        real(TKG)               , intent(in)    , contiguous            :: x(:), y(:)
+        real(TKG)                                                       :: cor
     end function
 #endif
 
@@ -1663,10 +1663,10 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPrsWTR_XY_RK3
 #endif
-        use pm_kind, only: TKC => RK3
-        real(TKC)               , intent(in)    , contiguous            :: weight(:)
-        real(TKC)               , intent(in)    , contiguous            :: x(:), y(:)
-        real(TKC)                                                       :: cor
+        use pm_kind, only: TKG => RK3
+        real(TKG)               , intent(in)    , contiguous            :: weight(:)
+        real(TKG)               , intent(in)    , contiguous            :: x(:), y(:)
+        real(TKG)                                                       :: cor
     end function
 #endif
 
@@ -1675,10 +1675,10 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPrsWTR_XY_RK2
 #endif
-        use pm_kind, only: TKC => RK2
-        real(TKC)               , intent(in)    , contiguous            :: weight(:)
-        real(TKC)               , intent(in)    , contiguous            :: x(:), y(:)
-        real(TKC)                                                       :: cor
+        use pm_kind, only: TKG => RK2
+        real(TKG)               , intent(in)    , contiguous            :: weight(:)
+        real(TKG)               , intent(in)    , contiguous            :: x(:), y(:)
+        real(TKG)                                                       :: cor
     end function
 #endif
 
@@ -1687,10 +1687,10 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPrsWTR_XY_RK1
 #endif
-        use pm_kind, only: TKC => RK1
-        real(TKC)               , intent(in)    , contiguous            :: weight(:)
-        real(TKC)               , intent(in)    , contiguous            :: x(:), y(:)
-        real(TKC)                                                       :: cor
+        use pm_kind, only: TKG => RK1
+        real(TKG)               , intent(in)    , contiguous            :: weight(:)
+        real(TKG)               , intent(in)    , contiguous            :: x(:), y(:)
+        real(TKG)                                                       :: cor
     end function
 #endif
 
@@ -1711,10 +1711,10 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPrsWNO_ULD_CK5
 #endif
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
         integer(IK)             , intent(in)                            :: dim
-        complex(TKC)            , intent(in)    , contiguous            :: sample(:,:)
-        complex(TKC)                                                    :: cor(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
+        complex(TKG)            , intent(in)    , contiguous            :: sample(:,:)
+        complex(TKG)                                                    :: cor(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
     end function
 #endif
 
@@ -1723,10 +1723,10 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPrsWNO_ULD_CK4
 #endif
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
         integer(IK)             , intent(in)                            :: dim
-        complex(TKC)            , intent(in)    , contiguous            :: sample(:,:)
-        complex(TKC)                                                    :: cor(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
+        complex(TKG)            , intent(in)    , contiguous            :: sample(:,:)
+        complex(TKG)                                                    :: cor(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
     end function
 #endif
 
@@ -1735,10 +1735,10 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPrsWNO_ULD_CK3
 #endif
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
         integer(IK)             , intent(in)                            :: dim
-        complex(TKC)            , intent(in)    , contiguous            :: sample(:,:)
-        complex(TKC)                                                    :: cor(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
+        complex(TKG)            , intent(in)    , contiguous            :: sample(:,:)
+        complex(TKG)                                                    :: cor(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
     end function
 #endif
 
@@ -1747,10 +1747,10 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPrsWNO_ULD_CK2
 #endif
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
         integer(IK)             , intent(in)                            :: dim
-        complex(TKC)            , intent(in)    , contiguous            :: sample(:,:)
-        complex(TKC)                                                    :: cor(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
+        complex(TKG)            , intent(in)    , contiguous            :: sample(:,:)
+        complex(TKG)                                                    :: cor(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
     end function
 #endif
 
@@ -1759,10 +1759,10 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPrsWNO_ULD_CK1
 #endif
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
         integer(IK)             , intent(in)                            :: dim
-        complex(TKC)            , intent(in)    , contiguous            :: sample(:,:)
-        complex(TKC)                                                    :: cor(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
+        complex(TKG)            , intent(in)    , contiguous            :: sample(:,:)
+        complex(TKG)                                                    :: cor(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
     end function
 #endif
 
@@ -1773,10 +1773,10 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPrsWNO_ULD_RK5
 #endif
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
         integer(IK)             , intent(in)                            :: dim
-        real(TKC)               , intent(in)    , contiguous            :: sample(:,:)
-        real(TKC)                                                       :: cor(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
+        real(TKG)               , intent(in)    , contiguous            :: sample(:,:)
+        real(TKG)                                                       :: cor(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
     end function
 #endif
 
@@ -1785,10 +1785,10 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPrsWNO_ULD_RK4
 #endif
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
         integer(IK)             , intent(in)                            :: dim
-        real(TKC)               , intent(in)    , contiguous            :: sample(:,:)
-        real(TKC)                                                       :: cor(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
+        real(TKG)               , intent(in)    , contiguous            :: sample(:,:)
+        real(TKG)                                                       :: cor(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
     end function
 #endif
 
@@ -1797,10 +1797,10 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPrsWNO_ULD_RK3
 #endif
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
         integer(IK)             , intent(in)                            :: dim
-        real(TKC)               , intent(in)    , contiguous            :: sample(:,:)
-        real(TKC)                                                       :: cor(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
+        real(TKG)               , intent(in)    , contiguous            :: sample(:,:)
+        real(TKG)                                                       :: cor(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
     end function
 #endif
 
@@ -1809,10 +1809,10 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPrsWNO_ULD_RK2
 #endif
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
         integer(IK)             , intent(in)                            :: dim
-        real(TKC)               , intent(in)    , contiguous            :: sample(:,:)
-        real(TKC)                                                       :: cor(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
+        real(TKG)               , intent(in)    , contiguous            :: sample(:,:)
+        real(TKG)                                                       :: cor(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
     end function
 #endif
 
@@ -1821,10 +1821,10 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPrsWNO_ULD_RK1
 #endif
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
         integer(IK)             , intent(in)                            :: dim
-        real(TKC)               , intent(in)    , contiguous            :: sample(:,:)
-        real(TKC)                                                       :: cor(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
+        real(TKG)               , intent(in)    , contiguous            :: sample(:,:)
+        real(TKG)                                                       :: cor(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
     end function
 #endif
 
@@ -1843,11 +1843,11 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPrsWTI_ULD_CK5
 #endif
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
         integer(IK)             , intent(in)                            :: dim
         integer(IK)             , intent(in)    , contiguous            :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous            :: sample(:,:)
-        complex(TKC)                                                    :: cor(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
+        complex(TKG)            , intent(in)    , contiguous            :: sample(:,:)
+        complex(TKG)                                                    :: cor(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
     end function
 #endif
 
@@ -1856,11 +1856,11 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPrsWTI_ULD_CK4
 #endif
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
         integer(IK)             , intent(in)                            :: dim
         integer(IK)             , intent(in)    , contiguous            :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous            :: sample(:,:)
-        complex(TKC)                                                    :: cor(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
+        complex(TKG)            , intent(in)    , contiguous            :: sample(:,:)
+        complex(TKG)                                                    :: cor(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
     end function
 #endif
 
@@ -1869,11 +1869,11 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPrsWTI_ULD_CK3
 #endif
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
         integer(IK)             , intent(in)                            :: dim
         integer(IK)             , intent(in)    , contiguous            :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous            :: sample(:,:)
-        complex(TKC)                                                    :: cor(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
+        complex(TKG)            , intent(in)    , contiguous            :: sample(:,:)
+        complex(TKG)                                                    :: cor(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
     end function
 #endif
 
@@ -1882,11 +1882,11 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPrsWTI_ULD_CK2
 #endif
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
         integer(IK)             , intent(in)                            :: dim
         integer(IK)             , intent(in)    , contiguous            :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous            :: sample(:,:)
-        complex(TKC)                                                    :: cor(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
+        complex(TKG)            , intent(in)    , contiguous            :: sample(:,:)
+        complex(TKG)                                                    :: cor(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
     end function
 #endif
 
@@ -1895,11 +1895,11 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPrsWTI_ULD_CK1
 #endif
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
         integer(IK)             , intent(in)                            :: dim
         integer(IK)             , intent(in)    , contiguous            :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous            :: sample(:,:)
-        complex(TKC)                                                    :: cor(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
+        complex(TKG)            , intent(in)    , contiguous            :: sample(:,:)
+        complex(TKG)                                                    :: cor(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
     end function
 #endif
 
@@ -1910,11 +1910,11 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPrsWTI_ULD_RK5
 #endif
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
         integer(IK)             , intent(in)                            :: dim
         integer(IK)             , intent(in)    , contiguous            :: weight(:)
-        real(TKC)               , intent(in)    , contiguous            :: sample(:,:)
-        real(TKC)                                                       :: cor(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
+        real(TKG)               , intent(in)    , contiguous            :: sample(:,:)
+        real(TKG)                                                       :: cor(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
     end function
 #endif
 
@@ -1923,11 +1923,11 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPrsWTI_ULD_RK4
 #endif
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
         integer(IK)             , intent(in)                            :: dim
         integer(IK)             , intent(in)    , contiguous            :: weight(:)
-        real(TKC)               , intent(in)    , contiguous            :: sample(:,:)
-        real(TKC)                                                       :: cor(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
+        real(TKG)               , intent(in)    , contiguous            :: sample(:,:)
+        real(TKG)                                                       :: cor(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
     end function
 #endif
 
@@ -1936,11 +1936,11 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPrsWTI_ULD_RK3
 #endif
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
         integer(IK)             , intent(in)                            :: dim
         integer(IK)             , intent(in)    , contiguous            :: weight(:)
-        real(TKC)               , intent(in)    , contiguous            :: sample(:,:)
-        real(TKC)                                                       :: cor(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
+        real(TKG)               , intent(in)    , contiguous            :: sample(:,:)
+        real(TKG)                                                       :: cor(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
     end function
 #endif
 
@@ -1949,11 +1949,11 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPrsWTI_ULD_RK2
 #endif
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
         integer(IK)             , intent(in)                            :: dim
         integer(IK)             , intent(in)    , contiguous            :: weight(:)
-        real(TKC)               , intent(in)    , contiguous            :: sample(:,:)
-        real(TKC)                                                       :: cor(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
+        real(TKG)               , intent(in)    , contiguous            :: sample(:,:)
+        real(TKG)                                                       :: cor(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
     end function
 #endif
 
@@ -1962,11 +1962,11 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPrsWTI_ULD_RK1
 #endif
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
         integer(IK)             , intent(in)                            :: dim
         integer(IK)             , intent(in)    , contiguous            :: weight(:)
-        real(TKC)               , intent(in)    , contiguous            :: sample(:,:)
-        real(TKC)                                                       :: cor(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
+        real(TKG)               , intent(in)    , contiguous            :: sample(:,:)
+        real(TKG)                                                       :: cor(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
     end function
 #endif
 
@@ -1985,11 +1985,11 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPrsWTR_ULD_CK5
 #endif
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
         integer(IK)             , intent(in)                            :: dim
-        real(TKC)               , intent(in)    , contiguous            :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous            :: sample(:,:)
-        complex(TKC)                                                    :: cor(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
+        real(TKG)               , intent(in)    , contiguous            :: weight(:)
+        complex(TKG)            , intent(in)    , contiguous            :: sample(:,:)
+        complex(TKG)                                                    :: cor(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
     end function
 #endif
 
@@ -1998,11 +1998,11 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPrsWTR_ULD_CK4
 #endif
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
         integer(IK)             , intent(in)                            :: dim
-        real(TKC)               , intent(in)    , contiguous            :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous            :: sample(:,:)
-        complex(TKC)                                                    :: cor(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
+        real(TKG)               , intent(in)    , contiguous            :: weight(:)
+        complex(TKG)            , intent(in)    , contiguous            :: sample(:,:)
+        complex(TKG)                                                    :: cor(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
     end function
 #endif
 
@@ -2011,11 +2011,11 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPrsWTR_ULD_CK3
 #endif
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
         integer(IK)             , intent(in)                            :: dim
-        real(TKC)               , intent(in)    , contiguous            :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous            :: sample(:,:)
-        complex(TKC)                                                    :: cor(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
+        real(TKG)               , intent(in)    , contiguous            :: weight(:)
+        complex(TKG)            , intent(in)    , contiguous            :: sample(:,:)
+        complex(TKG)                                                    :: cor(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
     end function
 #endif
 
@@ -2024,11 +2024,11 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPrsWTR_ULD_CK2
 #endif
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
         integer(IK)             , intent(in)                            :: dim
-        real(TKC)               , intent(in)    , contiguous            :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous            :: sample(:,:)
-        complex(TKC)                                                    :: cor(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
+        real(TKG)               , intent(in)    , contiguous            :: weight(:)
+        complex(TKG)            , intent(in)    , contiguous            :: sample(:,:)
+        complex(TKG)                                                    :: cor(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
     end function
 #endif
 
@@ -2037,11 +2037,11 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPrsWTR_ULD_CK1
 #endif
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
         integer(IK)             , intent(in)                            :: dim
-        real(TKC)               , intent(in)    , contiguous            :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous            :: sample(:,:)
-        complex(TKC)                                                    :: cor(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
+        real(TKG)               , intent(in)    , contiguous            :: weight(:)
+        complex(TKG)            , intent(in)    , contiguous            :: sample(:,:)
+        complex(TKG)                                                    :: cor(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
     end function
 #endif
 
@@ -2052,11 +2052,11 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPrsWTR_ULD_RK5
 #endif
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
         integer(IK)             , intent(in)                            :: dim
-        real(TKC)               , intent(in)    , contiguous            :: weight(:)
-        real(TKC)               , intent(in)    , contiguous            :: sample(:,:)
-        real(TKC)                                                       :: cor(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
+        real(TKG)               , intent(in)    , contiguous            :: weight(:)
+        real(TKG)               , intent(in)    , contiguous            :: sample(:,:)
+        real(TKG)                                                       :: cor(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
     end function
 #endif
 
@@ -2065,11 +2065,11 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPrsWTR_ULD_RK4
 #endif
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
         integer(IK)             , intent(in)                            :: dim
-        real(TKC)               , intent(in)    , contiguous            :: weight(:)
-        real(TKC)               , intent(in)    , contiguous            :: sample(:,:)
-        real(TKC)                                                       :: cor(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
+        real(TKG)               , intent(in)    , contiguous            :: weight(:)
+        real(TKG)               , intent(in)    , contiguous            :: sample(:,:)
+        real(TKG)                                                       :: cor(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
     end function
 #endif
 
@@ -2078,11 +2078,11 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPrsWTR_ULD_RK3
 #endif
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
         integer(IK)             , intent(in)                            :: dim
-        real(TKC)               , intent(in)    , contiguous            :: weight(:)
-        real(TKC)               , intent(in)    , contiguous            :: sample(:,:)
-        real(TKC)                                                       :: cor(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
+        real(TKG)               , intent(in)    , contiguous            :: weight(:)
+        real(TKG)               , intent(in)    , contiguous            :: sample(:,:)
+        real(TKG)                                                       :: cor(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
     end function
 #endif
 
@@ -2091,11 +2091,11 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPrsWTR_ULD_RK2
 #endif
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
         integer(IK)             , intent(in)                            :: dim
-        real(TKC)               , intent(in)    , contiguous            :: weight(:)
-        real(TKC)               , intent(in)    , contiguous            :: sample(:,:)
-        real(TKC)                                                       :: cor(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
+        real(TKG)               , intent(in)    , contiguous            :: weight(:)
+        real(TKG)               , intent(in)    , contiguous            :: sample(:,:)
+        real(TKG)                                                       :: cor(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
     end function
 #endif
 
@@ -2104,11 +2104,11 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPrsWTR_ULD_RK1
 #endif
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
         integer(IK)             , intent(in)                            :: dim
-        real(TKC)               , intent(in)    , contiguous            :: weight(:)
-        real(TKC)               , intent(in)    , contiguous            :: sample(:,:)
-        real(TKC)                                                       :: cor(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
+        real(TKG)               , intent(in)    , contiguous            :: weight(:)
+        real(TKG)               , intent(in)    , contiguous            :: sample(:,:)
+        real(TKG)                                                       :: cor(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
     end function
 #endif
 
@@ -2333,12 +2333,12 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCFC_RUXX_VUXX_RK5
 #endif
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
         type(upp_type)      , intent(in)                            :: subset
         type(upp_type)      , intent(in)                            :: subsetv
-        real(TKC)           , intent(in)    , contiguous            :: stdinv(:)
-        real(TKC)           , intent(in)    , contiguous            :: cov(:,:)
-        real(TKC)           , intent(inout) , contiguous            :: cor(:,:)
+        real(TKG)           , intent(in)    , contiguous            :: stdinv(:)
+        real(TKG)           , intent(in)    , contiguous            :: cov(:,:)
+        real(TKG)           , intent(inout) , contiguous            :: cor(:,:)
     end subroutine
 #endif
 
@@ -2347,12 +2347,12 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCFC_RUXX_VUXX_RK4
 #endif
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
         type(upp_type)      , intent(in)                            :: subset
         type(upp_type)      , intent(in)                            :: subsetv
-        real(TKC)           , intent(in)    , contiguous            :: stdinv(:)
-        real(TKC)           , intent(in)    , contiguous            :: cov(:,:)
-        real(TKC)           , intent(inout) , contiguous            :: cor(:,:)
+        real(TKG)           , intent(in)    , contiguous            :: stdinv(:)
+        real(TKG)           , intent(in)    , contiguous            :: cov(:,:)
+        real(TKG)           , intent(inout) , contiguous            :: cor(:,:)
     end subroutine
 #endif
 
@@ -2361,12 +2361,12 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCFC_RUXX_VUXX_RK3
 #endif
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
         type(upp_type)      , intent(in)                            :: subset
         type(upp_type)      , intent(in)                            :: subsetv
-        real(TKC)           , intent(in)    , contiguous            :: stdinv(:)
-        real(TKC)           , intent(in)    , contiguous            :: cov(:,:)
-        real(TKC)           , intent(inout) , contiguous            :: cor(:,:)
+        real(TKG)           , intent(in)    , contiguous            :: stdinv(:)
+        real(TKG)           , intent(in)    , contiguous            :: cov(:,:)
+        real(TKG)           , intent(inout) , contiguous            :: cor(:,:)
     end subroutine
 #endif
 
@@ -2375,12 +2375,12 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCFC_RUXX_VUXX_RK2
 #endif
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
         type(upp_type)      , intent(in)                            :: subset
         type(upp_type)      , intent(in)                            :: subsetv
-        real(TKC)           , intent(in)    , contiguous            :: stdinv(:)
-        real(TKC)           , intent(in)    , contiguous            :: cov(:,:)
-        real(TKC)           , intent(inout) , contiguous            :: cor(:,:)
+        real(TKG)           , intent(in)    , contiguous            :: stdinv(:)
+        real(TKG)           , intent(in)    , contiguous            :: cov(:,:)
+        real(TKG)           , intent(inout) , contiguous            :: cor(:,:)
     end subroutine
 #endif
 
@@ -2389,12 +2389,12 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCFC_RUXX_VUXX_RK1
 #endif
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
         type(upp_type)      , intent(in)                            :: subset
         type(upp_type)      , intent(in)                            :: subsetv
-        real(TKC)           , intent(in)    , contiguous            :: stdinv(:)
-        real(TKC)           , intent(in)    , contiguous            :: cov(:,:)
-        real(TKC)           , intent(inout) , contiguous            :: cor(:,:)
+        real(TKG)           , intent(in)    , contiguous            :: stdinv(:)
+        real(TKG)           , intent(in)    , contiguous            :: cov(:,:)
+        real(TKG)           , intent(inout) , contiguous            :: cor(:,:)
     end subroutine
 #endif
 
@@ -2405,12 +2405,12 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCFC_RUXX_VXLX_RK5
 #endif
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
         type(upp_type)      , intent(in)                            :: subset
         type(low_type)      , intent(in)                            :: subsetv
-        real(TKC)           , intent(in)    , contiguous            :: stdinv(:)
-        real(TKC)           , intent(in)    , contiguous            :: cov(:,:)
-        real(TKC)           , intent(inout) , contiguous            :: cor(:,:)
+        real(TKG)           , intent(in)    , contiguous            :: stdinv(:)
+        real(TKG)           , intent(in)    , contiguous            :: cov(:,:)
+        real(TKG)           , intent(inout) , contiguous            :: cor(:,:)
     end subroutine
 #endif
 
@@ -2419,12 +2419,12 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCFC_RUXX_VXLX_RK4
 #endif
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
         type(upp_type)      , intent(in)                            :: subset
         type(low_type)      , intent(in)                            :: subsetv
-        real(TKC)           , intent(in)    , contiguous            :: stdinv(:)
-        real(TKC)           , intent(in)    , contiguous            :: cov(:,:)
-        real(TKC)           , intent(inout) , contiguous            :: cor(:,:)
+        real(TKG)           , intent(in)    , contiguous            :: stdinv(:)
+        real(TKG)           , intent(in)    , contiguous            :: cov(:,:)
+        real(TKG)           , intent(inout) , contiguous            :: cor(:,:)
     end subroutine
 #endif
 
@@ -2433,12 +2433,12 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCFC_RUXX_VXLX_RK3
 #endif
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
         type(upp_type)      , intent(in)                            :: subset
         type(low_type)      , intent(in)                            :: subsetv
-        real(TKC)           , intent(in)    , contiguous            :: stdinv(:)
-        real(TKC)           , intent(in)    , contiguous            :: cov(:,:)
-        real(TKC)           , intent(inout) , contiguous            :: cor(:,:)
+        real(TKG)           , intent(in)    , contiguous            :: stdinv(:)
+        real(TKG)           , intent(in)    , contiguous            :: cov(:,:)
+        real(TKG)           , intent(inout) , contiguous            :: cor(:,:)
     end subroutine
 #endif
 
@@ -2447,12 +2447,12 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCFC_RUXX_VXLX_RK2
 #endif
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
         type(upp_type)      , intent(in)                            :: subset
         type(low_type)      , intent(in)                            :: subsetv
-        real(TKC)           , intent(in)    , contiguous            :: stdinv(:)
-        real(TKC)           , intent(in)    , contiguous            :: cov(:,:)
-        real(TKC)           , intent(inout) , contiguous            :: cor(:,:)
+        real(TKG)           , intent(in)    , contiguous            :: stdinv(:)
+        real(TKG)           , intent(in)    , contiguous            :: cov(:,:)
+        real(TKG)           , intent(inout) , contiguous            :: cor(:,:)
     end subroutine
 #endif
 
@@ -2461,12 +2461,12 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCFC_RUXX_VXLX_RK1
 #endif
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
         type(upp_type)      , intent(in)                            :: subset
         type(low_type)      , intent(in)                            :: subsetv
-        real(TKC)           , intent(in)    , contiguous            :: stdinv(:)
-        real(TKC)           , intent(in)    , contiguous            :: cov(:,:)
-        real(TKC)           , intent(inout) , contiguous            :: cor(:,:)
+        real(TKG)           , intent(in)    , contiguous            :: stdinv(:)
+        real(TKG)           , intent(in)    , contiguous            :: cov(:,:)
+        real(TKG)           , intent(inout) , contiguous            :: cor(:,:)
     end subroutine
 #endif
 
@@ -2483,12 +2483,12 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCFC_RXLX_VUXX_RK5
 #endif
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
         type(low_type)      , intent(in)                            :: subset
         type(upp_type)      , intent(in)                            :: subsetv
-        real(TKC)           , intent(in)    , contiguous            :: stdinv(:)
-        real(TKC)           , intent(in)    , contiguous            :: cov(:,:)
-        real(TKC)           , intent(inout) , contiguous            :: cor(:,:)
+        real(TKG)           , intent(in)    , contiguous            :: stdinv(:)
+        real(TKG)           , intent(in)    , contiguous            :: cov(:,:)
+        real(TKG)           , intent(inout) , contiguous            :: cor(:,:)
     end subroutine
 #endif
 
@@ -2497,12 +2497,12 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCFC_RXLX_VUXX_RK4
 #endif
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
         type(low_type)      , intent(in)                            :: subset
         type(upp_type)      , intent(in)                            :: subsetv
-        real(TKC)           , intent(in)    , contiguous            :: stdinv(:)
-        real(TKC)           , intent(in)    , contiguous            :: cov(:,:)
-        real(TKC)           , intent(inout) , contiguous            :: cor(:,:)
+        real(TKG)           , intent(in)    , contiguous            :: stdinv(:)
+        real(TKG)           , intent(in)    , contiguous            :: cov(:,:)
+        real(TKG)           , intent(inout) , contiguous            :: cor(:,:)
     end subroutine
 #endif
 
@@ -2511,12 +2511,12 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCFC_RXLX_VUXX_RK3
 #endif
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
         type(low_type)      , intent(in)                            :: subset
         type(upp_type)      , intent(in)                            :: subsetv
-        real(TKC)           , intent(in)    , contiguous            :: stdinv(:)
-        real(TKC)           , intent(in)    , contiguous            :: cov(:,:)
-        real(TKC)           , intent(inout) , contiguous            :: cor(:,:)
+        real(TKG)           , intent(in)    , contiguous            :: stdinv(:)
+        real(TKG)           , intent(in)    , contiguous            :: cov(:,:)
+        real(TKG)           , intent(inout) , contiguous            :: cor(:,:)
     end subroutine
 #endif
 
@@ -2525,12 +2525,12 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCFC_RXLX_VUXX_RK2
 #endif
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
         type(low_type)      , intent(in)                            :: subset
         type(upp_type)      , intent(in)                            :: subsetv
-        real(TKC)           , intent(in)    , contiguous            :: stdinv(:)
-        real(TKC)           , intent(in)    , contiguous            :: cov(:,:)
-        real(TKC)           , intent(inout) , contiguous            :: cor(:,:)
+        real(TKG)           , intent(in)    , contiguous            :: stdinv(:)
+        real(TKG)           , intent(in)    , contiguous            :: cov(:,:)
+        real(TKG)           , intent(inout) , contiguous            :: cor(:,:)
     end subroutine
 #endif
 
@@ -2539,12 +2539,12 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCFC_RXLX_VUXX_RK1
 #endif
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
         type(low_type)      , intent(in)                            :: subset
         type(upp_type)      , intent(in)                            :: subsetv
-        real(TKC)           , intent(in)    , contiguous            :: stdinv(:)
-        real(TKC)           , intent(in)    , contiguous            :: cov(:,:)
-        real(TKC)           , intent(inout) , contiguous            :: cor(:,:)
+        real(TKG)           , intent(in)    , contiguous            :: stdinv(:)
+        real(TKG)           , intent(in)    , contiguous            :: cov(:,:)
+        real(TKG)           , intent(inout) , contiguous            :: cor(:,:)
     end subroutine
 #endif
 
@@ -2555,12 +2555,12 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCFC_RXLX_VXLX_RK5
 #endif
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
         type(low_type)      , intent(in)                            :: subset
         type(low_type)      , intent(in)                            :: subsetv
-        real(TKC)           , intent(in)    , contiguous            :: stdinv(:)
-        real(TKC)           , intent(in)    , contiguous            :: cov(:,:)
-        real(TKC)           , intent(inout) , contiguous            :: cor(:,:)
+        real(TKG)           , intent(in)    , contiguous            :: stdinv(:)
+        real(TKG)           , intent(in)    , contiguous            :: cov(:,:)
+        real(TKG)           , intent(inout) , contiguous            :: cor(:,:)
     end subroutine
 #endif
 
@@ -2569,12 +2569,12 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCFC_RXLX_VXLX_RK4
 #endif
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
         type(low_type)      , intent(in)                            :: subset
         type(low_type)      , intent(in)                            :: subsetv
-        real(TKC)           , intent(in)    , contiguous            :: stdinv(:)
-        real(TKC)           , intent(in)    , contiguous            :: cov(:,:)
-        real(TKC)           , intent(inout) , contiguous            :: cor(:,:)
+        real(TKG)           , intent(in)    , contiguous            :: stdinv(:)
+        real(TKG)           , intent(in)    , contiguous            :: cov(:,:)
+        real(TKG)           , intent(inout) , contiguous            :: cor(:,:)
     end subroutine
 #endif
 
@@ -2583,12 +2583,12 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCFC_RXLX_VXLX_RK3
 #endif
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
         type(low_type)      , intent(in)                            :: subset
         type(low_type)      , intent(in)                            :: subsetv
-        real(TKC)           , intent(in)    , contiguous            :: stdinv(:)
-        real(TKC)           , intent(in)    , contiguous            :: cov(:,:)
-        real(TKC)           , intent(inout) , contiguous            :: cor(:,:)
+        real(TKG)           , intent(in)    , contiguous            :: stdinv(:)
+        real(TKG)           , intent(in)    , contiguous            :: cov(:,:)
+        real(TKG)           , intent(inout) , contiguous            :: cor(:,:)
     end subroutine
 #endif
 
@@ -2597,12 +2597,12 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCFC_RXLX_VXLX_RK2
 #endif
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
         type(low_type)      , intent(in)                            :: subset
         type(low_type)      , intent(in)                            :: subsetv
-        real(TKC)           , intent(in)    , contiguous            :: stdinv(:)
-        real(TKC)           , intent(in)    , contiguous            :: cov(:,:)
-        real(TKC)           , intent(inout) , contiguous            :: cor(:,:)
+        real(TKG)           , intent(in)    , contiguous            :: stdinv(:)
+        real(TKG)           , intent(in)    , contiguous            :: cov(:,:)
+        real(TKG)           , intent(inout) , contiguous            :: cor(:,:)
     end subroutine
 #endif
 
@@ -2611,12 +2611,12 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCFC_RXLX_VXLX_RK1
 #endif
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
         type(low_type)      , intent(in)                            :: subset
         type(low_type)      , intent(in)                            :: subsetv
-        real(TKC)           , intent(in)    , contiguous            :: stdinv(:)
-        real(TKC)           , intent(in)    , contiguous            :: cov(:,:)
-        real(TKC)           , intent(inout) , contiguous            :: cor(:,:)
+        real(TKG)           , intent(in)    , contiguous            :: stdinv(:)
+        real(TKG)           , intent(in)    , contiguous            :: cov(:,:)
+        real(TKG)           , intent(inout) , contiguous            :: cor(:,:)
     end subroutine
 #endif
 
@@ -2643,12 +2643,12 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCFC_RUXD_VUXX_RK5
 #endif
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
         type(uppDia_type)   , intent(in)                            :: subset
         type(upp_type)      , intent(in)                            :: subsetv
-        real(TKC)           , intent(in)    , contiguous            :: stdinv(:)
-        real(TKC)           , intent(in)    , contiguous            :: cov(:,:)
-        real(TKC)           , intent(inout) , contiguous            :: cor(:,:)
+        real(TKG)           , intent(in)    , contiguous            :: stdinv(:)
+        real(TKG)           , intent(in)    , contiguous            :: cov(:,:)
+        real(TKG)           , intent(inout) , contiguous            :: cor(:,:)
     end subroutine
 #endif
 
@@ -2657,12 +2657,12 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCFC_RUXD_VUXX_RK4
 #endif
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
         type(uppDia_type)   , intent(in)                            :: subset
         type(upp_type)      , intent(in)                            :: subsetv
-        real(TKC)           , intent(in)    , contiguous            :: stdinv(:)
-        real(TKC)           , intent(in)    , contiguous            :: cov(:,:)
-        real(TKC)           , intent(inout) , contiguous            :: cor(:,:)
+        real(TKG)           , intent(in)    , contiguous            :: stdinv(:)
+        real(TKG)           , intent(in)    , contiguous            :: cov(:,:)
+        real(TKG)           , intent(inout) , contiguous            :: cor(:,:)
     end subroutine
 #endif
 
@@ -2671,12 +2671,12 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCFC_RUXD_VUXX_RK3
 #endif
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
         type(uppDia_type)   , intent(in)                            :: subset
         type(upp_type)      , intent(in)                            :: subsetv
-        real(TKC)           , intent(in)    , contiguous            :: stdinv(:)
-        real(TKC)           , intent(in)    , contiguous            :: cov(:,:)
-        real(TKC)           , intent(inout) , contiguous            :: cor(:,:)
+        real(TKG)           , intent(in)    , contiguous            :: stdinv(:)
+        real(TKG)           , intent(in)    , contiguous            :: cov(:,:)
+        real(TKG)           , intent(inout) , contiguous            :: cor(:,:)
     end subroutine
 #endif
 
@@ -2685,12 +2685,12 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCFC_RUXD_VUXX_RK2
 #endif
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
         type(uppDia_type)   , intent(in)                            :: subset
         type(upp_type)      , intent(in)                            :: subsetv
-        real(TKC)           , intent(in)    , contiguous            :: stdinv(:)
-        real(TKC)           , intent(in)    , contiguous            :: cov(:,:)
-        real(TKC)           , intent(inout) , contiguous            :: cor(:,:)
+        real(TKG)           , intent(in)    , contiguous            :: stdinv(:)
+        real(TKG)           , intent(in)    , contiguous            :: cov(:,:)
+        real(TKG)           , intent(inout) , contiguous            :: cor(:,:)
     end subroutine
 #endif
 
@@ -2699,12 +2699,12 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCFC_RUXD_VUXX_RK1
 #endif
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
         type(uppDia_type)   , intent(in)                            :: subset
         type(upp_type)      , intent(in)                            :: subsetv
-        real(TKC)           , intent(in)    , contiguous            :: stdinv(:)
-        real(TKC)           , intent(in)    , contiguous            :: cov(:,:)
-        real(TKC)           , intent(inout) , contiguous            :: cor(:,:)
+        real(TKG)           , intent(in)    , contiguous            :: stdinv(:)
+        real(TKG)           , intent(in)    , contiguous            :: cov(:,:)
+        real(TKG)           , intent(inout) , contiguous            :: cor(:,:)
     end subroutine
 #endif
 
@@ -2715,12 +2715,12 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCFC_RUXD_VXLX_RK5
 #endif
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
         type(uppDia_type)   , intent(in)                            :: subset
         type(low_type)      , intent(in)                            :: subsetv
-        real(TKC)           , intent(in)    , contiguous            :: stdinv(:)
-        real(TKC)           , intent(in)    , contiguous            :: cov(:,:)
-        real(TKC)           , intent(inout) , contiguous            :: cor(:,:)
+        real(TKG)           , intent(in)    , contiguous            :: stdinv(:)
+        real(TKG)           , intent(in)    , contiguous            :: cov(:,:)
+        real(TKG)           , intent(inout) , contiguous            :: cor(:,:)
     end subroutine
 #endif
 
@@ -2729,12 +2729,12 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCFC_RUXD_VXLX_RK4
 #endif
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
         type(uppDia_type)   , intent(in)                            :: subset
         type(low_type)      , intent(in)                            :: subsetv
-        real(TKC)           , intent(in)    , contiguous            :: stdinv(:)
-        real(TKC)           , intent(in)    , contiguous            :: cov(:,:)
-        real(TKC)           , intent(inout) , contiguous            :: cor(:,:)
+        real(TKG)           , intent(in)    , contiguous            :: stdinv(:)
+        real(TKG)           , intent(in)    , contiguous            :: cov(:,:)
+        real(TKG)           , intent(inout) , contiguous            :: cor(:,:)
     end subroutine
 #endif
 
@@ -2743,12 +2743,12 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCFC_RUXD_VXLX_RK3
 #endif
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
         type(uppDia_type)   , intent(in)                            :: subset
         type(low_type)      , intent(in)                            :: subsetv
-        real(TKC)           , intent(in)    , contiguous            :: stdinv(:)
-        real(TKC)           , intent(in)    , contiguous            :: cov(:,:)
-        real(TKC)           , intent(inout) , contiguous            :: cor(:,:)
+        real(TKG)           , intent(in)    , contiguous            :: stdinv(:)
+        real(TKG)           , intent(in)    , contiguous            :: cov(:,:)
+        real(TKG)           , intent(inout) , contiguous            :: cor(:,:)
     end subroutine
 #endif
 
@@ -2757,12 +2757,12 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCFC_RUXD_VXLX_RK2
 #endif
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
         type(uppDia_type)   , intent(in)                            :: subset
         type(low_type)      , intent(in)                            :: subsetv
-        real(TKC)           , intent(in)    , contiguous            :: stdinv(:)
-        real(TKC)           , intent(in)    , contiguous            :: cov(:,:)
-        real(TKC)           , intent(inout) , contiguous            :: cor(:,:)
+        real(TKG)           , intent(in)    , contiguous            :: stdinv(:)
+        real(TKG)           , intent(in)    , contiguous            :: cov(:,:)
+        real(TKG)           , intent(inout) , contiguous            :: cor(:,:)
     end subroutine
 #endif
 
@@ -2771,12 +2771,12 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCFC_RUXD_VXLX_RK1
 #endif
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
         type(uppDia_type)   , intent(in)                            :: subset
         type(low_type)      , intent(in)                            :: subsetv
-        real(TKC)           , intent(in)    , contiguous            :: stdinv(:)
-        real(TKC)           , intent(in)    , contiguous            :: cov(:,:)
-        real(TKC)           , intent(inout) , contiguous            :: cor(:,:)
+        real(TKG)           , intent(in)    , contiguous            :: stdinv(:)
+        real(TKG)           , intent(in)    , contiguous            :: cov(:,:)
+        real(TKG)           , intent(inout) , contiguous            :: cor(:,:)
     end subroutine
 #endif
 
@@ -2793,12 +2793,12 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCFC_RXLD_VUXX_RK5
 #endif
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
         type(lowDia_type)   , intent(in)                            :: subset
         type(upp_type)      , intent(in)                            :: subsetv
-        real(TKC)           , intent(in)    , contiguous            :: stdinv(:)
-        real(TKC)           , intent(in)    , contiguous            :: cov(:,:)
-        real(TKC)           , intent(inout) , contiguous            :: cor(:,:)
+        real(TKG)           , intent(in)    , contiguous            :: stdinv(:)
+        real(TKG)           , intent(in)    , contiguous            :: cov(:,:)
+        real(TKG)           , intent(inout) , contiguous            :: cor(:,:)
     end subroutine
 #endif
 
@@ -2807,12 +2807,12 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCFC_RXLD_VUXX_RK4
 #endif
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
         type(lowDia_type)   , intent(in)                            :: subset
         type(upp_type)      , intent(in)                            :: subsetv
-        real(TKC)           , intent(in)    , contiguous            :: stdinv(:)
-        real(TKC)           , intent(in)    , contiguous            :: cov(:,:)
-        real(TKC)           , intent(inout) , contiguous            :: cor(:,:)
+        real(TKG)           , intent(in)    , contiguous            :: stdinv(:)
+        real(TKG)           , intent(in)    , contiguous            :: cov(:,:)
+        real(TKG)           , intent(inout) , contiguous            :: cor(:,:)
     end subroutine
 #endif
 
@@ -2821,12 +2821,12 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCFC_RXLD_VUXX_RK3
 #endif
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
         type(lowDia_type)   , intent(in)                            :: subset
         type(upp_type)      , intent(in)                            :: subsetv
-        real(TKC)           , intent(in)    , contiguous            :: stdinv(:)
-        real(TKC)           , intent(in)    , contiguous            :: cov(:,:)
-        real(TKC)           , intent(inout) , contiguous            :: cor(:,:)
+        real(TKG)           , intent(in)    , contiguous            :: stdinv(:)
+        real(TKG)           , intent(in)    , contiguous            :: cov(:,:)
+        real(TKG)           , intent(inout) , contiguous            :: cor(:,:)
     end subroutine
 #endif
 
@@ -2835,12 +2835,12 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCFC_RXLD_VUXX_RK2
 #endif
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
         type(lowDia_type)   , intent(in)                            :: subset
         type(upp_type)      , intent(in)                            :: subsetv
-        real(TKC)           , intent(in)    , contiguous            :: stdinv(:)
-        real(TKC)           , intent(in)    , contiguous            :: cov(:,:)
-        real(TKC)           , intent(inout) , contiguous            :: cor(:,:)
+        real(TKG)           , intent(in)    , contiguous            :: stdinv(:)
+        real(TKG)           , intent(in)    , contiguous            :: cov(:,:)
+        real(TKG)           , intent(inout) , contiguous            :: cor(:,:)
     end subroutine
 #endif
 
@@ -2849,12 +2849,12 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCFC_RXLD_VUXX_RK1
 #endif
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
         type(lowDia_type)   , intent(in)                            :: subset
         type(upp_type)      , intent(in)                            :: subsetv
-        real(TKC)           , intent(in)    , contiguous            :: stdinv(:)
-        real(TKC)           , intent(in)    , contiguous            :: cov(:,:)
-        real(TKC)           , intent(inout) , contiguous            :: cor(:,:)
+        real(TKG)           , intent(in)    , contiguous            :: stdinv(:)
+        real(TKG)           , intent(in)    , contiguous            :: cov(:,:)
+        real(TKG)           , intent(inout) , contiguous            :: cor(:,:)
     end subroutine
 #endif
 
@@ -2865,12 +2865,12 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCFC_RXLD_VXLX_RK5
 #endif
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
         type(lowDia_type)   , intent(in)                            :: subset
         type(low_type)      , intent(in)                            :: subsetv
-        real(TKC)           , intent(in)    , contiguous            :: stdinv(:)
-        real(TKC)           , intent(in)    , contiguous            :: cov(:,:)
-        real(TKC)           , intent(inout) , contiguous            :: cor(:,:)
+        real(TKG)           , intent(in)    , contiguous            :: stdinv(:)
+        real(TKG)           , intent(in)    , contiguous            :: cov(:,:)
+        real(TKG)           , intent(inout) , contiguous            :: cor(:,:)
     end subroutine
 #endif
 
@@ -2879,12 +2879,12 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCFC_RXLD_VXLX_RK4
 #endif
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
         type(lowDia_type)   , intent(in)                            :: subset
         type(low_type)      , intent(in)                            :: subsetv
-        real(TKC)           , intent(in)    , contiguous            :: stdinv(:)
-        real(TKC)           , intent(in)    , contiguous            :: cov(:,:)
-        real(TKC)           , intent(inout) , contiguous            :: cor(:,:)
+        real(TKG)           , intent(in)    , contiguous            :: stdinv(:)
+        real(TKG)           , intent(in)    , contiguous            :: cov(:,:)
+        real(TKG)           , intent(inout) , contiguous            :: cor(:,:)
     end subroutine
 #endif
 
@@ -2893,12 +2893,12 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCFC_RXLD_VXLX_RK3
 #endif
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
         type(lowDia_type)   , intent(in)                            :: subset
         type(low_type)      , intent(in)                            :: subsetv
-        real(TKC)           , intent(in)    , contiguous            :: stdinv(:)
-        real(TKC)           , intent(in)    , contiguous            :: cov(:,:)
-        real(TKC)           , intent(inout) , contiguous            :: cor(:,:)
+        real(TKG)           , intent(in)    , contiguous            :: stdinv(:)
+        real(TKG)           , intent(in)    , contiguous            :: cov(:,:)
+        real(TKG)           , intent(inout) , contiguous            :: cor(:,:)
     end subroutine
 #endif
 
@@ -2907,12 +2907,12 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCFC_RXLD_VXLX_RK2
 #endif
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
         type(lowDia_type)   , intent(in)                            :: subset
         type(low_type)      , intent(in)                            :: subsetv
-        real(TKC)           , intent(in)    , contiguous            :: stdinv(:)
-        real(TKC)           , intent(in)    , contiguous            :: cov(:,:)
-        real(TKC)           , intent(inout) , contiguous            :: cor(:,:)
+        real(TKG)           , intent(in)    , contiguous            :: stdinv(:)
+        real(TKG)           , intent(in)    , contiguous            :: cov(:,:)
+        real(TKG)           , intent(inout) , contiguous            :: cor(:,:)
     end subroutine
 #endif
 
@@ -2921,12 +2921,12 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCFC_RXLD_VXLX_RK1
 #endif
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
         type(lowDia_type)   , intent(in)                            :: subset
         type(low_type)      , intent(in)                            :: subsetv
-        real(TKC)           , intent(in)    , contiguous            :: stdinv(:)
-        real(TKC)           , intent(in)    , contiguous            :: cov(:,:)
-        real(TKC)           , intent(inout) , contiguous            :: cor(:,:)
+        real(TKG)           , intent(in)    , contiguous            :: stdinv(:)
+        real(TKG)           , intent(in)    , contiguous            :: cov(:,:)
+        real(TKG)           , intent(inout) , contiguous            :: cor(:,:)
     end subroutine
 #endif
 
@@ -2953,11 +2953,11 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCFC_RUXX_VUXD_RK5
 #endif
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
         type(upp_type)      , intent(in)                            :: subset
         type(uppDia_type)   , intent(in)                            :: subsetv
-        real(TKC)           , intent(in)    , contiguous            :: cov(:,:)
-        real(TKC)           , intent(inout) , contiguous            :: cor(:,:)
+        real(TKG)           , intent(in)    , contiguous            :: cov(:,:)
+        real(TKG)           , intent(inout) , contiguous            :: cor(:,:)
     end subroutine
 #endif
 
@@ -2966,11 +2966,11 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCFC_RUXX_VUXD_RK4
 #endif
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
         type(upp_type)      , intent(in)                            :: subset
         type(uppDia_type)   , intent(in)                            :: subsetv
-        real(TKC)           , intent(in)    , contiguous            :: cov(:,:)
-        real(TKC)           , intent(inout) , contiguous            :: cor(:,:)
+        real(TKG)           , intent(in)    , contiguous            :: cov(:,:)
+        real(TKG)           , intent(inout) , contiguous            :: cor(:,:)
     end subroutine
 #endif
 
@@ -2979,11 +2979,11 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCFC_RUXX_VUXD_RK3
 #endif
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
         type(upp_type)      , intent(in)                            :: subset
         type(uppDia_type)   , intent(in)                            :: subsetv
-        real(TKC)           , intent(in)    , contiguous            :: cov(:,:)
-        real(TKC)           , intent(inout) , contiguous            :: cor(:,:)
+        real(TKG)           , intent(in)    , contiguous            :: cov(:,:)
+        real(TKG)           , intent(inout) , contiguous            :: cor(:,:)
     end subroutine
 #endif
 
@@ -2992,11 +2992,11 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCFC_RUXX_VUXD_RK2
 #endif
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
         type(upp_type)      , intent(in)                            :: subset
         type(uppDia_type)   , intent(in)                            :: subsetv
-        real(TKC)           , intent(in)    , contiguous            :: cov(:,:)
-        real(TKC)           , intent(inout) , contiguous            :: cor(:,:)
+        real(TKG)           , intent(in)    , contiguous            :: cov(:,:)
+        real(TKG)           , intent(inout) , contiguous            :: cor(:,:)
     end subroutine
 #endif
 
@@ -3005,11 +3005,11 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCFC_RUXX_VUXD_RK1
 #endif
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
         type(upp_type)      , intent(in)                            :: subset
         type(uppDia_type)   , intent(in)                            :: subsetv
-        real(TKC)           , intent(in)    , contiguous            :: cov(:,:)
-        real(TKC)           , intent(inout) , contiguous            :: cor(:,:)
+        real(TKG)           , intent(in)    , contiguous            :: cov(:,:)
+        real(TKG)           , intent(inout) , contiguous            :: cor(:,:)
     end subroutine
 #endif
 
@@ -3020,11 +3020,11 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCFC_RUXX_VXLD_RK5
 #endif
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
         type(upp_type)      , intent(in)                            :: subset
         type(lowDia_type)   , intent(in)                            :: subsetv
-        real(TKC)           , intent(in)    , contiguous            :: cov(:,:)
-        real(TKC)           , intent(inout) , contiguous            :: cor(:,:)
+        real(TKG)           , intent(in)    , contiguous            :: cov(:,:)
+        real(TKG)           , intent(inout) , contiguous            :: cor(:,:)
     end subroutine
 #endif
 
@@ -3033,11 +3033,11 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCFC_RUXX_VXLD_RK4
 #endif
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
         type(upp_type)      , intent(in)                            :: subset
         type(lowDia_type)   , intent(in)                            :: subsetv
-        real(TKC)           , intent(in)    , contiguous            :: cov(:,:)
-        real(TKC)           , intent(inout) , contiguous            :: cor(:,:)
+        real(TKG)           , intent(in)    , contiguous            :: cov(:,:)
+        real(TKG)           , intent(inout) , contiguous            :: cor(:,:)
     end subroutine
 #endif
 
@@ -3046,11 +3046,11 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCFC_RUXX_VXLD_RK3
 #endif
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
         type(upp_type)      , intent(in)                            :: subset
         type(lowDia_type)   , intent(in)                            :: subsetv
-        real(TKC)           , intent(in)    , contiguous            :: cov(:,:)
-        real(TKC)           , intent(inout) , contiguous            :: cor(:,:)
+        real(TKG)           , intent(in)    , contiguous            :: cov(:,:)
+        real(TKG)           , intent(inout) , contiguous            :: cor(:,:)
     end subroutine
 #endif
 
@@ -3059,11 +3059,11 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCFC_RUXX_VXLD_RK2
 #endif
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
         type(upp_type)      , intent(in)                            :: subset
         type(lowDia_type)   , intent(in)                            :: subsetv
-        real(TKC)           , intent(in)    , contiguous            :: cov(:,:)
-        real(TKC)           , intent(inout) , contiguous            :: cor(:,:)
+        real(TKG)           , intent(in)    , contiguous            :: cov(:,:)
+        real(TKG)           , intent(inout) , contiguous            :: cor(:,:)
     end subroutine
 #endif
 
@@ -3072,11 +3072,11 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCFC_RUXX_VXLD_RK1
 #endif
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
         type(upp_type)      , intent(in)                            :: subset
         type(lowDia_type)   , intent(in)                            :: subsetv
-        real(TKC)           , intent(in)    , contiguous            :: cov(:,:)
-        real(TKC)           , intent(inout) , contiguous            :: cor(:,:)
+        real(TKG)           , intent(in)    , contiguous            :: cov(:,:)
+        real(TKG)           , intent(inout) , contiguous            :: cor(:,:)
     end subroutine
 #endif
 
@@ -3093,11 +3093,11 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCFC_RXLX_VUXD_RK5
 #endif
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
         type(low_type)      , intent(in)                            :: subset
         type(uppDia_type)   , intent(in)                            :: subsetv
-        real(TKC)           , intent(in)    , contiguous            :: cov(:,:)
-        real(TKC)           , intent(inout) , contiguous            :: cor(:,:)
+        real(TKG)           , intent(in)    , contiguous            :: cov(:,:)
+        real(TKG)           , intent(inout) , contiguous            :: cor(:,:)
     end subroutine
 #endif
 
@@ -3106,11 +3106,11 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCFC_RXLX_VUXD_RK4
 #endif
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
         type(low_type)      , intent(in)                            :: subset
         type(uppDia_type)   , intent(in)                            :: subsetv
-        real(TKC)           , intent(in)    , contiguous            :: cov(:,:)
-        real(TKC)           , intent(inout) , contiguous            :: cor(:,:)
+        real(TKG)           , intent(in)    , contiguous            :: cov(:,:)
+        real(TKG)           , intent(inout) , contiguous            :: cor(:,:)
     end subroutine
 #endif
 
@@ -3119,11 +3119,11 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCFC_RXLX_VUXD_RK3
 #endif
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
         type(low_type)      , intent(in)                            :: subset
         type(uppDia_type)   , intent(in)                            :: subsetv
-        real(TKC)           , intent(in)    , contiguous            :: cov(:,:)
-        real(TKC)           , intent(inout) , contiguous            :: cor(:,:)
+        real(TKG)           , intent(in)    , contiguous            :: cov(:,:)
+        real(TKG)           , intent(inout) , contiguous            :: cor(:,:)
     end subroutine
 #endif
 
@@ -3132,11 +3132,11 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCFC_RXLX_VUXD_RK2
 #endif
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
         type(low_type)      , intent(in)                            :: subset
         type(uppDia_type)   , intent(in)                            :: subsetv
-        real(TKC)           , intent(in)    , contiguous            :: cov(:,:)
-        real(TKC)           , intent(inout) , contiguous            :: cor(:,:)
+        real(TKG)           , intent(in)    , contiguous            :: cov(:,:)
+        real(TKG)           , intent(inout) , contiguous            :: cor(:,:)
     end subroutine
 #endif
 
@@ -3145,11 +3145,11 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCFC_RXLX_VUXD_RK1
 #endif
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
         type(low_type)      , intent(in)                            :: subset
         type(uppDia_type)   , intent(in)                            :: subsetv
-        real(TKC)           , intent(in)    , contiguous            :: cov(:,:)
-        real(TKC)           , intent(inout) , contiguous            :: cor(:,:)
+        real(TKG)           , intent(in)    , contiguous            :: cov(:,:)
+        real(TKG)           , intent(inout) , contiguous            :: cor(:,:)
     end subroutine
 #endif
 
@@ -3160,11 +3160,11 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCFC_RXLX_VXLD_RK5
 #endif
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
         type(low_type)      , intent(in)                            :: subset
         type(lowDia_type)   , intent(in)                            :: subsetv
-        real(TKC)           , intent(in)    , contiguous            :: cov(:,:)
-        real(TKC)           , intent(inout) , contiguous            :: cor(:,:)
+        real(TKG)           , intent(in)    , contiguous            :: cov(:,:)
+        real(TKG)           , intent(inout) , contiguous            :: cor(:,:)
     end subroutine
 #endif
 
@@ -3173,11 +3173,11 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCFC_RXLX_VXLD_RK4
 #endif
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
         type(low_type)      , intent(in)                            :: subset
         type(lowDia_type)   , intent(in)                            :: subsetv
-        real(TKC)           , intent(in)    , contiguous            :: cov(:,:)
-        real(TKC)           , intent(inout) , contiguous            :: cor(:,:)
+        real(TKG)           , intent(in)    , contiguous            :: cov(:,:)
+        real(TKG)           , intent(inout) , contiguous            :: cor(:,:)
     end subroutine
 #endif
 
@@ -3186,11 +3186,11 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCFC_RXLX_VXLD_RK3
 #endif
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
         type(low_type)      , intent(in)                            :: subset
         type(lowDia_type)   , intent(in)                            :: subsetv
-        real(TKC)           , intent(in)    , contiguous            :: cov(:,:)
-        real(TKC)           , intent(inout) , contiguous            :: cor(:,:)
+        real(TKG)           , intent(in)    , contiguous            :: cov(:,:)
+        real(TKG)           , intent(inout) , contiguous            :: cor(:,:)
     end subroutine
 #endif
 
@@ -3199,11 +3199,11 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCFC_RXLX_VXLD_RK2
 #endif
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
         type(low_type)      , intent(in)                            :: subset
         type(lowDia_type)   , intent(in)                            :: subsetv
-        real(TKC)           , intent(in)    , contiguous            :: cov(:,:)
-        real(TKC)           , intent(inout) , contiguous            :: cor(:,:)
+        real(TKG)           , intent(in)    , contiguous            :: cov(:,:)
+        real(TKG)           , intent(inout) , contiguous            :: cor(:,:)
     end subroutine
 #endif
 
@@ -3212,11 +3212,11 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCFC_RXLX_VXLD_RK1
 #endif
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
         type(low_type)      , intent(in)                            :: subset
         type(lowDia_type)   , intent(in)                            :: subsetv
-        real(TKC)           , intent(in)    , contiguous            :: cov(:,:)
-        real(TKC)           , intent(inout) , contiguous            :: cor(:,:)
+        real(TKG)           , intent(in)    , contiguous            :: cov(:,:)
+        real(TKG)           , intent(inout) , contiguous            :: cor(:,:)
     end subroutine
 #endif
 
@@ -3243,11 +3243,11 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCFC_RUXD_VUXD_RK5
 #endif
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
         type(uppDia_type)   , intent(in)                            :: subset
         type(uppDia_type)   , intent(in)                            :: subsetv
-        real(TKC)           , intent(in)    , contiguous            :: cov(:,:)
-        real(TKC)           , intent(inout) , contiguous            :: cor(:,:)
+        real(TKG)           , intent(in)    , contiguous            :: cov(:,:)
+        real(TKG)           , intent(inout) , contiguous            :: cor(:,:)
     end subroutine
 #endif
 
@@ -3256,11 +3256,11 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCFC_RUXD_VUXD_RK4
 #endif
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
         type(uppDia_type)   , intent(in)                            :: subset
         type(uppDia_type)   , intent(in)                            :: subsetv
-        real(TKC)           , intent(in)    , contiguous            :: cov(:,:)
-        real(TKC)           , intent(inout) , contiguous            :: cor(:,:)
+        real(TKG)           , intent(in)    , contiguous            :: cov(:,:)
+        real(TKG)           , intent(inout) , contiguous            :: cor(:,:)
     end subroutine
 #endif
 
@@ -3269,11 +3269,11 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCFC_RUXD_VUXD_RK3
 #endif
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
         type(uppDia_type)   , intent(in)                            :: subset
         type(uppDia_type)   , intent(in)                            :: subsetv
-        real(TKC)           , intent(in)    , contiguous            :: cov(:,:)
-        real(TKC)           , intent(inout) , contiguous            :: cor(:,:)
+        real(TKG)           , intent(in)    , contiguous            :: cov(:,:)
+        real(TKG)           , intent(inout) , contiguous            :: cor(:,:)
     end subroutine
 #endif
 
@@ -3282,11 +3282,11 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCFC_RUXD_VUXD_RK2
 #endif
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
         type(uppDia_type)   , intent(in)                            :: subset
         type(uppDia_type)   , intent(in)                            :: subsetv
-        real(TKC)           , intent(in)    , contiguous            :: cov(:,:)
-        real(TKC)           , intent(inout) , contiguous            :: cor(:,:)
+        real(TKG)           , intent(in)    , contiguous            :: cov(:,:)
+        real(TKG)           , intent(inout) , contiguous            :: cor(:,:)
     end subroutine
 #endif
 
@@ -3295,11 +3295,11 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCFC_RUXD_VUXD_RK1
 #endif
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
         type(uppDia_type)   , intent(in)                            :: subset
         type(uppDia_type)   , intent(in)                            :: subsetv
-        real(TKC)           , intent(in)    , contiguous            :: cov(:,:)
-        real(TKC)           , intent(inout) , contiguous            :: cor(:,:)
+        real(TKG)           , intent(in)    , contiguous            :: cov(:,:)
+        real(TKG)           , intent(inout) , contiguous            :: cor(:,:)
     end subroutine
 #endif
 
@@ -3310,11 +3310,11 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCFC_RUXD_VXLD_RK5
 #endif
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
         type(uppDia_type)   , intent(in)                            :: subset
         type(lowDia_type)   , intent(in)                            :: subsetv
-        real(TKC)           , intent(in)    , contiguous            :: cov(:,:)
-        real(TKC)           , intent(inout) , contiguous            :: cor(:,:)
+        real(TKG)           , intent(in)    , contiguous            :: cov(:,:)
+        real(TKG)           , intent(inout) , contiguous            :: cor(:,:)
     end subroutine
 #endif
 
@@ -3323,11 +3323,11 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCFC_RUXD_VXLD_RK4
 #endif
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
         type(uppDia_type)   , intent(in)                            :: subset
         type(lowDia_type)   , intent(in)                            :: subsetv
-        real(TKC)           , intent(in)    , contiguous            :: cov(:,:)
-        real(TKC)           , intent(inout) , contiguous            :: cor(:,:)
+        real(TKG)           , intent(in)    , contiguous            :: cov(:,:)
+        real(TKG)           , intent(inout) , contiguous            :: cor(:,:)
     end subroutine
 #endif
 
@@ -3336,11 +3336,11 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCFC_RUXD_VXLD_RK3
 #endif
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
         type(uppDia_type)   , intent(in)                            :: subset
         type(lowDia_type)   , intent(in)                            :: subsetv
-        real(TKC)           , intent(in)    , contiguous            :: cov(:,:)
-        real(TKC)           , intent(inout) , contiguous            :: cor(:,:)
+        real(TKG)           , intent(in)    , contiguous            :: cov(:,:)
+        real(TKG)           , intent(inout) , contiguous            :: cor(:,:)
     end subroutine
 #endif
 
@@ -3349,11 +3349,11 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCFC_RUXD_VXLD_RK2
 #endif
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
         type(uppDia_type)   , intent(in)                            :: subset
         type(lowDia_type)   , intent(in)                            :: subsetv
-        real(TKC)           , intent(in)    , contiguous            :: cov(:,:)
-        real(TKC)           , intent(inout) , contiguous            :: cor(:,:)
+        real(TKG)           , intent(in)    , contiguous            :: cov(:,:)
+        real(TKG)           , intent(inout) , contiguous            :: cor(:,:)
     end subroutine
 #endif
 
@@ -3362,11 +3362,11 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCFC_RUXD_VXLD_RK1
 #endif
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
         type(uppDia_type)   , intent(in)                            :: subset
         type(lowDia_type)   , intent(in)                            :: subsetv
-        real(TKC)           , intent(in)    , contiguous            :: cov(:,:)
-        real(TKC)           , intent(inout) , contiguous            :: cor(:,:)
+        real(TKG)           , intent(in)    , contiguous            :: cov(:,:)
+        real(TKG)           , intent(inout) , contiguous            :: cor(:,:)
     end subroutine
 #endif
 
@@ -3383,11 +3383,11 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCFC_RXLD_VUXD_RK5
 #endif
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
         type(lowDia_type)   , intent(in)                            :: subset
         type(uppDia_type)   , intent(in)                            :: subsetv
-        real(TKC)           , intent(in)    , contiguous            :: cov(:,:)
-        real(TKC)           , intent(inout) , contiguous            :: cor(:,:)
+        real(TKG)           , intent(in)    , contiguous            :: cov(:,:)
+        real(TKG)           , intent(inout) , contiguous            :: cor(:,:)
     end subroutine
 #endif
 
@@ -3396,11 +3396,11 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCFC_RXLD_VUXD_RK4
 #endif
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
         type(lowDia_type)   , intent(in)                            :: subset
         type(uppDia_type)   , intent(in)                            :: subsetv
-        real(TKC)           , intent(in)    , contiguous            :: cov(:,:)
-        real(TKC)           , intent(inout) , contiguous            :: cor(:,:)
+        real(TKG)           , intent(in)    , contiguous            :: cov(:,:)
+        real(TKG)           , intent(inout) , contiguous            :: cor(:,:)
     end subroutine
 #endif
 
@@ -3409,11 +3409,11 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCFC_RXLD_VUXD_RK3
 #endif
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
         type(lowDia_type)   , intent(in)                            :: subset
         type(uppDia_type)   , intent(in)                            :: subsetv
-        real(TKC)           , intent(in)    , contiguous            :: cov(:,:)
-        real(TKC)           , intent(inout) , contiguous            :: cor(:,:)
+        real(TKG)           , intent(in)    , contiguous            :: cov(:,:)
+        real(TKG)           , intent(inout) , contiguous            :: cor(:,:)
     end subroutine
 #endif
 
@@ -3422,11 +3422,11 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCFC_RXLD_VUXD_RK2
 #endif
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
         type(lowDia_type)   , intent(in)                            :: subset
         type(uppDia_type)   , intent(in)                            :: subsetv
-        real(TKC)           , intent(in)    , contiguous            :: cov(:,:)
-        real(TKC)           , intent(inout) , contiguous            :: cor(:,:)
+        real(TKG)           , intent(in)    , contiguous            :: cov(:,:)
+        real(TKG)           , intent(inout) , contiguous            :: cor(:,:)
     end subroutine
 #endif
 
@@ -3435,11 +3435,11 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCFC_RXLD_VUXD_RK1
 #endif
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
         type(lowDia_type)   , intent(in)                            :: subset
         type(uppDia_type)   , intent(in)                            :: subsetv
-        real(TKC)           , intent(in)    , contiguous            :: cov(:,:)
-        real(TKC)           , intent(inout) , contiguous            :: cor(:,:)
+        real(TKG)           , intent(in)    , contiguous            :: cov(:,:)
+        real(TKG)           , intent(inout) , contiguous            :: cor(:,:)
     end subroutine
 #endif
 
@@ -3450,11 +3450,11 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCFC_RXLD_VXLD_RK5
 #endif
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
         type(lowDia_type)   , intent(in)                            :: subset
         type(lowDia_type)   , intent(in)                            :: subsetv
-        real(TKC)           , intent(in)    , contiguous            :: cov(:,:)
-        real(TKC)           , intent(inout) , contiguous            :: cor(:,:)
+        real(TKG)           , intent(in)    , contiguous            :: cov(:,:)
+        real(TKG)           , intent(inout) , contiguous            :: cor(:,:)
     end subroutine
 #endif
 
@@ -3463,11 +3463,11 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCFC_RXLD_VXLD_RK4
 #endif
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
         type(lowDia_type)   , intent(in)                            :: subset
         type(lowDia_type)   , intent(in)                            :: subsetv
-        real(TKC)           , intent(in)    , contiguous            :: cov(:,:)
-        real(TKC)           , intent(inout) , contiguous            :: cor(:,:)
+        real(TKG)           , intent(in)    , contiguous            :: cov(:,:)
+        real(TKG)           , intent(inout) , contiguous            :: cor(:,:)
     end subroutine
 #endif
 
@@ -3476,11 +3476,11 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCFC_RXLD_VXLD_RK3
 #endif
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
         type(lowDia_type)   , intent(in)                            :: subset
         type(lowDia_type)   , intent(in)                            :: subsetv
-        real(TKC)           , intent(in)    , contiguous            :: cov(:,:)
-        real(TKC)           , intent(inout) , contiguous            :: cor(:,:)
+        real(TKG)           , intent(in)    , contiguous            :: cov(:,:)
+        real(TKG)           , intent(inout) , contiguous            :: cor(:,:)
     end subroutine
 #endif
 
@@ -3489,11 +3489,11 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCFC_RXLD_VXLD_RK2
 #endif
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
         type(lowDia_type)   , intent(in)                            :: subset
         type(lowDia_type)   , intent(in)                            :: subsetv
-        real(TKC)           , intent(in)    , contiguous            :: cov(:,:)
-        real(TKC)           , intent(inout) , contiguous            :: cor(:,:)
+        real(TKG)           , intent(in)    , contiguous            :: cov(:,:)
+        real(TKG)           , intent(inout) , contiguous            :: cor(:,:)
     end subroutine
 #endif
 
@@ -3502,11 +3502,11 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCFC_RXLD_VXLD_RK1
 #endif
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
         type(lowDia_type)   , intent(in)                            :: subset
         type(lowDia_type)   , intent(in)                            :: subsetv
-        real(TKC)           , intent(in)    , contiguous            :: cov(:,:)
-        real(TKC)           , intent(inout) , contiguous            :: cor(:,:)
+        real(TKG)           , intent(in)    , contiguous            :: cov(:,:)
+        real(TKG)           , intent(inout) , contiguous            :: cor(:,:)
     end subroutine
 #endif
 
@@ -3531,9 +3531,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPrsOrgWNO_XY_RK5
 #endif
-        use pm_kind, only: TKC => RK5
-        real(TKC)               , intent(in)    , contiguous        :: x(:), y(:)
-        real(TKC)               , intent(out)                       :: cor
+        use pm_kind, only: TKG => RK5
+        real(TKG)               , intent(in)    , contiguous        :: x(:), y(:)
+        real(TKG)               , intent(out)                       :: cor
     end subroutine
 #endif
 
@@ -3542,9 +3542,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPrsOrgWNO_XY_RK4
 #endif
-        use pm_kind, only: TKC => RK4
-        real(TKC)               , intent(in)    , contiguous        :: x(:), y(:)
-        real(TKC)               , intent(out)                       :: cor
+        use pm_kind, only: TKG => RK4
+        real(TKG)               , intent(in)    , contiguous        :: x(:), y(:)
+        real(TKG)               , intent(out)                       :: cor
     end subroutine
 #endif
 
@@ -3553,9 +3553,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPrsOrgWNO_XY_RK3
 #endif
-        use pm_kind, only: TKC => RK3
-        real(TKC)               , intent(in)    , contiguous        :: x(:), y(:)
-        real(TKC)               , intent(out)                       :: cor
+        use pm_kind, only: TKG => RK3
+        real(TKG)               , intent(in)    , contiguous        :: x(:), y(:)
+        real(TKG)               , intent(out)                       :: cor
     end subroutine
 #endif
 
@@ -3564,9 +3564,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPrsOrgWNO_XY_RK2
 #endif
-        use pm_kind, only: TKC => RK2
-        real(TKC)               , intent(in)    , contiguous        :: x(:), y(:)
-        real(TKC)               , intent(out)                       :: cor
+        use pm_kind, only: TKG => RK2
+        real(TKG)               , intent(in)    , contiguous        :: x(:), y(:)
+        real(TKG)               , intent(out)                       :: cor
     end subroutine
 #endif
 
@@ -3575,9 +3575,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPrsOrgWNO_XY_RK1
 #endif
-        use pm_kind, only: TKC => RK1
-        real(TKC)               , intent(in)    , contiguous        :: x(:), y(:)
-        real(TKC)               , intent(out)                       :: cor
+        use pm_kind, only: TKG => RK1
+        real(TKG)               , intent(in)    , contiguous        :: x(:), y(:)
+        real(TKG)               , intent(out)                       :: cor
     end subroutine
 #endif
 
@@ -3588,10 +3588,10 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPrsAvgWNO_XY_RK5
 #endif
-        use pm_kind, only: TKC => RK5
-        real(TKC)               , intent(in)    , contiguous        :: x(:), y(:)
-        real(TKC)               , intent(in)    , contiguous        :: mean(:)
-        real(TKC)               , intent(out)                       :: cor
+        use pm_kind, only: TKG => RK5
+        real(TKG)               , intent(in)    , contiguous        :: x(:), y(:)
+        real(TKG)               , intent(in)    , contiguous        :: mean(:)
+        real(TKG)               , intent(out)                       :: cor
     end subroutine
 #endif
 
@@ -3600,10 +3600,10 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPrsAvgWNO_XY_RK4
 #endif
-        use pm_kind, only: TKC => RK4
-        real(TKC)               , intent(in)    , contiguous        :: x(:), y(:)
-        real(TKC)               , intent(in)    , contiguous        :: mean(:)
-        real(TKC)               , intent(out)                       :: cor
+        use pm_kind, only: TKG => RK4
+        real(TKG)               , intent(in)    , contiguous        :: x(:), y(:)
+        real(TKG)               , intent(in)    , contiguous        :: mean(:)
+        real(TKG)               , intent(out)                       :: cor
     end subroutine
 #endif
 
@@ -3612,10 +3612,10 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPrsAvgWNO_XY_RK3
 #endif
-        use pm_kind, only: TKC => RK3
-        real(TKC)               , intent(in)    , contiguous        :: x(:), y(:)
-        real(TKC)               , intent(in)    , contiguous        :: mean(:)
-        real(TKC)               , intent(out)                       :: cor
+        use pm_kind, only: TKG => RK3
+        real(TKG)               , intent(in)    , contiguous        :: x(:), y(:)
+        real(TKG)               , intent(in)    , contiguous        :: mean(:)
+        real(TKG)               , intent(out)                       :: cor
     end subroutine
 #endif
 
@@ -3624,10 +3624,10 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPrsAvgWNO_XY_RK2
 #endif
-        use pm_kind, only: TKC => RK2
-        real(TKC)               , intent(in)    , contiguous        :: x(:), y(:)
-        real(TKC)               , intent(in)    , contiguous        :: mean(:)
-        real(TKC)               , intent(out)                       :: cor
+        use pm_kind, only: TKG => RK2
+        real(TKG)               , intent(in)    , contiguous        :: x(:), y(:)
+        real(TKG)               , intent(in)    , contiguous        :: mean(:)
+        real(TKG)               , intent(out)                       :: cor
     end subroutine
 #endif
 
@@ -3636,10 +3636,10 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPrsAvgWNO_XY_RK1
 #endif
-        use pm_kind, only: TKC => RK1
-        real(TKC)               , intent(in)    , contiguous        :: x(:), y(:)
-        real(TKC)               , intent(in)    , contiguous        :: mean(:)
-        real(TKC)               , intent(out)                       :: cor
+        use pm_kind, only: TKG => RK1
+        real(TKG)               , intent(in)    , contiguous        :: x(:), y(:)
+        real(TKG)               , intent(in)    , contiguous        :: mean(:)
+        real(TKG)               , intent(out)                       :: cor
     end subroutine
 #endif
 
@@ -3658,11 +3658,11 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPrsOrgWTI_XY_RK5
 #endif
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
         integer(IK)             , intent(in)                        :: weisum
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        real(TKC)               , intent(in)    , contiguous        :: x(:), y(:)
-        real(TKC)               , intent(out)                       :: cor
+        real(TKG)               , intent(in)    , contiguous        :: x(:), y(:)
+        real(TKG)               , intent(out)                       :: cor
     end subroutine
 #endif
 
@@ -3671,11 +3671,11 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPrsOrgWTI_XY_RK4
 #endif
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
         integer(IK)             , intent(in)                        :: weisum
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        real(TKC)               , intent(in)    , contiguous        :: x(:), y(:)
-        real(TKC)               , intent(out)                       :: cor
+        real(TKG)               , intent(in)    , contiguous        :: x(:), y(:)
+        real(TKG)               , intent(out)                       :: cor
     end subroutine
 #endif
 
@@ -3684,11 +3684,11 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPrsOrgWTI_XY_RK3
 #endif
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
         integer(IK)             , intent(in)                        :: weisum
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        real(TKC)               , intent(in)    , contiguous        :: x(:), y(:)
-        real(TKC)               , intent(out)                       :: cor
+        real(TKG)               , intent(in)    , contiguous        :: x(:), y(:)
+        real(TKG)               , intent(out)                       :: cor
     end subroutine
 #endif
 
@@ -3697,11 +3697,11 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPrsOrgWTI_XY_RK2
 #endif
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
         integer(IK)             , intent(in)                        :: weisum
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        real(TKC)               , intent(in)    , contiguous        :: x(:), y(:)
-        real(TKC)               , intent(out)                       :: cor
+        real(TKG)               , intent(in)    , contiguous        :: x(:), y(:)
+        real(TKG)               , intent(out)                       :: cor
     end subroutine
 #endif
 
@@ -3710,11 +3710,11 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPrsOrgWTI_XY_RK1
 #endif
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
         integer(IK)             , intent(in)                        :: weisum
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        real(TKC)               , intent(in)    , contiguous        :: x(:), y(:)
-        real(TKC)               , intent(out)                       :: cor
+        real(TKG)               , intent(in)    , contiguous        :: x(:), y(:)
+        real(TKG)               , intent(out)                       :: cor
     end subroutine
 #endif
 
@@ -3725,12 +3725,12 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPrsAvgWTI_XY_RK5
 #endif
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
         integer(IK)             , intent(in)                        :: weisum
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        real(TKC)               , intent(in)    , contiguous        :: mean(:)
-        real(TKC)               , intent(in)    , contiguous        :: x(:), y(:)
-        real(TKC)               , intent(out)                       :: cor
+        real(TKG)               , intent(in)    , contiguous        :: mean(:)
+        real(TKG)               , intent(in)    , contiguous        :: x(:), y(:)
+        real(TKG)               , intent(out)                       :: cor
     end subroutine
 #endif
 
@@ -3739,12 +3739,12 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPrsAvgWTI_XY_RK4
 #endif
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
         integer(IK)             , intent(in)                        :: weisum
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        real(TKC)               , intent(in)    , contiguous        :: mean(:)
-        real(TKC)               , intent(in)    , contiguous        :: x(:), y(:)
-        real(TKC)               , intent(out)                       :: cor
+        real(TKG)               , intent(in)    , contiguous        :: mean(:)
+        real(TKG)               , intent(in)    , contiguous        :: x(:), y(:)
+        real(TKG)               , intent(out)                       :: cor
     end subroutine
 #endif
 
@@ -3753,12 +3753,12 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPrsAvgWTI_XY_RK3
 #endif
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
         integer(IK)             , intent(in)                        :: weisum
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        real(TKC)               , intent(in)    , contiguous        :: mean(:)
-        real(TKC)               , intent(in)    , contiguous        :: x(:), y(:)
-        real(TKC)               , intent(out)                       :: cor
+        real(TKG)               , intent(in)    , contiguous        :: mean(:)
+        real(TKG)               , intent(in)    , contiguous        :: x(:), y(:)
+        real(TKG)               , intent(out)                       :: cor
     end subroutine
 #endif
 
@@ -3767,12 +3767,12 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPrsAvgWTI_XY_RK2
 #endif
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
         integer(IK)             , intent(in)                        :: weisum
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        real(TKC)               , intent(in)    , contiguous        :: mean(:)
-        real(TKC)               , intent(in)    , contiguous        :: x(:), y(:)
-        real(TKC)               , intent(out)                       :: cor
+        real(TKG)               , intent(in)    , contiguous        :: mean(:)
+        real(TKG)               , intent(in)    , contiguous        :: x(:), y(:)
+        real(TKG)               , intent(out)                       :: cor
     end subroutine
 #endif
 
@@ -3781,12 +3781,12 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPrsAvgWTI_XY_RK1
 #endif
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
         integer(IK)             , intent(in)                        :: weisum
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        real(TKC)               , intent(in)    , contiguous        :: mean(:)
-        real(TKC)               , intent(in)    , contiguous        :: x(:), y(:)
-        real(TKC)               , intent(out)                       :: cor
+        real(TKG)               , intent(in)    , contiguous        :: mean(:)
+        real(TKG)               , intent(in)    , contiguous        :: x(:), y(:)
+        real(TKG)               , intent(out)                       :: cor
     end subroutine
 #endif
 
@@ -3805,11 +3805,11 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPrsOrgWTR_XY_RK5
 #endif
-        use pm_kind, only: TKC => RK5
-        real(TKC)               , intent(in)                        :: weisum
-        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-        real(TKC)               , intent(in)    , contiguous        :: x(:), y(:)
-        real(TKC)               , intent(out)                       :: cor
+        use pm_kind, only: TKG => RK5
+        real(TKG)               , intent(in)                        :: weisum
+        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+        real(TKG)               , intent(in)    , contiguous        :: x(:), y(:)
+        real(TKG)               , intent(out)                       :: cor
     end subroutine
 #endif
 
@@ -3818,11 +3818,11 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPrsOrgWTR_XY_RK4
 #endif
-        use pm_kind, only: TKC => RK4
-        real(TKC)               , intent(in)                        :: weisum
-        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-        real(TKC)               , intent(in)    , contiguous        :: x(:), y(:)
-        real(TKC)               , intent(out)                       :: cor
+        use pm_kind, only: TKG => RK4
+        real(TKG)               , intent(in)                        :: weisum
+        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+        real(TKG)               , intent(in)    , contiguous        :: x(:), y(:)
+        real(TKG)               , intent(out)                       :: cor
     end subroutine
 #endif
 
@@ -3831,11 +3831,11 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPrsOrgWTR_XY_RK3
 #endif
-        use pm_kind, only: TKC => RK3
-        real(TKC)               , intent(in)                        :: weisum
-        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-        real(TKC)               , intent(in)    , contiguous        :: x(:), y(:)
-        real(TKC)               , intent(out)                       :: cor
+        use pm_kind, only: TKG => RK3
+        real(TKG)               , intent(in)                        :: weisum
+        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+        real(TKG)               , intent(in)    , contiguous        :: x(:), y(:)
+        real(TKG)               , intent(out)                       :: cor
     end subroutine
 #endif
 
@@ -3844,11 +3844,11 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPrsOrgWTR_XY_RK2
 #endif
-        use pm_kind, only: TKC => RK2
-        real(TKC)               , intent(in)                        :: weisum
-        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-        real(TKC)               , intent(in)    , contiguous        :: x(:), y(:)
-        real(TKC)               , intent(out)                       :: cor
+        use pm_kind, only: TKG => RK2
+        real(TKG)               , intent(in)                        :: weisum
+        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+        real(TKG)               , intent(in)    , contiguous        :: x(:), y(:)
+        real(TKG)               , intent(out)                       :: cor
     end subroutine
 #endif
 
@@ -3857,11 +3857,11 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPrsOrgWTR_XY_RK1
 #endif
-        use pm_kind, only: TKC => RK1
-        real(TKC)               , intent(in)                        :: weisum
-        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-        real(TKC)               , intent(in)    , contiguous        :: x(:), y(:)
-        real(TKC)               , intent(out)                       :: cor
+        use pm_kind, only: TKG => RK1
+        real(TKG)               , intent(in)                        :: weisum
+        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+        real(TKG)               , intent(in)    , contiguous        :: x(:), y(:)
+        real(TKG)               , intent(out)                       :: cor
     end subroutine
 #endif
 
@@ -3872,12 +3872,12 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPrsAvgWTR_XY_RK5
 #endif
-        use pm_kind, only: TKC => RK5
-        real(TKC)               , intent(in)                        :: weisum
-        real(TKC)               , intent(in)    , contiguous        :: mean(:)
-        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-        real(TKC)               , intent(in)    , contiguous        :: x(:), y(:)
-        real(TKC)               , intent(out)                       :: cor
+        use pm_kind, only: TKG => RK5
+        real(TKG)               , intent(in)                        :: weisum
+        real(TKG)               , intent(in)    , contiguous        :: mean(:)
+        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+        real(TKG)               , intent(in)    , contiguous        :: x(:), y(:)
+        real(TKG)               , intent(out)                       :: cor
     end subroutine
 #endif
 
@@ -3886,12 +3886,12 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPrsAvgWTR_XY_RK4
 #endif
-        use pm_kind, only: TKC => RK4
-        real(TKC)               , intent(in)                        :: weisum
-        real(TKC)               , intent(in)    , contiguous        :: mean(:)
-        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-        real(TKC)               , intent(in)    , contiguous        :: x(:), y(:)
-        real(TKC)               , intent(out)                       :: cor
+        use pm_kind, only: TKG => RK4
+        real(TKG)               , intent(in)                        :: weisum
+        real(TKG)               , intent(in)    , contiguous        :: mean(:)
+        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+        real(TKG)               , intent(in)    , contiguous        :: x(:), y(:)
+        real(TKG)               , intent(out)                       :: cor
     end subroutine
 #endif
 
@@ -3900,12 +3900,12 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPrsAvgWTR_XY_RK3
 #endif
-        use pm_kind, only: TKC => RK3
-        real(TKC)               , intent(in)                        :: weisum
-        real(TKC)               , intent(in)    , contiguous        :: mean(:)
-        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-        real(TKC)               , intent(in)    , contiguous        :: x(:), y(:)
-        real(TKC)               , intent(out)                       :: cor
+        use pm_kind, only: TKG => RK3
+        real(TKG)               , intent(in)                        :: weisum
+        real(TKG)               , intent(in)    , contiguous        :: mean(:)
+        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+        real(TKG)               , intent(in)    , contiguous        :: x(:), y(:)
+        real(TKG)               , intent(out)                       :: cor
     end subroutine
 #endif
 
@@ -3914,12 +3914,12 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPrsAvgWTR_XY_RK2
 #endif
-        use pm_kind, only: TKC => RK2
-        real(TKC)               , intent(in)                        :: weisum
-        real(TKC)               , intent(in)    , contiguous        :: mean(:)
-        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-        real(TKC)               , intent(in)    , contiguous        :: x(:), y(:)
-        real(TKC)               , intent(out)                       :: cor
+        use pm_kind, only: TKG => RK2
+        real(TKG)               , intent(in)                        :: weisum
+        real(TKG)               , intent(in)    , contiguous        :: mean(:)
+        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+        real(TKG)               , intent(in)    , contiguous        :: x(:), y(:)
+        real(TKG)               , intent(out)                       :: cor
     end subroutine
 #endif
 
@@ -3928,12 +3928,12 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPrsAvgWTR_XY_RK1
 #endif
-        use pm_kind, only: TKC => RK1
-        real(TKC)               , intent(in)                        :: weisum
-        real(TKC)               , intent(in)    , contiguous        :: mean(:)
-        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-        real(TKC)               , intent(in)    , contiguous        :: x(:), y(:)
-        real(TKC)               , intent(out)                       :: cor
+        use pm_kind, only: TKG => RK1
+        real(TKG)               , intent(in)                        :: weisum
+        real(TKG)               , intent(in)    , contiguous        :: mean(:)
+        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+        real(TKG)               , intent(in)    , contiguous        :: x(:), y(:)
+        real(TKG)               , intent(out)                       :: cor
     end subroutine
 #endif
 
@@ -3954,10 +3954,10 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPrsOrgWNO_UXD_RK5
 #endif
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
         integer(IK)             , intent(in)                        :: dim
-        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
-        real(TKC)               , intent(inout) , contiguous        :: cor(:,:)
+        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
+        real(TKG)               , intent(inout) , contiguous        :: cor(:,:)
         type(uppDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -3967,10 +3967,10 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPrsOrgWNO_UXD_RK4
 #endif
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
         integer(IK)             , intent(in)                        :: dim
-        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
-        real(TKC)               , intent(inout) , contiguous        :: cor(:,:)
+        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
+        real(TKG)               , intent(inout) , contiguous        :: cor(:,:)
         type(uppDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -3980,10 +3980,10 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPrsOrgWNO_UXD_RK3
 #endif
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
         integer(IK)             , intent(in)                        :: dim
-        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
-        real(TKC)               , intent(inout) , contiguous        :: cor(:,:)
+        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
+        real(TKG)               , intent(inout) , contiguous        :: cor(:,:)
         type(uppDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -3993,10 +3993,10 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPrsOrgWNO_UXD_RK2
 #endif
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
         integer(IK)             , intent(in)                        :: dim
-        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
-        real(TKC)               , intent(inout) , contiguous        :: cor(:,:)
+        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
+        real(TKG)               , intent(inout) , contiguous        :: cor(:,:)
         type(uppDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -4006,10 +4006,10 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPrsOrgWNO_UXD_RK1
 #endif
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
         integer(IK)             , intent(in)                        :: dim
-        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
-        real(TKC)               , intent(inout) , contiguous        :: cor(:,:)
+        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
+        real(TKG)               , intent(inout) , contiguous        :: cor(:,:)
         type(uppDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -4021,11 +4021,11 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPrsAvgWNO_UXD_RK5
 #endif
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
         integer(IK)             , intent(in)                        :: dim
-        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
-        real(TKC)               , intent(in)    , contiguous        :: mean(:)
-        real(TKC)               , intent(inout) , contiguous        :: cor(:,:)
+        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
+        real(TKG)               , intent(in)    , contiguous        :: mean(:)
+        real(TKG)               , intent(inout) , contiguous        :: cor(:,:)
         type(uppDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -4035,11 +4035,11 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPrsAvgWNO_UXD_RK4
 #endif
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
         integer(IK)             , intent(in)                        :: dim
-        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
-        real(TKC)               , intent(in)    , contiguous        :: mean(:)
-        real(TKC)               , intent(inout) , contiguous        :: cor(:,:)
+        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
+        real(TKG)               , intent(in)    , contiguous        :: mean(:)
+        real(TKG)               , intent(inout) , contiguous        :: cor(:,:)
         type(uppDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -4049,11 +4049,11 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPrsAvgWNO_UXD_RK3
 #endif
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
         integer(IK)             , intent(in)                        :: dim
-        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
-        real(TKC)               , intent(in)    , contiguous        :: mean(:)
-        real(TKC)               , intent(inout) , contiguous        :: cor(:,:)
+        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
+        real(TKG)               , intent(in)    , contiguous        :: mean(:)
+        real(TKG)               , intent(inout) , contiguous        :: cor(:,:)
         type(uppDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -4063,11 +4063,11 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPrsAvgWNO_UXD_RK2
 #endif
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
         integer(IK)             , intent(in)                        :: dim
-        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
-        real(TKC)               , intent(in)    , contiguous        :: mean(:)
-        real(TKC)               , intent(inout) , contiguous        :: cor(:,:)
+        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
+        real(TKG)               , intent(in)    , contiguous        :: mean(:)
+        real(TKG)               , intent(inout) , contiguous        :: cor(:,:)
         type(uppDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -4077,11 +4077,11 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPrsAvgWNO_UXD_RK1
 #endif
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
         integer(IK)             , intent(in)                        :: dim
-        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
-        real(TKC)               , intent(in)    , contiguous        :: mean(:)
-        real(TKC)               , intent(inout) , contiguous        :: cor(:,:)
+        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
+        real(TKG)               , intent(in)    , contiguous        :: mean(:)
+        real(TKG)               , intent(inout) , contiguous        :: cor(:,:)
         type(uppDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -4101,12 +4101,12 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPrsOrgWTI_UXD_RK5
 #endif
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
         integer(IK)             , intent(in)                        :: dim
         integer(IK)             , intent(in)                        :: weisum
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
-        real(TKC)               , intent(inout) , contiguous        :: cor(:,:)
+        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
+        real(TKG)               , intent(inout) , contiguous        :: cor(:,:)
         type(uppDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -4116,12 +4116,12 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPrsOrgWTI_UXD_RK4
 #endif
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
         integer(IK)             , intent(in)                        :: dim
         integer(IK)             , intent(in)                        :: weisum
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
-        real(TKC)               , intent(inout) , contiguous        :: cor(:,:)
+        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
+        real(TKG)               , intent(inout) , contiguous        :: cor(:,:)
         type(uppDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -4131,12 +4131,12 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPrsOrgWTI_UXD_RK3
 #endif
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
         integer(IK)             , intent(in)                        :: dim
         integer(IK)             , intent(in)                        :: weisum
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
-        real(TKC)               , intent(inout) , contiguous        :: cor(:,:)
+        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
+        real(TKG)               , intent(inout) , contiguous        :: cor(:,:)
         type(uppDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -4146,12 +4146,12 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPrsOrgWTI_UXD_RK2
 #endif
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
         integer(IK)             , intent(in)                        :: dim
         integer(IK)             , intent(in)                        :: weisum
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
-        real(TKC)               , intent(inout) , contiguous        :: cor(:,:)
+        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
+        real(TKG)               , intent(inout) , contiguous        :: cor(:,:)
         type(uppDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -4161,12 +4161,12 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPrsOrgWTI_UXD_RK1
 #endif
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
         integer(IK)             , intent(in)                        :: dim
         integer(IK)             , intent(in)                        :: weisum
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
-        real(TKC)               , intent(inout) , contiguous        :: cor(:,:)
+        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
+        real(TKG)               , intent(inout) , contiguous        :: cor(:,:)
         type(uppDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -4178,13 +4178,13 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPrsAvgWTI_UXD_RK5
 #endif
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
         integer(IK)             , intent(in)                        :: dim
         integer(IK)             , intent(in)                        :: weisum
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        real(TKC)               , intent(in)    , contiguous        :: mean(:)
-        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
-        real(TKC)               , intent(inout) , contiguous        :: cor(:,:)
+        real(TKG)               , intent(in)    , contiguous        :: mean(:)
+        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
+        real(TKG)               , intent(inout) , contiguous        :: cor(:,:)
         type(uppDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -4194,13 +4194,13 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPrsAvgWTI_UXD_RK4
 #endif
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
         integer(IK)             , intent(in)                        :: dim
         integer(IK)             , intent(in)                        :: weisum
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        real(TKC)               , intent(in)    , contiguous        :: mean(:)
-        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
-        real(TKC)               , intent(inout) , contiguous        :: cor(:,:)
+        real(TKG)               , intent(in)    , contiguous        :: mean(:)
+        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
+        real(TKG)               , intent(inout) , contiguous        :: cor(:,:)
         type(uppDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -4210,13 +4210,13 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPrsAvgWTI_UXD_RK3
 #endif
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
         integer(IK)             , intent(in)                        :: dim
         integer(IK)             , intent(in)                        :: weisum
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        real(TKC)               , intent(in)    , contiguous        :: mean(:)
-        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
-        real(TKC)               , intent(inout) , contiguous        :: cor(:,:)
+        real(TKG)               , intent(in)    , contiguous        :: mean(:)
+        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
+        real(TKG)               , intent(inout) , contiguous        :: cor(:,:)
         type(uppDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -4226,13 +4226,13 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPrsAvgWTI_UXD_RK2
 #endif
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
         integer(IK)             , intent(in)                        :: dim
         integer(IK)             , intent(in)                        :: weisum
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        real(TKC)               , intent(in)    , contiguous        :: mean(:)
-        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
-        real(TKC)               , intent(inout) , contiguous        :: cor(:,:)
+        real(TKG)               , intent(in)    , contiguous        :: mean(:)
+        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
+        real(TKG)               , intent(inout) , contiguous        :: cor(:,:)
         type(uppDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -4242,13 +4242,13 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPrsAvgWTI_UXD_RK1
 #endif
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
         integer(IK)             , intent(in)                        :: dim
         integer(IK)             , intent(in)                        :: weisum
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        real(TKC)               , intent(in)    , contiguous        :: mean(:)
-        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
-        real(TKC)               , intent(inout) , contiguous        :: cor(:,:)
+        real(TKG)               , intent(in)    , contiguous        :: mean(:)
+        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
+        real(TKG)               , intent(inout) , contiguous        :: cor(:,:)
         type(uppDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -4268,12 +4268,12 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPrsOrgWTR_UXD_RK5
 #endif
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
         integer(IK)             , intent(in)                        :: dim
-        real(TKC)               , intent(in)                        :: weisum
-        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
-        real(TKC)               , intent(inout) , contiguous        :: cor(:,:)
+        real(TKG)               , intent(in)                        :: weisum
+        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
+        real(TKG)               , intent(inout) , contiguous        :: cor(:,:)
         type(uppDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -4283,12 +4283,12 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPrsOrgWTR_UXD_RK4
 #endif
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
         integer(IK)             , intent(in)                        :: dim
-        real(TKC)               , intent(in)                        :: weisum
-        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
-        real(TKC)               , intent(inout) , contiguous        :: cor(:,:)
+        real(TKG)               , intent(in)                        :: weisum
+        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
+        real(TKG)               , intent(inout) , contiguous        :: cor(:,:)
         type(uppDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -4298,12 +4298,12 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPrsOrgWTR_UXD_RK3
 #endif
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
         integer(IK)             , intent(in)                        :: dim
-        real(TKC)               , intent(in)                        :: weisum
-        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
-        real(TKC)               , intent(inout) , contiguous        :: cor(:,:)
+        real(TKG)               , intent(in)                        :: weisum
+        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
+        real(TKG)               , intent(inout) , contiguous        :: cor(:,:)
         type(uppDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -4313,12 +4313,12 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPrsOrgWTR_UXD_RK2
 #endif
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
         integer(IK)             , intent(in)                        :: dim
-        real(TKC)               , intent(in)                        :: weisum
-        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
-        real(TKC)               , intent(inout) , contiguous        :: cor(:,:)
+        real(TKG)               , intent(in)                        :: weisum
+        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
+        real(TKG)               , intent(inout) , contiguous        :: cor(:,:)
         type(uppDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -4328,12 +4328,12 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPrsOrgWTR_UXD_RK1
 #endif
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
         integer(IK)             , intent(in)                        :: dim
-        real(TKC)               , intent(in)                        :: weisum
-        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
-        real(TKC)               , intent(inout) , contiguous        :: cor(:,:)
+        real(TKG)               , intent(in)                        :: weisum
+        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
+        real(TKG)               , intent(inout) , contiguous        :: cor(:,:)
         type(uppDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -4345,13 +4345,13 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPrsAvgWTR_UXD_RK5
 #endif
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
         integer(IK)             , intent(in)                        :: dim
-        real(TKC)               , intent(in)                        :: weisum
-        real(TKC)               , intent(in)    , contiguous        :: mean(:)
-        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
-        real(TKC)               , intent(inout) , contiguous        :: cor(:,:)
+        real(TKG)               , intent(in)                        :: weisum
+        real(TKG)               , intent(in)    , contiguous        :: mean(:)
+        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
+        real(TKG)               , intent(inout) , contiguous        :: cor(:,:)
         type(uppDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -4361,13 +4361,13 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPrsAvgWTR_UXD_RK4
 #endif
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
         integer(IK)             , intent(in)                        :: dim
-        real(TKC)               , intent(in)                        :: weisum
-        real(TKC)               , intent(in)    , contiguous        :: mean(:)
-        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
-        real(TKC)               , intent(inout) , contiguous        :: cor(:,:)
+        real(TKG)               , intent(in)                        :: weisum
+        real(TKG)               , intent(in)    , contiguous        :: mean(:)
+        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
+        real(TKG)               , intent(inout) , contiguous        :: cor(:,:)
         type(uppDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -4377,13 +4377,13 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPrsAvgWTR_UXD_RK3
 #endif
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
         integer(IK)             , intent(in)                        :: dim
-        real(TKC)               , intent(in)                        :: weisum
-        real(TKC)               , intent(in)    , contiguous        :: mean(:)
-        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
-        real(TKC)               , intent(inout) , contiguous        :: cor(:,:)
+        real(TKG)               , intent(in)                        :: weisum
+        real(TKG)               , intent(in)    , contiguous        :: mean(:)
+        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
+        real(TKG)               , intent(inout) , contiguous        :: cor(:,:)
         type(uppDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -4393,13 +4393,13 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPrsAvgWTR_UXD_RK2
 #endif
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
         integer(IK)             , intent(in)                        :: dim
-        real(TKC)               , intent(in)                        :: weisum
-        real(TKC)               , intent(in)    , contiguous        :: mean(:)
-        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
-        real(TKC)               , intent(inout) , contiguous        :: cor(:,:)
+        real(TKG)               , intent(in)                        :: weisum
+        real(TKG)               , intent(in)    , contiguous        :: mean(:)
+        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
+        real(TKG)               , intent(inout) , contiguous        :: cor(:,:)
         type(uppDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -4409,13 +4409,13 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPrsAvgWTR_UXD_RK1
 #endif
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
         integer(IK)             , intent(in)                        :: dim
-        real(TKC)               , intent(in)                        :: weisum
-        real(TKC)               , intent(in)    , contiguous        :: mean(:)
-        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
-        real(TKC)               , intent(inout) , contiguous        :: cor(:,:)
+        real(TKG)               , intent(in)                        :: weisum
+        real(TKG)               , intent(in)    , contiguous        :: mean(:)
+        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
+        real(TKG)               , intent(inout) , contiguous        :: cor(:,:)
         type(uppDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -4437,10 +4437,10 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPrsOrgWNO_XLD_RK5
 #endif
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
         integer(IK)             , intent(in)                        :: dim
-        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
-        real(TKC)               , intent(inout) , contiguous        :: cor(:,:)
+        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
+        real(TKG)               , intent(inout) , contiguous        :: cor(:,:)
         type(lowDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -4450,10 +4450,10 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPrsOrgWNO_XLD_RK4
 #endif
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
         integer(IK)             , intent(in)                        :: dim
-        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
-        real(TKC)               , intent(inout) , contiguous        :: cor(:,:)
+        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
+        real(TKG)               , intent(inout) , contiguous        :: cor(:,:)
         type(lowDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -4463,10 +4463,10 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPrsOrgWNO_XLD_RK3
 #endif
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
         integer(IK)             , intent(in)                        :: dim
-        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
-        real(TKC)               , intent(inout) , contiguous        :: cor(:,:)
+        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
+        real(TKG)               , intent(inout) , contiguous        :: cor(:,:)
         type(lowDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -4476,10 +4476,10 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPrsOrgWNO_XLD_RK2
 #endif
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
         integer(IK)             , intent(in)                        :: dim
-        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
-        real(TKC)               , intent(inout) , contiguous        :: cor(:,:)
+        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
+        real(TKG)               , intent(inout) , contiguous        :: cor(:,:)
         type(lowDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -4489,10 +4489,10 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPrsOrgWNO_XLD_RK1
 #endif
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
         integer(IK)             , intent(in)                        :: dim
-        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
-        real(TKC)               , intent(inout) , contiguous        :: cor(:,:)
+        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
+        real(TKG)               , intent(inout) , contiguous        :: cor(:,:)
         type(lowDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -4504,11 +4504,11 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPrsAvgWNO_XLD_RK5
 #endif
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
         integer(IK)             , intent(in)                        :: dim
-        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
-        real(TKC)               , intent(in)    , contiguous        :: mean(:)
-        real(TKC)               , intent(inout) , contiguous        :: cor(:,:)
+        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
+        real(TKG)               , intent(in)    , contiguous        :: mean(:)
+        real(TKG)               , intent(inout) , contiguous        :: cor(:,:)
         type(lowDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -4518,11 +4518,11 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPrsAvgWNO_XLD_RK4
 #endif
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
         integer(IK)             , intent(in)                        :: dim
-        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
-        real(TKC)               , intent(in)    , contiguous        :: mean(:)
-        real(TKC)               , intent(inout) , contiguous        :: cor(:,:)
+        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
+        real(TKG)               , intent(in)    , contiguous        :: mean(:)
+        real(TKG)               , intent(inout) , contiguous        :: cor(:,:)
         type(lowDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -4532,11 +4532,11 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPrsAvgWNO_XLD_RK3
 #endif
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
         integer(IK)             , intent(in)                        :: dim
-        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
-        real(TKC)               , intent(in)    , contiguous        :: mean(:)
-        real(TKC)               , intent(inout) , contiguous        :: cor(:,:)
+        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
+        real(TKG)               , intent(in)    , contiguous        :: mean(:)
+        real(TKG)               , intent(inout) , contiguous        :: cor(:,:)
         type(lowDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -4546,11 +4546,11 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPrsAvgWNO_XLD_RK2
 #endif
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
         integer(IK)             , intent(in)                        :: dim
-        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
-        real(TKC)               , intent(in)    , contiguous        :: mean(:)
-        real(TKC)               , intent(inout) , contiguous        :: cor(:,:)
+        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
+        real(TKG)               , intent(in)    , contiguous        :: mean(:)
+        real(TKG)               , intent(inout) , contiguous        :: cor(:,:)
         type(lowDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -4560,11 +4560,11 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPrsAvgWNO_XLD_RK1
 #endif
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
         integer(IK)             , intent(in)                        :: dim
-        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
-        real(TKC)               , intent(in)    , contiguous        :: mean(:)
-        real(TKC)               , intent(inout) , contiguous        :: cor(:,:)
+        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
+        real(TKG)               , intent(in)    , contiguous        :: mean(:)
+        real(TKG)               , intent(inout) , contiguous        :: cor(:,:)
         type(lowDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -4584,12 +4584,12 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPrsOrgWTI_XLD_RK5
 #endif
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
         integer(IK)             , intent(in)                        :: dim
         integer(IK)             , intent(in)                        :: weisum
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
-        real(TKC)               , intent(inout) , contiguous        :: cor(:,:)
+        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
+        real(TKG)               , intent(inout) , contiguous        :: cor(:,:)
         type(lowDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -4599,12 +4599,12 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPrsOrgWTI_XLD_RK4
 #endif
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
         integer(IK)             , intent(in)                        :: dim
         integer(IK)             , intent(in)                        :: weisum
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
-        real(TKC)               , intent(inout) , contiguous        :: cor(:,:)
+        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
+        real(TKG)               , intent(inout) , contiguous        :: cor(:,:)
         type(lowDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -4614,12 +4614,12 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPrsOrgWTI_XLD_RK3
 #endif
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
         integer(IK)             , intent(in)                        :: dim
         integer(IK)             , intent(in)                        :: weisum
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
-        real(TKC)               , intent(inout) , contiguous        :: cor(:,:)
+        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
+        real(TKG)               , intent(inout) , contiguous        :: cor(:,:)
         type(lowDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -4629,12 +4629,12 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPrsOrgWTI_XLD_RK2
 #endif
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
         integer(IK)             , intent(in)                        :: dim
         integer(IK)             , intent(in)                        :: weisum
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
-        real(TKC)               , intent(inout) , contiguous        :: cor(:,:)
+        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
+        real(TKG)               , intent(inout) , contiguous        :: cor(:,:)
         type(lowDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -4644,12 +4644,12 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPrsOrgWTI_XLD_RK1
 #endif
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
         integer(IK)             , intent(in)                        :: dim
         integer(IK)             , intent(in)                        :: weisum
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
-        real(TKC)               , intent(inout) , contiguous        :: cor(:,:)
+        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
+        real(TKG)               , intent(inout) , contiguous        :: cor(:,:)
         type(lowDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -4661,13 +4661,13 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPrsAvgWTI_XLD_RK5
 #endif
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
         integer(IK)             , intent(in)                        :: dim
         integer(IK)             , intent(in)                        :: weisum
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        real(TKC)               , intent(in)    , contiguous        :: mean(:)
-        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
-        real(TKC)               , intent(inout) , contiguous        :: cor(:,:)
+        real(TKG)               , intent(in)    , contiguous        :: mean(:)
+        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
+        real(TKG)               , intent(inout) , contiguous        :: cor(:,:)
         type(lowDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -4677,13 +4677,13 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPrsAvgWTI_XLD_RK4
 #endif
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
         integer(IK)             , intent(in)                        :: dim
         integer(IK)             , intent(in)                        :: weisum
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        real(TKC)               , intent(in)    , contiguous        :: mean(:)
-        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
-        real(TKC)               , intent(inout) , contiguous        :: cor(:,:)
+        real(TKG)               , intent(in)    , contiguous        :: mean(:)
+        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
+        real(TKG)               , intent(inout) , contiguous        :: cor(:,:)
         type(lowDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -4693,13 +4693,13 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPrsAvgWTI_XLD_RK3
 #endif
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
         integer(IK)             , intent(in)                        :: dim
         integer(IK)             , intent(in)                        :: weisum
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        real(TKC)               , intent(in)    , contiguous        :: mean(:)
-        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
-        real(TKC)               , intent(inout) , contiguous        :: cor(:,:)
+        real(TKG)               , intent(in)    , contiguous        :: mean(:)
+        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
+        real(TKG)               , intent(inout) , contiguous        :: cor(:,:)
         type(lowDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -4709,13 +4709,13 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPrsAvgWTI_XLD_RK2
 #endif
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
         integer(IK)             , intent(in)                        :: dim
         integer(IK)             , intent(in)                        :: weisum
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        real(TKC)               , intent(in)    , contiguous        :: mean(:)
-        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
-        real(TKC)               , intent(inout) , contiguous        :: cor(:,:)
+        real(TKG)               , intent(in)    , contiguous        :: mean(:)
+        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
+        real(TKG)               , intent(inout) , contiguous        :: cor(:,:)
         type(lowDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -4725,13 +4725,13 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPrsAvgWTI_XLD_RK1
 #endif
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
         integer(IK)             , intent(in)                        :: dim
         integer(IK)             , intent(in)                        :: weisum
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        real(TKC)               , intent(in)    , contiguous        :: mean(:)
-        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
-        real(TKC)               , intent(inout) , contiguous        :: cor(:,:)
+        real(TKG)               , intent(in)    , contiguous        :: mean(:)
+        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
+        real(TKG)               , intent(inout) , contiguous        :: cor(:,:)
         type(lowDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -4751,12 +4751,12 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPrsOrgWTR_XLD_RK5
 #endif
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
         integer(IK)             , intent(in)                        :: dim
-        real(TKC)               , intent(in)                        :: weisum
-        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
-        real(TKC)               , intent(inout) , contiguous        :: cor(:,:)
+        real(TKG)               , intent(in)                        :: weisum
+        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
+        real(TKG)               , intent(inout) , contiguous        :: cor(:,:)
         type(lowDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -4766,12 +4766,12 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPrsOrgWTR_XLD_RK4
 #endif
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
         integer(IK)             , intent(in)                        :: dim
-        real(TKC)               , intent(in)                        :: weisum
-        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
-        real(TKC)               , intent(inout) , contiguous        :: cor(:,:)
+        real(TKG)               , intent(in)                        :: weisum
+        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
+        real(TKG)               , intent(inout) , contiguous        :: cor(:,:)
         type(lowDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -4781,12 +4781,12 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPrsOrgWTR_XLD_RK3
 #endif
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
         integer(IK)             , intent(in)                        :: dim
-        real(TKC)               , intent(in)                        :: weisum
-        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
-        real(TKC)               , intent(inout) , contiguous        :: cor(:,:)
+        real(TKG)               , intent(in)                        :: weisum
+        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
+        real(TKG)               , intent(inout) , contiguous        :: cor(:,:)
         type(lowDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -4796,12 +4796,12 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPrsOrgWTR_XLD_RK2
 #endif
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
         integer(IK)             , intent(in)                        :: dim
-        real(TKC)               , intent(in)                        :: weisum
-        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
-        real(TKC)               , intent(inout) , contiguous        :: cor(:,:)
+        real(TKG)               , intent(in)                        :: weisum
+        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
+        real(TKG)               , intent(inout) , contiguous        :: cor(:,:)
         type(lowDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -4811,12 +4811,12 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPrsOrgWTR_XLD_RK1
 #endif
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
         integer(IK)             , intent(in)                        :: dim
-        real(TKC)               , intent(in)                        :: weisum
-        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
-        real(TKC)               , intent(inout) , contiguous        :: cor(:,:)
+        real(TKG)               , intent(in)                        :: weisum
+        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
+        real(TKG)               , intent(inout) , contiguous        :: cor(:,:)
         type(lowDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -4828,13 +4828,13 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPrsAvgWTR_XLD_RK5
 #endif
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
         integer(IK)             , intent(in)                        :: dim
-        real(TKC)               , intent(in)                        :: weisum
-        real(TKC)               , intent(in)    , contiguous        :: mean(:)
-        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
-        real(TKC)               , intent(inout) , contiguous        :: cor(:,:)
+        real(TKG)               , intent(in)                        :: weisum
+        real(TKG)               , intent(in)    , contiguous        :: mean(:)
+        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
+        real(TKG)               , intent(inout) , contiguous        :: cor(:,:)
         type(lowDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -4844,13 +4844,13 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPrsAvgWTR_XLD_RK4
 #endif
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
         integer(IK)             , intent(in)                        :: dim
-        real(TKC)               , intent(in)                        :: weisum
-        real(TKC)               , intent(in)    , contiguous        :: mean(:)
-        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
-        real(TKC)               , intent(inout) , contiguous        :: cor(:,:)
+        real(TKG)               , intent(in)                        :: weisum
+        real(TKG)               , intent(in)    , contiguous        :: mean(:)
+        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
+        real(TKG)               , intent(inout) , contiguous        :: cor(:,:)
         type(lowDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -4860,13 +4860,13 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPrsAvgWTR_XLD_RK3
 #endif
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
         integer(IK)             , intent(in)                        :: dim
-        real(TKC)               , intent(in)                        :: weisum
-        real(TKC)               , intent(in)    , contiguous        :: mean(:)
-        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
-        real(TKC)               , intent(inout) , contiguous        :: cor(:,:)
+        real(TKG)               , intent(in)                        :: weisum
+        real(TKG)               , intent(in)    , contiguous        :: mean(:)
+        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
+        real(TKG)               , intent(inout) , contiguous        :: cor(:,:)
         type(lowDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -4876,13 +4876,13 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPrsAvgWTR_XLD_RK2
 #endif
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
         integer(IK)             , intent(in)                        :: dim
-        real(TKC)               , intent(in)                        :: weisum
-        real(TKC)               , intent(in)    , contiguous        :: mean(:)
-        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
-        real(TKC)               , intent(inout) , contiguous        :: cor(:,:)
+        real(TKG)               , intent(in)                        :: weisum
+        real(TKG)               , intent(in)    , contiguous        :: mean(:)
+        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
+        real(TKG)               , intent(inout) , contiguous        :: cor(:,:)
         type(lowDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -4892,13 +4892,13 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPrsAvgWTR_XLD_RK1
 #endif
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
         integer(IK)             , intent(in)                        :: dim
-        real(TKC)               , intent(in)                        :: weisum
-        real(TKC)               , intent(in)    , contiguous        :: mean(:)
-        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
-        real(TKC)               , intent(inout) , contiguous        :: cor(:,:)
+        real(TKG)               , intent(in)                        :: weisum
+        real(TKG)               , intent(in)    , contiguous        :: mean(:)
+        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
+        real(TKG)               , intent(inout) , contiguous        :: cor(:,:)
         type(lowDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -4926,12 +4926,12 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCFC_RUXX_VUXX_CK5
 #endif
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
         type(upp_type)      , intent(in)                            :: subset
         type(upp_type)      , intent(in)                            :: subsetv
-        real(TKC)           , intent(in)    , contiguous            :: stdinv(:)
-        complex(TKC)        , intent(in)    , contiguous            :: cov(:,:)
-        complex(TKC)        , intent(inout) , contiguous            :: cor(:,:)
+        real(TKG)           , intent(in)    , contiguous            :: stdinv(:)
+        complex(TKG)        , intent(in)    , contiguous            :: cov(:,:)
+        complex(TKG)        , intent(inout) , contiguous            :: cor(:,:)
     end subroutine
 #endif
 
@@ -4940,12 +4940,12 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCFC_RUXX_VUXX_CK4
 #endif
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
         type(upp_type)      , intent(in)                            :: subset
         type(upp_type)      , intent(in)                            :: subsetv
-        real(TKC)           , intent(in)    , contiguous            :: stdinv(:)
-        complex(TKC)        , intent(in)    , contiguous            :: cov(:,:)
-        complex(TKC)        , intent(inout) , contiguous            :: cor(:,:)
+        real(TKG)           , intent(in)    , contiguous            :: stdinv(:)
+        complex(TKG)        , intent(in)    , contiguous            :: cov(:,:)
+        complex(TKG)        , intent(inout) , contiguous            :: cor(:,:)
     end subroutine
 #endif
 
@@ -4954,12 +4954,12 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCFC_RUXX_VUXX_CK3
 #endif
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
         type(upp_type)      , intent(in)                            :: subset
         type(upp_type)      , intent(in)                            :: subsetv
-        real(TKC)           , intent(in)    , contiguous            :: stdinv(:)
-        complex(TKC)        , intent(in)    , contiguous            :: cov(:,:)
-        complex(TKC)        , intent(inout) , contiguous            :: cor(:,:)
+        real(TKG)           , intent(in)    , contiguous            :: stdinv(:)
+        complex(TKG)        , intent(in)    , contiguous            :: cov(:,:)
+        complex(TKG)        , intent(inout) , contiguous            :: cor(:,:)
     end subroutine
 #endif
 
@@ -4968,12 +4968,12 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCFC_RUXX_VUXX_CK2
 #endif
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
         type(upp_type)      , intent(in)                            :: subset
         type(upp_type)      , intent(in)                            :: subsetv
-        real(TKC)           , intent(in)    , contiguous            :: stdinv(:)
-        complex(TKC)        , intent(in)    , contiguous            :: cov(:,:)
-        complex(TKC)        , intent(inout) , contiguous            :: cor(:,:)
+        real(TKG)           , intent(in)    , contiguous            :: stdinv(:)
+        complex(TKG)        , intent(in)    , contiguous            :: cov(:,:)
+        complex(TKG)        , intent(inout) , contiguous            :: cor(:,:)
     end subroutine
 #endif
 
@@ -4982,12 +4982,12 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCFC_RUXX_VUXX_CK1
 #endif
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
         type(upp_type)      , intent(in)                            :: subset
         type(upp_type)      , intent(in)                            :: subsetv
-        real(TKC)           , intent(in)    , contiguous            :: stdinv(:)
-        complex(TKC)        , intent(in)    , contiguous            :: cov(:,:)
-        complex(TKC)        , intent(inout) , contiguous            :: cor(:,:)
+        real(TKG)           , intent(in)    , contiguous            :: stdinv(:)
+        complex(TKG)        , intent(in)    , contiguous            :: cov(:,:)
+        complex(TKG)        , intent(inout) , contiguous            :: cor(:,:)
     end subroutine
 #endif
 
@@ -4998,12 +4998,12 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCFC_RUXX_VXLX_CK5
 #endif
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
         type(upp_type)      , intent(in)                            :: subset
         type(low_type)      , intent(in)                            :: subsetv
-        real(TKC)           , intent(in)    , contiguous            :: stdinv(:)
-        complex(TKC)        , intent(in)    , contiguous            :: cov(:,:)
-        complex(TKC)        , intent(inout) , contiguous            :: cor(:,:)
+        real(TKG)           , intent(in)    , contiguous            :: stdinv(:)
+        complex(TKG)        , intent(in)    , contiguous            :: cov(:,:)
+        complex(TKG)        , intent(inout) , contiguous            :: cor(:,:)
     end subroutine
 #endif
 
@@ -5012,12 +5012,12 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCFC_RUXX_VXLX_CK4
 #endif
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
         type(upp_type)      , intent(in)                            :: subset
         type(low_type)      , intent(in)                            :: subsetv
-        real(TKC)           , intent(in)    , contiguous            :: stdinv(:)
-        complex(TKC)        , intent(in)    , contiguous            :: cov(:,:)
-        complex(TKC)        , intent(inout) , contiguous            :: cor(:,:)
+        real(TKG)           , intent(in)    , contiguous            :: stdinv(:)
+        complex(TKG)        , intent(in)    , contiguous            :: cov(:,:)
+        complex(TKG)        , intent(inout) , contiguous            :: cor(:,:)
     end subroutine
 #endif
 
@@ -5026,12 +5026,12 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCFC_RUXX_VXLX_CK3
 #endif
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
         type(upp_type)      , intent(in)                            :: subset
         type(low_type)      , intent(in)                            :: subsetv
-        real(TKC)           , intent(in)    , contiguous            :: stdinv(:)
-        complex(TKC)        , intent(in)    , contiguous            :: cov(:,:)
-        complex(TKC)        , intent(inout) , contiguous            :: cor(:,:)
+        real(TKG)           , intent(in)    , contiguous            :: stdinv(:)
+        complex(TKG)        , intent(in)    , contiguous            :: cov(:,:)
+        complex(TKG)        , intent(inout) , contiguous            :: cor(:,:)
     end subroutine
 #endif
 
@@ -5040,12 +5040,12 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCFC_RUXX_VXLX_CK2
 #endif
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
         type(upp_type)      , intent(in)                            :: subset
         type(low_type)      , intent(in)                            :: subsetv
-        real(TKC)           , intent(in)    , contiguous            :: stdinv(:)
-        complex(TKC)        , intent(in)    , contiguous            :: cov(:,:)
-        complex(TKC)        , intent(inout) , contiguous            :: cor(:,:)
+        real(TKG)           , intent(in)    , contiguous            :: stdinv(:)
+        complex(TKG)        , intent(in)    , contiguous            :: cov(:,:)
+        complex(TKG)        , intent(inout) , contiguous            :: cor(:,:)
     end subroutine
 #endif
 
@@ -5054,12 +5054,12 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCFC_RUXX_VXLX_CK1
 #endif
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
         type(upp_type)      , intent(in)                            :: subset
         type(low_type)      , intent(in)                            :: subsetv
-        real(TKC)           , intent(in)    , contiguous            :: stdinv(:)
-        complex(TKC)        , intent(in)    , contiguous            :: cov(:,:)
-        complex(TKC)        , intent(inout) , contiguous            :: cor(:,:)
+        real(TKG)           , intent(in)    , contiguous            :: stdinv(:)
+        complex(TKG)        , intent(in)    , contiguous            :: cov(:,:)
+        complex(TKG)        , intent(inout) , contiguous            :: cor(:,:)
     end subroutine
 #endif
 
@@ -5076,12 +5076,12 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCFC_RXLX_VUXX_CK5
 #endif
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
         type(low_type)      , intent(in)                            :: subset
         type(upp_type)      , intent(in)                            :: subsetv
-        real(TKC)           , intent(in)    , contiguous            :: stdinv(:)
-        complex(TKC)        , intent(in)    , contiguous            :: cov(:,:)
-        complex(TKC)        , intent(inout) , contiguous            :: cor(:,:)
+        real(TKG)           , intent(in)    , contiguous            :: stdinv(:)
+        complex(TKG)        , intent(in)    , contiguous            :: cov(:,:)
+        complex(TKG)        , intent(inout) , contiguous            :: cor(:,:)
     end subroutine
 #endif
 
@@ -5090,12 +5090,12 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCFC_RXLX_VUXX_CK4
 #endif
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
         type(low_type)      , intent(in)                            :: subset
         type(upp_type)      , intent(in)                            :: subsetv
-        real(TKC)           , intent(in)    , contiguous            :: stdinv(:)
-        complex(TKC)        , intent(in)    , contiguous            :: cov(:,:)
-        complex(TKC)        , intent(inout) , contiguous            :: cor(:,:)
+        real(TKG)           , intent(in)    , contiguous            :: stdinv(:)
+        complex(TKG)        , intent(in)    , contiguous            :: cov(:,:)
+        complex(TKG)        , intent(inout) , contiguous            :: cor(:,:)
     end subroutine
 #endif
 
@@ -5104,12 +5104,12 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCFC_RXLX_VUXX_CK3
 #endif
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
         type(low_type)      , intent(in)                            :: subset
         type(upp_type)      , intent(in)                            :: subsetv
-        real(TKC)           , intent(in)    , contiguous            :: stdinv(:)
-        complex(TKC)        , intent(in)    , contiguous            :: cov(:,:)
-        complex(TKC)        , intent(inout) , contiguous            :: cor(:,:)
+        real(TKG)           , intent(in)    , contiguous            :: stdinv(:)
+        complex(TKG)        , intent(in)    , contiguous            :: cov(:,:)
+        complex(TKG)        , intent(inout) , contiguous            :: cor(:,:)
     end subroutine
 #endif
 
@@ -5118,12 +5118,12 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCFC_RXLX_VUXX_CK2
 #endif
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
         type(low_type)      , intent(in)                            :: subset
         type(upp_type)      , intent(in)                            :: subsetv
-        real(TKC)           , intent(in)    , contiguous            :: stdinv(:)
-        complex(TKC)        , intent(in)    , contiguous            :: cov(:,:)
-        complex(TKC)        , intent(inout) , contiguous            :: cor(:,:)
+        real(TKG)           , intent(in)    , contiguous            :: stdinv(:)
+        complex(TKG)        , intent(in)    , contiguous            :: cov(:,:)
+        complex(TKG)        , intent(inout) , contiguous            :: cor(:,:)
     end subroutine
 #endif
 
@@ -5132,12 +5132,12 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCFC_RXLX_VUXX_CK1
 #endif
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
         type(low_type)      , intent(in)                            :: subset
         type(upp_type)      , intent(in)                            :: subsetv
-        real(TKC)           , intent(in)    , contiguous            :: stdinv(:)
-        complex(TKC)        , intent(in)    , contiguous            :: cov(:,:)
-        complex(TKC)        , intent(inout) , contiguous            :: cor(:,:)
+        real(TKG)           , intent(in)    , contiguous            :: stdinv(:)
+        complex(TKG)        , intent(in)    , contiguous            :: cov(:,:)
+        complex(TKG)        , intent(inout) , contiguous            :: cor(:,:)
     end subroutine
 #endif
 
@@ -5148,12 +5148,12 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCFC_RXLX_VXLX_CK5
 #endif
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
         type(low_type)      , intent(in)                            :: subset
         type(low_type)      , intent(in)                            :: subsetv
-        real(TKC)           , intent(in)    , contiguous            :: stdinv(:)
-        complex(TKC)        , intent(in)    , contiguous            :: cov(:,:)
-        complex(TKC)        , intent(inout) , contiguous            :: cor(:,:)
+        real(TKG)           , intent(in)    , contiguous            :: stdinv(:)
+        complex(TKG)        , intent(in)    , contiguous            :: cov(:,:)
+        complex(TKG)        , intent(inout) , contiguous            :: cor(:,:)
     end subroutine
 #endif
 
@@ -5162,12 +5162,12 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCFC_RXLX_VXLX_CK4
 #endif
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
         type(low_type)      , intent(in)                            :: subset
         type(low_type)      , intent(in)                            :: subsetv
-        real(TKC)           , intent(in)    , contiguous            :: stdinv(:)
-        complex(TKC)        , intent(in)    , contiguous            :: cov(:,:)
-        complex(TKC)        , intent(inout) , contiguous            :: cor(:,:)
+        real(TKG)           , intent(in)    , contiguous            :: stdinv(:)
+        complex(TKG)        , intent(in)    , contiguous            :: cov(:,:)
+        complex(TKG)        , intent(inout) , contiguous            :: cor(:,:)
     end subroutine
 #endif
 
@@ -5176,12 +5176,12 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCFC_RXLX_VXLX_CK3
 #endif
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
         type(low_type)      , intent(in)                            :: subset
         type(low_type)      , intent(in)                            :: subsetv
-        real(TKC)           , intent(in)    , contiguous            :: stdinv(:)
-        complex(TKC)        , intent(in)    , contiguous            :: cov(:,:)
-        complex(TKC)        , intent(inout) , contiguous            :: cor(:,:)
+        real(TKG)           , intent(in)    , contiguous            :: stdinv(:)
+        complex(TKG)        , intent(in)    , contiguous            :: cov(:,:)
+        complex(TKG)        , intent(inout) , contiguous            :: cor(:,:)
     end subroutine
 #endif
 
@@ -5190,12 +5190,12 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCFC_RXLX_VXLX_CK2
 #endif
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
         type(low_type)      , intent(in)                            :: subset
         type(low_type)      , intent(in)                            :: subsetv
-        real(TKC)           , intent(in)    , contiguous            :: stdinv(:)
-        complex(TKC)        , intent(in)    , contiguous            :: cov(:,:)
-        complex(TKC)        , intent(inout) , contiguous            :: cor(:,:)
+        real(TKG)           , intent(in)    , contiguous            :: stdinv(:)
+        complex(TKG)        , intent(in)    , contiguous            :: cov(:,:)
+        complex(TKG)        , intent(inout) , contiguous            :: cor(:,:)
     end subroutine
 #endif
 
@@ -5204,12 +5204,12 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCFC_RXLX_VXLX_CK1
 #endif
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
         type(low_type)      , intent(in)                            :: subset
         type(low_type)      , intent(in)                            :: subsetv
-        real(TKC)           , intent(in)    , contiguous            :: stdinv(:)
-        complex(TKC)        , intent(in)    , contiguous            :: cov(:,:)
-        complex(TKC)        , intent(inout) , contiguous            :: cor(:,:)
+        real(TKG)           , intent(in)    , contiguous            :: stdinv(:)
+        complex(TKG)        , intent(in)    , contiguous            :: cov(:,:)
+        complex(TKG)        , intent(inout) , contiguous            :: cor(:,:)
     end subroutine
 #endif
 
@@ -5236,12 +5236,12 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCFC_RUXD_VUXX_CK5
 #endif
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
         type(uppDia_type)   , intent(in)                            :: subset
         type(upp_type)      , intent(in)                            :: subsetv
-        real(TKC)           , intent(in)    , contiguous            :: stdinv(:)
-        complex(TKC)        , intent(in)    , contiguous            :: cov(:,:)
-        complex(TKC)        , intent(inout) , contiguous            :: cor(:,:)
+        real(TKG)           , intent(in)    , contiguous            :: stdinv(:)
+        complex(TKG)        , intent(in)    , contiguous            :: cov(:,:)
+        complex(TKG)        , intent(inout) , contiguous            :: cor(:,:)
     end subroutine
 #endif
 
@@ -5250,12 +5250,12 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCFC_RUXD_VUXX_CK4
 #endif
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
         type(uppDia_type)   , intent(in)                            :: subset
         type(upp_type)      , intent(in)                            :: subsetv
-        real(TKC)           , intent(in)    , contiguous            :: stdinv(:)
-        complex(TKC)        , intent(in)    , contiguous            :: cov(:,:)
-        complex(TKC)        , intent(inout) , contiguous            :: cor(:,:)
+        real(TKG)           , intent(in)    , contiguous            :: stdinv(:)
+        complex(TKG)        , intent(in)    , contiguous            :: cov(:,:)
+        complex(TKG)        , intent(inout) , contiguous            :: cor(:,:)
     end subroutine
 #endif
 
@@ -5264,12 +5264,12 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCFC_RUXD_VUXX_CK3
 #endif
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
         type(uppDia_type)   , intent(in)                            :: subset
         type(upp_type)      , intent(in)                            :: subsetv
-        real(TKC)           , intent(in)    , contiguous            :: stdinv(:)
-        complex(TKC)        , intent(in)    , contiguous            :: cov(:,:)
-        complex(TKC)        , intent(inout) , contiguous            :: cor(:,:)
+        real(TKG)           , intent(in)    , contiguous            :: stdinv(:)
+        complex(TKG)        , intent(in)    , contiguous            :: cov(:,:)
+        complex(TKG)        , intent(inout) , contiguous            :: cor(:,:)
     end subroutine
 #endif
 
@@ -5278,12 +5278,12 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCFC_RUXD_VUXX_CK2
 #endif
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
         type(uppDia_type)   , intent(in)                            :: subset
         type(upp_type)      , intent(in)                            :: subsetv
-        real(TKC)           , intent(in)    , contiguous            :: stdinv(:)
-        complex(TKC)        , intent(in)    , contiguous            :: cov(:,:)
-        complex(TKC)        , intent(inout) , contiguous            :: cor(:,:)
+        real(TKG)           , intent(in)    , contiguous            :: stdinv(:)
+        complex(TKG)        , intent(in)    , contiguous            :: cov(:,:)
+        complex(TKG)        , intent(inout) , contiguous            :: cor(:,:)
     end subroutine
 #endif
 
@@ -5292,12 +5292,12 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCFC_RUXD_VUXX_CK1
 #endif
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
         type(uppDia_type)   , intent(in)                            :: subset
         type(upp_type)      , intent(in)                            :: subsetv
-        real(TKC)           , intent(in)    , contiguous            :: stdinv(:)
-        complex(TKC)        , intent(in)    , contiguous            :: cov(:,:)
-        complex(TKC)        , intent(inout) , contiguous            :: cor(:,:)
+        real(TKG)           , intent(in)    , contiguous            :: stdinv(:)
+        complex(TKG)        , intent(in)    , contiguous            :: cov(:,:)
+        complex(TKG)        , intent(inout) , contiguous            :: cor(:,:)
     end subroutine
 #endif
 
@@ -5308,12 +5308,12 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCFC_RUXD_VXLX_CK5
 #endif
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
         type(uppDia_type)   , intent(in)                            :: subset
         type(low_type)      , intent(in)                            :: subsetv
-        real(TKC)           , intent(in)    , contiguous            :: stdinv(:)
-        complex(TKC)        , intent(in)    , contiguous            :: cov(:,:)
-        complex(TKC)        , intent(inout) , contiguous            :: cor(:,:)
+        real(TKG)           , intent(in)    , contiguous            :: stdinv(:)
+        complex(TKG)        , intent(in)    , contiguous            :: cov(:,:)
+        complex(TKG)        , intent(inout) , contiguous            :: cor(:,:)
     end subroutine
 #endif
 
@@ -5322,12 +5322,12 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCFC_RUXD_VXLX_CK4
 #endif
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
         type(uppDia_type)   , intent(in)                            :: subset
         type(low_type)      , intent(in)                            :: subsetv
-        real(TKC)           , intent(in)    , contiguous            :: stdinv(:)
-        complex(TKC)        , intent(in)    , contiguous            :: cov(:,:)
-        complex(TKC)        , intent(inout) , contiguous            :: cor(:,:)
+        real(TKG)           , intent(in)    , contiguous            :: stdinv(:)
+        complex(TKG)        , intent(in)    , contiguous            :: cov(:,:)
+        complex(TKG)        , intent(inout) , contiguous            :: cor(:,:)
     end subroutine
 #endif
 
@@ -5336,12 +5336,12 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCFC_RUXD_VXLX_CK3
 #endif
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
         type(uppDia_type)   , intent(in)                            :: subset
         type(low_type)      , intent(in)                            :: subsetv
-        real(TKC)           , intent(in)    , contiguous            :: stdinv(:)
-        complex(TKC)        , intent(in)    , contiguous            :: cov(:,:)
-        complex(TKC)        , intent(inout) , contiguous            :: cor(:,:)
+        real(TKG)           , intent(in)    , contiguous            :: stdinv(:)
+        complex(TKG)        , intent(in)    , contiguous            :: cov(:,:)
+        complex(TKG)        , intent(inout) , contiguous            :: cor(:,:)
     end subroutine
 #endif
 
@@ -5350,12 +5350,12 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCFC_RUXD_VXLX_CK2
 #endif
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
         type(uppDia_type)   , intent(in)                            :: subset
         type(low_type)      , intent(in)                            :: subsetv
-        real(TKC)           , intent(in)    , contiguous            :: stdinv(:)
-        complex(TKC)        , intent(in)    , contiguous            :: cov(:,:)
-        complex(TKC)        , intent(inout) , contiguous            :: cor(:,:)
+        real(TKG)           , intent(in)    , contiguous            :: stdinv(:)
+        complex(TKG)        , intent(in)    , contiguous            :: cov(:,:)
+        complex(TKG)        , intent(inout) , contiguous            :: cor(:,:)
     end subroutine
 #endif
 
@@ -5364,12 +5364,12 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCFC_RUXD_VXLX_CK1
 #endif
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
         type(uppDia_type)   , intent(in)                            :: subset
         type(low_type)      , intent(in)                            :: subsetv
-        real(TKC)           , intent(in)    , contiguous            :: stdinv(:)
-        complex(TKC)        , intent(in)    , contiguous            :: cov(:,:)
-        complex(TKC)        , intent(inout) , contiguous            :: cor(:,:)
+        real(TKG)           , intent(in)    , contiguous            :: stdinv(:)
+        complex(TKG)        , intent(in)    , contiguous            :: cov(:,:)
+        complex(TKG)        , intent(inout) , contiguous            :: cor(:,:)
     end subroutine
 #endif
 
@@ -5386,12 +5386,12 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCFC_RXLD_VUXX_CK5
 #endif
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
         type(lowDia_type)   , intent(in)                            :: subset
         type(upp_type)      , intent(in)                            :: subsetv
-        real(TKC)           , intent(in)    , contiguous            :: stdinv(:)
-        complex(TKC)        , intent(in)    , contiguous            :: cov(:,:)
-        complex(TKC)        , intent(inout) , contiguous            :: cor(:,:)
+        real(TKG)           , intent(in)    , contiguous            :: stdinv(:)
+        complex(TKG)        , intent(in)    , contiguous            :: cov(:,:)
+        complex(TKG)        , intent(inout) , contiguous            :: cor(:,:)
     end subroutine
 #endif
 
@@ -5400,12 +5400,12 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCFC_RXLD_VUXX_CK4
 #endif
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
         type(lowDia_type)   , intent(in)                            :: subset
         type(upp_type)      , intent(in)                            :: subsetv
-        real(TKC)           , intent(in)    , contiguous            :: stdinv(:)
-        complex(TKC)        , intent(in)    , contiguous            :: cov(:,:)
-        complex(TKC)        , intent(inout) , contiguous            :: cor(:,:)
+        real(TKG)           , intent(in)    , contiguous            :: stdinv(:)
+        complex(TKG)        , intent(in)    , contiguous            :: cov(:,:)
+        complex(TKG)        , intent(inout) , contiguous            :: cor(:,:)
     end subroutine
 #endif
 
@@ -5414,12 +5414,12 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCFC_RXLD_VUXX_CK3
 #endif
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
         type(lowDia_type)   , intent(in)                            :: subset
         type(upp_type)      , intent(in)                            :: subsetv
-        real(TKC)           , intent(in)    , contiguous            :: stdinv(:)
-        complex(TKC)        , intent(in)    , contiguous            :: cov(:,:)
-        complex(TKC)        , intent(inout) , contiguous            :: cor(:,:)
+        real(TKG)           , intent(in)    , contiguous            :: stdinv(:)
+        complex(TKG)        , intent(in)    , contiguous            :: cov(:,:)
+        complex(TKG)        , intent(inout) , contiguous            :: cor(:,:)
     end subroutine
 #endif
 
@@ -5428,12 +5428,12 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCFC_RXLD_VUXX_CK2
 #endif
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
         type(lowDia_type)   , intent(in)                            :: subset
         type(upp_type)      , intent(in)                            :: subsetv
-        real(TKC)           , intent(in)    , contiguous            :: stdinv(:)
-        complex(TKC)        , intent(in)    , contiguous            :: cov(:,:)
-        complex(TKC)        , intent(inout) , contiguous            :: cor(:,:)
+        real(TKG)           , intent(in)    , contiguous            :: stdinv(:)
+        complex(TKG)        , intent(in)    , contiguous            :: cov(:,:)
+        complex(TKG)        , intent(inout) , contiguous            :: cor(:,:)
     end subroutine
 #endif
 
@@ -5442,12 +5442,12 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCFC_RXLD_VUXX_CK1
 #endif
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
         type(lowDia_type)   , intent(in)                            :: subset
         type(upp_type)      , intent(in)                            :: subsetv
-        real(TKC)           , intent(in)    , contiguous            :: stdinv(:)
-        complex(TKC)        , intent(in)    , contiguous            :: cov(:,:)
-        complex(TKC)        , intent(inout) , contiguous            :: cor(:,:)
+        real(TKG)           , intent(in)    , contiguous            :: stdinv(:)
+        complex(TKG)        , intent(in)    , contiguous            :: cov(:,:)
+        complex(TKG)        , intent(inout) , contiguous            :: cor(:,:)
     end subroutine
 #endif
 
@@ -5458,12 +5458,12 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCFC_RXLD_VXLX_CK5
 #endif
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
         type(lowDia_type)   , intent(in)                            :: subset
         type(low_type)      , intent(in)                            :: subsetv
-        real(TKC)           , intent(in)    , contiguous            :: stdinv(:)
-        complex(TKC)        , intent(in)    , contiguous            :: cov(:,:)
-        complex(TKC)        , intent(inout) , contiguous            :: cor(:,:)
+        real(TKG)           , intent(in)    , contiguous            :: stdinv(:)
+        complex(TKG)        , intent(in)    , contiguous            :: cov(:,:)
+        complex(TKG)        , intent(inout) , contiguous            :: cor(:,:)
     end subroutine
 #endif
 
@@ -5472,12 +5472,12 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCFC_RXLD_VXLX_CK4
 #endif
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
         type(lowDia_type)   , intent(in)                            :: subset
         type(low_type)      , intent(in)                            :: subsetv
-        real(TKC)           , intent(in)    , contiguous            :: stdinv(:)
-        complex(TKC)        , intent(in)    , contiguous            :: cov(:,:)
-        complex(TKC)        , intent(inout) , contiguous            :: cor(:,:)
+        real(TKG)           , intent(in)    , contiguous            :: stdinv(:)
+        complex(TKG)        , intent(in)    , contiguous            :: cov(:,:)
+        complex(TKG)        , intent(inout) , contiguous            :: cor(:,:)
     end subroutine
 #endif
 
@@ -5486,12 +5486,12 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCFC_RXLD_VXLX_CK3
 #endif
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
         type(lowDia_type)   , intent(in)                            :: subset
         type(low_type)      , intent(in)                            :: subsetv
-        real(TKC)           , intent(in)    , contiguous            :: stdinv(:)
-        complex(TKC)        , intent(in)    , contiguous            :: cov(:,:)
-        complex(TKC)        , intent(inout) , contiguous            :: cor(:,:)
+        real(TKG)           , intent(in)    , contiguous            :: stdinv(:)
+        complex(TKG)        , intent(in)    , contiguous            :: cov(:,:)
+        complex(TKG)        , intent(inout) , contiguous            :: cor(:,:)
     end subroutine
 #endif
 
@@ -5500,12 +5500,12 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCFC_RXLD_VXLX_CK2
 #endif
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
         type(lowDia_type)   , intent(in)                            :: subset
         type(low_type)      , intent(in)                            :: subsetv
-        real(TKC)           , intent(in)    , contiguous            :: stdinv(:)
-        complex(TKC)        , intent(in)    , contiguous            :: cov(:,:)
-        complex(TKC)        , intent(inout) , contiguous            :: cor(:,:)
+        real(TKG)           , intent(in)    , contiguous            :: stdinv(:)
+        complex(TKG)        , intent(in)    , contiguous            :: cov(:,:)
+        complex(TKG)        , intent(inout) , contiguous            :: cor(:,:)
     end subroutine
 #endif
 
@@ -5514,12 +5514,12 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCFC_RXLD_VXLX_CK1
 #endif
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
         type(lowDia_type)   , intent(in)                            :: subset
         type(low_type)      , intent(in)                            :: subsetv
-        real(TKC)           , intent(in)    , contiguous            :: stdinv(:)
-        complex(TKC)        , intent(in)    , contiguous            :: cov(:,:)
-        complex(TKC)        , intent(inout) , contiguous            :: cor(:,:)
+        real(TKG)           , intent(in)    , contiguous            :: stdinv(:)
+        complex(TKG)        , intent(in)    , contiguous            :: cov(:,:)
+        complex(TKG)        , intent(inout) , contiguous            :: cor(:,:)
     end subroutine
 #endif
 
@@ -5546,11 +5546,11 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCFC_RUXX_VUXD_CK5
 #endif
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
         type(upp_type)      , intent(in)                            :: subset
         type(uppDia_type)   , intent(in)                            :: subsetv
-        complex(TKC)        , intent(in)    , contiguous            :: cov(:,:)
-        complex(TKC)        , intent(inout) , contiguous            :: cor(:,:)
+        complex(TKG)        , intent(in)    , contiguous            :: cov(:,:)
+        complex(TKG)        , intent(inout) , contiguous            :: cor(:,:)
     end subroutine
 #endif
 
@@ -5559,11 +5559,11 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCFC_RUXX_VUXD_CK4
 #endif
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
         type(upp_type)      , intent(in)                            :: subset
         type(uppDia_type)   , intent(in)                            :: subsetv
-        complex(TKC)        , intent(in)    , contiguous            :: cov(:,:)
-        complex(TKC)        , intent(inout) , contiguous            :: cor(:,:)
+        complex(TKG)        , intent(in)    , contiguous            :: cov(:,:)
+        complex(TKG)        , intent(inout) , contiguous            :: cor(:,:)
     end subroutine
 #endif
 
@@ -5572,11 +5572,11 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCFC_RUXX_VUXD_CK3
 #endif
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
         type(upp_type)      , intent(in)                            :: subset
         type(uppDia_type)   , intent(in)                            :: subsetv
-        complex(TKC)        , intent(in)    , contiguous            :: cov(:,:)
-        complex(TKC)        , intent(inout) , contiguous            :: cor(:,:)
+        complex(TKG)        , intent(in)    , contiguous            :: cov(:,:)
+        complex(TKG)        , intent(inout) , contiguous            :: cor(:,:)
     end subroutine
 #endif
 
@@ -5585,11 +5585,11 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCFC_RUXX_VUXD_CK2
 #endif
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
         type(upp_type)      , intent(in)                            :: subset
         type(uppDia_type)   , intent(in)                            :: subsetv
-        complex(TKC)        , intent(in)    , contiguous            :: cov(:,:)
-        complex(TKC)        , intent(inout) , contiguous            :: cor(:,:)
+        complex(TKG)        , intent(in)    , contiguous            :: cov(:,:)
+        complex(TKG)        , intent(inout) , contiguous            :: cor(:,:)
     end subroutine
 #endif
 
@@ -5598,11 +5598,11 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCFC_RUXX_VUXD_CK1
 #endif
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
         type(upp_type)      , intent(in)                            :: subset
         type(uppDia_type)   , intent(in)                            :: subsetv
-        complex(TKC)        , intent(in)    , contiguous            :: cov(:,:)
-        complex(TKC)        , intent(inout) , contiguous            :: cor(:,:)
+        complex(TKG)        , intent(in)    , contiguous            :: cov(:,:)
+        complex(TKG)        , intent(inout) , contiguous            :: cor(:,:)
     end subroutine
 #endif
 
@@ -5613,11 +5613,11 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCFC_RUXX_VXLD_CK5
 #endif
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
         type(upp_type)      , intent(in)                            :: subset
         type(lowDia_type)   , intent(in)                            :: subsetv
-        complex(TKC)        , intent(in)    , contiguous            :: cov(:,:)
-        complex(TKC)        , intent(inout) , contiguous            :: cor(:,:)
+        complex(TKG)        , intent(in)    , contiguous            :: cov(:,:)
+        complex(TKG)        , intent(inout) , contiguous            :: cor(:,:)
     end subroutine
 #endif
 
@@ -5626,11 +5626,11 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCFC_RUXX_VXLD_CK4
 #endif
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
         type(upp_type)      , intent(in)                            :: subset
         type(lowDia_type)   , intent(in)                            :: subsetv
-        complex(TKC)        , intent(in)    , contiguous            :: cov(:,:)
-        complex(TKC)        , intent(inout) , contiguous            :: cor(:,:)
+        complex(TKG)        , intent(in)    , contiguous            :: cov(:,:)
+        complex(TKG)        , intent(inout) , contiguous            :: cor(:,:)
     end subroutine
 #endif
 
@@ -5639,11 +5639,11 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCFC_RUXX_VXLD_CK3
 #endif
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
         type(upp_type)      , intent(in)                            :: subset
         type(lowDia_type)   , intent(in)                            :: subsetv
-        complex(TKC)        , intent(in)    , contiguous            :: cov(:,:)
-        complex(TKC)        , intent(inout) , contiguous            :: cor(:,:)
+        complex(TKG)        , intent(in)    , contiguous            :: cov(:,:)
+        complex(TKG)        , intent(inout) , contiguous            :: cor(:,:)
     end subroutine
 #endif
 
@@ -5652,11 +5652,11 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCFC_RUXX_VXLD_CK2
 #endif
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
         type(upp_type)      , intent(in)                            :: subset
         type(lowDia_type)   , intent(in)                            :: subsetv
-        complex(TKC)        , intent(in)    , contiguous            :: cov(:,:)
-        complex(TKC)        , intent(inout) , contiguous            :: cor(:,:)
+        complex(TKG)        , intent(in)    , contiguous            :: cov(:,:)
+        complex(TKG)        , intent(inout) , contiguous            :: cor(:,:)
     end subroutine
 #endif
 
@@ -5665,11 +5665,11 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCFC_RUXX_VXLD_CK1
 #endif
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
         type(upp_type)      , intent(in)                            :: subset
         type(lowDia_type)   , intent(in)                            :: subsetv
-        complex(TKC)        , intent(in)    , contiguous            :: cov(:,:)
-        complex(TKC)        , intent(inout) , contiguous            :: cor(:,:)
+        complex(TKG)        , intent(in)    , contiguous            :: cov(:,:)
+        complex(TKG)        , intent(inout) , contiguous            :: cor(:,:)
     end subroutine
 #endif
 
@@ -5686,11 +5686,11 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCFC_RXLX_VUXD_CK5
 #endif
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
         type(low_type)      , intent(in)                            :: subset
         type(uppDia_type)   , intent(in)                            :: subsetv
-        complex(TKC)        , intent(in)    , contiguous            :: cov(:,:)
-        complex(TKC)        , intent(inout) , contiguous            :: cor(:,:)
+        complex(TKG)        , intent(in)    , contiguous            :: cov(:,:)
+        complex(TKG)        , intent(inout) , contiguous            :: cor(:,:)
     end subroutine
 #endif
 
@@ -5699,11 +5699,11 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCFC_RXLX_VUXD_CK4
 #endif
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
         type(low_type)      , intent(in)                            :: subset
         type(uppDia_type)   , intent(in)                            :: subsetv
-        complex(TKC)        , intent(in)    , contiguous            :: cov(:,:)
-        complex(TKC)        , intent(inout) , contiguous            :: cor(:,:)
+        complex(TKG)        , intent(in)    , contiguous            :: cov(:,:)
+        complex(TKG)        , intent(inout) , contiguous            :: cor(:,:)
     end subroutine
 #endif
 
@@ -5712,11 +5712,11 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCFC_RXLX_VUXD_CK3
 #endif
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
         type(low_type)      , intent(in)                            :: subset
         type(uppDia_type)   , intent(in)                            :: subsetv
-        complex(TKC)        , intent(in)    , contiguous            :: cov(:,:)
-        complex(TKC)        , intent(inout) , contiguous            :: cor(:,:)
+        complex(TKG)        , intent(in)    , contiguous            :: cov(:,:)
+        complex(TKG)        , intent(inout) , contiguous            :: cor(:,:)
     end subroutine
 #endif
 
@@ -5725,11 +5725,11 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCFC_RXLX_VUXD_CK2
 #endif
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
         type(low_type)      , intent(in)                            :: subset
         type(uppDia_type)   , intent(in)                            :: subsetv
-        complex(TKC)        , intent(in)    , contiguous            :: cov(:,:)
-        complex(TKC)        , intent(inout) , contiguous            :: cor(:,:)
+        complex(TKG)        , intent(in)    , contiguous            :: cov(:,:)
+        complex(TKG)        , intent(inout) , contiguous            :: cor(:,:)
     end subroutine
 #endif
 
@@ -5738,11 +5738,11 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCFC_RXLX_VUXD_CK1
 #endif
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
         type(low_type)      , intent(in)                            :: subset
         type(uppDia_type)   , intent(in)                            :: subsetv
-        complex(TKC)        , intent(in)    , contiguous            :: cov(:,:)
-        complex(TKC)        , intent(inout) , contiguous            :: cor(:,:)
+        complex(TKG)        , intent(in)    , contiguous            :: cov(:,:)
+        complex(TKG)        , intent(inout) , contiguous            :: cor(:,:)
     end subroutine
 #endif
 
@@ -5753,11 +5753,11 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCFC_RXLX_VXLD_CK5
 #endif
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
         type(low_type)      , intent(in)                            :: subset
         type(lowDia_type)   , intent(in)                            :: subsetv
-        complex(TKC)        , intent(in)    , contiguous            :: cov(:,:)
-        complex(TKC)        , intent(inout) , contiguous            :: cor(:,:)
+        complex(TKG)        , intent(in)    , contiguous            :: cov(:,:)
+        complex(TKG)        , intent(inout) , contiguous            :: cor(:,:)
     end subroutine
 #endif
 
@@ -5766,11 +5766,11 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCFC_RXLX_VXLD_CK4
 #endif
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
         type(low_type)      , intent(in)                            :: subset
         type(lowDia_type)   , intent(in)                            :: subsetv
-        complex(TKC)        , intent(in)    , contiguous            :: cov(:,:)
-        complex(TKC)        , intent(inout) , contiguous            :: cor(:,:)
+        complex(TKG)        , intent(in)    , contiguous            :: cov(:,:)
+        complex(TKG)        , intent(inout) , contiguous            :: cor(:,:)
     end subroutine
 #endif
 
@@ -5779,11 +5779,11 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCFC_RXLX_VXLD_CK3
 #endif
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
         type(low_type)      , intent(in)                            :: subset
         type(lowDia_type)   , intent(in)                            :: subsetv
-        complex(TKC)        , intent(in)    , contiguous            :: cov(:,:)
-        complex(TKC)        , intent(inout) , contiguous            :: cor(:,:)
+        complex(TKG)        , intent(in)    , contiguous            :: cov(:,:)
+        complex(TKG)        , intent(inout) , contiguous            :: cor(:,:)
     end subroutine
 #endif
 
@@ -5792,11 +5792,11 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCFC_RXLX_VXLD_CK2
 #endif
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
         type(low_type)      , intent(in)                            :: subset
         type(lowDia_type)   , intent(in)                            :: subsetv
-        complex(TKC)        , intent(in)    , contiguous            :: cov(:,:)
-        complex(TKC)        , intent(inout) , contiguous            :: cor(:,:)
+        complex(TKG)        , intent(in)    , contiguous            :: cov(:,:)
+        complex(TKG)        , intent(inout) , contiguous            :: cor(:,:)
     end subroutine
 #endif
 
@@ -5805,11 +5805,11 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCFC_RXLX_VXLD_CK1
 #endif
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
         type(low_type)      , intent(in)                            :: subset
         type(lowDia_type)   , intent(in)                            :: subsetv
-        complex(TKC)        , intent(in)    , contiguous            :: cov(:,:)
-        complex(TKC)        , intent(inout) , contiguous            :: cor(:,:)
+        complex(TKG)        , intent(in)    , contiguous            :: cov(:,:)
+        complex(TKG)        , intent(inout) , contiguous            :: cor(:,:)
     end subroutine
 #endif
 
@@ -5836,11 +5836,11 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCFC_RUXD_VUXD_CK5
 #endif
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
         type(uppDia_type)   , intent(in)                            :: subset
         type(uppDia_type)   , intent(in)                            :: subsetv
-        complex(TKC)        , intent(in)    , contiguous            :: cov(:,:)
-        complex(TKC)        , intent(inout) , contiguous            :: cor(:,:)
+        complex(TKG)        , intent(in)    , contiguous            :: cov(:,:)
+        complex(TKG)        , intent(inout) , contiguous            :: cor(:,:)
     end subroutine
 #endif
 
@@ -5849,11 +5849,11 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCFC_RUXD_VUXD_CK4
 #endif
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
         type(uppDia_type)   , intent(in)                            :: subset
         type(uppDia_type)   , intent(in)                            :: subsetv
-        complex(TKC)        , intent(in)    , contiguous            :: cov(:,:)
-        complex(TKC)        , intent(inout) , contiguous            :: cor(:,:)
+        complex(TKG)        , intent(in)    , contiguous            :: cov(:,:)
+        complex(TKG)        , intent(inout) , contiguous            :: cor(:,:)
     end subroutine
 #endif
 
@@ -5862,11 +5862,11 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCFC_RUXD_VUXD_CK3
 #endif
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
         type(uppDia_type)   , intent(in)                            :: subset
         type(uppDia_type)   , intent(in)                            :: subsetv
-        complex(TKC)        , intent(in)    , contiguous            :: cov(:,:)
-        complex(TKC)        , intent(inout) , contiguous            :: cor(:,:)
+        complex(TKG)        , intent(in)    , contiguous            :: cov(:,:)
+        complex(TKG)        , intent(inout) , contiguous            :: cor(:,:)
     end subroutine
 #endif
 
@@ -5875,11 +5875,11 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCFC_RUXD_VUXD_CK2
 #endif
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
         type(uppDia_type)   , intent(in)                            :: subset
         type(uppDia_type)   , intent(in)                            :: subsetv
-        complex(TKC)        , intent(in)    , contiguous            :: cov(:,:)
-        complex(TKC)        , intent(inout) , contiguous            :: cor(:,:)
+        complex(TKG)        , intent(in)    , contiguous            :: cov(:,:)
+        complex(TKG)        , intent(inout) , contiguous            :: cor(:,:)
     end subroutine
 #endif
 
@@ -5888,11 +5888,11 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCFC_RUXD_VUXD_CK1
 #endif
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
         type(uppDia_type)   , intent(in)                            :: subset
         type(uppDia_type)   , intent(in)                            :: subsetv
-        complex(TKC)        , intent(in)    , contiguous            :: cov(:,:)
-        complex(TKC)        , intent(inout) , contiguous            :: cor(:,:)
+        complex(TKG)        , intent(in)    , contiguous            :: cov(:,:)
+        complex(TKG)        , intent(inout) , contiguous            :: cor(:,:)
     end subroutine
 #endif
 
@@ -5903,11 +5903,11 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCFC_RUXD_VXLD_CK5
 #endif
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
         type(uppDia_type)   , intent(in)                            :: subset
         type(lowDia_type)   , intent(in)                            :: subsetv
-        complex(TKC)        , intent(in)    , contiguous            :: cov(:,:)
-        complex(TKC)        , intent(inout) , contiguous            :: cor(:,:)
+        complex(TKG)        , intent(in)    , contiguous            :: cov(:,:)
+        complex(TKG)        , intent(inout) , contiguous            :: cor(:,:)
     end subroutine
 #endif
 
@@ -5916,11 +5916,11 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCFC_RUXD_VXLD_CK4
 #endif
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
         type(uppDia_type)   , intent(in)                            :: subset
         type(lowDia_type)   , intent(in)                            :: subsetv
-        complex(TKC)        , intent(in)    , contiguous            :: cov(:,:)
-        complex(TKC)        , intent(inout) , contiguous            :: cor(:,:)
+        complex(TKG)        , intent(in)    , contiguous            :: cov(:,:)
+        complex(TKG)        , intent(inout) , contiguous            :: cor(:,:)
     end subroutine
 #endif
 
@@ -5929,11 +5929,11 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCFC_RUXD_VXLD_CK3
 #endif
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
         type(uppDia_type)   , intent(in)                            :: subset
         type(lowDia_type)   , intent(in)                            :: subsetv
-        complex(TKC)        , intent(in)    , contiguous            :: cov(:,:)
-        complex(TKC)        , intent(inout) , contiguous            :: cor(:,:)
+        complex(TKG)        , intent(in)    , contiguous            :: cov(:,:)
+        complex(TKG)        , intent(inout) , contiguous            :: cor(:,:)
     end subroutine
 #endif
 
@@ -5942,11 +5942,11 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCFC_RUXD_VXLD_CK2
 #endif
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
         type(uppDia_type)   , intent(in)                            :: subset
         type(lowDia_type)   , intent(in)                            :: subsetv
-        complex(TKC)        , intent(in)    , contiguous            :: cov(:,:)
-        complex(TKC)        , intent(inout) , contiguous            :: cor(:,:)
+        complex(TKG)        , intent(in)    , contiguous            :: cov(:,:)
+        complex(TKG)        , intent(inout) , contiguous            :: cor(:,:)
     end subroutine
 #endif
 
@@ -5955,11 +5955,11 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCFC_RUXD_VXLD_CK1
 #endif
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
         type(uppDia_type)   , intent(in)                            :: subset
         type(lowDia_type)   , intent(in)                            :: subsetv
-        complex(TKC)        , intent(in)    , contiguous            :: cov(:,:)
-        complex(TKC)        , intent(inout) , contiguous            :: cor(:,:)
+        complex(TKG)        , intent(in)    , contiguous            :: cov(:,:)
+        complex(TKG)        , intent(inout) , contiguous            :: cor(:,:)
     end subroutine
 #endif
 
@@ -5976,11 +5976,11 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCFC_RXLD_VUXD_CK5
 #endif
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
         type(lowDia_type)   , intent(in)                            :: subset
         type(uppDia_type)   , intent(in)                            :: subsetv
-        complex(TKC)        , intent(in)    , contiguous            :: cov(:,:)
-        complex(TKC)        , intent(inout) , contiguous            :: cor(:,:)
+        complex(TKG)        , intent(in)    , contiguous            :: cov(:,:)
+        complex(TKG)        , intent(inout) , contiguous            :: cor(:,:)
     end subroutine
 #endif
 
@@ -5989,11 +5989,11 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCFC_RXLD_VUXD_CK4
 #endif
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
         type(lowDia_type)   , intent(in)                            :: subset
         type(uppDia_type)   , intent(in)                            :: subsetv
-        complex(TKC)        , intent(in)    , contiguous            :: cov(:,:)
-        complex(TKC)        , intent(inout) , contiguous            :: cor(:,:)
+        complex(TKG)        , intent(in)    , contiguous            :: cov(:,:)
+        complex(TKG)        , intent(inout) , contiguous            :: cor(:,:)
     end subroutine
 #endif
 
@@ -6002,11 +6002,11 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCFC_RXLD_VUXD_CK3
 #endif
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
         type(lowDia_type)   , intent(in)                            :: subset
         type(uppDia_type)   , intent(in)                            :: subsetv
-        complex(TKC)        , intent(in)    , contiguous            :: cov(:,:)
-        complex(TKC)        , intent(inout) , contiguous            :: cor(:,:)
+        complex(TKG)        , intent(in)    , contiguous            :: cov(:,:)
+        complex(TKG)        , intent(inout) , contiguous            :: cor(:,:)
     end subroutine
 #endif
 
@@ -6015,11 +6015,11 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCFC_RXLD_VUXD_CK2
 #endif
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
         type(lowDia_type)   , intent(in)                            :: subset
         type(uppDia_type)   , intent(in)                            :: subsetv
-        complex(TKC)        , intent(in)    , contiguous            :: cov(:,:)
-        complex(TKC)        , intent(inout) , contiguous            :: cor(:,:)
+        complex(TKG)        , intent(in)    , contiguous            :: cov(:,:)
+        complex(TKG)        , intent(inout) , contiguous            :: cor(:,:)
     end subroutine
 #endif
 
@@ -6028,11 +6028,11 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCFC_RXLD_VUXD_CK1
 #endif
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
         type(lowDia_type)   , intent(in)                            :: subset
         type(uppDia_type)   , intent(in)                            :: subsetv
-        complex(TKC)        , intent(in)    , contiguous            :: cov(:,:)
-        complex(TKC)        , intent(inout) , contiguous            :: cor(:,:)
+        complex(TKG)        , intent(in)    , contiguous            :: cov(:,:)
+        complex(TKG)        , intent(inout) , contiguous            :: cor(:,:)
     end subroutine
 #endif
 
@@ -6043,11 +6043,11 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCFC_RXLD_VXLD_CK5
 #endif
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
         type(lowDia_type)   , intent(in)                            :: subset
         type(lowDia_type)   , intent(in)                            :: subsetv
-        complex(TKC)        , intent(in)    , contiguous            :: cov(:,:)
-        complex(TKC)        , intent(inout) , contiguous            :: cor(:,:)
+        complex(TKG)        , intent(in)    , contiguous            :: cov(:,:)
+        complex(TKG)        , intent(inout) , contiguous            :: cor(:,:)
     end subroutine
 #endif
 
@@ -6056,11 +6056,11 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCFC_RXLD_VXLD_CK4
 #endif
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
         type(lowDia_type)   , intent(in)                            :: subset
         type(lowDia_type)   , intent(in)                            :: subsetv
-        complex(TKC)        , intent(in)    , contiguous            :: cov(:,:)
-        complex(TKC)        , intent(inout) , contiguous            :: cor(:,:)
+        complex(TKG)        , intent(in)    , contiguous            :: cov(:,:)
+        complex(TKG)        , intent(inout) , contiguous            :: cor(:,:)
     end subroutine
 #endif
 
@@ -6069,11 +6069,11 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCFC_RXLD_VXLD_CK3
 #endif
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
         type(lowDia_type)   , intent(in)                            :: subset
         type(lowDia_type)   , intent(in)                            :: subsetv
-        complex(TKC)        , intent(in)    , contiguous            :: cov(:,:)
-        complex(TKC)        , intent(inout) , contiguous            :: cor(:,:)
+        complex(TKG)        , intent(in)    , contiguous            :: cov(:,:)
+        complex(TKG)        , intent(inout) , contiguous            :: cor(:,:)
     end subroutine
 #endif
 
@@ -6082,11 +6082,11 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCFC_RXLD_VXLD_CK2
 #endif
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
         type(lowDia_type)   , intent(in)                            :: subset
         type(lowDia_type)   , intent(in)                            :: subsetv
-        complex(TKC)        , intent(in)    , contiguous            :: cov(:,:)
-        complex(TKC)        , intent(inout) , contiguous            :: cor(:,:)
+        complex(TKG)        , intent(in)    , contiguous            :: cov(:,:)
+        complex(TKG)        , intent(inout) , contiguous            :: cor(:,:)
     end subroutine
 #endif
 
@@ -6095,11 +6095,11 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCFC_RXLD_VXLD_CK1
 #endif
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
         type(lowDia_type)   , intent(in)                            :: subset
         type(lowDia_type)   , intent(in)                            :: subsetv
-        complex(TKC)        , intent(in)    , contiguous            :: cov(:,:)
-        complex(TKC)        , intent(inout) , contiguous            :: cor(:,:)
+        complex(TKG)        , intent(in)    , contiguous            :: cov(:,:)
+        complex(TKG)        , intent(inout) , contiguous            :: cor(:,:)
     end subroutine
 #endif
 
@@ -6124,9 +6124,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPrsOrgWNO_XY_CK5
 #endif
-        use pm_kind, only: TKC => CK5
-        complex(TKC)            , intent(in)    , contiguous        :: x(:), y(:)
-        complex(TKC)            , intent(out)                       :: cor
+        use pm_kind, only: TKG => CK5
+        complex(TKG)            , intent(in)    , contiguous        :: x(:), y(:)
+        complex(TKG)            , intent(out)                       :: cor
     end subroutine
 #endif
 
@@ -6135,9 +6135,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPrsOrgWNO_XY_CK4
 #endif
-        use pm_kind, only: TKC => CK4
-        complex(TKC)            , intent(in)    , contiguous        :: x(:), y(:)
-        complex(TKC)            , intent(out)                       :: cor
+        use pm_kind, only: TKG => CK4
+        complex(TKG)            , intent(in)    , contiguous        :: x(:), y(:)
+        complex(TKG)            , intent(out)                       :: cor
     end subroutine
 #endif
 
@@ -6146,9 +6146,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPrsOrgWNO_XY_CK3
 #endif
-        use pm_kind, only: TKC => CK3
-        complex(TKC)            , intent(in)    , contiguous        :: x(:), y(:)
-        complex(TKC)            , intent(out)                       :: cor
+        use pm_kind, only: TKG => CK3
+        complex(TKG)            , intent(in)    , contiguous        :: x(:), y(:)
+        complex(TKG)            , intent(out)                       :: cor
     end subroutine
 #endif
 
@@ -6157,9 +6157,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPrsOrgWNO_XY_CK2
 #endif
-        use pm_kind, only: TKC => CK2
-        complex(TKC)            , intent(in)    , contiguous        :: x(:), y(:)
-        complex(TKC)            , intent(out)                       :: cor
+        use pm_kind, only: TKG => CK2
+        complex(TKG)            , intent(in)    , contiguous        :: x(:), y(:)
+        complex(TKG)            , intent(out)                       :: cor
     end subroutine
 #endif
 
@@ -6168,9 +6168,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPrsOrgWNO_XY_CK1
 #endif
-        use pm_kind, only: TKC => CK1
-        complex(TKC)            , intent(in)    , contiguous        :: x(:), y(:)
-        complex(TKC)            , intent(out)                       :: cor
+        use pm_kind, only: TKG => CK1
+        complex(TKG)            , intent(in)    , contiguous        :: x(:), y(:)
+        complex(TKG)            , intent(out)                       :: cor
     end subroutine
 #endif
 
@@ -6181,10 +6181,10 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPrsAvgWNO_XY_CK5
 #endif
-        use pm_kind, only: TKC => CK5
-        complex(TKC)            , intent(in)    , contiguous        :: x(:), y(:)
-        complex(TKC)            , intent(in)    , contiguous        :: mean(:)
-        complex(TKC)            , intent(out)                       :: cor
+        use pm_kind, only: TKG => CK5
+        complex(TKG)            , intent(in)    , contiguous        :: x(:), y(:)
+        complex(TKG)            , intent(in)    , contiguous        :: mean(:)
+        complex(TKG)            , intent(out)                       :: cor
     end subroutine
 #endif
 
@@ -6193,10 +6193,10 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPrsAvgWNO_XY_CK4
 #endif
-        use pm_kind, only: TKC => CK4
-        complex(TKC)            , intent(in)    , contiguous        :: x(:), y(:)
-        complex(TKC)            , intent(in)    , contiguous        :: mean(:)
-        complex(TKC)            , intent(out)                       :: cor
+        use pm_kind, only: TKG => CK4
+        complex(TKG)            , intent(in)    , contiguous        :: x(:), y(:)
+        complex(TKG)            , intent(in)    , contiguous        :: mean(:)
+        complex(TKG)            , intent(out)                       :: cor
     end subroutine
 #endif
 
@@ -6205,10 +6205,10 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPrsAvgWNO_XY_CK3
 #endif
-        use pm_kind, only: TKC => CK3
-        complex(TKC)            , intent(in)    , contiguous        :: x(:), y(:)
-        complex(TKC)            , intent(in)    , contiguous        :: mean(:)
-        complex(TKC)            , intent(out)                       :: cor
+        use pm_kind, only: TKG => CK3
+        complex(TKG)            , intent(in)    , contiguous        :: x(:), y(:)
+        complex(TKG)            , intent(in)    , contiguous        :: mean(:)
+        complex(TKG)            , intent(out)                       :: cor
     end subroutine
 #endif
 
@@ -6217,10 +6217,10 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPrsAvgWNO_XY_CK2
 #endif
-        use pm_kind, only: TKC => CK2
-        complex(TKC)            , intent(in)    , contiguous        :: x(:), y(:)
-        complex(TKC)            , intent(in)    , contiguous        :: mean(:)
-        complex(TKC)            , intent(out)                       :: cor
+        use pm_kind, only: TKG => CK2
+        complex(TKG)            , intent(in)    , contiguous        :: x(:), y(:)
+        complex(TKG)            , intent(in)    , contiguous        :: mean(:)
+        complex(TKG)            , intent(out)                       :: cor
     end subroutine
 #endif
 
@@ -6229,10 +6229,10 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPrsAvgWNO_XY_CK1
 #endif
-        use pm_kind, only: TKC => CK1
-        complex(TKC)            , intent(in)    , contiguous        :: x(:), y(:)
-        complex(TKC)            , intent(in)    , contiguous        :: mean(:)
-        complex(TKC)            , intent(out)                       :: cor
+        use pm_kind, only: TKG => CK1
+        complex(TKG)            , intent(in)    , contiguous        :: x(:), y(:)
+        complex(TKG)            , intent(in)    , contiguous        :: mean(:)
+        complex(TKG)            , intent(out)                       :: cor
     end subroutine
 #endif
 
@@ -6251,11 +6251,11 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPrsOrgWTI_XY_CK5
 #endif
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
         integer(IK)             , intent(in)                        :: weisum
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous        :: x(:), y(:)
-        complex(TKC)            , intent(out)                       :: cor
+        complex(TKG)            , intent(in)    , contiguous        :: x(:), y(:)
+        complex(TKG)            , intent(out)                       :: cor
     end subroutine
 #endif
 
@@ -6264,11 +6264,11 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPrsOrgWTI_XY_CK4
 #endif
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
         integer(IK)             , intent(in)                        :: weisum
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous        :: x(:), y(:)
-        complex(TKC)            , intent(out)                       :: cor
+        complex(TKG)            , intent(in)    , contiguous        :: x(:), y(:)
+        complex(TKG)            , intent(out)                       :: cor
     end subroutine
 #endif
 
@@ -6277,11 +6277,11 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPrsOrgWTI_XY_CK3
 #endif
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
         integer(IK)             , intent(in)                        :: weisum
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous        :: x(:), y(:)
-        complex(TKC)            , intent(out)                       :: cor
+        complex(TKG)            , intent(in)    , contiguous        :: x(:), y(:)
+        complex(TKG)            , intent(out)                       :: cor
     end subroutine
 #endif
 
@@ -6290,11 +6290,11 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPrsOrgWTI_XY_CK2
 #endif
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
         integer(IK)             , intent(in)                        :: weisum
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous        :: x(:), y(:)
-        complex(TKC)            , intent(out)                       :: cor
+        complex(TKG)            , intent(in)    , contiguous        :: x(:), y(:)
+        complex(TKG)            , intent(out)                       :: cor
     end subroutine
 #endif
 
@@ -6303,11 +6303,11 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPrsOrgWTI_XY_CK1
 #endif
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
         integer(IK)             , intent(in)                        :: weisum
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous        :: x(:), y(:)
-        complex(TKC)            , intent(out)                       :: cor
+        complex(TKG)            , intent(in)    , contiguous        :: x(:), y(:)
+        complex(TKG)            , intent(out)                       :: cor
     end subroutine
 #endif
 
@@ -6318,12 +6318,12 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPrsAvgWTI_XY_CK5
 #endif
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
         integer(IK)             , intent(in)                        :: weisum
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous        :: mean(:)
-        complex(TKC)            , intent(in)    , contiguous        :: x(:), y(:)
-        complex(TKC)            , intent(out)                       :: cor
+        complex(TKG)            , intent(in)    , contiguous        :: mean(:)
+        complex(TKG)            , intent(in)    , contiguous        :: x(:), y(:)
+        complex(TKG)            , intent(out)                       :: cor
     end subroutine
 #endif
 
@@ -6332,12 +6332,12 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPrsAvgWTI_XY_CK4
 #endif
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
         integer(IK)             , intent(in)                        :: weisum
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous        :: mean(:)
-        complex(TKC)            , intent(in)    , contiguous        :: x(:), y(:)
-        complex(TKC)            , intent(out)                       :: cor
+        complex(TKG)            , intent(in)    , contiguous        :: mean(:)
+        complex(TKG)            , intent(in)    , contiguous        :: x(:), y(:)
+        complex(TKG)            , intent(out)                       :: cor
     end subroutine
 #endif
 
@@ -6346,12 +6346,12 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPrsAvgWTI_XY_CK3
 #endif
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
         integer(IK)             , intent(in)                        :: weisum
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous        :: mean(:)
-        complex(TKC)            , intent(in)    , contiguous        :: x(:), y(:)
-        complex(TKC)            , intent(out)                       :: cor
+        complex(TKG)            , intent(in)    , contiguous        :: mean(:)
+        complex(TKG)            , intent(in)    , contiguous        :: x(:), y(:)
+        complex(TKG)            , intent(out)                       :: cor
     end subroutine
 #endif
 
@@ -6360,12 +6360,12 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPrsAvgWTI_XY_CK2
 #endif
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
         integer(IK)             , intent(in)                        :: weisum
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous        :: mean(:)
-        complex(TKC)            , intent(in)    , contiguous        :: x(:), y(:)
-        complex(TKC)            , intent(out)                       :: cor
+        complex(TKG)            , intent(in)    , contiguous        :: mean(:)
+        complex(TKG)            , intent(in)    , contiguous        :: x(:), y(:)
+        complex(TKG)            , intent(out)                       :: cor
     end subroutine
 #endif
 
@@ -6374,12 +6374,12 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPrsAvgWTI_XY_CK1
 #endif
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
         integer(IK)             , intent(in)                        :: weisum
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous        :: mean(:)
-        complex(TKC)            , intent(in)    , contiguous        :: x(:), y(:)
-        complex(TKC)            , intent(out)                       :: cor
+        complex(TKG)            , intent(in)    , contiguous        :: mean(:)
+        complex(TKG)            , intent(in)    , contiguous        :: x(:), y(:)
+        complex(TKG)            , intent(out)                       :: cor
     end subroutine
 #endif
 
@@ -6398,11 +6398,11 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPrsOrgWTR_XY_CK5
 #endif
-        use pm_kind, only: TKC => CK5
-        real(TKC)               , intent(in)                        :: weisum
-        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous        :: x(:), y(:)
-        complex(TKC)            , intent(out)                       :: cor
+        use pm_kind, only: TKG => CK5
+        real(TKG)               , intent(in)                        :: weisum
+        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+        complex(TKG)            , intent(in)    , contiguous        :: x(:), y(:)
+        complex(TKG)            , intent(out)                       :: cor
     end subroutine
 #endif
 
@@ -6411,11 +6411,11 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPrsOrgWTR_XY_CK4
 #endif
-        use pm_kind, only: TKC => CK4
-        real(TKC)               , intent(in)                        :: weisum
-        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous        :: x(:), y(:)
-        complex(TKC)            , intent(out)                       :: cor
+        use pm_kind, only: TKG => CK4
+        real(TKG)               , intent(in)                        :: weisum
+        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+        complex(TKG)            , intent(in)    , contiguous        :: x(:), y(:)
+        complex(TKG)            , intent(out)                       :: cor
     end subroutine
 #endif
 
@@ -6424,11 +6424,11 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPrsOrgWTR_XY_CK3
 #endif
-        use pm_kind, only: TKC => CK3
-        real(TKC)               , intent(in)                        :: weisum
-        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous        :: x(:), y(:)
-        complex(TKC)            , intent(out)                       :: cor
+        use pm_kind, only: TKG => CK3
+        real(TKG)               , intent(in)                        :: weisum
+        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+        complex(TKG)            , intent(in)    , contiguous        :: x(:), y(:)
+        complex(TKG)            , intent(out)                       :: cor
     end subroutine
 #endif
 
@@ -6437,11 +6437,11 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPrsOrgWTR_XY_CK2
 #endif
-        use pm_kind, only: TKC => CK2
-        real(TKC)               , intent(in)                        :: weisum
-        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous        :: x(:), y(:)
-        complex(TKC)            , intent(out)                       :: cor
+        use pm_kind, only: TKG => CK2
+        real(TKG)               , intent(in)                        :: weisum
+        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+        complex(TKG)            , intent(in)    , contiguous        :: x(:), y(:)
+        complex(TKG)            , intent(out)                       :: cor
     end subroutine
 #endif
 
@@ -6450,11 +6450,11 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPrsOrgWTR_XY_CK1
 #endif
-        use pm_kind, only: TKC => CK1
-        real(TKC)               , intent(in)                        :: weisum
-        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous        :: x(:), y(:)
-        complex(TKC)            , intent(out)                       :: cor
+        use pm_kind, only: TKG => CK1
+        real(TKG)               , intent(in)                        :: weisum
+        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+        complex(TKG)            , intent(in)    , contiguous        :: x(:), y(:)
+        complex(TKG)            , intent(out)                       :: cor
     end subroutine
 #endif
 
@@ -6465,12 +6465,12 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPrsAvgWTR_XY_CK5
 #endif
-        use pm_kind, only: TKC => CK5
-        real(TKC)               , intent(in)                        :: weisum
-        complex(TKC)            , intent(in)    , contiguous        :: mean(:)
-        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous        :: x(:), y(:)
-        complex(TKC)            , intent(out)                       :: cor
+        use pm_kind, only: TKG => CK5
+        real(TKG)               , intent(in)                        :: weisum
+        complex(TKG)            , intent(in)    , contiguous        :: mean(:)
+        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+        complex(TKG)            , intent(in)    , contiguous        :: x(:), y(:)
+        complex(TKG)            , intent(out)                       :: cor
     end subroutine
 #endif
 
@@ -6479,12 +6479,12 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPrsAvgWTR_XY_CK4
 #endif
-        use pm_kind, only: TKC => CK4
-        real(TKC)               , intent(in)                        :: weisum
-        complex(TKC)            , intent(in)    , contiguous        :: mean(:)
-        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous        :: x(:), y(:)
-        complex(TKC)            , intent(out)                       :: cor
+        use pm_kind, only: TKG => CK4
+        real(TKG)               , intent(in)                        :: weisum
+        complex(TKG)            , intent(in)    , contiguous        :: mean(:)
+        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+        complex(TKG)            , intent(in)    , contiguous        :: x(:), y(:)
+        complex(TKG)            , intent(out)                       :: cor
     end subroutine
 #endif
 
@@ -6493,12 +6493,12 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPrsAvgWTR_XY_CK3
 #endif
-        use pm_kind, only: TKC => CK3
-        real(TKC)               , intent(in)                        :: weisum
-        complex(TKC)            , intent(in)    , contiguous        :: mean(:)
-        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous        :: x(:), y(:)
-        complex(TKC)            , intent(out)                       :: cor
+        use pm_kind, only: TKG => CK3
+        real(TKG)               , intent(in)                        :: weisum
+        complex(TKG)            , intent(in)    , contiguous        :: mean(:)
+        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+        complex(TKG)            , intent(in)    , contiguous        :: x(:), y(:)
+        complex(TKG)            , intent(out)                       :: cor
     end subroutine
 #endif
 
@@ -6507,12 +6507,12 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPrsAvgWTR_XY_CK2
 #endif
-        use pm_kind, only: TKC => CK2
-        real(TKC)               , intent(in)                        :: weisum
-        complex(TKC)            , intent(in)    , contiguous        :: mean(:)
-        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous        :: x(:), y(:)
-        complex(TKC)            , intent(out)                       :: cor
+        use pm_kind, only: TKG => CK2
+        real(TKG)               , intent(in)                        :: weisum
+        complex(TKG)            , intent(in)    , contiguous        :: mean(:)
+        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+        complex(TKG)            , intent(in)    , contiguous        :: x(:), y(:)
+        complex(TKG)            , intent(out)                       :: cor
     end subroutine
 #endif
 
@@ -6521,12 +6521,12 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPrsAvgWTR_XY_CK1
 #endif
-        use pm_kind, only: TKC => CK1
-        real(TKC)               , intent(in)                        :: weisum
-        complex(TKC)            , intent(in)    , contiguous        :: mean(:)
-        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous        :: x(:), y(:)
-        complex(TKC)            , intent(out)                       :: cor
+        use pm_kind, only: TKG => CK1
+        real(TKG)               , intent(in)                        :: weisum
+        complex(TKG)            , intent(in)    , contiguous        :: mean(:)
+        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+        complex(TKG)            , intent(in)    , contiguous        :: x(:), y(:)
+        complex(TKG)            , intent(out)                       :: cor
     end subroutine
 #endif
 
@@ -6547,10 +6547,10 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPrsOrgWNO_UXD_CK5
 #endif
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
         integer(IK)             , intent(in)                        :: dim
-        complex(TKC)            , intent(in)    , contiguous        :: sample(:,:)
-        complex(TKC)            , intent(inout) , contiguous        :: cor(:,:)
+        complex(TKG)            , intent(in)    , contiguous        :: sample(:,:)
+        complex(TKG)            , intent(inout) , contiguous        :: cor(:,:)
         type(uppDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -6560,10 +6560,10 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPrsOrgWNO_UXD_CK4
 #endif
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
         integer(IK)             , intent(in)                        :: dim
-        complex(TKC)            , intent(in)    , contiguous        :: sample(:,:)
-        complex(TKC)            , intent(inout) , contiguous        :: cor(:,:)
+        complex(TKG)            , intent(in)    , contiguous        :: sample(:,:)
+        complex(TKG)            , intent(inout) , contiguous        :: cor(:,:)
         type(uppDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -6573,10 +6573,10 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPrsOrgWNO_UXD_CK3
 #endif
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
         integer(IK)             , intent(in)                        :: dim
-        complex(TKC)            , intent(in)    , contiguous        :: sample(:,:)
-        complex(TKC)            , intent(inout) , contiguous        :: cor(:,:)
+        complex(TKG)            , intent(in)    , contiguous        :: sample(:,:)
+        complex(TKG)            , intent(inout) , contiguous        :: cor(:,:)
         type(uppDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -6586,10 +6586,10 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPrsOrgWNO_UXD_CK2
 #endif
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
         integer(IK)             , intent(in)                        :: dim
-        complex(TKC)            , intent(in)    , contiguous        :: sample(:,:)
-        complex(TKC)            , intent(inout) , contiguous        :: cor(:,:)
+        complex(TKG)            , intent(in)    , contiguous        :: sample(:,:)
+        complex(TKG)            , intent(inout) , contiguous        :: cor(:,:)
         type(uppDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -6599,10 +6599,10 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPrsOrgWNO_UXD_CK1
 #endif
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
         integer(IK)             , intent(in)                        :: dim
-        complex(TKC)            , intent(in)    , contiguous        :: sample(:,:)
-        complex(TKC)            , intent(inout) , contiguous        :: cor(:,:)
+        complex(TKG)            , intent(in)    , contiguous        :: sample(:,:)
+        complex(TKG)            , intent(inout) , contiguous        :: cor(:,:)
         type(uppDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -6614,11 +6614,11 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPrsAvgWNO_UXD_CK5
 #endif
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
         integer(IK)             , intent(in)                        :: dim
-        complex(TKC)            , intent(in)    , contiguous        :: sample(:,:)
-        complex(TKC)            , intent(in)    , contiguous        :: mean(:)
-        complex(TKC)            , intent(inout) , contiguous        :: cor(:,:)
+        complex(TKG)            , intent(in)    , contiguous        :: sample(:,:)
+        complex(TKG)            , intent(in)    , contiguous        :: mean(:)
+        complex(TKG)            , intent(inout) , contiguous        :: cor(:,:)
         type(uppDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -6628,11 +6628,11 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPrsAvgWNO_UXD_CK4
 #endif
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
         integer(IK)             , intent(in)                        :: dim
-        complex(TKC)            , intent(in)    , contiguous        :: sample(:,:)
-        complex(TKC)            , intent(in)    , contiguous        :: mean(:)
-        complex(TKC)            , intent(inout) , contiguous        :: cor(:,:)
+        complex(TKG)            , intent(in)    , contiguous        :: sample(:,:)
+        complex(TKG)            , intent(in)    , contiguous        :: mean(:)
+        complex(TKG)            , intent(inout) , contiguous        :: cor(:,:)
         type(uppDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -6642,11 +6642,11 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPrsAvgWNO_UXD_CK3
 #endif
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
         integer(IK)             , intent(in)                        :: dim
-        complex(TKC)            , intent(in)    , contiguous        :: sample(:,:)
-        complex(TKC)            , intent(in)    , contiguous        :: mean(:)
-        complex(TKC)            , intent(inout) , contiguous        :: cor(:,:)
+        complex(TKG)            , intent(in)    , contiguous        :: sample(:,:)
+        complex(TKG)            , intent(in)    , contiguous        :: mean(:)
+        complex(TKG)            , intent(inout) , contiguous        :: cor(:,:)
         type(uppDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -6656,11 +6656,11 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPrsAvgWNO_UXD_CK2
 #endif
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
         integer(IK)             , intent(in)                        :: dim
-        complex(TKC)            , intent(in)    , contiguous        :: sample(:,:)
-        complex(TKC)            , intent(in)    , contiguous        :: mean(:)
-        complex(TKC)            , intent(inout) , contiguous        :: cor(:,:)
+        complex(TKG)            , intent(in)    , contiguous        :: sample(:,:)
+        complex(TKG)            , intent(in)    , contiguous        :: mean(:)
+        complex(TKG)            , intent(inout) , contiguous        :: cor(:,:)
         type(uppDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -6670,11 +6670,11 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPrsAvgWNO_UXD_CK1
 #endif
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
         integer(IK)             , intent(in)                        :: dim
-        complex(TKC)            , intent(in)    , contiguous        :: sample(:,:)
-        complex(TKC)            , intent(in)    , contiguous        :: mean(:)
-        complex(TKC)            , intent(inout) , contiguous        :: cor(:,:)
+        complex(TKG)            , intent(in)    , contiguous        :: sample(:,:)
+        complex(TKG)            , intent(in)    , contiguous        :: mean(:)
+        complex(TKG)            , intent(inout) , contiguous        :: cor(:,:)
         type(uppDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -6694,12 +6694,12 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPrsOrgWTI_UXD_CK5
 #endif
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
         integer(IK)             , intent(in)                        :: dim
         integer(IK)             , intent(in)                        :: weisum
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous        :: sample(:,:)
-        complex(TKC)            , intent(inout) , contiguous        :: cor(:,:)
+        complex(TKG)            , intent(in)    , contiguous        :: sample(:,:)
+        complex(TKG)            , intent(inout) , contiguous        :: cor(:,:)
         type(uppDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -6709,12 +6709,12 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPrsOrgWTI_UXD_CK4
 #endif
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
         integer(IK)             , intent(in)                        :: dim
         integer(IK)             , intent(in)                        :: weisum
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous        :: sample(:,:)
-        complex(TKC)            , intent(inout) , contiguous        :: cor(:,:)
+        complex(TKG)            , intent(in)    , contiguous        :: sample(:,:)
+        complex(TKG)            , intent(inout) , contiguous        :: cor(:,:)
         type(uppDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -6724,12 +6724,12 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPrsOrgWTI_UXD_CK3
 #endif
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
         integer(IK)             , intent(in)                        :: dim
         integer(IK)             , intent(in)                        :: weisum
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous        :: sample(:,:)
-        complex(TKC)            , intent(inout) , contiguous        :: cor(:,:)
+        complex(TKG)            , intent(in)    , contiguous        :: sample(:,:)
+        complex(TKG)            , intent(inout) , contiguous        :: cor(:,:)
         type(uppDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -6739,12 +6739,12 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPrsOrgWTI_UXD_CK2
 #endif
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
         integer(IK)             , intent(in)                        :: dim
         integer(IK)             , intent(in)                        :: weisum
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous        :: sample(:,:)
-        complex(TKC)            , intent(inout) , contiguous        :: cor(:,:)
+        complex(TKG)            , intent(in)    , contiguous        :: sample(:,:)
+        complex(TKG)            , intent(inout) , contiguous        :: cor(:,:)
         type(uppDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -6754,12 +6754,12 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPrsOrgWTI_UXD_CK1
 #endif
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
         integer(IK)             , intent(in)                        :: dim
         integer(IK)             , intent(in)                        :: weisum
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous        :: sample(:,:)
-        complex(TKC)            , intent(inout) , contiguous        :: cor(:,:)
+        complex(TKG)            , intent(in)    , contiguous        :: sample(:,:)
+        complex(TKG)            , intent(inout) , contiguous        :: cor(:,:)
         type(uppDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -6771,13 +6771,13 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPrsAvgWTI_UXD_CK5
 #endif
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
         integer(IK)             , intent(in)                        :: dim
         integer(IK)             , intent(in)                        :: weisum
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous        :: mean(:)
-        complex(TKC)            , intent(in)    , contiguous        :: sample(:,:)
-        complex(TKC)            , intent(inout) , contiguous        :: cor(:,:)
+        complex(TKG)            , intent(in)    , contiguous        :: mean(:)
+        complex(TKG)            , intent(in)    , contiguous        :: sample(:,:)
+        complex(TKG)            , intent(inout) , contiguous        :: cor(:,:)
         type(uppDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -6787,13 +6787,13 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPrsAvgWTI_UXD_CK4
 #endif
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
         integer(IK)             , intent(in)                        :: dim
         integer(IK)             , intent(in)                        :: weisum
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous        :: mean(:)
-        complex(TKC)            , intent(in)    , contiguous        :: sample(:,:)
-        complex(TKC)            , intent(inout) , contiguous        :: cor(:,:)
+        complex(TKG)            , intent(in)    , contiguous        :: mean(:)
+        complex(TKG)            , intent(in)    , contiguous        :: sample(:,:)
+        complex(TKG)            , intent(inout) , contiguous        :: cor(:,:)
         type(uppDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -6803,13 +6803,13 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPrsAvgWTI_UXD_CK3
 #endif
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
         integer(IK)             , intent(in)                        :: dim
         integer(IK)             , intent(in)                        :: weisum
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous        :: mean(:)
-        complex(TKC)            , intent(in)    , contiguous        :: sample(:,:)
-        complex(TKC)            , intent(inout) , contiguous        :: cor(:,:)
+        complex(TKG)            , intent(in)    , contiguous        :: mean(:)
+        complex(TKG)            , intent(in)    , contiguous        :: sample(:,:)
+        complex(TKG)            , intent(inout) , contiguous        :: cor(:,:)
         type(uppDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -6819,13 +6819,13 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPrsAvgWTI_UXD_CK2
 #endif
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
         integer(IK)             , intent(in)                        :: dim
         integer(IK)             , intent(in)                        :: weisum
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous        :: mean(:)
-        complex(TKC)            , intent(in)    , contiguous        :: sample(:,:)
-        complex(TKC)            , intent(inout) , contiguous        :: cor(:,:)
+        complex(TKG)            , intent(in)    , contiguous        :: mean(:)
+        complex(TKG)            , intent(in)    , contiguous        :: sample(:,:)
+        complex(TKG)            , intent(inout) , contiguous        :: cor(:,:)
         type(uppDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -6835,13 +6835,13 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPrsAvgWTI_UXD_CK1
 #endif
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
         integer(IK)             , intent(in)                        :: dim
         integer(IK)             , intent(in)                        :: weisum
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous        :: mean(:)
-        complex(TKC)            , intent(in)    , contiguous        :: sample(:,:)
-        complex(TKC)            , intent(inout) , contiguous        :: cor(:,:)
+        complex(TKG)            , intent(in)    , contiguous        :: mean(:)
+        complex(TKG)            , intent(in)    , contiguous        :: sample(:,:)
+        complex(TKG)            , intent(inout) , contiguous        :: cor(:,:)
         type(uppDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -6861,12 +6861,12 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPrsOrgWTR_UXD_CK5
 #endif
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
         integer(IK)             , intent(in)                        :: dim
-        real(TKC)               , intent(in)                        :: weisum
-        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous        :: sample(:,:)
-        complex(TKC)            , intent(inout) , contiguous        :: cor(:,:)
+        real(TKG)               , intent(in)                        :: weisum
+        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+        complex(TKG)            , intent(in)    , contiguous        :: sample(:,:)
+        complex(TKG)            , intent(inout) , contiguous        :: cor(:,:)
         type(uppDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -6876,12 +6876,12 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPrsOrgWTR_UXD_CK4
 #endif
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
         integer(IK)             , intent(in)                        :: dim
-        real(TKC)               , intent(in)                        :: weisum
-        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous        :: sample(:,:)
-        complex(TKC)            , intent(inout) , contiguous        :: cor(:,:)
+        real(TKG)               , intent(in)                        :: weisum
+        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+        complex(TKG)            , intent(in)    , contiguous        :: sample(:,:)
+        complex(TKG)            , intent(inout) , contiguous        :: cor(:,:)
         type(uppDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -6891,12 +6891,12 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPrsOrgWTR_UXD_CK3
 #endif
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
         integer(IK)             , intent(in)                        :: dim
-        real(TKC)               , intent(in)                        :: weisum
-        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous        :: sample(:,:)
-        complex(TKC)            , intent(inout) , contiguous        :: cor(:,:)
+        real(TKG)               , intent(in)                        :: weisum
+        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+        complex(TKG)            , intent(in)    , contiguous        :: sample(:,:)
+        complex(TKG)            , intent(inout) , contiguous        :: cor(:,:)
         type(uppDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -6906,12 +6906,12 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPrsOrgWTR_UXD_CK2
 #endif
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
         integer(IK)             , intent(in)                        :: dim
-        real(TKC)               , intent(in)                        :: weisum
-        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous        :: sample(:,:)
-        complex(TKC)            , intent(inout) , contiguous        :: cor(:,:)
+        real(TKG)               , intent(in)                        :: weisum
+        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+        complex(TKG)            , intent(in)    , contiguous        :: sample(:,:)
+        complex(TKG)            , intent(inout) , contiguous        :: cor(:,:)
         type(uppDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -6921,12 +6921,12 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPrsOrgWTR_UXD_CK1
 #endif
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
         integer(IK)             , intent(in)                        :: dim
-        real(TKC)               , intent(in)                        :: weisum
-        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous        :: sample(:,:)
-        complex(TKC)            , intent(inout) , contiguous        :: cor(:,:)
+        real(TKG)               , intent(in)                        :: weisum
+        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+        complex(TKG)            , intent(in)    , contiguous        :: sample(:,:)
+        complex(TKG)            , intent(inout) , contiguous        :: cor(:,:)
         type(uppDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -6938,13 +6938,13 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPrsAvgWTR_UXD_CK5
 #endif
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
         integer(IK)             , intent(in)                        :: dim
-        real(TKC)               , intent(in)                        :: weisum
-        complex(TKC)            , intent(in)    , contiguous        :: mean(:)
-        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous        :: sample(:,:)
-        complex(TKC)            , intent(inout) , contiguous        :: cor(:,:)
+        real(TKG)               , intent(in)                        :: weisum
+        complex(TKG)            , intent(in)    , contiguous        :: mean(:)
+        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+        complex(TKG)            , intent(in)    , contiguous        :: sample(:,:)
+        complex(TKG)            , intent(inout) , contiguous        :: cor(:,:)
         type(uppDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -6954,13 +6954,13 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPrsAvgWTR_UXD_CK4
 #endif
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
         integer(IK)             , intent(in)                        :: dim
-        real(TKC)               , intent(in)                        :: weisum
-        complex(TKC)            , intent(in)    , contiguous        :: mean(:)
-        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous        :: sample(:,:)
-        complex(TKC)            , intent(inout) , contiguous        :: cor(:,:)
+        real(TKG)               , intent(in)                        :: weisum
+        complex(TKG)            , intent(in)    , contiguous        :: mean(:)
+        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+        complex(TKG)            , intent(in)    , contiguous        :: sample(:,:)
+        complex(TKG)            , intent(inout) , contiguous        :: cor(:,:)
         type(uppDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -6970,13 +6970,13 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPrsAvgWTR_UXD_CK3
 #endif
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
         integer(IK)             , intent(in)                        :: dim
-        real(TKC)               , intent(in)                        :: weisum
-        complex(TKC)            , intent(in)    , contiguous        :: mean(:)
-        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous        :: sample(:,:)
-        complex(TKC)            , intent(inout) , contiguous        :: cor(:,:)
+        real(TKG)               , intent(in)                        :: weisum
+        complex(TKG)            , intent(in)    , contiguous        :: mean(:)
+        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+        complex(TKG)            , intent(in)    , contiguous        :: sample(:,:)
+        complex(TKG)            , intent(inout) , contiguous        :: cor(:,:)
         type(uppDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -6986,13 +6986,13 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPrsAvgWTR_UXD_CK2
 #endif
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
         integer(IK)             , intent(in)                        :: dim
-        real(TKC)               , intent(in)                        :: weisum
-        complex(TKC)            , intent(in)    , contiguous        :: mean(:)
-        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous        :: sample(:,:)
-        complex(TKC)            , intent(inout) , contiguous        :: cor(:,:)
+        real(TKG)               , intent(in)                        :: weisum
+        complex(TKG)            , intent(in)    , contiguous        :: mean(:)
+        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+        complex(TKG)            , intent(in)    , contiguous        :: sample(:,:)
+        complex(TKG)            , intent(inout) , contiguous        :: cor(:,:)
         type(uppDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -7002,13 +7002,13 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPrsAvgWTR_UXD_CK1
 #endif
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
         integer(IK)             , intent(in)                        :: dim
-        real(TKC)               , intent(in)                        :: weisum
-        complex(TKC)            , intent(in)    , contiguous        :: mean(:)
-        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous        :: sample(:,:)
-        complex(TKC)            , intent(inout) , contiguous        :: cor(:,:)
+        real(TKG)               , intent(in)                        :: weisum
+        complex(TKG)            , intent(in)    , contiguous        :: mean(:)
+        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+        complex(TKG)            , intent(in)    , contiguous        :: sample(:,:)
+        complex(TKG)            , intent(inout) , contiguous        :: cor(:,:)
         type(uppDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -7030,10 +7030,10 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPrsOrgWNO_XLD_CK5
 #endif
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
         integer(IK)             , intent(in)                        :: dim
-        complex(TKC)            , intent(in)    , contiguous        :: sample(:,:)
-        complex(TKC)            , intent(inout) , contiguous        :: cor(:,:)
+        complex(TKG)            , intent(in)    , contiguous        :: sample(:,:)
+        complex(TKG)            , intent(inout) , contiguous        :: cor(:,:)
         type(lowDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -7043,10 +7043,10 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPrsOrgWNO_XLD_CK4
 #endif
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
         integer(IK)             , intent(in)                        :: dim
-        complex(TKC)            , intent(in)    , contiguous        :: sample(:,:)
-        complex(TKC)            , intent(inout) , contiguous        :: cor(:,:)
+        complex(TKG)            , intent(in)    , contiguous        :: sample(:,:)
+        complex(TKG)            , intent(inout) , contiguous        :: cor(:,:)
         type(lowDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -7056,10 +7056,10 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPrsOrgWNO_XLD_CK3
 #endif
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
         integer(IK)             , intent(in)                        :: dim
-        complex(TKC)            , intent(in)    , contiguous        :: sample(:,:)
-        complex(TKC)            , intent(inout) , contiguous        :: cor(:,:)
+        complex(TKG)            , intent(in)    , contiguous        :: sample(:,:)
+        complex(TKG)            , intent(inout) , contiguous        :: cor(:,:)
         type(lowDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -7069,10 +7069,10 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPrsOrgWNO_XLD_CK2
 #endif
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
         integer(IK)             , intent(in)                        :: dim
-        complex(TKC)            , intent(in)    , contiguous        :: sample(:,:)
-        complex(TKC)            , intent(inout) , contiguous        :: cor(:,:)
+        complex(TKG)            , intent(in)    , contiguous        :: sample(:,:)
+        complex(TKG)            , intent(inout) , contiguous        :: cor(:,:)
         type(lowDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -7082,10 +7082,10 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPrsOrgWNO_XLD_CK1
 #endif
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
         integer(IK)             , intent(in)                        :: dim
-        complex(TKC)            , intent(in)    , contiguous        :: sample(:,:)
-        complex(TKC)            , intent(inout) , contiguous        :: cor(:,:)
+        complex(TKG)            , intent(in)    , contiguous        :: sample(:,:)
+        complex(TKG)            , intent(inout) , contiguous        :: cor(:,:)
         type(lowDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -7097,11 +7097,11 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPrsAvgWNO_XLD_CK5
 #endif
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
         integer(IK)             , intent(in)                        :: dim
-        complex(TKC)            , intent(in)    , contiguous        :: sample(:,:)
-        complex(TKC)            , intent(in)    , contiguous        :: mean(:)
-        complex(TKC)            , intent(inout) , contiguous        :: cor(:,:)
+        complex(TKG)            , intent(in)    , contiguous        :: sample(:,:)
+        complex(TKG)            , intent(in)    , contiguous        :: mean(:)
+        complex(TKG)            , intent(inout) , contiguous        :: cor(:,:)
         type(lowDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -7111,11 +7111,11 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPrsAvgWNO_XLD_CK4
 #endif
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
         integer(IK)             , intent(in)                        :: dim
-        complex(TKC)            , intent(in)    , contiguous        :: sample(:,:)
-        complex(TKC)            , intent(in)    , contiguous        :: mean(:)
-        complex(TKC)            , intent(inout) , contiguous        :: cor(:,:)
+        complex(TKG)            , intent(in)    , contiguous        :: sample(:,:)
+        complex(TKG)            , intent(in)    , contiguous        :: mean(:)
+        complex(TKG)            , intent(inout) , contiguous        :: cor(:,:)
         type(lowDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -7125,11 +7125,11 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPrsAvgWNO_XLD_CK3
 #endif
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
         integer(IK)             , intent(in)                        :: dim
-        complex(TKC)            , intent(in)    , contiguous        :: sample(:,:)
-        complex(TKC)            , intent(in)    , contiguous        :: mean(:)
-        complex(TKC)            , intent(inout) , contiguous        :: cor(:,:)
+        complex(TKG)            , intent(in)    , contiguous        :: sample(:,:)
+        complex(TKG)            , intent(in)    , contiguous        :: mean(:)
+        complex(TKG)            , intent(inout) , contiguous        :: cor(:,:)
         type(lowDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -7139,11 +7139,11 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPrsAvgWNO_XLD_CK2
 #endif
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
         integer(IK)             , intent(in)                        :: dim
-        complex(TKC)            , intent(in)    , contiguous        :: sample(:,:)
-        complex(TKC)            , intent(in)    , contiguous        :: mean(:)
-        complex(TKC)            , intent(inout) , contiguous        :: cor(:,:)
+        complex(TKG)            , intent(in)    , contiguous        :: sample(:,:)
+        complex(TKG)            , intent(in)    , contiguous        :: mean(:)
+        complex(TKG)            , intent(inout) , contiguous        :: cor(:,:)
         type(lowDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -7153,11 +7153,11 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPrsAvgWNO_XLD_CK1
 #endif
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
         integer(IK)             , intent(in)                        :: dim
-        complex(TKC)            , intent(in)    , contiguous        :: sample(:,:)
-        complex(TKC)            , intent(in)    , contiguous        :: mean(:)
-        complex(TKC)            , intent(inout) , contiguous        :: cor(:,:)
+        complex(TKG)            , intent(in)    , contiguous        :: sample(:,:)
+        complex(TKG)            , intent(in)    , contiguous        :: mean(:)
+        complex(TKG)            , intent(inout) , contiguous        :: cor(:,:)
         type(lowDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -7177,12 +7177,12 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPrsOrgWTI_XLD_CK5
 #endif
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
         integer(IK)             , intent(in)                        :: dim
         integer(IK)             , intent(in)                        :: weisum
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous        :: sample(:,:)
-        complex(TKC)            , intent(inout) , contiguous        :: cor(:,:)
+        complex(TKG)            , intent(in)    , contiguous        :: sample(:,:)
+        complex(TKG)            , intent(inout) , contiguous        :: cor(:,:)
         type(lowDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -7192,12 +7192,12 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPrsOrgWTI_XLD_CK4
 #endif
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
         integer(IK)             , intent(in)                        :: dim
         integer(IK)             , intent(in)                        :: weisum
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous        :: sample(:,:)
-        complex(TKC)            , intent(inout) , contiguous        :: cor(:,:)
+        complex(TKG)            , intent(in)    , contiguous        :: sample(:,:)
+        complex(TKG)            , intent(inout) , contiguous        :: cor(:,:)
         type(lowDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -7207,12 +7207,12 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPrsOrgWTI_XLD_CK3
 #endif
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
         integer(IK)             , intent(in)                        :: dim
         integer(IK)             , intent(in)                        :: weisum
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous        :: sample(:,:)
-        complex(TKC)            , intent(inout) , contiguous        :: cor(:,:)
+        complex(TKG)            , intent(in)    , contiguous        :: sample(:,:)
+        complex(TKG)            , intent(inout) , contiguous        :: cor(:,:)
         type(lowDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -7222,12 +7222,12 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPrsOrgWTI_XLD_CK2
 #endif
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
         integer(IK)             , intent(in)                        :: dim
         integer(IK)             , intent(in)                        :: weisum
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous        :: sample(:,:)
-        complex(TKC)            , intent(inout) , contiguous        :: cor(:,:)
+        complex(TKG)            , intent(in)    , contiguous        :: sample(:,:)
+        complex(TKG)            , intent(inout) , contiguous        :: cor(:,:)
         type(lowDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -7237,12 +7237,12 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPrsOrgWTI_XLD_CK1
 #endif
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
         integer(IK)             , intent(in)                        :: dim
         integer(IK)             , intent(in)                        :: weisum
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous        :: sample(:,:)
-        complex(TKC)            , intent(inout) , contiguous        :: cor(:,:)
+        complex(TKG)            , intent(in)    , contiguous        :: sample(:,:)
+        complex(TKG)            , intent(inout) , contiguous        :: cor(:,:)
         type(lowDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -7254,13 +7254,13 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPrsAvgWTI_XLD_CK5
 #endif
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
         integer(IK)             , intent(in)                        :: dim
         integer(IK)             , intent(in)                        :: weisum
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous        :: mean(:)
-        complex(TKC)            , intent(in)    , contiguous        :: sample(:,:)
-        complex(TKC)            , intent(inout) , contiguous        :: cor(:,:)
+        complex(TKG)            , intent(in)    , contiguous        :: mean(:)
+        complex(TKG)            , intent(in)    , contiguous        :: sample(:,:)
+        complex(TKG)            , intent(inout) , contiguous        :: cor(:,:)
         type(lowDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -7270,13 +7270,13 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPrsAvgWTI_XLD_CK4
 #endif
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
         integer(IK)             , intent(in)                        :: dim
         integer(IK)             , intent(in)                        :: weisum
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous        :: mean(:)
-        complex(TKC)            , intent(in)    , contiguous        :: sample(:,:)
-        complex(TKC)            , intent(inout) , contiguous        :: cor(:,:)
+        complex(TKG)            , intent(in)    , contiguous        :: mean(:)
+        complex(TKG)            , intent(in)    , contiguous        :: sample(:,:)
+        complex(TKG)            , intent(inout) , contiguous        :: cor(:,:)
         type(lowDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -7286,13 +7286,13 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPrsAvgWTI_XLD_CK3
 #endif
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
         integer(IK)             , intent(in)                        :: dim
         integer(IK)             , intent(in)                        :: weisum
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous        :: mean(:)
-        complex(TKC)            , intent(in)    , contiguous        :: sample(:,:)
-        complex(TKC)            , intent(inout) , contiguous        :: cor(:,:)
+        complex(TKG)            , intent(in)    , contiguous        :: mean(:)
+        complex(TKG)            , intent(in)    , contiguous        :: sample(:,:)
+        complex(TKG)            , intent(inout) , contiguous        :: cor(:,:)
         type(lowDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -7302,13 +7302,13 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPrsAvgWTI_XLD_CK2
 #endif
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
         integer(IK)             , intent(in)                        :: dim
         integer(IK)             , intent(in)                        :: weisum
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous        :: mean(:)
-        complex(TKC)            , intent(in)    , contiguous        :: sample(:,:)
-        complex(TKC)            , intent(inout) , contiguous        :: cor(:,:)
+        complex(TKG)            , intent(in)    , contiguous        :: mean(:)
+        complex(TKG)            , intent(in)    , contiguous        :: sample(:,:)
+        complex(TKG)            , intent(inout) , contiguous        :: cor(:,:)
         type(lowDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -7318,13 +7318,13 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPrsAvgWTI_XLD_CK1
 #endif
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
         integer(IK)             , intent(in)                        :: dim
         integer(IK)             , intent(in)                        :: weisum
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous        :: mean(:)
-        complex(TKC)            , intent(in)    , contiguous        :: sample(:,:)
-        complex(TKC)            , intent(inout) , contiguous        :: cor(:,:)
+        complex(TKG)            , intent(in)    , contiguous        :: mean(:)
+        complex(TKG)            , intent(in)    , contiguous        :: sample(:,:)
+        complex(TKG)            , intent(inout) , contiguous        :: cor(:,:)
         type(lowDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -7344,12 +7344,12 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPrsOrgWTR_XLD_CK5
 #endif
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
         integer(IK)             , intent(in)                        :: dim
-        real(TKC)               , intent(in)                        :: weisum
-        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous        :: sample(:,:)
-        complex(TKC)            , intent(inout) , contiguous        :: cor(:,:)
+        real(TKG)               , intent(in)                        :: weisum
+        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+        complex(TKG)            , intent(in)    , contiguous        :: sample(:,:)
+        complex(TKG)            , intent(inout) , contiguous        :: cor(:,:)
         type(lowDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -7359,12 +7359,12 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPrsOrgWTR_XLD_CK4
 #endif
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
         integer(IK)             , intent(in)                        :: dim
-        real(TKC)               , intent(in)                        :: weisum
-        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous        :: sample(:,:)
-        complex(TKC)            , intent(inout) , contiguous        :: cor(:,:)
+        real(TKG)               , intent(in)                        :: weisum
+        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+        complex(TKG)            , intent(in)    , contiguous        :: sample(:,:)
+        complex(TKG)            , intent(inout) , contiguous        :: cor(:,:)
         type(lowDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -7374,12 +7374,12 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPrsOrgWTR_XLD_CK3
 #endif
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
         integer(IK)             , intent(in)                        :: dim
-        real(TKC)               , intent(in)                        :: weisum
-        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous        :: sample(:,:)
-        complex(TKC)            , intent(inout) , contiguous        :: cor(:,:)
+        real(TKG)               , intent(in)                        :: weisum
+        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+        complex(TKG)            , intent(in)    , contiguous        :: sample(:,:)
+        complex(TKG)            , intent(inout) , contiguous        :: cor(:,:)
         type(lowDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -7389,12 +7389,12 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPrsOrgWTR_XLD_CK2
 #endif
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
         integer(IK)             , intent(in)                        :: dim
-        real(TKC)               , intent(in)                        :: weisum
-        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous        :: sample(:,:)
-        complex(TKC)            , intent(inout) , contiguous        :: cor(:,:)
+        real(TKG)               , intent(in)                        :: weisum
+        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+        complex(TKG)            , intent(in)    , contiguous        :: sample(:,:)
+        complex(TKG)            , intent(inout) , contiguous        :: cor(:,:)
         type(lowDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -7404,12 +7404,12 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPrsOrgWTR_XLD_CK1
 #endif
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
         integer(IK)             , intent(in)                        :: dim
-        real(TKC)               , intent(in)                        :: weisum
-        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous        :: sample(:,:)
-        complex(TKC)            , intent(inout) , contiguous        :: cor(:,:)
+        real(TKG)               , intent(in)                        :: weisum
+        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+        complex(TKG)            , intent(in)    , contiguous        :: sample(:,:)
+        complex(TKG)            , intent(inout) , contiguous        :: cor(:,:)
         type(lowDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -7421,13 +7421,13 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPrsAvgWTR_XLD_CK5
 #endif
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
         integer(IK)             , intent(in)                        :: dim
-        real(TKC)               , intent(in)                        :: weisum
-        complex(TKC)            , intent(in)    , contiguous        :: mean(:)
-        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous        :: sample(:,:)
-        complex(TKC)            , intent(inout) , contiguous        :: cor(:,:)
+        real(TKG)               , intent(in)                        :: weisum
+        complex(TKG)            , intent(in)    , contiguous        :: mean(:)
+        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+        complex(TKG)            , intent(in)    , contiguous        :: sample(:,:)
+        complex(TKG)            , intent(inout) , contiguous        :: cor(:,:)
         type(lowDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -7437,13 +7437,13 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPrsAvgWTR_XLD_CK4
 #endif
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
         integer(IK)             , intent(in)                        :: dim
-        real(TKC)               , intent(in)                        :: weisum
-        complex(TKC)            , intent(in)    , contiguous        :: mean(:)
-        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous        :: sample(:,:)
-        complex(TKC)            , intent(inout) , contiguous        :: cor(:,:)
+        real(TKG)               , intent(in)                        :: weisum
+        complex(TKG)            , intent(in)    , contiguous        :: mean(:)
+        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+        complex(TKG)            , intent(in)    , contiguous        :: sample(:,:)
+        complex(TKG)            , intent(inout) , contiguous        :: cor(:,:)
         type(lowDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -7453,13 +7453,13 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPrsAvgWTR_XLD_CK3
 #endif
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
         integer(IK)             , intent(in)                        :: dim
-        real(TKC)               , intent(in)                        :: weisum
-        complex(TKC)            , intent(in)    , contiguous        :: mean(:)
-        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous        :: sample(:,:)
-        complex(TKC)            , intent(inout) , contiguous        :: cor(:,:)
+        real(TKG)               , intent(in)                        :: weisum
+        complex(TKG)            , intent(in)    , contiguous        :: mean(:)
+        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+        complex(TKG)            , intent(in)    , contiguous        :: sample(:,:)
+        complex(TKG)            , intent(inout) , contiguous        :: cor(:,:)
         type(lowDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -7469,13 +7469,13 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPrsAvgWTR_XLD_CK2
 #endif
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
         integer(IK)             , intent(in)                        :: dim
-        real(TKC)               , intent(in)                        :: weisum
-        complex(TKC)            , intent(in)    , contiguous        :: mean(:)
-        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous        :: sample(:,:)
-        complex(TKC)            , intent(inout) , contiguous        :: cor(:,:)
+        real(TKG)               , intent(in)                        :: weisum
+        complex(TKG)            , intent(in)    , contiguous        :: mean(:)
+        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+        complex(TKG)            , intent(in)    , contiguous        :: sample(:,:)
+        complex(TKG)            , intent(inout) , contiguous        :: cor(:,:)
         type(lowDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -7485,13 +7485,13 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPrsAvgWTR_XLD_CK1
 #endif
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
         integer(IK)             , intent(in)                        :: dim
-        real(TKC)               , intent(in)                        :: weisum
-        complex(TKC)            , intent(in)    , contiguous        :: mean(:)
-        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-        complex(TKC)            , intent(in)    , contiguous        :: sample(:,:)
-        complex(TKC)            , intent(inout) , contiguous        :: cor(:,:)
+        real(TKG)               , intent(in)                        :: weisum
+        complex(TKG)            , intent(in)    , contiguous        :: mean(:)
+        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+        complex(TKG)            , intent(in)    , contiguous        :: sample(:,:)
+        complex(TKG)            , intent(inout) , contiguous        :: cor(:,:)
         type(lowDia_type)       , intent(in)                        :: subset
     end subroutine
 #endif
@@ -7649,8 +7649,8 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRhoWNO_XY_D0_SK5
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK5
-        character(*,SKC)        , intent(in)                        :: x, y
+        use pm_kind, only: TKR => RK, SKG => SK5
+        character(*,SKG)        , intent(in)                        :: x, y
         real(TKR)                                                   :: rho
     end function
 #endif
@@ -7660,8 +7660,8 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRhoWNO_XY_D0_SK4
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK4
-        character(*,SKC)        , intent(in)                        :: x, y
+        use pm_kind, only: TKR => RK, SKG => SK4
+        character(*,SKG)        , intent(in)                        :: x, y
         real(TKR)                                                   :: rho
     end function
 #endif
@@ -7671,8 +7671,8 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRhoWNO_XY_D0_SK3
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK3
-        character(*,SKC)        , intent(in)                        :: x, y
+        use pm_kind, only: TKR => RK, SKG => SK3
+        character(*,SKG)        , intent(in)                        :: x, y
         real(TKR)                                                   :: rho
     end function
 #endif
@@ -7682,8 +7682,8 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRhoWNO_XY_D0_SK2
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK2
-        character(*,SKC)        , intent(in)                        :: x, y
+        use pm_kind, only: TKR => RK, SKG => SK2
+        character(*,SKG)        , intent(in)                        :: x, y
         real(TKR)                                                   :: rho
     end function
 #endif
@@ -7693,8 +7693,8 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRhoWNO_XY_D0_SK1
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK1
-        character(*,SKC)        , intent(in)                        :: x, y
+        use pm_kind, only: TKR => RK, SKG => SK1
+        character(*,SKG)        , intent(in)                        :: x, y
         real(TKR)                                                   :: rho
     end function
 #endif
@@ -7706,8 +7706,8 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRhoWNO_XY_D1_SK5
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK5
-        character(*,SKC)        , intent(in)    , contiguous        :: x(:), y(:)
+        use pm_kind, only: TKR => RK, SKG => SK5
+        character(*,SKG)        , intent(in)    , contiguous        :: x(:), y(:)
         real(TKR)                                                   :: rho
     end function
 #endif
@@ -7717,8 +7717,8 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRhoWNO_XY_D1_SK4
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK4
-        character(*,SKC)        , intent(in)    , contiguous        :: x(:), y(:)
+        use pm_kind, only: TKR => RK, SKG => SK4
+        character(*,SKG)        , intent(in)    , contiguous        :: x(:), y(:)
         real(TKR)                                                   :: rho
     end function
 #endif
@@ -7728,8 +7728,8 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRhoWNO_XY_D1_SK3
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK3
-        character(*,SKC)        , intent(in)    , contiguous        :: x(:), y(:)
+        use pm_kind, only: TKR => RK, SKG => SK3
+        character(*,SKG)        , intent(in)    , contiguous        :: x(:), y(:)
         real(TKR)                                                   :: rho
     end function
 #endif
@@ -7739,8 +7739,8 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRhoWNO_XY_D1_SK2
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK2
-        character(*,SKC)        , intent(in)    , contiguous        :: x(:), y(:)
+        use pm_kind, only: TKR => RK, SKG => SK2
+        character(*,SKG)        , intent(in)    , contiguous        :: x(:), y(:)
         real(TKR)                                                   :: rho
     end function
 #endif
@@ -7750,8 +7750,8 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRhoWNO_XY_D1_SK1
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK1
-        character(*,SKC)        , intent(in)    , contiguous        :: x(:), y(:)
+        use pm_kind, only: TKR => RK, SKG => SK1
+        character(*,SKG)        , intent(in)    , contiguous        :: x(:), y(:)
         real(TKR)                                                   :: rho
     end function
 #endif
@@ -7763,8 +7763,8 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRhoWNO_XY_D1_IK5
 #endif
-        use pm_kind, only: TKR => RK, IKC => IK5
-        integer(IKC)            , intent(in)    , contiguous        :: x(:), y(:)
+        use pm_kind, only: TKR => RK, IKG => IK5
+        integer(IKG)            , intent(in)    , contiguous        :: x(:), y(:)
         real(TKR)                                                   :: rho
     end function
 #endif
@@ -7774,8 +7774,8 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRhoWNO_XY_D1_IK4
 #endif
-        use pm_kind, only: TKR => RK, IKC => IK4
-        integer(IKC)            , intent(in)    , contiguous        :: x(:), y(:)
+        use pm_kind, only: TKR => RK, IKG => IK4
+        integer(IKG)            , intent(in)    , contiguous        :: x(:), y(:)
         real(TKR)                                                   :: rho
     end function
 #endif
@@ -7785,8 +7785,8 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRhoWNO_XY_D1_IK3
 #endif
-        use pm_kind, only: TKR => RK, IKC => IK3
-        integer(IKC)            , intent(in)    , contiguous        :: x(:), y(:)
+        use pm_kind, only: TKR => RK, IKG => IK3
+        integer(IKG)            , intent(in)    , contiguous        :: x(:), y(:)
         real(TKR)                                                   :: rho
     end function
 #endif
@@ -7796,8 +7796,8 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRhoWNO_XY_D1_IK2
 #endif
-        use pm_kind, only: TKR => RK, IKC => IK2
-        integer(IKC)            , intent(in)    , contiguous        :: x(:), y(:)
+        use pm_kind, only: TKR => RK, IKG => IK2
+        integer(IKG)            , intent(in)    , contiguous        :: x(:), y(:)
         real(TKR)                                                   :: rho
     end function
 #endif
@@ -7807,8 +7807,8 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRhoWNO_XY_D1_IK1
 #endif
-        use pm_kind, only: TKR => RK, IKC => IK1
-        integer(IKC)            , intent(in)    , contiguous        :: x(:), y(:)
+        use pm_kind, only: TKR => RK, IKG => IK1
+        integer(IKG)            , intent(in)    , contiguous        :: x(:), y(:)
         real(TKR)                                                   :: rho
     end function
 #endif
@@ -7820,8 +7820,8 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRhoWNO_XY_D1_RK5
 #endif
-        use pm_kind, only: TKR => RK, TKC => RK5
-        real(TKC)               , intent(in)    , contiguous        :: x(:), y(:)
+        use pm_kind, only: TKR => RK, TKG => RK5
+        real(TKG)               , intent(in)    , contiguous        :: x(:), y(:)
         real(TKR)                                                   :: rho
     end function
 #endif
@@ -7831,8 +7831,8 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRhoWNO_XY_D1_RK4
 #endif
-        use pm_kind, only: TKR => RK, TKC => RK4
-        real(TKC)               , intent(in)    , contiguous        :: x(:), y(:)
+        use pm_kind, only: TKR => RK, TKG => RK4
+        real(TKG)               , intent(in)    , contiguous        :: x(:), y(:)
         real(TKR)                                                   :: rho
     end function
 #endif
@@ -7842,8 +7842,8 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRhoWNO_XY_D1_RK3
 #endif
-        use pm_kind, only: TKR => RK, TKC => RK3
-        real(TKC)               , intent(in)    , contiguous        :: x(:), y(:)
+        use pm_kind, only: TKR => RK, TKG => RK3
+        real(TKG)               , intent(in)    , contiguous        :: x(:), y(:)
         real(TKR)                                                   :: rho
     end function
 #endif
@@ -7853,8 +7853,8 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRhoWNO_XY_D1_RK2
 #endif
-        use pm_kind, only: TKR => RK, TKC => RK2
-        real(TKC)               , intent(in)    , contiguous        :: x(:), y(:)
+        use pm_kind, only: TKR => RK, TKG => RK2
+        real(TKG)               , intent(in)    , contiguous        :: x(:), y(:)
         real(TKR)                                                   :: rho
     end function
 #endif
@@ -7864,8 +7864,8 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRhoWNO_XY_D1_RK1
 #endif
-        use pm_kind, only: TKR => RK, TKC => RK1
-        real(TKC)               , intent(in)    , contiguous        :: x(:), y(:)
+        use pm_kind, only: TKR => RK, TKG => RK1
+        real(TKG)               , intent(in)    , contiguous        :: x(:), y(:)
         real(TKR)                                                   :: rho
     end function
 #endif
@@ -7879,8 +7879,8 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRhoWNO_XY_D1_PSSK5
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK5
-        type(css_pdt(SKC))      , intent(in)    , contiguous        :: x(:), y(:)
+        use pm_kind, only: TKR => RK, SKG => SK5
+        type(css_pdt(SKG))      , intent(in)    , contiguous        :: x(:), y(:)
         real(TKR)                                                   :: rho
     end function
 #endif
@@ -7890,8 +7890,8 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRhoWNO_XY_D1_PSSK4
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK4
-        type(css_pdt(SKC))      , intent(in)    , contiguous        :: x(:), y(:)
+        use pm_kind, only: TKR => RK, SKG => SK4
+        type(css_pdt(SKG))      , intent(in)    , contiguous        :: x(:), y(:)
         real(TKR)                                                   :: rho
     end function
 #endif
@@ -7901,8 +7901,8 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRhoWNO_XY_D1_PSSK3
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK3
-        type(css_pdt(SKC))      , intent(in)    , contiguous        :: x(:), y(:)
+        use pm_kind, only: TKR => RK, SKG => SK3
+        type(css_pdt(SKG))      , intent(in)    , contiguous        :: x(:), y(:)
         real(TKR)                                                   :: rho
     end function
 #endif
@@ -7912,8 +7912,8 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRhoWNO_XY_D1_PSSK2
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK2
-        type(css_pdt(SKC))      , intent(in)    , contiguous        :: x(:), y(:)
+        use pm_kind, only: TKR => RK, SKG => SK2
+        type(css_pdt(SKG))      , intent(in)    , contiguous        :: x(:), y(:)
         real(TKR)                                                   :: rho
     end function
 #endif
@@ -7923,8 +7923,8 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRhoWNO_XY_D1_PSSK1
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK1
-        type(css_pdt(SKC))      , intent(in)    , contiguous        :: x(:), y(:)
+        use pm_kind, only: TKR => RK, SKG => SK1
+        type(css_pdt(SKG))      , intent(in)    , contiguous        :: x(:), y(:)
         real(TKR)                                                   :: rho
     end function
 #endif
@@ -7938,7 +7938,7 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRhoWNO_XY_D1_BSSK
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK
+        use pm_kind, only: TKR => RK, SKG => SK
         type(css_type)          , intent(in)    , contiguous        :: x(:), y(:)
         real(TKR)                                                   :: rho
     end function
@@ -7958,9 +7958,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRhoWTI_XY_D0_SK5
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK5
+        use pm_kind, only: TKR => RK, SKG => SK5
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        character(*,SKC)        , intent(in)                        :: x, y
+        character(*,SKG)        , intent(in)                        :: x, y
         real(TKR)                                                   :: rho
     end function
 #endif
@@ -7970,9 +7970,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRhoWTI_XY_D0_SK4
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK4
+        use pm_kind, only: TKR => RK, SKG => SK4
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        character(*,SKC)        , intent(in)                        :: x, y
+        character(*,SKG)        , intent(in)                        :: x, y
         real(TKR)                                                   :: rho
     end function
 #endif
@@ -7982,9 +7982,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRhoWTI_XY_D0_SK3
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK3
+        use pm_kind, only: TKR => RK, SKG => SK3
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        character(*,SKC)        , intent(in)                        :: x, y
+        character(*,SKG)        , intent(in)                        :: x, y
         real(TKR)                                                   :: rho
     end function
 #endif
@@ -7994,9 +7994,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRhoWTI_XY_D0_SK2
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK2
+        use pm_kind, only: TKR => RK, SKG => SK2
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        character(*,SKC)        , intent(in)                        :: x, y
+        character(*,SKG)        , intent(in)                        :: x, y
         real(TKR)                                                   :: rho
     end function
 #endif
@@ -8006,9 +8006,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRhoWTI_XY_D0_SK1
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK1
+        use pm_kind, only: TKR => RK, SKG => SK1
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        character(*,SKC)        , intent(in)                        :: x, y
+        character(*,SKG)        , intent(in)                        :: x, y
         real(TKR)                                                   :: rho
     end function
 #endif
@@ -8020,9 +8020,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRhoWTI_XY_D1_SK5
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK5
+        use pm_kind, only: TKR => RK, SKG => SK5
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        character(*,SKC)        , intent(in)    , contiguous        :: x(:), y(:)
+        character(*,SKG)        , intent(in)    , contiguous        :: x(:), y(:)
         real(TKR)                                                   :: rho
     end function
 #endif
@@ -8032,9 +8032,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRhoWTI_XY_D1_SK4
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK4
+        use pm_kind, only: TKR => RK, SKG => SK4
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        character(*,SKC)        , intent(in)    , contiguous        :: x(:), y(:)
+        character(*,SKG)        , intent(in)    , contiguous        :: x(:), y(:)
         real(TKR)                                                   :: rho
     end function
 #endif
@@ -8044,9 +8044,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRhoWTI_XY_D1_SK3
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK3
+        use pm_kind, only: TKR => RK, SKG => SK3
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        character(*,SKC)        , intent(in)    , contiguous        :: x(:), y(:)
+        character(*,SKG)        , intent(in)    , contiguous        :: x(:), y(:)
         real(TKR)                                                   :: rho
     end function
 #endif
@@ -8056,9 +8056,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRhoWTI_XY_D1_SK2
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK2
+        use pm_kind, only: TKR => RK, SKG => SK2
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        character(*,SKC)        , intent(in)    , contiguous        :: x(:), y(:)
+        character(*,SKG)        , intent(in)    , contiguous        :: x(:), y(:)
         real(TKR)                                                   :: rho
     end function
 #endif
@@ -8068,9 +8068,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRhoWTI_XY_D1_SK1
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK1
+        use pm_kind, only: TKR => RK, SKG => SK1
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        character(*,SKC)        , intent(in)    , contiguous        :: x(:), y(:)
+        character(*,SKG)        , intent(in)    , contiguous        :: x(:), y(:)
         real(TKR)                                                   :: rho
     end function
 #endif
@@ -8082,9 +8082,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRhoWTI_XY_D1_IK5
 #endif
-        use pm_kind, only: TKR => RK, IKC => IK5
+        use pm_kind, only: TKR => RK, IKG => IK5
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        integer(IKC)            , intent(in)    , contiguous        :: x(:), y(:)
+        integer(IKG)            , intent(in)    , contiguous        :: x(:), y(:)
         real(TKR)                                                   :: rho
     end function
 #endif
@@ -8094,9 +8094,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRhoWTI_XY_D1_IK4
 #endif
-        use pm_kind, only: TKR => RK, IKC => IK4
+        use pm_kind, only: TKR => RK, IKG => IK4
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        integer(IKC)            , intent(in)    , contiguous        :: x(:), y(:)
+        integer(IKG)            , intent(in)    , contiguous        :: x(:), y(:)
         real(TKR)                                                   :: rho
     end function
 #endif
@@ -8106,9 +8106,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRhoWTI_XY_D1_IK3
 #endif
-        use pm_kind, only: TKR => RK, IKC => IK3
+        use pm_kind, only: TKR => RK, IKG => IK3
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        integer(IKC)            , intent(in)    , contiguous        :: x(:), y(:)
+        integer(IKG)            , intent(in)    , contiguous        :: x(:), y(:)
         real(TKR)                                                   :: rho
     end function
 #endif
@@ -8118,9 +8118,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRhoWTI_XY_D1_IK2
 #endif
-        use pm_kind, only: TKR => RK, IKC => IK2
+        use pm_kind, only: TKR => RK, IKG => IK2
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        integer(IKC)            , intent(in)    , contiguous        :: x(:), y(:)
+        integer(IKG)            , intent(in)    , contiguous        :: x(:), y(:)
         real(TKR)                                                   :: rho
     end function
 #endif
@@ -8130,9 +8130,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRhoWTI_XY_D1_IK1
 #endif
-        use pm_kind, only: TKR => RK, IKC => IK1
+        use pm_kind, only: TKR => RK, IKG => IK1
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        integer(IKC)            , intent(in)    , contiguous        :: x(:), y(:)
+        integer(IKG)            , intent(in)    , contiguous        :: x(:), y(:)
         real(TKR)                                                   :: rho
     end function
 #endif
@@ -8144,9 +8144,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRhoWTI_XY_D1_RK5
 #endif
-        use pm_kind, only: TKR => RK, TKC => RK5
+        use pm_kind, only: TKR => RK, TKG => RK5
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        real(TKC)               , intent(in)    , contiguous        :: x(:), y(:)
+        real(TKG)               , intent(in)    , contiguous        :: x(:), y(:)
         real(TKR)                                                   :: rho
     end function
 #endif
@@ -8156,9 +8156,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRhoWTI_XY_D1_RK4
 #endif
-        use pm_kind, only: TKR => RK, TKC => RK4
+        use pm_kind, only: TKR => RK, TKG => RK4
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        real(TKC)               , intent(in)    , contiguous        :: x(:), y(:)
+        real(TKG)               , intent(in)    , contiguous        :: x(:), y(:)
         real(TKR)                                                   :: rho
     end function
 #endif
@@ -8168,9 +8168,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRhoWTI_XY_D1_RK3
 #endif
-        use pm_kind, only: TKR => RK, TKC => RK3
+        use pm_kind, only: TKR => RK, TKG => RK3
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        real(TKC)               , intent(in)    , contiguous        :: x(:), y(:)
+        real(TKG)               , intent(in)    , contiguous        :: x(:), y(:)
         real(TKR)                                                   :: rho
     end function
 #endif
@@ -8180,9 +8180,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRhoWTI_XY_D1_RK2
 #endif
-        use pm_kind, only: TKR => RK, TKC => RK2
+        use pm_kind, only: TKR => RK, TKG => RK2
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        real(TKC)               , intent(in)    , contiguous        :: x(:), y(:)
+        real(TKG)               , intent(in)    , contiguous        :: x(:), y(:)
         real(TKR)                                                   :: rho
     end function
 #endif
@@ -8192,9 +8192,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRhoWTI_XY_D1_RK1
 #endif
-        use pm_kind, only: TKR => RK, TKC => RK1
+        use pm_kind, only: TKR => RK, TKG => RK1
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        real(TKC)               , intent(in)    , contiguous        :: x(:), y(:)
+        real(TKG)               , intent(in)    , contiguous        :: x(:), y(:)
         real(TKR)                                                   :: rho
     end function
 #endif
@@ -8208,9 +8208,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRhoWTI_XY_D1_PSSK5
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK5
+        use pm_kind, only: TKR => RK, SKG => SK5
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        type(css_pdt(SKC))      , intent(in)    , contiguous        :: x(:), y(:)
+        type(css_pdt(SKG))      , intent(in)    , contiguous        :: x(:), y(:)
         real(TKR)                                                   :: rho
     end function
 #endif
@@ -8220,9 +8220,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRhoWTI_XY_D1_PSSK4
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK4
+        use pm_kind, only: TKR => RK, SKG => SK4
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        type(css_pdt(SKC))      , intent(in)    , contiguous        :: x(:), y(:)
+        type(css_pdt(SKG))      , intent(in)    , contiguous        :: x(:), y(:)
         real(TKR)                                                   :: rho
     end function
 #endif
@@ -8232,9 +8232,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRhoWTI_XY_D1_PSSK3
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK3
+        use pm_kind, only: TKR => RK, SKG => SK3
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        type(css_pdt(SKC))      , intent(in)    , contiguous        :: x(:), y(:)
+        type(css_pdt(SKG))      , intent(in)    , contiguous        :: x(:), y(:)
         real(TKR)                                                   :: rho
     end function
 #endif
@@ -8244,9 +8244,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRhoWTI_XY_D1_PSSK2
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK2
+        use pm_kind, only: TKR => RK, SKG => SK2
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        type(css_pdt(SKC))      , intent(in)    , contiguous        :: x(:), y(:)
+        type(css_pdt(SKG))      , intent(in)    , contiguous        :: x(:), y(:)
         real(TKR)                                                   :: rho
     end function
 #endif
@@ -8256,9 +8256,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRhoWTI_XY_D1_PSSK1
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK1
+        use pm_kind, only: TKR => RK, SKG => SK1
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        type(css_pdt(SKC))      , intent(in)    , contiguous        :: x(:), y(:)
+        type(css_pdt(SKG))      , intent(in)    , contiguous        :: x(:), y(:)
         real(TKR)                                                   :: rho
     end function
 #endif
@@ -8272,7 +8272,7 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRhoWTI_XY_D1_BSSK
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK
+        use pm_kind, only: TKR => RK, SKG => SK
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
         type(css_type)          , intent(in)    , contiguous        :: x(:), y(:)
         real(TKR)                                                   :: rho
@@ -8293,9 +8293,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRhoWTR_XY_D0_SK5
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK5
+        use pm_kind, only: TKR => RK, SKG => SK5
         real(TKR)               , intent(in)    , contiguous        :: weight(:)
-        character(*,SKC)        , intent(in)                        :: x, y
+        character(*,SKG)        , intent(in)                        :: x, y
         real(TKR)                                                   :: rho
     end function
 #endif
@@ -8305,9 +8305,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRhoWTR_XY_D0_SK4
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK4
+        use pm_kind, only: TKR => RK, SKG => SK4
         real(TKR)               , intent(in)    , contiguous        :: weight(:)
-        character(*,SKC)        , intent(in)                        :: x, y
+        character(*,SKG)        , intent(in)                        :: x, y
         real(TKR)                                                   :: rho
     end function
 #endif
@@ -8317,9 +8317,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRhoWTR_XY_D0_SK3
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK3
+        use pm_kind, only: TKR => RK, SKG => SK3
         real(TKR)               , intent(in)    , contiguous        :: weight(:)
-        character(*,SKC)        , intent(in)                        :: x, y
+        character(*,SKG)        , intent(in)                        :: x, y
         real(TKR)                                                   :: rho
     end function
 #endif
@@ -8329,9 +8329,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRhoWTR_XY_D0_SK2
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK2
+        use pm_kind, only: TKR => RK, SKG => SK2
         real(TKR)               , intent(in)    , contiguous        :: weight(:)
-        character(*,SKC)        , intent(in)                        :: x, y
+        character(*,SKG)        , intent(in)                        :: x, y
         real(TKR)                                                   :: rho
     end function
 #endif
@@ -8341,9 +8341,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRhoWTR_XY_D0_SK1
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK1
+        use pm_kind, only: TKR => RK, SKG => SK1
         real(TKR)               , intent(in)    , contiguous        :: weight(:)
-        character(*,SKC)        , intent(in)                        :: x, y
+        character(*,SKG)        , intent(in)                        :: x, y
         real(TKR)                                                   :: rho
     end function
 #endif
@@ -8355,9 +8355,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRhoWTR_XY_D1_SK5
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK5
+        use pm_kind, only: TKR => RK, SKG => SK5
         real(TKR)               , intent(in)    , contiguous        :: weight(:)
-        character(*,SKC)        , intent(in)    , contiguous        :: x(:), y(:)
+        character(*,SKG)        , intent(in)    , contiguous        :: x(:), y(:)
         real(TKR)                                                   :: rho
     end function
 #endif
@@ -8367,9 +8367,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRhoWTR_XY_D1_SK4
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK4
+        use pm_kind, only: TKR => RK, SKG => SK4
         real(TKR)               , intent(in)    , contiguous        :: weight(:)
-        character(*,SKC)        , intent(in)    , contiguous        :: x(:), y(:)
+        character(*,SKG)        , intent(in)    , contiguous        :: x(:), y(:)
         real(TKR)                                                   :: rho
     end function
 #endif
@@ -8379,9 +8379,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRhoWTR_XY_D1_SK3
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK3
+        use pm_kind, only: TKR => RK, SKG => SK3
         real(TKR)               , intent(in)    , contiguous        :: weight(:)
-        character(*,SKC)        , intent(in)    , contiguous        :: x(:), y(:)
+        character(*,SKG)        , intent(in)    , contiguous        :: x(:), y(:)
         real(TKR)                                                   :: rho
     end function
 #endif
@@ -8391,9 +8391,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRhoWTR_XY_D1_SK2
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK2
+        use pm_kind, only: TKR => RK, SKG => SK2
         real(TKR)               , intent(in)    , contiguous        :: weight(:)
-        character(*,SKC)        , intent(in)    , contiguous        :: x(:), y(:)
+        character(*,SKG)        , intent(in)    , contiguous        :: x(:), y(:)
         real(TKR)                                                   :: rho
     end function
 #endif
@@ -8403,9 +8403,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRhoWTR_XY_D1_SK1
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK1
+        use pm_kind, only: TKR => RK, SKG => SK1
         real(TKR)               , intent(in)    , contiguous        :: weight(:)
-        character(*,SKC)        , intent(in)    , contiguous        :: x(:), y(:)
+        character(*,SKG)        , intent(in)    , contiguous        :: x(:), y(:)
         real(TKR)                                                   :: rho
     end function
 #endif
@@ -8417,9 +8417,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRhoWTR_XY_D1_IK5
 #endif
-        use pm_kind, only: TKR => RK, IKC => IK5
+        use pm_kind, only: TKR => RK, IKG => IK5
         real(TKR)               , intent(in)    , contiguous        :: weight(:)
-        integer(IKC)            , intent(in)    , contiguous        :: x(:), y(:)
+        integer(IKG)            , intent(in)    , contiguous        :: x(:), y(:)
         real(TKR)                                                   :: rho
     end function
 #endif
@@ -8429,9 +8429,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRhoWTR_XY_D1_IK4
 #endif
-        use pm_kind, only: TKR => RK, IKC => IK4
+        use pm_kind, only: TKR => RK, IKG => IK4
         real(TKR)               , intent(in)    , contiguous        :: weight(:)
-        integer(IKC)            , intent(in)    , contiguous        :: x(:), y(:)
+        integer(IKG)            , intent(in)    , contiguous        :: x(:), y(:)
         real(TKR)                                                   :: rho
     end function
 #endif
@@ -8441,9 +8441,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRhoWTR_XY_D1_IK3
 #endif
-        use pm_kind, only: TKR => RK, IKC => IK3
+        use pm_kind, only: TKR => RK, IKG => IK3
         real(TKR)               , intent(in)    , contiguous        :: weight(:)
-        integer(IKC)            , intent(in)    , contiguous        :: x(:), y(:)
+        integer(IKG)            , intent(in)    , contiguous        :: x(:), y(:)
         real(TKR)                                                   :: rho
     end function
 #endif
@@ -8453,9 +8453,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRhoWTR_XY_D1_IK2
 #endif
-        use pm_kind, only: TKR => RK, IKC => IK2
+        use pm_kind, only: TKR => RK, IKG => IK2
         real(TKR)               , intent(in)    , contiguous        :: weight(:)
-        integer(IKC)            , intent(in)    , contiguous        :: x(:), y(:)
+        integer(IKG)            , intent(in)    , contiguous        :: x(:), y(:)
         real(TKR)                                                   :: rho
     end function
 #endif
@@ -8465,9 +8465,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRhoWTR_XY_D1_IK1
 #endif
-        use pm_kind, only: TKR => RK, IKC => IK1
+        use pm_kind, only: TKR => RK, IKG => IK1
         real(TKR)               , intent(in)    , contiguous        :: weight(:)
-        integer(IKC)            , intent(in)    , contiguous        :: x(:), y(:)
+        integer(IKG)            , intent(in)    , contiguous        :: x(:), y(:)
         real(TKR)                                                   :: rho
     end function
 #endif
@@ -8479,9 +8479,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRhoWTR_XY_D1_RK5
 #endif
-        use pm_kind, only: TKR => RK, TKC => RK5
+        use pm_kind, only: TKR => RK, TKG => RK5
         real(TKR)               , intent(in)    , contiguous        :: weight(:)
-        real(TKC)               , intent(in)    , contiguous        :: x(:), y(:)
+        real(TKG)               , intent(in)    , contiguous        :: x(:), y(:)
         real(TKR)                                                   :: rho
     end function
 #endif
@@ -8491,9 +8491,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRhoWTR_XY_D1_RK4
 #endif
-        use pm_kind, only: TKR => RK, TKC => RK4
+        use pm_kind, only: TKR => RK, TKG => RK4
         real(TKR)               , intent(in)    , contiguous        :: weight(:)
-        real(TKC)               , intent(in)    , contiguous        :: x(:), y(:)
+        real(TKG)               , intent(in)    , contiguous        :: x(:), y(:)
         real(TKR)                                                   :: rho
     end function
 #endif
@@ -8503,9 +8503,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRhoWTR_XY_D1_RK3
 #endif
-        use pm_kind, only: TKR => RK, TKC => RK3
+        use pm_kind, only: TKR => RK, TKG => RK3
         real(TKR)               , intent(in)    , contiguous        :: weight(:)
-        real(TKC)               , intent(in)    , contiguous        :: x(:), y(:)
+        real(TKG)               , intent(in)    , contiguous        :: x(:), y(:)
         real(TKR)                                                   :: rho
     end function
 #endif
@@ -8515,9 +8515,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRhoWTR_XY_D1_RK2
 #endif
-        use pm_kind, only: TKR => RK, TKC => RK2
+        use pm_kind, only: TKR => RK, TKG => RK2
         real(TKR)               , intent(in)    , contiguous        :: weight(:)
-        real(TKC)               , intent(in)    , contiguous        :: x(:), y(:)
+        real(TKG)               , intent(in)    , contiguous        :: x(:), y(:)
         real(TKR)                                                   :: rho
     end function
 #endif
@@ -8527,9 +8527,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRhoWTR_XY_D1_RK1
 #endif
-        use pm_kind, only: TKR => RK, TKC => RK1
+        use pm_kind, only: TKR => RK, TKG => RK1
         real(TKR)               , intent(in)    , contiguous        :: weight(:)
-        real(TKC)               , intent(in)    , contiguous        :: x(:), y(:)
+        real(TKG)               , intent(in)    , contiguous        :: x(:), y(:)
         real(TKR)                                                   :: rho
     end function
 #endif
@@ -8543,9 +8543,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRhoWTR_XY_D1_PSSK5
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK5
+        use pm_kind, only: TKR => RK, SKG => SK5
         real(TKR)               , intent(in)    , contiguous        :: weight(:)
-        type(css_pdt(SKC))      , intent(in)    , contiguous        :: x(:), y(:)
+        type(css_pdt(SKG))      , intent(in)    , contiguous        :: x(:), y(:)
         real(TKR)                                                   :: rho
     end function
 #endif
@@ -8555,9 +8555,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRhoWTR_XY_D1_PSSK4
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK4
+        use pm_kind, only: TKR => RK, SKG => SK4
         real(TKR)               , intent(in)    , contiguous        :: weight(:)
-        type(css_pdt(SKC))      , intent(in)    , contiguous        :: x(:), y(:)
+        type(css_pdt(SKG))      , intent(in)    , contiguous        :: x(:), y(:)
         real(TKR)                                                   :: rho
     end function
 #endif
@@ -8567,9 +8567,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRhoWTR_XY_D1_PSSK3
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK3
+        use pm_kind, only: TKR => RK, SKG => SK3
         real(TKR)               , intent(in)    , contiguous        :: weight(:)
-        type(css_pdt(SKC))      , intent(in)    , contiguous        :: x(:), y(:)
+        type(css_pdt(SKG))      , intent(in)    , contiguous        :: x(:), y(:)
         real(TKR)                                                   :: rho
     end function
 #endif
@@ -8579,9 +8579,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRhoWTR_XY_D1_PSSK2
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK2
+        use pm_kind, only: TKR => RK, SKG => SK2
         real(TKR)               , intent(in)    , contiguous        :: weight(:)
-        type(css_pdt(SKC))      , intent(in)    , contiguous        :: x(:), y(:)
+        type(css_pdt(SKG))      , intent(in)    , contiguous        :: x(:), y(:)
         real(TKR)                                                   :: rho
     end function
 #endif
@@ -8591,9 +8591,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRhoWTR_XY_D1_PSSK1
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK1
+        use pm_kind, only: TKR => RK, SKG => SK1
         real(TKR)               , intent(in)    , contiguous        :: weight(:)
-        type(css_pdt(SKC))      , intent(in)    , contiguous        :: x(:), y(:)
+        type(css_pdt(SKG))      , intent(in)    , contiguous        :: x(:), y(:)
         real(TKR)                                                   :: rho
     end function
 #endif
@@ -8607,7 +8607,7 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRhoWTR_XY_D1_BSSK
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK
+        use pm_kind, only: TKR => RK, SKG => SK
         real(TKR)               , intent(in)    , contiguous        :: weight(:)
         type(css_type)          , intent(in)    , contiguous        :: x(:), y(:)
         real(TKR)                                                   :: rho
@@ -8630,8 +8630,8 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRhoWNO_ULD_SK5
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK5
-        character(*,SKC)        , intent(in)    , contiguous        :: sample(:,:)
+        use pm_kind, only: TKR => RK, SKG => SK5
+        character(*,SKG)        , intent(in)    , contiguous        :: sample(:,:)
         integer(IK)             , intent(in)                        :: dim
         real(TKR)                                                   :: rho(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
     end function
@@ -8642,8 +8642,8 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRhoWNO_ULD_SK4
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK4
-        character(*,SKC)        , intent(in)    , contiguous        :: sample(:,:)
+        use pm_kind, only: TKR => RK, SKG => SK4
+        character(*,SKG)        , intent(in)    , contiguous        :: sample(:,:)
         integer(IK)             , intent(in)                        :: dim
         real(TKR)                                                   :: rho(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
     end function
@@ -8654,8 +8654,8 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRhoWNO_ULD_SK3
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK3
-        character(*,SKC)        , intent(in)    , contiguous        :: sample(:,:)
+        use pm_kind, only: TKR => RK, SKG => SK3
+        character(*,SKG)        , intent(in)    , contiguous        :: sample(:,:)
         integer(IK)             , intent(in)                        :: dim
         real(TKR)                                                   :: rho(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
     end function
@@ -8666,8 +8666,8 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRhoWNO_ULD_SK2
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK2
-        character(*,SKC)        , intent(in)    , contiguous        :: sample(:,:)
+        use pm_kind, only: TKR => RK, SKG => SK2
+        character(*,SKG)        , intent(in)    , contiguous        :: sample(:,:)
         integer(IK)             , intent(in)                        :: dim
         real(TKR)                                                   :: rho(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
     end function
@@ -8678,8 +8678,8 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRhoWNO_ULD_SK1
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK1
-        character(*,SKC)        , intent(in)    , contiguous        :: sample(:,:)
+        use pm_kind, only: TKR => RK, SKG => SK1
+        character(*,SKG)        , intent(in)    , contiguous        :: sample(:,:)
         integer(IK)             , intent(in)                        :: dim
         real(TKR)                                                   :: rho(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
     end function
@@ -8692,8 +8692,8 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRhoWNO_ULD_IK5
 #endif
-        use pm_kind, only: TKR => RK, IKC => IK5
-        integer(IKC)            , intent(in)    , contiguous        :: sample(:,:)
+        use pm_kind, only: TKR => RK, IKG => IK5
+        integer(IKG)            , intent(in)    , contiguous        :: sample(:,:)
         integer(IK)             , intent(in)                        :: dim
         real(TKR)                                                   :: rho(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
     end function
@@ -8704,8 +8704,8 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRhoWNO_ULD_IK4
 #endif
-        use pm_kind, only: TKR => RK, IKC => IK4
-        integer(IKC)            , intent(in)    , contiguous        :: sample(:,:)
+        use pm_kind, only: TKR => RK, IKG => IK4
+        integer(IKG)            , intent(in)    , contiguous        :: sample(:,:)
         integer(IK)             , intent(in)                        :: dim
         real(TKR)                                                   :: rho(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
     end function
@@ -8716,8 +8716,8 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRhoWNO_ULD_IK3
 #endif
-        use pm_kind, only: TKR => RK, IKC => IK3
-        integer(IKC)            , intent(in)    , contiguous        :: sample(:,:)
+        use pm_kind, only: TKR => RK, IKG => IK3
+        integer(IKG)            , intent(in)    , contiguous        :: sample(:,:)
         integer(IK)             , intent(in)                        :: dim
         real(TKR)                                                   :: rho(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
     end function
@@ -8728,8 +8728,8 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRhoWNO_ULD_IK2
 #endif
-        use pm_kind, only: TKR => RK, IKC => IK2
-        integer(IKC)            , intent(in)    , contiguous        :: sample(:,:)
+        use pm_kind, only: TKR => RK, IKG => IK2
+        integer(IKG)            , intent(in)    , contiguous        :: sample(:,:)
         integer(IK)             , intent(in)                        :: dim
         real(TKR)                                                   :: rho(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
     end function
@@ -8740,8 +8740,8 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRhoWNO_ULD_IK1
 #endif
-        use pm_kind, only: TKR => RK, IKC => IK1
-        integer(IKC)            , intent(in)    , contiguous        :: sample(:,:)
+        use pm_kind, only: TKR => RK, IKG => IK1
+        integer(IKG)            , intent(in)    , contiguous        :: sample(:,:)
         integer(IK)             , intent(in)                        :: dim
         real(TKR)                                                   :: rho(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
     end function
@@ -8754,8 +8754,8 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRhoWNO_ULD_RK5
 #endif
-        use pm_kind, only: TKR => RK, TKC => RK5
-        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
+        use pm_kind, only: TKR => RK, TKG => RK5
+        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
         integer(IK)             , intent(in)                        :: dim
         real(TKR)                                                   :: rho(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
     end function
@@ -8766,8 +8766,8 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRhoWNO_ULD_RK4
 #endif
-        use pm_kind, only: TKR => RK, TKC => RK4
-        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
+        use pm_kind, only: TKR => RK, TKG => RK4
+        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
         integer(IK)             , intent(in)                        :: dim
         real(TKR)                                                   :: rho(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
     end function
@@ -8778,8 +8778,8 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRhoWNO_ULD_RK3
 #endif
-        use pm_kind, only: TKR => RK, TKC => RK3
-        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
+        use pm_kind, only: TKR => RK, TKG => RK3
+        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
         integer(IK)             , intent(in)                        :: dim
         real(TKR)                                                   :: rho(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
     end function
@@ -8790,8 +8790,8 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRhoWNO_ULD_RK2
 #endif
-        use pm_kind, only: TKR => RK, TKC => RK2
-        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
+        use pm_kind, only: TKR => RK, TKG => RK2
+        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
         integer(IK)             , intent(in)                        :: dim
         real(TKR)                                                   :: rho(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
     end function
@@ -8802,8 +8802,8 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRhoWNO_ULD_RK1
 #endif
-        use pm_kind, only: TKR => RK, TKC => RK1
-        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
+        use pm_kind, only: TKR => RK, TKG => RK1
+        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
         integer(IK)             , intent(in)                        :: dim
         real(TKR)                                                   :: rho(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
     end function
@@ -8818,8 +8818,8 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRhoWNO_ULD_PSSK5
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK5
-        type(css_pdt(SKC))      , intent(in)    , contiguous        :: sample(:,:)
+        use pm_kind, only: TKR => RK, SKG => SK5
+        type(css_pdt(SKG))      , intent(in)    , contiguous        :: sample(:,:)
         integer(IK)             , intent(in)                        :: dim
         real(TKR)                                                   :: rho(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
     end function
@@ -8830,8 +8830,8 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRhoWNO_ULD_PSSK4
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK4
-        type(css_pdt(SKC))      , intent(in)    , contiguous        :: sample(:,:)
+        use pm_kind, only: TKR => RK, SKG => SK4
+        type(css_pdt(SKG))      , intent(in)    , contiguous        :: sample(:,:)
         integer(IK)             , intent(in)                        :: dim
         real(TKR)                                                   :: rho(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
     end function
@@ -8842,8 +8842,8 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRhoWNO_ULD_PSSK3
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK3
-        type(css_pdt(SKC))      , intent(in)    , contiguous        :: sample(:,:)
+        use pm_kind, only: TKR => RK, SKG => SK3
+        type(css_pdt(SKG))      , intent(in)    , contiguous        :: sample(:,:)
         integer(IK)             , intent(in)                        :: dim
         real(TKR)                                                   :: rho(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
     end function
@@ -8854,8 +8854,8 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRhoWNO_ULD_PSSK2
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK2
-        type(css_pdt(SKC))      , intent(in)    , contiguous        :: sample(:,:)
+        use pm_kind, only: TKR => RK, SKG => SK2
+        type(css_pdt(SKG))      , intent(in)    , contiguous        :: sample(:,:)
         integer(IK)             , intent(in)                        :: dim
         real(TKR)                                                   :: rho(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
     end function
@@ -8866,8 +8866,8 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRhoWNO_ULD_PSSK1
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK1
-        type(css_pdt(SKC))      , intent(in)    , contiguous        :: sample(:,:)
+        use pm_kind, only: TKR => RK, SKG => SK1
+        type(css_pdt(SKG))      , intent(in)    , contiguous        :: sample(:,:)
         integer(IK)             , intent(in)                        :: dim
         real(TKR)                                                   :: rho(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
     end function
@@ -8882,7 +8882,7 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRhoWNO_ULD_BSSK
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK
+        use pm_kind, only: TKR => RK, SKG => SK
         type(css_type)          , intent(in)    , contiguous        :: sample(:,:)
         integer(IK)             , intent(in)                        :: dim
         real(TKR)                                                   :: rho(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
@@ -8903,9 +8903,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRhoWTI_ULD_SK5
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK5
+        use pm_kind, only: TKR => RK, SKG => SK5
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        character(*,SKC)        , intent(in)    , contiguous        :: sample(:,:)
+        character(*,SKG)        , intent(in)    , contiguous        :: sample(:,:)
         integer(IK)             , intent(in)                        :: dim
         real(TKR)                                                   :: rho(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
     end function
@@ -8916,9 +8916,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRhoWTI_ULD_SK4
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK4
+        use pm_kind, only: TKR => RK, SKG => SK4
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        character(*,SKC)        , intent(in)    , contiguous        :: sample(:,:)
+        character(*,SKG)        , intent(in)    , contiguous        :: sample(:,:)
         integer(IK)             , intent(in)                        :: dim
         real(TKR)                                                   :: rho(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
     end function
@@ -8929,9 +8929,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRhoWTI_ULD_SK3
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK3
+        use pm_kind, only: TKR => RK, SKG => SK3
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        character(*,SKC)        , intent(in)    , contiguous        :: sample(:,:)
+        character(*,SKG)        , intent(in)    , contiguous        :: sample(:,:)
         integer(IK)             , intent(in)                        :: dim
         real(TKR)                                                   :: rho(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
     end function
@@ -8942,9 +8942,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRhoWTI_ULD_SK2
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK2
+        use pm_kind, only: TKR => RK, SKG => SK2
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        character(*,SKC)        , intent(in)    , contiguous        :: sample(:,:)
+        character(*,SKG)        , intent(in)    , contiguous        :: sample(:,:)
         integer(IK)             , intent(in)                        :: dim
         real(TKR)                                                   :: rho(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
     end function
@@ -8955,9 +8955,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRhoWTI_ULD_SK1
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK1
+        use pm_kind, only: TKR => RK, SKG => SK1
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        character(*,SKC)        , intent(in)    , contiguous        :: sample(:,:)
+        character(*,SKG)        , intent(in)    , contiguous        :: sample(:,:)
         integer(IK)             , intent(in)                        :: dim
         real(TKR)                                                   :: rho(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
     end function
@@ -8970,9 +8970,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRhoWTI_ULD_IK5
 #endif
-        use pm_kind, only: TKR => RK, IKC => IK5
+        use pm_kind, only: TKR => RK, IKG => IK5
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        integer(IKC)            , intent(in)    , contiguous        :: sample(:,:)
+        integer(IKG)            , intent(in)    , contiguous        :: sample(:,:)
         integer(IK)             , intent(in)                        :: dim
         real(TKR)                                                   :: rho(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
     end function
@@ -8983,9 +8983,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRhoWTI_ULD_IK4
 #endif
-        use pm_kind, only: TKR => RK, IKC => IK4
+        use pm_kind, only: TKR => RK, IKG => IK4
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        integer(IKC)            , intent(in)    , contiguous        :: sample(:,:)
+        integer(IKG)            , intent(in)    , contiguous        :: sample(:,:)
         integer(IK)             , intent(in)                        :: dim
         real(TKR)                                                   :: rho(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
     end function
@@ -8996,9 +8996,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRhoWTI_ULD_IK3
 #endif
-        use pm_kind, only: TKR => RK, IKC => IK3
+        use pm_kind, only: TKR => RK, IKG => IK3
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        integer(IKC)            , intent(in)    , contiguous        :: sample(:,:)
+        integer(IKG)            , intent(in)    , contiguous        :: sample(:,:)
         integer(IK)             , intent(in)                        :: dim
         real(TKR)                                                   :: rho(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
     end function
@@ -9009,9 +9009,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRhoWTI_ULD_IK2
 #endif
-        use pm_kind, only: TKR => RK, IKC => IK2
+        use pm_kind, only: TKR => RK, IKG => IK2
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        integer(IKC)            , intent(in)    , contiguous        :: sample(:,:)
+        integer(IKG)            , intent(in)    , contiguous        :: sample(:,:)
         integer(IK)             , intent(in)                        :: dim
         real(TKR)                                                   :: rho(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
     end function
@@ -9022,9 +9022,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRhoWTI_ULD_IK1
 #endif
-        use pm_kind, only: TKR => RK, IKC => IK1
+        use pm_kind, only: TKR => RK, IKG => IK1
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        integer(IKC)            , intent(in)    , contiguous        :: sample(:,:)
+        integer(IKG)            , intent(in)    , contiguous        :: sample(:,:)
         integer(IK)             , intent(in)                        :: dim
         real(TKR)                                                   :: rho(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
     end function
@@ -9037,9 +9037,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRhoWTI_ULD_RK5
 #endif
-        use pm_kind, only: TKR => RK, TKC => RK5
+        use pm_kind, only: TKR => RK, TKG => RK5
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
+        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
         integer(IK)             , intent(in)                        :: dim
         real(TKR)                                                   :: rho(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
     end function
@@ -9050,9 +9050,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRhoWTI_ULD_RK4
 #endif
-        use pm_kind, only: TKR => RK, TKC => RK4
+        use pm_kind, only: TKR => RK, TKG => RK4
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
+        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
         integer(IK)             , intent(in)                        :: dim
         real(TKR)                                                   :: rho(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
     end function
@@ -9063,9 +9063,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRhoWTI_ULD_RK3
 #endif
-        use pm_kind, only: TKR => RK, TKC => RK3
+        use pm_kind, only: TKR => RK, TKG => RK3
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
+        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
         integer(IK)             , intent(in)                        :: dim
         real(TKR)                                                   :: rho(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
     end function
@@ -9076,9 +9076,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRhoWTI_ULD_RK2
 #endif
-        use pm_kind, only: TKR => RK, TKC => RK2
+        use pm_kind, only: TKR => RK, TKG => RK2
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
+        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
         integer(IK)             , intent(in)                        :: dim
         real(TKR)                                                   :: rho(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
     end function
@@ -9089,9 +9089,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRhoWTI_ULD_RK1
 #endif
-        use pm_kind, only: TKR => RK, TKC => RK1
+        use pm_kind, only: TKR => RK, TKG => RK1
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
+        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
         integer(IK)             , intent(in)                        :: dim
         real(TKR)                                                   :: rho(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
     end function
@@ -9106,9 +9106,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRhoWTI_ULD_PSSK5
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK5
+        use pm_kind, only: TKR => RK, SKG => SK5
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        type(css_pdt(SKC))      , intent(in)    , contiguous        :: sample(:,:)
+        type(css_pdt(SKG))      , intent(in)    , contiguous        :: sample(:,:)
         integer(IK)             , intent(in)                        :: dim
         real(TKR)                                                   :: rho(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
     end function
@@ -9119,9 +9119,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRhoWTI_ULD_PSSK4
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK4
+        use pm_kind, only: TKR => RK, SKG => SK4
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        type(css_pdt(SKC))      , intent(in)    , contiguous        :: sample(:,:)
+        type(css_pdt(SKG))      , intent(in)    , contiguous        :: sample(:,:)
         integer(IK)             , intent(in)                        :: dim
         real(TKR)                                                   :: rho(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
     end function
@@ -9132,9 +9132,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRhoWTI_ULD_PSSK3
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK3
+        use pm_kind, only: TKR => RK, SKG => SK3
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        type(css_pdt(SKC))      , intent(in)    , contiguous        :: sample(:,:)
+        type(css_pdt(SKG))      , intent(in)    , contiguous        :: sample(:,:)
         integer(IK)             , intent(in)                        :: dim
         real(TKR)                                                   :: rho(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
     end function
@@ -9145,9 +9145,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRhoWTI_ULD_PSSK2
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK2
+        use pm_kind, only: TKR => RK, SKG => SK2
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        type(css_pdt(SKC))      , intent(in)    , contiguous        :: sample(:,:)
+        type(css_pdt(SKG))      , intent(in)    , contiguous        :: sample(:,:)
         integer(IK)             , intent(in)                        :: dim
         real(TKR)                                                   :: rho(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
     end function
@@ -9158,9 +9158,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRhoWTI_ULD_PSSK1
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK1
+        use pm_kind, only: TKR => RK, SKG => SK1
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        type(css_pdt(SKC))      , intent(in)    , contiguous        :: sample(:,:)
+        type(css_pdt(SKG))      , intent(in)    , contiguous        :: sample(:,:)
         integer(IK)             , intent(in)                        :: dim
         real(TKR)                                                   :: rho(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
     end function
@@ -9175,7 +9175,7 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRhoWTI_ULD_BSSK
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK
+        use pm_kind, only: TKR => RK, SKG => SK
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
         type(css_type)          , intent(in)    , contiguous        :: sample(:,:)
         integer(IK)             , intent(in)                        :: dim
@@ -9197,9 +9197,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRhoWTR_ULD_SK5
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK5
+        use pm_kind, only: TKR => RK, SKG => SK5
         real(TKR)               , intent(in)    , contiguous        :: weight(:)
-        character(*,SKC)        , intent(in)    , contiguous        :: sample(:,:)
+        character(*,SKG)        , intent(in)    , contiguous        :: sample(:,:)
         integer(IK)             , intent(in)                        :: dim
         real(TKR)                                                   :: rho(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
     end function
@@ -9210,9 +9210,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRhoWTR_ULD_SK4
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK4
+        use pm_kind, only: TKR => RK, SKG => SK4
         real(TKR)               , intent(in)    , contiguous        :: weight(:)
-        character(*,SKC)        , intent(in)    , contiguous        :: sample(:,:)
+        character(*,SKG)        , intent(in)    , contiguous        :: sample(:,:)
         integer(IK)             , intent(in)                        :: dim
         real(TKR)                                                   :: rho(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
     end function
@@ -9223,9 +9223,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRhoWTR_ULD_SK3
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK3
+        use pm_kind, only: TKR => RK, SKG => SK3
         real(TKR)               , intent(in)    , contiguous        :: weight(:)
-        character(*,SKC)        , intent(in)    , contiguous        :: sample(:,:)
+        character(*,SKG)        , intent(in)    , contiguous        :: sample(:,:)
         integer(IK)             , intent(in)                        :: dim
         real(TKR)                                                   :: rho(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
     end function
@@ -9236,9 +9236,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRhoWTR_ULD_SK2
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK2
+        use pm_kind, only: TKR => RK, SKG => SK2
         real(TKR)               , intent(in)    , contiguous        :: weight(:)
-        character(*,SKC)        , intent(in)    , contiguous        :: sample(:,:)
+        character(*,SKG)        , intent(in)    , contiguous        :: sample(:,:)
         integer(IK)             , intent(in)                        :: dim
         real(TKR)                                                   :: rho(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
     end function
@@ -9249,9 +9249,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRhoWTR_ULD_SK1
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK1
+        use pm_kind, only: TKR => RK, SKG => SK1
         real(TKR)               , intent(in)    , contiguous        :: weight(:)
-        character(*,SKC)        , intent(in)    , contiguous        :: sample(:,:)
+        character(*,SKG)        , intent(in)    , contiguous        :: sample(:,:)
         integer(IK)             , intent(in)                        :: dim
         real(TKR)                                                   :: rho(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
     end function
@@ -9264,9 +9264,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRhoWTR_ULD_IK5
 #endif
-        use pm_kind, only: TKR => RK, IKC => IK5
+        use pm_kind, only: TKR => RK, IKG => IK5
         real(TKR)               , intent(in)    , contiguous        :: weight(:)
-        integer(IKC)            , intent(in)    , contiguous        :: sample(:,:)
+        integer(IKG)            , intent(in)    , contiguous        :: sample(:,:)
         integer(IK)             , intent(in)                        :: dim
         real(TKR)                                                   :: rho(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
     end function
@@ -9277,9 +9277,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRhoWTR_ULD_IK4
 #endif
-        use pm_kind, only: TKR => RK, IKC => IK4
+        use pm_kind, only: TKR => RK, IKG => IK4
         real(TKR)               , intent(in)    , contiguous        :: weight(:)
-        integer(IKC)            , intent(in)    , contiguous        :: sample(:,:)
+        integer(IKG)            , intent(in)    , contiguous        :: sample(:,:)
         integer(IK)             , intent(in)                        :: dim
         real(TKR)                                                   :: rho(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
     end function
@@ -9290,9 +9290,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRhoWTR_ULD_IK3
 #endif
-        use pm_kind, only: TKR => RK, IKC => IK3
+        use pm_kind, only: TKR => RK, IKG => IK3
         real(TKR)               , intent(in)    , contiguous        :: weight(:)
-        integer(IKC)            , intent(in)    , contiguous        :: sample(:,:)
+        integer(IKG)            , intent(in)    , contiguous        :: sample(:,:)
         integer(IK)             , intent(in)                        :: dim
         real(TKR)                                                   :: rho(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
     end function
@@ -9303,9 +9303,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRhoWTR_ULD_IK2
 #endif
-        use pm_kind, only: TKR => RK, IKC => IK2
+        use pm_kind, only: TKR => RK, IKG => IK2
         real(TKR)               , intent(in)    , contiguous        :: weight(:)
-        integer(IKC)            , intent(in)    , contiguous        :: sample(:,:)
+        integer(IKG)            , intent(in)    , contiguous        :: sample(:,:)
         integer(IK)             , intent(in)                        :: dim
         real(TKR)                                                   :: rho(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
     end function
@@ -9316,9 +9316,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRhoWTR_ULD_IK1
 #endif
-        use pm_kind, only: TKR => RK, IKC => IK1
+        use pm_kind, only: TKR => RK, IKG => IK1
         real(TKR)               , intent(in)    , contiguous        :: weight(:)
-        integer(IKC)            , intent(in)    , contiguous        :: sample(:,:)
+        integer(IKG)            , intent(in)    , contiguous        :: sample(:,:)
         integer(IK)             , intent(in)                        :: dim
         real(TKR)                                                   :: rho(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
     end function
@@ -9331,9 +9331,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRhoWTR_ULD_RK5
 #endif
-        use pm_kind, only: TKR => RK, TKC => RK5
+        use pm_kind, only: TKR => RK, TKG => RK5
         real(TKR)               , intent(in)    , contiguous        :: weight(:)
-        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
+        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
         integer(IK)             , intent(in)                        :: dim
         real(TKR)                                                   :: rho(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
     end function
@@ -9344,9 +9344,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRhoWTR_ULD_RK4
 #endif
-        use pm_kind, only: TKR => RK, TKC => RK4
+        use pm_kind, only: TKR => RK, TKG => RK4
         real(TKR)               , intent(in)    , contiguous        :: weight(:)
-        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
+        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
         integer(IK)             , intent(in)                        :: dim
         real(TKR)                                                   :: rho(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
     end function
@@ -9357,9 +9357,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRhoWTR_ULD_RK3
 #endif
-        use pm_kind, only: TKR => RK, TKC => RK3
+        use pm_kind, only: TKR => RK, TKG => RK3
         real(TKR)               , intent(in)    , contiguous        :: weight(:)
-        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
+        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
         integer(IK)             , intent(in)                        :: dim
         real(TKR)                                                   :: rho(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
     end function
@@ -9370,9 +9370,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRhoWTR_ULD_RK2
 #endif
-        use pm_kind, only: TKR => RK, TKC => RK2
+        use pm_kind, only: TKR => RK, TKG => RK2
         real(TKR)               , intent(in)    , contiguous        :: weight(:)
-        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
+        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
         integer(IK)             , intent(in)                        :: dim
         real(TKR)                                                   :: rho(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
     end function
@@ -9383,9 +9383,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRhoWTR_ULD_RK1
 #endif
-        use pm_kind, only: TKR => RK, TKC => RK1
+        use pm_kind, only: TKR => RK, TKG => RK1
         real(TKR)               , intent(in)    , contiguous        :: weight(:)
-        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
+        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
         integer(IK)             , intent(in)                        :: dim
         real(TKR)                                                   :: rho(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
     end function
@@ -9400,9 +9400,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRhoWTR_ULD_PSSK5
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK5
+        use pm_kind, only: TKR => RK, SKG => SK5
         real(TKR)               , intent(in)    , contiguous        :: weight(:)
-        type(css_pdt(SKC))      , intent(in)    , contiguous        :: sample(:,:)
+        type(css_pdt(SKG))      , intent(in)    , contiguous        :: sample(:,:)
         integer(IK)             , intent(in)                        :: dim
         real(TKR)                                                   :: rho(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
     end function
@@ -9413,9 +9413,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRhoWTR_ULD_PSSK4
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK4
+        use pm_kind, only: TKR => RK, SKG => SK4
         real(TKR)               , intent(in)    , contiguous        :: weight(:)
-        type(css_pdt(SKC))      , intent(in)    , contiguous        :: sample(:,:)
+        type(css_pdt(SKG))      , intent(in)    , contiguous        :: sample(:,:)
         integer(IK)             , intent(in)                        :: dim
         real(TKR)                                                   :: rho(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
     end function
@@ -9426,9 +9426,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRhoWTR_ULD_PSSK3
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK3
+        use pm_kind, only: TKR => RK, SKG => SK3
         real(TKR)               , intent(in)    , contiguous        :: weight(:)
-        type(css_pdt(SKC))      , intent(in)    , contiguous        :: sample(:,:)
+        type(css_pdt(SKG))      , intent(in)    , contiguous        :: sample(:,:)
         integer(IK)             , intent(in)                        :: dim
         real(TKR)                                                   :: rho(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
     end function
@@ -9439,9 +9439,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRhoWTR_ULD_PSSK2
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK2
+        use pm_kind, only: TKR => RK, SKG => SK2
         real(TKR)               , intent(in)    , contiguous        :: weight(:)
-        type(css_pdt(SKC))      , intent(in)    , contiguous        :: sample(:,:)
+        type(css_pdt(SKG))      , intent(in)    , contiguous        :: sample(:,:)
         integer(IK)             , intent(in)                        :: dim
         real(TKR)                                                   :: rho(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
     end function
@@ -9452,9 +9452,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRhoWTR_ULD_PSSK1
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK1
+        use pm_kind, only: TKR => RK, SKG => SK1
         real(TKR)               , intent(in)    , contiguous        :: weight(:)
-        type(css_pdt(SKC))      , intent(in)    , contiguous        :: sample(:,:)
+        type(css_pdt(SKG))      , intent(in)    , contiguous        :: sample(:,:)
         integer(IK)             , intent(in)                        :: dim
         real(TKR)                                                   :: rho(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
     end function
@@ -9469,7 +9469,7 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRhoWTR_ULD_BSSK
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK
+        use pm_kind, only: TKR => RK, SKG => SK
         real(TKR)               , intent(in)    , contiguous        :: weight(:)
         type(css_type)          , intent(in)    , contiguous        :: sample(:,:)
         integer(IK)             , intent(in)                        :: dim
@@ -9651,8 +9651,8 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRhoWNO_XY_D0_SK5
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK5
-        character(*,SKC)        , intent(in)                        :: x, y
+        use pm_kind, only: TKR => RK, SKG => SK5
+        character(*,SKG)        , intent(in)                        :: x, y
         real(TKR)               , intent(out)   , contiguous        :: frankx(:), franky(:)
         real(TKR)               , intent(out)                       :: rho
     end subroutine
@@ -9663,8 +9663,8 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRhoWNO_XY_D0_SK4
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK4
-        character(*,SKC)        , intent(in)                        :: x, y
+        use pm_kind, only: TKR => RK, SKG => SK4
+        character(*,SKG)        , intent(in)                        :: x, y
         real(TKR)               , intent(out)   , contiguous        :: frankx(:), franky(:)
         real(TKR)               , intent(out)                       :: rho
     end subroutine
@@ -9675,8 +9675,8 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRhoWNO_XY_D0_SK3
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK3
-        character(*,SKC)        , intent(in)                        :: x, y
+        use pm_kind, only: TKR => RK, SKG => SK3
+        character(*,SKG)        , intent(in)                        :: x, y
         real(TKR)               , intent(out)   , contiguous        :: frankx(:), franky(:)
         real(TKR)               , intent(out)                       :: rho
     end subroutine
@@ -9687,8 +9687,8 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRhoWNO_XY_D0_SK2
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK2
-        character(*,SKC)        , intent(in)                        :: x, y
+        use pm_kind, only: TKR => RK, SKG => SK2
+        character(*,SKG)        , intent(in)                        :: x, y
         real(TKR)               , intent(out)   , contiguous        :: frankx(:), franky(:)
         real(TKR)               , intent(out)                       :: rho
     end subroutine
@@ -9699,8 +9699,8 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRhoWNO_XY_D0_SK1
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK1
-        character(*,SKC)        , intent(in)                        :: x, y
+        use pm_kind, only: TKR => RK, SKG => SK1
+        character(*,SKG)        , intent(in)                        :: x, y
         real(TKR)               , intent(out)   , contiguous        :: frankx(:), franky(:)
         real(TKR)               , intent(out)                       :: rho
     end subroutine
@@ -9713,8 +9713,8 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRhoWNO_XY_D1_SK5
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK5
-        character(*,SKC)        , intent(in)    , contiguous        :: x(:), y(:)
+        use pm_kind, only: TKR => RK, SKG => SK5
+        character(*,SKG)        , intent(in)    , contiguous        :: x(:), y(:)
         real(TKR)               , intent(out)   , contiguous        :: frankx(:), franky(:)
         real(TKR)               , intent(out)                       :: rho
     end subroutine
@@ -9725,8 +9725,8 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRhoWNO_XY_D1_SK4
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK4
-        character(*,SKC)        , intent(in)    , contiguous        :: x(:), y(:)
+        use pm_kind, only: TKR => RK, SKG => SK4
+        character(*,SKG)        , intent(in)    , contiguous        :: x(:), y(:)
         real(TKR)               , intent(out)   , contiguous        :: frankx(:), franky(:)
         real(TKR)               , intent(out)                       :: rho
     end subroutine
@@ -9737,8 +9737,8 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRhoWNO_XY_D1_SK3
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK3
-        character(*,SKC)        , intent(in)    , contiguous        :: x(:), y(:)
+        use pm_kind, only: TKR => RK, SKG => SK3
+        character(*,SKG)        , intent(in)    , contiguous        :: x(:), y(:)
         real(TKR)               , intent(out)   , contiguous        :: frankx(:), franky(:)
         real(TKR)               , intent(out)                       :: rho
     end subroutine
@@ -9749,8 +9749,8 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRhoWNO_XY_D1_SK2
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK2
-        character(*,SKC)        , intent(in)    , contiguous        :: x(:), y(:)
+        use pm_kind, only: TKR => RK, SKG => SK2
+        character(*,SKG)        , intent(in)    , contiguous        :: x(:), y(:)
         real(TKR)               , intent(out)   , contiguous        :: frankx(:), franky(:)
         real(TKR)               , intent(out)                       :: rho
     end subroutine
@@ -9761,8 +9761,8 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRhoWNO_XY_D1_SK1
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK1
-        character(*,SKC)        , intent(in)    , contiguous        :: x(:), y(:)
+        use pm_kind, only: TKR => RK, SKG => SK1
+        character(*,SKG)        , intent(in)    , contiguous        :: x(:), y(:)
         real(TKR)               , intent(out)   , contiguous        :: frankx(:), franky(:)
         real(TKR)               , intent(out)                       :: rho
     end subroutine
@@ -9775,8 +9775,8 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRhoWNO_XY_D1_IK5
 #endif
-        use pm_kind, only: TKR => RK, IKC => IK5
-        integer(IKC)            , intent(in)    , contiguous        :: x(:), y(:)
+        use pm_kind, only: TKR => RK, IKG => IK5
+        integer(IKG)            , intent(in)    , contiguous        :: x(:), y(:)
         real(TKR)               , intent(out)   , contiguous        :: frankx(:), franky(:)
         real(TKR)               , intent(out)                       :: rho
     end subroutine
@@ -9787,8 +9787,8 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRhoWNO_XY_D1_IK4
 #endif
-        use pm_kind, only: TKR => RK, IKC => IK4
-        integer(IKC)            , intent(in)    , contiguous        :: x(:), y(:)
+        use pm_kind, only: TKR => RK, IKG => IK4
+        integer(IKG)            , intent(in)    , contiguous        :: x(:), y(:)
         real(TKR)               , intent(out)   , contiguous        :: frankx(:), franky(:)
         real(TKR)               , intent(out)                       :: rho
     end subroutine
@@ -9799,8 +9799,8 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRhoWNO_XY_D1_IK3
 #endif
-        use pm_kind, only: TKR => RK, IKC => IK3
-        integer(IKC)            , intent(in)    , contiguous        :: x(:), y(:)
+        use pm_kind, only: TKR => RK, IKG => IK3
+        integer(IKG)            , intent(in)    , contiguous        :: x(:), y(:)
         real(TKR)               , intent(out)   , contiguous        :: frankx(:), franky(:)
         real(TKR)               , intent(out)                       :: rho
     end subroutine
@@ -9811,8 +9811,8 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRhoWNO_XY_D1_IK2
 #endif
-        use pm_kind, only: TKR => RK, IKC => IK2
-        integer(IKC)            , intent(in)    , contiguous        :: x(:), y(:)
+        use pm_kind, only: TKR => RK, IKG => IK2
+        integer(IKG)            , intent(in)    , contiguous        :: x(:), y(:)
         real(TKR)               , intent(out)   , contiguous        :: frankx(:), franky(:)
         real(TKR)               , intent(out)                       :: rho
     end subroutine
@@ -9823,8 +9823,8 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRhoWNO_XY_D1_IK1
 #endif
-        use pm_kind, only: TKR => RK, IKC => IK1
-        integer(IKC)            , intent(in)    , contiguous        :: x(:), y(:)
+        use pm_kind, only: TKR => RK, IKG => IK1
+        integer(IKG)            , intent(in)    , contiguous        :: x(:), y(:)
         real(TKR)               , intent(out)   , contiguous        :: frankx(:), franky(:)
         real(TKR)               , intent(out)                       :: rho
     end subroutine
@@ -9837,8 +9837,8 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRhoWNO_XY_D1_RK5
 #endif
-        use pm_kind, only: TKC => RK, TKC => RK5
-        real(TKC)               , intent(in)    , contiguous        :: x(:), y(:)
+        use pm_kind, only: TKG => RK, TKG => RK5
+        real(TKG)               , intent(in)    , contiguous        :: x(:), y(:)
         real(TKR)               , intent(out)   , contiguous        :: frankx(:), franky(:)
         real(TKR)               , intent(out)                       :: rho
     end subroutine
@@ -9849,8 +9849,8 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRhoWNO_XY_D1_RK4
 #endif
-        use pm_kind, only: TKR => RK, TKC => RK4
-        real(TKC)               , intent(in)    , contiguous        :: x(:), y(:)
+        use pm_kind, only: TKR => RK, TKG => RK4
+        real(TKG)               , intent(in)    , contiguous        :: x(:), y(:)
         real(TKR)               , intent(out)   , contiguous        :: frankx(:), franky(:)
         real(TKR)               , intent(out)                       :: rho
     end subroutine
@@ -9861,8 +9861,8 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRhoWNO_XY_D1_RK3
 #endif
-        use pm_kind, only: TKR => RK, TKC => RK3
-        real(TKC)               , intent(in)    , contiguous        :: x(:), y(:)
+        use pm_kind, only: TKR => RK, TKG => RK3
+        real(TKG)               , intent(in)    , contiguous        :: x(:), y(:)
         real(TKR)               , intent(out)   , contiguous        :: frankx(:), franky(:)
         real(TKR)               , intent(out)                       :: rho
     end subroutine
@@ -9873,8 +9873,8 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRhoWNO_XY_D1_RK2
 #endif
-        use pm_kind, only: TKR => RK, TKC => RK2
-        real(TKC)               , intent(in)    , contiguous        :: x(:), y(:)
+        use pm_kind, only: TKR => RK, TKG => RK2
+        real(TKG)               , intent(in)    , contiguous        :: x(:), y(:)
         real(TKR)               , intent(out)   , contiguous        :: frankx(:), franky(:)
         real(TKR)               , intent(out)                       :: rho
     end subroutine
@@ -9885,8 +9885,8 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRhoWNO_XY_D1_RK1
 #endif
-        use pm_kind, only: TKR => RK, TKC => RK1
-        real(TKC)               , intent(in)    , contiguous        :: x(:), y(:)
+        use pm_kind, only: TKR => RK, TKG => RK1
+        real(TKG)               , intent(in)    , contiguous        :: x(:), y(:)
         real(TKR)               , intent(out)   , contiguous        :: frankx(:), franky(:)
         real(TKR)               , intent(out)                       :: rho
     end subroutine
@@ -9901,8 +9901,8 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRhoWNO_XY_D1_PSSK5
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK5
-        type(css_pdt(SKC))      , intent(in)    , contiguous        :: x(:), y(:)
+        use pm_kind, only: TKR => RK, SKG => SK5
+        type(css_pdt(SKG))      , intent(in)    , contiguous        :: x(:), y(:)
         real(TKR)               , intent(out)   , contiguous        :: frankx(:), franky(:)
         real(TKR)               , intent(out)                       :: rho
     end subroutine
@@ -9913,8 +9913,8 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRhoWNO_XY_D1_PSSK4
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK4
-        type(css_pdt(SKC))      , intent(in)    , contiguous        :: x(:), y(:)
+        use pm_kind, only: TKR => RK, SKG => SK4
+        type(css_pdt(SKG))      , intent(in)    , contiguous        :: x(:), y(:)
         real(TKR)               , intent(out)   , contiguous        :: frankx(:), franky(:)
         real(TKR)               , intent(out)                       :: rho
     end subroutine
@@ -9925,8 +9925,8 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRhoWNO_XY_D1_PSSK3
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK3
-        type(css_pdt(SKC))      , intent(in)    , contiguous        :: x(:), y(:)
+        use pm_kind, only: TKR => RK, SKG => SK3
+        type(css_pdt(SKG))      , intent(in)    , contiguous        :: x(:), y(:)
         real(TKR)               , intent(out)   , contiguous        :: frankx(:), franky(:)
         real(TKR)               , intent(out)                       :: rho
     end subroutine
@@ -9937,8 +9937,8 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRhoWNO_XY_D1_PSSK2
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK2
-        type(css_pdt(SKC))      , intent(in)    , contiguous        :: x(:), y(:)
+        use pm_kind, only: TKR => RK, SKG => SK2
+        type(css_pdt(SKG))      , intent(in)    , contiguous        :: x(:), y(:)
         real(TKR)               , intent(out)   , contiguous        :: frankx(:), franky(:)
         real(TKR)               , intent(out)                       :: rho
     end subroutine
@@ -9949,8 +9949,8 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRhoWNO_XY_D1_PSSK1
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK1
-        type(css_pdt(SKC))      , intent(in)    , contiguous        :: x(:), y(:)
+        use pm_kind, only: TKR => RK, SKG => SK1
+        type(css_pdt(SKG))      , intent(in)    , contiguous        :: x(:), y(:)
         real(TKR)               , intent(out)   , contiguous        :: frankx(:), franky(:)
         real(TKR)               , intent(out)                       :: rho
     end subroutine
@@ -9965,7 +9965,7 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRhoWNO_XY_D1_BSSK
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK
+        use pm_kind, only: TKR => RK, SKG => SK
         type(css_type)          , intent(in)    , contiguous        :: x(:), y(:)
         real(TKR)               , intent(out)   , contiguous        :: frankx(:), franky(:)
         real(TKR)               , intent(out)                       :: rho
@@ -9986,9 +9986,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRhoWTI_XY_D0_SK5
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK5
+        use pm_kind, only: TKR => RK, SKG => SK5
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        character(*,SKC)        , intent(in)                        :: x, y
+        character(*,SKG)        , intent(in)                        :: x, y
         real(TKR)               , intent(out)   , contiguous        :: frankx(:), franky(:)
         real(TKR)               , intent(out)                       :: rho
     end subroutine
@@ -9999,9 +9999,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRhoWTI_XY_D0_SK4
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK4
+        use pm_kind, only: TKR => RK, SKG => SK4
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        character(*,SKC)        , intent(in)                        :: x, y
+        character(*,SKG)        , intent(in)                        :: x, y
         real(TKR)               , intent(out)   , contiguous        :: frankx(:), franky(:)
         real(TKR)               , intent(out)                       :: rho
     end subroutine
@@ -10012,9 +10012,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRhoWTI_XY_D0_SK3
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK3
+        use pm_kind, only: TKR => RK, SKG => SK3
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        character(*,SKC)        , intent(in)                        :: x, y
+        character(*,SKG)        , intent(in)                        :: x, y
         real(TKR)               , intent(out)   , contiguous        :: frankx(:), franky(:)
         real(TKR)               , intent(out)                       :: rho
     end subroutine
@@ -10025,9 +10025,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRhoWTI_XY_D0_SK2
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK2
+        use pm_kind, only: TKR => RK, SKG => SK2
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        character(*,SKC)        , intent(in)                        :: x, y
+        character(*,SKG)        , intent(in)                        :: x, y
         real(TKR)               , intent(out)   , contiguous        :: frankx(:), franky(:)
         real(TKR)               , intent(out)                       :: rho
     end subroutine
@@ -10038,9 +10038,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRhoWTI_XY_D0_SK1
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK1
+        use pm_kind, only: TKR => RK, SKG => SK1
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        character(*,SKC)        , intent(in)                        :: x, y
+        character(*,SKG)        , intent(in)                        :: x, y
         real(TKR)               , intent(out)   , contiguous        :: frankx(:), franky(:)
         real(TKR)               , intent(out)                       :: rho
     end subroutine
@@ -10053,9 +10053,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRhoWTI_XY_D1_SK5
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK5
+        use pm_kind, only: TKR => RK, SKG => SK5
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        character(*,SKC)        , intent(in)    , contiguous        :: x(:), y(:)
+        character(*,SKG)        , intent(in)    , contiguous        :: x(:), y(:)
         real(TKR)               , intent(out)   , contiguous        :: frankx(:), franky(:)
         real(TKR)               , intent(out)                       :: rho
     end subroutine
@@ -10066,9 +10066,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRhoWTI_XY_D1_SK4
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK4
+        use pm_kind, only: TKR => RK, SKG => SK4
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        character(*,SKC)        , intent(in)    , contiguous        :: x(:), y(:)
+        character(*,SKG)        , intent(in)    , contiguous        :: x(:), y(:)
         real(TKR)               , intent(out)   , contiguous        :: frankx(:), franky(:)
         real(TKR)               , intent(out)                       :: rho
     end subroutine
@@ -10079,9 +10079,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRhoWTI_XY_D1_SK3
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK3
+        use pm_kind, only: TKR => RK, SKG => SK3
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        character(*,SKC)        , intent(in)    , contiguous        :: x(:), y(:)
+        character(*,SKG)        , intent(in)    , contiguous        :: x(:), y(:)
         real(TKR)               , intent(out)   , contiguous        :: frankx(:), franky(:)
         real(TKR)               , intent(out)                       :: rho
     end subroutine
@@ -10092,9 +10092,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRhoWTI_XY_D1_SK2
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK2
+        use pm_kind, only: TKR => RK, SKG => SK2
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        character(*,SKC)        , intent(in)    , contiguous        :: x(:), y(:)
+        character(*,SKG)        , intent(in)    , contiguous        :: x(:), y(:)
         real(TKR)               , intent(out)   , contiguous        :: frankx(:), franky(:)
         real(TKR)               , intent(out)                       :: rho
     end subroutine
@@ -10105,9 +10105,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRhoWTI_XY_D1_SK1
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK1
+        use pm_kind, only: TKR => RK, SKG => SK1
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        character(*,SKC)        , intent(in)    , contiguous        :: x(:), y(:)
+        character(*,SKG)        , intent(in)    , contiguous        :: x(:), y(:)
         real(TKR)               , intent(out)   , contiguous        :: frankx(:), franky(:)
         real(TKR)               , intent(out)                       :: rho
     end subroutine
@@ -10120,9 +10120,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRhoWTI_XY_D1_IK5
 #endif
-        use pm_kind, only: TKR => RK, IKC => IK5
+        use pm_kind, only: TKR => RK, IKG => IK5
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        integer(IKC)            , intent(in)    , contiguous        :: x(:), y(:)
+        integer(IKG)            , intent(in)    , contiguous        :: x(:), y(:)
         real(TKR)               , intent(out)   , contiguous        :: frankx(:), franky(:)
         real(TKR)               , intent(out)                       :: rho
     end subroutine
@@ -10133,9 +10133,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRhoWTI_XY_D1_IK4
 #endif
-        use pm_kind, only: TKR => RK, IKC => IK4
+        use pm_kind, only: TKR => RK, IKG => IK4
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        integer(IKC)            , intent(in)    , contiguous        :: x(:), y(:)
+        integer(IKG)            , intent(in)    , contiguous        :: x(:), y(:)
         real(TKR)               , intent(out)   , contiguous        :: frankx(:), franky(:)
         real(TKR)               , intent(out)                       :: rho
     end subroutine
@@ -10146,9 +10146,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRhoWTI_XY_D1_IK3
 #endif
-        use pm_kind, only: TKR => RK, IKC => IK3
+        use pm_kind, only: TKR => RK, IKG => IK3
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        integer(IKC)            , intent(in)    , contiguous        :: x(:), y(:)
+        integer(IKG)            , intent(in)    , contiguous        :: x(:), y(:)
         real(TKR)               , intent(out)   , contiguous        :: frankx(:), franky(:)
         real(TKR)               , intent(out)                       :: rho
     end subroutine
@@ -10159,9 +10159,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRhoWTI_XY_D1_IK2
 #endif
-        use pm_kind, only: TKR => RK, IKC => IK2
+        use pm_kind, only: TKR => RK, IKG => IK2
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        integer(IKC)            , intent(in)    , contiguous        :: x(:), y(:)
+        integer(IKG)            , intent(in)    , contiguous        :: x(:), y(:)
         real(TKR)               , intent(out)   , contiguous        :: frankx(:), franky(:)
         real(TKR)               , intent(out)                       :: rho
     end subroutine
@@ -10172,9 +10172,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRhoWTI_XY_D1_IK1
 #endif
-        use pm_kind, only: TKR => RK, IKC => IK1
+        use pm_kind, only: TKR => RK, IKG => IK1
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        integer(IKC)            , intent(in)    , contiguous        :: x(:), y(:)
+        integer(IKG)            , intent(in)    , contiguous        :: x(:), y(:)
         real(TKR)               , intent(out)   , contiguous        :: frankx(:), franky(:)
         real(TKR)               , intent(out)                       :: rho
     end subroutine
@@ -10187,9 +10187,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRhoWTI_XY_D1_RK5
 #endif
-        use pm_kind, only: TKR => RK, TKC => RK5
+        use pm_kind, only: TKR => RK, TKG => RK5
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        real(TKC)               , intent(in)    , contiguous        :: x(:), y(:)
+        real(TKG)               , intent(in)    , contiguous        :: x(:), y(:)
         real(TKR)               , intent(out)   , contiguous        :: frankx(:), franky(:)
         real(TKR)               , intent(out)                       :: rho
     end subroutine
@@ -10200,9 +10200,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRhoWTI_XY_D1_RK4
 #endif
-        use pm_kind, only: TKR => RK, TKC => RK4
+        use pm_kind, only: TKR => RK, TKG => RK4
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        real(TKC)               , intent(in)    , contiguous        :: x(:), y(:)
+        real(TKG)               , intent(in)    , contiguous        :: x(:), y(:)
         real(TKR)               , intent(out)   , contiguous        :: frankx(:), franky(:)
         real(TKR)               , intent(out)                       :: rho
     end subroutine
@@ -10213,9 +10213,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRhoWTI_XY_D1_RK3
 #endif
-        use pm_kind, only: TKR => RK, TKC => RK3
+        use pm_kind, only: TKR => RK, TKG => RK3
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        real(TKC)               , intent(in)    , contiguous        :: x(:), y(:)
+        real(TKG)               , intent(in)    , contiguous        :: x(:), y(:)
         real(TKR)               , intent(out)   , contiguous        :: frankx(:), franky(:)
         real(TKR)               , intent(out)                       :: rho
     end subroutine
@@ -10226,9 +10226,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRhoWTI_XY_D1_RK2
 #endif
-        use pm_kind, only: TKR => RK, TKC => RK2
+        use pm_kind, only: TKR => RK, TKG => RK2
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        real(TKC)               , intent(in)    , contiguous        :: x(:), y(:)
+        real(TKG)               , intent(in)    , contiguous        :: x(:), y(:)
         real(TKR)               , intent(out)   , contiguous        :: frankx(:), franky(:)
         real(TKR)               , intent(out)                       :: rho
     end subroutine
@@ -10239,9 +10239,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRhoWTI_XY_D1_RK1
 #endif
-        use pm_kind, only: TKR => RK, TKC => RK1
+        use pm_kind, only: TKR => RK, TKG => RK1
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        real(TKC)               , intent(in)    , contiguous        :: x(:), y(:)
+        real(TKG)               , intent(in)    , contiguous        :: x(:), y(:)
         real(TKR)               , intent(out)   , contiguous        :: frankx(:), franky(:)
         real(TKR)               , intent(out)                       :: rho
     end subroutine
@@ -10256,9 +10256,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRhoWTI_XY_D1_PSSK5
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK5
+        use pm_kind, only: TKR => RK, SKG => SK5
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        type(css_pdt(SKC))      , intent(in)    , contiguous        :: x(:), y(:)
+        type(css_pdt(SKG))      , intent(in)    , contiguous        :: x(:), y(:)
         real(TKR)               , intent(out)   , contiguous        :: frankx(:), franky(:)
         real(TKR)               , intent(out)                       :: rho
     end subroutine
@@ -10269,9 +10269,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRhoWTI_XY_D1_PSSK4
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK4
+        use pm_kind, only: TKR => RK, SKG => SK4
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        type(css_pdt(SKC))      , intent(in)    , contiguous        :: x(:), y(:)
+        type(css_pdt(SKG))      , intent(in)    , contiguous        :: x(:), y(:)
         real(TKR)               , intent(out)   , contiguous        :: frankx(:), franky(:)
         real(TKR)               , intent(out)                       :: rho
     end subroutine
@@ -10282,9 +10282,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRhoWTI_XY_D1_PSSK3
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK3
+        use pm_kind, only: TKR => RK, SKG => SK3
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        type(css_pdt(SKC))      , intent(in)    , contiguous        :: x(:), y(:)
+        type(css_pdt(SKG))      , intent(in)    , contiguous        :: x(:), y(:)
         real(TKR)               , intent(out)   , contiguous        :: frankx(:), franky(:)
         real(TKR)               , intent(out)                       :: rho
     end subroutine
@@ -10295,9 +10295,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRhoWTI_XY_D1_PSSK2
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK2
+        use pm_kind, only: TKR => RK, SKG => SK2
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        type(css_pdt(SKC))      , intent(in)    , contiguous        :: x(:), y(:)
+        type(css_pdt(SKG))      , intent(in)    , contiguous        :: x(:), y(:)
         real(TKR)               , intent(out)   , contiguous        :: frankx(:), franky(:)
         real(TKR)               , intent(out)                       :: rho
     end subroutine
@@ -10308,9 +10308,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRhoWTI_XY_D1_PSSK1
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK1
+        use pm_kind, only: TKR => RK, SKG => SK1
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        type(css_pdt(SKC))      , intent(in)    , contiguous        :: x(:), y(:)
+        type(css_pdt(SKG))      , intent(in)    , contiguous        :: x(:), y(:)
         real(TKR)               , intent(out)   , contiguous        :: frankx(:), franky(:)
         real(TKR)               , intent(out)                       :: rho
     end subroutine
@@ -10325,7 +10325,7 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRhoWTI_XY_D1_BSSK
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK
+        use pm_kind, only: TKR => RK, SKG => SK
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
         type(css_type)          , intent(in)    , contiguous        :: x(:), y(:)
         real(TKR)               , intent(out)   , contiguous        :: frankx(:), franky(:)
@@ -10347,9 +10347,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRhoWTR_XY_D0_SK5
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK5
+        use pm_kind, only: TKR => RK, SKG => SK5
         real(TKR)               , intent(in)    , contiguous        :: weight(:)
-        character(*,SKC)        , intent(in)                        :: x, y
+        character(*,SKG)        , intent(in)                        :: x, y
         real(TKR)               , intent(out)   , contiguous        :: frankx(:), franky(:)
         real(TKR)               , intent(out)                       :: rho
     end subroutine
@@ -10360,9 +10360,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRhoWTR_XY_D0_SK4
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK4
+        use pm_kind, only: TKR => RK, SKG => SK4
         real(TKR)               , intent(in)    , contiguous        :: weight(:)
-        character(*,SKC)        , intent(in)                        :: x, y
+        character(*,SKG)        , intent(in)                        :: x, y
         real(TKR)               , intent(out)   , contiguous        :: frankx(:), franky(:)
         real(TKR)               , intent(out)                       :: rho
     end subroutine
@@ -10373,9 +10373,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRhoWTR_XY_D0_SK3
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK3
+        use pm_kind, only: TKR => RK, SKG => SK3
         real(TKR)               , intent(in)    , contiguous        :: weight(:)
-        character(*,SKC)        , intent(in)                        :: x, y
+        character(*,SKG)        , intent(in)                        :: x, y
         real(TKR)               , intent(out)   , contiguous        :: frankx(:), franky(:)
         real(TKR)               , intent(out)                       :: rho
     end subroutine
@@ -10386,9 +10386,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRhoWTR_XY_D0_SK2
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK2
+        use pm_kind, only: TKR => RK, SKG => SK2
         real(TKR)               , intent(in)    , contiguous        :: weight(:)
-        character(*,SKC)        , intent(in)                        :: x, y
+        character(*,SKG)        , intent(in)                        :: x, y
         real(TKR)               , intent(out)   , contiguous        :: frankx(:), franky(:)
         real(TKR)               , intent(out)                       :: rho
     end subroutine
@@ -10399,9 +10399,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRhoWTR_XY_D0_SK1
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK1
+        use pm_kind, only: TKR => RK, SKG => SK1
         real(TKR)               , intent(in)    , contiguous        :: weight(:)
-        character(*,SKC)        , intent(in)                        :: x, y
+        character(*,SKG)        , intent(in)                        :: x, y
         real(TKR)               , intent(out)   , contiguous        :: frankx(:), franky(:)
         real(TKR)               , intent(out)                       :: rho
     end subroutine
@@ -10414,9 +10414,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRhoWTR_XY_D1_SK5
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK5
+        use pm_kind, only: TKR => RK, SKG => SK5
         real(TKR)               , intent(in)    , contiguous        :: weight(:)
-        character(*,SKC)        , intent(in)    , contiguous        :: x(:), y(:)
+        character(*,SKG)        , intent(in)    , contiguous        :: x(:), y(:)
         real(TKR)               , intent(out)   , contiguous        :: frankx(:), franky(:)
         real(TKR)               , intent(out)                       :: rho
     end subroutine
@@ -10427,9 +10427,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRhoWTR_XY_D1_SK4
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK4
+        use pm_kind, only: TKR => RK, SKG => SK4
         real(TKR)               , intent(in)    , contiguous        :: weight(:)
-        character(*,SKC)        , intent(in)    , contiguous        :: x(:), y(:)
+        character(*,SKG)        , intent(in)    , contiguous        :: x(:), y(:)
         real(TKR)               , intent(out)   , contiguous        :: frankx(:), franky(:)
         real(TKR)               , intent(out)                       :: rho
     end subroutine
@@ -10440,9 +10440,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRhoWTR_XY_D1_SK3
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK3
+        use pm_kind, only: TKR => RK, SKG => SK3
         real(TKR)               , intent(in)    , contiguous        :: weight(:)
-        character(*,SKC)        , intent(in)    , contiguous        :: x(:), y(:)
+        character(*,SKG)        , intent(in)    , contiguous        :: x(:), y(:)
         real(TKR)               , intent(out)   , contiguous        :: frankx(:), franky(:)
         real(TKR)               , intent(out)                       :: rho
     end subroutine
@@ -10453,9 +10453,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRhoWTR_XY_D1_SK2
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK2
+        use pm_kind, only: TKR => RK, SKG => SK2
         real(TKR)               , intent(in)    , contiguous        :: weight(:)
-        character(*,SKC)        , intent(in)    , contiguous        :: x(:), y(:)
+        character(*,SKG)        , intent(in)    , contiguous        :: x(:), y(:)
         real(TKR)               , intent(out)   , contiguous        :: frankx(:), franky(:)
         real(TKR)               , intent(out)                       :: rho
     end subroutine
@@ -10466,9 +10466,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRhoWTR_XY_D1_SK1
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK1
+        use pm_kind, only: TKR => RK, SKG => SK1
         real(TKR)               , intent(in)    , contiguous        :: weight(:)
-        character(*,SKC)        , intent(in)    , contiguous        :: x(:), y(:)
+        character(*,SKG)        , intent(in)    , contiguous        :: x(:), y(:)
         real(TKR)               , intent(out)   , contiguous        :: frankx(:), franky(:)
         real(TKR)               , intent(out)                       :: rho
     end subroutine
@@ -10481,9 +10481,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRhoWTR_XY_D1_IK5
 #endif
-        use pm_kind, only: TKR => RK, IKC => IK5
+        use pm_kind, only: TKR => RK, IKG => IK5
         real(TKR)               , intent(in)    , contiguous        :: weight(:)
-        integer(IKC)            , intent(in)    , contiguous        :: x(:), y(:)
+        integer(IKG)            , intent(in)    , contiguous        :: x(:), y(:)
         real(TKR)               , intent(out)   , contiguous        :: frankx(:), franky(:)
         real(TKR)               , intent(out)                       :: rho
     end subroutine
@@ -10494,9 +10494,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRhoWTR_XY_D1_IK4
 #endif
-        use pm_kind, only: TKR => RK, IKC => IK4
+        use pm_kind, only: TKR => RK, IKG => IK4
         real(TKR)               , intent(in)    , contiguous        :: weight(:)
-        integer(IKC)            , intent(in)    , contiguous        :: x(:), y(:)
+        integer(IKG)            , intent(in)    , contiguous        :: x(:), y(:)
         real(TKR)               , intent(out)   , contiguous        :: frankx(:), franky(:)
         real(TKR)               , intent(out)                       :: rho
     end subroutine
@@ -10507,9 +10507,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRhoWTR_XY_D1_IK3
 #endif
-        use pm_kind, only: TKR => RK, IKC => IK3
+        use pm_kind, only: TKR => RK, IKG => IK3
         real(TKR)               , intent(in)    , contiguous        :: weight(:)
-        integer(IKC)            , intent(in)    , contiguous        :: x(:), y(:)
+        integer(IKG)            , intent(in)    , contiguous        :: x(:), y(:)
         real(TKR)               , intent(out)   , contiguous        :: frankx(:), franky(:)
         real(TKR)               , intent(out)                       :: rho
     end subroutine
@@ -10520,9 +10520,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRhoWTR_XY_D1_IK2
 #endif
-        use pm_kind, only: TKR => RK, IKC => IK2
+        use pm_kind, only: TKR => RK, IKG => IK2
         real(TKR)               , intent(in)    , contiguous        :: weight(:)
-        integer(IKC)            , intent(in)    , contiguous        :: x(:), y(:)
+        integer(IKG)            , intent(in)    , contiguous        :: x(:), y(:)
         real(TKR)               , intent(out)   , contiguous        :: frankx(:), franky(:)
         real(TKR)               , intent(out)                       :: rho
     end subroutine
@@ -10533,9 +10533,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRhoWTR_XY_D1_IK1
 #endif
-        use pm_kind, only: TKR => RK, IKC => IK1
+        use pm_kind, only: TKR => RK, IKG => IK1
         real(TKR)               , intent(in)    , contiguous        :: weight(:)
-        integer(IKC)            , intent(in)    , contiguous        :: x(:), y(:)
+        integer(IKG)            , intent(in)    , contiguous        :: x(:), y(:)
         real(TKR)               , intent(out)   , contiguous        :: frankx(:), franky(:)
         real(TKR)               , intent(out)                       :: rho
     end subroutine
@@ -10548,9 +10548,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRhoWTR_XY_D1_RK5
 #endif
-        use pm_kind, only: TKR => RK, TKC => RK5
+        use pm_kind, only: TKR => RK, TKG => RK5
         real(TKR)               , intent(in)    , contiguous        :: weight(:)
-        real(TKC)               , intent(in)    , contiguous        :: x(:), y(:)
+        real(TKG)               , intent(in)    , contiguous        :: x(:), y(:)
         real(TKR)               , intent(out)   , contiguous        :: frankx(:), franky(:)
         real(TKR)               , intent(out)                       :: rho
     end subroutine
@@ -10561,9 +10561,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRhoWTR_XY_D1_RK4
 #endif
-        use pm_kind, only: TKR => RK, TKC => RK4
+        use pm_kind, only: TKR => RK, TKG => RK4
         real(TKR)               , intent(in)    , contiguous        :: weight(:)
-        real(TKC)               , intent(in)    , contiguous        :: x(:), y(:)
+        real(TKG)               , intent(in)    , contiguous        :: x(:), y(:)
         real(TKR)               , intent(out)   , contiguous        :: frankx(:), franky(:)
         real(TKR)               , intent(out)                       :: rho
     end subroutine
@@ -10574,9 +10574,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRhoWTR_XY_D1_RK3
 #endif
-        use pm_kind, only: TKR => RK, TKC => RK3
+        use pm_kind, only: TKR => RK, TKG => RK3
         real(TKR)               , intent(in)    , contiguous        :: weight(:)
-        real(TKC)               , intent(in)    , contiguous        :: x(:), y(:)
+        real(TKG)               , intent(in)    , contiguous        :: x(:), y(:)
         real(TKR)               , intent(out)   , contiguous        :: frankx(:), franky(:)
         real(TKR)               , intent(out)                       :: rho
     end subroutine
@@ -10587,9 +10587,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRhoWTR_XY_D1_RK2
 #endif
-        use pm_kind, only: TKR => RK, TKC => RK2
+        use pm_kind, only: TKR => RK, TKG => RK2
         real(TKR)               , intent(in)    , contiguous        :: weight(:)
-        real(TKC)               , intent(in)    , contiguous        :: x(:), y(:)
+        real(TKG)               , intent(in)    , contiguous        :: x(:), y(:)
         real(TKR)               , intent(out)   , contiguous        :: frankx(:), franky(:)
         real(TKR)               , intent(out)                       :: rho
     end subroutine
@@ -10600,9 +10600,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRhoWTR_XY_D1_RK1
 #endif
-        use pm_kind, only: TKR => RK, TKC => RK1
+        use pm_kind, only: TKR => RK, TKG => RK1
         real(TKR)               , intent(in)    , contiguous        :: weight(:)
-        real(TKC)               , intent(in)    , contiguous        :: x(:), y(:)
+        real(TKG)               , intent(in)    , contiguous        :: x(:), y(:)
         real(TKR)               , intent(out)   , contiguous        :: frankx(:), franky(:)
         real(TKR)               , intent(out)                       :: rho
     end subroutine
@@ -10617,9 +10617,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRhoWTR_XY_D1_PSSK5
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK5
+        use pm_kind, only: TKR => RK, SKG => SK5
         real(TKR)               , intent(in)    , contiguous        :: weight(:)
-        type(css_pdt(SKC))      , intent(in)    , contiguous        :: x(:), y(:)
+        type(css_pdt(SKG))      , intent(in)    , contiguous        :: x(:), y(:)
         real(TKR)               , intent(out)   , contiguous        :: frankx(:), franky(:)
         real(TKR)               , intent(out)                       :: rho
     end subroutine
@@ -10630,9 +10630,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRhoWTR_XY_D1_PSSK4
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK4
+        use pm_kind, only: TKR => RK, SKG => SK4
         real(TKR)               , intent(in)    , contiguous        :: weight(:)
-        type(css_pdt(SKC))      , intent(in)    , contiguous        :: x(:), y(:)
+        type(css_pdt(SKG))      , intent(in)    , contiguous        :: x(:), y(:)
         real(TKR)               , intent(out)   , contiguous        :: frankx(:), franky(:)
         real(TKR)               , intent(out)                       :: rho
     end subroutine
@@ -10643,9 +10643,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRhoWTR_XY_D1_PSSK3
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK3
+        use pm_kind, only: TKR => RK, SKG => SK3
         real(TKR)               , intent(in)    , contiguous        :: weight(:)
-        type(css_pdt(SKC))      , intent(in)    , contiguous        :: x(:), y(:)
+        type(css_pdt(SKG))      , intent(in)    , contiguous        :: x(:), y(:)
         real(TKR)               , intent(out)   , contiguous        :: frankx(:), franky(:)
         real(TKR)               , intent(out)                       :: rho
     end subroutine
@@ -10656,9 +10656,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRhoWTR_XY_D1_PSSK2
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK2
+        use pm_kind, only: TKR => RK, SKG => SK2
         real(TKR)               , intent(in)    , contiguous        :: weight(:)
-        type(css_pdt(SKC))      , intent(in)    , contiguous        :: x(:), y(:)
+        type(css_pdt(SKG))      , intent(in)    , contiguous        :: x(:), y(:)
         real(TKR)               , intent(out)   , contiguous        :: frankx(:), franky(:)
         real(TKR)               , intent(out)                       :: rho
     end subroutine
@@ -10669,9 +10669,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRhoWTR_XY_D1_PSSK1
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK1
+        use pm_kind, only: TKR => RK, SKG => SK1
         real(TKR)               , intent(in)    , contiguous        :: weight(:)
-        type(css_pdt(SKC))      , intent(in)    , contiguous        :: x(:), y(:)
+        type(css_pdt(SKG))      , intent(in)    , contiguous        :: x(:), y(:)
         real(TKR)               , intent(out)   , contiguous        :: frankx(:), franky(:)
         real(TKR)               , intent(out)                       :: rho
     end subroutine
@@ -10686,7 +10686,7 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRhoWTR_XY_D1_BSSK
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK
+        use pm_kind, only: TKR => RK, SKG => SK
         real(TKR)               , intent(in)    , contiguous        :: weight(:)
         type(css_type)          , intent(in)    , contiguous        :: x(:), y(:)
         real(TKR)               , intent(out)   , contiguous        :: frankx(:), franky(:)
@@ -10710,8 +10710,8 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRhoWNO_UXD_SK5
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK5
-        character(*,SKC)        , intent(in)    , contiguous        :: sample(:,:)
+        use pm_kind, only: TKR => RK, SKG => SK5
+        character(*,SKG)        , intent(in)    , contiguous        :: sample(:,:)
         real(TKR)               , intent(out)   , contiguous        :: frank(:,:)
         real(TKR)               , intent(inout) , contiguous        :: rho(:,:)
         integer(IK)             , intent(in)                        :: dim
@@ -10724,8 +10724,8 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRhoWNO_UXD_SK4
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK4
-        character(*,SKC)        , intent(in)    , contiguous        :: sample(:,:)
+        use pm_kind, only: TKR => RK, SKG => SK4
+        character(*,SKG)        , intent(in)    , contiguous        :: sample(:,:)
         real(TKR)               , intent(out)   , contiguous        :: frank(:,:)
         real(TKR)               , intent(inout) , contiguous        :: rho(:,:)
         integer(IK)             , intent(in)                        :: dim
@@ -10738,8 +10738,8 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRhoWNO_UXD_SK3
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK3
-        character(*,SKC)        , intent(in)    , contiguous        :: sample(:,:)
+        use pm_kind, only: TKR => RK, SKG => SK3
+        character(*,SKG)        , intent(in)    , contiguous        :: sample(:,:)
         real(TKR)               , intent(out)   , contiguous        :: frank(:,:)
         real(TKR)               , intent(inout) , contiguous        :: rho(:,:)
         integer(IK)             , intent(in)                        :: dim
@@ -10752,8 +10752,8 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRhoWNO_UXD_SK2
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK2
-        character(*,SKC)        , intent(in)    , contiguous        :: sample(:,:)
+        use pm_kind, only: TKR => RK, SKG => SK2
+        character(*,SKG)        , intent(in)    , contiguous        :: sample(:,:)
         real(TKR)               , intent(out)   , contiguous        :: frank(:,:)
         real(TKR)               , intent(inout) , contiguous        :: rho(:,:)
         integer(IK)             , intent(in)                        :: dim
@@ -10766,8 +10766,8 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRhoWNO_UXD_SK1
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK1
-        character(*,SKC)        , intent(in)    , contiguous        :: sample(:,:)
+        use pm_kind, only: TKR => RK, SKG => SK1
+        character(*,SKG)        , intent(in)    , contiguous        :: sample(:,:)
         real(TKR)               , intent(out)   , contiguous        :: frank(:,:)
         real(TKR)               , intent(inout) , contiguous        :: rho(:,:)
         integer(IK)             , intent(in)                        :: dim
@@ -10782,8 +10782,8 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRhoWNO_UXD_IK5
 #endif
-        use pm_kind, only: TKR => RK, IKC => IK5
-        integer(IKC)            , intent(in)    , contiguous        :: sample(:,:)
+        use pm_kind, only: TKR => RK, IKG => IK5
+        integer(IKG)            , intent(in)    , contiguous        :: sample(:,:)
         real(TKR)               , intent(out)   , contiguous        :: frank(:,:)
         real(TKR)               , intent(inout) , contiguous        :: rho(:,:)
         integer(IK)             , intent(in)                        :: dim
@@ -10796,8 +10796,8 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRhoWNO_UXD_IK4
 #endif
-        use pm_kind, only: TKR => RK, IKC => IK4
-        integer(IKC)            , intent(in)    , contiguous        :: sample(:,:)
+        use pm_kind, only: TKR => RK, IKG => IK4
+        integer(IKG)            , intent(in)    , contiguous        :: sample(:,:)
         real(TKR)               , intent(out)   , contiguous        :: frank(:,:)
         real(TKR)               , intent(inout) , contiguous        :: rho(:,:)
         integer(IK)             , intent(in)                        :: dim
@@ -10810,8 +10810,8 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRhoWNO_UXD_IK3
 #endif
-        use pm_kind, only: TKR => RK, IKC => IK3
-        integer(IKC)            , intent(in)    , contiguous        :: sample(:,:)
+        use pm_kind, only: TKR => RK, IKG => IK3
+        integer(IKG)            , intent(in)    , contiguous        :: sample(:,:)
         real(TKR)               , intent(out)   , contiguous        :: frank(:,:)
         real(TKR)               , intent(inout) , contiguous        :: rho(:,:)
         integer(IK)             , intent(in)                        :: dim
@@ -10824,8 +10824,8 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRhoWNO_UXD_IK2
 #endif
-        use pm_kind, only: TKR => RK, IKC => IK2
-        integer(IKC)            , intent(in)    , contiguous        :: sample(:,:)
+        use pm_kind, only: TKR => RK, IKG => IK2
+        integer(IKG)            , intent(in)    , contiguous        :: sample(:,:)
         real(TKR)               , intent(out)   , contiguous        :: frank(:,:)
         real(TKR)               , intent(inout) , contiguous        :: rho(:,:)
         integer(IK)             , intent(in)                        :: dim
@@ -10838,8 +10838,8 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRhoWNO_UXD_IK1
 #endif
-        use pm_kind, only: TKR => RK, IKC => IK1
-        integer(IKC)            , intent(in)    , contiguous        :: sample(:,:)
+        use pm_kind, only: TKR => RK, IKG => IK1
+        integer(IKG)            , intent(in)    , contiguous        :: sample(:,:)
         real(TKR)               , intent(out)   , contiguous        :: frank(:,:)
         real(TKR)               , intent(inout) , contiguous        :: rho(:,:)
         integer(IK)             , intent(in)                        :: dim
@@ -10854,8 +10854,8 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRhoWNO_UXD_RK5
 #endif
-        use pm_kind, only: TKR => RK, TKC => RK5
-        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
+        use pm_kind, only: TKR => RK, TKG => RK5
+        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
         real(TKR)               , intent(out)   , contiguous        :: frank(:,:)
         real(TKR)               , intent(inout) , contiguous        :: rho(:,:)
         integer(IK)             , intent(in)                        :: dim
@@ -10868,8 +10868,8 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRhoWNO_UXD_RK4
 #endif
-        use pm_kind, only: TKR => RK, TKC => RK4
-        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
+        use pm_kind, only: TKR => RK, TKG => RK4
+        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
         real(TKR)               , intent(out)   , contiguous        :: frank(:,:)
         real(TKR)               , intent(inout) , contiguous        :: rho(:,:)
         integer(IK)             , intent(in)                        :: dim
@@ -10882,8 +10882,8 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRhoWNO_UXD_RK3
 #endif
-        use pm_kind, only: TKR => RK, TKC => RK3
-        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
+        use pm_kind, only: TKR => RK, TKG => RK3
+        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
         real(TKR)               , intent(out)   , contiguous        :: frank(:,:)
         real(TKR)               , intent(inout) , contiguous        :: rho(:,:)
         integer(IK)             , intent(in)                        :: dim
@@ -10896,8 +10896,8 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRhoWNO_UXD_RK2
 #endif
-        use pm_kind, only: TKR => RK, TKC => RK2
-        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
+        use pm_kind, only: TKR => RK, TKG => RK2
+        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
         real(TKR)               , intent(out)   , contiguous        :: frank(:,:)
         real(TKR)               , intent(inout) , contiguous        :: rho(:,:)
         integer(IK)             , intent(in)                        :: dim
@@ -10910,8 +10910,8 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRhoWNO_UXD_RK1
 #endif
-        use pm_kind, only: TKR => RK, TKC => RK1
-        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
+        use pm_kind, only: TKR => RK, TKG => RK1
+        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
         real(TKR)               , intent(out)   , contiguous        :: frank(:,:)
         real(TKR)               , intent(inout) , contiguous        :: rho(:,:)
         integer(IK)             , intent(in)                        :: dim
@@ -10928,8 +10928,8 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRhoWNO_UXD_PSSK5
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK5
-        type(css_pdt(SKC))      , intent(in)    , contiguous        :: sample(:,:)
+        use pm_kind, only: TKR => RK, SKG => SK5
+        type(css_pdt(SKG))      , intent(in)    , contiguous        :: sample(:,:)
         real(TKR)               , intent(out)   , contiguous        :: frank(:,:)
         real(TKR)               , intent(inout) , contiguous        :: rho(:,:)
         integer(IK)             , intent(in)                        :: dim
@@ -10942,8 +10942,8 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRhoWNO_UXD_PSSK4
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK4
-        type(css_pdt(SKC))      , intent(in)    , contiguous        :: sample(:,:)
+        use pm_kind, only: TKR => RK, SKG => SK4
+        type(css_pdt(SKG))      , intent(in)    , contiguous        :: sample(:,:)
         real(TKR)               , intent(out)   , contiguous        :: frank(:,:)
         real(TKR)               , intent(inout) , contiguous        :: rho(:,:)
         integer(IK)             , intent(in)                        :: dim
@@ -10956,8 +10956,8 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRhoWNO_UXD_PSSK3
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK3
-        type(css_pdt(SKC))      , intent(in)    , contiguous        :: sample(:,:)
+        use pm_kind, only: TKR => RK, SKG => SK3
+        type(css_pdt(SKG))      , intent(in)    , contiguous        :: sample(:,:)
         real(TKR)               , intent(out)   , contiguous        :: frank(:,:)
         real(TKR)               , intent(inout) , contiguous        :: rho(:,:)
         integer(IK)             , intent(in)                        :: dim
@@ -10970,8 +10970,8 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRhoWNO_UXD_PSSK2
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK2
-        type(css_pdt(SKC))      , intent(in)    , contiguous        :: sample(:,:)
+        use pm_kind, only: TKR => RK, SKG => SK2
+        type(css_pdt(SKG))      , intent(in)    , contiguous        :: sample(:,:)
         real(TKR)               , intent(out)   , contiguous        :: frank(:,:)
         real(TKR)               , intent(inout) , contiguous        :: rho(:,:)
         integer(IK)             , intent(in)                        :: dim
@@ -10984,8 +10984,8 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRhoWNO_UXD_PSSK1
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK1
-        type(css_pdt(SKC))      , intent(in)    , contiguous        :: sample(:,:)
+        use pm_kind, only: TKR => RK, SKG => SK1
+        type(css_pdt(SKG))      , intent(in)    , contiguous        :: sample(:,:)
         real(TKR)               , intent(out)   , contiguous        :: frank(:,:)
         real(TKR)               , intent(inout) , contiguous        :: rho(:,:)
         integer(IK)             , intent(in)                        :: dim
@@ -11002,7 +11002,7 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRhoWNO_UXD_BSSK
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK
+        use pm_kind, only: TKR => RK, SKG => SK
         type(css_type)          , intent(in)    , contiguous        :: sample(:,:)
         real(TKR)               , intent(out)   , contiguous        :: frank(:,:)
         real(TKR)               , intent(inout) , contiguous        :: rho(:,:)
@@ -11025,9 +11025,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRhoWTI_UXD_SK5
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK5
+        use pm_kind, only: TKR => RK, SKG => SK5
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        character(*,SKC)        , intent(in)    , contiguous        :: sample(:,:)
+        character(*,SKG)        , intent(in)    , contiguous        :: sample(:,:)
         real(TKR)               , intent(out)   , contiguous        :: frank(:,:)
         real(TKR)               , intent(inout) , contiguous        :: rho(:,:)
         integer(IK)             , intent(in)                        :: dim
@@ -11040,9 +11040,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRhoWTI_UXD_SK4
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK4
+        use pm_kind, only: TKR => RK, SKG => SK4
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        character(*,SKC)        , intent(in)    , contiguous        :: sample(:,:)
+        character(*,SKG)        , intent(in)    , contiguous        :: sample(:,:)
         real(TKR)               , intent(out)   , contiguous        :: frank(:,:)
         real(TKR)               , intent(inout) , contiguous        :: rho(:,:)
         integer(IK)             , intent(in)                        :: dim
@@ -11055,9 +11055,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRhoWTI_UXD_SK3
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK3
+        use pm_kind, only: TKR => RK, SKG => SK3
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        character(*,SKC)        , intent(in)    , contiguous        :: sample(:,:)
+        character(*,SKG)        , intent(in)    , contiguous        :: sample(:,:)
         real(TKR)               , intent(out)   , contiguous        :: frank(:,:)
         real(TKR)               , intent(inout) , contiguous        :: rho(:,:)
         integer(IK)             , intent(in)                        :: dim
@@ -11070,9 +11070,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRhoWTI_UXD_SK2
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK2
+        use pm_kind, only: TKR => RK, SKG => SK2
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        character(*,SKC)        , intent(in)    , contiguous        :: sample(:,:)
+        character(*,SKG)        , intent(in)    , contiguous        :: sample(:,:)
         real(TKR)               , intent(out)   , contiguous        :: frank(:,:)
         real(TKR)               , intent(inout) , contiguous        :: rho(:,:)
         integer(IK)             , intent(in)                        :: dim
@@ -11085,9 +11085,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRhoWTI_UXD_SK1
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK1
+        use pm_kind, only: TKR => RK, SKG => SK1
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        character(*,SKC)        , intent(in)    , contiguous        :: sample(:,:)
+        character(*,SKG)        , intent(in)    , contiguous        :: sample(:,:)
         real(TKR)               , intent(out)   , contiguous        :: frank(:,:)
         real(TKR)               , intent(inout) , contiguous        :: rho(:,:)
         integer(IK)             , intent(in)                        :: dim
@@ -11102,9 +11102,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRhoWTI_UXD_IK5
 #endif
-        use pm_kind, only: TKR => RK, IKC => IK5
+        use pm_kind, only: TKR => RK, IKG => IK5
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        integer(IKC)            , intent(in)    , contiguous        :: sample(:,:)
+        integer(IKG)            , intent(in)    , contiguous        :: sample(:,:)
         real(TKR)               , intent(out)   , contiguous        :: frank(:,:)
         real(TKR)               , intent(inout) , contiguous        :: rho(:,:)
         integer(IK)             , intent(in)                        :: dim
@@ -11117,9 +11117,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRhoWTI_UXD_IK4
 #endif
-        use pm_kind, only: TKR => RK, IKC => IK4
+        use pm_kind, only: TKR => RK, IKG => IK4
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        integer(IKC)            , intent(in)    , contiguous        :: sample(:,:)
+        integer(IKG)            , intent(in)    , contiguous        :: sample(:,:)
         real(TKR)               , intent(out)   , contiguous        :: frank(:,:)
         real(TKR)               , intent(inout) , contiguous        :: rho(:,:)
         integer(IK)             , intent(in)                        :: dim
@@ -11132,9 +11132,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRhoWTI_UXD_IK3
 #endif
-        use pm_kind, only: TKR => RK, IKC => IK3
+        use pm_kind, only: TKR => RK, IKG => IK3
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        integer(IKC)            , intent(in)    , contiguous        :: sample(:,:)
+        integer(IKG)            , intent(in)    , contiguous        :: sample(:,:)
         real(TKR)               , intent(out)   , contiguous        :: frank(:,:)
         real(TKR)               , intent(inout) , contiguous        :: rho(:,:)
         integer(IK)             , intent(in)                        :: dim
@@ -11147,9 +11147,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRhoWTI_UXD_IK2
 #endif
-        use pm_kind, only: TKR => RK, IKC => IK2
+        use pm_kind, only: TKR => RK, IKG => IK2
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        integer(IKC)            , intent(in)    , contiguous        :: sample(:,:)
+        integer(IKG)            , intent(in)    , contiguous        :: sample(:,:)
         real(TKR)               , intent(out)   , contiguous        :: frank(:,:)
         real(TKR)               , intent(inout) , contiguous        :: rho(:,:)
         integer(IK)             , intent(in)                        :: dim
@@ -11162,9 +11162,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRhoWTI_UXD_IK1
 #endif
-        use pm_kind, only: TKR => RK, IKC => IK1
+        use pm_kind, only: TKR => RK, IKG => IK1
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        integer(IKC)            , intent(in)    , contiguous        :: sample(:,:)
+        integer(IKG)            , intent(in)    , contiguous        :: sample(:,:)
         real(TKR)               , intent(out)   , contiguous        :: frank(:,:)
         real(TKR)               , intent(inout) , contiguous        :: rho(:,:)
         integer(IK)             , intent(in)                        :: dim
@@ -11179,9 +11179,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRhoWTI_UXD_RK5
 #endif
-        use pm_kind, only: TKR => RK, TKC => RK5
+        use pm_kind, only: TKR => RK, TKG => RK5
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
+        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
         real(TKR)               , intent(out)   , contiguous        :: frank(:,:)
         real(TKR)               , intent(inout) , contiguous        :: rho(:,:)
         integer(IK)             , intent(in)                        :: dim
@@ -11194,9 +11194,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRhoWTI_UXD_RK4
 #endif
-        use pm_kind, only: TKR => RK, TKC => RK4
+        use pm_kind, only: TKR => RK, TKG => RK4
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
+        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
         real(TKR)               , intent(out)   , contiguous        :: frank(:,:)
         real(TKR)               , intent(inout) , contiguous        :: rho(:,:)
         integer(IK)             , intent(in)                        :: dim
@@ -11209,9 +11209,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRhoWTI_UXD_RK3
 #endif
-        use pm_kind, only: TKR => RK, TKC => RK3
+        use pm_kind, only: TKR => RK, TKG => RK3
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
+        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
         real(TKR)               , intent(out)   , contiguous        :: frank(:,:)
         real(TKR)               , intent(inout) , contiguous        :: rho(:,:)
         integer(IK)             , intent(in)                        :: dim
@@ -11224,9 +11224,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRhoWTI_UXD_RK2
 #endif
-        use pm_kind, only: TKR => RK, TKC => RK2
+        use pm_kind, only: TKR => RK, TKG => RK2
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
+        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
         real(TKR)               , intent(out)   , contiguous        :: frank(:,:)
         real(TKR)               , intent(inout) , contiguous        :: rho(:,:)
         integer(IK)             , intent(in)                        :: dim
@@ -11239,9 +11239,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRhoWTI_UXD_RK1
 #endif
-        use pm_kind, only: TKR => RK, TKC => RK1
+        use pm_kind, only: TKR => RK, TKG => RK1
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
+        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
         real(TKR)               , intent(out)   , contiguous        :: frank(:,:)
         real(TKR)               , intent(inout) , contiguous        :: rho(:,:)
         integer(IK)             , intent(in)                        :: dim
@@ -11258,9 +11258,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRhoWTI_UXD_PSSK5
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK5
+        use pm_kind, only: TKR => RK, SKG => SK5
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        type(css_pdt(SKC))      , intent(in)    , contiguous        :: sample(:,:)
+        type(css_pdt(SKG))      , intent(in)    , contiguous        :: sample(:,:)
         real(TKR)               , intent(out)   , contiguous        :: frank(:,:)
         real(TKR)               , intent(inout) , contiguous        :: rho(:,:)
         integer(IK)             , intent(in)                        :: dim
@@ -11273,9 +11273,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRhoWTI_UXD_PSSK4
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK4
+        use pm_kind, only: TKR => RK, SKG => SK4
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        type(css_pdt(SKC))      , intent(in)    , contiguous        :: sample(:,:)
+        type(css_pdt(SKG))      , intent(in)    , contiguous        :: sample(:,:)
         real(TKR)               , intent(out)   , contiguous        :: frank(:,:)
         real(TKR)               , intent(inout) , contiguous        :: rho(:,:)
         integer(IK)             , intent(in)                        :: dim
@@ -11288,9 +11288,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRhoWTI_UXD_PSSK3
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK3
+        use pm_kind, only: TKR => RK, SKG => SK3
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        type(css_pdt(SKC))      , intent(in)    , contiguous        :: sample(:,:)
+        type(css_pdt(SKG))      , intent(in)    , contiguous        :: sample(:,:)
         real(TKR)               , intent(out)   , contiguous        :: frank(:,:)
         real(TKR)               , intent(inout) , contiguous        :: rho(:,:)
         integer(IK)             , intent(in)                        :: dim
@@ -11303,9 +11303,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRhoWTI_UXD_PSSK2
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK2
+        use pm_kind, only: TKR => RK, SKG => SK2
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        type(css_pdt(SKC))      , intent(in)    , contiguous        :: sample(:,:)
+        type(css_pdt(SKG))      , intent(in)    , contiguous        :: sample(:,:)
         real(TKR)               , intent(out)   , contiguous        :: frank(:,:)
         real(TKR)               , intent(inout) , contiguous        :: rho(:,:)
         integer(IK)             , intent(in)                        :: dim
@@ -11318,9 +11318,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRhoWTI_UXD_PSSK1
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK1
+        use pm_kind, only: TKR => RK, SKG => SK1
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        type(css_pdt(SKC))      , intent(in)    , contiguous        :: sample(:,:)
+        type(css_pdt(SKG))      , intent(in)    , contiguous        :: sample(:,:)
         real(TKR)               , intent(out)   , contiguous        :: frank(:,:)
         real(TKR)               , intent(inout) , contiguous        :: rho(:,:)
         integer(IK)             , intent(in)                        :: dim
@@ -11337,7 +11337,7 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRhoWTI_UXD_BSSK
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK
+        use pm_kind, only: TKR => RK, SKG => SK
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
         type(css_type)          , intent(in)    , contiguous        :: sample(:,:)
         real(TKR)               , intent(out)   , contiguous        :: frank(:,:)
@@ -11361,9 +11361,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRhoWTR_UXD_SK5
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK5
+        use pm_kind, only: TKR => RK, SKG => SK5
         real(TKR)               , intent(in)    , contiguous        :: weight(:)
-        character(*,SKC)        , intent(in)    , contiguous        :: sample(:,:)
+        character(*,SKG)        , intent(in)    , contiguous        :: sample(:,:)
         real(TKR)               , intent(out)   , contiguous        :: frank(:,:)
         real(TKR)               , intent(inout) , contiguous        :: rho(:,:)
         integer(IK)             , intent(in)                        :: dim
@@ -11376,9 +11376,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRhoWTR_UXD_SK4
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK4
+        use pm_kind, only: TKR => RK, SKG => SK4
         real(TKR)               , intent(in)    , contiguous        :: weight(:)
-        character(*,SKC)        , intent(in)    , contiguous        :: sample(:,:)
+        character(*,SKG)        , intent(in)    , contiguous        :: sample(:,:)
         real(TKR)               , intent(out)   , contiguous        :: frank(:,:)
         real(TKR)               , intent(inout) , contiguous        :: rho(:,:)
         integer(IK)             , intent(in)                        :: dim
@@ -11391,9 +11391,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRhoWTR_UXD_SK3
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK3
+        use pm_kind, only: TKR => RK, SKG => SK3
         real(TKR)               , intent(in)    , contiguous        :: weight(:)
-        character(*,SKC)        , intent(in)    , contiguous        :: sample(:,:)
+        character(*,SKG)        , intent(in)    , contiguous        :: sample(:,:)
         real(TKR)               , intent(out)   , contiguous        :: frank(:,:)
         real(TKR)               , intent(inout) , contiguous        :: rho(:,:)
         integer(IK)             , intent(in)                        :: dim
@@ -11406,9 +11406,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRhoWTR_UXD_SK2
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK2
+        use pm_kind, only: TKR => RK, SKG => SK2
         real(TKR)               , intent(in)    , contiguous        :: weight(:)
-        character(*,SKC)        , intent(in)    , contiguous        :: sample(:,:)
+        character(*,SKG)        , intent(in)    , contiguous        :: sample(:,:)
         real(TKR)               , intent(out)   , contiguous        :: frank(:,:)
         real(TKR)               , intent(inout) , contiguous        :: rho(:,:)
         integer(IK)             , intent(in)                        :: dim
@@ -11421,9 +11421,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRhoWTR_UXD_SK1
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK1
+        use pm_kind, only: TKR => RK, SKG => SK1
         real(TKR)               , intent(in)    , contiguous        :: weight(:)
-        character(*,SKC)        , intent(in)    , contiguous        :: sample(:,:)
+        character(*,SKG)        , intent(in)    , contiguous        :: sample(:,:)
         real(TKR)               , intent(out)   , contiguous        :: frank(:,:)
         real(TKR)               , intent(inout) , contiguous        :: rho(:,:)
         integer(IK)             , intent(in)                        :: dim
@@ -11438,9 +11438,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRhoWTR_UXD_IK5
 #endif
-        use pm_kind, only: TKR => RK, IKC => IK5
+        use pm_kind, only: TKR => RK, IKG => IK5
         real(TKR)               , intent(in)    , contiguous        :: weight(:)
-        integer(IKC)            , intent(in)    , contiguous        :: sample(:,:)
+        integer(IKG)            , intent(in)    , contiguous        :: sample(:,:)
         real(TKR)               , intent(out)   , contiguous        :: frank(:,:)
         real(TKR)               , intent(inout) , contiguous        :: rho(:,:)
         integer(IK)             , intent(in)                        :: dim
@@ -11453,9 +11453,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRhoWTR_UXD_IK4
 #endif
-        use pm_kind, only: TKR => RK, IKC => IK4
+        use pm_kind, only: TKR => RK, IKG => IK4
         real(TKR)               , intent(in)    , contiguous        :: weight(:)
-        integer(IKC)            , intent(in)    , contiguous        :: sample(:,:)
+        integer(IKG)            , intent(in)    , contiguous        :: sample(:,:)
         real(TKR)               , intent(out)   , contiguous        :: frank(:,:)
         real(TKR)               , intent(inout) , contiguous        :: rho(:,:)
         integer(IK)             , intent(in)                        :: dim
@@ -11468,9 +11468,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRhoWTR_UXD_IK3
 #endif
-        use pm_kind, only: TKR => RK, IKC => IK3
+        use pm_kind, only: TKR => RK, IKG => IK3
         real(TKR)               , intent(in)    , contiguous        :: weight(:)
-        integer(IKC)            , intent(in)    , contiguous        :: sample(:,:)
+        integer(IKG)            , intent(in)    , contiguous        :: sample(:,:)
         real(TKR)               , intent(out)   , contiguous        :: frank(:,:)
         real(TKR)               , intent(inout) , contiguous        :: rho(:,:)
         integer(IK)             , intent(in)                        :: dim
@@ -11483,9 +11483,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRhoWTR_UXD_IK2
 #endif
-        use pm_kind, only: TKR => RK, IKC => IK2
+        use pm_kind, only: TKR => RK, IKG => IK2
         real(TKR)               , intent(in)    , contiguous        :: weight(:)
-        integer(IKC)            , intent(in)    , contiguous        :: sample(:,:)
+        integer(IKG)            , intent(in)    , contiguous        :: sample(:,:)
         real(TKR)               , intent(out)   , contiguous        :: frank(:,:)
         real(TKR)               , intent(inout) , contiguous        :: rho(:,:)
         integer(IK)             , intent(in)                        :: dim
@@ -11498,9 +11498,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRhoWTR_UXD_IK1
 #endif
-        use pm_kind, only: TKR => RK, IKC => IK1
+        use pm_kind, only: TKR => RK, IKG => IK1
         real(TKR)               , intent(in)    , contiguous        :: weight(:)
-        integer(IKC)            , intent(in)    , contiguous        :: sample(:,:)
+        integer(IKG)            , intent(in)    , contiguous        :: sample(:,:)
         real(TKR)               , intent(out)   , contiguous        :: frank(:,:)
         real(TKR)               , intent(inout) , contiguous        :: rho(:,:)
         integer(IK)             , intent(in)                        :: dim
@@ -11515,9 +11515,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRhoWTR_UXD_RK5
 #endif
-        use pm_kind, only: TKR => RK, TKC => RK5
+        use pm_kind, only: TKR => RK, TKG => RK5
         real(TKR)               , intent(in)    , contiguous        :: weight(:)
-        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
+        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
         real(TKR)               , intent(out)   , contiguous        :: frank(:,:)
         real(TKR)               , intent(inout) , contiguous        :: rho(:,:)
         integer(IK)             , intent(in)                        :: dim
@@ -11530,9 +11530,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRhoWTR_UXD_RK4
 #endif
-        use pm_kind, only: TKR => RK, TKC => RK4
+        use pm_kind, only: TKR => RK, TKG => RK4
         real(TKR)               , intent(in)    , contiguous        :: weight(:)
-        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
+        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
         real(TKR)               , intent(out)   , contiguous        :: frank(:,:)
         real(TKR)               , intent(inout) , contiguous        :: rho(:,:)
         integer(IK)             , intent(in)                        :: dim
@@ -11545,9 +11545,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRhoWTR_UXD_RK3
 #endif
-        use pm_kind, only: TKR => RK, TKC => RK3
+        use pm_kind, only: TKR => RK, TKG => RK3
         real(TKR)               , intent(in)    , contiguous        :: weight(:)
-        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
+        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
         real(TKR)               , intent(out)   , contiguous        :: frank(:,:)
         real(TKR)               , intent(inout) , contiguous        :: rho(:,:)
         integer(IK)             , intent(in)                        :: dim
@@ -11560,9 +11560,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRhoWTR_UXD_RK2
 #endif
-        use pm_kind, only: TKR => RK, TKC => RK2
+        use pm_kind, only: TKR => RK, TKG => RK2
         real(TKR)               , intent(in)    , contiguous        :: weight(:)
-        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
+        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
         real(TKR)               , intent(out)   , contiguous        :: frank(:,:)
         real(TKR)               , intent(inout) , contiguous        :: rho(:,:)
         integer(IK)             , intent(in)                        :: dim
@@ -11575,9 +11575,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRhoWTR_UXD_RK1
 #endif
-        use pm_kind, only: TKR => RK, TKC => RK1
+        use pm_kind, only: TKR => RK, TKG => RK1
         real(TKR)               , intent(in)    , contiguous        :: weight(:)
-        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
+        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
         real(TKR)               , intent(out)   , contiguous        :: frank(:,:)
         real(TKR)               , intent(inout) , contiguous        :: rho(:,:)
         integer(IK)             , intent(in)                        :: dim
@@ -11594,9 +11594,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRhoWTR_UXD_PSSK5
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK5
+        use pm_kind, only: TKR => RK, SKG => SK5
         real(TKR)               , intent(in)    , contiguous        :: weight(:)
-        type(css_pdt(SKC))      , intent(in)    , contiguous        :: sample(:,:)
+        type(css_pdt(SKG))      , intent(in)    , contiguous        :: sample(:,:)
         real(TKR)               , intent(out)   , contiguous        :: frank(:,:)
         real(TKR)               , intent(inout) , contiguous        :: rho(:,:)
         integer(IK)             , intent(in)                        :: dim
@@ -11609,9 +11609,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRhoWTR_UXD_PSSK4
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK4
+        use pm_kind, only: TKR => RK, SKG => SK4
         real(TKR)               , intent(in)    , contiguous        :: weight(:)
-        type(css_pdt(SKC))      , intent(in)    , contiguous        :: sample(:,:)
+        type(css_pdt(SKG))      , intent(in)    , contiguous        :: sample(:,:)
         real(TKR)               , intent(out)   , contiguous        :: frank(:,:)
         real(TKR)               , intent(inout) , contiguous        :: rho(:,:)
         integer(IK)             , intent(in)                        :: dim
@@ -11624,9 +11624,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRhoWTR_UXD_PSSK3
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK3
+        use pm_kind, only: TKR => RK, SKG => SK3
         real(TKR)               , intent(in)    , contiguous        :: weight(:)
-        type(css_pdt(SKC))      , intent(in)    , contiguous        :: sample(:,:)
+        type(css_pdt(SKG))      , intent(in)    , contiguous        :: sample(:,:)
         real(TKR)               , intent(out)   , contiguous        :: frank(:,:)
         real(TKR)               , intent(inout) , contiguous        :: rho(:,:)
         integer(IK)             , intent(in)                        :: dim
@@ -11639,9 +11639,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRhoWTR_UXD_PSSK2
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK2
+        use pm_kind, only: TKR => RK, SKG => SK2
         real(TKR)               , intent(in)    , contiguous        :: weight(:)
-        type(css_pdt(SKC))      , intent(in)    , contiguous        :: sample(:,:)
+        type(css_pdt(SKG))      , intent(in)    , contiguous        :: sample(:,:)
         real(TKR)               , intent(out)   , contiguous        :: frank(:,:)
         real(TKR)               , intent(inout) , contiguous        :: rho(:,:)
         integer(IK)             , intent(in)                        :: dim
@@ -11654,9 +11654,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRhoWTR_UXD_PSSK1
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK1
+        use pm_kind, only: TKR => RK, SKG => SK1
         real(TKR)               , intent(in)    , contiguous        :: weight(:)
-        type(css_pdt(SKC))      , intent(in)    , contiguous        :: sample(:,:)
+        type(css_pdt(SKG))      , intent(in)    , contiguous        :: sample(:,:)
         real(TKR)               , intent(out)   , contiguous        :: frank(:,:)
         real(TKR)               , intent(inout) , contiguous        :: rho(:,:)
         integer(IK)             , intent(in)                        :: dim
@@ -11673,7 +11673,7 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRhoWTR_UXD_BSSK
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK
+        use pm_kind, only: TKR => RK, SKG => SK
         real(TKR)               , intent(in)    , contiguous        :: weight(:)
         type(css_type)          , intent(in)    , contiguous        :: sample(:,:)
         real(TKR)               , intent(out)   , contiguous        :: frank(:,:)
@@ -11699,8 +11699,8 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRhoWNO_XLD_SK5
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK5
-        character(*,SKC)        , intent(in)    , contiguous        :: sample(:,:)
+        use pm_kind, only: TKR => RK, SKG => SK5
+        character(*,SKG)        , intent(in)    , contiguous        :: sample(:,:)
         real(TKR)               , intent(out)   , contiguous        :: frank(:,:)
         real(TKR)               , intent(inout) , contiguous        :: rho(:,:)
         integer(IK)             , intent(in)                        :: dim
@@ -11713,8 +11713,8 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRhoWNO_XLD_SK4
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK4
-        character(*,SKC)        , intent(in)    , contiguous        :: sample(:,:)
+        use pm_kind, only: TKR => RK, SKG => SK4
+        character(*,SKG)        , intent(in)    , contiguous        :: sample(:,:)
         real(TKR)               , intent(out)   , contiguous        :: frank(:,:)
         real(TKR)               , intent(inout) , contiguous        :: rho(:,:)
         integer(IK)             , intent(in)                        :: dim
@@ -11727,8 +11727,8 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRhoWNO_XLD_SK3
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK3
-        character(*,SKC)        , intent(in)    , contiguous        :: sample(:,:)
+        use pm_kind, only: TKR => RK, SKG => SK3
+        character(*,SKG)        , intent(in)    , contiguous        :: sample(:,:)
         real(TKR)               , intent(out)   , contiguous        :: frank(:,:)
         real(TKR)               , intent(inout) , contiguous        :: rho(:,:)
         integer(IK)             , intent(in)                        :: dim
@@ -11741,8 +11741,8 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRhoWNO_XLD_SK2
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK2
-        character(*,SKC)        , intent(in)    , contiguous        :: sample(:,:)
+        use pm_kind, only: TKR => RK, SKG => SK2
+        character(*,SKG)        , intent(in)    , contiguous        :: sample(:,:)
         real(TKR)               , intent(out)   , contiguous        :: frank(:,:)
         real(TKR)               , intent(inout) , contiguous        :: rho(:,:)
         integer(IK)             , intent(in)                        :: dim
@@ -11755,8 +11755,8 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRhoWNO_XLD_SK1
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK1
-        character(*,SKC)        , intent(in)    , contiguous        :: sample(:,:)
+        use pm_kind, only: TKR => RK, SKG => SK1
+        character(*,SKG)        , intent(in)    , contiguous        :: sample(:,:)
         real(TKR)               , intent(out)   , contiguous        :: frank(:,:)
         real(TKR)               , intent(inout) , contiguous        :: rho(:,:)
         integer(IK)             , intent(in)                        :: dim
@@ -11771,8 +11771,8 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRhoWNO_XLD_IK5
 #endif
-        use pm_kind, only: TKR => RK, IKC => IK5
-        integer(IKC)            , intent(in)    , contiguous        :: sample(:,:)
+        use pm_kind, only: TKR => RK, IKG => IK5
+        integer(IKG)            , intent(in)    , contiguous        :: sample(:,:)
         real(TKR)               , intent(out)   , contiguous        :: frank(:,:)
         real(TKR)               , intent(inout) , contiguous        :: rho(:,:)
         integer(IK)             , intent(in)                        :: dim
@@ -11785,8 +11785,8 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRhoWNO_XLD_IK4
 #endif
-        use pm_kind, only: TKR => RK, IKC => IK4
-        integer(IKC)            , intent(in)    , contiguous        :: sample(:,:)
+        use pm_kind, only: TKR => RK, IKG => IK4
+        integer(IKG)            , intent(in)    , contiguous        :: sample(:,:)
         real(TKR)               , intent(out)   , contiguous        :: frank(:,:)
         real(TKR)               , intent(inout) , contiguous        :: rho(:,:)
         integer(IK)             , intent(in)                        :: dim
@@ -11799,8 +11799,8 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRhoWNO_XLD_IK3
 #endif
-        use pm_kind, only: TKR => RK, IKC => IK3
-        integer(IKC)            , intent(in)    , contiguous        :: sample(:,:)
+        use pm_kind, only: TKR => RK, IKG => IK3
+        integer(IKG)            , intent(in)    , contiguous        :: sample(:,:)
         real(TKR)               , intent(out)   , contiguous        :: frank(:,:)
         real(TKR)               , intent(inout) , contiguous        :: rho(:,:)
         integer(IK)             , intent(in)                        :: dim
@@ -11813,8 +11813,8 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRhoWNO_XLD_IK2
 #endif
-        use pm_kind, only: TKR => RK, IKC => IK2
-        integer(IKC)            , intent(in)    , contiguous        :: sample(:,:)
+        use pm_kind, only: TKR => RK, IKG => IK2
+        integer(IKG)            , intent(in)    , contiguous        :: sample(:,:)
         real(TKR)               , intent(out)   , contiguous        :: frank(:,:)
         real(TKR)               , intent(inout) , contiguous        :: rho(:,:)
         integer(IK)             , intent(in)                        :: dim
@@ -11827,8 +11827,8 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRhoWNO_XLD_IK1
 #endif
-        use pm_kind, only: TKR => RK, IKC => IK1
-        integer(IKC)            , intent(in)    , contiguous        :: sample(:,:)
+        use pm_kind, only: TKR => RK, IKG => IK1
+        integer(IKG)            , intent(in)    , contiguous        :: sample(:,:)
         real(TKR)               , intent(out)   , contiguous        :: frank(:,:)
         real(TKR)               , intent(inout) , contiguous        :: rho(:,:)
         integer(IK)             , intent(in)                        :: dim
@@ -11843,8 +11843,8 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRhoWNO_XLD_RK5
 #endif
-        use pm_kind, only: TKR => RK, TKC => RK5
-        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
+        use pm_kind, only: TKR => RK, TKG => RK5
+        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
         real(TKR)               , intent(out)   , contiguous        :: frank(:,:)
         real(TKR)               , intent(inout) , contiguous        :: rho(:,:)
         integer(IK)             , intent(in)                        :: dim
@@ -11857,8 +11857,8 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRhoWNO_XLD_RK4
 #endif
-        use pm_kind, only: TKR => RK, TKC => RK4
-        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
+        use pm_kind, only: TKR => RK, TKG => RK4
+        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
         real(TKR)               , intent(out)   , contiguous        :: frank(:,:)
         real(TKR)               , intent(inout) , contiguous        :: rho(:,:)
         integer(IK)             , intent(in)                        :: dim
@@ -11871,8 +11871,8 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRhoWNO_XLD_RK3
 #endif
-        use pm_kind, only: TKR => RK, TKC => RK3
-        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
+        use pm_kind, only: TKR => RK, TKG => RK3
+        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
         real(TKR)               , intent(out)   , contiguous        :: frank(:,:)
         real(TKR)               , intent(inout) , contiguous        :: rho(:,:)
         integer(IK)             , intent(in)                        :: dim
@@ -11885,8 +11885,8 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRhoWNO_XLD_RK2
 #endif
-        use pm_kind, only: TKR => RK, TKC => RK2
-        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
+        use pm_kind, only: TKR => RK, TKG => RK2
+        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
         real(TKR)               , intent(out)   , contiguous        :: frank(:,:)
         real(TKR)               , intent(inout) , contiguous        :: rho(:,:)
         integer(IK)             , intent(in)                        :: dim
@@ -11899,8 +11899,8 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRhoWNO_XLD_RK1
 #endif
-        use pm_kind, only: TKR => RK, TKC => RK1
-        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
+        use pm_kind, only: TKR => RK, TKG => RK1
+        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
         real(TKR)               , intent(out)   , contiguous        :: frank(:,:)
         real(TKR)               , intent(inout) , contiguous        :: rho(:,:)
         integer(IK)             , intent(in)                        :: dim
@@ -11917,8 +11917,8 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRhoWNO_XLD_PSSK5
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK5
-        type(css_pdt(SKC))      , intent(in)    , contiguous        :: sample(:,:)
+        use pm_kind, only: TKR => RK, SKG => SK5
+        type(css_pdt(SKG))      , intent(in)    , contiguous        :: sample(:,:)
         real(TKR)               , intent(out)   , contiguous        :: frank(:,:)
         real(TKR)               , intent(inout) , contiguous        :: rho(:,:)
         integer(IK)             , intent(in)                        :: dim
@@ -11931,8 +11931,8 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRhoWNO_XLD_PSSK4
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK4
-        type(css_pdt(SKC))      , intent(in)    , contiguous        :: sample(:,:)
+        use pm_kind, only: TKR => RK, SKG => SK4
+        type(css_pdt(SKG))      , intent(in)    , contiguous        :: sample(:,:)
         real(TKR)               , intent(out)   , contiguous        :: frank(:,:)
         real(TKR)               , intent(inout) , contiguous        :: rho(:,:)
         integer(IK)             , intent(in)                        :: dim
@@ -11945,8 +11945,8 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRhoWNO_XLD_PSSK3
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK3
-        type(css_pdt(SKC))      , intent(in)    , contiguous        :: sample(:,:)
+        use pm_kind, only: TKR => RK, SKG => SK3
+        type(css_pdt(SKG))      , intent(in)    , contiguous        :: sample(:,:)
         real(TKR)               , intent(out)   , contiguous        :: frank(:,:)
         real(TKR)               , intent(inout) , contiguous        :: rho(:,:)
         integer(IK)             , intent(in)                        :: dim
@@ -11959,8 +11959,8 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRhoWNO_XLD_PSSK2
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK2
-        type(css_pdt(SKC))      , intent(in)    , contiguous        :: sample(:,:)
+        use pm_kind, only: TKR => RK, SKG => SK2
+        type(css_pdt(SKG))      , intent(in)    , contiguous        :: sample(:,:)
         real(TKR)               , intent(out)   , contiguous        :: frank(:,:)
         real(TKR)               , intent(inout) , contiguous        :: rho(:,:)
         integer(IK)             , intent(in)                        :: dim
@@ -11973,8 +11973,8 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRhoWNO_XLD_PSSK1
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK1
-        type(css_pdt(SKC))      , intent(in)    , contiguous        :: sample(:,:)
+        use pm_kind, only: TKR => RK, SKG => SK1
+        type(css_pdt(SKG))      , intent(in)    , contiguous        :: sample(:,:)
         real(TKR)               , intent(out)   , contiguous        :: frank(:,:)
         real(TKR)               , intent(inout) , contiguous        :: rho(:,:)
         integer(IK)             , intent(in)                        :: dim
@@ -11991,7 +11991,7 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRhoWNO_XLD_BSSK
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK
+        use pm_kind, only: TKR => RK, SKG => SK
         type(css_type)          , intent(in)    , contiguous        :: sample(:,:)
         real(TKR)               , intent(out)   , contiguous        :: frank(:,:)
         real(TKR)               , intent(inout) , contiguous        :: rho(:,:)
@@ -12014,9 +12014,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRhoWTI_XLD_SK5
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK5
+        use pm_kind, only: TKR => RK, SKG => SK5
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        character(*,SKC)        , intent(in)    , contiguous        :: sample(:,:)
+        character(*,SKG)        , intent(in)    , contiguous        :: sample(:,:)
         real(TKR)               , intent(out)   , contiguous        :: frank(:,:)
         real(TKR)               , intent(inout) , contiguous        :: rho(:,:)
         integer(IK)             , intent(in)                        :: dim
@@ -12029,9 +12029,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRhoWTI_XLD_SK4
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK4
+        use pm_kind, only: TKR => RK, SKG => SK4
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        character(*,SKC)        , intent(in)    , contiguous        :: sample(:,:)
+        character(*,SKG)        , intent(in)    , contiguous        :: sample(:,:)
         real(TKR)               , intent(out)   , contiguous        :: frank(:,:)
         real(TKR)               , intent(inout) , contiguous        :: rho(:,:)
         integer(IK)             , intent(in)                        :: dim
@@ -12044,9 +12044,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRhoWTI_XLD_SK3
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK3
+        use pm_kind, only: TKR => RK, SKG => SK3
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        character(*,SKC)        , intent(in)    , contiguous        :: sample(:,:)
+        character(*,SKG)        , intent(in)    , contiguous        :: sample(:,:)
         real(TKR)               , intent(out)   , contiguous        :: frank(:,:)
         real(TKR)               , intent(inout) , contiguous        :: rho(:,:)
         integer(IK)             , intent(in)                        :: dim
@@ -12059,9 +12059,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRhoWTI_XLD_SK2
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK2
+        use pm_kind, only: TKR => RK, SKG => SK2
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        character(*,SKC)        , intent(in)    , contiguous        :: sample(:,:)
+        character(*,SKG)        , intent(in)    , contiguous        :: sample(:,:)
         real(TKR)               , intent(out)   , contiguous        :: frank(:,:)
         real(TKR)               , intent(inout) , contiguous        :: rho(:,:)
         integer(IK)             , intent(in)                        :: dim
@@ -12074,9 +12074,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRhoWTI_XLD_SK1
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK1
+        use pm_kind, only: TKR => RK, SKG => SK1
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        character(*,SKC)        , intent(in)    , contiguous        :: sample(:,:)
+        character(*,SKG)        , intent(in)    , contiguous        :: sample(:,:)
         real(TKR)               , intent(out)   , contiguous        :: frank(:,:)
         real(TKR)               , intent(inout) , contiguous        :: rho(:,:)
         integer(IK)             , intent(in)                        :: dim
@@ -12091,9 +12091,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRhoWTI_XLD_IK5
 #endif
-        use pm_kind, only: TKR => RK, IKC => IK5
+        use pm_kind, only: TKR => RK, IKG => IK5
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        integer(IKC)            , intent(in)    , contiguous        :: sample(:,:)
+        integer(IKG)            , intent(in)    , contiguous        :: sample(:,:)
         real(TKR)               , intent(out)   , contiguous        :: frank(:,:)
         real(TKR)               , intent(inout) , contiguous        :: rho(:,:)
         integer(IK)             , intent(in)                        :: dim
@@ -12106,9 +12106,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRhoWTI_XLD_IK4
 #endif
-        use pm_kind, only: TKR => RK, IKC => IK4
+        use pm_kind, only: TKR => RK, IKG => IK4
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        integer(IKC)            , intent(in)    , contiguous        :: sample(:,:)
+        integer(IKG)            , intent(in)    , contiguous        :: sample(:,:)
         real(TKR)               , intent(out)   , contiguous        :: frank(:,:)
         real(TKR)               , intent(inout) , contiguous        :: rho(:,:)
         integer(IK)             , intent(in)                        :: dim
@@ -12121,9 +12121,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRhoWTI_XLD_IK3
 #endif
-        use pm_kind, only: TKR => RK, IKC => IK3
+        use pm_kind, only: TKR => RK, IKG => IK3
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        integer(IKC)            , intent(in)    , contiguous        :: sample(:,:)
+        integer(IKG)            , intent(in)    , contiguous        :: sample(:,:)
         real(TKR)               , intent(out)   , contiguous        :: frank(:,:)
         real(TKR)               , intent(inout) , contiguous        :: rho(:,:)
         integer(IK)             , intent(in)                        :: dim
@@ -12136,9 +12136,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRhoWTI_XLD_IK2
 #endif
-        use pm_kind, only: TKR => RK, IKC => IK2
+        use pm_kind, only: TKR => RK, IKG => IK2
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        integer(IKC)            , intent(in)    , contiguous        :: sample(:,:)
+        integer(IKG)            , intent(in)    , contiguous        :: sample(:,:)
         real(TKR)               , intent(out)   , contiguous        :: frank(:,:)
         real(TKR)               , intent(inout) , contiguous        :: rho(:,:)
         integer(IK)             , intent(in)                        :: dim
@@ -12151,9 +12151,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRhoWTI_XLD_IK1
 #endif
-        use pm_kind, only: TKR => RK, IKC => IK1
+        use pm_kind, only: TKR => RK, IKG => IK1
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        integer(IKC)            , intent(in)    , contiguous        :: sample(:,:)
+        integer(IKG)            , intent(in)    , contiguous        :: sample(:,:)
         real(TKR)               , intent(out)   , contiguous        :: frank(:,:)
         real(TKR)               , intent(inout) , contiguous        :: rho(:,:)
         integer(IK)             , intent(in)                        :: dim
@@ -12168,9 +12168,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRhoWTI_XLD_RK5
 #endif
-        use pm_kind, only: TKR => RK, TKC => RK5
+        use pm_kind, only: TKR => RK, TKG => RK5
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
+        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
         real(TKR)               , intent(out)   , contiguous        :: frank(:,:)
         real(TKR)               , intent(inout) , contiguous        :: rho(:,:)
         integer(IK)             , intent(in)                        :: dim
@@ -12183,9 +12183,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRhoWTI_XLD_RK4
 #endif
-        use pm_kind, only: TKR => RK, TKC => RK4
+        use pm_kind, only: TKR => RK, TKG => RK4
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
+        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
         real(TKR)               , intent(out)   , contiguous        :: frank(:,:)
         real(TKR)               , intent(inout) , contiguous        :: rho(:,:)
         integer(IK)             , intent(in)                        :: dim
@@ -12198,9 +12198,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRhoWTI_XLD_RK3
 #endif
-        use pm_kind, only: TKR => RK, TKC => RK3
+        use pm_kind, only: TKR => RK, TKG => RK3
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
+        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
         real(TKR)               , intent(out)   , contiguous        :: frank(:,:)
         real(TKR)               , intent(inout) , contiguous        :: rho(:,:)
         integer(IK)             , intent(in)                        :: dim
@@ -12213,9 +12213,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRhoWTI_XLD_RK2
 #endif
-        use pm_kind, only: TKR => RK, TKC => RK2
+        use pm_kind, only: TKR => RK, TKG => RK2
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
+        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
         real(TKR)               , intent(out)   , contiguous        :: frank(:,:)
         real(TKR)               , intent(inout) , contiguous        :: rho(:,:)
         integer(IK)             , intent(in)                        :: dim
@@ -12228,9 +12228,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRhoWTI_XLD_RK1
 #endif
-        use pm_kind, only: TKR => RK, TKC => RK1
+        use pm_kind, only: TKR => RK, TKG => RK1
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
+        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
         real(TKR)               , intent(out)   , contiguous        :: frank(:,:)
         real(TKR)               , intent(inout) , contiguous        :: rho(:,:)
         integer(IK)             , intent(in)                        :: dim
@@ -12247,9 +12247,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRhoWTI_XLD_PSSK5
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK5
+        use pm_kind, only: TKR => RK, SKG => SK5
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        type(css_pdt(SKC))      , intent(in)    , contiguous        :: sample(:,:)
+        type(css_pdt(SKG))      , intent(in)    , contiguous        :: sample(:,:)
         real(TKR)               , intent(out)   , contiguous        :: frank(:,:)
         real(TKR)               , intent(inout) , contiguous        :: rho(:,:)
         integer(IK)             , intent(in)                        :: dim
@@ -12262,9 +12262,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRhoWTI_XLD_PSSK4
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK4
+        use pm_kind, only: TKR => RK, SKG => SK4
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        type(css_pdt(SKC))      , intent(in)    , contiguous        :: sample(:,:)
+        type(css_pdt(SKG))      , intent(in)    , contiguous        :: sample(:,:)
         real(TKR)               , intent(out)   , contiguous        :: frank(:,:)
         real(TKR)               , intent(inout) , contiguous        :: rho(:,:)
         integer(IK)             , intent(in)                        :: dim
@@ -12277,9 +12277,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRhoWTI_XLD_PSSK3
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK3
+        use pm_kind, only: TKR => RK, SKG => SK3
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        type(css_pdt(SKC))      , intent(in)    , contiguous        :: sample(:,:)
+        type(css_pdt(SKG))      , intent(in)    , contiguous        :: sample(:,:)
         real(TKR)               , intent(out)   , contiguous        :: frank(:,:)
         real(TKR)               , intent(inout) , contiguous        :: rho(:,:)
         integer(IK)             , intent(in)                        :: dim
@@ -12292,9 +12292,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRhoWTI_XLD_PSSK2
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK2
+        use pm_kind, only: TKR => RK, SKG => SK2
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        type(css_pdt(SKC))      , intent(in)    , contiguous        :: sample(:,:)
+        type(css_pdt(SKG))      , intent(in)    , contiguous        :: sample(:,:)
         real(TKR)               , intent(out)   , contiguous        :: frank(:,:)
         real(TKR)               , intent(inout) , contiguous        :: rho(:,:)
         integer(IK)             , intent(in)                        :: dim
@@ -12307,9 +12307,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRhoWTI_XLD_PSSK1
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK1
+        use pm_kind, only: TKR => RK, SKG => SK1
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
-        type(css_pdt(SKC))      , intent(in)    , contiguous        :: sample(:,:)
+        type(css_pdt(SKG))      , intent(in)    , contiguous        :: sample(:,:)
         real(TKR)               , intent(out)   , contiguous        :: frank(:,:)
         real(TKR)               , intent(inout) , contiguous        :: rho(:,:)
         integer(IK)             , intent(in)                        :: dim
@@ -12326,7 +12326,7 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRhoWTI_XLD_BSSK
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK
+        use pm_kind, only: TKR => RK, SKG => SK
         integer(IK)             , intent(in)    , contiguous        :: weight(:)
         type(css_type)          , intent(in)    , contiguous        :: sample(:,:)
         real(TKR)               , intent(out)   , contiguous        :: frank(:,:)
@@ -12350,9 +12350,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRhoWTR_XLD_SK5
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK5
+        use pm_kind, only: TKR => RK, SKG => SK5
         real(TKR)               , intent(in)    , contiguous        :: weight(:)
-        character(*,SKC)        , intent(in)    , contiguous        :: sample(:,:)
+        character(*,SKG)        , intent(in)    , contiguous        :: sample(:,:)
         real(TKR)               , intent(out)   , contiguous        :: frank(:,:)
         real(TKR)               , intent(inout) , contiguous        :: rho(:,:)
         integer(IK)             , intent(in)                        :: dim
@@ -12365,9 +12365,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRhoWTR_XLD_SK4
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK4
+        use pm_kind, only: TKR => RK, SKG => SK4
         real(TKR)               , intent(in)    , contiguous        :: weight(:)
-        character(*,SKC)        , intent(in)    , contiguous        :: sample(:,:)
+        character(*,SKG)        , intent(in)    , contiguous        :: sample(:,:)
         real(TKR)               , intent(out)   , contiguous        :: frank(:,:)
         real(TKR)               , intent(inout) , contiguous        :: rho(:,:)
         integer(IK)             , intent(in)                        :: dim
@@ -12380,9 +12380,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRhoWTR_XLD_SK3
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK3
+        use pm_kind, only: TKR => RK, SKG => SK3
         real(TKR)               , intent(in)    , contiguous        :: weight(:)
-        character(*,SKC)        , intent(in)    , contiguous        :: sample(:,:)
+        character(*,SKG)        , intent(in)    , contiguous        :: sample(:,:)
         real(TKR)               , intent(out)   , contiguous        :: frank(:,:)
         real(TKR)               , intent(inout) , contiguous        :: rho(:,:)
         integer(IK)             , intent(in)                        :: dim
@@ -12395,9 +12395,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRhoWTR_XLD_SK2
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK2
+        use pm_kind, only: TKR => RK, SKG => SK2
         real(TKR)               , intent(in)    , contiguous        :: weight(:)
-        character(*,SKC)        , intent(in)    , contiguous        :: sample(:,:)
+        character(*,SKG)        , intent(in)    , contiguous        :: sample(:,:)
         real(TKR)               , intent(out)   , contiguous        :: frank(:,:)
         real(TKR)               , intent(inout) , contiguous        :: rho(:,:)
         integer(IK)             , intent(in)                        :: dim
@@ -12410,9 +12410,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRhoWTR_XLD_SK1
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK1
+        use pm_kind, only: TKR => RK, SKG => SK1
         real(TKR)               , intent(in)    , contiguous        :: weight(:)
-        character(*,SKC)        , intent(in)    , contiguous        :: sample(:,:)
+        character(*,SKG)        , intent(in)    , contiguous        :: sample(:,:)
         real(TKR)               , intent(out)   , contiguous        :: frank(:,:)
         real(TKR)               , intent(inout) , contiguous        :: rho(:,:)
         integer(IK)             , intent(in)                        :: dim
@@ -12427,9 +12427,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRhoWTR_XLD_IK5
 #endif
-        use pm_kind, only: TKR => RK, IKC => IK5
+        use pm_kind, only: TKR => RK, IKG => IK5
         real(TKR)               , intent(in)    , contiguous        :: weight(:)
-        integer(IKC)            , intent(in)    , contiguous        :: sample(:,:)
+        integer(IKG)            , intent(in)    , contiguous        :: sample(:,:)
         real(TKR)               , intent(out)   , contiguous        :: frank(:,:)
         real(TKR)               , intent(inout) , contiguous        :: rho(:,:)
         integer(IK)             , intent(in)                        :: dim
@@ -12442,9 +12442,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRhoWTR_XLD_IK4
 #endif
-        use pm_kind, only: TKR => RK, IKC => IK4
+        use pm_kind, only: TKR => RK, IKG => IK4
         real(TKR)               , intent(in)    , contiguous        :: weight(:)
-        integer(IKC)            , intent(in)    , contiguous        :: sample(:,:)
+        integer(IKG)            , intent(in)    , contiguous        :: sample(:,:)
         real(TKR)               , intent(out)   , contiguous        :: frank(:,:)
         real(TKR)               , intent(inout) , contiguous        :: rho(:,:)
         integer(IK)             , intent(in)                        :: dim
@@ -12457,9 +12457,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRhoWTR_XLD_IK3
 #endif
-        use pm_kind, only: TKR => RK, IKC => IK3
+        use pm_kind, only: TKR => RK, IKG => IK3
         real(TKR)               , intent(in)    , contiguous        :: weight(:)
-        integer(IKC)            , intent(in)    , contiguous        :: sample(:,:)
+        integer(IKG)            , intent(in)    , contiguous        :: sample(:,:)
         real(TKR)               , intent(out)   , contiguous        :: frank(:,:)
         real(TKR)               , intent(inout) , contiguous        :: rho(:,:)
         integer(IK)             , intent(in)                        :: dim
@@ -12472,9 +12472,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRhoWTR_XLD_IK2
 #endif
-        use pm_kind, only: TKR => RK, IKC => IK2
+        use pm_kind, only: TKR => RK, IKG => IK2
         real(TKR)               , intent(in)    , contiguous        :: weight(:)
-        integer(IKC)            , intent(in)    , contiguous        :: sample(:,:)
+        integer(IKG)            , intent(in)    , contiguous        :: sample(:,:)
         real(TKR)               , intent(out)   , contiguous        :: frank(:,:)
         real(TKR)               , intent(inout) , contiguous        :: rho(:,:)
         integer(IK)             , intent(in)                        :: dim
@@ -12487,9 +12487,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRhoWTR_XLD_IK1
 #endif
-        use pm_kind, only: TKR => RK, IKC => IK1
+        use pm_kind, only: TKR => RK, IKG => IK1
         real(TKR)               , intent(in)    , contiguous        :: weight(:)
-        integer(IKC)            , intent(in)    , contiguous        :: sample(:,:)
+        integer(IKG)            , intent(in)    , contiguous        :: sample(:,:)
         real(TKR)               , intent(out)   , contiguous        :: frank(:,:)
         real(TKR)               , intent(inout) , contiguous        :: rho(:,:)
         integer(IK)             , intent(in)                        :: dim
@@ -12504,9 +12504,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRhoWTR_XLD_RK5
 #endif
-        use pm_kind, only: TKR => RK, TKC => RK5
+        use pm_kind, only: TKR => RK, TKG => RK5
         real(TKR)               , intent(in)    , contiguous        :: weight(:)
-        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
+        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
         real(TKR)               , intent(out)   , contiguous        :: frank(:,:)
         real(TKR)               , intent(inout) , contiguous        :: rho(:,:)
         integer(IK)             , intent(in)                        :: dim
@@ -12519,9 +12519,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRhoWTR_XLD_RK4
 #endif
-        use pm_kind, only: TKR => RK, TKC => RK4
+        use pm_kind, only: TKR => RK, TKG => RK4
         real(TKR)               , intent(in)    , contiguous        :: weight(:)
-        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
+        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
         real(TKR)               , intent(out)   , contiguous        :: frank(:,:)
         real(TKR)               , intent(inout) , contiguous        :: rho(:,:)
         integer(IK)             , intent(in)                        :: dim
@@ -12534,9 +12534,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRhoWTR_XLD_RK3
 #endif
-        use pm_kind, only: TKR => RK, TKC => RK3
+        use pm_kind, only: TKR => RK, TKG => RK3
         real(TKR)               , intent(in)    , contiguous        :: weight(:)
-        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
+        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
         real(TKR)               , intent(out)   , contiguous        :: frank(:,:)
         real(TKR)               , intent(inout) , contiguous        :: rho(:,:)
         integer(IK)             , intent(in)                        :: dim
@@ -12549,9 +12549,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRhoWTR_XLD_RK2
 #endif
-        use pm_kind, only: TKR => RK, TKC => RK2
+        use pm_kind, only: TKR => RK, TKG => RK2
         real(TKR)               , intent(in)    , contiguous        :: weight(:)
-        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
+        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
         real(TKR)               , intent(out)   , contiguous        :: frank(:,:)
         real(TKR)               , intent(inout) , contiguous        :: rho(:,:)
         integer(IK)             , intent(in)                        :: dim
@@ -12564,9 +12564,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRhoWTR_XLD_RK1
 #endif
-        use pm_kind, only: TKR => RK, TKC => RK1
+        use pm_kind, only: TKR => RK, TKG => RK1
         real(TKR)               , intent(in)    , contiguous        :: weight(:)
-        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
+        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
         real(TKR)               , intent(out)   , contiguous        :: frank(:,:)
         real(TKR)               , intent(inout) , contiguous        :: rho(:,:)
         integer(IK)             , intent(in)                        :: dim
@@ -12583,9 +12583,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRhoWTR_XLD_PSSK5
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK5
+        use pm_kind, only: TKR => RK, SKG => SK5
         real(TKR)               , intent(in)    , contiguous        :: weight(:)
-        type(css_pdt(SKC))      , intent(in)    , contiguous        :: sample(:,:)
+        type(css_pdt(SKG))      , intent(in)    , contiguous        :: sample(:,:)
         real(TKR)               , intent(out)   , contiguous        :: frank(:,:)
         real(TKR)               , intent(inout) , contiguous        :: rho(:,:)
         integer(IK)             , intent(in)                        :: dim
@@ -12598,9 +12598,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRhoWTR_XLD_PSSK4
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK4
+        use pm_kind, only: TKR => RK, SKG => SK4
         real(TKR)               , intent(in)    , contiguous        :: weight(:)
-        type(css_pdt(SKC))      , intent(in)    , contiguous        :: sample(:,:)
+        type(css_pdt(SKG))      , intent(in)    , contiguous        :: sample(:,:)
         real(TKR)               , intent(out)   , contiguous        :: frank(:,:)
         real(TKR)               , intent(inout) , contiguous        :: rho(:,:)
         integer(IK)             , intent(in)                        :: dim
@@ -12613,9 +12613,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRhoWTR_XLD_PSSK3
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK3
+        use pm_kind, only: TKR => RK, SKG => SK3
         real(TKR)               , intent(in)    , contiguous        :: weight(:)
-        type(css_pdt(SKC))      , intent(in)    , contiguous        :: sample(:,:)
+        type(css_pdt(SKG))      , intent(in)    , contiguous        :: sample(:,:)
         real(TKR)               , intent(out)   , contiguous        :: frank(:,:)
         real(TKR)               , intent(inout) , contiguous        :: rho(:,:)
         integer(IK)             , intent(in)                        :: dim
@@ -12628,9 +12628,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRhoWTR_XLD_PSSK2
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK2
+        use pm_kind, only: TKR => RK, SKG => SK2
         real(TKR)               , intent(in)    , contiguous        :: weight(:)
-        type(css_pdt(SKC))      , intent(in)    , contiguous        :: sample(:,:)
+        type(css_pdt(SKG))      , intent(in)    , contiguous        :: sample(:,:)
         real(TKR)               , intent(out)   , contiguous        :: frank(:,:)
         real(TKR)               , intent(inout) , contiguous        :: rho(:,:)
         integer(IK)             , intent(in)                        :: dim
@@ -12643,9 +12643,9 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRhoWTR_XLD_PSSK1
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK1
+        use pm_kind, only: TKR => RK, SKG => SK1
         real(TKR)               , intent(in)    , contiguous        :: weight(:)
-        type(css_pdt(SKC))      , intent(in)    , contiguous        :: sample(:,:)
+        type(css_pdt(SKG))      , intent(in)    , contiguous        :: sample(:,:)
         real(TKR)               , intent(out)   , contiguous        :: frank(:,:)
         real(TKR)               , intent(inout) , contiguous        :: rho(:,:)
         integer(IK)             , intent(in)                        :: dim
@@ -12662,7 +12662,7 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRhoWTR_XLD_BSSK
 #endif
-        use pm_kind, only: TKR => RK, SKC => SK
+        use pm_kind, only: TKR => RK, SKG => SK
         real(TKR)               , intent(in)    , contiguous        :: weight(:)
         type(css_type)          , intent(in)    , contiguous        :: sample(:,:)
         real(TKR)               , intent(out)   , contiguous        :: frank(:,:)
@@ -12812,9 +12812,9 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getTauWNO_XY_D0_SK5
 !#endif
-!        use pm_kind, only: TKC => RK, SKC => SK5
-!        character(*,SKC)        , intent(in)                        :: x, y
-!        real(TKC)                                                   :: tau
+!        use pm_kind, only: TKG => RK, SKG => SK5
+!        character(*,SKG)        , intent(in)                        :: x, y
+!        real(TKG)                                                   :: tau
 !    end function
 !#endif
 !
@@ -12823,9 +12823,9 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getTauWNO_XY_D0_SK4
 !#endif
-!        use pm_kind, only: TKC => RK, SKC => SK4
-!        character(*,SKC)        , intent(in)                        :: x, y
-!        real(TKC)                                                   :: tau
+!        use pm_kind, only: TKG => RK, SKG => SK4
+!        character(*,SKG)        , intent(in)                        :: x, y
+!        real(TKG)                                                   :: tau
 !    end function
 !#endif
 !
@@ -12834,9 +12834,9 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getTauWNO_XY_D0_SK3
 !#endif
-!        use pm_kind, only: TKC => RK, SKC => SK3
-!        character(*,SKC)        , intent(in)                        :: x, y
-!        real(TKC)                                                   :: tau
+!        use pm_kind, only: TKG => RK, SKG => SK3
+!        character(*,SKG)        , intent(in)                        :: x, y
+!        real(TKG)                                                   :: tau
 !    end function
 !#endif
 !
@@ -12845,9 +12845,9 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getTauWNO_XY_D0_SK2
 !#endif
-!        use pm_kind, only: TKC => RK, SKC => SK2
-!        character(*,SKC)        , intent(in)                        :: x, y
-!        real(TKC)                                                   :: tau
+!        use pm_kind, only: TKG => RK, SKG => SK2
+!        character(*,SKG)        , intent(in)                        :: x, y
+!        real(TKG)                                                   :: tau
 !    end function
 !#endif
 !
@@ -12856,9 +12856,9 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getTauWNO_XY_D0_SK1
 !#endif
-!        use pm_kind, only: TKC => RK, SKC => SK1
-!        character(*,SKC)        , intent(in)                        :: x, y
-!        real(TKC)                                                   :: tau
+!        use pm_kind, only: TKG => RK, SKG => SK1
+!        character(*,SKG)        , intent(in)                        :: x, y
+!        real(TKG)                                                   :: tau
 !    end function
 !#endif
 !
@@ -12869,9 +12869,9 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getTauWNO_XY_D1_SK5
 !#endif
-!        use pm_kind, only: TKC => RK, SKC => SK5
-!        character(*,SKC)        , intent(in)    , contiguous        :: x(:), y(:)
-!        real(TKC)                                                   :: tau
+!        use pm_kind, only: TKG => RK, SKG => SK5
+!        character(*,SKG)        , intent(in)    , contiguous        :: x(:), y(:)
+!        real(TKG)                                                   :: tau
 !    end function
 !#endif
 !
@@ -12880,9 +12880,9 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getTauWNO_XY_D1_SK4
 !#endif
-!        use pm_kind, only: TKC => RK, SKC => SK4
-!        character(*,SKC)        , intent(in)    , contiguous        :: x(:), y(:)
-!        real(TKC)                                                   :: tau
+!        use pm_kind, only: TKG => RK, SKG => SK4
+!        character(*,SKG)        , intent(in)    , contiguous        :: x(:), y(:)
+!        real(TKG)                                                   :: tau
 !    end function
 !#endif
 !
@@ -12891,9 +12891,9 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getTauWNO_XY_D1_SK3
 !#endif
-!        use pm_kind, only: TKC => RK, SKC => SK3
-!        character(*,SKC)        , intent(in)    , contiguous        :: x(:), y(:)
-!        real(TKC)                                                   :: tau
+!        use pm_kind, only: TKG => RK, SKG => SK3
+!        character(*,SKG)        , intent(in)    , contiguous        :: x(:), y(:)
+!        real(TKG)                                                   :: tau
 !    end function
 !#endif
 !
@@ -12902,9 +12902,9 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getTauWNO_XY_D1_SK2
 !#endif
-!        use pm_kind, only: TKC => RK, SKC => SK2
-!        character(*,SKC)        , intent(in)    , contiguous        :: x(:), y(:)
-!        real(TKC)                                                   :: tau
+!        use pm_kind, only: TKG => RK, SKG => SK2
+!        character(*,SKG)        , intent(in)    , contiguous        :: x(:), y(:)
+!        real(TKG)                                                   :: tau
 !    end function
 !#endif
 !
@@ -12913,9 +12913,9 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getTauWNO_XY_D1_SK1
 !#endif
-!        use pm_kind, only: TKC => RK, SKC => SK1
-!        character(*,SKC)        , intent(in)    , contiguous        :: x(:), y(:)
-!        real(TKC)                                                   :: tau
+!        use pm_kind, only: TKG => RK, SKG => SK1
+!        character(*,SKG)        , intent(in)    , contiguous        :: x(:), y(:)
+!        real(TKG)                                                   :: tau
 !    end function
 !#endif
 !
@@ -12926,9 +12926,9 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getTauWNO_XY_D1_IK5
 !#endif
-!        use pm_kind, only: TKC => RK, IKC => IK5
-!        integer(IKC)            , intent(in)    , contiguous        :: x(:), y(:)
-!        real(TKC)                                                   :: tau
+!        use pm_kind, only: TKG => RK, IKG => IK5
+!        integer(IKG)            , intent(in)    , contiguous        :: x(:), y(:)
+!        real(TKG)                                                   :: tau
 !    end function
 !#endif
 !
@@ -12937,9 +12937,9 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getTauWNO_XY_D1_IK4
 !#endif
-!        use pm_kind, only: TKC => RK, IKC => IK4
-!        integer(IKC)            , intent(in)    , contiguous        :: x(:), y(:)
-!        real(TKC)                                                   :: tau
+!        use pm_kind, only: TKG => RK, IKG => IK4
+!        integer(IKG)            , intent(in)    , contiguous        :: x(:), y(:)
+!        real(TKG)                                                   :: tau
 !    end function
 !#endif
 !
@@ -12948,9 +12948,9 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getTauWNO_XY_D1_IK3
 !#endif
-!        use pm_kind, only: TKC => RK, IKC => IK3
-!        integer(IKC)            , intent(in)    , contiguous        :: x(:), y(:)
-!        real(TKC)                                                   :: tau
+!        use pm_kind, only: TKG => RK, IKG => IK3
+!        integer(IKG)            , intent(in)    , contiguous        :: x(:), y(:)
+!        real(TKG)                                                   :: tau
 !    end function
 !#endif
 !
@@ -12959,9 +12959,9 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getTauWNO_XY_D1_IK2
 !#endif
-!        use pm_kind, only: TKC => RK, IKC => IK2
-!        integer(IKC)            , intent(in)    , contiguous        :: x(:), y(:)
-!        real(TKC)                                                   :: tau
+!        use pm_kind, only: TKG => RK, IKG => IK2
+!        integer(IKG)            , intent(in)    , contiguous        :: x(:), y(:)
+!        real(TKG)                                                   :: tau
 !    end function
 !#endif
 !
@@ -12970,9 +12970,9 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getTauWNO_XY_D1_IK1
 !#endif
-!        use pm_kind, only: TKC => RK, IKC => IK1
-!        integer(IKC)            , intent(in)    , contiguous        :: x(:), y(:)
-!        real(TKC)                                                   :: tau
+!        use pm_kind, only: TKG => RK, IKG => IK1
+!        integer(IKG)            , intent(in)    , contiguous        :: x(:), y(:)
+!        real(TKG)                                                   :: tau
 !    end function
 !#endif
 !
@@ -12983,9 +12983,9 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getTauWNO_XY_D1_RK5
 !#endif
-!        use pm_kind, only: TKC => RK5
-!        real(TKC)               , intent(in)    , contiguous        :: x(:), y(:)
-!        real(TKC)                                                   :: tau
+!        use pm_kind, only: TKG => RK5
+!        real(TKG)               , intent(in)    , contiguous        :: x(:), y(:)
+!        real(TKG)                                                   :: tau
 !    end function
 !#endif
 !
@@ -12994,9 +12994,9 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getTauWNO_XY_D1_RK4
 !#endif
-!        use pm_kind, only: TKC => RK4
-!        real(TKC)               , intent(in)    , contiguous        :: x(:), y(:)
-!        real(TKC)                                                   :: tau
+!        use pm_kind, only: TKG => RK4
+!        real(TKG)               , intent(in)    , contiguous        :: x(:), y(:)
+!        real(TKG)                                                   :: tau
 !    end function
 !#endif
 !
@@ -13005,9 +13005,9 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getTauWNO_XY_D1_RK3
 !#endif
-!        use pm_kind, only: TKC => RK3
-!        real(TKC)               , intent(in)    , contiguous        :: x(:), y(:)
-!        real(TKC)                                                   :: tau
+!        use pm_kind, only: TKG => RK3
+!        real(TKG)               , intent(in)    , contiguous        :: x(:), y(:)
+!        real(TKG)                                                   :: tau
 !    end function
 !#endif
 !
@@ -13016,9 +13016,9 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getTauWNO_XY_D1_RK2
 !#endif
-!        use pm_kind, only: TKC => RK2
-!        real(TKC)               , intent(in)    , contiguous        :: x(:), y(:)
-!        real(TKC)                                                   :: tau
+!        use pm_kind, only: TKG => RK2
+!        real(TKG)               , intent(in)    , contiguous        :: x(:), y(:)
+!        real(TKG)                                                   :: tau
 !    end function
 !#endif
 !
@@ -13027,9 +13027,9 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getTauWNO_XY_D1_RK1
 !#endif
-!        use pm_kind, only: TKC => RK1
-!        real(TKC)               , intent(in)    , contiguous        :: x(:), y(:)
-!        real(TKC)                                                   :: tau
+!        use pm_kind, only: TKG => RK1
+!        real(TKG)               , intent(in)    , contiguous        :: x(:), y(:)
+!        real(TKG)                                                   :: tau
 !    end function
 !#endif
 !
@@ -13042,9 +13042,9 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getTauWNO_XY_D1_PSSK5
 !#endif
-!        use pm_kind, only: TKC => RK, SKC => SK5
-!        type(css_pdt(SKC))      , intent(in)    , contiguous        :: x(:), y(:)
-!        real(TKC)                                                   :: tau
+!        use pm_kind, only: TKG => RK, SKG => SK5
+!        type(css_pdt(SKG))      , intent(in)    , contiguous        :: x(:), y(:)
+!        real(TKG)                                                   :: tau
 !    end function
 !#endif
 !
@@ -13053,9 +13053,9 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getTauWNO_XY_D1_PSSK4
 !#endif
-!        use pm_kind, only: TKC => RK, SKC => SK4
-!        type(css_pdt(SKC))      , intent(in)    , contiguous        :: x(:), y(:)
-!        real(TKC)                                                   :: tau
+!        use pm_kind, only: TKG => RK, SKG => SK4
+!        type(css_pdt(SKG))      , intent(in)    , contiguous        :: x(:), y(:)
+!        real(TKG)                                                   :: tau
 !    end function
 !#endif
 !
@@ -13064,9 +13064,9 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getTauWNO_XY_D1_PSSK3
 !#endif
-!        use pm_kind, only: TKC => RK, SKC => SK3
-!        type(css_pdt(SKC))      , intent(in)    , contiguous        :: x(:), y(:)
-!        real(TKC)                                                   :: tau
+!        use pm_kind, only: TKG => RK, SKG => SK3
+!        type(css_pdt(SKG))      , intent(in)    , contiguous        :: x(:), y(:)
+!        real(TKG)                                                   :: tau
 !    end function
 !#endif
 !
@@ -13075,9 +13075,9 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getTauWNO_XY_D1_PSSK2
 !#endif
-!        use pm_kind, only: TKC => RK, SKC => SK2
-!        type(css_pdt(SKC))      , intent(in)    , contiguous        :: x(:), y(:)
-!        real(TKC)                                                   :: tau
+!        use pm_kind, only: TKG => RK, SKG => SK2
+!        type(css_pdt(SKG))      , intent(in)    , contiguous        :: x(:), y(:)
+!        real(TKG)                                                   :: tau
 !    end function
 !#endif
 !
@@ -13086,9 +13086,9 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getTauWNO_XY_D1_PSSK1
 !#endif
-!        use pm_kind, only: TKC => RK, SKC => SK1
-!        type(css_pdt(SKC))      , intent(in)    , contiguous        :: x(:), y(:)
-!        real(TKC)                                                   :: tau
+!        use pm_kind, only: TKG => RK, SKG => SK1
+!        type(css_pdt(SKG))      , intent(in)    , contiguous        :: x(:), y(:)
+!        real(TKG)                                                   :: tau
 !    end function
 !#endif
 !
@@ -13102,7 +13102,7 @@ module pm_sampleCor
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getTauWNO_XY_D1_BSSK
 !#endif
 !        type(css_type)          , intent(in)    , contiguous        :: x(:), y(:)
-!        real(TKC)                                                   :: tau
+!        real(TKG)                                                   :: tau
 !    end function
 !
 !    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -13120,10 +13120,10 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getTauWTI_XY_D0_SK5
 !#endif
-!        use pm_kind, only: TKC => RK, SKC => SK5
+!        use pm_kind, only: TKG => RK, SKG => SK5
 !        integer(IK)             , intent(in)    , contiguous        :: weight(:)
-!        character(*,SKC)        , intent(in)                        :: x, y
-!        real(TKC)                                                   :: tau
+!        character(*,SKG)        , intent(in)                        :: x, y
+!        real(TKG)                                                   :: tau
 !    end function
 !#endif
 !
@@ -13132,10 +13132,10 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getTauWTI_XY_D0_SK4
 !#endif
-!        use pm_kind, only: TKC => RK, SKC => SK4
+!        use pm_kind, only: TKG => RK, SKG => SK4
 !        integer(IK)             , intent(in)    , contiguous        :: weight(:)
-!        character(*,SKC)        , intent(in)                        :: x, y
-!        real(TKC)                                                   :: tau
+!        character(*,SKG)        , intent(in)                        :: x, y
+!        real(TKG)                                                   :: tau
 !    end function
 !#endif
 !
@@ -13144,10 +13144,10 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getTauWTI_XY_D0_SK3
 !#endif
-!        use pm_kind, only: TKC => RK, SKC => SK3
+!        use pm_kind, only: TKG => RK, SKG => SK3
 !        integer(IK)             , intent(in)    , contiguous        :: weight(:)
-!        character(*,SKC)        , intent(in)                        :: x, y
-!        real(TKC)                                                   :: tau
+!        character(*,SKG)        , intent(in)                        :: x, y
+!        real(TKG)                                                   :: tau
 !    end function
 !#endif
 !
@@ -13156,10 +13156,10 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getTauWTI_XY_D0_SK2
 !#endif
-!        use pm_kind, only: TKC => RK, SKC => SK2
+!        use pm_kind, only: TKG => RK, SKG => SK2
 !        integer(IK)             , intent(in)    , contiguous        :: weight(:)
-!        character(*,SKC)        , intent(in)                        :: x, y
-!        real(TKC)                                                   :: tau
+!        character(*,SKG)        , intent(in)                        :: x, y
+!        real(TKG)                                                   :: tau
 !    end function
 !#endif
 !
@@ -13168,10 +13168,10 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getTauWTI_XY_D0_SK1
 !#endif
-!        use pm_kind, only: TKC => RK, SKC => SK1
+!        use pm_kind, only: TKG => RK, SKG => SK1
 !        integer(IK)             , intent(in)    , contiguous        :: weight(:)
-!        character(*,SKC)        , intent(in)                        :: x, y
-!        real(TKC)                                                   :: tau
+!        character(*,SKG)        , intent(in)                        :: x, y
+!        real(TKG)                                                   :: tau
 !    end function
 !#endif
 !
@@ -13182,10 +13182,10 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getTauWTI_XY_D1_SK5
 !#endif
-!        use pm_kind, only: TKC => RK, SKC => SK5
+!        use pm_kind, only: TKG => RK, SKG => SK5
 !        integer(IK)             , intent(in)    , contiguous        :: weight(:)
-!        character(*,SKC)        , intent(in)    , contiguous        :: x(:), y(:)
-!        real(TKC)                                                   :: tau
+!        character(*,SKG)        , intent(in)    , contiguous        :: x(:), y(:)
+!        real(TKG)                                                   :: tau
 !    end function
 !#endif
 !
@@ -13194,10 +13194,10 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getTauWTI_XY_D1_SK4
 !#endif
-!        use pm_kind, only: TKC => RK, SKC => SK4
+!        use pm_kind, only: TKG => RK, SKG => SK4
 !        integer(IK)             , intent(in)    , contiguous        :: weight(:)
-!        character(*,SKC)        , intent(in)    , contiguous        :: x(:), y(:)
-!        real(TKC)                                                   :: tau
+!        character(*,SKG)        , intent(in)    , contiguous        :: x(:), y(:)
+!        real(TKG)                                                   :: tau
 !    end function
 !#endif
 !
@@ -13206,10 +13206,10 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getTauWTI_XY_D1_SK3
 !#endif
-!        use pm_kind, only: TKC => RK, SKC => SK3
+!        use pm_kind, only: TKG => RK, SKG => SK3
 !        integer(IK)             , intent(in)    , contiguous        :: weight(:)
-!        character(*,SKC)        , intent(in)    , contiguous        :: x(:), y(:)
-!        real(TKC)                                                   :: tau
+!        character(*,SKG)        , intent(in)    , contiguous        :: x(:), y(:)
+!        real(TKG)                                                   :: tau
 !    end function
 !#endif
 !
@@ -13218,10 +13218,10 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getTauWTI_XY_D1_SK2
 !#endif
-!        use pm_kind, only: TKC => RK, SKC => SK2
+!        use pm_kind, only: TKG => RK, SKG => SK2
 !        integer(IK)             , intent(in)    , contiguous        :: weight(:)
-!        character(*,SKC)        , intent(in)    , contiguous        :: x(:), y(:)
-!        real(TKC)                                                   :: tau
+!        character(*,SKG)        , intent(in)    , contiguous        :: x(:), y(:)
+!        real(TKG)                                                   :: tau
 !    end function
 !#endif
 !
@@ -13230,10 +13230,10 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getTauWTI_XY_D1_SK1
 !#endif
-!        use pm_kind, only: TKC => RK, SKC => SK1
+!        use pm_kind, only: TKG => RK, SKG => SK1
 !        integer(IK)             , intent(in)    , contiguous        :: weight(:)
-!        character(*,SKC)        , intent(in)    , contiguous        :: x(:), y(:)
-!        real(TKC)                                                   :: tau
+!        character(*,SKG)        , intent(in)    , contiguous        :: x(:), y(:)
+!        real(TKG)                                                   :: tau
 !    end function
 !#endif
 !
@@ -13244,10 +13244,10 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getTauWTI_XY_D1_IK5
 !#endif
-!        use pm_kind, only: TKC => RK, IKC => IK5
+!        use pm_kind, only: TKG => RK, IKG => IK5
 !        integer(IK)             , intent(in)    , contiguous        :: weight(:)
-!        integer(IKC)            , intent(in)    , contiguous        :: x(:), y(:)
-!        real(TKC)                                                   :: tau
+!        integer(IKG)            , intent(in)    , contiguous        :: x(:), y(:)
+!        real(TKG)                                                   :: tau
 !    end function
 !#endif
 !
@@ -13256,10 +13256,10 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getTauWTI_XY_D1_IK4
 !#endif
-!        use pm_kind, only: TKC => RK, IKC => IK4
+!        use pm_kind, only: TKG => RK, IKG => IK4
 !        integer(IK)             , intent(in)    , contiguous        :: weight(:)
-!        integer(IKC)            , intent(in)    , contiguous        :: x(:), y(:)
-!        real(TKC)                                                   :: tau
+!        integer(IKG)            , intent(in)    , contiguous        :: x(:), y(:)
+!        real(TKG)                                                   :: tau
 !    end function
 !#endif
 !
@@ -13268,10 +13268,10 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getTauWTI_XY_D1_IK3
 !#endif
-!        use pm_kind, only: TKC => RK, IKC => IK3
+!        use pm_kind, only: TKG => RK, IKG => IK3
 !        integer(IK)             , intent(in)    , contiguous        :: weight(:)
-!        integer(IKC)            , intent(in)    , contiguous        :: x(:), y(:)
-!        real(TKC)                                                   :: tau
+!        integer(IKG)            , intent(in)    , contiguous        :: x(:), y(:)
+!        real(TKG)                                                   :: tau
 !    end function
 !#endif
 !
@@ -13280,10 +13280,10 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getTauWTI_XY_D1_IK2
 !#endif
-!        use pm_kind, only: TKC => RK, IKC => IK2
+!        use pm_kind, only: TKG => RK, IKG => IK2
 !        integer(IK)             , intent(in)    , contiguous        :: weight(:)
-!        integer(IKC)            , intent(in)    , contiguous        :: x(:), y(:)
-!        real(TKC)                                                   :: tau
+!        integer(IKG)            , intent(in)    , contiguous        :: x(:), y(:)
+!        real(TKG)                                                   :: tau
 !    end function
 !#endif
 !
@@ -13292,10 +13292,10 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getTauWTI_XY_D1_IK1
 !#endif
-!        use pm_kind, only: TKC => RK, IKC => IK1
+!        use pm_kind, only: TKG => RK, IKG => IK1
 !        integer(IK)             , intent(in)    , contiguous        :: weight(:)
-!        integer(IKC)            , intent(in)    , contiguous        :: x(:), y(:)
-!        real(TKC)                                                   :: tau
+!        integer(IKG)            , intent(in)    , contiguous        :: x(:), y(:)
+!        real(TKG)                                                   :: tau
 !    end function
 !#endif
 !
@@ -13306,10 +13306,10 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getTauWTI_XY_D1_RK5
 !#endif
-!        use pm_kind, only: TKC => RK5
+!        use pm_kind, only: TKG => RK5
 !        integer(IK)             , intent(in)    , contiguous        :: weight(:)
-!        real(TKC)               , intent(in)    , contiguous        :: x(:), y(:)
-!        real(TKC)                                                   :: tau
+!        real(TKG)               , intent(in)    , contiguous        :: x(:), y(:)
+!        real(TKG)                                                   :: tau
 !    end function
 !#endif
 !
@@ -13318,10 +13318,10 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getTauWTI_XY_D1_RK4
 !#endif
-!        use pm_kind, only: TKC => RK4
+!        use pm_kind, only: TKG => RK4
 !        integer(IK)             , intent(in)    , contiguous        :: weight(:)
-!        real(TKC)               , intent(in)    , contiguous        :: x(:), y(:)
-!        real(TKC)                                                   :: tau
+!        real(TKG)               , intent(in)    , contiguous        :: x(:), y(:)
+!        real(TKG)                                                   :: tau
 !    end function
 !#endif
 !
@@ -13330,10 +13330,10 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getTauWTI_XY_D1_RK3
 !#endif
-!        use pm_kind, only: TKC => RK3
+!        use pm_kind, only: TKG => RK3
 !        integer(IK)             , intent(in)    , contiguous        :: weight(:)
-!        real(TKC)               , intent(in)    , contiguous        :: x(:), y(:)
-!        real(TKC)                                                   :: tau
+!        real(TKG)               , intent(in)    , contiguous        :: x(:), y(:)
+!        real(TKG)                                                   :: tau
 !    end function
 !#endif
 !
@@ -13342,10 +13342,10 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getTauWTI_XY_D1_RK2
 !#endif
-!        use pm_kind, only: TKC => RK2
+!        use pm_kind, only: TKG => RK2
 !        integer(IK)             , intent(in)    , contiguous        :: weight(:)
-!        real(TKC)               , intent(in)    , contiguous        :: x(:), y(:)
-!        real(TKC)                                                   :: tau
+!        real(TKG)               , intent(in)    , contiguous        :: x(:), y(:)
+!        real(TKG)                                                   :: tau
 !    end function
 !#endif
 !
@@ -13354,10 +13354,10 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getTauWTI_XY_D1_RK1
 !#endif
-!        use pm_kind, only: TKC => RK1
+!        use pm_kind, only: TKG => RK1
 !        integer(IK)             , intent(in)    , contiguous        :: weight(:)
-!        real(TKC)               , intent(in)    , contiguous        :: x(:), y(:)
-!        real(TKC)                                                   :: tau
+!        real(TKG)               , intent(in)    , contiguous        :: x(:), y(:)
+!        real(TKG)                                                   :: tau
 !    end function
 !#endif
 !
@@ -13370,10 +13370,10 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getTauWTI_XY_D1_PSSK5
 !#endif
-!        use pm_kind, only: TKC => RK, SKC => SK5
+!        use pm_kind, only: TKG => RK, SKG => SK5
 !        integer(IK)             , intent(in)    , contiguous        :: weight(:)
-!        type(css_pdt(SKC))      , intent(in)    , contiguous        :: x(:), y(:)
-!        real(TKC)                                                   :: tau
+!        type(css_pdt(SKG))      , intent(in)    , contiguous        :: x(:), y(:)
+!        real(TKG)                                                   :: tau
 !    end function
 !#endif
 !
@@ -13382,10 +13382,10 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getTauWTI_XY_D1_PSSK4
 !#endif
-!        use pm_kind, only: TKC => RK, SKC => SK4
+!        use pm_kind, only: TKG => RK, SKG => SK4
 !        integer(IK)             , intent(in)    , contiguous        :: weight(:)
-!        type(css_pdt(SKC))      , intent(in)    , contiguous        :: x(:), y(:)
-!        real(TKC)                                                   :: tau
+!        type(css_pdt(SKG))      , intent(in)    , contiguous        :: x(:), y(:)
+!        real(TKG)                                                   :: tau
 !    end function
 !#endif
 !
@@ -13394,10 +13394,10 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getTauWTI_XY_D1_PSSK3
 !#endif
-!        use pm_kind, only: TKC => RK, SKC => SK3
+!        use pm_kind, only: TKG => RK, SKG => SK3
 !        integer(IK)             , intent(in)    , contiguous        :: weight(:)
-!        type(css_pdt(SKC))      , intent(in)    , contiguous        :: x(:), y(:)
-!        real(TKC)                                                   :: tau
+!        type(css_pdt(SKG))      , intent(in)    , contiguous        :: x(:), y(:)
+!        real(TKG)                                                   :: tau
 !    end function
 !#endif
 !
@@ -13406,10 +13406,10 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getTauWTI_XY_D1_PSSK2
 !#endif
-!        use pm_kind, only: TKC => RK, SKC => SK2
+!        use pm_kind, only: TKG => RK, SKG => SK2
 !        integer(IK)             , intent(in)    , contiguous        :: weight(:)
-!        type(css_pdt(SKC))      , intent(in)    , contiguous        :: x(:), y(:)
-!        real(TKC)                                                   :: tau
+!        type(css_pdt(SKG))      , intent(in)    , contiguous        :: x(:), y(:)
+!        real(TKG)                                                   :: tau
 !    end function
 !#endif
 !
@@ -13418,10 +13418,10 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getTauWTI_XY_D1_PSSK1
 !#endif
-!        use pm_kind, only: TKC => RK, SKC => SK1
+!        use pm_kind, only: TKG => RK, SKG => SK1
 !        integer(IK)             , intent(in)    , contiguous        :: weight(:)
-!        type(css_pdt(SKC))      , intent(in)    , contiguous        :: x(:), y(:)
-!        real(TKC)                                                   :: tau
+!        type(css_pdt(SKG))      , intent(in)    , contiguous        :: x(:), y(:)
+!        real(TKG)                                                   :: tau
 !    end function
 !#endif
 !
@@ -13436,7 +13436,7 @@ module pm_sampleCor
 !#endif
 !        integer(IK)             , intent(in)    , contiguous        :: weight(:)
 !        type(css_type)          , intent(in)    , contiguous        :: x(:), y(:)
-!        real(TKC)                                                   :: tau
+!        real(TKG)                                                   :: tau
 !    end function
 !
 !    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -13454,10 +13454,10 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getTauWTR_XY_D0_SK5
 !#endif
-!        use pm_kind, only: TKC => RK, SKC => SK5
-!        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-!        character(*,SKC)        , intent(in)                        :: x, y
-!        real(TKC)                                                   :: tau
+!        use pm_kind, only: TKG => RK, SKG => SK5
+!        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+!        character(*,SKG)        , intent(in)                        :: x, y
+!        real(TKG)                                                   :: tau
 !    end function
 !#endif
 !
@@ -13466,10 +13466,10 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getTauWTR_XY_D0_SK4
 !#endif
-!        use pm_kind, only: TKC => RK, SKC => SK4
-!        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-!        character(*,SKC)        , intent(in)                        :: x, y
-!        real(TKC)                                                   :: tau
+!        use pm_kind, only: TKG => RK, SKG => SK4
+!        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+!        character(*,SKG)        , intent(in)                        :: x, y
+!        real(TKG)                                                   :: tau
 !    end function
 !#endif
 !
@@ -13478,10 +13478,10 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getTauWTR_XY_D0_SK3
 !#endif
-!        use pm_kind, only: TKC => RK, SKC => SK3
-!        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-!        character(*,SKC)        , intent(in)                        :: x, y
-!        real(TKC)                                                   :: tau
+!        use pm_kind, only: TKG => RK, SKG => SK3
+!        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+!        character(*,SKG)        , intent(in)                        :: x, y
+!        real(TKG)                                                   :: tau
 !    end function
 !#endif
 !
@@ -13490,10 +13490,10 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getTauWTR_XY_D0_SK2
 !#endif
-!        use pm_kind, only: TKC => RK, SKC => SK2
-!        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-!        character(*,SKC)        , intent(in)                        :: x, y
-!        real(TKC)                                                   :: tau
+!        use pm_kind, only: TKG => RK, SKG => SK2
+!        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+!        character(*,SKG)        , intent(in)                        :: x, y
+!        real(TKG)                                                   :: tau
 !    end function
 !#endif
 !
@@ -13502,10 +13502,10 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getTauWTR_XY_D0_SK1
 !#endif
-!        use pm_kind, only: TKC => RK, SKC => SK1
-!        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-!        character(*,SKC)        , intent(in)                        :: x, y
-!        real(TKC)                                                   :: tau
+!        use pm_kind, only: TKG => RK, SKG => SK1
+!        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+!        character(*,SKG)        , intent(in)                        :: x, y
+!        real(TKG)                                                   :: tau
 !    end function
 !#endif
 !
@@ -13516,10 +13516,10 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getTauWTR_XY_D1_SK5
 !#endif
-!        use pm_kind, only: TKC => RK, SKC => SK5
-!        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-!        character(*,SKC)        , intent(in)    , contiguous        :: x(:), y(:)
-!        real(TKC)                                                   :: tau
+!        use pm_kind, only: TKG => RK, SKG => SK5
+!        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+!        character(*,SKG)        , intent(in)    , contiguous        :: x(:), y(:)
+!        real(TKG)                                                   :: tau
 !    end function
 !#endif
 !
@@ -13528,10 +13528,10 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getTauWTR_XY_D1_SK4
 !#endif
-!        use pm_kind, only: TKC => RK, SKC => SK4
-!        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-!        character(*,SKC)        , intent(in)    , contiguous        :: x(:), y(:)
-!        real(TKC)                                                   :: tau
+!        use pm_kind, only: TKG => RK, SKG => SK4
+!        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+!        character(*,SKG)        , intent(in)    , contiguous        :: x(:), y(:)
+!        real(TKG)                                                   :: tau
 !    end function
 !#endif
 !
@@ -13540,10 +13540,10 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getTauWTR_XY_D1_SK3
 !#endif
-!        use pm_kind, only: TKC => RK, SKC => SK3
-!        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-!        character(*,SKC)        , intent(in)    , contiguous        :: x(:), y(:)
-!        real(TKC)                                                   :: tau
+!        use pm_kind, only: TKG => RK, SKG => SK3
+!        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+!        character(*,SKG)        , intent(in)    , contiguous        :: x(:), y(:)
+!        real(TKG)                                                   :: tau
 !    end function
 !#endif
 !
@@ -13552,10 +13552,10 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getTauWTR_XY_D1_SK2
 !#endif
-!        use pm_kind, only: TKC => RK, SKC => SK2
-!        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-!        character(*,SKC)        , intent(in)    , contiguous        :: x(:), y(:)
-!        real(TKC)                                                   :: tau
+!        use pm_kind, only: TKG => RK, SKG => SK2
+!        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+!        character(*,SKG)        , intent(in)    , contiguous        :: x(:), y(:)
+!        real(TKG)                                                   :: tau
 !    end function
 !#endif
 !
@@ -13564,10 +13564,10 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getTauWTR_XY_D1_SK1
 !#endif
-!        use pm_kind, only: TKC => RK, SKC => SK1
-!        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-!        character(*,SKC)        , intent(in)    , contiguous        :: x(:), y(:)
-!        real(TKC)                                                   :: tau
+!        use pm_kind, only: TKG => RK, SKG => SK1
+!        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+!        character(*,SKG)        , intent(in)    , contiguous        :: x(:), y(:)
+!        real(TKG)                                                   :: tau
 !    end function
 !#endif
 !
@@ -13578,10 +13578,10 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getTauWTR_XY_D1_IK5
 !#endif
-!        use pm_kind, only: TKC => RK, IKC => IK5
-!        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-!        integer(IKC)            , intent(in)    , contiguous        :: x(:), y(:)
-!        real(TKC)                                                   :: tau
+!        use pm_kind, only: TKG => RK, IKG => IK5
+!        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+!        integer(IKG)            , intent(in)    , contiguous        :: x(:), y(:)
+!        real(TKG)                                                   :: tau
 !    end function
 !#endif
 !
@@ -13590,10 +13590,10 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getTauWTR_XY_D1_IK4
 !#endif
-!        use pm_kind, only: TKC => RK, IKC => IK4
-!        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-!        integer(IKC)            , intent(in)    , contiguous        :: x(:), y(:)
-!        real(TKC)                                                   :: tau
+!        use pm_kind, only: TKG => RK, IKG => IK4
+!        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+!        integer(IKG)            , intent(in)    , contiguous        :: x(:), y(:)
+!        real(TKG)                                                   :: tau
 !    end function
 !#endif
 !
@@ -13602,10 +13602,10 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getTauWTR_XY_D1_IK3
 !#endif
-!        use pm_kind, only: TKC => RK, IKC => IK3
-!        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-!        integer(IKC)            , intent(in)    , contiguous        :: x(:), y(:)
-!        real(TKC)                                                   :: tau
+!        use pm_kind, only: TKG => RK, IKG => IK3
+!        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+!        integer(IKG)            , intent(in)    , contiguous        :: x(:), y(:)
+!        real(TKG)                                                   :: tau
 !    end function
 !#endif
 !
@@ -13614,10 +13614,10 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getTauWTR_XY_D1_IK2
 !#endif
-!        use pm_kind, only: TKC => RK, IKC => IK2
-!        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-!        integer(IKC)            , intent(in)    , contiguous        :: x(:), y(:)
-!        real(TKC)                                                   :: tau
+!        use pm_kind, only: TKG => RK, IKG => IK2
+!        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+!        integer(IKG)            , intent(in)    , contiguous        :: x(:), y(:)
+!        real(TKG)                                                   :: tau
 !    end function
 !#endif
 !
@@ -13626,10 +13626,10 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getTauWTR_XY_D1_IK1
 !#endif
-!        use pm_kind, only: TKC => RK, IKC => IK1
-!        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-!        integer(IKC)            , intent(in)    , contiguous        :: x(:), y(:)
-!        real(TKC)                                                   :: tau
+!        use pm_kind, only: TKG => RK, IKG => IK1
+!        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+!        integer(IKG)            , intent(in)    , contiguous        :: x(:), y(:)
+!        real(TKG)                                                   :: tau
 !    end function
 !#endif
 !
@@ -13640,10 +13640,10 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getTauWTR_XY_D1_RK5
 !#endif
-!        use pm_kind, only: TKC => RK5
-!        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-!        real(TKC)               , intent(in)    , contiguous        :: x(:), y(:)
-!        real(TKC)                                                   :: tau
+!        use pm_kind, only: TKG => RK5
+!        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+!        real(TKG)               , intent(in)    , contiguous        :: x(:), y(:)
+!        real(TKG)                                                   :: tau
 !    end function
 !#endif
 !
@@ -13652,10 +13652,10 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getTauWTR_XY_D1_RK4
 !#endif
-!        use pm_kind, only: TKC => RK4
-!        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-!        real(TKC)               , intent(in)    , contiguous        :: x(:), y(:)
-!        real(TKC)                                                   :: tau
+!        use pm_kind, only: TKG => RK4
+!        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+!        real(TKG)               , intent(in)    , contiguous        :: x(:), y(:)
+!        real(TKG)                                                   :: tau
 !    end function
 !#endif
 !
@@ -13664,10 +13664,10 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getTauWTR_XY_D1_RK3
 !#endif
-!        use pm_kind, only: TKC => RK3
-!        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-!        real(TKC)               , intent(in)    , contiguous        :: x(:), y(:)
-!        real(TKC)                                                   :: tau
+!        use pm_kind, only: TKG => RK3
+!        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+!        real(TKG)               , intent(in)    , contiguous        :: x(:), y(:)
+!        real(TKG)                                                   :: tau
 !    end function
 !#endif
 !
@@ -13676,10 +13676,10 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getTauWTR_XY_D1_RK2
 !#endif
-!        use pm_kind, only: TKC => RK2
-!        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-!        real(TKC)               , intent(in)    , contiguous        :: x(:), y(:)
-!        real(TKC)                                                   :: tau
+!        use pm_kind, only: TKG => RK2
+!        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+!        real(TKG)               , intent(in)    , contiguous        :: x(:), y(:)
+!        real(TKG)                                                   :: tau
 !    end function
 !#endif
 !
@@ -13688,10 +13688,10 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getTauWTR_XY_D1_RK1
 !#endif
-!        use pm_kind, only: TKC => RK1
-!        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-!        real(TKC)               , intent(in)    , contiguous        :: x(:), y(:)
-!        real(TKC)                                                   :: tau
+!        use pm_kind, only: TKG => RK1
+!        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+!        real(TKG)               , intent(in)    , contiguous        :: x(:), y(:)
+!        real(TKG)                                                   :: tau
 !    end function
 !#endif
 !
@@ -13704,10 +13704,10 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getTauWTR_XY_D1_PSSK5
 !#endif
-!        use pm_kind, only: TKC => RK, SKC => SK5
-!        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-!        type(css_pdt(SKC))      , intent(in)    , contiguous        :: x(:), y(:)
-!        real(TKC)                                                   :: tau
+!        use pm_kind, only: TKG => RK, SKG => SK5
+!        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+!        type(css_pdt(SKG))      , intent(in)    , contiguous        :: x(:), y(:)
+!        real(TKG)                                                   :: tau
 !    end function
 !#endif
 !
@@ -13716,10 +13716,10 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getTauWTR_XY_D1_PSSK4
 !#endif
-!        use pm_kind, only: TKC => RK, SKC => SK4
-!        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-!        type(css_pdt(SKC))      , intent(in)    , contiguous        :: x(:), y(:)
-!        real(TKC)                                                   :: tau
+!        use pm_kind, only: TKG => RK, SKG => SK4
+!        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+!        type(css_pdt(SKG))      , intent(in)    , contiguous        :: x(:), y(:)
+!        real(TKG)                                                   :: tau
 !    end function
 !#endif
 !
@@ -13728,10 +13728,10 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getTauWTR_XY_D1_PSSK3
 !#endif
-!        use pm_kind, only: TKC => RK, SKC => SK3
-!        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-!        type(css_pdt(SKC))      , intent(in)    , contiguous        :: x(:), y(:)
-!        real(TKC)                                                   :: tau
+!        use pm_kind, only: TKG => RK, SKG => SK3
+!        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+!        type(css_pdt(SKG))      , intent(in)    , contiguous        :: x(:), y(:)
+!        real(TKG)                                                   :: tau
 !    end function
 !#endif
 !
@@ -13740,10 +13740,10 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getTauWTR_XY_D1_PSSK2
 !#endif
-!        use pm_kind, only: TKC => RK, SKC => SK2
-!        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-!        type(css_pdt(SKC))      , intent(in)    , contiguous        :: x(:), y(:)
-!        real(TKC)                                                   :: tau
+!        use pm_kind, only: TKG => RK, SKG => SK2
+!        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+!        type(css_pdt(SKG))      , intent(in)    , contiguous        :: x(:), y(:)
+!        real(TKG)                                                   :: tau
 !    end function
 !#endif
 !
@@ -13752,10 +13752,10 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getTauWTR_XY_D1_PSSK1
 !#endif
-!        use pm_kind, only: TKC => RK, SKC => SK1
-!        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-!        type(css_pdt(SKC))      , intent(in)    , contiguous        :: x(:), y(:)
-!        real(TKC)                                                   :: tau
+!        use pm_kind, only: TKG => RK, SKG => SK1
+!        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+!        type(css_pdt(SKG))      , intent(in)    , contiguous        :: x(:), y(:)
+!        real(TKG)                                                   :: tau
 !    end function
 !#endif
 !
@@ -13768,9 +13768,9 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getTauWTR_XY_D1_BSSK
 !#endif
-!        real(TKC)               , intent(in)    , contiguous        :: weight(:)
+!        real(TKG)               , intent(in)    , contiguous        :: weight(:)
 !        type(css_type)          , intent(in)    , contiguous        :: x(:), y(:)
-!        real(TKC)                                                   :: tau
+!        real(TKG)                                                   :: tau
 !    end function
 !
 !    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -13790,10 +13790,10 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getTauWNO_ULD_SK5
 !#endif
-!        use pm_kind, only: TKC => RK, SKC => SK5
-!        character(*,SKC)        , intent(in)    , contiguous        :: sample(:,:)
+!        use pm_kind, only: TKG => RK, SKG => SK5
+!        character(*,SKG)        , intent(in)    , contiguous        :: sample(:,:)
 !        integer(IK)             , intent(in)                        :: dim
-!        real(TKC)                                                   :: tau(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
+!        real(TKG)                                                   :: tau(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
 !    end function
 !#endif
 !
@@ -13802,10 +13802,10 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getTauWNO_ULD_SK4
 !#endif
-!        use pm_kind, only: TKC => RK, SKC => SK4
-!        character(*,SKC)        , intent(in)    , contiguous        :: sample(:,:)
+!        use pm_kind, only: TKG => RK, SKG => SK4
+!        character(*,SKG)        , intent(in)    , contiguous        :: sample(:,:)
 !        integer(IK)             , intent(in)                        :: dim
-!        real(TKC)                                                   :: tau(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
+!        real(TKG)                                                   :: tau(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
 !    end function
 !#endif
 !
@@ -13814,10 +13814,10 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getTauWNO_ULD_SK3
 !#endif
-!        use pm_kind, only: TKC => RK, SKC => SK3
-!        character(*,SKC)        , intent(in)    , contiguous        :: sample(:,:)
+!        use pm_kind, only: TKG => RK, SKG => SK3
+!        character(*,SKG)        , intent(in)    , contiguous        :: sample(:,:)
 !        integer(IK)             , intent(in)                        :: dim
-!        real(TKC)                                                   :: tau(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
+!        real(TKG)                                                   :: tau(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
 !    end function
 !#endif
 !
@@ -13826,10 +13826,10 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getTauWNO_ULD_SK2
 !#endif
-!        use pm_kind, only: TKC => RK, SKC => SK2
-!        character(*,SKC)        , intent(in)    , contiguous        :: sample(:,:)
+!        use pm_kind, only: TKG => RK, SKG => SK2
+!        character(*,SKG)        , intent(in)    , contiguous        :: sample(:,:)
 !        integer(IK)             , intent(in)                        :: dim
-!        real(TKC)                                                   :: tau(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
+!        real(TKG)                                                   :: tau(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
 !    end function
 !#endif
 !
@@ -13838,10 +13838,10 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getTauWNO_ULD_SK1
 !#endif
-!        use pm_kind, only: TKC => RK, SKC => SK1
-!        character(*,SKC)        , intent(in)    , contiguous        :: sample(:,:)
+!        use pm_kind, only: TKG => RK, SKG => SK1
+!        character(*,SKG)        , intent(in)    , contiguous        :: sample(:,:)
 !        integer(IK)             , intent(in)                        :: dim
-!        real(TKC)                                                   :: tau(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
+!        real(TKG)                                                   :: tau(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
 !    end function
 !#endif
 !
@@ -13852,10 +13852,10 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getTauWNO_ULD_IK5
 !#endif
-!        use pm_kind, only: TKC => RK, IKC => IK5
-!        integer(IKC)            , intent(in)    , contiguous        :: sample(:,:)
+!        use pm_kind, only: TKG => RK, IKG => IK5
+!        integer(IKG)            , intent(in)    , contiguous        :: sample(:,:)
 !        integer(IK)             , intent(in)                        :: dim
-!        real(TKC)                                                   :: tau(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
+!        real(TKG)                                                   :: tau(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
 !    end function
 !#endif
 !
@@ -13864,10 +13864,10 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getTauWNO_ULD_IK4
 !#endif
-!        use pm_kind, only: TKC => RK, IKC => IK4
-!        integer(IKC)            , intent(in)    , contiguous        :: sample(:,:)
+!        use pm_kind, only: TKG => RK, IKG => IK4
+!        integer(IKG)            , intent(in)    , contiguous        :: sample(:,:)
 !        integer(IK)             , intent(in)                        :: dim
-!        real(TKC)                                                   :: tau(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
+!        real(TKG)                                                   :: tau(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
 !    end function
 !#endif
 !
@@ -13876,10 +13876,10 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getTauWNO_ULD_IK3
 !#endif
-!        use pm_kind, only: TKC => RK, IKC => IK3
-!        integer(IKC)            , intent(in)    , contiguous        :: sample(:,:)
+!        use pm_kind, only: TKG => RK, IKG => IK3
+!        integer(IKG)            , intent(in)    , contiguous        :: sample(:,:)
 !        integer(IK)             , intent(in)                        :: dim
-!        real(TKC)                                                   :: tau(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
+!        real(TKG)                                                   :: tau(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
 !    end function
 !#endif
 !
@@ -13888,10 +13888,10 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getTauWNO_ULD_IK2
 !#endif
-!        use pm_kind, only: TKC => RK, IKC => IK2
-!        integer(IKC)            , intent(in)    , contiguous        :: sample(:,:)
+!        use pm_kind, only: TKG => RK, IKG => IK2
+!        integer(IKG)            , intent(in)    , contiguous        :: sample(:,:)
 !        integer(IK)             , intent(in)                        :: dim
-!        real(TKC)                                                   :: tau(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
+!        real(TKG)                                                   :: tau(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
 !    end function
 !#endif
 !
@@ -13900,10 +13900,10 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getTauWNO_ULD_IK1
 !#endif
-!        use pm_kind, only: TKC => RK, IKC => IK1
-!        integer(IKC)            , intent(in)    , contiguous        :: sample(:,:)
+!        use pm_kind, only: TKG => RK, IKG => IK1
+!        integer(IKG)            , intent(in)    , contiguous        :: sample(:,:)
 !        integer(IK)             , intent(in)                        :: dim
-!        real(TKC)                                                   :: tau(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
+!        real(TKG)                                                   :: tau(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
 !    end function
 !#endif
 !
@@ -13914,10 +13914,10 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getTauWNO_ULD_RK5
 !#endif
-!        use pm_kind, only: TKC => RK5
-!        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
+!        use pm_kind, only: TKG => RK5
+!        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
 !        integer(IK)             , intent(in)                        :: dim
-!        real(TKC)                                                   :: tau(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
+!        real(TKG)                                                   :: tau(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
 !    end function
 !#endif
 !
@@ -13926,10 +13926,10 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getTauWNO_ULD_RK4
 !#endif
-!        use pm_kind, only: TKC => RK4
-!        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
+!        use pm_kind, only: TKG => RK4
+!        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
 !        integer(IK)             , intent(in)                        :: dim
-!        real(TKC)                                                   :: tau(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
+!        real(TKG)                                                   :: tau(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
 !    end function
 !#endif
 !
@@ -13938,10 +13938,10 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getTauWNO_ULD_RK3
 !#endif
-!        use pm_kind, only: TKC => RK3
-!        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
+!        use pm_kind, only: TKG => RK3
+!        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
 !        integer(IK)             , intent(in)                        :: dim
-!        real(TKC)                                                   :: tau(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
+!        real(TKG)                                                   :: tau(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
 !    end function
 !#endif
 !
@@ -13950,10 +13950,10 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getTauWNO_ULD_RK2
 !#endif
-!        use pm_kind, only: TKC => RK2
-!        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
+!        use pm_kind, only: TKG => RK2
+!        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
 !        integer(IK)             , intent(in)                        :: dim
-!        real(TKC)                                                   :: tau(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
+!        real(TKG)                                                   :: tau(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
 !    end function
 !#endif
 !
@@ -13962,10 +13962,10 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getTauWNO_ULD_RK1
 !#endif
-!        use pm_kind, only: TKC => RK1
-!        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
+!        use pm_kind, only: TKG => RK1
+!        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
 !        integer(IK)             , intent(in)                        :: dim
-!        real(TKC)                                                   :: tau(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
+!        real(TKG)                                                   :: tau(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
 !    end function
 !#endif
 !
@@ -13978,10 +13978,10 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getTauWNO_ULD_PSSK5
 !#endif
-!        use pm_kind, only: TKC => RK, SKC => SK5
-!        type(css_pdt(SKC))      , intent(in)    , contiguous        :: sample(:,:)
+!        use pm_kind, only: TKG => RK, SKG => SK5
+!        type(css_pdt(SKG))      , intent(in)    , contiguous        :: sample(:,:)
 !        integer(IK)             , intent(in)                        :: dim
-!        real(TKC)                                                   :: tau(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
+!        real(TKG)                                                   :: tau(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
 !    end function
 !#endif
 !
@@ -13990,10 +13990,10 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getTauWNO_ULD_PSSK4
 !#endif
-!        use pm_kind, only: TKC => RK, SKC => SK4
-!        type(css_pdt(SKC))      , intent(in)    , contiguous        :: sample(:,:)
+!        use pm_kind, only: TKG => RK, SKG => SK4
+!        type(css_pdt(SKG))      , intent(in)    , contiguous        :: sample(:,:)
 !        integer(IK)             , intent(in)                        :: dim
-!        real(TKC)                                                   :: tau(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
+!        real(TKG)                                                   :: tau(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
 !    end function
 !#endif
 !
@@ -14002,10 +14002,10 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getTauWNO_ULD_PSSK3
 !#endif
-!        use pm_kind, only: TKC => RK, SKC => SK3
-!        type(css_pdt(SKC))      , intent(in)    , contiguous        :: sample(:,:)
+!        use pm_kind, only: TKG => RK, SKG => SK3
+!        type(css_pdt(SKG))      , intent(in)    , contiguous        :: sample(:,:)
 !        integer(IK)             , intent(in)                        :: dim
-!        real(TKC)                                                   :: tau(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
+!        real(TKG)                                                   :: tau(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
 !    end function
 !#endif
 !
@@ -14014,10 +14014,10 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getTauWNO_ULD_PSSK2
 !#endif
-!        use pm_kind, only: TKC => RK, SKC => SK2
-!        type(css_pdt(SKC))      , intent(in)    , contiguous        :: sample(:,:)
+!        use pm_kind, only: TKG => RK, SKG => SK2
+!        type(css_pdt(SKG))      , intent(in)    , contiguous        :: sample(:,:)
 !        integer(IK)             , intent(in)                        :: dim
-!        real(TKC)                                                   :: tau(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
+!        real(TKG)                                                   :: tau(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
 !    end function
 !#endif
 !
@@ -14026,10 +14026,10 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getTauWNO_ULD_PSSK1
 !#endif
-!        use pm_kind, only: TKC => RK, SKC => SK1
-!        type(css_pdt(SKC))      , intent(in)    , contiguous        :: sample(:,:)
+!        use pm_kind, only: TKG => RK, SKG => SK1
+!        type(css_pdt(SKG))      , intent(in)    , contiguous        :: sample(:,:)
 !        integer(IK)             , intent(in)                        :: dim
-!        real(TKC)                                                   :: tau(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
+!        real(TKG)                                                   :: tau(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
 !    end function
 !#endif
 !
@@ -14044,7 +14044,7 @@ module pm_sampleCor
 !#endif
 !        type(css_type)          , intent(in)    , contiguous        :: sample(:,:)
 !        integer(IK)             , intent(in)                        :: dim
-!        real(TKC)                                                   :: tau(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
+!        real(TKG)                                                   :: tau(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
 !    end function
 !
 !    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -14062,11 +14062,11 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getTauWTI_ULD_SK5
 !#endif
-!        use pm_kind, only: TKC => RK, SKC => SK5
+!        use pm_kind, only: TKG => RK, SKG => SK5
 !        integer(IK)             , intent(in)    , contiguous        :: weight(:)
-!        character(*,SKC)        , intent(in)    , contiguous        :: sample(:,:)
+!        character(*,SKG)        , intent(in)    , contiguous        :: sample(:,:)
 !        integer(IK)             , intent(in)                        :: dim
-!        real(TKC)                                                   :: tau(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
+!        real(TKG)                                                   :: tau(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
 !    end function
 !#endif
 !
@@ -14075,11 +14075,11 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getTauWTI_ULD_SK4
 !#endif
-!        use pm_kind, only: TKC => RK, SKC => SK4
+!        use pm_kind, only: TKG => RK, SKG => SK4
 !        integer(IK)             , intent(in)    , contiguous        :: weight(:)
-!        character(*,SKC)        , intent(in)    , contiguous        :: sample(:,:)
+!        character(*,SKG)        , intent(in)    , contiguous        :: sample(:,:)
 !        integer(IK)             , intent(in)                        :: dim
-!        real(TKC)                                                   :: tau(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
+!        real(TKG)                                                   :: tau(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
 !    end function
 !#endif
 !
@@ -14088,11 +14088,11 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getTauWTI_ULD_SK3
 !#endif
-!        use pm_kind, only: TKC => RK, SKC => SK3
+!        use pm_kind, only: TKG => RK, SKG => SK3
 !        integer(IK)             , intent(in)    , contiguous        :: weight(:)
-!        character(*,SKC)        , intent(in)    , contiguous        :: sample(:,:)
+!        character(*,SKG)        , intent(in)    , contiguous        :: sample(:,:)
 !        integer(IK)             , intent(in)                        :: dim
-!        real(TKC)                                                   :: tau(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
+!        real(TKG)                                                   :: tau(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
 !    end function
 !#endif
 !
@@ -14101,11 +14101,11 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getTauWTI_ULD_SK2
 !#endif
-!        use pm_kind, only: TKC => RK, SKC => SK2
+!        use pm_kind, only: TKG => RK, SKG => SK2
 !        integer(IK)             , intent(in)    , contiguous        :: weight(:)
-!        character(*,SKC)        , intent(in)    , contiguous        :: sample(:,:)
+!        character(*,SKG)        , intent(in)    , contiguous        :: sample(:,:)
 !        integer(IK)             , intent(in)                        :: dim
-!        real(TKC)                                                   :: tau(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
+!        real(TKG)                                                   :: tau(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
 !    end function
 !#endif
 !
@@ -14114,11 +14114,11 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getTauWTI_ULD_SK1
 !#endif
-!        use pm_kind, only: TKC => RK, SKC => SK1
+!        use pm_kind, only: TKG => RK, SKG => SK1
 !        integer(IK)             , intent(in)    , contiguous        :: weight(:)
-!        character(*,SKC)        , intent(in)    , contiguous        :: sample(:,:)
+!        character(*,SKG)        , intent(in)    , contiguous        :: sample(:,:)
 !        integer(IK)             , intent(in)                        :: dim
-!        real(TKC)                                                   :: tau(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
+!        real(TKG)                                                   :: tau(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
 !    end function
 !#endif
 !
@@ -14129,11 +14129,11 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getTauWTI_ULD_IK5
 !#endif
-!        use pm_kind, only: TKC => RK, IKC => IK5
+!        use pm_kind, only: TKG => RK, IKG => IK5
 !        integer(IK)             , intent(in)    , contiguous        :: weight(:)
-!        integer(IKC)            , intent(in)    , contiguous        :: sample(:,:)
+!        integer(IKG)            , intent(in)    , contiguous        :: sample(:,:)
 !        integer(IK)             , intent(in)                        :: dim
-!        real(TKC)                                                   :: tau(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
+!        real(TKG)                                                   :: tau(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
 !    end function
 !#endif
 !
@@ -14142,11 +14142,11 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getTauWTI_ULD_IK4
 !#endif
-!        use pm_kind, only: TKC => RK, IKC => IK4
+!        use pm_kind, only: TKG => RK, IKG => IK4
 !        integer(IK)             , intent(in)    , contiguous        :: weight(:)
-!        integer(IKC)            , intent(in)    , contiguous        :: sample(:,:)
+!        integer(IKG)            , intent(in)    , contiguous        :: sample(:,:)
 !        integer(IK)             , intent(in)                        :: dim
-!        real(TKC)                                                   :: tau(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
+!        real(TKG)                                                   :: tau(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
 !    end function
 !#endif
 !
@@ -14155,11 +14155,11 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getTauWTI_ULD_IK3
 !#endif
-!        use pm_kind, only: TKC => RK, IKC => IK3
+!        use pm_kind, only: TKG => RK, IKG => IK3
 !        integer(IK)             , intent(in)    , contiguous        :: weight(:)
-!        integer(IKC)            , intent(in)    , contiguous        :: sample(:,:)
+!        integer(IKG)            , intent(in)    , contiguous        :: sample(:,:)
 !        integer(IK)             , intent(in)                        :: dim
-!        real(TKC)                                                   :: tau(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
+!        real(TKG)                                                   :: tau(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
 !    end function
 !#endif
 !
@@ -14168,11 +14168,11 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getTauWTI_ULD_IK2
 !#endif
-!        use pm_kind, only: TKC => RK, IKC => IK2
+!        use pm_kind, only: TKG => RK, IKG => IK2
 !        integer(IK)             , intent(in)    , contiguous        :: weight(:)
-!        integer(IKC)            , intent(in)    , contiguous        :: sample(:,:)
+!        integer(IKG)            , intent(in)    , contiguous        :: sample(:,:)
 !        integer(IK)             , intent(in)                        :: dim
-!        real(TKC)                                                   :: tau(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
+!        real(TKG)                                                   :: tau(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
 !    end function
 !#endif
 !
@@ -14181,11 +14181,11 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getTauWTI_ULD_IK1
 !#endif
-!        use pm_kind, only: TKC => RK, IKC => IK1
+!        use pm_kind, only: TKG => RK, IKG => IK1
 !        integer(IK)             , intent(in)    , contiguous        :: weight(:)
-!        integer(IKC)            , intent(in)    , contiguous        :: sample(:,:)
+!        integer(IKG)            , intent(in)    , contiguous        :: sample(:,:)
 !        integer(IK)             , intent(in)                        :: dim
-!        real(TKC)                                                   :: tau(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
+!        real(TKG)                                                   :: tau(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
 !    end function
 !#endif
 !
@@ -14196,11 +14196,11 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getTauWTI_ULD_RK5
 !#endif
-!        use pm_kind, only: TKC => RK5
+!        use pm_kind, only: TKG => RK5
 !        integer(IK)             , intent(in)    , contiguous        :: weight(:)
-!        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
+!        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
 !        integer(IK)             , intent(in)                        :: dim
-!        real(TKC)                                                   :: tau(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
+!        real(TKG)                                                   :: tau(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
 !    end function
 !#endif
 !
@@ -14209,11 +14209,11 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getTauWTI_ULD_RK4
 !#endif
-!        use pm_kind, only: TKC => RK4
+!        use pm_kind, only: TKG => RK4
 !        integer(IK)             , intent(in)    , contiguous        :: weight(:)
-!        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
+!        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
 !        integer(IK)             , intent(in)                        :: dim
-!        real(TKC)                                                   :: tau(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
+!        real(TKG)                                                   :: tau(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
 !    end function
 !#endif
 !
@@ -14222,11 +14222,11 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getTauWTI_ULD_RK3
 !#endif
-!        use pm_kind, only: TKC => RK3
+!        use pm_kind, only: TKG => RK3
 !        integer(IK)             , intent(in)    , contiguous        :: weight(:)
-!        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
+!        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
 !        integer(IK)             , intent(in)                        :: dim
-!        real(TKC)                                                   :: tau(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
+!        real(TKG)                                                   :: tau(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
 !    end function
 !#endif
 !
@@ -14235,11 +14235,11 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getTauWTI_ULD_RK2
 !#endif
-!        use pm_kind, only: TKC => RK2
+!        use pm_kind, only: TKG => RK2
 !        integer(IK)             , intent(in)    , contiguous        :: weight(:)
-!        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
+!        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
 !        integer(IK)             , intent(in)                        :: dim
-!        real(TKC)                                                   :: tau(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
+!        real(TKG)                                                   :: tau(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
 !    end function
 !#endif
 !
@@ -14248,11 +14248,11 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getTauWTI_ULD_RK1
 !#endif
-!        use pm_kind, only: TKC => RK1
+!        use pm_kind, only: TKG => RK1
 !        integer(IK)             , intent(in)    , contiguous        :: weight(:)
-!        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
+!        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
 !        integer(IK)             , intent(in)                        :: dim
-!        real(TKC)                                                   :: tau(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
+!        real(TKG)                                                   :: tau(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
 !    end function
 !#endif
 !
@@ -14265,11 +14265,11 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getTauWTI_ULD_PSSK5
 !#endif
-!        use pm_kind, only: TKC => RK, SKC => SK5
+!        use pm_kind, only: TKG => RK, SKG => SK5
 !        integer(IK)             , intent(in)    , contiguous        :: weight(:)
-!        type(css_pdt(SKC))      , intent(in)    , contiguous        :: sample(:,:)
+!        type(css_pdt(SKG))      , intent(in)    , contiguous        :: sample(:,:)
 !        integer(IK)             , intent(in)                        :: dim
-!        real(TKC)                                                   :: tau(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
+!        real(TKG)                                                   :: tau(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
 !    end function
 !#endif
 !
@@ -14278,11 +14278,11 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getTauWTI_ULD_PSSK4
 !#endif
-!        use pm_kind, only: TKC => RK, SKC => SK4
+!        use pm_kind, only: TKG => RK, SKG => SK4
 !        integer(IK)             , intent(in)    , contiguous        :: weight(:)
-!        type(css_pdt(SKC))      , intent(in)    , contiguous        :: sample(:,:)
+!        type(css_pdt(SKG))      , intent(in)    , contiguous        :: sample(:,:)
 !        integer(IK)             , intent(in)                        :: dim
-!        real(TKC)                                                   :: tau(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
+!        real(TKG)                                                   :: tau(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
 !    end function
 !#endif
 !
@@ -14291,11 +14291,11 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getTauWTI_ULD_PSSK3
 !#endif
-!        use pm_kind, only: TKC => RK, SKC => SK3
+!        use pm_kind, only: TKG => RK, SKG => SK3
 !        integer(IK)             , intent(in)    , contiguous        :: weight(:)
-!        type(css_pdt(SKC))      , intent(in)    , contiguous        :: sample(:,:)
+!        type(css_pdt(SKG))      , intent(in)    , contiguous        :: sample(:,:)
 !        integer(IK)             , intent(in)                        :: dim
-!        real(TKC)                                                   :: tau(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
+!        real(TKG)                                                   :: tau(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
 !    end function
 !#endif
 !
@@ -14304,11 +14304,11 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getTauWTI_ULD_PSSK2
 !#endif
-!        use pm_kind, only: TKC => RK, SKC => SK2
+!        use pm_kind, only: TKG => RK, SKG => SK2
 !        integer(IK)             , intent(in)    , contiguous        :: weight(:)
-!        type(css_pdt(SKC))      , intent(in)    , contiguous        :: sample(:,:)
+!        type(css_pdt(SKG))      , intent(in)    , contiguous        :: sample(:,:)
 !        integer(IK)             , intent(in)                        :: dim
-!        real(TKC)                                                   :: tau(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
+!        real(TKG)                                                   :: tau(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
 !    end function
 !#endif
 !
@@ -14317,11 +14317,11 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getTauWTI_ULD_PSSK1
 !#endif
-!        use pm_kind, only: TKC => RK, SKC => SK1
+!        use pm_kind, only: TKG => RK, SKG => SK1
 !        integer(IK)             , intent(in)    , contiguous        :: weight(:)
-!        type(css_pdt(SKC))      , intent(in)    , contiguous        :: sample(:,:)
+!        type(css_pdt(SKG))      , intent(in)    , contiguous        :: sample(:,:)
 !        integer(IK)             , intent(in)                        :: dim
-!        real(TKC)                                                   :: tau(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
+!        real(TKG)                                                   :: tau(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
 !    end function
 !#endif
 !
@@ -14337,7 +14337,7 @@ module pm_sampleCor
 !        integer(IK)             , intent(in)    , contiguous        :: weight(:)
 !        type(css_type)          , intent(in)    , contiguous        :: sample(:,:)
 !        integer(IK)             , intent(in)                        :: dim
-!        real(TKC)                                                   :: tau(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
+!        real(TKG)                                                   :: tau(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
 !    end function
 !
 !    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -14355,11 +14355,11 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getTauWTR_ULD_SK5
 !#endif
-!        use pm_kind, only: TKC => RK, SKC => SK5
-!        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-!        character(*,SKC)        , intent(in)    , contiguous        :: sample(:,:)
+!        use pm_kind, only: TKG => RK, SKG => SK5
+!        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+!        character(*,SKG)        , intent(in)    , contiguous        :: sample(:,:)
 !        integer(IK)             , intent(in)                        :: dim
-!        real(TKC)                                                   :: tau(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
+!        real(TKG)                                                   :: tau(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
 !    end function
 !#endif
 !
@@ -14368,11 +14368,11 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getTauWTR_ULD_SK4
 !#endif
-!        use pm_kind, only: TKC => RK, SKC => SK4
-!        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-!        character(*,SKC)        , intent(in)    , contiguous        :: sample(:,:)
+!        use pm_kind, only: TKG => RK, SKG => SK4
+!        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+!        character(*,SKG)        , intent(in)    , contiguous        :: sample(:,:)
 !        integer(IK)             , intent(in)                        :: dim
-!        real(TKC)                                                   :: tau(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
+!        real(TKG)                                                   :: tau(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
 !    end function
 !#endif
 !
@@ -14381,11 +14381,11 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getTauWTR_ULD_SK3
 !#endif
-!        use pm_kind, only: TKC => RK, SKC => SK3
-!        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-!        character(*,SKC)        , intent(in)    , contiguous        :: sample(:,:)
+!        use pm_kind, only: TKG => RK, SKG => SK3
+!        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+!        character(*,SKG)        , intent(in)    , contiguous        :: sample(:,:)
 !        integer(IK)             , intent(in)                        :: dim
-!        real(TKC)                                                   :: tau(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
+!        real(TKG)                                                   :: tau(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
 !    end function
 !#endif
 !
@@ -14394,11 +14394,11 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getTauWTR_ULD_SK2
 !#endif
-!        use pm_kind, only: TKC => RK, SKC => SK2
-!        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-!        character(*,SKC)        , intent(in)    , contiguous        :: sample(:,:)
+!        use pm_kind, only: TKG => RK, SKG => SK2
+!        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+!        character(*,SKG)        , intent(in)    , contiguous        :: sample(:,:)
 !        integer(IK)             , intent(in)                        :: dim
-!        real(TKC)                                                   :: tau(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
+!        real(TKG)                                                   :: tau(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
 !    end function
 !#endif
 !
@@ -14407,11 +14407,11 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getTauWTR_ULD_SK1
 !#endif
-!        use pm_kind, only: TKC => RK, SKC => SK1
-!        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-!        character(*,SKC)        , intent(in)    , contiguous        :: sample(:,:)
+!        use pm_kind, only: TKG => RK, SKG => SK1
+!        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+!        character(*,SKG)        , intent(in)    , contiguous        :: sample(:,:)
 !        integer(IK)             , intent(in)                        :: dim
-!        real(TKC)                                                   :: tau(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
+!        real(TKG)                                                   :: tau(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
 !    end function
 !#endif
 !
@@ -14422,11 +14422,11 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getTauWTR_ULD_IK5
 !#endif
-!        use pm_kind, only: TKC => RK, IKC => IK5
-!        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-!        integer(IKC)            , intent(in)    , contiguous        :: sample(:,:)
+!        use pm_kind, only: TKG => RK, IKG => IK5
+!        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+!        integer(IKG)            , intent(in)    , contiguous        :: sample(:,:)
 !        integer(IK)             , intent(in)                        :: dim
-!        real(TKC)                                                   :: tau(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
+!        real(TKG)                                                   :: tau(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
 !    end function
 !#endif
 !
@@ -14435,11 +14435,11 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getTauWTR_ULD_IK4
 !#endif
-!        use pm_kind, only: TKC => RK, IKC => IK4
-!        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-!        integer(IKC)            , intent(in)    , contiguous        :: sample(:,:)
+!        use pm_kind, only: TKG => RK, IKG => IK4
+!        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+!        integer(IKG)            , intent(in)    , contiguous        :: sample(:,:)
 !        integer(IK)             , intent(in)                        :: dim
-!        real(TKC)                                                   :: tau(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
+!        real(TKG)                                                   :: tau(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
 !    end function
 !#endif
 !
@@ -14448,11 +14448,11 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getTauWTR_ULD_IK3
 !#endif
-!        use pm_kind, only: TKC => RK, IKC => IK3
-!        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-!        integer(IKC)            , intent(in)    , contiguous        :: sample(:,:)
+!        use pm_kind, only: TKG => RK, IKG => IK3
+!        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+!        integer(IKG)            , intent(in)    , contiguous        :: sample(:,:)
 !        integer(IK)             , intent(in)                        :: dim
-!        real(TKC)                                                   :: tau(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
+!        real(TKG)                                                   :: tau(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
 !    end function
 !#endif
 !
@@ -14461,11 +14461,11 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getTauWTR_ULD_IK2
 !#endif
-!        use pm_kind, only: TKC => RK, IKC => IK2
-!        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-!        integer(IKC)            , intent(in)    , contiguous        :: sample(:,:)
+!        use pm_kind, only: TKG => RK, IKG => IK2
+!        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+!        integer(IKG)            , intent(in)    , contiguous        :: sample(:,:)
 !        integer(IK)             , intent(in)                        :: dim
-!        real(TKC)                                                   :: tau(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
+!        real(TKG)                                                   :: tau(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
 !    end function
 !#endif
 !
@@ -14474,11 +14474,11 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getTauWTR_ULD_IK1
 !#endif
-!        use pm_kind, only: TKC => RK, IKC => IK1
-!        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-!        integer(IKC)            , intent(in)    , contiguous        :: sample(:,:)
+!        use pm_kind, only: TKG => RK, IKG => IK1
+!        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+!        integer(IKG)            , intent(in)    , contiguous        :: sample(:,:)
 !        integer(IK)             , intent(in)                        :: dim
-!        real(TKC)                                                   :: tau(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
+!        real(TKG)                                                   :: tau(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
 !    end function
 !#endif
 !
@@ -14489,11 +14489,11 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getTauWTR_ULD_RK5
 !#endif
-!        use pm_kind, only: TKC => RK5
-!        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-!        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
+!        use pm_kind, only: TKG => RK5
+!        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+!        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
 !        integer(IK)             , intent(in)                        :: dim
-!        real(TKC)                                                   :: tau(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
+!        real(TKG)                                                   :: tau(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
 !    end function
 !#endif
 !
@@ -14502,11 +14502,11 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getTauWTR_ULD_RK4
 !#endif
-!        use pm_kind, only: TKC => RK4
-!        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-!        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
+!        use pm_kind, only: TKG => RK4
+!        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+!        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
 !        integer(IK)             , intent(in)                        :: dim
-!        real(TKC)                                                   :: tau(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
+!        real(TKG)                                                   :: tau(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
 !    end function
 !#endif
 !
@@ -14515,11 +14515,11 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getTauWTR_ULD_RK3
 !#endif
-!        use pm_kind, only: TKC => RK3
-!        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-!        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
+!        use pm_kind, only: TKG => RK3
+!        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+!        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
 !        integer(IK)             , intent(in)                        :: dim
-!        real(TKC)                                                   :: tau(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
+!        real(TKG)                                                   :: tau(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
 !    end function
 !#endif
 !
@@ -14528,11 +14528,11 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getTauWTR_ULD_RK2
 !#endif
-!        use pm_kind, only: TKC => RK2
-!        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-!        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
+!        use pm_kind, only: TKG => RK2
+!        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+!        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
 !        integer(IK)             , intent(in)                        :: dim
-!        real(TKC)                                                   :: tau(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
+!        real(TKG)                                                   :: tau(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
 !    end function
 !#endif
 !
@@ -14541,11 +14541,11 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getTauWTR_ULD_RK1
 !#endif
-!        use pm_kind, only: TKC => RK1
-!        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-!        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
+!        use pm_kind, only: TKG => RK1
+!        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+!        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
 !        integer(IK)             , intent(in)                        :: dim
-!        real(TKC)                                                   :: tau(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
+!        real(TKG)                                                   :: tau(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
 !    end function
 !#endif
 !
@@ -14558,11 +14558,11 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getTauWTR_ULD_PSSK5
 !#endif
-!        use pm_kind, only: TKC => RK, SKC => SK5
-!        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-!        type(css_pdt(SKC))      , intent(in)    , contiguous        :: sample(:,:)
+!        use pm_kind, only: TKG => RK, SKG => SK5
+!        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+!        type(css_pdt(SKG))      , intent(in)    , contiguous        :: sample(:,:)
 !        integer(IK)             , intent(in)                        :: dim
-!        real(TKC)                                                   :: tau(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
+!        real(TKG)                                                   :: tau(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
 !    end function
 !#endif
 !
@@ -14571,11 +14571,11 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getTauWTR_ULD_PSSK4
 !#endif
-!        use pm_kind, only: TKC => RK, SKC => SK4
-!        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-!        type(css_pdt(SKC))      , intent(in)    , contiguous        :: sample(:,:)
+!        use pm_kind, only: TKG => RK, SKG => SK4
+!        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+!        type(css_pdt(SKG))      , intent(in)    , contiguous        :: sample(:,:)
 !        integer(IK)             , intent(in)                        :: dim
-!        real(TKC)                                                   :: tau(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
+!        real(TKG)                                                   :: tau(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
 !    end function
 !#endif
 !
@@ -14584,11 +14584,11 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getTauWTR_ULD_PSSK3
 !#endif
-!        use pm_kind, only: TKC => RK, SKC => SK3
-!        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-!        type(css_pdt(SKC))      , intent(in)    , contiguous        :: sample(:,:)
+!        use pm_kind, only: TKG => RK, SKG => SK3
+!        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+!        type(css_pdt(SKG))      , intent(in)    , contiguous        :: sample(:,:)
 !        integer(IK)             , intent(in)                        :: dim
-!        real(TKC)                                                   :: tau(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
+!        real(TKG)                                                   :: tau(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
 !    end function
 !#endif
 !
@@ -14597,11 +14597,11 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getTauWTR_ULD_PSSK2
 !#endif
-!        use pm_kind, only: TKC => RK, SKC => SK2
-!        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-!        type(css_pdt(SKC))      , intent(in)    , contiguous        :: sample(:,:)
+!        use pm_kind, only: TKG => RK, SKG => SK2
+!        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+!        type(css_pdt(SKG))      , intent(in)    , contiguous        :: sample(:,:)
 !        integer(IK)             , intent(in)                        :: dim
-!        real(TKC)                                                   :: tau(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
+!        real(TKG)                                                   :: tau(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
 !    end function
 !#endif
 !
@@ -14610,11 +14610,11 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getTauWTR_ULD_PSSK1
 !#endif
-!        use pm_kind, only: TKC => RK, SKC => SK1
-!        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-!        type(css_pdt(SKC))      , intent(in)    , contiguous        :: sample(:,:)
+!        use pm_kind, only: TKG => RK, SKG => SK1
+!        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+!        type(css_pdt(SKG))      , intent(in)    , contiguous        :: sample(:,:)
 !        integer(IK)             , intent(in)                        :: dim
-!        real(TKC)                                                   :: tau(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
+!        real(TKG)                                                   :: tau(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
 !    end function
 !#endif
 !
@@ -14627,10 +14627,10 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getTauWTR_ULD_BSSK
 !#endif
-!        real(TKC)               , intent(in)    , contiguous        :: weight(:)
+!        real(TKG)               , intent(in)    , contiguous        :: weight(:)
 !        type(css_type)          , intent(in)    , contiguous        :: sample(:,:)
 !        integer(IK)             , intent(in)                        :: dim
-!        real(TKC)                                                   :: tau(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
+!        real(TKG)                                                   :: tau(size(sample, 3 - dim, IK), size(sample, 3 - dim, IK))
 !    end function
 !
 !    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -14804,10 +14804,10 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setTauWNO_XY_D0_SK5
 !#endif
-!        use pm_kind, only: TKC => RK, SKC => SK5
-!        character(*,SKC)        , intent(in)                        :: x, y
-!        real(TKC)               , intent(out)   , contiguous        :: frankx(:), franky(:)
-!        real(TKC)               , intent(out)                       :: tau
+!        use pm_kind, only: TKG => RK, SKG => SK5
+!        character(*,SKG)        , intent(in)                        :: x, y
+!        real(TKG)               , intent(out)   , contiguous        :: frankx(:), franky(:)
+!        real(TKG)               , intent(out)                       :: tau
 !    end subroutine
 !#endif
 !
@@ -14816,10 +14816,10 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setTauWNO_XY_D0_SK4
 !#endif
-!        use pm_kind, only: TKC => RK, SKC => SK4
-!        character(*,SKC)        , intent(in)                        :: x, y
-!        real(TKC)               , intent(out)   , contiguous        :: frankx(:), franky(:)
-!        real(TKC)               , intent(out)                       :: tau
+!        use pm_kind, only: TKG => RK, SKG => SK4
+!        character(*,SKG)        , intent(in)                        :: x, y
+!        real(TKG)               , intent(out)   , contiguous        :: frankx(:), franky(:)
+!        real(TKG)               , intent(out)                       :: tau
 !    end subroutine
 !#endif
 !
@@ -14828,10 +14828,10 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setTauWNO_XY_D0_SK3
 !#endif
-!        use pm_kind, only: TKC => RK, SKC => SK3
-!        character(*,SKC)        , intent(in)                        :: x, y
-!        real(TKC)               , intent(out)   , contiguous        :: frankx(:), franky(:)
-!        real(TKC)               , intent(out)                       :: tau
+!        use pm_kind, only: TKG => RK, SKG => SK3
+!        character(*,SKG)        , intent(in)                        :: x, y
+!        real(TKG)               , intent(out)   , contiguous        :: frankx(:), franky(:)
+!        real(TKG)               , intent(out)                       :: tau
 !    end subroutine
 !#endif
 !
@@ -14840,10 +14840,10 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setTauWNO_XY_D0_SK2
 !#endif
-!        use pm_kind, only: TKC => RK, SKC => SK2
-!        character(*,SKC)        , intent(in)                        :: x, y
-!        real(TKC)               , intent(out)   , contiguous        :: frankx(:), franky(:)
-!        real(TKC)               , intent(out)                       :: tau
+!        use pm_kind, only: TKG => RK, SKG => SK2
+!        character(*,SKG)        , intent(in)                        :: x, y
+!        real(TKG)               , intent(out)   , contiguous        :: frankx(:), franky(:)
+!        real(TKG)               , intent(out)                       :: tau
 !    end subroutine
 !#endif
 !
@@ -14852,10 +14852,10 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setTauWNO_XY_D0_SK1
 !#endif
-!        use pm_kind, only: TKC => RK, SKC => SK1
-!        character(*,SKC)        , intent(in)                        :: x, y
-!        real(TKC)               , intent(out)   , contiguous        :: frankx(:), franky(:)
-!        real(TKC)               , intent(out)                       :: tau
+!        use pm_kind, only: TKG => RK, SKG => SK1
+!        character(*,SKG)        , intent(in)                        :: x, y
+!        real(TKG)               , intent(out)   , contiguous        :: frankx(:), franky(:)
+!        real(TKG)               , intent(out)                       :: tau
 !    end subroutine
 !#endif
 !
@@ -14866,10 +14866,10 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setTauWNO_XY_D1_SK5
 !#endif
-!        use pm_kind, only: TKC => RK, SKC => SK5
-!        character(*,SKC)        , intent(in)    , contiguous        :: x(:), y(:)
-!        real(TKC)               , intent(out)   , contiguous        :: frankx(:), franky(:)
-!        real(TKC)               , intent(out)                       :: tau
+!        use pm_kind, only: TKG => RK, SKG => SK5
+!        character(*,SKG)        , intent(in)    , contiguous        :: x(:), y(:)
+!        real(TKG)               , intent(out)   , contiguous        :: frankx(:), franky(:)
+!        real(TKG)               , intent(out)                       :: tau
 !    end subroutine
 !#endif
 !
@@ -14878,10 +14878,10 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setTauWNO_XY_D1_SK4
 !#endif
-!        use pm_kind, only: TKC => RK, SKC => SK4
-!        character(*,SKC)        , intent(in)    , contiguous        :: x(:), y(:)
-!        real(TKC)               , intent(out)   , contiguous        :: frankx(:), franky(:)
-!        real(TKC)               , intent(out)                       :: tau
+!        use pm_kind, only: TKG => RK, SKG => SK4
+!        character(*,SKG)        , intent(in)    , contiguous        :: x(:), y(:)
+!        real(TKG)               , intent(out)   , contiguous        :: frankx(:), franky(:)
+!        real(TKG)               , intent(out)                       :: tau
 !    end subroutine
 !#endif
 !
@@ -14890,10 +14890,10 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setTauWNO_XY_D1_SK3
 !#endif
-!        use pm_kind, only: TKC => RK, SKC => SK3
-!        character(*,SKC)        , intent(in)    , contiguous        :: x(:), y(:)
-!        real(TKC)               , intent(out)   , contiguous        :: frankx(:), franky(:)
-!        real(TKC)               , intent(out)                       :: tau
+!        use pm_kind, only: TKG => RK, SKG => SK3
+!        character(*,SKG)        , intent(in)    , contiguous        :: x(:), y(:)
+!        real(TKG)               , intent(out)   , contiguous        :: frankx(:), franky(:)
+!        real(TKG)               , intent(out)                       :: tau
 !    end subroutine
 !#endif
 !
@@ -14902,10 +14902,10 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setTauWNO_XY_D1_SK2
 !#endif
-!        use pm_kind, only: TKC => RK, SKC => SK2
-!        character(*,SKC)        , intent(in)    , contiguous        :: x(:), y(:)
-!        real(TKC)               , intent(out)   , contiguous        :: frankx(:), franky(:)
-!        real(TKC)               , intent(out)                       :: tau
+!        use pm_kind, only: TKG => RK, SKG => SK2
+!        character(*,SKG)        , intent(in)    , contiguous        :: x(:), y(:)
+!        real(TKG)               , intent(out)   , contiguous        :: frankx(:), franky(:)
+!        real(TKG)               , intent(out)                       :: tau
 !    end subroutine
 !#endif
 !
@@ -14914,10 +14914,10 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setTauWNO_XY_D1_SK1
 !#endif
-!        use pm_kind, only: TKC => RK, SKC => SK1
-!        character(*,SKC)        , intent(in)    , contiguous        :: x(:), y(:)
-!        real(TKC)               , intent(out)   , contiguous        :: frankx(:), franky(:)
-!        real(TKC)               , intent(out)                       :: tau
+!        use pm_kind, only: TKG => RK, SKG => SK1
+!        character(*,SKG)        , intent(in)    , contiguous        :: x(:), y(:)
+!        real(TKG)               , intent(out)   , contiguous        :: frankx(:), franky(:)
+!        real(TKG)               , intent(out)                       :: tau
 !    end subroutine
 !#endif
 !
@@ -14928,10 +14928,10 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setTauWNO_XY_D1_IK5
 !#endif
-!        use pm_kind, only: TKC => RK, IKC => IK5
-!        integer(IKC)            , intent(in)    , contiguous        :: x(:), y(:)
-!        real(TKC)               , intent(out)   , contiguous        :: frankx(:), franky(:)
-!        real(TKC)               , intent(out)                       :: tau
+!        use pm_kind, only: TKG => RK, IKG => IK5
+!        integer(IKG)            , intent(in)    , contiguous        :: x(:), y(:)
+!        real(TKG)               , intent(out)   , contiguous        :: frankx(:), franky(:)
+!        real(TKG)               , intent(out)                       :: tau
 !    end subroutine
 !#endif
 !
@@ -14940,10 +14940,10 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setTauWNO_XY_D1_IK4
 !#endif
-!        use pm_kind, only: TKC => RK, IKC => IK4
-!        integer(IKC)            , intent(in)    , contiguous        :: x(:), y(:)
-!        real(TKC)               , intent(out)   , contiguous        :: frankx(:), franky(:)
-!        real(TKC)               , intent(out)                       :: tau
+!        use pm_kind, only: TKG => RK, IKG => IK4
+!        integer(IKG)            , intent(in)    , contiguous        :: x(:), y(:)
+!        real(TKG)               , intent(out)   , contiguous        :: frankx(:), franky(:)
+!        real(TKG)               , intent(out)                       :: tau
 !    end subroutine
 !#endif
 !
@@ -14952,10 +14952,10 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setTauWNO_XY_D1_IK3
 !#endif
-!        use pm_kind, only: TKC => RK, IKC => IK3
-!        integer(IKC)            , intent(in)    , contiguous        :: x(:), y(:)
-!        real(TKC)               , intent(out)   , contiguous        :: frankx(:), franky(:)
-!        real(TKC)               , intent(out)                       :: tau
+!        use pm_kind, only: TKG => RK, IKG => IK3
+!        integer(IKG)            , intent(in)    , contiguous        :: x(:), y(:)
+!        real(TKG)               , intent(out)   , contiguous        :: frankx(:), franky(:)
+!        real(TKG)               , intent(out)                       :: tau
 !    end subroutine
 !#endif
 !
@@ -14964,10 +14964,10 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setTauWNO_XY_D1_IK2
 !#endif
-!        use pm_kind, only: TKC => RK, IKC => IK2
-!        integer(IKC)            , intent(in)    , contiguous        :: x(:), y(:)
-!        real(TKC)               , intent(out)   , contiguous        :: frankx(:), franky(:)
-!        real(TKC)               , intent(out)                       :: tau
+!        use pm_kind, only: TKG => RK, IKG => IK2
+!        integer(IKG)            , intent(in)    , contiguous        :: x(:), y(:)
+!        real(TKG)               , intent(out)   , contiguous        :: frankx(:), franky(:)
+!        real(TKG)               , intent(out)                       :: tau
 !    end subroutine
 !#endif
 !
@@ -14976,10 +14976,10 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setTauWNO_XY_D1_IK1
 !#endif
-!        use pm_kind, only: TKC => RK, IKC => IK1
-!        integer(IKC)            , intent(in)    , contiguous        :: x(:), y(:)
-!        real(TKC)               , intent(out)   , contiguous        :: frankx(:), franky(:)
-!        real(TKC)               , intent(out)                       :: tau
+!        use pm_kind, only: TKG => RK, IKG => IK1
+!        integer(IKG)            , intent(in)    , contiguous        :: x(:), y(:)
+!        real(TKG)               , intent(out)   , contiguous        :: frankx(:), franky(:)
+!        real(TKG)               , intent(out)                       :: tau
 !    end subroutine
 !#endif
 !
@@ -14990,10 +14990,10 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setTauWNO_XY_D1_RK5
 !#endif
-!        use pm_kind, only: TKC => RK5
-!        real(TKC)               , intent(in)    , contiguous        :: x(:), y(:)
-!        real(TKC)               , intent(out)   , contiguous        :: frankx(:), franky(:)
-!        real(TKC)               , intent(out)                       :: tau
+!        use pm_kind, only: TKG => RK5
+!        real(TKG)               , intent(in)    , contiguous        :: x(:), y(:)
+!        real(TKG)               , intent(out)   , contiguous        :: frankx(:), franky(:)
+!        real(TKG)               , intent(out)                       :: tau
 !    end subroutine
 !#endif
 !
@@ -15002,10 +15002,10 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setTauWNO_XY_D1_RK4
 !#endif
-!        use pm_kind, only: TKC => RK4
-!        real(TKC)               , intent(in)    , contiguous        :: x(:), y(:)
-!        real(TKC)               , intent(out)   , contiguous        :: frankx(:), franky(:)
-!        real(TKC)               , intent(out)                       :: tau
+!        use pm_kind, only: TKG => RK4
+!        real(TKG)               , intent(in)    , contiguous        :: x(:), y(:)
+!        real(TKG)               , intent(out)   , contiguous        :: frankx(:), franky(:)
+!        real(TKG)               , intent(out)                       :: tau
 !    end subroutine
 !#endif
 !
@@ -15014,10 +15014,10 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setTauWNO_XY_D1_RK3
 !#endif
-!        use pm_kind, only: TKC => RK3
-!        real(TKC)               , intent(in)    , contiguous        :: x(:), y(:)
-!        real(TKC)               , intent(out)   , contiguous        :: frankx(:), franky(:)
-!        real(TKC)               , intent(out)                       :: tau
+!        use pm_kind, only: TKG => RK3
+!        real(TKG)               , intent(in)    , contiguous        :: x(:), y(:)
+!        real(TKG)               , intent(out)   , contiguous        :: frankx(:), franky(:)
+!        real(TKG)               , intent(out)                       :: tau
 !    end subroutine
 !#endif
 !
@@ -15026,10 +15026,10 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setTauWNO_XY_D1_RK2
 !#endif
-!        use pm_kind, only: TKC => RK2
-!        real(TKC)               , intent(in)    , contiguous        :: x(:), y(:)
-!        real(TKC)               , intent(out)   , contiguous        :: frankx(:), franky(:)
-!        real(TKC)               , intent(out)                       :: tau
+!        use pm_kind, only: TKG => RK2
+!        real(TKG)               , intent(in)    , contiguous        :: x(:), y(:)
+!        real(TKG)               , intent(out)   , contiguous        :: frankx(:), franky(:)
+!        real(TKG)               , intent(out)                       :: tau
 !    end subroutine
 !#endif
 !
@@ -15038,10 +15038,10 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setTauWNO_XY_D1_RK1
 !#endif
-!        use pm_kind, only: TKC => RK1
-!        real(TKC)               , intent(in)    , contiguous        :: x(:), y(:)
-!        real(TKC)               , intent(out)   , contiguous        :: frankx(:), franky(:)
-!        real(TKC)               , intent(out)                       :: tau
+!        use pm_kind, only: TKG => RK1
+!        real(TKG)               , intent(in)    , contiguous        :: x(:), y(:)
+!        real(TKG)               , intent(out)   , contiguous        :: frankx(:), franky(:)
+!        real(TKG)               , intent(out)                       :: tau
 !    end subroutine
 !#endif
 !
@@ -15054,10 +15054,10 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setTauWNO_XY_D1_PSSK5
 !#endif
-!        use pm_kind, only: TKC => RK, SKC => SK5
-!        type(css_pdt(SKC))      , intent(in)    , contiguous        :: x(:), y(:)
-!        real(TKC)               , intent(out)   , contiguous        :: frankx(:), franky(:)
-!        real(TKC)               , intent(out)                       :: tau
+!        use pm_kind, only: TKG => RK, SKG => SK5
+!        type(css_pdt(SKG))      , intent(in)    , contiguous        :: x(:), y(:)
+!        real(TKG)               , intent(out)   , contiguous        :: frankx(:), franky(:)
+!        real(TKG)               , intent(out)                       :: tau
 !    end subroutine
 !#endif
 !
@@ -15066,10 +15066,10 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setTauWNO_XY_D1_PSSK4
 !#endif
-!        use pm_kind, only: TKC => RK, SKC => SK4
-!        type(css_pdt(SKC))      , intent(in)    , contiguous        :: x(:), y(:)
-!        real(TKC)               , intent(out)   , contiguous        :: frankx(:), franky(:)
-!        real(TKC)               , intent(out)                       :: tau
+!        use pm_kind, only: TKG => RK, SKG => SK4
+!        type(css_pdt(SKG))      , intent(in)    , contiguous        :: x(:), y(:)
+!        real(TKG)               , intent(out)   , contiguous        :: frankx(:), franky(:)
+!        real(TKG)               , intent(out)                       :: tau
 !    end subroutine
 !#endif
 !
@@ -15078,10 +15078,10 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setTauWNO_XY_D1_PSSK3
 !#endif
-!        use pm_kind, only: TKC => RK, SKC => SK3
-!        type(css_pdt(SKC))      , intent(in)    , contiguous        :: x(:), y(:)
-!        real(TKC)               , intent(out)   , contiguous        :: frankx(:), franky(:)
-!        real(TKC)               , intent(out)                       :: tau
+!        use pm_kind, only: TKG => RK, SKG => SK3
+!        type(css_pdt(SKG))      , intent(in)    , contiguous        :: x(:), y(:)
+!        real(TKG)               , intent(out)   , contiguous        :: frankx(:), franky(:)
+!        real(TKG)               , intent(out)                       :: tau
 !    end subroutine
 !#endif
 !
@@ -15090,10 +15090,10 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setTauWNO_XY_D1_PSSK2
 !#endif
-!        use pm_kind, only: TKC => RK, SKC => SK2
-!        type(css_pdt(SKC))      , intent(in)    , contiguous        :: x(:), y(:)
-!        real(TKC)               , intent(out)   , contiguous        :: frankx(:), franky(:)
-!        real(TKC)               , intent(out)                       :: tau
+!        use pm_kind, only: TKG => RK, SKG => SK2
+!        type(css_pdt(SKG))      , intent(in)    , contiguous        :: x(:), y(:)
+!        real(TKG)               , intent(out)   , contiguous        :: frankx(:), franky(:)
+!        real(TKG)               , intent(out)                       :: tau
 !    end subroutine
 !#endif
 !
@@ -15102,10 +15102,10 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setTauWNO_XY_D1_PSSK1
 !#endif
-!        use pm_kind, only: TKC => RK, SKC => SK1
-!        type(css_pdt(SKC))      , intent(in)    , contiguous        :: x(:), y(:)
-!        real(TKC)               , intent(out)   , contiguous        :: frankx(:), franky(:)
-!        real(TKC)               , intent(out)                       :: tau
+!        use pm_kind, only: TKG => RK, SKG => SK1
+!        type(css_pdt(SKG))      , intent(in)    , contiguous        :: x(:), y(:)
+!        real(TKG)               , intent(out)   , contiguous        :: frankx(:), franky(:)
+!        real(TKG)               , intent(out)                       :: tau
 !    end subroutine
 !#endif
 !
@@ -15119,8 +15119,8 @@ module pm_sampleCor
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setTauWNO_XY_D1_BSSK
 !#endif
 !        type(css_type)          , intent(in)    , contiguous        :: x(:), y(:)
-!        real(TKC)               , intent(out)   , contiguous        :: frankx(:), franky(:)
-!        real(TKC)               , intent(out)                       :: tau
+!        real(TKG)               , intent(out)   , contiguous        :: frankx(:), franky(:)
+!        real(TKG)               , intent(out)                       :: tau
 !    end subroutine
 !
 !    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -15138,11 +15138,11 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setTauWTI_XY_D0_SK5
 !#endif
-!        use pm_kind, only: TKC => RK, SKC => SK5
+!        use pm_kind, only: TKG => RK, SKG => SK5
 !        integer(IK)             , intent(in)    , contiguous        :: weight(:)
-!        character(*,SKC)        , intent(in)                        :: x, y
-!        real(TKC)               , intent(out)   , contiguous        :: frankx(:), franky(:)
-!        real(TKC)               , intent(out)                       :: tau
+!        character(*,SKG)        , intent(in)                        :: x, y
+!        real(TKG)               , intent(out)   , contiguous        :: frankx(:), franky(:)
+!        real(TKG)               , intent(out)                       :: tau
 !    end subroutine
 !#endif
 !
@@ -15151,11 +15151,11 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setTauWTI_XY_D0_SK4
 !#endif
-!        use pm_kind, only: TKC => RK, SKC => SK4
+!        use pm_kind, only: TKG => RK, SKG => SK4
 !        integer(IK)             , intent(in)    , contiguous        :: weight(:)
-!        character(*,SKC)        , intent(in)                        :: x, y
-!        real(TKC)               , intent(out)   , contiguous        :: frankx(:), franky(:)
-!        real(TKC)               , intent(out)                       :: tau
+!        character(*,SKG)        , intent(in)                        :: x, y
+!        real(TKG)               , intent(out)   , contiguous        :: frankx(:), franky(:)
+!        real(TKG)               , intent(out)                       :: tau
 !    end subroutine
 !#endif
 !
@@ -15164,11 +15164,11 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setTauWTI_XY_D0_SK3
 !#endif
-!        use pm_kind, only: TKC => RK, SKC => SK3
+!        use pm_kind, only: TKG => RK, SKG => SK3
 !        integer(IK)             , intent(in)    , contiguous        :: weight(:)
-!        character(*,SKC)        , intent(in)                        :: x, y
-!        real(TKC)               , intent(out)   , contiguous        :: frankx(:), franky(:)
-!        real(TKC)               , intent(out)                       :: tau
+!        character(*,SKG)        , intent(in)                        :: x, y
+!        real(TKG)               , intent(out)   , contiguous        :: frankx(:), franky(:)
+!        real(TKG)               , intent(out)                       :: tau
 !    end subroutine
 !#endif
 !
@@ -15177,11 +15177,11 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setTauWTI_XY_D0_SK2
 !#endif
-!        use pm_kind, only: TKC => RK, SKC => SK2
+!        use pm_kind, only: TKG => RK, SKG => SK2
 !        integer(IK)             , intent(in)    , contiguous        :: weight(:)
-!        character(*,SKC)        , intent(in)                        :: x, y
-!        real(TKC)               , intent(out)   , contiguous        :: frankx(:), franky(:)
-!        real(TKC)               , intent(out)                       :: tau
+!        character(*,SKG)        , intent(in)                        :: x, y
+!        real(TKG)               , intent(out)   , contiguous        :: frankx(:), franky(:)
+!        real(TKG)               , intent(out)                       :: tau
 !    end subroutine
 !#endif
 !
@@ -15190,11 +15190,11 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setTauWTI_XY_D0_SK1
 !#endif
-!        use pm_kind, only: TKC => RK, SKC => SK1
+!        use pm_kind, only: TKG => RK, SKG => SK1
 !        integer(IK)             , intent(in)    , contiguous        :: weight(:)
-!        character(*,SKC)        , intent(in)                        :: x, y
-!        real(TKC)               , intent(out)   , contiguous        :: frankx(:), franky(:)
-!        real(TKC)               , intent(out)                       :: tau
+!        character(*,SKG)        , intent(in)                        :: x, y
+!        real(TKG)               , intent(out)   , contiguous        :: frankx(:), franky(:)
+!        real(TKG)               , intent(out)                       :: tau
 !    end subroutine
 !#endif
 !
@@ -15205,11 +15205,11 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setTauWTI_XY_D1_SK5
 !#endif
-!        use pm_kind, only: TKC => RK, SKC => SK5
+!        use pm_kind, only: TKG => RK, SKG => SK5
 !        integer(IK)             , intent(in)    , contiguous        :: weight(:)
-!        character(*,SKC)        , intent(in)    , contiguous        :: x(:), y(:)
-!        real(TKC)               , intent(out)   , contiguous        :: frankx(:), franky(:)
-!        real(TKC)               , intent(out)                       :: tau
+!        character(*,SKG)        , intent(in)    , contiguous        :: x(:), y(:)
+!        real(TKG)               , intent(out)   , contiguous        :: frankx(:), franky(:)
+!        real(TKG)               , intent(out)                       :: tau
 !    end subroutine
 !#endif
 !
@@ -15218,11 +15218,11 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setTauWTI_XY_D1_SK4
 !#endif
-!        use pm_kind, only: TKC => RK, SKC => SK4
+!        use pm_kind, only: TKG => RK, SKG => SK4
 !        integer(IK)             , intent(in)    , contiguous        :: weight(:)
-!        character(*,SKC)        , intent(in)    , contiguous        :: x(:), y(:)
-!        real(TKC)               , intent(out)   , contiguous        :: frankx(:), franky(:)
-!        real(TKC)               , intent(out)                       :: tau
+!        character(*,SKG)        , intent(in)    , contiguous        :: x(:), y(:)
+!        real(TKG)               , intent(out)   , contiguous        :: frankx(:), franky(:)
+!        real(TKG)               , intent(out)                       :: tau
 !    end subroutine
 !#endif
 !
@@ -15231,11 +15231,11 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setTauWTI_XY_D1_SK3
 !#endif
-!        use pm_kind, only: TKC => RK, SKC => SK3
+!        use pm_kind, only: TKG => RK, SKG => SK3
 !        integer(IK)             , intent(in)    , contiguous        :: weight(:)
-!        character(*,SKC)        , intent(in)    , contiguous        :: x(:), y(:)
-!        real(TKC)               , intent(out)   , contiguous        :: frankx(:), franky(:)
-!        real(TKC)               , intent(out)                       :: tau
+!        character(*,SKG)        , intent(in)    , contiguous        :: x(:), y(:)
+!        real(TKG)               , intent(out)   , contiguous        :: frankx(:), franky(:)
+!        real(TKG)               , intent(out)                       :: tau
 !    end subroutine
 !#endif
 !
@@ -15244,11 +15244,11 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setTauWTI_XY_D1_SK2
 !#endif
-!        use pm_kind, only: TKC => RK, SKC => SK2
+!        use pm_kind, only: TKG => RK, SKG => SK2
 !        integer(IK)             , intent(in)    , contiguous        :: weight(:)
-!        character(*,SKC)        , intent(in)    , contiguous        :: x(:), y(:)
-!        real(TKC)               , intent(out)   , contiguous        :: frankx(:), franky(:)
-!        real(TKC)               , intent(out)                       :: tau
+!        character(*,SKG)        , intent(in)    , contiguous        :: x(:), y(:)
+!        real(TKG)               , intent(out)   , contiguous        :: frankx(:), franky(:)
+!        real(TKG)               , intent(out)                       :: tau
 !    end subroutine
 !#endif
 !
@@ -15257,11 +15257,11 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setTauWTI_XY_D1_SK1
 !#endif
-!        use pm_kind, only: TKC => RK, SKC => SK1
+!        use pm_kind, only: TKG => RK, SKG => SK1
 !        integer(IK)             , intent(in)    , contiguous        :: weight(:)
-!        character(*,SKC)        , intent(in)    , contiguous        :: x(:), y(:)
-!        real(TKC)               , intent(out)   , contiguous        :: frankx(:), franky(:)
-!        real(TKC)               , intent(out)                       :: tau
+!        character(*,SKG)        , intent(in)    , contiguous        :: x(:), y(:)
+!        real(TKG)               , intent(out)   , contiguous        :: frankx(:), franky(:)
+!        real(TKG)               , intent(out)                       :: tau
 !    end subroutine
 !#endif
 !
@@ -15272,11 +15272,11 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setTauWTI_XY_D1_IK5
 !#endif
-!        use pm_kind, only: TKC => RK, IKC => IK5
+!        use pm_kind, only: TKG => RK, IKG => IK5
 !        integer(IK)             , intent(in)    , contiguous        :: weight(:)
-!        integer(IKC)            , intent(in)    , contiguous        :: x(:), y(:)
-!        real(TKC)               , intent(out)   , contiguous        :: frankx(:), franky(:)
-!        real(TKC)               , intent(out)                       :: tau
+!        integer(IKG)            , intent(in)    , contiguous        :: x(:), y(:)
+!        real(TKG)               , intent(out)   , contiguous        :: frankx(:), franky(:)
+!        real(TKG)               , intent(out)                       :: tau
 !    end subroutine
 !#endif
 !
@@ -15285,11 +15285,11 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setTauWTI_XY_D1_IK4
 !#endif
-!        use pm_kind, only: TKC => RK, IKC => IK4
+!        use pm_kind, only: TKG => RK, IKG => IK4
 !        integer(IK)             , intent(in)    , contiguous        :: weight(:)
-!        integer(IKC)            , intent(in)    , contiguous        :: x(:), y(:)
-!        real(TKC)               , intent(out)   , contiguous        :: frankx(:), franky(:)
-!        real(TKC)               , intent(out)                       :: tau
+!        integer(IKG)            , intent(in)    , contiguous        :: x(:), y(:)
+!        real(TKG)               , intent(out)   , contiguous        :: frankx(:), franky(:)
+!        real(TKG)               , intent(out)                       :: tau
 !    end subroutine
 !#endif
 !
@@ -15298,11 +15298,11 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setTauWTI_XY_D1_IK3
 !#endif
-!        use pm_kind, only: TKC => RK, IKC => IK3
+!        use pm_kind, only: TKG => RK, IKG => IK3
 !        integer(IK)             , intent(in)    , contiguous        :: weight(:)
-!        integer(IKC)            , intent(in)    , contiguous        :: x(:), y(:)
-!        real(TKC)               , intent(out)   , contiguous        :: frankx(:), franky(:)
-!        real(TKC)               , intent(out)                       :: tau
+!        integer(IKG)            , intent(in)    , contiguous        :: x(:), y(:)
+!        real(TKG)               , intent(out)   , contiguous        :: frankx(:), franky(:)
+!        real(TKG)               , intent(out)                       :: tau
 !    end subroutine
 !#endif
 !
@@ -15311,11 +15311,11 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setTauWTI_XY_D1_IK2
 !#endif
-!        use pm_kind, only: TKC => RK, IKC => IK2
+!        use pm_kind, only: TKG => RK, IKG => IK2
 !        integer(IK)             , intent(in)    , contiguous        :: weight(:)
-!        integer(IKC)            , intent(in)    , contiguous        :: x(:), y(:)
-!        real(TKC)               , intent(out)   , contiguous        :: frankx(:), franky(:)
-!        real(TKC)               , intent(out)                       :: tau
+!        integer(IKG)            , intent(in)    , contiguous        :: x(:), y(:)
+!        real(TKG)               , intent(out)   , contiguous        :: frankx(:), franky(:)
+!        real(TKG)               , intent(out)                       :: tau
 !    end subroutine
 !#endif
 !
@@ -15324,11 +15324,11 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setTauWTI_XY_D1_IK1
 !#endif
-!        use pm_kind, only: TKC => RK, IKC => IK1
+!        use pm_kind, only: TKG => RK, IKG => IK1
 !        integer(IK)             , intent(in)    , contiguous        :: weight(:)
-!        integer(IKC)            , intent(in)    , contiguous        :: x(:), y(:)
-!        real(TKC)               , intent(out)   , contiguous        :: frankx(:), franky(:)
-!        real(TKC)               , intent(out)                       :: tau
+!        integer(IKG)            , intent(in)    , contiguous        :: x(:), y(:)
+!        real(TKG)               , intent(out)   , contiguous        :: frankx(:), franky(:)
+!        real(TKG)               , intent(out)                       :: tau
 !    end subroutine
 !#endif
 !
@@ -15339,11 +15339,11 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setTauWTI_XY_D1_RK5
 !#endif
-!        use pm_kind, only: TKC => RK5
+!        use pm_kind, only: TKG => RK5
 !        integer(IK)             , intent(in)    , contiguous        :: weight(:)
-!        real(TKC)               , intent(in)    , contiguous        :: x(:), y(:)
-!        real(TKC)               , intent(out)   , contiguous        :: frankx(:), franky(:)
-!        real(TKC)               , intent(out)                       :: tau
+!        real(TKG)               , intent(in)    , contiguous        :: x(:), y(:)
+!        real(TKG)               , intent(out)   , contiguous        :: frankx(:), franky(:)
+!        real(TKG)               , intent(out)                       :: tau
 !    end subroutine
 !#endif
 !
@@ -15352,11 +15352,11 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setTauWTI_XY_D1_RK4
 !#endif
-!        use pm_kind, only: TKC => RK4
+!        use pm_kind, only: TKG => RK4
 !        integer(IK)             , intent(in)    , contiguous        :: weight(:)
-!        real(TKC)               , intent(in)    , contiguous        :: x(:), y(:)
-!        real(TKC)               , intent(out)   , contiguous        :: frankx(:), franky(:)
-!        real(TKC)               , intent(out)                       :: tau
+!        real(TKG)               , intent(in)    , contiguous        :: x(:), y(:)
+!        real(TKG)               , intent(out)   , contiguous        :: frankx(:), franky(:)
+!        real(TKG)               , intent(out)                       :: tau
 !    end subroutine
 !#endif
 !
@@ -15365,11 +15365,11 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setTauWTI_XY_D1_RK3
 !#endif
-!        use pm_kind, only: TKC => RK3
+!        use pm_kind, only: TKG => RK3
 !        integer(IK)             , intent(in)    , contiguous        :: weight(:)
-!        real(TKC)               , intent(in)    , contiguous        :: x(:), y(:)
-!        real(TKC)               , intent(out)   , contiguous        :: frankx(:), franky(:)
-!        real(TKC)               , intent(out)                       :: tau
+!        real(TKG)               , intent(in)    , contiguous        :: x(:), y(:)
+!        real(TKG)               , intent(out)   , contiguous        :: frankx(:), franky(:)
+!        real(TKG)               , intent(out)                       :: tau
 !    end subroutine
 !#endif
 !
@@ -15378,11 +15378,11 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setTauWTI_XY_D1_RK2
 !#endif
-!        use pm_kind, only: TKC => RK2
+!        use pm_kind, only: TKG => RK2
 !        integer(IK)             , intent(in)    , contiguous        :: weight(:)
-!        real(TKC)               , intent(in)    , contiguous        :: x(:), y(:)
-!        real(TKC)               , intent(out)   , contiguous        :: frankx(:), franky(:)
-!        real(TKC)               , intent(out)                       :: tau
+!        real(TKG)               , intent(in)    , contiguous        :: x(:), y(:)
+!        real(TKG)               , intent(out)   , contiguous        :: frankx(:), franky(:)
+!        real(TKG)               , intent(out)                       :: tau
 !    end subroutine
 !#endif
 !
@@ -15391,11 +15391,11 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setTauWTI_XY_D1_RK1
 !#endif
-!        use pm_kind, only: TKC => RK1
+!        use pm_kind, only: TKG => RK1
 !        integer(IK)             , intent(in)    , contiguous        :: weight(:)
-!        real(TKC)               , intent(in)    , contiguous        :: x(:), y(:)
-!        real(TKC)               , intent(out)   , contiguous        :: frankx(:), franky(:)
-!        real(TKC)               , intent(out)                       :: tau
+!        real(TKG)               , intent(in)    , contiguous        :: x(:), y(:)
+!        real(TKG)               , intent(out)   , contiguous        :: frankx(:), franky(:)
+!        real(TKG)               , intent(out)                       :: tau
 !    end subroutine
 !#endif
 !
@@ -15408,11 +15408,11 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setTauWTI_XY_D1_PSSK5
 !#endif
-!        use pm_kind, only: TKC => RK, SKC => SK5
+!        use pm_kind, only: TKG => RK, SKG => SK5
 !        integer(IK)             , intent(in)    , contiguous        :: weight(:)
-!        type(css_pdt(SKC))      , intent(in)    , contiguous        :: x(:), y(:)
-!        real(TKC)               , intent(out)   , contiguous        :: frankx(:), franky(:)
-!        real(TKC)               , intent(out)                       :: tau
+!        type(css_pdt(SKG))      , intent(in)    , contiguous        :: x(:), y(:)
+!        real(TKG)               , intent(out)   , contiguous        :: frankx(:), franky(:)
+!        real(TKG)               , intent(out)                       :: tau
 !    end subroutine
 !#endif
 !
@@ -15421,11 +15421,11 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setTauWTI_XY_D1_PSSK4
 !#endif
-!        use pm_kind, only: TKC => RK, SKC => SK4
+!        use pm_kind, only: TKG => RK, SKG => SK4
 !        integer(IK)             , intent(in)    , contiguous        :: weight(:)
-!        type(css_pdt(SKC))      , intent(in)    , contiguous        :: x(:), y(:)
-!        real(TKC)               , intent(out)   , contiguous        :: frankx(:), franky(:)
-!        real(TKC)               , intent(out)                       :: tau
+!        type(css_pdt(SKG))      , intent(in)    , contiguous        :: x(:), y(:)
+!        real(TKG)               , intent(out)   , contiguous        :: frankx(:), franky(:)
+!        real(TKG)               , intent(out)                       :: tau
 !    end subroutine
 !#endif
 !
@@ -15434,11 +15434,11 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setTauWTI_XY_D1_PSSK3
 !#endif
-!        use pm_kind, only: TKC => RK, SKC => SK3
+!        use pm_kind, only: TKG => RK, SKG => SK3
 !        integer(IK)             , intent(in)    , contiguous        :: weight(:)
-!        type(css_pdt(SKC))      , intent(in)    , contiguous        :: x(:), y(:)
-!        real(TKC)               , intent(out)   , contiguous        :: frankx(:), franky(:)
-!        real(TKC)               , intent(out)                       :: tau
+!        type(css_pdt(SKG))      , intent(in)    , contiguous        :: x(:), y(:)
+!        real(TKG)               , intent(out)   , contiguous        :: frankx(:), franky(:)
+!        real(TKG)               , intent(out)                       :: tau
 !    end subroutine
 !#endif
 !
@@ -15447,11 +15447,11 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setTauWTI_XY_D1_PSSK2
 !#endif
-!        use pm_kind, only: TKC => RK, SKC => SK2
+!        use pm_kind, only: TKG => RK, SKG => SK2
 !        integer(IK)             , intent(in)    , contiguous        :: weight(:)
-!        type(css_pdt(SKC))      , intent(in)    , contiguous        :: x(:), y(:)
-!        real(TKC)               , intent(out)   , contiguous        :: frankx(:), franky(:)
-!        real(TKC)               , intent(out)                       :: tau
+!        type(css_pdt(SKG))      , intent(in)    , contiguous        :: x(:), y(:)
+!        real(TKG)               , intent(out)   , contiguous        :: frankx(:), franky(:)
+!        real(TKG)               , intent(out)                       :: tau
 !    end subroutine
 !#endif
 !
@@ -15460,11 +15460,11 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setTauWTI_XY_D1_PSSK1
 !#endif
-!        use pm_kind, only: TKC => RK, SKC => SK1
+!        use pm_kind, only: TKG => RK, SKG => SK1
 !        integer(IK)             , intent(in)    , contiguous        :: weight(:)
-!        type(css_pdt(SKC))      , intent(in)    , contiguous        :: x(:), y(:)
-!        real(TKC)               , intent(out)   , contiguous        :: frankx(:), franky(:)
-!        real(TKC)               , intent(out)                       :: tau
+!        type(css_pdt(SKG))      , intent(in)    , contiguous        :: x(:), y(:)
+!        real(TKG)               , intent(out)   , contiguous        :: frankx(:), franky(:)
+!        real(TKG)               , intent(out)                       :: tau
 !    end subroutine
 !#endif
 !
@@ -15479,8 +15479,8 @@ module pm_sampleCor
 !#endif
 !        integer(IK)             , intent(in)    , contiguous        :: weight(:)
 !        type(css_type)          , intent(in)    , contiguous        :: x(:), y(:)
-!        real(TKC)               , intent(out)   , contiguous        :: frankx(:), franky(:)
-!        real(TKC)               , intent(out)                       :: tau
+!        real(TKG)               , intent(out)   , contiguous        :: frankx(:), franky(:)
+!        real(TKG)               , intent(out)                       :: tau
 !    end subroutine
 !
 !    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -15498,11 +15498,11 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setTauWTR_XY_D0_SK5
 !#endif
-!        use pm_kind, only: TKC => RK, SKC => SK5
-!        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-!        character(*,SKC)        , intent(in)                        :: x, y
-!        real(TKC)               , intent(out)   , contiguous        :: frankx(:), franky(:)
-!        real(TKC)               , intent(out)                       :: tau
+!        use pm_kind, only: TKG => RK, SKG => SK5
+!        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+!        character(*,SKG)        , intent(in)                        :: x, y
+!        real(TKG)               , intent(out)   , contiguous        :: frankx(:), franky(:)
+!        real(TKG)               , intent(out)                       :: tau
 !    end subroutine
 !#endif
 !
@@ -15511,11 +15511,11 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setTauWTR_XY_D0_SK4
 !#endif
-!        use pm_kind, only: TKC => RK, SKC => SK4
-!        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-!        character(*,SKC)        , intent(in)                        :: x, y
-!        real(TKC)               , intent(out)   , contiguous        :: frankx(:), franky(:)
-!        real(TKC)               , intent(out)                       :: tau
+!        use pm_kind, only: TKG => RK, SKG => SK4
+!        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+!        character(*,SKG)        , intent(in)                        :: x, y
+!        real(TKG)               , intent(out)   , contiguous        :: frankx(:), franky(:)
+!        real(TKG)               , intent(out)                       :: tau
 !    end subroutine
 !#endif
 !
@@ -15524,11 +15524,11 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setTauWTR_XY_D0_SK3
 !#endif
-!        use pm_kind, only: TKC => RK, SKC => SK3
-!        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-!        character(*,SKC)        , intent(in)                        :: x, y
-!        real(TKC)               , intent(out)   , contiguous        :: frankx(:), franky(:)
-!        real(TKC)               , intent(out)                       :: tau
+!        use pm_kind, only: TKG => RK, SKG => SK3
+!        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+!        character(*,SKG)        , intent(in)                        :: x, y
+!        real(TKG)               , intent(out)   , contiguous        :: frankx(:), franky(:)
+!        real(TKG)               , intent(out)                       :: tau
 !    end subroutine
 !#endif
 !
@@ -15537,11 +15537,11 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setTauWTR_XY_D0_SK2
 !#endif
-!        use pm_kind, only: TKC => RK, SKC => SK2
-!        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-!        character(*,SKC)        , intent(in)                        :: x, y
-!        real(TKC)               , intent(out)   , contiguous        :: frankx(:), franky(:)
-!        real(TKC)               , intent(out)                       :: tau
+!        use pm_kind, only: TKG => RK, SKG => SK2
+!        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+!        character(*,SKG)        , intent(in)                        :: x, y
+!        real(TKG)               , intent(out)   , contiguous        :: frankx(:), franky(:)
+!        real(TKG)               , intent(out)                       :: tau
 !    end subroutine
 !#endif
 !
@@ -15550,11 +15550,11 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setTauWTR_XY_D0_SK1
 !#endif
-!        use pm_kind, only: TKC => RK, SKC => SK1
-!        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-!        character(*,SKC)        , intent(in)                        :: x, y
-!        real(TKC)               , intent(out)   , contiguous        :: frankx(:), franky(:)
-!        real(TKC)               , intent(out)                       :: tau
+!        use pm_kind, only: TKG => RK, SKG => SK1
+!        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+!        character(*,SKG)        , intent(in)                        :: x, y
+!        real(TKG)               , intent(out)   , contiguous        :: frankx(:), franky(:)
+!        real(TKG)               , intent(out)                       :: tau
 !    end subroutine
 !#endif
 !
@@ -15565,11 +15565,11 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setTauWTR_XY_D1_SK5
 !#endif
-!        use pm_kind, only: TKC => RK, SKC => SK5
-!        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-!        character(*,SKC)        , intent(in)    , contiguous        :: x(:), y(:)
-!        real(TKC)               , intent(out)   , contiguous        :: frankx(:), franky(:)
-!        real(TKC)               , intent(out)                       :: tau
+!        use pm_kind, only: TKG => RK, SKG => SK5
+!        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+!        character(*,SKG)        , intent(in)    , contiguous        :: x(:), y(:)
+!        real(TKG)               , intent(out)   , contiguous        :: frankx(:), franky(:)
+!        real(TKG)               , intent(out)                       :: tau
 !    end subroutine
 !#endif
 !
@@ -15578,11 +15578,11 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setTauWTR_XY_D1_SK4
 !#endif
-!        use pm_kind, only: TKC => RK, SKC => SK4
-!        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-!        character(*,SKC)        , intent(in)    , contiguous        :: x(:), y(:)
-!        real(TKC)               , intent(out)   , contiguous        :: frankx(:), franky(:)
-!        real(TKC)               , intent(out)                       :: tau
+!        use pm_kind, only: TKG => RK, SKG => SK4
+!        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+!        character(*,SKG)        , intent(in)    , contiguous        :: x(:), y(:)
+!        real(TKG)               , intent(out)   , contiguous        :: frankx(:), franky(:)
+!        real(TKG)               , intent(out)                       :: tau
 !    end subroutine
 !#endif
 !
@@ -15591,11 +15591,11 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setTauWTR_XY_D1_SK3
 !#endif
-!        use pm_kind, only: TKC => RK, SKC => SK3
-!        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-!        character(*,SKC)        , intent(in)    , contiguous        :: x(:), y(:)
-!        real(TKC)               , intent(out)   , contiguous        :: frankx(:), franky(:)
-!        real(TKC)               , intent(out)                       :: tau
+!        use pm_kind, only: TKG => RK, SKG => SK3
+!        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+!        character(*,SKG)        , intent(in)    , contiguous        :: x(:), y(:)
+!        real(TKG)               , intent(out)   , contiguous        :: frankx(:), franky(:)
+!        real(TKG)               , intent(out)                       :: tau
 !    end subroutine
 !#endif
 !
@@ -15604,11 +15604,11 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setTauWTR_XY_D1_SK2
 !#endif
-!        use pm_kind, only: TKC => RK, SKC => SK2
-!        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-!        character(*,SKC)        , intent(in)    , contiguous        :: x(:), y(:)
-!        real(TKC)               , intent(out)   , contiguous        :: frankx(:), franky(:)
-!        real(TKC)               , intent(out)                       :: tau
+!        use pm_kind, only: TKG => RK, SKG => SK2
+!        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+!        character(*,SKG)        , intent(in)    , contiguous        :: x(:), y(:)
+!        real(TKG)               , intent(out)   , contiguous        :: frankx(:), franky(:)
+!        real(TKG)               , intent(out)                       :: tau
 !    end subroutine
 !#endif
 !
@@ -15617,11 +15617,11 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setTauWTR_XY_D1_SK1
 !#endif
-!        use pm_kind, only: TKC => RK, SKC => SK1
-!        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-!        character(*,SKC)        , intent(in)    , contiguous        :: x(:), y(:)
-!        real(TKC)               , intent(out)   , contiguous        :: frankx(:), franky(:)
-!        real(TKC)               , intent(out)                       :: tau
+!        use pm_kind, only: TKG => RK, SKG => SK1
+!        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+!        character(*,SKG)        , intent(in)    , contiguous        :: x(:), y(:)
+!        real(TKG)               , intent(out)   , contiguous        :: frankx(:), franky(:)
+!        real(TKG)               , intent(out)                       :: tau
 !    end subroutine
 !#endif
 !
@@ -15632,11 +15632,11 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setTauWTR_XY_D1_IK5
 !#endif
-!        use pm_kind, only: TKC => RK, IKC => IK5
-!        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-!        integer(IKC)            , intent(in)    , contiguous        :: x(:), y(:)
-!        real(TKC)               , intent(out)   , contiguous        :: frankx(:), franky(:)
-!        real(TKC)               , intent(out)                       :: tau
+!        use pm_kind, only: TKG => RK, IKG => IK5
+!        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+!        integer(IKG)            , intent(in)    , contiguous        :: x(:), y(:)
+!        real(TKG)               , intent(out)   , contiguous        :: frankx(:), franky(:)
+!        real(TKG)               , intent(out)                       :: tau
 !    end subroutine
 !#endif
 !
@@ -15645,11 +15645,11 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setTauWTR_XY_D1_IK4
 !#endif
-!        use pm_kind, only: TKC => RK, IKC => IK4
-!        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-!        integer(IKC)            , intent(in)    , contiguous        :: x(:), y(:)
-!        real(TKC)               , intent(out)   , contiguous        :: frankx(:), franky(:)
-!        real(TKC)               , intent(out)                       :: tau
+!        use pm_kind, only: TKG => RK, IKG => IK4
+!        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+!        integer(IKG)            , intent(in)    , contiguous        :: x(:), y(:)
+!        real(TKG)               , intent(out)   , contiguous        :: frankx(:), franky(:)
+!        real(TKG)               , intent(out)                       :: tau
 !    end subroutine
 !#endif
 !
@@ -15658,11 +15658,11 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setTauWTR_XY_D1_IK3
 !#endif
-!        use pm_kind, only: TKC => RK, IKC => IK3
-!        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-!        integer(IKC)            , intent(in)    , contiguous        :: x(:), y(:)
-!        real(TKC)               , intent(out)   , contiguous        :: frankx(:), franky(:)
-!        real(TKC)               , intent(out)                       :: tau
+!        use pm_kind, only: TKG => RK, IKG => IK3
+!        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+!        integer(IKG)            , intent(in)    , contiguous        :: x(:), y(:)
+!        real(TKG)               , intent(out)   , contiguous        :: frankx(:), franky(:)
+!        real(TKG)               , intent(out)                       :: tau
 !    end subroutine
 !#endif
 !
@@ -15671,11 +15671,11 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setTauWTR_XY_D1_IK2
 !#endif
-!        use pm_kind, only: TKC => RK, IKC => IK2
-!        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-!        integer(IKC)            , intent(in)    , contiguous        :: x(:), y(:)
-!        real(TKC)               , intent(out)   , contiguous        :: frankx(:), franky(:)
-!        real(TKC)               , intent(out)                       :: tau
+!        use pm_kind, only: TKG => RK, IKG => IK2
+!        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+!        integer(IKG)            , intent(in)    , contiguous        :: x(:), y(:)
+!        real(TKG)               , intent(out)   , contiguous        :: frankx(:), franky(:)
+!        real(TKG)               , intent(out)                       :: tau
 !    end subroutine
 !#endif
 !
@@ -15684,11 +15684,11 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setTauWTR_XY_D1_IK1
 !#endif
-!        use pm_kind, only: TKC => RK, IKC => IK1
-!        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-!        integer(IKC)            , intent(in)    , contiguous        :: x(:), y(:)
-!        real(TKC)               , intent(out)   , contiguous        :: frankx(:), franky(:)
-!        real(TKC)               , intent(out)                       :: tau
+!        use pm_kind, only: TKG => RK, IKG => IK1
+!        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+!        integer(IKG)            , intent(in)    , contiguous        :: x(:), y(:)
+!        real(TKG)               , intent(out)   , contiguous        :: frankx(:), franky(:)
+!        real(TKG)               , intent(out)                       :: tau
 !    end subroutine
 !#endif
 !
@@ -15699,11 +15699,11 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setTauWTR_XY_D1_RK5
 !#endif
-!        use pm_kind, only: TKC => RK5
-!        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-!        real(TKC)               , intent(in)    , contiguous        :: x(:), y(:)
-!        real(TKC)               , intent(out)   , contiguous        :: frankx(:), franky(:)
-!        real(TKC)               , intent(out)                       :: tau
+!        use pm_kind, only: TKG => RK5
+!        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+!        real(TKG)               , intent(in)    , contiguous        :: x(:), y(:)
+!        real(TKG)               , intent(out)   , contiguous        :: frankx(:), franky(:)
+!        real(TKG)               , intent(out)                       :: tau
 !    end subroutine
 !#endif
 !
@@ -15712,11 +15712,11 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setTauWTR_XY_D1_RK4
 !#endif
-!        use pm_kind, only: TKC => RK4
-!        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-!        real(TKC)               , intent(in)    , contiguous        :: x(:), y(:)
-!        real(TKC)               , intent(out)   , contiguous        :: frankx(:), franky(:)
-!        real(TKC)               , intent(out)                       :: tau
+!        use pm_kind, only: TKG => RK4
+!        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+!        real(TKG)               , intent(in)    , contiguous        :: x(:), y(:)
+!        real(TKG)               , intent(out)   , contiguous        :: frankx(:), franky(:)
+!        real(TKG)               , intent(out)                       :: tau
 !    end subroutine
 !#endif
 !
@@ -15725,11 +15725,11 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setTauWTR_XY_D1_RK3
 !#endif
-!        use pm_kind, only: TKC => RK3
-!        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-!        real(TKC)               , intent(in)    , contiguous        :: x(:), y(:)
-!        real(TKC)               , intent(out)   , contiguous        :: frankx(:), franky(:)
-!        real(TKC)               , intent(out)                       :: tau
+!        use pm_kind, only: TKG => RK3
+!        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+!        real(TKG)               , intent(in)    , contiguous        :: x(:), y(:)
+!        real(TKG)               , intent(out)   , contiguous        :: frankx(:), franky(:)
+!        real(TKG)               , intent(out)                       :: tau
 !    end subroutine
 !#endif
 !
@@ -15738,11 +15738,11 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setTauWTR_XY_D1_RK2
 !#endif
-!        use pm_kind, only: TKC => RK2
-!        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-!        real(TKC)               , intent(in)    , contiguous        :: x(:), y(:)
-!        real(TKC)               , intent(out)   , contiguous        :: frankx(:), franky(:)
-!        real(TKC)               , intent(out)                       :: tau
+!        use pm_kind, only: TKG => RK2
+!        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+!        real(TKG)               , intent(in)    , contiguous        :: x(:), y(:)
+!        real(TKG)               , intent(out)   , contiguous        :: frankx(:), franky(:)
+!        real(TKG)               , intent(out)                       :: tau
 !    end subroutine
 !#endif
 !
@@ -15751,11 +15751,11 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setTauWTR_XY_D1_RK1
 !#endif
-!        use pm_kind, only: TKC => RK1
-!        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-!        real(TKC)               , intent(in)    , contiguous        :: x(:), y(:)
-!        real(TKC)               , intent(out)   , contiguous        :: frankx(:), franky(:)
-!        real(TKC)               , intent(out)                       :: tau
+!        use pm_kind, only: TKG => RK1
+!        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+!        real(TKG)               , intent(in)    , contiguous        :: x(:), y(:)
+!        real(TKG)               , intent(out)   , contiguous        :: frankx(:), franky(:)
+!        real(TKG)               , intent(out)                       :: tau
 !    end subroutine
 !#endif
 !
@@ -15768,11 +15768,11 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setTauWTR_XY_D1_PSSK5
 !#endif
-!        use pm_kind, only: TKC => RK, SKC => SK5
-!        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-!        type(css_pdt(SKC))      , intent(in)    , contiguous        :: x(:), y(:)
-!        real(TKC)               , intent(out)   , contiguous        :: frankx(:), franky(:)
-!        real(TKC)               , intent(out)                       :: tau
+!        use pm_kind, only: TKG => RK, SKG => SK5
+!        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+!        type(css_pdt(SKG))      , intent(in)    , contiguous        :: x(:), y(:)
+!        real(TKG)               , intent(out)   , contiguous        :: frankx(:), franky(:)
+!        real(TKG)               , intent(out)                       :: tau
 !    end subroutine
 !#endif
 !
@@ -15781,11 +15781,11 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setTauWTR_XY_D1_PSSK4
 !#endif
-!        use pm_kind, only: TKC => RK, SKC => SK4
-!        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-!        type(css_pdt(SKC))      , intent(in)    , contiguous        :: x(:), y(:)
-!        real(TKC)               , intent(out)   , contiguous        :: frankx(:), franky(:)
-!        real(TKC)               , intent(out)                       :: tau
+!        use pm_kind, only: TKG => RK, SKG => SK4
+!        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+!        type(css_pdt(SKG))      , intent(in)    , contiguous        :: x(:), y(:)
+!        real(TKG)               , intent(out)   , contiguous        :: frankx(:), franky(:)
+!        real(TKG)               , intent(out)                       :: tau
 !    end subroutine
 !#endif
 !
@@ -15794,11 +15794,11 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setTauWTR_XY_D1_PSSK3
 !#endif
-!        use pm_kind, only: TKC => RK, SKC => SK3
-!        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-!        type(css_pdt(SKC))      , intent(in)    , contiguous        :: x(:), y(:)
-!        real(TKC)               , intent(out)   , contiguous        :: frankx(:), franky(:)
-!        real(TKC)               , intent(out)                       :: tau
+!        use pm_kind, only: TKG => RK, SKG => SK3
+!        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+!        type(css_pdt(SKG))      , intent(in)    , contiguous        :: x(:), y(:)
+!        real(TKG)               , intent(out)   , contiguous        :: frankx(:), franky(:)
+!        real(TKG)               , intent(out)                       :: tau
 !    end subroutine
 !#endif
 !
@@ -15807,11 +15807,11 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setTauWTR_XY_D1_PSSK2
 !#endif
-!        use pm_kind, only: TKC => RK, SKC => SK2
-!        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-!        type(css_pdt(SKC))      , intent(in)    , contiguous        :: x(:), y(:)
-!        real(TKC)               , intent(out)   , contiguous        :: frankx(:), franky(:)
-!        real(TKC)               , intent(out)                       :: tau
+!        use pm_kind, only: TKG => RK, SKG => SK2
+!        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+!        type(css_pdt(SKG))      , intent(in)    , contiguous        :: x(:), y(:)
+!        real(TKG)               , intent(out)   , contiguous        :: frankx(:), franky(:)
+!        real(TKG)               , intent(out)                       :: tau
 !    end subroutine
 !#endif
 !
@@ -15820,11 +15820,11 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setTauWTR_XY_D1_PSSK1
 !#endif
-!        use pm_kind, only: TKC => RK, SKC => SK1
-!        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-!        type(css_pdt(SKC))      , intent(in)    , contiguous        :: x(:), y(:)
-!        real(TKC)               , intent(out)   , contiguous        :: frankx(:), franky(:)
-!        real(TKC)               , intent(out)                       :: tau
+!        use pm_kind, only: TKG => RK, SKG => SK1
+!        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+!        type(css_pdt(SKG))      , intent(in)    , contiguous        :: x(:), y(:)
+!        real(TKG)               , intent(out)   , contiguous        :: frankx(:), franky(:)
+!        real(TKG)               , intent(out)                       :: tau
 !    end subroutine
 !#endif
 !
@@ -15837,10 +15837,10 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setTauWTR_XY_D1_BSSK
 !#endif
-!        real(TKC)               , intent(in)    , contiguous        :: weight(:)
+!        real(TKG)               , intent(in)    , contiguous        :: weight(:)
 !        type(css_type)          , intent(in)    , contiguous        :: x(:), y(:)
-!        real(TKC)               , intent(out)   , contiguous        :: frankx(:), franky(:)
-!        real(TKC)               , intent(out)                       :: tau
+!        real(TKG)               , intent(out)   , contiguous        :: frankx(:), franky(:)
+!        real(TKG)               , intent(out)                       :: tau
 !    end subroutine
 !
 !    !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -15860,10 +15860,10 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setTauWNO_UXD_SK5
 !#endif
-!        use pm_kind, only: TKC => RK, SKC => SK5
-!        character(*,SKC)        , intent(in)    , contiguous        :: sample(:,:)
-!        real(TKC)               , intent(out)   , contiguous        :: frank(:,:)
-!        real(TKC)               , intent(inout) , contiguous        :: tau(:,:)
+!        use pm_kind, only: TKG => RK, SKG => SK5
+!        character(*,SKG)        , intent(in)    , contiguous        :: sample(:,:)
+!        real(TKG)               , intent(out)   , contiguous        :: frank(:,:)
+!        real(TKG)               , intent(inout) , contiguous        :: tau(:,:)
 !        integer(IK)             , intent(in)                        :: dim
 !        type(uppDia_type)       , intent(in)                        :: subset
 !    end subroutine
@@ -15874,10 +15874,10 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setTauWNO_UXD_SK4
 !#endif
-!        use pm_kind, only: TKC => RK, SKC => SK4
-!        character(*,SKC)        , intent(in)    , contiguous        :: sample(:,:)
-!        real(TKC)               , intent(out)   , contiguous        :: frank(:,:)
-!        real(TKC)               , intent(inout) , contiguous        :: tau(:,:)
+!        use pm_kind, only: TKG => RK, SKG => SK4
+!        character(*,SKG)        , intent(in)    , contiguous        :: sample(:,:)
+!        real(TKG)               , intent(out)   , contiguous        :: frank(:,:)
+!        real(TKG)               , intent(inout) , contiguous        :: tau(:,:)
 !        integer(IK)             , intent(in)                        :: dim
 !        type(uppDia_type)       , intent(in)                        :: subset
 !    end subroutine
@@ -15888,10 +15888,10 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setTauWNO_UXD_SK3
 !#endif
-!        use pm_kind, only: TKC => RK, SKC => SK3
-!        character(*,SKC)        , intent(in)    , contiguous        :: sample(:,:)
-!        real(TKC)               , intent(out)   , contiguous        :: frank(:,:)
-!        real(TKC)               , intent(inout) , contiguous        :: tau(:,:)
+!        use pm_kind, only: TKG => RK, SKG => SK3
+!        character(*,SKG)        , intent(in)    , contiguous        :: sample(:,:)
+!        real(TKG)               , intent(out)   , contiguous        :: frank(:,:)
+!        real(TKG)               , intent(inout) , contiguous        :: tau(:,:)
 !        integer(IK)             , intent(in)                        :: dim
 !        type(uppDia_type)       , intent(in)                        :: subset
 !    end subroutine
@@ -15902,10 +15902,10 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setTauWNO_UXD_SK2
 !#endif
-!        use pm_kind, only: TKC => RK, SKC => SK2
-!        character(*,SKC)        , intent(in)    , contiguous        :: sample(:,:)
-!        real(TKC)               , intent(out)   , contiguous        :: frank(:,:)
-!        real(TKC)               , intent(inout) , contiguous        :: tau(:,:)
+!        use pm_kind, only: TKG => RK, SKG => SK2
+!        character(*,SKG)        , intent(in)    , contiguous        :: sample(:,:)
+!        real(TKG)               , intent(out)   , contiguous        :: frank(:,:)
+!        real(TKG)               , intent(inout) , contiguous        :: tau(:,:)
 !        integer(IK)             , intent(in)                        :: dim
 !        type(uppDia_type)       , intent(in)                        :: subset
 !    end subroutine
@@ -15916,10 +15916,10 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setTauWNO_UXD_SK1
 !#endif
-!        use pm_kind, only: TKC => RK, SKC => SK1
-!        character(*,SKC)        , intent(in)    , contiguous        :: sample(:,:)
-!        real(TKC)               , intent(out)   , contiguous        :: frank(:,:)
-!        real(TKC)               , intent(inout) , contiguous        :: tau(:,:)
+!        use pm_kind, only: TKG => RK, SKG => SK1
+!        character(*,SKG)        , intent(in)    , contiguous        :: sample(:,:)
+!        real(TKG)               , intent(out)   , contiguous        :: frank(:,:)
+!        real(TKG)               , intent(inout) , contiguous        :: tau(:,:)
 !        integer(IK)             , intent(in)                        :: dim
 !        type(uppDia_type)       , intent(in)                        :: subset
 !    end subroutine
@@ -15932,10 +15932,10 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setTauWNO_UXD_IK5
 !#endif
-!        use pm_kind, only: TKC => RK, IKC => IK5
-!        integer(IKC)            , intent(in)    , contiguous        :: sample(:,:)
-!        real(TKC)               , intent(out)   , contiguous        :: frank(:,:)
-!        real(TKC)               , intent(inout) , contiguous        :: tau(:,:)
+!        use pm_kind, only: TKG => RK, IKG => IK5
+!        integer(IKG)            , intent(in)    , contiguous        :: sample(:,:)
+!        real(TKG)               , intent(out)   , contiguous        :: frank(:,:)
+!        real(TKG)               , intent(inout) , contiguous        :: tau(:,:)
 !        integer(IK)             , intent(in)                        :: dim
 !        type(uppDia_type)       , intent(in)                        :: subset
 !    end subroutine
@@ -15946,10 +15946,10 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setTauWNO_UXD_IK4
 !#endif
-!        use pm_kind, only: TKC => RK, IKC => IK4
-!        integer(IKC)            , intent(in)    , contiguous        :: sample(:,:)
-!        real(TKC)               , intent(out)   , contiguous        :: frank(:,:)
-!        real(TKC)               , intent(inout) , contiguous        :: tau(:,:)
+!        use pm_kind, only: TKG => RK, IKG => IK4
+!        integer(IKG)            , intent(in)    , contiguous        :: sample(:,:)
+!        real(TKG)               , intent(out)   , contiguous        :: frank(:,:)
+!        real(TKG)               , intent(inout) , contiguous        :: tau(:,:)
 !        integer(IK)             , intent(in)                        :: dim
 !        type(uppDia_type)       , intent(in)                        :: subset
 !    end subroutine
@@ -15960,10 +15960,10 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setTauWNO_UXD_IK3
 !#endif
-!        use pm_kind, only: TKC => RK, IKC => IK3
-!        integer(IKC)            , intent(in)    , contiguous        :: sample(:,:)
-!        real(TKC)               , intent(out)   , contiguous        :: frank(:,:)
-!        real(TKC)               , intent(inout) , contiguous        :: tau(:,:)
+!        use pm_kind, only: TKG => RK, IKG => IK3
+!        integer(IKG)            , intent(in)    , contiguous        :: sample(:,:)
+!        real(TKG)               , intent(out)   , contiguous        :: frank(:,:)
+!        real(TKG)               , intent(inout) , contiguous        :: tau(:,:)
 !        integer(IK)             , intent(in)                        :: dim
 !        type(uppDia_type)       , intent(in)                        :: subset
 !    end subroutine
@@ -15974,10 +15974,10 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setTauWNO_UXD_IK2
 !#endif
-!        use pm_kind, only: TKC => RK, IKC => IK2
-!        integer(IKC)            , intent(in)    , contiguous        :: sample(:,:)
-!        real(TKC)               , intent(out)   , contiguous        :: frank(:,:)
-!        real(TKC)               , intent(inout) , contiguous        :: tau(:,:)
+!        use pm_kind, only: TKG => RK, IKG => IK2
+!        integer(IKG)            , intent(in)    , contiguous        :: sample(:,:)
+!        real(TKG)               , intent(out)   , contiguous        :: frank(:,:)
+!        real(TKG)               , intent(inout) , contiguous        :: tau(:,:)
 !        integer(IK)             , intent(in)                        :: dim
 !        type(uppDia_type)       , intent(in)                        :: subset
 !    end subroutine
@@ -15988,10 +15988,10 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setTauWNO_UXD_IK1
 !#endif
-!        use pm_kind, only: TKC => RK, IKC => IK1
-!        integer(IKC)            , intent(in)    , contiguous        :: sample(:,:)
-!        real(TKC)               , intent(out)   , contiguous        :: frank(:,:)
-!        real(TKC)               , intent(inout) , contiguous        :: tau(:,:)
+!        use pm_kind, only: TKG => RK, IKG => IK1
+!        integer(IKG)            , intent(in)    , contiguous        :: sample(:,:)
+!        real(TKG)               , intent(out)   , contiguous        :: frank(:,:)
+!        real(TKG)               , intent(inout) , contiguous        :: tau(:,:)
 !        integer(IK)             , intent(in)                        :: dim
 !        type(uppDia_type)       , intent(in)                        :: subset
 !    end subroutine
@@ -16004,10 +16004,10 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setTauWNO_UXD_RK5
 !#endif
-!        use pm_kind, only: TKC => RK5
-!        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
-!        real(TKC)               , intent(out)   , contiguous        :: frank(:,:)
-!        real(TKC)               , intent(inout) , contiguous        :: tau(:,:)
+!        use pm_kind, only: TKG => RK5
+!        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
+!        real(TKG)               , intent(out)   , contiguous        :: frank(:,:)
+!        real(TKG)               , intent(inout) , contiguous        :: tau(:,:)
 !        integer(IK)             , intent(in)                        :: dim
 !        type(uppDia_type)       , intent(in)                        :: subset
 !    end subroutine
@@ -16018,10 +16018,10 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setTauWNO_UXD_RK4
 !#endif
-!        use pm_kind, only: TKC => RK4
-!        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
-!        real(TKC)               , intent(out)   , contiguous        :: frank(:,:)
-!        real(TKC)               , intent(inout) , contiguous        :: tau(:,:)
+!        use pm_kind, only: TKG => RK4
+!        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
+!        real(TKG)               , intent(out)   , contiguous        :: frank(:,:)
+!        real(TKG)               , intent(inout) , contiguous        :: tau(:,:)
 !        integer(IK)             , intent(in)                        :: dim
 !        type(uppDia_type)       , intent(in)                        :: subset
 !    end subroutine
@@ -16032,10 +16032,10 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setTauWNO_UXD_RK3
 !#endif
-!        use pm_kind, only: TKC => RK3
-!        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
-!        real(TKC)               , intent(out)   , contiguous        :: frank(:,:)
-!        real(TKC)               , intent(inout) , contiguous        :: tau(:,:)
+!        use pm_kind, only: TKG => RK3
+!        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
+!        real(TKG)               , intent(out)   , contiguous        :: frank(:,:)
+!        real(TKG)               , intent(inout) , contiguous        :: tau(:,:)
 !        integer(IK)             , intent(in)                        :: dim
 !        type(uppDia_type)       , intent(in)                        :: subset
 !    end subroutine
@@ -16046,10 +16046,10 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setTauWNO_UXD_RK2
 !#endif
-!        use pm_kind, only: TKC => RK2
-!        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
-!        real(TKC)               , intent(out)   , contiguous        :: frank(:,:)
-!        real(TKC)               , intent(inout) , contiguous        :: tau(:,:)
+!        use pm_kind, only: TKG => RK2
+!        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
+!        real(TKG)               , intent(out)   , contiguous        :: frank(:,:)
+!        real(TKG)               , intent(inout) , contiguous        :: tau(:,:)
 !        integer(IK)             , intent(in)                        :: dim
 !        type(uppDia_type)       , intent(in)                        :: subset
 !    end subroutine
@@ -16060,10 +16060,10 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setTauWNO_UXD_RK1
 !#endif
-!        use pm_kind, only: TKC => RK1
-!        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
-!        real(TKC)               , intent(out)   , contiguous        :: frank(:,:)
-!        real(TKC)               , intent(inout) , contiguous        :: tau(:,:)
+!        use pm_kind, only: TKG => RK1
+!        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
+!        real(TKG)               , intent(out)   , contiguous        :: frank(:,:)
+!        real(TKG)               , intent(inout) , contiguous        :: tau(:,:)
 !        integer(IK)             , intent(in)                        :: dim
 !        type(uppDia_type)       , intent(in)                        :: subset
 !    end subroutine
@@ -16078,10 +16078,10 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setTauWNO_UXD_PSSK5
 !#endif
-!        use pm_kind, only: TKC => RK, SKC => SK5
-!        type(css_pdt(SKC))      , intent(in)    , contiguous        :: sample(:,:)
-!        real(TKC)               , intent(out)   , contiguous        :: frank(:,:)
-!        real(TKC)               , intent(inout) , contiguous        :: tau(:,:)
+!        use pm_kind, only: TKG => RK, SKG => SK5
+!        type(css_pdt(SKG))      , intent(in)    , contiguous        :: sample(:,:)
+!        real(TKG)               , intent(out)   , contiguous        :: frank(:,:)
+!        real(TKG)               , intent(inout) , contiguous        :: tau(:,:)
 !        integer(IK)             , intent(in)                        :: dim
 !        type(uppDia_type)       , intent(in)                        :: subset
 !    end subroutine
@@ -16092,10 +16092,10 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setTauWNO_UXD_PSSK4
 !#endif
-!        use pm_kind, only: TKC => RK, SKC => SK4
-!        type(css_pdt(SKC))      , intent(in)    , contiguous        :: sample(:,:)
-!        real(TKC)               , intent(out)   , contiguous        :: frank(:,:)
-!        real(TKC)               , intent(inout) , contiguous        :: tau(:,:)
+!        use pm_kind, only: TKG => RK, SKG => SK4
+!        type(css_pdt(SKG))      , intent(in)    , contiguous        :: sample(:,:)
+!        real(TKG)               , intent(out)   , contiguous        :: frank(:,:)
+!        real(TKG)               , intent(inout) , contiguous        :: tau(:,:)
 !        integer(IK)             , intent(in)                        :: dim
 !        type(uppDia_type)       , intent(in)                        :: subset
 !    end subroutine
@@ -16106,10 +16106,10 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setTauWNO_UXD_PSSK3
 !#endif
-!        use pm_kind, only: TKC => RK, SKC => SK3
-!        type(css_pdt(SKC))      , intent(in)    , contiguous        :: sample(:,:)
-!        real(TKC)               , intent(out)   , contiguous        :: frank(:,:)
-!        real(TKC)               , intent(inout) , contiguous        :: tau(:,:)
+!        use pm_kind, only: TKG => RK, SKG => SK3
+!        type(css_pdt(SKG))      , intent(in)    , contiguous        :: sample(:,:)
+!        real(TKG)               , intent(out)   , contiguous        :: frank(:,:)
+!        real(TKG)               , intent(inout) , contiguous        :: tau(:,:)
 !        integer(IK)             , intent(in)                        :: dim
 !        type(uppDia_type)       , intent(in)                        :: subset
 !    end subroutine
@@ -16120,10 +16120,10 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setTauWNO_UXD_PSSK2
 !#endif
-!        use pm_kind, only: TKC => RK, SKC => SK2
-!        type(css_pdt(SKC))      , intent(in)    , contiguous        :: sample(:,:)
-!        real(TKC)               , intent(out)   , contiguous        :: frank(:,:)
-!        real(TKC)               , intent(inout) , contiguous        :: tau(:,:)
+!        use pm_kind, only: TKG => RK, SKG => SK2
+!        type(css_pdt(SKG))      , intent(in)    , contiguous        :: sample(:,:)
+!        real(TKG)               , intent(out)   , contiguous        :: frank(:,:)
+!        real(TKG)               , intent(inout) , contiguous        :: tau(:,:)
 !        integer(IK)             , intent(in)                        :: dim
 !        type(uppDia_type)       , intent(in)                        :: subset
 !    end subroutine
@@ -16134,10 +16134,10 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setTauWNO_UXD_PSSK1
 !#endif
-!        use pm_kind, only: TKC => RK, SKC => SK1
-!        type(css_pdt(SKC))      , intent(in)    , contiguous        :: sample(:,:)
-!        real(TKC)               , intent(out)   , contiguous        :: frank(:,:)
-!        real(TKC)               , intent(inout) , contiguous        :: tau(:,:)
+!        use pm_kind, only: TKG => RK, SKG => SK1
+!        type(css_pdt(SKG))      , intent(in)    , contiguous        :: sample(:,:)
+!        real(TKG)               , intent(out)   , contiguous        :: frank(:,:)
+!        real(TKG)               , intent(inout) , contiguous        :: tau(:,:)
 !        integer(IK)             , intent(in)                        :: dim
 !        type(uppDia_type)       , intent(in)                        :: subset
 !    end subroutine
@@ -16153,8 +16153,8 @@ module pm_sampleCor
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setTauWNO_UXD_BSSK
 !#endif
 !        type(css_type)          , intent(in)    , contiguous        :: sample(:,:)
-!        real(TKC)               , intent(out)   , contiguous        :: frank(:,:)
-!        real(TKC)               , intent(inout) , contiguous        :: tau(:,:)
+!        real(TKG)               , intent(out)   , contiguous        :: frank(:,:)
+!        real(TKG)               , intent(inout) , contiguous        :: tau(:,:)
 !        integer(IK)             , intent(in)                        :: dim
 !        type(uppDia_type)       , intent(in)                        :: subset
 !    end subroutine
@@ -16174,11 +16174,11 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setTauWTI_UXD_SK5
 !#endif
-!        use pm_kind, only: TKC => RK, SKC => SK5
+!        use pm_kind, only: TKG => RK, SKG => SK5
 !        integer(IK)             , intent(in)    , contiguous        :: weight(:)
-!        character(*,SKC)        , intent(in)    , contiguous        :: sample(:,:)
-!        real(TKC)               , intent(out)   , contiguous        :: frank(:,:)
-!        real(TKC)               , intent(inout) , contiguous        :: tau(:,:)
+!        character(*,SKG)        , intent(in)    , contiguous        :: sample(:,:)
+!        real(TKG)               , intent(out)   , contiguous        :: frank(:,:)
+!        real(TKG)               , intent(inout) , contiguous        :: tau(:,:)
 !        integer(IK)             , intent(in)                        :: dim
 !        type(uppDia_type)       , intent(in)                        :: subset
 !    end subroutine
@@ -16189,11 +16189,11 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setTauWTI_UXD_SK4
 !#endif
-!        use pm_kind, only: TKC => RK, SKC => SK4
+!        use pm_kind, only: TKG => RK, SKG => SK4
 !        integer(IK)             , intent(in)    , contiguous        :: weight(:)
-!        character(*,SKC)        , intent(in)    , contiguous        :: sample(:,:)
-!        real(TKC)               , intent(out)   , contiguous        :: frank(:,:)
-!        real(TKC)               , intent(inout) , contiguous        :: tau(:,:)
+!        character(*,SKG)        , intent(in)    , contiguous        :: sample(:,:)
+!        real(TKG)               , intent(out)   , contiguous        :: frank(:,:)
+!        real(TKG)               , intent(inout) , contiguous        :: tau(:,:)
 !        integer(IK)             , intent(in)                        :: dim
 !        type(uppDia_type)       , intent(in)                        :: subset
 !    end subroutine
@@ -16204,11 +16204,11 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setTauWTI_UXD_SK3
 !#endif
-!        use pm_kind, only: TKC => RK, SKC => SK3
+!        use pm_kind, only: TKG => RK, SKG => SK3
 !        integer(IK)             , intent(in)    , contiguous        :: weight(:)
-!        character(*,SKC)        , intent(in)    , contiguous        :: sample(:,:)
-!        real(TKC)               , intent(out)   , contiguous        :: frank(:,:)
-!        real(TKC)               , intent(inout) , contiguous        :: tau(:,:)
+!        character(*,SKG)        , intent(in)    , contiguous        :: sample(:,:)
+!        real(TKG)               , intent(out)   , contiguous        :: frank(:,:)
+!        real(TKG)               , intent(inout) , contiguous        :: tau(:,:)
 !        integer(IK)             , intent(in)                        :: dim
 !        type(uppDia_type)       , intent(in)                        :: subset
 !    end subroutine
@@ -16219,11 +16219,11 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setTauWTI_UXD_SK2
 !#endif
-!        use pm_kind, only: TKC => RK, SKC => SK2
+!        use pm_kind, only: TKG => RK, SKG => SK2
 !        integer(IK)             , intent(in)    , contiguous        :: weight(:)
-!        character(*,SKC)        , intent(in)    , contiguous        :: sample(:,:)
-!        real(TKC)               , intent(out)   , contiguous        :: frank(:,:)
-!        real(TKC)               , intent(inout) , contiguous        :: tau(:,:)
+!        character(*,SKG)        , intent(in)    , contiguous        :: sample(:,:)
+!        real(TKG)               , intent(out)   , contiguous        :: frank(:,:)
+!        real(TKG)               , intent(inout) , contiguous        :: tau(:,:)
 !        integer(IK)             , intent(in)                        :: dim
 !        type(uppDia_type)       , intent(in)                        :: subset
 !    end subroutine
@@ -16234,11 +16234,11 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setTauWTI_UXD_SK1
 !#endif
-!        use pm_kind, only: TKC => RK, SKC => SK1
+!        use pm_kind, only: TKG => RK, SKG => SK1
 !        integer(IK)             , intent(in)    , contiguous        :: weight(:)
-!        character(*,SKC)        , intent(in)    , contiguous        :: sample(:,:)
-!        real(TKC)               , intent(out)   , contiguous        :: frank(:,:)
-!        real(TKC)               , intent(inout) , contiguous        :: tau(:,:)
+!        character(*,SKG)        , intent(in)    , contiguous        :: sample(:,:)
+!        real(TKG)               , intent(out)   , contiguous        :: frank(:,:)
+!        real(TKG)               , intent(inout) , contiguous        :: tau(:,:)
 !        integer(IK)             , intent(in)                        :: dim
 !        type(uppDia_type)       , intent(in)                        :: subset
 !    end subroutine
@@ -16251,11 +16251,11 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setTauWTI_UXD_IK5
 !#endif
-!        use pm_kind, only: TKC => RK, IKC => IK5
+!        use pm_kind, only: TKG => RK, IKG => IK5
 !        integer(IK)             , intent(in)    , contiguous        :: weight(:)
-!        integer(IKC)            , intent(in)    , contiguous        :: sample(:,:)
-!        real(TKC)               , intent(out)   , contiguous        :: frank(:,:)
-!        real(TKC)               , intent(inout) , contiguous        :: tau(:,:)
+!        integer(IKG)            , intent(in)    , contiguous        :: sample(:,:)
+!        real(TKG)               , intent(out)   , contiguous        :: frank(:,:)
+!        real(TKG)               , intent(inout) , contiguous        :: tau(:,:)
 !        integer(IK)             , intent(in)                        :: dim
 !        type(uppDia_type)       , intent(in)                        :: subset
 !    end subroutine
@@ -16266,11 +16266,11 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setTauWTI_UXD_IK4
 !#endif
-!        use pm_kind, only: TKC => RK, IKC => IK4
+!        use pm_kind, only: TKG => RK, IKG => IK4
 !        integer(IK)             , intent(in)    , contiguous        :: weight(:)
-!        integer(IKC)            , intent(in)    , contiguous        :: sample(:,:)
-!        real(TKC)               , intent(out)   , contiguous        :: frank(:,:)
-!        real(TKC)               , intent(inout) , contiguous        :: tau(:,:)
+!        integer(IKG)            , intent(in)    , contiguous        :: sample(:,:)
+!        real(TKG)               , intent(out)   , contiguous        :: frank(:,:)
+!        real(TKG)               , intent(inout) , contiguous        :: tau(:,:)
 !        integer(IK)             , intent(in)                        :: dim
 !        type(uppDia_type)       , intent(in)                        :: subset
 !    end subroutine
@@ -16281,11 +16281,11 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setTauWTI_UXD_IK3
 !#endif
-!        use pm_kind, only: TKC => RK, IKC => IK3
+!        use pm_kind, only: TKG => RK, IKG => IK3
 !        integer(IK)             , intent(in)    , contiguous        :: weight(:)
-!        integer(IKC)            , intent(in)    , contiguous        :: sample(:,:)
-!        real(TKC)               , intent(out)   , contiguous        :: frank(:,:)
-!        real(TKC)               , intent(inout) , contiguous        :: tau(:,:)
+!        integer(IKG)            , intent(in)    , contiguous        :: sample(:,:)
+!        real(TKG)               , intent(out)   , contiguous        :: frank(:,:)
+!        real(TKG)               , intent(inout) , contiguous        :: tau(:,:)
 !        integer(IK)             , intent(in)                        :: dim
 !        type(uppDia_type)       , intent(in)                        :: subset
 !    end subroutine
@@ -16296,11 +16296,11 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setTauWTI_UXD_IK2
 !#endif
-!        use pm_kind, only: TKC => RK, IKC => IK2
+!        use pm_kind, only: TKG => RK, IKG => IK2
 !        integer(IK)             , intent(in)    , contiguous        :: weight(:)
-!        integer(IKC)            , intent(in)    , contiguous        :: sample(:,:)
-!        real(TKC)               , intent(out)   , contiguous        :: frank(:,:)
-!        real(TKC)               , intent(inout) , contiguous        :: tau(:,:)
+!        integer(IKG)            , intent(in)    , contiguous        :: sample(:,:)
+!        real(TKG)               , intent(out)   , contiguous        :: frank(:,:)
+!        real(TKG)               , intent(inout) , contiguous        :: tau(:,:)
 !        integer(IK)             , intent(in)                        :: dim
 !        type(uppDia_type)       , intent(in)                        :: subset
 !    end subroutine
@@ -16311,11 +16311,11 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setTauWTI_UXD_IK1
 !#endif
-!        use pm_kind, only: TKC => RK, IKC => IK1
+!        use pm_kind, only: TKG => RK, IKG => IK1
 !        integer(IK)             , intent(in)    , contiguous        :: weight(:)
-!        integer(IKC)            , intent(in)    , contiguous        :: sample(:,:)
-!        real(TKC)               , intent(out)   , contiguous        :: frank(:,:)
-!        real(TKC)               , intent(inout) , contiguous        :: tau(:,:)
+!        integer(IKG)            , intent(in)    , contiguous        :: sample(:,:)
+!        real(TKG)               , intent(out)   , contiguous        :: frank(:,:)
+!        real(TKG)               , intent(inout) , contiguous        :: tau(:,:)
 !        integer(IK)             , intent(in)                        :: dim
 !        type(uppDia_type)       , intent(in)                        :: subset
 !    end subroutine
@@ -16328,11 +16328,11 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setTauWTI_UXD_RK5
 !#endif
-!        use pm_kind, only: TKC => RK5
+!        use pm_kind, only: TKG => RK5
 !        integer(IK)             , intent(in)    , contiguous        :: weight(:)
-!        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
-!        real(TKC)               , intent(out)   , contiguous        :: frank(:,:)
-!        real(TKC)               , intent(inout) , contiguous        :: tau(:,:)
+!        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
+!        real(TKG)               , intent(out)   , contiguous        :: frank(:,:)
+!        real(TKG)               , intent(inout) , contiguous        :: tau(:,:)
 !        integer(IK)             , intent(in)                        :: dim
 !        type(uppDia_type)       , intent(in)                        :: subset
 !    end subroutine
@@ -16343,11 +16343,11 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setTauWTI_UXD_RK4
 !#endif
-!        use pm_kind, only: TKC => RK4
+!        use pm_kind, only: TKG => RK4
 !        integer(IK)             , intent(in)    , contiguous        :: weight(:)
-!        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
-!        real(TKC)               , intent(out)   , contiguous        :: frank(:,:)
-!        real(TKC)               , intent(inout) , contiguous        :: tau(:,:)
+!        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
+!        real(TKG)               , intent(out)   , contiguous        :: frank(:,:)
+!        real(TKG)               , intent(inout) , contiguous        :: tau(:,:)
 !        integer(IK)             , intent(in)                        :: dim
 !        type(uppDia_type)       , intent(in)                        :: subset
 !    end subroutine
@@ -16358,11 +16358,11 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setTauWTI_UXD_RK3
 !#endif
-!        use pm_kind, only: TKC => RK3
+!        use pm_kind, only: TKG => RK3
 !        integer(IK)             , intent(in)    , contiguous        :: weight(:)
-!        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
-!        real(TKC)               , intent(out)   , contiguous        :: frank(:,:)
-!        real(TKC)               , intent(inout) , contiguous        :: tau(:,:)
+!        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
+!        real(TKG)               , intent(out)   , contiguous        :: frank(:,:)
+!        real(TKG)               , intent(inout) , contiguous        :: tau(:,:)
 !        integer(IK)             , intent(in)                        :: dim
 !        type(uppDia_type)       , intent(in)                        :: subset
 !    end subroutine
@@ -16373,11 +16373,11 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setTauWTI_UXD_RK2
 !#endif
-!        use pm_kind, only: TKC => RK2
+!        use pm_kind, only: TKG => RK2
 !        integer(IK)             , intent(in)    , contiguous        :: weight(:)
-!        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
-!        real(TKC)               , intent(out)   , contiguous        :: frank(:,:)
-!        real(TKC)               , intent(inout) , contiguous        :: tau(:,:)
+!        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
+!        real(TKG)               , intent(out)   , contiguous        :: frank(:,:)
+!        real(TKG)               , intent(inout) , contiguous        :: tau(:,:)
 !        integer(IK)             , intent(in)                        :: dim
 !        type(uppDia_type)       , intent(in)                        :: subset
 !    end subroutine
@@ -16388,11 +16388,11 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setTauWTI_UXD_RK1
 !#endif
-!        use pm_kind, only: TKC => RK1
+!        use pm_kind, only: TKG => RK1
 !        integer(IK)             , intent(in)    , contiguous        :: weight(:)
-!        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
-!        real(TKC)               , intent(out)   , contiguous        :: frank(:,:)
-!        real(TKC)               , intent(inout) , contiguous        :: tau(:,:)
+!        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
+!        real(TKG)               , intent(out)   , contiguous        :: frank(:,:)
+!        real(TKG)               , intent(inout) , contiguous        :: tau(:,:)
 !        integer(IK)             , intent(in)                        :: dim
 !        type(uppDia_type)       , intent(in)                        :: subset
 !    end subroutine
@@ -16407,11 +16407,11 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setTauWTI_UXD_PSSK5
 !#endif
-!        use pm_kind, only: TKC => RK, SKC => SK5
+!        use pm_kind, only: TKG => RK, SKG => SK5
 !        integer(IK)             , intent(in)    , contiguous        :: weight(:)
-!        type(css_pdt(SKC))      , intent(in)    , contiguous        :: sample(:,:)
-!        real(TKC)               , intent(out)   , contiguous        :: frank(:,:)
-!        real(TKC)               , intent(inout) , contiguous        :: tau(:,:)
+!        type(css_pdt(SKG))      , intent(in)    , contiguous        :: sample(:,:)
+!        real(TKG)               , intent(out)   , contiguous        :: frank(:,:)
+!        real(TKG)               , intent(inout) , contiguous        :: tau(:,:)
 !        integer(IK)             , intent(in)                        :: dim
 !        type(uppDia_type)       , intent(in)                        :: subset
 !    end subroutine
@@ -16422,11 +16422,11 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setTauWTI_UXD_PSSK4
 !#endif
-!        use pm_kind, only: TKC => RK, SKC => SK4
+!        use pm_kind, only: TKG => RK, SKG => SK4
 !        integer(IK)             , intent(in)    , contiguous        :: weight(:)
-!        type(css_pdt(SKC))      , intent(in)    , contiguous        :: sample(:,:)
-!        real(TKC)               , intent(out)   , contiguous        :: frank(:,:)
-!        real(TKC)               , intent(inout) , contiguous        :: tau(:,:)
+!        type(css_pdt(SKG))      , intent(in)    , contiguous        :: sample(:,:)
+!        real(TKG)               , intent(out)   , contiguous        :: frank(:,:)
+!        real(TKG)               , intent(inout) , contiguous        :: tau(:,:)
 !        integer(IK)             , intent(in)                        :: dim
 !        type(uppDia_type)       , intent(in)                        :: subset
 !    end subroutine
@@ -16437,11 +16437,11 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setTauWTI_UXD_PSSK3
 !#endif
-!        use pm_kind, only: TKC => RK, SKC => SK3
+!        use pm_kind, only: TKG => RK, SKG => SK3
 !        integer(IK)             , intent(in)    , contiguous        :: weight(:)
-!        type(css_pdt(SKC))      , intent(in)    , contiguous        :: sample(:,:)
-!        real(TKC)               , intent(out)   , contiguous        :: frank(:,:)
-!        real(TKC)               , intent(inout) , contiguous        :: tau(:,:)
+!        type(css_pdt(SKG))      , intent(in)    , contiguous        :: sample(:,:)
+!        real(TKG)               , intent(out)   , contiguous        :: frank(:,:)
+!        real(TKG)               , intent(inout) , contiguous        :: tau(:,:)
 !        integer(IK)             , intent(in)                        :: dim
 !        type(uppDia_type)       , intent(in)                        :: subset
 !    end subroutine
@@ -16452,11 +16452,11 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setTauWTI_UXD_PSSK2
 !#endif
-!        use pm_kind, only: TKC => RK, SKC => SK2
+!        use pm_kind, only: TKG => RK, SKG => SK2
 !        integer(IK)             , intent(in)    , contiguous        :: weight(:)
-!        type(css_pdt(SKC))      , intent(in)    , contiguous        :: sample(:,:)
-!        real(TKC)               , intent(out)   , contiguous        :: frank(:,:)
-!        real(TKC)               , intent(inout) , contiguous        :: tau(:,:)
+!        type(css_pdt(SKG))      , intent(in)    , contiguous        :: sample(:,:)
+!        real(TKG)               , intent(out)   , contiguous        :: frank(:,:)
+!        real(TKG)               , intent(inout) , contiguous        :: tau(:,:)
 !        integer(IK)             , intent(in)                        :: dim
 !        type(uppDia_type)       , intent(in)                        :: subset
 !    end subroutine
@@ -16467,11 +16467,11 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setTauWTI_UXD_PSSK1
 !#endif
-!        use pm_kind, only: TKC => RK, SKC => SK1
+!        use pm_kind, only: TKG => RK, SKG => SK1
 !        integer(IK)             , intent(in)    , contiguous        :: weight(:)
-!        type(css_pdt(SKC))      , intent(in)    , contiguous        :: sample(:,:)
-!        real(TKC)               , intent(out)   , contiguous        :: frank(:,:)
-!        real(TKC)               , intent(inout) , contiguous        :: tau(:,:)
+!        type(css_pdt(SKG))      , intent(in)    , contiguous        :: sample(:,:)
+!        real(TKG)               , intent(out)   , contiguous        :: frank(:,:)
+!        real(TKG)               , intent(inout) , contiguous        :: tau(:,:)
 !        integer(IK)             , intent(in)                        :: dim
 !        type(uppDia_type)       , intent(in)                        :: subset
 !    end subroutine
@@ -16488,8 +16488,8 @@ module pm_sampleCor
 !#endif
 !        integer(IK)             , intent(in)    , contiguous        :: weight(:)
 !        type(css_type)          , intent(in)    , contiguous        :: sample(:,:)
-!        real(TKC)               , intent(out)   , contiguous        :: frank(:,:)
-!        real(TKC)               , intent(inout) , contiguous        :: tau(:,:)
+!        real(TKG)               , intent(out)   , contiguous        :: frank(:,:)
+!        real(TKG)               , intent(inout) , contiguous        :: tau(:,:)
 !        integer(IK)             , intent(in)                        :: dim
 !        type(uppDia_type)       , intent(in)                        :: subset
 !    end subroutine
@@ -16509,11 +16509,11 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setTauWTR_UXD_SK5
 !#endif
-!        use pm_kind, only: TKC => RK, SKC => SK5
-!        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-!        character(*,SKC)        , intent(in)    , contiguous        :: sample(:,:)
-!        real(TKC)               , intent(out)   , contiguous        :: frank(:,:)
-!        real(TKC)               , intent(inout) , contiguous        :: tau(:,:)
+!        use pm_kind, only: TKG => RK, SKG => SK5
+!        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+!        character(*,SKG)        , intent(in)    , contiguous        :: sample(:,:)
+!        real(TKG)               , intent(out)   , contiguous        :: frank(:,:)
+!        real(TKG)               , intent(inout) , contiguous        :: tau(:,:)
 !        integer(IK)             , intent(in)                        :: dim
 !        type(uppDia_type)       , intent(in)                        :: subset
 !    end subroutine
@@ -16524,11 +16524,11 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setTauWTR_UXD_SK4
 !#endif
-!        use pm_kind, only: TKC => RK, SKC => SK4
-!        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-!        character(*,SKC)        , intent(in)    , contiguous        :: sample(:,:)
-!        real(TKC)               , intent(out)   , contiguous        :: frank(:,:)
-!        real(TKC)               , intent(inout) , contiguous        :: tau(:,:)
+!        use pm_kind, only: TKG => RK, SKG => SK4
+!        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+!        character(*,SKG)        , intent(in)    , contiguous        :: sample(:,:)
+!        real(TKG)               , intent(out)   , contiguous        :: frank(:,:)
+!        real(TKG)               , intent(inout) , contiguous        :: tau(:,:)
 !        integer(IK)             , intent(in)                        :: dim
 !        type(uppDia_type)       , intent(in)                        :: subset
 !    end subroutine
@@ -16539,11 +16539,11 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setTauWTR_UXD_SK3
 !#endif
-!        use pm_kind, only: TKC => RK, SKC => SK3
-!        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-!        character(*,SKC)        , intent(in)    , contiguous        :: sample(:,:)
-!        real(TKC)               , intent(out)   , contiguous        :: frank(:,:)
-!        real(TKC)               , intent(inout) , contiguous        :: tau(:,:)
+!        use pm_kind, only: TKG => RK, SKG => SK3
+!        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+!        character(*,SKG)        , intent(in)    , contiguous        :: sample(:,:)
+!        real(TKG)               , intent(out)   , contiguous        :: frank(:,:)
+!        real(TKG)               , intent(inout) , contiguous        :: tau(:,:)
 !        integer(IK)             , intent(in)                        :: dim
 !        type(uppDia_type)       , intent(in)                        :: subset
 !    end subroutine
@@ -16554,11 +16554,11 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setTauWTR_UXD_SK2
 !#endif
-!        use pm_kind, only: TKC => RK, SKC => SK2
-!        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-!        character(*,SKC)        , intent(in)    , contiguous        :: sample(:,:)
-!        real(TKC)               , intent(out)   , contiguous        :: frank(:,:)
-!        real(TKC)               , intent(inout) , contiguous        :: tau(:,:)
+!        use pm_kind, only: TKG => RK, SKG => SK2
+!        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+!        character(*,SKG)        , intent(in)    , contiguous        :: sample(:,:)
+!        real(TKG)               , intent(out)   , contiguous        :: frank(:,:)
+!        real(TKG)               , intent(inout) , contiguous        :: tau(:,:)
 !        integer(IK)             , intent(in)                        :: dim
 !        type(uppDia_type)       , intent(in)                        :: subset
 !    end subroutine
@@ -16569,11 +16569,11 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setTauWTR_UXD_SK1
 !#endif
-!        use pm_kind, only: TKC => RK, SKC => SK1
-!        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-!        character(*,SKC)        , intent(in)    , contiguous        :: sample(:,:)
-!        real(TKC)               , intent(out)   , contiguous        :: frank(:,:)
-!        real(TKC)               , intent(inout) , contiguous        :: tau(:,:)
+!        use pm_kind, only: TKG => RK, SKG => SK1
+!        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+!        character(*,SKG)        , intent(in)    , contiguous        :: sample(:,:)
+!        real(TKG)               , intent(out)   , contiguous        :: frank(:,:)
+!        real(TKG)               , intent(inout) , contiguous        :: tau(:,:)
 !        integer(IK)             , intent(in)                        :: dim
 !        type(uppDia_type)       , intent(in)                        :: subset
 !    end subroutine
@@ -16586,11 +16586,11 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setTauWTR_UXD_IK5
 !#endif
-!        use pm_kind, only: TKC => RK, IKC => IK5
-!        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-!        integer(IKC)            , intent(in)    , contiguous        :: sample(:,:)
-!        real(TKC)               , intent(out)   , contiguous        :: frank(:,:)
-!        real(TKC)               , intent(inout) , contiguous        :: tau(:,:)
+!        use pm_kind, only: TKG => RK, IKG => IK5
+!        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+!        integer(IKG)            , intent(in)    , contiguous        :: sample(:,:)
+!        real(TKG)               , intent(out)   , contiguous        :: frank(:,:)
+!        real(TKG)               , intent(inout) , contiguous        :: tau(:,:)
 !        integer(IK)             , intent(in)                        :: dim
 !        type(uppDia_type)       , intent(in)                        :: subset
 !    end subroutine
@@ -16601,11 +16601,11 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setTauWTR_UXD_IK4
 !#endif
-!        use pm_kind, only: TKC => RK, IKC => IK4
-!        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-!        integer(IKC)            , intent(in)    , contiguous        :: sample(:,:)
-!        real(TKC)               , intent(out)   , contiguous        :: frank(:,:)
-!        real(TKC)               , intent(inout) , contiguous        :: tau(:,:)
+!        use pm_kind, only: TKG => RK, IKG => IK4
+!        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+!        integer(IKG)            , intent(in)    , contiguous        :: sample(:,:)
+!        real(TKG)               , intent(out)   , contiguous        :: frank(:,:)
+!        real(TKG)               , intent(inout) , contiguous        :: tau(:,:)
 !        integer(IK)             , intent(in)                        :: dim
 !        type(uppDia_type)       , intent(in)                        :: subset
 !    end subroutine
@@ -16616,11 +16616,11 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setTauWTR_UXD_IK3
 !#endif
-!        use pm_kind, only: TKC => RK, IKC => IK3
-!        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-!        integer(IKC)            , intent(in)    , contiguous        :: sample(:,:)
-!        real(TKC)               , intent(out)   , contiguous        :: frank(:,:)
-!        real(TKC)               , intent(inout) , contiguous        :: tau(:,:)
+!        use pm_kind, only: TKG => RK, IKG => IK3
+!        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+!        integer(IKG)            , intent(in)    , contiguous        :: sample(:,:)
+!        real(TKG)               , intent(out)   , contiguous        :: frank(:,:)
+!        real(TKG)               , intent(inout) , contiguous        :: tau(:,:)
 !        integer(IK)             , intent(in)                        :: dim
 !        type(uppDia_type)       , intent(in)                        :: subset
 !    end subroutine
@@ -16631,11 +16631,11 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setTauWTR_UXD_IK2
 !#endif
-!        use pm_kind, only: TKC => RK, IKC => IK2
-!        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-!        integer(IKC)            , intent(in)    , contiguous        :: sample(:,:)
-!        real(TKC)               , intent(out)   , contiguous        :: frank(:,:)
-!        real(TKC)               , intent(inout) , contiguous        :: tau(:,:)
+!        use pm_kind, only: TKG => RK, IKG => IK2
+!        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+!        integer(IKG)            , intent(in)    , contiguous        :: sample(:,:)
+!        real(TKG)               , intent(out)   , contiguous        :: frank(:,:)
+!        real(TKG)               , intent(inout) , contiguous        :: tau(:,:)
 !        integer(IK)             , intent(in)                        :: dim
 !        type(uppDia_type)       , intent(in)                        :: subset
 !    end subroutine
@@ -16646,11 +16646,11 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setTauWTR_UXD_IK1
 !#endif
-!        use pm_kind, only: TKC => RK, IKC => IK1
-!        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-!        integer(IKC)            , intent(in)    , contiguous        :: sample(:,:)
-!        real(TKC)               , intent(out)   , contiguous        :: frank(:,:)
-!        real(TKC)               , intent(inout) , contiguous        :: tau(:,:)
+!        use pm_kind, only: TKG => RK, IKG => IK1
+!        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+!        integer(IKG)            , intent(in)    , contiguous        :: sample(:,:)
+!        real(TKG)               , intent(out)   , contiguous        :: frank(:,:)
+!        real(TKG)               , intent(inout) , contiguous        :: tau(:,:)
 !        integer(IK)             , intent(in)                        :: dim
 !        type(uppDia_type)       , intent(in)                        :: subset
 !    end subroutine
@@ -16663,11 +16663,11 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setTauWTR_UXD_RK5
 !#endif
-!        use pm_kind, only: TKC => RK5
-!        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-!        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
-!        real(TKC)               , intent(out)   , contiguous        :: frank(:,:)
-!        real(TKC)               , intent(inout) , contiguous        :: tau(:,:)
+!        use pm_kind, only: TKG => RK5
+!        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+!        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
+!        real(TKG)               , intent(out)   , contiguous        :: frank(:,:)
+!        real(TKG)               , intent(inout) , contiguous        :: tau(:,:)
 !        integer(IK)             , intent(in)                        :: dim
 !        type(uppDia_type)       , intent(in)                        :: subset
 !    end subroutine
@@ -16678,11 +16678,11 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setTauWTR_UXD_RK4
 !#endif
-!        use pm_kind, only: TKC => RK4
-!        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-!        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
-!        real(TKC)               , intent(out)   , contiguous        :: frank(:,:)
-!        real(TKC)               , intent(inout) , contiguous        :: tau(:,:)
+!        use pm_kind, only: TKG => RK4
+!        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+!        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
+!        real(TKG)               , intent(out)   , contiguous        :: frank(:,:)
+!        real(TKG)               , intent(inout) , contiguous        :: tau(:,:)
 !        integer(IK)             , intent(in)                        :: dim
 !        type(uppDia_type)       , intent(in)                        :: subset
 !    end subroutine
@@ -16693,11 +16693,11 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setTauWTR_UXD_RK3
 !#endif
-!        use pm_kind, only: TKC => RK3
-!        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-!        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
-!        real(TKC)               , intent(out)   , contiguous        :: frank(:,:)
-!        real(TKC)               , intent(inout) , contiguous        :: tau(:,:)
+!        use pm_kind, only: TKG => RK3
+!        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+!        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
+!        real(TKG)               , intent(out)   , contiguous        :: frank(:,:)
+!        real(TKG)               , intent(inout) , contiguous        :: tau(:,:)
 !        integer(IK)             , intent(in)                        :: dim
 !        type(uppDia_type)       , intent(in)                        :: subset
 !    end subroutine
@@ -16708,11 +16708,11 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setTauWTR_UXD_RK2
 !#endif
-!        use pm_kind, only: TKC => RK2
-!        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-!        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
-!        real(TKC)               , intent(out)   , contiguous        :: frank(:,:)
-!        real(TKC)               , intent(inout) , contiguous        :: tau(:,:)
+!        use pm_kind, only: TKG => RK2
+!        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+!        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
+!        real(TKG)               , intent(out)   , contiguous        :: frank(:,:)
+!        real(TKG)               , intent(inout) , contiguous        :: tau(:,:)
 !        integer(IK)             , intent(in)                        :: dim
 !        type(uppDia_type)       , intent(in)                        :: subset
 !    end subroutine
@@ -16723,11 +16723,11 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setTauWTR_UXD_RK1
 !#endif
-!        use pm_kind, only: TKC => RK1
-!        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-!        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
-!        real(TKC)               , intent(out)   , contiguous        :: frank(:,:)
-!        real(TKC)               , intent(inout) , contiguous        :: tau(:,:)
+!        use pm_kind, only: TKG => RK1
+!        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+!        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
+!        real(TKG)               , intent(out)   , contiguous        :: frank(:,:)
+!        real(TKG)               , intent(inout) , contiguous        :: tau(:,:)
 !        integer(IK)             , intent(in)                        :: dim
 !        type(uppDia_type)       , intent(in)                        :: subset
 !    end subroutine
@@ -16742,11 +16742,11 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setTauWTR_UXD_PSSK5
 !#endif
-!        use pm_kind, only: TKC => RK, SKC => SK5
-!        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-!        type(css_pdt(SKC))      , intent(in)    , contiguous        :: sample(:,:)
-!        real(TKC)               , intent(out)   , contiguous        :: frank(:,:)
-!        real(TKC)               , intent(inout) , contiguous        :: tau(:,:)
+!        use pm_kind, only: TKG => RK, SKG => SK5
+!        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+!        type(css_pdt(SKG))      , intent(in)    , contiguous        :: sample(:,:)
+!        real(TKG)               , intent(out)   , contiguous        :: frank(:,:)
+!        real(TKG)               , intent(inout) , contiguous        :: tau(:,:)
 !        integer(IK)             , intent(in)                        :: dim
 !        type(uppDia_type)       , intent(in)                        :: subset
 !    end subroutine
@@ -16757,11 +16757,11 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setTauWTR_UXD_PSSK4
 !#endif
-!        use pm_kind, only: TKC => RK, SKC => SK4
-!        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-!        type(css_pdt(SKC))      , intent(in)    , contiguous        :: sample(:,:)
-!        real(TKC)               , intent(out)   , contiguous        :: frank(:,:)
-!        real(TKC)               , intent(inout) , contiguous        :: tau(:,:)
+!        use pm_kind, only: TKG => RK, SKG => SK4
+!        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+!        type(css_pdt(SKG))      , intent(in)    , contiguous        :: sample(:,:)
+!        real(TKG)               , intent(out)   , contiguous        :: frank(:,:)
+!        real(TKG)               , intent(inout) , contiguous        :: tau(:,:)
 !        integer(IK)             , intent(in)                        :: dim
 !        type(uppDia_type)       , intent(in)                        :: subset
 !    end subroutine
@@ -16772,11 +16772,11 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setTauWTR_UXD_PSSK3
 !#endif
-!        use pm_kind, only: TKC => RK, SKC => SK3
-!        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-!        type(css_pdt(SKC))      , intent(in)    , contiguous        :: sample(:,:)
-!        real(TKC)               , intent(out)   , contiguous        :: frank(:,:)
-!        real(TKC)               , intent(inout) , contiguous        :: tau(:,:)
+!        use pm_kind, only: TKG => RK, SKG => SK3
+!        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+!        type(css_pdt(SKG))      , intent(in)    , contiguous        :: sample(:,:)
+!        real(TKG)               , intent(out)   , contiguous        :: frank(:,:)
+!        real(TKG)               , intent(inout) , contiguous        :: tau(:,:)
 !        integer(IK)             , intent(in)                        :: dim
 !        type(uppDia_type)       , intent(in)                        :: subset
 !    end subroutine
@@ -16787,11 +16787,11 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setTauWTR_UXD_PSSK2
 !#endif
-!        use pm_kind, only: TKC => RK, SKC => SK2
-!        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-!        type(css_pdt(SKC))      , intent(in)    , contiguous        :: sample(:,:)
-!        real(TKC)               , intent(out)   , contiguous        :: frank(:,:)
-!        real(TKC)               , intent(inout) , contiguous        :: tau(:,:)
+!        use pm_kind, only: TKG => RK, SKG => SK2
+!        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+!        type(css_pdt(SKG))      , intent(in)    , contiguous        :: sample(:,:)
+!        real(TKG)               , intent(out)   , contiguous        :: frank(:,:)
+!        real(TKG)               , intent(inout) , contiguous        :: tau(:,:)
 !        integer(IK)             , intent(in)                        :: dim
 !        type(uppDia_type)       , intent(in)                        :: subset
 !    end subroutine
@@ -16802,11 +16802,11 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setTauWTR_UXD_PSSK1
 !#endif
-!        use pm_kind, only: TKC => RK, SKC => SK1
-!        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-!        type(css_pdt(SKC))      , intent(in)    , contiguous        :: sample(:,:)
-!        real(TKC)               , intent(out)   , contiguous        :: frank(:,:)
-!        real(TKC)               , intent(inout) , contiguous        :: tau(:,:)
+!        use pm_kind, only: TKG => RK, SKG => SK1
+!        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+!        type(css_pdt(SKG))      , intent(in)    , contiguous        :: sample(:,:)
+!        real(TKG)               , intent(out)   , contiguous        :: frank(:,:)
+!        real(TKG)               , intent(inout) , contiguous        :: tau(:,:)
 !        integer(IK)             , intent(in)                        :: dim
 !        type(uppDia_type)       , intent(in)                        :: subset
 !    end subroutine
@@ -16821,10 +16821,10 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setTauWTR_UXD_BSSK
 !#endif
-!        real(TKC)               , intent(in)    , contiguous        :: weight(:)
+!        real(TKG)               , intent(in)    , contiguous        :: weight(:)
 !        type(css_type)          , intent(in)    , contiguous        :: sample(:,:)
-!        real(TKC)               , intent(out)   , contiguous        :: frank(:,:)
-!        real(TKC)               , intent(inout) , contiguous        :: tau(:,:)
+!        real(TKG)               , intent(out)   , contiguous        :: frank(:,:)
+!        real(TKG)               , intent(inout) , contiguous        :: tau(:,:)
 !        integer(IK)             , intent(in)                        :: dim
 !        type(uppDia_type)       , intent(in)                        :: subset
 !    end subroutine
@@ -16846,10 +16846,10 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setTauWNO_XLD_SK5
 !#endif
-!        use pm_kind, only: TKC => RK, SKC => SK5
-!        character(*,SKC)        , intent(in)    , contiguous        :: sample(:,:)
-!        real(TKC)               , intent(out)   , contiguous        :: frank(:,:)
-!        real(TKC)               , intent(inout) , contiguous        :: tau(:,:)
+!        use pm_kind, only: TKG => RK, SKG => SK5
+!        character(*,SKG)        , intent(in)    , contiguous        :: sample(:,:)
+!        real(TKG)               , intent(out)   , contiguous        :: frank(:,:)
+!        real(TKG)               , intent(inout) , contiguous        :: tau(:,:)
 !        integer(IK)             , intent(in)                        :: dim
 !        type(lowDia_type)       , intent(in)                        :: subset
 !    end subroutine
@@ -16860,10 +16860,10 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setTauWNO_XLD_SK4
 !#endif
-!        use pm_kind, only: TKC => RK, SKC => SK4
-!        character(*,SKC)        , intent(in)    , contiguous        :: sample(:,:)
-!        real(TKC)               , intent(out)   , contiguous        :: frank(:,:)
-!        real(TKC)               , intent(inout) , contiguous        :: tau(:,:)
+!        use pm_kind, only: TKG => RK, SKG => SK4
+!        character(*,SKG)        , intent(in)    , contiguous        :: sample(:,:)
+!        real(TKG)               , intent(out)   , contiguous        :: frank(:,:)
+!        real(TKG)               , intent(inout) , contiguous        :: tau(:,:)
 !        integer(IK)             , intent(in)                        :: dim
 !        type(lowDia_type)       , intent(in)                        :: subset
 !    end subroutine
@@ -16874,10 +16874,10 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setTauWNO_XLD_SK3
 !#endif
-!        use pm_kind, only: TKC => RK, SKC => SK3
-!        character(*,SKC)        , intent(in)    , contiguous        :: sample(:,:)
-!        real(TKC)               , intent(out)   , contiguous        :: frank(:,:)
-!        real(TKC)               , intent(inout) , contiguous        :: tau(:,:)
+!        use pm_kind, only: TKG => RK, SKG => SK3
+!        character(*,SKG)        , intent(in)    , contiguous        :: sample(:,:)
+!        real(TKG)               , intent(out)   , contiguous        :: frank(:,:)
+!        real(TKG)               , intent(inout) , contiguous        :: tau(:,:)
 !        integer(IK)             , intent(in)                        :: dim
 !        type(lowDia_type)       , intent(in)                        :: subset
 !    end subroutine
@@ -16888,10 +16888,10 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setTauWNO_XLD_SK2
 !#endif
-!        use pm_kind, only: TKC => RK, SKC => SK2
-!        character(*,SKC)        , intent(in)    , contiguous        :: sample(:,:)
-!        real(TKC)               , intent(out)   , contiguous        :: frank(:,:)
-!        real(TKC)               , intent(inout) , contiguous        :: tau(:,:)
+!        use pm_kind, only: TKG => RK, SKG => SK2
+!        character(*,SKG)        , intent(in)    , contiguous        :: sample(:,:)
+!        real(TKG)               , intent(out)   , contiguous        :: frank(:,:)
+!        real(TKG)               , intent(inout) , contiguous        :: tau(:,:)
 !        integer(IK)             , intent(in)                        :: dim
 !        type(lowDia_type)       , intent(in)                        :: subset
 !    end subroutine
@@ -16902,10 +16902,10 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setTauWNO_XLD_SK1
 !#endif
-!        use pm_kind, only: TKC => RK, SKC => SK1
-!        character(*,SKC)        , intent(in)    , contiguous        :: sample(:,:)
-!        real(TKC)               , intent(out)   , contiguous        :: frank(:,:)
-!        real(TKC)               , intent(inout) , contiguous        :: tau(:,:)
+!        use pm_kind, only: TKG => RK, SKG => SK1
+!        character(*,SKG)        , intent(in)    , contiguous        :: sample(:,:)
+!        real(TKG)               , intent(out)   , contiguous        :: frank(:,:)
+!        real(TKG)               , intent(inout) , contiguous        :: tau(:,:)
 !        integer(IK)             , intent(in)                        :: dim
 !        type(lowDia_type)       , intent(in)                        :: subset
 !    end subroutine
@@ -16918,10 +16918,10 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setTauWNO_XLD_IK5
 !#endif
-!        use pm_kind, only: TKC => RK, IKC => IK5
-!        integer(IKC)            , intent(in)    , contiguous        :: sample(:,:)
-!        real(TKC)               , intent(out)   , contiguous        :: frank(:,:)
-!        real(TKC)               , intent(inout) , contiguous        :: tau(:,:)
+!        use pm_kind, only: TKG => RK, IKG => IK5
+!        integer(IKG)            , intent(in)    , contiguous        :: sample(:,:)
+!        real(TKG)               , intent(out)   , contiguous        :: frank(:,:)
+!        real(TKG)               , intent(inout) , contiguous        :: tau(:,:)
 !        integer(IK)             , intent(in)                        :: dim
 !        type(lowDia_type)       , intent(in)                        :: subset
 !    end subroutine
@@ -16932,10 +16932,10 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setTauWNO_XLD_IK4
 !#endif
-!        use pm_kind, only: TKC => RK, IKC => IK4
-!        integer(IKC)            , intent(in)    , contiguous        :: sample(:,:)
-!        real(TKC)               , intent(out)   , contiguous        :: frank(:,:)
-!        real(TKC)               , intent(inout) , contiguous        :: tau(:,:)
+!        use pm_kind, only: TKG => RK, IKG => IK4
+!        integer(IKG)            , intent(in)    , contiguous        :: sample(:,:)
+!        real(TKG)               , intent(out)   , contiguous        :: frank(:,:)
+!        real(TKG)               , intent(inout) , contiguous        :: tau(:,:)
 !        integer(IK)             , intent(in)                        :: dim
 !        type(lowDia_type)       , intent(in)                        :: subset
 !    end subroutine
@@ -16946,10 +16946,10 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setTauWNO_XLD_IK3
 !#endif
-!        use pm_kind, only: TKC => RK, IKC => IK3
-!        integer(IKC)            , intent(in)    , contiguous        :: sample(:,:)
-!        real(TKC)               , intent(out)   , contiguous        :: frank(:,:)
-!        real(TKC)               , intent(inout) , contiguous        :: tau(:,:)
+!        use pm_kind, only: TKG => RK, IKG => IK3
+!        integer(IKG)            , intent(in)    , contiguous        :: sample(:,:)
+!        real(TKG)               , intent(out)   , contiguous        :: frank(:,:)
+!        real(TKG)               , intent(inout) , contiguous        :: tau(:,:)
 !        integer(IK)             , intent(in)                        :: dim
 !        type(lowDia_type)       , intent(in)                        :: subset
 !    end subroutine
@@ -16960,10 +16960,10 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setTauWNO_XLD_IK2
 !#endif
-!        use pm_kind, only: TKC => RK, IKC => IK2
-!        integer(IKC)            , intent(in)    , contiguous        :: sample(:,:)
-!        real(TKC)               , intent(out)   , contiguous        :: frank(:,:)
-!        real(TKC)               , intent(inout) , contiguous        :: tau(:,:)
+!        use pm_kind, only: TKG => RK, IKG => IK2
+!        integer(IKG)            , intent(in)    , contiguous        :: sample(:,:)
+!        real(TKG)               , intent(out)   , contiguous        :: frank(:,:)
+!        real(TKG)               , intent(inout) , contiguous        :: tau(:,:)
 !        integer(IK)             , intent(in)                        :: dim
 !        type(lowDia_type)       , intent(in)                        :: subset
 !    end subroutine
@@ -16974,10 +16974,10 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setTauWNO_XLD_IK1
 !#endif
-!        use pm_kind, only: TKC => RK, IKC => IK1
-!        integer(IKC)            , intent(in)    , contiguous        :: sample(:,:)
-!        real(TKC)               , intent(out)   , contiguous        :: frank(:,:)
-!        real(TKC)               , intent(inout) , contiguous        :: tau(:,:)
+!        use pm_kind, only: TKG => RK, IKG => IK1
+!        integer(IKG)            , intent(in)    , contiguous        :: sample(:,:)
+!        real(TKG)               , intent(out)   , contiguous        :: frank(:,:)
+!        real(TKG)               , intent(inout) , contiguous        :: tau(:,:)
 !        integer(IK)             , intent(in)                        :: dim
 !        type(lowDia_type)       , intent(in)                        :: subset
 !    end subroutine
@@ -16990,10 +16990,10 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setTauWNO_XLD_RK5
 !#endif
-!        use pm_kind, only: TKC => RK5
-!        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
-!        real(TKC)               , intent(out)   , contiguous        :: frank(:,:)
-!        real(TKC)               , intent(inout) , contiguous        :: tau(:,:)
+!        use pm_kind, only: TKG => RK5
+!        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
+!        real(TKG)               , intent(out)   , contiguous        :: frank(:,:)
+!        real(TKG)               , intent(inout) , contiguous        :: tau(:,:)
 !        integer(IK)             , intent(in)                        :: dim
 !        type(lowDia_type)       , intent(in)                        :: subset
 !    end subroutine
@@ -17004,10 +17004,10 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setTauWNO_XLD_RK4
 !#endif
-!        use pm_kind, only: TKC => RK4
-!        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
-!        real(TKC)               , intent(out)   , contiguous        :: frank(:,:)
-!        real(TKC)               , intent(inout) , contiguous        :: tau(:,:)
+!        use pm_kind, only: TKG => RK4
+!        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
+!        real(TKG)               , intent(out)   , contiguous        :: frank(:,:)
+!        real(TKG)               , intent(inout) , contiguous        :: tau(:,:)
 !        integer(IK)             , intent(in)                        :: dim
 !        type(lowDia_type)       , intent(in)                        :: subset
 !    end subroutine
@@ -17018,10 +17018,10 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setTauWNO_XLD_RK3
 !#endif
-!        use pm_kind, only: TKC => RK3
-!        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
-!        real(TKC)               , intent(out)   , contiguous        :: frank(:,:)
-!        real(TKC)               , intent(inout) , contiguous        :: tau(:,:)
+!        use pm_kind, only: TKG => RK3
+!        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
+!        real(TKG)               , intent(out)   , contiguous        :: frank(:,:)
+!        real(TKG)               , intent(inout) , contiguous        :: tau(:,:)
 !        integer(IK)             , intent(in)                        :: dim
 !        type(lowDia_type)       , intent(in)                        :: subset
 !    end subroutine
@@ -17032,10 +17032,10 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setTauWNO_XLD_RK2
 !#endif
-!        use pm_kind, only: TKC => RK2
-!        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
-!        real(TKC)               , intent(out)   , contiguous        :: frank(:,:)
-!        real(TKC)               , intent(inout) , contiguous        :: tau(:,:)
+!        use pm_kind, only: TKG => RK2
+!        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
+!        real(TKG)               , intent(out)   , contiguous        :: frank(:,:)
+!        real(TKG)               , intent(inout) , contiguous        :: tau(:,:)
 !        integer(IK)             , intent(in)                        :: dim
 !        type(lowDia_type)       , intent(in)                        :: subset
 !    end subroutine
@@ -17046,10 +17046,10 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setTauWNO_XLD_RK1
 !#endif
-!        use pm_kind, only: TKC => RK1
-!        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
-!        real(TKC)               , intent(out)   , contiguous        :: frank(:,:)
-!        real(TKC)               , intent(inout) , contiguous        :: tau(:,:)
+!        use pm_kind, only: TKG => RK1
+!        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
+!        real(TKG)               , intent(out)   , contiguous        :: frank(:,:)
+!        real(TKG)               , intent(inout) , contiguous        :: tau(:,:)
 !        integer(IK)             , intent(in)                        :: dim
 !        type(lowDia_type)       , intent(in)                        :: subset
 !    end subroutine
@@ -17064,10 +17064,10 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setTauWNO_XLD_PSSK5
 !#endif
-!        use pm_kind, only: TKC => RK, SKC => SK5
-!        type(css_pdt(SKC))      , intent(in)    , contiguous        :: sample(:,:)
-!        real(TKC)               , intent(out)   , contiguous        :: frank(:,:)
-!        real(TKC)               , intent(inout) , contiguous        :: tau(:,:)
+!        use pm_kind, only: TKG => RK, SKG => SK5
+!        type(css_pdt(SKG))      , intent(in)    , contiguous        :: sample(:,:)
+!        real(TKG)               , intent(out)   , contiguous        :: frank(:,:)
+!        real(TKG)               , intent(inout) , contiguous        :: tau(:,:)
 !        integer(IK)             , intent(in)                        :: dim
 !        type(lowDia_type)       , intent(in)                        :: subset
 !    end subroutine
@@ -17078,10 +17078,10 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setTauWNO_XLD_PSSK4
 !#endif
-!        use pm_kind, only: TKC => RK, SKC => SK4
-!        type(css_pdt(SKC))      , intent(in)    , contiguous        :: sample(:,:)
-!        real(TKC)               , intent(out)   , contiguous        :: frank(:,:)
-!        real(TKC)               , intent(inout) , contiguous        :: tau(:,:)
+!        use pm_kind, only: TKG => RK, SKG => SK4
+!        type(css_pdt(SKG))      , intent(in)    , contiguous        :: sample(:,:)
+!        real(TKG)               , intent(out)   , contiguous        :: frank(:,:)
+!        real(TKG)               , intent(inout) , contiguous        :: tau(:,:)
 !        integer(IK)             , intent(in)                        :: dim
 !        type(lowDia_type)       , intent(in)                        :: subset
 !    end subroutine
@@ -17092,10 +17092,10 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setTauWNO_XLD_PSSK3
 !#endif
-!        use pm_kind, only: TKC => RK, SKC => SK3
-!        type(css_pdt(SKC))      , intent(in)    , contiguous        :: sample(:,:)
-!        real(TKC)               , intent(out)   , contiguous        :: frank(:,:)
-!        real(TKC)               , intent(inout) , contiguous        :: tau(:,:)
+!        use pm_kind, only: TKG => RK, SKG => SK3
+!        type(css_pdt(SKG))      , intent(in)    , contiguous        :: sample(:,:)
+!        real(TKG)               , intent(out)   , contiguous        :: frank(:,:)
+!        real(TKG)               , intent(inout) , contiguous        :: tau(:,:)
 !        integer(IK)             , intent(in)                        :: dim
 !        type(lowDia_type)       , intent(in)                        :: subset
 !    end subroutine
@@ -17106,10 +17106,10 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setTauWNO_XLD_PSSK2
 !#endif
-!        use pm_kind, only: TKC => RK, SKC => SK2
-!        type(css_pdt(SKC))      , intent(in)    , contiguous        :: sample(:,:)
-!        real(TKC)               , intent(out)   , contiguous        :: frank(:,:)
-!        real(TKC)               , intent(inout) , contiguous        :: tau(:,:)
+!        use pm_kind, only: TKG => RK, SKG => SK2
+!        type(css_pdt(SKG))      , intent(in)    , contiguous        :: sample(:,:)
+!        real(TKG)               , intent(out)   , contiguous        :: frank(:,:)
+!        real(TKG)               , intent(inout) , contiguous        :: tau(:,:)
 !        integer(IK)             , intent(in)                        :: dim
 !        type(lowDia_type)       , intent(in)                        :: subset
 !    end subroutine
@@ -17120,10 +17120,10 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setTauWNO_XLD_PSSK1
 !#endif
-!        use pm_kind, only: TKC => RK, SKC => SK1
-!        type(css_pdt(SKC))      , intent(in)    , contiguous        :: sample(:,:)
-!        real(TKC)               , intent(out)   , contiguous        :: frank(:,:)
-!        real(TKC)               , intent(inout) , contiguous        :: tau(:,:)
+!        use pm_kind, only: TKG => RK, SKG => SK1
+!        type(css_pdt(SKG))      , intent(in)    , contiguous        :: sample(:,:)
+!        real(TKG)               , intent(out)   , contiguous        :: frank(:,:)
+!        real(TKG)               , intent(inout) , contiguous        :: tau(:,:)
 !        integer(IK)             , intent(in)                        :: dim
 !        type(lowDia_type)       , intent(in)                        :: subset
 !    end subroutine
@@ -17139,8 +17139,8 @@ module pm_sampleCor
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setTauWNO_XLD_BSSK
 !#endif
 !        type(css_type)          , intent(in)    , contiguous        :: sample(:,:)
-!        real(TKC)               , intent(out)   , contiguous        :: frank(:,:)
-!        real(TKC)               , intent(inout) , contiguous        :: tau(:,:)
+!        real(TKG)               , intent(out)   , contiguous        :: frank(:,:)
+!        real(TKG)               , intent(inout) , contiguous        :: tau(:,:)
 !        integer(IK)             , intent(in)                        :: dim
 !        type(lowDia_type)       , intent(in)                        :: subset
 !    end subroutine
@@ -17160,11 +17160,11 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setTauWTI_XLD_SK5
 !#endif
-!        use pm_kind, only: TKC => RK, SKC => SK5
+!        use pm_kind, only: TKG => RK, SKG => SK5
 !        integer(IK)             , intent(in)    , contiguous        :: weight(:)
-!        character(*,SKC)        , intent(in)    , contiguous        :: sample(:,:)
-!        real(TKC)               , intent(out)   , contiguous        :: frank(:,:)
-!        real(TKC)               , intent(inout) , contiguous        :: tau(:,:)
+!        character(*,SKG)        , intent(in)    , contiguous        :: sample(:,:)
+!        real(TKG)               , intent(out)   , contiguous        :: frank(:,:)
+!        real(TKG)               , intent(inout) , contiguous        :: tau(:,:)
 !        integer(IK)             , intent(in)                        :: dim
 !        type(lowDia_type)       , intent(in)                        :: subset
 !    end subroutine
@@ -17175,11 +17175,11 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setTauWTI_XLD_SK4
 !#endif
-!        use pm_kind, only: TKC => RK, SKC => SK4
+!        use pm_kind, only: TKG => RK, SKG => SK4
 !        integer(IK)             , intent(in)    , contiguous        :: weight(:)
-!        character(*,SKC)        , intent(in)    , contiguous        :: sample(:,:)
-!        real(TKC)               , intent(out)   , contiguous        :: frank(:,:)
-!        real(TKC)               , intent(inout) , contiguous        :: tau(:,:)
+!        character(*,SKG)        , intent(in)    , contiguous        :: sample(:,:)
+!        real(TKG)               , intent(out)   , contiguous        :: frank(:,:)
+!        real(TKG)               , intent(inout) , contiguous        :: tau(:,:)
 !        integer(IK)             , intent(in)                        :: dim
 !        type(lowDia_type)       , intent(in)                        :: subset
 !    end subroutine
@@ -17190,11 +17190,11 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setTauWTI_XLD_SK3
 !#endif
-!        use pm_kind, only: TKC => RK, SKC => SK3
+!        use pm_kind, only: TKG => RK, SKG => SK3
 !        integer(IK)             , intent(in)    , contiguous        :: weight(:)
-!        character(*,SKC)        , intent(in)    , contiguous        :: sample(:,:)
-!        real(TKC)               , intent(out)   , contiguous        :: frank(:,:)
-!        real(TKC)               , intent(inout) , contiguous        :: tau(:,:)
+!        character(*,SKG)        , intent(in)    , contiguous        :: sample(:,:)
+!        real(TKG)               , intent(out)   , contiguous        :: frank(:,:)
+!        real(TKG)               , intent(inout) , contiguous        :: tau(:,:)
 !        integer(IK)             , intent(in)                        :: dim
 !        type(lowDia_type)       , intent(in)                        :: subset
 !    end subroutine
@@ -17205,11 +17205,11 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setTauWTI_XLD_SK2
 !#endif
-!        use pm_kind, only: TKC => RK, SKC => SK2
+!        use pm_kind, only: TKG => RK, SKG => SK2
 !        integer(IK)             , intent(in)    , contiguous        :: weight(:)
-!        character(*,SKC)        , intent(in)    , contiguous        :: sample(:,:)
-!        real(TKC)               , intent(out)   , contiguous        :: frank(:,:)
-!        real(TKC)               , intent(inout) , contiguous        :: tau(:,:)
+!        character(*,SKG)        , intent(in)    , contiguous        :: sample(:,:)
+!        real(TKG)               , intent(out)   , contiguous        :: frank(:,:)
+!        real(TKG)               , intent(inout) , contiguous        :: tau(:,:)
 !        integer(IK)             , intent(in)                        :: dim
 !        type(lowDia_type)       , intent(in)                        :: subset
 !    end subroutine
@@ -17220,11 +17220,11 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setTauWTI_XLD_SK1
 !#endif
-!        use pm_kind, only: TKC => RK, SKC => SK1
+!        use pm_kind, only: TKG => RK, SKG => SK1
 !        integer(IK)             , intent(in)    , contiguous        :: weight(:)
-!        character(*,SKC)        , intent(in)    , contiguous        :: sample(:,:)
-!        real(TKC)               , intent(out)   , contiguous        :: frank(:,:)
-!        real(TKC)               , intent(inout) , contiguous        :: tau(:,:)
+!        character(*,SKG)        , intent(in)    , contiguous        :: sample(:,:)
+!        real(TKG)               , intent(out)   , contiguous        :: frank(:,:)
+!        real(TKG)               , intent(inout) , contiguous        :: tau(:,:)
 !        integer(IK)             , intent(in)                        :: dim
 !        type(lowDia_type)       , intent(in)                        :: subset
 !    end subroutine
@@ -17237,11 +17237,11 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setTauWTI_XLD_IK5
 !#endif
-!        use pm_kind, only: TKC => RK, IKC => IK5
+!        use pm_kind, only: TKG => RK, IKG => IK5
 !        integer(IK)             , intent(in)    , contiguous        :: weight(:)
-!        integer(IKC)            , intent(in)    , contiguous        :: sample(:,:)
-!        real(TKC)               , intent(out)   , contiguous        :: frank(:,:)
-!        real(TKC)               , intent(inout) , contiguous        :: tau(:,:)
+!        integer(IKG)            , intent(in)    , contiguous        :: sample(:,:)
+!        real(TKG)               , intent(out)   , contiguous        :: frank(:,:)
+!        real(TKG)               , intent(inout) , contiguous        :: tau(:,:)
 !        integer(IK)             , intent(in)                        :: dim
 !        type(lowDia_type)       , intent(in)                        :: subset
 !    end subroutine
@@ -17252,11 +17252,11 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setTauWTI_XLD_IK4
 !#endif
-!        use pm_kind, only: TKC => RK, IKC => IK4
+!        use pm_kind, only: TKG => RK, IKG => IK4
 !        integer(IK)             , intent(in)    , contiguous        :: weight(:)
-!        integer(IKC)            , intent(in)    , contiguous        :: sample(:,:)
-!        real(TKC)               , intent(out)   , contiguous        :: frank(:,:)
-!        real(TKC)               , intent(inout) , contiguous        :: tau(:,:)
+!        integer(IKG)            , intent(in)    , contiguous        :: sample(:,:)
+!        real(TKG)               , intent(out)   , contiguous        :: frank(:,:)
+!        real(TKG)               , intent(inout) , contiguous        :: tau(:,:)
 !        integer(IK)             , intent(in)                        :: dim
 !        type(lowDia_type)       , intent(in)                        :: subset
 !    end subroutine
@@ -17267,11 +17267,11 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setTauWTI_XLD_IK3
 !#endif
-!        use pm_kind, only: TKC => RK, IKC => IK3
+!        use pm_kind, only: TKG => RK, IKG => IK3
 !        integer(IK)             , intent(in)    , contiguous        :: weight(:)
-!        integer(IKC)            , intent(in)    , contiguous        :: sample(:,:)
-!        real(TKC)               , intent(out)   , contiguous        :: frank(:,:)
-!        real(TKC)               , intent(inout) , contiguous        :: tau(:,:)
+!        integer(IKG)            , intent(in)    , contiguous        :: sample(:,:)
+!        real(TKG)               , intent(out)   , contiguous        :: frank(:,:)
+!        real(TKG)               , intent(inout) , contiguous        :: tau(:,:)
 !        integer(IK)             , intent(in)                        :: dim
 !        type(lowDia_type)       , intent(in)                        :: subset
 !    end subroutine
@@ -17282,11 +17282,11 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setTauWTI_XLD_IK2
 !#endif
-!        use pm_kind, only: TKC => RK, IKC => IK2
+!        use pm_kind, only: TKG => RK, IKG => IK2
 !        integer(IK)             , intent(in)    , contiguous        :: weight(:)
-!        integer(IKC)            , intent(in)    , contiguous        :: sample(:,:)
-!        real(TKC)               , intent(out)   , contiguous        :: frank(:,:)
-!        real(TKC)               , intent(inout) , contiguous        :: tau(:,:)
+!        integer(IKG)            , intent(in)    , contiguous        :: sample(:,:)
+!        real(TKG)               , intent(out)   , contiguous        :: frank(:,:)
+!        real(TKG)               , intent(inout) , contiguous        :: tau(:,:)
 !        integer(IK)             , intent(in)                        :: dim
 !        type(lowDia_type)       , intent(in)                        :: subset
 !    end subroutine
@@ -17297,11 +17297,11 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setTauWTI_XLD_IK1
 !#endif
-!        use pm_kind, only: TKC => RK, IKC => IK1
+!        use pm_kind, only: TKG => RK, IKG => IK1
 !        integer(IK)             , intent(in)    , contiguous        :: weight(:)
-!        integer(IKC)            , intent(in)    , contiguous        :: sample(:,:)
-!        real(TKC)               , intent(out)   , contiguous        :: frank(:,:)
-!        real(TKC)               , intent(inout) , contiguous        :: tau(:,:)
+!        integer(IKG)            , intent(in)    , contiguous        :: sample(:,:)
+!        real(TKG)               , intent(out)   , contiguous        :: frank(:,:)
+!        real(TKG)               , intent(inout) , contiguous        :: tau(:,:)
 !        integer(IK)             , intent(in)                        :: dim
 !        type(lowDia_type)       , intent(in)                        :: subset
 !    end subroutine
@@ -17314,11 +17314,11 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setTauWTI_XLD_RK5
 !#endif
-!        use pm_kind, only: TKC => RK5
+!        use pm_kind, only: TKG => RK5
 !        integer(IK)             , intent(in)    , contiguous        :: weight(:)
-!        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
-!        real(TKC)               , intent(out)   , contiguous        :: frank(:,:)
-!        real(TKC)               , intent(inout) , contiguous        :: tau(:,:)
+!        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
+!        real(TKG)               , intent(out)   , contiguous        :: frank(:,:)
+!        real(TKG)               , intent(inout) , contiguous        :: tau(:,:)
 !        integer(IK)             , intent(in)                        :: dim
 !        type(lowDia_type)       , intent(in)                        :: subset
 !    end subroutine
@@ -17329,11 +17329,11 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setTauWTI_XLD_RK4
 !#endif
-!        use pm_kind, only: TKC => RK4
+!        use pm_kind, only: TKG => RK4
 !        integer(IK)             , intent(in)    , contiguous        :: weight(:)
-!        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
-!        real(TKC)               , intent(out)   , contiguous        :: frank(:,:)
-!        real(TKC)               , intent(inout) , contiguous        :: tau(:,:)
+!        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
+!        real(TKG)               , intent(out)   , contiguous        :: frank(:,:)
+!        real(TKG)               , intent(inout) , contiguous        :: tau(:,:)
 !        integer(IK)             , intent(in)                        :: dim
 !        type(lowDia_type)       , intent(in)                        :: subset
 !    end subroutine
@@ -17344,11 +17344,11 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setTauWTI_XLD_RK3
 !#endif
-!        use pm_kind, only: TKC => RK3
+!        use pm_kind, only: TKG => RK3
 !        integer(IK)             , intent(in)    , contiguous        :: weight(:)
-!        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
-!        real(TKC)               , intent(out)   , contiguous        :: frank(:,:)
-!        real(TKC)               , intent(inout) , contiguous        :: tau(:,:)
+!        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
+!        real(TKG)               , intent(out)   , contiguous        :: frank(:,:)
+!        real(TKG)               , intent(inout) , contiguous        :: tau(:,:)
 !        integer(IK)             , intent(in)                        :: dim
 !        type(lowDia_type)       , intent(in)                        :: subset
 !    end subroutine
@@ -17359,11 +17359,11 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setTauWTI_XLD_RK2
 !#endif
-!        use pm_kind, only: TKC => RK2
+!        use pm_kind, only: TKG => RK2
 !        integer(IK)             , intent(in)    , contiguous        :: weight(:)
-!        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
-!        real(TKC)               , intent(out)   , contiguous        :: frank(:,:)
-!        real(TKC)               , intent(inout) , contiguous        :: tau(:,:)
+!        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
+!        real(TKG)               , intent(out)   , contiguous        :: frank(:,:)
+!        real(TKG)               , intent(inout) , contiguous        :: tau(:,:)
 !        integer(IK)             , intent(in)                        :: dim
 !        type(lowDia_type)       , intent(in)                        :: subset
 !    end subroutine
@@ -17374,11 +17374,11 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setTauWTI_XLD_RK1
 !#endif
-!        use pm_kind, only: TKC => RK1
+!        use pm_kind, only: TKG => RK1
 !        integer(IK)             , intent(in)    , contiguous        :: weight(:)
-!        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
-!        real(TKC)               , intent(out)   , contiguous        :: frank(:,:)
-!        real(TKC)               , intent(inout) , contiguous        :: tau(:,:)
+!        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
+!        real(TKG)               , intent(out)   , contiguous        :: frank(:,:)
+!        real(TKG)               , intent(inout) , contiguous        :: tau(:,:)
 !        integer(IK)             , intent(in)                        :: dim
 !        type(lowDia_type)       , intent(in)                        :: subset
 !    end subroutine
@@ -17393,11 +17393,11 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setTauWTI_XLD_PSSK5
 !#endif
-!        use pm_kind, only: TKC => RK, SKC => SK5
+!        use pm_kind, only: TKG => RK, SKG => SK5
 !        integer(IK)             , intent(in)    , contiguous        :: weight(:)
-!        type(css_pdt(SKC))      , intent(in)    , contiguous        :: sample(:,:)
-!        real(TKC)               , intent(out)   , contiguous        :: frank(:,:)
-!        real(TKC)               , intent(inout) , contiguous        :: tau(:,:)
+!        type(css_pdt(SKG))      , intent(in)    , contiguous        :: sample(:,:)
+!        real(TKG)               , intent(out)   , contiguous        :: frank(:,:)
+!        real(TKG)               , intent(inout) , contiguous        :: tau(:,:)
 !        integer(IK)             , intent(in)                        :: dim
 !        type(lowDia_type)       , intent(in)                        :: subset
 !    end subroutine
@@ -17408,11 +17408,11 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setTauWTI_XLD_PSSK4
 !#endif
-!        use pm_kind, only: TKC => RK, SKC => SK4
+!        use pm_kind, only: TKG => RK, SKG => SK4
 !        integer(IK)             , intent(in)    , contiguous        :: weight(:)
-!        type(css_pdt(SKC))      , intent(in)    , contiguous        :: sample(:,:)
-!        real(TKC)               , intent(out)   , contiguous        :: frank(:,:)
-!        real(TKC)               , intent(inout) , contiguous        :: tau(:,:)
+!        type(css_pdt(SKG))      , intent(in)    , contiguous        :: sample(:,:)
+!        real(TKG)               , intent(out)   , contiguous        :: frank(:,:)
+!        real(TKG)               , intent(inout) , contiguous        :: tau(:,:)
 !        integer(IK)             , intent(in)                        :: dim
 !        type(lowDia_type)       , intent(in)                        :: subset
 !    end subroutine
@@ -17423,11 +17423,11 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setTauWTI_XLD_PSSK3
 !#endif
-!        use pm_kind, only: TKC => RK, SKC => SK3
+!        use pm_kind, only: TKG => RK, SKG => SK3
 !        integer(IK)             , intent(in)    , contiguous        :: weight(:)
-!        type(css_pdt(SKC))      , intent(in)    , contiguous        :: sample(:,:)
-!        real(TKC)               , intent(out)   , contiguous        :: frank(:,:)
-!        real(TKC)               , intent(inout) , contiguous        :: tau(:,:)
+!        type(css_pdt(SKG))      , intent(in)    , contiguous        :: sample(:,:)
+!        real(TKG)               , intent(out)   , contiguous        :: frank(:,:)
+!        real(TKG)               , intent(inout) , contiguous        :: tau(:,:)
 !        integer(IK)             , intent(in)                        :: dim
 !        type(lowDia_type)       , intent(in)                        :: subset
 !    end subroutine
@@ -17438,11 +17438,11 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setTauWTI_XLD_PSSK2
 !#endif
-!        use pm_kind, only: TKC => RK, SKC => SK2
+!        use pm_kind, only: TKG => RK, SKG => SK2
 !        integer(IK)             , intent(in)    , contiguous        :: weight(:)
-!        type(css_pdt(SKC))      , intent(in)    , contiguous        :: sample(:,:)
-!        real(TKC)               , intent(out)   , contiguous        :: frank(:,:)
-!        real(TKC)               , intent(inout) , contiguous        :: tau(:,:)
+!        type(css_pdt(SKG))      , intent(in)    , contiguous        :: sample(:,:)
+!        real(TKG)               , intent(out)   , contiguous        :: frank(:,:)
+!        real(TKG)               , intent(inout) , contiguous        :: tau(:,:)
 !        integer(IK)             , intent(in)                        :: dim
 !        type(lowDia_type)       , intent(in)                        :: subset
 !    end subroutine
@@ -17453,11 +17453,11 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setTauWTI_XLD_PSSK1
 !#endif
-!        use pm_kind, only: TKC => RK, SKC => SK1
+!        use pm_kind, only: TKG => RK, SKG => SK1
 !        integer(IK)             , intent(in)    , contiguous        :: weight(:)
-!        type(css_pdt(SKC))      , intent(in)    , contiguous        :: sample(:,:)
-!        real(TKC)               , intent(out)   , contiguous        :: frank(:,:)
-!        real(TKC)               , intent(inout) , contiguous        :: tau(:,:)
+!        type(css_pdt(SKG))      , intent(in)    , contiguous        :: sample(:,:)
+!        real(TKG)               , intent(out)   , contiguous        :: frank(:,:)
+!        real(TKG)               , intent(inout) , contiguous        :: tau(:,:)
 !        integer(IK)             , intent(in)                        :: dim
 !        type(lowDia_type)       , intent(in)                        :: subset
 !    end subroutine
@@ -17474,8 +17474,8 @@ module pm_sampleCor
 !#endif
 !        integer(IK)             , intent(in)    , contiguous        :: weight(:)
 !        type(css_type)          , intent(in)    , contiguous        :: sample(:,:)
-!        real(TKC)               , intent(out)   , contiguous        :: frank(:,:)
-!        real(TKC)               , intent(inout) , contiguous        :: tau(:,:)
+!        real(TKG)               , intent(out)   , contiguous        :: frank(:,:)
+!        real(TKG)               , intent(inout) , contiguous        :: tau(:,:)
 !        integer(IK)             , intent(in)                        :: dim
 !        type(lowDia_type)       , intent(in)                        :: subset
 !    end subroutine
@@ -17495,11 +17495,11 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setTauWTR_XLD_SK5
 !#endif
-!        use pm_kind, only: TKC => RK, SKC => SK5
-!        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-!        character(*,SKC)        , intent(in)    , contiguous        :: sample(:,:)
-!        real(TKC)               , intent(out)   , contiguous        :: frank(:,:)
-!        real(TKC)               , intent(inout) , contiguous        :: tau(:,:)
+!        use pm_kind, only: TKG => RK, SKG => SK5
+!        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+!        character(*,SKG)        , intent(in)    , contiguous        :: sample(:,:)
+!        real(TKG)               , intent(out)   , contiguous        :: frank(:,:)
+!        real(TKG)               , intent(inout) , contiguous        :: tau(:,:)
 !        integer(IK)             , intent(in)                        :: dim
 !        type(lowDia_type)       , intent(in)                        :: subset
 !    end subroutine
@@ -17510,11 +17510,11 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setTauWTR_XLD_SK4
 !#endif
-!        use pm_kind, only: TKC => RK, SKC => SK4
-!        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-!        character(*,SKC)        , intent(in)    , contiguous        :: sample(:,:)
-!        real(TKC)               , intent(out)   , contiguous        :: frank(:,:)
-!        real(TKC)               , intent(inout) , contiguous        :: tau(:,:)
+!        use pm_kind, only: TKG => RK, SKG => SK4
+!        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+!        character(*,SKG)        , intent(in)    , contiguous        :: sample(:,:)
+!        real(TKG)               , intent(out)   , contiguous        :: frank(:,:)
+!        real(TKG)               , intent(inout) , contiguous        :: tau(:,:)
 !        integer(IK)             , intent(in)                        :: dim
 !        type(lowDia_type)       , intent(in)                        :: subset
 !    end subroutine
@@ -17525,11 +17525,11 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setTauWTR_XLD_SK3
 !#endif
-!        use pm_kind, only: TKC => RK, SKC => SK3
-!        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-!        character(*,SKC)        , intent(in)    , contiguous        :: sample(:,:)
-!        real(TKC)               , intent(out)   , contiguous        :: frank(:,:)
-!        real(TKC)               , intent(inout) , contiguous        :: tau(:,:)
+!        use pm_kind, only: TKG => RK, SKG => SK3
+!        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+!        character(*,SKG)        , intent(in)    , contiguous        :: sample(:,:)
+!        real(TKG)               , intent(out)   , contiguous        :: frank(:,:)
+!        real(TKG)               , intent(inout) , contiguous        :: tau(:,:)
 !        integer(IK)             , intent(in)                        :: dim
 !        type(lowDia_type)       , intent(in)                        :: subset
 !    end subroutine
@@ -17540,11 +17540,11 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setTauWTR_XLD_SK2
 !#endif
-!        use pm_kind, only: TKC => RK, SKC => SK2
-!        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-!        character(*,SKC)        , intent(in)    , contiguous        :: sample(:,:)
-!        real(TKC)               , intent(out)   , contiguous        :: frank(:,:)
-!        real(TKC)               , intent(inout) , contiguous        :: tau(:,:)
+!        use pm_kind, only: TKG => RK, SKG => SK2
+!        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+!        character(*,SKG)        , intent(in)    , contiguous        :: sample(:,:)
+!        real(TKG)               , intent(out)   , contiguous        :: frank(:,:)
+!        real(TKG)               , intent(inout) , contiguous        :: tau(:,:)
 !        integer(IK)             , intent(in)                        :: dim
 !        type(lowDia_type)       , intent(in)                        :: subset
 !    end subroutine
@@ -17555,11 +17555,11 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setTauWTR_XLD_SK1
 !#endif
-!        use pm_kind, only: TKC => RK, SKC => SK1
-!        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-!        character(*,SKC)        , intent(in)    , contiguous        :: sample(:,:)
-!        real(TKC)               , intent(out)   , contiguous        :: frank(:,:)
-!        real(TKC)               , intent(inout) , contiguous        :: tau(:,:)
+!        use pm_kind, only: TKG => RK, SKG => SK1
+!        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+!        character(*,SKG)        , intent(in)    , contiguous        :: sample(:,:)
+!        real(TKG)               , intent(out)   , contiguous        :: frank(:,:)
+!        real(TKG)               , intent(inout) , contiguous        :: tau(:,:)
 !        integer(IK)             , intent(in)                        :: dim
 !        type(lowDia_type)       , intent(in)                        :: subset
 !    end subroutine
@@ -17572,11 +17572,11 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setTauWTR_XLD_IK5
 !#endif
-!        use pm_kind, only: TKC => RK, IKC => IK5
-!        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-!        integer(IKC)            , intent(in)    , contiguous        :: sample(:,:)
-!        real(TKC)               , intent(out)   , contiguous        :: frank(:,:)
-!        real(TKC)               , intent(inout) , contiguous        :: tau(:,:)
+!        use pm_kind, only: TKG => RK, IKG => IK5
+!        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+!        integer(IKG)            , intent(in)    , contiguous        :: sample(:,:)
+!        real(TKG)               , intent(out)   , contiguous        :: frank(:,:)
+!        real(TKG)               , intent(inout) , contiguous        :: tau(:,:)
 !        integer(IK)             , intent(in)                        :: dim
 !        type(lowDia_type)       , intent(in)                        :: subset
 !    end subroutine
@@ -17587,11 +17587,11 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setTauWTR_XLD_IK4
 !#endif
-!        use pm_kind, only: TKC => RK, IKC => IK4
-!        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-!        integer(IKC)            , intent(in)    , contiguous        :: sample(:,:)
-!        real(TKC)               , intent(out)   , contiguous        :: frank(:,:)
-!        real(TKC)               , intent(inout) , contiguous        :: tau(:,:)
+!        use pm_kind, only: TKG => RK, IKG => IK4
+!        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+!        integer(IKG)            , intent(in)    , contiguous        :: sample(:,:)
+!        real(TKG)               , intent(out)   , contiguous        :: frank(:,:)
+!        real(TKG)               , intent(inout) , contiguous        :: tau(:,:)
 !        integer(IK)             , intent(in)                        :: dim
 !        type(lowDia_type)       , intent(in)                        :: subset
 !    end subroutine
@@ -17602,11 +17602,11 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setTauWTR_XLD_IK3
 !#endif
-!        use pm_kind, only: TKC => RK, IKC => IK3
-!        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-!        integer(IKC)            , intent(in)    , contiguous        :: sample(:,:)
-!        real(TKC)               , intent(out)   , contiguous        :: frank(:,:)
-!        real(TKC)               , intent(inout) , contiguous        :: tau(:,:)
+!        use pm_kind, only: TKG => RK, IKG => IK3
+!        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+!        integer(IKG)            , intent(in)    , contiguous        :: sample(:,:)
+!        real(TKG)               , intent(out)   , contiguous        :: frank(:,:)
+!        real(TKG)               , intent(inout) , contiguous        :: tau(:,:)
 !        integer(IK)             , intent(in)                        :: dim
 !        type(lowDia_type)       , intent(in)                        :: subset
 !    end subroutine
@@ -17617,11 +17617,11 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setTauWTR_XLD_IK2
 !#endif
-!        use pm_kind, only: TKC => RK, IKC => IK2
-!        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-!        integer(IKC)            , intent(in)    , contiguous        :: sample(:,:)
-!        real(TKC)               , intent(out)   , contiguous        :: frank(:,:)
-!        real(TKC)               , intent(inout) , contiguous        :: tau(:,:)
+!        use pm_kind, only: TKG => RK, IKG => IK2
+!        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+!        integer(IKG)            , intent(in)    , contiguous        :: sample(:,:)
+!        real(TKG)               , intent(out)   , contiguous        :: frank(:,:)
+!        real(TKG)               , intent(inout) , contiguous        :: tau(:,:)
 !        integer(IK)             , intent(in)                        :: dim
 !        type(lowDia_type)       , intent(in)                        :: subset
 !    end subroutine
@@ -17632,11 +17632,11 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setTauWTR_XLD_IK1
 !#endif
-!        use pm_kind, only: TKC => RK, IKC => IK1
-!        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-!        integer(IKC)            , intent(in)    , contiguous        :: sample(:,:)
-!        real(TKC)               , intent(out)   , contiguous        :: frank(:,:)
-!        real(TKC)               , intent(inout) , contiguous        :: tau(:,:)
+!        use pm_kind, only: TKG => RK, IKG => IK1
+!        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+!        integer(IKG)            , intent(in)    , contiguous        :: sample(:,:)
+!        real(TKG)               , intent(out)   , contiguous        :: frank(:,:)
+!        real(TKG)               , intent(inout) , contiguous        :: tau(:,:)
 !        integer(IK)             , intent(in)                        :: dim
 !        type(lowDia_type)       , intent(in)                        :: subset
 !    end subroutine
@@ -17649,11 +17649,11 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setTauWTR_XLD_RK5
 !#endif
-!        use pm_kind, only: TKC => RK5
-!        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-!        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
-!        real(TKC)               , intent(out)   , contiguous        :: frank(:,:)
-!        real(TKC)               , intent(inout) , contiguous        :: tau(:,:)
+!        use pm_kind, only: TKG => RK5
+!        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+!        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
+!        real(TKG)               , intent(out)   , contiguous        :: frank(:,:)
+!        real(TKG)               , intent(inout) , contiguous        :: tau(:,:)
 !        integer(IK)             , intent(in)                        :: dim
 !        type(lowDia_type)       , intent(in)                        :: subset
 !    end subroutine
@@ -17664,11 +17664,11 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setTauWTR_XLD_RK4
 !#endif
-!        use pm_kind, only: TKC => RK4
-!        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-!        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
-!        real(TKC)               , intent(out)   , contiguous        :: frank(:,:)
-!        real(TKC)               , intent(inout) , contiguous        :: tau(:,:)
+!        use pm_kind, only: TKG => RK4
+!        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+!        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
+!        real(TKG)               , intent(out)   , contiguous        :: frank(:,:)
+!        real(TKG)               , intent(inout) , contiguous        :: tau(:,:)
 !        integer(IK)             , intent(in)                        :: dim
 !        type(lowDia_type)       , intent(in)                        :: subset
 !    end subroutine
@@ -17679,11 +17679,11 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setTauWTR_XLD_RK3
 !#endif
-!        use pm_kind, only: TKC => RK3
-!        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-!        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
-!        real(TKC)               , intent(out)   , contiguous        :: frank(:,:)
-!        real(TKC)               , intent(inout) , contiguous        :: tau(:,:)
+!        use pm_kind, only: TKG => RK3
+!        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+!        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
+!        real(TKG)               , intent(out)   , contiguous        :: frank(:,:)
+!        real(TKG)               , intent(inout) , contiguous        :: tau(:,:)
 !        integer(IK)             , intent(in)                        :: dim
 !        type(lowDia_type)       , intent(in)                        :: subset
 !    end subroutine
@@ -17694,11 +17694,11 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setTauWTR_XLD_RK2
 !#endif
-!        use pm_kind, only: TKC => RK2
-!        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-!        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
-!        real(TKC)               , intent(out)   , contiguous        :: frank(:,:)
-!        real(TKC)               , intent(inout) , contiguous        :: tau(:,:)
+!        use pm_kind, only: TKG => RK2
+!        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+!        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
+!        real(TKG)               , intent(out)   , contiguous        :: frank(:,:)
+!        real(TKG)               , intent(inout) , contiguous        :: tau(:,:)
 !        integer(IK)             , intent(in)                        :: dim
 !        type(lowDia_type)       , intent(in)                        :: subset
 !    end subroutine
@@ -17709,11 +17709,11 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setTauWTR_XLD_RK1
 !#endif
-!        use pm_kind, only: TKC => RK1
-!        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-!        real(TKC)               , intent(in)    , contiguous        :: sample(:,:)
-!        real(TKC)               , intent(out)   , contiguous        :: frank(:,:)
-!        real(TKC)               , intent(inout) , contiguous        :: tau(:,:)
+!        use pm_kind, only: TKG => RK1
+!        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+!        real(TKG)               , intent(in)    , contiguous        :: sample(:,:)
+!        real(TKG)               , intent(out)   , contiguous        :: frank(:,:)
+!        real(TKG)               , intent(inout) , contiguous        :: tau(:,:)
 !        integer(IK)             , intent(in)                        :: dim
 !        type(lowDia_type)       , intent(in)                        :: subset
 !    end subroutine
@@ -17728,11 +17728,11 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setTauWTR_XLD_PSSK5
 !#endif
-!        use pm_kind, only: TKC => RK, SKC => SK5
-!        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-!        type(css_pdt(SKC))      , intent(in)    , contiguous        :: sample(:,:)
-!        real(TKC)               , intent(out)   , contiguous        :: frank(:,:)
-!        real(TKC)               , intent(inout) , contiguous        :: tau(:,:)
+!        use pm_kind, only: TKG => RK, SKG => SK5
+!        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+!        type(css_pdt(SKG))      , intent(in)    , contiguous        :: sample(:,:)
+!        real(TKG)               , intent(out)   , contiguous        :: frank(:,:)
+!        real(TKG)               , intent(inout) , contiguous        :: tau(:,:)
 !        integer(IK)             , intent(in)                        :: dim
 !        type(lowDia_type)       , intent(in)                        :: subset
 !    end subroutine
@@ -17743,11 +17743,11 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setTauWTR_XLD_PSSK4
 !#endif
-!        use pm_kind, only: TKC => RK, SKC => SK4
-!        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-!        type(css_pdt(SKC))      , intent(in)    , contiguous        :: sample(:,:)
-!        real(TKC)               , intent(out)   , contiguous        :: frank(:,:)
-!        real(TKC)               , intent(inout) , contiguous        :: tau(:,:)
+!        use pm_kind, only: TKG => RK, SKG => SK4
+!        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+!        type(css_pdt(SKG))      , intent(in)    , contiguous        :: sample(:,:)
+!        real(TKG)               , intent(out)   , contiguous        :: frank(:,:)
+!        real(TKG)               , intent(inout) , contiguous        :: tau(:,:)
 !        integer(IK)             , intent(in)                        :: dim
 !        type(lowDia_type)       , intent(in)                        :: subset
 !    end subroutine
@@ -17758,11 +17758,11 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setTauWTR_XLD_PSSK3
 !#endif
-!        use pm_kind, only: TKC => RK, SKC => SK3
-!        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-!        type(css_pdt(SKC))      , intent(in)    , contiguous        :: sample(:,:)
-!        real(TKC)               , intent(out)   , contiguous        :: frank(:,:)
-!        real(TKC)               , intent(inout) , contiguous        :: tau(:,:)
+!        use pm_kind, only: TKG => RK, SKG => SK3
+!        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+!        type(css_pdt(SKG))      , intent(in)    , contiguous        :: sample(:,:)
+!        real(TKG)               , intent(out)   , contiguous        :: frank(:,:)
+!        real(TKG)               , intent(inout) , contiguous        :: tau(:,:)
 !        integer(IK)             , intent(in)                        :: dim
 !        type(lowDia_type)       , intent(in)                        :: subset
 !    end subroutine
@@ -17773,11 +17773,11 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setTauWTR_XLD_PSSK2
 !#endif
-!        use pm_kind, only: TKC => RK, SKC => SK2
-!        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-!        type(css_pdt(SKC))      , intent(in)    , contiguous        :: sample(:,:)
-!        real(TKC)               , intent(out)   , contiguous        :: frank(:,:)
-!        real(TKC)               , intent(inout) , contiguous        :: tau(:,:)
+!        use pm_kind, only: TKG => RK, SKG => SK2
+!        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+!        type(css_pdt(SKG))      , intent(in)    , contiguous        :: sample(:,:)
+!        real(TKG)               , intent(out)   , contiguous        :: frank(:,:)
+!        real(TKG)               , intent(inout) , contiguous        :: tau(:,:)
 !        integer(IK)             , intent(in)                        :: dim
 !        type(lowDia_type)       , intent(in)                        :: subset
 !    end subroutine
@@ -17788,11 +17788,11 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setTauWTR_XLD_PSSK1
 !#endif
-!        use pm_kind, only: TKC => RK, SKC => SK1
-!        real(TKC)               , intent(in)    , contiguous        :: weight(:)
-!        type(css_pdt(SKC))      , intent(in)    , contiguous        :: sample(:,:)
-!        real(TKC)               , intent(out)   , contiguous        :: frank(:,:)
-!        real(TKC)               , intent(inout) , contiguous        :: tau(:,:)
+!        use pm_kind, only: TKG => RK, SKG => SK1
+!        real(TKG)               , intent(in)    , contiguous        :: weight(:)
+!        type(css_pdt(SKG))      , intent(in)    , contiguous        :: sample(:,:)
+!        real(TKG)               , intent(out)   , contiguous        :: frank(:,:)
+!        real(TKG)               , intent(inout) , contiguous        :: tau(:,:)
 !        integer(IK)             , intent(in)                        :: dim
 !        type(lowDia_type)       , intent(in)                        :: subset
 !    end subroutine
@@ -17807,10 +17807,10 @@ module pm_sampleCor
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setTauWTR_XLD_BSSK
 !#endif
-!        real(TKC)               , intent(in)    , contiguous        :: weight(:)
+!        real(TKG)               , intent(in)    , contiguous        :: weight(:)
 !        type(css_type)          , intent(in)    , contiguous        :: sample(:,:)
-!        real(TKC)               , intent(out)   , contiguous        :: frank(:,:)
-!        real(TKC)               , intent(inout) , contiguous        :: tau(:,:)
+!        real(TKG)               , intent(out)   , contiguous        :: frank(:,:)
+!        real(TKG)               , intent(inout) , contiguous        :: tau(:,:)
 !        integer(IK)             , intent(in)                        :: dim
 !        type(lowDia_type)       , intent(in)                        :: subset
 !    end subroutine
@@ -17897,8 +17897,8 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCordanceSum_D0_SK5
 #endif
-        use pm_kind, only: TKC => RK, SKC => SK5
-        character(*,SKC)    , intent(in)                            :: x, y
+        use pm_kind, only: TKG => RK, SKG => SK5
+        character(*,SKG)    , intent(in)                            :: x, y
         integer(IK)         , intent(out)                           :: tiedx, tiedy
         integer(IK)         , intent(out)                           :: cordance
     end subroutine
@@ -17909,8 +17909,8 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCordanceSum_D0_SK4
 #endif
-        use pm_kind, only: TKC => RK, SKC => SK4
-        character(*,SKC)    , intent(in)                            :: x, y
+        use pm_kind, only: TKG => RK, SKG => SK4
+        character(*,SKG)    , intent(in)                            :: x, y
         integer(IK)         , intent(out)                           :: tiedx, tiedy
         integer(IK)         , intent(out)                           :: cordance
     end subroutine
@@ -17921,8 +17921,8 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCordanceSum_D0_SK3
 #endif
-        use pm_kind, only: TKC => RK, SKC => SK3
-        character(*,SKC)    , intent(in)                            :: x, y
+        use pm_kind, only: TKG => RK, SKG => SK3
+        character(*,SKG)    , intent(in)                            :: x, y
         integer(IK)         , intent(out)                           :: tiedx, tiedy
         integer(IK)         , intent(out)                           :: cordance
     end subroutine
@@ -17933,8 +17933,8 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCordanceSum_D0_SK2
 #endif
-        use pm_kind, only: TKC => RK, SKC => SK2
-        character(*,SKC)    , intent(in)                            :: x, y
+        use pm_kind, only: TKG => RK, SKG => SK2
+        character(*,SKG)    , intent(in)                            :: x, y
         integer(IK)         , intent(out)                           :: tiedx, tiedy
         integer(IK)         , intent(out)                           :: cordance
     end subroutine
@@ -17945,8 +17945,8 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCordanceSum_D0_SK1
 #endif
-        use pm_kind, only: TKC => RK, SKC => SK1
-        character(*,SKC)    , intent(in)                            :: x, y
+        use pm_kind, only: TKG => RK, SKG => SK1
+        character(*,SKG)    , intent(in)                            :: x, y
         integer(IK)         , intent(out)                           :: tiedx, tiedy
         integer(IK)         , intent(out)                           :: cordance
     end subroutine
@@ -17959,8 +17959,8 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCordanceSum_D1_SK5
 #endif
-        use pm_kind, only: TKC => RK, SKC => SK5
-        character(*,SKC)    , intent(in)    , contiguous            :: x(:), y(:)
+        use pm_kind, only: TKG => RK, SKG => SK5
+        character(*,SKG)    , intent(in)    , contiguous            :: x(:), y(:)
         integer(IK)         , intent(out)                           :: tiedx, tiedy
         integer(IK)         , intent(out)                           :: cordance
     end subroutine
@@ -17971,8 +17971,8 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCordanceSum_D1_SK4
 #endif
-        use pm_kind, only: TKC => RK, SKC => SK4
-        character(*,SKC)    , intent(in)    , contiguous            :: x(:), y(:)
+        use pm_kind, only: TKG => RK, SKG => SK4
+        character(*,SKG)    , intent(in)    , contiguous            :: x(:), y(:)
         integer(IK)         , intent(out)                           :: tiedx, tiedy
         integer(IK)         , intent(out)                           :: cordance
     end subroutine
@@ -17983,8 +17983,8 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCordanceSum_D1_SK3
 #endif
-        use pm_kind, only: TKC => RK, SKC => SK3
-        character(*,SKC)    , intent(in)    , contiguous            :: x(:), y(:)
+        use pm_kind, only: TKG => RK, SKG => SK3
+        character(*,SKG)    , intent(in)    , contiguous            :: x(:), y(:)
         integer(IK)         , intent(out)                           :: tiedx, tiedy
         integer(IK)         , intent(out)                           :: cordance
     end subroutine
@@ -17995,8 +17995,8 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCordanceSum_D1_SK2
 #endif
-        use pm_kind, only: TKC => RK, SKC => SK2
-        character(*,SKC)    , intent(in)    , contiguous            :: x(:), y(:)
+        use pm_kind, only: TKG => RK, SKG => SK2
+        character(*,SKG)    , intent(in)    , contiguous            :: x(:), y(:)
         integer(IK)         , intent(out)                           :: tiedx, tiedy
         integer(IK)         , intent(out)                           :: cordance
     end subroutine
@@ -18007,8 +18007,8 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCordanceSum_D1_SK1
 #endif
-        use pm_kind, only: TKC => RK, SKC => SK1
-        character(*,SKC)    , intent(in)    , contiguous            :: x(:), y(:)
+        use pm_kind, only: TKG => RK, SKG => SK1
+        character(*,SKG)    , intent(in)    , contiguous            :: x(:), y(:)
         integer(IK)         , intent(out)                           :: tiedx, tiedy
         integer(IK)         , intent(out)                           :: cordance
     end subroutine
@@ -18021,8 +18021,8 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCordanceSum_D1_IK5
 #endif
-        use pm_kind, only: TKC => RK, IKC => IK5
-        integer(IKC)        , intent(in)    , contiguous            :: x(:), y(:)
+        use pm_kind, only: TKG => RK, IKG => IK5
+        integer(IKG)        , intent(in)    , contiguous            :: x(:), y(:)
         integer(IK)         , intent(out)                           :: tiedx, tiedy
         integer(IK)         , intent(out)                           :: cordance
     end subroutine
@@ -18033,8 +18033,8 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCordanceSum_D1_IK4
 #endif
-        use pm_kind, only: TKC => RK, IKC => IK4
-        integer(IKC)        , intent(in)    , contiguous            :: x(:), y(:)
+        use pm_kind, only: TKG => RK, IKG => IK4
+        integer(IKG)        , intent(in)    , contiguous            :: x(:), y(:)
         integer(IK)         , intent(out)                           :: tiedx, tiedy
         integer(IK)         , intent(out)                           :: cordance
     end subroutine
@@ -18045,8 +18045,8 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCordanceSum_D1_IK3
 #endif
-        use pm_kind, only: TKC => RK, IKC => IK3
-        integer(IKC)        , intent(in)    , contiguous            :: x(:), y(:)
+        use pm_kind, only: TKG => RK, IKG => IK3
+        integer(IKG)        , intent(in)    , contiguous            :: x(:), y(:)
         integer(IK)         , intent(out)                           :: tiedx, tiedy
         integer(IK)         , intent(out)                           :: cordance
     end subroutine
@@ -18057,8 +18057,8 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCordanceSum_D1_IK2
 #endif
-        use pm_kind, only: TKC => RK, IKC => IK2
-        integer(IKC)        , intent(in)    , contiguous            :: x(:), y(:)
+        use pm_kind, only: TKG => RK, IKG => IK2
+        integer(IKG)        , intent(in)    , contiguous            :: x(:), y(:)
         integer(IK)         , intent(out)                           :: tiedx, tiedy
         integer(IK)         , intent(out)                           :: cordance
     end subroutine
@@ -18069,8 +18069,8 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCordanceSum_D1_IK1
 #endif
-        use pm_kind, only: TKC => RK, IKC => IK1
-        integer(IKC)        , intent(in)    , contiguous            :: x(:), y(:)
+        use pm_kind, only: TKG => RK, IKG => IK1
+        integer(IKG)        , intent(in)    , contiguous            :: x(:), y(:)
         integer(IK)         , intent(out)                           :: tiedx, tiedy
         integer(IK)         , intent(out)                           :: cordance
     end subroutine
@@ -18083,8 +18083,8 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCordanceSum_D1_RK5
 #endif
-        use pm_kind, only: TKC => RK5
-        real(TKC)           , intent(in)    , contiguous            :: x(:), y(:)
+        use pm_kind, only: TKG => RK5
+        real(TKG)           , intent(in)    , contiguous            :: x(:), y(:)
         integer(IK)         , intent(out)                           :: tiedx, tiedy
         integer(IK)         , intent(out)                           :: cordance
     end subroutine
@@ -18095,8 +18095,8 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCordanceSum_D1_RK4
 #endif
-        use pm_kind, only: TKC => RK4
-        real(TKC)           , intent(in)    , contiguous            :: x(:), y(:)
+        use pm_kind, only: TKG => RK4
+        real(TKG)           , intent(in)    , contiguous            :: x(:), y(:)
         integer(IK)         , intent(out)                           :: tiedx, tiedy
         integer(IK)         , intent(out)                           :: cordance
     end subroutine
@@ -18107,8 +18107,8 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCordanceSum_D1_RK3
 #endif
-        use pm_kind, only: TKC => RK3
-        real(TKC)           , intent(in)    , contiguous            :: x(:), y(:)
+        use pm_kind, only: TKG => RK3
+        real(TKG)           , intent(in)    , contiguous            :: x(:), y(:)
         integer(IK)         , intent(out)                           :: tiedx, tiedy
         integer(IK)         , intent(out)                           :: cordance
     end subroutine
@@ -18119,8 +18119,8 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCordanceSum_D1_RK2
 #endif
-        use pm_kind, only: TKC => RK2
-        real(TKC)           , intent(in)    , contiguous            :: x(:), y(:)
+        use pm_kind, only: TKG => RK2
+        real(TKG)           , intent(in)    , contiguous            :: x(:), y(:)
         integer(IK)         , intent(out)                           :: tiedx, tiedy
         integer(IK)         , intent(out)                           :: cordance
     end subroutine
@@ -18131,8 +18131,8 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCordanceSum_D1_RK1
 #endif
-        use pm_kind, only: TKC => RK1
-        real(TKC)           , intent(in)    , contiguous            :: x(:), y(:)
+        use pm_kind, only: TKG => RK1
+        real(TKG)           , intent(in)    , contiguous            :: x(:), y(:)
         integer(IK)         , intent(out)                           :: tiedx, tiedy
         integer(IK)         , intent(out)                           :: cordance
     end subroutine
@@ -18147,8 +18147,8 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCordanceSum_D1_PSSK5
 #endif
-        use pm_kind, only: TKC => RK, SKC => SK5
-        type(css_pdt(SKC))  , intent(in)    , contiguous            :: x(:), y(:)
+        use pm_kind, only: TKG => RK, SKG => SK5
+        type(css_pdt(SKG))  , intent(in)    , contiguous            :: x(:), y(:)
         integer(IK)         , intent(out)                           :: tiedx, tiedy
         integer(IK)         , intent(out)                           :: cordance
     end subroutine
@@ -18159,8 +18159,8 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCordanceSum_D1_PSSK4
 #endif
-        use pm_kind, only: TKC => RK, SKC => SK4
-        type(css_pdt(SKC))  , intent(in)    , contiguous            :: x(:), y(:)
+        use pm_kind, only: TKG => RK, SKG => SK4
+        type(css_pdt(SKG))  , intent(in)    , contiguous            :: x(:), y(:)
         integer(IK)         , intent(out)                           :: tiedx, tiedy
         integer(IK)         , intent(out)                           :: cordance
     end subroutine
@@ -18171,8 +18171,8 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCordanceSum_D1_PSSK3
 #endif
-        use pm_kind, only: TKC => RK, SKC => SK3
-        type(css_pdt(SKC))  , intent(in)    , contiguous            :: x(:), y(:)
+        use pm_kind, only: TKG => RK, SKG => SK3
+        type(css_pdt(SKG))  , intent(in)    , contiguous            :: x(:), y(:)
         integer(IK)         , intent(out)                           :: tiedx, tiedy
         integer(IK)         , intent(out)                           :: cordance
     end subroutine
@@ -18183,8 +18183,8 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCordanceSum_D1_PSSK2
 #endif
-        use pm_kind, only: TKC => RK, SKC => SK2
-        type(css_pdt(SKC))  , intent(in)    , contiguous            :: x(:), y(:)
+        use pm_kind, only: TKG => RK, SKG => SK2
+        type(css_pdt(SKG))  , intent(in)    , contiguous            :: x(:), y(:)
         integer(IK)         , intent(out)                           :: tiedx, tiedy
         integer(IK)         , intent(out)                           :: cordance
     end subroutine
@@ -18195,8 +18195,8 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCordanceSum_D1_PSSK1
 #endif
-        use pm_kind, only: TKC => RK, SKC => SK1
-        type(css_pdt(SKC))  , intent(in)    , contiguous            :: x(:), y(:)
+        use pm_kind, only: TKG => RK, SKG => SK1
+        type(css_pdt(SKG))  , intent(in)    , contiguous            :: x(:), y(:)
         integer(IK)         , intent(out)                           :: tiedx, tiedy
         integer(IK)         , intent(out)                           :: cordance
     end subroutine
@@ -18211,7 +18211,7 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCordanceSum_D1_BSSK
 #endif
-        use pm_kind, only: TKC => RK, SKC => SK1
+        use pm_kind, only: TKG => RK, SKG => SK1
         type(css_type)      , intent(in)    , contiguous            :: x(:), y(:)
         integer(IK)         , intent(out)                           :: tiedx, tiedy
         integer(IK)         , intent(out)                           :: cordance
@@ -18230,8 +18230,8 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCordanceAll_D0_SK5
 #endif
-        use pm_kind, only: TKC => RK, SKC => SK5
-        character(*,SKC)    , intent(in)                            :: x, y
+        use pm_kind, only: TKG => RK, SKG => SK5
+        character(*,SKG)    , intent(in)                            :: x, y
         integer(IK)         , intent(out)                           :: tiedx, tiedy
         integer(IK)         , intent(out)                           :: concordance, discordance
     end subroutine
@@ -18242,8 +18242,8 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCordanceAll_D0_SK4
 #endif
-        use pm_kind, only: TKC => RK, SKC => SK4
-        character(*,SKC)    , intent(in)                            :: x, y
+        use pm_kind, only: TKG => RK, SKG => SK4
+        character(*,SKG)    , intent(in)                            :: x, y
         integer(IK)         , intent(out)                           :: tiedx, tiedy
         integer(IK)         , intent(out)                           :: concordance, discordance
     end subroutine
@@ -18254,8 +18254,8 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCordanceAll_D0_SK3
 #endif
-        use pm_kind, only: TKC => RK, SKC => SK3
-        character(*,SKC)    , intent(in)                            :: x, y
+        use pm_kind, only: TKG => RK, SKG => SK3
+        character(*,SKG)    , intent(in)                            :: x, y
         integer(IK)         , intent(out)                           :: tiedx, tiedy
         integer(IK)         , intent(out)                           :: concordance, discordance
     end subroutine
@@ -18266,8 +18266,8 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCordanceAll_D0_SK2
 #endif
-        use pm_kind, only: TKC => RK, SKC => SK2
-        character(*,SKC)    , intent(in)                            :: x, y
+        use pm_kind, only: TKG => RK, SKG => SK2
+        character(*,SKG)    , intent(in)                            :: x, y
         integer(IK)         , intent(out)                           :: tiedx, tiedy
         integer(IK)         , intent(out)                           :: concordance, discordance
     end subroutine
@@ -18278,8 +18278,8 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCordanceAll_D0_SK1
 #endif
-        use pm_kind, only: TKC => RK, SKC => SK1
-        character(*,SKC)    , intent(in)                            :: x, y
+        use pm_kind, only: TKG => RK, SKG => SK1
+        character(*,SKG)    , intent(in)                            :: x, y
         integer(IK)         , intent(out)                           :: tiedx, tiedy
         integer(IK)         , intent(out)                           :: concordance, discordance
     end subroutine
@@ -18292,8 +18292,8 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCordanceAll_D1_SK5
 #endif
-        use pm_kind, only: TKC => RK, SKC => SK5
-        character(*,SKC)    , intent(in)    , contiguous            :: x(:), y(:)
+        use pm_kind, only: TKG => RK, SKG => SK5
+        character(*,SKG)    , intent(in)    , contiguous            :: x(:), y(:)
         integer(IK)         , intent(out)                           :: tiedx, tiedy
         integer(IK)         , intent(out)                           :: concordance, discordance
     end subroutine
@@ -18304,8 +18304,8 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCordanceAll_D1_SK4
 #endif
-        use pm_kind, only: TKC => RK, SKC => SK4
-        character(*,SKC)    , intent(in)    , contiguous            :: x(:), y(:)
+        use pm_kind, only: TKG => RK, SKG => SK4
+        character(*,SKG)    , intent(in)    , contiguous            :: x(:), y(:)
         integer(IK)         , intent(out)                           :: tiedx, tiedy
         integer(IK)         , intent(out)                           :: concordance, discordance
     end subroutine
@@ -18316,8 +18316,8 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCordanceAll_D1_SK3
 #endif
-        use pm_kind, only: TKC => RK, SKC => SK3
-        character(*,SKC)    , intent(in)    , contiguous            :: x(:), y(:)
+        use pm_kind, only: TKG => RK, SKG => SK3
+        character(*,SKG)    , intent(in)    , contiguous            :: x(:), y(:)
         integer(IK)         , intent(out)                           :: tiedx, tiedy
         integer(IK)         , intent(out)                           :: concordance, discordance
     end subroutine
@@ -18328,8 +18328,8 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCordanceAll_D1_SK2
 #endif
-        use pm_kind, only: TKC => RK, SKC => SK2
-        character(*,SKC)    , intent(in)    , contiguous            :: x(:), y(:)
+        use pm_kind, only: TKG => RK, SKG => SK2
+        character(*,SKG)    , intent(in)    , contiguous            :: x(:), y(:)
         integer(IK)         , intent(out)                           :: tiedx, tiedy
         integer(IK)         , intent(out)                           :: concordance, discordance
     end subroutine
@@ -18340,8 +18340,8 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCordanceAll_D1_SK1
 #endif
-        use pm_kind, only: TKC => RK, SKC => SK1
-        character(*,SKC)    , intent(in)    , contiguous            :: x(:), y(:)
+        use pm_kind, only: TKG => RK, SKG => SK1
+        character(*,SKG)    , intent(in)    , contiguous            :: x(:), y(:)
         integer(IK)         , intent(out)                           :: tiedx, tiedy
         integer(IK)         , intent(out)                           :: concordance, discordance
     end subroutine
@@ -18354,8 +18354,8 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCordanceAll_D1_IK5
 #endif
-        use pm_kind, only: TKC => RK, IKC => IK5
-        integer(IKC)        , intent(in)    , contiguous            :: x(:), y(:)
+        use pm_kind, only: TKG => RK, IKG => IK5
+        integer(IKG)        , intent(in)    , contiguous            :: x(:), y(:)
         integer(IK)         , intent(out)                           :: tiedx, tiedy
         integer(IK)         , intent(out)                           :: concordance, discordance
     end subroutine
@@ -18366,8 +18366,8 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCordanceAll_D1_IK4
 #endif
-        use pm_kind, only: TKC => RK, IKC => IK4
-        integer(IKC)        , intent(in)    , contiguous            :: x(:), y(:)
+        use pm_kind, only: TKG => RK, IKG => IK4
+        integer(IKG)        , intent(in)    , contiguous            :: x(:), y(:)
         integer(IK)         , intent(out)                           :: tiedx, tiedy
         integer(IK)         , intent(out)                           :: concordance, discordance
     end subroutine
@@ -18378,8 +18378,8 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCordanceAll_D1_IK3
 #endif
-        use pm_kind, only: TKC => RK, IKC => IK3
-        integer(IKC)        , intent(in)    , contiguous            :: x(:), y(:)
+        use pm_kind, only: TKG => RK, IKG => IK3
+        integer(IKG)        , intent(in)    , contiguous            :: x(:), y(:)
         integer(IK)         , intent(out)                           :: tiedx, tiedy
         integer(IK)         , intent(out)                           :: concordance, discordance
     end subroutine
@@ -18390,8 +18390,8 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCordanceAll_D1_IK2
 #endif
-        use pm_kind, only: TKC => RK, IKC => IK2
-        integer(IKC)        , intent(in)    , contiguous            :: x(:), y(:)
+        use pm_kind, only: TKG => RK, IKG => IK2
+        integer(IKG)        , intent(in)    , contiguous            :: x(:), y(:)
         integer(IK)         , intent(out)                           :: tiedx, tiedy
         integer(IK)         , intent(out)                           :: concordance, discordance
     end subroutine
@@ -18402,8 +18402,8 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCordanceAll_D1_IK1
 #endif
-        use pm_kind, only: TKC => RK, IKC => IK1
-        integer(IKC)        , intent(in)    , contiguous            :: x(:), y(:)
+        use pm_kind, only: TKG => RK, IKG => IK1
+        integer(IKG)        , intent(in)    , contiguous            :: x(:), y(:)
         integer(IK)         , intent(out)                           :: tiedx, tiedy
         integer(IK)         , intent(out)                           :: concordance, discordance
     end subroutine
@@ -18416,8 +18416,8 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCordanceAll_D1_RK5
 #endif
-        use pm_kind, only: TKC => RK5
-        real(TKC)           , intent(in)    , contiguous            :: x(:), y(:)
+        use pm_kind, only: TKG => RK5
+        real(TKG)           , intent(in)    , contiguous            :: x(:), y(:)
         integer(IK)         , intent(out)                           :: tiedx, tiedy
         integer(IK)         , intent(out)                           :: concordance, discordance
     end subroutine
@@ -18428,8 +18428,8 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCordanceAll_D1_RK4
 #endif
-        use pm_kind, only: TKC => RK4
-        real(TKC)           , intent(in)    , contiguous            :: x(:), y(:)
+        use pm_kind, only: TKG => RK4
+        real(TKG)           , intent(in)    , contiguous            :: x(:), y(:)
         integer(IK)         , intent(out)                           :: tiedx, tiedy
         integer(IK)         , intent(out)                           :: concordance, discordance
     end subroutine
@@ -18440,8 +18440,8 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCordanceAll_D1_RK3
 #endif
-        use pm_kind, only: TKC => RK3
-        real(TKC)           , intent(in)    , contiguous            :: x(:), y(:)
+        use pm_kind, only: TKG => RK3
+        real(TKG)           , intent(in)    , contiguous            :: x(:), y(:)
         integer(IK)         , intent(out)                           :: tiedx, tiedy
         integer(IK)         , intent(out)                           :: concordance, discordance
     end subroutine
@@ -18452,8 +18452,8 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCordanceAll_D1_RK2
 #endif
-        use pm_kind, only: TKC => RK2
-        real(TKC)           , intent(in)    , contiguous            :: x(:), y(:)
+        use pm_kind, only: TKG => RK2
+        real(TKG)           , intent(in)    , contiguous            :: x(:), y(:)
         integer(IK)         , intent(out)                           :: tiedx, tiedy
         integer(IK)         , intent(out)                           :: concordance, discordance
     end subroutine
@@ -18464,8 +18464,8 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCordanceAll_D1_RK1
 #endif
-        use pm_kind, only: TKC => RK1
-        real(TKC)           , intent(in)    , contiguous            :: x(:), y(:)
+        use pm_kind, only: TKG => RK1
+        real(TKG)           , intent(in)    , contiguous            :: x(:), y(:)
         integer(IK)         , intent(out)                           :: tiedx, tiedy
         integer(IK)         , intent(out)                           :: concordance, discordance
     end subroutine
@@ -18480,8 +18480,8 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCordanceAll_D1_PSSK5
 #endif
-        use pm_kind, only: TKC => RK, SKC => SK5
-        type(css_pdt(SKC))  , intent(in)    , contiguous            :: x(:), y(:)
+        use pm_kind, only: TKG => RK, SKG => SK5
+        type(css_pdt(SKG))  , intent(in)    , contiguous            :: x(:), y(:)
         integer(IK)         , intent(out)                           :: tiedx, tiedy
         integer(IK)         , intent(out)                           :: concordance, discordance
     end subroutine
@@ -18492,8 +18492,8 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCordanceAll_D1_PSSK4
 #endif
-        use pm_kind, only: TKC => RK, SKC => SK4
-        type(css_pdt(SKC))  , intent(in)    , contiguous            :: x(:), y(:)
+        use pm_kind, only: TKG => RK, SKG => SK4
+        type(css_pdt(SKG))  , intent(in)    , contiguous            :: x(:), y(:)
         integer(IK)         , intent(out)                           :: tiedx, tiedy
         integer(IK)         , intent(out)                           :: concordance, discordance
     end subroutine
@@ -18504,8 +18504,8 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCordanceAll_D1_PSSK3
 #endif
-        use pm_kind, only: TKC => RK, SKC => SK3
-        type(css_pdt(SKC))  , intent(in)    , contiguous            :: x(:), y(:)
+        use pm_kind, only: TKG => RK, SKG => SK3
+        type(css_pdt(SKG))  , intent(in)    , contiguous            :: x(:), y(:)
         integer(IK)         , intent(out)                           :: tiedx, tiedy
         integer(IK)         , intent(out)                           :: concordance, discordance
     end subroutine
@@ -18516,8 +18516,8 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCordanceAll_D1_PSSK2
 #endif
-        use pm_kind, only: TKC => RK, SKC => SK2
-        type(css_pdt(SKC))  , intent(in)    , contiguous            :: x(:), y(:)
+        use pm_kind, only: TKG => RK, SKG => SK2
+        type(css_pdt(SKG))  , intent(in)    , contiguous            :: x(:), y(:)
         integer(IK)         , intent(out)                           :: tiedx, tiedy
         integer(IK)         , intent(out)                           :: concordance, discordance
     end subroutine
@@ -18528,8 +18528,8 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCordanceAll_D1_PSSK1
 #endif
-        use pm_kind, only: TKC => RK, SKC => SK1
-        type(css_pdt(SKC))  , intent(in)    , contiguous            :: x(:), y(:)
+        use pm_kind, only: TKG => RK, SKG => SK1
+        type(css_pdt(SKG))  , intent(in)    , contiguous            :: x(:), y(:)
         integer(IK)         , intent(out)                           :: tiedx, tiedy
         integer(IK)         , intent(out)                           :: concordance, discordance
     end subroutine
@@ -18544,7 +18544,7 @@ module pm_sampleCor
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCordanceAll_D1_BSSK
 #endif
-        use pm_kind, only: TKC => RK, SKC => SK1
+        use pm_kind, only: TKG => RK, SKG => SK1
         type(css_type)      , intent(in)    , contiguous            :: x(:), y(:)
         integer(IK)         , intent(out)                           :: tiedx, tiedy
         integer(IK)         , intent(out)                           :: concordance, discordance

@@ -1,7 +1,7 @@
 program example
 
     use pm_kind, only: SK, IK
-    use pm_kind, only: TKC => RKS ! All other real types are also supported.
+    use pm_kind, only: TKG => RKS ! All other real types are also supported.
     use pm_arrayResize, only: setResized
     use pm_distUnif, only: getUnifRand
     use pm_sampleMean, only: setMean
@@ -20,8 +20,8 @@ program example
     call disp%skip()
 
     block
-        real(TKC) :: mean
-        real(TKC), allocatable :: sample(:)
+        real(TKG) :: mean
+        real(TKG), allocatable :: sample(:)
         call disp%skip()
         call disp%show("nsam = getUnifRand(1, 5)")
                         nsam = getUnifRand(1, 5)
@@ -47,10 +47,10 @@ program example
     call disp%skip()
 
     block
-        real(TKC) :: mean(2)
-        real(TKC), allocatable :: sample(:,:)
-        real(TKC), allocatable :: weight(:)
-        real(TKC) :: weisum
+        real(TKG) :: mean(2)
+        real(TKG), allocatable :: sample(:,:)
+        real(TKG), allocatable :: weight(:)
+        real(TKG) :: weisum
         call disp%skip()
         call disp%show("nsam = getUnifRand(1, 5)")
                         nsam = getUnifRand(1, 5)
@@ -106,8 +106,8 @@ program example
     call disp%skip()
 
     block
-        real(TKC), allocatable :: mean(:)
-        real(TKC), allocatable :: sample(:,:)
+        real(TKG), allocatable :: mean(:)
+        real(TKG), allocatable :: sample(:,:)
         call disp%skip()
         call disp%show("ndim = getUnifRand(1, 3); nsam = getUnifRand(1, 5)")
                         ndim = getUnifRand(1, 3); nsam = getUnifRand(1, 5)
@@ -139,10 +139,10 @@ program example
     call disp%skip()
 
     block
-        real(TKC) :: mean
-        real(TKC), allocatable :: sample(:)
-        real(TKC), allocatable :: weight(:)
-        real(TKC) :: weisum
+        real(TKG) :: mean
+        real(TKG), allocatable :: sample(:)
+        real(TKG), allocatable :: weight(:)
+        real(TKG) :: weisum
         call disp%skip()
         call disp%show("nsam = getUnifRand(1, 5)")
                         nsam = getUnifRand(1, 5)
@@ -184,10 +184,10 @@ program example
     call disp%skip()
 
     block
-        real(TKC), allocatable :: mean(:)
-        real(TKC), allocatable :: sample(:,:)
-        real(TKC), allocatable :: weight(:)
-        real(TKC) :: weisum
+        real(TKG), allocatable :: mean(:)
+        real(TKG), allocatable :: sample(:,:)
+        real(TKG), allocatable :: weight(:)
+        real(TKG) :: weisum
         call disp%skip()
         call disp%show("ndim = getUnifRand(1, 3); nsam = getUnifRand(1, 5)")
                         ndim = getUnifRand(1, 3); nsam = getUnifRand(1, 5)
@@ -227,10 +227,10 @@ program example
     call disp%skip()
 
     block
-        real(TKC) :: mean
+        real(TKG) :: mean
         integer(IK) :: nslice
-        real(TKC), allocatable, target :: sample(:,:,:)
-        real(TKC), pointer :: samptr(:)
+        real(TKG), allocatable, target :: sample(:,:,:)
+        real(TKG), pointer :: samptr(:)
         call disp%skip()
         call disp%show("ndim = getUnifRand(1, 2); nsam = getUnifRand(1, 3); nslice = getUnifRand(1, 4)")
                         ndim = getUnifRand(1, 2); nsam = getUnifRand(1, 3); nslice = getUnifRand(1, 4)

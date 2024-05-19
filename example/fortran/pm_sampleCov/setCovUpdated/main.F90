@@ -1,7 +1,7 @@
 program example
 
     use pm_kind, only: SK, IK
-    use pm_kind, only: TKC => RKS ! All other real types are also supported.
+    use pm_kind, only: TKG => RKS ! All other real types are also supported.
     use pm_sampleCov, only: getCov
     use pm_sampleMean, only: getMean
     use pm_sampleCov, only: uppDia, lowDia
@@ -27,9 +27,9 @@ program example
     call disp%skip()
 
     block
-        real(TKC), allocatable :: cov(:,:), covA(:,:)
-        real(TKC), allocatable :: mean(:), meanA(:), meanB(:)
-        real(TKC), allocatable :: sample(:,:), sampleA(:,:), sampleB(:,:)
+        real(TKG), allocatable :: cov(:,:), covA(:,:)
+        real(TKG), allocatable :: mean(:), meanA(:), meanB(:)
+        real(TKG), allocatable :: sample(:,:), sampleA(:,:), sampleB(:,:)
         do itry = 1, ntry
             call disp%skip()
             call disp%show("dim = 2; ndim = getUnifRand(1, 5); nsamA = getUnifRand(ndim + 1_IK, ndim * 2_IK); nsamB = getUnifRand(1_IK, nsamA)")
@@ -68,8 +68,8 @@ program example
                             mean = getMean(sample, dim)
             call disp%show("mean")
             call disp%show( mean )
-            call disp%show("call setCovUpdated(covA, meanA - meanB, real(nsamA, TKC) / real(nsamA + nsamB, TKC), uppDia)")
-                            call setCovUpdated(covA, meanA - meanB, real(nsamA, TKC) / real(nsamA + nsamB, TKC), uppDia)
+            call disp%show("call setCovUpdated(covA, meanA - meanB, real(nsamA, TKG) / real(nsamA + nsamB, TKG), uppDia)")
+                            call setCovUpdated(covA, meanA - meanB, real(nsamA, TKG) / real(nsamA + nsamB, TKG), uppDia)
             call disp%show("covA")
             call disp%show( covA )
             call disp%show("cov ! reference")

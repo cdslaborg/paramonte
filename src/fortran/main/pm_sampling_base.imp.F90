@@ -20,7 +20,7 @@
 #else
 #define SHARED
 #endif
-    use pm_kind, only: SKC => SK, SK, IK, LK, RKD, modelr_type
+    use pm_kind, only: SKG => SK, SK, IK, LK, RKD, modelr_type
    !use pm_io, only: FORMAT_GENERIC_BLANK_TABBED
    use pm_sysPath, only: MAX_LEN_FILE_PATH
     use pm_mathNumSys, only: getCountDigit
@@ -50,13 +50,13 @@
 
     implicit none
 #if OMP_ENABLED
-    character(63,SKC)                       :: co_outputFileNameDef
+    character(63,SKG)                       :: co_outputFileNameDef
 #endif
-    character(*,SKC)        , parameter     :: MODULE_NAME = SK_"@pm_sampling_base"
-   !character(*,SKC)        , parameter     :: format = FORMAT_GENERIC_BLANK_TABBED ! format with which all simulation specs are reported to the output file.
-    character(*,SKC)        , parameter     :: NL1 = new_line(SKC_"a")
-    character(*,SKC)        , parameter     :: NL2 = NL1//NL1
-   !character(*,SKC)        , parameter     :: RED = SKC_"ES" ! real edit descriptor.
+    character(*,SKG)        , parameter     :: MODULE_NAME = SK_"@pm_sampling_base"
+   !character(*,SKG)        , parameter     :: format = FORMAT_GENERIC_BLANK_TABBED ! format with which all simulation specs are reported to the output file.
+    character(*,SKG)        , parameter     :: NL1 = new_line(SKG_"a")
+    character(*,SKG)        , parameter     :: NL2 = NL1//NL1
+   !character(*,SKG)        , parameter     :: RED = SKG_"ES" ! real edit descriptor.
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     ! simulation declarations.
@@ -67,37 +67,37 @@
         integer(IK)         , allocatable   :: nsam(:)                  !<  \public The array of shape `(1:nref)` containing the number of unique samples (compact sample size) at each refinement stage.
         integer(IK)         , allocatable   :: sumw(:)                  !<  \public The array of shape `(1:nref)` containing the sum of the sample weights (verbose sample size) at each refinement stage.
         integer(IK)         , allocatable   :: sampleWeight(:)          !<  \public The array of shape `(1:nsam)` containing the final refined sample weights.
-        real(RKC)           , allocatable   :: sampleLogFuncState(:,:)  !<  \public The array of shape `(1:ndim, nsam)` containing the final refined logFunc and sample weights.
+        real(RKG)           , allocatable   :: sampleLogFuncState(:,:)  !<  \public The array of shape `(1:ndim, nsam)` containing the final refined logFunc and sample weights.
         type(css_type)      , allocatable   :: colname(:)
-        character(:,SKC)    , allocatable   :: header
+        character(:,SKG)    , allocatable   :: header
     end type
 
     !> The Quantile derived type containing the distribution quantiles.
     type                                    :: quantile_type
-        real(RKC)           , allocatable   :: quan(:,:) ! 9 by ndim.
-        real(RKC)                           :: prob(9) = [0._RKC, 0.05_RKC, 0.10_RKC, 0.25_RKC, 0.50_RKC, 0.75_RKC, 0.90_RKC, 0.95_RKC, 1.0_RKC]
-        character(4,SKC)                    :: name(9) = ["  Q0","  Q5"," Q10"," Q25"," Q50"," Q75"," Q90"," Q95","Q100"]
+        real(RKG)           , allocatable   :: quan(:,:) ! 9 by ndim.
+        real(RKG)                           :: prob(9) = [0._RKG, 0.05_RKG, 0.10_RKG, 0.25_RKG, 0.50_RKG, 0.75_RKG, 0.90_RKG, 0.95_RKG, 1.0_RKG]
+        character(4,SKG)                    :: name(9) = ["  Q0","  Q5"," Q10"," Q25"," Q50"," Q75"," Q90"," Q95","Q100"]
     end type
 
     type                                    :: mode_type
         integer(IK)                         :: loc
-        real(RKC)                           :: val
-        real(RKC)           , allocatable   :: crd(:)
+        real(RKG)                           :: val
+        real(RKG)           , allocatable   :: crd(:)
     end type
 
     type                                    :: statistics_type
         integer(IK)                         :: size
         type(mode_type)                     :: mode
         type(quantile_type)                 :: quantile
-        real(RKC)           , allocatable   :: cor(:,:)
-        real(RKC)           , allocatable   :: cov(:,:)
-        real(RKC)           , allocatable   :: avg(:)
+        real(RKG)           , allocatable   :: cor(:,:)
+        real(RKG)           , allocatable   :: cov(:,:)
+        real(RKG)           , allocatable   :: avg(:)
     end type
 
     type                                    :: progress_type
         integer(IK)                         :: counterPRP = 0_IK                            !<  \public Counter for progress report file. The initialization is important.
-        real(RKD)                           :: timeElapsedSinceStartInSeconds = 0._RKC      !<  \public Used in progress report. The initialization is important.
-        real(RKD)                           :: clock = -1._RKC                              !<  \public Used in progress report. The initialization is important.
+        real(RKD)                           :: timeElapsedSinceStartInSeconds = 0._RKG      !<  \public Used in progress report. The initialization is important.
+        real(RKD)                           :: clock = -1._RKG                              !<  \public Used in progress report. The initialization is important.
     end type
 
     type, abstract                          :: astatbase_type
@@ -128,24 +128,24 @@
     end type
 
     type                                    :: format_type
-        character(:,SKC)    , allocatable   :: generic
-        character(:,SKC)    , allocatable   :: integer
-        character(:,SKC)    , allocatable   :: allreal
-        character(:,SKC)    , allocatable   :: intreal
-        character(:,SKC)    , allocatable   :: strreal
-        character(:,SKC)    , allocatable   :: fixform
+        character(:,SKG)    , allocatable   :: generic
+        character(:,SKG)    , allocatable   :: integer
+        character(:,SKG)    , allocatable   :: allreal
+        character(:,SKG)    , allocatable   :: intreal
+        character(:,SKG)    , allocatable   :: strreal
+        character(:,SKG)    , allocatable   :: fixform
     end type
 
     type                                    :: tabularFileFormat_type
-        character(:,SKC)    , allocatable   :: header
-        character(:,SKC)    , allocatable   :: rows
+        character(:,SKG)    , allocatable   :: header
+        character(:,SKG)    , allocatable   :: rows
     end type
 
     type, extends(openArg_type)             :: samplerFile_type
         logical(LK)                         :: extant = .false._LK
-        character(:,SKC)    , allocatable   :: suffix
-        character(:,SKC)    , allocatable   :: kind
-        character(:,SKC)    , allocatable   :: ext
+        character(:,SKG)    , allocatable   :: suffix
+        character(:,SKG)    , allocatable   :: kind
+        character(:,SKG)    , allocatable   :: ext
         type(css_type)      , allocatable   :: list(:)
     end type
 
@@ -158,13 +158,13 @@
     end type
 
     type, extends(samplerFile_type)         :: reportFile_type
-        character(len(TABEQV, IK),SKC)      :: indent = TABEQV
+        character(len(TABEQV, IK),SKG)      :: indent = TABEQV
         type(format_type)                   :: format
     end type
 
     type, extends(samplerFile_type)         :: restartFile_type
         integer(IK)                         :: counter = 0_IK
-        character(:,SKC)    , allocatable   :: format
+        character(:,SKG)    , allocatable   :: format
     end type
 
     type, extends(samplerFile_type)         :: sampleFile_type
@@ -172,106 +172,106 @@
     end type
 
     type                                    :: ndim_type
-        real(RKC)                           :: invhalf
-        real(RKC)                           :: inv
+        real(RKG)                           :: invhalf
+        real(RKG)                           :: inv
         integer(IK)                         :: val
         integer(IK)                         :: vp1
-        character(:,SKC)    , allocatable   :: str
-        character(:,SKC)    , allocatable   :: desc
+        character(:,SKG)    , allocatable   :: str
+        character(:,SKG)    , allocatable   :: desc
     end type
 
     type                                    :: method_type
         logical(LK)                         :: isParaDISE = .false._LK
         logical(LK)                         :: isParaDRAM = .false._LK
         logical(LK)                         :: isParaNest = .false._LK
-        character(:,SKC)    , allocatable   :: val
-        character(:,SKC)    , allocatable   :: desc
+        character(:,SKG)    , allocatable   :: val
+        character(:,SKG)    , allocatable   :: desc
     end type
 
     type, extends(modelr_type)              :: real_type
-        real(RKC)                           :: large = -huge(0._RKC)    !<  \public The largest working real number without undue Euclidean distance overflow.
-        character(:,SKC)    , allocatable   :: desc
-        character(:,SKC)    , allocatable   :: ed                       !<  \public real edit descriptor: ES
-        character(:,SKC)    , allocatable   :: ex                       !<  \public real exponent descriptor: E0
+        real(RKG)                           :: large = -huge(0._RKG)    !<  \public The largest working real number without undue Euclidean distance overflow.
+        character(:,SKG)    , allocatable   :: desc
+        character(:,SKG)    , allocatable   :: ed                       !<  \public real edit descriptor: ES
+        character(:,SKG)    , allocatable   :: ex                       !<  \public real exponent descriptor: E0
     end type
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     ! specification declarations.
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-   !character(8192,SKC)                     :: description ! namelist input
+   !character(8192,SKG)                     :: description ! namelist input
     type                                    :: description_type
-        character(:,SKC)    , allocatable   :: val
-        character(:,SKC)    , allocatable   :: def
-        character(:,SKC)    , allocatable   :: null
-        character(:,SKC)    , allocatable   :: desc
+        character(:,SKG)    , allocatable   :: val
+        character(:,SKG)    , allocatable   :: def
+        character(:,SKG)    , allocatable   :: null
+        character(:,SKG)    , allocatable   :: desc
     end type
 
-   !character(:,SKC)        , allocatable   :: domain ! namelist input
+   !character(:,SKG)        , allocatable   :: domain ! namelist input
     type                                    :: domain_type
-        real(RKC)                           :: logVol = log(huge(0._RKC)) ! log-volume of the domain.
+        real(RKG)                           :: logVol = log(huge(0._RKG)) ! log-volume of the domain.
         logical(LK)                         :: isFinite ! paranest: always true. dram/dise: true only if domain is user-set.
         logical(LK)                         :: isCube
         logical(LK)                         :: isBall
-        character(4,SKC)                    :: ball
-        character(4,SKC)                    :: cube
-        character(:,SKC)    , allocatable   :: val
-        character(:,SKC)    , allocatable   :: def
-        character(:,SKC)    , allocatable   :: null
-        character(:,SKC)    , allocatable   :: desc
+        character(4,SKG)                    :: ball
+        character(4,SKG)                    :: cube
+        character(:,SKG)    , allocatable   :: val
+        character(:,SKG)    , allocatable   :: def
+        character(:,SKG)    , allocatable   :: null
+        character(:,SKG)    , allocatable   :: desc
     end type
 
-   !character(63,SKC)       , allocatable   :: domainAxisName(:) ! namelist input
+   !character(63,SKG)       , allocatable   :: domainAxisName(:) ! namelist input
     type                                    :: domainAxisName_type
-        character(63,SKC)                   :: null
-        character(63,SKC)   , allocatable   :: val(:)
-        character(63,SKC)   , allocatable   :: def(:)
-        character(:,SKC)    , allocatable   :: desc
-        character(:,SKC)    , allocatable   :: prefix
+        character(63,SKG)                   :: null
+        character(63,SKG)   , allocatable   :: val(:)
+        character(63,SKG)   , allocatable   :: def(:)
+        character(:,SKG)    , allocatable   :: desc
+        character(:,SKG)    , allocatable   :: prefix
     end type
 
-   !real(RKC)               , allocatable   :: domainBallAvg(:) ! namelist input
+   !real(RKG)               , allocatable   :: domainBallAvg(:) ! namelist input
     type                                    :: domainBallAvg_type
-        real(RKC)           , allocatable   :: val(:)
-        real(RKC)                           :: def
-        character(:,SKC)    , allocatable   :: desc
+        real(RKG)           , allocatable   :: val(:)
+        real(RKG)                           :: def
+        character(:,SKG)    , allocatable   :: desc
     end type
 
-   !real(RKC)               , allocatable   :: domainBallCor(:,:) ! namelist input
+   !real(RKG)               , allocatable   :: domainBallCor(:,:) ! namelist input
     type                                    :: domainBallCor_type
-        real(RKC)           , allocatable   :: val(:,:)
-        real(RKC)           , allocatable   :: def(:,:)
-        character(:,SKC)    , allocatable   :: desc
+        real(RKG)           , allocatable   :: val(:,:)
+        real(RKG)           , allocatable   :: def(:,:)
+        character(:,SKG)    , allocatable   :: desc
     end type
 
-   !real(RKC)               , allocatable   :: domainBallCov(:,:) ! namelist input
+   !real(RKG)               , allocatable   :: domainBallCov(:,:) ! namelist input
     type                                    :: domainBallCov_type
         logical(LK)                         :: isUserSet
-        real(RKC)           , allocatable   :: def(:,:)
-        real(RKC)           , allocatable   :: val(:,:)
-        real(RKC)           , allocatable   :: inv(:,:)
-        character(:,SKC)    , allocatable   :: desc
+        real(RKG)           , allocatable   :: def(:,:)
+        real(RKG)           , allocatable   :: val(:,:)
+        real(RKG)           , allocatable   :: inv(:,:)
+        character(:,SKG)    , allocatable   :: desc
     end type
 
-   !real(RKC)               , allocatable   :: domainBallStd(:) ! namelist input
+   !real(RKG)               , allocatable   :: domainBallStd(:) ! namelist input
     type                                    :: domainBallStd_type
-        real(RKC)           , allocatable   :: val(:)
-        real(RKC)           , allocatable   :: def
-        character(:,SKC)    , allocatable   :: desc
+        real(RKG)           , allocatable   :: val(:)
+        real(RKG)           , allocatable   :: def
+        character(:,SKG)    , allocatable   :: desc
     end type
 
-   !real(RKC)               , allocatable   :: domainCubeLimitLower(:) ! namelist input
+   !real(RKG)               , allocatable   :: domainCubeLimitLower(:) ! namelist input
     type                                    :: domainCubeLimitLower_type
-        real(RKC)                           :: def
-        real(RKC)           , allocatable   :: val(:)
-        character(:,SKC)    , allocatable   :: desc
+        real(RKG)                           :: def
+        real(RKG)           , allocatable   :: val(:)
+        character(:,SKG)    , allocatable   :: desc
     end type
 
-   !real(RKC)               , allocatable   :: domainCubeLimitUpper(:) ! namelist input
+   !real(RKG)               , allocatable   :: domainCubeLimitUpper(:) ! namelist input
     type                                    :: domainCubeLimitUpper_type
-        real(RKC)                           :: def
-        real(RKC)           , allocatable   :: val(:)
-        character(:,SKC)    , allocatable   :: desc
+        real(RKG)                           :: def
+        real(RKG)           , allocatable   :: val(:)
+        character(:,SKG)    , allocatable   :: desc
     end type
 
    !integer(IK)                             :: domainErrCount ! namelist input
@@ -279,8 +279,8 @@
         integer(IK)                         :: def
         integer(IK)                         :: val
         integer(IK)                         :: null
-        character(:,SKC)    , allocatable   :: str
-        character(:,SKC)    , allocatable   :: desc
+        character(:,SKG)    , allocatable   :: str
+        character(:,SKG)    , allocatable   :: desc
     end type
 
    !integer(IK)                             :: domainErrCountMax ! namelist input
@@ -288,29 +288,29 @@
         integer(IK)                         :: val
         integer(IK)                         :: def
         integer(IK)                         :: null
-        character(:,SKC)    , allocatable   :: str
-        character(:,SKC)    , allocatable   :: desc
+        character(:,SKG)    , allocatable   :: str
+        character(:,SKG)    , allocatable   :: desc
     end type
 
    !logical(LK)                             :: inputFileHasPriority
     type                                    :: inputFileHasPriority_type
         logical(LK)                         :: val
         logical(LK)                         :: def
-        character(:,SKC)    , allocatable   :: desc
+        character(:,SKG)    , allocatable   :: desc
     end type
 
-   !character(:,SKC)        , allocatable   :: outputChainFileFormat
+   !character(:,SKG)        , allocatable   :: outputChainFileFormat
     type                                    :: outputChainFileFormat_type
         logical(LK)                         :: isCompact
         logical(LK)                         :: isVerbose
         logical(LK)                         :: isBinary
-        character(7,SKC)                    :: compact
-        character(7,SKC)                    :: verbose
-        character(6,SKC)                    :: binary
-        character(:,SKC)    , allocatable   :: def
-        character(:,SKC)    , allocatable   :: val
-        character(:,SKC)    , allocatable   :: null
-        character(:,SKC)    , allocatable   :: desc
+        character(7,SKG)                    :: compact
+        character(7,SKG)                    :: verbose
+        character(6,SKG)                    :: binary
+        character(:,SKG)    , allocatable   :: def
+        character(:,SKG)    , allocatable   :: val
+        character(:,SKG)    , allocatable   :: null
+        character(:,SKG)    , allocatable   :: desc
     end type
 
    !integer(IK)                             :: outputColumnWidth ! namelist input
@@ -318,25 +318,25 @@
         integer(IK)                         :: null
         integer(IK)                         :: def
         integer(IK)                         :: val
-        character(:,SKC)    , allocatable   :: str
-        character(:,SKC)    , allocatable   :: max
-        character(:,SKC)    , allocatable   :: desc
+        character(:,SKG)    , allocatable   :: str
+        character(:,SKG)    , allocatable   :: max
+        character(:,SKG)    , allocatable   :: desc
     end type
 
-   !character(:,SKC)        , allocatable   :: outputFileName ! namelist input
+   !character(:,SKG)        , allocatable   :: outputFileName ! namelist input
     type                                    :: outputFileName_type
-        character(:,SKC)    , allocatable   :: full
-        character(:,SKC)    , allocatable   :: base
-        character(:,SKC)    , allocatable   :: seps
-        character(:,SKC)    , allocatable   :: sep
-        character(:,SKC)    , allocatable   :: dir
-        character(:,SKC)    , allocatable   :: val
-        character(:,SKC)    , allocatable   :: def
-        character(:,SKC)    , allocatable   :: null
-        character(:,SKC)    , allocatable   :: desc
+        character(:,SKG)    , allocatable   :: full
+        character(:,SKG)    , allocatable   :: base
+        character(:,SKG)    , allocatable   :: seps
+        character(:,SKG)    , allocatable   :: sep
+        character(:,SKG)    , allocatable   :: dir
+        character(:,SKG)    , allocatable   :: val
+        character(:,SKG)    , allocatable   :: def
+        character(:,SKG)    , allocatable   :: null
+        character(:,SKG)    , allocatable   :: desc
     end type
 
-   !character(:,SKC)        , allocatable   :: outputStatus
+   !character(:,SKG)        , allocatable   :: outputStatus
    type                                     :: outputStatusIs_type
         logical(LK)                         :: extend
         logical(LK)                         :: repeat
@@ -344,60 +344,60 @@
    end type
     type                                    :: outputStatus_type
         type(outputStatusIs_type)           :: is
-        character(:,SKC)    , allocatable   :: def
-        character(:,SKC)    , allocatable   :: val
-        character(:,SKC)    , allocatable   :: null
-        character(:,SKC)    , allocatable   :: desc
+        character(:,SKG)    , allocatable   :: def
+        character(:,SKG)    , allocatable   :: val
+        character(:,SKG)    , allocatable   :: null
+        character(:,SKG)    , allocatable   :: desc
     end type
 
    !integer(IK)                             :: outputPrecision ! namelist input
     type                                    :: outputPrecision_type
-        character(:,SKC)    , allocatable   :: str
+        character(:,SKG)    , allocatable   :: str
         integer(IK)                         :: val
         integer(IK)                         :: def
         integer(IK)                         :: null
-        character(:,SKC)    , allocatable   :: desc
+        character(:,SKG)    , allocatable   :: desc
     end type
 
    !integer(IK)                             :: outputReportPeriod ! namelist input
     type                                    :: outputReportPeriod_type
-        real(RKC)                           :: inv
+        real(RKG)                           :: inv
         integer(IK)                         :: val
         integer(IK)                         :: def
         integer(IK)                         :: null
-        character(:,SKC)    , allocatable   :: desc
+        character(:,SKG)    , allocatable   :: desc
     end type
 
-   !character(:,SKC)        , allocatable   :: outputRestartFileFormat ! namelist input
+   !character(:,SKG)        , allocatable   :: outputRestartFileFormat ! namelist input
     type                                    :: outputRestartFileFormat_type
         logical(LK)                         :: isBinary
         logical(LK)                         :: isAscii
-        character(6,SKC)                    :: binary
-        character(5,SKC)                    :: ascii
-        character(:,SKC)    , allocatable   :: def
-        character(:,SKC)    , allocatable   :: val
-        character(:,SKC)    , allocatable   :: null
-        character(:,SKC)    , allocatable   :: desc
+        character(6,SKG)                    :: binary
+        character(5,SKG)                    :: ascii
+        character(:,SKG)    , allocatable   :: def
+        character(:,SKG)    , allocatable   :: val
+        character(:,SKG)    , allocatable   :: null
+        character(:,SKG)    , allocatable   :: desc
     end type
 
    !integer(IK)                             :: outputSampleSize ! namelist input
     type                                    :: outputSampleSize_type
-        character(:,SKC)    , allocatable   :: str
+        character(:,SKG)    , allocatable   :: str
         integer(IK)                         :: val
         integer(IK)                         :: def
         integer(IK)                         :: null
-        character(:,SKC)    , allocatable   :: desc
+        character(:,SKG)    , allocatable   :: desc
     end type
 
-   !character(:,SKC)        , allocatable   :: outputSeparator ! namelist input
+   !character(:,SKG)        , allocatable   :: outputSeparator ! namelist input
     type                                    :: outputSeparator_type
-        character(:,SKC)    , allocatable   :: val
-        character(:,SKC)    , allocatable   :: def
-        character(:,SKC)    , allocatable   :: null
-        character(:,SKC)    , allocatable   :: desc
+        character(:,SKG)    , allocatable   :: val
+        character(:,SKG)    , allocatable   :: def
+        character(:,SKG)    , allocatable   :: null
+        character(:,SKG)    , allocatable   :: desc
     end type
 
-   !character(:,SKC)        , allocatable   :: outputSplashMode ! namelist input
+   !character(:,SKG)        , allocatable   :: outputSplashMode ! namelist input
     type                                    :: outputSplashModeIs_type
         logical(LK)                         :: normal = .false._LK
         logical(LK)                         :: silent = .false._LK
@@ -405,16 +405,16 @@
     end type
     type                                    :: outputSplashMode_type
         type(outputSplashModeIs_type)       :: is
-        character(6,SKC)                    :: normal = SKC_"normal"
-        character(6,SKC)                    :: silent = SKC_"silent"
-        character(5,SKC)                    :: quiet = SKC_"quiet"
-        character(:,SKC)    , allocatable   :: null
-        character(:,SKC)    , allocatable   :: def
-        character(:,SKC)    , allocatable   :: val
-        character(:,SKC)    , allocatable   :: desc
+        character(6,SKG)                    :: normal = SKG_"normal"
+        character(6,SKG)                    :: silent = SKG_"silent"
+        character(5,SKG)                    :: quiet = SKG_"quiet"
+        character(:,SKG)    , allocatable   :: null
+        character(:,SKG)    , allocatable   :: def
+        character(:,SKG)    , allocatable   :: val
+        character(:,SKG)    , allocatable   :: desc
     end type
 
-   !character(:,SKC)        , allocatable   :: parallelism
+   !character(:,SKG)        , allocatable   :: parallelism
     type                                    :: parallelismis_type
         logical(LK)                         :: forkJoin = .false._LK
         logical(LK)                         :: multiChain = .false._LK
@@ -422,34 +422,34 @@
     end type
     type                                    :: parallelism_type
         type(parallelismis_type)            :: is
-        character(11,SKC)                   :: singleChain
-        character(10,SKC)                   :: multiChain
-        character(:,SKC)    , allocatable   :: def
-        character(:,SKC)    , allocatable   :: val
-        character(:,SKC)    , allocatable   :: null
-        character(:,SKC)    , allocatable   :: desc
+        character(11,SKG)                   :: singleChain
+        character(10,SKG)                   :: multiChain
+        character(:,SKG)    , allocatable   :: def
+        character(:,SKG)    , allocatable   :: val
+        character(:,SKG)    , allocatable   :: null
+        character(:,SKG)    , allocatable   :: desc
     end type
 
    !logical(LK)                             :: parallelismMpiFinalizeEnabled ! namelist input
     type                                    :: parallelismMpiFinalizeEnabled_type
         logical(LK)                         :: val
         logical(LK)                         :: def
-        character(:,SKC)    , allocatable   :: desc
+        character(:,SKG)    , allocatable   :: desc
     end type
 
     type                                    :: parallelismNumThread_type
         integer(IK)                         :: val
         integer(IK)                         :: def
         integer(IK)                         :: null
-        character(:,SKC)    , allocatable   :: desc
+        character(:,SKG)    , allocatable   :: desc
     end type
 
-   !character(:,SKC)        , allocatable   :: plang ! namelist input
+   !character(:,SKG)        , allocatable   :: plang ! namelist input
    !type                                    :: plang_type
-   !   !character(:,SKC)    , allocatable   :: val
-   !   !character(:,SKC)    , allocatable   :: def
-   !   !character(:,SKC)    , allocatable   :: null
-   !   !character(:,SKC)    , allocatable   :: desc
+   !   !character(:,SKG)    , allocatable   :: val
+   !   !character(:,SKG)    , allocatable   :: def
+   !   !character(:,SKG)    , allocatable   :: null
+   !   !character(:,SKG)    , allocatable   :: desc
    !    type(envis_type)                    :: is = envis
    !end type
 
@@ -462,23 +462,23 @@
        !integer(IK)                         :: imageCount
        !integer(IK)                         :: processID
        !integer(IK)         , allocatable   :: Seed(:,:)
-        character(:,SKC)    , allocatable   :: desc
+        character(:,SKG)    , allocatable   :: desc
     end type
 
-   !character(:,SKC)        , allocatable   :: sysInfoFilePath ! namelist input
+   !character(:,SKG)        , allocatable   :: sysInfoFilePath ! namelist input
     type                                    :: sysInfoFilePath_type
-        character(:,SKC)    , allocatable   :: def
-        character(:,SKC)    , allocatable   :: val
-        character(:,SKC)    , allocatable   :: null
+        character(:,SKG)    , allocatable   :: def
+        character(:,SKG)    , allocatable   :: val
+        character(:,SKG)    , allocatable   :: null
     end type
 
-   !real(RKC)                               :: targetAcceptanceRate(2) ! namelist input
+   !real(RKG)                               :: targetAcceptanceRate(2) ! namelist input
     type                                    :: targetAcceptanceRate_type
         logical(LK)                         :: enabled
-        real(RKC)                           :: val(2)
-        real(RKC)                           :: def(2)
-        real(RKC)                           :: aim ! The target efficiency (depends on the sampler).
-        character(:,SKC)    , allocatable   :: desc
+        real(RKG)                           :: val(2)
+        real(RKG)                           :: def(2)
+        real(RKG)                           :: aim ! The target efficiency (depends on the sampler).
+        character(:,SKG)    , allocatable   :: desc
     end type
 
     !>  \brief
@@ -494,7 +494,7 @@
         type(xoshiro256ssw_type)                    :: rng                      !<  \public Random number generator.
         type(run_type)                              :: run                      !<  \public The simulation run ID and information.
         logical(LK)                                 :: overridable              !<  \public The scalar `logical` of default kind \LK that is `.true.` if and only if the namelist argument `inputFileHasPriority` is `.false.`.
-        character(:,SKC), allocatable               :: msg                      !<  \public The scalar `character` containing the messages common between stdout and the report file.
+        character(:,SKG), allocatable               :: msg                      !<  \public The scalar `character` containing the messages common between stdout and the report file.
         type(ndim_type)                             :: ndim
         type(image_type)                            :: image
         type(method_type)                           :: method
@@ -553,11 +553,11 @@ contains
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    subroutine killMeAlreadyCMake1_RK5(); use pm_sampling_scio_RK5, only: RKC; end subroutine
-    subroutine killMeAlreadyCMake1_RK4(); use pm_sampling_scio_RK4, only: RKC; end subroutine
-    subroutine killMeAlreadyCMake1_RK3(); use pm_sampling_scio_RK3, only: RKC; end subroutine
-    subroutine killMeAlreadyCMake1_RK2(); use pm_sampling_scio_RK2, only: RKC; end subroutine
-    subroutine killMeAlreadyCMake1_RK1(); use pm_sampling_scio_RK1, only: RKC; end subroutine
+    subroutine killMeAlreadyCMake1_RK5(); use pm_sampling_scio_RK5, only: RKG; end subroutine
+    subroutine killMeAlreadyCMake1_RK4(); use pm_sampling_scio_RK4, only: RKG; end subroutine
+    subroutine killMeAlreadyCMake1_RK3(); use pm_sampling_scio_RK3, only: RKG; end subroutine
+    subroutine killMeAlreadyCMake1_RK2(); use pm_sampling_scio_RK2, only: RKG; end subroutine
+    subroutine killMeAlreadyCMake1_RK1(); use pm_sampling_scio_RK1, only: RKG; end subroutine
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -566,13 +566,13 @@ contains
         !DEC$ ATTRIBUTES DLLEXPORT :: specbase_typer
 #endif
         type(modelr_type), intent(in) :: modelr
-        character(*,SKC), intent(in) :: method
+        character(*,SKG), intent(in) :: method
         integer(IK), intent(in) :: ndim
         type(specbase_type) :: spec
 
         block
             integer(IK) :: width
-            character(:,SKC), allocatable :: prefix
+            character(:,SKG), allocatable :: prefix
             prefix = spec%reportFile%indent//method
             width = 115_IK - len(prefix, IK)
             spec%disp = display_type( tmsize = 0_IK, bmsize = 1_IK & ! LCOV_EXCL_LINE
@@ -584,18 +584,18 @@ contains
         end block
         spec%disp%width = max(80_IK, min(132_IK, abs(spec%disp%width))) - 4_IK ! laptops have tiny screens - 2 * margin width (= 2).
         spec%disp%text%width = spec%disp%width
-        spec%real%large = real(aint(sqrt(modelr%huge) / ndim), RKC)
+        spec%real%large = real(aint(sqrt(modelr%huge) / ndim), RKG)
         spec%image = image_type()
 
         ndim_block: block
             spec%ndim%val = ndim
             spec%ndim%vp1 = ndim + 1_IK
-            spec%ndim%inv = 1._RKC / real(ndim, RKC)
-            spec%ndim%invhalf = .5_RKC * spec%ndim%inv
+            spec%ndim%inv = 1._RKG / real(ndim, RKG)
+            spec%ndim%invhalf = .5_RKG * spec%ndim%inv
            !spec%ndim%sqpndim = ndim**2 + ndim
             spec%ndim%str = getStr(ndim)
             spec%ndim%desc = &
-            SKC_"The simulation specification `ndim` is a positive scalar of type `integer` of kind 32-bit, &
+            SKG_"The simulation specification `ndim` is a positive scalar of type `integer` of kind 32-bit, &
                 &representing the number of dimensions of the domain of the objective function. &
                 &Unlike most other simulation specifications, `ndim` cannot be set from within an external input function &
                 &and the user must always specify it along with the objective function at the time of calling the exploration routine &
@@ -604,32 +604,32 @@ contains
         end block ndim_block
 
         method_block: block
-            character(:,SKC), allocatable :: lowval
+            character(:,SKG), allocatable :: lowval
             spec%method%val = method
             lowval = getStrLower(spec%method%val)
-            spec%method%isParaDISE = logical(lowval == SKC_"paradise", LK)
-            spec%method%isParaDRAM = logical(lowval == SKC_"paradram", LK)
-            spec%method%isParaNest = logical(lowval == SKC_"paranest", LK)
+            spec%method%isParaDISE = logical(lowval == SKG_"paradise", LK)
+            spec%method%isParaDRAM = logical(lowval == SKG_"paradram", LK)
+            spec%method%isParaNest = logical(lowval == SKG_"paranest", LK)
             spec%method%desc = &
-            SKC_"The simulation specification `method` is a scalar string, &
+            SKG_"The simulation specification `method` is a scalar string, &
                 &representing the method of exploring the objective function. &
                 &Unlike most other simulation specifications, `method` cannot be set from within an external input function &
                 &and the user always specifies it by calling the corresponding objective function exploration routine. &
                 &As such, `method` has no default value and is always user-supplied. &
                 &The following density function exploration methods are currently or will be supported by the ParaMonte library:"//NL2//&
-            SKC_"   ParaDRAM"//NL2//&
-            SKC_"       The ParaDRAM acronym stands for Parallel Delayed-Rejection Adaptive Metropolis Markov Chain Monte Carlo. &
+            SKG_"   ParaDRAM"//NL2//&
+            SKG_"       The ParaDRAM acronym stands for Parallel Delayed-Rejection Adaptive Metropolis Markov Chain Monte Carlo. &
                         &The ParaDRAM sampler can optimize and explore the landscape of objective functions stochastically. &
                         &For more details of the ParaDRAM sampling scheme, refer to the references section in the documentation of the ParaMonte library:"//NL2//&
-            SKC_"           https://www.cdslab.org/paramonte"
+            SKG_"           https://www.cdslab.org/paramonte"
         end block method_block
 
         modelr_block: block
             spec%real%modelr_type = modelr
-            spec%real%ed = SKC_"ES"
-            spec%real%ex = SKC_"E0"
+            spec%real%ed = SKG_"ES"
+            spec%real%ex = SKG_"E0"
             spec%real%desc = &
-            SKC_"The simulation specification `modelr` is an object whose components contain the &
+            SKG_"The simulation specification `modelr` is an object whose components contain the &
                 &characteristics of `real` (float) data type model (hence the name `modelr`) used for (most) computations during the simulation. &
                 &The real/float type used within the simulation is the same as that of the input and output values to and from the objective function. &
                 &It is set by the user when the sampler is called. As such, unlike most other simulation specifications, `modelr` cannot be set from &
@@ -637,30 +637,30 @@ contains
                 &Therefore, `modelr` has no default value and is always user-supplied when calling the sampler. &
                 &The components of `modelr` are important for future determination of the type and kind of the real/float used in the simulation. &
                 &The `modelr` object contains the following real/float characteristics:"//NL2//&
-            SKC_"+   `digits`"//NL2//&
-            SKC_"    The number of significant bit digits in the real/float model used in the simulations."//NL2//&
-            SKC_"+   `kind`"//NL2//&
-            SKC_"    The processor-dependent kind type-parameter of the real/float model used in the current simulation."//NL2//&
-            SKC_"+   `maxexponent`"//NL2//&
-            SKC_"    The maximum exponent for the real/float model used in the current simulation."//NL2//&
-            SKC_"+   `minexponent`"//NL2//&
-            SKC_"    The minimum exponent for the real/float model used in the current simulation."//NL2//&
-            SKC_"+   `precision`"//NL2//&
-            SKC_"    The equivalent decimal precision (number of digits after the decimal point) of the real/float model used in the current simulation."//NL2//&
-            SKC_"+   `radix`"//NL2//&
-            SKC_"    The base in the real/float model used in the current simulation."//NL2//&
-            SKC_"+   `range`"//NL2//&
-            SKC_"    The decimal exponent range in the real/float model used in the current simulation. &
+            SKG_"+   `digits`"//NL2//&
+            SKG_"    The number of significant bit digits in the real/float model used in the simulations."//NL2//&
+            SKG_"+   `kind`"//NL2//&
+            SKG_"    The processor-dependent kind type-parameter of the real/float model used in the current simulation."//NL2//&
+            SKG_"+   `maxexponent`"//NL2//&
+            SKG_"    The maximum exponent for the real/float model used in the current simulation."//NL2//&
+            SKG_"+   `minexponent`"//NL2//&
+            SKG_"    The minimum exponent for the real/float model used in the current simulation."//NL2//&
+            SKG_"+   `precision`"//NL2//&
+            SKG_"    The equivalent decimal precision (number of digits after the decimal point) of the real/float model used in the current simulation."//NL2//&
+            SKG_"+   `radix`"//NL2//&
+            SKG_"    The base in the real/float model used in the current simulation."//NL2//&
+            SKG_"+   `range`"//NL2//&
+            SKG_"    The decimal exponent range in the real/float model used in the current simulation. &
                      &It is the value corresponding to `int(min(log10(huge), -log10(tiny)))` where `huge` &
                      &and `tiny` are the largest and smallest positive numbers in the real/float model"//NL2//&
-            SKC_"+   `storage_size`"//NL2//&
-            SKC_"    The size, in bits, that would be taken in memory by a scalar of the real/float model used in the current simulation."//NL2//&
-            SKC_"+   `epsilon`"//NL2//&
-            SKC_"    The smallest normal value representable by the real/float model used in the current simulation such that `1 < 1 + epsilon`."//NL2//&
-            SKC_"+   `huge`"//NL2//&
-            SKC_"    The largest normal value representable by the real/float model used in the current simulation (without causing overflow)."//NL2//&
-            SKC_"+   `tiny`"//NL2//&
-            SKC_"    The smallest positive normal value representable by the real/float model used in the current simulation (without causing underflow)."
+            SKG_"+   `storage_size`"//NL2//&
+            SKG_"    The size, in bits, that would be taken in memory by a scalar of the real/float model used in the current simulation."//NL2//&
+            SKG_"+   `epsilon`"//NL2//&
+            SKG_"    The smallest normal value representable by the real/float model used in the current simulation such that `1 < 1 + epsilon`."//NL2//&
+            SKG_"+   `huge`"//NL2//&
+            SKG_"    The largest normal value representable by the real/float model used in the current simulation (without causing overflow)."//NL2//&
+            SKG_"+   `tiny`"//NL2//&
+            SKG_"    The smallest positive normal value representable by the real/float model used in the current simulation (without causing underflow)."
         end block modelr_block
 
         description_block: block
@@ -668,13 +668,13 @@ contains
             spec%description%null = repeat(SUB, len(description, IK))
             spec%description%def = UNDEFINED
             spec%description%desc = &
-            SKC_"The simulation specification `description` is a scalar string of maximum length `"//getStr(len(description, IK))//&
-            SKC_"` characters containing general information about the simulation to be performed. It has no effects &
+            SKG_"The simulation specification `description` is a scalar string of maximum length `"//getStr(len(description, IK))//&
+            SKG_"` characters containing general information about the simulation to be performed. It has no effects &
             &on the simulation and serves only as a general description for future reference. &
             &The sampler parser automatically recognizes the C-style `'\n'` escape sequence as the new-line character &
             &and `'\\'` as the backslash character `'\'` if used in the contents of `description`. For example, `'\\n'` &
             &will be converted to `'\n'` on the output, while `'\n'` translates to the new-line character. &
-            &The default value for `description` is `'"//spec%description%def//SKC_"'`."
+            &The default value for `description` is `'"//spec%description%def//SKG_"'`."
             !$omp master
             description = spec%description%null
             !$omp end master
@@ -685,26 +685,26 @@ contains
             spec%domain%isFinite = spec%method%isParaNest
             spec%domain%isCube = .false._LK
             spec%domain%isBall = .false._LK
-            spec%domain%cube   = SKC_"cube"
-            spec%domain%ball   = SKC_"ball"
+            spec%domain%cube   = SKG_"cube"
+            spec%domain%ball   = SKG_"ball"
             spec%domain%null   = repeat(SUB, len(domain, IK))
             spec%domain%def    = spec%domain%cube
             spec%domain%desc   = &
-            SKC_"The simulation specification `domain` is a scalar string of maximum length `"//getStr(len(domain, IK))//SKC_"`, &
+            SKG_"The simulation specification `domain` is a scalar string of maximum length `"//getStr(len(domain, IK))//SKG_"`, &
                 &containing the model's name that defines the objective function's domain. &
                 &The string value must be enclosed by either single or double quotation marks when provided as input. &
                 &The following domain models are currently supported:"//NL2//&
-            SKC_"+   `domain = '"//spec%domain%cube//SKC_"'`"//NL2//&
-            SKC_"    This is equivalent to a `ndim`-dimensional hyper-cube (n-cube) whose upper and lower bounds are specified &
+            SKG_"+   `domain = '"//spec%domain%cube//SKG_"'`"//NL2//&
+            SKG_"    This is equivalent to a `ndim`-dimensional hyper-cube (n-cube) whose upper and lower bounds are specified &
                      &by the input simulation specifications `domainCubeLimitUpper` and `domainCubeLimitLower` respectively."//NL2//&
-            SKC_"+   `domain = '"//spec%domain%ball//SKC_"'`"//NL2//&
-            SKC_"    This is equivalent to a `ndim`-dimensional hyper-ellipsoid (n-ball) whose center and covariance matrix can be &
+            SKG_"+   `domain = '"//spec%domain%ball//SKG_"'`"//NL2//&
+            SKG_"    This is equivalent to a `ndim`-dimensional hyper-ellipsoid (n-ball) whose center and covariance matrix can be &
                      &specified by the input simulation specification `domainBallAvg` and `domainBallCov` respectively. Alternatively, &
                      &the user can let the ParaMonte samplers construct the covariance matrix of the ellipsoidal domain from the input &
                      &values for the `domainBallCor` and `domainBallStd` simulation specifications. Note that a spherical &
                      &domain can be defined by dropping the `domainBallCov` and `domainBallCor` specifications from the input &
                      &and setting all elements of `domainBallStd` to the desired radius of the domain."//NL2//&
-            SKC_"The default value for `domain` is an infinite cube for the ParaDRAM and ParaDISE samplers, and a unit-sized cube for the ParaNest sampler."
+            SKG_"The default value for `domain` is an infinite cube for the ParaDRAM and ParaDISE samplers, and a unit-sized cube for the ParaNest sampler."
             !$omp master
             domain = spec%domain%null
             !$omp end master
@@ -713,20 +713,20 @@ contains
         domainAxisName_block: block
             use pm_sampling_scio, only: domainAxisName
             integer(IK) :: idim
-            spec%domainAxisName%prefix = SKC_"sampleState"
+            spec%domainAxisName%prefix = SKG_"sampleState"
             spec%domainAxisName%null = repeat(SUB, len(domainAxisName, IK))
             call setResized(spec%domainAxisName%def, ndim)
             do idim = 1, ndim
                 spec%domainAxisName%def(idim) = spec%domainAxisName%prefix//getStr(idim)
             end do
             spec%domainAxisName%desc = &
-            SKC_"The simulation specification `domainAxisName` is a vector of scalar string values, each element of which contains &
+            SKG_"The simulation specification `domainAxisName` is a vector of scalar string values, each element of which contains &
                 &the names of the corresponding axis of the density function domain (to be explored/sampled). &
                 &It is used to construct the headers of the simulation output files. &
                 &Any element of `domainAxisName` not set by the user will automatically be assigned a default name. &
                 &If all elements of `domainAxisName` are set to the same value, then a number will be suffixed to each element &
                 &representing the ID of the corresponding dimension of the domain of the density function. &
-                &The default value for `domainAxisName` is '"//spec%domainAxisName%prefix//SKC_"i', where the integer `'i'` at the &
+                &The default value for `domainAxisName` is '"//spec%domainAxisName%prefix//SKG_"i', where the integer `'i'` at the &
                 &end of the name is replaced by the index of the corresponding domain axis."
             !$omp master
             call setResized(domainAxisName, ndim)
@@ -736,16 +736,16 @@ contains
 
         domainBallAvg_block: block
             use pm_sampling_scio, only: domainBallAvg
-            spec%domainBallAvg%def = 0._RKC
+            spec%domainBallAvg%def = 0._RKG
             spec%domainBallAvg%desc = &
-            SKC_"The simulation specification `domainBallAvg` is a vector of type `real` of the highest precision supported by the ParaMonte library, &
+            SKG_"The simulation specification `domainBallAvg` is a vector of type `real` of the highest precision supported by the ParaMonte library, &
                 &of size `ndim` containing the coordinates of the center of the hyper-ellipsoidal (or spherical) `ndim`-dimensional domain of the objective function, &
                 &such that all states `X(1 : ndim)` visited by the sampler would obey the following inequality:"//NL2//&
-            SKC_"$$"//NL1//&
-            SKC_"(X - \mu)^T \Sigma^{-1} (X - \mu) \leq 1."//NL1//&
-            SKC_"$$"//NL2//&
-            SKC_"where $$\mu$$ represents the specification `domainBallAvg` and $$\Sigma^{-1}$$ is the inverse of the specification `domainBallCov`."//NL2//&
-            SKC_"When passed to the sampler from within an external input file, every missing element of `domainBallAvg` will be set to the origin (zero). &
+            SKG_"$$"//NL1//&
+            SKG_"(X - \mu)^T \Sigma^{-1} (X - \mu) \leq 1."//NL1//&
+            SKG_"$$"//NL2//&
+            SKG_"where $$\mu$$ represents the specification `domainBallAvg` and $$\Sigma^{-1}$$ is the inverse of the specification `domainBallCov`."//NL2//&
+            SKG_"When passed to the sampler from within an external input file, every missing element of `domainBallAvg` will be set to the origin (zero). &
                 &Together with `domainBallCov`, or with `domainBallCor` and `domainBallStd`, it forms a hyper-ellipsoidal &
                 &or hyper-spherical domain for the ParaMonte samplers. Note that an ellipsoidal/spherical domain is used if and only if the &
                 &input simulation specification `domain` is set to 'ellipsoid' or 'sphere' or `ball`. Otherwise, a cubical domain will be used. &
@@ -759,21 +759,21 @@ contains
 
         domainBallCor_block: block
             use pm_sampling_scio, only: domainBallCor
-            spec%domainBallCor%def = getMatInit([ndim, ndim], uppLowDia, vupp = 0._RKC, vlow = 0._RKC, vdia = 1._RKC)
+            spec%domainBallCor%def = getMatInit([ndim, ndim], uppLowDia, vupp = 0._RKG, vlow = 0._RKG, vdia = 1._RKG)
             spec%domainBallCor%desc = &
-            SKC_"The simulation specification `domainBallCor` is a positive-definite matrix of type `real` of the highest precision available in the ParaMonte Library &
+            SKG_"The simulation specification `domainBallCor` is a positive-definite matrix of type `real` of the highest precision available in the ParaMonte Library &
                 &of size `(ndim, ndim)` representing the correlation matrix of the domain of the objective function, where `ndim` is the dimension of the domain, &
                 &such that all states `X(1 : ndim)` visited by the sampler would obey the following inequality:"//NL2//&
-            SKC_"$$"//NL1//&
-            SKC_"(X - \mu)^T \Sigma^{-1} (X - \mu) \leq 1."//NL1//&
-            SKC_"$$"//NL2//&
-            SKC_"where $$\mu$$ represents the specification `domainBallAvg` and $$\Sigma^{-1}$$ is the inverse of $$\Sigma$$ computed as, "//NL2//&
-            SKC_"$$"//NL1//&
-            SKC_"\Sigma = \mathrm{eye}(V) ~ \rho ~ \mathrm{eye}(V)."//NL1//&
-            SKC_"$$"//NL2//&
-            SKC_"where $$\rho$$ stands for specification `domainBallCor` and $$\mathrm{eye}(V)$$ stands &
+            SKG_"$$"//NL1//&
+            SKG_"(X - \mu)^T \Sigma^{-1} (X - \mu) \leq 1."//NL1//&
+            SKG_"$$"//NL2//&
+            SKG_"where $$\mu$$ represents the specification `domainBallAvg` and $$\Sigma^{-1}$$ is the inverse of $$\Sigma$$ computed as, "//NL2//&
+            SKG_"$$"//NL1//&
+            SKG_"\Sigma = \mathrm{eye}(V) ~ \rho ~ \mathrm{eye}(V)."//NL1//&
+            SKG_"$$"//NL2//&
+            SKG_"where $$\rho$$ stands for specification `domainBallCor` and $$\mathrm{eye}(V)$$ stands &
                 &for diagonal matrix whose diagonals are set to the specification `domainBallStd`."//NL2//&
-            SKC_"Combined with the input simulation specification `domainBallStd` it defines the objective function's hyper-ellipsoidal (or spherical) domain. &
+            SKG_"Combined with the input simulation specification `domainBallStd` it defines the objective function's hyper-ellipsoidal (or spherical) domain. &
                 &If the input simulation specification `domainBallCov` is provided by the user, then any values set &
                 &for `domainBallCor` and `domainBallStd` will be automatically ignored. The input specification `domainBallCor` &
                 &along with `domainBallStd` are especially useful when covariance matrix computation is non-trivial. &
@@ -789,28 +789,28 @@ contains
             use pm_sampling_scio, only: domainBallCov
             spec%domainBallCov%isUserSet = .false._LK ! This must be set here. It is important for the proper setting from inputFile and inputArg.
             if (spec%method%isParaDRAM .or. spec%method%isParaDISE) then
-                spec%domainBallCov%def = getMatInit([ndim, ndim], uppLowDia, 0._RKC, 0._RKC, spec%real%large**2)
+                spec%domainBallCov%def = getMatInit([ndim, ndim], uppLowDia, 0._RKG, 0._RKG, spec%real%large**2)
             elseif (spec%method%isParaNest) then
-                spec%domainBallCov%def = getMatInit([ndim, ndim], uppLowDia, 0._RKC, 0._RKC, 1._RKC)
+                spec%domainBallCov%def = getMatInit([ndim, ndim], uppLowDia, 0._RKG, 0._RKG, 1._RKG)
             end if
             call setResized(spec%domainBallCov%def, [ndim, ndim])
             call setResized(spec%domainBallCov%val, [ndim, ndim])
             spec%domainBallCov%desc = &
-            SKC_"The simulation specification `domainBallCov` is a positive-definite matrix of type `real` of the highest precision available in the ParaMonte Library &
+            SKG_"The simulation specification `domainBallCov` is a positive-definite matrix of type `real` of the highest precision available in the ParaMonte Library &
                 &of size `(ndim, ndim)` representing the Gramian matrix of the domain of the objective function, where `ndim` is the dimension of the domain, &
                 &such that all states `X(1 : ndim)` visited by the sampler would obey the following inequality:"//NL2//&
-            SKC_"$$"//NL1//&
-            SKC_"(X - \mu)^T \Sigma^{-1} (X - \mu) \leq 1."//NL1//&
-            SKC_"$$"//NL2//&
-            SKC_"where $$\mu$$ represents the specification `domainBallAvg` and $$\Sigma^{-1}$$ is the inverse of the specification `domainBallCov`."//NL2//&
-            SKC_"If the user provides this input simulation specification, any values set for the input simulation &
+            SKG_"$$"//NL1//&
+            SKG_"(X - \mu)^T \Sigma^{-1} (X - \mu) \leq 1."//NL1//&
+            SKG_"$$"//NL2//&
+            SKG_"where $$\mu$$ represents the specification `domainBallAvg` and $$\Sigma^{-1}$$ is the inverse of the specification `domainBallCov`."//NL2//&
+            SKG_"If the user provides this input simulation specification, any values set for the input simulation &
                 &specifications `domainBallCor` and `domainBallStd` will be automatically ignored. When set from inside an external &
                 &input ParaMonte specification file, any missing element of `domainBallCov` will be set to the appropriate default value. &
                 &To specify a `ndim`-dimensional spherical domain, set `domainBallCov` to the identity matrix whose diagonal elements are &
                 &radius-squared of the desired hyper-sphere (n-ball). The default value for `domainBallCov` is a `ndim`-by-`ndim` Identity matrix &
                 &for simulations (such as the ParaNest integrator) that require a finite domain and a `ndim`-by-`ndim` diagonal matrix whose diagonals &
                 &are practically set to infinity for simulations that do not require a finite domain (such as the ParaDRAM and ParaDISE MCMC samplers)."//NL2//&
-            SKC_"> **Note**: The use of `Cov` in the name of this simulation specification is theoretically incorrect as the domain &
+            SKG_"> **Note**: The use of `Cov` in the name of this simulation specification is theoretically incorrect as the domain &
                 &of the objective function is not a distribution. Even if it is considered a hyper-ellipsoidal uniform distribution &
                 &this specification would still not represent its covariance matrix because it represents the Gramian matrix. &
                 &However, the decision was made to name this specification as `Cov` because of its nice fit to the rest of &
@@ -826,23 +826,23 @@ contains
             if (spec%method%isParaDRAM .or. spec%method%isParaDISE) then
                 spec%domainBallStd%def = spec%real%large
             elseif (spec%method%isParaNest) then
-                spec%domainBallStd%def = 1._RKC
+                spec%domainBallStd%def = 1._RKG
             end if
             spec%domainBallStd%desc = &
-            SKC_"The simulation specification `domainBallStd` is a positive-valued vector of type `real` of the highest precision available &
+            SKG_"The simulation specification `domainBallStd` is a positive-valued vector of type `real` of the highest precision available &
                 &within the ParaMonte library, of size `ndim`, where `ndim` is the dimension of the domain of the objective function. &
                 &It represents the square roots of the diagonal elements of the covariance matrix of the domain of the objective function, &
                 &such that all states `X(1 : ndim)` visited by the sampler would obey the following inequality:"//NL2//&
-            SKC_"$$"//NL1//&
-            SKC_"(X - \mu)^T \Sigma^{-1} (X - \mu) \leq 1."//NL1//&
-            SKC_"$$"//NL2//&
-            SKC_"where $$\mu$$ represents the specification `domainBallAvg` and $$\Sigma^{-1}$$ is the inverse of $$\Sigma$$ computed as, "//NL2//&
-            SKC_"$$"//NL1//&
-            SKC_"\Sigma = \mathrm{eye}(V) ~ \rho ~ \mathrm{eye}(V)."//NL1//&
-            SKC_"$$"//NL2//&
-            SKC_"where $$\rho$$ stands for specification `domainBallCor` and $$\mathrm{eye}(V)$$ stands &
+            SKG_"$$"//NL1//&
+            SKG_"(X - \mu)^T \Sigma^{-1} (X - \mu) \leq 1."//NL1//&
+            SKG_"$$"//NL2//&
+            SKG_"where $$\mu$$ represents the specification `domainBallAvg` and $$\Sigma^{-1}$$ is the inverse of $$\Sigma$$ computed as, "//NL2//&
+            SKG_"$$"//NL1//&
+            SKG_"\Sigma = \mathrm{eye}(V) ~ \rho ~ \mathrm{eye}(V)."//NL1//&
+            SKG_"$$"//NL2//&
+            SKG_"where $$\rho$$ stands for specification `domainBallCor` and $$\mathrm{eye}(V)$$ stands &
                 &for diagonal matrix whose diagonals are set to the specification `domainBallStd`."//NL2//&
-            SKC_"If the covariance matrix of the ellipsoidal/spherical domain (`domainBallCov`) is missing from the input specifications &
+            SKG_"If the covariance matrix of the ellipsoidal/spherical domain (`domainBallCov`) is missing from the input specifications &
                 &to the sampler, then `domainBallStd` (along with the input specification `domainBallCor`) will be used to &
                 &construct the covariance matrix of the domain of the objective function. However, if `domainBallCov` is present &
                 &among the input specifications to the sampler, then the input values for `domainBallStd` and `domainBallCor` &
@@ -851,7 +851,7 @@ contains
                 &set all elements of `domainBallStd` to the desired radius of the hyper-spherical domain. The default value for &
                 &any missing elements of `domainBallStd` is `1` for simulations requiring a finite domain (such as the ParaNest &
                 &integrator) and `+Infinity` for simulations not requiring a finite domain (such as the ParaDRAM and ParaDISE samplers)."//NL2//&
-            SKC_"> **Note**: The use of `Std` in the name of this simulation specification is theoretically incorrect as the domain &
+            SKG_"> **Note**: The use of `Std` in the name of this simulation specification is theoretically incorrect as the domain &
                 &of the objective function is not a distribution. Even if it is considered a hyper-ellipsoidal uniform distribution, &
                 &this specification would still not represent its vector of standard deviations. &
                 &However, the decision was made to name this specification as `Std` because of its nice fit to the rest of &
@@ -867,25 +867,25 @@ contains
             if (spec%method%isParaDRAM .or. spec%method%isParaDISE) then
                 spec%domainCubeLimitLower%def = -spec%real%large
             elseif (spec%method%isParaNest) then
-                spec%domainCubeLimitLower%def = -1._RKC
+                spec%domainCubeLimitLower%def = -1._RKG
             end if
             spec%domainCubeLimitLower%desc = &
-            SKC_"The simulation specification `domainCubeLimitLower` is a vector of type `real` of the highest precision available within &
+            SKG_"The simulation specification `domainCubeLimitLower` is a vector of type `real` of the highest precision available within &
                 &the ParaMonte library, of size `ndim` where `ndim` is the number of dimensions of the domain of the target density function. &
                 &It contains the lower boundaries of the cubical domain of the objective function to be sampled. &
                 &When `domainCubeLimitLower` is specified inside an external input file supplied to the sampler, &
                 &it is also possible to assign only select values of `domainCubeLimitLower` &
                 &and leave the rest of the components to be assigned the default value. &
                 &For example, having the following inside the input file, "//NL2//&
-            SKC_"+   `domainCubeLimitLower(3:5) = -100`"//NL2//&
-            SKC_"    will only set the lower limits of the third, fourth, and fifth dimensions to `-100`, or,"//NL2//&
-            SKC_"+   `domainCubeLimitLower(1) = -100, domainCubeLimitLower(2) = -1.e6`"//NL2//&
-            SKC_"    will set the lower limit on the first dimension to `-100`, and `1.e6` on the second dimension, or,"//NL2//&
-            SKC_"+   `domainCubeLimitLower = 3*-2.5e100`"//NL2//&
-            SKC_"    will only set the lower limits on the first, second, and third dimensions to `-2.5*10^100`, while the &
+            SKG_"+   `domainCubeLimitLower(3:5) = -100`"//NL2//&
+            SKG_"    will only set the lower limits of the third, fourth, and fifth dimensions to `-100`, or,"//NL2//&
+            SKG_"+   `domainCubeLimitLower(1) = -100, domainCubeLimitLower(2) = -1.e6`"//NL2//&
+            SKG_"    will set the lower limit on the first dimension to `-100`, and `1.e6` on the second dimension, or,"//NL2//&
+            SKG_"+   `domainCubeLimitLower = 3*-2.5e100`"//NL2//&
+            SKG_"    will only set the lower limits on the first, second, and third dimensions to `-2.5*10^100`, while the &
                      &remaining lower limits for the missing dimensions will be automatically set to the default value."//NL2//&
-            SKC_"The default value for all elements of `domainCubeLimitLower` is `"//getStr(spec%domainCubeLimitLower%def)//SKC_"`."//NL1//&
-            SKC_"Beware that some ParaMonte samplers, such as ParaNest, require the user to specify the domain boundaries explicitly."
+            SKG_"The default value for all elements of `domainCubeLimitLower` is `"//getStr(spec%domainCubeLimitLower%def)//SKG_"`."//NL1//&
+            SKG_"Beware that some ParaMonte samplers, such as ParaNest, require the user to specify the domain boundaries explicitly."
             !$omp master
             call setResized(domainCubeLimitLower, ndim)
             call setNAN(domainCubeLimitLower)
@@ -897,25 +897,25 @@ contains
             if (spec%method%isParaDRAM .or. spec%method%isParaDISE) then
                 spec%domainCubeLimitUpper%def = +spec%real%large
             elseif (spec%method%isParaNest) then
-                spec%domainCubeLimitUpper%def = +1._RKC
+                spec%domainCubeLimitUpper%def = +1._RKG
             end if
             spec%domainCubeLimitUpper%desc = &
-            SKC_"The simulation specification `domainCubeLimitUpper` is a vector of type `real` of the highest precision available within &
+            SKG_"The simulation specification `domainCubeLimitUpper` is a vector of type `real` of the highest precision available within &
                 &by the ParaMonte library, of size `ndim` where `ndim` is the number of dimensions of the domain of the target density function. &
                 &It contains the upper boundaries of the cubical domain of the objective function to be sampled. &
                 &When `domainCubeLimitUpper` is specified inside an external input file supplied to the sampler, &
                 &it is also possible to assign only select values of `domainCubeLimitUpper` &
                 &and leave the rest of the components to be assigned the default value. &
                 &For example,"//NL2//&
-            SKC_"+   `domainCubeLimitUpper(3:5) = 100`"//NL2//&
-            SKC_"    will only set the upper limits of the third, fourth, and fifth dimensions to 100, or,"//NL2//&
-            SKC_"+   `domainCubeLimitUpper(1) = 100, domainCubeLimitUpper(2) = 1.e6`"//NL2//&
-            SKC_"    will set the upper limit on the first dimension to `100`, and 1.e6 on the second dimension, or,"//NL2//&
-            SKC_"+   `domainCubeLimitUpper = 3 * 2.5e100`"//NL2//&
-            SKC_"    will only set the upper limits on the first, second, and third dimensions to `2.5*10^100`, while the &
+            SKG_"+   `domainCubeLimitUpper(3:5) = 100`"//NL2//&
+            SKG_"    will only set the upper limits of the third, fourth, and fifth dimensions to 100, or,"//NL2//&
+            SKG_"+   `domainCubeLimitUpper(1) = 100, domainCubeLimitUpper(2) = 1.e6`"//NL2//&
+            SKG_"    will set the upper limit on the first dimension to `100`, and 1.e6 on the second dimension, or,"//NL2//&
+            SKG_"+   `domainCubeLimitUpper = 3 * 2.5e100`"//NL2//&
+            SKG_"    will only set the upper limits on the first, second, and third dimensions to `2.5*10^100`, while the &
                      &remaining upper limits for the missing dimensions will be automatically set to the default value."//NL2//&
-            SKC_"The default value for all elements of `domainCubeLimitUpper` is `"//getStr(spec%domainCubeLimitUpper%def)//SKC_"`."//NL1//&
-            SKC_"Beware that some ParaMonte samplers, such as ParaNest, require the user to specify the domain boundaries explicitly."
+            SKG_"The default value for all elements of `domainCubeLimitUpper` is `"//getStr(spec%domainCubeLimitUpper%def)//SKG_"`."//NL1//&
+            SKG_"Beware that some ParaMonte samplers, such as ParaNest, require the user to specify the domain boundaries explicitly."
             !$omp master
             call setResized(domainCubeLimitUpper, ndim)
             call setNAN(domainCubeLimitUpper)
@@ -927,7 +927,7 @@ contains
             spec%domainErrCount%null = -huge(0_IK)
             spec%domainErrCount%def = 10000_IK
             spec%domainErrCount%desc = &
-            SKC_"The simulation specification `domainErrCount` is a scalar of type `integer` beyond which the user will be warned &
+            SKG_"The simulation specification `domainErrCount` is a scalar of type `integer` beyond which the user will be warned &
                 &about the newly proposed points excessively falling outside the domain of the objective function. For every `domainErrCount` &
                 &consecutively-proposed new points that fall outside the domain of the objective function, the user will be warned until &
                 &`domainErrCount = domainErrCountMax`, in which case the sampler returns a fatal error and the program stops globally. &
@@ -935,7 +935,7 @@ contains
                 &When out-of-domain sampling happens frequently, it strongly indicates something fundamentally wrong in the simulation. &
                 &It is, therefore, important to closely inspect and monitor for frequent out-of-domain samplings. &
                 &This can be done by setting `domainErrCount` to an appropriate value determined by the user. &
-                &The default value for `domainErrCount` is `"//getStr(spec%domainErrCount%def)//SKC_"`."
+                &The default value for `domainErrCount` is `"//getStr(spec%domainErrCount%def)//SKG_"`."
             !$omp master
             domainErrCount = spec%domainErrCount%null
             !$omp end master
@@ -946,13 +946,13 @@ contains
             spec%domainErrCountMax%null = -huge(0_IK)
             spec%domainErrCountMax%def = 100000_IK
             spec%domainErrCountMax%desc = &
-            SKC_"The simulation specification `domainErrCountMax` is a scalar of type `integer` beyond which the program will stop globally &
+            SKG_"The simulation specification `domainErrCountMax` is a scalar of type `integer` beyond which the program will stop globally &
                 &with a fatal error message declaring that the maximum number of proposal-out-of-domain-bounds has reached. &
                 &The counter for this global-stop request is reset after a proposal is accepted as a sample from within the domain of the objective function. &
                 &When out-of-domain sampling happens frequently, it strongly indicates something fundamentally wrong in the simulation. &
                 &It is, therefore, important to closely inspect and monitor for frequent out-of-domain samplings. &
                 &This can be done by setting `domainErrCountMax` to an appropriate value determined by the user. &
-                &The default value for `domainErrCountMax` is `"//getStr(spec%domainErrCountMax%def)//SKC_"`."
+                &The default value for `domainErrCountMax` is `"//getStr(spec%domainErrCountMax%def)//SKG_"`."
             !$omp master
             domainErrCountMax = spec%domainErrCountMax%null
             !$omp end master
@@ -962,7 +962,7 @@ contains
             use pm_sampling_scio, only: inputFileHasPriority
             spec%inputFileHasPriority%def = .false._LK
             spec%inputFileHasPriority%desc = &
-            SKC_"The simulation specification `inputFileHasPriority` is a scalar of type `logical` (Boolean) of default kind. &
+            SKG_"The simulation specification `inputFileHasPriority` is a scalar of type `logical` (Boolean) of default kind. &
             &If it is set to the logical true value (e.g., `.true.`, `true` or `.t.` from within an external input file), &
             &then, the input specifications of the simulation will be read from the user-specified input specification file &
             &and the simulation specification assignments from within the programming language environment (if any are made) &
@@ -974,7 +974,7 @@ contains
             &(i.e., prioritizing the input file values to input-procedure-argument values) is available only in the Fortran &
             &interface to the ParaMonte library routines. It can be set exclusively within an external input file, and its &
             &value is ignored in non-Fortran programming language simulation environments. &
-            &The default value for `inputFileHasPriority` is `"//getStr(spec%inputFileHasPriority%def)//SKC_"`."
+            &The default value for `inputFileHasPriority` is `"//getStr(spec%inputFileHasPriority%def)//SKG_"`."
             !$omp master
             inputFileHasPriority = spec%inputFileHasPriority%def
             !$omp end master
@@ -982,38 +982,38 @@ contains
 
         outputChainFileFormat_block: block
             use pm_sampling_scio, only: outputChainFileFormat
-            spec%outputChainFileFormat%compact = SKC_"compact"
-            spec%outputChainFileFormat%verbose = SKC_"verbose"
-            spec%outputChainFileFormat%binary = SKC_"binary"
+            spec%outputChainFileFormat%compact = SKG_"compact"
+            spec%outputChainFileFormat%verbose = SKG_"verbose"
+            spec%outputChainFileFormat%binary = SKG_"binary"
             spec%outputChainFileFormat%isCompact = .false._LK
             spec%outputChainFileFormat%isVerbose = .false._LK
             spec%outputChainFileFormat%isBinary  = .false._LK
             spec%outputChainFileFormat%def = spec%outputChainFileFormat%compact
             spec%outputChainFileFormat%null = repeat(SUB, len(outputChainFileFormat, IK))
             spec%outputChainFileFormat%desc = &
-            SKC_"The simulation specification `outputChainFileFormat` is a scalar string of maximum length `"//getStr(len(outputChainFileFormat, IK))//SKC_"` characters &
+            SKG_"The simulation specification `outputChainFileFormat` is a scalar string of maximum length `"//getStr(len(outputChainFileFormat, IK))//SKG_"` characters &
                 &representing the sampler output chain file(s) format. If specified within an external input file, it must be singly or doubly quoted. &
                 &Three values are possible:"//NL2//&
-            SKC_"+   `outputChainFileFormat = 'compact'` or `outputChainFileFormat = 'ascii'`"//NL2//&
-            SKC_"    This is the ASCII (text) file format, which is human-readable but does not preserve the full accuracy of the output values. &
+            SKG_"+   `outputChainFileFormat = 'compact'` or `outputChainFileFormat = 'ascii'`"//NL2//&
+            SKG_"    This is the ASCII (text) file format, which is human-readable but does not preserve the full accuracy of the output values. &
                      &It is also a significantly slower chain file generation mode than the binary file format (see below). &
                      &If the compact format is specified, each of the repeating visited states in the simulation will be condensed into a single entry (row) &
                      &in the output simulation chain file. Each entry will be then assigned a sample weight that is equal to the number of repetitions of &
                      &that state in the chain. Thus, each row in the output chain file will represent a unique sample from the objective function. &
                      &This will lead to a significantly smaller ASCII chain file and faster output size than the verbose chain file format (see below)."//NL2//&
-            SKC_"+   `outputChainFileFormat = 'verbose'`"//NL2//&
-            SKC_"    This is the ASCII (text) file format, which is human-readable but does not preserve the full accuracy of the output values. &
+            SKG_"+   `outputChainFileFormat = 'verbose'`"//NL2//&
+            SKG_"    This is the ASCII (text) file format, which is human-readable but does not preserve the full accuracy of the output values. &
                      &It is also a significantly slower chain file generation mode compared to compact and binary chain file formats (see above and below). &
                      &If the verbose format is specified, all visited states will have equal sampling weights of `1` in the output simulation chain file. &
                      &The verbose format can lead to much larger chain file sizes than the compact and binary file formats. &
                      &This is especially true if the target objective function has a high-dimensional domain."//NL2//&
-            SKC_"+   `outputChainFileFormat = '"//spec%outputChainFileFormat%binary//SKC_"'`"//NL2//&
-            SKC_"    This is the binary file format, which is not human-readable but preserves the exact values in the output chain file. &
+            SKG_"+   `outputChainFileFormat = '"//spec%outputChainFileFormat%binary//SKG_"'`"//NL2//&
+            SKG_"    This is the binary file format, which is not human-readable but preserves the exact values in the output chain file. &
                      &It is also often the fastest mode of chain file generation. If the binary file format is chosen, the chain will be &
                      &automatically output in the compact format (but as binary) to ensure the production of the smallest possible output chain file. &
-                     &Binary chain files will have the "//filext%binary//SKC_" file extensions. Use the binary format if you need full accuracy &
+                     &Binary chain files will have the "//filext%binary//SKG_" file extensions. Use the binary format if you need full accuracy &
                      &representation of the output values while having the smallest-size output chain file in the shortest time possible."//NL2//&
-            SKC_"The default value for `outputChainFileFormat` is `'"//spec%outputChainFileFormat%def//SKC_"'`, which provides a reasonable trade-off &
+            SKG_"The default value for `outputChainFileFormat` is `'"//spec%outputChainFileFormat%def//SKG_"'`, which provides a reasonable trade-off &
                 &between speed and output file size for the specified simulation task. The input values are case-INsensitive."
             !$omp master
             outputChainFileFormat = spec%outputChainFileFormat%null
@@ -1025,12 +1025,12 @@ contains
             spec%outputColumnWidth%null = -huge(0)
             spec%outputColumnWidth%def = 0_IK
             spec%outputColumnWidth%desc = &
-            SKC_"The simulation specification `outputColumnWidth` is a non-negative scalar of type `integer` that &
+            SKG_"The simulation specification `outputColumnWidth` is a non-negative scalar of type `integer` that &
                 &determines the width of the data columns in the formatted tabular files outputted by the sampler. &
                 &If it is set to zero, the sampler will ensure that the width of each output element is &
                 &the minimum possible value without losing the requested output precision. In other words, &
                 &setting `outputColumnWidth = 0` will result in the smallest size for the formatted output files in ASCII format. &
-                &The default value for `outputColumnWidth` is `"//getStr(spec%outputColumnWidth%def)//SKC_"`."
+                &The default value for `outputColumnWidth` is `"//getStr(spec%outputColumnWidth%def)//SKG_"`."
             !$omp master
             outputColumnWidth = spec%outputColumnWidth%null
             !$omp end master
@@ -1038,14 +1038,14 @@ contains
 
         outputFileName_block: block
             use pm_sampling_scio, only: outputFileName
-            character(8,SKC):: date
-            character(10,SKC):: time
+            character(8,SKG):: date
+            character(10,SKG):: time
             call date_and_time(date,time)
-            spec%outputFileName%def = method//SKC_"_"//date//SKC_"_"//time(1:6)//SKC_"_"//time(8:10)
+            spec%outputFileName%def = method//SKG_"_"//date//SKG_"_"//time(1:6)//SKG_"_"//time(8:10)
             ! Set the default outputFileName to the same on all parallel images.
 #if         CAF_ENABLED
             block
-                character(63,SKC), save :: co_outputFileNameDef[*]
+                character(63,SKG), save :: co_outputFileNameDef[*]
                 if (this_image() == 1) then
                     co_outputFileNameDef = spec%outputFileName%def
                     sync images(*)
@@ -1079,11 +1079,11 @@ contains
 #endif
             spec%outputFileName%null = repeat(SUB, len(outputFileName, IK))
             spec%outputFileName%desc = &
-            SKC_"The simulation specification `outputFileName` is a scalar string of maximum length `"//getStr(len(outputFileName, IK))//SKC_"` &
+            SKG_"The simulation specification `outputFileName` is a scalar string of maximum length `"//getStr(len(outputFileName, IK))//SKG_"` &
                 &containing the path and the base of the filename for the sampler output files. If not provided by the user, &
                 &the default `outputFileName` is constructed from the current date and time:"//NL2//&
-            SKC_"    sampler_yyyymmdd_hhmmss_mmm"//NL2//&
-            SKC_"where `sampler` is replaced with the name of the ParaMonte sampler invoked, and `yyyy`, `mm`, `dd`, `hh`, `mm`, `ss`, &
+            SKG_"    sampler_yyyymmdd_hhmmss_mmm"//NL2//&
+            SKG_"where `sampler` is replaced with the name of the ParaMonte sampler invoked, and `yyyy`, `mm`, `dd`, `hh`, `mm`, `ss`, &
                 &and `mmm` are replaced with the current year, month, day, hour, minute, second, and millisecond. &
                 &In such a case, the output files' default directory will be the sampler's current working directory. &
                 &If `outputFileName` is provided but ends with a separator character '/' or '\' (as in Unix or Windows OS), &
@@ -1092,10 +1092,10 @@ contains
                 &The specified directory will be automatically created if it does not exist already. &
                 &Note that the specified path is left-adjusted and right-padded, erasing all trailing whitespace characters. &
                 &The value of `outputFileName` is always automatically suffixed with `_run<i>_pid<j>_<type>.<ext>` where "//NL2//&
-            SKC_"+   `<ext>` is replaced with an appropriate file extension, typically `.txt` or `.bin`, depending on the type of the file contents,"//NL2//&
-            SKC_"+   `<type>` is replaced with the simulation file type (e.g., `chain`, `report`, `sample`, `restart`, etc),"//NL2//&
-            SKC_"+   `<j>` is replaced with the process (image/thread) ID (PID) that generates the current simulation file,"//NL2//&
-            SKC_"+   `<i>` is replaced with the simulation run number which depends on the existence of previous simulation files &
+            SKG_"+   `<ext>` is replaced with an appropriate file extension, typically `.txt` or `.bin`, depending on the type of the file contents,"//NL2//&
+            SKG_"+   `<type>` is replaced with the simulation file type (e.g., `chain`, `report`, `sample`, `restart`, etc),"//NL2//&
+            SKG_"+   `<j>` is replaced with the process (image/thread) ID (PID) that generates the current simulation file,"//NL2//&
+            SKG_"+   `<i>` is replaced with the simulation run number which depends on the existence of previous simulation files &
                      &with the same file name prefix and the specified value for the simulation specification `outputStatus`."
             !$omp master
             outputFileName = spec%outputFileName%null
@@ -1107,7 +1107,7 @@ contains
             spec%outputPrecision%def = nint(modelr%precision * 1.2, IK)
             spec%outputPrecision%null = -huge(0_IK)
             spec%outputPrecision%desc = &
-            SKC_"The simulation specification `outputPrecision` is a scalar of type `integer` representing the precision &
+            SKG_"The simulation specification `outputPrecision` is a scalar of type `integer` representing the precision &
                 &(i.e., the number of significant digits) of the real and complex numbers in the output simulation files. &
                 &Any positive integer is acceptable as the input value of `outputPrecision`. However, any digits of the &
                 &output real numbers beyond the actual accuracy of floating-point numbers (e.g., ~16 digits of significance for 64-bit `real`) &
@@ -1115,7 +1115,7 @@ contains
                 &(or to larger values) if full reproducibility of the simulation is needed in the future. However, keep in mind that higher &
                 &precisions result in larger output files. This variable is ignored for binary output (if any occurs during the simulation). &
                 &The binary output files preserve the full precision of numbers. &
-                &The default value for `outputPrecision` depends on the `real` precision, e.g., `"//getStr(spec%outputPrecision%def)//SKC_"`."
+                &The default value for `outputPrecision` depends on the `real` precision, e.g., `"//getStr(spec%outputPrecision%def)//SKG_"`."
             !$omp master
             outputPrecision = spec%outputPrecision%null
             !$omp end master
@@ -1126,9 +1126,9 @@ contains
             spec%outputReportPeriod%null = -huge(0_IK)
             spec%outputReportPeriod%def = 1000_IK
             spec%outputReportPeriod%desc = &
-            SKC_"The simulation specification `outputReportPeriod` is a positive-valued scalar of type `integer`. &
+            SKG_"The simulation specification `outputReportPeriod` is a positive-valued scalar of type `integer`. &
                 &Every `outputReportPeriod` calls to the objective function, sampling progress will be reported to the progress file. &
-                &The default value for `outputReportPeriod` is `"//getStr(spec%outputReportPeriod%def)//SKC_"`."
+                &The default value for `outputReportPeriod` is `"//getStr(spec%outputReportPeriod%def)//SKG_"`."
             !$omp master
             outputReportPeriod = spec%outputReportPeriod%null
             !$omp end master
@@ -1136,28 +1136,28 @@ contains
 
         outputRestartFileFormat_block: block
             use pm_sampling_scio, only: outputRestartFileFormat
-            spec%outputRestartFileFormat%binary = SKC_"binary"
-            spec%outputRestartFileFormat%ascii = SKC_"ascii"
+            spec%outputRestartFileFormat%binary = SKG_"binary"
+            spec%outputRestartFileFormat%ascii = SKG_"ascii"
             spec%outputRestartFileFormat%isBinary = .false._LK
             spec%outputRestartFileFormat%isAscii = .false._LK
             spec%outputRestartFileFormat%def = spec%outputRestartFileFormat%binary
             spec%outputRestartFileFormat%null = repeat(SUB, len(outputRestartFileFormat, IK))
             spec%outputRestartFileFormat%desc = &
-            SKC_"The simulation specification `outputRestartFileFormat` is a scalar string of maximum length `"//getStr(len(outputRestartFileFormat, IK))//SKC_"` &
+            SKG_"The simulation specification `outputRestartFileFormat` is a scalar string of maximum length `"//getStr(len(outputRestartFileFormat, IK))//SKG_"` &
                 &representing the output restart file(s) format used to restart an interrupted simulation. &
                 &Two values are possible:"//NL2//&
-            SKC_"+   `outputRestartFileFormat = '"//spec%outputRestartFileFormat%binary//SKC_"'`"//NL2//&
-            SKC_"    This is the binary file format which is not human-readable but preserves the exact values of the &
+            SKG_"+   `outputRestartFileFormat = '"//spec%outputRestartFileFormat%binary//SKG_"'`"//NL2//&
+            SKG_"    This is the binary file format which is not human-readable but preserves the exact values of the &
                      &specification variables required for the simulation restart. This full accuracy representation is required &
                      &to exactly reproduce an interrupted simulation. The binary format is also normally the fastest mode of restart file &
-                     &generation. Binary restart files will have the `"//filext%binary//SKC_"` file extensions."//NL2//&
-            SKC_"+   `outputRestartFileFormat = '"//spec%outputRestartFileFormat%ascii//SKC_"'`"//NL2//&
-            SKC_"    This is the ASCII (text) file format, which is human-readable but does not preserve the full accuracy of &
+                     &generation. Binary restart files will have the `"//filext%binary//SKG_"` file extensions."//NL2//&
+            SKG_"+   `outputRestartFileFormat = '"//spec%outputRestartFileFormat%ascii//SKG_"'`"//NL2//&
+            SKG_"    This is the ASCII (text) file format, which is human-readable but does not preserve the full accuracy of &
                      &the specification variables required for the simulation restart. It is also a significantly slower mode of &
                      &restart file generation, compared to the binary format. Therefore, its usage should be limited to situations where &
                      &the user wants to track the dynamics of simulation specifications throughout the simulation time. &
-                     &ASCII restart file(s) will have the `"//filext%ascii//SKC_"` file extensions."//NL2//&
-            SKC_"The default value for `outputRestartFileFormat` is `'"//spec%outputRestartFileFormat%def//SKC_"'`. &
+                     &ASCII restart file(s) will have the `"//filext%ascii//SKG_"` file extensions."//NL2//&
+            SKG_"The default value for `outputRestartFileFormat` is `'"//spec%outputRestartFileFormat%def//SKG_"'`. &
                 &Note that the input values are case-INsensitive."
             !$omp master
             outputRestartFileFormat = spec%outputRestartFileFormat%null
@@ -1169,26 +1169,26 @@ contains
             spec%outputSampleSize%null = -huge(0_IK)
             spec%outputSampleSize%def  = -1_IK
             spec%outputSampleSize%desc = &
-            SKC_"The simulation specification `outputSampleSize` is a non-zero scalar of type `integer` whose value dictates the number of &
+            SKG_"The simulation specification `outputSampleSize` is a non-zero scalar of type `integer` whose value dictates the number of &
                 &(hopefully, independent and identically distributed [i.i.d.]) samples to be drawn from the user-provided objective function. &
                 &Three ranges of values are possible. If"//NL2//&
-            SKC_"+   `outputSampleSize < 0`,"//NL2//&
-            SKC_"    then, the absolute value of `outputSampleSize` dictates the sample size in units of the effective sample size. &
+            SKG_"+   `outputSampleSize < 0`,"//NL2//&
+            SKG_"    then, the absolute value of `outputSampleSize` dictates the sample size in units of the effective sample size. &
                      &The effective sample is, by definition, i.i.d., free from duplicates and residual autocorrelation. The &
                      &effective sample size is automatically determined by the sampler toward the end of the simulation. &
                      &For example:"//NL2//&
-            SKC_"    +   `outputSampleSize = -1` yields the effective i.i.d. sample drawn from the objective function."//NL2//&
-            SKC_"    +   `outputSampleSize = -2` yields a (potentially non-i.i.d.) sample twice as big as the effective sample."//NL2//&
-            SKC_"+   `outputSampleSize > 0`,"//NL2//&
-            SKC_"    then, the sample size is assumed to be in units of the number of points to be sampled. &
+            SKG_"    +   `outputSampleSize = -1` yields the effective i.i.d. sample drawn from the objective function."//NL2//&
+            SKG_"    +   `outputSampleSize = -2` yields a (potentially non-i.i.d.) sample twice as big as the effective sample."//NL2//&
+            SKG_"+   `outputSampleSize > 0`,"//NL2//&
+            SKG_"    then, the sample size is assumed to be in units of the number of points to be sampled. &
                      &If outputSampleSize turns out to be less than effectiveSampleSize, the resulting sample will be i.i.d.. &
                      &If outputSampleSize turns out to be larger than effectiveSampleSize, the resulting sample will be &
                      &potentially non-i.i.d.. The larger this difference, the more non-i.i.d. the resulting &
                      &final refined sample will be. For example:"//NL2//&
-            SKC_"    +  `outputSampleSize = 1000` yields a `1000`-points sample from the objective function."//NL2//&
-           !SKC_"    outputSampleSize = 0,"//NL2//&
-           !SKC_"            then, no sample file will be generated."//NL2//&
-            SKC_"The default value for `outputSampleSize` is `"//getStr(spec%outputSampleSize%def)//SKC_"`."
+            SKG_"    +  `outputSampleSize = 1000` yields a `1000`-points sample from the objective function."//NL2//&
+           !SKG_"    outputSampleSize = 0,"//NL2//&
+           !SKG_"            then, no sample file will be generated."//NL2//&
+            SKG_"The default value for `outputSampleSize` is `"//getStr(spec%outputSampleSize%def)//SKG_"`."
             !$omp master
             outputSampleSize = spec%outputSampleSize%null
             !$omp end master
@@ -1197,17 +1197,17 @@ contains
         outputSeparator_block: block
             use pm_sampling_scio, only: outputSeparator
             spec%outputSeparator%null = repeat(SUB, len(outputSeparator, IK))
-            spec%outputSeparator%def = SKC_","
+            spec%outputSeparator%def = SKG_","
             spec%outputSeparator%desc = &
-            SKC_"The simulation specification `outputSeparator` is a scalar string of maximum length `"//getStr(len(outputSeparator, IK))//SKC_"` &
+            SKG_"The simulation specification `outputSeparator` is a scalar string of maximum length `"//getStr(len(outputSeparator, IK))//SKG_"` &
                 &containing a sequence of one or more allowed characters used to separate fields within records of tabular contents &
                 &in the simulation output files. Digits, the period symbol `'.'`, and the addition and subtraction operators: `'+'` and `'-'`) are not allowed. &
                 &To output in Comma-Separated-Values (CSV) format, set `outputSeparator = ','`. If the input value is not provided, &
-                &the default separator `'"//spec%outputSeparator%def//SKC_"'` will be used when input `outputColumnWidth = 0`, and a single &
-                &space character, '"//spec%outputSeparator%def//SKC_"' will be used when input `outputColumnWidth > 0`. &
+                &the default separator `'"//spec%outputSeparator%def//SKG_"'` will be used when input `outputColumnWidth = 0`, and a single &
+                &space character, '"//spec%outputSeparator%def//SKG_"' will be used when input `outputColumnWidth > 0`. &
                 &A value of `'\t'` is interpreted as the TAB character. To avoid this interpretation, &
                 &use '\\\t' to yield '\t' without being interpreted as the TAB character. &
-                &The default value for `outputSeparator` is `'"//spec%outputSeparator%def//SKC_"'`."
+                &The default value for `outputSeparator` is `'"//spec%outputSeparator%def//SKG_"'`."
             !$omp master
             outputSeparator = spec%outputSeparator%null
             !$omp end master
@@ -1222,21 +1222,21 @@ contains
                 spec%outputSplashMode%def = spec%outputSplashMode%quiet
             end if
             spec%outputSplashMode%desc = &
-            SKC_"The simulation specification `outputSplashMode` is a scalar string of maximum length `"//getStr(len(spec%outputSplashMode%null, IK))//SKC_"` &
+            SKG_"The simulation specification `outputSplashMode` is a scalar string of maximum length `"//getStr(len(spec%outputSplashMode%null, IK))//SKG_"` &
                 &representing the level of information output on screen while running or postprocessing the simulation. &
                 &Three values are possible:"//NL2//&
-            SKC_"+   `outputSplashMode = '"//spec%outputSplashMode%normal//SKC_"'`"//NL2//&
-            SKC_"    Under this option, the simulation splash and progress bar will be shown on screen in addition to all post-processing details. &
+            SKG_"+   `outputSplashMode = '"//spec%outputSplashMode%normal//SKG_"'`"//NL2//&
+            SKG_"    Under this option, the simulation splash and progress bar will be shown on screen in addition to all post-processing details. &
                      &This is the default behavior in compiled language environments (e.g., C, C++, Fortran, ...)."//NL2//&
-            SKC_"+   `outputSplashMode = '"//spec%outputSplashMode%quiet//SKC_"'`"//NL2//&
-            SKC_"    Under this option, the splash screen will be hidden from the standard output but other information will be displayed as usual. &
+            SKG_"+   `outputSplashMode = '"//spec%outputSplashMode%quiet//SKG_"'`"//NL2//&
+            SKG_"    Under this option, the splash screen will be hidden from the standard output but other information will be displayed as usual. &
                      &This is the default behavior in dynamic language environments (e.g., MATLAB, Python, R, ...)."//NL2//&
-            SKC_"+   `outputSplashMode = '"//spec%outputSplashMode%silent//SKC_"'`"//NL2//&
-            SKC_"    Under this option, no information about the simulation will be shown on screen. &
+            SKG_"+   `outputSplashMode = '"//spec%outputSplashMode%silent//SKG_"'`"//NL2//&
+            SKG_"    Under this option, no information about the simulation will be shown on screen. &
                      &Use this option if the simulations are expected to be short and straightforward &
                      &or if the amount of text allowed for display in standard output is limited. &
                      &This situation happens, for example, in online code coverage and CI platforms."//NL2//&
-            SKC_"The default value for `outputSplashMode` is `'normal'` in compiled programming language environments &
+            SKG_"The default value for `outputSplashMode` is `'normal'` in compiled programming language environments &
                 &and `'quiet'` in dynamic programming language environments. Note that the input values are case-INsensitive."
             !$omp master
             outputSplashMode = spec%outputSplashMode%null
@@ -1248,15 +1248,15 @@ contains
             spec%outputStatus%is%extend = .false._LK
             spec%outputStatus%is%repeat = .false._LK
             spec%outputStatus%is%retry = .false._LK
-            spec%outputStatus%def = SKC_"extend"
+            spec%outputStatus%def = SKG_"extend"
             spec%outputStatus%null = repeat(SUB, len(outputStatus, IK))
             spec%outputStatus%desc = &
-            SKC_"The simulation specification `outputStatus` is a scalar string with a maximum length of `"//getStr(len(outputStatus, IK))//SKC_"` characters, &
+            SKG_"The simulation specification `outputStatus` is a scalar string with a maximum length of `"//getStr(len(outputStatus, IK))//SKG_"` characters, &
                 &whose value describes the protocol for dealing with and handling the simulation output files concerning potentially existing past simulations. &
                 &The string value must be enclosed by single or double quotation marks when provided as input in an external input file. &
                 &Three values are possible:"//NL2//&
-            SKC_"+   `outputStatus = 'extend'`"//NL2//&
-            SKC_"    This is the default behavior where the sampler will search for any prior simulation output files &
+            SKG_"+   `outputStatus = 'extend'`"//NL2//&
+            SKG_"    This is the default behavior where the sampler will search for any prior simulation output files &
                      &with the same user-specified file name prefix in the working directory to restart the simulation. &
                      &If an old interrupted set of simulation output files exists in the working directory, &
                      &the sampler will attempt to restart the simulation from the last recorded simulation state. &
@@ -1269,27 +1269,27 @@ contains
                      &A new simulation will start if the sampler does not find any prior simulations with the same output file names. &
                      &This default behavior allows seamless restart functionality while ensuring old potentially valuable computationally &
                      &expensive simulations are not inadvertently erased and replaced by the new simulation output files."//NL2//&
-            SKC_"+   `outputStatus = 'repeat'`"//NL2//&
-            SKC_"    This option is nearly identical to 'extend' except that the new simulation specifications &
+            SKG_"+   `outputStatus = 'repeat'`"//NL2//&
+            SKG_"    This option is nearly identical to 'extend' except that the new simulation specifications &
                      &are not initialized from the specifications of the last successful simulation run (if any exist). &
                      &Instead, a new set of simulation files will be generated as if the last simulation run is replicated. &
                      &If the simulation configuration has not changed since the last successful simulation run, then the new simulation &
                      &output sample, chain, and restart files will be identical to those of the last successful simulation. &
                      &This outputting is primarily useful for cross-platform or cross-compiler testing and development."//NL2//&
-            SKC_"+   `outputStatus = 'retry'`"//NL2//&
-            SKC_"    This option is nearly identical to 'repeat' except that the new simulation starts afresh and overwrites &
+            SKG_"+   `outputStatus = 'retry'`"//NL2//&
+            SKG_"    This option is nearly identical to 'repeat' except that the new simulation starts afresh and overwrites &
                      &any potentially existing output files from the most recent simulation with the same names without ever using them. &
                      &There is no restart functionality with this option. The most recent simulation files are deleted regardless of &
                      &completion status. This option is effectively equivalent to deleting the set of output files from the last simulation &
                      &run and rerunning the simulation with the default value 'extend' for the specification `outputStatus`. &
                      &Use this option for quick tests or small exploratory problems where lots of quick runs must be performed."//NL2//&
-            SKC_"The default value for `outputStatus` is `'"//spec%outputStatus%def//SKC_"'`. The input values are case-INsensitive."
+            SKG_"The default value for `outputStatus` is `'"//spec%outputStatus%def//SKG_"'`. The input values are case-INsensitive."
             !$omp master
             outputStatus = spec%outputStatus%null
             !$omp end master
         end block outputStatus_block
-            !SKC_"    outputStatus = 'copy-extend'"//NL2//&
-            !SKC_"            This option is nearly identical to the default behavior 'extend' except for the fact that the most &
+            !SKG_"    outputStatus = 'copy-extend'"//NL2//&
+            !SKG_"            This option is nearly identical to the default behavior 'extend' except for the fact that the most &
             !                &recent existing simulation output are copied into the new simulation file before starting the new simulation. &
             !                &If no simulation exists, the sampler will start a new simulation as in the default behavior 'extend'. &
             !                &If the most recent existing simulation is incomplete, the sampler will &
@@ -1307,8 +1307,8 @@ contains
             !                &Beware that the repeated copy-extension of a simulation will lead to increasingly larger simulation output files, &
             !                &because each new simulation copies the entire past efforts into the new simulation files. &
             !                &This option has been added upon request by the GitHub user: https://github.com/Peku995"//NL2//&
-            !SKC_"    outputStatus = 'copy-retry'"//NL2//&
-            !SKC_"            This option is nearly identical to 'copy-extend' except for the fact that the most recent files are first &
+            !SKG_"    outputStatus = 'copy-retry'"//NL2//&
+            !SKG_"            This option is nearly identical to 'copy-extend' except for the fact that the most recent files are first &
             !                &deleted and the new simulation starts as if 'copy-extend' has been specified as the value of `outputStatus`."//NL2//&
 
         parallelism_block: block
@@ -1320,22 +1320,22 @@ contains
             spec%parallelism%def = spec%parallelism%singleChain
             spec%parallelism%null = repeat(SUB, len(parallelism, IK))
             spec%parallelism%desc = &
-            SKC_"The simulation specification `parallelism` is a scalar string of maximum length `"//getStr(len(spec%parallelism%null, IK))//SKC_"` &
+            SKG_"The simulation specification `parallelism` is a scalar string of maximum length `"//getStr(len(spec%parallelism%null, IK))//SKG_"` &
                 &that represents the parallelization method to be used in the simulation. &
                 &The string value must be enclosed by single or double quotation marks when provided in an external input file. &
                 &Two options are currently supported:"//NL2//&
-            SKC_"+   `parallelism = '"//spec%parallelism%multiChain//SKC_"'`"//NL2//&
-            SKC_"    This method uses the Perfect Parallelism scheme, in which multiple MCMC chains are generated &
+            SKG_"+   `parallelism = '"//spec%parallelism%multiChain//SKG_"'`"//NL2//&
+            SKG_"    This method uses the Perfect Parallelism scheme, in which multiple MCMC chains are generated &
                      &independently of each other. In this case, multiple output MCMC chain files will also be generated. &
                      &The Perfect parallelism option is available only in Coarray/MPI-enabled parallel simulations (not in OpenMP or other shared-memory). &
                      &However, it can be readily emulated by running multiple independent simulations concurrently in any programming environment."//NL2//&
-            SKC_"+   `parallelism = '"//spec%parallelism%singleChain//SKC_"'`"//NL2//&
-            SKC_"    This method uses the fork-style parallelization scheme. In this case, a single MCMC chain file will be generated. &
+            SKG_"+   `parallelism = '"//spec%parallelism%singleChain//SKG_"'`"//NL2//&
+            SKG_"    This method uses the fork-style parallelization scheme. In this case, a single MCMC chain file will be generated. &
                      &At each MCMC step, multiple proposal steps will be checked in parallel until one proposal is accepted. &
                      &This is the default for all parallelism paradigms supported by the ParaMonte library and the only option for shared memory parallelism."//NL2//&
-            SKC_"Note that in serial mode, there is no parallelism. Therefore, this option does not affect non-parallel simulations and ignores its value. &
+            SKG_"Note that in serial mode, there is no parallelism. Therefore, this option does not affect non-parallel simulations and ignores its value. &
                 &The serial mode is equivalent to either of the parallelism methods with only one simulation image (processor, core, or thread). &
-                &The default value for `parallelism` is `'"//spec%parallelism%def//SKC_"'`. &
+                &The default value for `parallelism` is `'"//spec%parallelism%def//SKG_"'`. &
                 &Note that the input values are case-INsensitive and whitespace characters are ignored."
             !$omp master
             parallelism = spec%parallelism%null
@@ -1346,7 +1346,7 @@ contains
             use pm_sampling_scio, only: parallelismMpiFinalizeEnabled
             spec%parallelismMpiFinalizeEnabled%def = .true._LK
             spec%parallelismMpiFinalizeEnabled%desc = &
-            SKC_"The simulation specification `parallelismMpiFinalizeEnabled` is a scalar of type `logical` (Boolean). &
+            SKG_"The simulation specification `parallelismMpiFinalizeEnabled` is a scalar of type `logical` (Boolean). &
                 &In MPI parallel simulations, if `parallelismMpiFinalizeEnabled` is set to the logical/Boolean true value, &
                 &then a call will be made to the `MPI_Finalize()` routine from inside the ParaMonte routine at the end of the &
                 &simulation to finalize the MPI communications. Set this variable to the logical/Boolean if you do not want the &
@@ -1358,7 +1358,7 @@ contains
                 &If you intend the ParaMonte samplers or other MPI-enabled ParaMonte routines repeatedly in one run, &
                 &then you will have to `parallelismMpiFinalizeEnabled` to the logical `false` value to prevent early finalization of the MPI-library. &
                 &Note that in non-MPI-enabled simulations, such as serial and Coarray-enabled simulations, &
-                &the value of this variable is completely ignored. The default value for `parallelismMpiFinalizeEnabled` is `"//getStr(spec%parallelismMpiFinalizeEnabled%def)//SKC_"`."
+                &the value of this variable is completely ignored. The default value for `parallelismMpiFinalizeEnabled` is `"//getStr(spec%parallelismMpiFinalizeEnabled%def)//SKG_"`."
             !$omp master
             parallelismMpiFinalizeEnabled = spec%parallelismMpiFinalizeEnabled%def
             !$omp end master
@@ -1369,7 +1369,7 @@ contains
             spec%parallelismNumThread%null = -huge(spec%parallelismNumThread%null)
             spec%parallelismNumThread%def = 0_IK
             spec%parallelismNumThread%desc = &
-            SKC_"The simulation specification `parallelismNumThread` is a non-negative scalar of type `integer` of kind 32-bit, &
+            SKG_"The simulation specification `parallelismNumThread` is a non-negative scalar of type `integer` of kind 32-bit, &
                 &representing the number of parallel user-specified objective function evaluations in a Fork-Join shared-memory parallelism. &
                 &Such parallelism paradigms include OpenMP-enabled shared-memory parallel simulations in C, C++, and Fortran or shared-memory &
                 &simulations in higher-level programming language environments such as MATLAB, Python, and R. &
@@ -1388,8 +1388,8 @@ contains
         !    spec%plang%null = repeat(SUB, len(plang, IK))
         !    spec%plang%def = envname
         !    spec%plang%desc = &
-        !    SKC_"The simulation specification `plang` is a scalar string of maximum length `"//getStr(spec%plang%null)//&
-        !    SKC_"`. It is an internal ParaMonte variable used to provide information about other languages interface with the ParaMonte routines."
+        !    SKG_"The simulation specification `plang` is a scalar string of maximum length `"//getStr(spec%plang%null)//&
+        !    SKG_"`. It is an internal ParaMonte variable used to provide information about other languages interface with the ParaMonte routines."
         !    !$omp master
         !    plang = spec%plang%null
         !    !$omp end master
@@ -1399,7 +1399,7 @@ contains
             use pm_sampling_scio, only: randomSeed
             spec%randomSeed%null = -huge(0_IK)
             spec%randomSeed%desc = &
-            SKC_"The simulation specification `randomSeed` is a positive scalar of type `integer` of kind 32-bit &
+            SKG_"The simulation specification `randomSeed` is a positive scalar of type `integer` of kind 32-bit &
                 &whose value serves as the seed of the random number generator. When specified by the user, &
                 &the seed of the simulation random number generator will be set in a specific deterministic manner to enable future &
                 &replications of the simulation with the same configuration and input specifications. The default for `randomSeed` &
@@ -1414,9 +1414,9 @@ contains
         sysInfoFilePath_block: block
             use pm_dateTime, only: getDateTime
             use pm_sampling_scio, only: sysInfoFilePath
-            character(8,SKC) :: date
+            character(8,SKG) :: date
             call date_and_time(date)
-            spec%sysInfoFilePath%def = SKC_".sysinfo."//getDateTime(format = SKC_"%Y%m")//SKC_".cache"
+            spec%sysInfoFilePath%def = SKG_".sysinfo."//getDateTime(format = SKG_"%Y%m")//SKG_".cache"
             spec%sysInfoFilePath%null = repeat(SUB, len(sysInfoFilePath, IK))
             !$omp master
             sysInfoFilePath = spec%sysInfoFilePath%null
@@ -1426,9 +1426,9 @@ contains
         targetAcceptanceRate_block: block
             use pm_sampling_scio, only: targetAcceptanceRate
             spec%targetAcceptanceRate%enabled = .false._LK
-            spec%targetAcceptanceRate%def = [0._RKC, 1._RKC]
+            spec%targetAcceptanceRate%def = [0._RKG, 1._RKG]
             spec%targetAcceptanceRate%desc = &
-            SKC_"The simulation specification `targetAcceptanceRate` is a vector of type `real` of size `2` of the highest precision &
+            SKG_"The simulation specification `targetAcceptanceRate` is a vector of type `real` of size `2` of the highest precision &
                 &available within the ParaMonte library whose values (in the range `[0, 1]`) determine the optimal target range for the &
                 &simulation efficiency, defined as the ratio of the number of accepted objective function calls to the total number of &
                 &function calls made through the simulation. The first and the second elements of `targetAcceptanceRate` determine the &
@@ -1439,9 +1439,9 @@ contains
                 &range `[0, 1]`. In such a case, the sampler will constantly attempt (albeit with no guarantee of success) to bring the average &
                 &acceptance ratio of the sampler as close to the user-provided target ratio as possible. Specifically, the success of the adaptive &
                 &MCMC samplers (e.g., ParaDRAM) in keeping the average acceptance ratio close to the requested target value depends heavily on:"//NL2//&
-            SKC_"+   the specified value of `proposalAdaptationPeriod`; the larger, the easier."//NL1//&
-            SKC_"+   the specified value of `proposalAdaptationCount`; the larger, the easier."//NL2//&
-            SKC_"Note that the acceptance ratio adjustments will only occur in every `proposalAdaptationPeriod` &
+            SKG_"+   the specified value of `proposalAdaptationPeriod`; the larger, the easier."//NL1//&
+            SKG_"+   the specified value of `proposalAdaptationCount`; the larger, the easier."//NL2//&
+            SKG_"Note that the acceptance ratio adjustments will only occur in every `proposalAdaptationPeriod` &
                 &sampling step for a total number of `proposalAdaptationCount` in adaptive MCMC samplings. &
                 &The default value for `targetAcceptanceRate` is the range `[0, 1]`."
             !$omp master
@@ -1469,13 +1469,13 @@ contains
         integer(IK), parameter :: PROGRESS_BAR_WIDTH = 85_IK
 
         err%occurred = .false._LK
-        err%msg = SKC_""
+        err%msg = SKG_""
 
         ! Setup the splash screen.
 
         if (spec%image%is%first) then
             ! These messages are to be displayed only if outputSplashMode is set to normal.
-            spec%msg = SKC_"Setting up the "//envname//SKC_" environment for a "//spec%method%val//SKC_" simulation..."
+            spec%msg = SKG_"Setting up the "//envname//SKG_" environment for a "//spec%method%val//SKG_" simulation..."
             if (allocated(sampler%inputFile)) then
                 block
                     logical :: exist; integer :: iostat; exist = .false.
@@ -1487,16 +1487,16 @@ contains
                         exist = exist .and. iostat == 0
                     end if
                     if (exist) then
-                        spec%msg = spec%msg//NL2//SKC_"The user-specified input file for "//spec%method%val//SKC_" specifications detected."//NL1& ! LCOV_EXCL_LINE
-                        //SKC_"All "//spec%method%val//SKC_" simulation specifications will be read from:"//NL1//SKC_""""//sampler%inputFile//SKC_""""
+                        spec%msg = spec%msg//NL2//SKG_"The user-specified input file for "//spec%method%val//SKG_" specifications detected."//NL1& ! LCOV_EXCL_LINE
+                        //SKG_"All "//spec%method%val//SKG_" simulation specifications will be read from:"//NL1//SKG_""""//sampler%inputFile//SKG_""""
                     else
-                        spec%msg = spec%msg//NL2//SKC_"The user-specified internal input file for "//spec%method%val//SKC_" specifications detected."//NL1& ! LCOV_EXCL_LINE
-                        //SKC_"All "//spec%method%val//SKC_" simulation specifications will be read from the specified internal namelist file..."
+                        spec%msg = spec%msg//NL2//SKG_"The user-specified internal input file for "//spec%method%val//SKG_" specifications detected."//NL1& ! LCOV_EXCL_LINE
+                        //SKG_"All "//spec%method%val//SKG_" simulation specifications will be read from the specified internal namelist file..."
                     end if
                 end block
             else
-                spec%msg = spec%msg//NL2//SKC_"No user-specified input file for the "//spec%method%val//SKC_" simulation specifications detected."//NL1& ! LCOV_EXCL_LINE
-                //SKC_"The sampler will use the default simulation settings where needed."
+                spec%msg = spec%msg//NL2//SKG_"No user-specified input file for the "//spec%method%val//SKG_" simulation specifications detected."//NL1& ! LCOV_EXCL_LINE
+                //SKG_"The sampler will use the default simulation settings where needed."
             end if
         end if
 
@@ -1544,7 +1544,7 @@ contains
                 spec%domain%val = getStrLower(trim(adjustl(domain)))
             end if
             if (spec%domain%val == spec%domain%null) spec%domain%val = spec%domain%def
-            spec%domain%isBall = spec%domain%val == spec%domain%ball .or. spec%domain%val == SKC_"ball"
+            spec%domain%isBall = spec%domain%val == spec%domain%ball .or. spec%domain%val == SKG_"ball"
             spec%domain%isCube = spec%domain%val == spec%domain%cube
         end block domain_block
 
@@ -1564,7 +1564,7 @@ contains
         domainBallAvg_block: block
             use pm_sampling_scio, only: domainBallAvg
             if (spec%overridable .and. allocated(sampler%domainBallAvg)) then
-                spec%domainBallAvg%val = real(sampler%domainBallAvg, RKC)
+                spec%domainBallAvg%val = real(sampler%domainBallAvg, RKG)
             else
                 spec%domainBallAvg%val = domainBallAvg
             end if
@@ -1577,7 +1577,7 @@ contains
             use pm_sampling_scio, only: domainBallCor
             integer(IK) :: idim, jdim
             if (spec%overridable .and. allocated(sampler%domainBallCor)) then
-                spec%domainBallCor%val = real(sampler%domainBallCor, RKC)
+                spec%domainBallCor%val = real(sampler%domainBallCor, RKG)
             else
                 spec%domainBallCor%val = domainBallCor
             end if
@@ -1596,7 +1596,7 @@ contains
             use pm_sampling_scio, only: domainBallCov
             integer(IK) :: idim, jdim
             if (spec%overridable .and. allocated(sampler%domainBallCov)) then
-                spec%domainBallCov%val = real(sampler%domainBallCov, RKC)
+                spec%domainBallCov%val = real(sampler%domainBallCov, RKG)
             else
                 spec%domainBallCov%val = domainBallCov
             end if
@@ -1616,7 +1616,7 @@ contains
             use pm_sampling_scio, only: domainBallStd
             integer(IK) :: idim
             if (spec%overridable .and. allocated(sampler%domainBallStd)) then
-                spec%domainBallStd%val = real(sampler%domainBallStd, RKC)
+                spec%domainBallStd%val = real(sampler%domainBallStd, RKG)
             else
                 spec%domainBallStd%val = domainBallStd
             end if
@@ -1633,7 +1633,7 @@ contains
             use pm_sampling_scio, only: domainCubeLimitLower
             integer(IK) :: idim
             if (spec%overridable .and. allocated(sampler%domainCubeLimitLower)) then
-                spec%domainCubeLimitLower%val = real(sampler%domainCubeLimitLower, RKC)
+                spec%domainCubeLimitLower%val = real(sampler%domainCubeLimitLower, RKG)
             else
                 spec%domainCubeLimitLower%val = domainCubeLimitLower
             end if
@@ -1650,7 +1650,7 @@ contains
             use pm_sampling_scio, only: domainCubeLimitUpper
             integer(IK) :: idim
             if (spec%overridable .and. allocated(sampler%domainCubeLimitUpper)) then
-                spec%domainCubeLimitUpper%val = real(sampler%domainCubeLimitUpper, RKC)
+                spec%domainCubeLimitUpper%val = real(sampler%domainCubeLimitUpper, RKG)
             else
                 spec%domainCubeLimitUpper%val = domainCubeLimitUpper
             end if
@@ -1696,7 +1696,7 @@ contains
 
         outputChainFileFormat_block: block
             use pm_sampling_scio, only: outputChainFileFormat
-            character(:,SKC), allocatable :: lowerCaseVal
+            character(:,SKG), allocatable :: lowerCaseVal
             if (spec%overridable .and. allocated(sampler%outputChainFileFormat)) then
                 spec%outputChainFileFormat%val = trim(adjustl(sampler%outputChainFileFormat))
             else
@@ -1704,7 +1704,7 @@ contains
             end if
             if (spec%outputChainFileFormat%val == trim(adjustl(spec%outputChainFileFormat%null))) spec%outputChainFileFormat%val = trim(adjustl(spec%outputChainFileFormat%def))
             lowerCaseVal = getStrLower(spec%outputChainFileFormat%val)
-            spec%outputChainFileFormat%iscompact = lowerCaseVal == getStrLower(spec%outputChainFileFormat%compact) .or. lowerCaseVal == getStrLower(SKC_"ascii")
+            spec%outputChainFileFormat%iscompact = lowerCaseVal == getStrLower(spec%outputChainFileFormat%compact) .or. lowerCaseVal == getStrLower(SKG_"ascii")
             spec%outputChainFileFormat%isverbose = lowerCaseVal == getStrLower(spec%outputChainFileFormat%verbose)
             spec%outputChainFileFormat%isBinary  = lowerCaseVal == getStrLower(spec%outputChainFileFormat%binary)
         end block outputChainFileFormat_block
@@ -1732,17 +1732,17 @@ contains
 
         outputStatus_block: block
             use pm_sampling_scio, only: outputStatus
-            character(:,SKC), allocatable :: lowerCaseVal
+            character(:,SKG), allocatable :: lowerCaseVal
             if (spec%overridable .and. allocated(sampler%outputStatus)) then
                 spec%outputStatus%val = trim(adjustl(sampler%outputStatus))
             else
                 spec%outputStatus%val = trim(adjustl(outputStatus))
             end if
             if (spec%outputStatus%val == trim(adjustl(spec%outputStatus%null))) spec%outputStatus%val = trim(adjustl(spec%outputStatus%def))
-            lowerCaseVal = getRemoved(getRemoved(getStrLower(spec%outputStatus%val), SKC_" "), SKC_"-")
-            spec%outputStatus%is%extend = index(lowerCaseVal, SKC_"extend") /= 0
-            spec%outputStatus%is%repeat = index(lowerCaseVal, SKC_"repeat") /= 0
-            spec%outputStatus%is%retry = index(lowerCaseVal, SKC_"retry") /= 0
+            lowerCaseVal = getRemoved(getRemoved(getStrLower(spec%outputStatus%val), SKG_" "), SKG_"-")
+            spec%outputStatus%is%extend = index(lowerCaseVal, SKG_"extend") /= 0
+            spec%outputStatus%is%repeat = index(lowerCaseVal, SKG_"repeat") /= 0
+            spec%outputStatus%is%retry = index(lowerCaseVal, SKG_"retry") /= 0
         end block outputStatus_block
 
         outputPrecision_block: block
@@ -1768,7 +1768,7 @@ contains
 
         outputRestartFileFormat_block: block
             use pm_sampling_scio, only: outputRestartFileFormat
-            character(:,SKC), allocatable :: lowerCaseVal
+            character(:,SKG), allocatable :: lowerCaseVal
             if (spec%overridable .and. allocated(sampler%outputRestartFileFormat)) then
                 spec%outputRestartFileFormat%val = trim(adjustl(sampler%outputRestartFileFormat))
             else
@@ -1805,20 +1805,20 @@ contains
                 !if (outputColumnWidth == 0_IK) then
                 !    spec%outputSeparator%val = spec%outputSeparator%def
                 !else
-                !    spec%outputSeparator%val = SKC_" "
+                !    spec%outputSeparator%val = SKG_" "
                 !end if
-            elseif (spec%outputSeparator%val == SKC_"") then
-                spec%outputSeparator%val = SKC_" "
-            elseif (spec%outputSeparator%val == SKC_"\t") then
+            elseif (spec%outputSeparator%val == SKG_"") then
+                spec%outputSeparator%val = SKG_" "
+            elseif (spec%outputSeparator%val == SKG_"\t") then
                 spec%outputSeparator%val = HT
-            elseif (spec%outputSeparator%val == SKC_"\\t") then
-                spec%outputSeparator%val = SKC_"\t"
+            elseif (spec%outputSeparator%val == SKG_"\\t") then
+                spec%outputSeparator%val = SKG_"\t"
             end if
         end block outputSeparator_block
 
         outputSplashMode_block: block
             use pm_sampling_scio, only: outputSplashMode
-            character(:,SKC), allocatable :: lowerCaseVal
+            character(:,SKG), allocatable :: lowerCaseVal
             if (spec%overridable .and. allocated(sampler%outputSplashMode)) then
                 spec%outputSplashMode%val = trim(adjustl(sampler%outputSplashMode))
             else
@@ -1837,13 +1837,13 @@ contains
 
         parallelism_block: block
             use pm_sampling_scio, only: parallelism
-            character(:,SKC), allocatable :: lowerCaseVal
+            character(:,SKG), allocatable :: lowerCaseVal
             if (spec%overridable .and. allocated(sampler%parallelism)) then
                 spec%parallelism%val = sampler%parallelism
             else
                 spec%parallelism%val = parallelism
             end if
-            spec%parallelism%val = trim(adjustl(getRemoved(spec%parallelism%val, SKC_" ")))
+            spec%parallelism%val = trim(adjustl(getRemoved(spec%parallelism%val, SKG_" ")))
             if (spec%parallelism%val == trim(adjustl(spec%parallelism%null))) spec%parallelism%val = trim(adjustl(spec%parallelism%def))
             lowerCaseVal = getStrLower(spec%parallelism%val)
 #if         CAF_ENABLED || MPI_ENABLED
@@ -1965,7 +1965,7 @@ contains
             use pm_sampling_scio, only: targetAcceptanceRate
             logical(LK) :: lowerUpperSet(2)
             if (spec%overridable .and. allocated(sampler%targetAcceptanceRate)) then
-                spec%targetAcceptanceRate%val = real(sampler%targetAcceptanceRate, RKC)
+                spec%targetAcceptanceRate%val = real(sampler%targetAcceptanceRate, RKG)
             else
                 spec%targetAcceptanceRate%val = targetAcceptanceRate
             end if
@@ -1975,11 +1975,11 @@ contains
             if (.not.(lowerUpperSet(1) .or. lowerUpperSet(2))) spec%targetAcceptanceRate%val(:) = spec%targetAcceptanceRate%def
             spec%targetAcceptanceRate%enabled = logical(any(spec%targetAcceptanceRate%val /= spec%targetAcceptanceRate%def), LK)
             if (spec%targetAcceptanceRate%enabled) then
-                spec%targetAcceptanceRate%aim = sum(spec%targetAcceptanceRate%val) / 2._RKC
+                spec%targetAcceptanceRate%aim = sum(spec%targetAcceptanceRate%val) / 2._RKG
             elseif (spec%method%isParaDISE .or. spec%method%isParaDRAM) then
-                spec%targetAcceptanceRate%aim = .234_RKC
+                spec%targetAcceptanceRate%aim = .234_RKG
             elseif (spec%method%isParaNest) then
-                spec%targetAcceptanceRate%aim = .2_RKC
+                spec%targetAcceptanceRate%aim = .2_RKG
             else
                 error stop "This cannot happen." ! LCOV_EXCL_LINE
             end if
@@ -1992,7 +1992,7 @@ contains
             if (.not. spec%domainBallCov%isUserSet) spec%domainBallCov%val = getCov(spec%domainBallCor%val, uppDia, spec%domainBallStd%val)
         end block
 
-        if (spec%outputColumnWidth%val /= 0_IK) spec%outputSeparator%val = SKC_" "
+        if (spec%outputColumnWidth%val /= 0_IK) spec%outputSeparator%val = SKG_" "
 
         ! Setup the parallel images info.
 
@@ -2002,17 +2002,17 @@ contains
         ! Set the auxiliary dependent variables.
 
         spec%outputColumnWidth%max      = getStr(max(spec%outputPrecision%val, spec%outputColumnWidth%val, maxval(len_trim(spec%domainAxisName%val, IK))) + getCountDigit(spec%real%minexponent) + 6)
-        spec%reportFile%format%allreal  = SKC_"('"//spec%reportFile%indent//SKC_"',*("//spec%real%ed//spec%outputColumnWidth%max//SKC_"."//spec%outputPrecision%str//spec%real%ex//SKC_",:,' '))"
-        spec%reportFile%format%intreal  = SKC_"('"//spec%reportFile%indent//SKC_"',1I"//spec%outputColumnWidth%max//SKC_",' ',*("//spec%real%ed//spec%outputColumnWidth%max//SKC_"."//spec%outputPrecision%str//spec%real%ex//SKC_",:,' '))"
-        spec%reportFile%format%strreal  = SKC_"('"//spec%reportFile%indent//SKC_"',1A"//spec%outputColumnWidth%max//SKC_",' ',*("//spec%real%ed//spec%outputColumnWidth%max//SKC_"."//spec%outputPrecision%str//spec%real%ex//SKC_",:,' '))"
-        spec%reportFile%format%fixform  = SKC_"('"//spec%reportFile%indent//SKC_"',*(g"//spec%outputColumnWidth%max//SKC_"."//spec%outputPrecision%str//spec%real%ex//SKC_",:,' '))"
-        spec%reportFile%format%integer  = SKC_"('"//spec%reportFile%indent//SKC_"',*(I"//spec%outputColumnWidth%max//SKC_",:,' '))"
-        spec%reportFile%format%generic  = SKC_"('"//spec%reportFile%indent//SKC_"',*(g0,:,' '))"
+        spec%reportFile%format%allreal  = SKG_"('"//spec%reportFile%indent//SKG_"',*("//spec%real%ed//spec%outputColumnWidth%max//SKG_"."//spec%outputPrecision%str//spec%real%ex//SKG_",:,' '))"
+        spec%reportFile%format%intreal  = SKG_"('"//spec%reportFile%indent//SKG_"',1I"//spec%outputColumnWidth%max//SKG_",' ',*("//spec%real%ed//spec%outputColumnWidth%max//SKG_"."//spec%outputPrecision%str//spec%real%ex//SKG_",:,' '))"
+        spec%reportFile%format%strreal  = SKG_"('"//spec%reportFile%indent//SKG_"',1A"//spec%outputColumnWidth%max//SKG_",' ',*("//spec%real%ed//spec%outputColumnWidth%max//SKG_"."//spec%outputPrecision%str//spec%real%ex//SKG_",:,' '))"
+        spec%reportFile%format%fixform  = SKG_"('"//spec%reportFile%indent//SKG_"',*(g"//spec%outputColumnWidth%max//SKG_"."//spec%outputPrecision%str//spec%real%ex//SKG_",:,' '))"
+        spec%reportFile%format%integer  = SKG_"('"//spec%reportFile%indent//SKG_"',*(I"//spec%outputColumnWidth%max//SKG_",:,' '))"
+        spec%reportFile%format%generic  = SKG_"('"//spec%reportFile%indent//SKG_"',*(g0,:,' '))"
 
-        spec%restartFile%format         = SKC_"(*(g0,:,'"//NL1//SKC_"'))"
-        spec%progressFile%format%header = SKC_"(*(g"//spec%outputColumnWidth%str//SKC_"."//spec%outputPrecision%str//spec%real%ex//SKC_",:,'"//spec%outputSeparator%val//SKC_"'))"
-        spec%progressFile%format%rows   = spec%progressFile%format%header!SKC_"(2I"//spec%outputColumnWidth%str//SKC_"*("//spec%real%ed//spec%outputColumnWidth%str//SKC_"."//spec%outputPrecision%str//spec%real%ex//SKC_",:,'"//spec%outputSeparator%val//SKC_"'))"
-        spec%sampleFile%format%header   = SKC_"(*(g"//spec%outputColumnWidth%str//SKC_"."//spec%outputPrecision%str//spec%real%ex//SKC_",:,'"//spec%outputSeparator%val//SKC_"'))"
+        spec%restartFile%format         = SKG_"(*(g0,:,'"//NL1//SKG_"'))"
+        spec%progressFile%format%header = SKG_"(*(g"//spec%outputColumnWidth%str//SKG_"."//spec%outputPrecision%str//spec%real%ex//SKG_",:,'"//spec%outputSeparator%val//SKG_"'))"
+        spec%progressFile%format%rows   = spec%progressFile%format%header!SKG_"(2I"//spec%outputColumnWidth%str//SKG_"*("//spec%real%ed//spec%outputColumnWidth%str//SKG_"."//spec%outputPrecision%str//spec%real%ex//SKG_",:,'"//spec%outputSeparator%val//SKG_"'))"
+        spec%sampleFile%format%header   = SKG_"(*(g"//spec%outputColumnWidth%str//SKG_"."//spec%outputPrecision%str//spec%real%ex//SKG_",:,'"//spec%outputSeparator%val//SKG_"'))"
         spec%chainFile%format%header    = spec%sampleFile%format%header
 
         ! open output files, report and sanitize.
@@ -2030,25 +2030,25 @@ contains
 
         if (0_IK < spec%outputColumnWidth%val) then
             associate(colWidth => spec%outputColumnWidth%str, precision => spec%outputPrecision%str, sep => spec%outputSeparator%val)
-                spec%sampleFile%format%rows = SKC_"("//getStr(1 + spec%ndim%val)//SKC_"("//spec%real%ed//colWidth//SKC_"."//precision//spec%real%ex//SKC_",:,'"//sep//SKC_"'))"
+                spec%sampleFile%format%rows = SKG_"("//getStr(1 + spec%ndim%val)//SKG_"("//spec%real%ed//colWidth//SKG_"."//precision//spec%real%ex//SKG_",:,'"//sep//SKG_"'))"
                 if (spec%method%isParaDISE .or. spec%method%isParaDRAM) then
-                    spec%chainFile%format%rows =    SKC_"("// &
-                                                    SKC_"2(I"//colWidth//SKC_",'"//sep//SKC_"')"// &
-                                                    SKC_","// &
-                                                    SKC_"2("//spec%real%ed//colWidth//SKC_"."//precision//spec%real%ex//SKC_",'"//sep//SKC_"')"// &
-                                                    SKC_","// &
-                                                    SKC_"2(I"//colWidth//SKC_",'"//sep//SKC_"')"// &
-                                                    SKC_","// &
+                    spec%chainFile%format%rows =    SKG_"("// &
+                                                    SKG_"2(I"//colWidth//SKG_",'"//sep//SKG_"')"// &
+                                                    SKG_","// &
+                                                    SKG_"2("//spec%real%ed//colWidth//SKG_"."//precision//spec%real%ex//SKG_",'"//sep//SKG_"')"// &
+                                                    SKG_","// &
+                                                    SKG_"2(I"//colWidth//SKG_",'"//sep//SKG_"')"// &
+                                                    SKG_","// &
                                                     spec%sampleFile%format%rows// &
-                                                    SKC_")"
+                                                    SKG_")"
                 elseif (spec%method%isParaNest) then
-                    spec%chainFile%format%rows =    SKC_"("// &
-                                                    SKC_"1(I"//colWidth//SKC_",'"//sep//SKC_"')"// &
-                                                    SKC_","// &
+                    spec%chainFile%format%rows =    SKG_"("// &
+                                                    SKG_"1(I"//colWidth//SKG_",'"//sep//SKG_"')"// &
+                                                    SKG_","// &
                                                     getStr(spec%ndim%val + 5_IK)//spec%sampleFile%format%rows// &
-                                                    !SKC_","// &
-                                                    !SKC_"1(A1"//colWidth//SKC_",'"//sep//SKC_"')"// & ! what is this? apparently, a commented-out linefeed.
-                                                    SKC_")"
+                                                    !SKG_","// &
+                                                    !SKG_"1(A1"//colWidth//SKG_",'"//sep//SKG_"')"// & ! what is this? apparently, a commented-out linefeed.
+                                                    SKG_")"
                 else
                     error stop getStr(__FILE__)//SK_"@"//getFine(__FILE__, __LINE__)//SK_": Internal library error occurred. This serious error must be reported to the developers." ! LCOV_EXCL_LINE
                 end if
@@ -2091,10 +2091,10 @@ contains
 
         type(err_type), intent(inout) :: err
         class(specbase_type), intent(inout) :: spec
-        character(*,SKC), parameter :: PROCEDURE_NAME = MODULE_NAME//SKC_"@openFiles()"
-        character(*,SKC), parameter :: PARALLELIZATION_MODE_SKC = PARALLELIZATION_MODE
-        character(:,SKC), allocatable :: strtemp
-        character(LEN_IOMSG,SKC) :: errmsg
+        character(*,SKG), parameter :: PROCEDURE_NAME = MODULE_NAME//SKG_"@openFiles()"
+        character(*,SKG), parameter :: PARALLELIZATION_MODE_SKG = PARALLELIZATION_MODE
+        character(:,SKG), allocatable :: strtemp
+        character(LEN_IOMSG,SKG) :: errmsg
         integer(IK) :: iostat, iell
         logical(LK) :: endsWithDirSep
         logical(LK) :: failed
@@ -2104,45 +2104,45 @@ contains
         errmsg = repeat(" ", len(errmsg))
         spec%outputFileName%sep = getDirSep(failed, errmsg)
         if (failed) then
-            err%msg = err%msg//PROCEDURE_NAME//getFine(__FILE__, __LINE__)//SKC_": Failed to infer directory separator: "//trim(adjustl(errmsg))//NL2 ! LCOV_EXCL_LINE
+            err%msg = err%msg//PROCEDURE_NAME//getFine(__FILE__, __LINE__)//SKG_": Failed to infer directory separator: "//trim(adjustl(errmsg))//NL2 ! LCOV_EXCL_LINE
             return ! LCOV_EXCL_LINE
         end if
 
         spec%outputFileName%seps = getDirSeps(failed, errmsg)
         if (failed) then
-            err%msg = err%msg//PROCEDURE_NAME//getFine(__FILE__, __LINE__)//SKC_": Failed to infer directory separator: "//trim(adjustl(errmsg))//NL2 ! LCOV_EXCL_LINE
+            err%msg = err%msg//PROCEDURE_NAME//getFine(__FILE__, __LINE__)//SKG_": Failed to infer directory separator: "//trim(adjustl(errmsg))//NL2 ! LCOV_EXCL_LINE
             return ! LCOV_EXCL_LINE
         end if
 
         if (spec%outputFileName%val == spec%outputFileName%def) then
-            spec%msg =  SKC_"No user-specified `outputFileName` for "//spec%method%val//SKC_" output files detected."//NL1//&
-                        SKC_"Generating appropriate filenames for "//spec%method%val//SKC_" output files from the current date and time..."//NL2
+            spec%msg =  SKG_"No user-specified `outputFileName` for "//spec%method%val//SKG_" output files detected."//NL1//&
+                        SKG_"Generating appropriate filenames for "//spec%method%val//SKG_" output files from the current date and time..."//NL2
                         spec%outputFileName%base = getBaseName(spec%outputFileName%val, spec%outputFileName%seps, verbatim)
         else
-            spec%msg =  SKC_"Variable `outputFileName` detected among the user-supplied specifications of the "//spec%method%val//SKC_" sampler:"//NL1//SKC_""""//spec%outputFileName%val//SKC_""""//NL2
+            spec%msg =  SKG_"Variable `outputFileName` detected among the user-supplied specifications of the "//spec%method%val//SKG_" sampler:"//NL1//SKG_""""//spec%outputFileName%val//SKG_""""//NL2
         end if
 
         ! get the current working directory, just FYI.
 
         strtemp = getDirCurrent(failed)
-        spec%msg = spec%msg//SKC_"Path to the current working directory:"//NL1//SKC_""""//strtemp//SKC_""""//NL2
+        spec%msg = spec%msg//SKG_"Path to the current working directory:"//NL1//SKG_""""//strtemp//SKG_""""//NL2
 
         ! For some reason, getPathAbs() (which relies on Intel specialized routine, returns a path with newline character at the end in OpenMP-parallel mode.
         spec%outputFileName%dir = getPathAbs(getDirName(spec%outputFileName%val, spec%outputFileName%seps, verbatim), failed, errmsg)
         if (failed) then
-            err%msg = err%msg//PROCEDURE_NAME//getFine(__FILE__, __LINE__)//SKC_": Error occurred while inferring the directory name from the specified `outputFileName`. "//trim(adjustl(errmsg))//NL2 ! LCOV_EXCL_LINE
+            err%msg = err%msg//PROCEDURE_NAME//getFine(__FILE__, __LINE__)//SKG_": Error occurred while inferring the directory name from the specified `outputFileName`. "//trim(adjustl(errmsg))//NL2 ! LCOV_EXCL_LINE
             return ! LCOV_EXCL_LINE
         end if
         if (len_trim(adjustl(spec%outputFileName%dir)) == 0_IK) then
             spec%outputFileName%dir = trim(adjustl(strtemp))!//spec%outputFileName%sep
-            spec%msg = spec%msg//SKC_"All output files will be written to the current working directory:"//NL1//SKC_""""//spec%outputFileName%dir//SKC_""""//NL2
+            spec%msg = spec%msg//SKG_"All output files will be written to the current working directory:"//NL1//SKG_""""//spec%outputFileName%dir//SKG_""""//NL2
         else
-            spec%msg = spec%msg//SKC_"Generating the requested directory for the "//spec%method%val//SKC_" simulation output files:"//NL1//SKC_""""//spec%outputFileName%dir//SKC_""""//NL2
+            spec%msg = spec%msg//SKG_"Generating the requested directory for the "//spec%method%val//SKG_" simulation output files:"//NL1//SKG_""""//spec%outputFileName%dir//SKG_""""//NL2
         end if
 
         endsWithDirSep = any(isEndedWith(css_type(spec%outputFileName%val), css_type([(spec%outputFileName%seps(iell : iell), iell = 1, len(spec%outputFileName%seps))])))
-        if (endsWithDirSep) spec%msg = spec%msg//SKC_"The specified `outputFileName` does not contain a filename prefix for "//spec%method%val//SKC_" output files."//NL1//&
-        SKC_"Generating appropriate filenames for "//spec%method%val//SKC_" output files from the current date and time..."//NL2
+        if (endsWithDirSep) spec%msg = spec%msg//SKG_"The specified `outputFileName` does not contain a filename prefix for "//spec%method%val//SKG_" output files."//NL1//&
+        SKG_"Generating appropriate filenames for "//spec%method%val//SKG_" output files from the current date and time..."//NL2
         if (endsWithDirSep .or. spec%outputFileName%val == spec%outputFileName%def) then
             spec%outputFileName%base = spec%outputFileName%def
         else
@@ -2154,7 +2154,7 @@ contains
         spec%outputFileName%full = spec%outputFileName%dir
         endsWithDirSep = any(isEndedWith(css_type(spec%outputFileName%full), css_type([(spec%outputFileName%seps(iell : iell), iell = 1, len(spec%outputFileName%seps))])))
         if (.not. endsWithDirSep) spec%outputFileName%full = spec%outputFileName%full//spec%outputFileName%sep
-        spec%outputFileName%full = spec%outputFileName%full//spec%outputFileName%base//SKC_"_run"
+        spec%outputFileName%full = spec%outputFileName%full//spec%outputFileName%base//SKG_"_run"
 
         ! Generate the output files directory.
 
@@ -2170,7 +2170,7 @@ contains
 
         if (failed) then
             if (spec%image%is%first .and. .not. spec%outputSplashMode%is%silent) call spec%disp%note%show(spec%msg)
-            err%msg = err%msg//PROCEDURE_NAME//getFine(__FILE__, __LINE__)//SKC_": Error occurred while making directory '"//spec%outputFileName%dir//SKC_"'."//NL1//trim(errmsg)//NL2
+            err%msg = err%msg//PROCEDURE_NAME//getFine(__FILE__, __LINE__)//SKG_": Error occurred while making directory '"//spec%outputFileName%dir//SKG_"'."//NL1//trim(errmsg)//NL2
             err%occurred = .true._LK ! LCOV_EXCL_LINE
             return ! LCOV_EXCL_LINE
         end if
@@ -2179,17 +2179,17 @@ contains
         ! Only leader images: Generate the output filenames, search for pre-existing runs, and open the report file.
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        spec%chainFile      %openArg_type = openArg_type(status = SKC_"replace")
-        spec%sampleFile     %openArg_type = openArg_type(status = SKC_"replace")
-        spec%reportFile     %openArg_type = openArg_type(status = SKC_"replace")
-        spec%restartFile    %openArg_type = openArg_type(status = SKC_"replace")
-        spec%progressFile   %openArg_type = openArg_type(status = SKC_"replace")
+        spec%chainFile      %openArg_type = openArg_type(status = SKG_"replace")
+        spec%sampleFile     %openArg_type = openArg_type(status = SKG_"replace")
+        spec%reportFile     %openArg_type = openArg_type(status = SKG_"replace")
+        spec%restartFile    %openArg_type = openArg_type(status = SKG_"replace")
+        spec%progressFile   %openArg_type = openArg_type(status = SKG_"replace")
 
-        spec%chainFile      %kind = SKC_"chain"
-        spec%sampleFile     %kind = SKC_"sample"
-        spec%reportFile     %kind = SKC_"report"
-        spec%restartFile    %kind = SKC_"restart"
-        spec%progressFile   %kind = SKC_"progress"
+        spec%chainFile      %kind = SKG_"chain"
+        spec%sampleFile     %kind = SKG_"sample"
+        spec%reportFile     %kind = SKG_"report"
+        spec%restartFile    %kind = SKG_"restart"
+        spec%progressFile   %kind = SKG_"progress"
 
         spec%chainFile      %ext = filext%ascii
         spec%sampleFile     %ext = filext%ascii
@@ -2200,20 +2200,20 @@ contains
         ! Reset the file extensions as necessary.
 
         if (spec%outputChainFileFormat%isBinary) then
-            spec%chainFile%form = SKC_"unformatted"
-            spec%chainFile%access = SKC_"stream"
+            spec%chainFile%form = SKG_"unformatted"
+            spec%chainFile%access = SKG_"stream"
             spec%chainFile%ext = filext%binary
         end if
 
         if (spec%outputRestartFileFormat%isBinary) then
-            spec%restartFile%form = SKC_"unformatted"
-            spec%restartFile%access = SKC_"stream"
+            spec%restartFile%form = SKG_"unformatted"
+            spec%restartFile%access = SKG_"stream"
             spec%restartFile%ext = filext%binary
         end if
 
         ! Define the file full suffix.
 
-        strtemp = SKC_"_pid"//getStr(merge(spec%image%id, 1_IK, spec%parallelism%is%multiChain))//SKC_"_"
+        strtemp = SKG_"_pid"//getStr(merge(spec%image%id, 1_IK, spec%parallelism%is%multiChain))//SKG_"_"
         spec%chainFile      %suffix = strtemp//spec%chainFile    %kind//spec%chainFile    %ext
         spec%sampleFile     %suffix = strtemp//spec%sampleFile   %kind//spec%sampleFile   %ext
         spec%reportFile     %suffix = strtemp//spec%reportFile   %kind//spec%reportFile   %ext
@@ -2291,7 +2291,7 @@ contains
         end do loopListFiles
 
         spec%run%is%new = .not. (spec%reportFile%extant .or. spec%progressFile%extant .or. spec%restartFile%extant .or. spec%chainFile%extant .or. spec%sampleFile%extant) ! fresh (no restart) simulation if no file exists.
-        spec%msg = spec%msg//getStr(spec%run%id - 1)//trim(merge(SKC_" count ", SKC_" counts", spec%run%id <= 2))//SKC_" of preexisting complete simulation runs with the same name prefix were detected."//NL2
+        spec%msg = spec%msg//getStr(spec%run%id - 1)//trim(merge(SKG_" count ", SKG_" counts", spec%run%id <= 2))//SKG_" of preexisting complete simulation runs with the same name prefix were detected."//NL2
 
         if (spec%outputStatus%is%retry) then
 
@@ -2302,9 +2302,9 @@ contains
             spec%outputStatus%is%retry = .false._LK
             if (spec%run%is%new) then
                 if (1_IK < spec%run%id) spec%run%id = spec%run%id - 1_IK
-                spec%msg = spec%msg//SKC_"The last complete simulation run #"//getStr(spec%run%id)//" will be overwritten as requested."//NL1
+                spec%msg = spec%msg//SKG_"The last complete simulation run #"//getStr(spec%run%id)//" will be overwritten as requested."//NL1
             else
-                spec%msg = spec%msg//SKC_"The last incomplete simulation run #"//getStr(spec%run%id)//" will be overwritten as requested."//NL1
+                spec%msg = spec%msg//SKG_"The last incomplete simulation run #"//getStr(spec%run%id)//" will be overwritten as requested."//NL1
                 spec%run%is%new = .true._LK
             end if
 
@@ -2325,7 +2325,7 @@ contains
 
         else
 
-            spec%msg = spec%msg//SKC_"Checking for simulation restart possibility..."//NL2
+            spec%msg = spec%msg//SKG_"Checking for simulation restart possibility..."//NL2
 
         end if
 
@@ -2342,38 +2342,38 @@ contains
 
         if (spec%sampleFile%extant) then
             ! compromised simulation because a file other than the output sample is missing.
-            err%msg = err%msg//PROCEDURE_NAME//getFine(__FILE__, __LINE__)//SKC_": Error occurred. All output files are essential for a successful simulation restart."//NL1//SKC_"List of missing simulation output files:"
-            if (.not. spec%chainFile    %extant) err%msg = err%msg//NL1//SKC_""""//spec%chainFile    %file//SKC_""""
-            if (.not. spec%reportFile   %extant) err%msg = err%msg//NL1//SKC_""""//spec%reportFile   %file//SKC_""""
-            if (.not. spec%restartFile  %extant) err%msg = err%msg//NL1//SKC_""""//spec%restartFile  %file//SKC_""""
-            if (.not. spec%progressFile %extant) err%msg = err%msg//NL1//SKC_""""//spec%progressFile %file//SKC_""""
+            err%msg = err%msg//PROCEDURE_NAME//getFine(__FILE__, __LINE__)//SKG_": Error occurred. All output files are essential for a successful simulation restart."//NL1//SKG_"List of missing simulation output files:"
+            if (.not. spec%chainFile    %extant) err%msg = err%msg//NL1//SKG_""""//spec%chainFile    %file//SKG_""""
+            if (.not. spec%reportFile   %extant) err%msg = err%msg//NL1//SKG_""""//spec%reportFile   %file//SKG_""""
+            if (.not. spec%restartFile  %extant) err%msg = err%msg//NL1//SKG_""""//spec%restartFile  %file//SKG_""""
+            if (.not. spec%progressFile %extant) err%msg = err%msg//NL1//SKG_""""//spec%progressFile %file//SKG_""""
             if (spec%image%is%first .and. .not. spec%outputSplashMode%is%silent) call spec%disp%note%show(spec%msg)
             err%occurred = .true._LK
             return
         elseif (spec%run%is%new) then
             if (1_IK < spec%run%id) then
-                strtemp = SKC_" from the most recent completed simulation"
+                strtemp = SKG_" from the most recent completed simulation"
             else
-                strtemp = SKC_""
+                strtemp = SKG_""
             end if
-            spec%msg = spec%msg//SKC_"Starting a fresh simulation run #"//getStr(spec%run%id)//strtemp//SKC_"..."//NL2
-            spec%chainFile      %status = SKC_"new"
-            spec%sampleFile     %status = SKC_"new"
-            spec%reportFile     %status = SKC_"new"
-            spec%restartFile    %status = SKC_"new"
-            spec%progressFile   %status = SKC_"new"
+            spec%msg = spec%msg//SKG_"Starting a fresh simulation run #"//getStr(spec%run%id)//strtemp//SKG_"..."//NL2
+            spec%chainFile      %status = SKG_"new"
+            spec%sampleFile     %status = SKG_"new"
+            spec%reportFile     %status = SKG_"new"
+            spec%restartFile    %status = SKG_"new"
+            spec%progressFile   %status = SKG_"new"
             !block
             !    use pm_paramonte, only: PARAMONTE_WEB_ISSUES
             !    if (spec%outputStatus%isCopy) error stop SK_"copy-extension facility is not yet implemented. Please report this to the ParaMonte developers at: "//PARAMONTE_WEB_ISSUES
             !end block
         else ! legible restart (dry) mode.
-            spec%msg = spec%msg//SKC_"Restarting the existing incomplete simulation run #"//getStr(spec%run%id)//NL2
-            spec%chainFile      %status = SKC_"old"
-            spec%sampleFile     %status = SKC_"new"
-            spec%reportFile     %status = SKC_"old"
-            spec%restartFile    %status = SKC_"old"
-            spec%progressFile   %status = SKC_"old"
-            spec%reportFile     %position = SKC_"append"
+            spec%msg = spec%msg//SKG_"Restarting the existing incomplete simulation run #"//getStr(spec%run%id)//NL2
+            spec%chainFile      %status = SKG_"old"
+            spec%sampleFile     %status = SKG_"new"
+            spec%reportFile     %status = SKG_"old"
+            spec%restartFile    %status = SKG_"old"
+            spec%progressFile   %status = SKG_"old"
+            spec%reportFile     %position = SKG_"append"
         end if
         spec%run%is%dry = .not. spec%run%is%new
 
@@ -2381,7 +2381,7 @@ contains
         ! print the stdout message for generating / appending the output report file(s):
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        spec%msg = spec%msg//SKC_"Running the simulation in "//PARALLELIZATION_MODE_SKC//SKC_" on "//getStr(spec%image%count)//trim(merge(SKC_" process...  ", SKC_" processes...", spec%image%count == 1_IK))//NL2
+        spec%msg = spec%msg//SKG_"Running the simulation in "//PARALLELIZATION_MODE_SKG//SKG_" on "//getStr(spec%image%count)//trim(merge(SKG_" process...  ", SKG_" processes...", spec%image%count == 1_IK))//NL2
 
         ! ensure all images sync here to avoid wrong inquire() result for the existence of the files.
 
@@ -2419,13 +2419,13 @@ contains
                     strtemp = getStripped(getSysInfo(failed), NL1)
                 end if
                 call spec%disp%show(getParaMonteSplash())
-                call spec%disp%text%wrap(NL1//SKC_"ParaMonte.library.interface.specifications"//NL1)
-                call spec%disp%show(getStrWrapped(SKC_"The "//envname//SKC_"."))
-                call spec%disp%text%wrap(NL1//SKC_"ParaMonte.library.compiler.version"//NL1)
+                call spec%disp%text%wrap(NL1//SKG_"ParaMonte.library.interface.specifications"//NL1)
+                call spec%disp%show(getStrWrapped(SKG_"The "//envname//SKG_"."))
+                call spec%disp%text%wrap(NL1//SKG_"ParaMonte.library.compiler.version"//NL1)
                 call spec%disp%show(getStrWrapped(PARAMONTE_COMPILER_VERSION))
-                call spec%disp%text%wrap(NL1//SKC_"ParaMonte.library.compiler.options"//NL1)
+                call spec%disp%text%wrap(NL1//SKG_"ParaMonte.library.compiler.options"//NL1)
                 call spec%disp%show(getStrWrapped(PARAMONTE_COMPILER_OPTIONS))
-                call spec%disp%text%wrap(NL1//SKC_"ParaMonte.runtime.platform.specifications"//NL1)
+                call spec%disp%text%wrap(NL1//SKG_"ParaMonte.runtime.platform.specifications"//NL1)
                 call spec%disp%show(getStrWrapped(strtemp))
                 call spec%disp%text%wrap(NL1//spec%method%val//".simulation.environment.setup"//NL1)
             !end if
@@ -2437,7 +2437,7 @@ contains
             call spec%openFile(spec%restartFile, err, spec%msg); if (err%occurred) return ! open/append the output restartFile.
             call spec%openFile(spec%chainFile, err, spec%msg); if (err%occurred) return ! open/append the output chainFile.
 
-            call spec%disp%note%show(spec%msg//SKC_"Done.")
+            call spec%disp%note%show(spec%msg//SKG_"Done.")
 
             ! read the header line of the time file, only by leader images
 
@@ -2470,15 +2470,15 @@ contains
         use pm_io, only: getFileUnit
         type(err_type), intent(inout) :: err
         class(specbase_type), intent(inout) :: spec
-        character(:,SKC), intent(inout), allocatable, optional :: msg
+        character(:,SKG), intent(inout), allocatable, optional :: msg
         class(samplerFile_type), intent(inout) :: samplerFile
-        character(*,SKC), parameter :: PROCEDURE_NAME = MODULE_NAME//SKC_"@openFiles()"
+        character(*,SKG), parameter :: PROCEDURE_NAME = MODULE_NAME//SKG_"@openFiles()"
         ! open/append the output files:
-        if (present(msg)) msg = msg//merge(SKC_"Generating the new output ", SKC_"Appending to the existing ", spec%run%is%new)//samplerFile%kind//SKC_" file:"//NL1
+        if (present(msg)) msg = msg//merge(SKG_"Generating the new output ", SKG_"Appending to the existing ", spec%run%is%new)//samplerFile%kind//SKG_" file:"//NL1
         ! for some unknown reason, if newunit is used, GFortran opens the file as an internal file. Therefore, do not use `newunit`.
         !samplerFile%unit = getFileUnit()
         ! The Intel ifort SHARED attribute is essential for file unlocking on Windows OS.
-        if (samplerFile%access /= SKC_"direct") then
+        if (samplerFile%access /= SKG_"direct") then
             open(newunit = samplerFile%unit, file = samplerFile%file, form = samplerFile%form, access = samplerFile%access, status = samplerFile%status, iostat = samplerFile%iostat, iomsg = samplerFile%iomsg SHARED, position = samplerFile%position)
         else
             open(newunit = samplerFile%unit, file = samplerFile%file, form = samplerFile%form, access = samplerFile%access, status = samplerFile%status, iostat = samplerFile%iostat, iomsg = samplerFile%iomsg SHARED)
@@ -2513,10 +2513,10 @@ contains
         if (samplerFile%iostat /= 0_IK) then
             ! LCOV_EXCL_START
             if (spec%image%is%first .and. same_type_as(samplerFile, spec%reportFile) .and. present(msg) .and. .not. spec%outputSplashMode%is%silent) call spec%disp%note%show(getStripped(msg, NL1, right))
-            err%msg = err%msg//PROCEDURE_NAME//getFine(__FILE__, __LINE__)//SKC_": Error occurred while opening the "//spec%method%val//SKC_" *"//samplerFile%suffix//SKC_" file="""//samplerFile%file//SKC_""". "
-            if (scan(SKC_" ", samplerFile%file) /= 0_IK) then
+            err%msg = err%msg//PROCEDURE_NAME//getFine(__FILE__, __LINE__)//SKG_": Error occurred while opening the "//spec%method%val//SKG_" *"//samplerFile%suffix//SKG_" file="""//samplerFile%file//SKG_""". "
+            if (scan(SKG_" ", samplerFile%file) /= 0_IK) then
                 err%msg = err%msg//& ! LCOV_EXCL_LINE
-                SKC_"It appears that absolute path used for the output files contains whitespace characters. This could be one potential cause of the simulation failure. &
+                SKG_"It appears that absolute path used for the output files contains whitespace characters. This could be one potential cause of the simulation failure. &
                 &The whitespace characters are often problematic in paths. Ensure the path used for the output files does not contain whitespace characters."
             end if
             err%msg = err%msg//trim(samplerFile%iomsg)
@@ -2526,16 +2526,16 @@ contains
             if (present(msg) .and. .not. spec%outputSplashMode%is%silent) call spec%disp%note%show(msg, bmsize = 0_IK)
             block
                 use pm_arrayReplace, only: getReplaced
-                character(:,SKC), allocatable :: filelist
+                character(:,SKG), allocatable :: filelist
                 integer(IK) :: imageID
-                filelist = SKC_""
+                filelist = SKG_""
                 do imageID = 1, merge(spec%image%count, 1_IK, spec%parallelism%is%multiChain)
-                    filelist = filelist//SKC_""""//getReplaced(spec%reportFile%file, spec%reportFile%suffix, replacement = getReplaced(spec%reportFile%suffix, SKC_"pid1", SKC_"pid"//getStr(imageID)))//SKC_""""//NL1
+                    filelist = filelist//SKG_""""//getReplaced(spec%reportFile%file, spec%reportFile%suffix, replacement = getReplaced(spec%reportFile%suffix, SKG_"pid1", SKG_"pid"//getStr(imageID)))//SKG_""""//NL1
                 end do
-                if (.not. spec%outputSplashMode%is%silent) call spec%disp%note%show(filelist//NL1//SKC_"Please see the output *"//spec%reportFile%suffix//SKC_" and *"//spec%progressFile%suffix//SKC_" files for further realtime simulation details...", tmsize = 0_IK, bmsize = 1_IK)
+                if (.not. spec%outputSplashMode%is%silent) call spec%disp%note%show(filelist//NL1//SKG_"Please see the output *"//spec%reportFile%suffix//SKG_" and *"//spec%progressFile%suffix//SKG_" files for further realtime simulation details...", tmsize = 0_IK, bmsize = 1_IK)
             end block
         else
-            if (present(msg)) msg = msg//SKC_""""//samplerFile%file//SKC_""""//NL2
+            if (present(msg)) msg = msg//SKG_""""//samplerFile%file//SKG_""""//NL2
         end if
     end subroutine openFile
 
@@ -2546,7 +2546,7 @@ contains
         !DEC$ ATTRIBUTES DLLEXPORT :: isFailedResizeList
 #endif
         class(specbase_type), intent(inout) :: spec
-        character(*,SKC), intent(out) :: errmsg
+        character(*,SKG), intent(out) :: errmsg
         integer(IK), intent(in) :: newsize
         logical(LK) :: failed
         call setResized(spec%chainFile      %list, newsize, failed = failed, errmsg = errmsg); if (failed) then; errmsg = MODULE_NAME//SK_"@isFailedResizeList(): "//getFine(__FILE__, __LINE__)//trim(errmsg); return; end if
@@ -2566,7 +2566,7 @@ contains
         use pm_kind, only: SK
         class(specbase_type), intent(inout) :: spec
 
-        call spec%disp%text%wrap(NL1//spec%method%val//SKC_".simulation.specifications.base"//NL1)
+        call spec%disp%text%wrap(NL1//spec%method%val//SKG_".simulation.specifications.base"//NL1)
 
         associate(ndim => spec%ndim%val, format => spec%reportFile%format%generic)
 
@@ -2746,13 +2746,13 @@ contains
         use pm_err, only: err_type
         type(err_type), intent(inout) :: err
         class(specbase_type), intent(inout) :: spec
-        character(*,SKC), parameter :: PROCEDURE_NAME = MODULE_NAME//SKC_"@sanitize()"
+        character(*,SKG), parameter :: PROCEDURE_NAME = MODULE_NAME//SKG_"@sanitize()"
 
         ndim_block: block
             if (spec%ndim%val < 1_IK) then
                 err%occurred = .true._LK
-                err%msg =   err%msg//NL2//PROCEDURE_NAME//getFine(__FILE__, __LINE__)//SKC_": Error occurred. &
-                            &The input value for the specification `ndim` ("//spec%ndim%str//SKC_") must be a positive integer. &
+                err%msg =   err%msg//NL2//PROCEDURE_NAME//getFine(__FILE__, __LINE__)//SKG_": Error occurred. &
+                            &The input value for the specification `ndim` ("//spec%ndim%str//SKG_") must be a positive integer. &
                             &The specification `ndim` represents the number of dimensions of the domain of the objective function &
                             &to be explored via the user-specified exploration routine."
             end if
@@ -2761,15 +2761,15 @@ contains
         method_block: block
             if (.not. (spec%method%isParaDRAM .or. spec%method%isParaDISE .or. spec%method%isParaNest)) then
                 err%occurred = .true._LK
-                err%msg =   err%msg//NL2//PROCEDURE_NAME//getFine(__FILE__, __LINE__)//SKC_": Internal Error occurred. &
-                            &The specified method name '"//spec%method%val//SKC_"' for the exploration routine does not match the internal list of method names."
+                err%msg =   err%msg//NL2//PROCEDURE_NAME//getFine(__FILE__, __LINE__)//SKG_": Internal Error occurred. &
+                            &The specified method name '"//spec%method%val//SKG_"' for the exploration routine does not match the internal list of method names."
             end if
         end block method_block
 
         description_block: block
             if (spec%description%val == spec%description%null) then
                 err%occurred = .true._LK
-                err%msg =   err%msg//NL2//PROCEDURE_NAME//getFine(__FILE__, __LINE__)//SKC_": Error occurred. Internal library error detected. &
+                err%msg =   err%msg//NL2//PROCEDURE_NAME//getFine(__FILE__, __LINE__)//SKG_": Error occurred. Internal library error detected. &
                             &The contents of `description` cannot be null-valued."
             end if
         end block description_block
@@ -2777,15 +2777,15 @@ contains
         domain_block: block
             if (.not. (spec%domain%isBall .or. spec%domain%isCube)) then
                 err%occurred = .true._LK
-                err%msg =   err%msg//NL2//PROCEDURE_NAME//getFine(__FILE__, __LINE__)//SKC_": Error occurred. &
+                err%msg =   err%msg//NL2//PROCEDURE_NAME//getFine(__FILE__, __LINE__)//SKG_": Error occurred. &
                             &Invalid requested value for the sampler domain. &
-                            &The input requested domain model ("//spec%domain%val//SKC_") is not supported. &
-                            &The input specification domain cannot be set to anything other than '"//spec%domain%cube//SKC_"', or '"//spec%domain%ball//SKC_"'"
+                            &The input requested domain model ("//spec%domain%val//SKG_") is not supported. &
+                            &The input specification domain cannot be set to anything other than '"//spec%domain%cube//SKG_"', or '"//spec%domain%ball//SKG_"'"
             end if
         end block domain_block
 
         domainAxisName_block: block
-            character(len(spec%domainAxisName%val, IK),SKC) :: newval(size(spec%domainAxisName%val, 1, IK))
+            character(len(spec%domainAxisName%val, IK),SKG) :: newval(size(spec%domainAxisName%val, 1, IK))
             logical(LK) :: redefined
             integer(IK) :: idim
             redefined = .false._LK
@@ -2801,10 +2801,10 @@ contains
         end block domainAxisName_block
 
         domainBallAvg_block: block
-            if (.not. all(-huge(0._RKC) < spec%domainBallAvg%val .and. spec%domainBallAvg%val < huge(0._RKC))) then
+            if (.not. all(-huge(0._RKG) < spec%domainBallAvg%val .and. spec%domainBallAvg%val < huge(0._RKG))) then
                 err%occurred = .true._LK
-                err%msg =   err%msg//NL2//PROCEDURE_NAME//getFine(__FILE__, __LINE__)//SKC_": Error occurred. &
-                            &The specified values for `domainBallAvg` must be all finite: "//getStr(spec%domainBallAvg%val)//SKC_"'"
+                err%msg =   err%msg//NL2//PROCEDURE_NAME//getFine(__FILE__, __LINE__)//SKG_": Error occurred. &
+                            &The specified values for `domainBallAvg` must be all finite: "//getStr(spec%domainBallAvg%val)//SKG_"'"
             end if
         end block domainBallAvg_block
 
@@ -2815,7 +2815,7 @@ contains
             !   If the input correlation matrix is problematic, it will eventually lead to a non-positive-definite covariance matrix.
             if (.not. isMatClass(spec%domainBallCor%val, posdefmat)) then
                 err%occurred = .true._LK ! This must be set only when .true.
-                err%msg =   err%msg//NL2//PROCEDURE_NAME//getFine(__FILE__, __LINE__)//SKC_": Error occurred. The input requested `domainBallCor` for defining the &
+                err%msg =   err%msg//NL2//PROCEDURE_NAME//getFine(__FILE__, __LINE__)//SKG_": Error occurred. The input requested `domainBallCor` for defining the &
                             &domain of the objective function passed to the sampler is not a positive-definite matrix: "//getStr(spec%domainBallCor%val)
             end if
         end block domainBallCor_block
@@ -2824,7 +2824,7 @@ contains
             use pm_matrixInv, only: setMatInv, choUpp
             use pm_matrixTrace, only: getMatMulTraceLog
             use pm_matrixChol, only: setMatChol, transHerm, lowDia
-            real(RKC), allocatable :: chol(:,:)
+            real(RKG), allocatable :: chol(:,:)
             integer(IK) :: info
             if (spec%domain%isFinite) then
                 call setResized(chol, [spec%ndim%val, spec%ndim%val])
@@ -2833,7 +2833,7 @@ contains
                 if (info /= 0_IK) then
                     err%occurred = .true._LK ! This must be set only when .true.
                     err%msg =   err%msg//&
-                                PROCEDURE_NAME//getFine(__FILE__, __LINE__)//SKC_": Error occurred. The input requested `domainBallCov` for defining the domain &
+                                PROCEDURE_NAME//getFine(__FILE__, __LINE__)//SKG_": Error occurred. The input requested `domainBallCov` for defining the domain &
                                 &of the objective function passed to the sampler is not a positive-definite matrix :"//getStr(spec%domainBallCov%val)
                 end if
                 spec%domain%logVol = getMatMulTraceLog(chol)
@@ -2844,48 +2844,48 @@ contains
         domainBallStd_block: block
             integer(IK) :: idim
             do idim = 1, size(spec%domainBallStd%val, 1, IK)
-                if (spec%domainBallStd%val(idim) <= 0._RKC) then
+                if (spec%domainBallStd%val(idim) <= 0._RKG) then
                     err%occurred = .true._LK
-                    err%msg =   err%msg//NL2//PROCEDURE_NAME//getFine(__FILE__, __LINE__)//SKC_": Error occurred. &
-                                &The input requested value ("//getStr(spec%domainBallStd%val(idim))//SKC_") for the component `"//getStr(idim)//&
-                                SKC_"` of the input specification `domainBallStd` of the simulation must be a positive real number."
+                    err%msg =   err%msg//NL2//PROCEDURE_NAME//getFine(__FILE__, __LINE__)//SKG_": Error occurred. &
+                                &The input requested value ("//getStr(spec%domainBallStd%val(idim))//SKG_") for the component `"//getStr(idim)//&
+                                SKG_"` of the input specification `domainBallStd` of the simulation must be a positive real number."
                 end if
             end do
         end block domainBallStd_block
 
         domainCubeLimitLower_block: block
             integer(IK) :: idim
-            if (.not. all(-huge(0._RKC) < spec%domainCubeLimitLower%val .and. spec%domainCubeLimitLower%val < huge(0._RKC))) then
+            if (.not. all(-huge(0._RKG) < spec%domainCubeLimitLower%val .and. spec%domainCubeLimitLower%val < huge(0._RKG))) then
                 err%occurred = .true._LK
-                err%msg = err%msg//PROCEDURE_NAME//getFine(__FILE__, __LINE__)//SKC_": Error occurred. &
-                &The specified values for `domainCubeLimitLower` must be all finite: "//getStr(spec%domainCubeLimitLower%val)//SKC_"'"
+                err%msg = err%msg//PROCEDURE_NAME//getFine(__FILE__, __LINE__)//SKG_": Error occurred. &
+                &The specified values for `domainCubeLimitLower` must be all finite: "//getStr(spec%domainCubeLimitLower%val)//SKG_"'"
             end if
             ! domainCubeLimitLower must be all less than domainCubeLimitUpper.
             do idim = 1, size(spec%domainCubeLimitUpper%val(:), 1, IK)
                 if (spec%domainCubeLimitUpper%val(idim) <= spec%domainCubeLimitLower%val(idim)) then
                     err%occurred = .true._LK
-                    err%msg =   err%msg//NL2//PROCEDURE_NAME//getFine(__FILE__, __LINE__)//SKC_": Error occurred. &
-                                &The input value for the upper limit of the component "//getStr(idim)//SKC_" of the &
+                    err%msg =   err%msg//NL2//PROCEDURE_NAME//getFine(__FILE__, __LINE__)//SKG_": Error occurred. &
+                                &The input value for the upper limit of the component "//getStr(idim)//SKG_" of the &
                                     &variable domainCubeLimitUpper cannot be smaller than or equal to the input value &
                                     &for the lower limit of the corresponding dimension as given by domainCubeLimitLower:"//NL1//&
-                                SKC_"    domainCubeLimitLower("//getStr(idim)//SKC_") = "//getStr(spec%domainCubeLimitLower%val(idim))//NL1//&
-                                SKC_"    domainCubeLimitUpper("//getStr(idim)//SKC_") = "//getStr(spec%domainCubeLimitUpper%val(idim))
+                                SKG_"    domainCubeLimitLower("//getStr(idim)//SKG_") = "//getStr(spec%domainCubeLimitLower%val(idim))//NL1//&
+                                SKG_"    domainCubeLimitUpper("//getStr(idim)//SKG_") = "//getStr(spec%domainCubeLimitUpper%val(idim))
                 end if
             end do
         end block domainCubeLimitLower_block
 
         domainCubeLimitUpper_block: block
-            if (.not. all(-huge(0._RKC) < spec%domainCubeLimitUpper%val .and. spec%domainCubeLimitUpper%val < huge(0._RKC))) then
+            if (.not. all(-huge(0._RKG) < spec%domainCubeLimitUpper%val .and. spec%domainCubeLimitUpper%val < huge(0._RKG))) then
                 err%occurred = .true._LK
-                err%msg = err%msg//PROCEDURE_NAME//getFine(__FILE__, __LINE__)//SKC_": Error occurred. &
-                &The specified values for `domainCubeLimitUpper` must be all finite: "//getStr(spec%domainCubeLimitUpper%val)//SKC_"'"
+                err%msg = err%msg//PROCEDURE_NAME//getFine(__FILE__, __LINE__)//SKG_": Error occurred. &
+                &The specified values for `domainCubeLimitUpper` must be all finite: "//getStr(spec%domainCubeLimitUpper%val)//SKG_"'"
             end if
         end block domainCubeLimitUpper_block
 
         domainErrCount_block: block
             if (spec%domainErrCount%val < 1_IK) then
                 err%occurred = .true._LK
-                err%msg =   err%msg//NL2//PROCEDURE_NAME//getFine(__FILE__, __LINE__)//SKC_": Error occurred. &
+                err%msg =   err%msg//NL2//PROCEDURE_NAME//getFine(__FILE__, __LINE__)//SKG_": Error occurred. &
                             &The input value for variable `domainErrCount` must be a positive integer. If you are unsure &
                             &about the appropriate value for this variable, simply drop it from the input. &
                             &The sampler will automatically assign an appropriate value to it."
@@ -2895,7 +2895,7 @@ contains
         domainErrCountMax_block: block
             if (spec%domainErrCountMax%val < 1_IK) then
                 err%occurred = .true._LK
-                err%msg = err%msg//PROCEDURE_NAME//getFine(__FILE__, __LINE__)//SKC_": Error occurred. &
+                err%msg = err%msg//PROCEDURE_NAME//getFine(__FILE__, __LINE__)//SKG_": Error occurred. &
                 &The input value for variable `domainErrCountMax` must be a positive integer. &
                 &If you are unsure about the appropriate value for this variable, simply drop it from the input. &
                 &The sampler will automatically assign an appropriate value to it."
@@ -2908,9 +2908,9 @@ contains
         outputChainFileFormat_block: block
             if (.not.(spec%outputChainFileFormat%isCompact .or. spec%outputChainFileFormat%isVerbose .or. spec%outputChainFileFormat%isBinary)) then
                 err%occurred = .true._LK
-                err%msg = err%msg//PROCEDURE_NAME//getFine(__FILE__, __LINE__)//SKC_": Error occurred. The input requested chain file format ('"//spec%outputChainFileFormat%val//&
-                SKC_"') contained within the simulation specification `outputChainFileFormat` cannot be anything other than '"//&
-                spec%outputChainFileFormat%compact//SKC_"' or '"//spec%outputChainFileFormat%verbose//SKC_"' or '"//spec%outputChainFileFormat%binary//SKC_"'. If you do not &
+                err%msg = err%msg//PROCEDURE_NAME//getFine(__FILE__, __LINE__)//SKG_": Error occurred. The input requested chain file format ('"//spec%outputChainFileFormat%val//&
+                SKG_"') contained within the simulation specification `outputChainFileFormat` cannot be anything other than '"//&
+                spec%outputChainFileFormat%compact//SKG_"' or '"//spec%outputChainFileFormat%verbose//SKG_"' or '"//spec%outputChainFileFormat%binary//SKG_"'. If you do not &
                 &know an appropriate value for outputChainFileFormat, drop it from the input list. &
                 &The sampler will automatically assign an appropriate value to it."
             end if
@@ -2919,13 +2919,13 @@ contains
         outputColumnWidth_block: block
             if (spec%outputColumnWidth%val < 0_IK) then
                 err%occurred = .true._LK
-                err%msg = err%msg//PROCEDURE_NAME//getFine(__FILE__, __LINE__)//SKC_": Error occurred. &
+                err%msg = err%msg//PROCEDURE_NAME//getFine(__FILE__, __LINE__)//SKG_": Error occurred. &
                 &The input value for variable `outputColumnWidth` must be a non-negative integer. &
                 &If you are unsure about the appropriate value for this variable, simply drop it from the input. &
                 &The sampler will automatically assign an appropriate value to it."
             elseif (0_IK < spec%outputColumnWidth%val .and. spec%outputColumnWidth%val < spec%outputPrecision%val + 7_IK) then
                 err%occurred = .true._LK
-                err%msg =   err%msg//NL2//PROCEDURE_NAME//getFine(__FILE__, __LINE__)//SKC_": Error occurred. The input value for variable &
+                err%msg =   err%msg//NL2//PROCEDURE_NAME//getFine(__FILE__, __LINE__)//SKG_": Error occurred. The input value for variable &
                             &`outputColumnWidth` must be equal to or greater than the input value for `outputPrecision + 7`. &
                             &If you are unsure about the appropriate value for this variable, either set it to zero on input, &
                             &or simply drop it from the input. The sampler will automatically assign an appropriate value to it."
@@ -2934,9 +2934,9 @@ contains
 
         outputFileName_block: block
             ! Ideally there should be a test here to ensure the prefix contains only valid characters.
-            if (spec%outputFileName%val == SKC_"") then
+            if (spec%outputFileName%val == SKG_"") then
                 err%occurred = .true._LK
-                err%msg = err%msg//PROCEDURE_NAME//getFine(__FILE__, __LINE__)//SKC_": Error occurred. &
+                err%msg = err%msg//PROCEDURE_NAME//getFine(__FILE__, __LINE__)//SKG_": Error occurred. &
                 &The input value for variable outputFileName cannot be empty."
             end if
         end block outputFileName_block
@@ -2944,8 +2944,8 @@ contains
         outputStatus_block: block
             if (.not. (spec%outputStatus%is%extend .or. spec%outputStatus%is%retry)) then
                 err%occurred = .true._LK
-                err%msg =   err%msg//NL2//PROCEDURE_NAME//getFine(__FILE__, __LINE__)//SKC_": Error occurred. The specified chain file format ('"//spec%outputStatus%val//&
-                            SKC_"') via `outputStatus` cannot be anything other than 'retry', 'extend', 'copy-retry', or 'copy-extend'. &
+                err%msg =   err%msg//NL2//PROCEDURE_NAME//getFine(__FILE__, __LINE__)//SKG_": Error occurred. The specified chain file format ('"//spec%outputStatus%val//&
+                            SKG_"') via `outputStatus` cannot be anything other than 'retry', 'extend', 'copy-retry', or 'copy-extend'. &
                             &If you do not know an appropriate value for `outputStatus`, drop it from the input list. &
                             &The sampler will automatically assign an appropriate value to it."
             end if
@@ -2954,7 +2954,7 @@ contains
         outputPrecision_block: block
             if (spec%outputPrecision%val < 1_IK) then
                 err%occurred = .true._LK
-                err%msg =   err%msg//NL2//PROCEDURE_NAME//getFine(__FILE__, __LINE__)//SKC_": Error occurred. &
+                err%msg =   err%msg//NL2//PROCEDURE_NAME//getFine(__FILE__, __LINE__)//SKG_": Error occurred. &
                             &The input value for variable `outputPrecision` must be a positive integer. &
                             &If you are unsure about the appropriate value for this variable, simply drop it from the input. &
                             &The sampler will automatically assign an appropriate value to it."
@@ -2964,22 +2964,22 @@ contains
         outputReportPeriod_block: block
             if (spec%outputReportPeriod%val < 1_IK) then
                 err%occurred = .true._LK
-                err%msg =   err%msg//NL2//PROCEDURE_NAME//getFine(__FILE__, __LINE__)//SKC_": Error occurred. &
+                err%msg =   err%msg//NL2//PROCEDURE_NAME//getFine(__FILE__, __LINE__)//SKG_": Error occurred. &
                             &The input value for variable outputReportPeriod must be a positive integer value. &
                             &If you are unsure about the appropriate value for this variable, simply drop it from the input. &
                             &The sampler will automatically assign an appropriate value to it."
             else
-                spec%outputReportPeriod%inv = 1._RKC / spec%outputReportPeriod%val
+                spec%outputReportPeriod%inv = 1._RKG / spec%outputReportPeriod%val
             end if
         end block outputReportPeriod_block
 
         outputRestartFileFormat_block: block
             if (.not. (spec%outputRestartFileFormat%isBinary .or. spec%outputRestartFileFormat%isAscii)) then
                 err%occurred = .true._LK
-                err%msg = err%msg//PROCEDURE_NAME//SKC_"@sanitize(): Error occurred. &
+                err%msg = err%msg//PROCEDURE_NAME//SKG_"@sanitize(): Error occurred. &
                 &The input requested restart file format ('"//spec%outputRestartFileFormat%val//&
-                SKC_"') represented by the variable `outputRestartFileFormat` cannot be anything other than '"//&
-                spec%outputRestartFileFormat%binary//SKC_"' or '"//spec%outputRestartFileFormat%ascii//SKC_"'. &
+                SKG_"') represented by the variable `outputRestartFileFormat` cannot be anything other than '"//&
+                spec%outputRestartFileFormat%binary//SKG_"' or '"//spec%outputRestartFileFormat%ascii//SKG_"'. &
                 &If you are unsure about an appropriate value for `outputRestartFileFormat`, drop it from the input list. &
                 &The sampler will automatically assign an appropriate value to it."
             end if
@@ -2988,7 +2988,7 @@ contains
         outputSampleSize_block: block
             if (.not. abs(spec%outputSampleSize%val) < huge(0_IK)) then
                 err%occurred = .true._LK
-                err%msg =   err%msg//NL2//PROCEDURE_NAME//getFine(__FILE__, __LINE__)//SKC_": Error occurred. &
+                err%msg =   err%msg//NL2//PROCEDURE_NAME//getFine(__FILE__, __LINE__)//SKG_": Error occurred. &
                             &The input value for `outputSampleSize` cannot be larger than the largest representable integer. &
                             &If you are unsure of an appropriate value for this variable, simply drop it from the input. &
                             &The sampler will automatically assign an appropriate value to it."
@@ -2997,14 +2997,14 @@ contains
 
         outputSeparator_block: block
             use pm_strASCII, only: isCharDigit
-            character(:,SKC), allocatable :: separator
+            character(:,SKG), allocatable :: separator
             integer(IK) :: separatorLen, i
             separator = trim(adjustl(spec%outputSeparator%val))
             separatorLen = len(separator, IK)
             do i = 1_IK, separatorLen
-                if (isCharDigit(separator(i:i)) .or. separator(i:i) == SKC_"." .or. separator(i:i) == SKC_"-" .or. separator(i:i) == SKC_"+") then
+                if (isCharDigit(separator(i:i)) .or. separator(i:i) == SKG_"." .or. separator(i:i) == SKG_"-" .or. separator(i:i) == SKG_"+") then
                     err%occurred = .true._LK
-                    err%msg =   err%msg//NL2//PROCEDURE_NAME//SKC_"@sanitize(): Error occurred. &
+                    err%msg =   err%msg//NL2//PROCEDURE_NAME//SKG_"@sanitize(): Error occurred. &
                                 &The input value for variable outputSeparator cannot contain any digits or the period symbol '.' or '-' &
                                 &or '+'. If you are unsure about the appropriate value for this variable, simply drop it from the input. &
                                 &The sampler will automatically assign an appropriate value to it."
@@ -3016,10 +3016,10 @@ contains
         outputSplashMode_block: block
             if (.not. (spec%outputSplashMode%is%normal .or. spec%outputSplashMode%is%silent .or. spec%outputSplashMode%is%quiet)) then
                 err%occurred = .true._LK
-                err%msg =   err%msg//NL2//PROCEDURE_NAME//SKC_"@sanitize(): Error occurred. &
+                err%msg =   err%msg//NL2//PROCEDURE_NAME//SKG_"@sanitize(): Error occurred. &
                             &The input requested splash mode ('"//spec%outputSplashMode%val//&
-                            SKC_"') represented by the variable `outputSplashMode` cannot be anything other than '"//&
-                            spec%outputSplashMode%normal//SKC_"' or '"//spec%outputSplashMode%quiet//SKC_"' or '"//spec%outputSplashMode%silent//SKC_"'. &
+                            SKG_"') represented by the variable `outputSplashMode` cannot be anything other than '"//&
+                            spec%outputSplashMode%normal//SKG_"' or '"//spec%outputSplashMode%quiet//SKG_"' or '"//spec%outputSplashMode%silent//SKG_"'. &
                             &If you are unsure about an appropriate value for `outputSplashMode`, drop it from the input list. &
                             &The sampler will automatically assign an appropriate value to it."
             end if
@@ -3028,10 +3028,10 @@ contains
         parallelism_block: block
             if (.not.(spec%parallelism%is%singleChain .or. spec%parallelism%is%multiChain)) then
                 err%occurred = .true._LK
-                err%msg = err%msg//NL2//PROCEDURE_NAME//getFine(__FILE__, __LINE__)//SKC_": Error occurred. &
+                err%msg = err%msg//NL2//PROCEDURE_NAME//getFine(__FILE__, __LINE__)//SKG_": Error occurred. &
                 &The input requested parallelization method ("//spec%parallelism%val//&
-                SKC_") represented by variable `parallelism` cannot be anything other than &
-                &'"//spec%parallelism%singleChain//SKC_"' or '"//spec%parallelism%multiChain//SKC_"'. If you are unsure about &
+                SKG_") represented by variable `parallelism` cannot be anything other than &
+                &'"//spec%parallelism%singleChain//SKG_"' or '"//spec%parallelism%multiChain//SKG_"'. If you are unsure about &
                 &the appropriate value for `parallelism`, drop it from the input list. &
                 &The sampler will automatically assign an appropriate value to it."
             end if
@@ -3045,8 +3045,8 @@ contains
 #if         OMP_ENABLED
             if (spec%parallelismNumThread%val < 0_IK) then
                 err%occurred = .true._LK
-                err%msg =   err%msg//NL2//PROCEDURE_NAME//getFine(__FILE__, __LINE__)//SKC_": Error occurred. &
-                            &The input value for the specification `parallelismNumThread` ("//getStr(spec%parallelismNumThread%val)//SKC_") must be a non-negative integer. &
+                err%msg =   err%msg//NL2//PROCEDURE_NAME//getFine(__FILE__, __LINE__)//SKG_": Error occurred. &
+                            &The input value for the specification `parallelismNumThread` ("//getStr(spec%parallelismNumThread%val)//SKG_") must be a non-negative integer. &
                             &The specification `parallelismNumThread` represents the number of shared-memory CPU threads over which multiple parallel evaluations of the &
                             &objective function must be done. This specification is relevant only to OpenMP-enabled parallel simulations in C, C++, and Fortran, &
                             &and shared-memory non-MPI parallel simulations in higher-level programming languages such as MATLAB, Python, or R. &
@@ -3061,8 +3061,8 @@ contains
         randomSeed_block: block
             if (spec%randomSeed%val < 1_IK) then
                 err%occurred = .true._LK
-                err%msg = err%msg//NL2//PROCEDURE_NAME//getFine(__FILE__, __LINE__)//SKC_": Error occurred. &
-                &The input value for `randomSeed` ("//getStr(spec%randomSeed%val)//SKC_") must be a positive integer. &
+                err%msg = err%msg//NL2//PROCEDURE_NAME//getFine(__FILE__, __LINE__)//SKG_": Error occurred. &
+                &The input value for `randomSeed` ("//getStr(spec%randomSeed%val)//SKG_") must be a positive integer. &
                 &If you are unsure about the appropriate value for this variable, simply drop it from the input. &
                 &The sampler will automatically assign an appropriate value to it."
             end if
@@ -3072,20 +3072,20 @@ contains
         end block sysInfoFilePath_block
 
         targetAcceptanceRate_block: block
-            if (any(spec%targetAcceptanceRate%val < 0._RKC) .or. any(1._RKC < spec%targetAcceptanceRate%val)) then
+            if (any(spec%targetAcceptanceRate%val < 0._RKG) .or. any(1._RKG < spec%targetAcceptanceRate%val)) then
                 err%occurred = .true._LK
-                err%msg =   err%msg//NL2//PROCEDURE_NAME//getFine(__FILE__, __LINE__)//SKC_": Error occurred. The target acceptance ratio limits `targetAcceptanceRate` ["//&
-                            getStr(spec%targetAcceptanceRate%val(1))//SKC_", "//getStr(spec%targetAcceptanceRate%val(2))//SKC_"] cannot be less than 0 or larger than 1."
+                err%msg =   err%msg//NL2//PROCEDURE_NAME//getFine(__FILE__, __LINE__)//SKG_": Error occurred. The target acceptance ratio limits `targetAcceptanceRate` ["//&
+                            getStr(spec%targetAcceptanceRate%val(1))//SKG_", "//getStr(spec%targetAcceptanceRate%val(2))//SKG_"] cannot be less than 0 or larger than 1."
             end if
-            if (all(spec%targetAcceptanceRate%val == 0._RKC) .or. all(spec%targetAcceptanceRate%val == 1._RKC)) then
+            if (all(spec%targetAcceptanceRate%val == 0._RKG) .or. all(spec%targetAcceptanceRate%val == 1._RKG)) then
                 err%occurred = .true._LK
-                err%msg =   err%msg//NL2//PROCEDURE_NAME//getFine(__FILE__, __LINE__)//SKC_": Error occurred. The target acceptance ratio limits targetAcceptanceRate ["//&
-                            getStr(spec%targetAcceptanceRate%val(1))//SKC_", "//getStr(spec%targetAcceptanceRate%val(2))//SKC_"] cannot be both 0 or both 1."
+                err%msg =   err%msg//NL2//PROCEDURE_NAME//getFine(__FILE__, __LINE__)//SKG_": Error occurred. The target acceptance ratio limits targetAcceptanceRate ["//&
+                            getStr(spec%targetAcceptanceRate%val(1))//SKG_", "//getStr(spec%targetAcceptanceRate%val(2))//SKG_"] cannot be both 0 or both 1."
             end if
             if (spec%targetAcceptanceRate%val(2) < spec%targetAcceptanceRate%val(1)) then
                 err%occurred = .true._LK
-                err%msg =   err%msg//NL2//PROCEDURE_NAME//getFine(__FILE__, __LINE__)//SKC_": Error occurred. The the lower limit of the input specification targetAcceptanceRate ["//&
-                            getStr(spec%targetAcceptanceRate%val(1))//SKC_","//getStr(spec%targetAcceptanceRate%val(2))//SKC_"] cannot be larger than the specified upper limit."
+                err%msg =   err%msg//NL2//PROCEDURE_NAME//getFine(__FILE__, __LINE__)//SKG_": Error occurred. The the lower limit of the input specification targetAcceptanceRate ["//&
+                            getStr(spec%targetAcceptanceRate%val(1))//SKG_","//getStr(spec%targetAcceptanceRate%val(2))//SKG_"] cannot be larger than the specified upper limit."
             end if
         end block targetAcceptanceRate_block
 

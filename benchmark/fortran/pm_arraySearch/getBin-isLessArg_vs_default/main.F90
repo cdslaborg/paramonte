@@ -2,7 +2,7 @@
 program benchmark
 
     use iso_fortran_env, only: error_unit
-    use pm_kind, only: IK, LK, SK, RK, RKC => RKS
+    use pm_kind, only: IK, LK, SK, RK, RKG => RKS
     use pm_distUnif, only: setUnifRand
     use pm_arraySpace, only: getLinSpace
     use pm_mathMinMax, only: getMinMax
@@ -17,9 +17,9 @@ program benchmark
     integer(IK)     , parameter         :: NBENCH = 2_IK                !<  The number of benchmark procedures.
     integer(IK)                         :: arraySize(NSIZE)             !<  The sizes of the benchmark Array.
     logical(LK)                         :: dummy = .true._LK            !<  The dummy computation to prevent the compiler from doing aggressive optimizations.
-    real(RKC)         , allocatable     :: Array(:)                     !<  The Array to find instances of value within.
-    real(RKC)                           :: value                        !<  The value to find.
-    real(RKC)                           :: Limit(2)                     !<  The array limits.
+    real(RKG)         , allocatable     :: Array(:)                     !<  The Array to find instances of value within.
+    real(RKG)                           :: value                        !<  The value to find.
+    real(RKG)                           :: Limit(2)                     !<  The array limits.
     type(bench_type)                    :: bench(NBENCH)                !<  The Benchmark array.
     integer(IK)                         :: index, bin
     real(RK)                            :: MeanTime(2) = 0._RK

@@ -30,7 +30,7 @@
 #define RETURN_IF_FAILED(LINE,FAILED,MSG) \
 if (FAILED) then; \
 err%occurred = .true._LK; \
-err%msg = PROCEDURE_NAME//getLine(LINE)//SKC_": "//NL1//MSG; \
+err%msg = PROCEDURE_NAME//getLine(LINE)//SKG_": "//NL1//MSG; \
 call spec%disp%stop%show(err%msg); \
 return; \
 end if;
@@ -79,7 +79,7 @@ end if;
 !#define COINDEX(I)
 !#endif
         ! Set the traceback information.
-!#define TRACE(LINE) SKC_"@file::"//getStr(__FILE__)//getLine(LINE)//PROCEDURE_NAME
+!#define TRACE(LINE) SKG_"@file::"//getStr(__FILE__)//getLine(LINE)//PROCEDURE_NAME
 !        ! Set the alert optional input arguments.
 !#define ALERT_OPTIONS unit = reportFileUnit, width = disp%width, prefix = method, tmsize = tmsize, bmsize = bmsize
 
@@ -90,23 +90,23 @@ end if;
         abstract interface
 #if     OMP_ENABLED && (MATLAB_ENABLED || PYTHON_ENABLED || R_ENABLED)
         recursive function getLogFuncPtr_proc(logFuncState, ndim, njob, avgTimePerFunCall, avgCommPerFunCall) result(mold) bind(C)
-            import :: IK, RKC, RKD
+            import :: IK, RKG, RKD
             integer(IK), intent(in), value :: ndim, njob
             real(RKD), intent(inout) :: avgTimePerFunCall, avgCommPerFunCall
-            real(RKC), intent(inout) :: logFuncState(ndim, njob)
-            real(RKC) :: mold
+            real(RKG), intent(inout) :: logFuncState(ndim, njob)
+            real(RKG) :: mold
         end function
 #else
         recursive function getLogFuncPtr_proc(state, ndim) result(logFunc) bind(C)
-            import :: IK, RKC
+            import :: IK, RKG
             integer(IK), intent(in), value :: ndim
-            real(RKC), intent(in) :: state(ndim)
-            real(RKC) :: logFunc
+            real(RKG), intent(in) :: state(ndim)
+            real(RKG) :: logFunc
         end function
 #endif
         end interface
         procedure(getLogFuncPtr_proc), pointer :: getLogFuncPtr
-        !procedure(real(RKC)), pointer :: getLogFuncPtr
+        !procedure(real(RKG)), pointer :: getLogFuncPtr
         type(paradram_type) :: sampler
         type(err_type) :: err
         integer(IK) :: lenin
@@ -141,15 +141,15 @@ end if;
 
 #if     OMP_ENABLED && (MATLAB_ENABLED || PYTHON_ENABLED || R_ENABLED)
         recursive function getLogFuncWrapper(logFuncState, avgTimePerFunCall, avgCommPerFunCall) result(mold)
-            real(RKC), intent(inout), contiguous :: logFuncState(0:,:)
+            real(RKG), intent(inout), contiguous :: logFuncState(0:,:)
             real(RKD), intent(inout) :: avgTimePerFunCall, avgCommPerFunCall
-            real(RKC) :: mold
+            real(RKG) :: mold
             mold = getLogFuncPtr(logFuncState, ndim, size(logFuncState, 2, IK), avgTimePerFunCall, avgCommPerFunCall)
         end function
 #else
         recursive function getLogFuncWrapper(state) result(logFunc)
-            real(RKC), intent(in), contiguous :: state(:)
-            real(RKC) :: logFunc
+            real(RKG), intent(in), contiguous :: state(:)
+            real(RKG) :: logFunc
             logFunc = getLogFuncPtr(state, ndim)
             !write(*,"(1I5,5E30.20,:,', ')") precision(state), state!, logFunc
         end function
@@ -164,24 +164,24 @@ end if;
         use pm_sampling_kernel, only: spec_type, stat_type, proposal_type
         use pm_sampling_kernel, only: chainFileColName
         use pm_sampling_kernel, only: getErrKernelRun
-        use pm_sampling_kernel, only: NL1, NL2, RKC
+        use pm_sampling_kernel, only: NL1, NL2, RKG
 #if     ParaDISE_ENABLED
 #define SET_DRAMDISE(X)X
 #define SET_ParaNest(X)
-        character(*,SKC), parameter :: method = SKC_"ParaDISE"
+        character(*,SKG), parameter :: method = SKG_"ParaDISE"
 #elif   ParaDRAM_ENABLED
 #define SET_DRAMDISE(X)X
 #define SET_ParaNest(X)
-        character(*,SKC), parameter :: method = SKC_"ParaDRAM"
+        character(*,SKG), parameter :: method = SKG_"ParaDRAM"
 #elif   ParaNest_ENABLED
 #define SET_ParaNest(X)X
 #define SET_DRAMDISE(X)
-        character(*,SKC), parameter :: method = SKC_"ParaNest"
+        character(*,SKG), parameter :: method = SKG_"ParaNest"
 #else
 #error  "Unrecognized interface."
 #endif
-        character(*,SKC), parameter :: PROCEDURE_NAME = MODULE_NAME//SKC_"@getErrSampling()"
-       !character(*,SKC), parameter :: NL1 = new_line(SKC_"a"), NL2 = NL1//NL1
+        character(*,SKG), parameter :: PROCEDURE_NAME = MODULE_NAME//SKG_"@getErrSampling()"
+       !character(*,SKG), parameter :: NL1 = new_line(SKG_"a"), NL2 = NL1//NL1
         integer(IK) :: ndimp1, idim, iq
         type(proposal_type) :: proposal
         type(spec_type) :: spec
@@ -204,14 +204,14 @@ end if;
 
         ! Setup the simulation specifications.
 
-        spec = spec_type(modelr_type(0._RKC), method, ndim)
+        spec = spec_type(modelr_type(0._RKG), method, ndim)
         err = spec%set(sampler)
         RETURN_IF_FAILED(__LINE__,FAILED_IMAGE(err%occurred),err%msg)
 
-        !print *, """"//getStr([css_type(chainFileColName), css_type(spec%domainAxisName%val)], format = spec%chainFile%format%header)//achar(0, SKC)//""""
+        !print *, """"//getStr([css_type(chainFileColName), css_type(spec%domainAxisName%val)], format = spec%chainFile%format%header)//achar(0, SKG)//""""
         if (spec%run%is%new .and. spec%image%is%leader) then
             if (spec%outputChainFileFormat%isBinary) then
-                write(spec%chainFile%unit) getStr([css_type(chainFileColName), css_type(spec%domainAxisName%val)], format = spec%chainFile%format%header)//achar(0, SKC)
+                write(spec%chainFile%unit) getStr([css_type(chainFileColName), css_type(spec%domainAxisName%val)], format = spec%chainFile%format%header)//achar(0, SKG)
             else
                 write(spec%chainFile%unit, spec%chainFile%format%header) (trim(chainFileColName(idim)), idim = 1, size(chainFileColName, 1, IK)), (trim(spec%domainAxisName%val(idim)), idim = 1, ndim)
             end if
@@ -224,10 +224,10 @@ end if;
 
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        if (spec%image%is%leader) call spec%disp%text%wrap(NL1//spec%method%val//SKC_" simulation began on "//getDateTime(SK_"%c %z")//NL1)
+        if (spec%image%is%leader) call spec%disp%text%wrap(NL1//spec%method%val//SKG_" simulation began on "//getDateTime(SK_"%c %z")//NL1)
         err = getErrKernelRun(getLogFunc, spec, stat, proposal)
         RETURN_IF_FAILED(__LINE__,FAILED_IMAGE(err%occurred),err%msg)
-        if (spec%image%is%leader) call spec%disp%text%wrap(NL1//spec%method%val//SKC_" simulation ended on "//getDateTime(SK_"%c %z")//NL1)
+        if (spec%image%is%leader) call spec%disp%text%wrap(NL1//spec%method%val//SKG_" simulation ended on "//getDateTime(SK_"%c %z")//NL1)
         if (spec%image%is%first) then
             call spec%disp%skip(count = 2_IK, unit = output_unit)
             !call execute_command_line(" ")
@@ -276,14 +276,14 @@ end if;
 
                 SET_DRAMDISE(call spec%disp%show("stats.chain.verbose.efficiency.meanAcceptanceRate"))
                 SET_DRAMDISE(call spec%disp%show(stat%cfc%meanAcceptanceRate(stat%numFunCallAccepted), format = format))
-                SET_DRAMDISE(call spec%disp%note%show(SKC_"This is the average MCMC acceptance rate of the "//spec%method%val//SKC_" sampler."))
+                SET_DRAMDISE(call spec%disp%note%show(SKG_"This is the average MCMC acceptance rate of the "//spec%method%val//SKG_" sampler."))
 
                 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
                 SET_DRAMDISE(call spec%disp%show("stats.chain.verbose.efficiency.acceptedOverAcceptedRejected"))
                 SET_ParaNest(call spec%disp%show("stats.chain.uniques.efficiency.acceptedOverAcceptedRejected"))
-                call spec%disp%show(real(stat%numFunCallAccepted, RKC) / real(stat%numFunCallAcceptedRejected, RKC), format = format) ! accepted2AcceptedRejected
-                spec%msg = SKC_"This is the "//spec%method%val//SKC_" sampler efficiency given the accepted and rejected function calls, &
+                call spec%disp%show(real(stat%numFunCallAccepted, RKG) / real(stat%numFunCallAcceptedRejected, RKG), format = format) ! accepted2AcceptedRejected
+                spec%msg = SKG_"This is the "//spec%method%val//SKG_" sampler efficiency given the accepted and rejected function calls, &
                 &that is, the number of accepted function calls divided by the number of (accepted + rejected) function calls."
                 call spec%disp%note%show(spec%msg)
 
@@ -291,8 +291,8 @@ end if;
 
                 SET_DRAMDISE(call spec%disp%show("stats.chain.verbose.efficiency.acceptedOverAcceptedRejectedDelayed"))
                 SET_ParaNest(call spec%disp%show("stats.chain.uniques.efficiency.acceptedOverAcceptedRejectedDelayed"))
-                call spec%disp%show(real(stat%numFunCallAccepted, RKC) / real(stat%numFunCallAcceptedRejectedDelayed, RKC), format = format)
-                spec%msg = SKC_"This is the "//spec%method%val//SKC_" sampler efficiency given the accepted, rejected, and delayed-rejection (if any requested) &
+                call spec%disp%show(real(stat%numFunCallAccepted, RKG) / real(stat%numFunCallAcceptedRejectedDelayed, RKG), format = format)
+                spec%msg = SKG_"This is the "//spec%method%val//SKG_" sampler efficiency given the accepted, rejected, and delayed-rejection (if any requested) &
                 &function calls, that is, the number of accepted function calls divided by the number of (accepted + rejected + delayed-rejection) function calls."
                 call spec%disp%note%show(spec%msg)
 
@@ -300,8 +300,8 @@ end if;
 
                 SET_DRAMDISE(call spec%disp%show("stats.chain.verbose.efficiency.acceptedOverAcceptedRejectedDelayedUnused"))
                 SET_ParaNest(call spec%disp%show("stats.chain.uniques.efficiency.acceptedOverAcceptedRejectedDelayedUnused"))
-                call spec%disp%show(real(stat%numFunCallAccepted, RKC) / real(stat%numFunCallAcceptedRejectedDelayedUnused, RKC), format = format)
-                spec%msg = SKC_"This is the "//spec%method%val//SKC_" sampler efficiency given the accepted, rejected, delayed-rejection (if any requested), and unused function calls &
+                call spec%disp%show(real(stat%numFunCallAccepted, RKG) / real(stat%numFunCallAcceptedRejectedDelayedUnused, RKG), format = format)
+                spec%msg = SKG_"This is the "//spec%method%val//SKG_" sampler efficiency given the accepted, rejected, delayed-rejection (if any requested), and unused function calls &
                 &(in parallel simulations), that is, the number of accepted function calls divided by the number of (accepted + rejected + delayed-rejection + unused) function calls."
                 call spec%disp%note%show(spec%msg)
 
@@ -314,25 +314,25 @@ end if;
                 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
                 call spec%disp%show("stats.time.perFuncCallAccepted")
-                call spec%disp%show(stat%timer%clock / real(stat%numFunCallAccepted, RKC), format = format)
+                call spec%disp%show(stat%timer%clock / real(stat%numFunCallAccepted, RKG), format = format)
                 call spec%disp%note%show("This is the average effective time cost of each accepted function call, in seconds.")
 
                 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
                 call spec%disp%show("stats.time.perFuncCallAcceptedRejected")
-                call spec%disp%show(stat%timer%clock / real(stat%numFunCallAcceptedRejected, RKC), format = format)
+                call spec%disp%show(stat%timer%clock / real(stat%numFunCallAcceptedRejected, RKG), format = format)
                 call spec%disp%note%show("This is the average effective time cost of each accepted or rejected function call, in seconds.")
 
                 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
                 call spec%disp%show("stats.time.perFuncCallAcceptedRejectedDelayed")
-                call spec%disp%show(stat%timer%clock / real(stat%numFunCallAcceptedRejectedDelayed, RKC), format = format)
+                call spec%disp%show(stat%timer%clock / real(stat%numFunCallAcceptedRejectedDelayed, RKG), format = format)
                 call spec%disp%note%show("This is the average effective time cost of each accepted or rejected function call (including delayed-rejections, if any requested), in seconds.")
 
                 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
                 call spec%disp%show("stats.time.perFuncCallAcceptedRejectedDelayedUnused")
-                call spec%disp%show(stat%timer%clock / real(stat%numFunCallAcceptedRejectedDelayedUnused, RKC), format = format)
+                call spec%disp%show(stat%timer%clock / real(stat%numFunCallAcceptedRejectedDelayedUnused, RKG), format = format)
                 spec%msg = "This is the average effective time cost of each accepted or rejected or unused function call (including delayed-rejections, if any requested), in seconds. &
                 &This timing can be directly compared to the corresponding timing of other parallel runs of the same simulation but with different processor counts to assess the parallel scaling. &
                 &A lower timing value implies a better parallel scaling and performance."
@@ -358,7 +358,7 @@ end if;
 
 #if             CAF_ENABLED || MPI_ENABLED || OMP_ENABLED
                 if (spec%image%count == 1_IK) then
-                    spec%msg = spec%method%val//SKC_" is used in parallel mode with only one processor. This can be computationally inefficient. &
+                    spec%msg = spec%method%val//SKG_" is used in parallel mode with only one processor. This can be computationally inefficient. &
                     &Consider using the serial version of the code or provide more processes at runtime if it seems to be beneficial."
                     call spec%disp%note%show(spec%msg, unit = output_unit)!, format = format, tmsize = 3_IK, bmsize = 1_IK)
                 end if
@@ -370,7 +370,7 @@ end if;
 
                 imageContribution_block: block
 
-                    real(RKC) :: successProbNormFac(2)
+                    real(RKG) :: successProbNormFac(2)
                     integer(IK) :: pidSuccessLen, iell
                     integer(IK), allocatable :: index(:), cntSuccess(:), pidSuccess(:)
 
@@ -395,7 +395,7 @@ end if;
                         write(spec%reportFile%unit, spec%reportFile%format%integer) iell, cntSuccess(iell)
                     end do
                     call spec%disp%skip(count = spec%disp%bmsize)
-                    spec%msg = SKC_"These are the contributions of individual processes to the construction of the output chain of the "//spec%method%val//SKC_" sampler. &
+                    spec%msg = SKG_"These are the contributions of individual processes to the construction of the output chain of the "//spec%method%val//SKG_" sampler. &
                     &Essentially, they represent the total number of accepted states (useful contributions to the simulation) by the corresponding processor, &
                     &starting from the first processor to the last. This information is mostly informative in parallel Fork-Join (singleChain) simulations."
                     call spec%disp%note%show(spec%msg)
@@ -415,16 +415,16 @@ end if;
                             call spec%disp%show(successProbNormFac, format = spec%reportFile%format%allreal, tmsize = 0_IK)
                         end if
                     else
-                        successProbNormFac = [1._RKC, real(cntSuccess(size(cntSuccess, 1, IK)), RKC)]
+                        successProbNormFac = [1._RKG, real(cntSuccess(size(cntSuccess, 1, IK)), RKG)]
                         call spec%disp%show(successProbNormFac, format = spec%reportFile%format%allreal, tmsize = 0_IK)
                     end if
                     call spec%disp%skip(count = spec%disp%bmsize)
-                    spec%msg =  SKC_"These are the two parameters of the Cyclic Geometric fit to the distribution of the processor contributions to the construction &
+                    spec%msg =  SKG_"These are the two parameters of the Cyclic Geometric fit to the distribution of the processor contributions to the construction &
                                     &of the final output chain of visited states. The processor contributions are reported in the first column of the output chain file. &
                                     &The processor contribution frequencies are listed above. The fit has the following form: "//NL2// &
-                                SKC_"    processConstribution(i) ="//NL1//&
-                                    SKC_"successProb * normFac * (1 - successProb)^(i - 1) / (1 - (1 - successProb)^processCount)"//NL2// &
-                                SKC_"where `i` is the ID of the processor (starting from index `1`), `processCount` is the total number of &
+                                SKG_"    processConstribution(i) ="//NL1//&
+                                    SKG_"successProb * normFac * (1 - successProb)^(i - 1) / (1 - (1 - successProb)^processCount)"//NL2// &
+                                SKG_"where `i` is the ID of the processor (starting from index `1`), `processCount` is the total number of &
                                     &processes used in the simulation, `successProb` is equivalent to an effective sampling efficiency computed &
                                     &from the contributions of individual processes to the output chain, and `normFac` is a normalization constant."
                     call spec%disp%note%show(spec%msg)
@@ -442,8 +442,8 @@ end if;
                     integer(IK) :: scalingMaxLoc, iell
                     integer(IK), parameter :: nscol = 5_IK
                     integer(IK), allocatable :: numproc(:)
-                    real(RKC), allocatable :: scaling(:)
-                    real(RKC) :: scalingMaxVal
+                    real(RKG), allocatable :: scaling(:)
+                    real(RKG) :: scalingMaxVal
 
                     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
                     ! Compute the effective efficiency from the processor contributions and the current strong scaling.
@@ -454,10 +454,10 @@ end if;
                     ! if the computers of the future civilization are roughly 1 billion times or more faster than the current 2020 technologies.
                     ! Therefore, a more robust solution is required for cases where the entire simulation is a dry run of the old existing simulation.
                     ! This situation is, however, such a rare occurrence that does not merit further investment in the current version of the library.
-                    call setForkJoinScaling ( conProb = real(stat%numFunCallAccepted, RKC) / real(stat%numFunCallAcceptedRejected, RKC) & ! LCOV_EXCL_LINE
-                                            , seqSecTime = epsilon(1._RKC) & ! LCOV_EXCL_LINE time cost of the sequential section of the code, which is negligible here
-                                            , comSecTime = real(stat%avgCommPerFunCall, RKC) / spec%image%count & ! LCOV_EXCL_LINE
-                                            , parSecTime = real(stat%avgTimePerFunCall, RKC) & ! LCOV_EXCL_LINE
+                    call setForkJoinScaling ( conProb = real(stat%numFunCallAccepted, RKG) / real(stat%numFunCallAcceptedRejected, RKG) & ! LCOV_EXCL_LINE
+                                            , seqSecTime = epsilon(1._RKG) & ! LCOV_EXCL_LINE time cost of the sequential section of the code, which is negligible here
+                                            , comSecTime = real(stat%avgCommPerFunCall, RKG) / spec%image%count & ! LCOV_EXCL_LINE
+                                            , parSecTime = real(stat%avgTimePerFunCall, RKG) & ! LCOV_EXCL_LINE
                                             , scalingMinLen = max(10_IK, spec%image%count * 2_IK) & ! LCOV_EXCL_LINE
                                             , scalingMaxLoc = scalingMaxLoc & ! LCOV_EXCL_LINE
                                             , scalingMaxVal = scalingMaxVal & ! LCOV_EXCL_LINE
@@ -470,15 +470,15 @@ end if;
                     call spec%disp%show("stats.parallelism.current.speedup")
                     call spec%disp%show(scaling(spec%image%count), format = format)
                     spec%msg = "This is the estimated maximum speedup gained via "//spec%parallelism%val// & ! LCOV_EXCL_LINE
-                    SKC_" parallelization model compared to serial mode given the current parallel communication overhead."
+                    SKG_" parallelization model compared to serial mode given the current parallel communication overhead."
                     call spec%disp%note%show(spec%msg)
 
                     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
                     call spec%disp%show("stats.parallelism.optimal.process.count")
                     call spec%disp%show(scalingMaxLoc, format = format)
-                    spec%msg = SKC_"This is the predicted optimal number of physical computing processes for "//spec%parallelism%val// & ! LCOV_EXCL_LINE
-                    SKC_" parallelization model, given the current sampling efficiency and parallel communication overhead."
+                    spec%msg = SKG_"This is the predicted optimal number of physical computing processes for "//spec%parallelism%val// & ! LCOV_EXCL_LINE
+                    SKG_" parallelization model, given the current sampling efficiency and parallel communication overhead."
                     call spec%disp%note%show(spec%msg)
 
                     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -486,21 +486,21 @@ end if;
                     spec%msg = ""
                     call spec%disp%show("stats.parallelism.optimal.speedup")
                     call spec%disp%show(scalingMaxVal, format = format)
-                    if (spec%parallelism%is%forkJoin .and. scaling(spec%image%count) < 1._RKC) then
-                        spec%msg = "The time cost of calling the user-provided objective function must be at least "//getStr(1._RKC / scaling(spec%image%count), SK_"(g0.6)")//&
-                        SKC_" times more (that is, ~"//getStr(10**6 * stat%avgTimePerFunCall / scaling(spec%image%count), SK_"(g0.6)")//" microseconds) to see any performance benefits from "//&
-                        spec%parallelism%val//SKC_" parallelization model for this simulation. "
+                    if (spec%parallelism%is%forkJoin .and. scaling(spec%image%count) < 1._RKG) then
+                        spec%msg = "The time cost of calling the user-provided objective function must be at least "//getStr(1._RKG / scaling(spec%image%count), SK_"(g0.6)")//&
+                        SKG_" times more (that is, ~"//getStr(10**6 * stat%avgTimePerFunCall / scaling(spec%image%count), SK_"(g0.6)")//" microseconds) to see any performance benefits from "//&
+                        spec%parallelism%val//SKG_" parallelization model for this simulation. "
                         if (scalingMaxLoc == 1_IK) then
-                            spec%msg = spec%msg//SKC_"Consider simulating in serial mode in the future (if used within the same computing environment and with the same configuration as used here)."
+                            spec%msg = spec%msg//SKG_"Consider simulating in serial mode in the future (if used within the same computing environment and with the same configuration as used here)."
                         else
-                            spec%msg = spec%msg//SKC_"Consider simulating on "//getStr(scalingMaxLoc)//&
-                            SKC_" processors in the future (if used within the same computing environment and with the same configuration as used here)."
+                            spec%msg = spec%msg//SKG_"Consider simulating on "//getStr(scalingMaxLoc)//&
+                            SKG_" processors in the future (if used within the same computing environment and with the same configuration as used here)."
                         end if
                         if (.not. spec%outputSplashMode%is%silent) call spec%disp%note%show(spec%msg, unit = output_unit, tmsize = spec%disp%tmsize, bmsize = spec%disp%bmsize)
                         spec%msg = NL1//spec%msg
                     end if
-                    spec%msg = SKC_"This is the predicted optimal maximum speedup gained via "//spec%parallelism%val// & ! LCOV_EXCL_LINE
-                    SKC_" parallelization model, given the current sampling efficiency and parallel communication overhead."//spec%msg
+                    spec%msg = SKG_"This is the predicted optimal maximum speedup gained via "//spec%parallelism%val// & ! LCOV_EXCL_LINE
+                    SKG_" parallelization model, given the current sampling efficiency and parallel communication overhead."//spec%msg
                     call spec%disp%note%show(spec%msg)
 
                     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -512,7 +512,7 @@ end if;
                         !call spec%disp%show(scaling(iell : min(iell + nscol - 1_IK, size(scaling, 1, IK))), format = scalingFormat, tmsize = 0_IK, bmsize = 0_IK)
                     end do
                     call spec%disp%skip(count = spec%disp%bmsize)
-                    spec%msg = SKC_"This is the predicted strong-scaling speedup behavior of the "//spec%parallelism%val//SKC_" parallelization model, &
+                    spec%msg = SKG_"This is the predicted strong-scaling speedup behavior of the "//spec%parallelism%val//SKG_" parallelization model, &
                     &given the current sampling efficiency and parallel communication overhead, for increasing numbers of processes, starting from a single process."
                     call spec%disp%note%show(spec%msg)
 
@@ -525,10 +525,10 @@ end if;
                     ! if the computers of the future civilization are roughly 1 billion times or more faster than the current 2020 technologies.
                     ! Therefore, a more robust solution is required for cases where the entire simulation is a dry run of the old existing simulation.
                     ! This situation is, however, such a rare occurrence that does not merit further investment in the current version of the library.
-                    call setForkJoinScaling ( conProb = 0._RKC & ! LCOV_EXCL_LINE
-                                            , seqSecTime = epsilon(1._RKC) & ! LCOV_EXCL_LINE time cost of the sequential section of the code, which is negligible here
-                                            , comSecTime = real(stat%avgCommPerFunCall, RKC) / spec%image%count & ! LCOV_EXCL_LINE
-                                            , parSecTime = real(stat%avgTimePerFunCall, RKC) & ! LCOV_EXCL_LINE
+                    call setForkJoinScaling ( conProb = 0._RKG & ! LCOV_EXCL_LINE
+                                            , seqSecTime = epsilon(1._RKG) & ! LCOV_EXCL_LINE time cost of the sequential section of the code, which is negligible here
+                                            , comSecTime = real(stat%avgCommPerFunCall, RKG) / spec%image%count & ! LCOV_EXCL_LINE
+                                            , parSecTime = real(stat%avgTimePerFunCall, RKG) & ! LCOV_EXCL_LINE
                                             , scalingMinLen = max(10_IK, spec%image%count * 2_IK) & ! LCOV_EXCL_LINE
                                             , scalingMaxVal = scalingMaxVal & ! LCOV_EXCL_LINE
                                             , scalingMaxLoc = scalingMaxLoc & ! LCOV_EXCL_LINE
@@ -541,15 +541,15 @@ end if;
                     call spec%disp%show("stats.parallelism.absolute.process.count")
                     call spec%disp%show(scalingMaxLoc, format = format)
                     spec%msg = "This is the predicted absolute number of physical computing processes for "//spec%parallelism%val// & ! LCOV_EXCL_LINE
-                    SKC_" parallelization model, under any sampling efficiency for this sampling problem, given the current parallel communication overhead."
+                    SKG_" parallelization model, under any sampling efficiency for this sampling problem, given the current parallel communication overhead."
                     call spec%disp%note%show(spec%msg)
 
                     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
                     call spec%disp%show("stats.parallelism.absolute.speedup")
                     call spec%disp%show(scalingMaxVal, format = format)
-                    spec%msg = SKC_"This is the predicted absolute optimal maximum speedup gained via "//spec%parallelism%val//SKC_" parallelization model, under any sampling efficiency. &
-                    &This simulation will likely NOT benefit from any additional computing processors beyond the predicted absolute optimal number, "//getStr(scalingMaxLoc)//SKC_", in the above. &
+                    spec%msg = SKG_"This is the predicted absolute optimal maximum speedup gained via "//spec%parallelism%val//SKG_" parallelization model, under any sampling efficiency. &
+                    &This simulation will likely NOT benefit from any additional computing processors beyond the predicted absolute optimal number, "//getStr(scalingMaxLoc)//SKG_", in the above. &
                     &This is true for any value of MCMC sampling efficiency given the current parallel communication overhead. Keep in mind that the predicted absolute optimal number of processors &
                     &is just an estimate whose accuracy depends on many runtime factors, including the topology of the communication network being used, the number of processors per node, &
                     &and the number of tasks to each processor or node."
@@ -564,8 +564,8 @@ end if;
                         !call spec%disp%show(scaling(iell : min(iell + nscol - 1_IK, size(scaling, 1, IK))), format = scalingFormat, tmsize = 0_IK, bmsize = 0_IK)
                     end do
                     call spec%disp%skip(count = spec%disp%bmsize)
-                    spec%msg = SKC_"This is the predicted absolute strong-scaling speedup behavior of the "//spec%parallelism%val//&
-                    SKC_" parallelization model, under any MCMC sampling efficiency, given the current parallel communication overhead,&
+                    spec%msg = SKG_"This is the predicted absolute strong-scaling speedup behavior of the "//spec%parallelism%val//&
+                    SKG_" parallelization model, under any MCMC sampling efficiency, given the current parallel communication overhead,&
                     &for increasing numbers of processes, starting from a single process."
                     call spec%disp%note%show(spec%msg)
 
@@ -580,7 +580,7 @@ end if;
 
                 call spec%disp%show("stats.domain.logVolume")
                 call spec%disp%show(spec%domain%logVol, format = format)
-                call spec%disp%note%show("This is the natural logarithm of the volume of the "//spec%ndim%str//SKC_"-dimensional domain over which the objective function was defined.")
+                call spec%disp%note%show("This is the natural logarithm of the volume of the "//spec%ndim%str//SKG_"-dimensional domain over which the objective function was defined.")
 
                 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -650,7 +650,7 @@ end if;
                 if (spec%image%is%first .and. .not. spec%outputSplashMode%is%silent) then
                     call spec%disp%note%show("Computing the statistical properties of the Markov chain...", unit = output_unit)
                 end if
-                call spec%disp%text%wrap(NL1//SKC_"The statistical properties of the Markov chain"//NL1)
+                call spec%disp%text%wrap(NL1//SKG_"The statistical properties of the Markov chain"//NL1)
 
                 ! Compute the covariance and correlation upper-triangle matrices.
 
@@ -693,7 +693,7 @@ end if;
                 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
                 call spec%disp%show("stats.chain.verbose.covmat")
-                call spec%disp%show(css_type([character(len(spec%domainAxisName%val),SKC) :: SKC_"axis", spec%domainAxisName%val]), format = spec%reportFile%format%fixform, bmsize = 0_IK)
+                call spec%disp%show(css_type([character(len(spec%domainAxisName%val),SKG) :: SKG_"axis", spec%domainAxisName%val]), format = spec%reportFile%format%fixform, bmsize = 0_IK)
                 call spec%disp%skip(count = spec%disp%tmsize)
                 do idim = 1, ndim
                     write(spec%reportFile%unit, spec%reportFile%format%strreal) trim(adjustl(spec%domainAxisName%val(idim))), stat%chain%cov(1 : ndim, idim)
@@ -704,7 +704,7 @@ end if;
                 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
                 call spec%disp%show("stats.chain.verbose.cormat")
-                call spec%disp%show(css_type([character(len(spec%domainAxisName%val),SKC) :: SKC_"axis", spec%domainAxisName%val]), format = spec%reportFile%format%fixform, bmsize = 0_IK)
+                call spec%disp%show(css_type([character(len(spec%domainAxisName%val),SKG) :: SKG_"axis", spec%domainAxisName%val]), format = spec%reportFile%format%fixform, bmsize = 0_IK)
                 call spec%disp%skip(count = spec%disp%tmsize)
                 do idim = 1, ndim
                     write(spec%reportFile%unit, spec%reportFile%format%strreal) trim(adjustl(spec%domainAxisName%val(idim))), stat%chain%cor(1 : ndim, idim)
@@ -722,7 +722,7 @@ end if;
 
                 call setResized(stat%chain%quantile%quan, [size(stat%chain%quantile%prob, 1, IK), ndim])
                 block
-                    real(RKC), allocatable :: sample(:)
+                    real(RKG), allocatable :: sample(:)
                     do idim = 1, ndim
                         sample = stat%cfc%sampleState(idim, stat%burninLocMCMC%compact : stat%cfc%nsam)
                         stat%chain%quantile%quan(:, idim) = getQuan(neimean, stat%chain%quantile%prob, sample, stat%cfc%sampleWeight(stat%burninLocMCMC%compact : stat%cfc%nsam), stat%chain%size)
@@ -731,7 +731,7 @@ end if;
                 !stat%chain%quantile%quan = getQuan(neimean, stat%chain%quantile%prob, stat%cfc%sampleState(idim, stat%burninLocMCMC%compact : stat%cfc%nsam), 2_IK, stat%cfc%sampleWeight(stat%burninLocMCMC%compact : stat%cfc%nsam), stat%chain%size)
 
                 call spec%disp%show("stats.chain.verbose.quantile")
-                call spec%disp%show(css_type([character(len(spec%domainAxisName%val),SKC) :: SKC_"quantile", spec%domainAxisName%val]), format = spec%reportFile%format%fixform, bmsize = 0_IK)
+                call spec%disp%show(css_type([character(len(spec%domainAxisName%val),SKG) :: SKG_"quantile", spec%domainAxisName%val]), format = spec%reportFile%format%fixform, bmsize = 0_IK)
                 call spec%disp%skip(count = spec%disp%tmsize)
                 do iq = 1, size(stat%chain%quantile%prob, 1, IK)
                     write(spec%reportFile%unit, spec%reportFile%format%allreal) stat%chain%quantile%prob(iq), (stat%chain%quantile%quan(iq, idim), idim = 1, ndim)
@@ -762,21 +762,21 @@ end if;
 
                 call spec%disp%show("stats.chain.refined.act")
                 call spec%disp%skip(count = spec%disp%tmsize)
-                write(spec%reportFile%unit, spec%reportFile%format%fixform) "refinementStage", "sampleSize", "ACT_sampleLogFunc", (SKC_"ACT_"//trim(adjustl(spec%domainAxisName%val(idim))), idim = 1, ndim)
+                write(spec%reportFile%unit, spec%reportFile%format%fixform) "refinementStage", "sampleSize", "ACT_sampleLogFunc", (SKG_"ACT_"//trim(adjustl(spec%domainAxisName%val(idim))), idim = 1, ndim)
                 block
                     integer(IK) :: iref
-                    character(:,SKC), allocatable :: thisForm
-                    thisForm = SKC_"('"//spec%reportFile%indent//SKC_"',2(I"//spec%outputColumnWidth%max//SKC_",' '),*("//& ! LCOV_EXCL_LINE
-                    spec%real%ed//spec%outputColumnWidth%max//SKC_"."//spec%outputPrecision%str//spec%real%ex//SKC_",:,' '))"
+                    character(:,SKG), allocatable :: thisForm
+                    thisForm = SKG_"('"//spec%reportFile%indent//SKG_"',2(I"//spec%outputColumnWidth%max//SKG_",' '),*("//& ! LCOV_EXCL_LINE
+                    spec%real%ed//spec%outputColumnWidth%max//SKG_"."//spec%outputPrecision%str//spec%real%ex//SKG_",:,' '))"
                     call spec%disp%skip(count = spec%disp%tmsize)
                     do iref = 0, stat%sfc%nref
                         write(spec%reportFile%unit, thisForm) iref, stat%sfc%sumw(iref), stat%sfc%act(0 : ndim, iref)
                     end do
                     call spec%disp%skip(count = spec%disp%bmsize)
                 end block
-                spec%msg = SKC_"This is the table of the Integrated Autocorrelation (ACT) of individual variables in the verbose (Markov) chain, at increasing stages of chain refinements."
+                spec%msg = SKG_"This is the table of the Integrated Autocorrelation (ACT) of individual variables in the verbose (Markov) chain, at increasing stages of chain refinements."
                 if (stat%sfc%nref == 0_IK) spec%msg = spec%msg//NL1// & ! LCOV_EXCL_LINE
-                SKC_"The user-specified `outputSampleRefinementCount` ("//getStr(spec%outputSampleRefinementCount%val)//SKC_") &
+                SKG_"The user-specified `outputSampleRefinementCount` ("//getStr(spec%outputSampleRefinementCount%val)//SKG_") &
                 &is too small to ensure an accurate computation of the decorrelated i.i.d. effective sample size. No refinement of the Markov chain was performed."
                 call spec%disp%note%show(spec%msg)
 
@@ -815,32 +815,32 @@ end if;
                 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
                 call spec%disp%show("stats.chain.refined.efficiency.essOverAccepted")
-                call spec%disp%show(real(stat%ess, RKC) / real(stat%numFunCallAccepted, RKC), format = format)
-                spec%msg = SKC_"This is the effective sampling efficiency given the accepted function calls, that is, &
+                call spec%disp%show(real(stat%ess, RKG) / real(stat%numFunCallAccepted, RKG), format = format)
+                spec%msg = SKG_"This is the effective sampling efficiency given the accepted function calls, that is, &
                 &the final refined effective sample size (ESS) divided by the number of accepted function calls."
                 call spec%disp%note%show(spec%msg)
 
                 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
                 call spec%disp%show("stats.chain.refined.efficiency.essOverAcceptedRejected")
-                call spec%disp%show(real(stat%ess, RKC) / real(stat%numFunCallAcceptedRejected, RKC), format = format)
-                spec%msg = SKC_"This is the effective sampling efficiency given the accepted and rejected function calls, that is, &
+                call spec%disp%show(real(stat%ess, RKG) / real(stat%numFunCallAcceptedRejected, RKG), format = format)
+                spec%msg = SKG_"This is the effective sampling efficiency given the accepted and rejected function calls, that is, &
                 &the final refined effective sample size (ESS) divided by the number of (accepted + rejected) function calls."
                 call spec%disp%note%show(spec%msg)
 
                 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
                 call spec%disp%show("stats.chain.refined.efficiency.essOverAcceptedRejectedDelayed")
-                call spec%disp%show(real(stat%ess, RKC) / real(stat%numFunCallAcceptedRejectedDelayed, RKC), format = format)
-                spec%msg = SKC_"This is the effective sampling efficiency given the accepted, rejected, and delayed-rejection (if any requested) function calls, &
+                call spec%disp%show(real(stat%ess, RKG) / real(stat%numFunCallAcceptedRejectedDelayed, RKG), format = format)
+                spec%msg = SKG_"This is the effective sampling efficiency given the accepted, rejected, and delayed-rejection (if any requested) function calls, &
                 &that is, the final refined effective sample size (ESS) divided by the number of (accepted + rejected + delayed-rejection) function calls."
                 call spec%disp%note%show(spec%msg)
 
                 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
                 call spec%disp%show("stats.chain.refined.efficiency.essOverAcceptedRejectedDelayedUnused")
-                call spec%disp%show(real(stat%ess, RKC) / real(stat%numFunCallAcceptedRejectedDelayedUnused, RKC), format = format)
-                spec%msg = SKC_"This is the effective sampling efficiency given the accepted, rejected, delayed-rejection (if any requested), and unused function calls, &
+                call spec%disp%show(real(stat%ess, RKG) / real(stat%numFunCallAcceptedRejectedDelayedUnused, RKG), format = format)
+                spec%msg = SKG_"This is the effective sampling efficiency given the accepted, rejected, delayed-rejection (if any requested), and unused function calls, &
                 &(in parallel simulations), that is, the final refined effective sample size (ESS) divided by the number of (accepted + rejected + delayed-rejection + unused) function calls."
                 call spec%disp%note%show(spec%msg)
 
@@ -852,23 +852,23 @@ end if;
 
                 blockSampleFileGeneration: if (spec%outputSampleSize%val == 0_IK) then
 
-                    call spec%disp%note%show(SKC_"Skipping the generation of the refined chain and the output "//spec%sampleFile%kind//SKC_" file, as requested by the user...")
+                    call spec%disp%note%show(SKG_"Skipping the generation of the refined chain and the output "//spec%sampleFile%kind//SKG_" file, as requested by the user...")
 
                 else blockSampleFileGeneration
 
                     ! report to the report-file(s)
 
-                    call spec%disp%note%show(SKC_"Generating the output "//spec%sampleFile%kind//SKC_" file:"//NL1//spec%sampleFile%file)
+                    call spec%disp%note%show(SKG_"Generating the output "//spec%sampleFile%kind//SKG_" file:"//NL1//spec%sampleFile%file)
                     if (spec%image%is%first .and. .not. spec%outputSplashMode%is%silent) then
                         ! print the message for the generating the output sample file on the first image
-                        call spec%disp%note%show(SKC_"Generating the output "//spec%sampleFile%kind//SKC_" file:"//NL1//spec%sampleFile%file, unit = output_unit, bmsize = 0_IK)
+                        call spec%disp%note%show(SKG_"Generating the output "//spec%sampleFile%kind//SKG_" file:"//NL1//spec%sampleFile%file, unit = output_unit, bmsize = 0_IK)
                         ! print the message for the generating the output sample file on the rest of the images in order.
 #if                     CAF_ENABLED || MPI_ENABLED || OMP_ENABLED
                         if (spec%parallelism%is%multiChain) then
                             block
                                 integer(IK) :: imageID
                                 do imageID = 2, spec%image%count
-                                    call spec%disp%note%show(getReplaced(spec%sampleFile%file, SKC_"pid1", SKC_"pid"//getStr(imageID)), unit = output_unit, tmsize = 0_IK, bmsize = 0_IK)
+                                    call spec%disp%note%show(getReplaced(spec%sampleFile%file, SKG_"pid1", SKG_"pid"//getStr(imageID)), unit = output_unit, tmsize = 0_IK, bmsize = 0_IK)
                                 end do
                             end block
                         end if
@@ -912,7 +912,7 @@ end if;
                     stat%sfc%nref = 0_IK
                     call setRebound(stat%sfc%nsam, 0_IK, 0_IK)
                     call setRebound(stat%sfc%sumw, 0_IK, 0_IK)
-                    stat%sfc%sampleWeight = nint(getReweight(exp(stat%cfc%sampleLogWeight - getLogSumExp(stat%cfc%sampleLogWeight)), 1._RKC / stat%sample%size), IK)
+                    stat%sfc%sampleWeight = nint(getReweight(exp(stat%cfc%sampleLogWeight - getLogSumExp(stat%cfc%sampleLogWeight)), 1._RKG / stat%sample%size), IK)
                     stat%sfc%nsam(stat%sfc%nref) = size(stat%sfc%sampleWeight, 1, IK)
                     call setRebound(stat%sfc%sampleLogFuncState, [0_IK, 1_IK], [ndim, stat%sfc%nsam(stat%sfc%nref)])
                     stat%sfc%sumw(stat%sfc%nref) = sum(stat%sfc%sampleWeight)
@@ -923,7 +923,7 @@ end if;
 
                     sfc_block: block
                         integer(IK) :: isam, iwei
-                        spec%sampleFile%iomsg = SKC_""
+                        spec%sampleFile%iomsg = SKG_""
                         spec%sampleFile%unit = getFileUnit() ! for some unknown reason, if newunit is used, GFortran opens the file as an internal file
                         open(unit = spec%sampleFile%unit, file = spec%sampleFile%file, form = spec%sampleFile%form, status = spec%sampleFile%status, position = spec%sampleFile%position, iostat = spec%sampleFile%iostat, iomsg = spec%sampleFile%iomsg SHARED)
                         if (spec%sampleFile%iostat /= 0_IK) exit sfc_block
@@ -950,9 +950,9 @@ end if;
                     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
                     if (spec%image%is%first .and. .not. spec%outputSplashMode%is%silent) then
-                        call spec%disp%note%show(SKC_"Computing the statistical properties of the final output sample...", unit = output_unit)
+                        call spec%disp%note%show(SKG_"Computing the statistical properties of the final output sample...", unit = output_unit)
                     end if
-                    call spec%disp%text%wrap(NL1//SKC_"The statistical properties of the final output sample"//NL1)
+                    call spec%disp%text%wrap(NL1//SKG_"The statistical properties of the final output sample"//NL1)
 #if                 ParaDRAM_ENABLED || ParaDISE_ENABLED
                     CHECK_ASSERTION(__LINE__, stat%sample%size == stat%sfc%sumw(stat%sfc%nref), \
                     SK_"@getErrSampling(): The condition `stat%sample%size == stat%sfc%sumw(stat%sfc%nref)` must hold. stat%sample%size, stat%sfc%sumw(stat%sfc%nref), stat%sfc%nref = "//\
@@ -968,13 +968,13 @@ end if;
                         call setMatCopy(stat%sample%cov, rdpack, stat%sample%cov, rdpack, lowDia, transHerm)
                         stat%sample%cor = getCor(stat%sample%cov, subsetv = lowDia)
                     else
-                        stat%sample%cor = getMatInit([ndim, ndim], uppLowDia, 0._RKC, 0._RKC, 0._RKC)
-                        stat%sample%cov = getMatInit([ndim, ndim], uppLowDia, 0._RKC, 0._RKC, 0._RKC)
+                        stat%sample%cor = getMatInit([ndim, ndim], uppLowDia, 0._RKG, 0._RKG, 0._RKG)
+                        stat%sample%cov = getMatInit([ndim, ndim], uppLowDia, 0._RKG, 0._RKG, 0._RKG)
                     end if
 
                     ! Report the refined chain statistics.
 
-                    !formatStr = "(1A"//spec%outputColumnWidth%max//SKC_",*(E"//spec%outputColumnWidth%max//SKC_"."//spec%outputPrecision%str//SKC_"))"
+                    !formatStr = "(1A"//spec%outputColumnWidth%max//SKG_",*(E"//spec%outputColumnWidth%max//SKG_"."//spec%outputPrecision%str//SKG_"))"
 
                     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -983,18 +983,18 @@ end if;
                     spec%msg = "This is the final output refined sample size."
                     if (spec%outputSampleSize%val /= -1_IK) then
                         if (stat%sample%size < stat%ess) then
-                            spec%msg = spec%msg//NL1//SKC_"The user-requested sample size ("//getStr(stat%sample%size)//SKC_") is smaller &
-                            &than the potentially-optimal i.i.d. sample size ("//getStr(stat%ess)//SKC_"). The output sample &
+                            spec%msg = spec%msg//NL1//SKG_"The user-requested sample size ("//getStr(stat%sample%size)//SKG_") is smaller &
+                            &than the potentially-optimal i.i.d. sample size ("//getStr(stat%ess)//SKG_"). The output sample &
                             &contains i.i.d. samples, however, the sample-size could have been larger if it had been set to the optimal size. &
                             &To get the optimal size in the future runs, set outputSampleSize = -1, or drop it from the input list."
                         elseif (stat%ess < stat%sample%size) then
-                            spec%msg = spec%msg//NL1//SKC_"The user-requested sample size ("//getStr(stat%sample%size)//SKC_") is larger than &
-                            &the potentially-optimal i.i.d. sample size ("//getStr(stat%ess)//SKC_"). The resulting sample likely contains &
+                            spec%msg = spec%msg//NL1//SKG_"The user-requested sample size ("//getStr(stat%sample%size)//SKG_") is larger than &
+                            &the potentially-optimal i.i.d. sample size ("//getStr(stat%ess)//SKG_"). The resulting sample likely contains &
                             &duplicates and is not independently and identically distributed (i.i.d.). To get the optimal &
                             &size in the future runs, set outputSampleSize = -1, or drop it from the input list."
                         else ! LCOV_EXCL_LINE
-                            spec%msg = spec%msg//NL1//SKC_"How lucky that could be! The user-requested sample size ("//getStr(stat%sample%size)//& ! LCOV_EXCL_LINE
-                            SKC_") is equal to the potentially-optimal i.i.d. sample size determined by the "//spec%method%val//SKC_" sampler." ! LCOV_EXCL_LINE
+                            spec%msg = spec%msg//NL1//SKG_"How lucky that could be! The user-requested sample size ("//getStr(stat%sample%size)//& ! LCOV_EXCL_LINE
+                            SKG_") is equal to the potentially-optimal i.i.d. sample size determined by the "//spec%method%val//SKG_" sampler." ! LCOV_EXCL_LINE
                         end if
                     end if
                     call spec%disp%note%show(spec%msg)
@@ -1016,7 +1016,7 @@ end if;
                     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
                     call spec%disp%show("stats.chain.refined.covmat")
-                    call spec%disp%show(css_type([character(len(spec%domainAxisName%val),SKC) :: SKC_"axis", spec%domainAxisName%val]), format = spec%reportFile%format%fixform, bmsize = 0_IK)
+                    call spec%disp%show(css_type([character(len(spec%domainAxisName%val),SKG) :: SKG_"axis", spec%domainAxisName%val]), format = spec%reportFile%format%fixform, bmsize = 0_IK)
                     call spec%disp%skip(count = spec%disp%tmsize)
                     do idim = 1, ndim
                         write(spec%reportFile%unit, spec%reportFile%format%strreal) trim(adjustl(spec%domainAxisName%val(idim))), stat%sample%cov(1 : ndim, idim)
@@ -1028,7 +1028,7 @@ end if;
                     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
                     call spec%disp%show("stats.chain.refined.cormat")
-                    call spec%disp%show(css_type([character(len(spec%domainAxisName%val),SKC) :: SKC_"axis", spec%domainAxisName%val]), format = spec%reportFile%format%fixform, bmsize = 0_IK)
+                    call spec%disp%show(css_type([character(len(spec%domainAxisName%val),SKG) :: SKG_"axis", spec%domainAxisName%val]), format = spec%reportFile%format%fixform, bmsize = 0_IK)
                     call spec%disp%skip(count = spec%disp%tmsize)
                     do idim = 1, ndim
                         write(spec%reportFile%unit, spec%reportFile%format%strreal) trim(adjustl(spec%domainAxisName%val(idim))), stat%sample%cor(1 : ndim, idim)
@@ -1047,7 +1047,7 @@ end if;
 
                     call setResized(stat%sample%quantile%quan, [size(stat%sample%quantile%prob, 1, IK), ndim])
                     block
-                        real(RKC), allocatable :: sample(:)
+                        real(RKG), allocatable :: sample(:)
                         do idim = 1, ndim
                             sample = stat%sfc%sampleLogFuncState(idim, :)
                             stat%sample%quantile%quan(:, idim) = getQuan(neimean, stat%sample%quantile%prob, sample, stat%sfc%sampleWeight, stat%sfc%sumw(stat%sfc%nref))
@@ -1056,7 +1056,7 @@ end if;
                     !stat%sample%quantile%quan = getQuan(neimean, stat%sample%quantile%prob, stat%sfc%sampleLogFuncState, 2_IK, stat%sfc%sampleWeight, stat%sfc%sumw(stat%sfc%nref))
 
                     call spec%disp%show("stats.chain.refined.quantile")
-                    call spec%disp%show(css_type([character(len(spec%domainAxisName%val),SKC) :: "quantile", spec%domainAxisName%val]), format = spec%reportFile%format%fixform, bmsize = 0_IK)
+                    call spec%disp%show(css_type([character(len(spec%domainAxisName%val),SKG) :: "quantile", spec%domainAxisName%val]), format = spec%reportFile%format%fixform, bmsize = 0_IK)
                     call spec%disp%skip(count = spec%disp%tmsize)
                     do iq = 1, size(stat%sample%quantile%prob, 1, IK)
                         write(spec%reportFile%unit, spec%reportFile%format%allreal) stat%sample%quantile%prob(iq), (stat%sample%quantile%quan(iq, idim), idim = 1, ndim)
@@ -1081,14 +1081,14 @@ end if;
 
                         multiChainConvergenceTest: block
 
-                            real(RKC), allocatable :: sampleLogFuncState1(:,:)
-                            real(RKC), allocatable :: sampleLogFuncState2(:,:)
+                            real(RKG), allocatable :: sampleLogFuncState1(:,:)
+                            real(RKG), allocatable :: sampleLogFuncState2(:,:)
                             integer(IK) :: imageID, idimMinProbKS, pidMinProbKS
                             character(:, SK), allocatable :: sampleFilePath
-                            real(RKC), allocatable :: probKS(:)
-                            real(RKC) :: minProbKS
+                            real(RKG), allocatable :: probKS(:)
+                            real(RKG) :: minProbKS
 
-                            minProbKS = 2._RKC !huge(minProbKS)
+                            minProbKS = 2._RKG !huge(minProbKS)
                             call setResized(probKS, ndim + 1_IK)
                             !call setRebound(probKS, 0_IK, ndim)
 
@@ -1097,7 +1097,7 @@ end if;
                             err%stat = getErrTableRead(spec%sampleFile%file, sampleLogFuncState1, trans, sep = spec%outputSeparator%val, roff = 1_IK)
                             err%occurred = err%stat /= 0_IK
                             if (err%occurred) then
-                                err%msg = PROCEDURE_NAME//SKC_": "//err%msg ! LCOV_EXCL_LINE
+                                err%msg = PROCEDURE_NAME//SKG_": "//err%msg ! LCOV_EXCL_LINE
                                 exit blockLeaderPostProcessing ! LCOV_EXCL_LINE
                             end if
                             do idim = 1, ndim + 1
@@ -1114,11 +1114,11 @@ end if;
                                 if (spec%image%id /= imageID) then
 
                                     ! read the refined chain on the other image.
-                                    sampleFilePath = getReplaced(spec%sampleFile%file, spec%sampleFile%suffix, getReplaced(spec%sampleFile%suffix, SKC_"_pid"//getStr(spec%image%id), SKC_"_pid"//getStr(imageID)))
+                                    sampleFilePath = getReplaced(spec%sampleFile%file, spec%sampleFile%suffix, getReplaced(spec%sampleFile%suffix, SKG_"_pid"//getStr(spec%image%id), SKG_"_pid"//getStr(imageID)))
                                     err%stat = getErrTableRead(sampleFilePath, sampleLogFuncState2, trans, sep = spec%outputSeparator%val, roff = 1_IK)
                                     err%occurred = err%stat /= 0_IK
                                     if (err%occurred) then
-                                        err%msg = PROCEDURE_NAME//SKC_": "//err%msg ! LCOV_EXCL_LINE
+                                        err%msg = PROCEDURE_NAME//SKG_": "//err%msg ! LCOV_EXCL_LINE
                                         exit blockLeaderPostProcessing ! LCOV_EXCL_LINE
                                     end if
 
@@ -1142,7 +1142,7 @@ end if;
                             end do
 
                             call spec%disp%skip(count = spec%disp%bmsize)
-                            spec%msg = SKC_"This is the table of pairwise inter-chain Kolmogorov-Smirnov (KS) convergence (similarity) probabilities. &
+                            spec%msg = SKG_"This is the table of pairwise inter-chain Kolmogorov-Smirnov (KS) convergence (similarity) probabilities. &
                             &Higher KS probabilities are better, presenting less evidence for a lack of convergence of all chains to the same target density function."
                             call spec%disp%note%show(spec%msg)
 
@@ -1152,8 +1152,8 @@ end if;
 
                             call spec%disp%show("stats.chain.refined.kstest.prob.min")
                             call spec%disp%show(minProbKS, format = format)
-                            spec%msg = SKC_"This is the smallest KS-test probability for the inter-chain sampling convergence, which has happened between "//&
-                            stat%sfc%colname(idimMinProbKS)%val//SKC_" on the chains generated by processes "//getStr(spec%image%id)//SKC_" and "//getStr(pidMinProbKS)//SKC_"."
+                            spec%msg = SKG_"This is the smallest KS-test probability for the inter-chain sampling convergence, which has happened between "//&
+                            stat%sfc%colname(idimMinProbKS)%val//SKG_" on the chains generated by processes "//getStr(spec%image%id)//SKG_" and "//getStr(pidMinProbKS)//SKG_"."
                             call spec%disp%note%show(spec%msg)
 
                             ! Report the smallest KS probabilities on stdout.
@@ -1164,8 +1164,8 @@ end if;
                                 end if
                                 do imageID = 1, spec%image%count
                                     if (spec%image%id == imageID) then
-                                        spec%msg = getStr(minProbKS)//SKC_" for "//stat%sfc%colname(idimMinProbKS)%val//&
-                                        SKC_" on the chains generated by processes "//getStr(spec%image%id)//SKC_" and "//getStr(pidMinProbKS)//SKC_"."
+                                        spec%msg = getStr(minProbKS)//SKG_" for "//stat%sfc%colname(idimMinProbKS)%val//&
+                                        SKG_" on the chains generated by processes "//getStr(spec%image%id)//SKG_" and "//getStr(pidMinProbKS)//SKG_"."
                                         call spec%disp%note%show(spec%msg, unit = output_unit, tmsize = 0_IK, bmsize = 0_IK)
                                     end if
                                     flush(output_unit)

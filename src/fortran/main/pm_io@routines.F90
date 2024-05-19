@@ -457,7 +457,7 @@ contains
 #define File_ENABLED 1
 
     module procedure getContentsFromFile_SK
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
 #include "pm_io@routines.inc.F90"
     end procedure
 
@@ -468,7 +468,7 @@ contains
 #define Unit_ENABLED 1
 
     module procedure getContentsFromUnit_SK
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
 #include "pm_io@routines.inc.F90"
     end procedure
 
@@ -493,7 +493,7 @@ contains
 #define CDD_ENABLED 1
 
     module procedure setContentsFromFileCDD_SK
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
 #include "pm_io@routines.inc.F90"
     end procedure
 
@@ -504,7 +504,7 @@ contains
 #define CII_ENABLED 1
 
     module procedure setContentsFromFileCII_SK
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
 #include "pm_io@routines.inc.F90"
     end procedure
 
@@ -525,7 +525,7 @@ contains
 #define CDD_ENABLED 1
 
     module procedure setContentsFromUnitCDD_SK
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
 #include "pm_io@routines.inc.F90"
     end procedure
 
@@ -536,7 +536,7 @@ contains
 #define CII_ENABLED 1
 
     module procedure setContentsFromUnitCII_SK
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
 #include "pm_io@routines.inc.F90"
     end procedure
 
@@ -567,7 +567,7 @@ contains
 #define CDD_ENABLED 1
 
     module procedure setContentsToFileCDD_SK
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
 #include "pm_io@routines.inc.F90"
     end procedure
 
@@ -578,7 +578,7 @@ contains
 #define CII_ENABLED 1
 
     module procedure setContentsToFileCII_SK
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
 #include "pm_io@routines.inc.F90"
     end procedure
 
@@ -599,7 +599,7 @@ contains
 !#define CDD_ENABLED 1
 !
 !    module procedure setContentsToUnitCDD_SK
-!        use pm_kind, only: SKC => SK
+!        use pm_kind, only: SKG => SK
 !#include "pm_io@routines.inc.F90"
 !    end procedure
 !
@@ -610,7 +610,7 @@ contains
 !#define CII_ENABLED 1
 !
 !    module procedure setContentsToUnitCII_SK
-!        use pm_kind, only: SKC => SK
+!        use pm_kind, only: SKG => SK
 !#include "pm_io@routines.inc.F90"
 !    end procedure
 !
@@ -635,7 +635,7 @@ contains
 #define IK_ENABLED 1
 
     module procedure setFileClosed_IK
-        use pm_kind, only: IKC => IK
+        use pm_kind, only: IKG => IK
 #include "pm_io@routines.inc.F90"
     end procedure
 
@@ -654,7 +654,7 @@ contains
 #define IK_ENABLED 1
 
     module procedure getCountRecordLeft_IK
-        use pm_kind, only: IKC => IK
+        use pm_kind, only: IKG => IK
 #include "pm_io@routines.inc.F90"
     end procedure
 
@@ -673,7 +673,7 @@ contains
 #define Unit_ENABLED 1
 
     module procedure getRecordFromUnit_SK
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
 #include "pm_io@routines.inc.F90"
     end procedure
 
@@ -692,7 +692,7 @@ contains
 #define UR_ENABLED 1
 
     module procedure setRecordFromUR_SK
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
 #include "pm_io@routines.inc.F90"
     end procedure
 
@@ -703,7 +703,7 @@ contains
 #define URII_ENABLED 1
 
     module procedure setRecordFromURII_SK
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
 #include "pm_io@routines.inc.F90"
     end procedure
 
@@ -741,35 +741,35 @@ contains
 
 #if SK5_ENABLED
     module procedure getErrTableReadFile_NO_D1_SK5
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if SK4_ENABLED
     module procedure getErrTableReadFile_NO_D1_SK4
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if SK3_ENABLED
     module procedure getErrTableReadFile_NO_D1_SK3
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if SK2_ENABLED
     module procedure getErrTableReadFile_NO_D1_SK2
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if SK1_ENABLED
     module procedure getErrTableReadFile_NO_D1_SK1
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
@@ -782,35 +782,35 @@ contains
 
 #if IK5_ENABLED
     module procedure getErrTableReadFile_NO_D1_IK5
-        use pm_kind, only: IKC => IK5
+        use pm_kind, only: IKG => IK5
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if IK4_ENABLED
     module procedure getErrTableReadFile_NO_D1_IK4
-        use pm_kind, only: IKC => IK4
+        use pm_kind, only: IKG => IK4
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if IK3_ENABLED
     module procedure getErrTableReadFile_NO_D1_IK3
-        use pm_kind, only: IKC => IK3
+        use pm_kind, only: IKG => IK3
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if IK2_ENABLED
     module procedure getErrTableReadFile_NO_D1_IK2
-        use pm_kind, only: IKC => IK2
+        use pm_kind, only: IKG => IK2
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if IK1_ENABLED
     module procedure getErrTableReadFile_NO_D1_IK1
-        use pm_kind, only: IKC => IK1
+        use pm_kind, only: IKG => IK1
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
@@ -825,35 +825,35 @@ contains
 
 #if LK5_ENABLED
     module procedure getErrTableReadFile_NO_D1_LK5
-        use pm_kind, only: LKC => LK5
+        use pm_kind, only: LKG => LK5
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if LK4_ENABLED
     module procedure getErrTableReadFile_NO_D1_LK4
-        use pm_kind, only: LKC => LK4
+        use pm_kind, only: LKG => LK4
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if LK3_ENABLED
     module procedure getErrTableReadFile_NO_D1_LK3
-        use pm_kind, only: LKC => LK3
+        use pm_kind, only: LKG => LK3
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if LK2_ENABLED
     module procedure getErrTableReadFile_NO_D1_LK2
-        use pm_kind, only: LKC => LK2
+        use pm_kind, only: LKG => LK2
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if LK1_ENABLED
     module procedure getErrTableReadFile_NO_D1_LK1
-        use pm_kind, only: LKC => LK1
+        use pm_kind, only: LKG => LK1
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
@@ -866,35 +866,35 @@ contains
 
 #if CK3_ENABLED
     module procedure getErrTableReadFile_NO_D1_CK3
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure getErrTableReadFile_NO_D1_CK2
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure getErrTableReadFile_NO_D1_CK1
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if CK5_ENABLED
     module procedure getErrTableReadFile_NO_D1_CK5
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure getErrTableReadFile_NO_D1_CK4
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
@@ -907,35 +907,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getErrTableReadFile_NO_D1_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getErrTableReadFile_NO_D1_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getErrTableReadFile_NO_D1_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getErrTableReadFile_NO_D1_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getErrTableReadFile_NO_D1_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
@@ -958,35 +958,35 @@ contains
 
 #if SK5_ENABLED
     module procedure getErrTableReadUnit_NO_D1_SK5
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if SK4_ENABLED
     module procedure getErrTableReadUnit_NO_D1_SK4
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if SK3_ENABLED
     module procedure getErrTableReadUnit_NO_D1_SK3
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if SK2_ENABLED
     module procedure getErrTableReadUnit_NO_D1_SK2
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if SK1_ENABLED
     module procedure getErrTableReadUnit_NO_D1_SK1
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
@@ -999,35 +999,35 @@ contains
 
 #if IK5_ENABLED
     module procedure getErrTableReadUnit_NO_D1_IK5
-        use pm_kind, only: IKC => IK5
+        use pm_kind, only: IKG => IK5
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if IK4_ENABLED
     module procedure getErrTableReadUnit_NO_D1_IK4
-        use pm_kind, only: IKC => IK4
+        use pm_kind, only: IKG => IK4
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if IK3_ENABLED
     module procedure getErrTableReadUnit_NO_D1_IK3
-        use pm_kind, only: IKC => IK3
+        use pm_kind, only: IKG => IK3
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if IK2_ENABLED
     module procedure getErrTableReadUnit_NO_D1_IK2
-        use pm_kind, only: IKC => IK2
+        use pm_kind, only: IKG => IK2
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if IK1_ENABLED
     module procedure getErrTableReadUnit_NO_D1_IK1
-        use pm_kind, only: IKC => IK1
+        use pm_kind, only: IKG => IK1
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
@@ -1042,35 +1042,35 @@ contains
 
 #if LK5_ENABLED
     module procedure getErrTableReadUnit_NO_D1_LK5
-        use pm_kind, only: LKC => LK5
+        use pm_kind, only: LKG => LK5
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if LK4_ENABLED
     module procedure getErrTableReadUnit_NO_D1_LK4
-        use pm_kind, only: LKC => LK4
+        use pm_kind, only: LKG => LK4
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if LK3_ENABLED
     module procedure getErrTableReadUnit_NO_D1_LK3
-        use pm_kind, only: LKC => LK3
+        use pm_kind, only: LKG => LK3
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if LK2_ENABLED
     module procedure getErrTableReadUnit_NO_D1_LK2
-        use pm_kind, only: LKC => LK2
+        use pm_kind, only: LKG => LK2
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if LK1_ENABLED
     module procedure getErrTableReadUnit_NO_D1_LK1
-        use pm_kind, only: LKC => LK1
+        use pm_kind, only: LKG => LK1
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
@@ -1083,35 +1083,35 @@ contains
 
 #if CK3_ENABLED
     module procedure getErrTableReadUnit_NO_D1_CK3
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure getErrTableReadUnit_NO_D1_CK2
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure getErrTableReadUnit_NO_D1_CK1
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if CK5_ENABLED
     module procedure getErrTableReadUnit_NO_D1_CK5
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure getErrTableReadUnit_NO_D1_CK4
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
@@ -1124,35 +1124,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getErrTableReadUnit_NO_D1_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getErrTableReadUnit_NO_D1_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getErrTableReadUnit_NO_D1_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getErrTableReadUnit_NO_D1_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getErrTableReadUnit_NO_D1_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
@@ -1187,35 +1187,35 @@ contains
 
 #if SK5_ENABLED
     module procedure getErrTableReadFile_NO_D2_SK5
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if SK4_ENABLED
     module procedure getErrTableReadFile_NO_D2_SK4
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if SK3_ENABLED
     module procedure getErrTableReadFile_NO_D2_SK3
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if SK2_ENABLED
     module procedure getErrTableReadFile_NO_D2_SK2
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if SK1_ENABLED
     module procedure getErrTableReadFile_NO_D2_SK1
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
@@ -1228,35 +1228,35 @@ contains
 
 #if IK5_ENABLED
     module procedure getErrTableReadFile_NO_D2_IK5
-        use pm_kind, only: IKC => IK5
+        use pm_kind, only: IKG => IK5
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if IK4_ENABLED
     module procedure getErrTableReadFile_NO_D2_IK4
-        use pm_kind, only: IKC => IK4
+        use pm_kind, only: IKG => IK4
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if IK3_ENABLED
     module procedure getErrTableReadFile_NO_D2_IK3
-        use pm_kind, only: IKC => IK3
+        use pm_kind, only: IKG => IK3
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if IK2_ENABLED
     module procedure getErrTableReadFile_NO_D2_IK2
-        use pm_kind, only: IKC => IK2
+        use pm_kind, only: IKG => IK2
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if IK1_ENABLED
     module procedure getErrTableReadFile_NO_D2_IK1
-        use pm_kind, only: IKC => IK1
+        use pm_kind, only: IKG => IK1
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
@@ -1271,35 +1271,35 @@ contains
 
 #if LK5_ENABLED
     module procedure getErrTableReadFile_NO_D2_LK5
-        use pm_kind, only: LKC => LK5
+        use pm_kind, only: LKG => LK5
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if LK4_ENABLED
     module procedure getErrTableReadFile_NO_D2_LK4
-        use pm_kind, only: LKC => LK4
+        use pm_kind, only: LKG => LK4
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if LK3_ENABLED
     module procedure getErrTableReadFile_NO_D2_LK3
-        use pm_kind, only: LKC => LK3
+        use pm_kind, only: LKG => LK3
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if LK2_ENABLED
     module procedure getErrTableReadFile_NO_D2_LK2
-        use pm_kind, only: LKC => LK2
+        use pm_kind, only: LKG => LK2
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if LK1_ENABLED
     module procedure getErrTableReadFile_NO_D2_LK1
-        use pm_kind, only: LKC => LK1
+        use pm_kind, only: LKG => LK1
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
@@ -1312,35 +1312,35 @@ contains
 
 #if CK3_ENABLED
     module procedure getErrTableReadFile_NO_D2_CK3
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure getErrTableReadFile_NO_D2_CK2
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure getErrTableReadFile_NO_D2_CK1
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if CK5_ENABLED
     module procedure getErrTableReadFile_NO_D2_CK5
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure getErrTableReadFile_NO_D2_CK4
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
@@ -1353,35 +1353,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getErrTableReadFile_NO_D2_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getErrTableReadFile_NO_D2_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getErrTableReadFile_NO_D2_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getErrTableReadFile_NO_D2_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getErrTableReadFile_NO_D2_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
@@ -1404,35 +1404,35 @@ contains
 
 #if SK5_ENABLED
     module procedure getErrTableReadUnit_NO_D2_SK5
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if SK4_ENABLED
     module procedure getErrTableReadUnit_NO_D2_SK4
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if SK3_ENABLED
     module procedure getErrTableReadUnit_NO_D2_SK3
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if SK2_ENABLED
     module procedure getErrTableReadUnit_NO_D2_SK2
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if SK1_ENABLED
     module procedure getErrTableReadUnit_NO_D2_SK1
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
@@ -1445,35 +1445,35 @@ contains
 
 #if IK5_ENABLED
     module procedure getErrTableReadUnit_NO_D2_IK5
-        use pm_kind, only: IKC => IK5
+        use pm_kind, only: IKG => IK5
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if IK4_ENABLED
     module procedure getErrTableReadUnit_NO_D2_IK4
-        use pm_kind, only: IKC => IK4
+        use pm_kind, only: IKG => IK4
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if IK3_ENABLED
     module procedure getErrTableReadUnit_NO_D2_IK3
-        use pm_kind, only: IKC => IK3
+        use pm_kind, only: IKG => IK3
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if IK2_ENABLED
     module procedure getErrTableReadUnit_NO_D2_IK2
-        use pm_kind, only: IKC => IK2
+        use pm_kind, only: IKG => IK2
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if IK1_ENABLED
     module procedure getErrTableReadUnit_NO_D2_IK1
-        use pm_kind, only: IKC => IK1
+        use pm_kind, only: IKG => IK1
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
@@ -1488,35 +1488,35 @@ contains
 
 #if LK5_ENABLED
     module procedure getErrTableReadUnit_NO_D2_LK5
-        use pm_kind, only: LKC => LK5
+        use pm_kind, only: LKG => LK5
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if LK4_ENABLED
     module procedure getErrTableReadUnit_NO_D2_LK4
-        use pm_kind, only: LKC => LK4
+        use pm_kind, only: LKG => LK4
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if LK3_ENABLED
     module procedure getErrTableReadUnit_NO_D2_LK3
-        use pm_kind, only: LKC => LK3
+        use pm_kind, only: LKG => LK3
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if LK2_ENABLED
     module procedure getErrTableReadUnit_NO_D2_LK2
-        use pm_kind, only: LKC => LK2
+        use pm_kind, only: LKG => LK2
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if LK1_ENABLED
     module procedure getErrTableReadUnit_NO_D2_LK1
-        use pm_kind, only: LKC => LK1
+        use pm_kind, only: LKG => LK1
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
@@ -1529,35 +1529,35 @@ contains
 
 #if CK3_ENABLED
     module procedure getErrTableReadUnit_NO_D2_CK3
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure getErrTableReadUnit_NO_D2_CK2
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure getErrTableReadUnit_NO_D2_CK1
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if CK5_ENABLED
     module procedure getErrTableReadUnit_NO_D2_CK5
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure getErrTableReadUnit_NO_D2_CK4
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
@@ -1570,35 +1570,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getErrTableReadUnit_NO_D2_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getErrTableReadUnit_NO_D2_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getErrTableReadUnit_NO_D2_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getErrTableReadUnit_NO_D2_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getErrTableReadUnit_NO_D2_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
@@ -1645,35 +1645,35 @@ contains
 
 #if SK5_ENABLED
     module procedure getErrTableReadFile_TO_D1_SK5
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if SK4_ENABLED
     module procedure getErrTableReadFile_TO_D1_SK4
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if SK3_ENABLED
     module procedure getErrTableReadFile_TO_D1_SK3
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if SK2_ENABLED
     module procedure getErrTableReadFile_TO_D1_SK2
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if SK1_ENABLED
     module procedure getErrTableReadFile_TO_D1_SK1
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
@@ -1686,35 +1686,35 @@ contains
 
 #if IK5_ENABLED
     module procedure getErrTableReadFile_TO_D1_IK5
-        use pm_kind, only: IKC => IK5
+        use pm_kind, only: IKG => IK5
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if IK4_ENABLED
     module procedure getErrTableReadFile_TO_D1_IK4
-        use pm_kind, only: IKC => IK4
+        use pm_kind, only: IKG => IK4
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if IK3_ENABLED
     module procedure getErrTableReadFile_TO_D1_IK3
-        use pm_kind, only: IKC => IK3
+        use pm_kind, only: IKG => IK3
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if IK2_ENABLED
     module procedure getErrTableReadFile_TO_D1_IK2
-        use pm_kind, only: IKC => IK2
+        use pm_kind, only: IKG => IK2
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if IK1_ENABLED
     module procedure getErrTableReadFile_TO_D1_IK1
-        use pm_kind, only: IKC => IK1
+        use pm_kind, only: IKG => IK1
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
@@ -1729,35 +1729,35 @@ contains
 
 #if LK5_ENABLED
     module procedure getErrTableReadFile_TO_D1_LK5
-        use pm_kind, only: LKC => LK5
+        use pm_kind, only: LKG => LK5
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if LK4_ENABLED
     module procedure getErrTableReadFile_TO_D1_LK4
-        use pm_kind, only: LKC => LK4
+        use pm_kind, only: LKG => LK4
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if LK3_ENABLED
     module procedure getErrTableReadFile_TO_D1_LK3
-        use pm_kind, only: LKC => LK3
+        use pm_kind, only: LKG => LK3
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if LK2_ENABLED
     module procedure getErrTableReadFile_TO_D1_LK2
-        use pm_kind, only: LKC => LK2
+        use pm_kind, only: LKG => LK2
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if LK1_ENABLED
     module procedure getErrTableReadFile_TO_D1_LK1
-        use pm_kind, only: LKC => LK1
+        use pm_kind, only: LKG => LK1
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
@@ -1770,35 +1770,35 @@ contains
 
 #if CK3_ENABLED
     module procedure getErrTableReadFile_TO_D1_CK3
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure getErrTableReadFile_TO_D1_CK2
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure getErrTableReadFile_TO_D1_CK1
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if CK5_ENABLED
     module procedure getErrTableReadFile_TO_D1_CK5
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure getErrTableReadFile_TO_D1_CK4
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
@@ -1811,35 +1811,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getErrTableReadFile_TO_D1_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getErrTableReadFile_TO_D1_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getErrTableReadFile_TO_D1_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getErrTableReadFile_TO_D1_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getErrTableReadFile_TO_D1_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
@@ -1862,35 +1862,35 @@ contains
 
 #if SK5_ENABLED
     module procedure getErrTableReadUnit_TO_D1_SK5
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if SK4_ENABLED
     module procedure getErrTableReadUnit_TO_D1_SK4
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if SK3_ENABLED
     module procedure getErrTableReadUnit_TO_D1_SK3
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if SK2_ENABLED
     module procedure getErrTableReadUnit_TO_D1_SK2
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if SK1_ENABLED
     module procedure getErrTableReadUnit_TO_D1_SK1
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
@@ -1903,35 +1903,35 @@ contains
 
 #if IK5_ENABLED
     module procedure getErrTableReadUnit_TO_D1_IK5
-        use pm_kind, only: IKC => IK5
+        use pm_kind, only: IKG => IK5
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if IK4_ENABLED
     module procedure getErrTableReadUnit_TO_D1_IK4
-        use pm_kind, only: IKC => IK4
+        use pm_kind, only: IKG => IK4
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if IK3_ENABLED
     module procedure getErrTableReadUnit_TO_D1_IK3
-        use pm_kind, only: IKC => IK3
+        use pm_kind, only: IKG => IK3
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if IK2_ENABLED
     module procedure getErrTableReadUnit_TO_D1_IK2
-        use pm_kind, only: IKC => IK2
+        use pm_kind, only: IKG => IK2
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if IK1_ENABLED
     module procedure getErrTableReadUnit_TO_D1_IK1
-        use pm_kind, only: IKC => IK1
+        use pm_kind, only: IKG => IK1
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
@@ -1946,35 +1946,35 @@ contains
 
 #if LK5_ENABLED
     module procedure getErrTableReadUnit_TO_D1_LK5
-        use pm_kind, only: LKC => LK5
+        use pm_kind, only: LKG => LK5
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if LK4_ENABLED
     module procedure getErrTableReadUnit_TO_D1_LK4
-        use pm_kind, only: LKC => LK4
+        use pm_kind, only: LKG => LK4
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if LK3_ENABLED
     module procedure getErrTableReadUnit_TO_D1_LK3
-        use pm_kind, only: LKC => LK3
+        use pm_kind, only: LKG => LK3
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if LK2_ENABLED
     module procedure getErrTableReadUnit_TO_D1_LK2
-        use pm_kind, only: LKC => LK2
+        use pm_kind, only: LKG => LK2
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if LK1_ENABLED
     module procedure getErrTableReadUnit_TO_D1_LK1
-        use pm_kind, only: LKC => LK1
+        use pm_kind, only: LKG => LK1
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
@@ -1987,35 +1987,35 @@ contains
 
 #if CK3_ENABLED
     module procedure getErrTableReadUnit_TO_D1_CK3
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure getErrTableReadUnit_TO_D1_CK2
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure getErrTableReadUnit_TO_D1_CK1
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if CK5_ENABLED
     module procedure getErrTableReadUnit_TO_D1_CK5
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure getErrTableReadUnit_TO_D1_CK4
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
@@ -2028,35 +2028,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getErrTableReadUnit_TO_D1_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getErrTableReadUnit_TO_D1_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getErrTableReadUnit_TO_D1_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getErrTableReadUnit_TO_D1_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getErrTableReadUnit_TO_D1_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
@@ -2091,35 +2091,35 @@ contains
 
 #if SK5_ENABLED
     module procedure getErrTableReadFile_TO_D2_SK5
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if SK4_ENABLED
     module procedure getErrTableReadFile_TO_D2_SK4
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if SK3_ENABLED
     module procedure getErrTableReadFile_TO_D2_SK3
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if SK2_ENABLED
     module procedure getErrTableReadFile_TO_D2_SK2
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if SK1_ENABLED
     module procedure getErrTableReadFile_TO_D2_SK1
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
@@ -2132,35 +2132,35 @@ contains
 
 #if IK5_ENABLED
     module procedure getErrTableReadFile_TO_D2_IK5
-        use pm_kind, only: IKC => IK5
+        use pm_kind, only: IKG => IK5
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if IK4_ENABLED
     module procedure getErrTableReadFile_TO_D2_IK4
-        use pm_kind, only: IKC => IK4
+        use pm_kind, only: IKG => IK4
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if IK3_ENABLED
     module procedure getErrTableReadFile_TO_D2_IK3
-        use pm_kind, only: IKC => IK3
+        use pm_kind, only: IKG => IK3
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if IK2_ENABLED
     module procedure getErrTableReadFile_TO_D2_IK2
-        use pm_kind, only: IKC => IK2
+        use pm_kind, only: IKG => IK2
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if IK1_ENABLED
     module procedure getErrTableReadFile_TO_D2_IK1
-        use pm_kind, only: IKC => IK1
+        use pm_kind, only: IKG => IK1
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
@@ -2175,35 +2175,35 @@ contains
 
 #if LK5_ENABLED
     module procedure getErrTableReadFile_TO_D2_LK5
-        use pm_kind, only: LKC => LK5
+        use pm_kind, only: LKG => LK5
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if LK4_ENABLED
     module procedure getErrTableReadFile_TO_D2_LK4
-        use pm_kind, only: LKC => LK4
+        use pm_kind, only: LKG => LK4
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if LK3_ENABLED
     module procedure getErrTableReadFile_TO_D2_LK3
-        use pm_kind, only: LKC => LK3
+        use pm_kind, only: LKG => LK3
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if LK2_ENABLED
     module procedure getErrTableReadFile_TO_D2_LK2
-        use pm_kind, only: LKC => LK2
+        use pm_kind, only: LKG => LK2
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if LK1_ENABLED
     module procedure getErrTableReadFile_TO_D2_LK1
-        use pm_kind, only: LKC => LK1
+        use pm_kind, only: LKG => LK1
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
@@ -2216,35 +2216,35 @@ contains
 
 #if CK3_ENABLED
     module procedure getErrTableReadFile_TO_D2_CK3
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure getErrTableReadFile_TO_D2_CK2
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure getErrTableReadFile_TO_D2_CK1
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if CK5_ENABLED
     module procedure getErrTableReadFile_TO_D2_CK5
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure getErrTableReadFile_TO_D2_CK4
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
@@ -2257,35 +2257,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getErrTableReadFile_TO_D2_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getErrTableReadFile_TO_D2_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getErrTableReadFile_TO_D2_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getErrTableReadFile_TO_D2_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getErrTableReadFile_TO_D2_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
@@ -2308,35 +2308,35 @@ contains
 
 #if SK5_ENABLED
     module procedure getErrTableReadUnit_TO_D2_SK5
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if SK4_ENABLED
     module procedure getErrTableReadUnit_TO_D2_SK4
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if SK3_ENABLED
     module procedure getErrTableReadUnit_TO_D2_SK3
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if SK2_ENABLED
     module procedure getErrTableReadUnit_TO_D2_SK2
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if SK1_ENABLED
     module procedure getErrTableReadUnit_TO_D2_SK1
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
@@ -2349,35 +2349,35 @@ contains
 
 #if IK5_ENABLED
     module procedure getErrTableReadUnit_TO_D2_IK5
-        use pm_kind, only: IKC => IK5
+        use pm_kind, only: IKG => IK5
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if IK4_ENABLED
     module procedure getErrTableReadUnit_TO_D2_IK4
-        use pm_kind, only: IKC => IK4
+        use pm_kind, only: IKG => IK4
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if IK3_ENABLED
     module procedure getErrTableReadUnit_TO_D2_IK3
-        use pm_kind, only: IKC => IK3
+        use pm_kind, only: IKG => IK3
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if IK2_ENABLED
     module procedure getErrTableReadUnit_TO_D2_IK2
-        use pm_kind, only: IKC => IK2
+        use pm_kind, only: IKG => IK2
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if IK1_ENABLED
     module procedure getErrTableReadUnit_TO_D2_IK1
-        use pm_kind, only: IKC => IK1
+        use pm_kind, only: IKG => IK1
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
@@ -2392,35 +2392,35 @@ contains
 
 #if LK5_ENABLED
     module procedure getErrTableReadUnit_TO_D2_LK5
-        use pm_kind, only: LKC => LK5
+        use pm_kind, only: LKG => LK5
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if LK4_ENABLED
     module procedure getErrTableReadUnit_TO_D2_LK4
-        use pm_kind, only: LKC => LK4
+        use pm_kind, only: LKG => LK4
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if LK3_ENABLED
     module procedure getErrTableReadUnit_TO_D2_LK3
-        use pm_kind, only: LKC => LK3
+        use pm_kind, only: LKG => LK3
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if LK2_ENABLED
     module procedure getErrTableReadUnit_TO_D2_LK2
-        use pm_kind, only: LKC => LK2
+        use pm_kind, only: LKG => LK2
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if LK1_ENABLED
     module procedure getErrTableReadUnit_TO_D2_LK1
-        use pm_kind, only: LKC => LK1
+        use pm_kind, only: LKG => LK1
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
@@ -2433,35 +2433,35 @@ contains
 
 #if CK3_ENABLED
     module procedure getErrTableReadUnit_TO_D2_CK3
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure getErrTableReadUnit_TO_D2_CK2
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure getErrTableReadUnit_TO_D2_CK1
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if CK5_ENABLED
     module procedure getErrTableReadUnit_TO_D2_CK5
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure getErrTableReadUnit_TO_D2_CK4
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
@@ -2474,35 +2474,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getErrTableReadUnit_TO_D2_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getErrTableReadUnit_TO_D2_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getErrTableReadUnit_TO_D2_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getErrTableReadUnit_TO_D2_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getErrTableReadUnit_TO_D2_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
@@ -2559,35 +2559,35 @@ contains
 
 #if SK5_ENABLED
     module procedure getErrTableWriteFile_NO_D1_SK5
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if SK4_ENABLED
     module procedure getErrTableWriteFile_NO_D1_SK4
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if SK3_ENABLED
     module procedure getErrTableWriteFile_NO_D1_SK3
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if SK2_ENABLED
     module procedure getErrTableWriteFile_NO_D1_SK2
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if SK1_ENABLED
     module procedure getErrTableWriteFile_NO_D1_SK1
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
@@ -2600,35 +2600,35 @@ contains
 
 #if IK5_ENABLED
     module procedure getErrTableWriteFile_NO_D1_IK5
-        use pm_kind, only: IKC => IK5
+        use pm_kind, only: IKG => IK5
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if IK4_ENABLED
     module procedure getErrTableWriteFile_NO_D1_IK4
-        use pm_kind, only: IKC => IK4
+        use pm_kind, only: IKG => IK4
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if IK3_ENABLED
     module procedure getErrTableWriteFile_NO_D1_IK3
-        use pm_kind, only: IKC => IK3
+        use pm_kind, only: IKG => IK3
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if IK2_ENABLED
     module procedure getErrTableWriteFile_NO_D1_IK2
-        use pm_kind, only: IKC => IK2
+        use pm_kind, only: IKG => IK2
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if IK1_ENABLED
     module procedure getErrTableWriteFile_NO_D1_IK1
-        use pm_kind, only: IKC => IK1
+        use pm_kind, only: IKG => IK1
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
@@ -2643,35 +2643,35 @@ contains
 
 #if LK5_ENABLED
     module procedure getErrTableWriteFile_NO_D1_LK5
-        use pm_kind, only: LKC => LK5
+        use pm_kind, only: LKG => LK5
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if LK4_ENABLED
     module procedure getErrTableWriteFile_NO_D1_LK4
-        use pm_kind, only: LKC => LK4
+        use pm_kind, only: LKG => LK4
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if LK3_ENABLED
     module procedure getErrTableWriteFile_NO_D1_LK3
-        use pm_kind, only: LKC => LK3
+        use pm_kind, only: LKG => LK3
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if LK2_ENABLED
     module procedure getErrTableWriteFile_NO_D1_LK2
-        use pm_kind, only: LKC => LK2
+        use pm_kind, only: LKG => LK2
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if LK1_ENABLED
     module procedure getErrTableWriteFile_NO_D1_LK1
-        use pm_kind, only: LKC => LK1
+        use pm_kind, only: LKG => LK1
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
@@ -2684,35 +2684,35 @@ contains
 
 #if CK3_ENABLED
     module procedure getErrTableWriteFile_NO_D1_CK3
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure getErrTableWriteFile_NO_D1_CK2
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure getErrTableWriteFile_NO_D1_CK1
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if CK5_ENABLED
     module procedure getErrTableWriteFile_NO_D1_CK5
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure getErrTableWriteFile_NO_D1_CK4
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
@@ -2725,35 +2725,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getErrTableWriteFile_NO_D1_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getErrTableWriteFile_NO_D1_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getErrTableWriteFile_NO_D1_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getErrTableWriteFile_NO_D1_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getErrTableWriteFile_NO_D1_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
@@ -2776,35 +2776,35 @@ contains
 
 #if SK5_ENABLED
     module procedure getErrTableWriteUnit_NO_D1_SK5
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if SK4_ENABLED
     module procedure getErrTableWriteUnit_NO_D1_SK4
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if SK3_ENABLED
     module procedure getErrTableWriteUnit_NO_D1_SK3
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if SK2_ENABLED
     module procedure getErrTableWriteUnit_NO_D1_SK2
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if SK1_ENABLED
     module procedure getErrTableWriteUnit_NO_D1_SK1
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
@@ -2817,35 +2817,35 @@ contains
 
 #if IK5_ENABLED
     module procedure getErrTableWriteUnit_NO_D1_IK5
-        use pm_kind, only: IKC => IK5
+        use pm_kind, only: IKG => IK5
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if IK4_ENABLED
     module procedure getErrTableWriteUnit_NO_D1_IK4
-        use pm_kind, only: IKC => IK4
+        use pm_kind, only: IKG => IK4
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if IK3_ENABLED
     module procedure getErrTableWriteUnit_NO_D1_IK3
-        use pm_kind, only: IKC => IK3
+        use pm_kind, only: IKG => IK3
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if IK2_ENABLED
     module procedure getErrTableWriteUnit_NO_D1_IK2
-        use pm_kind, only: IKC => IK2
+        use pm_kind, only: IKG => IK2
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if IK1_ENABLED
     module procedure getErrTableWriteUnit_NO_D1_IK1
-        use pm_kind, only: IKC => IK1
+        use pm_kind, only: IKG => IK1
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
@@ -2860,35 +2860,35 @@ contains
 
 #if LK5_ENABLED
     module procedure getErrTableWriteUnit_NO_D1_LK5
-        use pm_kind, only: LKC => LK5
+        use pm_kind, only: LKG => LK5
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if LK4_ENABLED
     module procedure getErrTableWriteUnit_NO_D1_LK4
-        use pm_kind, only: LKC => LK4
+        use pm_kind, only: LKG => LK4
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if LK3_ENABLED
     module procedure getErrTableWriteUnit_NO_D1_LK3
-        use pm_kind, only: LKC => LK3
+        use pm_kind, only: LKG => LK3
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if LK2_ENABLED
     module procedure getErrTableWriteUnit_NO_D1_LK2
-        use pm_kind, only: LKC => LK2
+        use pm_kind, only: LKG => LK2
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if LK1_ENABLED
     module procedure getErrTableWriteUnit_NO_D1_LK1
-        use pm_kind, only: LKC => LK1
+        use pm_kind, only: LKG => LK1
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
@@ -2901,35 +2901,35 @@ contains
 
 #if CK3_ENABLED
     module procedure getErrTableWriteUnit_NO_D1_CK3
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure getErrTableWriteUnit_NO_D1_CK2
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure getErrTableWriteUnit_NO_D1_CK1
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if CK5_ENABLED
     module procedure getErrTableWriteUnit_NO_D1_CK5
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure getErrTableWriteUnit_NO_D1_CK4
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
@@ -2942,35 +2942,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getErrTableWriteUnit_NO_D1_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getErrTableWriteUnit_NO_D1_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getErrTableWriteUnit_NO_D1_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getErrTableWriteUnit_NO_D1_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getErrTableWriteUnit_NO_D1_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
@@ -3005,35 +3005,35 @@ contains
 
 #if SK5_ENABLED
     module procedure getErrTableWriteFile_NO_D2_SK5
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if SK4_ENABLED
     module procedure getErrTableWriteFile_NO_D2_SK4
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if SK3_ENABLED
     module procedure getErrTableWriteFile_NO_D2_SK3
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if SK2_ENABLED
     module procedure getErrTableWriteFile_NO_D2_SK2
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if SK1_ENABLED
     module procedure getErrTableWriteFile_NO_D2_SK1
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
@@ -3046,35 +3046,35 @@ contains
 
 #if IK5_ENABLED
     module procedure getErrTableWriteFile_NO_D2_IK5
-        use pm_kind, only: IKC => IK5
+        use pm_kind, only: IKG => IK5
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if IK4_ENABLED
     module procedure getErrTableWriteFile_NO_D2_IK4
-        use pm_kind, only: IKC => IK4
+        use pm_kind, only: IKG => IK4
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if IK3_ENABLED
     module procedure getErrTableWriteFile_NO_D2_IK3
-        use pm_kind, only: IKC => IK3
+        use pm_kind, only: IKG => IK3
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if IK2_ENABLED
     module procedure getErrTableWriteFile_NO_D2_IK2
-        use pm_kind, only: IKC => IK2
+        use pm_kind, only: IKG => IK2
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if IK1_ENABLED
     module procedure getErrTableWriteFile_NO_D2_IK1
-        use pm_kind, only: IKC => IK1
+        use pm_kind, only: IKG => IK1
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
@@ -3089,35 +3089,35 @@ contains
 
 #if LK5_ENABLED
     module procedure getErrTableWriteFile_NO_D2_LK5
-        use pm_kind, only: LKC => LK5
+        use pm_kind, only: LKG => LK5
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if LK4_ENABLED
     module procedure getErrTableWriteFile_NO_D2_LK4
-        use pm_kind, only: LKC => LK4
+        use pm_kind, only: LKG => LK4
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if LK3_ENABLED
     module procedure getErrTableWriteFile_NO_D2_LK3
-        use pm_kind, only: LKC => LK3
+        use pm_kind, only: LKG => LK3
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if LK2_ENABLED
     module procedure getErrTableWriteFile_NO_D2_LK2
-        use pm_kind, only: LKC => LK2
+        use pm_kind, only: LKG => LK2
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if LK1_ENABLED
     module procedure getErrTableWriteFile_NO_D2_LK1
-        use pm_kind, only: LKC => LK1
+        use pm_kind, only: LKG => LK1
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
@@ -3130,35 +3130,35 @@ contains
 
 #if CK3_ENABLED
     module procedure getErrTableWriteFile_NO_D2_CK3
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure getErrTableWriteFile_NO_D2_CK2
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure getErrTableWriteFile_NO_D2_CK1
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if CK5_ENABLED
     module procedure getErrTableWriteFile_NO_D2_CK5
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure getErrTableWriteFile_NO_D2_CK4
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
@@ -3171,35 +3171,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getErrTableWriteFile_NO_D2_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getErrTableWriteFile_NO_D2_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getErrTableWriteFile_NO_D2_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getErrTableWriteFile_NO_D2_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getErrTableWriteFile_NO_D2_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
@@ -3222,35 +3222,35 @@ contains
 
 #if SK5_ENABLED
     module procedure getErrTableWriteUnit_NO_D2_SK5
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if SK4_ENABLED
     module procedure getErrTableWriteUnit_NO_D2_SK4
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if SK3_ENABLED
     module procedure getErrTableWriteUnit_NO_D2_SK3
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if SK2_ENABLED
     module procedure getErrTableWriteUnit_NO_D2_SK2
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if SK1_ENABLED
     module procedure getErrTableWriteUnit_NO_D2_SK1
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
@@ -3263,35 +3263,35 @@ contains
 
 #if IK5_ENABLED
     module procedure getErrTableWriteUnit_NO_D2_IK5
-        use pm_kind, only: IKC => IK5
+        use pm_kind, only: IKG => IK5
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if IK4_ENABLED
     module procedure getErrTableWriteUnit_NO_D2_IK4
-        use pm_kind, only: IKC => IK4
+        use pm_kind, only: IKG => IK4
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if IK3_ENABLED
     module procedure getErrTableWriteUnit_NO_D2_IK3
-        use pm_kind, only: IKC => IK3
+        use pm_kind, only: IKG => IK3
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if IK2_ENABLED
     module procedure getErrTableWriteUnit_NO_D2_IK2
-        use pm_kind, only: IKC => IK2
+        use pm_kind, only: IKG => IK2
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if IK1_ENABLED
     module procedure getErrTableWriteUnit_NO_D2_IK1
-        use pm_kind, only: IKC => IK1
+        use pm_kind, only: IKG => IK1
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
@@ -3306,35 +3306,35 @@ contains
 
 #if LK5_ENABLED
     module procedure getErrTableWriteUnit_NO_D2_LK5
-        use pm_kind, only: LKC => LK5
+        use pm_kind, only: LKG => LK5
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if LK4_ENABLED
     module procedure getErrTableWriteUnit_NO_D2_LK4
-        use pm_kind, only: LKC => LK4
+        use pm_kind, only: LKG => LK4
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if LK3_ENABLED
     module procedure getErrTableWriteUnit_NO_D2_LK3
-        use pm_kind, only: LKC => LK3
+        use pm_kind, only: LKG => LK3
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if LK2_ENABLED
     module procedure getErrTableWriteUnit_NO_D2_LK2
-        use pm_kind, only: LKC => LK2
+        use pm_kind, only: LKG => LK2
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if LK1_ENABLED
     module procedure getErrTableWriteUnit_NO_D2_LK1
-        use pm_kind, only: LKC => LK1
+        use pm_kind, only: LKG => LK1
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
@@ -3347,35 +3347,35 @@ contains
 
 #if CK3_ENABLED
     module procedure getErrTableWriteUnit_NO_D2_CK3
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure getErrTableWriteUnit_NO_D2_CK2
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure getErrTableWriteUnit_NO_D2_CK1
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if CK5_ENABLED
     module procedure getErrTableWriteUnit_NO_D2_CK5
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure getErrTableWriteUnit_NO_D2_CK4
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
@@ -3388,35 +3388,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getErrTableWriteUnit_NO_D2_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getErrTableWriteUnit_NO_D2_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getErrTableWriteUnit_NO_D2_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getErrTableWriteUnit_NO_D2_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getErrTableWriteUnit_NO_D2_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
@@ -3463,35 +3463,35 @@ contains
 
 #if SK5_ENABLED
     module procedure getErrTableWriteFile_TO_D1_SK5
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if SK4_ENABLED
     module procedure getErrTableWriteFile_TO_D1_SK4
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if SK3_ENABLED
     module procedure getErrTableWriteFile_TO_D1_SK3
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if SK2_ENABLED
     module procedure getErrTableWriteFile_TO_D1_SK2
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if SK1_ENABLED
     module procedure getErrTableWriteFile_TO_D1_SK1
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
@@ -3504,35 +3504,35 @@ contains
 
 #if IK5_ENABLED
     module procedure getErrTableWriteFile_TO_D1_IK5
-        use pm_kind, only: IKC => IK5
+        use pm_kind, only: IKG => IK5
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if IK4_ENABLED
     module procedure getErrTableWriteFile_TO_D1_IK4
-        use pm_kind, only: IKC => IK4
+        use pm_kind, only: IKG => IK4
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if IK3_ENABLED
     module procedure getErrTableWriteFile_TO_D1_IK3
-        use pm_kind, only: IKC => IK3
+        use pm_kind, only: IKG => IK3
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if IK2_ENABLED
     module procedure getErrTableWriteFile_TO_D1_IK2
-        use pm_kind, only: IKC => IK2
+        use pm_kind, only: IKG => IK2
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if IK1_ENABLED
     module procedure getErrTableWriteFile_TO_D1_IK1
-        use pm_kind, only: IKC => IK1
+        use pm_kind, only: IKG => IK1
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
@@ -3547,35 +3547,35 @@ contains
 
 #if LK5_ENABLED
     module procedure getErrTableWriteFile_TO_D1_LK5
-        use pm_kind, only: LKC => LK5
+        use pm_kind, only: LKG => LK5
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if LK4_ENABLED
     module procedure getErrTableWriteFile_TO_D1_LK4
-        use pm_kind, only: LKC => LK4
+        use pm_kind, only: LKG => LK4
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if LK3_ENABLED
     module procedure getErrTableWriteFile_TO_D1_LK3
-        use pm_kind, only: LKC => LK3
+        use pm_kind, only: LKG => LK3
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if LK2_ENABLED
     module procedure getErrTableWriteFile_TO_D1_LK2
-        use pm_kind, only: LKC => LK2
+        use pm_kind, only: LKG => LK2
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if LK1_ENABLED
     module procedure getErrTableWriteFile_TO_D1_LK1
-        use pm_kind, only: LKC => LK1
+        use pm_kind, only: LKG => LK1
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
@@ -3588,35 +3588,35 @@ contains
 
 #if CK3_ENABLED
     module procedure getErrTableWriteFile_TO_D1_CK3
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure getErrTableWriteFile_TO_D1_CK2
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure getErrTableWriteFile_TO_D1_CK1
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if CK5_ENABLED
     module procedure getErrTableWriteFile_TO_D1_CK5
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure getErrTableWriteFile_TO_D1_CK4
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
@@ -3629,35 +3629,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getErrTableWriteFile_TO_D1_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getErrTableWriteFile_TO_D1_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getErrTableWriteFile_TO_D1_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getErrTableWriteFile_TO_D1_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getErrTableWriteFile_TO_D1_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
@@ -3680,35 +3680,35 @@ contains
 
 #if SK5_ENABLED
     module procedure getErrTableWriteUnit_TO_D1_SK5
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if SK4_ENABLED
     module procedure getErrTableWriteUnit_TO_D1_SK4
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if SK3_ENABLED
     module procedure getErrTableWriteUnit_TO_D1_SK3
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if SK2_ENABLED
     module procedure getErrTableWriteUnit_TO_D1_SK2
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if SK1_ENABLED
     module procedure getErrTableWriteUnit_TO_D1_SK1
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
@@ -3721,35 +3721,35 @@ contains
 
 #if IK5_ENABLED
     module procedure getErrTableWriteUnit_TO_D1_IK5
-        use pm_kind, only: IKC => IK5
+        use pm_kind, only: IKG => IK5
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if IK4_ENABLED
     module procedure getErrTableWriteUnit_TO_D1_IK4
-        use pm_kind, only: IKC => IK4
+        use pm_kind, only: IKG => IK4
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if IK3_ENABLED
     module procedure getErrTableWriteUnit_TO_D1_IK3
-        use pm_kind, only: IKC => IK3
+        use pm_kind, only: IKG => IK3
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if IK2_ENABLED
     module procedure getErrTableWriteUnit_TO_D1_IK2
-        use pm_kind, only: IKC => IK2
+        use pm_kind, only: IKG => IK2
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if IK1_ENABLED
     module procedure getErrTableWriteUnit_TO_D1_IK1
-        use pm_kind, only: IKC => IK1
+        use pm_kind, only: IKG => IK1
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
@@ -3764,35 +3764,35 @@ contains
 
 #if LK5_ENABLED
     module procedure getErrTableWriteUnit_TO_D1_LK5
-        use pm_kind, only: LKC => LK5
+        use pm_kind, only: LKG => LK5
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if LK4_ENABLED
     module procedure getErrTableWriteUnit_TO_D1_LK4
-        use pm_kind, only: LKC => LK4
+        use pm_kind, only: LKG => LK4
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if LK3_ENABLED
     module procedure getErrTableWriteUnit_TO_D1_LK3
-        use pm_kind, only: LKC => LK3
+        use pm_kind, only: LKG => LK3
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if LK2_ENABLED
     module procedure getErrTableWriteUnit_TO_D1_LK2
-        use pm_kind, only: LKC => LK2
+        use pm_kind, only: LKG => LK2
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if LK1_ENABLED
     module procedure getErrTableWriteUnit_TO_D1_LK1
-        use pm_kind, only: LKC => LK1
+        use pm_kind, only: LKG => LK1
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
@@ -3805,35 +3805,35 @@ contains
 
 #if CK3_ENABLED
     module procedure getErrTableWriteUnit_TO_D1_CK3
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure getErrTableWriteUnit_TO_D1_CK2
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure getErrTableWriteUnit_TO_D1_CK1
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if CK5_ENABLED
     module procedure getErrTableWriteUnit_TO_D1_CK5
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure getErrTableWriteUnit_TO_D1_CK4
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
@@ -3846,35 +3846,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getErrTableWriteUnit_TO_D1_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getErrTableWriteUnit_TO_D1_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getErrTableWriteUnit_TO_D1_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getErrTableWriteUnit_TO_D1_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getErrTableWriteUnit_TO_D1_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
@@ -3909,35 +3909,35 @@ contains
 
 #if SK5_ENABLED
     module procedure getErrTableWriteFile_TO_D2_SK5
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if SK4_ENABLED
     module procedure getErrTableWriteFile_TO_D2_SK4
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if SK3_ENABLED
     module procedure getErrTableWriteFile_TO_D2_SK3
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if SK2_ENABLED
     module procedure getErrTableWriteFile_TO_D2_SK2
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if SK1_ENABLED
     module procedure getErrTableWriteFile_TO_D2_SK1
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
@@ -3950,35 +3950,35 @@ contains
 
 #if IK5_ENABLED
     module procedure getErrTableWriteFile_TO_D2_IK5
-        use pm_kind, only: IKC => IK5
+        use pm_kind, only: IKG => IK5
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if IK4_ENABLED
     module procedure getErrTableWriteFile_TO_D2_IK4
-        use pm_kind, only: IKC => IK4
+        use pm_kind, only: IKG => IK4
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if IK3_ENABLED
     module procedure getErrTableWriteFile_TO_D2_IK3
-        use pm_kind, only: IKC => IK3
+        use pm_kind, only: IKG => IK3
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if IK2_ENABLED
     module procedure getErrTableWriteFile_TO_D2_IK2
-        use pm_kind, only: IKC => IK2
+        use pm_kind, only: IKG => IK2
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if IK1_ENABLED
     module procedure getErrTableWriteFile_TO_D2_IK1
-        use pm_kind, only: IKC => IK1
+        use pm_kind, only: IKG => IK1
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
@@ -3993,35 +3993,35 @@ contains
 
 #if LK5_ENABLED
     module procedure getErrTableWriteFile_TO_D2_LK5
-        use pm_kind, only: LKC => LK5
+        use pm_kind, only: LKG => LK5
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if LK4_ENABLED
     module procedure getErrTableWriteFile_TO_D2_LK4
-        use pm_kind, only: LKC => LK4
+        use pm_kind, only: LKG => LK4
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if LK3_ENABLED
     module procedure getErrTableWriteFile_TO_D2_LK3
-        use pm_kind, only: LKC => LK3
+        use pm_kind, only: LKG => LK3
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if LK2_ENABLED
     module procedure getErrTableWriteFile_TO_D2_LK2
-        use pm_kind, only: LKC => LK2
+        use pm_kind, only: LKG => LK2
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if LK1_ENABLED
     module procedure getErrTableWriteFile_TO_D2_LK1
-        use pm_kind, only: LKC => LK1
+        use pm_kind, only: LKG => LK1
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
@@ -4034,35 +4034,35 @@ contains
 
 #if CK3_ENABLED
     module procedure getErrTableWriteFile_TO_D2_CK3
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure getErrTableWriteFile_TO_D2_CK2
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure getErrTableWriteFile_TO_D2_CK1
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if CK5_ENABLED
     module procedure getErrTableWriteFile_TO_D2_CK5
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure getErrTableWriteFile_TO_D2_CK4
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
@@ -4075,35 +4075,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getErrTableWriteFile_TO_D2_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getErrTableWriteFile_TO_D2_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getErrTableWriteFile_TO_D2_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getErrTableWriteFile_TO_D2_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getErrTableWriteFile_TO_D2_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
@@ -4126,35 +4126,35 @@ contains
 
 #if SK5_ENABLED
     module procedure getErrTableWriteUnit_TO_D2_SK5
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if SK4_ENABLED
     module procedure getErrTableWriteUnit_TO_D2_SK4
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if SK3_ENABLED
     module procedure getErrTableWriteUnit_TO_D2_SK3
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if SK2_ENABLED
     module procedure getErrTableWriteUnit_TO_D2_SK2
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if SK1_ENABLED
     module procedure getErrTableWriteUnit_TO_D2_SK1
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
@@ -4167,35 +4167,35 @@ contains
 
 #if IK5_ENABLED
     module procedure getErrTableWriteUnit_TO_D2_IK5
-        use pm_kind, only: IKC => IK5
+        use pm_kind, only: IKG => IK5
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if IK4_ENABLED
     module procedure getErrTableWriteUnit_TO_D2_IK4
-        use pm_kind, only: IKC => IK4
+        use pm_kind, only: IKG => IK4
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if IK3_ENABLED
     module procedure getErrTableWriteUnit_TO_D2_IK3
-        use pm_kind, only: IKC => IK3
+        use pm_kind, only: IKG => IK3
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if IK2_ENABLED
     module procedure getErrTableWriteUnit_TO_D2_IK2
-        use pm_kind, only: IKC => IK2
+        use pm_kind, only: IKG => IK2
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if IK1_ENABLED
     module procedure getErrTableWriteUnit_TO_D2_IK1
-        use pm_kind, only: IKC => IK1
+        use pm_kind, only: IKG => IK1
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
@@ -4210,35 +4210,35 @@ contains
 
 #if LK5_ENABLED
     module procedure getErrTableWriteUnit_TO_D2_LK5
-        use pm_kind, only: LKC => LK5
+        use pm_kind, only: LKG => LK5
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if LK4_ENABLED
     module procedure getErrTableWriteUnit_TO_D2_LK4
-        use pm_kind, only: LKC => LK4
+        use pm_kind, only: LKG => LK4
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if LK3_ENABLED
     module procedure getErrTableWriteUnit_TO_D2_LK3
-        use pm_kind, only: LKC => LK3
+        use pm_kind, only: LKG => LK3
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if LK2_ENABLED
     module procedure getErrTableWriteUnit_TO_D2_LK2
-        use pm_kind, only: LKC => LK2
+        use pm_kind, only: LKG => LK2
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if LK1_ENABLED
     module procedure getErrTableWriteUnit_TO_D2_LK1
-        use pm_kind, only: LKC => LK1
+        use pm_kind, only: LKG => LK1
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
@@ -4251,35 +4251,35 @@ contains
 
 #if CK3_ENABLED
     module procedure getErrTableWriteUnit_TO_D2_CK3
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure getErrTableWriteUnit_TO_D2_CK2
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure getErrTableWriteUnit_TO_D2_CK1
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if CK5_ENABLED
     module procedure getErrTableWriteUnit_TO_D2_CK5
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure getErrTableWriteUnit_TO_D2_CK4
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
@@ -4292,35 +4292,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getErrTableWriteUnit_TO_D2_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getErrTableWriteUnit_TO_D2_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getErrTableWriteUnit_TO_D2_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getErrTableWriteUnit_TO_D2_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getErrTableWriteUnit_TO_D2_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
@@ -4375,14 +4375,14 @@ contains
 
 #define File_ENABLED 1
     module procedure getFieldSepFile_ID0_FDEF_XX_SK
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
 #include "pm_io@routines.inc.F90"
     end procedure
 #undef File_ENABLED
 
 #define Unit_ENABLED 1
     module procedure getFieldSepUnit_ID0_FDEF_XX_SK
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
 #include "pm_io@routines.inc.F90"
     end procedure
 #undef Unit_ENABLED
@@ -4401,14 +4401,14 @@ contains
 
 #define File_ENABLED 1
     module procedure getFieldSepFile_ID0_FCSV_XX_SK
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
 #include "pm_io@routines.inc.F90"
     end procedure
 #undef File_ENABLED
 
 #define Unit_ENABLED 1
     module procedure getFieldSepUnit_ID0_FCSV_XX_SK
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
 #include "pm_io@routines.inc.F90"
     end procedure
 #undef Unit_ENABLED
@@ -4427,14 +4427,14 @@ contains
 
 #define File_ENABLED 1
     module procedure getFieldSepFile_ID0_FFLD_XX_SK
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
 #include "pm_io@routines.inc.F90"
     end procedure
 #undef File_ENABLED
 
 #define Unit_ENABLED 1
     module procedure getFieldSepUnit_ID0_FFLD_XX_SK
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
 #include "pm_io@routines.inc.F90"
     end procedure
 #undef Unit_ENABLED
@@ -4465,14 +4465,14 @@ contains
 
 #define File_ENABLED 1
     module procedure getFieldSepFile_ID0_FDEF_NF_SK
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
 #include "pm_io@routines.inc.F90"
     end procedure
 #undef File_ENABLED
 
 #define Unit_ENABLED 1
     module procedure getFieldSepUnit_ID0_FDEF_NF_SK
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
 #include "pm_io@routines.inc.F90"
     end procedure
 #undef Unit_ENABLED
@@ -4491,14 +4491,14 @@ contains
 
 #define File_ENABLED 1
     module procedure getFieldSepFile_ID0_FCSV_NF_SK
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
 #include "pm_io@routines.inc.F90"
     end procedure
 #undef File_ENABLED
 
 #define Unit_ENABLED 1
     module procedure getFieldSepUnit_ID0_FCSV_NF_SK
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
 #include "pm_io@routines.inc.F90"
     end procedure
 #undef Unit_ENABLED
@@ -4517,14 +4517,14 @@ contains
 
 #define File_ENABLED 1
     module procedure getFieldSepFile_ID0_FFLD_NF_SK
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
 #include "pm_io@routines.inc.F90"
     end procedure
 #undef File_ENABLED
 
 #define Unit_ENABLED 1
     module procedure getFieldSepUnit_ID0_FFLD_NF_SK
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
 #include "pm_io@routines.inc.F90"
     end procedure
 #undef Unit_ENABLED
@@ -4567,14 +4567,14 @@ contains
 
 #define File_ENABLED 1
     module procedure getFieldSepFile_CD1_FDEF_XX_SK
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
 #include "pm_io@routines.inc.F90"
     end procedure
 #undef File_ENABLED
 
 #define Unit_ENABLED 1
     module procedure getFieldSepUnit_CD1_FDEF_XX_SK
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
 #include "pm_io@routines.inc.F90"
     end procedure
 #undef Unit_ENABLED
@@ -4593,14 +4593,14 @@ contains
 
 #define File_ENABLED 1
     module procedure getFieldSepFile_CD1_FCSV_XX_SK
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
 #include "pm_io@routines.inc.F90"
     end procedure
 #undef File_ENABLED
 
 #define Unit_ENABLED 1
     module procedure getFieldSepUnit_CD1_FCSV_XX_SK
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
 #include "pm_io@routines.inc.F90"
     end procedure
 #undef Unit_ENABLED
@@ -4619,14 +4619,14 @@ contains
 
 #define File_ENABLED 1
     module procedure getFieldSepFile_CD1_FFLD_XX_SK
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
 #include "pm_io@routines.inc.F90"
     end procedure
 #undef File_ENABLED
 
 #define Unit_ENABLED 1
     module procedure getFieldSepUnit_CD1_FFLD_XX_SK
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
 #include "pm_io@routines.inc.F90"
     end procedure
 #undef Unit_ENABLED
@@ -4657,14 +4657,14 @@ contains
 
 #define File_ENABLED 1
     module procedure getFieldSepFile_CD1_FDEF_NF_SK
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
 #include "pm_io@routines.inc.F90"
     end procedure
 #undef File_ENABLED
 
 #define Unit_ENABLED 1
     module procedure getFieldSepUnit_CD1_FDEF_NF_SK
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
 #include "pm_io@routines.inc.F90"
     end procedure
 #undef Unit_ENABLED
@@ -4683,14 +4683,14 @@ contains
 
 #define File_ENABLED 1
     module procedure getFieldSepFile_CD1_FCSV_NF_SK
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
 #include "pm_io@routines.inc.F90"
     end procedure
 #undef File_ENABLED
 
 #define Unit_ENABLED 1
     module procedure getFieldSepUnit_CD1_FCSV_NF_SK
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
 #include "pm_io@routines.inc.F90"
     end procedure
 #undef Unit_ENABLED
@@ -4709,14 +4709,14 @@ contains
 
 #define File_ENABLED 1
     module procedure getFieldSepFile_CD1_FFLD_NF_SK
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
 #include "pm_io@routines.inc.F90"
     end procedure
 #undef File_ENABLED
 
 #define Unit_ENABLED 1
     module procedure getFieldSepUnit_CD1_FFLD_NF_SK
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
 #include "pm_io@routines.inc.F90"
     end procedure
 #undef Unit_ENABLED
@@ -4749,14 +4749,14 @@ contains
 
 #define File_ENABLED 1
     module procedure display_typer_file
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
 #include "pm_io@routines.inc.F90"
     end procedure
 #undef File_ENABLED
 
 #define Unit_ENABLED 1
     module procedure display_typer_unit
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
 #include "pm_io@routines.inc.F90"
     end procedure
 #undef Unit_ENABLED
@@ -4815,35 +4815,35 @@ contains
 !
 !#if IK5_ENABLED
 !    module procedure getLenFieldMin_D0_IK5
-!        use pm_kind, only: IKC => IK5
+!        use pm_kind, only: IKG => IK5
 !#include "pm_io@routines.inc.F90"
 !    end procedure
 !#endif
 !
 !#if IK4_ENABLED
 !    module procedure getLenFieldMin_D0_IK4
-!        use pm_kind, only: IKC => IK4
+!        use pm_kind, only: IKG => IK4
 !#include "pm_io@routines.inc.F90"
 !    end procedure
 !#endif
 !
 !#if IK3_ENABLED
 !    module procedure getLenFieldMin_D0_IK3
-!        use pm_kind, only: IKC => IK3
+!        use pm_kind, only: IKG => IK3
 !#include "pm_io@routines.inc.F90"
 !    end procedure
 !#endif
 !
 !#if IK2_ENABLED
 !    module procedure getLenFieldMin_D0_IK2
-!        use pm_kind, only: IKC => IK2
+!        use pm_kind, only: IKG => IK2
 !#include "pm_io@routines.inc.F90"
 !    end procedure
 !#endif
 !
 !#if IK1_ENABLED
 !    module procedure getLenFieldMin_D0_IK1
-!        use pm_kind, only: IKC => IK1
+!        use pm_kind, only: IKG => IK1
 !#include "pm_io@routines.inc.F90"
 !    end procedure
 !#endif
@@ -4856,35 +4856,35 @@ contains
 !
 !#if CK5_ENABLED
 !    module procedure getLenFieldMin_D0_CK5
-!        use pm_kind, only: CKC => CK5
+!        use pm_kind, only: CKG => CK5
 !#include "pm_io@routines.inc.F90"
 !    end procedure
 !#endif
 !
 !#if CK4_ENABLED
 !    module procedure getLenFieldMin_D0_CK4
-!        use pm_kind, only: CKC => CK4
+!        use pm_kind, only: CKG => CK4
 !#include "pm_io@routines.inc.F90"
 !    end procedure
 !#endif
 !
 !#if CK3_ENABLED
 !    module procedure getLenFieldMin_D0_CK3
-!        use pm_kind, only: CKC => CK3
+!        use pm_kind, only: CKG => CK3
 !#include "pm_io@routines.inc.F90"
 !    end procedure
 !#endif
 !
 !#if CK2_ENABLED
 !    module procedure getLenFieldMin_D0_CK2
-!        use pm_kind, only: CKC => CK2
+!        use pm_kind, only: CKG => CK2
 !#include "pm_io@routines.inc.F90"
 !    end procedure
 !#endif
 !
 !#if CK1_ENABLED
 !    module procedure getLenFieldMin_D0_CK1
-!        use pm_kind, only: CKC => CK1
+!        use pm_kind, only: CKG => CK1
 !#include "pm_io@routines.inc.F90"
 !    end procedure
 !#endif
@@ -4897,35 +4897,35 @@ contains
 !
 !#if RK5_ENABLED
 !    module procedure getLenFieldMin_D0_RK5
-!        use pm_kind, only: RKC => RK5
+!        use pm_kind, only: RKG => RK5
 !#include "pm_io@routines.inc.F90"
 !    end procedure
 !#endif
 !
 !#if RK4_ENABLED
 !    module procedure getLenFieldMin_D0_RK4
-!        use pm_kind, only: RKC => RK4
+!        use pm_kind, only: RKG => RK4
 !#include "pm_io@routines.inc.F90"
 !    end procedure
 !#endif
 !
 !#if RK3_ENABLED
 !    module procedure getLenFieldMin_D0_RK3
-!        use pm_kind, only: RKC => RK3
+!        use pm_kind, only: RKG => RK3
 !#include "pm_io@routines.inc.F90"
 !    end procedure
 !#endif
 !
 !#if RK2_ENABLED
 !    module procedure getLenFieldMin_D0_RK2
-!        use pm_kind, only: RKC => RK2
+!        use pm_kind, only: RKG => RK2
 !#include "pm_io@routines.inc.F90"
 !    end procedure
 !#endif
 !
 !#if RK1_ENABLED
 !    module procedure getLenFieldMin_D0_RK1
-!        use pm_kind, only: RKC => RK1
+!        use pm_kind, only: RKG => RK1
 !#include "pm_io@routines.inc.F90"
 !    end procedure
 !#endif
@@ -4970,35 +4970,35 @@ contains
 
 #if SK5_ENABLED
     module procedure getFormat_D1_SK5
-    use pm_kind, only: SKC => SK5
+    use pm_kind, only: SKG => SK5
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if SK4_ENABLED
     module procedure getFormat_D1_SK4
-    use pm_kind, only: SKC => SK4
+    use pm_kind, only: SKG => SK4
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if SK3_ENABLED
     module procedure getFormat_D1_SK3
-    use pm_kind, only: SKC => SK3
+    use pm_kind, only: SKG => SK3
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if SK2_ENABLED
     module procedure getFormat_D1_SK2
-    use pm_kind, only: SKC => SK2
+    use pm_kind, only: SKG => SK2
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if SK1_ENABLED
     module procedure getFormat_D1_SK1
-    use pm_kind, only: SKC => SK1
+    use pm_kind, only: SKG => SK1
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
@@ -5011,35 +5011,35 @@ contains
 
 #if IK5_ENABLED
     module procedure getFormat_D1_IK5
-    use pm_kind, only: IKC => IK5
+    use pm_kind, only: IKG => IK5
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if IK4_ENABLED
     module procedure getFormat_D1_IK4
-    use pm_kind, only: IKC => IK4
+    use pm_kind, only: IKG => IK4
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if IK3_ENABLED
     module procedure getFormat_D1_IK3
-    use pm_kind, only: IKC => IK3
+    use pm_kind, only: IKG => IK3
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if IK2_ENABLED
     module procedure getFormat_D1_IK2
-    use pm_kind, only: IKC => IK2
+    use pm_kind, only: IKG => IK2
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if IK1_ENABLED
     module procedure getFormat_D1_IK1
-    use pm_kind, only: IKC => IK1
+    use pm_kind, only: IKG => IK1
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
@@ -5052,35 +5052,35 @@ contains
 
 #if LK5_ENABLED
     module procedure getFormat_D1_LK5
-    use pm_kind, only: LKC => LK5
+    use pm_kind, only: LKG => LK5
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if LK4_ENABLED
     module procedure getFormat_D1_LK4
-    use pm_kind, only: LKC => LK4
+    use pm_kind, only: LKG => LK4
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if LK3_ENABLED
     module procedure getFormat_D1_LK3
-    use pm_kind, only: LKC => LK3
+    use pm_kind, only: LKG => LK3
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if LK2_ENABLED
     module procedure getFormat_D1_LK2
-    use pm_kind, only: LKC => LK2
+    use pm_kind, only: LKG => LK2
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if LK1_ENABLED
     module procedure getFormat_D1_LK1
-    use pm_kind, only: LKC => LK1
+    use pm_kind, only: LKG => LK1
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
@@ -5093,35 +5093,35 @@ contains
 
 #if CK5_ENABLED
     module procedure getFormat_D1_CK5
-    use pm_kind, only: CKC => CK5
+    use pm_kind, only: CKG => CK5
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure getFormat_D1_CK4
-    use pm_kind, only: CKC => CK4
+    use pm_kind, only: CKG => CK4
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure getFormat_D1_CK3
-    use pm_kind, only: CKC => CK3
+    use pm_kind, only: CKG => CK3
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure getFormat_D1_CK2
-    use pm_kind, only: CKC => CK2
+    use pm_kind, only: CKG => CK2
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure getFormat_D1_CK1
-    use pm_kind, only: CKC => CK1
+    use pm_kind, only: CKG => CK1
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
@@ -5134,35 +5134,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getFormat_D1_RK5
-    use pm_kind, only: RKC => RK5
+    use pm_kind, only: RKG => RK5
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getFormat_D1_RK4
-    use pm_kind, only: RKC => RK4
+    use pm_kind, only: RKG => RK4
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getFormat_D1_RK3
-    use pm_kind, only: RKC => RK3
+    use pm_kind, only: RKG => RK3
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getFormat_D1_RK2
-    use pm_kind, only: RKC => RK2
+    use pm_kind, only: RKG => RK2
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getFormat_D1_RK1
-    use pm_kind, only: RKC => RK1
+    use pm_kind, only: RKG => RK1
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
@@ -5198,35 +5198,35 @@ contains
 
 #if SK5_ENABLED
     module procedure wrap_D0_SK5
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if SK4_ENABLED
     module procedure wrap_D0_SK4
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if SK3_ENABLED
     module procedure wrap_D0_SK3
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if SK2_ENABLED
     module procedure wrap_D0_SK2
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if SK1_ENABLED
     module procedure wrap_D0_SK1
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
@@ -5266,35 +5266,35 @@ contains
 
 #if SK5_ENABLED
     module procedure show_D0_SK5
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if SK4_ENABLED
     module procedure show_D0_SK4
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if SK3_ENABLED
     module procedure show_D0_SK3
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if SK2_ENABLED
     module procedure show_D0_SK2
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if SK1_ENABLED
     module procedure show_D0_SK1
-        use pm_kind, only: SKC => SK1 ! LCOV_EXCL_LINE
+        use pm_kind, only: SKG => SK1 ! LCOV_EXCL_LINE
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
@@ -5307,35 +5307,35 @@ contains
 
 #if IK5_ENABLED
     module procedure show_D0_IK5
-        use pm_kind, only: SKC => SK, IKC => IK5
+        use pm_kind, only: SKG => SK, IKG => IK5
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if IK4_ENABLED
     module procedure show_D0_IK4
-        use pm_kind, only: SKC => SK, IKC => IK4
+        use pm_kind, only: SKG => SK, IKG => IK4
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if IK3_ENABLED
     module procedure show_D0_IK3
-        use pm_kind, only: SKC => SK, IKC => IK3
+        use pm_kind, only: SKG => SK, IKG => IK3
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if IK2_ENABLED
     module procedure show_D0_IK2
-        use pm_kind, only: SKC => SK, IKC => IK2
+        use pm_kind, only: SKG => SK, IKG => IK2
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if IK1_ENABLED
     module procedure show_D0_IK1
-        use pm_kind, only: SKC => SK, IKC => IK1
+        use pm_kind, only: SKG => SK, IKG => IK1
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
@@ -5348,35 +5348,35 @@ contains
 
 #if LK5_ENABLED
     module procedure show_D0_LK5
-        use pm_kind, only: SKC => SK, LKC => LK5
+        use pm_kind, only: SKG => SK, LKG => LK5
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if LK4_ENABLED
     module procedure show_D0_LK4
-        use pm_kind, only: SKC => SK, LKC => LK4
+        use pm_kind, only: SKG => SK, LKG => LK4
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if LK3_ENABLED
     module procedure show_D0_LK3
-        use pm_kind, only: SKC => SK, LKC => LK3
+        use pm_kind, only: SKG => SK, LKG => LK3
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if LK2_ENABLED
     module procedure show_D0_LK2
-        use pm_kind, only: SKC => SK, LKC => LK2
+        use pm_kind, only: SKG => SK, LKG => LK2
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if LK1_ENABLED
     module procedure show_D0_LK1
-        use pm_kind, only: SKC => SK, LKC => LK1
+        use pm_kind, only: SKG => SK, LKG => LK1
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
@@ -5389,35 +5389,35 @@ contains
 
 #if CK5_ENABLED
     module procedure show_D0_CK5
-        use pm_kind, only: SKC => SK, CKC => CK5
+        use pm_kind, only: SKG => SK, CKG => CK5
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure show_D0_CK4
-        use pm_kind, only: SKC => SK, CKC => CK4
+        use pm_kind, only: SKG => SK, CKG => CK4
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure show_D0_CK3
-        use pm_kind, only: SKC => SK, CKC => CK3
+        use pm_kind, only: SKG => SK, CKG => CK3
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure show_D0_CK2
-        use pm_kind, only: SKC => SK, CKC => CK2
+        use pm_kind, only: SKG => SK, CKG => CK2
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure show_D0_CK1
-        use pm_kind, only: SKC => SK, CKC => CK1
+        use pm_kind, only: SKG => SK, CKG => CK1
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
@@ -5430,35 +5430,35 @@ contains
 
 #if RK5_ENABLED
     module procedure show_D0_RK5
-        use pm_kind, only: SKC => SK, RKC => RK5
+        use pm_kind, only: SKG => SK, RKG => RK5
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure show_D0_RK4
-        use pm_kind, only: SKC => SK, RKC => RK4
+        use pm_kind, only: SKG => SK, RKG => RK4
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure show_D0_RK3
-        use pm_kind, only: SKC => SK, RKC => RK3
+        use pm_kind, only: SKG => SK, RKG => RK3
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure show_D0_RK2
-        use pm_kind, only: SKC => SK, RKC => RK2
+        use pm_kind, only: SKG => SK, RKG => RK2
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure show_D0_RK1
-        use pm_kind, only: SKC => SK, RKC => RK1
+        use pm_kind, only: SKG => SK, RKG => RK1
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
@@ -5481,35 +5481,35 @@ contains
 
 #if SK5_ENABLED
     module procedure show_D1_SK5
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if SK4_ENABLED
     module procedure show_D1_SK4
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if SK3_ENABLED
     module procedure show_D1_SK3
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if SK2_ENABLED
     module procedure show_D1_SK2
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if SK1_ENABLED
     module procedure show_D1_SK1
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
@@ -5522,35 +5522,35 @@ contains
 
 #if IK5_ENABLED
     module procedure show_D1_IK5
-        use pm_kind, only: SKC => SK, IKC => IK5
+        use pm_kind, only: SKG => SK, IKG => IK5
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if IK4_ENABLED
     module procedure show_D1_IK4
-        use pm_kind, only: SKC => SK, IKC => IK4
+        use pm_kind, only: SKG => SK, IKG => IK4
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if IK3_ENABLED
     module procedure show_D1_IK3
-        use pm_kind, only: SKC => SK, IKC => IK3
+        use pm_kind, only: SKG => SK, IKG => IK3
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if IK2_ENABLED
     module procedure show_D1_IK2
-        use pm_kind, only: SKC => SK, IKC => IK2
+        use pm_kind, only: SKG => SK, IKG => IK2
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if IK1_ENABLED
     module procedure show_D1_IK1
-        use pm_kind, only: SKC => SK, IKC => IK1
+        use pm_kind, only: SKG => SK, IKG => IK1
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
@@ -5563,35 +5563,35 @@ contains
 
 #if LK5_ENABLED
     module procedure show_D1_LK5
-        use pm_kind, only: SKC => SK, LKC => LK5
+        use pm_kind, only: SKG => SK, LKG => LK5
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if LK4_ENABLED
     module procedure show_D1_LK4
-        use pm_kind, only: SKC => SK, LKC => LK4
+        use pm_kind, only: SKG => SK, LKG => LK4
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if LK3_ENABLED
     module procedure show_D1_LK3
-        use pm_kind, only: SKC => SK, LKC => LK3
+        use pm_kind, only: SKG => SK, LKG => LK3
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if LK2_ENABLED
     module procedure show_D1_LK2
-        use pm_kind, only: SKC => SK, LKC => LK2
+        use pm_kind, only: SKG => SK, LKG => LK2
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if LK1_ENABLED
     module procedure show_D1_LK1
-        use pm_kind, only: SKC => SK, LKC => LK1
+        use pm_kind, only: SKG => SK, LKG => LK1
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
@@ -5604,35 +5604,35 @@ contains
 
 #if CK5_ENABLED
     module procedure show_D1_CK5
-        use pm_kind, only: SKC => SK, CKC => CK5
+        use pm_kind, only: SKG => SK, CKG => CK5
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure show_D1_CK4
-        use pm_kind, only: SKC => SK, CKC => CK4
+        use pm_kind, only: SKG => SK, CKG => CK4
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure show_D1_CK3
-        use pm_kind, only: SKC => SK, CKC => CK3
+        use pm_kind, only: SKG => SK, CKG => CK3
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure show_D1_CK2
-        use pm_kind, only: SKC => SK, CKC => CK2
+        use pm_kind, only: SKG => SK, CKG => CK2
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure show_D1_CK1
-        use pm_kind, only: SKC => SK, CKC => CK1
+        use pm_kind, only: SKG => SK, CKG => CK1
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
@@ -5645,35 +5645,35 @@ contains
 
 #if RK5_ENABLED
     module procedure show_D1_RK5
-        use pm_kind, only: SKC => SK, RKC => RK5
+        use pm_kind, only: SKG => SK, RKG => RK5
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure show_D1_RK4
-        use pm_kind, only: SKC => SK, RKC => RK4
+        use pm_kind, only: SKG => SK, RKG => RK4
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure show_D1_RK3
-        use pm_kind, only: SKC => SK, RKC => RK3
+        use pm_kind, only: SKG => SK, RKG => RK3
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure show_D1_RK2
-        use pm_kind, only: SKC => SK, RKC => RK2
+        use pm_kind, only: SKG => SK, RKG => RK2
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure show_D1_RK1
-        use pm_kind, only: SKC => SK, RKC => RK1
+        use pm_kind, only: SKG => SK, RKG => RK1
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
@@ -5696,35 +5696,35 @@ contains
 
 #if SK5_ENABLED
     module procedure show_D2_SK5
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if SK4_ENABLED
     module procedure show_D2_SK4
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if SK3_ENABLED
     module procedure show_D2_SK3
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if SK2_ENABLED
     module procedure show_D2_SK2
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if SK1_ENABLED
     module procedure show_D2_SK1
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
@@ -5737,35 +5737,35 @@ contains
 
 #if IK5_ENABLED
     module procedure show_D2_IK5
-        use pm_kind, only: SKC => SK, IKC => IK5
+        use pm_kind, only: SKG => SK, IKG => IK5
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if IK4_ENABLED
     module procedure show_D2_IK4
-        use pm_kind, only: SKC => SK, IKC => IK4
+        use pm_kind, only: SKG => SK, IKG => IK4
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if IK3_ENABLED
     module procedure show_D2_IK3
-        use pm_kind, only: SKC => SK, IKC => IK3
+        use pm_kind, only: SKG => SK, IKG => IK3
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if IK2_ENABLED
     module procedure show_D2_IK2
-        use pm_kind, only: SKC => SK, IKC => IK2
+        use pm_kind, only: SKG => SK, IKG => IK2
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if IK1_ENABLED
     module procedure show_D2_IK1
-        use pm_kind, only: SKC => SK, IKC => IK1
+        use pm_kind, only: SKG => SK, IKG => IK1
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
@@ -5778,35 +5778,35 @@ contains
 
 #if LK5_ENABLED
     module procedure show_D2_LK5
-        use pm_kind, only: SKC => SK, LKC => LK5
+        use pm_kind, only: SKG => SK, LKG => LK5
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if LK4_ENABLED
     module procedure show_D2_LK4
-        use pm_kind, only: SKC => SK, LKC => LK4
+        use pm_kind, only: SKG => SK, LKG => LK4
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if LK3_ENABLED
     module procedure show_D2_LK3
-        use pm_kind, only: SKC => SK, LKC => LK3
+        use pm_kind, only: SKG => SK, LKG => LK3
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if LK2_ENABLED
     module procedure show_D2_LK2
-        use pm_kind, only: SKC => SK, LKC => LK2
+        use pm_kind, only: SKG => SK, LKG => LK2
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if LK1_ENABLED
     module procedure show_D2_LK1
-        use pm_kind, only: SKC => SK, LKC => LK1
+        use pm_kind, only: SKG => SK, LKG => LK1
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
@@ -5819,35 +5819,35 @@ contains
 
 #if CK5_ENABLED
     module procedure show_D2_CK5
-        use pm_kind, only: SKC => SK, CKC => CK5
+        use pm_kind, only: SKG => SK, CKG => CK5
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure show_D2_CK4
-        use pm_kind, only: SKC => SK, CKC => CK4
+        use pm_kind, only: SKG => SK, CKG => CK4
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure show_D2_CK3
-        use pm_kind, only: SKC => SK, CKC => CK3
+        use pm_kind, only: SKG => SK, CKG => CK3
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure show_D2_CK2
-        use pm_kind, only: SKC => SK, CKC => CK2
+        use pm_kind, only: SKG => SK, CKG => CK2
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure show_D2_CK1
-        use pm_kind, only: SKC => SK, CKC => CK1
+        use pm_kind, only: SKG => SK, CKG => CK1
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
@@ -5860,35 +5860,35 @@ contains
 
 #if RK5_ENABLED
     module procedure show_D2_RK5
-        use pm_kind, only: SKC => SK, RKC => RK5
+        use pm_kind, only: SKG => SK, RKG => RK5
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure show_D2_RK4
-        use pm_kind, only: SKC => SK, RKC => RK4
+        use pm_kind, only: SKG => SK, RKG => RK4
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure show_D2_RK3
-        use pm_kind, only: SKC => SK, RKC => RK3
+        use pm_kind, only: SKG => SK, RKG => RK3
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure show_D2_RK2
-        use pm_kind, only: SKC => SK, RKC => RK2
+        use pm_kind, only: SKG => SK, RKG => RK2
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure show_D2_RK1
-        use pm_kind, only: SKC => SK, RKC => RK1
+        use pm_kind, only: SKG => SK, RKG => RK1
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
@@ -5913,35 +5913,35 @@ contains
 
 #if SK5_ENABLED
     module procedure show_D3_SK5
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if SK4_ENABLED
     module procedure show_D3_SK4
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if SK3_ENABLED
     module procedure show_D3_SK3
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if SK2_ENABLED
     module procedure show_D3_SK2
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if SK1_ENABLED
     module procedure show_D3_SK1
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
@@ -5954,35 +5954,35 @@ contains
 
 #if IK5_ENABLED
     module procedure show_D3_IK5
-        use pm_kind, only: SKC => SK, IKC => IK5
+        use pm_kind, only: SKG => SK, IKG => IK5
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if IK4_ENABLED
     module procedure show_D3_IK4
-        use pm_kind, only: SKC => SK, IKC => IK4
+        use pm_kind, only: SKG => SK, IKG => IK4
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if IK3_ENABLED
     module procedure show_D3_IK3
-        use pm_kind, only: SKC => SK, IKC => IK3
+        use pm_kind, only: SKG => SK, IKG => IK3
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if IK2_ENABLED
     module procedure show_D3_IK2
-        use pm_kind, only: SKC => SK, IKC => IK2
+        use pm_kind, only: SKG => SK, IKG => IK2
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if IK1_ENABLED
     module procedure show_D3_IK1
-        use pm_kind, only: SKC => SK, IKC => IK1
+        use pm_kind, only: SKG => SK, IKG => IK1
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
@@ -5995,35 +5995,35 @@ contains
 
 #if LK5_ENABLED
     module procedure show_D3_LK5
-        use pm_kind, only: SKC => SK, LKC => LK5
+        use pm_kind, only: SKG => SK, LKG => LK5
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if LK4_ENABLED
     module procedure show_D3_LK4
-        use pm_kind, only: SKC => SK, LKC => LK4
+        use pm_kind, only: SKG => SK, LKG => LK4
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if LK3_ENABLED
     module procedure show_D3_LK3
-        use pm_kind, only: SKC => SK, LKC => LK3
+        use pm_kind, only: SKG => SK, LKG => LK3
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if LK2_ENABLED
     module procedure show_D3_LK2
-        use pm_kind, only: SKC => SK, LKC => LK2
+        use pm_kind, only: SKG => SK, LKG => LK2
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if LK1_ENABLED
     module procedure show_D3_LK1
-        use pm_kind, only: SKC => SK, LKC => LK1
+        use pm_kind, only: SKG => SK, LKG => LK1
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
@@ -6036,35 +6036,35 @@ contains
 
 #if CK5_ENABLED
     module procedure show_D3_CK5
-        use pm_kind, only: SKC => SK, CKC => CK5
+        use pm_kind, only: SKG => SK, CKG => CK5
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure show_D3_CK4
-        use pm_kind, only: SKC => SK, CKC => CK4
+        use pm_kind, only: SKG => SK, CKG => CK4
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure show_D3_CK3
-        use pm_kind, only: SKC => SK, CKC => CK3
+        use pm_kind, only: SKG => SK, CKG => CK3
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure show_D3_CK2
-        use pm_kind, only: SKC => SK, CKC => CK2
+        use pm_kind, only: SKG => SK, CKG => CK2
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure show_D3_CK1
-        use pm_kind, only: SKC => SK, CKC => CK1
+        use pm_kind, only: SKG => SK, CKG => CK1
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
@@ -6077,35 +6077,35 @@ contains
 
 #if RK5_ENABLED
     module procedure show_D3_RK5
-        use pm_kind, only: SKC => SK, RKC => RK5
+        use pm_kind, only: SKG => SK, RKG => RK5
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure show_D3_RK4
-        use pm_kind, only: SKC => SK, RKC => RK4
+        use pm_kind, only: SKG => SK, RKG => RK4
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure show_D3_RK3
-        use pm_kind, only: SKC => SK, RKC => RK3
+        use pm_kind, only: SKG => SK, RKG => RK3
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure show_D3_RK2
-        use pm_kind, only: SKC => SK, RKC => RK2
+        use pm_kind, only: SKG => SK, RKG => RK2
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure show_D3_RK1
-        use pm_kind, only: SKC => SK, RKC => RK1
+        use pm_kind, only: SKG => SK, RKG => RK1
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
@@ -6145,35 +6145,35 @@ contains
 #if PDT_ENABLED
 #if SK5_ENABLED
     module procedure show_D0_PSSK5
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if SK4_ENABLED
     module procedure show_D0_PSSK4
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if SK3_ENABLED
     module procedure show_D0_PSSK3
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if SK2_ENABLED
     module procedure show_D0_PSSK2
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if SK1_ENABLED
     module procedure show_D0_PSSK1
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
@@ -6188,35 +6188,35 @@ contains
 #if PDT_ENABLED
 #if IK5_ENABLED
     module procedure show_D0_PSIK5
-        use pm_kind, only: SKC => SK, IKC => IK5
+        use pm_kind, only: SKG => SK, IKG => IK5
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if IK4_ENABLED
     module procedure show_D0_PSIK4
-        use pm_kind, only: SKC => SK, IKC => IK4
+        use pm_kind, only: SKG => SK, IKG => IK4
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if IK3_ENABLED
     module procedure show_D0_PSIK3
-        use pm_kind, only: SKC => SK, IKC => IK3
+        use pm_kind, only: SKG => SK, IKG => IK3
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if IK2_ENABLED
     module procedure show_D0_PSIK2
-        use pm_kind, only: SKC => SK, IKC => IK2
+        use pm_kind, only: SKG => SK, IKG => IK2
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if IK1_ENABLED
     module procedure show_D0_PSIK1
-        use pm_kind, only: SKC => SK, IKC => IK1
+        use pm_kind, only: SKG => SK, IKG => IK1
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
@@ -6231,35 +6231,35 @@ contains
 #if PDT_ENABLED
 #if LK5_ENABLED
     module procedure show_D0_PSLK5
-        use pm_kind, only: SKC => SK, LKC => LK5
+        use pm_kind, only: SKG => SK, LKG => LK5
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if LK4_ENABLED
     module procedure show_D0_PSLK4
-        use pm_kind, only: SKC => SK, LKC => LK4
+        use pm_kind, only: SKG => SK, LKG => LK4
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if LK3_ENABLED
     module procedure show_D0_PSLK3
-        use pm_kind, only: SKC => SK, LKC => LK3
+        use pm_kind, only: SKG => SK, LKG => LK3
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if LK2_ENABLED
     module procedure show_D0_PSLK2
-        use pm_kind, only: SKC => SK, LKC => LK2
+        use pm_kind, only: SKG => SK, LKG => LK2
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if LK1_ENABLED
     module procedure show_D0_PSLK1
-        use pm_kind, only: SKC => SK, LKC => LK1
+        use pm_kind, only: SKG => SK, LKG => LK1
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
@@ -6274,35 +6274,35 @@ contains
 #if PDT_ENABLED
 #if CK5_ENABLED
     module procedure show_D0_PSCK5
-        use pm_kind, only: SKC => SK, CKC => CK5
+        use pm_kind, only: SKG => SK, CKG => CK5
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure show_D0_PSCK4
-        use pm_kind, only: SKC => SK, CKC => CK4
+        use pm_kind, only: SKG => SK, CKG => CK4
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure show_D0_PSCK3
-        use pm_kind, only: SKC => SK, CKC => CK3
+        use pm_kind, only: SKG => SK, CKG => CK3
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure show_D0_PSCK2
-        use pm_kind, only: SKC => SK, CKC => CK2
+        use pm_kind, only: SKG => SK, CKG => CK2
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure show_D0_PSCK1
-        use pm_kind, only: SKC => SK, CKC => CK1
+        use pm_kind, only: SKG => SK, CKG => CK1
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
@@ -6317,35 +6317,35 @@ contains
 #if PDT_ENABLED
 #if RK5_ENABLED
     module procedure show_D0_PSRK5
-        use pm_kind, only: SKC => SK, RKC => RK5
+        use pm_kind, only: SKG => SK, RKG => RK5
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure show_D0_PSRK4
-        use pm_kind, only: SKC => SK, RKC => RK4
+        use pm_kind, only: SKG => SK, RKG => RK4
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure show_D0_PSRK3
-        use pm_kind, only: SKC => SK, RKC => RK3
+        use pm_kind, only: SKG => SK, RKG => RK3
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure show_D0_PSRK2
-        use pm_kind, only: SKC => SK, RKC => RK2
+        use pm_kind, only: SKG => SK, RKG => RK2
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure show_D0_PSRK1
-        use pm_kind, only: SKC => SK, RKC => RK1
+        use pm_kind, only: SKG => SK, RKG => RK1
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
@@ -6370,35 +6370,35 @@ contains
 #if PDT_ENABLED
 #if SK5_ENABLED
     module procedure show_D1_PSSK5
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if SK4_ENABLED
     module procedure show_D1_PSSK4
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if SK3_ENABLED
     module procedure show_D1_PSSK3
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if SK2_ENABLED
     module procedure show_D1_PSSK2
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if SK1_ENABLED
     module procedure show_D1_PSSK1
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
@@ -6413,35 +6413,35 @@ contains
 #if PDT_ENABLED
 #if IK5_ENABLED
     module procedure show_D1_PSIK5
-        use pm_kind, only: SKC => SK, IKC => IK5
+        use pm_kind, only: SKG => SK, IKG => IK5
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if IK4_ENABLED
     module procedure show_D1_PSIK4
-        use pm_kind, only: SKC => SK, IKC => IK4
+        use pm_kind, only: SKG => SK, IKG => IK4
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if IK3_ENABLED
     module procedure show_D1_PSIK3
-        use pm_kind, only: SKC => SK, IKC => IK3
+        use pm_kind, only: SKG => SK, IKG => IK3
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if IK2_ENABLED
     module procedure show_D1_PSIK2
-        use pm_kind, only: SKC => SK, IKC => IK2
+        use pm_kind, only: SKG => SK, IKG => IK2
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if IK1_ENABLED
     module procedure show_D1_PSIK1
-        use pm_kind, only: SKC => SK, IKC => IK1
+        use pm_kind, only: SKG => SK, IKG => IK1
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
@@ -6456,35 +6456,35 @@ contains
 #if PDT_ENABLED
 #if LK5_ENABLED
     module procedure show_D1_PSLK5
-        use pm_kind, only: SKC => SK, LKC => LK5
+        use pm_kind, only: SKG => SK, LKG => LK5
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if LK4_ENABLED
     module procedure show_D1_PSLK4
-        use pm_kind, only: SKC => SK, LKC => LK4
+        use pm_kind, only: SKG => SK, LKG => LK4
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if LK3_ENABLED
     module procedure show_D1_PSLK3
-        use pm_kind, only: SKC => SK, LKC => LK3
+        use pm_kind, only: SKG => SK, LKG => LK3
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if LK2_ENABLED
     module procedure show_D1_PSLK2
-        use pm_kind, only: SKC => SK, LKC => LK2
+        use pm_kind, only: SKG => SK, LKG => LK2
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if LK1_ENABLED
     module procedure show_D1_PSLK1
-        use pm_kind, only: SKC => SK, LKC => LK1
+        use pm_kind, only: SKG => SK, LKG => LK1
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
@@ -6499,35 +6499,35 @@ contains
 #if PDT_ENABLED
 #if CK5_ENABLED
     module procedure show_D1_PSCK5
-        use pm_kind, only: SKC => SK, CKC => CK5
+        use pm_kind, only: SKG => SK, CKG => CK5
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure show_D1_PSCK4
-        use pm_kind, only: SKC => SK, CKC => CK4
+        use pm_kind, only: SKG => SK, CKG => CK4
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure show_D1_PSCK3
-        use pm_kind, only: SKC => SK, CKC => CK3
+        use pm_kind, only: SKG => SK, CKG => CK3
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure show_D1_PSCK2
-        use pm_kind, only: SKC => SK, CKC => CK2
+        use pm_kind, only: SKG => SK, CKG => CK2
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure show_D1_PSCK1
-        use pm_kind, only: SKC => SK, CKC => CK1
+        use pm_kind, only: SKG => SK, CKG => CK1
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
@@ -6542,35 +6542,35 @@ contains
 #if PDT_ENABLED
 #if RK5_ENABLED
     module procedure show_D1_PSRK5
-        use pm_kind, only: SKC => SK, RKC => RK5
+        use pm_kind, only: SKG => SK, RKG => RK5
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure show_D1_PSRK4
-        use pm_kind, only: SKC => SK, RKC => RK4
+        use pm_kind, only: SKG => SK, RKG => RK4
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure show_D1_PSRK3
-        use pm_kind, only: SKC => SK, RKC => RK3
+        use pm_kind, only: SKG => SK, RKG => RK3
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure show_D1_PSRK2
-        use pm_kind, only: SKC => SK, RKC => RK2
+        use pm_kind, only: SKG => SK, RKG => RK2
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure show_D1_PSRK1
-        use pm_kind, only: SKC => SK, RKC => RK1
+        use pm_kind, only: SKG => SK, RKG => RK1
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
@@ -6595,35 +6595,35 @@ contains
 #if PDT_ENABLED
 #if SK5_ENABLED
     module procedure show_D2_PSSK5
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if SK4_ENABLED
     module procedure show_D2_PSSK4
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if SK3_ENABLED
     module procedure show_D2_PSSK3
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if SK2_ENABLED
     module procedure show_D2_PSSK2
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if SK1_ENABLED
     module procedure show_D2_PSSK1
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
@@ -6638,35 +6638,35 @@ contains
 #if PDT_ENABLED
 #if IK5_ENABLED
     module procedure show_D2_PSIK5
-        use pm_kind, only: SKC => SK, IKC => IK5
+        use pm_kind, only: SKG => SK, IKG => IK5
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if IK4_ENABLED
     module procedure show_D2_PSIK4
-        use pm_kind, only: SKC => SK, IKC => IK4
+        use pm_kind, only: SKG => SK, IKG => IK4
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if IK3_ENABLED
     module procedure show_D2_PSIK3
-        use pm_kind, only: SKC => SK, IKC => IK3
+        use pm_kind, only: SKG => SK, IKG => IK3
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if IK2_ENABLED
     module procedure show_D2_PSIK2
-        use pm_kind, only: SKC => SK, IKC => IK2
+        use pm_kind, only: SKG => SK, IKG => IK2
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if IK1_ENABLED
     module procedure show_D2_PSIK1
-        use pm_kind, only: SKC => SK, IKC => IK1
+        use pm_kind, only: SKG => SK, IKG => IK1
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
@@ -6681,35 +6681,35 @@ contains
 #if PDT_ENABLED
 #if LK5_ENABLED
     module procedure show_D2_PSLK5
-        use pm_kind, only: SKC => SK, LKC => LK5
+        use pm_kind, only: SKG => SK, LKG => LK5
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if LK4_ENABLED
     module procedure show_D2_PSLK4
-        use pm_kind, only: SKC => SK, LKC => LK4
+        use pm_kind, only: SKG => SK, LKG => LK4
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if LK3_ENABLED
     module procedure show_D2_PSLK3
-        use pm_kind, only: SKC => SK, LKC => LK3
+        use pm_kind, only: SKG => SK, LKG => LK3
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if LK2_ENABLED
     module procedure show_D2_PSLK2
-        use pm_kind, only: SKC => SK, LKC => LK2
+        use pm_kind, only: SKG => SK, LKG => LK2
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if LK1_ENABLED
     module procedure show_D2_PSLK1
-        use pm_kind, only: SKC => SK, LKC => LK1
+        use pm_kind, only: SKG => SK, LKG => LK1
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
@@ -6724,35 +6724,35 @@ contains
 #if PDT_ENABLED
 #if CK5_ENABLED
     module procedure show_D2_PSCK5
-        use pm_kind, only: SKC => SK, CKC => CK5
+        use pm_kind, only: SKG => SK, CKG => CK5
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure show_D2_PSCK4
-        use pm_kind, only: SKC => SK, CKC => CK4
+        use pm_kind, only: SKG => SK, CKG => CK4
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure show_D2_PSCK3
-        use pm_kind, only: SKC => SK, CKC => CK3
+        use pm_kind, only: SKG => SK, CKG => CK3
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure show_D2_PSCK2
-        use pm_kind, only: SKC => SK, CKC => CK2
+        use pm_kind, only: SKG => SK, CKG => CK2
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure show_D2_PSCK1
-        use pm_kind, only: SKC => SK, CKC => CK1
+        use pm_kind, only: SKG => SK, CKG => CK1
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
@@ -6767,35 +6767,35 @@ contains
 #if PDT_ENABLED
 #if RK5_ENABLED
     module procedure show_D2_PSRK5
-        use pm_kind, only: SKC => SK, RKC => RK5
+        use pm_kind, only: SKG => SK, RKG => RK5
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure show_D2_PSRK4
-        use pm_kind, only: SKC => SK, RKC => RK4
+        use pm_kind, only: SKG => SK, RKG => RK4
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure show_D2_PSRK3
-        use pm_kind, only: SKC => SK, RKC => RK3
+        use pm_kind, only: SKG => SK, RKG => RK3
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure show_D2_PSRK2
-        use pm_kind, only: SKC => SK, RKC => RK2
+        use pm_kind, only: SKG => SK, RKG => RK2
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure show_D2_PSRK1
-        use pm_kind, only: SKC => SK, RKC => RK1
+        use pm_kind, only: SKG => SK, RKG => RK1
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
@@ -6820,35 +6820,35 @@ contains
 #if PDT_ENABLED
 #if SK5_ENABLED
     module procedure show_D3_PSSK5
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if SK4_ENABLED
     module procedure show_D3_PSSK4
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if SK3_ENABLED
     module procedure show_D3_PSSK3
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if SK2_ENABLED
     module procedure show_D3_PSSK2
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if SK1_ENABLED
     module procedure show_D3_PSSK1
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
@@ -6863,35 +6863,35 @@ contains
 #if PDT_ENABLED
 #if IK5_ENABLED
     module procedure show_D3_PSIK5
-        use pm_kind, only: SKC => SK, IKC => IK5
+        use pm_kind, only: SKG => SK, IKG => IK5
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if IK4_ENABLED
     module procedure show_D3_PSIK4
-        use pm_kind, only: SKC => SK, IKC => IK4
+        use pm_kind, only: SKG => SK, IKG => IK4
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if IK3_ENABLED
     module procedure show_D3_PSIK3
-        use pm_kind, only: SKC => SK, IKC => IK3
+        use pm_kind, only: SKG => SK, IKG => IK3
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if IK2_ENABLED
     module procedure show_D3_PSIK2
-        use pm_kind, only: SKC => SK, IKC => IK2
+        use pm_kind, only: SKG => SK, IKG => IK2
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if IK1_ENABLED
     module procedure show_D3_PSIK1
-        use pm_kind, only: SKC => SK, IKC => IK1
+        use pm_kind, only: SKG => SK, IKG => IK1
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
@@ -6906,35 +6906,35 @@ contains
 #if PDT_ENABLED
 #if LK5_ENABLED
     module procedure show_D3_PSLK5
-        use pm_kind, only: SKC => SK, LKC => LK5
+        use pm_kind, only: SKG => SK, LKG => LK5
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if LK4_ENABLED
     module procedure show_D3_PSLK4
-        use pm_kind, only: SKC => SK, LKC => LK4
+        use pm_kind, only: SKG => SK, LKG => LK4
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if LK3_ENABLED
     module procedure show_D3_PSLK3
-        use pm_kind, only: SKC => SK, LKC => LK3
+        use pm_kind, only: SKG => SK, LKG => LK3
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if LK2_ENABLED
     module procedure show_D3_PSLK2
-        use pm_kind, only: SKC => SK, LKC => LK2
+        use pm_kind, only: SKG => SK, LKG => LK2
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if LK1_ENABLED
     module procedure show_D3_PSLK1
-        use pm_kind, only: SKC => SK, LKC => LK1
+        use pm_kind, only: SKG => SK, LKG => LK1
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
@@ -6949,35 +6949,35 @@ contains
 #if PDT_ENABLED
 #if CK5_ENABLED
     module procedure show_D3_PSCK5
-        use pm_kind, only: SKC => SK, CKC => CK5
+        use pm_kind, only: SKG => SK, CKG => CK5
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure show_D3_PSCK4
-        use pm_kind, only: SKC => SK, CKC => CK4
+        use pm_kind, only: SKG => SK, CKG => CK4
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure show_D3_PSCK3
-        use pm_kind, only: SKC => SK, CKC => CK3
+        use pm_kind, only: SKG => SK, CKG => CK3
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure show_D3_PSCK2
-        use pm_kind, only: SKC => SK, CKC => CK2
+        use pm_kind, only: SKG => SK, CKG => CK2
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure show_D3_PSCK1
-        use pm_kind, only: SKC => SK, CKC => CK1
+        use pm_kind, only: SKG => SK, CKG => CK1
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
@@ -6992,35 +6992,35 @@ contains
 #if PDT_ENABLED
 #if RK5_ENABLED
     module procedure show_D3_PSRK5
-        use pm_kind, only: SKC => SK, RKC => RK5
+        use pm_kind, only: SKG => SK, RKG => RK5
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure show_D3_PSRK4
-        use pm_kind, only: SKC => SK, RKC => RK4
+        use pm_kind, only: SKG => SK, RKG => RK4
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure show_D3_PSRK3
-        use pm_kind, only: SKC => SK, RKC => RK3
+        use pm_kind, only: SKG => SK, RKG => RK3
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure show_D3_PSRK2
-        use pm_kind, only: SKC => SK, RKC => RK2
+        use pm_kind, only: SKG => SK, RKG => RK2
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure show_D3_PSRK1
-        use pm_kind, only: SKC => SK, RKC => RK1
+        use pm_kind, only: SKG => SK, RKG => RK1
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
@@ -7057,35 +7057,35 @@ contains
 #if PDT_ENABLED
 #if SK5_ENABLED
     module procedure show_D0_PVSK5
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if SK4_ENABLED
     module procedure show_D0_PVSK4
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if SK3_ENABLED
     module procedure show_D0_PVSK3
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if SK2_ENABLED
     module procedure show_D0_PVSK2
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if SK1_ENABLED
     module procedure show_D0_PVSK1
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
@@ -7100,35 +7100,35 @@ contains
 #if PDT_ENABLED
 #if IK5_ENABLED
     module procedure show_D0_PVIK5
-        use pm_kind, only: SKC => SK, IKC => IK5
+        use pm_kind, only: SKG => SK, IKG => IK5
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if IK4_ENABLED
     module procedure show_D0_PVIK4
-        use pm_kind, only: SKC => SK, IKC => IK4
+        use pm_kind, only: SKG => SK, IKG => IK4
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if IK3_ENABLED
     module procedure show_D0_PVIK3
-        use pm_kind, only: SKC => SK, IKC => IK3
+        use pm_kind, only: SKG => SK, IKG => IK3
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if IK2_ENABLED
     module procedure show_D0_PVIK2
-        use pm_kind, only: SKC => SK, IKC => IK2
+        use pm_kind, only: SKG => SK, IKG => IK2
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if IK1_ENABLED
     module procedure show_D0_PVIK1
-        use pm_kind, only: SKC => SK, IKC => IK1
+        use pm_kind, only: SKG => SK, IKG => IK1
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
@@ -7143,35 +7143,35 @@ contains
 #if PDT_ENABLED
 #if LK5_ENABLED
     module procedure show_D0_PVLK5
-        use pm_kind, only: SKC => SK, LKC => LK5
+        use pm_kind, only: SKG => SK, LKG => LK5
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if LK4_ENABLED
     module procedure show_D0_PVLK4
-        use pm_kind, only: SKC => SK, LKC => LK4
+        use pm_kind, only: SKG => SK, LKG => LK4
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if LK3_ENABLED
     module procedure show_D0_PVLK3
-        use pm_kind, only: SKC => SK, LKC => LK3
+        use pm_kind, only: SKG => SK, LKG => LK3
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if LK2_ENABLED
     module procedure show_D0_PVLK2
-        use pm_kind, only: SKC => SK, LKC => LK2
+        use pm_kind, only: SKG => SK, LKG => LK2
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if LK1_ENABLED
     module procedure show_D0_PVLK1
-        use pm_kind, only: SKC => SK, LKC => LK1
+        use pm_kind, only: SKG => SK, LKG => LK1
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
@@ -7186,35 +7186,35 @@ contains
 #if PDT_ENABLED
 #if CK5_ENABLED
     module procedure show_D0_PVCK5
-        use pm_kind, only: SKC => SK, CKC => CK5
+        use pm_kind, only: SKG => SK, CKG => CK5
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure show_D0_PVCK4
-        use pm_kind, only: SKC => SK, CKC => CK4
+        use pm_kind, only: SKG => SK, CKG => CK4
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure show_D0_PVCK3
-        use pm_kind, only: SKC => SK, CKC => CK3
+        use pm_kind, only: SKG => SK, CKG => CK3
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure show_D0_PVCK2
-        use pm_kind, only: SKC => SK, CKC => CK2
+        use pm_kind, only: SKG => SK, CKG => CK2
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure show_D0_PVCK1
-        use pm_kind, only: SKC => SK, CKC => CK1
+        use pm_kind, only: SKG => SK, CKG => CK1
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
@@ -7229,35 +7229,35 @@ contains
 #if PDT_ENABLED
 #if RK5_ENABLED
     module procedure show_D0_PVRK5
-        use pm_kind, only: SKC => SK, RKC => RK5
+        use pm_kind, only: SKG => SK, RKG => RK5
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure show_D0_PVRK4
-        use pm_kind, only: SKC => SK, RKC => RK4
+        use pm_kind, only: SKG => SK, RKG => RK4
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure show_D0_PVRK3
-        use pm_kind, only: SKC => SK, RKC => RK3
+        use pm_kind, only: SKG => SK, RKG => RK3
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure show_D0_PVRK2
-        use pm_kind, only: SKC => SK, RKC => RK2
+        use pm_kind, only: SKG => SK, RKG => RK2
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure show_D0_PVRK1
-        use pm_kind, only: SKC => SK, RKC => RK1
+        use pm_kind, only: SKG => SK, RKG => RK1
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
@@ -7282,35 +7282,35 @@ contains
 #if PDT_ENABLED
 #if SK5_ENABLED
     module procedure show_D1_PVSK5
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if SK4_ENABLED
     module procedure show_D1_PVSK4
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if SK3_ENABLED
     module procedure show_D1_PVSK3
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if SK2_ENABLED
     module procedure show_D1_PVSK2
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if SK1_ENABLED
     module procedure show_D1_PVSK1
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
@@ -7325,35 +7325,35 @@ contains
 #if PDT_ENABLED
 #if IK5_ENABLED
     module procedure show_D1_PVIK5
-        use pm_kind, only: SKC => SK, IKC => IK5
+        use pm_kind, only: SKG => SK, IKG => IK5
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if IK4_ENABLED
     module procedure show_D1_PVIK4
-        use pm_kind, only: SKC => SK, IKC => IK4
+        use pm_kind, only: SKG => SK, IKG => IK4
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if IK3_ENABLED
     module procedure show_D1_PVIK3
-        use pm_kind, only: SKC => SK, IKC => IK3
+        use pm_kind, only: SKG => SK, IKG => IK3
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if IK2_ENABLED
     module procedure show_D1_PVIK2
-        use pm_kind, only: SKC => SK, IKC => IK2
+        use pm_kind, only: SKG => SK, IKG => IK2
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if IK1_ENABLED
     module procedure show_D1_PVIK1
-        use pm_kind, only: SKC => SK, IKC => IK1
+        use pm_kind, only: SKG => SK, IKG => IK1
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
@@ -7368,35 +7368,35 @@ contains
 #if PDT_ENABLED
 #if LK5_ENABLED
     module procedure show_D1_PVLK5
-        use pm_kind, only: SKC => SK, LKC => LK5
+        use pm_kind, only: SKG => SK, LKG => LK5
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if LK4_ENABLED
     module procedure show_D1_PVLK4
-        use pm_kind, only: SKC => SK, LKC => LK4
+        use pm_kind, only: SKG => SK, LKG => LK4
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if LK3_ENABLED
     module procedure show_D1_PVLK3
-        use pm_kind, only: SKC => SK, LKC => LK3
+        use pm_kind, only: SKG => SK, LKG => LK3
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if LK2_ENABLED
     module procedure show_D1_PVLK2
-        use pm_kind, only: SKC => SK, LKC => LK2
+        use pm_kind, only: SKG => SK, LKG => LK2
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if LK1_ENABLED
     module procedure show_D1_PVLK1
-        use pm_kind, only: SKC => SK, LKC => LK1
+        use pm_kind, only: SKG => SK, LKG => LK1
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
@@ -7411,35 +7411,35 @@ contains
 #if PDT_ENABLED
 #if CK5_ENABLED
     module procedure show_D1_PVCK5
-        use pm_kind, only: SKC => SK, CKC => CK5
+        use pm_kind, only: SKG => SK, CKG => CK5
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure show_D1_PVCK4
-        use pm_kind, only: SKC => SK, CKC => CK4
+        use pm_kind, only: SKG => SK, CKG => CK4
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure show_D1_PVCK3
-        use pm_kind, only: SKC => SK, CKC => CK3
+        use pm_kind, only: SKG => SK, CKG => CK3
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure show_D1_PVCK2
-        use pm_kind, only: SKC => SK, CKC => CK2
+        use pm_kind, only: SKG => SK, CKG => CK2
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure show_D1_PVCK1
-        use pm_kind, only: SKC => SK, CKC => CK1
+        use pm_kind, only: SKG => SK, CKG => CK1
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
@@ -7454,35 +7454,35 @@ contains
 #if PDT_ENABLED
 #if RK5_ENABLED
     module procedure show_D1_PVRK5
-        use pm_kind, only: SKC => SK, RKC => RK5
+        use pm_kind, only: SKG => SK, RKG => RK5
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure show_D1_PVRK4
-        use pm_kind, only: SKC => SK, RKC => RK4
+        use pm_kind, only: SKG => SK, RKG => RK4
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure show_D1_PVRK3
-        use pm_kind, only: SKC => SK, RKC => RK3
+        use pm_kind, only: SKG => SK, RKG => RK3
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure show_D1_PVRK2
-        use pm_kind, only: SKC => SK, RKC => RK2
+        use pm_kind, only: SKG => SK, RKG => RK2
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure show_D1_PVRK1
-        use pm_kind, only: SKC => SK, RKC => RK1
+        use pm_kind, only: SKG => SK, RKG => RK1
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
@@ -7507,35 +7507,35 @@ contains
 #if PDT_ENABLED
 #if SK5_ENABLED
     module procedure show_D2_PVSK5
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if SK4_ENABLED
     module procedure show_D2_PVSK4
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if SK3_ENABLED
     module procedure show_D2_PVSK3
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if SK2_ENABLED
     module procedure show_D2_PVSK2
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if SK1_ENABLED
     module procedure show_D2_PVSK1
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
@@ -7550,35 +7550,35 @@ contains
 #if PDT_ENABLED
 #if IK5_ENABLED
     module procedure show_D2_PVIK5
-        use pm_kind, only: SKC => SK, IKC => IK5
+        use pm_kind, only: SKG => SK, IKG => IK5
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if IK4_ENABLED
     module procedure show_D2_PVIK4
-        use pm_kind, only: SKC => SK, IKC => IK4
+        use pm_kind, only: SKG => SK, IKG => IK4
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if IK3_ENABLED
     module procedure show_D2_PVIK3
-        use pm_kind, only: SKC => SK, IKC => IK3
+        use pm_kind, only: SKG => SK, IKG => IK3
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if IK2_ENABLED
     module procedure show_D2_PVIK2
-        use pm_kind, only: SKC => SK, IKC => IK2
+        use pm_kind, only: SKG => SK, IKG => IK2
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if IK1_ENABLED
     module procedure show_D2_PVIK1
-        use pm_kind, only: SKC => SK, IKC => IK1
+        use pm_kind, only: SKG => SK, IKG => IK1
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
@@ -7593,35 +7593,35 @@ contains
 #if PDT_ENABLED
 #if LK5_ENABLED
     module procedure show_D2_PVLK5
-        use pm_kind, only: SKC => SK, LKC => LK5
+        use pm_kind, only: SKG => SK, LKG => LK5
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if LK4_ENABLED
     module procedure show_D2_PVLK4
-        use pm_kind, only: SKC => SK, LKC => LK4
+        use pm_kind, only: SKG => SK, LKG => LK4
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if LK3_ENABLED
     module procedure show_D2_PVLK3
-        use pm_kind, only: SKC => SK, LKC => LK3
+        use pm_kind, only: SKG => SK, LKG => LK3
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if LK2_ENABLED
     module procedure show_D2_PVLK2
-        use pm_kind, only: SKC => SK, LKC => LK2
+        use pm_kind, only: SKG => SK, LKG => LK2
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if LK1_ENABLED
     module procedure show_D2_PVLK1
-        use pm_kind, only: SKC => SK, LKC => LK1
+        use pm_kind, only: SKG => SK, LKG => LK1
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
@@ -7636,35 +7636,35 @@ contains
 #if PDT_ENABLED
 #if CK5_ENABLED
     module procedure show_D2_PVCK5
-        use pm_kind, only: SKC => SK, CKC => CK5
+        use pm_kind, only: SKG => SK, CKG => CK5
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure show_D2_PVCK4
-        use pm_kind, only: SKC => SK, CKC => CK4
+        use pm_kind, only: SKG => SK, CKG => CK4
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure show_D2_PVCK3
-        use pm_kind, only: SKC => SK, CKC => CK3
+        use pm_kind, only: SKG => SK, CKG => CK3
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure show_D2_PVCK2
-        use pm_kind, only: SKC => SK, CKC => CK2
+        use pm_kind, only: SKG => SK, CKG => CK2
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure show_D2_PVCK1
-        use pm_kind, only: SKC => SK, CKC => CK1
+        use pm_kind, only: SKG => SK, CKG => CK1
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
@@ -7679,35 +7679,35 @@ contains
 #if PDT_ENABLED
 #if RK5_ENABLED
     module procedure show_D2_PVRK5
-        use pm_kind, only: SKC => SK, RKC => RK5
+        use pm_kind, only: SKG => SK, RKG => RK5
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure show_D2_PVRK4
-        use pm_kind, only: SKC => SK, RKC => RK4
+        use pm_kind, only: SKG => SK, RKG => RK4
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure show_D2_PVRK3
-        use pm_kind, only: SKC => SK, RKC => RK3
+        use pm_kind, only: SKG => SK, RKG => RK3
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure show_D2_PVRK2
-        use pm_kind, only: SKC => SK, RKC => RK2
+        use pm_kind, only: SKG => SK, RKG => RK2
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure show_D2_PVRK1
-        use pm_kind, only: SKC => SK, RKC => RK1
+        use pm_kind, only: SKG => SK, RKG => RK1
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
@@ -7744,35 +7744,35 @@ contains
 #if PDT_ENABLED
 #if SK5_ENABLED
     module procedure show_D0_PMSK5
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if SK4_ENABLED
     module procedure show_D0_PMSK4
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if SK3_ENABLED
     module procedure show_D0_PMSK3
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if SK2_ENABLED
     module procedure show_D0_PMSK2
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if SK1_ENABLED
     module procedure show_D0_PMSK1
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
@@ -7787,35 +7787,35 @@ contains
 #if PDT_ENABLED
 #if IK5_ENABLED
     module procedure show_D0_PMIK5
-        use pm_kind, only: SKC => SK, IKC => IK5
+        use pm_kind, only: SKG => SK, IKG => IK5
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if IK4_ENABLED
     module procedure show_D0_PMIK4
-        use pm_kind, only: SKC => SK, IKC => IK4
+        use pm_kind, only: SKG => SK, IKG => IK4
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if IK3_ENABLED
     module procedure show_D0_PMIK3
-        use pm_kind, only: SKC => SK, IKC => IK3
+        use pm_kind, only: SKG => SK, IKG => IK3
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if IK2_ENABLED
     module procedure show_D0_PMIK2
-        use pm_kind, only: SKC => SK, IKC => IK2
+        use pm_kind, only: SKG => SK, IKG => IK2
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if IK1_ENABLED
     module procedure show_D0_PMIK1
-        use pm_kind, only: SKC => SK, IKC => IK1
+        use pm_kind, only: SKG => SK, IKG => IK1
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
@@ -7830,35 +7830,35 @@ contains
 #if PDT_ENABLED
 #if LK5_ENABLED
     module procedure show_D0_PMLK5
-        use pm_kind, only: SKC => SK, LKC => LK5
+        use pm_kind, only: SKG => SK, LKG => LK5
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if LK4_ENABLED
     module procedure show_D0_PMLK4
-        use pm_kind, only: SKC => SK, LKC => LK4
+        use pm_kind, only: SKG => SK, LKG => LK4
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if LK3_ENABLED
     module procedure show_D0_PMLK3
-        use pm_kind, only: SKC => SK, LKC => LK3
+        use pm_kind, only: SKG => SK, LKG => LK3
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if LK2_ENABLED
     module procedure show_D0_PMLK2
-        use pm_kind, only: SKC => SK, LKC => LK2
+        use pm_kind, only: SKG => SK, LKG => LK2
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if LK1_ENABLED
     module procedure show_D0_PMLK1
-        use pm_kind, only: SKC => SK, LKC => LK1
+        use pm_kind, only: SKG => SK, LKG => LK1
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
@@ -7873,35 +7873,35 @@ contains
 #if PDT_ENABLED
 #if CK5_ENABLED
     module procedure show_D0_PMCK5
-        use pm_kind, only: SKC => SK, CKC => CK5
+        use pm_kind, only: SKG => SK, CKG => CK5
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure show_D0_PMCK4
-        use pm_kind, only: SKC => SK, CKC => CK4
+        use pm_kind, only: SKG => SK, CKG => CK4
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure show_D0_PMCK3
-        use pm_kind, only: SKC => SK, CKC => CK3
+        use pm_kind, only: SKG => SK, CKG => CK3
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure show_D0_PMCK2
-        use pm_kind, only: SKC => SK, CKC => CK2
+        use pm_kind, only: SKG => SK, CKG => CK2
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure show_D0_PMCK1
-        use pm_kind, only: SKC => SK, CKC => CK1
+        use pm_kind, only: SKG => SK, CKG => CK1
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
@@ -7916,35 +7916,35 @@ contains
 #if PDT_ENABLED
 #if RK5_ENABLED
     module procedure show_D0_PMRK5
-        use pm_kind, only: SKC => SK, RKC => RK5
+        use pm_kind, only: SKG => SK, RKG => RK5
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure show_D0_PMRK4
-        use pm_kind, only: SKC => SK, RKC => RK4
+        use pm_kind, only: SKG => SK, RKG => RK4
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure show_D0_PMRK3
-        use pm_kind, only: SKC => SK, RKC => RK3
+        use pm_kind, only: SKG => SK, RKG => RK3
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure show_D0_PMRK2
-        use pm_kind, only: SKC => SK, RKC => RK2
+        use pm_kind, only: SKG => SK, RKG => RK2
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure show_D0_PMRK1
-        use pm_kind, only: SKC => SK, RKC => RK1
+        use pm_kind, only: SKG => SK, RKG => RK1
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
@@ -7969,35 +7969,35 @@ contains
 #if PDT_ENABLED
 #if SK5_ENABLED
     module procedure show_D1_PMSK5
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if SK4_ENABLED
     module procedure show_D1_PMSK4
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if SK3_ENABLED
     module procedure show_D1_PMSK3
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if SK2_ENABLED
     module procedure show_D1_PMSK2
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if SK1_ENABLED
     module procedure show_D1_PMSK1
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
@@ -8012,35 +8012,35 @@ contains
 #if PDT_ENABLED
 #if IK5_ENABLED
     module procedure show_D1_PMIK5
-        use pm_kind, only: SKC => SK, IKC => IK5
+        use pm_kind, only: SKG => SK, IKG => IK5
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if IK4_ENABLED
     module procedure show_D1_PMIK4
-        use pm_kind, only: SKC => SK, IKC => IK4
+        use pm_kind, only: SKG => SK, IKG => IK4
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if IK3_ENABLED
     module procedure show_D1_PMIK3
-        use pm_kind, only: SKC => SK, IKC => IK3
+        use pm_kind, only: SKG => SK, IKG => IK3
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if IK2_ENABLED
     module procedure show_D1_PMIK2
-        use pm_kind, only: SKC => SK, IKC => IK2
+        use pm_kind, only: SKG => SK, IKG => IK2
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if IK1_ENABLED
     module procedure show_D1_PMIK1
-        use pm_kind, only: SKC => SK, IKC => IK1
+        use pm_kind, only: SKG => SK, IKG => IK1
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
@@ -8055,35 +8055,35 @@ contains
 #if PDT_ENABLED
 #if LK5_ENABLED
     module procedure show_D1_PMLK5
-        use pm_kind, only: SKC => SK, LKC => LK5
+        use pm_kind, only: SKG => SK, LKG => LK5
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if LK4_ENABLED
     module procedure show_D1_PMLK4
-        use pm_kind, only: SKC => SK, LKC => LK4
+        use pm_kind, only: SKG => SK, LKG => LK4
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if LK3_ENABLED
     module procedure show_D1_PMLK3
-        use pm_kind, only: SKC => SK, LKC => LK3
+        use pm_kind, only: SKG => SK, LKG => LK3
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if LK2_ENABLED
     module procedure show_D1_PMLK2
-        use pm_kind, only: SKC => SK, LKC => LK2
+        use pm_kind, only: SKG => SK, LKG => LK2
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if LK1_ENABLED
     module procedure show_D1_PMLK1
-        use pm_kind, only: SKC => SK, LKC => LK1
+        use pm_kind, only: SKG => SK, LKG => LK1
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
@@ -8098,35 +8098,35 @@ contains
 #if PDT_ENABLED
 #if CK5_ENABLED
     module procedure show_D1_PMCK5
-        use pm_kind, only: SKC => SK, CKC => CK5
+        use pm_kind, only: SKG => SK, CKG => CK5
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure show_D1_PMCK4
-        use pm_kind, only: SKC => SK, CKC => CK4
+        use pm_kind, only: SKG => SK, CKG => CK4
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure show_D1_PMCK3
-        use pm_kind, only: SKC => SK, CKC => CK3
+        use pm_kind, only: SKG => SK, CKG => CK3
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure show_D1_PMCK2
-        use pm_kind, only: SKC => SK, CKC => CK2
+        use pm_kind, only: SKG => SK, CKG => CK2
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure show_D1_PMCK1
-        use pm_kind, only: SKC => SK, CKC => CK1
+        use pm_kind, only: SKG => SK, CKG => CK1
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
@@ -8141,35 +8141,35 @@ contains
 #if PDT_ENABLED
 #if RK5_ENABLED
     module procedure show_D1_PMRK5
-        use pm_kind, only: SKC => SK, RKC => RK5
+        use pm_kind, only: SKG => SK, RKG => RK5
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure show_D1_PMRK4
-        use pm_kind, only: SKC => SK, RKC => RK4
+        use pm_kind, only: SKG => SK, RKG => RK4
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure show_D1_PMRK3
-        use pm_kind, only: SKC => SK, RKC => RK3
+        use pm_kind, only: SKG => SK, RKG => RK3
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure show_D1_PMRK2
-        use pm_kind, only: SKC => SK, RKC => RK2
+        use pm_kind, only: SKG => SK, RKG => RK2
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure show_D1_PMRK1
-        use pm_kind, only: SKC => SK, RKC => RK1
+        use pm_kind, only: SKG => SK, RKG => RK1
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
@@ -8206,35 +8206,35 @@ contains
 #if PDT_ENABLED
 #if SK5_ENABLED
     module procedure show_D0_PCSK5
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if SK4_ENABLED
     module procedure show_D0_PCSK4
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if SK3_ENABLED
     module procedure show_D0_PCSK3
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if SK2_ENABLED
     module procedure show_D0_PCSK2
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if SK1_ENABLED
     module procedure show_D0_PCSK1
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
@@ -8249,35 +8249,35 @@ contains
 #if PDT_ENABLED
 #if IK5_ENABLED
     module procedure show_D0_PCIK5
-        use pm_kind, only: SKC => SK, IKC => IK5
+        use pm_kind, only: SKG => SK, IKG => IK5
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if IK4_ENABLED
     module procedure show_D0_PCIK4
-        use pm_kind, only: SKC => SK, IKC => IK4
+        use pm_kind, only: SKG => SK, IKG => IK4
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if IK3_ENABLED
     module procedure show_D0_PCIK3
-        use pm_kind, only: SKC => SK, IKC => IK3
+        use pm_kind, only: SKG => SK, IKG => IK3
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if IK2_ENABLED
     module procedure show_D0_PCIK2
-        use pm_kind, only: SKC => SK, IKC => IK2
+        use pm_kind, only: SKG => SK, IKG => IK2
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if IK1_ENABLED
     module procedure show_D0_PCIK1
-        use pm_kind, only: SKC => SK, IKC => IK1
+        use pm_kind, only: SKG => SK, IKG => IK1
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
@@ -8292,35 +8292,35 @@ contains
 #if PDT_ENABLED
 #if LK5_ENABLED
     module procedure show_D0_PCLK5
-        use pm_kind, only: SKC => SK, LKC => LK5
+        use pm_kind, only: SKG => SK, LKG => LK5
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if LK4_ENABLED
     module procedure show_D0_PCLK4
-        use pm_kind, only: SKC => SK, LKC => LK4
+        use pm_kind, only: SKG => SK, LKG => LK4
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if LK3_ENABLED
     module procedure show_D0_PCLK3
-        use pm_kind, only: SKC => SK, LKC => LK3
+        use pm_kind, only: SKG => SK, LKG => LK3
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if LK2_ENABLED
     module procedure show_D0_PCLK2
-        use pm_kind, only: SKC => SK, LKC => LK2
+        use pm_kind, only: SKG => SK, LKG => LK2
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if LK1_ENABLED
     module procedure show_D0_PCLK1
-        use pm_kind, only: SKC => SK, LKC => LK1
+        use pm_kind, only: SKG => SK, LKG => LK1
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
@@ -8335,35 +8335,35 @@ contains
 #if PDT_ENABLED
 #if CK5_ENABLED
     module procedure show_D0_PCCK5
-        use pm_kind, only: SKC => SK, CKC => CK5
+        use pm_kind, only: SKG => SK, CKG => CK5
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure show_D0_PCCK4
-        use pm_kind, only: SKC => SK, CKC => CK4
+        use pm_kind, only: SKG => SK, CKG => CK4
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure show_D0_PCCK3
-        use pm_kind, only: SKC => SK, CKC => CK3
+        use pm_kind, only: SKG => SK, CKG => CK3
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure show_D0_PCCK2
-        use pm_kind, only: SKC => SK, CKC => CK2
+        use pm_kind, only: SKG => SK, CKG => CK2
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure show_D0_PCCK1
-        use pm_kind, only: SKC => SK, CKC => CK1
+        use pm_kind, only: SKG => SK, CKG => CK1
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
@@ -8378,35 +8378,35 @@ contains
 #if PDT_ENABLED
 #if RK5_ENABLED
     module procedure show_D0_PCRK5
-        use pm_kind, only: SKC => SK, RKC => RK5
+        use pm_kind, only: SKG => SK, RKG => RK5
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure show_D0_PCRK4
-        use pm_kind, only: SKC => SK, RKC => RK4
+        use pm_kind, only: SKG => SK, RKG => RK4
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure show_D0_PCRK3
-        use pm_kind, only: SKC => SK, RKC => RK3
+        use pm_kind, only: SKG => SK, RKG => RK3
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure show_D0_PCRK2
-        use pm_kind, only: SKC => SK, RKC => RK2
+        use pm_kind, only: SKG => SK, RKG => RK2
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure show_D0_PCRK1
-        use pm_kind, only: SKC => SK, RKC => RK1
+        use pm_kind, only: SKG => SK, RKG => RK1
 #include "pm_io@routines.inc.F90"
     end procedure
 #endif
@@ -8445,7 +8445,7 @@ contains
 #define SK_ENABLED 1
 
     module procedure show_D0_BSSK
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
 #include "pm_io@routines.inc.F90"
     end procedure
 
@@ -8456,7 +8456,7 @@ contains
 #define IK_ENABLED 1
 
     module procedure show_D0_BSIK
-        use pm_kind, only: SKC => SK, IKC => IK
+        use pm_kind, only: SKG => SK, IKG => IK
 #include "pm_io@routines.inc.F90"
     end procedure
 
@@ -8467,7 +8467,7 @@ contains
 #define LK_ENABLED 1
 
     module procedure show_D0_BSLK
-        use pm_kind, only: SKC => SK, LKC => LK
+        use pm_kind, only: SKG => SK, LKG => LK
 #include "pm_io@routines.inc.F90"
     end procedure
 
@@ -8478,7 +8478,7 @@ contains
 #define CK_ENABLED 1
 
     module procedure show_D0_BSCK
-        use pm_kind, only: SKC => SK, CKC => CK
+        use pm_kind, only: SKG => SK, CKG => CK
 #include "pm_io@routines.inc.F90"
     end procedure
 
@@ -8489,7 +8489,7 @@ contains
 #define RK_ENABLED 1
 
     module procedure show_D0_BSRK
-        use pm_kind, only: SKC => SK, RKC => RK
+        use pm_kind, only: SKG => SK, RKG => RK
 #include "pm_io@routines.inc.F90"
     end procedure
 
@@ -8510,7 +8510,7 @@ contains
 #define SK_ENABLED 1
 
     module procedure show_D1_BSSK
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
 #include "pm_io@routines.inc.F90"
     end procedure
 
@@ -8521,7 +8521,7 @@ contains
 #define IK_ENABLED 1
 
     module procedure show_D1_BSIK
-        use pm_kind, only: SKC => SK, IKC => IK
+        use pm_kind, only: SKG => SK, IKG => IK
 #include "pm_io@routines.inc.F90"
     end procedure
 
@@ -8532,7 +8532,7 @@ contains
 #define LK_ENABLED 1
 
     module procedure show_D1_BSLK
-        use pm_kind, only: SKC => SK, LKC => LK
+        use pm_kind, only: SKG => SK, LKG => LK
 #include "pm_io@routines.inc.F90"
     end procedure
 
@@ -8543,7 +8543,7 @@ contains
 #define CK_ENABLED 1
 
     module procedure show_D1_BSCK
-        use pm_kind, only: SKC => SK, CKC => CK
+        use pm_kind, only: SKG => SK, CKG => CK
 #include "pm_io@routines.inc.F90"
     end procedure
 
@@ -8554,7 +8554,7 @@ contains
 #define RK_ENABLED 1
 
     module procedure show_D1_BSRK
-        use pm_kind, only: SKC => SK, RKC => RK
+        use pm_kind, only: SKG => SK, RKG => RK
 #include "pm_io@routines.inc.F90"
     end procedure
 
@@ -8575,7 +8575,7 @@ contains
 #define SK_ENABLED 1
 
     module procedure show_D2_BSSK
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
 #include "pm_io@routines.inc.F90"
     end procedure
 
@@ -8586,7 +8586,7 @@ contains
 #define IK_ENABLED 1
 
     module procedure show_D2_BSIK
-        use pm_kind, only: SKC => SK, IKC => IK
+        use pm_kind, only: SKG => SK, IKG => IK
 #include "pm_io@routines.inc.F90"
     end procedure
 
@@ -8597,7 +8597,7 @@ contains
 #define LK_ENABLED 1
 
     module procedure show_D2_BSLK
-        use pm_kind, only: SKC => SK, LKC => LK
+        use pm_kind, only: SKG => SK, LKG => LK
 #include "pm_io@routines.inc.F90"
     end procedure
 
@@ -8608,7 +8608,7 @@ contains
 #define CK_ENABLED 1
 
     module procedure show_D2_BSCK
-        use pm_kind, only: SKC => SK, CKC => CK
+        use pm_kind, only: SKG => SK, CKG => CK
 #include "pm_io@routines.inc.F90"
     end procedure
 
@@ -8619,7 +8619,7 @@ contains
 #define RK_ENABLED 1
 
     module procedure show_D2_BSRK
-        use pm_kind, only: SKC => SK, RKC => RK
+        use pm_kind, only: SKG => SK, RKG => RK
 #include "pm_io@routines.inc.F90"
     end procedure
 
@@ -8640,7 +8640,7 @@ contains
 #define SK_ENABLED 1
 
     module procedure show_D3_BSSK
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
 #include "pm_io@routines.inc.F90"
     end procedure
 
@@ -8651,7 +8651,7 @@ contains
 #define IK_ENABLED 1
 
     module procedure show_D3_BSIK
-        use pm_kind, only: SKC => SK, IKC => IK
+        use pm_kind, only: SKG => SK, IKG => IK
 #include "pm_io@routines.inc.F90"
     end procedure
 
@@ -8662,7 +8662,7 @@ contains
 #define LK_ENABLED 1
 
     module procedure show_D3_BSLK
-        use pm_kind, only: SKC => SK, LKC => LK
+        use pm_kind, only: SKG => SK, LKG => LK
 #include "pm_io@routines.inc.F90"
     end procedure
 
@@ -8673,7 +8673,7 @@ contains
 #define CK_ENABLED 1
 
     module procedure show_D3_BSCK
-        use pm_kind, only: SKC => SK, CKC => CK
+        use pm_kind, only: SKG => SK, CKG => CK
 #include "pm_io@routines.inc.F90"
     end procedure
 
@@ -8684,7 +8684,7 @@ contains
 #define RK_ENABLED 1
 
     module procedure show_D3_BSRK
-        use pm_kind, only: SKC => SK, RKC => RK
+        use pm_kind, only: SKG => SK, RKG => RK
 #include "pm_io@routines.inc.F90"
     end procedure
 
@@ -8717,7 +8717,7 @@ contains
 #define SK_ENABLED 1
 
     module procedure show_D0_BVSK
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
 #include "pm_io@routines.inc.F90"
     end procedure
 
@@ -8728,7 +8728,7 @@ contains
 #define IK_ENABLED 1
 
     module procedure show_D0_BVIK
-        use pm_kind, only: SKC => SK, IKC => IK
+        use pm_kind, only: SKG => SK, IKG => IK
 #include "pm_io@routines.inc.F90"
     end procedure
 
@@ -8739,7 +8739,7 @@ contains
 #define LK_ENABLED 1
 
     module procedure show_D0_BVLK
-        use pm_kind, only: SKC => SK, LKC => LK
+        use pm_kind, only: SKG => SK, LKG => LK
 #include "pm_io@routines.inc.F90"
     end procedure
 
@@ -8750,7 +8750,7 @@ contains
 #define CK_ENABLED 1
 
     module procedure show_D0_BVCK
-        use pm_kind, only: SKC => SK, CKC => CK
+        use pm_kind, only: SKG => SK, CKG => CK
 #include "pm_io@routines.inc.F90"
     end procedure
 
@@ -8761,7 +8761,7 @@ contains
 #define RK_ENABLED 1
 
     module procedure show_D0_BVRK
-        use pm_kind, only: SKC => SK, RKC => RK
+        use pm_kind, only: SKG => SK, RKG => RK
 #include "pm_io@routines.inc.F90"
     end procedure
 
@@ -8782,7 +8782,7 @@ contains
 #define SK_ENABLED 1
 
     module procedure show_D1_BVSK
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
 #include "pm_io@routines.inc.F90"
     end procedure
 
@@ -8793,7 +8793,7 @@ contains
 #define IK_ENABLED 1
 
     module procedure show_D1_BVIK
-        use pm_kind, only: SKC => SK, IKC => IK
+        use pm_kind, only: SKG => SK, IKG => IK
 #include "pm_io@routines.inc.F90"
     end procedure
 
@@ -8804,7 +8804,7 @@ contains
 #define LK_ENABLED 1
 
     module procedure show_D1_BVLK
-        use pm_kind, only: SKC => SK, LKC => LK
+        use pm_kind, only: SKG => SK, LKG => LK
 #include "pm_io@routines.inc.F90"
     end procedure
 
@@ -8815,7 +8815,7 @@ contains
 #define CK_ENABLED 1
 
     module procedure show_D1_BVCK
-        use pm_kind, only: SKC => SK, CKC => CK
+        use pm_kind, only: SKG => SK, CKG => CK
 #include "pm_io@routines.inc.F90"
     end procedure
 
@@ -8826,7 +8826,7 @@ contains
 #define RK_ENABLED 1
 
     module procedure show_D1_BVRK
-        use pm_kind, only: SKC => SK, RKC => RK
+        use pm_kind, only: SKG => SK, RKG => RK
 #include "pm_io@routines.inc.F90"
     end procedure
 
@@ -8847,7 +8847,7 @@ contains
 #define SK_ENABLED 1
 
     module procedure show_D2_BVSK
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
 #include "pm_io@routines.inc.F90"
     end procedure
 
@@ -8858,7 +8858,7 @@ contains
 #define IK_ENABLED 1
 
     module procedure show_D2_BVIK
-        use pm_kind, only: SKC => SK, IKC => IK
+        use pm_kind, only: SKG => SK, IKG => IK
 #include "pm_io@routines.inc.F90"
     end procedure
 
@@ -8869,7 +8869,7 @@ contains
 #define LK_ENABLED 1
 
     module procedure show_D2_BVLK
-        use pm_kind, only: SKC => SK, LKC => LK
+        use pm_kind, only: SKG => SK, LKG => LK
 #include "pm_io@routines.inc.F90"
     end procedure
 
@@ -8880,7 +8880,7 @@ contains
 #define CK_ENABLED 1
 
     module procedure show_D2_BVCK
-        use pm_kind, only: SKC => SK, CKC => CK
+        use pm_kind, only: SKG => SK, CKG => CK
 #include "pm_io@routines.inc.F90"
     end procedure
 
@@ -8891,7 +8891,7 @@ contains
 #define RK_ENABLED 1
 
     module procedure show_D2_BVRK
-        use pm_kind, only: SKC => SK, RKC => RK
+        use pm_kind, only: SKG => SK, RKG => RK
 #include "pm_io@routines.inc.F90"
     end procedure
 
@@ -8926,7 +8926,7 @@ contains
 #define SK_ENABLED 1
 
     module procedure show_D0_BMSK
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
 #include "pm_io@routines.inc.F90"
     end procedure
 
@@ -8937,7 +8937,7 @@ contains
 #define IK_ENABLED 1
 
     module procedure show_D0_BMIK
-        use pm_kind, only: SKC => SK, IKC => IK
+        use pm_kind, only: SKG => SK, IKG => IK
 #include "pm_io@routines.inc.F90"
     end procedure
 
@@ -8948,7 +8948,7 @@ contains
 #define LK_ENABLED 1
 
     module procedure show_D0_BMLK
-        use pm_kind, only: SKC => SK, LKC => LK
+        use pm_kind, only: SKG => SK, LKG => LK
 #include "pm_io@routines.inc.F90"
     end procedure
 
@@ -8959,7 +8959,7 @@ contains
 #define CK_ENABLED 1
 
     module procedure show_D0_BMCK
-        use pm_kind, only: SKC => SK, CKC => CK
+        use pm_kind, only: SKG => SK, CKG => CK
 #include "pm_io@routines.inc.F90"
     end procedure
 
@@ -8970,7 +8970,7 @@ contains
 #define RK_ENABLED 1
 
     module procedure show_D0_BMRK
-        use pm_kind, only: SKC => SK, RKC => RK
+        use pm_kind, only: SKG => SK, RKG => RK
 #include "pm_io@routines.inc.F90"
     end procedure
 
@@ -8991,7 +8991,7 @@ contains
 #define SK_ENABLED 1
 
     module procedure show_D1_BMSK
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
 #include "pm_io@routines.inc.F90"
     end procedure
 
@@ -9002,7 +9002,7 @@ contains
 #define IK_ENABLED 1
 
     module procedure show_D1_BMIK
-        use pm_kind, only: SKC => SK, IKC => IK
+        use pm_kind, only: SKG => SK, IKG => IK
 #include "pm_io@routines.inc.F90"
     end procedure
 
@@ -9013,7 +9013,7 @@ contains
 #define LK_ENABLED 1
 
     module procedure show_D1_BMLK
-        use pm_kind, only: SKC => SK, LKC => LK
+        use pm_kind, only: SKG => SK, LKG => LK
 #include "pm_io@routines.inc.F90"
     end procedure
 
@@ -9024,7 +9024,7 @@ contains
 #define CK_ENABLED 1
 
     module procedure show_D1_BMCK
-        use pm_kind, only: SKC => SK, CKC => CK
+        use pm_kind, only: SKG => SK, CKG => CK
 #include "pm_io@routines.inc.F90"
     end procedure
 
@@ -9035,7 +9035,7 @@ contains
 #define RK_ENABLED 1
 
     module procedure show_D1_BMRK
-        use pm_kind, only: SKC => SK, RKC => RK
+        use pm_kind, only: SKG => SK, RKG => RK
 #include "pm_io@routines.inc.F90"
     end procedure
 
@@ -9068,7 +9068,7 @@ contains
 #define SK_ENABLED 1
 
     module procedure show_D0_BCSK
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
 #include "pm_io@routines.inc.F90"
     end procedure
 
@@ -9079,7 +9079,7 @@ contains
 #define IK_ENABLED 1
 
     module procedure show_D0_BCIK
-        use pm_kind, only: SKC => SK, IKC => IK
+        use pm_kind, only: SKG => SK, IKG => IK
 #include "pm_io@routines.inc.F90"
     end procedure
 
@@ -9090,7 +9090,7 @@ contains
 #define LK_ENABLED 1
 
     module procedure show_D0_BCLK
-        use pm_kind, only: SKC => SK, LKC => LK
+        use pm_kind, only: SKG => SK, LKG => LK
 #include "pm_io@routines.inc.F90"
     end procedure
 
@@ -9101,7 +9101,7 @@ contains
 #define CK_ENABLED 1
 
     module procedure show_D0_BCCK
-        use pm_kind, only: SKC => SK, CKC => CK
+        use pm_kind, only: SKG => SK, CKG => CK
 #include "pm_io@routines.inc.F90"
     end procedure
 
@@ -9112,7 +9112,7 @@ contains
 #define RK_ENABLED 1
 
     module procedure show_D0_BCRK
-        use pm_kind, only: SKC => SK, RKC => RK
+        use pm_kind, only: SKG => SK, RKG => RK
 #include "pm_io@routines.inc.F90"
     end procedure
 

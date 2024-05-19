@@ -45,14 +45,14 @@
 #define GET_RE(X)X%re
 #define SET_CONJG(X)X = conjg(X)
 #define GET_CONJG(X)conjg(X)
-#define TYPE_OF_SAMPLE complex(TKC)
+#define TYPE_OF_SAMPLE complex(TKG)
 #define GET_ABSQ(X)(real(X)**2 + aimag(X)**2)
 #define GET_PROD(X,Y)(X%re * Y%re + X%im * Y%im)
 #elif   RK_ENABLED
 #define GET_RE(X)X
 #define SET_CONJG(X)
 #define GET_CONJG(X)X
-#define TYPE_OF_SAMPLE real(TKC)
+#define TYPE_OF_SAMPLE real(TKG)
 #define GET_PROD(X,Y)X * Y
 #define GET_ABSQ(X)X**2
 #else
@@ -79,8 +79,8 @@
 #define TYPE_OF_WEIGHT integer(IK)
 #define ZEROW 0_IK
 #elif   WTR_ENABLED || WNO_ENABLED
-#define TYPE_OF_WEIGHT real(TKC)
-#define ZEROW 0._TKC
+#define TYPE_OF_WEIGHT real(TKG)
+#define ZEROW 0._TKG
 #elif   (getCov_ENABLED || setCov_ENABLED) && !(WNO_ENABLED || CorStd_ENABLED)
 #error  "Unrecognized interface."
 #endif
@@ -99,7 +99,7 @@ PROC//SK_": The condition `1 <= dim .and. dim <= rank(sample)` must hold. dim, r
 CHECK_ASSERTION(__LINE__, ZEROW < sum(weight), \
 PROC//SK_": The condition `0 < sum(weight)` must hold. weight = "//getStr(weight))
 #define CHECK_VAL_WEI(PROC) \
-CHECK_ASSERTION(__LINE__, all(0._TKC <= weight), \
+CHECK_ASSERTION(__LINE__, all(0._TKG <= weight), \
 PROC//SK_": The condition `all(0. <= weight)` must hold. weight = "//getStr(weight))
 #define CHECK_SHAPE_COV(PROC) \
 CHECK_ASSERTION(__LINE__, all(size(sample, 3 - dim, IK) == shape(cov, IK)), \
@@ -122,7 +122,7 @@ CHECK_ASSERTION(__LINE__, size(sample, DIM, IK) == size(weight, 1, IK), \
 PROC//SK_": The condition `size(sample, dim) == size(weight)` must hold. dim, size(sample, dim), size(weight, 1) = "\
 //getStr([DIM, size(sample, DIM, IK), size(weight, 1, IK)]))
 #define CHECK_WEISUM(PROC) \
-CHECK_ASSERTION(__LINE__, abs(weisum - sum(weight)) < 1000 * epsilon(0._TKC), \
+CHECK_ASSERTION(__LINE__, abs(weisum - sum(weight)) < 1000 * epsilon(0._TKG), \
 PROC//SK_": The condition `0 < sum(weight)` must hold. weisum, sum(weight) = "//getStr([weisum, sum(weight)]))
 
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -141,10 +141,10 @@ PROC//SK_": The condition `0 < sum(weight)` must hold. weisum, sum(weight) = "//
         !%%%%%%%%%%%%%%%%%%%%
 
         integer(IK) :: idim, jdim, ndim
-        real(TKC) :: fracB, fracAB
-        fracB = 1._TKC - fracA
+        real(TKG) :: fracB, fracAB
+        fracB = 1._TKG - fracA
         ! Define the output value for setCovMerged.
-        CHECK_ASSERTION(__LINE__, 0._TKC < fracA .and. fracA < 1._TKC, SK_"@setCovMerged(): The condition `0 < fracA .and. fracA < 1` must hold. fracA = "//getStr(fracA))
+        CHECK_ASSERTION(__LINE__, 0._TKG < fracA .and. fracA < 1._TKG, SK_"@setCovMerged(): The condition `0 < fracA .and. fracA < 1` must hold. fracA = "//getStr(fracA))
         CHECK_ASSERTION(__LINE__, all(size(meanDiff, 1, IK) == shape(covA, IK)), SK_"@setCovMerged(): The condition `all(size(meanDiff) == shape(covA))` must hold. size(meanDiff), shape(covA) = "//getStr([size(meanDiff, 1, IK), shape(covA, IK)]))
         fracAB = fracA * fracB
         ndim = size(covA, 1, IK)
@@ -160,8 +160,8 @@ PROC//SK_": The condition `0 < sum(weight)` must hold. weisum, sum(weight) = "//
         !%%%%%%%%%%%%%%%%%%%
 
         integer(IK) :: idim, jdim, ndim
-        real(TKC) :: fracB, fracAB
-        fracB = 1._TKC - fracA
+        real(TKG) :: fracB, fracAB
+        fracB = 1._TKG - fracA
         ! Define the output value for setCovMerged.
 #if     Old_ENABLED
 #define cov covB
@@ -170,7 +170,7 @@ PROC//SK_": The condition `0 < sum(weight)` must hold. weisum, sum(weight) = "//
 #else
 #error  "Unrecognized interface."
 #endif
-        CHECK_ASSERTION(__LINE__, 0._TKC < fracA .and. fracA < 1._TKC, SK_"@setCovMerged(): The condition `0 < fracA .and. fracA < 1` must hold. fracA = "//getStr(fracA))
+        CHECK_ASSERTION(__LINE__, 0._TKG < fracA .and. fracA < 1._TKG, SK_"@setCovMerged(): The condition `0 < fracA .and. fracA < 1` must hold. fracA = "//getStr(fracA))
         CHECK_ASSERTION(__LINE__, all(shape(covB, IK) == shape(covA, IK)), SK_"@setCovMerged(): The condition `all(shape(covB, IK) == shape(covA, IK))` must hold. shape(covB), shape(covA) = "//getStr([shape(covB, IK), shape(covA, IK)]))
         CHECK_ASSERTION(__LINE__, all(size(meanDiff, 1, IK) == shape(covA, IK)), SK_"@setCovMerged(): The condition `all(size(meanDiff) == shape(covA))` must hold. size(meanDiff), shape(covA) = "//getStr([size(meanDiff, 1, IK), shape(covA, IK)]))
         fracAB = fracA * fracB
@@ -189,10 +189,10 @@ PROC//SK_": The condition `0 < sum(weight)` must hold. weisum, sum(weight) = "//
 
         TYPE_OF_SAMPLE :: idiff, temp
         integer(IK) :: idim, jdim, ndim
-        real(TKC) :: fracB, fracAB
-        fracB = 1._TKC - fracA
+        real(TKG) :: fracB, fracAB
+        fracB = 1._TKG - fracA
         ! Define the output value for setCovMerged.
-        CHECK_ASSERTION(__LINE__, 0._TKC < fracA .and. fracA < 1._TKC, SK_"@setCovMerged(): The condition `0 < fracA .and. fracA < 1` must hold. fracA = "//getStr(fracA))
+        CHECK_ASSERTION(__LINE__, 0._TKG < fracA .and. fracA < 1._TKG, SK_"@setCovMerged(): The condition `0 < fracA .and. fracA < 1` must hold. fracA = "//getStr(fracA))
         CHECK_ASSERTION(__LINE__, all(size(meanA, 1, IK) == shape(covA, IK)), SK_"@setCovMerged(): The condition `all(size(meanA) == shape(covA))` must hold. size(meanA), shape(covA) = "//getStr([size(meanA, 1, IK), shape(covA, IK)]))
         CHECK_ASSERTION(__LINE__, all(size(meanB, 1, IK) == shape(covA, IK)), SK_"@setCovMerged(): The condition `all(size(meanB) == shape(covA))` must hold. size(meanB), shape(covA) = "//getStr([size(meanB, 1, IK), shape(covA, IK)]))
         fracAB = fracA * fracB
@@ -217,8 +217,8 @@ PROC//SK_": The condition `0 < sum(weight)` must hold. weisum, sum(weight) = "//
 
         TYPE_OF_SAMPLE :: idiff, temp
         integer(IK) :: idim, jdim, ndim
-        real(TKC) :: fracB, fracAB
-        fracB = 1._TKC - fracA
+        real(TKG) :: fracB, fracAB
+        fracB = 1._TKG - fracA
         ! Define the output value for setCovMerged.
 #if     Old_ENABLED
 #define mean meanB
@@ -229,7 +229,7 @@ PROC//SK_": The condition `0 < sum(weight)` must hold. weisum, sum(weight) = "//
 #else
 #error  "Unrecognized interface."
 #endif
-        CHECK_ASSERTION(__LINE__, 0._TKC < fracA .and. fracA < 1._TKC, SK_"@setCovMerged(): The condition `0 < fracA .and. fracA < 1` must hold. fracA = "//getStr(fracA))
+        CHECK_ASSERTION(__LINE__, 0._TKG < fracA .and. fracA < 1._TKG, SK_"@setCovMerged(): The condition `0 < fracA .and. fracA < 1` must hold. fracA = "//getStr(fracA))
         CHECK_ASSERTION(__LINE__, all(size(meanA, 1, IK) == shape(covA, IK)), SK_"@setCovMerged(): The condition `all(size(meanA) == shape(covA))` must hold. size(meanA), shape(covA) = "//getStr([size(meanA, 1, IK), shape(covA, IK)]))
         CHECK_ASSERTION(__LINE__, all(size(meanB, 1, IK) == shape(covA, IK)), SK_"@setCovMerged(): The condition `all(size(meanB) == shape(covA))` must hold. size(meanB), shape(covA) = "//getStr([size(meanB, 1, IK), shape(covA, IK)]))
         CHECK_ASSERTION(__LINE__, all(shape(covB, IK) == shape(covA, IK)), SK_"@setCovMerged(): The condition `all(shape(covB, IK) == shape(covA, IK))` must hold. shape(covB), shape(covA) = "//getStr([shape(covB, IK), shape(covA, IK)]))
@@ -289,7 +289,7 @@ PROC//SK_": The condition `0 < sum(weight)` must hold. weisum, sum(weight) = "//
         CHECK_ASSERTION(__LINE__, ndim == size(cov, 2, IK), SK_"@setCov(): The condition `size(cov, 1) == size(cov, 2)` must hold. shape(cov) = "//getStr(shape(cov, IK)))
         CHECK_ASSERTION(__LINE__, ndim == size(std, 1, IK), SK_"@setCov(): The condition `size(cov, 1) == size(std)` must hold. size(cov, 1), size(std) = "//getStr([ndim, size(std, 1, IK)]))
         CHECK_ASSERTION(__LINE__, all(ndim == shape(cor, IK)), SK_"@setCov(): The condition `all(size(cov, 1) == shape(cor))` must hold. size(cov, 1), shape(cor) = "//getStr([ndim, shape(cor, IK)]))
-        CHECK_ASSERTION(__LINE__, all(0._TKC < std), SK_"@setCov(): The condition `all(0. < std)` must hold. std = "//getStr(std))
+        CHECK_ASSERTION(__LINE__, all(0._TKG < std), SK_"@setCov(): The condition `all(0. < std)` must hold. std = "//getStr(std))
         if (ndim == 0_IK) return
         do jdim = COL_RANGE(1,ndim)
             cov(jdim, jdim) = std(jdim)**2
@@ -344,7 +344,7 @@ PROC//SK_": The condition `0 < sum(weight)` must hold. weisum, sum(weight) = "//
 
         type(uppDia_type), parameter :: subset = uppDia_type()
         integer(IK) :: ndim, idim, nsam
-        real(TKC) :: normfac
+        real(TKG) :: normfac
 #if     WNO_ENABLED
 #define WEIGHT_ARGS
 #elif   WTI_ENABLED || WTR_ENABLED
@@ -379,12 +379,12 @@ PROC//SK_": The condition `0 < sum(weight)` must hold. weisum, sum(weight) = "//
         if (present(correction)) then
             CHECK_ASSERTION(__LINE__, same_type_as(correction, fweight) .or. same_type_as(correction, rweight), SK_"@getCov(): The condition `same_type_as(correction, fweight) .or. same_type_as(correction, rweight)` must hold.")
 #if         WNO_ENABLED
-            normfac = getVarCorrection(real(nsam, TKC))
+            normfac = getVarCorrection(real(nsam, TKG))
 #elif       (WTI_ENABLED || WTR_ENABLED)
             if (same_type_as(correction, fweight)) then
-                normfac = getVarCorrection(real(weisum, TKC))
+                normfac = getVarCorrection(real(weisum, TKG))
             elseif (same_type_as(correction, rweight)) then
-                normfac = getVarCorrection(real(weisum, TKC), real(sum(weight**2), TKC))
+                normfac = getVarCorrection(real(weisum, TKG), real(sum(weight**2), TKG))
             end if
 #else
 #error      "Unrecognized interface."
@@ -403,8 +403,8 @@ PROC//SK_": The condition `0 < sum(weight)` must hold. weisum, sum(weight) = "//
         TYPE_OF_SAMPLE :: temp
 #endif
         TYPE_OF_SAMPLE :: cxy
-        real(TKC) :: cxx, cyy
-        real(TKC) :: normFac
+        real(TKG) :: cxx, cyy
+        real(TKG) :: normFac
 #if     Avg_ENABLED
         TYPE_OF_SAMPLE :: difx, dify
         CHECK_ASSERTION(__LINE__, size(mean, 1, IK) == 2_IK, SK_"@setCov(): The condition `size(mean) == 2` must hold. size(mean) = "//getStr(size(mean, 1, IK)))
@@ -418,17 +418,17 @@ PROC//SK_": The condition `0 < sum(weight)` must hold. weisum, sum(weight) = "//
         CHECK_ASSERTION(__LINE__, any(x(1) /= x), SK_"@setCov(): The condition `any(x(1) /= x)` must hold. x = "//getStr(x))
         CHECK_ASSERTION(__LINE__, any(y(1) /= y), SK_"@setCov(): The condition `any(y(1) /= y)` must hold. y = "//getStr(y))
 #if     WNO_ENABLED
-        normFac = 1._TKC / real(nsam, TKC)
+        normFac = 1._TKG / real(nsam, TKG)
 #elif   WTI_ENABLED || WTR_ENABLED
         CHECK_ASSERTION(__LINE__, size(x, 1, IK) == size(weight, 1, IK), SK_"@setCov(): The condition `size(x) == size(weight)` must hold. size(x), size(weight) = "//getStr([size(x, 1, IK), size(weight, 1, IK)]))
         CHECK_ASSERTION(__LINE__, all(0 <= weight), SK_"@setCov(): The condition `all(0 <= weight)` must hold. pack(weight, weight < 0) = "//getStr(pack(weight, weight < 0)))
-        normFac = 1._TKC / real(weisum, TKC)
+        normFac = 1._TKG / real(weisum, TKG)
 #else
 #error  "Unrecognized interface."
 #endif
-        cxx = 0._TKC
-        cxy = 0._TKC
-        cyy = 0._TKC
+        cxx = 0._TKG
+        cxy = 0._TKG
+        cyy = 0._TKG
         do isam = 1, nsam
 #if         Avg_ENABLED && (WTI_ENABLED || WTR_ENABLED)
             difx = x(isam) - mean(1)
@@ -465,7 +465,7 @@ PROC//SK_": The condition `0 < sum(weight)` must hold. weisum, sum(weight) = "//
 #elif   setCov_ENABLED && (UXD_ENABLED || XLD_ENABLED)
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        real(TKC) :: normFac
+        real(TKG) :: normFac
         TYPE_OF_SAMPLE :: temp
         integer(IK) :: idim, jdim, isam, ndim, nsam
 #if     Avg_ENABLED
@@ -485,13 +485,13 @@ PROC//SK_": The condition `0 < sum(weight)` must hold. weisum, sum(weight) = "//
         CHECK_VAL_NSAM(SK_"@setCov()",dim)
         CHECK_VAL_NDIM(SK_"@setCov()",3 - dim)
 #if     WNO_ENABLED
-        normFac = 1._TKC / real(nsam, TKC)
+        normFac = 1._TKG / real(nsam, TKG)
 #elif   WTI_ENABLED || WTR_ENABLED
         CHECK_WEISUM(SK_"@setCov()")
         CHECK_SUM_WEI(SK_"@setCov()")
         CHECK_VAL_WEI(SK_"@setCov()")
         CHECK_LEN_WEI(SK_"@setCov()",dim)
-        normFac = 1._TKC / real(weisum, TKC)
+        normFac = 1._TKG / real(weisum, TKG)
 #else
 #error  "Unrecognized interface."
 #endif
@@ -499,9 +499,9 @@ PROC//SK_": The condition `0 < sum(weight)` must hold. weisum, sum(weight) = "//
         if (dim == 2_IK) then
             do jdim = COL_RANGE(1_IK,ndim)
                 CHECK_ASSERTION(__LINE__, any(sample(jdim,1) /= sample(jdim,:)), SK_"@setCov(): The condition `any(sample(jdim,1) /= sample(jdim,:))` must hold. jdim = "//getStr(jdim)//SK_", sample(jdim,:) = "//getStr(reshape(sample(jdim,:),[size(sample,2),1])))
-                cov(jdim, jdim) = 0._TKC
+                cov(jdim, jdim) = 0._TKG
                 do idim = ROW_RANGE(1_IK,jdim,ndim)
-                    cov(idim, jdim) = 0._TKC
+                    cov(idim, jdim) = 0._TKG
                 end do
             end do
             do isam = 1, nsam
@@ -537,7 +537,7 @@ PROC//SK_": The condition `0 < sum(weight)` must hold. weisum, sum(weight) = "//
         else ! dim = 1_IK
             do jdim = COL_RANGE(1_IK,ndim)
                 CHECK_ASSERTION(__LINE__, any(sample(1,jdim) /= sample(:,jdim)), SK_"@setCov(): The condition `any(sample(1,jdim) /= sample(:,jdim))` must hold. jdim = "//getStr(jdim)//SK_", sample(:,jdim) = "//getStr(sample(:,jdim)))
-                cov(jdim, jdim) = 0._TKC
+                cov(jdim, jdim) = 0._TKG
                 do isam = 1, nsam
 #if                 Avg_ENABLED
                     temp = sample(isam, jdim) - mean(jdim)
@@ -548,7 +548,7 @@ PROC//SK_": The condition `0 < sum(weight)` must hold. weisum, sum(weight) = "//
                 end do
                 cov(jdim, jdim) = cov(jdim, jdim) * normFac
                 do idim = ROW_RANGE(1_IK,jdim,ndim)
-                    cov(idim, jdim) = 0._TKC
+                    cov(idim, jdim) = 0._TKG
                     do isam = 1, nsam
                         cov(idim, jdim) = cov(idim, jdim) + GET_WEIGHTED(GET_SHIFTED(sample(isam, idim),mean(idim)) * GET_CONJG(GET_SHIFTED(sample(isam, jdim),mean(jdim))),weight(isam))
                     end do
@@ -563,10 +563,10 @@ PROC//SK_": The condition `0 < sum(weight)` must hold. weisum, sum(weight) = "//
 
         integer(IK) :: isam
         TYPE_OF_SAMPLE :: cxy, difx, dify
-        real(TKC) :: cxx, cyy
-        real(TKC) :: normFac
+        real(TKG) :: cxx, cyy
+        real(TKG) :: normFac
 #if     WNO_ENABLED
-        real(TKC) :: weisum
+        real(TKG) :: weisum
         weisum = size(x, 1, IK)
 #elif   WTI_ENABLED || WTR_ENABLED
         TYPE_OF_SAMPLE :: temp
@@ -584,10 +584,10 @@ PROC//SK_": The condition `0 < sum(weight)` must hold. weisum, sum(weight) = "//
         CHECK_ASSERTION(__LINE__, 1_IK < size(x, 1, IK), SK_"@setCovMean(): The condition `1 < size(x)` must hold. size(x) = "//getStr(size(x, 1, IK)))
         CHECK_ASSERTION(__LINE__, any(x(1) /= x), SK_"@setCovMean(): The condition `any(x(1) /= x)` must hold. x = "//getStr(x))
         CHECK_ASSERTION(__LINE__, any(y(1) /= y), SK_"@setCovMean(): The condition `any(y(1) /= y)` must hold. y = "//getStr(y))
-        cxx = 0._TKC
-        cyy = 0._TKC
-        cxy = 0._TKC
-        mean = 0._TKC
+        cxx = 0._TKG
+        cyy = 0._TKG
+        cxy = 0._TKG
+        mean = 0._TKG
         do isam = 1, size(x, 1, IK)
             difx = x(isam) - meang(1)
             dify = y(isam) - meang(2)
@@ -610,7 +610,7 @@ PROC//SK_": The condition `0 < sum(weight)` must hold. weisum, sum(weight) = "//
 #error      "Unrecognized interface."
 #endif
         end do
-        normFac = 1._TKC / weisum
+        normFac = 1._TKG / weisum
         mean = mean * normFac
         cov(1,1) = (cxx - GET_ABSQ(mean(1)) * weisum) * normFac
         cov(2,2) = (cyy - GET_ABSQ(mean(2)) * weisum) * normFac
@@ -622,14 +622,14 @@ PROC//SK_": The condition `0 < sum(weight)` must hold. weisum, sum(weight) = "//
 #elif   setCovMean_ENABLED && (UXD_ENABLED || XLD_ENABLED)
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        real(TKC) :: normFac
+        real(TKG) :: normFac
         TYPE_OF_SAMPLE :: diff
         integer(IK) :: idim, jdim, isam, ndim, nsam
 #if     WNO_ENABLED
 #define SET(X)
 #define temp diff
 #define INCREMENT(X,Y)
-        real(TKC) :: weisum
+        real(TKG) :: weisum
         weisum = size(sample, dim, IK)
 #elif   WTI_ENABLED || WTR_ENABLED
 #define INCREMENT(X,Y)X = X + Y
@@ -655,10 +655,10 @@ PROC//SK_": The condition `0 < sum(weight)` must hold. weisum, sum(weight) = "//
         if (dim == 2_IK) then
             do jdim = COL_RANGE(1_IK,ndim)
                 CHECK_ASSERTION(__LINE__, any(sample(jdim,1) /= sample(jdim,:)), SK_"@setCovMean(): The condition `any(sample(jdim,1) /= sample(jdim,:))` must hold. jdim = "//getStr(jdim)//SK_", sample(jdim,:) = "//getStr(sample(jdim,:)))
-                mean(jdim) = 0._TKC
-                cov(jdim, jdim) = 0._TKC
+                mean(jdim) = 0._TKG
+                cov(jdim, jdim) = 0._TKG
                 do idim = ROW_RANGE(1_IK,jdim,ndim)
-                    cov(idim, jdim) = 0._TKC
+                    cov(idim, jdim) = 0._TKG
                 end do
             end do
             do isam = 1, nsam
@@ -674,7 +674,7 @@ PROC//SK_": The condition `0 < sum(weight)` must hold. weisum, sum(weight) = "//
                     end do
                 end do
             end do
-            normFac = 1._TKC / weisum
+            normFac = 1._TKG / weisum
             mean = mean * normFac
             do jdim = COL_RANGE(1_IK,ndim)
                 GET_RE(cov(jdim, jdim)) = (GET_RE(cov(jdim, jdim)) - GET_ABSQ(mean(jdim)) * weisum) * normFac
@@ -687,8 +687,8 @@ PROC//SK_": The condition `0 < sum(weight)` must hold. weisum, sum(weight) = "//
         else ! dim == 1
             ! Compute `weisum` and the first element of `mean` in the first round.
             CHECK_ASSERTION(__LINE__, any(sample(1,FIRST) /= sample(:,FIRST)), SK_"@setCovMean(): The condition `any(sample(1,idim) /= sample(:,idim))` must hold. idim = "//getStr(FIRST)//SK_", sample(:,idim) = "//getStr(sample(:,FIRST)))
-            cov(FIRST, FIRST) = 0._TKC
-            mean(FIRST) = 0._TKC
+            cov(FIRST, FIRST) = 0._TKG
+            mean(FIRST) = 0._TKG
             do isam = 1, nsam
                 INCREMENT(weisum,weight(isam))
                 diff = sample(isam, FIRST) - meang(FIRST)
@@ -696,14 +696,14 @@ PROC//SK_": The condition `0 < sum(weight)` must hold. weisum, sum(weight) = "//
                 GET_RE(cov(FIRST, FIRST)) = GET_RE(cov(FIRST, FIRST)) + GET_PROD(diff,temp)
                 mean(FIRST) = mean(FIRST) + temp
             end do
-            normFac = 1._TKC / weisum
+            normFac = 1._TKG / weisum
             mean(FIRST) = mean(FIRST) * normFac
             GET_RE(cov(FIRST, FIRST)) = (GET_RE(cov(FIRST, FIRST)) - GET_ABSQ(mean(FIRST)) * weisum) * normFac
             ! Compute the rest of the `mean` elements in the second round.
             do idim = OFF_RANGE(1_IK,ndim,1_IK)
                 CHECK_ASSERTION(__LINE__, any(sample(1,idim) /= sample(:,idim)), SK_"@setCovMean(): The condition `any(sample(1,idim) /= sample(:,idim))` must hold. idim = "//getStr(idim)//SK_", sample(:,idim) = "//getStr(sample(:,idim)))
-                cov(idim, FIRST) = 0._TKC
-                mean(idim) = 0._TKC
+                cov(idim, FIRST) = 0._TKG
+                mean(idim) = 0._TKG
                 do isam = 1, nsam
                     diff = sample(isam, idim) - meang(idim)
                     SET(temp = diff * weight(isam))
@@ -717,14 +717,14 @@ PROC//SK_": The condition `0 < sum(weight)` must hold. weisum, sum(weight) = "//
             mean(FIRST) = mean(FIRST) + meang(FIRST) ! This normalization must be done right here and not any sooner.
             ! Now use the computed mean to calculate the rest of the covariance matrix using the normal algorithm.
             do jdim = OFF_RANGE(1_IK,ndim,1_IK)
-                cov(jdim, jdim) = 0._TKC
+                cov(jdim, jdim) = 0._TKG
                 do isam = 1, nsam
                     diff = sample(isam, jdim) - mean(jdim)
                     GET_RE(cov(jdim, jdim)) = GET_RE(cov(jdim, jdim)) + GET_WEIGHTED(GET_ABSQ(diff),weight(isam))
                 end do
                 GET_RE(cov(jdim, jdim)) = GET_RE(cov(jdim, jdim)) * normFac
                 do idim = ROW_RANGE(1_IK,jdim,ndim)
-                    cov(idim, jdim) = 0._TKC
+                    cov(idim, jdim) = 0._TKG
                     do isam = 1, nsam
                         cov(idim, jdim) = cov(idim, jdim) + GET_WEIGHTED((sample(isam, idim) - mean(idim)) * GET_CONJG((sample(isam, jdim) - mean(jdim))),weight(isam))
                     end do
@@ -755,10 +755,10 @@ PROC//SK_": The condition `0 < sum(weight)` must hold. weisum, sum(weight) = "//
 !endif
 !        integer(IK) :: zeroWeightCount
 !        integer(IK) :: idim, jdim, isam,ndim,nsam
-!        real(TKC) :: normFac
+!        real(TKG) :: normFac
 !#if     Def_ENABLED
 !        TYPE_OF_WEIGHT :: weisum
-!        real(TKC), allocatable :: mean(:)
+!        real(TKG), allocatable :: mean(:)
 !#elif   Avg_ENABLED
 !        CHECK_LEN_MEAN(SK_"@setCov()")
 !#else
@@ -776,21 +776,21 @@ PROC//SK_": The condition `0 < sum(weight)` must hold. weisum, sum(weight) = "//
 !        zeroWeightCount = 0_IK
 !        ! Compute the cov.
 !        if (dim == 2_IK) then
-!            do jdim = 1, ndim; do idim = ROW_RANGE; cov(idim, jdim) = 0._TKC; end do; end do;
+!            do jdim = 1, ndim; do idim = ROW_RANGE; cov(idim, jdim) = 0._TKG; end do; end do;
 !#if         Def_ENABLED
 !            if (shifted) then
 !                ! probability-weight correction and shifted.
 !                weisum = ZEROW
 !                do isam = 1, nsam
 !                    weisum = weisum + weight(isam)
-!                    if (weight(isam) == 0._TKC) zeroWeightCount = zeroWeightCount + 1
+!                    if (weight(isam) == 0._TKG) zeroWeightCount = zeroWeightCount + 1
 !                    do jdim = 1, ndim
 !                        do idim = ROW_RANGE
 !                            cov(idim, jdim) = cov(idim, jdim) + sample(idim, isam) * sample(jdim, isam) * weight(isam)**2
 !                        end do
 !                    end do
 !                end do
-!                normFac = real(nsam - zeroWeightCount, TKC) / (real(nsam - zeroWeightCount - 1, TKC) * weisum**2)
+!                normFac = real(nsam - zeroWeightCount, TKG) / (real(nsam - zeroWeightCount - 1, TKG) * weisum**2)
 !                do jdim = 1, ndim; do idim = ROW_RANGE; cov(idim, jdim) = cov(idim, jdim) * normFac; end do; end do;
 !                return
 !            end if
@@ -799,31 +799,31 @@ PROC//SK_": The condition `0 < sum(weight)` must hold. weisum, sum(weight) = "//
 !#endif
 !            ! probability-weight correction and not shifted.
 !            do isam = 1, nsam
-!                if (weight(isam) == 0._TKC) zeroWeightCount = zeroWeightCount + 1
+!                if (weight(isam) == 0._TKG) zeroWeightCount = zeroWeightCount + 1
 !                do jdim = 1, ndim
 !                    do idim = ROW_RANGE
 !                        cov(idim, jdim) = cov(idim, jdim) + (sample(idim, isam) - mean(idim)) * (sample(jdim, isam) - mean(jdim)) * weight(isam)**2
 !                    end do
 !                end do
 !            end do
-!            normFac = real(nsam - zeroWeightCount, TKC) / (real(nsam - zeroWeightCount - 1, TKC) * weisum**2)
+!            normFac = real(nsam - zeroWeightCount, TKG) / (real(nsam - zeroWeightCount - 1, TKG) * weisum**2)
 !            do jdim = 1, ndim; do idim = ROW_RANGE; cov(idim, jdim) = cov(idim, jdim) * normFac; end do; end do;
 !        else ! dim = 1_IK
 !#if         Def_ENABLED
 !            if (shifted) then
 !                ! probability-weight correction and shifted.
 !                weisum = ZEROW
-!                cov(FIRST, FIRST) = 0._TKC
+!                cov(FIRST, FIRST) = 0._TKG
 !                do isam = 1, nsam
 !                    weisum = weisum + weight(isam)
 !                    cov(FIRST, FIRST) = cov(FIRST, FIRST) + (sample(isam, FIRST) * weight(isam))**2
-!                    if (weight(isam) == 0._TKC) zeroWeightCount = zeroWeightCount + 1
+!                    if (weight(isam) == 0._TKG) zeroWeightCount = zeroWeightCount + 1
 !                end do
-!                normFac = real(nsam - zeroWeightCount, TKC) / (real(nsam - zeroWeightCount - 1, TKC) * weisum**2)
+!                normFac = real(nsam - zeroWeightCount, TKG) / (real(nsam - zeroWeightCount - 1, TKG) * weisum**2)
 !                cov(FIRST, FIRST) = cov(FIRST, FIRST) * normFac
 !                do jdim = COL_RANGE
 !                    do idim = ROW_RANGE
-!                        cov(idim, jdim) = 0._TKC
+!                        cov(idim, jdim) = 0._TKG
 !                        do isam = 1, nsam
 !                            cov(idim, jdim) = cov(idim, jdim) + sample(isam, idim) * sample(isam, jdim) * weight(isam)**2
 !                        end do
@@ -836,16 +836,16 @@ PROC//SK_": The condition `0 < sum(weight)` must hold. weisum, sum(weight) = "//
 !            call setMean(mean, sample, dim, weight, weisum)
 !#endif
 !            ! probability-weight correction and not shifted.
-!            cov(FIRST, FIRST) = 0._TKC
+!            cov(FIRST, FIRST) = 0._TKG
 !            do isam = 1, nsam
-!                if (weight(isam) == 0._TKC) zeroWeightCount = zeroWeightCount + 1
+!                if (weight(isam) == 0._TKG) zeroWeightCount = zeroWeightCount + 1
 !                cov(FIRST, FIRST) = cov(FIRST, FIRST) + ((sample(isam, FIRST) - mean(FIRST)) * weight(isam))**2
 !            end do
-!            normFac = real(nsam - zeroWeightCount, TKC) / (real(nsam - zeroWeightCount - 1, TKC) * weisum**2)
+!            normFac = real(nsam - zeroWeightCount, TKG) / (real(nsam - zeroWeightCount - 1, TKG) * weisum**2)
 !            cov(FIRST, FIRST) = cov(FIRST, FIRST) * normFac
 !            do jdim = COL_RANGE
 !                do idim = ROW_RANGE
-!                    cov(idim, jdim) = 0._TKC
+!                    cov(idim, jdim) = 0._TKG
 !                    do isam = 1, nsam
 !                        cov(idim, jdim) = cov(idim, jdim) + (sample(isam, idim) - mean(idim) * (sample(isam, jdim) - mean(jdim) * weight(isam)**2
 !                    end do

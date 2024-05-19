@@ -35,42 +35,42 @@
 #if     CVXK_ENABLED
         type(cvs_type), allocatable :: field(:), field_ref(:)
 #elif   PVXK_ENABLED
-        type(cvs_pdt(SKC)), allocatable :: field(:), field_ref(:)
+        type(cvs_pdt(SKG)), allocatable :: field(:), field_ref(:)
 #endif
-        character(2,SKC), allocatable :: array(:)
-        character(2,SKC) :: sep
+        character(2,SKG), allocatable :: array(:)
+        character(2,SKG) :: sep
 #elif   IK_ENABLED && D1_D0_ENABLED
 #if     CVXK_ENABLED
         type(cvi_type), allocatable :: field(:), field_ref(:)
 #elif   PVXK_ENABLED
-        type(cvi_pdt(IKC)), allocatable :: field(:), field_ref(:)
+        type(cvi_pdt(IKG)), allocatable :: field(:), field_ref(:)
 #endif
-        integer(IKC), allocatable :: array(:)
-        integer(IKC) :: sep
+        integer(IKG), allocatable :: array(:)
+        integer(IKG) :: sep
 #elif   LK_ENABLED && D1_D0_ENABLED
 #if     CVXK_ENABLED
         type(cvl_type), allocatable :: field(:), field_ref(:)
 #elif   PVXK_ENABLED
-        type(cvl_pdt(LKC)), allocatable :: field(:), field_ref(:)
+        type(cvl_pdt(LKG)), allocatable :: field(:), field_ref(:)
 #endif
-        logical(LKC), allocatable :: array(:)
-        logical(LKC) :: sep
+        logical(LKG), allocatable :: array(:)
+        logical(LKG) :: sep
 #elif   CK_ENABLED && D1_D0_ENABLED
 #if     CVXK_ENABLED
         type(cvc_type), allocatable :: field(:), field_ref(:)
 #elif   PVXK_ENABLED
-        type(cvc_pdt(CKC)), allocatable :: field(:), field_ref(:)
+        type(cvc_pdt(CKG)), allocatable :: field(:), field_ref(:)
 #endif
-        complex(CKC), allocatable :: array(:)
-        complex(CKC) :: sep
+        complex(CKG), allocatable :: array(:)
+        complex(CKG) :: sep
 #elif   RK_ENABLED && D1_D0_ENABLED
 #if     CVXK_ENABLED
         type(cvr_type), allocatable :: field(:), field_ref(:)
 #elif   PVXK_ENABLED
-        type(cvr_pdt(RKC)), allocatable :: field(:), field_ref(:)
+        type(cvr_pdt(RKG)), allocatable :: field(:), field_ref(:)
 #endif
-        real(RKC), allocatable :: array(:)
-        real(RKC) :: sep
+        real(RKG), allocatable :: array(:)
+        real(RKG) :: sep
 #else
 #error  "Unrecognized interface."
 #endif
@@ -99,15 +99,15 @@
         function iseq(segment, sep) result(equivalent)
             logical(LK) :: equivalent
 #if         SK_ENABLED && D1_D0_ENABLED
-            character(*,SKC), intent(in) :: sep, segment
+            character(*,SKG), intent(in) :: sep, segment
 #elif       IK_ENABLED && D1_D0_ENABLED
-            integer(IKC)    , intent(in) :: sep, segment
+            integer(IKG)    , intent(in) :: sep, segment
 #elif       LK_ENABLED && D1_D0_ENABLED
-            logical(LKC)    , intent(in) :: sep, segment
+            logical(LKG)    , intent(in) :: sep, segment
 #elif       CK_ENABLED && D1_D0_ENABLED
-            complex(CKC)    , intent(in) :: sep, segment
+            complex(CKG)    , intent(in) :: sep, segment
 #elif       RK_ENABLED && D1_D0_ENABLED
-            real(RKC)       , intent(in) :: sep, segment
+            real(RKG)       , intent(in) :: sep, segment
 #endif
             equivalent = sep IS_EQUAL segment
         end function
@@ -139,13 +139,13 @@
 #if         SK_ENABLED && D1_D0_ENABLED
             sep = " "
 #elif       IK_ENABLED && D1_D0_ENABLED
-            sep = 1_IKC
+            sep = 1_IKG
 #elif       LK_ENABLED && D1_D0_ENABLED
             sep = .false._LK
 #elif       CK_ENABLED && D1_D0_ENABLED
-            sep = 1._CKC
+            sep = 1._CKG
 #elif       RK_ENABLED && D1_D0_ENABLED
-            sep = 1._RKC
+            sep = 1._RKG
 #endif
             allocate(instance(0))
             allocate(array(0))
@@ -215,19 +215,19 @@
             end if
 #endif
 #elif       IK_ENABLED && D1_D0_ENABLED
-            array = [1_IKC, 1_IKC]
-            sep = 1_IKC
+            array = [1_IKG, 1_IKG]
+            sep = 1_IKG
 #if         CVXK_ENABLED || PVXK_ENABLED
             if (getOption(.false._LK, keep)) then
-                field_ref(1)%val = [integer(IKC) ::]
+                field_ref(1)%val = [integer(IKG) ::]
                 field_ref(2)%val = [sep]
-                field_ref(3)%val = [integer(IKC) ::]
+                field_ref(3)%val = [integer(IKG) ::]
                 field_ref(4)%val = [sep]
-                field_ref(5)%val = [integer(IKC) ::]
+                field_ref(5)%val = [integer(IKG) ::]
             else
-                field_ref(1)%val = [integer(IKC) ::]
-                field_ref(2)%val = [integer(IKC) ::]
-                field_ref(3)%val = [integer(IKC) ::]
+                field_ref(1)%val = [integer(IKG) ::]
+                field_ref(2)%val = [integer(IKG) ::]
+                field_ref(3)%val = [integer(IKG) ::]
             end if
 #endif
 #elif       LK_ENABLED && D1_D0_ENABLED
@@ -235,47 +235,47 @@
             sep = .false._LK
 #if         CVXK_ENABLED || PVXK_ENABLED
             if (getOption(.false._LK, keep)) then
-                field_ref(1)%val = [logical(LKC) ::]
+                field_ref(1)%val = [logical(LKG) ::]
                 field_ref(2)%val = [sep]
-                field_ref(3)%val = [logical(LKC) ::]
+                field_ref(3)%val = [logical(LKG) ::]
                 field_ref(4)%val = [sep]
-                field_ref(5)%val = [logical(LKC) ::]
+                field_ref(5)%val = [logical(LKG) ::]
             else
-                field_ref(1)%val = [logical(LKC) ::]
-                field_ref(2)%val = [logical(LKC) ::]
-                field_ref(3)%val = [logical(LKC) ::]
+                field_ref(1)%val = [logical(LKG) ::]
+                field_ref(2)%val = [logical(LKG) ::]
+                field_ref(3)%val = [logical(LKG) ::]
             end if
 #endif
 #elif       CK_ENABLED && D1_D0_ENABLED
-            array = [(1._CKC,-1._CKC), (1._CKC,-1._CKC)]
-            sep = (1._CKC,-1._CKC)
+            array = [(1._CKG,-1._CKG), (1._CKG,-1._CKG)]
+            sep = (1._CKG,-1._CKG)
 #if         CVXK_ENABLED || PVXK_ENABLED
             if (getOption(.false._LK, keep)) then
-                field_ref(1)%val = [complex(CKC) ::]
+                field_ref(1)%val = [complex(CKG) ::]
                 field_ref(2)%val = [sep]
-                field_ref(3)%val = [complex(CKC) ::]
+                field_ref(3)%val = [complex(CKG) ::]
                 field_ref(4)%val = [sep]
-                field_ref(5)%val = [complex(CKC) ::]
+                field_ref(5)%val = [complex(CKG) ::]
             else
-                field_ref(1)%val = [complex(CKC) ::]
-                field_ref(2)%val = [complex(CKC) ::]
-                field_ref(3)%val = [complex(CKC) ::]
+                field_ref(1)%val = [complex(CKG) ::]
+                field_ref(2)%val = [complex(CKG) ::]
+                field_ref(3)%val = [complex(CKG) ::]
             end if
 #endif
 #elif       RK_ENABLED && D1_D0_ENABLED
-            array = [1._RKC, 1._RKC]
-            sep = 1._RKC
+            array = [1._RKG, 1._RKG]
+            sep = 1._RKG
 #if         CVXK_ENABLED || PVXK_ENABLED
             if (getOption(.false._LK, keep)) then
-                field_ref(1)%val = [real(RKC) ::]
+                field_ref(1)%val = [real(RKG) ::]
                 field_ref(2)%val = [sep]
-                field_ref(3)%val = [real(RKC) ::]
+                field_ref(3)%val = [real(RKG) ::]
                 field_ref(4)%val = [sep]
-                field_ref(5)%val = [real(RKC) ::]
+                field_ref(5)%val = [real(RKG) ::]
             else
-                field_ref(1)%val = [real(RKC) ::]
-                field_ref(2)%val = [real(RKC) ::]
-                field_ref(3)%val = [real(RKC) ::]
+                field_ref(1)%val = [real(RKG) ::]
+                field_ref(2)%val = [real(RKG) ::]
+                field_ref(3)%val = [real(RKG) ::]
             end if
 #endif
 #endif
@@ -353,19 +353,19 @@
             end if
 #endif
 #elif       IK_ENABLED && D1_D0_ENABLED
-            array = [1_IKC, 1_IKC]
-            sep = 1_IKC
+            array = [1_IKG, 1_IKG]
+            sep = 1_IKG
 #if         CVXK_ENABLED || PVXK_ENABLED
             if (getOption(.false._LK, keep)) then
-                field_ref(1)%val = [integer(IKC) ::]
+                field_ref(1)%val = [integer(IKG) ::]
                 field_ref(2)%val = [sep]
-                field_ref(3)%val = [integer(IKC) ::]
+                field_ref(3)%val = [integer(IKG) ::]
                 field_ref(4)%val = [sep]
-                field_ref(5)%val = [integer(IKC) ::]
+                field_ref(5)%val = [integer(IKG) ::]
             else
-                field_ref(1)%val = [integer(IKC) ::]
-                field_ref(2)%val = [integer(IKC) ::]
-                field_ref(3)%val = [integer(IKC) ::]
+                field_ref(1)%val = [integer(IKG) ::]
+                field_ref(2)%val = [integer(IKG) ::]
+                field_ref(3)%val = [integer(IKG) ::]
             end if
 #endif
 #elif       LK_ENABLED && D1_D0_ENABLED
@@ -373,47 +373,47 @@
             sep = .false._LK
 #if         CVXK_ENABLED || PVXK_ENABLED
             if (getOption(.false._LK, keep)) then
-                field_ref(1)%val = [logical(LKC) ::]
+                field_ref(1)%val = [logical(LKG) ::]
                 field_ref(2)%val = [sep]
-                field_ref(3)%val = [logical(LKC) ::]
+                field_ref(3)%val = [logical(LKG) ::]
                 field_ref(4)%val = [sep]
-                field_ref(5)%val = [logical(LKC) ::]
+                field_ref(5)%val = [logical(LKG) ::]
             else
-                field_ref(1)%val = [logical(LKC) ::]
-                field_ref(2)%val = [logical(LKC) ::]
-                field_ref(3)%val = [logical(LKC) ::]
+                field_ref(1)%val = [logical(LKG) ::]
+                field_ref(2)%val = [logical(LKG) ::]
+                field_ref(3)%val = [logical(LKG) ::]
             end if
 #endif
 #elif       CK_ENABLED && D1_D0_ENABLED
-            array = [(1._CKC,-1._CKC), (1._CKC,-1._CKC)]
-            sep = (1._CKC,-1._CKC)
+            array = [(1._CKG,-1._CKG), (1._CKG,-1._CKG)]
+            sep = (1._CKG,-1._CKG)
 #if         CVXK_ENABLED || PVXK_ENABLED
             if (getOption(.false._LK, keep)) then
-                field_ref(1)%val = [complex(CKC) ::]
+                field_ref(1)%val = [complex(CKG) ::]
                 field_ref(2)%val = [sep]
-                field_ref(3)%val = [complex(CKC) ::]
+                field_ref(3)%val = [complex(CKG) ::]
                 field_ref(4)%val = [sep]
-                field_ref(5)%val = [complex(CKC) ::]
+                field_ref(5)%val = [complex(CKG) ::]
             else
-                field_ref(1)%val = [complex(CKC) ::]
-                field_ref(2)%val = [complex(CKC) ::]
-                field_ref(3)%val = [complex(CKC) ::]
+                field_ref(1)%val = [complex(CKG) ::]
+                field_ref(2)%val = [complex(CKG) ::]
+                field_ref(3)%val = [complex(CKG) ::]
             end if
 #endif
 #elif       RK_ENABLED && D1_D0_ENABLED
-            array = [1._RKC, 1._RKC]
-            sep = 1._RKC
+            array = [1._RKG, 1._RKG]
+            sep = 1._RKG
 #if         CVXK_ENABLED || PVXK_ENABLED
             if (getOption(.false._LK, keep)) then
-                field_ref(1)%val = [real(RKC) ::]
+                field_ref(1)%val = [real(RKG) ::]
                 field_ref(2)%val = [sep]
-                field_ref(3)%val = [real(RKC) ::]
+                field_ref(3)%val = [real(RKG) ::]
                 field_ref(4)%val = [sep]
-                field_ref(5)%val = [real(RKC) ::]
+                field_ref(5)%val = [real(RKG) ::]
             else
-                field_ref(1)%val = [real(RKC) ::]
-                field_ref(2)%val = [real(RKC) ::]
-                field_ref(3)%val = [real(RKC) ::]
+                field_ref(1)%val = [real(RKG) ::]
+                field_ref(2)%val = [real(RKG) ::]
+                field_ref(3)%val = [real(RKG) ::]
             end if
 #endif
 #endif
@@ -491,19 +491,19 @@
             end if
 #endif
 #elif       IK_ENABLED && D1_D0_ENABLED
-            array = [1_IKC, 1_IKC]
-            sep = 1_IKC
+            array = [1_IKG, 1_IKG]
+            sep = 1_IKG
 #if         CVXK_ENABLED || PVXK_ENABLED
             if (getOption(.false._LK, keep)) then
-                field_ref(1)%val = [integer(IKC) ::]
+                field_ref(1)%val = [integer(IKG) ::]
                 field_ref(2)%val = [sep]
-                field_ref(3)%val = [integer(IKC) ::]
+                field_ref(3)%val = [integer(IKG) ::]
                 field_ref(4)%val = [sep]
-                field_ref(5)%val = [integer(IKC) ::]
+                field_ref(5)%val = [integer(IKG) ::]
             else
-                field_ref(1)%val = [integer(IKC) ::]
-                field_ref(2)%val = [integer(IKC) ::]
-                field_ref(3)%val = [integer(IKC) ::]
+                field_ref(1)%val = [integer(IKG) ::]
+                field_ref(2)%val = [integer(IKG) ::]
+                field_ref(3)%val = [integer(IKG) ::]
             end if
 #endif
 #elif       LK_ENABLED && D1_D0_ENABLED
@@ -511,47 +511,47 @@
             sep = .false._LK
 #if         CVXK_ENABLED || PVXK_ENABLED
             if (getOption(.false._LK, keep)) then
-                field_ref(1)%val = [logical(LKC) ::]
+                field_ref(1)%val = [logical(LKG) ::]
                 field_ref(2)%val = [sep]
-                field_ref(3)%val = [logical(LKC) ::]
+                field_ref(3)%val = [logical(LKG) ::]
                 field_ref(4)%val = [sep]
-                field_ref(5)%val = [logical(LKC) ::]
+                field_ref(5)%val = [logical(LKG) ::]
             else
-                field_ref(1)%val = [logical(LKC) ::]
-                field_ref(2)%val = [logical(LKC) ::]
-                field_ref(3)%val = [logical(LKC) ::]
+                field_ref(1)%val = [logical(LKG) ::]
+                field_ref(2)%val = [logical(LKG) ::]
+                field_ref(3)%val = [logical(LKG) ::]
             end if
 #endif
 #elif       CK_ENABLED && D1_D0_ENABLED
-            array = [(1._CKC,-1._CKC), (1._CKC,-1._CKC)]
-            sep = (1._CKC,-1._CKC)
+            array = [(1._CKG,-1._CKG), (1._CKG,-1._CKG)]
+            sep = (1._CKG,-1._CKG)
 #if         CVXK_ENABLED || PVXK_ENABLED
             if (getOption(.false._LK, keep)) then
-                field_ref(1)%val = [complex(CKC) ::]
+                field_ref(1)%val = [complex(CKG) ::]
                 field_ref(2)%val = [sep]
-                field_ref(3)%val = [complex(CKC) ::]
+                field_ref(3)%val = [complex(CKG) ::]
                 field_ref(4)%val = [sep]
-                field_ref(5)%val = [complex(CKC) ::]
+                field_ref(5)%val = [complex(CKG) ::]
             else
-                field_ref(1)%val = [complex(CKC) ::]
-                field_ref(2)%val = [complex(CKC) ::]
-                field_ref(3)%val = [complex(CKC) ::]
+                field_ref(1)%val = [complex(CKG) ::]
+                field_ref(2)%val = [complex(CKG) ::]
+                field_ref(3)%val = [complex(CKG) ::]
             end if
 #endif
 #elif       RK_ENABLED && D1_D0_ENABLED
-            array = [1._RKC, 1._RKC]
-            sep = 1._RKC
+            array = [1._RKG, 1._RKG]
+            sep = 1._RKG
 #if         CVXK_ENABLED || PVXK_ENABLED
             if (getOption(.false._LK, keep)) then
-                field_ref(1)%val = [real(RKC) ::]
+                field_ref(1)%val = [real(RKG) ::]
                 field_ref(2)%val = [sep]
-                field_ref(3)%val = [real(RKC) ::]
+                field_ref(3)%val = [real(RKG) ::]
                 field_ref(4)%val = [sep]
-                field_ref(5)%val = [real(RKC) ::]
+                field_ref(5)%val = [real(RKG) ::]
             else
-                field_ref(1)%val = [real(RKC) ::]
-                field_ref(2)%val = [real(RKC) ::]
-                field_ref(3)%val = [real(RKC) ::]
+                field_ref(1)%val = [real(RKG) ::]
+                field_ref(2)%val = [real(RKG) ::]
+                field_ref(3)%val = [real(RKG) ::]
             end if
 #endif
 #endif
@@ -629,19 +629,19 @@
             end if
 #endif
 #elif       IK_ENABLED && D1_D0_ENABLED
-            array = [1_IKC, 1_IKC]
-            sep = 1_IKC
+            array = [1_IKG, 1_IKG]
+            sep = 1_IKG
 #if         CVXK_ENABLED || PVXK_ENABLED
             if (getOption(.false._LK, keep)) then
-                field_ref(1)%val = [integer(IKC) ::]
+                field_ref(1)%val = [integer(IKG) ::]
                 field_ref(2)%val = [sep]
-                field_ref(3)%val = [integer(IKC) ::]
+                field_ref(3)%val = [integer(IKG) ::]
                 field_ref(4)%val = [sep]
-                field_ref(5)%val = [integer(IKC) ::]
+                field_ref(5)%val = [integer(IKG) ::]
             else
-                field_ref(1)%val = [integer(IKC) ::]
-                field_ref(2)%val = [integer(IKC) ::]
-                field_ref(3)%val = [integer(IKC) ::]
+                field_ref(1)%val = [integer(IKG) ::]
+                field_ref(2)%val = [integer(IKG) ::]
+                field_ref(3)%val = [integer(IKG) ::]
             end if
 #endif
 #elif       LK_ENABLED && D1_D0_ENABLED
@@ -649,47 +649,47 @@
             sep = .false._LK
 #if         CVXK_ENABLED || PVXK_ENABLED
             if (getOption(.false._LK, keep)) then
-                field_ref(1)%val = [logical(LKC) ::]
+                field_ref(1)%val = [logical(LKG) ::]
                 field_ref(2)%val = [sep]
-                field_ref(3)%val = [logical(LKC) ::]
+                field_ref(3)%val = [logical(LKG) ::]
                 field_ref(4)%val = [sep]
-                field_ref(5)%val = [logical(LKC) ::]
+                field_ref(5)%val = [logical(LKG) ::]
             else
-                field_ref(1)%val = [logical(LKC) ::]
-                field_ref(2)%val = [logical(LKC) ::]
-                field_ref(3)%val = [logical(LKC) ::]
+                field_ref(1)%val = [logical(LKG) ::]
+                field_ref(2)%val = [logical(LKG) ::]
+                field_ref(3)%val = [logical(LKG) ::]
             end if
 #endif
 #elif       CK_ENABLED && D1_D0_ENABLED
-            array = [(1._CKC,-1._CKC), (1._CKC,-1._CKC)]
-            sep = (1._CKC,-1._CKC)
+            array = [(1._CKG,-1._CKG), (1._CKG,-1._CKG)]
+            sep = (1._CKG,-1._CKG)
 #if         CVXK_ENABLED || PVXK_ENABLED
             if (getOption(.false._LK, keep)) then
-                field_ref(1)%val = [complex(CKC) ::]
+                field_ref(1)%val = [complex(CKG) ::]
                 field_ref(2)%val = [sep]
-                field_ref(3)%val = [complex(CKC) ::]
+                field_ref(3)%val = [complex(CKG) ::]
                 field_ref(4)%val = [sep]
-                field_ref(5)%val = [complex(CKC) ::]
+                field_ref(5)%val = [complex(CKG) ::]
             else
-                field_ref(1)%val = [complex(CKC) ::]
-                field_ref(2)%val = [complex(CKC) ::]
-                field_ref(3)%val = [complex(CKC) ::]
+                field_ref(1)%val = [complex(CKG) ::]
+                field_ref(2)%val = [complex(CKG) ::]
+                field_ref(3)%val = [complex(CKG) ::]
             end if
 #endif
 #elif       RK_ENABLED && D1_D0_ENABLED
-            array = [1._RKC, 1._RKC]
-            sep = 1._RKC
+            array = [1._RKG, 1._RKG]
+            sep = 1._RKG
 #if         CVXK_ENABLED || PVXK_ENABLED
             if (getOption(.false._LK, keep)) then
-                field_ref(1)%val = [real(RKC) ::]
+                field_ref(1)%val = [real(RKG) ::]
                 field_ref(2)%val = [sep]
-                field_ref(3)%val = [real(RKC) ::]
+                field_ref(3)%val = [real(RKG) ::]
                 field_ref(4)%val = [sep]
-                field_ref(5)%val = [real(RKC) ::]
+                field_ref(5)%val = [real(RKG) ::]
             else
-                field_ref(1)%val = [real(RKC) ::]
-                field_ref(2)%val = [real(RKC) ::]
-                field_ref(3)%val = [real(RKC) ::]
+                field_ref(1)%val = [real(RKG) ::]
+                field_ref(2)%val = [real(RKG) ::]
+                field_ref(3)%val = [real(RKG) ::]
             end if
 #endif
 #endif
@@ -758,19 +758,19 @@
             end if
 #endif
 #elif       IK_ENABLED && D1_D0_ENABLED
-            array = [1_IKC, 1_IKC]
-            sep = 1_IKC
+            array = [1_IKG, 1_IKG]
+            sep = 1_IKG
 #if         CVXK_ENABLED || PVXK_ENABLED
             if (getOption(.false._LK, keep)) then
-                field_ref(1)%val = [integer(IKC) ::]
+                field_ref(1)%val = [integer(IKG) ::]
                 field_ref(2)%val = [sep]
-                field_ref(3)%val = [integer(IKC) ::]
+                field_ref(3)%val = [integer(IKG) ::]
                 field_ref(4)%val = [sep]
-                field_ref(5)%val = [integer(IKC) ::]
+                field_ref(5)%val = [integer(IKG) ::]
             else
-                field_ref(1)%val = [integer(IKC) ::]
-                field_ref(2)%val = [integer(IKC) ::]
-                field_ref(3)%val = [integer(IKC) ::]
+                field_ref(1)%val = [integer(IKG) ::]
+                field_ref(2)%val = [integer(IKG) ::]
+                field_ref(3)%val = [integer(IKG) ::]
             end if
 #endif
 #elif       LK_ENABLED && D1_D0_ENABLED
@@ -778,47 +778,47 @@
             sep = .false._LK
 #if         CVXK_ENABLED || PVXK_ENABLED
             if (getOption(.false._LK, keep)) then
-                field_ref(1)%val = [logical(LKC) ::]
+                field_ref(1)%val = [logical(LKG) ::]
                 field_ref(2)%val = [sep]
-                field_ref(3)%val = [logical(LKC) ::]
+                field_ref(3)%val = [logical(LKG) ::]
                 field_ref(4)%val = [sep]
-                field_ref(5)%val = [logical(LKC) ::]
+                field_ref(5)%val = [logical(LKG) ::]
             else
-                field_ref(1)%val = [logical(LKC) ::]
-                field_ref(2)%val = [logical(LKC) ::]
-                field_ref(3)%val = [logical(LKC) ::]
+                field_ref(1)%val = [logical(LKG) ::]
+                field_ref(2)%val = [logical(LKG) ::]
+                field_ref(3)%val = [logical(LKG) ::]
             end if
 #endif
 #elif       CK_ENABLED && D1_D0_ENABLED
-            array = [(1._CKC,-1._CKC), (1._CKC,-1._CKC)]
-            sep = (1._CKC,-1._CKC)
+            array = [(1._CKG,-1._CKG), (1._CKG,-1._CKG)]
+            sep = (1._CKG,-1._CKG)
 #if         CVXK_ENABLED || PVXK_ENABLED
             if (getOption(.false._LK, keep)) then
-                field_ref(1)%val = [complex(CKC) ::]
+                field_ref(1)%val = [complex(CKG) ::]
                 field_ref(2)%val = [sep]
-                field_ref(3)%val = [complex(CKC) ::]
+                field_ref(3)%val = [complex(CKG) ::]
                 field_ref(4)%val = [sep]
-                field_ref(5)%val = [complex(CKC) ::]
+                field_ref(5)%val = [complex(CKG) ::]
             else
-                field_ref(1)%val = [complex(CKC) ::]
-                field_ref(2)%val = [complex(CKC) ::]
-                field_ref(3)%val = [complex(CKC) ::]
+                field_ref(1)%val = [complex(CKG) ::]
+                field_ref(2)%val = [complex(CKG) ::]
+                field_ref(3)%val = [complex(CKG) ::]
             end if
 #endif
 #elif       RK_ENABLED && D1_D0_ENABLED
-            array = [1._RKC, 1._RKC]
-            sep = 1._RKC
+            array = [1._RKG, 1._RKG]
+            sep = 1._RKG
 #if         CVXK_ENABLED || PVXK_ENABLED
             if (getOption(.false._LK, keep)) then
-                field_ref(1)%val = [real(RKC) ::]
+                field_ref(1)%val = [real(RKG) ::]
                 field_ref(2)%val = [sep]
-                field_ref(3)%val = [real(RKC) ::]
+                field_ref(3)%val = [real(RKG) ::]
                 field_ref(4)%val = [sep]
-                field_ref(5)%val = [real(RKC) ::]
+                field_ref(5)%val = [real(RKG) ::]
             else
-                field_ref(1)%val = [real(RKC) ::]
-                field_ref(2)%val = [real(RKC) ::]
-                field_ref(3)%val = [real(RKC) ::]
+                field_ref(1)%val = [real(RKG) ::]
+                field_ref(2)%val = [real(RKG) ::]
+                field_ref(3)%val = [real(RKG) ::]
             end if
 #endif
 #endif
@@ -878,16 +878,16 @@
             end if
 #endif
 #elif       IK_ENABLED && D1_D0_ENABLED
-            array = [1_IKC, 1_IKC]
-            sep = 1_IKC
+            array = [1_IKG, 1_IKG]
+            sep = 1_IKG
 #if         CVXK_ENABLED || PVXK_ENABLED
             if (getOption(.false._LK, keep)) then
-                field_ref(1)%val = [integer(IKC) ::]
+                field_ref(1)%val = [integer(IKG) ::]
                 field_ref(2)%val = [sep]
                 field_ref(3)%val = [sep]
             else
-                field_ref(1)%val = [integer(IKC) ::]
-                field_ref(2)%val = [1_IKC]
+                field_ref(1)%val = [integer(IKG) ::]
+                field_ref(2)%val = [1_IKG]
             end if
 #endif
 #elif       LK_ENABLED && D1_D0_ENABLED
@@ -895,38 +895,38 @@
             sep = .false._LK
 #if         CVXK_ENABLED || PVXK_ENABLED
             if (getOption(.false._LK, keep)) then
-                field_ref(1)%val = [logical(LKC) ::]
+                field_ref(1)%val = [logical(LKG) ::]
                 field_ref(2)%val = [sep]
                 field_ref(3)%val = [sep]
             else
-                field_ref(1)%val = [logical(LKC) ::]
+                field_ref(1)%val = [logical(LKG) ::]
                 field_ref(2)%val = [.false._LK]
             end if
 #endif
 #elif       CK_ENABLED && D1_D0_ENABLED
-            array = [(1._CKC,-1._CKC), (1._CKC,-1._CKC)]
-            sep = (1._CKC,-1._CKC)
+            array = [(1._CKG,-1._CKG), (1._CKG,-1._CKG)]
+            sep = (1._CKG,-1._CKG)
 #if         CVXK_ENABLED || PVXK_ENABLED
             if (getOption(.false._LK, keep)) then
-                field_ref(1)%val = [complex(CKC) ::]
+                field_ref(1)%val = [complex(CKG) ::]
                 field_ref(2)%val = [sep]
                 field_ref(3)%val = [sep]
             else
-                field_ref(1)%val = [complex(CKC) ::]
-                field_ref(2)%val = [(1._CKC,-1._CKC)]
+                field_ref(1)%val = [complex(CKG) ::]
+                field_ref(2)%val = [(1._CKG,-1._CKG)]
             end if
 #endif
 #elif       RK_ENABLED && D1_D0_ENABLED
-            array = [1._RKC, 1._RKC]
-            sep = 1._RKC
+            array = [1._RKG, 1._RKG]
+            sep = 1._RKG
 #if         CVXK_ENABLED || PVXK_ENABLED
             if (getOption(.false._LK, keep)) then
-                field_ref(1)%val = [real(RKC) ::]
+                field_ref(1)%val = [real(RKG) ::]
                 field_ref(2)%val = [sep]
                 field_ref(3)%val = [sep]
             else
-                field_ref(1)%val = [real(RKC) ::]
-                field_ref(2)%val = [1._RKC]
+                field_ref(1)%val = [real(RKG) ::]
+                field_ref(2)%val = [1._RKG]
             end if
 #endif
 #endif
@@ -986,16 +986,16 @@
             end if
 #endif
 #elif       IK_ENABLED && D1_D0_ENABLED
-            array = [1_IKC, 1_IKC]
-            sep = 1_IKC
+            array = [1_IKG, 1_IKG]
+            sep = 1_IKG
 #if         CVXK_ENABLED || PVXK_ENABLED
             if (getOption(.false._LK, keep)) then
-                field_ref(1)%val = [integer(IKC) ::]
+                field_ref(1)%val = [integer(IKG) ::]
                 field_ref(2)%val = [sep]
                 field_ref(3)%val = [sep]
             else
-                field_ref(1)%val = [integer(IKC) ::]
-                field_ref(2)%val = [1_IKC]
+                field_ref(1)%val = [integer(IKG) ::]
+                field_ref(2)%val = [1_IKG]
             end if
 #endif
 #elif       LK_ENABLED && D1_D0_ENABLED
@@ -1003,38 +1003,38 @@
             sep = .false._LK
 #if         CVXK_ENABLED || PVXK_ENABLED
             if (getOption(.false._LK, keep)) then
-                field_ref(1)%val = [logical(LKC) ::]
+                field_ref(1)%val = [logical(LKG) ::]
                 field_ref(2)%val = [sep]
                 field_ref(3)%val = [sep]
             else
-                field_ref(1)%val = [logical(LKC) ::]
+                field_ref(1)%val = [logical(LKG) ::]
                 field_ref(2)%val = [.false._LK]
             end if
 #endif
 #elif       CK_ENABLED && D1_D0_ENABLED
-            array = [(1._CKC,-1._CKC), (1._CKC,-1._CKC)]
-            sep = (1._CKC,-1._CKC)
+            array = [(1._CKG,-1._CKG), (1._CKG,-1._CKG)]
+            sep = (1._CKG,-1._CKG)
 #if         CVXK_ENABLED || PVXK_ENABLED
             if (getOption(.false._LK, keep)) then
-                field_ref(1)%val = [complex(CKC) ::]
+                field_ref(1)%val = [complex(CKG) ::]
                 field_ref(2)%val = [sep]
                 field_ref(3)%val = [sep]
             else
-                field_ref(1)%val = [complex(CKC) ::]
-                field_ref(2)%val = [(1._CKC,-1._CKC)]
+                field_ref(1)%val = [complex(CKG) ::]
+                field_ref(2)%val = [(1._CKG,-1._CKG)]
             end if
 #endif
 #elif       RK_ENABLED && D1_D0_ENABLED
-            array = [1._RKC, 1._RKC]
-            sep = 1._RKC
+            array = [1._RKG, 1._RKG]
+            sep = 1._RKG
 #if         CVXK_ENABLED || PVXK_ENABLED
             if (getOption(.false._LK, keep)) then
-                field_ref(1)%val = [real(RKC) ::]
+                field_ref(1)%val = [real(RKG) ::]
                 field_ref(2)%val = [sep]
                 field_ref(3)%val = [sep]
             else
-                field_ref(1)%val = [real(RKC) ::]
-                field_ref(2)%val = [1._RKC]
+                field_ref(1)%val = [real(RKG) ::]
+                field_ref(2)%val = [1._RKG]
             end if
 #endif
 #endif
@@ -1100,16 +1100,16 @@
             end if
 #endif
 #elif       IK_ENABLED && D1_D0_ENABLED
-            array = [1_IKC, 1_IKC]
-            sep = 1_IKC
+            array = [1_IKG, 1_IKG]
+            sep = 1_IKG
 #if         CVXK_ENABLED || PVXK_ENABLED
             if (getOption(.false._LK, keep)) then
-                field_ref(1)%val = [1_IKC]
+                field_ref(1)%val = [1_IKG]
                 field_ref(2)%val = [sep]
-                field_ref(3)%val = [integer(IKC) ::]
+                field_ref(3)%val = [integer(IKG) ::]
             else
-                field_ref(1)%val = [1_IKC]
-                field_ref(2)%val = [integer(IKC) ::]
+                field_ref(1)%val = [1_IKG]
+                field_ref(2)%val = [integer(IKG) ::]
             end if
 #endif
 #elif       LK_ENABLED && D1_D0_ENABLED
@@ -1119,36 +1119,36 @@
             if (getOption(.false._LK, keep)) then
                 field_ref(1)%val = [.false._LK]
                 field_ref(2)%val = [sep]
-                field_ref(3)%val = [logical(LKC) ::]
+                field_ref(3)%val = [logical(LKG) ::]
             else
                 field_ref(1)%val = [.false._LK]
-                field_ref(2)%val = [logical(LKC) ::]
+                field_ref(2)%val = [logical(LKG) ::]
             end if
 #endif
 #elif       CK_ENABLED && D1_D0_ENABLED
-            array = [(1._CKC,-1._CKC), (1._CKC,-1._CKC)]
-            sep = (1._CKC,-1._CKC)
+            array = [(1._CKG,-1._CKG), (1._CKG,-1._CKG)]
+            sep = (1._CKG,-1._CKG)
 #if         CVXK_ENABLED || PVXK_ENABLED
             if (getOption(.false._LK, keep)) then
-                field_ref(1)%val = [(1._CKC,-1._CKC)]
+                field_ref(1)%val = [(1._CKG,-1._CKG)]
                 field_ref(2)%val = [sep]
-                field_ref(3)%val = [complex(CKC) ::]
+                field_ref(3)%val = [complex(CKG) ::]
             else
-                field_ref(1)%val = [(1._CKC,-1._CKC)]
-                field_ref(2)%val = [complex(CKC) ::]
+                field_ref(1)%val = [(1._CKG,-1._CKG)]
+                field_ref(2)%val = [complex(CKG) ::]
             end if
 #endif
 #elif       RK_ENABLED && D1_D0_ENABLED
-            array = [1._RKC, 1._RKC]
-            sep = 1._RKC
+            array = [1._RKG, 1._RKG]
+            sep = 1._RKG
 #if         CVXK_ENABLED || PVXK_ENABLED
             if (getOption(.false._LK, keep)) then
-                field_ref(1)%val = [1._RKC]
+                field_ref(1)%val = [1._RKG]
                 field_ref(2)%val = [sep]
-                field_ref(3)%val = [real(RKC) ::]
+                field_ref(3)%val = [real(RKG) ::]
             else
-                field_ref(1)%val = [1._RKC]
-                field_ref(2)%val = [real(RKC) ::]
+                field_ref(1)%val = [1._RKG]
+                field_ref(2)%val = [real(RKG) ::]
             end if
 #endif
 #endif
@@ -1214,16 +1214,16 @@
             end if
 #endif
 #elif       IK_ENABLED && D1_D0_ENABLED
-            array = [1_IKC]
+            array = [1_IKG]
             sep = array(1)
 #if         CVXK_ENABLED || PVXK_ENABLED
             if (getOption(.false._LK, keep)) then
-                field_ref(1)%val = [integer(IKC) ::]
+                field_ref(1)%val = [integer(IKG) ::]
                 field_ref(2)%val = [sep]
-                field_ref(3)%val = [integer(IKC) ::]
+                field_ref(3)%val = [integer(IKG) ::]
             else
-                field_ref(1)%val = [integer(IKC) ::]
-                field_ref(2)%val = [integer(IKC) ::]
+                field_ref(1)%val = [integer(IKG) ::]
+                field_ref(2)%val = [integer(IKG) ::]
             end if
 #endif
 #elif       LK_ENABLED && D1_D0_ENABLED
@@ -1231,38 +1231,38 @@
             sep = array(1)
 #if         CVXK_ENABLED || PVXK_ENABLED
             if (getOption(.false._LK, keep)) then
-                field_ref(1)%val = [logical(LKC) ::]
+                field_ref(1)%val = [logical(LKG) ::]
                 field_ref(2)%val = [sep]
-                field_ref(3)%val = [logical(LKC) ::]
+                field_ref(3)%val = [logical(LKG) ::]
             else
-                field_ref(1)%val = [logical(LKC) ::]
-                field_ref(2)%val = [logical(LKC) ::]
+                field_ref(1)%val = [logical(LKG) ::]
+                field_ref(2)%val = [logical(LKG) ::]
             end if
 #endif
 #elif       CK_ENABLED && D1_D0_ENABLED
-            array = [(1._CKC,-1._CKC)]
+            array = [(1._CKG,-1._CKG)]
             sep = array(1)
 #if         CVXK_ENABLED || PVXK_ENABLED
             if (getOption(.false._LK, keep)) then
-                field_ref(1)%val = [complex(CKC) ::]
+                field_ref(1)%val = [complex(CKG) ::]
                 field_ref(2)%val = [sep]
-                field_ref(3)%val = [complex(CKC) ::]
+                field_ref(3)%val = [complex(CKG) ::]
             else
-                field_ref(1)%val = [complex(CKC) ::]
-                field_ref(2)%val = [complex(CKC) ::]
+                field_ref(1)%val = [complex(CKG) ::]
+                field_ref(2)%val = [complex(CKG) ::]
             end if
 #endif
 #elif       RK_ENABLED && D1_D0_ENABLED
-            array = [1._RKC]
+            array = [1._RKG]
             sep = array(1)
 #if         CVXK_ENABLED || PVXK_ENABLED
             if (getOption(.false._LK, keep)) then
-                field_ref(1)%val = [real(RKC) ::]
+                field_ref(1)%val = [real(RKG) ::]
                 field_ref(2)%val = [sep]
-                field_ref(3)%val = [real(RKC) ::]
+                field_ref(3)%val = [real(RKG) ::]
             else
-                field_ref(1)%val = [real(RKC) ::]
-                field_ref(2)%val = [real(RKC) ::]
+                field_ref(1)%val = [real(RKG) ::]
+                field_ref(2)%val = [real(RKG) ::]
             end if
 #endif
 #endif
@@ -1309,13 +1309,13 @@
 #if         SK_ENABLED && D1_D0_ENABLED
             array = ["AA"]
 #elif       IK_ENABLED && D1_D0_ENABLED
-            array = [1_IKC]
+            array = [1_IKG]
 #elif       LK_ENABLED && D1_D0_ENABLED
             array = [.false._LK]
 #elif       CK_ENABLED && D1_D0_ENABLED
-            array = [(1._CKC,-1._CKC)]
+            array = [(1._CKG,-1._CKG)]
 #elif       RK_ENABLED && D1_D0_ENABLED
-            array = [1._RKC]
+            array = [1._RKG]
 #endif
             sep = array(1)
             instance = [0_IK, 3_IK]
@@ -1357,16 +1357,16 @@
             sep = "AA"
 #elif       IK_ENABLED && D1_D0_ENABLED
             allocate(array(0))
-            sep = 1_IKC
+            sep = 1_IKG
 #elif       LK_ENABLED && D1_D0_ENABLED
             allocate(array(0))
             sep = .false._LK
 #elif       CK_ENABLED && D1_D0_ENABLED
             allocate(array(0))
-            sep = (1._CKC,-1._CKC)
+            sep = (1._CKG,-1._CKG)
 #elif       RK_ENABLED && D1_D0_ENABLED
             allocate(array(0))
-            sep = 1._RKC
+            sep = 1._RKG
 #endif
             instance = [0_IK, 3_IK]
 #if         CVXK_ENABLED || PVXK_ENABLED
@@ -1449,19 +1449,19 @@
             end if
 #endif
 #elif       IK_ENABLED && D1_D0_ENABLED
-            array = [1_IKC, 2_IKC, 2_IKC, 3_IKC, 3_IKC, 1_IKC]
-            sep = 1_IKC
+            array = [1_IKG, 2_IKG, 2_IKG, 3_IKG, 3_IKG, 1_IKG]
+            sep = 1_IKG
 #if         CVXK_ENABLED || PVXK_ENABLED
             if (getOption(.false._LK, keep)) then
-                field_ref(1)%val = [integer(IKC) ::]
+                field_ref(1)%val = [integer(IKG) ::]
                 field_ref(2)%val = [sep]
-                field_ref(3)%val = [2_IKC, 2_IKC, 3_IKC, 3_IKC]
+                field_ref(3)%val = [2_IKG, 2_IKG, 3_IKG, 3_IKG]
                 field_ref(4)%val = [sep]
-                field_ref(5)%val = [integer(IKC) ::]
+                field_ref(5)%val = [integer(IKG) ::]
             else
-                field_ref(1)%val = [integer(IKC) ::]
-                field_ref(2)%val = [2_IKC, 2_IKC, 3_IKC, 3_IKC]
-                field_ref(3)%val = [integer(IKC) ::]
+                field_ref(1)%val = [integer(IKG) ::]
+                field_ref(2)%val = [2_IKG, 2_IKG, 3_IKG, 3_IKG]
+                field_ref(3)%val = [integer(IKG) ::]
             end if
 #endif
 #elif       LK_ENABLED && D1_D0_ENABLED
@@ -1469,47 +1469,47 @@
             sep = .false._LK
 #if         CVXK_ENABLED || PVXK_ENABLED
             if (getOption(.false._LK, keep)) then
-                field_ref(1)%val = [logical(LKC) ::]
+                field_ref(1)%val = [logical(LKG) ::]
                 field_ref(2)%val = [sep]
                 field_ref(3)%val = [.true._LK, .true._LK, .true._LK, .true._LK]
                 field_ref(4)%val = [sep]
-                field_ref(5)%val = [logical(LKC) ::]
+                field_ref(5)%val = [logical(LKG) ::]
             else
-                field_ref(1)%val = [logical(LKC) ::]
+                field_ref(1)%val = [logical(LKG) ::]
                 field_ref(2)%val = [.true._LK, .true._LK, .true._LK, .true._LK]
-                field_ref(3)%val = [logical(LKC) ::]
+                field_ref(3)%val = [logical(LKG) ::]
             end if
 #endif
 #elif       CK_ENABLED && D1_D0_ENABLED
-            array = [(1._CKC,-1._CKC), (2._CKC,-2._CKC), (2._CKC,-2._CKC), (3._CKC,-3._CKC), (3._CKC,-3._CKC), (1._CKC,-1._CKC)]
-            sep = (1._CKC,-1._CKC)
+            array = [(1._CKG,-1._CKG), (2._CKG,-2._CKG), (2._CKG,-2._CKG), (3._CKG,-3._CKG), (3._CKG,-3._CKG), (1._CKG,-1._CKG)]
+            sep = (1._CKG,-1._CKG)
 #if         CVXK_ENABLED || PVXK_ENABLED
             if (getOption(.false._LK, keep)) then
-                field_ref(1)%val = [complex(CKC) ::]
+                field_ref(1)%val = [complex(CKG) ::]
                 field_ref(2)%val = [sep]
-                field_ref(3)%val = [(2._CKC,-2._CKC), (2._CKC,-2._CKC), (3._CKC,-3._CKC), (3._CKC,-3._CKC)]
+                field_ref(3)%val = [(2._CKG,-2._CKG), (2._CKG,-2._CKG), (3._CKG,-3._CKG), (3._CKG,-3._CKG)]
                 field_ref(4)%val = [sep]
-                field_ref(5)%val = [complex(CKC) ::]
+                field_ref(5)%val = [complex(CKG) ::]
             else
-                field_ref(1)%val = [complex(CKC) ::]
-                field_ref(2)%val = [(2._CKC,-2._CKC), (2._CKC,-2._CKC), (3._CKC,-3._CKC), (3._CKC,-3._CKC)]
-                field_ref(3)%val = [complex(CKC) ::]
+                field_ref(1)%val = [complex(CKG) ::]
+                field_ref(2)%val = [(2._CKG,-2._CKG), (2._CKG,-2._CKG), (3._CKG,-3._CKG), (3._CKG,-3._CKG)]
+                field_ref(3)%val = [complex(CKG) ::]
             end if
 #endif
 #elif       RK_ENABLED && D1_D0_ENABLED
-            array = [1._RKC, 2._RKC, 2._RKC, 3._RKC, 3._RKC, 1._RKC]
-            sep = 1._RKC
+            array = [1._RKG, 2._RKG, 2._RKG, 3._RKG, 3._RKG, 1._RKG]
+            sep = 1._RKG
 #if         CVXK_ENABLED || PVXK_ENABLED
             if (getOption(.false._LK, keep)) then
-                field_ref(1)%val = [real(RKC) ::]
+                field_ref(1)%val = [real(RKG) ::]
                 field_ref(2)%val = [sep]
-                field_ref(3)%val = [2._RKC, 2._RKC, 3._RKC, 3._RKC]
+                field_ref(3)%val = [2._RKG, 2._RKG, 3._RKG, 3._RKG]
                 field_ref(4)%val = [sep]
-                field_ref(5)%val = [real(RKC) ::]
+                field_ref(5)%val = [real(RKG) ::]
             else
-                field_ref(1)%val = [real(RKC) ::]
-                field_ref(2)%val = [2._RKC, 2._RKC, 3._RKC, 3._RKC]
-                field_ref(3)%val = [real(RKC) ::]
+                field_ref(1)%val = [real(RKG) ::]
+                field_ref(2)%val = [2._RKG, 2._RKG, 3._RKG, 3._RKG]
+                field_ref(3)%val = [real(RKG) ::]
             end if
 #endif
 #endif
@@ -1567,14 +1567,14 @@
             array = [.false._LK, .false._LK]
             sep = .true._LK
 #elif       IK_ENABLED && D1_D0_ENABLED
-            array = [1_IKC, 1_IKC]
-            sep = 0_IKC
+            array = [1_IKG, 1_IKG]
+            sep = 0_IKG
 #elif       CK_ENABLED && D1_D0_ENABLED
-            array = [(1._CKC,-1._CKC), (1._CKC,-1._CKC)]
-            sep = (0._CKC,0._CKC)
+            array = [(1._CKG,-1._CKG), (1._CKG,-1._CKG)]
+            sep = (0._CKG,0._CKG)
 #elif       RK_ENABLED && D1_D0_ENABLED
-            array = [1._RKC, 1._RKC]
-            sep = 0._RKC
+            array = [1._RKG, 1._RKG]
+            sep = 0._RKG
 #endif
             instance = [0_IK, 3_IK]
 #if         CVXK_ENABLED || PVXK_ENABLED
@@ -1646,17 +1646,17 @@
             array = ["AA", "XX", "AA", "XX", "AA"]
             sep = "XX"
 #elif       IK_ENABLED && D1_D0_ENABLED
-            array = [1_IKC, 0_IKC, 1_IKC, 0_IKC, 1_IKC]
-            sep = 0_IKC
+            array = [1_IKG, 0_IKG, 1_IKG, 0_IKG, 1_IKG]
+            sep = 0_IKG
 #elif       LK_ENABLED && D1_D0_ENABLED
             array = [.false._LK, .true._LK, .false._LK, .true._LK, .false._LK]
             sep = .true._LK
 #elif       CK_ENABLED && D1_D0_ENABLED
-            array = [(1._CKC,-1._CKC), (0._CKC,0._CKC), (1._CKC,-1._CKC), (0._CKC,0._CKC), (1._CKC,-1._CKC)]
-            sep = (0._CKC,0._CKC)
+            array = [(1._CKG,-1._CKG), (0._CKG,0._CKG), (1._CKG,-1._CKG), (0._CKG,0._CKG), (1._CKG,-1._CKG)]
+            sep = (0._CKG,0._CKG)
 #elif       RK_ENABLED && D1_D0_ENABLED
-            array = [1._RKC, 0._RKC, 1._RKC, 0._RKC, 1._RKC]
-            sep = 0._RKC
+            array = [1._RKG, 0._RKG, 1._RKG, 0._RKG, 1._RKG]
+            sep = 0._RKG
 #endif
 #if         CVXK_ENABLED || PVXK_ENABLED
             if (getOption(.false._LK, keep)) then
@@ -1722,17 +1722,17 @@
             array = ["AA", "AA"]
             sep = "AA"
 #elif       IK_ENABLED && D1_D0_ENABLED
-            array = [1_IKC, 1_IKC]
-            sep = 1_IKC
+            array = [1_IKG, 1_IKG]
+            sep = 1_IKG
 #elif       LK_ENABLED && D1_D0_ENABLED
             array = [.false._LK, .false._LK]
             sep = .false._LK
 #elif       CK_ENABLED && D1_D0_ENABLED
-            array = [(1._CKC,-1._CKC), (1._CKC,-1._CKC)]
-            sep = (1._CKC,-1._CKC)
+            array = [(1._CKG,-1._CKG), (1._CKG,-1._CKG)]
+            sep = (1._CKG,-1._CKG)
 #elif       RK_ENABLED && D1_D0_ENABLED
-            array = [1._RKC, 1._RKC]
-            sep = 1._RKC
+            array = [1._RKG, 1._RKG]
+            sep = 1._RKG
 #endif
             instance = [0_IK, 3_IK]
 #if         CVXK_ENABLED || PVXK_ENABLED

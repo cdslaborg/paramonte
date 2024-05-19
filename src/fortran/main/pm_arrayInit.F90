@@ -195,12 +195,12 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCoreHaloArr_D0_SK5
 #endif
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
         integer(IK)                 , intent(in)                        :: coffset
         integer(IK)                 , intent(in)                        :: size
-        character(1,SKC)            , intent(in)                        :: halo
-        character(*,SKC)            , intent(in)                        :: core
-        character(size,SKC)                                             :: array
+        character(1,SKG)            , intent(in)                        :: halo
+        character(*,SKG)            , intent(in)                        :: core
+        character(size,SKG)                                             :: array
     end function
 #endif
 
@@ -209,12 +209,12 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCoreHaloArr_D0_SK4
 #endif
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
         integer(IK)                 , intent(in)                        :: coffset
         integer(IK)                 , intent(in)                        :: size
-        character(1,SKC)            , intent(in)                        :: halo
-        character(*,SKC)            , intent(in)                        :: core
-        character(size,SKC)                                             :: array
+        character(1,SKG)            , intent(in)                        :: halo
+        character(*,SKG)            , intent(in)                        :: core
+        character(size,SKG)                                             :: array
     end function
 #endif
 
@@ -223,12 +223,12 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCoreHaloArr_D0_SK3
 #endif
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
         integer(IK)                 , intent(in)                        :: coffset
         integer(IK)                 , intent(in)                        :: size
-        character(1,SKC)            , intent(in)                        :: halo
-        character(*,SKC)            , intent(in)                        :: core
-        character(size,SKC)                                             :: array
+        character(1,SKG)            , intent(in)                        :: halo
+        character(*,SKG)            , intent(in)                        :: core
+        character(size,SKG)                                             :: array
     end function
 #endif
 
@@ -237,12 +237,12 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCoreHaloArr_D0_SK2
 #endif
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
         integer(IK)                 , intent(in)                        :: coffset
         integer(IK)                 , intent(in)                        :: size
-        character(1,SKC)            , intent(in)                        :: halo
-        character(*,SKC)            , intent(in)                        :: core
-        character(size,SKC)                                             :: array
+        character(1,SKG)            , intent(in)                        :: halo
+        character(*,SKG)            , intent(in)                        :: core
+        character(size,SKG)                                             :: array
     end function
 #endif
 
@@ -251,12 +251,12 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCoreHaloArr_D0_SK1
 #endif
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
         integer(IK)                 , intent(in)                        :: coffset
         integer(IK)                 , intent(in)                        :: size
-        character(1,SKC)            , intent(in)                        :: halo
-        character(*,SKC)            , intent(in)                        :: core
-        character(size,SKC)                                             :: array
+        character(1,SKG)            , intent(in)                        :: halo
+        character(*,SKG)            , intent(in)                        :: core
+        character(size,SKG)                                             :: array
     end function
 #endif
 
@@ -273,12 +273,12 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCoreHaloArr_D1_SK5
 #endif
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
         integer(IK)                 , intent(in)                        :: coffset
         integer(IK)                 , intent(in)                        :: size
-        character(*,SKC)            , intent(in)                        :: halo
-        character(*,SKC)            , intent(in)    , contiguous        :: core(:)
-        character(max(len(halo,IK),len(core,IK)),SKC)                   :: array(size)
+        character(*,SKG)            , intent(in)                        :: halo
+        character(*,SKG)            , intent(in)    , contiguous        :: core(:)
+        character(max(len(halo,IK),len(core,IK)),SKG)                   :: array(size)
     end function
 #endif
 
@@ -287,12 +287,12 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCoreHaloArr_D1_SK4
 #endif
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
         integer(IK)                 , intent(in)                        :: coffset
         integer(IK)                 , intent(in)                        :: size
-        character(*,SKC)            , intent(in)                        :: halo
-        character(*,SKC)            , intent(in)    , contiguous        :: core(:)
-        character(max(len(halo,IK),len(core,IK)),SKC)                   :: array(size)
+        character(*,SKG)            , intent(in)                        :: halo
+        character(*,SKG)            , intent(in)    , contiguous        :: core(:)
+        character(max(len(halo,IK),len(core,IK)),SKG)                   :: array(size)
     end function
 #endif
 
@@ -301,12 +301,12 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCoreHaloArr_D1_SK3
 #endif
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
         integer(IK)                 , intent(in)                        :: coffset
         integer(IK)                 , intent(in)                        :: size
-        character(*,SKC)            , intent(in)                        :: halo
-        character(*,SKC)            , intent(in)    , contiguous        :: core(:)
-        character(max(len(halo,IK),len(core,IK)),SKC)                   :: array(size)
+        character(*,SKG)            , intent(in)                        :: halo
+        character(*,SKG)            , intent(in)    , contiguous        :: core(:)
+        character(max(len(halo,IK),len(core,IK)),SKG)                   :: array(size)
     end function
 #endif
 
@@ -315,12 +315,12 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCoreHaloArr_D1_SK2
 #endif
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
         integer(IK)                 , intent(in)                        :: coffset
         integer(IK)                 , intent(in)                        :: size
-        character(*,SKC)            , intent(in)                        :: halo
-        character(*,SKC)            , intent(in)    , contiguous        :: core(:)
-        character(max(len(halo,IK),len(core,IK)),SKC)                   :: array(size)
+        character(*,SKG)            , intent(in)                        :: halo
+        character(*,SKG)            , intent(in)    , contiguous        :: core(:)
+        character(max(len(halo,IK),len(core,IK)),SKG)                   :: array(size)
     end function
 #endif
 
@@ -329,12 +329,12 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCoreHaloArr_D1_SK1
 #endif
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
         integer(IK)                 , intent(in)                        :: coffset
         integer(IK)                 , intent(in)                        :: size
-        character(*,SKC)            , intent(in)                        :: halo
-        character(*,SKC)            , intent(in)    , contiguous        :: core(:)
-        character(max(len(halo,IK),len(core,IK)),SKC)                   :: array(size)
+        character(*,SKG)            , intent(in)                        :: halo
+        character(*,SKG)            , intent(in)    , contiguous        :: core(:)
+        character(max(len(halo,IK),len(core,IK)),SKG)                   :: array(size)
     end function
 #endif
 
@@ -345,12 +345,12 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCoreHaloArr_D1_IK5
 #endif
-        use pm_kind, only: IKC => IK5
+        use pm_kind, only: IKG => IK5
         integer(IK)                 , intent(in)                        :: coffset
         integer(IK)                 , intent(in)                        :: size
-        integer(IKC)                , intent(in)                        :: halo
-        integer(IKC)                , intent(in)    , contiguous        :: core(:)
-        integer(IKC)                                                    :: array(size)
+        integer(IKG)                , intent(in)                        :: halo
+        integer(IKG)                , intent(in)    , contiguous        :: core(:)
+        integer(IKG)                                                    :: array(size)
     end function
 #endif
 
@@ -359,12 +359,12 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCoreHaloArr_D1_IK4
 #endif
-        use pm_kind, only: IKC => IK4
+        use pm_kind, only: IKG => IK4
         integer(IK)                 , intent(in)                        :: coffset
         integer(IK)                 , intent(in)                        :: size
-        integer(IKC)                , intent(in)                        :: halo
-        integer(IKC)                , intent(in)    , contiguous        :: core(:)
-        integer(IKC)                                                    :: array(size)
+        integer(IKG)                , intent(in)                        :: halo
+        integer(IKG)                , intent(in)    , contiguous        :: core(:)
+        integer(IKG)                                                    :: array(size)
     end function
 #endif
 
@@ -373,12 +373,12 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCoreHaloArr_D1_IK3
 #endif
-        use pm_kind, only: IKC => IK3
+        use pm_kind, only: IKG => IK3
         integer(IK)                 , intent(in)                        :: coffset
         integer(IK)                 , intent(in)                        :: size
-        integer(IKC)                , intent(in)                        :: halo
-        integer(IKC)                , intent(in)    , contiguous        :: core(:)
-        integer(IKC)                                                    :: array(size)
+        integer(IKG)                , intent(in)                        :: halo
+        integer(IKG)                , intent(in)    , contiguous        :: core(:)
+        integer(IKG)                                                    :: array(size)
     end function
 #endif
 
@@ -387,12 +387,12 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCoreHaloArr_D1_IK2
 #endif
-        use pm_kind, only: IKC => IK2
+        use pm_kind, only: IKG => IK2
         integer(IK)                 , intent(in)                        :: coffset
         integer(IK)                 , intent(in)                        :: size
-        integer(IKC)                , intent(in)                        :: halo
-        integer(IKC)                , intent(in)    , contiguous        :: core(:)
-        integer(IKC)                                                    :: array(size)
+        integer(IKG)                , intent(in)                        :: halo
+        integer(IKG)                , intent(in)    , contiguous        :: core(:)
+        integer(IKG)                                                    :: array(size)
     end function
 #endif
 
@@ -401,12 +401,12 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCoreHaloArr_D1_IK1
 #endif
-        use pm_kind, only: IKC => IK1
+        use pm_kind, only: IKG => IK1
         integer(IK)                 , intent(in)                        :: coffset
         integer(IK)                 , intent(in)                        :: size
-        integer(IKC)                , intent(in)                        :: halo
-        integer(IKC)                , intent(in)    , contiguous        :: core(:)
-        integer(IKC)                                                    :: array(size)
+        integer(IKG)                , intent(in)                        :: halo
+        integer(IKG)                , intent(in)    , contiguous        :: core(:)
+        integer(IKG)                                                    :: array(size)
     end function
 #endif
 
@@ -417,12 +417,12 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCoreHaloArr_D1_LK5
 #endif
-        use pm_kind, only: LKC => LK5
+        use pm_kind, only: LKG => LK5
         integer(IK)                 , intent(in)                        :: coffset
         integer(IK)                 , intent(in)                        :: size
-        logical(LKC)                , intent(in)                        :: halo
-        logical(LKC)                , intent(in)    , contiguous        :: core(:)
-        logical(LKC)                                                    :: array(size)
+        logical(LKG)                , intent(in)                        :: halo
+        logical(LKG)                , intent(in)    , contiguous        :: core(:)
+        logical(LKG)                                                    :: array(size)
     end function
 #endif
 
@@ -431,12 +431,12 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCoreHaloArr_D1_LK4
 #endif
-        use pm_kind, only: LKC => LK4
+        use pm_kind, only: LKG => LK4
         integer(IK)                 , intent(in)                        :: coffset
         integer(IK)                 , intent(in)                        :: size
-        logical(LKC)                , intent(in)                        :: halo
-        logical(LKC)                , intent(in)    , contiguous        :: core(:)
-        logical(LKC)                                                    :: array(size)
+        logical(LKG)                , intent(in)                        :: halo
+        logical(LKG)                , intent(in)    , contiguous        :: core(:)
+        logical(LKG)                                                    :: array(size)
     end function
 #endif
 
@@ -445,12 +445,12 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCoreHaloArr_D1_LK3
 #endif
-        use pm_kind, only: LKC => LK3
+        use pm_kind, only: LKG => LK3
         integer(IK)                 , intent(in)                        :: coffset
         integer(IK)                 , intent(in)                        :: size
-        logical(LKC)                , intent(in)                        :: halo
-        logical(LKC)                , intent(in)    , contiguous        :: core(:)
-        logical(LKC)                                                    :: array(size)
+        logical(LKG)                , intent(in)                        :: halo
+        logical(LKG)                , intent(in)    , contiguous        :: core(:)
+        logical(LKG)                                                    :: array(size)
     end function
 #endif
 
@@ -459,12 +459,12 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCoreHaloArr_D1_LK2
 #endif
-        use pm_kind, only: LKC => LK2
+        use pm_kind, only: LKG => LK2
         integer(IK)                 , intent(in)                        :: coffset
         integer(IK)                 , intent(in)                        :: size
-        logical(LKC)                , intent(in)                        :: halo
-        logical(LKC)                , intent(in)    , contiguous        :: core(:)
-        logical(LKC)                                                    :: array(size)
+        logical(LKG)                , intent(in)                        :: halo
+        logical(LKG)                , intent(in)    , contiguous        :: core(:)
+        logical(LKG)                                                    :: array(size)
     end function
 #endif
 
@@ -473,12 +473,12 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCoreHaloArr_D1_LK1
 #endif
-        use pm_kind, only: LKC => LK1
+        use pm_kind, only: LKG => LK1
         integer(IK)                 , intent(in)                        :: coffset
         integer(IK)                 , intent(in)                        :: size
-        logical(LKC)                , intent(in)                        :: halo
-        logical(LKC)                , intent(in)    , contiguous        :: core(:)
-        logical(LKC)                                                    :: array(size)
+        logical(LKG)                , intent(in)                        :: halo
+        logical(LKG)                , intent(in)    , contiguous        :: core(:)
+        logical(LKG)                                                    :: array(size)
     end function
 #endif
 
@@ -489,12 +489,12 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCoreHaloArr_D1_CK5
 #endif
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
         integer(IK)                 , intent(in)                        :: coffset
         integer(IK)                 , intent(in)                        :: size
-        complex(CKC)                , intent(in)                        :: halo
-        complex(CKC)                , intent(in)    , contiguous        :: core(:)
-        complex(CKC)                                                    :: array(size)
+        complex(CKG)                , intent(in)                        :: halo
+        complex(CKG)                , intent(in)    , contiguous        :: core(:)
+        complex(CKG)                                                    :: array(size)
     end function
 #endif
 
@@ -503,12 +503,12 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCoreHaloArr_D1_CK4
 #endif
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
         integer(IK)                 , intent(in)                        :: coffset
         integer(IK)                 , intent(in)                        :: size
-        complex(CKC)                , intent(in)                        :: halo
-        complex(CKC)                , intent(in)    , contiguous        :: core(:)
-        complex(CKC)                                                    :: array(size)
+        complex(CKG)                , intent(in)                        :: halo
+        complex(CKG)                , intent(in)    , contiguous        :: core(:)
+        complex(CKG)                                                    :: array(size)
     end function
 #endif
 
@@ -517,12 +517,12 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCoreHaloArr_D1_CK3
 #endif
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
         integer(IK)                 , intent(in)                        :: coffset
         integer(IK)                 , intent(in)                        :: size
-        complex(CKC)                , intent(in)                        :: halo
-        complex(CKC)                , intent(in)    , contiguous        :: core(:)
-        complex(CKC)                                                    :: array(size)
+        complex(CKG)                , intent(in)                        :: halo
+        complex(CKG)                , intent(in)    , contiguous        :: core(:)
+        complex(CKG)                                                    :: array(size)
     end function
 #endif
 
@@ -531,12 +531,12 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCoreHaloArr_D1_CK2
 #endif
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
         integer(IK)                 , intent(in)                        :: coffset
         integer(IK)                 , intent(in)                        :: size
-        complex(CKC)                , intent(in)                        :: halo
-        complex(CKC)                , intent(in)    , contiguous        :: core(:)
-        complex(CKC)                                                    :: array(size)
+        complex(CKG)                , intent(in)                        :: halo
+        complex(CKG)                , intent(in)    , contiguous        :: core(:)
+        complex(CKG)                                                    :: array(size)
     end function
 #endif
 
@@ -545,12 +545,12 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCoreHaloArr_D1_CK1
 #endif
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
         integer(IK)                 , intent(in)                        :: coffset
         integer(IK)                 , intent(in)                        :: size
-        complex(CKC)                , intent(in)                        :: halo
-        complex(CKC)                , intent(in)    , contiguous        :: core(:)
-        complex(CKC)                                                    :: array(size)
+        complex(CKG)                , intent(in)                        :: halo
+        complex(CKG)                , intent(in)    , contiguous        :: core(:)
+        complex(CKG)                                                    :: array(size)
     end function
 #endif
 
@@ -561,12 +561,12 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCoreHaloArr_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         integer(IK)                 , intent(in)                        :: coffset
         integer(IK)                 , intent(in)                        :: size
-        real(RKC)                   , intent(in)                        :: halo
-        real(RKC)                   , intent(in)    , contiguous        :: core(:)
-        real(RKC)                                                       :: array(size)
+        real(RKG)                   , intent(in)                        :: halo
+        real(RKG)                   , intent(in)    , contiguous        :: core(:)
+        real(RKG)                                                       :: array(size)
     end function
 #endif
 
@@ -575,12 +575,12 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCoreHaloArr_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         integer(IK)                 , intent(in)                        :: coffset
         integer(IK)                 , intent(in)                        :: size
-        real(RKC)                   , intent(in)                        :: halo
-        real(RKC)                   , intent(in)    , contiguous        :: core(:)
-        real(RKC)                                                       :: array(size)
+        real(RKG)                   , intent(in)                        :: halo
+        real(RKG)                   , intent(in)    , contiguous        :: core(:)
+        real(RKG)                                                       :: array(size)
     end function
 #endif
 
@@ -589,12 +589,12 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCoreHaloArr_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         integer(IK)                 , intent(in)                        :: coffset
         integer(IK)                 , intent(in)                        :: size
-        real(RKC)                   , intent(in)                        :: halo
-        real(RKC)                   , intent(in)    , contiguous        :: core(:)
-        real(RKC)                                                       :: array(size)
+        real(RKG)                   , intent(in)                        :: halo
+        real(RKG)                   , intent(in)    , contiguous        :: core(:)
+        real(RKG)                                                       :: array(size)
     end function
 #endif
 
@@ -603,12 +603,12 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCoreHaloArr_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         integer(IK)                 , intent(in)                        :: coffset
         integer(IK)                 , intent(in)                        :: size
-        real(RKC)                   , intent(in)                        :: halo
-        real(RKC)                   , intent(in)    , contiguous        :: core(:)
-        real(RKC)                                                       :: array(size)
+        real(RKG)                   , intent(in)                        :: halo
+        real(RKG)                   , intent(in)    , contiguous        :: core(:)
+        real(RKG)                                                       :: array(size)
     end function
 #endif
 
@@ -617,12 +617,12 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCoreHaloArr_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         integer(IK)                 , intent(in)                        :: coffset
         integer(IK)                 , intent(in)                        :: size
-        real(RKC)                   , intent(in)                        :: halo
-        real(RKC)                   , intent(in)    , contiguous        :: core(:)
-        real(RKC)                                                       :: array(size)
+        real(RKG)                   , intent(in)                        :: halo
+        real(RKG)                   , intent(in)    , contiguous        :: core(:)
+        real(RKG)                                                       :: array(size)
     end function
 #endif
 
@@ -639,12 +639,12 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCoreHaloArr_D2_SK5
 #endif
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
         integer(IK)                 , intent(in)                        :: coffset(2)
         integer(IK)                 , intent(in)                        :: Size(2)
-        character(*,SKC)            , intent(in)                        :: halo
-        character(*,SKC)            , intent(in)    , contiguous        :: core(:,:)
-        character(max(len(halo,IK),len(core,IK)),SKC)                   :: array(Size(1), Size(2))
+        character(*,SKG)            , intent(in)                        :: halo
+        character(*,SKG)            , intent(in)    , contiguous        :: core(:,:)
+        character(max(len(halo,IK),len(core,IK)),SKG)                   :: array(Size(1), Size(2))
     end function
 #endif
 
@@ -653,12 +653,12 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCoreHaloArr_D2_SK4
 #endif
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
         integer(IK)                 , intent(in)                        :: coffset(2)
         integer(IK)                 , intent(in)                        :: Size(2)
-        character(*,SKC)            , intent(in)                        :: halo
-        character(*,SKC)            , intent(in)    , contiguous        :: core(:,:)
-        character(max(len(halo,IK),len(core,IK)),SKC)                   :: array(Size(1), Size(2))
+        character(*,SKG)            , intent(in)                        :: halo
+        character(*,SKG)            , intent(in)    , contiguous        :: core(:,:)
+        character(max(len(halo,IK),len(core,IK)),SKG)                   :: array(Size(1), Size(2))
     end function
 #endif
 
@@ -667,12 +667,12 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCoreHaloArr_D2_SK3
 #endif
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
         integer(IK)                 , intent(in)                        :: coffset(2)
         integer(IK)                 , intent(in)                        :: Size(2)
-        character(*,SKC)            , intent(in)                        :: halo
-        character(*,SKC)            , intent(in)    , contiguous        :: core(:,:)
-        character(max(len(halo,IK),len(core,IK)),SKC)                   :: array(Size(1), Size(2))
+        character(*,SKG)            , intent(in)                        :: halo
+        character(*,SKG)            , intent(in)    , contiguous        :: core(:,:)
+        character(max(len(halo,IK),len(core,IK)),SKG)                   :: array(Size(1), Size(2))
     end function
 #endif
 
@@ -681,12 +681,12 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCoreHaloArr_D2_SK2
 #endif
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
         integer(IK)                 , intent(in)                        :: coffset(2)
         integer(IK)                 , intent(in)                        :: Size(2)
-        character(*,SKC)            , intent(in)                        :: halo
-        character(*,SKC)            , intent(in)    , contiguous        :: core(:,:)
-        character(max(len(halo,IK),len(core,IK)),SKC)                   :: array(Size(1), Size(2))
+        character(*,SKG)            , intent(in)                        :: halo
+        character(*,SKG)            , intent(in)    , contiguous        :: core(:,:)
+        character(max(len(halo,IK),len(core,IK)),SKG)                   :: array(Size(1), Size(2))
     end function
 #endif
 
@@ -695,12 +695,12 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCoreHaloArr_D2_SK1
 #endif
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
         integer(IK)                 , intent(in)                        :: coffset(2)
         integer(IK)                 , intent(in)                        :: Size(2)
-        character(*,SKC)            , intent(in)                        :: halo
-        character(*,SKC)            , intent(in)    , contiguous        :: core(:,:)
-        character(max(len(halo,IK),len(core,IK)),SKC)                   :: array(Size(1), Size(2))
+        character(*,SKG)            , intent(in)                        :: halo
+        character(*,SKG)            , intent(in)    , contiguous        :: core(:,:)
+        character(max(len(halo,IK),len(core,IK)),SKG)                   :: array(Size(1), Size(2))
     end function
 #endif
 
@@ -711,12 +711,12 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCoreHaloArr_D2_IK5
 #endif
-        use pm_kind, only: IKC => IK5
+        use pm_kind, only: IKG => IK5
         integer(IK)                 , intent(in)                        :: coffset(2)
         integer(IK)                 , intent(in)                        :: Size(2)
-        integer(IKC)                , intent(in)                        :: halo
-        integer(IKC)                , intent(in)    , contiguous        :: core(:,:)
-        integer(IKC)                                                    :: array(Size(1), Size(2))
+        integer(IKG)                , intent(in)                        :: halo
+        integer(IKG)                , intent(in)    , contiguous        :: core(:,:)
+        integer(IKG)                                                    :: array(Size(1), Size(2))
     end function
 #endif
 
@@ -725,12 +725,12 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCoreHaloArr_D2_IK4
 #endif
-        use pm_kind, only: IKC => IK4
+        use pm_kind, only: IKG => IK4
         integer(IK)                 , intent(in)                        :: coffset(2)
         integer(IK)                 , intent(in)                        :: Size(2)
-        integer(IKC)                , intent(in)                        :: halo
-        integer(IKC)                , intent(in)    , contiguous        :: core(:,:)
-        integer(IKC)                                                    :: array(Size(1), Size(2))
+        integer(IKG)                , intent(in)                        :: halo
+        integer(IKG)                , intent(in)    , contiguous        :: core(:,:)
+        integer(IKG)                                                    :: array(Size(1), Size(2))
     end function
 #endif
 
@@ -739,12 +739,12 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCoreHaloArr_D2_IK3
 #endif
-        use pm_kind, only: IKC => IK3
+        use pm_kind, only: IKG => IK3
         integer(IK)                 , intent(in)                        :: coffset(2)
         integer(IK)                 , intent(in)                        :: Size(2)
-        integer(IKC)                , intent(in)                        :: halo
-        integer(IKC)                , intent(in)    , contiguous        :: core(:,:)
-        integer(IKC)                                                    :: array(Size(1), Size(2))
+        integer(IKG)                , intent(in)                        :: halo
+        integer(IKG)                , intent(in)    , contiguous        :: core(:,:)
+        integer(IKG)                                                    :: array(Size(1), Size(2))
     end function
 #endif
 
@@ -753,12 +753,12 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCoreHaloArr_D2_IK2
 #endif
-        use pm_kind, only: IKC => IK2
+        use pm_kind, only: IKG => IK2
         integer(IK)                 , intent(in)                        :: coffset(2)
         integer(IK)                 , intent(in)                        :: Size(2)
-        integer(IKC)                , intent(in)                        :: halo
-        integer(IKC)                , intent(in)    , contiguous        :: core(:,:)
-        integer(IKC)                                                    :: array(Size(1), Size(2))
+        integer(IKG)                , intent(in)                        :: halo
+        integer(IKG)                , intent(in)    , contiguous        :: core(:,:)
+        integer(IKG)                                                    :: array(Size(1), Size(2))
     end function
 #endif
 
@@ -767,12 +767,12 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCoreHaloArr_D2_IK1
 #endif
-        use pm_kind, only: IKC => IK1
+        use pm_kind, only: IKG => IK1
         integer(IK)                 , intent(in)                        :: coffset(2)
         integer(IK)                 , intent(in)                        :: Size(2)
-        integer(IKC)                , intent(in)                        :: halo
-        integer(IKC)                , intent(in)    , contiguous        :: core(:,:)
-        integer(IKC)                                                    :: array(Size(1), Size(2))
+        integer(IKG)                , intent(in)                        :: halo
+        integer(IKG)                , intent(in)    , contiguous        :: core(:,:)
+        integer(IKG)                                                    :: array(Size(1), Size(2))
     end function
 #endif
 
@@ -783,12 +783,12 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCoreHaloArr_D2_LK5
 #endif
-        use pm_kind, only: LKC => LK5
+        use pm_kind, only: LKG => LK5
         integer(IK)                 , intent(in)                        :: coffset(2)
         integer(IK)                 , intent(in)                        :: Size(2)
-        logical(LKC)                , intent(in)                        :: halo
-        logical(LKC)                , intent(in)    , contiguous        :: core(:,:)
-        logical(LKC)                                                    :: array(Size(1), Size(2))
+        logical(LKG)                , intent(in)                        :: halo
+        logical(LKG)                , intent(in)    , contiguous        :: core(:,:)
+        logical(LKG)                                                    :: array(Size(1), Size(2))
     end function
 #endif
 
@@ -797,12 +797,12 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCoreHaloArr_D2_LK4
 #endif
-        use pm_kind, only: LKC => LK4
+        use pm_kind, only: LKG => LK4
         integer(IK)                 , intent(in)                        :: coffset(2)
         integer(IK)                 , intent(in)                        :: Size(2)
-        logical(LKC)                , intent(in)                        :: halo
-        logical(LKC)                , intent(in)    , contiguous        :: core(:,:)
-        logical(LKC)                                                    :: array(Size(1), Size(2))
+        logical(LKG)                , intent(in)                        :: halo
+        logical(LKG)                , intent(in)    , contiguous        :: core(:,:)
+        logical(LKG)                                                    :: array(Size(1), Size(2))
     end function
 #endif
 
@@ -811,12 +811,12 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCoreHaloArr_D2_LK3
 #endif
-        use pm_kind, only: LKC => LK3
+        use pm_kind, only: LKG => LK3
         integer(IK)                 , intent(in)                        :: coffset(2)
         integer(IK)                 , intent(in)                        :: Size(2)
-        logical(LKC)                , intent(in)                        :: halo
-        logical(LKC)                , intent(in)    , contiguous        :: core(:,:)
-        logical(LKC)                                                    :: array(Size(1), Size(2))
+        logical(LKG)                , intent(in)                        :: halo
+        logical(LKG)                , intent(in)    , contiguous        :: core(:,:)
+        logical(LKG)                                                    :: array(Size(1), Size(2))
     end function
 #endif
 
@@ -825,12 +825,12 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCoreHaloArr_D2_LK2
 #endif
-        use pm_kind, only: LKC => LK2
+        use pm_kind, only: LKG => LK2
         integer(IK)                 , intent(in)                        :: coffset(2)
         integer(IK)                 , intent(in)                        :: Size(2)
-        logical(LKC)                , intent(in)                        :: halo
-        logical(LKC)                , intent(in)    , contiguous        :: core(:,:)
-        logical(LKC)                                                    :: array(Size(1), Size(2))
+        logical(LKG)                , intent(in)                        :: halo
+        logical(LKG)                , intent(in)    , contiguous        :: core(:,:)
+        logical(LKG)                                                    :: array(Size(1), Size(2))
     end function
 #endif
 
@@ -839,12 +839,12 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCoreHaloArr_D2_LK1
 #endif
-        use pm_kind, only: LKC => LK1
+        use pm_kind, only: LKG => LK1
         integer(IK)                 , intent(in)                        :: coffset(2)
         integer(IK)                 , intent(in)                        :: Size(2)
-        logical(LKC)                , intent(in)                        :: halo
-        logical(LKC)                , intent(in)    , contiguous        :: core(:,:)
-        logical(LKC)                                                    :: array(Size(1), Size(2))
+        logical(LKG)                , intent(in)                        :: halo
+        logical(LKG)                , intent(in)    , contiguous        :: core(:,:)
+        logical(LKG)                                                    :: array(Size(1), Size(2))
     end function
 #endif
 
@@ -855,12 +855,12 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCoreHaloArr_D2_CK5
 #endif
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
         integer(IK)                 , intent(in)                        :: coffset(2)
         integer(IK)                 , intent(in)                        :: Size(2)
-        complex(CKC)                , intent(in)                        :: halo
-        complex(CKC)                , intent(in)    , contiguous        :: core(:,:)
-        complex(CKC)                                                    :: array(Size(1), Size(2))
+        complex(CKG)                , intent(in)                        :: halo
+        complex(CKG)                , intent(in)    , contiguous        :: core(:,:)
+        complex(CKG)                                                    :: array(Size(1), Size(2))
     end function
 #endif
 
@@ -869,12 +869,12 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCoreHaloArr_D2_CK4
 #endif
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
         integer(IK)                 , intent(in)                        :: coffset(2)
         integer(IK)                 , intent(in)                        :: Size(2)
-        complex(CKC)                , intent(in)                        :: halo
-        complex(CKC)                , intent(in)    , contiguous        :: core(:,:)
-        complex(CKC)                                                    :: array(Size(1), Size(2))
+        complex(CKG)                , intent(in)                        :: halo
+        complex(CKG)                , intent(in)    , contiguous        :: core(:,:)
+        complex(CKG)                                                    :: array(Size(1), Size(2))
     end function
 #endif
 
@@ -883,12 +883,12 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCoreHaloArr_D2_CK3
 #endif
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
         integer(IK)                 , intent(in)                        :: coffset(2)
         integer(IK)                 , intent(in)                        :: Size(2)
-        complex(CKC)                , intent(in)                        :: halo
-        complex(CKC)                , intent(in)    , contiguous        :: core(:,:)
-        complex(CKC)                                                    :: array(Size(1), Size(2))
+        complex(CKG)                , intent(in)                        :: halo
+        complex(CKG)                , intent(in)    , contiguous        :: core(:,:)
+        complex(CKG)                                                    :: array(Size(1), Size(2))
     end function
 #endif
 
@@ -897,12 +897,12 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCoreHaloArr_D2_CK2
 #endif
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
         integer(IK)                 , intent(in)                        :: coffset(2)
         integer(IK)                 , intent(in)                        :: Size(2)
-        complex(CKC)                , intent(in)                        :: halo
-        complex(CKC)                , intent(in)    , contiguous        :: core(:,:)
-        complex(CKC)                                                    :: array(Size(1), Size(2))
+        complex(CKG)                , intent(in)                        :: halo
+        complex(CKG)                , intent(in)    , contiguous        :: core(:,:)
+        complex(CKG)                                                    :: array(Size(1), Size(2))
     end function
 #endif
 
@@ -911,12 +911,12 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCoreHaloArr_D2_CK1
 #endif
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
         integer(IK)                 , intent(in)                        :: coffset(2)
         integer(IK)                 , intent(in)                        :: Size(2)
-        complex(CKC)                , intent(in)                        :: halo
-        complex(CKC)                , intent(in)    , contiguous        :: core(:,:)
-        complex(CKC)                                                    :: array(Size(1), Size(2))
+        complex(CKG)                , intent(in)                        :: halo
+        complex(CKG)                , intent(in)    , contiguous        :: core(:,:)
+        complex(CKG)                                                    :: array(Size(1), Size(2))
     end function
 #endif
 
@@ -927,12 +927,12 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCoreHaloArr_D2_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         integer(IK)                 , intent(in)                        :: coffset(2)
         integer(IK)                 , intent(in)                        :: Size(2)
-        real(RKC)                   , intent(in)                        :: halo
-        real(RKC)                   , intent(in)    , contiguous        :: core(:,:)
-        real(RKC)                                                       :: array(Size(1), Size(2))
+        real(RKG)                   , intent(in)                        :: halo
+        real(RKG)                   , intent(in)    , contiguous        :: core(:,:)
+        real(RKG)                                                       :: array(Size(1), Size(2))
     end function
 #endif
 
@@ -941,12 +941,12 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCoreHaloArr_D2_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         integer(IK)                 , intent(in)                        :: coffset(2)
         integer(IK)                 , intent(in)                        :: Size(2)
-        real(RKC)                   , intent(in)                        :: halo
-        real(RKC)                   , intent(in)    , contiguous        :: core(:,:)
-        real(RKC)                                                       :: array(Size(1), Size(2))
+        real(RKG)                   , intent(in)                        :: halo
+        real(RKG)                   , intent(in)    , contiguous        :: core(:,:)
+        real(RKG)                                                       :: array(Size(1), Size(2))
     end function
 #endif
 
@@ -955,12 +955,12 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCoreHaloArr_D2_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         integer(IK)                 , intent(in)                        :: coffset(2)
         integer(IK)                 , intent(in)                        :: Size(2)
-        real(RKC)                   , intent(in)                        :: halo
-        real(RKC)                   , intent(in)    , contiguous        :: core(:,:)
-        real(RKC)                                                       :: array(Size(1), Size(2))
+        real(RKG)                   , intent(in)                        :: halo
+        real(RKG)                   , intent(in)    , contiguous        :: core(:,:)
+        real(RKG)                                                       :: array(Size(1), Size(2))
     end function
 #endif
 
@@ -969,12 +969,12 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCoreHaloArr_D2_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         integer(IK)                 , intent(in)                        :: coffset(2)
         integer(IK)                 , intent(in)                        :: Size(2)
-        real(RKC)                   , intent(in)                        :: halo
-        real(RKC)                   , intent(in)    , contiguous        :: core(:,:)
-        real(RKC)                                                       :: array(Size(1), Size(2))
+        real(RKG)                   , intent(in)                        :: halo
+        real(RKG)                   , intent(in)    , contiguous        :: core(:,:)
+        real(RKG)                                                       :: array(Size(1), Size(2))
     end function
 #endif
 
@@ -983,12 +983,12 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCoreHaloArr_D2_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         integer(IK)                 , intent(in)                        :: coffset(2)
         integer(IK)                 , intent(in)                        :: Size(2)
-        real(RKC)                   , intent(in)                        :: halo
-        real(RKC)                   , intent(in)    , contiguous        :: core(:,:)
-        real(RKC)                                                       :: array(Size(1), Size(2))
+        real(RKG)                   , intent(in)                        :: halo
+        real(RKG)                   , intent(in)    , contiguous        :: core(:,:)
+        real(RKG)                                                       :: array(Size(1), Size(2))
     end function
 #endif
 
@@ -1005,12 +1005,12 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCoreHaloArr_D3_SK5
 #endif
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
         integer(IK)                 , intent(in)                        :: coffset(3)
         integer(IK)                 , intent(in)                        :: Size(3)
-        character(*,SKC)            , intent(in)                        :: halo
-        character(*,SKC)            , intent(in)    , contiguous        :: core(:,:,:)
-        character(max(len(halo,IK),len(core,IK)),SKC)                   :: array(Size(1), Size(2), Size(3))
+        character(*,SKG)            , intent(in)                        :: halo
+        character(*,SKG)            , intent(in)    , contiguous        :: core(:,:,:)
+        character(max(len(halo,IK),len(core,IK)),SKG)                   :: array(Size(1), Size(2), Size(3))
     end function
 #endif
 
@@ -1019,12 +1019,12 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCoreHaloArr_D3_SK4
 #endif
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
         integer(IK)                 , intent(in)                        :: coffset(3)
         integer(IK)                 , intent(in)                        :: Size(3)
-        character(*,SKC)            , intent(in)                        :: halo
-        character(*,SKC)            , intent(in)    , contiguous        :: core(:,:,:)
-        character(max(len(halo,IK),len(core,IK)),SKC)                   :: array(Size(1), Size(2), Size(3))
+        character(*,SKG)            , intent(in)                        :: halo
+        character(*,SKG)            , intent(in)    , contiguous        :: core(:,:,:)
+        character(max(len(halo,IK),len(core,IK)),SKG)                   :: array(Size(1), Size(2), Size(3))
     end function
 #endif
 
@@ -1033,12 +1033,12 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCoreHaloArr_D3_SK3
 #endif
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
         integer(IK)                 , intent(in)                        :: coffset(3)
         integer(IK)                 , intent(in)                        :: Size(3)
-        character(*,SKC)            , intent(in)                        :: halo
-        character(*,SKC)            , intent(in)    , contiguous        :: core(:,:,:)
-        character(max(len(halo,IK),len(core,IK)),SKC)                   :: array(Size(1), Size(2), Size(3))
+        character(*,SKG)            , intent(in)                        :: halo
+        character(*,SKG)            , intent(in)    , contiguous        :: core(:,:,:)
+        character(max(len(halo,IK),len(core,IK)),SKG)                   :: array(Size(1), Size(2), Size(3))
     end function
 #endif
 
@@ -1047,12 +1047,12 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCoreHaloArr_D3_SK2
 #endif
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
         integer(IK)                 , intent(in)                        :: coffset(3)
         integer(IK)                 , intent(in)                        :: Size(3)
-        character(*,SKC)            , intent(in)                        :: halo
-        character(*,SKC)            , intent(in)    , contiguous        :: core(:,:,:)
-        character(max(len(halo,IK),len(core,IK)),SKC)                   :: array(Size(1), Size(2), Size(3))
+        character(*,SKG)            , intent(in)                        :: halo
+        character(*,SKG)            , intent(in)    , contiguous        :: core(:,:,:)
+        character(max(len(halo,IK),len(core,IK)),SKG)                   :: array(Size(1), Size(2), Size(3))
     end function
 #endif
 
@@ -1061,12 +1061,12 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCoreHaloArr_D3_SK1
 #endif
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
         integer(IK)                 , intent(in)                        :: coffset(3)
         integer(IK)                 , intent(in)                        :: Size(3)
-        character(*,SKC)            , intent(in)                        :: halo
-        character(*,SKC)            , intent(in)    , contiguous        :: core(:,:,:)
-        character(max(len(halo,IK),len(core,IK)),SKC)                   :: array(Size(1), Size(2), Size(3))
+        character(*,SKG)            , intent(in)                        :: halo
+        character(*,SKG)            , intent(in)    , contiguous        :: core(:,:,:)
+        character(max(len(halo,IK),len(core,IK)),SKG)                   :: array(Size(1), Size(2), Size(3))
     end function
 #endif
 
@@ -1077,12 +1077,12 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCoreHaloArr_D3_IK5
 #endif
-        use pm_kind, only: IKC => IK5
+        use pm_kind, only: IKG => IK5
         integer(IK)                 , intent(in)                        :: coffset(3)
         integer(IK)                 , intent(in)                        :: Size(3)
-        integer(IKC)                , intent(in)                        :: halo
-        integer(IKC)                , intent(in)    , contiguous        :: core(:,:,:)
-        integer(IKC)                                                    :: array(Size(1), Size(2), Size(3))
+        integer(IKG)                , intent(in)                        :: halo
+        integer(IKG)                , intent(in)    , contiguous        :: core(:,:,:)
+        integer(IKG)                                                    :: array(Size(1), Size(2), Size(3))
     end function
 #endif
 
@@ -1091,12 +1091,12 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCoreHaloArr_D3_IK4
 #endif
-        use pm_kind, only: IKC => IK4
+        use pm_kind, only: IKG => IK4
         integer(IK)                 , intent(in)                        :: coffset(3)
         integer(IK)                 , intent(in)                        :: Size(3)
-        integer(IKC)                , intent(in)                        :: halo
-        integer(IKC)                , intent(in)    , contiguous        :: core(:,:,:)
-        integer(IKC)                                                    :: array(Size(1), Size(2), Size(3))
+        integer(IKG)                , intent(in)                        :: halo
+        integer(IKG)                , intent(in)    , contiguous        :: core(:,:,:)
+        integer(IKG)                                                    :: array(Size(1), Size(2), Size(3))
     end function
 #endif
 
@@ -1105,12 +1105,12 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCoreHaloArr_D3_IK3
 #endif
-        use pm_kind, only: IKC => IK3
+        use pm_kind, only: IKG => IK3
         integer(IK)                 , intent(in)                        :: coffset(3)
         integer(IK)                 , intent(in)                        :: Size(3)
-        integer(IKC)                , intent(in)                        :: halo
-        integer(IKC)                , intent(in)    , contiguous        :: core(:,:,:)
-        integer(IKC)                                                    :: array(Size(1), Size(2), Size(3))
+        integer(IKG)                , intent(in)                        :: halo
+        integer(IKG)                , intent(in)    , contiguous        :: core(:,:,:)
+        integer(IKG)                                                    :: array(Size(1), Size(2), Size(3))
     end function
 #endif
 
@@ -1119,12 +1119,12 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCoreHaloArr_D3_IK2
 #endif
-        use pm_kind, only: IKC => IK2
+        use pm_kind, only: IKG => IK2
         integer(IK)                 , intent(in)                        :: coffset(3)
         integer(IK)                 , intent(in)                        :: Size(3)
-        integer(IKC)                , intent(in)                        :: halo
-        integer(IKC)                , intent(in)    , contiguous        :: core(:,:,:)
-        integer(IKC)                                                    :: array(Size(1), Size(2), Size(3))
+        integer(IKG)                , intent(in)                        :: halo
+        integer(IKG)                , intent(in)    , contiguous        :: core(:,:,:)
+        integer(IKG)                                                    :: array(Size(1), Size(2), Size(3))
     end function
 #endif
 
@@ -1133,12 +1133,12 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCoreHaloArr_D3_IK1
 #endif
-        use pm_kind, only: IKC => IK1
+        use pm_kind, only: IKG => IK1
         integer(IK)                 , intent(in)                        :: coffset(3)
         integer(IK)                 , intent(in)                        :: Size(3)
-        integer(IKC)                , intent(in)                        :: halo
-        integer(IKC)                , intent(in)    , contiguous        :: core(:,:,:)
-        integer(IKC)                                                    :: array(Size(1), Size(2), Size(3))
+        integer(IKG)                , intent(in)                        :: halo
+        integer(IKG)                , intent(in)    , contiguous        :: core(:,:,:)
+        integer(IKG)                                                    :: array(Size(1), Size(2), Size(3))
     end function
 #endif
 
@@ -1149,12 +1149,12 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCoreHaloArr_D3_LK5
 #endif
-        use pm_kind, only: LKC => LK5
+        use pm_kind, only: LKG => LK5
         integer(IK)                 , intent(in)                        :: coffset(3)
         integer(IK)                 , intent(in)                        :: Size(3)
-        logical(LKC)                , intent(in)                        :: halo
-        logical(LKC)                , intent(in)    , contiguous        :: core(:,:,:)
-        logical(LKC)                                                    :: array(Size(1), Size(2), Size(3))
+        logical(LKG)                , intent(in)                        :: halo
+        logical(LKG)                , intent(in)    , contiguous        :: core(:,:,:)
+        logical(LKG)                                                    :: array(Size(1), Size(2), Size(3))
     end function
 #endif
 
@@ -1163,12 +1163,12 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCoreHaloArr_D3_LK4
 #endif
-        use pm_kind, only: LKC => LK4
+        use pm_kind, only: LKG => LK4
         integer(IK)                 , intent(in)                        :: coffset(3)
         integer(IK)                 , intent(in)                        :: Size(3)
-        logical(LKC)                , intent(in)                        :: halo
-        logical(LKC)                , intent(in)    , contiguous        :: core(:,:,:)
-        logical(LKC)                                                    :: array(Size(1), Size(2), Size(3))
+        logical(LKG)                , intent(in)                        :: halo
+        logical(LKG)                , intent(in)    , contiguous        :: core(:,:,:)
+        logical(LKG)                                                    :: array(Size(1), Size(2), Size(3))
     end function
 #endif
 
@@ -1177,12 +1177,12 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCoreHaloArr_D3_LK3
 #endif
-        use pm_kind, only: LKC => LK3
+        use pm_kind, only: LKG => LK3
         integer(IK)                 , intent(in)                        :: coffset(3)
         integer(IK)                 , intent(in)                        :: Size(3)
-        logical(LKC)                , intent(in)                        :: halo
-        logical(LKC)                , intent(in)    , contiguous        :: core(:,:,:)
-        logical(LKC)                                                    :: array(Size(1), Size(2), Size(3))
+        logical(LKG)                , intent(in)                        :: halo
+        logical(LKG)                , intent(in)    , contiguous        :: core(:,:,:)
+        logical(LKG)                                                    :: array(Size(1), Size(2), Size(3))
     end function
 #endif
 
@@ -1191,12 +1191,12 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCoreHaloArr_D3_LK2
 #endif
-        use pm_kind, only: LKC => LK2
+        use pm_kind, only: LKG => LK2
         integer(IK)                 , intent(in)                        :: coffset(3)
         integer(IK)                 , intent(in)                        :: Size(3)
-        logical(LKC)                , intent(in)                        :: halo
-        logical(LKC)                , intent(in)    , contiguous        :: core(:,:,:)
-        logical(LKC)                                                    :: array(Size(1), Size(2), Size(3))
+        logical(LKG)                , intent(in)                        :: halo
+        logical(LKG)                , intent(in)    , contiguous        :: core(:,:,:)
+        logical(LKG)                                                    :: array(Size(1), Size(2), Size(3))
     end function
 #endif
 
@@ -1205,12 +1205,12 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCoreHaloArr_D3_LK1
 #endif
-        use pm_kind, only: LKC => LK1
+        use pm_kind, only: LKG => LK1
         integer(IK)                 , intent(in)                        :: coffset(3)
         integer(IK)                 , intent(in)                        :: Size(3)
-        logical(LKC)                , intent(in)                        :: halo
-        logical(LKC)                , intent(in)    , contiguous        :: core(:,:,:)
-        logical(LKC)                                                    :: array(Size(1), Size(2), Size(3))
+        logical(LKG)                , intent(in)                        :: halo
+        logical(LKG)                , intent(in)    , contiguous        :: core(:,:,:)
+        logical(LKG)                                                    :: array(Size(1), Size(2), Size(3))
     end function
 #endif
 
@@ -1221,12 +1221,12 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCoreHaloArr_D3_CK5
 #endif
-        use pm_kind, only: CKC => CK5
+        use pm_kind, only: CKG => CK5
         integer(IK)                 , intent(in)                        :: coffset(3)
         integer(IK)                 , intent(in)                        :: Size(3)
-        complex(CKC)                , intent(in)                        :: halo
-        complex(CKC)                , intent(in)    , contiguous        :: core(:,:,:)
-        complex(CKC)                                                    :: array(Size(1), Size(2), Size(3))
+        complex(CKG)                , intent(in)                        :: halo
+        complex(CKG)                , intent(in)    , contiguous        :: core(:,:,:)
+        complex(CKG)                                                    :: array(Size(1), Size(2), Size(3))
     end function
 #endif
 
@@ -1235,12 +1235,12 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCoreHaloArr_D3_CK4
 #endif
-        use pm_kind, only: CKC => CK4
+        use pm_kind, only: CKG => CK4
         integer(IK)                 , intent(in)                        :: coffset(3)
         integer(IK)                 , intent(in)                        :: Size(3)
-        complex(CKC)                , intent(in)                        :: halo
-        complex(CKC)                , intent(in)    , contiguous        :: core(:,:,:)
-        complex(CKC)                                                    :: array(Size(1), Size(2), Size(3))
+        complex(CKG)                , intent(in)                        :: halo
+        complex(CKG)                , intent(in)    , contiguous        :: core(:,:,:)
+        complex(CKG)                                                    :: array(Size(1), Size(2), Size(3))
     end function
 #endif
 
@@ -1249,12 +1249,12 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCoreHaloArr_D3_CK3
 #endif
-        use pm_kind, only: CKC => CK3
+        use pm_kind, only: CKG => CK3
         integer(IK)                 , intent(in)                        :: coffset(3)
         integer(IK)                 , intent(in)                        :: Size(3)
-        complex(CKC)                , intent(in)                        :: halo
-        complex(CKC)                , intent(in)    , contiguous        :: core(:,:,:)
-        complex(CKC)                                                    :: array(Size(1), Size(2), Size(3))
+        complex(CKG)                , intent(in)                        :: halo
+        complex(CKG)                , intent(in)    , contiguous        :: core(:,:,:)
+        complex(CKG)                                                    :: array(Size(1), Size(2), Size(3))
     end function
 #endif
 
@@ -1263,12 +1263,12 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCoreHaloArr_D3_CK2
 #endif
-        use pm_kind, only: CKC => CK2
+        use pm_kind, only: CKG => CK2
         integer(IK)                 , intent(in)                        :: coffset(3)
         integer(IK)                 , intent(in)                        :: Size(3)
-        complex(CKC)                , intent(in)                        :: halo
-        complex(CKC)                , intent(in)    , contiguous        :: core(:,:,:)
-        complex(CKC)                                                    :: array(Size(1), Size(2), Size(3))
+        complex(CKG)                , intent(in)                        :: halo
+        complex(CKG)                , intent(in)    , contiguous        :: core(:,:,:)
+        complex(CKG)                                                    :: array(Size(1), Size(2), Size(3))
     end function
 #endif
 
@@ -1277,12 +1277,12 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCoreHaloArr_D3_CK1
 #endif
-        use pm_kind, only: CKC => CK1
+        use pm_kind, only: CKG => CK1
         integer(IK)                 , intent(in)                        :: coffset(3)
         integer(IK)                 , intent(in)                        :: Size(3)
-        complex(CKC)                , intent(in)                        :: halo
-        complex(CKC)                , intent(in)    , contiguous        :: core(:,:,:)
-        complex(CKC)                                                    :: array(Size(1), Size(2), Size(3))
+        complex(CKG)                , intent(in)                        :: halo
+        complex(CKG)                , intent(in)    , contiguous        :: core(:,:,:)
+        complex(CKG)                                                    :: array(Size(1), Size(2), Size(3))
     end function
 #endif
 
@@ -1293,12 +1293,12 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCoreHaloArr_D3_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         integer(IK)                 , intent(in)                        :: coffset(3)
         integer(IK)                 , intent(in)                        :: Size(3)
-        real(RKC)                   , intent(in)                        :: halo
-        real(RKC)                   , intent(in)    , contiguous        :: core(:,:,:)
-        real(RKC)                                                       :: array(Size(1), Size(2), Size(3))
+        real(RKG)                   , intent(in)                        :: halo
+        real(RKG)                   , intent(in)    , contiguous        :: core(:,:,:)
+        real(RKG)                                                       :: array(Size(1), Size(2), Size(3))
     end function
 #endif
 
@@ -1307,12 +1307,12 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCoreHaloArr_D3_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         integer(IK)                 , intent(in)                        :: coffset(3)
         integer(IK)                 , intent(in)                        :: Size(3)
-        real(RKC)                   , intent(in)                        :: halo
-        real(RKC)                   , intent(in)    , contiguous        :: core(:,:,:)
-        real(RKC)                                                       :: array(Size(1), Size(2), Size(3))
+        real(RKG)                   , intent(in)                        :: halo
+        real(RKG)                   , intent(in)    , contiguous        :: core(:,:,:)
+        real(RKG)                                                       :: array(Size(1), Size(2), Size(3))
     end function
 #endif
 
@@ -1321,12 +1321,12 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCoreHaloArr_D3_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         integer(IK)                 , intent(in)                        :: coffset(3)
         integer(IK)                 , intent(in)                        :: Size(3)
-        real(RKC)                   , intent(in)                        :: halo
-        real(RKC)                   , intent(in)    , contiguous        :: core(:,:,:)
-        real(RKC)                                                       :: array(Size(1), Size(2), Size(3))
+        real(RKG)                   , intent(in)                        :: halo
+        real(RKG)                   , intent(in)    , contiguous        :: core(:,:,:)
+        real(RKG)                                                       :: array(Size(1), Size(2), Size(3))
     end function
 #endif
 
@@ -1335,12 +1335,12 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCoreHaloArr_D3_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         integer(IK)                 , intent(in)                        :: coffset(3)
         integer(IK)                 , intent(in)                        :: Size(3)
-        real(RKC)                   , intent(in)                        :: halo
-        real(RKC)                   , intent(in)    , contiguous        :: core(:,:,:)
-        real(RKC)                                                       :: array(Size(1), Size(2), Size(3))
+        real(RKG)                   , intent(in)                        :: halo
+        real(RKG)                   , intent(in)    , contiguous        :: core(:,:,:)
+        real(RKG)                                                       :: array(Size(1), Size(2), Size(3))
     end function
 #endif
 
@@ -1349,12 +1349,12 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCoreHaloArr_D3_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         integer(IK)                 , intent(in)                        :: coffset(3)
         integer(IK)                 , intent(in)                        :: Size(3)
-        real(RKC)                   , intent(in)                        :: halo
-        real(RKC)                   , intent(in)    , contiguous        :: core(:,:,:)
-        real(RKC)                                                       :: array(Size(1), Size(2), Size(3))
+        real(RKG)                   , intent(in)                        :: halo
+        real(RKG)                   , intent(in)    , contiguous        :: core(:,:,:)
+        real(RKG)                                                       :: array(Size(1), Size(2), Size(3))
     end function
 #endif
 
@@ -1518,10 +1518,10 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCoreHaloArr_D0_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)            , intent(out)                       :: array
-        character(*,SKC)            , intent(in)                        :: core
-        character(1,SKC)            , intent(in)                        :: halo
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)            , intent(out)                       :: array
+        character(*,SKG)            , intent(in)                        :: core
+        character(1,SKG)            , intent(in)                        :: halo
         integer(IK)                 , intent(in)                        :: coffset
     end subroutine
 #endif
@@ -1531,10 +1531,10 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCoreHaloArr_D0_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)            , intent(out)                       :: array
-        character(*,SKC)            , intent(in)                        :: core
-        character(1,SKC)            , intent(in)                        :: halo
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)            , intent(out)                       :: array
+        character(*,SKG)            , intent(in)                        :: core
+        character(1,SKG)            , intent(in)                        :: halo
         integer(IK)                 , intent(in)                        :: coffset
     end subroutine
 #endif
@@ -1544,10 +1544,10 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCoreHaloArr_D0_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)            , intent(out)                       :: array
-        character(*,SKC)            , intent(in)                        :: core
-        character(1,SKC)            , intent(in)                        :: halo
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)            , intent(out)                       :: array
+        character(*,SKG)            , intent(in)                        :: core
+        character(1,SKG)            , intent(in)                        :: halo
         integer(IK)                 , intent(in)                        :: coffset
     end subroutine
 #endif
@@ -1557,10 +1557,10 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCoreHaloArr_D0_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)            , intent(out)                       :: array
-        character(*,SKC)            , intent(in)                        :: core
-        character(1,SKC)            , intent(in)                        :: halo
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)            , intent(out)                       :: array
+        character(*,SKG)            , intent(in)                        :: core
+        character(1,SKG)            , intent(in)                        :: halo
         integer(IK)                 , intent(in)                        :: coffset
     end subroutine
 #endif
@@ -1570,10 +1570,10 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCoreHaloArr_D0_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)            , intent(out)                       :: array
-        character(*,SKC)            , intent(in)                        :: core
-        character(1,SKC)            , intent(in)                        :: halo
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)            , intent(out)                       :: array
+        character(*,SKG)            , intent(in)                        :: core
+        character(1,SKG)            , intent(in)                        :: halo
         integer(IK)                 , intent(in)                        :: coffset
     end subroutine
 #endif
@@ -1591,10 +1591,10 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCoreHaloArr_D1_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)            , intent(out)   , contiguous        :: array(:)
-        character(*,SKC)            , intent(in)    , contiguous        :: core(:)
-        character(*,SKC)            , intent(in)                        :: halo
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)            , intent(out)   , contiguous        :: array(:)
+        character(*,SKG)            , intent(in)    , contiguous        :: core(:)
+        character(*,SKG)            , intent(in)                        :: halo
         integer(IK)                 , intent(in)                        :: coffset
     end subroutine
 #endif
@@ -1604,10 +1604,10 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCoreHaloArr_D1_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)            , intent(out)   , contiguous        :: array(:)
-        character(*,SKC)            , intent(in)    , contiguous        :: core(:)
-        character(*,SKC)            , intent(in)                        :: halo
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)            , intent(out)   , contiguous        :: array(:)
+        character(*,SKG)            , intent(in)    , contiguous        :: core(:)
+        character(*,SKG)            , intent(in)                        :: halo
         integer(IK)                 , intent(in)                        :: coffset
     end subroutine
 #endif
@@ -1617,10 +1617,10 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCoreHaloArr_D1_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)            , intent(out)   , contiguous        :: array(:)
-        character(*,SKC)            , intent(in)    , contiguous        :: core(:)
-        character(*,SKC)            , intent(in)                        :: halo
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)            , intent(out)   , contiguous        :: array(:)
+        character(*,SKG)            , intent(in)    , contiguous        :: core(:)
+        character(*,SKG)            , intent(in)                        :: halo
         integer(IK)                 , intent(in)                        :: coffset
     end subroutine
 #endif
@@ -1630,10 +1630,10 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCoreHaloArr_D1_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)            , intent(out)   , contiguous        :: array(:)
-        character(*,SKC)            , intent(in)    , contiguous        :: core(:)
-        character(*,SKC)            , intent(in)                        :: halo
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)            , intent(out)   , contiguous        :: array(:)
+        character(*,SKG)            , intent(in)    , contiguous        :: core(:)
+        character(*,SKG)            , intent(in)                        :: halo
         integer(IK)                 , intent(in)                        :: coffset
     end subroutine
 #endif
@@ -1643,10 +1643,10 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCoreHaloArr_D1_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)            , intent(out)   , contiguous        :: array(:)
-        character(*,SKC)            , intent(in)    , contiguous        :: core(:)
-        character(*,SKC)            , intent(in)                        :: halo
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)            , intent(out)   , contiguous        :: array(:)
+        character(*,SKG)            , intent(in)    , contiguous        :: core(:)
+        character(*,SKG)            , intent(in)                        :: halo
         integer(IK)                 , intent(in)                        :: coffset
     end subroutine
 #endif
@@ -1658,10 +1658,10 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCoreHaloArr_D1_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)                , intent(out)   , contiguous        :: array(:)
-        integer(IKC)                , intent(in)    , contiguous        :: core(:)
-        integer(IKC)                , intent(in)                        :: halo
+        use pm_kind, only: IKG => IK5
+        integer(IKG)                , intent(out)   , contiguous        :: array(:)
+        integer(IKG)                , intent(in)    , contiguous        :: core(:)
+        integer(IKG)                , intent(in)                        :: halo
         integer(IK)                 , intent(in)                        :: coffset
     end subroutine
 #endif
@@ -1671,10 +1671,10 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCoreHaloArr_D1_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)                , intent(out)   , contiguous        :: array(:)
-        integer(IKC)                , intent(in)    , contiguous        :: core(:)
-        integer(IKC)                , intent(in)                        :: halo
+        use pm_kind, only: IKG => IK4
+        integer(IKG)                , intent(out)   , contiguous        :: array(:)
+        integer(IKG)                , intent(in)    , contiguous        :: core(:)
+        integer(IKG)                , intent(in)                        :: halo
         integer(IK)                 , intent(in)                        :: coffset
     end subroutine
 #endif
@@ -1684,10 +1684,10 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCoreHaloArr_D1_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)                , intent(out)   , contiguous        :: array(:)
-        integer(IKC)                , intent(in)    , contiguous        :: core(:)
-        integer(IKC)                , intent(in)                        :: halo
+        use pm_kind, only: IKG => IK3
+        integer(IKG)                , intent(out)   , contiguous        :: array(:)
+        integer(IKG)                , intent(in)    , contiguous        :: core(:)
+        integer(IKG)                , intent(in)                        :: halo
         integer(IK)                 , intent(in)                        :: coffset
     end subroutine
 #endif
@@ -1697,10 +1697,10 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCoreHaloArr_D1_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)                , intent(out)   , contiguous        :: array(:)
-        integer(IKC)                , intent(in)    , contiguous        :: core(:)
-        integer(IKC)                , intent(in)                        :: halo
+        use pm_kind, only: IKG => IK2
+        integer(IKG)                , intent(out)   , contiguous        :: array(:)
+        integer(IKG)                , intent(in)    , contiguous        :: core(:)
+        integer(IKG)                , intent(in)                        :: halo
         integer(IK)                 , intent(in)                        :: coffset
     end subroutine
 #endif
@@ -1710,10 +1710,10 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCoreHaloArr_D1_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)                , intent(out)   , contiguous        :: array(:)
-        integer(IKC)                , intent(in)    , contiguous        :: core(:)
-        integer(IKC)                , intent(in)                        :: halo
+        use pm_kind, only: IKG => IK1
+        integer(IKG)                , intent(out)   , contiguous        :: array(:)
+        integer(IKG)                , intent(in)    , contiguous        :: core(:)
+        integer(IKG)                , intent(in)                        :: halo
         integer(IK)                 , intent(in)                        :: coffset
     end subroutine
 #endif
@@ -1725,10 +1725,10 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCoreHaloArr_D1_LK5
 #endif
-        use pm_kind, only: LKC => LK5
-        logical(LKC)                , intent(out)   , contiguous        :: array(:)
-        logical(LKC)                , intent(in)    , contiguous        :: core(:)
-        logical(LKC)                , intent(in)                        :: halo
+        use pm_kind, only: LKG => LK5
+        logical(LKG)                , intent(out)   , contiguous        :: array(:)
+        logical(LKG)                , intent(in)    , contiguous        :: core(:)
+        logical(LKG)                , intent(in)                        :: halo
         integer(IK)                 , intent(in)                        :: coffset
     end subroutine
 #endif
@@ -1738,10 +1738,10 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCoreHaloArr_D1_LK4
 #endif
-        use pm_kind, only: LKC => LK4
-        logical(LKC)                , intent(out)   , contiguous        :: array(:)
-        logical(LKC)                , intent(in)    , contiguous        :: core(:)
-        logical(LKC)                , intent(in)                        :: halo
+        use pm_kind, only: LKG => LK4
+        logical(LKG)                , intent(out)   , contiguous        :: array(:)
+        logical(LKG)                , intent(in)    , contiguous        :: core(:)
+        logical(LKG)                , intent(in)                        :: halo
         integer(IK)                 , intent(in)                        :: coffset
     end subroutine
 #endif
@@ -1751,10 +1751,10 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCoreHaloArr_D1_LK3
 #endif
-        use pm_kind, only: LKC => LK3
-        logical(LKC)                , intent(out)   , contiguous        :: array(:)
-        logical(LKC)                , intent(in)    , contiguous        :: core(:)
-        logical(LKC)                , intent(in)                        :: halo
+        use pm_kind, only: LKG => LK3
+        logical(LKG)                , intent(out)   , contiguous        :: array(:)
+        logical(LKG)                , intent(in)    , contiguous        :: core(:)
+        logical(LKG)                , intent(in)                        :: halo
         integer(IK)                 , intent(in)                        :: coffset
     end subroutine
 #endif
@@ -1764,10 +1764,10 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCoreHaloArr_D1_LK2
 #endif
-        use pm_kind, only: LKC => LK2
-        logical(LKC)                , intent(out)   , contiguous        :: array(:)
-        logical(LKC)                , intent(in)    , contiguous        :: core(:)
-        logical(LKC)                , intent(in)                        :: halo
+        use pm_kind, only: LKG => LK2
+        logical(LKG)                , intent(out)   , contiguous        :: array(:)
+        logical(LKG)                , intent(in)    , contiguous        :: core(:)
+        logical(LKG)                , intent(in)                        :: halo
         integer(IK)                 , intent(in)                        :: coffset
     end subroutine
 #endif
@@ -1777,10 +1777,10 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCoreHaloArr_D1_LK1
 #endif
-        use pm_kind, only: LKC => LK1
-        logical(LKC)                , intent(out)   , contiguous        :: array(:)
-        logical(LKC)                , intent(in)    , contiguous        :: core(:)
-        logical(LKC)                , intent(in)                        :: halo
+        use pm_kind, only: LKG => LK1
+        logical(LKG)                , intent(out)   , contiguous        :: array(:)
+        logical(LKG)                , intent(in)    , contiguous        :: core(:)
+        logical(LKG)                , intent(in)                        :: halo
         integer(IK)                 , intent(in)                        :: coffset
     end subroutine
 #endif
@@ -1792,10 +1792,10 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCoreHaloArr_D1_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)                , intent(out)   , contiguous        :: array(:)
-        complex(CKC)                , intent(in)    , contiguous        :: core(:)
-        complex(CKC)                , intent(in)                        :: halo
+        use pm_kind, only: CKG => CK5
+        complex(CKG)                , intent(out)   , contiguous        :: array(:)
+        complex(CKG)                , intent(in)    , contiguous        :: core(:)
+        complex(CKG)                , intent(in)                        :: halo
         integer(IK)                 , intent(in)                        :: coffset
     end subroutine
 #endif
@@ -1805,10 +1805,10 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCoreHaloArr_D1_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)                , intent(out)   , contiguous        :: array(:)
-        complex(CKC)                , intent(in)    , contiguous        :: core(:)
-        complex(CKC)                , intent(in)                        :: halo
+        use pm_kind, only: CKG => CK4
+        complex(CKG)                , intent(out)   , contiguous        :: array(:)
+        complex(CKG)                , intent(in)    , contiguous        :: core(:)
+        complex(CKG)                , intent(in)                        :: halo
         integer(IK)                 , intent(in)                        :: coffset
     end subroutine
 #endif
@@ -1818,10 +1818,10 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCoreHaloArr_D1_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)                , intent(out)   , contiguous        :: array(:)
-        complex(CKC)                , intent(in)    , contiguous        :: core(:)
-        complex(CKC)                , intent(in)                        :: halo
+        use pm_kind, only: CKG => CK3
+        complex(CKG)                , intent(out)   , contiguous        :: array(:)
+        complex(CKG)                , intent(in)    , contiguous        :: core(:)
+        complex(CKG)                , intent(in)                        :: halo
         integer(IK)                 , intent(in)                        :: coffset
     end subroutine
 #endif
@@ -1831,10 +1831,10 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCoreHaloArr_D1_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)                , intent(out)   , contiguous        :: array(:)
-        complex(CKC)                , intent(in)    , contiguous        :: core(:)
-        complex(CKC)                , intent(in)                        :: halo
+        use pm_kind, only: CKG => CK2
+        complex(CKG)                , intent(out)   , contiguous        :: array(:)
+        complex(CKG)                , intent(in)    , contiguous        :: core(:)
+        complex(CKG)                , intent(in)                        :: halo
         integer(IK)                 , intent(in)                        :: coffset
     end subroutine
 #endif
@@ -1844,10 +1844,10 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCoreHaloArr_D1_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)                , intent(out)   , contiguous        :: array(:)
-        complex(CKC)                , intent(in)    , contiguous        :: core(:)
-        complex(CKC)                , intent(in)                        :: halo
+        use pm_kind, only: CKG => CK1
+        complex(CKG)                , intent(out)   , contiguous        :: array(:)
+        complex(CKG)                , intent(in)    , contiguous        :: core(:)
+        complex(CKG)                , intent(in)                        :: halo
         integer(IK)                 , intent(in)                        :: coffset
     end subroutine
 #endif
@@ -1859,10 +1859,10 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCoreHaloArr_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)                   , intent(out)   , contiguous        :: array(:)
-        real(RKC)                   , intent(in)    , contiguous        :: core(:)
-        real(RKC)                   , intent(in)                        :: halo
+        use pm_kind, only: RKG => RK5
+        real(RKG)                   , intent(out)   , contiguous        :: array(:)
+        real(RKG)                   , intent(in)    , contiguous        :: core(:)
+        real(RKG)                   , intent(in)                        :: halo
         integer(IK)                 , intent(in)                        :: coffset
     end subroutine
 #endif
@@ -1872,10 +1872,10 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCoreHaloArr_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)                   , intent(out)   , contiguous        :: array(:)
-        real(RKC)                   , intent(in)    , contiguous        :: core(:)
-        real(RKC)                   , intent(in)                        :: halo
+        use pm_kind, only: RKG => RK4
+        real(RKG)                   , intent(out)   , contiguous        :: array(:)
+        real(RKG)                   , intent(in)    , contiguous        :: core(:)
+        real(RKG)                   , intent(in)                        :: halo
         integer(IK)                 , intent(in)                        :: coffset
     end subroutine
 #endif
@@ -1885,10 +1885,10 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCoreHaloArr_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)                   , intent(out)   , contiguous        :: array(:)
-        real(RKC)                   , intent(in)    , contiguous        :: core(:)
-        real(RKC)                   , intent(in)                        :: halo
+        use pm_kind, only: RKG => RK3
+        real(RKG)                   , intent(out)   , contiguous        :: array(:)
+        real(RKG)                   , intent(in)    , contiguous        :: core(:)
+        real(RKG)                   , intent(in)                        :: halo
         integer(IK)                 , intent(in)                        :: coffset
     end subroutine
 #endif
@@ -1898,10 +1898,10 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCoreHaloArr_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)                   , intent(out)   , contiguous        :: array(:)
-        real(RKC)                   , intent(in)    , contiguous        :: core(:)
-        real(RKC)                   , intent(in)                        :: halo
+        use pm_kind, only: RKG => RK2
+        real(RKG)                   , intent(out)   , contiguous        :: array(:)
+        real(RKG)                   , intent(in)    , contiguous        :: core(:)
+        real(RKG)                   , intent(in)                        :: halo
         integer(IK)                 , intent(in)                        :: coffset
     end subroutine
 #endif
@@ -1911,10 +1911,10 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCoreHaloArr_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)                   , intent(out)   , contiguous        :: array(:)
-        real(RKC)                   , intent(in)    , contiguous        :: core(:)
-        real(RKC)                   , intent(in)                        :: halo
+        use pm_kind, only: RKG => RK1
+        real(RKG)                   , intent(out)   , contiguous        :: array(:)
+        real(RKG)                   , intent(in)    , contiguous        :: core(:)
+        real(RKG)                   , intent(in)                        :: halo
         integer(IK)                 , intent(in)                        :: coffset
     end subroutine
 #endif
@@ -1932,10 +1932,10 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCoreHaloArr_D2_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)            , intent(out)   , contiguous        :: array(:,:)
-        character(*,SKC)            , intent(in)    , contiguous        :: core(:,:)
-        character(*,SKC)            , intent(in)                        :: halo
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)            , intent(out)   , contiguous        :: array(:,:)
+        character(*,SKG)            , intent(in)    , contiguous        :: core(:,:)
+        character(*,SKG)            , intent(in)                        :: halo
         integer(IK)                 , intent(in)                        :: coffset(rank(array))
     end subroutine
 #endif
@@ -1945,10 +1945,10 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCoreHaloArr_D2_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)            , intent(out)   , contiguous        :: array(:,:)
-        character(*,SKC)            , intent(in)    , contiguous        :: core(:,:)
-        character(*,SKC)            , intent(in)                        :: halo
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)            , intent(out)   , contiguous        :: array(:,:)
+        character(*,SKG)            , intent(in)    , contiguous        :: core(:,:)
+        character(*,SKG)            , intent(in)                        :: halo
         integer(IK)                 , intent(in)                        :: coffset(rank(array))
     end subroutine
 #endif
@@ -1958,10 +1958,10 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCoreHaloArr_D2_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)            , intent(out)   , contiguous        :: array(:,:)
-        character(*,SKC)            , intent(in)    , contiguous        :: core(:,:)
-        character(*,SKC)            , intent(in)                        :: halo
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)            , intent(out)   , contiguous        :: array(:,:)
+        character(*,SKG)            , intent(in)    , contiguous        :: core(:,:)
+        character(*,SKG)            , intent(in)                        :: halo
         integer(IK)                 , intent(in)                        :: coffset(rank(array))
     end subroutine
 #endif
@@ -1971,10 +1971,10 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCoreHaloArr_D2_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)            , intent(out)   , contiguous        :: array(:,:)
-        character(*,SKC)            , intent(in)    , contiguous        :: core(:,:)
-        character(*,SKC)            , intent(in)                        :: halo
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)            , intent(out)   , contiguous        :: array(:,:)
+        character(*,SKG)            , intent(in)    , contiguous        :: core(:,:)
+        character(*,SKG)            , intent(in)                        :: halo
         integer(IK)                 , intent(in)                        :: coffset(rank(array))
     end subroutine
 #endif
@@ -1984,10 +1984,10 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCoreHaloArr_D2_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)            , intent(out)   , contiguous        :: array(:,:)
-        character(*,SKC)            , intent(in)    , contiguous        :: core(:,:)
-        character(*,SKC)            , intent(in)                        :: halo
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)            , intent(out)   , contiguous        :: array(:,:)
+        character(*,SKG)            , intent(in)    , contiguous        :: core(:,:)
+        character(*,SKG)            , intent(in)                        :: halo
         integer(IK)                 , intent(in)                        :: coffset(rank(array))
     end subroutine
 #endif
@@ -1999,10 +1999,10 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCoreHaloArr_D2_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)                , intent(out)   , contiguous        :: array(:,:)
-        integer(IKC)                , intent(in)    , contiguous        :: core(:,:)
-        integer(IKC)                , intent(in)                        :: halo
+        use pm_kind, only: IKG => IK5
+        integer(IKG)                , intent(out)   , contiguous        :: array(:,:)
+        integer(IKG)                , intent(in)    , contiguous        :: core(:,:)
+        integer(IKG)                , intent(in)                        :: halo
         integer(IK)                 , intent(in)                        :: coffset(rank(array))
     end subroutine
 #endif
@@ -2012,10 +2012,10 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCoreHaloArr_D2_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)                , intent(out)   , contiguous        :: array(:,:)
-        integer(IKC)                , intent(in)    , contiguous        :: core(:,:)
-        integer(IKC)                , intent(in)                        :: halo
+        use pm_kind, only: IKG => IK4
+        integer(IKG)                , intent(out)   , contiguous        :: array(:,:)
+        integer(IKG)                , intent(in)    , contiguous        :: core(:,:)
+        integer(IKG)                , intent(in)                        :: halo
         integer(IK)                 , intent(in)                        :: coffset(rank(array))
     end subroutine
 #endif
@@ -2025,10 +2025,10 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCoreHaloArr_D2_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)                , intent(out)   , contiguous        :: array(:,:)
-        integer(IKC)                , intent(in)    , contiguous        :: core(:,:)
-        integer(IKC)                , intent(in)                        :: halo
+        use pm_kind, only: IKG => IK3
+        integer(IKG)                , intent(out)   , contiguous        :: array(:,:)
+        integer(IKG)                , intent(in)    , contiguous        :: core(:,:)
+        integer(IKG)                , intent(in)                        :: halo
         integer(IK)                 , intent(in)                        :: coffset(rank(array))
     end subroutine
 #endif
@@ -2038,10 +2038,10 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCoreHaloArr_D2_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)                , intent(out)   , contiguous        :: array(:,:)
-        integer(IKC)                , intent(in)    , contiguous        :: core(:,:)
-        integer(IKC)                , intent(in)                        :: halo
+        use pm_kind, only: IKG => IK2
+        integer(IKG)                , intent(out)   , contiguous        :: array(:,:)
+        integer(IKG)                , intent(in)    , contiguous        :: core(:,:)
+        integer(IKG)                , intent(in)                        :: halo
         integer(IK)                 , intent(in)                        :: coffset(rank(array))
     end subroutine
 #endif
@@ -2051,10 +2051,10 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCoreHaloArr_D2_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)                , intent(out)   , contiguous        :: array(:,:)
-        integer(IKC)                , intent(in)    , contiguous        :: core(:,:)
-        integer(IKC)                , intent(in)                        :: halo
+        use pm_kind, only: IKG => IK1
+        integer(IKG)                , intent(out)   , contiguous        :: array(:,:)
+        integer(IKG)                , intent(in)    , contiguous        :: core(:,:)
+        integer(IKG)                , intent(in)                        :: halo
         integer(IK)                 , intent(in)                        :: coffset(rank(array))
     end subroutine
 #endif
@@ -2066,10 +2066,10 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCoreHaloArr_D2_LK5
 #endif
-        use pm_kind, only: LKC => LK5
-        logical(LKC)                , intent(out)   , contiguous        :: array(:,:)
-        logical(LKC)                , intent(in)    , contiguous        :: core(:,:)
-        logical(LKC)                , intent(in)                        :: halo
+        use pm_kind, only: LKG => LK5
+        logical(LKG)                , intent(out)   , contiguous        :: array(:,:)
+        logical(LKG)                , intent(in)    , contiguous        :: core(:,:)
+        logical(LKG)                , intent(in)                        :: halo
         integer(IK)                 , intent(in)                        :: coffset(rank(array))
     end subroutine
 #endif
@@ -2079,10 +2079,10 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCoreHaloArr_D2_LK4
 #endif
-        use pm_kind, only: LKC => LK4
-        logical(LKC)                , intent(out)   , contiguous        :: array(:,:)
-        logical(LKC)                , intent(in)    , contiguous        :: core(:,:)
-        logical(LKC)                , intent(in)                        :: halo
+        use pm_kind, only: LKG => LK4
+        logical(LKG)                , intent(out)   , contiguous        :: array(:,:)
+        logical(LKG)                , intent(in)    , contiguous        :: core(:,:)
+        logical(LKG)                , intent(in)                        :: halo
         integer(IK)                 , intent(in)                        :: coffset(rank(array))
     end subroutine
 #endif
@@ -2092,10 +2092,10 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCoreHaloArr_D2_LK3
 #endif
-        use pm_kind, only: LKC => LK3
-        logical(LKC)                , intent(out)   , contiguous        :: array(:,:)
-        logical(LKC)                , intent(in)    , contiguous        :: core(:,:)
-        logical(LKC)                , intent(in)                        :: halo
+        use pm_kind, only: LKG => LK3
+        logical(LKG)                , intent(out)   , contiguous        :: array(:,:)
+        logical(LKG)                , intent(in)    , contiguous        :: core(:,:)
+        logical(LKG)                , intent(in)                        :: halo
         integer(IK)                 , intent(in)                        :: coffset(rank(array))
     end subroutine
 #endif
@@ -2105,10 +2105,10 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCoreHaloArr_D2_LK2
 #endif
-        use pm_kind, only: LKC => LK2
-        logical(LKC)                , intent(out)   , contiguous        :: array(:,:)
-        logical(LKC)                , intent(in)    , contiguous        :: core(:,:)
-        logical(LKC)                , intent(in)                        :: halo
+        use pm_kind, only: LKG => LK2
+        logical(LKG)                , intent(out)   , contiguous        :: array(:,:)
+        logical(LKG)                , intent(in)    , contiguous        :: core(:,:)
+        logical(LKG)                , intent(in)                        :: halo
         integer(IK)                 , intent(in)                        :: coffset(rank(array))
     end subroutine
 #endif
@@ -2118,10 +2118,10 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCoreHaloArr_D2_LK1
 #endif
-        use pm_kind, only: LKC => LK1
-        logical(LKC)                , intent(out)   , contiguous        :: array(:,:)
-        logical(LKC)                , intent(in)    , contiguous        :: core(:,:)
-        logical(LKC)                , intent(in)                        :: halo
+        use pm_kind, only: LKG => LK1
+        logical(LKG)                , intent(out)   , contiguous        :: array(:,:)
+        logical(LKG)                , intent(in)    , contiguous        :: core(:,:)
+        logical(LKG)                , intent(in)                        :: halo
         integer(IK)                 , intent(in)                        :: coffset(rank(array))
     end subroutine
 #endif
@@ -2133,10 +2133,10 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCoreHaloArr_D2_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)                , intent(out)   , contiguous        :: array(:,:)
-        complex(CKC)                , intent(in)    , contiguous        :: core(:,:)
-        complex(CKC)                , intent(in)                        :: halo
+        use pm_kind, only: CKG => CK5
+        complex(CKG)                , intent(out)   , contiguous        :: array(:,:)
+        complex(CKG)                , intent(in)    , contiguous        :: core(:,:)
+        complex(CKG)                , intent(in)                        :: halo
         integer(IK)                 , intent(in)                        :: coffset(rank(array))
     end subroutine
 #endif
@@ -2146,10 +2146,10 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCoreHaloArr_D2_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)                , intent(out)   , contiguous        :: array(:,:)
-        complex(CKC)                , intent(in)    , contiguous        :: core(:,:)
-        complex(CKC)                , intent(in)                        :: halo
+        use pm_kind, only: CKG => CK4
+        complex(CKG)                , intent(out)   , contiguous        :: array(:,:)
+        complex(CKG)                , intent(in)    , contiguous        :: core(:,:)
+        complex(CKG)                , intent(in)                        :: halo
         integer(IK)                 , intent(in)                        :: coffset(rank(array))
     end subroutine
 #endif
@@ -2159,10 +2159,10 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCoreHaloArr_D2_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)                , intent(out)   , contiguous        :: array(:,:)
-        complex(CKC)                , intent(in)    , contiguous        :: core(:,:)
-        complex(CKC)                , intent(in)                        :: halo
+        use pm_kind, only: CKG => CK3
+        complex(CKG)                , intent(out)   , contiguous        :: array(:,:)
+        complex(CKG)                , intent(in)    , contiguous        :: core(:,:)
+        complex(CKG)                , intent(in)                        :: halo
         integer(IK)                 , intent(in)                        :: coffset(rank(array))
     end subroutine
 #endif
@@ -2172,10 +2172,10 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCoreHaloArr_D2_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)                , intent(out)   , contiguous        :: array(:,:)
-        complex(CKC)                , intent(in)    , contiguous        :: core(:,:)
-        complex(CKC)                , intent(in)                        :: halo
+        use pm_kind, only: CKG => CK2
+        complex(CKG)                , intent(out)   , contiguous        :: array(:,:)
+        complex(CKG)                , intent(in)    , contiguous        :: core(:,:)
+        complex(CKG)                , intent(in)                        :: halo
         integer(IK)                 , intent(in)                        :: coffset(rank(array))
     end subroutine
 #endif
@@ -2185,10 +2185,10 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCoreHaloArr_D2_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)                , intent(out)   , contiguous        :: array(:,:)
-        complex(CKC)                , intent(in)    , contiguous        :: core(:,:)
-        complex(CKC)                , intent(in)                        :: halo
+        use pm_kind, only: CKG => CK1
+        complex(CKG)                , intent(out)   , contiguous        :: array(:,:)
+        complex(CKG)                , intent(in)    , contiguous        :: core(:,:)
+        complex(CKG)                , intent(in)                        :: halo
         integer(IK)                 , intent(in)                        :: coffset(rank(array))
     end subroutine
 #endif
@@ -2200,10 +2200,10 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCoreHaloArr_D2_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)                   , intent(out)   , contiguous        :: array(:,:)
-        real(RKC)                   , intent(in)    , contiguous        :: core(:,:)
-        real(RKC)                   , intent(in)                        :: halo
+        use pm_kind, only: RKG => RK5
+        real(RKG)                   , intent(out)   , contiguous        :: array(:,:)
+        real(RKG)                   , intent(in)    , contiguous        :: core(:,:)
+        real(RKG)                   , intent(in)                        :: halo
         integer(IK)                 , intent(in)                        :: coffset(rank(array))
     end subroutine
 #endif
@@ -2213,10 +2213,10 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCoreHaloArr_D2_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)                   , intent(out)   , contiguous        :: array(:,:)
-        real(RKC)                   , intent(in)    , contiguous        :: core(:,:)
-        real(RKC)                   , intent(in)                        :: halo
+        use pm_kind, only: RKG => RK4
+        real(RKG)                   , intent(out)   , contiguous        :: array(:,:)
+        real(RKG)                   , intent(in)    , contiguous        :: core(:,:)
+        real(RKG)                   , intent(in)                        :: halo
         integer(IK)                 , intent(in)                        :: coffset(rank(array))
     end subroutine
 #endif
@@ -2226,10 +2226,10 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCoreHaloArr_D2_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)                   , intent(out)   , contiguous        :: array(:,:)
-        real(RKC)                   , intent(in)    , contiguous        :: core(:,:)
-        real(RKC)                   , intent(in)                        :: halo
+        use pm_kind, only: RKG => RK3
+        real(RKG)                   , intent(out)   , contiguous        :: array(:,:)
+        real(RKG)                   , intent(in)    , contiguous        :: core(:,:)
+        real(RKG)                   , intent(in)                        :: halo
         integer(IK)                 , intent(in)                        :: coffset(rank(array))
     end subroutine
 #endif
@@ -2239,10 +2239,10 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCoreHaloArr_D2_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)                   , intent(out)   , contiguous        :: array(:,:)
-        real(RKC)                   , intent(in)    , contiguous        :: core(:,:)
-        real(RKC)                   , intent(in)                        :: halo
+        use pm_kind, only: RKG => RK2
+        real(RKG)                   , intent(out)   , contiguous        :: array(:,:)
+        real(RKG)                   , intent(in)    , contiguous        :: core(:,:)
+        real(RKG)                   , intent(in)                        :: halo
         integer(IK)                 , intent(in)                        :: coffset(rank(array))
     end subroutine
 #endif
@@ -2252,10 +2252,10 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCoreHaloArr_D2_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)                   , intent(out)   , contiguous        :: array(:,:)
-        real(RKC)                   , intent(in)    , contiguous        :: core(:,:)
-        real(RKC)                   , intent(in)                        :: halo
+        use pm_kind, only: RKG => RK1
+        real(RKG)                   , intent(out)   , contiguous        :: array(:,:)
+        real(RKG)                   , intent(in)    , contiguous        :: core(:,:)
+        real(RKG)                   , intent(in)                        :: halo
         integer(IK)                 , intent(in)                        :: coffset(rank(array))
     end subroutine
 #endif
@@ -2273,10 +2273,10 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCoreHaloArr_D3_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)            , intent(out)   , contiguous        :: array(:,:,:)
-        character(*,SKC)            , intent(in)    , contiguous        :: core(:,:,:)
-        character(*,SKC)            , intent(in)                        :: halo
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)            , intent(out)   , contiguous        :: array(:,:,:)
+        character(*,SKG)            , intent(in)    , contiguous        :: core(:,:,:)
+        character(*,SKG)            , intent(in)                        :: halo
         integer(IK)                 , intent(in)                        :: coffset(rank(array))
     end subroutine
 #endif
@@ -2286,10 +2286,10 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCoreHaloArr_D3_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)            , intent(out)   , contiguous        :: array(:,:,:)
-        character(*,SKC)            , intent(in)    , contiguous        :: core(:,:,:)
-        character(*,SKC)            , intent(in)                        :: halo
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)            , intent(out)   , contiguous        :: array(:,:,:)
+        character(*,SKG)            , intent(in)    , contiguous        :: core(:,:,:)
+        character(*,SKG)            , intent(in)                        :: halo
         integer(IK)                 , intent(in)                        :: coffset(rank(array))
     end subroutine
 #endif
@@ -2299,10 +2299,10 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCoreHaloArr_D3_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)            , intent(out)   , contiguous        :: array(:,:,:)
-        character(*,SKC)            , intent(in)    , contiguous        :: core(:,:,:)
-        character(*,SKC)            , intent(in)                        :: halo
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)            , intent(out)   , contiguous        :: array(:,:,:)
+        character(*,SKG)            , intent(in)    , contiguous        :: core(:,:,:)
+        character(*,SKG)            , intent(in)                        :: halo
         integer(IK)                 , intent(in)                        :: coffset(rank(array))
     end subroutine
 #endif
@@ -2312,10 +2312,10 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCoreHaloArr_D3_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)            , intent(out)   , contiguous        :: array(:,:,:)
-        character(*,SKC)            , intent(in)    , contiguous        :: core(:,:,:)
-        character(*,SKC)            , intent(in)                        :: halo
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)            , intent(out)   , contiguous        :: array(:,:,:)
+        character(*,SKG)            , intent(in)    , contiguous        :: core(:,:,:)
+        character(*,SKG)            , intent(in)                        :: halo
         integer(IK)                 , intent(in)                        :: coffset(rank(array))
     end subroutine
 #endif
@@ -2325,10 +2325,10 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCoreHaloArr_D3_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)            , intent(out)   , contiguous        :: array(:,:,:)
-        character(*,SKC)            , intent(in)    , contiguous        :: core(:,:,:)
-        character(*,SKC)            , intent(in)                        :: halo
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)            , intent(out)   , contiguous        :: array(:,:,:)
+        character(*,SKG)            , intent(in)    , contiguous        :: core(:,:,:)
+        character(*,SKG)            , intent(in)                        :: halo
         integer(IK)                 , intent(in)                        :: coffset(rank(array))
     end subroutine
 #endif
@@ -2340,10 +2340,10 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCoreHaloArr_D3_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)                , intent(out)   , contiguous        :: array(:,:,:)
-        integer(IKC)                , intent(in)    , contiguous        :: core(:,:,:)
-        integer(IKC)                , intent(in)                        :: halo
+        use pm_kind, only: IKG => IK5
+        integer(IKG)                , intent(out)   , contiguous        :: array(:,:,:)
+        integer(IKG)                , intent(in)    , contiguous        :: core(:,:,:)
+        integer(IKG)                , intent(in)                        :: halo
         integer(IK)                 , intent(in)                        :: coffset(rank(array))
     end subroutine
 #endif
@@ -2353,10 +2353,10 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCoreHaloArr_D3_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)                , intent(out)   , contiguous        :: array(:,:,:)
-        integer(IKC)                , intent(in)    , contiguous        :: core(:,:,:)
-        integer(IKC)                , intent(in)                        :: halo
+        use pm_kind, only: IKG => IK4
+        integer(IKG)                , intent(out)   , contiguous        :: array(:,:,:)
+        integer(IKG)                , intent(in)    , contiguous        :: core(:,:,:)
+        integer(IKG)                , intent(in)                        :: halo
         integer(IK)                 , intent(in)                        :: coffset(rank(array))
     end subroutine
 #endif
@@ -2366,10 +2366,10 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCoreHaloArr_D3_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)                , intent(out)   , contiguous        :: array(:,:,:)
-        integer(IKC)                , intent(in)    , contiguous        :: core(:,:,:)
-        integer(IKC)                , intent(in)                        :: halo
+        use pm_kind, only: IKG => IK3
+        integer(IKG)                , intent(out)   , contiguous        :: array(:,:,:)
+        integer(IKG)                , intent(in)    , contiguous        :: core(:,:,:)
+        integer(IKG)                , intent(in)                        :: halo
         integer(IK)                 , intent(in)                        :: coffset(rank(array))
     end subroutine
 #endif
@@ -2379,10 +2379,10 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCoreHaloArr_D3_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)                , intent(out)   , contiguous        :: array(:,:,:)
-        integer(IKC)                , intent(in)    , contiguous        :: core(:,:,:)
-        integer(IKC)                , intent(in)                        :: halo
+        use pm_kind, only: IKG => IK2
+        integer(IKG)                , intent(out)   , contiguous        :: array(:,:,:)
+        integer(IKG)                , intent(in)    , contiguous        :: core(:,:,:)
+        integer(IKG)                , intent(in)                        :: halo
         integer(IK)                 , intent(in)                        :: coffset(rank(array))
     end subroutine
 #endif
@@ -2392,10 +2392,10 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCoreHaloArr_D3_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)                , intent(out)   , contiguous        :: array(:,:,:)
-        integer(IKC)                , intent(in)    , contiguous        :: core(:,:,:)
-        integer(IKC)                , intent(in)                        :: halo
+        use pm_kind, only: IKG => IK1
+        integer(IKG)                , intent(out)   , contiguous        :: array(:,:,:)
+        integer(IKG)                , intent(in)    , contiguous        :: core(:,:,:)
+        integer(IKG)                , intent(in)                        :: halo
         integer(IK)                 , intent(in)                        :: coffset(rank(array))
     end subroutine
 #endif
@@ -2407,10 +2407,10 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCoreHaloArr_D3_LK5
 #endif
-        use pm_kind, only: LKC => LK5
-        logical(LKC)                , intent(out)   , contiguous        :: array(:,:,:)
-        logical(LKC)                , intent(in)    , contiguous        :: core(:,:,:)
-        logical(LKC)                , intent(in)                        :: halo
+        use pm_kind, only: LKG => LK5
+        logical(LKG)                , intent(out)   , contiguous        :: array(:,:,:)
+        logical(LKG)                , intent(in)    , contiguous        :: core(:,:,:)
+        logical(LKG)                , intent(in)                        :: halo
         integer(IK)                 , intent(in)                        :: coffset(rank(array))
     end subroutine
 #endif
@@ -2420,10 +2420,10 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCoreHaloArr_D3_LK4
 #endif
-        use pm_kind, only: LKC => LK4
-        logical(LKC)                , intent(out)   , contiguous        :: array(:,:,:)
-        logical(LKC)                , intent(in)    , contiguous        :: core(:,:,:)
-        logical(LKC)                , intent(in)                        :: halo
+        use pm_kind, only: LKG => LK4
+        logical(LKG)                , intent(out)   , contiguous        :: array(:,:,:)
+        logical(LKG)                , intent(in)    , contiguous        :: core(:,:,:)
+        logical(LKG)                , intent(in)                        :: halo
         integer(IK)                 , intent(in)                        :: coffset(rank(array))
     end subroutine
 #endif
@@ -2433,10 +2433,10 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCoreHaloArr_D3_LK3
 #endif
-        use pm_kind, only: LKC => LK3
-        logical(LKC)                , intent(out)   , contiguous        :: array(:,:,:)
-        logical(LKC)                , intent(in)    , contiguous        :: core(:,:,:)
-        logical(LKC)                , intent(in)                        :: halo
+        use pm_kind, only: LKG => LK3
+        logical(LKG)                , intent(out)   , contiguous        :: array(:,:,:)
+        logical(LKG)                , intent(in)    , contiguous        :: core(:,:,:)
+        logical(LKG)                , intent(in)                        :: halo
         integer(IK)                 , intent(in)                        :: coffset(rank(array))
     end subroutine
 #endif
@@ -2446,10 +2446,10 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCoreHaloArr_D3_LK2
 #endif
-        use pm_kind, only: LKC => LK2
-        logical(LKC)                , intent(out)   , contiguous        :: array(:,:,:)
-        logical(LKC)                , intent(in)    , contiguous        :: core(:,:,:)
-        logical(LKC)                , intent(in)                        :: halo
+        use pm_kind, only: LKG => LK2
+        logical(LKG)                , intent(out)   , contiguous        :: array(:,:,:)
+        logical(LKG)                , intent(in)    , contiguous        :: core(:,:,:)
+        logical(LKG)                , intent(in)                        :: halo
         integer(IK)                 , intent(in)                        :: coffset(rank(array))
     end subroutine
 #endif
@@ -2459,10 +2459,10 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCoreHaloArr_D3_LK1
 #endif
-        use pm_kind, only: LKC => LK1
-        logical(LKC)                , intent(out)   , contiguous        :: array(:,:,:)
-        logical(LKC)                , intent(in)    , contiguous        :: core(:,:,:)
-        logical(LKC)                , intent(in)                        :: halo
+        use pm_kind, only: LKG => LK1
+        logical(LKG)                , intent(out)   , contiguous        :: array(:,:,:)
+        logical(LKG)                , intent(in)    , contiguous        :: core(:,:,:)
+        logical(LKG)                , intent(in)                        :: halo
         integer(IK)                 , intent(in)                        :: coffset(rank(array))
     end subroutine
 #endif
@@ -2474,10 +2474,10 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCoreHaloArr_D3_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)                , intent(out)   , contiguous        :: array(:,:,:)
-        complex(CKC)                , intent(in)    , contiguous        :: core(:,:,:)
-        complex(CKC)                , intent(in)                        :: halo
+        use pm_kind, only: CKG => CK5
+        complex(CKG)                , intent(out)   , contiguous        :: array(:,:,:)
+        complex(CKG)                , intent(in)    , contiguous        :: core(:,:,:)
+        complex(CKG)                , intent(in)                        :: halo
         integer(IK)                 , intent(in)                        :: coffset(rank(array))
     end subroutine
 #endif
@@ -2487,10 +2487,10 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCoreHaloArr_D3_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)                , intent(out)   , contiguous        :: array(:,:,:)
-        complex(CKC)                , intent(in)    , contiguous        :: core(:,:,:)
-        complex(CKC)                , intent(in)                        :: halo
+        use pm_kind, only: CKG => CK4
+        complex(CKG)                , intent(out)   , contiguous        :: array(:,:,:)
+        complex(CKG)                , intent(in)    , contiguous        :: core(:,:,:)
+        complex(CKG)                , intent(in)                        :: halo
         integer(IK)                 , intent(in)                        :: coffset(rank(array))
     end subroutine
 #endif
@@ -2500,10 +2500,10 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCoreHaloArr_D3_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)                , intent(out)   , contiguous        :: array(:,:,:)
-        complex(CKC)                , intent(in)    , contiguous        :: core(:,:,:)
-        complex(CKC)                , intent(in)                        :: halo
+        use pm_kind, only: CKG => CK3
+        complex(CKG)                , intent(out)   , contiguous        :: array(:,:,:)
+        complex(CKG)                , intent(in)    , contiguous        :: core(:,:,:)
+        complex(CKG)                , intent(in)                        :: halo
         integer(IK)                 , intent(in)                        :: coffset(rank(array))
     end subroutine
 #endif
@@ -2513,10 +2513,10 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCoreHaloArr_D3_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)                , intent(out)   , contiguous        :: array(:,:,:)
-        complex(CKC)                , intent(in)    , contiguous        :: core(:,:,:)
-        complex(CKC)                , intent(in)                        :: halo
+        use pm_kind, only: CKG => CK2
+        complex(CKG)                , intent(out)   , contiguous        :: array(:,:,:)
+        complex(CKG)                , intent(in)    , contiguous        :: core(:,:,:)
+        complex(CKG)                , intent(in)                        :: halo
         integer(IK)                 , intent(in)                        :: coffset(rank(array))
     end subroutine
 #endif
@@ -2526,10 +2526,10 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCoreHaloArr_D3_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)                , intent(out)   , contiguous        :: array(:,:,:)
-        complex(CKC)                , intent(in)    , contiguous        :: core(:,:,:)
-        complex(CKC)                , intent(in)                        :: halo
+        use pm_kind, only: CKG => CK1
+        complex(CKG)                , intent(out)   , contiguous        :: array(:,:,:)
+        complex(CKG)                , intent(in)    , contiguous        :: core(:,:,:)
+        complex(CKG)                , intent(in)                        :: halo
         integer(IK)                 , intent(in)                        :: coffset(rank(array))
     end subroutine
 #endif
@@ -2541,10 +2541,10 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCoreHaloArr_D3_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)                   , intent(out)   , contiguous        :: array(:,:,:)
-        real(RKC)                   , intent(in)    , contiguous        :: core(:,:,:)
-        real(RKC)                   , intent(in)                        :: halo
+        use pm_kind, only: RKG => RK5
+        real(RKG)                   , intent(out)   , contiguous        :: array(:,:,:)
+        real(RKG)                   , intent(in)    , contiguous        :: core(:,:,:)
+        real(RKG)                   , intent(in)                        :: halo
         integer(IK)                 , intent(in)                        :: coffset(rank(array))
     end subroutine
 #endif
@@ -2554,10 +2554,10 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCoreHaloArr_D3_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)                   , intent(out)   , contiguous        :: array(:,:,:)
-        real(RKC)                   , intent(in)    , contiguous        :: core(:,:,:)
-        real(RKC)                   , intent(in)                        :: halo
+        use pm_kind, only: RKG => RK4
+        real(RKG)                   , intent(out)   , contiguous        :: array(:,:,:)
+        real(RKG)                   , intent(in)    , contiguous        :: core(:,:,:)
+        real(RKG)                   , intent(in)                        :: halo
         integer(IK)                 , intent(in)                        :: coffset(rank(array))
     end subroutine
 #endif
@@ -2567,10 +2567,10 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCoreHaloArr_D3_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)                   , intent(out)   , contiguous        :: array(:,:,:)
-        real(RKC)                   , intent(in)    , contiguous        :: core(:,:,:)
-        real(RKC)                   , intent(in)                        :: halo
+        use pm_kind, only: RKG => RK3
+        real(RKG)                   , intent(out)   , contiguous        :: array(:,:,:)
+        real(RKG)                   , intent(in)    , contiguous        :: core(:,:,:)
+        real(RKG)                   , intent(in)                        :: halo
         integer(IK)                 , intent(in)                        :: coffset(rank(array))
     end subroutine
 #endif
@@ -2580,10 +2580,10 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCoreHaloArr_D3_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)                   , intent(out)   , contiguous        :: array(:,:,:)
-        real(RKC)                   , intent(in)    , contiguous        :: core(:,:,:)
-        real(RKC)                   , intent(in)                        :: halo
+        use pm_kind, only: RKG => RK2
+        real(RKG)                   , intent(out)   , contiguous        :: array(:,:,:)
+        real(RKG)                   , intent(in)    , contiguous        :: core(:,:,:)
+        real(RKG)                   , intent(in)                        :: halo
         integer(IK)                 , intent(in)                        :: coffset(rank(array))
     end subroutine
 #endif
@@ -2593,10 +2593,10 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCoreHaloArr_D3_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)                   , intent(out)   , contiguous        :: array(:,:,:)
-        real(RKC)                   , intent(in)    , contiguous        :: core(:,:,:)
-        real(RKC)                   , intent(in)                        :: halo
+        use pm_kind, only: RKG => RK1
+        real(RKG)                   , intent(out)   , contiguous        :: array(:,:,:)
+        real(RKG)                   , intent(in)    , contiguous        :: core(:,:,:)
+        real(RKG)                   , intent(in)                        :: halo
         integer(IK)                 , intent(in)                        :: coffset(rank(array))
     end subroutine
 #endif
@@ -2621,10 +2621,10 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCoreHaloSca_D0_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)            , intent(out)                       :: array
-        character(1,SKC)            , intent(in)                        :: core
-        character(1,SKC)            , intent(in)                        :: halo
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)            , intent(out)                       :: array
+        character(1,SKG)            , intent(in)                        :: core
+        character(1,SKG)            , intent(in)                        :: halo
         integer(IK)                 , intent(in)                        :: coffset, csize
     end subroutine
 #endif
@@ -2634,10 +2634,10 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCoreHaloSca_D0_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)            , intent(out)                       :: array
-        character(1,SKC)            , intent(in)                        :: core
-        character(1,SKC)            , intent(in)                        :: halo
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)            , intent(out)                       :: array
+        character(1,SKG)            , intent(in)                        :: core
+        character(1,SKG)            , intent(in)                        :: halo
         integer(IK)                 , intent(in)                        :: coffset, csize
     end subroutine
 #endif
@@ -2647,10 +2647,10 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCoreHaloSca_D0_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)            , intent(out)                       :: array
-        character(1,SKC)            , intent(in)                        :: core
-        character(1,SKC)            , intent(in)                        :: halo
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)            , intent(out)                       :: array
+        character(1,SKG)            , intent(in)                        :: core
+        character(1,SKG)            , intent(in)                        :: halo
         integer(IK)                 , intent(in)                        :: coffset, csize
     end subroutine
 #endif
@@ -2660,10 +2660,10 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCoreHaloSca_D0_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)            , intent(out)                       :: array
-        character(1,SKC)            , intent(in)                        :: core
-        character(1,SKC)            , intent(in)                        :: halo
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)            , intent(out)                       :: array
+        character(1,SKG)            , intent(in)                        :: core
+        character(1,SKG)            , intent(in)                        :: halo
         integer(IK)                 , intent(in)                        :: coffset, csize
     end subroutine
 #endif
@@ -2673,10 +2673,10 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCoreHaloSca_D0_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)            , intent(out)                       :: array
-        character(1,SKC)            , intent(in)                        :: core
-        character(1,SKC)            , intent(in)                        :: halo
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)            , intent(out)                       :: array
+        character(1,SKG)            , intent(in)                        :: core
+        character(1,SKG)            , intent(in)                        :: halo
         integer(IK)                 , intent(in)                        :: coffset, csize
     end subroutine
 #endif
@@ -2694,10 +2694,10 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCoreHaloSca_D1_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)            , intent(out)   , contiguous        :: array(:)
-        character(*,SKC)            , intent(in)                        :: core
-        character(*,SKC)            , intent(in)                        :: halo
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)            , intent(out)   , contiguous        :: array(:)
+        character(*,SKG)            , intent(in)                        :: core
+        character(*,SKG)            , intent(in)                        :: halo
         integer(IK)                 , intent(in)                        :: coffset, csize
     end subroutine
 #endif
@@ -2707,10 +2707,10 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCoreHaloSca_D1_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)            , intent(out)   , contiguous        :: array(:)
-        character(*,SKC)            , intent(in)                        :: core
-        character(*,SKC)            , intent(in)                        :: halo
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)            , intent(out)   , contiguous        :: array(:)
+        character(*,SKG)            , intent(in)                        :: core
+        character(*,SKG)            , intent(in)                        :: halo
         integer(IK)                 , intent(in)                        :: coffset, csize
     end subroutine
 #endif
@@ -2720,10 +2720,10 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCoreHaloSca_D1_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)            , intent(out)   , contiguous        :: array(:)
-        character(*,SKC)            , intent(in)                        :: core
-        character(*,SKC)            , intent(in)                        :: halo
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)            , intent(out)   , contiguous        :: array(:)
+        character(*,SKG)            , intent(in)                        :: core
+        character(*,SKG)            , intent(in)                        :: halo
         integer(IK)                 , intent(in)                        :: coffset, csize
     end subroutine
 #endif
@@ -2733,10 +2733,10 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCoreHaloSca_D1_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)            , intent(out)   , contiguous        :: array(:)
-        character(*,SKC)            , intent(in)                        :: core
-        character(*,SKC)            , intent(in)                        :: halo
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)            , intent(out)   , contiguous        :: array(:)
+        character(*,SKG)            , intent(in)                        :: core
+        character(*,SKG)            , intent(in)                        :: halo
         integer(IK)                 , intent(in)                        :: coffset, csize
     end subroutine
 #endif
@@ -2746,10 +2746,10 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCoreHaloSca_D1_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)            , intent(out)   , contiguous        :: array(:)
-        character(*,SKC)            , intent(in)                        :: core
-        character(*,SKC)            , intent(in)                        :: halo
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)            , intent(out)   , contiguous        :: array(:)
+        character(*,SKG)            , intent(in)                        :: core
+        character(*,SKG)            , intent(in)                        :: halo
         integer(IK)                 , intent(in)                        :: coffset, csize
     end subroutine
 #endif
@@ -2761,10 +2761,10 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCoreHaloSca_D1_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)                , intent(out)   , contiguous        :: array(:)
-        integer(IKC)                , intent(in)                        :: core
-        integer(IKC)                , intent(in)                        :: halo
+        use pm_kind, only: IKG => IK5
+        integer(IKG)                , intent(out)   , contiguous        :: array(:)
+        integer(IKG)                , intent(in)                        :: core
+        integer(IKG)                , intent(in)                        :: halo
         integer(IK)                 , intent(in)                        :: coffset, csize
     end subroutine
 #endif
@@ -2774,10 +2774,10 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCoreHaloSca_D1_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)                , intent(out)   , contiguous        :: array(:)
-        integer(IKC)                , intent(in)                        :: core
-        integer(IKC)                , intent(in)                        :: halo
+        use pm_kind, only: IKG => IK4
+        integer(IKG)                , intent(out)   , contiguous        :: array(:)
+        integer(IKG)                , intent(in)                        :: core
+        integer(IKG)                , intent(in)                        :: halo
         integer(IK)                 , intent(in)                        :: coffset, csize
     end subroutine
 #endif
@@ -2787,10 +2787,10 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCoreHaloSca_D1_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)                , intent(out)   , contiguous        :: array(:)
-        integer(IKC)                , intent(in)                        :: core
-        integer(IKC)                , intent(in)                        :: halo
+        use pm_kind, only: IKG => IK3
+        integer(IKG)                , intent(out)   , contiguous        :: array(:)
+        integer(IKG)                , intent(in)                        :: core
+        integer(IKG)                , intent(in)                        :: halo
         integer(IK)                 , intent(in)                        :: coffset, csize
     end subroutine
 #endif
@@ -2800,10 +2800,10 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCoreHaloSca_D1_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)                , intent(out)   , contiguous        :: array(:)
-        integer(IKC)                , intent(in)                        :: core
-        integer(IKC)                , intent(in)                        :: halo
+        use pm_kind, only: IKG => IK2
+        integer(IKG)                , intent(out)   , contiguous        :: array(:)
+        integer(IKG)                , intent(in)                        :: core
+        integer(IKG)                , intent(in)                        :: halo
         integer(IK)                 , intent(in)                        :: coffset, csize
     end subroutine
 #endif
@@ -2813,10 +2813,10 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCoreHaloSca_D1_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)                , intent(out)   , contiguous        :: array(:)
-        integer(IKC)                , intent(in)                        :: core
-        integer(IKC)                , intent(in)                        :: halo
+        use pm_kind, only: IKG => IK1
+        integer(IKG)                , intent(out)   , contiguous        :: array(:)
+        integer(IKG)                , intent(in)                        :: core
+        integer(IKG)                , intent(in)                        :: halo
         integer(IK)                 , intent(in)                        :: coffset, csize
     end subroutine
 #endif
@@ -2828,10 +2828,10 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCoreHaloSca_D1_LK5
 #endif
-        use pm_kind, only: LKC => LK5
-        logical(LKC)                , intent(out)   , contiguous        :: array(:)
-        logical(LKC)                , intent(in)                        :: core
-        logical(LKC)                , intent(in)                        :: halo
+        use pm_kind, only: LKG => LK5
+        logical(LKG)                , intent(out)   , contiguous        :: array(:)
+        logical(LKG)                , intent(in)                        :: core
+        logical(LKG)                , intent(in)                        :: halo
         integer(IK)                 , intent(in)                        :: coffset, csize
     end subroutine
 #endif
@@ -2841,10 +2841,10 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCoreHaloSca_D1_LK4
 #endif
-        use pm_kind, only: LKC => LK4
-        logical(LKC)                , intent(out)   , contiguous        :: array(:)
-        logical(LKC)                , intent(in)                        :: core
-        logical(LKC)                , intent(in)                        :: halo
+        use pm_kind, only: LKG => LK4
+        logical(LKG)                , intent(out)   , contiguous        :: array(:)
+        logical(LKG)                , intent(in)                        :: core
+        logical(LKG)                , intent(in)                        :: halo
         integer(IK)                 , intent(in)                        :: coffset, csize
     end subroutine
 #endif
@@ -2854,10 +2854,10 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCoreHaloSca_D1_LK3
 #endif
-        use pm_kind, only: LKC => LK3
-        logical(LKC)                , intent(out)   , contiguous        :: array(:)
-        logical(LKC)                , intent(in)                        :: core
-        logical(LKC)                , intent(in)                        :: halo
+        use pm_kind, only: LKG => LK3
+        logical(LKG)                , intent(out)   , contiguous        :: array(:)
+        logical(LKG)                , intent(in)                        :: core
+        logical(LKG)                , intent(in)                        :: halo
         integer(IK)                 , intent(in)                        :: coffset, csize
     end subroutine
 #endif
@@ -2867,10 +2867,10 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCoreHaloSca_D1_LK2
 #endif
-        use pm_kind, only: LKC => LK2
-        logical(LKC)                , intent(out)   , contiguous        :: array(:)
-        logical(LKC)                , intent(in)                        :: core
-        logical(LKC)                , intent(in)                        :: halo
+        use pm_kind, only: LKG => LK2
+        logical(LKG)                , intent(out)   , contiguous        :: array(:)
+        logical(LKG)                , intent(in)                        :: core
+        logical(LKG)                , intent(in)                        :: halo
         integer(IK)                 , intent(in)                        :: coffset, csize
     end subroutine
 #endif
@@ -2880,10 +2880,10 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCoreHaloSca_D1_LK1
 #endif
-        use pm_kind, only: LKC => LK1
-        logical(LKC)                , intent(out)   , contiguous        :: array(:)
-        logical(LKC)                , intent(in)                        :: core
-        logical(LKC)                , intent(in)                        :: halo
+        use pm_kind, only: LKG => LK1
+        logical(LKG)                , intent(out)   , contiguous        :: array(:)
+        logical(LKG)                , intent(in)                        :: core
+        logical(LKG)                , intent(in)                        :: halo
         integer(IK)                 , intent(in)                        :: coffset, csize
     end subroutine
 #endif
@@ -2895,10 +2895,10 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCoreHaloSca_D1_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)                , intent(out)   , contiguous        :: array(:)
-        complex(CKC)                , intent(in)                        :: core
-        complex(CKC)                , intent(in)                        :: halo
+        use pm_kind, only: CKG => CK5
+        complex(CKG)                , intent(out)   , contiguous        :: array(:)
+        complex(CKG)                , intent(in)                        :: core
+        complex(CKG)                , intent(in)                        :: halo
         integer(IK)                 , intent(in)                        :: coffset, csize
     end subroutine
 #endif
@@ -2908,10 +2908,10 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCoreHaloSca_D1_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)                , intent(out)   , contiguous        :: array(:)
-        complex(CKC)                , intent(in)                        :: core
-        complex(CKC)                , intent(in)                        :: halo
+        use pm_kind, only: CKG => CK4
+        complex(CKG)                , intent(out)   , contiguous        :: array(:)
+        complex(CKG)                , intent(in)                        :: core
+        complex(CKG)                , intent(in)                        :: halo
         integer(IK)                 , intent(in)                        :: coffset, csize
     end subroutine
 #endif
@@ -2921,10 +2921,10 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCoreHaloSca_D1_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)                , intent(out)   , contiguous        :: array(:)
-        complex(CKC)                , intent(in)                        :: core
-        complex(CKC)                , intent(in)                        :: halo
+        use pm_kind, only: CKG => CK3
+        complex(CKG)                , intent(out)   , contiguous        :: array(:)
+        complex(CKG)                , intent(in)                        :: core
+        complex(CKG)                , intent(in)                        :: halo
         integer(IK)                 , intent(in)                        :: coffset, csize
     end subroutine
 #endif
@@ -2934,10 +2934,10 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCoreHaloSca_D1_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)                , intent(out)   , contiguous        :: array(:)
-        complex(CKC)                , intent(in)                        :: core
-        complex(CKC)                , intent(in)                        :: halo
+        use pm_kind, only: CKG => CK2
+        complex(CKG)                , intent(out)   , contiguous        :: array(:)
+        complex(CKG)                , intent(in)                        :: core
+        complex(CKG)                , intent(in)                        :: halo
         integer(IK)                 , intent(in)                        :: coffset, csize
     end subroutine
 #endif
@@ -2947,10 +2947,10 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCoreHaloSca_D1_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)                , intent(out)   , contiguous        :: array(:)
-        complex(CKC)                , intent(in)                        :: core
-        complex(CKC)                , intent(in)                        :: halo
+        use pm_kind, only: CKG => CK1
+        complex(CKG)                , intent(out)   , contiguous        :: array(:)
+        complex(CKG)                , intent(in)                        :: core
+        complex(CKG)                , intent(in)                        :: halo
         integer(IK)                 , intent(in)                        :: coffset, csize
     end subroutine
 #endif
@@ -2962,10 +2962,10 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCoreHaloSca_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)                   , intent(out)   , contiguous        :: array(:)
-        real(RKC)                   , intent(in)                        :: core
-        real(RKC)                   , intent(in)                        :: halo
+        use pm_kind, only: RKG => RK5
+        real(RKG)                   , intent(out)   , contiguous        :: array(:)
+        real(RKG)                   , intent(in)                        :: core
+        real(RKG)                   , intent(in)                        :: halo
         integer(IK)                 , intent(in)                        :: coffset, csize
     end subroutine
 #endif
@@ -2975,10 +2975,10 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCoreHaloSca_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)                   , intent(out)   , contiguous        :: array(:)
-        real(RKC)                   , intent(in)                        :: core
-        real(RKC)                   , intent(in)                        :: halo
+        use pm_kind, only: RKG => RK4
+        real(RKG)                   , intent(out)   , contiguous        :: array(:)
+        real(RKG)                   , intent(in)                        :: core
+        real(RKG)                   , intent(in)                        :: halo
         integer(IK)                 , intent(in)                        :: coffset, csize
     end subroutine
 #endif
@@ -2988,10 +2988,10 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCoreHaloSca_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)                   , intent(out)   , contiguous        :: array(:)
-        real(RKC)                   , intent(in)                        :: core
-        real(RKC)                   , intent(in)                        :: halo
+        use pm_kind, only: RKG => RK3
+        real(RKG)                   , intent(out)   , contiguous        :: array(:)
+        real(RKG)                   , intent(in)                        :: core
+        real(RKG)                   , intent(in)                        :: halo
         integer(IK)                 , intent(in)                        :: coffset, csize
     end subroutine
 #endif
@@ -3001,10 +3001,10 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCoreHaloSca_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)                   , intent(out)   , contiguous        :: array(:)
-        real(RKC)                   , intent(in)                        :: core
-        real(RKC)                   , intent(in)                        :: halo
+        use pm_kind, only: RKG => RK2
+        real(RKG)                   , intent(out)   , contiguous        :: array(:)
+        real(RKG)                   , intent(in)                        :: core
+        real(RKG)                   , intent(in)                        :: halo
         integer(IK)                 , intent(in)                        :: coffset, csize
     end subroutine
 #endif
@@ -3014,10 +3014,10 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCoreHaloSca_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)                   , intent(out)   , contiguous        :: array(:)
-        real(RKC)                   , intent(in)                        :: core
-        real(RKC)                   , intent(in)                        :: halo
+        use pm_kind, only: RKG => RK1
+        real(RKG)                   , intent(out)   , contiguous        :: array(:)
+        real(RKG)                   , intent(in)                        :: core
+        real(RKG)                   , intent(in)                        :: halo
         integer(IK)                 , intent(in)                        :: coffset, csize
     end subroutine
 #endif
@@ -3035,10 +3035,10 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCoreHaloSca_D2_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)            , intent(out)   , contiguous        :: array(:,:)
-        character(*,SKC)            , intent(in)                        :: core
-        character(*,SKC)            , intent(in)                        :: halo
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)            , intent(out)   , contiguous        :: array(:,:)
+        character(*,SKG)            , intent(in)                        :: core
+        character(*,SKG)            , intent(in)                        :: halo
         integer(IK)                 , intent(in)                        :: coffset(rank(array)), csize(rank(array))
     end subroutine
 #endif
@@ -3048,10 +3048,10 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCoreHaloSca_D2_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)            , intent(out)   , contiguous        :: array(:,:)
-        character(*,SKC)            , intent(in)                        :: core
-        character(*,SKC)            , intent(in)                        :: halo
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)            , intent(out)   , contiguous        :: array(:,:)
+        character(*,SKG)            , intent(in)                        :: core
+        character(*,SKG)            , intent(in)                        :: halo
         integer(IK)                 , intent(in)                        :: coffset(rank(array)), csize(rank(array))
     end subroutine
 #endif
@@ -3061,10 +3061,10 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCoreHaloSca_D2_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)            , intent(out)   , contiguous        :: array(:,:)
-        character(*,SKC)            , intent(in)                        :: core
-        character(*,SKC)            , intent(in)                        :: halo
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)            , intent(out)   , contiguous        :: array(:,:)
+        character(*,SKG)            , intent(in)                        :: core
+        character(*,SKG)            , intent(in)                        :: halo
         integer(IK)                 , intent(in)                        :: coffset(rank(array)), csize(rank(array))
     end subroutine
 #endif
@@ -3074,10 +3074,10 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCoreHaloSca_D2_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)            , intent(out)   , contiguous        :: array(:,:)
-        character(*,SKC)            , intent(in)                        :: core
-        character(*,SKC)            , intent(in)                        :: halo
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)            , intent(out)   , contiguous        :: array(:,:)
+        character(*,SKG)            , intent(in)                        :: core
+        character(*,SKG)            , intent(in)                        :: halo
         integer(IK)                 , intent(in)                        :: coffset(rank(array)), csize(rank(array))
     end subroutine
 #endif
@@ -3087,10 +3087,10 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCoreHaloSca_D2_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)            , intent(out)   , contiguous        :: array(:,:)
-        character(*,SKC)            , intent(in)                        :: core
-        character(*,SKC)            , intent(in)                        :: halo
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)            , intent(out)   , contiguous        :: array(:,:)
+        character(*,SKG)            , intent(in)                        :: core
+        character(*,SKG)            , intent(in)                        :: halo
         integer(IK)                 , intent(in)                        :: coffset(rank(array)), csize(rank(array))
     end subroutine
 #endif
@@ -3102,10 +3102,10 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCoreHaloSca_D2_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)                , intent(out)   , contiguous        :: array(:,:)
-        integer(IKC)                , intent(in)                        :: core
-        integer(IKC)                , intent(in)                        :: halo
+        use pm_kind, only: IKG => IK5
+        integer(IKG)                , intent(out)   , contiguous        :: array(:,:)
+        integer(IKG)                , intent(in)                        :: core
+        integer(IKG)                , intent(in)                        :: halo
         integer(IK)                 , intent(in)                        :: coffset(rank(array)), csize(rank(array))
     end subroutine
 #endif
@@ -3115,10 +3115,10 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCoreHaloSca_D2_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)                , intent(out)   , contiguous        :: array(:,:)
-        integer(IKC)                , intent(in)                        :: core
-        integer(IKC)                , intent(in)                        :: halo
+        use pm_kind, only: IKG => IK4
+        integer(IKG)                , intent(out)   , contiguous        :: array(:,:)
+        integer(IKG)                , intent(in)                        :: core
+        integer(IKG)                , intent(in)                        :: halo
         integer(IK)                 , intent(in)                        :: coffset(rank(array)), csize(rank(array))
     end subroutine
 #endif
@@ -3128,10 +3128,10 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCoreHaloSca_D2_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)                , intent(out)   , contiguous        :: array(:,:)
-        integer(IKC)                , intent(in)                        :: core
-        integer(IKC)                , intent(in)                        :: halo
+        use pm_kind, only: IKG => IK3
+        integer(IKG)                , intent(out)   , contiguous        :: array(:,:)
+        integer(IKG)                , intent(in)                        :: core
+        integer(IKG)                , intent(in)                        :: halo
         integer(IK)                 , intent(in)                        :: coffset(rank(array)), csize(rank(array))
     end subroutine
 #endif
@@ -3141,10 +3141,10 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCoreHaloSca_D2_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)                , intent(out)   , contiguous        :: array(:,:)
-        integer(IKC)                , intent(in)                        :: core
-        integer(IKC)                , intent(in)                        :: halo
+        use pm_kind, only: IKG => IK2
+        integer(IKG)                , intent(out)   , contiguous        :: array(:,:)
+        integer(IKG)                , intent(in)                        :: core
+        integer(IKG)                , intent(in)                        :: halo
         integer(IK)                 , intent(in)                        :: coffset(rank(array)), csize(rank(array))
     end subroutine
 #endif
@@ -3154,10 +3154,10 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCoreHaloSca_D2_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)                , intent(out)   , contiguous        :: array(:,:)
-        integer(IKC)                , intent(in)                        :: core
-        integer(IKC)                , intent(in)                        :: halo
+        use pm_kind, only: IKG => IK1
+        integer(IKG)                , intent(out)   , contiguous        :: array(:,:)
+        integer(IKG)                , intent(in)                        :: core
+        integer(IKG)                , intent(in)                        :: halo
         integer(IK)                 , intent(in)                        :: coffset(rank(array)), csize(rank(array))
     end subroutine
 #endif
@@ -3169,10 +3169,10 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCoreHaloSca_D2_LK5
 #endif
-        use pm_kind, only: LKC => LK5
-        logical(LKC)                , intent(out)   , contiguous        :: array(:,:)
-        logical(LKC)                , intent(in)                        :: core
-        logical(LKC)                , intent(in)                        :: halo
+        use pm_kind, only: LKG => LK5
+        logical(LKG)                , intent(out)   , contiguous        :: array(:,:)
+        logical(LKG)                , intent(in)                        :: core
+        logical(LKG)                , intent(in)                        :: halo
         integer(IK)                 , intent(in)                        :: coffset(rank(array)), csize(rank(array))
     end subroutine
 #endif
@@ -3182,10 +3182,10 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCoreHaloSca_D2_LK4
 #endif
-        use pm_kind, only: LKC => LK4
-        logical(LKC)                , intent(out)   , contiguous        :: array(:,:)
-        logical(LKC)                , intent(in)                        :: core
-        logical(LKC)                , intent(in)                        :: halo
+        use pm_kind, only: LKG => LK4
+        logical(LKG)                , intent(out)   , contiguous        :: array(:,:)
+        logical(LKG)                , intent(in)                        :: core
+        logical(LKG)                , intent(in)                        :: halo
         integer(IK)                 , intent(in)                        :: coffset(rank(array)), csize(rank(array))
     end subroutine
 #endif
@@ -3195,10 +3195,10 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCoreHaloSca_D2_LK3
 #endif
-        use pm_kind, only: LKC => LK3
-        logical(LKC)                , intent(out)   , contiguous        :: array(:,:)
-        logical(LKC)                , intent(in)                        :: core
-        logical(LKC)                , intent(in)                        :: halo
+        use pm_kind, only: LKG => LK3
+        logical(LKG)                , intent(out)   , contiguous        :: array(:,:)
+        logical(LKG)                , intent(in)                        :: core
+        logical(LKG)                , intent(in)                        :: halo
         integer(IK)                 , intent(in)                        :: coffset(rank(array)), csize(rank(array))
     end subroutine
 #endif
@@ -3208,10 +3208,10 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCoreHaloSca_D2_LK2
 #endif
-        use pm_kind, only: LKC => LK2
-        logical(LKC)                , intent(out)   , contiguous        :: array(:,:)
-        logical(LKC)                , intent(in)                        :: core
-        logical(LKC)                , intent(in)                        :: halo
+        use pm_kind, only: LKG => LK2
+        logical(LKG)                , intent(out)   , contiguous        :: array(:,:)
+        logical(LKG)                , intent(in)                        :: core
+        logical(LKG)                , intent(in)                        :: halo
         integer(IK)                 , intent(in)                        :: coffset(rank(array)), csize(rank(array))
     end subroutine
 #endif
@@ -3221,10 +3221,10 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCoreHaloSca_D2_LK1
 #endif
-        use pm_kind, only: LKC => LK1
-        logical(LKC)                , intent(out)   , contiguous        :: array(:,:)
-        logical(LKC)                , intent(in)                        :: core
-        logical(LKC)                , intent(in)                        :: halo
+        use pm_kind, only: LKG => LK1
+        logical(LKG)                , intent(out)   , contiguous        :: array(:,:)
+        logical(LKG)                , intent(in)                        :: core
+        logical(LKG)                , intent(in)                        :: halo
         integer(IK)                 , intent(in)                        :: coffset(rank(array)), csize(rank(array))
     end subroutine
 #endif
@@ -3236,10 +3236,10 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCoreHaloSca_D2_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)                , intent(out)   , contiguous        :: array(:,:)
-        complex(CKC)                , intent(in)                        :: core
-        complex(CKC)                , intent(in)                        :: halo
+        use pm_kind, only: CKG => CK5
+        complex(CKG)                , intent(out)   , contiguous        :: array(:,:)
+        complex(CKG)                , intent(in)                        :: core
+        complex(CKG)                , intent(in)                        :: halo
         integer(IK)                 , intent(in)                        :: coffset(rank(array)), csize(rank(array))
     end subroutine
 #endif
@@ -3249,10 +3249,10 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCoreHaloSca_D2_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)                , intent(out)   , contiguous        :: array(:,:)
-        complex(CKC)                , intent(in)                        :: core
-        complex(CKC)                , intent(in)                        :: halo
+        use pm_kind, only: CKG => CK4
+        complex(CKG)                , intent(out)   , contiguous        :: array(:,:)
+        complex(CKG)                , intent(in)                        :: core
+        complex(CKG)                , intent(in)                        :: halo
         integer(IK)                 , intent(in)                        :: coffset(rank(array)), csize(rank(array))
     end subroutine
 #endif
@@ -3262,10 +3262,10 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCoreHaloSca_D2_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)                , intent(out)   , contiguous        :: array(:,:)
-        complex(CKC)                , intent(in)                        :: core
-        complex(CKC)                , intent(in)                        :: halo
+        use pm_kind, only: CKG => CK3
+        complex(CKG)                , intent(out)   , contiguous        :: array(:,:)
+        complex(CKG)                , intent(in)                        :: core
+        complex(CKG)                , intent(in)                        :: halo
         integer(IK)                 , intent(in)                        :: coffset(rank(array)), csize(rank(array))
     end subroutine
 #endif
@@ -3275,10 +3275,10 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCoreHaloSca_D2_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)                , intent(out)   , contiguous        :: array(:,:)
-        complex(CKC)                , intent(in)                        :: core
-        complex(CKC)                , intent(in)                        :: halo
+        use pm_kind, only: CKG => CK2
+        complex(CKG)                , intent(out)   , contiguous        :: array(:,:)
+        complex(CKG)                , intent(in)                        :: core
+        complex(CKG)                , intent(in)                        :: halo
         integer(IK)                 , intent(in)                        :: coffset(rank(array)), csize(rank(array))
     end subroutine
 #endif
@@ -3288,10 +3288,10 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCoreHaloSca_D2_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)                , intent(out)   , contiguous        :: array(:,:)
-        complex(CKC)                , intent(in)                        :: core
-        complex(CKC)                , intent(in)                        :: halo
+        use pm_kind, only: CKG => CK1
+        complex(CKG)                , intent(out)   , contiguous        :: array(:,:)
+        complex(CKG)                , intent(in)                        :: core
+        complex(CKG)                , intent(in)                        :: halo
         integer(IK)                 , intent(in)                        :: coffset(rank(array)), csize(rank(array))
     end subroutine
 #endif
@@ -3303,10 +3303,10 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCoreHaloSca_D2_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)                   , intent(out)   , contiguous        :: array(:,:)
-        real(RKC)                   , intent(in)                        :: core
-        real(RKC)                   , intent(in)                        :: halo
+        use pm_kind, only: RKG => RK5
+        real(RKG)                   , intent(out)   , contiguous        :: array(:,:)
+        real(RKG)                   , intent(in)                        :: core
+        real(RKG)                   , intent(in)                        :: halo
         integer(IK)                 , intent(in)                        :: coffset(rank(array)), csize(rank(array))
     end subroutine
 #endif
@@ -3316,10 +3316,10 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCoreHaloSca_D2_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)                   , intent(out)   , contiguous        :: array(:,:)
-        real(RKC)                   , intent(in)                        :: core
-        real(RKC)                   , intent(in)                        :: halo
+        use pm_kind, only: RKG => RK4
+        real(RKG)                   , intent(out)   , contiguous        :: array(:,:)
+        real(RKG)                   , intent(in)                        :: core
+        real(RKG)                   , intent(in)                        :: halo
         integer(IK)                 , intent(in)                        :: coffset(rank(array)), csize(rank(array))
     end subroutine
 #endif
@@ -3329,10 +3329,10 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCoreHaloSca_D2_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)                   , intent(out)   , contiguous        :: array(:,:)
-        real(RKC)                   , intent(in)                        :: core
-        real(RKC)                   , intent(in)                        :: halo
+        use pm_kind, only: RKG => RK3
+        real(RKG)                   , intent(out)   , contiguous        :: array(:,:)
+        real(RKG)                   , intent(in)                        :: core
+        real(RKG)                   , intent(in)                        :: halo
         integer(IK)                 , intent(in)                        :: coffset(rank(array)), csize(rank(array))
     end subroutine
 #endif
@@ -3342,10 +3342,10 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCoreHaloSca_D2_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)                   , intent(out)   , contiguous        :: array(:,:)
-        real(RKC)                   , intent(in)                        :: core
-        real(RKC)                   , intent(in)                        :: halo
+        use pm_kind, only: RKG => RK2
+        real(RKG)                   , intent(out)   , contiguous        :: array(:,:)
+        real(RKG)                   , intent(in)                        :: core
+        real(RKG)                   , intent(in)                        :: halo
         integer(IK)                 , intent(in)                        :: coffset(rank(array)), csize(rank(array))
     end subroutine
 #endif
@@ -3355,10 +3355,10 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCoreHaloSca_D2_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)                   , intent(out)   , contiguous        :: array(:,:)
-        real(RKC)                   , intent(in)                        :: core
-        real(RKC)                   , intent(in)                        :: halo
+        use pm_kind, only: RKG => RK1
+        real(RKG)                   , intent(out)   , contiguous        :: array(:,:)
+        real(RKG)                   , intent(in)                        :: core
+        real(RKG)                   , intent(in)                        :: halo
         integer(IK)                 , intent(in)                        :: coffset(rank(array)), csize(rank(array))
     end subroutine
 #endif
@@ -3376,10 +3376,10 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCoreHaloSca_D3_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)            , intent(out)   , contiguous        :: array(:,:,:)
-        character(*,SKC)            , intent(in)                        :: core
-        character(*,SKC)            , intent(in)                        :: halo
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)            , intent(out)   , contiguous        :: array(:,:,:)
+        character(*,SKG)            , intent(in)                        :: core
+        character(*,SKG)            , intent(in)                        :: halo
         integer(IK)                 , intent(in)                        :: coffset(rank(array)), csize(rank(array))
     end subroutine
 #endif
@@ -3389,10 +3389,10 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCoreHaloSca_D3_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)            , intent(out)   , contiguous        :: array(:,:,:)
-        character(*,SKC)            , intent(in)                        :: core
-        character(*,SKC)            , intent(in)                        :: halo
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)            , intent(out)   , contiguous        :: array(:,:,:)
+        character(*,SKG)            , intent(in)                        :: core
+        character(*,SKG)            , intent(in)                        :: halo
         integer(IK)                 , intent(in)                        :: coffset(rank(array)), csize(rank(array))
     end subroutine
 #endif
@@ -3402,10 +3402,10 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCoreHaloSca_D3_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)            , intent(out)   , contiguous        :: array(:,:,:)
-        character(*,SKC)            , intent(in)                        :: core
-        character(*,SKC)            , intent(in)                        :: halo
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)            , intent(out)   , contiguous        :: array(:,:,:)
+        character(*,SKG)            , intent(in)                        :: core
+        character(*,SKG)            , intent(in)                        :: halo
         integer(IK)                 , intent(in)                        :: coffset(rank(array)), csize(rank(array))
     end subroutine
 #endif
@@ -3415,10 +3415,10 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCoreHaloSca_D3_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)            , intent(out)   , contiguous        :: array(:,:,:)
-        character(*,SKC)            , intent(in)                        :: core
-        character(*,SKC)            , intent(in)                        :: halo
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)            , intent(out)   , contiguous        :: array(:,:,:)
+        character(*,SKG)            , intent(in)                        :: core
+        character(*,SKG)            , intent(in)                        :: halo
         integer(IK)                 , intent(in)                        :: coffset(rank(array)), csize(rank(array))
     end subroutine
 #endif
@@ -3428,10 +3428,10 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCoreHaloSca_D3_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)            , intent(out)   , contiguous        :: array(:,:,:)
-        character(*,SKC)            , intent(in)                        :: core
-        character(*,SKC)            , intent(in)                        :: halo
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)            , intent(out)   , contiguous        :: array(:,:,:)
+        character(*,SKG)            , intent(in)                        :: core
+        character(*,SKG)            , intent(in)                        :: halo
         integer(IK)                 , intent(in)                        :: coffset(rank(array)), csize(rank(array))
     end subroutine
 #endif
@@ -3443,10 +3443,10 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCoreHaloSca_D3_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)                , intent(out)   , contiguous        :: array(:,:,:)
-        integer(IKC)                , intent(in)                        :: core
-        integer(IKC)                , intent(in)                        :: halo
+        use pm_kind, only: IKG => IK5
+        integer(IKG)                , intent(out)   , contiguous        :: array(:,:,:)
+        integer(IKG)                , intent(in)                        :: core
+        integer(IKG)                , intent(in)                        :: halo
         integer(IK)                 , intent(in)                        :: coffset(rank(array)), csize(rank(array))
     end subroutine
 #endif
@@ -3456,10 +3456,10 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCoreHaloSca_D3_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)                , intent(out)   , contiguous        :: array(:,:,:)
-        integer(IKC)                , intent(in)                        :: core
-        integer(IKC)                , intent(in)                        :: halo
+        use pm_kind, only: IKG => IK4
+        integer(IKG)                , intent(out)   , contiguous        :: array(:,:,:)
+        integer(IKG)                , intent(in)                        :: core
+        integer(IKG)                , intent(in)                        :: halo
         integer(IK)                 , intent(in)                        :: coffset(rank(array)), csize(rank(array))
     end subroutine
 #endif
@@ -3469,10 +3469,10 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCoreHaloSca_D3_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)                , intent(out)   , contiguous        :: array(:,:,:)
-        integer(IKC)                , intent(in)                        :: core
-        integer(IKC)                , intent(in)                        :: halo
+        use pm_kind, only: IKG => IK3
+        integer(IKG)                , intent(out)   , contiguous        :: array(:,:,:)
+        integer(IKG)                , intent(in)                        :: core
+        integer(IKG)                , intent(in)                        :: halo
         integer(IK)                 , intent(in)                        :: coffset(rank(array)), csize(rank(array))
     end subroutine
 #endif
@@ -3482,10 +3482,10 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCoreHaloSca_D3_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)                , intent(out)   , contiguous        :: array(:,:,:)
-        integer(IKC)                , intent(in)                        :: core
-        integer(IKC)                , intent(in)                        :: halo
+        use pm_kind, only: IKG => IK2
+        integer(IKG)                , intent(out)   , contiguous        :: array(:,:,:)
+        integer(IKG)                , intent(in)                        :: core
+        integer(IKG)                , intent(in)                        :: halo
         integer(IK)                 , intent(in)                        :: coffset(rank(array)), csize(rank(array))
     end subroutine
 #endif
@@ -3495,10 +3495,10 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCoreHaloSca_D3_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)                , intent(out)   , contiguous        :: array(:,:,:)
-        integer(IKC)                , intent(in)                        :: core
-        integer(IKC)                , intent(in)                        :: halo
+        use pm_kind, only: IKG => IK1
+        integer(IKG)                , intent(out)   , contiguous        :: array(:,:,:)
+        integer(IKG)                , intent(in)                        :: core
+        integer(IKG)                , intent(in)                        :: halo
         integer(IK)                 , intent(in)                        :: coffset(rank(array)), csize(rank(array))
     end subroutine
 #endif
@@ -3510,10 +3510,10 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCoreHaloSca_D3_LK5
 #endif
-        use pm_kind, only: LKC => LK5
-        logical(LKC)                , intent(out)   , contiguous        :: array(:,:,:)
-        logical(LKC)                , intent(in)                        :: core
-        logical(LKC)                , intent(in)                        :: halo
+        use pm_kind, only: LKG => LK5
+        logical(LKG)                , intent(out)   , contiguous        :: array(:,:,:)
+        logical(LKG)                , intent(in)                        :: core
+        logical(LKG)                , intent(in)                        :: halo
         integer(IK)                 , intent(in)                        :: coffset(rank(array)), csize(rank(array))
     end subroutine
 #endif
@@ -3523,10 +3523,10 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCoreHaloSca_D3_LK4
 #endif
-        use pm_kind, only: LKC => LK4
-        logical(LKC)                , intent(out)   , contiguous        :: array(:,:,:)
-        logical(LKC)                , intent(in)                        :: core
-        logical(LKC)                , intent(in)                        :: halo
+        use pm_kind, only: LKG => LK4
+        logical(LKG)                , intent(out)   , contiguous        :: array(:,:,:)
+        logical(LKG)                , intent(in)                        :: core
+        logical(LKG)                , intent(in)                        :: halo
         integer(IK)                 , intent(in)                        :: coffset(rank(array)), csize(rank(array))
     end subroutine
 #endif
@@ -3536,10 +3536,10 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCoreHaloSca_D3_LK3
 #endif
-        use pm_kind, only: LKC => LK3
-        logical(LKC)                , intent(out)   , contiguous        :: array(:,:,:)
-        logical(LKC)                , intent(in)                        :: core
-        logical(LKC)                , intent(in)                        :: halo
+        use pm_kind, only: LKG => LK3
+        logical(LKG)                , intent(out)   , contiguous        :: array(:,:,:)
+        logical(LKG)                , intent(in)                        :: core
+        logical(LKG)                , intent(in)                        :: halo
         integer(IK)                 , intent(in)                        :: coffset(rank(array)), csize(rank(array))
     end subroutine
 #endif
@@ -3549,10 +3549,10 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCoreHaloSca_D3_LK2
 #endif
-        use pm_kind, only: LKC => LK2
-        logical(LKC)                , intent(out)   , contiguous        :: array(:,:,:)
-        logical(LKC)                , intent(in)                        :: core
-        logical(LKC)                , intent(in)                        :: halo
+        use pm_kind, only: LKG => LK2
+        logical(LKG)                , intent(out)   , contiguous        :: array(:,:,:)
+        logical(LKG)                , intent(in)                        :: core
+        logical(LKG)                , intent(in)                        :: halo
         integer(IK)                 , intent(in)                        :: coffset(rank(array)), csize(rank(array))
     end subroutine
 #endif
@@ -3562,10 +3562,10 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCoreHaloSca_D3_LK1
 #endif
-        use pm_kind, only: LKC => LK1
-        logical(LKC)                , intent(out)   , contiguous        :: array(:,:,:)
-        logical(LKC)                , intent(in)                        :: core
-        logical(LKC)                , intent(in)                        :: halo
+        use pm_kind, only: LKG => LK1
+        logical(LKG)                , intent(out)   , contiguous        :: array(:,:,:)
+        logical(LKG)                , intent(in)                        :: core
+        logical(LKG)                , intent(in)                        :: halo
         integer(IK)                 , intent(in)                        :: coffset(rank(array)), csize(rank(array))
     end subroutine
 #endif
@@ -3577,10 +3577,10 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCoreHaloSca_D3_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)                , intent(out)   , contiguous        :: array(:,:,:)
-        complex(CKC)                , intent(in)                        :: core
-        complex(CKC)                , intent(in)                        :: halo
+        use pm_kind, only: CKG => CK5
+        complex(CKG)                , intent(out)   , contiguous        :: array(:,:,:)
+        complex(CKG)                , intent(in)                        :: core
+        complex(CKG)                , intent(in)                        :: halo
         integer(IK)                 , intent(in)                        :: coffset(rank(array)), csize(rank(array))
     end subroutine
 #endif
@@ -3590,10 +3590,10 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCoreHaloSca_D3_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)                , intent(out)   , contiguous        :: array(:,:,:)
-        complex(CKC)                , intent(in)                        :: core
-        complex(CKC)                , intent(in)                        :: halo
+        use pm_kind, only: CKG => CK4
+        complex(CKG)                , intent(out)   , contiguous        :: array(:,:,:)
+        complex(CKG)                , intent(in)                        :: core
+        complex(CKG)                , intent(in)                        :: halo
         integer(IK)                 , intent(in)                        :: coffset(rank(array)), csize(rank(array))
     end subroutine
 #endif
@@ -3603,10 +3603,10 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCoreHaloSca_D3_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)                , intent(out)   , contiguous        :: array(:,:,:)
-        complex(CKC)                , intent(in)                        :: core
-        complex(CKC)                , intent(in)                        :: halo
+        use pm_kind, only: CKG => CK3
+        complex(CKG)                , intent(out)   , contiguous        :: array(:,:,:)
+        complex(CKG)                , intent(in)                        :: core
+        complex(CKG)                , intent(in)                        :: halo
         integer(IK)                 , intent(in)                        :: coffset(rank(array)), csize(rank(array))
     end subroutine
 #endif
@@ -3616,10 +3616,10 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCoreHaloSca_D3_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)                , intent(out)   , contiguous        :: array(:,:,:)
-        complex(CKC)                , intent(in)                        :: core
-        complex(CKC)                , intent(in)                        :: halo
+        use pm_kind, only: CKG => CK2
+        complex(CKG)                , intent(out)   , contiguous        :: array(:,:,:)
+        complex(CKG)                , intent(in)                        :: core
+        complex(CKG)                , intent(in)                        :: halo
         integer(IK)                 , intent(in)                        :: coffset(rank(array)), csize(rank(array))
     end subroutine
 #endif
@@ -3629,10 +3629,10 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCoreHaloSca_D3_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)                , intent(out)   , contiguous        :: array(:,:,:)
-        complex(CKC)                , intent(in)                        :: core
-        complex(CKC)                , intent(in)                        :: halo
+        use pm_kind, only: CKG => CK1
+        complex(CKG)                , intent(out)   , contiguous        :: array(:,:,:)
+        complex(CKG)                , intent(in)                        :: core
+        complex(CKG)                , intent(in)                        :: halo
         integer(IK)                 , intent(in)                        :: coffset(rank(array)), csize(rank(array))
     end subroutine
 #endif
@@ -3644,10 +3644,10 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCoreHaloSca_D3_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)                   , intent(out)   , contiguous        :: array(:,:,:)
-        real(RKC)                   , intent(in)                        :: core
-        real(RKC)                   , intent(in)                        :: halo
+        use pm_kind, only: RKG => RK5
+        real(RKG)                   , intent(out)   , contiguous        :: array(:,:,:)
+        real(RKG)                   , intent(in)                        :: core
+        real(RKG)                   , intent(in)                        :: halo
         integer(IK)                 , intent(in)                        :: coffset(rank(array)), csize(rank(array))
     end subroutine
 #endif
@@ -3657,10 +3657,10 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCoreHaloSca_D3_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)                   , intent(out)   , contiguous        :: array(:,:,:)
-        real(RKC)                   , intent(in)                        :: core
-        real(RKC)                   , intent(in)                        :: halo
+        use pm_kind, only: RKG => RK4
+        real(RKG)                   , intent(out)   , contiguous        :: array(:,:,:)
+        real(RKG)                   , intent(in)                        :: core
+        real(RKG)                   , intent(in)                        :: halo
         integer(IK)                 , intent(in)                        :: coffset(rank(array)), csize(rank(array))
     end subroutine
 #endif
@@ -3670,10 +3670,10 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCoreHaloSca_D3_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)                   , intent(out)   , contiguous        :: array(:,:,:)
-        real(RKC)                   , intent(in)                        :: core
-        real(RKC)                   , intent(in)                        :: halo
+        use pm_kind, only: RKG => RK3
+        real(RKG)                   , intent(out)   , contiguous        :: array(:,:,:)
+        real(RKG)                   , intent(in)                        :: core
+        real(RKG)                   , intent(in)                        :: halo
         integer(IK)                 , intent(in)                        :: coffset(rank(array)), csize(rank(array))
     end subroutine
 #endif
@@ -3683,10 +3683,10 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCoreHaloSca_D3_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)                   , intent(out)   , contiguous        :: array(:,:,:)
-        real(RKC)                   , intent(in)                        :: core
-        real(RKC)                   , intent(in)                        :: halo
+        use pm_kind, only: RKG => RK2
+        real(RKG)                   , intent(out)   , contiguous        :: array(:,:,:)
+        real(RKG)                   , intent(in)                        :: core
+        real(RKG)                   , intent(in)                        :: halo
         integer(IK)                 , intent(in)                        :: coffset(rank(array)), csize(rank(array))
     end subroutine
 #endif
@@ -3696,10 +3696,10 @@ module pm_arrayInit
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setCoreHaloSca_D3_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)                   , intent(out)   , contiguous        :: array(:,:,:)
-        real(RKC)                   , intent(in)                        :: core
-        real(RKC)                   , intent(in)                        :: halo
+        use pm_kind, only: RKG => RK1
+        real(RKG)                   , intent(out)   , contiguous        :: array(:,:,:)
+        real(RKG)                   , intent(in)                        :: core
+        real(RKG)                   , intent(in)                        :: halo
         integer(IK)                 , intent(in)                        :: coffset(rank(array)), csize(rank(array))
     end subroutine
 #endif

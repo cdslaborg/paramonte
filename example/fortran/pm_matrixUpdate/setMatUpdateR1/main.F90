@@ -1,8 +1,8 @@
 program example
 
     use pm_kind, only: SK, IK, LK
-    use pm_kind, only: RKC => RKS ! all processor type kinds are supported.
-    use pm_kind, only: CKC => CKS ! all processor type kinds are supported.
+    use pm_kind, only: RKG => RKS ! all processor type kinds are supported.
+    use pm_kind, only: CKG => CKS ! all processor type kinds are supported.
     use pm_io, only: display_type
     use pm_matrixUpdate, only: transHerm
     use pm_matrixUpdate, only: setMatUpdateR1
@@ -11,34 +11,34 @@ program example
 
     type(display_type) :: disp
 
-    real(RKC)   , parameter     :: dummyr = -huge(0._RKC)
-    complex(CKC), parameter     :: dumm_cmplx_value = cmplx(-huge(0._CKC), -huge(0._CKC), CKC)
+    real(RKG)   , parameter     :: dummyr = -huge(0._RKG)
+    complex(CKG), parameter     :: dumm_cmplx_value = cmplx(-huge(0._CKG), -huge(0._CKG), CKG)
 
     disp = display_type(file = "main.out.F90")
 
     block
 
-        real(RKC), allocatable :: RefA(:,:), mat(:,:), vecA(:), vecB(:)
+        real(RKG), allocatable :: RefA(:,:), mat(:,:), vecA(:), vecB(:)
 
-        mat = reshape( [ 1._RKC, 2._RKC, 3._RKC &
-                        , 2._RKC, 2._RKC, 4._RKC &
-                        , 3._RKC, 2._RKC, 2._RKC &
-                        , 4._RKC, 2._RKC, 1._RKC &
+        mat = reshape( [ 1._RKG, 2._RKG, 3._RKG &
+                        , 2._RKG, 2._RKG, 4._RKG &
+                        , 3._RKG, 2._RKG, 2._RKG &
+                        , 4._RKG, 2._RKG, 1._RKG &
                         ], shape = [4, 3], order = [2, 1])
-        RefA = reshape( [ 4._RKC, 8._RKC,12._RKC &
-                        , 4._RKC, 6._RKC,10._RKC &
-                        , 4._RKC, 4._RKC, 5._RKC &
-                        , 8._RKC,10._RKC,13._RKC &
+        RefA = reshape( [ 4._RKG, 8._RKG,12._RKG &
+                        , 4._RKG, 6._RKG,10._RKG &
+                        , 4._RKG, 4._RKG, 5._RKG &
+                        , 8._RKG,10._RKG,13._RKG &
                         ], shape = [4, 3], order = [2, 1])
         call disp%skip()
         call disp%show("dummyr ! some dummy value to illustrate functionality of `incA` and `incB` arguments.")
         call disp%show( dummyr )
         call disp%show("mat")
         call disp%show( mat )
-        call disp%show("vecA = [3._RKC, 2._RKC, 1._RKC, 4._RKC]")
-                        vecA = [3._RKC, 2._RKC, 1._RKC, 4._RKC]
-        call disp%show("vecB = [1._RKC, dummyr, 2._RKC, dummyr, 3._RKC]")
-                        vecB = [1._RKC, dummyr, 2._RKC, dummyr, 3._RKC]
+        call disp%show("vecA = [3._RKG, 2._RKG, 1._RKG, 4._RKG]")
+                        vecA = [3._RKG, 2._RKG, 1._RKG, 4._RKG]
+        call disp%show("vecB = [1._RKG, dummyr, 2._RKG, dummyr, 3._RKG]")
+                        vecB = [1._RKG, dummyr, 2._RKG, dummyr, 3._RKG]
         call disp%show("call setMatUpdateR1(mat, vecA, vecB, incA = 1_IK, incB = 2_IK, roff = 0_IK)")
                         call setMatUpdateR1(mat, vecA, vecB, incA = 1_IK, incB = 2_IK, roff = 0_IK)
         call disp%show("mat")
@@ -47,10 +47,10 @@ program example
         call disp%show( mat - RefA )
         call disp%skip()
 
-        mat = reshape( [ 1._RKC, 2._RKC, 3._RKC &
-                        , 2._RKC, 2._RKC, 4._RKC &
-                        , 3._RKC, 2._RKC, 2._RKC &
-                        , 4._RKC, 2._RKC, 1._RKC &
+        mat = reshape( [ 1._RKG, 2._RKG, 3._RKG &
+                        , 2._RKG, 2._RKG, 4._RKG &
+                        , 3._RKG, 2._RKG, 2._RKG &
+                        , 4._RKG, 2._RKG, 1._RKG &
                         , dummyr, dummyr, dummyr &
                         , dummyr, dummyr, dummyr &
                         , dummyr, dummyr, dummyr &
@@ -63,10 +63,10 @@ program example
         call disp%show( dummyr )
         call disp%show("mat")
         call disp%show( mat )
-        call disp%show("vecA = [3._RKC, 2._RKC, 1._RKC, 4._RKC]")
-                        vecA = [3._RKC, 2._RKC, 1._RKC, 4._RKC]
-        call disp%show("vecB = [3._RKC, dummyr, 2._RKC, dummyr, 1._RKC]")
-                        vecB = [3._RKC, dummyr, 2._RKC, dummyr, 1._RKC]
+        call disp%show("vecA = [3._RKG, 2._RKG, 1._RKG, 4._RKG]")
+                        vecA = [3._RKG, 2._RKG, 1._RKG, 4._RKG]
+        call disp%show("vecB = [3._RKG, dummyr, 2._RKG, dummyr, 1._RKG]")
+                        vecB = [3._RKG, dummyr, 2._RKG, dummyr, 1._RKG]
         call disp%show("call setMatUpdateR1(mat, vecA, vecB, incA = 1_IK, incB = -2_IK, roff = 0_IK)")
                         call setMatUpdateR1(mat, vecA, vecB, incA = 1_IK, incB = -2_IK, roff = 0_IK)
         call disp%show("mat")
@@ -76,10 +76,10 @@ program example
         mat = reshape( [ dummyr, dummyr, dummyr &
                         , dummyr, dummyr, dummyr &
                         , dummyr, dummyr, dummyr &
-                        , 1._RKC, 2._RKC, 3._RKC &
-                        , 2._RKC, 2._RKC, 4._RKC &
-                        , 3._RKC, 2._RKC, 2._RKC &
-                        , 4._RKC, 2._RKC, 1._RKC &
+                        , 1._RKG, 2._RKG, 3._RKG &
+                        , 2._RKG, 2._RKG, 4._RKG &
+                        , 3._RKG, 2._RKG, 2._RKG &
+                        , 4._RKG, 2._RKG, 1._RKG &
                         , dummyr, dummyr, dummyr &
                         , dummyr, dummyr, dummyr &
                         , dummyr, dummyr, dummyr &
@@ -89,37 +89,37 @@ program example
         call disp%show( dummyr )
         call disp%show("mat")
         call disp%show( mat )
-        call disp%show("vecA = [3._RKC, dummyr, dummyr, 2._RKC, dummyr, dummyr, 1._RKC, dummyr, dummyr, 4._RKC]")
-                        vecA = [3._RKC, dummyr, dummyr, 2._RKC, dummyr, dummyr, 1._RKC, dummyr, dummyr, 4._RKC]
-        call disp%show("vecB = [1._RKC, 2._RKC, 3._RKC]")
-                        vecB = [1._RKC, 2._RKC, 3._RKC]
+        call disp%show("vecA = [3._RKG, dummyr, dummyr, 2._RKG, dummyr, dummyr, 1._RKG, dummyr, dummyr, 4._RKG]")
+                        vecA = [3._RKG, dummyr, dummyr, 2._RKG, dummyr, dummyr, 1._RKG, dummyr, dummyr, 4._RKG]
+        call disp%show("vecB = [1._RKG, 2._RKG, 3._RKG]")
+                        vecB = [1._RKG, 2._RKG, 3._RKG]
         call disp%show("call setMatUpdateR1(mat, vecA, vecB, incA = 3_IK, incB = 1_IK, roff = 3_IK)")
                         call setMatUpdateR1(mat, vecA, vecB, incA = 3_IK, incB = 1_IK, roff = 3_IK)
         call disp%show("mat")
         call disp%show( mat )
         call disp%skip()
 
-        mat = reshape( [ 1._RKC, 2._RKC, 3._RKC &
-                        , 2._RKC, 2._RKC, 4._RKC &
-                        , 3._RKC, 2._RKC, 2._RKC &
-                        , 4._RKC, 2._RKC, 1._RKC &
+        mat = reshape( [ 1._RKG, 2._RKG, 3._RKG &
+                        , 2._RKG, 2._RKG, 4._RKG &
+                        , 3._RKG, 2._RKG, 2._RKG &
+                        , 4._RKG, 2._RKG, 1._RKG &
                         ], shape = [4, 3], order = [2, 1])
-        RefA = reshape( [ 7._RKC,14._RKC,21._RKC &
-                        , 6._RKC,10._RKC,16._RKC &
-                        , 5._RKC, 6._RKC, 8._RKC &
-                        ,12._RKC,18._RKC,25._RKC &
+        RefA = reshape( [ 7._RKG,14._RKG,21._RKG &
+                        , 6._RKG,10._RKG,16._RKG &
+                        , 5._RKG, 6._RKG, 8._RKG &
+                        ,12._RKG,18._RKG,25._RKG &
                         ], shape = [4, 3], order = [2, 1])
         call disp%skip()
         call disp%show("dummyr ! some dummy value to illustrate functionality of `incA` and `incB` arguments.")
         call disp%show( dummyr )
         call disp%show("mat")
         call disp%show( mat )
-        call disp%show("vecA = [3._RKC, 2._RKC, 1._RKC, 4._RKC]")
-                        vecA = [3._RKC, 2._RKC, 1._RKC, 4._RKC]
-        call disp%show("vecB = [1._RKC, dummyr, 2._RKC, dummyr, 3._RKC]")
-                        vecB = [1._RKC, dummyr, 2._RKC, dummyr, 3._RKC]
-        call disp%show("call setMatUpdateR1(mat, vecA, vecB, alpha = 2._RKC, incA = 1_IK, incB = 2_IK, roff = 0_IK)")
-                        call setMatUpdateR1(mat, vecA, vecB, alpha = 2._RKC, incA = 1_IK, incB = 2_IK, roff = 0_IK)
+        call disp%show("vecA = [3._RKG, 2._RKG, 1._RKG, 4._RKG]")
+                        vecA = [3._RKG, 2._RKG, 1._RKG, 4._RKG]
+        call disp%show("vecB = [1._RKG, dummyr, 2._RKG, dummyr, 3._RKG]")
+                        vecB = [1._RKG, dummyr, 2._RKG, dummyr, 3._RKG]
+        call disp%show("call setMatUpdateR1(mat, vecA, vecB, alpha = 2._RKG, incA = 1_IK, incB = 2_IK, roff = 0_IK)")
+                        call setMatUpdateR1(mat, vecA, vecB, alpha = 2._RKG, incA = 1_IK, incB = 2_IK, roff = 0_IK)
         call disp%show("mat")
         call disp%show( mat )
         call disp%show("mat - RefA")
@@ -136,24 +136,24 @@ program example
 
     block
 
-        complex(CKC), allocatable   :: RefA(:,:), mat(:,:), vecA(:), vecB(:)
+        complex(CKG), allocatable   :: RefA(:,:), mat(:,:), vecA(:), vecB(:)
 
-        mat = reshape( [ (1._CKC, 2._CKC), (3._CKC, 5._CKC), (2._CKC, 0._CKC) &
-                        , (2._CKC, 3._CKC), (7._CKC, 9._CKC), (4._CKC, 8._CKC) &
-                        , (7._CKC, 4._CKC), (1._CKC, 4._CKC), (6._CKC, 0._CKC) &
-                        , (8._CKC, 2._CKC), (2._CKC, 5._CKC), (8._CKC, 0._CKC) &
-                        , (9._CKC, 1._CKC), (3._CKC, 6._CKC), (1._CKC, 0._CKC) &
+        mat = reshape( [ (1._CKG, 2._CKG), (3._CKG, 5._CKG), (2._CKG, 0._CKG) &
+                        , (2._CKG, 3._CKG), (7._CKG, 9._CKG), (4._CKG, 8._CKG) &
+                        , (7._CKG, 4._CKG), (1._CKG, 4._CKG), (6._CKG, 0._CKG) &
+                        , (8._CKG, 2._CKG), (2._CKG, 5._CKG), (8._CKG, 0._CKG) &
+                        , (9._CKG, 1._CKG), (3._CKG, 6._CKG), (1._CKG, 0._CKG) &
                         , dumm_cmplx_value, dumm_cmplx_value, dumm_cmplx_value &
                         , dumm_cmplx_value, dumm_cmplx_value, dumm_cmplx_value &
                         , dumm_cmplx_value, dumm_cmplx_value, dumm_cmplx_value &
                         , dumm_cmplx_value, dumm_cmplx_value, dumm_cmplx_value &
                         , dumm_cmplx_value, dumm_cmplx_value, dumm_cmplx_value &
                         ], shape = [10, 3], order = [2, 1])
-        RefA = reshape( [ (-2._CKC, 6._CKC), ( 7._CKC,13._CKC), ( 5._CKC, 1._CKC) &
-                        , ( 6._CKC,11._CKC), (23._CKC, 9._CKC), ( 8._CKC, 4._CKC) &
-                        , ( 6._CKC, 7._CKC), ( 5._CKC, 8._CKC), ( 8._CKC, 0._CKC) &
-                        , ( 3._CKC,12._CKC), (14._CKC,21._CKC), (15._CKC, 1._CKC) &
-                        , (11._CKC, 5._CKC), (11._CKC, 6._CKC), ( 3._CKC,-2._CKC) &
+        RefA = reshape( [ (-2._CKG, 6._CKG), ( 7._CKG,13._CKG), ( 5._CKG, 1._CKG) &
+                        , ( 6._CKG,11._CKG), (23._CKG, 9._CKG), ( 8._CKG, 4._CKG) &
+                        , ( 6._CKG, 7._CKG), ( 5._CKG, 8._CKG), ( 8._CKG, 0._CKG) &
+                        , ( 3._CKG,12._CKG), (14._CKG,21._CKG), (15._CKG, 1._CKG) &
+                        , (11._CKG, 5._CKG), (11._CKG, 6._CKG), ( 3._CKG,-2._CKG) &
                         ,  dumm_cmplx_value,  dumm_cmplx_value,  dumm_cmplx_value &
                         ,  dumm_cmplx_value,  dumm_cmplx_value,  dumm_cmplx_value &
                         ,  dumm_cmplx_value,  dumm_cmplx_value,  dumm_cmplx_value &
@@ -166,10 +166,10 @@ program example
         call disp%show( dummyr )
         call disp%show("mat")
         call disp%show( mat )
-        call disp%show("vecA = [(1._CKC, 2._CKC), (4._CKC, 0._CKC), (1._CKC, 1._CKC), (3._CKC, 4._CKC), (2._CKC, 0._CKC)]")
-                        vecA = [(1._CKC, 2._CKC), (4._CKC, 0._CKC), (1._CKC, 1._CKC), (3._CKC, 4._CKC), (2._CKC, 0._CKC)]
-        call disp%show("vecB = [(1._CKC, 2._CKC), (4._CKC, 0._CKC), (1._CKC, -1._CKC)]")
-                        vecB = [(1._CKC, 2._CKC), (4._CKC, 0._CKC), (1._CKC, -1._CKC)]
+        call disp%show("vecA = [(1._CKG, 2._CKG), (4._CKG, 0._CKG), (1._CKG, 1._CKG), (3._CKG, 4._CKG), (2._CKG, 0._CKG)]")
+                        vecA = [(1._CKG, 2._CKG), (4._CKG, 0._CKG), (1._CKG, 1._CKG), (3._CKG, 4._CKG), (2._CKG, 0._CKG)]
+        call disp%show("vecB = [(1._CKG, 2._CKG), (4._CKG, 0._CKG), (1._CKG, -1._CKG)]")
+                        vecB = [(1._CKG, 2._CKG), (4._CKG, 0._CKG), (1._CKG, -1._CKG)]
         call disp%show("call setMatUpdateR1(mat, vecA, vecB, incA = 1_IK, incB = 1_IK, roff = 0_IK)")
                         call setMatUpdateR1(mat, vecA, vecB, incA = 1_IK, incB = 1_IK, roff = 0_IK)
         call disp%show("mat")
@@ -183,22 +183,22 @@ program example
         call disp%skip
 
 
-        mat = reshape( [ (1._CKC, 2._CKC), (3._CKC, 5._CKC), (2._CKC, 0._CKC) &
-                        , (2._CKC, 3._CKC), (7._CKC, 9._CKC), (4._CKC, 8._CKC) &
-                        , (7._CKC, 4._CKC), (1._CKC, 4._CKC), (6._CKC, 0._CKC) &
-                        , (8._CKC, 2._CKC), (2._CKC, 5._CKC), (8._CKC, 0._CKC) &
-                        , (9._CKC, 1._CKC), (3._CKC, 6._CKC), (1._CKC, 0._CKC) &
+        mat = reshape( [ (1._CKG, 2._CKG), (3._CKG, 5._CKG), (2._CKG, 0._CKG) &
+                        , (2._CKG, 3._CKG), (7._CKG, 9._CKG), (4._CKG, 8._CKG) &
+                        , (7._CKG, 4._CKG), (1._CKG, 4._CKG), (6._CKG, 0._CKG) &
+                        , (8._CKG, 2._CKG), (2._CKG, 5._CKG), (8._CKG, 0._CKG) &
+                        , (9._CKG, 1._CKG), (3._CKG, 6._CKG), (1._CKG, 0._CKG) &
                         , dumm_cmplx_value, dumm_cmplx_value, dumm_cmplx_value &
                         , dumm_cmplx_value, dumm_cmplx_value, dumm_cmplx_value &
                         , dumm_cmplx_value, dumm_cmplx_value, dumm_cmplx_value &
                         , dumm_cmplx_value, dumm_cmplx_value, dumm_cmplx_value &
                         , dumm_cmplx_value, dumm_cmplx_value, dumm_cmplx_value &
                         ], shape = [10, 3], order = [2, 1])
-        RefA = reshape( [ ( 6._CKC, 2._CKC), ( 7._CKC,13._CKC), (1._CKC,  3._CKC) &
-                        , ( 6._CKC,-5._CKC), (23._CKC, 9._CKC), (8._CKC, 12._CKC) &
-                        , (10._CKC, 3._CKC), ( 5._CKC, 8._CKC), (6._CKC,  2._CKC) &
-                        , (19._CKC, 0._CKC), (14._CKC,21._CKC), (7._CKC,  7._CKC) &
-                        , (11._CKC,-3._CKC), (11._CKC, 6._CKC), (3._CKC,  2._CKC) &
+        RefA = reshape( [ ( 6._CKG, 2._CKG), ( 7._CKG,13._CKG), (1._CKG,  3._CKG) &
+                        , ( 6._CKG,-5._CKG), (23._CKG, 9._CKG), (8._CKG, 12._CKG) &
+                        , (10._CKG, 3._CKG), ( 5._CKG, 8._CKG), (6._CKG,  2._CKG) &
+                        , (19._CKG, 0._CKG), (14._CKG,21._CKG), (7._CKG,  7._CKG) &
+                        , (11._CKG,-3._CKG), (11._CKG, 6._CKG), (3._CKG,  2._CKG) &
                         ,  dumm_cmplx_value,  dumm_cmplx_value,  dumm_cmplx_value &
                         ,  dumm_cmplx_value,  dumm_cmplx_value,  dumm_cmplx_value &
                         ,  dumm_cmplx_value,  dumm_cmplx_value,  dumm_cmplx_value &
@@ -211,10 +211,10 @@ program example
         call disp%show( dummyr )
         call disp%show("mat")
         call disp%show( mat )
-        call disp%show("vecA = [(1._CKC, 2._CKC), (4._CKC, 0._CKC), (1._CKC, 1._CKC), (3._CKC, 4._CKC), (2._CKC, 0._CKC)]")
-                        vecA = [(1._CKC, 2._CKC), (4._CKC, 0._CKC), (1._CKC, 1._CKC), (3._CKC, 4._CKC), (2._CKC, 0._CKC)]
-        call disp%show("vecB = [(1._CKC, 2._CKC), (4._CKC, 0._CKC), (1._CKC, -1._CKC)]")
-                        vecB = [(1._CKC, 2._CKC), (4._CKC, 0._CKC), (1._CKC, -1._CKC)]
+        call disp%show("vecA = [(1._CKG, 2._CKG), (4._CKG, 0._CKG), (1._CKG, 1._CKG), (3._CKG, 4._CKG), (2._CKG, 0._CKG)]")
+                        vecA = [(1._CKG, 2._CKG), (4._CKG, 0._CKG), (1._CKG, 1._CKG), (3._CKG, 4._CKG), (2._CKG, 0._CKG)]
+        call disp%show("vecB = [(1._CKG, 2._CKG), (4._CKG, 0._CKG), (1._CKG, -1._CKG)]")
+                        vecB = [(1._CKG, 2._CKG), (4._CKG, 0._CKG), (1._CKG, -1._CKG)]
         call disp%show("call setMatUpdateR1(mat, vecA, vecB, operationB = transHerm, incA = 1_IK, incB = 1_IK, roff = 0_IK)")
                         call setMatUpdateR1(mat, vecA, vecB, operationB = transHerm, incA = 1_IK, incB = 1_IK, roff = 0_IK)
         call disp%show("mat")

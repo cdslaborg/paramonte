@@ -171,11 +171,11 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPaddedAsisSB_D0_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)            , intent(in)                    :: array
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)            , intent(in)                    :: array
         integer(IK)                 , intent(in)                    :: lpsize, rpsize
-        character(1,SKC)            , intent(in)                    :: lpfill, rpfill
-        character(len(array,IK)+lpsize+rpsize,SKC)                  :: arrayPadded
+        character(1,SKG)            , intent(in)                    :: lpfill, rpfill
+        character(len(array,IK)+lpsize+rpsize,SKG)                  :: arrayPadded
     end function
 #endif
 
@@ -184,11 +184,11 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPaddedAsisSB_D0_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)            , intent(in)                    :: array
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)            , intent(in)                    :: array
         integer(IK)                 , intent(in)                    :: lpsize, rpsize
-        character(1,SKC)            , intent(in)                    :: lpfill, rpfill
-        character(len(array,IK)+lpsize+rpsize,SKC)                  :: arrayPadded
+        character(1,SKG)            , intent(in)                    :: lpfill, rpfill
+        character(len(array,IK)+lpsize+rpsize,SKG)                  :: arrayPadded
     end function
 #endif
 
@@ -197,11 +197,11 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPaddedAsisSB_D0_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)            , intent(in)                    :: array
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)            , intent(in)                    :: array
         integer(IK)                 , intent(in)                    :: lpsize, rpsize
-        character(1,SKC)            , intent(in)                    :: lpfill, rpfill
-        character(len(array,IK)+lpsize+rpsize,SKC)                  :: arrayPadded
+        character(1,SKG)            , intent(in)                    :: lpfill, rpfill
+        character(len(array,IK)+lpsize+rpsize,SKG)                  :: arrayPadded
     end function
 #endif
 
@@ -210,11 +210,11 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPaddedAsisSB_D0_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)            , intent(in)                    :: array
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)            , intent(in)                    :: array
         integer(IK)                 , intent(in)                    :: lpsize, rpsize
-        character(1,SKC)            , intent(in)                    :: lpfill, rpfill
-        character(len(array,IK)+lpsize+rpsize,SKC)                  :: arrayPadded
+        character(1,SKG)            , intent(in)                    :: lpfill, rpfill
+        character(len(array,IK)+lpsize+rpsize,SKG)                  :: arrayPadded
     end function
 #endif
 
@@ -223,11 +223,11 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPaddedAsisSB_D0_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)            , intent(in)                    :: array
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)            , intent(in)                    :: array
         integer(IK)                 , intent(in)                    :: lpsize, rpsize
-        character(1,SKC)            , intent(in)                    :: lpfill, rpfill
-        character(len(array,IK)+lpsize+rpsize,SKC)                  :: arrayPadded
+        character(1,SKG)            , intent(in)                    :: lpfill, rpfill
+        character(len(array,IK)+lpsize+rpsize,SKG)                  :: arrayPadded
     end function
 #endif
 
@@ -238,11 +238,11 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPaddedAsisSB_D1_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
         integer(IK)                 , intent(in)                    :: lpsize, rpsize
-        character(len(array,IK),SKC), intent(in)                    :: lpfill, rpfill
-        character(len(array),SKC)                                   :: arrayPadded(size(array,kind=IK)+lpsize+rpsize)
+        character(len(array,IK),SKG), intent(in)                    :: lpfill, rpfill
+        character(len(array),SKG)                                   :: arrayPadded(size(array,kind=IK)+lpsize+rpsize)
     end function
 #endif
 
@@ -251,11 +251,11 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPaddedAsisSB_D1_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
         integer(IK)                 , intent(in)                    :: lpsize, rpsize
-        character(len(array,IK),SKC), intent(in)                    :: lpfill, rpfill
-        character(len(array),SKC)                                   :: arrayPadded(size(array,kind=IK)+lpsize+rpsize)
+        character(len(array,IK),SKG), intent(in)                    :: lpfill, rpfill
+        character(len(array),SKG)                                   :: arrayPadded(size(array,kind=IK)+lpsize+rpsize)
     end function
 #endif
 
@@ -264,11 +264,11 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPaddedAsisSB_D1_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
         integer(IK)                 , intent(in)                    :: lpsize, rpsize
-        character(len(array,IK),SKC), intent(in)                    :: lpfill, rpfill
-        character(len(array),SKC)                                   :: arrayPadded(size(array,kind=IK)+lpsize+rpsize)
+        character(len(array,IK),SKG), intent(in)                    :: lpfill, rpfill
+        character(len(array),SKG)                                   :: arrayPadded(size(array,kind=IK)+lpsize+rpsize)
     end function
 #endif
 
@@ -277,11 +277,11 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPaddedAsisSB_D1_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
         integer(IK)                 , intent(in)                    :: lpsize, rpsize
-        character(len(array,IK),SKC), intent(in)                    :: lpfill, rpfill
-        character(len(array),SKC)                                   :: arrayPadded(size(array,kind=IK)+lpsize+rpsize)
+        character(len(array,IK),SKG), intent(in)                    :: lpfill, rpfill
+        character(len(array),SKG)                                   :: arrayPadded(size(array,kind=IK)+lpsize+rpsize)
     end function
 #endif
 
@@ -290,11 +290,11 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPaddedAsisSB_D1_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
         integer(IK)                 , intent(in)                    :: lpsize, rpsize
-        character(len(array,IK),SKC), intent(in)                    :: lpfill, rpfill
-        character(len(array),SKC)                                   :: arrayPadded(size(array,kind=IK)+lpsize+rpsize)
+        character(len(array,IK),SKG), intent(in)                    :: lpfill, rpfill
+        character(len(array),SKG)                                   :: arrayPadded(size(array,kind=IK)+lpsize+rpsize)
     end function
 #endif
 
@@ -305,11 +305,11 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPaddedAsisSB_D1_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK5
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
         integer(IK)                 , intent(in)                    :: lpsize, rpsize
-        integer(IKC)                , intent(in)                    :: lpfill, rpfill
-        integer(IKC)                                                :: arrayPadded(size(array,kind=IK)+lpsize+rpsize)
+        integer(IKG)                , intent(in)                    :: lpfill, rpfill
+        integer(IKG)                                                :: arrayPadded(size(array,kind=IK)+lpsize+rpsize)
     end function
 #endif
 
@@ -318,11 +318,11 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPaddedAsisSB_D1_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK4
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
         integer(IK)                 , intent(in)                    :: lpsize, rpsize
-        integer(IKC)                , intent(in)                    :: lpfill, rpfill
-        integer(IKC)                                                :: arrayPadded(size(array,kind=IK)+lpsize+rpsize)
+        integer(IKG)                , intent(in)                    :: lpfill, rpfill
+        integer(IKG)                                                :: arrayPadded(size(array,kind=IK)+lpsize+rpsize)
     end function
 #endif
 
@@ -331,11 +331,11 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPaddedAsisSB_D1_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK3
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
         integer(IK)                 , intent(in)                    :: lpsize, rpsize
-        integer(IKC)                , intent(in)                    :: lpfill, rpfill
-        integer(IKC)                                                :: arrayPadded(size(array,kind=IK)+lpsize+rpsize)
+        integer(IKG)                , intent(in)                    :: lpfill, rpfill
+        integer(IKG)                                                :: arrayPadded(size(array,kind=IK)+lpsize+rpsize)
     end function
 #endif
 
@@ -344,11 +344,11 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPaddedAsisSB_D1_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK2
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
         integer(IK)                 , intent(in)                    :: lpsize, rpsize
-        integer(IKC)                , intent(in)                    :: lpfill, rpfill
-        integer(IKC)                                                :: arrayPadded(size(array,kind=IK)+lpsize+rpsize)
+        integer(IKG)                , intent(in)                    :: lpfill, rpfill
+        integer(IKG)                                                :: arrayPadded(size(array,kind=IK)+lpsize+rpsize)
     end function
 #endif
 
@@ -357,11 +357,11 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPaddedAsisSB_D1_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK1
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
         integer(IK)                 , intent(in)                    :: lpsize, rpsize
-        integer(IKC)                , intent(in)                    :: lpfill, rpfill
-        integer(IKC)                                                :: arrayPadded(size(array,kind=IK)+lpsize+rpsize)
+        integer(IKG)                , intent(in)                    :: lpfill, rpfill
+        integer(IKG)                                                :: arrayPadded(size(array,kind=IK)+lpsize+rpsize)
     end function
 #endif
 
@@ -372,11 +372,11 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPaddedAsisSB_D1_LK5
 #endif
-        use pm_kind, only: LKC => LK5
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: LKG => LK5
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
         integer(IK)                 , intent(in)                    :: lpsize, rpsize
-        logical(LKC)                , intent(in)                    :: lpfill, rpfill
-        logical(LKC)                                                :: arrayPadded(size(array,kind=IK)+lpsize+rpsize)
+        logical(LKG)                , intent(in)                    :: lpfill, rpfill
+        logical(LKG)                                                :: arrayPadded(size(array,kind=IK)+lpsize+rpsize)
     end function
 #endif
 
@@ -385,11 +385,11 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPaddedAsisSB_D1_LK4
 #endif
-        use pm_kind, only: LKC => LK4
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: LKG => LK4
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
         integer(IK)                 , intent(in)                    :: lpsize, rpsize
-        logical(LKC)                , intent(in)                    :: lpfill, rpfill
-        logical(LKC)                                                :: arrayPadded(size(array,kind=IK)+lpsize+rpsize)
+        logical(LKG)                , intent(in)                    :: lpfill, rpfill
+        logical(LKG)                                                :: arrayPadded(size(array,kind=IK)+lpsize+rpsize)
     end function
 #endif
 
@@ -398,11 +398,11 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPaddedAsisSB_D1_LK3
 #endif
-        use pm_kind, only: LKC => LK3
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: LKG => LK3
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
         integer(IK)                 , intent(in)                    :: lpsize, rpsize
-        logical(LKC)                , intent(in)                    :: lpfill, rpfill
-        logical(LKC)                                                :: arrayPadded(size(array,kind=IK)+lpsize+rpsize)
+        logical(LKG)                , intent(in)                    :: lpfill, rpfill
+        logical(LKG)                                                :: arrayPadded(size(array,kind=IK)+lpsize+rpsize)
     end function
 #endif
 
@@ -411,11 +411,11 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPaddedAsisSB_D1_LK2
 #endif
-        use pm_kind, only: LKC => LK2
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: LKG => LK2
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
         integer(IK)                 , intent(in)                    :: lpsize, rpsize
-        logical(LKC)                , intent(in)                    :: lpfill, rpfill
-        logical(LKC)                                                :: arrayPadded(size(array,kind=IK)+lpsize+rpsize)
+        logical(LKG)                , intent(in)                    :: lpfill, rpfill
+        logical(LKG)                                                :: arrayPadded(size(array,kind=IK)+lpsize+rpsize)
     end function
 #endif
 
@@ -424,11 +424,11 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPaddedAsisSB_D1_LK1
 #endif
-        use pm_kind, only: LKC => LK1
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: LKG => LK1
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
         integer(IK)                 , intent(in)                    :: lpsize, rpsize
-        logical(LKC)                , intent(in)                    :: lpfill, rpfill
-        logical(LKC)                                                :: arrayPadded(size(array,kind=IK)+lpsize+rpsize)
+        logical(LKG)                , intent(in)                    :: lpfill, rpfill
+        logical(LKG)                                                :: arrayPadded(size(array,kind=IK)+lpsize+rpsize)
     end function
 #endif
 
@@ -439,11 +439,11 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPaddedAsisSB_D1_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
         integer(IK)                 , intent(in)                    :: lpsize, rpsize
-        complex(CKC)                , intent(in)                    :: lpfill, rpfill
-        complex(CKC)                                                :: arrayPadded(size(array,kind=IK)+lpsize+rpsize)
+        complex(CKG)                , intent(in)                    :: lpfill, rpfill
+        complex(CKG)                                                :: arrayPadded(size(array,kind=IK)+lpsize+rpsize)
     end function
 #endif
 
@@ -452,11 +452,11 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPaddedAsisSB_D1_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
         integer(IK)                 , intent(in)                    :: lpsize, rpsize
-        complex(CKC)                , intent(in)                    :: lpfill, rpfill
-        complex(CKC)                                                :: arrayPadded(size(array,kind=IK)+lpsize+rpsize)
+        complex(CKG)                , intent(in)                    :: lpfill, rpfill
+        complex(CKG)                                                :: arrayPadded(size(array,kind=IK)+lpsize+rpsize)
     end function
 #endif
 
@@ -465,11 +465,11 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPaddedAsisSB_D1_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
         integer(IK)                 , intent(in)                    :: lpsize, rpsize
-        complex(CKC)                , intent(in)                    :: lpfill, rpfill
-        complex(CKC)                                                :: arrayPadded(size(array,kind=IK)+lpsize+rpsize)
+        complex(CKG)                , intent(in)                    :: lpfill, rpfill
+        complex(CKG)                                                :: arrayPadded(size(array,kind=IK)+lpsize+rpsize)
     end function
 #endif
 
@@ -478,11 +478,11 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPaddedAsisSB_D1_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
         integer(IK)                 , intent(in)                    :: lpsize, rpsize
-        complex(CKC)                , intent(in)                    :: lpfill, rpfill
-        complex(CKC)                                                :: arrayPadded(size(array,kind=IK)+lpsize+rpsize)
+        complex(CKG)                , intent(in)                    :: lpfill, rpfill
+        complex(CKG)                                                :: arrayPadded(size(array,kind=IK)+lpsize+rpsize)
     end function
 #endif
 
@@ -491,11 +491,11 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPaddedAsisSB_D1_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
         integer(IK)                 , intent(in)                    :: lpsize, rpsize
-        complex(CKC)                , intent(in)                    :: lpfill, rpfill
-        complex(CKC)                                                :: arrayPadded(size(array,kind=IK)+lpsize+rpsize)
+        complex(CKG)                , intent(in)                    :: lpfill, rpfill
+        complex(CKG)                                                :: arrayPadded(size(array,kind=IK)+lpsize+rpsize)
     end function
 #endif
 
@@ -506,11 +506,11 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPaddedAsisSB_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
         integer(IK)                 , intent(in)                    :: lpsize, rpsize
-        real(RKC)                   , intent(in)                    :: lpfill, rpfill
-        real(RKC)                                                   :: arrayPadded(size(array,kind=IK)+lpsize+rpsize)
+        real(RKG)                   , intent(in)                    :: lpfill, rpfill
+        real(RKG)                                                   :: arrayPadded(size(array,kind=IK)+lpsize+rpsize)
     end function
 #endif
 
@@ -519,11 +519,11 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPaddedAsisSB_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
         integer(IK)                 , intent(in)                    :: lpsize, rpsize
-        real(RKC)                   , intent(in)                    :: lpfill, rpfill
-        real(RKC)                                                   :: arrayPadded(size(array,kind=IK)+lpsize+rpsize)
+        real(RKG)                   , intent(in)                    :: lpfill, rpfill
+        real(RKG)                                                   :: arrayPadded(size(array,kind=IK)+lpsize+rpsize)
     end function
 #endif
 
@@ -532,11 +532,11 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPaddedAsisSB_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
         integer(IK)                 , intent(in)                    :: lpsize, rpsize
-        real(RKC)                   , intent(in)                    :: lpfill, rpfill
-        real(RKC)                                                   :: arrayPadded(size(array,kind=IK)+lpsize+rpsize)
+        real(RKG)                   , intent(in)                    :: lpfill, rpfill
+        real(RKG)                                                   :: arrayPadded(size(array,kind=IK)+lpsize+rpsize)
     end function
 #endif
 
@@ -545,11 +545,11 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPaddedAsisSB_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
         integer(IK)                 , intent(in)                    :: lpsize, rpsize
-        real(RKC)                   , intent(in)                    :: lpfill, rpfill
-        real(RKC)                                                   :: arrayPadded(size(array,kind=IK)+lpsize+rpsize)
+        real(RKG)                   , intent(in)                    :: lpfill, rpfill
+        real(RKG)                                                   :: arrayPadded(size(array,kind=IK)+lpsize+rpsize)
     end function
 #endif
 
@@ -558,11 +558,11 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPaddedAsisSB_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
         integer(IK)                 , intent(in)                    :: lpsize, rpsize
-        real(RKC)                   , intent(in)                    :: lpfill, rpfill
-        real(RKC)                                                   :: arrayPadded(size(array,kind=IK)+lpsize+rpsize)
+        real(RKG)                   , intent(in)                    :: lpfill, rpfill
+        real(RKG)                                                   :: arrayPadded(size(array,kind=IK)+lpsize+rpsize)
     end function
 #endif
 
@@ -579,12 +579,12 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPaddedMargSB_D0_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)            , intent(in)                    :: array
-        character(1,SKC)            , intent(in)                    :: lpfill, rpfill
-        character(1,SKC)            , intent(in)    , optional      :: lmfill, rmfill
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)            , intent(in)                    :: array
+        character(1,SKG)            , intent(in)                    :: lpfill, rpfill
+        character(1,SKG)            , intent(in)    , optional      :: lmfill, rmfill
         integer(IK)                 , intent(in)                    :: lpsize, rpsize, lmsize, rmsize
-        character(len(array,IK)+lpsize+rpsize+lmsize+rmsize,SKC)    :: arrayPadded
+        character(len(array,IK)+lpsize+rpsize+lmsize+rmsize,SKG)    :: arrayPadded
     end function
 #endif
 
@@ -593,12 +593,12 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPaddedMargSB_D0_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)            , intent(in)                    :: array
-        character(1,SKC)            , intent(in)                    :: lpfill, rpfill
-        character(1,SKC)            , intent(in)    , optional      :: lmfill, rmfill
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)            , intent(in)                    :: array
+        character(1,SKG)            , intent(in)                    :: lpfill, rpfill
+        character(1,SKG)            , intent(in)    , optional      :: lmfill, rmfill
         integer(IK)                 , intent(in)                    :: lpsize, rpsize, lmsize, rmsize
-        character(len(array,IK)+lpsize+rpsize+lmsize+rmsize,SKC)    :: arrayPadded
+        character(len(array,IK)+lpsize+rpsize+lmsize+rmsize,SKG)    :: arrayPadded
     end function
 #endif
 
@@ -607,12 +607,12 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPaddedMargSB_D0_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)            , intent(in)                    :: array
-        character(1,SKC)            , intent(in)                    :: lpfill, rpfill
-        character(1,SKC)            , intent(in)    , optional      :: lmfill, rmfill
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)            , intent(in)                    :: array
+        character(1,SKG)            , intent(in)                    :: lpfill, rpfill
+        character(1,SKG)            , intent(in)    , optional      :: lmfill, rmfill
         integer(IK)                 , intent(in)                    :: lpsize, rpsize, lmsize, rmsize
-        character(len(array,IK)+lpsize+rpsize+lmsize+rmsize,SKC)    :: arrayPadded
+        character(len(array,IK)+lpsize+rpsize+lmsize+rmsize,SKG)    :: arrayPadded
     end function
 #endif
 
@@ -621,12 +621,12 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPaddedMargSB_D0_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)            , intent(in)                    :: array
-        character(1,SKC)            , intent(in)                    :: lpfill, rpfill
-        character(1,SKC)            , intent(in)    , optional      :: lmfill, rmfill
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)            , intent(in)                    :: array
+        character(1,SKG)            , intent(in)                    :: lpfill, rpfill
+        character(1,SKG)            , intent(in)    , optional      :: lmfill, rmfill
         integer(IK)                 , intent(in)                    :: lpsize, rpsize, lmsize, rmsize
-        character(len(array,IK)+lpsize+rpsize+lmsize+rmsize,SKC)    :: arrayPadded
+        character(len(array,IK)+lpsize+rpsize+lmsize+rmsize,SKG)    :: arrayPadded
     end function
 #endif
 
@@ -635,12 +635,12 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPaddedMargSB_D0_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)            , intent(in)                    :: array
-        character(1,SKC)            , intent(in)                    :: lpfill, rpfill
-        character(1,SKC)            , intent(in)    , optional      :: lmfill, rmfill
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)            , intent(in)                    :: array
+        character(1,SKG)            , intent(in)                    :: lpfill, rpfill
+        character(1,SKG)            , intent(in)    , optional      :: lmfill, rmfill
         integer(IK)                 , intent(in)                    :: lpsize, rpsize, lmsize, rmsize
-        character(len(array,IK)+lpsize+rpsize+lmsize+rmsize,SKC)    :: arrayPadded
+        character(len(array,IK)+lpsize+rpsize+lmsize+rmsize,SKG)    :: arrayPadded
     end function
 #endif
 
@@ -651,12 +651,12 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPaddedMargSB_D1_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
-        character(len(array,IK),SKC), intent(in)                    :: lpfill, rpfill
-        character(len(array,IK),SKC), intent(in)    , optional      :: lmfill, rmfill
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
+        character(len(array,IK),SKG), intent(in)                    :: lpfill, rpfill
+        character(len(array,IK),SKG), intent(in)    , optional      :: lmfill, rmfill
         integer(IK)                 , intent(in)                    :: lpsize, rpsize, lmsize, rmsize
-        character(len(array),SKC)                                   :: arrayPadded(size(array,kind=IK)+lpsize+rpsize+lmsize+rmsize)
+        character(len(array),SKG)                                   :: arrayPadded(size(array,kind=IK)+lpsize+rpsize+lmsize+rmsize)
     end function
 #endif
 
@@ -665,12 +665,12 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPaddedMargSB_D1_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
-        character(len(array,IK),SKC), intent(in)                    :: lpfill, rpfill
-        character(len(array,IK),SKC), intent(in)    , optional      :: lmfill, rmfill
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
+        character(len(array,IK),SKG), intent(in)                    :: lpfill, rpfill
+        character(len(array,IK),SKG), intent(in)    , optional      :: lmfill, rmfill
         integer(IK)                 , intent(in)                    :: lpsize, rpsize, lmsize, rmsize
-        character(len(array),SKC)                                   :: arrayPadded(size(array,kind=IK)+lpsize+rpsize+lmsize+rmsize)
+        character(len(array),SKG)                                   :: arrayPadded(size(array,kind=IK)+lpsize+rpsize+lmsize+rmsize)
     end function
 #endif
 
@@ -679,12 +679,12 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPaddedMargSB_D1_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
-        character(len(array,IK),SKC), intent(in)                    :: lpfill, rpfill
-        character(len(array,IK),SKC), intent(in)    , optional      :: lmfill, rmfill
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
+        character(len(array,IK),SKG), intent(in)                    :: lpfill, rpfill
+        character(len(array,IK),SKG), intent(in)    , optional      :: lmfill, rmfill
         integer(IK)                 , intent(in)                    :: lpsize, rpsize, lmsize, rmsize
-        character(len(array),SKC)                                   :: arrayPadded(size(array,kind=IK)+lpsize+rpsize+lmsize+rmsize)
+        character(len(array),SKG)                                   :: arrayPadded(size(array,kind=IK)+lpsize+rpsize+lmsize+rmsize)
     end function
 #endif
 
@@ -693,12 +693,12 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPaddedMargSB_D1_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
-        character(len(array,IK),SKC), intent(in)                    :: lpfill, rpfill
-        character(len(array,IK),SKC), intent(in)    , optional      :: lmfill, rmfill
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
+        character(len(array,IK),SKG), intent(in)                    :: lpfill, rpfill
+        character(len(array,IK),SKG), intent(in)    , optional      :: lmfill, rmfill
         integer(IK)                 , intent(in)                    :: lpsize, rpsize, lmsize, rmsize
-        character(len(array),SKC)                                   :: arrayPadded(size(array,kind=IK)+lpsize+rpsize+lmsize+rmsize)
+        character(len(array),SKG)                                   :: arrayPadded(size(array,kind=IK)+lpsize+rpsize+lmsize+rmsize)
     end function
 #endif
 
@@ -707,12 +707,12 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPaddedMargSB_D1_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
-        character(len(array,IK),SKC), intent(in)                    :: lpfill, rpfill
-        character(len(array,IK),SKC), intent(in)    , optional      :: lmfill, rmfill
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
+        character(len(array,IK),SKG), intent(in)                    :: lpfill, rpfill
+        character(len(array,IK),SKG), intent(in)    , optional      :: lmfill, rmfill
         integer(IK)                 , intent(in)                    :: lpsize, rpsize, lmsize, rmsize
-        character(len(array),SKC)                                   :: arrayPadded(size(array,kind=IK)+lpsize+rpsize+lmsize+rmsize)
+        character(len(array),SKG)                                   :: arrayPadded(size(array,kind=IK)+lpsize+rpsize+lmsize+rmsize)
     end function
 #endif
 
@@ -723,12 +723,12 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPaddedMargSB_D1_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
-        integer(IKC)                , intent(in)                    :: lpfill, rpfill
-        integer(IKC)                , intent(in)    , optional      :: lmfill, rmfill
+        use pm_kind, only: IKG => IK5
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
+        integer(IKG)                , intent(in)                    :: lpfill, rpfill
+        integer(IKG)                , intent(in)    , optional      :: lmfill, rmfill
         integer(IK)                 , intent(in)                    :: lpsize, rpsize, lmsize, rmsize
-        integer(IKC)                                                :: arrayPadded(size(array,kind=IK)+lpsize+rpsize+lmsize+rmsize)
+        integer(IKG)                                                :: arrayPadded(size(array,kind=IK)+lpsize+rpsize+lmsize+rmsize)
     end function
 #endif
 
@@ -737,12 +737,12 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPaddedMargSB_D1_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
-        integer(IKC)                , intent(in)                    :: lpfill, rpfill
-        integer(IKC)                , intent(in)    , optional      :: lmfill, rmfill
+        use pm_kind, only: IKG => IK4
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
+        integer(IKG)                , intent(in)                    :: lpfill, rpfill
+        integer(IKG)                , intent(in)    , optional      :: lmfill, rmfill
         integer(IK)                 , intent(in)                    :: lpsize, rpsize, lmsize, rmsize
-        integer(IKC)                                                :: arrayPadded(size(array,kind=IK)+lpsize+rpsize+lmsize+rmsize)
+        integer(IKG)                                                :: arrayPadded(size(array,kind=IK)+lpsize+rpsize+lmsize+rmsize)
     end function
 #endif
 
@@ -751,12 +751,12 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPaddedMargSB_D1_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
-        integer(IKC)                , intent(in)                    :: lpfill, rpfill
-        integer(IKC)                , intent(in)    , optional      :: lmfill, rmfill
+        use pm_kind, only: IKG => IK3
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
+        integer(IKG)                , intent(in)                    :: lpfill, rpfill
+        integer(IKG)                , intent(in)    , optional      :: lmfill, rmfill
         integer(IK)                 , intent(in)                    :: lpsize, rpsize, lmsize, rmsize
-        integer(IKC)                                                :: arrayPadded(size(array,kind=IK)+lpsize+rpsize+lmsize+rmsize)
+        integer(IKG)                                                :: arrayPadded(size(array,kind=IK)+lpsize+rpsize+lmsize+rmsize)
     end function
 #endif
 
@@ -765,12 +765,12 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPaddedMargSB_D1_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
-        integer(IKC)                , intent(in)                    :: lpfill, rpfill
-        integer(IKC)                , intent(in)    , optional      :: lmfill, rmfill
+        use pm_kind, only: IKG => IK2
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
+        integer(IKG)                , intent(in)                    :: lpfill, rpfill
+        integer(IKG)                , intent(in)    , optional      :: lmfill, rmfill
         integer(IK)                 , intent(in)                    :: lpsize, rpsize, lmsize, rmsize
-        integer(IKC)                                                :: arrayPadded(size(array,kind=IK)+lpsize+rpsize+lmsize+rmsize)
+        integer(IKG)                                                :: arrayPadded(size(array,kind=IK)+lpsize+rpsize+lmsize+rmsize)
     end function
 #endif
 
@@ -779,12 +779,12 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPaddedMargSB_D1_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
-        integer(IKC)                , intent(in)                    :: lpfill, rpfill
-        integer(IKC)                , intent(in)    , optional      :: lmfill, rmfill
+        use pm_kind, only: IKG => IK1
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
+        integer(IKG)                , intent(in)                    :: lpfill, rpfill
+        integer(IKG)                , intent(in)    , optional      :: lmfill, rmfill
         integer(IK)                 , intent(in)                    :: lpsize, rpsize, lmsize, rmsize
-        integer(IKC)                                                :: arrayPadded(size(array,kind=IK)+lpsize+rpsize+lmsize+rmsize)
+        integer(IKG)                                                :: arrayPadded(size(array,kind=IK)+lpsize+rpsize+lmsize+rmsize)
     end function
 #endif
 
@@ -795,12 +795,12 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPaddedMargSB_D1_LK5
 #endif
-        use pm_kind, only: LKC => LK5
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
-        logical(LKC)                , intent(in)                    :: lpfill, rpfill
-        logical(LKC)                , intent(in)    , optional      :: lmfill, rmfill
+        use pm_kind, only: LKG => LK5
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
+        logical(LKG)                , intent(in)                    :: lpfill, rpfill
+        logical(LKG)                , intent(in)    , optional      :: lmfill, rmfill
         integer(IK)                 , intent(in)                    :: lpsize, rpsize, lmsize, rmsize
-        logical(LKC)                                                :: arrayPadded(size(array,kind=IK)+lpsize+rpsize+lmsize+rmsize)
+        logical(LKG)                                                :: arrayPadded(size(array,kind=IK)+lpsize+rpsize+lmsize+rmsize)
     end function
 #endif
 
@@ -809,12 +809,12 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPaddedMargSB_D1_LK4
 #endif
-        use pm_kind, only: LKC => LK4
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
-        logical(LKC)                , intent(in)                    :: lpfill, rpfill
-        logical(LKC)                , intent(in)    , optional      :: lmfill, rmfill
+        use pm_kind, only: LKG => LK4
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
+        logical(LKG)                , intent(in)                    :: lpfill, rpfill
+        logical(LKG)                , intent(in)    , optional      :: lmfill, rmfill
         integer(IK)                 , intent(in)                    :: lpsize, rpsize, lmsize, rmsize
-        logical(LKC)                                                :: arrayPadded(size(array,kind=IK)+lpsize+rpsize+lmsize+rmsize)
+        logical(LKG)                                                :: arrayPadded(size(array,kind=IK)+lpsize+rpsize+lmsize+rmsize)
     end function
 #endif
 
@@ -823,12 +823,12 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPaddedMargSB_D1_LK3
 #endif
-        use pm_kind, only: LKC => LK3
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
-        logical(LKC)                , intent(in)                    :: lpfill, rpfill
-        logical(LKC)                , intent(in)    , optional      :: lmfill, rmfill
+        use pm_kind, only: LKG => LK3
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
+        logical(LKG)                , intent(in)                    :: lpfill, rpfill
+        logical(LKG)                , intent(in)    , optional      :: lmfill, rmfill
         integer(IK)                 , intent(in)                    :: lpsize, rpsize, lmsize, rmsize
-        logical(LKC)                                                :: arrayPadded(size(array,kind=IK)+lpsize+rpsize+lmsize+rmsize)
+        logical(LKG)                                                :: arrayPadded(size(array,kind=IK)+lpsize+rpsize+lmsize+rmsize)
     end function
 #endif
 
@@ -837,12 +837,12 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPaddedMargSB_D1_LK2
 #endif
-        use pm_kind, only: LKC => LK2
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
-        logical(LKC)                , intent(in)                    :: lpfill, rpfill
-        logical(LKC)                , intent(in)    , optional      :: lmfill, rmfill
+        use pm_kind, only: LKG => LK2
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
+        logical(LKG)                , intent(in)                    :: lpfill, rpfill
+        logical(LKG)                , intent(in)    , optional      :: lmfill, rmfill
         integer(IK)                 , intent(in)                    :: lpsize, rpsize, lmsize, rmsize
-        logical(LKC)                                                :: arrayPadded(size(array,kind=IK)+lpsize+rpsize+lmsize+rmsize)
+        logical(LKG)                                                :: arrayPadded(size(array,kind=IK)+lpsize+rpsize+lmsize+rmsize)
     end function
 #endif
 
@@ -851,12 +851,12 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPaddedMargSB_D1_LK1
 #endif
-        use pm_kind, only: LKC => LK1
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
-        logical(LKC)                , intent(in)                    :: lpfill, rpfill
-        logical(LKC)                , intent(in)    , optional      :: lmfill, rmfill
+        use pm_kind, only: LKG => LK1
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
+        logical(LKG)                , intent(in)                    :: lpfill, rpfill
+        logical(LKG)                , intent(in)    , optional      :: lmfill, rmfill
         integer(IK)                 , intent(in)                    :: lpsize, rpsize, lmsize, rmsize
-        logical(LKC)                                                :: arrayPadded(size(array,kind=IK)+lpsize+rpsize+lmsize+rmsize)
+        logical(LKG)                                                :: arrayPadded(size(array,kind=IK)+lpsize+rpsize+lmsize+rmsize)
     end function
 #endif
 
@@ -867,12 +867,12 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPaddedMargSB_D1_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
-        complex(CKC)                , intent(in)                    :: lpfill, rpfill
-        complex(CKC)                , intent(in)    , optional      :: lmfill, rmfill
+        use pm_kind, only: CKG => CK5
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
+        complex(CKG)                , intent(in)                    :: lpfill, rpfill
+        complex(CKG)                , intent(in)    , optional      :: lmfill, rmfill
         integer(IK)                 , intent(in)                    :: lpsize, rpsize, lmsize, rmsize
-        complex(CKC)                                                :: arrayPadded(size(array,kind=IK)+lpsize+rpsize+lmsize+rmsize)
+        complex(CKG)                                                :: arrayPadded(size(array,kind=IK)+lpsize+rpsize+lmsize+rmsize)
     end function
 #endif
 
@@ -881,12 +881,12 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPaddedMargSB_D1_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
-        complex(CKC)                , intent(in)                    :: lpfill, rpfill
-        complex(CKC)                , intent(in)    , optional      :: lmfill, rmfill
+        use pm_kind, only: CKG => CK4
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
+        complex(CKG)                , intent(in)                    :: lpfill, rpfill
+        complex(CKG)                , intent(in)    , optional      :: lmfill, rmfill
         integer(IK)                 , intent(in)                    :: lpsize, rpsize, lmsize, rmsize
-        complex(CKC)                                                :: arrayPadded(size(array,kind=IK)+lpsize+rpsize+lmsize+rmsize)
+        complex(CKG)                                                :: arrayPadded(size(array,kind=IK)+lpsize+rpsize+lmsize+rmsize)
     end function
 #endif
 
@@ -895,12 +895,12 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPaddedMargSB_D1_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
-        complex(CKC)                , intent(in)                    :: lpfill, rpfill
-        complex(CKC)                , intent(in)    , optional      :: lmfill, rmfill
+        use pm_kind, only: CKG => CK3
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
+        complex(CKG)                , intent(in)                    :: lpfill, rpfill
+        complex(CKG)                , intent(in)    , optional      :: lmfill, rmfill
         integer(IK)                 , intent(in)                    :: lpsize, rpsize, lmsize, rmsize
-        complex(CKC)                                                :: arrayPadded(size(array,kind=IK)+lpsize+rpsize+lmsize+rmsize)
+        complex(CKG)                                                :: arrayPadded(size(array,kind=IK)+lpsize+rpsize+lmsize+rmsize)
     end function
 #endif
 
@@ -909,12 +909,12 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPaddedMargSB_D1_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
-        complex(CKC)                , intent(in)                    :: lpfill, rpfill
-        complex(CKC)                , intent(in)    , optional      :: lmfill, rmfill
+        use pm_kind, only: CKG => CK2
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
+        complex(CKG)                , intent(in)                    :: lpfill, rpfill
+        complex(CKG)                , intent(in)    , optional      :: lmfill, rmfill
         integer(IK)                 , intent(in)                    :: lpsize, rpsize, lmsize, rmsize
-        complex(CKC)                                                :: arrayPadded(size(array,kind=IK)+lpsize+rpsize+lmsize+rmsize)
+        complex(CKG)                                                :: arrayPadded(size(array,kind=IK)+lpsize+rpsize+lmsize+rmsize)
     end function
 #endif
 
@@ -923,12 +923,12 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPaddedMargSB_D1_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
-        complex(CKC)                , intent(in)                    :: lpfill, rpfill
-        complex(CKC)                , intent(in)    , optional      :: lmfill, rmfill
+        use pm_kind, only: CKG => CK1
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
+        complex(CKG)                , intent(in)                    :: lpfill, rpfill
+        complex(CKG)                , intent(in)    , optional      :: lmfill, rmfill
         integer(IK)                 , intent(in)                    :: lpsize, rpsize, lmsize, rmsize
-        complex(CKC)                                                :: arrayPadded(size(array,kind=IK)+lpsize+rpsize+lmsize+rmsize)
+        complex(CKG)                                                :: arrayPadded(size(array,kind=IK)+lpsize+rpsize+lmsize+rmsize)
     end function
 #endif
 
@@ -939,12 +939,12 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPaddedMargSB_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
-        real(RKC)                   , intent(in)                    :: lpfill, rpfill
-        real(RKC)                   , intent(in)    , optional      :: lmfill, rmfill
+        use pm_kind, only: RKG => RK5
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
+        real(RKG)                   , intent(in)                    :: lpfill, rpfill
+        real(RKG)                   , intent(in)    , optional      :: lmfill, rmfill
         integer(IK)                 , intent(in)                    :: lpsize, rpsize, lmsize, rmsize
-        real(RKC)                                                   :: arrayPadded(size(array,kind=IK)+lpsize+rpsize+lmsize+rmsize)
+        real(RKG)                                                   :: arrayPadded(size(array,kind=IK)+lpsize+rpsize+lmsize+rmsize)
     end function
 #endif
 
@@ -953,12 +953,12 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPaddedMargSB_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
-        real(RKC)                   , intent(in)                    :: lpfill, rpfill
-        real(RKC)                   , intent(in)    , optional      :: lmfill, rmfill
+        use pm_kind, only: RKG => RK4
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
+        real(RKG)                   , intent(in)                    :: lpfill, rpfill
+        real(RKG)                   , intent(in)    , optional      :: lmfill, rmfill
         integer(IK)                 , intent(in)                    :: lpsize, rpsize, lmsize, rmsize
-        real(RKC)                                                   :: arrayPadded(size(array,kind=IK)+lpsize+rpsize+lmsize+rmsize)
+        real(RKG)                                                   :: arrayPadded(size(array,kind=IK)+lpsize+rpsize+lmsize+rmsize)
     end function
 #endif
 
@@ -967,12 +967,12 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPaddedMargSB_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
-        real(RKC)                   , intent(in)                    :: lpfill, rpfill
-        real(RKC)                   , intent(in)    , optional      :: lmfill, rmfill
+        use pm_kind, only: RKG => RK3
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
+        real(RKG)                   , intent(in)                    :: lpfill, rpfill
+        real(RKG)                   , intent(in)    , optional      :: lmfill, rmfill
         integer(IK)                 , intent(in)                    :: lpsize, rpsize, lmsize, rmsize
-        real(RKC)                                                   :: arrayPadded(size(array,kind=IK)+lpsize+rpsize+lmsize+rmsize)
+        real(RKG)                                                   :: arrayPadded(size(array,kind=IK)+lpsize+rpsize+lmsize+rmsize)
     end function
 #endif
 
@@ -981,12 +981,12 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPaddedMargSB_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
-        real(RKC)                   , intent(in)                    :: lpfill, rpfill
-        real(RKC)                   , intent(in)    , optional      :: lmfill, rmfill
+        use pm_kind, only: RKG => RK2
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
+        real(RKG)                   , intent(in)                    :: lpfill, rpfill
+        real(RKG)                   , intent(in)    , optional      :: lmfill, rmfill
         integer(IK)                 , intent(in)                    :: lpsize, rpsize, lmsize, rmsize
-        real(RKC)                                                   :: arrayPadded(size(array,kind=IK)+lpsize+rpsize+lmsize+rmsize)
+        real(RKG)                                                   :: arrayPadded(size(array,kind=IK)+lpsize+rpsize+lmsize+rmsize)
     end function
 #endif
 
@@ -995,12 +995,12 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPaddedMargSB_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
-        real(RKC)                   , intent(in)                    :: lpfill, rpfill
-        real(RKC)                   , intent(in)    , optional      :: lmfill, rmfill
+        use pm_kind, only: RKG => RK1
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
+        real(RKG)                   , intent(in)                    :: lpfill, rpfill
+        real(RKG)                   , intent(in)    , optional      :: lmfill, rmfill
         integer(IK)                 , intent(in)                    :: lpsize, rpsize, lmsize, rmsize
-        real(RKC)                                                   :: arrayPadded(size(array,kind=IK)+lpsize+rpsize+lmsize+rmsize)
+        real(RKG)                                                   :: arrayPadded(size(array,kind=IK)+lpsize+rpsize+lmsize+rmsize)
     end function
 #endif
 
@@ -1127,10 +1127,10 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPaddedAsisSB_D0_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(:,SKC)            , intent(inout) , allocatable   :: array
+        use pm_kind, only: SKG => SK5
+        character(:,SKG)            , intent(inout) , allocatable   :: array
         integer(IK)                 , intent(in)                    :: lpsize, rpsize
-        character(1,SKC)            , intent(in)                    :: lpfill, rpfill
+        character(1,SKG)            , intent(in)                    :: lpfill, rpfill
         logical(LK)                 , intent(out)   , optional      :: failed
     end subroutine
 #endif
@@ -1140,10 +1140,10 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPaddedAsisSB_D0_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(:,SKC)            , intent(inout) , allocatable   :: array
+        use pm_kind, only: SKG => SK4
+        character(:,SKG)            , intent(inout) , allocatable   :: array
         integer(IK)                 , intent(in)                    :: lpsize, rpsize
-        character(1,SKC)            , intent(in)                    :: lpfill, rpfill
+        character(1,SKG)            , intent(in)                    :: lpfill, rpfill
         logical(LK)                 , intent(out)   , optional      :: failed
     end subroutine
 #endif
@@ -1153,10 +1153,10 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPaddedAsisSB_D0_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(:,SKC)            , intent(inout) , allocatable   :: array
+        use pm_kind, only: SKG => SK3
+        character(:,SKG)            , intent(inout) , allocatable   :: array
         integer(IK)                 , intent(in)                    :: lpsize, rpsize
-        character(1,SKC)            , intent(in)                    :: lpfill, rpfill
+        character(1,SKG)            , intent(in)                    :: lpfill, rpfill
         logical(LK)                 , intent(out)   , optional      :: failed
     end subroutine
 #endif
@@ -1166,10 +1166,10 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPaddedAsisSB_D0_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(:,SKC)            , intent(inout) , allocatable   :: array
+        use pm_kind, only: SKG => SK2
+        character(:,SKG)            , intent(inout) , allocatable   :: array
         integer(IK)                 , intent(in)                    :: lpsize, rpsize
-        character(1,SKC)            , intent(in)                    :: lpfill, rpfill
+        character(1,SKG)            , intent(in)                    :: lpfill, rpfill
         logical(LK)                 , intent(out)   , optional      :: failed
     end subroutine
 #endif
@@ -1179,10 +1179,10 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPaddedAsisSB_D0_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(:,SKC)            , intent(inout) , allocatable   :: array
+        use pm_kind, only: SKG => SK1
+        character(:,SKG)            , intent(inout) , allocatable   :: array
         integer(IK)                 , intent(in)                    :: lpsize, rpsize
-        character(1,SKC)            , intent(in)                    :: lpfill, rpfill
+        character(1,SKG)            , intent(in)                    :: lpfill, rpfill
         logical(LK)                 , intent(out)   , optional      :: failed
     end subroutine
 #endif
@@ -1194,10 +1194,10 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPaddedAsisSB_D1_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)            , intent(inout) , allocatable   :: array(:)
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)            , intent(inout) , allocatable   :: array(:)
         integer(IK)                 , intent(in)                    :: lpsize, rpsize
-        character(len(array,IK),SKC), intent(in)                    :: lpfill, rpfill
+        character(len(array,IK),SKG), intent(in)                    :: lpfill, rpfill
         logical(LK)                 , intent(out)   , optional      :: failed
     end subroutine
 #endif
@@ -1207,10 +1207,10 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPaddedAsisSB_D1_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)            , intent(inout) , allocatable   :: array(:)
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)            , intent(inout) , allocatable   :: array(:)
         integer(IK)                 , intent(in)                    :: lpsize, rpsize
-        character(len(array,IK),SKC), intent(in)                    :: lpfill, rpfill
+        character(len(array,IK),SKG), intent(in)                    :: lpfill, rpfill
         logical(LK)                 , intent(out)   , optional      :: failed
     end subroutine
 #endif
@@ -1220,10 +1220,10 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPaddedAsisSB_D1_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)            , intent(inout) , allocatable   :: array(:)
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)            , intent(inout) , allocatable   :: array(:)
         integer(IK)                 , intent(in)                    :: lpsize, rpsize
-        character(len(array,IK),SKC), intent(in)                    :: lpfill, rpfill
+        character(len(array,IK),SKG), intent(in)                    :: lpfill, rpfill
         logical(LK)                 , intent(out)   , optional      :: failed
     end subroutine
 #endif
@@ -1233,10 +1233,10 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPaddedAsisSB_D1_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)            , intent(inout) , allocatable   :: array(:)
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)            , intent(inout) , allocatable   :: array(:)
         integer(IK)                 , intent(in)                    :: lpsize, rpsize
-        character(len(array,IK),SKC), intent(in)                    :: lpfill, rpfill
+        character(len(array,IK),SKG), intent(in)                    :: lpfill, rpfill
         logical(LK)                 , intent(out)   , optional      :: failed
     end subroutine
 #endif
@@ -1246,10 +1246,10 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPaddedAsisSB_D1_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)            , intent(inout) , allocatable   :: array(:)
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)            , intent(inout) , allocatable   :: array(:)
         integer(IK)                 , intent(in)                    :: lpsize, rpsize
-        character(len(array,IK),SKC), intent(in)                    :: lpfill, rpfill
+        character(len(array,IK),SKG), intent(in)                    :: lpfill, rpfill
         logical(LK)                 , intent(out)   , optional      :: failed
     end subroutine
 #endif
@@ -1261,10 +1261,10 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPaddedAsisSB_D1_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)                , intent(inout) , allocatable   :: array(:)
+        use pm_kind, only: IKG => IK5
+        integer(IKG)                , intent(inout) , allocatable   :: array(:)
         integer(IK)                 , intent(in)                    :: lpsize, rpsize
-        integer(IKC)                , intent(in)                    :: lpfill, rpfill
+        integer(IKG)                , intent(in)                    :: lpfill, rpfill
         logical(LK)                 , intent(out)   , optional      :: failed
     end subroutine
 #endif
@@ -1274,10 +1274,10 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPaddedAsisSB_D1_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)                , intent(inout) , allocatable   :: array(:)
+        use pm_kind, only: IKG => IK4
+        integer(IKG)                , intent(inout) , allocatable   :: array(:)
         integer(IK)                 , intent(in)                    :: lpsize, rpsize
-        integer(IKC)                , intent(in)                    :: lpfill, rpfill
+        integer(IKG)                , intent(in)                    :: lpfill, rpfill
         logical(LK)                 , intent(out)   , optional      :: failed
     end subroutine
 #endif
@@ -1287,10 +1287,10 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPaddedAsisSB_D1_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)                , intent(inout) , allocatable   :: array(:)
+        use pm_kind, only: IKG => IK3
+        integer(IKG)                , intent(inout) , allocatable   :: array(:)
         integer(IK)                 , intent(in)                    :: lpsize, rpsize
-        integer(IKC)                , intent(in)                    :: lpfill, rpfill
+        integer(IKG)                , intent(in)                    :: lpfill, rpfill
         logical(LK)                 , intent(out)   , optional      :: failed
     end subroutine
 #endif
@@ -1300,10 +1300,10 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPaddedAsisSB_D1_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)                , intent(inout) , allocatable   :: array(:)
+        use pm_kind, only: IKG => IK2
+        integer(IKG)                , intent(inout) , allocatable   :: array(:)
         integer(IK)                 , intent(in)                    :: lpsize, rpsize
-        integer(IKC)                , intent(in)                    :: lpfill, rpfill
+        integer(IKG)                , intent(in)                    :: lpfill, rpfill
         logical(LK)                 , intent(out)   , optional      :: failed
     end subroutine
 #endif
@@ -1313,10 +1313,10 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPaddedAsisSB_D1_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)                , intent(inout) , allocatable   :: array(:)
+        use pm_kind, only: IKG => IK1
+        integer(IKG)                , intent(inout) , allocatable   :: array(:)
         integer(IK)                 , intent(in)                    :: lpsize, rpsize
-        integer(IKC)                , intent(in)                    :: lpfill, rpfill
+        integer(IKG)                , intent(in)                    :: lpfill, rpfill
         logical(LK)                 , intent(out)   , optional      :: failed
     end subroutine
 #endif
@@ -1328,10 +1328,10 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPaddedAsisSB_D1_LK5
 #endif
-        use pm_kind, only: LKC => LK5
-        logical(LKC)                , intent(inout) , allocatable   :: array(:)
+        use pm_kind, only: LKG => LK5
+        logical(LKG)                , intent(inout) , allocatable   :: array(:)
         integer(IK)                 , intent(in)                    :: lpsize, rpsize
-        logical(LKC)                , intent(in)                    :: lpfill, rpfill
+        logical(LKG)                , intent(in)                    :: lpfill, rpfill
         logical(LK)                 , intent(out)   , optional      :: failed
     end subroutine
 #endif
@@ -1341,10 +1341,10 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPaddedAsisSB_D1_LK4
 #endif
-        use pm_kind, only: LKC => LK4
-        logical(LKC)                , intent(inout) , allocatable   :: array(:)
+        use pm_kind, only: LKG => LK4
+        logical(LKG)                , intent(inout) , allocatable   :: array(:)
         integer(IK)                 , intent(in)                    :: lpsize, rpsize
-        logical(LKC)                , intent(in)                    :: lpfill, rpfill
+        logical(LKG)                , intent(in)                    :: lpfill, rpfill
         logical(LK)                 , intent(out)   , optional      :: failed
     end subroutine
 #endif
@@ -1354,10 +1354,10 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPaddedAsisSB_D1_LK3
 #endif
-        use pm_kind, only: LKC => LK3
-        logical(LKC)                , intent(inout) , allocatable   :: array(:)
+        use pm_kind, only: LKG => LK3
+        logical(LKG)                , intent(inout) , allocatable   :: array(:)
         integer(IK)                 , intent(in)                    :: lpsize, rpsize
-        logical(LKC)                , intent(in)                    :: lpfill, rpfill
+        logical(LKG)                , intent(in)                    :: lpfill, rpfill
         logical(LK)                 , intent(out)   , optional      :: failed
     end subroutine
 #endif
@@ -1367,10 +1367,10 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPaddedAsisSB_D1_LK2
 #endif
-        use pm_kind, only: LKC => LK2
-        logical(LKC)                , intent(inout) , allocatable   :: array(:)
+        use pm_kind, only: LKG => LK2
+        logical(LKG)                , intent(inout) , allocatable   :: array(:)
         integer(IK)                 , intent(in)                    :: lpsize, rpsize
-        logical(LKC)                , intent(in)                    :: lpfill, rpfill
+        logical(LKG)                , intent(in)                    :: lpfill, rpfill
         logical(LK)                 , intent(out)   , optional      :: failed
     end subroutine
 #endif
@@ -1380,10 +1380,10 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPaddedAsisSB_D1_LK1
 #endif
-        use pm_kind, only: LKC => LK1
-        logical(LKC)                , intent(inout) , allocatable   :: array(:)
+        use pm_kind, only: LKG => LK1
+        logical(LKG)                , intent(inout) , allocatable   :: array(:)
         integer(IK)                 , intent(in)                    :: lpsize, rpsize
-        logical(LKC)                , intent(in)                    :: lpfill, rpfill
+        logical(LKG)                , intent(in)                    :: lpfill, rpfill
         logical(LK)                 , intent(out)   , optional      :: failed
     end subroutine
 #endif
@@ -1395,10 +1395,10 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPaddedAsisSB_D1_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)                , intent(inout) , allocatable   :: array(:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG)                , intent(inout) , allocatable   :: array(:)
         integer(IK)                 , intent(in)                    :: lpsize, rpsize
-        complex(CKC)                , intent(in)                    :: lpfill, rpfill
+        complex(CKG)                , intent(in)                    :: lpfill, rpfill
         logical(LK)                 , intent(out)   , optional      :: failed
     end subroutine
 #endif
@@ -1408,10 +1408,10 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPaddedAsisSB_D1_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)                , intent(inout) , allocatable   :: array(:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG)                , intent(inout) , allocatable   :: array(:)
         integer(IK)                 , intent(in)                    :: lpsize, rpsize
-        complex(CKC)                , intent(in)                    :: lpfill, rpfill
+        complex(CKG)                , intent(in)                    :: lpfill, rpfill
         logical(LK)                 , intent(out)   , optional      :: failed
     end subroutine
 #endif
@@ -1421,10 +1421,10 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPaddedAsisSB_D1_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)                , intent(inout) , allocatable   :: array(:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG)                , intent(inout) , allocatable   :: array(:)
         integer(IK)                 , intent(in)                    :: lpsize, rpsize
-        complex(CKC)                , intent(in)                    :: lpfill, rpfill
+        complex(CKG)                , intent(in)                    :: lpfill, rpfill
         logical(LK)                 , intent(out)   , optional      :: failed
     end subroutine
 #endif
@@ -1434,10 +1434,10 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPaddedAsisSB_D1_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)                , intent(inout) , allocatable   :: array(:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG)                , intent(inout) , allocatable   :: array(:)
         integer(IK)                 , intent(in)                    :: lpsize, rpsize
-        complex(CKC)                , intent(in)                    :: lpfill, rpfill
+        complex(CKG)                , intent(in)                    :: lpfill, rpfill
         logical(LK)                 , intent(out)   , optional      :: failed
     end subroutine
 #endif
@@ -1447,10 +1447,10 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPaddedAsisSB_D1_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)                , intent(inout) , allocatable   :: array(:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG)                , intent(inout) , allocatable   :: array(:)
         integer(IK)                 , intent(in)                    :: lpsize, rpsize
-        complex(CKC)                , intent(in)                    :: lpfill, rpfill
+        complex(CKG)                , intent(in)                    :: lpfill, rpfill
         logical(LK)                 , intent(out)   , optional      :: failed
     end subroutine
 #endif
@@ -1462,10 +1462,10 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPaddedAsisSB_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)                   , intent(inout) , allocatable   :: array(:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)                   , intent(inout) , allocatable   :: array(:)
         integer(IK)                 , intent(in)                    :: lpsize, rpsize
-        real(RKC)                   , intent(in)                    :: lpfill, rpfill
+        real(RKG)                   , intent(in)                    :: lpfill, rpfill
         logical(LK)                 , intent(out)   , optional      :: failed
     end subroutine
 #endif
@@ -1475,10 +1475,10 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPaddedAsisSB_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)                   , intent(inout) , allocatable   :: array(:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)                   , intent(inout) , allocatable   :: array(:)
         integer(IK)                 , intent(in)                    :: lpsize, rpsize
-        real(RKC)                   , intent(in)                    :: lpfill, rpfill
+        real(RKG)                   , intent(in)                    :: lpfill, rpfill
         logical(LK)                 , intent(out)   , optional      :: failed
     end subroutine
 #endif
@@ -1488,10 +1488,10 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPaddedAsisSB_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)                   , intent(inout) , allocatable   :: array(:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)                   , intent(inout) , allocatable   :: array(:)
         integer(IK)                 , intent(in)                    :: lpsize, rpsize
-        real(RKC)                   , intent(in)                    :: lpfill, rpfill
+        real(RKG)                   , intent(in)                    :: lpfill, rpfill
         logical(LK)                 , intent(out)   , optional      :: failed
     end subroutine
 #endif
@@ -1501,10 +1501,10 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPaddedAsisSB_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)                   , intent(inout) , allocatable   :: array(:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)                   , intent(inout) , allocatable   :: array(:)
         integer(IK)                 , intent(in)                    :: lpsize, rpsize
-        real(RKC)                   , intent(in)                    :: lpfill, rpfill
+        real(RKG)                   , intent(in)                    :: lpfill, rpfill
         logical(LK)                 , intent(out)   , optional      :: failed
     end subroutine
 #endif
@@ -1514,10 +1514,10 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPaddedAsisSB_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)                   , intent(inout) , allocatable   :: array(:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)                   , intent(inout) , allocatable   :: array(:)
         integer(IK)                 , intent(in)                    :: lpsize, rpsize
-        real(RKC)                   , intent(in)                    :: lpfill, rpfill
+        real(RKG)                   , intent(in)                    :: lpfill, rpfill
         logical(LK)                 , intent(out)   , optional      :: failed
     end subroutine
 #endif
@@ -1535,10 +1535,10 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPaddedMargSB_D0_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(:,SKC)            , intent(inout) , allocatable   :: array
-        character(1,SKC)            , intent(in)                    :: lpfill, rpfill
-        character(1,SKC)            , intent(in)    , optional      :: lmfill, rmfill
+        use pm_kind, only: SKG => SK5
+        character(:,SKG)            , intent(inout) , allocatable   :: array
+        character(1,SKG)            , intent(in)                    :: lpfill, rpfill
+        character(1,SKG)            , intent(in)    , optional      :: lmfill, rmfill
         integer(IK)                 , intent(in)                    :: lpsize, rpsize, lmsize, rmsize
         logical(LK)                 , intent(out)   , optional      :: failed
     end subroutine
@@ -1549,10 +1549,10 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPaddedMargSB_D0_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(:,SKC)            , intent(inout) , allocatable   :: array
-        character(1,SKC)            , intent(in)                    :: lpfill, rpfill
-        character(1,SKC)            , intent(in)    , optional      :: lmfill, rmfill
+        use pm_kind, only: SKG => SK4
+        character(:,SKG)            , intent(inout) , allocatable   :: array
+        character(1,SKG)            , intent(in)                    :: lpfill, rpfill
+        character(1,SKG)            , intent(in)    , optional      :: lmfill, rmfill
         integer(IK)                 , intent(in)                    :: lpsize, rpsize, lmsize, rmsize
         logical(LK)                 , intent(out)   , optional      :: failed
     end subroutine
@@ -1563,10 +1563,10 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPaddedMargSB_D0_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(:,SKC)            , intent(inout) , allocatable   :: array
-        character(1,SKC)            , intent(in)                    :: lpfill, rpfill
-        character(1,SKC)            , intent(in)    , optional      :: lmfill, rmfill
+        use pm_kind, only: SKG => SK3
+        character(:,SKG)            , intent(inout) , allocatable   :: array
+        character(1,SKG)            , intent(in)                    :: lpfill, rpfill
+        character(1,SKG)            , intent(in)    , optional      :: lmfill, rmfill
         integer(IK)                 , intent(in)                    :: lpsize, rpsize, lmsize, rmsize
         logical(LK)                 , intent(out)   , optional      :: failed
     end subroutine
@@ -1577,10 +1577,10 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPaddedMargSB_D0_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(:,SKC)            , intent(inout) , allocatable   :: array
-        character(1,SKC)            , intent(in)                    :: lpfill, rpfill
-        character(1,SKC)            , intent(in)    , optional      :: lmfill, rmfill
+        use pm_kind, only: SKG => SK2
+        character(:,SKG)            , intent(inout) , allocatable   :: array
+        character(1,SKG)            , intent(in)                    :: lpfill, rpfill
+        character(1,SKG)            , intent(in)    , optional      :: lmfill, rmfill
         integer(IK)                 , intent(in)                    :: lpsize, rpsize, lmsize, rmsize
         logical(LK)                 , intent(out)   , optional      :: failed
     end subroutine
@@ -1591,10 +1591,10 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPaddedMargSB_D0_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(:,SKC)            , intent(inout) , allocatable   :: array
-        character(1,SKC)            , intent(in)                    :: lpfill, rpfill
-        character(1,SKC)            , intent(in)    , optional      :: lmfill, rmfill
+        use pm_kind, only: SKG => SK1
+        character(:,SKG)            , intent(inout) , allocatable   :: array
+        character(1,SKG)            , intent(in)                    :: lpfill, rpfill
+        character(1,SKG)            , intent(in)    , optional      :: lmfill, rmfill
         integer(IK)                 , intent(in)                    :: lpsize, rpsize, lmsize, rmsize
         logical(LK)                 , intent(out)   , optional      :: failed
     end subroutine
@@ -1607,10 +1607,10 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPaddedMargSB_D1_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)            , intent(inout) , allocatable   :: array(:)
-        character(len(array,IK),SKC), intent(in)                    :: lpfill, rpfill
-        character(len(array,IK),SKC), intent(in)    , optional      :: lmfill, rmfill
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)            , intent(inout) , allocatable   :: array(:)
+        character(len(array,IK),SKG), intent(in)                    :: lpfill, rpfill
+        character(len(array,IK),SKG), intent(in)    , optional      :: lmfill, rmfill
         integer(IK)                 , intent(in)                    :: lpsize, rpsize, lmsize, rmsize
         logical(LK)                 , intent(out)   , optional      :: failed
     end subroutine
@@ -1621,10 +1621,10 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPaddedMargSB_D1_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)            , intent(inout) , allocatable   :: array(:)
-        character(len(array,IK),SKC), intent(in)                    :: lpfill, rpfill
-        character(len(array,IK),SKC), intent(in)    , optional      :: lmfill, rmfill
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)            , intent(inout) , allocatable   :: array(:)
+        character(len(array,IK),SKG), intent(in)                    :: lpfill, rpfill
+        character(len(array,IK),SKG), intent(in)    , optional      :: lmfill, rmfill
         integer(IK)                 , intent(in)                    :: lpsize, rpsize, lmsize, rmsize
         logical(LK)                 , intent(out)   , optional      :: failed
     end subroutine
@@ -1635,10 +1635,10 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPaddedMargSB_D1_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)            , intent(inout) , allocatable   :: array(:)
-        character(len(array,IK),SKC), intent(in)                    :: lpfill, rpfill
-        character(len(array,IK),SKC), intent(in)    , optional      :: lmfill, rmfill
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)            , intent(inout) , allocatable   :: array(:)
+        character(len(array,IK),SKG), intent(in)                    :: lpfill, rpfill
+        character(len(array,IK),SKG), intent(in)    , optional      :: lmfill, rmfill
         integer(IK)                 , intent(in)                    :: lpsize, rpsize, lmsize, rmsize
         logical(LK)                 , intent(out)   , optional      :: failed
     end subroutine
@@ -1649,10 +1649,10 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPaddedMargSB_D1_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)            , intent(inout) , allocatable   :: array(:)
-        character(len(array,IK),SKC), intent(in)                    :: lpfill, rpfill
-        character(len(array,IK),SKC), intent(in)    , optional      :: lmfill, rmfill
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)            , intent(inout) , allocatable   :: array(:)
+        character(len(array,IK),SKG), intent(in)                    :: lpfill, rpfill
+        character(len(array,IK),SKG), intent(in)    , optional      :: lmfill, rmfill
         integer(IK)                 , intent(in)                    :: lpsize, rpsize, lmsize, rmsize
         logical(LK)                 , intent(out)   , optional      :: failed
     end subroutine
@@ -1663,10 +1663,10 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPaddedMargSB_D1_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)            , intent(inout) , allocatable   :: array(:)
-        character(len(array,IK),SKC), intent(in)                    :: lpfill, rpfill
-        character(len(array,IK),SKC), intent(in)    , optional      :: lmfill, rmfill
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)            , intent(inout) , allocatable   :: array(:)
+        character(len(array,IK),SKG), intent(in)                    :: lpfill, rpfill
+        character(len(array,IK),SKG), intent(in)    , optional      :: lmfill, rmfill
         integer(IK)                 , intent(in)                    :: lpsize, rpsize, lmsize, rmsize
         logical(LK)                 , intent(out)   , optional      :: failed
     end subroutine
@@ -1679,10 +1679,10 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPaddedMargSB_D1_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)                , intent(inout) , allocatable   :: array(:)
-        integer(IKC)                , intent(in)                    :: lpfill, rpfill
-        integer(IKC)                , intent(in)    , optional      :: lmfill, rmfill
+        use pm_kind, only: IKG => IK5
+        integer(IKG)                , intent(inout) , allocatable   :: array(:)
+        integer(IKG)                , intent(in)                    :: lpfill, rpfill
+        integer(IKG)                , intent(in)    , optional      :: lmfill, rmfill
         integer(IK)                 , intent(in)                    :: lpsize, rpsize, lmsize, rmsize
         logical(LK)                 , intent(out)   , optional      :: failed
     end subroutine
@@ -1693,10 +1693,10 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPaddedMargSB_D1_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)                , intent(inout) , allocatable   :: array(:)
-        integer(IKC)                , intent(in)                    :: lpfill, rpfill
-        integer(IKC)                , intent(in)    , optional      :: lmfill, rmfill
+        use pm_kind, only: IKG => IK4
+        integer(IKG)                , intent(inout) , allocatable   :: array(:)
+        integer(IKG)                , intent(in)                    :: lpfill, rpfill
+        integer(IKG)                , intent(in)    , optional      :: lmfill, rmfill
         integer(IK)                 , intent(in)                    :: lpsize, rpsize, lmsize, rmsize
         logical(LK)                 , intent(out)   , optional      :: failed
     end subroutine
@@ -1707,10 +1707,10 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPaddedMargSB_D1_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)                , intent(inout) , allocatable   :: array(:)
-        integer(IKC)                , intent(in)                    :: lpfill, rpfill
-        integer(IKC)                , intent(in)    , optional      :: lmfill, rmfill
+        use pm_kind, only: IKG => IK3
+        integer(IKG)                , intent(inout) , allocatable   :: array(:)
+        integer(IKG)                , intent(in)                    :: lpfill, rpfill
+        integer(IKG)                , intent(in)    , optional      :: lmfill, rmfill
         integer(IK)                 , intent(in)                    :: lpsize, rpsize, lmsize, rmsize
         logical(LK)                 , intent(out)   , optional      :: failed
     end subroutine
@@ -1721,10 +1721,10 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPaddedMargSB_D1_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)                , intent(inout) , allocatable   :: array(:)
-        integer(IKC)                , intent(in)                    :: lpfill, rpfill
-        integer(IKC)                , intent(in)    , optional      :: lmfill, rmfill
+        use pm_kind, only: IKG => IK2
+        integer(IKG)                , intent(inout) , allocatable   :: array(:)
+        integer(IKG)                , intent(in)                    :: lpfill, rpfill
+        integer(IKG)                , intent(in)    , optional      :: lmfill, rmfill
         integer(IK)                 , intent(in)                    :: lpsize, rpsize, lmsize, rmsize
         logical(LK)                 , intent(out)   , optional      :: failed
     end subroutine
@@ -1735,10 +1735,10 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPaddedMargSB_D1_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)                , intent(inout) , allocatable   :: array(:)
-        integer(IKC)                , intent(in)                    :: lpfill, rpfill
-        integer(IKC)                , intent(in)    , optional      :: lmfill, rmfill
+        use pm_kind, only: IKG => IK1
+        integer(IKG)                , intent(inout) , allocatable   :: array(:)
+        integer(IKG)                , intent(in)                    :: lpfill, rpfill
+        integer(IKG)                , intent(in)    , optional      :: lmfill, rmfill
         integer(IK)                 , intent(in)                    :: lpsize, rpsize, lmsize, rmsize
         logical(LK)                 , intent(out)   , optional      :: failed
     end subroutine
@@ -1751,10 +1751,10 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPaddedMargSB_D1_LK5
 #endif
-        use pm_kind, only: LKC => LK5
-        logical(LKC)                , intent(inout) , allocatable   :: array(:)
-        logical(LKC)                , intent(in)                    :: lpfill, rpfill
-        logical(LKC)                , intent(in)    , optional      :: lmfill, rmfill
+        use pm_kind, only: LKG => LK5
+        logical(LKG)                , intent(inout) , allocatable   :: array(:)
+        logical(LKG)                , intent(in)                    :: lpfill, rpfill
+        logical(LKG)                , intent(in)    , optional      :: lmfill, rmfill
         integer(IK)                 , intent(in)                    :: lpsize, rpsize, lmsize, rmsize
         logical(LK)                 , intent(out)   , optional      :: failed
     end subroutine
@@ -1765,10 +1765,10 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPaddedMargSB_D1_LK4
 #endif
-        use pm_kind, only: LKC => LK4
-        logical(LKC)                , intent(inout) , allocatable   :: array(:)
-        logical(LKC)                , intent(in)                    :: lpfill, rpfill
-        logical(LKC)                , intent(in)    , optional      :: lmfill, rmfill
+        use pm_kind, only: LKG => LK4
+        logical(LKG)                , intent(inout) , allocatable   :: array(:)
+        logical(LKG)                , intent(in)                    :: lpfill, rpfill
+        logical(LKG)                , intent(in)    , optional      :: lmfill, rmfill
         integer(IK)                 , intent(in)                    :: lpsize, rpsize, lmsize, rmsize
         logical(LK)                 , intent(out)   , optional      :: failed
     end subroutine
@@ -1779,10 +1779,10 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPaddedMargSB_D1_LK3
 #endif
-        use pm_kind, only: LKC => LK3
-        logical(LKC)                , intent(inout) , allocatable   :: array(:)
-        logical(LKC)                , intent(in)                    :: lpfill, rpfill
-        logical(LKC)                , intent(in)    , optional      :: lmfill, rmfill
+        use pm_kind, only: LKG => LK3
+        logical(LKG)                , intent(inout) , allocatable   :: array(:)
+        logical(LKG)                , intent(in)                    :: lpfill, rpfill
+        logical(LKG)                , intent(in)    , optional      :: lmfill, rmfill
         integer(IK)                 , intent(in)                    :: lpsize, rpsize, lmsize, rmsize
         logical(LK)                 , intent(out)   , optional      :: failed
     end subroutine
@@ -1793,10 +1793,10 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPaddedMargSB_D1_LK2
 #endif
-        use pm_kind, only: LKC => LK2
-        logical(LKC)                , intent(inout) , allocatable   :: array(:)
-        logical(LKC)                , intent(in)                    :: lpfill, rpfill
-        logical(LKC)                , intent(in)    , optional      :: lmfill, rmfill
+        use pm_kind, only: LKG => LK2
+        logical(LKG)                , intent(inout) , allocatable   :: array(:)
+        logical(LKG)                , intent(in)                    :: lpfill, rpfill
+        logical(LKG)                , intent(in)    , optional      :: lmfill, rmfill
         integer(IK)                 , intent(in)                    :: lpsize, rpsize, lmsize, rmsize
         logical(LK)                 , intent(out)   , optional      :: failed
     end subroutine
@@ -1807,10 +1807,10 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPaddedMargSB_D1_LK1
 #endif
-        use pm_kind, only: LKC => LK1
-        logical(LKC)                , intent(inout) , allocatable   :: array(:)
-        logical(LKC)                , intent(in)                    :: lpfill, rpfill
-        logical(LKC)                , intent(in)    , optional      :: lmfill, rmfill
+        use pm_kind, only: LKG => LK1
+        logical(LKG)                , intent(inout) , allocatable   :: array(:)
+        logical(LKG)                , intent(in)                    :: lpfill, rpfill
+        logical(LKG)                , intent(in)    , optional      :: lmfill, rmfill
         integer(IK)                 , intent(in)                    :: lpsize, rpsize, lmsize, rmsize
         logical(LK)                 , intent(out)   , optional      :: failed
     end subroutine
@@ -1823,10 +1823,10 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPaddedMargSB_D1_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)                , intent(inout) , allocatable   :: array(:)
-        complex(CKC)                , intent(in)                    :: lpfill, rpfill
-        complex(CKC)                , intent(in)    , optional      :: lmfill, rmfill
+        use pm_kind, only: CKG => CK5
+        complex(CKG)                , intent(inout) , allocatable   :: array(:)
+        complex(CKG)                , intent(in)                    :: lpfill, rpfill
+        complex(CKG)                , intent(in)    , optional      :: lmfill, rmfill
         integer(IK)                 , intent(in)                    :: lpsize, rpsize, lmsize, rmsize
         logical(LK)                 , intent(out)   , optional      :: failed
     end subroutine
@@ -1837,10 +1837,10 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPaddedMargSB_D1_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)                , intent(inout) , allocatable   :: array(:)
-        complex(CKC)                , intent(in)                    :: lpfill, rpfill
-        complex(CKC)                , intent(in)    , optional      :: lmfill, rmfill
+        use pm_kind, only: CKG => CK4
+        complex(CKG)                , intent(inout) , allocatable   :: array(:)
+        complex(CKG)                , intent(in)                    :: lpfill, rpfill
+        complex(CKG)                , intent(in)    , optional      :: lmfill, rmfill
         integer(IK)                 , intent(in)                    :: lpsize, rpsize, lmsize, rmsize
         logical(LK)                 , intent(out)   , optional      :: failed
     end subroutine
@@ -1851,10 +1851,10 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPaddedMargSB_D1_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)                , intent(inout) , allocatable   :: array(:)
-        complex(CKC)                , intent(in)                    :: lpfill, rpfill
-        complex(CKC)                , intent(in)    , optional      :: lmfill, rmfill
+        use pm_kind, only: CKG => CK3
+        complex(CKG)                , intent(inout) , allocatable   :: array(:)
+        complex(CKG)                , intent(in)                    :: lpfill, rpfill
+        complex(CKG)                , intent(in)    , optional      :: lmfill, rmfill
         integer(IK)                 , intent(in)                    :: lpsize, rpsize, lmsize, rmsize
         logical(LK)                 , intent(out)   , optional      :: failed
     end subroutine
@@ -1865,10 +1865,10 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPaddedMargSB_D1_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)                , intent(inout) , allocatable   :: array(:)
-        complex(CKC)                , intent(in)                    :: lpfill, rpfill
-        complex(CKC)                , intent(in)    , optional      :: lmfill, rmfill
+        use pm_kind, only: CKG => CK2
+        complex(CKG)                , intent(inout) , allocatable   :: array(:)
+        complex(CKG)                , intent(in)                    :: lpfill, rpfill
+        complex(CKG)                , intent(in)    , optional      :: lmfill, rmfill
         integer(IK)                 , intent(in)                    :: lpsize, rpsize, lmsize, rmsize
         logical(LK)                 , intent(out)   , optional      :: failed
     end subroutine
@@ -1879,10 +1879,10 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPaddedMargSB_D1_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)                , intent(inout) , allocatable   :: array(:)
-        complex(CKC)                , intent(in)                    :: lpfill, rpfill
-        complex(CKC)                , intent(in)    , optional      :: lmfill, rmfill
+        use pm_kind, only: CKG => CK1
+        complex(CKG)                , intent(inout) , allocatable   :: array(:)
+        complex(CKG)                , intent(in)                    :: lpfill, rpfill
+        complex(CKG)                , intent(in)    , optional      :: lmfill, rmfill
         integer(IK)                 , intent(in)                    :: lpsize, rpsize, lmsize, rmsize
         logical(LK)                 , intent(out)   , optional      :: failed
     end subroutine
@@ -1895,10 +1895,10 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPaddedMargSB_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)                   , intent(inout) , allocatable   :: array(:)
-        real(RKC)                   , intent(in)                    :: lpfill, rpfill
-        real(RKC)                   , intent(in)    , optional      :: lmfill, rmfill
+        use pm_kind, only: RKG => RK5
+        real(RKG)                   , intent(inout) , allocatable   :: array(:)
+        real(RKG)                   , intent(in)                    :: lpfill, rpfill
+        real(RKG)                   , intent(in)    , optional      :: lmfill, rmfill
         integer(IK)                 , intent(in)                    :: lpsize, rpsize, lmsize, rmsize
         logical(LK)                 , intent(out)   , optional      :: failed
     end subroutine
@@ -1909,10 +1909,10 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPaddedMargSB_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)                   , intent(inout) , allocatable   :: array(:)
-        real(RKC)                   , intent(in)                    :: lpfill, rpfill
-        real(RKC)                   , intent(in)    , optional      :: lmfill, rmfill
+        use pm_kind, only: RKG => RK4
+        real(RKG)                   , intent(inout) , allocatable   :: array(:)
+        real(RKG)                   , intent(in)                    :: lpfill, rpfill
+        real(RKG)                   , intent(in)    , optional      :: lmfill, rmfill
         integer(IK)                 , intent(in)                    :: lpsize, rpsize, lmsize, rmsize
         logical(LK)                 , intent(out)   , optional      :: failed
     end subroutine
@@ -1923,10 +1923,10 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPaddedMargSB_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)                   , intent(inout) , allocatable   :: array(:)
-        real(RKC)                   , intent(in)                    :: lpfill, rpfill
-        real(RKC)                   , intent(in)    , optional      :: lmfill, rmfill
+        use pm_kind, only: RKG => RK3
+        real(RKG)                   , intent(inout) , allocatable   :: array(:)
+        real(RKG)                   , intent(in)                    :: lpfill, rpfill
+        real(RKG)                   , intent(in)    , optional      :: lmfill, rmfill
         integer(IK)                 , intent(in)                    :: lpsize, rpsize, lmsize, rmsize
         logical(LK)                 , intent(out)   , optional      :: failed
     end subroutine
@@ -1937,10 +1937,10 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPaddedMargSB_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)                   , intent(inout) , allocatable   :: array(:)
-        real(RKC)                   , intent(in)                    :: lpfill, rpfill
-        real(RKC)                   , intent(in)    , optional      :: lmfill, rmfill
+        use pm_kind, only: RKG => RK2
+        real(RKG)                   , intent(inout) , allocatable   :: array(:)
+        real(RKG)                   , intent(in)                    :: lpfill, rpfill
+        real(RKG)                   , intent(in)    , optional      :: lmfill, rmfill
         integer(IK)                 , intent(in)                    :: lpsize, rpsize, lmsize, rmsize
         logical(LK)                 , intent(out)   , optional      :: failed
     end subroutine
@@ -1951,10 +1951,10 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPaddedMargSB_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)                   , intent(inout) , allocatable   :: array(:)
-        real(RKC)                   , intent(in)                    :: lpfill, rpfill
-        real(RKC)                   , intent(in)    , optional      :: lmfill, rmfill
+        use pm_kind, only: RKG => RK1
+        real(RKG)                   , intent(inout) , allocatable   :: array(:)
+        real(RKG)                   , intent(in)                    :: lpfill, rpfill
+        real(RKG)                   , intent(in)    , optional      :: lmfill, rmfill
         integer(IK)                 , intent(in)                    :: lpsize, rpsize, lmsize, rmsize
         logical(LK)                 , intent(out)   , optional      :: failed
     end subroutine
@@ -2073,11 +2073,11 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPaddedAsisSL_D0_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)            , intent(in)                    :: array
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)            , intent(in)                    :: array
         integer(IK)                 , intent(in)                    :: lpsize
-        character(1,SKC)            , intent(in)                    :: lpfill
-        character(len(array,IK)+lpsize,SKC)                         :: arrayPadded
+        character(1,SKG)            , intent(in)                    :: lpfill
+        character(len(array,IK)+lpsize,SKG)                         :: arrayPadded
     end function
 #endif
 
@@ -2086,11 +2086,11 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPaddedAsisSL_D0_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)            , intent(in)                    :: array
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)            , intent(in)                    :: array
         integer(IK)                 , intent(in)                    :: lpsize
-        character(1,SKC)            , intent(in)                    :: lpfill
-        character(len(array,IK)+lpsize,SKC)                         :: arrayPadded
+        character(1,SKG)            , intent(in)                    :: lpfill
+        character(len(array,IK)+lpsize,SKG)                         :: arrayPadded
     end function
 #endif
 
@@ -2099,11 +2099,11 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPaddedAsisSL_D0_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)            , intent(in)                    :: array
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)            , intent(in)                    :: array
         integer(IK)                 , intent(in)                    :: lpsize
-        character(1,SKC)            , intent(in)                    :: lpfill
-        character(len(array,IK)+lpsize,SKC)                         :: arrayPadded
+        character(1,SKG)            , intent(in)                    :: lpfill
+        character(len(array,IK)+lpsize,SKG)                         :: arrayPadded
     end function
 #endif
 
@@ -2112,11 +2112,11 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPaddedAsisSL_D0_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)            , intent(in)                    :: array
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)            , intent(in)                    :: array
         integer(IK)                 , intent(in)                    :: lpsize
-        character(1,SKC)            , intent(in)                    :: lpfill
-        character(len(array,IK)+lpsize,SKC)                         :: arrayPadded
+        character(1,SKG)            , intent(in)                    :: lpfill
+        character(len(array,IK)+lpsize,SKG)                         :: arrayPadded
     end function
 #endif
 
@@ -2125,11 +2125,11 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPaddedAsisSL_D0_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)            , intent(in)                    :: array
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)            , intent(in)                    :: array
         integer(IK)                 , intent(in)                    :: lpsize
-        character(1,SKC)            , intent(in)                    :: lpfill
-        character(len(array,IK)+lpsize,SKC)                         :: arrayPadded
+        character(1,SKG)            , intent(in)                    :: lpfill
+        character(len(array,IK)+lpsize,SKG)                         :: arrayPadded
     end function
 #endif
 
@@ -2140,11 +2140,11 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPaddedAsisSL_D1_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
         integer(IK)                 , intent(in)                    :: lpsize
-        character(len(array,IK),SKC), intent(in)                    :: lpfill
-        character(len(array,IK),SKC)                                :: arrayPadded(size(array,kind=IK)+lpsize)
+        character(len(array,IK),SKG), intent(in)                    :: lpfill
+        character(len(array,IK),SKG)                                :: arrayPadded(size(array,kind=IK)+lpsize)
     end function
 #endif
 
@@ -2153,11 +2153,11 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPaddedAsisSL_D1_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
         integer(IK)                 , intent(in)                    :: lpsize
-        character(len(array,IK),SKC), intent(in)                    :: lpfill
-        character(len(array,IK),SKC)                                :: arrayPadded(size(array,kind=IK)+lpsize)
+        character(len(array,IK),SKG), intent(in)                    :: lpfill
+        character(len(array,IK),SKG)                                :: arrayPadded(size(array,kind=IK)+lpsize)
     end function
 #endif
 
@@ -2166,11 +2166,11 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPaddedAsisSL_D1_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
         integer(IK)                 , intent(in)                    :: lpsize
-        character(len(array,IK),SKC), intent(in)                    :: lpfill
-        character(len(array,IK),SKC)                                :: arrayPadded(size(array,kind=IK)+lpsize)
+        character(len(array,IK),SKG), intent(in)                    :: lpfill
+        character(len(array,IK),SKG)                                :: arrayPadded(size(array,kind=IK)+lpsize)
     end function
 #endif
 
@@ -2179,11 +2179,11 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPaddedAsisSL_D1_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
         integer(IK)                 , intent(in)                    :: lpsize
-        character(len(array,IK),SKC), intent(in)                    :: lpfill
-        character(len(array,IK),SKC)                                :: arrayPadded(size(array,kind=IK)+lpsize)
+        character(len(array,IK),SKG), intent(in)                    :: lpfill
+        character(len(array,IK),SKG)                                :: arrayPadded(size(array,kind=IK)+lpsize)
     end function
 #endif
 
@@ -2192,11 +2192,11 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPaddedAsisSL_D1_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
         integer(IK)                 , intent(in)                    :: lpsize
-        character(len(array,IK),SKC), intent(in)                    :: lpfill
-        character(len(array,IK),SKC)                                :: arrayPadded(size(array,kind=IK)+lpsize)
+        character(len(array,IK),SKG), intent(in)                    :: lpfill
+        character(len(array,IK),SKG)                                :: arrayPadded(size(array,kind=IK)+lpsize)
     end function
 #endif
 
@@ -2207,11 +2207,11 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPaddedAsisSL_D1_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK5
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
         integer(IK)                 , intent(in)                    :: lpsize
-        integer(IKC)                , intent(in)                    :: lpfill
-        integer(IKC)                                                :: arrayPadded(size(array,kind=IK)+lpsize)
+        integer(IKG)                , intent(in)                    :: lpfill
+        integer(IKG)                                                :: arrayPadded(size(array,kind=IK)+lpsize)
     end function
 #endif
 
@@ -2220,11 +2220,11 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPaddedAsisSL_D1_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK4
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
         integer(IK)                 , intent(in)                    :: lpsize
-        integer(IKC)                , intent(in)                    :: lpfill
-        integer(IKC)                                                :: arrayPadded(size(array,kind=IK)+lpsize)
+        integer(IKG)                , intent(in)                    :: lpfill
+        integer(IKG)                                                :: arrayPadded(size(array,kind=IK)+lpsize)
     end function
 #endif
 
@@ -2233,11 +2233,11 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPaddedAsisSL_D1_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK3
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
         integer(IK)                 , intent(in)                    :: lpsize
-        integer(IKC)                , intent(in)                    :: lpfill
-        integer(IKC)                                                :: arrayPadded(size(array,kind=IK)+lpsize)
+        integer(IKG)                , intent(in)                    :: lpfill
+        integer(IKG)                                                :: arrayPadded(size(array,kind=IK)+lpsize)
     end function
 #endif
 
@@ -2246,11 +2246,11 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPaddedAsisSL_D1_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK2
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
         integer(IK)                 , intent(in)                    :: lpsize
-        integer(IKC)                , intent(in)                    :: lpfill
-        integer(IKC)                                                :: arrayPadded(size(array,kind=IK)+lpsize)
+        integer(IKG)                , intent(in)                    :: lpfill
+        integer(IKG)                                                :: arrayPadded(size(array,kind=IK)+lpsize)
     end function
 #endif
 
@@ -2259,11 +2259,11 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPaddedAsisSL_D1_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK1
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
         integer(IK)                 , intent(in)                    :: lpsize
-        integer(IKC)                , intent(in)                    :: lpfill
-        integer(IKC)                                                :: arrayPadded(size(array,kind=IK)+lpsize)
+        integer(IKG)                , intent(in)                    :: lpfill
+        integer(IKG)                                                :: arrayPadded(size(array,kind=IK)+lpsize)
     end function
 #endif
 
@@ -2274,11 +2274,11 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPaddedAsisSL_D1_LK5
 #endif
-        use pm_kind, only: LKC => LK5
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: LKG => LK5
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
         integer(IK)                 , intent(in)                    :: lpsize
-        logical(LKC)                , intent(in)                    :: lpfill
-        logical(LKC)                                                :: arrayPadded(size(array,kind=IK)+lpsize)
+        logical(LKG)                , intent(in)                    :: lpfill
+        logical(LKG)                                                :: arrayPadded(size(array,kind=IK)+lpsize)
     end function
 #endif
 
@@ -2287,11 +2287,11 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPaddedAsisSL_D1_LK4
 #endif
-        use pm_kind, only: LKC => LK4
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: LKG => LK4
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
         integer(IK)                 , intent(in)                    :: lpsize
-        logical(LKC)                , intent(in)                    :: lpfill
-        logical(LKC)                                                :: arrayPadded(size(array,kind=IK)+lpsize)
+        logical(LKG)                , intent(in)                    :: lpfill
+        logical(LKG)                                                :: arrayPadded(size(array,kind=IK)+lpsize)
     end function
 #endif
 
@@ -2300,11 +2300,11 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPaddedAsisSL_D1_LK3
 #endif
-        use pm_kind, only: LKC => LK3
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: LKG => LK3
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
         integer(IK)                 , intent(in)                    :: lpsize
-        logical(LKC)                , intent(in)                    :: lpfill
-        logical(LKC)                                                :: arrayPadded(size(array,kind=IK)+lpsize)
+        logical(LKG)                , intent(in)                    :: lpfill
+        logical(LKG)                                                :: arrayPadded(size(array,kind=IK)+lpsize)
     end function
 #endif
 
@@ -2313,11 +2313,11 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPaddedAsisSL_D1_LK2
 #endif
-        use pm_kind, only: LKC => LK2
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: LKG => LK2
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
         integer(IK)                 , intent(in)                    :: lpsize
-        logical(LKC)                , intent(in)                    :: lpfill
-        logical(LKC)                                                :: arrayPadded(size(array,kind=IK)+lpsize)
+        logical(LKG)                , intent(in)                    :: lpfill
+        logical(LKG)                                                :: arrayPadded(size(array,kind=IK)+lpsize)
     end function
 #endif
 
@@ -2326,11 +2326,11 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPaddedAsisSL_D1_LK1
 #endif
-        use pm_kind, only: LKC => LK1
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: LKG => LK1
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
         integer(IK)                 , intent(in)                    :: lpsize
-        logical(LKC)                , intent(in)                    :: lpfill
-        logical(LKC)                                                :: arrayPadded(size(array,kind=IK)+lpsize)
+        logical(LKG)                , intent(in)                    :: lpfill
+        logical(LKG)                                                :: arrayPadded(size(array,kind=IK)+lpsize)
     end function
 #endif
 
@@ -2341,11 +2341,11 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPaddedAsisSL_D1_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
         integer(IK)                 , intent(in)                    :: lpsize
-        complex(CKC)                , intent(in)                    :: lpfill
-        complex(CKC)                                                :: arrayPadded(size(array,kind=IK)+lpsize)
+        complex(CKG)                , intent(in)                    :: lpfill
+        complex(CKG)                                                :: arrayPadded(size(array,kind=IK)+lpsize)
     end function
 #endif
 
@@ -2354,11 +2354,11 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPaddedAsisSL_D1_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
         integer(IK)                 , intent(in)                    :: lpsize
-        complex(CKC)                , intent(in)                    :: lpfill
-        complex(CKC)                                                :: arrayPadded(size(array,kind=IK)+lpsize)
+        complex(CKG)                , intent(in)                    :: lpfill
+        complex(CKG)                                                :: arrayPadded(size(array,kind=IK)+lpsize)
     end function
 #endif
 
@@ -2367,11 +2367,11 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPaddedAsisSL_D1_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
         integer(IK)                 , intent(in)                    :: lpsize
-        complex(CKC)                , intent(in)                    :: lpfill
-        complex(CKC)                                                :: arrayPadded(size(array,kind=IK)+lpsize)
+        complex(CKG)                , intent(in)                    :: lpfill
+        complex(CKG)                                                :: arrayPadded(size(array,kind=IK)+lpsize)
     end function
 #endif
 
@@ -2380,11 +2380,11 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPaddedAsisSL_D1_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
         integer(IK)                 , intent(in)                    :: lpsize
-        complex(CKC)                , intent(in)                    :: lpfill
-        complex(CKC)                                                :: arrayPadded(size(array,kind=IK)+lpsize)
+        complex(CKG)                , intent(in)                    :: lpfill
+        complex(CKG)                                                :: arrayPadded(size(array,kind=IK)+lpsize)
     end function
 #endif
 
@@ -2393,11 +2393,11 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPaddedAsisSL_D1_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
         integer(IK)                 , intent(in)                    :: lpsize
-        complex(CKC)                , intent(in)                    :: lpfill
-        complex(CKC)                                                :: arrayPadded(size(array,kind=IK)+lpsize)
+        complex(CKG)                , intent(in)                    :: lpfill
+        complex(CKG)                                                :: arrayPadded(size(array,kind=IK)+lpsize)
     end function
 #endif
 
@@ -2408,11 +2408,11 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPaddedAsisSL_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
         integer(IK)                 , intent(in)                    :: lpsize
-        real(RKC)                   , intent(in)                    :: lpfill
-        real(RKC)                                                   :: arrayPadded(size(array,kind=IK)+lpsize)
+        real(RKG)                   , intent(in)                    :: lpfill
+        real(RKG)                                                   :: arrayPadded(size(array,kind=IK)+lpsize)
     end function
 #endif
 
@@ -2421,11 +2421,11 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPaddedAsisSL_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
         integer(IK)                 , intent(in)                    :: lpsize
-        real(RKC)                   , intent(in)                    :: lpfill
-        real(RKC)                                                   :: arrayPadded(size(array,kind=IK)+lpsize)
+        real(RKG)                   , intent(in)                    :: lpfill
+        real(RKG)                                                   :: arrayPadded(size(array,kind=IK)+lpsize)
     end function
 #endif
 
@@ -2434,11 +2434,11 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPaddedAsisSL_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
         integer(IK)                 , intent(in)                    :: lpsize
-        real(RKC)                   , intent(in)                    :: lpfill
-        real(RKC)                                                   :: arrayPadded(size(array,kind=IK)+lpsize)
+        real(RKG)                   , intent(in)                    :: lpfill
+        real(RKG)                                                   :: arrayPadded(size(array,kind=IK)+lpsize)
     end function
 #endif
 
@@ -2447,11 +2447,11 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPaddedAsisSL_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
         integer(IK)                 , intent(in)                    :: lpsize
-        real(RKC)                   , intent(in)                    :: lpfill
-        real(RKC)                                                   :: arrayPadded(size(array,kind=IK)+lpsize)
+        real(RKG)                   , intent(in)                    :: lpfill
+        real(RKG)                                                   :: arrayPadded(size(array,kind=IK)+lpsize)
     end function
 #endif
 
@@ -2460,11 +2460,11 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPaddedAsisSL_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
         integer(IK)                 , intent(in)                    :: lpsize
-        real(RKC)                   , intent(in)                    :: lpfill
-        real(RKC)                                                   :: arrayPadded(size(array,kind=IK)+lpsize)
+        real(RKG)                   , intent(in)                    :: lpfill
+        real(RKG)                                                   :: arrayPadded(size(array,kind=IK)+lpsize)
     end function
 #endif
 
@@ -2481,12 +2481,12 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPaddedMargSL_D0_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)            , intent(in)                    :: array
-        character(1,SKC)            , intent(in)                    :: lpfill
-        character(1,SKC)            , intent(in)    , optional      :: lmfill
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)            , intent(in)                    :: array
+        character(1,SKG)            , intent(in)                    :: lpfill
+        character(1,SKG)            , intent(in)    , optional      :: lmfill
         integer(IK)                 , intent(in)                    :: lpsize, lmsize
-        character(len(array,IK)+lpsize+lmsize,SKC)                  :: arrayPadded
+        character(len(array,IK)+lpsize+lmsize,SKG)                  :: arrayPadded
     end function
 #endif
 
@@ -2495,12 +2495,12 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPaddedMargSL_D0_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)            , intent(in)                    :: array
-        character(1,SKC)            , intent(in)                    :: lpfill
-        character(1,SKC)            , intent(in)    , optional      :: lmfill
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)            , intent(in)                    :: array
+        character(1,SKG)            , intent(in)                    :: lpfill
+        character(1,SKG)            , intent(in)    , optional      :: lmfill
         integer(IK)                 , intent(in)                    :: lpsize, lmsize
-        character(len(array,IK)+lpsize+lmsize,SKC)                  :: arrayPadded
+        character(len(array,IK)+lpsize+lmsize,SKG)                  :: arrayPadded
     end function
 #endif
 
@@ -2509,12 +2509,12 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPaddedMargSL_D0_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)            , intent(in)                    :: array
-        character(1,SKC)            , intent(in)                    :: lpfill
-        character(1,SKC)            , intent(in)    , optional      :: lmfill
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)            , intent(in)                    :: array
+        character(1,SKG)            , intent(in)                    :: lpfill
+        character(1,SKG)            , intent(in)    , optional      :: lmfill
         integer(IK)                 , intent(in)                    :: lpsize, lmsize
-        character(len(array,IK)+lpsize+lmsize,SKC)                  :: arrayPadded
+        character(len(array,IK)+lpsize+lmsize,SKG)                  :: arrayPadded
     end function
 #endif
 
@@ -2523,12 +2523,12 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPaddedMargSL_D0_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)            , intent(in)                    :: array
-        character(1,SKC)            , intent(in)                    :: lpfill
-        character(1,SKC)            , intent(in)    , optional      :: lmfill
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)            , intent(in)                    :: array
+        character(1,SKG)            , intent(in)                    :: lpfill
+        character(1,SKG)            , intent(in)    , optional      :: lmfill
         integer(IK)                 , intent(in)                    :: lpsize, lmsize
-        character(len(array,IK)+lpsize+lmsize,SKC)                  :: arrayPadded
+        character(len(array,IK)+lpsize+lmsize,SKG)                  :: arrayPadded
     end function
 #endif
 
@@ -2537,12 +2537,12 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPaddedMargSL_D0_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)            , intent(in)                    :: array
-        character(1,SKC)            , intent(in)                    :: lpfill
-        character(1,SKC)            , intent(in)    , optional      :: lmfill
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)            , intent(in)                    :: array
+        character(1,SKG)            , intent(in)                    :: lpfill
+        character(1,SKG)            , intent(in)    , optional      :: lmfill
         integer(IK)                 , intent(in)                    :: lpsize, lmsize
-        character(len(array,IK)+lpsize+lmsize,SKC)                  :: arrayPadded
+        character(len(array,IK)+lpsize+lmsize,SKG)                  :: arrayPadded
     end function
 #endif
 
@@ -2553,12 +2553,12 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPaddedMargSL_D1_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
-        character(len(array,IK),SKC), intent(in)                    :: lpfill
-        character(len(array,IK),SKC), intent(in)    , optional      :: lmfill
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
+        character(len(array,IK),SKG), intent(in)                    :: lpfill
+        character(len(array,IK),SKG), intent(in)    , optional      :: lmfill
         integer(IK)                 , intent(in)                    :: lpsize, lmsize
-        character(len(array,IK),SKC)                                :: arrayPadded(size(array,kind=IK)+lpsize+lmsize)
+        character(len(array,IK),SKG)                                :: arrayPadded(size(array,kind=IK)+lpsize+lmsize)
     end function
 #endif
 
@@ -2567,12 +2567,12 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPaddedMargSL_D1_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
-        character(len(array,IK),SKC), intent(in)                    :: lpfill
-        character(len(array,IK),SKC), intent(in)    , optional      :: lmfill
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
+        character(len(array,IK),SKG), intent(in)                    :: lpfill
+        character(len(array,IK),SKG), intent(in)    , optional      :: lmfill
         integer(IK)                 , intent(in)                    :: lpsize, lmsize
-        character(len(array,IK),SKC)                                :: arrayPadded(size(array,kind=IK)+lpsize+lmsize)
+        character(len(array,IK),SKG)                                :: arrayPadded(size(array,kind=IK)+lpsize+lmsize)
     end function
 #endif
 
@@ -2581,12 +2581,12 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPaddedMargSL_D1_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
-        character(len(array,IK),SKC), intent(in)                    :: lpfill
-        character(len(array,IK),SKC), intent(in)    , optional      :: lmfill
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
+        character(len(array,IK),SKG), intent(in)                    :: lpfill
+        character(len(array,IK),SKG), intent(in)    , optional      :: lmfill
         integer(IK)                 , intent(in)                    :: lpsize, lmsize
-        character(len(array,IK),SKC)                                :: arrayPadded(size(array,kind=IK)+lpsize+lmsize)
+        character(len(array,IK),SKG)                                :: arrayPadded(size(array,kind=IK)+lpsize+lmsize)
     end function
 #endif
 
@@ -2595,12 +2595,12 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPaddedMargSL_D1_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
-        character(len(array,IK),SKC), intent(in)                    :: lpfill
-        character(len(array,IK),SKC), intent(in)    , optional      :: lmfill
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
+        character(len(array,IK),SKG), intent(in)                    :: lpfill
+        character(len(array,IK),SKG), intent(in)    , optional      :: lmfill
         integer(IK)                 , intent(in)                    :: lpsize, lmsize
-        character(len(array,IK),SKC)                                :: arrayPadded(size(array,kind=IK)+lpsize+lmsize)
+        character(len(array,IK),SKG)                                :: arrayPadded(size(array,kind=IK)+lpsize+lmsize)
     end function
 #endif
 
@@ -2609,12 +2609,12 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPaddedMargSL_D1_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
-        character(len(array,IK),SKC), intent(in)                    :: lpfill
-        character(len(array,IK),SKC), intent(in)    , optional      :: lmfill
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
+        character(len(array,IK),SKG), intent(in)                    :: lpfill
+        character(len(array,IK),SKG), intent(in)    , optional      :: lmfill
         integer(IK)                 , intent(in)                    :: lpsize, lmsize
-        character(len(array,IK),SKC)                                :: arrayPadded(size(array,kind=IK)+lpsize+lmsize)
+        character(len(array,IK),SKG)                                :: arrayPadded(size(array,kind=IK)+lpsize+lmsize)
     end function
 #endif
 
@@ -2625,12 +2625,12 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPaddedMargSL_D1_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
-        integer(IKC)                , intent(in)                    :: lpfill
-        integer(IKC)                , intent(in)    , optional      :: lmfill
+        use pm_kind, only: IKG => IK5
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
+        integer(IKG)                , intent(in)                    :: lpfill
+        integer(IKG)                , intent(in)    , optional      :: lmfill
         integer(IK)                 , intent(in)                    :: lpsize, lmsize
-        integer(IKC)                                                :: arrayPadded(size(array,kind=IK)+lpsize+lmsize)
+        integer(IKG)                                                :: arrayPadded(size(array,kind=IK)+lpsize+lmsize)
     end function
 #endif
 
@@ -2639,12 +2639,12 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPaddedMargSL_D1_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
-        integer(IKC)                , intent(in)                    :: lpfill
-        integer(IKC)                , intent(in)    , optional      :: lmfill
+        use pm_kind, only: IKG => IK4
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
+        integer(IKG)                , intent(in)                    :: lpfill
+        integer(IKG)                , intent(in)    , optional      :: lmfill
         integer(IK)                 , intent(in)                    :: lpsize, lmsize
-        integer(IKC)                                                :: arrayPadded(size(array,kind=IK)+lpsize+lmsize)
+        integer(IKG)                                                :: arrayPadded(size(array,kind=IK)+lpsize+lmsize)
     end function
 #endif
 
@@ -2653,12 +2653,12 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPaddedMargSL_D1_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
-        integer(IKC)                , intent(in)                    :: lpfill
-        integer(IKC)                , intent(in)    , optional      :: lmfill
+        use pm_kind, only: IKG => IK3
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
+        integer(IKG)                , intent(in)                    :: lpfill
+        integer(IKG)                , intent(in)    , optional      :: lmfill
         integer(IK)                 , intent(in)                    :: lpsize, lmsize
-        integer(IKC)                                                :: arrayPadded(size(array,kind=IK)+lpsize+lmsize)
+        integer(IKG)                                                :: arrayPadded(size(array,kind=IK)+lpsize+lmsize)
     end function
 #endif
 
@@ -2667,12 +2667,12 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPaddedMargSL_D1_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
-        integer(IKC)                , intent(in)                    :: lpfill
-        integer(IKC)                , intent(in)    , optional      :: lmfill
+        use pm_kind, only: IKG => IK2
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
+        integer(IKG)                , intent(in)                    :: lpfill
+        integer(IKG)                , intent(in)    , optional      :: lmfill
         integer(IK)                 , intent(in)                    :: lpsize, lmsize
-        integer(IKC)                                                :: arrayPadded(size(array,kind=IK)+lpsize+lmsize)
+        integer(IKG)                                                :: arrayPadded(size(array,kind=IK)+lpsize+lmsize)
     end function
 #endif
 
@@ -2681,12 +2681,12 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPaddedMargSL_D1_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
-        integer(IKC)                , intent(in)                    :: lpfill
-        integer(IKC)                , intent(in)    , optional      :: lmfill
+        use pm_kind, only: IKG => IK1
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
+        integer(IKG)                , intent(in)                    :: lpfill
+        integer(IKG)                , intent(in)    , optional      :: lmfill
         integer(IK)                 , intent(in)                    :: lpsize, lmsize
-        integer(IKC)                                                :: arrayPadded(size(array,kind=IK)+lpsize+lmsize)
+        integer(IKG)                                                :: arrayPadded(size(array,kind=IK)+lpsize+lmsize)
     end function
 #endif
 
@@ -2697,12 +2697,12 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPaddedMargSL_D1_LK5
 #endif
-        use pm_kind, only: LKC => LK5
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
-        logical(LKC)                , intent(in)                    :: lpfill
-        logical(LKC)                , intent(in)    , optional      :: lmfill
+        use pm_kind, only: LKG => LK5
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
+        logical(LKG)                , intent(in)                    :: lpfill
+        logical(LKG)                , intent(in)    , optional      :: lmfill
         integer(IK)                 , intent(in)                    :: lpsize, lmsize
-        logical(LKC)                                                :: arrayPadded(size(array,kind=IK)+lpsize+lmsize)
+        logical(LKG)                                                :: arrayPadded(size(array,kind=IK)+lpsize+lmsize)
     end function
 #endif
 
@@ -2711,12 +2711,12 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPaddedMargSL_D1_LK4
 #endif
-        use pm_kind, only: LKC => LK4
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
-        logical(LKC)                , intent(in)                    :: lpfill
-        logical(LKC)                , intent(in)    , optional      :: lmfill
+        use pm_kind, only: LKG => LK4
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
+        logical(LKG)                , intent(in)                    :: lpfill
+        logical(LKG)                , intent(in)    , optional      :: lmfill
         integer(IK)                 , intent(in)                    :: lpsize, lmsize
-        logical(LKC)                                                :: arrayPadded(size(array,kind=IK)+lpsize+lmsize)
+        logical(LKG)                                                :: arrayPadded(size(array,kind=IK)+lpsize+lmsize)
     end function
 #endif
 
@@ -2725,12 +2725,12 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPaddedMargSL_D1_LK3
 #endif
-        use pm_kind, only: LKC => LK3
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
-        logical(LKC)                , intent(in)                    :: lpfill
-        logical(LKC)                , intent(in)    , optional      :: lmfill
+        use pm_kind, only: LKG => LK3
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
+        logical(LKG)                , intent(in)                    :: lpfill
+        logical(LKG)                , intent(in)    , optional      :: lmfill
         integer(IK)                 , intent(in)                    :: lpsize, lmsize
-        logical(LKC)                                                :: arrayPadded(size(array,kind=IK)+lpsize+lmsize)
+        logical(LKG)                                                :: arrayPadded(size(array,kind=IK)+lpsize+lmsize)
     end function
 #endif
 
@@ -2739,12 +2739,12 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPaddedMargSL_D1_LK2
 #endif
-        use pm_kind, only: LKC => LK2
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
-        logical(LKC)                , intent(in)                    :: lpfill
-        logical(LKC)                , intent(in)    , optional      :: lmfill
+        use pm_kind, only: LKG => LK2
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
+        logical(LKG)                , intent(in)                    :: lpfill
+        logical(LKG)                , intent(in)    , optional      :: lmfill
         integer(IK)                 , intent(in)                    :: lpsize, lmsize
-        logical(LKC)                                                :: arrayPadded(size(array,kind=IK)+lpsize+lmsize)
+        logical(LKG)                                                :: arrayPadded(size(array,kind=IK)+lpsize+lmsize)
     end function
 #endif
 
@@ -2753,12 +2753,12 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPaddedMargSL_D1_LK1
 #endif
-        use pm_kind, only: LKC => LK1
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
-        logical(LKC)                , intent(in)                    :: lpfill
-        logical(LKC)                , intent(in)    , optional      :: lmfill
+        use pm_kind, only: LKG => LK1
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
+        logical(LKG)                , intent(in)                    :: lpfill
+        logical(LKG)                , intent(in)    , optional      :: lmfill
         integer(IK)                 , intent(in)                    :: lpsize, lmsize
-        logical(LKC)                                                :: arrayPadded(size(array,kind=IK)+lpsize+lmsize)
+        logical(LKG)                                                :: arrayPadded(size(array,kind=IK)+lpsize+lmsize)
     end function
 #endif
 
@@ -2769,12 +2769,12 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPaddedMargSL_D1_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
-        complex(CKC)                , intent(in)                    :: lpfill
-        complex(CKC)                , intent(in)    , optional      :: lmfill
+        use pm_kind, only: CKG => CK5
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
+        complex(CKG)                , intent(in)                    :: lpfill
+        complex(CKG)                , intent(in)    , optional      :: lmfill
         integer(IK)                 , intent(in)                    :: lpsize, lmsize
-        complex(CKC)                                                :: arrayPadded(size(array,kind=IK)+lpsize+lmsize)
+        complex(CKG)                                                :: arrayPadded(size(array,kind=IK)+lpsize+lmsize)
     end function
 #endif
 
@@ -2783,12 +2783,12 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPaddedMargSL_D1_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
-        complex(CKC)                , intent(in)                    :: lpfill
-        complex(CKC)                , intent(in)    , optional      :: lmfill
+        use pm_kind, only: CKG => CK4
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
+        complex(CKG)                , intent(in)                    :: lpfill
+        complex(CKG)                , intent(in)    , optional      :: lmfill
         integer(IK)                 , intent(in)                    :: lpsize, lmsize
-        complex(CKC)                                                :: arrayPadded(size(array,kind=IK)+lpsize+lmsize)
+        complex(CKG)                                                :: arrayPadded(size(array,kind=IK)+lpsize+lmsize)
     end function
 #endif
 
@@ -2797,12 +2797,12 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPaddedMargSL_D1_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
-        complex(CKC)                , intent(in)                    :: lpfill
-        complex(CKC)                , intent(in)    , optional      :: lmfill
+        use pm_kind, only: CKG => CK3
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
+        complex(CKG)                , intent(in)                    :: lpfill
+        complex(CKG)                , intent(in)    , optional      :: lmfill
         integer(IK)                 , intent(in)                    :: lpsize, lmsize
-        complex(CKC)                                                :: arrayPadded(size(array,kind=IK)+lpsize+lmsize)
+        complex(CKG)                                                :: arrayPadded(size(array,kind=IK)+lpsize+lmsize)
     end function
 #endif
 
@@ -2811,12 +2811,12 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPaddedMargSL_D1_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
-        complex(CKC)                , intent(in)                    :: lpfill
-        complex(CKC)                , intent(in)    , optional      :: lmfill
+        use pm_kind, only: CKG => CK2
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
+        complex(CKG)                , intent(in)                    :: lpfill
+        complex(CKG)                , intent(in)    , optional      :: lmfill
         integer(IK)                 , intent(in)                    :: lpsize, lmsize
-        complex(CKC)                                                :: arrayPadded(size(array,kind=IK)+lpsize+lmsize)
+        complex(CKG)                                                :: arrayPadded(size(array,kind=IK)+lpsize+lmsize)
     end function
 #endif
 
@@ -2825,12 +2825,12 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPaddedMargSL_D1_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
-        complex(CKC)                , intent(in)                    :: lpfill
-        complex(CKC)                , intent(in)    , optional      :: lmfill
+        use pm_kind, only: CKG => CK1
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
+        complex(CKG)                , intent(in)                    :: lpfill
+        complex(CKG)                , intent(in)    , optional      :: lmfill
         integer(IK)                 , intent(in)                    :: lpsize, lmsize
-        complex(CKC)                                                :: arrayPadded(size(array,kind=IK)+lpsize+lmsize)
+        complex(CKG)                                                :: arrayPadded(size(array,kind=IK)+lpsize+lmsize)
     end function
 #endif
 
@@ -2841,12 +2841,12 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPaddedMargSL_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
-        real(RKC)                   , intent(in)                    :: lpfill
-        real(RKC)                   , intent(in)    , optional      :: lmfill
+        use pm_kind, only: RKG => RK5
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
+        real(RKG)                   , intent(in)                    :: lpfill
+        real(RKG)                   , intent(in)    , optional      :: lmfill
         integer(IK)                 , intent(in)                    :: lpsize, lmsize
-        real(RKC)                                                   :: arrayPadded(size(array,kind=IK)+lpsize+lmsize)
+        real(RKG)                                                   :: arrayPadded(size(array,kind=IK)+lpsize+lmsize)
     end function
 #endif
 
@@ -2855,12 +2855,12 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPaddedMargSL_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
-        real(RKC)                   , intent(in)                    :: lpfill
-        real(RKC)                   , intent(in)    , optional      :: lmfill
+        use pm_kind, only: RKG => RK4
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
+        real(RKG)                   , intent(in)                    :: lpfill
+        real(RKG)                   , intent(in)    , optional      :: lmfill
         integer(IK)                 , intent(in)                    :: lpsize, lmsize
-        real(RKC)                                                   :: arrayPadded(size(array,kind=IK)+lpsize+lmsize)
+        real(RKG)                                                   :: arrayPadded(size(array,kind=IK)+lpsize+lmsize)
     end function
 #endif
 
@@ -2869,12 +2869,12 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPaddedMargSL_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
-        real(RKC)                   , intent(in)                    :: lpfill
-        real(RKC)                   , intent(in)    , optional      :: lmfill
+        use pm_kind, only: RKG => RK3
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
+        real(RKG)                   , intent(in)                    :: lpfill
+        real(RKG)                   , intent(in)    , optional      :: lmfill
         integer(IK)                 , intent(in)                    :: lpsize, lmsize
-        real(RKC)                                                   :: arrayPadded(size(array,kind=IK)+lpsize+lmsize)
+        real(RKG)                                                   :: arrayPadded(size(array,kind=IK)+lpsize+lmsize)
     end function
 #endif
 
@@ -2883,12 +2883,12 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPaddedMargSL_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
-        real(RKC)                   , intent(in)                    :: lpfill
-        real(RKC)                   , intent(in)    , optional      :: lmfill
+        use pm_kind, only: RKG => RK2
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
+        real(RKG)                   , intent(in)                    :: lpfill
+        real(RKG)                   , intent(in)    , optional      :: lmfill
         integer(IK)                 , intent(in)                    :: lpsize, lmsize
-        real(RKC)                                                   :: arrayPadded(size(array,kind=IK)+lpsize+lmsize)
+        real(RKG)                                                   :: arrayPadded(size(array,kind=IK)+lpsize+lmsize)
     end function
 #endif
 
@@ -2897,12 +2897,12 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPaddedMargSL_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
-        real(RKC)                   , intent(in)                    :: lpfill
-        real(RKC)                   , intent(in)    , optional      :: lmfill
+        use pm_kind, only: RKG => RK1
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
+        real(RKG)                   , intent(in)                    :: lpfill
+        real(RKG)                   , intent(in)    , optional      :: lmfill
         integer(IK)                 , intent(in)                    :: lpsize, lmsize
-        real(RKC)                                                   :: arrayPadded(size(array,kind=IK)+lpsize+lmsize)
+        real(RKG)                                                   :: arrayPadded(size(array,kind=IK)+lpsize+lmsize)
     end function
 #endif
 
@@ -3016,10 +3016,10 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPaddedAsisSL_D0_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(:,SKC)            , intent(inout) , allocatable   :: array
+        use pm_kind, only: SKG => SK5
+        character(:,SKG)            , intent(inout) , allocatable   :: array
         integer(IK)                 , intent(in)                    :: lpsize
-        character(1,SKC)            , intent(in)                    :: lpfill
+        character(1,SKG)            , intent(in)                    :: lpfill
         logical(LK)                 , intent(out)   , optional      :: failed
     end subroutine
 #endif
@@ -3029,10 +3029,10 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPaddedAsisSL_D0_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(:,SKC)            , intent(inout) , allocatable   :: array
+        use pm_kind, only: SKG => SK4
+        character(:,SKG)            , intent(inout) , allocatable   :: array
         integer(IK)                 , intent(in)                    :: lpsize
-        character(1,SKC)            , intent(in)                    :: lpfill
+        character(1,SKG)            , intent(in)                    :: lpfill
         logical(LK)                 , intent(out)   , optional      :: failed
     end subroutine
 #endif
@@ -3042,10 +3042,10 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPaddedAsisSL_D0_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(:,SKC)            , intent(inout) , allocatable   :: array
+        use pm_kind, only: SKG => SK3
+        character(:,SKG)            , intent(inout) , allocatable   :: array
         integer(IK)                 , intent(in)                    :: lpsize
-        character(1,SKC)            , intent(in)                    :: lpfill
+        character(1,SKG)            , intent(in)                    :: lpfill
         logical(LK)                 , intent(out)   , optional      :: failed
     end subroutine
 #endif
@@ -3055,10 +3055,10 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPaddedAsisSL_D0_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(:,SKC)            , intent(inout) , allocatable   :: array
+        use pm_kind, only: SKG => SK2
+        character(:,SKG)            , intent(inout) , allocatable   :: array
         integer(IK)                 , intent(in)                    :: lpsize
-        character(1,SKC)            , intent(in)                    :: lpfill
+        character(1,SKG)            , intent(in)                    :: lpfill
         logical(LK)                 , intent(out)   , optional      :: failed
     end subroutine
 #endif
@@ -3068,10 +3068,10 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPaddedAsisSL_D0_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(:,SKC)            , intent(inout) , allocatable   :: array
+        use pm_kind, only: SKG => SK1
+        character(:,SKG)            , intent(inout) , allocatable   :: array
         integer(IK)                 , intent(in)                    :: lpsize
-        character(1,SKC)            , intent(in)                    :: lpfill
+        character(1,SKG)            , intent(in)                    :: lpfill
         logical(LK)                 , intent(out)   , optional      :: failed
     end subroutine
 #endif
@@ -3083,10 +3083,10 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPaddedAsisSL_D1_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)            , intent(inout) , allocatable   :: array(:)
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)            , intent(inout) , allocatable   :: array(:)
         integer(IK)                 , intent(in)                    :: lpsize
-        character(len(array,IK),SKC), intent(in)                    :: lpfill
+        character(len(array,IK),SKG), intent(in)                    :: lpfill
         logical(LK)                 , intent(out)   , optional      :: failed
     end subroutine
 #endif
@@ -3096,10 +3096,10 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPaddedAsisSL_D1_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)            , intent(inout) , allocatable   :: array(:)
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)            , intent(inout) , allocatable   :: array(:)
         integer(IK)                 , intent(in)                    :: lpsize
-        character(len(array,IK),SKC), intent(in)                    :: lpfill
+        character(len(array,IK),SKG), intent(in)                    :: lpfill
         logical(LK)                 , intent(out)   , optional      :: failed
     end subroutine
 #endif
@@ -3109,10 +3109,10 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPaddedAsisSL_D1_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)            , intent(inout) , allocatable   :: array(:)
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)            , intent(inout) , allocatable   :: array(:)
         integer(IK)                 , intent(in)                    :: lpsize
-        character(len(array,IK),SKC), intent(in)                    :: lpfill
+        character(len(array,IK),SKG), intent(in)                    :: lpfill
         logical(LK)                 , intent(out)   , optional      :: failed
     end subroutine
 #endif
@@ -3122,10 +3122,10 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPaddedAsisSL_D1_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)            , intent(inout) , allocatable   :: array(:)
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)            , intent(inout) , allocatable   :: array(:)
         integer(IK)                 , intent(in)                    :: lpsize
-        character(len(array,IK),SKC), intent(in)                    :: lpfill
+        character(len(array,IK),SKG), intent(in)                    :: lpfill
         logical(LK)                 , intent(out)   , optional      :: failed
     end subroutine
 #endif
@@ -3135,10 +3135,10 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPaddedAsisSL_D1_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)            , intent(inout) , allocatable   :: array(:)
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)            , intent(inout) , allocatable   :: array(:)
         integer(IK)                 , intent(in)                    :: lpsize
-        character(len(array,IK),SKC), intent(in)                    :: lpfill
+        character(len(array,IK),SKG), intent(in)                    :: lpfill
         logical(LK)                 , intent(out)   , optional      :: failed
     end subroutine
 #endif
@@ -3150,10 +3150,10 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPaddedAsisSL_D1_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)                , intent(inout) , allocatable   :: array(:)
+        use pm_kind, only: IKG => IK5
+        integer(IKG)                , intent(inout) , allocatable   :: array(:)
         integer(IK)                 , intent(in)                    :: lpsize
-        integer(IKC)                , intent(in)                    :: lpfill
+        integer(IKG)                , intent(in)                    :: lpfill
         logical(LK)                 , intent(out)   , optional      :: failed
     end subroutine
 #endif
@@ -3163,10 +3163,10 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPaddedAsisSL_D1_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)                , intent(inout) , allocatable   :: array(:)
+        use pm_kind, only: IKG => IK4
+        integer(IKG)                , intent(inout) , allocatable   :: array(:)
         integer(IK)                 , intent(in)                    :: lpsize
-        integer(IKC)                , intent(in)                    :: lpfill
+        integer(IKG)                , intent(in)                    :: lpfill
         logical(LK)                 , intent(out)   , optional      :: failed
     end subroutine
 #endif
@@ -3176,10 +3176,10 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPaddedAsisSL_D1_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)                , intent(inout) , allocatable   :: array(:)
+        use pm_kind, only: IKG => IK3
+        integer(IKG)                , intent(inout) , allocatable   :: array(:)
         integer(IK)                 , intent(in)                    :: lpsize
-        integer(IKC)                , intent(in)                    :: lpfill
+        integer(IKG)                , intent(in)                    :: lpfill
         logical(LK)                 , intent(out)   , optional      :: failed
     end subroutine
 #endif
@@ -3189,10 +3189,10 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPaddedAsisSL_D1_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)                , intent(inout) , allocatable   :: array(:)
+        use pm_kind, only: IKG => IK2
+        integer(IKG)                , intent(inout) , allocatable   :: array(:)
         integer(IK)                 , intent(in)                    :: lpsize
-        integer(IKC)                , intent(in)                    :: lpfill
+        integer(IKG)                , intent(in)                    :: lpfill
         logical(LK)                 , intent(out)   , optional      :: failed
     end subroutine
 #endif
@@ -3202,10 +3202,10 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPaddedAsisSL_D1_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)                , intent(inout) , allocatable   :: array(:)
+        use pm_kind, only: IKG => IK1
+        integer(IKG)                , intent(inout) , allocatable   :: array(:)
         integer(IK)                 , intent(in)                    :: lpsize
-        integer(IKC)                , intent(in)                    :: lpfill
+        integer(IKG)                , intent(in)                    :: lpfill
         logical(LK)                 , intent(out)   , optional      :: failed
     end subroutine
 #endif
@@ -3217,10 +3217,10 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPaddedAsisSL_D1_LK5
 #endif
-        use pm_kind, only: LKC => LK5
-        logical(LKC)                , intent(inout) , allocatable   :: array(:)
+        use pm_kind, only: LKG => LK5
+        logical(LKG)                , intent(inout) , allocatable   :: array(:)
         integer(IK)                 , intent(in)                    :: lpsize
-        logical(LKC)                , intent(in)                    :: lpfill
+        logical(LKG)                , intent(in)                    :: lpfill
         logical(LK)                 , intent(out)   , optional      :: failed
     end subroutine
 #endif
@@ -3230,10 +3230,10 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPaddedAsisSL_D1_LK4
 #endif
-        use pm_kind, only: LKC => LK4
-        logical(LKC)                , intent(inout) , allocatable   :: array(:)
+        use pm_kind, only: LKG => LK4
+        logical(LKG)                , intent(inout) , allocatable   :: array(:)
         integer(IK)                 , intent(in)                    :: lpsize
-        logical(LKC)                , intent(in)                    :: lpfill
+        logical(LKG)                , intent(in)                    :: lpfill
         logical(LK)                 , intent(out)   , optional      :: failed
     end subroutine
 #endif
@@ -3243,10 +3243,10 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPaddedAsisSL_D1_LK3
 #endif
-        use pm_kind, only: LKC => LK3
-        logical(LKC)                , intent(inout) , allocatable   :: array(:)
+        use pm_kind, only: LKG => LK3
+        logical(LKG)                , intent(inout) , allocatable   :: array(:)
         integer(IK)                 , intent(in)                    :: lpsize
-        logical(LKC)                , intent(in)                    :: lpfill
+        logical(LKG)                , intent(in)                    :: lpfill
         logical(LK)                 , intent(out)   , optional      :: failed
     end subroutine
 #endif
@@ -3256,10 +3256,10 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPaddedAsisSL_D1_LK2
 #endif
-        use pm_kind, only: LKC => LK2
-        logical(LKC)                , intent(inout) , allocatable   :: array(:)
+        use pm_kind, only: LKG => LK2
+        logical(LKG)                , intent(inout) , allocatable   :: array(:)
         integer(IK)                 , intent(in)                    :: lpsize
-        logical(LKC)                , intent(in)                    :: lpfill
+        logical(LKG)                , intent(in)                    :: lpfill
         logical(LK)                 , intent(out)   , optional      :: failed
     end subroutine
 #endif
@@ -3269,10 +3269,10 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPaddedAsisSL_D1_LK1
 #endif
-        use pm_kind, only: LKC => LK1
-        logical(LKC)                , intent(inout) , allocatable   :: array(:)
+        use pm_kind, only: LKG => LK1
+        logical(LKG)                , intent(inout) , allocatable   :: array(:)
         integer(IK)                 , intent(in)                    :: lpsize
-        logical(LKC)                , intent(in)                    :: lpfill
+        logical(LKG)                , intent(in)                    :: lpfill
         logical(LK)                 , intent(out)   , optional      :: failed
     end subroutine
 #endif
@@ -3284,10 +3284,10 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPaddedAsisSL_D1_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)                , intent(inout) , allocatable   :: array(:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG)                , intent(inout) , allocatable   :: array(:)
         integer(IK)                 , intent(in)                    :: lpsize
-        complex(CKC)                , intent(in)                    :: lpfill
+        complex(CKG)                , intent(in)                    :: lpfill
         logical(LK)                 , intent(out)   , optional      :: failed
     end subroutine
 #endif
@@ -3297,10 +3297,10 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPaddedAsisSL_D1_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)                , intent(inout) , allocatable   :: array(:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG)                , intent(inout) , allocatable   :: array(:)
         integer(IK)                 , intent(in)                    :: lpsize
-        complex(CKC)                , intent(in)                    :: lpfill
+        complex(CKG)                , intent(in)                    :: lpfill
         logical(LK)                 , intent(out)   , optional      :: failed
     end subroutine
 #endif
@@ -3310,10 +3310,10 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPaddedAsisSL_D1_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)                , intent(inout) , allocatable   :: array(:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG)                , intent(inout) , allocatable   :: array(:)
         integer(IK)                 , intent(in)                    :: lpsize
-        complex(CKC)                , intent(in)                    :: lpfill
+        complex(CKG)                , intent(in)                    :: lpfill
         logical(LK)                 , intent(out)   , optional      :: failed
     end subroutine
 #endif
@@ -3323,10 +3323,10 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPaddedAsisSL_D1_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)                , intent(inout) , allocatable   :: array(:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG)                , intent(inout) , allocatable   :: array(:)
         integer(IK)                 , intent(in)                    :: lpsize
-        complex(CKC)                , intent(in)                    :: lpfill
+        complex(CKG)                , intent(in)                    :: lpfill
         logical(LK)                 , intent(out)   , optional      :: failed
     end subroutine
 #endif
@@ -3336,10 +3336,10 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPaddedAsisSL_D1_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)                , intent(inout) , allocatable   :: array(:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG)                , intent(inout) , allocatable   :: array(:)
         integer(IK)                 , intent(in)                    :: lpsize
-        complex(CKC)                , intent(in)                    :: lpfill
+        complex(CKG)                , intent(in)                    :: lpfill
         logical(LK)                 , intent(out)   , optional      :: failed
     end subroutine
 #endif
@@ -3351,10 +3351,10 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPaddedAsisSL_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)                   , intent(inout) , allocatable   :: array(:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)                   , intent(inout) , allocatable   :: array(:)
         integer(IK)                 , intent(in)                    :: lpsize
-        real(RKC)                   , intent(in)                    :: lpfill
+        real(RKG)                   , intent(in)                    :: lpfill
         logical(LK)                 , intent(out)   , optional      :: failed
     end subroutine
 #endif
@@ -3364,10 +3364,10 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPaddedAsisSL_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)                   , intent(inout) , allocatable   :: array(:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)                   , intent(inout) , allocatable   :: array(:)
         integer(IK)                 , intent(in)                    :: lpsize
-        real(RKC)                   , intent(in)                    :: lpfill
+        real(RKG)                   , intent(in)                    :: lpfill
         logical(LK)                 , intent(out)   , optional      :: failed
     end subroutine
 #endif
@@ -3377,10 +3377,10 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPaddedAsisSL_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)                   , intent(inout) , allocatable   :: array(:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)                   , intent(inout) , allocatable   :: array(:)
         integer(IK)                 , intent(in)                    :: lpsize
-        real(RKC)                   , intent(in)                    :: lpfill
+        real(RKG)                   , intent(in)                    :: lpfill
         logical(LK)                 , intent(out)   , optional      :: failed
     end subroutine
 #endif
@@ -3390,10 +3390,10 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPaddedAsisSL_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)                   , intent(inout) , allocatable   :: array(:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)                   , intent(inout) , allocatable   :: array(:)
         integer(IK)                 , intent(in)                    :: lpsize
-        real(RKC)                   , intent(in)                    :: lpfill
+        real(RKG)                   , intent(in)                    :: lpfill
         logical(LK)                 , intent(out)   , optional      :: failed
     end subroutine
 #endif
@@ -3403,10 +3403,10 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPaddedAsisSL_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)                   , intent(inout) , allocatable   :: array(:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)                   , intent(inout) , allocatable   :: array(:)
         integer(IK)                 , intent(in)                    :: lpsize
-        real(RKC)                   , intent(in)                    :: lpfill
+        real(RKG)                   , intent(in)                    :: lpfill
         logical(LK)                 , intent(out)   , optional      :: failed
     end subroutine
 #endif
@@ -3424,10 +3424,10 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPaddedMargSL_D0_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(:,SKC)            , intent(inout) , allocatable   :: array
-        character(1,SKC)            , intent(in)                    :: lpfill
-        character(1,SKC)            , intent(in)    , optional      :: lmfill
+        use pm_kind, only: SKG => SK5
+        character(:,SKG)            , intent(inout) , allocatable   :: array
+        character(1,SKG)            , intent(in)                    :: lpfill
+        character(1,SKG)            , intent(in)    , optional      :: lmfill
         integer(IK)                 , intent(in)                    :: lpsize, lmsize
         logical(LK)                 , intent(out)   , optional      :: failed
     end subroutine
@@ -3438,10 +3438,10 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPaddedMargSL_D0_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(:,SKC)            , intent(inout) , allocatable   :: array
-        character(1,SKC)            , intent(in)                    :: lpfill
-        character(1,SKC)            , intent(in)    , optional      :: lmfill
+        use pm_kind, only: SKG => SK4
+        character(:,SKG)            , intent(inout) , allocatable   :: array
+        character(1,SKG)            , intent(in)                    :: lpfill
+        character(1,SKG)            , intent(in)    , optional      :: lmfill
         integer(IK)                 , intent(in)                    :: lpsize, lmsize
         logical(LK)                 , intent(out)   , optional      :: failed
     end subroutine
@@ -3452,10 +3452,10 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPaddedMargSL_D0_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(:,SKC)            , intent(inout) , allocatable   :: array
-        character(1,SKC)            , intent(in)                    :: lpfill
-        character(1,SKC)            , intent(in)    , optional      :: lmfill
+        use pm_kind, only: SKG => SK3
+        character(:,SKG)            , intent(inout) , allocatable   :: array
+        character(1,SKG)            , intent(in)                    :: lpfill
+        character(1,SKG)            , intent(in)    , optional      :: lmfill
         integer(IK)                 , intent(in)                    :: lpsize, lmsize
         logical(LK)                 , intent(out)   , optional      :: failed
     end subroutine
@@ -3466,10 +3466,10 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPaddedMargSL_D0_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(:,SKC)            , intent(inout) , allocatable   :: array
-        character(1,SKC)            , intent(in)                    :: lpfill
-        character(1,SKC)            , intent(in)    , optional      :: lmfill
+        use pm_kind, only: SKG => SK2
+        character(:,SKG)            , intent(inout) , allocatable   :: array
+        character(1,SKG)            , intent(in)                    :: lpfill
+        character(1,SKG)            , intent(in)    , optional      :: lmfill
         integer(IK)                 , intent(in)                    :: lpsize, lmsize
         logical(LK)                 , intent(out)   , optional      :: failed
     end subroutine
@@ -3480,10 +3480,10 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPaddedMargSL_D0_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(:,SKC)            , intent(inout) , allocatable   :: array
-        character(1,SKC)            , intent(in)                    :: lpfill
-        character(1,SKC)            , intent(in)    , optional      :: lmfill
+        use pm_kind, only: SKG => SK1
+        character(:,SKG)            , intent(inout) , allocatable   :: array
+        character(1,SKG)            , intent(in)                    :: lpfill
+        character(1,SKG)            , intent(in)    , optional      :: lmfill
         integer(IK)                 , intent(in)                    :: lpsize, lmsize
         logical(LK)                 , intent(out)   , optional      :: failed
     end subroutine
@@ -3496,10 +3496,10 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPaddedMargSL_D1_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)            , intent(inout) , allocatable   :: array(:)
-        character(len(array,IK),SKC), intent(in)                    :: lpfill
-        character(len(array,IK),SKC), intent(in)    , optional      :: lmfill
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)            , intent(inout) , allocatable   :: array(:)
+        character(len(array,IK),SKG), intent(in)                    :: lpfill
+        character(len(array,IK),SKG), intent(in)    , optional      :: lmfill
         integer(IK)                 , intent(in)                    :: lpsize, lmsize
         logical(LK)                 , intent(out)   , optional      :: failed
     end subroutine
@@ -3510,10 +3510,10 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPaddedMargSL_D1_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)            , intent(inout) , allocatable   :: array(:)
-        character(len(array,IK),SKC), intent(in)                    :: lpfill
-        character(len(array,IK),SKC), intent(in)    , optional      :: lmfill
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)            , intent(inout) , allocatable   :: array(:)
+        character(len(array,IK),SKG), intent(in)                    :: lpfill
+        character(len(array,IK),SKG), intent(in)    , optional      :: lmfill
         integer(IK)                 , intent(in)                    :: lpsize, lmsize
         logical(LK)                 , intent(out)   , optional      :: failed
     end subroutine
@@ -3524,10 +3524,10 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPaddedMargSL_D1_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)            , intent(inout) , allocatable   :: array(:)
-        character(len(array,IK),SKC), intent(in)                    :: lpfill
-        character(len(array,IK),SKC), intent(in)    , optional      :: lmfill
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)            , intent(inout) , allocatable   :: array(:)
+        character(len(array,IK),SKG), intent(in)                    :: lpfill
+        character(len(array,IK),SKG), intent(in)    , optional      :: lmfill
         integer(IK)                 , intent(in)                    :: lpsize, lmsize
         logical(LK)                 , intent(out)   , optional      :: failed
     end subroutine
@@ -3538,10 +3538,10 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPaddedMargSL_D1_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)            , intent(inout) , allocatable   :: array(:)
-        character(len(array,IK),SKC), intent(in)                    :: lpfill
-        character(len(array,IK),SKC), intent(in)    , optional      :: lmfill
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)            , intent(inout) , allocatable   :: array(:)
+        character(len(array,IK),SKG), intent(in)                    :: lpfill
+        character(len(array,IK),SKG), intent(in)    , optional      :: lmfill
         integer(IK)                 , intent(in)                    :: lpsize, lmsize
         logical(LK)                 , intent(out)   , optional      :: failed
     end subroutine
@@ -3552,10 +3552,10 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPaddedMargSL_D1_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)            , intent(inout) , allocatable   :: array(:)
-        character(len(array,IK),SKC), intent(in)                    :: lpfill
-        character(len(array,IK),SKC), intent(in)    , optional      :: lmfill
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)            , intent(inout) , allocatable   :: array(:)
+        character(len(array,IK),SKG), intent(in)                    :: lpfill
+        character(len(array,IK),SKG), intent(in)    , optional      :: lmfill
         integer(IK)                 , intent(in)                    :: lpsize, lmsize
         logical(LK)                 , intent(out)   , optional      :: failed
     end subroutine
@@ -3568,10 +3568,10 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPaddedMargSL_D1_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)                , intent(inout) , allocatable   :: array(:)
-        integer(IKC)                , intent(in)                    :: lpfill
-        integer(IKC)                , intent(in)    , optional      :: lmfill
+        use pm_kind, only: IKG => IK5
+        integer(IKG)                , intent(inout) , allocatable   :: array(:)
+        integer(IKG)                , intent(in)                    :: lpfill
+        integer(IKG)                , intent(in)    , optional      :: lmfill
         integer(IK)                 , intent(in)                    :: lpsize, lmsize
         logical(LK)                 , intent(out)   , optional      :: failed
     end subroutine
@@ -3582,10 +3582,10 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPaddedMargSL_D1_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)                , intent(inout) , allocatable   :: array(:)
-        integer(IKC)                , intent(in)                    :: lpfill
-        integer(IKC)                , intent(in)    , optional      :: lmfill
+        use pm_kind, only: IKG => IK4
+        integer(IKG)                , intent(inout) , allocatable   :: array(:)
+        integer(IKG)                , intent(in)                    :: lpfill
+        integer(IKG)                , intent(in)    , optional      :: lmfill
         integer(IK)                 , intent(in)                    :: lpsize, lmsize
         logical(LK)                 , intent(out)   , optional      :: failed
     end subroutine
@@ -3596,10 +3596,10 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPaddedMargSL_D1_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)                , intent(inout) , allocatable   :: array(:)
-        integer(IKC)                , intent(in)                    :: lpfill
-        integer(IKC)                , intent(in)    , optional      :: lmfill
+        use pm_kind, only: IKG => IK3
+        integer(IKG)                , intent(inout) , allocatable   :: array(:)
+        integer(IKG)                , intent(in)                    :: lpfill
+        integer(IKG)                , intent(in)    , optional      :: lmfill
         integer(IK)                 , intent(in)                    :: lpsize, lmsize
         logical(LK)                 , intent(out)   , optional      :: failed
     end subroutine
@@ -3610,10 +3610,10 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPaddedMargSL_D1_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)                , intent(inout) , allocatable   :: array(:)
-        integer(IKC)                , intent(in)                    :: lpfill
-        integer(IKC)                , intent(in)    , optional      :: lmfill
+        use pm_kind, only: IKG => IK2
+        integer(IKG)                , intent(inout) , allocatable   :: array(:)
+        integer(IKG)                , intent(in)                    :: lpfill
+        integer(IKG)                , intent(in)    , optional      :: lmfill
         integer(IK)                 , intent(in)                    :: lpsize, lmsize
         logical(LK)                 , intent(out)   , optional      :: failed
     end subroutine
@@ -3624,10 +3624,10 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPaddedMargSL_D1_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)                , intent(inout) , allocatable   :: array(:)
-        integer(IKC)                , intent(in)                    :: lpfill
-        integer(IKC)                , intent(in)    , optional      :: lmfill
+        use pm_kind, only: IKG => IK1
+        integer(IKG)                , intent(inout) , allocatable   :: array(:)
+        integer(IKG)                , intent(in)                    :: lpfill
+        integer(IKG)                , intent(in)    , optional      :: lmfill
         integer(IK)                 , intent(in)                    :: lpsize, lmsize
         logical(LK)                 , intent(out)   , optional      :: failed
     end subroutine
@@ -3640,10 +3640,10 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPaddedMargSL_D1_LK5
 #endif
-        use pm_kind, only: LKC => LK5
-        logical(LKC)                , intent(inout) , allocatable   :: array(:)
-        logical(LKC)                , intent(in)                    :: lpfill
-        logical(LKC)                , intent(in)    , optional      :: lmfill
+        use pm_kind, only: LKG => LK5
+        logical(LKG)                , intent(inout) , allocatable   :: array(:)
+        logical(LKG)                , intent(in)                    :: lpfill
+        logical(LKG)                , intent(in)    , optional      :: lmfill
         integer(IK)                 , intent(in)                    :: lpsize, lmsize
         logical(LK)                 , intent(out)   , optional      :: failed
     end subroutine
@@ -3654,10 +3654,10 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPaddedMargSL_D1_LK4
 #endif
-        use pm_kind, only: LKC => LK4
-        logical(LKC)                , intent(inout) , allocatable   :: array(:)
-        logical(LKC)                , intent(in)                    :: lpfill
-        logical(LKC)                , intent(in)    , optional      :: lmfill
+        use pm_kind, only: LKG => LK4
+        logical(LKG)                , intent(inout) , allocatable   :: array(:)
+        logical(LKG)                , intent(in)                    :: lpfill
+        logical(LKG)                , intent(in)    , optional      :: lmfill
         integer(IK)                 , intent(in)                    :: lpsize, lmsize
         logical(LK)                 , intent(out)   , optional      :: failed
     end subroutine
@@ -3668,10 +3668,10 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPaddedMargSL_D1_LK3
 #endif
-        use pm_kind, only: LKC => LK3
-        logical(LKC)                , intent(inout) , allocatable   :: array(:)
-        logical(LKC)                , intent(in)                    :: lpfill
-        logical(LKC)                , intent(in)    , optional      :: lmfill
+        use pm_kind, only: LKG => LK3
+        logical(LKG)                , intent(inout) , allocatable   :: array(:)
+        logical(LKG)                , intent(in)                    :: lpfill
+        logical(LKG)                , intent(in)    , optional      :: lmfill
         integer(IK)                 , intent(in)                    :: lpsize, lmsize
         logical(LK)                 , intent(out)   , optional      :: failed
     end subroutine
@@ -3682,10 +3682,10 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPaddedMargSL_D1_LK2
 #endif
-        use pm_kind, only: LKC => LK2
-        logical(LKC)                , intent(inout) , allocatable   :: array(:)
-        logical(LKC)                , intent(in)                    :: lpfill
-        logical(LKC)                , intent(in)    , optional      :: lmfill
+        use pm_kind, only: LKG => LK2
+        logical(LKG)                , intent(inout) , allocatable   :: array(:)
+        logical(LKG)                , intent(in)                    :: lpfill
+        logical(LKG)                , intent(in)    , optional      :: lmfill
         integer(IK)                 , intent(in)                    :: lpsize, lmsize
         logical(LK)                 , intent(out)   , optional      :: failed
     end subroutine
@@ -3696,10 +3696,10 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPaddedMargSL_D1_LK1
 #endif
-        use pm_kind, only: LKC => LK1
-        logical(LKC)                , intent(inout) , allocatable   :: array(:)
-        logical(LKC)                , intent(in)                    :: lpfill
-        logical(LKC)                , intent(in)    , optional      :: lmfill
+        use pm_kind, only: LKG => LK1
+        logical(LKG)                , intent(inout) , allocatable   :: array(:)
+        logical(LKG)                , intent(in)                    :: lpfill
+        logical(LKG)                , intent(in)    , optional      :: lmfill
         integer(IK)                 , intent(in)                    :: lpsize, lmsize
         logical(LK)                 , intent(out)   , optional      :: failed
     end subroutine
@@ -3712,10 +3712,10 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPaddedMargSL_D1_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)                , intent(inout) , allocatable   :: array(:)
-        complex(CKC)                , intent(in)                    :: lpfill
-        complex(CKC)                , intent(in)    , optional      :: lmfill
+        use pm_kind, only: CKG => CK5
+        complex(CKG)                , intent(inout) , allocatable   :: array(:)
+        complex(CKG)                , intent(in)                    :: lpfill
+        complex(CKG)                , intent(in)    , optional      :: lmfill
         integer(IK)                 , intent(in)                    :: lpsize, lmsize
         logical(LK)                 , intent(out)   , optional      :: failed
     end subroutine
@@ -3726,10 +3726,10 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPaddedMargSL_D1_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)                , intent(inout) , allocatable   :: array(:)
-        complex(CKC)                , intent(in)                    :: lpfill
-        complex(CKC)                , intent(in)    , optional      :: lmfill
+        use pm_kind, only: CKG => CK4
+        complex(CKG)                , intent(inout) , allocatable   :: array(:)
+        complex(CKG)                , intent(in)                    :: lpfill
+        complex(CKG)                , intent(in)    , optional      :: lmfill
         integer(IK)                 , intent(in)                    :: lpsize, lmsize
         logical(LK)                 , intent(out)   , optional      :: failed
     end subroutine
@@ -3740,10 +3740,10 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPaddedMargSL_D1_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)                , intent(inout) , allocatable   :: array(:)
-        complex(CKC)                , intent(in)                    :: lpfill
-        complex(CKC)                , intent(in)    , optional      :: lmfill
+        use pm_kind, only: CKG => CK3
+        complex(CKG)                , intent(inout) , allocatable   :: array(:)
+        complex(CKG)                , intent(in)                    :: lpfill
+        complex(CKG)                , intent(in)    , optional      :: lmfill
         integer(IK)                 , intent(in)                    :: lpsize, lmsize
         logical(LK)                 , intent(out)   , optional      :: failed
     end subroutine
@@ -3754,10 +3754,10 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPaddedMargSL_D1_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)                , intent(inout) , allocatable   :: array(:)
-        complex(CKC)                , intent(in)                    :: lpfill
-        complex(CKC)                , intent(in)    , optional      :: lmfill
+        use pm_kind, only: CKG => CK2
+        complex(CKG)                , intent(inout) , allocatable   :: array(:)
+        complex(CKG)                , intent(in)                    :: lpfill
+        complex(CKG)                , intent(in)    , optional      :: lmfill
         integer(IK)                 , intent(in)                    :: lpsize, lmsize
         logical(LK)                 , intent(out)   , optional      :: failed
     end subroutine
@@ -3768,10 +3768,10 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPaddedMargSL_D1_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)                , intent(inout) , allocatable   :: array(:)
-        complex(CKC)                , intent(in)                    :: lpfill
-        complex(CKC)                , intent(in)    , optional      :: lmfill
+        use pm_kind, only: CKG => CK1
+        complex(CKG)                , intent(inout) , allocatable   :: array(:)
+        complex(CKG)                , intent(in)                    :: lpfill
+        complex(CKG)                , intent(in)    , optional      :: lmfill
         integer(IK)                 , intent(in)                    :: lpsize, lmsize
         logical(LK)                 , intent(out)   , optional      :: failed
     end subroutine
@@ -3784,10 +3784,10 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPaddedMargSL_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)                   , intent(inout) , allocatable   :: array(:)
-        real(RKC)                   , intent(in)                    :: lpfill
-        real(RKC)                   , intent(in)    , optional      :: lmfill
+        use pm_kind, only: RKG => RK5
+        real(RKG)                   , intent(inout) , allocatable   :: array(:)
+        real(RKG)                   , intent(in)                    :: lpfill
+        real(RKG)                   , intent(in)    , optional      :: lmfill
         integer(IK)                 , intent(in)                    :: lpsize, lmsize
         logical(LK)                 , intent(out)   , optional      :: failed
     end subroutine
@@ -3798,10 +3798,10 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPaddedMargSL_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)                   , intent(inout) , allocatable   :: array(:)
-        real(RKC)                   , intent(in)                    :: lpfill
-        real(RKC)                   , intent(in)    , optional      :: lmfill
+        use pm_kind, only: RKG => RK4
+        real(RKG)                   , intent(inout) , allocatable   :: array(:)
+        real(RKG)                   , intent(in)                    :: lpfill
+        real(RKG)                   , intent(in)    , optional      :: lmfill
         integer(IK)                 , intent(in)                    :: lpsize, lmsize
         logical(LK)                 , intent(out)   , optional      :: failed
     end subroutine
@@ -3812,10 +3812,10 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPaddedMargSL_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)                   , intent(inout) , allocatable   :: array(:)
-        real(RKC)                   , intent(in)                    :: lpfill
-        real(RKC)                   , intent(in)    , optional      :: lmfill
+        use pm_kind, only: RKG => RK3
+        real(RKG)                   , intent(inout) , allocatable   :: array(:)
+        real(RKG)                   , intent(in)                    :: lpfill
+        real(RKG)                   , intent(in)    , optional      :: lmfill
         integer(IK)                 , intent(in)                    :: lpsize, lmsize
         logical(LK)                 , intent(out)   , optional      :: failed
     end subroutine
@@ -3826,10 +3826,10 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPaddedMargSL_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)                   , intent(inout) , allocatable   :: array(:)
-        real(RKC)                   , intent(in)                    :: lpfill
-        real(RKC)                   , intent(in)    , optional      :: lmfill
+        use pm_kind, only: RKG => RK2
+        real(RKG)                   , intent(inout) , allocatable   :: array(:)
+        real(RKG)                   , intent(in)                    :: lpfill
+        real(RKG)                   , intent(in)    , optional      :: lmfill
         integer(IK)                 , intent(in)                    :: lpsize, lmsize
         logical(LK)                 , intent(out)   , optional      :: failed
     end subroutine
@@ -3840,10 +3840,10 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPaddedMargSL_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)                   , intent(inout) , allocatable   :: array(:)
-        real(RKC)                   , intent(in)                    :: lpfill
-        real(RKC)                   , intent(in)    , optional      :: lmfill
+        use pm_kind, only: RKG => RK1
+        real(RKG)                   , intent(inout) , allocatable   :: array(:)
+        real(RKG)                   , intent(in)                    :: lpfill
+        real(RKG)                   , intent(in)    , optional      :: lmfill
         integer(IK)                 , intent(in)                    :: lpsize, lmsize
         logical(LK)                 , intent(out)   , optional      :: failed
     end subroutine
@@ -3962,11 +3962,11 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPaddedAsisSR_D0_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)            , intent(in)                    :: array
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)            , intent(in)                    :: array
         integer(IK)                 , intent(in)                    :: rpsize
-        character(1,SKC)            , intent(in)                    :: rpfill
-        character(len(array,IK)+rpsize,SKC)                         :: arrayPadded
+        character(1,SKG)            , intent(in)                    :: rpfill
+        character(len(array,IK)+rpsize,SKG)                         :: arrayPadded
     end function
 #endif
 
@@ -3975,11 +3975,11 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPaddedAsisSR_D0_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)            , intent(in)                    :: array
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)            , intent(in)                    :: array
         integer(IK)                 , intent(in)                    :: rpsize
-        character(1,SKC)            , intent(in)                    :: rpfill
-        character(len(array,IK)+rpsize,SKC)                         :: arrayPadded
+        character(1,SKG)            , intent(in)                    :: rpfill
+        character(len(array,IK)+rpsize,SKG)                         :: arrayPadded
     end function
 #endif
 
@@ -3988,11 +3988,11 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPaddedAsisSR_D0_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)            , intent(in)                    :: array
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)            , intent(in)                    :: array
         integer(IK)                 , intent(in)                    :: rpsize
-        character(1,SKC)            , intent(in)                    :: rpfill
-        character(len(array,IK)+rpsize,SKC)                         :: arrayPadded
+        character(1,SKG)            , intent(in)                    :: rpfill
+        character(len(array,IK)+rpsize,SKG)                         :: arrayPadded
     end function
 #endif
 
@@ -4001,11 +4001,11 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPaddedAsisSR_D0_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)            , intent(in)                    :: array
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)            , intent(in)                    :: array
         integer(IK)                 , intent(in)                    :: rpsize
-        character(1,SKC)            , intent(in)                    :: rpfill
-        character(len(array,IK)+rpsize,SKC)                         :: arrayPadded
+        character(1,SKG)            , intent(in)                    :: rpfill
+        character(len(array,IK)+rpsize,SKG)                         :: arrayPadded
     end function
 #endif
 
@@ -4014,11 +4014,11 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPaddedAsisSR_D0_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)            , intent(in)                    :: array
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)            , intent(in)                    :: array
         integer(IK)                 , intent(in)                    :: rpsize
-        character(1,SKC)            , intent(in)                    :: rpfill
-        character(len(array,IK)+rpsize,SKC)                         :: arrayPadded
+        character(1,SKG)            , intent(in)                    :: rpfill
+        character(len(array,IK)+rpsize,SKG)                         :: arrayPadded
     end function
 #endif
 
@@ -4029,11 +4029,11 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPaddedAsisSR_D1_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
         integer(IK)                 , intent(in)                    :: rpsize
-        character(len(array,IK),SKC), intent(in)                    :: rpfill
-        character(len(array,IK),SKC)                                :: arrayPadded(size(array,kind=IK)+rpsize)
+        character(len(array,IK),SKG), intent(in)                    :: rpfill
+        character(len(array,IK),SKG)                                :: arrayPadded(size(array,kind=IK)+rpsize)
     end function
 #endif
 
@@ -4042,11 +4042,11 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPaddedAsisSR_D1_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
         integer(IK)                 , intent(in)                    :: rpsize
-        character(len(array,IK),SKC), intent(in)                    :: rpfill
-        character(len(array,IK),SKC)                                :: arrayPadded(size(array,kind=IK)+rpsize)
+        character(len(array,IK),SKG), intent(in)                    :: rpfill
+        character(len(array,IK),SKG)                                :: arrayPadded(size(array,kind=IK)+rpsize)
     end function
 #endif
 
@@ -4055,11 +4055,11 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPaddedAsisSR_D1_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
         integer(IK)                 , intent(in)                    :: rpsize
-        character(len(array,IK),SKC), intent(in)                    :: rpfill
-        character(len(array,IK),SKC)                                :: arrayPadded(size(array,kind=IK)+rpsize)
+        character(len(array,IK),SKG), intent(in)                    :: rpfill
+        character(len(array,IK),SKG)                                :: arrayPadded(size(array,kind=IK)+rpsize)
     end function
 #endif
 
@@ -4068,11 +4068,11 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPaddedAsisSR_D1_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
         integer(IK)                 , intent(in)                    :: rpsize
-        character(len(array,IK),SKC), intent(in)                    :: rpfill
-        character(len(array,IK),SKC)                                :: arrayPadded(size(array,kind=IK)+rpsize)
+        character(len(array,IK),SKG), intent(in)                    :: rpfill
+        character(len(array,IK),SKG)                                :: arrayPadded(size(array,kind=IK)+rpsize)
     end function
 #endif
 
@@ -4081,11 +4081,11 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPaddedAsisSR_D1_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
         integer(IK)                 , intent(in)                    :: rpsize
-        character(len(array,IK),SKC), intent(in)                    :: rpfill
-        character(len(array,IK),SKC)                                :: arrayPadded(size(array,kind=IK)+rpsize)
+        character(len(array,IK),SKG), intent(in)                    :: rpfill
+        character(len(array,IK),SKG)                                :: arrayPadded(size(array,kind=IK)+rpsize)
     end function
 #endif
 
@@ -4096,11 +4096,11 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPaddedAsisSR_D1_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK5
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
         integer(IK)                 , intent(in)                    :: rpsize
-        integer(IKC)                , intent(in)                    :: rpfill
-        integer(IKC)                                                :: arrayPadded(size(array,kind=IK)+rpsize)
+        integer(IKG)                , intent(in)                    :: rpfill
+        integer(IKG)                                                :: arrayPadded(size(array,kind=IK)+rpsize)
     end function
 #endif
 
@@ -4109,11 +4109,11 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPaddedAsisSR_D1_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK4
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
         integer(IK)                 , intent(in)                    :: rpsize
-        integer(IKC)                , intent(in)                    :: rpfill
-        integer(IKC)                                                :: arrayPadded(size(array,kind=IK)+rpsize)
+        integer(IKG)                , intent(in)                    :: rpfill
+        integer(IKG)                                                :: arrayPadded(size(array,kind=IK)+rpsize)
     end function
 #endif
 
@@ -4122,11 +4122,11 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPaddedAsisSR_D1_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK3
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
         integer(IK)                 , intent(in)                    :: rpsize
-        integer(IKC)                , intent(in)                    :: rpfill
-        integer(IKC)                                                :: arrayPadded(size(array,kind=IK)+rpsize)
+        integer(IKG)                , intent(in)                    :: rpfill
+        integer(IKG)                                                :: arrayPadded(size(array,kind=IK)+rpsize)
     end function
 #endif
 
@@ -4135,11 +4135,11 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPaddedAsisSR_D1_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK2
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
         integer(IK)                 , intent(in)                    :: rpsize
-        integer(IKC)                , intent(in)                    :: rpfill
-        integer(IKC)                                                :: arrayPadded(size(array,kind=IK)+rpsize)
+        integer(IKG)                , intent(in)                    :: rpfill
+        integer(IKG)                                                :: arrayPadded(size(array,kind=IK)+rpsize)
     end function
 #endif
 
@@ -4148,11 +4148,11 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPaddedAsisSR_D1_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK1
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
         integer(IK)                 , intent(in)                    :: rpsize
-        integer(IKC)                , intent(in)                    :: rpfill
-        integer(IKC)                                                :: arrayPadded(size(array,kind=IK)+rpsize)
+        integer(IKG)                , intent(in)                    :: rpfill
+        integer(IKG)                                                :: arrayPadded(size(array,kind=IK)+rpsize)
     end function
 #endif
 
@@ -4163,11 +4163,11 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPaddedAsisSR_D1_LK5
 #endif
-        use pm_kind, only: LKC => LK5
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: LKG => LK5
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
         integer(IK)                 , intent(in)                    :: rpsize
-        logical(LKC)                , intent(in)                    :: rpfill
-        logical(LKC)                                                :: arrayPadded(size(array,kind=IK)+rpsize)
+        logical(LKG)                , intent(in)                    :: rpfill
+        logical(LKG)                                                :: arrayPadded(size(array,kind=IK)+rpsize)
     end function
 #endif
 
@@ -4176,11 +4176,11 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPaddedAsisSR_D1_LK4
 #endif
-        use pm_kind, only: LKC => LK4
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: LKG => LK4
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
         integer(IK)                 , intent(in)                    :: rpsize
-        logical(LKC)                , intent(in)                    :: rpfill
-        logical(LKC)                                                :: arrayPadded(size(array,kind=IK)+rpsize)
+        logical(LKG)                , intent(in)                    :: rpfill
+        logical(LKG)                                                :: arrayPadded(size(array,kind=IK)+rpsize)
     end function
 #endif
 
@@ -4189,11 +4189,11 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPaddedAsisSR_D1_LK3
 #endif
-        use pm_kind, only: LKC => LK3
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: LKG => LK3
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
         integer(IK)                 , intent(in)                    :: rpsize
-        logical(LKC)                , intent(in)                    :: rpfill
-        logical(LKC)                                                :: arrayPadded(size(array,kind=IK)+rpsize)
+        logical(LKG)                , intent(in)                    :: rpfill
+        logical(LKG)                                                :: arrayPadded(size(array,kind=IK)+rpsize)
     end function
 #endif
 
@@ -4202,11 +4202,11 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPaddedAsisSR_D1_LK2
 #endif
-        use pm_kind, only: LKC => LK2
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: LKG => LK2
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
         integer(IK)                 , intent(in)                    :: rpsize
-        logical(LKC)                , intent(in)                    :: rpfill
-        logical(LKC)                                                :: arrayPadded(size(array,kind=IK)+rpsize)
+        logical(LKG)                , intent(in)                    :: rpfill
+        logical(LKG)                                                :: arrayPadded(size(array,kind=IK)+rpsize)
     end function
 #endif
 
@@ -4215,11 +4215,11 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPaddedAsisSR_D1_LK1
 #endif
-        use pm_kind, only: LKC => LK1
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: LKG => LK1
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
         integer(IK)                 , intent(in)                    :: rpsize
-        logical(LKC)                , intent(in)                    :: rpfill
-        logical(LKC)                                                :: arrayPadded(size(array,kind=IK)+rpsize)
+        logical(LKG)                , intent(in)                    :: rpfill
+        logical(LKG)                                                :: arrayPadded(size(array,kind=IK)+rpsize)
     end function
 #endif
 
@@ -4230,11 +4230,11 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPaddedAsisSR_D1_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
         integer(IK)                 , intent(in)                    :: rpsize
-        complex(CKC)                , intent(in)                    :: rpfill
-        complex(CKC)                                                :: arrayPadded(size(array,kind=IK)+rpsize)
+        complex(CKG)                , intent(in)                    :: rpfill
+        complex(CKG)                                                :: arrayPadded(size(array,kind=IK)+rpsize)
     end function
 #endif
 
@@ -4243,11 +4243,11 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPaddedAsisSR_D1_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
         integer(IK)                 , intent(in)                    :: rpsize
-        complex(CKC)                , intent(in)                    :: rpfill
-        complex(CKC)                                                :: arrayPadded(size(array,kind=IK)+rpsize)
+        complex(CKG)                , intent(in)                    :: rpfill
+        complex(CKG)                                                :: arrayPadded(size(array,kind=IK)+rpsize)
     end function
 #endif
 
@@ -4256,11 +4256,11 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPaddedAsisSR_D1_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
         integer(IK)                 , intent(in)                    :: rpsize
-        complex(CKC)                , intent(in)                    :: rpfill
-        complex(CKC)                                                :: arrayPadded(size(array,kind=IK)+rpsize)
+        complex(CKG)                , intent(in)                    :: rpfill
+        complex(CKG)                                                :: arrayPadded(size(array,kind=IK)+rpsize)
     end function
 #endif
 
@@ -4269,11 +4269,11 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPaddedAsisSR_D1_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
         integer(IK)                 , intent(in)                    :: rpsize
-        complex(CKC)                , intent(in)                    :: rpfill
-        complex(CKC)                                                :: arrayPadded(size(array,kind=IK)+rpsize)
+        complex(CKG)                , intent(in)                    :: rpfill
+        complex(CKG)                                                :: arrayPadded(size(array,kind=IK)+rpsize)
     end function
 #endif
 
@@ -4282,11 +4282,11 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPaddedAsisSR_D1_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
         integer(IK)                 , intent(in)                    :: rpsize
-        complex(CKC)                , intent(in)                    :: rpfill
-        complex(CKC)                                                :: arrayPadded(size(array,kind=IK)+rpsize)
+        complex(CKG)                , intent(in)                    :: rpfill
+        complex(CKG)                                                :: arrayPadded(size(array,kind=IK)+rpsize)
     end function
 #endif
 
@@ -4297,11 +4297,11 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPaddedAsisSR_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
         integer(IK)                 , intent(in)                    :: rpsize
-        real(RKC)                   , intent(in)                    :: rpfill
-        real(RKC)                                                   :: arrayPadded(size(array,kind=IK)+rpsize)
+        real(RKG)                   , intent(in)                    :: rpfill
+        real(RKG)                                                   :: arrayPadded(size(array,kind=IK)+rpsize)
     end function
 #endif
 
@@ -4310,11 +4310,11 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPaddedAsisSR_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
         integer(IK)                 , intent(in)                    :: rpsize
-        real(RKC)                   , intent(in)                    :: rpfill
-        real(RKC)                                                   :: arrayPadded(size(array,kind=IK)+rpsize)
+        real(RKG)                   , intent(in)                    :: rpfill
+        real(RKG)                                                   :: arrayPadded(size(array,kind=IK)+rpsize)
     end function
 #endif
 
@@ -4323,11 +4323,11 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPaddedAsisSR_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
         integer(IK)                 , intent(in)                    :: rpsize
-        real(RKC)                   , intent(in)                    :: rpfill
-        real(RKC)                                                   :: arrayPadded(size(array,kind=IK)+rpsize)
+        real(RKG)                   , intent(in)                    :: rpfill
+        real(RKG)                                                   :: arrayPadded(size(array,kind=IK)+rpsize)
     end function
 #endif
 
@@ -4336,11 +4336,11 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPaddedAsisSR_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
         integer(IK)                 , intent(in)                    :: rpsize
-        real(RKC)                   , intent(in)                    :: rpfill
-        real(RKC)                                                   :: arrayPadded(size(array,kind=IK)+rpsize)
+        real(RKG)                   , intent(in)                    :: rpfill
+        real(RKG)                                                   :: arrayPadded(size(array,kind=IK)+rpsize)
     end function
 #endif
 
@@ -4349,11 +4349,11 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPaddedAsisSR_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
         integer(IK)                 , intent(in)                    :: rpsize
-        real(RKC)                   , intent(in)                    :: rpfill
-        real(RKC)                                                   :: arrayPadded(size(array,kind=IK)+rpsize)
+        real(RKG)                   , intent(in)                    :: rpfill
+        real(RKG)                                                   :: arrayPadded(size(array,kind=IK)+rpsize)
     end function
 #endif
 
@@ -4370,12 +4370,12 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPaddedMargSR_D0_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)            , intent(in)                    :: array
-        character(1,SKC)            , intent(in)                    :: rpfill
-        character(1,SKC)            , intent(in)    , optional      :: rmfill
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)            , intent(in)                    :: array
+        character(1,SKG)            , intent(in)                    :: rpfill
+        character(1,SKG)            , intent(in)    , optional      :: rmfill
         integer(IK)                 , intent(in)                    :: rpsize, rmsize
-        character(len(array,IK)+rpsize+rmsize,SKC)                  :: arrayPadded
+        character(len(array,IK)+rpsize+rmsize,SKG)                  :: arrayPadded
     end function
 #endif
 
@@ -4384,12 +4384,12 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPaddedMargSR_D0_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)            , intent(in)                    :: array
-        character(1,SKC)            , intent(in)                    :: rpfill
-        character(1,SKC)            , intent(in)    , optional      :: rmfill
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)            , intent(in)                    :: array
+        character(1,SKG)            , intent(in)                    :: rpfill
+        character(1,SKG)            , intent(in)    , optional      :: rmfill
         integer(IK)                 , intent(in)                    :: rpsize, rmsize
-        character(len(array,IK)+rpsize+rmsize,SKC)                  :: arrayPadded
+        character(len(array,IK)+rpsize+rmsize,SKG)                  :: arrayPadded
     end function
 #endif
 
@@ -4398,12 +4398,12 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPaddedMargSR_D0_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)            , intent(in)                    :: array
-        character(1,SKC)            , intent(in)                    :: rpfill
-        character(1,SKC)            , intent(in)    , optional      :: rmfill
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)            , intent(in)                    :: array
+        character(1,SKG)            , intent(in)                    :: rpfill
+        character(1,SKG)            , intent(in)    , optional      :: rmfill
         integer(IK)                 , intent(in)                    :: rpsize, rmsize
-        character(len(array,IK)+rpsize+rmsize,SKC)                  :: arrayPadded
+        character(len(array,IK)+rpsize+rmsize,SKG)                  :: arrayPadded
     end function
 #endif
 
@@ -4412,12 +4412,12 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPaddedMargSR_D0_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)            , intent(in)                    :: array
-        character(1,SKC)            , intent(in)                    :: rpfill
-        character(1,SKC)            , intent(in)    , optional      :: rmfill
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)            , intent(in)                    :: array
+        character(1,SKG)            , intent(in)                    :: rpfill
+        character(1,SKG)            , intent(in)    , optional      :: rmfill
         integer(IK)                 , intent(in)                    :: rpsize, rmsize
-        character(len(array,IK)+rpsize+rmsize,SKC)                  :: arrayPadded
+        character(len(array,IK)+rpsize+rmsize,SKG)                  :: arrayPadded
     end function
 #endif
 
@@ -4426,12 +4426,12 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPaddedMargSR_D0_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)            , intent(in)                    :: array
-        character(1,SKC)            , intent(in)                    :: rpfill
-        character(1,SKC)            , intent(in)    , optional      :: rmfill
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)            , intent(in)                    :: array
+        character(1,SKG)            , intent(in)                    :: rpfill
+        character(1,SKG)            , intent(in)    , optional      :: rmfill
         integer(IK)                 , intent(in)                    :: rpsize, rmsize
-        character(len(array,IK)+rpsize+rmsize,SKC)                  :: arrayPadded
+        character(len(array,IK)+rpsize+rmsize,SKG)                  :: arrayPadded
     end function
 #endif
 
@@ -4442,12 +4442,12 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPaddedMargSR_D1_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
-        character(len(array,IK),SKC), intent(in)                    :: rpfill
-        character(len(array,IK),SKC), intent(in)    , optional      :: rmfill
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
+        character(len(array,IK),SKG), intent(in)                    :: rpfill
+        character(len(array,IK),SKG), intent(in)    , optional      :: rmfill
         integer(IK)                 , intent(in)                    :: rpsize, rmsize
-        character(len(array,IK),SKC)                                :: arrayPadded(size(array,kind=IK)+rpsize+rmsize)
+        character(len(array,IK),SKG)                                :: arrayPadded(size(array,kind=IK)+rpsize+rmsize)
     end function
 #endif
 
@@ -4456,12 +4456,12 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPaddedMargSR_D1_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
-        character(len(array,IK),SKC), intent(in)                    :: rpfill
-        character(len(array,IK),SKC), intent(in)    , optional      :: rmfill
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
+        character(len(array,IK),SKG), intent(in)                    :: rpfill
+        character(len(array,IK),SKG), intent(in)    , optional      :: rmfill
         integer(IK)                 , intent(in)                    :: rpsize, rmsize
-        character(len(array,IK),SKC)                                :: arrayPadded(size(array,kind=IK)+rpsize+rmsize)
+        character(len(array,IK),SKG)                                :: arrayPadded(size(array,kind=IK)+rpsize+rmsize)
     end function
 #endif
 
@@ -4470,12 +4470,12 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPaddedMargSR_D1_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
-        character(len(array,IK),SKC), intent(in)                    :: rpfill
-        character(len(array,IK),SKC), intent(in)    , optional      :: rmfill
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
+        character(len(array,IK),SKG), intent(in)                    :: rpfill
+        character(len(array,IK),SKG), intent(in)    , optional      :: rmfill
         integer(IK)                 , intent(in)                    :: rpsize, rmsize
-        character(len(array,IK),SKC)                                :: arrayPadded(size(array,kind=IK)+rpsize+rmsize)
+        character(len(array,IK),SKG)                                :: arrayPadded(size(array,kind=IK)+rpsize+rmsize)
     end function
 #endif
 
@@ -4484,12 +4484,12 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPaddedMargSR_D1_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
-        character(len(array,IK),SKC), intent(in)                    :: rpfill
-        character(len(array,IK),SKC), intent(in)    , optional      :: rmfill
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
+        character(len(array,IK),SKG), intent(in)                    :: rpfill
+        character(len(array,IK),SKG), intent(in)    , optional      :: rmfill
         integer(IK)                 , intent(in)                    :: rpsize, rmsize
-        character(len(array,IK),SKC)                                :: arrayPadded(size(array,kind=IK)+rpsize+rmsize)
+        character(len(array,IK),SKG)                                :: arrayPadded(size(array,kind=IK)+rpsize+rmsize)
     end function
 #endif
 
@@ -4498,12 +4498,12 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPaddedMargSR_D1_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)            , intent(in)    , contiguous    :: array(:)
-        character(len(array,IK),SKC), intent(in)                    :: rpfill
-        character(len(array,IK),SKC), intent(in)    , optional      :: rmfill
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)            , intent(in)    , contiguous    :: array(:)
+        character(len(array,IK),SKG), intent(in)                    :: rpfill
+        character(len(array,IK),SKG), intent(in)    , optional      :: rmfill
         integer(IK)                 , intent(in)                    :: rpsize, rmsize
-        character(len(array,IK),SKC)                                :: arrayPadded(size(array,kind=IK)+rpsize+rmsize)
+        character(len(array,IK),SKG)                                :: arrayPadded(size(array,kind=IK)+rpsize+rmsize)
     end function
 #endif
 
@@ -4514,12 +4514,12 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPaddedMargSR_D1_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
-        integer(IKC)                , intent(in)                    :: rpfill
-        integer(IKC)                , intent(in)    , optional      :: rmfill
+        use pm_kind, only: IKG => IK5
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
+        integer(IKG)                , intent(in)                    :: rpfill
+        integer(IKG)                , intent(in)    , optional      :: rmfill
         integer(IK)                 , intent(in)                    :: rpsize, rmsize
-        integer(IKC)                                                :: arrayPadded(size(array,kind=IK)+rpsize+rmsize)
+        integer(IKG)                                                :: arrayPadded(size(array,kind=IK)+rpsize+rmsize)
     end function
 #endif
 
@@ -4528,12 +4528,12 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPaddedMargSR_D1_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
-        integer(IKC)                , intent(in)                    :: rpfill
-        integer(IKC)                , intent(in)    , optional      :: rmfill
+        use pm_kind, only: IKG => IK4
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
+        integer(IKG)                , intent(in)                    :: rpfill
+        integer(IKG)                , intent(in)    , optional      :: rmfill
         integer(IK)                 , intent(in)                    :: rpsize, rmsize
-        integer(IKC)                                                :: arrayPadded(size(array,kind=IK)+rpsize+rmsize)
+        integer(IKG)                                                :: arrayPadded(size(array,kind=IK)+rpsize+rmsize)
     end function
 #endif
 
@@ -4542,12 +4542,12 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPaddedMargSR_D1_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
-        integer(IKC)                , intent(in)                    :: rpfill
-        integer(IKC)                , intent(in)    , optional      :: rmfill
+        use pm_kind, only: IKG => IK3
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
+        integer(IKG)                , intent(in)                    :: rpfill
+        integer(IKG)                , intent(in)    , optional      :: rmfill
         integer(IK)                 , intent(in)                    :: rpsize, rmsize
-        integer(IKC)                                                :: arrayPadded(size(array,kind=IK)+rpsize+rmsize)
+        integer(IKG)                                                :: arrayPadded(size(array,kind=IK)+rpsize+rmsize)
     end function
 #endif
 
@@ -4556,12 +4556,12 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPaddedMargSR_D1_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
-        integer(IKC)                , intent(in)                    :: rpfill
-        integer(IKC)                , intent(in)    , optional      :: rmfill
+        use pm_kind, only: IKG => IK2
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
+        integer(IKG)                , intent(in)                    :: rpfill
+        integer(IKG)                , intent(in)    , optional      :: rmfill
         integer(IK)                 , intent(in)                    :: rpsize, rmsize
-        integer(IKC)                                                :: arrayPadded(size(array,kind=IK)+rpsize+rmsize)
+        integer(IKG)                                                :: arrayPadded(size(array,kind=IK)+rpsize+rmsize)
     end function
 #endif
 
@@ -4570,12 +4570,12 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPaddedMargSR_D1_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)                , intent(in)    , contiguous    :: array(:)
-        integer(IKC)                , intent(in)                    :: rpfill
-        integer(IKC)                , intent(in)    , optional      :: rmfill
+        use pm_kind, only: IKG => IK1
+        integer(IKG)                , intent(in)    , contiguous    :: array(:)
+        integer(IKG)                , intent(in)                    :: rpfill
+        integer(IKG)                , intent(in)    , optional      :: rmfill
         integer(IK)                 , intent(in)                    :: rpsize, rmsize
-        integer(IKC)                                                :: arrayPadded(size(array,kind=IK)+rpsize+rmsize)
+        integer(IKG)                                                :: arrayPadded(size(array,kind=IK)+rpsize+rmsize)
     end function
 #endif
 
@@ -4586,12 +4586,12 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPaddedMargSR_D1_LK5
 #endif
-        use pm_kind, only: LKC => LK5
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
-        logical(LKC)                , intent(in)                    :: rpfill
-        logical(LKC)                , intent(in)    , optional      :: rmfill
+        use pm_kind, only: LKG => LK5
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
+        logical(LKG)                , intent(in)                    :: rpfill
+        logical(LKG)                , intent(in)    , optional      :: rmfill
         integer(IK)                 , intent(in)                    :: rpsize, rmsize
-        logical(LKC)                                                :: arrayPadded(size(array,kind=IK)+rpsize+rmsize)
+        logical(LKG)                                                :: arrayPadded(size(array,kind=IK)+rpsize+rmsize)
     end function
 #endif
 
@@ -4600,12 +4600,12 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPaddedMargSR_D1_LK4
 #endif
-        use pm_kind, only: LKC => LK4
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
-        logical(LKC)                , intent(in)                    :: rpfill
-        logical(LKC)                , intent(in)    , optional      :: rmfill
+        use pm_kind, only: LKG => LK4
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
+        logical(LKG)                , intent(in)                    :: rpfill
+        logical(LKG)                , intent(in)    , optional      :: rmfill
         integer(IK)                 , intent(in)                    :: rpsize, rmsize
-        logical(LKC)                                                :: arrayPadded(size(array,kind=IK)+rpsize+rmsize)
+        logical(LKG)                                                :: arrayPadded(size(array,kind=IK)+rpsize+rmsize)
     end function
 #endif
 
@@ -4614,12 +4614,12 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPaddedMargSR_D1_LK3
 #endif
-        use pm_kind, only: LKC => LK3
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
-        logical(LKC)                , intent(in)                    :: rpfill
-        logical(LKC)                , intent(in)    , optional      :: rmfill
+        use pm_kind, only: LKG => LK3
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
+        logical(LKG)                , intent(in)                    :: rpfill
+        logical(LKG)                , intent(in)    , optional      :: rmfill
         integer(IK)                 , intent(in)                    :: rpsize, rmsize
-        logical(LKC)                                                :: arrayPadded(size(array,kind=IK)+rpsize+rmsize)
+        logical(LKG)                                                :: arrayPadded(size(array,kind=IK)+rpsize+rmsize)
     end function
 #endif
 
@@ -4628,12 +4628,12 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPaddedMargSR_D1_LK2
 #endif
-        use pm_kind, only: LKC => LK2
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
-        logical(LKC)                , intent(in)                    :: rpfill
-        logical(LKC)                , intent(in)    , optional      :: rmfill
+        use pm_kind, only: LKG => LK2
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
+        logical(LKG)                , intent(in)                    :: rpfill
+        logical(LKG)                , intent(in)    , optional      :: rmfill
         integer(IK)                 , intent(in)                    :: rpsize, rmsize
-        logical(LKC)                                                :: arrayPadded(size(array,kind=IK)+rpsize+rmsize)
+        logical(LKG)                                                :: arrayPadded(size(array,kind=IK)+rpsize+rmsize)
     end function
 #endif
 
@@ -4642,12 +4642,12 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPaddedMargSR_D1_LK1
 #endif
-        use pm_kind, only: LKC => LK1
-        logical(LKC)                , intent(in)    , contiguous    :: array(:)
-        logical(LKC)                , intent(in)                    :: rpfill
-        logical(LKC)                , intent(in)    , optional      :: rmfill
+        use pm_kind, only: LKG => LK1
+        logical(LKG)                , intent(in)    , contiguous    :: array(:)
+        logical(LKG)                , intent(in)                    :: rpfill
+        logical(LKG)                , intent(in)    , optional      :: rmfill
         integer(IK)                 , intent(in)                    :: rpsize, rmsize
-        logical(LKC)                                                :: arrayPadded(size(array,kind=IK)+rpsize+rmsize)
+        logical(LKG)                                                :: arrayPadded(size(array,kind=IK)+rpsize+rmsize)
     end function
 #endif
 
@@ -4658,12 +4658,12 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPaddedMargSR_D1_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
-        complex(CKC)                , intent(in)                    :: rpfill
-        complex(CKC)                , intent(in)    , optional      :: rmfill
+        use pm_kind, only: CKG => CK5
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
+        complex(CKG)                , intent(in)                    :: rpfill
+        complex(CKG)                , intent(in)    , optional      :: rmfill
         integer(IK)                 , intent(in)                    :: rpsize, rmsize
-        complex(CKC)                                                :: arrayPadded(size(array,kind=IK)+rpsize+rmsize)
+        complex(CKG)                                                :: arrayPadded(size(array,kind=IK)+rpsize+rmsize)
     end function
 #endif
 
@@ -4672,12 +4672,12 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPaddedMargSR_D1_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
-        complex(CKC)                , intent(in)                    :: rpfill
-        complex(CKC)                , intent(in)    , optional      :: rmfill
+        use pm_kind, only: CKG => CK4
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
+        complex(CKG)                , intent(in)                    :: rpfill
+        complex(CKG)                , intent(in)    , optional      :: rmfill
         integer(IK)                 , intent(in)                    :: rpsize, rmsize
-        complex(CKC)                                                :: arrayPadded(size(array,kind=IK)+rpsize+rmsize)
+        complex(CKG)                                                :: arrayPadded(size(array,kind=IK)+rpsize+rmsize)
     end function
 #endif
 
@@ -4686,12 +4686,12 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPaddedMargSR_D1_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
-        complex(CKC)                , intent(in)                    :: rpfill
-        complex(CKC)                , intent(in)    , optional      :: rmfill
+        use pm_kind, only: CKG => CK3
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
+        complex(CKG)                , intent(in)                    :: rpfill
+        complex(CKG)                , intent(in)    , optional      :: rmfill
         integer(IK)                 , intent(in)                    :: rpsize, rmsize
-        complex(CKC)                                                :: arrayPadded(size(array,kind=IK)+rpsize+rmsize)
+        complex(CKG)                                                :: arrayPadded(size(array,kind=IK)+rpsize+rmsize)
     end function
 #endif
 
@@ -4700,12 +4700,12 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPaddedMargSR_D1_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
-        complex(CKC)                , intent(in)                    :: rpfill
-        complex(CKC)                , intent(in)    , optional      :: rmfill
+        use pm_kind, only: CKG => CK2
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
+        complex(CKG)                , intent(in)                    :: rpfill
+        complex(CKG)                , intent(in)    , optional      :: rmfill
         integer(IK)                 , intent(in)                    :: rpsize, rmsize
-        complex(CKC)                                                :: arrayPadded(size(array,kind=IK)+rpsize+rmsize)
+        complex(CKG)                                                :: arrayPadded(size(array,kind=IK)+rpsize+rmsize)
     end function
 #endif
 
@@ -4714,12 +4714,12 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPaddedMargSR_D1_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)                , intent(in)    , contiguous    :: array(:)
-        complex(CKC)                , intent(in)                    :: rpfill
-        complex(CKC)                , intent(in)    , optional      :: rmfill
+        use pm_kind, only: CKG => CK1
+        complex(CKG)                , intent(in)    , contiguous    :: array(:)
+        complex(CKG)                , intent(in)                    :: rpfill
+        complex(CKG)                , intent(in)    , optional      :: rmfill
         integer(IK)                 , intent(in)                    :: rpsize, rmsize
-        complex(CKC)                                                :: arrayPadded(size(array,kind=IK)+rpsize+rmsize)
+        complex(CKG)                                                :: arrayPadded(size(array,kind=IK)+rpsize+rmsize)
     end function
 #endif
 
@@ -4730,12 +4730,12 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPaddedMargSR_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
-        real(RKC)                   , intent(in)                    :: rpfill
-        real(RKC)                   , intent(in)    , optional      :: rmfill
+        use pm_kind, only: RKG => RK5
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
+        real(RKG)                   , intent(in)                    :: rpfill
+        real(RKG)                   , intent(in)    , optional      :: rmfill
         integer(IK)                 , intent(in)                    :: rpsize, rmsize
-        real(RKC)                                                   :: arrayPadded(size(array,kind=IK)+rpsize+rmsize)
+        real(RKG)                                                   :: arrayPadded(size(array,kind=IK)+rpsize+rmsize)
     end function
 #endif
 
@@ -4744,12 +4744,12 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPaddedMargSR_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
-        real(RKC)                   , intent(in)                    :: rpfill
-        real(RKC)                   , intent(in)    , optional      :: rmfill
+        use pm_kind, only: RKG => RK4
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
+        real(RKG)                   , intent(in)                    :: rpfill
+        real(RKG)                   , intent(in)    , optional      :: rmfill
         integer(IK)                 , intent(in)                    :: rpsize, rmsize
-        real(RKC)                                                   :: arrayPadded(size(array,kind=IK)+rpsize+rmsize)
+        real(RKG)                                                   :: arrayPadded(size(array,kind=IK)+rpsize+rmsize)
     end function
 #endif
 
@@ -4758,12 +4758,12 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPaddedMargSR_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
-        real(RKC)                   , intent(in)                    :: rpfill
-        real(RKC)                   , intent(in)    , optional      :: rmfill
+        use pm_kind, only: RKG => RK3
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
+        real(RKG)                   , intent(in)                    :: rpfill
+        real(RKG)                   , intent(in)    , optional      :: rmfill
         integer(IK)                 , intent(in)                    :: rpsize, rmsize
-        real(RKC)                                                   :: arrayPadded(size(array,kind=IK)+rpsize+rmsize)
+        real(RKG)                                                   :: arrayPadded(size(array,kind=IK)+rpsize+rmsize)
     end function
 #endif
 
@@ -4772,12 +4772,12 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPaddedMargSR_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
-        real(RKC)                   , intent(in)                    :: rpfill
-        real(RKC)                   , intent(in)    , optional      :: rmfill
+        use pm_kind, only: RKG => RK2
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
+        real(RKG)                   , intent(in)                    :: rpfill
+        real(RKG)                   , intent(in)    , optional      :: rmfill
         integer(IK)                 , intent(in)                    :: rpsize, rmsize
-        real(RKC)                                                   :: arrayPadded(size(array,kind=IK)+rpsize+rmsize)
+        real(RKG)                                                   :: arrayPadded(size(array,kind=IK)+rpsize+rmsize)
     end function
 #endif
 
@@ -4786,12 +4786,12 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPaddedMargSR_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)                   , intent(in)    , contiguous    :: array(:)
-        real(RKC)                   , intent(in)                    :: rpfill
-        real(RKC)                   , intent(in)    , optional      :: rmfill
+        use pm_kind, only: RKG => RK1
+        real(RKG)                   , intent(in)    , contiguous    :: array(:)
+        real(RKG)                   , intent(in)                    :: rpfill
+        real(RKG)                   , intent(in)    , optional      :: rmfill
         integer(IK)                 , intent(in)                    :: rpsize, rmsize
-        real(RKC)                                                   :: arrayPadded(size(array,kind=IK)+rpsize+rmsize)
+        real(RKG)                                                   :: arrayPadded(size(array,kind=IK)+rpsize+rmsize)
     end function
 #endif
 
@@ -4904,10 +4904,10 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPaddedAsisSR_D0_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(:,SKC)            , intent(inout) , allocatable   :: array
+        use pm_kind, only: SKG => SK5
+        character(:,SKG)            , intent(inout) , allocatable   :: array
         integer(IK)                 , intent(in)                    :: rpsize
-        character(1,SKC)            , intent(in)                    :: rpfill
+        character(1,SKG)            , intent(in)                    :: rpfill
         logical(LK)                 , intent(out)   , optional      :: failed
     end subroutine
 #endif
@@ -4917,10 +4917,10 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPaddedAsisSR_D0_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(:,SKC)            , intent(inout) , allocatable   :: array
+        use pm_kind, only: SKG => SK4
+        character(:,SKG)            , intent(inout) , allocatable   :: array
         integer(IK)                 , intent(in)                    :: rpsize
-        character(1,SKC)            , intent(in)                    :: rpfill
+        character(1,SKG)            , intent(in)                    :: rpfill
         logical(LK)                 , intent(out)   , optional      :: failed
     end subroutine
 #endif
@@ -4930,10 +4930,10 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPaddedAsisSR_D0_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(:,SKC)            , intent(inout) , allocatable   :: array
+        use pm_kind, only: SKG => SK3
+        character(:,SKG)            , intent(inout) , allocatable   :: array
         integer(IK)                 , intent(in)                    :: rpsize
-        character(1,SKC)            , intent(in)                    :: rpfill
+        character(1,SKG)            , intent(in)                    :: rpfill
         logical(LK)                 , intent(out)   , optional      :: failed
     end subroutine
 #endif
@@ -4943,10 +4943,10 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPaddedAsisSR_D0_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(:,SKC)            , intent(inout) , allocatable   :: array
+        use pm_kind, only: SKG => SK2
+        character(:,SKG)            , intent(inout) , allocatable   :: array
         integer(IK)                 , intent(in)                    :: rpsize
-        character(1,SKC)            , intent(in)                    :: rpfill
+        character(1,SKG)            , intent(in)                    :: rpfill
         logical(LK)                 , intent(out)   , optional      :: failed
     end subroutine
 #endif
@@ -4956,10 +4956,10 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPaddedAsisSR_D0_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(:,SKC)            , intent(inout) , allocatable   :: array
+        use pm_kind, only: SKG => SK1
+        character(:,SKG)            , intent(inout) , allocatable   :: array
         integer(IK)                 , intent(in)                    :: rpsize
-        character(1,SKC)            , intent(in)                    :: rpfill
+        character(1,SKG)            , intent(in)                    :: rpfill
         logical(LK)                 , intent(out)   , optional      :: failed
     end subroutine
 #endif
@@ -4971,10 +4971,10 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPaddedAsisSR_D1_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)            , intent(inout) , allocatable   :: array(:)
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)            , intent(inout) , allocatable   :: array(:)
         integer(IK)                 , intent(in)                    :: rpsize
-        character(len(array,IK),SKC), intent(in)                    :: rpfill
+        character(len(array,IK),SKG), intent(in)                    :: rpfill
         logical(LK)                 , intent(out)   , optional      :: failed
     end subroutine
 #endif
@@ -4984,10 +4984,10 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPaddedAsisSR_D1_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)            , intent(inout) , allocatable   :: array(:)
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)            , intent(inout) , allocatable   :: array(:)
         integer(IK)                 , intent(in)                    :: rpsize
-        character(len(array,IK),SKC), intent(in)                    :: rpfill
+        character(len(array,IK),SKG), intent(in)                    :: rpfill
         logical(LK)                 , intent(out)   , optional      :: failed
     end subroutine
 #endif
@@ -4997,10 +4997,10 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPaddedAsisSR_D1_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)            , intent(inout) , allocatable   :: array(:)
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)            , intent(inout) , allocatable   :: array(:)
         integer(IK)                 , intent(in)                    :: rpsize
-        character(len(array,IK),SKC), intent(in)                    :: rpfill
+        character(len(array,IK),SKG), intent(in)                    :: rpfill
         logical(LK)                 , intent(out)   , optional      :: failed
     end subroutine
 #endif
@@ -5010,10 +5010,10 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPaddedAsisSR_D1_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)            , intent(inout) , allocatable   :: array(:)
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)            , intent(inout) , allocatable   :: array(:)
         integer(IK)                 , intent(in)                    :: rpsize
-        character(len(array,IK),SKC), intent(in)                    :: rpfill
+        character(len(array,IK),SKG), intent(in)                    :: rpfill
         logical(LK)                 , intent(out)   , optional      :: failed
     end subroutine
 #endif
@@ -5023,10 +5023,10 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPaddedAsisSR_D1_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)            , intent(inout) , allocatable   :: array(:)
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)            , intent(inout) , allocatable   :: array(:)
         integer(IK)                 , intent(in)                    :: rpsize
-        character(len(array,IK),SKC), intent(in)                    :: rpfill
+        character(len(array,IK),SKG), intent(in)                    :: rpfill
         logical(LK)                 , intent(out)   , optional      :: failed
     end subroutine
 #endif
@@ -5038,10 +5038,10 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPaddedAsisSR_D1_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)                , intent(inout) , allocatable   :: array(:)
+        use pm_kind, only: IKG => IK5
+        integer(IKG)                , intent(inout) , allocatable   :: array(:)
         integer(IK)                 , intent(in)                    :: rpsize
-        integer(IKC)                , intent(in)                    :: rpfill
+        integer(IKG)                , intent(in)                    :: rpfill
         logical(LK)                 , intent(out)   , optional      :: failed
     end subroutine
 #endif
@@ -5051,10 +5051,10 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPaddedAsisSR_D1_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)                , intent(inout) , allocatable   :: array(:)
+        use pm_kind, only: IKG => IK4
+        integer(IKG)                , intent(inout) , allocatable   :: array(:)
         integer(IK)                 , intent(in)                    :: rpsize
-        integer(IKC)                , intent(in)                    :: rpfill
+        integer(IKG)                , intent(in)                    :: rpfill
         logical(LK)                 , intent(out)   , optional      :: failed
     end subroutine
 #endif
@@ -5064,10 +5064,10 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPaddedAsisSR_D1_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)                , intent(inout) , allocatable   :: array(:)
+        use pm_kind, only: IKG => IK3
+        integer(IKG)                , intent(inout) , allocatable   :: array(:)
         integer(IK)                 , intent(in)                    :: rpsize
-        integer(IKC)                , intent(in)                    :: rpfill
+        integer(IKG)                , intent(in)                    :: rpfill
         logical(LK)                 , intent(out)   , optional      :: failed
     end subroutine
 #endif
@@ -5077,10 +5077,10 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPaddedAsisSR_D1_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)                , intent(inout) , allocatable   :: array(:)
+        use pm_kind, only: IKG => IK2
+        integer(IKG)                , intent(inout) , allocatable   :: array(:)
         integer(IK)                 , intent(in)                    :: rpsize
-        integer(IKC)                , intent(in)                    :: rpfill
+        integer(IKG)                , intent(in)                    :: rpfill
         logical(LK)                 , intent(out)   , optional      :: failed
     end subroutine
 #endif
@@ -5090,10 +5090,10 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPaddedAsisSR_D1_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)                , intent(inout) , allocatable   :: array(:)
+        use pm_kind, only: IKG => IK1
+        integer(IKG)                , intent(inout) , allocatable   :: array(:)
         integer(IK)                 , intent(in)                    :: rpsize
-        integer(IKC)                , intent(in)                    :: rpfill
+        integer(IKG)                , intent(in)                    :: rpfill
         logical(LK)                 , intent(out)   , optional      :: failed
     end subroutine
 #endif
@@ -5105,10 +5105,10 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPaddedAsisSR_D1_LK5
 #endif
-        use pm_kind, only: LKC => LK5
-        logical(LKC)                , intent(inout) , allocatable   :: array(:)
+        use pm_kind, only: LKG => LK5
+        logical(LKG)                , intent(inout) , allocatable   :: array(:)
         integer(IK)                 , intent(in)                    :: rpsize
-        logical(LKC)                , intent(in)                    :: rpfill
+        logical(LKG)                , intent(in)                    :: rpfill
         logical(LK)                 , intent(out)   , optional      :: failed
     end subroutine
 #endif
@@ -5118,10 +5118,10 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPaddedAsisSR_D1_LK4
 #endif
-        use pm_kind, only: LKC => LK4
-        logical(LKC)                , intent(inout) , allocatable   :: array(:)
+        use pm_kind, only: LKG => LK4
+        logical(LKG)                , intent(inout) , allocatable   :: array(:)
         integer(IK)                 , intent(in)                    :: rpsize
-        logical(LKC)                , intent(in)                    :: rpfill
+        logical(LKG)                , intent(in)                    :: rpfill
         logical(LK)                 , intent(out)   , optional      :: failed
     end subroutine
 #endif
@@ -5131,10 +5131,10 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPaddedAsisSR_D1_LK3
 #endif
-        use pm_kind, only: LKC => LK3
-        logical(LKC)                , intent(inout) , allocatable   :: array(:)
+        use pm_kind, only: LKG => LK3
+        logical(LKG)                , intent(inout) , allocatable   :: array(:)
         integer(IK)                 , intent(in)                    :: rpsize
-        logical(LKC)                , intent(in)                    :: rpfill
+        logical(LKG)                , intent(in)                    :: rpfill
         logical(LK)                 , intent(out)   , optional      :: failed
     end subroutine
 #endif
@@ -5144,10 +5144,10 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPaddedAsisSR_D1_LK2
 #endif
-        use pm_kind, only: LKC => LK2
-        logical(LKC)                , intent(inout) , allocatable   :: array(:)
+        use pm_kind, only: LKG => LK2
+        logical(LKG)                , intent(inout) , allocatable   :: array(:)
         integer(IK)                 , intent(in)                    :: rpsize
-        logical(LKC)                , intent(in)                    :: rpfill
+        logical(LKG)                , intent(in)                    :: rpfill
         logical(LK)                 , intent(out)   , optional      :: failed
     end subroutine
 #endif
@@ -5157,10 +5157,10 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPaddedAsisSR_D1_LK1
 #endif
-        use pm_kind, only: LKC => LK1
-        logical(LKC)                , intent(inout) , allocatable   :: array(:)
+        use pm_kind, only: LKG => LK1
+        logical(LKG)                , intent(inout) , allocatable   :: array(:)
         integer(IK)                 , intent(in)                    :: rpsize
-        logical(LKC)                , intent(in)                    :: rpfill
+        logical(LKG)                , intent(in)                    :: rpfill
         logical(LK)                 , intent(out)   , optional      :: failed
     end subroutine
 #endif
@@ -5172,10 +5172,10 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPaddedAsisSR_D1_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)                , intent(inout) , allocatable   :: array(:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG)                , intent(inout) , allocatable   :: array(:)
         integer(IK)                 , intent(in)                    :: rpsize
-        complex(CKC)                , intent(in)                    :: rpfill
+        complex(CKG)                , intent(in)                    :: rpfill
         logical(LK)                 , intent(out)   , optional      :: failed
     end subroutine
 #endif
@@ -5185,10 +5185,10 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPaddedAsisSR_D1_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)                , intent(inout) , allocatable   :: array(:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG)                , intent(inout) , allocatable   :: array(:)
         integer(IK)                 , intent(in)                    :: rpsize
-        complex(CKC)                , intent(in)                    :: rpfill
+        complex(CKG)                , intent(in)                    :: rpfill
         logical(LK)                 , intent(out)   , optional      :: failed
     end subroutine
 #endif
@@ -5198,10 +5198,10 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPaddedAsisSR_D1_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)                , intent(inout) , allocatable   :: array(:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG)                , intent(inout) , allocatable   :: array(:)
         integer(IK)                 , intent(in)                    :: rpsize
-        complex(CKC)                , intent(in)                    :: rpfill
+        complex(CKG)                , intent(in)                    :: rpfill
         logical(LK)                 , intent(out)   , optional      :: failed
     end subroutine
 #endif
@@ -5211,10 +5211,10 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPaddedAsisSR_D1_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)                , intent(inout) , allocatable   :: array(:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG)                , intent(inout) , allocatable   :: array(:)
         integer(IK)                 , intent(in)                    :: rpsize
-        complex(CKC)                , intent(in)                    :: rpfill
+        complex(CKG)                , intent(in)                    :: rpfill
         logical(LK)                 , intent(out)   , optional      :: failed
     end subroutine
 #endif
@@ -5224,10 +5224,10 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPaddedAsisSR_D1_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)                , intent(inout) , allocatable   :: array(:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG)                , intent(inout) , allocatable   :: array(:)
         integer(IK)                 , intent(in)                    :: rpsize
-        complex(CKC)                , intent(in)                    :: rpfill
+        complex(CKG)                , intent(in)                    :: rpfill
         logical(LK)                 , intent(out)   , optional      :: failed
     end subroutine
 #endif
@@ -5239,10 +5239,10 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPaddedAsisSR_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)                   , intent(inout) , allocatable   :: array(:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)                   , intent(inout) , allocatable   :: array(:)
         integer(IK)                 , intent(in)                    :: rpsize
-        real(RKC)                   , intent(in)                    :: rpfill
+        real(RKG)                   , intent(in)                    :: rpfill
         logical(LK)                 , intent(out)   , optional      :: failed
     end subroutine
 #endif
@@ -5252,10 +5252,10 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPaddedAsisSR_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)                   , intent(inout) , allocatable   :: array(:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)                   , intent(inout) , allocatable   :: array(:)
         integer(IK)                 , intent(in)                    :: rpsize
-        real(RKC)                   , intent(in)                    :: rpfill
+        real(RKG)                   , intent(in)                    :: rpfill
         logical(LK)                 , intent(out)   , optional      :: failed
     end subroutine
 #endif
@@ -5265,10 +5265,10 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPaddedAsisSR_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)                   , intent(inout) , allocatable   :: array(:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)                   , intent(inout) , allocatable   :: array(:)
         integer(IK)                 , intent(in)                    :: rpsize
-        real(RKC)                   , intent(in)                    :: rpfill
+        real(RKG)                   , intent(in)                    :: rpfill
         logical(LK)                 , intent(out)   , optional      :: failed
     end subroutine
 #endif
@@ -5278,10 +5278,10 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPaddedAsisSR_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)                   , intent(inout) , allocatable   :: array(:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)                   , intent(inout) , allocatable   :: array(:)
         integer(IK)                 , intent(in)                    :: rpsize
-        real(RKC)                   , intent(in)                    :: rpfill
+        real(RKG)                   , intent(in)                    :: rpfill
         logical(LK)                 , intent(out)   , optional      :: failed
     end subroutine
 #endif
@@ -5291,10 +5291,10 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPaddedAsisSR_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)                   , intent(inout) , allocatable   :: array(:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)                   , intent(inout) , allocatable   :: array(:)
         integer(IK)                 , intent(in)                    :: rpsize
-        real(RKC)                   , intent(in)                    :: rpfill
+        real(RKG)                   , intent(in)                    :: rpfill
         logical(LK)                 , intent(out)   , optional      :: failed
     end subroutine
 #endif
@@ -5312,10 +5312,10 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPaddedMargSR_D0_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)            , intent(inout) , allocatable   :: array
-        character(1,SKC)            , intent(in)                    :: rpfill
-        character(1,SKC)            , intent(in)    , optional      :: rmfill
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)            , intent(inout) , allocatable   :: array
+        character(1,SKG)            , intent(in)                    :: rpfill
+        character(1,SKG)            , intent(in)    , optional      :: rmfill
         integer(IK)                 , intent(in)                    :: rpsize, rmsize
         logical(LK)                 , intent(out)   , optional      :: failed
     end subroutine
@@ -5326,10 +5326,10 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPaddedMargSR_D0_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(:,SKC)            , intent(inout) , allocatable   :: array
-        character(1,SKC)            , intent(in)                    :: rpfill
-        character(1,SKC)            , intent(in)    , optional      :: rmfill
+        use pm_kind, only: SKG => SK4
+        character(:,SKG)            , intent(inout) , allocatable   :: array
+        character(1,SKG)            , intent(in)                    :: rpfill
+        character(1,SKG)            , intent(in)    , optional      :: rmfill
         integer(IK)                 , intent(in)                    :: rpsize, rmsize
         logical(LK)                 , intent(out)   , optional      :: failed
     end subroutine
@@ -5340,10 +5340,10 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPaddedMargSR_D0_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(:,SKC)            , intent(inout) , allocatable   :: array
-        character(1,SKC)            , intent(in)                    :: rpfill
-        character(1,SKC)            , intent(in)    , optional      :: rmfill
+        use pm_kind, only: SKG => SK3
+        character(:,SKG)            , intent(inout) , allocatable   :: array
+        character(1,SKG)            , intent(in)                    :: rpfill
+        character(1,SKG)            , intent(in)    , optional      :: rmfill
         integer(IK)                 , intent(in)                    :: rpsize, rmsize
         logical(LK)                 , intent(out)   , optional      :: failed
     end subroutine
@@ -5354,10 +5354,10 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPaddedMargSR_D0_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(:,SKC)            , intent(inout) , allocatable   :: array
-        character(1,SKC)            , intent(in)                    :: rpfill
-        character(1,SKC)            , intent(in)    , optional      :: rmfill
+        use pm_kind, only: SKG => SK2
+        character(:,SKG)            , intent(inout) , allocatable   :: array
+        character(1,SKG)            , intent(in)                    :: rpfill
+        character(1,SKG)            , intent(in)    , optional      :: rmfill
         integer(IK)                 , intent(in)                    :: rpsize, rmsize
         logical(LK)                 , intent(out)   , optional      :: failed
     end subroutine
@@ -5368,10 +5368,10 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPaddedMargSR_D0_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(:,SKC)            , intent(inout) , allocatable   :: array
-        character(1,SKC)            , intent(in)                    :: rpfill
-        character(1,SKC)            , intent(in)    , optional      :: rmfill
+        use pm_kind, only: SKG => SK1
+        character(:,SKG)            , intent(inout) , allocatable   :: array
+        character(1,SKG)            , intent(in)                    :: rpfill
+        character(1,SKG)            , intent(in)    , optional      :: rmfill
         integer(IK)                 , intent(in)                    :: rpsize, rmsize
         logical(LK)                 , intent(out)   , optional      :: failed
     end subroutine
@@ -5384,10 +5384,10 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPaddedMargSR_D1_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)            , intent(inout) , allocatable   :: array(:)
-        character(len(array,IK),SKC), intent(in)                    :: rpfill
-        character(len(array,IK),SKC), intent(in)    , optional      :: rmfill
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)            , intent(inout) , allocatable   :: array(:)
+        character(len(array,IK),SKG), intent(in)                    :: rpfill
+        character(len(array,IK),SKG), intent(in)    , optional      :: rmfill
         integer(IK)                 , intent(in)                    :: rpsize, rmsize
         logical(LK)                 , intent(out)   , optional      :: failed
     end subroutine
@@ -5398,10 +5398,10 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPaddedMargSR_D1_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)            , intent(inout) , allocatable   :: array(:)
-        character(len(array,IK),SKC), intent(in)                    :: rpfill
-        character(len(array,IK),SKC), intent(in)    , optional      :: rmfill
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)            , intent(inout) , allocatable   :: array(:)
+        character(len(array,IK),SKG), intent(in)                    :: rpfill
+        character(len(array,IK),SKG), intent(in)    , optional      :: rmfill
         integer(IK)                 , intent(in)                    :: rpsize, rmsize
         logical(LK)                 , intent(out)   , optional      :: failed
     end subroutine
@@ -5412,10 +5412,10 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPaddedMargSR_D1_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)            , intent(inout) , allocatable   :: array(:)
-        character(len(array,IK),SKC), intent(in)                    :: rpfill
-        character(len(array,IK),SKC), intent(in)    , optional      :: rmfill
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)            , intent(inout) , allocatable   :: array(:)
+        character(len(array,IK),SKG), intent(in)                    :: rpfill
+        character(len(array,IK),SKG), intent(in)    , optional      :: rmfill
         integer(IK)                 , intent(in)                    :: rpsize, rmsize
         logical(LK)                 , intent(out)   , optional      :: failed
     end subroutine
@@ -5426,10 +5426,10 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPaddedMargSR_D1_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)            , intent(inout) , allocatable   :: array(:)
-        character(len(array,IK),SKC), intent(in)                    :: rpfill
-        character(len(array,IK),SKC), intent(in)    , optional      :: rmfill
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)            , intent(inout) , allocatable   :: array(:)
+        character(len(array,IK),SKG), intent(in)                    :: rpfill
+        character(len(array,IK),SKG), intent(in)    , optional      :: rmfill
         integer(IK)                 , intent(in)                    :: rpsize, rmsize
         logical(LK)                 , intent(out)   , optional      :: failed
     end subroutine
@@ -5440,10 +5440,10 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPaddedMargSR_D1_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)            , intent(inout) , allocatable   :: array(:)
-        character(len(array,IK),SKC), intent(in)                    :: rpfill
-        character(len(array,IK),SKC), intent(in)    , optional      :: rmfill
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)            , intent(inout) , allocatable   :: array(:)
+        character(len(array,IK),SKG), intent(in)                    :: rpfill
+        character(len(array,IK),SKG), intent(in)    , optional      :: rmfill
         integer(IK)                 , intent(in)                    :: rpsize, rmsize
         logical(LK)                 , intent(out)   , optional      :: failed
     end subroutine
@@ -5456,10 +5456,10 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPaddedMargSR_D1_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)                , intent(inout) , allocatable   :: array(:)
-        integer(IKC)                , intent(in)                    :: rpfill
-        integer(IKC)                , intent(in)    , optional      :: rmfill
+        use pm_kind, only: IKG => IK5
+        integer(IKG)                , intent(inout) , allocatable   :: array(:)
+        integer(IKG)                , intent(in)                    :: rpfill
+        integer(IKG)                , intent(in)    , optional      :: rmfill
         integer(IK)                 , intent(in)                    :: rpsize, rmsize
         logical(LK)                 , intent(out)   , optional      :: failed
     end subroutine
@@ -5470,10 +5470,10 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPaddedMargSR_D1_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)                , intent(inout) , allocatable   :: array(:)
-        integer(IKC)                , intent(in)                    :: rpfill
-        integer(IKC)                , intent(in)    , optional      :: rmfill
+        use pm_kind, only: IKG => IK4
+        integer(IKG)                , intent(inout) , allocatable   :: array(:)
+        integer(IKG)                , intent(in)                    :: rpfill
+        integer(IKG)                , intent(in)    , optional      :: rmfill
         integer(IK)                 , intent(in)                    :: rpsize, rmsize
         logical(LK)                 , intent(out)   , optional      :: failed
     end subroutine
@@ -5484,10 +5484,10 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPaddedMargSR_D1_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)                , intent(inout) , allocatable   :: array(:)
-        integer(IKC)                , intent(in)                    :: rpfill
-        integer(IKC)                , intent(in)    , optional      :: rmfill
+        use pm_kind, only: IKG => IK3
+        integer(IKG)                , intent(inout) , allocatable   :: array(:)
+        integer(IKG)                , intent(in)                    :: rpfill
+        integer(IKG)                , intent(in)    , optional      :: rmfill
         integer(IK)                 , intent(in)                    :: rpsize, rmsize
         logical(LK)                 , intent(out)   , optional      :: failed
     end subroutine
@@ -5498,10 +5498,10 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPaddedMargSR_D1_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)                , intent(inout) , allocatable   :: array(:)
-        integer(IKC)                , intent(in)                    :: rpfill
-        integer(IKC)                , intent(in)    , optional      :: rmfill
+        use pm_kind, only: IKG => IK2
+        integer(IKG)                , intent(inout) , allocatable   :: array(:)
+        integer(IKG)                , intent(in)                    :: rpfill
+        integer(IKG)                , intent(in)    , optional      :: rmfill
         integer(IK)                 , intent(in)                    :: rpsize, rmsize
         logical(LK)                 , intent(out)   , optional      :: failed
     end subroutine
@@ -5512,10 +5512,10 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPaddedMargSR_D1_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)                , intent(inout) , allocatable   :: array(:)
-        integer(IKC)                , intent(in)                    :: rpfill
-        integer(IKC)                , intent(in)    , optional      :: rmfill
+        use pm_kind, only: IKG => IK1
+        integer(IKG)                , intent(inout) , allocatable   :: array(:)
+        integer(IKG)                , intent(in)                    :: rpfill
+        integer(IKG)                , intent(in)    , optional      :: rmfill
         integer(IK)                 , intent(in)                    :: rpsize, rmsize
         logical(LK)                 , intent(out)   , optional      :: failed
     end subroutine
@@ -5528,10 +5528,10 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPaddedMargSR_D1_LK5
 #endif
-        use pm_kind, only: LKC => LK5
-        logical(LKC)                , intent(inout) , allocatable   :: array(:)
-        logical(LKC)                , intent(in)                    :: rpfill
-        logical(LKC)                , intent(in)    , optional      :: rmfill
+        use pm_kind, only: LKG => LK5
+        logical(LKG)                , intent(inout) , allocatable   :: array(:)
+        logical(LKG)                , intent(in)                    :: rpfill
+        logical(LKG)                , intent(in)    , optional      :: rmfill
         integer(IK)                 , intent(in)                    :: rpsize, rmsize
         logical(LK)                 , intent(out)   , optional      :: failed
     end subroutine
@@ -5542,10 +5542,10 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPaddedMargSR_D1_LK4
 #endif
-        use pm_kind, only: LKC => LK4
-        logical(LKC)                , intent(inout) , allocatable   :: array(:)
-        logical(LKC)                , intent(in)                    :: rpfill
-        logical(LKC)                , intent(in)    , optional      :: rmfill
+        use pm_kind, only: LKG => LK4
+        logical(LKG)                , intent(inout) , allocatable   :: array(:)
+        logical(LKG)                , intent(in)                    :: rpfill
+        logical(LKG)                , intent(in)    , optional      :: rmfill
         integer(IK)                 , intent(in)                    :: rpsize, rmsize
         logical(LK)                 , intent(out)   , optional      :: failed
     end subroutine
@@ -5556,10 +5556,10 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPaddedMargSR_D1_LK3
 #endif
-        use pm_kind, only: LKC => LK3
-        logical(LKC)                , intent(inout) , allocatable   :: array(:)
-        logical(LKC)                , intent(in)                    :: rpfill
-        logical(LKC)                , intent(in)    , optional      :: rmfill
+        use pm_kind, only: LKG => LK3
+        logical(LKG)                , intent(inout) , allocatable   :: array(:)
+        logical(LKG)                , intent(in)                    :: rpfill
+        logical(LKG)                , intent(in)    , optional      :: rmfill
         integer(IK)                 , intent(in)                    :: rpsize, rmsize
         logical(LK)                 , intent(out)   , optional      :: failed
     end subroutine
@@ -5570,10 +5570,10 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPaddedMargSR_D1_LK2
 #endif
-        use pm_kind, only: LKC => LK2
-        logical(LKC)                , intent(inout) , allocatable   :: array(:)
-        logical(LKC)                , intent(in)                    :: rpfill
-        logical(LKC)                , intent(in)    , optional      :: rmfill
+        use pm_kind, only: LKG => LK2
+        logical(LKG)                , intent(inout) , allocatable   :: array(:)
+        logical(LKG)                , intent(in)                    :: rpfill
+        logical(LKG)                , intent(in)    , optional      :: rmfill
         integer(IK)                 , intent(in)                    :: rpsize, rmsize
         logical(LK)                 , intent(out)   , optional      :: failed
     end subroutine
@@ -5584,10 +5584,10 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPaddedMargSR_D1_LK1
 #endif
-        use pm_kind, only: LKC => LK1
-        logical(LKC)                , intent(inout) , allocatable   :: array(:)
-        logical(LKC)                , intent(in)                    :: rpfill
-        logical(LKC)                , intent(in)    , optional      :: rmfill
+        use pm_kind, only: LKG => LK1
+        logical(LKG)                , intent(inout) , allocatable   :: array(:)
+        logical(LKG)                , intent(in)                    :: rpfill
+        logical(LKG)                , intent(in)    , optional      :: rmfill
         integer(IK)                 , intent(in)                    :: rpsize, rmsize
         logical(LK)                 , intent(out)   , optional      :: failed
     end subroutine
@@ -5600,10 +5600,10 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPaddedMargSR_D1_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)                , intent(inout) , allocatable   :: array(:)
-        complex(CKC)                , intent(in)                    :: rpfill
-        complex(CKC)                , intent(in)    , optional      :: rmfill
+        use pm_kind, only: CKG => CK5
+        complex(CKG)                , intent(inout) , allocatable   :: array(:)
+        complex(CKG)                , intent(in)                    :: rpfill
+        complex(CKG)                , intent(in)    , optional      :: rmfill
         integer(IK)                 , intent(in)                    :: rpsize, rmsize
         logical(LK)                 , intent(out)   , optional      :: failed
     end subroutine
@@ -5614,10 +5614,10 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPaddedMargSR_D1_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)                , intent(inout) , allocatable   :: array(:)
-        complex(CKC)                , intent(in)                    :: rpfill
-        complex(CKC)                , intent(in)    , optional      :: rmfill
+        use pm_kind, only: CKG => CK4
+        complex(CKG)                , intent(inout) , allocatable   :: array(:)
+        complex(CKG)                , intent(in)                    :: rpfill
+        complex(CKG)                , intent(in)    , optional      :: rmfill
         integer(IK)                 , intent(in)                    :: rpsize, rmsize
         logical(LK)                 , intent(out)   , optional      :: failed
     end subroutine
@@ -5628,10 +5628,10 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPaddedMargSR_D1_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)                , intent(inout) , allocatable   :: array(:)
-        complex(CKC)                , intent(in)                    :: rpfill
-        complex(CKC)                , intent(in)    , optional      :: rmfill
+        use pm_kind, only: CKG => CK3
+        complex(CKG)                , intent(inout) , allocatable   :: array(:)
+        complex(CKG)                , intent(in)                    :: rpfill
+        complex(CKG)                , intent(in)    , optional      :: rmfill
         integer(IK)                 , intent(in)                    :: rpsize, rmsize
         logical(LK)                 , intent(out)   , optional      :: failed
     end subroutine
@@ -5642,10 +5642,10 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPaddedMargSR_D1_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)                , intent(inout) , allocatable   :: array(:)
-        complex(CKC)                , intent(in)                    :: rpfill
-        complex(CKC)                , intent(in)    , optional      :: rmfill
+        use pm_kind, only: CKG => CK2
+        complex(CKG)                , intent(inout) , allocatable   :: array(:)
+        complex(CKG)                , intent(in)                    :: rpfill
+        complex(CKG)                , intent(in)    , optional      :: rmfill
         integer(IK)                 , intent(in)                    :: rpsize, rmsize
         logical(LK)                 , intent(out)   , optional      :: failed
     end subroutine
@@ -5656,10 +5656,10 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPaddedMargSR_D1_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)                , intent(inout) , allocatable   :: array(:)
-        complex(CKC)                , intent(in)                    :: rpfill
-        complex(CKC)                , intent(in)    , optional      :: rmfill
+        use pm_kind, only: CKG => CK1
+        complex(CKG)                , intent(inout) , allocatable   :: array(:)
+        complex(CKG)                , intent(in)                    :: rpfill
+        complex(CKG)                , intent(in)    , optional      :: rmfill
         integer(IK)                 , intent(in)                    :: rpsize, rmsize
         logical(LK)                 , intent(out)   , optional      :: failed
     end subroutine
@@ -5672,10 +5672,10 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPaddedMargSR_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)                   , intent(inout) , allocatable   :: array(:)
-        real(RKC)                   , intent(in)                    :: rpfill
-        real(RKC)                   , intent(in)    , optional      :: rmfill
+        use pm_kind, only: RKG => RK5
+        real(RKG)                   , intent(inout) , allocatable   :: array(:)
+        real(RKG)                   , intent(in)                    :: rpfill
+        real(RKG)                   , intent(in)    , optional      :: rmfill
         integer(IK)                 , intent(in)                    :: rpsize, rmsize
         logical(LK)                 , intent(out)   , optional      :: failed
     end subroutine
@@ -5686,10 +5686,10 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPaddedMargSR_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)                   , intent(inout) , allocatable   :: array(:)
-        real(RKC)                   , intent(in)                    :: rpfill
-        real(RKC)                   , intent(in)    , optional      :: rmfill
+        use pm_kind, only: RKG => RK4
+        real(RKG)                   , intent(inout) , allocatable   :: array(:)
+        real(RKG)                   , intent(in)                    :: rpfill
+        real(RKG)                   , intent(in)    , optional      :: rmfill
         integer(IK)                 , intent(in)                    :: rpsize, rmsize
         logical(LK)                 , intent(out)   , optional      :: failed
     end subroutine
@@ -5700,10 +5700,10 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPaddedMargSR_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)                   , intent(inout) , allocatable   :: array(:)
-        real(RKC)                   , intent(in)                    :: rpfill
-        real(RKC)                   , intent(in)    , optional      :: rmfill
+        use pm_kind, only: RKG => RK3
+        real(RKG)                   , intent(inout) , allocatable   :: array(:)
+        real(RKG)                   , intent(in)                    :: rpfill
+        real(RKG)                   , intent(in)    , optional      :: rmfill
         integer(IK)                 , intent(in)                    :: rpsize, rmsize
         logical(LK)                 , intent(out)   , optional      :: failed
     end subroutine
@@ -5714,10 +5714,10 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPaddedMargSR_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)                   , intent(inout) , allocatable   :: array(:)
-        real(RKC)                   , intent(in)                    :: rpfill
-        real(RKC)                   , intent(in)    , optional      :: rmfill
+        use pm_kind, only: RKG => RK2
+        real(RKG)                   , intent(inout) , allocatable   :: array(:)
+        real(RKG)                   , intent(in)                    :: rpfill
+        real(RKG)                   , intent(in)    , optional      :: rmfill
         integer(IK)                 , intent(in)                    :: rpsize, rmsize
         logical(LK)                 , intent(out)   , optional      :: failed
     end subroutine
@@ -5728,10 +5728,10 @@ module pm_arrayPad
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPaddedMargSR_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)                   , intent(inout) , allocatable   :: array(:)
-        real(RKC)                   , intent(in)                    :: rpfill
-        real(RKC)                   , intent(in)    , optional      :: rmfill
+        use pm_kind, only: RKG => RK1
+        real(RKG)                   , intent(inout) , allocatable   :: array(:)
+        real(RKG)                   , intent(in)                    :: rpfill
+        real(RKG)                   , intent(in)    , optional      :: rmfill
         integer(IK)                 , intent(in)                    :: rpsize, rmsize
         logical(LK)                 , intent(out)   , optional      :: failed
     end subroutine

@@ -72,35 +72,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getExtrapPWLN_ND1_QD0_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getExtrapPWLN_ND1_QD0_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getExtrapPWLN_ND1_QD0_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getExtrapPWLN_ND1_QD0_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getExtrapPWLN_ND1_QD0_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
@@ -123,35 +123,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getExtrapPWLN_ND1_QD1_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getExtrapPWLN_ND1_QD1_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getExtrapPWLN_ND1_QD1_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getExtrapPWLN_ND1_QD1_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getExtrapPWLN_ND1_QD1_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
@@ -186,35 +186,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getExtrapMEAN_ND1_QD0_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getExtrapMEAN_ND1_QD0_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getExtrapMEAN_ND1_QD0_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getExtrapMEAN_ND1_QD0_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getExtrapMEAN_ND1_QD0_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
@@ -237,35 +237,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getExtrapMEAN_ND1_QD1_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getExtrapMEAN_ND1_QD1_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getExtrapMEAN_ND1_QD1_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getExtrapMEAN_ND1_QD1_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getExtrapMEAN_ND1_QD1_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
@@ -300,35 +300,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getExtrapNEAR_ND1_QD0_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getExtrapNEAR_ND1_QD0_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getExtrapNEAR_ND1_QD0_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getExtrapNEAR_ND1_QD0_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getExtrapNEAR_ND1_QD0_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
@@ -351,35 +351,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getExtrapNEAR_ND1_QD1_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getExtrapNEAR_ND1_QD1_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getExtrapNEAR_ND1_QD1_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getExtrapNEAR_ND1_QD1_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getExtrapNEAR_ND1_QD1_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
@@ -414,35 +414,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getExtrapNEXT_ND1_QD0_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getExtrapNEXT_ND1_QD0_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getExtrapNEXT_ND1_QD0_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getExtrapNEXT_ND1_QD0_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getExtrapNEXT_ND1_QD0_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
@@ -465,35 +465,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getExtrapNEXT_ND1_QD1_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getExtrapNEXT_ND1_QD1_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getExtrapNEXT_ND1_QD1_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getExtrapNEXT_ND1_QD1_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getExtrapNEXT_ND1_QD1_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
@@ -528,35 +528,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getExtrapPREV_ND1_QD0_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getExtrapPREV_ND1_QD0_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getExtrapPREV_ND1_QD0_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getExtrapPREV_ND1_QD0_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getExtrapPREV_ND1_QD0_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
@@ -579,35 +579,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getExtrapPREV_ND1_QD1_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getExtrapPREV_ND1_QD1_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getExtrapPREV_ND1_QD1_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getExtrapPREV_ND1_QD1_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getExtrapPREV_ND1_QD1_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
@@ -642,35 +642,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getExtrapMNPLD_ND1_QD0_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getExtrapMNPLD_ND1_QD0_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getExtrapMNPLD_ND1_QD0_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getExtrapMNPLD_ND1_QD0_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getExtrapMNPLD_ND1_QD0_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
@@ -693,35 +693,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getExtrapMNPLD_ND1_QD1_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getExtrapMNPLD_ND1_QD1_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getExtrapMNPLD_ND1_QD1_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getExtrapMNPLD_ND1_QD1_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getExtrapMNPLD_ND1_QD1_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
@@ -778,35 +778,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setExtrapPWLN_ND1_QD0_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setExtrapPWLN_ND1_QD0_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setExtrapPWLN_ND1_QD0_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setExtrapPWLN_ND1_QD0_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setExtrapPWLN_ND1_QD0_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
@@ -829,35 +829,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setExtrapPWLN_ND1_QD1_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setExtrapPWLN_ND1_QD1_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setExtrapPWLN_ND1_QD1_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setExtrapPWLN_ND1_QD1_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setExtrapPWLN_ND1_QD1_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
@@ -892,35 +892,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setExtrapMEAN_ND1_QD0_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setExtrapMEAN_ND1_QD0_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setExtrapMEAN_ND1_QD0_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setExtrapMEAN_ND1_QD0_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setExtrapMEAN_ND1_QD0_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
@@ -943,35 +943,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setExtrapMEAN_ND1_QD1_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setExtrapMEAN_ND1_QD1_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setExtrapMEAN_ND1_QD1_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setExtrapMEAN_ND1_QD1_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setExtrapMEAN_ND1_QD1_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
@@ -1006,35 +1006,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setExtrapNEAR_ND1_QD0_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setExtrapNEAR_ND1_QD0_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setExtrapNEAR_ND1_QD0_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setExtrapNEAR_ND1_QD0_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setExtrapNEAR_ND1_QD0_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
@@ -1057,35 +1057,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setExtrapNEAR_ND1_QD1_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setExtrapNEAR_ND1_QD1_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setExtrapNEAR_ND1_QD1_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setExtrapNEAR_ND1_QD1_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setExtrapNEAR_ND1_QD1_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
@@ -1120,35 +1120,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setExtrapNEXT_ND1_QD0_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setExtrapNEXT_ND1_QD0_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setExtrapNEXT_ND1_QD0_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setExtrapNEXT_ND1_QD0_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setExtrapNEXT_ND1_QD0_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
@@ -1171,35 +1171,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setExtrapNEXT_ND1_QD1_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setExtrapNEXT_ND1_QD1_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setExtrapNEXT_ND1_QD1_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setExtrapNEXT_ND1_QD1_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setExtrapNEXT_ND1_QD1_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
@@ -1234,35 +1234,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setExtrapPREV_ND1_QD0_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setExtrapPREV_ND1_QD0_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setExtrapPREV_ND1_QD0_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setExtrapPREV_ND1_QD0_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setExtrapPREV_ND1_QD0_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
@@ -1285,35 +1285,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setExtrapPREV_ND1_QD1_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setExtrapPREV_ND1_QD1_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setExtrapPREV_ND1_QD1_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setExtrapPREV_ND1_QD1_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setExtrapPREV_ND1_QD1_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
@@ -1348,35 +1348,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setExtrapMNPLD_ND1_QD0_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setExtrapMNPLD_ND1_QD0_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setExtrapMNPLD_ND1_QD0_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setExtrapMNPLD_ND1_QD0_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setExtrapMNPLD_ND1_QD0_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
@@ -1399,35 +1399,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setExtrapMNPLD_ND1_QD1_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setExtrapMNPLD_ND1_QD1_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setExtrapMNPLD_ND1_QD1_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setExtrapMNPLD_ND1_QD1_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setExtrapMNPLD_ND1_QD1_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
@@ -1462,35 +1462,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setExtrapMNPLE_ND1_QD0_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setExtrapMNPLE_ND1_QD0_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setExtrapMNPLE_ND1_QD0_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setExtrapMNPLE_ND1_QD0_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setExtrapMNPLE_ND1_QD0_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
@@ -1513,35 +1513,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setExtrapMNPLE_ND1_QD1_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setExtrapMNPLE_ND1_QD1_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setExtrapMNPLE_ND1_QD1_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setExtrapMNPLE_ND1_QD1_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setExtrapMNPLE_ND1_QD1_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
@@ -1598,35 +1598,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getInterpPWLN_ND1_QD0_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getInterpPWLN_ND1_QD0_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getInterpPWLN_ND1_QD0_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getInterpPWLN_ND1_QD0_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getInterpPWLN_ND1_QD0_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
@@ -1649,35 +1649,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getInterpPWLN_ND1_QD1_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getInterpPWLN_ND1_QD1_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getInterpPWLN_ND1_QD1_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getInterpPWLN_ND1_QD1_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getInterpPWLN_ND1_QD1_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
@@ -1712,35 +1712,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getInterpMEAN_ND1_QD0_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getInterpMEAN_ND1_QD0_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getInterpMEAN_ND1_QD0_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getInterpMEAN_ND1_QD0_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getInterpMEAN_ND1_QD0_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
@@ -1763,35 +1763,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getInterpMEAN_ND1_QD1_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getInterpMEAN_ND1_QD1_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getInterpMEAN_ND1_QD1_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getInterpMEAN_ND1_QD1_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getInterpMEAN_ND1_QD1_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
@@ -1826,35 +1826,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getInterpNEAR_ND1_QD0_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getInterpNEAR_ND1_QD0_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getInterpNEAR_ND1_QD0_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getInterpNEAR_ND1_QD0_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getInterpNEAR_ND1_QD0_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
@@ -1877,35 +1877,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getInterpNEAR_ND1_QD1_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getInterpNEAR_ND1_QD1_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getInterpNEAR_ND1_QD1_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getInterpNEAR_ND1_QD1_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getInterpNEAR_ND1_QD1_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
@@ -1940,35 +1940,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getInterpNEXT_ND1_QD0_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getInterpNEXT_ND1_QD0_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getInterpNEXT_ND1_QD0_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getInterpNEXT_ND1_QD0_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getInterpNEXT_ND1_QD0_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
@@ -1991,35 +1991,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getInterpNEXT_ND1_QD1_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getInterpNEXT_ND1_QD1_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getInterpNEXT_ND1_QD1_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getInterpNEXT_ND1_QD1_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getInterpNEXT_ND1_QD1_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
@@ -2054,35 +2054,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getInterpPREV_ND1_QD0_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getInterpPREV_ND1_QD0_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getInterpPREV_ND1_QD0_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getInterpPREV_ND1_QD0_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getInterpPREV_ND1_QD0_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
@@ -2105,35 +2105,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getInterpPREV_ND1_QD1_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getInterpPREV_ND1_QD1_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getInterpPREV_ND1_QD1_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getInterpPREV_ND1_QD1_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getInterpPREV_ND1_QD1_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
@@ -2168,35 +2168,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getInterpMNPLD_ND1_QD0_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getInterpMNPLD_ND1_QD0_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getInterpMNPLD_ND1_QD0_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getInterpMNPLD_ND1_QD0_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getInterpMNPLD_ND1_QD0_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
@@ -2219,35 +2219,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getInterpMNPLD_ND1_QD1_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getInterpMNPLD_ND1_QD1_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getInterpMNPLD_ND1_QD1_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getInterpMNPLD_ND1_QD1_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getInterpMNPLD_ND1_QD1_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
@@ -2304,35 +2304,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setInterpPWLN_ND1_QD0_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setInterpPWLN_ND1_QD0_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setInterpPWLN_ND1_QD0_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setInterpPWLN_ND1_QD0_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setInterpPWLN_ND1_QD0_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
@@ -2355,35 +2355,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setInterpPWLN_ND1_QD1_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setInterpPWLN_ND1_QD1_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setInterpPWLN_ND1_QD1_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setInterpPWLN_ND1_QD1_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setInterpPWLN_ND1_QD1_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
@@ -2418,35 +2418,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setInterpMEAN_ND1_QD0_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setInterpMEAN_ND1_QD0_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setInterpMEAN_ND1_QD0_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setInterpMEAN_ND1_QD0_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setInterpMEAN_ND1_QD0_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
@@ -2469,35 +2469,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setInterpMEAN_ND1_QD1_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setInterpMEAN_ND1_QD1_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setInterpMEAN_ND1_QD1_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setInterpMEAN_ND1_QD1_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setInterpMEAN_ND1_QD1_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
@@ -2532,35 +2532,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setInterpNEAR_ND1_QD0_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setInterpNEAR_ND1_QD0_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setInterpNEAR_ND1_QD0_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setInterpNEAR_ND1_QD0_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setInterpNEAR_ND1_QD0_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
@@ -2583,35 +2583,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setInterpNEAR_ND1_QD1_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setInterpNEAR_ND1_QD1_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setInterpNEAR_ND1_QD1_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setInterpNEAR_ND1_QD1_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setInterpNEAR_ND1_QD1_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
@@ -2646,35 +2646,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setInterpNEXT_ND1_QD0_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setInterpNEXT_ND1_QD0_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setInterpNEXT_ND1_QD0_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setInterpNEXT_ND1_QD0_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setInterpNEXT_ND1_QD0_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
@@ -2697,35 +2697,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setInterpNEXT_ND1_QD1_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setInterpNEXT_ND1_QD1_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setInterpNEXT_ND1_QD1_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setInterpNEXT_ND1_QD1_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setInterpNEXT_ND1_QD1_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
@@ -2760,35 +2760,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setInterpPREV_ND1_QD0_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setInterpPREV_ND1_QD0_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setInterpPREV_ND1_QD0_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setInterpPREV_ND1_QD0_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setInterpPREV_ND1_QD0_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
@@ -2811,35 +2811,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setInterpPREV_ND1_QD1_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setInterpPREV_ND1_QD1_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setInterpPREV_ND1_QD1_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setInterpPREV_ND1_QD1_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setInterpPREV_ND1_QD1_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
@@ -2874,35 +2874,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setInterpMNPLD_ND1_QD0_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setInterpMNPLD_ND1_QD0_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setInterpMNPLD_ND1_QD0_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setInterpMNPLD_ND1_QD0_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setInterpMNPLD_ND1_QD0_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
@@ -2925,35 +2925,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setInterpMNPLD_ND1_QD1_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setInterpMNPLD_ND1_QD1_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setInterpMNPLD_ND1_QD1_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setInterpMNPLD_ND1_QD1_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setInterpMNPLD_ND1_QD1_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
@@ -2988,35 +2988,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setInterpMNPLE_ND1_QD0_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setInterpMNPLE_ND1_QD0_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setInterpMNPLE_ND1_QD0_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setInterpMNPLE_ND1_QD0_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setInterpMNPLE_ND1_QD0_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
@@ -3039,35 +3039,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setInterpMNPLE_ND1_QD1_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setInterpMNPLE_ND1_QD1_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setInterpMNPLE_ND1_QD1_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setInterpMNPLE_ND1_QD1_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setInterpMNPLE_ND1_QD1_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_polation@routines.inc.F90"
     end procedure
 #endif

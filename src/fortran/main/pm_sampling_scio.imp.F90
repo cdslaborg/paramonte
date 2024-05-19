@@ -31,7 +31,7 @@
 
     use pm_err, only: getFine
     use pm_err, only: err_type
-    use pm_kind, only: SK, IK, LK, SKC => SK
+    use pm_kind, only: SK, IK, LK, SKG => SK
     use pm_sysPath, only: PATHLEN => MAX_LEN_FILE_PATH
     use pm_strASCII, only: getStrLower, setStrLower
     use pm_arrayReplace, only: getReplaced
@@ -56,35 +56,35 @@
 
     ! specbase
     !>  \cond excluded
-    character(8191,SKC)                     :: description ! roughly 66Kb of memory
-    character(63,SKC)                       :: domain
-    character(63,SKC)       , allocatable   :: domainAxisName(:)
-    real(RKC)               , allocatable   :: domainBallAvg(:)
-    real(RKC)               , allocatable   :: domainBallCor(:,:)
-    real(RKC)               , allocatable   :: domainBallCov(:,:)
-    real(RKC)               , allocatable   :: domainBallStd(:)
-    real(RKC)               , allocatable   :: domainCubeLimitLower(:)
-    real(RKC)               , allocatable   :: domainCubeLimitUpper(:)
+    character(8191,SKG)                     :: description ! roughly 66Kb of memory
+    character(63,SKG)                       :: domain
+    character(63,SKG)       , allocatable   :: domainAxisName(:)
+    real(RKG)               , allocatable   :: domainBallAvg(:)
+    real(RKG)               , allocatable   :: domainBallCor(:,:)
+    real(RKG)               , allocatable   :: domainBallCov(:,:)
+    real(RKG)               , allocatable   :: domainBallStd(:)
+    real(RKG)               , allocatable   :: domainCubeLimitLower(:)
+    real(RKG)               , allocatable   :: domainCubeLimitUpper(:)
     integer(IK)                             :: domainErrCount
     integer(IK)                             :: domainErrCountMax
     logical(LK)                             :: inputFileHasPriority
-    character(15,SKC)                       :: outputChainFileFormat
+    character(15,SKG)                       :: outputChainFileFormat
     integer(IK)                             :: outputColumnWidth
-    character(PATHLEN,SKC)                  :: outputFileName
-    character(15,SKC)                       :: outputStatus
+    character(PATHLEN,SKG)                  :: outputFileName
+    character(15,SKG)                       :: outputStatus
     integer(IK)                             :: outputPrecision
     integer(IK)                             :: outputReportPeriod
-    character(15,SKC)                       :: outputRestartFileFormat
+    character(15,SKG)                       :: outputRestartFileFormat
     integer(IK)                             :: outputSampleSize
-    character(63,SKC)                       :: outputSeparator
-    character(63,SKC)                       :: outputSplashMode
-    character(63,SKC)                       :: parallelism
+    character(63,SKG)                       :: outputSeparator
+    character(63,SKG)                       :: outputSplashMode
+    character(63,SKG)                       :: parallelism
     logical(LK)                             :: parallelismMpiFinalizeEnabled
     integer(IK)                             :: parallelismNumThread
-   !character(511,SKC)                      :: plang
+   !character(511,SKG)                      :: plang
     integer(IK)                             :: randomSeed
-    character(PATHLEN,SKC)                  :: sysInfoFilePath
-    real(RKC)                               :: targetAcceptanceRate(2)
+    character(PATHLEN,SKG)                  :: sysInfoFilePath
+    real(RKG)                               :: targetAcceptanceRate(2)
     !>  \endcond excluded
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -93,28 +93,28 @@
     !>  \cond excluded
     integer(IK)                             :: outputChainSize
     integer(IK)                             :: outputSampleRefinementCount
-    character(63,SKC)                       :: outputSampleRefinementMethod
-    character(63,SKC)                       :: proposal
-    real(RKC)               , allocatable   :: proposalCor(:,:)
-    real(RKC)               , allocatable   :: proposalCov(:,:)
-    character(127,SKC)                      :: proposalScale
-    real(RKC)               , allocatable   :: proposalStart(:)
-    real(RKC)               , allocatable   :: proposalStartDomainCubeLimitLower(:)
-    real(RKC)               , allocatable   :: proposalStartDomainCubeLimitUpper(:)
+    character(63,SKG)                       :: outputSampleRefinementMethod
+    character(63,SKG)                       :: proposal
+    real(RKG)               , allocatable   :: proposalCor(:,:)
+    real(RKG)               , allocatable   :: proposalCov(:,:)
+    character(127,SKG)                      :: proposalScale
+    real(RKG)               , allocatable   :: proposalStart(:)
+    real(RKG)               , allocatable   :: proposalStartDomainCubeLimitLower(:)
+    real(RKG)               , allocatable   :: proposalStartDomainCubeLimitUpper(:)
     logical(LK)                             :: proposalStartRandomized
-    real(RKC)               , allocatable   :: proposalStd(:)
+    real(RKG)               , allocatable   :: proposalStd(:)
     !>  \endcond excluded
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     ! specdram
     !>  \cond excluded
-    real(RKC)                               :: proposalAdaptationBurnin
+    real(RKG)                               :: proposalAdaptationBurnin
     integer(IK)                             :: proposalAdaptationCount
     integer(IK)                             :: proposalAdaptationCountGreedy
     integer(IK)                             :: proposalAdaptationPeriod
     integer(IK)                             :: proposalDelayedRejectionCount
-    real(RKC)               , allocatable   :: proposalDelayedRejectionScale(:)
+    real(RKG)               , allocatable   :: proposalDelayedRejectionScale(:)
     !>  \endcond excluded
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -125,8 +125,8 @@
     integer(IK)                             :: domainPartitionAdaptationPeriod
     logical(LK)                             :: domainPartitionBiasCorrectionEnabled
     integer(IK)                             :: domainPartitionCountMax
-    real(RKC)                               :: domainPartitionFactorExpansion
-    real(RKC)                               :: domainPartitionFactorShrinkage
+    real(RKG)                               :: domainPartitionFactorExpansion
+    real(RKG)                               :: domainPartitionFactorShrinkage
     integer(IK)                             :: domainPartitionKmeansClusterCountMax
     integer(IK)                             :: domainPartitionKmeansClusterSizeMin
     logical(LK)                             :: domainPartitionKmeansNormalizationEnabled
@@ -134,16 +134,16 @@
     integer(IK)                             :: domainPartitionKmeansNumRecursionMax
     integer(IK)                             :: domainPartitionKmeansNumTry
     integer(IK)                             :: domainPartitionKvolumeNumRecursionMax
-    real(RKC)                               :: domainPartitionKvolumeWeightExponent
-    character(63,SKC)                       :: domainPartitionMethod
-    character(63,SKC)                       :: domainPartitionObject
+    real(RKG)                               :: domainPartitionKvolumeWeightExponent
+    character(63,SKG)                       :: domainPartitionMethod
+    character(63,SKG)                       :: domainPartitionObject
     logical(LK)                             :: domainPartitionOptimizationScaleEnabled
     logical(LK)                             :: domainPartitionOptimizationShapeEnabled
     logical(LK)                             :: domainPartitionOptimizationShapeScaleEnabled
-    real(RKC)                               :: domainPartitionScaleFactor
-    character(63,SKC)                       :: domainSampler
+    real(RKG)                               :: domainPartitionScaleFactor
+    character(63,SKG)                       :: domainSampler
     integer(IK)                             :: liveSampleSize
-    real(RKC)                               :: tolerance
+    real(RKG)                               :: tolerance
     !>  \endcond excluded
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -171,9 +171,9 @@
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     type                                    :: cfhbase_type
-        character(31,SKC)                   :: processID = "processID"
-        character(31,SKC)                   :: meanAcceptanceRate = "meanAcceptanceRate"
-        character(31,SKC)                   :: sampleLogFunc = "sampleLogFunc"
+        character(31,SKG)                   :: processID = "processID"
+        character(31,SKG)                   :: meanAcceptanceRate = "meanAcceptanceRate"
+        character(31,SKG)                   :: sampleLogFunc = "sampleLogFunc"
     end type
     type(cfhbase_type)      , parameter     :: cfhbase = cfhbase_type()
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
@@ -209,20 +209,20 @@
     type, abstract                          :: cfcbase_type
         integer(IK)                         :: numDefCol                !<  \public The scalar of type `integer` of default kind \IK. containing the number of the set of default columns that always appear in the chain file before columns corresponding to `sampleState` components appear.
         integer(IK)                         :: nsam                     !<  \public The scalar of type `integer` of default kind \IK containing the chain size which may be less than the size of the chain components below (the number of (potentially weighted) sampled states).<br>
-        character(:,SKC)    , allocatable   :: sep                      !<  \public The scalar of type `character` of default kind \SK, containing the field separator used in the chain file.<br>
-        character(:,SKC)    , allocatable   :: header                   !<  \public The scalar of type `character` of default kind \SK, containing the delimited chain file column names.<br>
+        character(:,SKG)    , allocatable   :: sep                      !<  \public The scalar of type `character` of default kind \SK, containing the field separator used in the chain file.<br>
+        character(:,SKG)    , allocatable   :: header                   !<  \public The scalar of type `character` of default kind \SK, containing the delimited chain file column names.<br>
        !type(css_type)      , allocatable   :: colname(:)               !<  \public The vector of type [css_type](@ref pm_container::css_type), containing all chain file column names, such that the column name `sampleLogFunc` correspond to index `0` of colnames.<br>
         integer(IK)         , allocatable   :: processID(:)             !<  \public The `allocatable` vector of type `integer` of default kind \IK, containing the IDs of the processes contributing the corresponding accepted state in the chain file.<br>
-        real(RKC)           , allocatable   :: meanAcceptanceRate(:)    !<  \public The `allocatable` vector of type `real` of kind \RKALL, containing the vector of the average acceptance rates at the given point in the chain.<br>
-        real(RKC)           , allocatable   :: sampleLogFunc(:)         !<  \public The `allocatable` vector of type `real` of kind \RKALL, containing the natural logarithm of the function value corresponding to the state in the same entry in the chain file.<br>
-        real(RKC)           , allocatable   :: sampleState(:,:)         !<  \public The `allocatable` matrix of type `real` of kind \RKALL, each `(1 : ndim, i)` slice of which contains the accepted `ndim`-dimensional state in the chain at the entry `i` of the chain file.<br>
+        real(RKG)           , allocatable   :: meanAcceptanceRate(:)    !<  \public The `allocatable` vector of type `real` of kind \RKALL, containing the vector of the average acceptance rates at the given point in the chain.<br>
+        real(RKG)           , allocatable   :: sampleLogFunc(:)         !<  \public The `allocatable` vector of type `real` of kind \RKALL, containing the natural logarithm of the function value corresponding to the state in the same entry in the chain file.<br>
+        real(RKG)           , allocatable   :: sampleState(:,:)         !<  \public The `allocatable` matrix of type `real` of kind \RKALL, each `(1 : ndim, i)` slice of which contains the accepted `ndim`-dimensional state in the chain at the entry `i` of the chain file.<br>
     end type
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     type, extends(cfhbase_type)             :: cfhmcmc_type
-        character(31,SKC)                   :: burninLocation = "burninLocation"
-        character(31,SKC)                   :: sampleWeight = "sampleWeight"
+        character(31,SKG)                   :: burninLocation = "burninLocation"
+        character(31,SKG)                   :: sampleWeight = "sampleWeight"
     end type
     type(cfhmcmc_type)      , parameter     :: cfhmcmc = cfhmcmc_type()
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
@@ -268,15 +268,15 @@
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     type, extends(cfhmcmc_type)             :: cfhdram_type
-        character(31,SKC)                   :: proposalAdaptation = "proposalAdaptation"
-        character(31,SKC)                   :: delayedRejectionStage = "delayedRejectionStage"
+        character(31,SKG)                   :: proposalAdaptation = "proposalAdaptation"
+        character(31,SKG)                   :: delayedRejectionStage = "delayedRejectionStage"
     end type
     type(cfhdram_type)      , parameter     :: cfhdram = cfhdram_type()
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
     !DIR$ ATTRIBUTES DLLEXPORT :: cfhdram
 #endif
 
-    character(31,SKC)       , parameter     :: chainFileColNameDRAM(*) =[ cfhdram%processID &
+    character(31,SKG)       , parameter     :: chainFileColNameDRAM(*) =[ cfhdram%processID &
                                                                         , cfhdram%delayedRejectionStage &
                                                                         , cfhdram%meanAcceptanceRate &
                                                                         , cfhdram%proposalAdaptation &
@@ -315,7 +315,7 @@
     !>  \author
     !>  \AmirShahmoradi, September 1, 2012, 12:00 AM, National Institute for Fusion Studies, The University of Texas at Austin
     type, extends(cfcmcmc_type)             :: cfcdram_type
-        real(RKC)           , allocatable   :: proposalAdaptation(:)     !<  \public The `allocatable` vector of type `real` of kind \RKALL, containing the vector of the adaptation measures at the accepted states.<br>
+        real(RKG)           , allocatable   :: proposalAdaptation(:)     !<  \public The `allocatable` vector of type `real` of kind \RKALL, containing the vector of the adaptation measures at the accepted states.<br>
         integer(IK)         , allocatable   :: delayedRejectionStage(:) !<  \public The `allocatable` vector of type `integer` of default kind \IK, containing the delayed rejection stages at which the proposed states were accepted.<br>
     end type
 
@@ -328,7 +328,7 @@
     !DIR$ ATTRIBUTES DLLEXPORT :: cfhdise
 #endif
 
-    character(31,SKC)       , parameter     :: chainFileColNameDISE(*) =[ cfhdise%processID &
+    character(31,SKG)       , parameter     :: chainFileColNameDISE(*) =[ cfhdise%processID &
                                                                         , cfhdise%delayedRejectionStage &
                                                                         , cfhdise%meanAcceptanceRate &
                                                                         , cfhdise%proposalAdaptation &
@@ -372,16 +372,16 @@
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     type, extends(cfhbase_type)             :: cfhnest_type
-        character(31,SKC)                   :: domainLogVol = "domainLogVol"
-        character(31,SKC)                   :: funcLogIntegral = "funcLogIntegral"
-        character(31,SKC)                   :: sampleLogWeight = "sampleLogWeight"
+        character(31,SKG)                   :: domainLogVol = "domainLogVol"
+        character(31,SKG)                   :: funcLogIntegral = "funcLogIntegral"
+        character(31,SKG)                   :: sampleLogWeight = "sampleLogWeight"
     end type
     type(cfhnest_type)      , parameter     :: cfhnest = cfhnest_type()
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
     !DIR$ ATTRIBUTES DLLEXPORT :: cfhnest
 #endif
 
-    character(31,SKC)       , parameter     :: chainFileColNameNest(*) =[ cfhnest%processID &
+    character(31,SKG)       , parameter     :: chainFileColNameNest(*) =[ cfhnest%processID &
                                                                         , cfhnest%meanAcceptanceRate &
                                                                         , cfhnest%domainLogVol &
                                                                         , cfhnest%funcLogIntegral &
@@ -427,10 +427,10 @@
     !>  \author
     !>  \AmirShahmoradi, September 1, 2012, 12:00 AM, National Institute for Fusion Studies, The University of Texas at Austin
     type, extends(cfcbase_type)             :: cfcnest_type
-        real(RKC)           , allocatable   :: domainLogVol(:)      !<  \public The `allocatable` vector of type `real` of kind \RKALL, containing the natural logarithm of the size of the domain of integration at the corresponding stage in the chain of sampling/integration.<br>
-        real(RKC)           , allocatable   :: logMaxRelErr(:)      !<  \public The `allocatable` vector of type `real` of kind \RKALL, containing the natural logarithm of the size of the domain of integration at the corresponding stage in the chain of sampling/integration.<br>
-        real(RKC)           , allocatable   :: funcLogIntegral(:)   !<  \public The `allocatable` vector of type `real` of kind \RKALL, containing the natural logarithm of the size of the integral of the objective function at the corresponding stage in the chain.<br>
-        real(RKC)           , allocatable   :: sampleLogWeight(:)   !<  \public The `allocatable` vector of type `real` of kind \RKALL, containing the natural logarithm of the contribution of the corresponding state in chain to the integral of the objective function.<br>
+        real(RKG)           , allocatable   :: domainLogVol(:)      !<  \public The `allocatable` vector of type `real` of kind \RKALL, containing the natural logarithm of the size of the domain of integration at the corresponding stage in the chain of sampling/integration.<br>
+        real(RKG)           , allocatable   :: logMaxRelErr(:)      !<  \public The `allocatable` vector of type `real` of kind \RKALL, containing the natural logarithm of the size of the domain of integration at the corresponding stage in the chain of sampling/integration.<br>
+        real(RKG)           , allocatable   :: funcLogIntegral(:)   !<  \public The `allocatable` vector of type `real` of kind \RKALL, containing the natural logarithm of the size of the integral of the objective function at the corresponding stage in the chain.<br>
+        real(RKG)           , allocatable   :: sampleLogWeight(:)   !<  \public The `allocatable` vector of type `real` of kind \RKALL, containing the natural logarithm of the contribution of the corresponding state in chain to the integral of the objective function.<br>
     end type
 
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -512,8 +512,8 @@ contains
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setSpecFromInput
 #endif
-        character(*,SKC)    , intent(in)    :: inputFile
-        character(*,SKC)    , intent(in)    :: method
+        character(*,SKG)    , intent(in)    :: inputFile
+        character(*,SKG)    , intent(in)    :: method
         type(err_type)      , intent(inout) :: err
         logical(LK) :: opened
         integer(IK) :: unit
@@ -524,7 +524,7 @@ contains
         character(255, SK) :: iomsg
         character(:, SK), allocatable :: lcmethod
         character(:, SK), allocatable :: contents
-        character(*, SK), parameter :: PROCEDURE_NAME = MODULE_NAME//SKC_"@setSpecFromInput()"
+        character(*, SK), parameter :: PROCEDURE_NAME = MODULE_NAME//SKG_"@setSpecFromInput()"
 #define RETURN_IF_ERRED(LINE,FAILED,MSG) \
 if (FAILED) then; \
 err%msg = PROCEDURE_NAME//getFine(__FILE__, LINE)//SK_": "//trim(MSG); \

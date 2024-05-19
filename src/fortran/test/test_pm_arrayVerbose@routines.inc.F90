@@ -46,27 +46,27 @@
         integer(IK) :: i, iw, dim, counter, csize, csize_ref
         integer(IK), allocatable :: weight(:)
 #if     SK_ENABLED && D0_ENABLED
-        character(:,SKC), allocatable :: arrayVerbose, arrayCompact
+        character(:,SKG), allocatable :: arrayVerbose, arrayCompact
 #elif   SK_ENABLED && D1_ENABLED
-        character(2,SKC), allocatable :: arrayVerbose(:), arrayCompact(:)
+        character(2,SKG), allocatable :: arrayVerbose(:), arrayCompact(:)
 #elif   IK_ENABLED && D1_ENABLED
-        integer(IKC), allocatable :: arrayVerbose(:), arrayCompact(:)
+        integer(IKG), allocatable :: arrayVerbose(:), arrayCompact(:)
 #elif   LK_ENABLED && D1_ENABLED
-        logical(LKC), allocatable :: arrayVerbose(:), arrayCompact(:)
+        logical(LKG), allocatable :: arrayVerbose(:), arrayCompact(:)
 #elif   CK_ENABLED && D1_ENABLED
-        complex(CKC), allocatable :: arrayVerbose(:), arrayCompact(:)
+        complex(CKG), allocatable :: arrayVerbose(:), arrayCompact(:)
 #elif   RK_ENABLED && D1_ENABLED
-        real(RKC), allocatable :: arrayVerbose(:), arrayCompact(:)
+        real(RKG), allocatable :: arrayVerbose(:), arrayCompact(:)
 #elif   SK_ENABLED && D2_ENABLED
-        character(2,SKC), allocatable :: arrayVerbose(:,:), arrayCompact(:,:)
+        character(2,SKG), allocatable :: arrayVerbose(:,:), arrayCompact(:,:)
 #elif   IK_ENABLED && D2_ENABLED
-        integer(IKC), allocatable :: arrayVerbose(:,:), arrayCompact(:,:)
+        integer(IKG), allocatable :: arrayVerbose(:,:), arrayCompact(:,:)
 #elif   LK_ENABLED && D2_ENABLED
-        logical(LKC), allocatable :: arrayVerbose(:,:), arrayCompact(:,:)
+        logical(LKG), allocatable :: arrayVerbose(:,:), arrayCompact(:,:)
 #elif   CK_ENABLED && D2_ENABLED
-        complex(CKC), allocatable :: arrayVerbose(:,:), arrayCompact(:,:)
+        complex(CKG), allocatable :: arrayVerbose(:,:), arrayCompact(:,:)
 #elif   RK_ENABLED && D2_ENABLED
-        real(RKC), allocatable :: arrayVerbose(:,:), arrayCompact(:,:)
+        real(RKG), allocatable :: arrayVerbose(:,:), arrayCompact(:,:)
 #else
 #error  "Unrecognized interface."
 #endif
@@ -82,7 +82,7 @@
 
             call reset()
 #if         SK_ENABLED && D0_ENABLED
-            allocate(character(0,SKC) :: arrayCompact)
+            allocate(character(0,SKG) :: arrayCompact)
 #else
             allocate(arrayCompact(0))
 #endif
@@ -121,7 +121,7 @@
 
             call reset()
 #if         SK_ENABLED && D0_ENABLED
-            allocate(character(10,SKC) :: arrayCompact)
+            allocate(character(10,SKG) :: arrayCompact)
 #else
             allocate(arrayCompact(10))
 #endif

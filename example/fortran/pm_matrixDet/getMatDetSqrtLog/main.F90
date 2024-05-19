@@ -27,17 +27,17 @@ program example
     call disp%skip()
 
     block
-        use pm_kind, only: TKC => RKS
-        real(TKC), allocatable :: mat(:,:)
-        real(TKC) :: detSqrtLog
+        use pm_kind, only: TKG => RKS
+        real(TKG), allocatable :: mat(:,:)
+        real(TKG) :: detSqrtLog
         do itry = 1, ntry
             call disp%skip()
             call disp%show("ndim = getUnifRand(1, 5)")
                             ndim = getUnifRand(1, 5)
             call disp%show("ndim")
             call disp%show( ndim )
-            call disp%show("mat = getCovRand(mold = 1._TKC, ndim = ndim)")
-                            mat = getCovRand(mold = 1._TKC, ndim = ndim)
+            call disp%show("mat = getCovRand(mold = 1._TKG, ndim = ndim)")
+                            mat = getCovRand(mold = 1._TKG, ndim = ndim)
             call disp%show("mat")
             call disp%show( mat )
             call disp%show("detSqrtLog = getMatDetSqrtLog(mat)")
@@ -49,10 +49,10 @@ program example
             call disp%show("detSqrtLog + getMatDetSqrtLog(getMatInv(mat)) ! must be one.")
             call disp%show( detSqrtLog + getMatDetSqrtLog(getMatInv(mat)) )
             call disp%skip()
-            call disp%show("mat = getCovRand(mold = 1._TKC, ndim = ndim)")
-                            mat = getCovRand(mold = 1._TKC, ndim = ndim)
-            call disp%show("mat = getMatCopy(rdpack, mat, rdpack, lowDia, init = 0._TKC) ! reset the upper.")
-                            mat = getMatCopy(rdpack, mat, rdpack, lowDia, init = 0._TKC)
+            call disp%show("mat = getCovRand(mold = 1._TKG, ndim = ndim)")
+                            mat = getCovRand(mold = 1._TKG, ndim = ndim)
+            call disp%show("mat = getMatCopy(rdpack, mat, rdpack, lowDia, init = 0._TKG) ! reset the upper.")
+                            mat = getMatCopy(rdpack, mat, rdpack, lowDia, init = 0._TKG)
             call disp%show("mat")
             call disp%show( mat )
             call disp%show("detSqrtLog = getMatDetSqrtLog(mat, lowDia)")
@@ -64,10 +64,10 @@ program example
             call disp%show("detSqrtLog - getMatMulTraceLog(getMatChol(mat, lowDia)) ! must be one.")
             call disp%show( detSqrtLog - getMatMulTraceLog(getMatChol(mat, lowDia)) )
             call disp%skip()
-            call disp%show("mat = getCovRand(mold = 1._TKC, ndim = ndim)")
-                            mat = getCovRand(mold = 1._TKC, ndim = ndim)
-            call disp%show("mat = getMatCopy(rdpack, mat, rdpack, uppDia, init = 0._TKC) ! reset the lower.")
-                            mat = getMatCopy(rdpack, mat, rdpack, uppDia, init = 0._TKC)
+            call disp%show("mat = getCovRand(mold = 1._TKG, ndim = ndim)")
+                            mat = getCovRand(mold = 1._TKG, ndim = ndim)
+            call disp%show("mat = getMatCopy(rdpack, mat, rdpack, uppDia, init = 0._TKG) ! reset the lower.")
+                            mat = getMatCopy(rdpack, mat, rdpack, uppDia, init = 0._TKG)
             call disp%show("mat")
             call disp%show( mat )
             call disp%show("detSqrtLog = getMatDetSqrtLog(mat, uppDia)")
@@ -83,13 +83,13 @@ program example
     end block
 
     block
-        use pm_kind, only: TKC => CKS
-        complex(TKC), allocatable :: tmp(:,:)
-        complex(TKC), parameter :: mat(*,*) = reshape(  [ (9.0,  0.0), (3.0, 3.0), (3.0, -3.0) &
+        use pm_kind, only: TKG => CKS
+        complex(TKG), allocatable :: tmp(:,:)
+        complex(TKG), parameter :: mat(*,*) = reshape(  [ (9.0,  0.0), (3.0, 3.0), (3.0, -3.0) &
                                                         , (3.0, -3.0),(18.0, 0.0), (8.0, -6.0) &
                                                         , (3.0,  3.0), (8.0, 6.0),(43.0,  0.0) &
                                                         ], shape = [3, 3], order = [2, 1])
-        real(TKC) :: detSqrtLog
+        real(TKG) :: detSqrtLog
         call disp%skip()
         call disp%show("mat")
         call disp%show( mat )
@@ -102,8 +102,8 @@ program example
         call disp%show("detSqrtLog * getMatDetSqrtLog(getMatInv(mat)) ! must be one.")
         call disp%show( detSqrtLog * getMatDetSqrtLog(getMatInv(mat)) )
         call disp%skip()
-        call disp%show("tmp = getMatCopy(rdpack, mat, rdpack, lowDia, init = (0._TKC, 0._TKC)) ! reset the upper.")
-                        tmp = getMatCopy(rdpack, mat, rdpack, lowDia, init = (0._TKC, 0._TKC))
+        call disp%show("tmp = getMatCopy(rdpack, mat, rdpack, lowDia, init = (0._TKG, 0._TKG)) ! reset the upper.")
+                        tmp = getMatCopy(rdpack, mat, rdpack, lowDia, init = (0._TKG, 0._TKG))
         call disp%show("tmp")
         call disp%show( tmp )
         call disp%show("detSqrtLog = getMatDetSqrtLog(tmp, subset = lowDia)")
@@ -115,8 +115,8 @@ program example
         call disp%show("detSqrtLog - getMatMulTraceLog(getMatChol(tmp, lowDia)) ! must be one")
         call disp%show( detSqrtLog - getMatMulTraceLog(getMatChol(tmp, lowDia)) )
         call disp%skip()
-        call disp%show("tmp = getMatCopy(rdpack, mat, rdpack, uppDia, init = (0._TKC, 0._TKC)) ! reset the upper.")
-                        tmp = getMatCopy(rdpack, mat, rdpack, uppDia, init = (0._TKC, 0._TKC))
+        call disp%show("tmp = getMatCopy(rdpack, mat, rdpack, uppDia, init = (0._TKG, 0._TKG)) ! reset the upper.")
+                        tmp = getMatCopy(rdpack, mat, rdpack, uppDia, init = (0._TKG, 0._TKG))
         call disp%show("tmp")
         call disp%show( tmp )
         call disp%show("detSqrtLog = getMatDetSqrtLog(tmp, subset = uppDia)")
@@ -131,13 +131,13 @@ program example
     end block
 
     block
-        use pm_kind, only: TKC => CKS
-        complex(TKC), allocatable :: tmp(:,:)
-        complex(TKC), parameter :: mat(*,*) = reshape(  [  (25.0, 0.0), (-5.0, -5.0), (10.0, 5.0) &
+        use pm_kind, only: TKG => CKS
+        complex(TKG), allocatable :: tmp(:,:)
+        complex(TKG), parameter :: mat(*,*) = reshape(  [  (25.0, 0.0), (-5.0, -5.0), (10.0, 5.0) &
                                                         ,  (-5.0, 5.0),  (51.0, 0.0), (4.0, -6.0) &
                                                         , (10.0, -5.0),   (4.0, 6.0), (71.0, 0.0) &
                                                         ], shape = [3, 3], order = [2, 1])
-        real(TKC) :: detSqrtLog
+        real(TKG) :: detSqrtLog
         call disp%skip()
         call disp%show("mat")
         call disp%show( mat )
@@ -150,8 +150,8 @@ program example
         call disp%show("detSqrtLog * getMatDetSqrtLog(getMatInv(mat)) ! must be one.")
         call disp%show( detSqrtLog * getMatDetSqrtLog(getMatInv(mat)) )
         call disp%skip()
-        call disp%show("tmp = getMatCopy(rdpack, mat, rdpack, lowDia, init = (0._TKC, 0._TKC)) ! reset the upper.")
-                        tmp = getMatCopy(rdpack, mat, rdpack, lowDia, init = (0._TKC, 0._TKC))
+        call disp%show("tmp = getMatCopy(rdpack, mat, rdpack, lowDia, init = (0._TKG, 0._TKG)) ! reset the upper.")
+                        tmp = getMatCopy(rdpack, mat, rdpack, lowDia, init = (0._TKG, 0._TKG))
         call disp%show("tmp")
         call disp%show( tmp )
         call disp%show("detSqrtLog = getMatDetSqrtLog(tmp, subset = lowDia)")
@@ -163,8 +163,8 @@ program example
         call disp%show("detSqrtLog - getMatMulTraceLog(getMatChol(tmp, lowDia)) ! must be one.")
         call disp%show( detSqrtLog - getMatMulTraceLog(getMatChol(tmp, lowDia)) )
         call disp%skip()
-        call disp%show("tmp = getMatCopy(rdpack, mat, rdpack, uppDia, init = (0._TKC, 0._TKC)) ! reset the upper.")
-                        tmp = getMatCopy(rdpack, mat, rdpack, uppDia, init = (0._TKC, 0._TKC))
+        call disp%show("tmp = getMatCopy(rdpack, mat, rdpack, uppDia, init = (0._TKG, 0._TKG)) ! reset the upper.")
+                        tmp = getMatCopy(rdpack, mat, rdpack, uppDia, init = (0._TKG, 0._TKG))
         call disp%show("tmp")
         call disp%show( tmp )
         call disp%show("detSqrtLog = getMatDetSqrtLog(tmp, subset = uppDia)")

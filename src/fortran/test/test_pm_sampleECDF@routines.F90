@@ -67,21 +67,21 @@ contains
 
 #if IK4_ENABLED && RK3_ENABLED
     module procedure test_setECDF_D1_IK4_RK3
-        use pm_kind, only: IK, IKC => IK4, RK => RK3
+        use pm_kind, only: IK, IKG => IK4, RK => RK3
 #include "test_pm_sampleECDF@routines@ECDF.inc.F90"
     end procedure
 #endif
 
 #if IK4_ENABLED && RK2_ENABLED
     module procedure test_setECDF_D1_IK4_RK2
-        use pm_kind, only: IK, IKC => IK4, RK => RK2
+        use pm_kind, only: IK, IKG => IK4, RK => RK2
 #include "test_pm_sampleECDF@routines@ECDF.inc.F90"
     end procedure
 #endif
 
 #if IK4_ENABLED && RK1_ENABLED
     module procedure test_setECDF_D1_IK4_RK1
-        use pm_kind, only: IK, IKC => IK4, RK => RK1
+        use pm_kind, only: IK, IKG => IK4, RK => RK1
 #include "test_pm_sampleECDF@routines@ECDF.inc.F90"
     end procedure
 #endif
@@ -90,21 +90,21 @@ contains
 
 #if IK3_ENABLED && RK3_ENABLED
     module procedure test_setECDF_D1_IK3_RK3
-        use pm_kind, only: IK, IKC => IK3, RK => RK3
+        use pm_kind, only: IK, IKG => IK3, RK => RK3
 #include "test_pm_sampleECDF@routines@ECDF.inc.F90"
     end procedure
 #endif
 
 #if IK3_ENABLED && RK2_ENABLED
     module procedure test_setECDF_D1_IK3_RK2
-        use pm_kind, only: IK, IKC => IK3, RK => RK2
+        use pm_kind, only: IK, IKG => IK3, RK => RK2
 #include "test_pm_sampleECDF@routines@ECDF.inc.F90"
     end procedure
 #endif
 
 #if IK3_ENABLED && RK1_ENABLED
     module procedure test_setECDF_D1_IK3_RK1
-        use pm_kind, only: IK, IKC => IK3, RK => RK1
+        use pm_kind, only: IK, IKG => IK3, RK => RK1
 #include "test_pm_sampleECDF@routines@ECDF.inc.F90"
     end procedure
 #endif
@@ -113,21 +113,21 @@ contains
 
 #if IK2_ENABLED && RK3_ENABLED
     module procedure test_setECDF_D1_IK2_RK3
-        use pm_kind, only: IK, IKC => IK2, RK => RK3
+        use pm_kind, only: IK, IKG => IK2, RK => RK3
 #include "test_pm_sampleECDF@routines@ECDF.inc.F90"
     end procedure
 #endif
 
 #if IK2_ENABLED && RK2_ENABLED
     module procedure test_setECDF_D1_IK2_RK2
-        use pm_kind, only: IK, IKC => IK2, RK => RK2
+        use pm_kind, only: IK, IKG => IK2, RK => RK2
 #include "test_pm_sampleECDF@routines@ECDF.inc.F90"
     end procedure
 #endif
 
 #if IK2_ENABLED && RK1_ENABLED
     module procedure test_setECDF_D1_IK2_RK1
-        use pm_kind, only: IK, IKC => IK2, RK => RK1
+        use pm_kind, only: IK, IKG => IK2, RK => RK1
 #include "test_pm_sampleECDF@routines@ECDF.inc.F90"
     end procedure
 #endif
@@ -137,21 +137,21 @@ contains
 
 #if IK1_ENABLED && RK3_ENABLED
     module procedure test_setECDF_D1_IK1_RK3
-        use pm_kind, only: IK, IKC => IK1, RK => RK3
+        use pm_kind, only: IK, IKG => IK1, RK => RK3
 #include "test_pm_sampleECDF@routines@ECDF.inc.F90"
     end procedure
 #endif
 
 #if IK1_ENABLED && RK2_ENABLED
     module procedure test_setECDF_D1_IK1_RK2
-        use pm_kind, only: IK, IKC => IK1, RK => RK2
+        use pm_kind, only: IK, IKG => IK1, RK => RK2
 #include "test_pm_sampleECDF@routines@ECDF.inc.F90"
     end procedure
 #endif
 
 #if IK1_ENABLED && RK1_ENABLED
     module procedure test_setECDF_D1_IK1_RK1
-        use pm_kind, only: IK, IKC => IK1, RK => RK1
+        use pm_kind, only: IK, IKG => IK1, RK => RK1
 #include "test_pm_sampleECDF@routines@ECDF.inc.F90"
     end procedure
 #endif

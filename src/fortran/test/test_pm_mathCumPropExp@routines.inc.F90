@@ -39,10 +39,10 @@
 #else
 #error  "Unrecognized interface."
 #endif
-        real(RKC), parameter :: TOL = epsilon(1._RKC) * 10._RKC
-        !real(RKC), parameter :: LB = 1._RKC, UB = 2._RKC
-        real(RKC), parameter :: LB = minexponent(0._RKC), UB = maxexponent(0._RKC)
-        real(RKC), allocatable :: cumPropExp_ref(:), cumPropExp(:), array(:), diff(:)
+        real(RKG), parameter :: TOL = epsilon(1._RKG) * 10._RKG
+        !real(RKG), parameter :: LB = 1._RKG, UB = 2._RKG
+        real(RKG), parameter :: LB = minexponent(0._RKG), UB = maxexponent(0._RKG)
+        real(RKG), allocatable :: cumPropExp_ref(:), cumPropExp(:), array(:), diff(:)
         logical(LK) :: isbackward, isreverse
 
         assertion = .true._LK
@@ -136,8 +136,8 @@
             class(action_type), intent(in), optional :: action
             class(direction_type), allocatable :: direction_def
             class(action_type), allocatable :: action_def
-            real(RKC), intent(in) :: array(:), maxArray
-            real(RKC) :: cumPropExp(size(array, 1, IK))
+            real(RKG), intent(in) :: array(:), maxArray
+            real(RKG) :: cumPropExp(size(array, 1, IK))
             action_def = nothing
             direction_def = forward
             if (present(action)) action_def = action

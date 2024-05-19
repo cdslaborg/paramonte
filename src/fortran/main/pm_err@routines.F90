@@ -91,35 +91,35 @@ contains
 
 #if SK5_ENABLED
     module procedure getFine_SK5
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
 #include "pm_err@routines.inc.F90"
     end procedure
 #endif
 
 #if SK4_ENABLED
     module procedure getFine_SK4
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
 #include "pm_err@routines.inc.F90"
     end procedure
 #endif
 
 #if SK3_ENABLED
     module procedure getFine_SK3
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
 #include "pm_err@routines.inc.F90"
     end procedure
 #endif
 
 #if SK2_ENABLED
     module procedure getFine_SK2
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
 #include "pm_err@routines.inc.F90"
     end procedure
 #endif
 
 #if SK1_ENABLED
     module procedure getFine_SK1
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
 #include "pm_err@routines.inc.F90"
     end procedure
 #endif
@@ -140,35 +140,35 @@ contains
 
 #if SK5_ENABLED
     module procedure getFile_SK5
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
 #include "pm_err@routines.inc.F90"
     end procedure
 #endif
 
 #if SK4_ENABLED
     module procedure getFile_SK4
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
 #include "pm_err@routines.inc.F90"
     end procedure
 #endif
 
 #if SK3_ENABLED
     module procedure getFile_SK3
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
 #include "pm_err@routines.inc.F90"
     end procedure
 #endif
 
 #if SK2_ENABLED
     module procedure getFile_SK2
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
 #include "pm_err@routines.inc.F90"
     end procedure
 #endif
 
 #if SK1_ENABLED
     module procedure getFile_SK1
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
 #include "pm_err@routines.inc.F90"
     end procedure
 #endif
@@ -189,35 +189,35 @@ contains
 
 #if IK5_ENABLED
     module procedure getLine_IK5
-        use pm_kind, only: IKC => IK5
+        use pm_kind, only: IKG => IK5
 #include "pm_err@routines.inc.F90"
     end procedure
 #endif
 
 #if IK4_ENABLED
     module procedure getLine_IK4
-        use pm_kind, only: IKC => IK4
+        use pm_kind, only: IKG => IK4
 #include "pm_err@routines.inc.F90"
     end procedure
 #endif
 
 #if IK3_ENABLED
     module procedure getLine_IK3
-        use pm_kind, only: IKC => IK3
+        use pm_kind, only: IKG => IK3
 #include "pm_err@routines.inc.F90"
     end procedure
 #endif
 
 #if IK2_ENABLED
     module procedure getLine_IK2
-        use pm_kind, only: IKC => IK2
+        use pm_kind, only: IKG => IK2
 #include "pm_err@routines.inc.F90"
     end procedure
 #endif
 
 #if IK1_ENABLED
     module procedure getLine_IK1
-        use pm_kind, only: IKC => IK1
+        use pm_kind, only: IKG => IK1
 #include "pm_err@routines.inc.F90"
     end procedure
 #endif
@@ -238,35 +238,35 @@ contains
 
 #if LK5_ENABLED
     module procedure setAsserted_LK5
-        use pm_kind, only: LKC => LK5
+        use pm_kind, only: LKG => LK5
 #include "pm_err@routines.inc.F90"
     end procedure
 #endif
 
 #if LK4_ENABLED
     module procedure setAsserted_LK4
-        use pm_kind, only: LKC => LK4
+        use pm_kind, only: LKG => LK4
 #include "pm_err@routines.inc.F90"
     end procedure
 #endif
 
 #if LK3_ENABLED
     module procedure setAsserted_LK3
-        use pm_kind, only: LKC => LK3
+        use pm_kind, only: LKG => LK3
 #include "pm_err@routines.inc.F90"
     end procedure
 #endif
 
 #if LK2_ENABLED
     module procedure setAsserted_LK2
-        use pm_kind, only: LKC => LK2
+        use pm_kind, only: LKG => LK2
 #include "pm_err@routines.inc.F90"
     end procedure
 #endif
 
 #if LK1_ENABLED
     module procedure setAsserted_LK1
-        use pm_kind, only: LKC => LK1
+        use pm_kind, only: LKG => LK1
 #include "pm_err@routines.inc.F90"
     end procedure
 #endif
@@ -293,35 +293,35 @@ contains
 
 #if SK5_ENABLED
     module procedure setMarkedStatic_D0_SK5
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
 #include "pm_err@routines.inc.F90"
     end procedure
 #endif
 
 #if SK4_ENABLED
     module procedure setMarkedStatic_D0_SK4
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
 #include "pm_err@routines.inc.F90"
     end procedure
 #endif
 
 #if SK3_ENABLED
     module procedure setMarkedStatic_D0_SK3
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
 #include "pm_err@routines.inc.F90"
     end procedure
 #endif
 
 #if SK2_ENABLED
     module procedure setMarkedStatic_D0_SK2
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
 #include "pm_err@routines.inc.F90"
     end procedure
 #endif
 
 #if SK1_ENABLED
     module procedure setMarkedStatic_D0_SK1
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
 #include "pm_err@routines.inc.F90"
     end procedure
 #endif
@@ -344,35 +344,35 @@ contains
 
 #if SK5_ENABLED
     module procedure setMarkedMethod_D0_SK5
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
 #include "pm_err@routines.inc.F90"
     end procedure
 #endif
 
 #if SK4_ENABLED
     module procedure setMarkedMethod_D0_SK4
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
 #include "pm_err@routines.inc.F90"
     end procedure
 #endif
 
 #if SK3_ENABLED
     module procedure setMarkedMethod_D0_SK3
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
 #include "pm_err@routines.inc.F90"
     end procedure
 #endif
 
 #if SK2_ENABLED
     module procedure setMarkedMethod_D0_SK2
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
 #include "pm_err@routines.inc.F90"
     end procedure
 #endif
 
 #if SK1_ENABLED
     module procedure setMarkedMethod_D0_SK1
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
 #include "pm_err@routines.inc.F90"
     end procedure
 #endif
@@ -405,35 +405,35 @@ contains
 
 #if SK5_ENABLED
     module procedure setNotedStatic_D0_SK5
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
 #include "pm_err@routines.inc.F90"
     end procedure
 #endif
 
 #if SK4_ENABLED
     module procedure setNotedStatic_D0_SK4
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
 #include "pm_err@routines.inc.F90"
     end procedure
 #endif
 
 #if SK3_ENABLED
     module procedure setNotedStatic_D0_SK3
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
 #include "pm_err@routines.inc.F90"
     end procedure
 #endif
 
 #if SK2_ENABLED
     module procedure setNotedStatic_D0_SK2
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
 #include "pm_err@routines.inc.F90"
     end procedure
 #endif
 
 #if SK1_ENABLED
     module procedure setNotedStatic_D0_SK1
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
 #include "pm_err@routines.inc.F90"
     end procedure
 #endif
@@ -456,35 +456,35 @@ contains
 
 #if SK5_ENABLED
     module procedure setNotedMethod_D0_SK5
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
 #include "pm_err@routines.inc.F90"
     end procedure
 #endif
 
 #if SK4_ENABLED
     module procedure setNotedMethod_D0_SK4
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
 #include "pm_err@routines.inc.F90"
     end procedure
 #endif
 
 #if SK3_ENABLED
     module procedure setNotedMethod_D0_SK3
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
 #include "pm_err@routines.inc.F90"
     end procedure
 #endif
 
 #if SK2_ENABLED
     module procedure setNotedMethod_D0_SK2
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
 #include "pm_err@routines.inc.F90"
     end procedure
 #endif
 
 #if SK1_ENABLED
     module procedure setNotedMethod_D0_SK1
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
 #include "pm_err@routines.inc.F90"
     end procedure
 #endif
@@ -517,35 +517,35 @@ contains
 
 #if SK5_ENABLED
     module procedure setWarnedStatic_D0_SK5
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
 #include "pm_err@routines.inc.F90"
     end procedure
 #endif
 
 #if SK4_ENABLED
     module procedure setWarnedStatic_D0_SK4
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
 #include "pm_err@routines.inc.F90"
     end procedure
 #endif
 
 #if SK3_ENABLED
     module procedure setWarnedStatic_D0_SK3
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
 #include "pm_err@routines.inc.F90"
     end procedure
 #endif
 
 #if SK2_ENABLED
     module procedure setWarnedStatic_D0_SK2
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
 #include "pm_err@routines.inc.F90"
     end procedure
 #endif
 
 #if SK1_ENABLED
     module procedure setWarnedStatic_D0_SK1
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
 #include "pm_err@routines.inc.F90"
     end procedure
 #endif
@@ -568,35 +568,35 @@ contains
 
 #if SK5_ENABLED
     module procedure setWarnedMethod_D0_SK5
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
 #include "pm_err@routines.inc.F90"
     end procedure
 #endif
 
 #if SK4_ENABLED
     module procedure setWarnedMethod_D0_SK4
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
 #include "pm_err@routines.inc.F90"
     end procedure
 #endif
 
 #if SK3_ENABLED
     module procedure setWarnedMethod_D0_SK3
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
 #include "pm_err@routines.inc.F90"
     end procedure
 #endif
 
 #if SK2_ENABLED
     module procedure setWarnedMethod_D0_SK2
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
 #include "pm_err@routines.inc.F90"
     end procedure
 #endif
 
 #if SK1_ENABLED
     module procedure setWarnedMethod_D0_SK1
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
 #include "pm_err@routines.inc.F90"
     end procedure
 #endif
@@ -629,35 +629,35 @@ contains
 
 #if SK5_ENABLED
     module procedure setAbortedStatic_D0_SK5
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
 #include "pm_err@routines.inc.F90"
     end procedure
 #endif
 
 #if SK4_ENABLED
     module procedure setAbortedStatic_D0_SK4
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
 #include "pm_err@routines.inc.F90"
     end procedure
 #endif
 
 #if SK3_ENABLED
     module procedure setAbortedStatic_D0_SK3
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
 #include "pm_err@routines.inc.F90"
     end procedure
 #endif
 
 #if SK2_ENABLED
     module procedure setAbortedStatic_D0_SK2
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
 #include "pm_err@routines.inc.F90"
     end procedure
 #endif
 
 #if SK1_ENABLED
     module procedure setAbortedStatic_D0_SK1
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
 #include "pm_err@routines.inc.F90"
     end procedure
 #endif
@@ -680,35 +680,35 @@ contains
 
 #if SK5_ENABLED
     module procedure setAbortedMethod_D0_SK5
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
 #include "pm_err@routines.inc.F90"
     end procedure
 #endif
 
 #if SK4_ENABLED
     module procedure setAbortedMethod_D0_SK4
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
 #include "pm_err@routines.inc.F90"
     end procedure
 #endif
 
 #if SK3_ENABLED
     module procedure setAbortedMethod_D0_SK3
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
 #include "pm_err@routines.inc.F90"
     end procedure
 #endif
 
 #if SK2_ENABLED
     module procedure setAbortedMethod_D0_SK2
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
 #include "pm_err@routines.inc.F90"
     end procedure
 #endif
 
 #if SK1_ENABLED
     module procedure setAbortedMethod_D0_SK1
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
 #include "pm_err@routines.inc.F90"
     end procedure
 #endif

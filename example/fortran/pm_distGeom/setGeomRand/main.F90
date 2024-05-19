@@ -1,7 +1,7 @@
 program example
 
     use pm_kind, only: SK, IK
-    use pm_kind, only: RKC => RKS ! all real kinds are supported.
+    use pm_kind, only: RKG => RKS ! all real kinds are supported.
     use pm_distUnif, only: xoshiro256ssw_type
     use pm_arraySpace, only: getLinSpace
     use pm_arraySpace, only: setLogSpace
@@ -13,12 +13,12 @@ program example
     type(xoshiro256ssw_type) :: rng
     integer(IK), parameter  :: NP = 1000_IK
     integer(IK) :: rand(NP)
-    real(RKC) :: logProbFailure(NP)
+    real(RKG) :: logProbFailure(NP)
 
     type(display_type) :: disp
     disp = display_type(file = "main.out.F90")
 
-    logProbFailure = log(1 - getLinSpace(x1 = 0.001_RKC, x2 = .999_RKC, count = NP))
+    logProbFailure = log(1 - getLinSpace(x1 = 0.001_RKG, x2 = .999_RKG, count = NP))
 
     call disp%skip()
     call disp%show("logProbFailure(1)")
@@ -65,7 +65,7 @@ program example
     block
         integer(IK) :: fileUnit, i
         integer(IK) , parameter :: NP = 5000_IK
-        real(RKC)   , parameter :: probSuccess(4) = [.1_RKC, .2_RKC, .5_RKC, .8_RKC]
+        real(RKG)   , parameter :: probSuccess(4) = [.1_RKG, .2_RKG, .5_RKG, .8_RKG]
         open(newunit = fileUnit, file = "setGeomRand.IK.txt")
         do i = 1, NP
             call setGeomRand(rand(1:4), log(1 - probSuccess))

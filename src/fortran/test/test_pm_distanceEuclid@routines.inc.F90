@@ -29,10 +29,10 @@
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
         integer(IK), parameter :: ntry = 100
-        real(TKC), parameter :: EPS = epsilon(0._TKC) * 100
-        real(TKC), allocatable :: distance(:,:), distance_ref(:,:)
-        real(TKC), allocatable :: point(:,:), ref(:,:)
-        real(TKC), allocatable :: diff(:,:)
+        real(TKG), parameter :: EPS = epsilon(0._TKG) * 100
+        real(TKG), allocatable :: distance(:,:), distance_ref(:,:)
+        real(TKG), allocatable :: point(:,:), ref(:,:)
+        real(TKG), allocatable :: diff(:,:)
         type(csp_type), allocatable :: method(:)
         type(css_type), allocatable :: mnames(:)
         integer(IK) :: ndim, npnt, nref
@@ -51,13 +51,13 @@
             npnt = getUnifRand(1_IK, 20_IK)
             nref = getUnifRand(1_IK, 20_IK)
 
-            diff = getFilled(0._TKC, nref, npnt)
+            diff = getFilled(0._TKG, nref, npnt)
             if (isorigin) then
-                ref = getFilled(0._TKC, ndim, nref)
+                ref = getFilled(0._TKG, ndim, nref)
             else
-                ref = getUnifRand(-1._TKC, 1._TKC, ndim, nref)
+                ref = getUnifRand(-1._TKG, 1._TKG, ndim, nref)
             end if
-            point = getUnifRand(-1._TKC, 1._TKC, ndim, npnt)
+            point = getUnifRand(-1._TKG, 1._TKG, ndim, npnt)
             call setResized(distance, [nref, npnt])
 
             do imethod = 1, size(method)
@@ -230,9 +230,9 @@
     contains
 
         pure function getDisEuclid_ref(point, ref, method) result(distance_ref)
-            real(TKC), intent(in), contiguous :: point(:,:), ref(:,:)
+            real(TKG), intent(in), contiguous :: point(:,:), ref(:,:)
             class(*), intent(in) :: method
-            real(TKC) :: distance_ref(size(ref, 2, IK), size(point, 2, IK))
+            real(TKG) :: distance_ref(size(ref, 2, IK), size(point, 2, IK))
             integer(IK) :: ndim, npnt, nref
             integer(IK) :: ipnt, iref
             ndim = size(point, 1, IK)
@@ -248,7 +248,7 @@
         end function
 
         subroutine report(line, method, point, ref, distance, distance_ref, diff)
-            real(TKC), intent(in) :: point(..), ref(..), distance(..), distance_ref(..), diff(..)
+            real(TKG), intent(in) :: point(..), ref(..), distance(..), distance_ref(..), diff(..)
             integer, intent(in) :: line
             character(*, SK) :: method
             if (test%traceable .and. .not. assertion) then
@@ -273,7 +273,7 @@
 
         ! LCOV_EXCL_START
         subroutine display(object, name)
-            real(TKC), intent(in) :: object(..)
+            real(TKG), intent(in) :: object(..)
             character(*, SK), intent(in) :: name
             select rank(object)
             rank(0)
@@ -296,8 +296,8 @@
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
         integer(IK), parameter :: ntry = 100
-        real(TKC), parameter :: EPS = epsilon(0._TKC) * 100
-        real(TKC), allocatable :: distance(:,:), distance_ref(:,:), point(:,:), diff(:,:)
+        real(TKG), parameter :: EPS = epsilon(0._TKG) * 100
+        real(TKG), allocatable :: distance(:,:), distance_ref(:,:), point(:,:), diff(:,:)
         type(csp_type), allocatable :: method(:), subset(:), pack(:)
         type(css_type), allocatable :: mnames(:), snames(:), pnames(:)
         integer(IK) :: itry, ipack, isubset, imethod
@@ -318,7 +318,7 @@
 
             ndim = getUnifRand(1_IK, 10_IK)
             npnt = getUnifRand(1_IK, 20_IK)
-            point = getUnifRand(-1._TKC, 1._TKC, ndim, npnt)
+            point = getUnifRand(-1._TKG, 1._TKG, ndim, npnt)
             do ipack = 1, size(pack)
                 do isubset = 1, size(subset)
                     do imethod = 1, size(method)
@@ -388,9 +388,9 @@
             ! \bug
             ! Intel ifort 2021 passes incorrect size of [0, 0] for distance inside setDisEuclid, call from within getDisEuclid(), called below.
             ! This apparently happens if the contiguous attribute of the `point` argument is missing.
-            real(TKC), intent(in), contiguous :: point(:,:)
+            real(TKG), intent(in), contiguous :: point(:,:)
             class(*), intent(in) :: pack, subset, method
-            real(TKC), allocatable :: distance_ref(:,:)
+            real(TKG), allocatable :: distance_ref(:,:)
             integer(IK) :: ndim, npnt, ipnt
             ndim = size(point, 1, IK)
             npnt = size(point, 2, IK)
@@ -428,7 +428,7 @@
         end function
 
         subroutine report(line, pack, subset, method, point, distance, distance_ref, diff)
-            real(TKC), intent(in) :: point(..), distance(..), distance_ref(..), diff(..)
+            real(TKG), intent(in) :: point(..), distance(..), distance_ref(..), diff(..)
             integer, intent(in) :: line
             character(*, SK) :: pack, subset, method
             if (test%traceable .and. .not. assertion) then
@@ -454,7 +454,7 @@
 
         ! LCOV_EXCL_START
         subroutine display(object, name)
-            real(TKC), intent(in) :: object(..)
+            real(TKG), intent(in) :: object(..)
             character(*, SK), intent(in) :: name
             call test%disp%show(SK_"shape("//name//SK_")")
             call test%disp%show(shape(object))

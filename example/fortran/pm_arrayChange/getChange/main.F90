@@ -69,9 +69,9 @@ program example
     end block
 
     block
-        use pm_kind, only: IKC => IK ! all integer kinds are supported.
-        integer(IKC) :: step
-        integer(IKC), allocatable :: start, stop, change(:)
+        use pm_kind, only: IKG => IK ! all integer kinds are supported.
+        integer(IKG) :: step
+        integer(IKG), allocatable :: start, stop, change(:)
         do itry = 1, ntry
 
             call disp%skip

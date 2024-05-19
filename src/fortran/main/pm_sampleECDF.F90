@@ -161,11 +161,11 @@ module pm_sampleECDF
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setECDF_ONE_D1_RK5
 #endif
-        use pm_kind, only: TKC => RK5
-        real(TKC)   , intent(out)   , contiguous            :: ecdf(:)
-        real(TKC)   , intent(out)   , contiguous, optional  :: ucdf(:)
-        real(TKC)   , intent(out)   , contiguous, optional  :: lcdf(:)
-        real(TKC)   , intent(in)                , optional  :: alpha
+        use pm_kind, only: TKG => RK5
+        real(TKG)   , intent(out)   , contiguous            :: ecdf(:)
+        real(TKG)   , intent(out)   , contiguous, optional  :: ucdf(:)
+        real(TKG)   , intent(out)   , contiguous, optional  :: lcdf(:)
+        real(TKG)   , intent(in)                , optional  :: alpha
     end subroutine
 #endif
 
@@ -174,11 +174,11 @@ module pm_sampleECDF
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setECDF_ONE_D1_RK4
 #endif
-        use pm_kind, only: TKC => RK4
-        real(TKC)   , intent(out)   , contiguous            :: ecdf(:)
-        real(TKC)   , intent(out)   , contiguous, optional  :: ucdf(:)
-        real(TKC)   , intent(out)   , contiguous, optional  :: lcdf(:)
-        real(TKC)   , intent(in)                , optional  :: alpha
+        use pm_kind, only: TKG => RK4
+        real(TKG)   , intent(out)   , contiguous            :: ecdf(:)
+        real(TKG)   , intent(out)   , contiguous, optional  :: ucdf(:)
+        real(TKG)   , intent(out)   , contiguous, optional  :: lcdf(:)
+        real(TKG)   , intent(in)                , optional  :: alpha
     end subroutine
 #endif
 
@@ -187,11 +187,11 @@ module pm_sampleECDF
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setECDF_ONE_D1_RK3
 #endif
-        use pm_kind, only: TKC => RK3
-        real(TKC)   , intent(out)   , contiguous            :: ecdf(:)
-        real(TKC)   , intent(out)   , contiguous, optional  :: ucdf(:)
-        real(TKC)   , intent(out)   , contiguous, optional  :: lcdf(:)
-        real(TKC)   , intent(in)                , optional  :: alpha
+        use pm_kind, only: TKG => RK3
+        real(TKG)   , intent(out)   , contiguous            :: ecdf(:)
+        real(TKG)   , intent(out)   , contiguous, optional  :: ucdf(:)
+        real(TKG)   , intent(out)   , contiguous, optional  :: lcdf(:)
+        real(TKG)   , intent(in)                , optional  :: alpha
     end subroutine
 #endif
 
@@ -200,11 +200,11 @@ module pm_sampleECDF
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setECDF_ONE_D1_RK2
 #endif
-        use pm_kind, only: TKC => RK2
-        real(TKC)   , intent(out)   , contiguous            :: ecdf(:)
-        real(TKC)   , intent(out)   , contiguous, optional  :: ucdf(:)
-        real(TKC)   , intent(out)   , contiguous, optional  :: lcdf(:)
-        real(TKC)   , intent(in)                , optional  :: alpha
+        use pm_kind, only: TKG => RK2
+        real(TKG)   , intent(out)   , contiguous            :: ecdf(:)
+        real(TKG)   , intent(out)   , contiguous, optional  :: ucdf(:)
+        real(TKG)   , intent(out)   , contiguous, optional  :: lcdf(:)
+        real(TKG)   , intent(in)                , optional  :: alpha
     end subroutine
 #endif
 
@@ -213,11 +213,11 @@ module pm_sampleECDF
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setECDF_ONE_D1_RK1
 #endif
-        use pm_kind, only: TKC => RK1
-        real(TKC)   , intent(out)   , contiguous            :: ecdf(:)
-        real(TKC)   , intent(out)   , contiguous, optional  :: ucdf(:)
-        real(TKC)   , intent(out)   , contiguous, optional  :: lcdf(:)
-        real(TKC)   , intent(in)                , optional  :: alpha
+        use pm_kind, only: TKG => RK1
+        real(TKG)   , intent(out)   , contiguous            :: ecdf(:)
+        real(TKG)   , intent(out)   , contiguous, optional  :: ucdf(:)
+        real(TKG)   , intent(out)   , contiguous, optional  :: lcdf(:)
+        real(TKG)   , intent(in)                , optional  :: alpha
     end subroutine
 #endif
 
@@ -228,13 +228,13 @@ module pm_sampleECDF
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setECDF_WIK_D1_RK5
 #endif
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
         integer(IK) , intent(in)                            :: weisum
         integer(IK) , intent(in)    , contiguous            :: weight(:)
-        real(TKC)   , intent(out)   , contiguous            :: ecdf(:)
-        real(TKC)   , intent(out)   , contiguous, optional  :: ucdf(:)
-        real(TKC)   , intent(out)   , contiguous, optional  :: lcdf(:)
-        real(TKC)   , intent(in)                , optional  :: alpha
+        real(TKG)   , intent(out)   , contiguous            :: ecdf(:)
+        real(TKG)   , intent(out)   , contiguous, optional  :: ucdf(:)
+        real(TKG)   , intent(out)   , contiguous, optional  :: lcdf(:)
+        real(TKG)   , intent(in)                , optional  :: alpha
     end subroutine
 #endif
 
@@ -243,13 +243,13 @@ module pm_sampleECDF
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setECDF_WIK_D1_RK4
 #endif
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
         integer(IK) , intent(in)                            :: weisum
         integer(IK) , intent(in)    , contiguous            :: weight(:)
-        real(TKC)   , intent(out)   , contiguous            :: ecdf(:)
-        real(TKC)   , intent(out)   , contiguous, optional  :: ucdf(:)
-        real(TKC)   , intent(out)   , contiguous, optional  :: lcdf(:)
-        real(TKC)   , intent(in)                , optional  :: alpha
+        real(TKG)   , intent(out)   , contiguous            :: ecdf(:)
+        real(TKG)   , intent(out)   , contiguous, optional  :: ucdf(:)
+        real(TKG)   , intent(out)   , contiguous, optional  :: lcdf(:)
+        real(TKG)   , intent(in)                , optional  :: alpha
     end subroutine
 #endif
 
@@ -258,13 +258,13 @@ module pm_sampleECDF
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setECDF_WIK_D1_RK3
 #endif
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
         integer(IK) , intent(in)                            :: weisum
         integer(IK) , intent(in)    , contiguous            :: weight(:)
-        real(TKC)   , intent(out)   , contiguous            :: ecdf(:)
-        real(TKC)   , intent(out)   , contiguous, optional  :: ucdf(:)
-        real(TKC)   , intent(out)   , contiguous, optional  :: lcdf(:)
-        real(TKC)   , intent(in)                , optional  :: alpha
+        real(TKG)   , intent(out)   , contiguous            :: ecdf(:)
+        real(TKG)   , intent(out)   , contiguous, optional  :: ucdf(:)
+        real(TKG)   , intent(out)   , contiguous, optional  :: lcdf(:)
+        real(TKG)   , intent(in)                , optional  :: alpha
     end subroutine
 #endif
 
@@ -273,13 +273,13 @@ module pm_sampleECDF
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setECDF_WIK_D1_RK2
 #endif
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
         integer(IK) , intent(in)                            :: weisum
         integer(IK) , intent(in)    , contiguous            :: weight(:)
-        real(TKC)   , intent(out)   , contiguous            :: ecdf(:)
-        real(TKC)   , intent(out)   , contiguous, optional  :: ucdf(:)
-        real(TKC)   , intent(out)   , contiguous, optional  :: lcdf(:)
-        real(TKC)   , intent(in)                , optional  :: alpha
+        real(TKG)   , intent(out)   , contiguous            :: ecdf(:)
+        real(TKG)   , intent(out)   , contiguous, optional  :: ucdf(:)
+        real(TKG)   , intent(out)   , contiguous, optional  :: lcdf(:)
+        real(TKG)   , intent(in)                , optional  :: alpha
     end subroutine
 #endif
 
@@ -288,13 +288,13 @@ module pm_sampleECDF
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setECDF_WIK_D1_RK1
 #endif
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
         integer(IK) , intent(in)                            :: weisum
         integer(IK) , intent(in)    , contiguous            :: weight(:)
-        real(TKC)   , intent(out)   , contiguous            :: ecdf(:)
-        real(TKC)   , intent(out)   , contiguous, optional  :: ucdf(:)
-        real(TKC)   , intent(out)   , contiguous, optional  :: lcdf(:)
-        real(TKC)   , intent(in)                , optional  :: alpha
+        real(TKG)   , intent(out)   , contiguous            :: ecdf(:)
+        real(TKG)   , intent(out)   , contiguous, optional  :: ucdf(:)
+        real(TKG)   , intent(out)   , contiguous, optional  :: lcdf(:)
+        real(TKG)   , intent(in)                , optional  :: alpha
     end subroutine
 #endif
 
@@ -305,10 +305,10 @@ module pm_sampleECDF
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setECDF_WRK_D1_RK5
 #endif
-        use pm_kind, only: TKC => RK5
-        real(TKC)   , intent(in)                            :: weisum
-        real(TKC)   , intent(in)    , contiguous            :: weight(:)
-        real(TKC)   , intent(out)   , contiguous            :: ecdf(:)
+        use pm_kind, only: TKG => RK5
+        real(TKG)   , intent(in)                            :: weisum
+        real(TKG)   , intent(in)    , contiguous            :: weight(:)
+        real(TKG)   , intent(out)   , contiguous            :: ecdf(:)
     end subroutine
 #endif
 
@@ -317,10 +317,10 @@ module pm_sampleECDF
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setECDF_WRK_D1_RK4
 #endif
-        use pm_kind, only: TKC => RK4
-        real(TKC)   , intent(in)                            :: weisum
-        real(TKC)   , intent(in)    , contiguous            :: weight(:)
-        real(TKC)   , intent(out)   , contiguous            :: ecdf(:)
+        use pm_kind, only: TKG => RK4
+        real(TKG)   , intent(in)                            :: weisum
+        real(TKG)   , intent(in)    , contiguous            :: weight(:)
+        real(TKG)   , intent(out)   , contiguous            :: ecdf(:)
     end subroutine
 #endif
 
@@ -329,10 +329,10 @@ module pm_sampleECDF
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setECDF_WRK_D1_RK3
 #endif
-        use pm_kind, only: TKC => RK3
-        real(TKC)   , intent(in)                            :: weisum
-        real(TKC)   , intent(in)    , contiguous            :: weight(:)
-        real(TKC)   , intent(out)   , contiguous            :: ecdf(:)
+        use pm_kind, only: TKG => RK3
+        real(TKG)   , intent(in)                            :: weisum
+        real(TKG)   , intent(in)    , contiguous            :: weight(:)
+        real(TKG)   , intent(out)   , contiguous            :: ecdf(:)
     end subroutine
 #endif
 
@@ -341,10 +341,10 @@ module pm_sampleECDF
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setECDF_WRK_D1_RK2
 #endif
-        use pm_kind, only: TKC => RK2
-        real(TKC)   , intent(in)                            :: weisum
-        real(TKC)   , intent(in)    , contiguous            :: weight(:)
-        real(TKC)   , intent(out)   , contiguous            :: ecdf(:)
+        use pm_kind, only: TKG => RK2
+        real(TKG)   , intent(in)                            :: weisum
+        real(TKG)   , intent(in)    , contiguous            :: weight(:)
+        real(TKG)   , intent(out)   , contiguous            :: ecdf(:)
     end subroutine
 #endif
 
@@ -353,10 +353,10 @@ module pm_sampleECDF
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setECDF_WRK_D1_RK1
 #endif
-        use pm_kind, only: TKC => RK1
-        real(TKC)   , intent(in)                            :: weisum
-        real(TKC)   , intent(in)    , contiguous            :: weight(:)
-        real(TKC)   , intent(out)   , contiguous            :: ecdf(:)
+        use pm_kind, only: TKG => RK1
+        real(TKG)   , intent(in)                            :: weisum
+        real(TKG)   , intent(in)    , contiguous            :: weight(:)
+        real(TKG)   , intent(out)   , contiguous            :: ecdf(:)
     end subroutine
 #endif
 

@@ -24,14 +24,14 @@
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        real(TKC), parameter :: rtol = epsilon(1._TKC) * 100
+        real(TKG), parameter :: rtol = epsilon(1._TKG) * 100
         ! Define the sample type.
 #if     CK_ENABLED
-#define TYPE_OF_SAMPLE complex(TKC)
-        complex(TKC), parameter :: ONE = (1._TKC, 1._TKC), TWO = 2 * (1._TKC, 1._TKC), ctol = (rtol, rtol)
+#define TYPE_OF_SAMPLE complex(TKG)
+        complex(TKG), parameter :: ONE = (1._TKG, 1._TKG), TWO = 2 * (1._TKG, 1._TKG), ctol = (rtol, rtol)
 #elif   RK_ENABLED
-#define TYPE_OF_SAMPLE real(TKC)
-        real(TKC), parameter :: ONE = 1._TKC, TWO = 2._TKC, ctol = rtol
+#define TYPE_OF_SAMPLE real(TKG)
+        real(TKG), parameter :: ONE = 1._TKG, TWO = 2._TKG, ctol = rtol
 #else
 #error  "Unrecognized interface."
 #endif
@@ -39,10 +39,10 @@
 #if     getMean_ENABLED
         !%%%%%%%%%%%%%%
 
-        real(TKC) :: rweisum
+        real(TKG) :: rweisum
         integer(IK) :: iweisum
         integer(IK) :: itry, nsam, ndim, dim
-        real(TKC), allocatable :: rweight(:)
+        real(TKG), allocatable :: rweight(:)
         integer(IK), allocatable :: iweight(:)
         TYPE_OF_SAMPLE, allocatable :: sample(:,:), mean(:), mean_ref(:), diff(:)
         assertion = .true._LK
@@ -65,7 +65,7 @@
                 else
                     sample = getUnifRand(ONE, TWO, nsam, ndim)
                 end if
-                rweight = getUnifRand(1._TKC, 9._TKC, nsam)
+                rweight = getUnifRand(1._TKG, 9._TKG, nsam)
                 iweight = getUnifRand(1_IK, 9_IK, nsam)
 
                 ! integer weighted
@@ -110,7 +110,7 @@
                 else
                     sample = getUnifRand(ONE, TWO, nsam, ndim)
                 end if
-                rweight = getUnifRand(1._TKC, 9._TKC, nsam * ndim)
+                rweight = getUnifRand(1._TKG, 9._TKG, nsam * ndim)
                 iweight = getUnifRand(1_IK, 9_IK, nsam * ndim)
 
                 ! integer weighted
@@ -151,7 +151,7 @@
                 call setResized(mean, 1_IK)
                 call setResized(mean_ref, 1_IK)
                 sample = getUnifRand(ONE, TWO, nsam, ndim)
-                rweight = getUnifRand(1._TKC, 9._TKC, nsam)
+                rweight = getUnifRand(1._TKG, 9._TKG, nsam)
                 iweight = getUnifRand(1_IK, 9_IK, nsam)
 
                 ! integer weighted
@@ -192,7 +192,7 @@
                 call setResized(mean, 1_IK)
                 call setResized(mean_ref, 1_IK)
                 sample = getUnifRand(ONE, TWO, nsam, ndim)
-                rweight = getUnifRand(1._TKC, 9._TKC, nsam)
+                rweight = getUnifRand(1._TKG, 9._TKG, nsam)
                 iweight = getUnifRand(1_IK, 9_IK, nsam)
 
                 ! integer weighted
@@ -259,8 +259,8 @@
         !%%%%%%%%%%%%%%
 
         integer(IK) :: itry, nsam, ndim, dim
-        real(TKC) :: rweisum, rweisum_ref
-        real(TKC), allocatable :: rweight(:)
+        real(TKG) :: rweisum, rweisum_ref
+        real(TKG), allocatable :: rweight(:)
         integer(IK) :: iweisum, iweisum_ref
         integer(IK), allocatable :: iweight(:)
         TYPE_OF_SAMPLE, allocatable :: sample(:,:), mean(:), mean_ref(:), diff(:)
@@ -278,7 +278,7 @@
                 ndim = 2_IK
                 call setResized(mean, ndim)
                 sample = getUnifRand(ONE, TWO, nsam, ndim)
-                rweight = getUnifRand(1._TKC, 9._TKC, nsam)
+                rweight = getUnifRand(1._TKG, 9._TKG, nsam)
                 iweight = getUnifRand(1_IK, 9_IK, nsam)
                 iweisum_ref = sum(iweight)
                 rweisum_ref = sum(rweight)
@@ -287,7 +287,7 @@
 
                 ! integer weighted
 
-                mean_ref = getMeanD2(sample, 1_IK, real(iweight, TKC))
+                mean_ref = getMeanD2(sample, 1_IK, real(iweight, TKG))
                 call setMean(mean, sample(:,1), sample(:,2), iweight, iweisum)
 
                 diff = abs(mean - mean_ref)
@@ -332,7 +332,7 @@
                 else
                     sample = getUnifRand(ONE, TWO, nsam, ndim)
                 end if
-                rweight = getUnifRand(1._TKC, 9._TKC, nsam)
+                rweight = getUnifRand(1._TKG, 9._TKG, nsam)
                 iweight = getUnifRand(1_IK, 9_IK, nsam)
                 iweisum_ref = sum(iweight)
                 rweisum_ref = sum(rweight)
@@ -341,7 +341,7 @@
 
                 ! integer weighted
 
-                mean_ref = getMeanD2(sample, dim, real(iweight, TKC))
+                mean_ref = getMeanD2(sample, dim, real(iweight, TKG))
                 call setMean(mean, sample, dim, iweight, iweisum)
 
                 diff = abs(mean - mean_ref)
@@ -386,7 +386,7 @@
                 else
                     sample = getUnifRand(ONE, TWO, nsam, ndim)
                 end if
-                rweight = getUnifRand(1._TKC, 9._TKC, nsam * ndim)
+                rweight = getUnifRand(1._TKG, 9._TKG, nsam * ndim)
                 iweight = getUnifRand(1_IK, 9_IK, nsam * ndim)
                 iweisum_ref = sum(iweight)
                 rweisum_ref = sum(rweight)
@@ -395,7 +395,7 @@
 
                 ! integer weighted
 
-                mean_ref = getMeanD2(sample, weight = real(iweight, TKC))
+                mean_ref = getMeanD2(sample, weight = real(iweight, TKG))
                 call setMean(mean(1), sample, iweight, iweisum)
 
                 diff = abs(mean - mean_ref)
@@ -436,7 +436,7 @@
                 ndim = 1_IK
                 call setResized(mean, 1_IK)
                 sample = getUnifRand(ONE, TWO, nsam, ndim)
-                rweight = getUnifRand(1._TKC, 9._TKC, nsam)
+                rweight = getUnifRand(1._TKG, 9._TKG, nsam)
                 iweight = getUnifRand(1_IK, 9_IK, nsam)
                 iweisum_ref = sum(iweight)
                 rweisum_ref = sum(rweight)
@@ -445,7 +445,7 @@
 
                 ! integer weighted
 
-                mean_ref = getMeanD1(sample(:,1), real(iweight, TKC))
+                mean_ref = getMeanD1(sample(:,1), real(iweight, TKG))
                 call setMean(mean(1), sample(:,1), dim, iweight, iweisum)
 
                 diff = abs(mean - mean_ref)
@@ -486,7 +486,7 @@
                 ndim = 1_IK
                 call setResized(mean, 1_IK)
                 sample = getUnifRand(ONE, TWO, nsam, ndim)
-                rweight = getUnifRand(1._TKC, 9._TKC, nsam)
+                rweight = getUnifRand(1._TKG, 9._TKG, nsam)
                 iweight = getUnifRand(1_IK, 9_IK, nsam)
                 iweisum_ref = sum(iweight)
                 rweisum_ref = sum(rweight)
@@ -495,7 +495,7 @@
 
                 ! integer weighted
 
-                mean_ref = getMeanD1(sample(:,1), real(iweight, TKC))
+                mean_ref = getMeanD1(sample(:,1), real(iweight, TKG))
                 call setMean(mean(1), sample(:,1), iweight, iweisum)
 
                 diff = abs(mean - mean_ref)
@@ -567,7 +567,7 @@
         end subroutine
 
         pure function getMeanD1(sample, weight) result(mean)
-            real(TKC), intent(in), optional :: weight(:)
+            real(TKG), intent(in), optional :: weight(:)
             TYPE_OF_SAMPLE, intent(in) :: sample(:)
             TYPE_OF_SAMPLE :: mean(1)
             if (present(weight)) then
@@ -578,7 +578,7 @@
         end function
 
         pure function getMeanD2(sample, dim, weight) result(mean)
-            real(TKC), intent(in), optional :: weight(:)
+            real(TKG), intent(in), optional :: weight(:)
             TYPE_OF_SAMPLE, intent(in) :: sample(:,:)
             integer(IK), intent(in), optional :: dim
             TYPE_OF_SAMPLE, allocatable :: mean(:)
@@ -605,7 +605,7 @@
 #elif   getMeanMerged_ENABLED || setMeanMerged_ENABLED
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        real(TKC) :: fracA
+        real(TKG) :: fracA
         integer(IK) :: itry, ndim, dim
         integer(IK) :: nsam, nsamA, nsamB
         TYPE_OF_SAMPLE, allocatable :: sample(:,:), meanA(:), meanB(:), mean(:), mean_ref(:), diff(:)
@@ -617,7 +617,7 @@
             nsamA = getUnifRand(1_IK, 5_IK)
             nsamB = getUnifRand(1_IK, 5_IK)
             nsam = nsamA + nsamB
-            fracA = real(nsamA, TKC) / real(nsam, TKC)
+            fracA = real(nsamA, TKG) / real(nsam, TKG)
 
             ! test D2 interface.
 

@@ -96,7 +96,7 @@
         integer(IK) :: i
 #if     getMinLoc_ENABLED || getMaxLoc_ENABLED
 #define getLoc_ENABLED 1
-        character(1,SKC) :: EXTREMUM_VAL
+        character(1,SKG) :: EXTREMUM_VAL
         EXTREMUM_LOC = 1_IK
 #elif   !(getMinVal_ENABLED || getMaxVal_ENABLED)
 #error  "Unrecognized interface."
@@ -146,23 +146,23 @@
         integer(IK) :: i, j, lenstr, dotpos, tzstart
         logical(LK) :: isDigitSeq, leadingDigitIsMissing
         lenstr = len(str, IK)
-        allocate(character(lenstr,SKC) :: strt)
+        allocate(character(lenstr,SKG) :: strt)
         if (lenstr > 0_IK) then
             i = 1_IK
             j = 1_IK
             strt(j:j) = str(i:i)
             loopOverString: do
-                if (str(i:i) == SKC_".") then
+                if (str(i:i) == SKG_".") then
                     dotpos = i
                     loopOverDigitSeq: do
                         i = i + 1_IK
-                        if (str(i:i) == SKC_"0") then
+                        if (str(i:i) == SKG_"0") then
                             tzstart = i
                             loopOverTZ: do
                                 if (i == lenstr) exit loopOverTZ
                                 i = i + 1_IK
-                                if (str(i:i) == SKC_"0") cycle loopOverTZ
-                                isDigitSeq = logical(index(SKC_"123456789", str(i:i)) > 0, LK) ! isCharDigit(str(i:i))
+                                if (str(i:i) == SKG_"0") cycle loopOverTZ
+                                isDigitSeq = logical(index(SKG_"123456789", str(i:i)) > 0, LK) ! isCharDigit(str(i:i))
                                 if (isDigitSeq) then ! the zeros are significant, keep them.
                                     j = j + 1_IK
                                     strt(j:j+i-tzstart) = str(tzstart:i)
@@ -176,9 +176,9 @@
                                 !   Ignore the all trailing zeros only if there is digit before the decimal point.
                                 !   Otherwise, keep a zero as the leading digit before the decimal point.
                                 leadingDigitIsMissing = logical(dotpos == 1_IK, LK)
-                                if (.not. leadingDigitIsMissing) leadingDigitIsMissing = logical(index(SKC_"0123456789", str(dotpos-1:dotpos-1)) == 0, LK)
+                                if (.not. leadingDigitIsMissing) leadingDigitIsMissing = logical(index(SKG_"0123456789", str(dotpos-1:dotpos-1)) == 0, LK)
                                 if (leadingDigitIsMissing) then
-                                    strt(j : j + 1) = SKC_"0."
+                                    strt(j : j + 1) = SKG_"0."
                                     j = j + 1_IK
                                     !j = j + 1_IK
                                     !strt(j:j+i-tzstart) = str(tzstart:i)
@@ -187,7 +187,7 @@
                             end if
                             if (i == lenstr) exit loopOverString
                         else
-                            isDigitSeq = logical(index(SKC_"123456789", str(i:i)) > 0, LK) ! isCharDigit(str(i:i))
+                            isDigitSeq = logical(index(SKG_"123456789", str(i:i)) > 0, LK) ! isCharDigit(str(i:i))
                         end if
                         j = j + 1_IK
                         strt(j:j) = str(i:i)
@@ -203,7 +203,7 @@
             end do loopOverString
             strt = strt(1:j)
         else
-            strt = SKC_""
+            strt = SKG_""
         end if
 
         !%%%%%%%%%%%%%%%%%%%
@@ -240,11 +240,11 @@
         integer(IK)                     :: widthCurrent, maxWidthCurrent
         integer(IK)                     :: lenStr, lenStrWrapped, lenStrWrappedTemp, countIndentPatternOld, countIndentPatternNew
         integer(IK)                     :: lenPrefix, lenIndent, lenIndentPattern, lenBreak, lenNewLine, lenLineFeed, lenPrefixIndent
-        character(:,SKC), allocatable   :: strWrappedTemp, prefix_def, prefixIndent_def, indentPattern_def, break_def, newline_def, linefeed_def
+        character(:,SKG), allocatable   :: strWrappedTemp, prefix_def, prefixIndent_def, indentPattern_def, break_def, newline_def, linefeed_def
 
         lenStr = len(str, kind = IK)
         if (lenStr == 0_IK) then
-            strWrapped = SKC_""
+            strWrapped = SKG_""
             return
         end if
 
@@ -255,7 +255,7 @@
             prefix_def = prefix
         else
             lenPrefix = 0_IK
-            prefix_def = SKC_""
+            prefix_def = SKG_""
         end if
 
         ! Determine the indentation pattern.
@@ -265,7 +265,7 @@
             indentPattern_def = indent
         else
             lenIndentPattern = 1_IK
-            indentPattern_def = SKC_" "
+            indentPattern_def = SKG_" "
         end if
 
         ! Determine the allowed break characters.
@@ -275,7 +275,7 @@
             break_def = break
         else
             lenBreak = 1_IK
-            break_def = SKC_" "
+            break_def = SKG_" "
         end if
 
         ! Determine the newline.
@@ -285,7 +285,7 @@
             newline_def = newline
         else
             lenNewLine = 1_IK
-            newline_def = new_line(SKC_"a")
+            newline_def = new_line(SKG_"a")
         end if
 
         ! Determine the linefeed.
@@ -318,7 +318,7 @@
         ! Construct the wrapped array.
 
         lenStrWrapped = lenStr * 3_IK / 2_IK ! best guess
-        allocate(character(lenStrWrapped,SKC) :: strWrappedTemp)
+        allocate(character(lenStrWrapped,SKG) :: strWrappedTemp)
 
         if (lenIndentPattern == 0_IK) then
             lenPrefixIndent = lenPrefix
@@ -426,7 +426,7 @@
 
         subroutine resizeStrWrapped()
             lenStrWrappedTemp = max(lenStrWrapped * 3_IK / 2_IK, lenStrWrapped + lenPrefixIndent)
-            allocate(character(lenStrWrappedTemp,SKC) :: strWrapped)
+            allocate(character(lenStrWrappedTemp,SKG) :: strWrapped)
             strWrapped(1_IK:lenStrWrapped) = strWrappedTemp(1_IK:lenStrWrapped)
             call move_alloc(strWrapped, strWrappedTemp)
 #if         __GFORTRAN__

@@ -23,8 +23,8 @@ program example
     block
 
         block
-            use pm_kind, only: TKC => SK ! all kinds are supported.
-            character(:,TKC), allocatable :: array
+            use pm_kind, only: TKG => SK ! all kinds are supported.
+            character(:,TKG), allocatable :: array
             integer(IK), allocatable :: weight(:)
             integer(IK) :: skip
             do itry = 1, ntry
@@ -41,20 +41,20 @@ program example
                 call disp%show("array = getUnifRand(repeat('A', nsam), repeat('Z', nsam))")
                                 array = getUnifRand(repeat('A', nsam), repeat('Z', nsam))
                 call disp%show("array")
-                call disp%show( array , deliml = TKC_"""" )
+                call disp%show( array , deliml = TKG_"""" )
                 call disp%show("getVerbose(array, weight, sum(weight, mask = weight > 0))")
-                call disp%show( getVerbose(array, weight, sum(weight, mask = weight > 0)) , deliml = TKC_"""" )
+                call disp%show( getVerbose(array, weight, sum(weight, mask = weight > 0)) , deliml = TKG_"""" )
                 call disp%show("array = getRefined(array, weight, skip)")
                                 array = getRefined(array, weight, skip)
                 call disp%show("array")
-                call disp%show( array , deliml = TKC_"""" )
+                call disp%show( array , deliml = TKG_"""" )
                 call disp%skip()
             end do
         end block
 
         block
-            use pm_kind, only: TKC => SK ! all kinds are supported.
-            character(2,TKC), allocatable :: array(:)
+            use pm_kind, only: TKG => SK ! all kinds are supported.
+            character(2,TKG), allocatable :: array(:)
             integer(IK), allocatable :: weight(:)
             integer(IK) :: skip
             do itry = 1, ntry
@@ -71,20 +71,20 @@ program example
                 call disp%show("array = getUnifRand('AA', 'ZZ', nsam)")
                                 array = getUnifRand('AA', 'ZZ', nsam)
                 call disp%show("array")
-                call disp%show( array , deliml = TKC_"""" )
+                call disp%show( array , deliml = TKG_"""" )
                 call disp%show("getVerbose(array, weight, sum(weight, mask = weight > 0))")
-                call disp%show( getVerbose(array, weight, sum(weight, mask = weight > 0)) , deliml = TKC_"""" )
+                call disp%show( getVerbose(array, weight, sum(weight, mask = weight > 0)) , deliml = TKG_"""" )
                 call disp%show("array = getRefined(array, weight, skip)")
                                 array = getRefined(array, weight, skip)
                 call disp%show("array")
-                call disp%show( array , deliml = TKC_"""" )
+                call disp%show( array , deliml = TKG_"""" )
                 call disp%skip()
             end do
         end block
 
         block
-            use pm_kind, only: TKC => IK ! all kinds are supported.
-            integer(TKC), allocatable :: array(:)
+            use pm_kind, only: TKG => IK ! all kinds are supported.
+            integer(TKG), allocatable :: array(:)
             integer(IK), allocatable :: weight(:)
             integer(IK) :: skip
             do itry = 1, ntry
@@ -113,8 +113,8 @@ program example
         end block
 
         block
-            use pm_kind, only: TKC => LK ! all kinds are supported.
-            logical(TKC), allocatable :: array(:)
+            use pm_kind, only: TKG => LK ! all kinds are supported.
+            logical(TKG), allocatable :: array(:)
             integer(IK), allocatable :: weight(:)
             integer(IK) :: skip
             do itry = 1, ntry
@@ -143,8 +143,8 @@ program example
         end block
 
         block
-            use pm_kind, only: TKC => CKS ! all kinds are supported.
-            complex(TKC), allocatable :: array(:)
+            use pm_kind, only: TKG => CKS ! all kinds are supported.
+            complex(TKG), allocatable :: array(:)
             integer(IK), allocatable :: weight(:)
             integer(IK) :: skip
             do itry = 1, ntry
@@ -158,8 +158,8 @@ program example
                                 weight = getUnifRand(-1, 9, nsam)
                 call disp%show("weight")
                 call disp%show( weight )
-                call disp%show("array = cmplx(getUnifRand(0, 9, nsam), getUnifRand(0, 9, nsam), TKC)")
-                                array = cmplx(getUnifRand(0, 9, nsam), getUnifRand(0, 9, nsam), TKC)
+                call disp%show("array = cmplx(getUnifRand(0, 9, nsam), getUnifRand(0, 9, nsam), TKG)")
+                                array = cmplx(getUnifRand(0, 9, nsam), getUnifRand(0, 9, nsam), TKG)
                 call disp%show("array")
                 call disp%show( array )
                 call disp%show("getVerbose(array, weight, sum(weight, mask = weight > 0))")
@@ -173,8 +173,8 @@ program example
         end block
 
         block
-            use pm_kind, only: TKC => RKS ! all kinds are supported.
-            real(TKC), allocatable :: array(:)
+            use pm_kind, only: TKG => RKS ! all kinds are supported.
+            real(TKG), allocatable :: array(:)
             integer(IK), allocatable :: weight(:)
             integer(IK) :: skip
             do itry = 1, ntry
@@ -215,8 +215,8 @@ program example
         integer(IK) :: dim, ndim
 
         block
-            use pm_kind, only: TKC => SK ! all kinds are supported.
-            character(2,TKC), allocatable :: array(:,:), arref(:,:)
+            use pm_kind, only: TKG => SK ! all kinds are supported.
+            character(2,TKG), allocatable :: array(:,:), arref(:,:)
             integer(IK), allocatable :: weight(:)
             integer(IK) :: skip
             do itry = 1, ntry
@@ -233,24 +233,24 @@ program example
                 call disp%show("array = getUnifRand('AA', 'ZZ', ndim, nsam)")
                                 array = getUnifRand('AA', 'ZZ', ndim, nsam)
                 call disp%show("array")
-                call disp%show( array , deliml = TKC_"""" )
+                call disp%show( array , deliml = TKG_"""" )
                 call disp%show("getVerbose(array, weight, sum(weight, mask = weight > 0), dim)")
-                call disp%show( getVerbose(array, weight, sum(weight, mask = weight > 0), dim) , deliml = TKC_"""" )
+                call disp%show( getVerbose(array, weight, sum(weight, mask = weight > 0), dim) , deliml = TKG_"""" )
                 call disp%show("arref = getRefined(array, dim, weight, skip)")
                                 arref = getRefined(array, dim, weight, skip)
                 call disp%show("arref")
-                call disp%show( arref , deliml = TKC_"""" )
+                call disp%show( arref , deliml = TKG_"""" )
                 call disp%show("arref = getRefined(transpose(array), 3_IK - dim, weight, skip)")
                                 arref = getRefined(transpose(array), 3_IK - dim, weight, skip)
                 call disp%show("arref")
-                call disp%show( arref , deliml = TKC_"""" )
+                call disp%show( arref , deliml = TKG_"""" )
                 call disp%skip()
             end do
         end block
 
         block
-            use pm_kind, only: TKC => IK ! all kinds are supported.
-            integer(TKC), allocatable :: array(:,:), arref(:,:)
+            use pm_kind, only: TKG => IK ! all kinds are supported.
+            integer(TKG), allocatable :: array(:,:), arref(:,:)
             integer(IK), allocatable :: weight(:)
             integer(IK) :: skip
             do itry = 1, ntry
@@ -283,8 +283,8 @@ program example
         end block
 
         block
-            use pm_kind, only: TKC => LK ! all kinds are supported.
-            logical(TKC), allocatable :: array(:,:), arref(:,:)
+            use pm_kind, only: TKG => LK ! all kinds are supported.
+            logical(TKG), allocatable :: array(:,:), arref(:,:)
             integer(IK), allocatable :: weight(:)
             integer(IK) :: skip
             do itry = 1, ntry
@@ -317,8 +317,8 @@ program example
         end block
 
         block
-            use pm_kind, only: TKC => CKS ! all kinds are supported.
-            complex(TKC), allocatable :: array(:,:), arref(:,:)
+            use pm_kind, only: TKG => CKS ! all kinds are supported.
+            complex(TKG), allocatable :: array(:,:), arref(:,:)
             integer(IK), allocatable :: weight(:)
             integer(IK) :: skip
             do itry = 1, ntry
@@ -332,8 +332,8 @@ program example
                                 weight = getUnifRand(-1, 9, nsam)
                 call disp%show("weight")
                 call disp%show( weight )
-                call disp%show("array = cmplx(getUnifRand(0, 9, ndim, nsam), getUnifRand(0, 9, ndim, nsam), TKC)")
-                                array = cmplx(getUnifRand(0, 9, ndim, nsam), getUnifRand(0, 9, ndim, nsam), TKC)
+                call disp%show("array = cmplx(getUnifRand(0, 9, ndim, nsam), getUnifRand(0, 9, ndim, nsam), TKG)")
+                                array = cmplx(getUnifRand(0, 9, ndim, nsam), getUnifRand(0, 9, ndim, nsam), TKG)
                 call disp%show("array")
                 call disp%show( array )
                 call disp%show("getVerbose(array, weight, sum(weight, mask = weight > 0), dim)")
@@ -351,8 +351,8 @@ program example
         end block
 
         block
-            use pm_kind, only: TKC => RKS ! all kinds are supported.
-            real(TKC), allocatable :: array(:,:), arref(:,:)
+            use pm_kind, only: TKG => RKS ! all kinds are supported.
+            real(TKG), allocatable :: array(:,:), arref(:,:)
             integer(IK), allocatable :: weight(:)
             integer(IK) :: skip
             do itry = 1, ntry

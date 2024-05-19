@@ -102,10 +102,10 @@ module pm_mathNumSys
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDecimal_SK5_IK5
 #endif
-        use pm_kind, only: SKC => SK5, IKC => IK5
-        character(*,SKC)        , intent(in)            :: numeral
-        integer(IKC)            , intent(in)            :: base
-        integer(IKC)                                    :: decimal
+        use pm_kind, only: SKG => SK5, IKG => IK5
+        character(*,SKG)        , intent(in)            :: numeral
+        integer(IKG)            , intent(in)            :: base
+        integer(IKG)                                    :: decimal
     end function
 #endif
 
@@ -114,10 +114,10 @@ module pm_mathNumSys
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDecimal_SK5_IK4
 #endif
-        use pm_kind, only: SKC => SK5, IKC => IK4
-        character(*,SKC)        , intent(in)            :: numeral
-        integer(IKC)            , intent(in)            :: base
-        integer(IKC)                                    :: decimal
+        use pm_kind, only: SKG => SK5, IKG => IK4
+        character(*,SKG)        , intent(in)            :: numeral
+        integer(IKG)            , intent(in)            :: base
+        integer(IKG)                                    :: decimal
     end function
 #endif
 
@@ -126,10 +126,10 @@ module pm_mathNumSys
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDecimal_SK5_IK3
 #endif
-        use pm_kind, only: SKC => SK5, IKC => IK3
-        character(*,SKC)        , intent(in)            :: numeral
-        integer(IKC)            , intent(in)            :: base
-        integer(IKC)                                    :: decimal
+        use pm_kind, only: SKG => SK5, IKG => IK3
+        character(*,SKG)        , intent(in)            :: numeral
+        integer(IKG)            , intent(in)            :: base
+        integer(IKG)                                    :: decimal
     end function
 #endif
 
@@ -138,10 +138,10 @@ module pm_mathNumSys
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDecimal_SK5_IK2
 #endif
-        use pm_kind, only: SKC => SK5, IKC => IK2
-        character(*,SKC)        , intent(in)            :: numeral
-        integer(IKC)            , intent(in)            :: base
-        integer(IKC)                                    :: decimal
+        use pm_kind, only: SKG => SK5, IKG => IK2
+        character(*,SKG)        , intent(in)            :: numeral
+        integer(IKG)            , intent(in)            :: base
+        integer(IKG)                                    :: decimal
     end function
 #endif
 
@@ -150,10 +150,10 @@ module pm_mathNumSys
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDecimal_SK5_IK1
 #endif
-        use pm_kind, only: SKC => SK5, IKC => IK1
-        character(*,SKC)        , intent(in)            :: numeral
-        integer(IKC)            , intent(in)            :: base
-        integer(IKC)                                    :: decimal
+        use pm_kind, only: SKG => SK5, IKG => IK1
+        character(*,SKG)        , intent(in)            :: numeral
+        integer(IKG)            , intent(in)            :: base
+        integer(IKG)                                    :: decimal
     end function
 #endif
 
@@ -164,10 +164,10 @@ module pm_mathNumSys
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDecimal_SK4_IK5
 #endif
-        use pm_kind, only: SKC => SK4, IKC => IK5
-        character(*,SKC)        , intent(in)            :: numeral
-        integer(IKC)            , intent(in)            :: base
-        integer(IKC)                                    :: decimal
+        use pm_kind, only: SKG => SK4, IKG => IK5
+        character(*,SKG)        , intent(in)            :: numeral
+        integer(IKG)            , intent(in)            :: base
+        integer(IKG)                                    :: decimal
     end function
 #endif
 
@@ -176,10 +176,10 @@ module pm_mathNumSys
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDecimal_SK4_IK4
 #endif
-        use pm_kind, only: SKC => SK4, IKC => IK4
-        character(*,SKC)        , intent(in)            :: numeral
-        integer(IKC)            , intent(in)            :: base
-        integer(IKC)                                    :: decimal
+        use pm_kind, only: SKG => SK4, IKG => IK4
+        character(*,SKG)        , intent(in)            :: numeral
+        integer(IKG)            , intent(in)            :: base
+        integer(IKG)                                    :: decimal
     end function
 #endif
 
@@ -188,10 +188,10 @@ module pm_mathNumSys
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDecimal_SK4_IK3
 #endif
-        use pm_kind, only: SKC => SK4, IKC => IK3
-        character(*,SKC)        , intent(in)            :: numeral
-        integer(IKC)            , intent(in)            :: base
-        integer(IKC)                                    :: decimal
+        use pm_kind, only: SKG => SK4, IKG => IK3
+        character(*,SKG)        , intent(in)            :: numeral
+        integer(IKG)            , intent(in)            :: base
+        integer(IKG)                                    :: decimal
     end function
 #endif
 
@@ -200,10 +200,10 @@ module pm_mathNumSys
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDecimal_SK4_IK2
 #endif
-        use pm_kind, only: SKC => SK4, IKC => IK2
-        character(*,SKC)        , intent(in)            :: numeral
-        integer(IKC)            , intent(in)            :: base
-        integer(IKC)                                    :: decimal
+        use pm_kind, only: SKG => SK4, IKG => IK2
+        character(*,SKG)        , intent(in)            :: numeral
+        integer(IKG)            , intent(in)            :: base
+        integer(IKG)                                    :: decimal
     end function
 #endif
 
@@ -212,10 +212,10 @@ module pm_mathNumSys
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDecimal_SK4_IK1
 #endif
-        use pm_kind, only: SKC => SK4, IKC => IK1
-        character(*,SKC)        , intent(in)            :: numeral
-        integer(IKC)            , intent(in)            :: base
-        integer(IKC)                                    :: decimal
+        use pm_kind, only: SKG => SK4, IKG => IK1
+        character(*,SKG)        , intent(in)            :: numeral
+        integer(IKG)            , intent(in)            :: base
+        integer(IKG)                                    :: decimal
     end function
 #endif
 
@@ -226,10 +226,10 @@ module pm_mathNumSys
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDecimal_SK3_IK5
 #endif
-        use pm_kind, only: SKC => SK3, IKC => IK5
-        character(*,SKC)        , intent(in)            :: numeral
-        integer(IKC)            , intent(in)            :: base
-        integer(IKC)                                    :: decimal
+        use pm_kind, only: SKG => SK3, IKG => IK5
+        character(*,SKG)        , intent(in)            :: numeral
+        integer(IKG)            , intent(in)            :: base
+        integer(IKG)                                    :: decimal
     end function
 #endif
 
@@ -238,10 +238,10 @@ module pm_mathNumSys
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDecimal_SK3_IK4
 #endif
-        use pm_kind, only: SKC => SK3, IKC => IK4
-        character(*,SKC)        , intent(in)            :: numeral
-        integer(IKC)            , intent(in)            :: base
-        integer(IKC)                                    :: decimal
+        use pm_kind, only: SKG => SK3, IKG => IK4
+        character(*,SKG)        , intent(in)            :: numeral
+        integer(IKG)            , intent(in)            :: base
+        integer(IKG)                                    :: decimal
     end function
 #endif
 
@@ -250,10 +250,10 @@ module pm_mathNumSys
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDecimal_SK3_IK3
 #endif
-        use pm_kind, only: SKC => SK3, IKC => IK3
-        character(*,SKC)        , intent(in)            :: numeral
-        integer(IKC)            , intent(in)            :: base
-        integer(IKC)                                    :: decimal
+        use pm_kind, only: SKG => SK3, IKG => IK3
+        character(*,SKG)        , intent(in)            :: numeral
+        integer(IKG)            , intent(in)            :: base
+        integer(IKG)                                    :: decimal
     end function
 #endif
 
@@ -262,10 +262,10 @@ module pm_mathNumSys
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDecimal_SK3_IK2
 #endif
-        use pm_kind, only: SKC => SK3, IKC => IK2
-        character(*,SKC)        , intent(in)            :: numeral
-        integer(IKC)            , intent(in)            :: base
-        integer(IKC)                                    :: decimal
+        use pm_kind, only: SKG => SK3, IKG => IK2
+        character(*,SKG)        , intent(in)            :: numeral
+        integer(IKG)            , intent(in)            :: base
+        integer(IKG)                                    :: decimal
     end function
 #endif
 
@@ -274,10 +274,10 @@ module pm_mathNumSys
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDecimal_SK3_IK1
 #endif
-        use pm_kind, only: SKC => SK3, IKC => IK1
-        character(*,SKC)        , intent(in)            :: numeral
-        integer(IKC)            , intent(in)            :: base
-        integer(IKC)                                    :: decimal
+        use pm_kind, only: SKG => SK3, IKG => IK1
+        character(*,SKG)        , intent(in)            :: numeral
+        integer(IKG)            , intent(in)            :: base
+        integer(IKG)                                    :: decimal
     end function
 #endif
 
@@ -288,10 +288,10 @@ module pm_mathNumSys
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDecimal_SK2_IK5
 #endif
-        use pm_kind, only: SKC => SK2, IKC => IK5
-        character(*,SKC)        , intent(in)            :: numeral
-        integer(IKC)            , intent(in)            :: base
-        integer(IKC)                                    :: decimal
+        use pm_kind, only: SKG => SK2, IKG => IK5
+        character(*,SKG)        , intent(in)            :: numeral
+        integer(IKG)            , intent(in)            :: base
+        integer(IKG)                                    :: decimal
     end function
 #endif
 
@@ -300,10 +300,10 @@ module pm_mathNumSys
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDecimal_SK2_IK4
 #endif
-        use pm_kind, only: SKC => SK2, IKC => IK4
-        character(*,SKC)        , intent(in)            :: numeral
-        integer(IKC)            , intent(in)            :: base
-        integer(IKC)                                    :: decimal
+        use pm_kind, only: SKG => SK2, IKG => IK4
+        character(*,SKG)        , intent(in)            :: numeral
+        integer(IKG)            , intent(in)            :: base
+        integer(IKG)                                    :: decimal
     end function
 #endif
 
@@ -312,10 +312,10 @@ module pm_mathNumSys
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDecimal_SK2_IK3
 #endif
-        use pm_kind, only: SKC => SK2, IKC => IK3
-        character(*,SKC)        , intent(in)            :: numeral
-        integer(IKC)            , intent(in)            :: base
-        integer(IKC)                                    :: decimal
+        use pm_kind, only: SKG => SK2, IKG => IK3
+        character(*,SKG)        , intent(in)            :: numeral
+        integer(IKG)            , intent(in)            :: base
+        integer(IKG)                                    :: decimal
     end function
 #endif
 
@@ -324,10 +324,10 @@ module pm_mathNumSys
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDecimal_SK2_IK2
 #endif
-        use pm_kind, only: SKC => SK2, IKC => IK2
-        character(*,SKC)        , intent(in)            :: numeral
-        integer(IKC)            , intent(in)            :: base
-        integer(IKC)                                    :: decimal
+        use pm_kind, only: SKG => SK2, IKG => IK2
+        character(*,SKG)        , intent(in)            :: numeral
+        integer(IKG)            , intent(in)            :: base
+        integer(IKG)                                    :: decimal
     end function
 #endif
 
@@ -336,10 +336,10 @@ module pm_mathNumSys
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDecimal_SK2_IK1
 #endif
-        use pm_kind, only: SKC => SK2, IKC => IK1
-        character(*,SKC)        , intent(in)            :: numeral
-        integer(IKC)            , intent(in)            :: base
-        integer(IKC)                                    :: decimal
+        use pm_kind, only: SKG => SK2, IKG => IK1
+        character(*,SKG)        , intent(in)            :: numeral
+        integer(IKG)            , intent(in)            :: base
+        integer(IKG)                                    :: decimal
     end function
 #endif
 
@@ -350,10 +350,10 @@ module pm_mathNumSys
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDecimal_SK1_IK5
 #endif
-        use pm_kind, only: SKC => SK1, IKC => IK5
-        character(*,SKC)        , intent(in)            :: numeral
-        integer(IKC)            , intent(in)            :: base
-        integer(IKC)                                    :: decimal
+        use pm_kind, only: SKG => SK1, IKG => IK5
+        character(*,SKG)        , intent(in)            :: numeral
+        integer(IKG)            , intent(in)            :: base
+        integer(IKG)                                    :: decimal
     end function
 #endif
 
@@ -362,10 +362,10 @@ module pm_mathNumSys
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDecimal_SK1_IK4
 #endif
-        use pm_kind, only: SKC => SK1, IKC => IK4
-        character(*,SKC)        , intent(in)            :: numeral
-        integer(IKC)            , intent(in)            :: base
-        integer(IKC)                                    :: decimal
+        use pm_kind, only: SKG => SK1, IKG => IK4
+        character(*,SKG)        , intent(in)            :: numeral
+        integer(IKG)            , intent(in)            :: base
+        integer(IKG)                                    :: decimal
     end function
 #endif
 
@@ -374,10 +374,10 @@ module pm_mathNumSys
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDecimal_SK1_IK3
 #endif
-        use pm_kind, only: SKC => SK1, IKC => IK3
-        character(*,SKC)        , intent(in)            :: numeral
-        integer(IKC)            , intent(in)            :: base
-        integer(IKC)                                    :: decimal
+        use pm_kind, only: SKG => SK1, IKG => IK3
+        character(*,SKG)        , intent(in)            :: numeral
+        integer(IKG)            , intent(in)            :: base
+        integer(IKG)                                    :: decimal
     end function
 #endif
 
@@ -386,10 +386,10 @@ module pm_mathNumSys
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDecimal_SK1_IK2
 #endif
-        use pm_kind, only: SKC => SK1, IKC => IK2
-        character(*,SKC)        , intent(in)            :: numeral
-        integer(IKC)            , intent(in)            :: base
-        integer(IKC)                                    :: decimal
+        use pm_kind, only: SKG => SK1, IKG => IK2
+        character(*,SKG)        , intent(in)            :: numeral
+        integer(IKG)            , intent(in)            :: base
+        integer(IKG)                                    :: decimal
     end function
 #endif
 
@@ -398,10 +398,10 @@ module pm_mathNumSys
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDecimal_SK1_IK1
 #endif
-        use pm_kind, only: SKC => SK1, IKC => IK1
-        character(*,SKC)        , intent(in)            :: numeral
-        integer(IKC)            , intent(in)            :: base
-        integer(IKC)                                    :: decimal
+        use pm_kind, only: SKG => SK1, IKG => IK1
+        character(*,SKG)        , intent(in)            :: numeral
+        integer(IKG)            , intent(in)            :: base
+        integer(IKG)                                    :: decimal
     end function
 #endif
 
@@ -491,7 +491,7 @@ module pm_mathNumSys
     !>
     !>  \todo
     !>  \pmed
-    !>  There is a dependency on the kind type parameter of the `integer` input arguments requiring `range(0_IKC) < 1024`.<br>
+    !>  There is a dependency on the kind type parameter of the `integer` input arguments requiring `range(0_IKG) < 1024`.<br>
     !>  The algorithm must be modified to become kind-agnostic.<br>
     !>
     !>  \final{getNumeral}
@@ -507,10 +507,10 @@ module pm_mathNumSys
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getNumeral_IK5
 #endif
-        use pm_kind, only: SKC => SK, IKC => IK5
-        integer(IKC)            , intent(in)            :: decimal
-        integer(IKC)            , intent(in)            :: base
-        character(:,SKC)        , allocatable           :: numeral
+        use pm_kind, only: SKG => SK, IKG => IK5
+        integer(IKG)            , intent(in)            :: decimal
+        integer(IKG)            , intent(in)            :: base
+        character(:,SKG)        , allocatable           :: numeral
     end function
 #endif
 
@@ -519,10 +519,10 @@ module pm_mathNumSys
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getNumeral_IK4
 #endif
-        use pm_kind, only: SKC => SK, IKC => IK4
-        integer(IKC)            , intent(in)            :: decimal
-        integer(IKC)            , intent(in)            :: base
-        character(:,SKC)        , allocatable           :: numeral
+        use pm_kind, only: SKG => SK, IKG => IK4
+        integer(IKG)            , intent(in)            :: decimal
+        integer(IKG)            , intent(in)            :: base
+        character(:,SKG)        , allocatable           :: numeral
     end function
 #endif
 
@@ -531,10 +531,10 @@ module pm_mathNumSys
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getNumeral_IK3
 #endif
-        use pm_kind, only: SKC => SK, IKC => IK3
-        integer(IKC)            , intent(in)            :: decimal
-        integer(IKC)            , intent(in)            :: base
-        character(:,SKC)        , allocatable           :: numeral
+        use pm_kind, only: SKG => SK, IKG => IK3
+        integer(IKG)            , intent(in)            :: decimal
+        integer(IKG)            , intent(in)            :: base
+        character(:,SKG)        , allocatable           :: numeral
     end function
 #endif
 
@@ -543,10 +543,10 @@ module pm_mathNumSys
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getNumeral_IK2
 #endif
-        use pm_kind, only: SKC => SK, IKC => IK2
-        integer(IKC)            , intent(in)            :: decimal
-        integer(IKC)            , intent(in)            :: base
-        character(:,SKC)        , allocatable           :: numeral
+        use pm_kind, only: SKG => SK, IKG => IK2
+        integer(IKG)            , intent(in)            :: decimal
+        integer(IKG)            , intent(in)            :: base
+        character(:,SKG)        , allocatable           :: numeral
     end function
 #endif
 
@@ -555,10 +555,10 @@ module pm_mathNumSys
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getNumeral_IK1
 #endif
-        use pm_kind, only: SKC => SK, IKC => IK1
-        integer(IKC)            , intent(in)            :: decimal
-        integer(IKC)            , intent(in)            :: base
-        character(:,SKC)        , allocatable           :: numeral
+        use pm_kind, only: SKG => SK, IKG => IK1
+        integer(IKG)            , intent(in)            :: decimal
+        integer(IKG)            , intent(in)            :: base
+        character(:,SKG)        , allocatable           :: numeral
     end function
 #endif
 
@@ -626,8 +626,8 @@ module pm_mathNumSys
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountDigit_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC), intent(in)    :: val
+        use pm_kind, only: IKG => IK5
+        integer(IKG), intent(in)    :: val
         integer(IK)                 :: count
     end function
 #endif
@@ -637,8 +637,8 @@ module pm_mathNumSys
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountDigit_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC), intent(in)    :: val
+        use pm_kind, only: IKG => IK4
+        integer(IKG), intent(in)    :: val
         integer(IK)                 :: count
     end function
 #endif
@@ -648,8 +648,8 @@ module pm_mathNumSys
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountDigit_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC), intent(in)    :: val
+        use pm_kind, only: IKG => IK3
+        integer(IKG), intent(in)    :: val
         integer(IK)                 :: count
     end function
 #endif
@@ -659,8 +659,8 @@ module pm_mathNumSys
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountDigit_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC), intent(in)    :: val
+        use pm_kind, only: IKG => IK2
+        integer(IKG), intent(in)    :: val
         integer(IK)                 :: count
     end function
 #endif
@@ -670,8 +670,8 @@ module pm_mathNumSys
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCountDigit_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC), intent(in)    :: val
+        use pm_kind, only: IKG => IK1
+        integer(IKG), intent(in)    :: val
         integer(IK)                 :: count
     end function
 #endif

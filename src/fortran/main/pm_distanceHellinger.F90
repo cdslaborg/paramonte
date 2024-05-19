@@ -177,11 +177,11 @@ module pm_distanceHellinger
     !>                          The following illustrates the generic interface of `p`,
     !>                          \code{.F90}
     !>                              function p(x) result(pdf)
-    !>                                  real(RKC), intent(in) :: x
-    !>                                  real(RKC) :: pdf
+    !>                                  real(RKG), intent(in) :: x
+    !>                                  real(RKG) :: pdf
     !>                              end function
     !>                          \endcode
-    !>                          where `RKC` is the kind type parameter of the output `hellsq`.<br>
+    !>                          where `RKG` is the kind type parameter of the output `hellsq`.<br>
     !>                          The input arguments `p` and `q` must be of the same type and kind (and size if they are vectors).<br>
     !>  \param[in]  q       :   The vector of the same size as the non-zero size of the input argument `p`, of the same type and kind as the output `hellsq`,
     !>                          representing the Probability Mass Function (PMF) of the second distribution in the computation of the squared Hellinger distance.<br>
@@ -191,11 +191,11 @@ module pm_distanceHellinger
     !>                          The following illustrates the generic interface of `p`,
     !>                          \code{.F90}
     !>                              function p(x) result(pdf)
-    !>                                  real(RKC), intent(in) :: x
-    !>                                  real(RKC) :: pdf
+    !>                                  real(RKG), intent(in) :: x
+    !>                                  real(RKG) :: pdf
     !>                              end function
     !>                          \endcode
-    !>                          where `RKC` is the kind type parameter of the output `hellsq`.<br>
+    !>                          where `RKG` is the kind type parameter of the output `hellsq`.<br>
     !>                          The input arguments `p` and `q` must be of the same type and kind (and size if they are vectors).<br>
     !>  \param[in]  lb      :   The input scalar of type `real` of the same kind as `integral`, representing the lower limit of integration.<br>
     !>                          Set `lb = -huge(lb)` or to the IEEE-compliant negative infinity (`lb = `[getInfNeg(lb)](@ref pm_except::getInfNeg))
@@ -280,9 +280,9 @@ module pm_distanceHellinger
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisHellSqPMF_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(in), contiguous    :: p(:), q(:)
-        real(RKC)                               :: hellsq
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(in), contiguous    :: p(:), q(:)
+        real(RKG)                               :: hellsq
     end function
 #endif
 
@@ -291,9 +291,9 @@ module pm_distanceHellinger
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisHellSqPMF_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(in), contiguous    :: p(:), q(:)
-        real(RKC)                               :: hellsq
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(in), contiguous    :: p(:), q(:)
+        real(RKG)                               :: hellsq
     end function
 #endif
 
@@ -302,9 +302,9 @@ module pm_distanceHellinger
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisHellSqPMF_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(in), contiguous    :: p(:), q(:)
-        real(RKC)                               :: hellsq
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(in), contiguous    :: p(:), q(:)
+        real(RKG)                               :: hellsq
     end function
 #endif
 
@@ -313,9 +313,9 @@ module pm_distanceHellinger
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisHellSqPMF_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(in), contiguous    :: p(:), q(:)
-        real(RKC)                               :: hellsq
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(in), contiguous    :: p(:), q(:)
+        real(RKG)                               :: hellsq
     end function
 #endif
 
@@ -324,9 +324,9 @@ module pm_distanceHellinger
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisHellSqPMF_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(in), contiguous    :: p(:), q(:)
-        real(RKC)                               :: hellsq
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(in), contiguous    :: p(:), q(:)
+        real(RKG)                               :: hellsq
     end function
 #endif
 
@@ -349,13 +349,13 @@ module pm_distanceHellinger
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisHellSqPRC_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        procedure(real(RKC))                        :: p, q
-        real(RKC)       , intent(in)    , optional  :: lb
-        real(RKC)       , intent(in)    , optional  :: ub
+        use pm_kind, only: RKG => RK5
+        procedure(real(RKG))                        :: p, q
+        real(RKG)       , intent(in)    , optional  :: lb
+        real(RKG)       , intent(in)    , optional  :: ub
         character(*, SK), intent(out)   , optional  :: msg
         logical(LK)     , intent(out)   , optional  :: failed
-        real(RKC)                                   :: hellsq
+        real(RKG)                                   :: hellsq
     end function
 #endif
 
@@ -364,13 +364,13 @@ module pm_distanceHellinger
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisHellSqPRC_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        procedure(real(RKC))                        :: p, q
-        real(RKC)       , intent(in)    , optional  :: lb
-        real(RKC)       , intent(in)    , optional  :: ub
+        use pm_kind, only: RKG => RK4
+        procedure(real(RKG))                        :: p, q
+        real(RKG)       , intent(in)    , optional  :: lb
+        real(RKG)       , intent(in)    , optional  :: ub
         character(*, SK), intent(out)   , optional  :: msg
         logical(LK)     , intent(out)   , optional  :: failed
-        real(RKC)                                   :: hellsq
+        real(RKG)                                   :: hellsq
     end function
 #endif
 
@@ -379,13 +379,13 @@ module pm_distanceHellinger
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisHellSqPRC_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        procedure(real(RKC))                        :: p, q
-        real(RKC)       , intent(in)    , optional  :: lb
-        real(RKC)       , intent(in)    , optional  :: ub
+        use pm_kind, only: RKG => RK3
+        procedure(real(RKG))                        :: p, q
+        real(RKG)       , intent(in)    , optional  :: lb
+        real(RKG)       , intent(in)    , optional  :: ub
         character(*, SK), intent(out)   , optional  :: msg
         logical(LK)     , intent(out)   , optional  :: failed
-        real(RKC)                                   :: hellsq
+        real(RKG)                                   :: hellsq
     end function
 #endif
 
@@ -394,13 +394,13 @@ module pm_distanceHellinger
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisHellSqPRC_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        procedure(real(RKC))                        :: p, q
-        real(RKC)       , intent(in)    , optional  :: lb
-        real(RKC)       , intent(in)    , optional  :: ub
+        use pm_kind, only: RKG => RK2
+        procedure(real(RKG))                        :: p, q
+        real(RKG)       , intent(in)    , optional  :: lb
+        real(RKG)       , intent(in)    , optional  :: ub
         character(*, SK), intent(out)   , optional  :: msg
         logical(LK)     , intent(out)   , optional  :: failed
-        real(RKC)                                   :: hellsq
+        real(RKG)                                   :: hellsq
     end function
 #endif
 
@@ -409,13 +409,13 @@ module pm_distanceHellinger
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getDisHellSqPRC_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        procedure(real(RKC))                        :: p, q
-        real(RKC)       , intent(in)    , optional  :: lb
-        real(RKC)       , intent(in)    , optional  :: ub
+        use pm_kind, only: RKG => RK1
+        procedure(real(RKG))                        :: p, q
+        real(RKG)       , intent(in)    , optional  :: lb
+        real(RKG)       , intent(in)    , optional  :: ub
         character(*, SK), intent(out)   , optional  :: msg
         logical(LK)     , intent(out)   , optional  :: failed
-        real(RKC)                                   :: hellsq
+        real(RKG)                                   :: hellsq
     end function
 #endif
 
@@ -432,11 +432,11 @@ module pm_distanceHellinger
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getDisHellSqPRC_FF_RK5
 !#endif
-!        use pm_kind, only: RKC => RK5
-!        procedure(real(RKC))                    :: p, q
-!        real(RKC)       , intent(in)            :: lb
-!        real(RKC)       , intent(in)            :: ub
-!        real(RKC)                               :: hellsq
+!        use pm_kind, only: RKG => RK5
+!        procedure(real(RKG))                    :: p, q
+!        real(RKG)       , intent(in)            :: lb
+!        real(RKG)       , intent(in)            :: ub
+!        real(RKG)                               :: hellsq
 !    end function
 !#endif
 !
@@ -445,11 +445,11 @@ module pm_distanceHellinger
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getDisHellSqPRC_FF_RK4
 !#endif
-!        use pm_kind, only: RKC => RK4
-!        procedure(real(RKC))                    :: p, q
-!        real(RKC)       , intent(in)            :: lb
-!        real(RKC)       , intent(in)            :: ub
-!        real(RKC)                               :: hellsq
+!        use pm_kind, only: RKG => RK4
+!        procedure(real(RKG))                    :: p, q
+!        real(RKG)       , intent(in)            :: lb
+!        real(RKG)       , intent(in)            :: ub
+!        real(RKG)                               :: hellsq
 !    end function
 !#endif
 !
@@ -458,11 +458,11 @@ module pm_distanceHellinger
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getDisHellSqPRC_FF_RK3
 !#endif
-!        use pm_kind, only: RKC => RK3
-!        procedure(real(RKC))                    :: p, q
-!        real(RKC)       , intent(in)            :: lb
-!        real(RKC)       , intent(in)            :: ub
-!        real(RKC)                               :: hellsq
+!        use pm_kind, only: RKG => RK3
+!        procedure(real(RKG))                    :: p, q
+!        real(RKG)       , intent(in)            :: lb
+!        real(RKG)       , intent(in)            :: ub
+!        real(RKG)                               :: hellsq
 !    end function
 !#endif
 !
@@ -471,11 +471,11 @@ module pm_distanceHellinger
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getDisHellSqPRC_FF_RK2
 !#endif
-!        use pm_kind, only: RKC => RK2
-!        procedure(real(RKC))                    :: p, q
-!        real(RKC)       , intent(in)            :: lb
-!        real(RKC)       , intent(in)            :: ub
-!        real(RKC)                               :: hellsq
+!        use pm_kind, only: RKG => RK2
+!        procedure(real(RKG))                    :: p, q
+!        real(RKG)       , intent(in)            :: lb
+!        real(RKG)       , intent(in)            :: ub
+!        real(RKG)                               :: hellsq
 !    end function
 !#endif
 !
@@ -484,11 +484,11 @@ module pm_distanceHellinger
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getDisHellSqPRC_FF_RK1
 !#endif
-!        use pm_kind, only: RKC => RK1
-!        procedure(real(RKC))                    :: p, q
-!        real(RKC)       , intent(in)            :: lb
-!        real(RKC)       , intent(in)            :: ub
-!        real(RKC)                               :: hellsq
+!        use pm_kind, only: RKG => RK1
+!        procedure(real(RKG))                    :: p, q
+!        real(RKG)       , intent(in)            :: lb
+!        real(RKG)       , intent(in)            :: ub
+!        real(RKG)                               :: hellsq
 !    end function
 !#endif
 !
@@ -505,11 +505,11 @@ module pm_distanceHellinger
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getDisHellSqPRC_FI_RK5
 !#endif
-!        use pm_kind, only: RKC => RK5
-!        procedure(real(RKC))                    :: p, q
-!        real(RKC)       , intent(in)            :: lb
+!        use pm_kind, only: RKG => RK5
+!        procedure(real(RKG))                    :: p, q
+!        real(RKG)       , intent(in)            :: lb
 !        type(pinf_type) , intent(in)            :: ub
-!        real(RKC)                               :: hellsq
+!        real(RKG)                               :: hellsq
 !    end function
 !#endif
 !
@@ -518,11 +518,11 @@ module pm_distanceHellinger
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getDisHellSqPRC_FI_RK4
 !#endif
-!        use pm_kind, only: RKC => RK4
-!        procedure(real(RKC))                    :: p, q
-!        real(RKC)       , intent(in)            :: lb
+!        use pm_kind, only: RKG => RK4
+!        procedure(real(RKG))                    :: p, q
+!        real(RKG)       , intent(in)            :: lb
 !        type(pinf_type) , intent(in)            :: ub
-!        real(RKC)                               :: hellsq
+!        real(RKG)                               :: hellsq
 !    end function
 !#endif
 !
@@ -531,11 +531,11 @@ module pm_distanceHellinger
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getDisHellSqPRC_FI_RK3
 !#endif
-!        use pm_kind, only: RKC => RK3
-!        procedure(real(RKC))                    :: p, q
-!        real(RKC)       , intent(in)            :: lb
+!        use pm_kind, only: RKG => RK3
+!        procedure(real(RKG))                    :: p, q
+!        real(RKG)       , intent(in)            :: lb
 !        type(pinf_type) , intent(in)            :: ub
-!        real(RKC)                               :: hellsq
+!        real(RKG)                               :: hellsq
 !    end function
 !#endif
 !
@@ -544,11 +544,11 @@ module pm_distanceHellinger
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getDisHellSqPRC_FI_RK2
 !#endif
-!        use pm_kind, only: RKC => RK2
-!        procedure(real(RKC))                    :: p, q
-!        real(RKC)       , intent(in)            :: lb
+!        use pm_kind, only: RKG => RK2
+!        procedure(real(RKG))                    :: p, q
+!        real(RKG)       , intent(in)            :: lb
 !        type(pinf_type) , intent(in)            :: ub
-!        real(RKC)                               :: hellsq
+!        real(RKG)                               :: hellsq
 !    end function
 !#endif
 !
@@ -557,11 +557,11 @@ module pm_distanceHellinger
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getDisHellSqPRC_FI_RK1
 !#endif
-!        use pm_kind, only: RKC => RK1
-!        procedure(real(RKC))                    :: p, q
-!        real(RKC)       , intent(in)            :: lb
+!        use pm_kind, only: RKG => RK1
+!        procedure(real(RKG))                    :: p, q
+!        real(RKG)       , intent(in)            :: lb
 !        type(pinf_type) , intent(in)            :: ub
-!        real(RKC)                               :: hellsq
+!        real(RKG)                               :: hellsq
 !    end function
 !#endif
 !
@@ -578,11 +578,11 @@ module pm_distanceHellinger
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getDisHellSqPRC_IF_RK5
 !#endif
-!        use pm_kind, only: RKC => RK5
-!        procedure(real(RKC))                    :: p, q
+!        use pm_kind, only: RKG => RK5
+!        procedure(real(RKG))                    :: p, q
 !        type(ninf_type) , intent(in)            :: lb
-!        real(RKC)       , intent(in)            :: ub
-!        real(RKC)                               :: hellsq
+!        real(RKG)       , intent(in)            :: ub
+!        real(RKG)                               :: hellsq
 !    end function
 !#endif
 !
@@ -591,11 +591,11 @@ module pm_distanceHellinger
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getDisHellSqPRC_IF_RK4
 !#endif
-!        use pm_kind, only: RKC => RK4
-!        procedure(real(RKC))                    :: p, q
+!        use pm_kind, only: RKG => RK4
+!        procedure(real(RKG))                    :: p, q
 !        type(ninf_type) , intent(in)            :: lb
-!        real(RKC)       , intent(in)            :: ub
-!        real(RKC)                               :: hellsq
+!        real(RKG)       , intent(in)            :: ub
+!        real(RKG)                               :: hellsq
 !    end function
 !#endif
 !
@@ -604,11 +604,11 @@ module pm_distanceHellinger
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getDisHellSqPRC_IF_RK3
 !#endif
-!        use pm_kind, only: RKC => RK3
-!        procedure(real(RKC))                    :: p, q
+!        use pm_kind, only: RKG => RK3
+!        procedure(real(RKG))                    :: p, q
 !        type(ninf_type) , intent(in)            :: lb
-!        real(RKC)       , intent(in)            :: ub
-!        real(RKC)                               :: hellsq
+!        real(RKG)       , intent(in)            :: ub
+!        real(RKG)                               :: hellsq
 !    end function
 !#endif
 !
@@ -617,11 +617,11 @@ module pm_distanceHellinger
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getDisHellSqPRC_IF_RK2
 !#endif
-!        use pm_kind, only: RKC => RK2
-!        procedure(real(RKC))                    :: p, q
+!        use pm_kind, only: RKG => RK2
+!        procedure(real(RKG))                    :: p, q
 !        type(ninf_type) , intent(in)            :: lb
-!        real(RKC)       , intent(in)            :: ub
-!        real(RKC)                               :: hellsq
+!        real(RKG)       , intent(in)            :: ub
+!        real(RKG)                               :: hellsq
 !    end function
 !#endif
 !
@@ -630,11 +630,11 @@ module pm_distanceHellinger
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getDisHellSqPRC_IF_RK1
 !#endif
-!        use pm_kind, only: RKC => RK1
-!        procedure(real(RKC))                    :: p, q
+!        use pm_kind, only: RKG => RK1
+!        procedure(real(RKG))                    :: p, q
 !        type(ninf_type) , intent(in)            :: lb
-!        real(RKC)       , intent(in)            :: ub
-!        real(RKC)                               :: hellsq
+!        real(RKG)       , intent(in)            :: ub
+!        real(RKG)                               :: hellsq
 !    end function
 !#endif
 !
@@ -651,11 +651,11 @@ module pm_distanceHellinger
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getDisHellSqPRC_II_RK5
 !#endif
-!        use pm_kind, only: RKC => RK5
-!        procedure(real(RKC))                    :: p, q
+!        use pm_kind, only: RKG => RK5
+!        procedure(real(RKG))                    :: p, q
 !        type(ninf_type) , intent(in)            :: ninf_type
 !        type(pinf_type) , intent(in)            :: pinf_type
-!        real(RKC)                               :: hellsq
+!        real(RKG)                               :: hellsq
 !    end function
 !#endif
 !
@@ -664,11 +664,11 @@ module pm_distanceHellinger
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getDisHellSqPRC_II_RK4
 !#endif
-!        use pm_kind, only: RKC => RK4
-!        procedure(real(RKC))                    :: p, q
+!        use pm_kind, only: RKG => RK4
+!        procedure(real(RKG))                    :: p, q
 !        type(ninf_type) , intent(in)            :: ninf_type
 !        type(pinf_type) , intent(in)            :: pinf_type
-!        real(RKC)                               :: hellsq
+!        real(RKG)                               :: hellsq
 !    end function
 !#endif
 !
@@ -677,11 +677,11 @@ module pm_distanceHellinger
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getDisHellSqPRC_II_RK3
 !#endif
-!        use pm_kind, only: RKC => RK3
-!        procedure(real(RKC))                    :: p, q
+!        use pm_kind, only: RKG => RK3
+!        procedure(real(RKG))                    :: p, q
 !        type(ninf_type) , intent(in)            :: ninf_type
 !        type(pinf_type) , intent(in)            :: pinf_type
-!        real(RKC)                               :: hellsq
+!        real(RKG)                               :: hellsq
 !    end function
 !#endif
 !
@@ -690,11 +690,11 @@ module pm_distanceHellinger
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getDisHellSqPRC_II_RK2
 !#endif
-!        use pm_kind, only: RKC => RK2
-!        procedure(real(RKC))                    :: p, q
+!        use pm_kind, only: RKG => RK2
+!        procedure(real(RKG))                    :: p, q
 !        type(ninf_type) , intent(in)            :: ninf_type
 !        type(pinf_type) , intent(in)            :: pinf_type
-!        real(RKC)                               :: hellsq
+!        real(RKG)                               :: hellsq
 !    end function
 !#endif
 !
@@ -703,11 +703,11 @@ module pm_distanceHellinger
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getDisHellSqPRC_II_RK1
 !#endif
-!        use pm_kind, only: RKC => RK1
-!        procedure(real(RKC))                    :: p, q
+!        use pm_kind, only: RKG => RK1
+!        procedure(real(RKG))                    :: p, q
 !        type(ninf_type) , intent(in)            :: ninf_type
 !        type(pinf_type) , intent(in)            :: pinf_type
-!        real(RKC)                               :: hellsq
+!        real(RKG)                               :: hellsq
 !    end function
 !#endif
 !

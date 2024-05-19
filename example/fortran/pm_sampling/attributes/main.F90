@@ -1,7 +1,7 @@
 program example
 
     use pm_str, only: getStrWrapped
-    use pm_kind, only: modelr_type, SK, IK, RKC => RK2
+    use pm_kind, only: modelr_type, SK, IK, RKG => RK2
     use pm_sampling_base_RK2, only: specbase_type
     use pm_sampling_mcmc_RK2, only: specmcmc_type
     use pm_sampling_dram_RK2, only: specdram_type
@@ -12,7 +12,7 @@ program example
 
     block
         type(specdram_type) :: spec
-        spec = specdram_type(modelr_type(0._RKC), "ParaDRAM", ndim)
+        spec = specdram_type(modelr_type(0._RKG), "ParaDRAM", ndim)
         spec%disp = display_type(file = "specdram.md", bmsize = 1_IK)
         call setBase(spec%specbase_type)
         call setMCMC(spec%specmcmc_type)

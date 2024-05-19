@@ -300,10 +300,10 @@ module pm_distNorm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getNormLogPDF_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)              , intent(in)                    :: x
-        real(RKC)              , intent(in) , optional         :: mu, sigma
-        real(RKC)                                              :: logPDF
+        use pm_kind, only: RKG => RK5
+        real(RKG)              , intent(in)                    :: x
+        real(RKG)              , intent(in) , optional         :: mu, sigma
+        real(RKG)                                              :: logPDF
     end function
 #endif
 
@@ -312,10 +312,10 @@ module pm_distNorm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getNormLogPDF_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)              , intent(in)                    :: x
-        real(RKC)              , intent(in) , optional         :: mu, sigma
-        real(RKC)                                              :: logPDF
+        use pm_kind, only: RKG => RK4
+        real(RKG)              , intent(in)                    :: x
+        real(RKG)              , intent(in) , optional         :: mu, sigma
+        real(RKG)                                              :: logPDF
     end function
 #endif
 
@@ -324,10 +324,10 @@ module pm_distNorm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getNormLogPDF_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)              , intent(in)                    :: x
-        real(RKC)              , intent(in) , optional         :: mu, sigma
-        real(RKC)                                              :: logPDF
+        use pm_kind, only: RKG => RK3
+        real(RKG)              , intent(in)                    :: x
+        real(RKG)              , intent(in) , optional         :: mu, sigma
+        real(RKG)                                              :: logPDF
     end function
 #endif
 
@@ -336,10 +336,10 @@ module pm_distNorm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getNormLogPDF_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)              , intent(in)                    :: x
-        real(RKC)              , intent(in) , optional         :: mu, sigma
-        real(RKC)                                              :: logPDF
+        use pm_kind, only: RKG => RK2
+        real(RKG)              , intent(in)                    :: x
+        real(RKG)              , intent(in) , optional         :: mu, sigma
+        real(RKG)                                              :: logPDF
     end function
 #endif
 
@@ -348,10 +348,10 @@ module pm_distNorm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getNormLogPDF_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)              , intent(in)                    :: x
-        real(RKC)              , intent(in) , optional         :: mu, sigma
-        real(RKC)                                              :: logPDF
+        use pm_kind, only: RKG => RK1
+        real(RKG)              , intent(in)                    :: x
+        real(RKG)              , intent(in) , optional         :: mu, sigma
+        real(RKG)                                              :: logPDF
     end function
 #endif
 
@@ -443,9 +443,9 @@ module pm_distNorm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setNormLogPDFDD_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)              , intent(out)                   :: logPDF
-        real(RKC)              , intent(in)                    :: x
+        use pm_kind, only: RKG => RK5
+        real(RKG)              , intent(out)                   :: logPDF
+        real(RKG)              , intent(in)                    :: x
     end subroutine
 #endif
 
@@ -454,9 +454,9 @@ module pm_distNorm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setNormLogPDFDD_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)              , intent(out)                   :: logPDF
-        real(RKC)              , intent(in)                    :: x
+        use pm_kind, only: RKG => RK4
+        real(RKG)              , intent(out)                   :: logPDF
+        real(RKG)              , intent(in)                    :: x
     end subroutine
 #endif
 
@@ -465,9 +465,9 @@ module pm_distNorm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setNormLogPDFDD_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)              , intent(out)                   :: logPDF
-        real(RKC)              , intent(in)                    :: x
+        use pm_kind, only: RKG => RK3
+        real(RKG)              , intent(out)                   :: logPDF
+        real(RKG)              , intent(in)                    :: x
     end subroutine
 #endif
 
@@ -476,9 +476,9 @@ module pm_distNorm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setNormLogPDFDD_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)              , intent(out)                   :: logPDF
-        real(RKC)              , intent(in)                    :: x
+        use pm_kind, only: RKG => RK2
+        real(RKG)              , intent(out)                   :: logPDF
+        real(RKG)              , intent(in)                    :: x
     end subroutine
 #endif
 
@@ -487,9 +487,9 @@ module pm_distNorm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setNormLogPDFDD_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)              , intent(out)                   :: logPDF
-        real(RKC)              , intent(in)                    :: x
+        use pm_kind, only: RKG => RK1
+        real(RKG)              , intent(out)                   :: logPDF
+        real(RKG)              , intent(in)                    :: x
     end subroutine
 #endif
 
@@ -500,10 +500,10 @@ module pm_distNorm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setNormLogPDFMD_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)              , intent(out)                   :: logPDF
-        real(RKC)              , intent(in)                    :: x
-        real(RKC)              , intent(in)                    :: mu
+        use pm_kind, only: RKG => RK5
+        real(RKG)              , intent(out)                   :: logPDF
+        real(RKG)              , intent(in)                    :: x
+        real(RKG)              , intent(in)                    :: mu
     end subroutine
 #endif
 
@@ -512,10 +512,10 @@ module pm_distNorm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setNormLogPDFMD_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)              , intent(out)                   :: logPDF
-        real(RKC)              , intent(in)                    :: x
-        real(RKC)              , intent(in)                    :: mu
+        use pm_kind, only: RKG => RK4
+        real(RKG)              , intent(out)                   :: logPDF
+        real(RKG)              , intent(in)                    :: x
+        real(RKG)              , intent(in)                    :: mu
     end subroutine
 #endif
 
@@ -524,10 +524,10 @@ module pm_distNorm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setNormLogPDFMD_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)              , intent(out)                   :: logPDF
-        real(RKC)              , intent(in)                    :: x
-        real(RKC)              , intent(in)                    :: mu
+        use pm_kind, only: RKG => RK3
+        real(RKG)              , intent(out)                   :: logPDF
+        real(RKG)              , intent(in)                    :: x
+        real(RKG)              , intent(in)                    :: mu
     end subroutine
 #endif
 
@@ -536,10 +536,10 @@ module pm_distNorm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setNormLogPDFMD_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)              , intent(out)                   :: logPDF
-        real(RKC)              , intent(in)                    :: x
-        real(RKC)              , intent(in)                    :: mu
+        use pm_kind, only: RKG => RK2
+        real(RKG)              , intent(out)                   :: logPDF
+        real(RKG)              , intent(in)                    :: x
+        real(RKG)              , intent(in)                    :: mu
     end subroutine
 #endif
 
@@ -548,10 +548,10 @@ module pm_distNorm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setNormLogPDFMD_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)              , intent(out)                   :: logPDF
-        real(RKC)              , intent(in)                    :: x
-        real(RKC)              , intent(in)                    :: mu
+        use pm_kind, only: RKG => RK1
+        real(RKG)              , intent(out)                   :: logPDF
+        real(RKG)              , intent(in)                    :: x
+        real(RKG)              , intent(in)                    :: mu
     end subroutine
 #endif
 
@@ -562,10 +562,10 @@ module pm_distNorm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setNormLogPDFDS_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)              , intent(out)                   :: logPDF
-        real(RKC)              , intent(in)                    :: x
-        real(RKC)              , intent(in)                    :: invSigma, logInvSigma
+        use pm_kind, only: RKG => RK5
+        real(RKG)              , intent(out)                   :: logPDF
+        real(RKG)              , intent(in)                    :: x
+        real(RKG)              , intent(in)                    :: invSigma, logInvSigma
     end subroutine
 #endif
 
@@ -574,10 +574,10 @@ module pm_distNorm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setNormLogPDFDS_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)              , intent(out)                   :: logPDF
-        real(RKC)              , intent(in)                    :: x
-        real(RKC)              , intent(in)                    :: invSigma, logInvSigma
+        use pm_kind, only: RKG => RK4
+        real(RKG)              , intent(out)                   :: logPDF
+        real(RKG)              , intent(in)                    :: x
+        real(RKG)              , intent(in)                    :: invSigma, logInvSigma
     end subroutine
 #endif
 
@@ -586,10 +586,10 @@ module pm_distNorm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setNormLogPDFDS_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)              , intent(out)                   :: logPDF
-        real(RKC)              , intent(in)                    :: x
-        real(RKC)              , intent(in)                    :: invSigma, logInvSigma
+        use pm_kind, only: RKG => RK3
+        real(RKG)              , intent(out)                   :: logPDF
+        real(RKG)              , intent(in)                    :: x
+        real(RKG)              , intent(in)                    :: invSigma, logInvSigma
     end subroutine
 #endif
 
@@ -598,10 +598,10 @@ module pm_distNorm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setNormLogPDFDS_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)              , intent(out)                   :: logPDF
-        real(RKC)              , intent(in)                    :: x
-        real(RKC)              , intent(in)                    :: invSigma, logInvSigma
+        use pm_kind, only: RKG => RK2
+        real(RKG)              , intent(out)                   :: logPDF
+        real(RKG)              , intent(in)                    :: x
+        real(RKG)              , intent(in)                    :: invSigma, logInvSigma
     end subroutine
 #endif
 
@@ -610,10 +610,10 @@ module pm_distNorm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setNormLogPDFDS_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)              , intent(out)                   :: logPDF
-        real(RKC)              , intent(in)                    :: x
-        real(RKC)              , intent(in)                    :: invSigma, logInvSigma
+        use pm_kind, only: RKG => RK1
+        real(RKG)              , intent(out)                   :: logPDF
+        real(RKG)              , intent(in)                    :: x
+        real(RKG)              , intent(in)                    :: invSigma, logInvSigma
     end subroutine
 #endif
 
@@ -624,12 +624,12 @@ module pm_distNorm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setNormLogPDFMS_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)              , intent(out)                   :: logPDF
-        real(RKC)              , intent(in)                    :: x
-        real(RKC)              , intent(in)                    :: mu
-        real(RKC)              , intent(in)                    :: invSigma
-        real(RKC)              , intent(in)                    :: logInvSigma
+        use pm_kind, only: RKG => RK5
+        real(RKG)              , intent(out)                   :: logPDF
+        real(RKG)              , intent(in)                    :: x
+        real(RKG)              , intent(in)                    :: mu
+        real(RKG)              , intent(in)                    :: invSigma
+        real(RKG)              , intent(in)                    :: logInvSigma
     end subroutine
 #endif
 
@@ -638,12 +638,12 @@ module pm_distNorm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setNormLogPDFMS_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)              , intent(out)                   :: logPDF
-        real(RKC)              , intent(in)                    :: x
-        real(RKC)              , intent(in)                    :: mu
-        real(RKC)              , intent(in)                    :: invSigma
-        real(RKC)              , intent(in)                    :: logInvSigma
+        use pm_kind, only: RKG => RK4
+        real(RKG)              , intent(out)                   :: logPDF
+        real(RKG)              , intent(in)                    :: x
+        real(RKG)              , intent(in)                    :: mu
+        real(RKG)              , intent(in)                    :: invSigma
+        real(RKG)              , intent(in)                    :: logInvSigma
     end subroutine
 #endif
 
@@ -652,12 +652,12 @@ module pm_distNorm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setNormLogPDFMS_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)              , intent(out)                   :: logPDF
-        real(RKC)              , intent(in)                    :: x
-        real(RKC)              , intent(in)                    :: mu
-        real(RKC)              , intent(in)                    :: invSigma
-        real(RKC)              , intent(in)                    :: logInvSigma
+        use pm_kind, only: RKG => RK3
+        real(RKG)              , intent(out)                   :: logPDF
+        real(RKG)              , intent(in)                    :: x
+        real(RKG)              , intent(in)                    :: mu
+        real(RKG)              , intent(in)                    :: invSigma
+        real(RKG)              , intent(in)                    :: logInvSigma
     end subroutine
 #endif
 
@@ -666,12 +666,12 @@ module pm_distNorm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setNormLogPDFMS_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)              , intent(out)                   :: logPDF
-        real(RKC)              , intent(in)                    :: x
-        real(RKC)              , intent(in)                    :: mu
-        real(RKC)              , intent(in)                    :: invSigma
-        real(RKC)              , intent(in)                    :: logInvSigma
+        use pm_kind, only: RKG => RK2
+        real(RKG)              , intent(out)                   :: logPDF
+        real(RKG)              , intent(in)                    :: x
+        real(RKG)              , intent(in)                    :: mu
+        real(RKG)              , intent(in)                    :: invSigma
+        real(RKG)              , intent(in)                    :: logInvSigma
     end subroutine
 #endif
 
@@ -680,12 +680,12 @@ module pm_distNorm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setNormLogPDFMS_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)              , intent(out)                   :: logPDF
-        real(RKC)              , intent(in)                    :: x
-        real(RKC)              , intent(in)                    :: mu
-        real(RKC)              , intent(in)                    :: invSigma
-        real(RKC)              , intent(in)                    :: logInvSigma
+        use pm_kind, only: RKG => RK1
+        real(RKG)              , intent(out)                   :: logPDF
+        real(RKG)              , intent(in)                    :: x
+        real(RKG)              , intent(in)                    :: mu
+        real(RKG)              , intent(in)                    :: invSigma
+        real(RKG)              , intent(in)                    :: logInvSigma
     end subroutine
 #endif
 
@@ -760,11 +760,11 @@ module pm_distNorm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getNormCDF_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)           , intent(in)                            :: x
-        real(RKC)           , intent(in)    , optional              :: mu
-        real(RKC)           , intent(in)    , optional              :: sigma
-        real(RKC)                                                   :: cdf
+        use pm_kind, only: RKG => RK5
+        real(RKG)           , intent(in)                            :: x
+        real(RKG)           , intent(in)    , optional              :: mu
+        real(RKG)           , intent(in)    , optional              :: sigma
+        real(RKG)                                                   :: cdf
     end function
 #endif
 
@@ -773,11 +773,11 @@ module pm_distNorm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getNormCDF_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)           , intent(in)                            :: x
-        real(RKC)           , intent(in)    , optional              :: mu
-        real(RKC)           , intent(in)    , optional              :: sigma
-        real(RKC)                                                   :: cdf
+        use pm_kind, only: RKG => RK4
+        real(RKG)           , intent(in)                            :: x
+        real(RKG)           , intent(in)    , optional              :: mu
+        real(RKG)           , intent(in)    , optional              :: sigma
+        real(RKG)                                                   :: cdf
     end function
 #endif
 
@@ -786,11 +786,11 @@ module pm_distNorm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getNormCDF_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)           , intent(in)                            :: x
-        real(RKC)           , intent(in)    , optional              :: mu
-        real(RKC)           , intent(in)    , optional              :: sigma
-        real(RKC)                                                   :: cdf
+        use pm_kind, only: RKG => RK3
+        real(RKG)           , intent(in)                            :: x
+        real(RKG)           , intent(in)    , optional              :: mu
+        real(RKG)           , intent(in)    , optional              :: sigma
+        real(RKG)                                                   :: cdf
     end function
 #endif
 
@@ -799,11 +799,11 @@ module pm_distNorm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getNormCDF_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)           , intent(in)                            :: x
-        real(RKC)           , intent(in)    , optional              :: mu
-        real(RKC)           , intent(in)    , optional              :: sigma
-        real(RKC)                                                   :: cdf
+        use pm_kind, only: RKG => RK2
+        real(RKG)           , intent(in)                            :: x
+        real(RKG)           , intent(in)    , optional              :: mu
+        real(RKG)           , intent(in)    , optional              :: sigma
+        real(RKG)                                                   :: cdf
     end function
 #endif
 
@@ -812,11 +812,11 @@ module pm_distNorm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getNormCDF_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)           , intent(in)                            :: x
-        real(RKC)           , intent(in)    , optional              :: mu
-        real(RKC)           , intent(in)    , optional              :: sigma
-        real(RKC)                                                   :: cdf
+        use pm_kind, only: RKG => RK1
+        real(RKG)           , intent(in)                            :: x
+        real(RKG)           , intent(in)    , optional              :: mu
+        real(RKG)           , intent(in)    , optional              :: sigma
+        real(RKG)                                                   :: cdf
     end function
 #endif
 
@@ -892,9 +892,9 @@ module pm_distNorm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setNormCDFDD_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)           , intent(out)                           :: cdf
-        real(RKC)           , intent(in)                            :: x
+        use pm_kind, only: RKG => RK5
+        real(RKG)           , intent(out)                           :: cdf
+        real(RKG)           , intent(in)                            :: x
     end subroutine
 #endif
 
@@ -903,9 +903,9 @@ module pm_distNorm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setNormCDFDD_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)           , intent(out)                           :: cdf
-        real(RKC)           , intent(in)                            :: x
+        use pm_kind, only: RKG => RK4
+        real(RKG)           , intent(out)                           :: cdf
+        real(RKG)           , intent(in)                            :: x
     end subroutine
 #endif
 
@@ -914,9 +914,9 @@ module pm_distNorm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setNormCDFDD_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)           , intent(out)                           :: cdf
-        real(RKC)           , intent(in)                            :: x
+        use pm_kind, only: RKG => RK3
+        real(RKG)           , intent(out)                           :: cdf
+        real(RKG)           , intent(in)                            :: x
     end subroutine
 #endif
 
@@ -925,9 +925,9 @@ module pm_distNorm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setNormCDFDD_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)           , intent(in)                            :: x
-        real(RKC)           , intent(out)                           :: cdf
+        use pm_kind, only: RKG => RK2
+        real(RKG)           , intent(in)                            :: x
+        real(RKG)           , intent(out)                           :: cdf
     end subroutine
 #endif
 
@@ -936,9 +936,9 @@ module pm_distNorm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setNormCDFDD_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)           , intent(out)                           :: cdf
-        real(RKC)           , intent(in)                            :: x
+        use pm_kind, only: RKG => RK1
+        real(RKG)           , intent(out)                           :: cdf
+        real(RKG)           , intent(in)                            :: x
     end subroutine
 #endif
 
@@ -949,10 +949,10 @@ module pm_distNorm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setNormCDFMD_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)           , intent(out)                           :: cdf
-        real(RKC)           , intent(in)                            :: x
-        real(RKC)           , intent(in)                            :: mu
+        use pm_kind, only: RKG => RK5
+        real(RKG)           , intent(out)                           :: cdf
+        real(RKG)           , intent(in)                            :: x
+        real(RKG)           , intent(in)                            :: mu
     end subroutine
 #endif
 
@@ -961,10 +961,10 @@ module pm_distNorm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setNormCDFMD_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)           , intent(out)                           :: cdf
-        real(RKC)           , intent(in)                            :: x
-        real(RKC)           , intent(in)                            :: mu
+        use pm_kind, only: RKG => RK4
+        real(RKG)           , intent(out)                           :: cdf
+        real(RKG)           , intent(in)                            :: x
+        real(RKG)           , intent(in)                            :: mu
     end subroutine
 #endif
 
@@ -973,10 +973,10 @@ module pm_distNorm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setNormCDFMD_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)           , intent(out)                           :: cdf
-        real(RKC)           , intent(in)                            :: x
-        real(RKC)           , intent(in)                            :: mu
+        use pm_kind, only: RKG => RK3
+        real(RKG)           , intent(out)                           :: cdf
+        real(RKG)           , intent(in)                            :: x
+        real(RKG)           , intent(in)                            :: mu
     end subroutine
 #endif
 
@@ -985,10 +985,10 @@ module pm_distNorm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setNormCDFMD_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)           , intent(out)                           :: cdf
-        real(RKC)           , intent(in)                            :: x
-        real(RKC)           , intent(in)                            :: mu
+        use pm_kind, only: RKG => RK2
+        real(RKG)           , intent(out)                           :: cdf
+        real(RKG)           , intent(in)                            :: x
+        real(RKG)           , intent(in)                            :: mu
     end subroutine
 #endif
 
@@ -997,10 +997,10 @@ module pm_distNorm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setNormCDFMD_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)           , intent(out)                           :: cdf
-        real(RKC)           , intent(in)                            :: x
-        real(RKC)           , intent(in)                            :: mu
+        use pm_kind, only: RKG => RK1
+        real(RKG)           , intent(out)                           :: cdf
+        real(RKG)           , intent(in)                            :: x
+        real(RKG)           , intent(in)                            :: mu
     end subroutine
 #endif
 
@@ -1011,11 +1011,11 @@ module pm_distNorm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setNormCDFMS_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)           , intent(out)                           :: cdf
-        real(RKC)           , intent(in)                            :: x
-        real(RKC)           , intent(in)                            :: mu
-        real(RKC)           , intent(in)                            :: invSigma
+        use pm_kind, only: RKG => RK5
+        real(RKG)           , intent(out)                           :: cdf
+        real(RKG)           , intent(in)                            :: x
+        real(RKG)           , intent(in)                            :: mu
+        real(RKG)           , intent(in)                            :: invSigma
     end subroutine
 #endif
 
@@ -1024,11 +1024,11 @@ module pm_distNorm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setNormCDFMS_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)           , intent(out)                           :: cdf
-        real(RKC)           , intent(in)                            :: x
-        real(RKC)           , intent(in)                            :: mu
-        real(RKC)           , intent(in)                            :: invSigma
+        use pm_kind, only: RKG => RK4
+        real(RKG)           , intent(out)                           :: cdf
+        real(RKG)           , intent(in)                            :: x
+        real(RKG)           , intent(in)                            :: mu
+        real(RKG)           , intent(in)                            :: invSigma
     end subroutine
 #endif
 
@@ -1037,11 +1037,11 @@ module pm_distNorm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setNormCDFMS_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)           , intent(out)                           :: cdf
-        real(RKC)           , intent(in)                            :: x
-        real(RKC)           , intent(in)                            :: mu
-        real(RKC)           , intent(in)                            :: invSigma
+        use pm_kind, only: RKG => RK3
+        real(RKG)           , intent(out)                           :: cdf
+        real(RKG)           , intent(in)                            :: x
+        real(RKG)           , intent(in)                            :: mu
+        real(RKG)           , intent(in)                            :: invSigma
     end subroutine
 #endif
 
@@ -1050,11 +1050,11 @@ module pm_distNorm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setNormCDFMS_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)           , intent(out)                           :: cdf
-        real(RKC)           , intent(in)                            :: x
-        real(RKC)           , intent(in)                            :: mu
-        real(RKC)           , intent(in)                            :: invSigma
+        use pm_kind, only: RKG => RK2
+        real(RKG)           , intent(out)                           :: cdf
+        real(RKG)           , intent(in)                            :: x
+        real(RKG)           , intent(in)                            :: mu
+        real(RKG)           , intent(in)                            :: invSigma
     end subroutine
 #endif
 
@@ -1063,11 +1063,11 @@ module pm_distNorm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setNormCDFMS_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)           , intent(out)                           :: cdf
-        real(RKC)           , intent(in)                            :: x
-        real(RKC)           , intent(in)                            :: mu
-        real(RKC)           , intent(in)                            :: invSigma
+        use pm_kind, only: RKG => RK1
+        real(RKG)           , intent(out)                           :: cdf
+        real(RKG)           , intent(in)                            :: x
+        real(RKG)           , intent(in)                            :: mu
+        real(RKG)           , intent(in)                            :: invSigma
     end subroutine
 #endif
 
@@ -1144,11 +1144,11 @@ module pm_distNorm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getNormQuan_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)           , intent(in)                            :: cdf
-        real(RKC)           , intent(in)    , optional              :: mu
-        real(RKC)           , intent(in)    , optional              :: sigma
-        real(RKC)                                                   :: quantile
+        use pm_kind, only: RKG => RK5
+        real(RKG)           , intent(in)                            :: cdf
+        real(RKG)           , intent(in)    , optional              :: mu
+        real(RKG)           , intent(in)    , optional              :: sigma
+        real(RKG)                                                   :: quantile
     end function
 #endif
 
@@ -1157,11 +1157,11 @@ module pm_distNorm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getNormQuan_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)           , intent(in)                            :: cdf
-        real(RKC)           , intent(in)    , optional              :: mu
-        real(RKC)           , intent(in)    , optional              :: sigma
-        real(RKC)                                                   :: quantile
+        use pm_kind, only: RKG => RK4
+        real(RKG)           , intent(in)                            :: cdf
+        real(RKG)           , intent(in)    , optional              :: mu
+        real(RKG)           , intent(in)    , optional              :: sigma
+        real(RKG)                                                   :: quantile
     end function
 #endif
 
@@ -1170,11 +1170,11 @@ module pm_distNorm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getNormQuan_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)           , intent(in)                            :: cdf
-        real(RKC)           , intent(in)    , optional              :: mu
-        real(RKC)           , intent(in)    , optional              :: sigma
-        real(RKC)                                                   :: quantile
+        use pm_kind, only: RKG => RK3
+        real(RKG)           , intent(in)                            :: cdf
+        real(RKG)           , intent(in)    , optional              :: mu
+        real(RKG)           , intent(in)    , optional              :: sigma
+        real(RKG)                                                   :: quantile
     end function
 #endif
 
@@ -1183,11 +1183,11 @@ module pm_distNorm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getNormQuan_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)           , intent(in)                            :: cdf
-        real(RKC)           , intent(in)    , optional              :: mu
-        real(RKC)           , intent(in)    , optional              :: sigma
-        real(RKC)                                                   :: quantile
+        use pm_kind, only: RKG => RK2
+        real(RKG)           , intent(in)                            :: cdf
+        real(RKG)           , intent(in)    , optional              :: mu
+        real(RKG)           , intent(in)    , optional              :: sigma
+        real(RKG)                                                   :: quantile
     end function
 #endif
 
@@ -1196,11 +1196,11 @@ module pm_distNorm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getNormQuan_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)           , intent(in)                            :: cdf
-        real(RKC)           , intent(in)    , optional              :: mu
-        real(RKC)           , intent(in)    , optional              :: sigma
-        real(RKC)                                                   :: quantile
+        use pm_kind, only: RKG => RK1
+        real(RKG)           , intent(in)                            :: cdf
+        real(RKG)           , intent(in)    , optional              :: mu
+        real(RKG)           , intent(in)    , optional              :: sigma
+        real(RKG)                                                   :: quantile
     end function
 #endif
 
@@ -1282,9 +1282,9 @@ module pm_distNorm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setNormQuanDD_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)           , intent(out)                           :: quantile
-        real(RKC)           , intent(in)                            :: cdf
+        use pm_kind, only: RKG => RK5
+        real(RKG)           , intent(out)                           :: quantile
+        real(RKG)           , intent(in)                            :: cdf
     end subroutine
 #endif
 
@@ -1293,9 +1293,9 @@ module pm_distNorm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setNormQuanDD_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)           , intent(out)                           :: quantile
-        real(RKC)           , intent(in)                            :: cdf
+        use pm_kind, only: RKG => RK4
+        real(RKG)           , intent(out)                           :: quantile
+        real(RKG)           , intent(in)                            :: cdf
     end subroutine
 #endif
 
@@ -1304,9 +1304,9 @@ module pm_distNorm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setNormQuanDD_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)           , intent(out)                           :: quantile
-        real(RKC)           , intent(in)                            :: cdf
+        use pm_kind, only: RKG => RK3
+        real(RKG)           , intent(out)                           :: quantile
+        real(RKG)           , intent(in)                            :: cdf
     end subroutine
 #endif
 
@@ -1315,9 +1315,9 @@ module pm_distNorm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setNormQuanDD_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)           , intent(in)                            :: cdf
-        real(RKC)           , intent(out)                           :: quantile
+        use pm_kind, only: RKG => RK2
+        real(RKG)           , intent(in)                            :: cdf
+        real(RKG)           , intent(out)                           :: quantile
     end subroutine
 #endif
 
@@ -1326,9 +1326,9 @@ module pm_distNorm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setNormQuanDD_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)           , intent(out)                           :: quantile
-        real(RKC)           , intent(in)                            :: cdf
+        use pm_kind, only: RKG => RK1
+        real(RKG)           , intent(out)                           :: quantile
+        real(RKG)           , intent(in)                            :: cdf
     end subroutine
 #endif
 
@@ -1339,10 +1339,10 @@ module pm_distNorm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setNormQuanMD_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)           , intent(out)                           :: quantile
-        real(RKC)           , intent(in)                            :: cdf
-        real(RKC)           , intent(in)                            :: mu
+        use pm_kind, only: RKG => RK5
+        real(RKG)           , intent(out)                           :: quantile
+        real(RKG)           , intent(in)                            :: cdf
+        real(RKG)           , intent(in)                            :: mu
     end subroutine
 #endif
 
@@ -1351,10 +1351,10 @@ module pm_distNorm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setNormQuanMD_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)           , intent(out)                           :: quantile
-        real(RKC)           , intent(in)                            :: cdf
-        real(RKC)           , intent(in)                            :: mu
+        use pm_kind, only: RKG => RK4
+        real(RKG)           , intent(out)                           :: quantile
+        real(RKG)           , intent(in)                            :: cdf
+        real(RKG)           , intent(in)                            :: mu
     end subroutine
 #endif
 
@@ -1363,10 +1363,10 @@ module pm_distNorm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setNormQuanMD_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)           , intent(out)                           :: quantile
-        real(RKC)           , intent(in)                            :: cdf
-        real(RKC)           , intent(in)                            :: mu
+        use pm_kind, only: RKG => RK3
+        real(RKG)           , intent(out)                           :: quantile
+        real(RKG)           , intent(in)                            :: cdf
+        real(RKG)           , intent(in)                            :: mu
     end subroutine
 #endif
 
@@ -1375,10 +1375,10 @@ module pm_distNorm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setNormQuanMD_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)           , intent(out)                           :: quantile
-        real(RKC)           , intent(in)                            :: cdf
-        real(RKC)           , intent(in)                            :: mu
+        use pm_kind, only: RKG => RK2
+        real(RKG)           , intent(out)                           :: quantile
+        real(RKG)           , intent(in)                            :: cdf
+        real(RKG)           , intent(in)                            :: mu
     end subroutine
 #endif
 
@@ -1387,10 +1387,10 @@ module pm_distNorm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setNormQuanMD_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)           , intent(out)                           :: quantile
-        real(RKC)           , intent(in)                            :: cdf
-        real(RKC)           , intent(in)                            :: mu
+        use pm_kind, only: RKG => RK1
+        real(RKG)           , intent(out)                           :: quantile
+        real(RKG)           , intent(in)                            :: cdf
+        real(RKG)           , intent(in)                            :: mu
     end subroutine
 #endif
 
@@ -1401,11 +1401,11 @@ module pm_distNorm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setNormQuanMS_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)           , intent(out)                           :: quantile
-        real(RKC)           , intent(in)                            :: cdf
-        real(RKC)           , intent(in)                            :: mu
-        real(RKC)           , intent(in)                            :: sigma
+        use pm_kind, only: RKG => RK5
+        real(RKG)           , intent(out)                           :: quantile
+        real(RKG)           , intent(in)                            :: cdf
+        real(RKG)           , intent(in)                            :: mu
+        real(RKG)           , intent(in)                            :: sigma
     end subroutine
 #endif
 
@@ -1414,11 +1414,11 @@ module pm_distNorm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setNormQuanMS_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)           , intent(out)                           :: quantile
-        real(RKC)           , intent(in)                            :: cdf
-        real(RKC)           , intent(in)                            :: mu
-        real(RKC)           , intent(in)                            :: sigma
+        use pm_kind, only: RKG => RK4
+        real(RKG)           , intent(out)                           :: quantile
+        real(RKG)           , intent(in)                            :: cdf
+        real(RKG)           , intent(in)                            :: mu
+        real(RKG)           , intent(in)                            :: sigma
     end subroutine
 #endif
 
@@ -1427,11 +1427,11 @@ module pm_distNorm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setNormQuanMS_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)           , intent(out)                           :: quantile
-        real(RKC)           , intent(in)                            :: cdf
-        real(RKC)           , intent(in)                            :: mu
-        real(RKC)           , intent(in)                            :: sigma
+        use pm_kind, only: RKG => RK3
+        real(RKG)           , intent(out)                           :: quantile
+        real(RKG)           , intent(in)                            :: cdf
+        real(RKG)           , intent(in)                            :: mu
+        real(RKG)           , intent(in)                            :: sigma
     end subroutine
 #endif
 
@@ -1440,11 +1440,11 @@ module pm_distNorm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setNormQuanMS_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)           , intent(out)                           :: quantile
-        real(RKC)           , intent(in)                            :: cdf
-        real(RKC)           , intent(in)                            :: mu
-        real(RKC)           , intent(in)                            :: sigma
+        use pm_kind, only: RKG => RK2
+        real(RKG)           , intent(out)                           :: quantile
+        real(RKG)           , intent(in)                            :: cdf
+        real(RKG)           , intent(in)                            :: mu
+        real(RKG)           , intent(in)                            :: sigma
     end subroutine
 #endif
 
@@ -1453,11 +1453,11 @@ module pm_distNorm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setNormQuanMS_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)           , intent(out)                           :: quantile
-        real(RKC)           , intent(in)                            :: cdf
-        real(RKC)           , intent(in)                            :: mu
-        real(RKC)           , intent(in)                            :: sigma
+        use pm_kind, only: RKG => RK1
+        real(RKG)           , intent(out)                           :: quantile
+        real(RKG)           , intent(in)                            :: cdf
+        real(RKG)           , intent(in)                            :: mu
+        real(RKG)           , intent(in)                            :: sigma
     end subroutine
 #endif
 
@@ -1855,10 +1855,10 @@ module pm_distNorm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getNormRandRDMASA_D0_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(in)                    :: mean
-        real(RKC)   , intent(in)    , optional      :: std
-        real(RKC)                                   :: rand
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(in)                    :: mean
+        real(RKG)   , intent(in)    , optional      :: std
+        real(RKG)                                   :: rand
     end function
 #endif
 
@@ -1867,10 +1867,10 @@ module pm_distNorm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getNormRandRDMASA_D0_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(in)                    :: mean
-        real(RKC)   , intent(in)    , optional      :: std
-        real(RKC)                                   :: rand
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(in)                    :: mean
+        real(RKG)   , intent(in)    , optional      :: std
+        real(RKG)                                   :: rand
     end function
 #endif
 
@@ -1879,10 +1879,10 @@ module pm_distNorm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getNormRandRDMASA_D0_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(in)                    :: mean
-        real(RKC)   , intent(in)    , optional      :: std
-        real(RKC)                                   :: rand
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(in)                    :: mean
+        real(RKG)   , intent(in)    , optional      :: std
+        real(RKG)                                   :: rand
     end function
 #endif
 
@@ -1891,10 +1891,10 @@ module pm_distNorm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getNormRandRDMASA_D0_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(in)                    :: mean
-        real(RKC)   , intent(in)    , optional      :: std
-        real(RKC)                                   :: rand
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(in)                    :: mean
+        real(RKG)   , intent(in)    , optional      :: std
+        real(RKG)                                   :: rand
     end function
 #endif
 
@@ -1903,10 +1903,10 @@ module pm_distNorm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getNormRandRDMASA_D0_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(in)                    :: mean
-        real(RKC)   , intent(in)    , optional      :: std
-        real(RKC)                                   :: rand
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(in)                    :: mean
+        real(RKG)   , intent(in)    , optional      :: std
+        real(RKG)                                   :: rand
     end function
 #endif
 
@@ -1967,7 +1967,7 @@ module pm_distNorm
     !>
     !>  \warning
     !>  The condition `precision(rand) <= ZIG_PRECISION` must hold for the corresponding input arguments.<br>
-    !>  The condition `all(0._RKC <= zig)` must hold for the corresponding input arguments.<br>
+    !>  The condition `all(0._RKG <= zig)` must hold for the corresponding input arguments.<br>
     !>  The condition `size(zig, 1) == 2` must hold for the corresponding input arguments.<br>
     !>  \vericons
     !>
@@ -2032,8 +2032,8 @@ module pm_distNorm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setNormRandUDZD_D0_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)                   , intent(out)                   :: rand
+        use pm_kind, only: RKG => RK5
+        real(RKG)                   , intent(out)                   :: rand
     end subroutine
 #endif
 
@@ -2042,8 +2042,8 @@ module pm_distNorm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setNormRandUDZD_D0_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)                   , intent(out)                   :: rand
+        use pm_kind, only: RKG => RK4
+        real(RKG)                   , intent(out)                   :: rand
     end subroutine
 #endif
 
@@ -2052,8 +2052,8 @@ module pm_distNorm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setNormRandUDZD_D0_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)                   , intent(out)                   :: rand
+        use pm_kind, only: RKG => RK3
+        real(RKG)                   , intent(out)                   :: rand
     end subroutine
 #endif
 
@@ -2062,8 +2062,8 @@ module pm_distNorm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setNormRandUDZD_D0_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)                   , intent(out)                   :: rand
+        use pm_kind, only: RKG => RK2
+        real(RKG)                   , intent(out)                   :: rand
     end subroutine
 #endif
 
@@ -2072,8 +2072,8 @@ module pm_distNorm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setNormRandUDZD_D0_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)                   , intent(out)                   :: rand
+        use pm_kind, only: RKG => RK1
+        real(RKG)                   , intent(out)                   :: rand
     end subroutine
 #endif
 
@@ -2084,9 +2084,9 @@ module pm_distNorm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setNormRandUFZD_D0_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         type(rngf_type)             , intent(in)                    :: rng
-        real(RKC)                   , intent(out)                   :: rand
+        real(RKG)                   , intent(out)                   :: rand
     end subroutine
 #endif
 
@@ -2095,9 +2095,9 @@ module pm_distNorm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setNormRandUFZD_D0_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         type(rngf_type)             , intent(in)                    :: rng
-        real(RKC)                   , intent(out)                   :: rand
+        real(RKG)                   , intent(out)                   :: rand
     end subroutine
 #endif
 
@@ -2106,9 +2106,9 @@ module pm_distNorm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setNormRandUFZD_D0_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         type(rngf_type)             , intent(in)                    :: rng
-        real(RKC)                   , intent(out)                   :: rand
+        real(RKG)                   , intent(out)                   :: rand
     end subroutine
 #endif
 
@@ -2117,9 +2117,9 @@ module pm_distNorm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setNormRandUFZD_D0_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         type(rngf_type)             , intent(in)                    :: rng
-        real(RKC)                   , intent(out)                   :: rand
+        real(RKG)                   , intent(out)                   :: rand
     end subroutine
 #endif
 
@@ -2128,9 +2128,9 @@ module pm_distNorm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setNormRandUFZD_D0_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         type(rngf_type)             , intent(in)                    :: rng
-        real(RKC)                   , intent(out)                   :: rand
+        real(RKG)                   , intent(out)                   :: rand
     end subroutine
 #endif
 
@@ -2141,9 +2141,9 @@ module pm_distNorm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setNormRandUXZD_D0_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         type(xoshiro256ssw_type)    , intent(inout)                 :: rng
-        real(RKC)                   , intent(out)                   :: rand
+        real(RKG)                   , intent(out)                   :: rand
     end subroutine
 #endif
 
@@ -2152,9 +2152,9 @@ module pm_distNorm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setNormRandUXZD_D0_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         type(xoshiro256ssw_type)    , intent(inout)                 :: rng
-        real(RKC)                   , intent(out)                   :: rand
+        real(RKG)                   , intent(out)                   :: rand
     end subroutine
 #endif
 
@@ -2163,9 +2163,9 @@ module pm_distNorm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setNormRandUXZD_D0_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         type(xoshiro256ssw_type)    , intent(inout)                 :: rng
-        real(RKC)                   , intent(out)                   :: rand
+        real(RKG)                   , intent(out)                   :: rand
     end subroutine
 #endif
 
@@ -2174,9 +2174,9 @@ module pm_distNorm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setNormRandUXZD_D0_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         type(xoshiro256ssw_type)    , intent(inout)                 :: rng
-        real(RKC)                   , intent(out)                   :: rand
+        real(RKG)                   , intent(out)                   :: rand
     end subroutine
 #endif
 
@@ -2185,9 +2185,9 @@ module pm_distNorm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setNormRandUXZD_D0_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         type(xoshiro256ssw_type)    , intent(inout)                 :: rng
-        real(RKC)                   , intent(out)                   :: rand
+        real(RKG)                   , intent(out)                   :: rand
     end subroutine
 #endif
 
@@ -2204,9 +2204,9 @@ module pm_distNorm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setNormRandUDZA_D0_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)                   , intent(out)                   :: rand
-        real(RKC)                   , intent(in)    , contiguous    :: zig(:, 0 :)
+        use pm_kind, only: RKG => RK5
+        real(RKG)                   , intent(out)                   :: rand
+        real(RKG)                   , intent(in)    , contiguous    :: zig(:, 0 :)
     end subroutine
 #endif
 
@@ -2215,9 +2215,9 @@ module pm_distNorm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setNormRandUDZA_D0_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)                   , intent(out)                   :: rand
-        real(RKC)                   , intent(in)    , contiguous    :: zig(:, 0 :)
+        use pm_kind, only: RKG => RK4
+        real(RKG)                   , intent(out)                   :: rand
+        real(RKG)                   , intent(in)    , contiguous    :: zig(:, 0 :)
     end subroutine
 #endif
 
@@ -2226,9 +2226,9 @@ module pm_distNorm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setNormRandUDZA_D0_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)                   , intent(out)                   :: rand
-        real(RKC)                   , intent(in)    , contiguous    :: zig(:, 0 :)
+        use pm_kind, only: RKG => RK3
+        real(RKG)                   , intent(out)                   :: rand
+        real(RKG)                   , intent(in)    , contiguous    :: zig(:, 0 :)
     end subroutine
 #endif
 
@@ -2237,9 +2237,9 @@ module pm_distNorm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setNormRandUDZA_D0_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)                   , intent(out)                   :: rand
-        real(RKC)                   , intent(in)    , contiguous    :: zig(:, 0 :)
+        use pm_kind, only: RKG => RK2
+        real(RKG)                   , intent(out)                   :: rand
+        real(RKG)                   , intent(in)    , contiguous    :: zig(:, 0 :)
     end subroutine
 #endif
 
@@ -2248,9 +2248,9 @@ module pm_distNorm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setNormRandUDZA_D0_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)                   , intent(out)                   :: rand
-        real(RKC)                   , intent(in)    , contiguous    :: zig(:, 0 :)
+        use pm_kind, only: RKG => RK1
+        real(RKG)                   , intent(out)                   :: rand
+        real(RKG)                   , intent(in)    , contiguous    :: zig(:, 0 :)
     end subroutine
 #endif
 
@@ -2267,10 +2267,10 @@ module pm_distNorm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setNormRandUFZA_D0_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         type(rngf_type)             , intent(in)                    :: rng
-        real(RKC)                   , intent(out)                   :: rand
-        real(RKC)                   , intent(in)    , contiguous    :: zig(:, 0 :)
+        real(RKG)                   , intent(out)                   :: rand
+        real(RKG)                   , intent(in)    , contiguous    :: zig(:, 0 :)
     end subroutine
 #endif
 
@@ -2279,10 +2279,10 @@ module pm_distNorm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setNormRandUFZA_D0_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         type(rngf_type)             , intent(in)                    :: rng
-        real(RKC)                   , intent(out)                   :: rand
-        real(RKC)                   , intent(in)    , contiguous    :: zig(:, 0 :)
+        real(RKG)                   , intent(out)                   :: rand
+        real(RKG)                   , intent(in)    , contiguous    :: zig(:, 0 :)
     end subroutine
 #endif
 
@@ -2291,10 +2291,10 @@ module pm_distNorm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setNormRandUFZA_D0_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         type(rngf_type)             , intent(in)                    :: rng
-        real(RKC)                   , intent(out)                   :: rand
-        real(RKC)                   , intent(in)    , contiguous    :: zig(:, 0 :)
+        real(RKG)                   , intent(out)                   :: rand
+        real(RKG)                   , intent(in)    , contiguous    :: zig(:, 0 :)
     end subroutine
 #endif
 
@@ -2303,10 +2303,10 @@ module pm_distNorm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setNormRandUFZA_D0_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         type(rngf_type)             , intent(in)                    :: rng
-        real(RKC)                   , intent(out)                   :: rand
-        real(RKC)                   , intent(in)    , contiguous    :: zig(:, 0 :)
+        real(RKG)                   , intent(out)                   :: rand
+        real(RKG)                   , intent(in)    , contiguous    :: zig(:, 0 :)
     end subroutine
 #endif
 
@@ -2315,10 +2315,10 @@ module pm_distNorm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setNormRandUFZA_D0_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         type(rngf_type)             , intent(in)                    :: rng
-        real(RKC)                   , intent(out)                   :: rand
-        real(RKC)                   , intent(in)    , contiguous    :: zig(:, 0 :)
+        real(RKG)                   , intent(out)                   :: rand
+        real(RKG)                   , intent(in)    , contiguous    :: zig(:, 0 :)
     end subroutine
 #endif
 
@@ -2329,10 +2329,10 @@ module pm_distNorm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setNormRandUXZA_D0_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         type(xoshiro256ssw_type)    , intent(inout)                 :: rng
-        real(RKC)                   , intent(out)                   :: rand
-        real(RKC)                   , intent(in)    , contiguous    :: zig(:, 0 :)
+        real(RKG)                   , intent(out)                   :: rand
+        real(RKG)                   , intent(in)    , contiguous    :: zig(:, 0 :)
     end subroutine
 #endif
 
@@ -2341,10 +2341,10 @@ module pm_distNorm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setNormRandUXZA_D0_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         type(xoshiro256ssw_type)    , intent(inout)                 :: rng
-        real(RKC)                   , intent(out)                   :: rand
-        real(RKC)                   , intent(in)    , contiguous    :: zig(:, 0 :)
+        real(RKG)                   , intent(out)                   :: rand
+        real(RKG)                   , intent(in)    , contiguous    :: zig(:, 0 :)
     end subroutine
 #endif
 
@@ -2353,10 +2353,10 @@ module pm_distNorm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setNormRandUXZA_D0_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         type(xoshiro256ssw_type)    , intent(inout)                 :: rng
-        real(RKC)                   , intent(out)                   :: rand
-        real(RKC)                   , intent(in)    , contiguous    :: zig(:, 0 :)
+        real(RKG)                   , intent(out)                   :: rand
+        real(RKG)                   , intent(in)    , contiguous    :: zig(:, 0 :)
     end subroutine
 #endif
 
@@ -2365,10 +2365,10 @@ module pm_distNorm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setNormRandUXZA_D0_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         type(xoshiro256ssw_type)    , intent(inout)                 :: rng
-        real(RKC)                   , intent(out)                   :: rand
-        real(RKC)                   , intent(in)    , contiguous    :: zig(:, 0 :)
+        real(RKG)                   , intent(out)                   :: rand
+        real(RKG)                   , intent(in)    , contiguous    :: zig(:, 0 :)
     end subroutine
 #endif
 
@@ -2377,10 +2377,10 @@ module pm_distNorm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setNormRandUXZA_D0_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         type(xoshiro256ssw_type)    , intent(inout)                 :: rng
-        real(RKC)                   , intent(out)                   :: rand
-        real(RKC)                   , intent(in)    , contiguous    :: zig(:, 0 :)
+        real(RKG)                   , intent(out)                   :: rand
+        real(RKG)                   , intent(in)    , contiguous    :: zig(:, 0 :)
     end subroutine
 #endif
 
@@ -2401,8 +2401,8 @@ module pm_distNorm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setNormRandUDZD_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)                   , intent(out)                   :: rand(:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)                   , intent(out)                   :: rand(:)
     end subroutine
 #endif
 
@@ -2411,8 +2411,8 @@ module pm_distNorm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setNormRandUDZD_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)                   , intent(out)                   :: rand(:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)                   , intent(out)                   :: rand(:)
     end subroutine
 #endif
 
@@ -2421,8 +2421,8 @@ module pm_distNorm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setNormRandUDZD_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)                   , intent(out)                   :: rand(:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)                   , intent(out)                   :: rand(:)
     end subroutine
 #endif
 
@@ -2431,8 +2431,8 @@ module pm_distNorm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setNormRandUDZD_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)                   , intent(out)                   :: rand(:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)                   , intent(out)                   :: rand(:)
     end subroutine
 #endif
 
@@ -2441,8 +2441,8 @@ module pm_distNorm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setNormRandUDZD_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)                   , intent(out)                   :: rand(:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)                   , intent(out)                   :: rand(:)
     end subroutine
 #endif
 
@@ -2453,9 +2453,9 @@ module pm_distNorm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setNormRandUFZD_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         type(rngf_type)             , intent(in)                    :: rng
-        real(RKC)                   , intent(out)                   :: rand(:)
+        real(RKG)                   , intent(out)                   :: rand(:)
     end subroutine
 #endif
 
@@ -2464,9 +2464,9 @@ module pm_distNorm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setNormRandUFZD_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         type(rngf_type)             , intent(in)                    :: rng
-        real(RKC)                   , intent(out)                   :: rand(:)
+        real(RKG)                   , intent(out)                   :: rand(:)
     end subroutine
 #endif
 
@@ -2475,9 +2475,9 @@ module pm_distNorm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setNormRandUFZD_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         type(rngf_type)             , intent(in)                    :: rng
-        real(RKC)                   , intent(out)                   :: rand(:)
+        real(RKG)                   , intent(out)                   :: rand(:)
     end subroutine
 #endif
 
@@ -2486,9 +2486,9 @@ module pm_distNorm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setNormRandUFZD_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         type(rngf_type)             , intent(in)                    :: rng
-        real(RKC)                   , intent(out)                   :: rand(:)
+        real(RKG)                   , intent(out)                   :: rand(:)
     end subroutine
 #endif
 
@@ -2497,9 +2497,9 @@ module pm_distNorm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setNormRandUFZD_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         type(rngf_type)             , intent(in)                    :: rng
-        real(RKC)                   , intent(out)                   :: rand(:)
+        real(RKG)                   , intent(out)                   :: rand(:)
     end subroutine
 #endif
 
@@ -2510,9 +2510,9 @@ module pm_distNorm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setNormRandUXZD_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         type(xoshiro256ssw_type)    , intent(inout)                 :: rng
-        real(RKC)                   , intent(out)                   :: rand(:)
+        real(RKG)                   , intent(out)                   :: rand(:)
     end subroutine
 #endif
 
@@ -2521,9 +2521,9 @@ module pm_distNorm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setNormRandUXZD_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         type(xoshiro256ssw_type)    , intent(inout)                 :: rng
-        real(RKC)                   , intent(out)                   :: rand(:)
+        real(RKG)                   , intent(out)                   :: rand(:)
     end subroutine
 #endif
 
@@ -2532,9 +2532,9 @@ module pm_distNorm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setNormRandUXZD_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         type(xoshiro256ssw_type)    , intent(inout)                 :: rng
-        real(RKC)                   , intent(out)                   :: rand(:)
+        real(RKG)                   , intent(out)                   :: rand(:)
     end subroutine
 #endif
 
@@ -2543,9 +2543,9 @@ module pm_distNorm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setNormRandUXZD_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         type(xoshiro256ssw_type)    , intent(inout)                 :: rng
-        real(RKC)                   , intent(out)                   :: rand(:)
+        real(RKG)                   , intent(out)                   :: rand(:)
     end subroutine
 #endif
 
@@ -2554,9 +2554,9 @@ module pm_distNorm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setNormRandUXZD_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         type(xoshiro256ssw_type)    , intent(inout)                 :: rng
-        real(RKC)                   , intent(out)                   :: rand(:)
+        real(RKG)                   , intent(out)                   :: rand(:)
     end subroutine
 #endif
 
@@ -2573,9 +2573,9 @@ module pm_distNorm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setNormRandUDZA_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)                   , intent(out)                   :: rand(:)
-        real(RKC)                   , intent(in)    , contiguous    :: zig(:, 0 :)
+        use pm_kind, only: RKG => RK5
+        real(RKG)                   , intent(out)                   :: rand(:)
+        real(RKG)                   , intent(in)    , contiguous    :: zig(:, 0 :)
     end subroutine
 #endif
 
@@ -2584,9 +2584,9 @@ module pm_distNorm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setNormRandUDZA_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)                   , intent(out)                   :: rand(:)
-        real(RKC)                   , intent(in)    , contiguous    :: zig(:, 0 :)
+        use pm_kind, only: RKG => RK4
+        real(RKG)                   , intent(out)                   :: rand(:)
+        real(RKG)                   , intent(in)    , contiguous    :: zig(:, 0 :)
     end subroutine
 #endif
 
@@ -2595,9 +2595,9 @@ module pm_distNorm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setNormRandUDZA_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)                   , intent(out)                   :: rand(:)
-        real(RKC)                   , intent(in)    , contiguous    :: zig(:, 0 :)
+        use pm_kind, only: RKG => RK3
+        real(RKG)                   , intent(out)                   :: rand(:)
+        real(RKG)                   , intent(in)    , contiguous    :: zig(:, 0 :)
     end subroutine
 #endif
 
@@ -2606,9 +2606,9 @@ module pm_distNorm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setNormRandUDZA_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)                   , intent(out)                   :: rand(:)
-        real(RKC)                   , intent(in)    , contiguous    :: zig(:, 0 :)
+        use pm_kind, only: RKG => RK2
+        real(RKG)                   , intent(out)                   :: rand(:)
+        real(RKG)                   , intent(in)    , contiguous    :: zig(:, 0 :)
     end subroutine
 #endif
 
@@ -2617,9 +2617,9 @@ module pm_distNorm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setNormRandUDZA_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)                   , intent(out)                   :: rand(:)
-        real(RKC)                   , intent(in)    , contiguous    :: zig(:, 0 :)
+        use pm_kind, only: RKG => RK1
+        real(RKG)                   , intent(out)                   :: rand(:)
+        real(RKG)                   , intent(in)    , contiguous    :: zig(:, 0 :)
     end subroutine
 #endif
 
@@ -2636,10 +2636,10 @@ module pm_distNorm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setNormRandUFZA_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         type(rngf_type)             , intent(in)                    :: rng
-        real(RKC)                   , intent(out)                   :: rand(:)
-        real(RKC)                   , intent(in)    , contiguous    :: zig(:, 0 :)
+        real(RKG)                   , intent(out)                   :: rand(:)
+        real(RKG)                   , intent(in)    , contiguous    :: zig(:, 0 :)
     end subroutine
 #endif
 
@@ -2648,10 +2648,10 @@ module pm_distNorm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setNormRandUFZA_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         type(rngf_type)             , intent(in)                    :: rng
-        real(RKC)                   , intent(out)                   :: rand(:)
-        real(RKC)                   , intent(in)    , contiguous    :: zig(:, 0 :)
+        real(RKG)                   , intent(out)                   :: rand(:)
+        real(RKG)                   , intent(in)    , contiguous    :: zig(:, 0 :)
     end subroutine
 #endif
 
@@ -2660,10 +2660,10 @@ module pm_distNorm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setNormRandUFZA_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         type(rngf_type)             , intent(in)                    :: rng
-        real(RKC)                   , intent(out)                   :: rand(:)
-        real(RKC)                   , intent(in)    , contiguous    :: zig(:, 0 :)
+        real(RKG)                   , intent(out)                   :: rand(:)
+        real(RKG)                   , intent(in)    , contiguous    :: zig(:, 0 :)
     end subroutine
 #endif
 
@@ -2672,10 +2672,10 @@ module pm_distNorm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setNormRandUFZA_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         type(rngf_type)             , intent(in)                    :: rng
-        real(RKC)                   , intent(out)                   :: rand(:)
-        real(RKC)                   , intent(in)    , contiguous    :: zig(:, 0 :)
+        real(RKG)                   , intent(out)                   :: rand(:)
+        real(RKG)                   , intent(in)    , contiguous    :: zig(:, 0 :)
     end subroutine
 #endif
 
@@ -2684,10 +2684,10 @@ module pm_distNorm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setNormRandUFZA_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         type(rngf_type)             , intent(in)                    :: rng
-        real(RKC)                   , intent(out)                   :: rand(:)
-        real(RKC)                   , intent(in)    , contiguous    :: zig(:, 0 :)
+        real(RKG)                   , intent(out)                   :: rand(:)
+        real(RKG)                   , intent(in)    , contiguous    :: zig(:, 0 :)
     end subroutine
 #endif
 
@@ -2698,10 +2698,10 @@ module pm_distNorm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setNormRandUXZA_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         type(xoshiro256ssw_type)    , intent(inout)                 :: rng
-        real(RKC)                   , intent(out)                   :: rand(:)
-        real(RKC)                   , intent(in)    , contiguous    :: zig(:, 0 :)
+        real(RKG)                   , intent(out)                   :: rand(:)
+        real(RKG)                   , intent(in)    , contiguous    :: zig(:, 0 :)
     end subroutine
 #endif
 
@@ -2710,10 +2710,10 @@ module pm_distNorm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setNormRandUXZA_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         type(xoshiro256ssw_type)    , intent(inout)                 :: rng
-        real(RKC)                   , intent(out)                   :: rand(:)
-        real(RKC)                   , intent(in)    , contiguous    :: zig(:, 0 :)
+        real(RKG)                   , intent(out)                   :: rand(:)
+        real(RKG)                   , intent(in)    , contiguous    :: zig(:, 0 :)
     end subroutine
 #endif
 
@@ -2722,10 +2722,10 @@ module pm_distNorm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setNormRandUXZA_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         type(xoshiro256ssw_type)    , intent(inout)                 :: rng
-        real(RKC)                   , intent(out)                   :: rand(:)
-        real(RKC)                   , intent(in)    , contiguous    :: zig(:, 0 :)
+        real(RKG)                   , intent(out)                   :: rand(:)
+        real(RKG)                   , intent(in)    , contiguous    :: zig(:, 0 :)
     end subroutine
 #endif
 
@@ -2734,10 +2734,10 @@ module pm_distNorm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setNormRandUXZA_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         type(xoshiro256ssw_type)    , intent(inout)                 :: rng
-        real(RKC)                   , intent(out)                   :: rand(:)
-        real(RKC)                   , intent(in)    , contiguous    :: zig(:, 0 :)
+        real(RKG)                   , intent(out)                   :: rand(:)
+        real(RKG)                   , intent(in)    , contiguous    :: zig(:, 0 :)
     end subroutine
 #endif
 
@@ -2746,10 +2746,10 @@ module pm_distNorm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setNormRandUXZA_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         type(xoshiro256ssw_type)    , intent(inout)                 :: rng
-        real(RKC)                   , intent(out)                   :: rand(:)
-        real(RKC)                   , intent(in)    , contiguous    :: zig(:, 0 :)
+        real(RKG)                   , intent(out)                   :: rand(:)
+        real(RKG)                   , intent(in)    , contiguous    :: zig(:, 0 :)
     end subroutine
 #endif
 
@@ -2876,8 +2876,8 @@ module pm_distNorm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setNormRandBoxBasicDD_D0_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(inout)                 :: rand1, rand2
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(inout)                 :: rand1, rand2
     end subroutine
 #endif
 
@@ -2886,8 +2886,8 @@ module pm_distNorm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setNormRandBoxBasicDD_D0_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(inout)                 :: rand1, rand2
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(inout)                 :: rand1, rand2
     end subroutine
 #endif
 
@@ -2896,8 +2896,8 @@ module pm_distNorm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setNormRandBoxBasicDD_D0_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(inout)                 :: rand1, rand2
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(inout)                 :: rand1, rand2
     end subroutine
 #endif
 
@@ -2906,8 +2906,8 @@ module pm_distNorm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setNormRandBoxBasicDD_D0_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(inout)                 :: rand1, rand2
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(inout)                 :: rand1, rand2
     end subroutine
 #endif
 
@@ -2916,8 +2916,8 @@ module pm_distNorm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setNormRandBoxBasicDD_D0_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(inout)                 :: rand1, rand2
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(inout)                 :: rand1, rand2
     end subroutine
 #endif
 
@@ -2928,9 +2928,9 @@ module pm_distNorm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setNormRandBoxPolarDD_D0_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         logical(LK) , intent(out)                   :: failed
-        real(RKC)   , intent(inout)                 :: rand1, rand2
+        real(RKG)   , intent(inout)                 :: rand1, rand2
     end subroutine
 #endif
 
@@ -2939,9 +2939,9 @@ module pm_distNorm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setNormRandBoxPolarDD_D0_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         logical(LK) , intent(out)                   :: failed
-        real(RKC)   , intent(inout)                 :: rand1, rand2
+        real(RKG)   , intent(inout)                 :: rand1, rand2
     end subroutine
 #endif
 
@@ -2950,9 +2950,9 @@ module pm_distNorm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setNormRandBoxPolarDD_D0_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         logical(LK) , intent(out)                   :: failed
-        real(RKC)   , intent(inout)                 :: rand1, rand2
+        real(RKG)   , intent(inout)                 :: rand1, rand2
     end subroutine
 #endif
 
@@ -2961,9 +2961,9 @@ module pm_distNorm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setNormRandBoxPolarDD_D0_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         logical(LK) , intent(out)                   :: failed
-        real(RKC)   , intent(inout)                 :: rand1, rand2
+        real(RKG)   , intent(inout)                 :: rand1, rand2
     end subroutine
 #endif
 
@@ -2972,9 +2972,9 @@ module pm_distNorm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setNormRandBoxPolarDD_D0_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         logical(LK) , intent(out)                   :: failed
-        real(RKC)   , intent(inout)                 :: rand1, rand2
+        real(RKG)   , intent(inout)                 :: rand1, rand2
     end subroutine
 #endif
 
@@ -2992,9 +2992,9 @@ module pm_distNorm
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setNormRandBoxBasicMD_RK5
 !#endif
-!        use pm_kind, only: RKC => RK5
-!        real(RKC)   , intent(inout)                 :: rand1, rand2
-!        real(RKC)   , intent(in)                    :: mean
+!        use pm_kind, only: RKG => RK5
+!        real(RKG)   , intent(inout)                 :: rand1, rand2
+!        real(RKG)   , intent(in)                    :: mean
 !    end subroutine
 !#endif
 !
@@ -3003,9 +3003,9 @@ module pm_distNorm
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setNormRandBoxBasicMD_RK4
 !#endif
-!        use pm_kind, only: RKC => RK4
-!        real(RKC)   , intent(inout)                 :: rand1, rand2
-!        real(RKC)   , intent(in)                    :: mean
+!        use pm_kind, only: RKG => RK4
+!        real(RKG)   , intent(inout)                 :: rand1, rand2
+!        real(RKG)   , intent(in)                    :: mean
 !    end subroutine
 !#endif
 !
@@ -3014,9 +3014,9 @@ module pm_distNorm
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setNormRandBoxBasicMD_RK3
 !#endif
-!        use pm_kind, only: RKC => RK3
-!        real(RKC)   , intent(inout)                 :: rand1, rand2
-!        real(RKC)   , intent(in)                    :: mean
+!        use pm_kind, only: RKG => RK3
+!        real(RKG)   , intent(inout)                 :: rand1, rand2
+!        real(RKG)   , intent(in)                    :: mean
 !    end subroutine
 !#endif
 !
@@ -3025,9 +3025,9 @@ module pm_distNorm
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setNormRandBoxBasicMD_RK2
 !#endif
-!        use pm_kind, only: RKC => RK2
-!        real(RKC)   , intent(inout)                 :: rand1, rand2
-!        real(RKC)   , intent(in)                    :: mean
+!        use pm_kind, only: RKG => RK2
+!        real(RKG)   , intent(inout)                 :: rand1, rand2
+!        real(RKG)   , intent(in)                    :: mean
 !    end subroutine
 !#endif
 !
@@ -3036,9 +3036,9 @@ module pm_distNorm
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setNormRandBoxBasicMD_RK1
 !#endif
-!        use pm_kind, only: RKC => RK1
-!        real(RKC)   , intent(inout)                 :: rand1, rand2
-!        real(RKC)   , intent(in)                    :: mean
+!        use pm_kind, only: RKG => RK1
+!        real(RKG)   , intent(inout)                 :: rand1, rand2
+!        real(RKG)   , intent(in)                    :: mean
 !    end subroutine
 !#endif
 !
@@ -3049,9 +3049,9 @@ module pm_distNorm
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setNormRandBoxBasicMS_RK5
 !#endif
-!        use pm_kind, only: RKC => RK5
-!        real(RKC)   , intent(inout)                 :: rand1, rand2
-!        real(RKC)   , intent(in)                    :: mean, std
+!        use pm_kind, only: RKG => RK5
+!        real(RKG)   , intent(inout)                 :: rand1, rand2
+!        real(RKG)   , intent(in)                    :: mean, std
 !    end subroutine
 !#endif
 !
@@ -3060,9 +3060,9 @@ module pm_distNorm
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setNormRandBoxBasicMS_RK4
 !#endif
-!        use pm_kind, only: RKC => RK4
-!        real(RKC)   , intent(inout)                 :: rand1, rand2
-!        real(RKC)   , intent(in)                    :: mean, std
+!        use pm_kind, only: RKG => RK4
+!        real(RKG)   , intent(inout)                 :: rand1, rand2
+!        real(RKG)   , intent(in)                    :: mean, std
 !    end subroutine
 !#endif
 !
@@ -3071,9 +3071,9 @@ module pm_distNorm
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setNormRandBoxBasicMS_RK3
 !#endif
-!        use pm_kind, only: RKC => RK3
-!        real(RKC)   , intent(inout)                 :: rand1, rand2
-!        real(RKC)   , intent(in)                    :: mean, std
+!        use pm_kind, only: RKG => RK3
+!        real(RKG)   , intent(inout)                 :: rand1, rand2
+!        real(RKG)   , intent(in)                    :: mean, std
 !    end subroutine
 !#endif
 !
@@ -3082,9 +3082,9 @@ module pm_distNorm
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setNormRandBoxBasicMS_RK2
 !#endif
-!        use pm_kind, only: RKC => RK2
-!        real(RKC)   , intent(inout)                 :: rand1, rand2
-!        real(RKC)   , intent(in)                    :: mean, std
+!        use pm_kind, only: RKG => RK2
+!        real(RKG)   , intent(inout)                 :: rand1, rand2
+!        real(RKG)   , intent(in)                    :: mean, std
 !    end subroutine
 !#endif
 !
@@ -3093,9 +3093,9 @@ module pm_distNorm
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setNormRandBoxBasicMS_RK1
 !#endif
-!        use pm_kind, only: RKC => RK1
-!        real(RKC)   , intent(inout)                 :: rand1, rand2
-!        real(RKC)   , intent(in)                    :: mean, std
+!        use pm_kind, only: RKG => RK1
+!        real(RKG)   , intent(inout)                 :: rand1, rand2
+!        real(RKG)   , intent(in)                    :: mean, std
 !    end subroutine
 !#endif
 !
@@ -3112,10 +3112,10 @@ module pm_distNorm
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setNormRandBoxPolarMD_RK5
 !#endif
-!        use pm_kind, only: RKC => RK5
+!        use pm_kind, only: RKG => RK5
 !        logical(LK) , intent(out)                   :: failed
-!        real(RKC)   , intent(inout)                 :: rand1, rand2
-!        real(RKC)   , intent(in)                    :: mean
+!        real(RKG)   , intent(inout)                 :: rand1, rand2
+!        real(RKG)   , intent(in)                    :: mean
 !    end subroutine
 !#endif
 !
@@ -3124,10 +3124,10 @@ module pm_distNorm
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setNormRandBoxPolarMD_RK4
 !#endif
-!        use pm_kind, only: RKC => RK4
+!        use pm_kind, only: RKG => RK4
 !        logical(LK) , intent(out)                   :: failed
-!        real(RKC)   , intent(inout)                 :: rand1, rand2
-!        real(RKC)   , intent(in)                    :: mean
+!        real(RKG)   , intent(inout)                 :: rand1, rand2
+!        real(RKG)   , intent(in)                    :: mean
 !    end subroutine
 !#endif
 !
@@ -3136,10 +3136,10 @@ module pm_distNorm
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setNormRandBoxPolarMD_RK3
 !#endif
-!        use pm_kind, only: RKC => RK3
+!        use pm_kind, only: RKG => RK3
 !        logical(LK) , intent(out)                   :: failed
-!        real(RKC)   , intent(inout)                 :: rand1, rand2
-!        real(RKC)   , intent(in)                    :: mean
+!        real(RKG)   , intent(inout)                 :: rand1, rand2
+!        real(RKG)   , intent(in)                    :: mean
 !    end subroutine
 !#endif
 !
@@ -3148,10 +3148,10 @@ module pm_distNorm
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setNormRandBoxPolarMD_RK2
 !#endif
-!        use pm_kind, only: RKC => RK2
+!        use pm_kind, only: RKG => RK2
 !        logical(LK) , intent(out)                   :: failed
-!        real(RKC)   , intent(inout)                 :: rand1, rand2
-!        real(RKC)   , intent(in)                    :: mean
+!        real(RKG)   , intent(inout)                 :: rand1, rand2
+!        real(RKG)   , intent(in)                    :: mean
 !    end subroutine
 !#endif
 !
@@ -3160,10 +3160,10 @@ module pm_distNorm
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setNormRandBoxPolarMD_RK1
 !#endif
-!        use pm_kind, only: RKC => RK1
+!        use pm_kind, only: RKG => RK1
 !        logical(LK) , intent(out)                   :: failed
-!        real(RKC)   , intent(inout)                 :: rand1, rand2
-!        real(RKC)   , intent(in)                    :: mean
+!        real(RKG)   , intent(inout)                 :: rand1, rand2
+!        real(RKG)   , intent(in)                    :: mean
 !    end subroutine
 !#endif
 !
@@ -3174,10 +3174,10 @@ module pm_distNorm
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setNormRandBoxPolarMS_RK5
 !#endif
-!        use pm_kind, only: RKC => RK5
+!        use pm_kind, only: RKG => RK5
 !        logical(LK) , intent(out)                   :: failed
-!        real(RKC)   , intent(inout)                 :: rand1, rand2
-!        real(RKC)   , intent(in)                    :: mean, std
+!        real(RKG)   , intent(inout)                 :: rand1, rand2
+!        real(RKG)   , intent(in)                    :: mean, std
 !    end subroutine
 !#endif
 !
@@ -3186,10 +3186,10 @@ module pm_distNorm
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setNormRandBoxPolarMS_RK4
 !#endif
-!        use pm_kind, only: RKC => RK4
+!        use pm_kind, only: RKG => RK4
 !        logical(LK) , intent(out)                   :: failed
-!        real(RKC)   , intent(inout)                 :: rand1, rand2
-!        real(RKC)   , intent(in)                    :: mean, std
+!        real(RKG)   , intent(inout)                 :: rand1, rand2
+!        real(RKG)   , intent(in)                    :: mean, std
 !    end subroutine
 !#endif
 !
@@ -3198,10 +3198,10 @@ module pm_distNorm
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setNormRandBoxPolarMS_RK3
 !#endif
-!        use pm_kind, only: RKC => RK3
+!        use pm_kind, only: RKG => RK3
 !        logical(LK) , intent(out)                   :: failed
-!        real(RKC)   , intent(inout)                 :: rand1, rand2
-!        real(RKC)   , intent(in)                    :: mean, std
+!        real(RKG)   , intent(inout)                 :: rand1, rand2
+!        real(RKG)   , intent(in)                    :: mean, std
 !    end subroutine
 !#endif
 !
@@ -3210,10 +3210,10 @@ module pm_distNorm
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setNormRandBoxPolarMS_RK2
 !#endif
-!        use pm_kind, only: RKC => RK2
+!        use pm_kind, only: RKG => RK2
 !        logical(LK) , intent(out)                   :: failed
-!        real(RKC)   , intent(inout)                 :: rand1, rand2
-!        real(RKC)   , intent(in)                    :: mean, std
+!        real(RKG)   , intent(inout)                 :: rand1, rand2
+!        real(RKG)   , intent(in)                    :: mean, std
 !    end subroutine
 !#endif
 !
@@ -3222,10 +3222,10 @@ module pm_distNorm
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: setNormRandBoxPolarMS_RK1
 !#endif
-!        use pm_kind, only: RKC => RK1
+!        use pm_kind, only: RKG => RK1
 !        logical(LK) , intent(out)                   :: failed
-!        real(RKC)   , intent(inout)                 :: rand1, rand2
-!        real(RKC)   , intent(in)                    :: mean, std
+!        real(RKG)   , intent(inout)                 :: rand1, rand2
+!        real(RKG)   , intent(in)                    :: mean, std
 !    end subroutine
 !#endif
 !
@@ -3300,11 +3300,11 @@ module pm_distNorm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getZigNorm_RK5
 #endif
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
         integer(IK) , intent(in)                    :: nlay
-        real(RKC)   , intent(out)                   :: abserr
-        real(RKC)   , intent(in)    , optional      :: abstol
-        real(RKC)                                   :: zig(2, 0 : nlay)
+        real(RKG)   , intent(out)                   :: abserr
+        real(RKG)   , intent(in)    , optional      :: abstol
+        real(RKG)                                   :: zig(2, 0 : nlay)
     end function
 #endif
 
@@ -3313,11 +3313,11 @@ module pm_distNorm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getZigNorm_RK4
 #endif
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
         integer(IK) , intent(in)                    :: nlay
-        real(RKC)   , intent(out)                   :: abserr
-        real(RKC)   , intent(in)    , optional      :: abstol
-        real(RKC)                                   :: zig(2, 0 : nlay)
+        real(RKG)   , intent(out)                   :: abserr
+        real(RKG)   , intent(in)    , optional      :: abstol
+        real(RKG)                                   :: zig(2, 0 : nlay)
     end function
 #endif
 
@@ -3326,11 +3326,11 @@ module pm_distNorm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getZigNorm_RK3
 #endif
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
         integer(IK) , intent(in)                    :: nlay
-        real(RKC)   , intent(out)                   :: abserr
-        real(RKC)   , intent(in)    , optional      :: abstol
-        real(RKC)                                   :: zig(2, 0 : nlay)
+        real(RKG)   , intent(out)                   :: abserr
+        real(RKG)   , intent(in)    , optional      :: abstol
+        real(RKG)                                   :: zig(2, 0 : nlay)
     end function
 #endif
 
@@ -3339,11 +3339,11 @@ module pm_distNorm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getZigNorm_RK2
 #endif
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
         integer(IK) , intent(in)                    :: nlay
-        real(RKC)   , intent(out)                   :: abserr
-        real(RKC)   , intent(in)    , optional      :: abstol
-        real(RKC)                                   :: zig(2, 0 : nlay)
+        real(RKG)   , intent(out)                   :: abserr
+        real(RKG)   , intent(in)    , optional      :: abstol
+        real(RKG)                                   :: zig(2, 0 : nlay)
     end function
 #endif
 
@@ -3352,11 +3352,11 @@ module pm_distNorm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getZigNorm_RK1
 #endif
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
         integer(IK) , intent(in)                    :: nlay
-        real(RKC)   , intent(out)                   :: abserr
-        real(RKC)   , intent(in)    , optional      :: abstol
-        real(RKC)                                   :: zig(2, 0 : nlay)
+        real(RKG)   , intent(out)                   :: abserr
+        real(RKG)   , intent(in)    , optional      :: abstol
+        real(RKG)                                   :: zig(2, 0 : nlay)
     end function
 #endif
 
@@ -3377,9 +3377,9 @@ module pm_distNorm
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getFuncNorm_RK5
 !#endif
-!        use pm_kind, only: RKC => RK5
-!        real(RKC)   , intent(in)    :: x
-!        real(RKC)                   :: func
+!        use pm_kind, only: RKG => RK5
+!        real(RKG)   , intent(in)    :: x
+!        real(RKG)                   :: func
 !    end function
 !#endif
 !
@@ -3388,9 +3388,9 @@ module pm_distNorm
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getFuncNorm_RK4
 !#endif
-!        use pm_kind, only: RKC => RK4
-!        real(RKC)   , intent(in)    :: x
-!        real(RKC)                   :: func
+!        use pm_kind, only: RKG => RK4
+!        real(RKG)   , intent(in)    :: x
+!        real(RKG)                   :: func
 !    end function
 !#endif
 !
@@ -3399,9 +3399,9 @@ module pm_distNorm
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getFuncNorm_RK3
 !#endif
-!        use pm_kind, only: RKC => RK3
-!        real(RKC)   , intent(in)    :: x
-!        real(RKC)                   :: func
+!        use pm_kind, only: RKG => RK3
+!        real(RKG)   , intent(in)    :: x
+!        real(RKG)                   :: func
 !    end function
 !#endif
 !
@@ -3410,9 +3410,9 @@ module pm_distNorm
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getFuncNorm_RK2
 !#endif
-!        use pm_kind, only: RKC => RK2
-!        real(RKC)   , intent(in)    :: x
-!        real(RKC)                   :: func
+!        use pm_kind, only: RKG => RK2
+!        real(RKG)   , intent(in)    :: x
+!        real(RKG)                   :: func
 !    end function
 !#endif
 !
@@ -3421,9 +3421,9 @@ module pm_distNorm
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getFuncNorm_RK1
 !#endif
-!        use pm_kind, only: RKC => RK1
-!        real(RKC)   , intent(in)    :: x
-!        real(RKC)                   :: func
+!        use pm_kind, only: RKG => RK1
+!        real(RKG)   , intent(in)    :: x
+!        real(RKG)                   :: func
 !    end function
 !#endif
 !
@@ -3445,9 +3445,9 @@ module pm_distNorm
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getGradNorm_RK5
 !#endif
-!        use pm_kind, only: RKC => RK5
-!        real(RKC)   , intent(in)    :: x
-!        real(RKC)                   :: grad
+!        use pm_kind, only: RKG => RK5
+!        real(RKG)   , intent(in)    :: x
+!        real(RKG)                   :: grad
 !    end function
 !#endif
 !
@@ -3456,9 +3456,9 @@ module pm_distNorm
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getGradNorm_RK4
 !#endif
-!        use pm_kind, only: RKC => RK4
-!        real(RKC)   , intent(in)    :: x
-!        real(RKC)                   :: grad
+!        use pm_kind, only: RKG => RK4
+!        real(RKG)   , intent(in)    :: x
+!        real(RKG)                   :: grad
 !    end function
 !#endif
 !
@@ -3467,9 +3467,9 @@ module pm_distNorm
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getGradNorm_RK3
 !#endif
-!        use pm_kind, only: RKC => RK3
-!        real(RKC)   , intent(in)    :: x
-!        real(RKC)                   :: grad
+!        use pm_kind, only: RKG => RK3
+!        real(RKG)   , intent(in)    :: x
+!        real(RKG)                   :: grad
 !    end function
 !#endif
 !
@@ -3478,9 +3478,9 @@ module pm_distNorm
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getGradNorm_RK2
 !#endif
-!        use pm_kind, only: RKC => RK2
-!        real(RKC)   , intent(in)    :: x
-!        real(RKC)                   :: grad
+!        use pm_kind, only: RKG => RK2
+!        real(RKG)   , intent(in)    :: x
+!        real(RKG)                   :: grad
 !    end function
 !#endif
 !
@@ -3489,9 +3489,9 @@ module pm_distNorm
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getGradNorm_RK1
 !#endif
-!        use pm_kind, only: RKC => RK1
-!        real(RKC)   , intent(in)    :: x
-!        real(RKC)                   :: grad
+!        use pm_kind, only: RKG => RK1
+!        real(RKG)   , intent(in)    :: x
+!        real(RKG)                   :: grad
 !    end function
 !#endif
 !
@@ -3513,9 +3513,9 @@ module pm_distNorm
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getFuncInvNorm_RK5
 !#endif
-!        use pm_kind, only: RKC => RK5
-!        real(RKC)   , intent(in)    :: func
-!        real(RKC)                   :: x
+!        use pm_kind, only: RKG => RK5
+!        real(RKG)   , intent(in)    :: func
+!        real(RKG)                   :: x
 !    end function
 !#endif
 !
@@ -3524,9 +3524,9 @@ module pm_distNorm
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getFuncInvNorm_RK4
 !#endif
-!        use pm_kind, only: RKC => RK4
-!        real(RKC)   , intent(in)    :: func
-!        real(RKC)                   :: x
+!        use pm_kind, only: RKG => RK4
+!        real(RKG)   , intent(in)    :: func
+!        real(RKG)                   :: x
 !    end function
 !#endif
 !
@@ -3535,9 +3535,9 @@ module pm_distNorm
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getFuncInvNorm_RK3
 !#endif
-!        use pm_kind, only: RKC => RK3
-!        real(RKC)   , intent(in)    :: func
-!        real(RKC)                   :: x
+!        use pm_kind, only: RKG => RK3
+!        real(RKG)   , intent(in)    :: func
+!        real(RKG)                   :: x
 !    end function
 !#endif
 !
@@ -3546,9 +3546,9 @@ module pm_distNorm
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getFuncInvNorm_RK2
 !#endif
-!        use pm_kind, only: RKC => RK2
-!        real(RKC)   , intent(in)    :: func
-!        real(RKC)                   :: x
+!        use pm_kind, only: RKG => RK2
+!        real(RKG)   , intent(in)    :: func
+!        real(RKG)                   :: x
 !    end function
 !#endif
 !
@@ -3557,9 +3557,9 @@ module pm_distNorm
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getFuncInvNorm_RK1
 !#endif
-!        use pm_kind, only: RKC => RK1
-!        real(RKC)   , intent(in)    :: func
-!        real(RKC)                   :: x
+!        use pm_kind, only: RKG => RK1
+!        real(RKG)   , intent(in)    :: func
+!        real(RKG)                   :: x
 !    end function
 !#endif
 !
@@ -3581,9 +3581,9 @@ module pm_distNorm
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getZigAreaNorm_RK5
 !#endif
-!        use pm_kind, only: RKC => RK5
-!        real(RKC)   , intent(in)    :: r
-!        real(RKC)                   :: area
+!        use pm_kind, only: RKG => RK5
+!        real(RKG)   , intent(in)    :: r
+!        real(RKG)                   :: area
 !    end function
 !#endif
 !
@@ -3592,9 +3592,9 @@ module pm_distNorm
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getZigAreaNorm_RK4
 !#endif
-!        use pm_kind, only: RKC => RK4
-!        real(RKC)   , intent(in)    :: r
-!        real(RKC)                   :: area
+!        use pm_kind, only: RKG => RK4
+!        real(RKG)   , intent(in)    :: r
+!        real(RKG)                   :: area
 !    end function
 !#endif
 !
@@ -3603,9 +3603,9 @@ module pm_distNorm
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getZigAreaNorm_RK3
 !#endif
-!        use pm_kind, only: RKC => RK3
-!        real(RKC)   , intent(in)    :: r
-!        real(RKC)                   :: area
+!        use pm_kind, only: RKG => RK3
+!        real(RKG)   , intent(in)    :: r
+!        real(RKG)                   :: area
 !    end function
 !#endif
 !
@@ -3614,9 +3614,9 @@ module pm_distNorm
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getZigAreaNorm_RK2
 !#endif
-!        use pm_kind, only: RKC => RK2
-!        real(RKC)   , intent(in)    :: r
-!        real(RKC)                   :: area
+!        use pm_kind, only: RKG => RK2
+!        real(RKG)   , intent(in)    :: r
+!        real(RKG)                   :: area
 !    end function
 !#endif
 !
@@ -3625,9 +3625,9 @@ module pm_distNorm
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getZigAreaNorm_RK1
 !#endif
-!        use pm_kind, only: RKC => RK1
-!        real(RKC)   , intent(in)    :: r
-!        real(RKC)                   :: area
+!        use pm_kind, only: RKG => RK1
+!        real(RKG)   , intent(in)    :: r
+!        real(RKG)                   :: area
 !    end function
 !#endif
 !
@@ -3694,9 +3694,9 @@ module pm_distNorm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getNormEntropy_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)               , intent(in)                :: logVar
-        real(RKC)                                           :: entropy
+        use pm_kind, only: RKG => RK5
+        real(RKG)               , intent(in)                :: logVar
+        real(RKG)                                           :: entropy
     end function
 #endif
 
@@ -3705,9 +3705,9 @@ module pm_distNorm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getNormEntropy_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)               , intent(in)                :: logVar
-        real(RKC)                                           :: entropy
+        use pm_kind, only: RKG => RK4
+        real(RKG)               , intent(in)                :: logVar
+        real(RKG)                                           :: entropy
     end function
 #endif
 
@@ -3716,9 +3716,9 @@ module pm_distNorm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getNormEntropy_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)               , intent(in)                :: logVar
-        real(RKC)                                           :: entropy
+        use pm_kind, only: RKG => RK3
+        real(RKG)               , intent(in)                :: logVar
+        real(RKG)                                           :: entropy
     end function
 #endif
 
@@ -3727,9 +3727,9 @@ module pm_distNorm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getNormEntropy_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)               , intent(in)                :: logVar
-        real(RKC)                                           :: entropy
+        use pm_kind, only: RKG => RK2
+        real(RKG)               , intent(in)                :: logVar
+        real(RKG)                                           :: entropy
     end function
 #endif
 
@@ -3738,9 +3738,9 @@ module pm_distNorm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getNormEntropy_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)               , intent(in)                :: logVar
-        real(RKC)                                           :: entropy
+        use pm_kind, only: RKG => RK1
+        real(RKG)               , intent(in)                :: logVar
+        real(RKG)                                           :: entropy
     end function
 #endif
 
@@ -3811,9 +3811,9 @@ module pm_distNorm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getNormFisher_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)               , intent(in)                :: varInv
-        real(RKC)                                           :: Fisher(2,2)
+        use pm_kind, only: RKG => RK5
+        real(RKG)               , intent(in)                :: varInv
+        real(RKG)                                           :: Fisher(2,2)
     end function
 #endif
 
@@ -3822,9 +3822,9 @@ module pm_distNorm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getNormFisher_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)               , intent(in)                :: varInv
-        real(RKC)                                           :: Fisher(2,2)
+        use pm_kind, only: RKG => RK4
+        real(RKG)               , intent(in)                :: varInv
+        real(RKG)                                           :: Fisher(2,2)
     end function
 #endif
 
@@ -3833,9 +3833,9 @@ module pm_distNorm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getNormFisher_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)               , intent(in)                :: varInv
-        real(RKC)                                           :: Fisher(2,2)
+        use pm_kind, only: RKG => RK3
+        real(RKG)               , intent(in)                :: varInv
+        real(RKG)                                           :: Fisher(2,2)
     end function
 #endif
 
@@ -3844,9 +3844,9 @@ module pm_distNorm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getNormFisher_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)               , intent(in)                :: varInv
-        real(RKC)                                           :: Fisher(2,2)
+        use pm_kind, only: RKG => RK2
+        real(RKG)               , intent(in)                :: varInv
+        real(RKG)                                           :: Fisher(2,2)
     end function
 #endif
 
@@ -3855,9 +3855,9 @@ module pm_distNorm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getNormFisher_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)               , intent(in)                :: varInv
-        real(RKC)                                           :: Fisher(2,2)
+        use pm_kind, only: RKG => RK1
+        real(RKG)               , intent(in)                :: varInv
+        real(RKG)                                           :: Fisher(2,2)
     end function
 #endif
 
@@ -3948,9 +3948,9 @@ module pm_distNorm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getNormKLDMD_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)               , intent(in)                :: meanDiffSq
-        real(RKC)                                           :: kld
+        use pm_kind, only: RKG => RK5
+        real(RKG)               , intent(in)                :: meanDiffSq
+        real(RKG)                                           :: kld
     end function
 #endif
 
@@ -3959,9 +3959,9 @@ module pm_distNorm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getNormKLDMD_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)               , intent(in)                :: meanDiffSq
-        real(RKC)                                           :: kld
+        use pm_kind, only: RKG => RK4
+        real(RKG)               , intent(in)                :: meanDiffSq
+        real(RKG)                                           :: kld
     end function
 #endif
 
@@ -3970,9 +3970,9 @@ module pm_distNorm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getNormKLDMD_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)               , intent(in)                :: meanDiffSq
-        real(RKC)                                           :: kld
+        use pm_kind, only: RKG => RK3
+        real(RKG)               , intent(in)                :: meanDiffSq
+        real(RKG)                                           :: kld
     end function
 #endif
 
@@ -3981,9 +3981,9 @@ module pm_distNorm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getNormKLDMD_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)               , intent(in)                :: meanDiffSq
-        real(RKC)                                           :: kld
+        use pm_kind, only: RKG => RK2
+        real(RKG)               , intent(in)                :: meanDiffSq
+        real(RKG)                                           :: kld
     end function
 #endif
 
@@ -3992,9 +3992,9 @@ module pm_distNorm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getNormKLDMD_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)               , intent(in)                :: meanDiffSq
-        real(RKC)                                           :: kld
+        use pm_kind, only: RKG => RK1
+        real(RKG)               , intent(in)                :: meanDiffSq
+        real(RKG)                                           :: kld
     end function
 #endif
 
@@ -4005,9 +4005,9 @@ module pm_distNorm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getNormKLDDV_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)               , intent(in)                :: varP, varQ
-        real(RKC)                                           :: kld
+        use pm_kind, only: RKG => RK5
+        real(RKG)               , intent(in)                :: varP, varQ
+        real(RKG)                                           :: kld
     end function
 #endif
 
@@ -4016,9 +4016,9 @@ module pm_distNorm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getNormKLDDV_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)               , intent(in)                :: varP, varQ
-        real(RKC)                                           :: kld
+        use pm_kind, only: RKG => RK4
+        real(RKG)               , intent(in)                :: varP, varQ
+        real(RKG)                                           :: kld
     end function
 #endif
 
@@ -4027,9 +4027,9 @@ module pm_distNorm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getNormKLDDV_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)               , intent(in)                :: varP, varQ
-        real(RKC)                                           :: kld
+        use pm_kind, only: RKG => RK3
+        real(RKG)               , intent(in)                :: varP, varQ
+        real(RKG)                                           :: kld
     end function
 #endif
 
@@ -4038,9 +4038,9 @@ module pm_distNorm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getNormKLDDV_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)               , intent(in)                :: varP, varQ
-        real(RKC)                                           :: kld
+        use pm_kind, only: RKG => RK2
+        real(RKG)               , intent(in)                :: varP, varQ
+        real(RKG)                                           :: kld
     end function
 #endif
 
@@ -4049,9 +4049,9 @@ module pm_distNorm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getNormKLDDV_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)               , intent(in)                :: varP, varQ
-        real(RKC)                                           :: kld
+        use pm_kind, only: RKG => RK1
+        real(RKG)               , intent(in)                :: varP, varQ
+        real(RKG)                                           :: kld
     end function
 #endif
 
@@ -4062,10 +4062,10 @@ module pm_distNorm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getNormKLDMV_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)               , intent(in)                :: meanDiffSq
-        real(RKC)               , intent(in)                :: varP, varQ
-        real(RKC)                                           :: kld
+        use pm_kind, only: RKG => RK5
+        real(RKG)               , intent(in)                :: meanDiffSq
+        real(RKG)               , intent(in)                :: varP, varQ
+        real(RKG)                                           :: kld
     end function
 #endif
 
@@ -4074,10 +4074,10 @@ module pm_distNorm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getNormKLDMV_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)               , intent(in)                :: meanDiffSq
-        real(RKC)               , intent(in)                :: varP, varQ
-        real(RKC)                                           :: kld
+        use pm_kind, only: RKG => RK4
+        real(RKG)               , intent(in)                :: meanDiffSq
+        real(RKG)               , intent(in)                :: varP, varQ
+        real(RKG)                                           :: kld
     end function
 #endif
 
@@ -4086,10 +4086,10 @@ module pm_distNorm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getNormKLDMV_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)               , intent(in)                :: meanDiffSq
-        real(RKC)               , intent(in)                :: varP, varQ
-        real(RKC)                                           :: kld
+        use pm_kind, only: RKG => RK3
+        real(RKG)               , intent(in)                :: meanDiffSq
+        real(RKG)               , intent(in)                :: varP, varQ
+        real(RKG)                                           :: kld
     end function
 #endif
 
@@ -4098,10 +4098,10 @@ module pm_distNorm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getNormKLDMV_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)               , intent(in)                :: meanDiffSq
-        real(RKC)               , intent(in)                :: varP, varQ
-        real(RKC)                                           :: kld
+        use pm_kind, only: RKG => RK2
+        real(RKG)               , intent(in)                :: meanDiffSq
+        real(RKG)               , intent(in)                :: varP, varQ
+        real(RKG)                                           :: kld
     end function
 #endif
 
@@ -4110,10 +4110,10 @@ module pm_distNorm
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getNormKLDMV_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)               , intent(in)                :: meanDiffSq
-        real(RKC)               , intent(in)                :: varP, varQ
-        real(RKC)                                           :: kld
+        use pm_kind, only: RKG => RK1
+        real(RKG)               , intent(in)                :: meanDiffSq
+        real(RKG)               , intent(in)                :: varP, varQ
+        real(RKG)                                           :: kld
     end function
 #endif
 

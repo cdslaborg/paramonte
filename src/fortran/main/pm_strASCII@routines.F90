@@ -52,35 +52,35 @@ contains
 
 #if SK5_ENABLED
     module procedure getLocSpace_SK5
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
 #include "pm_strASCII@routines.inc.F90"
     end procedure
 #endif
 
 #if SK4_ENABLED
     module procedure getLocSpace_SK4
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
 #include "pm_strASCII@routines.inc.F90"
     end procedure
 #endif
 
 #if SK3_ENABLED
     module procedure getLocSpace_SK3
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
 #include "pm_strASCII@routines.inc.F90"
     end procedure
 #endif
 
 #if SK2_ENABLED
     module procedure getLocSpace_SK2
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
 #include "pm_strASCII@routines.inc.F90"
     end procedure
 #endif
 
 #if SK1_ENABLED
     module procedure getLocSpace_SK1
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
 #include "pm_strASCII@routines.inc.F90"
     end procedure
 #endif
@@ -101,35 +101,35 @@ contains
 
 #if SK5_ENABLED
     module procedure getLocNonSpace_SK5
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
 #include "pm_strASCII@routines.inc.F90"
     end procedure
 #endif
 
 #if SK4_ENABLED
     module procedure getLocNonSpace_SK4
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
 #include "pm_strASCII@routines.inc.F90"
     end procedure
 #endif
 
 #if SK3_ENABLED
     module procedure getLocNonSpace_SK3
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
 #include "pm_strASCII@routines.inc.F90"
     end procedure
 #endif
 
 #if SK2_ENABLED
     module procedure getLocNonSpace_SK2
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
 #include "pm_strASCII@routines.inc.F90"
     end procedure
 #endif
 
 #if SK1_ENABLED
     module procedure getLocNonSpace_SK1
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
 #include "pm_strASCII@routines.inc.F90"
     end procedure
 #endif
@@ -150,35 +150,35 @@ contains
 
 #if SK5_ENABLED
     module procedure isCharDigit_SK5
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
 #include "pm_strASCII@routines.inc.F90"
     end procedure
 #endif
 
 #if SK4_ENABLED
     module procedure isCharDigit_SK4
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
 #include "pm_strASCII@routines.inc.F90"
     end procedure
 #endif
 
 #if SK3_ENABLED
     module procedure isCharDigit_SK3
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
 #include "pm_strASCII@routines.inc.F90"
     end procedure
 #endif
 
 #if SK2_ENABLED
     module procedure isCharDigit_SK2
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
 #include "pm_strASCII@routines.inc.F90"
     end procedure
 #endif
 
 #if SK1_ENABLED
     module procedure isCharDigit_SK1
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
 #include "pm_strASCII@routines.inc.F90"
     end procedure
 #endif
@@ -199,35 +199,35 @@ contains
 
 #if SK5_ENABLED
     module procedure isStrDigitAll_SK5
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
 #include "pm_strASCII@routines.inc.F90"
     end procedure
 #endif
 
 #if SK4_ENABLED
     module procedure isStrDigitAll_SK4
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
 #include "pm_strASCII@routines.inc.F90"
     end procedure
 #endif
 
 #if SK3_ENABLED
     module procedure isStrDigitAll_SK3
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
 #include "pm_strASCII@routines.inc.F90"
     end procedure
 #endif
 
 #if SK2_ENABLED
     module procedure isStrDigitAll_SK2
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
 #include "pm_strASCII@routines.inc.F90"
     end procedure
 #endif
 
 #if SK1_ENABLED
     module procedure isStrDigitAll_SK1
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
 #include "pm_strASCII@routines.inc.F90"
     end procedure
 #endif
@@ -248,35 +248,35 @@ contains
 
 #if SK5_ENABLED
     module procedure isStrDigitAny_SK5
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
 #include "pm_strASCII@routines.inc.F90"
     end procedure
 #endif
 
 #if SK4_ENABLED
     module procedure isStrDigitAny_SK4
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
 #include "pm_strASCII@routines.inc.F90"
     end procedure
 #endif
 
 #if SK3_ENABLED
     module procedure isStrDigitAny_SK3
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
 #include "pm_strASCII@routines.inc.F90"
     end procedure
 #endif
 
 #if SK2_ENABLED
     module procedure isStrDigitAny_SK2
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
 #include "pm_strASCII@routines.inc.F90"
     end procedure
 #endif
 
 #if SK1_ENABLED
     module procedure isStrDigitAny_SK1
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
 #include "pm_strASCII@routines.inc.F90"
     end procedure
 #endif
@@ -297,35 +297,35 @@ contains
 
 #if SK5_ENABLED
     module procedure isStrDigit_SK5
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
 #include "pm_strASCII@routines.inc.F90"
     end procedure
 #endif
 
 #if SK4_ENABLED
     module procedure isStrDigit_SK4
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
 #include "pm_strASCII@routines.inc.F90"
     end procedure
 #endif
 
 #if SK3_ENABLED
     module procedure isStrDigit_SK3
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
 #include "pm_strASCII@routines.inc.F90"
     end procedure
 #endif
 
 #if SK2_ENABLED
     module procedure isStrDigit_SK2
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
 #include "pm_strASCII@routines.inc.F90"
     end procedure
 #endif
 
 #if SK1_ENABLED
     module procedure isStrDigit_SK1
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
 #include "pm_strASCII@routines.inc.F90"
     end procedure
 #endif
@@ -346,35 +346,35 @@ contains
 
 #if SK5_ENABLED
     module procedure isStrInteger_SK5
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
 #include "pm_strASCII@routines.inc.F90"
     end procedure
 #endif
 
 #if SK4_ENABLED
     module procedure isStrInteger_SK4
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
 #include "pm_strASCII@routines.inc.F90"
     end procedure
 #endif
 
 #if SK3_ENABLED
     module procedure isStrInteger_SK3
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
 #include "pm_strASCII@routines.inc.F90"
     end procedure
 #endif
 
 #if SK2_ENABLED
     module procedure isStrInteger_SK2
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
 #include "pm_strASCII@routines.inc.F90"
     end procedure
 #endif
 
 #if SK1_ENABLED
     module procedure isStrInteger_SK1
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
 #include "pm_strASCII@routines.inc.F90"
     end procedure
 #endif
@@ -395,35 +395,35 @@ contains
 
 #if SK5_ENABLED
     module procedure isStrComplex_SK5
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
 #include "pm_strASCII@routines.inc.F90"
     end procedure
 #endif
 
 #if SK4_ENABLED
     module procedure isStrComplex_SK4
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
 #include "pm_strASCII@routines.inc.F90"
     end procedure
 #endif
 
 #if SK3_ENABLED
     module procedure isStrComplex_SK3
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
 #include "pm_strASCII@routines.inc.F90"
     end procedure
 #endif
 
 #if SK2_ENABLED
     module procedure isStrComplex_SK2
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
 #include "pm_strASCII@routines.inc.F90"
     end procedure
 #endif
 
 #if SK1_ENABLED
     module procedure isStrComplex_SK1
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
 #include "pm_strASCII@routines.inc.F90"
     end procedure
 #endif
@@ -444,35 +444,35 @@ contains
 
 #if SK5_ENABLED
     module procedure isStrReal_SK5
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
 #include "pm_strASCII@routines.inc.F90"
     end procedure
 #endif
 
 #if SK4_ENABLED
     module procedure isStrReal_SK4
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
 #include "pm_strASCII@routines.inc.F90"
     end procedure
 #endif
 
 #if SK3_ENABLED
     module procedure isStrReal_SK3
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
 #include "pm_strASCII@routines.inc.F90"
     end procedure
 #endif
 
 #if SK2_ENABLED
     module procedure isStrReal_SK2
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
 #include "pm_strASCII@routines.inc.F90"
     end procedure
 #endif
 
 #if SK1_ENABLED
     module procedure isStrReal_SK1
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
 #include "pm_strASCII@routines.inc.F90"
     end procedure
 #endif
@@ -493,35 +493,35 @@ contains
 
 #if SK5_ENABLED
     module procedure isStrNumber_SK5
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
 #include "pm_strASCII@routines.inc.F90"
     end procedure
 #endif
 
 #if SK4_ENABLED
     module procedure isStrNumber_SK4
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
 #include "pm_strASCII@routines.inc.F90"
     end procedure
 #endif
 
 #if SK3_ENABLED
     module procedure isStrNumber_SK3
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
 #include "pm_strASCII@routines.inc.F90"
     end procedure
 #endif
 
 #if SK2_ENABLED
     module procedure isStrNumber_SK2
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
 #include "pm_strASCII@routines.inc.F90"
     end procedure
 #endif
 
 #if SK1_ENABLED
     module procedure isStrNumber_SK1
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
 #include "pm_strASCII@routines.inc.F90"
     end procedure
 #endif
@@ -542,35 +542,35 @@ contains
 
 #if SK5_ENABLED
     module procedure isCharUpper_SK5
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
 #include "pm_strASCII@routines.inc.F90"
     end procedure
 #endif
 
 #if SK4_ENABLED
     module procedure isCharUpper_SK4
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
 #include "pm_strASCII@routines.inc.F90"
     end procedure
 #endif
 
 #if SK3_ENABLED
     module procedure isCharUpper_SK3
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
 #include "pm_strASCII@routines.inc.F90"
     end procedure
 #endif
 
 #if SK2_ENABLED
     module procedure isCharUpper_SK2
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
 #include "pm_strASCII@routines.inc.F90"
     end procedure
 #endif
 
 #if SK1_ENABLED
     module procedure isCharUpper_SK1
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
 #include "pm_strASCII@routines.inc.F90"
     end procedure
 #endif
@@ -591,35 +591,35 @@ contains
 
 #if SK5_ENABLED
     module procedure isCharLower_SK5
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
 #include "pm_strASCII@routines.inc.F90"
     end procedure
 #endif
 
 #if SK4_ENABLED
     module procedure isCharLower_SK4
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
 #include "pm_strASCII@routines.inc.F90"
     end procedure
 #endif
 
 #if SK3_ENABLED
     module procedure isCharLower_SK3
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
 #include "pm_strASCII@routines.inc.F90"
     end procedure
 #endif
 
 #if SK2_ENABLED
     module procedure isCharLower_SK2
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
 #include "pm_strASCII@routines.inc.F90"
     end procedure
 #endif
 
 #if SK1_ENABLED
     module procedure isCharLower_SK1
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
 #include "pm_strASCII@routines.inc.F90"
     end procedure
 #endif
@@ -640,35 +640,35 @@ contains
 
 #if SK5_ENABLED
     module procedure isStrUpperAll_SK5
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
 #include "pm_strASCII@routines.inc.F90"
     end procedure
 #endif
 
 #if SK4_ENABLED
     module procedure isStrUpperAll_SK4
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
 #include "pm_strASCII@routines.inc.F90"
     end procedure
 #endif
 
 #if SK3_ENABLED
     module procedure isStrUpperAll_SK3
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
 #include "pm_strASCII@routines.inc.F90"
     end procedure
 #endif
 
 #if SK2_ENABLED
     module procedure isStrUpperAll_SK2
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
 #include "pm_strASCII@routines.inc.F90"
     end procedure
 #endif
 
 #if SK1_ENABLED
     module procedure isStrUpperAll_SK1
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
 #include "pm_strASCII@routines.inc.F90"
     end procedure
 #endif
@@ -689,35 +689,35 @@ contains
 
 #if SK5_ENABLED
     module procedure isStrLowerAll_SK5
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
 #include "pm_strASCII@routines.inc.F90"
     end procedure
 #endif
 
 #if SK4_ENABLED
     module procedure isStrLowerAll_SK4
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
 #include "pm_strASCII@routines.inc.F90"
     end procedure
 #endif
 
 #if SK3_ENABLED
     module procedure isStrLowerAll_SK3
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
 #include "pm_strASCII@routines.inc.F90"
     end procedure
 #endif
 
 #if SK2_ENABLED
     module procedure isStrLowerAll_SK2
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
 #include "pm_strASCII@routines.inc.F90"
     end procedure
 #endif
 
 #if SK1_ENABLED
     module procedure isStrLowerAll_SK1
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
 #include "pm_strASCII@routines.inc.F90"
     end procedure
 #endif
@@ -738,35 +738,35 @@ contains
 
 #if SK5_ENABLED
     module procedure isStrUpperAny_SK5
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
 #include "pm_strASCII@routines.inc.F90"
     end procedure
 #endif
 
 #if SK4_ENABLED
     module procedure isStrUpperAny_SK4
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
 #include "pm_strASCII@routines.inc.F90"
     end procedure
 #endif
 
 #if SK3_ENABLED
     module procedure isStrUpperAny_SK3
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
 #include "pm_strASCII@routines.inc.F90"
     end procedure
 #endif
 
 #if SK2_ENABLED
     module procedure isStrUpperAny_SK2
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
 #include "pm_strASCII@routines.inc.F90"
     end procedure
 #endif
 
 #if SK1_ENABLED
     module procedure isStrUpperAny_SK1
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
 #include "pm_strASCII@routines.inc.F90"
     end procedure
 #endif
@@ -787,35 +787,35 @@ contains
 
 #if SK5_ENABLED
     module procedure isStrLowerAny_SK5
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
 #include "pm_strASCII@routines.inc.F90"
     end procedure
 #endif
 
 #if SK4_ENABLED
     module procedure isStrLowerAny_SK4
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
 #include "pm_strASCII@routines.inc.F90"
     end procedure
 #endif
 
 #if SK3_ENABLED
     module procedure isStrLowerAny_SK3
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
 #include "pm_strASCII@routines.inc.F90"
     end procedure
 #endif
 
 #if SK2_ENABLED
     module procedure isStrLowerAny_SK2
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
 #include "pm_strASCII@routines.inc.F90"
     end procedure
 #endif
 
 #if SK1_ENABLED
     module procedure isStrLowerAny_SK1
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
 #include "pm_strASCII@routines.inc.F90"
     end procedure
 #endif
@@ -836,35 +836,35 @@ contains
 
 #if SK5_ENABLED
     module procedure isStrUpper_SK5
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
 #include "pm_strASCII@routines.inc.F90"
     end procedure
 #endif
 
 #if SK4_ENABLED
     module procedure isStrUpper_SK4
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
 #include "pm_strASCII@routines.inc.F90"
     end procedure
 #endif
 
 #if SK3_ENABLED
     module procedure isStrUpper_SK3
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
 #include "pm_strASCII@routines.inc.F90"
     end procedure
 #endif
 
 #if SK2_ENABLED
     module procedure isStrUpper_SK2
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
 #include "pm_strASCII@routines.inc.F90"
     end procedure
 #endif
 
 #if SK1_ENABLED
     module procedure isStrUpper_SK1
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
 #include "pm_strASCII@routines.inc.F90"
     end procedure
 #endif
@@ -885,35 +885,35 @@ contains
 
 #if SK5_ENABLED
     module procedure isStrLower_SK5
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
 #include "pm_strASCII@routines.inc.F90"
     end procedure
 #endif
 
 #if SK4_ENABLED
     module procedure isStrLower_SK4
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
 #include "pm_strASCII@routines.inc.F90"
     end procedure
 #endif
 
 #if SK3_ENABLED
     module procedure isStrLower_SK3
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
 #include "pm_strASCII@routines.inc.F90"
     end procedure
 #endif
 
 #if SK2_ENABLED
     module procedure isStrLower_SK2
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
 #include "pm_strASCII@routines.inc.F90"
     end procedure
 #endif
 
 #if SK1_ENABLED
     module procedure isStrLower_SK1
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
 #include "pm_strASCII@routines.inc.F90"
     end procedure
 #endif
@@ -934,35 +934,35 @@ contains
 
 #if SK5_ENABLED
     module procedure isCharAlphaNum_SK5
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
 #include "pm_strASCII@routines.inc.F90"
     end procedure
 #endif
 
 #if SK4_ENABLED
     module procedure isCharAlphaNum_SK4
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
 #include "pm_strASCII@routines.inc.F90"
     end procedure
 #endif
 
 #if SK3_ENABLED
     module procedure isCharAlphaNum_SK3
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
 #include "pm_strASCII@routines.inc.F90"
     end procedure
 #endif
 
 #if SK2_ENABLED
     module procedure isCharAlphaNum_SK2
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
 #include "pm_strASCII@routines.inc.F90"
     end procedure
 #endif
 
 #if SK1_ENABLED
     module procedure isCharAlphaNum_SK1
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
 #include "pm_strASCII@routines.inc.F90"
     end procedure
 #endif
@@ -983,35 +983,35 @@ contains
 
 #if SK5_ENABLED
     module procedure isStrAlphaNumAll_SK5
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
 #include "pm_strASCII@routines.inc.F90"
     end procedure
 #endif
 
 #if SK4_ENABLED
     module procedure isStrAlphaNumAll_SK4
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
 #include "pm_strASCII@routines.inc.F90"
     end procedure
 #endif
 
 #if SK3_ENABLED
     module procedure isStrAlphaNumAll_SK3
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
 #include "pm_strASCII@routines.inc.F90"
     end procedure
 #endif
 
 #if SK2_ENABLED
     module procedure isStrAlphaNumAll_SK2
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
 #include "pm_strASCII@routines.inc.F90"
     end procedure
 #endif
 
 #if SK1_ENABLED
     module procedure isStrAlphaNumAll_SK1
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
 #include "pm_strASCII@routines.inc.F90"
     end procedure
 #endif
@@ -1032,35 +1032,35 @@ contains
 
 #if SK5_ENABLED
     module procedure isStrAlphaNumAny_SK5
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
 #include "pm_strASCII@routines.inc.F90"
     end procedure
 #endif
 
 #if SK4_ENABLED
     module procedure isStrAlphaNumAny_SK4
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
 #include "pm_strASCII@routines.inc.F90"
     end procedure
 #endif
 
 #if SK3_ENABLED
     module procedure isStrAlphaNumAny_SK3
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
 #include "pm_strASCII@routines.inc.F90"
     end procedure
 #endif
 
 #if SK2_ENABLED
     module procedure isStrAlphaNumAny_SK2
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
 #include "pm_strASCII@routines.inc.F90"
     end procedure
 #endif
 
 #if SK1_ENABLED
     module procedure isStrAlphaNumAny_SK1
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
 #include "pm_strASCII@routines.inc.F90"
     end procedure
 #endif
@@ -1081,35 +1081,35 @@ contains
 
 #if SK5_ENABLED
     module procedure isStrAlphaNum_SK5
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
 #include "pm_strASCII@routines.inc.F90"
     end procedure
 #endif
 
 #if SK4_ENABLED
     module procedure isStrAlphaNum_SK4
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
 #include "pm_strASCII@routines.inc.F90"
     end procedure
 #endif
 
 #if SK3_ENABLED
     module procedure isStrAlphaNum_SK3
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
 #include "pm_strASCII@routines.inc.F90"
     end procedure
 #endif
 
 #if SK2_ENABLED
     module procedure isStrAlphaNum_SK2
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
 #include "pm_strASCII@routines.inc.F90"
     end procedure
 #endif
 
 #if SK1_ENABLED
     module procedure isStrAlphaNum_SK1
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
 #include "pm_strASCII@routines.inc.F90"
     end procedure
 #endif
@@ -1130,35 +1130,35 @@ contains
 
 #if SK5_ENABLED
     module procedure isCharAlpha_SK5
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
 #include "pm_strASCII@routines.inc.F90"
     end procedure
 #endif
 
 #if SK4_ENABLED
     module procedure isCharAlpha_SK4
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
 #include "pm_strASCII@routines.inc.F90"
     end procedure
 #endif
 
 #if SK3_ENABLED
     module procedure isCharAlpha_SK3
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
 #include "pm_strASCII@routines.inc.F90"
     end procedure
 #endif
 
 #if SK2_ENABLED
     module procedure isCharAlpha_SK2
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
 #include "pm_strASCII@routines.inc.F90"
     end procedure
 #endif
 
 #if SK1_ENABLED
     module procedure isCharAlpha_SK1
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
 #include "pm_strASCII@routines.inc.F90"
     end procedure
 #endif
@@ -1179,35 +1179,35 @@ contains
 
 #if SK5_ENABLED
     module procedure isStrAlphaAll_SK5
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
 #include "pm_strASCII@routines.inc.F90"
     end procedure
 #endif
 
 #if SK4_ENABLED
     module procedure isStrAlphaAll_SK4
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
 #include "pm_strASCII@routines.inc.F90"
     end procedure
 #endif
 
 #if SK3_ENABLED
     module procedure isStrAlphaAll_SK3
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
 #include "pm_strASCII@routines.inc.F90"
     end procedure
 #endif
 
 #if SK2_ENABLED
     module procedure isStrAlphaAll_SK2
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
 #include "pm_strASCII@routines.inc.F90"
     end procedure
 #endif
 
 #if SK1_ENABLED
     module procedure isStrAlphaAll_SK1
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
 #include "pm_strASCII@routines.inc.F90"
     end procedure
 #endif
@@ -1228,35 +1228,35 @@ contains
 
 #if SK5_ENABLED
     module procedure isStrAlphaAny_SK5
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
 #include "pm_strASCII@routines.inc.F90"
     end procedure
 #endif
 
 #if SK4_ENABLED
     module procedure isStrAlphaAny_SK4
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
 #include "pm_strASCII@routines.inc.F90"
     end procedure
 #endif
 
 #if SK3_ENABLED
     module procedure isStrAlphaAny_SK3
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
 #include "pm_strASCII@routines.inc.F90"
     end procedure
 #endif
 
 #if SK2_ENABLED
     module procedure isStrAlphaAny_SK2
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
 #include "pm_strASCII@routines.inc.F90"
     end procedure
 #endif
 
 #if SK1_ENABLED
     module procedure isStrAlphaAny_SK1
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
 #include "pm_strASCII@routines.inc.F90"
     end procedure
 #endif
@@ -1277,35 +1277,35 @@ contains
 
 #if SK5_ENABLED
     module procedure isStrAlpha_SK5
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
 #include "pm_strASCII@routines.inc.F90"
     end procedure
 #endif
 
 #if SK4_ENABLED
     module procedure isStrAlpha_SK4
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
 #include "pm_strASCII@routines.inc.F90"
     end procedure
 #endif
 
 #if SK3_ENABLED
     module procedure isStrAlpha_SK3
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
 #include "pm_strASCII@routines.inc.F90"
     end procedure
 #endif
 
 #if SK2_ENABLED
     module procedure isStrAlpha_SK2
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
 #include "pm_strASCII@routines.inc.F90"
     end procedure
 #endif
 
 #if SK1_ENABLED
     module procedure isStrAlpha_SK1
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
 #include "pm_strASCII@routines.inc.F90"
     end procedure
 #endif
@@ -1326,35 +1326,35 @@ contains
 
 #if SK5_ENABLED
     module procedure getCharUpper_SK5
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
 #include "pm_strASCII@routines.inc.F90"
     end procedure
 #endif
 
 #if SK4_ENABLED
     module procedure getCharUpper_SK4
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
 #include "pm_strASCII@routines.inc.F90"
     end procedure
 #endif
 
 #if SK3_ENABLED
     module procedure getCharUpper_SK3
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
 #include "pm_strASCII@routines.inc.F90"
     end procedure
 #endif
 
 #if SK2_ENABLED
     module procedure getCharUpper_SK2
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
 #include "pm_strASCII@routines.inc.F90"
     end procedure
 #endif
 
 #if SK1_ENABLED
     module procedure getCharUpper_SK1
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
 #include "pm_strASCII@routines.inc.F90"
     end procedure
 #endif
@@ -1375,35 +1375,35 @@ contains
 
 #if SK5_ENABLED
     module procedure setCharUpper_SK5
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
 #include "pm_strASCII@routines.inc.F90"
     end procedure
 #endif
 
 #if SK4_ENABLED
     module procedure setCharUpper_SK4
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
 #include "pm_strASCII@routines.inc.F90"
     end procedure
 #endif
 
 #if SK3_ENABLED
     module procedure setCharUpper_SK3
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
 #include "pm_strASCII@routines.inc.F90"
     end procedure
 #endif
 
 #if SK2_ENABLED
     module procedure setCharUpper_SK2
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
 #include "pm_strASCII@routines.inc.F90"
     end procedure
 #endif
 
 #if SK1_ENABLED
     module procedure setCharUpper_SK1
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
 #include "pm_strASCII@routines.inc.F90"
     end procedure
 #endif
@@ -1424,35 +1424,35 @@ contains
 
 #if SK5_ENABLED
     module procedure getCharLower_SK5
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
 #include "pm_strASCII@routines.inc.F90"
     end procedure
 #endif
 
 #if SK4_ENABLED
     module procedure getCharLower_SK4
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
 #include "pm_strASCII@routines.inc.F90"
     end procedure
 #endif
 
 #if SK3_ENABLED
     module procedure getCharLower_SK3
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
 #include "pm_strASCII@routines.inc.F90"
     end procedure
 #endif
 
 #if SK2_ENABLED
     module procedure getCharLower_SK2
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
 #include "pm_strASCII@routines.inc.F90"
     end procedure
 #endif
 
 #if SK1_ENABLED
     module procedure getCharLower_SK1
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
 #include "pm_strASCII@routines.inc.F90"
     end procedure
 #endif
@@ -1473,35 +1473,35 @@ contains
 
 #if SK5_ENABLED
     module procedure setCharLower_SK5
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
 #include "pm_strASCII@routines.inc.F90"
     end procedure
 #endif
 
 #if SK4_ENABLED
     module procedure setCharLower_SK4
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
 #include "pm_strASCII@routines.inc.F90"
     end procedure
 #endif
 
 #if SK3_ENABLED
     module procedure setCharLower_SK3
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
 #include "pm_strASCII@routines.inc.F90"
     end procedure
 #endif
 
 #if SK2_ENABLED
     module procedure setCharLower_SK2
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
 #include "pm_strASCII@routines.inc.F90"
     end procedure
 #endif
 
 #if SK1_ENABLED
     module procedure setCharLower_SK1
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
 #include "pm_strASCII@routines.inc.F90"
     end procedure
 #endif
@@ -1522,35 +1522,35 @@ contains
 
 #if SK5_ENABLED
     module procedure getStrUpper_SK5
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
 #include "pm_strASCII@routines.inc.F90"
     end procedure
 #endif
 
 #if SK4_ENABLED
     module procedure getStrUpper_SK4
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
 #include "pm_strASCII@routines.inc.F90"
     end procedure
 #endif
 
 #if SK3_ENABLED
     module procedure getStrUpper_SK3
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
 #include "pm_strASCII@routines.inc.F90"
     end procedure
 #endif
 
 #if SK2_ENABLED
     module procedure getStrUpper_SK2
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
 #include "pm_strASCII@routines.inc.F90"
     end procedure
 #endif
 
 #if SK1_ENABLED
     module procedure getStrUpper_SK1
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
 #include "pm_strASCII@routines.inc.F90"
     end procedure
 #endif
@@ -1571,35 +1571,35 @@ contains
 
 #if SK5_ENABLED
     module procedure setStrUpper_SK5
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
 #include "pm_strASCII@routines.inc.F90"
     end procedure
 #endif
 
 #if SK4_ENABLED
     module procedure setStrUpper_SK4
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
 #include "pm_strASCII@routines.inc.F90"
     end procedure
 #endif
 
 #if SK3_ENABLED
     module procedure setStrUpper_SK3
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
 #include "pm_strASCII@routines.inc.F90"
     end procedure
 #endif
 
 #if SK2_ENABLED
     module procedure setStrUpper_SK2
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
 #include "pm_strASCII@routines.inc.F90"
     end procedure
 #endif
 
 #if SK1_ENABLED
     module procedure setStrUpper_SK1
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
 #include "pm_strASCII@routines.inc.F90"
     end procedure
 #endif
@@ -1620,35 +1620,35 @@ contains
 
 #if SK5_ENABLED
     module procedure getStrLower_SK5
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
 #include "pm_strASCII@routines.inc.F90"
     end procedure
 #endif
 
 #if SK4_ENABLED
     module procedure getStrLower_SK4
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
 #include "pm_strASCII@routines.inc.F90"
     end procedure
 #endif
 
 #if SK3_ENABLED
     module procedure getStrLower_SK3
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
 #include "pm_strASCII@routines.inc.F90"
     end procedure
 #endif
 
 #if SK2_ENABLED
     module procedure getStrLower_SK2
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
 #include "pm_strASCII@routines.inc.F90"
     end procedure
 #endif
 
 #if SK1_ENABLED
     module procedure getStrLower_SK1
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
 #include "pm_strASCII@routines.inc.F90"
     end procedure
 #endif
@@ -1669,35 +1669,35 @@ contains
 
 #if SK5_ENABLED
     module procedure setStrLower_SK5
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
 #include "pm_strASCII@routines.inc.F90"
     end procedure
 #endif
 
 #if SK4_ENABLED
     module procedure setStrLower_SK4
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
 #include "pm_strASCII@routines.inc.F90"
     end procedure
 #endif
 
 #if SK3_ENABLED
     module procedure setStrLower_SK3
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
 #include "pm_strASCII@routines.inc.F90"
     end procedure
 #endif
 
 #if SK2_ENABLED
     module procedure setStrLower_SK2
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
 #include "pm_strASCII@routines.inc.F90"
     end procedure
 #endif
 
 #if SK1_ENABLED
     module procedure setStrLower_SK1
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
 #include "pm_strASCII@routines.inc.F90"
     end procedure
 #endif
@@ -1718,35 +1718,35 @@ contains
 
 #if SK5_ENABLED
     module procedure getStrQuoted_SK5
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
 #include "pm_strASCII@routines.inc.F90"
     end procedure
 #endif
 
 #if SK4_ENABLED
     module procedure getStrQuoted_SK4
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
 #include "pm_strASCII@routines.inc.F90"
     end procedure
 #endif
 
 #if SK3_ENABLED
     module procedure getStrQuoted_SK3
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
 #include "pm_strASCII@routines.inc.F90"
     end procedure
 #endif
 
 #if SK2_ENABLED
     module procedure getStrQuoted_SK2
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
 #include "pm_strASCII@routines.inc.F90"
     end procedure
 #endif
 
 #if SK1_ENABLED
     module procedure getStrQuoted_SK1
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
 #include "pm_strASCII@routines.inc.F90"
     end procedure
 #endif
@@ -1767,35 +1767,35 @@ contains
 
 #if SK5_ENABLED
     module procedure setStrQuoted_SK5
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
 #include "pm_strASCII@routines.inc.F90"
     end procedure
 #endif
 
 #if SK4_ENABLED
     module procedure setStrQuoted_SK4
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
 #include "pm_strASCII@routines.inc.F90"
     end procedure
 #endif
 
 #if SK3_ENABLED
     module procedure setStrQuoted_SK3
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
 #include "pm_strASCII@routines.inc.F90"
     end procedure
 #endif
 
 #if SK2_ENABLED
     module procedure setStrQuoted_SK2
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
 #include "pm_strASCII@routines.inc.F90"
     end procedure
 #endif
 
 #if SK1_ENABLED
     module procedure setStrQuoted_SK1
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
 #include "pm_strASCII@routines.inc.F90"
     end procedure
 #endif
@@ -1823,7 +1823,7 @@ contains
 #if SK5_ENABLED
     module procedure getAsciiFromEscapedNew_SK5
         use pm_mathNumSys, only: getDecimal
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
 #include "pm_strASCII@routines.inc.F90"
     end procedure
 #endif
@@ -1831,7 +1831,7 @@ contains
 #if SK4_ENABLED
     module procedure getAsciiFromEscapedNew_SK4
         use pm_mathNumSys, only: getDecimal
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
 #include "pm_strASCII@routines.inc.F90"
     end procedure
 #endif
@@ -1839,7 +1839,7 @@ contains
 #if SK3_ENABLED
     module procedure getAsciiFromEscapedNew_SK3
         use pm_mathNumSys, only: getDecimal
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
 #include "pm_strASCII@routines.inc.F90"
     end procedure
 #endif
@@ -1847,7 +1847,7 @@ contains
 #if SK2_ENABLED
     module procedure getAsciiFromEscapedNew_SK2
         use pm_mathNumSys, only: getDecimal
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
 #include "pm_strASCII@routines.inc.F90"
     end procedure
 #endif
@@ -1855,7 +1855,7 @@ contains
 #if SK1_ENABLED
     module procedure getAsciiFromEscapedNew_SK1
         use pm_mathNumSys, only: getDecimal
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
 #include "pm_strASCII@routines.inc.F90"
     end procedure
 #endif
@@ -1889,7 +1889,7 @@ contains
 #if SK5_ENABLED
     module procedure setAsciiFromEscapedRep_SK5
         use pm_mathNumSys, only: getDecimal
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
 #include "pm_strASCII@routines.inc.F90"
     end procedure
 #endif
@@ -1897,7 +1897,7 @@ contains
 #if SK4_ENABLED
     module procedure setAsciiFromEscapedRep_SK4
         use pm_mathNumSys, only: getDecimal
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
 #include "pm_strASCII@routines.inc.F90"
     end procedure
 #endif
@@ -1905,7 +1905,7 @@ contains
 #if SK3_ENABLED
     module procedure setAsciiFromEscapedRep_SK3
         use pm_mathNumSys, only: getDecimal
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
 #include "pm_strASCII@routines.inc.F90"
     end procedure
 #endif
@@ -1913,7 +1913,7 @@ contains
 #if SK2_ENABLED
     module procedure setAsciiFromEscapedRep_SK2
         use pm_mathNumSys, only: getDecimal
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
 #include "pm_strASCII@routines.inc.F90"
     end procedure
 #endif
@@ -1921,7 +1921,7 @@ contains
 #if SK1_ENABLED
     module procedure setAsciiFromEscapedRep_SK1
         use pm_mathNumSys, only: getDecimal
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
 #include "pm_strASCII@routines.inc.F90"
     end procedure
 #endif
@@ -1945,7 +1945,7 @@ contains
 #if SK5_ENABLED
     module procedure setAsciiFromEscapedNew_SK5
         use pm_mathNumSys, only: getDecimal
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
 #include "pm_strASCII@routines.inc.F90"
     end procedure
 #endif
@@ -1953,7 +1953,7 @@ contains
 #if SK4_ENABLED
     module procedure setAsciiFromEscapedNew_SK4
         use pm_mathNumSys, only: getDecimal
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
 #include "pm_strASCII@routines.inc.F90"
     end procedure
 #endif
@@ -1961,7 +1961,7 @@ contains
 #if SK3_ENABLED
     module procedure setAsciiFromEscapedNew_SK3
         use pm_mathNumSys, only: getDecimal
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
 #include "pm_strASCII@routines.inc.F90"
     end procedure
 #endif
@@ -1969,7 +1969,7 @@ contains
 #if SK2_ENABLED
     module procedure setAsciiFromEscapedNew_SK2
         use pm_mathNumSys, only: getDecimal
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
 #include "pm_strASCII@routines.inc.F90"
     end procedure
 #endif
@@ -1977,7 +1977,7 @@ contains
 #if SK1_ENABLED
     module procedure setAsciiFromEscapedNew_SK1
         use pm_mathNumSys, only: getDecimal
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
 #include "pm_strASCII@routines.inc.F90"
     end procedure
 #endif

@@ -49,10 +49,10 @@
 #endif
 
 #if     CK_ENABLED
-        complex(CKC), allocatable   :: Inf(:)
-        real(CKC)   , allocatable   :: Dummy(:) ! \bug bypass Intel 2021.4 bug.
+        complex(CKG), allocatable   :: Inf(:)
+        real(CKG)   , allocatable   :: Dummy(:) ! \bug bypass Intel 2021.4 bug.
 #elif   RK_ENABLED
-        real(RKC)   , allocatable   :: Inf(:)
+        real(RKG)   , allocatable   :: Inf(:)
 #else
 #error  "Unrecognized interface."
 #endif
@@ -146,10 +146,10 @@
 
 
 #if     CK_ENABLED
-        complex(CKC), allocatable   :: NAN(:)
-        real(CKC)   , allocatable   :: Dummy(:) ! \bug bypass Intel 2021.4 bug.
+        complex(CKG), allocatable   :: NAN(:)
+        real(CKG)   , allocatable   :: Dummy(:) ! \bug bypass Intel 2021.4 bug.
 #elif   RK_ENABLED
-        real(RKC)   , allocatable   :: NAN(:)
+        real(RKG)   , allocatable   :: NAN(:)
 #else
 #error  "Unrecognized interface."
 #endif

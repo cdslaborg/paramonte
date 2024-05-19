@@ -259,9 +259,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledDDDD_D0_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(1,SKC)            , intent(in)                        :: fill
-        character(:,SKC)            , intent(inout) , allocatable       :: array
+        use pm_kind, only: SKG => SK5
+        character(1,SKG)            , intent(in)                        :: fill
+        character(:,SKG)            , intent(inout) , allocatable       :: array
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
     end subroutine
@@ -272,9 +272,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledDDDD_D0_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(1,SKC)            , intent(in)                        :: fill
-        character(:,SKC)            , intent(inout) , allocatable       :: array
+        use pm_kind, only: SKG => SK4
+        character(1,SKG)            , intent(in)                        :: fill
+        character(:,SKG)            , intent(inout) , allocatable       :: array
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
     end subroutine
@@ -285,9 +285,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledDDDD_D0_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(1,SKC)            , intent(in)                        :: fill
-        character(:,SKC)            , intent(inout) , allocatable       :: array
+        use pm_kind, only: SKG => SK3
+        character(1,SKG)            , intent(in)                        :: fill
+        character(:,SKG)            , intent(inout) , allocatable       :: array
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
     end subroutine
@@ -298,9 +298,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledDDDD_D0_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(1,SKC)            , intent(in)                        :: fill
-        character(:,SKC)            , intent(inout) , allocatable       :: array
+        use pm_kind, only: SKG => SK2
+        character(1,SKG)            , intent(in)                        :: fill
+        character(:,SKG)            , intent(inout) , allocatable       :: array
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
     end subroutine
@@ -311,9 +311,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledDDDD_D0_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(1,SKC)            , intent(in)                        :: fill
-        character(:,SKC)            , intent(inout) , allocatable       :: array
+        use pm_kind, only: SKG => SK1
+        character(1,SKG)            , intent(in)                        :: fill
+        character(:,SKG)            , intent(inout) , allocatable       :: array
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
     end subroutine
@@ -332,9 +332,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledDDDD_D1_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)            , intent(in)                        :: fill
-        character(*,SKC)            , intent(inout) , allocatable       :: array(:)
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)            , intent(in)                        :: fill
+        character(*,SKG)            , intent(inout) , allocatable       :: array(:)
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
     end subroutine
@@ -345,9 +345,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledDDDD_D1_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)            , intent(in)                        :: fill
-        character(*,SKC)            , intent(inout) , allocatable       :: array(:)
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)            , intent(in)                        :: fill
+        character(*,SKG)            , intent(inout) , allocatable       :: array(:)
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
     end subroutine
@@ -358,9 +358,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledDDDD_D1_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)            , intent(in)                        :: fill
-        character(*,SKC)            , intent(inout) , allocatable       :: array(:)
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)            , intent(in)                        :: fill
+        character(*,SKG)            , intent(inout) , allocatable       :: array(:)
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
     end subroutine
@@ -371,9 +371,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledDDDD_D1_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)            , intent(in)                        :: fill
-        character(*,SKC)            , intent(inout) , allocatable       :: array(:)
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)            , intent(in)                        :: fill
+        character(*,SKG)            , intent(inout) , allocatable       :: array(:)
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
     end subroutine
@@ -384,9 +384,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledDDDD_D1_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)            , intent(in)                        :: fill
-        character(*,SKC)            , intent(inout) , allocatable       :: array(:)
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)            , intent(in)                        :: fill
+        character(*,SKG)            , intent(inout) , allocatable       :: array(:)
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
     end subroutine
@@ -399,9 +399,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledDDDD_D1_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)                , intent(in)                        :: fill
-        integer(IKC)                , intent(inout) , allocatable       :: array(:)
+        use pm_kind, only: IKG => IK5
+        integer(IKG)                , intent(in)                        :: fill
+        integer(IKG)                , intent(inout) , allocatable       :: array(:)
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
     end subroutine
@@ -412,9 +412,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledDDDD_D1_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)                , intent(in)                        :: fill
-        integer(IKC)                , intent(inout) , allocatable       :: array(:)
+        use pm_kind, only: IKG => IK4
+        integer(IKG)                , intent(in)                        :: fill
+        integer(IKG)                , intent(inout) , allocatable       :: array(:)
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
     end subroutine
@@ -425,9 +425,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledDDDD_D1_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)                , intent(in)                        :: fill
-        integer(IKC)                , intent(inout) , allocatable       :: array(:)
+        use pm_kind, only: IKG => IK3
+        integer(IKG)                , intent(in)                        :: fill
+        integer(IKG)                , intent(inout) , allocatable       :: array(:)
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
     end subroutine
@@ -438,9 +438,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledDDDD_D1_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)                , intent(in)                        :: fill
-        integer(IKC)                , intent(inout) , allocatable       :: array(:)
+        use pm_kind, only: IKG => IK2
+        integer(IKG)                , intent(in)                        :: fill
+        integer(IKG)                , intent(inout) , allocatable       :: array(:)
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
     end subroutine
@@ -451,9 +451,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledDDDD_D1_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)                , intent(in)                        :: fill
-        integer(IKC)                , intent(inout) , allocatable       :: array(:)
+        use pm_kind, only: IKG => IK1
+        integer(IKG)                , intent(in)                        :: fill
+        integer(IKG)                , intent(inout) , allocatable       :: array(:)
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
     end subroutine
@@ -466,9 +466,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledDDDD_D1_LK5
 #endif
-        use pm_kind, only: LKC => LK5
-        logical(LKC)                , intent(in)                        :: fill
-        logical(LKC)                , intent(inout) , allocatable       :: array(:)
+        use pm_kind, only: LKG => LK5
+        logical(LKG)                , intent(in)                        :: fill
+        logical(LKG)                , intent(inout) , allocatable       :: array(:)
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
     end subroutine
@@ -479,9 +479,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledDDDD_D1_LK4
 #endif
-        use pm_kind, only: LKC => LK4
-        logical(LKC)                , intent(in)                        :: fill
-        logical(LKC)                , intent(inout) , allocatable       :: array(:)
+        use pm_kind, only: LKG => LK4
+        logical(LKG)                , intent(in)                        :: fill
+        logical(LKG)                , intent(inout) , allocatable       :: array(:)
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
     end subroutine
@@ -492,9 +492,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledDDDD_D1_LK3
 #endif
-        use pm_kind, only: LKC => LK3
-        logical(LKC)                , intent(in)                        :: fill
-        logical(LKC)                , intent(inout) , allocatable       :: array(:)
+        use pm_kind, only: LKG => LK3
+        logical(LKG)                , intent(in)                        :: fill
+        logical(LKG)                , intent(inout) , allocatable       :: array(:)
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
     end subroutine
@@ -505,9 +505,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledDDDD_D1_LK2
 #endif
-        use pm_kind, only: LKC => LK2
-        logical(LKC)                , intent(in)                        :: fill
-        logical(LKC)                , intent(inout) , allocatable       :: array(:)
+        use pm_kind, only: LKG => LK2
+        logical(LKG)                , intent(in)                        :: fill
+        logical(LKG)                , intent(inout) , allocatable       :: array(:)
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
     end subroutine
@@ -518,9 +518,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledDDDD_D1_LK1
 #endif
-        use pm_kind, only: LKC => LK1
-        logical(LKC)                , intent(in)                        :: fill
-        logical(LKC)                , intent(inout) , allocatable       :: array(:)
+        use pm_kind, only: LKG => LK1
+        logical(LKG)                , intent(in)                        :: fill
+        logical(LKG)                , intent(inout) , allocatable       :: array(:)
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
     end subroutine
@@ -533,9 +533,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledDDDD_D1_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)                , intent(in)                        :: fill
-        complex(CKC)                , intent(inout) , allocatable       :: array(:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG)                , intent(in)                        :: fill
+        complex(CKG)                , intent(inout) , allocatable       :: array(:)
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
     end subroutine
@@ -546,9 +546,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledDDDD_D1_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)                , intent(in)                        :: fill
-        complex(CKC)                , intent(inout) , allocatable       :: array(:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG)                , intent(in)                        :: fill
+        complex(CKG)                , intent(inout) , allocatable       :: array(:)
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
     end subroutine
@@ -559,9 +559,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledDDDD_D1_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)                , intent(in)                        :: fill
-        complex(CKC)                , intent(inout) , allocatable       :: array(:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG)                , intent(in)                        :: fill
+        complex(CKG)                , intent(inout) , allocatable       :: array(:)
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
     end subroutine
@@ -572,9 +572,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledDDDD_D1_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)                , intent(in)                        :: fill
-        complex(CKC)                , intent(inout) , allocatable       :: array(:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG)                , intent(in)                        :: fill
+        complex(CKG)                , intent(inout) , allocatable       :: array(:)
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
     end subroutine
@@ -585,9 +585,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledDDDD_D1_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)                , intent(in)                        :: fill
-        complex(CKC)                , intent(inout) , allocatable       :: array(:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG)                , intent(in)                        :: fill
+        complex(CKG)                , intent(inout) , allocatable       :: array(:)
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
     end subroutine
@@ -600,9 +600,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledDDDD_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)                   , intent(in)                        :: fill
-        real(RKC)                   , intent(inout) , allocatable       :: array(:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)                   , intent(in)                        :: fill
+        real(RKG)                   , intent(inout) , allocatable       :: array(:)
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
     end subroutine
@@ -613,9 +613,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledDDDD_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)                   , intent(in)                        :: fill
-        real(RKC)                   , intent(inout) , allocatable       :: array(:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)                   , intent(in)                        :: fill
+        real(RKG)                   , intent(inout) , allocatable       :: array(:)
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
     end subroutine
@@ -626,9 +626,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledDDDD_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)                   , intent(in)                        :: fill
-        real(RKC)                   , intent(inout) , allocatable       :: array(:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)                   , intent(in)                        :: fill
+        real(RKG)                   , intent(inout) , allocatable       :: array(:)
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
     end subroutine
@@ -639,9 +639,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledDDDD_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)                   , intent(in)                        :: fill
-        real(RKC)                   , intent(inout) , allocatable       :: array(:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)                   , intent(in)                        :: fill
+        real(RKG)                   , intent(inout) , allocatable       :: array(:)
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
     end subroutine
@@ -652,9 +652,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledDDDD_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)                   , intent(in)                        :: fill
-        real(RKC)                   , intent(inout) , allocatable       :: array(:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)                   , intent(in)                        :: fill
+        real(RKG)                   , intent(inout) , allocatable       :: array(:)
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
     end subroutine
@@ -673,9 +673,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledDDDD_D2_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)            , intent(in)                        :: fill
-        character(*,SKC)            , intent(inout) , allocatable       :: array(:,:)
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)            , intent(in)                        :: fill
+        character(*,SKG)            , intent(inout) , allocatable       :: array(:,:)
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
     end subroutine
@@ -686,9 +686,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledDDDD_D2_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)            , intent(in)                        :: fill
-        character(*,SKC)            , intent(inout) , allocatable       :: array(:,:)
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)            , intent(in)                        :: fill
+        character(*,SKG)            , intent(inout) , allocatable       :: array(:,:)
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
     end subroutine
@@ -699,9 +699,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledDDDD_D2_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)            , intent(in)                        :: fill
-        character(*,SKC)            , intent(inout) , allocatable       :: array(:,:)
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)            , intent(in)                        :: fill
+        character(*,SKG)            , intent(inout) , allocatable       :: array(:,:)
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
     end subroutine
@@ -712,9 +712,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledDDDD_D2_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)            , intent(in)                        :: fill
-        character(*,SKC)            , intent(inout) , allocatable       :: array(:,:)
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)            , intent(in)                        :: fill
+        character(*,SKG)            , intent(inout) , allocatable       :: array(:,:)
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
     end subroutine
@@ -725,9 +725,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledDDDD_D2_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)            , intent(in)                        :: fill
-        character(*,SKC)            , intent(inout) , allocatable       :: array(:,:)
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)            , intent(in)                        :: fill
+        character(*,SKG)            , intent(inout) , allocatable       :: array(:,:)
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
     end subroutine
@@ -740,9 +740,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledDDDD_D2_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)                , intent(in)                        :: fill
-        integer(IKC)                , intent(inout) , allocatable       :: array(:,:)
+        use pm_kind, only: IKG => IK5
+        integer(IKG)                , intent(in)                        :: fill
+        integer(IKG)                , intent(inout) , allocatable       :: array(:,:)
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
     end subroutine
@@ -753,9 +753,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledDDDD_D2_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)                , intent(in)                        :: fill
-        integer(IKC)                , intent(inout) , allocatable       :: array(:,:)
+        use pm_kind, only: IKG => IK4
+        integer(IKG)                , intent(in)                        :: fill
+        integer(IKG)                , intent(inout) , allocatable       :: array(:,:)
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
     end subroutine
@@ -766,9 +766,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledDDDD_D2_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)                , intent(in)                        :: fill
-        integer(IKC)                , intent(inout) , allocatable       :: array(:,:)
+        use pm_kind, only: IKG => IK3
+        integer(IKG)                , intent(in)                        :: fill
+        integer(IKG)                , intent(inout) , allocatable       :: array(:,:)
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
     end subroutine
@@ -779,9 +779,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledDDDD_D2_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)                , intent(in)                        :: fill
-        integer(IKC)                , intent(inout) , allocatable       :: array(:,:)
+        use pm_kind, only: IKG => IK2
+        integer(IKG)                , intent(in)                        :: fill
+        integer(IKG)                , intent(inout) , allocatable       :: array(:,:)
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
     end subroutine
@@ -792,9 +792,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledDDDD_D2_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)                , intent(in)                        :: fill
-        integer(IKC)                , intent(inout) , allocatable       :: array(:,:)
+        use pm_kind, only: IKG => IK1
+        integer(IKG)                , intent(in)                        :: fill
+        integer(IKG)                , intent(inout) , allocatable       :: array(:,:)
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
     end subroutine
@@ -807,9 +807,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledDDDD_D2_LK5
 #endif
-        use pm_kind, only: LKC => LK5
-        logical(LKC)                , intent(in)                        :: fill
-        logical(LKC)                , intent(inout) , allocatable       :: array(:,:)
+        use pm_kind, only: LKG => LK5
+        logical(LKG)                , intent(in)                        :: fill
+        logical(LKG)                , intent(inout) , allocatable       :: array(:,:)
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
     end subroutine
@@ -820,9 +820,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledDDDD_D2_LK4
 #endif
-        use pm_kind, only: LKC => LK4
-        logical(LKC)                , intent(in)                        :: fill
-        logical(LKC)                , intent(inout) , allocatable       :: array(:,:)
+        use pm_kind, only: LKG => LK4
+        logical(LKG)                , intent(in)                        :: fill
+        logical(LKG)                , intent(inout) , allocatable       :: array(:,:)
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
     end subroutine
@@ -833,9 +833,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledDDDD_D2_LK3
 #endif
-        use pm_kind, only: LKC => LK3
-        logical(LKC)                , intent(in)                        :: fill
-        logical(LKC)                , intent(inout) , allocatable       :: array(:,:)
+        use pm_kind, only: LKG => LK3
+        logical(LKG)                , intent(in)                        :: fill
+        logical(LKG)                , intent(inout) , allocatable       :: array(:,:)
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
     end subroutine
@@ -846,9 +846,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledDDDD_D2_LK2
 #endif
-        use pm_kind, only: LKC => LK2
-        logical(LKC)                , intent(in)                        :: fill
-        logical(LKC)                , intent(inout) , allocatable       :: array(:,:)
+        use pm_kind, only: LKG => LK2
+        logical(LKG)                , intent(in)                        :: fill
+        logical(LKG)                , intent(inout) , allocatable       :: array(:,:)
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
     end subroutine
@@ -859,9 +859,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledDDDD_D2_LK1
 #endif
-        use pm_kind, only: LKC => LK1
-        logical(LKC)                , intent(in)                        :: fill
-        logical(LKC)                , intent(inout) , allocatable       :: array(:,:)
+        use pm_kind, only: LKG => LK1
+        logical(LKG)                , intent(in)                        :: fill
+        logical(LKG)                , intent(inout) , allocatable       :: array(:,:)
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
     end subroutine
@@ -874,9 +874,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledDDDD_D2_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)                , intent(in)                        :: fill
-        complex(CKC)                , intent(inout) , allocatable       :: array(:,:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG)                , intent(in)                        :: fill
+        complex(CKG)                , intent(inout) , allocatable       :: array(:,:)
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
     end subroutine
@@ -887,9 +887,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledDDDD_D2_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)                , intent(in)                        :: fill
-        complex(CKC)                , intent(inout) , allocatable       :: array(:,:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG)                , intent(in)                        :: fill
+        complex(CKG)                , intent(inout) , allocatable       :: array(:,:)
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
     end subroutine
@@ -900,9 +900,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledDDDD_D2_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)                , intent(in)                        :: fill
-        complex(CKC)                , intent(inout) , allocatable       :: array(:,:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG)                , intent(in)                        :: fill
+        complex(CKG)                , intent(inout) , allocatable       :: array(:,:)
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
     end subroutine
@@ -913,9 +913,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledDDDD_D2_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)                , intent(in)                        :: fill
-        complex(CKC)                , intent(inout) , allocatable       :: array(:,:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG)                , intent(in)                        :: fill
+        complex(CKG)                , intent(inout) , allocatable       :: array(:,:)
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
     end subroutine
@@ -926,9 +926,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledDDDD_D2_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)                , intent(in)                        :: fill
-        complex(CKC)                , intent(inout) , allocatable       :: array(:,:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG)                , intent(in)                        :: fill
+        complex(CKG)                , intent(inout) , allocatable       :: array(:,:)
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
     end subroutine
@@ -941,9 +941,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledDDDD_D2_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)                   , intent(in)                        :: fill
-        real(RKC)                   , intent(inout) , allocatable       :: array(:,:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)                   , intent(in)                        :: fill
+        real(RKG)                   , intent(inout) , allocatable       :: array(:,:)
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
     end subroutine
@@ -954,9 +954,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledDDDD_D2_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)                   , intent(in)                        :: fill
-        real(RKC)                   , intent(inout) , allocatable       :: array(:,:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)                   , intent(in)                        :: fill
+        real(RKG)                   , intent(inout) , allocatable       :: array(:,:)
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
     end subroutine
@@ -967,9 +967,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledDDDD_D2_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)                   , intent(in)                        :: fill
-        real(RKC)                   , intent(inout) , allocatable       :: array(:,:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)                   , intent(in)                        :: fill
+        real(RKG)                   , intent(inout) , allocatable       :: array(:,:)
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
     end subroutine
@@ -980,9 +980,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledDDDD_D2_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)                   , intent(in)                        :: fill
-        real(RKC)                   , intent(inout) , allocatable       :: array(:,:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)                   , intent(in)                        :: fill
+        real(RKG)                   , intent(inout) , allocatable       :: array(:,:)
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
     end subroutine
@@ -993,9 +993,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledDDDD_D2_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)                   , intent(in)                        :: fill
-        real(RKC)                   , intent(inout) , allocatable       :: array(:,:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)                   , intent(in)                        :: fill
+        real(RKG)                   , intent(inout) , allocatable       :: array(:,:)
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
     end subroutine
@@ -1014,9 +1014,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledDDDD_D3_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)            , intent(in)                        :: fill
-        character(*,SKC)            , intent(inout) , allocatable       :: array(:,:,:)
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)            , intent(in)                        :: fill
+        character(*,SKG)            , intent(inout) , allocatable       :: array(:,:,:)
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
     end subroutine
@@ -1027,9 +1027,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledDDDD_D3_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)            , intent(in)                        :: fill
-        character(*,SKC)            , intent(inout) , allocatable       :: array(:,:,:)
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)            , intent(in)                        :: fill
+        character(*,SKG)            , intent(inout) , allocatable       :: array(:,:,:)
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
     end subroutine
@@ -1040,9 +1040,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledDDDD_D3_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)            , intent(in)                        :: fill
-        character(*,SKC)            , intent(inout) , allocatable       :: array(:,:,:)
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)            , intent(in)                        :: fill
+        character(*,SKG)            , intent(inout) , allocatable       :: array(:,:,:)
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
     end subroutine
@@ -1053,9 +1053,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledDDDD_D3_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)            , intent(in)                        :: fill
-        character(*,SKC)            , intent(inout) , allocatable       :: array(:,:,:)
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)            , intent(in)                        :: fill
+        character(*,SKG)            , intent(inout) , allocatable       :: array(:,:,:)
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
     end subroutine
@@ -1066,9 +1066,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledDDDD_D3_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)            , intent(in)                        :: fill
-        character(*,SKC)            , intent(inout) , allocatable       :: array(:,:,:)
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)            , intent(in)                        :: fill
+        character(*,SKG)            , intent(inout) , allocatable       :: array(:,:,:)
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
     end subroutine
@@ -1081,9 +1081,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledDDDD_D3_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)                , intent(in)                        :: fill
-        integer(IKC)                , intent(inout) , allocatable       :: array(:,:,:)
+        use pm_kind, only: IKG => IK5
+        integer(IKG)                , intent(in)                        :: fill
+        integer(IKG)                , intent(inout) , allocatable       :: array(:,:,:)
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
     end subroutine
@@ -1094,9 +1094,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledDDDD_D3_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)                , intent(in)                        :: fill
-        integer(IKC)                , intent(inout) , allocatable       :: array(:,:,:)
+        use pm_kind, only: IKG => IK4
+        integer(IKG)                , intent(in)                        :: fill
+        integer(IKG)                , intent(inout) , allocatable       :: array(:,:,:)
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
     end subroutine
@@ -1107,9 +1107,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledDDDD_D3_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)                , intent(in)                        :: fill
-        integer(IKC)                , intent(inout) , allocatable       :: array(:,:,:)
+        use pm_kind, only: IKG => IK3
+        integer(IKG)                , intent(in)                        :: fill
+        integer(IKG)                , intent(inout) , allocatable       :: array(:,:,:)
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
     end subroutine
@@ -1120,9 +1120,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledDDDD_D3_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)                , intent(in)                        :: fill
-        integer(IKC)                , intent(inout) , allocatable       :: array(:,:,:)
+        use pm_kind, only: IKG => IK2
+        integer(IKG)                , intent(in)                        :: fill
+        integer(IKG)                , intent(inout) , allocatable       :: array(:,:,:)
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
     end subroutine
@@ -1133,9 +1133,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledDDDD_D3_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)                , intent(in)                        :: fill
-        integer(IKC)                , intent(inout) , allocatable       :: array(:,:,:)
+        use pm_kind, only: IKG => IK1
+        integer(IKG)                , intent(in)                        :: fill
+        integer(IKG)                , intent(inout) , allocatable       :: array(:,:,:)
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
     end subroutine
@@ -1148,9 +1148,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledDDDD_D3_LK5
 #endif
-        use pm_kind, only: LKC => LK5
-        logical(LKC)                , intent(in)                        :: fill
-        logical(LKC)                , intent(inout) , allocatable       :: array(:,:,:)
+        use pm_kind, only: LKG => LK5
+        logical(LKG)                , intent(in)                        :: fill
+        logical(LKG)                , intent(inout) , allocatable       :: array(:,:,:)
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
     end subroutine
@@ -1161,9 +1161,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledDDDD_D3_LK4
 #endif
-        use pm_kind, only: LKC => LK4
-        logical(LKC)                , intent(in)                        :: fill
-        logical(LKC)                , intent(inout) , allocatable       :: array(:,:,:)
+        use pm_kind, only: LKG => LK4
+        logical(LKG)                , intent(in)                        :: fill
+        logical(LKG)                , intent(inout) , allocatable       :: array(:,:,:)
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
     end subroutine
@@ -1174,9 +1174,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledDDDD_D3_LK3
 #endif
-        use pm_kind, only: LKC => LK3
-        logical(LKC)                , intent(in)                        :: fill
-        logical(LKC)                , intent(inout) , allocatable       :: array(:,:,:)
+        use pm_kind, only: LKG => LK3
+        logical(LKG)                , intent(in)                        :: fill
+        logical(LKG)                , intent(inout) , allocatable       :: array(:,:,:)
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
     end subroutine
@@ -1187,9 +1187,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledDDDD_D3_LK2
 #endif
-        use pm_kind, only: LKC => LK2
-        logical(LKC)                , intent(in)                        :: fill
-        logical(LKC)                , intent(inout) , allocatable       :: array(:,:,:)
+        use pm_kind, only: LKG => LK2
+        logical(LKG)                , intent(in)                        :: fill
+        logical(LKG)                , intent(inout) , allocatable       :: array(:,:,:)
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
     end subroutine
@@ -1200,9 +1200,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledDDDD_D3_LK1
 #endif
-        use pm_kind, only: LKC => LK1
-        logical(LKC)                , intent(in)                        :: fill
-        logical(LKC)                , intent(inout) , allocatable       :: array(:,:,:)
+        use pm_kind, only: LKG => LK1
+        logical(LKG)                , intent(in)                        :: fill
+        logical(LKG)                , intent(inout) , allocatable       :: array(:,:,:)
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
     end subroutine
@@ -1215,9 +1215,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledDDDD_D3_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)                , intent(in)                        :: fill
-        complex(CKC)                , intent(inout) , allocatable       :: array(:,:,:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG)                , intent(in)                        :: fill
+        complex(CKG)                , intent(inout) , allocatable       :: array(:,:,:)
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
     end subroutine
@@ -1228,9 +1228,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledDDDD_D3_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)                , intent(in)                        :: fill
-        complex(CKC)                , intent(inout) , allocatable       :: array(:,:,:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG)                , intent(in)                        :: fill
+        complex(CKG)                , intent(inout) , allocatable       :: array(:,:,:)
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
     end subroutine
@@ -1241,9 +1241,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledDDDD_D3_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)                , intent(in)                        :: fill
-        complex(CKC)                , intent(inout) , allocatable       :: array(:,:,:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG)                , intent(in)                        :: fill
+        complex(CKG)                , intent(inout) , allocatable       :: array(:,:,:)
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
     end subroutine
@@ -1254,9 +1254,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledDDDD_D3_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)                , intent(in)                        :: fill
-        complex(CKC)                , intent(inout) , allocatable       :: array(:,:,:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG)                , intent(in)                        :: fill
+        complex(CKG)                , intent(inout) , allocatable       :: array(:,:,:)
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
     end subroutine
@@ -1267,9 +1267,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledDDDD_D3_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)                , intent(in)                        :: fill
-        complex(CKC)                , intent(inout) , allocatable       :: array(:,:,:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG)                , intent(in)                        :: fill
+        complex(CKG)                , intent(inout) , allocatable       :: array(:,:,:)
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
     end subroutine
@@ -1282,9 +1282,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledDDDD_D3_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)                   , intent(in)                        :: fill
-        real(RKC)                   , intent(inout) , allocatable       :: array(:,:,:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)                   , intent(in)                        :: fill
+        real(RKG)                   , intent(inout) , allocatable       :: array(:,:,:)
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
     end subroutine
@@ -1295,9 +1295,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledDDDD_D3_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)                   , intent(in)                        :: fill
-        real(RKC)                   , intent(inout) , allocatable       :: array(:,:,:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)                   , intent(in)                        :: fill
+        real(RKG)                   , intent(inout) , allocatable       :: array(:,:,:)
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
     end subroutine
@@ -1308,9 +1308,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledDDDD_D3_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)                   , intent(in)                        :: fill
-        real(RKC)                   , intent(inout) , allocatable       :: array(:,:,:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)                   , intent(in)                        :: fill
+        real(RKG)                   , intent(inout) , allocatable       :: array(:,:,:)
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
     end subroutine
@@ -1321,9 +1321,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledDDDD_D3_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)                   , intent(in)                        :: fill
-        real(RKC)                   , intent(inout) , allocatable       :: array(:,:,:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)                   , intent(in)                        :: fill
+        real(RKG)                   , intent(inout) , allocatable       :: array(:,:,:)
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
     end subroutine
@@ -1334,9 +1334,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledDDDD_D3_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)                   , intent(in)                        :: fill
-        real(RKC)                   , intent(inout) , allocatable       :: array(:,:,:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)                   , intent(in)                        :: fill
+        real(RKG)                   , intent(inout) , allocatable       :: array(:,:,:)
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
     end subroutine
@@ -1359,9 +1359,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSDDD_D0_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(1,SKC)            , intent(in)                        :: fill
-        character(:,SKC)            , intent(inout) , allocatable       :: array
+        use pm_kind, only: SKG => SK5
+        character(1,SKG)            , intent(in)                        :: fill
+        character(:,SKG)            , intent(inout) , allocatable       :: array
         integer(IK)                 , intent(in)                        :: size
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -1373,9 +1373,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSDDD_D0_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(1,SKC)            , intent(in)                        :: fill
-        character(:,SKC)            , intent(inout) , allocatable       :: array
+        use pm_kind, only: SKG => SK4
+        character(1,SKG)            , intent(in)                        :: fill
+        character(:,SKG)            , intent(inout) , allocatable       :: array
         integer(IK)                 , intent(in)                        :: size
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -1387,9 +1387,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSDDD_D0_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(1,SKC)            , intent(in)                        :: fill
-        character(:,SKC)            , intent(inout) , allocatable       :: array
+        use pm_kind, only: SKG => SK3
+        character(1,SKG)            , intent(in)                        :: fill
+        character(:,SKG)            , intent(inout) , allocatable       :: array
         integer(IK)                 , intent(in)                        :: size
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -1401,9 +1401,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSDDD_D0_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(1,SKC)            , intent(in)                        :: fill
-        character(:,SKC)            , intent(inout) , allocatable       :: array
+        use pm_kind, only: SKG => SK2
+        character(1,SKG)            , intent(in)                        :: fill
+        character(:,SKG)            , intent(inout) , allocatable       :: array
         integer(IK)                 , intent(in)                        :: size
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -1415,9 +1415,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSDDD_D0_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(1,SKC)            , intent(in)                        :: fill
-        character(:,SKC)            , intent(inout) , allocatable       :: array
+        use pm_kind, only: SKG => SK1
+        character(1,SKG)            , intent(in)                        :: fill
+        character(:,SKG)            , intent(inout) , allocatable       :: array
         integer(IK)                 , intent(in)                        :: size
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -1437,9 +1437,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSDDD_D1_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)            , intent(in)                        :: fill
-        character(*,SKC)            , intent(inout) , allocatable       :: array(:)
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)            , intent(in)                        :: fill
+        character(*,SKG)            , intent(inout) , allocatable       :: array(:)
         integer(IK)                 , intent(in)                        :: size
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -1451,9 +1451,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSDDD_D1_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)            , intent(in)                        :: fill
-        character(*,SKC)            , intent(inout) , allocatable       :: array(:)
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)            , intent(in)                        :: fill
+        character(*,SKG)            , intent(inout) , allocatable       :: array(:)
         integer(IK)                 , intent(in)                        :: size
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -1465,9 +1465,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSDDD_D1_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)            , intent(in)                        :: fill
-        character(*,SKC)            , intent(inout) , allocatable       :: array(:)
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)            , intent(in)                        :: fill
+        character(*,SKG)            , intent(inout) , allocatable       :: array(:)
         integer(IK)                 , intent(in)                        :: size
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -1479,9 +1479,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSDDD_D1_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)            , intent(in)                        :: fill
-        character(*,SKC)            , intent(inout) , allocatable       :: array(:)
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)            , intent(in)                        :: fill
+        character(*,SKG)            , intent(inout) , allocatable       :: array(:)
         integer(IK)                 , intent(in)                        :: size
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -1493,9 +1493,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSDDD_D1_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)            , intent(in)                        :: fill
-        character(*,SKC)            , intent(inout) , allocatable       :: array(:)
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)            , intent(in)                        :: fill
+        character(*,SKG)            , intent(inout) , allocatable       :: array(:)
         integer(IK)                 , intent(in)                        :: size
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -1509,9 +1509,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSDDD_D1_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)                , intent(in)                        :: fill
-        integer(IKC)                , intent(inout) , allocatable       :: array(:)
+        use pm_kind, only: IKG => IK5
+        integer(IKG)                , intent(in)                        :: fill
+        integer(IKG)                , intent(inout) , allocatable       :: array(:)
         integer(IK)                 , intent(in)                        :: size
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -1523,9 +1523,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSDDD_D1_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)                , intent(in)                        :: fill
-        integer(IKC)                , intent(inout) , allocatable       :: array(:)
+        use pm_kind, only: IKG => IK4
+        integer(IKG)                , intent(in)                        :: fill
+        integer(IKG)                , intent(inout) , allocatable       :: array(:)
         integer(IK)                 , intent(in)                        :: size
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -1537,9 +1537,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSDDD_D1_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)                , intent(in)                        :: fill
-        integer(IKC)                , intent(inout) , allocatable       :: array(:)
+        use pm_kind, only: IKG => IK3
+        integer(IKG)                , intent(in)                        :: fill
+        integer(IKG)                , intent(inout) , allocatable       :: array(:)
         integer(IK)                 , intent(in)                        :: size
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -1551,9 +1551,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSDDD_D1_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)                , intent(in)                        :: fill
-        integer(IKC)                , intent(inout) , allocatable       :: array(:)
+        use pm_kind, only: IKG => IK2
+        integer(IKG)                , intent(in)                        :: fill
+        integer(IKG)                , intent(inout) , allocatable       :: array(:)
         integer(IK)                 , intent(in)                        :: size
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -1565,9 +1565,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSDDD_D1_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)                , intent(in)                        :: fill
-        integer(IKC)                , intent(inout) , allocatable       :: array(:)
+        use pm_kind, only: IKG => IK1
+        integer(IKG)                , intent(in)                        :: fill
+        integer(IKG)                , intent(inout) , allocatable       :: array(:)
         integer(IK)                 , intent(in)                        :: size
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -1581,9 +1581,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSDDD_D1_LK5
 #endif
-        use pm_kind, only: LKC => LK5
-        logical(LKC)                , intent(in)                        :: fill
-        logical(LKC)                , intent(inout) , allocatable       :: array(:)
+        use pm_kind, only: LKG => LK5
+        logical(LKG)                , intent(in)                        :: fill
+        logical(LKG)                , intent(inout) , allocatable       :: array(:)
         integer(IK)                 , intent(in)                        :: size
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -1595,9 +1595,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSDDD_D1_LK4
 #endif
-        use pm_kind, only: LKC => LK4
-        logical(LKC)                , intent(in)                        :: fill
-        logical(LKC)                , intent(inout) , allocatable       :: array(:)
+        use pm_kind, only: LKG => LK4
+        logical(LKG)                , intent(in)                        :: fill
+        logical(LKG)                , intent(inout) , allocatable       :: array(:)
         integer(IK)                 , intent(in)                        :: size
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -1609,9 +1609,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSDDD_D1_LK3
 #endif
-        use pm_kind, only: LKC => LK3
-        logical(LKC)                , intent(in)                        :: fill
-        logical(LKC)                , intent(inout) , allocatable       :: array(:)
+        use pm_kind, only: LKG => LK3
+        logical(LKG)                , intent(in)                        :: fill
+        logical(LKG)                , intent(inout) , allocatable       :: array(:)
         integer(IK)                 , intent(in)                        :: size
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -1623,9 +1623,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSDDD_D1_LK2
 #endif
-        use pm_kind, only: LKC => LK2
-        logical(LKC)                , intent(in)                        :: fill
-        logical(LKC)                , intent(inout) , allocatable       :: array(:)
+        use pm_kind, only: LKG => LK2
+        logical(LKG)                , intent(in)                        :: fill
+        logical(LKG)                , intent(inout) , allocatable       :: array(:)
         integer(IK)                 , intent(in)                        :: size
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -1637,9 +1637,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSDDD_D1_LK1
 #endif
-        use pm_kind, only: LKC => LK1
-        logical(LKC)                , intent(in)                        :: fill
-        logical(LKC)                , intent(inout) , allocatable       :: array(:)
+        use pm_kind, only: LKG => LK1
+        logical(LKG)                , intent(in)                        :: fill
+        logical(LKG)                , intent(inout) , allocatable       :: array(:)
         integer(IK)                 , intent(in)                        :: size
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -1653,9 +1653,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSDDD_D1_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)                , intent(in)                        :: fill
-        complex(CKC)                , intent(inout) , allocatable       :: array(:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG)                , intent(in)                        :: fill
+        complex(CKG)                , intent(inout) , allocatable       :: array(:)
         integer(IK)                 , intent(in)                        :: size
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -1667,9 +1667,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSDDD_D1_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)                , intent(in)                        :: fill
-        complex(CKC)                , intent(inout) , allocatable       :: array(:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG)                , intent(in)                        :: fill
+        complex(CKG)                , intent(inout) , allocatable       :: array(:)
         integer(IK)                 , intent(in)                        :: size
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -1681,9 +1681,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSDDD_D1_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)                , intent(in)                        :: fill
-        complex(CKC)                , intent(inout) , allocatable       :: array(:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG)                , intent(in)                        :: fill
+        complex(CKG)                , intent(inout) , allocatable       :: array(:)
         integer(IK)                 , intent(in)                        :: size
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -1695,9 +1695,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSDDD_D1_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)                , intent(in)                        :: fill
-        complex(CKC)                , intent(inout) , allocatable       :: array(:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG)                , intent(in)                        :: fill
+        complex(CKG)                , intent(inout) , allocatable       :: array(:)
         integer(IK)                 , intent(in)                        :: size
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -1709,9 +1709,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSDDD_D1_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)                , intent(in)                        :: fill
-        complex(CKC)                , intent(inout) , allocatable       :: array(:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG)                , intent(in)                        :: fill
+        complex(CKG)                , intent(inout) , allocatable       :: array(:)
         integer(IK)                 , intent(in)                        :: size
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -1725,9 +1725,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSDDD_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)                   , intent(in)                        :: fill
-        real(RKC)                   , intent(inout) , allocatable       :: array(:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)                   , intent(in)                        :: fill
+        real(RKG)                   , intent(inout) , allocatable       :: array(:)
         integer(IK)                 , intent(in)                        :: size
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -1739,9 +1739,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSDDD_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)                   , intent(in)                        :: fill
-        real(RKC)                   , intent(inout) , allocatable       :: array(:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)                   , intent(in)                        :: fill
+        real(RKG)                   , intent(inout) , allocatable       :: array(:)
         integer(IK)                 , intent(in)                        :: size
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -1753,9 +1753,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSDDD_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)                   , intent(in)                        :: fill
-        real(RKC)                   , intent(inout) , allocatable       :: array(:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)                   , intent(in)                        :: fill
+        real(RKG)                   , intent(inout) , allocatable       :: array(:)
         integer(IK)                 , intent(in)                        :: size
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -1767,9 +1767,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSDDD_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)                   , intent(in)                        :: fill
-        real(RKC)                   , intent(inout) , allocatable       :: array(:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)                   , intent(in)                        :: fill
+        real(RKG)                   , intent(inout) , allocatable       :: array(:)
         integer(IK)                 , intent(in)                        :: size
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -1781,9 +1781,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSDDD_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)                   , intent(in)                        :: fill
-        real(RKC)                   , intent(inout) , allocatable       :: array(:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)                   , intent(in)                        :: fill
+        real(RKG)                   , intent(inout) , allocatable       :: array(:)
         integer(IK)                 , intent(in)                        :: size
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -1803,9 +1803,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSDDD_D2_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)            , intent(in)                        :: fill
-        character(*,SKC)            , intent(inout) , allocatable       :: array(:,:)
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)            , intent(in)                        :: fill
+        character(*,SKG)            , intent(inout) , allocatable       :: array(:,:)
         integer(IK)                 , intent(in)    , dimension(2)      :: size
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -1817,9 +1817,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSDDD_D2_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)            , intent(in)                        :: fill
-        character(*,SKC)            , intent(inout) , allocatable       :: array(:,:)
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)            , intent(in)                        :: fill
+        character(*,SKG)            , intent(inout) , allocatable       :: array(:,:)
         integer(IK)                 , intent(in)    , dimension(2)      :: size
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -1831,9 +1831,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSDDD_D2_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)            , intent(in)                        :: fill
-        character(*,SKC)            , intent(inout) , allocatable       :: array(:,:)
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)            , intent(in)                        :: fill
+        character(*,SKG)            , intent(inout) , allocatable       :: array(:,:)
         integer(IK)                 , intent(in)    , dimension(2)      :: size
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -1845,9 +1845,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSDDD_D2_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)            , intent(in)                        :: fill
-        character(*,SKC)            , intent(inout) , allocatable       :: array(:,:)
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)            , intent(in)                        :: fill
+        character(*,SKG)            , intent(inout) , allocatable       :: array(:,:)
         integer(IK)                 , intent(in)    , dimension(2)      :: size
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -1859,9 +1859,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSDDD_D2_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)            , intent(in)                        :: fill
-        character(*,SKC)            , intent(inout) , allocatable       :: array(:,:)
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)            , intent(in)                        :: fill
+        character(*,SKG)            , intent(inout) , allocatable       :: array(:,:)
         integer(IK)                 , intent(in)    , dimension(2)      :: size
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -1875,9 +1875,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSDDD_D2_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)                , intent(in)                        :: fill
-        integer(IKC)                , intent(inout) , allocatable       :: array(:,:)
+        use pm_kind, only: IKG => IK5
+        integer(IKG)                , intent(in)                        :: fill
+        integer(IKG)                , intent(inout) , allocatable       :: array(:,:)
         integer(IK)                 , intent(in)    , dimension(2)      :: size
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -1889,9 +1889,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSDDD_D2_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)                , intent(in)                        :: fill
-        integer(IKC)                , intent(inout) , allocatable       :: array(:,:)
+        use pm_kind, only: IKG => IK4
+        integer(IKG)                , intent(in)                        :: fill
+        integer(IKG)                , intent(inout) , allocatable       :: array(:,:)
         integer(IK)                 , intent(in)    , dimension(2)      :: size
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -1903,9 +1903,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSDDD_D2_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)                , intent(in)                        :: fill
-        integer(IKC)                , intent(inout) , allocatable       :: array(:,:)
+        use pm_kind, only: IKG => IK3
+        integer(IKG)                , intent(in)                        :: fill
+        integer(IKG)                , intent(inout) , allocatable       :: array(:,:)
         integer(IK)                 , intent(in)    , dimension(2)      :: size
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -1917,9 +1917,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSDDD_D2_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)                , intent(in)                        :: fill
-        integer(IKC)                , intent(inout) , allocatable       :: array(:,:)
+        use pm_kind, only: IKG => IK2
+        integer(IKG)                , intent(in)                        :: fill
+        integer(IKG)                , intent(inout) , allocatable       :: array(:,:)
         integer(IK)                 , intent(in)    , dimension(2)      :: size
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -1931,9 +1931,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSDDD_D2_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)                , intent(in)                        :: fill
-        integer(IKC)                , intent(inout) , allocatable       :: array(:,:)
+        use pm_kind, only: IKG => IK1
+        integer(IKG)                , intent(in)                        :: fill
+        integer(IKG)                , intent(inout) , allocatable       :: array(:,:)
         integer(IK)                 , intent(in)    , dimension(2)      :: size
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -1947,9 +1947,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSDDD_D2_LK5
 #endif
-        use pm_kind, only: LKC => LK5
-        logical(LKC)                , intent(in)                        :: fill
-        logical(LKC)                , intent(inout) , allocatable       :: array(:,:)
+        use pm_kind, only: LKG => LK5
+        logical(LKG)                , intent(in)                        :: fill
+        logical(LKG)                , intent(inout) , allocatable       :: array(:,:)
         integer(IK)                 , intent(in)    , dimension(2)      :: size
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -1961,9 +1961,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSDDD_D2_LK4
 #endif
-        use pm_kind, only: LKC => LK4
-        logical(LKC)                , intent(in)                        :: fill
-        logical(LKC)                , intent(inout) , allocatable       :: array(:,:)
+        use pm_kind, only: LKG => LK4
+        logical(LKG)                , intent(in)                        :: fill
+        logical(LKG)                , intent(inout) , allocatable       :: array(:,:)
         integer(IK)                 , intent(in)    , dimension(2)      :: size
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -1975,9 +1975,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSDDD_D2_LK3
 #endif
-        use pm_kind, only: LKC => LK3
-        logical(LKC)                , intent(in)                        :: fill
-        logical(LKC)                , intent(inout) , allocatable       :: array(:,:)
+        use pm_kind, only: LKG => LK3
+        logical(LKG)                , intent(in)                        :: fill
+        logical(LKG)                , intent(inout) , allocatable       :: array(:,:)
         integer(IK)                 , intent(in)    , dimension(2)      :: size
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -1989,9 +1989,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSDDD_D2_LK2
 #endif
-        use pm_kind, only: LKC => LK2
-        logical(LKC)                , intent(in)                        :: fill
-        logical(LKC)                , intent(inout) , allocatable       :: array(:,:)
+        use pm_kind, only: LKG => LK2
+        logical(LKG)                , intent(in)                        :: fill
+        logical(LKG)                , intent(inout) , allocatable       :: array(:,:)
         integer(IK)                 , intent(in)    , dimension(2)      :: size
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -2003,9 +2003,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSDDD_D2_LK1
 #endif
-        use pm_kind, only: LKC => LK1
-        logical(LKC)                , intent(in)                        :: fill
-        logical(LKC)                , intent(inout) , allocatable       :: array(:,:)
+        use pm_kind, only: LKG => LK1
+        logical(LKG)                , intent(in)                        :: fill
+        logical(LKG)                , intent(inout) , allocatable       :: array(:,:)
         integer(IK)                 , intent(in)    , dimension(2)      :: size
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -2019,9 +2019,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSDDD_D2_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)                , intent(in)                        :: fill
-        complex(CKC)                , intent(inout) , allocatable       :: array(:,:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG)                , intent(in)                        :: fill
+        complex(CKG)                , intent(inout) , allocatable       :: array(:,:)
         integer(IK)                 , intent(in)    , dimension(2)      :: size
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -2033,9 +2033,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSDDD_D2_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)                , intent(in)                        :: fill
-        complex(CKC)                , intent(inout) , allocatable       :: array(:,:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG)                , intent(in)                        :: fill
+        complex(CKG)                , intent(inout) , allocatable       :: array(:,:)
         integer(IK)                 , intent(in)    , dimension(2)      :: size
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -2047,9 +2047,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSDDD_D2_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)                , intent(in)                        :: fill
-        complex(CKC)                , intent(inout) , allocatable       :: array(:,:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG)                , intent(in)                        :: fill
+        complex(CKG)                , intent(inout) , allocatable       :: array(:,:)
         integer(IK)                 , intent(in)    , dimension(2)      :: size
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -2061,9 +2061,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSDDD_D2_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)                , intent(in)                        :: fill
-        complex(CKC)                , intent(inout) , allocatable       :: array(:,:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG)                , intent(in)                        :: fill
+        complex(CKG)                , intent(inout) , allocatable       :: array(:,:)
         integer(IK)                 , intent(in)    , dimension(2)      :: size
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -2075,9 +2075,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSDDD_D2_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)                , intent(in)                        :: fill
-        complex(CKC)                , intent(inout) , allocatable       :: array(:,:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG)                , intent(in)                        :: fill
+        complex(CKG)                , intent(inout) , allocatable       :: array(:,:)
         integer(IK)                 , intent(in)    , dimension(2)      :: size
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -2091,9 +2091,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSDDD_D2_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)                   , intent(in)                        :: fill
-        real(RKC)                   , intent(inout) , allocatable       :: array(:,:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)                   , intent(in)                        :: fill
+        real(RKG)                   , intent(inout) , allocatable       :: array(:,:)
         integer(IK)                 , intent(in)    , dimension(2)      :: size
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -2105,9 +2105,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSDDD_D2_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)                   , intent(in)                        :: fill
-        real(RKC)                   , intent(inout) , allocatable       :: array(:,:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)                   , intent(in)                        :: fill
+        real(RKG)                   , intent(inout) , allocatable       :: array(:,:)
         integer(IK)                 , intent(in)    , dimension(2)      :: size
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -2119,9 +2119,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSDDD_D2_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)                   , intent(in)                        :: fill
-        real(RKC)                   , intent(inout) , allocatable       :: array(:,:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)                   , intent(in)                        :: fill
+        real(RKG)                   , intent(inout) , allocatable       :: array(:,:)
         integer(IK)                 , intent(in)    , dimension(2)      :: size
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -2133,9 +2133,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSDDD_D2_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)                   , intent(in)                        :: fill
-        real(RKC)                   , intent(inout) , allocatable       :: array(:,:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)                   , intent(in)                        :: fill
+        real(RKG)                   , intent(inout) , allocatable       :: array(:,:)
         integer(IK)                 , intent(in)    , dimension(2)      :: size
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -2147,9 +2147,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSDDD_D2_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)                   , intent(in)                        :: fill
-        real(RKC)                   , intent(inout) , allocatable       :: array(:,:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)                   , intent(in)                        :: fill
+        real(RKG)                   , intent(inout) , allocatable       :: array(:,:)
         integer(IK)                 , intent(in)    , dimension(2)      :: size
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -2169,9 +2169,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSDDD_D3_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)            , intent(in)                        :: fill
-        character(*,SKC)            , intent(inout) , allocatable       :: array(:,:,:)
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)            , intent(in)                        :: fill
+        character(*,SKG)            , intent(inout) , allocatable       :: array(:,:,:)
         integer(IK)                 , intent(in)    , dimension(3)      :: size
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -2183,9 +2183,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSDDD_D3_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)            , intent(in)                        :: fill
-        character(*,SKC)            , intent(inout) , allocatable       :: array(:,:,:)
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)            , intent(in)                        :: fill
+        character(*,SKG)            , intent(inout) , allocatable       :: array(:,:,:)
         integer(IK)                 , intent(in)    , dimension(3)      :: size
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -2197,9 +2197,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSDDD_D3_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)            , intent(in)                        :: fill
-        character(*,SKC)            , intent(inout) , allocatable       :: array(:,:,:)
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)            , intent(in)                        :: fill
+        character(*,SKG)            , intent(inout) , allocatable       :: array(:,:,:)
         integer(IK)                 , intent(in)    , dimension(3)      :: size
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -2211,9 +2211,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSDDD_D3_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)            , intent(in)                        :: fill
-        character(*,SKC)            , intent(inout) , allocatable       :: array(:,:,:)
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)            , intent(in)                        :: fill
+        character(*,SKG)            , intent(inout) , allocatable       :: array(:,:,:)
         integer(IK)                 , intent(in)    , dimension(3)      :: size
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -2225,9 +2225,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSDDD_D3_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)            , intent(in)                        :: fill
-        character(*,SKC)            , intent(inout) , allocatable       :: array(:,:,:)
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)            , intent(in)                        :: fill
+        character(*,SKG)            , intent(inout) , allocatable       :: array(:,:,:)
         integer(IK)                 , intent(in)    , dimension(3)      :: size
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -2241,9 +2241,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSDDD_D3_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)                , intent(in)                        :: fill
-        integer(IKC)                , intent(inout) , allocatable       :: array(:,:,:)
+        use pm_kind, only: IKG => IK5
+        integer(IKG)                , intent(in)                        :: fill
+        integer(IKG)                , intent(inout) , allocatable       :: array(:,:,:)
         integer(IK)                 , intent(in)    , dimension(3)      :: size
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -2255,9 +2255,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSDDD_D3_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)                , intent(in)                        :: fill
-        integer(IKC)                , intent(inout) , allocatable       :: array(:,:,:)
+        use pm_kind, only: IKG => IK4
+        integer(IKG)                , intent(in)                        :: fill
+        integer(IKG)                , intent(inout) , allocatable       :: array(:,:,:)
         integer(IK)                 , intent(in)    , dimension(3)      :: size
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -2269,9 +2269,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSDDD_D3_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)                , intent(in)                        :: fill
-        integer(IKC)                , intent(inout) , allocatable       :: array(:,:,:)
+        use pm_kind, only: IKG => IK3
+        integer(IKG)                , intent(in)                        :: fill
+        integer(IKG)                , intent(inout) , allocatable       :: array(:,:,:)
         integer(IK)                 , intent(in)    , dimension(3)      :: size
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -2283,9 +2283,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSDDD_D3_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)                , intent(in)                        :: fill
-        integer(IKC)                , intent(inout) , allocatable       :: array(:,:,:)
+        use pm_kind, only: IKG => IK2
+        integer(IKG)                , intent(in)                        :: fill
+        integer(IKG)                , intent(inout) , allocatable       :: array(:,:,:)
         integer(IK)                 , intent(in)    , dimension(3)      :: size
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -2297,9 +2297,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSDDD_D3_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)                , intent(in)                        :: fill
-        integer(IKC)                , intent(inout) , allocatable       :: array(:,:,:)
+        use pm_kind, only: IKG => IK1
+        integer(IKG)                , intent(in)                        :: fill
+        integer(IKG)                , intent(inout) , allocatable       :: array(:,:,:)
         integer(IK)                 , intent(in)    , dimension(3)      :: size
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -2313,9 +2313,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSDDD_D3_LK5
 #endif
-        use pm_kind, only: LKC => LK5
-        logical(LKC)                , intent(in)                        :: fill
-        logical(LKC)                , intent(inout) , allocatable       :: array(:,:,:)
+        use pm_kind, only: LKG => LK5
+        logical(LKG)                , intent(in)                        :: fill
+        logical(LKG)                , intent(inout) , allocatable       :: array(:,:,:)
         integer(IK)                 , intent(in)    , dimension(3)      :: size
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -2327,9 +2327,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSDDD_D3_LK4
 #endif
-        use pm_kind, only: LKC => LK4
-        logical(LKC)                , intent(in)                        :: fill
-        logical(LKC)                , intent(inout) , allocatable       :: array(:,:,:)
+        use pm_kind, only: LKG => LK4
+        logical(LKG)                , intent(in)                        :: fill
+        logical(LKG)                , intent(inout) , allocatable       :: array(:,:,:)
         integer(IK)                 , intent(in)    , dimension(3)      :: size
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -2341,9 +2341,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSDDD_D3_LK3
 #endif
-        use pm_kind, only: LKC => LK3
-        logical(LKC)                , intent(in)                        :: fill
-        logical(LKC)                , intent(inout) , allocatable       :: array(:,:,:)
+        use pm_kind, only: LKG => LK3
+        logical(LKG)                , intent(in)                        :: fill
+        logical(LKG)                , intent(inout) , allocatable       :: array(:,:,:)
         integer(IK)                 , intent(in)    , dimension(3)      :: size
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -2355,9 +2355,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSDDD_D3_LK2
 #endif
-        use pm_kind, only: LKC => LK2
-        logical(LKC)                , intent(in)                        :: fill
-        logical(LKC)                , intent(inout) , allocatable       :: array(:,:,:)
+        use pm_kind, only: LKG => LK2
+        logical(LKG)                , intent(in)                        :: fill
+        logical(LKG)                , intent(inout) , allocatable       :: array(:,:,:)
         integer(IK)                 , intent(in)    , dimension(3)      :: size
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -2369,9 +2369,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSDDD_D3_LK1
 #endif
-        use pm_kind, only: LKC => LK1
-        logical(LKC)                , intent(in)                        :: fill
-        logical(LKC)                , intent(inout) , allocatable       :: array(:,:,:)
+        use pm_kind, only: LKG => LK1
+        logical(LKG)                , intent(in)                        :: fill
+        logical(LKG)                , intent(inout) , allocatable       :: array(:,:,:)
         integer(IK)                 , intent(in)    , dimension(3)      :: size
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -2385,9 +2385,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSDDD_D3_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)                , intent(in)                        :: fill
-        complex(CKC)                , intent(inout) , allocatable       :: array(:,:,:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG)                , intent(in)                        :: fill
+        complex(CKG)                , intent(inout) , allocatable       :: array(:,:,:)
         integer(IK)                 , intent(in)    , dimension(3)      :: size
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -2399,9 +2399,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSDDD_D3_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)                , intent(in)                        :: fill
-        complex(CKC)                , intent(inout) , allocatable       :: array(:,:,:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG)                , intent(in)                        :: fill
+        complex(CKG)                , intent(inout) , allocatable       :: array(:,:,:)
         integer(IK)                 , intent(in)    , dimension(3)      :: size
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -2413,9 +2413,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSDDD_D3_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)                , intent(in)                        :: fill
-        complex(CKC)                , intent(inout) , allocatable       :: array(:,:,:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG)                , intent(in)                        :: fill
+        complex(CKG)                , intent(inout) , allocatable       :: array(:,:,:)
         integer(IK)                 , intent(in)    , dimension(3)      :: size
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -2427,9 +2427,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSDDD_D3_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)                , intent(in)                        :: fill
-        complex(CKC)                , intent(inout) , allocatable       :: array(:,:,:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG)                , intent(in)                        :: fill
+        complex(CKG)                , intent(inout) , allocatable       :: array(:,:,:)
         integer(IK)                 , intent(in)    , dimension(3)      :: size
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -2441,9 +2441,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSDDD_D3_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)                , intent(in)                        :: fill
-        complex(CKC)                , intent(inout) , allocatable       :: array(:,:,:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG)                , intent(in)                        :: fill
+        complex(CKG)                , intent(inout) , allocatable       :: array(:,:,:)
         integer(IK)                 , intent(in)    , dimension(3)      :: size
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -2457,9 +2457,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSDDD_D3_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)                   , intent(in)                        :: fill
-        real(RKC)                   , intent(inout) , allocatable       :: array(:,:,:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)                   , intent(in)                        :: fill
+        real(RKG)                   , intent(inout) , allocatable       :: array(:,:,:)
         integer(IK)                 , intent(in)    , dimension(3)      :: size
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -2471,9 +2471,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSDDD_D3_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)                   , intent(in)                        :: fill
-        real(RKC)                   , intent(inout) , allocatable       :: array(:,:,:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)                   , intent(in)                        :: fill
+        real(RKG)                   , intent(inout) , allocatable       :: array(:,:,:)
         integer(IK)                 , intent(in)    , dimension(3)      :: size
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -2485,9 +2485,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSDDD_D3_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)                   , intent(in)                        :: fill
-        real(RKC)                   , intent(inout) , allocatable       :: array(:,:,:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)                   , intent(in)                        :: fill
+        real(RKG)                   , intent(inout) , allocatable       :: array(:,:,:)
         integer(IK)                 , intent(in)    , dimension(3)      :: size
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -2499,9 +2499,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSDDD_D3_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)                   , intent(in)                        :: fill
-        real(RKC)                   , intent(inout) , allocatable       :: array(:,:,:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)                   , intent(in)                        :: fill
+        real(RKG)                   , intent(inout) , allocatable       :: array(:,:,:)
         integer(IK)                 , intent(in)    , dimension(3)      :: size
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -2513,9 +2513,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSDDD_D3_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)                   , intent(in)                        :: fill
-        real(RKC)                   , intent(inout) , allocatable       :: array(:,:,:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)                   , intent(in)                        :: fill
+        real(RKG)                   , intent(inout) , allocatable       :: array(:,:,:)
         integer(IK)                 , intent(in)    , dimension(3)      :: size
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -2539,9 +2539,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSLDD_D0_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(1,SKC)            , intent(in)                        :: fill
-        character(:,SKC)            , intent(inout) , allocatable       :: array
+        use pm_kind, only: SKG => SK5
+        character(1,SKG)            , intent(in)                        :: fill
+        character(:,SKG)            , intent(inout) , allocatable       :: array
         integer(IK)                 , intent(in)                        :: size, lbc
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -2553,9 +2553,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSLDD_D0_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(1,SKC)            , intent(in)                        :: fill
-        character(:,SKC)            , intent(inout) , allocatable       :: array
+        use pm_kind, only: SKG => SK4
+        character(1,SKG)            , intent(in)                        :: fill
+        character(:,SKG)            , intent(inout) , allocatable       :: array
         integer(IK)                 , intent(in)                        :: size, lbc
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -2567,9 +2567,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSLDD_D0_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(1,SKC)            , intent(in)                        :: fill
-        character(:,SKC)            , intent(inout) , allocatable       :: array
+        use pm_kind, only: SKG => SK3
+        character(1,SKG)            , intent(in)                        :: fill
+        character(:,SKG)            , intent(inout) , allocatable       :: array
         integer(IK)                 , intent(in)                        :: size, lbc
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -2581,9 +2581,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSLDD_D0_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(1,SKC)            , intent(in)                        :: fill
-        character(:,SKC)            , intent(inout) , allocatable       :: array
+        use pm_kind, only: SKG => SK2
+        character(1,SKG)            , intent(in)                        :: fill
+        character(:,SKG)            , intent(inout) , allocatable       :: array
         integer(IK)                 , intent(in)                        :: size, lbc
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -2595,9 +2595,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSLDD_D0_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(1,SKC)            , intent(in)                        :: fill
-        character(:,SKC)            , intent(inout) , allocatable       :: array
+        use pm_kind, only: SKG => SK1
+        character(1,SKG)            , intent(in)                        :: fill
+        character(:,SKG)            , intent(inout) , allocatable       :: array
         integer(IK)                 , intent(in)                        :: size, lbc
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -2617,9 +2617,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSLDD_D1_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)            , intent(in)                        :: fill
-        character(*,SKC)            , intent(inout) , allocatable       :: array(:)
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)            , intent(in)                        :: fill
+        character(*,SKG)            , intent(inout) , allocatable       :: array(:)
         integer(IK)                 , intent(in)                        :: size, lbc
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -2631,9 +2631,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSLDD_D1_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)            , intent(in)                        :: fill
-        character(*,SKC)            , intent(inout) , allocatable       :: array(:)
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)            , intent(in)                        :: fill
+        character(*,SKG)            , intent(inout) , allocatable       :: array(:)
         integer(IK)                 , intent(in)                        :: size, lbc
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -2645,9 +2645,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSLDD_D1_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)            , intent(in)                        :: fill
-        character(*,SKC)            , intent(inout) , allocatable       :: array(:)
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)            , intent(in)                        :: fill
+        character(*,SKG)            , intent(inout) , allocatable       :: array(:)
         integer(IK)                 , intent(in)                        :: size, lbc
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -2659,9 +2659,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSLDD_D1_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)            , intent(in)                        :: fill
-        character(*,SKC)            , intent(inout) , allocatable       :: array(:)
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)            , intent(in)                        :: fill
+        character(*,SKG)            , intent(inout) , allocatable       :: array(:)
         integer(IK)                 , intent(in)                        :: size, lbc
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -2673,9 +2673,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSLDD_D1_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)            , intent(in)                        :: fill
-        character(*,SKC)            , intent(inout) , allocatable       :: array(:)
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)            , intent(in)                        :: fill
+        character(*,SKG)            , intent(inout) , allocatable       :: array(:)
         integer(IK)                 , intent(in)                        :: size, lbc
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -2689,9 +2689,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSLDD_D1_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)                , intent(in)                        :: fill
-        integer(IKC)                , intent(inout) , allocatable       :: array(:)
+        use pm_kind, only: IKG => IK5
+        integer(IKG)                , intent(in)                        :: fill
+        integer(IKG)                , intent(inout) , allocatable       :: array(:)
         integer(IK)                 , intent(in)                        :: size, lbc
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -2703,9 +2703,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSLDD_D1_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)                , intent(in)                        :: fill
-        integer(IKC)                , intent(inout) , allocatable       :: array(:)
+        use pm_kind, only: IKG => IK4
+        integer(IKG)                , intent(in)                        :: fill
+        integer(IKG)                , intent(inout) , allocatable       :: array(:)
         integer(IK)                 , intent(in)                        :: size, lbc
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -2717,9 +2717,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSLDD_D1_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)                , intent(in)                        :: fill
-        integer(IKC)                , intent(inout) , allocatable       :: array(:)
+        use pm_kind, only: IKG => IK3
+        integer(IKG)                , intent(in)                        :: fill
+        integer(IKG)                , intent(inout) , allocatable       :: array(:)
         integer(IK)                 , intent(in)                        :: size, lbc
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -2731,9 +2731,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSLDD_D1_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)                , intent(in)                        :: fill
-        integer(IKC)                , intent(inout) , allocatable       :: array(:)
+        use pm_kind, only: IKG => IK2
+        integer(IKG)                , intent(in)                        :: fill
+        integer(IKG)                , intent(inout) , allocatable       :: array(:)
         integer(IK)                 , intent(in)                        :: size, lbc
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -2745,9 +2745,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSLDD_D1_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)                , intent(in)                        :: fill
-        integer(IKC)                , intent(inout) , allocatable       :: array(:)
+        use pm_kind, only: IKG => IK1
+        integer(IKG)                , intent(in)                        :: fill
+        integer(IKG)                , intent(inout) , allocatable       :: array(:)
         integer(IK)                 , intent(in)                        :: size, lbc
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -2761,9 +2761,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSLDD_D1_LK5
 #endif
-        use pm_kind, only: LKC => LK5
-        logical(LKC)                , intent(in)                        :: fill
-        logical(LKC)                , intent(inout) , allocatable       :: array(:)
+        use pm_kind, only: LKG => LK5
+        logical(LKG)                , intent(in)                        :: fill
+        logical(LKG)                , intent(inout) , allocatable       :: array(:)
         integer(IK)                 , intent(in)                        :: size, lbc
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -2775,9 +2775,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSLDD_D1_LK4
 #endif
-        use pm_kind, only: LKC => LK4
-        logical(LKC)                , intent(in)                        :: fill
-        logical(LKC)                , intent(inout) , allocatable       :: array(:)
+        use pm_kind, only: LKG => LK4
+        logical(LKG)                , intent(in)                        :: fill
+        logical(LKG)                , intent(inout) , allocatable       :: array(:)
         integer(IK)                 , intent(in)                        :: size, lbc
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -2789,9 +2789,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSLDD_D1_LK3
 #endif
-        use pm_kind, only: LKC => LK3
-        logical(LKC)                , intent(in)                        :: fill
-        logical(LKC)                , intent(inout) , allocatable       :: array(:)
+        use pm_kind, only: LKG => LK3
+        logical(LKG)                , intent(in)                        :: fill
+        logical(LKG)                , intent(inout) , allocatable       :: array(:)
         integer(IK)                 , intent(in)                        :: size, lbc
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -2803,9 +2803,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSLDD_D1_LK2
 #endif
-        use pm_kind, only: LKC => LK2
-        logical(LKC)                , intent(in)                        :: fill
-        logical(LKC)                , intent(inout) , allocatable       :: array(:)
+        use pm_kind, only: LKG => LK2
+        logical(LKG)                , intent(in)                        :: fill
+        logical(LKG)                , intent(inout) , allocatable       :: array(:)
         integer(IK)                 , intent(in)                        :: size, lbc
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -2817,9 +2817,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSLDD_D1_LK1
 #endif
-        use pm_kind, only: LKC => LK1
-        logical(LKC)                , intent(in)                        :: fill
-        logical(LKC)                , intent(inout) , allocatable       :: array(:)
+        use pm_kind, only: LKG => LK1
+        logical(LKG)                , intent(in)                        :: fill
+        logical(LKG)                , intent(inout) , allocatable       :: array(:)
         integer(IK)                 , intent(in)                        :: size, lbc
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -2833,9 +2833,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSLDD_D1_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)                , intent(in)                        :: fill
-        complex(CKC)                , intent(inout) , allocatable       :: array(:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG)                , intent(in)                        :: fill
+        complex(CKG)                , intent(inout) , allocatable       :: array(:)
         integer(IK)                 , intent(in)                        :: size, lbc
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -2847,9 +2847,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSLDD_D1_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)                , intent(in)                        :: fill
-        complex(CKC)                , intent(inout) , allocatable       :: array(:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG)                , intent(in)                        :: fill
+        complex(CKG)                , intent(inout) , allocatable       :: array(:)
         integer(IK)                 , intent(in)                        :: size, lbc
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -2861,9 +2861,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSLDD_D1_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)                , intent(in)                        :: fill
-        complex(CKC)                , intent(inout) , allocatable       :: array(:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG)                , intent(in)                        :: fill
+        complex(CKG)                , intent(inout) , allocatable       :: array(:)
         integer(IK)                 , intent(in)                        :: size, lbc
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -2875,9 +2875,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSLDD_D1_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)                , intent(in)                        :: fill
-        complex(CKC)                , intent(inout) , allocatable       :: array(:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG)                , intent(in)                        :: fill
+        complex(CKG)                , intent(inout) , allocatable       :: array(:)
         integer(IK)                 , intent(in)                        :: size, lbc
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -2889,9 +2889,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSLDD_D1_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)                , intent(in)                        :: fill
-        complex(CKC)                , intent(inout) , allocatable       :: array(:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG)                , intent(in)                        :: fill
+        complex(CKG)                , intent(inout) , allocatable       :: array(:)
         integer(IK)                 , intent(in)                        :: size, lbc
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -2905,9 +2905,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSLDD_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)                   , intent(in)                        :: fill
-        real(RKC)                   , intent(inout) , allocatable       :: array(:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)                   , intent(in)                        :: fill
+        real(RKG)                   , intent(inout) , allocatable       :: array(:)
         integer(IK)                 , intent(in)                        :: size, lbc
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -2919,9 +2919,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSLDD_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)                   , intent(in)                        :: fill
-        real(RKC)                   , intent(inout) , allocatable       :: array(:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)                   , intent(in)                        :: fill
+        real(RKG)                   , intent(inout) , allocatable       :: array(:)
         integer(IK)                 , intent(in)                        :: size, lbc
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -2933,9 +2933,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSLDD_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)                   , intent(in)                        :: fill
-        real(RKC)                   , intent(inout) , allocatable       :: array(:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)                   , intent(in)                        :: fill
+        real(RKG)                   , intent(inout) , allocatable       :: array(:)
         integer(IK)                 , intent(in)                        :: size, lbc
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -2947,9 +2947,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSLDD_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)                   , intent(in)                        :: fill
-        real(RKC)                   , intent(inout) , allocatable       :: array(:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)                   , intent(in)                        :: fill
+        real(RKG)                   , intent(inout) , allocatable       :: array(:)
         integer(IK)                 , intent(in)                        :: size, lbc
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -2961,9 +2961,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSLDD_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)                   , intent(in)                        :: fill
-        real(RKC)                   , intent(inout) , allocatable       :: array(:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)                   , intent(in)                        :: fill
+        real(RKG)                   , intent(inout) , allocatable       :: array(:)
         integer(IK)                 , intent(in)                        :: size, lbc
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -2983,9 +2983,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSLDD_D2_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)            , intent(in)                        :: fill
-        character(*,SKC)            , intent(inout) , allocatable       :: array(:,:)
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)            , intent(in)                        :: fill
+        character(*,SKG)            , intent(inout) , allocatable       :: array(:,:)
         integer(IK)                 , intent(in)    , dimension(2)      :: size, lbc
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -2997,9 +2997,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSLDD_D2_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)            , intent(in)                        :: fill
-        character(*,SKC)            , intent(inout) , allocatable       :: array(:,:)
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)            , intent(in)                        :: fill
+        character(*,SKG)            , intent(inout) , allocatable       :: array(:,:)
         integer(IK)                 , intent(in)    , dimension(2)      :: size, lbc
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -3011,9 +3011,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSLDD_D2_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)            , intent(in)                        :: fill
-        character(*,SKC)            , intent(inout) , allocatable       :: array(:,:)
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)            , intent(in)                        :: fill
+        character(*,SKG)            , intent(inout) , allocatable       :: array(:,:)
         integer(IK)                 , intent(in)    , dimension(2)      :: size, lbc
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -3025,9 +3025,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSLDD_D2_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)            , intent(in)                        :: fill
-        character(*,SKC)            , intent(inout) , allocatable       :: array(:,:)
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)            , intent(in)                        :: fill
+        character(*,SKG)            , intent(inout) , allocatable       :: array(:,:)
         integer(IK)                 , intent(in)    , dimension(2)      :: size, lbc
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -3039,9 +3039,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSLDD_D2_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)            , intent(in)                        :: fill
-        character(*,SKC)            , intent(inout) , allocatable       :: array(:,:)
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)            , intent(in)                        :: fill
+        character(*,SKG)            , intent(inout) , allocatable       :: array(:,:)
         integer(IK)                 , intent(in)    , dimension(2)      :: size, lbc
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -3055,9 +3055,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSLDD_D2_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)                , intent(in)                        :: fill
-        integer(IKC)                , intent(inout) , allocatable       :: array(:,:)
+        use pm_kind, only: IKG => IK5
+        integer(IKG)                , intent(in)                        :: fill
+        integer(IKG)                , intent(inout) , allocatable       :: array(:,:)
         integer(IK)                 , intent(in)    , dimension(2)      :: size, lbc
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -3069,9 +3069,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSLDD_D2_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)                , intent(in)                        :: fill
-        integer(IKC)                , intent(inout) , allocatable       :: array(:,:)
+        use pm_kind, only: IKG => IK4
+        integer(IKG)                , intent(in)                        :: fill
+        integer(IKG)                , intent(inout) , allocatable       :: array(:,:)
         integer(IK)                 , intent(in)    , dimension(2)      :: size, lbc
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -3083,9 +3083,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSLDD_D2_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)                , intent(in)                        :: fill
-        integer(IKC)                , intent(inout) , allocatable       :: array(:,:)
+        use pm_kind, only: IKG => IK3
+        integer(IKG)                , intent(in)                        :: fill
+        integer(IKG)                , intent(inout) , allocatable       :: array(:,:)
         integer(IK)                 , intent(in)    , dimension(2)      :: size, lbc
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -3097,9 +3097,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSLDD_D2_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)                , intent(in)                        :: fill
-        integer(IKC)                , intent(inout) , allocatable       :: array(:,:)
+        use pm_kind, only: IKG => IK2
+        integer(IKG)                , intent(in)                        :: fill
+        integer(IKG)                , intent(inout) , allocatable       :: array(:,:)
         integer(IK)                 , intent(in)    , dimension(2)      :: size, lbc
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -3111,9 +3111,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSLDD_D2_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)                , intent(in)                        :: fill
-        integer(IKC)                , intent(inout) , allocatable       :: array(:,:)
+        use pm_kind, only: IKG => IK1
+        integer(IKG)                , intent(in)                        :: fill
+        integer(IKG)                , intent(inout) , allocatable       :: array(:,:)
         integer(IK)                 , intent(in)    , dimension(2)      :: size, lbc
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -3127,9 +3127,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSLDD_D2_LK5
 #endif
-        use pm_kind, only: LKC => LK5
-        logical(LKC)                , intent(in)                        :: fill
-        logical(LKC)                , intent(inout) , allocatable       :: array(:,:)
+        use pm_kind, only: LKG => LK5
+        logical(LKG)                , intent(in)                        :: fill
+        logical(LKG)                , intent(inout) , allocatable       :: array(:,:)
         integer(IK)                 , intent(in)    , dimension(2)      :: size, lbc
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -3141,9 +3141,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSLDD_D2_LK4
 #endif
-        use pm_kind, only: LKC => LK4
-        logical(LKC)                , intent(in)                        :: fill
-        logical(LKC)                , intent(inout) , allocatable       :: array(:,:)
+        use pm_kind, only: LKG => LK4
+        logical(LKG)                , intent(in)                        :: fill
+        logical(LKG)                , intent(inout) , allocatable       :: array(:,:)
         integer(IK)                 , intent(in)    , dimension(2)      :: size, lbc
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -3155,9 +3155,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSLDD_D2_LK3
 #endif
-        use pm_kind, only: LKC => LK3
-        logical(LKC)                , intent(in)                        :: fill
-        logical(LKC)                , intent(inout) , allocatable       :: array(:,:)
+        use pm_kind, only: LKG => LK3
+        logical(LKG)                , intent(in)                        :: fill
+        logical(LKG)                , intent(inout) , allocatable       :: array(:,:)
         integer(IK)                 , intent(in)    , dimension(2)      :: size, lbc
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -3169,9 +3169,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSLDD_D2_LK2
 #endif
-        use pm_kind, only: LKC => LK2
-        logical(LKC)                , intent(in)                        :: fill
-        logical(LKC)                , intent(inout) , allocatable       :: array(:,:)
+        use pm_kind, only: LKG => LK2
+        logical(LKG)                , intent(in)                        :: fill
+        logical(LKG)                , intent(inout) , allocatable       :: array(:,:)
         integer(IK)                 , intent(in)    , dimension(2)      :: size, lbc
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -3183,9 +3183,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSLDD_D2_LK1
 #endif
-        use pm_kind, only: LKC => LK1
-        logical(LKC)                , intent(in)                        :: fill
-        logical(LKC)                , intent(inout) , allocatable       :: array(:,:)
+        use pm_kind, only: LKG => LK1
+        logical(LKG)                , intent(in)                        :: fill
+        logical(LKG)                , intent(inout) , allocatable       :: array(:,:)
         integer(IK)                 , intent(in)    , dimension(2)      :: size, lbc
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -3199,9 +3199,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSLDD_D2_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)                , intent(in)                        :: fill
-        complex(CKC)                , intent(inout) , allocatable       :: array(:,:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG)                , intent(in)                        :: fill
+        complex(CKG)                , intent(inout) , allocatable       :: array(:,:)
         integer(IK)                 , intent(in)    , dimension(2)      :: size, lbc
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -3213,9 +3213,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSLDD_D2_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)                , intent(in)                        :: fill
-        complex(CKC)                , intent(inout) , allocatable       :: array(:,:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG)                , intent(in)                        :: fill
+        complex(CKG)                , intent(inout) , allocatable       :: array(:,:)
         integer(IK)                 , intent(in)    , dimension(2)      :: size, lbc
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -3227,9 +3227,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSLDD_D2_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)                , intent(in)                        :: fill
-        complex(CKC)                , intent(inout) , allocatable       :: array(:,:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG)                , intent(in)                        :: fill
+        complex(CKG)                , intent(inout) , allocatable       :: array(:,:)
         integer(IK)                 , intent(in)    , dimension(2)      :: size, lbc
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -3241,9 +3241,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSLDD_D2_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)                , intent(in)                        :: fill
-        complex(CKC)                , intent(inout) , allocatable       :: array(:,:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG)                , intent(in)                        :: fill
+        complex(CKG)                , intent(inout) , allocatable       :: array(:,:)
         integer(IK)                 , intent(in)    , dimension(2)      :: size, lbc
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -3255,9 +3255,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSLDD_D2_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)                , intent(in)                        :: fill
-        complex(CKC)                , intent(inout) , allocatable       :: array(:,:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG)                , intent(in)                        :: fill
+        complex(CKG)                , intent(inout) , allocatable       :: array(:,:)
         integer(IK)                 , intent(in)    , dimension(2)      :: size, lbc
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -3271,9 +3271,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSLDD_D2_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)                   , intent(in)                        :: fill
-        real(RKC)                   , intent(inout) , allocatable       :: array(:,:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)                   , intent(in)                        :: fill
+        real(RKG)                   , intent(inout) , allocatable       :: array(:,:)
         integer(IK)                 , intent(in)    , dimension(2)      :: size, lbc
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -3285,9 +3285,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSLDD_D2_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)                   , intent(in)                        :: fill
-        real(RKC)                   , intent(inout) , allocatable       :: array(:,:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)                   , intent(in)                        :: fill
+        real(RKG)                   , intent(inout) , allocatable       :: array(:,:)
         integer(IK)                 , intent(in)    , dimension(2)      :: size, lbc
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -3299,9 +3299,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSLDD_D2_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)                   , intent(in)                        :: fill
-        real(RKC)                   , intent(inout) , allocatable       :: array(:,:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)                   , intent(in)                        :: fill
+        real(RKG)                   , intent(inout) , allocatable       :: array(:,:)
         integer(IK)                 , intent(in)    , dimension(2)      :: size, lbc
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -3313,9 +3313,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSLDD_D2_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)                   , intent(in)                        :: fill
-        real(RKC)                   , intent(inout) , allocatable       :: array(:,:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)                   , intent(in)                        :: fill
+        real(RKG)                   , intent(inout) , allocatable       :: array(:,:)
         integer(IK)                 , intent(in)    , dimension(2)      :: size, lbc
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -3327,9 +3327,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSLDD_D2_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)                   , intent(in)                        :: fill
-        real(RKC)                   , intent(inout) , allocatable       :: array(:,:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)                   , intent(in)                        :: fill
+        real(RKG)                   , intent(inout) , allocatable       :: array(:,:)
         integer(IK)                 , intent(in)    , dimension(2)      :: size, lbc
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -3349,9 +3349,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSLDD_D3_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)            , intent(in)                        :: fill
-        character(*,SKC)            , intent(inout) , allocatable       :: array(:,:,:)
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)            , intent(in)                        :: fill
+        character(*,SKG)            , intent(inout) , allocatable       :: array(:,:,:)
         integer(IK)                 , intent(in)    , dimension(3)      :: size, lbc
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -3363,9 +3363,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSLDD_D3_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)            , intent(in)                        :: fill
-        character(*,SKC)            , intent(inout) , allocatable       :: array(:,:,:)
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)            , intent(in)                        :: fill
+        character(*,SKG)            , intent(inout) , allocatable       :: array(:,:,:)
         integer(IK)                 , intent(in)    , dimension(3)      :: size, lbc
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -3377,9 +3377,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSLDD_D3_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)            , intent(in)                        :: fill
-        character(*,SKC)            , intent(inout) , allocatable       :: array(:,:,:)
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)            , intent(in)                        :: fill
+        character(*,SKG)            , intent(inout) , allocatable       :: array(:,:,:)
         integer(IK)                 , intent(in)    , dimension(3)      :: size, lbc
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -3391,9 +3391,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSLDD_D3_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)            , intent(in)                        :: fill
-        character(*,SKC)            , intent(inout) , allocatable       :: array(:,:,:)
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)            , intent(in)                        :: fill
+        character(*,SKG)            , intent(inout) , allocatable       :: array(:,:,:)
         integer(IK)                 , intent(in)    , dimension(3)      :: size, lbc
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -3405,9 +3405,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSLDD_D3_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)            , intent(in)                        :: fill
-        character(*,SKC)            , intent(inout) , allocatable       :: array(:,:,:)
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)            , intent(in)                        :: fill
+        character(*,SKG)            , intent(inout) , allocatable       :: array(:,:,:)
         integer(IK)                 , intent(in)    , dimension(3)      :: size, lbc
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -3421,9 +3421,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSLDD_D3_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)                , intent(in)                        :: fill
-        integer(IKC)                , intent(inout) , allocatable       :: array(:,:,:)
+        use pm_kind, only: IKG => IK5
+        integer(IKG)                , intent(in)                        :: fill
+        integer(IKG)                , intent(inout) , allocatable       :: array(:,:,:)
         integer(IK)                 , intent(in)    , dimension(3)      :: size, lbc
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -3435,9 +3435,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSLDD_D3_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)                , intent(in)                        :: fill
-        integer(IKC)                , intent(inout) , allocatable       :: array(:,:,:)
+        use pm_kind, only: IKG => IK4
+        integer(IKG)                , intent(in)                        :: fill
+        integer(IKG)                , intent(inout) , allocatable       :: array(:,:,:)
         integer(IK)                 , intent(in)    , dimension(3)      :: size, lbc
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -3449,9 +3449,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSLDD_D3_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)                , intent(in)                        :: fill
-        integer(IKC)                , intent(inout) , allocatable       :: array(:,:,:)
+        use pm_kind, only: IKG => IK3
+        integer(IKG)                , intent(in)                        :: fill
+        integer(IKG)                , intent(inout) , allocatable       :: array(:,:,:)
         integer(IK)                 , intent(in)    , dimension(3)      :: size, lbc
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -3463,9 +3463,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSLDD_D3_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)                , intent(in)                        :: fill
-        integer(IKC)                , intent(inout) , allocatable       :: array(:,:,:)
+        use pm_kind, only: IKG => IK2
+        integer(IKG)                , intent(in)                        :: fill
+        integer(IKG)                , intent(inout) , allocatable       :: array(:,:,:)
         integer(IK)                 , intent(in)    , dimension(3)      :: size, lbc
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -3477,9 +3477,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSLDD_D3_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)                , intent(in)                        :: fill
-        integer(IKC)                , intent(inout) , allocatable       :: array(:,:,:)
+        use pm_kind, only: IKG => IK1
+        integer(IKG)                , intent(in)                        :: fill
+        integer(IKG)                , intent(inout) , allocatable       :: array(:,:,:)
         integer(IK)                 , intent(in)    , dimension(3)      :: size, lbc
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -3493,9 +3493,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSLDD_D3_LK5
 #endif
-        use pm_kind, only: LKC => LK5
-        logical(LKC)                , intent(in)                        :: fill
-        logical(LKC)                , intent(inout) , allocatable       :: array(:,:,:)
+        use pm_kind, only: LKG => LK5
+        logical(LKG)                , intent(in)                        :: fill
+        logical(LKG)                , intent(inout) , allocatable       :: array(:,:,:)
         integer(IK)                 , intent(in)    , dimension(3)      :: size, lbc
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -3507,9 +3507,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSLDD_D3_LK4
 #endif
-        use pm_kind, only: LKC => LK4
-        logical(LKC)                , intent(in)                        :: fill
-        logical(LKC)                , intent(inout) , allocatable       :: array(:,:,:)
+        use pm_kind, only: LKG => LK4
+        logical(LKG)                , intent(in)                        :: fill
+        logical(LKG)                , intent(inout) , allocatable       :: array(:,:,:)
         integer(IK)                 , intent(in)    , dimension(3)      :: size, lbc
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -3521,9 +3521,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSLDD_D3_LK3
 #endif
-        use pm_kind, only: LKC => LK3
-        logical(LKC)                , intent(in)                        :: fill
-        logical(LKC)                , intent(inout) , allocatable       :: array(:,:,:)
+        use pm_kind, only: LKG => LK3
+        logical(LKG)                , intent(in)                        :: fill
+        logical(LKG)                , intent(inout) , allocatable       :: array(:,:,:)
         integer(IK)                 , intent(in)    , dimension(3)      :: size, lbc
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -3535,9 +3535,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSLDD_D3_LK2
 #endif
-        use pm_kind, only: LKC => LK2
-        logical(LKC)                , intent(in)                        :: fill
-        logical(LKC)                , intent(inout) , allocatable       :: array(:,:,:)
+        use pm_kind, only: LKG => LK2
+        logical(LKG)                , intent(in)                        :: fill
+        logical(LKG)                , intent(inout) , allocatable       :: array(:,:,:)
         integer(IK)                 , intent(in)    , dimension(3)      :: size, lbc
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -3549,9 +3549,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSLDD_D3_LK1
 #endif
-        use pm_kind, only: LKC => LK1
-        logical(LKC)                , intent(in)                        :: fill
-        logical(LKC)                , intent(inout) , allocatable       :: array(:,:,:)
+        use pm_kind, only: LKG => LK1
+        logical(LKG)                , intent(in)                        :: fill
+        logical(LKG)                , intent(inout) , allocatable       :: array(:,:,:)
         integer(IK)                 , intent(in)    , dimension(3)      :: size, lbc
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -3565,9 +3565,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSLDD_D3_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)                , intent(in)                        :: fill
-        complex(CKC)                , intent(inout) , allocatable       :: array(:,:,:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG)                , intent(in)                        :: fill
+        complex(CKG)                , intent(inout) , allocatable       :: array(:,:,:)
         integer(IK)                 , intent(in)    , dimension(3)      :: size, lbc
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -3579,9 +3579,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSLDD_D3_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)                , intent(in)                        :: fill
-        complex(CKC)                , intent(inout) , allocatable       :: array(:,:,:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG)                , intent(in)                        :: fill
+        complex(CKG)                , intent(inout) , allocatable       :: array(:,:,:)
         integer(IK)                 , intent(in)    , dimension(3)      :: size, lbc
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -3593,9 +3593,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSLDD_D3_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)                , intent(in)                        :: fill
-        complex(CKC)                , intent(inout) , allocatable       :: array(:,:,:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG)                , intent(in)                        :: fill
+        complex(CKG)                , intent(inout) , allocatable       :: array(:,:,:)
         integer(IK)                 , intent(in)    , dimension(3)      :: size, lbc
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -3607,9 +3607,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSLDD_D3_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)                , intent(in)                        :: fill
-        complex(CKC)                , intent(inout) , allocatable       :: array(:,:,:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG)                , intent(in)                        :: fill
+        complex(CKG)                , intent(inout) , allocatable       :: array(:,:,:)
         integer(IK)                 , intent(in)    , dimension(3)      :: size, lbc
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -3621,9 +3621,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSLDD_D3_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)                , intent(in)                        :: fill
-        complex(CKC)                , intent(inout) , allocatable       :: array(:,:,:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG)                , intent(in)                        :: fill
+        complex(CKG)                , intent(inout) , allocatable       :: array(:,:,:)
         integer(IK)                 , intent(in)    , dimension(3)      :: size, lbc
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -3637,9 +3637,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSLDD_D3_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)                   , intent(in)                        :: fill
-        real(RKC)                   , intent(inout) , allocatable       :: array(:,:,:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)                   , intent(in)                        :: fill
+        real(RKG)                   , intent(inout) , allocatable       :: array(:,:,:)
         integer(IK)                 , intent(in)    , dimension(3)      :: size, lbc
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -3651,9 +3651,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSLDD_D3_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)                   , intent(in)                        :: fill
-        real(RKC)                   , intent(inout) , allocatable       :: array(:,:,:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)                   , intent(in)                        :: fill
+        real(RKG)                   , intent(inout) , allocatable       :: array(:,:,:)
         integer(IK)                 , intent(in)    , dimension(3)      :: size, lbc
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -3665,9 +3665,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSLDD_D3_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)                   , intent(in)                        :: fill
-        real(RKC)                   , intent(inout) , allocatable       :: array(:,:,:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)                   , intent(in)                        :: fill
+        real(RKG)                   , intent(inout) , allocatable       :: array(:,:,:)
         integer(IK)                 , intent(in)    , dimension(3)      :: size, lbc
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -3679,9 +3679,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSLDD_D3_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)                   , intent(in)                        :: fill
-        real(RKC)                   , intent(inout) , allocatable       :: array(:,:,:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)                   , intent(in)                        :: fill
+        real(RKG)                   , intent(inout) , allocatable       :: array(:,:,:)
         integer(IK)                 , intent(in)    , dimension(3)      :: size, lbc
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -3693,9 +3693,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSLDD_D3_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)                   , intent(in)                        :: fill
-        real(RKC)                   , intent(inout) , allocatable       :: array(:,:,:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)                   , intent(in)                        :: fill
+        real(RKG)                   , intent(inout) , allocatable       :: array(:,:,:)
         integer(IK)                 , intent(in)    , dimension(3)      :: size, lbc
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -3719,9 +3719,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSLLU_D0_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(1,SKC)            , intent(in)                        :: fill
-        character(:,SKC)            , intent(inout) , allocatable       :: array
+        use pm_kind, only: SKG => SK5
+        character(1,SKG)            , intent(in)                        :: fill
+        character(:,SKG)            , intent(inout) , allocatable       :: array
         integer(IK)                 , intent(in)                        :: size, lbc, lbcold, ubcold
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -3733,9 +3733,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSLLU_D0_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(1,SKC)            , intent(in)                        :: fill
-        character(:,SKC)            , intent(inout) , allocatable       :: array
+        use pm_kind, only: SKG => SK4
+        character(1,SKG)            , intent(in)                        :: fill
+        character(:,SKG)            , intent(inout) , allocatable       :: array
         integer(IK)                 , intent(in)                        :: size, lbc, lbcold, ubcold
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -3747,9 +3747,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSLLU_D0_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(1,SKC)            , intent(in)                        :: fill
-        character(:,SKC)            , intent(inout) , allocatable       :: array
+        use pm_kind, only: SKG => SK3
+        character(1,SKG)            , intent(in)                        :: fill
+        character(:,SKG)            , intent(inout) , allocatable       :: array
         integer(IK)                 , intent(in)                        :: size, lbc, lbcold, ubcold
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -3761,9 +3761,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSLLU_D0_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(1,SKC)            , intent(in)                        :: fill
-        character(:,SKC)            , intent(inout) , allocatable       :: array
+        use pm_kind, only: SKG => SK2
+        character(1,SKG)            , intent(in)                        :: fill
+        character(:,SKG)            , intent(inout) , allocatable       :: array
         integer(IK)                 , intent(in)                        :: size, lbc, lbcold, ubcold
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -3775,9 +3775,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSLLU_D0_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(1,SKC)            , intent(in)                        :: fill
-        character(:,SKC)            , intent(inout) , allocatable       :: array
+        use pm_kind, only: SKG => SK1
+        character(1,SKG)            , intent(in)                        :: fill
+        character(:,SKG)            , intent(inout) , allocatable       :: array
         integer(IK)                 , intent(in)                        :: size, lbc, lbcold, ubcold
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -3797,9 +3797,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSLLU_D1_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)            , intent(in)                        :: fill
-        character(*,SKC)            , intent(inout) , allocatable       :: array(:)
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)            , intent(in)                        :: fill
+        character(*,SKG)            , intent(inout) , allocatable       :: array(:)
         integer(IK)                 , intent(in)                        :: size, lbc, lbcold, ubcold
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -3811,9 +3811,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSLLU_D1_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)            , intent(in)                        :: fill
-        character(*,SKC)            , intent(inout) , allocatable       :: array(:)
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)            , intent(in)                        :: fill
+        character(*,SKG)            , intent(inout) , allocatable       :: array(:)
         integer(IK)                 , intent(in)                        :: size, lbc, lbcold, ubcold
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -3825,9 +3825,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSLLU_D1_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)            , intent(in)                        :: fill
-        character(*,SKC)            , intent(inout) , allocatable       :: array(:)
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)            , intent(in)                        :: fill
+        character(*,SKG)            , intent(inout) , allocatable       :: array(:)
         integer(IK)                 , intent(in)                        :: size, lbc, lbcold, ubcold
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -3839,9 +3839,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSLLU_D1_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)            , intent(in)                        :: fill
-        character(*,SKC)            , intent(inout) , allocatable       :: array(:)
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)            , intent(in)                        :: fill
+        character(*,SKG)            , intent(inout) , allocatable       :: array(:)
         integer(IK)                 , intent(in)                        :: size, lbc, lbcold, ubcold
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -3853,9 +3853,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSLLU_D1_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)            , intent(in)                        :: fill
-        character(*,SKC)            , intent(inout) , allocatable       :: array(:)
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)            , intent(in)                        :: fill
+        character(*,SKG)            , intent(inout) , allocatable       :: array(:)
         integer(IK)                 , intent(in)                        :: size, lbc, lbcold, ubcold
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -3869,9 +3869,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSLLU_D1_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)                , intent(in)                        :: fill
-        integer(IKC)                , intent(inout) , allocatable       :: array(:)
+        use pm_kind, only: IKG => IK5
+        integer(IKG)                , intent(in)                        :: fill
+        integer(IKG)                , intent(inout) , allocatable       :: array(:)
         integer(IK)                 , intent(in)                        :: size, lbc, lbcold, ubcold
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -3883,9 +3883,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSLLU_D1_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)                , intent(in)                        :: fill
-        integer(IKC)                , intent(inout) , allocatable       :: array(:)
+        use pm_kind, only: IKG => IK4
+        integer(IKG)                , intent(in)                        :: fill
+        integer(IKG)                , intent(inout) , allocatable       :: array(:)
         integer(IK)                 , intent(in)                        :: size, lbc, lbcold, ubcold
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -3897,9 +3897,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSLLU_D1_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)                , intent(in)                        :: fill
-        integer(IKC)                , intent(inout) , allocatable       :: array(:)
+        use pm_kind, only: IKG => IK3
+        integer(IKG)                , intent(in)                        :: fill
+        integer(IKG)                , intent(inout) , allocatable       :: array(:)
         integer(IK)                 , intent(in)                        :: size, lbc, lbcold, ubcold
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -3911,9 +3911,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSLLU_D1_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)                , intent(in)                        :: fill
-        integer(IKC)                , intent(inout) , allocatable       :: array(:)
+        use pm_kind, only: IKG => IK2
+        integer(IKG)                , intent(in)                        :: fill
+        integer(IKG)                , intent(inout) , allocatable       :: array(:)
         integer(IK)                 , intent(in)                        :: size, lbc, lbcold, ubcold
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -3925,9 +3925,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSLLU_D1_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)                , intent(in)                        :: fill
-        integer(IKC)                , intent(inout) , allocatable       :: array(:)
+        use pm_kind, only: IKG => IK1
+        integer(IKG)                , intent(in)                        :: fill
+        integer(IKG)                , intent(inout) , allocatable       :: array(:)
         integer(IK)                 , intent(in)                        :: size, lbc, lbcold, ubcold
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -3941,9 +3941,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSLLU_D1_LK5
 #endif
-        use pm_kind, only: LKC => LK5
-        logical(LKC)                , intent(in)                        :: fill
-        logical(LKC)                , intent(inout) , allocatable       :: array(:)
+        use pm_kind, only: LKG => LK5
+        logical(LKG)                , intent(in)                        :: fill
+        logical(LKG)                , intent(inout) , allocatable       :: array(:)
         integer(IK)                 , intent(in)                        :: size, lbc, lbcold, ubcold
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -3955,9 +3955,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSLLU_D1_LK4
 #endif
-        use pm_kind, only: LKC => LK4
-        logical(LKC)                , intent(in)                        :: fill
-        logical(LKC)                , intent(inout) , allocatable       :: array(:)
+        use pm_kind, only: LKG => LK4
+        logical(LKG)                , intent(in)                        :: fill
+        logical(LKG)                , intent(inout) , allocatable       :: array(:)
         integer(IK)                 , intent(in)                        :: size, lbc, lbcold, ubcold
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -3969,9 +3969,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSLLU_D1_LK3
 #endif
-        use pm_kind, only: LKC => LK3
-        logical(LKC)                , intent(in)                        :: fill
-        logical(LKC)                , intent(inout) , allocatable       :: array(:)
+        use pm_kind, only: LKG => LK3
+        logical(LKG)                , intent(in)                        :: fill
+        logical(LKG)                , intent(inout) , allocatable       :: array(:)
         integer(IK)                 , intent(in)                        :: size, lbc, lbcold, ubcold
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -3983,9 +3983,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSLLU_D1_LK2
 #endif
-        use pm_kind, only: LKC => LK2
-        logical(LKC)                , intent(in)                        :: fill
-        logical(LKC)                , intent(inout) , allocatable       :: array(:)
+        use pm_kind, only: LKG => LK2
+        logical(LKG)                , intent(in)                        :: fill
+        logical(LKG)                , intent(inout) , allocatable       :: array(:)
         integer(IK)                 , intent(in)                        :: size, lbc, lbcold, ubcold
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -3997,9 +3997,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSLLU_D1_LK1
 #endif
-        use pm_kind, only: LKC => LK1
-        logical(LKC)                , intent(in)                        :: fill
-        logical(LKC)                , intent(inout) , allocatable       :: array(:)
+        use pm_kind, only: LKG => LK1
+        logical(LKG)                , intent(in)                        :: fill
+        logical(LKG)                , intent(inout) , allocatable       :: array(:)
         integer(IK)                 , intent(in)                        :: size, lbc, lbcold, ubcold
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -4013,9 +4013,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSLLU_D1_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)                , intent(in)                        :: fill
-        complex(CKC)                , intent(inout) , allocatable       :: array(:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG)                , intent(in)                        :: fill
+        complex(CKG)                , intent(inout) , allocatable       :: array(:)
         integer(IK)                 , intent(in)                        :: size, lbc, lbcold, ubcold
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -4027,9 +4027,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSLLU_D1_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)                , intent(in)                        :: fill
-        complex(CKC)                , intent(inout) , allocatable       :: array(:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG)                , intent(in)                        :: fill
+        complex(CKG)                , intent(inout) , allocatable       :: array(:)
         integer(IK)                 , intent(in)                        :: size, lbc, lbcold, ubcold
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -4041,9 +4041,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSLLU_D1_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)                , intent(in)                        :: fill
-        complex(CKC)                , intent(inout) , allocatable       :: array(:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG)                , intent(in)                        :: fill
+        complex(CKG)                , intent(inout) , allocatable       :: array(:)
         integer(IK)                 , intent(in)                        :: size, lbc, lbcold, ubcold
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -4055,9 +4055,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSLLU_D1_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)                , intent(in)                        :: fill
-        complex(CKC)                , intent(inout) , allocatable       :: array(:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG)                , intent(in)                        :: fill
+        complex(CKG)                , intent(inout) , allocatable       :: array(:)
         integer(IK)                 , intent(in)                        :: size, lbc, lbcold, ubcold
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -4069,9 +4069,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSLLU_D1_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)                , intent(in)                        :: fill
-        complex(CKC)                , intent(inout) , allocatable       :: array(:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG)                , intent(in)                        :: fill
+        complex(CKG)                , intent(inout) , allocatable       :: array(:)
         integer(IK)                 , intent(in)                        :: size, lbc, lbcold, ubcold
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -4085,9 +4085,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSLLU_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)                   , intent(in)                        :: fill
-        real(RKC)                   , intent(inout) , allocatable       :: array(:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)                   , intent(in)                        :: fill
+        real(RKG)                   , intent(inout) , allocatable       :: array(:)
         integer(IK)                 , intent(in)                        :: size, lbc, lbcold, ubcold
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -4099,9 +4099,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSLLU_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)                   , intent(in)                        :: fill
-        real(RKC)                   , intent(inout) , allocatable       :: array(:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)                   , intent(in)                        :: fill
+        real(RKG)                   , intent(inout) , allocatable       :: array(:)
         integer(IK)                 , intent(in)                        :: size, lbc, lbcold, ubcold
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -4113,9 +4113,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSLLU_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)                   , intent(in)                        :: fill
-        real(RKC)                   , intent(inout) , allocatable       :: array(:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)                   , intent(in)                        :: fill
+        real(RKG)                   , intent(inout) , allocatable       :: array(:)
         integer(IK)                 , intent(in)                        :: size, lbc, lbcold, ubcold
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -4127,9 +4127,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSLLU_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)                   , intent(in)                        :: fill
-        real(RKC)                   , intent(inout) , allocatable       :: array(:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)                   , intent(in)                        :: fill
+        real(RKG)                   , intent(inout) , allocatable       :: array(:)
         integer(IK)                 , intent(in)                        :: size, lbc, lbcold, ubcold
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -4141,9 +4141,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSLLU_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)                   , intent(in)                        :: fill
-        real(RKC)                   , intent(inout) , allocatable       :: array(:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)                   , intent(in)                        :: fill
+        real(RKG)                   , intent(inout) , allocatable       :: array(:)
         integer(IK)                 , intent(in)                        :: size, lbc, lbcold, ubcold
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -4163,9 +4163,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSLLU_D2_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)            , intent(in)                        :: fill
-        character(*,SKC)            , intent(inout) , allocatable       :: array(:,:)
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)            , intent(in)                        :: fill
+        character(*,SKG)            , intent(inout) , allocatable       :: array(:,:)
         integer(IK)                 , intent(in)    , dimension(2)      :: size, lbc, lbcold, ubcold
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -4177,9 +4177,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSLLU_D2_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)            , intent(in)                        :: fill
-        character(*,SKC)            , intent(inout) , allocatable       :: array(:,:)
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)            , intent(in)                        :: fill
+        character(*,SKG)            , intent(inout) , allocatable       :: array(:,:)
         integer(IK)                 , intent(in)    , dimension(2)      :: size, lbc, lbcold, ubcold
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -4191,9 +4191,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSLLU_D2_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)            , intent(in)                        :: fill
-        character(*,SKC)            , intent(inout) , allocatable       :: array(:,:)
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)            , intent(in)                        :: fill
+        character(*,SKG)            , intent(inout) , allocatable       :: array(:,:)
         integer(IK)                 , intent(in)    , dimension(2)      :: size, lbc, lbcold, ubcold
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -4205,9 +4205,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSLLU_D2_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)            , intent(in)                        :: fill
-        character(*,SKC)            , intent(inout) , allocatable       :: array(:,:)
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)            , intent(in)                        :: fill
+        character(*,SKG)            , intent(inout) , allocatable       :: array(:,:)
         integer(IK)                 , intent(in)    , dimension(2)      :: size, lbc, lbcold, ubcold
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -4219,9 +4219,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSLLU_D2_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)            , intent(in)                        :: fill
-        character(*,SKC)            , intent(inout) , allocatable       :: array(:,:)
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)            , intent(in)                        :: fill
+        character(*,SKG)            , intent(inout) , allocatable       :: array(:,:)
         integer(IK)                 , intent(in)    , dimension(2)      :: size, lbc, lbcold, ubcold
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -4235,9 +4235,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSLLU_D2_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)                , intent(in)                        :: fill
-        integer(IKC)                , intent(inout) , allocatable       :: array(:,:)
+        use pm_kind, only: IKG => IK5
+        integer(IKG)                , intent(in)                        :: fill
+        integer(IKG)                , intent(inout) , allocatable       :: array(:,:)
         integer(IK)                 , intent(in)    , dimension(2)      :: size, lbc, lbcold, ubcold
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -4249,9 +4249,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSLLU_D2_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)                , intent(in)                        :: fill
-        integer(IKC)                , intent(inout) , allocatable       :: array(:,:)
+        use pm_kind, only: IKG => IK4
+        integer(IKG)                , intent(in)                        :: fill
+        integer(IKG)                , intent(inout) , allocatable       :: array(:,:)
         integer(IK)                 , intent(in)    , dimension(2)      :: size, lbc, lbcold, ubcold
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -4263,9 +4263,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSLLU_D2_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)                , intent(in)                        :: fill
-        integer(IKC)                , intent(inout) , allocatable       :: array(:,:)
+        use pm_kind, only: IKG => IK3
+        integer(IKG)                , intent(in)                        :: fill
+        integer(IKG)                , intent(inout) , allocatable       :: array(:,:)
         integer(IK)                 , intent(in)    , dimension(2)      :: size, lbc, lbcold, ubcold
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -4277,9 +4277,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSLLU_D2_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)                , intent(in)                        :: fill
-        integer(IKC)                , intent(inout) , allocatable       :: array(:,:)
+        use pm_kind, only: IKG => IK2
+        integer(IKG)                , intent(in)                        :: fill
+        integer(IKG)                , intent(inout) , allocatable       :: array(:,:)
         integer(IK)                 , intent(in)    , dimension(2)      :: size, lbc, lbcold, ubcold
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -4291,9 +4291,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSLLU_D2_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)                , intent(in)                        :: fill
-        integer(IKC)                , intent(inout) , allocatable       :: array(:,:)
+        use pm_kind, only: IKG => IK1
+        integer(IKG)                , intent(in)                        :: fill
+        integer(IKG)                , intent(inout) , allocatable       :: array(:,:)
         integer(IK)                 , intent(in)    , dimension(2)      :: size, lbc, lbcold, ubcold
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -4307,9 +4307,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSLLU_D2_LK5
 #endif
-        use pm_kind, only: LKC => LK5
-        logical(LKC)                , intent(in)                        :: fill
-        logical(LKC)                , intent(inout) , allocatable       :: array(:,:)
+        use pm_kind, only: LKG => LK5
+        logical(LKG)                , intent(in)                        :: fill
+        logical(LKG)                , intent(inout) , allocatable       :: array(:,:)
         integer(IK)                 , intent(in)    , dimension(2)      :: size, lbc, lbcold, ubcold
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -4321,9 +4321,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSLLU_D2_LK4
 #endif
-        use pm_kind, only: LKC => LK4
-        logical(LKC)                , intent(in)                        :: fill
-        logical(LKC)                , intent(inout) , allocatable       :: array(:,:)
+        use pm_kind, only: LKG => LK4
+        logical(LKG)                , intent(in)                        :: fill
+        logical(LKG)                , intent(inout) , allocatable       :: array(:,:)
         integer(IK)                 , intent(in)    , dimension(2)      :: size, lbc, lbcold, ubcold
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -4335,9 +4335,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSLLU_D2_LK3
 #endif
-        use pm_kind, only: LKC => LK3
-        logical(LKC)                , intent(in)                        :: fill
-        logical(LKC)                , intent(inout) , allocatable       :: array(:,:)
+        use pm_kind, only: LKG => LK3
+        logical(LKG)                , intent(in)                        :: fill
+        logical(LKG)                , intent(inout) , allocatable       :: array(:,:)
         integer(IK)                 , intent(in)    , dimension(2)      :: size, lbc, lbcold, ubcold
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -4349,9 +4349,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSLLU_D2_LK2
 #endif
-        use pm_kind, only: LKC => LK2
-        logical(LKC)                , intent(in)                        :: fill
-        logical(LKC)                , intent(inout) , allocatable       :: array(:,:)
+        use pm_kind, only: LKG => LK2
+        logical(LKG)                , intent(in)                        :: fill
+        logical(LKG)                , intent(inout) , allocatable       :: array(:,:)
         integer(IK)                 , intent(in)    , dimension(2)      :: size, lbc, lbcold, ubcold
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -4363,9 +4363,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSLLU_D2_LK1
 #endif
-        use pm_kind, only: LKC => LK1
-        logical(LKC)                , intent(in)                        :: fill
-        logical(LKC)                , intent(inout) , allocatable       :: array(:,:)
+        use pm_kind, only: LKG => LK1
+        logical(LKG)                , intent(in)                        :: fill
+        logical(LKG)                , intent(inout) , allocatable       :: array(:,:)
         integer(IK)                 , intent(in)    , dimension(2)      :: size, lbc, lbcold, ubcold
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -4379,9 +4379,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSLLU_D2_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)                , intent(in)                        :: fill
-        complex(CKC)                , intent(inout) , allocatable       :: array(:,:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG)                , intent(in)                        :: fill
+        complex(CKG)                , intent(inout) , allocatable       :: array(:,:)
         integer(IK)                 , intent(in)    , dimension(2)      :: size, lbc, lbcold, ubcold
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -4393,9 +4393,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSLLU_D2_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)                , intent(in)                        :: fill
-        complex(CKC)                , intent(inout) , allocatable       :: array(:,:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG)                , intent(in)                        :: fill
+        complex(CKG)                , intent(inout) , allocatable       :: array(:,:)
         integer(IK)                 , intent(in)    , dimension(2)      :: size, lbc, lbcold, ubcold
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -4407,9 +4407,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSLLU_D2_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)                , intent(in)                        :: fill
-        complex(CKC)                , intent(inout) , allocatable       :: array(:,:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG)                , intent(in)                        :: fill
+        complex(CKG)                , intent(inout) , allocatable       :: array(:,:)
         integer(IK)                 , intent(in)    , dimension(2)      :: size, lbc, lbcold, ubcold
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -4421,9 +4421,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSLLU_D2_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)                , intent(in)                        :: fill
-        complex(CKC)                , intent(inout) , allocatable       :: array(:,:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG)                , intent(in)                        :: fill
+        complex(CKG)                , intent(inout) , allocatable       :: array(:,:)
         integer(IK)                 , intent(in)    , dimension(2)      :: size, lbc, lbcold, ubcold
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -4435,9 +4435,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSLLU_D2_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)                , intent(in)                        :: fill
-        complex(CKC)                , intent(inout) , allocatable       :: array(:,:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG)                , intent(in)                        :: fill
+        complex(CKG)                , intent(inout) , allocatable       :: array(:,:)
         integer(IK)                 , intent(in)    , dimension(2)      :: size, lbc, lbcold, ubcold
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -4451,9 +4451,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSLLU_D2_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)                   , intent(in)                        :: fill
-        real(RKC)                   , intent(inout) , allocatable       :: array(:,:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)                   , intent(in)                        :: fill
+        real(RKG)                   , intent(inout) , allocatable       :: array(:,:)
         integer(IK)                 , intent(in)    , dimension(2)      :: size, lbc, lbcold, ubcold
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -4465,9 +4465,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSLLU_D2_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)                   , intent(in)                        :: fill
-        real(RKC)                   , intent(inout) , allocatable       :: array(:,:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)                   , intent(in)                        :: fill
+        real(RKG)                   , intent(inout) , allocatable       :: array(:,:)
         integer(IK)                 , intent(in)    , dimension(2)      :: size, lbc, lbcold, ubcold
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -4479,9 +4479,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSLLU_D2_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)                   , intent(in)                        :: fill
-        real(RKC)                   , intent(inout) , allocatable       :: array(:,:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)                   , intent(in)                        :: fill
+        real(RKG)                   , intent(inout) , allocatable       :: array(:,:)
         integer(IK)                 , intent(in)    , dimension(2)      :: size, lbc, lbcold, ubcold
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -4493,9 +4493,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSLLU_D2_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)                   , intent(in)                        :: fill
-        real(RKC)                   , intent(inout) , allocatable       :: array(:,:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)                   , intent(in)                        :: fill
+        real(RKG)                   , intent(inout) , allocatable       :: array(:,:)
         integer(IK)                 , intent(in)    , dimension(2)      :: size, lbc, lbcold, ubcold
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -4507,9 +4507,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSLLU_D2_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)                   , intent(in)                        :: fill
-        real(RKC)                   , intent(inout) , allocatable       :: array(:,:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)                   , intent(in)                        :: fill
+        real(RKG)                   , intent(inout) , allocatable       :: array(:,:)
         integer(IK)                 , intent(in)    , dimension(2)      :: size, lbc, lbcold, ubcold
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -4529,9 +4529,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSLLU_D3_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)            , intent(in)                        :: fill
-        character(*,SKC)            , intent(inout) , allocatable       :: array(:,:,:)
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)            , intent(in)                        :: fill
+        character(*,SKG)            , intent(inout) , allocatable       :: array(:,:,:)
         integer(IK)                 , intent(in)    , dimension(3)      :: size, lbc, lbcold, ubcold
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -4543,9 +4543,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSLLU_D3_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)            , intent(in)                        :: fill
-        character(*,SKC)            , intent(inout) , allocatable       :: array(:,:,:)
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)            , intent(in)                        :: fill
+        character(*,SKG)            , intent(inout) , allocatable       :: array(:,:,:)
         integer(IK)                 , intent(in)    , dimension(3)      :: size, lbc, lbcold, ubcold
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -4557,9 +4557,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSLLU_D3_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)            , intent(in)                        :: fill
-        character(*,SKC)            , intent(inout) , allocatable       :: array(:,:,:)
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)            , intent(in)                        :: fill
+        character(*,SKG)            , intent(inout) , allocatable       :: array(:,:,:)
         integer(IK)                 , intent(in)    , dimension(3)      :: size, lbc, lbcold, ubcold
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -4571,9 +4571,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSLLU_D3_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)            , intent(in)                        :: fill
-        character(*,SKC)            , intent(inout) , allocatable       :: array(:,:,:)
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)            , intent(in)                        :: fill
+        character(*,SKG)            , intent(inout) , allocatable       :: array(:,:,:)
         integer(IK)                 , intent(in)    , dimension(3)      :: size, lbc, lbcold, ubcold
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -4585,9 +4585,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSLLU_D3_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)            , intent(in)                        :: fill
-        character(*,SKC)            , intent(inout) , allocatable       :: array(:,:,:)
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)            , intent(in)                        :: fill
+        character(*,SKG)            , intent(inout) , allocatable       :: array(:,:,:)
         integer(IK)                 , intent(in)    , dimension(3)      :: size, lbc, lbcold, ubcold
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -4601,9 +4601,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSLLU_D3_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)                , intent(in)                        :: fill
-        integer(IKC)                , intent(inout) , allocatable       :: array(:,:,:)
+        use pm_kind, only: IKG => IK5
+        integer(IKG)                , intent(in)                        :: fill
+        integer(IKG)                , intent(inout) , allocatable       :: array(:,:,:)
         integer(IK)                 , intent(in)    , dimension(3)      :: size, lbc, lbcold, ubcold
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -4615,9 +4615,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSLLU_D3_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)                , intent(in)                        :: fill
-        integer(IKC)                , intent(inout) , allocatable       :: array(:,:,:)
+        use pm_kind, only: IKG => IK4
+        integer(IKG)                , intent(in)                        :: fill
+        integer(IKG)                , intent(inout) , allocatable       :: array(:,:,:)
         integer(IK)                 , intent(in)    , dimension(3)      :: size, lbc, lbcold, ubcold
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -4629,9 +4629,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSLLU_D3_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)                , intent(in)                        :: fill
-        integer(IKC)                , intent(inout) , allocatable       :: array(:,:,:)
+        use pm_kind, only: IKG => IK3
+        integer(IKG)                , intent(in)                        :: fill
+        integer(IKG)                , intent(inout) , allocatable       :: array(:,:,:)
         integer(IK)                 , intent(in)    , dimension(3)      :: size, lbc, lbcold, ubcold
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -4643,9 +4643,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSLLU_D3_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)                , intent(in)                        :: fill
-        integer(IKC)                , intent(inout) , allocatable       :: array(:,:,:)
+        use pm_kind, only: IKG => IK2
+        integer(IKG)                , intent(in)                        :: fill
+        integer(IKG)                , intent(inout) , allocatable       :: array(:,:,:)
         integer(IK)                 , intent(in)    , dimension(3)      :: size, lbc, lbcold, ubcold
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -4657,9 +4657,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSLLU_D3_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)                , intent(in)                        :: fill
-        integer(IKC)                , intent(inout) , allocatable       :: array(:,:,:)
+        use pm_kind, only: IKG => IK1
+        integer(IKG)                , intent(in)                        :: fill
+        integer(IKG)                , intent(inout) , allocatable       :: array(:,:,:)
         integer(IK)                 , intent(in)    , dimension(3)      :: size, lbc, lbcold, ubcold
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -4673,9 +4673,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSLLU_D3_LK5
 #endif
-        use pm_kind, only: LKC => LK5
-        logical(LKC)                , intent(in)                        :: fill
-        logical(LKC)                , intent(inout) , allocatable       :: array(:,:,:)
+        use pm_kind, only: LKG => LK5
+        logical(LKG)                , intent(in)                        :: fill
+        logical(LKG)                , intent(inout) , allocatable       :: array(:,:,:)
         integer(IK)                 , intent(in)    , dimension(3)      :: size, lbc, lbcold, ubcold
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -4687,9 +4687,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSLLU_D3_LK4
 #endif
-        use pm_kind, only: LKC => LK4
-        logical(LKC)                , intent(in)                        :: fill
-        logical(LKC)                , intent(inout) , allocatable       :: array(:,:,:)
+        use pm_kind, only: LKG => LK4
+        logical(LKG)                , intent(in)                        :: fill
+        logical(LKG)                , intent(inout) , allocatable       :: array(:,:,:)
         integer(IK)                 , intent(in)    , dimension(3)      :: size, lbc, lbcold, ubcold
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -4701,9 +4701,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSLLU_D3_LK3
 #endif
-        use pm_kind, only: LKC => LK3
-        logical(LKC)                , intent(in)                        :: fill
-        logical(LKC)                , intent(inout) , allocatable       :: array(:,:,:)
+        use pm_kind, only: LKG => LK3
+        logical(LKG)                , intent(in)                        :: fill
+        logical(LKG)                , intent(inout) , allocatable       :: array(:,:,:)
         integer(IK)                 , intent(in)    , dimension(3)      :: size, lbc, lbcold, ubcold
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -4715,9 +4715,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSLLU_D3_LK2
 #endif
-        use pm_kind, only: LKC => LK2
-        logical(LKC)                , intent(in)                        :: fill
-        logical(LKC)                , intent(inout) , allocatable       :: array(:,:,:)
+        use pm_kind, only: LKG => LK2
+        logical(LKG)                , intent(in)                        :: fill
+        logical(LKG)                , intent(inout) , allocatable       :: array(:,:,:)
         integer(IK)                 , intent(in)    , dimension(3)      :: size, lbc, lbcold, ubcold
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -4729,9 +4729,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSLLU_D3_LK1
 #endif
-        use pm_kind, only: LKC => LK1
-        logical(LKC)                , intent(in)                        :: fill
-        logical(LKC)                , intent(inout) , allocatable       :: array(:,:,:)
+        use pm_kind, only: LKG => LK1
+        logical(LKG)                , intent(in)                        :: fill
+        logical(LKG)                , intent(inout) , allocatable       :: array(:,:,:)
         integer(IK)                 , intent(in)    , dimension(3)      :: size, lbc, lbcold, ubcold
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -4745,9 +4745,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSLLU_D3_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)                , intent(in)                        :: fill
-        complex(CKC)                , intent(inout) , allocatable       :: array(:,:,:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG)                , intent(in)                        :: fill
+        complex(CKG)                , intent(inout) , allocatable       :: array(:,:,:)
         integer(IK)                 , intent(in)    , dimension(3)      :: size, lbc, lbcold, ubcold
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -4759,9 +4759,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSLLU_D3_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)                , intent(in)                        :: fill
-        complex(CKC)                , intent(inout) , allocatable       :: array(:,:,:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG)                , intent(in)                        :: fill
+        complex(CKG)                , intent(inout) , allocatable       :: array(:,:,:)
         integer(IK)                 , intent(in)    , dimension(3)      :: size, lbc, lbcold, ubcold
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -4773,9 +4773,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSLLU_D3_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)                , intent(in)                        :: fill
-        complex(CKC)                , intent(inout) , allocatable       :: array(:,:,:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG)                , intent(in)                        :: fill
+        complex(CKG)                , intent(inout) , allocatable       :: array(:,:,:)
         integer(IK)                 , intent(in)    , dimension(3)      :: size, lbc, lbcold, ubcold
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -4787,9 +4787,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSLLU_D3_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)                , intent(in)                        :: fill
-        complex(CKC)                , intent(inout) , allocatable       :: array(:,:,:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG)                , intent(in)                        :: fill
+        complex(CKG)                , intent(inout) , allocatable       :: array(:,:,:)
         integer(IK)                 , intent(in)    , dimension(3)      :: size, lbc, lbcold, ubcold
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -4801,9 +4801,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSLLU_D3_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)                , intent(in)                        :: fill
-        complex(CKC)                , intent(inout) , allocatable       :: array(:,:,:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG)                , intent(in)                        :: fill
+        complex(CKG)                , intent(inout) , allocatable       :: array(:,:,:)
         integer(IK)                 , intent(in)    , dimension(3)      :: size, lbc, lbcold, ubcold
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -4817,9 +4817,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSLLU_D3_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)                   , intent(in)                        :: fill
-        real(RKC)                   , intent(inout) , allocatable       :: array(:,:,:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)                   , intent(in)                        :: fill
+        real(RKG)                   , intent(inout) , allocatable       :: array(:,:,:)
         integer(IK)                 , intent(in)    , dimension(3)      :: size, lbc, lbcold, ubcold
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -4831,9 +4831,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSLLU_D3_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)                   , intent(in)                        :: fill
-        real(RKC)                   , intent(inout) , allocatable       :: array(:,:,:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)                   , intent(in)                        :: fill
+        real(RKG)                   , intent(inout) , allocatable       :: array(:,:,:)
         integer(IK)                 , intent(in)    , dimension(3)      :: size, lbc, lbcold, ubcold
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -4845,9 +4845,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSLLU_D3_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)                   , intent(in)                        :: fill
-        real(RKC)                   , intent(inout) , allocatable       :: array(:,:,:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)                   , intent(in)                        :: fill
+        real(RKG)                   , intent(inout) , allocatable       :: array(:,:,:)
         integer(IK)                 , intent(in)    , dimension(3)      :: size, lbc, lbcold, ubcold
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -4859,9 +4859,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSLLU_D3_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)                   , intent(in)                        :: fill
-        real(RKC)                   , intent(inout) , allocatable       :: array(:,:,:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)                   , intent(in)                        :: fill
+        real(RKG)                   , intent(inout) , allocatable       :: array(:,:,:)
         integer(IK)                 , intent(in)    , dimension(3)      :: size, lbc, lbcold, ubcold
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -4873,9 +4873,9 @@ module pm_arrayRefill
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRefilledSLLU_D3_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)                   , intent(in)                        :: fill
-        real(RKC)                   , intent(inout) , allocatable       :: array(:,:,:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)                   , intent(in)                        :: fill
+        real(RKG)                   , intent(inout) , allocatable       :: array(:,:,:)
         integer(IK)                 , intent(in)    , dimension(3)      :: size, lbc, lbcold, ubcold
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed

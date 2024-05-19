@@ -54,35 +54,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getGeomLogPMF_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_distGeom@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getGeomLogPMF_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_distGeom@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getGeomLogPMF_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_distGeom@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getGeomLogPMF_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_distGeom@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getGeomLogPMF_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_distGeom@routines.inc.F90"
     end procedure
 #endif
@@ -109,35 +109,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setGeomLogPMFDef_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_distGeom@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setGeomLogPMFDef_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_distGeom@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setGeomLogPMFDef_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_distGeom@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setGeomLogPMFDef_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_distGeom@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setGeomLogPMFDef_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_distGeom@routines.inc.F90"
     end procedure
 #endif
@@ -160,35 +160,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setGeomLogPMFLog_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_distGeom@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setGeomLogPMFLog_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_distGeom@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setGeomLogPMFLog_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_distGeom@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setGeomLogPMFLog_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_distGeom@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setGeomLogPMFLog_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_distGeom@routines.inc.F90"
     end procedure
 #endif
@@ -215,35 +215,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getGeomCDF_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_distGeom@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getGeomCDF_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_distGeom@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getGeomCDF_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_distGeom@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getGeomCDF_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_distGeom@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getGeomCDF_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_distGeom@routines.inc.F90"
     end procedure
 #endif
@@ -264,35 +264,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setGeomCDF_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_distGeom@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setGeomCDF_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_distGeom@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setGeomCDF_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_distGeom@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setGeomCDF_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_distGeom@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setGeomCDF_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_distGeom@routines.inc.F90"
     end procedure
 #endif
@@ -319,35 +319,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getGeomRand_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_distGeom@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getGeomRand_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_distGeom@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getGeomRand_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_distGeom@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getGeomRand_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_distGeom@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getGeomRand_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_distGeom@routines.inc.F90"
     end procedure
 #endif
@@ -386,35 +386,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setGeomRandRNGD_D0_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_distGeom@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setGeomRandRNGD_D0_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_distGeom@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setGeomRandRNGD_D0_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_distGeom@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setGeomRandRNGD_D0_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_distGeom@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setGeomRandRNGD_D0_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_distGeom@routines.inc.F90"
     end procedure
 #endif
@@ -437,35 +437,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setGeomRandRNGF_D0_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_distGeom@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setGeomRandRNGF_D0_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_distGeom@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setGeomRandRNGF_D0_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_distGeom@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setGeomRandRNGF_D0_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_distGeom@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setGeomRandRNGF_D0_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_distGeom@routines.inc.F90"
     end procedure
 #endif
@@ -488,35 +488,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setGeomRandRNGX_D0_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_distGeom@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setGeomRandRNGX_D0_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_distGeom@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setGeomRandRNGX_D0_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_distGeom@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setGeomRandRNGX_D0_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_distGeom@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setGeomRandRNGX_D0_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_distGeom@routines.inc.F90"
     end procedure
 #endif
@@ -551,35 +551,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setGeomRandRNGD_D1_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_distGeom@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setGeomRandRNGD_D1_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_distGeom@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setGeomRandRNGD_D1_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_distGeom@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setGeomRandRNGD_D1_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_distGeom@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setGeomRandRNGD_D1_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_distGeom@routines.inc.F90"
     end procedure
 #endif
@@ -602,35 +602,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setGeomRandRNGF_D1_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_distGeom@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setGeomRandRNGF_D1_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_distGeom@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setGeomRandRNGF_D1_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_distGeom@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setGeomRandRNGF_D1_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_distGeom@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setGeomRandRNGF_D1_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_distGeom@routines.inc.F90"
     end procedure
 #endif
@@ -653,35 +653,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setGeomRandRNGX_D1_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_distGeom@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setGeomRandRNGX_D1_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_distGeom@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setGeomRandRNGX_D1_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_distGeom@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setGeomRandRNGX_D1_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_distGeom@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setGeomRandRNGX_D1_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_distGeom@routines.inc.F90"
     end procedure
 #endif

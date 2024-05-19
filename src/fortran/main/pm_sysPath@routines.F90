@@ -69,7 +69,7 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 !
 !    module procedure pathList_typer
-!        use pm_kind, only: SKC => SK
+!        use pm_kind, only: SKG => SK
 !        use pm_val2str, only: getStr
 !        use pm_sysShell, only: shellis_type
 !        character(*, SK), parameter     :: PROCEDURE_NAME = MODULE_NAME//SK_"@pathList_typer()"
@@ -159,7 +159,7 @@ contains
 #define getPathMatch_ENABLED 1
 
     module procedure getPathMatch
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
 #include "pm_sysPath@routines.inc.F90"
     end procedure
 
@@ -170,7 +170,7 @@ contains
 #define setPathMatch_ENABLED 1
 
     module procedure setPathMatch
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
 #include "pm_sysPath@routines.inc.F90"
     end procedure
 
@@ -185,7 +185,7 @@ contains
 #define DD_ENABLED 1
 
     module procedure isDirDD
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
 #include "pm_sysPath@routines.inc.F90"
     end procedure
 
@@ -196,7 +196,7 @@ contains
 #define II_ENABLED 1
 
     module procedure isDirII
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
 #include "pm_sysPath@routines.inc.F90"
     end procedure
 
@@ -215,7 +215,7 @@ contains
 #define DD_ENABLED 1
 
     module procedure isFileDD
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
 #include "pm_sysPath@routines.inc.F90"
     end procedure
 
@@ -226,7 +226,7 @@ contains
 #define II_ENABLED 1
 
     module procedure isFileII
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
 #include "pm_sysPath@routines.inc.F90"
     end procedure
 
@@ -245,7 +245,7 @@ contains
 #define DD_ENABLED 1
 
     module procedure isExtantDD
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
 #include "pm_sysPath@routines.inc.F90"
     end procedure
 
@@ -256,7 +256,7 @@ contains
 #define II_ENABLED 1
 
     module procedure isExtantII
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
 #include "pm_sysPath@routines.inc.F90"
     end procedure
 
@@ -270,7 +270,7 @@ contains
 
     module procedure getPathVerbatim
 
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
         use pm_sysShell, only: shellis_type
 
         type(shellis_type) :: shellis
@@ -317,7 +317,7 @@ contains
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     module procedure getIndexDirNameDef
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
 #include "pm_sysPath@routines.inc.F90"
     end procedure
 
@@ -334,7 +334,7 @@ contains
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     module procedure getIndexDirNamePM
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
 #include "pm_sysPath@routines.inc.F90"
     end procedure
 
@@ -361,7 +361,7 @@ contains
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     module procedure getDirNameDef
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
 #include "pm_sysPath@routines.inc.F90"
     end procedure
 
@@ -378,7 +378,7 @@ contains
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     module procedure getDirNamePM
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
 #include "pm_sysPath@routines.inc.F90"
     end procedure
 
@@ -405,7 +405,7 @@ contains
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     module procedure getIndexBaseNameDef
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
 #include "pm_sysPath@routines.inc.F90"
     end procedure
 
@@ -422,7 +422,7 @@ contains
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     module procedure getIndexBaseNamePM
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
 #include "pm_sysPath@routines.inc.F90"
     end procedure
 
@@ -449,7 +449,7 @@ contains
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     module procedure getBaseNameDef
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
 #include "pm_sysPath@routines.inc.F90"
     end procedure
 
@@ -466,7 +466,7 @@ contains
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     module procedure getBaseNamePM
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
 #include "pm_sysPath@routines.inc.F90"
     end procedure
 
@@ -497,7 +497,7 @@ contains
 !!%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 !
 !    module procedure getBaseName
-!        use pm_kind, only: SKC => SK
+!        use pm_kind, only: SKG => SK
 !        integer(IK) :: offset
 !        integer(IK) :: lenPath
 !        lenPath = len(path, IK)
@@ -534,11 +534,11 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     module procedure getIndexExtName
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
         indexExtName = len(path, IK)
         if (indexExtName > 0_IK) then
             loopSearch: do
-                if (path(indexExtName:indexExtName) == SKC_".") then
+                if (path(indexExtName:indexExtName) == SKG_".") then
                     return
                 elseif (path(indexExtName:indexExtName) == dirsep .or. indexExtName == 1_IK) then
                     indexExtName = len(path, IK) + 1_IK
@@ -554,13 +554,13 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 #if 0
     module procedure getPathDensePosix
-        use pm_kind, only: SKC => SK
-        character(*,SKC), parameter     :: PSP = DIR_SEP_POSIX
-        character(*,SKC), parameter     :: CDIR = PSP//"."//PSP ! current dir pattern.
-        character(*,SKC), parameter     :: PDIR = PSP//".."//PSP ! parent dir pattern.
+        use pm_kind, only: SKG => SK
+        character(*,SKG), parameter     :: PSP = DIR_SEP_POSIX
+        character(*,SKG), parameter     :: CDIR = PSP//"."//PSP ! current dir pattern.
+        character(*,SKG), parameter     :: PDIR = PSP//".."//PSP ! parent dir pattern.
         integer(IK)                     :: istart, iend, j, lenPath
         lenPath = len(path, IK)
-        allocate(character(lenPath,SKC) :: pathDense)
+        allocate(character(lenPath,SKG) :: pathDense)
         CHECK_ASSERTION(__LINE__, len(PSP, IK) == 1_IK, SK_"@getPathDensePosix(): Posix directory separator must be a single character.")
         istart = 1_IK
         iend = istart
@@ -607,7 +607,7 @@ contains
 
         use pm_sysShell, only: isFailedGetOutput
         use pm_sysShell, only: shellis_type
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
         type(shellis_type) :: shellis
 
         failed = .false._LK
@@ -621,7 +621,7 @@ contains
 !            block
 !                use ifport, only: FullPathQQ
 !                integer(IK) :: lenPath
-!                allocate(character(MAX_LEN_FILE_PATH,SKC) :: pathAbs)
+!                allocate(character(MAX_LEN_FILE_PATH,SKG) :: pathAbs)
 !                lenPath = FullPathQQ(path, pathAbs)
 !                if (0_IK < lenPath) then
 !                    pathAbs = pathAbs(1 : lenPath)
@@ -641,9 +641,9 @@ contains
                 block
 
                     !logical(LK) :: endsWithNLC
-                    !character(1,SKC) :: APPENDIX = SKC_" "
-                    character(:,SKC), allocatable :: command
-                    character(*,SKC), parameter :: NLC = new_line(SKC_"a")
+                    !character(1,SKG) :: APPENDIX = SKG_" "
+                    character(:,SKG), allocatable :: command
+                    character(*,SKG), parameter :: NLC = new_line(SKG_"a")
 
                     !   \warning
                     !   The presence of trailing new line character in the input path can be problematic when the absolute path is inferred via Microsoft PowerShell.<br>
@@ -652,16 +652,16 @@ contains
                     !   Update: The above behavior of `isFailedGetOutput()` was a bug that is now resolved. As such, this discussion is irrelevant.
 
                     !endsWithNLC = logical(path(len(path, IK) - len(NLC, IK) + 1_IK :) == NLC, LK)
-                    !if (endsWithNLC) APPENDIX = SKC_"X" ! ensure the significant new line character is not stripped incorrectly by `isFailedGetOutput()`.
+                    !if (endsWithNLC) APPENDIX = SKG_"X" ! ensure the significant new line character is not stripped incorrectly by `isFailedGetOutput()`.
 
                     !   The order of the conditionals in the following should not change (powershell must be first).
 
                     if (shellis%powershell) then
-                        !command = SKC_"$ExecutionContext.SessionState.Path.GetUnresolvedProviderPathFromPSPath('"//path//trim(APPENDIX)//SKC_"')" ! LCOV_EXCL_LINE
-                        command = SKC_"$ExecutionContext.SessionState.Path.GetUnresolvedProviderPathFromPSPath('"//path//SKC_"')" ! LCOV_EXCL_LINE
+                        !command = SKG_"$ExecutionContext.SessionState.Path.GetUnresolvedProviderPathFromPSPath('"//path//trim(APPENDIX)//SKG_"')" ! LCOV_EXCL_LINE
+                        command = SKG_"$ExecutionContext.SessionState.Path.GetUnresolvedProviderPathFromPSPath('"//path//SKG_"')" ! LCOV_EXCL_LINE
                     elseif (shellis%cmd) then
-                        !command = SKC_"powershell -command ""$ExecutionContext.SessionState.Path.GetUnresolvedProviderPathFromPSPath('"//path//trim(APPENDIX)//SKC_"')""" ! LCOV_EXCL_LINE
-                        command = SKC_"powershell -command ""$ExecutionContext.SessionState.Path.GetUnresolvedProviderPathFromPSPath('"//path//SKC_"')""" ! LCOV_EXCL_LINE
+                        !command = SKG_"powershell -command ""$ExecutionContext.SessionState.Path.GetUnresolvedProviderPathFromPSPath('"//path//trim(APPENDIX)//SKG_"')""" ! LCOV_EXCL_LINE
+                        command = SKG_"powershell -command ""$ExecutionContext.SessionState.Path.GetUnresolvedProviderPathFromPSPath('"//path//SKG_"')""" ! LCOV_EXCL_LINE
                     end if
 
                     failed = isFailedGetOutput(command, pathAbs, errmsg)
@@ -683,8 +683,8 @@ contains
             !elseif (shellis%posix) then
             !    block
             !        use, intrinsic :: iso_c_binding, only: c_ptr, c_null_ptr, c_null_char, c_associated
-            !        character(*,SKC), parameter     :: PSP = DIR_SEP_POSIX
-            !        character(:,SKC), allocatable   :: relPathStr, absPathStr
+            !        character(*,SKG), parameter     :: PSP = DIR_SEP_POSIX
+            !        character(:,SKG), allocatable   :: relPathStr, absPathStr
             !        integer(IK)     , parameter     :: NTRY = 8_IK ! max number of times extending the buffer.
             !        integer(IK)                     :: absPathLen, maxPathLen, itry
             !        type(c_ptr)                     :: ptr
@@ -702,7 +702,7 @@ contains
             !        loopFindExistingDirName: do
             !            maxPathLen = 1024_IK
             !            loopSufficientPathLen: do itry = 1_IK, NTRY
-            !                absPathStr = repeat(SKC_" ", maxPathLen)
+            !                absPathStr = repeat(SKG_" ", maxPathLen)
             !                absPathStrPtr = realpath(relPathStr//c_null_char, absPathStr)
             !                ! Determine the first null char
             !                do absPathLen = 1_IK, maxPathLen
@@ -737,9 +737,9 @@ contains
         ! We get here only if the input path is empty or all other approaches have failed.
 
         block
-            character(:,SKC), allocatable   :: dirc
-            character(1,SKC), parameter     :: PSP = DIR_SEP_POSIX
-            character(1,SKC), parameter     :: PSW = DIR_SEP_WINDOWS
+            character(:,SKG), allocatable   :: dirc
+            character(1,SKG), parameter     :: PSP = DIR_SEP_POSIX
+            character(1,SKG), parameter     :: PSW = DIR_SEP_WINDOWS
             dirc = getDirCurrent(failed, errmsg)
             if (.not. failed) then
                 if (len(path, IK) == 0_IK) then
@@ -771,7 +771,7 @@ contains
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     module procedure getDirCurrentFailed
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
 #if     INTEL_ENABLED || GNU_ENABLED
 #if     INTEL_ENABLED
         use ifport, only: getcwd
@@ -791,7 +791,7 @@ contains
             cycle
         end do
         if (failed) then
-            dirCurrent = SKC_"."
+            dirCurrent = SKG_"."
         else
             dirCurrent = trim(dirCurrent)
         end if
@@ -807,34 +807,34 @@ contains
         ! the environment variables CD and perhaps PWD are unreliable and may not be defined. Use the command form instead.
         use pm_sysShell, only: isFailedGetOutput
         use pm_sysShell, only: shellis_type
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
         type(shellis_type) :: shellis
         shellis = shellis_type(failed, errmsg)
         if (shellis%powershell) then
-            failed = isFailedGetOutput(SKC_"echo (pwd).path", dirCurrent, errmsg)
+            failed = isFailedGetOutput(SKG_"echo (pwd).path", dirCurrent, errmsg)
         elseif (shellis%posix .or. shellis%fish) then
-            failed = isFailedGetOutput(SKC_"pwd", dirCurrent, errmsg)
+            failed = isFailedGetOutput(SKG_"pwd", dirCurrent, errmsg)
         elseif (shellis%cmd) then
-            failed = isFailedGetOutput(SKC_"cd", dirCurrent, errmsg)
+            failed = isFailedGetOutput(SKG_"cd", dirCurrent, errmsg)
         end if
         if (failed) then
             errmsg = MODULE_NAME//SK_"@getDirCurrent(): Failed to fetch `pwd` command output. "//trim(errmsg) ! LCOV_EXCL_LINE
-            dirCurrent = SKC_"." ! LCOV_EXCL_LINE
+            dirCurrent = SKG_"." ! LCOV_EXCL_LINE
         end if
     end procedure
 
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     module procedure getDirHome
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
         use pm_val2str, only: getStr
         use pm_sysShell, only: shellis_type
         use pm_sysShell, only: isFailedGetEnvVar, isFailedGetOutput
-        character(:,SKC), allocatable   :: homeDrive, homePath, user_def
-        character(*,SKC), parameter     :: PSWA = DIR_SEP_WINDOWS_ALL
-        character(*,SKC), parameter     :: PSPA = DIR_SEP_POSIX_ALL
-        character(*,SKC), parameter     :: PSW = DIR_SEP_WINDOWS
-        character(*,SKC), parameter     :: PSP = DIR_SEP_POSIX
+        character(:,SKG), allocatable   :: homeDrive, homePath, user_def
+        character(*,SKG), parameter     :: PSWA = DIR_SEP_WINDOWS_ALL
+        character(*,SKG), parameter     :: PSPA = DIR_SEP_POSIX_ALL
+        character(*,SKG), parameter     :: PSW = DIR_SEP_WINDOWS
+        character(*,SKG), parameter     :: PSP = DIR_SEP_POSIX
         character(:, SK), allocatable   :: errmsg_def
         logical(LK) :: failed_def
         type(shellis_type) :: shellis
@@ -947,17 +947,17 @@ contains
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     module procedure getPathExpandedUserFailedMsg
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
         use pm_sysShell, only: shellis_type
-        character(*,SKC), parameter :: PSPA = DIR_SEP_POSIX_ALL
-        character(*,SKC), parameter :: PSWA = DIR_SEP_WINDOWS_ALL
+        character(*,SKG), parameter :: PSPA = DIR_SEP_POSIX_ALL
+        character(*,SKG), parameter :: PSWA = DIR_SEP_WINDOWS_ALL
         type(shellis_type) :: shellis
         integer(IK) :: lenPath
         integer(IK) :: firstDirSepPos
         failed = .false._LK
         lenPath = len(path, IK)
         if (lenPath > 0_IK) then
-            if (path(1:1) == SKC_"~") then
+            if (path(1:1) == SKG_"~") then
                 shellis = shellis_type(failed, errmsg)
                 if (.not. failed) then
                     if (shellis%posix .or. shellis%fish) then
@@ -1020,30 +1020,30 @@ contains
 
     module procedure getPathNew
 
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
         use pm_val2str, only: getStr
         use pm_sysShell, only: shellis_type
         use pm_parallelism, only: getImageID
 
-        character(1,SKC), parameter     :: USC = SKC_"_"
-        character(*,SKC), parameter     :: PSP = DIR_SEP_POSIX
-        character(*,SKC), parameter     :: PSW = DIR_SEP_WINDOWS
-        character(*,SKC), parameter     :: PSPA = DIR_SEP_POSIX_ALL
-        character(*,SKC), parameter     :: PSWA = DIR_SEP_WINDOWS_ALL
-        character(:,SKC), allocatable   :: dir_def, prefix_def, ext_def
+        character(1,SKG), parameter     :: USC = SKG_"_"
+        character(*,SKG), parameter     :: PSP = DIR_SEP_POSIX
+        character(*,SKG), parameter     :: PSW = DIR_SEP_WINDOWS
+        character(*,SKG), parameter     :: PSPA = DIR_SEP_POSIX_ALL
+        character(*,SKG), parameter     :: PSWA = DIR_SEP_WINDOWS_ALL
+        character(:,SKG), allocatable   :: dir_def, prefix_def, ext_def
         integer(IK)     , parameter     :: COUNTER_MAX = 1000_IK
         integer(IK)                     :: counter, lenDir
         integer(IK)                     :: pid_def
         logical(LK)                     :: exists
         type(shellis_type)              :: shellis
-        character(8 ,SKC)               :: date
-        character(10,SKC)               :: time
+        character(8 ,SKG)               :: date
+        character(10,SKG)               :: time
 
 
         if (present(failed)) then
             shellis = shellis_type(failed)
             if (failed) then
-                pathNew = SKC_"" ! LCOV_EXCL_LINE
+                pathNew = SKG_"" ! LCOV_EXCL_LINE
                 return ! LCOV_EXCL_LINE
             end if
         else
@@ -1061,26 +1061,26 @@ contains
                     dir_def = dir
                 end if
             else
-                dir_def = SKC_""
+                dir_def = SKG_""
             end if
         else
-            dir_def = SKC_""
+            dir_def = SKG_""
         end if
 
         if (present(prefix)) then
             prefix_def = prefix
         else
             if (present(sep)) then
-                prefix_def = SKC_"new"//sep
+                prefix_def = SKG_"new"//sep
             else
-                prefix_def = SKC_"new"//USC
+                prefix_def = SKG_"new"//USC
             end if
         end if
 
         if (present(ext)) then
             ext_def = ext
         else
-            ext_def = SKC_""
+            ext_def = SKG_""
         end if
 
         if (present(pid)) then
@@ -1093,9 +1093,9 @@ contains
         do counter = 1_IK, COUNTER_MAX
             call date_and_time(date, time)
             if (present(sep)) then
-                pathNew = dir_def//prefix_def//date//sep//time(1:6)//sep//time(8:10)//sep//SKC_"pid"//sep//getStr(pid_def)//ext_def
+                pathNew = dir_def//prefix_def//date//sep//time(1:6)//sep//time(8:10)//sep//SKG_"pid"//sep//getStr(pid_def)//ext_def
             else
-                pathNew = dir_def//prefix_def//date//USC//time(1:6)//USC//time(8:10)//USC//SKC_"pid"//USC//getStr(pid_def)//ext_def
+                pathNew = dir_def//prefix_def//date//USC//time(1:6)//USC//time(8:10)//USC//SKG_"pid"//USC//getStr(pid_def)//ext_def
             end if
             inquire(file = pathNew, exist = exists)
             if (.not. exists) return
@@ -1103,7 +1103,7 @@ contains
 
         if (present(failed)) then
             failed = .true._LK
-            pathNew = SKC_""
+            pathNew = SKG_""
         else
             error stop SK_"Failed to generate new file, even after "//getStr(COUNTER_MAX)//SK_" tries."
         end if
@@ -1113,7 +1113,7 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     module procedure getPathJoined
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
         character(255, SK):: errmsg
         logical(LK) :: failed
         pathJoined = getPathJoined(p1, p2, failed, errmsg)
@@ -1124,10 +1124,10 @@ contains
 
     module procedure getPathJoinedFailed
 
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
         use pm_sysShell, only: shell_type
-        character(*,SKC), parameter :: PSWA = DIR_SEP_WINDOWS_ALL
-        character(*,SKC), parameter :: PSPA = DIR_SEP_POSIX_ALL
+        character(*,SKG), parameter :: PSWA = DIR_SEP_WINDOWS_ALL
+        character(*,SKG), parameter :: PSPA = DIR_SEP_POSIX_ALL
         type(shell_type) :: Shell
         integer(IK) :: lenp1
         integer(IK) :: lenp2
@@ -1136,7 +1136,7 @@ contains
         lenp2 = len(p2, IK)
 
         if (lenp1 == 0_IK .and. lenp2 == 0_IK) then
-            pathJoined = SKC_""
+            pathJoined = SKG_""
             failed = .false._LK
             return
         end if
@@ -1171,13 +1171,13 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     module procedure isFailedMakeDir
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
 
-        character(:,SKC), allocatable   :: command
+        character(:,SKG), allocatable   :: command
         type(shellis_type)              :: shellis
         integer(IK)                     :: itry
         integer(IK)                     :: ntry_def
-        character(*,SKC), parameter     :: LF = new_line(SKC_"a")
+        character(*,SKG), parameter     :: LF = new_line(SKG_"a")
 
         if (present(errmsg)) then
             shellis = shellis_type(failed, errmsg)
@@ -1190,15 +1190,15 @@ contains
         if (shellis%powershell .and. shellis%windows) then
             !>  PowerShell accepts `-p` flag on both POSIX and Windows systems.
             !>  However, in POSIX OS, PowerShell requires `-p` for nested directories.
-            command = SKC_"New-Item -ItemType Directory -Path "//getPathVerbatimPowerShell(path)//SKC_" >null 2>&1" ! LCOV_EXCL_LINE
+            command = SKG_"New-Item -ItemType Directory -Path "//getPathVerbatimPowerShell(path)//SKG_" >null 2>&1" ! LCOV_EXCL_LINE
         elseif (shellis%posix) then ! including microsoft powershell core.
-            command = SKC_"mkdir -p "//getPathVerbatimPosix(path)//SKC_" >/dev/null 2>&1" ! -p enables nested mkdir
+            command = SKG_"mkdir -p "//getPathVerbatimPosix(path)//SKG_" >/dev/null 2>&1" ! -p enables nested mkdir
         elseif (shellis%fish) then
-            command = SKC_"mkdir -p "//getPathVerbatimFish(path)//SKC_" >/dev/null 2>&1" ! -p enables nested mkdir
+            command = SKG_"mkdir -p "//getPathVerbatimFish(path)//SKG_" >/dev/null 2>&1" ! -p enables nested mkdir
         elseif (shellis%cmd) then
-            command = SKC_"mkdir "//getPathVerbatimCMD(path)//SKC_" >nul 2>&1" ! LCOV_EXCL_LINE
+            command = SKG_"mkdir "//getPathVerbatimCMD(path)//SKG_" >nul 2>&1" ! LCOV_EXCL_LINE
         else
-            !command = SKC_"mkdir "//path ! last shot in the dark. ! LCOV_EXCL_LINE
+            !command = SKG_"mkdir "//path ! last shot in the dark. ! LCOV_EXCL_LINE
             if (present(errmsg)) errmsg = MODULE_NAME//SK_"@isFailedMakeDir(): Failed to fetch the shell type."//LF//trim(errmsg) ! LCOV_EXCL_LINE
             failed = .true._LK
             return
@@ -1228,11 +1228,11 @@ contains
 
     module procedure isFailedMakeDirTemp
 
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
         use pm_sysShell, only: isFailedGetDirTemp
         character(*, SK), parameter :: PROCEDURE_NAME = MODULE_NAME//SK_"@isFailedMakeDirTemp()"
         integer(IK)     , parameter :: NTRY = 3_IK
-        character(:,SKC), allocatable :: parent_def
+        character(:,SKG), allocatable :: parent_def
         integer(IK) :: itry
 
         do itry = 1_IK, NTRY
@@ -1264,7 +1264,7 @@ contains
 #define isFailedCopy_ENABLED 1
 
     module procedure isFailedCopy
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
 #include "pm_sysPath@routines.inc.F90"
     end procedure
 
@@ -1275,7 +1275,7 @@ contains
 #define isFailedMove_ENABLED 1
 
     module procedure isFailedMove
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
 #include "pm_sysPath@routines.inc.F90"
     end procedure
 
@@ -1286,7 +1286,7 @@ contains
 #define isFailedRemove_ENABLED 1
 
     module procedure isFailedRemove
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
 #include "pm_sysPath@routines.inc.F90"
     end procedure
 
@@ -1295,7 +1295,7 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     module procedure glob_BSSK
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
         character(511, SK) :: errmsg
         if (isFailedGlob(pattern, list, errmsg = errmsg)) error stop MODULE_NAME//SK_"@glob(): "//trim(errmsg)
     end procedure
@@ -1304,7 +1304,7 @@ contains
 
 #define SK_ENABLED 1
     module procedure isFailedGlob_SK
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
         use pm_strASCII, only: setAsciiFromEscaped
         use pm_sysShell, only: isFailedGetOutput, shell_type
 #include "pm_sysPath@routines.inc.F90"
@@ -1313,7 +1313,7 @@ contains
 
 #define BSSK_ENABLED 1
     module procedure isFailedGlob_BSSK
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
 #include "pm_sysPath@routines.inc.F90"
     end procedure
 #undef BSSK_ENABLED
@@ -1323,7 +1323,7 @@ contains
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     module procedure ls_BSSK
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
         character(511, SK) :: errmsg
         if (isFailedList(path, list, sort = sort, showdir = showdir, showfile = showfile, showhidden = showhidden, reversed = reversed, errmsg = errmsg)) error stop MODULE_NAME//SK_"@ls(): "//trim(errmsg)
     end procedure
@@ -1332,7 +1332,7 @@ contains
 
 #define SK_ENABLED 1
     module procedure isFailedList_SK
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
         use pm_strASCII, only: setAsciiFromEscaped
         use pm_sysShell, only: isFailedGetOutput, shell_type
 #include "pm_sysPath@routines.inc.F90"
@@ -1341,7 +1341,7 @@ contains
 
 #define BSSK_ENABLED 1
     module procedure isFailedList_BSSK
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
 #include "pm_sysPath@routines.inc.F90"
     end procedure
 #undef BSSK_ENABLED
@@ -1356,35 +1356,35 @@ contains
 
 #if SK5_ENABLED
     module procedure hasDriveLetter_SK5
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
 #include "pm_sysPath@routines.inc.F90"
     end procedure
 #endif
 
 #if SK4_ENABLED
     module procedure hasDriveLetter_SK4
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
 #include "pm_sysPath@routines.inc.F90"
     end procedure
 #endif
 
 #if SK3_ENABLED
     module procedure hasDriveLetter_SK3
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
 #include "pm_sysPath@routines.inc.F90"
     end procedure
 #endif
 
 #if SK2_ENABLED
     module procedure hasDriveLetter_SK2
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
 #include "pm_sysPath@routines.inc.F90"
     end procedure
 #endif
 
 #if SK1_ENABLED
     module procedure hasDriveLetter_SK1
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
 #include "pm_sysPath@routines.inc.F90"
     end procedure
 #endif
@@ -1401,35 +1401,35 @@ contains
 
 #if SK5_ENABLED
     module procedure isPathAbsPosix_SK5
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
 #include "pm_sysPath@routines.inc.F90"
     end procedure
 #endif
 
 #if SK4_ENABLED
     module procedure isPathAbsPosix_SK4
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
 #include "pm_sysPath@routines.inc.F90"
     end procedure
 #endif
 
 #if SK3_ENABLED
     module procedure isPathAbsPosix_SK3
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
 #include "pm_sysPath@routines.inc.F90"
     end procedure
 #endif
 
 #if SK2_ENABLED
     module procedure isPathAbsPosix_SK2
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
 #include "pm_sysPath@routines.inc.F90"
     end procedure
 #endif
 
 #if SK1_ENABLED
     module procedure isPathAbsPosix_SK1
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
 #include "pm_sysPath@routines.inc.F90"
     end procedure
 #endif
@@ -1446,35 +1446,35 @@ contains
 
 #if SK5_ENABLED
     module procedure isPathAbsWindows_SK5
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
 #include "pm_sysPath@routines.inc.F90"
     end procedure
 #endif
 
 #if SK4_ENABLED
     module procedure isPathAbsWindows_SK4
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
 #include "pm_sysPath@routines.inc.F90"
     end procedure
 #endif
 
 #if SK3_ENABLED
     module procedure isPathAbsWindows_SK3
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
 #include "pm_sysPath@routines.inc.F90"
     end procedure
 #endif
 
 #if SK2_ENABLED
     module procedure isPathAbsWindows_SK2
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
 #include "pm_sysPath@routines.inc.F90"
     end procedure
 #endif
 
 #if SK1_ENABLED
     module procedure isPathAbsWindows_SK1
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
 #include "pm_sysPath@routines.inc.F90"
     end procedure
 #endif
@@ -1490,7 +1490,7 @@ contains
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     module procedure getDirSep_SK
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
 #include "pm_sysPath@routines.inc.F90"
     end procedure
 
@@ -1498,35 +1498,35 @@ contains
 
 #if SK5_ENABLED
     module procedure getDirSep_SK5
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
 #include "pm_sysPath@routines.inc.F90"
     end procedure
 #endif
 
 #if SK4_ENABLED
     module procedure getDirSep_SK4
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
 #include "pm_sysPath@routines.inc.F90"
     end procedure
 #endif
 
 #if SK3_ENABLED
     module procedure getDirSep_SK3
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
 #include "pm_sysPath@routines.inc.F90"
     end procedure
 #endif
 
 #if SK2_ENABLED
     module procedure getDirSep_SK2
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
 #include "pm_sysPath@routines.inc.F90"
     end procedure
 #endif
 
 #if SK1_ENABLED
     module procedure getDirSep_SK1
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
 #include "pm_sysPath@routines.inc.F90"
     end procedure
 #endif
@@ -1542,7 +1542,7 @@ contains
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     module procedure getDirSeps_SK
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
 #include "pm_sysPath@routines.inc.F90"
     end procedure
 
@@ -1550,35 +1550,35 @@ contains
 
 #if SK5_ENABLED
     module procedure getDirSeps_SK5
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
 #include "pm_sysPath@routines.inc.F90"
     end procedure
 #endif
 
 #if SK4_ENABLED
     module procedure getDirSeps_SK4
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
 #include "pm_sysPath@routines.inc.F90"
     end procedure
 #endif
 
 #if SK3_ENABLED
     module procedure getDirSeps_SK3
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
 #include "pm_sysPath@routines.inc.F90"
     end procedure
 #endif
 
 #if SK2_ENABLED
     module procedure getDirSeps_SK2
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
 #include "pm_sysPath@routines.inc.F90"
     end procedure
 #endif
 
 #if SK1_ENABLED
     module procedure getDirSeps_SK1
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
 #include "pm_sysPath@routines.inc.F90"
     end procedure
 #endif
@@ -1594,7 +1594,7 @@ contains
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     module procedure getPathSep_SK
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
 #include "pm_sysPath@routines.inc.F90"
     end procedure
 
@@ -1602,35 +1602,35 @@ contains
 
 #if SK5_ENABLED
     module procedure getPathSep_SK5
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
 #include "pm_sysPath@routines.inc.F90"
     end procedure
 #endif
 
 #if SK4_ENABLED
     module procedure getPathSep_SK4
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
 #include "pm_sysPath@routines.inc.F90"
     end procedure
 #endif
 
 #if SK3_ENABLED
     module procedure getPathSep_SK3
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
 #include "pm_sysPath@routines.inc.F90"
     end procedure
 #endif
 
 #if SK2_ENABLED
     module procedure getPathSep_SK2
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
 #include "pm_sysPath@routines.inc.F90"
     end procedure
 #endif
 
 #if SK1_ENABLED
     module procedure getPathSep_SK1
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
 #include "pm_sysPath@routines.inc.F90"
     end procedure
 #endif
@@ -1647,35 +1647,35 @@ contains
 
 #if SK5_ENABLED
     module procedure getPathVerbatimCMD_SK5
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
 #include "pm_sysPath@routines.inc.F90"
     end procedure
 #endif
 
 #if SK4_ENABLED
     module procedure getPathVerbatimCMD_SK4
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
 #include "pm_sysPath@routines.inc.F90"
     end procedure
 #endif
 
 #if SK3_ENABLED
     module procedure getPathVerbatimCMD_SK3
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
 #include "pm_sysPath@routines.inc.F90"
     end procedure
 #endif
 
 #if SK2_ENABLED
     module procedure getPathVerbatimCMD_SK2
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
 #include "pm_sysPath@routines.inc.F90"
     end procedure
 #endif
 
 #if SK1_ENABLED
     module procedure getPathVerbatimCMD_SK1
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
 #include "pm_sysPath@routines.inc.F90"
     end procedure
 #endif
@@ -1692,35 +1692,35 @@ contains
 
 #if SK5_ENABLED
     module procedure getPathVerbatimPowerShell_SK5
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
 #include "pm_sysPath@routines.inc.F90"
     end procedure
 #endif
 
 #if SK4_ENABLED
     module procedure getPathVerbatimPowerShell_SK4
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
 #include "pm_sysPath@routines.inc.F90"
     end procedure
 #endif
 
 #if SK3_ENABLED
     module procedure getPathVerbatimPowerShell_SK3
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
 #include "pm_sysPath@routines.inc.F90"
     end procedure
 #endif
 
 #if SK2_ENABLED
     module procedure getPathVerbatimPowerShell_SK2
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
 #include "pm_sysPath@routines.inc.F90"
     end procedure
 #endif
 
 #if SK1_ENABLED
     module procedure getPathVerbatimPowerShell_SK1
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
 #include "pm_sysPath@routines.inc.F90"
     end procedure
 #endif
@@ -1737,35 +1737,35 @@ contains
 
 #if SK5_ENABLED
     module procedure getPathVerbatimPosix_SK5
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
 #include "pm_sysPath@routines.inc.F90"
     end procedure
 #endif
 
 #if SK4_ENABLED
     module procedure getPathVerbatimPosix_SK4
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
 #include "pm_sysPath@routines.inc.F90"
     end procedure
 #endif
 
 #if SK3_ENABLED
     module procedure getPathVerbatimPosix_SK3
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
 #include "pm_sysPath@routines.inc.F90"
     end procedure
 #endif
 
 #if SK2_ENABLED
     module procedure getPathVerbatimPosix_SK2
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
 #include "pm_sysPath@routines.inc.F90"
     end procedure
 #endif
 
 #if SK1_ENABLED
     module procedure getPathVerbatimPosix_SK1
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
 #include "pm_sysPath@routines.inc.F90"
     end procedure
 #endif
@@ -1782,35 +1782,35 @@ contains
 
 #if SK5_ENABLED
     module procedure getPathVerbatimFish_SK5
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
 #include "pm_sysPath@routines.inc.F90"
     end procedure
 #endif
 
 #if SK4_ENABLED
     module procedure getPathVerbatimFish_SK4
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
 #include "pm_sysPath@routines.inc.F90"
     end procedure
 #endif
 
 #if SK3_ENABLED
     module procedure getPathVerbatimFish_SK3
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
 #include "pm_sysPath@routines.inc.F90"
     end procedure
 #endif
 
 #if SK2_ENABLED
     module procedure getPathVerbatimFish_SK2
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
 #include "pm_sysPath@routines.inc.F90"
     end procedure
 #endif
 
 #if SK1_ENABLED
     module procedure getPathVerbatimFish_SK1
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
 #include "pm_sysPath@routines.inc.F90"
     end procedure
 #endif
@@ -1829,35 +1829,35 @@ contains
 
 #if SK5_ENABLED
     module procedure getPathPosix_D0_SK5
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
 #include "pm_sysPath@routines.inc.F90"
     end procedure
 #endif
 
 #if SK4_ENABLED
     module procedure getPathPosix_D0_SK4
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
 #include "pm_sysPath@routines.inc.F90"
     end procedure
 #endif
 
 #if SK3_ENABLED
     module procedure getPathPosix_D0_SK3
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
 #include "pm_sysPath@routines.inc.F90"
     end procedure
 #endif
 
 #if SK2_ENABLED
     module procedure getPathPosix_D0_SK2
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
 #include "pm_sysPath@routines.inc.F90"
     end procedure
 #endif
 
 #if SK1_ENABLED
     module procedure getPathPosix_D0_SK1
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
 #include "pm_sysPath@routines.inc.F90"
     end procedure
 #endif
@@ -1878,35 +1878,35 @@ contains
 
 #if SK5_ENABLED
     module procedure setPathPosix_D0_SK5
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
 #include "pm_sysPath@routines.inc.F90"
     end procedure
 #endif
 
 #if SK4_ENABLED
     module procedure setPathPosix_D0_SK4
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
 #include "pm_sysPath@routines.inc.F90"
     end procedure
 #endif
 
 #if SK3_ENABLED
     module procedure setPathPosix_D0_SK3
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
 #include "pm_sysPath@routines.inc.F90"
     end procedure
 #endif
 
 #if SK2_ENABLED
     module procedure setPathPosix_D0_SK2
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
 #include "pm_sysPath@routines.inc.F90"
     end procedure
 #endif
 
 #if SK1_ENABLED
     module procedure setPathPosix_D0_SK1
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
 #include "pm_sysPath@routines.inc.F90"
     end procedure
 #endif
@@ -1927,35 +1927,35 @@ contains
 
 #if SK5_ENABLED
     module procedure getPathPosixEscaped_D0_SK5
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
 #include "pm_sysPath@routines.inc.F90"
     end procedure
 #endif
 
 #if SK4_ENABLED
     module procedure getPathPosixEscaped_D0_SK4
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
 #include "pm_sysPath@routines.inc.F90"
     end procedure
 #endif
 
 #if SK3_ENABLED
     module procedure getPathPosixEscaped_D0_SK3
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
 #include "pm_sysPath@routines.inc.F90"
     end procedure
 #endif
 
 #if SK2_ENABLED
     module procedure getPathPosixEscaped_D0_SK2
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
 #include "pm_sysPath@routines.inc.F90"
     end procedure
 #endif
 
 #if SK1_ENABLED
     module procedure getPathPosixEscaped_D0_SK1
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
 #include "pm_sysPath@routines.inc.F90"
     end procedure
 #endif
@@ -1976,35 +1976,35 @@ contains
 
 #if SK5_ENABLED
     module procedure setPathPosixEscaped_D0_SK5
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
 #include "pm_sysPath@routines.inc.F90"
     end procedure
 #endif
 
 #if SK4_ENABLED
     module procedure setPathPosixEscaped_D0_SK4
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
 #include "pm_sysPath@routines.inc.F90"
     end procedure
 #endif
 
 #if SK3_ENABLED
     module procedure setPathPosixEscaped_D0_SK3
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
 #include "pm_sysPath@routines.inc.F90"
     end procedure
 #endif
 
 #if SK2_ENABLED
     module procedure setPathPosixEscaped_D0_SK2
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
 #include "pm_sysPath@routines.inc.F90"
     end procedure
 #endif
 
 #if SK1_ENABLED
     module procedure setPathPosixEscaped_D0_SK1
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
 #include "pm_sysPath@routines.inc.F90"
     end procedure
 #endif
@@ -2025,35 +2025,35 @@ contains
 
 #if SK5_ENABLED
     module procedure getPathWindows_D0_SK5
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
 #include "pm_sysPath@routines.inc.F90"
     end procedure
 #endif
 
 #if SK4_ENABLED
     module procedure getPathWindows_D0_SK4
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
 #include "pm_sysPath@routines.inc.F90"
     end procedure
 #endif
 
 #if SK3_ENABLED
     module procedure getPathWindows_D0_SK3
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
 #include "pm_sysPath@routines.inc.F90"
     end procedure
 #endif
 
 #if SK2_ENABLED
     module procedure getPathWindows_D0_SK2
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
 #include "pm_sysPath@routines.inc.F90"
     end procedure
 #endif
 
 #if SK1_ENABLED
     module procedure getPathWindows_D0_SK1
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
 #include "pm_sysPath@routines.inc.F90"
     end procedure
 #endif
@@ -2074,35 +2074,35 @@ contains
 
 #if SK5_ENABLED
     module procedure setPathWindows_D0_SK5
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
 #include "pm_sysPath@routines.inc.F90"
     end procedure
 #endif
 
 #if SK4_ENABLED
     module procedure setPathWindows_D0_SK4
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
 #include "pm_sysPath@routines.inc.F90"
     end procedure
 #endif
 
 #if SK3_ENABLED
     module procedure setPathWindows_D0_SK3
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
 #include "pm_sysPath@routines.inc.F90"
     end procedure
 #endif
 
 #if SK2_ENABLED
     module procedure setPathWindows_D0_SK2
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
 #include "pm_sysPath@routines.inc.F90"
     end procedure
 #endif
 
 #if SK1_ENABLED
     module procedure setPathWindows_D0_SK1
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
 #include "pm_sysPath@routines.inc.F90"
     end procedure
 #endif
@@ -2121,35 +2121,35 @@ contains
 
 #if SK5_ENABLED
     module procedure getPathHostNameIndex_SK5
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
 #include "pm_sysPath@routines.inc.F90"
     end procedure
 #endif
 
 #if SK4_ENABLED
     module procedure getPathHostNameIndex_SK4
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
 #include "pm_sysPath@routines.inc.F90"
     end procedure
 #endif
 
 #if SK3_ENABLED
     module procedure getPathHostNameIndex_SK3
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
 #include "pm_sysPath@routines.inc.F90"
     end procedure
 #endif
 
 #if SK2_ENABLED
     module procedure getPathHostNameIndex_SK2
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
 #include "pm_sysPath@routines.inc.F90"
     end procedure
 #endif
 
 #if SK1_ENABLED
     module procedure getPathHostNameIndex_SK1
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
 #include "pm_sysPath@routines.inc.F90"
     end procedure
 #endif
@@ -2168,35 +2168,35 @@ contains
 !
 !#if SK5_ENABLED
 !    module procedure getPathNew_D0_SK5
-!        use pm_kind, only: SKC => SK5
+!        use pm_kind, only: SKG => SK5
 !#include "pm_sysPath@routines.inc.F90"
 !    end procedure
 !#endif
 !
 !#if SK4_ENABLED
 !    module procedure getPathNew_D0_SK4
-!        use pm_kind, only: SKC => SK4
+!        use pm_kind, only: SKG => SK4
 !#include "pm_sysPath@routines.inc.F90"
 !    end procedure
 !#endif
 !
 !#if SK3_ENABLED
 !    module procedure getPathNew_D0_SK3
-!        use pm_kind, only: SKC => SK3
+!        use pm_kind, only: SKG => SK3
 !#include "pm_sysPath@routines.inc.F90"
 !    end procedure
 !#endif
 !
 !#if SK2_ENABLED
 !    module procedure getPathNew_D0_SK2
-!        use pm_kind, only: SKC => SK2
+!        use pm_kind, only: SKG => SK2
 !#include "pm_sysPath@routines.inc.F90"
 !    end procedure
 !#endif
 !
 !#if SK1_ENABLED
 !    module procedure getPathNew_D0_SK1
-!        use pm_kind, only: SKC => SK1
+!        use pm_kind, only: SKG => SK1
 !#include "pm_sysPath@routines.inc.F90"
 !    end procedure
 !#endif
@@ -2217,35 +2217,35 @@ contains
 !
 !#if SK5_ENABLED
 !    module procedure isDir_D0_SK5
-!        use pm_kind, only: SKC => SK5
+!        use pm_kind, only: SKG => SK5
 !#include "pm_sysPath@routines.inc.F90"
 !    end procedure
 !#endif
 !
 !#if SK4_ENABLED
 !    module procedure isDir_D0_SK4
-!        use pm_kind, only: SKC => SK4
+!        use pm_kind, only: SKG => SK4
 !#include "pm_sysPath@routines.inc.F90"
 !    end procedure
 !#endif
 !
 !#if SK3_ENABLED
 !    module procedure isDir_D0_SK3
-!        use pm_kind, only: SKC => SK3
+!        use pm_kind, only: SKG => SK3
 !#include "pm_sysPath@routines.inc.F90"
 !    end procedure
 !#endif
 !
 !#if SK2_ENABLED
 !    module procedure isDir_D0_SK2
-!        use pm_kind, only: SKC => SK2
+!        use pm_kind, only: SKG => SK2
 !#include "pm_sysPath@routines.inc.F90"
 !    end procedure
 !#endif
 !
 !#if SK1_ENABLED
 !    module procedure isDir_D0_SK1
-!        use pm_kind, only: SKC => SK1
+!        use pm_kind, only: SKG => SK1
 !#include "pm_sysPath@routines.inc.F90"
 !    end procedure
 !#endif
@@ -2266,35 +2266,35 @@ contains
 !
 !#if SK5_ENABLED
 !    module procedure isFile_D0_SK5
-!        use pm_kind, only: SKC => SK5
+!        use pm_kind, only: SKG => SK5
 !#include "pm_sysPath@routines.inc.F90"
 !    end procedure
 !#endif
 !
 !#if SK4_ENABLED
 !    module procedure isFile_D0_SK4
-!        use pm_kind, only: SKC => SK4
+!        use pm_kind, only: SKG => SK4
 !#include "pm_sysPath@routines.inc.F90"
 !    end procedure
 !#endif
 !
 !#if SK3_ENABLED
 !    module procedure isFile_D0_SK3
-!        use pm_kind, only: SKC => SK3
+!        use pm_kind, only: SKG => SK3
 !#include "pm_sysPath@routines.inc.F90"
 !    end procedure
 !#endif
 !
 !#if SK2_ENABLED
 !    module procedure isFile_D0_SK2
-!        use pm_kind, only: SKC => SK2
+!        use pm_kind, only: SKG => SK2
 !#include "pm_sysPath@routines.inc.F90"
 !    end procedure
 !#endif
 !
 !#if SK1_ENABLED
 !    module procedure isFile_D0_SK1
-!        use pm_kind, only: SKC => SK1
+!        use pm_kind, only: SKG => SK1
 !#include "pm_sysPath@routines.inc.F90"
 !    end procedure
 !#endif
@@ -2315,35 +2315,35 @@ contains
 !
 !#if SK5_ENABLED
 !    module procedure mkdir_D0_SK5
-!        use pm_kind, only: SKC => SK5
+!        use pm_kind, only: SKG => SK5
 !#include "pm_sysPath@routines.inc.F90"
 !    end procedure
 !#endif
 !
 !#if SK4_ENABLED
 !    module procedure mkdir_D0_SK4
-!        use pm_kind, only: SKC => SK4
+!        use pm_kind, only: SKG => SK4
 !#include "pm_sysPath@routines.inc.F90"
 !    end procedure
 !#endif
 !
 !#if SK3_ENABLED
 !    module procedure mkdir_D0_SK3
-!        use pm_kind, only: SKC => SK3
+!        use pm_kind, only: SKG => SK3
 !#include "pm_sysPath@routines.inc.F90"
 !    end procedure
 !#endif
 !
 !#if SK2_ENABLED
 !    module procedure mkdir_D0_SK2
-!        use pm_kind, only: SKC => SK2
+!        use pm_kind, only: SKG => SK2
 !#include "pm_sysPath@routines.inc.F90"
 !    end procedure
 !#endif
 !
 !#if SK1_ENABLED
 !    module procedure mkdir_D0_SK1
-!        use pm_kind, only: SKC => SK1
+!        use pm_kind, only: SKG => SK1
 !#include "pm_sysPath@routines.inc.F90"
 !    end procedure
 !#endif

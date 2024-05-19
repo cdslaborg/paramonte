@@ -198,8 +198,8 @@ module pm_container
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: css_typer_D0
 #endif
-        use pm_kind, only: SKC => SK
-        character(*,SKC)    , intent(in)                :: val
+        use pm_kind, only: SKG => SK
+        character(*,SKG)    , intent(in)                :: val
         logical(LK)         , intent(in)    , optional  :: trimmed
         type(css_type)                                  :: container
     end function
@@ -268,8 +268,8 @@ module pm_container
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: csi_typer_D0
 #endif
-        use pm_kind, only: IKC => IK
-        integer(IKC)        , intent(in)                :: val
+        use pm_kind, only: IKG => IK
+        integer(IKG)        , intent(in)                :: val
         type(csi_type)                                  :: container
     end function
     end interface
@@ -337,8 +337,8 @@ module pm_container
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: csl_typer_D0
 #endif
-        use pm_kind, only: LKC => LK
-        logical(LKC)        , intent(in)                :: val
+        use pm_kind, only: LKG => LK
+        logical(LKG)        , intent(in)                :: val
         type(csl_type)                                  :: container
     end function
     end interface
@@ -406,8 +406,8 @@ module pm_container
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: csc_typer_D0
 #endif
-        use pm_kind, only: CKC => CK
-        complex(CKC)        , intent(in)                :: val
+        use pm_kind, only: CKG => CK
+        complex(CKG)        , intent(in)                :: val
         type(csc_type)                                  :: container
     end function
     end interface
@@ -475,8 +475,8 @@ module pm_container
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: csr_typer_D0
 #endif
-        use pm_kind, only: RKC => RK
-        real(RKC)           , intent(in)                :: val
+        use pm_kind, only: RKG => RK
+        real(RKG)           , intent(in)                :: val
         type(csr_type)                                  :: container
     end function
     end interface
@@ -540,7 +540,7 @@ module pm_container
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: csp_typer_D0
 #endif
-        use pm_kind, only: RKC => RK
+        use pm_kind, only: RKG => RK
         class(*)            , intent(in)                :: val
         type(csp_type)                                  :: container
     end function
@@ -793,10 +793,10 @@ module pm_container
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: constructCon_D0_PSSK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)    , intent(in)                :: val
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)    , intent(in)                :: val
         logical(LK)         , intent(in)    , optional  :: trimmed
-        type(css_pdt(SKC))                              :: container
+        type(css_pdt(SKG))                              :: container
     end function
 #endif
 
@@ -805,10 +805,10 @@ module pm_container
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: constructCon_D0_PSSK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)    , intent(in)                :: val
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)    , intent(in)                :: val
         logical(LK)         , intent(in)    , optional  :: trimmed
-        type(css_pdt(SKC))                              :: container
+        type(css_pdt(SKG))                              :: container
     end function
 #endif
 
@@ -817,10 +817,10 @@ module pm_container
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: constructCon_D0_PSSK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)    , intent(in)                :: val
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)    , intent(in)                :: val
         logical(LK)         , intent(in)    , optional  :: trimmed
-        type(css_pdt(SKC))                              :: container
+        type(css_pdt(SKG))                              :: container
     end function
 #endif
 
@@ -829,10 +829,10 @@ module pm_container
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: constructCon_D0_PSSK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)    , intent(in)                :: val
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)    , intent(in)                :: val
         logical(LK)         , intent(in)    , optional  :: trimmed
-        type(css_pdt(SKC))                              :: container
+        type(css_pdt(SKG))                              :: container
     end function
 #endif
 
@@ -841,10 +841,10 @@ module pm_container
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: constructCon_D0_PSSK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)    , intent(in)                :: val
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)    , intent(in)                :: val
         logical(LK)         , intent(in)    , optional  :: trimmed
-        type(css_pdt(SKC))                              :: container
+        type(css_pdt(SKG))                              :: container
     end function
 #endif
 
@@ -939,9 +939,9 @@ module pm_container
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: constructCon_D0_PSIK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)        , intent(in)                :: val
-        type(csi_pdt(IKC))                              :: container
+        use pm_kind, only: IKG => IK5
+        integer(IKG)        , intent(in)                :: val
+        type(csi_pdt(IKG))                              :: container
     end function
 #endif
 
@@ -950,9 +950,9 @@ module pm_container
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: constructCon_D0_PSIK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)        , intent(in)                :: val
-        type(csi_pdt(IKC))                              :: container
+        use pm_kind, only: IKG => IK4
+        integer(IKG)        , intent(in)                :: val
+        type(csi_pdt(IKG))                              :: container
     end function
 #endif
 
@@ -961,9 +961,9 @@ module pm_container
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: constructCon_D0_PSIK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)        , intent(in)                :: val
-        type(csi_pdt(IKC))                              :: container
+        use pm_kind, only: IKG => IK3
+        integer(IKG)        , intent(in)                :: val
+        type(csi_pdt(IKG))                              :: container
     end function
 #endif
 
@@ -972,9 +972,9 @@ module pm_container
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: constructCon_D0_PSIK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)        , intent(in)                :: val
-        type(csi_pdt(IKC))                              :: container
+        use pm_kind, only: IKG => IK2
+        integer(IKG)        , intent(in)                :: val
+        type(csi_pdt(IKG))                              :: container
     end function
 #endif
 
@@ -983,9 +983,9 @@ module pm_container
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: constructCon_D0_PSIK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)        , intent(in)                :: val
-        type(csi_pdt(IKC))                              :: container
+        use pm_kind, only: IKG => IK1
+        integer(IKG)        , intent(in)                :: val
+        type(csi_pdt(IKG))                              :: container
     end function
 #endif
 
@@ -1078,9 +1078,9 @@ module pm_container
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: constructCon_D0_PSLK5
 #endif
-        use pm_kind, only: LKC => LK5
-        integer(LKC)        , intent(in)                :: val
-        type(csl_pdt(LKC))                              :: container
+        use pm_kind, only: LKG => LK5
+        integer(LKG)        , intent(in)                :: val
+        type(csl_pdt(LKG))                              :: container
     end function
 #endif
 
@@ -1089,9 +1089,9 @@ module pm_container
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: constructCon_D0_PSLK4
 #endif
-        use pm_kind, only: LKC => LK4
-        integer(LKC)        , intent(in)                :: val
-        type(csl_pdt(LKC))                              :: container
+        use pm_kind, only: LKG => LK4
+        integer(LKG)        , intent(in)                :: val
+        type(csl_pdt(LKG))                              :: container
     end function
 #endif
 
@@ -1100,9 +1100,9 @@ module pm_container
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: constructCon_D0_PSLK3
 #endif
-        use pm_kind, only: LKC => LK3
-        integer(LKC)        , intent(in)                :: val
-        type(csl_pdt(LKC))                              :: container
+        use pm_kind, only: LKG => LK3
+        integer(LKG)        , intent(in)                :: val
+        type(csl_pdt(LKG))                              :: container
     end function
 #endif
 
@@ -1111,9 +1111,9 @@ module pm_container
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: constructCon_D0_PSLK2
 #endif
-        use pm_kind, only: LKC => LK2
-        integer(LKC)        , intent(in)                :: val
-        type(csl_pdt(LKC))                              :: container
+        use pm_kind, only: LKG => LK2
+        integer(LKG)        , intent(in)                :: val
+        type(csl_pdt(LKG))                              :: container
     end function
 #endif
 
@@ -1122,9 +1122,9 @@ module pm_container
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: constructCon_D0_PSLK1
 #endif
-        use pm_kind, only: LKC => LK1
-        integer(LKC)        , intent(in)                :: val
-        type(csl_pdt(LKC))                              :: container
+        use pm_kind, only: LKG => LK1
+        integer(LKG)        , intent(in)                :: val
+        type(csl_pdt(LKG))                              :: container
     end function
 #endif
 
@@ -1217,9 +1217,9 @@ module pm_container
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: constructCon_D0_PSCK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)        , intent(in)                :: val
-        type(csc_pdt(CKC))                              :: container
+        use pm_kind, only: CKG => CK5
+        complex(CKG)        , intent(in)                :: val
+        type(csc_pdt(CKG))                              :: container
     end function
 #endif
 
@@ -1228,9 +1228,9 @@ module pm_container
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: constructCon_D0_PSCK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)        , intent(in)                :: val
-        type(csc_pdt(CKC))                              :: container
+        use pm_kind, only: CKG => CK4
+        complex(CKG)        , intent(in)                :: val
+        type(csc_pdt(CKG))                              :: container
     end function
 #endif
 
@@ -1239,9 +1239,9 @@ module pm_container
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: constructCon_D0_PSCK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)        , intent(in)                :: val
-        type(csc_pdt(CKC))                              :: container
+        use pm_kind, only: CKG => CK3
+        complex(CKG)        , intent(in)                :: val
+        type(csc_pdt(CKG))                              :: container
     end function
 #endif
 
@@ -1250,9 +1250,9 @@ module pm_container
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: constructCon_D0_PSCK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)        , intent(in)                :: val
-        type(csc_pdt(CKC))                              :: container
+        use pm_kind, only: CKG => CK2
+        complex(CKG)        , intent(in)                :: val
+        type(csc_pdt(CKG))                              :: container
     end function
 #endif
 
@@ -1261,9 +1261,9 @@ module pm_container
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: constructCon_D0_PSCK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)        , intent(in)                :: val
-        type(csc_pdt(CKC))                              :: container
+        use pm_kind, only: CKG => CK1
+        complex(CKG)        , intent(in)                :: val
+        type(csc_pdt(CKG))                              :: container
     end function
 #endif
 
@@ -1356,9 +1356,9 @@ module pm_container
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: constructCon_D0_PSRK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)           , intent(in)                :: val
-        type(csr_pdt(RKC))                              :: container
+        use pm_kind, only: RKG => RK5
+        real(RKG)           , intent(in)                :: val
+        type(csr_pdt(RKG))                              :: container
     end function
 #endif
 
@@ -1367,9 +1367,9 @@ module pm_container
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: constructCon_D0_PSRK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)           , intent(in)                :: val
-        type(csr_pdt(RKC))                              :: container
+        use pm_kind, only: RKG => RK4
+        real(RKG)           , intent(in)                :: val
+        type(csr_pdt(RKG))                              :: container
     end function
 #endif
 
@@ -1378,9 +1378,9 @@ module pm_container
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: constructCon_D0_PSRK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)           , intent(in)                :: val
-        type(csr_pdt(RKC))                              :: container
+        use pm_kind, only: RKG => RK3
+        real(RKG)           , intent(in)                :: val
+        type(csr_pdt(RKG))                              :: container
     end function
 #endif
 
@@ -1389,9 +1389,9 @@ module pm_container
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: constructCon_D0_PSRK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)           , intent(in)                :: val
-        type(csr_pdt(RKC))                              :: container
+        use pm_kind, only: RKG => RK2
+        real(RKG)           , intent(in)                :: val
+        type(csr_pdt(RKG))                              :: container
     end function
 #endif
 
@@ -1400,9 +1400,9 @@ module pm_container
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: constructCon_D0_PSRK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)           , intent(in)                :: val
-        type(csr_pdt(RKC))                              :: container
+        use pm_kind, only: RKG => RK1
+        real(RKG)           , intent(in)                :: val
+        type(csr_pdt(RKG))                              :: container
     end function
 #endif
 
@@ -1573,9 +1573,9 @@ module pm_container
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isless_D0_D0_PSSK5
 #endif
-        use pm_kind, only: SKC => SK5
-        type(css_pdt(SKC))      , intent(in)                :: con1
-        type(css_pdt(SKC))      , intent(in)                :: con2
+        use pm_kind, only: SKG => SK5
+        type(css_pdt(SKG))      , intent(in)                :: con1
+        type(css_pdt(SKG))      , intent(in)                :: con2
         logical(LK)                                         :: itis
     end function
 #endif
@@ -1585,9 +1585,9 @@ module pm_container
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isless_D0_D0_PSSK4
 #endif
-        use pm_kind, only: SKC => SK4
-        type(css_pdt(SKC))      , intent(in)                :: con1
-        type(css_pdt(SKC))      , intent(in)                :: con2
+        use pm_kind, only: SKG => SK4
+        type(css_pdt(SKG))      , intent(in)                :: con1
+        type(css_pdt(SKG))      , intent(in)                :: con2
         logical(LK)                                         :: itis
     end function
 #endif
@@ -1597,9 +1597,9 @@ module pm_container
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isless_D0_D0_PSSK3
 #endif
-        use pm_kind, only: SKC => SK3
-        type(css_pdt(SKC))      , intent(in)                :: con1
-        type(css_pdt(SKC))      , intent(in)                :: con2
+        use pm_kind, only: SKG => SK3
+        type(css_pdt(SKG))      , intent(in)                :: con1
+        type(css_pdt(SKG))      , intent(in)                :: con2
         logical(LK)                                         :: itis
     end function
 #endif
@@ -1609,9 +1609,9 @@ module pm_container
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isless_D0_D0_PSSK2
 #endif
-        use pm_kind, only: SKC => SK2
-        type(css_pdt(SKC))      , intent(in)                :: con1
-        type(css_pdt(SKC))      , intent(in)                :: con2
+        use pm_kind, only: SKG => SK2
+        type(css_pdt(SKG))      , intent(in)                :: con1
+        type(css_pdt(SKG))      , intent(in)                :: con2
         logical(LK)                                         :: itis
     end function
 #endif
@@ -1621,9 +1621,9 @@ module pm_container
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isless_D0_D0_PSSK1
 #endif
-        use pm_kind, only: SKC => SK1
-        type(css_pdt(SKC))      , intent(in)                :: con1
-        type(css_pdt(SKC))      , intent(in)                :: con2
+        use pm_kind, only: SKG => SK1
+        type(css_pdt(SKG))      , intent(in)                :: con1
+        type(css_pdt(SKG))      , intent(in)                :: con2
         logical(LK)                                         :: itis
     end function
 #endif
@@ -1635,9 +1635,9 @@ module pm_container
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isless_D0_D0_PSIK5
 #endif
-        use pm_kind, only: IKC => IK5
-        type(csi_pdt(IKC))      , intent(in)                :: con1
-        type(csi_pdt(IKC))      , intent(in)                :: con2
+        use pm_kind, only: IKG => IK5
+        type(csi_pdt(IKG))      , intent(in)                :: con1
+        type(csi_pdt(IKG))      , intent(in)                :: con2
         logical(LK)                                         :: itis
     end function
 #endif
@@ -1647,9 +1647,9 @@ module pm_container
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isless_D0_D0_PSIK4
 #endif
-        use pm_kind, only: IKC => IK4
-        type(csi_pdt(IKC))      , intent(in)                :: con1
-        type(csi_pdt(IKC))      , intent(in)                :: con2
+        use pm_kind, only: IKG => IK4
+        type(csi_pdt(IKG))      , intent(in)                :: con1
+        type(csi_pdt(IKG))      , intent(in)                :: con2
         logical(LK)                                         :: itis
     end function
 #endif
@@ -1659,9 +1659,9 @@ module pm_container
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isless_D0_D0_PSIK3
 #endif
-        use pm_kind, only: IKC => IK3
-        type(csi_pdt(IKC))      , intent(in)                :: con1
-        type(csi_pdt(IKC))      , intent(in)                :: con2
+        use pm_kind, only: IKG => IK3
+        type(csi_pdt(IKG))      , intent(in)                :: con1
+        type(csi_pdt(IKG))      , intent(in)                :: con2
         logical(LK)                                         :: itis
     end function
 #endif
@@ -1671,9 +1671,9 @@ module pm_container
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isless_D0_D0_PSIK2
 #endif
-        use pm_kind, only: IKC => IK2
-        type(csi_pdt(IKC))      , intent(in)                :: con1
-        type(csi_pdt(IKC))      , intent(in)                :: con2
+        use pm_kind, only: IKG => IK2
+        type(csi_pdt(IKG))      , intent(in)                :: con1
+        type(csi_pdt(IKG))      , intent(in)                :: con2
         logical(LK)                                         :: itis
     end function
 #endif
@@ -1683,9 +1683,9 @@ module pm_container
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isless_D0_D0_PSIK1
 #endif
-        use pm_kind, only: IKC => IK1
-        type(csi_pdt(IKC))      , intent(in)                :: con1
-        type(csi_pdt(IKC))      , intent(in)                :: con2
+        use pm_kind, only: IKG => IK1
+        type(csi_pdt(IKG))      , intent(in)                :: con1
+        type(csi_pdt(IKG))      , intent(in)                :: con2
         logical(LK)                                         :: itis
     end function
 #endif
@@ -1697,9 +1697,9 @@ module pm_container
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isless_D0_D0_PSLK5
 #endif
-        use pm_kind, only: LKC => LK5
-        type(csl_pdt(LKC))      , intent(in)                :: con1
-        type(csl_pdt(LKC))      , intent(in)                :: con2
+        use pm_kind, only: LKG => LK5
+        type(csl_pdt(LKG))      , intent(in)                :: con1
+        type(csl_pdt(LKG))      , intent(in)                :: con2
         logical(LK)                                         :: itis
     end function
 #endif
@@ -1709,9 +1709,9 @@ module pm_container
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isless_D0_D0_PSLK4
 #endif
-        use pm_kind, only: LKC => LK4
-        type(csl_pdt(LKC))      , intent(in)                :: con1
-        type(csl_pdt(LKC))      , intent(in)                :: con2
+        use pm_kind, only: LKG => LK4
+        type(csl_pdt(LKG))      , intent(in)                :: con1
+        type(csl_pdt(LKG))      , intent(in)                :: con2
         logical(LK)                                         :: itis
     end function
 #endif
@@ -1721,9 +1721,9 @@ module pm_container
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isless_D0_D0_PSLK3
 #endif
-        use pm_kind, only: LKC => LK3
-        type(csl_pdt(LKC))      , intent(in)                :: con1
-        type(csl_pdt(LKC))      , intent(in)                :: con2
+        use pm_kind, only: LKG => LK3
+        type(csl_pdt(LKG))      , intent(in)                :: con1
+        type(csl_pdt(LKG))      , intent(in)                :: con2
         logical(LK)                                         :: itis
     end function
 #endif
@@ -1733,9 +1733,9 @@ module pm_container
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isless_D0_D0_PSLK2
 #endif
-        use pm_kind, only: LKC => LK2
-        type(csl_pdt(LKC))      , intent(in)                :: con1
-        type(csl_pdt(LKC))      , intent(in)                :: con2
+        use pm_kind, only: LKG => LK2
+        type(csl_pdt(LKG))      , intent(in)                :: con1
+        type(csl_pdt(LKG))      , intent(in)                :: con2
         logical(LK)                                         :: itis
     end function
 #endif
@@ -1745,9 +1745,9 @@ module pm_container
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isless_D0_D0_PSLK1
 #endif
-        use pm_kind, only: LKC => LK1
-        type(csl_pdt(LKC))      , intent(in)                :: con1
-        type(csl_pdt(LKC))      , intent(in)                :: con2
+        use pm_kind, only: LKG => LK1
+        type(csl_pdt(LKG))      , intent(in)                :: con1
+        type(csl_pdt(LKG))      , intent(in)                :: con2
         logical(LK)                                         :: itis
     end function
 #endif
@@ -1759,9 +1759,9 @@ module pm_container
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isless_D0_D0_PSCK5
 #endif
-        use pm_kind, only: CKC => CK5
-        type(csc_pdt(CKC))      , intent(in)                :: con1
-        type(csc_pdt(CKC))      , intent(in)                :: con2
+        use pm_kind, only: CKG => CK5
+        type(csc_pdt(CKG))      , intent(in)                :: con1
+        type(csc_pdt(CKG))      , intent(in)                :: con2
         logical(LK)                                         :: itis
     end function
 #endif
@@ -1771,9 +1771,9 @@ module pm_container
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isless_D0_D0_PSCK4
 #endif
-        use pm_kind, only: CKC => CK4
-        type(csc_pdt(CKC))      , intent(in)                :: con1
-        type(csc_pdt(CKC))      , intent(in)                :: con2
+        use pm_kind, only: CKG => CK4
+        type(csc_pdt(CKG))      , intent(in)                :: con1
+        type(csc_pdt(CKG))      , intent(in)                :: con2
         logical(LK)                                         :: itis
     end function
 #endif
@@ -1783,9 +1783,9 @@ module pm_container
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isless_D0_D0_PSCK3
 #endif
-        use pm_kind, only: CKC => CK3
-        type(csc_pdt(CKC))      , intent(in)                :: con1
-        type(csc_pdt(CKC))      , intent(in)                :: con2
+        use pm_kind, only: CKG => CK3
+        type(csc_pdt(CKG))      , intent(in)                :: con1
+        type(csc_pdt(CKG))      , intent(in)                :: con2
         logical(LK)                                         :: itis
     end function
 #endif
@@ -1795,9 +1795,9 @@ module pm_container
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isless_D0_D0_PSCK2
 #endif
-        use pm_kind, only: CKC => CK2
-        type(csc_pdt(CKC))      , intent(in)                :: con1
-        type(csc_pdt(CKC))      , intent(in)                :: con2
+        use pm_kind, only: CKG => CK2
+        type(csc_pdt(CKG))      , intent(in)                :: con1
+        type(csc_pdt(CKG))      , intent(in)                :: con2
         logical(LK)                                         :: itis
     end function
 #endif
@@ -1807,9 +1807,9 @@ module pm_container
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isless_D0_D0_PSCK1
 #endif
-        use pm_kind, only: CKC => CK1
-        type(csc_pdt(CKC))      , intent(in)                :: con1
-        type(csc_pdt(CKC))      , intent(in)                :: con2
+        use pm_kind, only: CKG => CK1
+        type(csc_pdt(CKG))      , intent(in)                :: con1
+        type(csc_pdt(CKG))      , intent(in)                :: con2
         logical(LK)                                         :: itis
     end function
 #endif
@@ -1821,9 +1821,9 @@ module pm_container
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isless_D0_D0_PSRK5
 #endif
-        use pm_kind, only: RKC => RK5
-        type(csr_pdt(RKC))      , intent(in)                :: con1
-        type(csr_pdt(RKC))      , intent(in)                :: con2
+        use pm_kind, only: RKG => RK5
+        type(csr_pdt(RKG))      , intent(in)                :: con1
+        type(csr_pdt(RKG))      , intent(in)                :: con2
         logical(LK)                                         :: itis
     end function
 #endif
@@ -1833,9 +1833,9 @@ module pm_container
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isless_D0_D0_PSRK4
 #endif
-        use pm_kind, only: RKC => RK4
-        type(csr_pdt(RKC))      , intent(in)                :: con1
-        type(csr_pdt(RKC))      , intent(in)                :: con2
+        use pm_kind, only: RKG => RK4
+        type(csr_pdt(RKG))      , intent(in)                :: con1
+        type(csr_pdt(RKG))      , intent(in)                :: con2
         logical(LK)                                         :: itis
     end function
 #endif
@@ -1845,9 +1845,9 @@ module pm_container
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isless_D0_D0_PSRK3
 #endif
-        use pm_kind, only: RKC => RK3
-        type(csr_pdt(RKC))      , intent(in)                :: con1
-        type(csr_pdt(RKC))      , intent(in)                :: con2
+        use pm_kind, only: RKG => RK3
+        type(csr_pdt(RKG))      , intent(in)                :: con1
+        type(csr_pdt(RKG))      , intent(in)                :: con2
         logical(LK)                                         :: itis
     end function
 #endif
@@ -1857,9 +1857,9 @@ module pm_container
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isless_D0_D0_PSRK2
 #endif
-        use pm_kind, only: RKC => RK2
-        type(csr_pdt(RKC))      , intent(in)                :: con1
-        type(csr_pdt(RKC))      , intent(in)                :: con2
+        use pm_kind, only: RKG => RK2
+        type(csr_pdt(RKG))      , intent(in)                :: con1
+        type(csr_pdt(RKG))      , intent(in)                :: con2
         logical(LK)                                         :: itis
     end function
 #endif
@@ -1869,9 +1869,9 @@ module pm_container
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isless_D0_D0_PSRK1
 #endif
-        use pm_kind, only: RKC => RK1
-        type(csr_pdt(RKC))      , intent(in)                :: con1
-        type(csr_pdt(RKC))      , intent(in)                :: con2
+        use pm_kind, only: RKG => RK1
+        type(csr_pdt(RKG))      , intent(in)                :: con1
+        type(csr_pdt(RKG))      , intent(in)                :: con2
         logical(LK)                                         :: itis
     end function
 #endif
@@ -2059,9 +2059,9 @@ module pm_container
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: ismore_D0_D0_PSSK5
 #endif
-        use pm_kind, only: SKC => SK5
-        type(css_pdt(SKC))      , intent(in)                :: con1
-        type(css_pdt(SKC))      , intent(in)                :: con2
+        use pm_kind, only: SKG => SK5
+        type(css_pdt(SKG))      , intent(in)                :: con1
+        type(css_pdt(SKG))      , intent(in)                :: con2
         logical(LK)                                         :: itis
     end function
 #endif
@@ -2071,9 +2071,9 @@ module pm_container
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: ismore_D0_D0_PSSK4
 #endif
-        use pm_kind, only: SKC => SK4
-        type(css_pdt(SKC))      , intent(in)                :: con1
-        type(css_pdt(SKC))      , intent(in)                :: con2
+        use pm_kind, only: SKG => SK4
+        type(css_pdt(SKG))      , intent(in)                :: con1
+        type(css_pdt(SKG))      , intent(in)                :: con2
         logical(LK)                                         :: itis
     end function
 #endif
@@ -2083,9 +2083,9 @@ module pm_container
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: ismore_D0_D0_PSSK3
 #endif
-        use pm_kind, only: SKC => SK3
-        type(css_pdt(SKC))      , intent(in)                :: con1
-        type(css_pdt(SKC))      , intent(in)                :: con2
+        use pm_kind, only: SKG => SK3
+        type(css_pdt(SKG))      , intent(in)                :: con1
+        type(css_pdt(SKG))      , intent(in)                :: con2
         logical(LK)                                         :: itis
     end function
 #endif
@@ -2095,9 +2095,9 @@ module pm_container
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: ismore_D0_D0_PSSK2
 #endif
-        use pm_kind, only: SKC => SK2
-        type(css_pdt(SKC))      , intent(in)                :: con1
-        type(css_pdt(SKC))      , intent(in)                :: con2
+        use pm_kind, only: SKG => SK2
+        type(css_pdt(SKG))      , intent(in)                :: con1
+        type(css_pdt(SKG))      , intent(in)                :: con2
         logical(LK)                                         :: itis
     end function
 #endif
@@ -2107,9 +2107,9 @@ module pm_container
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: ismore_D0_D0_PSSK1
 #endif
-        use pm_kind, only: SKC => SK1
-        type(css_pdt(SKC))      , intent(in)                :: con1
-        type(css_pdt(SKC))      , intent(in)                :: con2
+        use pm_kind, only: SKG => SK1
+        type(css_pdt(SKG))      , intent(in)                :: con1
+        type(css_pdt(SKG))      , intent(in)                :: con2
         logical(LK)                                         :: itis
     end function
 #endif
@@ -2121,9 +2121,9 @@ module pm_container
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: ismore_D0_D0_PSIK5
 #endif
-        use pm_kind, only: IKC => IK5
-        type(csi_pdt(IKC))      , intent(in)                :: con1
-        type(csi_pdt(IKC))      , intent(in)                :: con2
+        use pm_kind, only: IKG => IK5
+        type(csi_pdt(IKG))      , intent(in)                :: con1
+        type(csi_pdt(IKG))      , intent(in)                :: con2
         logical(LK)                                         :: itis
     end function
 #endif
@@ -2133,9 +2133,9 @@ module pm_container
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: ismore_D0_D0_PSIK4
 #endif
-        use pm_kind, only: IKC => IK4
-        type(csi_pdt(IKC))      , intent(in)                :: con1
-        type(csi_pdt(IKC))      , intent(in)                :: con2
+        use pm_kind, only: IKG => IK4
+        type(csi_pdt(IKG))      , intent(in)                :: con1
+        type(csi_pdt(IKG))      , intent(in)                :: con2
         logical(LK)                                         :: itis
     end function
 #endif
@@ -2145,9 +2145,9 @@ module pm_container
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: ismore_D0_D0_PSIK3
 #endif
-        use pm_kind, only: IKC => IK3
-        type(csi_pdt(IKC))      , intent(in)                :: con1
-        type(csi_pdt(IKC))      , intent(in)                :: con2
+        use pm_kind, only: IKG => IK3
+        type(csi_pdt(IKG))      , intent(in)                :: con1
+        type(csi_pdt(IKG))      , intent(in)                :: con2
         logical(LK)                                         :: itis
     end function
 #endif
@@ -2157,9 +2157,9 @@ module pm_container
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: ismore_D0_D0_PSIK2
 #endif
-        use pm_kind, only: IKC => IK2
-        type(csi_pdt(IKC))      , intent(in)                :: con1
-        type(csi_pdt(IKC))      , intent(in)                :: con2
+        use pm_kind, only: IKG => IK2
+        type(csi_pdt(IKG))      , intent(in)                :: con1
+        type(csi_pdt(IKG))      , intent(in)                :: con2
         logical(LK)                                         :: itis
     end function
 #endif
@@ -2169,9 +2169,9 @@ module pm_container
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: ismore_D0_D0_PSIK1
 #endif
-        use pm_kind, only: IKC => IK1
-        type(csi_pdt(IKC))      , intent(in)                :: con1
-        type(csi_pdt(IKC))      , intent(in)                :: con2
+        use pm_kind, only: IKG => IK1
+        type(csi_pdt(IKG))      , intent(in)                :: con1
+        type(csi_pdt(IKG))      , intent(in)                :: con2
         logical(LK)                                         :: itis
     end function
 #endif
@@ -2183,9 +2183,9 @@ module pm_container
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: ismore_D0_D0_PSLK5
 #endif
-        use pm_kind, only: LKC => LK5
-        type(csl_pdt(LKC))      , intent(in)                :: con1
-        type(csl_pdt(LKC))      , intent(in)                :: con2
+        use pm_kind, only: LKG => LK5
+        type(csl_pdt(LKG))      , intent(in)                :: con1
+        type(csl_pdt(LKG))      , intent(in)                :: con2
         logical(LK)                                         :: itis
     end function
 #endif
@@ -2195,9 +2195,9 @@ module pm_container
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: ismore_D0_D0_PSLK4
 #endif
-        use pm_kind, only: LKC => LK4
-        type(csl_pdt(LKC))      , intent(in)                :: con1
-        type(csl_pdt(LKC))      , intent(in)                :: con2
+        use pm_kind, only: LKG => LK4
+        type(csl_pdt(LKG))      , intent(in)                :: con1
+        type(csl_pdt(LKG))      , intent(in)                :: con2
         logical(LK)                                         :: itis
     end function
 #endif
@@ -2207,9 +2207,9 @@ module pm_container
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: ismore_D0_D0_PSLK3
 #endif
-        use pm_kind, only: LKC => LK3
-        type(csl_pdt(LKC))      , intent(in)                :: con1
-        type(csl_pdt(LKC))      , intent(in)                :: con2
+        use pm_kind, only: LKG => LK3
+        type(csl_pdt(LKG))      , intent(in)                :: con1
+        type(csl_pdt(LKG))      , intent(in)                :: con2
         logical(LK)                                         :: itis
     end function
 #endif
@@ -2219,9 +2219,9 @@ module pm_container
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: ismore_D0_D0_PSLK2
 #endif
-        use pm_kind, only: LKC => LK2
-        type(csl_pdt(LKC))      , intent(in)                :: con1
-        type(csl_pdt(LKC))      , intent(in)                :: con2
+        use pm_kind, only: LKG => LK2
+        type(csl_pdt(LKG))      , intent(in)                :: con1
+        type(csl_pdt(LKG))      , intent(in)                :: con2
         logical(LK)                                         :: itis
     end function
 #endif
@@ -2231,9 +2231,9 @@ module pm_container
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: ismore_D0_D0_PSLK1
 #endif
-        use pm_kind, only: LKC => LK1
-        type(csl_pdt(LKC))      , intent(in)                :: con1
-        type(csl_pdt(LKC))      , intent(in)                :: con2
+        use pm_kind, only: LKG => LK1
+        type(csl_pdt(LKG))      , intent(in)                :: con1
+        type(csl_pdt(LKG))      , intent(in)                :: con2
         logical(LK)                                         :: itis
     end function
 #endif
@@ -2245,9 +2245,9 @@ module pm_container
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: ismore_D0_D0_PSCK5
 #endif
-        use pm_kind, only: CKC => CK5
-        type(csc_pdt(CKC))      , intent(in)                :: con1
-        type(csc_pdt(CKC))      , intent(in)                :: con2
+        use pm_kind, only: CKG => CK5
+        type(csc_pdt(CKG))      , intent(in)                :: con1
+        type(csc_pdt(CKG))      , intent(in)                :: con2
         logical(LK)                                         :: itis
     end function
 #endif
@@ -2257,9 +2257,9 @@ module pm_container
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: ismore_D0_D0_PSCK4
 #endif
-        use pm_kind, only: CKC => CK4
-        type(csc_pdt(CKC))      , intent(in)                :: con1
-        type(csc_pdt(CKC))      , intent(in)                :: con2
+        use pm_kind, only: CKG => CK4
+        type(csc_pdt(CKG))      , intent(in)                :: con1
+        type(csc_pdt(CKG))      , intent(in)                :: con2
         logical(LK)                                         :: itis
     end function
 #endif
@@ -2269,9 +2269,9 @@ module pm_container
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: ismore_D0_D0_PSCK3
 #endif
-        use pm_kind, only: CKC => CK3
-        type(csc_pdt(CKC))      , intent(in)                :: con1
-        type(csc_pdt(CKC))      , intent(in)                :: con2
+        use pm_kind, only: CKG => CK3
+        type(csc_pdt(CKG))      , intent(in)                :: con1
+        type(csc_pdt(CKG))      , intent(in)                :: con2
         logical(LK)                                         :: itis
     end function
 #endif
@@ -2281,9 +2281,9 @@ module pm_container
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: ismore_D0_D0_PSCK2
 #endif
-        use pm_kind, only: CKC => CK2
-        type(csc_pdt(CKC))      , intent(in)                :: con1
-        type(csc_pdt(CKC))      , intent(in)                :: con2
+        use pm_kind, only: CKG => CK2
+        type(csc_pdt(CKG))      , intent(in)                :: con1
+        type(csc_pdt(CKG))      , intent(in)                :: con2
         logical(LK)                                         :: itis
     end function
 #endif
@@ -2293,9 +2293,9 @@ module pm_container
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: ismore_D0_D0_PSCK1
 #endif
-        use pm_kind, only: CKC => CK1
-        type(csc_pdt(CKC))      , intent(in)                :: con1
-        type(csc_pdt(CKC))      , intent(in)                :: con2
+        use pm_kind, only: CKG => CK1
+        type(csc_pdt(CKG))      , intent(in)                :: con1
+        type(csc_pdt(CKG))      , intent(in)                :: con2
         logical(LK)                                         :: itis
     end function
 #endif
@@ -2307,9 +2307,9 @@ module pm_container
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: ismore_D0_D0_PSRK5
 #endif
-        use pm_kind, only: RKC => RK5
-        type(csr_pdt(RKC))      , intent(in)                :: con1
-        type(csr_pdt(RKC))      , intent(in)                :: con2
+        use pm_kind, only: RKG => RK5
+        type(csr_pdt(RKG))      , intent(in)                :: con1
+        type(csr_pdt(RKG))      , intent(in)                :: con2
         logical(LK)                                         :: itis
     end function
 #endif
@@ -2319,9 +2319,9 @@ module pm_container
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: ismore_D0_D0_PSRK4
 #endif
-        use pm_kind, only: RKC => RK4
-        type(csr_pdt(RKC))      , intent(in)                :: con1
-        type(csr_pdt(RKC))      , intent(in)                :: con2
+        use pm_kind, only: RKG => RK4
+        type(csr_pdt(RKG))      , intent(in)                :: con1
+        type(csr_pdt(RKG))      , intent(in)                :: con2
         logical(LK)                                         :: itis
     end function
 #endif
@@ -2331,9 +2331,9 @@ module pm_container
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: ismore_D0_D0_PSRK3
 #endif
-        use pm_kind, only: RKC => RK3
-        type(csr_pdt(RKC))      , intent(in)                :: con1
-        type(csr_pdt(RKC))      , intent(in)                :: con2
+        use pm_kind, only: RKG => RK3
+        type(csr_pdt(RKG))      , intent(in)                :: con1
+        type(csr_pdt(RKG))      , intent(in)                :: con2
         logical(LK)                                         :: itis
     end function
 #endif
@@ -2343,9 +2343,9 @@ module pm_container
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: ismore_D0_D0_PSRK2
 #endif
-        use pm_kind, only: RKC => RK2
-        type(csr_pdt(RKC))      , intent(in)                :: con1
-        type(csr_pdt(RKC))      , intent(in)                :: con2
+        use pm_kind, only: RKG => RK2
+        type(csr_pdt(RKG))      , intent(in)                :: con1
+        type(csr_pdt(RKG))      , intent(in)                :: con2
         logical(LK)                                         :: itis
     end function
 #endif
@@ -2355,9 +2355,9 @@ module pm_container
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: ismore_D0_D0_PSRK1
 #endif
-        use pm_kind, only: RKC => RK1
-        type(csr_pdt(RKC))      , intent(in)                :: con1
-        type(csr_pdt(RKC))      , intent(in)                :: con2
+        use pm_kind, only: RKG => RK1
+        type(csr_pdt(RKG))      , intent(in)                :: con1
+        type(csr_pdt(RKG))      , intent(in)                :: con2
         logical(LK)                                         :: itis
     end function
 #endif
@@ -2503,9 +2503,9 @@ module pm_container
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isleq_D0_D0_PSSK5
 #endif
-        use pm_kind, only: SKC => SK5
-        type(css_pdt(SKC))      , intent(in)                :: con1
-        type(css_pdt(SKC))      , intent(in)                :: con2
+        use pm_kind, only: SKG => SK5
+        type(css_pdt(SKG))      , intent(in)                :: con1
+        type(css_pdt(SKG))      , intent(in)                :: con2
         logical(LK)                                         :: itis
     end function
 #endif
@@ -2515,9 +2515,9 @@ module pm_container
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isleq_D0_D0_PSSK4
 #endif
-        use pm_kind, only: SKC => SK4
-        type(css_pdt(SKC))      , intent(in)                :: con1
-        type(css_pdt(SKC))      , intent(in)                :: con2
+        use pm_kind, only: SKG => SK4
+        type(css_pdt(SKG))      , intent(in)                :: con1
+        type(css_pdt(SKG))      , intent(in)                :: con2
         logical(LK)                                         :: itis
     end function
 #endif
@@ -2527,9 +2527,9 @@ module pm_container
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isleq_D0_D0_PSSK3
 #endif
-        use pm_kind, only: SKC => SK3
-        type(css_pdt(SKC))      , intent(in)                :: con1
-        type(css_pdt(SKC))      , intent(in)                :: con2
+        use pm_kind, only: SKG => SK3
+        type(css_pdt(SKG))      , intent(in)                :: con1
+        type(css_pdt(SKG))      , intent(in)                :: con2
         logical(LK)                                         :: itis
     end function
 #endif
@@ -2539,9 +2539,9 @@ module pm_container
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isleq_D0_D0_PSSK2
 #endif
-        use pm_kind, only: SKC => SK2
-        type(css_pdt(SKC))      , intent(in)                :: con1
-        type(css_pdt(SKC))      , intent(in)                :: con2
+        use pm_kind, only: SKG => SK2
+        type(css_pdt(SKG))      , intent(in)                :: con1
+        type(css_pdt(SKG))      , intent(in)                :: con2
         logical(LK)                                         :: itis
     end function
 #endif
@@ -2551,9 +2551,9 @@ module pm_container
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isleq_D0_D0_PSSK1
 #endif
-        use pm_kind, only: SKC => SK1
-        type(css_pdt(SKC))      , intent(in)                :: con1
-        type(css_pdt(SKC))      , intent(in)                :: con2
+        use pm_kind, only: SKG => SK1
+        type(css_pdt(SKG))      , intent(in)                :: con1
+        type(css_pdt(SKG))      , intent(in)                :: con2
         logical(LK)                                         :: itis
     end function
 #endif
@@ -2565,9 +2565,9 @@ module pm_container
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isleq_D0_D0_PSIK5
 #endif
-        use pm_kind, only: IKC => IK5
-        type(csi_pdt(IKC))      , intent(in)                :: con1
-        type(csi_pdt(IKC))      , intent(in)                :: con2
+        use pm_kind, only: IKG => IK5
+        type(csi_pdt(IKG))      , intent(in)                :: con1
+        type(csi_pdt(IKG))      , intent(in)                :: con2
         logical(LK)                                         :: itis
     end function
 #endif
@@ -2577,9 +2577,9 @@ module pm_container
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isleq_D0_D0_PSIK4
 #endif
-        use pm_kind, only: IKC => IK4
-        type(csi_pdt(IKC))      , intent(in)                :: con1
-        type(csi_pdt(IKC))      , intent(in)                :: con2
+        use pm_kind, only: IKG => IK4
+        type(csi_pdt(IKG))      , intent(in)                :: con1
+        type(csi_pdt(IKG))      , intent(in)                :: con2
         logical(LK)                                         :: itis
     end function
 #endif
@@ -2589,9 +2589,9 @@ module pm_container
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isleq_D0_D0_PSIK3
 #endif
-        use pm_kind, only: IKC => IK3
-        type(csi_pdt(IKC))      , intent(in)                :: con1
-        type(csi_pdt(IKC))      , intent(in)                :: con2
+        use pm_kind, only: IKG => IK3
+        type(csi_pdt(IKG))      , intent(in)                :: con1
+        type(csi_pdt(IKG))      , intent(in)                :: con2
         logical(LK)                                         :: itis
     end function
 #endif
@@ -2601,9 +2601,9 @@ module pm_container
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isleq_D0_D0_PSIK2
 #endif
-        use pm_kind, only: IKC => IK2
-        type(csi_pdt(IKC))      , intent(in)                :: con1
-        type(csi_pdt(IKC))      , intent(in)                :: con2
+        use pm_kind, only: IKG => IK2
+        type(csi_pdt(IKG))      , intent(in)                :: con1
+        type(csi_pdt(IKG))      , intent(in)                :: con2
         logical(LK)                                         :: itis
     end function
 #endif
@@ -2613,9 +2613,9 @@ module pm_container
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isleq_D0_D0_PSIK1
 #endif
-        use pm_kind, only: IKC => IK1
-        type(csi_pdt(IKC))      , intent(in)                :: con1
-        type(csi_pdt(IKC))      , intent(in)                :: con2
+        use pm_kind, only: IKG => IK1
+        type(csi_pdt(IKG))      , intent(in)                :: con1
+        type(csi_pdt(IKG))      , intent(in)                :: con2
         logical(LK)                                         :: itis
     end function
 #endif
@@ -2627,9 +2627,9 @@ module pm_container
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isleq_D0_D0_PSLK5
 #endif
-        use pm_kind, only: LKC => LK5
-        type(csl_pdt(LKC))      , intent(in)                :: con1
-        type(csl_pdt(LKC))      , intent(in)                :: con2
+        use pm_kind, only: LKG => LK5
+        type(csl_pdt(LKG))      , intent(in)                :: con1
+        type(csl_pdt(LKG))      , intent(in)                :: con2
         logical(LK)                                         :: itis
     end function
 #endif
@@ -2639,9 +2639,9 @@ module pm_container
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isleq_D0_D0_PSLK4
 #endif
-        use pm_kind, only: LKC => LK4
-        type(csl_pdt(LKC))      , intent(in)                :: con1
-        type(csl_pdt(LKC))      , intent(in)                :: con2
+        use pm_kind, only: LKG => LK4
+        type(csl_pdt(LKG))      , intent(in)                :: con1
+        type(csl_pdt(LKG))      , intent(in)                :: con2
         logical(LK)                                         :: itis
     end function
 #endif
@@ -2651,9 +2651,9 @@ module pm_container
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isleq_D0_D0_PSLK3
 #endif
-        use pm_kind, only: LKC => LK3
-        type(csl_pdt(LKC))      , intent(in)                :: con1
-        type(csl_pdt(LKC))      , intent(in)                :: con2
+        use pm_kind, only: LKG => LK3
+        type(csl_pdt(LKG))      , intent(in)                :: con1
+        type(csl_pdt(LKG))      , intent(in)                :: con2
         logical(LK)                                         :: itis
     end function
 #endif
@@ -2663,9 +2663,9 @@ module pm_container
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isleq_D0_D0_PSLK2
 #endif
-        use pm_kind, only: LKC => LK2
-        type(csl_pdt(LKC))      , intent(in)                :: con1
-        type(csl_pdt(LKC))      , intent(in)                :: con2
+        use pm_kind, only: LKG => LK2
+        type(csl_pdt(LKG))      , intent(in)                :: con1
+        type(csl_pdt(LKG))      , intent(in)                :: con2
         logical(LK)                                         :: itis
     end function
 #endif
@@ -2675,9 +2675,9 @@ module pm_container
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isleq_D0_D0_PSLK1
 #endif
-        use pm_kind, only: LKC => LK1
-        type(csl_pdt(LKC))      , intent(in)                :: con1
-        type(csl_pdt(LKC))      , intent(in)                :: con2
+        use pm_kind, only: LKG => LK1
+        type(csl_pdt(LKG))      , intent(in)                :: con1
+        type(csl_pdt(LKG))      , intent(in)                :: con2
         logical(LK)                                         :: itis
     end function
 #endif
@@ -2689,9 +2689,9 @@ module pm_container
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isleq_D0_D0_PSCK5
 #endif
-        use pm_kind, only: CKC => CK5
-        type(csc_pdt(CKC))      , intent(in)                :: con1
-        type(csc_pdt(CKC))      , intent(in)                :: con2
+        use pm_kind, only: CKG => CK5
+        type(csc_pdt(CKG))      , intent(in)                :: con1
+        type(csc_pdt(CKG))      , intent(in)                :: con2
         logical(LK)                                         :: itis
     end function
 #endif
@@ -2701,9 +2701,9 @@ module pm_container
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isleq_D0_D0_PSCK4
 #endif
-        use pm_kind, only: CKC => CK4
-        type(csc_pdt(CKC))      , intent(in)                :: con1
-        type(csc_pdt(CKC))      , intent(in)                :: con2
+        use pm_kind, only: CKG => CK4
+        type(csc_pdt(CKG))      , intent(in)                :: con1
+        type(csc_pdt(CKG))      , intent(in)                :: con2
         logical(LK)                                         :: itis
     end function
 #endif
@@ -2713,9 +2713,9 @@ module pm_container
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isleq_D0_D0_PSCK3
 #endif
-        use pm_kind, only: CKC => CK3
-        type(csc_pdt(CKC))      , intent(in)                :: con1
-        type(csc_pdt(CKC))      , intent(in)                :: con2
+        use pm_kind, only: CKG => CK3
+        type(csc_pdt(CKG))      , intent(in)                :: con1
+        type(csc_pdt(CKG))      , intent(in)                :: con2
         logical(LK)                                         :: itis
     end function
 #endif
@@ -2725,9 +2725,9 @@ module pm_container
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isleq_D0_D0_PSCK2
 #endif
-        use pm_kind, only: CKC => CK2
-        type(csc_pdt(CKC))      , intent(in)                :: con1
-        type(csc_pdt(CKC))      , intent(in)                :: con2
+        use pm_kind, only: CKG => CK2
+        type(csc_pdt(CKG))      , intent(in)                :: con1
+        type(csc_pdt(CKG))      , intent(in)                :: con2
         logical(LK)                                         :: itis
     end function
 #endif
@@ -2737,9 +2737,9 @@ module pm_container
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isleq_D0_D0_PSCK1
 #endif
-        use pm_kind, only: CKC => CK1
-        type(csc_pdt(CKC))      , intent(in)                :: con1
-        type(csc_pdt(CKC))      , intent(in)                :: con2
+        use pm_kind, only: CKG => CK1
+        type(csc_pdt(CKG))      , intent(in)                :: con1
+        type(csc_pdt(CKG))      , intent(in)                :: con2
         logical(LK)                                         :: itis
     end function
 #endif
@@ -2751,9 +2751,9 @@ module pm_container
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isleq_D0_D0_PSRK5
 #endif
-        use pm_kind, only: RKC => RK5
-        type(csr_pdt(RKC))      , intent(in)                :: con1
-        type(csr_pdt(RKC))      , intent(in)                :: con2
+        use pm_kind, only: RKG => RK5
+        type(csr_pdt(RKG))      , intent(in)                :: con1
+        type(csr_pdt(RKG))      , intent(in)                :: con2
         logical(LK)                                         :: itis
     end function
 #endif
@@ -2763,9 +2763,9 @@ module pm_container
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isleq_D0_D0_PSRK4
 #endif
-        use pm_kind, only: RKC => RK4
-        type(csr_pdt(RKC))      , intent(in)                :: con1
-        type(csr_pdt(RKC))      , intent(in)                :: con2
+        use pm_kind, only: RKG => RK4
+        type(csr_pdt(RKG))      , intent(in)                :: con1
+        type(csr_pdt(RKG))      , intent(in)                :: con2
         logical(LK)                                         :: itis
     end function
 #endif
@@ -2775,9 +2775,9 @@ module pm_container
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isleq_D0_D0_PSRK3
 #endif
-        use pm_kind, only: RKC => RK3
-        type(csr_pdt(RKC))      , intent(in)                :: con1
-        type(csr_pdt(RKC))      , intent(in)                :: con2
+        use pm_kind, only: RKG => RK3
+        type(csr_pdt(RKG))      , intent(in)                :: con1
+        type(csr_pdt(RKG))      , intent(in)                :: con2
         logical(LK)                                         :: itis
     end function
 #endif
@@ -2787,9 +2787,9 @@ module pm_container
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isleq_D0_D0_PSRK2
 #endif
-        use pm_kind, only: RKC => RK2
-        type(csr_pdt(RKC))      , intent(in)                :: con1
-        type(csr_pdt(RKC))      , intent(in)                :: con2
+        use pm_kind, only: RKG => RK2
+        type(csr_pdt(RKG))      , intent(in)                :: con1
+        type(csr_pdt(RKG))      , intent(in)                :: con2
         logical(LK)                                         :: itis
     end function
 #endif
@@ -2799,9 +2799,9 @@ module pm_container
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isleq_D0_D0_PSRK1
 #endif
-        use pm_kind, only: RKC => RK1
-        type(csr_pdt(RKC))      , intent(in)                :: con1
-        type(csr_pdt(RKC))      , intent(in)                :: con2
+        use pm_kind, only: RKG => RK1
+        type(csr_pdt(RKG))      , intent(in)                :: con1
+        type(csr_pdt(RKG))      , intent(in)                :: con2
         logical(LK)                                         :: itis
     end function
 #endif
@@ -2947,9 +2947,9 @@ module pm_container
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: ismeq_D0_D0_PSSK5
 #endif
-        use pm_kind, only: SKC => SK5
-        type(css_pdt(SKC))      , intent(in)                :: con1
-        type(css_pdt(SKC))      , intent(in)                :: con2
+        use pm_kind, only: SKG => SK5
+        type(css_pdt(SKG))      , intent(in)                :: con1
+        type(css_pdt(SKG))      , intent(in)                :: con2
         logical(LK)                                         :: itis
     end function
 #endif
@@ -2959,9 +2959,9 @@ module pm_container
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: ismeq_D0_D0_PSSK4
 #endif
-        use pm_kind, only: SKC => SK4
-        type(css_pdt(SKC))      , intent(in)                :: con1
-        type(css_pdt(SKC))      , intent(in)                :: con2
+        use pm_kind, only: SKG => SK4
+        type(css_pdt(SKG))      , intent(in)                :: con1
+        type(css_pdt(SKG))      , intent(in)                :: con2
         logical(LK)                                         :: itis
     end function
 #endif
@@ -2971,9 +2971,9 @@ module pm_container
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: ismeq_D0_D0_PSSK3
 #endif
-        use pm_kind, only: SKC => SK3
-        type(css_pdt(SKC))      , intent(in)                :: con1
-        type(css_pdt(SKC))      , intent(in)                :: con2
+        use pm_kind, only: SKG => SK3
+        type(css_pdt(SKG))      , intent(in)                :: con1
+        type(css_pdt(SKG))      , intent(in)                :: con2
         logical(LK)                                         :: itis
     end function
 #endif
@@ -2983,9 +2983,9 @@ module pm_container
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: ismeq_D0_D0_PSSK2
 #endif
-        use pm_kind, only: SKC => SK2
-        type(css_pdt(SKC))      , intent(in)                :: con1
-        type(css_pdt(SKC))      , intent(in)                :: con2
+        use pm_kind, only: SKG => SK2
+        type(css_pdt(SKG))      , intent(in)                :: con1
+        type(css_pdt(SKG))      , intent(in)                :: con2
         logical(LK)                                         :: itis
     end function
 #endif
@@ -2995,9 +2995,9 @@ module pm_container
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: ismeq_D0_D0_PSSK1
 #endif
-        use pm_kind, only: SKC => SK1
-        type(css_pdt(SKC))      , intent(in)                :: con1
-        type(css_pdt(SKC))      , intent(in)                :: con2
+        use pm_kind, only: SKG => SK1
+        type(css_pdt(SKG))      , intent(in)                :: con1
+        type(css_pdt(SKG))      , intent(in)                :: con2
         logical(LK)                                         :: itis
     end function
 #endif
@@ -3009,9 +3009,9 @@ module pm_container
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: ismeq_D0_D0_PSIK5
 #endif
-        use pm_kind, only: IKC => IK5
-        type(csi_pdt(IKC))      , intent(in)                :: con1
-        type(csi_pdt(IKC))      , intent(in)                :: con2
+        use pm_kind, only: IKG => IK5
+        type(csi_pdt(IKG))      , intent(in)                :: con1
+        type(csi_pdt(IKG))      , intent(in)                :: con2
         logical(LK)                                         :: itis
     end function
 #endif
@@ -3021,9 +3021,9 @@ module pm_container
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: ismeq_D0_D0_PSIK4
 #endif
-        use pm_kind, only: IKC => IK4
-        type(csi_pdt(IKC))      , intent(in)                :: con1
-        type(csi_pdt(IKC))      , intent(in)                :: con2
+        use pm_kind, only: IKG => IK4
+        type(csi_pdt(IKG))      , intent(in)                :: con1
+        type(csi_pdt(IKG))      , intent(in)                :: con2
         logical(LK)                                         :: itis
     end function
 #endif
@@ -3033,9 +3033,9 @@ module pm_container
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: ismeq_D0_D0_PSIK3
 #endif
-        use pm_kind, only: IKC => IK3
-        type(csi_pdt(IKC))      , intent(in)                :: con1
-        type(csi_pdt(IKC))      , intent(in)                :: con2
+        use pm_kind, only: IKG => IK3
+        type(csi_pdt(IKG))      , intent(in)                :: con1
+        type(csi_pdt(IKG))      , intent(in)                :: con2
         logical(LK)                                         :: itis
     end function
 #endif
@@ -3045,9 +3045,9 @@ module pm_container
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: ismeq_D0_D0_PSIK2
 #endif
-        use pm_kind, only: IKC => IK2
-        type(csi_pdt(IKC))      , intent(in)                :: con1
-        type(csi_pdt(IKC))      , intent(in)                :: con2
+        use pm_kind, only: IKG => IK2
+        type(csi_pdt(IKG))      , intent(in)                :: con1
+        type(csi_pdt(IKG))      , intent(in)                :: con2
         logical(LK)                                         :: itis
     end function
 #endif
@@ -3057,9 +3057,9 @@ module pm_container
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: ismeq_D0_D0_PSIK1
 #endif
-        use pm_kind, only: IKC => IK1
-        type(csi_pdt(IKC))      , intent(in)                :: con1
-        type(csi_pdt(IKC))      , intent(in)                :: con2
+        use pm_kind, only: IKG => IK1
+        type(csi_pdt(IKG))      , intent(in)                :: con1
+        type(csi_pdt(IKG))      , intent(in)                :: con2
         logical(LK)                                         :: itis
     end function
 #endif
@@ -3071,9 +3071,9 @@ module pm_container
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: ismeq_D0_D0_PSLK5
 #endif
-        use pm_kind, only: LKC => LK5
-        type(csl_pdt(LKC))      , intent(in)                :: con1
-        type(csl_pdt(LKC))      , intent(in)                :: con2
+        use pm_kind, only: LKG => LK5
+        type(csl_pdt(LKG))      , intent(in)                :: con1
+        type(csl_pdt(LKG))      , intent(in)                :: con2
         logical(LK)                                         :: itis
     end function
 #endif
@@ -3083,9 +3083,9 @@ module pm_container
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: ismeq_D0_D0_PSLK4
 #endif
-        use pm_kind, only: LKC => LK4
-        type(csl_pdt(LKC))      , intent(in)                :: con1
-        type(csl_pdt(LKC))      , intent(in)                :: con2
+        use pm_kind, only: LKG => LK4
+        type(csl_pdt(LKG))      , intent(in)                :: con1
+        type(csl_pdt(LKG))      , intent(in)                :: con2
         logical(LK)                                         :: itis
     end function
 #endif
@@ -3095,9 +3095,9 @@ module pm_container
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: ismeq_D0_D0_PSLK3
 #endif
-        use pm_kind, only: LKC => LK3
-        type(csl_pdt(LKC))      , intent(in)                :: con1
-        type(csl_pdt(LKC))      , intent(in)                :: con2
+        use pm_kind, only: LKG => LK3
+        type(csl_pdt(LKG))      , intent(in)                :: con1
+        type(csl_pdt(LKG))      , intent(in)                :: con2
         logical(LK)                                         :: itis
     end function
 #endif
@@ -3107,9 +3107,9 @@ module pm_container
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: ismeq_D0_D0_PSLK2
 #endif
-        use pm_kind, only: LKC => LK2
-        type(csl_pdt(LKC))      , intent(in)                :: con1
-        type(csl_pdt(LKC))      , intent(in)                :: con2
+        use pm_kind, only: LKG => LK2
+        type(csl_pdt(LKG))      , intent(in)                :: con1
+        type(csl_pdt(LKG))      , intent(in)                :: con2
         logical(LK)                                         :: itis
     end function
 #endif
@@ -3119,9 +3119,9 @@ module pm_container
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: ismeq_D0_D0_PSLK1
 #endif
-        use pm_kind, only: LKC => LK1
-        type(csl_pdt(LKC))      , intent(in)                :: con1
-        type(csl_pdt(LKC))      , intent(in)                :: con2
+        use pm_kind, only: LKG => LK1
+        type(csl_pdt(LKG))      , intent(in)                :: con1
+        type(csl_pdt(LKG))      , intent(in)                :: con2
         logical(LK)                                         :: itis
     end function
 #endif
@@ -3133,9 +3133,9 @@ module pm_container
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: ismeq_D0_D0_PSCK5
 #endif
-        use pm_kind, only: CKC => CK5
-        type(csc_pdt(CKC))      , intent(in)                :: con1
-        type(csc_pdt(CKC))      , intent(in)                :: con2
+        use pm_kind, only: CKG => CK5
+        type(csc_pdt(CKG))      , intent(in)                :: con1
+        type(csc_pdt(CKG))      , intent(in)                :: con2
         logical(LK)                                         :: itis
     end function
 #endif
@@ -3145,9 +3145,9 @@ module pm_container
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: ismeq_D0_D0_PSCK4
 #endif
-        use pm_kind, only: CKC => CK4
-        type(csc_pdt(CKC))      , intent(in)                :: con1
-        type(csc_pdt(CKC))      , intent(in)                :: con2
+        use pm_kind, only: CKG => CK4
+        type(csc_pdt(CKG))      , intent(in)                :: con1
+        type(csc_pdt(CKG))      , intent(in)                :: con2
         logical(LK)                                         :: itis
     end function
 #endif
@@ -3157,9 +3157,9 @@ module pm_container
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: ismeq_D0_D0_PSCK3
 #endif
-        use pm_kind, only: CKC => CK3
-        type(csc_pdt(CKC))      , intent(in)                :: con1
-        type(csc_pdt(CKC))      , intent(in)                :: con2
+        use pm_kind, only: CKG => CK3
+        type(csc_pdt(CKG))      , intent(in)                :: con1
+        type(csc_pdt(CKG))      , intent(in)                :: con2
         logical(LK)                                         :: itis
     end function
 #endif
@@ -3169,9 +3169,9 @@ module pm_container
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: ismeq_D0_D0_PSCK2
 #endif
-        use pm_kind, only: CKC => CK2
-        type(csc_pdt(CKC))      , intent(in)                :: con1
-        type(csc_pdt(CKC))      , intent(in)                :: con2
+        use pm_kind, only: CKG => CK2
+        type(csc_pdt(CKG))      , intent(in)                :: con1
+        type(csc_pdt(CKG))      , intent(in)                :: con2
         logical(LK)                                         :: itis
     end function
 #endif
@@ -3181,9 +3181,9 @@ module pm_container
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: ismeq_D0_D0_PSCK1
 #endif
-        use pm_kind, only: CKC => CK1
-        type(csc_pdt(CKC))      , intent(in)                :: con1
-        type(csc_pdt(CKC))      , intent(in)                :: con2
+        use pm_kind, only: CKG => CK1
+        type(csc_pdt(CKG))      , intent(in)                :: con1
+        type(csc_pdt(CKG))      , intent(in)                :: con2
         logical(LK)                                         :: itis
     end function
 #endif
@@ -3195,9 +3195,9 @@ module pm_container
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: ismeq_D0_D0_PSRK5
 #endif
-        use pm_kind, only: RKC => RK5
-        type(csr_pdt(RKC))      , intent(in)                :: con1
-        type(csr_pdt(RKC))      , intent(in)                :: con2
+        use pm_kind, only: RKG => RK5
+        type(csr_pdt(RKG))      , intent(in)                :: con1
+        type(csr_pdt(RKG))      , intent(in)                :: con2
         logical(LK)                                         :: itis
     end function
 #endif
@@ -3207,9 +3207,9 @@ module pm_container
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: ismeq_D0_D0_PSRK4
 #endif
-        use pm_kind, only: RKC => RK4
-        type(csr_pdt(RKC))      , intent(in)                :: con1
-        type(csr_pdt(RKC))      , intent(in)                :: con2
+        use pm_kind, only: RKG => RK4
+        type(csr_pdt(RKG))      , intent(in)                :: con1
+        type(csr_pdt(RKG))      , intent(in)                :: con2
         logical(LK)                                         :: itis
     end function
 #endif
@@ -3219,9 +3219,9 @@ module pm_container
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: ismeq_D0_D0_PSRK3
 #endif
-        use pm_kind, only: RKC => RK3
-        type(csr_pdt(RKC))      , intent(in)                :: con1
-        type(csr_pdt(RKC))      , intent(in)                :: con2
+        use pm_kind, only: RKG => RK3
+        type(csr_pdt(RKG))      , intent(in)                :: con1
+        type(csr_pdt(RKG))      , intent(in)                :: con2
         logical(LK)                                         :: itis
     end function
 #endif
@@ -3231,9 +3231,9 @@ module pm_container
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: ismeq_D0_D0_PSRK2
 #endif
-        use pm_kind, only: RKC => RK2
-        type(csr_pdt(RKC))      , intent(in)                :: con1
-        type(csr_pdt(RKC))      , intent(in)                :: con2
+        use pm_kind, only: RKG => RK2
+        type(csr_pdt(RKG))      , intent(in)                :: con1
+        type(csr_pdt(RKG))      , intent(in)                :: con2
         logical(LK)                                         :: itis
     end function
 #endif
@@ -3243,9 +3243,9 @@ module pm_container
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: ismeq_D0_D0_PSRK1
 #endif
-        use pm_kind, only: RKC => RK1
-        type(csr_pdt(RKC))      , intent(in)                :: con1
-        type(csr_pdt(RKC))      , intent(in)                :: con2
+        use pm_kind, only: RKG => RK1
+        type(csr_pdt(RKG))      , intent(in)                :: con1
+        type(csr_pdt(RKG))      , intent(in)                :: con2
         logical(LK)                                         :: itis
     end function
 #endif
@@ -3391,9 +3391,9 @@ module pm_container
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isneq_D0_D0_PSSK5
 #endif
-        use pm_kind, only: SKC => SK5
-        type(css_pdt(SKC))      , intent(in)                :: con1
-        type(css_pdt(SKC))      , intent(in)                :: con2
+        use pm_kind, only: SKG => SK5
+        type(css_pdt(SKG))      , intent(in)                :: con1
+        type(css_pdt(SKG))      , intent(in)                :: con2
         logical(LK)                                         :: itis
     end function
 #endif
@@ -3403,9 +3403,9 @@ module pm_container
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isneq_D0_D0_PSSK4
 #endif
-        use pm_kind, only: SKC => SK4
-        type(css_pdt(SKC))      , intent(in)                :: con1
-        type(css_pdt(SKC))      , intent(in)                :: con2
+        use pm_kind, only: SKG => SK4
+        type(css_pdt(SKG))      , intent(in)                :: con1
+        type(css_pdt(SKG))      , intent(in)                :: con2
         logical(LK)                                         :: itis
     end function
 #endif
@@ -3415,9 +3415,9 @@ module pm_container
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isneq_D0_D0_PSSK3
 #endif
-        use pm_kind, only: SKC => SK3
-        type(css_pdt(SKC))      , intent(in)                :: con1
-        type(css_pdt(SKC))      , intent(in)                :: con2
+        use pm_kind, only: SKG => SK3
+        type(css_pdt(SKG))      , intent(in)                :: con1
+        type(css_pdt(SKG))      , intent(in)                :: con2
         logical(LK)                                         :: itis
     end function
 #endif
@@ -3427,9 +3427,9 @@ module pm_container
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isneq_D0_D0_PSSK2
 #endif
-        use pm_kind, only: SKC => SK2
-        type(css_pdt(SKC))      , intent(in)                :: con1
-        type(css_pdt(SKC))      , intent(in)                :: con2
+        use pm_kind, only: SKG => SK2
+        type(css_pdt(SKG))      , intent(in)                :: con1
+        type(css_pdt(SKG))      , intent(in)                :: con2
         logical(LK)                                         :: itis
     end function
 #endif
@@ -3439,9 +3439,9 @@ module pm_container
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isneq_D0_D0_PSSK1
 #endif
-        use pm_kind, only: SKC => SK1
-        type(css_pdt(SKC))      , intent(in)                :: con1
-        type(css_pdt(SKC))      , intent(in)                :: con2
+        use pm_kind, only: SKG => SK1
+        type(css_pdt(SKG))      , intent(in)                :: con1
+        type(css_pdt(SKG))      , intent(in)                :: con2
         logical(LK)                                         :: itis
     end function
 #endif
@@ -3453,9 +3453,9 @@ module pm_container
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isneq_D0_D0_PSIK5
 #endif
-        use pm_kind, only: IKC => IK5
-        type(csi_pdt(IKC))      , intent(in)                :: con1
-        type(csi_pdt(IKC))      , intent(in)                :: con2
+        use pm_kind, only: IKG => IK5
+        type(csi_pdt(IKG))      , intent(in)                :: con1
+        type(csi_pdt(IKG))      , intent(in)                :: con2
         logical(LK)                                         :: itis
     end function
 #endif
@@ -3465,9 +3465,9 @@ module pm_container
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isneq_D0_D0_PSIK4
 #endif
-        use pm_kind, only: IKC => IK4
-        type(csi_pdt(IKC))      , intent(in)                :: con1
-        type(csi_pdt(IKC))      , intent(in)                :: con2
+        use pm_kind, only: IKG => IK4
+        type(csi_pdt(IKG))      , intent(in)                :: con1
+        type(csi_pdt(IKG))      , intent(in)                :: con2
         logical(LK)                                         :: itis
     end function
 #endif
@@ -3477,9 +3477,9 @@ module pm_container
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isneq_D0_D0_PSIK3
 #endif
-        use pm_kind, only: IKC => IK3
-        type(csi_pdt(IKC))      , intent(in)                :: con1
-        type(csi_pdt(IKC))      , intent(in)                :: con2
+        use pm_kind, only: IKG => IK3
+        type(csi_pdt(IKG))      , intent(in)                :: con1
+        type(csi_pdt(IKG))      , intent(in)                :: con2
         logical(LK)                                         :: itis
     end function
 #endif
@@ -3489,9 +3489,9 @@ module pm_container
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isneq_D0_D0_PSIK2
 #endif
-        use pm_kind, only: IKC => IK2
-        type(csi_pdt(IKC))      , intent(in)                :: con1
-        type(csi_pdt(IKC))      , intent(in)                :: con2
+        use pm_kind, only: IKG => IK2
+        type(csi_pdt(IKG))      , intent(in)                :: con1
+        type(csi_pdt(IKG))      , intent(in)                :: con2
         logical(LK)                                         :: itis
     end function
 #endif
@@ -3501,9 +3501,9 @@ module pm_container
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isneq_D0_D0_PSIK1
 #endif
-        use pm_kind, only: IKC => IK1
-        type(csi_pdt(IKC))      , intent(in)                :: con1
-        type(csi_pdt(IKC))      , intent(in)                :: con2
+        use pm_kind, only: IKG => IK1
+        type(csi_pdt(IKG))      , intent(in)                :: con1
+        type(csi_pdt(IKG))      , intent(in)                :: con2
         logical(LK)                                         :: itis
     end function
 #endif
@@ -3515,9 +3515,9 @@ module pm_container
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isneq_D0_D0_PSLK5
 #endif
-        use pm_kind, only: LKC => LK5
-        type(csl_pdt(LKC))      , intent(in)                :: con1
-        type(csl_pdt(LKC))      , intent(in)                :: con2
+        use pm_kind, only: LKG => LK5
+        type(csl_pdt(LKG))      , intent(in)                :: con1
+        type(csl_pdt(LKG))      , intent(in)                :: con2
         logical(LK)                                         :: itis
     end function
 #endif
@@ -3527,9 +3527,9 @@ module pm_container
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isneq_D0_D0_PSLK4
 #endif
-        use pm_kind, only: LKC => LK4
-        type(csl_pdt(LKC))      , intent(in)                :: con1
-        type(csl_pdt(LKC))      , intent(in)                :: con2
+        use pm_kind, only: LKG => LK4
+        type(csl_pdt(LKG))      , intent(in)                :: con1
+        type(csl_pdt(LKG))      , intent(in)                :: con2
         logical(LK)                                         :: itis
     end function
 #endif
@@ -3539,9 +3539,9 @@ module pm_container
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isneq_D0_D0_PSLK3
 #endif
-        use pm_kind, only: LKC => LK3
-        type(csl_pdt(LKC))      , intent(in)                :: con1
-        type(csl_pdt(LKC))      , intent(in)                :: con2
+        use pm_kind, only: LKG => LK3
+        type(csl_pdt(LKG))      , intent(in)                :: con1
+        type(csl_pdt(LKG))      , intent(in)                :: con2
         logical(LK)                                         :: itis
     end function
 #endif
@@ -3551,9 +3551,9 @@ module pm_container
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isneq_D0_D0_PSLK2
 #endif
-        use pm_kind, only: LKC => LK2
-        type(csl_pdt(LKC))      , intent(in)                :: con1
-        type(csl_pdt(LKC))      , intent(in)                :: con2
+        use pm_kind, only: LKG => LK2
+        type(csl_pdt(LKG))      , intent(in)                :: con1
+        type(csl_pdt(LKG))      , intent(in)                :: con2
         logical(LK)                                         :: itis
     end function
 #endif
@@ -3563,9 +3563,9 @@ module pm_container
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isneq_D0_D0_PSLK1
 #endif
-        use pm_kind, only: LKC => LK1
-        type(csl_pdt(LKC))      , intent(in)                :: con1
-        type(csl_pdt(LKC))      , intent(in)                :: con2
+        use pm_kind, only: LKG => LK1
+        type(csl_pdt(LKG))      , intent(in)                :: con1
+        type(csl_pdt(LKG))      , intent(in)                :: con2
         logical(LK)                                         :: itis
     end function
 #endif
@@ -3577,9 +3577,9 @@ module pm_container
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isneq_D0_D0_PSCK5
 #endif
-        use pm_kind, only: CKC => CK5
-        type(csc_pdt(CKC))      , intent(in)                :: con1
-        type(csc_pdt(CKC))      , intent(in)                :: con2
+        use pm_kind, only: CKG => CK5
+        type(csc_pdt(CKG))      , intent(in)                :: con1
+        type(csc_pdt(CKG))      , intent(in)                :: con2
         logical(LK)                                         :: itis
     end function
 #endif
@@ -3589,9 +3589,9 @@ module pm_container
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isneq_D0_D0_PSCK4
 #endif
-        use pm_kind, only: CKC => CK4
-        type(csc_pdt(CKC))      , intent(in)                :: con1
-        type(csc_pdt(CKC))      , intent(in)                :: con2
+        use pm_kind, only: CKG => CK4
+        type(csc_pdt(CKG))      , intent(in)                :: con1
+        type(csc_pdt(CKG))      , intent(in)                :: con2
         logical(LK)                                         :: itis
     end function
 #endif
@@ -3601,9 +3601,9 @@ module pm_container
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isneq_D0_D0_PSCK3
 #endif
-        use pm_kind, only: CKC => CK3
-        type(csc_pdt(CKC))      , intent(in)                :: con1
-        type(csc_pdt(CKC))      , intent(in)                :: con2
+        use pm_kind, only: CKG => CK3
+        type(csc_pdt(CKG))      , intent(in)                :: con1
+        type(csc_pdt(CKG))      , intent(in)                :: con2
         logical(LK)                                         :: itis
     end function
 #endif
@@ -3613,9 +3613,9 @@ module pm_container
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isneq_D0_D0_PSCK2
 #endif
-        use pm_kind, only: CKC => CK2
-        type(csc_pdt(CKC))      , intent(in)                :: con1
-        type(csc_pdt(CKC))      , intent(in)                :: con2
+        use pm_kind, only: CKG => CK2
+        type(csc_pdt(CKG))      , intent(in)                :: con1
+        type(csc_pdt(CKG))      , intent(in)                :: con2
         logical(LK)                                         :: itis
     end function
 #endif
@@ -3625,9 +3625,9 @@ module pm_container
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isneq_D0_D0_PSCK1
 #endif
-        use pm_kind, only: CKC => CK1
-        type(csc_pdt(CKC))      , intent(in)                :: con1
-        type(csc_pdt(CKC))      , intent(in)                :: con2
+        use pm_kind, only: CKG => CK1
+        type(csc_pdt(CKG))      , intent(in)                :: con1
+        type(csc_pdt(CKG))      , intent(in)                :: con2
         logical(LK)                                         :: itis
     end function
 #endif
@@ -3639,9 +3639,9 @@ module pm_container
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isneq_D0_D0_PSRK5
 #endif
-        use pm_kind, only: RKC => RK5
-        type(csr_pdt(RKC))      , intent(in)                :: con1
-        type(csr_pdt(RKC))      , intent(in)                :: con2
+        use pm_kind, only: RKG => RK5
+        type(csr_pdt(RKG))      , intent(in)                :: con1
+        type(csr_pdt(RKG))      , intent(in)                :: con2
         logical(LK)                                         :: itis
     end function
 #endif
@@ -3651,9 +3651,9 @@ module pm_container
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isneq_D0_D0_PSRK4
 #endif
-        use pm_kind, only: RKC => RK4
-        type(csr_pdt(RKC))      , intent(in)                :: con1
-        type(csr_pdt(RKC))      , intent(in)                :: con2
+        use pm_kind, only: RKG => RK4
+        type(csr_pdt(RKG))      , intent(in)                :: con1
+        type(csr_pdt(RKG))      , intent(in)                :: con2
         logical(LK)                                         :: itis
     end function
 #endif
@@ -3663,9 +3663,9 @@ module pm_container
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isneq_D0_D0_PSRK3
 #endif
-        use pm_kind, only: RKC => RK3
-        type(csr_pdt(RKC))      , intent(in)                :: con1
-        type(csr_pdt(RKC))      , intent(in)                :: con2
+        use pm_kind, only: RKG => RK3
+        type(csr_pdt(RKG))      , intent(in)                :: con1
+        type(csr_pdt(RKG))      , intent(in)                :: con2
         logical(LK)                                         :: itis
     end function
 #endif
@@ -3675,9 +3675,9 @@ module pm_container
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isneq_D0_D0_PSRK2
 #endif
-        use pm_kind, only: RKC => RK2
-        type(csr_pdt(RKC))      , intent(in)                :: con1
-        type(csr_pdt(RKC))      , intent(in)                :: con2
+        use pm_kind, only: RKG => RK2
+        type(csr_pdt(RKG))      , intent(in)                :: con1
+        type(csr_pdt(RKG))      , intent(in)                :: con2
         logical(LK)                                         :: itis
     end function
 #endif
@@ -3687,9 +3687,9 @@ module pm_container
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isneq_D0_D0_PSRK1
 #endif
-        use pm_kind, only: RKC => RK1
-        type(csr_pdt(RKC))      , intent(in)                :: con1
-        type(csr_pdt(RKC))      , intent(in)                :: con2
+        use pm_kind, only: RKG => RK1
+        type(csr_pdt(RKG))      , intent(in)                :: con1
+        type(csr_pdt(RKG))      , intent(in)                :: con2
         logical(LK)                                         :: itis
     end function
 #endif
@@ -3836,9 +3836,9 @@ module pm_container
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: iseq_D0_D0_PSSK5
 #endif
-        use pm_kind, only: SKC => SK5
-        type(css_pdt(SKC))      , intent(in)                :: con1
-        type(css_pdt(SKC))      , intent(in)                :: con2
+        use pm_kind, only: SKG => SK5
+        type(css_pdt(SKG))      , intent(in)                :: con1
+        type(css_pdt(SKG))      , intent(in)                :: con2
         logical(LK)                                         :: itis
     end function
 #endif
@@ -3848,9 +3848,9 @@ module pm_container
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: iseq_D0_D0_PSSK4
 #endif
-        use pm_kind, only: SKC => SK4
-        type(css_pdt(SKC))      , intent(in)                :: con1
-        type(css_pdt(SKC))      , intent(in)                :: con2
+        use pm_kind, only: SKG => SK4
+        type(css_pdt(SKG))      , intent(in)                :: con1
+        type(css_pdt(SKG))      , intent(in)                :: con2
         logical(LK)                                         :: itis
     end function
 #endif
@@ -3860,9 +3860,9 @@ module pm_container
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: iseq_D0_D0_PSSK3
 #endif
-        use pm_kind, only: SKC => SK3
-        type(css_pdt(SKC))      , intent(in)                :: con1
-        type(css_pdt(SKC))      , intent(in)                :: con2
+        use pm_kind, only: SKG => SK3
+        type(css_pdt(SKG))      , intent(in)                :: con1
+        type(css_pdt(SKG))      , intent(in)                :: con2
         logical(LK)                                         :: itis
     end function
 #endif
@@ -3872,9 +3872,9 @@ module pm_container
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: iseq_D0_D0_PSSK2
 #endif
-        use pm_kind, only: SKC => SK2
-        type(css_pdt(SKC))      , intent(in)                :: con1
-        type(css_pdt(SKC))      , intent(in)                :: con2
+        use pm_kind, only: SKG => SK2
+        type(css_pdt(SKG))      , intent(in)                :: con1
+        type(css_pdt(SKG))      , intent(in)                :: con2
         logical(LK)                                         :: itis
     end function
 #endif
@@ -3884,9 +3884,9 @@ module pm_container
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: iseq_D0_D0_PSSK1
 #endif
-        use pm_kind, only: SKC => SK1
-        type(css_pdt(SKC))      , intent(in)                :: con1
-        type(css_pdt(SKC))      , intent(in)                :: con2
+        use pm_kind, only: SKG => SK1
+        type(css_pdt(SKG))      , intent(in)                :: con1
+        type(css_pdt(SKG))      , intent(in)                :: con2
         logical(LK)                                         :: itis
     end function
 #endif
@@ -3898,9 +3898,9 @@ module pm_container
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: iseq_D0_D0_PSIK5
 #endif
-        use pm_kind, only: IKC => IK5
-        type(csi_pdt(IKC))      , intent(in)                :: con1
-        type(csi_pdt(IKC))      , intent(in)                :: con2
+        use pm_kind, only: IKG => IK5
+        type(csi_pdt(IKG))      , intent(in)                :: con1
+        type(csi_pdt(IKG))      , intent(in)                :: con2
         logical(LK)                                         :: itis
     end function
 #endif
@@ -3910,9 +3910,9 @@ module pm_container
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: iseq_D0_D0_PSIK4
 #endif
-        use pm_kind, only: IKC => IK4
-        type(csi_pdt(IKC))      , intent(in)                :: con1
-        type(csi_pdt(IKC))      , intent(in)                :: con2
+        use pm_kind, only: IKG => IK4
+        type(csi_pdt(IKG))      , intent(in)                :: con1
+        type(csi_pdt(IKG))      , intent(in)                :: con2
         logical(LK)                                         :: itis
     end function
 #endif
@@ -3922,9 +3922,9 @@ module pm_container
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: iseq_D0_D0_PSIK3
 #endif
-        use pm_kind, only: IKC => IK3
-        type(csi_pdt(IKC))      , intent(in)                :: con1
-        type(csi_pdt(IKC))      , intent(in)                :: con2
+        use pm_kind, only: IKG => IK3
+        type(csi_pdt(IKG))      , intent(in)                :: con1
+        type(csi_pdt(IKG))      , intent(in)                :: con2
         logical(LK)                                         :: itis
     end function
 #endif
@@ -3934,9 +3934,9 @@ module pm_container
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: iseq_D0_D0_PSIK2
 #endif
-        use pm_kind, only: IKC => IK2
-        type(csi_pdt(IKC))      , intent(in)                :: con1
-        type(csi_pdt(IKC))      , intent(in)                :: con2
+        use pm_kind, only: IKG => IK2
+        type(csi_pdt(IKG))      , intent(in)                :: con1
+        type(csi_pdt(IKG))      , intent(in)                :: con2
         logical(LK)                                         :: itis
     end function
 #endif
@@ -3946,9 +3946,9 @@ module pm_container
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: iseq_D0_D0_PSIK1
 #endif
-        use pm_kind, only: IKC => IK1
-        type(csi_pdt(IKC))      , intent(in)                :: con1
-        type(csi_pdt(IKC))      , intent(in)                :: con2
+        use pm_kind, only: IKG => IK1
+        type(csi_pdt(IKG))      , intent(in)                :: con1
+        type(csi_pdt(IKG))      , intent(in)                :: con2
         logical(LK)                                         :: itis
     end function
 #endif
@@ -3960,9 +3960,9 @@ module pm_container
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: iseq_D0_D0_PSLK5
 #endif
-        use pm_kind, only: LKC => LK5
-        type(csl_pdt(LKC))      , intent(in)                :: con1
-        type(csl_pdt(LKC))      , intent(in)                :: con2
+        use pm_kind, only: LKG => LK5
+        type(csl_pdt(LKG))      , intent(in)                :: con1
+        type(csl_pdt(LKG))      , intent(in)                :: con2
         logical(LK)                                         :: itis
     end function
 #endif
@@ -3972,9 +3972,9 @@ module pm_container
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: iseq_D0_D0_PSLK4
 #endif
-        use pm_kind, only: LKC => LK4
-        type(csl_pdt(LKC))      , intent(in)                :: con1
-        type(csl_pdt(LKC))      , intent(in)                :: con2
+        use pm_kind, only: LKG => LK4
+        type(csl_pdt(LKG))      , intent(in)                :: con1
+        type(csl_pdt(LKG))      , intent(in)                :: con2
         logical(LK)                                         :: itis
     end function
 #endif
@@ -3984,9 +3984,9 @@ module pm_container
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: iseq_D0_D0_PSLK3
 #endif
-        use pm_kind, only: LKC => LK3
-        type(csl_pdt(LKC))      , intent(in)                :: con1
-        type(csl_pdt(LKC))      , intent(in)                :: con2
+        use pm_kind, only: LKG => LK3
+        type(csl_pdt(LKG))      , intent(in)                :: con1
+        type(csl_pdt(LKG))      , intent(in)                :: con2
         logical(LK)                                         :: itis
     end function
 #endif
@@ -3996,9 +3996,9 @@ module pm_container
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: iseq_D0_D0_PSLK2
 #endif
-        use pm_kind, only: LKC => LK2
-        type(csl_pdt(LKC))      , intent(in)                :: con1
-        type(csl_pdt(LKC))      , intent(in)                :: con2
+        use pm_kind, only: LKG => LK2
+        type(csl_pdt(LKG))      , intent(in)                :: con1
+        type(csl_pdt(LKG))      , intent(in)                :: con2
         logical(LK)                                         :: itis
     end function
 #endif
@@ -4008,9 +4008,9 @@ module pm_container
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: iseq_D0_D0_PSLK1
 #endif
-        use pm_kind, only: LKC => LK1
-        type(csl_pdt(LKC))      , intent(in)                :: con1
-        type(csl_pdt(LKC))      , intent(in)                :: con2
+        use pm_kind, only: LKG => LK1
+        type(csl_pdt(LKG))      , intent(in)                :: con1
+        type(csl_pdt(LKG))      , intent(in)                :: con2
         logical(LK)                                         :: itis
     end function
 #endif
@@ -4022,9 +4022,9 @@ module pm_container
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: iseq_D0_D0_PSCK5
 #endif
-        use pm_kind, only: CKC => CK5
-        type(csc_pdt(CKC))      , intent(in)                :: con1
-        type(csc_pdt(CKC))      , intent(in)                :: con2
+        use pm_kind, only: CKG => CK5
+        type(csc_pdt(CKG))      , intent(in)                :: con1
+        type(csc_pdt(CKG))      , intent(in)                :: con2
         logical(LK)                                         :: itis
     end function
 #endif
@@ -4034,9 +4034,9 @@ module pm_container
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: iseq_D0_D0_PSCK4
 #endif
-        use pm_kind, only: CKC => CK4
-        type(csc_pdt(CKC))      , intent(in)                :: con1
-        type(csc_pdt(CKC))      , intent(in)                :: con2
+        use pm_kind, only: CKG => CK4
+        type(csc_pdt(CKG))      , intent(in)                :: con1
+        type(csc_pdt(CKG))      , intent(in)                :: con2
         logical(LK)                                         :: itis
     end function
 #endif
@@ -4046,9 +4046,9 @@ module pm_container
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: iseq_D0_D0_PSCK3
 #endif
-        use pm_kind, only: CKC => CK3
-        type(csc_pdt(CKC))      , intent(in)                :: con1
-        type(csc_pdt(CKC))      , intent(in)                :: con2
+        use pm_kind, only: CKG => CK3
+        type(csc_pdt(CKG))      , intent(in)                :: con1
+        type(csc_pdt(CKG))      , intent(in)                :: con2
         logical(LK)                                         :: itis
     end function
 #endif
@@ -4058,9 +4058,9 @@ module pm_container
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: iseq_D0_D0_PSCK2
 #endif
-        use pm_kind, only: CKC => CK2
-        type(csc_pdt(CKC))      , intent(in)                :: con1
-        type(csc_pdt(CKC))      , intent(in)                :: con2
+        use pm_kind, only: CKG => CK2
+        type(csc_pdt(CKG))      , intent(in)                :: con1
+        type(csc_pdt(CKG))      , intent(in)                :: con2
         logical(LK)                                         :: itis
     end function
 #endif
@@ -4070,9 +4070,9 @@ module pm_container
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: iseq_D0_D0_PSCK1
 #endif
-        use pm_kind, only: CKC => CK1
-        type(csc_pdt(CKC))      , intent(in)                :: con1
-        type(csc_pdt(CKC))      , intent(in)                :: con2
+        use pm_kind, only: CKG => CK1
+        type(csc_pdt(CKG))      , intent(in)                :: con1
+        type(csc_pdt(CKG))      , intent(in)                :: con2
         logical(LK)                                         :: itis
     end function
 #endif
@@ -4084,9 +4084,9 @@ module pm_container
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: iseq_D0_D0_PSRK5
 #endif
-        use pm_kind, only: RKC => RK5
-        type(csr_pdt(RKC))      , intent(in)                :: con1
-        type(csr_pdt(RKC))      , intent(in)                :: con2
+        use pm_kind, only: RKG => RK5
+        type(csr_pdt(RKG))      , intent(in)                :: con1
+        type(csr_pdt(RKG))      , intent(in)                :: con2
         logical(LK)                                         :: itis
     end function
 #endif
@@ -4096,9 +4096,9 @@ module pm_container
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: iseq_D0_D0_PSRK4
 #endif
-        use pm_kind, only: RKC => RK4
-        type(csr_pdt(RKC))      , intent(in)                :: con1
-        type(csr_pdt(RKC))      , intent(in)                :: con2
+        use pm_kind, only: RKG => RK4
+        type(csr_pdt(RKG))      , intent(in)                :: con1
+        type(csr_pdt(RKG))      , intent(in)                :: con2
         logical(LK)                                         :: itis
     end function
 #endif
@@ -4108,9 +4108,9 @@ module pm_container
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: iseq_D0_D0_PSRK3
 #endif
-        use pm_kind, only: RKC => RK3
-        type(csr_pdt(RKC))      , intent(in)                :: con1
-        type(csr_pdt(RKC))      , intent(in)                :: con2
+        use pm_kind, only: RKG => RK3
+        type(csr_pdt(RKG))      , intent(in)                :: con1
+        type(csr_pdt(RKG))      , intent(in)                :: con2
         logical(LK)                                         :: itis
     end function
 #endif
@@ -4120,9 +4120,9 @@ module pm_container
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: iseq_D0_D0_PSRK2
 #endif
-        use pm_kind, only: RKC => RK2
-        type(csr_pdt(RKC))      , intent(in)                :: con1
-        type(csr_pdt(RKC))      , intent(in)                :: con2
+        use pm_kind, only: RKG => RK2
+        type(csr_pdt(RKG))      , intent(in)                :: con1
+        type(csr_pdt(RKG))      , intent(in)                :: con2
         logical(LK)                                         :: itis
     end function
 #endif
@@ -4132,9 +4132,9 @@ module pm_container
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: iseq_D0_D0_PSRK1
 #endif
-        use pm_kind, only: RKC => RK1
-        type(csr_pdt(RKC))      , intent(in)                :: con1
-        type(csr_pdt(RKC))      , intent(in)                :: con2
+        use pm_kind, only: RKG => RK1
+        type(csr_pdt(RKG))      , intent(in)                :: con1
+        type(csr_pdt(RKG))      , intent(in)                :: con2
         logical(LK)                                         :: itis
     end function
 #endif
@@ -4277,9 +4277,9 @@ module pm_container
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: assign_D0_D0_PSSK5
 #endif
-        use pm_kind, only: SKC => SK5
-        type(css_pdt(SKC))      , intent(out)               :: destin
-        type(css_pdt(SKC))      , intent(in)                :: source
+        use pm_kind, only: SKG => SK5
+        type(css_pdt(SKG))      , intent(out)               :: destin
+        type(css_pdt(SKG))      , intent(in)                :: source
     end subroutine
 #endif
 
@@ -4288,9 +4288,9 @@ module pm_container
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: assign_D0_D0_PSSK4
 #endif
-        use pm_kind, only: SKC => SK4
-        type(css_pdt(SKC))      , intent(out)               :: destin
-        type(css_pdt(SKC))      , intent(in)                :: source
+        use pm_kind, only: SKG => SK4
+        type(css_pdt(SKG))      , intent(out)               :: destin
+        type(css_pdt(SKG))      , intent(in)                :: source
     end subroutine
 #endif
 
@@ -4299,9 +4299,9 @@ module pm_container
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: assign_D0_D0_PSSK3
 #endif
-        use pm_kind, only: SKC => SK3
-        type(css_pdt(SKC))      , intent(out)               :: destin
-        type(css_pdt(SKC))      , intent(in)                :: source
+        use pm_kind, only: SKG => SK3
+        type(css_pdt(SKG))      , intent(out)               :: destin
+        type(css_pdt(SKG))      , intent(in)                :: source
     end subroutine
 #endif
 
@@ -4310,9 +4310,9 @@ module pm_container
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: assign_D0_D0_PSSK2
 #endif
-        use pm_kind, only: SKC => SK2
-        type(css_pdt(SKC))      , intent(out)               :: destin
-        type(css_pdt(SKC))      , intent(in)                :: source
+        use pm_kind, only: SKG => SK2
+        type(css_pdt(SKG))      , intent(out)               :: destin
+        type(css_pdt(SKG))      , intent(in)                :: source
     end subroutine
 #endif
 
@@ -4321,9 +4321,9 @@ module pm_container
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: assign_D0_D0_PSSK1
 #endif
-        use pm_kind, only: SKC => SK1
-        type(css_pdt(SKC))      , intent(out)               :: destin
-        type(css_pdt(SKC))      , intent(in)                :: source
+        use pm_kind, only: SKG => SK1
+        type(css_pdt(SKG))      , intent(out)               :: destin
+        type(css_pdt(SKG))      , intent(in)                :: source
     end subroutine
 #endif
 
@@ -4334,9 +4334,9 @@ module pm_container
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: assign_D0_D0_PSIK5
 #endif
-        use pm_kind, only: IKC => IK5
-        type(csi_pdt(IKC))      , intent(out)               :: destin
-        type(csi_pdt(IKC))      , intent(in)                :: source
+        use pm_kind, only: IKG => IK5
+        type(csi_pdt(IKG))      , intent(out)               :: destin
+        type(csi_pdt(IKG))      , intent(in)                :: source
     end subroutine
 #endif
 
@@ -4345,9 +4345,9 @@ module pm_container
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: assign_D0_D0_PSIK4
 #endif
-        use pm_kind, only: IKC => IK4
-        type(csi_pdt(IKC))      , intent(out)               :: destin
-        type(csi_pdt(IKC))      , intent(in)                :: source
+        use pm_kind, only: IKG => IK4
+        type(csi_pdt(IKG))      , intent(out)               :: destin
+        type(csi_pdt(IKG))      , intent(in)                :: source
     end subroutine
 #endif
 
@@ -4356,9 +4356,9 @@ module pm_container
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: assign_D0_D0_PSIK3
 #endif
-        use pm_kind, only: IKC => IK3
-        type(csi_pdt(IKC))      , intent(out)               :: destin
-        type(csi_pdt(IKC))      , intent(in)                :: source
+        use pm_kind, only: IKG => IK3
+        type(csi_pdt(IKG))      , intent(out)               :: destin
+        type(csi_pdt(IKG))      , intent(in)                :: source
     end subroutine
 #endif
 
@@ -4367,9 +4367,9 @@ module pm_container
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: assign_D0_D0_PSIK2
 #endif
-        use pm_kind, only: IKC => IK2
-        type(csi_pdt(IKC))      , intent(out)               :: destin
-        type(csi_pdt(IKC))      , intent(in)                :: source
+        use pm_kind, only: IKG => IK2
+        type(csi_pdt(IKG))      , intent(out)               :: destin
+        type(csi_pdt(IKG))      , intent(in)                :: source
     end subroutine
 #endif
 
@@ -4378,9 +4378,9 @@ module pm_container
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: assign_D0_D0_PSIK1
 #endif
-        use pm_kind, only: IKC => IK1
-        type(csi_pdt(IKC))      , intent(out)               :: destin
-        type(csi_pdt(IKC))      , intent(in)                :: source
+        use pm_kind, only: IKG => IK1
+        type(csi_pdt(IKG))      , intent(out)               :: destin
+        type(csi_pdt(IKG))      , intent(in)                :: source
     end subroutine
 #endif
 
@@ -4391,9 +4391,9 @@ module pm_container
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: assign_D0_D0_PSLK5
 #endif
-        use pm_kind, only: LKC => LK5
-        type(csl_pdt(LKC))      , intent(out)               :: destin
-        type(csl_pdt(LKC))      , intent(in)                :: source
+        use pm_kind, only: LKG => LK5
+        type(csl_pdt(LKG))      , intent(out)               :: destin
+        type(csl_pdt(LKG))      , intent(in)                :: source
     end subroutine
 #endif
 
@@ -4402,9 +4402,9 @@ module pm_container
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: assign_D0_D0_PSLK4
 #endif
-        use pm_kind, only: LKC => LK4
-        type(csl_pdt(LKC))      , intent(out)               :: destin
-        type(csl_pdt(LKC))      , intent(in)                :: source
+        use pm_kind, only: LKG => LK4
+        type(csl_pdt(LKG))      , intent(out)               :: destin
+        type(csl_pdt(LKG))      , intent(in)                :: source
     end subroutine
 #endif
 
@@ -4413,9 +4413,9 @@ module pm_container
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: assign_D0_D0_PSLK3
 #endif
-        use pm_kind, only: LKC => LK3
-        type(csl_pdt(LKC))      , intent(out)               :: destin
-        type(csl_pdt(LKC))      , intent(in)                :: source
+        use pm_kind, only: LKG => LK3
+        type(csl_pdt(LKG))      , intent(out)               :: destin
+        type(csl_pdt(LKG))      , intent(in)                :: source
     end subroutine
 #endif
 
@@ -4424,9 +4424,9 @@ module pm_container
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: assign_D0_D0_PSLK2
 #endif
-        use pm_kind, only: LKC => LK2
-        type(csl_pdt(LKC))      , intent(out)               :: destin
-        type(csl_pdt(LKC))      , intent(in)                :: source
+        use pm_kind, only: LKG => LK2
+        type(csl_pdt(LKG))      , intent(out)               :: destin
+        type(csl_pdt(LKG))      , intent(in)                :: source
     end subroutine
 #endif
 
@@ -4435,9 +4435,9 @@ module pm_container
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: assign_D0_D0_PSLK1
 #endif
-        use pm_kind, only: LKC => LK1
-        type(csl_pdt(LKC))      , intent(out)               :: destin
-        type(csl_pdt(LKC))      , intent(in)                :: source
+        use pm_kind, only: LKG => LK1
+        type(csl_pdt(LKG))      , intent(out)               :: destin
+        type(csl_pdt(LKG))      , intent(in)                :: source
     end subroutine
 #endif
 
@@ -4448,9 +4448,9 @@ module pm_container
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: assign_D0_D0_PSCK5
 #endif
-        use pm_kind, only: CKC => CK5
-        type(csc_pdt(CKC))      , intent(out)               :: destin
-        type(csc_pdt(CKC))      , intent(in)                :: source
+        use pm_kind, only: CKG => CK5
+        type(csc_pdt(CKG))      , intent(out)               :: destin
+        type(csc_pdt(CKG))      , intent(in)                :: source
     end subroutine
 #endif
 
@@ -4459,9 +4459,9 @@ module pm_container
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: assign_D0_D0_PSCK4
 #endif
-        use pm_kind, only: CKC => CK4
-        type(csc_pdt(CKC))      , intent(out)               :: destin
-        type(csc_pdt(CKC))      , intent(in)                :: source
+        use pm_kind, only: CKG => CK4
+        type(csc_pdt(CKG))      , intent(out)               :: destin
+        type(csc_pdt(CKG))      , intent(in)                :: source
     end subroutine
 #endif
 
@@ -4470,9 +4470,9 @@ module pm_container
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: assign_D0_D0_PSCK3
 #endif
-        use pm_kind, only: CKC => CK3
-        type(csc_pdt(CKC))      , intent(out)               :: destin
-        type(csc_pdt(CKC))      , intent(in)                :: source
+        use pm_kind, only: CKG => CK3
+        type(csc_pdt(CKG))      , intent(out)               :: destin
+        type(csc_pdt(CKG))      , intent(in)                :: source
     end subroutine
 #endif
 
@@ -4481,9 +4481,9 @@ module pm_container
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: assign_D0_D0_PSCK2
 #endif
-        use pm_kind, only: CKC => CK2
-        type(csc_pdt(CKC))      , intent(out)               :: destin
-        type(csc_pdt(CKC))      , intent(in)                :: source
+        use pm_kind, only: CKG => CK2
+        type(csc_pdt(CKG))      , intent(out)               :: destin
+        type(csc_pdt(CKG))      , intent(in)                :: source
     end subroutine
 #endif
 
@@ -4492,9 +4492,9 @@ module pm_container
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: assign_D0_D0_PSCK1
 #endif
-        use pm_kind, only: CKC => CK1
-        type(csc_pdt(CKC))      , intent(out)               :: destin
-        type(csc_pdt(CKC))      , intent(in)                :: source
+        use pm_kind, only: CKG => CK1
+        type(csc_pdt(CKG))      , intent(out)               :: destin
+        type(csc_pdt(CKG))      , intent(in)                :: source
     end subroutine
 #endif
 
@@ -4505,9 +4505,9 @@ module pm_container
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: assign_D0_D0_PSRK5
 #endif
-        use pm_kind, only: RKC => RK5
-        type(csr_pdt(RKC))      , intent(out)               :: destin
-        type(csr_pdt(RKC))      , intent(in)                :: source
+        use pm_kind, only: RKG => RK5
+        type(csr_pdt(RKG))      , intent(out)               :: destin
+        type(csr_pdt(RKG))      , intent(in)                :: source
     end subroutine
 #endif
 
@@ -4516,9 +4516,9 @@ module pm_container
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: assign_D0_D0_PSRK4
 #endif
-        use pm_kind, only: RKC => RK4
-        type(csr_pdt(RKC))      , intent(out)               :: destin
-        type(csr_pdt(RKC))      , intent(in)                :: source
+        use pm_kind, only: RKG => RK4
+        type(csr_pdt(RKG))      , intent(out)               :: destin
+        type(csr_pdt(RKG))      , intent(in)                :: source
     end subroutine
 #endif
 
@@ -4527,9 +4527,9 @@ module pm_container
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: assign_D0_D0_PSRK3
 #endif
-        use pm_kind, only: RKC => RK3
-        type(csr_pdt(RKC))      , intent(out)               :: destin
-        type(csr_pdt(RKC))      , intent(in)                :: source
+        use pm_kind, only: RKG => RK3
+        type(csr_pdt(RKG))      , intent(out)               :: destin
+        type(csr_pdt(RKG))      , intent(in)                :: source
     end subroutine
 #endif
 
@@ -4538,9 +4538,9 @@ module pm_container
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: assign_D0_D0_PSRK2
 #endif
-        use pm_kind, only: RKC => RK2
-        type(csr_pdt(RKC))      , intent(out)               :: destin
-        type(csr_pdt(RKC))      , intent(in)                :: source
+        use pm_kind, only: RKG => RK2
+        type(csr_pdt(RKG))      , intent(out)               :: destin
+        type(csr_pdt(RKG))      , intent(in)                :: source
     end subroutine
 #endif
 
@@ -4549,9 +4549,9 @@ module pm_container
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: assign_D0_D0_PSRK1
 #endif
-        use pm_kind, only: RKC => RK1
-        type(csr_pdt(RKC))      , intent(out)               :: destin
-        type(csr_pdt(RKC))      , intent(in)                :: source
+        use pm_kind, only: RKG => RK1
+        type(csr_pdt(RKG))      , intent(out)               :: destin
+        type(csr_pdt(RKG))      , intent(in)                :: source
     end subroutine
 #endif
 
@@ -4703,45 +4703,45 @@ module pm_container
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getVal_D0_BSSK
 !#endif
-!        use pm_kind, only: SKC => SK
+!        use pm_kind, only: SKG => SK
 !        type(css_type)          , intent(in)                :: con
-!        character(len(con%val, IK),SKC)                     :: val
+!        character(len(con%val, IK),SKG)                     :: val
 !    end function
 !
 !    pure elemental module function getVal_D0_BSIK(con) result(val)
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getVal_D0_BSIK
 !#endif
-!        use pm_kind, only: IKC => IK
+!        use pm_kind, only: IKG => IK
 !        type(csi_type)          , intent(in)                :: con
-!        integer(IKC)                                        :: val
+!        integer(IKG)                                        :: val
 !    end function
 !
 !    pure elemental module function getVal_D0_BSLK(con) result(val)
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getVal_D0_BSLK
 !#endif
-!        use pm_kind, only: LKC => LK
+!        use pm_kind, only: LKG => LK
 !        type(csl_type)          , intent(in)                :: con
-!        logical(LKC)                                        :: val
+!        logical(LKG)                                        :: val
 !    end function
 !
 !    pure elemental module function getVal_D0_BSCK(con) result(val)
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getVal_D0_BSCK
 !#endif
-!        use pm_kind, only: CKC => CK
+!        use pm_kind, only: CKG => CK
 !        type(csc_type)          , intent(in)                :: con
-!        complex(CKC)                                        :: val
+!        complex(CKG)                                        :: val
 !    end function
 !
 !    pure elemental module function getVal_D0_BSRK(con) result(val)
 !#if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
 !        !DEC$ ATTRIBUTES DLLEXPORT :: getVal_D0_BSRK
 !#endif
-!        use pm_kind, only: RKC => RK
+!        use pm_kind, only: RKG => RK
 !        type(csr_type)          , intent(in)                :: con
-!        real(RKC)                                           :: val
+!        real(RKG)                                           :: val
 !    end function
 !
 !

@@ -29,44 +29,44 @@
         !%%%%%%%%%%%%%%%%%%%
 
         use pm_arrayRange, only: getRange
-        integer(IKC)    :: i, j
-        integer(IKC)    :: lenSetA
-        integer(IKC)    :: lenComplement
-        integer(IKC)    :: complementTemp(max(0_IKC, 1_IKC + floor(real(stop - start) / real(step), kind = IKC)))
+        integer(IKG)    :: i, j
+        integer(IKG)    :: lenSetA
+        integer(IKG)    :: lenComplement
+        integer(IKG)    :: complementTemp(max(0_IKG, 1_IKG + floor(real(stop - start) / real(step), kind = IKG)))
 #if     Sorted_ENABLED
-        integer(IKC)    :: jstart
+        integer(IKG)    :: jstart
 #elif   !Random_ENABLED
 #error  "Unrecognized interface."
 #endif
-        CHECK_ASSERTION(__LINE__, step /= 0_IKC, SK_"@getCompRange(): The input `step` must be non-zero. step = "//getStr(step)) ! fpp
-        lenComplement = 0_IKC
-        lenSetA = size(setA, kind = IKC)
+        CHECK_ASSERTION(__LINE__, step /= 0_IKG, SK_"@getCompRange(): The input `step` must be non-zero. step = "//getStr(step)) ! fpp
+        lenComplement = 0_IKG
+        lenSetA = size(setA, kind = IKG)
         if (lenSetA > 0_IK) then
 #if     Sorted_ENABLED
             if (sorted) then
-                jstart = 1_IKC
+                jstart = 1_IKG
                 if (unique) then
-                    if (step == 1_IKC .and. start <= setA(1) .and. setA(lenSetA) <= stop) then
-                        allocate(complement(abs(stop - start) + 1_IKC - lenSetA))
+                    if (step == 1_IKG .and. start <= setA(1) .and. setA(lenSetA) <= stop) then
+                        allocate(complement(abs(stop - start) + 1_IKG - lenSetA))
                         loopOverSuperSetOrderedUnique: do i = start, stop, step
                             loopOverSubSetOrderedUnique: do j = jstart, lenSetA
                                 if (i == setA(j)) then
-                                    jstart = j + 1_IKC
+                                    jstart = j + 1_IKG
                                     cycle loopOverSuperSetOrderedUnique
                                 end if
                             end do loopOverSubSetOrderedUnique
-                            lenComplement = lenComplement + 1_IKC
+                            lenComplement = lenComplement + 1_IKG
                             complement(lenComplement) = i
                         end do loopOverSuperSetOrderedUnique
                     else
                         loopOverRangeOrderedUnique: do i = start, stop, step
                             loopOverSetOrderedUnique: do j = jstart, lenSetA
                                 if (i == setA(j)) then
-                                    jstart = j + 1_IKC
+                                    jstart = j + 1_IKG
                                     cycle loopOverRangeOrderedUnique
                                 end if
                             end do loopOverSetOrderedUnique
-                            lenComplement = lenComplement + 1_IKC
+                            lenComplement = lenComplement + 1_IKG
                             complementTemp(lenComplement) = i
                         end do loopOverRangeOrderedUnique
                         complement = complementTemp(1:lenComplement)
@@ -77,7 +77,7 @@
                             if (i == setA(j)) then
                                 jstart = j
                                 do
-                                    jstart = jstart + 1_IKC
+                                    jstart = jstart + 1_IKG
                                     if (jstart > lenSetA) then
                                         do jstart = i + step, stop, step
                                             !print *, i, step, i + step, jstart, i == step
@@ -86,7 +86,7 @@
                                             !print *, "setA"
                                             !print *, setA
                                             !print *, "setA"
-                                            lenComplement = lenComplement + 1_IKC
+                                            lenComplement = lenComplement + 1_IKG
                                             complementTemp(lenComplement) = jstart
                                         end do
                                         exit loopOverRangeOrdered
@@ -96,7 +96,7 @@
                                 cycle loopOverRangeOrdered
                             end if
                         end do loopOverSetOrdered
-                        lenComplement = lenComplement + 1_IKC
+                        lenComplement = lenComplement + 1_IKG
                         complementTemp(lenComplement) = i
                     end do loopOverRangeOrdered
                     complement = complementTemp(1:lenComplement)
@@ -104,12 +104,12 @@
             else
 #endif
                 loopOverRange: do i = start, stop, step
-                    loopOverSet: do j = 1_IKC, lenSetA
+                    loopOverSet: do j = 1_IKG, lenSetA
                         if (i == setA(j)) then
                             cycle loopOverRange
                         end if
                     end do loopOverSet
-                    lenComplement = lenComplement + 1_IKC
+                    lenComplement = lenComplement + 1_IKG
                     complementTemp(lenComplement) = i
                 end do loopOverRange
                 complement = complementTemp(1:lenComplement)
@@ -138,20 +138,20 @@
 #if     SK_ENABLED && D0_ENABLED
 #define GET_INDEX(i) i:i
 #define GET_SIZE len
-        character(len(setB,IK),SKC) :: complementTemp
+        character(len(setB,IK),SKG) :: complementTemp
 #elif   D1_ENABLED
 #define GET_SIZE size
 #define GET_INDEX(i) i
 #if     SK_ENABLED
-        character(len(setB,IK),SKC) &
+        character(len(setB,IK),SKG) &
 #elif   IK_ENABLED
-        integer(IKC) &
+        integer(IKG) &
 #elif   LK_ENABLED
-        logical(LKC) &
+        logical(LKG) &
 #elif   CK_ENABLED
-        complex(CKC) &
+        complex(CKG) &
 #elif   RK_ENABLED
-        real(RKC) &
+        real(RKG) &
 #else
 #error  "Unrecognized interface."
 #endif

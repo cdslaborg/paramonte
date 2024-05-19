@@ -59,35 +59,35 @@ contains
 
 #if CK5_ENABLED
     module procedure setFactorFFTDXX_CK5
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
 #include "pm_fftpack@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure setFactorFFTDXX_CK4
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
 #include "pm_fftpack@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure setFactorFFTDXX_CK3
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
 #include "pm_fftpack@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure setFactorFFTDXX_CK2
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
 #include "pm_fftpack@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure setFactorFFTDXX_CK1
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
 #include "pm_fftpack@routines.inc.F90"
     end procedure
 #endif
@@ -100,35 +100,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setFactorFFTDXX_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_fftpack@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setFactorFFTDXX_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_fftpack@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setFactorFFTDXX_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_fftpack@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setFactorFFTDXX_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_fftpack@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setFactorFFTDXX_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_fftpack@routines.inc.F90"
     end procedure
 #endif
@@ -151,35 +151,35 @@ contains
 
 #if CK5_ENABLED
     module procedure setFactorFFTDCX_CK5
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
 #include "pm_fftpack@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure setFactorFFTDCX_CK4
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
 #include "pm_fftpack@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure setFactorFFTDCX_CK3
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
 #include "pm_fftpack@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure setFactorFFTDCX_CK2
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
 #include "pm_fftpack@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure setFactorFFTDCX_CK1
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
 #include "pm_fftpack@routines.inc.F90"
     end procedure
 #endif
@@ -192,35 +192,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setFactorFFTDCX_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_fftpack@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setFactorFFTDCX_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_fftpack@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setFactorFFTDCX_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_fftpack@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setFactorFFTDCX_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_fftpack@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setFactorFFTDCX_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_fftpack@routines.inc.F90"
     end procedure
 #endif
@@ -243,35 +243,35 @@ contains
 
 #if CK5_ENABLED
     module procedure setFactorFFTDCA_CK5
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
 #include "pm_fftpack@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure setFactorFFTDCA_CK4
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
 #include "pm_fftpack@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure setFactorFFTDCA_CK3
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
 #include "pm_fftpack@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure setFactorFFTDCA_CK2
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
 #include "pm_fftpack@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure setFactorFFTDCA_CK1
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
 #include "pm_fftpack@routines.inc.F90"
     end procedure
 #endif
@@ -284,35 +284,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setFactorFFTDCA_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_fftpack@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setFactorFFTDCA_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_fftpack@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setFactorFFTDCA_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_fftpack@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setFactorFFTDCA_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_fftpack@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setFactorFFTDCA_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_fftpack@routines.inc.F90"
     end procedure
 #endif
@@ -339,35 +339,35 @@ contains
 
 #if CK5_ENABLED
     module procedure getFFTF_CK5
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
 #include "pm_fftpack@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure getFFTF_CK4
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
 #include "pm_fftpack@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure getFFTF_CK3
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
 #include "pm_fftpack@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure getFFTF_CK2
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
 #include "pm_fftpack@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure getFFTF_CK1
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
 #include "pm_fftpack@routines.inc.F90"
     end procedure
 #endif
@@ -380,35 +380,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getFFTF_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_fftpack@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getFFTF_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_fftpack@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getFFTF_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_fftpack@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getFFTF_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_fftpack@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getFFTF_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_fftpack@routines.inc.F90"
     end procedure
 #endif
@@ -429,35 +429,35 @@ contains
 
 #if CK5_ENABLED
     module procedure getFFTR_CK5
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
 #include "pm_fftpack@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure getFFTR_CK4
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
 #include "pm_fftpack@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure getFFTR_CK3
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
 #include "pm_fftpack@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure getFFTR_CK2
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
 #include "pm_fftpack@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure getFFTR_CK1
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
 #include "pm_fftpack@routines.inc.F90"
     end procedure
 #endif
@@ -470,35 +470,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getFFTR_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_fftpack@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getFFTR_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_fftpack@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getFFTR_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_fftpack@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getFFTR_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_fftpack@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getFFTR_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_fftpack@routines.inc.F90"
     end procedure
 #endif
@@ -519,35 +519,35 @@ contains
 
 #if CK5_ENABLED
     module procedure getFFTI_CK5
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
 #include "pm_fftpack@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure getFFTI_CK4
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
 #include "pm_fftpack@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure getFFTI_CK3
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
 #include "pm_fftpack@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure getFFTI_CK2
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
 #include "pm_fftpack@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure getFFTI_CK1
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
 #include "pm_fftpack@routines.inc.F90"
     end procedure
 #endif
@@ -560,35 +560,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getFFTI_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_fftpack@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getFFTI_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_fftpack@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getFFTI_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_fftpack@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getFFTI_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_fftpack@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getFFTI_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_fftpack@routines.inc.F90"
     end procedure
 #endif
@@ -609,35 +609,35 @@ contains
 
 #if CK5_ENABLED
     module procedure setFFTF_CK5
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
 #include "pm_fftpack@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure setFFTF_CK4
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
 #include "pm_fftpack@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure setFFTF_CK3
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
 #include "pm_fftpack@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure setFFTF_CK2
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
 #include "pm_fftpack@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure setFFTF_CK1
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
 #include "pm_fftpack@routines.inc.F90"
     end procedure
 #endif
@@ -650,35 +650,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setFFTF_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_fftpack@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setFFTF_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_fftpack@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setFFTF_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_fftpack@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setFFTF_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_fftpack@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setFFTF_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_fftpack@routines.inc.F90"
     end procedure
 #endif
@@ -699,35 +699,35 @@ contains
 
 #if CK5_ENABLED
     module procedure setFFTR_CK5
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
 #include "pm_fftpack@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure setFFTR_CK4
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
 #include "pm_fftpack@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure setFFTR_CK3
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
 #include "pm_fftpack@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure setFFTR_CK2
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
 #include "pm_fftpack@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure setFFTR_CK1
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
 #include "pm_fftpack@routines.inc.F90"
     end procedure
 #endif
@@ -740,35 +740,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setFFTR_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_fftpack@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setFFTR_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_fftpack@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setFFTR_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_fftpack@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setFFTR_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_fftpack@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setFFTR_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_fftpack@routines.inc.F90"
     end procedure
 #endif
@@ -789,35 +789,35 @@ contains
 
 #if CK5_ENABLED
     module procedure setFFTI_CK5
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
 #include "pm_fftpack@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure setFFTI_CK4
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
 #include "pm_fftpack@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure setFFTI_CK3
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
 #include "pm_fftpack@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure setFFTI_CK2
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
 #include "pm_fftpack@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure setFFTI_CK1
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
 #include "pm_fftpack@routines.inc.F90"
     end procedure
 #endif
@@ -830,35 +830,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setFFTI_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_fftpack@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setFFTI_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_fftpack@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setFFTI_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_fftpack@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setFFTI_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_fftpack@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setFFTI_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_fftpack@routines.inc.F90"
     end procedure
 #endif

@@ -197,9 +197,9 @@ module pm_batse
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCorrectionLogEffPPF_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(in)    :: logT90
-        real(RKC)                   :: correction
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(in)    :: logT90
+        real(RKG)                   :: correction
     end function
 #endif
 
@@ -208,9 +208,9 @@ module pm_batse
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCorrectionLogEffPPF_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(in)    :: logT90
-        real(RKC)                   :: correction
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(in)    :: logT90
+        real(RKG)                   :: correction
     end function
 #endif
 
@@ -219,9 +219,9 @@ module pm_batse
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCorrectionLogEffPPF_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(in)    :: logT90
-        real(RKC)                   :: correction
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(in)    :: logT90
+        real(RKG)                   :: correction
     end function
 #endif
 
@@ -230,9 +230,9 @@ module pm_batse
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCorrectionLogEffPPF_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(in)    :: logT90
-        real(RKC)                   :: correction
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(in)    :: logT90
+        real(RKG)                   :: correction
     end function
 #endif
 
@@ -241,9 +241,9 @@ module pm_batse
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getCorrectionLogEffPPF_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(in)    :: logT90
-        real(RKC)                   :: correction
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(in)    :: logT90
+        real(RKG)                   :: correction
     end function
 #endif
 
@@ -312,9 +312,9 @@ module pm_batse
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogEffPPF_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(in)    :: logPPF64, logT90
-        real(RKC)                   :: logEffPPF
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(in)    :: logPPF64, logT90
+        real(RKG)                   :: logEffPPF
     end function
 #endif
 
@@ -323,9 +323,9 @@ module pm_batse
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogEffPPF_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(in)    :: logPPF64, logT90
-        real(RKC)                   :: logEffPPF
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(in)    :: logPPF64, logT90
+        real(RKG)                   :: logEffPPF
     end function
 #endif
 
@@ -334,9 +334,9 @@ module pm_batse
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogEffPPF_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(in)    :: logPPF64, logT90
-        real(RKC)                   :: logEffPPF
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(in)    :: logPPF64, logT90
+        real(RKG)                   :: logEffPPF
     end function
 #endif
 
@@ -345,9 +345,9 @@ module pm_batse
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogEffPPF_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(in)    :: logPPF64, logT90
-        real(RKC)                   :: logEffPPF
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(in)    :: logPPF64, logT90
+        real(RKG)                   :: logEffPPF
     end function
 #endif
 
@@ -356,9 +356,9 @@ module pm_batse
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogEffPPF_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(in)    :: logPPF64, logT90
-        real(RKC)                   :: logEffPPF
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(in)    :: logPPF64, logT90
+        real(RKG)                   :: logEffPPF
     end function
 #endif
 
@@ -433,9 +433,9 @@ module pm_batse
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogPbol_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(in)    :: logEpk, logPF53
-        real(RKC)                   :: logPbol
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(in)    :: logEpk, logPF53
+        real(RKG)                   :: logPbol
     end function
 #endif
 
@@ -444,9 +444,9 @@ module pm_batse
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogPbol_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(in)    :: logEpk, logPF53
-        real(RKC)                   :: logPbol
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(in)    :: logEpk, logPF53
+        real(RKG)                   :: logPbol
     end function
 #endif
 
@@ -455,9 +455,9 @@ module pm_batse
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogPbol_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(in)    :: logEpk, logPF53
-        real(RKC)                   :: logPbol
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(in)    :: logEpk, logPF53
+        real(RKG)                   :: logPbol
     end function
 #endif
 
@@ -466,9 +466,9 @@ module pm_batse
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogPbol_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(in)    :: logEpk, logPF53
-        real(RKC)                   :: logPbol
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(in)    :: logEpk, logPF53
+        real(RKG)                   :: logPbol
     end function
 #endif
 
@@ -477,9 +477,9 @@ module pm_batse
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogPbol_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(in)    :: logEpk, logPF53
-        real(RKC)                   :: logPbol
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(in)    :: logEpk, logPF53
+        real(RKG)                   :: logPbol
     end function
 #endif
 
@@ -554,9 +554,9 @@ module pm_batse
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogPF53_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(in)    :: logEpk, logPbol
-        real(RKC)                   :: logPF53
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(in)    :: logEpk, logPbol
+        real(RKG)                   :: logPF53
     end function
 #endif
 
@@ -565,9 +565,9 @@ module pm_batse
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogPF53_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(in)    :: logEpk, logPbol
-        real(RKC)                   :: logPF53
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(in)    :: logEpk, logPbol
+        real(RKG)                   :: logPF53
     end function
 #endif
 
@@ -576,9 +576,9 @@ module pm_batse
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogPF53_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(in)    :: logEpk, logPbol
-        real(RKC)                   :: logPF53
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(in)    :: logEpk, logPbol
+        real(RKG)                   :: logPF53
     end function
 #endif
 
@@ -587,9 +587,9 @@ module pm_batse
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogPF53_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(in)    :: logEpk, logPbol
-        real(RKC)                   :: logPF53
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(in)    :: logEpk, logPbol
+        real(RKG)                   :: logPF53
     end function
 #endif
 
@@ -598,9 +598,9 @@ module pm_batse
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLogPF53_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(in)    :: logEpk, logPbol
-        real(RKC)                   :: logPF53
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(in)    :: logEpk, logPbol
+        real(RKG)                   :: logPF53
     end function
 #endif
 
@@ -666,9 +666,9 @@ module pm_batse
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLog10PF53_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(in)    :: log10Epk, log10Pbol
-        real(RKC)                   :: log10PF53
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(in)    :: log10Epk, log10Pbol
+        real(RKG)                   :: log10PF53
     end function
 #endif
 
@@ -677,9 +677,9 @@ module pm_batse
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLog10PF53_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(in)    :: log10Epk, log10Pbol
-        real(RKC)                   :: log10PF53
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(in)    :: log10Epk, log10Pbol
+        real(RKG)                   :: log10PF53
     end function
 #endif
 
@@ -688,9 +688,9 @@ module pm_batse
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLog10PF53_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(in)    :: log10Epk, log10Pbol
-        real(RKC)                   :: log10PF53
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(in)    :: log10Epk, log10Pbol
+        real(RKG)                   :: log10PF53
     end function
 #endif
 
@@ -699,9 +699,9 @@ module pm_batse
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLog10PF53_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(in)    :: log10Epk, log10Pbol
-        real(RKC)                   :: log10PF53
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(in)    :: log10Epk, log10Pbol
+        real(RKG)                   :: log10PF53
     end function
 #endif
 
@@ -710,9 +710,9 @@ module pm_batse
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getLog10PF53_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(in)    :: log10Epk, log10Pbol
-        real(RKC)                   :: log10PF53
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(in)    :: log10Epk, log10Pbol
+        real(RKG)                   :: log10PF53
     end function
 #endif
 

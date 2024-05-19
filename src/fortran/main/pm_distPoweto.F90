@@ -192,10 +192,10 @@ module pm_distPoweto
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPowetoLogPDFNF_D0_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(in)                    :: alpha
-        real(RKC)   , intent(in)    , optional      :: logMinX, logMaxX
-        real(RKC)                                   :: logPDFNF
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(in)                    :: alpha
+        real(RKG)   , intent(in)    , optional      :: logMinX, logMaxX
+        real(RKG)                                   :: logPDFNF
     end function
 #endif
 
@@ -204,10 +204,10 @@ module pm_distPoweto
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPowetoLogPDFNF_D0_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(in)                    :: alpha
-        real(RKC)   , intent(in)    , optional      :: logMinX, logMaxX
-        real(RKC)                                   :: logPDFNF
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(in)                    :: alpha
+        real(RKG)   , intent(in)    , optional      :: logMinX, logMaxX
+        real(RKG)                                   :: logPDFNF
     end function
 #endif
 
@@ -216,10 +216,10 @@ module pm_distPoweto
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPowetoLogPDFNF_D0_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(in)                    :: alpha
-        real(RKC)   , intent(in)    , optional      :: logMinX, logMaxX
-        real(RKC)                                   :: logPDFNF
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(in)                    :: alpha
+        real(RKG)   , intent(in)    , optional      :: logMinX, logMaxX
+        real(RKG)                                   :: logPDFNF
     end function
 #endif
 
@@ -228,10 +228,10 @@ module pm_distPoweto
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPowetoLogPDFNF_D0_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(in)                    :: alpha
-        real(RKC)   , intent(in)    , optional      :: logMinX, logMaxX
-        real(RKC)                                   :: logPDFNF
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(in)                    :: alpha
+        real(RKG)   , intent(in)    , optional      :: logMinX, logMaxX
+        real(RKG)                                   :: logPDFNF
     end function
 #endif
 
@@ -240,10 +240,10 @@ module pm_distPoweto
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPowetoLogPDFNF_D0_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(in)                    :: alpha
-        real(RKC)   , intent(in)    , optional      :: logMinX, logMaxX
-        real(RKC)                                   :: logPDFNF
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(in)                    :: alpha
+        real(RKG)   , intent(in)    , optional      :: logMinX, logMaxX
+        real(RKG)                                   :: logPDFNF
     end function
 #endif
 
@@ -328,11 +328,11 @@ module pm_distPoweto
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPowetoLogPDF_D0_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(in)                            :: logx
-        real(RKC)   , intent(in)                            :: alpha
-        real(RKC)   , intent(in)                , optional  :: logMinX, logMaxX
-        real(RKC)                                           :: logPDF
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(in)                            :: logx
+        real(RKG)   , intent(in)                            :: alpha
+        real(RKG)   , intent(in)                , optional  :: logMinX, logMaxX
+        real(RKG)                                           :: logPDF
     end function
 #endif
 
@@ -341,11 +341,11 @@ module pm_distPoweto
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPowetoLogPDF_D0_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(in)                            :: logx
-        real(RKC)   , intent(in)                            :: alpha
-        real(RKC)   , intent(in)                , optional  :: logMinX, logMaxX
-        real(RKC)                                           :: logPDF
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(in)                            :: logx
+        real(RKG)   , intent(in)                            :: alpha
+        real(RKG)   , intent(in)                , optional  :: logMinX, logMaxX
+        real(RKG)                                           :: logPDF
     end function
 #endif
 
@@ -354,11 +354,11 @@ module pm_distPoweto
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPowetoLogPDF_D0_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(in)                            :: logx
-        real(RKC)   , intent(in)                            :: alpha
-        real(RKC)   , intent(in)                , optional  :: logMinX, logMaxX
-        real(RKC)                                           :: logPDF
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(in)                            :: logx
+        real(RKG)   , intent(in)                            :: alpha
+        real(RKG)   , intent(in)                , optional  :: logMinX, logMaxX
+        real(RKG)                                           :: logPDF
     end function
 #endif
 
@@ -367,11 +367,11 @@ module pm_distPoweto
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPowetoLogPDF_D0_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(in)                            :: logx
-        real(RKC)   , intent(in)                            :: alpha
-        real(RKC)   , intent(in)                , optional  :: logMinX, logMaxX
-        real(RKC)                                           :: logPDF
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(in)                            :: logx
+        real(RKG)   , intent(in)                            :: alpha
+        real(RKG)   , intent(in)                , optional  :: logMinX, logMaxX
+        real(RKG)                                           :: logPDF
     end function
 #endif
 
@@ -380,11 +380,11 @@ module pm_distPoweto
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPowetoLogPDF_D0_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(in)                            :: logx
-        real(RKC)   , intent(in)                            :: alpha
-        real(RKC)   , intent(in)                , optional  :: logMinX, logMaxX
-        real(RKC)                                           :: logPDF
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(in)                            :: logx
+        real(RKG)   , intent(in)                            :: alpha
+        real(RKG)   , intent(in)                , optional  :: logMinX, logMaxX
+        real(RKG)                                           :: logPDF
     end function
 #endif
 
@@ -459,11 +459,11 @@ module pm_distPoweto
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPowetoLogPDF_D0_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(out)                           :: logPDF
-        real(RKC)   , intent(in)                            :: logx
-        real(RKC)   , intent(in)                            :: alpha
-        real(RKC)   , intent(in)                            :: logPDFNF
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(out)                           :: logPDF
+        real(RKG)   , intent(in)                            :: logx
+        real(RKG)   , intent(in)                            :: alpha
+        real(RKG)   , intent(in)                            :: logPDFNF
     end subroutine
 #endif
 
@@ -472,11 +472,11 @@ module pm_distPoweto
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPowetoLogPDF_D0_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(out)                           :: logPDF
-        real(RKC)   , intent(in)                            :: logx
-        real(RKC)   , intent(in)                            :: alpha
-        real(RKC)   , intent(in)                            :: logPDFNF
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(out)                           :: logPDF
+        real(RKG)   , intent(in)                            :: logx
+        real(RKG)   , intent(in)                            :: alpha
+        real(RKG)   , intent(in)                            :: logPDFNF
     end subroutine
 #endif
 
@@ -485,11 +485,11 @@ module pm_distPoweto
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPowetoLogPDF_D0_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(out)                           :: logPDF
-        real(RKC)   , intent(in)                            :: logx
-        real(RKC)   , intent(in)                            :: alpha
-        real(RKC)   , intent(in)                            :: logPDFNF
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(out)                           :: logPDF
+        real(RKG)   , intent(in)                            :: logx
+        real(RKG)   , intent(in)                            :: alpha
+        real(RKG)   , intent(in)                            :: logPDFNF
     end subroutine
 #endif
 
@@ -498,11 +498,11 @@ module pm_distPoweto
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPowetoLogPDF_D0_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(out)                           :: logPDF
-        real(RKC)   , intent(in)                            :: logx
-        real(RKC)   , intent(in)                            :: alpha
-        real(RKC)   , intent(in)                            :: logPDFNF
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(out)                           :: logPDF
+        real(RKG)   , intent(in)                            :: logx
+        real(RKG)   , intent(in)                            :: alpha
+        real(RKG)   , intent(in)                            :: logPDFNF
     end subroutine
 #endif
 
@@ -511,11 +511,11 @@ module pm_distPoweto
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPowetoLogPDF_D0_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(out)                           :: logPDF
-        real(RKC)   , intent(in)                            :: logx
-        real(RKC)   , intent(in)                            :: alpha
-        real(RKC)   , intent(in)                            :: logPDFNF
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(out)                           :: logPDF
+        real(RKG)   , intent(in)                            :: logx
+        real(RKG)   , intent(in)                            :: alpha
+        real(RKG)   , intent(in)                            :: logPDFNF
     end subroutine
 #endif
 
@@ -606,10 +606,10 @@ module pm_distPoweto
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPowetoLogCDFNF_D0_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(in)                    :: alpha
-        real(RKC)   , intent(in)    , optional      :: logMinX, logMaxX
-        real(RKC)                                   :: logCDFNF
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(in)                    :: alpha
+        real(RKG)   , intent(in)    , optional      :: logMinX, logMaxX
+        real(RKG)                                   :: logCDFNF
     end function
 #endif
 
@@ -618,10 +618,10 @@ module pm_distPoweto
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPowetoLogCDFNF_D0_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(in)                    :: alpha
-        real(RKC)   , intent(in)    , optional      :: logMinX, logMaxX
-        real(RKC)                                   :: logCDFNF
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(in)                    :: alpha
+        real(RKG)   , intent(in)    , optional      :: logMinX, logMaxX
+        real(RKG)                                   :: logCDFNF
     end function
 #endif
 
@@ -630,10 +630,10 @@ module pm_distPoweto
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPowetoLogCDFNF_D0_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(in)                    :: alpha
-        real(RKC)   , intent(in)    , optional      :: logMinX, logMaxX
-        real(RKC)                                   :: logCDFNF
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(in)                    :: alpha
+        real(RKG)   , intent(in)    , optional      :: logMinX, logMaxX
+        real(RKG)                                   :: logCDFNF
     end function
 #endif
 
@@ -642,10 +642,10 @@ module pm_distPoweto
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPowetoLogCDFNF_D0_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(in)                    :: alpha
-        real(RKC)   , intent(in)    , optional      :: logMinX, logMaxX
-        real(RKC)                                   :: logCDFNF
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(in)                    :: alpha
+        real(RKG)   , intent(in)    , optional      :: logMinX, logMaxX
+        real(RKG)                                   :: logCDFNF
     end function
 #endif
 
@@ -654,10 +654,10 @@ module pm_distPoweto
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPowetoLogCDFNF_D0_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(in)                    :: alpha
-        real(RKC)   , intent(in)    , optional      :: logMinX, logMaxX
-        real(RKC)                                   :: logCDFNF
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(in)                    :: alpha
+        real(RKG)   , intent(in)    , optional      :: logMinX, logMaxX
+        real(RKG)                                   :: logCDFNF
     end function
 #endif
 
@@ -742,11 +742,11 @@ module pm_distPoweto
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPowetoLogCDF_D0_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(in)                            :: logx
-        real(RKC)   , intent(in)                            :: alpha
-        real(RKC)   , intent(in)                , optional  :: logMinX, logMaxX
-        real(RKC)                                           :: logCDF
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(in)                            :: logx
+        real(RKG)   , intent(in)                            :: alpha
+        real(RKG)   , intent(in)                , optional  :: logMinX, logMaxX
+        real(RKG)                                           :: logCDF
     end function
 #endif
 
@@ -755,11 +755,11 @@ module pm_distPoweto
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPowetoLogCDF_D0_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(in)                            :: logx
-        real(RKC)   , intent(in)                            :: alpha
-        real(RKC)   , intent(in)                , optional  :: logMinX, logMaxX
-        real(RKC)                                           :: logCDF
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(in)                            :: logx
+        real(RKG)   , intent(in)                            :: alpha
+        real(RKG)   , intent(in)                , optional  :: logMinX, logMaxX
+        real(RKG)                                           :: logCDF
     end function
 #endif
 
@@ -768,11 +768,11 @@ module pm_distPoweto
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPowetoLogCDF_D0_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(in)                            :: logx
-        real(RKC)   , intent(in)                            :: alpha
-        real(RKC)   , intent(in)                , optional  :: logMinX, logMaxX
-        real(RKC)                                           :: logCDF
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(in)                            :: logx
+        real(RKG)   , intent(in)                            :: alpha
+        real(RKG)   , intent(in)                , optional  :: logMinX, logMaxX
+        real(RKG)                                           :: logCDF
     end function
 #endif
 
@@ -781,11 +781,11 @@ module pm_distPoweto
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPowetoLogCDF_D0_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(in)                            :: logx
-        real(RKC)   , intent(in)                            :: alpha
-        real(RKC)   , intent(in)                , optional  :: logMinX, logMaxX
-        real(RKC)                                           :: logCDF
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(in)                            :: logx
+        real(RKG)   , intent(in)                            :: alpha
+        real(RKG)   , intent(in)                , optional  :: logMinX, logMaxX
+        real(RKG)                                           :: logCDF
     end function
 #endif
 
@@ -794,11 +794,11 @@ module pm_distPoweto
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPowetoLogCDF_D0_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(in)                            :: logx
-        real(RKC)   , intent(in)                            :: alpha
-        real(RKC)   , intent(in)                , optional  :: logMinX, logMaxX
-        real(RKC)                                           :: logCDF
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(in)                            :: logx
+        real(RKG)   , intent(in)                            :: alpha
+        real(RKG)   , intent(in)                , optional  :: logMinX, logMaxX
+        real(RKG)                                           :: logCDF
     end function
 #endif
 
@@ -883,11 +883,11 @@ module pm_distPoweto
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPowetoLogCDF_D0_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(out)                           :: logCDF
-        real(RKC)   , intent(in)                            :: logx
-        real(RKC)   , intent(in)                            :: alpha
-        real(RKC)   , intent(in)                , optional  :: logMinX, logCDFNF
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(out)                           :: logCDF
+        real(RKG)   , intent(in)                            :: logx
+        real(RKG)   , intent(in)                            :: alpha
+        real(RKG)   , intent(in)                , optional  :: logMinX, logCDFNF
     end subroutine
 #endif
 
@@ -896,11 +896,11 @@ module pm_distPoweto
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPowetoLogCDF_D0_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(out)                           :: logCDF
-        real(RKC)   , intent(in)                            :: logx
-        real(RKC)   , intent(in)                            :: alpha
-        real(RKC)   , intent(in)                , optional  :: logMinX, logCDFNF
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(out)                           :: logCDF
+        real(RKG)   , intent(in)                            :: logx
+        real(RKG)   , intent(in)                            :: alpha
+        real(RKG)   , intent(in)                , optional  :: logMinX, logCDFNF
     end subroutine
 #endif
 
@@ -909,11 +909,11 @@ module pm_distPoweto
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPowetoLogCDF_D0_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(out)                           :: logCDF
-        real(RKC)   , intent(in)                            :: logx
-        real(RKC)   , intent(in)                            :: alpha
-        real(RKC)   , intent(in)                , optional  :: logMinX, logCDFNF
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(out)                           :: logCDF
+        real(RKG)   , intent(in)                            :: logx
+        real(RKG)   , intent(in)                            :: alpha
+        real(RKG)   , intent(in)                , optional  :: logMinX, logCDFNF
     end subroutine
 #endif
 
@@ -922,11 +922,11 @@ module pm_distPoweto
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPowetoLogCDF_D0_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(out)                           :: logCDF
-        real(RKC)   , intent(in)                            :: logx
-        real(RKC)   , intent(in)                            :: alpha
-        real(RKC)   , intent(in)                , optional  :: logMinX, logCDFNF
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(out)                           :: logCDF
+        real(RKG)   , intent(in)                            :: logx
+        real(RKG)   , intent(in)                            :: alpha
+        real(RKG)   , intent(in)                , optional  :: logMinX, logCDFNF
     end subroutine
 #endif
 
@@ -935,11 +935,11 @@ module pm_distPoweto
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPowetoLogCDF_D0_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(out)                           :: logCDF
-        real(RKC)   , intent(in)                            :: logx
-        real(RKC)   , intent(in)                            :: alpha
-        real(RKC)   , intent(in)                , optional  :: logMinX, logCDFNF
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(out)                           :: logCDF
+        real(RKG)   , intent(in)                            :: logx
+        real(RKG)   , intent(in)                            :: alpha
+        real(RKG)   , intent(in)                , optional  :: logMinX, logCDFNF
     end subroutine
 #endif
 
@@ -1024,11 +1024,11 @@ module pm_distPoweto
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPowetoLogQuan_D0_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(in)                            :: logCDF
-        real(RKC)   , intent(in)                            :: alpha
-        real(RKC)   , intent(in)                , optional  :: logMinX, logMaxX
-        real(RKC)                                           :: logx
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(in)                            :: logCDF
+        real(RKG)   , intent(in)                            :: alpha
+        real(RKG)   , intent(in)                , optional  :: logMinX, logMaxX
+        real(RKG)                                           :: logx
     end function
 #endif
 
@@ -1037,11 +1037,11 @@ module pm_distPoweto
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPowetoLogQuan_D0_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(in)                            :: logCDF
-        real(RKC)   , intent(in)                            :: alpha
-        real(RKC)   , intent(in)                , optional  :: logMinX, logMaxX
-        real(RKC)                                           :: logx
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(in)                            :: logCDF
+        real(RKG)   , intent(in)                            :: alpha
+        real(RKG)   , intent(in)                , optional  :: logMinX, logMaxX
+        real(RKG)                                           :: logx
     end function
 #endif
 
@@ -1050,11 +1050,11 @@ module pm_distPoweto
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPowetoLogQuan_D0_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(in)                            :: logCDF
-        real(RKC)   , intent(in)                            :: alpha
-        real(RKC)   , intent(in)                , optional  :: logMinX, logMaxX
-        real(RKC)                                           :: logx
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(in)                            :: logCDF
+        real(RKG)   , intent(in)                            :: alpha
+        real(RKG)   , intent(in)                , optional  :: logMinX, logMaxX
+        real(RKG)                                           :: logx
     end function
 #endif
 
@@ -1063,11 +1063,11 @@ module pm_distPoweto
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPowetoLogQuan_D0_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(in)                            :: logCDF
-        real(RKC)   , intent(in)                            :: alpha
-        real(RKC)   , intent(in)                , optional  :: logMinX, logMaxX
-        real(RKC)                                           :: logx
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(in)                            :: logCDF
+        real(RKG)   , intent(in)                            :: alpha
+        real(RKG)   , intent(in)                , optional  :: logMinX, logMaxX
+        real(RKG)                                           :: logx
     end function
 #endif
 
@@ -1076,11 +1076,11 @@ module pm_distPoweto
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPowetoLogQuan_D0_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(in)                            :: logCDF
-        real(RKC)   , intent(in)                            :: alpha
-        real(RKC)   , intent(in)                , optional  :: logMinX, logMaxX
-        real(RKC)                                           :: logx
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(in)                            :: logCDF
+        real(RKG)   , intent(in)                            :: alpha
+        real(RKG)   , intent(in)                , optional  :: logMinX, logMaxX
+        real(RKG)                                           :: logx
     end function
 #endif
 
@@ -1167,11 +1167,11 @@ module pm_distPoweto
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPowetoLogQuan_D0_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(out)                           :: logx
-        real(RKC)   , intent(in)                            :: logCDF
-        real(RKC)   , intent(in)                            :: alpha
-        real(RKC)   , intent(in)                , optional  :: logMinX, logCDFNF
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(out)                           :: logx
+        real(RKG)   , intent(in)                            :: logCDF
+        real(RKG)   , intent(in)                            :: alpha
+        real(RKG)   , intent(in)                , optional  :: logMinX, logCDFNF
     end subroutine
 #endif
 
@@ -1180,11 +1180,11 @@ module pm_distPoweto
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPowetoLogQuan_D0_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(out)                           :: logx
-        real(RKC)   , intent(in)                            :: logCDF
-        real(RKC)   , intent(in)                            :: alpha
-        real(RKC)   , intent(in)                , optional  :: logMinX, logCDFNF
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(out)                           :: logx
+        real(RKG)   , intent(in)                            :: logCDF
+        real(RKG)   , intent(in)                            :: alpha
+        real(RKG)   , intent(in)                , optional  :: logMinX, logCDFNF
     end subroutine
 #endif
 
@@ -1193,11 +1193,11 @@ module pm_distPoweto
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPowetoLogQuan_D0_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(out)                           :: logx
-        real(RKC)   , intent(in)                            :: logCDF
-        real(RKC)   , intent(in)                            :: alpha
-        real(RKC)   , intent(in)                , optional  :: logMinX, logCDFNF
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(out)                           :: logx
+        real(RKG)   , intent(in)                            :: logCDF
+        real(RKG)   , intent(in)                            :: alpha
+        real(RKG)   , intent(in)                , optional  :: logMinX, logCDFNF
     end subroutine
 #endif
 
@@ -1206,11 +1206,11 @@ module pm_distPoweto
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPowetoLogQuan_D0_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(out)                           :: logx
-        real(RKC)   , intent(in)                            :: logCDF
-        real(RKC)   , intent(in)                            :: alpha
-        real(RKC)   , intent(in)                , optional  :: logMinX, logCDFNF
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(out)                           :: logx
+        real(RKG)   , intent(in)                            :: logCDF
+        real(RKG)   , intent(in)                            :: alpha
+        real(RKG)   , intent(in)                , optional  :: logMinX, logCDFNF
     end subroutine
 #endif
 
@@ -1219,11 +1219,11 @@ module pm_distPoweto
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPowetoLogQuan_D0_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(out)                           :: logx
-        real(RKC)   , intent(in)                            :: logCDF
-        real(RKC)   , intent(in)                            :: alpha
-        real(RKC)   , intent(in)                , optional  :: logMinX, logCDFNF
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(out)                           :: logx
+        real(RKG)   , intent(in)                            :: logCDF
+        real(RKG)   , intent(in)                            :: alpha
+        real(RKG)   , intent(in)                , optional  :: logMinX, logCDFNF
     end subroutine
 #endif
 
@@ -1309,10 +1309,10 @@ module pm_distPoweto
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPowetoLogRand_D0_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(in)                    :: alpha
-        real(RKC)   , intent(in)    , optional      :: logMinX, logMaxX, logCDFNF
-        real(RKC)                                   :: logRand
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(in)                    :: alpha
+        real(RKG)   , intent(in)    , optional      :: logMinX, logMaxX, logCDFNF
+        real(RKG)                                   :: logRand
     end function
 #endif
 
@@ -1321,10 +1321,10 @@ module pm_distPoweto
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPowetoLogRand_D0_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(in)                    :: alpha
-        real(RKC)   , intent(in)    , optional      :: logMinX, logMaxX, logCDFNF
-        real(RKC)                                   :: logRand
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(in)                    :: alpha
+        real(RKG)   , intent(in)    , optional      :: logMinX, logMaxX, logCDFNF
+        real(RKG)                                   :: logRand
     end function
 #endif
 
@@ -1333,10 +1333,10 @@ module pm_distPoweto
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPowetoLogRand_D0_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(in)                    :: alpha
-        real(RKC)   , intent(in)    , optional      :: logMinX, logMaxX, logCDFNF
-        real(RKC)                                   :: logRand
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(in)                    :: alpha
+        real(RKG)   , intent(in)    , optional      :: logMinX, logMaxX, logCDFNF
+        real(RKG)                                   :: logRand
     end function
 #endif
 
@@ -1345,10 +1345,10 @@ module pm_distPoweto
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPowetoLogRand_D0_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(in)                    :: alpha
-        real(RKC)   , intent(in)    , optional      :: logMinX, logMaxX, logCDFNF
-        real(RKC)                                   :: logRand
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(in)                    :: alpha
+        real(RKG)   , intent(in)    , optional      :: logMinX, logMaxX, logCDFNF
+        real(RKG)                                   :: logRand
     end function
 #endif
 
@@ -1357,10 +1357,10 @@ module pm_distPoweto
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getPowetoLogRand_D0_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(in)                    :: alpha
-        real(RKC)   , intent(in)    , optional      :: logMinX, logMaxX, logCDFNF
-        real(RKC)                                   :: logRand
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(in)                    :: alpha
+        real(RKG)   , intent(in)    , optional      :: logMinX, logMaxX, logCDFNF
+        real(RKG)                                   :: logRand
     end function
 #endif
 
@@ -1451,10 +1451,10 @@ module pm_distPoweto
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPowetoLogRand_D0_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)   , intent(out)                   :: logRand
-        real(RKC)   , intent(in)                    :: negExpRand, alpha
-        real(RKC)   , intent(in)    , optional      :: logMinX, logCDFNF
+        use pm_kind, only: RKG => RK5
+        real(RKG)   , intent(out)                   :: logRand
+        real(RKG)   , intent(in)                    :: negExpRand, alpha
+        real(RKG)   , intent(in)    , optional      :: logMinX, logCDFNF
     end subroutine
 #endif
 
@@ -1463,10 +1463,10 @@ module pm_distPoweto
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPowetoLogRand_D0_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)   , intent(out)                   :: logRand
-        real(RKC)   , intent(in)                    :: negExpRand, alpha
-        real(RKC)   , intent(in)    , optional      :: logMinX, logCDFNF
+        use pm_kind, only: RKG => RK4
+        real(RKG)   , intent(out)                   :: logRand
+        real(RKG)   , intent(in)                    :: negExpRand, alpha
+        real(RKG)   , intent(in)    , optional      :: logMinX, logCDFNF
     end subroutine
 #endif
 
@@ -1475,10 +1475,10 @@ module pm_distPoweto
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPowetoLogRand_D0_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)   , intent(out)                   :: logRand
-        real(RKC)   , intent(in)                    :: negExpRand, alpha
-        real(RKC)   , intent(in)    , optional      :: logMinX, logCDFNF
+        use pm_kind, only: RKG => RK3
+        real(RKG)   , intent(out)                   :: logRand
+        real(RKG)   , intent(in)                    :: negExpRand, alpha
+        real(RKG)   , intent(in)    , optional      :: logMinX, logCDFNF
     end subroutine
 #endif
 
@@ -1487,10 +1487,10 @@ module pm_distPoweto
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPowetoLogRand_D0_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)   , intent(out)                   :: logRand
-        real(RKC)   , intent(in)                    :: negExpRand, alpha
-        real(RKC)   , intent(in)    , optional      :: logMinX, logCDFNF
+        use pm_kind, only: RKG => RK2
+        real(RKG)   , intent(out)                   :: logRand
+        real(RKG)   , intent(in)                    :: negExpRand, alpha
+        real(RKG)   , intent(in)    , optional      :: logMinX, logCDFNF
     end subroutine
 #endif
 
@@ -1499,10 +1499,10 @@ module pm_distPoweto
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setPowetoLogRand_D0_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)   , intent(out)                   :: logRand
-        real(RKC)   , intent(in)                    :: negExpRand, alpha
-        real(RKC)   , intent(in)    , optional      :: logMinX, logCDFNF
+        use pm_kind, only: RKG => RK1
+        real(RKG)   , intent(out)                   :: logRand
+        real(RKG)   , intent(in)                    :: negExpRand, alpha
+        real(RKG)   , intent(in)    , optional      :: logMinX, logCDFNF
     end subroutine
 #endif
 

@@ -13,11 +13,11 @@ program example
     disp = display_type(file = "main.out.F90")
 
     block
-        use pm_kind, only: TKC => RKS
-        real(TKC), allocatable :: x(:), cdf(:)
+        use pm_kind, only: TKG => RKS
+        real(TKG), allocatable :: x(:), cdf(:)
         call disp%skip()
-        call disp%show("x = [0._TKC, epsilon(0._TKC), 1._TKC, 2._TKC]")
-                        x = [0._TKC, epsilon(0._TKC), 1._TKC, 2._TKC]
+        call disp%show("x = [0._TKG, epsilon(0._TKG), 1._TKG, 2._TKG]")
+                        x = [0._TKG, epsilon(0._TKG), 1._TKG, 2._TKG]
         call disp%show("x")
         call disp%show( x )
         call disp%show("cdf = getKolmCDF(x)")
@@ -32,11 +32,11 @@ program example
     end block
 
     block
-        use pm_kind, only: TKC => RKH
-        real(TKC), allocatable :: x(:), cdf(:)
+        use pm_kind, only: TKG => RKH
+        real(TKG), allocatable :: x(:), cdf(:)
         call disp%skip()
-        call disp%show("x = [0._TKC, epsilon(0._TKC), 1._TKC, 2._TKC]")
-                        x = [0._TKC, epsilon(0._TKC), 1._TKC, 2._TKC]
+        call disp%show("x = [0._TKG, epsilon(0._TKG), 1._TKG, 2._TKG]")
+                        x = [0._TKG, epsilon(0._TKG), 1._TKG, 2._TKG]
         call disp%show("x")
         call disp%show( x )
         call disp%show("cdf = getKolmCDF(x)")
@@ -56,9 +56,9 @@ program example
 
     block
         use pm_io, only: getErrTableWrite
-        use pm_kind, only: TKC => RKH
-        real(TKC) :: cdfx(1500, 2)
-        cdfx(:, 1) = getLinSpace(0._TKC, +.9999_TKC, size(cdfx, 1, IK))
+        use pm_kind, only: TKG => RKH
+        real(TKG) :: cdfx(1500, 2)
+        cdfx(:, 1) = getLinSpace(0._TKG, +.9999_TKG, size(cdfx, 1, IK))
         call setKolmQuan(cdfx(:, 2), cdfx(:, 1))
         if (0 /= getErrTableWrite(SK_"setKolmQuan.RK.txt", cdfx, header = SK_"cdf,quantile")) error stop "table output failed."
     end block

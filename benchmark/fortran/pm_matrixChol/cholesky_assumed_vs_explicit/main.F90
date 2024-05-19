@@ -1,7 +1,7 @@
 ! Test the performance of Cholesky factorization computation using an assumed-shape interface vs. explicit-shape interface.
 program benchmark
 
-    use pm_kind, only: IK, LK, RKC => RKD, SK
+    use pm_kind, only: IK, LK, RKG => RKD, SK
     use pm_matrixChol, only: lowDia_type, uppDia_type
     use pm_matrixChol, only: subset_type => lowDia_type!uppDia_type
     use pm_bench, only: bench_type
@@ -13,13 +13,13 @@ program benchmark
     integer(IK)                         :: iarr                 !<  The array size counter.
     integer(IK)                         :: fileUnit             !<  The output file unit for benchmark results.
     integer(IK)     , parameter         :: NARR = 11_IK         !<  The number of benchmark array sizes.
-    real(RKC)       , allocatable       :: mat(:,:), choDia(:)  !<  The positive-definite mat.
+    real(RKG)       , allocatable       :: mat(:,:), choDia(:)  !<  The positive-definite mat.
     type(bench_type), allocatable       :: bench(:)             !<  The Benchmark array.
     integer(IK)     , parameter         :: nsim = 2**NARR       !<  The maximum number of calculation repeats.
     integer(IK)                         :: rank                 !<  The benchmarking array size.
     type(subset_type), parameter        :: subset = subset_type()
     integer(IK)                         :: offset
-   !real(RKC)                           :: dumm
+   !real(RKG)                           :: dumm
     offset = merge(1, 0, same_type_as(subset, lowDia_type()))
 
     bench = [ bench_type(name = SK_"setMatCholComplement", exec = setMatCholComplement, overhead = setOverhead) &
@@ -40,7 +40,7 @@ program benchmark
 
         write(fileUnit, "(*(g0,:,','))") "rank", (bench(i)%name, i = 1, size(bench))
 
-        !dumm = 0._RKC
+        !dumm = 0._RKG
         loopOverMatrixSize: do iarr = 1, NARR
 
             rank = 2**iarr
@@ -75,10 +75,10 @@ contains
     subroutine getMatrix()
         integer(IK) :: i
         call random_number(mat)
-        mat = mat * 1.e-5_RKC
+        mat = mat * 1.e-5_RKG
         do i = 1, size(mat, dim = 1, kind = IK)
-            mat(i, i - offset) = 1._RKC ! lowDia
-           !mat(i, i) = 1._RKC ! uppDia
+            mat(i, i - offset) = 1._RKG ! lowDia
+           !mat(i, i) = 1._RKG ! uppDia
         end do
     end subroutine
 
@@ -99,7 +99,7 @@ contains
         do itry = 1, ntry
             call getMatrix()
             call setChoLow(mat(:,1-offset:rank-offset), choDia, rank)
-            if (choDia(1) < 0._RKC) error stop
+            if (choDia(1) < 0._RKG) error stop
         end do
     end subroutine
 

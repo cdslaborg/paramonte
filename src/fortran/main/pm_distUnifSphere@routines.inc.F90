@@ -38,7 +38,7 @@
 
 #if     D0_ENABLED
         CHECK_ASSERTION(__LINE__, 0_IK < ndim, SK_"@getUnifSphereLogPDF(): The condition `0 < ndim` must hold. ndim = "//getStr(ndim))
-        logPDF = (1 - ndim) * logRadius - getLogVolUnitBall(real(ndim, TKC)) - log(real(ndim, TKC))
+        logPDF = (1 - ndim) * logRadius - getLogVolUnitBall(real(ndim, TKG)) - log(real(ndim, TKG))
 #else
 #error  "Unrecognized interface."
 #endif
@@ -48,10 +48,10 @@
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
         integer(IK) :: idim, ndim
-        real(TKC)   :: normfac
+        real(TKG)   :: normfac
 #if     AC_ENABLED
 #define UNIFSPHERERAND unifSphereRand
-        real(TKC)   :: unifSphereRand(size(rand, 1, IK))
+        real(TKG)   :: unifSphereRand(size(rand, 1, IK))
 #elif   DC_ENABLED
 #define UNIFSPHERERAND rand
 #else
@@ -67,15 +67,15 @@
 #endif
         ndim = size(rand, 1, IK)
         do
-            normfac = 0._TKC
+            normfac = 0._TKG
             do idim = 1_IK, ndim
                 call setNormRand(RNG UNIFSPHERERAND(idim))
                 normfac = normfac + UNIFSPHERERAND(idim)**2
             end do
             ! Ensure the vector is not origin. Highly unlikely but possible.
-            if (0._TKC < normfac) exit
+            if (0._TKG < normfac) exit
         end do
-        normfac = 1._TKC / sqrt(normfac)
+        normfac = 1._TKG / sqrt(normfac)
 #if     DM_ENABLED && !AC_ENABLED
         UNIFSPHERERAND = UNIFSPHERERAND * normfac ! a uniform random point on the surface of nd-sphere.
 #elif   AM_ENABLED && !AC_ENABLED

@@ -255,8 +255,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedDDDD_D0_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(:,SKC)            , intent(inout) , allocatable       :: array
+        use pm_kind, only: SKG => SK5
+        character(:,SKG)            , intent(inout) , allocatable       :: array
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
     end subroutine
@@ -267,8 +267,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedDDDD_D0_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(:,SKC)            , intent(inout) , allocatable       :: array
+        use pm_kind, only: SKG => SK4
+        character(:,SKG)            , intent(inout) , allocatable       :: array
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
     end subroutine
@@ -279,8 +279,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedDDDD_D0_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(:,SKC)            , intent(inout) , allocatable       :: array
+        use pm_kind, only: SKG => SK3
+        character(:,SKG)            , intent(inout) , allocatable       :: array
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
     end subroutine
@@ -291,8 +291,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedDDDD_D0_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(:,SKC)            , intent(inout) , allocatable       :: array
+        use pm_kind, only: SKG => SK2
+        character(:,SKG)            , intent(inout) , allocatable       :: array
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
     end subroutine
@@ -303,8 +303,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedDDDD_D0_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(:,SKC)            , intent(inout) , allocatable       :: array
+        use pm_kind, only: SKG => SK1
+        character(:,SKG)            , intent(inout) , allocatable       :: array
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
     end subroutine
@@ -325,8 +325,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedDDDD_D1_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)            , intent(inout) , allocatable       :: array(:)
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)            , intent(inout) , allocatable       :: array(:)
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
     end subroutine
@@ -337,8 +337,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedDDDD_D1_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)            , intent(inout) , allocatable       :: array(:)
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)            , intent(inout) , allocatable       :: array(:)
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
     end subroutine
@@ -349,8 +349,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedDDDD_D1_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)            , intent(inout) , allocatable       :: array(:)
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)            , intent(inout) , allocatable       :: array(:)
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
     end subroutine
@@ -361,8 +361,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedDDDD_D1_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)            , intent(inout) , allocatable       :: array(:)
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)            , intent(inout) , allocatable       :: array(:)
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
     end subroutine
@@ -373,8 +373,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedDDDD_D1_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)            , intent(inout) , allocatable       :: array(:)
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)            , intent(inout) , allocatable       :: array(:)
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
     end subroutine
@@ -387,8 +387,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedDDDD_D1_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)                , intent(inout) , allocatable       :: array(:)
+        use pm_kind, only: IKG => IK5
+        integer(IKG)                , intent(inout) , allocatable       :: array(:)
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
     end subroutine
@@ -399,8 +399,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedDDDD_D1_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)                , intent(inout) , allocatable       :: array(:)
+        use pm_kind, only: IKG => IK4
+        integer(IKG)                , intent(inout) , allocatable       :: array(:)
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
     end subroutine
@@ -411,8 +411,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedDDDD_D1_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)                , intent(inout) , allocatable       :: array(:)
+        use pm_kind, only: IKG => IK3
+        integer(IKG)                , intent(inout) , allocatable       :: array(:)
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
     end subroutine
@@ -423,8 +423,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedDDDD_D1_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)                , intent(inout) , allocatable       :: array(:)
+        use pm_kind, only: IKG => IK2
+        integer(IKG)                , intent(inout) , allocatable       :: array(:)
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
     end subroutine
@@ -435,8 +435,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedDDDD_D1_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)                , intent(inout) , allocatable       :: array(:)
+        use pm_kind, only: IKG => IK1
+        integer(IKG)                , intent(inout) , allocatable       :: array(:)
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
     end subroutine
@@ -449,8 +449,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedDDDD_D1_LK5
 #endif
-        use pm_kind, only: LKC => LK5
-        logical(LKC)                , intent(inout) , allocatable       :: array(:)
+        use pm_kind, only: LKG => LK5
+        logical(LKG)                , intent(inout) , allocatable       :: array(:)
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
     end subroutine
@@ -461,8 +461,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedDDDD_D1_LK4
 #endif
-        use pm_kind, only: LKC => LK4
-        logical(LKC)                , intent(inout) , allocatable       :: array(:)
+        use pm_kind, only: LKG => LK4
+        logical(LKG)                , intent(inout) , allocatable       :: array(:)
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
     end subroutine
@@ -473,8 +473,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedDDDD_D1_LK3
 #endif
-        use pm_kind, only: LKC => LK3
-        logical(LKC)                , intent(inout) , allocatable       :: array(:)
+        use pm_kind, only: LKG => LK3
+        logical(LKG)                , intent(inout) , allocatable       :: array(:)
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
     end subroutine
@@ -485,8 +485,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedDDDD_D1_LK2
 #endif
-        use pm_kind, only: LKC => LK2
-        logical(LKC)                , intent(inout) , allocatable       :: array(:)
+        use pm_kind, only: LKG => LK2
+        logical(LKG)                , intent(inout) , allocatable       :: array(:)
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
     end subroutine
@@ -497,8 +497,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedDDDD_D1_LK1
 #endif
-        use pm_kind, only: LKC => LK1
-        logical(LKC)                , intent(inout) , allocatable       :: array(:)
+        use pm_kind, only: LKG => LK1
+        logical(LKG)                , intent(inout) , allocatable       :: array(:)
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
     end subroutine
@@ -511,8 +511,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedDDDD_D1_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)                , intent(inout) , allocatable       :: array(:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG)                , intent(inout) , allocatable       :: array(:)
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
     end subroutine
@@ -523,8 +523,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedDDDD_D1_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)                , intent(inout) , allocatable       :: array(:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG)                , intent(inout) , allocatable       :: array(:)
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
     end subroutine
@@ -535,8 +535,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedDDDD_D1_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)                , intent(inout) , allocatable       :: array(:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG)                , intent(inout) , allocatable       :: array(:)
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
     end subroutine
@@ -547,8 +547,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedDDDD_D1_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)                , intent(inout) , allocatable       :: array(:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG)                , intent(inout) , allocatable       :: array(:)
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
     end subroutine
@@ -559,8 +559,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedDDDD_D1_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)                , intent(inout) , allocatable       :: array(:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG)                , intent(inout) , allocatable       :: array(:)
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
     end subroutine
@@ -573,8 +573,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedDDDD_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)                   , intent(inout) , allocatable       :: array(:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)                   , intent(inout) , allocatable       :: array(:)
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
     end subroutine
@@ -585,8 +585,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedDDDD_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)                   , intent(inout) , allocatable       :: array(:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)                   , intent(inout) , allocatable       :: array(:)
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
     end subroutine
@@ -597,8 +597,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedDDDD_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)                   , intent(inout) , allocatable       :: array(:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)                   , intent(inout) , allocatable       :: array(:)
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
     end subroutine
@@ -609,8 +609,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedDDDD_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)                   , intent(inout) , allocatable       :: array(:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)                   , intent(inout) , allocatable       :: array(:)
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
     end subroutine
@@ -621,8 +621,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedDDDD_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)                   , intent(inout) , allocatable       :: array(:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)                   , intent(inout) , allocatable       :: array(:)
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
     end subroutine
@@ -637,9 +637,9 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedDDDD_D1_PSSK5
 #endif
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))          , intent(inout) , allocatable       :: array(:)
+        type(css_pdt(SKG))          , intent(inout) , allocatable       :: array(:)
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
     end subroutine
@@ -650,9 +650,9 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedDDDD_D1_PSSK4
 #endif
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))          , intent(inout) , allocatable       :: array(:)
+        type(css_pdt(SKG))          , intent(inout) , allocatable       :: array(:)
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
     end subroutine
@@ -663,9 +663,9 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedDDDD_D1_PSSK3
 #endif
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))          , intent(inout) , allocatable       :: array(:)
+        type(css_pdt(SKG))          , intent(inout) , allocatable       :: array(:)
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
     end subroutine
@@ -676,9 +676,9 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedDDDD_D1_PSSK2
 #endif
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))          , intent(inout) , allocatable       :: array(:)
+        type(css_pdt(SKG))          , intent(inout) , allocatable       :: array(:)
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
     end subroutine
@@ -689,9 +689,9 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedDDDD_D1_PSSK1
 #endif
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))          , intent(inout) , allocatable       :: array(:)
+        type(css_pdt(SKG))          , intent(inout) , allocatable       :: array(:)
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
     end subroutine
@@ -706,7 +706,7 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedDDDD_D1_BSSK
 #endif
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
         use pm_container, only: css_type
         type(css_type)              , intent(inout) , allocatable       :: array(:)
         character(*, SK)            , intent(out)   , optional          :: errmsg
@@ -728,8 +728,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedDDDD_D2_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)            , intent(inout) , allocatable       :: array(:,:)
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)            , intent(inout) , allocatable       :: array(:,:)
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
     end subroutine
@@ -740,8 +740,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedDDDD_D2_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)            , intent(inout) , allocatable       :: array(:,:)
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)            , intent(inout) , allocatable       :: array(:,:)
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
     end subroutine
@@ -752,8 +752,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedDDDD_D2_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)            , intent(inout) , allocatable       :: array(:,:)
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)            , intent(inout) , allocatable       :: array(:,:)
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
     end subroutine
@@ -764,8 +764,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedDDDD_D2_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)            , intent(inout) , allocatable       :: array(:,:)
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)            , intent(inout) , allocatable       :: array(:,:)
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
     end subroutine
@@ -776,8 +776,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedDDDD_D2_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)            , intent(inout) , allocatable       :: array(:,:)
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)            , intent(inout) , allocatable       :: array(:,:)
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
     end subroutine
@@ -790,8 +790,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedDDDD_D2_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)                , intent(inout) , allocatable       :: array(:,:)
+        use pm_kind, only: IKG => IK5
+        integer(IKG)                , intent(inout) , allocatable       :: array(:,:)
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
     end subroutine
@@ -802,8 +802,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedDDDD_D2_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)                , intent(inout) , allocatable       :: array(:,:)
+        use pm_kind, only: IKG => IK4
+        integer(IKG)                , intent(inout) , allocatable       :: array(:,:)
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
     end subroutine
@@ -814,8 +814,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedDDDD_D2_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)                , intent(inout) , allocatable       :: array(:,:)
+        use pm_kind, only: IKG => IK3
+        integer(IKG)                , intent(inout) , allocatable       :: array(:,:)
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
     end subroutine
@@ -826,8 +826,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedDDDD_D2_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)                , intent(inout) , allocatable       :: array(:,:)
+        use pm_kind, only: IKG => IK2
+        integer(IKG)                , intent(inout) , allocatable       :: array(:,:)
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
     end subroutine
@@ -838,8 +838,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedDDDD_D2_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)                , intent(inout) , allocatable       :: array(:,:)
+        use pm_kind, only: IKG => IK1
+        integer(IKG)                , intent(inout) , allocatable       :: array(:,:)
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
     end subroutine
@@ -852,8 +852,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedDDDD_D2_LK5
 #endif
-        use pm_kind, only: LKC => LK5
-        logical(LKC)                , intent(inout) , allocatable       :: array(:,:)
+        use pm_kind, only: LKG => LK5
+        logical(LKG)                , intent(inout) , allocatable       :: array(:,:)
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
     end subroutine
@@ -864,8 +864,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedDDDD_D2_LK4
 #endif
-        use pm_kind, only: LKC => LK4
-        logical(LKC)                , intent(inout) , allocatable       :: array(:,:)
+        use pm_kind, only: LKG => LK4
+        logical(LKG)                , intent(inout) , allocatable       :: array(:,:)
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
     end subroutine
@@ -876,8 +876,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedDDDD_D2_LK3
 #endif
-        use pm_kind, only: LKC => LK3
-        logical(LKC)                , intent(inout) , allocatable       :: array(:,:)
+        use pm_kind, only: LKG => LK3
+        logical(LKG)                , intent(inout) , allocatable       :: array(:,:)
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
     end subroutine
@@ -888,8 +888,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedDDDD_D2_LK2
 #endif
-        use pm_kind, only: LKC => LK2
-        logical(LKC)                , intent(inout) , allocatable       :: array(:,:)
+        use pm_kind, only: LKG => LK2
+        logical(LKG)                , intent(inout) , allocatable       :: array(:,:)
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
     end subroutine
@@ -900,8 +900,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedDDDD_D2_LK1
 #endif
-        use pm_kind, only: LKC => LK1
-        logical(LKC)                , intent(inout) , allocatable       :: array(:,:)
+        use pm_kind, only: LKG => LK1
+        logical(LKG)                , intent(inout) , allocatable       :: array(:,:)
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
     end subroutine
@@ -914,8 +914,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedDDDD_D2_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)                , intent(inout) , allocatable       :: array(:,:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG)                , intent(inout) , allocatable       :: array(:,:)
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
     end subroutine
@@ -926,8 +926,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedDDDD_D2_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)                , intent(inout) , allocatable       :: array(:,:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG)                , intent(inout) , allocatable       :: array(:,:)
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
     end subroutine
@@ -938,8 +938,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedDDDD_D2_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)                , intent(inout) , allocatable       :: array(:,:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG)                , intent(inout) , allocatable       :: array(:,:)
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
     end subroutine
@@ -950,8 +950,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedDDDD_D2_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)                , intent(inout) , allocatable       :: array(:,:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG)                , intent(inout) , allocatable       :: array(:,:)
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
     end subroutine
@@ -962,8 +962,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedDDDD_D2_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)                , intent(inout) , allocatable       :: array(:,:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG)                , intent(inout) , allocatable       :: array(:,:)
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
     end subroutine
@@ -976,8 +976,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedDDDD_D2_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)                   , intent(inout) , allocatable       :: array(:,:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)                   , intent(inout) , allocatable       :: array(:,:)
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
     end subroutine
@@ -988,8 +988,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedDDDD_D2_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)                   , intent(inout) , allocatable       :: array(:,:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)                   , intent(inout) , allocatable       :: array(:,:)
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
     end subroutine
@@ -1000,8 +1000,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedDDDD_D2_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)                   , intent(inout) , allocatable       :: array(:,:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)                   , intent(inout) , allocatable       :: array(:,:)
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
     end subroutine
@@ -1012,8 +1012,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedDDDD_D2_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)                   , intent(inout) , allocatable       :: array(:,:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)                   , intent(inout) , allocatable       :: array(:,:)
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
     end subroutine
@@ -1024,8 +1024,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedDDDD_D2_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)                   , intent(inout) , allocatable       :: array(:,:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)                   , intent(inout) , allocatable       :: array(:,:)
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
     end subroutine
@@ -1040,9 +1040,9 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedDDDD_D2_PSSK5
 #endif
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))          , intent(inout) , allocatable       :: array(:,:)
+        type(css_pdt(SKG))          , intent(inout) , allocatable       :: array(:,:)
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
     end subroutine
@@ -1053,9 +1053,9 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedDDDD_D2_PSSK4
 #endif
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))          , intent(inout) , allocatable       :: array(:,:)
+        type(css_pdt(SKG))          , intent(inout) , allocatable       :: array(:,:)
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
     end subroutine
@@ -1066,9 +1066,9 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedDDDD_D2_PSSK3
 #endif
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))          , intent(inout) , allocatable       :: array(:,:)
+        type(css_pdt(SKG))          , intent(inout) , allocatable       :: array(:,:)
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
     end subroutine
@@ -1079,9 +1079,9 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedDDDD_D2_PSSK2
 #endif
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))          , intent(inout) , allocatable       :: array(:,:)
+        type(css_pdt(SKG))          , intent(inout) , allocatable       :: array(:,:)
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
     end subroutine
@@ -1092,9 +1092,9 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedDDDD_D2_PSSK1
 #endif
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))          , intent(inout) , allocatable       :: array(:,:)
+        type(css_pdt(SKG))          , intent(inout) , allocatable       :: array(:,:)
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
     end subroutine
@@ -1109,7 +1109,7 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedDDDD_D2_BSSK
 #endif
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
         use pm_container, only: css_type
         type(css_type)              , intent(inout) , allocatable       :: array(:,:)
         character(*, SK)            , intent(out)   , optional          :: errmsg
@@ -1131,8 +1131,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedDDDD_D3_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)            , intent(inout) , allocatable       :: array(:,:,:)
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)            , intent(inout) , allocatable       :: array(:,:,:)
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
     end subroutine
@@ -1143,8 +1143,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedDDDD_D3_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)            , intent(inout) , allocatable       :: array(:,:,:)
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)            , intent(inout) , allocatable       :: array(:,:,:)
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
     end subroutine
@@ -1155,8 +1155,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedDDDD_D3_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)            , intent(inout) , allocatable       :: array(:,:,:)
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)            , intent(inout) , allocatable       :: array(:,:,:)
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
     end subroutine
@@ -1167,8 +1167,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedDDDD_D3_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)            , intent(inout) , allocatable       :: array(:,:,:)
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)            , intent(inout) , allocatable       :: array(:,:,:)
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
     end subroutine
@@ -1179,8 +1179,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedDDDD_D3_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)            , intent(inout) , allocatable       :: array(:,:,:)
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)            , intent(inout) , allocatable       :: array(:,:,:)
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
     end subroutine
@@ -1193,8 +1193,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedDDDD_D3_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)                , intent(inout) , allocatable       :: array(:,:,:)
+        use pm_kind, only: IKG => IK5
+        integer(IKG)                , intent(inout) , allocatable       :: array(:,:,:)
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
     end subroutine
@@ -1205,8 +1205,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedDDDD_D3_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)                , intent(inout) , allocatable       :: array(:,:,:)
+        use pm_kind, only: IKG => IK4
+        integer(IKG)                , intent(inout) , allocatable       :: array(:,:,:)
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
     end subroutine
@@ -1217,8 +1217,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedDDDD_D3_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)                , intent(inout) , allocatable       :: array(:,:,:)
+        use pm_kind, only: IKG => IK3
+        integer(IKG)                , intent(inout) , allocatable       :: array(:,:,:)
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
     end subroutine
@@ -1229,8 +1229,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedDDDD_D3_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)                , intent(inout) , allocatable       :: array(:,:,:)
+        use pm_kind, only: IKG => IK2
+        integer(IKG)                , intent(inout) , allocatable       :: array(:,:,:)
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
     end subroutine
@@ -1241,8 +1241,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedDDDD_D3_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)                , intent(inout) , allocatable       :: array(:,:,:)
+        use pm_kind, only: IKG => IK1
+        integer(IKG)                , intent(inout) , allocatable       :: array(:,:,:)
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
     end subroutine
@@ -1255,8 +1255,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedDDDD_D3_LK5
 #endif
-        use pm_kind, only: LKC => LK5
-        logical(LKC)                , intent(inout) , allocatable       :: array(:,:,:)
+        use pm_kind, only: LKG => LK5
+        logical(LKG)                , intent(inout) , allocatable       :: array(:,:,:)
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
     end subroutine
@@ -1267,8 +1267,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedDDDD_D3_LK4
 #endif
-        use pm_kind, only: LKC => LK4
-        logical(LKC)                , intent(inout) , allocatable       :: array(:,:,:)
+        use pm_kind, only: LKG => LK4
+        logical(LKG)                , intent(inout) , allocatable       :: array(:,:,:)
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
     end subroutine
@@ -1279,8 +1279,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedDDDD_D3_LK3
 #endif
-        use pm_kind, only: LKC => LK3
-        logical(LKC)                , intent(inout) , allocatable       :: array(:,:,:)
+        use pm_kind, only: LKG => LK3
+        logical(LKG)                , intent(inout) , allocatable       :: array(:,:,:)
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
     end subroutine
@@ -1291,8 +1291,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedDDDD_D3_LK2
 #endif
-        use pm_kind, only: LKC => LK2
-        logical(LKC)                , intent(inout) , allocatable       :: array(:,:,:)
+        use pm_kind, only: LKG => LK2
+        logical(LKG)                , intent(inout) , allocatable       :: array(:,:,:)
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
     end subroutine
@@ -1303,8 +1303,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedDDDD_D3_LK1
 #endif
-        use pm_kind, only: LKC => LK1
-        logical(LKC)                , intent(inout) , allocatable       :: array(:,:,:)
+        use pm_kind, only: LKG => LK1
+        logical(LKG)                , intent(inout) , allocatable       :: array(:,:,:)
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
     end subroutine
@@ -1317,8 +1317,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedDDDD_D3_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)                , intent(inout) , allocatable       :: array(:,:,:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG)                , intent(inout) , allocatable       :: array(:,:,:)
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
     end subroutine
@@ -1329,8 +1329,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedDDDD_D3_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)                , intent(inout) , allocatable       :: array(:,:,:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG)                , intent(inout) , allocatable       :: array(:,:,:)
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
     end subroutine
@@ -1341,8 +1341,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedDDDD_D3_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)                , intent(inout) , allocatable       :: array(:,:,:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG)                , intent(inout) , allocatable       :: array(:,:,:)
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
     end subroutine
@@ -1353,8 +1353,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedDDDD_D3_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)                , intent(inout) , allocatable       :: array(:,:,:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG)                , intent(inout) , allocatable       :: array(:,:,:)
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
     end subroutine
@@ -1365,8 +1365,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedDDDD_D3_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)                , intent(inout) , allocatable       :: array(:,:,:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG)                , intent(inout) , allocatable       :: array(:,:,:)
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
     end subroutine
@@ -1379,8 +1379,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedDDDD_D3_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)                   , intent(inout) , allocatable       :: array(:,:,:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)                   , intent(inout) , allocatable       :: array(:,:,:)
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
     end subroutine
@@ -1391,8 +1391,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedDDDD_D3_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)                   , intent(inout) , allocatable       :: array(:,:,:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)                   , intent(inout) , allocatable       :: array(:,:,:)
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
     end subroutine
@@ -1403,8 +1403,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedDDDD_D3_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)                   , intent(inout) , allocatable       :: array(:,:,:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)                   , intent(inout) , allocatable       :: array(:,:,:)
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
     end subroutine
@@ -1415,8 +1415,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedDDDD_D3_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)                   , intent(inout) , allocatable       :: array(:,:,:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)                   , intent(inout) , allocatable       :: array(:,:,:)
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
     end subroutine
@@ -1427,8 +1427,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedDDDD_D3_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)                   , intent(inout) , allocatable       :: array(:,:,:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)                   , intent(inout) , allocatable       :: array(:,:,:)
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
     end subroutine
@@ -1443,9 +1443,9 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedDDDD_D3_PSSK5
 #endif
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))          , intent(inout) , allocatable       :: array(:,:,:)
+        type(css_pdt(SKG))          , intent(inout) , allocatable       :: array(:,:,:)
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
     end subroutine
@@ -1456,9 +1456,9 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedDDDD_D3_PSSK4
 #endif
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))          , intent(inout) , allocatable       :: array(:,:,:)
+        type(css_pdt(SKG))          , intent(inout) , allocatable       :: array(:,:,:)
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
     end subroutine
@@ -1469,9 +1469,9 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedDDDD_D3_PSSK3
 #endif
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))          , intent(inout) , allocatable       :: array(:,:,:)
+        type(css_pdt(SKG))          , intent(inout) , allocatable       :: array(:,:,:)
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
     end subroutine
@@ -1482,9 +1482,9 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedDDDD_D3_PSSK2
 #endif
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))          , intent(inout) , allocatable       :: array(:,:,:)
+        type(css_pdt(SKG))          , intent(inout) , allocatable       :: array(:,:,:)
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
     end subroutine
@@ -1495,9 +1495,9 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedDDDD_D3_PSSK1
 #endif
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))          , intent(inout) , allocatable       :: array(:,:,:)
+        type(css_pdt(SKG))          , intent(inout) , allocatable       :: array(:,:,:)
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
     end subroutine
@@ -1512,7 +1512,7 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedDDDD_D3_BSSK
 #endif
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
         use pm_container, only: css_type
         type(css_type)              , intent(inout) , allocatable       :: array(:,:,:)
         character(*, SK)            , intent(out)   , optional          :: errmsg
@@ -1536,8 +1536,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSDDD_D0_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(:,SKC)            , intent(inout) , allocatable       :: array
+        use pm_kind, only: SKG => SK5
+        character(:,SKG)            , intent(inout) , allocatable       :: array
         integer(IK)                 , intent(in)                        :: size
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -1549,8 +1549,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSDDD_D0_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(:,SKC)            , intent(inout) , allocatable       :: array
+        use pm_kind, only: SKG => SK4
+        character(:,SKG)            , intent(inout) , allocatable       :: array
         integer(IK)                 , intent(in)                        :: size
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -1562,8 +1562,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSDDD_D0_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(:,SKC)            , intent(inout) , allocatable       :: array
+        use pm_kind, only: SKG => SK3
+        character(:,SKG)            , intent(inout) , allocatable       :: array
         integer(IK)                 , intent(in)                        :: size
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -1575,8 +1575,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSDDD_D0_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(:,SKC)            , intent(inout) , allocatable       :: array
+        use pm_kind, only: SKG => SK2
+        character(:,SKG)            , intent(inout) , allocatable       :: array
         integer(IK)                 , intent(in)                        :: size
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -1588,8 +1588,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSDDD_D0_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(:,SKC)            , intent(inout) , allocatable       :: array
+        use pm_kind, only: SKG => SK1
+        character(:,SKG)            , intent(inout) , allocatable       :: array
         integer(IK)                 , intent(in)                        :: size
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -1611,8 +1611,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSDDD_D1_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)            , intent(inout) , allocatable       :: array(:)
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)            , intent(inout) , allocatable       :: array(:)
         integer(IK)                 , intent(in)                        :: size
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -1624,8 +1624,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSDDD_D1_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)            , intent(inout) , allocatable       :: array(:)
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)            , intent(inout) , allocatable       :: array(:)
         integer(IK)                 , intent(in)                        :: size
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -1637,8 +1637,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSDDD_D1_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)            , intent(inout) , allocatable       :: array(:)
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)            , intent(inout) , allocatable       :: array(:)
         integer(IK)                 , intent(in)                        :: size
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -1650,8 +1650,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSDDD_D1_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)            , intent(inout) , allocatable       :: array(:)
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)            , intent(inout) , allocatable       :: array(:)
         integer(IK)                 , intent(in)                        :: size
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -1663,8 +1663,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSDDD_D1_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)            , intent(inout) , allocatable       :: array(:)
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)            , intent(inout) , allocatable       :: array(:)
         integer(IK)                 , intent(in)                        :: size
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -1678,8 +1678,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSDDD_D1_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)                , intent(inout) , allocatable       :: array(:)
+        use pm_kind, only: IKG => IK5
+        integer(IKG)                , intent(inout) , allocatable       :: array(:)
         integer(IK)                 , intent(in)                        :: size
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -1691,8 +1691,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSDDD_D1_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)                , intent(inout) , allocatable       :: array(:)
+        use pm_kind, only: IKG => IK4
+        integer(IKG)                , intent(inout) , allocatable       :: array(:)
         integer(IK)                 , intent(in)                        :: size
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -1704,8 +1704,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSDDD_D1_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)                , intent(inout) , allocatable       :: array(:)
+        use pm_kind, only: IKG => IK3
+        integer(IKG)                , intent(inout) , allocatable       :: array(:)
         integer(IK)                 , intent(in)                        :: size
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -1717,8 +1717,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSDDD_D1_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)                , intent(inout) , allocatable       :: array(:)
+        use pm_kind, only: IKG => IK2
+        integer(IKG)                , intent(inout) , allocatable       :: array(:)
         integer(IK)                 , intent(in)                        :: size
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -1730,8 +1730,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSDDD_D1_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)                , intent(inout) , allocatable       :: array(:)
+        use pm_kind, only: IKG => IK1
+        integer(IKG)                , intent(inout) , allocatable       :: array(:)
         integer(IK)                 , intent(in)                        :: size
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -1745,8 +1745,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSDDD_D1_LK5
 #endif
-        use pm_kind, only: LKC => LK5
-        logical(LKC)                , intent(inout) , allocatable       :: array(:)
+        use pm_kind, only: LKG => LK5
+        logical(LKG)                , intent(inout) , allocatable       :: array(:)
         integer(IK)                 , intent(in)                        :: size
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -1758,8 +1758,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSDDD_D1_LK4
 #endif
-        use pm_kind, only: LKC => LK4
-        logical(LKC)                , intent(inout) , allocatable       :: array(:)
+        use pm_kind, only: LKG => LK4
+        logical(LKG)                , intent(inout) , allocatable       :: array(:)
         integer(IK)                 , intent(in)                        :: size
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -1771,8 +1771,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSDDD_D1_LK3
 #endif
-        use pm_kind, only: LKC => LK3
-        logical(LKC)                , intent(inout) , allocatable       :: array(:)
+        use pm_kind, only: LKG => LK3
+        logical(LKG)                , intent(inout) , allocatable       :: array(:)
         integer(IK)                 , intent(in)                        :: size
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -1784,8 +1784,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSDDD_D1_LK2
 #endif
-        use pm_kind, only: LKC => LK2
-        logical(LKC)                , intent(inout) , allocatable       :: array(:)
+        use pm_kind, only: LKG => LK2
+        logical(LKG)                , intent(inout) , allocatable       :: array(:)
         integer(IK)                 , intent(in)                        :: size
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -1797,8 +1797,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSDDD_D1_LK1
 #endif
-        use pm_kind, only: LKC => LK1
-        logical(LKC)                , intent(inout) , allocatable       :: array(:)
+        use pm_kind, only: LKG => LK1
+        logical(LKG)                , intent(inout) , allocatable       :: array(:)
         integer(IK)                 , intent(in)                        :: size
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -1812,8 +1812,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSDDD_D1_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)                , intent(inout) , allocatable       :: array(:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG)                , intent(inout) , allocatable       :: array(:)
         integer(IK)                 , intent(in)                        :: size
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -1825,8 +1825,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSDDD_D1_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)                , intent(inout) , allocatable       :: array(:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG)                , intent(inout) , allocatable       :: array(:)
         integer(IK)                 , intent(in)                        :: size
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -1838,8 +1838,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSDDD_D1_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)                , intent(inout) , allocatable       :: array(:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG)                , intent(inout) , allocatable       :: array(:)
         integer(IK)                 , intent(in)                        :: size
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -1851,8 +1851,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSDDD_D1_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)                , intent(inout) , allocatable       :: array(:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG)                , intent(inout) , allocatable       :: array(:)
         integer(IK)                 , intent(in)                        :: size
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -1864,8 +1864,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSDDD_D1_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)                , intent(inout) , allocatable       :: array(:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG)                , intent(inout) , allocatable       :: array(:)
         integer(IK)                 , intent(in)                        :: size
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -1879,8 +1879,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSDDD_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)                   , intent(inout) , allocatable       :: array(:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)                   , intent(inout) , allocatable       :: array(:)
         integer(IK)                 , intent(in)                        :: size
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -1892,8 +1892,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSDDD_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)                   , intent(inout) , allocatable       :: array(:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)                   , intent(inout) , allocatable       :: array(:)
         integer(IK)                 , intent(in)                        :: size
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -1905,8 +1905,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSDDD_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)                   , intent(inout) , allocatable       :: array(:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)                   , intent(inout) , allocatable       :: array(:)
         integer(IK)                 , intent(in)                        :: size
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -1918,8 +1918,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSDDD_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)                   , intent(inout) , allocatable       :: array(:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)                   , intent(inout) , allocatable       :: array(:)
         integer(IK)                 , intent(in)                        :: size
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -1931,8 +1931,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSDDD_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)                   , intent(inout) , allocatable       :: array(:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)                   , intent(inout) , allocatable       :: array(:)
         integer(IK)                 , intent(in)                        :: size
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -1948,9 +1948,9 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSDDD_D1_PSSK5
 #endif
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))          , intent(inout) , allocatable       :: array(:)
+        type(css_pdt(SKG))          , intent(inout) , allocatable       :: array(:)
         integer(IK)                 , intent(in)                        :: size
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -1962,9 +1962,9 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSDDD_D1_PSSK4
 #endif
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))          , intent(inout) , allocatable       :: array(:)
+        type(css_pdt(SKG))          , intent(inout) , allocatable       :: array(:)
         integer(IK)                 , intent(in)                        :: size
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -1976,9 +1976,9 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSDDD_D1_PSSK3
 #endif
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))          , intent(inout) , allocatable       :: array(:)
+        type(css_pdt(SKG))          , intent(inout) , allocatable       :: array(:)
         integer(IK)                 , intent(in)                        :: size
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -1990,9 +1990,9 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSDDD_D1_PSSK2
 #endif
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))          , intent(inout) , allocatable       :: array(:)
+        type(css_pdt(SKG))          , intent(inout) , allocatable       :: array(:)
         integer(IK)                 , intent(in)                        :: size
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -2004,9 +2004,9 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSDDD_D1_PSSK1
 #endif
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))          , intent(inout) , allocatable       :: array(:)
+        type(css_pdt(SKG))          , intent(inout) , allocatable       :: array(:)
         integer(IK)                 , intent(in)                        :: size
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -2022,7 +2022,7 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSDDD_D1_BSSK
 #endif
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
         use pm_container, only: css_type
         type(css_type)              , intent(inout) , allocatable       :: array(:)
         integer(IK)                 , intent(in)                        :: size
@@ -2045,8 +2045,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSDDD_D2_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)            , intent(inout) , allocatable       :: array(:,:)
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)            , intent(inout) , allocatable       :: array(:,:)
         integer(IK)                 , intent(in)    , dimension(2)      :: size
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -2058,8 +2058,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSDDD_D2_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)            , intent(inout) , allocatable       :: array(:,:)
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)            , intent(inout) , allocatable       :: array(:,:)
         integer(IK)                 , intent(in)    , dimension(2)      :: size
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -2071,8 +2071,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSDDD_D2_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)            , intent(inout) , allocatable       :: array(:,:)
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)            , intent(inout) , allocatable       :: array(:,:)
         integer(IK)                 , intent(in)    , dimension(2)      :: size
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -2084,8 +2084,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSDDD_D2_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)            , intent(inout) , allocatable       :: array(:,:)
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)            , intent(inout) , allocatable       :: array(:,:)
         integer(IK)                 , intent(in)    , dimension(2)      :: size
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -2097,8 +2097,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSDDD_D2_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)            , intent(inout) , allocatable       :: array(:,:)
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)            , intent(inout) , allocatable       :: array(:,:)
         integer(IK)                 , intent(in)    , dimension(2)      :: size
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -2112,8 +2112,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSDDD_D2_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)                , intent(inout) , allocatable       :: array(:,:)
+        use pm_kind, only: IKG => IK5
+        integer(IKG)                , intent(inout) , allocatable       :: array(:,:)
         integer(IK)                 , intent(in)    , dimension(2)      :: size
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -2125,8 +2125,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSDDD_D2_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)                , intent(inout) , allocatable       :: array(:,:)
+        use pm_kind, only: IKG => IK4
+        integer(IKG)                , intent(inout) , allocatable       :: array(:,:)
         integer(IK)                 , intent(in)    , dimension(2)      :: size
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -2138,8 +2138,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSDDD_D2_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)                , intent(inout) , allocatable       :: array(:,:)
+        use pm_kind, only: IKG => IK3
+        integer(IKG)                , intent(inout) , allocatable       :: array(:,:)
         integer(IK)                 , intent(in)    , dimension(2)      :: size
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -2151,8 +2151,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSDDD_D2_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)                , intent(inout) , allocatable       :: array(:,:)
+        use pm_kind, only: IKG => IK2
+        integer(IKG)                , intent(inout) , allocatable       :: array(:,:)
         integer(IK)                 , intent(in)    , dimension(2)      :: size
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -2164,8 +2164,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSDDD_D2_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)                , intent(inout) , allocatable       :: array(:,:)
+        use pm_kind, only: IKG => IK1
+        integer(IKG)                , intent(inout) , allocatable       :: array(:,:)
         integer(IK)                 , intent(in)    , dimension(2)      :: size
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -2179,8 +2179,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSDDD_D2_LK5
 #endif
-        use pm_kind, only: LKC => LK5
-        logical(LKC)                , intent(inout) , allocatable       :: array(:,:)
+        use pm_kind, only: LKG => LK5
+        logical(LKG)                , intent(inout) , allocatable       :: array(:,:)
         integer(IK)                 , intent(in)    , dimension(2)      :: size
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -2192,8 +2192,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSDDD_D2_LK4
 #endif
-        use pm_kind, only: LKC => LK4
-        logical(LKC)                , intent(inout) , allocatable       :: array(:,:)
+        use pm_kind, only: LKG => LK4
+        logical(LKG)                , intent(inout) , allocatable       :: array(:,:)
         integer(IK)                 , intent(in)    , dimension(2)      :: size
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -2205,8 +2205,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSDDD_D2_LK3
 #endif
-        use pm_kind, only: LKC => LK3
-        logical(LKC)                , intent(inout) , allocatable       :: array(:,:)
+        use pm_kind, only: LKG => LK3
+        logical(LKG)                , intent(inout) , allocatable       :: array(:,:)
         integer(IK)                 , intent(in)    , dimension(2)      :: size
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -2218,8 +2218,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSDDD_D2_LK2
 #endif
-        use pm_kind, only: LKC => LK2
-        logical(LKC)                , intent(inout) , allocatable       :: array(:,:)
+        use pm_kind, only: LKG => LK2
+        logical(LKG)                , intent(inout) , allocatable       :: array(:,:)
         integer(IK)                 , intent(in)    , dimension(2)      :: size
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -2231,8 +2231,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSDDD_D2_LK1
 #endif
-        use pm_kind, only: LKC => LK1
-        logical(LKC)                , intent(inout) , allocatable       :: array(:,:)
+        use pm_kind, only: LKG => LK1
+        logical(LKG)                , intent(inout) , allocatable       :: array(:,:)
         integer(IK)                 , intent(in)    , dimension(2)      :: size
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -2246,8 +2246,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSDDD_D2_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)                , intent(inout) , allocatable       :: array(:,:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG)                , intent(inout) , allocatable       :: array(:,:)
         integer(IK)                 , intent(in)    , dimension(2)      :: size
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -2259,8 +2259,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSDDD_D2_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)                , intent(inout) , allocatable       :: array(:,:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG)                , intent(inout) , allocatable       :: array(:,:)
         integer(IK)                 , intent(in)    , dimension(2)      :: size
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -2272,8 +2272,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSDDD_D2_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)                , intent(inout) , allocatable       :: array(:,:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG)                , intent(inout) , allocatable       :: array(:,:)
         integer(IK)                 , intent(in)    , dimension(2)      :: size
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -2285,8 +2285,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSDDD_D2_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)                , intent(inout) , allocatable       :: array(:,:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG)                , intent(inout) , allocatable       :: array(:,:)
         integer(IK)                 , intent(in)    , dimension(2)      :: size
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -2298,8 +2298,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSDDD_D2_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)                , intent(inout) , allocatable       :: array(:,:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG)                , intent(inout) , allocatable       :: array(:,:)
         integer(IK)                 , intent(in)    , dimension(2)      :: size
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -2313,8 +2313,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSDDD_D2_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)                   , intent(inout) , allocatable       :: array(:,:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)                   , intent(inout) , allocatable       :: array(:,:)
         integer(IK)                 , intent(in)    , dimension(2)      :: size
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -2326,8 +2326,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSDDD_D2_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)                   , intent(inout) , allocatable       :: array(:,:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)                   , intent(inout) , allocatable       :: array(:,:)
         integer(IK)                 , intent(in)    , dimension(2)      :: size
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -2339,8 +2339,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSDDD_D2_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)                   , intent(inout) , allocatable       :: array(:,:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)                   , intent(inout) , allocatable       :: array(:,:)
         integer(IK)                 , intent(in)    , dimension(2)      :: size
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -2352,8 +2352,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSDDD_D2_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)                   , intent(inout) , allocatable       :: array(:,:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)                   , intent(inout) , allocatable       :: array(:,:)
         integer(IK)                 , intent(in)    , dimension(2)      :: size
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -2365,8 +2365,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSDDD_D2_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)                   , intent(inout) , allocatable       :: array(:,:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)                   , intent(inout) , allocatable       :: array(:,:)
         integer(IK)                 , intent(in)    , dimension(2)      :: size
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -2382,9 +2382,9 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSDDD_D2_PSSK5
 #endif
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))          , intent(inout) , allocatable       :: array(:,:)
+        type(css_pdt(SKG))          , intent(inout) , allocatable       :: array(:,:)
         integer(IK)                 , intent(in)                        :: size
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -2396,9 +2396,9 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSDDD_D2_PSSK4
 #endif
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))          , intent(inout) , allocatable       :: array(:,:)
+        type(css_pdt(SKG))          , intent(inout) , allocatable       :: array(:,:)
         integer(IK)                 , intent(in)                        :: size
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -2410,9 +2410,9 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSDDD_D2_PSSK3
 #endif
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))          , intent(inout) , allocatable       :: array(:,:)
+        type(css_pdt(SKG))          , intent(inout) , allocatable       :: array(:,:)
         integer(IK)                 , intent(in)                        :: size
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -2424,9 +2424,9 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSDDD_D2_PSSK2
 #endif
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))          , intent(inout) , allocatable       :: array(:,:)
+        type(css_pdt(SKG))          , intent(inout) , allocatable       :: array(:,:)
         integer(IK)                 , intent(in)                        :: size
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -2438,9 +2438,9 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSDDD_D2_PSSK1
 #endif
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))          , intent(inout) , allocatable       :: array(:,:)
+        type(css_pdt(SKG))          , intent(inout) , allocatable       :: array(:,:)
         integer(IK)                 , intent(in)                        :: size
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -2456,7 +2456,7 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSDDD_D2_BSSK
 #endif
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
         use pm_container, only: css_type
         type(css_type)              , intent(inout) , allocatable       :: array(:,:)
         integer(IK)                 , intent(in)                        :: size
@@ -2479,8 +2479,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSDDD_D3_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)            , intent(inout) , allocatable       :: array(:,:,:)
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)            , intent(inout) , allocatable       :: array(:,:,:)
         integer(IK)                 , intent(in)    , dimension(3)      :: size
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -2492,8 +2492,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSDDD_D3_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)            , intent(inout) , allocatable       :: array(:,:,:)
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)            , intent(inout) , allocatable       :: array(:,:,:)
         integer(IK)                 , intent(in)    , dimension(3)      :: size
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -2505,8 +2505,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSDDD_D3_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)            , intent(inout) , allocatable       :: array(:,:,:)
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)            , intent(inout) , allocatable       :: array(:,:,:)
         integer(IK)                 , intent(in)    , dimension(3)      :: size
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -2518,8 +2518,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSDDD_D3_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)            , intent(inout) , allocatable       :: array(:,:,:)
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)            , intent(inout) , allocatable       :: array(:,:,:)
         integer(IK)                 , intent(in)    , dimension(3)      :: size
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -2531,8 +2531,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSDDD_D3_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)            , intent(inout) , allocatable       :: array(:,:,:)
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)            , intent(inout) , allocatable       :: array(:,:,:)
         integer(IK)                 , intent(in)    , dimension(3)      :: size
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -2546,8 +2546,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSDDD_D3_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)                , intent(inout) , allocatable       :: array(:,:,:)
+        use pm_kind, only: IKG => IK5
+        integer(IKG)                , intent(inout) , allocatable       :: array(:,:,:)
         integer(IK)                 , intent(in)    , dimension(3)      :: size
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -2559,8 +2559,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSDDD_D3_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)                , intent(inout) , allocatable       :: array(:,:,:)
+        use pm_kind, only: IKG => IK4
+        integer(IKG)                , intent(inout) , allocatable       :: array(:,:,:)
         integer(IK)                 , intent(in)    , dimension(3)      :: size
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -2572,8 +2572,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSDDD_D3_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)                , intent(inout) , allocatable       :: array(:,:,:)
+        use pm_kind, only: IKG => IK3
+        integer(IKG)                , intent(inout) , allocatable       :: array(:,:,:)
         integer(IK)                 , intent(in)    , dimension(3)      :: size
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -2585,8 +2585,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSDDD_D3_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)                , intent(inout) , allocatable       :: array(:,:,:)
+        use pm_kind, only: IKG => IK2
+        integer(IKG)                , intent(inout) , allocatable       :: array(:,:,:)
         integer(IK)                 , intent(in)    , dimension(3)      :: size
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -2598,8 +2598,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSDDD_D3_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)                , intent(inout) , allocatable       :: array(:,:,:)
+        use pm_kind, only: IKG => IK1
+        integer(IKG)                , intent(inout) , allocatable       :: array(:,:,:)
         integer(IK)                 , intent(in)    , dimension(3)      :: size
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -2613,8 +2613,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSDDD_D3_LK5
 #endif
-        use pm_kind, only: LKC => LK5
-        logical(LKC)                , intent(inout) , allocatable       :: array(:,:,:)
+        use pm_kind, only: LKG => LK5
+        logical(LKG)                , intent(inout) , allocatable       :: array(:,:,:)
         integer(IK)                 , intent(in)    , dimension(3)      :: size
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -2626,8 +2626,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSDDD_D3_LK4
 #endif
-        use pm_kind, only: LKC => LK4
-        logical(LKC)                , intent(inout) , allocatable       :: array(:,:,:)
+        use pm_kind, only: LKG => LK4
+        logical(LKG)                , intent(inout) , allocatable       :: array(:,:,:)
         integer(IK)                 , intent(in)    , dimension(3)      :: size
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -2639,8 +2639,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSDDD_D3_LK3
 #endif
-        use pm_kind, only: LKC => LK3
-        logical(LKC)                , intent(inout) , allocatable       :: array(:,:,:)
+        use pm_kind, only: LKG => LK3
+        logical(LKG)                , intent(inout) , allocatable       :: array(:,:,:)
         integer(IK)                 , intent(in)    , dimension(3)      :: size
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -2652,8 +2652,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSDDD_D3_LK2
 #endif
-        use pm_kind, only: LKC => LK2
-        logical(LKC)                , intent(inout) , allocatable       :: array(:,:,:)
+        use pm_kind, only: LKG => LK2
+        logical(LKG)                , intent(inout) , allocatable       :: array(:,:,:)
         integer(IK)                 , intent(in)    , dimension(3)      :: size
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -2665,8 +2665,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSDDD_D3_LK1
 #endif
-        use pm_kind, only: LKC => LK1
-        logical(LKC)                , intent(inout) , allocatable       :: array(:,:,:)
+        use pm_kind, only: LKG => LK1
+        logical(LKG)                , intent(inout) , allocatable       :: array(:,:,:)
         integer(IK)                 , intent(in)    , dimension(3)      :: size
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -2680,8 +2680,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSDDD_D3_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)                , intent(inout) , allocatable       :: array(:,:,:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG)                , intent(inout) , allocatable       :: array(:,:,:)
         integer(IK)                 , intent(in)    , dimension(3)      :: size
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -2693,8 +2693,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSDDD_D3_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)                , intent(inout) , allocatable       :: array(:,:,:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG)                , intent(inout) , allocatable       :: array(:,:,:)
         integer(IK)                 , intent(in)    , dimension(3)      :: size
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -2706,8 +2706,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSDDD_D3_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)                , intent(inout) , allocatable       :: array(:,:,:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG)                , intent(inout) , allocatable       :: array(:,:,:)
         integer(IK)                 , intent(in)    , dimension(3)      :: size
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -2719,8 +2719,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSDDD_D3_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)                , intent(inout) , allocatable       :: array(:,:,:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG)                , intent(inout) , allocatable       :: array(:,:,:)
         integer(IK)                 , intent(in)    , dimension(3)      :: size
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -2732,8 +2732,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSDDD_D3_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)                , intent(inout) , allocatable       :: array(:,:,:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG)                , intent(inout) , allocatable       :: array(:,:,:)
         integer(IK)                 , intent(in)    , dimension(3)      :: size
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -2747,8 +2747,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSDDD_D3_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)                   , intent(inout) , allocatable       :: array(:,:,:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)                   , intent(inout) , allocatable       :: array(:,:,:)
         integer(IK)                 , intent(in)    , dimension(3)      :: size
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -2760,8 +2760,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSDDD_D3_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)                   , intent(inout) , allocatable       :: array(:,:,:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)                   , intent(inout) , allocatable       :: array(:,:,:)
         integer(IK)                 , intent(in)    , dimension(3)      :: size
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -2773,8 +2773,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSDDD_D3_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)                   , intent(inout) , allocatable       :: array(:,:,:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)                   , intent(inout) , allocatable       :: array(:,:,:)
         integer(IK)                 , intent(in)    , dimension(3)      :: size
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -2786,8 +2786,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSDDD_D3_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)                   , intent(inout) , allocatable       :: array(:,:,:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)                   , intent(inout) , allocatable       :: array(:,:,:)
         integer(IK)                 , intent(in)    , dimension(3)      :: size
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -2799,8 +2799,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSDDD_D3_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)                   , intent(inout) , allocatable       :: array(:,:,:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)                   , intent(inout) , allocatable       :: array(:,:,:)
         integer(IK)                 , intent(in)    , dimension(3)      :: size
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -2816,9 +2816,9 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSDDD_D3_PSSK5
 #endif
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))          , intent(inout) , allocatable       :: array(:,:,:)
+        type(css_pdt(SKG))          , intent(inout) , allocatable       :: array(:,:,:)
         integer(IK)                 , intent(in)                        :: size
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -2830,9 +2830,9 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSDDD_D3_PSSK4
 #endif
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))          , intent(inout) , allocatable       :: array(:,:,:)
+        type(css_pdt(SKG))          , intent(inout) , allocatable       :: array(:,:,:)
         integer(IK)                 , intent(in)                        :: size
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -2844,9 +2844,9 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSDDD_D3_PSSK3
 #endif
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))          , intent(inout) , allocatable       :: array(:,:,:)
+        type(css_pdt(SKG))          , intent(inout) , allocatable       :: array(:,:,:)
         integer(IK)                 , intent(in)                        :: size
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -2858,9 +2858,9 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSDDD_D3_PSSK2
 #endif
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))          , intent(inout) , allocatable       :: array(:,:,:)
+        type(css_pdt(SKG))          , intent(inout) , allocatable       :: array(:,:,:)
         integer(IK)                 , intent(in)                        :: size
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -2872,9 +2872,9 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSDDD_D3_PSSK1
 #endif
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))          , intent(inout) , allocatable       :: array(:,:,:)
+        type(css_pdt(SKG))          , intent(inout) , allocatable       :: array(:,:,:)
         integer(IK)                 , intent(in)                        :: size
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -2890,7 +2890,7 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSDDD_D3_BSSK
 #endif
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
         use pm_container, only: css_type
         type(css_type)              , intent(inout) , allocatable       :: array(:,:,:)
         integer(IK)                 , intent(in)                        :: size
@@ -2915,8 +2915,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSLDD_D0_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(:,SKC)            , intent(inout) , allocatable       :: array
+        use pm_kind, only: SKG => SK5
+        character(:,SKG)            , intent(inout) , allocatable       :: array
         integer(IK)                 , intent(in)                        :: size, lbc
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -2928,8 +2928,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSLDD_D0_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(:,SKC)            , intent(inout) , allocatable       :: array
+        use pm_kind, only: SKG => SK4
+        character(:,SKG)            , intent(inout) , allocatable       :: array
         integer(IK)                 , intent(in)                        :: size, lbc
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -2941,8 +2941,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSLDD_D0_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(:,SKC)            , intent(inout) , allocatable       :: array
+        use pm_kind, only: SKG => SK3
+        character(:,SKG)            , intent(inout) , allocatable       :: array
         integer(IK)                 , intent(in)                        :: size, lbc
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -2954,8 +2954,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSLDD_D0_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(:,SKC)            , intent(inout) , allocatable       :: array
+        use pm_kind, only: SKG => SK2
+        character(:,SKG)            , intent(inout) , allocatable       :: array
         integer(IK)                 , intent(in)                        :: size, lbc
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -2967,8 +2967,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSLDD_D0_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(:,SKC)            , intent(inout) , allocatable       :: array
+        use pm_kind, only: SKG => SK1
+        character(:,SKG)            , intent(inout) , allocatable       :: array
         integer(IK)                 , intent(in)                        :: size, lbc
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -2990,8 +2990,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSLDD_D1_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)            , intent(inout) , allocatable       :: array(:)
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)            , intent(inout) , allocatable       :: array(:)
         integer(IK)                 , intent(in)                        :: size, lbc
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -3003,8 +3003,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSLDD_D1_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)            , intent(inout) , allocatable       :: array(:)
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)            , intent(inout) , allocatable       :: array(:)
         integer(IK)                 , intent(in)                        :: size, lbc
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -3016,8 +3016,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSLDD_D1_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)            , intent(inout) , allocatable       :: array(:)
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)            , intent(inout) , allocatable       :: array(:)
         integer(IK)                 , intent(in)                        :: size, lbc
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -3029,8 +3029,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSLDD_D1_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)            , intent(inout) , allocatable       :: array(:)
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)            , intent(inout) , allocatable       :: array(:)
         integer(IK)                 , intent(in)                        :: size, lbc
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -3042,8 +3042,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSLDD_D1_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)            , intent(inout) , allocatable       :: array(:)
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)            , intent(inout) , allocatable       :: array(:)
         integer(IK)                 , intent(in)                        :: size, lbc
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -3057,8 +3057,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSLDD_D1_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)                , intent(inout) , allocatable       :: array(:)
+        use pm_kind, only: IKG => IK5
+        integer(IKG)                , intent(inout) , allocatable       :: array(:)
         integer(IK)                 , intent(in)                        :: size, lbc
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -3070,8 +3070,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSLDD_D1_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)                , intent(inout) , allocatable       :: array(:)
+        use pm_kind, only: IKG => IK4
+        integer(IKG)                , intent(inout) , allocatable       :: array(:)
         integer(IK)                 , intent(in)                        :: size, lbc
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -3083,8 +3083,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSLDD_D1_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)                , intent(inout) , allocatable       :: array(:)
+        use pm_kind, only: IKG => IK3
+        integer(IKG)                , intent(inout) , allocatable       :: array(:)
         integer(IK)                 , intent(in)                        :: size, lbc
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -3096,8 +3096,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSLDD_D1_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)                , intent(inout) , allocatable       :: array(:)
+        use pm_kind, only: IKG => IK2
+        integer(IKG)                , intent(inout) , allocatable       :: array(:)
         integer(IK)                 , intent(in)                        :: size, lbc
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -3109,8 +3109,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSLDD_D1_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)                , intent(inout) , allocatable       :: array(:)
+        use pm_kind, only: IKG => IK1
+        integer(IKG)                , intent(inout) , allocatable       :: array(:)
         integer(IK)                 , intent(in)                        :: size, lbc
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -3124,8 +3124,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSLDD_D1_LK5
 #endif
-        use pm_kind, only: LKC => LK5
-        logical(LKC)                , intent(inout) , allocatable       :: array(:)
+        use pm_kind, only: LKG => LK5
+        logical(LKG)                , intent(inout) , allocatable       :: array(:)
         integer(IK)                 , intent(in)                        :: size, lbc
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -3137,8 +3137,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSLDD_D1_LK4
 #endif
-        use pm_kind, only: LKC => LK4
-        logical(LKC)                , intent(inout) , allocatable       :: array(:)
+        use pm_kind, only: LKG => LK4
+        logical(LKG)                , intent(inout) , allocatable       :: array(:)
         integer(IK)                 , intent(in)                        :: size, lbc
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -3150,8 +3150,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSLDD_D1_LK3
 #endif
-        use pm_kind, only: LKC => LK3
-        logical(LKC)                , intent(inout) , allocatable       :: array(:)
+        use pm_kind, only: LKG => LK3
+        logical(LKG)                , intent(inout) , allocatable       :: array(:)
         integer(IK)                 , intent(in)                        :: size, lbc
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -3163,8 +3163,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSLDD_D1_LK2
 #endif
-        use pm_kind, only: LKC => LK2
-        logical(LKC)                , intent(inout) , allocatable       :: array(:)
+        use pm_kind, only: LKG => LK2
+        logical(LKG)                , intent(inout) , allocatable       :: array(:)
         integer(IK)                 , intent(in)                        :: size, lbc
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -3176,8 +3176,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSLDD_D1_LK1
 #endif
-        use pm_kind, only: LKC => LK1
-        logical(LKC)                , intent(inout) , allocatable       :: array(:)
+        use pm_kind, only: LKG => LK1
+        logical(LKG)                , intent(inout) , allocatable       :: array(:)
         integer(IK)                 , intent(in)                        :: size, lbc
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -3191,8 +3191,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSLDD_D1_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)                , intent(inout) , allocatable       :: array(:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG)                , intent(inout) , allocatable       :: array(:)
         integer(IK)                 , intent(in)                        :: size, lbc
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -3204,8 +3204,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSLDD_D1_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)                , intent(inout) , allocatable       :: array(:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG)                , intent(inout) , allocatable       :: array(:)
         integer(IK)                 , intent(in)                        :: size, lbc
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -3217,8 +3217,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSLDD_D1_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)                , intent(inout) , allocatable       :: array(:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG)                , intent(inout) , allocatable       :: array(:)
         integer(IK)                 , intent(in)                        :: size, lbc
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -3230,8 +3230,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSLDD_D1_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)                , intent(inout) , allocatable       :: array(:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG)                , intent(inout) , allocatable       :: array(:)
         integer(IK)                 , intent(in)                        :: size, lbc
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -3243,8 +3243,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSLDD_D1_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)                , intent(inout) , allocatable       :: array(:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG)                , intent(inout) , allocatable       :: array(:)
         integer(IK)                 , intent(in)                        :: size, lbc
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -3258,8 +3258,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSLDD_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)                   , intent(inout) , allocatable       :: array(:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)                   , intent(inout) , allocatable       :: array(:)
         integer(IK)                 , intent(in)                        :: size, lbc
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -3271,8 +3271,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSLDD_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)                   , intent(inout) , allocatable       :: array(:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)                   , intent(inout) , allocatable       :: array(:)
         integer(IK)                 , intent(in)                        :: size, lbc
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -3284,8 +3284,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSLDD_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)                   , intent(inout) , allocatable       :: array(:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)                   , intent(inout) , allocatable       :: array(:)
         integer(IK)                 , intent(in)                        :: size, lbc
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -3297,8 +3297,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSLDD_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)                   , intent(inout) , allocatable       :: array(:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)                   , intent(inout) , allocatable       :: array(:)
         integer(IK)                 , intent(in)                        :: size, lbc
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -3310,8 +3310,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSLDD_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)                   , intent(inout) , allocatable       :: array(:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)                   , intent(inout) , allocatable       :: array(:)
         integer(IK)                 , intent(in)                        :: size, lbc
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -3327,9 +3327,9 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSLDD_D1_PSSK5
 #endif
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))          , intent(inout) , allocatable       :: array(:)
+        type(css_pdt(SKG))          , intent(inout) , allocatable       :: array(:)
         integer(IK)                 , intent(in)                        :: size, lbc
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -3341,9 +3341,9 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSLDD_D1_PSSK4
 #endif
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))          , intent(inout) , allocatable       :: array(:)
+        type(css_pdt(SKG))          , intent(inout) , allocatable       :: array(:)
         integer(IK)                 , intent(in)                        :: size, lbc
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -3355,9 +3355,9 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSLDD_D1_PSSK3
 #endif
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))          , intent(inout) , allocatable       :: array(:)
+        type(css_pdt(SKG))          , intent(inout) , allocatable       :: array(:)
         integer(IK)                 , intent(in)                        :: size, lbc
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -3369,9 +3369,9 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSLDD_D1_PSSK2
 #endif
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))          , intent(inout) , allocatable       :: array(:)
+        type(css_pdt(SKG))          , intent(inout) , allocatable       :: array(:)
         integer(IK)                 , intent(in)                        :: size, lbc
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -3383,9 +3383,9 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSLDD_D1_PSSK1
 #endif
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))          , intent(inout) , allocatable       :: array(:)
+        type(css_pdt(SKG))          , intent(inout) , allocatable       :: array(:)
         integer(IK)                 , intent(in)                        :: size, lbc
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -3401,7 +3401,7 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSLDD_D1_BSSK
 #endif
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
         use pm_container, only: css_type
         type(css_type)              , intent(inout) , allocatable       :: array(:)
         integer(IK)                 , intent(in)                        :: size, lbc
@@ -3424,8 +3424,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSLDD_D2_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)            , intent(inout) , allocatable       :: array(:,:)
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)            , intent(inout) , allocatable       :: array(:,:)
         integer(IK)                 , intent(in)    , dimension(2)      :: size, lbc
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -3437,8 +3437,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSLDD_D2_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)            , intent(inout) , allocatable       :: array(:,:)
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)            , intent(inout) , allocatable       :: array(:,:)
         integer(IK)                 , intent(in)    , dimension(2)      :: size, lbc
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -3450,8 +3450,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSLDD_D2_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)            , intent(inout) , allocatable       :: array(:,:)
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)            , intent(inout) , allocatable       :: array(:,:)
         integer(IK)                 , intent(in)    , dimension(2)      :: size, lbc
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -3463,8 +3463,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSLDD_D2_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)            , intent(inout) , allocatable       :: array(:,:)
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)            , intent(inout) , allocatable       :: array(:,:)
         integer(IK)                 , intent(in)    , dimension(2)      :: size, lbc
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -3476,8 +3476,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSLDD_D2_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)            , intent(inout) , allocatable       :: array(:,:)
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)            , intent(inout) , allocatable       :: array(:,:)
         integer(IK)                 , intent(in)    , dimension(2)      :: size, lbc
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -3491,8 +3491,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSLDD_D2_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)                , intent(inout) , allocatable       :: array(:,:)
+        use pm_kind, only: IKG => IK5
+        integer(IKG)                , intent(inout) , allocatable       :: array(:,:)
         integer(IK)                 , intent(in)    , dimension(2)      :: size, lbc
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -3504,8 +3504,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSLDD_D2_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)                , intent(inout) , allocatable       :: array(:,:)
+        use pm_kind, only: IKG => IK4
+        integer(IKG)                , intent(inout) , allocatable       :: array(:,:)
         integer(IK)                 , intent(in)    , dimension(2)      :: size, lbc
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -3517,8 +3517,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSLDD_D2_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)                , intent(inout) , allocatable       :: array(:,:)
+        use pm_kind, only: IKG => IK3
+        integer(IKG)                , intent(inout) , allocatable       :: array(:,:)
         integer(IK)                 , intent(in)    , dimension(2)      :: size, lbc
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -3530,8 +3530,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSLDD_D2_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)                , intent(inout) , allocatable       :: array(:,:)
+        use pm_kind, only: IKG => IK2
+        integer(IKG)                , intent(inout) , allocatable       :: array(:,:)
         integer(IK)                 , intent(in)    , dimension(2)      :: size, lbc
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -3543,8 +3543,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSLDD_D2_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)                , intent(inout) , allocatable       :: array(:,:)
+        use pm_kind, only: IKG => IK1
+        integer(IKG)                , intent(inout) , allocatable       :: array(:,:)
         integer(IK)                 , intent(in)    , dimension(2)      :: size, lbc
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -3558,8 +3558,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSLDD_D2_LK5
 #endif
-        use pm_kind, only: LKC => LK5
-        logical(LKC)                , intent(inout) , allocatable       :: array(:,:)
+        use pm_kind, only: LKG => LK5
+        logical(LKG)                , intent(inout) , allocatable       :: array(:,:)
         integer(IK)                 , intent(in)    , dimension(2)      :: size, lbc
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -3571,8 +3571,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSLDD_D2_LK4
 #endif
-        use pm_kind, only: LKC => LK4
-        logical(LKC)                , intent(inout) , allocatable       :: array(:,:)
+        use pm_kind, only: LKG => LK4
+        logical(LKG)                , intent(inout) , allocatable       :: array(:,:)
         integer(IK)                 , intent(in)    , dimension(2)      :: size, lbc
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -3584,8 +3584,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSLDD_D2_LK3
 #endif
-        use pm_kind, only: LKC => LK3
-        logical(LKC)                , intent(inout) , allocatable       :: array(:,:)
+        use pm_kind, only: LKG => LK3
+        logical(LKG)                , intent(inout) , allocatable       :: array(:,:)
         integer(IK)                 , intent(in)    , dimension(2)      :: size, lbc
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -3597,8 +3597,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSLDD_D2_LK2
 #endif
-        use pm_kind, only: LKC => LK2
-        logical(LKC)                , intent(inout) , allocatable       :: array(:,:)
+        use pm_kind, only: LKG => LK2
+        logical(LKG)                , intent(inout) , allocatable       :: array(:,:)
         integer(IK)                 , intent(in)    , dimension(2)      :: size, lbc
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -3610,8 +3610,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSLDD_D2_LK1
 #endif
-        use pm_kind, only: LKC => LK1
-        logical(LKC)                , intent(inout) , allocatable       :: array(:,:)
+        use pm_kind, only: LKG => LK1
+        logical(LKG)                , intent(inout) , allocatable       :: array(:,:)
         integer(IK)                 , intent(in)    , dimension(2)      :: size, lbc
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -3625,8 +3625,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSLDD_D2_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)                , intent(inout) , allocatable       :: array(:,:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG)                , intent(inout) , allocatable       :: array(:,:)
         integer(IK)                 , intent(in)    , dimension(2)      :: size, lbc
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -3638,8 +3638,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSLDD_D2_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)                , intent(inout) , allocatable       :: array(:,:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG)                , intent(inout) , allocatable       :: array(:,:)
         integer(IK)                 , intent(in)    , dimension(2)      :: size, lbc
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -3651,8 +3651,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSLDD_D2_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)                , intent(inout) , allocatable       :: array(:,:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG)                , intent(inout) , allocatable       :: array(:,:)
         integer(IK)                 , intent(in)    , dimension(2)      :: size, lbc
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -3664,8 +3664,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSLDD_D2_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)                , intent(inout) , allocatable       :: array(:,:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG)                , intent(inout) , allocatable       :: array(:,:)
         integer(IK)                 , intent(in)    , dimension(2)      :: size, lbc
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -3677,8 +3677,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSLDD_D2_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)                , intent(inout) , allocatable       :: array(:,:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG)                , intent(inout) , allocatable       :: array(:,:)
         integer(IK)                 , intent(in)    , dimension(2)      :: size, lbc
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -3692,8 +3692,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSLDD_D2_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)                   , intent(inout) , allocatable       :: array(:,:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)                   , intent(inout) , allocatable       :: array(:,:)
         integer(IK)                 , intent(in)    , dimension(2)      :: size, lbc
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -3705,8 +3705,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSLDD_D2_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)                   , intent(inout) , allocatable       :: array(:,:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)                   , intent(inout) , allocatable       :: array(:,:)
         integer(IK)                 , intent(in)    , dimension(2)      :: size, lbc
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -3718,8 +3718,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSLDD_D2_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)                   , intent(inout) , allocatable       :: array(:,:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)                   , intent(inout) , allocatable       :: array(:,:)
         integer(IK)                 , intent(in)    , dimension(2)      :: size, lbc
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -3731,8 +3731,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSLDD_D2_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)                   , intent(inout) , allocatable       :: array(:,:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)                   , intent(inout) , allocatable       :: array(:,:)
         integer(IK)                 , intent(in)    , dimension(2)      :: size, lbc
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -3744,8 +3744,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSLDD_D2_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)                   , intent(inout) , allocatable       :: array(:,:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)                   , intent(inout) , allocatable       :: array(:,:)
         integer(IK)                 , intent(in)    , dimension(2)      :: size, lbc
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -3761,9 +3761,9 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSLDD_D2_PSSK5
 #endif
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))          , intent(inout) , allocatable       :: array(:,:)
+        type(css_pdt(SKG))          , intent(inout) , allocatable       :: array(:,:)
         integer(IK)                 , intent(in)    , dimension(2)      :: size, lbc
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -3775,9 +3775,9 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSLDD_D2_PSSK4
 #endif
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))          , intent(inout) , allocatable       :: array(:,:)
+        type(css_pdt(SKG))          , intent(inout) , allocatable       :: array(:,:)
         integer(IK)                 , intent(in)    , dimension(2)      :: size, lbc
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -3789,9 +3789,9 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSLDD_D2_PSSK3
 #endif
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))          , intent(inout) , allocatable       :: array(:,:)
+        type(css_pdt(SKG))          , intent(inout) , allocatable       :: array(:,:)
         integer(IK)                 , intent(in)    , dimension(2)      :: size, lbc
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -3803,9 +3803,9 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSLDD_D2_PSSK2
 #endif
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))          , intent(inout) , allocatable       :: array(:,:)
+        type(css_pdt(SKG))          , intent(inout) , allocatable       :: array(:,:)
         integer(IK)                 , intent(in)    , dimension(2)      :: size, lbc
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -3817,9 +3817,9 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSLDD_D2_PSSK1
 #endif
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))          , intent(inout) , allocatable       :: array(:,:)
+        type(css_pdt(SKG))          , intent(inout) , allocatable       :: array(:,:)
         integer(IK)                 , intent(in)    , dimension(2)      :: size, lbc
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -3835,7 +3835,7 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSLDD_D2_BSSK
 #endif
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
         use pm_container, only: css_type
         type(css_type)              , intent(inout) , allocatable       :: array(:,:)
         integer(IK)                 , intent(in)    , dimension(2)      :: size, lbc
@@ -3858,8 +3858,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSLDD_D3_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)            , intent(inout) , allocatable       :: array(:,:,:)
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)            , intent(inout) , allocatable       :: array(:,:,:)
         integer(IK)                 , intent(in)    , dimension(3)      :: size, lbc
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -3871,8 +3871,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSLDD_D3_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)            , intent(inout) , allocatable       :: array(:,:,:)
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)            , intent(inout) , allocatable       :: array(:,:,:)
         integer(IK)                 , intent(in)    , dimension(3)      :: size, lbc
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -3884,8 +3884,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSLDD_D3_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)            , intent(inout) , allocatable       :: array(:,:,:)
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)            , intent(inout) , allocatable       :: array(:,:,:)
         integer(IK)                 , intent(in)    , dimension(3)      :: size, lbc
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -3897,8 +3897,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSLDD_D3_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)            , intent(inout) , allocatable       :: array(:,:,:)
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)            , intent(inout) , allocatable       :: array(:,:,:)
         integer(IK)                 , intent(in)    , dimension(3)      :: size, lbc
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -3910,8 +3910,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSLDD_D3_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)            , intent(inout) , allocatable       :: array(:,:,:)
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)            , intent(inout) , allocatable       :: array(:,:,:)
         integer(IK)                 , intent(in)    , dimension(3)      :: size, lbc
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -3925,8 +3925,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSLDD_D3_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)                , intent(inout) , allocatable       :: array(:,:,:)
+        use pm_kind, only: IKG => IK5
+        integer(IKG)                , intent(inout) , allocatable       :: array(:,:,:)
         integer(IK)                 , intent(in)    , dimension(3)      :: size, lbc
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -3938,8 +3938,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSLDD_D3_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)                , intent(inout) , allocatable       :: array(:,:,:)
+        use pm_kind, only: IKG => IK4
+        integer(IKG)                , intent(inout) , allocatable       :: array(:,:,:)
         integer(IK)                 , intent(in)    , dimension(3)      :: size, lbc
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -3951,8 +3951,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSLDD_D3_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)                , intent(inout) , allocatable       :: array(:,:,:)
+        use pm_kind, only: IKG => IK3
+        integer(IKG)                , intent(inout) , allocatable       :: array(:,:,:)
         integer(IK)                 , intent(in)    , dimension(3)      :: size, lbc
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -3964,8 +3964,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSLDD_D3_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)                , intent(inout) , allocatable       :: array(:,:,:)
+        use pm_kind, only: IKG => IK2
+        integer(IKG)                , intent(inout) , allocatable       :: array(:,:,:)
         integer(IK)                 , intent(in)    , dimension(3)      :: size, lbc
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -3977,8 +3977,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSLDD_D3_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)                , intent(inout) , allocatable       :: array(:,:,:)
+        use pm_kind, only: IKG => IK1
+        integer(IKG)                , intent(inout) , allocatable       :: array(:,:,:)
         integer(IK)                 , intent(in)    , dimension(3)      :: size, lbc
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -3992,8 +3992,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSLDD_D3_LK5
 #endif
-        use pm_kind, only: LKC => LK5
-        logical(LKC)                , intent(inout) , allocatable       :: array(:,:,:)
+        use pm_kind, only: LKG => LK5
+        logical(LKG)                , intent(inout) , allocatable       :: array(:,:,:)
         integer(IK)                 , intent(in)    , dimension(3)      :: size, lbc
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -4005,8 +4005,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSLDD_D3_LK4
 #endif
-        use pm_kind, only: LKC => LK4
-        logical(LKC)                , intent(inout) , allocatable       :: array(:,:,:)
+        use pm_kind, only: LKG => LK4
+        logical(LKG)                , intent(inout) , allocatable       :: array(:,:,:)
         integer(IK)                 , intent(in)    , dimension(3)      :: size, lbc
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -4018,8 +4018,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSLDD_D3_LK3
 #endif
-        use pm_kind, only: LKC => LK3
-        logical(LKC)                , intent(inout) , allocatable       :: array(:,:,:)
+        use pm_kind, only: LKG => LK3
+        logical(LKG)                , intent(inout) , allocatable       :: array(:,:,:)
         integer(IK)                 , intent(in)    , dimension(3)      :: size, lbc
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -4031,8 +4031,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSLDD_D3_LK2
 #endif
-        use pm_kind, only: LKC => LK2
-        logical(LKC)                , intent(inout) , allocatable       :: array(:,:,:)
+        use pm_kind, only: LKG => LK2
+        logical(LKG)                , intent(inout) , allocatable       :: array(:,:,:)
         integer(IK)                 , intent(in)    , dimension(3)      :: size, lbc
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -4044,8 +4044,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSLDD_D3_LK1
 #endif
-        use pm_kind, only: LKC => LK1
-        logical(LKC)                , intent(inout) , allocatable       :: array(:,:,:)
+        use pm_kind, only: LKG => LK1
+        logical(LKG)                , intent(inout) , allocatable       :: array(:,:,:)
         integer(IK)                 , intent(in)    , dimension(3)      :: size, lbc
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -4059,8 +4059,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSLDD_D3_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)                , intent(inout) , allocatable       :: array(:,:,:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG)                , intent(inout) , allocatable       :: array(:,:,:)
         integer(IK)                 , intent(in)    , dimension(3)      :: size, lbc
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -4072,8 +4072,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSLDD_D3_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)                , intent(inout) , allocatable       :: array(:,:,:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG)                , intent(inout) , allocatable       :: array(:,:,:)
         integer(IK)                 , intent(in)    , dimension(3)      :: size, lbc
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -4085,8 +4085,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSLDD_D3_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)                , intent(inout) , allocatable       :: array(:,:,:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG)                , intent(inout) , allocatable       :: array(:,:,:)
         integer(IK)                 , intent(in)    , dimension(3)      :: size, lbc
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -4098,8 +4098,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSLDD_D3_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)                , intent(inout) , allocatable       :: array(:,:,:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG)                , intent(inout) , allocatable       :: array(:,:,:)
         integer(IK)                 , intent(in)    , dimension(3)      :: size, lbc
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -4111,8 +4111,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSLDD_D3_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)                , intent(inout) , allocatable       :: array(:,:,:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG)                , intent(inout) , allocatable       :: array(:,:,:)
         integer(IK)                 , intent(in)    , dimension(3)      :: size, lbc
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -4126,8 +4126,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSLDD_D3_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)                   , intent(inout) , allocatable       :: array(:,:,:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)                   , intent(inout) , allocatable       :: array(:,:,:)
         integer(IK)                 , intent(in)    , dimension(3)      :: size, lbc
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -4139,8 +4139,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSLDD_D3_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)                   , intent(inout) , allocatable       :: array(:,:,:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)                   , intent(inout) , allocatable       :: array(:,:,:)
         integer(IK)                 , intent(in)    , dimension(3)      :: size, lbc
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -4152,8 +4152,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSLDD_D3_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)                   , intent(inout) , allocatable       :: array(:,:,:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)                   , intent(inout) , allocatable       :: array(:,:,:)
         integer(IK)                 , intent(in)    , dimension(3)      :: size, lbc
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -4165,8 +4165,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSLDD_D3_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)                   , intent(inout) , allocatable       :: array(:,:,:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)                   , intent(inout) , allocatable       :: array(:,:,:)
         integer(IK)                 , intent(in)    , dimension(3)      :: size, lbc
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -4178,8 +4178,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSLDD_D3_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)                   , intent(inout) , allocatable       :: array(:,:,:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)                   , intent(inout) , allocatable       :: array(:,:,:)
         integer(IK)                 , intent(in)    , dimension(3)      :: size, lbc
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -4195,9 +4195,9 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSLDD_D3_PSSK5
 #endif
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))          , intent(inout) , allocatable       :: array(:,:,:)
+        type(css_pdt(SKG))          , intent(inout) , allocatable       :: array(:,:,:)
         integer(IK)                 , intent(in)    , dimension(3)      :: size, lbc
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -4209,9 +4209,9 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSLDD_D3_PSSK4
 #endif
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))          , intent(inout) , allocatable       :: array(:,:,:)
+        type(css_pdt(SKG))          , intent(inout) , allocatable       :: array(:,:,:)
         integer(IK)                 , intent(in)    , dimension(3)      :: size, lbc
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -4223,9 +4223,9 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSLDD_D3_PSSK3
 #endif
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))          , intent(inout) , allocatable       :: array(:,:,:)
+        type(css_pdt(SKG))          , intent(inout) , allocatable       :: array(:,:,:)
         integer(IK)                 , intent(in)    , dimension(3)      :: size, lbc
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -4237,9 +4237,9 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSLDD_D3_PSSK2
 #endif
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))          , intent(inout) , allocatable       :: array(:,:,:)
+        type(css_pdt(SKG))          , intent(inout) , allocatable       :: array(:,:,:)
         integer(IK)                 , intent(in)    , dimension(3)      :: size, lbc
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -4251,9 +4251,9 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSLDD_D3_PSSK1
 #endif
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))          , intent(inout) , allocatable       :: array(:,:,:)
+        type(css_pdt(SKG))          , intent(inout) , allocatable       :: array(:,:,:)
         integer(IK)                 , intent(in)    , dimension(3)      :: size, lbc
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -4269,7 +4269,7 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSLDD_D3_BSSK
 #endif
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
         use pm_container, only: css_type
         type(css_type)              , intent(inout) , allocatable       :: array(:,:,:)
         integer(IK)                 , intent(in)    , dimension(3)      :: size, lbc
@@ -4294,8 +4294,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSLLU_D0_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(:,SKC)            , intent(inout) , allocatable       :: array
+        use pm_kind, only: SKG => SK5
+        character(:,SKG)            , intent(inout) , allocatable       :: array
         integer(IK)                 , intent(in)                        :: size, lbc, lbcold, ubcold
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -4307,8 +4307,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSLLU_D0_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(:,SKC)            , intent(inout) , allocatable       :: array
+        use pm_kind, only: SKG => SK4
+        character(:,SKG)            , intent(inout) , allocatable       :: array
         integer(IK)                 , intent(in)                        :: size, lbc, lbcold, ubcold
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -4320,8 +4320,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSLLU_D0_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(:,SKC)            , intent(inout) , allocatable       :: array
+        use pm_kind, only: SKG => SK3
+        character(:,SKG)            , intent(inout) , allocatable       :: array
         integer(IK)                 , intent(in)                        :: size, lbc, lbcold, ubcold
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -4333,8 +4333,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSLLU_D0_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(:,SKC)            , intent(inout) , allocatable       :: array
+        use pm_kind, only: SKG => SK2
+        character(:,SKG)            , intent(inout) , allocatable       :: array
         integer(IK)                 , intent(in)                        :: size, lbc, lbcold, ubcold
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -4346,8 +4346,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSLLU_D0_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(:,SKC)            , intent(inout) , allocatable       :: array
+        use pm_kind, only: SKG => SK1
+        character(:,SKG)            , intent(inout) , allocatable       :: array
         integer(IK)                 , intent(in)                        :: size, lbc, lbcold, ubcold
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -4369,8 +4369,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSLLU_D1_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)            , intent(inout) , allocatable       :: array(:)
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)            , intent(inout) , allocatable       :: array(:)
         integer(IK)                 , intent(in)                        :: size, lbc, lbcold, ubcold
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -4382,8 +4382,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSLLU_D1_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)            , intent(inout) , allocatable       :: array(:)
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)            , intent(inout) , allocatable       :: array(:)
         integer(IK)                 , intent(in)                        :: size, lbc, lbcold, ubcold
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -4395,8 +4395,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSLLU_D1_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)            , intent(inout) , allocatable       :: array(:)
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)            , intent(inout) , allocatable       :: array(:)
         integer(IK)                 , intent(in)                        :: size, lbc, lbcold, ubcold
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -4408,8 +4408,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSLLU_D1_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)            , intent(inout) , allocatable       :: array(:)
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)            , intent(inout) , allocatable       :: array(:)
         integer(IK)                 , intent(in)                        :: size, lbc, lbcold, ubcold
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -4421,8 +4421,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSLLU_D1_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)            , intent(inout) , allocatable       :: array(:)
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)            , intent(inout) , allocatable       :: array(:)
         integer(IK)                 , intent(in)                        :: size, lbc, lbcold, ubcold
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -4436,8 +4436,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSLLU_D1_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)                , intent(inout) , allocatable       :: array(:)
+        use pm_kind, only: IKG => IK5
+        integer(IKG)                , intent(inout) , allocatable       :: array(:)
         integer(IK)                 , intent(in)                        :: size, lbc, lbcold, ubcold
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -4449,8 +4449,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSLLU_D1_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)                , intent(inout) , allocatable       :: array(:)
+        use pm_kind, only: IKG => IK4
+        integer(IKG)                , intent(inout) , allocatable       :: array(:)
         integer(IK)                 , intent(in)                        :: size, lbc, lbcold, ubcold
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -4462,8 +4462,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSLLU_D1_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)                , intent(inout) , allocatable       :: array(:)
+        use pm_kind, only: IKG => IK3
+        integer(IKG)                , intent(inout) , allocatable       :: array(:)
         integer(IK)                 , intent(in)                        :: size, lbc, lbcold, ubcold
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -4475,8 +4475,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSLLU_D1_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)                , intent(inout) , allocatable       :: array(:)
+        use pm_kind, only: IKG => IK2
+        integer(IKG)                , intent(inout) , allocatable       :: array(:)
         integer(IK)                 , intent(in)                        :: size, lbc, lbcold, ubcold
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -4488,8 +4488,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSLLU_D1_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)                , intent(inout) , allocatable       :: array(:)
+        use pm_kind, only: IKG => IK1
+        integer(IKG)                , intent(inout) , allocatable       :: array(:)
         integer(IK)                 , intent(in)                        :: size, lbc, lbcold, ubcold
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -4503,8 +4503,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSLLU_D1_LK5
 #endif
-        use pm_kind, only: LKC => LK5
-        logical(LKC)                , intent(inout) , allocatable       :: array(:)
+        use pm_kind, only: LKG => LK5
+        logical(LKG)                , intent(inout) , allocatable       :: array(:)
         integer(IK)                 , intent(in)                        :: size, lbc, lbcold, ubcold
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -4516,8 +4516,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSLLU_D1_LK4
 #endif
-        use pm_kind, only: LKC => LK4
-        logical(LKC)                , intent(inout) , allocatable       :: array(:)
+        use pm_kind, only: LKG => LK4
+        logical(LKG)                , intent(inout) , allocatable       :: array(:)
         integer(IK)                 , intent(in)                        :: size, lbc, lbcold, ubcold
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -4529,8 +4529,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSLLU_D1_LK3
 #endif
-        use pm_kind, only: LKC => LK3
-        logical(LKC)                , intent(inout) , allocatable       :: array(:)
+        use pm_kind, only: LKG => LK3
+        logical(LKG)                , intent(inout) , allocatable       :: array(:)
         integer(IK)                 , intent(in)                        :: size, lbc, lbcold, ubcold
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -4542,8 +4542,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSLLU_D1_LK2
 #endif
-        use pm_kind, only: LKC => LK2
-        logical(LKC)                , intent(inout) , allocatable       :: array(:)
+        use pm_kind, only: LKG => LK2
+        logical(LKG)                , intent(inout) , allocatable       :: array(:)
         integer(IK)                 , intent(in)                        :: size, lbc, lbcold, ubcold
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -4555,8 +4555,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSLLU_D1_LK1
 #endif
-        use pm_kind, only: LKC => LK1
-        logical(LKC)                , intent(inout) , allocatable       :: array(:)
+        use pm_kind, only: LKG => LK1
+        logical(LKG)                , intent(inout) , allocatable       :: array(:)
         integer(IK)                 , intent(in)                        :: size, lbc, lbcold, ubcold
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -4570,8 +4570,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSLLU_D1_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)                , intent(inout) , allocatable       :: array(:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG)                , intent(inout) , allocatable       :: array(:)
         integer(IK)                 , intent(in)                        :: size, lbc, lbcold, ubcold
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -4583,8 +4583,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSLLU_D1_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)                , intent(inout) , allocatable       :: array(:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG)                , intent(inout) , allocatable       :: array(:)
         integer(IK)                 , intent(in)                        :: size, lbc, lbcold, ubcold
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -4596,8 +4596,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSLLU_D1_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)                , intent(inout) , allocatable       :: array(:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG)                , intent(inout) , allocatable       :: array(:)
         integer(IK)                 , intent(in)                        :: size, lbc, lbcold, ubcold
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -4609,8 +4609,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSLLU_D1_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)                , intent(inout) , allocatable       :: array(:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG)                , intent(inout) , allocatable       :: array(:)
         integer(IK)                 , intent(in)                        :: size, lbc, lbcold, ubcold
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -4622,8 +4622,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSLLU_D1_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)                , intent(inout) , allocatable       :: array(:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG)                , intent(inout) , allocatable       :: array(:)
         integer(IK)                 , intent(in)                        :: size, lbc, lbcold, ubcold
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -4637,8 +4637,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSLLU_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)                   , intent(inout) , allocatable       :: array(:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)                   , intent(inout) , allocatable       :: array(:)
         integer(IK)                 , intent(in)                        :: size, lbc, lbcold, ubcold
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -4650,8 +4650,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSLLU_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)                   , intent(inout) , allocatable       :: array(:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)                   , intent(inout) , allocatable       :: array(:)
         integer(IK)                 , intent(in)                        :: size, lbc, lbcold, ubcold
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -4663,8 +4663,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSLLU_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)                   , intent(inout) , allocatable       :: array(:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)                   , intent(inout) , allocatable       :: array(:)
         integer(IK)                 , intent(in)                        :: size, lbc, lbcold, ubcold
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -4676,8 +4676,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSLLU_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)                   , intent(inout) , allocatable       :: array(:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)                   , intent(inout) , allocatable       :: array(:)
         integer(IK)                 , intent(in)                        :: size, lbc, lbcold, ubcold
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -4689,8 +4689,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSLLU_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)                   , intent(inout) , allocatable       :: array(:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)                   , intent(inout) , allocatable       :: array(:)
         integer(IK)                 , intent(in)                        :: size, lbc, lbcold, ubcold
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -4706,9 +4706,9 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSLLU_D1_PSSK5
 #endif
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))          , intent(inout) , allocatable       :: array(:)
+        type(css_pdt(SKG))          , intent(inout) , allocatable       :: array(:)
         integer(IK)                 , intent(in)                        :: size, lbc, lbcold, ubcold
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -4720,9 +4720,9 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSLLU_D1_PSSK4
 #endif
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))          , intent(inout) , allocatable       :: array(:)
+        type(css_pdt(SKG))          , intent(inout) , allocatable       :: array(:)
         integer(IK)                 , intent(in)                        :: size, lbc, lbcold, ubcold
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -4734,9 +4734,9 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSLLU_D1_PSSK3
 #endif
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))          , intent(inout) , allocatable       :: array(:)
+        type(css_pdt(SKG))          , intent(inout) , allocatable       :: array(:)
         integer(IK)                 , intent(in)                        :: size, lbc, lbcold, ubcold
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -4748,9 +4748,9 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSLLU_D1_PSSK2
 #endif
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))          , intent(inout) , allocatable       :: array(:)
+        type(css_pdt(SKG))          , intent(inout) , allocatable       :: array(:)
         integer(IK)                 , intent(in)                        :: size, lbc, lbcold, ubcold
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -4762,9 +4762,9 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSLLU_D1_PSSK1
 #endif
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))          , intent(inout) , allocatable       :: array(:)
+        type(css_pdt(SKG))          , intent(inout) , allocatable       :: array(:)
         integer(IK)                 , intent(in)                        :: size, lbc, lbcold, ubcold
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -4780,7 +4780,7 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSLLU_D1_BSSK
 #endif
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
         use pm_container, only: css_type
         type(css_type)              , intent(inout) , allocatable       :: array(:)
         integer(IK)                 , intent(in)                        :: size, lbc, lbcold, ubcold
@@ -4803,8 +4803,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSLLU_D2_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)            , intent(inout) , allocatable       :: array(:,:)
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)            , intent(inout) , allocatable       :: array(:,:)
         integer(IK)                 , intent(in)    , dimension(2)      :: size, lbc, lbcold, ubcold
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -4816,8 +4816,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSLLU_D2_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)            , intent(inout) , allocatable       :: array(:,:)
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)            , intent(inout) , allocatable       :: array(:,:)
         integer(IK)                 , intent(in)    , dimension(2)      :: size, lbc, lbcold, ubcold
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -4829,8 +4829,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSLLU_D2_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)            , intent(inout) , allocatable       :: array(:,:)
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)            , intent(inout) , allocatable       :: array(:,:)
         integer(IK)                 , intent(in)    , dimension(2)      :: size, lbc, lbcold, ubcold
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -4842,8 +4842,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSLLU_D2_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)            , intent(inout) , allocatable       :: array(:,:)
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)            , intent(inout) , allocatable       :: array(:,:)
         integer(IK)                 , intent(in)    , dimension(2)      :: size, lbc, lbcold, ubcold
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -4855,8 +4855,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSLLU_D2_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)            , intent(inout) , allocatable       :: array(:,:)
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)            , intent(inout) , allocatable       :: array(:,:)
         integer(IK)                 , intent(in)    , dimension(2)      :: size, lbc, lbcold, ubcold
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -4870,8 +4870,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSLLU_D2_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)                , intent(inout) , allocatable       :: array(:,:)
+        use pm_kind, only: IKG => IK5
+        integer(IKG)                , intent(inout) , allocatable       :: array(:,:)
         integer(IK)                 , intent(in)    , dimension(2)      :: size, lbc, lbcold, ubcold
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -4883,8 +4883,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSLLU_D2_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)                , intent(inout) , allocatable       :: array(:,:)
+        use pm_kind, only: IKG => IK4
+        integer(IKG)                , intent(inout) , allocatable       :: array(:,:)
         integer(IK)                 , intent(in)    , dimension(2)      :: size, lbc, lbcold, ubcold
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -4896,8 +4896,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSLLU_D2_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)                , intent(inout) , allocatable       :: array(:,:)
+        use pm_kind, only: IKG => IK3
+        integer(IKG)                , intent(inout) , allocatable       :: array(:,:)
         integer(IK)                 , intent(in)    , dimension(2)      :: size, lbc, lbcold, ubcold
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -4909,8 +4909,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSLLU_D2_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)                , intent(inout) , allocatable       :: array(:,:)
+        use pm_kind, only: IKG => IK2
+        integer(IKG)                , intent(inout) , allocatable       :: array(:,:)
         integer(IK)                 , intent(in)    , dimension(2)      :: size, lbc, lbcold, ubcold
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -4922,8 +4922,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSLLU_D2_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)                , intent(inout) , allocatable       :: array(:,:)
+        use pm_kind, only: IKG => IK1
+        integer(IKG)                , intent(inout) , allocatable       :: array(:,:)
         integer(IK)                 , intent(in)    , dimension(2)      :: size, lbc, lbcold, ubcold
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -4937,8 +4937,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSLLU_D2_LK5
 #endif
-        use pm_kind, only: LKC => LK5
-        logical(LKC)                , intent(inout) , allocatable       :: array(:,:)
+        use pm_kind, only: LKG => LK5
+        logical(LKG)                , intent(inout) , allocatable       :: array(:,:)
         integer(IK)                 , intent(in)    , dimension(2)      :: size, lbc, lbcold, ubcold
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -4950,8 +4950,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSLLU_D2_LK4
 #endif
-        use pm_kind, only: LKC => LK4
-        logical(LKC)                , intent(inout) , allocatable       :: array(:,:)
+        use pm_kind, only: LKG => LK4
+        logical(LKG)                , intent(inout) , allocatable       :: array(:,:)
         integer(IK)                 , intent(in)    , dimension(2)      :: size, lbc, lbcold, ubcold
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -4963,8 +4963,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSLLU_D2_LK3
 #endif
-        use pm_kind, only: LKC => LK3
-        logical(LKC)                , intent(inout) , allocatable       :: array(:,:)
+        use pm_kind, only: LKG => LK3
+        logical(LKG)                , intent(inout) , allocatable       :: array(:,:)
         integer(IK)                 , intent(in)    , dimension(2)      :: size, lbc, lbcold, ubcold
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -4976,8 +4976,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSLLU_D2_LK2
 #endif
-        use pm_kind, only: LKC => LK2
-        logical(LKC)                , intent(inout) , allocatable       :: array(:,:)
+        use pm_kind, only: LKG => LK2
+        logical(LKG)                , intent(inout) , allocatable       :: array(:,:)
         integer(IK)                 , intent(in)    , dimension(2)      :: size, lbc, lbcold, ubcold
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -4989,8 +4989,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSLLU_D2_LK1
 #endif
-        use pm_kind, only: LKC => LK1
-        logical(LKC)                , intent(inout) , allocatable       :: array(:,:)
+        use pm_kind, only: LKG => LK1
+        logical(LKG)                , intent(inout) , allocatable       :: array(:,:)
         integer(IK)                 , intent(in)    , dimension(2)      :: size, lbc, lbcold, ubcold
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -5004,8 +5004,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSLLU_D2_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)                , intent(inout) , allocatable       :: array(:,:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG)                , intent(inout) , allocatable       :: array(:,:)
         integer(IK)                 , intent(in)    , dimension(2)      :: size, lbc, lbcold, ubcold
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -5017,8 +5017,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSLLU_D2_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)                , intent(inout) , allocatable       :: array(:,:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG)                , intent(inout) , allocatable       :: array(:,:)
         integer(IK)                 , intent(in)    , dimension(2)      :: size, lbc, lbcold, ubcold
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -5030,8 +5030,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSLLU_D2_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)                , intent(inout) , allocatable       :: array(:,:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG)                , intent(inout) , allocatable       :: array(:,:)
         integer(IK)                 , intent(in)    , dimension(2)      :: size, lbc, lbcold, ubcold
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -5043,8 +5043,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSLLU_D2_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)                , intent(inout) , allocatable       :: array(:,:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG)                , intent(inout) , allocatable       :: array(:,:)
         integer(IK)                 , intent(in)    , dimension(2)      :: size, lbc, lbcold, ubcold
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -5056,8 +5056,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSLLU_D2_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)                , intent(inout) , allocatable       :: array(:,:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG)                , intent(inout) , allocatable       :: array(:,:)
         integer(IK)                 , intent(in)    , dimension(2)      :: size, lbc, lbcold, ubcold
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -5071,8 +5071,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSLLU_D2_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)                   , intent(inout) , allocatable       :: array(:,:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)                   , intent(inout) , allocatable       :: array(:,:)
         integer(IK)                 , intent(in)    , dimension(2)      :: size, lbc, lbcold, ubcold
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -5084,8 +5084,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSLLU_D2_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)                   , intent(inout) , allocatable       :: array(:,:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)                   , intent(inout) , allocatable       :: array(:,:)
         integer(IK)                 , intent(in)    , dimension(2)      :: size, lbc, lbcold, ubcold
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -5097,8 +5097,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSLLU_D2_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)                   , intent(inout) , allocatable       :: array(:,:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)                   , intent(inout) , allocatable       :: array(:,:)
         integer(IK)                 , intent(in)    , dimension(2)      :: size, lbc, lbcold, ubcold
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -5110,8 +5110,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSLLU_D2_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)                   , intent(inout) , allocatable       :: array(:,:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)                   , intent(inout) , allocatable       :: array(:,:)
         integer(IK)                 , intent(in)    , dimension(2)      :: size, lbc, lbcold, ubcold
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -5123,8 +5123,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSLLU_D2_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)                   , intent(inout) , allocatable       :: array(:,:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)                   , intent(inout) , allocatable       :: array(:,:)
         integer(IK)                 , intent(in)    , dimension(2)      :: size, lbc, lbcold, ubcold
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -5140,9 +5140,9 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSLLU_D2_PSSK5
 #endif
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))          , intent(inout) , allocatable       :: array(:,:)
+        type(css_pdt(SKG))          , intent(inout) , allocatable       :: array(:,:)
         integer(IK)                 , intent(in)    , dimension(2)      :: size, lbc, lbcold, ubcold
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -5154,9 +5154,9 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSLLU_D2_PSSK4
 #endif
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))          , intent(inout) , allocatable       :: array(:,:)
+        type(css_pdt(SKG))          , intent(inout) , allocatable       :: array(:,:)
         integer(IK)                 , intent(in)    , dimension(2)      :: size, lbc, lbcold, ubcold
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -5168,9 +5168,9 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSLLU_D2_PSSK3
 #endif
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))          , intent(inout) , allocatable       :: array(:,:)
+        type(css_pdt(SKG))          , intent(inout) , allocatable       :: array(:,:)
         integer(IK)                 , intent(in)    , dimension(2)      :: size, lbc, lbcold, ubcold
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -5182,9 +5182,9 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSLLU_D2_PSSK2
 #endif
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))          , intent(inout) , allocatable       :: array(:,:)
+        type(css_pdt(SKG))          , intent(inout) , allocatable       :: array(:,:)
         integer(IK)                 , intent(in)    , dimension(2)      :: size, lbc, lbcold, ubcold
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -5196,9 +5196,9 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSLLU_D2_PSSK1
 #endif
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))          , intent(inout) , allocatable       :: array(:,:)
+        type(css_pdt(SKG))          , intent(inout) , allocatable       :: array(:,:)
         integer(IK)                 , intent(in)    , dimension(2)      :: size, lbc, lbcold, ubcold
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -5214,7 +5214,7 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSLLU_D2_BSSK
 #endif
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
         use pm_container, only: css_type
         type(css_type)              , intent(inout) , allocatable       :: array(:,:)
         integer(IK)                 , intent(in)    , dimension(2)      :: size, lbc, lbcold, ubcold
@@ -5237,8 +5237,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSLLU_D3_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)            , intent(inout) , allocatable       :: array(:,:,:)
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)            , intent(inout) , allocatable       :: array(:,:,:)
         integer(IK)                 , intent(in)    , dimension(3)      :: size, lbc, lbcold, ubcold
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -5250,8 +5250,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSLLU_D3_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)            , intent(inout) , allocatable       :: array(:,:,:)
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)            , intent(inout) , allocatable       :: array(:,:,:)
         integer(IK)                 , intent(in)    , dimension(3)      :: size, lbc, lbcold, ubcold
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -5263,8 +5263,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSLLU_D3_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)            , intent(inout) , allocatable       :: array(:,:,:)
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)            , intent(inout) , allocatable       :: array(:,:,:)
         integer(IK)                 , intent(in)    , dimension(3)      :: size, lbc, lbcold, ubcold
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -5276,8 +5276,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSLLU_D3_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)            , intent(inout) , allocatable       :: array(:,:,:)
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)            , intent(inout) , allocatable       :: array(:,:,:)
         integer(IK)                 , intent(in)    , dimension(3)      :: size, lbc, lbcold, ubcold
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -5289,8 +5289,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSLLU_D3_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)            , intent(inout) , allocatable       :: array(:,:,:)
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)            , intent(inout) , allocatable       :: array(:,:,:)
         integer(IK)                 , intent(in)    , dimension(3)      :: size, lbc, lbcold, ubcold
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -5304,8 +5304,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSLLU_D3_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)                , intent(inout) , allocatable       :: array(:,:,:)
+        use pm_kind, only: IKG => IK5
+        integer(IKG)                , intent(inout) , allocatable       :: array(:,:,:)
         integer(IK)                 , intent(in)    , dimension(3)      :: size, lbc, lbcold, ubcold
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -5317,8 +5317,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSLLU_D3_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)                , intent(inout) , allocatable       :: array(:,:,:)
+        use pm_kind, only: IKG => IK4
+        integer(IKG)                , intent(inout) , allocatable       :: array(:,:,:)
         integer(IK)                 , intent(in)    , dimension(3)      :: size, lbc, lbcold, ubcold
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -5330,8 +5330,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSLLU_D3_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)                , intent(inout) , allocatable       :: array(:,:,:)
+        use pm_kind, only: IKG => IK3
+        integer(IKG)                , intent(inout) , allocatable       :: array(:,:,:)
         integer(IK)                 , intent(in)    , dimension(3)      :: size, lbc, lbcold, ubcold
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -5343,8 +5343,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSLLU_D3_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)                , intent(inout) , allocatable       :: array(:,:,:)
+        use pm_kind, only: IKG => IK2
+        integer(IKG)                , intent(inout) , allocatable       :: array(:,:,:)
         integer(IK)                 , intent(in)    , dimension(3)      :: size, lbc, lbcold, ubcold
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -5356,8 +5356,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSLLU_D3_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)                , intent(inout) , allocatable       :: array(:,:,:)
+        use pm_kind, only: IKG => IK1
+        integer(IKG)                , intent(inout) , allocatable       :: array(:,:,:)
         integer(IK)                 , intent(in)    , dimension(3)      :: size, lbc, lbcold, ubcold
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -5371,8 +5371,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSLLU_D3_LK5
 #endif
-        use pm_kind, only: LKC => LK5
-        logical(LKC)                , intent(inout) , allocatable       :: array(:,:,:)
+        use pm_kind, only: LKG => LK5
+        logical(LKG)                , intent(inout) , allocatable       :: array(:,:,:)
         integer(IK)                 , intent(in)    , dimension(3)      :: size, lbc, lbcold, ubcold
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -5384,8 +5384,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSLLU_D3_LK4
 #endif
-        use pm_kind, only: LKC => LK4
-        logical(LKC)                , intent(inout) , allocatable       :: array(:,:,:)
+        use pm_kind, only: LKG => LK4
+        logical(LKG)                , intent(inout) , allocatable       :: array(:,:,:)
         integer(IK)                 , intent(in)    , dimension(3)      :: size, lbc, lbcold, ubcold
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -5397,8 +5397,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSLLU_D3_LK3
 #endif
-        use pm_kind, only: LKC => LK3
-        logical(LKC)                , intent(inout) , allocatable       :: array(:,:,:)
+        use pm_kind, only: LKG => LK3
+        logical(LKG)                , intent(inout) , allocatable       :: array(:,:,:)
         integer(IK)                 , intent(in)    , dimension(3)      :: size, lbc, lbcold, ubcold
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -5410,8 +5410,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSLLU_D3_LK2
 #endif
-        use pm_kind, only: LKC => LK2
-        logical(LKC)                , intent(inout) , allocatable       :: array(:,:,:)
+        use pm_kind, only: LKG => LK2
+        logical(LKG)                , intent(inout) , allocatable       :: array(:,:,:)
         integer(IK)                 , intent(in)    , dimension(3)      :: size, lbc, lbcold, ubcold
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -5423,8 +5423,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSLLU_D3_LK1
 #endif
-        use pm_kind, only: LKC => LK1
-        logical(LKC)                , intent(inout) , allocatable       :: array(:,:,:)
+        use pm_kind, only: LKG => LK1
+        logical(LKG)                , intent(inout) , allocatable       :: array(:,:,:)
         integer(IK)                 , intent(in)    , dimension(3)      :: size, lbc, lbcold, ubcold
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -5438,8 +5438,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSLLU_D3_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)                , intent(inout) , allocatable       :: array(:,:,:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG)                , intent(inout) , allocatable       :: array(:,:,:)
         integer(IK)                 , intent(in)    , dimension(3)      :: size, lbc, lbcold, ubcold
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -5451,8 +5451,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSLLU_D3_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)                , intent(inout) , allocatable       :: array(:,:,:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG)                , intent(inout) , allocatable       :: array(:,:,:)
         integer(IK)                 , intent(in)    , dimension(3)      :: size, lbc, lbcold, ubcold
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -5464,8 +5464,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSLLU_D3_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)                , intent(inout) , allocatable       :: array(:,:,:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG)                , intent(inout) , allocatable       :: array(:,:,:)
         integer(IK)                 , intent(in)    , dimension(3)      :: size, lbc, lbcold, ubcold
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -5477,8 +5477,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSLLU_D3_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)                , intent(inout) , allocatable       :: array(:,:,:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG)                , intent(inout) , allocatable       :: array(:,:,:)
         integer(IK)                 , intent(in)    , dimension(3)      :: size, lbc, lbcold, ubcold
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -5490,8 +5490,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSLLU_D3_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)                , intent(inout) , allocatable       :: array(:,:,:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG)                , intent(inout) , allocatable       :: array(:,:,:)
         integer(IK)                 , intent(in)    , dimension(3)      :: size, lbc, lbcold, ubcold
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -5505,8 +5505,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSLLU_D3_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)                   , intent(inout) , allocatable       :: array(:,:,:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)                   , intent(inout) , allocatable       :: array(:,:,:)
         integer(IK)                 , intent(in)    , dimension(3)      :: size, lbc, lbcold, ubcold
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -5518,8 +5518,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSLLU_D3_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)                   , intent(inout) , allocatable       :: array(:,:,:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)                   , intent(inout) , allocatable       :: array(:,:,:)
         integer(IK)                 , intent(in)    , dimension(3)      :: size, lbc, lbcold, ubcold
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -5531,8 +5531,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSLLU_D3_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)                   , intent(inout) , allocatable       :: array(:,:,:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)                   , intent(inout) , allocatable       :: array(:,:,:)
         integer(IK)                 , intent(in)    , dimension(3)      :: size, lbc, lbcold, ubcold
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -5544,8 +5544,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSLLU_D3_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)                   , intent(inout) , allocatable       :: array(:,:,:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)                   , intent(inout) , allocatable       :: array(:,:,:)
         integer(IK)                 , intent(in)    , dimension(3)      :: size, lbc, lbcold, ubcold
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -5557,8 +5557,8 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSLLU_D3_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)                   , intent(inout) , allocatable       :: array(:,:,:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)                   , intent(inout) , allocatable       :: array(:,:,:)
         integer(IK)                 , intent(in)    , dimension(3)      :: size, lbc, lbcold, ubcold
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -5574,9 +5574,9 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSLLU_D3_PSSK5
 #endif
-        use pm_kind, only: SKC => SK5
+        use pm_kind, only: SKG => SK5
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))          , intent(inout) , allocatable       :: array(:,:,:)
+        type(css_pdt(SKG))          , intent(inout) , allocatable       :: array(:,:,:)
         integer(IK)                 , intent(in)    , dimension(3)      :: size, lbc, lbcold, ubcold
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -5588,9 +5588,9 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSLLU_D3_PSSK4
 #endif
-        use pm_kind, only: SKC => SK4
+        use pm_kind, only: SKG => SK4
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))          , intent(inout) , allocatable       :: array(:,:,:)
+        type(css_pdt(SKG))          , intent(inout) , allocatable       :: array(:,:,:)
         integer(IK)                 , intent(in)    , dimension(3)      :: size, lbc, lbcold, ubcold
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -5602,9 +5602,9 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSLLU_D3_PSSK3
 #endif
-        use pm_kind, only: SKC => SK3
+        use pm_kind, only: SKG => SK3
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))          , intent(inout) , allocatable       :: array(:,:,:)
+        type(css_pdt(SKG))          , intent(inout) , allocatable       :: array(:,:,:)
         integer(IK)                 , intent(in)    , dimension(3)      :: size, lbc, lbcold, ubcold
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -5616,9 +5616,9 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSLLU_D3_PSSK2
 #endif
-        use pm_kind, only: SKC => SK2
+        use pm_kind, only: SKG => SK2
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))          , intent(inout) , allocatable       :: array(:,:,:)
+        type(css_pdt(SKG))          , intent(inout) , allocatable       :: array(:,:,:)
         integer(IK)                 , intent(in)    , dimension(3)      :: size, lbc, lbcold, ubcold
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -5630,9 +5630,9 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSLLU_D3_PSSK1
 #endif
-        use pm_kind, only: SKC => SK1
+        use pm_kind, only: SKG => SK1
         use pm_container, only: css_pdt
-        type(css_pdt(SKC))          , intent(inout) , allocatable       :: array(:,:,:)
+        type(css_pdt(SKG))          , intent(inout) , allocatable       :: array(:,:,:)
         integer(IK)                 , intent(in)    , dimension(3)      :: size, lbc, lbcold, ubcold
         character(*, SK)            , intent(out)   , optional          :: errmsg
         logical(LK)                 , intent(out)   , optional          :: failed
@@ -5648,7 +5648,7 @@ module pm_arrayResize
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setResizedSLLU_D3_BSSK
 #endif
-        use pm_kind, only: SKC => SK
+        use pm_kind, only: SKG => SK
         use pm_container, only: css_type
         type(css_type)              , intent(inout) , allocatable       :: array(:,:,:)
         integer(IK)                 , intent(in)    , dimension(3)      :: size, lbc, lbcold, ubcold

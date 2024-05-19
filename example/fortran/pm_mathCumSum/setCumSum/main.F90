@@ -12,8 +12,8 @@ program example
     disp = display_type(file = "main.out.F90")
 
     block
-        use pm_kind, only: IKC => IK
-        integer(IKC), allocatable :: array(:), cumsum(:)
+        use pm_kind, only: IKG => IK
+        integer(IKG), allocatable :: array(:), cumsum(:)
         call disp%skip
         call disp%show("array = [1, 2, 3, 4]")
                         array = [1, 2, 3, 4]
@@ -43,8 +43,8 @@ program example
     end block
 
     block
-        use pm_kind, only: IKC => IK
-        integer(IKC), allocatable :: array(:), cumsum(:), reference(:)
+        use pm_kind, only: IKG => IK
+        integer(IKG), allocatable :: array(:), cumsum(:), reference(:)
         call disp%skip
         call disp%show("reference = [1, 2, 3, 4]")
                         reference = [1, 2, 3, 4]
@@ -82,11 +82,11 @@ program example
     end block
 
     block
-        use pm_kind, only: CKC => CKS
-        complex(CKC), allocatable :: array(:), cumsum(:)
+        use pm_kind, only: CKG => CKS
+        complex(CKG), allocatable :: array(:), cumsum(:)
         call disp%skip
-        call disp%show("array = cmplx([real(CKC) :: 1, 2, 3, 4], -[real(CKC) :: 1, 2, 3, 4], CKC)")
-                        array = cmplx([real(CKC) :: 1, 2, 3, 4], -[real(CKC) :: 1, 2, 3, 4], CKC)
+        call disp%show("array = cmplx([real(CKG) :: 1, 2, 3, 4], -[real(CKG) :: 1, 2, 3, 4], CKG)")
+                        array = cmplx([real(CKG) :: 1, 2, 3, 4], -[real(CKG) :: 1, 2, 3, 4], CKG)
         call disp%show("call setResized(cumsum, size(array, 1, IK))")
                         call setResized(cumsum, size(array, 1, IK))
         call disp%show("call setCumSum(cumsum, array)")
@@ -113,11 +113,11 @@ program example
     end block
 
     block
-        use pm_kind, only: CKC => CKS
-        complex(CKC), allocatable :: array(:), cumsum(:), reference(:)
+        use pm_kind, only: CKG => CKS
+        complex(CKG), allocatable :: array(:), cumsum(:), reference(:)
         call disp%skip
-        call disp%show("reference = cmplx([real(CKC) :: 1, 2, 3, 4], -[real(CKC) :: 1, 2, 3, 4], CKC)")
-                        reference = cmplx([real(CKC) :: 1, 2, 3, 4], -[real(CKC) :: 1, 2, 3, 4], CKC)
+        call disp%show("reference = cmplx([real(CKG) :: 1, 2, 3, 4], -[real(CKG) :: 1, 2, 3, 4], CKG)")
+                        reference = cmplx([real(CKG) :: 1, 2, 3, 4], -[real(CKG) :: 1, 2, 3, 4], CKG)
         call disp%show("array = reference")
                         array = reference
         call disp%show("call setCumSum(array)")
@@ -152,11 +152,11 @@ program example
     end block
 
     block
-        use pm_kind, only: RKC => RKH
-        real(RKC), allocatable :: array(:), cumsum(:)
+        use pm_kind, only: RKG => RKH
+        real(RKG), allocatable :: array(:), cumsum(:)
         call disp%skip
-        call disp%show("array = [real(RKC) :: 1, 2, 3, 4]")
-                        array = [real(RKC) :: 1, 2, 3, 4]
+        call disp%show("array = [real(RKG) :: 1, 2, 3, 4]")
+                        array = [real(RKG) :: 1, 2, 3, 4]
         call disp%show("call setResized(cumsum, size(array, 1, IK))")
                         call setResized(cumsum, size(array, 1, IK))
         call disp%show("call setCumSum(cumsum, array)")
@@ -183,8 +183,8 @@ program example
     end block
 
     block
-        use pm_kind, only: RKC => RKH
-        real(RKC), allocatable :: array(:), cumsum(:), reference(:)
+        use pm_kind, only: RKG => RKH
+        real(RKG), allocatable :: array(:), cumsum(:), reference(:)
         call disp%skip
         call disp%show("reference = [1, 2, 3, 4]")
                         reference = [1, 2, 3, 4]

@@ -62,35 +62,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setKnnSortedVal_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_knn@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setKnnSortedVal_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_knn@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setKnnSortedVal_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_knn@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setKnnSortedVal_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_knn@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setKnnSortedVal_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_knn@routines.inc.F90"
     end procedure
 #endif
@@ -113,35 +113,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setKnnSortedKth_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_knn@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setKnnSortedKth_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_knn@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setKnnSortedKth_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_knn@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setKnnSortedKth_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_knn@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setKnnSortedKth_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_knn@routines.inc.F90"
     end procedure
 #endif
@@ -164,35 +164,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setKnnSortedInd_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_knn@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setKnnSortedInd_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_knn@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setKnnSortedInd_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_knn@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setKnnSortedInd_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_knn@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setKnnSortedInd_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_knn@routines.inc.F90"
     end procedure
 #endif

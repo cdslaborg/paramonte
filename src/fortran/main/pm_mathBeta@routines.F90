@@ -62,35 +62,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getLogBeta_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_mathBeta@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getLogBeta_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_mathBeta@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getLogBeta_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_mathBeta@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getLogBeta_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_mathBeta@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getLogBeta_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_mathBeta@routines.inc.F90"
     end procedure
 #endif
@@ -111,35 +111,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getBetaInc_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_mathBeta@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getBetaInc_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_mathBeta@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getBetaInc_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_mathBeta@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getBetaInc_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_mathBeta@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getBetaInc_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_mathBeta@routines.inc.F90"
     end procedure
 #endif
@@ -166,35 +166,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setBetaIncDef_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_mathBeta@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setBetaIncDef_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_mathBeta@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setBetaIncDef_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_mathBeta@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setBetaIncDef_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_mathBeta@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setBetaIncDef_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_mathBeta@routines.inc.F90"
     end procedure
 #endif
@@ -217,35 +217,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setBetaIncGK21_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_mathBeta@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setBetaIncGK21_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_mathBeta@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setBetaIncGK21_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_mathBeta@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setBetaIncGK21_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_mathBeta@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setBetaIncGK21_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_mathBeta@routines.inc.F90"
     end procedure
 #endif
@@ -272,35 +272,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getBetaInv_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_mathBeta@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getBetaInv_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_mathBeta@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getBetaInv_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_mathBeta@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getBetaInv_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_mathBeta@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getBetaInv_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_mathBeta@routines.inc.F90"
     end procedure
 #endif
@@ -321,35 +321,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setBetaInv_RK5
-        use pm_kind, only: RKC => RK5
+        use pm_kind, only: RKG => RK5
 #include "pm_mathBeta@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setBetaInv_RK4
-        use pm_kind, only: RKC => RK4
+        use pm_kind, only: RKG => RK4
 #include "pm_mathBeta@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setBetaInv_RK3
-        use pm_kind, only: RKC => RK3
+        use pm_kind, only: RKG => RK3
 #include "pm_mathBeta@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setBetaInv_RK2
-        use pm_kind, only: RKC => RK2
+        use pm_kind, only: RKG => RK2
 #include "pm_mathBeta@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setBetaInv_RK1
-        use pm_kind, only: RKC => RK1
+        use pm_kind, only: RKG => RK1
 #include "pm_mathBeta@routines.inc.F90"
     end procedure
 #endif

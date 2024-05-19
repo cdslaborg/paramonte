@@ -36,10 +36,10 @@ program example
     call disp%skip()
 
     block
-        use pm_kind, only: RKC => RKS ! All other real types are also supported.
+        use pm_kind, only: RKG => RKS ! All other real types are also supported.
         integer(IK) :: ndim, nsam
-        real(RKC), allocatable :: sample(:,:)
-        format = getFormat(mold = [0._RKC], ed = SK_"es", signed = .true._LK)
+        real(RKG), allocatable :: sample(:,:)
+        format = getFormat(mold = [0._RKG], ed = SK_"es", signed = .true._LK)
         call disp%show("ndim = 2; nsam = 10")
                         ndim = 2; nsam = 10
         call disp%show("sample = reshape(getUnifRand(1, 20, ndim * nsam), shape = [ndim, nsam], order = [2, 1])")
@@ -107,11 +107,11 @@ program example
 
     block
         use pm_arrayVerbose, only: getVerbose
-        use pm_kind, only: RKC => RKS ! All other real types are also supported.
+        use pm_kind, only: RKG => RKS ! All other real types are also supported.
         integer(IK) :: ndim, nsam
         integer(IK), allocatable :: iweight(:)
-        real(RKC), allocatable :: sample(:,:)
-        format = getFormat(mold = [0._RKC], ed = SK_"es", signed = .true._LK)
+        real(RKG), allocatable :: sample(:,:)
+        format = getFormat(mold = [0._RKG], ed = SK_"es", signed = .true._LK)
         call disp%show("ndim = 2; nsam = 10")
                         ndim = 2; nsam = 10
         call disp%show("sample = reshape(getUnifRand(1, 20, ndim * nsam), shape = [ndim, nsam], order = [2, 1])")

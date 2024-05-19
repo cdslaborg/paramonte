@@ -1212,7 +1212,6 @@ contains
     function test_getUnique_D1_1() result(assertion)
 
         use pm_kind, only: RK, IK
-        use pm_container, only: IV => cvi_pdt
 
         implicit none
         logical(LK)                 :: assertion

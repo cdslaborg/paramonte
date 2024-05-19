@@ -26,11 +26,11 @@
 
         ! Set the conjugation rule.
 #if     CK_ENABLED
-#define TYPE_OF_SAMPLE complex(TKC)
+#define TYPE_OF_SAMPLE complex(TKG)
 #define GET_ABSQ(X)(real(X)**2 + aimag(X)**2)
 #define GET_PROD(X,Y)(X%re * Y%re + X%im * Y%im)
 #elif   RK_ENABLED
-#define TYPE_OF_SAMPLE real(TKC)
+#define TYPE_OF_SAMPLE real(TKG)
 #define GET_PROD(X,Y)X * Y
 #define GET_ABSQ(X)X**2
 #else
@@ -56,7 +56,7 @@
 #if     WTI_ENABLED
 #define TYPE_OF_WEIGHT integer(IK)
 #elif   WTR_ENABLED
-#define TYPE_OF_WEIGHT real(TKC)
+#define TYPE_OF_WEIGHT real(TKG)
 #elif   !WNO_ENABLED && (getVar_ENABLED || setVarMean_ENABLED)
 #error  "Unrecognized interface."
 #endif
@@ -75,7 +75,7 @@ PROC//SK_": The condition `1 <= dim .and. dim <= rank(sample)` must hold. dim, r
 CHECK_ASSERTION(__LINE__, 0 < sum(weight), \
 PROC//SK_": The condition `0 < sum(weight)` must hold. weight = "//getStr(weight))
 #define CHECK_VAL_WEI(PROC) \
-CHECK_ASSERTION(__LINE__, all(0._TKC <= weight), \
+CHECK_ASSERTION(__LINE__, all(0._TKG <= weight), \
 PROC//SK_": The condition `all(0. <= weight)` must hold. weight = "//getStr(weight))
 #define CHECK_LEN_VAR(PROC) \
 CHECK_ASSERTION(__LINE__, size(sample, 3 - dim, IK) == size(var, 1, IK), \
@@ -99,7 +99,7 @@ PROC//SK_": The condition `size(sample, dim) == size(weight)` must hold. dim, si
 //getStr([DIM, size(sample, DIM, IK), size(weight, 1, IK)]))
 ! For very large sample, the following test is very crude and sensitive to the default vs. high-precision summation methods.
 #define CHECK_WEISUM(PROC) \
-CHECK_ASSERTION(__LINE__, abs(weisum - sum(weight)) < 1000 * epsilon(0._TKC), \
+CHECK_ASSERTION(__LINE__, abs(weisum - sum(weight)) < 1000 * epsilon(0._TKG), \
 PROC//SK_": The condition `0 < sum(weight)` must hold. weisum, sum(weight) = "//getStr([weisum, sum(weight)]))
 
         !%%%%%%%%%%%%%%%%%%%%%%%
@@ -107,11 +107,11 @@ PROC//SK_": The condition `0 < sum(weight)` must hold. weisum, sum(weight) = "//
         !%%%%%%%%%%%%%%%%%%%%%%%
 
 #if     Freq_ENABLED
-        CHECK_ASSERTION(__LINE__, 1._TKC < weisum, SK_"@setVarCorrection(): The condition `0 < weisum` must hold. weisum = "//getStr(weisum))
-        correction = weisum / (weisum - 1._TKC)
+        CHECK_ASSERTION(__LINE__, 1._TKG < weisum, SK_"@setVarCorrection(): The condition `0 < weisum` must hold. weisum = "//getStr(weisum))
+        correction = weisum / (weisum - 1._TKG)
 #elif   Reli_ENABLED
-        CHECK_ASSERTION(__LINE__, 0._TKC < weisum, SK_"@setVarCorrection(): The condition `0 < weisum` must hold. weisum = "//getStr(weisum))
-        CHECK_ASSERTION(__LINE__, 0._TKC < weisqs, SK_"@setVarCorrection(): The condition `0 < weisqs` must hold. weisqs = "//getStr(weisqs))
+        CHECK_ASSERTION(__LINE__, 0._TKG < weisum, SK_"@setVarCorrection(): The condition `0 < weisum` must hold. weisum = "//getStr(weisum))
+        CHECK_ASSERTION(__LINE__, 0._TKG < weisqs, SK_"@setVarCorrection(): The condition `0 < weisqs` must hold. weisqs = "//getStr(weisqs))
         correction = weisum**2 / (weisum**2 - weisqs)
 #else
 #error  "Unrecognized interface."
@@ -140,11 +140,11 @@ CHECK_ASSERTION(__LINE__, size(varMerged, 1, IK) == size(varB, 1, IK), SK_"@setV
 #endif
 #if     D1_ENABLED
         integer(IK) :: idim
-        real(TKC) :: fracAB
+        real(TKG) :: fracAB
 #endif
-        real(TKC) :: fracB
-        fracB = 1._TKC - fracA
-        CHECK_ASSERTION(__LINE__, 0._TKC < fracA .and. fracA < 1._TKC, SK_"@setVarMerged(): The condition `0 < fracA .and. fracA < 1` must hold. fracA = "//getStr(fracA))
+        real(TKG) :: fracB
+        fracB = 1._TKG - fracA
+        CHECK_ASSERTION(__LINE__, 0._TKG < fracA .and. fracA < 1._TKG, SK_"@setVarMerged(): The condition `0 < fracA .and. fracA < 1` must hold. fracA = "//getStr(fracA))
 #if     D0_ENABLED
         TARGET_VAR = fracA * varA + fracB * varB + fracA * fracB * GET_ABSQ(meanDiff)
 #elif   D1_ENABLED
@@ -184,11 +184,11 @@ CHECK_ASSERTION(__LINE__, size(varMerged, 1, IK) == size(varB, 1, IK), SK_"@setV
         TYPE_OF_SAMPLE :: temp
 #if     D1_ENABLED
         integer(IK) :: idim
-        real(TKC) :: fracAB
+        real(TKG) :: fracAB
 #endif
-        real(TKC) :: fracB
-        fracB = 1._TKC - fracA
-        CHECK_ASSERTION(__LINE__, 0._TKC < fracA .and. fracA < 1._TKC, SK_"@setVarMeanMerged(): The condition `0 < fracA .and. fracA < 1` must hold. fracA = "//getStr(fracA))
+        real(TKG) :: fracB
+        fracB = 1._TKG - fracA
+        CHECK_ASSERTION(__LINE__, 0._TKG < fracA .and. fracA < 1._TKG, SK_"@setVarMeanMerged(): The condition `0 < fracA .and. fracA < 1` must hold. fracA = "//getStr(fracA))
 #if     D0_ENABLED
         temp = meanA - meanB
         TARGET_VAR = fracA * varA + fracB * varB + fracA * fracB * GET_ABSQ(temp)
@@ -223,11 +223,11 @@ CHECK_ASSERTION(__LINE__, size(varMerged, 1, IK) == size(varB, 1, IK), SK_"@setV
 #else
 #error  "Unrecognized interface."
 #endif
-        real(TKC) :: normfac
+        real(TKG) :: normfac
         ! Define the weight sum.
 #if     WNO_ENABLED
-        real(TKC) :: weisum
-        weisum = real(product(shape(sample, IK)), TKC)
+        real(TKG) :: weisum
+        weisum = real(product(shape(sample, IK)), TKG)
         call setVar(var, getMean(sample DIM_ARG), sample DIM_ARG)
 #elif   WTI_ENABLED || WTR_ENABLED
         TYPE_OF_WEIGHT :: weisum
@@ -239,12 +239,12 @@ CHECK_ASSERTION(__LINE__, size(varMerged, 1, IK) == size(varB, 1, IK), SK_"@setV
         if (present(correction)) then
             CHECK_ASSERTION(__LINE__, same_type_as(correction, fweight) .or. same_type_as(correction, rweight), SK_"@getVar(): The condition `same_type_as(correction, fweight) .or. same_type_as(correction, rweight)` must hold.")
 #if         WNO_ENABLED
-            normfac = getVarCorrection(real(weisum, TKC))
+            normfac = getVarCorrection(real(weisum, TKG))
 #elif       (WTI_ENABLED || WTR_ENABLED)
             if (same_type_as(correction, fweight)) then
-                normfac = getVarCorrection(real(weisum, TKC))
+                normfac = getVarCorrection(real(weisum, TKG))
             elseif (same_type_as(correction, rweight)) then
-                normfac = getVarCorrection(real(weisum, TKC), real(sum(weight**2), TKC))
+                normfac = getVarCorrection(real(weisum, TKG), real(sum(weight**2), TKG))
             end if
 #else
 #error      "Unrecognized interface."
@@ -260,8 +260,8 @@ CHECK_ASSERTION(__LINE__, size(varMerged, 1, IK) == size(varB, 1, IK), SK_"@setV
         TYPE_OF_SAMPLE :: temp
         integer(IK) :: isam
 #if     WNO_ENABLED
-        real(TKC) :: weisum
-        weisum = real(size(sample, 1, IK), TKC)
+        real(TKG) :: weisum
+        weisum = real(size(sample, 1, IK), TKG)
 #elif   WTI_ENABLED || WTR_ENABLED
         CHECK_WEISUM(SK_"@setVar()")
         CHECK_SUM_WEI(SK_"@setVar()")
@@ -271,7 +271,7 @@ CHECK_ASSERTION(__LINE__, size(varMerged, 1, IK) == size(varB, 1, IK), SK_"@setV
 #error  "Unrecognized interface."
 #endif
         CHECK_VAL_NSAM(SK_"@setVar()",1_IK)
-        var = 0._TKC
+        var = 0._TKG
         do isam = 1, size(sample, 1, IK)
             temp = GET_SHIFTED(sample(isam),mean)
             var = var + GET_WEIGHTED(GET_ABSQ(temp),weight(isam))
@@ -286,7 +286,7 @@ CHECK_ASSERTION(__LINE__, size(varMerged, 1, IK) == size(varB, 1, IK), SK_"@setV
         integer(IK) :: idim, jdim
         integer(IK) :: mdim, ndim
 #if     WNO_ENABLED
-        real(TKC) :: weisum
+        real(TKG) :: weisum
         weisum = size(sample, kind = IK)
 #elif   WTI_ENABLED || WTR_ENABLED
         integer(IK) :: iwei
@@ -301,7 +301,7 @@ CHECK_ASSERTION(__LINE__, size(varMerged, 1, IK) == size(varB, 1, IK), SK_"@setV
         CHECK_ASSERTION(__LINE__, 1_IK < size(sample, kind = IK), SK_"@setVar(): The condition `1 < size(sample)` must hold. shape(sample) = "//getStr(shape(sample, IK)))
         mdim = size(sample, 1, IK)
         ndim = size(sample, 2, IK)
-        var = 0._TKC
+        var = 0._TKG
         do jdim = 1, ndim
             do idim = 1, mdim
 #if             WTI_ENABLED || WTR_ENABLED
@@ -317,19 +317,19 @@ CHECK_ASSERTION(__LINE__, size(varMerged, 1, IK) == size(varB, 1, IK), SK_"@setV
 #elif   setVar_ENABLED && D2_ENABLED && DIM_ENABLED
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        real(TKC) :: normFac
+        real(TKG) :: normFac
         TYPE_OF_SAMPLE :: temp
         integer(IK) :: idim, isam, ndim, nsam
         ndim = size(sample, 3 - dim, IK)
         nsam = size(sample, dim, IK)
 #if     WNO_ENABLED
-        normFac = 1._TKC / real(nsam, TKC)
+        normFac = 1._TKG / real(nsam, TKG)
 #elif   WTI_ENABLED || WTR_ENABLED
         CHECK_WEISUM(SK_"@setVar()")
         CHECK_SUM_WEI(SK_"@setVar()")
         CHECK_VAL_WEI(SK_"@setVar()")
         CHECK_LEN_WEI(SK_"@setVar()",dim)
-        normFac = 1._TKC / real(weisum, TKC)
+        normFac = 1._TKG / real(weisum, TKG)
 #else
 #error  "Unrecognized interface."
 #endif
@@ -341,7 +341,7 @@ CHECK_ASSERTION(__LINE__, size(varMerged, 1, IK) == size(varB, 1, IK), SK_"@setV
         CHECK_LEN_MEAN(SK_"@setVar()")
 #endif
         if (dim == 2_IK) then
-            var = 0._TKC
+            var = 0._TKG
             do isam = 1, nsam
                 do concurrent(idim = 1 : ndim)
                     temp = GET_SHIFTED(sample(idim, isam),mean(idim))
@@ -351,7 +351,7 @@ CHECK_ASSERTION(__LINE__, size(varMerged, 1, IK) == size(varB, 1, IK), SK_"@setV
             var = var * normFac
         else ! dim = 1
             do idim = 1, ndim
-                var(idim) = 0._TKC
+                var(idim) = 0._TKG
                 do isam = 1, nsam
                     temp = GET_SHIFTED(sample(isam, idim),mean(idim))
                     var(idim) = var(idim) + GET_WEIGHTED(GET_ABSQ(temp),weight(isam))
@@ -367,7 +367,7 @@ CHECK_ASSERTION(__LINE__, size(varMerged, 1, IK) == size(varB, 1, IK), SK_"@setV
         integer(IK) :: isam, nsam
         TYPE_OF_SAMPLE :: temp1
 #if     WNO_ENABLED
-        real(TKC) :: weisum
+        real(TKG) :: weisum
         weisum = size(sample, 1, IK)
 #elif   WTI_ENABLED || WTR_ENABLED
         TYPE_OF_SAMPLE :: temp2
@@ -381,8 +381,8 @@ CHECK_ASSERTION(__LINE__, size(varMerged, 1, IK) == size(varB, 1, IK), SK_"@setV
         CHECK_VAL_MEANG(SK_"@setVarMean()",1_IK)
         CHECK_VAL_NSAM(SK_"@setVarMean()",1_IK)
         nsam = size(sample, 1, IK)
-        mean = 0._TKC
-        var = 0._TKC
+        mean = 0._TKG
+        var = 0._TKG
         do isam = 1, nsam
             temp1 = sample(isam) - meang
 #if         WNO_ENABLED
@@ -407,7 +407,7 @@ CHECK_ASSERTION(__LINE__, size(varMerged, 1, IK) == size(varB, 1, IK), SK_"@setV
         integer(IK) :: mdim, ndim
         TYPE_OF_SAMPLE :: temp1
 #if     WNO_ENABLED
-        real(TKC) :: weisum
+        real(TKG) :: weisum
         weisum = size(sample, kind = IK)
 #elif   WTI_ENABLED || WTR_ENABLED
         integer(IK) :: iwei
@@ -424,8 +424,8 @@ CHECK_ASSERTION(__LINE__, size(varMerged, 1, IK) == size(varB, 1, IK), SK_"@setV
         CHECK_ASSERTION(__LINE__, minval(sample) <= meang .and. meang <= maxval(sample), SK_"@setVarMean(): The condition `minval(sample) <= meang .and. meang <= minval(sample)` must hold. minval(sample), meang, maxval(sample) = "//getStr([minval(sample), meang, maxval(sample)]))
         mdim = size(sample, 1, IK)
         ndim = size(sample, 2, IK)
-        mean = 0._TKC
-        var = 0._TKC
+        mean = 0._TKG
+        var = 0._TKG
         do jdim = 1, ndim
             do idim = 1, mdim
                 temp1 = sample(idim, jdim) - meang
@@ -449,7 +449,7 @@ CHECK_ASSERTION(__LINE__, size(varMerged, 1, IK) == size(varB, 1, IK), SK_"@setV
 #elif   setVarMean_ENABLED && D2_ENABLED && DIM_ENABLED
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        real(TKC) :: normFac
+        real(TKG) :: normFac
         TYPE_OF_SAMPLE :: temp1
 #if     WTI_ENABLED || WTR_ENABLED
         TYPE_OF_SAMPLE :: temp2
@@ -464,10 +464,10 @@ CHECK_ASSERTION(__LINE__, size(varMerged, 1, IK) == size(varB, 1, IK), SK_"@setV
         CHECK_VAL_MEANG(SK_"@setVarMean()",dim)
         CHECK_LEN_MEAN(SK_"@setVarMean()")
 #if     WNO_ENABLED
-        normFac = 1._TKC / real(nsam, TKC)
+        normFac = 1._TKG / real(nsam, TKG)
         if (dim == 2_IK) then
-            var = 0._TKC
-            mean = 0._TKC
+            var = 0._TKG
+            mean = 0._TKG
             do isam = 1, nsam
                 do idim = 1, ndim
                     temp1 = sample(idim, isam) - meang(idim)
@@ -482,8 +482,8 @@ CHECK_ASSERTION(__LINE__, size(varMerged, 1, IK) == size(varB, 1, IK), SK_"@setV
             end do
         else
             do concurrent(idim = 1 : ndim)
-                var(idim) = 0._TKC
-                mean(idim) = 0._TKC
+                var(idim) = 0._TKG
+                mean(idim) = 0._TKG
                 do isam = 1, nsam
                     temp1 = sample(isam, idim) - meang(idim)
                     var(idim) = var(idim) + GET_ABSQ(temp1)
@@ -500,8 +500,8 @@ CHECK_ASSERTION(__LINE__, size(varMerged, 1, IK) == size(varB, 1, IK), SK_"@setV
         CHECK_VAL_WEI(SK_"@setVarMean()")
         weisum = 0
         if (dim == 2_IK) then
-            var = 0._TKC
-            mean = 0._TKC
+            var = 0._TKG
+            mean = 0._TKG
             do isam = 1, nsam
                 weisum = weisum + weight(isam)
                 do concurrent(idim = 1 : ndim)
@@ -511,7 +511,7 @@ CHECK_ASSERTION(__LINE__, size(varMerged, 1, IK) == size(varB, 1, IK), SK_"@setV
                     mean(idim) = mean(idim) + temp2
                 end do
             end do
-            normFac = 1._TKC / weisum
+            normFac = 1._TKG / weisum
             do concurrent(idim = 1 : ndim)
                 mean(idim) = mean(idim) * normFac
                 var(idim) = (var(idim) - GET_ABSQ(mean(idim)) * weisum) * normFac
@@ -519,8 +519,8 @@ CHECK_ASSERTION(__LINE__, size(varMerged, 1, IK) == size(varB, 1, IK), SK_"@setV
             end do
         else
             idim = 1_IK
-            var(idim) = 0._TKC
-            mean(idim) = 0._TKC
+            var(idim) = 0._TKG
+            mean(idim) = 0._TKG
             do isam = 1, nsam
                 weisum = weisum + weight(isam)
                 temp1 = sample(isam, idim) - meang(idim)
@@ -528,13 +528,13 @@ CHECK_ASSERTION(__LINE__, size(varMerged, 1, IK) == size(varB, 1, IK), SK_"@setV
                 var(idim) = var(idim) + GET_PROD(temp1,temp2)
                 mean(idim) = mean(idim) + temp2
             end do
-            normFac = 1._TKC / real(weisum, TKC)
+            normFac = 1._TKG / real(weisum, TKG)
             mean(idim) = mean(idim) * normFac
             var(idim) = (var(idim) - GET_ABSQ(mean(idim)) * weisum) * normFac
             mean(idim) = mean(idim) + meang(idim)
             do idim = 2, ndim
-                var(idim) = 0._TKC
-                mean(idim) = 0._TKC
+                var(idim) = 0._TKG
+                mean(idim) = 0._TKG
                 do isam = 1, nsam
                     temp1 = sample(isam, idim) - meang(idim)
                     temp2 = temp1 * weight(isam)

@@ -41,24 +41,24 @@
 #if     SK_ENABLED && D0_ENABLED
 #define GET_DIFF(X,Y) ichar(X, IK) - ichar(Y, IK)
         integer(IK)         , parameter     :: START_STEP = 1_IK
-        character(:,SKC)    , allocatable   :: choices, set
-        character(1,SKC)    , parameter     :: lb = "A", ub = "Z"
-        character(1,SKC)                    :: start, finit
+        character(:,SKG)    , allocatable   :: choices, set
+        character(1,SKG)    , parameter     :: lb = "A", ub = "Z"
+        character(1,SKG)                    :: start, finit
         integer(IK)                         :: step
 #elif   IK_ENABLED && D1_ENABLED
 #define GET_DIFF(X,Y) X - Y
-        integer(IKC)        , parameter     :: START_STEP = 1_IKC
-        integer(IKC)        , allocatable   :: choices(:), set(:)
-        integer(IKC)        , parameter     :: lb = 1   , ub = 9
-        integer(IKC)                        :: start, finit
-        integer(IKC)                        :: step
+        integer(IKG)        , parameter     :: START_STEP = 1_IKG
+        integer(IKG)        , allocatable   :: choices(:), set(:)
+        integer(IKG)        , parameter     :: lb = 1   , ub = 9
+        integer(IKG)                        :: start, finit
+        integer(IKG)                        :: step
 #elif   RK_ENABLED && D1_ENABLED
 #define GET_DIFF(X,Y) X - Y
-        real(RKC)           , parameter     :: START_STEP = 1._RKC
-        real(RKC)           , allocatable   :: choices(:), set(:)
-        real(RKC)           , parameter     :: lb = 1._RKC, ub = 9._RKC
-        real(RKC)                           :: start, finit
-        real(RKC)                           :: step
+        real(RKG)           , parameter     :: START_STEP = 1._RKG
+        real(RKG)           , allocatable   :: choices(:), set(:)
+        real(RKG)           , parameter     :: lb = 1._RKG, ub = 9._RKG
+        real(RKG)                           :: start, finit
+        real(RKG)                           :: step
 #else
 #error  "Unrecognized interface."
 #endif

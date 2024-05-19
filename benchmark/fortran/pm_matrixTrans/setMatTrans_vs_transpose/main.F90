@@ -3,7 +3,7 @@
 program benchmark
 
     use iso_fortran_env, only: error_unit
-    use pm_kind, only: IK, RKC => RK, RK, SK
+    use pm_kind, only: IK, RKG => RK, RK, SK
     use pm_distUnif, only: setUnifRand
     use pm_bench, only: bench_type
 
@@ -14,10 +14,10 @@ program benchmark
     integer(IK)                         :: rank, irank                  !<  The matrix rank and its counter.
     integer(IK) , parameter             :: NRANK = 20_IK                !<  The number of benchmark ranks.
     integer(IK) , parameter             :: NBENCH = 2_IK                !<  The number of benchmark procedures.
-    real(RKC)                           :: dummySum = 0._RKC            !<  The dummy computation to prevent the compiler from doing aggressive optimizations.
-    real(RKC)   , allocatable           :: matA(:,:)                    !<  The matrix.
+    real(RKG)                           :: dummySum = 0._RKG            !<  The dummy computation to prevent the compiler from doing aggressive optimizations.
+    real(RKG)   , allocatable           :: matA(:,:)                    !<  The matrix.
 #if MatB_ENABLED
-    real(RKC)   , allocatable           :: matB(:,:)                    !<  The matrix transposed.
+    real(RKG)   , allocatable           :: matB(:,:)                    !<  The matrix transposed.
 #endif
     type(bench_type)                    :: bench(NBENCH)                !<  The Benchmark array.
 

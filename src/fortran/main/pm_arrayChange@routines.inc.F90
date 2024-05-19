@@ -29,11 +29,11 @@
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #if     SK_ENABLED
-        character(:, SKC), allocatable :: range
+        character(:, SKG), allocatable :: range
 #elif   IK_ENABLED
-        integer(IKC), allocatable :: range(:)
+        integer(IKG), allocatable :: range(:)
 #elif   RK_ENABLED
-        real(RKC), allocatable :: range(:)
+        real(RKG), allocatable :: range(:)
 #else
 #error  "Unrecognized interface."
 #endif

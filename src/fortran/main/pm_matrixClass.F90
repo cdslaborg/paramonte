@@ -2125,8 +2125,8 @@ module pm_matrixClass
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isMatClassPosDefFulRDP_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)            , intent(in)    , contiguous    :: mat(:,:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG)            , intent(in)    , contiguous    :: mat(:,:)
         type(posdefmat_type)    , intent(in)                    :: class
         logical(LK)                                             :: itis
     end function
@@ -2137,8 +2137,8 @@ module pm_matrixClass
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isMatClassPosDefFulRDP_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)            , intent(in)    , contiguous    :: mat(:,:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG)            , intent(in)    , contiguous    :: mat(:,:)
         type(posdefmat_type)    , intent(in)                    :: class
         logical(LK)                                             :: itis
     end function
@@ -2149,8 +2149,8 @@ module pm_matrixClass
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isMatClassPosDefFulRDP_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)            , intent(in)    , contiguous    :: mat(:,:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG)            , intent(in)    , contiguous    :: mat(:,:)
         type(posdefmat_type)    , intent(in)                    :: class
         logical(LK)                                             :: itis
     end function
@@ -2161,8 +2161,8 @@ module pm_matrixClass
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isMatClassPosDefFulRDP_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)            , intent(in)    , contiguous    :: mat(:,:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG)            , intent(in)    , contiguous    :: mat(:,:)
         type(posdefmat_type)    , intent(in)                    :: class
         logical(LK)                                             :: itis
     end function
@@ -2173,8 +2173,8 @@ module pm_matrixClass
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isMatClassPosDefFulRDP_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)            , intent(in)    , contiguous    :: mat(:,:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG)            , intent(in)    , contiguous    :: mat(:,:)
         type(posdefmat_type)    , intent(in)                    :: class
         logical(LK)                                             :: itis
     end function
@@ -2187,8 +2187,8 @@ module pm_matrixClass
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isMatClassPosDefFulRDP_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)               , intent(in)    , contiguous    :: mat(:,:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)               , intent(in)    , contiguous    :: mat(:,:)
         type(posdefmat_type)    , intent(in)                    :: class
         logical(LK)                                             :: itis
     end function
@@ -2199,8 +2199,8 @@ module pm_matrixClass
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isMatClassPosDefFulRDP_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)               , intent(in)    , contiguous    :: mat(:,:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)               , intent(in)    , contiguous    :: mat(:,:)
         type(posdefmat_type)    , intent(in)                    :: class
         logical(LK)                                             :: itis
     end function
@@ -2211,8 +2211,8 @@ module pm_matrixClass
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isMatClassPosDefFulRDP_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)               , intent(in)    , contiguous    :: mat(:,:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)               , intent(in)    , contiguous    :: mat(:,:)
         type(posdefmat_type)    , intent(in)                    :: class
         logical(LK)                                             :: itis
     end function
@@ -2223,8 +2223,8 @@ module pm_matrixClass
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isMatClassPosDefFulRDP_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)               , intent(in)    , contiguous    :: mat(:,:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)               , intent(in)    , contiguous    :: mat(:,:)
         type(posdefmat_type)    , intent(in)                    :: class
         logical(LK)                                             :: itis
     end function
@@ -2235,8 +2235,8 @@ module pm_matrixClass
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isMatClassPosDefFulRDP_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)               , intent(in)    , contiguous    :: mat(:,:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)               , intent(in)    , contiguous    :: mat(:,:)
         type(posdefmat_type)    , intent(in)                    :: class
         logical(LK)                                             :: itis
     end function
@@ -2255,8 +2255,8 @@ module pm_matrixClass
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isMatClassPosDefUppRDP_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)            , intent(in)    , contiguous    :: mat(:,:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG)            , intent(in)    , contiguous    :: mat(:,:)
         type(posdefmat_type)    , intent(in)                    :: class
         type(uppDia_type)       , intent(in)                    :: subset
         type(rdpack_type)       , intent(in)                    :: pack
@@ -2269,8 +2269,8 @@ module pm_matrixClass
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isMatClassPosDefUppRDP_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)            , intent(in)    , contiguous    :: mat(:,:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG)            , intent(in)    , contiguous    :: mat(:,:)
         type(posdefmat_type)    , intent(in)                    :: class
         type(uppDia_type)       , intent(in)                    :: subset
         type(rdpack_type)       , intent(in)                    :: pack
@@ -2283,8 +2283,8 @@ module pm_matrixClass
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isMatClassPosDefUppRDP_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)            , intent(in)    , contiguous    :: mat(:,:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG)            , intent(in)    , contiguous    :: mat(:,:)
         type(posdefmat_type)    , intent(in)                    :: class
         type(uppDia_type)       , intent(in)                    :: subset
         type(rdpack_type)       , intent(in)                    :: pack
@@ -2297,8 +2297,8 @@ module pm_matrixClass
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isMatClassPosDefUppRDP_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)            , intent(in)    , contiguous    :: mat(:,:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG)            , intent(in)    , contiguous    :: mat(:,:)
         type(posdefmat_type)    , intent(in)                    :: class
         type(uppDia_type)       , intent(in)                    :: subset
         type(rdpack_type)       , intent(in)                    :: pack
@@ -2311,8 +2311,8 @@ module pm_matrixClass
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isMatClassPosDefUppRDP_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)            , intent(in)    , contiguous    :: mat(:,:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG)            , intent(in)    , contiguous    :: mat(:,:)
         type(posdefmat_type)    , intent(in)                    :: class
         type(uppDia_type)       , intent(in)                    :: subset
         type(rdpack_type)       , intent(in)                    :: pack
@@ -2327,8 +2327,8 @@ module pm_matrixClass
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isMatClassPosDefUppRDP_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)               , intent(in)    , contiguous    :: mat(:,:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)               , intent(in)    , contiguous    :: mat(:,:)
         type(posdefmat_type)    , intent(in)                    :: class
         type(uppDia_type)       , intent(in)                    :: subset
         type(rdpack_type)       , intent(in)                    :: pack
@@ -2341,8 +2341,8 @@ module pm_matrixClass
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isMatClassPosDefUppRDP_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)               , intent(in)    , contiguous    :: mat(:,:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)               , intent(in)    , contiguous    :: mat(:,:)
         type(posdefmat_type)    , intent(in)                    :: class
         type(uppDia_type)       , intent(in)                    :: subset
         type(rdpack_type)       , intent(in)                    :: pack
@@ -2355,8 +2355,8 @@ module pm_matrixClass
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isMatClassPosDefUppRDP_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)               , intent(in)    , contiguous    :: mat(:,:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)               , intent(in)    , contiguous    :: mat(:,:)
         type(posdefmat_type)    , intent(in)                    :: class
         type(uppDia_type)       , intent(in)                    :: subset
         type(rdpack_type)       , intent(in)                    :: pack
@@ -2369,8 +2369,8 @@ module pm_matrixClass
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isMatClassPosDefUppRDP_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)               , intent(in)    , contiguous    :: mat(:,:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)               , intent(in)    , contiguous    :: mat(:,:)
         type(posdefmat_type)    , intent(in)                    :: class
         type(uppDia_type)       , intent(in)                    :: subset
         type(rdpack_type)       , intent(in)                    :: pack
@@ -2383,8 +2383,8 @@ module pm_matrixClass
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isMatClassPosDefUppRDP_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)               , intent(in)    , contiguous    :: mat(:,:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)               , intent(in)    , contiguous    :: mat(:,:)
         type(posdefmat_type)    , intent(in)                    :: class
         type(uppDia_type)       , intent(in)                    :: subset
         type(rdpack_type)       , intent(in)                    :: pack
@@ -2405,8 +2405,8 @@ module pm_matrixClass
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isMatClassPosDefLowRDP_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)            , intent(in)    , contiguous    :: mat(:,:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG)            , intent(in)    , contiguous    :: mat(:,:)
         type(posdefmat_type)    , intent(in)                    :: class
         type(lowDia_type)       , intent(in)                    :: subset
         type(rdpack_type)       , intent(in)                    :: pack
@@ -2419,8 +2419,8 @@ module pm_matrixClass
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isMatClassPosDefLowRDP_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)            , intent(in)    , contiguous    :: mat(:,:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG)            , intent(in)    , contiguous    :: mat(:,:)
         type(posdefmat_type)    , intent(in)                    :: class
         type(lowDia_type)       , intent(in)                    :: subset
         type(rdpack_type)       , intent(in)                    :: pack
@@ -2433,8 +2433,8 @@ module pm_matrixClass
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isMatClassPosDefLowRDP_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)            , intent(in)    , contiguous    :: mat(:,:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG)            , intent(in)    , contiguous    :: mat(:,:)
         type(posdefmat_type)    , intent(in)                    :: class
         type(lowDia_type)       , intent(in)                    :: subset
         type(rdpack_type)       , intent(in)                    :: pack
@@ -2447,8 +2447,8 @@ module pm_matrixClass
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isMatClassPosDefLowRDP_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)            , intent(in)    , contiguous    :: mat(:,:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG)            , intent(in)    , contiguous    :: mat(:,:)
         type(posdefmat_type)    , intent(in)                    :: class
         type(lowDia_type)       , intent(in)                    :: subset
         type(rdpack_type)       , intent(in)                    :: pack
@@ -2461,8 +2461,8 @@ module pm_matrixClass
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isMatClassPosDefLowRDP_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)            , intent(in)    , contiguous    :: mat(:,:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG)            , intent(in)    , contiguous    :: mat(:,:)
         type(posdefmat_type)    , intent(in)                    :: class
         type(lowDia_type)       , intent(in)                    :: subset
         type(rdpack_type)       , intent(in)                    :: pack
@@ -2477,8 +2477,8 @@ module pm_matrixClass
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isMatClassPosDefLowRDP_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)               , intent(in)    , contiguous    :: mat(:,:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)               , intent(in)    , contiguous    :: mat(:,:)
         type(posdefmat_type)    , intent(in)                    :: class
         type(lowDia_type)       , intent(in)                    :: subset
         type(rdpack_type)       , intent(in)                    :: pack
@@ -2491,8 +2491,8 @@ module pm_matrixClass
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isMatClassPosDefLowRDP_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)               , intent(in)    , contiguous    :: mat(:,:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)               , intent(in)    , contiguous    :: mat(:,:)
         type(posdefmat_type)    , intent(in)                    :: class
         type(lowDia_type)       , intent(in)                    :: subset
         type(rdpack_type)       , intent(in)                    :: pack
@@ -2505,8 +2505,8 @@ module pm_matrixClass
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isMatClassPosDefLowRDP_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)               , intent(in)    , contiguous    :: mat(:,:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)               , intent(in)    , contiguous    :: mat(:,:)
         type(posdefmat_type)    , intent(in)                    :: class
         type(lowDia_type)       , intent(in)                    :: subset
         type(rdpack_type)       , intent(in)                    :: pack
@@ -2519,8 +2519,8 @@ module pm_matrixClass
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isMatClassPosDefLowRDP_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)               , intent(in)    , contiguous    :: mat(:,:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)               , intent(in)    , contiguous    :: mat(:,:)
         type(posdefmat_type)    , intent(in)                    :: class
         type(lowDia_type)       , intent(in)                    :: subset
         type(rdpack_type)       , intent(in)                    :: pack
@@ -2533,8 +2533,8 @@ module pm_matrixClass
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isMatClassPosDefLowRDP_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)               , intent(in)    , contiguous    :: mat(:,:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)               , intent(in)    , contiguous    :: mat(:,:)
         type(posdefmat_type)    , intent(in)                    :: class
         type(lowDia_type)       , intent(in)                    :: subset
         type(rdpack_type)       , intent(in)                    :: pack
@@ -2555,8 +2555,8 @@ module pm_matrixClass
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isMatClassPosDefUppRFP_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)            , intent(in)    , contiguous    :: mat(:,:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG)            , intent(in)    , contiguous    :: mat(:,:)
         type(posdefmat_type)    , intent(in)                    :: class
         type(uppDia_type)       , intent(in)                    :: subset
         type(rfpack_type)       , intent(in)                    :: pack
@@ -2569,8 +2569,8 @@ module pm_matrixClass
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isMatClassPosDefUppRFP_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)            , intent(in)    , contiguous    :: mat(:,:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG)            , intent(in)    , contiguous    :: mat(:,:)
         type(posdefmat_type)    , intent(in)                    :: class
         type(uppDia_type)       , intent(in)                    :: subset
         type(rfpack_type)       , intent(in)                    :: pack
@@ -2583,8 +2583,8 @@ module pm_matrixClass
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isMatClassPosDefUppRFP_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)            , intent(in)    , contiguous    :: mat(:,:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG)            , intent(in)    , contiguous    :: mat(:,:)
         type(posdefmat_type)    , intent(in)                    :: class
         type(uppDia_type)       , intent(in)                    :: subset
         type(rfpack_type)       , intent(in)                    :: pack
@@ -2597,8 +2597,8 @@ module pm_matrixClass
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isMatClassPosDefUppRFP_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)            , intent(in)    , contiguous    :: mat(:,:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG)            , intent(in)    , contiguous    :: mat(:,:)
         type(posdefmat_type)    , intent(in)                    :: class
         type(uppDia_type)       , intent(in)                    :: subset
         type(rfpack_type)       , intent(in)                    :: pack
@@ -2611,8 +2611,8 @@ module pm_matrixClass
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isMatClassPosDefUppRFP_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)            , intent(in)    , contiguous    :: mat(:,:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG)            , intent(in)    , contiguous    :: mat(:,:)
         type(posdefmat_type)    , intent(in)                    :: class
         type(uppDia_type)       , intent(in)                    :: subset
         type(rfpack_type)       , intent(in)                    :: pack
@@ -2627,8 +2627,8 @@ module pm_matrixClass
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isMatClassPosDefUppRFP_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)               , intent(in)    , contiguous    :: mat(:,:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)               , intent(in)    , contiguous    :: mat(:,:)
         type(posdefmat_type)    , intent(in)                    :: class
         type(uppDia_type)       , intent(in)                    :: subset
         type(rfpack_type)       , intent(in)                    :: pack
@@ -2641,8 +2641,8 @@ module pm_matrixClass
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isMatClassPosDefUppRFP_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)               , intent(in)    , contiguous    :: mat(:,:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)               , intent(in)    , contiguous    :: mat(:,:)
         type(posdefmat_type)    , intent(in)                    :: class
         type(uppDia_type)       , intent(in)                    :: subset
         type(rfpack_type)       , intent(in)                    :: pack
@@ -2655,8 +2655,8 @@ module pm_matrixClass
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isMatClassPosDefUppRFP_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)               , intent(in)    , contiguous    :: mat(:,:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)               , intent(in)    , contiguous    :: mat(:,:)
         type(posdefmat_type)    , intent(in)                    :: class
         type(uppDia_type)       , intent(in)                    :: subset
         type(rfpack_type)       , intent(in)                    :: pack
@@ -2669,8 +2669,8 @@ module pm_matrixClass
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isMatClassPosDefUppRFP_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)               , intent(in)    , contiguous    :: mat(:,:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)               , intent(in)    , contiguous    :: mat(:,:)
         type(posdefmat_type)    , intent(in)                    :: class
         type(uppDia_type)       , intent(in)                    :: subset
         type(rfpack_type)       , intent(in)                    :: pack
@@ -2683,8 +2683,8 @@ module pm_matrixClass
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isMatClassPosDefUppRFP_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)               , intent(in)    , contiguous    :: mat(:,:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)               , intent(in)    , contiguous    :: mat(:,:)
         type(posdefmat_type)    , intent(in)                    :: class
         type(uppDia_type)       , intent(in)                    :: subset
         type(rfpack_type)       , intent(in)                    :: pack
@@ -2705,8 +2705,8 @@ module pm_matrixClass
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isMatClassPosDefLowRFP_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)            , intent(in)    , contiguous    :: mat(:,:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG)            , intent(in)    , contiguous    :: mat(:,:)
         type(posdefmat_type)    , intent(in)                    :: class
         type(lowDia_type)       , intent(in)                    :: subset
         type(rfpack_type)       , intent(in)                    :: pack
@@ -2719,8 +2719,8 @@ module pm_matrixClass
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isMatClassPosDefLowRFP_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)            , intent(in)    , contiguous    :: mat(:,:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG)            , intent(in)    , contiguous    :: mat(:,:)
         type(posdefmat_type)    , intent(in)                    :: class
         type(lowDia_type)       , intent(in)                    :: subset
         type(rfpack_type)       , intent(in)                    :: pack
@@ -2733,8 +2733,8 @@ module pm_matrixClass
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isMatClassPosDefLowRFP_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)            , intent(in)    , contiguous    :: mat(:,:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG)            , intent(in)    , contiguous    :: mat(:,:)
         type(posdefmat_type)    , intent(in)                    :: class
         type(lowDia_type)       , intent(in)                    :: subset
         type(rfpack_type)       , intent(in)                    :: pack
@@ -2747,8 +2747,8 @@ module pm_matrixClass
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isMatClassPosDefLowRFP_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)            , intent(in)    , contiguous    :: mat(:,:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG)            , intent(in)    , contiguous    :: mat(:,:)
         type(posdefmat_type)    , intent(in)                    :: class
         type(lowDia_type)       , intent(in)                    :: subset
         type(rfpack_type)       , intent(in)                    :: pack
@@ -2761,8 +2761,8 @@ module pm_matrixClass
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isMatClassPosDefLowRFP_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)            , intent(in)    , contiguous    :: mat(:,:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG)            , intent(in)    , contiguous    :: mat(:,:)
         type(posdefmat_type)    , intent(in)                    :: class
         type(lowDia_type)       , intent(in)                    :: subset
         type(rfpack_type)       , intent(in)                    :: pack
@@ -2777,8 +2777,8 @@ module pm_matrixClass
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isMatClassPosDefLowRFP_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)               , intent(in)    , contiguous    :: mat(:,:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)               , intent(in)    , contiguous    :: mat(:,:)
         type(posdefmat_type)    , intent(in)                    :: class
         type(lowDia_type)       , intent(in)                    :: subset
         type(rfpack_type)       , intent(in)                    :: pack
@@ -2791,8 +2791,8 @@ module pm_matrixClass
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isMatClassPosDefLowRFP_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)               , intent(in)    , contiguous    :: mat(:,:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)               , intent(in)    , contiguous    :: mat(:,:)
         type(posdefmat_type)    , intent(in)                    :: class
         type(lowDia_type)       , intent(in)                    :: subset
         type(rfpack_type)       , intent(in)                    :: pack
@@ -2805,8 +2805,8 @@ module pm_matrixClass
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isMatClassPosDefLowRFP_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)               , intent(in)    , contiguous    :: mat(:,:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)               , intent(in)    , contiguous    :: mat(:,:)
         type(posdefmat_type)    , intent(in)                    :: class
         type(lowDia_type)       , intent(in)                    :: subset
         type(rfpack_type)       , intent(in)                    :: pack
@@ -2819,8 +2819,8 @@ module pm_matrixClass
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isMatClassPosDefLowRFP_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)               , intent(in)    , contiguous    :: mat(:,:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)               , intent(in)    , contiguous    :: mat(:,:)
         type(posdefmat_type)    , intent(in)                    :: class
         type(lowDia_type)       , intent(in)                    :: subset
         type(rfpack_type)       , intent(in)                    :: pack
@@ -2833,8 +2833,8 @@ module pm_matrixClass
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isMatClassPosDefLowRFP_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)               , intent(in)    , contiguous    :: mat(:,:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)               , intent(in)    , contiguous    :: mat(:,:)
         type(posdefmat_type)    , intent(in)                    :: class
         type(lowDia_type)       , intent(in)                    :: subset
         type(rfpack_type)       , intent(in)                    :: pack
@@ -2855,8 +2855,8 @@ module pm_matrixClass
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isMatClassSymm_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)        , intent(in)    , contiguous    :: mat(:,:)
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)        , intent(in)    , contiguous    :: mat(:,:)
         type(symmetric_type)    , intent(in)                    :: class
         logical(LK)                                             :: itis
     end function
@@ -2867,8 +2867,8 @@ module pm_matrixClass
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isMatClassSymm_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)        , intent(in)    , contiguous    :: mat(:,:)
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)        , intent(in)    , contiguous    :: mat(:,:)
         type(symmetric_type)    , intent(in)                    :: class
         logical(LK)                                             :: itis
     end function
@@ -2879,8 +2879,8 @@ module pm_matrixClass
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isMatClassSymm_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)        , intent(in)    , contiguous    :: mat(:,:)
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)        , intent(in)    , contiguous    :: mat(:,:)
         type(symmetric_type)    , intent(in)                    :: class
         logical(LK)                                             :: itis
     end function
@@ -2891,8 +2891,8 @@ module pm_matrixClass
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isMatClassSymm_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)        , intent(in)    , contiguous    :: mat(:,:)
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)        , intent(in)    , contiguous    :: mat(:,:)
         type(symmetric_type)    , intent(in)                    :: class
         logical(LK)                                             :: itis
     end function
@@ -2903,8 +2903,8 @@ module pm_matrixClass
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isMatClassSymm_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)        , intent(in)    , contiguous    :: mat(:,:)
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)        , intent(in)    , contiguous    :: mat(:,:)
         type(symmetric_type)    , intent(in)                    :: class
         logical(LK)                                             :: itis
     end function
@@ -2917,8 +2917,8 @@ module pm_matrixClass
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isMatClassSymm_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)            , intent(in)    , contiguous    :: mat(:,:)
+        use pm_kind, only: IKG => IK5
+        integer(IKG)            , intent(in)    , contiguous    :: mat(:,:)
         type(symmetric_type)    , intent(in)                    :: class
         logical(LK)                                             :: itis
     end function
@@ -2929,8 +2929,8 @@ module pm_matrixClass
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isMatClassSymm_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)            , intent(in)    , contiguous    :: mat(:,:)
+        use pm_kind, only: IKG => IK4
+        integer(IKG)            , intent(in)    , contiguous    :: mat(:,:)
         type(symmetric_type)    , intent(in)                    :: class
         logical(LK)                                             :: itis
     end function
@@ -2941,8 +2941,8 @@ module pm_matrixClass
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isMatClassSymm_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)            , intent(in)    , contiguous    :: mat(:,:)
+        use pm_kind, only: IKG => IK3
+        integer(IKG)            , intent(in)    , contiguous    :: mat(:,:)
         type(symmetric_type)    , intent(in)                    :: class
         logical(LK)                                             :: itis
     end function
@@ -2953,8 +2953,8 @@ module pm_matrixClass
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isMatClassSymm_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)            , intent(in)    , contiguous    :: mat(:,:)
+        use pm_kind, only: IKG => IK2
+        integer(IKG)            , intent(in)    , contiguous    :: mat(:,:)
         type(symmetric_type)    , intent(in)                    :: class
         logical(LK)                                             :: itis
     end function
@@ -2965,8 +2965,8 @@ module pm_matrixClass
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isMatClassSymm_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)            , intent(in)    , contiguous    :: mat(:,:)
+        use pm_kind, only: IKG => IK1
+        integer(IKG)            , intent(in)    , contiguous    :: mat(:,:)
         type(symmetric_type)    , intent(in)                    :: class
         logical(LK)                                             :: itis
     end function
@@ -2979,8 +2979,8 @@ module pm_matrixClass
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isMatClassSymm_LK5
 #endif
-        use pm_kind, only: LKC => LK5
-        logical(LKC)            , intent(in)    , contiguous    :: mat(:,:)
+        use pm_kind, only: LKG => LK5
+        logical(LKG)            , intent(in)    , contiguous    :: mat(:,:)
         type(symmetric_type)    , intent(in)                    :: class
         logical(LK)                                             :: itis
     end function
@@ -2991,8 +2991,8 @@ module pm_matrixClass
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isMatClassSymm_LK4
 #endif
-        use pm_kind, only: LKC => LK4
-        logical(LKC)            , intent(in)    , contiguous    :: mat(:,:)
+        use pm_kind, only: LKG => LK4
+        logical(LKG)            , intent(in)    , contiguous    :: mat(:,:)
         type(symmetric_type)    , intent(in)                    :: class
         logical(LK)                                             :: itis
     end function
@@ -3003,8 +3003,8 @@ module pm_matrixClass
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isMatClassSymm_LK3
 #endif
-        use pm_kind, only: LKC => LK3
-        logical(LKC)            , intent(in)    , contiguous    :: mat(:,:)
+        use pm_kind, only: LKG => LK3
+        logical(LKG)            , intent(in)    , contiguous    :: mat(:,:)
         type(symmetric_type)    , intent(in)                    :: class
         logical(LK)                                             :: itis
     end function
@@ -3015,8 +3015,8 @@ module pm_matrixClass
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isMatClassSymm_LK2
 #endif
-        use pm_kind, only: LKC => LK2
-        logical(LKC)            , intent(in)    , contiguous    :: mat(:,:)
+        use pm_kind, only: LKG => LK2
+        logical(LKG)            , intent(in)    , contiguous    :: mat(:,:)
         type(symmetric_type)    , intent(in)                    :: class
         logical(LK)                                             :: itis
     end function
@@ -3027,8 +3027,8 @@ module pm_matrixClass
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isMatClassSymm_LK1
 #endif
-        use pm_kind, only: LKC => LK1
-        logical(LKC)            , intent(in)    , contiguous    :: mat(:,:)
+        use pm_kind, only: LKG => LK1
+        logical(LKG)            , intent(in)    , contiguous    :: mat(:,:)
         type(symmetric_type)    , intent(in)                    :: class
         logical(LK)                                             :: itis
     end function
@@ -3041,8 +3041,8 @@ module pm_matrixClass
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isMatClassSymm_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)            , intent(in)    , contiguous    :: mat(:,:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG)            , intent(in)    , contiguous    :: mat(:,:)
         type(symmetric_type)    , intent(in)                    :: class
         logical(LK)                                             :: itis
     end function
@@ -3053,8 +3053,8 @@ module pm_matrixClass
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isMatClassSymm_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)            , intent(in)    , contiguous    :: mat(:,:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG)            , intent(in)    , contiguous    :: mat(:,:)
         type(symmetric_type)    , intent(in)                    :: class
         logical(LK)                                             :: itis
     end function
@@ -3065,8 +3065,8 @@ module pm_matrixClass
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isMatClassSymm_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)            , intent(in)    , contiguous    :: mat(:,:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG)            , intent(in)    , contiguous    :: mat(:,:)
         type(symmetric_type)    , intent(in)                    :: class
         logical(LK)                                             :: itis
     end function
@@ -3077,8 +3077,8 @@ module pm_matrixClass
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isMatClassSymm_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)            , intent(in)    , contiguous    :: mat(:,:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG)            , intent(in)    , contiguous    :: mat(:,:)
         type(symmetric_type)    , intent(in)                    :: class
         logical(LK)                                             :: itis
     end function
@@ -3089,8 +3089,8 @@ module pm_matrixClass
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isMatClassSymm_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)            , intent(in)    , contiguous    :: mat(:,:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG)            , intent(in)    , contiguous    :: mat(:,:)
         type(symmetric_type)    , intent(in)                    :: class
         logical(LK)                                             :: itis
     end function
@@ -3103,8 +3103,8 @@ module pm_matrixClass
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isMatClassSymm_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)               , intent(in)    , contiguous    :: mat(:,:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)               , intent(in)    , contiguous    :: mat(:,:)
         type(symmetric_type)    , intent(in)                    :: class
         logical(LK)                                             :: itis
     end function
@@ -3115,8 +3115,8 @@ module pm_matrixClass
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isMatClassSymm_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)               , intent(in)    , contiguous    :: mat(:,:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)               , intent(in)    , contiguous    :: mat(:,:)
         type(symmetric_type)    , intent(in)                    :: class
         logical(LK)                                             :: itis
     end function
@@ -3127,8 +3127,8 @@ module pm_matrixClass
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isMatClassSymm_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)               , intent(in)    , contiguous    :: mat(:,:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)               , intent(in)    , contiguous    :: mat(:,:)
         type(symmetric_type)    , intent(in)                    :: class
         logical(LK)                                             :: itis
     end function
@@ -3139,8 +3139,8 @@ module pm_matrixClass
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isMatClassSymm_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)               , intent(in)    , contiguous    :: mat(:,:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)               , intent(in)    , contiguous    :: mat(:,:)
         type(symmetric_type)    , intent(in)                    :: class
         logical(LK)                                             :: itis
     end function
@@ -3151,8 +3151,8 @@ module pm_matrixClass
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isMatClassSymm_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)               , intent(in)    , contiguous    :: mat(:,:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)               , intent(in)    , contiguous    :: mat(:,:)
         type(symmetric_type)    , intent(in)                    :: class
         logical(LK)                                             :: itis
     end function
@@ -3171,8 +3171,8 @@ module pm_matrixClass
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isMatClassHerm_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)        , intent(in)    , contiguous    :: mat(:,:)
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)        , intent(in)    , contiguous    :: mat(:,:)
         type(hermitian_type)    , intent(in)                    :: class
         logical(LK)                                             :: itis
     end function
@@ -3183,8 +3183,8 @@ module pm_matrixClass
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isMatClassHerm_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)        , intent(in)    , contiguous    :: mat(:,:)
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)        , intent(in)    , contiguous    :: mat(:,:)
         type(hermitian_type)    , intent(in)                    :: class
         logical(LK)                                             :: itis
     end function
@@ -3195,8 +3195,8 @@ module pm_matrixClass
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isMatClassHerm_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)        , intent(in)    , contiguous    :: mat(:,:)
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)        , intent(in)    , contiguous    :: mat(:,:)
         type(hermitian_type)    , intent(in)                    :: class
         logical(LK)                                             :: itis
     end function
@@ -3207,8 +3207,8 @@ module pm_matrixClass
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isMatClassHerm_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)        , intent(in)    , contiguous    :: mat(:,:)
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)        , intent(in)    , contiguous    :: mat(:,:)
         type(hermitian_type)    , intent(in)                    :: class
         logical(LK)                                             :: itis
     end function
@@ -3219,8 +3219,8 @@ module pm_matrixClass
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isMatClassHerm_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)        , intent(in)    , contiguous    :: mat(:,:)
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)        , intent(in)    , contiguous    :: mat(:,:)
         type(hermitian_type)    , intent(in)                    :: class
         logical(LK)                                             :: itis
     end function
@@ -3233,8 +3233,8 @@ module pm_matrixClass
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isMatClassHerm_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)            , intent(in)    , contiguous    :: mat(:,:)
+        use pm_kind, only: IKG => IK5
+        integer(IKG)            , intent(in)    , contiguous    :: mat(:,:)
         type(hermitian_type)    , intent(in)                    :: class
         logical(LK)                                             :: itis
     end function
@@ -3245,8 +3245,8 @@ module pm_matrixClass
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isMatClassHerm_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)            , intent(in)    , contiguous    :: mat(:,:)
+        use pm_kind, only: IKG => IK4
+        integer(IKG)            , intent(in)    , contiguous    :: mat(:,:)
         type(hermitian_type)    , intent(in)                    :: class
         logical(LK)                                             :: itis
     end function
@@ -3257,8 +3257,8 @@ module pm_matrixClass
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isMatClassHerm_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)            , intent(in)    , contiguous    :: mat(:,:)
+        use pm_kind, only: IKG => IK3
+        integer(IKG)            , intent(in)    , contiguous    :: mat(:,:)
         type(hermitian_type)    , intent(in)                    :: class
         logical(LK)                                             :: itis
     end function
@@ -3269,8 +3269,8 @@ module pm_matrixClass
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isMatClassHerm_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)            , intent(in)    , contiguous    :: mat(:,:)
+        use pm_kind, only: IKG => IK2
+        integer(IKG)            , intent(in)    , contiguous    :: mat(:,:)
         type(hermitian_type)    , intent(in)                    :: class
         logical(LK)                                             :: itis
     end function
@@ -3281,8 +3281,8 @@ module pm_matrixClass
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isMatClassHerm_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)            , intent(in)    , contiguous    :: mat(:,:)
+        use pm_kind, only: IKG => IK1
+        integer(IKG)            , intent(in)    , contiguous    :: mat(:,:)
         type(hermitian_type)    , intent(in)                    :: class
         logical(LK)                                             :: itis
     end function
@@ -3295,8 +3295,8 @@ module pm_matrixClass
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isMatClassHerm_LK5
 #endif
-        use pm_kind, only: LKC => LK5
-        logical(LKC)            , intent(in)    , contiguous    :: mat(:,:)
+        use pm_kind, only: LKG => LK5
+        logical(LKG)            , intent(in)    , contiguous    :: mat(:,:)
         type(hermitian_type)    , intent(in)                    :: class
         logical(LK)                                             :: itis
     end function
@@ -3307,8 +3307,8 @@ module pm_matrixClass
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isMatClassHerm_LK4
 #endif
-        use pm_kind, only: LKC => LK4
-        logical(LKC)            , intent(in)    , contiguous    :: mat(:,:)
+        use pm_kind, only: LKG => LK4
+        logical(LKG)            , intent(in)    , contiguous    :: mat(:,:)
         type(hermitian_type)    , intent(in)                    :: class
         logical(LK)                                             :: itis
     end function
@@ -3319,8 +3319,8 @@ module pm_matrixClass
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isMatClassHerm_LK3
 #endif
-        use pm_kind, only: LKC => LK3
-        logical(LKC)            , intent(in)    , contiguous    :: mat(:,:)
+        use pm_kind, only: LKG => LK3
+        logical(LKG)            , intent(in)    , contiguous    :: mat(:,:)
         type(hermitian_type)    , intent(in)                    :: class
         logical(LK)                                             :: itis
     end function
@@ -3331,8 +3331,8 @@ module pm_matrixClass
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isMatClassHerm_LK2
 #endif
-        use pm_kind, only: LKC => LK2
-        logical(LKC)            , intent(in)    , contiguous    :: mat(:,:)
+        use pm_kind, only: LKG => LK2
+        logical(LKG)            , intent(in)    , contiguous    :: mat(:,:)
         type(hermitian_type)    , intent(in)                    :: class
         logical(LK)                                             :: itis
     end function
@@ -3343,8 +3343,8 @@ module pm_matrixClass
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isMatClassHerm_LK1
 #endif
-        use pm_kind, only: LKC => LK1
-        logical(LKC)            , intent(in)    , contiguous    :: mat(:,:)
+        use pm_kind, only: LKG => LK1
+        logical(LKG)            , intent(in)    , contiguous    :: mat(:,:)
         type(hermitian_type)    , intent(in)                    :: class
         logical(LK)                                             :: itis
     end function
@@ -3357,8 +3357,8 @@ module pm_matrixClass
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isMatClassHerm_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)            , intent(in)    , contiguous    :: mat(:,:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG)            , intent(in)    , contiguous    :: mat(:,:)
         type(hermitian_type)    , intent(in)                    :: class
         logical(LK)                                             :: itis
     end function
@@ -3369,8 +3369,8 @@ module pm_matrixClass
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isMatClassHerm_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)            , intent(in)    , contiguous    :: mat(:,:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG)            , intent(in)    , contiguous    :: mat(:,:)
         type(hermitian_type)    , intent(in)                    :: class
         logical(LK)                                             :: itis
     end function
@@ -3381,8 +3381,8 @@ module pm_matrixClass
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isMatClassHerm_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)            , intent(in)    , contiguous    :: mat(:,:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG)            , intent(in)    , contiguous    :: mat(:,:)
         type(hermitian_type)    , intent(in)                    :: class
         logical(LK)                                             :: itis
     end function
@@ -3393,8 +3393,8 @@ module pm_matrixClass
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isMatClassHerm_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)            , intent(in)    , contiguous    :: mat(:,:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG)            , intent(in)    , contiguous    :: mat(:,:)
         type(hermitian_type)    , intent(in)                    :: class
         logical(LK)                                             :: itis
     end function
@@ -3405,8 +3405,8 @@ module pm_matrixClass
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isMatClassHerm_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)            , intent(in)    , contiguous    :: mat(:,:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG)            , intent(in)    , contiguous    :: mat(:,:)
         type(hermitian_type)    , intent(in)                    :: class
         logical(LK)                                             :: itis
     end function
@@ -3419,8 +3419,8 @@ module pm_matrixClass
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isMatClassHerm_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)               , intent(in)    , contiguous    :: mat(:,:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)               , intent(in)    , contiguous    :: mat(:,:)
         type(hermitian_type)    , intent(in)                    :: class
         logical(LK)                                             :: itis
     end function
@@ -3431,8 +3431,8 @@ module pm_matrixClass
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isMatClassHerm_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)               , intent(in)    , contiguous    :: mat(:,:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)               , intent(in)    , contiguous    :: mat(:,:)
         type(hermitian_type)    , intent(in)                    :: class
         logical(LK)                                             :: itis
     end function
@@ -3443,8 +3443,8 @@ module pm_matrixClass
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isMatClassHerm_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)               , intent(in)    , contiguous    :: mat(:,:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)               , intent(in)    , contiguous    :: mat(:,:)
         type(hermitian_type)    , intent(in)                    :: class
         logical(LK)                                             :: itis
     end function
@@ -3455,8 +3455,8 @@ module pm_matrixClass
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isMatClassHerm_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)               , intent(in)    , contiguous    :: mat(:,:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)               , intent(in)    , contiguous    :: mat(:,:)
         type(hermitian_type)    , intent(in)                    :: class
         logical(LK)                                             :: itis
     end function
@@ -3467,8 +3467,8 @@ module pm_matrixClass
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: isMatClassHerm_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)               , intent(in)    , contiguous    :: mat(:,:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)               , intent(in)    , contiguous    :: mat(:,:)
         type(hermitian_type)    , intent(in)                    :: class
         logical(LK)                                             :: itis
     end function

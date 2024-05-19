@@ -35,10 +35,10 @@ program example
     call disp%skip()
 
     block
-        use pm_kind, only: SKC => SK ! All other kinds are also supported.
+        use pm_kind, only: SKG => SK ! All other kinds are also supported.
         real(RK) :: rho
         integer(IK) :: nsam
-        character(:,SKC), allocatable :: x, y
+        character(:,SKG), allocatable :: x, y
         call disp%show("nsam = 10")
                         nsam = 10
         call disp%show("x = getUnifRand(repeat('A', nsam), repeat('Z', nsam))")
@@ -65,15 +65,15 @@ program example
     call disp%skip()
 
     block
-        use pm_kind, only: SKC => SK ! All other kinds are also supported.
+        use pm_kind, only: SKG => SK ! All other kinds are also supported.
         integer(IK) :: ndim, nsam
-        character(2,SKC), allocatable :: sample(:,:)
+        character(2,SKG), allocatable :: sample(:,:)
         call disp%show("ndim = 2; nsam = 10")
                         ndim = 2; nsam = 10
         call disp%show("call setResized(sample, [ndim, nsam])")
                         call setResized(sample, [ndim, nsam])
-        call disp%show("call setUnifRand(sample, SKC_'AA', SKC_'ZZ')")
-                        call setUnifRand(sample, SKC_'AA', SKC_'ZZ')
+        call disp%show("call setUnifRand(sample, SKG_'AA', SKG_'ZZ')")
+                        call setUnifRand(sample, SKG_'AA', SKG_'ZZ')
         call disp%show("sample")
         call disp%show( sample , deliml = SK_'''' )
         call disp%show("rho = getFilled(0., ndim, ndim)")
@@ -110,9 +110,9 @@ program example
     call disp%skip()
 
     block
-        use pm_kind, only: IKC => IK ! All other kinds are also supported.
+        use pm_kind, only: IKG => IK ! All other kinds are also supported.
         integer(IK) :: ndim, nsam
-        integer(IKC), allocatable :: sample(:,:)
+        integer(IKG), allocatable :: sample(:,:)
         call disp%show("ndim = 2; nsam = 10")
                         ndim = 2; nsam = 10
         call disp%show("sample = reshape(getUnifRand(1, 20, ndim * nsam), shape = [ndim, nsam], order = [2, 1])")
@@ -153,10 +153,10 @@ program example
     call disp%skip()
 
     block
-        use pm_kind, only: RKC => RKS ! All other real types are also supported.
+        use pm_kind, only: RKG => RKS ! All other real types are also supported.
         integer(IK) :: ndim, nsam
-        real(RKC), allocatable :: sample(:,:)
-        format = getFormat(mold = [0._RKC], ed = SK_"es", signed = .true._LK)
+        real(RKG), allocatable :: sample(:,:)
+        format = getFormat(mold = [0._RKG], ed = SK_"es", signed = .true._LK)
         call disp%show("ndim = 2; nsam = 10")
                         ndim = 2; nsam = 10
         call disp%show("sample = reshape(getUnifRand(1, 20, ndim * nsam), shape = [ndim, nsam], order = [2, 1])")
@@ -198,11 +198,11 @@ program example
 
     block
         use pm_arrayVerbose, only: getVerbose
-        use pm_kind, only: RKC => RKS ! All other real types are also supported.
+        use pm_kind, only: RKG => RKS ! All other real types are also supported.
         integer(IK) :: ndim, nsam
         integer(IK), allocatable :: iweight(:)
-        real(RKC), allocatable :: sample(:,:)
-        format = getFormat(mold = [0._RKC], ed = SK_"es", signed = .true._LK)
+        real(RKG), allocatable :: sample(:,:)
+        format = getFormat(mold = [0._RKG], ed = SK_"es", signed = .true._LK)
         call disp%show("ndim = 2; nsam = 10")
                         ndim = 2; nsam = 10
         call disp%show("sample = reshape(getUnifRand(1, 20, ndim * nsam), shape = [ndim, nsam], order = [2, 1])")

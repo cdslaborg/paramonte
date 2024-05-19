@@ -25,11 +25,11 @@
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #if     CK_ENABLED
-#define TYPE_KIND complex(TKC)
-        complex(TKC), parameter :: lb = (1._TKC, -2._TKC), ub = (2._TKC, -1._TKC), ONE = (1._TKC, 0._TKC), ZERO = (0._TKC, 0._TKC)
+#define TYPE_KIND complex(TKG)
+        complex(TKG), parameter :: lb = (1._TKG, -2._TKG), ub = (2._TKG, -1._TKG), ONE = (1._TKG, 0._TKG), ZERO = (0._TKG, 0._TKG)
 #elif   RK_ENABLED
-#define TYPE_KIND real(TKC)
-        real(TKC), parameter :: lb = 1._TKC, ub = 2._TKC, ONE = 1._TKC, ZERO = 0._TKC
+#define TYPE_KIND real(TKG)
+        real(TKG), parameter :: lb = 1._TKG, ub = 2._TKG, ONE = 1._TKG, ZERO = 0._TKG
 #else
 #error  "Unrecognized interface."
 #endif
@@ -37,7 +37,7 @@
         integer(IK) :: itry, begG, incG, endG, irow, nrow, ncol, ndim, roffT, coffT, roffG, coffG
         integer(IK), parameter :: increments(*) = [(irow, irow = -3, -1), (irow, irow = 1, 3)]
         TYPE_KIND, allocatable :: solmat(:,:), trimat(:,:), genmat(:,:), genvec(:), dumvec(:), choices(:)
-        real(TKC), parameter :: TOL = epsilon(0._TKC)**.5
+        real(TKG), parameter :: TOL = epsilon(0._TKG)**.5
         TYPE_KIND :: alpha, alinv
 
         assertion = .true.

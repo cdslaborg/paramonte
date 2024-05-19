@@ -67,35 +67,35 @@ contains
 
 #if CK5_ENABLED
     module procedure getCovCorStd_ULD_UXD_CK5
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure getCovCorStd_ULD_UXD_CK4
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure getCovCorStd_ULD_UXD_CK3
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure getCovCorStd_ULD_UXD_CK2
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure getCovCorStd_ULD_UXD_CK1
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
@@ -108,35 +108,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getCovCorStd_ULD_UXD_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getCovCorStd_ULD_UXD_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getCovCorStd_ULD_UXD_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getCovCorStd_ULD_UXD_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getCovCorStd_ULD_UXD_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
@@ -159,35 +159,35 @@ contains
 
 #if CK5_ENABLED
     module procedure getCovCorStd_ULD_XLD_CK5
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure getCovCorStd_ULD_XLD_CK4
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure getCovCorStd_ULD_XLD_CK3
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure getCovCorStd_ULD_XLD_CK2
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure getCovCorStd_ULD_XLD_CK1
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
@@ -200,35 +200,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getCovCorStd_ULD_XLD_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getCovCorStd_ULD_XLD_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getCovCorStd_ULD_XLD_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getCovCorStd_ULD_XLD_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getCovCorStd_ULD_XLD_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
@@ -273,35 +273,35 @@ contains
 
 #if CK5_ENABLED
     module procedure getCovWNO_XY_CK5
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure getCovWNO_XY_CK4
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure getCovWNO_XY_CK3
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure getCovWNO_XY_CK2
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure getCovWNO_XY_CK1
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
@@ -314,35 +314,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getCovWNO_XY_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getCovWNO_XY_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getCovWNO_XY_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getCovWNO_XY_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getCovWNO_XY_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
@@ -365,35 +365,35 @@ contains
 
 #if CK5_ENABLED
     module procedure getCovWTI_XY_CK5
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure getCovWTI_XY_CK4
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure getCovWTI_XY_CK3
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure getCovWTI_XY_CK2
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure getCovWTI_XY_CK1
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
@@ -406,35 +406,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getCovWTI_XY_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getCovWTI_XY_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getCovWTI_XY_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getCovWTI_XY_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getCovWTI_XY_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
@@ -457,35 +457,35 @@ contains
 
 #if CK5_ENABLED
     module procedure getCovWTR_XY_CK5
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure getCovWTR_XY_CK4
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure getCovWTR_XY_CK3
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure getCovWTR_XY_CK2
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure getCovWTR_XY_CK1
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
@@ -498,35 +498,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getCovWTR_XY_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getCovWTR_XY_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getCovWTR_XY_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getCovWTR_XY_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getCovWTR_XY_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
@@ -571,35 +571,35 @@ contains
 
 #if CK5_ENABLED
     module procedure getCovWNO_ULD_CK5
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure getCovWNO_ULD_CK4
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure getCovWNO_ULD_CK3
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure getCovWNO_ULD_CK2
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure getCovWNO_ULD_CK1
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
@@ -612,35 +612,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getCovWNO_ULD_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getCovWNO_ULD_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getCovWNO_ULD_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getCovWNO_ULD_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getCovWNO_ULD_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
@@ -663,35 +663,35 @@ contains
 
 #if CK5_ENABLED
     module procedure getCovWTI_ULD_CK5
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure getCovWTI_ULD_CK4
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure getCovWTI_ULD_CK3
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure getCovWTI_ULD_CK2
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure getCovWTI_ULD_CK1
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
@@ -704,35 +704,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getCovWTI_ULD_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getCovWTI_ULD_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getCovWTI_ULD_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getCovWTI_ULD_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getCovWTI_ULD_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
@@ -755,35 +755,35 @@ contains
 
 #if CK5_ENABLED
     module procedure getCovWTR_ULD_CK5
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure getCovWTR_ULD_CK4
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure getCovWTR_ULD_CK3
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure getCovWTR_ULD_CK2
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure getCovWTR_ULD_CK1
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
@@ -796,35 +796,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getCovWTR_ULD_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getCovWTR_ULD_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getCovWTR_ULD_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getCovWTR_ULD_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getCovWTR_ULD_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
@@ -869,35 +869,35 @@ contains
 
 #if CK5_ENABLED
     module procedure setCovCorStd_UXD_UXD_CK5
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure setCovCorStd_UXD_UXD_CK4
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure setCovCorStd_UXD_UXD_CK3
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure setCovCorStd_UXD_UXD_CK2
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure setCovCorStd_UXD_UXD_CK1
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
@@ -910,35 +910,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setCovCorStd_UXD_UXD_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setCovCorStd_UXD_UXD_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setCovCorStd_UXD_UXD_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setCovCorStd_UXD_UXD_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setCovCorStd_UXD_UXD_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
@@ -961,35 +961,35 @@ contains
 
 #if CK5_ENABLED
     module procedure setCovCorStd_UXD_XLD_CK5
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure setCovCorStd_UXD_XLD_CK4
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure setCovCorStd_UXD_XLD_CK3
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure setCovCorStd_UXD_XLD_CK2
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure setCovCorStd_UXD_XLD_CK1
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
@@ -1002,35 +1002,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setCovCorStd_UXD_XLD_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setCovCorStd_UXD_XLD_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setCovCorStd_UXD_XLD_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setCovCorStd_UXD_XLD_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setCovCorStd_UXD_XLD_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
@@ -1053,35 +1053,35 @@ contains
 
 #if CK5_ENABLED
     module procedure setCovCorStd_XLD_UXD_CK5
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure setCovCorStd_XLD_UXD_CK4
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure setCovCorStd_XLD_UXD_CK3
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure setCovCorStd_XLD_UXD_CK2
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure setCovCorStd_XLD_UXD_CK1
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
@@ -1094,35 +1094,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setCovCorStd_XLD_UXD_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setCovCorStd_XLD_UXD_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setCovCorStd_XLD_UXD_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setCovCorStd_XLD_UXD_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setCovCorStd_XLD_UXD_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
@@ -1145,35 +1145,35 @@ contains
 
 #if CK5_ENABLED
     module procedure setCovCorStd_XLD_XLD_CK5
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure setCovCorStd_XLD_XLD_CK4
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure setCovCorStd_XLD_XLD_CK3
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure setCovCorStd_XLD_XLD_CK2
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure setCovCorStd_XLD_XLD_CK1
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
@@ -1186,35 +1186,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setCovCorStd_XLD_XLD_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setCovCorStd_XLD_XLD_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setCovCorStd_XLD_XLD_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setCovCorStd_XLD_XLD_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setCovCorStd_XLD_XLD_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
@@ -1265,35 +1265,35 @@ contains
 
 #if CK5_ENABLED
     module procedure setCovAvgWNO_XY_CK5
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure setCovAvgWNO_XY_CK4
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure setCovAvgWNO_XY_CK3
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure setCovAvgWNO_XY_CK2
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure setCovAvgWNO_XY_CK1
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
@@ -1306,35 +1306,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setCovAvgWNO_XY_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setCovAvgWNO_XY_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setCovAvgWNO_XY_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setCovAvgWNO_XY_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setCovAvgWNO_XY_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
@@ -1357,35 +1357,35 @@ contains
 
 #if CK5_ENABLED
     module procedure setCovOrgWNO_XY_CK5
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure setCovOrgWNO_XY_CK4
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure setCovOrgWNO_XY_CK3
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure setCovOrgWNO_XY_CK2
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure setCovOrgWNO_XY_CK1
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
@@ -1398,35 +1398,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setCovOrgWNO_XY_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setCovOrgWNO_XY_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setCovOrgWNO_XY_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setCovOrgWNO_XY_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setCovOrgWNO_XY_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
@@ -1461,35 +1461,35 @@ contains
 
 #if CK5_ENABLED
     module procedure setCovAvgWTI_XY_CK5
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure setCovAvgWTI_XY_CK4
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure setCovAvgWTI_XY_CK3
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure setCovAvgWTI_XY_CK2
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure setCovAvgWTI_XY_CK1
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
@@ -1502,35 +1502,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setCovAvgWTI_XY_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setCovAvgWTI_XY_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setCovAvgWTI_XY_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setCovAvgWTI_XY_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setCovAvgWTI_XY_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
@@ -1553,35 +1553,35 @@ contains
 
 #if CK5_ENABLED
     module procedure setCovOrgWTI_XY_CK5
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure setCovOrgWTI_XY_CK4
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure setCovOrgWTI_XY_CK3
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure setCovOrgWTI_XY_CK2
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure setCovOrgWTI_XY_CK1
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
@@ -1594,35 +1594,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setCovOrgWTI_XY_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setCovOrgWTI_XY_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setCovOrgWTI_XY_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setCovOrgWTI_XY_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setCovOrgWTI_XY_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
@@ -1657,35 +1657,35 @@ contains
 
 #if CK5_ENABLED
     module procedure setCovAvgWTR_XY_CK5
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure setCovAvgWTR_XY_CK4
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure setCovAvgWTR_XY_CK3
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure setCovAvgWTR_XY_CK2
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure setCovAvgWTR_XY_CK1
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
@@ -1698,35 +1698,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setCovAvgWTR_XY_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setCovAvgWTR_XY_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setCovAvgWTR_XY_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setCovAvgWTR_XY_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setCovAvgWTR_XY_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
@@ -1749,35 +1749,35 @@ contains
 
 #if CK5_ENABLED
     module procedure setCovOrgWTR_XY_CK5
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure setCovOrgWTR_XY_CK4
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure setCovOrgWTR_XY_CK3
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure setCovOrgWTR_XY_CK2
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure setCovOrgWTR_XY_CK1
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
@@ -1790,35 +1790,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setCovOrgWTR_XY_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setCovOrgWTR_XY_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setCovOrgWTR_XY_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setCovOrgWTR_XY_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setCovOrgWTR_XY_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
@@ -1881,35 +1881,35 @@ contains
 
 #if CK5_ENABLED
     module procedure setCovAvgWNO_UXD_CK5
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure setCovAvgWNO_UXD_CK4
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure setCovAvgWNO_UXD_CK3
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure setCovAvgWNO_UXD_CK2
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure setCovAvgWNO_UXD_CK1
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
@@ -1922,35 +1922,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setCovAvgWNO_UXD_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setCovAvgWNO_UXD_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setCovAvgWNO_UXD_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setCovAvgWNO_UXD_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setCovAvgWNO_UXD_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
@@ -1973,35 +1973,35 @@ contains
 
 #if CK5_ENABLED
     module procedure setCovOrgWNO_UXD_CK5
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure setCovOrgWNO_UXD_CK4
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure setCovOrgWNO_UXD_CK3
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure setCovOrgWNO_UXD_CK2
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure setCovOrgWNO_UXD_CK1
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
@@ -2014,35 +2014,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setCovOrgWNO_UXD_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setCovOrgWNO_UXD_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setCovOrgWNO_UXD_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setCovOrgWNO_UXD_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setCovOrgWNO_UXD_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
@@ -2077,35 +2077,35 @@ contains
 
 #if CK5_ENABLED
     module procedure setCovAvgWTI_UXD_CK5
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure setCovAvgWTI_UXD_CK4
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure setCovAvgWTI_UXD_CK3
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure setCovAvgWTI_UXD_CK2
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure setCovAvgWTI_UXD_CK1
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
@@ -2118,35 +2118,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setCovAvgWTI_UXD_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setCovAvgWTI_UXD_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setCovAvgWTI_UXD_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setCovAvgWTI_UXD_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setCovAvgWTI_UXD_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
@@ -2169,35 +2169,35 @@ contains
 
 #if CK5_ENABLED
     module procedure setCovOrgWTI_UXD_CK5
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure setCovOrgWTI_UXD_CK4
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure setCovOrgWTI_UXD_CK3
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure setCovOrgWTI_UXD_CK2
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure setCovOrgWTI_UXD_CK1
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
@@ -2210,35 +2210,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setCovOrgWTI_UXD_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setCovOrgWTI_UXD_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setCovOrgWTI_UXD_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setCovOrgWTI_UXD_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setCovOrgWTI_UXD_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
@@ -2273,35 +2273,35 @@ contains
 
 #if CK5_ENABLED
     module procedure setCovAvgWTR_UXD_CK5
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure setCovAvgWTR_UXD_CK4
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure setCovAvgWTR_UXD_CK3
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure setCovAvgWTR_UXD_CK2
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure setCovAvgWTR_UXD_CK1
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
@@ -2314,35 +2314,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setCovAvgWTR_UXD_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setCovAvgWTR_UXD_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setCovAvgWTR_UXD_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setCovAvgWTR_UXD_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setCovAvgWTR_UXD_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
@@ -2365,35 +2365,35 @@ contains
 
 #if CK5_ENABLED
     module procedure setCovOrgWTR_UXD_CK5
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure setCovOrgWTR_UXD_CK4
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure setCovOrgWTR_UXD_CK3
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure setCovOrgWTR_UXD_CK2
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure setCovOrgWTR_UXD_CK1
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
@@ -2406,35 +2406,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setCovOrgWTR_UXD_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setCovOrgWTR_UXD_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setCovOrgWTR_UXD_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setCovOrgWTR_UXD_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setCovOrgWTR_UXD_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
@@ -2491,35 +2491,35 @@ contains
 
 #if CK5_ENABLED
     module procedure setCovAvgWNO_XLD_CK5
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure setCovAvgWNO_XLD_CK4
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure setCovAvgWNO_XLD_CK3
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure setCovAvgWNO_XLD_CK2
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure setCovAvgWNO_XLD_CK1
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
@@ -2532,35 +2532,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setCovAvgWNO_XLD_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setCovAvgWNO_XLD_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setCovAvgWNO_XLD_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setCovAvgWNO_XLD_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setCovAvgWNO_XLD_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
@@ -2583,35 +2583,35 @@ contains
 
 #if CK5_ENABLED
     module procedure setCovOrgWNO_XLD_CK5
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure setCovOrgWNO_XLD_CK4
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure setCovOrgWNO_XLD_CK3
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure setCovOrgWNO_XLD_CK2
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure setCovOrgWNO_XLD_CK1
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
@@ -2624,35 +2624,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setCovOrgWNO_XLD_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setCovOrgWNO_XLD_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setCovOrgWNO_XLD_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setCovOrgWNO_XLD_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setCovOrgWNO_XLD_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
@@ -2687,35 +2687,35 @@ contains
 
 #if CK5_ENABLED
     module procedure setCovAvgWTI_XLD_CK5
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure setCovAvgWTI_XLD_CK4
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure setCovAvgWTI_XLD_CK3
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure setCovAvgWTI_XLD_CK2
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure setCovAvgWTI_XLD_CK1
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
@@ -2728,35 +2728,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setCovAvgWTI_XLD_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setCovAvgWTI_XLD_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setCovAvgWTI_XLD_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setCovAvgWTI_XLD_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setCovAvgWTI_XLD_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
@@ -2779,35 +2779,35 @@ contains
 
 #if CK5_ENABLED
     module procedure setCovOrgWTI_XLD_CK5
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure setCovOrgWTI_XLD_CK4
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure setCovOrgWTI_XLD_CK3
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure setCovOrgWTI_XLD_CK2
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure setCovOrgWTI_XLD_CK1
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
@@ -2820,35 +2820,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setCovOrgWTI_XLD_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setCovOrgWTI_XLD_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setCovOrgWTI_XLD_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setCovOrgWTI_XLD_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setCovOrgWTI_XLD_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
@@ -2883,35 +2883,35 @@ contains
 
 #if CK5_ENABLED
     module procedure setCovAvgWTR_XLD_CK5
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure setCovAvgWTR_XLD_CK4
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure setCovAvgWTR_XLD_CK3
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure setCovAvgWTR_XLD_CK2
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure setCovAvgWTR_XLD_CK1
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
@@ -2924,35 +2924,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setCovAvgWTR_XLD_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setCovAvgWTR_XLD_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setCovAvgWTR_XLD_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setCovAvgWTR_XLD_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setCovAvgWTR_XLD_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
@@ -2975,35 +2975,35 @@ contains
 
 #if CK5_ENABLED
     module procedure setCovOrgWTR_XLD_CK5
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure setCovOrgWTR_XLD_CK4
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure setCovOrgWTR_XLD_CK3
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure setCovOrgWTR_XLD_CK2
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure setCovOrgWTR_XLD_CK1
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
@@ -3016,35 +3016,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setCovOrgWTR_XLD_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setCovOrgWTR_XLD_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setCovOrgWTR_XLD_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setCovOrgWTR_XLD_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setCovOrgWTR_XLD_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
@@ -3095,35 +3095,35 @@ contains
 
 #if CK5_ENABLED
     module procedure setCovMeanWNO_XY_CK5
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure setCovMeanWNO_XY_CK4
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure setCovMeanWNO_XY_CK3
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure setCovMeanWNO_XY_CK2
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure setCovMeanWNO_XY_CK1
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
@@ -3136,35 +3136,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setCovMeanWNO_XY_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setCovMeanWNO_XY_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setCovMeanWNO_XY_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setCovMeanWNO_XY_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setCovMeanWNO_XY_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
@@ -3187,35 +3187,35 @@ contains
 
 #if CK5_ENABLED
     module procedure setCovMeanWTI_XY_CK5
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure setCovMeanWTI_XY_CK4
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure setCovMeanWTI_XY_CK3
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure setCovMeanWTI_XY_CK2
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure setCovMeanWTI_XY_CK1
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
@@ -3228,35 +3228,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setCovMeanWTI_XY_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setCovMeanWTI_XY_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setCovMeanWTI_XY_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setCovMeanWTI_XY_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setCovMeanWTI_XY_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
@@ -3279,35 +3279,35 @@ contains
 
 #if CK5_ENABLED
     module procedure setCovMeanWTR_XY_CK5
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure setCovMeanWTR_XY_CK4
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure setCovMeanWTR_XY_CK3
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure setCovMeanWTR_XY_CK2
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure setCovMeanWTR_XY_CK1
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
@@ -3320,35 +3320,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setCovMeanWTR_XY_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setCovMeanWTR_XY_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setCovMeanWTR_XY_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setCovMeanWTR_XY_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setCovMeanWTR_XY_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
@@ -3399,35 +3399,35 @@ contains
 
 #if CK5_ENABLED
     module procedure setCovMeanWNO_UXD_CK5
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure setCovMeanWNO_UXD_CK4
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure setCovMeanWNO_UXD_CK3
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure setCovMeanWNO_UXD_CK2
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure setCovMeanWNO_UXD_CK1
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
@@ -3440,35 +3440,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setCovMeanWNO_UXD_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setCovMeanWNO_UXD_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setCovMeanWNO_UXD_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setCovMeanWNO_UXD_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setCovMeanWNO_UXD_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
@@ -3491,35 +3491,35 @@ contains
 
 #if CK5_ENABLED
     module procedure setCovMeanWTI_UXD_CK5
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure setCovMeanWTI_UXD_CK4
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure setCovMeanWTI_UXD_CK3
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure setCovMeanWTI_UXD_CK2
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure setCovMeanWTI_UXD_CK1
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
@@ -3532,35 +3532,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setCovMeanWTI_UXD_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setCovMeanWTI_UXD_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setCovMeanWTI_UXD_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setCovMeanWTI_UXD_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setCovMeanWTI_UXD_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
@@ -3583,35 +3583,35 @@ contains
 
 #if CK5_ENABLED
     module procedure setCovMeanWTR_UXD_CK5
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure setCovMeanWTR_UXD_CK4
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure setCovMeanWTR_UXD_CK3
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure setCovMeanWTR_UXD_CK2
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure setCovMeanWTR_UXD_CK1
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
@@ -3624,35 +3624,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setCovMeanWTR_UXD_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setCovMeanWTR_UXD_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setCovMeanWTR_UXD_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setCovMeanWTR_UXD_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setCovMeanWTR_UXD_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
@@ -3697,35 +3697,35 @@ contains
 
 #if CK5_ENABLED
     module procedure setCovMeanWNO_XLD_CK5
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure setCovMeanWNO_XLD_CK4
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure setCovMeanWNO_XLD_CK3
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure setCovMeanWNO_XLD_CK2
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure setCovMeanWNO_XLD_CK1
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
@@ -3738,35 +3738,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setCovMeanWNO_XLD_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setCovMeanWNO_XLD_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setCovMeanWNO_XLD_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setCovMeanWNO_XLD_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setCovMeanWNO_XLD_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
@@ -3789,35 +3789,35 @@ contains
 
 #if CK5_ENABLED
     module procedure setCovMeanWTI_XLD_CK5
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure setCovMeanWTI_XLD_CK4
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure setCovMeanWTI_XLD_CK3
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure setCovMeanWTI_XLD_CK2
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure setCovMeanWTI_XLD_CK1
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
@@ -3830,35 +3830,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setCovMeanWTI_XLD_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setCovMeanWTI_XLD_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setCovMeanWTI_XLD_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setCovMeanWTI_XLD_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setCovMeanWTI_XLD_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
@@ -3881,35 +3881,35 @@ contains
 
 #if CK5_ENABLED
     module procedure setCovMeanWTR_XLD_CK5
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure setCovMeanWTR_XLD_CK4
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure setCovMeanWTR_XLD_CK3
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure setCovMeanWTR_XLD_CK2
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure setCovMeanWTR_XLD_CK1
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
@@ -3922,35 +3922,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setCovMeanWTR_XLD_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setCovMeanWTR_XLD_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setCovMeanWTR_XLD_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setCovMeanWTR_XLD_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setCovMeanWTR_XLD_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
@@ -4001,35 +4001,35 @@ contains
 
 #if CK5_ENABLED
     module procedure getCovMergedNew_RDP_ULD_CK5
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure getCovMergedNew_RDP_ULD_CK4
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure getCovMergedNew_RDP_ULD_CK3
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure getCovMergedNew_RDP_ULD_CK2
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure getCovMergedNew_RDP_ULD_CK1
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
@@ -4042,35 +4042,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getCovMergedNew_RDP_ULD_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getCovMergedNew_RDP_ULD_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getCovMergedNew_RDP_ULD_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getCovMergedNew_RDP_ULD_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getCovMergedNew_RDP_ULD_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
@@ -4127,35 +4127,35 @@ contains
 
 #if CK5_ENABLED
     module procedure setCovMergedNew_RDP_UXD_CK5
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure setCovMergedNew_RDP_UXD_CK4
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure setCovMergedNew_RDP_UXD_CK3
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure setCovMergedNew_RDP_UXD_CK2
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure setCovMergedNew_RDP_UXD_CK1
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
@@ -4168,35 +4168,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setCovMergedNew_RDP_UXD_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setCovMergedNew_RDP_UXD_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setCovMergedNew_RDP_UXD_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setCovMergedNew_RDP_UXD_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setCovMergedNew_RDP_UXD_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
@@ -4219,35 +4219,35 @@ contains
 
 #if CK5_ENABLED
     module procedure setCovMergedNew_RDP_XLD_CK5
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure setCovMergedNew_RDP_XLD_CK4
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure setCovMergedNew_RDP_XLD_CK3
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure setCovMergedNew_RDP_XLD_CK2
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure setCovMergedNew_RDP_XLD_CK1
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
@@ -4260,35 +4260,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setCovMergedNew_RDP_XLD_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setCovMergedNew_RDP_XLD_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setCovMergedNew_RDP_XLD_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setCovMergedNew_RDP_XLD_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setCovMergedNew_RDP_XLD_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
@@ -4335,35 +4335,35 @@ contains
 
 #if CK5_ENABLED
     module procedure setCovMergedOld_RDP_UXD_CK5
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure setCovMergedOld_RDP_UXD_CK4
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure setCovMergedOld_RDP_UXD_CK3
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure setCovMergedOld_RDP_UXD_CK2
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure setCovMergedOld_RDP_UXD_CK1
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
@@ -4376,35 +4376,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setCovMergedOld_RDP_UXD_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setCovMergedOld_RDP_UXD_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setCovMergedOld_RDP_UXD_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setCovMergedOld_RDP_UXD_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setCovMergedOld_RDP_UXD_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
@@ -4427,35 +4427,35 @@ contains
 
 #if CK5_ENABLED
     module procedure setCovMergedOld_RDP_XLD_CK5
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure setCovMergedOld_RDP_XLD_CK4
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure setCovMergedOld_RDP_XLD_CK3
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure setCovMergedOld_RDP_XLD_CK2
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure setCovMergedOld_RDP_XLD_CK1
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
@@ -4468,35 +4468,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setCovMergedOld_RDP_XLD_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setCovMergedOld_RDP_XLD_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setCovMergedOld_RDP_XLD_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setCovMergedOld_RDP_XLD_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setCovMergedOld_RDP_XLD_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
@@ -4553,35 +4553,35 @@ contains
 
 #if CK5_ENABLED
     module procedure setCovMeanMergedNew_RDP_UXD_CK5
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure setCovMeanMergedNew_RDP_UXD_CK4
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure setCovMeanMergedNew_RDP_UXD_CK3
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure setCovMeanMergedNew_RDP_UXD_CK2
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure setCovMeanMergedNew_RDP_UXD_CK1
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
@@ -4594,35 +4594,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setCovMeanMergedNew_RDP_UXD_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setCovMeanMergedNew_RDP_UXD_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setCovMeanMergedNew_RDP_UXD_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setCovMeanMergedNew_RDP_UXD_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setCovMeanMergedNew_RDP_UXD_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
@@ -4645,35 +4645,35 @@ contains
 
 #if CK5_ENABLED
     module procedure setCovMeanMergedNew_RDP_XLD_CK5
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure setCovMeanMergedNew_RDP_XLD_CK4
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure setCovMeanMergedNew_RDP_XLD_CK3
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure setCovMeanMergedNew_RDP_XLD_CK2
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure setCovMeanMergedNew_RDP_XLD_CK1
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
@@ -4686,35 +4686,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setCovMeanMergedNew_RDP_XLD_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setCovMeanMergedNew_RDP_XLD_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setCovMeanMergedNew_RDP_XLD_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setCovMeanMergedNew_RDP_XLD_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setCovMeanMergedNew_RDP_XLD_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
@@ -4761,35 +4761,35 @@ contains
 
 #if CK5_ENABLED
     module procedure setCovMeanMergedOld_RDP_UXD_CK5
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure setCovMeanMergedOld_RDP_UXD_CK4
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure setCovMeanMergedOld_RDP_UXD_CK3
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure setCovMeanMergedOld_RDP_UXD_CK2
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure setCovMeanMergedOld_RDP_UXD_CK1
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
@@ -4802,35 +4802,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setCovMeanMergedOld_RDP_UXD_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setCovMeanMergedOld_RDP_UXD_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setCovMeanMergedOld_RDP_UXD_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setCovMeanMergedOld_RDP_UXD_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setCovMeanMergedOld_RDP_UXD_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
@@ -4853,35 +4853,35 @@ contains
 
 #if CK5_ENABLED
     module procedure setCovMeanMergedOld_RDP_XLD_CK5
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure setCovMeanMergedOld_RDP_XLD_CK4
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure setCovMeanMergedOld_RDP_XLD_CK3
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure setCovMeanMergedOld_RDP_XLD_CK2
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure setCovMeanMergedOld_RDP_XLD_CK1
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
@@ -4894,35 +4894,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setCovMeanMergedOld_RDP_XLD_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setCovMeanMergedOld_RDP_XLD_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setCovMeanMergedOld_RDP_XLD_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setCovMeanMergedOld_RDP_XLD_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setCovMeanMergedOld_RDP_XLD_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
@@ -4979,35 +4979,35 @@ contains
 
 #if CK5_ENABLED
     module procedure setCovUpdatedOld_RDP_UXD_CK5
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure setCovUpdatedOld_RDP_UXD_CK4
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure setCovUpdatedOld_RDP_UXD_CK3
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure setCovUpdatedOld_RDP_UXD_CK2
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure setCovUpdatedOld_RDP_UXD_CK1
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
@@ -5020,35 +5020,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setCovUpdatedOld_RDP_UXD_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setCovUpdatedOld_RDP_UXD_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setCovUpdatedOld_RDP_UXD_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setCovUpdatedOld_RDP_UXD_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setCovUpdatedOld_RDP_UXD_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
@@ -5071,35 +5071,35 @@ contains
 
 #if CK5_ENABLED
     module procedure setCovUpdatedOld_RDP_XLD_CK5
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure setCovUpdatedOld_RDP_XLD_CK4
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure setCovUpdatedOld_RDP_XLD_CK3
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure setCovUpdatedOld_RDP_XLD_CK2
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure setCovUpdatedOld_RDP_XLD_CK1
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
@@ -5112,35 +5112,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setCovUpdatedOld_RDP_XLD_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setCovUpdatedOld_RDP_XLD_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setCovUpdatedOld_RDP_XLD_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setCovUpdatedOld_RDP_XLD_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setCovUpdatedOld_RDP_XLD_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
@@ -5197,35 +5197,35 @@ contains
 
 #if CK5_ENABLED
     module procedure setCovMeanUpdatedOld_RDP_UXD_CK5
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure setCovMeanUpdatedOld_RDP_UXD_CK4
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure setCovMeanUpdatedOld_RDP_UXD_CK3
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure setCovMeanUpdatedOld_RDP_UXD_CK2
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure setCovMeanUpdatedOld_RDP_UXD_CK1
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
@@ -5238,35 +5238,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setCovMeanUpdatedOld_RDP_UXD_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setCovMeanUpdatedOld_RDP_UXD_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setCovMeanUpdatedOld_RDP_UXD_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setCovMeanUpdatedOld_RDP_UXD_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setCovMeanUpdatedOld_RDP_UXD_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
@@ -5289,35 +5289,35 @@ contains
 
 #if CK5_ENABLED
     module procedure setCovMeanUpdatedOld_RDP_XLD_CK5
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure setCovMeanUpdatedOld_RDP_XLD_CK4
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure setCovMeanUpdatedOld_RDP_XLD_CK3
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure setCovMeanUpdatedOld_RDP_XLD_CK2
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure setCovMeanUpdatedOld_RDP_XLD_CK1
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
@@ -5330,35 +5330,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setCovMeanUpdatedOld_RDP_XLD_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setCovMeanUpdatedOld_RDP_XLD_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setCovMeanUpdatedOld_RDP_XLD_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setCovMeanUpdatedOld_RDP_XLD_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setCovMeanUpdatedOld_RDP_XLD_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_sampleCov@routines.inc.F90"
     end procedure
 #endif

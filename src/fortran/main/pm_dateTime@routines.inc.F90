@@ -28,7 +28,7 @@
 #if     isValidZone_ENABLED
         !%%%%%%%%%%%%%%%%%%
 
-        isValid = logical(int(ZONE_MIN, IKC) <= zone .and. zone <= int(ZONE_MAX, IKC), LK)
+        isValid = logical(int(ZONE_MIN, IKG) <= zone .and. zone <= int(ZONE_MAX, IKG), LK)
 
         !%%%%%%%%%%%%%%%%%%%%%%
 #elif   getDateTimeDiff_ENABLED
@@ -72,11 +72,11 @@
             !error stop MODULE_NAME//SK_"@isValidDateTime(): The length of the input argument `values` must be less than 9 and non-zero. size(values) = "//getStr(lenValues)
         end if
 #elif   isValidDateTimeY_ENABLED
-        isValid = .true._LK ! year /= 0_IKC ! year zero is explicitly allowed in ISO 8601.
+        isValid = .true._LK ! year /= 0_IKG ! year zero is explicitly allowed in ISO 8601.
 #elif   isValidDateTimeYM_ENABLED
-        isValid = isValidDateTime(year) .and. 0_IKC < month .and. month < 13_IKC
+        isValid = isValidDateTime(year) .and. 0_IKG < month .and. month < 13_IKG
 #elif   isValidDateTimeYMD_ENABLED
-        isValid = isValidDateTime(year, month) .and. day > 0_IKC
+        isValid = isValidDateTime(year, month) .and. day > 0_IKG
         if (isValid) then
             if (isLeapYear(year)) then
                 isValid = day <= DAYS_OF_MONTH_LEAP(month)
@@ -87,13 +87,13 @@
 #elif   isValidDateTimeYMDZ_ENABLED
         isValid = isValidDateTime(year, month, day) .and. isValidZone(zone)
 #elif   isValidDateTimeYMDZH_ENABLED
-        isValid = isValidDateTime(year, month, day, zone) .and. 0_IKC <= hour .and. hour < 24_IKC
+        isValid = isValidDateTime(year, month, day, zone) .and. 0_IKG <= hour .and. hour < 24_IKG
 #elif   isValidDateTimeYMDZHM_ENABLED
-        isValid = isValidDateTime(year, month, day, zone, hour) .and. 0_IKC <= minute .and. minute < 60_IKC
+        isValid = isValidDateTime(year, month, day, zone, hour) .and. 0_IKG <= minute .and. minute < 60_IKG
 #elif   isValidDateTimeYMDZHMS_ENABLED
-        isValid = isValidDateTime(year, month, day, zone, hour, minute) .and. 0_IKC <= second .and. second < 60_IKC
+        isValid = isValidDateTime(year, month, day, zone, hour, minute) .and. 0_IKG <= second .and. second < 60_IKG
 #elif   isValidDateTimeYMDZHMSM_ENABLED
-        isValid = isValidDateTime(year, month, day, zone, hour, minute, second) .and. 0_IKC <= millisecond .and. millisecond < 1000_IKC
+        isValid = isValidDateTime(year, month, day, zone, hour, minute, second) .and. 0_IKG <= millisecond .and. millisecond < 1000_IKG
 #else
 #error  "Unrecognized interface."
 #endif
@@ -103,60 +103,60 @@
         !%%%%%%%%%%%%%%%%%%%%%%%%
 
 #if     getDateTimeValuesJ_ENABLED
-        real(RKC)   , parameter :: K1 = 0.25_RKC ! The condition `0.002929687499688476 < K1 <= 0.2521972656249999` must hold.
-        real(RKC)   , parameter :: K2 = 0.25_RKC ! The condition `0. < K2 <= 0.25` must hold.
-        real(RKC)   , parameter :: MEAN_YEAR = 365.25_RKC
-        real(RKC)   , parameter :: MEAN_YEAR_INVERSE = 1._RKC / MEAN_YEAR
-        real(RKC)   , parameter :: WHOLE_CENTURY_FACTOR = 1._RKC / 36524.25_RKC
-        integer(IKC), parameter :: DAYS_IN_PAST_MONTHS(3:14) = [0_IKC, 31_IKC, 61_IKC, 92_IKC, 122_IKC, 153_IKC, 184_IKC, 214_IKC, 245_IKC, 275_IKC, 306_IKC, 337_IKC] ! last two correspond to jan, feb.
-        integer(IKC)    :: julianDayOffset_IK ! Z
-        integer(IKC)    :: fullCenturyCount
-        integer(IKC)    :: dayOfYearTerm
-        real(RKC)       :: hours_RK
-        real(RKC)       :: minutes_RK
-        real(RKC)       :: seconds_RK
-        real(RKC)       :: julianDayOffset_RK
-        real(RKC)       :: julianDayOffsetResidual ! R
-        real(RKC)       :: daysInWholeCenturyMinusConst ! B
-        julianDayOffset_RK = julianDay - 1721118.5_RKC
-        julianDayOffset_IK = floor(julianDayOffset_RK, IKC) ! Z
-        julianDayOffsetResidual = julianDayOffset_RK - real(julianDayOffset_IK, RKC) ! R : always positive
-        fullCenturyCount = floor((real(julianDayOffset_IK, RKC) - K1) * WHOLE_CENTURY_FACTOR, IKC) ! A
-        dayOfYearTerm = julianDayOffset_IK + fullCenturyCount - floor(fullCenturyCount * 0.25_RKC, IKC) ! Z + A - floor(A/4)
+        real(RKG)   , parameter :: K1 = 0.25_RKG ! The condition `0.002929687499688476 < K1 <= 0.2521972656249999` must hold.
+        real(RKG)   , parameter :: K2 = 0.25_RKG ! The condition `0. < K2 <= 0.25` must hold.
+        real(RKG)   , parameter :: MEAN_YEAR = 365.25_RKG
+        real(RKG)   , parameter :: MEAN_YEAR_INVERSE = 1._RKG / MEAN_YEAR
+        real(RKG)   , parameter :: WHOLE_CENTURY_FACTOR = 1._RKG / 36524.25_RKG
+        integer(IKG), parameter :: DAYS_IN_PAST_MONTHS(3:14) = [0_IKG, 31_IKG, 61_IKG, 92_IKG, 122_IKG, 153_IKG, 184_IKG, 214_IKG, 245_IKG, 275_IKG, 306_IKG, 337_IKG] ! last two correspond to jan, feb.
+        integer(IKG)    :: julianDayOffset_IK ! Z
+        integer(IKG)    :: fullCenturyCount
+        integer(IKG)    :: dayOfYearTerm
+        real(RKG)       :: hours_RK
+        real(RKG)       :: minutes_RK
+        real(RKG)       :: seconds_RK
+        real(RKG)       :: julianDayOffset_RK
+        real(RKG)       :: julianDayOffsetResidual ! R
+        real(RKG)       :: daysInWholeCenturyMinusConst ! B
+        julianDayOffset_RK = julianDay - 1721118.5_RKG
+        julianDayOffset_IK = floor(julianDayOffset_RK, IKG) ! Z
+        julianDayOffsetResidual = julianDayOffset_RK - real(julianDayOffset_IK, RKG) ! R : always positive
+        fullCenturyCount = floor((real(julianDayOffset_IK, RKG) - K1) * WHOLE_CENTURY_FACTOR, IKG) ! A
+        dayOfYearTerm = julianDayOffset_IK + fullCenturyCount - floor(fullCenturyCount * 0.25_RKG, IKG) ! Z + A - floor(A/4)
         daysInWholeCenturyMinusConst = dayOfYearTerm - K2 ! B
-        values(1) = floor(daysInWholeCenturyMinusConst * MEAN_YEAR_INVERSE, IKC) ! Y : Calendar Year Starting March.
-        values(3) = dayOfYearTerm - floor(values(1) * MEAN_YEAR, IKC) ! C : Day Of Year.
-        values(2) = (5_IKC * values(3) + 456_IKC) / 153_IKC ! M : Month Of Year in the range 3:14.
-        values(3) = values(3) - DAYS_IN_PAST_MONTHS(values(2)) !+ int(julianDayOffsetResidual, IKC)
-        !if (julianDayOffsetResidual > 1._RKC) error stop getStr(julianDayOffsetResidual)
-        if (values(2) > 12_IKC) then
-            values(1) = values(1) + 1_IKC
-            values(2) = values(2) - 12_IKC
+        values(1) = floor(daysInWholeCenturyMinusConst * MEAN_YEAR_INVERSE, IKG) ! Y : Calendar Year Starting March.
+        values(3) = dayOfYearTerm - floor(values(1) * MEAN_YEAR, IKG) ! C : Day Of Year.
+        values(2) = (5_IKG * values(3) + 456_IKG) / 153_IKG ! M : Month Of Year in the range 3:14.
+        values(3) = values(3) - DAYS_IN_PAST_MONTHS(values(2)) !+ int(julianDayOffsetResidual, IKG)
+        !if (julianDayOffsetResidual > 1._RKG) error stop getStr(julianDayOffsetResidual)
+        if (values(2) > 12_IKG) then
+            values(1) = values(1) + 1_IKG
+            values(2) = values(2) - 12_IKG
         end if
-        values(4) = 0_IKC
-        hours_RK = julianDayOffsetResidual * 24._RKC
-        values(5) = int(hours_RK, IKC)
-        !if (values(5) < 0_IKC) then
+        values(4) = 0_IKG
+        hours_RK = julianDayOffsetResidual * 24._RKG
+        values(5) = int(hours_RK, IKG)
+        !if (values(5) < 0_IKG) then
         !    values(1:3) = getDateBefore(values(1), values(2), values(3))
-        !    values(5) = 24_IKC - values(5)
+        !    values(5) = 24_IKG - values(5)
         !end if
-        minutes_RK = (hours_RK - values(5)) * 60._RKC
-        values(6) = int(minutes_RK, IKC)
-        seconds_RK = (minutes_RK - values(6)) * 60._RKC
-        values(7) = int(seconds_RK, IKC)
-        values(8) = nint((seconds_RK - values(7)) * 1000._RKC, IKC)
-        if (values(8) == 1000_IKC) then
-            values(8) = 0_IKC
-            values(7) = values(7) + 1_IKC
-            if (values(7) == 60_IKC) then
-                values(7) = 0_IKC
-                values(6) = values(6) + 1_IKC
-                if (values(6) == 60_IKC) then
-                    values(6) = 0_IKC
-                    values(5) = values(5) + 1_IKC
+        minutes_RK = (hours_RK - values(5)) * 60._RKG
+        values(6) = int(minutes_RK, IKG)
+        seconds_RK = (minutes_RK - values(6)) * 60._RKG
+        values(7) = int(seconds_RK, IKG)
+        values(8) = nint((seconds_RK - values(7)) * 1000._RKG, IKG)
+        if (values(8) == 1000_IKG) then
+            values(8) = 0_IKG
+            values(7) = values(7) + 1_IKG
+            if (values(7) == 60_IKG) then
+                values(7) = 0_IKG
+                values(6) = values(6) + 1_IKG
+                if (values(6) == 60_IKG) then
+                    values(6) = 0_IKG
+                    values(5) = values(5) + 1_IKG
                 end if
-                if (values(5) == 24_IKC) then
-                    values(5) = 0_IKC
+                if (values(5) == 24_IKG) then
+                    values(5) = 0_IKG
                     values(1:3) = getDateAfter(values(1), values(2), values(3))
                 end if
             end if
@@ -166,7 +166,7 @@
 #elif   getDateTimeValuesC_ENABLED
         call date_and_time(values = values)
         !integer(IK)     :: lenValues
-        !integer(IKC)    :: Values_(8)
+        !integer(IKG)    :: Values_(8)
         !lenValues = size(values, 1, IK)
         !CHECK_ASSERTION(__LINE__, 0_IK < lenValues .and. lenValues < 9_IK, SK_"@getDateTime(): The input argument `values` must have a non-zero size that is less than 9. size(values) = "//getStr(lenValues)) ! fpp
         !if (lenValues > 7_IK) then
@@ -175,35 +175,35 @@
         !    call date_and_time(values = Values_)
         !    values(1:lenValues) = Values_(1:lenValues)
         !end if
-        !CHECK_ASSERTION(__LINE__, all(values(1:lenValues) /= -huge(0_IKC)), SK_"@getDateTime(): The processor does not have a clock.") ! fpp
+        !CHECK_ASSERTION(__LINE__, all(values(1:lenValues) /= -huge(0_IKG)), SK_"@getDateTime(): The processor does not have a clock.") ! fpp
 #elif   getDateTimeValuesY_ENABLED
         values(1) = year
-        values(2) = 1_IKC
-        values(3) = 1_IKC
-        values(4:8) = 0_IKC
+        values(2) = 1_IKG
+        values(3) = 1_IKG
+        values(4:8) = 0_IKG
 #elif   getDateTimeValuesYM_ENABLED
         values(1) = year
         values(2) = month
-        values(3) = 1_IKC
-        values(4:8) = 0_IKC
+        values(3) = 1_IKG
+        values(4:8) = 0_IKG
 #elif   getDateTimeValuesYMD_ENABLED
         values(1) = year
         values(2) = month
         values(3) = day
-        values(4:8) = 0_IKC
+        values(4:8) = 0_IKG
 #elif   getDateTimeValuesYMDZ_ENABLED
         values(1) = year
         values(2) = month
         values(3) = day
         values(4) = zone
-        values(5:8) = 0_IKC
+        values(5:8) = 0_IKG
 #elif   getDateTimeValuesYMDZH_ENABLED
         values(1) = year
         values(2) = month
         values(3) = day
         values(4) = zone
         values(5) = hour
-        values(6:8) = 0_IKC
+        values(6:8) = 0_IKG
 #elif   getDateTimeValuesYMDZHM_ENABLED
         values(1) = year
         values(2) = month
@@ -211,7 +211,7 @@
         values(4) = zone
         values(5) = hour
         values(6) = minute
-        values(7:8) = 0_IKC
+        values(7:8) = 0_IKG
 #elif   getDateTimeValuesYMDZHMS_ENABLED
         values(1) = year
         values(2) = month
@@ -220,7 +220,7 @@
         values(5) = hour
         values(6) = minute
         values(7) = second
-        values(8) = 0_IKC
+        values(8) = 0_IKG
 #elif   getDateTimeValuesYMDZHMSM_ENABLED
         values(1) = year
         values(2) = month
@@ -242,29 +242,29 @@
 eposnew = epos + LENSEG; \
 if (eposnew > lenString) then; \
 if (allocated(tempstr)) deallocate(tempstr); \
-allocate(character(eposnew,SKC) :: tempstr); \
+allocate(character(eposnew,SKG) :: tempstr); \
 tempstr(1:lenString) = string; \
 call move_alloc(tempstr, string); \
 lenString = eposnew; \
 end if;
 
 #if     getDateTimeStringC_ENABLED
-        integer(IKC)    :: values(8)
+        integer(IKG)    :: values(8)
         call date_and_time(values = values)
         string = getDateTime(format, values)
 #elif   getDateTimeStringV_ENABLED
         !>  \warning
-        !>  The output of getStr() in this procedure is of kind \SK which is incompatible with any value of SKC /= SK.
+        !>  The output of getStr() in this procedure is of kind \SK which is incompatible with any value of SKG /= SK.
         !>  For now, this is not an issue since both kinds point to the default character kind.
         !>  This will however become an issue once Fortran standard and compilers support non-default date and time characters.
         use pm_val2str, only: getStr
-        character(:,SKC), allocatable   :: tempstr, abbr
-       !character(1,SKC)                :: sep
-       !character(28,SKC)               :: workspace
-        character(9,SKC)                :: workspace9
+        character(:,SKG), allocatable   :: tempstr, abbr
+       !character(1,SKG)                :: sep
+       !character(28,SKG)               :: workspace
+        character(9,SKG)                :: workspace9
         integer(IK)                     :: lenString, lenFormat, i, epos, eposnew, lenSeg
-        integer(IKC)                    :: century!, WeekDate(3)
-        allocate(character(127,SKC)     :: string)
+        integer(IKG)                    :: century!, WeekDate(3)
+        allocate(character(127,SKG)     :: string)
         lenFormat = len(format, IK)
         lenString = 127_IK
         eposnew = 0_IK ! the last touched (end) position in the string
@@ -318,288 +318,288 @@ end if;
             i = i + 1_IK
             if (i > lenFormat) exit
             epos = eposnew
-            if (format(i:i) == SKC_"%") then
+            if (format(i:i) == SKG_"%") then
                 if (i == lenFormat) exit
                 i = i + 1_IK
-                if (format(i:i) == SKC_"a") then ! Abbreviated weekday name *
+                if (format(i:i) == SKG_"a") then ! Abbreviated weekday name *
                     lenSeg = 3_IK
                     RESIZE_STRING(lenSeg) ! fpp sets eposnew, and resizes string.
                     string(epos + 1 : eposnew) = WEEKDAY_NAME_ISO(getWeekDayISO(values(1), values(2), values(3)))(1:lenSeg)
-                elseif (format(i:i) == SKC_"A") then ! Full weekday name *
+                elseif (format(i:i) == SKG_"A") then ! Full weekday name *
                     workspace9 = WEEKDAY_NAME_ISO(getWeekDayISO(values(1), values(2), values(3)))
-                    lenSeg = len_trim(workspace9, IKC)
+                    lenSeg = len_trim(workspace9, IKG)
                     RESIZE_STRING(lenSeg) ! fpp sets eposnew, and resizes string.
                     string(epos + 1 : eposnew) = workspace9(1:lenSeg)
-                elseif (format(i:i) == SKC_"b" .or. format(i:i) == SKC_"h") then ! Abbreviated month name * .or. Abbreviated month name * (same as %b)
+                elseif (format(i:i) == SKG_"b" .or. format(i:i) == SKG_"h") then ! Abbreviated month name * .or. Abbreviated month name * (same as %b)
                     lenSeg = 3_IK
                     RESIZE_STRING(lenSeg) ! fpp sets eposnew, and resizes string.
                     string(epos + 1 : eposnew) = MONTH_NAME(values(2))(1:lenSeg)
-                elseif (format(i:i) == SKC_"B") then ! Full month name *
-                    lenSeg = len_trim(MONTH_NAME(values(2)), IKC)
+                elseif (format(i:i) == SKG_"B") then ! Full month name *
+                    lenSeg = len_trim(MONTH_NAME(values(2)), IKG)
                     RESIZE_STRING(lenSeg) ! fpp sets eposnew, and resizes string.
                     string(epos + 1 : eposnew) = MONTH_NAME(values(2))(1:lenSeg)
-                elseif (format(i:i) == SKC_"c") then ! Date and time representation *
-                    if (values(1) > 0_IKC) then
+                elseif (format(i:i) == SKG_"c") then ! Date and time representation *
+                    if (values(1) > 0_IKG) then
                         RESIZE_STRING(24_IK) ! fpp sets eposnew, and resizes string.
                     else
                         RESIZE_STRING(25_IK) ! fpp sets eposnew, and resizes string.
                     end if
-                    string(epos + 1 : eposnew) =    WEEKDAY_NAME_ISO(getWeekDayISO(values(1), values(2), values(3)))(1:3)//SKC_" "// & ! LCOV_EXCL_LINE
-                                                    MONTH_NAME(values(2))(1:3)//SKC_" "// & ! LCOV_EXCL_LINE
-                                                    getStr(values(3), length = 2_IK, format = "(1I0.2)")//SKC_" "// & ! LCOV_EXCL_LINE
-                                                    getStr(values(5), length = 2_IK, format = "(1I0.2)")//SKC_":"// & ! LCOV_EXCL_LINE
-                                                    getStr(values(6), length = 2_IK, format = "(1I0.2)")//SKC_":"// & ! LCOV_EXCL_LINE
-                                                    getStr(values(7), length = 2_IK, format = "(1I0.2)")//SKC_" "// & ! LCOV_EXCL_LINE
-                                                   !getStr(values(7), length = 2_IK, format = "(1I0.2)")//SKC_"."// & ! LCOV_EXCL_LINE
-                                                   !getStr(values(8), length = 3_IK, format = "(1I0.3)")//SKC_" "// & ! LCOV_EXCL_LINE
+                    string(epos + 1 : eposnew) =    WEEKDAY_NAME_ISO(getWeekDayISO(values(1), values(2), values(3)))(1:3)//SKG_" "// & ! LCOV_EXCL_LINE
+                                                    MONTH_NAME(values(2))(1:3)//SKG_" "// & ! LCOV_EXCL_LINE
+                                                    getStr(values(3), length = 2_IK, format = "(1I0.2)")//SKG_" "// & ! LCOV_EXCL_LINE
+                                                    getStr(values(5), length = 2_IK, format = "(1I0.2)")//SKG_":"// & ! LCOV_EXCL_LINE
+                                                    getStr(values(6), length = 2_IK, format = "(1I0.2)")//SKG_":"// & ! LCOV_EXCL_LINE
+                                                    getStr(values(7), length = 2_IK, format = "(1I0.2)")//SKG_" "// & ! LCOV_EXCL_LINE
+                                                   !getStr(values(7), length = 2_IK, format = "(1I0.2)")//SKG_"."// & ! LCOV_EXCL_LINE
+                                                   !getStr(values(8), length = 3_IK, format = "(1I0.3)")//SKG_" "// & ! LCOV_EXCL_LINE
                                                     getStr(values(1))
-                elseif (format(i:i) == SKC_"C") then ! Year divided by 100 and truncated to integer (00-99). \warning it works for years up to 9 digits.
-                    century = floor(values(1) / 100., IKC)
-                    if (abs(century) < 100_IKC) then
+                elseif (format(i:i) == SKG_"C") then ! Year divided by 100 and truncated to integer (00-99). \warning it works for years up to 9 digits.
+                    century = floor(values(1) / 100., IKG)
+                    if (abs(century) < 100_IKG) then
                         !write(workspace9(1:3), "(sp,I0.2)") century
                         RESIZE_STRING(3_IK) ! fpp sets eposnew, and resizes string.
                         write(string(epos + 1 : eposnew), "(sp,I0.2)") century
                     else
                         workspace9 = getStr(century)
-                        lenSeg = len_trim(workspace9, IKC)
+                        lenSeg = len_trim(workspace9, IKG)
                         RESIZE_STRING(lenSeg) ! fpp sets eposnew, and resizes string.
                         string(epos + 1 : eposnew) = workspace9(1:lenSeg)
                     end if
-                elseif (format(i:i) == SKC_"d") then ! Day of the month, zero-padded (01-31).
+                elseif (format(i:i) == SKG_"d") then ! Day of the month, zero-padded (01-31).
                     RESIZE_STRING(2_IK) ! fpp sets eposnew, and resizes string.
                     write(string(epos + 1 : eposnew), "(I0.2)") values(3)
-                elseif (format(i:i) == SKC_"D") then ! Short MM/DD/YY date, equivalent to %m/%d/%y
+                elseif (format(i:i) == SKG_"D") then ! Short MM/DD/YY date, equivalent to %m/%d/%y
                     RESIZE_STRING(8_IK) ! fpp sets eposnew, and resizes string.
                     !write(workspace9(1:2), "(I0.2)") values(2) ! month.
                     !write(workspace9(3:4), "(I0.2)") values(3) ! day.
-                    !write(workspace9(5:6), "(I0.2)") mod(abs(values(1)), 100_IKC) ! last two digits of year.
+                    !write(workspace9(5:6), "(I0.2)") mod(abs(values(1)), 100_IKG) ! last two digits of year.
                     !string(epos + 1 : eposnew) =    workspace9(1:2)//sep// & ! LCOV_EXCL_LINE
                     !                                workspace9(3:4)//sep// & ! LCOV_EXCL_LINE
                     !                                workspace9(5:6)
-                    write(string(epos + 1 : eposnew), "(I0.2,'/',I0.2,'/',I0.2)") values(2:3), mod(abs(values(1)), 100_IKC) ! last two digits of year.
-                elseif (format(i:i) == SKC_"e") then ! Day of the month, zero-padded (01-31).
+                    write(string(epos + 1 : eposnew), "(I0.2,'/',I0.2,'/',I0.2)") values(2:3), mod(abs(values(1)), 100_IKG) ! last two digits of year.
+                elseif (format(i:i) == SKG_"e") then ! Day of the month, zero-padded (01-31).
                     RESIZE_STRING(2_IK) ! fpp sets eposnew, and resizes string.
                     write(string(epos + 1 : eposnew), "(I2)") values(3)
-                elseif (format(i:i) == SKC_"f") then ! millisecond padded with leading zeros
+                elseif (format(i:i) == SKG_"f") then ! millisecond padded with leading zeros
                     RESIZE_STRING(3_IK) ! fpp sets eposnew, and resizes string.
                     write(string(epos + 1 : eposnew), "(I0.3)") values(8)
-                elseif (format(i:i) == SKC_"F") then ! Short YYYY-MM-DD date, equivalent to %Y-%m-%d
-                    if (values(1) > 0_IKC) then
+                elseif (format(i:i) == SKG_"F") then ! Short YYYY-MM-DD date, equivalent to %Y-%m-%d
+                    if (values(1) > 0_IKG) then
                         RESIZE_STRING(10_IK) ! fpp sets eposnew, and resizes string.
                     else
                         RESIZE_STRING(11_IK) ! fpp sets eposnew, and resizes string.
                     end if
                     write(string(epos + 1 : eposnew), "(I0.2,'-',I0.2,'-',I0.2)") values(1:3)
-                elseif (format(i:i) == SKC_"g") then ! Week-based year, last two digits (00-99).
+                elseif (format(i:i) == SKG_"g") then ! Week-based year, last two digits (00-99).
                     !WeekDate(1:3) = getWeekDate(values(1:3))
                     RESIZE_STRING(2_IK) ! fpp sets eposnew, and resizes string.
-                    write(string(epos + 1 : eposnew), "(I0.2)") mod(abs(getWeekYear(values(1:3))), 100_IKC) ! last two digits of the week year.
-                elseif (format(i:i) == SKC_"G") then ! Week-based year, full week year, possibly negative.
+                    write(string(epos + 1 : eposnew), "(I0.2)") mod(abs(getWeekYear(values(1:3))), 100_IKG) ! last two digits of the week year.
+                elseif (format(i:i) == SKG_"G") then ! Week-based year, full week year, possibly negative.
                     !WeekDate(1:3) = getWeekDate(values(1:3))
                     workspace9 = getStr(getWeekYear(values(1:3))) ! WeekDate(1)) ! full week year, possibly negative.
-                    lenSeg = len_trim(workspace9, IKC)
+                    lenSeg = len_trim(workspace9, IKG)
                     RESIZE_STRING(lenSeg) ! fpp sets eposnew, and resizes string.
                     string(epos + 1 : eposnew) = workspace9(1:lenSeg)
-                elseif (format(i:i) == SKC_"H") then ! Hour in 24h format (00-23)
+                elseif (format(i:i) == SKG_"H") then ! Hour in 24h format (00-23)
                     RESIZE_STRING(2_IK) ! fpp sets eposnew, and resizes string.
                     write(string(epos + 1 : eposnew), "(I0.2)") values(5)
-                elseif (format(i:i) == SKC_"I") then ! Hour in 12h format (01-12)
+                elseif (format(i:i) == SKG_"I") then ! Hour in 12h format (01-12)
                     RESIZE_STRING(2_IK) ! fpp sets eposnew, and resizes string.
                     write(string(epos + 1 : eposnew), "(I0.2)") getHour12(values(5))
-                    !if (values(5) < 12_IKC) then
+                    !if (values(5) < 12_IKG) then
                     !    write(string(epos + 1 : eposnew), "(I0.2)") values(5)
                     !else
-                    !    write(string(epos + 1 : eposnew), "(I0.2)") values(5) - 12_IKC
+                    !    write(string(epos + 1 : eposnew), "(I0.2)") values(5) - 12_IKG
                     !end if
-                elseif (format(i:i) == SKC_"j") then ! Day of the year (001-366)
+                elseif (format(i:i) == SKG_"j") then ! Day of the year (001-366)
                     RESIZE_STRING(3_IK) ! fpp sets eposnew, and resizes string.
                     write(string(epos + 1 : eposnew), "(I0.3)") getOrdinalDay(values(1:3))
-                elseif (format(i:i) == SKC_"m") then ! Month as a decimal number (01-12)
+                elseif (format(i:i) == SKG_"m") then ! Month as a decimal number (01-12)
                     RESIZE_STRING(2_IK) ! fpp sets eposnew, and resizes string.
                     write(string(epos + 1 : eposnew), "(I0.2)") values(2)
-                elseif (format(i:i) == SKC_"M") then ! Minute (00-59)
+                elseif (format(i:i) == SKG_"M") then ! Minute (00-59)
                     RESIZE_STRING(2_IK) ! fpp sets eposnew, and resizes string.
                     write(string(epos + 1 : eposnew), "(I0.2)") values(6)
-                elseif (format(i:i) == SKC_"n") then ! New-line character ('\n')
+                elseif (format(i:i) == SKG_"n") then ! New-line character ('\n')
                     RESIZE_STRING(1_IK) ! fpp sets eposnew, and resizes string.
-                    string(epos + 1 : eposnew) = achar(10, SKC) ! new_line(SKC_"a")
-                elseif (format(i:i) == SKC_"p") then ! AM or PM designation
+                    string(epos + 1 : eposnew) = achar(10, SKG) ! new_line(SKG_"a")
+                elseif (format(i:i) == SKG_"p") then ! AM or PM designation
                     RESIZE_STRING(2_IK) ! fpp sets eposnew, and resizes string.
-                    if (values(5) < 12_IKC) then
-                        string(epos + 1 : eposnew) = SKC_"AM"
+                    if (values(5) < 12_IKG) then
+                        string(epos + 1 : eposnew) = SKG_"AM"
                     else
-                        string(epos + 1 : eposnew) = SKC_"PM"
+                        string(epos + 1 : eposnew) = SKG_"PM"
                     end if
-                elseif (format(i:i) == SKC_"r") then ! 12-hour clock time *
+                elseif (format(i:i) == SKG_"r") then ! 12-hour clock time *
                     RESIZE_STRING(11_IK) ! fpp sets eposnew, and resizes string.
-                    if (values(5) < 12_IKC) then
+                    if (values(5) < 12_IKG) then
                         write(string(epos + 1 : eposnew), "(I0.2,':',I0.2,':',I0.2,' am')") getHour12(values(5)), values(6:7)
                     else
                         write(string(epos + 1 : eposnew), "(I0.2,':',I0.2,':',I0.2,' pm')") getHour12(values(5)), values(6:7)
                     end if
-                elseif (format(i:i) == SKC_"R") then ! 24-hour HH:MM time, equivalent to %H:%M
+                elseif (format(i:i) == SKG_"R") then ! 24-hour HH:MM time, equivalent to %H:%M
                     RESIZE_STRING(5_IK) ! fpp sets eposnew, and resizes string.
                     write(string(epos + 1 : eposnew), "(I0.2,':',I0.2)") values(5:6)
-                elseif (format(i:i) == SKC_"S") then ! Second (00-59)
+                elseif (format(i:i) == SKG_"S") then ! Second (00-59)
                     RESIZE_STRING(2_IK) ! fpp sets eposnew, and resizes string.
                     write(string(epos + 1 : eposnew), "(I0.2)") values(7)
-                elseif (format(i:i) == SKC_"t") then ! Horizontal-tab character ('\t')
+                elseif (format(i:i) == SKG_"t") then ! Horizontal-tab character ('\t')
                     RESIZE_STRING(1_IK) ! fpp sets eposnew, and resizes string.
-                    string(epos + 1 : eposnew) = achar(9, SKC)
-                elseif (format(i:i) == SKC_"T") then ! ISO 8601 time format (HH:MM:SS), equivalent to %H:%M:%S
+                    string(epos + 1 : eposnew) = achar(9, SKG)
+                elseif (format(i:i) == SKG_"T") then ! ISO 8601 time format (HH:MM:SS), equivalent to %H:%M:%S
                     RESIZE_STRING(8_IK) ! fpp sets eposnew, and resizes string.
                     write(string(epos + 1 : eposnew), "(I0.2,':',I0.2,':',I0.2)") values(5:7)
-                elseif (format(i:i) == SKC_"u") then ! ISO 8601 weekday as number with Monday as 1 (1-7)
+                elseif (format(i:i) == SKG_"u") then ! ISO 8601 weekday as number with Monday as 1 (1-7)
                     RESIZE_STRING(1_IK) ! fpp sets eposnew, and resizes string.
                     write(string(epos + 1 : eposnew), "(I1)") getWeekDayISO(values(1), values(2), values(3))
-                elseif (format(i:i) == SKC_"V") then ! ISO 8601 week number (01-53)
+                elseif (format(i:i) == SKG_"V") then ! ISO 8601 week number (01-53)
                     RESIZE_STRING(2_IK) ! fpp sets eposnew, and resizes string.
                     write(string(epos + 1 : eposnew), "(I0.2)") getWeekNumber(values(1), values(2), values(3))
-                elseif (format(i:i) == SKC_"w") then ! Weekday as a decimal number with Sunday as 0 (0-6)
+                elseif (format(i:i) == SKG_"w") then ! Weekday as a decimal number with Sunday as 0 (0-6)
                     RESIZE_STRING(1_IK) ! fpp sets eposnew, and resizes string.
                     write(string(epos + 1 : eposnew), "(I1)") getWeekDay(values(1), values(2), values(3))
-                elseif (format(i:i) == SKC_"x") then ! Date representation *
+                elseif (format(i:i) == SKG_"x") then ! Date representation *
                     RESIZE_STRING(8_IK) ! fpp sets eposnew, and resizes string.
-                    write(string(epos + 1 : eposnew), "(I0.2,'/',I0.2,'/',I0.2)") values(2), values(3), mod(abs(values(1)), 100_IKC) ! last two digits of year.
-                elseif (format(i:i) == SKC_"X") then ! Time representation *
+                    write(string(epos + 1 : eposnew), "(I0.2,'/',I0.2,'/',I0.2)") values(2), values(3), mod(abs(values(1)), 100_IKG) ! last two digits of year.
+                elseif (format(i:i) == SKG_"X") then ! Time representation *
                     RESIZE_STRING(8_IK) ! fpp sets eposnew, and resizes string.
                     write(string(epos + 1 : eposnew), "(I0.2,':',I0.2,':',I0.2)") values(5:7)
-                elseif (format(i:i) == SKC_"y") then ! Year, last two digits (00-99)
+                elseif (format(i:i) == SKG_"y") then ! Year, last two digits (00-99)
                     RESIZE_STRING(2_IK) ! fpp sets eposnew, and resizes string.
-                    write(string(epos + 1 : eposnew), "(I0.2)") mod(abs(values(1)), 100_IKC) ! last two digits of year.
-                elseif (format(i:i) == SKC_"Y") then ! Year, last two digits (00-99)
+                    write(string(epos + 1 : eposnew), "(I0.2)") mod(abs(values(1)), 100_IKG) ! last two digits of year.
+                elseif (format(i:i) == SKG_"Y") then ! Year, last two digits (00-99)
                     workspace9 = getStr(values(1))
-                    lenSeg = len_trim(workspace9, IKC)
+                    lenSeg = len_trim(workspace9, IKG)
                     RESIZE_STRING(lenSeg) ! fpp sets eposnew, and resizes string.
                     string(epos + 1 : eposnew) = workspace9(1:lenSeg)
-                elseif (format(i:i) == SKC_"z") then ! ISO 8601 offset from UTC in timezone in units of minutes
+                elseif (format(i:i) == SKG_"z") then ! ISO 8601 offset from UTC in timezone in units of minutes
                     RESIZE_STRING(5_IK) ! fpp sets eposnew, and resizes string.
                     write(string(epos + 1 : eposnew), "(sp,I0.4)") values(4)
-                elseif (format(i:i) == SKC_"Z") then ! Timezone name or abbreviation.
+                elseif (format(i:i) == SKG_"Z") then ! Timezone name or abbreviation.
                     abbr = getZoneAbbr(values(4))
                     RESIZE_STRING(len(abbr, IK))
                     string(epos + 1 : eposnew) = abbr
-                    !if (values(4) == -60_IKC * 12_IKC) then ! International Day Line West time zone
+                    !if (values(4) == -60_IKG * 12_IKG) then ! International Day Line West time zone
                     !    RESIZE_STRING(4_IK) ! fpp sets eposnew, and resizes string.
-                    !    string(epos + 1 : eposnew) = SKC_"IDLW"
-                    !elseif (values(4) == -60_IKC * 11_IKC) then ! Samoa Standard Time
+                    !    string(epos + 1 : eposnew) = SKG_"IDLW"
+                    !elseif (values(4) == -60_IKG * 11_IKG) then ! Samoa Standard Time
                     !    RESIZE_STRING(3_IK) ! fpp sets eposnew, and resizes string.
-                    !    string(epos + 1 : eposnew) = SKC_"SST"
-                    !elseif (values(4) == -60_IKC * 10_IKC) then ! Hawaii–Aleutian Standard Time
+                    !    string(epos + 1 : eposnew) = SKG_"SST"
+                    !elseif (values(4) == -60_IKG * 10_IKG) then ! Hawaii–Aleutian Standard Time
                     !    RESIZE_STRING(3_IK) ! fpp sets eposnew, and resizes string.
-                    !    string(epos + 1 : eposnew) = SKC_"HST"
-                    !elseif (values(4) == -60_IKC * 9_IKC - 30_IKC) then ! Marquesas Islands Time
+                    !    string(epos + 1 : eposnew) = SKG_"HST"
+                    !elseif (values(4) == -60_IKG * 9_IKG - 30_IKG) then ! Marquesas Islands Time
                     !    RESIZE_STRING(3_IK) ! fpp sets eposnew, and resizes string.
-                    !    string(epos + 1 : eposnew) = SKC_"MIT"
-                    !elseif (values(4) == -60_IKC * 9_IKC) then ! Alaska Standard Time
+                    !    string(epos + 1 : eposnew) = SKG_"MIT"
+                    !elseif (values(4) == -60_IKG * 9_IKG) then ! Alaska Standard Time
                     !    RESIZE_STRING(4_IK) ! fpp sets eposnew, and resizes string.
-                    !    string(epos + 1 : eposnew) = SKC_"AKST"
-                    !elseif (values(4) == -60_IKC * 8_IKC) then ! Pacific Standard Time (North America)
+                    !    string(epos + 1 : eposnew) = SKG_"AKST"
+                    !elseif (values(4) == -60_IKG * 8_IKG) then ! Pacific Standard Time (North America)
                     !    RESIZE_STRING(3_IK) ! fpp sets eposnew, and resizes string.
-                    !    string(epos + 1 : eposnew) = SKC_"PST"
-                    !elseif (values(4) == -60_IKC * 7_IKC) then ! Mountain Standard Time (North America)
+                    !    string(epos + 1 : eposnew) = SKG_"PST"
+                    !elseif (values(4) == -60_IKG * 7_IKG) then ! Mountain Standard Time (North America)
                     !    RESIZE_STRING(3_IK) ! fpp sets eposnew, and resizes string.
-                    !    string(epos + 1 : eposnew) = SKC_"MST"
-                    !elseif (values(4) == -60_IKC * 6_IKC) then ! Central Standard Time (North America)
+                    !    string(epos + 1 : eposnew) = SKG_"MST"
+                    !elseif (values(4) == -60_IKG * 6_IKG) then ! Central Standard Time (North America)
                     !    RESIZE_STRING(3_IK) ! fpp sets eposnew, and resizes string.
-                    !    string(epos + 1 : eposnew) = SKC_"CST"
-                    !elseif (values(4) == -60_IKC * 5_IKC) then ! Eastern Standard Time (North America)
+                    !    string(epos + 1 : eposnew) = SKG_"CST"
+                    !elseif (values(4) == -60_IKG * 5_IKG) then ! Eastern Standard Time (North America)
                     !    RESIZE_STRING(3_IK) ! fpp sets eposnew, and resizes string.
-                    !    string(epos + 1 : eposnew) = SKC_"EST"
-                    !elseif (values(4) == -60_IKC * 3_IKC - 30_IKC) then ! Newfoundland Standard Time
+                    !    string(epos + 1 : eposnew) = SKG_"EST"
+                    !elseif (values(4) == -60_IKG * 3_IKG - 30_IKG) then ! Newfoundland Standard Time
                     !    RESIZE_STRING(3_IK) ! fpp sets eposnew, and resizes string.
-                    !    string(epos + 1 : eposnew) = SKC_"NST"
-                    !elseif (values(4) == -60_IKC * 3_IKC) then ! Uruguay Standard Time
+                    !    string(epos + 1 : eposnew) = SKG_"NST"
+                    !elseif (values(4) == -60_IKG * 3_IKG) then ! Uruguay Standard Time
                     !    RESIZE_STRING(3_IK) ! fpp sets eposnew, and resizes string.
-                    !    string(epos + 1 : eposnew) = SKC_"UYT"
-                    !elseif (values(4) == -60_IKC * 2_IKC - 30_IKC) then ! Newfoundland Daylight Time
+                    !    string(epos + 1 : eposnew) = SKG_"UYT"
+                    !elseif (values(4) == -60_IKG * 2_IKG - 30_IKG) then ! Newfoundland Daylight Time
                     !    RESIZE_STRING(3_IK) ! fpp sets eposnew, and resizes string.
-                    !    string(epos + 1 : eposnew) = SKC_"NDT"
-                    !elseif (values(4) == -60_IKC * 2_IKC) then ! Uruguay Summer Time
+                    !    string(epos + 1 : eposnew) = SKG_"NDT"
+                    !elseif (values(4) == -60_IKG * 2_IKG) then ! Uruguay Summer Time
                     !    RESIZE_STRING(4_IK) ! fpp sets eposnew, and resizes string.
-                    !    string(epos + 1 : eposnew) = SKC_"UYST"
-                    !elseif (values(4) == -60_IKC * 1_IKC) then ! Eastern Greenland Time
+                    !    string(epos + 1 : eposnew) = SKG_"UYST"
+                    !elseif (values(4) == -60_IKG * 1_IKG) then ! Eastern Greenland Time
                     !    RESIZE_STRING(3_IK) ! fpp sets eposnew, and resizes string.
-                    !    string(epos + 1 : eposnew) = SKC_"EGT"
-                    !elseif (values(4) == 0_IKC) then ! Coordinated Universal Time
+                    !    string(epos + 1 : eposnew) = SKG_"EGT"
+                    !elseif (values(4) == 0_IKG) then ! Coordinated Universal Time
                     !    RESIZE_STRING(3_IK) ! fpp sets eposnew, and resizes string.
-                    !    string(epos + 1 : eposnew) = SKC_"UTC"
-                    !elseif (values(4) == +60_IKC * 1_IKC) then ! Central European Time
+                    !    string(epos + 1 : eposnew) = SKG_"UTC"
+                    !elseif (values(4) == +60_IKG * 1_IKG) then ! Central European Time
                     !    RESIZE_STRING(3_IK) ! fpp sets eposnew, and resizes string.
-                    !    string(epos + 1 : eposnew) = SKC_"CET"
-                    !elseif (values(4) == +60_IKC * 2_IKC) then ! Eastern European Time
+                    !    string(epos + 1 : eposnew) = SKG_"CET"
+                    !elseif (values(4) == +60_IKG * 2_IKG) then ! Eastern European Time
                     !    RESIZE_STRING(3_IK) ! fpp sets eposnew, and resizes string.
-                    !    string(epos + 1 : eposnew) = SKC_"EET"
-                    !elseif (values(4) == +60_IKC * 3_IKC) then ! Arabia Standard Time
+                    !    string(epos + 1 : eposnew) = SKG_"EET"
+                    !elseif (values(4) == +60_IKG * 3_IKG) then ! Arabia Standard Time
                     !    RESIZE_STRING(3_IK) ! fpp sets eposnew, and resizes string.
-                    !    string(epos + 1 : eposnew) = SKC_"AST"
-                    !elseif (values(4) == +60_IKC * 3_IKC + 30_IKC) then ! Iran Standard Time
+                    !    string(epos + 1 : eposnew) = SKG_"AST"
+                    !elseif (values(4) == +60_IKG * 3_IKG + 30_IKG) then ! Iran Standard Time
                     !    RESIZE_STRING(4_IK) ! fpp sets eposnew, and resizes string.
-                    !    string(epos + 1 : eposnew) = SKC_"IRST"
-                    !elseif (values(4) == +60_IKC * 4_IKC) then ! Georgia Standard Time
+                    !    string(epos + 1 : eposnew) = SKG_"IRST"
+                    !elseif (values(4) == +60_IKG * 4_IKG) then ! Georgia Standard Time
                     !    RESIZE_STRING(3_IK) ! fpp sets eposnew, and resizes string.
-                    !    string(epos + 1 : eposnew) = SKC_"GET"
-                    !elseif (values(4) == +60_IKC * 4_IKC + 30_IKC) then ! Afghanistan Time
+                    !    string(epos + 1 : eposnew) = SKG_"GET"
+                    !elseif (values(4) == +60_IKG * 4_IKG + 30_IKG) then ! Afghanistan Time
                     !    RESIZE_STRING(3_IK) ! fpp sets eposnew, and resizes string.
-                    !    string(epos + 1 : eposnew) = SKC_"AFT"
-                    !elseif (values(4) == +60_IKC * 5_IKC) then ! Pakistan Standard Time
+                    !    string(epos + 1 : eposnew) = SKG_"AFT"
+                    !elseif (values(4) == +60_IKG * 5_IKG) then ! Pakistan Standard Time
                     !    RESIZE_STRING(3_IK) ! fpp sets eposnew, and resizes string.
-                    !    string(epos + 1 : eposnew) = SKC_"PKT"
-                    !elseif (values(4) == +60_IKC * 5_IKC + 30_IKC) then ! Indian Standard Time
+                    !    string(epos + 1 : eposnew) = SKG_"PKT"
+                    !elseif (values(4) == +60_IKG * 5_IKG + 30_IKG) then ! Indian Standard Time
                     !    RESIZE_STRING(3_IK) ! fpp sets eposnew, and resizes string.
-                    !    string(epos + 1 : eposnew) = SKC_"IST"
-                    !elseif (values(4) == +60_IKC * 5_IKC + 45_IKC) then ! Nepal Time
+                    !    string(epos + 1 : eposnew) = SKG_"IST"
+                    !elseif (values(4) == +60_IKG * 5_IKG + 45_IKG) then ! Nepal Time
                     !    RESIZE_STRING(3_IK) ! fpp sets eposnew, and resizes string.
-                    !    string(epos + 1 : eposnew) = SKC_"NPT"
-                    !elseif (values(4) == +60_IKC * 6_IKC) then ! Bangladesh Standard Time
+                    !    string(epos + 1 : eposnew) = SKG_"NPT"
+                    !elseif (values(4) == +60_IKG * 6_IKG) then ! Bangladesh Standard Time
                     !    RESIZE_STRING(3_IK) ! fpp sets eposnew, and resizes string.
-                    !    string(epos + 1 : eposnew) = SKC_"BST"
-                    !elseif (values(4) == +60_IKC * 6_IKC + 30_IKC) then ! Myanmar Standard Time
+                    !    string(epos + 1 : eposnew) = SKG_"BST"
+                    !elseif (values(4) == +60_IKG * 6_IKG + 30_IKG) then ! Myanmar Standard Time
                     !    RESIZE_STRING(3_IK) ! fpp sets eposnew, and resizes string.
-                    !    string(epos + 1 : eposnew) = SKC_"MMT"
-                    !elseif (values(4) == +60_IKC * 7_IKC) then ! Thailand Standard Time
+                    !    string(epos + 1 : eposnew) = SKG_"MMT"
+                    !elseif (values(4) == +60_IKG * 7_IKG) then ! Thailand Standard Time
                     !    RESIZE_STRING(3_IK) ! fpp sets eposnew, and resizes string.
-                    !    string(epos + 1 : eposnew) = SKC_"THA"
-                    !elseif (values(4) == +60_IKC * 8_IKC) then ! Singapore Standard Time
+                    !    string(epos + 1 : eposnew) = SKG_"THA"
+                    !elseif (values(4) == +60_IKG * 8_IKG) then ! Singapore Standard Time
                     !    RESIZE_STRING(3_IK) ! fpp sets eposnew, and resizes string.
-                    !    string(epos + 1 : eposnew) = SKC_"SST"
-                    !elseif (values(4) == +60_IKC * 8_IKC + 45_IKC) then ! Central Western Standard Time (Australia)
+                    !    string(epos + 1 : eposnew) = SKG_"SST"
+                    !elseif (values(4) == +60_IKG * 8_IKG + 45_IKG) then ! Central Western Standard Time (Australia)
                     !    RESIZE_STRING(4_IK) ! fpp sets eposnew, and resizes string.
-                    !    string(epos + 1 : eposnew) = SKC_"CWST"
-                    !elseif (values(4) == +60_IKC * 9_IKC) then ! Japan Standard Time
+                    !    string(epos + 1 : eposnew) = SKG_"CWST"
+                    !elseif (values(4) == +60_IKG * 9_IKG) then ! Japan Standard Time
                     !    RESIZE_STRING(3_IK) ! fpp sets eposnew, and resizes string.
-                    !    string(epos + 1 : eposnew) = SKC_"JST"
-                    !elseif (values(4) == +60_IKC * 9_IKC + 30_IKC) then ! Australian Central Standard Time
+                    !    string(epos + 1 : eposnew) = SKG_"JST"
+                    !elseif (values(4) == +60_IKG * 9_IKG + 30_IKG) then ! Australian Central Standard Time
                     !    RESIZE_STRING(4_IK) ! fpp sets eposnew, and resizes string.
-                    !    string(epos + 1 : eposnew) = SKC_"ACST"
-                    !elseif (values(4) == +60_IKC * 10_IKC) then ! Australian Eastern Standard Time
+                    !    string(epos + 1 : eposnew) = SKG_"ACST"
+                    !elseif (values(4) == +60_IKG * 10_IKG) then ! Australian Eastern Standard Time
                     !    RESIZE_STRING(4_IK) ! fpp sets eposnew, and resizes string.
-                    !    string(epos + 1 : eposnew) = SKC_"AEST"
-                    !elseif (values(4) == +60_IKC * 10_IKC + 30_IKC) then ! Lord Howe Standard Time
+                    !    string(epos + 1 : eposnew) = SKG_"AEST"
+                    !elseif (values(4) == +60_IKG * 10_IKG + 30_IKG) then ! Lord Howe Standard Time
                     !    RESIZE_STRING(4_IK) ! fpp sets eposnew, and resizes string.
-                    !    string(epos + 1 : eposnew) = SKC_"LHST"
-                    !elseif (values(4) == +60_IKC * 11_IKC) then ! Pohnpei Standard Time
+                    !    string(epos + 1 : eposnew) = SKG_"LHST"
+                    !elseif (values(4) == +60_IKG * 11_IKG) then ! Pohnpei Standard Time
                     !    RESIZE_STRING(4_IK) ! fpp sets eposnew, and resizes string.
-                    !    string(epos + 1 : eposnew) = SKC_"PONT"
-                    !elseif (values(4) == +60_IKC * 12_IKC) then ! New Zealand Standard Time
+                    !    string(epos + 1 : eposnew) = SKG_"PONT"
+                    !elseif (values(4) == +60_IKG * 12_IKG) then ! New Zealand Standard Time
                     !    RESIZE_STRING(4_IK) ! fpp sets eposnew, and resizes string.
-                    !    string(epos + 1 : eposnew) = SKC_"NZST"
-                    !elseif (values(4) == +60_IKC * 12_IKC + 45_IKC) then ! Chatham Standard Time
+                    !    string(epos + 1 : eposnew) = SKG_"NZST"
+                    !elseif (values(4) == +60_IKG * 12_IKG + 45_IKG) then ! Chatham Standard Time
                     !    RESIZE_STRING(5_IK) ! fpp sets eposnew, and resizes string.
-                    !    string(epos + 1 : eposnew) = SKC_"CHAST"
-                    !elseif (values(4) == +60_IKC * 13_IKC) then ! Tonga Time
+                    !    string(epos + 1 : eposnew) = SKG_"CHAST"
+                    !elseif (values(4) == +60_IKG * 13_IKG) then ! Tonga Time
                     !    RESIZE_STRING(3_IK) ! fpp sets eposnew, and resizes string.
-                    !    string(epos + 1 : eposnew) = SKC_"TOT"
-                    !elseif (values(4) == +60_IKC * 13_IKC + 45_IKC) then ! Chatham Daylight Time
+                    !    string(epos + 1 : eposnew) = SKG_"TOT"
+                    !elseif (values(4) == +60_IKG * 13_IKG + 45_IKG) then ! Chatham Daylight Time
                     !    RESIZE_STRING(5_IK) ! fpp sets eposnew, and resizes string.
-                    !    string(epos + 1 : eposnew) = SKC_"CHADT"
-                    !elseif (values(4) == +60_IKC * 14_IKC) then ! Line Islands Time
+                    !    string(epos + 1 : eposnew) = SKG_"CHADT"
+                    !elseif (values(4) == +60_IKG * 14_IKG) then ! Line Islands Time
                     !    RESIZE_STRING(4_IK) ! fpp sets eposnew, and resizes string.
-                    !    string(epos + 1 : eposnew) = SKC_"LINT"
+                    !    string(epos + 1 : eposnew) = SKG_"LINT"
                     !end if
-                elseif (format(i:i) == SKC_"%") then ! add percentage.
+                elseif (format(i:i) == SKG_"%") then ! add percentage.
                     RESIZE_STRING(1_IK) ! fpp sets eposnew, and resizes string.
-                    string(epos + 1 : eposnew) = SKC_"%"
+                    string(epos + 1 : eposnew) = SKG_"%"
                 else ! Unrecognized format.
                     RESIZE_STRING(2_IK) ! fpp sets eposnew, and resizes string.
                     string(epos + 1 : eposnew) = format(i - 1 : i)
@@ -625,9 +625,9 @@ end if;
 
         ! The case for no input (current) date and time.
 #if     getDateTimeNewZoneC_ENABLED
-        integer(IKC) :: values(8)
+        integer(IKG) :: values(8)
         call date_and_time(values = values)
-        CHECK_ASSERTION(__LINE__, all(values /= -huge(0_IKC)), SK_"@getDateTimeNewZone(): The processor does not have a clock.") ! fpp
+        CHECK_ASSERTION(__LINE__, all(values /= -huge(0_IKG)), SK_"@getDateTimeNewZone(): The processor does not have a clock.") ! fpp
         DateTimeNewZone(1:8) = getDateTimeNewZone(newzone, values(1), values(2), values(3), values(4), values(5), values(6), values(7), values(8))
         ! The case for vector of date and time.
 #elif   getDateTimeNewZoneV_ENABLED
@@ -656,13 +656,13 @@ end if;
         ! The case for keyword date and time.
 #else
 #if     !getDateTimeNewZoneYMDZHMSM_ENABLED
-        integer(IKC), parameter :: millisecond = 0_IK
+        integer(IKG), parameter :: millisecond = 0_IK
 #if     !getDateTimeNewZoneYMDZHMS_ENABLED
-        integer(IKC), parameter :: second = 0_IK
+        integer(IKG), parameter :: second = 0_IK
 #if     !getDateTimeNewZoneYMDZHM_ENABLED
-        integer(IKC), parameter :: minute = 0_IK
+        integer(IKG), parameter :: minute = 0_IK
 #if     !getDateTimeNewZoneYMDZH_ENABLED
-        integer(IKC), parameter :: hour = 0_IK
+        integer(IKG), parameter :: hour = 0_IK
 #if     !getDateTimeNewZoneYMDZ_ENABLED
 #error  "Unrecognized interface."
 #endif
@@ -697,9 +697,9 @@ end if;
 
         ! The case for no input (current) date and time.
 #if     getDateTimeUTCC_ENABLED
-        integer(IKC) :: values(8)
+        integer(IKG) :: values(8)
         call date_and_time(values = values)
-        CHECK_ASSERTION(__LINE__, all(values /= -huge(0_IKC)), SK_"@getDateTimeUTC(): The processor does not have a clock.") ! fpp
+        CHECK_ASSERTION(__LINE__, all(values /= -huge(0_IKG)), SK_"@getDateTimeUTC(): The processor does not have a clock.") ! fpp
         DateTimeUTC(1:8) = getDateTimeUTC(values(1), values(2), values(3), values(4), values(5), values(6), values(7), values(8))
         ! The case for vector of date and time.
 #elif   getDateTimeUTCV_ENABLED
@@ -728,13 +728,13 @@ end if;
         ! The case for keyword date and time.
 #else
 #if     !getDateTimeUTCYMDZHMSM_ENABLED
-        integer(IKC), parameter :: millisecond = 0_IK
+        integer(IKG), parameter :: millisecond = 0_IK
 #if     !getDateTimeUTCYMDZHMS_ENABLED
-        integer(IKC), parameter :: second = 0_IK
+        integer(IKG), parameter :: second = 0_IK
 #if     !getDateTimeUTCYMDZHM_ENABLED
-        integer(IKC), parameter :: minute = 0_IK
+        integer(IKG), parameter :: minute = 0_IK
 #if     !getDateTimeUTCYMDZH_ENABLED
-        integer(IKC), parameter :: hour = 0_IK
+        integer(IKG), parameter :: hour = 0_IK
 #if     !getDateTimeUTCYMDZ_ENABLED
 #error  "Unrecognized interface."
 #endif
@@ -742,32 +742,32 @@ end if;
 #endif
 #endif
 #endif
-        integer(IKC) :: offsetDays
-        integer(IKC) :: totalHours
-        integer(IKC) :: offsetHours
-        integer(IKC) :: totalMinutes
+        integer(IKG) :: offsetDays
+        integer(IKG) :: totalHours
+        integer(IKG) :: offsetHours
+        integer(IKG) :: totalMinutes
         DateTimeUTC(8) = millisecond
         DateTimeUTC(7) = second
-        if (zone /= 0_IKC) then
+        if (zone /= 0_IKG) then
             totalMinutes = minute - zone
-            offsetHours = totalMinutes / 60_IKC
-            DateTimeUTC(6) = totalMinutes - offsetHours * 60_IKC
-            if (DateTimeUTC(6) < 0_IKC) then
-                DateTimeUTC(6) = DateTimeUTC(6) + 60_IKC
-                offsetHours = offsetHours - 1_IKC
+            offsetHours = totalMinutes / 60_IKG
+            DateTimeUTC(6) = totalMinutes - offsetHours * 60_IKG
+            if (DateTimeUTC(6) < 0_IKG) then
+                DateTimeUTC(6) = DateTimeUTC(6) + 60_IKG
+                offsetHours = offsetHours - 1_IKG
             end if
             totalHours = hour + offsetHours
-            offsetDays = totalHours / 24_IKC
-            DateTimeUTC(5) = totalHours - offsetDays * 24_IKC
-            if (DateTimeUTC(5) < 0_IKC) then
-                DateTimeUTC(5) = DateTimeUTC(5) + 24_IKC
-                offsetDays = offsetDays - 1_IKC
+            offsetDays = totalHours / 24_IKG
+            DateTimeUTC(5) = totalHours - offsetDays * 24_IKG
+            if (DateTimeUTC(5) < 0_IKG) then
+                DateTimeUTC(5) = DateTimeUTC(5) + 24_IKG
+                offsetDays = offsetDays - 1_IKG
             end if
-            DateTimeUTC(4) = 0_IKC ! UTC zone
-            CHECK_ASSERTION(__LINE__, offsetDays > -2_IKC .and. offsetDays < 2_IKC, SK_"@getDateTimeUTC(): Internal library error: The condition `offsetDays > -2_IKC .and. offsetDays < 2_IKC` must hold. Please report this error to the ParaMonte library developers.")
-            if (offsetDays == -1_IKC) then
+            DateTimeUTC(4) = 0_IKG ! UTC zone
+            CHECK_ASSERTION(__LINE__, offsetDays > -2_IKG .and. offsetDays < 2_IKG, SK_"@getDateTimeUTC(): Internal library error: The condition `offsetDays > -2_IKG .and. offsetDays < 2_IKG` must hold. Please report this error to the ParaMonte library developers.")
+            if (offsetDays == -1_IKG) then
                 DateTimeUTC(1:3) = getDateBefore(year, month, day)
-            elseif (offsetDays == +1_IKC) then
+            elseif (offsetDays == +1_IKG) then
                 DateTimeUTC(1:3) = getDateAfter(year, month, day)
             else
                 DateTimeUTC(3) = day
@@ -792,9 +792,9 @@ end if;
 
         ! The case for no input (current) date and time.
 #if     getDateTimeShiftedC_ENABLED
-        integer(IKC)    :: values(8)
+        integer(IKG)    :: values(8)
         call date_and_time(values = values)
-        CHECK_ASSERTION(__LINE__, all(values /= -huge(0_IKC)), SK_"@getDateTimeShifted(): The processor does not have a clock.") ! fpp
+        CHECK_ASSERTION(__LINE__, all(values /= -huge(0_IKG)), SK_"@getDateTimeShifted(): The processor does not have a clock.") ! fpp
         dateTimeShifted(1:8) = getDateTimeShifted(amount, values(1), values(2), values(3), values(4), values(5), values(6), values(7), values(8))
         ! The case for vector of date and time.
 #elif   getDateTimeShiftedV_ENABLED
@@ -823,19 +823,19 @@ end if;
         ! The case for keyword date and time.
 #else
 #if     !getDateTimeShiftedYMDZHMSM_ENABLED
-        integer(IKC), parameter :: millisecond = 0_IK
+        integer(IKG), parameter :: millisecond = 0_IK
 #if     !getDateTimeShiftedYMDZHMS_ENABLED
-        integer(IKC), parameter :: second = 0_IK
+        integer(IKG), parameter :: second = 0_IK
 #if     !getDateTimeShiftedYMDZHM_ENABLED
-        integer(IKC), parameter :: minute = 0_IK
+        integer(IKG), parameter :: minute = 0_IK
 #if     !getDateTimeShiftedYMDZH_ENABLED
-        integer(IKC), parameter :: hour = 0_IK
+        integer(IKG), parameter :: hour = 0_IK
 #if     !getDateTimeShiftedYMDZ_ENABLED
-        integer(IKC), parameter :: zone = 0_IK
+        integer(IKG), parameter :: zone = 0_IK
 #if     !getDateTimeShiftedYMD_ENABLED
-        integer(IKC), parameter :: day = 1_IK
+        integer(IKG), parameter :: day = 1_IK
 #if     !getDateTimeShiftedYM_ENABLED
-        integer(IKC), parameter :: month = 1_IK
+        integer(IKG), parameter :: month = 1_IK
 #if     !getDateTimeShiftedY_ENABLED
 #error  "Unrecognized interface."
 #endif
@@ -846,7 +846,7 @@ end if;
 #endif
 #endif
 #endif
-        real(RKC) :: julianDay
+        real(RKG) :: julianDay
         CHECK_ASSERTION(__LINE__, isValidDateTime(year, month, day, zone, hour, minute, second, millisecond), \
         SK_"@getDateTimeShifted(): The specified Gregorian date and time must be valid and consistent. [year, month, day, zone, hour, minute, second, millisecond] = "// \
         getStr([year, month, day, zone, hour, minute, second, millisecond])) ! fpp
@@ -862,9 +862,9 @@ end if;
 
         ! The case for no input (current) date and time.
 #if     getJulianDayC_ENABLED
-        integer(IKC) :: values(8)
+        integer(IKG) :: values(8)
         call date_and_time(values = values)
-        CHECK_ASSERTION(__LINE__, all(values /= -huge(0_IKC)), SK_"@getJulianDay(): The processor does not have a clock.") ! fpp
+        CHECK_ASSERTION(__LINE__, all(values /= -huge(0_IKG)), SK_"@getJulianDay(): The processor does not have a clock.") ! fpp
         julianDay = getJulianDay(values(1), values(2), values(3), values(4), values(5), values(6), values(7), values(8))
         ! The case for vector of date and time.
 #elif   getJulianDayV_ENABLED
@@ -893,19 +893,19 @@ end if;
         ! The case for keyword date and time.
 #else
 #if     !getJulianDayYMDZHMSM_ENABLED
-        integer(IKC), parameter :: millisecond = 0_IK
+        integer(IKG), parameter :: millisecond = 0_IK
 #if     !getJulianDayYMDZHMS_ENABLED
-        integer(IKC), parameter :: second = 0_IK
+        integer(IKG), parameter :: second = 0_IK
 #if     !getJulianDayYMDZHM_ENABLED
-        integer(IKC), parameter :: minute = 0_IK
+        integer(IKG), parameter :: minute = 0_IK
 #if     !getJulianDayYMDZH_ENABLED
-        integer(IKC), parameter :: hour = 0_IK
+        integer(IKG), parameter :: hour = 0_IK
 #if     !getJulianDayYMDZ_ENABLED
-        integer(IKC), parameter :: zone = 0_IK
+        integer(IKG), parameter :: zone = 0_IK
 #if     !getJulianDayYMD_ENABLED
-        integer(IKC), parameter :: day = 1_IK
+        integer(IKG), parameter :: day = 1_IK
 #if     !getJulianDayYM_ENABLED
-        integer(IKC), parameter :: month = 1_IK
+        integer(IKG), parameter :: month = 1_IK
 #if     !getJulianDayY_ENABLED
 #error  "Unrecognized interface."
 #endif
@@ -916,11 +916,11 @@ end if;
 #endif
 #endif
 #endif
-        real(RKC)   , parameter :: DAY_PER_HOUR = 1._RKC / 24._RKC
-        real(RKC)   , parameter :: DAY_PER_MIN = 1._RKC / 1440._RKC
-        real(RKC)   , parameter :: DAY_PER_SEC = 1._RKC / 86400._RKC
-        integer(IKC), parameter :: VECTOR(12) = [306_IKC, 337_IKC, 0_IKC, 31_IKC, 61_IKC, 92_IKC, 122_IKC, 153_IKC, 184_IKC, 214_IKC, 245_IKC, 275_IKC]
-        integer(IKC) :: yearCorrected, DateTimeUTC(8)
+        real(RKG)   , parameter :: DAY_PER_HOUR = 1._RKG / 24._RKG
+        real(RKG)   , parameter :: DAY_PER_MIN = 1._RKG / 1440._RKG
+        real(RKG)   , parameter :: DAY_PER_SEC = 1._RKG / 86400._RKG
+        integer(IKG), parameter :: VECTOR(12) = [306_IKG, 337_IKG, 0_IKG, 31_IKG, 61_IKG, 92_IKG, 122_IKG, 153_IKG, 184_IKG, 214_IKG, 245_IKG, 275_IKG]
+        integer(IKG) :: yearCorrected, DateTimeUTC(8)
 
         CHECK_ASSERTION(__LINE__, isValidDateTime(year, month, day, zone, hour, minute, second, millisecond), \
         SK_"@getJulianDay(): The specified Gregorian date and time must be valid and consistent. [year, month, day, zone, hour, minute, second, millisecond] = "// \
@@ -939,17 +939,17 @@ end if;
             DateTimeUTC(8) = millisecond
         end if
 
-        if (DateTimeUTC(2) == 1_IKC .or. DateTimeUTC(2) == 2_IKC) then
-            yearCorrected = DateTimeUTC(1) - 1_IKC
+        if (DateTimeUTC(2) == 1_IKG .or. DateTimeUTC(2) == 2_IKG) then
+            yearCorrected = DateTimeUTC(1) - 1_IKG
         else
             yearCorrected = DateTimeUTC(1)
         end if
-        julianDay   = 1721118.5_RKC & ! LCOV_EXCL_LINE
-                    + real(DateTimeUTC(3), RKC) & ! LCOV_EXCL_LINE
-                    + real(VECTOR(DateTimeUTC(2)), RKC) & ! LCOV_EXCL_LINE
-                    + 365._RKC * real(yearCorrected, RKC) & ! LCOV_EXCL_LINE
-                    + real(floor(yearCorrected * 0.25_RKC, IKC) - floor(yearCorrected * 0.01_RKC, IKC) + floor(yearCorrected * 0.0025_RKC, IKC), RKC) & ! LCOV_EXCL_LINE
-                    + DateTimeUTC(5) * DAY_PER_HOUR + DateTimeUTC(6) * DAY_PER_MIN + (real(DateTimeUTC(7),RKC) + 0.001_RKC * DateTimeUTC(8)) * DAY_PER_SEC
+        julianDay   = 1721118.5_RKG & ! LCOV_EXCL_LINE
+                    + real(DateTimeUTC(3), RKG) & ! LCOV_EXCL_LINE
+                    + real(VECTOR(DateTimeUTC(2)), RKG) & ! LCOV_EXCL_LINE
+                    + 365._RKG * real(yearCorrected, RKG) & ! LCOV_EXCL_LINE
+                    + real(floor(yearCorrected * 0.25_RKG, IKG) - floor(yearCorrected * 0.01_RKG, IKG) + floor(yearCorrected * 0.0025_RKG, IKG), RKG) & ! LCOV_EXCL_LINE
+                    + DateTimeUTC(5) * DAY_PER_HOUR + DateTimeUTC(6) * DAY_PER_MIN + (real(DateTimeUTC(7),RKG) + 0.001_RKG * DateTimeUTC(8)) * DAY_PER_SEC
 #endif
 
         !%%%%%%%%%%%%%%%%%%%%%%

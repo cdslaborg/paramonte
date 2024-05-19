@@ -36,10 +36,10 @@
 
         integer(IK) :: i, numComp
 
-        real(RKC)   , parameter     :: TOL = sqrt(epsilon(0._RKC))
-        real(RKC)   , parameter     :: LOG_HUGE = log(huge(0._RKC))
-        real(RKC)   , allocatable   :: logLimX(:), alpha(:), logPDFNF(:)
-        real(RKC)                   :: logx, output, output_ref, diff
+        real(RKG)   , parameter     :: TOL = sqrt(epsilon(0._RKG))
+        real(RKG)   , parameter     :: LOG_HUGE = log(huge(0._RKG))
+        real(RKG)   , allocatable   :: logLimX(:), alpha(:), logPDFNF(:)
+        real(RKG)                   :: logx, output, output_ref, diff
 
         assertion = .true._LK
 
@@ -47,25 +47,25 @@
 
             call setUnifRand(numComp, 1_IK, 5_IK)
             !if (getUnifRand()) then
-            !    logLimX = [getUnifRand(sqrt(epsilon(0._RKC)), 10._RKC, numComp), LOG_HUGE]
+            !    logLimX = [getUnifRand(sqrt(epsilon(0._RKG)), 10._RKG, numComp), LOG_HUGE]
             !else
-            !    logLimX = getUnifRand(sqrt(epsilon(0._RKC)), 10._RKC, numComp + 1)
+            !    logLimX = getUnifRand(sqrt(epsilon(0._RKG)), 10._RKG, numComp + 1)
             !end if
-            !logLimX = getUnifRand(log(sqrt(epsilon(0._RKC))), sqrt(LOG_HUGE), numComp + 1)
-            !logLimX = getUnifRand(log(sqrt(epsilon(0._RKC))), 10._RKC, numComp + 1)
-            logLimX = getUnifRand(-5._RKC, 8._RKC, numComp + 1)
+            !logLimX = getUnifRand(log(sqrt(epsilon(0._RKG))), sqrt(LOG_HUGE), numComp + 1)
+            !logLimX = getUnifRand(log(sqrt(epsilon(0._RKG))), 10._RKG, numComp + 1)
+            logLimX = getUnifRand(-5._RKG, 8._RKG, numComp + 1)
             call setSorted(logLimX)
             if (logLimX(size(logLimX)) == LOG_HUGE) then
-                alpha = [getUnifRand(-2._RKC, 2._RKC), getUnifRand(-2._RKC, 2._RKC, numComp - 2_IK), getUnifRand(-8._RKC, -2._RKC)]
+                alpha = [getUnifRand(-2._RKG, 2._RKG), getUnifRand(-2._RKG, 2._RKG, numComp - 2_IK), getUnifRand(-8._RKG, -2._RKG)]
             else
-                alpha = getUnifRand(-2._RKC, 2._RKC, numComp)
+                alpha = getUnifRand(-2._RKG, 2._RKG, numComp)
             end if
-            if (getUnifRand() .and. size(alpha) > 1) alpha(getUnifRand(1, size(alpha) - 1)) = -1._RKC
-            if (getUnifRand() .and. getUnifRand() .and. size(alpha) > 1) alpha(getUnifRand(1, size(alpha) - 1)) = 0._RKC
+            if (getUnifRand() .and. size(alpha) > 1) alpha(getUnifRand(1, size(alpha) - 1)) = -1._RKG
+            if (getUnifRand() .and. getUnifRand() .and. size(alpha) > 1) alpha(getUnifRand(1, size(alpha) - 1)) = 0._RKG
             if (getUnifRand()) then
-                alpha(size(alpha)) = -1._RKC
+                alpha(size(alpha)) = -1._RKG
             elseif (getUnifRand()) then
-                alpha(size(alpha)) = 0._RKC
+                alpha(size(alpha)) = 0._RKG
             end if
             logPDFNF = getPiwiPowetoLogPDFNF(alpha, logLimX)
 
@@ -95,9 +95,9 @@
                 character(255, SK) :: msg
                 integer(IK) :: j
 
-                !output_ref = 1._RKC
+                !output_ref = 1._RKG
                 msg = SK_" "
-                !output = 0._RKC
+                !output = 0._RKG
                 do j = 1, numComp - 1
                     output_ref = getPiwiPowetoCDF(logLimX(j + 1), alpha, logLimX) - getPiwiPowetoCDF(logLimX(j), alpha, logLimX)
                     assertion = assertion .and. .not. isFailedQuad(getPiwiPowetoPDF, exp(logLimX(j)), exp(logLimX(j + 1)), output, reltol = TOL, msg = msg)
@@ -132,14 +132,14 @@
 
 #if     setPiwiPowetoLogPDF_ENABLED
         function getPiwiPowetoPDF(x) result(pdf)
-            real(RKC), intent(in) :: x
-            real(RKC) :: pdf
+            real(RKG), intent(in) :: x
+            real(RKG) :: pdf
             call setPiwiPowetoLogPDF(pdf, log(x), alpha, logLimX, logPDFNF)
             pdf = exp(pdf)
             !if (pdf > -huge(pdf)**0.9) then
             !    pdf = exp(pdf)
             !else
-            !    pdf = 0._RKC
+            !    pdf = 0._RKG
             !end if
         end function
 #elif   !getPiwiPowetoLogPDF_ENABLED
@@ -176,9 +176,9 @@
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
         integer(IK) :: i, numComp
-        real(RKC)   , parameter     :: TOL = sqrt(epsilon(0._RKC))
-        real(RKC)   , allocatable   :: logLimX(:), cumSumArea(:), alpha(:), logPDFNF(:)
-        real(RKC)                   :: output, output_ref, diff, lb, ub
+        real(RKG)   , parameter     :: TOL = sqrt(epsilon(0._RKG))
+        real(RKG)   , allocatable   :: logLimX(:), cumSumArea(:), alpha(:), logPDFNF(:)
+        real(RKG)                   :: output, output_ref, diff, lb, ub
 
         assertion = .true._LK
 
@@ -186,24 +186,24 @@
 
             call setUnifRand(numComp, 1_IK, 5_IK)
             !if (getUnifRand()) then
-            !    logLimX = [getUnifRand(sqrt(epsilon(0._RKC)), 10._RKC, numComp), log(huge(0._RKC))]
+            !    logLimX = [getUnifRand(sqrt(epsilon(0._RKG)), 10._RKG, numComp), log(huge(0._RKG))]
             !else
-            !    logLimX = getUnifRand(sqrt(epsilon(0._RKC)), 10._RKC, numComp + 1)
+            !    logLimX = getUnifRand(sqrt(epsilon(0._RKG)), 10._RKG, numComp + 1)
             !end if
-            logLimX = getUnifRand(-5._RKC, 5._RKC, numComp + 1)
+            logLimX = getUnifRand(-5._RKG, 5._RKG, numComp + 1)
             call setSorted(logLimX)
             if (numComp > 1_IK) then
-                alpha = [getUnifRand(-1.01_RKC, 3._RKC), getUnifRand(-3._RKC, 3._RKC, numComp - 2_IK), getUnifRand(-8._RKC, -2._RKC)]
+                alpha = [getUnifRand(-1.01_RKG, 3._RKG), getUnifRand(-3._RKG, 3._RKG, numComp - 2_IK), getUnifRand(-8._RKG, -2._RKG)]
             else
-                alpha = [getUnifRand(-8._RKC, -2._RKC)]
+                alpha = [getUnifRand(-8._RKG, -2._RKG)]
             end if
-            if (getUnifRand() .and. size(alpha) > 1) alpha(getUnifRand(1, size(alpha) - 1)) = -1._RKC
-            if (getUnifRand() .and. getUnifRand() .and. size(alpha) > 1) alpha(getUnifRand(1, size(alpha) - 1)) = 0._RKC
+            if (getUnifRand() .and. size(alpha) > 1) alpha(getUnifRand(1, size(alpha) - 1)) = -1._RKG
+            if (getUnifRand() .and. getUnifRand() .and. size(alpha) > 1) alpha(getUnifRand(1, size(alpha) - 1)) = 0._RKG
             if (size(logLimX) > size(alpha)) then
                 if (getUnifRand()) then
-                    alpha(size(alpha)) = -1._RKC
+                    alpha(size(alpha)) = -1._RKG
                 elseif (getUnifRand()) then
-                    alpha(size(alpha)) = 0._RKC
+                    alpha(size(alpha)) = 0._RKG
                 end if
             end if
             if (allocated(cumSumArea)) deallocate(cumSumArea); allocate(cumSumArea, mold = logLimX)
@@ -220,7 +220,7 @@
 
             block
 
-                real(RKC) :: logx
+                real(RKG) :: logx
 
                 logx = merge(getUnifRand(logLimX(1), logLimX(size(logLimX))), getUnifRand(logLimX(1), logLimX(size(logLimX))), getUnifRand())
                 output = getPiwiPowetoCDF(logx, alpha, logLimX)
@@ -242,7 +242,7 @@
 
                 use pm_arraySearch, only: getBin
                 use pm_val2str, only: getStr
-                real(RKC) :: upperCDF, lowerCDF
+                real(RKG) :: upperCDF, lowerCDF
                 character(255, SK) :: msg
                 integer(IK) :: j
 
@@ -250,7 +250,7 @@
 
                 do j = 1, numComp
 
-                    output_ref = 0._RKC
+                    output_ref = 0._RKG
                     if (j > 1_IK) output_ref = cumSumArea(j)
 
                     call setPiwiPowetoCDF(output, logLimX(j), alpha, logLimX, logPDFNF, cumSumArea)
@@ -265,7 +265,7 @@
 
                 ! The CDF over the entire support must equal unity.
 
-                output_ref = 1._RKC
+                output_ref = 1._RKG
 
                 call setPiwiPowetoCDF(output, logLimX(size(logLimX)), alpha, logLimX, logPDFNF, cumSumArea)
                 call report()
@@ -318,8 +318,8 @@
 #if     setPiwiPowetoCDF_ENABLED
         function getPiwiPowetoPDF(x) result(pdf)
             use pm_distPiwiPoweto, only: setPiwiPowetoLogPDF
-            real(RKC), intent(in) :: x
-            real(RKC) :: pdf
+            real(RKG), intent(in) :: x
+            real(RKG) :: pdf
             call setPiwiPowetoLogPDF(pdf, log(x), alpha, logLimX, logPDFNF)
             pdf = exp(pdf)
         end function

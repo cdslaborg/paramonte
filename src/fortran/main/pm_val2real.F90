@@ -111,9 +111,9 @@ module pm_val2real
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRealDef_LK5
 #endif
-        use pm_kind, only: RKC => RK, LKC => LK5
-        logical(LKC)                , intent(in)                    :: val
-        real(RKC)                                                   :: conversion
+        use pm_kind, only: RKG => RK, LKG => LK5
+        logical(LKG)                , intent(in)                    :: val
+        real(RKG)                                                   :: conversion
     end function
 #endif
 
@@ -122,9 +122,9 @@ module pm_val2real
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRealDef_LK4
 #endif
-        use pm_kind, only: RKC => RK, LKC => LK4
-        logical(LKC)                , intent(in)                    :: val
-        real(RKC)                                                   :: conversion
+        use pm_kind, only: RKG => RK, LKG => LK4
+        logical(LKG)                , intent(in)                    :: val
+        real(RKG)                                                   :: conversion
     end function
 #endif
 
@@ -133,9 +133,9 @@ module pm_val2real
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRealDef_LK3
 #endif
-        use pm_kind, only: RKC => RK, LKC => LK3
-        logical(LKC)                , intent(in)                    :: val
-        real(RKC)                                                   :: conversion
+        use pm_kind, only: RKG => RK, LKG => LK3
+        logical(LKG)                , intent(in)                    :: val
+        real(RKG)                                                   :: conversion
     end function
 #endif
 
@@ -144,9 +144,9 @@ module pm_val2real
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRealDef_LK2
 #endif
-        use pm_kind, only: RKC => RK, LKC => LK2
-        logical(LKC)                , intent(in)                    :: val
-        real(RKC)                                                   :: conversion
+        use pm_kind, only: RKG => RK, LKG => LK2
+        logical(LKG)                , intent(in)                    :: val
+        real(RKG)                                                   :: conversion
     end function
 #endif
 
@@ -155,9 +155,9 @@ module pm_val2real
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRealDef_LK1
 #endif
-        use pm_kind, only: RKC => RK, LKC => LK1
-        logical(LKC)                , intent(in)                    :: val
-        real(RKC)                                                   :: conversion
+        use pm_kind, only: RKG => RK, LKG => LK1
+        logical(LKG)                , intent(in)                    :: val
+        real(RKG)                                                   :: conversion
     end function
 #endif
 
@@ -168,9 +168,9 @@ module pm_val2real
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRealDef_SK5
 #endif
-        use pm_kind, only: RKC => RK, SKC => SK5
-        character(*,SKC)            , intent(in)                    :: val
-        real(RKC)                                                   :: conversion
+        use pm_kind, only: RKG => RK, SKG => SK5
+        character(*,SKG)            , intent(in)                    :: val
+        real(RKG)                                                   :: conversion
     end function
 #endif
 
@@ -179,9 +179,9 @@ module pm_val2real
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRealDef_SK4
 #endif
-        use pm_kind, only: RKC => RK, SKC => SK4
-        character(*,SKC)            , intent(in)                    :: val
-        real(RKC)                                                   :: conversion
+        use pm_kind, only: RKG => RK, SKG => SK4
+        character(*,SKG)            , intent(in)                    :: val
+        real(RKG)                                                   :: conversion
     end function
 #endif
 
@@ -190,9 +190,9 @@ module pm_val2real
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRealDef_SK3
 #endif
-        use pm_kind, only: RKC => RK, SKC => SK3
-        character(*,SKC)            , intent(in)                    :: val
-        real(RKC)                                                   :: conversion
+        use pm_kind, only: RKG => RK, SKG => SK3
+        character(*,SKG)            , intent(in)                    :: val
+        real(RKG)                                                   :: conversion
     end function
 #endif
 
@@ -201,9 +201,9 @@ module pm_val2real
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRealDef_SK2
 #endif
-        use pm_kind, only: RKC => RK, SKC => SK2
-        character(*,SKC)            , intent(in)                    :: val
-        real(RKC)                                                   :: conversion
+        use pm_kind, only: RKG => RK, SKG => SK2
+        character(*,SKG)            , intent(in)                    :: val
+        real(RKG)                                                   :: conversion
     end function
 #endif
 
@@ -212,9 +212,9 @@ module pm_val2real
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRealDef_SK1
 #endif
-        use pm_kind, only: RKC => RK, SKC => SK1
-        character(*,SKC)            , intent(in)                    :: val
-        real(RKC)                                                   :: conversion
+        use pm_kind, only: RKG => RK, SKG => SK1
+        character(*,SKG)            , intent(in)                    :: val
+        real(RKG)                                                   :: conversion
     end function
 #endif
 
@@ -303,9 +303,9 @@ module pm_val2real
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRealDef_RK5_LK5
 #endif
-        use pm_kind, only: RKC => RK5, LKC => LK5
-        real(RKC)                   , intent(out)                   :: conversion
-        logical(LKC)                , intent(in)                    :: val
+        use pm_kind, only: RKG => RK5, LKG => LK5
+        real(RKG)                   , intent(out)                   :: conversion
+        logical(LKG)                , intent(in)                    :: val
     end subroutine
 #endif
 
@@ -314,9 +314,9 @@ module pm_val2real
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRealDef_RK5_LK4
 #endif
-        use pm_kind, only: RKC => RK5, LKC => LK4
-        real(RKC)                   , intent(out)                   :: conversion
-        logical(LKC)                , intent(in)                    :: val
+        use pm_kind, only: RKG => RK5, LKG => LK4
+        real(RKG)                   , intent(out)                   :: conversion
+        logical(LKG)                , intent(in)                    :: val
     end subroutine
 #endif
 
@@ -325,9 +325,9 @@ module pm_val2real
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRealDef_RK5_LK3
 #endif
-        use pm_kind, only: RKC => RK5, LKC => LK3
-        real(RKC)                   , intent(out)                   :: conversion
-        logical(LKC)                , intent(in)                    :: val
+        use pm_kind, only: RKG => RK5, LKG => LK3
+        real(RKG)                   , intent(out)                   :: conversion
+        logical(LKG)                , intent(in)                    :: val
     end subroutine
 #endif
 
@@ -336,9 +336,9 @@ module pm_val2real
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRealDef_RK5_LK2
 #endif
-        use pm_kind, only: RKC => RK5, LKC => LK2
-        real(RKC)                   , intent(out)                   :: conversion
-        logical(LKC)                , intent(in)                    :: val
+        use pm_kind, only: RKG => RK5, LKG => LK2
+        real(RKG)                   , intent(out)                   :: conversion
+        logical(LKG)                , intent(in)                    :: val
     end subroutine
 #endif
 
@@ -347,9 +347,9 @@ module pm_val2real
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRealDef_RK5_LK1
 #endif
-        use pm_kind, only: RKC => RK5, LKC => LK1
-        real(RKC)                   , intent(out)                   :: conversion
-        logical(LKC)                , intent(in)                    :: val
+        use pm_kind, only: RKG => RK5, LKG => LK1
+        real(RKG)                   , intent(out)                   :: conversion
+        logical(LKG)                , intent(in)                    :: val
     end subroutine
 #endif
 
@@ -360,9 +360,9 @@ module pm_val2real
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRealDef_RK5_SK5
 #endif
-        use pm_kind, only: RKC => RK5, SKC => SK5
-        real(RKC)                   , intent(out)                   :: conversion
-        character(*,SKC)            , intent(in)                    :: val
+        use pm_kind, only: RKG => RK5, SKG => SK5
+        real(RKG)                   , intent(out)                   :: conversion
+        character(*,SKG)            , intent(in)                    :: val
     end subroutine
 #endif
 
@@ -371,9 +371,9 @@ module pm_val2real
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRealDef_RK5_SK4
 #endif
-        use pm_kind, only: RKC => RK5, SKC => SK4
-        real(RKC)                   , intent(out)                   :: conversion
-        character(*,SKC)            , intent(in)                    :: val
+        use pm_kind, only: RKG => RK5, SKG => SK4
+        real(RKG)                   , intent(out)                   :: conversion
+        character(*,SKG)            , intent(in)                    :: val
     end subroutine
 #endif
 
@@ -382,9 +382,9 @@ module pm_val2real
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRealDef_RK5_SK3
 #endif
-        use pm_kind, only: RKC => RK5, SKC => SK3
-        real(RKC)                   , intent(out)                   :: conversion
-        character(*,SKC)            , intent(in)                    :: val
+        use pm_kind, only: RKG => RK5, SKG => SK3
+        real(RKG)                   , intent(out)                   :: conversion
+        character(*,SKG)            , intent(in)                    :: val
     end subroutine
 #endif
 
@@ -393,9 +393,9 @@ module pm_val2real
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRealDef_RK5_SK2
 #endif
-        use pm_kind, only: RKC => RK5, SKC => SK2
-        real(RKC)                   , intent(out)                   :: conversion
-        character(*,SKC)            , intent(in)                    :: val
+        use pm_kind, only: RKG => RK5, SKG => SK2
+        real(RKG)                   , intent(out)                   :: conversion
+        character(*,SKG)            , intent(in)                    :: val
     end subroutine
 #endif
 
@@ -404,9 +404,9 @@ module pm_val2real
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRealDef_RK5_SK1
 #endif
-        use pm_kind, only: RKC => RK5, SKC => SK1
-        real(RKC)                   , intent(out)                   :: conversion
-        character(*,SKC)            , intent(in)                    :: val
+        use pm_kind, only: RKG => RK5, SKG => SK1
+        real(RKG)                   , intent(out)                   :: conversion
+        character(*,SKG)            , intent(in)                    :: val
     end subroutine
 #endif
 
@@ -423,9 +423,9 @@ module pm_val2real
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRealDef_RK4_LK5
 #endif
-        use pm_kind, only: RKC => RK4, LKC => LK5
-        real(RKC)                   , intent(out)                   :: conversion
-        logical(LKC)                , intent(in)                    :: val
+        use pm_kind, only: RKG => RK4, LKG => LK5
+        real(RKG)                   , intent(out)                   :: conversion
+        logical(LKG)                , intent(in)                    :: val
     end subroutine
 #endif
 
@@ -434,9 +434,9 @@ module pm_val2real
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRealDef_RK4_LK4
 #endif
-        use pm_kind, only: RKC => RK4, LKC => LK4
-        real(RKC)                   , intent(out)                   :: conversion
-        logical(LKC)                , intent(in)                    :: val
+        use pm_kind, only: RKG => RK4, LKG => LK4
+        real(RKG)                   , intent(out)                   :: conversion
+        logical(LKG)                , intent(in)                    :: val
     end subroutine
 #endif
 
@@ -445,9 +445,9 @@ module pm_val2real
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRealDef_RK4_LK3
 #endif
-        use pm_kind, only: RKC => RK4, LKC => LK3
-        real(RKC)                   , intent(out)                   :: conversion
-        logical(LKC)                , intent(in)                    :: val
+        use pm_kind, only: RKG => RK4, LKG => LK3
+        real(RKG)                   , intent(out)                   :: conversion
+        logical(LKG)                , intent(in)                    :: val
     end subroutine
 #endif
 
@@ -456,9 +456,9 @@ module pm_val2real
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRealDef_RK4_LK2
 #endif
-        use pm_kind, only: RKC => RK4, LKC => LK2
-        real(RKC)                   , intent(out)                   :: conversion
-        logical(LKC)                , intent(in)                    :: val
+        use pm_kind, only: RKG => RK4, LKG => LK2
+        real(RKG)                   , intent(out)                   :: conversion
+        logical(LKG)                , intent(in)                    :: val
     end subroutine
 #endif
 
@@ -467,9 +467,9 @@ module pm_val2real
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRealDef_RK4_LK1
 #endif
-        use pm_kind, only: RKC => RK4, LKC => LK1
-        real(RKC)                   , intent(out)                   :: conversion
-        logical(LKC)                , intent(in)                    :: val
+        use pm_kind, only: RKG => RK4, LKG => LK1
+        real(RKG)                   , intent(out)                   :: conversion
+        logical(LKG)                , intent(in)                    :: val
     end subroutine
 #endif
 
@@ -480,9 +480,9 @@ module pm_val2real
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRealDef_RK4_SK5
 #endif
-        use pm_kind, only: RKC => RK4, SKC => SK5
-        real(RKC)                   , intent(out)                   :: conversion
-        character(*,SKC)            , intent(in)                    :: val
+        use pm_kind, only: RKG => RK4, SKG => SK5
+        real(RKG)                   , intent(out)                   :: conversion
+        character(*,SKG)            , intent(in)                    :: val
     end subroutine
 #endif
 
@@ -491,9 +491,9 @@ module pm_val2real
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRealDef_RK4_SK4
 #endif
-        use pm_kind, only: RKC => RK4, SKC => SK4
-        real(RKC)                   , intent(out)                   :: conversion
-        character(*,SKC)            , intent(in)                    :: val
+        use pm_kind, only: RKG => RK4, SKG => SK4
+        real(RKG)                   , intent(out)                   :: conversion
+        character(*,SKG)            , intent(in)                    :: val
     end subroutine
 #endif
 
@@ -502,9 +502,9 @@ module pm_val2real
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRealDef_RK4_SK3
 #endif
-        use pm_kind, only: RKC => RK4, SKC => SK3
-        real(RKC)                   , intent(out)                   :: conversion
-        character(*,SKC)            , intent(in)                    :: val
+        use pm_kind, only: RKG => RK4, SKG => SK3
+        real(RKG)                   , intent(out)                   :: conversion
+        character(*,SKG)            , intent(in)                    :: val
     end subroutine
 #endif
 
@@ -513,9 +513,9 @@ module pm_val2real
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRealDef_RK4_SK2
 #endif
-        use pm_kind, only: RKC => RK4, SKC => SK2
-        real(RKC)                   , intent(out)                   :: conversion
-        character(*,SKC)            , intent(in)                    :: val
+        use pm_kind, only: RKG => RK4, SKG => SK2
+        real(RKG)                   , intent(out)                   :: conversion
+        character(*,SKG)            , intent(in)                    :: val
     end subroutine
 #endif
 
@@ -524,9 +524,9 @@ module pm_val2real
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRealDef_RK4_SK1
 #endif
-        use pm_kind, only: RKC => RK4, SKC => SK1
-        real(RKC)                   , intent(out)                   :: conversion
-        character(*,SKC)            , intent(in)                    :: val
+        use pm_kind, only: RKG => RK4, SKG => SK1
+        real(RKG)                   , intent(out)                   :: conversion
+        character(*,SKG)            , intent(in)                    :: val
     end subroutine
 #endif
 
@@ -543,9 +543,9 @@ module pm_val2real
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRealDef_RK3_LK5
 #endif
-        use pm_kind, only: RKC => RK3, LKC => LK5
-        real(RKC)                   , intent(out)                   :: conversion
-        logical(LKC)                , intent(in)                    :: val
+        use pm_kind, only: RKG => RK3, LKG => LK5
+        real(RKG)                   , intent(out)                   :: conversion
+        logical(LKG)                , intent(in)                    :: val
     end subroutine
 #endif
 
@@ -554,9 +554,9 @@ module pm_val2real
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRealDef_RK3_LK4
 #endif
-        use pm_kind, only: RKC => RK3, LKC => LK4
-        real(RKC)                   , intent(out)                   :: conversion
-        logical(LKC)                , intent(in)                    :: val
+        use pm_kind, only: RKG => RK3, LKG => LK4
+        real(RKG)                   , intent(out)                   :: conversion
+        logical(LKG)                , intent(in)                    :: val
     end subroutine
 #endif
 
@@ -565,9 +565,9 @@ module pm_val2real
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRealDef_RK3_LK3
 #endif
-        use pm_kind, only: RKC => RK3, LKC => LK3
-        real(RKC)                   , intent(out)                   :: conversion
-        logical(LKC)                , intent(in)                    :: val
+        use pm_kind, only: RKG => RK3, LKG => LK3
+        real(RKG)                   , intent(out)                   :: conversion
+        logical(LKG)                , intent(in)                    :: val
     end subroutine
 #endif
 
@@ -576,9 +576,9 @@ module pm_val2real
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRealDef_RK3_LK2
 #endif
-        use pm_kind, only: RKC => RK3, LKC => LK2
-        real(RKC)                   , intent(out)                   :: conversion
-        logical(LKC)                , intent(in)                    :: val
+        use pm_kind, only: RKG => RK3, LKG => LK2
+        real(RKG)                   , intent(out)                   :: conversion
+        logical(LKG)                , intent(in)                    :: val
     end subroutine
 #endif
 
@@ -587,9 +587,9 @@ module pm_val2real
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRealDef_RK3_LK1
 #endif
-        use pm_kind, only: RKC => RK3, LKC => LK1
-        real(RKC)                   , intent(out)                   :: conversion
-        logical(LKC)                , intent(in)                    :: val
+        use pm_kind, only: RKG => RK3, LKG => LK1
+        real(RKG)                   , intent(out)                   :: conversion
+        logical(LKG)                , intent(in)                    :: val
     end subroutine
 #endif
 
@@ -600,9 +600,9 @@ module pm_val2real
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRealDef_RK3_SK5
 #endif
-        use pm_kind, only: RKC => RK3, SKC => SK5
-        real(RKC)                   , intent(out)                   :: conversion
-        character(*,SKC)            , intent(in)                    :: val
+        use pm_kind, only: RKG => RK3, SKG => SK5
+        real(RKG)                   , intent(out)                   :: conversion
+        character(*,SKG)            , intent(in)                    :: val
     end subroutine
 #endif
 
@@ -611,9 +611,9 @@ module pm_val2real
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRealDef_RK3_SK4
 #endif
-        use pm_kind, only: RKC => RK3, SKC => SK4
-        real(RKC)                   , intent(out)                   :: conversion
-        character(*,SKC)            , intent(in)                    :: val
+        use pm_kind, only: RKG => RK3, SKG => SK4
+        real(RKG)                   , intent(out)                   :: conversion
+        character(*,SKG)            , intent(in)                    :: val
     end subroutine
 #endif
 
@@ -622,9 +622,9 @@ module pm_val2real
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRealDef_RK3_SK3
 #endif
-        use pm_kind, only: RKC => RK3, SKC => SK3
-        real(RKC)                   , intent(out)                   :: conversion
-        character(*,SKC)            , intent(in)                    :: val
+        use pm_kind, only: RKG => RK3, SKG => SK3
+        real(RKG)                   , intent(out)                   :: conversion
+        character(*,SKG)            , intent(in)                    :: val
     end subroutine
 #endif
 
@@ -633,9 +633,9 @@ module pm_val2real
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRealDef_RK3_SK2
 #endif
-        use pm_kind, only: RKC => RK3, SKC => SK2
-        real(RKC)                   , intent(out)                   :: conversion
-        character(*,SKC)            , intent(in)                    :: val
+        use pm_kind, only: RKG => RK3, SKG => SK2
+        real(RKG)                   , intent(out)                   :: conversion
+        character(*,SKG)            , intent(in)                    :: val
     end subroutine
 #endif
 
@@ -644,9 +644,9 @@ module pm_val2real
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRealDef_RK3_SK1
 #endif
-        use pm_kind, only: RKC => RK3, SKC => SK1
-        real(RKC)                   , intent(out)                   :: conversion
-        character(*,SKC)            , intent(in)                    :: val
+        use pm_kind, only: RKG => RK3, SKG => SK1
+        real(RKG)                   , intent(out)                   :: conversion
+        character(*,SKG)            , intent(in)                    :: val
     end subroutine
 #endif
 
@@ -663,9 +663,9 @@ module pm_val2real
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRealDef_RK2_LK5
 #endif
-        use pm_kind, only: RKC => RK2, LKC => LK5
-        real(RKC)                   , intent(out)                   :: conversion
-        logical(LKC)                , intent(in)                    :: val
+        use pm_kind, only: RKG => RK2, LKG => LK5
+        real(RKG)                   , intent(out)                   :: conversion
+        logical(LKG)                , intent(in)                    :: val
     end subroutine
 #endif
 
@@ -674,9 +674,9 @@ module pm_val2real
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRealDef_RK2_LK4
 #endif
-        use pm_kind, only: RKC => RK2, LKC => LK4
-        real(RKC)                   , intent(out)                   :: conversion
-        logical(LKC)                , intent(in)                    :: val
+        use pm_kind, only: RKG => RK2, LKG => LK4
+        real(RKG)                   , intent(out)                   :: conversion
+        logical(LKG)                , intent(in)                    :: val
     end subroutine
 #endif
 
@@ -685,9 +685,9 @@ module pm_val2real
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRealDef_RK2_LK3
 #endif
-        use pm_kind, only: RKC => RK2, LKC => LK3
-        real(RKC)                   , intent(out)                   :: conversion
-        logical(LKC)                , intent(in)                    :: val
+        use pm_kind, only: RKG => RK2, LKG => LK3
+        real(RKG)                   , intent(out)                   :: conversion
+        logical(LKG)                , intent(in)                    :: val
     end subroutine
 #endif
 
@@ -696,9 +696,9 @@ module pm_val2real
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRealDef_RK2_LK2
 #endif
-        use pm_kind, only: RKC => RK2, LKC => LK2
-        real(RKC)                   , intent(out)                   :: conversion
-        logical(LKC)                , intent(in)                    :: val
+        use pm_kind, only: RKG => RK2, LKG => LK2
+        real(RKG)                   , intent(out)                   :: conversion
+        logical(LKG)                , intent(in)                    :: val
     end subroutine
 #endif
 
@@ -707,9 +707,9 @@ module pm_val2real
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRealDef_RK2_LK1
 #endif
-        use pm_kind, only: RKC => RK2, LKC => LK1
-        real(RKC)                   , intent(out)                   :: conversion
-        logical(LKC)                , intent(in)                    :: val
+        use pm_kind, only: RKG => RK2, LKG => LK1
+        real(RKG)                   , intent(out)                   :: conversion
+        logical(LKG)                , intent(in)                    :: val
     end subroutine
 #endif
 
@@ -720,9 +720,9 @@ module pm_val2real
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRealDef_RK2_SK5
 #endif
-        use pm_kind, only: RKC => RK2, SKC => SK5
-        real(RKC)                   , intent(out)                   :: conversion
-        character(*,SKC)            , intent(in)                    :: val
+        use pm_kind, only: RKG => RK2, SKG => SK5
+        real(RKG)                   , intent(out)                   :: conversion
+        character(*,SKG)            , intent(in)                    :: val
     end subroutine
 #endif
 
@@ -731,9 +731,9 @@ module pm_val2real
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRealDef_RK2_SK4
 #endif
-        use pm_kind, only: RKC => RK2, SKC => SK4
-        real(RKC)                   , intent(out)                   :: conversion
-        character(*,SKC)            , intent(in)                    :: val
+        use pm_kind, only: RKG => RK2, SKG => SK4
+        real(RKG)                   , intent(out)                   :: conversion
+        character(*,SKG)            , intent(in)                    :: val
     end subroutine
 #endif
 
@@ -742,9 +742,9 @@ module pm_val2real
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRealDef_RK2_SK3
 #endif
-        use pm_kind, only: RKC => RK2, SKC => SK3
-        real(RKC)                   , intent(out)                   :: conversion
-        character(*,SKC)            , intent(in)                    :: val
+        use pm_kind, only: RKG => RK2, SKG => SK3
+        real(RKG)                   , intent(out)                   :: conversion
+        character(*,SKG)            , intent(in)                    :: val
     end subroutine
 #endif
 
@@ -753,9 +753,9 @@ module pm_val2real
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRealDef_RK2_SK2
 #endif
-        use pm_kind, only: RKC => RK2, SKC => SK2
-        real(RKC)                   , intent(out)                   :: conversion
-        character(*,SKC)            , intent(in)                    :: val
+        use pm_kind, only: RKG => RK2, SKG => SK2
+        real(RKG)                   , intent(out)                   :: conversion
+        character(*,SKG)            , intent(in)                    :: val
     end subroutine
 #endif
 
@@ -764,9 +764,9 @@ module pm_val2real
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRealDef_RK2_SK1
 #endif
-        use pm_kind, only: RKC => RK2, SKC => SK1
-        real(RKC)                   , intent(out)                   :: conversion
-        character(*,SKC)            , intent(in)                    :: val
+        use pm_kind, only: RKG => RK2, SKG => SK1
+        real(RKG)                   , intent(out)                   :: conversion
+        character(*,SKG)            , intent(in)                    :: val
     end subroutine
 #endif
 
@@ -783,9 +783,9 @@ module pm_val2real
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRealDef_RK1_LK5
 #endif
-        use pm_kind, only: RKC => RK1, LKC => LK5
-        real(RKC)                   , intent(out)                   :: conversion
-        logical(LKC)                , intent(in)                    :: val
+        use pm_kind, only: RKG => RK1, LKG => LK5
+        real(RKG)                   , intent(out)                   :: conversion
+        logical(LKG)                , intent(in)                    :: val
     end subroutine
 #endif
 
@@ -794,9 +794,9 @@ module pm_val2real
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRealDef_RK1_LK4
 #endif
-        use pm_kind, only: RKC => RK1, LKC => LK4
-        real(RKC)                   , intent(out)                   :: conversion
-        logical(LKC)                , intent(in)                    :: val
+        use pm_kind, only: RKG => RK1, LKG => LK4
+        real(RKG)                   , intent(out)                   :: conversion
+        logical(LKG)                , intent(in)                    :: val
     end subroutine
 #endif
 
@@ -805,9 +805,9 @@ module pm_val2real
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRealDef_RK1_LK3
 #endif
-        use pm_kind, only: RKC => RK1, LKC => LK3
-        real(RKC)                   , intent(out)                   :: conversion
-        logical(LKC)                , intent(in)                    :: val
+        use pm_kind, only: RKG => RK1, LKG => LK3
+        real(RKG)                   , intent(out)                   :: conversion
+        logical(LKG)                , intent(in)                    :: val
     end subroutine
 #endif
 
@@ -816,9 +816,9 @@ module pm_val2real
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRealDef_RK1_LK2
 #endif
-        use pm_kind, only: RKC => RK1, LKC => LK2
-        real(RKC)                   , intent(out)                   :: conversion
-        logical(LKC)                , intent(in)                    :: val
+        use pm_kind, only: RKG => RK1, LKG => LK2
+        real(RKG)                   , intent(out)                   :: conversion
+        logical(LKG)                , intent(in)                    :: val
     end subroutine
 #endif
 
@@ -827,9 +827,9 @@ module pm_val2real
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRealDef_RK1_LK1
 #endif
-        use pm_kind, only: RKC => RK1, LKC => LK1
-        real(RKC)                   , intent(out)                   :: conversion
-        logical(LKC)                , intent(in)                    :: val
+        use pm_kind, only: RKG => RK1, LKG => LK1
+        real(RKG)                   , intent(out)                   :: conversion
+        logical(LKG)                , intent(in)                    :: val
     end subroutine
 #endif
 
@@ -840,9 +840,9 @@ module pm_val2real
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRealDef_RK1_SK5
 #endif
-        use pm_kind, only: RKC => RK1, SKC => SK5
-        real(RKC)                   , intent(out)                   :: conversion
-        character(*,SKC)            , intent(in)                    :: val
+        use pm_kind, only: RKG => RK1, SKG => SK5
+        real(RKG)                   , intent(out)                   :: conversion
+        character(*,SKG)            , intent(in)                    :: val
     end subroutine
 #endif
 
@@ -851,9 +851,9 @@ module pm_val2real
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRealDef_RK1_SK4
 #endif
-        use pm_kind, only: RKC => RK1, SKC => SK4
-        real(RKC)                   , intent(out)                   :: conversion
-        character(*,SKC)            , intent(in)                    :: val
+        use pm_kind, only: RKG => RK1, SKG => SK4
+        real(RKG)                   , intent(out)                   :: conversion
+        character(*,SKG)            , intent(in)                    :: val
     end subroutine
 #endif
 
@@ -862,9 +862,9 @@ module pm_val2real
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRealDef_RK1_SK3
 #endif
-        use pm_kind, only: RKC => RK1, SKC => SK3
-        real(RKC)                   , intent(out)                   :: conversion
-        character(*,SKC)            , intent(in)                    :: val
+        use pm_kind, only: RKG => RK1, SKG => SK3
+        real(RKG)                   , intent(out)                   :: conversion
+        character(*,SKG)            , intent(in)                    :: val
     end subroutine
 #endif
 
@@ -873,9 +873,9 @@ module pm_val2real
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRealDef_RK1_SK2
 #endif
-        use pm_kind, only: RKC => RK1, SKC => SK2
-        real(RKC)                   , intent(out)                   :: conversion
-        character(*,SKC)            , intent(in)                    :: val
+        use pm_kind, only: RKG => RK1, SKG => SK2
+        real(RKG)                   , intent(out)                   :: conversion
+        character(*,SKG)            , intent(in)                    :: val
     end subroutine
 #endif
 
@@ -884,9 +884,9 @@ module pm_val2real
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRealDef_RK1_SK1
 #endif
-        use pm_kind, only: RKC => RK1, SKC => SK1
-        real(RKC)                   , intent(out)                   :: conversion
-        character(*,SKC)            , intent(in)                    :: val
+        use pm_kind, only: RKG => RK1, SKG => SK1
+        real(RKG)                   , intent(out)                   :: conversion
+        character(*,SKG)            , intent(in)                    :: val
     end subroutine
 #endif
 
@@ -907,9 +907,9 @@ module pm_val2real
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRealErr_RK5_SK5
 #endif
-        use pm_kind, only: RKC => RK5, SKC => SK5
-        real(RKC)                   , intent(out)                   :: conversion
-        character(*,SKC)            , intent(in)                    :: val
+        use pm_kind, only: RKG => RK5, SKG => SK5
+        real(RKG)                   , intent(out)                   :: conversion
+        character(*,SKG)            , intent(in)                    :: val
         integer(IK)                 , intent(out)                   :: iostat
     end subroutine
 #endif
@@ -919,9 +919,9 @@ module pm_val2real
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRealErr_RK5_SK4
 #endif
-        use pm_kind, only: RKC => RK5, SKC => SK4
-        real(RKC)                   , intent(out)                   :: conversion
-        character(*,SKC)            , intent(in)                    :: val
+        use pm_kind, only: RKG => RK5, SKG => SK4
+        real(RKG)                   , intent(out)                   :: conversion
+        character(*,SKG)            , intent(in)                    :: val
         integer(IK)                 , intent(out)                   :: iostat
     end subroutine
 #endif
@@ -931,9 +931,9 @@ module pm_val2real
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRealErr_RK5_SK3
 #endif
-        use pm_kind, only: RKC => RK5, SKC => SK3
-        real(RKC)                   , intent(out)                   :: conversion
-        character(*,SKC)            , intent(in)                    :: val
+        use pm_kind, only: RKG => RK5, SKG => SK3
+        real(RKG)                   , intent(out)                   :: conversion
+        character(*,SKG)            , intent(in)                    :: val
         integer(IK)                 , intent(out)                   :: iostat
     end subroutine
 #endif
@@ -943,9 +943,9 @@ module pm_val2real
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRealErr_RK5_SK2
 #endif
-        use pm_kind, only: RKC => RK5, SKC => SK2
-        real(RKC)                   , intent(out)                   :: conversion
-        character(*,SKC)            , intent(in)                    :: val
+        use pm_kind, only: RKG => RK5, SKG => SK2
+        real(RKG)                   , intent(out)                   :: conversion
+        character(*,SKG)            , intent(in)                    :: val
         integer(IK)                 , intent(out)                   :: iostat
     end subroutine
 #endif
@@ -955,9 +955,9 @@ module pm_val2real
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRealErr_RK5_SK1
 #endif
-        use pm_kind, only: RKC => RK5, SKC => SK1
-        real(RKC)                   , intent(out)                   :: conversion
-        character(*,SKC)            , intent(in)                    :: val
+        use pm_kind, only: RKG => RK5, SKG => SK1
+        real(RKG)                   , intent(out)                   :: conversion
+        character(*,SKG)            , intent(in)                    :: val
         integer(IK)                 , intent(out)                   :: iostat
     end subroutine
 #endif
@@ -975,9 +975,9 @@ module pm_val2real
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRealErr_RK4_SK5
 #endif
-        use pm_kind, only: RKC => RK4, SKC => SK5
-        real(RKC)                   , intent(out)                   :: conversion
-        character(*,SKC)            , intent(in)                    :: val
+        use pm_kind, only: RKG => RK4, SKG => SK5
+        real(RKG)                   , intent(out)                   :: conversion
+        character(*,SKG)            , intent(in)                    :: val
         integer(IK)                 , intent(out)                   :: iostat
     end subroutine
 #endif
@@ -987,9 +987,9 @@ module pm_val2real
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRealErr_RK4_SK4
 #endif
-        use pm_kind, only: RKC => RK4, SKC => SK4
-        real(RKC)                   , intent(out)                   :: conversion
-        character(*,SKC)            , intent(in)                    :: val
+        use pm_kind, only: RKG => RK4, SKG => SK4
+        real(RKG)                   , intent(out)                   :: conversion
+        character(*,SKG)            , intent(in)                    :: val
         integer(IK)                 , intent(out)                   :: iostat
     end subroutine
 #endif
@@ -999,9 +999,9 @@ module pm_val2real
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRealErr_RK4_SK3
 #endif
-        use pm_kind, only: RKC => RK4, SKC => SK3
-        real(RKC)                   , intent(out)                   :: conversion
-        character(*,SKC)            , intent(in)                    :: val
+        use pm_kind, only: RKG => RK4, SKG => SK3
+        real(RKG)                   , intent(out)                   :: conversion
+        character(*,SKG)            , intent(in)                    :: val
         integer(IK)                 , intent(out)                   :: iostat
     end subroutine
 #endif
@@ -1011,9 +1011,9 @@ module pm_val2real
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRealErr_RK4_SK2
 #endif
-        use pm_kind, only: RKC => RK4, SKC => SK2
-        real(RKC)                   , intent(out)                   :: conversion
-        character(*,SKC)            , intent(in)                    :: val
+        use pm_kind, only: RKG => RK4, SKG => SK2
+        real(RKG)                   , intent(out)                   :: conversion
+        character(*,SKG)            , intent(in)                    :: val
         integer(IK)                 , intent(out)                   :: iostat
     end subroutine
 #endif
@@ -1023,9 +1023,9 @@ module pm_val2real
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRealErr_RK4_SK1
 #endif
-        use pm_kind, only: RKC => RK4, SKC => SK1
-        real(RKC)                   , intent(out)                   :: conversion
-        character(*,SKC)            , intent(in)                    :: val
+        use pm_kind, only: RKG => RK4, SKG => SK1
+        real(RKG)                   , intent(out)                   :: conversion
+        character(*,SKG)            , intent(in)                    :: val
         integer(IK)                 , intent(out)                   :: iostat
     end subroutine
 #endif
@@ -1043,9 +1043,9 @@ module pm_val2real
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRealErr_RK3_SK5
 #endif
-        use pm_kind, only: RKC => RK3, SKC => SK5
-        real(RKC)                   , intent(out)                   :: conversion
-        character(*,SKC)            , intent(in)                    :: val
+        use pm_kind, only: RKG => RK3, SKG => SK5
+        real(RKG)                   , intent(out)                   :: conversion
+        character(*,SKG)            , intent(in)                    :: val
         integer(IK)                 , intent(out)                   :: iostat
     end subroutine
 #endif
@@ -1055,9 +1055,9 @@ module pm_val2real
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRealErr_RK3_SK4
 #endif
-        use pm_kind, only: RKC => RK3, SKC => SK4
-        real(RKC)                   , intent(out)                   :: conversion
-        character(*,SKC)            , intent(in)                    :: val
+        use pm_kind, only: RKG => RK3, SKG => SK4
+        real(RKG)                   , intent(out)                   :: conversion
+        character(*,SKG)            , intent(in)                    :: val
         integer(IK)                 , intent(out)                   :: iostat
     end subroutine
 #endif
@@ -1067,9 +1067,9 @@ module pm_val2real
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRealErr_RK3_SK3
 #endif
-        use pm_kind, only: RKC => RK3, SKC => SK3
-        real(RKC)                   , intent(out)                   :: conversion
-        character(*,SKC)            , intent(in)                    :: val
+        use pm_kind, only: RKG => RK3, SKG => SK3
+        real(RKG)                   , intent(out)                   :: conversion
+        character(*,SKG)            , intent(in)                    :: val
         integer(IK)                 , intent(out)                   :: iostat
     end subroutine
 #endif
@@ -1079,9 +1079,9 @@ module pm_val2real
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRealErr_RK3_SK2
 #endif
-        use pm_kind, only: RKC => RK3, SKC => SK2
-        real(RKC)                   , intent(out)                   :: conversion
-        character(*,SKC)            , intent(in)                    :: val
+        use pm_kind, only: RKG => RK3, SKG => SK2
+        real(RKG)                   , intent(out)                   :: conversion
+        character(*,SKG)            , intent(in)                    :: val
         integer(IK)                 , intent(out)                   :: iostat
     end subroutine
 #endif
@@ -1091,9 +1091,9 @@ module pm_val2real
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRealErr_RK3_SK1
 #endif
-        use pm_kind, only: RKC => RK3, SKC => SK1
-        real(RKC)                   , intent(out)                   :: conversion
-        character(*,SKC)            , intent(in)                    :: val
+        use pm_kind, only: RKG => RK3, SKG => SK1
+        real(RKG)                   , intent(out)                   :: conversion
+        character(*,SKG)            , intent(in)                    :: val
         integer(IK)                 , intent(out)                   :: iostat
     end subroutine
 #endif
@@ -1111,9 +1111,9 @@ module pm_val2real
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRealErr_RK2_SK5
 #endif
-        use pm_kind, only: RKC => RK2, SKC => SK5
-        real(RKC)                   , intent(out)                   :: conversion
-        character(*,SKC)            , intent(in)                    :: val
+        use pm_kind, only: RKG => RK2, SKG => SK5
+        real(RKG)                   , intent(out)                   :: conversion
+        character(*,SKG)            , intent(in)                    :: val
         integer(IK)                 , intent(out)                   :: iostat
     end subroutine
 #endif
@@ -1123,9 +1123,9 @@ module pm_val2real
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRealErr_RK2_SK4
 #endif
-        use pm_kind, only: RKC => RK2, SKC => SK4
-        real(RKC)                   , intent(out)                   :: conversion
-        character(*,SKC)            , intent(in)                    :: val
+        use pm_kind, only: RKG => RK2, SKG => SK4
+        real(RKG)                   , intent(out)                   :: conversion
+        character(*,SKG)            , intent(in)                    :: val
         integer(IK)                 , intent(out)                   :: iostat
     end subroutine
 #endif
@@ -1135,9 +1135,9 @@ module pm_val2real
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRealErr_RK2_SK3
 #endif
-        use pm_kind, only: RKC => RK2, SKC => SK3
-        real(RKC)                   , intent(out)                   :: conversion
-        character(*,SKC)            , intent(in)                    :: val
+        use pm_kind, only: RKG => RK2, SKG => SK3
+        real(RKG)                   , intent(out)                   :: conversion
+        character(*,SKG)            , intent(in)                    :: val
         integer(IK)                 , intent(out)                   :: iostat
     end subroutine
 #endif
@@ -1147,9 +1147,9 @@ module pm_val2real
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRealErr_RK2_SK2
 #endif
-        use pm_kind, only: RKC => RK2, SKC => SK2
-        real(RKC)                   , intent(out)                   :: conversion
-        character(*,SKC)            , intent(in)                    :: val
+        use pm_kind, only: RKG => RK2, SKG => SK2
+        real(RKG)                   , intent(out)                   :: conversion
+        character(*,SKG)            , intent(in)                    :: val
         integer(IK)                 , intent(out)                   :: iostat
     end subroutine
 #endif
@@ -1159,9 +1159,9 @@ module pm_val2real
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRealErr_RK2_SK1
 #endif
-        use pm_kind, only: RKC => RK2, SKC => SK1
-        real(RKC)                   , intent(out)                   :: conversion
-        character(*,SKC)            , intent(in)                    :: val
+        use pm_kind, only: RKG => RK2, SKG => SK1
+        real(RKG)                   , intent(out)                   :: conversion
+        character(*,SKG)            , intent(in)                    :: val
         integer(IK)                 , intent(out)                   :: iostat
     end subroutine
 #endif
@@ -1179,9 +1179,9 @@ module pm_val2real
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRealErr_RK1_SK5
 #endif
-        use pm_kind, only: RKC => RK1, SKC => SK5
-        real(RKC)                   , intent(out)                   :: conversion
-        character(*,SKC)            , intent(in)                    :: val
+        use pm_kind, only: RKG => RK1, SKG => SK5
+        real(RKG)                   , intent(out)                   :: conversion
+        character(*,SKG)            , intent(in)                    :: val
         integer(IK)                 , intent(out)                   :: iostat
     end subroutine
 #endif
@@ -1191,9 +1191,9 @@ module pm_val2real
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRealErr_RK1_SK4
 #endif
-        use pm_kind, only: RKC => RK1, SKC => SK4
-        real(RKC)                   , intent(out)                   :: conversion
-        character(*,SKC)            , intent(in)                    :: val
+        use pm_kind, only: RKG => RK1, SKG => SK4
+        real(RKG)                   , intent(out)                   :: conversion
+        character(*,SKG)            , intent(in)                    :: val
         integer(IK)                 , intent(out)                   :: iostat
     end subroutine
 #endif
@@ -1203,9 +1203,9 @@ module pm_val2real
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRealErr_RK1_SK3
 #endif
-        use pm_kind, only: RKC => RK1, SKC => SK3
-        real(RKC)                   , intent(out)                   :: conversion
-        character(*,SKC)            , intent(in)                    :: val
+        use pm_kind, only: RKG => RK1, SKG => SK3
+        real(RKG)                   , intent(out)                   :: conversion
+        character(*,SKG)            , intent(in)                    :: val
         integer(IK)                 , intent(out)                   :: iostat
     end subroutine
 #endif
@@ -1215,9 +1215,9 @@ module pm_val2real
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRealErr_RK1_SK2
 #endif
-        use pm_kind, only: RKC => RK1, SKC => SK2
-        real(RKC)                   , intent(out)                   :: conversion
-        character(*,SKC)            , intent(in)                    :: val
+        use pm_kind, only: RKG => RK1, SKG => SK2
+        real(RKG)                   , intent(out)                   :: conversion
+        character(*,SKG)            , intent(in)                    :: val
         integer(IK)                 , intent(out)                   :: iostat
     end subroutine
 #endif
@@ -1227,9 +1227,9 @@ module pm_val2real
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRealErr_RK1_SK1
 #endif
-        use pm_kind, only: RKC => RK1, SKC => SK1
-        real(RKC)                   , intent(out)                   :: conversion
-        character(*,SKC)            , intent(in)                    :: val
+        use pm_kind, only: RKG => RK1, SKG => SK1
+        real(RKG)                   , intent(out)                   :: conversion
+        character(*,SKG)            , intent(in)                    :: val
         integer(IK)                 , intent(out)                   :: iostat
     end subroutine
 #endif

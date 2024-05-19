@@ -239,9 +239,9 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMeanALL_WNO_D1_CK5
 #endif
-        use pm_kind, only: TKC => CK5
-        complex(TKC)    , intent(in)    , contiguous                :: sample(:)
-        complex(TKC)                                                :: mean
+        use pm_kind, only: TKG => CK5
+        complex(TKG)    , intent(in)    , contiguous                :: sample(:)
+        complex(TKG)                                                :: mean
     end function
 #endif
 
@@ -250,9 +250,9 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMeanALL_WNO_D1_CK4
 #endif
-        use pm_kind, only: TKC => CK4
-        complex(TKC)    , intent(in)    , contiguous                :: sample(:)
-        complex(TKC)                                                :: mean
+        use pm_kind, only: TKG => CK4
+        complex(TKG)    , intent(in)    , contiguous                :: sample(:)
+        complex(TKG)                                                :: mean
     end function
 #endif
 
@@ -261,9 +261,9 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMeanALL_WNO_D1_CK3
 #endif
-        use pm_kind, only: TKC => CK3
-        complex(TKC)    , intent(in)    , contiguous                :: sample(:)
-        complex(TKC)                                                :: mean
+        use pm_kind, only: TKG => CK3
+        complex(TKG)    , intent(in)    , contiguous                :: sample(:)
+        complex(TKG)                                                :: mean
     end function
 #endif
 
@@ -272,9 +272,9 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMeanALL_WNO_D1_CK2
 #endif
-        use pm_kind, only: TKC => CK2
-        complex(TKC)    , intent(in)    , contiguous                :: sample(:)
-        complex(TKC)                                                :: mean
+        use pm_kind, only: TKG => CK2
+        complex(TKG)    , intent(in)    , contiguous                :: sample(:)
+        complex(TKG)                                                :: mean
     end function
 #endif
 
@@ -283,9 +283,9 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMeanALL_WNO_D1_CK1
 #endif
-        use pm_kind, only: TKC => CK1
-        complex(TKC)    , intent(in)    , contiguous                :: sample(:)
-        complex(TKC)                                                :: mean
+        use pm_kind, only: TKG => CK1
+        complex(TKG)    , intent(in)    , contiguous                :: sample(:)
+        complex(TKG)                                                :: mean
     end function
 #endif
 
@@ -296,9 +296,9 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMeanALL_WNO_D1_RK5
 #endif
-        use pm_kind, only: TKC => RK5
-        real(TKC)       , intent(in)    , contiguous                :: sample(:)
-        real(TKC)                                                   :: mean
+        use pm_kind, only: TKG => RK5
+        real(TKG)       , intent(in)    , contiguous                :: sample(:)
+        real(TKG)                                                   :: mean
     end function
 #endif
 
@@ -307,9 +307,9 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMeanALL_WNO_D1_RK4
 #endif
-        use pm_kind, only: TKC => RK4
-        real(TKC)       , intent(in)    , contiguous                :: sample(:)
-        real(TKC)                                                   :: mean
+        use pm_kind, only: TKG => RK4
+        real(TKG)       , intent(in)    , contiguous                :: sample(:)
+        real(TKG)                                                   :: mean
     end function
 #endif
 
@@ -318,9 +318,9 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMeanALL_WNO_D1_RK3
 #endif
-        use pm_kind, only: TKC => RK3
-        real(TKC)       , intent(in)    , contiguous                :: sample(:)
-        real(TKC)                                                   :: mean
+        use pm_kind, only: TKG => RK3
+        real(TKG)       , intent(in)    , contiguous                :: sample(:)
+        real(TKG)                                                   :: mean
     end function
 #endif
 
@@ -329,9 +329,9 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMeanALL_WNO_D1_RK2
 #endif
-        use pm_kind, only: TKC => RK2
-        real(TKC)       , intent(in)    , contiguous                :: sample(:)
-        real(TKC)                                                   :: mean
+        use pm_kind, only: TKG => RK2
+        real(TKG)       , intent(in)    , contiguous                :: sample(:)
+        real(TKG)                                                   :: mean
     end function
 #endif
 
@@ -340,9 +340,9 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMeanALL_WNO_D1_RK1
 #endif
-        use pm_kind, only: TKC => RK1
-        real(TKC)       , intent(in)    , contiguous                :: sample(:)
-        real(TKC)                                                   :: mean
+        use pm_kind, only: TKG => RK1
+        real(TKG)       , intent(in)    , contiguous                :: sample(:)
+        real(TKG)                                                   :: mean
     end function
 #endif
 
@@ -359,10 +359,10 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMeanALL_WTI_D1_CK5
 #endif
-        use pm_kind, only: TKC => CK5
-        complex(TKC)    , intent(in)    , contiguous                :: sample(:)
+        use pm_kind, only: TKG => CK5
+        complex(TKG)    , intent(in)    , contiguous                :: sample(:)
         integer(IK)     , intent(in)    , contiguous                :: weight(:)
-        complex(TKC)                                                :: mean
+        complex(TKG)                                                :: mean
     end function
 #endif
 
@@ -371,10 +371,10 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMeanALL_WTI_D1_CK4
 #endif
-        use pm_kind, only: TKC => CK4
-        complex(TKC)    , intent(in)    , contiguous                :: sample(:)
+        use pm_kind, only: TKG => CK4
+        complex(TKG)    , intent(in)    , contiguous                :: sample(:)
         integer(IK)     , intent(in)    , contiguous                :: weight(:)
-        complex(TKC)                                                :: mean
+        complex(TKG)                                                :: mean
     end function
 #endif
 
@@ -383,10 +383,10 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMeanALL_WTI_D1_CK3
 #endif
-        use pm_kind, only: TKC => CK3
-        complex(TKC)    , intent(in)    , contiguous                :: sample(:)
+        use pm_kind, only: TKG => CK3
+        complex(TKG)    , intent(in)    , contiguous                :: sample(:)
         integer(IK)     , intent(in)    , contiguous                :: weight(:)
-        complex(TKC)                                                :: mean
+        complex(TKG)                                                :: mean
     end function
 #endif
 
@@ -395,10 +395,10 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMeanALL_WTI_D1_CK2
 #endif
-        use pm_kind, only: TKC => CK2
-        complex(TKC)    , intent(in)    , contiguous                :: sample(:)
+        use pm_kind, only: TKG => CK2
+        complex(TKG)    , intent(in)    , contiguous                :: sample(:)
         integer(IK)     , intent(in)    , contiguous                :: weight(:)
-        complex(TKC)                                                :: mean
+        complex(TKG)                                                :: mean
     end function
 #endif
 
@@ -407,10 +407,10 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMeanALL_WTI_D1_CK1
 #endif
-        use pm_kind, only: TKC => CK1
-        complex(TKC)    , intent(in)    , contiguous                :: sample(:)
+        use pm_kind, only: TKG => CK1
+        complex(TKG)    , intent(in)    , contiguous                :: sample(:)
         integer(IK)     , intent(in)    , contiguous                :: weight(:)
-        complex(TKC)                                                :: mean
+        complex(TKG)                                                :: mean
     end function
 #endif
 
@@ -421,10 +421,10 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMeanALL_WTI_D1_RK5
 #endif
-        use pm_kind, only: TKC => RK5
-        real(TKC)       , intent(in)    , contiguous                :: sample(:)
+        use pm_kind, only: TKG => RK5
+        real(TKG)       , intent(in)    , contiguous                :: sample(:)
         integer(IK)     , intent(in)    , contiguous                :: weight(:)
-        real(TKC)                                                   :: mean
+        real(TKG)                                                   :: mean
     end function
 #endif
 
@@ -433,10 +433,10 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMeanALL_WTI_D1_RK4
 #endif
-        use pm_kind, only: TKC => RK4
-        real(TKC)       , intent(in)    , contiguous                :: sample(:)
+        use pm_kind, only: TKG => RK4
+        real(TKG)       , intent(in)    , contiguous                :: sample(:)
         integer(IK)     , intent(in)    , contiguous                :: weight(:)
-        real(TKC)                                                   :: mean
+        real(TKG)                                                   :: mean
     end function
 #endif
 
@@ -445,10 +445,10 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMeanALL_WTI_D1_RK3
 #endif
-        use pm_kind, only: TKC => RK3
-        real(TKC)       , intent(in)    , contiguous                :: sample(:)
+        use pm_kind, only: TKG => RK3
+        real(TKG)       , intent(in)    , contiguous                :: sample(:)
         integer(IK)     , intent(in)    , contiguous                :: weight(:)
-        real(TKC)                                                   :: mean
+        real(TKG)                                                   :: mean
     end function
 #endif
 
@@ -457,10 +457,10 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMeanALL_WTI_D1_RK2
 #endif
-        use pm_kind, only: TKC => RK2
-        real(TKC)       , intent(in)    , contiguous                :: sample(:)
+        use pm_kind, only: TKG => RK2
+        real(TKG)       , intent(in)    , contiguous                :: sample(:)
         integer(IK)     , intent(in)    , contiguous                :: weight(:)
-        real(TKC)                                                   :: mean
+        real(TKG)                                                   :: mean
     end function
 #endif
 
@@ -469,10 +469,10 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMeanALL_WTI_D1_RK1
 #endif
-        use pm_kind, only: TKC => RK1
-        real(TKC)       , intent(in)    , contiguous                :: sample(:)
+        use pm_kind, only: TKG => RK1
+        real(TKG)       , intent(in)    , contiguous                :: sample(:)
         integer(IK)     , intent(in)    , contiguous                :: weight(:)
-        real(TKC)                                                   :: mean
+        real(TKG)                                                   :: mean
     end function
 #endif
 
@@ -489,10 +489,10 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMeanALL_WTR_D1_CK5
 #endif
-        use pm_kind, only: TKC => CK5
-        complex(TKC)    , intent(in)    , contiguous                :: sample(:)
-        real(TKC)       , intent(in)    , contiguous                :: weight(:)
-        complex(TKC)                                                :: mean
+        use pm_kind, only: TKG => CK5
+        complex(TKG)    , intent(in)    , contiguous                :: sample(:)
+        real(TKG)       , intent(in)    , contiguous                :: weight(:)
+        complex(TKG)                                                :: mean
     end function
 #endif
 
@@ -501,10 +501,10 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMeanALL_WTR_D1_CK4
 #endif
-        use pm_kind, only: TKC => CK4
-        complex(TKC)    , intent(in)    , contiguous                :: sample(:)
-        real(TKC)       , intent(in)    , contiguous                :: weight(:)
-        complex(TKC)                                                :: mean
+        use pm_kind, only: TKG => CK4
+        complex(TKG)    , intent(in)    , contiguous                :: sample(:)
+        real(TKG)       , intent(in)    , contiguous                :: weight(:)
+        complex(TKG)                                                :: mean
     end function
 #endif
 
@@ -513,10 +513,10 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMeanALL_WTR_D1_CK3
 #endif
-        use pm_kind, only: TKC => CK3
-        complex(TKC)    , intent(in)    , contiguous                :: sample(:)
-        real(TKC)       , intent(in)    , contiguous                :: weight(:)
-        complex(TKC)                                                :: mean
+        use pm_kind, only: TKG => CK3
+        complex(TKG)    , intent(in)    , contiguous                :: sample(:)
+        real(TKG)       , intent(in)    , contiguous                :: weight(:)
+        complex(TKG)                                                :: mean
     end function
 #endif
 
@@ -525,10 +525,10 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMeanALL_WTR_D1_CK2
 #endif
-        use pm_kind, only: TKC => CK2
-        complex(TKC)    , intent(in)    , contiguous                :: sample(:)
-        real(TKC)       , intent(in)    , contiguous                :: weight(:)
-        complex(TKC)                                                :: mean
+        use pm_kind, only: TKG => CK2
+        complex(TKG)    , intent(in)    , contiguous                :: sample(:)
+        real(TKG)       , intent(in)    , contiguous                :: weight(:)
+        complex(TKG)                                                :: mean
     end function
 #endif
 
@@ -537,10 +537,10 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMeanALL_WTR_D1_CK1
 #endif
-        use pm_kind, only: TKC => CK1
-        complex(TKC)    , intent(in)    , contiguous                :: sample(:)
-        real(TKC)       , intent(in)    , contiguous                :: weight(:)
-        complex(TKC)                                                :: mean
+        use pm_kind, only: TKG => CK1
+        complex(TKG)    , intent(in)    , contiguous                :: sample(:)
+        real(TKG)       , intent(in)    , contiguous                :: weight(:)
+        complex(TKG)                                                :: mean
     end function
 #endif
 
@@ -551,10 +551,10 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMeanALL_WTR_D1_RK5
 #endif
-        use pm_kind, only: TKC => RK5
-        real(TKC)       , intent(in)    , contiguous                :: sample(:)
-        real(TKC)       , intent(in)    , contiguous                :: weight(:)
-        real(TKC)                                                   :: mean
+        use pm_kind, only: TKG => RK5
+        real(TKG)       , intent(in)    , contiguous                :: sample(:)
+        real(TKG)       , intent(in)    , contiguous                :: weight(:)
+        real(TKG)                                                   :: mean
     end function
 #endif
 
@@ -563,10 +563,10 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMeanALL_WTR_D1_RK4
 #endif
-        use pm_kind, only: TKC => RK4
-        real(TKC)       , intent(in)    , contiguous                :: sample(:)
-        real(TKC)       , intent(in)    , contiguous                :: weight(:)
-        real(TKC)                                                   :: mean
+        use pm_kind, only: TKG => RK4
+        real(TKG)       , intent(in)    , contiguous                :: sample(:)
+        real(TKG)       , intent(in)    , contiguous                :: weight(:)
+        real(TKG)                                                   :: mean
     end function
 #endif
 
@@ -575,10 +575,10 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMeanALL_WTR_D1_RK3
 #endif
-        use pm_kind, only: TKC => RK3
-        real(TKC)       , intent(in)    , contiguous                :: sample(:)
-        real(TKC)       , intent(in)    , contiguous                :: weight(:)
-        real(TKC)                                                   :: mean
+        use pm_kind, only: TKG => RK3
+        real(TKG)       , intent(in)    , contiguous                :: sample(:)
+        real(TKG)       , intent(in)    , contiguous                :: weight(:)
+        real(TKG)                                                   :: mean
     end function
 #endif
 
@@ -587,10 +587,10 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMeanALL_WTR_D1_RK2
 #endif
-        use pm_kind, only: TKC => RK2
-        real(TKC)       , intent(in)    , contiguous                :: sample(:)
-        real(TKC)       , intent(in)    , contiguous                :: weight(:)
-        real(TKC)                                                   :: mean
+        use pm_kind, only: TKG => RK2
+        real(TKG)       , intent(in)    , contiguous                :: sample(:)
+        real(TKG)       , intent(in)    , contiguous                :: weight(:)
+        real(TKG)                                                   :: mean
     end function
 #endif
 
@@ -599,10 +599,10 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMeanALL_WTR_D1_RK1
 #endif
-        use pm_kind, only: TKC => RK1
-        real(TKC)       , intent(in)    , contiguous                :: sample(:)
-        real(TKC)       , intent(in)    , contiguous                :: weight(:)
-        real(TKC)                                                   :: mean
+        use pm_kind, only: TKG => RK1
+        real(TKG)       , intent(in)    , contiguous                :: sample(:)
+        real(TKG)       , intent(in)    , contiguous                :: weight(:)
+        real(TKG)                                                   :: mean
     end function
 #endif
 
@@ -629,9 +629,9 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMeanALL_WNO_D2_CK5
 #endif
-        use pm_kind, only: TKC => CK5
-        complex(TKC)    , intent(in)    , contiguous                :: sample(:,:)
-        complex(TKC)                                                :: mean
+        use pm_kind, only: TKG => CK5
+        complex(TKG)    , intent(in)    , contiguous                :: sample(:,:)
+        complex(TKG)                                                :: mean
     end function
 #endif
 
@@ -640,9 +640,9 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMeanALL_WNO_D2_CK4
 #endif
-        use pm_kind, only: TKC => CK4
-        complex(TKC)    , intent(in)    , contiguous                :: sample(:,:)
-        complex(TKC)                                                :: mean
+        use pm_kind, only: TKG => CK4
+        complex(TKG)    , intent(in)    , contiguous                :: sample(:,:)
+        complex(TKG)                                                :: mean
     end function
 #endif
 
@@ -651,9 +651,9 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMeanALL_WNO_D2_CK3
 #endif
-        use pm_kind, only: TKC => CK3
-        complex(TKC)    , intent(in)    , contiguous                :: sample(:,:)
-        complex(TKC)                                                :: mean
+        use pm_kind, only: TKG => CK3
+        complex(TKG)    , intent(in)    , contiguous                :: sample(:,:)
+        complex(TKG)                                                :: mean
     end function
 #endif
 
@@ -662,9 +662,9 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMeanALL_WNO_D2_CK2
 #endif
-        use pm_kind, only: TKC => CK2
-        complex(TKC)    , intent(in)    , contiguous                :: sample(:,:)
-        complex(TKC)                                                :: mean
+        use pm_kind, only: TKG => CK2
+        complex(TKG)    , intent(in)    , contiguous                :: sample(:,:)
+        complex(TKG)                                                :: mean
     end function
 #endif
 
@@ -673,9 +673,9 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMeanALL_WNO_D2_CK1
 #endif
-        use pm_kind, only: TKC => CK1
-        complex(TKC)    , intent(in)    , contiguous                :: sample(:,:)
-        complex(TKC)                                                :: mean
+        use pm_kind, only: TKG => CK1
+        complex(TKG)    , intent(in)    , contiguous                :: sample(:,:)
+        complex(TKG)                                                :: mean
     end function
 #endif
 
@@ -686,9 +686,9 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMeanALL_WNO_D2_RK5
 #endif
-        use pm_kind, only: TKC => RK5
-        real(TKC)       , intent(in)    , contiguous                :: sample(:,:)
-        real(TKC)                                                   :: mean
+        use pm_kind, only: TKG => RK5
+        real(TKG)       , intent(in)    , contiguous                :: sample(:,:)
+        real(TKG)                                                   :: mean
     end function
 #endif
 
@@ -697,9 +697,9 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMeanALL_WNO_D2_RK4
 #endif
-        use pm_kind, only: TKC => RK4
-        real(TKC)       , intent(in)    , contiguous                :: sample(:,:)
-        real(TKC)                                                   :: mean
+        use pm_kind, only: TKG => RK4
+        real(TKG)       , intent(in)    , contiguous                :: sample(:,:)
+        real(TKG)                                                   :: mean
     end function
 #endif
 
@@ -708,9 +708,9 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMeanALL_WNO_D2_RK3
 #endif
-        use pm_kind, only: TKC => RK3
-        real(TKC)       , intent(in)    , contiguous                :: sample(:,:)
-        real(TKC)                                                   :: mean
+        use pm_kind, only: TKG => RK3
+        real(TKG)       , intent(in)    , contiguous                :: sample(:,:)
+        real(TKG)                                                   :: mean
     end function
 #endif
 
@@ -719,9 +719,9 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMeanALL_WNO_D2_RK2
 #endif
-        use pm_kind, only: TKC => RK2
-        real(TKC)       , intent(in)    , contiguous                :: sample(:,:)
-        real(TKC)                                                   :: mean
+        use pm_kind, only: TKG => RK2
+        real(TKG)       , intent(in)    , contiguous                :: sample(:,:)
+        real(TKG)                                                   :: mean
     end function
 #endif
 
@@ -730,9 +730,9 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMeanALL_WNO_D2_RK1
 #endif
-        use pm_kind, only: TKC => RK1
-        real(TKC)       , intent(in)    , contiguous                :: sample(:,:)
-        real(TKC)                                                   :: mean
+        use pm_kind, only: TKG => RK1
+        real(TKG)       , intent(in)    , contiguous                :: sample(:,:)
+        real(TKG)                                                   :: mean
     end function
 #endif
 
@@ -749,10 +749,10 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMeanALL_WTI_D2_CK5
 #endif
-        use pm_kind, only: TKC => CK5
-        complex(TKC)    , intent(in)    , contiguous                :: sample(:,:)
+        use pm_kind, only: TKG => CK5
+        complex(TKG)    , intent(in)    , contiguous                :: sample(:,:)
         integer(IK)     , intent(in)    , contiguous                :: weight(:)
-        complex(TKC)                                                :: mean
+        complex(TKG)                                                :: mean
     end function
 #endif
 
@@ -761,10 +761,10 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMeanALL_WTI_D2_CK4
 #endif
-        use pm_kind, only: TKC => CK4
-        complex(TKC)    , intent(in)    , contiguous                :: sample(:,:)
+        use pm_kind, only: TKG => CK4
+        complex(TKG)    , intent(in)    , contiguous                :: sample(:,:)
         integer(IK)     , intent(in)    , contiguous                :: weight(:)
-        complex(TKC)                                                :: mean
+        complex(TKG)                                                :: mean
     end function
 #endif
 
@@ -773,10 +773,10 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMeanALL_WTI_D2_CK3
 #endif
-        use pm_kind, only: TKC => CK3
-        complex(TKC)    , intent(in)    , contiguous                :: sample(:,:)
+        use pm_kind, only: TKG => CK3
+        complex(TKG)    , intent(in)    , contiguous                :: sample(:,:)
         integer(IK)     , intent(in)    , contiguous                :: weight(:)
-        complex(TKC)                                                :: mean
+        complex(TKG)                                                :: mean
     end function
 #endif
 
@@ -785,10 +785,10 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMeanALL_WTI_D2_CK2
 #endif
-        use pm_kind, only: TKC => CK2
-        complex(TKC)    , intent(in)    , contiguous                :: sample(:,:)
+        use pm_kind, only: TKG => CK2
+        complex(TKG)    , intent(in)    , contiguous                :: sample(:,:)
         integer(IK)     , intent(in)    , contiguous                :: weight(:)
-        complex(TKC)                                                :: mean
+        complex(TKG)                                                :: mean
     end function
 #endif
 
@@ -797,10 +797,10 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMeanALL_WTI_D2_CK1
 #endif
-        use pm_kind, only: TKC => CK1
-        complex(TKC)    , intent(in)    , contiguous                :: sample(:,:)
+        use pm_kind, only: TKG => CK1
+        complex(TKG)    , intent(in)    , contiguous                :: sample(:,:)
         integer(IK)     , intent(in)    , contiguous                :: weight(:)
-        complex(TKC)                                                :: mean
+        complex(TKG)                                                :: mean
     end function
 #endif
 
@@ -811,10 +811,10 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMeanALL_WTI_D2_RK5
 #endif
-        use pm_kind, only: TKC => RK5
-        real(TKC)       , intent(in)    , contiguous                :: sample(:,:)
+        use pm_kind, only: TKG => RK5
+        real(TKG)       , intent(in)    , contiguous                :: sample(:,:)
         integer(IK)     , intent(in)    , contiguous                :: weight(:)
-        real(TKC)                                                   :: mean
+        real(TKG)                                                   :: mean
     end function
 #endif
 
@@ -823,10 +823,10 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMeanALL_WTI_D2_RK4
 #endif
-        use pm_kind, only: TKC => RK4
-        real(TKC)       , intent(in)    , contiguous                :: sample(:,:)
+        use pm_kind, only: TKG => RK4
+        real(TKG)       , intent(in)    , contiguous                :: sample(:,:)
         integer(IK)     , intent(in)    , contiguous                :: weight(:)
-        real(TKC)                                                   :: mean
+        real(TKG)                                                   :: mean
     end function
 #endif
 
@@ -835,10 +835,10 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMeanALL_WTI_D2_RK3
 #endif
-        use pm_kind, only: TKC => RK3
-        real(TKC)       , intent(in)    , contiguous                :: sample(:,:)
+        use pm_kind, only: TKG => RK3
+        real(TKG)       , intent(in)    , contiguous                :: sample(:,:)
         integer(IK)     , intent(in)    , contiguous                :: weight(:)
-        real(TKC)                                                   :: mean
+        real(TKG)                                                   :: mean
     end function
 #endif
 
@@ -847,10 +847,10 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMeanALL_WTI_D2_RK2
 #endif
-        use pm_kind, only: TKC => RK2
-        real(TKC)       , intent(in)    , contiguous                :: sample(:,:)
+        use pm_kind, only: TKG => RK2
+        real(TKG)       , intent(in)    , contiguous                :: sample(:,:)
         integer(IK)     , intent(in)    , contiguous                :: weight(:)
-        real(TKC)                                                   :: mean
+        real(TKG)                                                   :: mean
     end function
 #endif
 
@@ -859,10 +859,10 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMeanALL_WTI_D2_RK1
 #endif
-        use pm_kind, only: TKC => RK1
-        real(TKC)       , intent(in)    , contiguous                :: sample(:,:)
+        use pm_kind, only: TKG => RK1
+        real(TKG)       , intent(in)    , contiguous                :: sample(:,:)
         integer(IK)     , intent(in)    , contiguous                :: weight(:)
-        real(TKC)                                                   :: mean
+        real(TKG)                                                   :: mean
     end function
 #endif
 
@@ -879,10 +879,10 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMeanALL_WTR_D2_CK5
 #endif
-        use pm_kind, only: TKC => CK5
-        complex(TKC)    , intent(in)    , contiguous                :: sample(:,:)
-        real(TKC)       , intent(in)    , contiguous                :: weight(:)
-        complex(TKC)                                                :: mean
+        use pm_kind, only: TKG => CK5
+        complex(TKG)    , intent(in)    , contiguous                :: sample(:,:)
+        real(TKG)       , intent(in)    , contiguous                :: weight(:)
+        complex(TKG)                                                :: mean
     end function
 #endif
 
@@ -891,10 +891,10 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMeanALL_WTR_D2_CK4
 #endif
-        use pm_kind, only: TKC => CK4
-        complex(TKC)    , intent(in)    , contiguous                :: sample(:,:)
-        real(TKC)       , intent(in)    , contiguous                :: weight(:)
-        complex(TKC)                                                :: mean
+        use pm_kind, only: TKG => CK4
+        complex(TKG)    , intent(in)    , contiguous                :: sample(:,:)
+        real(TKG)       , intent(in)    , contiguous                :: weight(:)
+        complex(TKG)                                                :: mean
     end function
 #endif
 
@@ -903,10 +903,10 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMeanALL_WTR_D2_CK3
 #endif
-        use pm_kind, only: TKC => CK3
-        complex(TKC)    , intent(in)    , contiguous                :: sample(:,:)
-        real(TKC)       , intent(in)    , contiguous                :: weight(:)
-        complex(TKC)                                                :: mean
+        use pm_kind, only: TKG => CK3
+        complex(TKG)    , intent(in)    , contiguous                :: sample(:,:)
+        real(TKG)       , intent(in)    , contiguous                :: weight(:)
+        complex(TKG)                                                :: mean
     end function
 #endif
 
@@ -915,10 +915,10 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMeanALL_WTR_D2_CK2
 #endif
-        use pm_kind, only: TKC => CK2
-        complex(TKC)    , intent(in)    , contiguous                :: sample(:,:)
-        real(TKC)       , intent(in)    , contiguous                :: weight(:)
-        complex(TKC)                                                :: mean
+        use pm_kind, only: TKG => CK2
+        complex(TKG)    , intent(in)    , contiguous                :: sample(:,:)
+        real(TKG)       , intent(in)    , contiguous                :: weight(:)
+        complex(TKG)                                                :: mean
     end function
 #endif
 
@@ -927,10 +927,10 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMeanALL_WTR_D2_CK1
 #endif
-        use pm_kind, only: TKC => CK1
-        complex(TKC)    , intent(in)    , contiguous                :: sample(:,:)
-        real(TKC)       , intent(in)    , contiguous                :: weight(:)
-        complex(TKC)                                                :: mean
+        use pm_kind, only: TKG => CK1
+        complex(TKG)    , intent(in)    , contiguous                :: sample(:,:)
+        real(TKG)       , intent(in)    , contiguous                :: weight(:)
+        complex(TKG)                                                :: mean
     end function
 #endif
 
@@ -941,10 +941,10 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMeanALL_WTR_D2_RK5
 #endif
-        use pm_kind, only: TKC => RK5
-        real(TKC)       , intent(in)    , contiguous                :: sample(:,:)
-        real(TKC)       , intent(in)    , contiguous                :: weight(:)
-        real(TKC)                                                   :: mean
+        use pm_kind, only: TKG => RK5
+        real(TKG)       , intent(in)    , contiguous                :: sample(:,:)
+        real(TKG)       , intent(in)    , contiguous                :: weight(:)
+        real(TKG)                                                   :: mean
     end function
 #endif
 
@@ -953,10 +953,10 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMeanALL_WTR_D2_RK4
 #endif
-        use pm_kind, only: TKC => RK4
-        real(TKC)       , intent(in)    , contiguous                :: sample(:,:)
-        real(TKC)       , intent(in)    , contiguous                :: weight(:)
-        real(TKC)                                                   :: mean
+        use pm_kind, only: TKG => RK4
+        real(TKG)       , intent(in)    , contiguous                :: sample(:,:)
+        real(TKG)       , intent(in)    , contiguous                :: weight(:)
+        real(TKG)                                                   :: mean
     end function
 #endif
 
@@ -965,10 +965,10 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMeanALL_WTR_D2_RK3
 #endif
-        use pm_kind, only: TKC => RK3
-        real(TKC)       , intent(in)    , contiguous                :: sample(:,:)
-        real(TKC)       , intent(in)    , contiguous                :: weight(:)
-        real(TKC)                                                   :: mean
+        use pm_kind, only: TKG => RK3
+        real(TKG)       , intent(in)    , contiguous                :: sample(:,:)
+        real(TKG)       , intent(in)    , contiguous                :: weight(:)
+        real(TKG)                                                   :: mean
     end function
 #endif
 
@@ -977,10 +977,10 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMeanALL_WTR_D2_RK2
 #endif
-        use pm_kind, only: TKC => RK2
-        real(TKC)       , intent(in)    , contiguous                :: sample(:,:)
-        real(TKC)       , intent(in)    , contiguous                :: weight(:)
-        real(TKC)                                                   :: mean
+        use pm_kind, only: TKG => RK2
+        real(TKG)       , intent(in)    , contiguous                :: sample(:,:)
+        real(TKG)       , intent(in)    , contiguous                :: weight(:)
+        real(TKG)                                                   :: mean
     end function
 #endif
 
@@ -989,10 +989,10 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMeanALL_WTR_D2_RK1
 #endif
-        use pm_kind, only: TKC => RK1
-        real(TKC)       , intent(in)    , contiguous                :: sample(:,:)
-        real(TKC)       , intent(in)    , contiguous                :: weight(:)
-        real(TKC)                                                   :: mean
+        use pm_kind, only: TKG => RK1
+        real(TKG)       , intent(in)    , contiguous                :: sample(:,:)
+        real(TKG)       , intent(in)    , contiguous                :: weight(:)
+        real(TKG)                                                   :: mean
     end function
 #endif
 
@@ -1019,10 +1019,10 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMeanDIM_WNO_D1_CK5
 #endif
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
         integer(IK)     , intent(in)                                :: dim
-        complex(TKC)    , intent(in)    , contiguous                :: sample(:)
-        complex(TKC)                                                :: mean
+        complex(TKG)    , intent(in)    , contiguous                :: sample(:)
+        complex(TKG)                                                :: mean
     end function
 #endif
 
@@ -1031,10 +1031,10 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMeanDIM_WNO_D1_CK4
 #endif
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
         integer(IK)     , intent(in)                                :: dim
-        complex(TKC)    , intent(in)    , contiguous                :: sample(:)
-        complex(TKC)                                                :: mean
+        complex(TKG)    , intent(in)    , contiguous                :: sample(:)
+        complex(TKG)                                                :: mean
     end function
 #endif
 
@@ -1043,10 +1043,10 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMeanDIM_WNO_D1_CK3
 #endif
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
         integer(IK)     , intent(in)                                :: dim
-        complex(TKC)    , intent(in)    , contiguous                :: sample(:)
-        complex(TKC)                                                :: mean
+        complex(TKG)    , intent(in)    , contiguous                :: sample(:)
+        complex(TKG)                                                :: mean
     end function
 #endif
 
@@ -1055,10 +1055,10 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMeanDIM_WNO_D1_CK2
 #endif
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
         integer(IK)     , intent(in)                                :: dim
-        complex(TKC)    , intent(in)    , contiguous                :: sample(:)
-        complex(TKC)                                                :: mean
+        complex(TKG)    , intent(in)    , contiguous                :: sample(:)
+        complex(TKG)                                                :: mean
     end function
 #endif
 
@@ -1067,10 +1067,10 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMeanDIM_WNO_D1_CK1
 #endif
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
         integer(IK)     , intent(in)                                :: dim
-        complex(TKC)    , intent(in)    , contiguous                :: sample(:)
-        complex(TKC)                                                :: mean
+        complex(TKG)    , intent(in)    , contiguous                :: sample(:)
+        complex(TKG)                                                :: mean
     end function
 #endif
 
@@ -1081,10 +1081,10 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMeanDIM_WNO_D1_RK5
 #endif
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
         integer(IK)     , intent(in)                                :: dim
-        real(TKC)       , intent(in)    , contiguous                :: sample(:)
-        real(TKC)                                                   :: mean
+        real(TKG)       , intent(in)    , contiguous                :: sample(:)
+        real(TKG)                                                   :: mean
     end function
 #endif
 
@@ -1093,10 +1093,10 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMeanDIM_WNO_D1_RK4
 #endif
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
         integer(IK)     , intent(in)                                :: dim
-        real(TKC)       , intent(in)    , contiguous                :: sample(:)
-        real(TKC)                                                   :: mean
+        real(TKG)       , intent(in)    , contiguous                :: sample(:)
+        real(TKG)                                                   :: mean
     end function
 #endif
 
@@ -1105,10 +1105,10 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMeanDIM_WNO_D1_RK3
 #endif
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
         integer(IK)     , intent(in)                                :: dim
-        real(TKC)       , intent(in)    , contiguous                :: sample(:)
-        real(TKC)                                                   :: mean
+        real(TKG)       , intent(in)    , contiguous                :: sample(:)
+        real(TKG)                                                   :: mean
     end function
 #endif
 
@@ -1117,10 +1117,10 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMeanDIM_WNO_D1_RK2
 #endif
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
         integer(IK)     , intent(in)                                :: dim
-        real(TKC)       , intent(in)    , contiguous                :: sample(:)
-        real(TKC)                                                   :: mean
+        real(TKG)       , intent(in)    , contiguous                :: sample(:)
+        real(TKG)                                                   :: mean
     end function
 #endif
 
@@ -1129,10 +1129,10 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMeanDIM_WNO_D1_RK1
 #endif
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
         integer(IK)     , intent(in)                                :: dim
-        real(TKC)       , intent(in)    , contiguous                :: sample(:)
-        real(TKC)                                                   :: mean
+        real(TKG)       , intent(in)    , contiguous                :: sample(:)
+        real(TKG)                                                   :: mean
     end function
 #endif
 
@@ -1149,11 +1149,11 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMeanDIM_WTI_D1_CK5
 #endif
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
         integer(IK)     , intent(in)                                :: dim
-        complex(TKC)    , intent(in)    , contiguous                :: sample(:)
+        complex(TKG)    , intent(in)    , contiguous                :: sample(:)
         integer(IK)     , intent(in)    , contiguous                :: weight(:)
-        complex(TKC)                                                :: mean
+        complex(TKG)                                                :: mean
     end function
 #endif
 
@@ -1162,11 +1162,11 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMeanDIM_WTI_D1_CK4
 #endif
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
         integer(IK)     , intent(in)                                :: dim
-        complex(TKC)    , intent(in)    , contiguous                :: sample(:)
+        complex(TKG)    , intent(in)    , contiguous                :: sample(:)
         integer(IK)     , intent(in)    , contiguous                :: weight(:)
-        complex(TKC)                                                :: mean
+        complex(TKG)                                                :: mean
     end function
 #endif
 
@@ -1175,11 +1175,11 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMeanDIM_WTI_D1_CK3
 #endif
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
         integer(IK)     , intent(in)                                :: dim
-        complex(TKC)    , intent(in)    , contiguous                :: sample(:)
+        complex(TKG)    , intent(in)    , contiguous                :: sample(:)
         integer(IK)     , intent(in)    , contiguous                :: weight(:)
-        complex(TKC)                                                :: mean
+        complex(TKG)                                                :: mean
     end function
 #endif
 
@@ -1188,11 +1188,11 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMeanDIM_WTI_D1_CK2
 #endif
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
         integer(IK)     , intent(in)                                :: dim
-        complex(TKC)    , intent(in)    , contiguous                :: sample(:)
+        complex(TKG)    , intent(in)    , contiguous                :: sample(:)
         integer(IK)     , intent(in)    , contiguous                :: weight(:)
-        complex(TKC)                                                :: mean
+        complex(TKG)                                                :: mean
     end function
 #endif
 
@@ -1201,11 +1201,11 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMeanDIM_WTI_D1_CK1
 #endif
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
         integer(IK)     , intent(in)                                :: dim
-        complex(TKC)    , intent(in)    , contiguous                :: sample(:)
+        complex(TKG)    , intent(in)    , contiguous                :: sample(:)
         integer(IK)     , intent(in)    , contiguous                :: weight(:)
-        complex(TKC)                                                :: mean
+        complex(TKG)                                                :: mean
     end function
 #endif
 
@@ -1216,11 +1216,11 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMeanDIM_WTI_D1_RK5
 #endif
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
         integer(IK)     , intent(in)                                :: dim
-        real(TKC)       , intent(in)    , contiguous                :: sample(:)
+        real(TKG)       , intent(in)    , contiguous                :: sample(:)
         integer(IK)     , intent(in)    , contiguous                :: weight(:)
-        real(TKC)                                                   :: mean
+        real(TKG)                                                   :: mean
     end function
 #endif
 
@@ -1229,11 +1229,11 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMeanDIM_WTI_D1_RK4
 #endif
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
         integer(IK)     , intent(in)                                :: dim
-        real(TKC)       , intent(in)    , contiguous                :: sample(:)
+        real(TKG)       , intent(in)    , contiguous                :: sample(:)
         integer(IK)     , intent(in)    , contiguous                :: weight(:)
-        real(TKC)                                                   :: mean
+        real(TKG)                                                   :: mean
     end function
 #endif
 
@@ -1242,11 +1242,11 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMeanDIM_WTI_D1_RK3
 #endif
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
         integer(IK)     , intent(in)                                :: dim
-        real(TKC)       , intent(in)    , contiguous                :: sample(:)
+        real(TKG)       , intent(in)    , contiguous                :: sample(:)
         integer(IK)     , intent(in)    , contiguous                :: weight(:)
-        real(TKC)                                                   :: mean
+        real(TKG)                                                   :: mean
     end function
 #endif
 
@@ -1255,11 +1255,11 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMeanDIM_WTI_D1_RK2
 #endif
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
         integer(IK)     , intent(in)                                :: dim
-        real(TKC)       , intent(in)    , contiguous                :: sample(:)
+        real(TKG)       , intent(in)    , contiguous                :: sample(:)
         integer(IK)     , intent(in)    , contiguous                :: weight(:)
-        real(TKC)                                                   :: mean
+        real(TKG)                                                   :: mean
     end function
 #endif
 
@@ -1268,11 +1268,11 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMeanDIM_WTI_D1_RK1
 #endif
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
         integer(IK)     , intent(in)                                :: dim
-        real(TKC)       , intent(in)    , contiguous                :: sample(:)
+        real(TKG)       , intent(in)    , contiguous                :: sample(:)
         integer(IK)     , intent(in)    , contiguous                :: weight(:)
-        real(TKC)                                                   :: mean
+        real(TKG)                                                   :: mean
     end function
 #endif
 
@@ -1289,11 +1289,11 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMeanDIM_WTR_D1_CK5
 #endif
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
         integer(IK)     , intent(in)                                :: dim
-        complex(TKC)    , intent(in)    , contiguous                :: sample(:)
-        real(TKC)       , intent(in)    , contiguous                :: weight(:)
-        complex(TKC)                                                :: mean
+        complex(TKG)    , intent(in)    , contiguous                :: sample(:)
+        real(TKG)       , intent(in)    , contiguous                :: weight(:)
+        complex(TKG)                                                :: mean
     end function
 #endif
 
@@ -1302,11 +1302,11 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMeanDIM_WTR_D1_CK4
 #endif
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
         integer(IK)     , intent(in)                                :: dim
-        complex(TKC)    , intent(in)    , contiguous                :: sample(:)
-        real(TKC)       , intent(in)    , contiguous                :: weight(:)
-        complex(TKC)                                                :: mean
+        complex(TKG)    , intent(in)    , contiguous                :: sample(:)
+        real(TKG)       , intent(in)    , contiguous                :: weight(:)
+        complex(TKG)                                                :: mean
     end function
 #endif
 
@@ -1315,11 +1315,11 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMeanDIM_WTR_D1_CK3
 #endif
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
         integer(IK)     , intent(in)                                :: dim
-        complex(TKC)    , intent(in)    , contiguous                :: sample(:)
-        real(TKC)       , intent(in)    , contiguous                :: weight(:)
-        complex(TKC)                                                :: mean
+        complex(TKG)    , intent(in)    , contiguous                :: sample(:)
+        real(TKG)       , intent(in)    , contiguous                :: weight(:)
+        complex(TKG)                                                :: mean
     end function
 #endif
 
@@ -1328,11 +1328,11 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMeanDIM_WTR_D1_CK2
 #endif
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
         integer(IK)     , intent(in)                                :: dim
-        complex(TKC)    , intent(in)    , contiguous                :: sample(:)
-        real(TKC)       , intent(in)    , contiguous                :: weight(:)
-        complex(TKC)                                                :: mean
+        complex(TKG)    , intent(in)    , contiguous                :: sample(:)
+        real(TKG)       , intent(in)    , contiguous                :: weight(:)
+        complex(TKG)                                                :: mean
     end function
 #endif
 
@@ -1341,11 +1341,11 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMeanDIM_WTR_D1_CK1
 #endif
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
         integer(IK)     , intent(in)                                :: dim
-        complex(TKC)    , intent(in)    , contiguous                :: sample(:)
-        real(TKC)       , intent(in)    , contiguous                :: weight(:)
-        complex(TKC)                                                :: mean
+        complex(TKG)    , intent(in)    , contiguous                :: sample(:)
+        real(TKG)       , intent(in)    , contiguous                :: weight(:)
+        complex(TKG)                                                :: mean
     end function
 #endif
 
@@ -1356,11 +1356,11 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMeanDIM_WTR_D1_RK5
 #endif
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
         integer(IK)     , intent(in)                                :: dim
-        real(TKC)       , intent(in)    , contiguous                :: sample(:)
-        real(TKC)       , intent(in)    , contiguous                :: weight(:)
-        real(TKC)                                                   :: mean
+        real(TKG)       , intent(in)    , contiguous                :: sample(:)
+        real(TKG)       , intent(in)    , contiguous                :: weight(:)
+        real(TKG)                                                   :: mean
     end function
 #endif
 
@@ -1369,11 +1369,11 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMeanDIM_WTR_D1_RK4
 #endif
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
         integer(IK)     , intent(in)                                :: dim
-        real(TKC)       , intent(in)    , contiguous                :: sample(:)
-        real(TKC)       , intent(in)    , contiguous                :: weight(:)
-        real(TKC)                                                   :: mean
+        real(TKG)       , intent(in)    , contiguous                :: sample(:)
+        real(TKG)       , intent(in)    , contiguous                :: weight(:)
+        real(TKG)                                                   :: mean
     end function
 #endif
 
@@ -1382,11 +1382,11 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMeanDIM_WTR_D1_RK3
 #endif
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
         integer(IK)     , intent(in)                                :: dim
-        real(TKC)       , intent(in)    , contiguous                :: sample(:)
-        real(TKC)       , intent(in)    , contiguous                :: weight(:)
-        real(TKC)                                                   :: mean
+        real(TKG)       , intent(in)    , contiguous                :: sample(:)
+        real(TKG)       , intent(in)    , contiguous                :: weight(:)
+        real(TKG)                                                   :: mean
     end function
 #endif
 
@@ -1395,11 +1395,11 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMeanDIM_WTR_D1_RK2
 #endif
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
         integer(IK)     , intent(in)                                :: dim
-        real(TKC)       , intent(in)    , contiguous                :: sample(:)
-        real(TKC)       , intent(in)    , contiguous                :: weight(:)
-        real(TKC)                                                   :: mean
+        real(TKG)       , intent(in)    , contiguous                :: sample(:)
+        real(TKG)       , intent(in)    , contiguous                :: weight(:)
+        real(TKG)                                                   :: mean
     end function
 #endif
 
@@ -1408,11 +1408,11 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMeanDIM_WTR_D1_RK1
 #endif
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
         integer(IK)     , intent(in)                                :: dim
-        real(TKC)       , intent(in)    , contiguous                :: sample(:)
-        real(TKC)       , intent(in)    , contiguous                :: weight(:)
-        real(TKC)                                                   :: mean
+        real(TKG)       , intent(in)    , contiguous                :: sample(:)
+        real(TKG)       , intent(in)    , contiguous                :: weight(:)
+        real(TKG)                                                   :: mean
     end function
 #endif
 
@@ -1439,10 +1439,10 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMeanDIM_WNO_D2_CK5
 #endif
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
         integer(IK)     , intent(in)                                :: dim
-        complex(TKC)    , intent(in)    , contiguous                :: sample(:,:)
-        complex(TKC)                                                :: mean(size(sample, 3 - dim, IK))
+        complex(TKG)    , intent(in)    , contiguous                :: sample(:,:)
+        complex(TKG)                                                :: mean(size(sample, 3 - dim, IK))
     end function
 #endif
 
@@ -1451,10 +1451,10 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMeanDIM_WNO_D2_CK4
 #endif
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
         integer(IK)     , intent(in)                                :: dim
-        complex(TKC)    , intent(in)    , contiguous                :: sample(:,:)
-        complex(TKC)                                                :: mean(size(sample, 3 - dim, IK))
+        complex(TKG)    , intent(in)    , contiguous                :: sample(:,:)
+        complex(TKG)                                                :: mean(size(sample, 3 - dim, IK))
     end function
 #endif
 
@@ -1463,10 +1463,10 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMeanDIM_WNO_D2_CK3
 #endif
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
         integer(IK)     , intent(in)                                :: dim
-        complex(TKC)    , intent(in)    , contiguous                :: sample(:,:)
-        complex(TKC)                                                :: mean(size(sample, 3 - dim, IK))
+        complex(TKG)    , intent(in)    , contiguous                :: sample(:,:)
+        complex(TKG)                                                :: mean(size(sample, 3 - dim, IK))
     end function
 #endif
 
@@ -1475,10 +1475,10 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMeanDIM_WNO_D2_CK2
 #endif
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
         integer(IK)     , intent(in)                                :: dim
-        complex(TKC)    , intent(in)    , contiguous                :: sample(:,:)
-        complex(TKC)                                                :: mean(size(sample, 3 - dim, IK))
+        complex(TKG)    , intent(in)    , contiguous                :: sample(:,:)
+        complex(TKG)                                                :: mean(size(sample, 3 - dim, IK))
     end function
 #endif
 
@@ -1487,10 +1487,10 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMeanDIM_WNO_D2_CK1
 #endif
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
         integer(IK)     , intent(in)                                :: dim
-        complex(TKC)    , intent(in)    , contiguous                :: sample(:,:)
-        complex(TKC)                                                :: mean(size(sample, 3 - dim, IK))
+        complex(TKG)    , intent(in)    , contiguous                :: sample(:,:)
+        complex(TKG)                                                :: mean(size(sample, 3 - dim, IK))
     end function
 #endif
 
@@ -1501,10 +1501,10 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMeanDIM_WNO_D2_RK5
 #endif
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
         integer(IK)     , intent(in)                                :: dim
-        real(TKC)       , intent(in)    , contiguous                :: sample(:,:)
-        real(TKC)                                                   :: mean(size(sample, 3 - dim, IK))
+        real(TKG)       , intent(in)    , contiguous                :: sample(:,:)
+        real(TKG)                                                   :: mean(size(sample, 3 - dim, IK))
     end function
 #endif
 
@@ -1513,10 +1513,10 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMeanDIM_WNO_D2_RK4
 #endif
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
         integer(IK)     , intent(in)                                :: dim
-        real(TKC)       , intent(in)    , contiguous                :: sample(:,:)
-        real(TKC)                                                   :: mean(size(sample, 3 - dim, IK))
+        real(TKG)       , intent(in)    , contiguous                :: sample(:,:)
+        real(TKG)                                                   :: mean(size(sample, 3 - dim, IK))
     end function
 #endif
 
@@ -1525,10 +1525,10 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMeanDIM_WNO_D2_RK3
 #endif
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
         integer(IK)     , intent(in)                                :: dim
-        real(TKC)       , intent(in)    , contiguous                :: sample(:,:)
-        real(TKC)                                                   :: mean(size(sample, 3 - dim, IK))
+        real(TKG)       , intent(in)    , contiguous                :: sample(:,:)
+        real(TKG)                                                   :: mean(size(sample, 3 - dim, IK))
     end function
 #endif
 
@@ -1537,10 +1537,10 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMeanDIM_WNO_D2_RK2
 #endif
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
         integer(IK)     , intent(in)                                :: dim
-        real(TKC)       , intent(in)    , contiguous                :: sample(:,:)
-        real(TKC)                                                   :: mean(size(sample, 3 - dim, IK))
+        real(TKG)       , intent(in)    , contiguous                :: sample(:,:)
+        real(TKG)                                                   :: mean(size(sample, 3 - dim, IK))
     end function
 #endif
 
@@ -1549,10 +1549,10 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMeanDIM_WNO_D2_RK1
 #endif
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
         integer(IK)     , intent(in)                                :: dim
-        real(TKC)       , intent(in)    , contiguous                :: sample(:,:)
-        real(TKC)                                                   :: mean(size(sample, 3 - dim, IK))
+        real(TKG)       , intent(in)    , contiguous                :: sample(:,:)
+        real(TKG)                                                   :: mean(size(sample, 3 - dim, IK))
     end function
 #endif
 
@@ -1569,11 +1569,11 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMeanDIM_WTI_D2_CK5
 #endif
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
         integer(IK)     , intent(in)                                :: dim
-        complex(TKC)    , intent(in)    , contiguous                :: sample(:,:)
+        complex(TKG)    , intent(in)    , contiguous                :: sample(:,:)
         integer(IK)     , intent(in)    , contiguous                :: weight(:)
-        complex(TKC)                                                :: mean(size(sample, 3 - dim, IK))
+        complex(TKG)                                                :: mean(size(sample, 3 - dim, IK))
     end function
 #endif
 
@@ -1582,11 +1582,11 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMeanDIM_WTI_D2_CK4
 #endif
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
         integer(IK)     , intent(in)                                :: dim
-        complex(TKC)    , intent(in)    , contiguous                :: sample(:,:)
+        complex(TKG)    , intent(in)    , contiguous                :: sample(:,:)
         integer(IK)     , intent(in)    , contiguous                :: weight(:)
-        complex(TKC)                                                :: mean(size(sample, 3 - dim, IK))
+        complex(TKG)                                                :: mean(size(sample, 3 - dim, IK))
     end function
 #endif
 
@@ -1595,11 +1595,11 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMeanDIM_WTI_D2_CK3
 #endif
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
         integer(IK)     , intent(in)                                :: dim
-        complex(TKC)    , intent(in)    , contiguous                :: sample(:,:)
+        complex(TKG)    , intent(in)    , contiguous                :: sample(:,:)
         integer(IK)     , intent(in)    , contiguous                :: weight(:)
-        complex(TKC)                                                :: mean(size(sample, 3 - dim, IK))
+        complex(TKG)                                                :: mean(size(sample, 3 - dim, IK))
     end function
 #endif
 
@@ -1608,11 +1608,11 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMeanDIM_WTI_D2_CK2
 #endif
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
         integer(IK)     , intent(in)                                :: dim
-        complex(TKC)    , intent(in)    , contiguous                :: sample(:,:)
+        complex(TKG)    , intent(in)    , contiguous                :: sample(:,:)
         integer(IK)     , intent(in)    , contiguous                :: weight(:)
-        complex(TKC)                                                :: mean(size(sample, 3 - dim, IK))
+        complex(TKG)                                                :: mean(size(sample, 3 - dim, IK))
     end function
 #endif
 
@@ -1621,11 +1621,11 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMeanDIM_WTI_D2_CK1
 #endif
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
         integer(IK)     , intent(in)                                :: dim
-        complex(TKC)    , intent(in)    , contiguous                :: sample(:,:)
+        complex(TKG)    , intent(in)    , contiguous                :: sample(:,:)
         integer(IK)     , intent(in)    , contiguous                :: weight(:)
-        complex(TKC)                                                :: mean(size(sample, 3 - dim, IK))
+        complex(TKG)                                                :: mean(size(sample, 3 - dim, IK))
     end function
 #endif
 
@@ -1636,11 +1636,11 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMeanDIM_WTI_D2_RK5
 #endif
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
         integer(IK)     , intent(in)                                :: dim
-        real(TKC)       , intent(in)    , contiguous                :: sample(:,:)
+        real(TKG)       , intent(in)    , contiguous                :: sample(:,:)
         integer(IK)     , intent(in)    , contiguous                :: weight(:)
-        real(TKC)                                                   :: mean(size(sample, 3 - dim, IK))
+        real(TKG)                                                   :: mean(size(sample, 3 - dim, IK))
     end function
 #endif
 
@@ -1649,11 +1649,11 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMeanDIM_WTI_D2_RK4
 #endif
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
         integer(IK)     , intent(in)                                :: dim
-        real(TKC)       , intent(in)    , contiguous                :: sample(:,:)
+        real(TKG)       , intent(in)    , contiguous                :: sample(:,:)
         integer(IK)     , intent(in)    , contiguous                :: weight(:)
-        real(TKC)                                                   :: mean(size(sample, 3 - dim, IK))
+        real(TKG)                                                   :: mean(size(sample, 3 - dim, IK))
     end function
 #endif
 
@@ -1662,11 +1662,11 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMeanDIM_WTI_D2_RK3
 #endif
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
         integer(IK)     , intent(in)                                :: dim
-        real(TKC)       , intent(in)    , contiguous                :: sample(:,:)
+        real(TKG)       , intent(in)    , contiguous                :: sample(:,:)
         integer(IK)     , intent(in)    , contiguous                :: weight(:)
-        real(TKC)                                                   :: mean(size(sample, 3 - dim, IK))
+        real(TKG)                                                   :: mean(size(sample, 3 - dim, IK))
     end function
 #endif
 
@@ -1675,11 +1675,11 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMeanDIM_WTI_D2_RK2
 #endif
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
         integer(IK)     , intent(in)                                :: dim
-        real(TKC)       , intent(in)    , contiguous                :: sample(:,:)
+        real(TKG)       , intent(in)    , contiguous                :: sample(:,:)
         integer(IK)     , intent(in)    , contiguous                :: weight(:)
-        real(TKC)                                                   :: mean(size(sample, 3 - dim, IK))
+        real(TKG)                                                   :: mean(size(sample, 3 - dim, IK))
     end function
 #endif
 
@@ -1688,11 +1688,11 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMeanDIM_WTI_D2_RK1
 #endif
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
         integer(IK)     , intent(in)                                :: dim
-        real(TKC)       , intent(in)    , contiguous                :: sample(:,:)
+        real(TKG)       , intent(in)    , contiguous                :: sample(:,:)
         integer(IK)     , intent(in)    , contiguous                :: weight(:)
-        real(TKC)                                                   :: mean(size(sample, 3 - dim, IK))
+        real(TKG)                                                   :: mean(size(sample, 3 - dim, IK))
     end function
 #endif
 
@@ -1709,11 +1709,11 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMeanDIM_WTR_D2_CK5
 #endif
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
         integer(IK)     , intent(in)                                :: dim
-        complex(TKC)    , intent(in)    , contiguous                :: sample(:,:)
-        real(TKC)       , intent(in)    , contiguous                :: weight(:)
-        complex(TKC)                                                :: mean(size(sample, 3 - dim, IK))
+        complex(TKG)    , intent(in)    , contiguous                :: sample(:,:)
+        real(TKG)       , intent(in)    , contiguous                :: weight(:)
+        complex(TKG)                                                :: mean(size(sample, 3 - dim, IK))
     end function
 #endif
 
@@ -1722,11 +1722,11 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMeanDIM_WTR_D2_CK4
 #endif
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
         integer(IK)     , intent(in)                                :: dim
-        complex(TKC)    , intent(in)    , contiguous                :: sample(:,:)
-        real(TKC)       , intent(in)    , contiguous                :: weight(:)
-        complex(TKC)                                                :: mean(size(sample, 3 - dim, IK))
+        complex(TKG)    , intent(in)    , contiguous                :: sample(:,:)
+        real(TKG)       , intent(in)    , contiguous                :: weight(:)
+        complex(TKG)                                                :: mean(size(sample, 3 - dim, IK))
     end function
 #endif
 
@@ -1735,11 +1735,11 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMeanDIM_WTR_D2_CK3
 #endif
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
         integer(IK)     , intent(in)                                :: dim
-        complex(TKC)    , intent(in)    , contiguous                :: sample(:,:)
-        real(TKC)       , intent(in)    , contiguous                :: weight(:)
-        complex(TKC)                                                :: mean(size(sample, 3 - dim, IK))
+        complex(TKG)    , intent(in)    , contiguous                :: sample(:,:)
+        real(TKG)       , intent(in)    , contiguous                :: weight(:)
+        complex(TKG)                                                :: mean(size(sample, 3 - dim, IK))
     end function
 #endif
 
@@ -1748,11 +1748,11 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMeanDIM_WTR_D2_CK2
 #endif
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
         integer(IK)     , intent(in)                                :: dim
-        complex(TKC)    , intent(in)    , contiguous                :: sample(:,:)
-        real(TKC)       , intent(in)    , contiguous                :: weight(:)
-        complex(TKC)                                                :: mean(size(sample, 3 - dim, IK))
+        complex(TKG)    , intent(in)    , contiguous                :: sample(:,:)
+        real(TKG)       , intent(in)    , contiguous                :: weight(:)
+        complex(TKG)                                                :: mean(size(sample, 3 - dim, IK))
     end function
 #endif
 
@@ -1761,11 +1761,11 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMeanDIM_WTR_D2_CK1
 #endif
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
         integer(IK)     , intent(in)                                :: dim
-        complex(TKC)    , intent(in)    , contiguous                :: sample(:,:)
-        real(TKC)       , intent(in)    , contiguous                :: weight(:)
-        complex(TKC)                                                :: mean(size(sample, 3 - dim, IK))
+        complex(TKG)    , intent(in)    , contiguous                :: sample(:,:)
+        real(TKG)       , intent(in)    , contiguous                :: weight(:)
+        complex(TKG)                                                :: mean(size(sample, 3 - dim, IK))
     end function
 #endif
 
@@ -1776,11 +1776,11 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMeanDIM_WTR_D2_RK5
 #endif
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
         integer(IK)     , intent(in)                                :: dim
-        real(TKC)       , intent(in)    , contiguous                :: sample(:,:)
-        real(TKC)       , intent(in)    , contiguous                :: weight(:)
-        real(TKC)                                                   :: mean(size(sample, 3 - dim, IK))
+        real(TKG)       , intent(in)    , contiguous                :: sample(:,:)
+        real(TKG)       , intent(in)    , contiguous                :: weight(:)
+        real(TKG)                                                   :: mean(size(sample, 3 - dim, IK))
     end function
 #endif
 
@@ -1789,11 +1789,11 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMeanDIM_WTR_D2_RK4
 #endif
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
         integer(IK)     , intent(in)                                :: dim
-        real(TKC)       , intent(in)    , contiguous                :: sample(:,:)
-        real(TKC)       , intent(in)    , contiguous                :: weight(:)
-        real(TKC)                                                   :: mean(size(sample, 3 - dim, IK))
+        real(TKG)       , intent(in)    , contiguous                :: sample(:,:)
+        real(TKG)       , intent(in)    , contiguous                :: weight(:)
+        real(TKG)                                                   :: mean(size(sample, 3 - dim, IK))
     end function
 #endif
 
@@ -1802,11 +1802,11 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMeanDIM_WTR_D2_RK3
 #endif
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
         integer(IK)     , intent(in)                                :: dim
-        real(TKC)       , intent(in)    , contiguous                :: sample(:,:)
-        real(TKC)       , intent(in)    , contiguous                :: weight(:)
-        real(TKC)                                                   :: mean(size(sample, 3 - dim, IK))
+        real(TKG)       , intent(in)    , contiguous                :: sample(:,:)
+        real(TKG)       , intent(in)    , contiguous                :: weight(:)
+        real(TKG)                                                   :: mean(size(sample, 3 - dim, IK))
     end function
 #endif
 
@@ -1815,11 +1815,11 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMeanDIM_WTR_D2_RK2
 #endif
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
         integer(IK)     , intent(in)                                :: dim
-        real(TKC)       , intent(in)    , contiguous                :: sample(:,:)
-        real(TKC)       , intent(in)    , contiguous                :: weight(:)
-        real(TKC)                                                   :: mean(size(sample, 3 - dim, IK))
+        real(TKG)       , intent(in)    , contiguous                :: sample(:,:)
+        real(TKG)       , intent(in)    , contiguous                :: weight(:)
+        real(TKG)                                                   :: mean(size(sample, 3 - dim, IK))
     end function
 #endif
 
@@ -1828,11 +1828,11 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMeanDIM_WTR_D2_RK1
 #endif
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
         integer(IK)     , intent(in)                                :: dim
-        real(TKC)       , intent(in)    , contiguous                :: sample(:,:)
-        real(TKC)       , intent(in)    , contiguous                :: weight(:)
-        real(TKC)                                                   :: mean(size(sample, 3 - dim, IK))
+        real(TKG)       , intent(in)    , contiguous                :: sample(:,:)
+        real(TKG)       , intent(in)    , contiguous                :: weight(:)
+        real(TKG)                                                   :: mean(size(sample, 3 - dim, IK))
     end function
 #endif
 
@@ -2018,9 +2018,9 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMeanALL_WNO_XY_CK5
 #endif
-        use pm_kind, only: TKC => CK5
-        complex(TKC)    , intent(in)    , contiguous                :: x(:), y(:)
-        complex(TKC)    , intent(out)                               :: mean(2)
+        use pm_kind, only: TKG => CK5
+        complex(TKG)    , intent(in)    , contiguous                :: x(:), y(:)
+        complex(TKG)    , intent(out)                               :: mean(2)
     end subroutine
 #endif
 
@@ -2029,9 +2029,9 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMeanALL_WNO_XY_CK4
 #endif
-        use pm_kind, only: TKC => CK4
-        complex(TKC)    , intent(in)    , contiguous                :: x(:), y(:)
-        complex(TKC)    , intent(out)                               :: mean(2)
+        use pm_kind, only: TKG => CK4
+        complex(TKG)    , intent(in)    , contiguous                :: x(:), y(:)
+        complex(TKG)    , intent(out)                               :: mean(2)
     end subroutine
 #endif
 
@@ -2040,9 +2040,9 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMeanALL_WNO_XY_CK3
 #endif
-        use pm_kind, only: TKC => CK3
-        complex(TKC)    , intent(in)    , contiguous                :: x(:), y(:)
-        complex(TKC)    , intent(out)                               :: mean(2)
+        use pm_kind, only: TKG => CK3
+        complex(TKG)    , intent(in)    , contiguous                :: x(:), y(:)
+        complex(TKG)    , intent(out)                               :: mean(2)
     end subroutine
 #endif
 
@@ -2051,9 +2051,9 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMeanALL_WNO_XY_CK2
 #endif
-        use pm_kind, only: TKC => CK2
-        complex(TKC)    , intent(in)    , contiguous                :: x(:), y(:)
-        complex(TKC)    , intent(out)                               :: mean(2)
+        use pm_kind, only: TKG => CK2
+        complex(TKG)    , intent(in)    , contiguous                :: x(:), y(:)
+        complex(TKG)    , intent(out)                               :: mean(2)
     end subroutine
 #endif
 
@@ -2062,9 +2062,9 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMeanALL_WNO_XY_CK1
 #endif
-        use pm_kind, only: TKC => CK1
-        complex(TKC)    , intent(in)    , contiguous                :: x(:), y(:)
-        complex(TKC)    , intent(out)                               :: mean(2)
+        use pm_kind, only: TKG => CK1
+        complex(TKG)    , intent(in)    , contiguous                :: x(:), y(:)
+        complex(TKG)    , intent(out)                               :: mean(2)
     end subroutine
 #endif
 
@@ -2075,9 +2075,9 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMeanALL_WNO_XY_RK5
 #endif
-        use pm_kind, only: TKC => RK5
-        real(TKC)       , intent(in)    , contiguous                :: x(:), y(:)
-        real(TKC)       , intent(out)                               :: mean(2)
+        use pm_kind, only: TKG => RK5
+        real(TKG)       , intent(in)    , contiguous                :: x(:), y(:)
+        real(TKG)       , intent(out)                               :: mean(2)
     end subroutine
 #endif
 
@@ -2086,9 +2086,9 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMeanALL_WNO_XY_RK4
 #endif
-        use pm_kind, only: TKC => RK4
-        real(TKC)       , intent(in)    , contiguous                :: x(:), y(:)
-        real(TKC)       , intent(out)                               :: mean(2)
+        use pm_kind, only: TKG => RK4
+        real(TKG)       , intent(in)    , contiguous                :: x(:), y(:)
+        real(TKG)       , intent(out)                               :: mean(2)
     end subroutine
 #endif
 
@@ -2097,9 +2097,9 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMeanALL_WNO_XY_RK3
 #endif
-        use pm_kind, only: TKC => RK3
-        real(TKC)       , intent(in)    , contiguous                :: x(:), y(:)
-        real(TKC)       , intent(out)                               :: mean(2)
+        use pm_kind, only: TKG => RK3
+        real(TKG)       , intent(in)    , contiguous                :: x(:), y(:)
+        real(TKG)       , intent(out)                               :: mean(2)
     end subroutine
 #endif
 
@@ -2108,9 +2108,9 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMeanALL_WNO_XY_RK2
 #endif
-        use pm_kind, only: TKC => RK2
-        real(TKC)       , intent(in)    , contiguous                :: x(:), y(:)
-        real(TKC)       , intent(out)                               :: mean(2)
+        use pm_kind, only: TKG => RK2
+        real(TKG)       , intent(in)    , contiguous                :: x(:), y(:)
+        real(TKG)       , intent(out)                               :: mean(2)
     end subroutine
 #endif
 
@@ -2119,9 +2119,9 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMeanALL_WNO_XY_RK1
 #endif
-        use pm_kind, only: TKC => RK1
-        real(TKC)       , intent(in)    , contiguous                :: x(:), y(:)
-        real(TKC)       , intent(out)                               :: mean(2)
+        use pm_kind, only: TKG => RK1
+        real(TKG)       , intent(in)    , contiguous                :: x(:), y(:)
+        real(TKG)       , intent(out)                               :: mean(2)
     end subroutine
 #endif
 
@@ -2138,10 +2138,10 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMeanALL_WTI_XY_CK5
 #endif
-        use pm_kind, only: TKC => CK5
-        complex(TKC)    , intent(in)    , contiguous                :: x(:), y(:)
+        use pm_kind, only: TKG => CK5
+        complex(TKG)    , intent(in)    , contiguous                :: x(:), y(:)
         integer(IK)     , intent(in)    , contiguous                :: weight(:)
-        complex(TKC)    , intent(out)                               :: mean(2)
+        complex(TKG)    , intent(out)                               :: mean(2)
         integer(IK)     , intent(out)                               :: weisum
     end subroutine
 #endif
@@ -2151,10 +2151,10 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMeanALL_WTI_XY_CK4
 #endif
-        use pm_kind, only: TKC => CK4
-        complex(TKC)    , intent(in)    , contiguous                :: x(:), y(:)
+        use pm_kind, only: TKG => CK4
+        complex(TKG)    , intent(in)    , contiguous                :: x(:), y(:)
         integer(IK)     , intent(in)    , contiguous                :: weight(:)
-        complex(TKC)    , intent(out)                               :: mean(2)
+        complex(TKG)    , intent(out)                               :: mean(2)
         integer(IK)     , intent(out)                               :: weisum
     end subroutine
 #endif
@@ -2164,10 +2164,10 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMeanALL_WTI_XY_CK3
 #endif
-        use pm_kind, only: TKC => CK3
-        complex(TKC)    , intent(in)    , contiguous                :: x(:), y(:)
+        use pm_kind, only: TKG => CK3
+        complex(TKG)    , intent(in)    , contiguous                :: x(:), y(:)
         integer(IK)     , intent(in)    , contiguous                :: weight(:)
-        complex(TKC)    , intent(out)                               :: mean(2)
+        complex(TKG)    , intent(out)                               :: mean(2)
         integer(IK)     , intent(out)                               :: weisum
     end subroutine
 #endif
@@ -2177,10 +2177,10 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMeanALL_WTI_XY_CK2
 #endif
-        use pm_kind, only: TKC => CK2
-        complex(TKC)    , intent(in)    , contiguous                :: x(:), y(:)
+        use pm_kind, only: TKG => CK2
+        complex(TKG)    , intent(in)    , contiguous                :: x(:), y(:)
         integer(IK)     , intent(in)    , contiguous                :: weight(:)
-        complex(TKC)    , intent(out)                               :: mean(2)
+        complex(TKG)    , intent(out)                               :: mean(2)
         integer(IK)     , intent(out)                               :: weisum
     end subroutine
 #endif
@@ -2190,10 +2190,10 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMeanALL_WTI_XY_CK1
 #endif
-        use pm_kind, only: TKC => CK1
-        complex(TKC)    , intent(in)    , contiguous                :: x(:), y(:)
+        use pm_kind, only: TKG => CK1
+        complex(TKG)    , intent(in)    , contiguous                :: x(:), y(:)
         integer(IK)     , intent(in)    , contiguous                :: weight(:)
-        complex(TKC)    , intent(out)                               :: mean(2)
+        complex(TKG)    , intent(out)                               :: mean(2)
         integer(IK)     , intent(out)                               :: weisum
     end subroutine
 #endif
@@ -2205,10 +2205,10 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMeanALL_WTI_XY_RK5
 #endif
-        use pm_kind, only: TKC => RK5
-        real(TKC)       , intent(in)    , contiguous                :: x(:), y(:)
+        use pm_kind, only: TKG => RK5
+        real(TKG)       , intent(in)    , contiguous                :: x(:), y(:)
         integer(IK)     , intent(in)    , contiguous                :: weight(:)
-        real(TKC)       , intent(out)                               :: mean(2)
+        real(TKG)       , intent(out)                               :: mean(2)
         integer(IK)     , intent(out)                               :: weisum
     end subroutine
 #endif
@@ -2218,10 +2218,10 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMeanALL_WTI_XY_RK4
 #endif
-        use pm_kind, only: TKC => RK4
-        real(TKC)       , intent(in)    , contiguous                :: x(:), y(:)
+        use pm_kind, only: TKG => RK4
+        real(TKG)       , intent(in)    , contiguous                :: x(:), y(:)
         integer(IK)     , intent(in)    , contiguous                :: weight(:)
-        real(TKC)       , intent(out)                               :: mean(2)
+        real(TKG)       , intent(out)                               :: mean(2)
         integer(IK)     , intent(out)                               :: weisum
     end subroutine
 #endif
@@ -2231,10 +2231,10 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMeanALL_WTI_XY_RK3
 #endif
-        use pm_kind, only: TKC => RK3
-        real(TKC)       , intent(in)    , contiguous                :: x(:), y(:)
+        use pm_kind, only: TKG => RK3
+        real(TKG)       , intent(in)    , contiguous                :: x(:), y(:)
         integer(IK)     , intent(in)    , contiguous                :: weight(:)
-        real(TKC)       , intent(out)                               :: mean(2)
+        real(TKG)       , intent(out)                               :: mean(2)
         integer(IK)     , intent(out)                               :: weisum
     end subroutine
 #endif
@@ -2244,10 +2244,10 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMeanALL_WTI_XY_RK2
 #endif
-        use pm_kind, only: TKC => RK2
-        real(TKC)       , intent(in)    , contiguous                :: x(:), y(:)
+        use pm_kind, only: TKG => RK2
+        real(TKG)       , intent(in)    , contiguous                :: x(:), y(:)
         integer(IK)     , intent(in)    , contiguous                :: weight(:)
-        real(TKC)       , intent(out)                               :: mean(2)
+        real(TKG)       , intent(out)                               :: mean(2)
         integer(IK)     , intent(out)                               :: weisum
     end subroutine
 #endif
@@ -2257,10 +2257,10 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMeanALL_WTI_XY_RK1
 #endif
-        use pm_kind, only: TKC => RK1
-        real(TKC)       , intent(in)    , contiguous                :: x(:), y(:)
+        use pm_kind, only: TKG => RK1
+        real(TKG)       , intent(in)    , contiguous                :: x(:), y(:)
         integer(IK)     , intent(in)    , contiguous                :: weight(:)
-        real(TKC)       , intent(out)                               :: mean(2)
+        real(TKG)       , intent(out)                               :: mean(2)
         integer(IK)     , intent(out)                               :: weisum
     end subroutine
 #endif
@@ -2278,11 +2278,11 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMeanALL_WTR_XY_CK5
 #endif
-        use pm_kind, only: TKC => CK5
-        complex(TKC)    , intent(in)    , contiguous                :: x(:), y(:)
-        real(TKC)       , intent(in)    , contiguous                :: weight(:)
-        complex(TKC)    , intent(out)                               :: mean(2)
-        real(TKC)       , intent(out)                               :: weisum
+        use pm_kind, only: TKG => CK5
+        complex(TKG)    , intent(in)    , contiguous                :: x(:), y(:)
+        real(TKG)       , intent(in)    , contiguous                :: weight(:)
+        complex(TKG)    , intent(out)                               :: mean(2)
+        real(TKG)       , intent(out)                               :: weisum
     end subroutine
 #endif
 
@@ -2291,11 +2291,11 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMeanALL_WTR_XY_CK4
 #endif
-        use pm_kind, only: TKC => CK4
-        complex(TKC)    , intent(in)    , contiguous                :: x(:), y(:)
-        real(TKC)       , intent(in)    , contiguous                :: weight(:)
-        complex(TKC)    , intent(out)                               :: mean(2)
-        real(TKC)       , intent(out)                               :: weisum
+        use pm_kind, only: TKG => CK4
+        complex(TKG)    , intent(in)    , contiguous                :: x(:), y(:)
+        real(TKG)       , intent(in)    , contiguous                :: weight(:)
+        complex(TKG)    , intent(out)                               :: mean(2)
+        real(TKG)       , intent(out)                               :: weisum
     end subroutine
 #endif
 
@@ -2304,11 +2304,11 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMeanALL_WTR_XY_CK3
 #endif
-        use pm_kind, only: TKC => CK3
-        complex(TKC)    , intent(in)    , contiguous                :: x(:), y(:)
-        real(TKC)       , intent(in)    , contiguous                :: weight(:)
-        complex(TKC)    , intent(out)                               :: mean(2)
-        real(TKC)       , intent(out)                               :: weisum
+        use pm_kind, only: TKG => CK3
+        complex(TKG)    , intent(in)    , contiguous                :: x(:), y(:)
+        real(TKG)       , intent(in)    , contiguous                :: weight(:)
+        complex(TKG)    , intent(out)                               :: mean(2)
+        real(TKG)       , intent(out)                               :: weisum
     end subroutine
 #endif
 
@@ -2317,11 +2317,11 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMeanALL_WTR_XY_CK2
 #endif
-        use pm_kind, only: TKC => CK2
-        complex(TKC)    , intent(in)    , contiguous                :: x(:), y(:)
-        real(TKC)       , intent(in)    , contiguous                :: weight(:)
-        complex(TKC)    , intent(out)                               :: mean(2)
-        real(TKC)       , intent(out)                               :: weisum
+        use pm_kind, only: TKG => CK2
+        complex(TKG)    , intent(in)    , contiguous                :: x(:), y(:)
+        real(TKG)       , intent(in)    , contiguous                :: weight(:)
+        complex(TKG)    , intent(out)                               :: mean(2)
+        real(TKG)       , intent(out)                               :: weisum
     end subroutine
 #endif
 
@@ -2330,11 +2330,11 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMeanALL_WTR_XY_CK1
 #endif
-        use pm_kind, only: TKC => CK1
-        complex(TKC)    , intent(in)    , contiguous                :: x(:), y(:)
-        real(TKC)       , intent(in)    , contiguous                :: weight(:)
-        complex(TKC)    , intent(out)                               :: mean(2)
-        real(TKC)       , intent(out)                               :: weisum
+        use pm_kind, only: TKG => CK1
+        complex(TKG)    , intent(in)    , contiguous                :: x(:), y(:)
+        real(TKG)       , intent(in)    , contiguous                :: weight(:)
+        complex(TKG)    , intent(out)                               :: mean(2)
+        real(TKG)       , intent(out)                               :: weisum
     end subroutine
 #endif
 
@@ -2345,11 +2345,11 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMeanALL_WTR_XY_RK5
 #endif
-        use pm_kind, only: TKC => RK5
-        real(TKC)       , intent(in)    , contiguous                :: x(:), y(:)
-        real(TKC)       , intent(in)    , contiguous                :: weight(:)
-        real(TKC)       , intent(out)                               :: mean(2)
-        real(TKC)       , intent(out)                               :: weisum
+        use pm_kind, only: TKG => RK5
+        real(TKG)       , intent(in)    , contiguous                :: x(:), y(:)
+        real(TKG)       , intent(in)    , contiguous                :: weight(:)
+        real(TKG)       , intent(out)                               :: mean(2)
+        real(TKG)       , intent(out)                               :: weisum
     end subroutine
 #endif
 
@@ -2358,11 +2358,11 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMeanALL_WTR_XY_RK4
 #endif
-        use pm_kind, only: TKC => RK4
-        real(TKC)       , intent(in)    , contiguous                :: x(:), y(:)
-        real(TKC)       , intent(in)    , contiguous                :: weight(:)
-        real(TKC)       , intent(out)                               :: mean(2)
-        real(TKC)       , intent(out)                               :: weisum
+        use pm_kind, only: TKG => RK4
+        real(TKG)       , intent(in)    , contiguous                :: x(:), y(:)
+        real(TKG)       , intent(in)    , contiguous                :: weight(:)
+        real(TKG)       , intent(out)                               :: mean(2)
+        real(TKG)       , intent(out)                               :: weisum
     end subroutine
 #endif
 
@@ -2371,11 +2371,11 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMeanALL_WTR_XY_RK3
 #endif
-        use pm_kind, only: TKC => RK3
-        real(TKC)       , intent(in)    , contiguous                :: x(:), y(:)
-        real(TKC)       , intent(in)    , contiguous                :: weight(:)
-        real(TKC)       , intent(out)                               :: mean(2)
-        real(TKC)       , intent(out)                               :: weisum
+        use pm_kind, only: TKG => RK3
+        real(TKG)       , intent(in)    , contiguous                :: x(:), y(:)
+        real(TKG)       , intent(in)    , contiguous                :: weight(:)
+        real(TKG)       , intent(out)                               :: mean(2)
+        real(TKG)       , intent(out)                               :: weisum
     end subroutine
 #endif
 
@@ -2384,11 +2384,11 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMeanALL_WTR_XY_RK2
 #endif
-        use pm_kind, only: TKC => RK2
-        real(TKC)       , intent(in)    , contiguous                :: x(:), y(:)
-        real(TKC)       , intent(in)    , contiguous                :: weight(:)
-        real(TKC)       , intent(out)                               :: mean(2)
-        real(TKC)       , intent(out)                               :: weisum
+        use pm_kind, only: TKG => RK2
+        real(TKG)       , intent(in)    , contiguous                :: x(:), y(:)
+        real(TKG)       , intent(in)    , contiguous                :: weight(:)
+        real(TKG)       , intent(out)                               :: mean(2)
+        real(TKG)       , intent(out)                               :: weisum
     end subroutine
 #endif
 
@@ -2397,11 +2397,11 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMeanALL_WTR_XY_RK1
 #endif
-        use pm_kind, only: TKC => RK1
-        real(TKC)       , intent(in)    , contiguous                :: x(:), y(:)
-        real(TKC)       , intent(in)    , contiguous                :: weight(:)
-        real(TKC)       , intent(out)                               :: mean(2)
-        real(TKC)       , intent(out)                               :: weisum
+        use pm_kind, only: TKG => RK1
+        real(TKG)       , intent(in)    , contiguous                :: x(:), y(:)
+        real(TKG)       , intent(in)    , contiguous                :: weight(:)
+        real(TKG)       , intent(out)                               :: mean(2)
+        real(TKG)       , intent(out)                               :: weisum
     end subroutine
 #endif
 
@@ -2428,9 +2428,9 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMeanALL_WNO_D1_CK5
 #endif
-        use pm_kind, only: TKC => CK5
-        complex(TKC)    , intent(in)    , contiguous                :: sample(:)
-        complex(TKC)    , intent(out)                               :: mean
+        use pm_kind, only: TKG => CK5
+        complex(TKG)    , intent(in)    , contiguous                :: sample(:)
+        complex(TKG)    , intent(out)                               :: mean
     end subroutine
 #endif
 
@@ -2439,9 +2439,9 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMeanALL_WNO_D1_CK4
 #endif
-        use pm_kind, only: TKC => CK4
-        complex(TKC)    , intent(in)    , contiguous                :: sample(:)
-        complex(TKC)    , intent(out)                               :: mean
+        use pm_kind, only: TKG => CK4
+        complex(TKG)    , intent(in)    , contiguous                :: sample(:)
+        complex(TKG)    , intent(out)                               :: mean
     end subroutine
 #endif
 
@@ -2450,9 +2450,9 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMeanALL_WNO_D1_CK3
 #endif
-        use pm_kind, only: TKC => CK3
-        complex(TKC)    , intent(in)    , contiguous                :: sample(:)
-        complex(TKC)    , intent(out)                               :: mean
+        use pm_kind, only: TKG => CK3
+        complex(TKG)    , intent(in)    , contiguous                :: sample(:)
+        complex(TKG)    , intent(out)                               :: mean
     end subroutine
 #endif
 
@@ -2461,9 +2461,9 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMeanALL_WNO_D1_CK2
 #endif
-        use pm_kind, only: TKC => CK2
-        complex(TKC)    , intent(in)    , contiguous                :: sample(:)
-        complex(TKC)    , intent(out)                               :: mean
+        use pm_kind, only: TKG => CK2
+        complex(TKG)    , intent(in)    , contiguous                :: sample(:)
+        complex(TKG)    , intent(out)                               :: mean
     end subroutine
 #endif
 
@@ -2472,9 +2472,9 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMeanALL_WNO_D1_CK1
 #endif
-        use pm_kind, only: TKC => CK1
-        complex(TKC)    , intent(in)    , contiguous                :: sample(:)
-        complex(TKC)    , intent(out)                               :: mean
+        use pm_kind, only: TKG => CK1
+        complex(TKG)    , intent(in)    , contiguous                :: sample(:)
+        complex(TKG)    , intent(out)                               :: mean
     end subroutine
 #endif
 
@@ -2485,9 +2485,9 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMeanALL_WNO_D1_RK5
 #endif
-        use pm_kind, only: TKC => RK5
-        real(TKC)       , intent(in)    , contiguous                :: sample(:)
-        real(TKC)       , intent(out)                               :: mean
+        use pm_kind, only: TKG => RK5
+        real(TKG)       , intent(in)    , contiguous                :: sample(:)
+        real(TKG)       , intent(out)                               :: mean
     end subroutine
 #endif
 
@@ -2496,9 +2496,9 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMeanALL_WNO_D1_RK4
 #endif
-        use pm_kind, only: TKC => RK4
-        real(TKC)       , intent(in)    , contiguous                :: sample(:)
-        real(TKC)       , intent(out)                               :: mean
+        use pm_kind, only: TKG => RK4
+        real(TKG)       , intent(in)    , contiguous                :: sample(:)
+        real(TKG)       , intent(out)                               :: mean
     end subroutine
 #endif
 
@@ -2507,9 +2507,9 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMeanALL_WNO_D1_RK3
 #endif
-        use pm_kind, only: TKC => RK3
-        real(TKC)       , intent(in)    , contiguous                :: sample(:)
-        real(TKC)       , intent(out)                               :: mean
+        use pm_kind, only: TKG => RK3
+        real(TKG)       , intent(in)    , contiguous                :: sample(:)
+        real(TKG)       , intent(out)                               :: mean
     end subroutine
 #endif
 
@@ -2518,9 +2518,9 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMeanALL_WNO_D1_RK2
 #endif
-        use pm_kind, only: TKC => RK2
-        real(TKC)       , intent(in)    , contiguous                :: sample(:)
-        real(TKC)       , intent(out)                               :: mean
+        use pm_kind, only: TKG => RK2
+        real(TKG)       , intent(in)    , contiguous                :: sample(:)
+        real(TKG)       , intent(out)                               :: mean
     end subroutine
 #endif
 
@@ -2529,9 +2529,9 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMeanALL_WNO_D1_RK1
 #endif
-        use pm_kind, only: TKC => RK1
-        real(TKC)       , intent(in)    , contiguous                :: sample(:)
-        real(TKC)       , intent(out)                               :: mean
+        use pm_kind, only: TKG => RK1
+        real(TKG)       , intent(in)    , contiguous                :: sample(:)
+        real(TKG)       , intent(out)                               :: mean
     end subroutine
 #endif
 
@@ -2548,10 +2548,10 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMeanALL_WTI_D1_CK5
 #endif
-        use pm_kind, only: TKC => CK5
-        complex(TKC)    , intent(in)    , contiguous                :: sample(:)
+        use pm_kind, only: TKG => CK5
+        complex(TKG)    , intent(in)    , contiguous                :: sample(:)
         integer(IK)     , intent(in)    , contiguous                :: weight(:)
-        complex(TKC)    , intent(out)                               :: mean
+        complex(TKG)    , intent(out)                               :: mean
         integer(IK)     , intent(out)                               :: weisum
     end subroutine
 #endif
@@ -2561,10 +2561,10 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMeanALL_WTI_D1_CK4
 #endif
-        use pm_kind, only: TKC => CK4
-        complex(TKC)    , intent(in)    , contiguous                :: sample(:)
+        use pm_kind, only: TKG => CK4
+        complex(TKG)    , intent(in)    , contiguous                :: sample(:)
         integer(IK)     , intent(in)    , contiguous                :: weight(:)
-        complex(TKC)    , intent(out)                               :: mean
+        complex(TKG)    , intent(out)                               :: mean
         integer(IK)     , intent(out)                               :: weisum
     end subroutine
 #endif
@@ -2574,10 +2574,10 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMeanALL_WTI_D1_CK3
 #endif
-        use pm_kind, only: TKC => CK3
-        complex(TKC)    , intent(in)    , contiguous                :: sample(:)
+        use pm_kind, only: TKG => CK3
+        complex(TKG)    , intent(in)    , contiguous                :: sample(:)
         integer(IK)     , intent(in)    , contiguous                :: weight(:)
-        complex(TKC)    , intent(out)                               :: mean
+        complex(TKG)    , intent(out)                               :: mean
         integer(IK)     , intent(out)                               :: weisum
     end subroutine
 #endif
@@ -2587,10 +2587,10 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMeanALL_WTI_D1_CK2
 #endif
-        use pm_kind, only: TKC => CK2
-        complex(TKC)    , intent(in)    , contiguous                :: sample(:)
+        use pm_kind, only: TKG => CK2
+        complex(TKG)    , intent(in)    , contiguous                :: sample(:)
         integer(IK)     , intent(in)    , contiguous                :: weight(:)
-        complex(TKC)    , intent(out)                               :: mean
+        complex(TKG)    , intent(out)                               :: mean
         integer(IK)     , intent(out)                               :: weisum
     end subroutine
 #endif
@@ -2600,10 +2600,10 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMeanALL_WTI_D1_CK1
 #endif
-        use pm_kind, only: TKC => CK1
-        complex(TKC)    , intent(in)    , contiguous                :: sample(:)
+        use pm_kind, only: TKG => CK1
+        complex(TKG)    , intent(in)    , contiguous                :: sample(:)
         integer(IK)     , intent(in)    , contiguous                :: weight(:)
-        complex(TKC)    , intent(out)                               :: mean
+        complex(TKG)    , intent(out)                               :: mean
         integer(IK)     , intent(out)                               :: weisum
     end subroutine
 #endif
@@ -2615,10 +2615,10 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMeanALL_WTI_D1_RK5
 #endif
-        use pm_kind, only: TKC => RK5
-        real(TKC)       , intent(in)    , contiguous                :: sample(:)
+        use pm_kind, only: TKG => RK5
+        real(TKG)       , intent(in)    , contiguous                :: sample(:)
         integer(IK)     , intent(in)    , contiguous                :: weight(:)
-        real(TKC)       , intent(out)                               :: mean
+        real(TKG)       , intent(out)                               :: mean
         integer(IK)     , intent(out)                               :: weisum
     end subroutine
 #endif
@@ -2628,10 +2628,10 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMeanALL_WTI_D1_RK4
 #endif
-        use pm_kind, only: TKC => RK4
-        real(TKC)       , intent(in)    , contiguous                :: sample(:)
+        use pm_kind, only: TKG => RK4
+        real(TKG)       , intent(in)    , contiguous                :: sample(:)
         integer(IK)     , intent(in)    , contiguous                :: weight(:)
-        real(TKC)       , intent(out)                               :: mean
+        real(TKG)       , intent(out)                               :: mean
         integer(IK)     , intent(out)                               :: weisum
     end subroutine
 #endif
@@ -2641,10 +2641,10 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMeanALL_WTI_D1_RK3
 #endif
-        use pm_kind, only: TKC => RK3
-        real(TKC)       , intent(in)    , contiguous                :: sample(:)
+        use pm_kind, only: TKG => RK3
+        real(TKG)       , intent(in)    , contiguous                :: sample(:)
         integer(IK)     , intent(in)    , contiguous                :: weight(:)
-        real(TKC)       , intent(out)                               :: mean
+        real(TKG)       , intent(out)                               :: mean
         integer(IK)     , intent(out)                               :: weisum
     end subroutine
 #endif
@@ -2654,10 +2654,10 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMeanALL_WTI_D1_RK2
 #endif
-        use pm_kind, only: TKC => RK2
-        real(TKC)       , intent(in)    , contiguous                :: sample(:)
+        use pm_kind, only: TKG => RK2
+        real(TKG)       , intent(in)    , contiguous                :: sample(:)
         integer(IK)     , intent(in)    , contiguous                :: weight(:)
-        real(TKC)       , intent(out)                               :: mean
+        real(TKG)       , intent(out)                               :: mean
         integer(IK)     , intent(out)                               :: weisum
     end subroutine
 #endif
@@ -2667,10 +2667,10 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMeanALL_WTI_D1_RK1
 #endif
-        use pm_kind, only: TKC => RK1
-        real(TKC)       , intent(in)    , contiguous                :: sample(:)
+        use pm_kind, only: TKG => RK1
+        real(TKG)       , intent(in)    , contiguous                :: sample(:)
         integer(IK)     , intent(in)    , contiguous                :: weight(:)
-        real(TKC)       , intent(out)                               :: mean
+        real(TKG)       , intent(out)                               :: mean
         integer(IK)     , intent(out)                               :: weisum
     end subroutine
 #endif
@@ -2688,11 +2688,11 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMeanALL_WTR_D1_CK5
 #endif
-        use pm_kind, only: TKC => CK5
-        complex(TKC)    , intent(in)    , contiguous                :: sample(:)
-        real(TKC)       , intent(in)    , contiguous                :: weight(:)
-        complex(TKC)    , intent(out)                               :: mean
-        real(TKC)       , intent(out)                               :: weisum
+        use pm_kind, only: TKG => CK5
+        complex(TKG)    , intent(in)    , contiguous                :: sample(:)
+        real(TKG)       , intent(in)    , contiguous                :: weight(:)
+        complex(TKG)    , intent(out)                               :: mean
+        real(TKG)       , intent(out)                               :: weisum
     end subroutine
 #endif
 
@@ -2701,11 +2701,11 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMeanALL_WTR_D1_CK4
 #endif
-        use pm_kind, only: TKC => CK4
-        complex(TKC)    , intent(in)    , contiguous                :: sample(:)
-        real(TKC)       , intent(in)    , contiguous                :: weight(:)
-        complex(TKC)    , intent(out)                               :: mean
-        real(TKC)       , intent(out)                               :: weisum
+        use pm_kind, only: TKG => CK4
+        complex(TKG)    , intent(in)    , contiguous                :: sample(:)
+        real(TKG)       , intent(in)    , contiguous                :: weight(:)
+        complex(TKG)    , intent(out)                               :: mean
+        real(TKG)       , intent(out)                               :: weisum
     end subroutine
 #endif
 
@@ -2714,11 +2714,11 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMeanALL_WTR_D1_CK3
 #endif
-        use pm_kind, only: TKC => CK3
-        complex(TKC)    , intent(in)    , contiguous                :: sample(:)
-        real(TKC)       , intent(in)    , contiguous                :: weight(:)
-        complex(TKC)    , intent(out)                               :: mean
-        real(TKC)       , intent(out)                               :: weisum
+        use pm_kind, only: TKG => CK3
+        complex(TKG)    , intent(in)    , contiguous                :: sample(:)
+        real(TKG)       , intent(in)    , contiguous                :: weight(:)
+        complex(TKG)    , intent(out)                               :: mean
+        real(TKG)       , intent(out)                               :: weisum
     end subroutine
 #endif
 
@@ -2727,11 +2727,11 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMeanALL_WTR_D1_CK2
 #endif
-        use pm_kind, only: TKC => CK2
-        complex(TKC)    , intent(in)    , contiguous                :: sample(:)
-        real(TKC)       , intent(in)    , contiguous                :: weight(:)
-        complex(TKC)    , intent(out)                               :: mean
-        real(TKC)       , intent(out)                               :: weisum
+        use pm_kind, only: TKG => CK2
+        complex(TKG)    , intent(in)    , contiguous                :: sample(:)
+        real(TKG)       , intent(in)    , contiguous                :: weight(:)
+        complex(TKG)    , intent(out)                               :: mean
+        real(TKG)       , intent(out)                               :: weisum
     end subroutine
 #endif
 
@@ -2740,11 +2740,11 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMeanALL_WTR_D1_CK1
 #endif
-        use pm_kind, only: TKC => CK1
-        complex(TKC)    , intent(in)    , contiguous                :: sample(:)
-        real(TKC)       , intent(in)    , contiguous                :: weight(:)
-        complex(TKC)    , intent(out)                               :: mean
-        real(TKC)       , intent(out)                               :: weisum
+        use pm_kind, only: TKG => CK1
+        complex(TKG)    , intent(in)    , contiguous                :: sample(:)
+        real(TKG)       , intent(in)    , contiguous                :: weight(:)
+        complex(TKG)    , intent(out)                               :: mean
+        real(TKG)       , intent(out)                               :: weisum
     end subroutine
 #endif
 
@@ -2755,11 +2755,11 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMeanALL_WTR_D1_RK5
 #endif
-        use pm_kind, only: TKC => RK5
-        real(TKC)       , intent(in)    , contiguous                :: sample(:)
-        real(TKC)       , intent(in)    , contiguous                :: weight(:)
-        real(TKC)       , intent(out)                               :: mean
-        real(TKC)       , intent(out)                               :: weisum
+        use pm_kind, only: TKG => RK5
+        real(TKG)       , intent(in)    , contiguous                :: sample(:)
+        real(TKG)       , intent(in)    , contiguous                :: weight(:)
+        real(TKG)       , intent(out)                               :: mean
+        real(TKG)       , intent(out)                               :: weisum
     end subroutine
 #endif
 
@@ -2768,11 +2768,11 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMeanALL_WTR_D1_RK4
 #endif
-        use pm_kind, only: TKC => RK4
-        real(TKC)       , intent(in)    , contiguous                :: sample(:)
-        real(TKC)       , intent(in)    , contiguous                :: weight(:)
-        real(TKC)       , intent(out)                               :: mean
-        real(TKC)       , intent(out)                               :: weisum
+        use pm_kind, only: TKG => RK4
+        real(TKG)       , intent(in)    , contiguous                :: sample(:)
+        real(TKG)       , intent(in)    , contiguous                :: weight(:)
+        real(TKG)       , intent(out)                               :: mean
+        real(TKG)       , intent(out)                               :: weisum
     end subroutine
 #endif
 
@@ -2781,11 +2781,11 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMeanALL_WTR_D1_RK3
 #endif
-        use pm_kind, only: TKC => RK3
-        real(TKC)       , intent(in)    , contiguous                :: sample(:)
-        real(TKC)       , intent(in)    , contiguous                :: weight(:)
-        real(TKC)       , intent(out)                               :: mean
-        real(TKC)       , intent(out)                               :: weisum
+        use pm_kind, only: TKG => RK3
+        real(TKG)       , intent(in)    , contiguous                :: sample(:)
+        real(TKG)       , intent(in)    , contiguous                :: weight(:)
+        real(TKG)       , intent(out)                               :: mean
+        real(TKG)       , intent(out)                               :: weisum
     end subroutine
 #endif
 
@@ -2794,11 +2794,11 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMeanALL_WTR_D1_RK2
 #endif
-        use pm_kind, only: TKC => RK2
-        real(TKC)       , intent(in)    , contiguous                :: sample(:)
-        real(TKC)       , intent(in)    , contiguous                :: weight(:)
-        real(TKC)       , intent(out)                               :: mean
-        real(TKC)       , intent(out)                               :: weisum
+        use pm_kind, only: TKG => RK2
+        real(TKG)       , intent(in)    , contiguous                :: sample(:)
+        real(TKG)       , intent(in)    , contiguous                :: weight(:)
+        real(TKG)       , intent(out)                               :: mean
+        real(TKG)       , intent(out)                               :: weisum
     end subroutine
 #endif
 
@@ -2807,11 +2807,11 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMeanALL_WTR_D1_RK1
 #endif
-        use pm_kind, only: TKC => RK1
-        real(TKC)       , intent(in)    , contiguous                :: sample(:)
-        real(TKC)       , intent(in)    , contiguous                :: weight(:)
-        real(TKC)       , intent(out)                               :: mean
-        real(TKC)       , intent(out)                               :: weisum
+        use pm_kind, only: TKG => RK1
+        real(TKG)       , intent(in)    , contiguous                :: sample(:)
+        real(TKG)       , intent(in)    , contiguous                :: weight(:)
+        real(TKG)       , intent(out)                               :: mean
+        real(TKG)       , intent(out)                               :: weisum
     end subroutine
 #endif
 
@@ -2838,9 +2838,9 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMeanALL_WNO_D2_CK5
 #endif
-        use pm_kind, only: TKC => CK5
-        complex(TKC)    , intent(in)    , contiguous                :: sample(:,:)
-        complex(TKC)    , intent(out)                               :: mean
+        use pm_kind, only: TKG => CK5
+        complex(TKG)    , intent(in)    , contiguous                :: sample(:,:)
+        complex(TKG)    , intent(out)                               :: mean
     end subroutine
 #endif
 
@@ -2849,9 +2849,9 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMeanALL_WNO_D2_CK4
 #endif
-        use pm_kind, only: TKC => CK4
-        complex(TKC)    , intent(in)    , contiguous                :: sample(:,:)
-        complex(TKC)    , intent(out)                               :: mean
+        use pm_kind, only: TKG => CK4
+        complex(TKG)    , intent(in)    , contiguous                :: sample(:,:)
+        complex(TKG)    , intent(out)                               :: mean
     end subroutine
 #endif
 
@@ -2860,9 +2860,9 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMeanALL_WNO_D2_CK3
 #endif
-        use pm_kind, only: TKC => CK3
-        complex(TKC)    , intent(in)    , contiguous                :: sample(:,:)
-        complex(TKC)    , intent(out)                               :: mean
+        use pm_kind, only: TKG => CK3
+        complex(TKG)    , intent(in)    , contiguous                :: sample(:,:)
+        complex(TKG)    , intent(out)                               :: mean
     end subroutine
 #endif
 
@@ -2871,9 +2871,9 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMeanALL_WNO_D2_CK2
 #endif
-        use pm_kind, only: TKC => CK2
-        complex(TKC)    , intent(in)    , contiguous                :: sample(:,:)
-        complex(TKC)    , intent(out)                               :: mean
+        use pm_kind, only: TKG => CK2
+        complex(TKG)    , intent(in)    , contiguous                :: sample(:,:)
+        complex(TKG)    , intent(out)                               :: mean
     end subroutine
 #endif
 
@@ -2882,9 +2882,9 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMeanALL_WNO_D2_CK1
 #endif
-        use pm_kind, only: TKC => CK1
-        complex(TKC)    , intent(in)    , contiguous                :: sample(:,:)
-        complex(TKC)    , intent(out)                               :: mean
+        use pm_kind, only: TKG => CK1
+        complex(TKG)    , intent(in)    , contiguous                :: sample(:,:)
+        complex(TKG)    , intent(out)                               :: mean
     end subroutine
 #endif
 
@@ -2895,9 +2895,9 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMeanALL_WNO_D2_RK5
 #endif
-        use pm_kind, only: TKC => RK5
-        real(TKC)       , intent(in)    , contiguous                :: sample(:,:)
-        real(TKC)       , intent(out)                               :: mean
+        use pm_kind, only: TKG => RK5
+        real(TKG)       , intent(in)    , contiguous                :: sample(:,:)
+        real(TKG)       , intent(out)                               :: mean
     end subroutine
 #endif
 
@@ -2906,9 +2906,9 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMeanALL_WNO_D2_RK4
 #endif
-        use pm_kind, only: TKC => RK4
-        real(TKC)       , intent(in)    , contiguous                :: sample(:,:)
-        real(TKC)       , intent(out)                               :: mean
+        use pm_kind, only: TKG => RK4
+        real(TKG)       , intent(in)    , contiguous                :: sample(:,:)
+        real(TKG)       , intent(out)                               :: mean
     end subroutine
 #endif
 
@@ -2917,9 +2917,9 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMeanALL_WNO_D2_RK3
 #endif
-        use pm_kind, only: TKC => RK3
-        real(TKC)       , intent(in)    , contiguous                :: sample(:,:)
-        real(TKC)       , intent(out)                               :: mean
+        use pm_kind, only: TKG => RK3
+        real(TKG)       , intent(in)    , contiguous                :: sample(:,:)
+        real(TKG)       , intent(out)                               :: mean
     end subroutine
 #endif
 
@@ -2928,9 +2928,9 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMeanALL_WNO_D2_RK2
 #endif
-        use pm_kind, only: TKC => RK2
-        real(TKC)       , intent(in)    , contiguous                :: sample(:,:)
-        real(TKC)       , intent(out)                               :: mean
+        use pm_kind, only: TKG => RK2
+        real(TKG)       , intent(in)    , contiguous                :: sample(:,:)
+        real(TKG)       , intent(out)                               :: mean
     end subroutine
 #endif
 
@@ -2939,9 +2939,9 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMeanALL_WNO_D2_RK1
 #endif
-        use pm_kind, only: TKC => RK1
-        real(TKC)       , intent(in)    , contiguous                :: sample(:,:)
-        real(TKC)       , intent(out)                               :: mean
+        use pm_kind, only: TKG => RK1
+        real(TKG)       , intent(in)    , contiguous                :: sample(:,:)
+        real(TKG)       , intent(out)                               :: mean
     end subroutine
 #endif
 
@@ -2958,10 +2958,10 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMeanALL_WTI_D2_CK5
 #endif
-        use pm_kind, only: TKC => CK5
-        complex(TKC)    , intent(in)    , contiguous                :: sample(:,:)
+        use pm_kind, only: TKG => CK5
+        complex(TKG)    , intent(in)    , contiguous                :: sample(:,:)
         integer(IK)     , intent(in)    , contiguous                :: weight(:)
-        complex(TKC)    , intent(out)                               :: mean
+        complex(TKG)    , intent(out)                               :: mean
         integer(IK)     , intent(out)                               :: weisum
     end subroutine
 #endif
@@ -2971,10 +2971,10 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMeanALL_WTI_D2_CK4
 #endif
-        use pm_kind, only: TKC => CK4
-        complex(TKC)    , intent(in)    , contiguous                :: sample(:,:)
+        use pm_kind, only: TKG => CK4
+        complex(TKG)    , intent(in)    , contiguous                :: sample(:,:)
         integer(IK)     , intent(in)    , contiguous                :: weight(:)
-        complex(TKC)    , intent(out)                               :: mean
+        complex(TKG)    , intent(out)                               :: mean
         integer(IK)     , intent(out)                               :: weisum
     end subroutine
 #endif
@@ -2984,10 +2984,10 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMeanALL_WTI_D2_CK3
 #endif
-        use pm_kind, only: TKC => CK3
-        complex(TKC)    , intent(in)    , contiguous                :: sample(:,:)
+        use pm_kind, only: TKG => CK3
+        complex(TKG)    , intent(in)    , contiguous                :: sample(:,:)
         integer(IK)     , intent(in)    , contiguous                :: weight(:)
-        complex(TKC)    , intent(out)                               :: mean
+        complex(TKG)    , intent(out)                               :: mean
         integer(IK)     , intent(out)                               :: weisum
     end subroutine
 #endif
@@ -2997,10 +2997,10 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMeanALL_WTI_D2_CK2
 #endif
-        use pm_kind, only: TKC => CK2
-        complex(TKC)    , intent(in)    , contiguous                :: sample(:,:)
+        use pm_kind, only: TKG => CK2
+        complex(TKG)    , intent(in)    , contiguous                :: sample(:,:)
         integer(IK)     , intent(in)    , contiguous                :: weight(:)
-        complex(TKC)    , intent(out)                               :: mean
+        complex(TKG)    , intent(out)                               :: mean
         integer(IK)     , intent(out)                               :: weisum
     end subroutine
 #endif
@@ -3010,10 +3010,10 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMeanALL_WTI_D2_CK1
 #endif
-        use pm_kind, only: TKC => CK1
-        complex(TKC)    , intent(in)    , contiguous                :: sample(:,:)
+        use pm_kind, only: TKG => CK1
+        complex(TKG)    , intent(in)    , contiguous                :: sample(:,:)
         integer(IK)     , intent(in)    , contiguous                :: weight(:)
-        complex(TKC)    , intent(out)                               :: mean
+        complex(TKG)    , intent(out)                               :: mean
         integer(IK)     , intent(out)                               :: weisum
     end subroutine
 #endif
@@ -3025,10 +3025,10 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMeanALL_WTI_D2_RK5
 #endif
-        use pm_kind, only: TKC => RK5
-        real(TKC)       , intent(in)    , contiguous                :: sample(:,:)
+        use pm_kind, only: TKG => RK5
+        real(TKG)       , intent(in)    , contiguous                :: sample(:,:)
         integer(IK)     , intent(in)    , contiguous                :: weight(:)
-        real(TKC)       , intent(out)                               :: mean
+        real(TKG)       , intent(out)                               :: mean
         integer(IK)     , intent(out)                               :: weisum
     end subroutine
 #endif
@@ -3038,10 +3038,10 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMeanALL_WTI_D2_RK4
 #endif
-        use pm_kind, only: TKC => RK4
-        real(TKC)       , intent(in)    , contiguous                :: sample(:,:)
+        use pm_kind, only: TKG => RK4
+        real(TKG)       , intent(in)    , contiguous                :: sample(:,:)
         integer(IK)     , intent(in)    , contiguous                :: weight(:)
-        real(TKC)       , intent(out)                               :: mean
+        real(TKG)       , intent(out)                               :: mean
         integer(IK)     , intent(out)                               :: weisum
     end subroutine
 #endif
@@ -3051,10 +3051,10 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMeanALL_WTI_D2_RK3
 #endif
-        use pm_kind, only: TKC => RK3
-        real(TKC)       , intent(in)    , contiguous                :: sample(:,:)
+        use pm_kind, only: TKG => RK3
+        real(TKG)       , intent(in)    , contiguous                :: sample(:,:)
         integer(IK)     , intent(in)    , contiguous                :: weight(:)
-        real(TKC)       , intent(out)                               :: mean
+        real(TKG)       , intent(out)                               :: mean
         integer(IK)     , intent(out)                               :: weisum
     end subroutine
 #endif
@@ -3064,10 +3064,10 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMeanALL_WTI_D2_RK2
 #endif
-        use pm_kind, only: TKC => RK2
-        real(TKC)       , intent(in)    , contiguous                :: sample(:,:)
+        use pm_kind, only: TKG => RK2
+        real(TKG)       , intent(in)    , contiguous                :: sample(:,:)
         integer(IK)     , intent(in)    , contiguous                :: weight(:)
-        real(TKC)       , intent(out)                               :: mean
+        real(TKG)       , intent(out)                               :: mean
         integer(IK)     , intent(out)                               :: weisum
     end subroutine
 #endif
@@ -3077,10 +3077,10 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMeanALL_WTI_D2_RK1
 #endif
-        use pm_kind, only: TKC => RK1
-        real(TKC)       , intent(in)    , contiguous                :: sample(:,:)
+        use pm_kind, only: TKG => RK1
+        real(TKG)       , intent(in)    , contiguous                :: sample(:,:)
         integer(IK)     , intent(in)    , contiguous                :: weight(:)
-        real(TKC)       , intent(out)                               :: mean
+        real(TKG)       , intent(out)                               :: mean
         integer(IK)     , intent(out)                               :: weisum
     end subroutine
 #endif
@@ -3098,11 +3098,11 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMeanALL_WTR_D2_CK5
 #endif
-        use pm_kind, only: TKC => CK5
-        complex(TKC)    , intent(in)    , contiguous                :: sample(:,:)
-        real(TKC)       , intent(in)    , contiguous                :: weight(:)
-        complex(TKC)    , intent(out)                               :: mean
-        real(TKC)       , intent(out)                               :: weisum
+        use pm_kind, only: TKG => CK5
+        complex(TKG)    , intent(in)    , contiguous                :: sample(:,:)
+        real(TKG)       , intent(in)    , contiguous                :: weight(:)
+        complex(TKG)    , intent(out)                               :: mean
+        real(TKG)       , intent(out)                               :: weisum
     end subroutine
 #endif
 
@@ -3111,11 +3111,11 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMeanALL_WTR_D2_CK4
 #endif
-        use pm_kind, only: TKC => CK4
-        complex(TKC)    , intent(in)    , contiguous                :: sample(:,:)
-        real(TKC)       , intent(in)    , contiguous                :: weight(:)
-        complex(TKC)    , intent(out)                               :: mean
-        real(TKC)       , intent(out)                               :: weisum
+        use pm_kind, only: TKG => CK4
+        complex(TKG)    , intent(in)    , contiguous                :: sample(:,:)
+        real(TKG)       , intent(in)    , contiguous                :: weight(:)
+        complex(TKG)    , intent(out)                               :: mean
+        real(TKG)       , intent(out)                               :: weisum
     end subroutine
 #endif
 
@@ -3124,11 +3124,11 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMeanALL_WTR_D2_CK3
 #endif
-        use pm_kind, only: TKC => CK3
-        complex(TKC)    , intent(in)    , contiguous                :: sample(:,:)
-        real(TKC)       , intent(in)    , contiguous                :: weight(:)
-        complex(TKC)    , intent(out)                               :: mean
-        real(TKC)       , intent(out)                               :: weisum
+        use pm_kind, only: TKG => CK3
+        complex(TKG)    , intent(in)    , contiguous                :: sample(:,:)
+        real(TKG)       , intent(in)    , contiguous                :: weight(:)
+        complex(TKG)    , intent(out)                               :: mean
+        real(TKG)       , intent(out)                               :: weisum
     end subroutine
 #endif
 
@@ -3137,11 +3137,11 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMeanALL_WTR_D2_CK2
 #endif
-        use pm_kind, only: TKC => CK2
-        complex(TKC)    , intent(in)    , contiguous                :: sample(:,:)
-        real(TKC)       , intent(in)    , contiguous                :: weight(:)
-        complex(TKC)    , intent(out)                               :: mean
-        real(TKC)       , intent(out)                               :: weisum
+        use pm_kind, only: TKG => CK2
+        complex(TKG)    , intent(in)    , contiguous                :: sample(:,:)
+        real(TKG)       , intent(in)    , contiguous                :: weight(:)
+        complex(TKG)    , intent(out)                               :: mean
+        real(TKG)       , intent(out)                               :: weisum
     end subroutine
 #endif
 
@@ -3150,11 +3150,11 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMeanALL_WTR_D2_CK1
 #endif
-        use pm_kind, only: TKC => CK1
-        complex(TKC)    , intent(in)    , contiguous                :: sample(:,:)
-        real(TKC)       , intent(in)    , contiguous                :: weight(:)
-        complex(TKC)    , intent(out)                               :: mean
-        real(TKC)       , intent(out)                               :: weisum
+        use pm_kind, only: TKG => CK1
+        complex(TKG)    , intent(in)    , contiguous                :: sample(:,:)
+        real(TKG)       , intent(in)    , contiguous                :: weight(:)
+        complex(TKG)    , intent(out)                               :: mean
+        real(TKG)       , intent(out)                               :: weisum
     end subroutine
 #endif
 
@@ -3165,11 +3165,11 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMeanALL_WTR_D2_RK5
 #endif
-        use pm_kind, only: TKC => RK5
-        real(TKC)       , intent(in)    , contiguous                :: sample(:,:)
-        real(TKC)       , intent(in)    , contiguous                :: weight(:)
-        real(TKC)       , intent(out)                               :: mean
-        real(TKC)       , intent(out)                               :: weisum
+        use pm_kind, only: TKG => RK5
+        real(TKG)       , intent(in)    , contiguous                :: sample(:,:)
+        real(TKG)       , intent(in)    , contiguous                :: weight(:)
+        real(TKG)       , intent(out)                               :: mean
+        real(TKG)       , intent(out)                               :: weisum
     end subroutine
 #endif
 
@@ -3178,11 +3178,11 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMeanALL_WTR_D2_RK4
 #endif
-        use pm_kind, only: TKC => RK4
-        real(TKC)       , intent(in)    , contiguous                :: sample(:,:)
-        real(TKC)       , intent(in)    , contiguous                :: weight(:)
-        real(TKC)       , intent(out)                               :: mean
-        real(TKC)       , intent(out)                               :: weisum
+        use pm_kind, only: TKG => RK4
+        real(TKG)       , intent(in)    , contiguous                :: sample(:,:)
+        real(TKG)       , intent(in)    , contiguous                :: weight(:)
+        real(TKG)       , intent(out)                               :: mean
+        real(TKG)       , intent(out)                               :: weisum
     end subroutine
 #endif
 
@@ -3191,11 +3191,11 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMeanALL_WTR_D2_RK3
 #endif
-        use pm_kind, only: TKC => RK3
-        real(TKC)       , intent(in)    , contiguous                :: sample(:,:)
-        real(TKC)       , intent(in)    , contiguous                :: weight(:)
-        real(TKC)       , intent(out)                               :: mean
-        real(TKC)       , intent(out)                               :: weisum
+        use pm_kind, only: TKG => RK3
+        real(TKG)       , intent(in)    , contiguous                :: sample(:,:)
+        real(TKG)       , intent(in)    , contiguous                :: weight(:)
+        real(TKG)       , intent(out)                               :: mean
+        real(TKG)       , intent(out)                               :: weisum
     end subroutine
 #endif
 
@@ -3204,11 +3204,11 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMeanALL_WTR_D2_RK2
 #endif
-        use pm_kind, only: TKC => RK2
-        real(TKC)       , intent(in)    , contiguous                :: sample(:,:)
-        real(TKC)       , intent(in)    , contiguous                :: weight(:)
-        real(TKC)       , intent(out)                               :: mean
-        real(TKC)       , intent(out)                               :: weisum
+        use pm_kind, only: TKG => RK2
+        real(TKG)       , intent(in)    , contiguous                :: sample(:,:)
+        real(TKG)       , intent(in)    , contiguous                :: weight(:)
+        real(TKG)       , intent(out)                               :: mean
+        real(TKG)       , intent(out)                               :: weisum
     end subroutine
 #endif
 
@@ -3217,11 +3217,11 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMeanALL_WTR_D2_RK1
 #endif
-        use pm_kind, only: TKC => RK1
-        real(TKC)       , intent(in)    , contiguous                :: sample(:,:)
-        real(TKC)       , intent(in)    , contiguous                :: weight(:)
-        real(TKC)       , intent(out)                               :: mean
-        real(TKC)       , intent(out)                               :: weisum
+        use pm_kind, only: TKG => RK1
+        real(TKG)       , intent(in)    , contiguous                :: sample(:,:)
+        real(TKG)       , intent(in)    , contiguous                :: weight(:)
+        real(TKG)       , intent(out)                               :: mean
+        real(TKG)       , intent(out)                               :: weisum
     end subroutine
 #endif
 
@@ -3248,10 +3248,10 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMeanDIM_WNO_D1_CK5
 #endif
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
         integer(IK)     , intent(in)                                :: dim
-        complex(TKC)    , intent(in)    , contiguous                :: sample(:)
-        complex(TKC)    , intent(out)                               :: mean
+        complex(TKG)    , intent(in)    , contiguous                :: sample(:)
+        complex(TKG)    , intent(out)                               :: mean
     end subroutine
 #endif
 
@@ -3260,10 +3260,10 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMeanDIM_WNO_D1_CK4
 #endif
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
         integer(IK)     , intent(in)                                :: dim
-        complex(TKC)    , intent(in)    , contiguous                :: sample(:)
-        complex(TKC)    , intent(out)                               :: mean
+        complex(TKG)    , intent(in)    , contiguous                :: sample(:)
+        complex(TKG)    , intent(out)                               :: mean
     end subroutine
 #endif
 
@@ -3272,10 +3272,10 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMeanDIM_WNO_D1_CK3
 #endif
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
         integer(IK)     , intent(in)                                :: dim
-        complex(TKC)    , intent(in)    , contiguous                :: sample(:)
-        complex(TKC)    , intent(out)                               :: mean
+        complex(TKG)    , intent(in)    , contiguous                :: sample(:)
+        complex(TKG)    , intent(out)                               :: mean
     end subroutine
 #endif
 
@@ -3284,10 +3284,10 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMeanDIM_WNO_D1_CK2
 #endif
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
         integer(IK)     , intent(in)                                :: dim
-        complex(TKC)    , intent(in)    , contiguous                :: sample(:)
-        complex(TKC)    , intent(out)                               :: mean
+        complex(TKG)    , intent(in)    , contiguous                :: sample(:)
+        complex(TKG)    , intent(out)                               :: mean
     end subroutine
 #endif
 
@@ -3296,10 +3296,10 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMeanDIM_WNO_D1_CK1
 #endif
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
         integer(IK)     , intent(in)                                :: dim
-        complex(TKC)    , intent(in)    , contiguous                :: sample(:)
-        complex(TKC)    , intent(out)                               :: mean
+        complex(TKG)    , intent(in)    , contiguous                :: sample(:)
+        complex(TKG)    , intent(out)                               :: mean
     end subroutine
 #endif
 
@@ -3310,10 +3310,10 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMeanDIM_WNO_D1_RK5
 #endif
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
         integer(IK)     , intent(in)                                :: dim
-        real(TKC)       , intent(in)    , contiguous                :: sample(:)
-        real(TKC)       , intent(out)                               :: mean
+        real(TKG)       , intent(in)    , contiguous                :: sample(:)
+        real(TKG)       , intent(out)                               :: mean
     end subroutine
 #endif
 
@@ -3322,10 +3322,10 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMeanDIM_WNO_D1_RK4
 #endif
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
         integer(IK)     , intent(in)                                :: dim
-        real(TKC)       , intent(in)    , contiguous                :: sample(:)
-        real(TKC)       , intent(out)                               :: mean
+        real(TKG)       , intent(in)    , contiguous                :: sample(:)
+        real(TKG)       , intent(out)                               :: mean
     end subroutine
 #endif
 
@@ -3334,10 +3334,10 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMeanDIM_WNO_D1_RK3
 #endif
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
         integer(IK)     , intent(in)                                :: dim
-        real(TKC)       , intent(in)    , contiguous                :: sample(:)
-        real(TKC)       , intent(out)                               :: mean
+        real(TKG)       , intent(in)    , contiguous                :: sample(:)
+        real(TKG)       , intent(out)                               :: mean
     end subroutine
 #endif
 
@@ -3346,10 +3346,10 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMeanDIM_WNO_D1_RK2
 #endif
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
         integer(IK)     , intent(in)                                :: dim
-        real(TKC)       , intent(in)    , contiguous                :: sample(:)
-        real(TKC)       , intent(out)                               :: mean
+        real(TKG)       , intent(in)    , contiguous                :: sample(:)
+        real(TKG)       , intent(out)                               :: mean
     end subroutine
 #endif
 
@@ -3358,10 +3358,10 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMeanDIM_WNO_D1_RK1
 #endif
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
         integer(IK)     , intent(in)                                :: dim
-        real(TKC)       , intent(in)    , contiguous                :: sample(:)
-        real(TKC)       , intent(out)                               :: mean
+        real(TKG)       , intent(in)    , contiguous                :: sample(:)
+        real(TKG)       , intent(out)                               :: mean
     end subroutine
 #endif
 
@@ -3378,11 +3378,11 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMeanDIM_WTI_D1_CK5
 #endif
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
         integer(IK)     , intent(in)                                :: dim
-        complex(TKC)    , intent(in)    , contiguous                :: sample(:)
+        complex(TKG)    , intent(in)    , contiguous                :: sample(:)
         integer(IK)     , intent(in)    , contiguous                :: weight(:)
-        complex(TKC)    , intent(out)                               :: mean
+        complex(TKG)    , intent(out)                               :: mean
         integer(IK)     , intent(out)                               :: weisum
     end subroutine
 #endif
@@ -3392,11 +3392,11 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMeanDIM_WTI_D1_CK4
 #endif
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
         integer(IK)     , intent(in)                                :: dim
-        complex(TKC)    , intent(in)    , contiguous                :: sample(:)
+        complex(TKG)    , intent(in)    , contiguous                :: sample(:)
         integer(IK)     , intent(in)    , contiguous                :: weight(:)
-        complex(TKC)    , intent(out)                               :: mean
+        complex(TKG)    , intent(out)                               :: mean
         integer(IK)     , intent(out)                               :: weisum
     end subroutine
 #endif
@@ -3406,11 +3406,11 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMeanDIM_WTI_D1_CK3
 #endif
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
         integer(IK)     , intent(in)                                :: dim
-        complex(TKC)    , intent(in)    , contiguous                :: sample(:)
+        complex(TKG)    , intent(in)    , contiguous                :: sample(:)
         integer(IK)     , intent(in)    , contiguous                :: weight(:)
-        complex(TKC)    , intent(out)                               :: mean
+        complex(TKG)    , intent(out)                               :: mean
         integer(IK)     , intent(out)                               :: weisum
     end subroutine
 #endif
@@ -3420,11 +3420,11 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMeanDIM_WTI_D1_CK2
 #endif
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
         integer(IK)     , intent(in)                                :: dim
-        complex(TKC)    , intent(in)    , contiguous                :: sample(:)
+        complex(TKG)    , intent(in)    , contiguous                :: sample(:)
         integer(IK)     , intent(in)    , contiguous                :: weight(:)
-        complex(TKC)    , intent(out)                               :: mean
+        complex(TKG)    , intent(out)                               :: mean
         integer(IK)     , intent(out)                               :: weisum
     end subroutine
 #endif
@@ -3434,11 +3434,11 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMeanDIM_WTI_D1_CK1
 #endif
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
         integer(IK)     , intent(in)                                :: dim
-        complex(TKC)    , intent(in)    , contiguous                :: sample(:)
+        complex(TKG)    , intent(in)    , contiguous                :: sample(:)
         integer(IK)     , intent(in)    , contiguous                :: weight(:)
-        complex(TKC)    , intent(out)                               :: mean
+        complex(TKG)    , intent(out)                               :: mean
         integer(IK)     , intent(out)                               :: weisum
     end subroutine
 #endif
@@ -3450,11 +3450,11 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMeanDIM_WTI_D1_RK5
 #endif
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
         integer(IK)     , intent(in)                                :: dim
-        real(TKC)       , intent(in)    , contiguous                :: sample(:)
+        real(TKG)       , intent(in)    , contiguous                :: sample(:)
         integer(IK)     , intent(in)    , contiguous                :: weight(:)
-        real(TKC)       , intent(out)                               :: mean
+        real(TKG)       , intent(out)                               :: mean
         integer(IK)     , intent(out)                               :: weisum
     end subroutine
 #endif
@@ -3464,11 +3464,11 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMeanDIM_WTI_D1_RK4
 #endif
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
         integer(IK)     , intent(in)                                :: dim
-        real(TKC)       , intent(in)    , contiguous                :: sample(:)
+        real(TKG)       , intent(in)    , contiguous                :: sample(:)
         integer(IK)     , intent(in)    , contiguous                :: weight(:)
-        real(TKC)       , intent(out)                               :: mean
+        real(TKG)       , intent(out)                               :: mean
         integer(IK)     , intent(out)                               :: weisum
     end subroutine
 #endif
@@ -3478,11 +3478,11 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMeanDIM_WTI_D1_RK3
 #endif
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
         integer(IK)     , intent(in)                                :: dim
-        real(TKC)       , intent(in)    , contiguous                :: sample(:)
+        real(TKG)       , intent(in)    , contiguous                :: sample(:)
         integer(IK)     , intent(in)    , contiguous                :: weight(:)
-        real(TKC)       , intent(out)                               :: mean
+        real(TKG)       , intent(out)                               :: mean
         integer(IK)     , intent(out)                               :: weisum
     end subroutine
 #endif
@@ -3492,11 +3492,11 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMeanDIM_WTI_D1_RK2
 #endif
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
         integer(IK)     , intent(in)                                :: dim
-        real(TKC)       , intent(in)    , contiguous                :: sample(:)
+        real(TKG)       , intent(in)    , contiguous                :: sample(:)
         integer(IK)     , intent(in)    , contiguous                :: weight(:)
-        real(TKC)       , intent(out)                               :: mean
+        real(TKG)       , intent(out)                               :: mean
         integer(IK)     , intent(out)                               :: weisum
     end subroutine
 #endif
@@ -3506,11 +3506,11 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMeanDIM_WTI_D1_RK1
 #endif
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
         integer(IK)     , intent(in)                                :: dim
-        real(TKC)       , intent(in)    , contiguous                :: sample(:)
+        real(TKG)       , intent(in)    , contiguous                :: sample(:)
         integer(IK)     , intent(in)    , contiguous                :: weight(:)
-        real(TKC)       , intent(out)                               :: mean
+        real(TKG)       , intent(out)                               :: mean
         integer(IK)     , intent(out)                               :: weisum
     end subroutine
 #endif
@@ -3528,12 +3528,12 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMeanDIM_WTR_D1_CK5
 #endif
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
         integer(IK)     , intent(in)                                :: dim
-        complex(TKC)    , intent(in)    , contiguous                :: sample(:)
-        real(TKC)       , intent(in)    , contiguous                :: weight(:)
-        complex(TKC)    , intent(out)                               :: mean
-        real(TKC)       , intent(out)                               :: weisum
+        complex(TKG)    , intent(in)    , contiguous                :: sample(:)
+        real(TKG)       , intent(in)    , contiguous                :: weight(:)
+        complex(TKG)    , intent(out)                               :: mean
+        real(TKG)       , intent(out)                               :: weisum
     end subroutine
 #endif
 
@@ -3542,12 +3542,12 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMeanDIM_WTR_D1_CK4
 #endif
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
         integer(IK)     , intent(in)                                :: dim
-        complex(TKC)    , intent(in)    , contiguous                :: sample(:)
-        real(TKC)       , intent(in)    , contiguous                :: weight(:)
-        complex(TKC)    , intent(out)                               :: mean
-        real(TKC)       , intent(out)                               :: weisum
+        complex(TKG)    , intent(in)    , contiguous                :: sample(:)
+        real(TKG)       , intent(in)    , contiguous                :: weight(:)
+        complex(TKG)    , intent(out)                               :: mean
+        real(TKG)       , intent(out)                               :: weisum
     end subroutine
 #endif
 
@@ -3556,12 +3556,12 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMeanDIM_WTR_D1_CK3
 #endif
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
         integer(IK)     , intent(in)                                :: dim
-        complex(TKC)    , intent(in)    , contiguous                :: sample(:)
-        real(TKC)       , intent(in)    , contiguous                :: weight(:)
-        complex(TKC)    , intent(out)                               :: mean
-        real(TKC)       , intent(out)                               :: weisum
+        complex(TKG)    , intent(in)    , contiguous                :: sample(:)
+        real(TKG)       , intent(in)    , contiguous                :: weight(:)
+        complex(TKG)    , intent(out)                               :: mean
+        real(TKG)       , intent(out)                               :: weisum
     end subroutine
 #endif
 
@@ -3570,12 +3570,12 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMeanDIM_WTR_D1_CK2
 #endif
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
         integer(IK)     , intent(in)                                :: dim
-        complex(TKC)    , intent(in)    , contiguous                :: sample(:)
-        real(TKC)       , intent(in)    , contiguous                :: weight(:)
-        complex(TKC)    , intent(out)                               :: mean
-        real(TKC)       , intent(out)                               :: weisum
+        complex(TKG)    , intent(in)    , contiguous                :: sample(:)
+        real(TKG)       , intent(in)    , contiguous                :: weight(:)
+        complex(TKG)    , intent(out)                               :: mean
+        real(TKG)       , intent(out)                               :: weisum
     end subroutine
 #endif
 
@@ -3584,12 +3584,12 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMeanDIM_WTR_D1_CK1
 #endif
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
         integer(IK)     , intent(in)                                :: dim
-        complex(TKC)    , intent(in)    , contiguous                :: sample(:)
-        real(TKC)       , intent(in)    , contiguous                :: weight(:)
-        complex(TKC)    , intent(out)                               :: mean
-        real(TKC)       , intent(out)                               :: weisum
+        complex(TKG)    , intent(in)    , contiguous                :: sample(:)
+        real(TKG)       , intent(in)    , contiguous                :: weight(:)
+        complex(TKG)    , intent(out)                               :: mean
+        real(TKG)       , intent(out)                               :: weisum
     end subroutine
 #endif
 
@@ -3600,12 +3600,12 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMeanDIM_WTR_D1_RK5
 #endif
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
         integer(IK)     , intent(in)                                :: dim
-        real(TKC)       , intent(in)    , contiguous                :: sample(:)
-        real(TKC)       , intent(in)    , contiguous                :: weight(:)
-        real(TKC)       , intent(out)                               :: mean
-        real(TKC)       , intent(out)                               :: weisum
+        real(TKG)       , intent(in)    , contiguous                :: sample(:)
+        real(TKG)       , intent(in)    , contiguous                :: weight(:)
+        real(TKG)       , intent(out)                               :: mean
+        real(TKG)       , intent(out)                               :: weisum
     end subroutine
 #endif
 
@@ -3614,12 +3614,12 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMeanDIM_WTR_D1_RK4
 #endif
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
         integer(IK)     , intent(in)                                :: dim
-        real(TKC)       , intent(in)    , contiguous                :: sample(:)
-        real(TKC)       , intent(in)    , contiguous                :: weight(:)
-        real(TKC)       , intent(out)                               :: mean
-        real(TKC)       , intent(out)                               :: weisum
+        real(TKG)       , intent(in)    , contiguous                :: sample(:)
+        real(TKG)       , intent(in)    , contiguous                :: weight(:)
+        real(TKG)       , intent(out)                               :: mean
+        real(TKG)       , intent(out)                               :: weisum
     end subroutine
 #endif
 
@@ -3628,12 +3628,12 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMeanDIM_WTR_D1_RK3
 #endif
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
         integer(IK)     , intent(in)                                :: dim
-        real(TKC)       , intent(in)    , contiguous                :: sample(:)
-        real(TKC)       , intent(in)    , contiguous                :: weight(:)
-        real(TKC)       , intent(out)                               :: mean
-        real(TKC)       , intent(out)                               :: weisum
+        real(TKG)       , intent(in)    , contiguous                :: sample(:)
+        real(TKG)       , intent(in)    , contiguous                :: weight(:)
+        real(TKG)       , intent(out)                               :: mean
+        real(TKG)       , intent(out)                               :: weisum
     end subroutine
 #endif
 
@@ -3642,12 +3642,12 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMeanDIM_WTR_D1_RK2
 #endif
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
         integer(IK)     , intent(in)                                :: dim
-        real(TKC)       , intent(in)    , contiguous                :: sample(:)
-        real(TKC)       , intent(in)    , contiguous                :: weight(:)
-        real(TKC)       , intent(out)                               :: mean
-        real(TKC)       , intent(out)                               :: weisum
+        real(TKG)       , intent(in)    , contiguous                :: sample(:)
+        real(TKG)       , intent(in)    , contiguous                :: weight(:)
+        real(TKG)       , intent(out)                               :: mean
+        real(TKG)       , intent(out)                               :: weisum
     end subroutine
 #endif
 
@@ -3656,12 +3656,12 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMeanDIM_WTR_D1_RK1
 #endif
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
         integer(IK)     , intent(in)                                :: dim
-        real(TKC)       , intent(in)    , contiguous                :: sample(:)
-        real(TKC)       , intent(in)    , contiguous                :: weight(:)
-        real(TKC)       , intent(out)                               :: mean
-        real(TKC)       , intent(out)                               :: weisum
+        real(TKG)       , intent(in)    , contiguous                :: sample(:)
+        real(TKG)       , intent(in)    , contiguous                :: weight(:)
+        real(TKG)       , intent(out)                               :: mean
+        real(TKG)       , intent(out)                               :: weisum
     end subroutine
 #endif
 
@@ -3688,10 +3688,10 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMeanDIM_WNO_D2_CK5
 #endif
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
         integer(IK)     , intent(in)                                :: dim
-        complex(TKC)    , intent(in)    , contiguous                :: sample(:,:)
-        complex(TKC)    , intent(out)   , contiguous                :: mean(:)
+        complex(TKG)    , intent(in)    , contiguous                :: sample(:,:)
+        complex(TKG)    , intent(out)   , contiguous                :: mean(:)
     end subroutine
 #endif
 
@@ -3700,10 +3700,10 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMeanDIM_WNO_D2_CK4
 #endif
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
         integer(IK)     , intent(in)                                :: dim
-        complex(TKC)    , intent(in)    , contiguous                :: sample(:,:)
-        complex(TKC)    , intent(out)   , contiguous                :: mean(:)
+        complex(TKG)    , intent(in)    , contiguous                :: sample(:,:)
+        complex(TKG)    , intent(out)   , contiguous                :: mean(:)
     end subroutine
 #endif
 
@@ -3712,10 +3712,10 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMeanDIM_WNO_D2_CK3
 #endif
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
         integer(IK)     , intent(in)                                :: dim
-        complex(TKC)    , intent(in)    , contiguous                :: sample(:,:)
-        complex(TKC)    , intent(out)   , contiguous                :: mean(:)
+        complex(TKG)    , intent(in)    , contiguous                :: sample(:,:)
+        complex(TKG)    , intent(out)   , contiguous                :: mean(:)
     end subroutine
 #endif
 
@@ -3724,10 +3724,10 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMeanDIM_WNO_D2_CK2
 #endif
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
         integer(IK)     , intent(in)                                :: dim
-        complex(TKC)    , intent(in)    , contiguous                :: sample(:,:)
-        complex(TKC)    , intent(out)   , contiguous                :: mean(:)
+        complex(TKG)    , intent(in)    , contiguous                :: sample(:,:)
+        complex(TKG)    , intent(out)   , contiguous                :: mean(:)
     end subroutine
 #endif
 
@@ -3736,10 +3736,10 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMeanDIM_WNO_D2_CK1
 #endif
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
         integer(IK)     , intent(in)                                :: dim
-        complex(TKC)    , intent(in)    , contiguous                :: sample(:,:)
-        complex(TKC)    , intent(out)   , contiguous                :: mean(:)
+        complex(TKG)    , intent(in)    , contiguous                :: sample(:,:)
+        complex(TKG)    , intent(out)   , contiguous                :: mean(:)
     end subroutine
 #endif
 
@@ -3750,10 +3750,10 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMeanDIM_WNO_D2_RK5
 #endif
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
         integer(IK)     , intent(in)                                :: dim
-        real(TKC)       , intent(in)    , contiguous                :: sample(:,:)
-        real(TKC)       , intent(out)   , contiguous                :: mean(:)
+        real(TKG)       , intent(in)    , contiguous                :: sample(:,:)
+        real(TKG)       , intent(out)   , contiguous                :: mean(:)
     end subroutine
 #endif
 
@@ -3762,10 +3762,10 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMeanDIM_WNO_D2_RK4
 #endif
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
         integer(IK)     , intent(in)                                :: dim
-        real(TKC)       , intent(in)    , contiguous                :: sample(:,:)
-        real(TKC)       , intent(out)   , contiguous                :: mean(:)
+        real(TKG)       , intent(in)    , contiguous                :: sample(:,:)
+        real(TKG)       , intent(out)   , contiguous                :: mean(:)
     end subroutine
 #endif
 
@@ -3774,10 +3774,10 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMeanDIM_WNO_D2_RK3
 #endif
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
         integer(IK)     , intent(in)                                :: dim
-        real(TKC)       , intent(in)    , contiguous                :: sample(:,:)
-        real(TKC)       , intent(out)   , contiguous                :: mean(:)
+        real(TKG)       , intent(in)    , contiguous                :: sample(:,:)
+        real(TKG)       , intent(out)   , contiguous                :: mean(:)
     end subroutine
 #endif
 
@@ -3786,10 +3786,10 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMeanDIM_WNO_D2_RK2
 #endif
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
         integer(IK)     , intent(in)                                :: dim
-        real(TKC)       , intent(in)    , contiguous                :: sample(:,:)
-        real(TKC)       , intent(out)   , contiguous                :: mean(:)
+        real(TKG)       , intent(in)    , contiguous                :: sample(:,:)
+        real(TKG)       , intent(out)   , contiguous                :: mean(:)
     end subroutine
 #endif
 
@@ -3798,10 +3798,10 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMeanDIM_WNO_D2_RK1
 #endif
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
         integer(IK)     , intent(in)                                :: dim
-        real(TKC)       , intent(in)    , contiguous                :: sample(:,:)
-        real(TKC)       , intent(out)   , contiguous                :: mean(:)
+        real(TKG)       , intent(in)    , contiguous                :: sample(:,:)
+        real(TKG)       , intent(out)   , contiguous                :: mean(:)
     end subroutine
 #endif
 
@@ -3818,11 +3818,11 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMeanDIM_WTI_D2_CK5
 #endif
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
         integer(IK)     , intent(in)                                :: dim
-        complex(TKC)    , intent(in)    , contiguous                :: sample(:,:)
+        complex(TKG)    , intent(in)    , contiguous                :: sample(:,:)
         integer(IK)     , intent(in)    , contiguous                :: weight(:)
-        complex(TKC)    , intent(out)   , contiguous                :: mean(:)
+        complex(TKG)    , intent(out)   , contiguous                :: mean(:)
         integer(IK)     , intent(out)                               :: weisum
     end subroutine
 #endif
@@ -3832,11 +3832,11 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMeanDIM_WTI_D2_CK4
 #endif
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
         integer(IK)     , intent(in)                                :: dim
-        complex(TKC)    , intent(in)    , contiguous                :: sample(:,:)
+        complex(TKG)    , intent(in)    , contiguous                :: sample(:,:)
         integer(IK)     , intent(in)    , contiguous                :: weight(:)
-        complex(TKC)    , intent(out)   , contiguous                :: mean(:)
+        complex(TKG)    , intent(out)   , contiguous                :: mean(:)
         integer(IK)     , intent(out)                               :: weisum
     end subroutine
 #endif
@@ -3846,11 +3846,11 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMeanDIM_WTI_D2_CK3
 #endif
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
         integer(IK)     , intent(in)                                :: dim
-        complex(TKC)    , intent(in)    , contiguous                :: sample(:,:)
+        complex(TKG)    , intent(in)    , contiguous                :: sample(:,:)
         integer(IK)     , intent(in)    , contiguous                :: weight(:)
-        complex(TKC)    , intent(out)   , contiguous                :: mean(:)
+        complex(TKG)    , intent(out)   , contiguous                :: mean(:)
         integer(IK)     , intent(out)                               :: weisum
     end subroutine
 #endif
@@ -3860,11 +3860,11 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMeanDIM_WTI_D2_CK2
 #endif
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
         integer(IK)     , intent(in)                                :: dim
-        complex(TKC)    , intent(in)    , contiguous                :: sample(:,:)
+        complex(TKG)    , intent(in)    , contiguous                :: sample(:,:)
         integer(IK)     , intent(in)    , contiguous                :: weight(:)
-        complex(TKC)    , intent(out)   , contiguous                :: mean(:)
+        complex(TKG)    , intent(out)   , contiguous                :: mean(:)
         integer(IK)     , intent(out)                               :: weisum
     end subroutine
 #endif
@@ -3874,11 +3874,11 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMeanDIM_WTI_D2_CK1
 #endif
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
         integer(IK)     , intent(in)                                :: dim
-        complex(TKC)    , intent(in)    , contiguous                :: sample(:,:)
+        complex(TKG)    , intent(in)    , contiguous                :: sample(:,:)
         integer(IK)     , intent(in)    , contiguous                :: weight(:)
-        complex(TKC)    , intent(out)   , contiguous                :: mean(:)
+        complex(TKG)    , intent(out)   , contiguous                :: mean(:)
         integer(IK)     , intent(out)                               :: weisum
     end subroutine
 #endif
@@ -3890,11 +3890,11 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMeanDIM_WTI_D2_RK5
 #endif
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
         integer(IK)     , intent(in)                                :: dim
-        real(TKC)       , intent(in)    , contiguous                :: sample(:,:)
+        real(TKG)       , intent(in)    , contiguous                :: sample(:,:)
         integer(IK)     , intent(in)    , contiguous                :: weight(:)
-        real(TKC)       , intent(out)   , contiguous                :: mean(:)
+        real(TKG)       , intent(out)   , contiguous                :: mean(:)
         integer(IK)     , intent(out)                               :: weisum
     end subroutine
 #endif
@@ -3904,11 +3904,11 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMeanDIM_WTI_D2_RK4
 #endif
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
         integer(IK)     , intent(in)                                :: dim
-        real(TKC)       , intent(in)    , contiguous                :: sample(:,:)
+        real(TKG)       , intent(in)    , contiguous                :: sample(:,:)
         integer(IK)     , intent(in)    , contiguous                :: weight(:)
-        real(TKC)       , intent(out)   , contiguous                :: mean(:)
+        real(TKG)       , intent(out)   , contiguous                :: mean(:)
         integer(IK)     , intent(out)                               :: weisum
     end subroutine
 #endif
@@ -3918,11 +3918,11 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMeanDIM_WTI_D2_RK3
 #endif
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
         integer(IK)     , intent(in)                                :: dim
-        real(TKC)       , intent(in)    , contiguous                :: sample(:,:)
+        real(TKG)       , intent(in)    , contiguous                :: sample(:,:)
         integer(IK)     , intent(in)    , contiguous                :: weight(:)
-        real(TKC)       , intent(out)   , contiguous                :: mean(:)
+        real(TKG)       , intent(out)   , contiguous                :: mean(:)
         integer(IK)     , intent(out)                               :: weisum
     end subroutine
 #endif
@@ -3932,11 +3932,11 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMeanDIM_WTI_D2_RK2
 #endif
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
         integer(IK)     , intent(in)                                :: dim
-        real(TKC)       , intent(in)    , contiguous                :: sample(:,:)
+        real(TKG)       , intent(in)    , contiguous                :: sample(:,:)
         integer(IK)     , intent(in)    , contiguous                :: weight(:)
-        real(TKC)       , intent(out)   , contiguous                :: mean(:)
+        real(TKG)       , intent(out)   , contiguous                :: mean(:)
         integer(IK)     , intent(out)                               :: weisum
     end subroutine
 #endif
@@ -3946,11 +3946,11 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMeanDIM_WTI_D2_RK1
 #endif
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
         integer(IK)     , intent(in)                                :: dim
-        real(TKC)       , intent(in)    , contiguous                :: sample(:,:)
+        real(TKG)       , intent(in)    , contiguous                :: sample(:,:)
         integer(IK)     , intent(in)    , contiguous                :: weight(:)
-        real(TKC)       , intent(out)   , contiguous                :: mean(:)
+        real(TKG)       , intent(out)   , contiguous                :: mean(:)
         integer(IK)     , intent(out)                               :: weisum
     end subroutine
 #endif
@@ -3968,12 +3968,12 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMeanDIM_WTR_D2_CK5
 #endif
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
         integer(IK)     , intent(in)                                :: dim
-        complex(TKC)    , intent(in)    , contiguous                :: sample(:,:)
-        real(TKC)       , intent(in)    , contiguous                :: weight(:)
-        complex(TKC)    , intent(out)   , contiguous                :: mean(:)
-        real(TKC)       , intent(out)                               :: weisum
+        complex(TKG)    , intent(in)    , contiguous                :: sample(:,:)
+        real(TKG)       , intent(in)    , contiguous                :: weight(:)
+        complex(TKG)    , intent(out)   , contiguous                :: mean(:)
+        real(TKG)       , intent(out)                               :: weisum
     end subroutine
 #endif
 
@@ -3982,12 +3982,12 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMeanDIM_WTR_D2_CK4
 #endif
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
         integer(IK)     , intent(in)                                :: dim
-        complex(TKC)    , intent(in)    , contiguous                :: sample(:,:)
-        real(TKC)       , intent(in)    , contiguous                :: weight(:)
-        complex(TKC)    , intent(out)   , contiguous                :: mean(:)
-        real(TKC)       , intent(out)                               :: weisum
+        complex(TKG)    , intent(in)    , contiguous                :: sample(:,:)
+        real(TKG)       , intent(in)    , contiguous                :: weight(:)
+        complex(TKG)    , intent(out)   , contiguous                :: mean(:)
+        real(TKG)       , intent(out)                               :: weisum
     end subroutine
 #endif
 
@@ -3996,12 +3996,12 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMeanDIM_WTR_D2_CK3
 #endif
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
         integer(IK)     , intent(in)                                :: dim
-        complex(TKC)    , intent(in)    , contiguous                :: sample(:,:)
-        real(TKC)       , intent(in)    , contiguous                :: weight(:)
-        complex(TKC)    , intent(out)   , contiguous                :: mean(:)
-        real(TKC)       , intent(out)                               :: weisum
+        complex(TKG)    , intent(in)    , contiguous                :: sample(:,:)
+        real(TKG)       , intent(in)    , contiguous                :: weight(:)
+        complex(TKG)    , intent(out)   , contiguous                :: mean(:)
+        real(TKG)       , intent(out)                               :: weisum
     end subroutine
 #endif
 
@@ -4010,12 +4010,12 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMeanDIM_WTR_D2_CK2
 #endif
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
         integer(IK)     , intent(in)                                :: dim
-        complex(TKC)    , intent(in)    , contiguous                :: sample(:,:)
-        real(TKC)       , intent(in)    , contiguous                :: weight(:)
-        complex(TKC)    , intent(out)   , contiguous                :: mean(:)
-        real(TKC)       , intent(out)                               :: weisum
+        complex(TKG)    , intent(in)    , contiguous                :: sample(:,:)
+        real(TKG)       , intent(in)    , contiguous                :: weight(:)
+        complex(TKG)    , intent(out)   , contiguous                :: mean(:)
+        real(TKG)       , intent(out)                               :: weisum
     end subroutine
 #endif
 
@@ -4024,12 +4024,12 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMeanDIM_WTR_D2_CK1
 #endif
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
         integer(IK)     , intent(in)                                :: dim
-        complex(TKC)    , intent(in)    , contiguous                :: sample(:,:)
-        real(TKC)       , intent(in)    , contiguous                :: weight(:)
-        complex(TKC)    , intent(out)   , contiguous                :: mean(:)
-        real(TKC)       , intent(out)                               :: weisum
+        complex(TKG)    , intent(in)    , contiguous                :: sample(:,:)
+        real(TKG)       , intent(in)    , contiguous                :: weight(:)
+        complex(TKG)    , intent(out)   , contiguous                :: mean(:)
+        real(TKG)       , intent(out)                               :: weisum
     end subroutine
 #endif
 
@@ -4040,12 +4040,12 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMeanDIM_WTR_D2_RK5
 #endif
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
         integer(IK)     , intent(in)                                :: dim
-        real(TKC)       , intent(in)    , contiguous                :: sample(:,:)
-        real(TKC)       , intent(in)    , contiguous                :: weight(:)
-        real(TKC)       , intent(out)   , contiguous                :: mean(:)
-        real(TKC)       , intent(out)                               :: weisum
+        real(TKG)       , intent(in)    , contiguous                :: sample(:,:)
+        real(TKG)       , intent(in)    , contiguous                :: weight(:)
+        real(TKG)       , intent(out)   , contiguous                :: mean(:)
+        real(TKG)       , intent(out)                               :: weisum
     end subroutine
 #endif
 
@@ -4054,12 +4054,12 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMeanDIM_WTR_D2_RK4
 #endif
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
         integer(IK)     , intent(in)                                :: dim
-        real(TKC)       , intent(in)    , contiguous                :: sample(:,:)
-        real(TKC)       , intent(in)    , contiguous                :: weight(:)
-        real(TKC)       , intent(out)   , contiguous                :: mean(:)
-        real(TKC)       , intent(out)                               :: weisum
+        real(TKG)       , intent(in)    , contiguous                :: sample(:,:)
+        real(TKG)       , intent(in)    , contiguous                :: weight(:)
+        real(TKG)       , intent(out)   , contiguous                :: mean(:)
+        real(TKG)       , intent(out)                               :: weisum
     end subroutine
 #endif
 
@@ -4068,12 +4068,12 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMeanDIM_WTR_D2_RK3
 #endif
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
         integer(IK)     , intent(in)                                :: dim
-        real(TKC)       , intent(in)    , contiguous                :: sample(:,:)
-        real(TKC)       , intent(in)    , contiguous                :: weight(:)
-        real(TKC)       , intent(out)   , contiguous                :: mean(:)
-        real(TKC)       , intent(out)                               :: weisum
+        real(TKG)       , intent(in)    , contiguous                :: sample(:,:)
+        real(TKG)       , intent(in)    , contiguous                :: weight(:)
+        real(TKG)       , intent(out)   , contiguous                :: mean(:)
+        real(TKG)       , intent(out)                               :: weisum
     end subroutine
 #endif
 
@@ -4082,12 +4082,12 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMeanDIM_WTR_D2_RK2
 #endif
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
         integer(IK)     , intent(in)                                :: dim
-        real(TKC)       , intent(in)    , contiguous                :: sample(:,:)
-        real(TKC)       , intent(in)    , contiguous                :: weight(:)
-        real(TKC)       , intent(out)   , contiguous                :: mean(:)
-        real(TKC)       , intent(out)                               :: weisum
+        real(TKG)       , intent(in)    , contiguous                :: sample(:,:)
+        real(TKG)       , intent(in)    , contiguous                :: weight(:)
+        real(TKG)       , intent(out)   , contiguous                :: mean(:)
+        real(TKG)       , intent(out)                               :: weisum
     end subroutine
 #endif
 
@@ -4096,12 +4096,12 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMeanDIM_WTR_D2_RK1
 #endif
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
         integer(IK)     , intent(in)                                :: dim
-        real(TKC)       , intent(in)    , contiguous                :: sample(:,:)
-        real(TKC)       , intent(in)    , contiguous                :: weight(:)
-        real(TKC)       , intent(out)   , contiguous                :: mean(:)
-        real(TKC)       , intent(out)                               :: weisum
+        real(TKG)       , intent(in)    , contiguous                :: sample(:,:)
+        real(TKG)       , intent(in)    , contiguous                :: weight(:)
+        real(TKG)       , intent(out)   , contiguous                :: mean(:)
+        real(TKG)       , intent(out)                               :: weisum
     end subroutine
 #endif
 
@@ -4200,11 +4200,11 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMeanMergedNew_D0_CK5
 #endif
-        use pm_kind, only: TKC => CK5
-        real(TKC)       , intent(in)                                :: fracA
-        complex(TKC)    , intent(in)                                :: meanA
-        complex(TKC)    , intent(in)                                :: meanB
-        complex(TKC)                                                :: meanMerged
+        use pm_kind, only: TKG => CK5
+        real(TKG)       , intent(in)                                :: fracA
+        complex(TKG)    , intent(in)                                :: meanA
+        complex(TKG)    , intent(in)                                :: meanB
+        complex(TKG)                                                :: meanMerged
     end function
 #endif
 
@@ -4213,11 +4213,11 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMeanMergedNew_D0_CK4
 #endif
-        use pm_kind, only: TKC => CK4
-        real(TKC)       , intent(in)                                :: fracA
-        complex(TKC)    , intent(in)                                :: meanA
-        complex(TKC)    , intent(in)                                :: meanB
-        complex(TKC)                                                :: meanMerged
+        use pm_kind, only: TKG => CK4
+        real(TKG)       , intent(in)                                :: fracA
+        complex(TKG)    , intent(in)                                :: meanA
+        complex(TKG)    , intent(in)                                :: meanB
+        complex(TKG)                                                :: meanMerged
     end function
 #endif
 
@@ -4226,11 +4226,11 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMeanMergedNew_D0_CK3
 #endif
-        use pm_kind, only: TKC => CK3
-        real(TKC)       , intent(in)                                :: fracA
-        complex(TKC)    , intent(in)                                :: meanA
-        complex(TKC)    , intent(in)                                :: meanB
-        complex(TKC)                                                :: meanMerged
+        use pm_kind, only: TKG => CK3
+        real(TKG)       , intent(in)                                :: fracA
+        complex(TKG)    , intent(in)                                :: meanA
+        complex(TKG)    , intent(in)                                :: meanB
+        complex(TKG)                                                :: meanMerged
     end function
 #endif
 
@@ -4239,11 +4239,11 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMeanMergedNew_D0_CK2
 #endif
-        use pm_kind, only: TKC => CK2
-        real(TKC)       , intent(in)                                :: fracA
-        complex(TKC)    , intent(in)                                :: meanA
-        complex(TKC)    , intent(in)                                :: meanB
-        complex(TKC)                                                :: meanMerged
+        use pm_kind, only: TKG => CK2
+        real(TKG)       , intent(in)                                :: fracA
+        complex(TKG)    , intent(in)                                :: meanA
+        complex(TKG)    , intent(in)                                :: meanB
+        complex(TKG)                                                :: meanMerged
     end function
 #endif
 
@@ -4252,11 +4252,11 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMeanMergedNew_D0_CK1
 #endif
-        use pm_kind, only: TKC => CK1
-        real(TKC)       , intent(in)                                :: fracA
-        complex(TKC)    , intent(in)                                :: meanA
-        complex(TKC)    , intent(in)                                :: meanB
-        complex(TKC)                                                :: meanMerged
+        use pm_kind, only: TKG => CK1
+        real(TKG)       , intent(in)                                :: fracA
+        complex(TKG)    , intent(in)                                :: meanA
+        complex(TKG)    , intent(in)                                :: meanB
+        complex(TKG)                                                :: meanMerged
     end function
 #endif
 
@@ -4267,11 +4267,11 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMeanMergedNew_D0_RK5
 #endif
-        use pm_kind, only: TKC => RK5
-        real(TKC)       , intent(in)                                :: fracA
-        real(TKC)       , intent(in)                                :: meanA
-        real(TKC)       , intent(in)                                :: meanB
-        real(TKC)                                                   :: meanMerged
+        use pm_kind, only: TKG => RK5
+        real(TKG)       , intent(in)                                :: fracA
+        real(TKG)       , intent(in)                                :: meanA
+        real(TKG)       , intent(in)                                :: meanB
+        real(TKG)                                                   :: meanMerged
     end function
 #endif
 
@@ -4280,11 +4280,11 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMeanMergedNew_D0_RK4
 #endif
-        use pm_kind, only: TKC => RK4
-        real(TKC)       , intent(in)                                :: fracA
-        real(TKC)       , intent(in)                                :: meanA
-        real(TKC)       , intent(in)                                :: meanB
-        real(TKC)                                                   :: meanMerged
+        use pm_kind, only: TKG => RK4
+        real(TKG)       , intent(in)                                :: fracA
+        real(TKG)       , intent(in)                                :: meanA
+        real(TKG)       , intent(in)                                :: meanB
+        real(TKG)                                                   :: meanMerged
     end function
 #endif
 
@@ -4293,11 +4293,11 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMeanMergedNew_D0_RK3
 #endif
-        use pm_kind, only: TKC => RK3
-        real(TKC)       , intent(in)                                :: fracA
-        real(TKC)       , intent(in)                                :: meanA
-        real(TKC)       , intent(in)                                :: meanB
-        real(TKC)                                                   :: meanMerged
+        use pm_kind, only: TKG => RK3
+        real(TKG)       , intent(in)                                :: fracA
+        real(TKG)       , intent(in)                                :: meanA
+        real(TKG)       , intent(in)                                :: meanB
+        real(TKG)                                                   :: meanMerged
     end function
 #endif
 
@@ -4306,11 +4306,11 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMeanMergedNew_D0_RK2
 #endif
-        use pm_kind, only: TKC => RK2
-        real(TKC)       , intent(in)                                :: fracA
-        real(TKC)       , intent(in)                                :: meanA
-        real(TKC)       , intent(in)                                :: meanB
-        real(TKC)                                                   :: meanMerged
+        use pm_kind, only: TKG => RK2
+        real(TKG)       , intent(in)                                :: fracA
+        real(TKG)       , intent(in)                                :: meanA
+        real(TKG)       , intent(in)                                :: meanB
+        real(TKG)                                                   :: meanMerged
     end function
 #endif
 
@@ -4319,11 +4319,11 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMeanMergedNew_D0_RK1
 #endif
-        use pm_kind, only: TKC => RK1
-        real(TKC)       , intent(in)                                :: fracA
-        real(TKC)       , intent(in)                                :: meanA
-        real(TKC)       , intent(in)                                :: meanB
-        real(TKC)                                                   :: meanMerged
+        use pm_kind, only: TKG => RK1
+        real(TKG)       , intent(in)                                :: fracA
+        real(TKG)       , intent(in)                                :: meanA
+        real(TKG)       , intent(in)                                :: meanB
+        real(TKG)                                                   :: meanMerged
     end function
 #endif
 
@@ -4342,10 +4342,10 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMeanMergedNew_D1_RK5
 #endif
-        use pm_kind, only: TKC => RK5
-        real(TKC)       , intent(in)                                :: fracA
-        real(TKC)       , intent(in)    , contiguous                :: meanA(:), meanB(:)
-        real(TKC)                                                   :: meanMerged(size(meanA, 1, IK))
+        use pm_kind, only: TKG => RK5
+        real(TKG)       , intent(in)                                :: fracA
+        real(TKG)       , intent(in)    , contiguous                :: meanA(:), meanB(:)
+        real(TKG)                                                   :: meanMerged(size(meanA, 1, IK))
     end function
 #endif
 
@@ -4354,10 +4354,10 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMeanMergedNew_D1_RK4
 #endif
-        use pm_kind, only: TKC => RK4
-        real(TKC)       , intent(in)                                :: fracA
-        real(TKC)       , intent(in)    , contiguous                :: meanA(:), meanB(:)
-        real(TKC)                                                   :: meanMerged(size(meanA, 1, IK))
+        use pm_kind, only: TKG => RK4
+        real(TKG)       , intent(in)                                :: fracA
+        real(TKG)       , intent(in)    , contiguous                :: meanA(:), meanB(:)
+        real(TKG)                                                   :: meanMerged(size(meanA, 1, IK))
     end function
 #endif
 
@@ -4366,10 +4366,10 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMeanMergedNew_D1_RK3
 #endif
-        use pm_kind, only: TKC => RK3
-        real(TKC)       , intent(in)                                :: fracA
-        real(TKC)       , intent(in)    , contiguous                :: meanA(:), meanB(:)
-        real(TKC)                                                   :: meanMerged(size(meanA, 1, IK))
+        use pm_kind, only: TKG => RK3
+        real(TKG)       , intent(in)                                :: fracA
+        real(TKG)       , intent(in)    , contiguous                :: meanA(:), meanB(:)
+        real(TKG)                                                   :: meanMerged(size(meanA, 1, IK))
     end function
 #endif
 
@@ -4378,10 +4378,10 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMeanMergedNew_D1_RK2
 #endif
-        use pm_kind, only: TKC => RK2
-        real(TKC)       , intent(in)                                :: fracA
-        real(TKC)       , intent(in)    , contiguous                :: meanA(:), meanB(:)
-        real(TKC)                                                   :: meanMerged(size(meanA, 1, IK))
+        use pm_kind, only: TKG => RK2
+        real(TKG)       , intent(in)                                :: fracA
+        real(TKG)       , intent(in)    , contiguous                :: meanA(:), meanB(:)
+        real(TKG)                                                   :: meanMerged(size(meanA, 1, IK))
     end function
 #endif
 
@@ -4390,10 +4390,10 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMeanMergedNew_D1_RK1
 #endif
-        use pm_kind, only: TKC => RK1
-        real(TKC)       , intent(in)                                :: fracA
-        real(TKC)       , intent(in)    , contiguous                :: meanA(:), meanB(:)
-        real(TKC)                                                   :: meanMerged(size(meanA, 1, IK))
+        use pm_kind, only: TKG => RK1
+        real(TKG)       , intent(in)                                :: fracA
+        real(TKG)       , intent(in)    , contiguous                :: meanA(:), meanB(:)
+        real(TKG)                                                   :: meanMerged(size(meanA, 1, IK))
     end function
 #endif
 
@@ -4404,10 +4404,10 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMeanMergedNew_D1_CK5
 #endif
-        use pm_kind, only: TKC => CK5
-        real(TKC)       , intent(in)                                :: fracA
-        complex(TKC)    , intent(in)    , contiguous                :: meanA(:), meanB(:)
-        complex(TKC)                                                :: meanMerged(size(meanA, 1, IK))
+        use pm_kind, only: TKG => CK5
+        real(TKG)       , intent(in)                                :: fracA
+        complex(TKG)    , intent(in)    , contiguous                :: meanA(:), meanB(:)
+        complex(TKG)                                                :: meanMerged(size(meanA, 1, IK))
     end function
 #endif
 
@@ -4416,10 +4416,10 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMeanMergedNew_D1_CK4
 #endif
-        use pm_kind, only: TKC => CK4
-        real(TKC)       , intent(in)                                :: fracA
-        complex(TKC)    , intent(in)    , contiguous                :: meanA(:), meanB(:)
-        complex(TKC)                                                :: meanMerged(size(meanA, 1, IK))
+        use pm_kind, only: TKG => CK4
+        real(TKG)       , intent(in)                                :: fracA
+        complex(TKG)    , intent(in)    , contiguous                :: meanA(:), meanB(:)
+        complex(TKG)                                                :: meanMerged(size(meanA, 1, IK))
     end function
 #endif
 
@@ -4428,10 +4428,10 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMeanMergedNew_D1_CK3
 #endif
-        use pm_kind, only: TKC => CK3
-        real(TKC)       , intent(in)                                :: fracA
-        complex(TKC)    , intent(in)    , contiguous                :: meanA(:), meanB(:)
-        complex(TKC)                                                :: meanMerged(size(meanA, 1, IK))
+        use pm_kind, only: TKG => CK3
+        real(TKG)       , intent(in)                                :: fracA
+        complex(TKG)    , intent(in)    , contiguous                :: meanA(:), meanB(:)
+        complex(TKG)                                                :: meanMerged(size(meanA, 1, IK))
     end function
 #endif
 
@@ -4440,10 +4440,10 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMeanMergedNew_D1_CK2
 #endif
-        use pm_kind, only: TKC => CK2
-        real(TKC)       , intent(in)                                :: fracA
-        complex(TKC)    , intent(in)    , contiguous                :: meanA(:), meanB(:)
-        complex(TKC)                                                :: meanMerged(size(meanA, 1, IK))
+        use pm_kind, only: TKG => CK2
+        real(TKG)       , intent(in)                                :: fracA
+        complex(TKG)    , intent(in)    , contiguous                :: meanA(:), meanB(:)
+        complex(TKG)                                                :: meanMerged(size(meanA, 1, IK))
     end function
 #endif
 
@@ -4452,10 +4452,10 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getMeanMergedNew_D1_CK1
 #endif
-        use pm_kind, only: TKC => CK1
-        real(TKC)       , intent(in)                                :: fracA
-        complex(TKC)    , intent(in)    , contiguous                :: meanA(:), meanB(:)
-        complex(TKC)                                                :: meanMerged(size(meanA, 1, IK))
+        use pm_kind, only: TKG => CK1
+        real(TKG)       , intent(in)                                :: fracA
+        complex(TKG)    , intent(in)    , contiguous                :: meanA(:), meanB(:)
+        complex(TKG)                                                :: meanMerged(size(meanA, 1, IK))
     end function
 #endif
 
@@ -4554,11 +4554,11 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMeanMergedNew_D0_CK5
 #endif
-        use pm_kind, only: TKC => CK5
-        real(TKC)       , intent(in)                                :: fracA
-        complex(TKC)    , intent(in)                                :: meanA
-        complex(TKC)    , intent(in)                                :: meanB
-        complex(TKC)    , intent(out)                               :: meanMerged
+        use pm_kind, only: TKG => CK5
+        real(TKG)       , intent(in)                                :: fracA
+        complex(TKG)    , intent(in)                                :: meanA
+        complex(TKG)    , intent(in)                                :: meanB
+        complex(TKG)    , intent(out)                               :: meanMerged
     end subroutine
 #endif
 
@@ -4567,11 +4567,11 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMeanMergedNew_D0_CK4
 #endif
-        use pm_kind, only: TKC => CK4
-        real(TKC)       , intent(in)                                :: fracA
-        complex(TKC)    , intent(in)                                :: meanA
-        complex(TKC)    , intent(in)                                :: meanB
-        complex(TKC)    , intent(out)                               :: meanMerged
+        use pm_kind, only: TKG => CK4
+        real(TKG)       , intent(in)                                :: fracA
+        complex(TKG)    , intent(in)                                :: meanA
+        complex(TKG)    , intent(in)                                :: meanB
+        complex(TKG)    , intent(out)                               :: meanMerged
     end subroutine
 #endif
 
@@ -4580,11 +4580,11 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMeanMergedNew_D0_CK3
 #endif
-        use pm_kind, only: TKC => CK3
-        real(TKC)       , intent(in)                                :: fracA
-        complex(TKC)    , intent(in)                                :: meanA
-        complex(TKC)    , intent(in)                                :: meanB
-        complex(TKC)    , intent(out)                               :: meanMerged
+        use pm_kind, only: TKG => CK3
+        real(TKG)       , intent(in)                                :: fracA
+        complex(TKG)    , intent(in)                                :: meanA
+        complex(TKG)    , intent(in)                                :: meanB
+        complex(TKG)    , intent(out)                               :: meanMerged
     end subroutine
 #endif
 
@@ -4593,11 +4593,11 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMeanMergedNew_D0_CK2
 #endif
-        use pm_kind, only: TKC => CK2
-        real(TKC)       , intent(in)                                :: fracA
-        complex(TKC)    , intent(in)                                :: meanA
-        complex(TKC)    , intent(in)                                :: meanB
-        complex(TKC)    , intent(out)                               :: meanMerged
+        use pm_kind, only: TKG => CK2
+        real(TKG)       , intent(in)                                :: fracA
+        complex(TKG)    , intent(in)                                :: meanA
+        complex(TKG)    , intent(in)                                :: meanB
+        complex(TKG)    , intent(out)                               :: meanMerged
     end subroutine
 #endif
 
@@ -4606,11 +4606,11 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMeanMergedNew_D0_CK1
 #endif
-        use pm_kind, only: TKC => CK1
-        real(TKC)       , intent(in)                                :: fracA
-        complex(TKC)    , intent(in)                                :: meanA
-        complex(TKC)    , intent(in)                                :: meanB
-        complex(TKC)    , intent(out)                               :: meanMerged
+        use pm_kind, only: TKG => CK1
+        real(TKG)       , intent(in)                                :: fracA
+        complex(TKG)    , intent(in)                                :: meanA
+        complex(TKG)    , intent(in)                                :: meanB
+        complex(TKG)    , intent(out)                               :: meanMerged
     end subroutine
 #endif
 
@@ -4621,11 +4621,11 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMeanMergedNew_D0_RK5
 #endif
-        use pm_kind, only: TKC => RK5
-        real(TKC)       , intent(in)                                :: fracA
-        real(TKC)       , intent(in)                                :: meanA
-        real(TKC)       , intent(in)                                :: meanB
-        real(TKC)       , intent(out)                               :: meanMerged
+        use pm_kind, only: TKG => RK5
+        real(TKG)       , intent(in)                                :: fracA
+        real(TKG)       , intent(in)                                :: meanA
+        real(TKG)       , intent(in)                                :: meanB
+        real(TKG)       , intent(out)                               :: meanMerged
     end subroutine
 #endif
 
@@ -4634,11 +4634,11 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMeanMergedNew_D0_RK4
 #endif
-        use pm_kind, only: TKC => RK4
-        real(TKC)       , intent(in)                                :: fracA
-        real(TKC)       , intent(in)                                :: meanA
-        real(TKC)       , intent(in)                                :: meanB
-        real(TKC)       , intent(out)                               :: meanMerged
+        use pm_kind, only: TKG => RK4
+        real(TKG)       , intent(in)                                :: fracA
+        real(TKG)       , intent(in)                                :: meanA
+        real(TKG)       , intent(in)                                :: meanB
+        real(TKG)       , intent(out)                               :: meanMerged
     end subroutine
 #endif
 
@@ -4647,11 +4647,11 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMeanMergedNew_D0_RK3
 #endif
-        use pm_kind, only: TKC => RK3
-        real(TKC)       , intent(in)                                :: fracA
-        real(TKC)       , intent(in)                                :: meanA
-        real(TKC)       , intent(in)                                :: meanB
-        real(TKC)       , intent(out)                               :: meanMerged
+        use pm_kind, only: TKG => RK3
+        real(TKG)       , intent(in)                                :: fracA
+        real(TKG)       , intent(in)                                :: meanA
+        real(TKG)       , intent(in)                                :: meanB
+        real(TKG)       , intent(out)                               :: meanMerged
     end subroutine
 #endif
 
@@ -4660,11 +4660,11 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMeanMergedNew_D0_RK2
 #endif
-        use pm_kind, only: TKC => RK2
-        real(TKC)       , intent(in)                                :: fracA
-        real(TKC)       , intent(in)                                :: meanA
-        real(TKC)       , intent(in)                                :: meanB
-        real(TKC)       , intent(out)                               :: meanMerged
+        use pm_kind, only: TKG => RK2
+        real(TKG)       , intent(in)                                :: fracA
+        real(TKG)       , intent(in)                                :: meanA
+        real(TKG)       , intent(in)                                :: meanB
+        real(TKG)       , intent(out)                               :: meanMerged
     end subroutine
 #endif
 
@@ -4673,11 +4673,11 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMeanMergedNew_D0_RK1
 #endif
-        use pm_kind, only: TKC => RK1
-        real(TKC)       , intent(in)                                :: fracA
-        real(TKC)       , intent(in)                                :: meanA
-        real(TKC)       , intent(in)                                :: meanB
-        real(TKC)       , intent(out)                               :: meanMerged
+        use pm_kind, only: TKG => RK1
+        real(TKG)       , intent(in)                                :: fracA
+        real(TKG)       , intent(in)                                :: meanA
+        real(TKG)       , intent(in)                                :: meanB
+        real(TKG)       , intent(out)                               :: meanMerged
     end subroutine
 #endif
 
@@ -4696,10 +4696,10 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMeanMergedNew_D1_CK5
 #endif
-        use pm_kind, only: TKC => CK5
-        real(TKC)       , intent(in)                                :: fracA
-        complex(TKC)    , intent(in)    , contiguous                :: meanA(:), meanB(:)
-        complex(TKC)    , intent(out)   , contiguous                :: meanMerged(:)
+        use pm_kind, only: TKG => CK5
+        real(TKG)       , intent(in)                                :: fracA
+        complex(TKG)    , intent(in)    , contiguous                :: meanA(:), meanB(:)
+        complex(TKG)    , intent(out)   , contiguous                :: meanMerged(:)
     end subroutine
 #endif
 
@@ -4708,10 +4708,10 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMeanMergedNew_D1_CK4
 #endif
-        use pm_kind, only: TKC => CK4
-        real(TKC)       , intent(in)                                :: fracA
-        complex(TKC)    , intent(in)    , contiguous                :: meanA(:), meanB(:)
-        complex(TKC)    , intent(out)   , contiguous                :: meanMerged(:)
+        use pm_kind, only: TKG => CK4
+        real(TKG)       , intent(in)                                :: fracA
+        complex(TKG)    , intent(in)    , contiguous                :: meanA(:), meanB(:)
+        complex(TKG)    , intent(out)   , contiguous                :: meanMerged(:)
     end subroutine
 #endif
 
@@ -4720,10 +4720,10 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMeanMergedNew_D1_CK3
 #endif
-        use pm_kind, only: TKC => CK3
-        real(TKC)       , intent(in)                                :: fracA
-        complex(TKC)    , intent(in)    , contiguous                :: meanA(:), meanB(:)
-        complex(TKC)    , intent(out)   , contiguous                :: meanMerged(:)
+        use pm_kind, only: TKG => CK3
+        real(TKG)       , intent(in)                                :: fracA
+        complex(TKG)    , intent(in)    , contiguous                :: meanA(:), meanB(:)
+        complex(TKG)    , intent(out)   , contiguous                :: meanMerged(:)
     end subroutine
 #endif
 
@@ -4732,10 +4732,10 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMeanMergedNew_D1_CK2
 #endif
-        use pm_kind, only: TKC => CK2
-        real(TKC)       , intent(in)                                :: fracA
-        complex(TKC)    , intent(in)    , contiguous                :: meanA(:), meanB(:)
-        complex(TKC)    , intent(out)   , contiguous                :: meanMerged(:)
+        use pm_kind, only: TKG => CK2
+        real(TKG)       , intent(in)                                :: fracA
+        complex(TKG)    , intent(in)    , contiguous                :: meanA(:), meanB(:)
+        complex(TKG)    , intent(out)   , contiguous                :: meanMerged(:)
     end subroutine
 #endif
 
@@ -4744,10 +4744,10 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMeanMergedNew_D1_CK1
 #endif
-        use pm_kind, only: TKC => CK1
-        real(TKC)       , intent(in)                                :: fracA
-        complex(TKC)    , intent(in)    , contiguous                :: meanA(:), meanB(:)
-        complex(TKC)    , intent(out)   , contiguous                :: meanMerged(:)
+        use pm_kind, only: TKG => CK1
+        real(TKG)       , intent(in)                                :: fracA
+        complex(TKG)    , intent(in)    , contiguous                :: meanA(:), meanB(:)
+        complex(TKG)    , intent(out)   , contiguous                :: meanMerged(:)
     end subroutine
 #endif
 
@@ -4758,10 +4758,10 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMeanMergedNew_D1_RK5
 #endif
-        use pm_kind, only: TKC => RK5
-        real(TKC)       , intent(in)                                :: fracA
-        real(TKC)       , intent(in)    , contiguous                :: meanA(:), meanB(:)
-        real(TKC)       , intent(out)   , contiguous                :: meanMerged(:)
+        use pm_kind, only: TKG => RK5
+        real(TKG)       , intent(in)                                :: fracA
+        real(TKG)       , intent(in)    , contiguous                :: meanA(:), meanB(:)
+        real(TKG)       , intent(out)   , contiguous                :: meanMerged(:)
     end subroutine
 #endif
 
@@ -4770,10 +4770,10 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMeanMergedNew_D1_RK4
 #endif
-        use pm_kind, only: TKC => RK4
-        real(TKC)       , intent(in)                                :: fracA
-        real(TKC)       , intent(in)    , contiguous                :: meanA(:), meanB(:)
-        real(TKC)       , intent(out)   , contiguous                :: meanMerged(:)
+        use pm_kind, only: TKG => RK4
+        real(TKG)       , intent(in)                                :: fracA
+        real(TKG)       , intent(in)    , contiguous                :: meanA(:), meanB(:)
+        real(TKG)       , intent(out)   , contiguous                :: meanMerged(:)
     end subroutine
 #endif
 
@@ -4782,10 +4782,10 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMeanMergedNew_D1_RK3
 #endif
-        use pm_kind, only: TKC => RK3
-        real(TKC)       , intent(in)                                :: fracA
-        real(TKC)       , intent(in)    , contiguous                :: meanA(:), meanB(:)
-        real(TKC)       , intent(out)   , contiguous                :: meanMerged(:)
+        use pm_kind, only: TKG => RK3
+        real(TKG)       , intent(in)                                :: fracA
+        real(TKG)       , intent(in)    , contiguous                :: meanA(:), meanB(:)
+        real(TKG)       , intent(out)   , contiguous                :: meanMerged(:)
     end subroutine
 #endif
 
@@ -4794,10 +4794,10 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMeanMergedNew_D1_RK2
 #endif
-        use pm_kind, only: TKC => RK2
-        real(TKC)       , intent(in)                                :: fracA
-        real(TKC)       , intent(in)    , contiguous                :: meanA(:), meanB(:)
-        real(TKC)       , intent(out)   , contiguous                :: meanMerged(:)
+        use pm_kind, only: TKG => RK2
+        real(TKG)       , intent(in)                                :: fracA
+        real(TKG)       , intent(in)    , contiguous                :: meanA(:), meanB(:)
+        real(TKG)       , intent(out)   , contiguous                :: meanMerged(:)
     end subroutine
 #endif
 
@@ -4806,10 +4806,10 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMeanMergedNew_D1_RK1
 #endif
-        use pm_kind, only: TKC => RK1
-        real(TKC)       , intent(in)                                :: fracA
-        real(TKC)       , intent(in)    , contiguous                :: meanA(:), meanB(:)
-        real(TKC)       , intent(out)   , contiguous                :: meanMerged(:)
+        use pm_kind, only: TKG => RK1
+        real(TKG)       , intent(in)                                :: fracA
+        real(TKG)       , intent(in)    , contiguous                :: meanA(:), meanB(:)
+        real(TKG)       , intent(out)   , contiguous                :: meanMerged(:)
     end subroutine
 #endif
 
@@ -4828,10 +4828,10 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMeanMergedOld_D0_CK5
 #endif
-        use pm_kind, only: TKC => CK5
-        real(TKC)       , intent(in)                                :: fracA
-        complex(TKC)    , intent(in)                                :: meanA
-        complex(TKC)    , intent(inout)                             :: meanB
+        use pm_kind, only: TKG => CK5
+        real(TKG)       , intent(in)                                :: fracA
+        complex(TKG)    , intent(in)                                :: meanA
+        complex(TKG)    , intent(inout)                             :: meanB
     end subroutine
 #endif
 
@@ -4840,10 +4840,10 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMeanMergedOld_D0_CK4
 #endif
-        use pm_kind, only: TKC => CK4
-        real(TKC)       , intent(in)                                :: fracA
-        complex(TKC)    , intent(in)                                :: meanA
-        complex(TKC)    , intent(inout)                             :: meanB
+        use pm_kind, only: TKG => CK4
+        real(TKG)       , intent(in)                                :: fracA
+        complex(TKG)    , intent(in)                                :: meanA
+        complex(TKG)    , intent(inout)                             :: meanB
     end subroutine
 #endif
 
@@ -4852,10 +4852,10 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMeanMergedOld_D0_CK3
 #endif
-        use pm_kind, only: TKC => CK3
-        real(TKC)       , intent(in)                                :: fracA
-        complex(TKC)    , intent(in)                                :: meanA
-        complex(TKC)    , intent(inout)                             :: meanB
+        use pm_kind, only: TKG => CK3
+        real(TKG)       , intent(in)                                :: fracA
+        complex(TKG)    , intent(in)                                :: meanA
+        complex(TKG)    , intent(inout)                             :: meanB
     end subroutine
 #endif
 
@@ -4864,10 +4864,10 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMeanMergedOld_D0_CK2
 #endif
-        use pm_kind, only: TKC => CK2
-        real(TKC)       , intent(in)                                :: fracA
-        complex(TKC)    , intent(in)                                :: meanA
-        complex(TKC)    , intent(inout)                             :: meanB
+        use pm_kind, only: TKG => CK2
+        real(TKG)       , intent(in)                                :: fracA
+        complex(TKG)    , intent(in)                                :: meanA
+        complex(TKG)    , intent(inout)                             :: meanB
     end subroutine
 #endif
 
@@ -4876,10 +4876,10 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMeanMergedOld_D0_CK1
 #endif
-        use pm_kind, only: TKC => CK1
-        real(TKC)       , intent(in)                                :: fracA
-        complex(TKC)    , intent(in)                                :: meanA
-        complex(TKC)    , intent(inout)                             :: meanB
+        use pm_kind, only: TKG => CK1
+        real(TKG)       , intent(in)                                :: fracA
+        complex(TKG)    , intent(in)                                :: meanA
+        complex(TKG)    , intent(inout)                             :: meanB
     end subroutine
 #endif
 
@@ -4890,10 +4890,10 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMeanMergedOld_D0_RK5
 #endif
-        use pm_kind, only: TKC => RK5
-        real(TKC)       , intent(in)                                :: fracA
-        real(TKC)       , intent(in)                                :: meanA
-        real(TKC)       , intent(inout)                             :: meanB
+        use pm_kind, only: TKG => RK5
+        real(TKG)       , intent(in)                                :: fracA
+        real(TKG)       , intent(in)                                :: meanA
+        real(TKG)       , intent(inout)                             :: meanB
     end subroutine
 #endif
 
@@ -4902,10 +4902,10 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMeanMergedOld_D0_RK4
 #endif
-        use pm_kind, only: TKC => RK4
-        real(TKC)       , intent(in)                                :: fracA
-        real(TKC)       , intent(in)                                :: meanA
-        real(TKC)       , intent(inout)                             :: meanB
+        use pm_kind, only: TKG => RK4
+        real(TKG)       , intent(in)                                :: fracA
+        real(TKG)       , intent(in)                                :: meanA
+        real(TKG)       , intent(inout)                             :: meanB
     end subroutine
 #endif
 
@@ -4914,10 +4914,10 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMeanMergedOld_D0_RK3
 #endif
-        use pm_kind, only: TKC => RK3
-        real(TKC)       , intent(in)                                :: fracA
-        real(TKC)       , intent(in)                                :: meanA
-        real(TKC)       , intent(inout)                             :: meanB
+        use pm_kind, only: TKG => RK3
+        real(TKG)       , intent(in)                                :: fracA
+        real(TKG)       , intent(in)                                :: meanA
+        real(TKG)       , intent(inout)                             :: meanB
     end subroutine
 #endif
 
@@ -4926,10 +4926,10 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMeanMergedOld_D0_RK2
 #endif
-        use pm_kind, only: TKC => RK2
-        real(TKC)       , intent(in)                                :: fracA
-        real(TKC)       , intent(in)                                :: meanA
-        real(TKC)       , intent(inout)                             :: meanB
+        use pm_kind, only: TKG => RK2
+        real(TKG)       , intent(in)                                :: fracA
+        real(TKG)       , intent(in)                                :: meanA
+        real(TKG)       , intent(inout)                             :: meanB
     end subroutine
 #endif
 
@@ -4938,10 +4938,10 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMeanMergedOld_D0_RK1
 #endif
-        use pm_kind, only: TKC => RK1
-        real(TKC)       , intent(in)                                :: fracA
-        real(TKC)       , intent(in)                                :: meanA
-        real(TKC)       , intent(inout)                             :: meanB
+        use pm_kind, only: TKG => RK1
+        real(TKG)       , intent(in)                                :: fracA
+        real(TKG)       , intent(in)                                :: meanA
+        real(TKG)       , intent(inout)                             :: meanB
     end subroutine
 #endif
 
@@ -4960,10 +4960,10 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMeanMergedOld_D1_CK5
 #endif
-        use pm_kind, only: TKC => CK5
-        real(TKC)       , intent(in)                                :: fracA
-        complex(TKC)    , intent(in)    , contiguous                :: meanA(:)
-        complex(TKC)    , intent(inout) , contiguous                :: meanB(:)
+        use pm_kind, only: TKG => CK5
+        real(TKG)       , intent(in)                                :: fracA
+        complex(TKG)    , intent(in)    , contiguous                :: meanA(:)
+        complex(TKG)    , intent(inout) , contiguous                :: meanB(:)
     end subroutine
 #endif
 
@@ -4972,10 +4972,10 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMeanMergedOld_D1_CK4
 #endif
-        use pm_kind, only: TKC => CK4
-        real(TKC)       , intent(in)                                :: fracA
-        complex(TKC)    , intent(in)    , contiguous                :: meanA(:)
-        complex(TKC)    , intent(inout) , contiguous                :: meanB(:)
+        use pm_kind, only: TKG => CK4
+        real(TKG)       , intent(in)                                :: fracA
+        complex(TKG)    , intent(in)    , contiguous                :: meanA(:)
+        complex(TKG)    , intent(inout) , contiguous                :: meanB(:)
     end subroutine
 #endif
 
@@ -4984,10 +4984,10 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMeanMergedOld_D1_CK3
 #endif
-        use pm_kind, only: TKC => CK3
-        real(TKC)       , intent(in)                                :: fracA
-        complex(TKC)    , intent(in)    , contiguous                :: meanA(:)
-        complex(TKC)    , intent(inout) , contiguous                :: meanB(:)
+        use pm_kind, only: TKG => CK3
+        real(TKG)       , intent(in)                                :: fracA
+        complex(TKG)    , intent(in)    , contiguous                :: meanA(:)
+        complex(TKG)    , intent(inout) , contiguous                :: meanB(:)
     end subroutine
 #endif
 
@@ -4996,10 +4996,10 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMeanMergedOld_D1_CK2
 #endif
-        use pm_kind, only: TKC => CK2
-        real(TKC)       , intent(in)                                :: fracA
-        complex(TKC)    , intent(in)    , contiguous                :: meanA(:)
-        complex(TKC)    , intent(inout) , contiguous                :: meanB(:)
+        use pm_kind, only: TKG => CK2
+        real(TKG)       , intent(in)                                :: fracA
+        complex(TKG)    , intent(in)    , contiguous                :: meanA(:)
+        complex(TKG)    , intent(inout) , contiguous                :: meanB(:)
     end subroutine
 #endif
 
@@ -5008,10 +5008,10 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMeanMergedOld_D1_CK1
 #endif
-        use pm_kind, only: TKC => CK1
-        real(TKC)       , intent(in)                                :: fracA
-        complex(TKC)    , intent(in)    , contiguous                :: meanA(:)
-        complex(TKC)    , intent(inout) , contiguous                :: meanB(:)
+        use pm_kind, only: TKG => CK1
+        real(TKG)       , intent(in)                                :: fracA
+        complex(TKG)    , intent(in)    , contiguous                :: meanA(:)
+        complex(TKG)    , intent(inout) , contiguous                :: meanB(:)
     end subroutine
 #endif
 
@@ -5022,10 +5022,10 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMeanMergedOld_D1_RK5
 #endif
-        use pm_kind, only: TKC => RK5
-        real(TKC)       , intent(in)                                :: fracA
-        real(TKC)       , intent(in)    , contiguous                :: meanA(:)
-        real(TKC)       , intent(inout) , contiguous                :: meanB(:)
+        use pm_kind, only: TKG => RK5
+        real(TKG)       , intent(in)                                :: fracA
+        real(TKG)       , intent(in)    , contiguous                :: meanA(:)
+        real(TKG)       , intent(inout) , contiguous                :: meanB(:)
     end subroutine
 #endif
 
@@ -5034,10 +5034,10 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMeanMergedOld_D1_RK4
 #endif
-        use pm_kind, only: TKC => RK4
-        real(TKC)       , intent(in)                                :: fracA
-        real(TKC)       , intent(in)    , contiguous                :: meanA(:)
-        real(TKC)       , intent(inout) , contiguous                :: meanB(:)
+        use pm_kind, only: TKG => RK4
+        real(TKG)       , intent(in)                                :: fracA
+        real(TKG)       , intent(in)    , contiguous                :: meanA(:)
+        real(TKG)       , intent(inout) , contiguous                :: meanB(:)
     end subroutine
 #endif
 
@@ -5046,10 +5046,10 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMeanMergedOld_D1_RK3
 #endif
-        use pm_kind, only: TKC => RK3
-        real(TKC)       , intent(in)                                :: fracA
-        real(TKC)       , intent(in)    , contiguous                :: meanA(:)
-        real(TKC)       , intent(inout) , contiguous                :: meanB(:)
+        use pm_kind, only: TKG => RK3
+        real(TKG)       , intent(in)                                :: fracA
+        real(TKG)       , intent(in)    , contiguous                :: meanA(:)
+        real(TKG)       , intent(inout) , contiguous                :: meanB(:)
     end subroutine
 #endif
 
@@ -5058,10 +5058,10 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMeanMergedOld_D1_RK2
 #endif
-        use pm_kind, only: TKC => RK2
-        real(TKC)       , intent(in)                                :: fracA
-        real(TKC)       , intent(in)    , contiguous                :: meanA(:)
-        real(TKC)       , intent(inout) , contiguous                :: meanB(:)
+        use pm_kind, only: TKG => RK2
+        real(TKG)       , intent(in)                                :: fracA
+        real(TKG)       , intent(in)    , contiguous                :: meanA(:)
+        real(TKG)       , intent(inout) , contiguous                :: meanB(:)
     end subroutine
 #endif
 
@@ -5070,10 +5070,10 @@ module pm_sampleMean
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setMeanMergedOld_D1_RK1
 #endif
-        use pm_kind, only: TKC => RK1
-        real(TKC)       , intent(in)                                :: fracA
-        real(TKC)       , intent(in)    , contiguous                :: meanA(:)
-        real(TKC)       , intent(inout) , contiguous                :: meanB(:)
+        use pm_kind, only: TKG => RK1
+        real(TKG)       , intent(in)                                :: fracA
+        real(TKG)       , intent(in)    , contiguous                :: meanA(:)
+        real(TKG)       , intent(inout) , contiguous                :: meanB(:)
     end subroutine
 #endif
 

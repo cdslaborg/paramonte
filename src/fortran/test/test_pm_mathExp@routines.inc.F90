@@ -25,16 +25,16 @@
 !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #if     IK_ENABLED
-        use pm_kind, only: RKC => RKH
-        integer(IKC), parameter :: LOWER = 2_IKC, UPPER = 100_IKC
-        integer(IKC), parameter :: ZERO = 0_IKC
-        integer(IKC)            :: absx(100)
-        integer(IKC)            :: exponent
+        use pm_kind, only: RKG => RKH
+        integer(IKG), parameter :: LOWER = 2_IKG, UPPER = 100_IKG
+        integer(IKG), parameter :: ZERO = 0_IKG
+        integer(IKG)            :: absx(100)
+        integer(IKG)            :: exponent
 #elif   RK_ENABLED
         integer(IK)             :: exponent
-        real(RKC)   , parameter :: LOWER = 1.01_RKC, UPPER = 100._RKC
-        real(RKC)   , parameter :: ZERO = 0._RKC
-        real(RKC)               :: absx(100)
+        real(RKG)   , parameter :: LOWER = 1.01_RKG, UPPER = 100._RKG
+        real(RKG)   , parameter :: ZERO = 0._RKG
+        real(RKG)               :: absx(100)
 #else
 #error  "Unrecognized interface."
 #endif
@@ -54,11 +54,11 @@
         impure elemental subroutine runTestsWith(base)
             integer(IK) :: i
 #if         IK_ENABLED
-            integer(IKC), intent(in), optional :: base
-            absx = getUnifRand(1_IKC, nint(sqrt(real(huge(0_IKC), RKC)), kind = IKC), size(absx, 1, IK))
+            integer(IKG), intent(in), optional :: base
+            absx = getUnifRand(1_IKG, nint(sqrt(real(huge(0_IKG), RKG)), kind = IKG), size(absx, 1, IK))
 #elif       RK_ENABLED
-            real(RKC), intent(in), optional :: base
-            absx = getUnifRand(2 * epsilon(0._RKC), sqrt(huge(0._RKC)), size(absx, 1, IK))
+            real(RKG), intent(in), optional :: base
+            absx = getUnifRand(2 * epsilon(0._RKG), sqrt(huge(0._RKG)), size(absx, 1, IK))
 #endif
             do i = 1, size(absx)
                 exponent = getExpNext(absx(i), base)
@@ -72,15 +72,15 @@
 
         impure elemental subroutine report(absx, base)
 #if         IK_ENABLED
-            integer(IKC), intent(in)            :: absx
-            integer(IKC), intent(in), optional  :: base
-            integer(IKC)                        :: base_def
-            base_def = getOption(2_IKC, base)
+            integer(IKG), intent(in)            :: absx
+            integer(IKG), intent(in), optional  :: base
+            integer(IKG)                        :: base_def
+            base_def = getOption(2_IKG, base)
 #elif       RK_ENABLED
-            real(RKC)   , intent(in)            :: absx
-            real(RKC)   , intent(in), optional  :: base
-            real(RKC)                           :: base_def
-            base_def = getOption(2._RKC, base)
+            real(RKG)   , intent(in)            :: absx
+            real(RKG)   , intent(in), optional  :: base
+            real(RKG)                           :: base_def
+            base_def = getOption(2._RKG, base)
 #endif
             assertion = assertion .and. logical(absx <= base_def**exponent, LK)
             assertion = assertion .and. logical(absx >= base_def**(max(0, int(exponent - 1))) .or. absx == ZERO, LK)
@@ -94,8 +94,8 @@
                 call test%disp%show("base_def")
                 call test%disp%show( base_def )
 #if             getExpNext_ENABLED
-                call test%disp%show("[real(RKC) :: base_def**(exponent - 1), absx, base_def**exponent]")
-                call test%disp%show( [real(RKC) :: base_def**(exponent - 1), absx, base_def**exponent] )
+                call test%disp%show("[real(RKG) :: base_def**(exponent - 1), absx, base_def**exponent]")
+                call test%disp%show( [real(RKG) :: base_def**(exponent - 1), absx, base_def**exponent] )
 #elif           getExpPrev_ENABLED
 #else
 #error          "Unrecognized interface."

@@ -52,12 +52,12 @@ program example
     !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     block
-        use pm_kind, only: RKB, RKC => RKH, RKL => RKS, RKS, RKD
+        use pm_kind, only: RKB, RKG => RKH, RKL => RKS, RKS, RKD
         use pm_arraySpace, only: setLinSpace
         integer(IK) , parameter :: NP = 2000
         integer :: fileUnit, i
-        real(RKC) :: erfval(NP)
-        call setLinSpace(erfval, -1._RKC + epsilon(0._RKL), 1._RKC - epsilon(0._RKL))
+        real(RKG) :: erfval(NP)
+        call setLinSpace(erfval, -1._RKG + epsilon(0._RKL), 1._RKG - epsilon(0._RKL))
         open(newunit = fileUnit, file = "getErfInv.RK.txt")
         do i = 1, NP
             write(fileUnit, "(*(g0,:,' '))") real(erfval(i), RKD), getErfInv(real(erfval(i), RKD))

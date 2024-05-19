@@ -26,11 +26,11 @@
 
         ! Set the conjugation rule.
 #if     CK_ENABLED
-#define TYPE_OF_SAMPLE complex(TKC)
+#define TYPE_OF_SAMPLE complex(TKG)
 #define GET_CONJG(X)conjg(X)
 #define GET_RE(X)X%re
 #elif   RK_ENABLED
-#define TYPE_OF_SAMPLE real(TKC)
+#define TYPE_OF_SAMPLE real(TKG)
 #define GET_CONJG(X)X
 #define GET_RE(X)X
 #elif   getCor_ENABLED || setCor_ENABLED
@@ -131,7 +131,7 @@
 !        !%%%%%%%%%%%%%%%%%%%
 !
 !        integer(IK) :: idim, jdim, ndim
-!        real(TKC) :: fracB, fracAB, stdinv(size(meanDiff, 1, IK))
+!        real(TKG) :: fracB, fracAB, stdinv(size(meanDiff, 1, IK))
 !        ! Define the loop ranges for different subsets.
 !#if     UXD_ENABLED || UXX_ENABLED
 !#define GET_RANGE(I,J,K)I, J - I
@@ -148,22 +148,22 @@
 !#else
 !#error  "Unrecognized interface."
 !#endif
-!        CHECK_ASSERTION(__LINE__, 0._TKC < fracA .and. fracA < 1._TKC, SK_"@setCorMerged(): The condition `0 < fracA .and. fracA < 1` must hold. fracA = "//getStr(fracA))
+!        CHECK_ASSERTION(__LINE__, 0._TKG < fracA .and. fracA < 1._TKG, SK_"@setCorMerged(): The condition `0 < fracA .and. fracA < 1` must hold. fracA = "//getStr(fracA))
 !        CHECK_ASSERTION(__LINE__, all(shape(corB, IK) == shape(corA, IK)), SK_"@setCorMerged(): The condition `all(shape(corB, IK) == shape(corA, IK))` must hold. shape(corB), shape(corA) = "//getStr([shape(corB, IK), shape(corA, IK)]))
 !        CHECK_ASSERTION(__LINE__, all(size(meanDiff, 1, IK) == shape(corA, IK)), SK_"@setCorMerged(): The condition `all(size(meanDiff) == shape(corA))` must hold. size(meanDiff), shape(corA) = "//getStr([size(meanDiff, 1, IK), shape(corA, IK)]))
-!        fracB = 1._TKC - fracA
+!        fracB = 1._TKG - fracA
 !        fracAB = fracA * fracB
 !        ndim = size(corMerged, 1, IK)
 !        do jdim = 1, size(corA, 1, IK)
-!            stdinv(jdim) = 1._TKC / sqrt(1._TKC + fracAB * meanDiff(jdim)**2)
+!            stdinv(jdim) = 1._TKG / sqrt(1._TKG + fracAB * meanDiff(jdim)**2)
 !#if         XLD_ENABLED
-!            corMerged(jdim, jdim) = 1._TKC
+!            corMerged(jdim, jdim) = 1._TKG
 !#endif
 !            do idim = GET_RANGE(1,jdim,ndim)
 !                corMerged(idim, jdim) = fracB * corB(idim, jdim) + fracA * corA(idim, jdim) + fracAB * meanDiff(idim) * meanDiff(jdim)
 !            end do
 !#if         UXD_ENABLED
-!            corMerged(jdim, jdim) = 1._TKC
+!            corMerged(jdim, jdim) = 1._TKG
 !#endif
 !        end do
 !        do jdim = 1, ndim
@@ -199,7 +199,7 @@
 #if     WTI_ENABLED
         integer(IK) :: weisum
 #elif   WTR_ENABLED
-        real(TKC) :: weisum
+        real(TKG) :: weisum
 #elif   !WNO_ENABLED
 #error  "Unrecognized interface."
 #endif
@@ -259,11 +259,11 @@
 #endif
         ! Define the diagonal elements of `cor` if needed.
 #if     (RUXD_ENABLED || RXLD_ENABLED) && (VUXD_ENABLED || VXLD_ENABLED)
-#define SET_CORDIA_BEG(DIM) cor(DIM, DIM) = 1._TKC
+#define SET_CORDIA_BEG(DIM) cor(DIM, DIM) = 1._TKG
 #define SET_CORDIA_END(DIM)
 #elif   (RUXD_ENABLED || RXLD_ENABLED) && (VUXX_ENABLED || VXLX_ENABLED)
 #define SET_CORDIA_BEG(DIM)
-#define SET_CORDIA_END(DIM) cor(DIM, DIM) = 1._TKC
+#define SET_CORDIA_END(DIM) cor(DIM, DIM) = 1._TKG
 #elif   RUXX_ENABLED || RXLX_ENABLED
 #define SET_CORDIA_BEG(DIM)
 #define SET_CORDIA_END(DIM)
@@ -272,15 +272,15 @@
 #endif
         ! Define the inverse standard deviations if needed.
 #if     VUXD_ENABLED || VXLD_ENABLED
-#define SET_STDINV(DIM) stdinv(DIM) = 1._TKC / sqrt(GET_RE(cov(DIM, DIM)));
+#define SET_STDINV(DIM) stdinv(DIM) = 1._TKG / sqrt(GET_RE(cov(DIM, DIM)));
 #define SET_RANGE(START,STOP) STOP,START, -1
-        real(TKC) :: stdinv(size(cor, 1, IK))
-        !do concurrent(idim = 1 : size(stdinv, 1, IK); stdinv(idim) = 1._TKC / sqrt(cov(idim, idim)); end do
+        real(TKG) :: stdinv(size(cor, 1, IK))
+        !do concurrent(idim = 1 : size(stdinv, 1, IK); stdinv(idim) = 1._TKG / sqrt(cov(idim, idim)); end do
 #elif   VUXX_ENABLED || VXLX_ENABLED
 #define SET_RANGE(START,STOP) START,STOP
 #define SET_STDINV(DIM)
         CHECK_ASSERTION(__LINE__, size(cov, 1, IK) == size(stdinv, 1, IK), SK_"@setCor(): The condition `size(cov, 1) == size(stdinv)` must hold. size(cov, 1), size(stdinv) = "//getStr([size(cov, 1, IK), size(stdinv, 1, IK)]))
-        CHECK_ASSERTION(__LINE__, all(0._TKC < stdinv), SK_"@setCor(): The condition `all(0. < stdinv)` must hold. stdinv = "//getStr(stdinv))
+        CHECK_ASSERTION(__LINE__, all(0._TKG < stdinv), SK_"@setCor(): The condition `all(0. < stdinv)` must hold. stdinv = "//getStr(stdinv))
 #else
 #error  "Unrecognized interface."
 #endif
@@ -315,7 +315,7 @@
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
         integer(IK) :: idim, jdim, ndim
-        real(TKC) :: stdinv(size(cor, 1, IK))
+        real(TKG) :: stdinv(size(cor, 1, IK))
 #if     Org_ENABLED
         call setCov(cor, subset, sample, dim WEIGHT_ARGS)
 #elif   Avg_ENABLED
@@ -325,8 +325,8 @@
 #endif
         ndim = size(cor, 1, IK)
         do idim = 1, ndim
-            stdinv(idim) = 1._TKC / sqrt(GET_RE(cor(idim, idim)))
-            cor(idim, idim) = 1._TKC
+            stdinv(idim) = 1._TKG / sqrt(GET_RE(cor(idim, idim)))
+            cor(idim, idim) = 1._TKG
         end do
 #if     UXD_ENABLED
 #define THIS_RANGE 1, jdim - 1

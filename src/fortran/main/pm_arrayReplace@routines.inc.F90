@@ -77,18 +77,18 @@
 #endif
         ! Define the temporary new array for cases where the result is to be returned in the input array.
 #if     setReplaced_ENABLED && D0_D0_D0_ENABLED && SK_ENABLED
-        character(:,SKC)            , allocatable :: arrayNew
+        character(:,SKG)            , allocatable :: arrayNew
 #elif   setReplaced_ENABLED && (D1_D0_D0_ENABLED || D1_D1_D0_ENABLED || D1_D0_D1_ENABLED || D1_D1_D1_ENABLED)
 #if     SK_ENABLED
-        character(len(array,IK),SKC), allocatable :: arrayNew(:)
+        character(len(array,IK),SKG), allocatable :: arrayNew(:)
 #elif   IK_ENABLED
-        integer(IKC)                , allocatable :: arrayNew(:)
+        integer(IKG)                , allocatable :: arrayNew(:)
 #elif   LK_ENABLED
-        logical(LKC)                , allocatable :: arrayNew(:)
+        logical(LKG)                , allocatable :: arrayNew(:)
 #elif   CK_ENABLED
-        complex(CKC)                , allocatable :: arrayNew(:)
+        complex(CKG)                , allocatable :: arrayNew(:)
 #elif   RK_ENABLED
-        real(RKC)                   , allocatable :: arrayNew(:)
+        real(RKG)                   , allocatable :: arrayNew(:)
 #else
 #error  "Unrecognized interface."
 #endif
@@ -250,12 +250,12 @@
                 lenDiff = lenReplacement - lenPattern
                 lenArrayNew = lenArray + lenPOP * lenDiff
 #if             SK_ENABLED && D0_D0_D0_ENABLED
-                allocate(character(lenArrayNew,SKC) :: arrayNew)
+                allocate(character(lenArrayNew,SKG) :: arrayNew)
                 !>  \bug
                 !>  This string vector allocation must be separated from the following because of a bug in Intel ifort 2021.5.
                 !>  The bug is related to the separation of module interface from implementation.
 #elif           SK_ENABLED && getReplaced_ENABLED && (D1_D0_D0_ENABLED || D1_D0_D1_ENABLED || D1_D1_D0_ENABLED || D1_D1_D1_ENABLED)
-                allocate(character(len(array,IK),SKC) :: arrayNew(1_IK + offset : lenArrayNew + offset))
+                allocate(character(len(array,IK),SKG) :: arrayNew(1_IK + offset : lenArrayNew + offset))
 #else
                 allocate(arrayNew(1_IK + offset : lenArrayNew + offset))
 #endif

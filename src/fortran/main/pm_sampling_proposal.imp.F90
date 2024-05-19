@@ -31,7 +31,7 @@
 #define RETURN_IF_FAILED(LINE,FAILED,MSG) \
 if (FAILED) then; \
 err%occurred = .true._LK; \
-err%msg = PROCEDURE_NAME//getLine(LINE)//SKC_": "//MSG; \
+err%msg = PROCEDURE_NAME//getLine(LINE)//SKG_": "//MSG; \
 call spec%disp%stop%show(err%msg); \
 return; \
 end if;
@@ -42,7 +42,7 @@ end if;
         use pm_err, only: getLine
         use pm_err, only: err_type
         use pm_val2str, only: getStr
-        use pm_kind, only: SKC => SK, SK, IK, LK
+        use pm_kind, only: SKG => SK, SK, IK, LK
         use pm_paramonte, only: PARAMONTE_WEB_ISSUES
 #if     ParaDISE_ENABLED
         use pm_sampling_dise, only: NL1, NL2
@@ -53,7 +53,7 @@ end if;
         use pm_sampling_scio, only: chainFileColName => chainFileColNameDISE
         use pm_sampling_scio, only: isFailedChainResize => isFailedChainResizeDISE
         implicit none
-        character(*,SKC), parameter :: MODULE_NAME = SK_"@pm_sampling_proposal_dise"
+        character(*,SKG), parameter :: MODULE_NAME = SK_"@pm_sampling_proposal_dise"
 #elif   ParaDRAM_ENABLED
         use pm_sampling_dram, only: NL1, NL2
         use pm_sampling_dram, only: spec_type => specdram_type
@@ -63,28 +63,28 @@ end if;
         use pm_sampling_scio, only: chainFileColName => chainFileColNameDRAM
         use pm_sampling_scio, only: isFailedChainResize => isFailedChainResizeDRAM
         implicit none
-        character(*,SKC), parameter :: MODULE_NAME = SK_"@pm_sampling_proposal_dram"
+        character(*,SKG), parameter :: MODULE_NAME = SK_"@pm_sampling_proposal_dram"
 #endif
 #if     CAF_ENABLED
-        real(RKC), save     , allocatable   :: comv_covLowChoUpp(:,:)[:] ! lower covariance, upper Cholesky.
+        real(RKG), save     , allocatable   :: comv_covLowChoUpp(:,:)[:] ! lower covariance, upper Cholesky.
 #endif
         type :: scaleSq_type
-            real(RKC) :: default
-            real(RKC) :: running
+            real(RKG) :: default
+            real(RKG) :: running
         end type
         type :: proposal_type
             ! the following are made components for the sake of thread-safe save attribute and the restart file generation.
-            character(:,SKC), allocatable   :: format
+            character(:,SKG), allocatable   :: format
             type(scaleSq_type)              :: scaleSq
             logical(LK)                     :: delRejEnabled
             integer(IK)                     :: sampleSizeOld
-            real(RKC)                       :: logSqrtDetOld
-            real(RKC)       , allocatable   :: covLowChoUpp(:,:,:) ! The covariance Matrix of the proposal distribution. Last index belongs to delayed rejection.
-            real(RKC)       , allocatable   :: meanOld(:)
+            real(RKG)                       :: logSqrtDetOld
+            real(RKG)       , allocatable   :: covLowChoUpp(:,:,:) ! The covariance Matrix of the proposal distribution. Last index belongs to delayed rejection.
+            real(RKG)       , allocatable   :: meanOld(:)
 #if         ParaDISE_ENABLED
-            real(RKC)                       :: negLogVolUnitBall
-            real(RKC)       , allocatable   :: logSqrtDetInvCov(:) ! (0 : spec%proposalDelayedRejectionCount%val)
-            real(RKC)       , allocatable   :: invCov(:,:,:)
+            real(RKG)                       :: negLogVolUnitBall
+            real(RKG)       , allocatable   :: logSqrtDetInvCov(:) ! (0 : spec%proposalDelayedRejectionCount%val)
+            real(RKG)       , allocatable   :: invCov(:,:,:)
 #define     SET_ParaDISE(X)X
 #else
 #define     SET_ParaDISE(X)
@@ -98,29 +98,29 @@ contains
 
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        subroutine killMeAlreadyCMake1_RK5(); use pm_sampling_scio_RK5, only: RKC; end subroutine
-        subroutine killMeAlreadyCMake1_RK4(); use pm_sampling_scio_RK4, only: RKC; end subroutine
-        subroutine killMeAlreadyCMake1_RK3(); use pm_sampling_scio_RK3, only: RKC; end subroutine
-        subroutine killMeAlreadyCMake1_RK2(); use pm_sampling_scio_RK2, only: RKC; end subroutine
-        subroutine killMeAlreadyCMake1_RK1(); use pm_sampling_scio_RK1, only: RKC; end subroutine
+        subroutine killMeAlreadyCMake1_RK5(); use pm_sampling_scio_RK5, only: RKG; end subroutine
+        subroutine killMeAlreadyCMake1_RK4(); use pm_sampling_scio_RK4, only: RKG; end subroutine
+        subroutine killMeAlreadyCMake1_RK3(); use pm_sampling_scio_RK3, only: RKG; end subroutine
+        subroutine killMeAlreadyCMake1_RK2(); use pm_sampling_scio_RK2, only: RKG; end subroutine
+        subroutine killMeAlreadyCMake1_RK1(); use pm_sampling_scio_RK1, only: RKG; end subroutine
 #if     ParaDISE_ENABLED
-        subroutine killMeAlreadyCMake2_RK5(); use pm_sampling_dise_RK5, only: RKC; end subroutine
-        subroutine killMeAlreadyCMake2_RK4(); use pm_sampling_dise_RK4, only: RKC; end subroutine
-        subroutine killMeAlreadyCMake2_RK3(); use pm_sampling_dise_RK3, only: RKC; end subroutine
-        subroutine killMeAlreadyCMake2_RK2(); use pm_sampling_dise_RK2, only: RKC; end subroutine
-        subroutine killMeAlreadyCMake2_RK1(); use pm_sampling_dise_RK1, only: RKC; end subroutine
+        subroutine killMeAlreadyCMake2_RK5(); use pm_sampling_dise_RK5, only: RKG; end subroutine
+        subroutine killMeAlreadyCMake2_RK4(); use pm_sampling_dise_RK4, only: RKG; end subroutine
+        subroutine killMeAlreadyCMake2_RK3(); use pm_sampling_dise_RK3, only: RKG; end subroutine
+        subroutine killMeAlreadyCMake2_RK2(); use pm_sampling_dise_RK2, only: RKG; end subroutine
+        subroutine killMeAlreadyCMake2_RK1(); use pm_sampling_dise_RK1, only: RKG; end subroutine
 #elif   ParaDRAM_ENABLED
-        subroutine killMeAlreadyCMake2_RK5(); use pm_sampling_dram_RK5, only: RKC; end subroutine
-        subroutine killMeAlreadyCMake2_RK4(); use pm_sampling_dram_RK4, only: RKC; end subroutine
-        subroutine killMeAlreadyCMake2_RK3(); use pm_sampling_dram_RK3, only: RKC; end subroutine
-        subroutine killMeAlreadyCMake2_RK2(); use pm_sampling_dram_RK2, only: RKC; end subroutine
-        subroutine killMeAlreadyCMake2_RK1(); use pm_sampling_dram_RK1, only: RKC; end subroutine
+        subroutine killMeAlreadyCMake2_RK5(); use pm_sampling_dram_RK5, only: RKG; end subroutine
+        subroutine killMeAlreadyCMake2_RK4(); use pm_sampling_dram_RK4, only: RKG; end subroutine
+        subroutine killMeAlreadyCMake2_RK3(); use pm_sampling_dram_RK3, only: RKG; end subroutine
+        subroutine killMeAlreadyCMake2_RK2(); use pm_sampling_dram_RK2, only: RKG; end subroutine
+        subroutine killMeAlreadyCMake2_RK1(); use pm_sampling_dram_RK1, only: RKG; end subroutine
 #elif   ParaNest_ENABLED
-        subroutine killMeAlreadyCMake2_RK5(); use pm_sampling_nest_RK5, only: RKC; end subroutine
-        subroutine killMeAlreadyCMake2_RK4(); use pm_sampling_nest_RK4, only: RKC; end subroutine
-        subroutine killMeAlreadyCMake2_RK3(); use pm_sampling_nest_RK3, only: RKC; end subroutine
-        subroutine killMeAlreadyCMake2_RK2(); use pm_sampling_nest_RK2, only: RKC; end subroutine
-        subroutine killMeAlreadyCMake2_RK1(); use pm_sampling_nest_RK1, only: RKC; end subroutine
+        subroutine killMeAlreadyCMake2_RK5(); use pm_sampling_nest_RK5, only: RKG; end subroutine
+        subroutine killMeAlreadyCMake2_RK4(); use pm_sampling_nest_RK4, only: RKG; end subroutine
+        subroutine killMeAlreadyCMake2_RK3(); use pm_sampling_nest_RK3, only: RKG; end subroutine
+        subroutine killMeAlreadyCMake2_RK2(); use pm_sampling_nest_RK2, only: RKG; end subroutine
+        subroutine killMeAlreadyCMake2_RK1(); use pm_sampling_nest_RK1, only: RKG; end subroutine
 #else
 #error  "Unrecognized interface."
 #endif
@@ -165,7 +165,7 @@ contains
 #elif       MPI_ENABLED
             use mpi !mpi_f08, only: mpi_bcast, mpi_double_precision, mpi_comm_world ! LCOV_EXCL_LINE
             use, intrinsic :: iso_c_binding, only: c_sizeof
-            integer, parameter :: NBRK = c_sizeof(0._RKC) ! Number of bytes in the real kind.
+            integer, parameter :: NBRK = c_sizeof(0._RKG) ! Number of bytes in the real kind.
             type(spec_type), intent(in) :: spec
             type(proposal_type), intent(inout) :: proposal
             integer :: ierrMPI
@@ -209,7 +209,7 @@ contains
             proposal%logSqrtDetInvCov(istage) = -proposal%logSqrtDetOld
             do istage = 0, spec%proposalDelayedRejectionCount%val
                 call setMatInv(proposal%invCov(:, 1 : spec%ndim%val, istage), proposal%covLowChoUpp(:, 2 : spec%ndim%vp1, istage), choUpp)
-                !proposal%logSqrtDetInvCov(istage) = .5_RKC * getMatMulTraceLog(proposal%covLowChoUpp(:, 2 : spec%ndim%vp1, istage))
+                !proposal%logSqrtDetInvCov(istage) = .5_RKG * getMatMulTraceLog(proposal%covLowChoUpp(:, 2 : spec%ndim%vp1, istage))
                 proposal%logSqrtDetInvCov(istage) = proposal%logSqrtDetInvCov(istage) - spec%ndim%val * log(spec%proposalDelayedRejectionScale%val(istage))
             end do
         end subroutine setProposalInvCov
@@ -223,16 +223,16 @@ contains
             type(spec_type), intent(in) :: spec
             type(proposal_type), intent(in) :: proposal
             integer(IK), intent(in) :: delayedRejectionStage
-            real(RKC), intent(in), contiguous :: origin(:), destin(:)
-            character(*,SKC), parameter :: MSG = SKC_"@getProposalJumpLogProb()/: Internal library error; The specified uniform proposal jump is not within the proposal domain. "
-            character(*,SKC), parameter :: ERRMSG = MSG//SKC_"ndim, delayedRejectionStage, proposal%invCov(:,1 : ndim, delayedRejectionStage), origin, destin = "
-            real(RKC) :: logPDF
+            real(RKG), intent(in), contiguous :: origin(:), destin(:)
+            character(*,SKG), parameter :: MSG = SKG_"@getProposalJumpLogProb()/: Internal library error; The specified uniform proposal jump is not within the proposal domain. "
+            character(*,SKG), parameter :: ERRMSG = MSG//SKG_"ndim, delayedRejectionStage, proposal%invCov(:,1 : ndim, delayedRejectionStage), origin, destin = "
+            real(RKG) :: logPDF
             if (spec%proposal%is%normal) then
                 logPDF = getMultiNormLogPDF(destin, origin, proposal%invCov(:,1 : spec%ndim%val, delayedRejectionStage), logPDFNF = getMultiNormLogPDFNF(spec%ndim%val, proposal%logSqrtDetInvCov(delayedRejectionStage)))
             elseif (spec%proposal%is%uniform) then
                 logPDF = proposal%negLogVolUnitBall + proposal%logSqrtDetInvCov(delayedRejectionStage)
                 CHECK_ASSERTION(__LINE__, isMemberEll(proposal%invCov(:,1 : spec%ndim%val, delayedRejectionStage), origin, destin), \
-                ERRMSG//getStr([spec%ndim%val, delayedRejectionStage])//SKC_", "//getStr([proposal%invCov(:,1 : spec%ndim%val, delayedRejectionStage), origin, destin]))
+                ERRMSG//getStr([spec%ndim%val, delayedRejectionStage])//SKG_", "//getStr([proposal%invCov(:,1 : spec%ndim%val, delayedRejectionStage), origin, destin]))
             end if
         end function getProposalJumpLogProb
 #endif
@@ -249,18 +249,18 @@ contains
             character(*, SK), parameter :: PROCEDURE_NAME = MODULE_NAME//"@proposal_typer()"
             integer(IK) :: info
             !call setNAN(proposal%logSqrtDetOld)
-            proposal%format = SKC_"("//spec%ndim%str//SKC_"(g0,:,', '),"//new_line(SKC_"a")//SKC_")"
+            proposal%format = SKG_"("//spec%ndim%str//SKG_"(g0,:,', '),"//new_line(SKG_"a")//SKG_")"
             proposal%meanOld = spec%proposalStart%val
             proposal%sampleSizeOld = 1_IK ! This initialization is crucial important for proposal adaptation.
-            proposal%scaleSq%running = 1._RKC
+            proposal%scaleSq%running = 1._RKG
             proposal%scaleSq%default = spec%proposalScale%val**2
             proposal%delRejEnabled = 0_IK < spec%proposalDelayedRejectionCount%val
-            !proposal%delayedRejection%scale%val = real(spec%proposalDelayedRejectionScale%val, RKC)
+            !proposal%delayedRejection%scale%val = real(spec%proposalDelayedRejectionScale%val, RKG)
             !proposal%delayedRejection%scale%log = log(proposal%delayedRejection%scale%val)
-            !proposal%domainCubeLimitLower = real(spec%domainCubeLimitLower%val, RKC)
-            !proposal%domainCubeLimitUpper = real(spec%domainCubeLimitUpper%val, RKC)
-            !if (spec%domain%isFinite) proposal%domainBallCovInv = real(spec%domainBallCov%inv, RKC)
-            !proposal%domainBallAvg = real(spec%domainBallAvg%val, RKC)
+            !proposal%domainCubeLimitLower = real(spec%domainCubeLimitLower%val, RKG)
+            !proposal%domainCubeLimitUpper = real(spec%domainCubeLimitUpper%val, RKG)
+            !if (spec%domain%isFinite) proposal%domainBallCovInv = real(spec%domainBallCov%inv, RKG)
+            !proposal%domainBallAvg = real(spec%domainBallAvg%val, RKG)
             ! setup covariance matrix
             SET_ParaDISE(call setRebound(proposal%logSqrtDetInvCov, 0_IK, spec%proposalDelayedRejectionCount%val))
             SET_ParaDISE(call setRebound(proposal%invCov, [1_IK, 1_IK, 0_IK], [spec%ndim%val, spec%ndim%vp1, spec%proposalDelayedRejectionCount%val]))
@@ -273,19 +273,19 @@ contains
             err%occurred = info /= 0_IK
             if (err%occurred) then
                 err%msg = "Internal erorr: Cholesky factorization of proposalCov failed at diagonal #"// & ! LCOV_EXCL_LINE
-                getStr(info)//SKC_": "//getStr(transpose(proposal%covLowChoUpp(:, 1 : spec%ndim%val, 0)), proposal%format)
+                getStr(info)//SKG_": "//getStr(transpose(proposal%covLowChoUpp(:, 1 : spec%ndim%val, 0)), proposal%format)
                 return
             end if
-            proposal%logSqrtDetOld = .5_RKC * getMatMulTraceLog(proposal%covLowChoUpp(:, 2 : spec%ndim%vp1, 0))
+            proposal%logSqrtDetOld = .5_RKG * getMatMulTraceLog(proposal%covLowChoUpp(:, 2 : spec%ndim%vp1, 0))
             ! Scale the higher-stage delayed-rejection Cholesky Upper matrices.
             if (proposal%delRejEnabled) call setProposalDelRejChol(spec, proposal)
-            SET_ParaDISE(proposal%negLogVolUnitBall = -getLogVolUnitBall(real(spec%ndim%val, RKC))) ! only for uniform proposal?
+            SET_ParaDISE(proposal%negLogVolUnitBall = -getLogVolUnitBall(real(spec%ndim%val, RKG))) ! only for uniform proposal?
             SET_ParaDISE(call setProposalInvCov(spec, proposal))
             ! read/write the first entry of the restart file
             if (spec%image%is%leader) then
                 block
                     integer(IK) :: idim
-                    real(RKC) :: meanAccRateSinceStart
+                    real(RKG) :: meanAccRateSinceStart
                     if (spec%run%is%new) then
                         if (.not. spec%outputRestartFileFormat%isBinary) then
                             write(spec%restartFile%unit, spec%restartFile%format) "ndim"
@@ -295,7 +295,7 @@ contains
                                 write(spec%restartFile%unit, spec%restartFile%format) trim(adjustl(spec%domainAxisName%val(idim)))
                             end do
                         end if
-                        call writeRestart(spec, meanAccRateSinceStart = 1._RKC, proposal = proposal)
+                        call writeRestart(spec, meanAccRateSinceStart = 1._RKG, proposal = proposal)
                     else
                         if (.not. spec%outputRestartFileFormat%isBinary) then
                             do idim = 1, spec%ndim%val + 3
@@ -333,7 +333,7 @@ contains
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
         subroutine readRestart(spec, meanAccRateSinceStart, nskip)
-            real(RKC), intent(out) :: meanAccRateSinceStart
+            real(RKG), intent(out) :: meanAccRateSinceStart
             integer(IK), intent(in), optional :: nskip
             type(spec_type), intent(in) :: spec
             integer(IK) :: nskip_def, idim
@@ -353,7 +353,7 @@ contains
 
         subroutine writeRestart(spec, meanAccRateSinceStart, proposal)
             type(proposal_type), intent(in), optional :: proposal
-            real(RKC), intent(in) :: meanAccRateSinceStart
+            real(RKG), intent(in) :: meanAccRateSinceStart
             type(spec_type), intent(in) :: spec
             integer(IK) :: idim, jdim
             if (spec%outputRestartFileFormat%isBinary) then
@@ -397,13 +397,13 @@ contains
             type(spec_type), intent(inout) :: spec
             type(proposal_type), intent(inout) :: proposal
             type(xoshiro256ssw_type), intent(inout) :: rng
-            real(RKC), intent(in), contiguous :: stateOld(:)
-            real(RKC), intent(out), contiguous :: stateNew(:)
+            real(RKG), intent(in), contiguous :: stateOld(:)
+            real(RKG), intent(out), contiguous :: stateNew(:)
             integer(IK), intent(in) :: delayedRejectionStage
             character(*, SK), parameter :: PROCEDURE_NAME = MODULE_NAME//"@setProposalStateNew()"
-            character(*, SK), parameter :: WARNING_MSG = PROCEDURE_NAME//SKC_"Number of proposed states out of the objective function domain without any acceptance: "
-            character(*, SK), parameter :: FATAL_PREFIX = PROCEDURE_NAME//SKC_"Number of proposed states out of the objective function domain without any acceptance has reach the maximum specified value (domainErrCountMax = "
-            character(*, SK), parameter :: FATAL_SUFFIX = SKC_"). This can occur if the domain of the density function is incorrectly specified or if the density function definition implementation or definition is flawed."
+            character(*, SK), parameter :: WARNING_MSG = PROCEDURE_NAME//SKG_"Number of proposed states out of the objective function domain without any acceptance: "
+            character(*, SK), parameter :: FATAL_PREFIX = PROCEDURE_NAME//SKG_"Number of proposed states out of the objective function domain without any acceptance has reach the maximum specified value (domainErrCountMax = "
+            character(*, SK), parameter :: FATAL_SUFFIX = SKG_"). This can occur if the domain of the density function is incorrectly specified or if the density function definition implementation or definition is flawed."
             integer(IK) :: domainCheckCounter
             domainCheckCounter = 1_IK
             ! Check for the support Region consistency:
@@ -475,18 +475,18 @@ contains
             character(*, SK), parameter :: PROCEDURE_NAME = MODULE_NAME//"@setProposalAdapted()"
             type(spec_type), intent(inout) :: spec
             type(proposal_type), intent(inout) :: proposal
-            real(RKC), intent(in), contiguous :: sampleState(:,:)
+            real(RKG), intent(in), contiguous :: sampleState(:,:)
             integer(IK), intent(in), contiguous :: sampleWeight(:)
             logical(LK), intent(in) :: proposalAdaptationGreedyEnabled
-            real(RKC), intent(inout) :: meanAccRateSinceStart ! is intent(out) in restart mode, intent(in) in fresh mode.
+            real(RKG), intent(inout) :: meanAccRateSinceStart ! is intent(out) in restart mode, intent(in) in fresh mode.
             logical(LK), intent(out) :: proposalAdaptationSampleUsed
-            real(RKC), intent(out) :: proposalAdaptation
+            real(RKG), intent(out) :: proposalAdaptation
             type(err_type), intent(inout) :: err
-            real(RKC) :: sampleStateMeanNew(size(sampleState, 1, IK))
-            real(RKC) :: sampleStateMeanCurrent(size(sampleState, 1, IK))
-            real(RKC) :: sampleStateCovCholOld(size(sampleState, 1, IK), size(sampleState, 1, IK) + 1)
-            real(RKC) :: sampleStateCovLowCurrent(size(sampleState, 1, IK), size(sampleState, 1, IK) + 1)
-            real(RKC) :: logSqrtDetNew, logSqrtDetSum, adaptiveScale, adaptiveScaleSq, fracA
+            real(RKG) :: sampleStateMeanNew(size(sampleState, 1, IK))
+            real(RKG) :: sampleStateMeanCurrent(size(sampleState, 1, IK))
+            real(RKG) :: sampleStateCovCholOld(size(sampleState, 1, IK), size(sampleState, 1, IK) + 1)
+            real(RKG) :: sampleStateCovLowCurrent(size(sampleState, 1, IK), size(sampleState, 1, IK) + 1)
+            real(RKG) :: logSqrtDetNew, logSqrtDetSum, adaptiveScale, adaptiveScaleSq, fracA
             integer(IK) :: sampleSizeOld, sampleSizeCurrent
             integer(IK):: jdim, nsam, info
             integer(IK), parameter :: dim = 2_IK
@@ -523,13 +523,13 @@ contains
 
                 if (1_IK < proposal%sampleSizeOld) then
 
-                    fracA = real(proposal%sampleSizeOld, RKC) / real(proposal%sampleSizeOld + sampleSizeCurrent, RKC)
+                    fracA = real(proposal%sampleSizeOld, RKG) / real(proposal%sampleSizeOld + sampleSizeCurrent, RKG)
 
                     nonSingular_block: if (nonSingularSample) then
 
                         ! First scale the new covariance matrix by the default scale factor, which will be then used to get the Cholesky Factor.
 
-                        if (proposal%scaleSq%default /= 1._RKC) then
+                        if (proposal%scaleSq%default /= 1._RKG) then
                             ! The `do concurrent` version is problematic for OpenMP builds of the ParaMonte library with the Intel ifort 2021.8 on heap, yielding segmentation fault.
                             !do concurrent(jdim = 1 : spec%ndim%val)
                             do jdim = 1, spec%ndim%val
@@ -572,7 +572,7 @@ contains
 
                     ! Copy and then scale the new covariance matrix by the default scale factor, which will be then used to get the Cholesky Factor.
 
-                    if (proposal%scaleSq%default == 1._RKC) then
+                    if (proposal%scaleSq%default == 1._RKG) then
                         ! The `do concurrent` version is problematic for OpenMP builds of the ParaMonte library with the Intel ifort 2021.8 on heap, yielding segmentation fault.
                         !do concurrent(jdim = 1 : spec%ndim%val)
                         do jdim = 1, spec%ndim%val
@@ -600,11 +600,11 @@ contains
 
                 else posDefCheck_block ! singularityOccurred
 
-                    proposalAdaptation = 0._RKC
+                    proposalAdaptation = 0._RKG
                     proposal%sampleSizeOld = sampleSizeOld
 
                     ! It may be a good idea to add a warning message printed out here for the singularity occurrence.
-                    call spec%disp%warn%show(SKC_"Singularity occurred while adapting the proposal distribution covariance matrix.", tmsize = 0_IK, bmsize = 0_IK)
+                    call spec%disp%warn%show(SKG_"Singularity occurred while adapting the proposal distribution covariance matrix.", tmsize = 0_IK, bmsize = 0_IK)
 
                     ! Recover the old covariance matrix + Cholesky factor.
                     proposal%covLowChoUpp(:, :, 0) = sampleStateCovCholOld
@@ -626,7 +626,7 @@ contains
             !    if (meanAccRateSinceStart < spec%targetAcceptanceRate%aim) then
             !        proposal%scaleSq%running = mc_maxScaleFactorSq**((spec%targetAcceptanceRate%aim-meanAccRateSinceStart)/spec%targetAcceptanceRate%aim)
             !    else
-            !        proposal%scaleSq%running = mc_maxScaleFactorSq**((spec%targetAcceptanceRate%aim-meanAccRateSinceStart)/(1._RKC-spec%targetAcceptanceRate%aim))
+            !        proposal%scaleSq%running = mc_maxScaleFactorSq**((spec%targetAcceptanceRate%aim-meanAccRateSinceStart)/(1._RKG-spec%targetAcceptanceRate%aim))
             !    end if
             !    proposal%scaleSq%running = proposal%scaleSq%running * (meanAccRateSinceStart/spec%targetAcceptanceRate%aim)**spec%ndim%inv
             !end if
@@ -654,7 +654,7 @@ contains
                         !    use pm_distUnif, only: getUnifRand
                         !    integer, save :: counter = 0_IK
                         !    counter = counter - 1
-                        !    proposal%scaleSq%running = proposal%scaleSq%running * exp(-counter*getUnifRand(-1._RKC, 1._RKC)/1.e4_RK)
+                        !    proposal%scaleSq%running = proposal%scaleSq%running * exp(-counter*getUnifRand(-1._RKG, 1._RKG)/1.e4_RK)
                         !    !use pm_statistics, only: getUnifRand
                         !    !proposal%scaleSq%running = proposal%scaleSq%running * exp(real(getUnifRand(-1_IK, 1_IK), RK))
                         !    !write(*,*) counter, proposal%scaleSq%running
@@ -662,8 +662,8 @@ contains
                     end if
                 else
                     ! This should happen only for the first update with singular samples.
-                    adaptiveScale = 0.5_RKC
-                    adaptiveScaleSq = 0.25_RKC
+                    adaptiveScale = 0.5_RKG
+                    adaptiveScaleSq = 0.25_RKG
                 end if
 
                 proposal%covLowChoUpp(1 : spec%ndim%val, 1, 0) = proposal%covLowChoUpp(1 : spec%ndim%val, 1, 0) * adaptiveScaleSq ! Update first column of covariance matrix.
@@ -690,20 +690,20 @@ contains
                 ! The `do concurrent` version is problematic for OpenMP builds of the ParaMonte library with the Intel ifort 2021.8 on heap, yielding segmentation fault.
                 !do concurrent(jdim = 1 : spec%ndim%val)
                 do jdim = 1, spec%ndim%val
-                    sampleStateCovLowCurrent(jdim : spec%ndim%val, jdim) = 0.5_RKC * (proposal%covLowChoUpp(jdim : spec%ndim%val, jdim, 0) + sampleStateCovCholOld(jdim : spec%ndim%val, jdim)) ! dummy
+                    sampleStateCovLowCurrent(jdim : spec%ndim%val, jdim) = 0.5_RKG * (proposal%covLowChoUpp(jdim : spec%ndim%val, jdim, 0) + sampleStateCovCholOld(jdim : spec%ndim%val, jdim)) ! dummy
                 end do
                 call setMatChol(sampleStateCovLowCurrent(:, 1 : spec%ndim%val), lowDia, info, sampleStateCovLowCurrent(:, 2 : spec%ndim%vp1), transHerm)
                 if (info == 0_IK) then
                     logSqrtDetSum = getMatMulTraceLog(sampleStateCovLowCurrent(:, 2 : spec%ndim%vp1))
                 else ! singularityOccurred ! LCOV_EXCL_START
                     err%occurred = .true._LK
-                    err%msg = NL1//PROCEDURE_NAME//SKC_"@line::"//getStr(__LINE__)//SKC_": "//&
-                    SKC_"Singular lower covariance matrix detected at column ("//getStr(info)//SKC_") while computing the proposalAdaptation measure:"//NL2
+                    err%msg = NL1//PROCEDURE_NAME//SKG_"@line::"//getStr(__LINE__)//SKG_": "//&
+                    SKG_"Singular lower covariance matrix detected at column ("//getStr(info)//SKG_") while computing the proposalAdaptation measure:"//NL2
                     do info = 1, size(sampleStateCovLowCurrent, 1, IK)
                         err%msg = err%msg//getStr(sampleStateCovLowCurrent(info,:))//NL1
                     end do
                     err%msg = err%msg//NL1//&
-                    SKC_": Error occurred while computing the Cholesky factorization of a matrix needed for the computation of the adaptation measure. &
+                    SKG_": Error occurred while computing the Cholesky factorization of a matrix needed for the computation of the adaptation measure. &
                     &Such error is highly unusual, and requires an in depth investigation of the case. &
                     &It may also be due to a runtime computational glitch, in particular, for high-dimensional simulations. &
                     &In such case, consider increasing the value of the input variable proposalAdaptationPeriod. &
@@ -712,21 +712,21 @@ contains
                     &Otherwise, restarting the simulation might resolve the error. If the error persists, please inform the developers at: "//NL2//PARAMONTE_WEB_ISSUES
                     return
                 end if ! LCOV_EXCL_STOP
-                proposalAdaptation = 1._RKC - exp(0.5_RKC * (proposal%logSqrtDetOld + logSqrtDetNew) - logSqrtDetSum) ! totalVariationUpperBound
-                if (0._RKC < proposalAdaptation) then
+                proposalAdaptation = 1._RKG - exp(0.5_RKG * (proposal%logSqrtDetOld + logSqrtDetNew) - logSqrtDetSum) ! totalVariationUpperBound
+                if (0._RKG < proposalAdaptation) then
                     proposalAdaptation = sqrt(proposalAdaptation) ! totalVariationUpperBound
-                elseif (proposalAdaptation < 0._RKC) then
-                    spec%msg = PROCEDURE_NAME//SKC_": Non-positive adaptation measure detected" ! LCOV_EXCL_LINE
-                    if (abs(proposalAdaptation) < sqrt(epsilon(0._RKC))) spec%msg = spec%msg//SKC_" (possibly due to round-off error)" ! LCOV_EXCL_LINE
-                    call spec%disp%warn%show(spec%msg//SKC_": "//getStr(proposalAdaptation)) ! LCOV_EXCL_LINE
-                    proposalAdaptation = 0._RKC ! LCOV_EXCL_LINE
+                elseif (proposalAdaptation < 0._RKG) then
+                    spec%msg = PROCEDURE_NAME//SKG_": Non-positive adaptation measure detected" ! LCOV_EXCL_LINE
+                    if (abs(proposalAdaptation) < sqrt(epsilon(0._RKG))) spec%msg = spec%msg//SKG_" (possibly due to round-off error)" ! LCOV_EXCL_LINE
+                    call spec%disp%warn%show(spec%msg//SKG_": "//getStr(proposalAdaptation)) ! LCOV_EXCL_LINE
+                    proposalAdaptation = 0._RKG ! LCOV_EXCL_LINE
                 end if
                 proposal%logSqrtDetOld = logSqrtDetNew
                 !block
                 !integer, save :: counter = 0
                 !counter = counter + 1
                 !!if (counter==1) then
-                !if (1._RKC < proposalAdaptation) then
+                !if (1._RKG < proposalAdaptation) then
                 !write(*,*)
                 !write(*,*) proposal%logSqrtDetOld
                 !write(*,*) logSqrtDetNew
@@ -742,7 +742,7 @@ contains
 
             else proposalAdaptationEstimate_block
 
-                proposalAdaptation = 0._RKC
+                proposalAdaptation = 0._RKG
 
             end if proposalAdaptationEstimate_block
 

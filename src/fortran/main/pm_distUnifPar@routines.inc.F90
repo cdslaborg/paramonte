@@ -35,7 +35,7 @@
         logPDF = -sum(logLenEdge)
 #elif   Par_ENABLED
         integer(IK) :: info
-        real(RKC) :: gramian(size(repmat, 1, IK), size(repmat, 2, IK))
+        real(RKG) :: gramian(size(repmat, 1, IK), size(repmat, 2, IK))
         CHECK_ASSERTION(__LINE__, size(repmat, 1, IK) == size(repmat, 2, IK), SK_"@getUnifRecLogPDF(): The condition `size(repmat, 1) == size(repmat, 2)` must hold. shape(repmat) = "//getStr(shape(repmat,IK)))
         gramian = matmul(transpose(repmat), repmat)
         call setMatDetSqrtLog(gramian, uppDia, logPDF, info, gramian, transHerm)
@@ -67,10 +67,10 @@
 
         ! Define the default lower bound.
 #if     DU_ENABLED
-        real(RKC), parameter :: lb = 0._RKC
+        real(RKG), parameter :: lb = 0._RKG
 #endif
         ! The input uniform random number must be in range `[0, 1)`.
-        CHECK_ASSERTION(__LINE__, all(0._RKC <= rand .and. rand < 1._RKC), SK_"@setUnifParRand(): The condition `all(0. <= rand .and. rand < 1.)` must hold. rand = "//getStr(rand))
+        CHECK_ASSERTION(__LINE__, all(0._RKG <= rand .and. rand < 1._RKG), SK_"@setUnifParRand(): The condition `all(0. <= rand .and. rand < 1.)` must hold. rand = "//getStr(rand))
         ! Perform checks.
 #if     Cub_ENABLED
 #define ALL
@@ -89,14 +89,14 @@
         block
             integer(IK) :: idim
             do idim = 1, size(ub, 1, IK)
-                CHECK_ASSERTION(__LINE__, 0._RKC < norm2(ub(:,idim)), SK_"@setUnifParRand(): The condition `0. < norm2(ub(:,idim))` must hold. idim, ub = "//getStr(idim)//SK_", "//getStr(ub))
+                CHECK_ASSERTION(__LINE__, 0._RKG < norm2(ub(:,idim)), SK_"@setUnifParRand(): The condition `0. < norm2(ub(:,idim))` must hold. idim, ub = "//getStr(idim)//SK_", "//getStr(ub))
             end do
         end block
 #endif
         rand = lb + matmul(ub, rand)
 #elif   Rec_ENABLED || Cub_ENABLED
         CHECK_ASSERTION(__LINE__, ALL(lb /= ub), SK_"@setUnifParRand(): The condition `all(lb /= ub)` must hold. lb, ub = "//getStr([lb, ub]))
-        rand = (1._RKC - rand) * lb + rand * ub
+        rand = (1._RKG - rand) * lb + rand * ub
 #endif
 
 #else

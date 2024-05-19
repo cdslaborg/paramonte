@@ -31,13 +31,13 @@
         CHECK_ASSERTION(__LINE__, 0 < alpha .or. present(logMinX), SK_"@getPowetoLogPDFNF(): The condition `0 < alpha .or. present(logMinX)` must hold. alpha = "//getStr(alpha))
         CHECK_ASSERTION(__LINE__, alpha < 0 .or. present(logMaxX), SK_"@getPowetoLogPDFNF(): The condition `alpha < 0 .or. present(logMaxX)` must hold. alpha = "//getStr(alpha))
 
-        if (alpha < 0._RKC) then
+        if (alpha < 0._RKG) then
             if (present(logMaxX)) then
                 logPDFNF = getParetoLogPDFNF(alpha, logMinX, logMaxX)
             else
                 logPDFNF = getParetoLogPDFNF(alpha, logMinX)
             end if
-        elseif (0._RKC < alpha) then
+        elseif (0._RKG < alpha) then
             if (present(logMinX)) then
                 logPDFNF = getPowerLogPDFNF(alpha, logMinX, logMaxX)
             else
@@ -57,9 +57,9 @@
 #elif   setPowetoLogPDF_ENABLED
         !%%%%%%%%%%%%%%%%%%%%%%
 
-        if (0._RKC < alpha) then
+        if (0._RKG < alpha) then
             call setPowerLogPDF(logPDF, logx, alpha, logPDFNF)
-        elseif (alpha < 0._RKC) then
+        elseif (alpha < 0._RKG) then
             call setParetoLogPDF(logPDF, logx, alpha, logPDFNF)
         else
             logPDF = logPDFNF - logx
@@ -72,13 +72,13 @@
         CHECK_ASSERTION(__LINE__, 0 < alpha .or. present(logMinX), SK_"@getPowetoLogCDFNF(): The condition `0 < alpha .or. present(logMinX)` must hold. alpha = "//getStr(alpha))
         CHECK_ASSERTION(__LINE__, alpha < 0 .or. present(logMaxX), SK_"@getPowetoLogCDFNF(): The condition `alpha < 0 .or. present(logMaxX)` must hold. alpha = "//getStr(alpha))
 
-        if (alpha < 0._RKC) then
+        if (alpha < 0._RKG) then
             if (present(logMaxX)) then
                 logCDFNF = getParetoLogCDFNF(alpha, logMinX, logMaxX)
             else
                 logCDFNF = getParetoLogCDFNF(alpha, logMinX)
             end if
-        elseif (0._RKC < alpha) then
+        elseif (0._RKG < alpha) then
             if (present(logMinX)) then
                 logCDFNF = getPowerLogCDFNF(alpha, logMinX, logMaxX)
             else
@@ -101,13 +101,13 @@
         CHECK_ASSERTION(__LINE__, 0 < alpha .or. present(logMinX), SK_"@getPowetoLogCDFNF(): The condition `0 < alpha .or. present(logMinX)` must hold. alpha = "//getStr(alpha))
         CHECK_ASSERTION(__LINE__, alpha < 0 .or. present(logCDFNF), SK_"@getPowetoLogCDFNF(): The condition `alpha < 0 .or. present(logCDFNF)` must hold. alpha = "//getStr(alpha))
 
-        if (alpha < 0._RKC) then
+        if (alpha < 0._RKG) then
             if (present(logCDFNF)) then
                 call setParetoLogCDF(logCDF, logx, alpha, logMinX, logCDFNF)
             else
                 call setParetoLogCDF(logCDF, logx, alpha, logMinX)
             end if
-        elseif (0._RKC < alpha) then
+        elseif (0._RKG < alpha) then
             if (present(logMinX)) then
                 call setPowerLogCDF(logCDF, logx, alpha, logMinX, logCDFNF)
             else
@@ -130,13 +130,13 @@
         CHECK_ASSERTION(__LINE__, 0 < alpha .or. present(logMinX), SK_"@getPowetoLogCDFNF(): The condition `0 < alpha .or. present(logMinX)` must hold. alpha = "//getStr(alpha))
         CHECK_ASSERTION(__LINE__, alpha < 0 .or. present(logCDFNF), SK_"@getPowetoLogCDFNF(): The condition `alpha < 0 .or. present(logCDFNF)` must hold. alpha = "//getStr(alpha))
 
-        if (alpha < 0._RKC) then
+        if (alpha < 0._RKG) then
             if (present(logCDFNF)) then
                 call setParetoLogQuan(logx, logCDF, alpha, logMinX, logCDFNF)
             else
                 call setParetoLogQuan(logx, logCDF, alpha, logMinX)
             end if
-        elseif (0._RKC < alpha) then
+        elseif (0._RKG < alpha) then
             if (present(logMinX)) then
                 call setPowerLogQuan(logx, logCDF, alpha, logMinX, logCDFNF)
             else
@@ -150,13 +150,13 @@
 #elif   getPowetoLogRand_ENABLED
         !%%%%%%%%%%%%%%%%%%%%%%%
 
-        call setPowetoLogRand(logRand, getNegExpRand(1._RKC), alpha, logMinX, getPowetoLogCDFNF(alpha, logMinX, logMaxX))
+        call setPowetoLogRand(logRand, getNegExpRand(1._RKG), alpha, logMinX, getPowetoLogCDFNF(alpha, logMinX, logMaxX))
 
         !%%%%%%%%%%%%%%%%%%%%%%%
 #elif   setPowetoLogRand_ENABLED
         !%%%%%%%%%%%%%%%%%%%%%%%
 
-        CHECK_ASSERTION(__LINE__, negExpRand <= 0._RKC, SK_"@setPowetoLogRand(): The condition `negExpRand <= 0._RKC` must hold. alpha = "//getStr(negExpRand))
+        CHECK_ASSERTION(__LINE__, negExpRand <= 0._RKG, SK_"@setPowetoLogRand(): The condition `negExpRand <= 0._RKG` must hold. alpha = "//getStr(negExpRand))
         call setPowetoLogQuan(logRand, negExpRand, alpha, logMinX, logCDFNF)
 
 #else

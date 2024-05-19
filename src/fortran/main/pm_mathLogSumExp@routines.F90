@@ -64,35 +64,35 @@ contains
 
 #if CK5_ENABLED
     module procedure getLogSumExpDefSeq_CK5
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
 #include "pm_mathLogSumExp@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure getLogSumExpDefSeq_CK4
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
 #include "pm_mathLogSumExp@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure getLogSumExpDefSeq_CK3
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
 #include "pm_mathLogSumExp@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure getLogSumExpDefSeq_CK2
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
 #include "pm_mathLogSumExp@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure getLogSumExpDefSeq_CK1
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
 #include "pm_mathLogSumExp@routines.inc.F90"
     end procedure
 #endif
@@ -105,35 +105,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getLogSumExpDefSeq_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_mathLogSumExp@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getLogSumExpDefSeq_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_mathLogSumExp@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getLogSumExpDefSeq_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_mathLogSumExp@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getLogSumExpDefSeq_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_mathLogSumExp@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getLogSumExpDefSeq_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_mathLogSumExp@routines.inc.F90"
     end procedure
 #endif
@@ -168,35 +168,35 @@ contains
 
 #if CK5_ENABLED
     module procedure getLogSumExpMaxSeq_CK5
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
 #include "pm_mathLogSumExp@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure getLogSumExpMaxSeq_CK4
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
 #include "pm_mathLogSumExp@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure getLogSumExpMaxSeq_CK3
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
 #include "pm_mathLogSumExp@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure getLogSumExpMaxSeq_CK2
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
 #include "pm_mathLogSumExp@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure getLogSumExpMaxSeq_CK1
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
 #include "pm_mathLogSumExp@routines.inc.F90"
     end procedure
 #endif
@@ -209,35 +209,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getLogSumExpMaxSeq_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_mathLogSumExp@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getLogSumExpMaxSeq_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_mathLogSumExp@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getLogSumExpMaxSeq_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_mathLogSumExp@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getLogSumExpMaxSeq_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_mathLogSumExp@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getLogSumExpMaxSeq_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_mathLogSumExp@routines.inc.F90"
     end procedure
 #endif
@@ -260,35 +260,35 @@ contains
 
 #if CK5_ENABLED
     module procedure getLogSumExpMaxSel_CK5
-        use pm_kind, only: TKC => CK5
+        use pm_kind, only: TKG => CK5
 #include "pm_mathLogSumExp@routines.inc.F90"
     end procedure
 #endif
 
 #if CK4_ENABLED
     module procedure getLogSumExpMaxSel_CK4
-        use pm_kind, only: TKC => CK4
+        use pm_kind, only: TKG => CK4
 #include "pm_mathLogSumExp@routines.inc.F90"
     end procedure
 #endif
 
 #if CK3_ENABLED
     module procedure getLogSumExpMaxSel_CK3
-        use pm_kind, only: TKC => CK3
+        use pm_kind, only: TKG => CK3
 #include "pm_mathLogSumExp@routines.inc.F90"
     end procedure
 #endif
 
 #if CK2_ENABLED
     module procedure getLogSumExpMaxSel_CK2
-        use pm_kind, only: TKC => CK2
+        use pm_kind, only: TKG => CK2
 #include "pm_mathLogSumExp@routines.inc.F90"
     end procedure
 #endif
 
 #if CK1_ENABLED
     module procedure getLogSumExpMaxSel_CK1
-        use pm_kind, only: TKC => CK1
+        use pm_kind, only: TKG => CK1
 #include "pm_mathLogSumExp@routines.inc.F90"
     end procedure
 #endif
@@ -301,35 +301,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getLogSumExpMaxSel_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_mathLogSumExp@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getLogSumExpMaxSel_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_mathLogSumExp@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getLogSumExpMaxSel_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_mathLogSumExp@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getLogSumExpMaxSel_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_mathLogSumExp@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getLogSumExpMaxSel_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_mathLogSumExp@routines.inc.F90"
     end procedure
 #endif

@@ -27,7 +27,7 @@
 #if     WII_ENABLED || WID_ENABLED
 #define TYPE_OF_WEIGHT integer(IK)
 #elif   WRR_ENABLED || WRD_ENABLED
-#define TYPE_OF_WEIGHT real(TKC)
+#define TYPE_OF_WEIGHT real(TKG)
 #elif   !WDD_ENABLED
 #error  "Unrecognized interface."
 #endif
@@ -42,7 +42,7 @@
 #if     getDisKolm_ENABLED && (SXD_ENABLED || SCD_ENABLED) && WDD_ENABLED
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        real(TKC) :: copySample1(size(sample1, 1, IK))
+        real(TKG) :: copySample1(size(sample1, 1, IK))
         copySample1 = sample1
         call setDisKolm(disKolm, copySample1 CDF_ARG)
 
@@ -58,16 +58,16 @@
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
         integer(IK) :: isam1, nsam1
-        real(TKC) :: invWeiSum1, cdfn, cdfp, cdfr ! next, previous, reference
+        real(TKG) :: invWeiSum1, cdfn, cdfp, cdfr ! next, previous, reference
         !check_assertion(__LINE__, 0 < size(sample1, 1, IK), SK_"@setDisKolm(): The condition `0 < size(sample1)` must hold. size(sample1) = "//getStr(size(sample1, 1, IK)))
         CHECK_ASSERTION(__LINE__, isAscending(sample1), SK_"@setDisKolm(): The condition `isAscending(sample1)` must hold. sample1 = "//getStr(sample1))
 #if     SXA_ENABLED
         CHECK_ASSERTION(__LINE__, all(0 <= sample1) .and. all(sample1 <= 1), SK_"@setDisKolm(): The condition `all(0 <= sample1) .and. all(sample1 <= 1)` must hold. sample1 = "//getStr(sample1))
 #endif
         nsam1 = size(sample1, 1, IK)
-        if (0 < nsam1) invWeiSum1 = 1._TKC / nsam1
-        disKolm = 0._TKC
-        cdfp = 0._TKC
+        if (0 < nsam1) invWeiSum1 = 1._TKG / nsam1
+        disKolm = 0._TKG
+        cdfp = 0._TKG
         do isam1 = 1, nsam1
 #if         SXA_ENABLED
             cdfr = sample1(isam1)
@@ -87,7 +87,7 @@
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
         TYPE_OF_WEIGHT :: copyWeight1(size(weight1, 1, IK))
-        real(TKC) :: copySample1(size(sample1, 1, IK))
+        real(TKG) :: copySample1(size(sample1, 1, IK))
         copySample1 = sample1
         copyWeight1 = weight1
         call setDisKolm(disKolm, copySample1, copyWeight1, weisum1 CDF_ARG)
@@ -107,19 +107,19 @@
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
         integer(IK) :: isam1, nsam1
-        real(TKC) :: invWeiSum1, cdfn, cdfp, cdfr ! next, previous, reference
+        real(TKG) :: invWeiSum1, cdfn, cdfp, cdfr ! next, previous, reference
         CHECK_ASSERTION(__LINE__, all(0 <= weight1), SK_"@setDisKolm(): The condition `all(0 <= weight1)` must hold. weight1 = "//getStr(sample1))
         CHECK_ASSERTION(__LINE__, isAscending(sample1), SK_"@setDisKolm(): The condition `isAscending(sample1)` must hold. sample1 = "//getStr(sample1))
 #if     SXA_ENABLED
         CHECK_ASSERTION(__LINE__, all(0 <= sample1) .and. all(sample1 <= 1), SK_"@setDisKolm(): The condition `all(0 <= sample1) .and. all(sample1 <= 1)` must hold. sample1 = "//getStr(sample1))
 #endif
-        CHECK_ASSERTION(__LINE__, abs(weisum1 - sum(weight1)) < 100 * epsilon(0._TKC), SK_"@setDisKolm(): The condition `weisum1 == sum(weight1)` must hold. weisum1, sum(weight1) = "//getStr([weisum1, sum(weight1)]))
+        CHECK_ASSERTION(__LINE__, abs(weisum1 - sum(weight1)) < 100 * epsilon(0._TKG), SK_"@setDisKolm(): The condition `weisum1 == sum(weight1)` must hold. weisum1, sum(weight1) = "//getStr([weisum1, sum(weight1)]))
         CHECK_ASSERTION(__LINE__, size(sample1, 1, IK) == size(weight1, 1, IK), SK_"@setDisKolm(): The condition `size(sample1) == size(weight1)` must hold. size(sample1), size(weight1) = "//getStr([size(sample1, 1, IK), size(weight1, 1, IK)]))
         nsam1 = size(sample1, 1, IK)
-        if (0 < weisum1) invWeiSum1 = 1._TKC / weisum1
-        disKolm = 0._TKC
-        cdfn = 0._TKC
-        cdfp = 0._TKC
+        if (0 < weisum1) invWeiSum1 = 1._TKG / weisum1
+        disKolm = 0._TKG
+        cdfn = 0._TKG
+        cdfp = 0._TKG
         do isam1 = 1, nsam1
 #if         SXA_ENABLED
             cdfr = sample1(isam1)
@@ -138,8 +138,8 @@
 #elif   getDisKolm_ENABLED && SSD_ENABLED && WDD_ENABLED
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        real(TKC) :: copySample1(size(sample1, 1, IK))
-        real(TKC) :: copySample2(size(sample2, 1, IK))
+        real(TKG) :: copySample1(size(sample1, 1, IK))
+        real(TKG) :: copySample2(size(sample2, 1, IK))
         copySample1 = sample1
         copySample2 = sample2
         call setDisKolm(disKolm, copySample1, copySample2)
@@ -156,22 +156,22 @@
 #elif   (getDisKolm_ENABLED || setDisKolm_ENABLED) && SSA_ENABLED && WDD_ENABLED
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        real(TKC) :: cdf1, cdf2
-        real(TKC) :: ell1, ell2
+        real(TKG) :: cdf1, cdf2
+        real(TKG) :: ell1, ell2
         integer(IK) :: isam1, isam2
         integer(IK) :: nsam1, nsam2
-        real(TKC) :: invWeiSum1, invWeiSum2
+        real(TKG) :: invWeiSum1, invWeiSum2
         CHECK_ASSERTION(__LINE__, isAscending(sample1), SK_"@setDisKolm(): The condition `isAscending(sample1)` must hold. sample1 = "//getStr(sample1))
         CHECK_ASSERTION(__LINE__, isAscending(sample2), SK_"@setDisKolm(): The condition `isAscending(sample2)` must hold. sample2 = "//getStr(sample2))
         nsam1 = size(sample1, 1, IK)
         nsam2 = size(sample2, 1, IK)
-        if (0_IK < nsam1) invWeiSum1 = 1._TKC / nsam1
-        if (0_IK < nsam2) invWeiSum2 = 1._TKC / nsam2
+        if (0_IK < nsam1) invWeiSum1 = 1._TKG / nsam1
+        if (0_IK < nsam2) invWeiSum2 = 1._TKG / nsam2
         isam1 = 1_IK
         isam2 = 1_IK
-        cdf1 = 0._TKC
-        cdf2 = 0._TKC
-        disKolm = 0._TKC
+        cdf1 = 0._TKG
+        cdf2 = 0._TKG
+        disKolm = 0._TKG
         do
             if (nsam1 < isam1 .or. nsam2 < isam2) exit
             ell1 = sample1(isam1)
@@ -192,8 +192,8 @@
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
         TYPE_OF_WEIGHT :: copyWeight1(size(weight1, 1, IK))
-        real(TKC) :: copySample1(size(sample1, 1, IK))
-        real(TKC) :: copySample2(size(sample2, 1, IK))
+        real(TKG) :: copySample1(size(sample1, 1, IK))
+        real(TKG) :: copySample2(size(sample2, 1, IK))
         copySample1 = sample1
         copySample2 = sample2
         copyWeight1 = weight1
@@ -214,23 +214,23 @@
 #elif   (getDisKolm_ENABLED || setDisKolm_ENABLED) && SSA_ENABLED && (WID_ENABLED | WRD_ENABLED)
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        real(TKC) :: cdf1, cdf2
-        real(TKC) :: ell1, ell2
+        real(TKG) :: cdf1, cdf2
+        real(TKG) :: ell1, ell2
         integer(IK) :: isam1, isam2
         integer(IK) :: nsam1, nsam2
-        real(TKC) :: invWeiSum1, invWeiSum2
+        real(TKG) :: invWeiSum1, invWeiSum2
         CHECK_ASSERTION(__LINE__, all(0 <= weight1), SK_"@setDisKolm(): The condition `all(0 <= weight1)` must hold. weight1 = "//getStr(sample1))
         CHECK_ASSERTION(__LINE__, isAscending(sample1), SK_"@setDisKolm(): The condition `isAscending(sample1)` must hold. sample1 = "//getStr(sample1))
         CHECK_ASSERTION(__LINE__, isAscending(sample2), SK_"@setDisKolm(): The condition `isAscending(sample2)` must hold. sample2 = "//getStr(sample2))
-        CHECK_ASSERTION(__LINE__, abs(weisum1 - sum(weight1)) < 100 * epsilon(0._TKC), SK_"@setDisKolm(): The condition `weisum1 == sum(weight1)` must hold. weisum1, sum(weight1) = "//getStr([weisum1, sum(weight1)]))
+        CHECK_ASSERTION(__LINE__, abs(weisum1 - sum(weight1)) < 100 * epsilon(0._TKG), SK_"@setDisKolm(): The condition `weisum1 == sum(weight1)` must hold. weisum1, sum(weight1) = "//getStr([weisum1, sum(weight1)]))
         CHECK_ASSERTION(__LINE__, size(sample1, 1, IK) == size(weight1, 1, IK), SK_"@setDisKolm(): The condition `size(sample1) == size(weight1)` must hold. size(sample1), size(weight1) = "//getStr([size(sample1, 1, IK), size(weight1, 1, IK)]))
         nsam1 = size(sample1, 1, IK)
         nsam2 = size(sample2, 1, IK)
-        if (0 < weisum1) invWeiSum1 = 1._TKC / weisum1
-        if (0 < nsam2) invWeiSum2 = 1._TKC / nsam2
-        disKolm = 0._TKC
-        cdf1 = 0._TKC
-        cdf2 = 0._TKC
+        if (0 < weisum1) invWeiSum1 = 1._TKG / weisum1
+        if (0 < nsam2) invWeiSum2 = 1._TKG / nsam2
+        disKolm = 0._TKG
+        cdf1 = 0._TKG
+        cdf2 = 0._TKG
         isam1 = 1_IK
         isam2 = 1_IK
         do
@@ -254,8 +254,8 @@
 
         TYPE_OF_WEIGHT :: copyWeight1(size(weight1, 1, IK))
         TYPE_OF_WEIGHT :: copyWeight2(size(weight2, 1, IK))
-        real(TKC) :: copySample1(size(sample1, 1, IK))
-        real(TKC) :: copySample2(size(sample2, 1, IK))
+        real(TKG) :: copySample1(size(sample1, 1, IK))
+        real(TKG) :: copySample2(size(sample2, 1, IK))
         copySample1 = sample1
         copySample2 = sample2
         copyWeight1 = weight1
@@ -280,26 +280,26 @@
 #elif   (getDisKolm_ENABLED || setDisKolm_ENABLED) && SSA_ENABLED && (WII_ENABLED | WRR_ENABLED)
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        real(TKC) :: cdf1, cdf2
-        real(TKC) :: ell1, ell2
+        real(TKG) :: cdf1, cdf2
+        real(TKG) :: ell1, ell2
         integer(IK) :: isam1, isam2
         integer(IK) :: nsam1, nsam2
-        real(TKC) :: invWeiSum1, invWeiSum2
+        real(TKG) :: invWeiSum1, invWeiSum2
         CHECK_ASSERTION(__LINE__, all(0 <= weight1), SK_"@setDisKolm(): The condition `all(0 <= weight1)` must hold. weight1 = "//getStr(sample1))
         CHECK_ASSERTION(__LINE__, all(0 <= weight2), SK_"@setDisKolm(): The condition `all(0 <= weight2)` must hold. weight2 = "//getStr(sample2))
         CHECK_ASSERTION(__LINE__, isAscending(sample1), SK_"@setDisKolm(): The condition `isAscending(sample1)` must hold. sample1 = "//getStr(sample1))
         CHECK_ASSERTION(__LINE__, isAscending(sample2), SK_"@setDisKolm(): The condition `isAscending(sample2)` must hold. sample2 = "//getStr(sample2))
-        CHECK_ASSERTION(__LINE__, abs(weisum1 - sum(weight1)) < 100 * epsilon(0._TKC), SK_"@setDisKolm(): The condition `weisum1 == sum(weight1)` must hold. weisum1, sum(weight1) = "//getStr([weisum1, sum(weight1)]))
-        CHECK_ASSERTION(__LINE__, abs(weisum2 - sum(weight2)) < 100 * epsilon(0._TKC), SK_"@setDisKolm(): The condition `weisum2 == sum(weight2)` must hold. weisum2, sum(weight2) = "//getStr([weisum2, sum(weight2)]))
+        CHECK_ASSERTION(__LINE__, abs(weisum1 - sum(weight1)) < 100 * epsilon(0._TKG), SK_"@setDisKolm(): The condition `weisum1 == sum(weight1)` must hold. weisum1, sum(weight1) = "//getStr([weisum1, sum(weight1)]))
+        CHECK_ASSERTION(__LINE__, abs(weisum2 - sum(weight2)) < 100 * epsilon(0._TKG), SK_"@setDisKolm(): The condition `weisum2 == sum(weight2)` must hold. weisum2, sum(weight2) = "//getStr([weisum2, sum(weight2)]))
         CHECK_ASSERTION(__LINE__, size(sample1, 1, IK) == size(weight1, 1, IK), SK_"@setDisKolm(): The condition `size(sample1) == size(weight1)` must hold. size(sample1), size(weight1) = "//getStr([size(sample1, 1, IK), size(weight1, 1, IK)]))
         CHECK_ASSERTION(__LINE__, size(sample2, 1, IK) == size(weight2, 1, IK), SK_"@setDisKolm(): The condition `size(sample2) == size(weight2)` must hold. size(sample2), size(weight2) = "//getStr([size(sample2, 1, IK), size(weight2, 1, IK)]))
         nsam1 = size(sample1, 1, IK)
         nsam2 = size(sample2, 1, IK)
-        if (0 < weisum1) invWeiSum1 = 1._TKC / weisum1
-        if (0 < weisum2) invWeiSum2 = 1._TKC / weisum2
-        disKolm = 0._TKC
-        cdf1 = 0._TKC
-        cdf2 = 0._TKC
+        if (0 < weisum1) invWeiSum1 = 1._TKG / weisum1
+        if (0 < weisum2) invWeiSum2 = 1._TKG / weisum2
+        disKolm = 0._TKG
+        cdf1 = 0._TKG
+        cdf2 = 0._TKG
         isam1 = 1_IK
         isam2 = 1_IK
         do

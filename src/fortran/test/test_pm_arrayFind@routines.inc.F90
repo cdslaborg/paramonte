@@ -37,20 +37,20 @@
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 #if     SK_ENABLED && D1_D0_ENABLED
-        character(2,SKC), dimension(:), allocatable :: array
-        character(2,SKC)                             :: pattern
+        character(2,SKG), dimension(:), allocatable :: array
+        character(2,SKG)                             :: pattern
 #elif   IK_ENABLED && D1_D0_ENABLED
-        integer(IKC)    , dimension(:), allocatable :: array
-        integer(IKC)                                :: pattern
+        integer(IKG)    , dimension(:), allocatable :: array
+        integer(IKG)                                :: pattern
 #elif   LK_ENABLED && D1_D0_ENABLED
-        logical(LKC)    , dimension(:), allocatable :: array
-        logical(LKC)                                :: pattern
+        logical(LKG)    , dimension(:), allocatable :: array
+        logical(LKG)                                :: pattern
 #elif   CK_ENABLED && D1_D0_ENABLED
-        complex(CKC)    , dimension(:), allocatable :: array
-        complex(CKC)                                :: pattern
+        complex(CKG)    , dimension(:), allocatable :: array
+        complex(CKG)                                :: pattern
 #elif   RK_ENABLED && D1_D0_ENABLED
-        real(RKC)       , dimension(:), allocatable :: array
-        real(RKC)                                   :: pattern
+        real(RKG)       , dimension(:), allocatable :: array
+        real(RKG)                                   :: pattern
 #else
 #error  "Unrecognized interface."
 #endif
@@ -73,15 +73,15 @@
 
         function iseq(segment, pattern) result(equivalent)
 #if         SK_ENABLED && D1_D0_ENABLED
-            character(*,SKC), intent(in) :: segment, pattern
+            character(*,SKG), intent(in) :: segment, pattern
 #elif       IK_ENABLED && D1_D0_ENABLED
-            integer(IKC)    , intent(in) :: segment, pattern
+            integer(IKG)    , intent(in) :: segment, pattern
 #elif       CK_ENABLED && D1_D0_ENABLED
-            complex(CKC)    , intent(in) :: segment, pattern
+            complex(CKG)    , intent(in) :: segment, pattern
 #elif       RK_ENABLED && D1_D0_ENABLED
-            real(RKC)       , intent(in) :: segment, pattern
+            real(RKG)       , intent(in) :: segment, pattern
 #elif       LK_ENABLED && D1_D0_ENABLED
-            logical(LKC)    , intent(in) :: segment, pattern
+            logical(LKG)    , intent(in) :: segment, pattern
 #endif
             logical(LK) :: equivalent
             equivalent = pattern IS_EQUAL segment
@@ -103,13 +103,13 @@
 #if         SK_ENABLED && D1_D0_ENABLED
             pattern = " "
 #elif       IK_ENABLED && D1_D0_ENABLED
-            pattern = 1_IKC
+            pattern = 1_IKG
 #elif       CK_ENABLED && D1_D0_ENABLED
-            pattern = 1._CKC
+            pattern = 1._CKG
 #elif       RK_ENABLED && D1_D0_ENABLED
-            pattern = 1._RKC
+            pattern = 1._RKG
 #elif       LK_ENABLED && D1_D0_ENABLED
-            pattern = .false._LKC
+            pattern = .false._LKG
 #endif
             loc_ref = [integer(IK) ::]
             allocate(instance(0))
@@ -185,14 +185,14 @@
             array = ["AA", "AA"]
             pattern = "AA"
 #elif       IK_ENABLED && D1_D0_ENABLED
-            array = [1_IKC, 1_IKC]
-            pattern = 1_IKC
+            array = [1_IKG, 1_IKG]
+            pattern = 1_IKG
 #elif       CK_ENABLED && D1_D0_ENABLED
-            array = [(1._CKC,-1._CKC), (1._CKC,-1._CKC)]
-            pattern = (1._CKC,-1._CKC)
+            array = [(1._CKG,-1._CKG), (1._CKG,-1._CKG)]
+            pattern = (1._CKG,-1._CKG)
 #elif       RK_ENABLED && D1_D0_ENABLED
-            array = [1._RKC, 1._RKC]
-            pattern = 1._RKC
+            array = [1._RKG, 1._RKG]
+            pattern = 1._RKG
 #elif       LK_ENABLED && D1_D0_ENABLED
             array = [.false._LK, .false._LK]
             pattern = .false._LK
@@ -270,14 +270,14 @@
             array = ["AA", "AA"]
             pattern = "BB"
 #elif       IK_ENABLED && D1_D0_ENABLED
-            array = [1_IKC, 1_IKC]
-            pattern = 0_IKC
+            array = [1_IKG, 1_IKG]
+            pattern = 0_IKG
 #elif       CK_ENABLED && D1_D0_ENABLED
-            array = [(1._CKC,-1._CKC), (1._CKC,-1._CKC)]
-            pattern = (0._CKC,-0._CKC)
+            array = [(1._CKG,-1._CKG), (1._CKG,-1._CKG)]
+            pattern = (0._CKG,-0._CKG)
 #elif       RK_ENABLED && D1_D0_ENABLED
-            array = [1._RKC, 1._RKC]
-            pattern = 0._RKC
+            array = [1._RKG, 1._RKG]
+            pattern = 0._RKG
 #elif       LK_ENABLED && D1_D0_ENABLED
             array = [.false._LK, .false._LK]
             pattern = .true._LK
@@ -355,14 +355,14 @@
             array = ["AA", "AA"]
             pattern = "AA"
 #elif       IK_ENABLED && D1_D0_ENABLED
-            array = [1_IKC, 1_IKC]
-            pattern = 1_IKC
+            array = [1_IKG, 1_IKG]
+            pattern = 1_IKG
 #elif       CK_ENABLED && D1_D0_ENABLED
-            array = [(1._CKC,-1._CKC), (1._CKC,-1._CKC)]
-            pattern = (1._CKC,-1._CKC)
+            array = [(1._CKG,-1._CKG), (1._CKG,-1._CKG)]
+            pattern = (1._CKG,-1._CKG)
 #elif       RK_ENABLED && D1_D0_ENABLED
-            array = [1._RKC, 1._RKC]
-            pattern = 1._RKC
+            array = [1._RKG, 1._RKG]
+            pattern = 1._RKG
 #elif       LK_ENABLED && D1_D0_ENABLED
             array = [.false._LK, .false._LK]
             pattern = .false._LK
@@ -440,14 +440,14 @@
             array = ["AA", "AA"]
             pattern = "AA"
 #elif       IK_ENABLED && D1_D0_ENABLED
-            array = [1_IKC, 1_IKC]
-            pattern = 1_IKC
+            array = [1_IKG, 1_IKG]
+            pattern = 1_IKG
 #elif       CK_ENABLED && D1_D0_ENABLED
-            array = [(1._CKC,-1._CKC), (1._CKC,-1._CKC)]
-            pattern = (1._CKC,-1._CKC)
+            array = [(1._CKG,-1._CKG), (1._CKG,-1._CKG)]
+            pattern = (1._CKG,-1._CKG)
 #elif       RK_ENABLED && D1_D0_ENABLED
-            array = [1._RKC, 1._RKC]
-            pattern = 1._RKC
+            array = [1._RKG, 1._RKG]
+            pattern = 1._RKG
 #elif       LK_ENABLED && D1_D0_ENABLED
             array = [.false._LK, .false._LK]
             pattern = .false._LK
@@ -525,14 +525,14 @@
             array = ["AA", "AA"]
             pattern = "AA"
 #elif       IK_ENABLED && D1_D0_ENABLED
-            array = [1_IKC, 1_IKC]
-            pattern = 1_IKC
+            array = [1_IKG, 1_IKG]
+            pattern = 1_IKG
 #elif       CK_ENABLED && D1_D0_ENABLED
-            array = [(1._CKC,-1._CKC), (1._CKC,-1._CKC)]
-            pattern = (1._CKC,-1._CKC)
+            array = [(1._CKG,-1._CKG), (1._CKG,-1._CKG)]
+            pattern = (1._CKG,-1._CKG)
 #elif       RK_ENABLED && D1_D0_ENABLED
-            array = [1._RKC, 1._RKC]
-            pattern = 1._RKC
+            array = [1._RKG, 1._RKG]
+            pattern = 1._RKG
 #elif       LK_ENABLED && D1_D0_ENABLED
             array = [.false._LK, .false._LK]
             pattern = .false._LK
@@ -586,14 +586,14 @@
             array = ["AA", "AA"]
             pattern = "AA"
 #elif       IK_ENABLED && D1_D0_ENABLED
-            array = [1_IKC, 1_IKC]
-            pattern = 1_IKC
+            array = [1_IKG, 1_IKG]
+            pattern = 1_IKG
 #elif       CK_ENABLED && D1_D0_ENABLED
-            array = [(1._CKC,-1._CKC), (1._CKC,-1._CKC)]
-            pattern = (1._CKC,-1._CKC)
+            array = [(1._CKG,-1._CKG), (1._CKG,-1._CKG)]
+            pattern = (1._CKG,-1._CKG)
 #elif       RK_ENABLED && D1_D0_ENABLED
-            array = [1._RKC, 1._RKC]
-            pattern = 1._RKC
+            array = [1._RKG, 1._RKG]
+            pattern = 1._RKG
 #elif       LK_ENABLED && D1_D0_ENABLED
             array = [.false._LK, .false._LK]
             pattern = .false._LK
@@ -635,14 +635,14 @@
             array = ["AA", "BB", "AA"]
             pattern = "AA"
 #elif       IK_ENABLED && D1_D0_ENABLED
-            array = [1_IKC, 2_IKC, 1_IKC]
-            pattern = 1_IKC
+            array = [1_IKG, 2_IKG, 1_IKG]
+            pattern = 1_IKG
 #elif       CK_ENABLED && D1_D0_ENABLED
-            array = [(1._CKC,-1._CKC), (2._CKC,-2._CKC), (1._CKC,-1._CKC)]
-            pattern = (1._CKC,-1._CKC)
+            array = [(1._CKG,-1._CKG), (2._CKG,-2._CKG), (1._CKG,-1._CKG)]
+            pattern = (1._CKG,-1._CKG)
 #elif       RK_ENABLED && D1_D0_ENABLED
-            array = [1._RKC, 2._RKC, 1._RKC]
-            pattern = 1._RKC
+            array = [1._RKG, 2._RKG, 1._RKG]
+            pattern = 1._RKG
 #elif       LK_ENABLED && D1_D0_ENABLED
             array = [.false._LK, .true._LK, .false._LK]
             pattern = .false._LK
@@ -696,14 +696,14 @@
             array = ["AA", "BB", "AA"]
             pattern = "AA"
 #elif       IK_ENABLED && D1_D0_ENABLED
-            array = [1_IKC, 2_IKC, 1_IKC]
-            pattern = 1_IKC
+            array = [1_IKG, 2_IKG, 1_IKG]
+            pattern = 1_IKG
 #elif       CK_ENABLED && D1_D0_ENABLED
-            array = [(1._CKC,-1._CKC), (2._CKC,-2._CKC), (1._CKC,-1._CKC)]
-            pattern = (1._CKC,-1._CKC)
+            array = [(1._CKG,-1._CKG), (2._CKG,-2._CKG), (1._CKG,-1._CKG)]
+            pattern = (1._CKG,-1._CKG)
 #elif       RK_ENABLED && D1_D0_ENABLED
-            array = [1._RKC, 2._RKC, 1._RKC]
-            pattern = 1._RKC
+            array = [1._RKG, 2._RKG, 1._RKG]
+            pattern = 1._RKG
 #elif       LK_ENABLED && D1_D0_ENABLED
             array = [.false._LK, .true._LK, .false._LK]
             pattern = .false._LK
@@ -757,14 +757,14 @@
             array = ["BB", "AA", "AA"]
             pattern = "AA"
 #elif       IK_ENABLED && D1_D0_ENABLED
-            array = [2_IKC, 1_IKC, 1_IKC]
-            pattern = 1_IKC
+            array = [2_IKG, 1_IKG, 1_IKG]
+            pattern = 1_IKG
 #elif       CK_ENABLED && D1_D0_ENABLED
-            array = [(2._CKC,-2._CKC), (1._CKC,-1._CKC), (1._CKC,-1._CKC)]
-            pattern = (1._CKC,-1._CKC)
+            array = [(2._CKG,-2._CKG), (1._CKG,-1._CKG), (1._CKG,-1._CKG)]
+            pattern = (1._CKG,-1._CKG)
 #elif       RK_ENABLED && D1_D0_ENABLED
-            array = [2._RKC, 1._RKC, 1._RKC]
-            pattern = 1._RKC
+            array = [2._RKG, 1._RKG, 1._RKG]
+            pattern = 1._RKG
 #elif       LK_ENABLED && D1_D0_ENABLED
             array = [.true._LK, .false._LK, .false._LK]
             pattern = .false._LK
@@ -836,11 +836,11 @@
 #if         SK_ENABLED && D1_D0_ENABLED
             array = ["AA"]
 #elif       IK_ENABLED && D1_D0_ENABLED
-            array = [1_IKC]
+            array = [1_IKG]
 #elif       CK_ENABLED && D1_D0_ENABLED
-            array = [(1._CKC,-1._CKC)]
+            array = [(1._CKG,-1._CKG)]
 #elif       RK_ENABLED && D1_D0_ENABLED
-            array = [1._RKC]
+            array = [1._RKG]
 #elif       LK_ENABLED && D1_D0_ENABLED
             array = [.false._LK]
 #endif
@@ -905,11 +905,11 @@
 #if         SK_ENABLED && D1_D0_ENABLED
             array = ["AA"]
 #elif       IK_ENABLED && D1_D0_ENABLED
-            array = [1_IKC]
+            array = [1_IKG]
 #elif       CK_ENABLED && D1_D0_ENABLED
-            array = [(1._CKC,-1._CKC)]
+            array = [(1._CKG,-1._CKG)]
 #elif       RK_ENABLED && D1_D0_ENABLED
-            array = [1._RKC]
+            array = [1._RKG]
 #elif       LK_ENABLED && D1_D0_ENABLED
             array = [.false._LK]
 #endif
@@ -968,17 +968,17 @@
             call reset()
 
 #if         SK_ENABLED && D1_D0_ENABLED
-            allocate(character(2,SKC) :: array(0))
+            allocate(character(2,SKG) :: array(0))
             pattern = "AA"
 #elif       IK_ENABLED && D1_D0_ENABLED
             allocate(array(0))
-            pattern = 1_IKC
+            pattern = 1_IKG
 #elif       CK_ENABLED && D1_D0_ENABLED
             allocate(array(0))
-            pattern = (1._CKC,-1._CKC)
+            pattern = (1._CKG,-1._CKG)
 #elif       RK_ENABLED && D1_D0_ENABLED
             allocate(array(0))
-            pattern = 1._RKC
+            pattern = 1._RKG
 #elif       LK_ENABLED && D1_D0_ENABLED
             allocate(array(0))
             pattern = .false._LK
@@ -1086,14 +1086,14 @@
             array = ["AA", "BB", "CC", "AA"]
             pattern = "AA"
 #elif       IK_ENABLED && D1_D0_ENABLED
-            array = [1_IKC, 2_IKC, 3_IKC, 1_IKC]
-            pattern = 1_IKC
+            array = [1_IKG, 2_IKG, 3_IKG, 1_IKG]
+            pattern = 1_IKG
 #elif       CK_ENABLED && D1_D0_ENABLED
-            array = [(1._CKC,-1._CKC), (2._CKC,-2._CKC), (3._CKC,-3._CKC), (1._CKC,-1._CKC)]
-            pattern = (1._CKC,-1._CKC)
+            array = [(1._CKG,-1._CKG), (2._CKG,-2._CKG), (3._CKG,-3._CKG), (1._CKG,-1._CKG)]
+            pattern = (1._CKG,-1._CKG)
 #elif       RK_ENABLED && D1_D0_ENABLED
-            array = [1._RKC, 2._RKC, 3._RKC, 1._RKC]
-            pattern = 1._RKC
+            array = [1._RKG, 2._RKG, 3._RKG, 1._RKG]
+            pattern = 1._RKG
 #elif       LK_ENABLED && D1_D0_ENABLED
             array = [.false._LK, .true._LK, .true._LK, .false._LK]
             pattern = .false._LK
@@ -1167,14 +1167,14 @@
             array = ["AA", "AA"]
             pattern = "XX"
 #elif       IK_ENABLED && D1_D0_ENABLED
-            array = [1_IKC, 1_IKC]
-            pattern = 0_IKC
+            array = [1_IKG, 1_IKG]
+            pattern = 0_IKG
 #elif       CK_ENABLED && D1_D0_ENABLED
-            array = [(1._CKC,-1._CKC), (1._CKC,-1._CKC)]
-            pattern = (0._CKC,0._CKC)
+            array = [(1._CKG,-1._CKG), (1._CKG,-1._CKG)]
+            pattern = (0._CKG,0._CKG)
 #elif       RK_ENABLED && D1_D0_ENABLED
-            array = [1._RKC, 1._RKC]
-            pattern = 0._RKC
+            array = [1._RKG, 1._RKG]
+            pattern = 0._RKG
 #elif       LK_ENABLED && D1_D0_ENABLED
             array = [.false._LK, .false._LK]
             pattern = .true._LK
@@ -1288,14 +1288,14 @@
             array = ["AA", "XX", "AA", "XX", "AA"]
             pattern = "XX"
 #elif       IK_ENABLED && D1_D0_ENABLED
-            array = [1_IKC, 0_IKC, 1_IKC, 0_IKC, 1_IKC]
-            pattern = 0_IKC
+            array = [1_IKG, 0_IKG, 1_IKG, 0_IKG, 1_IKG]
+            pattern = 0_IKG
 #elif       CK_ENABLED && D1_D0_ENABLED
-            array = [(1._CKC,-1._CKC), (0._CKC,0._CKC), (1._CKC,-1._CKC), (0._CKC,0._CKC), (1._CKC,-1._CKC)]
-            pattern = (0._CKC,0._CKC)
+            array = [(1._CKG,-1._CKG), (0._CKG,0._CKG), (1._CKG,-1._CKG), (0._CKG,0._CKG), (1._CKG,-1._CKG)]
+            pattern = (0._CKG,0._CKG)
 #elif       RK_ENABLED && D1_D0_ENABLED
-            array = [1._RKC, 0._RKC, 1._RKC, 0._RKC, 1._RKC]
-            pattern = 0._RKC
+            array = [1._RKG, 0._RKG, 1._RKG, 0._RKG, 1._RKG]
+            pattern = 0._RKG
 #elif       LK_ENABLED && D1_D0_ENABLED
             array = [.false._LK, .true._LK, .false._LK, .true._LK, .false._LK]
             pattern = .true._LK
@@ -1369,14 +1369,14 @@
             array = ["AA", "AA"]
             pattern = "AA"
 #elif       IK_ENABLED && D1_D0_ENABLED
-            array = [1_IKC, 1_IKC]
-            pattern = 1_IKC
+            array = [1_IKG, 1_IKG]
+            pattern = 1_IKG
 #elif       CK_ENABLED && D1_D0_ENABLED
-            array = [(1._CKC,-1._CKC), (1._CKC,-1._CKC)]
-            pattern = (1._CKC,-1._CKC)
+            array = [(1._CKG,-1._CKG), (1._CKG,-1._CKG)]
+            pattern = (1._CKG,-1._CKG)
 #elif       RK_ENABLED && D1_D0_ENABLED
-            array = [1._RKC, 1._RKC]
-            pattern = 1._RKC
+            array = [1._RKG, 1._RKG]
+            pattern = 1._RKG
 #elif       LK_ENABLED && D1_D0_ENABLED
             array = [.false._LK, .false._LK]
             pattern = .false._LK
@@ -1555,17 +1555,17 @@
 
 #if     SK_ENABLED && D0_D0_ENABLED
 #define ALL
-        character(:,SKC), allocatable :: array, pattern
+        character(:,SKG), allocatable :: array, pattern
 #elif   SK_ENABLED && D1_D1_ENABLED
-        character(2,SKC), dimension(:), allocatable :: array, pattern
+        character(2,SKG), dimension(:), allocatable :: array, pattern
 #elif   IK_ENABLED && D1_D1_ENABLED
-        integer(IKC)    , dimension(:), allocatable :: array, pattern
+        integer(IKG)    , dimension(:), allocatable :: array, pattern
 #elif   LK_ENABLED && D1_D1_ENABLED
-        logical(LKC)    , dimension(:), allocatable :: array, pattern
+        logical(LKG)    , dimension(:), allocatable :: array, pattern
 #elif   CK_ENABLED && D1_D1_ENABLED
-        complex(CKC)    , dimension(:), allocatable :: array, pattern
+        complex(CKG)    , dimension(:), allocatable :: array, pattern
 #elif   RK_ENABLED && D1_D1_ENABLED
-        real(RKC)       , dimension(:), allocatable :: array, pattern
+        real(RKG)       , dimension(:), allocatable :: array, pattern
 #else
 #error "Unrecognized interface."
 #endif
@@ -1599,13 +1599,13 @@
 #elif       SK_ENABLED && D1_D1_ENABLED
             character(*, SK), intent(in) :: Segment(lenPattern), pattern(lenPattern)
 #elif       IK_ENABLED && D1_D1_ENABLED
-            integer(IKC)    , intent(in) :: Segment(lenPattern), pattern(lenPattern)
+            integer(IKG)    , intent(in) :: Segment(lenPattern), pattern(lenPattern)
 #elif       CK_ENABLED && D1_D1_ENABLED
-            complex(CKC)    , intent(in) :: Segment(lenPattern), pattern(lenPattern)
+            complex(CKG)    , intent(in) :: Segment(lenPattern), pattern(lenPattern)
 #elif       RK_ENABLED && D1_D1_ENABLED
-            real(RKC)       , intent(in) :: Segment(lenPattern), pattern(lenPattern)
+            real(RKG)       , intent(in) :: Segment(lenPattern), pattern(lenPattern)
 #elif       LK_ENABLED && D1_D1_ENABLED
-            logical(LKC)    , intent(in) :: Segment(lenPattern), pattern(lenPattern)
+            logical(LKG)    , intent(in) :: Segment(lenPattern), pattern(lenPattern)
 #endif
             logical(LK) :: equivalent
             equivalent = ALL(pattern IS_EQUAL Segment)
@@ -1627,18 +1627,18 @@
 
 #if         SK_ENABLED && D0_D0_ENABLED
             pattern = " "
-            allocate(character(0,SKC) :: array)
+            allocate(character(0,SKG) :: array)
 #elif       SK_ENABLED && D1_D1_ENABLED
             pattern = [" "]
-            allocate(character(2,SKC) :: array(0))
+            allocate(character(2,SKG) :: array(0))
 #elif       IK_ENABLED && D1_D1_ENABLED
-            pattern = [1_IKC]
+            pattern = [1_IKG]
             allocate(array(0))
 #elif       CK_ENABLED && D1_D1_ENABLED
-            pattern = [1._CKC]
+            pattern = [1._CKG]
             allocate(array(0))
 #elif       RK_ENABLED && D1_D1_ENABLED
-            pattern = [1._RKC]
+            pattern = [1._RKG]
             allocate(array(0))
 #elif       LK_ENABLED && D1_D1_ENABLED
             pattern = [.false._LK]
@@ -1720,14 +1720,14 @@
             array = ["AA", "AA"]
             pattern = ["AA"]
 #elif       IK_ENABLED && D1_D1_ENABLED
-            array = [1_IKC, 1_IKC]
-            pattern = [1_IKC]
+            array = [1_IKG, 1_IKG]
+            pattern = [1_IKG]
 #elif       CK_ENABLED && D1_D1_ENABLED
-            array = [(1._CKC,-1._CKC), (1._CKC,-1._CKC)]
-            pattern = [(1._CKC,-1._CKC)]
+            array = [(1._CKG,-1._CKG), (1._CKG,-1._CKG)]
+            pattern = [(1._CKG,-1._CKG)]
 #elif       RK_ENABLED && D1_D1_ENABLED
-            array = [1._RKC, 1._RKC]
-            pattern = [1._RKC]
+            array = [1._RKG, 1._RKG]
+            pattern = [1._RKG]
 #elif       LK_ENABLED && D1_D1_ENABLED
             array = [.false._LK, .false._LK]
             pattern = [.false._LK]
@@ -1808,14 +1808,14 @@
             array = ["AA", "AA"]
             pattern = ["AA"]
 #elif       IK_ENABLED && D1_D1_ENABLED
-            array = [1_IKC, 1_IKC]
-            pattern = [1_IKC]
+            array = [1_IKG, 1_IKG]
+            pattern = [1_IKG]
 #elif       CK_ENABLED && D1_D1_ENABLED
-            array = [(1._CKC,-1._CKC), (1._CKC,-1._CKC)]
-            pattern = [(1._CKC,-1._CKC)]
+            array = [(1._CKG,-1._CKG), (1._CKG,-1._CKG)]
+            pattern = [(1._CKG,-1._CKG)]
 #elif       RK_ENABLED && D1_D1_ENABLED
-            array = [1._RKC, 1._RKC]
-            pattern = [1._RKC]
+            array = [1._RKG, 1._RKG]
+            pattern = [1._RKG]
 #elif       LK_ENABLED && D1_D1_ENABLED
             array = [.false._LK, .false._LK]
             pattern = [.false._LK]
@@ -1896,14 +1896,14 @@
             array = ["AA", "AA"]
             pattern = ["AA"]
 #elif       IK_ENABLED && D1_D1_ENABLED
-            array = [1_IKC, 1_IKC]
-            pattern = [1_IKC]
+            array = [1_IKG, 1_IKG]
+            pattern = [1_IKG]
 #elif       CK_ENABLED && D1_D1_ENABLED
-            array = [(1._CKC,-1._CKC), (1._CKC,-1._CKC)]
-            pattern = [(1._CKC,-1._CKC)]
+            array = [(1._CKG,-1._CKG), (1._CKG,-1._CKG)]
+            pattern = [(1._CKG,-1._CKG)]
 #elif       RK_ENABLED && D1_D1_ENABLED
-            array = [1._RKC, 1._RKC]
-            pattern = [1._RKC]
+            array = [1._RKG, 1._RKG]
+            pattern = [1._RKG]
 #elif       LK_ENABLED && D1_D1_ENABLED
             array = [.false._LK, .false._LK]
             pattern = [.false._LK]
@@ -1966,14 +1966,14 @@
             array = ["AA", "AA"]
             pattern = ["AA"]
 #elif       IK_ENABLED && D1_D1_ENABLED
-            array = [1_IKC, 1_IKC]
-            pattern = [1_IKC]
+            array = [1_IKG, 1_IKG]
+            pattern = [1_IKG]
 #elif       CK_ENABLED && D1_D1_ENABLED
-            array = [(1._CKC,-1._CKC), (1._CKC,-1._CKC)]
-            pattern = [(1._CKC,-1._CKC)]
+            array = [(1._CKG,-1._CKG), (1._CKG,-1._CKG)]
+            pattern = [(1._CKG,-1._CKG)]
 #elif       RK_ENABLED && D1_D1_ENABLED
-            array = [1._RKC, 1._RKC]
-            pattern = [1._RKC]
+            array = [1._RKG, 1._RKG]
+            pattern = [1._RKG]
 #elif       LK_ENABLED && D1_D1_ENABLED
             array = [.false._LK, .false._LK]
             pattern = [.false._LK]
@@ -2030,14 +2030,14 @@
             array = ["AA", "AA", "AA"]
             pattern = ["AA", "AA"]
 #elif       IK_ENABLED && D1_D1_ENABLED
-            array = [1_IKC, 1_IKC, 1_IKC]
-            pattern = [1_IKC, 1_IKC]
+            array = [1_IKG, 1_IKG, 1_IKG]
+            pattern = [1_IKG, 1_IKG]
 #elif       CK_ENABLED && D1_D1_ENABLED
-            array = [(1._CKC,-1._CKC), (1._CKC,-1._CKC), (1._CKC,-1._CKC)]
-            pattern = [(1._CKC,-1._CKC), (1._CKC,-1._CKC)]
+            array = [(1._CKG,-1._CKG), (1._CKG,-1._CKG), (1._CKG,-1._CKG)]
+            pattern = [(1._CKG,-1._CKG), (1._CKG,-1._CKG)]
 #elif       RK_ENABLED && D1_D1_ENABLED
-            array = [1._RKC, 1._RKC, 1._RKC]
-            pattern = [1._RKC, 1._RKC]
+            array = [1._RKG, 1._RKG, 1._RKG]
+            pattern = [1._RKG, 1._RKG]
 #elif       LK_ENABLED && D1_D1_ENABLED
             array = [.false._LK, .false._LK, .false._LK]
             pattern = [.false._LK, .false._LK]
@@ -2118,14 +2118,14 @@
             array = ["AA", "AA", "AA"]
             pattern = ["AA", "AA"]
 #elif       IK_ENABLED && D1_D1_ENABLED
-            array = [1_IKC, 1_IKC, 1_IKC]
-            pattern = [1_IKC, 1_IKC]
+            array = [1_IKG, 1_IKG, 1_IKG]
+            pattern = [1_IKG, 1_IKG]
 #elif       CK_ENABLED && D1_D1_ENABLED
-            array = [(1._CKC,-1._CKC), (1._CKC,-1._CKC), (1._CKC,-1._CKC)]
-            pattern = [(1._CKC,-1._CKC), (1._CKC,-1._CKC)]
+            array = [(1._CKG,-1._CKG), (1._CKG,-1._CKG), (1._CKG,-1._CKG)]
+            pattern = [(1._CKG,-1._CKG), (1._CKG,-1._CKG)]
 #elif       RK_ENABLED && D1_D1_ENABLED
-            array = [1._RKC, 1._RKC, 1._RKC]
-            pattern = [1._RKC, 1._RKC]
+            array = [1._RKG, 1._RKG, 1._RKG]
+            pattern = [1._RKG, 1._RKG]
 #elif       LK_ENABLED && D1_D1_ENABLED
             array = [.false._LK, .false._LK, .false._LK]
             pattern = [.false._LK, .false._LK]
@@ -2170,14 +2170,14 @@
             array = ["AA", "AA", "BB", "BB", "AA", "AA"]
             pattern = ["AA", "AA"]
 #elif       IK_ENABLED && D1_D1_ENABLED
-            array = [1_IKC, 1_IKC, 2_IKC, 2_IKC, 1_IKC, 1_IKC]
-            pattern = [1_IKC, 1_IKC]
+            array = [1_IKG, 1_IKG, 2_IKG, 2_IKG, 1_IKG, 1_IKG]
+            pattern = [1_IKG, 1_IKG]
 #elif       CK_ENABLED && D1_D1_ENABLED
-            array = [(1._CKC,-1._CKC), (1._CKC,-1._CKC), (2._CKC,-2._CKC), (2._CKC,-2._CKC), (1._CKC,-1._CKC), (1._CKC,-1._CKC)]
-            pattern = [(1._CKC,-1._CKC), (1._CKC,-1._CKC)]
+            array = [(1._CKG,-1._CKG), (1._CKG,-1._CKG), (2._CKG,-2._CKG), (2._CKG,-2._CKG), (1._CKG,-1._CKG), (1._CKG,-1._CKG)]
+            pattern = [(1._CKG,-1._CKG), (1._CKG,-1._CKG)]
 #elif       RK_ENABLED && D1_D1_ENABLED
-            array = [1._RKC, 1._RKC, 2._RKC, 2._RKC, 1._RKC, 1._RKC]
-            pattern = [1._RKC, 1._RKC]
+            array = [1._RKG, 1._RKG, 2._RKG, 2._RKG, 1._RKG, 1._RKG]
+            pattern = [1._RKG, 1._RKG]
 #elif       LK_ENABLED && D1_D1_ENABLED
             array = [.false._LK, .false._LK, .true._LK, .true._LK, .false._LK, .false._LK]
             pattern = [.false._LK, .false._LK]
@@ -2234,14 +2234,14 @@
             array = ["AA", "AA", "BB", "BB", "AA", "AA"]
             pattern = ["AA", "AA"]
 #elif       IK_ENABLED && D1_D1_ENABLED
-            array = [1_IKC, 1_IKC, 2_IKC, 2_IKC, 1_IKC, 1_IKC]
-            pattern = [1_IKC, 1_IKC]
+            array = [1_IKG, 1_IKG, 2_IKG, 2_IKG, 1_IKG, 1_IKG]
+            pattern = [1_IKG, 1_IKG]
 #elif       CK_ENABLED && D1_D1_ENABLED
-            array = [(1._CKC,-1._CKC), (1._CKC,-1._CKC), (2._CKC,-2._CKC), (2._CKC,-2._CKC), (1._CKC,-1._CKC), (1._CKC,-1._CKC)]
-            pattern = [(1._CKC,-1._CKC), (1._CKC,-1._CKC)]
+            array = [(1._CKG,-1._CKG), (1._CKG,-1._CKG), (2._CKG,-2._CKG), (2._CKG,-2._CKG), (1._CKG,-1._CKG), (1._CKG,-1._CKG)]
+            pattern = [(1._CKG,-1._CKG), (1._CKG,-1._CKG)]
 #elif       RK_ENABLED && D1_D1_ENABLED
-            array = [1._RKC, 1._RKC, 2._RKC, 2._RKC, 1._RKC, 1._RKC]
-            pattern = [1._RKC, 1._RKC]
+            array = [1._RKG, 1._RKG, 2._RKG, 2._RKG, 1._RKG, 1._RKG]
+            pattern = [1._RKG, 1._RKG]
 #elif       LK_ENABLED && D1_D1_ENABLED
             array = [.false._LK, .false._LK, .true._LK, .true._LK, .false._LK, .false._LK]
             pattern = [.false._LK, .false._LK]
@@ -2298,11 +2298,11 @@
 #elif       SK_ENABLED && D1_D1_ENABLED
             array = ["AA"]
 #elif       IK_ENABLED && D1_D1_ENABLED
-            array = [1_IKC]
+            array = [1_IKG]
 #elif       CK_ENABLED && D1_D1_ENABLED
-            array = [(1._CKC,-1._CKC)]
+            array = [(1._CKG,-1._CKG)]
 #elif       RK_ENABLED && D1_D1_ENABLED
-            array = [1._RKC]
+            array = [1._RKG]
 #elif       LK_ENABLED && D1_D1_ENABLED
             array = [.false._LK]
 #endif
@@ -2371,14 +2371,14 @@
             array = ["BB", "BB", "AA", "AA", "AA", "AA"]
             pattern = ["AA", "AA"]
 #elif       IK_ENABLED && D1_D1_ENABLED
-            array = [2_IKC, 2_IKC, 1_IKC, 1_IKC, 1_IKC, 1_IKC]
-            pattern = [1_IKC, 1_IKC]
+            array = [2_IKG, 2_IKG, 1_IKG, 1_IKG, 1_IKG, 1_IKG]
+            pattern = [1_IKG, 1_IKG]
 #elif       CK_ENABLED && D1_D1_ENABLED
-            array = [(2._CKC,-2._CKC), (2._CKC,-2._CKC), (1._CKC,-1._CKC), (1._CKC,-1._CKC), (1._CKC,-1._CKC), (1._CKC,-1._CKC)]
-            pattern = [(1._CKC,-1._CKC), (1._CKC,-1._CKC)]
+            array = [(2._CKG,-2._CKG), (2._CKG,-2._CKG), (1._CKG,-1._CKG), (1._CKG,-1._CKG), (1._CKG,-1._CKG), (1._CKG,-1._CKG)]
+            pattern = [(1._CKG,-1._CKG), (1._CKG,-1._CKG)]
 #elif       RK_ENABLED && D1_D1_ENABLED
-            array = [2._RKC, 2._RKC, 1._RKC, 1._RKC, 1._RKC, 1._RKC]
-            pattern = [1._RKC, 1._RKC]
+            array = [2._RKG, 2._RKG, 1._RKG, 1._RKG, 1._RKG, 1._RKG]
+            pattern = [1._RKG, 1._RKG]
 #elif       LK_ENABLED && D1_D1_ENABLED
             array = [.true._LK, .true._LK, .false._LK, .false._LK, .false._LK, .false._LK]
             pattern = [.false._LK, .false._LK]
@@ -2452,11 +2452,11 @@
 #elif       SK_ENABLED && D1_D1_ENABLED
             array = ["AA"]
 #elif       IK_ENABLED && D1_D1_ENABLED
-            array = [1_IKC]
+            array = [1_IKG]
 #elif       CK_ENABLED && D1_D1_ENABLED
-            array = [(1._CKC,-1._CKC)]
+            array = [(1._CKG,-1._CKG)]
 #elif       RK_ENABLED && D1_D1_ENABLED
-            array = [1._RKC]
+            array = [1._RKG]
 #elif       LK_ENABLED && D1_D1_ENABLED
             array = [.false._LK]
 #endif
@@ -2513,20 +2513,20 @@
             call reset()
 
 #if         SK_ENABLED && D0_D0_ENABLED
-            allocate(character(0,SKC) :: array)
+            allocate(character(0,SKG) :: array)
             pattern = "AA"
 #elif       SK_ENABLED && D1_D1_ENABLED
-            allocate(character(2,SKC) :: array(0))
+            allocate(character(2,SKG) :: array(0))
             pattern = ["AA"]
 #elif       IK_ENABLED && D1_D1_ENABLED
             allocate(array(0))
-            pattern = [1_IKC]
+            pattern = [1_IKG]
 #elif       CK_ENABLED && D1_D1_ENABLED
             allocate(array(0))
-            pattern = [(1._CKC,-1._CKC)]
+            pattern = [(1._CKG,-1._CKG)]
 #elif       RK_ENABLED && D1_D1_ENABLED
             allocate(array(0))
-            pattern = [1._RKC]
+            pattern = [1._RKG]
 #elif       LK_ENABLED && D1_D1_ENABLED
             allocate(array(0))
             pattern = [.false._LK]
@@ -2635,14 +2635,14 @@
             array = ["AA", "AA", "BB", "BB", "CC", "CC", "AA", "AA"]
             pattern = ["AA", "AA"]
 #elif       IK_ENABLED && D1_D1_ENABLED
-            array = [1_IKC, 1_IKC, 2_IKC, 2_IKC, 3_IKC, 3_IKC, 1_IKC, 1_IKC]
-            pattern = [1_IKC, 1_IKC]
+            array = [1_IKG, 1_IKG, 2_IKG, 2_IKG, 3_IKG, 3_IKG, 1_IKG, 1_IKG]
+            pattern = [1_IKG, 1_IKG]
 #elif       CK_ENABLED && D1_D1_ENABLED
-            array = [(1._CKC,-1._CKC), (1._CKC,-1._CKC), (2._CKC,-2._CKC), (2._CKC,-2._CKC), (3._CKC,-3._CKC), (3._CKC,-3._CKC), (1._CKC,-1._CKC), (1._CKC,-1._CKC)]
-            pattern = [(1._CKC,-1._CKC), (1._CKC,-1._CKC)]
+            array = [(1._CKG,-1._CKG), (1._CKG,-1._CKG), (2._CKG,-2._CKG), (2._CKG,-2._CKG), (3._CKG,-3._CKG), (3._CKG,-3._CKG), (1._CKG,-1._CKG), (1._CKG,-1._CKG)]
+            pattern = [(1._CKG,-1._CKG), (1._CKG,-1._CKG)]
 #elif       RK_ENABLED && D1_D1_ENABLED
-            array = [1._RKC, 1._RKC, 2._RKC, 2._RKC, 3._RKC, 3._RKC, 1._RKC, 1._RKC]
-            pattern = [1._RKC, 1._RKC]
+            array = [1._RKG, 1._RKG, 2._RKG, 2._RKG, 3._RKG, 3._RKG, 1._RKG, 1._RKG]
+            pattern = [1._RKG, 1._RKG]
 #elif       LK_ENABLED && D1_D1_ENABLED
             array = [.false._LK, .false._LK, .true._LK, .true._LK, .true._LK, .true._LK, .false._LK, .false._LK]
             pattern = [.false._LK, .false._LK]
@@ -2713,14 +2713,14 @@
             array = ["AA", "AA"]
             pattern = ["XX"]
 #elif       IK_ENABLED && D1_D1_ENABLED
-            array = [1_IKC, 1_IKC]
-            pattern = [0_IKC]
+            array = [1_IKG, 1_IKG]
+            pattern = [0_IKG]
 #elif       CK_ENABLED && D1_D1_ENABLED
-            array = [(1._CKC,-1._CKC), (1._CKC,-1._CKC)]
-            pattern = [(0._CKC,0._CKC)]
+            array = [(1._CKG,-1._CKG), (1._CKG,-1._CKG)]
+            pattern = [(0._CKG,0._CKG)]
 #elif       RK_ENABLED && D1_D1_ENABLED
-            array = [1._RKC, 1._RKC]
-            pattern = [0._RKC]
+            array = [1._RKG, 1._RKG]
+            pattern = [0._RKG]
 #elif       LK_ENABLED && D1_D1_ENABLED
             array = [.false._LK, .false._LK]
             pattern = [.true._LK]
@@ -2837,14 +2837,14 @@
             array = ["AA", "XX", "AA", "XX", "AA"]
             pattern = ["XX"]
 #elif       IK_ENABLED && D1_D1_ENABLED
-            array = [1_IKC, 0_IKC, 1_IKC, 0_IKC, 1_IKC]
-            pattern = [0_IKC]
+            array = [1_IKG, 0_IKG, 1_IKG, 0_IKG, 1_IKG]
+            pattern = [0_IKG]
 #elif       CK_ENABLED && D1_D1_ENABLED
-            array = [(1._CKC,-1._CKC), (0._CKC,0._CKC), (1._CKC,-1._CKC), (0._CKC,0._CKC), (1._CKC,-1._CKC)]
-            pattern = [(0._CKC,0._CKC)]
+            array = [(1._CKG,-1._CKG), (0._CKG,0._CKG), (1._CKG,-1._CKG), (0._CKG,0._CKG), (1._CKG,-1._CKG)]
+            pattern = [(0._CKG,0._CKG)]
 #elif       RK_ENABLED && D1_D1_ENABLED
-            array = [1._RKC, 0._RKC, 1._RKC, 0._RKC, 1._RKC]
-            pattern = [0._RKC]
+            array = [1._RKG, 0._RKG, 1._RKG, 0._RKG, 1._RKG]
+            pattern = [0._RKG]
 #elif       LK_ENABLED && D1_D1_ENABLED
             array = [.false._LK, .true._LK, .false._LK, .true._LK, .false._LK]
             pattern = [.true._LK]
@@ -2910,14 +2910,14 @@
             array = ["AA", "AA"]
             pattern = ["AA"]
 #elif       IK_ENABLED && D1_D1_ENABLED
-            array = [1_IKC, 1_IKC]
-            pattern = [1_IKC]
+            array = [1_IKG, 1_IKG]
+            pattern = [1_IKG]
 #elif       CK_ENABLED && D1_D1_ENABLED
-            array = [(1._CKC,-1._CKC), (1._CKC,-1._CKC)]
-            pattern = [(1._CKC,-1._CKC)]
+            array = [(1._CKG,-1._CKG), (1._CKG,-1._CKG)]
+            pattern = [(1._CKG,-1._CKG)]
 #elif       RK_ENABLED && D1_D1_ENABLED
-            array = [1._RKC, 1._RKC]
-            pattern = [1._RKC]
+            array = [1._RKG, 1._RKG]
+            pattern = [1._RKG]
 #elif       LK_ENABLED && D1_D1_ENABLED
             array = [.false._LK, .false._LK]
             pattern = [.false._LK]
@@ -2980,15 +2980,15 @@
             pattern = ""
 #elif       SK_ENABLED && D1_D1_ENABLED
             array = ["AA", "AA"]
-            allocate(character(2,SKC) :: pattern(0))
+            allocate(character(2,SKG) :: pattern(0))
 #elif       IK_ENABLED && D1_D1_ENABLED
-            array = [1_IKC, 1_IKC]
+            array = [1_IKG, 1_IKG]
             allocate(pattern(0))
 #elif       CK_ENABLED && D1_D1_ENABLED
-            array = [1._CKC, 1._CKC]
+            array = [1._CKG, 1._CKG]
             allocate(pattern(0))
 #elif       RK_ENABLED && D1_D1_ENABLED
-            array = [1._RKC, 1._RKC]
+            array = [1._RKG, 1._RKG]
             allocate(pattern(0))
 #elif       LK_ENABLED && D1_D1_ENABLED
             array = [.false._LK, .false._LK]
@@ -3036,15 +3036,15 @@
             pattern = ""
 #elif       SK_ENABLED && D1_D1_ENABLED
             array = ["AA", "AA"]
-            allocate(character(2,SKC) :: pattern(0))
+            allocate(character(2,SKG) :: pattern(0))
 #elif       IK_ENABLED && D1_D1_ENABLED
-            array = [1_IKC, 1_IKC]
+            array = [1_IKG, 1_IKG]
             allocate(pattern(0))
 #elif       CK_ENABLED && D1_D1_ENABLED
-            array = [1._CKC, 1._CKC]
+            array = [1._CKG, 1._CKG]
             allocate(pattern(0))
 #elif       RK_ENABLED && D1_D1_ENABLED
-            array = [1._RKC, 1._RKC]
+            array = [1._RKG, 1._RKG]
             allocate(pattern(0))
 #elif       LK_ENABLED && D1_D1_ENABLED
             array = [.false._LK, .false._LK]
@@ -3124,11 +3124,11 @@
 #elif       SK_ENABLED && D1_D1_ENABLED
             array = ["AA", "AA"]
 #elif       IK_ENABLED && D1_D1_ENABLED
-            array = [1_IKC, 1_IKC]
+            array = [1_IKG, 1_IKG]
 #elif       CK_ENABLED && D1_D1_ENABLED
-            array = [(1._CKC,-1._CKC), (1._CKC,-1._CKC)]
+            array = [(1._CKG,-1._CKG), (1._CKG,-1._CKG)]
 #elif       RK_ENABLED && D1_D1_ENABLED
-            array = [1._RKC, 1._RKC]
+            array = [1._RKG, 1._RKG]
 #elif       LK_ENABLED && D1_D1_ENABLED
             array = [.false._LK, .false._LK]
 #endif
@@ -3195,11 +3195,11 @@
 #elif       SK_ENABLED && D1_D1_ENABLED
             array = ["AA", "AA"]
 #elif       IK_ENABLED && D1_D1_ENABLED
-            array = [1_IKC, 1_IKC]
+            array = [1_IKG, 1_IKG]
 #elif       CK_ENABLED && D1_D1_ENABLED
-            array = [(1._CKC,-1._CKC), (1._CKC,-1._CKC)]
+            array = [(1._CKG,-1._CKG), (1._CKG,-1._CKG)]
 #elif       RK_ENABLED && D1_D1_ENABLED
-            array = [1._RKC, 1._RKC]
+            array = [1._RKG, 1._RKG]
 #elif       LK_ENABLED && D1_D1_ENABLED
             array = [.false._LK, .false._LK]
 #endif
@@ -3264,13 +3264,13 @@
             array = ["AA", "AA"]
             pattern = [array, array]
 #elif       IK_ENABLED && D1_D1_ENABLED
-            array = [1_IKC, 1_IKC]
+            array = [1_IKG, 1_IKG]
             pattern = [array, array]
 #elif       CK_ENABLED && D1_D1_ENABLED
-            array = [(1._CKC,-1._CKC), (1._CKC,-1._CKC)]
+            array = [(1._CKG,-1._CKG), (1._CKG,-1._CKG)]
             pattern = [array, array]
 #elif       RK_ENABLED && D1_D1_ENABLED
-            array = [1._RKC, 1._RKC]
+            array = [1._RKG, 1._RKG]
             pattern = [array, array]
 #elif       LK_ENABLED && D1_D1_ENABLED
             array = [.false._LK, .false._LK]

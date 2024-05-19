@@ -148,10 +148,10 @@ module pm_arrayRemap
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemappedFor_D0_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)        , intent(in)                    :: array
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)        , intent(in)                    :: array
         integer(IK)             , intent(in)    , contiguous    :: index(:)
-        character(len(array,IK),SKC)                            :: arrayNew
+        character(len(array,IK),SKG)                            :: arrayNew
     end function
 #endif
 
@@ -160,10 +160,10 @@ module pm_arrayRemap
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemappedFor_D0_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)        , intent(in)                    :: array
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)        , intent(in)                    :: array
         integer(IK)             , intent(in)    , contiguous    :: index(:)
-        character(len(array,IK),SKC)                            :: arrayNew
+        character(len(array,IK),SKG)                            :: arrayNew
     end function
 #endif
 
@@ -172,10 +172,10 @@ module pm_arrayRemap
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemappedFor_D0_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)        , intent(in)                    :: array
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)        , intent(in)                    :: array
         integer(IK)             , intent(in)    , contiguous    :: index(:)
-        character(len(array,IK),SKC)                            :: arrayNew
+        character(len(array,IK),SKG)                            :: arrayNew
     end function
 #endif
 
@@ -184,10 +184,10 @@ module pm_arrayRemap
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemappedFor_D0_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)        , intent(in)                    :: array
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)        , intent(in)                    :: array
         integer(IK)             , intent(in)    , contiguous    :: index(:)
-        character(len(array,IK),SKC)                            :: arrayNew
+        character(len(array,IK),SKG)                            :: arrayNew
     end function
 #endif
 
@@ -196,10 +196,10 @@ module pm_arrayRemap
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemappedFor_D0_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)        , intent(in)                    :: array
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)        , intent(in)                    :: array
         integer(IK)             , intent(in)    , contiguous    :: index(:)
-        character(len(array,IK),SKC)                            :: arrayNew
+        character(len(array,IK),SKG)                            :: arrayNew
     end function
 #endif
 
@@ -210,10 +210,10 @@ module pm_arrayRemap
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemappedFor_D1_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)        , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)        , intent(in)    , contiguous    :: array(:)
         integer(IK)             , intent(in)    , contiguous    :: index(:)
-        character(len(array,IK),SKC)                            :: arrayNew(size(array, kind = IK))
+        character(len(array,IK),SKG)                            :: arrayNew(size(array, kind = IK))
     end function
 #endif
 
@@ -222,10 +222,10 @@ module pm_arrayRemap
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemappedFor_D1_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)        , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)        , intent(in)    , contiguous    :: array(:)
         integer(IK)             , intent(in)    , contiguous    :: index(:)
-        character(len(array,IK),SKC)                            :: arrayNew(size(array, kind = IK))
+        character(len(array,IK),SKG)                            :: arrayNew(size(array, kind = IK))
     end function
 #endif
 
@@ -234,10 +234,10 @@ module pm_arrayRemap
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemappedFor_D1_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)        , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)        , intent(in)    , contiguous    :: array(:)
         integer(IK)             , intent(in)    , contiguous    :: index(:)
-        character(len(array,IK),SKC)                            :: arrayNew(size(array, kind = IK))
+        character(len(array,IK),SKG)                            :: arrayNew(size(array, kind = IK))
     end function
 #endif
 
@@ -246,10 +246,10 @@ module pm_arrayRemap
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemappedFor_D1_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)        , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)        , intent(in)    , contiguous    :: array(:)
         integer(IK)             , intent(in)    , contiguous    :: index(:)
-        character(len(array,IK),SKC)                            :: arrayNew(size(array, kind = IK))
+        character(len(array,IK),SKG)                            :: arrayNew(size(array, kind = IK))
     end function
 #endif
 
@@ -258,10 +258,10 @@ module pm_arrayRemap
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemappedFor_D1_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)        , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)        , intent(in)    , contiguous    :: array(:)
         integer(IK)             , intent(in)    , contiguous    :: index(:)
-        character(len(array,IK),SKC)                            :: arrayNew(size(array, kind = IK))
+        character(len(array,IK),SKG)                            :: arrayNew(size(array, kind = IK))
     end function
 #endif
 
@@ -272,10 +272,10 @@ module pm_arrayRemap
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemappedFor_D1_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK5
+        integer(IKG)            , intent(in)    , contiguous    :: array(:)
         integer(IK)             , intent(in)    , contiguous    :: index(:)
-        integer(IKC)                                            :: arrayNew(size(array, kind = IK))
+        integer(IKG)                                            :: arrayNew(size(array, kind = IK))
     end function
 #endif
 
@@ -284,10 +284,10 @@ module pm_arrayRemap
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemappedFor_D1_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK4
+        integer(IKG)            , intent(in)    , contiguous    :: array(:)
         integer(IK)             , intent(in)    , contiguous    :: index(:)
-        integer(IKC)                                            :: arrayNew(size(array, kind = IK))
+        integer(IKG)                                            :: arrayNew(size(array, kind = IK))
     end function
 #endif
 
@@ -296,10 +296,10 @@ module pm_arrayRemap
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemappedFor_D1_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK3
+        integer(IKG)            , intent(in)    , contiguous    :: array(:)
         integer(IK)             , intent(in)    , contiguous    :: index(:)
-        integer(IKC)                                            :: arrayNew(size(array, kind = IK))
+        integer(IKG)                                            :: arrayNew(size(array, kind = IK))
     end function
 #endif
 
@@ -308,10 +308,10 @@ module pm_arrayRemap
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemappedFor_D1_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK2
+        integer(IKG)            , intent(in)    , contiguous    :: array(:)
         integer(IK)             , intent(in)    , contiguous    :: index(:)
-        integer(IKC)                                            :: arrayNew(size(array, kind = IK))
+        integer(IKG)                                            :: arrayNew(size(array, kind = IK))
     end function
 #endif
 
@@ -320,10 +320,10 @@ module pm_arrayRemap
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemappedFor_D1_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK1
+        integer(IKG)            , intent(in)    , contiguous    :: array(:)
         integer(IK)             , intent(in)    , contiguous    :: index(:)
-        integer(IKC)                                            :: arrayNew(size(array, kind = IK))
+        integer(IKG)                                            :: arrayNew(size(array, kind = IK))
     end function
 #endif
 
@@ -334,10 +334,10 @@ module pm_arrayRemap
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemappedFor_D1_LK5
 #endif
-        use pm_kind, only: LKC => LK5
-        logical(LKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: LKG => LK5
+        logical(LKG)            , intent(in)    , contiguous    :: array(:)
         integer(IK)             , intent(in)    , contiguous    :: index(:)
-        logical(LKC)                                            :: arrayNew(size(array, kind = IK))
+        logical(LKG)                                            :: arrayNew(size(array, kind = IK))
     end function
 #endif
 
@@ -346,10 +346,10 @@ module pm_arrayRemap
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemappedFor_D1_LK4
 #endif
-        use pm_kind, only: LKC => LK4
-        logical(LKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: LKG => LK4
+        logical(LKG)            , intent(in)    , contiguous    :: array(:)
         integer(IK)             , intent(in)    , contiguous    :: index(:)
-        logical(LKC)                                            :: arrayNew(size(array, kind = IK))
+        logical(LKG)                                            :: arrayNew(size(array, kind = IK))
     end function
 #endif
 
@@ -358,10 +358,10 @@ module pm_arrayRemap
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemappedFor_D1_LK3
 #endif
-        use pm_kind, only: LKC => LK3
-        logical(LKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: LKG => LK3
+        logical(LKG)            , intent(in)    , contiguous    :: array(:)
         integer(IK)             , intent(in)    , contiguous    :: index(:)
-        logical(LKC)                                            :: arrayNew(size(array, kind = IK))
+        logical(LKG)                                            :: arrayNew(size(array, kind = IK))
     end function
 #endif
 
@@ -370,10 +370,10 @@ module pm_arrayRemap
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemappedFor_D1_LK2
 #endif
-        use pm_kind, only: LKC => LK2
-        logical(LKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: LKG => LK2
+        logical(LKG)            , intent(in)    , contiguous    :: array(:)
         integer(IK)             , intent(in)    , contiguous    :: index(:)
-        logical(LKC)                                            :: arrayNew(size(array, kind = IK))
+        logical(LKG)                                            :: arrayNew(size(array, kind = IK))
     end function
 #endif
 
@@ -382,10 +382,10 @@ module pm_arrayRemap
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemappedFor_D1_LK1
 #endif
-        use pm_kind, only: LKC => LK1
-        logical(LKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: LKG => LK1
+        logical(LKG)            , intent(in)    , contiguous    :: array(:)
         integer(IK)             , intent(in)    , contiguous    :: index(:)
-        logical(LKC)                                            :: arrayNew(size(array, kind = IK))
+        logical(LKG)                                            :: arrayNew(size(array, kind = IK))
     end function
 #endif
 
@@ -396,10 +396,10 @@ module pm_arrayRemap
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemappedFor_D1_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG)            , intent(in)    , contiguous    :: array(:)
         integer(IK)             , intent(in)    , contiguous    :: index(:)
-        complex(CKC)                                            :: arrayNew(size(array, kind = IK))
+        complex(CKG)                                            :: arrayNew(size(array, kind = IK))
     end function
 #endif
 
@@ -408,10 +408,10 @@ module pm_arrayRemap
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemappedFor_D1_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG)            , intent(in)    , contiguous    :: array(:)
         integer(IK)             , intent(in)    , contiguous    :: index(:)
-        complex(CKC)                                            :: arrayNew(size(array, kind = IK))
+        complex(CKG)                                            :: arrayNew(size(array, kind = IK))
     end function
 #endif
 
@@ -420,10 +420,10 @@ module pm_arrayRemap
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemappedFor_D1_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG)            , intent(in)    , contiguous    :: array(:)
         integer(IK)             , intent(in)    , contiguous    :: index(:)
-        complex(CKC)                                            :: arrayNew(size(array, kind = IK))
+        complex(CKG)                                            :: arrayNew(size(array, kind = IK))
     end function
 #endif
 
@@ -432,10 +432,10 @@ module pm_arrayRemap
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemappedFor_D1_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG)            , intent(in)    , contiguous    :: array(:)
         integer(IK)             , intent(in)    , contiguous    :: index(:)
-        complex(CKC)                                            :: arrayNew(size(array, kind = IK))
+        complex(CKG)                                            :: arrayNew(size(array, kind = IK))
     end function
 #endif
 
@@ -444,10 +444,10 @@ module pm_arrayRemap
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemappedFor_D1_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG)            , intent(in)    , contiguous    :: array(:)
         integer(IK)             , intent(in)    , contiguous    :: index(:)
-        complex(CKC)                                            :: arrayNew(size(array, kind = IK))
+        complex(CKG)                                            :: arrayNew(size(array, kind = IK))
     end function
 #endif
 
@@ -458,10 +458,10 @@ module pm_arrayRemap
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemappedFor_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)               , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)               , intent(in)    , contiguous    :: array(:)
         integer(IK)             , intent(in)    , contiguous    :: index(:)
-        real(RKC)                                               :: arrayNew(size(array, kind = IK))
+        real(RKG)                                               :: arrayNew(size(array, kind = IK))
     end function
 #endif
 
@@ -470,10 +470,10 @@ module pm_arrayRemap
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemappedFor_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)               , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)               , intent(in)    , contiguous    :: array(:)
         integer(IK)             , intent(in)    , contiguous    :: index(:)
-        real(RKC)                                               :: arrayNew(size(array, kind = IK))
+        real(RKG)                                               :: arrayNew(size(array, kind = IK))
     end function
 #endif
 
@@ -482,10 +482,10 @@ module pm_arrayRemap
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemappedFor_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)               , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)               , intent(in)    , contiguous    :: array(:)
         integer(IK)             , intent(in)    , contiguous    :: index(:)
-        real(RKC)                                               :: arrayNew(size(array, kind = IK))
+        real(RKG)                                               :: arrayNew(size(array, kind = IK))
     end function
 #endif
 
@@ -494,10 +494,10 @@ module pm_arrayRemap
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemappedFor_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)               , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)               , intent(in)    , contiguous    :: array(:)
         integer(IK)             , intent(in)    , contiguous    :: index(:)
-        real(RKC)                                               :: arrayNew(size(array, kind = IK))
+        real(RKG)                                               :: arrayNew(size(array, kind = IK))
     end function
 #endif
 
@@ -506,10 +506,10 @@ module pm_arrayRemap
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemappedFor_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)               , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)               , intent(in)    , contiguous    :: array(:)
         integer(IK)             , intent(in)    , contiguous    :: index(:)
-        real(RKC)                                               :: arrayNew(size(array, kind = IK))
+        real(RKG)                                               :: arrayNew(size(array, kind = IK))
     end function
 #endif
 
@@ -522,11 +522,11 @@ module pm_arrayRemap
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemappedRev_D0_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)        , intent(in)                    :: array
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)        , intent(in)                    :: array
         integer(IK)             , intent(in)    , contiguous    :: index(:)
         type(reverse_type)      , intent(in)                    :: action
-        character(len(array,IK),SKC)                            :: arrayNew
+        character(len(array,IK),SKG)                            :: arrayNew
     end function
 #endif
 
@@ -535,11 +535,11 @@ module pm_arrayRemap
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemappedRev_D0_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)        , intent(in)                    :: array
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)        , intent(in)                    :: array
         integer(IK)             , intent(in)    , contiguous    :: index(:)
         type(reverse_type)      , intent(in)                    :: action
-        character(len(array,IK),SKC)                            :: arrayNew
+        character(len(array,IK),SKG)                            :: arrayNew
     end function
 #endif
 
@@ -548,11 +548,11 @@ module pm_arrayRemap
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemappedRev_D0_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)        , intent(in)                    :: array
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)        , intent(in)                    :: array
         integer(IK)             , intent(in)    , contiguous    :: index(:)
         type(reverse_type)      , intent(in)                    :: action
-        character(len(array,IK),SKC)                            :: arrayNew
+        character(len(array,IK),SKG)                            :: arrayNew
     end function
 #endif
 
@@ -561,11 +561,11 @@ module pm_arrayRemap
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemappedRev_D0_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)        , intent(in)                    :: array
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)        , intent(in)                    :: array
         integer(IK)             , intent(in)    , contiguous    :: index(:)
         type(reverse_type)      , intent(in)                    :: action
-        character(len(array,IK),SKC)                            :: arrayNew
+        character(len(array,IK),SKG)                            :: arrayNew
     end function
 #endif
 
@@ -574,11 +574,11 @@ module pm_arrayRemap
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemappedRev_D0_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)        , intent(in)                    :: array
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)        , intent(in)                    :: array
         integer(IK)             , intent(in)    , contiguous    :: index(:)
         type(reverse_type)      , intent(in)                    :: action
-        character(len(array,IK),SKC)                            :: arrayNew
+        character(len(array,IK),SKG)                            :: arrayNew
     end function
 #endif
 
@@ -589,11 +589,11 @@ module pm_arrayRemap
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemappedRev_D1_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)        , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)        , intent(in)    , contiguous    :: array(:)
         integer(IK)             , intent(in)    , contiguous    :: index(:)
         type(reverse_type)      , intent(in)                    :: action
-        character(len(array,IK),SKC)                            :: arrayNew(size(array, kind = IK))
+        character(len(array,IK),SKG)                            :: arrayNew(size(array, kind = IK))
     end function
 #endif
 
@@ -602,11 +602,11 @@ module pm_arrayRemap
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemappedRev_D1_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)        , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)        , intent(in)    , contiguous    :: array(:)
         integer(IK)             , intent(in)    , contiguous    :: index(:)
         type(reverse_type)      , intent(in)                    :: action
-        character(len(array,IK),SKC)                            :: arrayNew(size(array, kind = IK))
+        character(len(array,IK),SKG)                            :: arrayNew(size(array, kind = IK))
     end function
 #endif
 
@@ -615,11 +615,11 @@ module pm_arrayRemap
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemappedRev_D1_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)        , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)        , intent(in)    , contiguous    :: array(:)
         integer(IK)             , intent(in)    , contiguous    :: index(:)
         type(reverse_type)      , intent(in)                    :: action
-        character(len(array,IK),SKC)                            :: arrayNew(size(array, kind = IK))
+        character(len(array,IK),SKG)                            :: arrayNew(size(array, kind = IK))
     end function
 #endif
 
@@ -628,11 +628,11 @@ module pm_arrayRemap
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemappedRev_D1_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)        , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)        , intent(in)    , contiguous    :: array(:)
         integer(IK)             , intent(in)    , contiguous    :: index(:)
         type(reverse_type)      , intent(in)                    :: action
-        character(len(array,IK),SKC)                            :: arrayNew(size(array, kind = IK))
+        character(len(array,IK),SKG)                            :: arrayNew(size(array, kind = IK))
     end function
 #endif
 
@@ -641,11 +641,11 @@ module pm_arrayRemap
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemappedRev_D1_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)        , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)        , intent(in)    , contiguous    :: array(:)
         integer(IK)             , intent(in)    , contiguous    :: index(:)
         type(reverse_type)      , intent(in)                    :: action
-        character(len(array,IK),SKC)                            :: arrayNew(size(array, kind = IK))
+        character(len(array,IK),SKG)                            :: arrayNew(size(array, kind = IK))
     end function
 #endif
 
@@ -656,11 +656,11 @@ module pm_arrayRemap
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemappedRev_D1_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK5
+        integer(IKG)            , intent(in)    , contiguous    :: array(:)
         integer(IK)             , intent(in)    , contiguous    :: index(:)
         type(reverse_type)      , intent(in)                    :: action
-        integer(IKC)                                            :: arrayNew(size(array, kind = IK))
+        integer(IKG)                                            :: arrayNew(size(array, kind = IK))
     end function
 #endif
 
@@ -669,11 +669,11 @@ module pm_arrayRemap
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemappedRev_D1_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK4
+        integer(IKG)            , intent(in)    , contiguous    :: array(:)
         integer(IK)             , intent(in)    , contiguous    :: index(:)
         type(reverse_type)      , intent(in)                    :: action
-        integer(IKC)                                            :: arrayNew(size(array, kind = IK))
+        integer(IKG)                                            :: arrayNew(size(array, kind = IK))
     end function
 #endif
 
@@ -682,11 +682,11 @@ module pm_arrayRemap
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemappedRev_D1_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK3
+        integer(IKG)            , intent(in)    , contiguous    :: array(:)
         integer(IK)             , intent(in)    , contiguous    :: index(:)
         type(reverse_type)      , intent(in)                    :: action
-        integer(IKC)                                            :: arrayNew(size(array, kind = IK))
+        integer(IKG)                                            :: arrayNew(size(array, kind = IK))
     end function
 #endif
 
@@ -695,11 +695,11 @@ module pm_arrayRemap
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemappedRev_D1_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK2
+        integer(IKG)            , intent(in)    , contiguous    :: array(:)
         integer(IK)             , intent(in)    , contiguous    :: index(:)
         type(reverse_type)      , intent(in)                    :: action
-        integer(IKC)                                            :: arrayNew(size(array, kind = IK))
+        integer(IKG)                                            :: arrayNew(size(array, kind = IK))
     end function
 #endif
 
@@ -708,11 +708,11 @@ module pm_arrayRemap
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemappedRev_D1_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK1
+        integer(IKG)            , intent(in)    , contiguous    :: array(:)
         integer(IK)             , intent(in)    , contiguous    :: index(:)
         type(reverse_type)      , intent(in)                    :: action
-        integer(IKC)                                            :: arrayNew(size(array, kind = IK))
+        integer(IKG)                                            :: arrayNew(size(array, kind = IK))
     end function
 #endif
 
@@ -723,11 +723,11 @@ module pm_arrayRemap
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemappedRev_D1_LK5
 #endif
-        use pm_kind, only: LKC => LK5
-        logical(LKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: LKG => LK5
+        logical(LKG)            , intent(in)    , contiguous    :: array(:)
         integer(IK)             , intent(in)    , contiguous    :: index(:)
         type(reverse_type)      , intent(in)                    :: action
-        logical(LKC)                                            :: arrayNew(size(array, kind = IK))
+        logical(LKG)                                            :: arrayNew(size(array, kind = IK))
     end function
 #endif
 
@@ -736,11 +736,11 @@ module pm_arrayRemap
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemappedRev_D1_LK4
 #endif
-        use pm_kind, only: LKC => LK4
-        logical(LKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: LKG => LK4
+        logical(LKG)            , intent(in)    , contiguous    :: array(:)
         integer(IK)             , intent(in)    , contiguous    :: index(:)
         type(reverse_type)      , intent(in)                    :: action
-        logical(LKC)                                            :: arrayNew(size(array, kind = IK))
+        logical(LKG)                                            :: arrayNew(size(array, kind = IK))
     end function
 #endif
 
@@ -749,11 +749,11 @@ module pm_arrayRemap
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemappedRev_D1_LK3
 #endif
-        use pm_kind, only: LKC => LK3
-        logical(LKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: LKG => LK3
+        logical(LKG)            , intent(in)    , contiguous    :: array(:)
         integer(IK)             , intent(in)    , contiguous    :: index(:)
         type(reverse_type)      , intent(in)                    :: action
-        logical(LKC)                                            :: arrayNew(size(array, kind = IK))
+        logical(LKG)                                            :: arrayNew(size(array, kind = IK))
     end function
 #endif
 
@@ -762,11 +762,11 @@ module pm_arrayRemap
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemappedRev_D1_LK2
 #endif
-        use pm_kind, only: LKC => LK2
-        logical(LKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: LKG => LK2
+        logical(LKG)            , intent(in)    , contiguous    :: array(:)
         integer(IK)             , intent(in)    , contiguous    :: index(:)
         type(reverse_type)      , intent(in)                    :: action
-        logical(LKC)                                            :: arrayNew(size(array, kind = IK))
+        logical(LKG)                                            :: arrayNew(size(array, kind = IK))
     end function
 #endif
 
@@ -775,11 +775,11 @@ module pm_arrayRemap
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemappedRev_D1_LK1
 #endif
-        use pm_kind, only: LKC => LK1
-        logical(LKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: LKG => LK1
+        logical(LKG)            , intent(in)    , contiguous    :: array(:)
         integer(IK)             , intent(in)    , contiguous    :: index(:)
         type(reverse_type)      , intent(in)                    :: action
-        logical(LKC)                                            :: arrayNew(size(array, kind = IK))
+        logical(LKG)                                            :: arrayNew(size(array, kind = IK))
     end function
 #endif
 
@@ -790,11 +790,11 @@ module pm_arrayRemap
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemappedRev_D1_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG)            , intent(in)    , contiguous    :: array(:)
         integer(IK)             , intent(in)    , contiguous    :: index(:)
         type(reverse_type)      , intent(in)                    :: action
-        complex(CKC)                                            :: arrayNew(size(array, kind = IK))
+        complex(CKG)                                            :: arrayNew(size(array, kind = IK))
     end function
 #endif
 
@@ -803,11 +803,11 @@ module pm_arrayRemap
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemappedRev_D1_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG)            , intent(in)    , contiguous    :: array(:)
         integer(IK)             , intent(in)    , contiguous    :: index(:)
         type(reverse_type)      , intent(in)                    :: action
-        complex(CKC)                                            :: arrayNew(size(array, kind = IK))
+        complex(CKG)                                            :: arrayNew(size(array, kind = IK))
     end function
 #endif
 
@@ -816,11 +816,11 @@ module pm_arrayRemap
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemappedRev_D1_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG)            , intent(in)    , contiguous    :: array(:)
         integer(IK)             , intent(in)    , contiguous    :: index(:)
         type(reverse_type)      , intent(in)                    :: action
-        complex(CKC)                                            :: arrayNew(size(array, kind = IK))
+        complex(CKG)                                            :: arrayNew(size(array, kind = IK))
     end function
 #endif
 
@@ -829,11 +829,11 @@ module pm_arrayRemap
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemappedRev_D1_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG)            , intent(in)    , contiguous    :: array(:)
         integer(IK)             , intent(in)    , contiguous    :: index(:)
         type(reverse_type)      , intent(in)                    :: action
-        complex(CKC)                                            :: arrayNew(size(array, kind = IK))
+        complex(CKG)                                            :: arrayNew(size(array, kind = IK))
     end function
 #endif
 
@@ -842,11 +842,11 @@ module pm_arrayRemap
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemappedRev_D1_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG)            , intent(in)    , contiguous    :: array(:)
         integer(IK)             , intent(in)    , contiguous    :: index(:)
         type(reverse_type)      , intent(in)                    :: action
-        complex(CKC)                                            :: arrayNew(size(array, kind = IK))
+        complex(CKG)                                            :: arrayNew(size(array, kind = IK))
     end function
 #endif
 
@@ -857,11 +857,11 @@ module pm_arrayRemap
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemappedRev_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)               , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)               , intent(in)    , contiguous    :: array(:)
         integer(IK)             , intent(in)    , contiguous    :: index(:)
         type(reverse_type)      , intent(in)                    :: action
-        real(RKC)                                               :: arrayNew(size(array, kind = IK))
+        real(RKG)                                               :: arrayNew(size(array, kind = IK))
     end function
 #endif
 
@@ -870,11 +870,11 @@ module pm_arrayRemap
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemappedRev_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)               , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)               , intent(in)    , contiguous    :: array(:)
         integer(IK)             , intent(in)    , contiguous    :: index(:)
         type(reverse_type)      , intent(in)                    :: action
-        real(RKC)                                               :: arrayNew(size(array, kind = IK))
+        real(RKG)                                               :: arrayNew(size(array, kind = IK))
     end function
 #endif
 
@@ -883,11 +883,11 @@ module pm_arrayRemap
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemappedRev_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)               , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)               , intent(in)    , contiguous    :: array(:)
         integer(IK)             , intent(in)    , contiguous    :: index(:)
         type(reverse_type)      , intent(in)                    :: action
-        real(RKC)                                               :: arrayNew(size(array, kind = IK))
+        real(RKG)                                               :: arrayNew(size(array, kind = IK))
     end function
 #endif
 
@@ -896,11 +896,11 @@ module pm_arrayRemap
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemappedRev_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)               , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)               , intent(in)    , contiguous    :: array(:)
         integer(IK)             , intent(in)    , contiguous    :: index(:)
         type(reverse_type)      , intent(in)                    :: action
-        real(RKC)                                               :: arrayNew(size(array, kind = IK))
+        real(RKG)                                               :: arrayNew(size(array, kind = IK))
     end function
 #endif
 
@@ -909,11 +909,11 @@ module pm_arrayRemap
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: getRemappedRev_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)               , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)               , intent(in)    , contiguous    :: array(:)
         integer(IK)             , intent(in)    , contiguous    :: index(:)
         type(reverse_type)      , intent(in)                    :: action
-        real(RKC)                                               :: arrayNew(size(array, kind = IK))
+        real(RKG)                                               :: arrayNew(size(array, kind = IK))
     end function
 #endif
 
@@ -1085,8 +1085,8 @@ module pm_arrayRemap
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemappedForOld_D0_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(:,SKC)        , intent(inout) , allocatable   :: array
+        use pm_kind, only: SKG => SK5
+        character(:,SKG)        , intent(inout) , allocatable   :: array
         integer(IK)             , intent(in)    , contiguous    :: index(:)
     end subroutine
 #endif
@@ -1096,8 +1096,8 @@ module pm_arrayRemap
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemappedForOld_D0_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(:,SKC)        , intent(inout) , allocatable   :: array
+        use pm_kind, only: SKG => SK4
+        character(:,SKG)        , intent(inout) , allocatable   :: array
         integer(IK)             , intent(in)    , contiguous    :: index(:)
     end subroutine
 #endif
@@ -1107,8 +1107,8 @@ module pm_arrayRemap
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemappedForOld_D0_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(:,SKC)        , intent(inout) , allocatable   :: array
+        use pm_kind, only: SKG => SK3
+        character(:,SKG)        , intent(inout) , allocatable   :: array
         integer(IK)             , intent(in)    , contiguous    :: index(:)
     end subroutine
 #endif
@@ -1118,8 +1118,8 @@ module pm_arrayRemap
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemappedForOld_D0_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(:,SKC)        , intent(inout) , allocatable   :: array
+        use pm_kind, only: SKG => SK2
+        character(:,SKG)        , intent(inout) , allocatable   :: array
         integer(IK)             , intent(in)    , contiguous    :: index(:)
     end subroutine
 #endif
@@ -1129,8 +1129,8 @@ module pm_arrayRemap
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemappedForOld_D0_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(:,SKC)        , intent(inout) , allocatable   :: array
+        use pm_kind, only: SKG => SK1
+        character(:,SKG)        , intent(inout) , allocatable   :: array
         integer(IK)             , intent(in)    , contiguous    :: index(:)
     end subroutine
 #endif
@@ -1142,8 +1142,8 @@ module pm_arrayRemap
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemappedForOld_D1_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)        , intent(inout) , allocatable   :: array(:)
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)        , intent(inout) , allocatable   :: array(:)
         integer(IK)             , intent(in)    , contiguous    :: index(:)
     end subroutine
 #endif
@@ -1153,8 +1153,8 @@ module pm_arrayRemap
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemappedForOld_D1_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)        , intent(inout) , allocatable   :: array(:)
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)        , intent(inout) , allocatable   :: array(:)
         integer(IK)             , intent(in)    , contiguous    :: index(:)
     end subroutine
 #endif
@@ -1164,8 +1164,8 @@ module pm_arrayRemap
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemappedForOld_D1_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)        , intent(inout) , allocatable   :: array(:)
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)        , intent(inout) , allocatable   :: array(:)
         integer(IK)             , intent(in)    , contiguous    :: index(:)
     end subroutine
 #endif
@@ -1175,8 +1175,8 @@ module pm_arrayRemap
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemappedForOld_D1_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)        , intent(inout) , allocatable   :: array(:)
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)        , intent(inout) , allocatable   :: array(:)
         integer(IK)             , intent(in)    , contiguous    :: index(:)
     end subroutine
 #endif
@@ -1186,8 +1186,8 @@ module pm_arrayRemap
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemappedForOld_D1_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)        , intent(inout) , allocatable   :: array(:)
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)        , intent(inout) , allocatable   :: array(:)
         integer(IK)             , intent(in)    , contiguous    :: index(:)
     end subroutine
 #endif
@@ -1199,8 +1199,8 @@ module pm_arrayRemap
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemappedForOld_D1_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)            , intent(inout) , allocatable   :: array(:)
+        use pm_kind, only: IKG => IK5
+        integer(IKG)            , intent(inout) , allocatable   :: array(:)
         integer(IK)             , intent(in)    , contiguous    :: index(:)
     end subroutine
 #endif
@@ -1210,8 +1210,8 @@ module pm_arrayRemap
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemappedForOld_D1_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)            , intent(inout) , allocatable   :: array(:)
+        use pm_kind, only: IKG => IK4
+        integer(IKG)            , intent(inout) , allocatable   :: array(:)
         integer(IK)             , intent(in)    , contiguous    :: index(:)
     end subroutine
 #endif
@@ -1221,8 +1221,8 @@ module pm_arrayRemap
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemappedForOld_D1_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)            , intent(inout) , allocatable   :: array(:)
+        use pm_kind, only: IKG => IK3
+        integer(IKG)            , intent(inout) , allocatable   :: array(:)
         integer(IK)             , intent(in)    , contiguous    :: index(:)
     end subroutine
 #endif
@@ -1232,8 +1232,8 @@ module pm_arrayRemap
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemappedForOld_D1_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)            , intent(inout) , allocatable   :: array(:)
+        use pm_kind, only: IKG => IK2
+        integer(IKG)            , intent(inout) , allocatable   :: array(:)
         integer(IK)             , intent(in)    , contiguous    :: index(:)
     end subroutine
 #endif
@@ -1243,8 +1243,8 @@ module pm_arrayRemap
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemappedForOld_D1_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)            , intent(inout) , allocatable   :: array(:)
+        use pm_kind, only: IKG => IK1
+        integer(IKG)            , intent(inout) , allocatable   :: array(:)
         integer(IK)             , intent(in)    , contiguous    :: index(:)
     end subroutine
 #endif
@@ -1256,8 +1256,8 @@ module pm_arrayRemap
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemappedForOld_D1_LK5
 #endif
-        use pm_kind, only: LKC => LK5
-        logical(LKC)            , intent(inout) , allocatable   :: array(:)
+        use pm_kind, only: LKG => LK5
+        logical(LKG)            , intent(inout) , allocatable   :: array(:)
         integer(IK)             , intent(in)    , contiguous    :: index(:)
     end subroutine
 #endif
@@ -1267,8 +1267,8 @@ module pm_arrayRemap
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemappedForOld_D1_LK4
 #endif
-        use pm_kind, only: LKC => LK4
-        logical(LKC)            , intent(inout) , allocatable   :: array(:)
+        use pm_kind, only: LKG => LK4
+        logical(LKG)            , intent(inout) , allocatable   :: array(:)
         integer(IK)             , intent(in)    , contiguous    :: index(:)
     end subroutine
 #endif
@@ -1278,8 +1278,8 @@ module pm_arrayRemap
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemappedForOld_D1_LK3
 #endif
-        use pm_kind, only: LKC => LK3
-        logical(LKC)            , intent(inout) , allocatable   :: array(:)
+        use pm_kind, only: LKG => LK3
+        logical(LKG)            , intent(inout) , allocatable   :: array(:)
         integer(IK)             , intent(in)    , contiguous    :: index(:)
     end subroutine
 #endif
@@ -1289,8 +1289,8 @@ module pm_arrayRemap
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemappedForOld_D1_LK2
 #endif
-        use pm_kind, only: LKC => LK2
-        logical(LKC)            , intent(inout) , allocatable   :: array(:)
+        use pm_kind, only: LKG => LK2
+        logical(LKG)            , intent(inout) , allocatable   :: array(:)
         integer(IK)             , intent(in)    , contiguous    :: index(:)
     end subroutine
 #endif
@@ -1300,8 +1300,8 @@ module pm_arrayRemap
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemappedForOld_D1_LK1
 #endif
-        use pm_kind, only: LKC => LK1
-        logical(LKC)            , intent(inout) , allocatable   :: array(:)
+        use pm_kind, only: LKG => LK1
+        logical(LKG)            , intent(inout) , allocatable   :: array(:)
         integer(IK)             , intent(in)    , contiguous    :: index(:)
     end subroutine
 #endif
@@ -1313,8 +1313,8 @@ module pm_arrayRemap
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemappedForOld_D1_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)            , intent(inout) , allocatable   :: array(:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG)            , intent(inout) , allocatable   :: array(:)
         integer(IK)             , intent(in)    , contiguous    :: index(:)
     end subroutine
 #endif
@@ -1324,8 +1324,8 @@ module pm_arrayRemap
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemappedForOld_D1_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)            , intent(inout) , allocatable   :: array(:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG)            , intent(inout) , allocatable   :: array(:)
         integer(IK)             , intent(in)    , contiguous    :: index(:)
     end subroutine
 #endif
@@ -1335,8 +1335,8 @@ module pm_arrayRemap
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemappedForOld_D1_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)            , intent(inout) , allocatable   :: array(:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG)            , intent(inout) , allocatable   :: array(:)
         integer(IK)             , intent(in)    , contiguous    :: index(:)
     end subroutine
 #endif
@@ -1346,8 +1346,8 @@ module pm_arrayRemap
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemappedForOld_D1_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)            , intent(inout) , allocatable   :: array(:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG)            , intent(inout) , allocatable   :: array(:)
         integer(IK)             , intent(in)    , contiguous    :: index(:)
     end subroutine
 #endif
@@ -1357,8 +1357,8 @@ module pm_arrayRemap
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemappedForOld_D1_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)            , intent(inout) , allocatable   :: array(:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG)            , intent(inout) , allocatable   :: array(:)
         integer(IK)             , intent(in)    , contiguous    :: index(:)
     end subroutine
 #endif
@@ -1370,8 +1370,8 @@ module pm_arrayRemap
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemappedForOld_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)               , intent(inout) , allocatable   :: array(:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)               , intent(inout) , allocatable   :: array(:)
         integer(IK)             , intent(in)    , contiguous    :: index(:)
     end subroutine
 #endif
@@ -1381,8 +1381,8 @@ module pm_arrayRemap
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemappedForOld_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)               , intent(inout) , allocatable   :: array(:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)               , intent(inout) , allocatable   :: array(:)
         integer(IK)             , intent(in)    , contiguous    :: index(:)
     end subroutine
 #endif
@@ -1392,8 +1392,8 @@ module pm_arrayRemap
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemappedForOld_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)               , intent(inout) , allocatable   :: array(:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)               , intent(inout) , allocatable   :: array(:)
         integer(IK)             , intent(in)    , contiguous    :: index(:)
     end subroutine
 #endif
@@ -1403,8 +1403,8 @@ module pm_arrayRemap
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemappedForOld_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)               , intent(inout) , allocatable   :: array(:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)               , intent(inout) , allocatable   :: array(:)
         integer(IK)             , intent(in)    , contiguous    :: index(:)
     end subroutine
 #endif
@@ -1414,8 +1414,8 @@ module pm_arrayRemap
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemappedForOld_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)               , intent(inout) , allocatable   :: array(:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)               , intent(inout) , allocatable   :: array(:)
         integer(IK)             , intent(in)    , contiguous    :: index(:)
     end subroutine
 #endif
@@ -1429,8 +1429,8 @@ module pm_arrayRemap
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemappedRevOld_D0_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(:,SKC)        , intent(inout) , allocatable   :: array
+        use pm_kind, only: SKG => SK5
+        character(:,SKG)        , intent(inout) , allocatable   :: array
         integer(IK)             , intent(in)    , contiguous    :: index(:)
         type(reverse_type)      , intent(in)                    :: action
     end subroutine
@@ -1441,8 +1441,8 @@ module pm_arrayRemap
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemappedRevOld_D0_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(:,SKC)        , intent(inout) , allocatable   :: array
+        use pm_kind, only: SKG => SK4
+        character(:,SKG)        , intent(inout) , allocatable   :: array
         integer(IK)             , intent(in)    , contiguous    :: index(:)
         type(reverse_type)      , intent(in)                    :: action
     end subroutine
@@ -1453,8 +1453,8 @@ module pm_arrayRemap
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemappedRevOld_D0_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(:,SKC)        , intent(inout) , allocatable   :: array
+        use pm_kind, only: SKG => SK3
+        character(:,SKG)        , intent(inout) , allocatable   :: array
         integer(IK)             , intent(in)    , contiguous    :: index(:)
         type(reverse_type)      , intent(in)                    :: action
     end subroutine
@@ -1465,8 +1465,8 @@ module pm_arrayRemap
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemappedRevOld_D0_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(:,SKC)        , intent(inout) , allocatable   :: array
+        use pm_kind, only: SKG => SK2
+        character(:,SKG)        , intent(inout) , allocatable   :: array
         integer(IK)             , intent(in)    , contiguous    :: index(:)
         type(reverse_type)      , intent(in)                    :: action
     end subroutine
@@ -1477,8 +1477,8 @@ module pm_arrayRemap
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemappedRevOld_D0_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(:,SKC)        , intent(inout) , allocatable   :: array
+        use pm_kind, only: SKG => SK1
+        character(:,SKG)        , intent(inout) , allocatable   :: array
         integer(IK)             , intent(in)    , contiguous    :: index(:)
         type(reverse_type)      , intent(in)                    :: action
     end subroutine
@@ -1491,8 +1491,8 @@ module pm_arrayRemap
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemappedRevOld_D1_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)        , intent(inout) , allocatable   :: array(:)
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)        , intent(inout) , allocatable   :: array(:)
         integer(IK)             , intent(in)    , contiguous    :: index(:)
         type(reverse_type)      , intent(in)                    :: action
     end subroutine
@@ -1503,8 +1503,8 @@ module pm_arrayRemap
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemappedRevOld_D1_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)        , intent(inout) , allocatable   :: array(:)
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)        , intent(inout) , allocatable   :: array(:)
         integer(IK)             , intent(in)    , contiguous    :: index(:)
         type(reverse_type)      , intent(in)                    :: action
     end subroutine
@@ -1515,8 +1515,8 @@ module pm_arrayRemap
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemappedRevOld_D1_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)        , intent(inout) , allocatable   :: array(:)
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)        , intent(inout) , allocatable   :: array(:)
         integer(IK)             , intent(in)    , contiguous    :: index(:)
         type(reverse_type)      , intent(in)                    :: action
     end subroutine
@@ -1527,8 +1527,8 @@ module pm_arrayRemap
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemappedRevOld_D1_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)        , intent(inout) , allocatable   :: array(:)
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)        , intent(inout) , allocatable   :: array(:)
         integer(IK)             , intent(in)    , contiguous    :: index(:)
         type(reverse_type)      , intent(in)                    :: action
     end subroutine
@@ -1539,8 +1539,8 @@ module pm_arrayRemap
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemappedRevOld_D1_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)        , intent(inout) , allocatable   :: array(:)
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)        , intent(inout) , allocatable   :: array(:)
         integer(IK)             , intent(in)    , contiguous    :: index(:)
         type(reverse_type)      , intent(in)                    :: action
     end subroutine
@@ -1553,8 +1553,8 @@ module pm_arrayRemap
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemappedRevOld_D1_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)            , intent(inout) , allocatable   :: array(:)
+        use pm_kind, only: IKG => IK5
+        integer(IKG)            , intent(inout) , allocatable   :: array(:)
         integer(IK)             , intent(in)    , contiguous    :: index(:)
         type(reverse_type)      , intent(in)                    :: action
     end subroutine
@@ -1565,8 +1565,8 @@ module pm_arrayRemap
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemappedRevOld_D1_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)            , intent(inout) , allocatable   :: array(:)
+        use pm_kind, only: IKG => IK4
+        integer(IKG)            , intent(inout) , allocatable   :: array(:)
         integer(IK)             , intent(in)    , contiguous    :: index(:)
         type(reverse_type)      , intent(in)                    :: action
     end subroutine
@@ -1577,8 +1577,8 @@ module pm_arrayRemap
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemappedRevOld_D1_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)            , intent(inout) , allocatable   :: array(:)
+        use pm_kind, only: IKG => IK3
+        integer(IKG)            , intent(inout) , allocatable   :: array(:)
         integer(IK)             , intent(in)    , contiguous    :: index(:)
         type(reverse_type)      , intent(in)                    :: action
     end subroutine
@@ -1589,8 +1589,8 @@ module pm_arrayRemap
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemappedRevOld_D1_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)            , intent(inout) , allocatable   :: array(:)
+        use pm_kind, only: IKG => IK2
+        integer(IKG)            , intent(inout) , allocatable   :: array(:)
         integer(IK)             , intent(in)    , contiguous    :: index(:)
         type(reverse_type)      , intent(in)                    :: action
     end subroutine
@@ -1601,8 +1601,8 @@ module pm_arrayRemap
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemappedRevOld_D1_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)            , intent(inout) , allocatable   :: array(:)
+        use pm_kind, only: IKG => IK1
+        integer(IKG)            , intent(inout) , allocatable   :: array(:)
         integer(IK)             , intent(in)    , contiguous    :: index(:)
         type(reverse_type)      , intent(in)                    :: action
     end subroutine
@@ -1615,8 +1615,8 @@ module pm_arrayRemap
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemappedRevOld_D1_LK5
 #endif
-        use pm_kind, only: LKC => LK5
-        logical(LKC)            , intent(inout) , allocatable   :: array(:)
+        use pm_kind, only: LKG => LK5
+        logical(LKG)            , intent(inout) , allocatable   :: array(:)
         integer(IK)             , intent(in)    , contiguous    :: index(:)
         type(reverse_type)      , intent(in)                    :: action
     end subroutine
@@ -1627,8 +1627,8 @@ module pm_arrayRemap
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemappedRevOld_D1_LK4
 #endif
-        use pm_kind, only: LKC => LK4
-        logical(LKC)            , intent(inout) , allocatable   :: array(:)
+        use pm_kind, only: LKG => LK4
+        logical(LKG)            , intent(inout) , allocatable   :: array(:)
         integer(IK)             , intent(in)    , contiguous    :: index(:)
         type(reverse_type)      , intent(in)                    :: action
     end subroutine
@@ -1639,8 +1639,8 @@ module pm_arrayRemap
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemappedRevOld_D1_LK3
 #endif
-        use pm_kind, only: LKC => LK3
-        logical(LKC)            , intent(inout) , allocatable   :: array(:)
+        use pm_kind, only: LKG => LK3
+        logical(LKG)            , intent(inout) , allocatable   :: array(:)
         integer(IK)             , intent(in)    , contiguous    :: index(:)
         type(reverse_type)      , intent(in)                    :: action
     end subroutine
@@ -1651,8 +1651,8 @@ module pm_arrayRemap
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemappedRevOld_D1_LK2
 #endif
-        use pm_kind, only: LKC => LK2
-        logical(LKC)            , intent(inout) , allocatable   :: array(:)
+        use pm_kind, only: LKG => LK2
+        logical(LKG)            , intent(inout) , allocatable   :: array(:)
         integer(IK)             , intent(in)    , contiguous    :: index(:)
         type(reverse_type)      , intent(in)                    :: action
     end subroutine
@@ -1663,8 +1663,8 @@ module pm_arrayRemap
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemappedRevOld_D1_LK1
 #endif
-        use pm_kind, only: LKC => LK1
-        logical(LKC)            , intent(inout) , allocatable   :: array(:)
+        use pm_kind, only: LKG => LK1
+        logical(LKG)            , intent(inout) , allocatable   :: array(:)
         integer(IK)             , intent(in)    , contiguous    :: index(:)
         type(reverse_type)      , intent(in)                    :: action
     end subroutine
@@ -1677,8 +1677,8 @@ module pm_arrayRemap
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemappedRevOld_D1_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)            , intent(inout) , allocatable   :: array(:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG)            , intent(inout) , allocatable   :: array(:)
         integer(IK)             , intent(in)    , contiguous    :: index(:)
         type(reverse_type)      , intent(in)                    :: action
     end subroutine
@@ -1689,8 +1689,8 @@ module pm_arrayRemap
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemappedRevOld_D1_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)            , intent(inout) , allocatable   :: array(:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG)            , intent(inout) , allocatable   :: array(:)
         integer(IK)             , intent(in)    , contiguous    :: index(:)
         type(reverse_type)      , intent(in)                    :: action
     end subroutine
@@ -1701,8 +1701,8 @@ module pm_arrayRemap
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemappedRevOld_D1_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)            , intent(inout) , allocatable   :: array(:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG)            , intent(inout) , allocatable   :: array(:)
         integer(IK)             , intent(in)    , contiguous    :: index(:)
         type(reverse_type)      , intent(in)                    :: action
     end subroutine
@@ -1713,8 +1713,8 @@ module pm_arrayRemap
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemappedRevOld_D1_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)            , intent(inout) , allocatable   :: array(:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG)            , intent(inout) , allocatable   :: array(:)
         integer(IK)             , intent(in)    , contiguous    :: index(:)
         type(reverse_type)      , intent(in)                    :: action
     end subroutine
@@ -1725,8 +1725,8 @@ module pm_arrayRemap
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemappedRevOld_D1_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)            , intent(inout) , allocatable   :: array(:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG)            , intent(inout) , allocatable   :: array(:)
         integer(IK)             , intent(in)    , contiguous    :: index(:)
         type(reverse_type)      , intent(in)                    :: action
     end subroutine
@@ -1739,8 +1739,8 @@ module pm_arrayRemap
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemappedRevOld_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)               , intent(inout) , allocatable   :: array(:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)               , intent(inout) , allocatable   :: array(:)
         integer(IK)             , intent(in)    , contiguous    :: index(:)
         type(reverse_type)      , intent(in)                    :: action
     end subroutine
@@ -1751,8 +1751,8 @@ module pm_arrayRemap
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemappedRevOld_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)               , intent(inout) , allocatable   :: array(:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)               , intent(inout) , allocatable   :: array(:)
         integer(IK)             , intent(in)    , contiguous    :: index(:)
         type(reverse_type)      , intent(in)                    :: action
     end subroutine
@@ -1763,8 +1763,8 @@ module pm_arrayRemap
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemappedRevOld_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)               , intent(inout) , allocatable   :: array(:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)               , intent(inout) , allocatable   :: array(:)
         integer(IK)             , intent(in)    , contiguous    :: index(:)
         type(reverse_type)      , intent(in)                    :: action
     end subroutine
@@ -1775,8 +1775,8 @@ module pm_arrayRemap
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemappedRevOld_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)               , intent(inout) , allocatable   :: array(:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)               , intent(inout) , allocatable   :: array(:)
         integer(IK)             , intent(in)    , contiguous    :: index(:)
         type(reverse_type)      , intent(in)                    :: action
     end subroutine
@@ -1787,8 +1787,8 @@ module pm_arrayRemap
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemappedRevOld_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)               , intent(inout) , allocatable   :: array(:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)               , intent(inout) , allocatable   :: array(:)
         integer(IK)             , intent(in)    , contiguous    :: index(:)
         type(reverse_type)      , intent(in)                    :: action
     end subroutine
@@ -1809,10 +1809,10 @@ module pm_arrayRemap
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemappedForNew_D0_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)        , intent(in)                    :: array
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)        , intent(in)                    :: array
         integer(IK)             , intent(in)    , contiguous    :: index(:)
-        character(*,SKC)        , intent(out)                   :: arrayNew
+        character(*,SKG)        , intent(out)                   :: arrayNew
     end subroutine
 #endif
 
@@ -1821,10 +1821,10 @@ module pm_arrayRemap
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemappedForNew_D0_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)        , intent(in)                    :: array
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)        , intent(in)                    :: array
         integer(IK)             , intent(in)    , contiguous    :: index(:)
-        character(*,SKC)        , intent(out)                   :: arrayNew
+        character(*,SKG)        , intent(out)                   :: arrayNew
     end subroutine
 #endif
 
@@ -1833,10 +1833,10 @@ module pm_arrayRemap
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemappedForNew_D0_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)        , intent(in)                    :: array
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)        , intent(in)                    :: array
         integer(IK)             , intent(in)    , contiguous    :: index(:)
-        character(*,SKC)        , intent(out)                   :: arrayNew
+        character(*,SKG)        , intent(out)                   :: arrayNew
     end subroutine
 #endif
 
@@ -1845,10 +1845,10 @@ module pm_arrayRemap
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemappedForNew_D0_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)        , intent(in)                    :: array
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)        , intent(in)                    :: array
         integer(IK)             , intent(in)    , contiguous    :: index(:)
-        character(*,SKC)        , intent(out)                   :: arrayNew
+        character(*,SKG)        , intent(out)                   :: arrayNew
     end subroutine
 #endif
 
@@ -1857,10 +1857,10 @@ module pm_arrayRemap
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemappedForNew_D0_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)        , intent(in)                    :: array
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)        , intent(in)                    :: array
         integer(IK)             , intent(in)    , contiguous    :: index(:)
-        character(*,SKC)        , intent(out)                   :: arrayNew
+        character(*,SKG)        , intent(out)                   :: arrayNew
     end subroutine
 #endif
 
@@ -1871,10 +1871,10 @@ module pm_arrayRemap
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemappedForNew_D1_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)        , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)        , intent(in)    , contiguous    :: array(:)
         integer(IK)             , intent(in)    , contiguous    :: index(:)
-        character(*,SKC)        , intent(out)   , contiguous    :: arrayNew(:)
+        character(*,SKG)        , intent(out)   , contiguous    :: arrayNew(:)
     end subroutine
 #endif
 
@@ -1883,10 +1883,10 @@ module pm_arrayRemap
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemappedForNew_D1_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)        , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)        , intent(in)    , contiguous    :: array(:)
         integer(IK)             , intent(in)    , contiguous    :: index(:)
-        character(*,SKC)        , intent(out)   , contiguous    :: arrayNew(:)
+        character(*,SKG)        , intent(out)   , contiguous    :: arrayNew(:)
     end subroutine
 #endif
 
@@ -1895,10 +1895,10 @@ module pm_arrayRemap
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemappedForNew_D1_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)        , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)        , intent(in)    , contiguous    :: array(:)
         integer(IK)             , intent(in)    , contiguous    :: index(:)
-        character(*,SKC)        , intent(out)   , contiguous    :: arrayNew(:)
+        character(*,SKG)        , intent(out)   , contiguous    :: arrayNew(:)
     end subroutine
 #endif
 
@@ -1907,10 +1907,10 @@ module pm_arrayRemap
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemappedForNew_D1_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)        , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)        , intent(in)    , contiguous    :: array(:)
         integer(IK)             , intent(in)    , contiguous    :: index(:)
-        character(*,SKC)        , intent(out)   , contiguous    :: arrayNew(:)
+        character(*,SKG)        , intent(out)   , contiguous    :: arrayNew(:)
     end subroutine
 #endif
 
@@ -1919,10 +1919,10 @@ module pm_arrayRemap
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemappedForNew_D1_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)        , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)        , intent(in)    , contiguous    :: array(:)
         integer(IK)             , intent(in)    , contiguous    :: index(:)
-        character(*,SKC)        , intent(out)   , contiguous    :: arrayNew(:)
+        character(*,SKG)        , intent(out)   , contiguous    :: arrayNew(:)
     end subroutine
 #endif
 
@@ -1933,10 +1933,10 @@ module pm_arrayRemap
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemappedForNew_D1_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK5
+        integer(IKG)            , intent(in)    , contiguous    :: array(:)
         integer(IK)             , intent(in)    , contiguous    :: index(:)
-        integer(IKC)            , intent(out)   , contiguous    :: arrayNew(:)
+        integer(IKG)            , intent(out)   , contiguous    :: arrayNew(:)
     end subroutine
 #endif
 
@@ -1945,10 +1945,10 @@ module pm_arrayRemap
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemappedForNew_D1_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK4
+        integer(IKG)            , intent(in)    , contiguous    :: array(:)
         integer(IK)             , intent(in)    , contiguous    :: index(:)
-        integer(IKC)            , intent(out)   , contiguous    :: arrayNew(:)
+        integer(IKG)            , intent(out)   , contiguous    :: arrayNew(:)
     end subroutine
 #endif
 
@@ -1957,10 +1957,10 @@ module pm_arrayRemap
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemappedForNew_D1_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK3
+        integer(IKG)            , intent(in)    , contiguous    :: array(:)
         integer(IK)             , intent(in)    , contiguous    :: index(:)
-        integer(IKC)            , intent(out)   , contiguous    :: arrayNew(:)
+        integer(IKG)            , intent(out)   , contiguous    :: arrayNew(:)
     end subroutine
 #endif
 
@@ -1969,10 +1969,10 @@ module pm_arrayRemap
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemappedForNew_D1_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK2
+        integer(IKG)            , intent(in)    , contiguous    :: array(:)
         integer(IK)             , intent(in)    , contiguous    :: index(:)
-        integer(IKC)            , intent(out)   , contiguous    :: arrayNew(:)
+        integer(IKG)            , intent(out)   , contiguous    :: arrayNew(:)
     end subroutine
 #endif
 
@@ -1981,10 +1981,10 @@ module pm_arrayRemap
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemappedForNew_D1_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK1
+        integer(IKG)            , intent(in)    , contiguous    :: array(:)
         integer(IK)             , intent(in)    , contiguous    :: index(:)
-        integer(IKC)            , intent(out)   , contiguous    :: arrayNew(:)
+        integer(IKG)            , intent(out)   , contiguous    :: arrayNew(:)
     end subroutine
 #endif
 
@@ -1995,10 +1995,10 @@ module pm_arrayRemap
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemappedForNew_D1_LK5
 #endif
-        use pm_kind, only: LKC => LK5
-        logical(LKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: LKG => LK5
+        logical(LKG)            , intent(in)    , contiguous    :: array(:)
         integer(IK)             , intent(in)    , contiguous    :: index(:)
-        logical(LKC)            , intent(out)   , contiguous    :: arrayNew(:)
+        logical(LKG)            , intent(out)   , contiguous    :: arrayNew(:)
     end subroutine
 #endif
 
@@ -2007,10 +2007,10 @@ module pm_arrayRemap
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemappedForNew_D1_LK4
 #endif
-        use pm_kind, only: LKC => LK4
-        logical(LKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: LKG => LK4
+        logical(LKG)            , intent(in)    , contiguous    :: array(:)
         integer(IK)             , intent(in)    , contiguous    :: index(:)
-        logical(LKC)            , intent(out)   , contiguous    :: arrayNew(:)
+        logical(LKG)            , intent(out)   , contiguous    :: arrayNew(:)
     end subroutine
 #endif
 
@@ -2019,10 +2019,10 @@ module pm_arrayRemap
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemappedForNew_D1_LK3
 #endif
-        use pm_kind, only: LKC => LK3
-        logical(LKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: LKG => LK3
+        logical(LKG)            , intent(in)    , contiguous    :: array(:)
         integer(IK)             , intent(in)    , contiguous    :: index(:)
-        logical(LKC)            , intent(out)   , contiguous    :: arrayNew(:)
+        logical(LKG)            , intent(out)   , contiguous    :: arrayNew(:)
     end subroutine
 #endif
 
@@ -2031,10 +2031,10 @@ module pm_arrayRemap
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemappedForNew_D1_LK2
 #endif
-        use pm_kind, only: LKC => LK2
-        logical(LKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: LKG => LK2
+        logical(LKG)            , intent(in)    , contiguous    :: array(:)
         integer(IK)             , intent(in)    , contiguous    :: index(:)
-        logical(LKC)            , intent(out)   , contiguous    :: arrayNew(:)
+        logical(LKG)            , intent(out)   , contiguous    :: arrayNew(:)
     end subroutine
 #endif
 
@@ -2043,10 +2043,10 @@ module pm_arrayRemap
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemappedForNew_D1_LK1
 #endif
-        use pm_kind, only: LKC => LK1
-        logical(LKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: LKG => LK1
+        logical(LKG)            , intent(in)    , contiguous    :: array(:)
         integer(IK)             , intent(in)    , contiguous    :: index(:)
-        logical(LKC)            , intent(out)   , contiguous    :: arrayNew(:)
+        logical(LKG)            , intent(out)   , contiguous    :: arrayNew(:)
     end subroutine
 #endif
 
@@ -2057,10 +2057,10 @@ module pm_arrayRemap
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemappedForNew_D1_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG)            , intent(in)    , contiguous    :: array(:)
         integer(IK)             , intent(in)    , contiguous    :: index(:)
-        complex(CKC)            , intent(out)   , contiguous    :: arrayNew(:)
+        complex(CKG)            , intent(out)   , contiguous    :: arrayNew(:)
     end subroutine
 #endif
 
@@ -2069,10 +2069,10 @@ module pm_arrayRemap
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemappedForNew_D1_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG)            , intent(in)    , contiguous    :: array(:)
         integer(IK)             , intent(in)    , contiguous    :: index(:)
-        complex(CKC)            , intent(out)   , contiguous    :: arrayNew(:)
+        complex(CKG)            , intent(out)   , contiguous    :: arrayNew(:)
     end subroutine
 #endif
 
@@ -2081,10 +2081,10 @@ module pm_arrayRemap
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemappedForNew_D1_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG)            , intent(in)    , contiguous    :: array(:)
         integer(IK)             , intent(in)    , contiguous    :: index(:)
-        complex(CKC)            , intent(out)   , contiguous    :: arrayNew(:)
+        complex(CKG)            , intent(out)   , contiguous    :: arrayNew(:)
     end subroutine
 #endif
 
@@ -2093,10 +2093,10 @@ module pm_arrayRemap
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemappedForNew_D1_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG)            , intent(in)    , contiguous    :: array(:)
         integer(IK)             , intent(in)    , contiguous    :: index(:)
-        complex(CKC)            , intent(out)   , contiguous    :: arrayNew(:)
+        complex(CKG)            , intent(out)   , contiguous    :: arrayNew(:)
     end subroutine
 #endif
 
@@ -2105,10 +2105,10 @@ module pm_arrayRemap
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemappedForNew_D1_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG)            , intent(in)    , contiguous    :: array(:)
         integer(IK)             , intent(in)    , contiguous    :: index(:)
-        complex(CKC)            , intent(out)   , contiguous    :: arrayNew(:)
+        complex(CKG)            , intent(out)   , contiguous    :: arrayNew(:)
     end subroutine
 #endif
 
@@ -2119,10 +2119,10 @@ module pm_arrayRemap
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemappedForNew_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)               , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)               , intent(in)    , contiguous    :: array(:)
         integer(IK)             , intent(in)    , contiguous    :: index(:)
-        real(RKC)               , intent(out)   , contiguous    :: arrayNew(:)
+        real(RKG)               , intent(out)   , contiguous    :: arrayNew(:)
     end subroutine
 #endif
 
@@ -2131,10 +2131,10 @@ module pm_arrayRemap
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemappedForNew_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)               , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)               , intent(in)    , contiguous    :: array(:)
         integer(IK)             , intent(in)    , contiguous    :: index(:)
-        real(RKC)               , intent(out)   , contiguous    :: arrayNew(:)
+        real(RKG)               , intent(out)   , contiguous    :: arrayNew(:)
     end subroutine
 #endif
 
@@ -2143,10 +2143,10 @@ module pm_arrayRemap
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemappedForNew_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)               , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)               , intent(in)    , contiguous    :: array(:)
         integer(IK)             , intent(in)    , contiguous    :: index(:)
-        real(RKC)               , intent(out)   , contiguous    :: arrayNew(:)
+        real(RKG)               , intent(out)   , contiguous    :: arrayNew(:)
     end subroutine
 #endif
 
@@ -2155,10 +2155,10 @@ module pm_arrayRemap
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemappedForNew_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)               , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)               , intent(in)    , contiguous    :: array(:)
         integer(IK)             , intent(in)    , contiguous    :: index(:)
-        real(RKC)               , intent(out)   , contiguous    :: arrayNew(:)
+        real(RKG)               , intent(out)   , contiguous    :: arrayNew(:)
     end subroutine
 #endif
 
@@ -2167,10 +2167,10 @@ module pm_arrayRemap
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemappedForNew_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)               , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)               , intent(in)    , contiguous    :: array(:)
         integer(IK)             , intent(in)    , contiguous    :: index(:)
-        real(RKC)               , intent(out)   , contiguous    :: arrayNew(:)
+        real(RKG)               , intent(out)   , contiguous    :: arrayNew(:)
     end subroutine
 #endif
 
@@ -2183,11 +2183,11 @@ module pm_arrayRemap
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemappedRevNew_D0_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)        , intent(in)                    :: array
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)        , intent(in)                    :: array
         integer(IK)             , intent(in)    , contiguous    :: index(:)
         type(reverse_type)      , intent(in)                    :: action
-        character(*,SKC)        , intent(out)                   :: arrayNew
+        character(*,SKG)        , intent(out)                   :: arrayNew
     end subroutine
 #endif
 
@@ -2196,11 +2196,11 @@ module pm_arrayRemap
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemappedRevNew_D0_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)        , intent(in)                    :: array
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)        , intent(in)                    :: array
         integer(IK)             , intent(in)    , contiguous    :: index(:)
         type(reverse_type)      , intent(in)                    :: action
-        character(*,SKC)        , intent(out)                   :: arrayNew
+        character(*,SKG)        , intent(out)                   :: arrayNew
     end subroutine
 #endif
 
@@ -2209,11 +2209,11 @@ module pm_arrayRemap
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemappedRevNew_D0_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)        , intent(in)                    :: array
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)        , intent(in)                    :: array
         integer(IK)             , intent(in)    , contiguous    :: index(:)
         type(reverse_type)      , intent(in)                    :: action
-        character(*,SKC)        , intent(out)                   :: arrayNew
+        character(*,SKG)        , intent(out)                   :: arrayNew
     end subroutine
 #endif
 
@@ -2222,11 +2222,11 @@ module pm_arrayRemap
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemappedRevNew_D0_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)        , intent(in)                    :: array
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)        , intent(in)                    :: array
         integer(IK)             , intent(in)    , contiguous    :: index(:)
         type(reverse_type)      , intent(in)                    :: action
-        character(*,SKC)        , intent(out)                   :: arrayNew
+        character(*,SKG)        , intent(out)                   :: arrayNew
     end subroutine
 #endif
 
@@ -2235,11 +2235,11 @@ module pm_arrayRemap
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemappedRevNew_D0_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)        , intent(in)                    :: array
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)        , intent(in)                    :: array
         integer(IK)             , intent(in)    , contiguous    :: index(:)
         type(reverse_type)      , intent(in)                    :: action
-        character(*,SKC)        , intent(out)                   :: arrayNew
+        character(*,SKG)        , intent(out)                   :: arrayNew
     end subroutine
 #endif
 
@@ -2250,11 +2250,11 @@ module pm_arrayRemap
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemappedRevNew_D1_SK5
 #endif
-        use pm_kind, only: SKC => SK5
-        character(*,SKC)        , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: SKG => SK5
+        character(*,SKG)        , intent(in)    , contiguous    :: array(:)
         integer(IK)             , intent(in)    , contiguous    :: index(:)
         type(reverse_type)      , intent(in)                    :: action
-        character(*,SKC)        , intent(out)   , contiguous    :: arrayNew(:)
+        character(*,SKG)        , intent(out)   , contiguous    :: arrayNew(:)
     end subroutine
 #endif
 
@@ -2263,11 +2263,11 @@ module pm_arrayRemap
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemappedRevNew_D1_SK4
 #endif
-        use pm_kind, only: SKC => SK4
-        character(*,SKC)        , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: SKG => SK4
+        character(*,SKG)        , intent(in)    , contiguous    :: array(:)
         integer(IK)             , intent(in)    , contiguous    :: index(:)
         type(reverse_type)      , intent(in)                    :: action
-        character(*,SKC)        , intent(out)   , contiguous    :: arrayNew(:)
+        character(*,SKG)        , intent(out)   , contiguous    :: arrayNew(:)
     end subroutine
 #endif
 
@@ -2276,11 +2276,11 @@ module pm_arrayRemap
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemappedRevNew_D1_SK3
 #endif
-        use pm_kind, only: SKC => SK3
-        character(*,SKC)        , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: SKG => SK3
+        character(*,SKG)        , intent(in)    , contiguous    :: array(:)
         integer(IK)             , intent(in)    , contiguous    :: index(:)
         type(reverse_type)      , intent(in)                    :: action
-        character(*,SKC)        , intent(out)   , contiguous    :: arrayNew(:)
+        character(*,SKG)        , intent(out)   , contiguous    :: arrayNew(:)
     end subroutine
 #endif
 
@@ -2289,11 +2289,11 @@ module pm_arrayRemap
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemappedRevNew_D1_SK2
 #endif
-        use pm_kind, only: SKC => SK2
-        character(*,SKC)        , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: SKG => SK2
+        character(*,SKG)        , intent(in)    , contiguous    :: array(:)
         integer(IK)             , intent(in)    , contiguous    :: index(:)
         type(reverse_type)      , intent(in)                    :: action
-        character(*,SKC)        , intent(out)   , contiguous    :: arrayNew(:)
+        character(*,SKG)        , intent(out)   , contiguous    :: arrayNew(:)
     end subroutine
 #endif
 
@@ -2302,11 +2302,11 @@ module pm_arrayRemap
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemappedRevNew_D1_SK1
 #endif
-        use pm_kind, only: SKC => SK1
-        character(*,SKC)        , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: SKG => SK1
+        character(*,SKG)        , intent(in)    , contiguous    :: array(:)
         integer(IK)             , intent(in)    , contiguous    :: index(:)
         type(reverse_type)      , intent(in)                    :: action
-        character(*,SKC)        , intent(out)   , contiguous    :: arrayNew(:)
+        character(*,SKG)        , intent(out)   , contiguous    :: arrayNew(:)
     end subroutine
 #endif
 
@@ -2317,11 +2317,11 @@ module pm_arrayRemap
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemappedRevNew_D1_IK5
 #endif
-        use pm_kind, only: IKC => IK5
-        integer(IKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK5
+        integer(IKG)            , intent(in)    , contiguous    :: array(:)
         integer(IK)             , intent(in)    , contiguous    :: index(:)
         type(reverse_type)      , intent(in)                    :: action
-        integer(IKC)            , intent(out)   , contiguous    :: arrayNew(:)
+        integer(IKG)            , intent(out)   , contiguous    :: arrayNew(:)
     end subroutine
 #endif
 
@@ -2330,11 +2330,11 @@ module pm_arrayRemap
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemappedRevNew_D1_IK4
 #endif
-        use pm_kind, only: IKC => IK4
-        integer(IKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK4
+        integer(IKG)            , intent(in)    , contiguous    :: array(:)
         integer(IK)             , intent(in)    , contiguous    :: index(:)
         type(reverse_type)      , intent(in)                    :: action
-        integer(IKC)            , intent(out)   , contiguous    :: arrayNew(:)
+        integer(IKG)            , intent(out)   , contiguous    :: arrayNew(:)
     end subroutine
 #endif
 
@@ -2343,11 +2343,11 @@ module pm_arrayRemap
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemappedRevNew_D1_IK3
 #endif
-        use pm_kind, only: IKC => IK3
-        integer(IKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK3
+        integer(IKG)            , intent(in)    , contiguous    :: array(:)
         integer(IK)             , intent(in)    , contiguous    :: index(:)
         type(reverse_type)      , intent(in)                    :: action
-        integer(IKC)            , intent(out)   , contiguous    :: arrayNew(:)
+        integer(IKG)            , intent(out)   , contiguous    :: arrayNew(:)
     end subroutine
 #endif
 
@@ -2356,11 +2356,11 @@ module pm_arrayRemap
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemappedRevNew_D1_IK2
 #endif
-        use pm_kind, only: IKC => IK2
-        integer(IKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK2
+        integer(IKG)            , intent(in)    , contiguous    :: array(:)
         integer(IK)             , intent(in)    , contiguous    :: index(:)
         type(reverse_type)      , intent(in)                    :: action
-        integer(IKC)            , intent(out)   , contiguous    :: arrayNew(:)
+        integer(IKG)            , intent(out)   , contiguous    :: arrayNew(:)
     end subroutine
 #endif
 
@@ -2369,11 +2369,11 @@ module pm_arrayRemap
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemappedRevNew_D1_IK1
 #endif
-        use pm_kind, only: IKC => IK1
-        integer(IKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: IKG => IK1
+        integer(IKG)            , intent(in)    , contiguous    :: array(:)
         integer(IK)             , intent(in)    , contiguous    :: index(:)
         type(reverse_type)      , intent(in)                    :: action
-        integer(IKC)            , intent(out)   , contiguous    :: arrayNew(:)
+        integer(IKG)            , intent(out)   , contiguous    :: arrayNew(:)
     end subroutine
 #endif
 
@@ -2384,11 +2384,11 @@ module pm_arrayRemap
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemappedRevNew_D1_LK5
 #endif
-        use pm_kind, only: LKC => LK5
-        logical(LKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: LKG => LK5
+        logical(LKG)            , intent(in)    , contiguous    :: array(:)
         integer(IK)             , intent(in)    , contiguous    :: index(:)
         type(reverse_type)      , intent(in)                    :: action
-        logical(LKC)            , intent(out)   , contiguous    :: arrayNew(:)
+        logical(LKG)            , intent(out)   , contiguous    :: arrayNew(:)
     end subroutine
 #endif
 
@@ -2397,11 +2397,11 @@ module pm_arrayRemap
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemappedRevNew_D1_LK4
 #endif
-        use pm_kind, only: LKC => LK4
-        logical(LKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: LKG => LK4
+        logical(LKG)            , intent(in)    , contiguous    :: array(:)
         integer(IK)             , intent(in)    , contiguous    :: index(:)
         type(reverse_type)      , intent(in)                    :: action
-        logical(LKC)            , intent(out)   , contiguous    :: arrayNew(:)
+        logical(LKG)            , intent(out)   , contiguous    :: arrayNew(:)
     end subroutine
 #endif
 
@@ -2410,11 +2410,11 @@ module pm_arrayRemap
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemappedRevNew_D1_LK3
 #endif
-        use pm_kind, only: LKC => LK3
-        logical(LKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: LKG => LK3
+        logical(LKG)            , intent(in)    , contiguous    :: array(:)
         integer(IK)             , intent(in)    , contiguous    :: index(:)
         type(reverse_type)      , intent(in)                    :: action
-        logical(LKC)            , intent(out)   , contiguous    :: arrayNew(:)
+        logical(LKG)            , intent(out)   , contiguous    :: arrayNew(:)
     end subroutine
 #endif
 
@@ -2423,11 +2423,11 @@ module pm_arrayRemap
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemappedRevNew_D1_LK2
 #endif
-        use pm_kind, only: LKC => LK2
-        logical(LKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: LKG => LK2
+        logical(LKG)            , intent(in)    , contiguous    :: array(:)
         integer(IK)             , intent(in)    , contiguous    :: index(:)
         type(reverse_type)      , intent(in)                    :: action
-        logical(LKC)            , intent(out)   , contiguous    :: arrayNew(:)
+        logical(LKG)            , intent(out)   , contiguous    :: arrayNew(:)
     end subroutine
 #endif
 
@@ -2436,11 +2436,11 @@ module pm_arrayRemap
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemappedRevNew_D1_LK1
 #endif
-        use pm_kind, only: LKC => LK1
-        logical(LKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: LKG => LK1
+        logical(LKG)            , intent(in)    , contiguous    :: array(:)
         integer(IK)             , intent(in)    , contiguous    :: index(:)
         type(reverse_type)      , intent(in)                    :: action
-        logical(LKC)            , intent(out)   , contiguous    :: arrayNew(:)
+        logical(LKG)            , intent(out)   , contiguous    :: arrayNew(:)
     end subroutine
 #endif
 
@@ -2451,11 +2451,11 @@ module pm_arrayRemap
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemappedRevNew_D1_CK5
 #endif
-        use pm_kind, only: CKC => CK5
-        complex(CKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK5
+        complex(CKG)            , intent(in)    , contiguous    :: array(:)
         integer(IK)             , intent(in)    , contiguous    :: index(:)
         type(reverse_type)      , intent(in)                    :: action
-        complex(CKC)            , intent(out)   , contiguous    :: arrayNew(:)
+        complex(CKG)            , intent(out)   , contiguous    :: arrayNew(:)
     end subroutine
 #endif
 
@@ -2464,11 +2464,11 @@ module pm_arrayRemap
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemappedRevNew_D1_CK4
 #endif
-        use pm_kind, only: CKC => CK4
-        complex(CKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK4
+        complex(CKG)            , intent(in)    , contiguous    :: array(:)
         integer(IK)             , intent(in)    , contiguous    :: index(:)
         type(reverse_type)      , intent(in)                    :: action
-        complex(CKC)            , intent(out)   , contiguous    :: arrayNew(:)
+        complex(CKG)            , intent(out)   , contiguous    :: arrayNew(:)
     end subroutine
 #endif
 
@@ -2477,11 +2477,11 @@ module pm_arrayRemap
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemappedRevNew_D1_CK3
 #endif
-        use pm_kind, only: CKC => CK3
-        complex(CKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK3
+        complex(CKG)            , intent(in)    , contiguous    :: array(:)
         integer(IK)             , intent(in)    , contiguous    :: index(:)
         type(reverse_type)      , intent(in)                    :: action
-        complex(CKC)            , intent(out)   , contiguous    :: arrayNew(:)
+        complex(CKG)            , intent(out)   , contiguous    :: arrayNew(:)
     end subroutine
 #endif
 
@@ -2490,11 +2490,11 @@ module pm_arrayRemap
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemappedRevNew_D1_CK2
 #endif
-        use pm_kind, only: CKC => CK2
-        complex(CKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK2
+        complex(CKG)            , intent(in)    , contiguous    :: array(:)
         integer(IK)             , intent(in)    , contiguous    :: index(:)
         type(reverse_type)      , intent(in)                    :: action
-        complex(CKC)            , intent(out)   , contiguous    :: arrayNew(:)
+        complex(CKG)            , intent(out)   , contiguous    :: arrayNew(:)
     end subroutine
 #endif
 
@@ -2503,11 +2503,11 @@ module pm_arrayRemap
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemappedRevNew_D1_CK1
 #endif
-        use pm_kind, only: CKC => CK1
-        complex(CKC)            , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: CKG => CK1
+        complex(CKG)            , intent(in)    , contiguous    :: array(:)
         integer(IK)             , intent(in)    , contiguous    :: index(:)
         type(reverse_type)      , intent(in)                    :: action
-        complex(CKC)            , intent(out)   , contiguous    :: arrayNew(:)
+        complex(CKG)            , intent(out)   , contiguous    :: arrayNew(:)
     end subroutine
 #endif
 
@@ -2518,11 +2518,11 @@ module pm_arrayRemap
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemappedRevNew_D1_RK5
 #endif
-        use pm_kind, only: RKC => RK5
-        real(RKC)               , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK5
+        real(RKG)               , intent(in)    , contiguous    :: array(:)
         integer(IK)             , intent(in)    , contiguous    :: index(:)
         type(reverse_type)      , intent(in)                    :: action
-        real(RKC)               , intent(out)   , contiguous    :: arrayNew(:)
+        real(RKG)               , intent(out)   , contiguous    :: arrayNew(:)
     end subroutine
 #endif
 
@@ -2531,11 +2531,11 @@ module pm_arrayRemap
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemappedRevNew_D1_RK4
 #endif
-        use pm_kind, only: RKC => RK4
-        real(RKC)               , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK4
+        real(RKG)               , intent(in)    , contiguous    :: array(:)
         integer(IK)             , intent(in)    , contiguous    :: index(:)
         type(reverse_type)      , intent(in)                    :: action
-        real(RKC)               , intent(out)   , contiguous    :: arrayNew(:)
+        real(RKG)               , intent(out)   , contiguous    :: arrayNew(:)
     end subroutine
 #endif
 
@@ -2544,11 +2544,11 @@ module pm_arrayRemap
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemappedRevNew_D1_RK3
 #endif
-        use pm_kind, only: RKC => RK3
-        real(RKC)               , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK3
+        real(RKG)               , intent(in)    , contiguous    :: array(:)
         integer(IK)             , intent(in)    , contiguous    :: index(:)
         type(reverse_type)      , intent(in)                    :: action
-        real(RKC)               , intent(out)   , contiguous    :: arrayNew(:)
+        real(RKG)               , intent(out)   , contiguous    :: arrayNew(:)
     end subroutine
 #endif
 
@@ -2557,11 +2557,11 @@ module pm_arrayRemap
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemappedRevNew_D1_RK2
 #endif
-        use pm_kind, only: RKC => RK2
-        real(RKC)               , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK2
+        real(RKG)               , intent(in)    , contiguous    :: array(:)
         integer(IK)             , intent(in)    , contiguous    :: index(:)
         type(reverse_type)      , intent(in)                    :: action
-        real(RKC)               , intent(out)   , contiguous    :: arrayNew(:)
+        real(RKG)               , intent(out)   , contiguous    :: arrayNew(:)
     end subroutine
 #endif
 
@@ -2570,11 +2570,11 @@ module pm_arrayRemap
 #if __INTEL_COMPILER && DLL_ENABLED && (_WIN32 || _WIN64)
         !DEC$ ATTRIBUTES DLLEXPORT :: setRemappedRevNew_D1_RK1
 #endif
-        use pm_kind, only: RKC => RK1
-        real(RKC)               , intent(in)    , contiguous    :: array(:)
+        use pm_kind, only: RKG => RK1
+        real(RKG)               , intent(in)    , contiguous    :: array(:)
         integer(IK)             , intent(in)    , contiguous    :: index(:)
         type(reverse_type)      , intent(in)                    :: action
-        real(RKC)               , intent(out)   , contiguous    :: arrayNew(:)
+        real(RKG)               , intent(out)   , contiguous    :: arrayNew(:)
     end subroutine
 #endif
 

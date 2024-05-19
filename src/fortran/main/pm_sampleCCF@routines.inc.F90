@@ -27,10 +27,10 @@
         ! Set the type and kind and the conjugation rule.
 #if     CK_ENABLED
 #define GET_ABSQ(X)(real(X)**2 + aimag(X)**2)
-#define TYPE_OF_SEQ complex(TKC)
+#define TYPE_OF_SEQ complex(TKG)
 #define GET_RE(X)X%re
 #elif   RK_ENABLED
-#define TYPE_OF_SEQ real(TKC)
+#define TYPE_OF_SEQ real(TKG)
 #define GET_ABSQ(X)X**2
 #define GET_RE(X)X
 #else
@@ -40,10 +40,10 @@
 #if     getACF_ENABLED && D1_ENABLED
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-        real(TKC) :: normfac
+        real(TKG) :: normfac
         TYPE_OF_SEQ :: meanf
         class(*), allocatable :: norm_def
-        TYPE_OF_SEQ, parameter :: ZERO = 0._TKC
+        TYPE_OF_SEQ, parameter :: ZERO = 0._TKG
         TYPE_OF_SEQ, allocatable :: ff(:), coef(:)
         integer(IK), allocatable :: factor(:)
         logical(LK) :: unscaled, inf
@@ -95,16 +95,16 @@
 
         ! Normalize and shift.
 
-        normfac = 1._TKC / lenacf ! default scale.
+        normfac = 1._TKG / lenacf ! default scale.
         if (inf) then
-            if (unscaled) normfac = 1._TKC / GET_RE(ff(1))
+            if (unscaled) normfac = 1._TKG / GET_RE(ff(1))
             if (present(lag)) then
                 acf = cshift(ff * normfac, lagmin)
             else
                 acf = ff(1 : 1 + lagmax) * normfac
             end if
         else
-            if (unscaled) normfac = 1._TKC / GET_RE(acf(1))
+            if (unscaled) normfac = 1._TKG / GET_RE(acf(1))
             if (present(lag)) then
                 acf = cshift(acf * normfac, lagmin)
             else
@@ -129,13 +129,13 @@
             ! fft of `f` is in `work`.
             do concurrent(isam = 1 : nsam)
                 f(isam)%re = work(isam)%re**2 + work(isam)%im**2
-                f(isam)%im = 0._TKC
+                f(isam)%im = 0._TKG
             end do
         else
             ! fft of `f` is in `f`.
             do concurrent(isam = 1 : nsam)
                 f(isam)%re = f(isam)%re**2 + f(isam)%im**2
-                f(isam)%im = 0._TKC
+                f(isam)%im = 0._TKG
             end do
         end if
 #elif   RK_ENABLED
@@ -145,7 +145,7 @@
             f(1) = work(1)**2
             do concurrent(isam = 2 : nsam : 2)
                 f(isam) = work(isam)**2 + work(isam + 1)**2
-                f(isam + 1) = 0._TKC
+                f(isam + 1) = 0._TKG
             end do
             if (nsam < size(f, 1, IK)) f(nsam + 1) = work(nsam + 1)**2
         else
@@ -153,7 +153,7 @@
             f(1) = f(1)**2
             do concurrent(isam = 2 : nsam : 2)
                 f(isam) = f(isam)**2 + f(isam + 1)**2
-                f(isam + 1) = 0._TKC
+                f(isam + 1) = 0._TKG
             end do
             if (nsam < size(f, 1, IK)) f(nsam + 1) = f(nsam + 1)**2
         end if
@@ -170,9 +170,9 @@
         !%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
         TYPE_OF_SEQ :: meanf, meang
-        TYPE_OF_SEQ, parameter :: ZERO = 0._TKC
+        TYPE_OF_SEQ, parameter :: ZERO = 0._TKG
         TYPE_OF_SEQ, allocatable :: ff(:), gg(:), coef(:)
-        real(TKC) :: normfac, sumsqf, sumsqg
+        real(TKG) :: normfac, sumsqf, sumsqg
         integer(IK), allocatable :: factor(:)
         class(*), allocatable :: norm_def
         integer(IK) :: lagmax
@@ -206,7 +206,7 @@
             norm_def = zscore_type()
         end if
 
-        normfac = 1._TKC / lenccf
+        normfac = 1._TKG / lenccf
         if (same_type_as(norm_def, meanshift_type()) .or. same_type_as(norm_def, zscore_type())) then
             meanf = getMean(f)
             meang = getMean(g)
@@ -220,11 +220,11 @@
         gg(size(g, 1, IK) + 1 : lenccf) = ZERO
 
         if (same_type_as(norm_def, stdscale_type()) .or. same_type_as(norm_def, zscore_type())) then
-            sumsqf = 0._TKC
+            sumsqf = 0._TKG
             do iell = 1, size(f, 1, IK)
                 sumsqf = sumsqf + GET_ABSQ(ff(iell))
             end do
-            sumsqg = 0._TKC
+            sumsqg = 0._TKG
             do iell = 1, size(g, 1, IK)
                 sumsqg = sumsqg + GET_ABSQ(gg(iell))
             end do
@@ -324,7 +324,7 @@ if (nsam < size(f, 1, IK)) f(nsam + 1) = TS2(nsam + 1) * TS1(nsam + 1);
         inf = .not. inf
         !if (inwork) work = g
         !call setFFTR(factor, coef, work, f, inwork)
-        !normfac = 1._TKC / real(size(work, 1, IK), TKC)
+        !normfac = 1._TKG / real(size(work, 1, IK), TKG)
         !if (inwork) then
         !    do concurrent(isam = 1 : size(work, 1, IK))
         !        work(isam) = f(isam) * normfac

@@ -26,7 +26,7 @@
 
         ! Bypass gfortran bug 10-12.
 #if     setRefilled_D1_SK_ENABLED || setRefilled_D2_SK_ENABLED || setRefilled_D3_SK_ENABLED
-#define TYPE_KIND character(2,SKC) ::
+#define TYPE_KIND character(2,SKG) ::
 #else
 #define TYPE_KIND
 #endif
@@ -55,8 +55,8 @@
 
 #if     setRefilled_D0_ENABLED
         integer(IK)     , parameter     :: lbmin = +1_IK, ubmax = +15_IK
-        character(:,SKC), allocatable   :: array, arrayInit, array_ref, lower, upper
-        character(1,SKC), parameter     :: fill = SKC_"-"
+        character(:,SKG), allocatable   :: array, arrayInit, array_ref, lower, upper
+        character(1,SKG), parameter     :: fill = SKG_"-"
 #define GET_UBOUND(X) len(X, kind = IK)
 #define GET_LBOUND(X) 1
 #define ALL
@@ -65,22 +65,22 @@
 #define GET_UBOUND(X) ubound(X, kind = IK)
         integer(IK)     , parameter     :: lbmin = -5_IK, ubmax = +10_IK
 #if     setRefilled_D1_SK_ENABLED || setRefilled_D2_SK_ENABLED || setRefilled_D3_SK_ENABLED
-        character(2,SKC), allocatable   :: SET_DIM(array), SET_DIM(arrayInit), SET_DIM(array_ref)
-        character(2,SKC), parameter     :: fill = SKC_"--", lower = SKC_"aa", upper = SKC_"zz"
+        character(2,SKG), allocatable   :: SET_DIM(array), SET_DIM(arrayInit), SET_DIM(array_ref)
+        character(2,SKG), parameter     :: fill = SKG_"--", lower = SKG_"aa", upper = SKG_"zz"
 #elif   setRefilled_D1_IK_ENABLED || setRefilled_D2_IK_ENABLED || setRefilled_D3_IK_ENABLED
-        integer(IKC)    , allocatable   :: SET_DIM(array), SET_DIM(arrayInit), SET_DIM(array_ref)
-        integer(IKC)    , parameter     :: fill = huge(0_IKC), lower = -huge(0_IKC), upper = huge(0_IKC)
+        integer(IKG)    , allocatable   :: SET_DIM(array), SET_DIM(arrayInit), SET_DIM(array_ref)
+        integer(IKG)    , parameter     :: fill = huge(0_IKG), lower = -huge(0_IKG), upper = huge(0_IKG)
 #elif   setRefilled_D1_LK_ENABLED || setRefilled_D2_LK_ENABLED || setRefilled_D3_LK_ENABLED
-        logical(LKC)    , allocatable   :: SET_DIM(array), SET_DIM(arrayInit), SET_DIM(array_ref)
-        logical(LKC)    , parameter     :: fill = .false._LKC, lower = .false._LKC, upper = .true._LKC
+        logical(LKG)    , allocatable   :: SET_DIM(array), SET_DIM(arrayInit), SET_DIM(array_ref)
+        logical(LKG)    , parameter     :: fill = .false._LKG, lower = .false._LKG, upper = .true._LKG
 #elif   setRefilled_D1_CK_ENABLED || setRefilled_D2_CK_ENABLED || setRefilled_D3_CK_ENABLED
-        complex(CKC)    , allocatable   :: SET_DIM(array), SET_DIM(arrayInit), SET_DIM(array_ref)
-        complex(CKC)    , parameter     :: fill = cmplx(huge(0._CKC), huge(0._CKC), kind = CKC)
-        complex(CKC)    , parameter     :: lower = -fill, upper = fill
+        complex(CKG)    , allocatable   :: SET_DIM(array), SET_DIM(arrayInit), SET_DIM(array_ref)
+        complex(CKG)    , parameter     :: fill = cmplx(huge(0._CKG), huge(0._CKG), kind = CKG)
+        complex(CKG)    , parameter     :: lower = -fill, upper = fill
 #elif   setRefilled_D1_RK_ENABLED || setRefilled_D2_RK_ENABLED || setRefilled_D3_RK_ENABLED
-        real(RKC)       , allocatable   :: SET_DIM(array), SET_DIM(arrayInit), SET_DIM(array_ref)
-        real(RKC)       , parameter     :: fill = huge(0._RKC)
-        real(RKC)       , parameter     :: lower = -fill, upper = fill
+        real(RKG)       , allocatable   :: SET_DIM(array), SET_DIM(arrayInit), SET_DIM(array_ref)
+        real(RKG)       , parameter     :: fill = huge(0._RKG)
+        real(RKG)       , parameter     :: lower = -fill, upper = fill
 #else
 #error  "Unrecognized interface."
 #endif
@@ -180,10 +180,10 @@
             else
                 call setUnifRand(ub, lb, 2 * ubmax)
             end if
-            allocate(character(ub,SKC) :: array_ref)
-            allocate(character(ubold,SKC) :: arrayInit)
-            lower = repeat(SKC_"a", len(arrayInit))
-            upper = repeat(SKC_"z", len(arrayInit))
+            allocate(character(ub,SKG) :: array_ref)
+            allocate(character(ubold,SKG) :: arrayInit)
+            lower = repeat(SKG_"a", len(arrayInit))
+            upper = repeat(SKG_"z", len(arrayInit))
 #else
             call setUnifRand(lbold, lbmin, ubmax)
             call setUnifRand(ubold, lbold, ubmax)

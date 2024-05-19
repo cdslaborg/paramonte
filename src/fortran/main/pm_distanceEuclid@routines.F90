@@ -58,35 +58,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getDisEuclidXYZ_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_distanceEuclid@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getDisEuclidXYZ_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_distanceEuclid@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getDisEuclidXYZ_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_distanceEuclid@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getDisEuclidXYZ_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_distanceEuclid@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getDisEuclidXYZ_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_distanceEuclid@routines.inc.F90"
     end procedure
 #endif
@@ -109,35 +109,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getDE_D1_XX_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_distanceEuclid@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getDE_D1_XX_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_distanceEuclid@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getDE_D1_XX_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_distanceEuclid@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getDE_D1_XX_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_distanceEuclid@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getDE_D1_XX_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_distanceEuclid@routines.inc.F90"
     end procedure
 #endif
@@ -160,35 +160,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getDE_D2_XX_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_distanceEuclid@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getDE_D2_XX_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_distanceEuclid@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getDE_D2_XX_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_distanceEuclid@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getDE_D2_XX_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_distanceEuclid@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getDE_D2_XX_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_distanceEuclid@routines.inc.F90"
     end procedure
 #endif
@@ -211,35 +211,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getDE_D1_D1_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_distanceEuclid@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getDE_D1_D1_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_distanceEuclid@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getDE_D1_D1_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_distanceEuclid@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getDE_D1_D1_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_distanceEuclid@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getDE_D1_D1_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_distanceEuclid@routines.inc.F90"
     end procedure
 #endif
@@ -262,35 +262,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getDE_D1_D2_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_distanceEuclid@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getDE_D1_D2_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_distanceEuclid@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getDE_D1_D2_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_distanceEuclid@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getDE_D1_D2_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_distanceEuclid@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getDE_D1_D2_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_distanceEuclid@routines.inc.F90"
     end procedure
 #endif
@@ -313,35 +313,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getDE_D2_D1_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_distanceEuclid@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getDE_D2_D1_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_distanceEuclid@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getDE_D2_D1_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_distanceEuclid@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getDE_D2_D1_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_distanceEuclid@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getDE_D2_D1_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_distanceEuclid@routines.inc.F90"
     end procedure
 #endif
@@ -364,35 +364,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getDE_D2_D2_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_distanceEuclid@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getDE_D2_D2_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_distanceEuclid@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getDE_D2_D2_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_distanceEuclid@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getDE_D2_D2_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_distanceEuclid@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getDE_D2_D2_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_distanceEuclid@routines.inc.F90"
     end procedure
 #endif
@@ -431,35 +431,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setDE_MED_D1_XX_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_distanceEuclid@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setDE_MED_D1_XX_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_distanceEuclid@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setDE_MED_D1_XX_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_distanceEuclid@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setDE_MED_D1_XX_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_distanceEuclid@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setDE_MED_D1_XX_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_distanceEuclid@routines.inc.F90"
     end procedure
 #endif
@@ -482,35 +482,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setDE_MED_D2_XX_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_distanceEuclid@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setDE_MED_D2_XX_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_distanceEuclid@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setDE_MED_D2_XX_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_distanceEuclid@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setDE_MED_D2_XX_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_distanceEuclid@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setDE_MED_D2_XX_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_distanceEuclid@routines.inc.F90"
     end procedure
 #endif
@@ -533,35 +533,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setDE_MED_D1_D1_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_distanceEuclid@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setDE_MED_D1_D1_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_distanceEuclid@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setDE_MED_D1_D1_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_distanceEuclid@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setDE_MED_D1_D1_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_distanceEuclid@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setDE_MED_D1_D1_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_distanceEuclid@routines.inc.F90"
     end procedure
 #endif
@@ -584,35 +584,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setDE_MED_D1_D2_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_distanceEuclid@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setDE_MED_D1_D2_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_distanceEuclid@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setDE_MED_D1_D2_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_distanceEuclid@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setDE_MED_D1_D2_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_distanceEuclid@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setDE_MED_D1_D2_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_distanceEuclid@routines.inc.F90"
     end procedure
 #endif
@@ -635,35 +635,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setDE_MED_D2_D1_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_distanceEuclid@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setDE_MED_D2_D1_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_distanceEuclid@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setDE_MED_D2_D1_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_distanceEuclid@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setDE_MED_D2_D1_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_distanceEuclid@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setDE_MED_D2_D1_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_distanceEuclid@routines.inc.F90"
     end procedure
 #endif
@@ -686,35 +686,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setDE_MED_D2_D2_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_distanceEuclid@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setDE_MED_D2_D2_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_distanceEuclid@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setDE_MED_D2_D2_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_distanceEuclid@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setDE_MED_D2_D2_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_distanceEuclid@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setDE_MED_D2_D2_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_distanceEuclid@routines.inc.F90"
     end procedure
 #endif
@@ -749,35 +749,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setDE_MEU_D1_XX_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_distanceEuclid@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setDE_MEU_D1_XX_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_distanceEuclid@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setDE_MEU_D1_XX_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_distanceEuclid@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setDE_MEU_D1_XX_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_distanceEuclid@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setDE_MEU_D1_XX_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_distanceEuclid@routines.inc.F90"
     end procedure
 #endif
@@ -800,35 +800,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setDE_MEU_D2_XX_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_distanceEuclid@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setDE_MEU_D2_XX_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_distanceEuclid@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setDE_MEU_D2_XX_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_distanceEuclid@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setDE_MEU_D2_XX_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_distanceEuclid@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setDE_MEU_D2_XX_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_distanceEuclid@routines.inc.F90"
     end procedure
 #endif
@@ -851,35 +851,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setDE_MEU_D1_D1_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_distanceEuclid@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setDE_MEU_D1_D1_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_distanceEuclid@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setDE_MEU_D1_D1_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_distanceEuclid@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setDE_MEU_D1_D1_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_distanceEuclid@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setDE_MEU_D1_D1_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_distanceEuclid@routines.inc.F90"
     end procedure
 #endif
@@ -902,35 +902,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setDE_MEU_D1_D2_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_distanceEuclid@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setDE_MEU_D1_D2_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_distanceEuclid@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setDE_MEU_D1_D2_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_distanceEuclid@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setDE_MEU_D1_D2_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_distanceEuclid@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setDE_MEU_D1_D2_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_distanceEuclid@routines.inc.F90"
     end procedure
 #endif
@@ -953,35 +953,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setDE_MEU_D2_D1_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_distanceEuclid@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setDE_MEU_D2_D1_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_distanceEuclid@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setDE_MEU_D2_D1_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_distanceEuclid@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setDE_MEU_D2_D1_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_distanceEuclid@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setDE_MEU_D2_D1_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_distanceEuclid@routines.inc.F90"
     end procedure
 #endif
@@ -1004,35 +1004,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setDE_MEU_D2_D2_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_distanceEuclid@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setDE_MEU_D2_D2_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_distanceEuclid@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setDE_MEU_D2_D2_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_distanceEuclid@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setDE_MEU_D2_D2_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_distanceEuclid@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setDE_MEU_D2_D2_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_distanceEuclid@routines.inc.F90"
     end procedure
 #endif
@@ -1067,35 +1067,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setDE_MEQ_D1_XX_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_distanceEuclid@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setDE_MEQ_D1_XX_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_distanceEuclid@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setDE_MEQ_D1_XX_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_distanceEuclid@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setDE_MEQ_D1_XX_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_distanceEuclid@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setDE_MEQ_D1_XX_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_distanceEuclid@routines.inc.F90"
     end procedure
 #endif
@@ -1118,35 +1118,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setDE_MEQ_D2_XX_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_distanceEuclid@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setDE_MEQ_D2_XX_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_distanceEuclid@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setDE_MEQ_D2_XX_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_distanceEuclid@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setDE_MEQ_D2_XX_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_distanceEuclid@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setDE_MEQ_D2_XX_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_distanceEuclid@routines.inc.F90"
     end procedure
 #endif
@@ -1169,35 +1169,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setDE_MEQ_D1_D1_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_distanceEuclid@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setDE_MEQ_D1_D1_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_distanceEuclid@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setDE_MEQ_D1_D1_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_distanceEuclid@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setDE_MEQ_D1_D1_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_distanceEuclid@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setDE_MEQ_D1_D1_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_distanceEuclid@routines.inc.F90"
     end procedure
 #endif
@@ -1220,35 +1220,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setDE_MEQ_D1_D2_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_distanceEuclid@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setDE_MEQ_D1_D2_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_distanceEuclid@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setDE_MEQ_D1_D2_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_distanceEuclid@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setDE_MEQ_D1_D2_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_distanceEuclid@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setDE_MEQ_D1_D2_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_distanceEuclid@routines.inc.F90"
     end procedure
 #endif
@@ -1271,35 +1271,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setDE_MEQ_D2_D1_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_distanceEuclid@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setDE_MEQ_D2_D1_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_distanceEuclid@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setDE_MEQ_D2_D1_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_distanceEuclid@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setDE_MEQ_D2_D1_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_distanceEuclid@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setDE_MEQ_D2_D1_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_distanceEuclid@routines.inc.F90"
     end procedure
 #endif
@@ -1322,35 +1322,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setDE_MEQ_D2_D2_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_distanceEuclid@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setDE_MEQ_D2_D2_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_distanceEuclid@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setDE_MEQ_D2_D2_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_distanceEuclid@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setDE_MEQ_D2_D2_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_distanceEuclid@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setDE_MEQ_D2_D2_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_distanceEuclid@routines.inc.F90"
     end procedure
 #endif
@@ -1395,35 +1395,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getDME_RDP_FUL_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_distanceEuclid@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getDME_RDP_FUL_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_distanceEuclid@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getDME_RDP_FUL_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_distanceEuclid@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getDME_RDP_FUL_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_distanceEuclid@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getDME_RDP_FUL_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_distanceEuclid@routines.inc.F90"
     end procedure
 #endif
@@ -1446,35 +1446,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getDME_RDP_ULD_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_distanceEuclid@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getDME_RDP_ULD_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_distanceEuclid@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getDME_RDP_ULD_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_distanceEuclid@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getDME_RDP_ULD_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_distanceEuclid@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getDME_RDP_ULD_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_distanceEuclid@routines.inc.F90"
     end procedure
 #endif
@@ -1497,35 +1497,35 @@ contains
 
 #if RK5_ENABLED
     module procedure getDME_RDP_ULX_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_distanceEuclid@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure getDME_RDP_ULX_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_distanceEuclid@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure getDME_RDP_ULX_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_distanceEuclid@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure getDME_RDP_ULX_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_distanceEuclid@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure getDME_RDP_ULX_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_distanceEuclid@routines.inc.F90"
     end procedure
 #endif
@@ -1576,35 +1576,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setDME_MED_RDP_ULD_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_distanceEuclid@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setDME_MED_RDP_ULD_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_distanceEuclid@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setDME_MED_RDP_ULD_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_distanceEuclid@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setDME_MED_RDP_ULD_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_distanceEuclid@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setDME_MED_RDP_ULD_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_distanceEuclid@routines.inc.F90"
     end procedure
 #endif
@@ -1627,35 +1627,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setDME_MED_RDP_ULX_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_distanceEuclid@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setDME_MED_RDP_ULX_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_distanceEuclid@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setDME_MED_RDP_ULX_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_distanceEuclid@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setDME_MED_RDP_ULX_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_distanceEuclid@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setDME_MED_RDP_ULX_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_distanceEuclid@routines.inc.F90"
     end procedure
 #endif
@@ -1702,35 +1702,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setDME_MEU_RDP_ULD_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_distanceEuclid@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setDME_MEU_RDP_ULD_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_distanceEuclid@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setDME_MEU_RDP_ULD_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_distanceEuclid@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setDME_MEU_RDP_ULD_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_distanceEuclid@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setDME_MEU_RDP_ULD_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_distanceEuclid@routines.inc.F90"
     end procedure
 #endif
@@ -1753,35 +1753,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setDME_MEU_RDP_ULX_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_distanceEuclid@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setDME_MEU_RDP_ULX_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_distanceEuclid@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setDME_MEU_RDP_ULX_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_distanceEuclid@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setDME_MEU_RDP_ULX_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_distanceEuclid@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setDME_MEU_RDP_ULX_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_distanceEuclid@routines.inc.F90"
     end procedure
 #endif
@@ -1828,35 +1828,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setDME_MEQ_RDP_ULD_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_distanceEuclid@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setDME_MEQ_RDP_ULD_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_distanceEuclid@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setDME_MEQ_RDP_ULD_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_distanceEuclid@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setDME_MEQ_RDP_ULD_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_distanceEuclid@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setDME_MEQ_RDP_ULD_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_distanceEuclid@routines.inc.F90"
     end procedure
 #endif
@@ -1879,35 +1879,35 @@ contains
 
 #if RK5_ENABLED
     module procedure setDME_MEQ_RDP_ULX_RK5
-        use pm_kind, only: TKC => RK5
+        use pm_kind, only: TKG => RK5
 #include "pm_distanceEuclid@routines.inc.F90"
     end procedure
 #endif
 
 #if RK4_ENABLED
     module procedure setDME_MEQ_RDP_ULX_RK4
-        use pm_kind, only: TKC => RK4
+        use pm_kind, only: TKG => RK4
 #include "pm_distanceEuclid@routines.inc.F90"
     end procedure
 #endif
 
 #if RK3_ENABLED
     module procedure setDME_MEQ_RDP_ULX_RK3
-        use pm_kind, only: TKC => RK3
+        use pm_kind, only: TKG => RK3
 #include "pm_distanceEuclid@routines.inc.F90"
     end procedure
 #endif
 
 #if RK2_ENABLED
     module procedure setDME_MEQ_RDP_ULX_RK2
-        use pm_kind, only: TKC => RK2
+        use pm_kind, only: TKG => RK2
 #include "pm_distanceEuclid@routines.inc.F90"
     end procedure
 #endif
 
 #if RK1_ENABLED
     module procedure setDME_MEQ_RDP_ULX_RK1
-        use pm_kind, only: TKC => RK1
+        use pm_kind, only: TKG => RK1
 #include "pm_distanceEuclid@routines.inc.F90"
     end procedure
 #endif
